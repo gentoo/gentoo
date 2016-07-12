@@ -6814,7 +6814,7 @@ dev-php/pecl-memcached 1.0.2-r2 2.1.0-r2 2.1.0-r3 2.2.0 2.2.0-r1: Interface PHP 
 dev-php/pecl-mongo 1.5.4 1.5.6 1.6.2 1.6.3 1.6.9 1.6.11: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.7: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.5.2-r1 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
-dev-php/pecl-mysqlnd_qc 1.2.0: A query cache plugin for the mysqlnd library
+dev-php/pecl-mysqlnd_qc 1.2.0-r1: A query cache plugin for the mysqlnd library
 dev-php/pecl-ncurses 1.0.2-r2: Terminal screen handling and optimization package
 dev-php/pecl-oauth 1.2.3-r3 2.0.2: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r1: This extension provides PAM (Pluggable Authentication Modules) integration

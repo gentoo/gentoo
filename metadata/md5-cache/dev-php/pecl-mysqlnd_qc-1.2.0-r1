@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=memcached? ( dev-libs/libmemcached ) sqlite? ( dev-db/sqlite:3 ) php_targets_php5-5? ( || ( dev-lang/php:5.5[-libmysqlclient,mysql] dev-lang/php:5.5[-libmysqlclient,mysqli] ) ) php_targets_php5-6? ( || ( dev-lang/php:5.6[-libmysqlclient,mysql] dev-lang/php:5.6[-libmysqlclient,mysqli] ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
+DESCRIPTION=A query cache plugin for the mysqlnd library
+EAPI=6
+HOMEPAGE=http://pecl.php.net/mysqlnd_qc
+IUSE=memcached sqlite php_targets_php5-5 php_targets_php5-6
+KEYWORDS=~amd64
+LICENSE=PHP-3
+RDEPEND=memcached? ( dev-libs/libmemcached ) sqlite? ( dev-db/sqlite:3 ) php_targets_php5-5? ( || ( dev-lang/php:5.5[-libmysqlclient,mysql] dev-lang/php:5.5[-libmysqlclient,mysqli] ) ) php_targets_php5-6? ( || ( dev-lang/php:5.6[-libmysqlclient,mysql] dev-lang/php:5.6[-libmysqlclient,mysqli] ) ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
+REQUIRED_USE=|| ( php_targets_php5-5 php_targets_php5-6 )
+SLOT=0
+SRC_URI=http://pecl.php.net/get/mysqlnd_qc-1.2.0.tgz
+_eclass_exported_funcs=src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:- src_compile:php-ext-source-r3 src_test:php-ext-pecl-r3 src_install:php-ext-pecl-r3
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	php-ext-pecl-r3	362ad55b4b4b63dd1cf7df6cbca082c3	php-ext-source-r3	3772105f27fbde7de9a8b3bfb48e1e41	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=eaf83289a1579885276126cb3213a6d0
