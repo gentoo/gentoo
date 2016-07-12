@@ -16,7 +16,7 @@ SRC_URI="https://github.com/rogerbinns/apsw/releases/download/${MY_PV}/${MY_P}.z
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE="doc"
 
 RDEPEND=">=dev-db/sqlite-${PV%_p*}"
