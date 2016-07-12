@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=>=x11-libs/motif-2.3:0 x11-libs/libXt x11-libs/libX11 x11-libs/libXpm x11-apps/xfontsel dev-libs/libpcre net-misc/curl sys-libs/db:4.8 sci-libs/shapelib !graphicsmagick? ( media-gfx/imagemagick[-hdri,-q32] ) graphicsmagick? ( media-gfx/graphicsmagick[-q32] ) geotiff? ( sci-libs/proj sci-libs/libgeotiff media-libs/tiff:0 ) gdal? ( sci-libs/gdal ) festival? ( app-accessibility/festival ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=X Amateur Station Tracking and Information Reporting
+EAPI=5
+HOMEPAGE=http://xastir.org/
+IUSE=festival gdal geotiff graphicsmagick
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/motif-2.3:0 x11-libs/libXt x11-libs/libX11 x11-libs/libXpm x11-apps/xfontsel dev-libs/libpcre net-misc/curl sys-libs/db:4.8 sci-libs/shapelib !graphicsmagick? ( media-gfx/imagemagick[-hdri,-q32] ) graphicsmagick? ( media-gfx/graphicsmagick[-q32] ) geotiff? ( sci-libs/proj sci-libs/libgeotiff media-libs/tiff:0 ) gdal? ( sci-libs/gdal ) festival? ( app-accessibility/festival )
+SLOT=0
+SRC_URI=mirror://sourceforge/xastir/xastir-2.0.8.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=62fe3830c3edc1dd2a53f171a0d2abfa
