@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,9 +7,9 @@ EAPI=5
 inherit autotools eutils flag-o-matic systemd
 
 DESCRIPTION="Precision Time Protocol daemon"
-HOMEPAGE="http://ptpd.sf.net"
+HOMEPAGE="https://github.com/ptpd/ptpd"
 
-SRC_URI="mirror://sourceforge/ptpd/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/ptpd/ptpd/archive/${P}.tar.gz"
 KEYWORDS="~amd64 ~arm ~x86"
 
 LICENSE="BSD"
@@ -21,6 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
 	ntp? ( net-misc/ntp )"
+
+S=${WORKDIR}/ptpd-${P}
 
 src_prepare() {
 	eautoreconf
