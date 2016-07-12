@@ -6,8 +6,11 @@ EAPI=5
 inherit cmake-utils eutils gnome2-utils games
 
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
-HOMEPAGE="http://cockatrice.de/"
-SRC_URI="http://cockatrice.de/files/${PN}_source_${PV}.tar.gz"
+HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
+
+SRC_URI="https://github.com/Cockatrice/${PN}/archive/2016-05-06-Release.tar.gz"
+
+S=${WORKDIR}/"Cockatrice-2016-05-06-Release"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,21 +20,15 @@ IUSE="dedicated server"
 DEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf
-	dev-qt/qtcore:4
-	dev-qt/qtsql:4
+	dev-qt/qtcore:5
+	dev-qt/qtconcurrent
+	dev-qt/linguist-tools
+	dev-qt/qtprintsupport
 	!dedicated? (
-		dev-qt/qtmultimedia:4
-		dev-qt/qtsvg:4
-		dev-qt/qtgui:4
+		dev-qt/qtmultimedia:5
+		dev-qt/qtsvg:5
+		dev-qt/qtgui:5
 	)"
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${PN}_${PV}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-underlinking.patch
-}
 
 src_configure() {
 	local mycmakeargs=(

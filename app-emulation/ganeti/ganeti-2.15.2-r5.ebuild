@@ -78,7 +78,7 @@ DEPEND="
 	>=dev-haskell/old-time-1.1.0.0:0=
 	>=dev-haskell/random-1.0.1.1:0=
 	haskell-daemons? ( >=dev-haskell/text-0.11.1.13:0= )
-	>=dev-haskell/transformers-0.4.3.0:0=
+	>=dev-haskell/transformers-0.3.0.0:0=
 
 	>=dev-haskell/attoparsec-0.10.1.1:0=
 	<dev-haskell/attoparsec-0.14:0
