@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils eutils flag-o-matic
 
 DESCRIPTION="Animated sprite editor & pixel art tool"
 HOMEPAGE="http://www.aseprite.org"
@@ -53,7 +53,6 @@ src_prepare() {
 	if use debug ; then
 		sed -i '/-DNDEBUG/d' CMakeLists.txt || die
 	fi
-
 	# Fix shebang in thumbnailer
 	sed -i -e 's:#!/usr/bin/sh:#!/bin/sh:' desktop/aseprite-thumbnailer || die
 }
@@ -62,7 +61,6 @@ src_configure() {
 	use debug && append-cppflags -DDEBUGMODE -D_DEBUG
 
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=OFF # Don't compile internal libs as shared
 		-DENABLE_UPDATER=OFF
 		-DFULLSCREEN_PLATFORM=ON
 		-DUSE_SHARED_ALLEGRO4=ON
@@ -81,25 +79,12 @@ src_configure() {
 		-DWITH_QT_THUMBNAILER="$(usex kde)"
 		-DWITH_WEBP_SUPPORT="$(usex webp)"
 		-DENABLE_TESTS="$(usex test)"
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 	)
 	cmake-utils_src_configure
-
-	if use kde; then
-		mycmakeargs=( )
-		CMAKE_USE_DIR="${S}/desktop/kde" \
-			BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
-			cmake-utils_src_configure
-	fi
-}
-
-src_compile() {
-	cmake-utils_src_compile
-	use kde && BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
-		cmake-utils_src_compile
 }
 
 src_install() {
+	newicon "${S}/data/icons/ase64.png" "${PN}.png"
 	cmake-utils_src_install
-	use kde && BUILD_DIR="${WORKDIR}/${P}_desktop_build" \
-		cmake-utils_src_install
 }
