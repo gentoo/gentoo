@@ -78,7 +78,7 @@ DEPEND="
 	>=dev-haskell/old-time-1.1.0.0:0=
 	>=dev-haskell/random-1.0.1.1:0=
 	haskell-daemons? ( >=dev-haskell/text-0.11.1.13:0= )
-	>=dev-haskell/transformers-0.3.0.0:0=
+	>=dev-haskell/transformers-0.4.3.0:0=
 
 	>=dev-haskell/attoparsec-0.10.1.1:0=
 	<dev-haskell/attoparsec-0.14:0
@@ -121,9 +121,6 @@ DEPEND="
 	>=dev-haskell/case-insensitive-0.4.0.1
 
 	dev-haskell/vector:0=
-	<dev-haskell/semigroupoids-4.1:0=
-	<dev-haskell/contravariant-0.6
-	<dev-haskell/transformers-compat-0.4[three]
 	xen? ( >=app-emulation/xen-3.0 )
 	kvm? (
 		dev-python/psutil
@@ -144,7 +141,7 @@ RDEPEND="${DEPEND}
 DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
-	<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+	<=dev-python/sphinx-1.3.5[${PYTHON_USEDEP}]
 	media-fonts/urw-fonts
 	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
@@ -160,7 +157,7 @@ DEPEND+="
 		>=dev-haskell/hunit-1.2.4.2:0=
 		<dev-haskell/hunit-1.3:0=
 		>=dev-haskell/quickcheck-2.4.2:2=
-		<dev-haskell/quickcheck-2.8:2=
+		<dev-haskell/quickcheck-2.8.3:2=
 		sys-apps/fakeroot
 		net-misc/socat
 		dev-util/shelltestrunner
@@ -209,6 +206,16 @@ pkg_setup () {
 src_prepare() {
 	local testfile
 	eapply "${PATCHES[@]}"
+	# Upstream commits:
+	# 4c3c2ca2a97a69c0287a3d23e064bc17978105eb
+	# 24618882737fd7c189adf99f4acc767d48f572c3
+	sed -i \
+		-e '/QuickCheck/s,< 2.8,< 2.8.3,g' \
+		cabal/ganeti.template.cabal
+	# Neuter -Werror
+	sed -i \
+		-e '/^if DEVELOPER_MODE/,/^endif/s/-Werror//' \
+		Makefile.am
 
 	# not sure why these tests are failing
 	# should remove this on next version bump if possible
