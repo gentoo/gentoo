@@ -16,11 +16,11 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="rdesktop vnc ssh pulseaudio vorbis telnet ssl"
+IUSE="rdesktop vnc ssh pulseaudio vorbis telnet ssl multilib"
 
 DEPEND="x11-libs/cairo
 	media-libs/libpng:*
-	virtual/jpeg
+	virtual/jpeg:*
 	dev-libs/ossp-uuid
 	rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 )
 	ssh? ( x11-libs/pango
@@ -33,6 +33,8 @@ DEPEND="x11-libs/cairo
 	vorbis? ( media-libs/libvorbis )"
 
 RDEPEND="${DEPEND}"
+
+REQUIRED_USE="multilib? ( ssl )"
 
 src_configure() {
 	local myconf="--without-terminal --without-pango"
