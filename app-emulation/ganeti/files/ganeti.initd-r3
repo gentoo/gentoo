@@ -29,13 +29,13 @@ start() {
 	local daemon retval=0 optsvar started_daemons daemon_opts
 
 	for daemon in $(${DAEMON_UTIL} list-start-daemons); do
-		optsvar="${daemon//-/_}"
+		optsvar="$(printf "${daemon}_OPTS" | tr - _ | LC_ALL=C tr '[:lower:]' '[:upper:]')"
 
 		case "${daemon#ganeti-}" in
 			masterd|rapi|luxid) is_master || continue;;
 		esac
 
-		eval daemon_opts=\"\$\{${optsvar^^*}_OPTS\}\"
+		eval daemon_opts=\"\$\{${optsvar}\}\"
 
 		ebegin "Starting ${daemon}"
 		eindent
