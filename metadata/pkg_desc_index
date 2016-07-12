@@ -4404,7 +4404,7 @@ dev-lang/ifc 13.1.5.192 14.0.3.174 15.0.6.233: Intel FORTRAN Compiler
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
 dev-lang/io 2011.09.12-r2 2011.09.12-r3: Io is a small, prototype-based programming language
-dev-lang/ispc 1.8.2-r2 1.8.2-r4 1.9.0: Intel SPMD Program Compiler
+dev-lang/ispc 1.8.2-r2 1.8.2-r4 1.9.0 1.9.1: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
 dev-lang/julia 0.4.3: High-performance programming language for technical computing
