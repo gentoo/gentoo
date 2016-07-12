@@ -132,16 +132,24 @@ src_prepare() {
 }
 
 ejam() {
-	local b2_opts="--user-config=${BOOST_ROOT}/user-config.jam $@"
-	echo b2 ${b2_opts}
-	b2 ${b2_opts}
+	local b2_opts=(
+		"--user-config=${BOOST_ROOT}/user-config.jam"
+		"$@"
+	)
+	echo b2 "${b2_opts[@]}"
+	b2 "${b2_opts[@]}"
 }
 
 src_configure() {
 	# Workaround for too many parallel processes requested, bug #506064
 	[ "$(makeopts_jobs)" -gt 64 ] && MAKEOPTS="${MAKEOPTS} -j64"
 
-	OPTIONS="$(usex debug gentoodebug gentoorelease) -j$(makeopts_jobs) -q -d+2"
+	OPTIONS=(
+		$(usex debug gentoodebug gentoorelease)
+		"-j$(makeopts_jobs)"
+		-q
+		-d+2
+	)
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		# We need to add the prefix, and in two cases this exceeds, so prepare
@@ -166,18 +174,37 @@ src_configure() {
 	# Do _not_ use C++11 yet, make sure to force GNU C++ 98 standard.
 	append-cxxflags -std=gnu++98
 
-	use icu && OPTIONS+=" -sICU_PATH=${EPREFIX}/usr"
-	use icu || OPTIONS+=" --disable-icu boost.locale.icu=off"
-	mpi_needed || OPTIONS+=" --without-mpi"
-	use nls || OPTIONS+=" --without-locale"
-	use context || OPTIONS+=" --without-context --without-coroutine --without-coroutine2"
+	use icu && OPTIONS+=(
+			"-sICU_PATH=${EPREFIX}/usr"
+		)
+	use icu || OPTIONS+=(
+			--disable-icu
+			boost.locale.icu=off
+		)
+	mpi_needed || OPTIONS+=(
+			--without-mpi
+		)
+	use nls || OPTIONS+=(
+			--without-locale
+		)
+	use context || OPTIONS+=(
+			--without-context
+			--without-coroutine
+			--without-coroutine2
+		)
 
-	OPTIONS+=" pch=off"
-	OPTIONS+=" --boost-build=\"${EPREFIX}\"/usr/share/boost-build --prefix=\"${ED}usr\""
-	OPTIONS+=" --layout=system"
-	OPTIONS+=" threading=$(usex threads multi single) link=$(usex static-libs shared,static shared)"
+	OPTIONS+=(
+		pch=off
+		--boost-build="${EPREFIX}"/usr/share/boost-build
+		--prefix="${ED}usr"
+		--layout=system
+		threading=$(usex threads multi single)
+		link=$(usex static-libs shared,static shared)
+	)
 
-	[[ ${CHOST} == *-winnt* ]] && OPTIONS+=" -sNO_BZIP2=1"
+	[[ ${CHOST} == *-winnt* ]] && OPTIONS+=(
+			-sNO_BZIP2=1
+		)
 }
 
 multilib_src_compile() {
@@ -196,7 +223,7 @@ multilib_src_compile() {
 		fi
 
 		ejam \
-			${OPTIONS} \
+			"${OPTIONS[@]}" \
 			${PYTHON_OPTIONS} \
 			|| die "Building of Boost libraries failed"
 
@@ -242,7 +269,7 @@ multilib_src_compile() {
 		pushd tools > /dev/null || die
 
 		ejam \
-			${OPTIONS} \
+			"${OPTIONS[@]}" \
 			${PYTHON_OPTIONS} \
 			|| die "Building of Boost tools failed"
 		popd > /dev/null || die
@@ -304,7 +331,7 @@ multilib_src_install() {
 		fi
 
 		ejam \
-			${OPTIONS} \
+			"${OPTIONS[@]}" \
 			${PYTHON_OPTIONS} \
 			--includedir="${ED}usr/include" \
 			--libdir="${ED}usr/$(get_libdir)" \
