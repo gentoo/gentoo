@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools-multilib flag-o-matic multilib toolchain-funcs
+EAPI=6
 
-INFINALITY_PATCH="03-infinality-2.6.2-2015.11.28.patch"
+inherit autotools flag-o-matic multilib multilib-build multilib-minimal toolchain-funcs
+
+INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="http://www.freetype.org/"
@@ -14,13 +15,12 @@ SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.bz2
 	utils?	( mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2
 		mirror://nongnu/freetype/ft2demos-${PV}.tar.bz2 )
 	doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.bz2
-		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )
-	infinality? ( https://dev.gentoo.org/~polynomial-c/${INFINALITY_PATCH}.xz )"
+		mirror://nongnu/freetype/${PN}-doc-${PV}.tar.bz2 )"
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
-IUSE="X +adobe-cff bindist bzip2 debug doc fontforge harfbuzz
+IUSE="X +adobe-cff bindist bzip2 cleartype_hinting debug doc fontforge harfbuzz
 	infinality png static-libs utils"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
@@ -41,6 +41,15 @@ RDEPEND="${CDEPEND}
 	abi_x86_32? ( utils? ( !app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)] ) )"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
+REQUIRED_USE="?? ( cleartype_hinting infinality )"
+
+PATCHES=(
+	# This is the same as the 01 patch from infinality
+	"${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
+
+	"${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
+)
+
 src_prepare() {
 	enable_option() {
 		sed -i -e "/#define $1/a #define $1" \
@@ -54,14 +63,16 @@ src_prepare() {
 			|| die "unable to disable option $1"
 	}
 
-	# This is the same as the 01 patch from infinality
-	epatch "${FILESDIR}"/${PN}-2.3.2-enable-valid.patch
+	default
 
 	if use infinality; then
-		epatch "${WORKDIR}/${INFINALITY_PATCH}"
-
 		# FT_CONFIG_OPTION_SUBPIXEL_RENDERING is already enabled in freetype-2.4.11
-		enable_option TT_CONFIG_OPTION_SUBPIXEL_HINTING
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  1"
+	fi
+
+	if use cleartype_hinting; then
+		# Will be the new default for >=freetype-2.7.0
+		enable_option "TT_CONFIG_OPTION_SUBPIXEL_HINTING  2"
 	fi
 
 	if ! use bindist; then
@@ -79,8 +90,6 @@ src_prepare() {
 		enable_option FT_DEBUG_MEMORY
 	fi
 
-	epatch "${FILESDIR}"/${PN}-2.4.11-sizeof-types.patch # 459966
-
 	if use utils; then
 		cd "${WORKDIR}/ft2demos-${PV}" || die
 		# Disable tests needing X11 when USE="-X". (bug #177597)
@@ -96,7 +105,7 @@ src_prepare() {
 			"${S}"/builds/unix/configure || die
 	fi
 
-	autotools-utils_src_prepare
+	elibtoolize --patch-only
 }
 
 multilib_src_configure() {
@@ -105,16 +114,19 @@ multilib_src_configure() {
 
 	local myeconfargs=(
 		--enable-biarch-config
+		--enable-shared
 		$(use_with bzip2)
 		$(use_with harfbuzz)
 		$(use_with png)
+		$(use_enable static-libs static)
 
 		# avoid using libpng-config
 		LIBPNG_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libpng)"
 		LIBPNG_LDFLAGS="$($(tc-getPKG_CONFIG) --libs libpng)"
 	)
 
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" \
+		econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -148,7 +160,7 @@ multilib_src_install_all() {
 		# Probably fontforge needs less but this way makes things simplier...
 		einfo "Installing internal headers required for fontforge"
 		local header
-		find src/truetype include/internal -name '*.h' | \
+		find src/truetype include/freetype/internal -name '*.h' | \
 		while read header; do
 			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
@@ -156,7 +168,10 @@ multilib_src_install_all() {
 	fi
 
 	dodoc docs/{CHANGES,CUSTOMIZE,DEBUG,INSTALL.UNIX,*.txt,PROBLEMS,TODO}
-	use doc && dohtml -r docs/*
+	if use doc ; then
+		docinto html
+		dodoc -r docs/*
+	fi
 
 	prune_libtool_files --all
 }

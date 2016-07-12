@@ -23,6 +23,8 @@
 		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>
 		<flag name="auto-hinter">Use the unpatented auto-hinter instead
 			of the (recommended) TrueType bytecode interpreter</flag>
+		<flag name="cleartype_hinting">New bytecode hinting mode for TrueType fonts that
+			activates subpixel hinting (a.k.a. ClearType hinting) by default</flag>
 		<flag name="bindist">Disable ClearType support (see http://freetype.org/patents.html)</flag>
 		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
 		<flag name="fontforge">Install internal headers required for TrueType
