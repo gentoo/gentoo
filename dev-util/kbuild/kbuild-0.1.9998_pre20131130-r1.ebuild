@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils autotools toolchain-funcs
 
@@ -10,11 +10,12 @@ MY_P=kBuild-${PV/_/-}-src
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
 HOMEPAGE="http://svn.netlabs.org/kbuild/wiki"
 #SRC_URI="ftp://ftp.netlabs.org/pub/${PN}/${MY_P}.tar.gz"
-SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/${P}-tools_and_units_updates.patch.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="sys-devel/flex
@@ -24,16 +25,23 @@ RDEPEND=""
 
 S=${WORKDIR}/${MY_P/-src}
 
+PATCHES=(
+	"${FILESDIR}/${PN}-unknown-configure-opt.patch"
+	"${FILESDIR}/${PN}-glibc-2.10.patch"
+	"${FILESDIR}/${PN}-0.1.5-gentoo-docdir.patch"
+	"${FILESDIR}/${PN}-0.1.9998_pre20120806-qa.patch"
+	"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch"
+	"${FILESDIR}/${PN}-0.1.9998_pre20110817-gold.patch"
+	"${FILESDIR}/${PN}-0.1.9998_pre20110817-gcc-4.7.patch"
+	"${WORKDIR}/${P}-tools_and_units_updates.patch"
+)
+
 src_prepare() {
 	rm -rf "${S}/kBuild/bin"
 
-	epatch "${FILESDIR}/${PN}-unknown-configure-opt.patch" \
-		"${FILESDIR}/${PN}-glibc-2.10.patch" \
-		"${FILESDIR}/${PN}-0.1.5-gentoo-docdir.patch" \
-		"${FILESDIR}/${PN}-0.1.9998_pre20120806-qa.patch" \
-		"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch" \
-		"${FILESDIR}/${PN}-0.1.9998_pre20110817-gold.patch" \
-		"${FILESDIR}/${PN}-0.1.9998_pre20110817-gcc-4.7.patch"
+	default
+
+	mv src/kmk/configure.{in,ac} || die
 
 	cd "${S}/src/kmk" || die
 	eautoreconf
