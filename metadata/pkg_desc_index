@@ -1312,6 +1312,7 @@ app-emulation/ganeti-htools 0.2.8 0.3.0 0.3.1: Cluster tools for fixing common a
 app-emulation/ganeti-instance-debian-etch 0.4: Debian Etch instance example for Ganeti
 app-emulation/ganeti-instance-debootstrap 0.9 0.11 0.12: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
+app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
 app-emulation/hercules 3.06 3.08 3.09 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
@@ -10105,7 +10106,7 @@ games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r2 3.0.6-r3: An asteroids battle game
 games-action/minetest 0.4.13 0.4.14: An InfiniMiner/Minecraft inspired game
 games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game engine
-games-action/moon-buggy 1.0.51: A simple console game, where you drive a car across the moon's surface
+games-action/moon-buggy 1.0.51 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
 games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a: Abstract Shooting Game
