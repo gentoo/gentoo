@@ -1,1 +1,2 @@
 move kde-base/kactivitymanagerd kde-plasma/kactivitymanagerd
+move app-portage/cpuinfo2cpuflags app-portage/cpuid2cpuflags
