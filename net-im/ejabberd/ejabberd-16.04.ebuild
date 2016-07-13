@@ -235,10 +235,26 @@ src_install() {
 
 pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		echo
 		elog "For configuration instructions, please see"
-		elog "  /usr/share/doc/${PF}/html/guide.html"
-		elog "or the online version at"
 		elog "  http://www.process-one.net/en/ejabberd/docs/"
+		echo
+		if [[ " ${REPLACING_VERSIONS} " =~ \ 2\. ]]; then
+			ewarn "If you have used pubsub in ejabberd-2.* you may encounter issues after"
+			ewarn "migration to ${PV}. pubsub data may not be migrated automatically and"
+			ewarn "you may need to run migration script manually, see:"
+			ewarn
+			ewarn "  https://github.com/processone/ejabberd/issues/479#issuecomment-124497456"
+			ewarn
+			ewarn "In case you don't care about all stored moods, activities, geoinfo and you"
+			ewarn "know you don't store in pubsub anything important, you can just remove"
+			ewarn "pubsub tables:"
+			ewarn
+			ewarn "  rm ${EROOT%/}${JABBER_SPOOL}/pubsub_*"
+			ewarn
+			ewarn "See also: https://bugs.gentoo.org/show_bug.cgi?id=588244"
+			echo
+		fi
 	elif [[ -f ${EROOT}etc/jabber/ejabberd.cfg ]]; then
 		elog "Ejabberd now defaults to using a YAML format for its config file."
 		elog "The old ejabberd.cfg file can be converted using the following instructions:"
