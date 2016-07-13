@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] camlp5? ( >=dev-ml/camlp5-6.02.3:=[ocamlopt?] ) !camlp5? ( dev-ml/camlp4:= ) gtk? ( >=dev-ml/lablgtk-2.10.1:=[sourceview,ocamlopt?] ) doc? ( media-libs/netpbm[png,zlib] virtual/latex-base dev-tex/hevea dev-tex/xcolor dev-texlive/texlive-pictures dev-texlive/texlive-mathextra dev-texlive/texlive-latexextra )
+DESCRIPTION=Proof assistant written in O'Caml
+EAPI=5
+HOMEPAGE=http://coq.inria.fr/
+IUSE=gtk debug +ocamlopt doc camlp5
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-3.11.2:=[ocamlopt?] camlp5? ( >=dev-ml/camlp5-6.02.3:=[ocamlopt?] ) !camlp5? ( dev-ml/camlp4:= ) gtk? ( >=dev-ml/lablgtk-2.10.1:=[sourceview,ocamlopt?] )
+SLOT=0
+SRC_URI=http://coq.inria.fr/distrib/V8.5pl2/files/coq-8.5pl2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=6ee5be8160c51d984895653466b919b3
