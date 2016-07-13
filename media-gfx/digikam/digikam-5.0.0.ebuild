@@ -7,6 +7,7 @@ EAPI=6
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	KDE_TEST=true
 fi
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit kde5
 
 DESCRIPTION="Digital photo management application"
