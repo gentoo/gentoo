@@ -6,6 +6,7 @@ EAPI=5
 
 DESCRIPTION="The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant"
 HOMEPAGE="http://www.sysresccd.org/"
+# Large ISO mirroring explicitly approved by infra in bug #588766
 SRC_URI="mirror://sourceforge/systemrescuecd/sysresccd-${PN#*-}/${PV}/${P}.iso"
 
 LICENSE="GPL-2"
@@ -16,8 +17,6 @@ IUSE="+isohybrid"
 DEPEND="isohybrid? ( >=sys-boot/syslinux-4 )"
 
 S=${WORKDIR}
-
-RESTRICT="mirror"
 
 src_install() {
 	insinto "/usr/share/${PN%-*}"
