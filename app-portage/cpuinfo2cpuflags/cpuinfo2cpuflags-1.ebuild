@@ -8,9 +8,11 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
 inherit python-r1
 
+MY_PN=cpuinfo2cpuflags
+MY_P=${MY_PN}-${PV}
 DESCRIPTION="Script to guess CPU_FLAGS_X86 flags from /proc/cpuinfo"
-HOMEPAGE="https://bitbucket.org/mgorny/cpuinfo2cpuflags"
-SRC_URI="https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/${P}.tar.gz"
+HOMEPAGE="https://github.com/mgorny/cpuid2cpuflags"
+SRC_URI="https://github.com/mgorny/cpuid2cpuflags/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -20,8 +22,10 @@ IUSE=""
 RDEPEND=${PYTHON_DEPS}
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
+S=${WORKDIR}/${MY_P}
+
 src_install() {
-	python_foreach_impl python_newscript "${PN}-x86"{.py,}
+	python_foreach_impl python_newscript "${MY_PN}-x86"{.py,}
 }
 
 pkg_postinst() {

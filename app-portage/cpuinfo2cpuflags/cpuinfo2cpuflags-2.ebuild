@@ -4,11 +4,14 @@
 
 EAPI=5
 
+MY_P=cpuinfo2cpuflags-${PV}
 DESCRIPTION="Tool to guess CPU_FLAGS_X86 flags for the host"
-HOMEPAGE="https://bitbucket.org/mgorny/cpuinfo2cpuflags"
-SRC_URI="https://bitbucket.org/mgorny/cpuinfo2cpuflags/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/cpuid2cpuflags"
+SRC_URI="https://github.com/mgorny/cpuid2cpuflags/releases/download/v${PV}/${MY_P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
+
+S=${WORKDIR}/${MY_P}
