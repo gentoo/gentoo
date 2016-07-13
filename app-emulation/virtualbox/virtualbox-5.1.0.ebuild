@@ -75,6 +75,7 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jre-1.6:= )
 	pam? ( sys-libs/pam )
 	pulseaudio? ( media-sound/pulseaudio )
+	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
 
