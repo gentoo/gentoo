@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND=">=dev-lang/erlang-18"
+DEPEND="=dev-lang/erlang-18*[ssl]"
 RDEPEND="${DEPEND}"
 
 src_compile() {
