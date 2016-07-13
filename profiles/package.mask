@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org) (13 Jul 2016)
+# No longer supported or released upstream. No revdeps.
+# Masked for removal in 30 days. Bug 585386.
+dev-qt/qtquick1
+
 # Anthony G. Basile <blueness@gentoo.org> (11 Jul 2016)
 # Upstream is in bad shape, bug #585726
 net-dns/namecoind
