@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,7 +73,7 @@ multilib_src_configure() {
 		$(cmake-utils_use designer PHONON_BUILD_DESIGNER_PLUGIN)
 		$(cmake-utils_use_with pulseaudio GLIB2)
 		$(cmake-utils_use_with pulseaudio PulseAudio)
-		$(multilib_is_native_abi && cmake-utils_use_with zeitgeist QZeitgeist)
+		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist) || echo -DWITH_QZeitgeist=OFF)
 		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then

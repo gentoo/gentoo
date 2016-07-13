@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,11 +22,12 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~sparc ~x86 ~x86-fbsd"
 fi
 #IUSE="doc gtk ipv6 ncurses +plugins test"
-IUSE="doc gtk ipv6 ncurses +plugins"
+IUSE="doc gtk ipv6 libressl ncurses +plugins"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
-	dev-libs/openssl
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
 	sys-libs/zlib
@@ -39,7 +40,7 @@ RDEPEND="dev-libs/libbsd
 		>=x11-libs/gtk+-2.2.2:2
 		>=x11-libs/pango-1.2.3
 	)
-	ncurses? ( >=sys-libs/ncurses-5.3 )
+	ncurses? ( sys-libs/ncurses:0= )
 	plugins? ( >=net-misc/curl-7.26.0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/ghostscript-gpl
