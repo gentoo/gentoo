@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=!net-analyzer/nessus-core !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=x11-libs/gtk+-2.8.8:2 virtual/pkgconfig doc? ( app-text/htmldoc )
+DESCRIPTION=A client for the Nessus vulnerability scanner
+EAPI=5
+HOMEPAGE=http://www.nessus.org/
+IUSE=libressl doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!net-analyzer/nessus-core !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=x11-libs/gtk+-2.8.8:2
+SLOT=0
+SRC_URI=mirror://gentoo/NessusClient-1.0.2.tar.gz mirror://gentoo/nessus-client.png.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=5a443343a68a4a68e585f2e343c3be92

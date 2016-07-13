@@ -13824,7 +13824,7 @@ net-analyzer/ndsad 1.33-r1: Cisco netflow probe from libpcap, ULOG, tee/divert s
 net-analyzer/nepenthes 0.2.2 0.2.2-r1: Nepenthes is a low interaction honeypot that captures worms by emulating known vulnerabilities
 net-analyzer/nessus 2.2.9: A remote security scanner
 net-analyzer/nessus-bin 4.4.1 5.0.1: A remote security scanner for Linux
-net-analyzer/nessus-client 1.0.2-r1: A client for the Nessus vulnerability scanner
+net-analyzer/nessus-client 1.0.2-r1 1.0.2-r2: A client for the Nessus vulnerability scanner
 net-analyzer/nessus-core 2.2.9-r1: A remote security scanner for Linux (nessus-core)
 net-analyzer/nessus-libraries 2.2.9-r1: A remote security scanner for Linux (nessus-libraries)
 net-analyzer/nessus-plugins 2.2.9-r1: A remote security scanner for Linux (nessus-plugins)
