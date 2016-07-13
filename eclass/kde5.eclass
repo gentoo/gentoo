@@ -386,11 +386,13 @@ kde5_src_unpack() {
 				;;
 		esac
 	elif [[ ${KDEBASE} = kdel10n ]]; then
+		local l10npart=5
+		[[ ${PN} = kde4-l10n ]] && l10npart=4
 		mkdir -p "${S}" || die "Failed to create source dir ${S}"
 		cd "${S}"
 		for my_tar in ${A}; do
 			tar -xpf "${DISTDIR}/${my_tar}" --xz \
-				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/5" 2> /dev/null ||
+				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/${l10npart}" 2> /dev/null ||
 				elog "${my_tar}: tar extract command failed at least partially - continuing"
 		done
 	else
@@ -405,12 +407,14 @@ kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${KDEBASE} = kdel10n ]]; then
+		local l10npart=5
+		[[ ${PN} = kde4-l10n ]] && l10npart=4
 		# move known variant subdirs to root dir, currently sr@*
 		use_if_iuse l10n_sr-ijekavsk && _l10n_variant_subdir2root sr-ijekavsk sr
 		use_if_iuse l10n_sr-Latn-ijekavsk && _l10n_variant_subdir2root sr-Latn-ijekavsk sr
 		use_if_iuse l10n_sr-Latn && _l10n_variant_subdir2root sr-Latn sr
 		if use_if_iuse l10n_sr; then
-			rm -rf kde-l10n-sr-${PV}/5/sr/sr@* || die "Failed to cleanup L10N=sr"
+			rm -rf kde-l10n-sr-${PV}/${l10npart}/sr/sr@* || die "Failed to cleanup L10N=sr"
 			_l10n_variant_subdir_buster sr
 		elif [[ -d kde-l10n-sr-${PV} ]]; then
 			# having any variant selected means parent lingua will be unpacked as well
@@ -425,9 +429,13 @@ $(printf "add_subdirectory( %s )\n" \
 	`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
 EOF
 
-		# drop KDE4-based part
-		find -maxdepth 2 -type f -name CMakeLists.txt -exec \
-			sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die
+		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
+		case ${l10npart} in
+			5) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
+				sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die ;;
+			4) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
+				sed -i -e "/add_subdirectory(5)/ s/^/#DONT/" {} + || die ;;
+		esac
 	fi
 
 	cmake-utils_src_prepare
@@ -639,17 +647,19 @@ kde5_pkg_postrm() {
 }
 
 _l10n_variant_subdir2root() {
+	local l10npart=5
+	[[ ${PN} = kde4-l10n ]] && l10npart=4
 	local lingua=$(kde_l10n2lingua ${1})
 	local src=kde-l10n-${2}-${PV}
-	local dest=kde-l10n-${lingua}-${PV}/5
+	local dest=kde-l10n-${lingua}-${PV}/${l10npart}
 
 	# create variant rootdir structure from parent lingua and adapt it
 	mkdir -p ${dest} || die "Failed to create ${dest}"
-	mv ${src}/5/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
+	mv ${src}/${l10npart}/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
 	cp -f ${src}/CMakeLists.txt kde-l10n-${lingua}-${PV} || die "Failed to prepare L10N=${1} subdir"
 	echo "add_subdirectory(${lingua})" > ${dest}/CMakeLists.txt ||
 		die "Failed to prepare ${dest}/CMakeLists.txt"
-	cp -f ${src}/5/${2}/CMakeLists.txt ${dest}/${lingua} ||
+	cp -f ${src}/${l10npart}/${2}/CMakeLists.txt ${dest}/${lingua} ||
 		die "Failed to create ${dest}/${lingua}/CMakeLists.txt"
 	sed -e "s/${2}/${lingua}/" -i ${dest}/${lingua}/CMakeLists.txt ||
 		die "Failed to prepare ${dest}/${lingua}/CMakeLists.txt"
@@ -658,9 +668,14 @@ _l10n_variant_subdir2root() {
 }
 
 _l10n_variant_subdir_buster() {
-	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/5/$(kde_l10n2lingua ${1})
+	local l10npart=5
+	[[ ${PN} = kde4-l10n ]] && l10npart=4
+	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/${l10npart}/$(kde_l10n2lingua ${1})
 
-	sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir"
+	case ${l10npart} in
+		5) sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
+		4) sed -e "/^macro.*subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
+	esac
 
 	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
 		echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt
