@@ -1,5 +1,5 @@
 DEFINED_PHASES=prepare setup unpack
-DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=C/C++/C#/D/Java/Pawn code indenter and beautifier
 EAPI=6
 HOMEPAGE=http://uncrustify.sourceforge.net/
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:git-r3 src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=19834a82ad32ce1b145f945e63fd8e28
+_md5_=dac9f465224f4edf61189ae44c6da39b

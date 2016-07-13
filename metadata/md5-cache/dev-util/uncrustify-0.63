@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare setup
+DEPEND=test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=C/C++/C#/D/Java/Pawn code indenter and beautifier
+EAPI=6
+HOMEPAGE=http://uncrustify.sourceforge.net/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/uncrustify/uncrustify/archive/uncrustify-0.63.tar.gz
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=dac9f465224f4edf61189ae44c6da39b
