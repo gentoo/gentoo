@@ -6809,7 +6809,7 @@ dev-php/pecl-http 1.7.6-r2 1.7.6-r3 2.5.6 3.0.1: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.1.2-r1 3.3.0 3.4.1: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r1: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.3: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r2 3.0.0 3.0.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r3 3.0.0 3.0.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8 3.0.8-r1: PHP extension for using memcached
 dev-php/pecl-memcached 1.0.2-r2 2.1.0-r2 2.1.0-r3 2.2.0 2.2.0-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.5.4 1.5.6 1.6.2 1.6.3 1.6.9 1.6.11: Legacy MongoDB database driver for PHP
@@ -14910,7 +14910,7 @@ net-misc/spread 4.1.0-r1 4.3.0-r1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
-net-misc/sslh 1.17 1.18: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.17 1.18 1.18-r1: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sslwrap 2.0.6-r2: TSL/SSL - Port Wrapper
 net-misc/sstp-client 1.0.9-r1 1.0.9-r2 1.0.10: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
@@ -15606,7 +15606,7 @@ sci-chemistry/gamessq 1.2: Simple job manager for GAMESS-US
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 2.99.2-r2 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 5.0.4 5.0.7 5.1.2: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 4.6.9999 5.0.4 5.0.7 5.0.9999 5.1.2 5.1.9999 2016_rc1 2016.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
 sci-chemistry/gtk-gamess 2.00: GUI for GAMESS, a General Atomic and Molecular Electronic Structure System
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
@@ -15790,7 +15790,7 @@ sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.3.0 1.5.1 1.6.1-r1: GPS mapping utility
+sci-geosciences/qmapshack 1.6.1-r2: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
