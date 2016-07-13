@@ -61,6 +61,7 @@ DEPEND="
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/bitarray[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
+	dev-python/fdsend[${PYTHON_USEDEP}]
 	net-analyzer/arping
 	net-analyzer/fping
 	net-misc/bridge-utils
