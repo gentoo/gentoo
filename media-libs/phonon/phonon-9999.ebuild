@@ -69,7 +69,7 @@ multilib_src_configure() {
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
 		-DWITH_GLIB2=$(usex pulseaudio)
 		-DWITH_PulseAudio=$(usex pulseaudio)
-		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist))
+		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist) || echo -DWITH_QZeitgeist=OFF)
 	)
 
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
