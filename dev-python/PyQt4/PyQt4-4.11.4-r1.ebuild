@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="X compat dbus debug declarative designer doc examples help kde multimedia
 	opengl phonon script scripttools sql svg testlib webkit xmlpatterns"
