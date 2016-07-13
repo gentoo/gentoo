@@ -13759,7 +13759,7 @@ net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 rou
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
 net-analyzer/iftop 1.0_pre4 1.0_pre4-r2: display bandwidth usage on an interface
-net-analyzer/ike-scan 1.9-r1: A utility for finding, fingerprinting and testing IKE VPN servers
+net-analyzer/ike-scan 1.9-r1 1.9-r2: A utility for finding, fingerprinting and testing IKE VPN servers
 net-analyzer/ipaudit 1.0_beta2: IPAudit monitors network activity on a network by host, protocol and port
 net-analyzer/ipband 0.8.1-r1: A pcap based IP traffic and bandwidth monitor with configurable reporting and alarm abilities
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
@@ -16922,9 +16922,9 @@ sys-cluster/crmsh 2.1.1: Pacemaker command line interface for management and con
 sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09 2.03.11: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09 2.03.11: General-purpose Distributed Lock Manager
-sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd 8.0.16 8.3.7 8.3.8.1 8.3.8.1-r1 8.3.10 8.3.11-r1 8.3.12 8.3.13 8.3.15 8.4.0 8.4.2 8.4.3 8.4.3-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/drbd-kernel 8.0.16 8.3.6 8.3.8.1: mirror/replicate block-devices across a network-connection
-sys-cluster/drbd-utils 8.9.3 8.9.6: mirror/replicate block-devices across a network-connection
+sys-cluster/drbd-utils 8.9.3 8.9.6 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a LAN
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
