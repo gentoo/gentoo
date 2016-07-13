@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-AUTOTOOLS_AUTORECONF=yes
-inherit eutils readme.gentoo autotools-multilib
+EAPI=6
+
+inherit autotools eutils multilib-minimal readme.gentoo-r1
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="http://fontconfig.org/"
@@ -41,7 +41,12 @@ pkg_setup() {
 	delete the directory ${EROOT}etc/fonts/conf.d/ and re-emerge fontconfig."
 }
 
-src_configure() {
+src_prepare() {
+	default
+	eautoreconf
+}
+
+multilib_src_configure() {
 	local addfonts
 	# harvest some font locations, such that users can benefit from the
 	# host OS's installed fonts
@@ -70,7 +75,8 @@ src_configure() {
 		--with-templatedir="${EPREFIX}"/etc/fonts/conf.avail
 	)
 
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" \
+	econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {

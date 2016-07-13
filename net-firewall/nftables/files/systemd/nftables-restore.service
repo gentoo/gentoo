@@ -1,6 +1,6 @@
 [Unit]
 Description=Store and restore nftables firewall rules
-ConditionPathExists=/var/lib/nftables-rules-save
+ConditionPathExists=/var/lib/nftables/rules-save
 Before=network.target
 Before=shutdown.target
 

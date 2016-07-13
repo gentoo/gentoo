@@ -6,7 +6,7 @@ EAPI=6
 
 CMAKE_MIN_VERSION=2.8
 
-inherit cmake-utils
+inherit cmake-utils versionator
 
 DESCRIPTION="A set of extra plugins for Qmmp"
 HOMEPAGE="http://qmmp.ylsoftware.com/"
@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND=">=media-libs/taglib-1.10
 	media-sound/mpg123
-	>=media-sound/qmmp-1.0.0
+	=media-sound/qmmp-$(get_version_component_range 1-2)*
 	dev-qt/qtgui:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtwidgets:5"
@@ -28,12 +28,3 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
 
 #PATCHES=( )
-
-src_prepare() {
-	cmake-utils_src_prepare
-
-	# compilation fails without this.
-	sed '/TAGLIB/s@1\.10\.0@1.10@' \
-		-i src/Input/CMakeLists.txt \
-		|| die
-}

@@ -6,7 +6,7 @@ EAPI=6
 
 CMAKE_MIN_VERSION=2.8
 
-inherit cmake-utils
+inherit cmake-utils versionator
 
 DESCRIPTION="A set of extra plugins for Qmmp"
 HOMEPAGE="http://qmmp.ylsoftware.com/"
@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="media-libs/taglib
 	media-sound/mpg123
-	media-sound/qmmp
+	=media-sound/qmmp-$(get_version_component_range 1-2)*
 	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}
 	dev-lang/yasm"

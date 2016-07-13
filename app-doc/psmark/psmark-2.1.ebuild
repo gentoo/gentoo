@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_P=${MY_PN}${PV}
 S=${WORKDIR}/${PN}
 
 DESCRIPTION="Prints watermark-like text on any PostScript document"
-HOMEPAGE="http://www.antitachyon.com/Content/10_Produkte/50_Utilities/psmark/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://www.antitachyon.com/download/${MY_P}.tar.gz"
 
 IUSE=""
