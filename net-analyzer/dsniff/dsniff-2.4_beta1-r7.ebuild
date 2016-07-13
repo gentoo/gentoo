@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,13 +15,14 @@ LICENSE="BSD"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="X"
+IUSE="libressl X"
 
 DEPEND="net-libs/libpcap
 	>=net-libs/libnet-1.1.2.1-r1
 	>=net-libs/libnids-1.21
-	>=dev-libs/openssl-0.9.6e
-	>=sys-libs/db-4.2.52_p4
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	>=sys-libs/db-4:*
 	X? ( x11-libs/libXmu )"
 RDEPEND="${DEPEND}"
 
