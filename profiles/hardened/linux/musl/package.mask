@@ -13,7 +13,6 @@ sys-apps/systemd
 sys-fs/udev
 #
 dev-libs/elfutils
-sys-libs/pam
 
 # packages that need masked packages or multilib
 dev-games/gtkradiant
