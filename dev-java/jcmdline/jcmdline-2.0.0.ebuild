@@ -12,15 +12,14 @@ HOMEPAGE="http://jcmdline.sourceforge.net/"
 SRC_URI="mirror://sourceforge/jcmdline/${P}.zip"
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	>=virtual/jdk-1.6
-	app-arch/unzip"
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}"
 
