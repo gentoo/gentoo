@@ -2,13 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
+
+# The source is repackaged using a script at:
+#   https://dev.gentoo.org/~stasibear/lxd_repackage.py
+# This is necessary because go's native package management assumes
+# that a build starts with checking out many git repositories, often
+# from HEAD.  This provides no way to build the same code repeatably,
+# and anyway portage requires that fetching is only done from SRC_URI.
+# The only sane alternative I've seen is in the consul ebuild, which
+# is more transparent but raises other questions.
 SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -17,16 +27,11 @@ PLOCALES="de fr ja"
 IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
-inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
-
-# The compiler is forced in golang-base:
-# DEPEND=">=dev-lang/go-1.4.2:="
-# ... so the dep is omitted here (and I disagree with := in this case)
+inherit bash-completion-r1 golang-build l10n systemd user vcs-snapshot
 
 DEPEND="
 	dev-go/go-crypto
 	dev-libs/protobuf
-	dev-vcs/git
 	nls? ( sys-devel/gettext )
 	test? (
 		app-misc/jq
@@ -41,31 +46,23 @@ RDEPEND="
 		app-admin/cgmanager
 		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
-		net-analyzer/openbsd-netcat
 		net-misc/rsync[xattr]
 		sys-apps/iproute2
 		virtual/acl
 	)
 "
 
+PATCHES=("${FILESDIR}/${P}-dont-go-get.patch")
+
 # KNOWN ISSUES:
 # - Translations may not work.  I've been unsuccessful in forcing
 #   localized output.  Anyway, upstream (Canonical) doesn't install the
 #   message files.
 
-# TODO:
-# - since 0.15 gccgo is a supported compiler ('make gccgo').  It would
-#   be preferable for that support to go into the golang-build eclass not
-#   this package directly.
-
 src_prepare() {
 	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
-	epatch "${FILESDIR}/${P}-dont-go-get.patch"
-
-	# Upstream requires the openbsd flavor of netcat (with -U), but
-	# Gentoo installs that with a renamed binary
-	epatch "${FILESDIR}/${P}-nc-binary-name.patch"
+	default_src_prepare
 
 	tmpgoroot="${T}/goroot"
 	mkdir -p "$tmpgoroot" || die "Failed to create temporary GOROOT"
