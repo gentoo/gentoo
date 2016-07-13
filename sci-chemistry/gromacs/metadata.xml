@@ -17,7 +17,8 @@
     <flag name="cuda">Enable cuda non-bonded kernels</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="single-precision">Single precision version of gromacs (default)</flag>
-    <flag name="boost">Enable external boost library</flag>
+	<flag name="boost">Enable external boost library</flag>
+	<flag name="hwloc">Enable HWLoc lib support</flag>
     <flag name="tng">Enable new trajectory format - tng</flag>
     <flag name="make-symlinks">Create symbolic links for pre-5.0 binary names</flag>
     <!-- acceleration optimization flags -->
