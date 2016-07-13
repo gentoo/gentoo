@@ -8,7 +8,7 @@ MODULE_AUTHOR=JROCKWAY
 MODULE_VERSION=0.01
 inherit perl-module
 
-DESCRIPTION="Pass chained return values from subs, modifying their values, without losing context"
+DESCRIPTION="Return chained, modified values from subs, without losing context"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc-aix ~x86-solaris"
