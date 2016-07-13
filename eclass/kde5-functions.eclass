@@ -49,6 +49,8 @@ esac
 # kdevelop ebuild.
 if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
+elif [[ ${KMNAME} = kde-l10n || ${PN} = kde-l10n ]]; then
+	KDEBASE=kdel10n
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
@@ -276,6 +278,26 @@ get_kde_version() {
 	else
 		(( micro < 50 )) && echo ${major}.${minor} || echo ${major}.$((minor + 1))
 	fi
+}
+
+# @FUNCTION: kde_l10n2lingua
+# @USAGE: <l10n>...
+# @INTERNAL
+# @DESCRIPTION:
+# Output KDE lingua flag name(s) (without prefix(es)) appropriate for
+# given l10n(s).
+kde_l10n2lingua() {
+	local l
+	for l; do
+		case ${l} in
+			ca-valencia) echo ca@valencia;;
+			sr-ijekavsk) echo sr@ijekavian;;
+			sr-Latn-ijekavsk) echo sr@ijekavianlatin;;
+			sr-Latn) echo sr@latin;;
+			uz-Cyrl) echo uz@cyrillic;;
+			*) echo "${l/-/_}";;
+		esac
+	done
 }
 
 # @FUNCTION: punt_bogus_dep
