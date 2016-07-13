@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/libpcre ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=A network scanning tool for pentesters
+EAPI=5
+HOMEPAGE=https://www.thc.org/thc-amap/
+IUSE=libressl ssl
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) !sci-biology/amap
+SLOT=0
+SRC_URI=https://www.thc.org/releases/amap-5.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=59f0531bff40e1b43d99ea3e3ff38d40
