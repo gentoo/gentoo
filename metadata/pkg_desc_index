@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.0_rc3 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.0_rc3 1.12.0_rc4 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.7.0 1.7.1 1.8.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.6.0 0.7.0: Machine management for a container-centric world
 app-emulation/docker-registry 2.4.0: Docker Registry 2.0
@@ -17776,7 +17776,7 @@ www-apps/phpmp 0.11.0-r1: phpMp is a client program for Music Player Daemon (mpd
 www-apps/phprojekt 6.1.2: Project management and coordination system
 www-apps/phpsysinfo 3.2.2 3.2.3: phpSysInfo is a nice package that will display your system stats via PHP
 www-apps/phpwebsite 0.10.2 1.7.2: phpWebSite Content Management System
-www-apps/piwigo 2.8.0 2.8.1: a photo gallery software for the web
+www-apps/piwigo 2.8.0 2.8.1 2.8.2: a photo gallery software for the web
 www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/pyblosxom 1.4.3: PyBlosxom is a lightweight weblog system
@@ -17870,7 +17870,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.626 11.2.202.632: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
 www-plugins/chrome-binary-plugins 51.0.2704.106 52.0.2743.60_beta 53.0.2785.8_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
