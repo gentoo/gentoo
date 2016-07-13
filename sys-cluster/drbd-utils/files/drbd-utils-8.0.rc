@@ -64,7 +64,7 @@ adjust_with_progress() {
 		else echo -n ".. ";
 		fi
 		IFS=$IFS_O
-		$CMD || {
+		eval $CMD || {
 			echo 
 			eend 20 "cmd $CMD failed!"
 			return 20
