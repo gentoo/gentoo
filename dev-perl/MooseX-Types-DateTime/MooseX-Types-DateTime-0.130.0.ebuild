@@ -30,9 +30,5 @@ DEPEND="${RDEPEND}
 		virtual/perl-File-Spec
 		virtual/perl-Locale-Maketext
 		dev-perl/Test-Fatal
-		>=virtual/perl-Test-Simple-0.880.0
-		|| (
-			>=virtual/perl-Test-Simple-1.1.10
-			( <virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-use-ok-0.20.0 )
-		)
+		>=virtual/perl-Test-Simple-1.1.10
 	)"
