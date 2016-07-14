@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A configuration management library for programs and daemons.
+		
+		Features include:
+		
+		* Automatic, dynamic reloading in response to modifications to
+		configuration files.
+		
+		* A simple, but flexible, configuration language, supporting several
+		of the most commonly needed types of data, along with
+		interpolation of strings from the configuration or the system
+		environment (e.g. @$(HOME)@).
+		
+		* Subscription-based notification of changes to configuration
+		properties.
+		
+		* An @import@ directive allows the configuration of a complex
+		application to be split across several smaller files, or common
+		configuration data to be shared across several applications.
+		
+		For details of the configuration file format, see
+		&lt;http://hackage.haskell.org/packages/archive/configurator/latest/doc/html/Data-Configurator.html&gt;.
+	</longdescription>
+</pkgmetadata>
