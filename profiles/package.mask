@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (14 Jul 2016)
+# No longer released upstream. Use kde-apps/spectacle instead.
+# Masked for removal in 30 days.
+kde-apps/ksnapshot
+
 # Michael Palimaka <kensington@gentoo.org) (13 Jul 2016)
 # No longer supported or released upstream. No revdeps.
 # Masked for removal in 30 days. Bug 585386.
