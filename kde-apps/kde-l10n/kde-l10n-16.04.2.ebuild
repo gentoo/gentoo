@@ -87,7 +87,7 @@ EOF
 
 	# Remove kdepim translations (part of kde-apps/kdepim-l10n)
 	for subdir in kdepim kdepimlibs kdepim-runtime pim; do
-		find -mindepth 5 -maxdepth 5 -type f -name CMakeLists.txt -exec \
+		find -mindepth 5 -maxdepth 6 -type f -name CMakeLists.txt -exec \
 			sed -i -e "/add_subdirectory( *${subdir} *)/ s/^/#DONT/" {} + || die
 	done
 
