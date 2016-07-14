@@ -6801,18 +6801,18 @@ dev-php/pecl-dio 0.0.7-r2: Direct I/O functions for PHP
 dev-php/pecl-eio 1.2.5-r1: PHP wrapper for libeio library
 dev-php/pecl-event 1.11.1-r1: PHP wrapper for libevent2
 dev-php/pecl-gearman 1.0.2-r1: PHP extension for using gearmand
-dev-php/pecl-geoip 1.0.8-r2 1.1.0: PHP extension to map IP address to geographic places
+dev-php/pecl-geoip 1.1.0: PHP extension to map IP address to geographic places
 dev-php/pecl-gnupg 1.3.3 1.3.6: PHP wrapper around the gpgme library
-dev-php/pecl-haru 1.0.4 1.0.4-r1: An interface to libharu, a PDF generator
+dev-php/pecl-haru 1.0.4-r1: An interface to libharu, a PDF generator
 dev-php/pecl-htscanner 1.0.1-r2: Enables .htaccess options for php-scripts running as cgi
 dev-php/pecl-http 1.7.6-r2 1.7.6-r3 2.5.6 3.0.1: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.1.2-r1 3.3.0 3.4.1: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r1: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.3: This package handles LZF de/compression
 dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r3 3.0.0 3.0.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
-dev-php/pecl-memcache 2.2.7 3.0.8 3.0.8-r1: PHP extension for using memcached
-dev-php/pecl-memcached 1.0.2-r2 2.1.0-r2 2.1.0-r3 2.2.0 2.2.0-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongo 1.5.4 1.5.6 1.6.2 1.6.3 1.6.9 1.6.11: Legacy MongoDB database driver for PHP
+dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
+dev-php/pecl-memcached 1.0.2-r2 2.2.0-r1: Interface PHP with memcached via libmemcached library
+dev-php/pecl-mongo 1.5.6 1.6.2 1.6.3 1.6.9 1.6.11: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.7: MongoDB database driver for PHP
 dev-php/pecl-mysqlnd_ms 1.5.2-r1 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
 dev-php/pecl-mysqlnd_qc 1.2.0-r1: A query cache plugin for the mysqlnd library
@@ -6824,7 +6824,7 @@ dev-php/pecl-ps 1.3.7: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.3.0 1.4.0_beta1: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 1.1.2 2.0.0: A reusable, persistent handle and resource factory API
 dev-php/pecl-redis 2.2.7-r1 3.0.0: PHP extension for interfacing with Redis
-dev-php/pecl-rrd 1.1.0 1.1.3 2.0.1: RRDtool bindings for PHP
+dev-php/pecl-rrd 1.1.3 2.0.1: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
 dev-php/pecl-ssh2 0.12-r3: PHP bindings for the libssh2 library
@@ -6833,7 +6833,7 @@ dev-php/pecl-svn 1.0.3: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
 dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.1-r1 0.6.2: Transliterates non-latin character sets to latin
-dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progress of a file upload
+dev-php/pecl-uploadprogress 1.0.3.1-r2: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
 dev-php/pecl-xdiff 1.5.2-r3 2.0.0: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r1: Implementation of weak references
