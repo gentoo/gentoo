@@ -8018,7 +8018,7 @@ dev-python/pythonmagick 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
-dev-python/pytz 2015.4 2015.6 2015.7 2016.3: World timezone definitions for Python
+dev-python/pytz 2015.4 2015.6 2015.7 2016.3 2016.6.1: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
@@ -9739,7 +9739,7 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/electron 0.36.12-r3: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
-dev-util/eric 4.5.25-r1 5.5.2: A full featured Python IDE using PyQt4 and QScintilla
+dev-util/eric 4.5.25-r1 5.5.2 6.1.7: A full featured Python IDE using PyQt and QScintilla
 dev-util/fatrace 0.11: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
