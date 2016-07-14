@@ -9706,7 +9706,7 @@ dev-util/cucumber-core 1.4.0: Executable feature scenarios
 dev-util/cucumber-rails 1.4.1 1.4.2 1.4.3: Executable feature scenarios for Rails
 dev-util/cunit 2.1_p2-r1 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
-dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0: A script that wraps wdiff to support directories and colorize the output
+dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
