@@ -292,11 +292,6 @@ sys-apps/dmtcp
 # Masked for removal in 30 days. Bug 571686.
 media-gfx/fbv
 
-# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
-# Fails to build. Dead upstream. Masked for removal in 30 days.
-# Bug 575374.
-app-i18n/xsim
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
