@@ -19001,6 +19001,7 @@ xfce-extra/thunar-volman 0.8.0 0.8.1: Daemon that enforces volume-related polici
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.1.30 0.1.31 0.1.31-r1: A thumbnail service for the filemanager of Xfce desktop environment
 xfce-extra/xfce-theme-manager 0.3.5 0.3.6: An alternative theme manager for The Xfce Desktop Environment
+xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.0.5: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
 xfce-extra/xfce4-clipman-plugin 1.2.6: A clipboard manager plug-in for the Xfce panel
