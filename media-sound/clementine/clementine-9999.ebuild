@@ -116,7 +116,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		-DLINGUAS="${langs}"
-		-DENABLE_AMAZON_CLOUD_DRIVE="$(usex amazoncloud)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_DBUS="$(usex dbus)"
 		-DENABLE_UDISKS2="$(usex udisks)"
