@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc static-libs +threads"
+IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]
 	abi_x86_32? (
@@ -30,7 +30,6 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
-	"${FILESDIR}"/${P}-freebsd-mpi.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -49,7 +48,6 @@ multilib_src_configure() {
 		--enable-noexecstack
 		--disable-O-flag-munging
 		$(use_enable static-libs static)
-		$(use_enable threads)
 
 		# disabled due to various applications requiring privileges
 		# after libgcrypt drops them (bug #468616)
