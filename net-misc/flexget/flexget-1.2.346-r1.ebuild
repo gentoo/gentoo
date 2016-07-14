@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,6 +49,7 @@ DEPEND="
 	dev-python/tmdb3[${PYTHON_USEDEP}]
 	dev-python/path-py[${PYTHON_USEDEP}]
 	>=dev-python/guessit-0.9.3[${PYTHON_USEDEP}]
+	<dev-python/guessit-2[${PYTHON_USEDEP}]
 	dev-python/APScheduler[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
