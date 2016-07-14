@@ -273,18 +273,9 @@ app-portage/g-ctan
 media-video/avinfo
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Unbuildable (#440044). Removal in a month.
-sys-apps/dmtcp
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # Needs to be ported to new eclasses, obsoleted by hydrogen
 # Removal in a month (#442614)
 media-sound/trommler
-
-# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
-# Fails to build. Unmaintained. Masked for removal in 30 days.
-# Bug 574174.
-sys-apps/dmtcp
 
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
