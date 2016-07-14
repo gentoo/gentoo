@@ -286,12 +286,6 @@ media-sound/trommler
 # Bug 574174.
 sys-apps/dmtcp
 
-# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
-# Fails to build with newer giflib. Unmaintained. Dead upstream.
-# Use media-gfx/fbida instead.
-# Masked for removal in 30 days. Bug 571686.
-media-gfx/fbv
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
