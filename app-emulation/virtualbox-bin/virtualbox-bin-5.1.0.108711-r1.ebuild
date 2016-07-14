@@ -113,19 +113,28 @@ src_install() {
 	newins "${FILESDIR}/${PN}-config" vbox.cfg
 
 	if ! use headless ; then
-		pushd "${S}"/icons &>/dev/null || die
-		for size in * ; do
-			if [ -f "${size}/virtualbox.png" ] ; then
-				insinto "/usr/share/icons/hicolor/${size}/apps"
-				newins "${size}/virtualbox.png" ${PN}.png
-			fi
-		done
-		dodir /usr/share/pixmaps
-		cp "48x48/virtualbox.png" "${D}/usr/share/pixmaps/${PN}.png" \
-			|| die
-		popd &>/dev/null || die
-
 		newmenu "${FILESDIR}"/${PN}.desktop-2 ${PN}.desktop
+
+		# set up symlinks (bug #572012)
+		dosym /opt/VirtualBox/virtualbox.xml /usr/share/mime/packages/virtualbox.xml
+
+		local size ico icofile
+		for size in 16 24 32 48 64 72 96 128 256 ; do
+			pushd "${S}"/icons/${size}x${size} &>/dev/null || die
+			if [[ -f "virtualbox.png" ]] ; then
+				doicon -s ${size} virtualbox.png
+			fi
+			for ico in hdd ova ovf vbox{,-extpack} vdi vdh vmdk ; do
+				icofile="virtualbox-${ico}.png"
+				if [[ -f "${icofile}" ]] ; then
+					doicon -s ${size} ${icofile}
+				fi
+			done
+			popd &>/dev/null || die
+		done
+		doicon -s scalable "${S}"/icons/scalable/virtualbox.svg
+		insinto /usr/share/pixmaps
+		newins "${S}"/icons/48x48/virtualbox.png ${PN}.png
 	fi
 
 	pushd "${S}"/${EXTP_PN} &>/dev/null || die
