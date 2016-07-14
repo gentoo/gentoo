@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -16,6 +16,7 @@ if [ "${PV}" != "9999" ]; then
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
 	S="${WORKDIR}/${P#votca-}"
+	PATCHES=( "${FILESDIR}/${P}-cmake-3.4.patch" )
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/${PN/-//}.git https://github.com/${PN/-//}.git"
@@ -69,8 +70,8 @@ src_unpack() {
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_with gromacs GMX)
-		$(cmake-utils_use_with hdf5 H5MD)
+		-DWITH_GMX=$(usex gromacs)
+		-DWITH_H5MD=$(usex hdf5)
 		-DWITH_RC_FILES=OFF
 		-DLIB=$(get_libdir)
 	)
@@ -95,7 +96,7 @@ src_install() {
 			dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
 		fi
 		cmake-utils_src_make -C "${CMAKE_BUILD_DIR}" html
-		dohtml -r "${CMAKE_BUILD_DIR}"/share/doc/html/*
+		dodoc -r "${CMAKE_BUILD_DIR}"/share/doc/html
 	fi
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/tutorials"
