@@ -19,6 +19,6 @@
 		<flag name="slave-only">Enable slave only operation (remove master mode functionality)</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">ptpd</remote-id>
+		<remote-id type="github">ptpd/ptpd</remote-id>
 	</upstream>
 </pkgmetadata>
