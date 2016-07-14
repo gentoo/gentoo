@@ -12,10 +12,10 @@ MY_P="${PN/d}-${PV}"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/monkey/monkey.git"
 	inherit git-2
-	KEYWORDS=""
+	KEYWORDS="ppc64"
 else
 	SRC_URI="http://monkey-project.com/releases/${PV:0:3}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~mips ~ppc ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
