@@ -4685,7 +4685,7 @@ dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics o
 dev-libs/libgames-support 1.0.2: Library for code commong to Gnome games
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5 1.7.0 1.7.1: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.4-r101 1.5.5 1.6.5 1.7.1 1.7.2: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.4-r1 0.17.5: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 9999: A linkable library for Git
@@ -17817,7 +17817,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.8.0 45.2.0 47.0.1: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/google-chrome 51.0.2704.106: The web browser from Google
-www-client/google-chrome-beta 52.0.2743.60: The web browser from Google
+www-client/google-chrome-beta 52.0.2743.75: The web browser from Google
 www-client/google-chrome-unstable 53.0.2785.8-r1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17874,7 +17874,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
-www-plugins/chrome-binary-plugins 51.0.2704.106 52.0.2743.60_beta 53.0.2785.8_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 51.0.2704.106 52.0.2743.75_beta 53.0.2785.8_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
