@@ -4054,7 +4054,7 @@ dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreads
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
-dev-java/jfreechart 1.0.19 1.0.19-r1: JFreeChart is a free Java class library for generating charts
+dev-java/jfreechart 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0 1.2.0-r1: JGoodies Animation Library
 dev-java/jgoodies-binding 1.1.2 1.1.2-r1: A Java library to bind object properties with UI components
