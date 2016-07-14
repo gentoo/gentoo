@@ -7349,7 +7349,7 @@ dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hypothesis 1.12.0 1.19.0 2.0.0 3.0.0 3.1.0 3.4.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
-dev-python/id3-py 1.2 1.2-r1: Module for manipulating ID3 tags in Python
+dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 1.1 2.0 2.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 1.1 2.0 2.1 2.2 2.3: Iterative JSON parser with a Pythonic interface
 dev-python/imagesize 0.7.1: Getting image size from png/jpeg/jpeg2000/gif file
