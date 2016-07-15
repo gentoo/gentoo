@@ -1,0 +1,51 @@
+Description: more arm64 fixes
+Origin: https://bugs.debian.org/cgi-bin/bugreport.cgi?msg=37;bug=769364;filename=debian_arm64.patch;att=1
+Bug-Debian: http://bugs.debian.org/769364
+Bug-Ubuntu: http://bugs.launchpad.net/bugs/1429198
+Author: Riku Voipio <riku.voipio@linaro.org>
+Last-Update: 2016-03-23
+
+Index: tightvnc-1.3.9/Xvnc/include/Xmd.h
+===================================================================
+--- tightvnc-1.3.9.orig/Xvnc/include/Xmd.h
++++ tightvnc-1.3.9/Xvnc/include/Xmd.h
+@@ -59,7 +59,7 @@ SOFTWARE.
+ #ifdef CRAY
+ #define WORD64				/* 64-bit architecture */
+ #endif
+-#if defined(__alpha) || defined(__alpha__) || defined(__x86_64__) || defined(__powerpc64__)
++#if defined(__alpha) || defined(__alpha__) || defined(__x86_64__) || defined(__powerpc64__) || defined(__aarch64__)
+ #define LONG64				/* 32/64-bit architecture */
+ #endif
+ #ifdef __sgi
+Index: tightvnc-1.3.9/Xvnc/programs/Xserver/include/servermd.h
+===================================================================
+--- tightvnc-1.3.9.orig/Xvnc/programs/Xserver/include/servermd.h
++++ tightvnc-1.3.9/Xvnc/programs/Xserver/include/servermd.h
+@@ -405,6 +405,26 @@ SOFTWARE.
+ 
+ #endif /* linux/m68k */
+ 
++#if defined (linux) && defined(__aarch64__)
++#  define BITMAP_SCANLINE_UNIT			64
++# define BITMAP_SCANLINE_PAD 			64
++# define LOG2_BITMAP_PAD			6
++# define LOG2_BYTES_PER_SCANLINE_PAD		3
++
++/* Add for handling protocol XPutImage and XGetImage; see comment in
++ * Alpha section.
++ */
++#define INTERNAL_VS_EXTERNAL_PADDING
++#define BITMAP_SCANLINE_UNIT_PROTO		32
++
++#define BITMAP_SCANLINE_PAD_PROTO 	 	32
++#define LOG2_BITMAP_PAD_PROTO			5
++#define LOG2_BYTES_PER_SCANLINE_PAD_PROTO	2
++#define GLYPHPADBYTES          4
++#define GETLEFTBITS_ALIGNMENT  1
++
++#endif /* linux/aarch64 */
++
+ #if defined (linux) && defined(__powerpc__)
+ 
+ #ifdef __powerpc64__
