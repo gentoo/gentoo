@@ -1,0 +1,13 @@
+DEFINED_PHASES=install setup test
+DEPEND=>=dev-php/pear-1.10.1 dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Fast and safe little cache system
+EAPI=6
+HOMEPAGE=http://pear.php.net/Cache_Lite
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/pear-1.10.1 dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/Cache_Lite-1.8.0.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_test:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=6e5b6fd110666416b94c3e003cb2b1d9
