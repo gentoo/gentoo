@@ -162,10 +162,12 @@ src_configure() {
 		$(use_with pcap) \
 		$(use_with portaudio) \
 		$(usex qt4 --with-qt=4 '') \
+		$(usex qt4 LRELEASE=$(qt4_get_bindir)/lrelease '') \
 		$(usex qt4 MOC=$(qt4_get_bindir)/moc '') \
 		$(usex qt4 RCC=$(qt4_get_bindir)/rcc '') \
 		$(usex qt4 UIC=$(qt4_get_bindir)/uic '') \
 		$(usex qt5 --with-qt=5 '') \
+		$(usex qt5 LRELEASE=$(qt5_get_bindir)/lrelease '') \
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
 		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
