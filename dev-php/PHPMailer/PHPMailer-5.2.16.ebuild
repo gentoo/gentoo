@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Full-featured email creation and transfer class for PHP"
 HOMEPAGE="https://github.com/PHPMailer/PHPMailer"
@@ -16,7 +16,7 @@ IUSE="doc +examples test"
 RDEPEND="dev-lang/php:*"
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )
-	test? ( dev-php/phpunit )"
+	test? ( ${RDEPEND} dev-php/phpunit )"
 
 # The test suite requires network access.
 RESTRICT=test
@@ -25,6 +25,7 @@ src_compile(){
 	if use doc; then
 		phpdoc --filename="class.*.php" \
 			   --target="./html" \
+			   --cache-folder="${T}" \
 			   --title="${PN}" \
 			   --sourcecode \
 			   --force \
@@ -41,7 +42,7 @@ src_install(){
 	dodoc docs/*
 	use examples && dodoc -r examples
 
-	use doc && dohtml -r html/*
+	use doc && dodoc -r html/*
 }
 
 src_test(){
