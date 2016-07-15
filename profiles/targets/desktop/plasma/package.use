@@ -52,17 +52,13 @@ net-libs/libproxy -kde
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
-kde-apps/kde-meta:4 -kdepim minimal
 kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
-kde-apps/kdebase-meta:4 minimal
 kde-apps/kwalletmanager:4 minimal
 kde-apps/libkipi:4 minimal
 kde-apps/libksane:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
-kde-base/kactivities minimal
-net-libs/libkpeople:4 minimal
 net-p2p/ktorrent:4 -plasma
 sys-auth/polkit-kde-agent minimal
 
@@ -71,13 +67,11 @@ media-libs/phonon designer
 
 # Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
 >=app-crypt/pinentry-0.9.6-r5 -qt4
-app-office/akonadi-server -qt5
 >=app-office/texmaker-4.4.1 -qt4
 >=app-office/texstudio-2.9.4 -qt4
 app-text/qpdfview -qt4
 dev-db/sqlitebrowser -qt4
 >=dev-games/openscenegraph-3.2.1-r1 -qt4
->=dev-libs/qcustomplot-1.3.0 -qt4
 >=dev-libs/quazip-0.7.1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-3.0.0 -qt4
@@ -87,15 +81,11 @@ media-video/vlc -qt4
 net-analyzer/wireshark -qt4
 net-misc/owncloud-client -qt4
 net-news/rssguard -qt4
->=net-news/quiterss-0.17.7 -qt4
 net-p2p/bitcoin-qt -qt4
 >=net-p2p/qbittorrent-3.2.0 -qt4
 net-p2p/transmission -qt4
 >=net-print/hplip-3.16.5 -qt4
 >=net-wireless/wpa_supplicant-2.5 -qt4
->=sci-geosciences/merkaartor-0.18.2 -qt4
->=sci-geosciences/qlandkartegt-1.8.0 -qt4
+>=sci-geosciences/merkaartor-0.18.2 -qrcode -qt4
 sci-visualization/kst -qt4
 www-client/qupzilla -kde -qt4
->=x11-libs/qtermwidget-0.6.0 -qt4
->=x11-terms/qterminal-0.6.0 -qt4
