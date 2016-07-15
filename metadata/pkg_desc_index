@@ -15764,7 +15764,7 @@ sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR forma
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 3.0.9: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
-sci-geosciences/mapserver 7.0.0 7.0.1 7.0.1-r1: Development environment for building spatially enabled webapps
+sci-geosciences/mapserver 7.0.1-r1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.17.2 0.18.1-r2 0.18.2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
