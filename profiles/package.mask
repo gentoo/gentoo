@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (15 Jul 2016)
+# These two kernels have a serious OOM regression
+# Fix in 4.1.28-r1 and 3.18.37-r1
+=sys-kernel/gentoo-sources-3.18.37
+=sys-kernel/gentoo-sources-4.1.28
+
 # Johannes Huber <johu@gentoo.org> (14 Jul 2016)
 # No longer released upstream. Use kde-apps/spectacle instead.
 # Masked for removal in 30 days.

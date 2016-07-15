@@ -8,7 +8,7 @@ PHP_EXT_NAME="mysqlnd_ms"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php5-5 php5-6"
+USE_PHP="php5-6"
 # This is an SVN snapshot stored locally
 SRC_URI="https://dev.gentoo.org/~grknight/distfiles/${P}.tar.xz"
 inherit php-ext-source-r3
@@ -24,11 +24,6 @@ IUSE=""
 # Specifying targets due to USE flag transition
 DEPEND="
 	dev-libs/libxml2
-	php_targets_php5-5? ( || (
-				 dev-lang/php:5.5[-libmysqlclient,mysql,json]
-				 dev-lang/php:5.5[-libmysqlclient,mysqli,json]
-				)
-			)
 	php_targets_php5-6? ( || (
 				 dev-lang/php:5.6[-libmysqlclient,mysql,json]
 				 dev-lang/php:5.6[-libmysqlclient,mysqli,json]
@@ -36,3 +31,10 @@ DEPEND="
 			)
 "
 RDEPEND="${DEPEND}"
+
+src_test() {
+	for slot in $(php_get_slots); do
+		php_init_slot_env "${slot}"
+		NO_INTERACTION="yes" emake test
+	done
+}
