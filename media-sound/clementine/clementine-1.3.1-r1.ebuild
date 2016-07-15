@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	dev-libs/libxml2
 	dev-libs/protobuf:=
 	dev-libs/qjson
-	>=dev-qt/qtcore-4.5:4
+	>=dev-qt/qtcore-4.5:4[ssl]
 	>=dev-qt/qtgui-4.5:4
 	>=dev-qt/qtopengl-4.5:4
 	>=dev-qt/qtsql-4.5:4

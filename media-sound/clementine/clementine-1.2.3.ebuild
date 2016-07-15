@@ -31,7 +31,7 @@ REQUIRED_USE="
 # qca dep is temporary for bug #489850
 COMMON_DEPEND="
 	app-crypt/qca:2[qt4(+)]
-	>=dev-qt/qtcore-4.5:4
+	>=dev-qt/qtcore-4.5:4[ssl]
 	>=dev-qt/qtgui-4.5:4
 	dbus? ( >=dev-qt/qtdbus-4.5:4 )
 	>=dev-qt/qtopengl-4.5:4
