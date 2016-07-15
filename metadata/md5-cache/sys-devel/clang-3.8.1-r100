@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm
+DESCRIPTION=C language family frontend for LLVM (meta-ebuild)
+EAPI=5
+HOMEPAGE=http://clang.llvm.org/
+IUSE=debug multitarget python +static-analyzer abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=UoI-NCSA
+RDEPEND=~sys-devel/llvm-3.8.1[clang(-),debug=,multitarget?,python?,static-analyzer?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+SLOT=0/3.8
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=cf1521d81b78b1da33988e2a26844079
