@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,10 +22,10 @@ QA_PRESTRIPPED="opt/rebol/r3"
 S=${WORKDIR}
 
 src_compile() {
-	:;
+	:
 }
 
 src_install() {
 	mkdir -p "${D}/opt/rebol/"
-	cp "${S}/r3" "${D}/opt/rebol/" 					|| die "Failed to install"
+	cp "${S}/r3" "${D}/opt/rebol/" || die "Failed to install"
 }
