@@ -75,9 +75,18 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		$(python_gen_any_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
-			dev-python/pygobject:2[${PYTHON_USEDEP}]')
+			dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
+
+python_check_deps() {
+	if use test; then
+		has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
+		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]"
+	else
+		return 0
+	fi
+}
 
 sysfs_deprecated_check() {
 	ebegin "Checking for SYSFS_DEPRECATED support"
@@ -217,7 +226,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	if multilib_is_native_abi; then
+	if use test && multilib_is_native_abi; then
 		python_setup
 		virtx emake check
 	fi
