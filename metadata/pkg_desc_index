@@ -5852,6 +5852,7 @@ dev-perl/Lingua-Stem-Ru 0.40.0: Porter's stemming algorithm for Russian (KOI8-R 
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
 dev-perl/Lingua-Translit 0.250.0: Transliterates text between writing systems
 dev-perl/Linux-DesktopFiles 0.90.0: Perl module to get and parse the Linux .desktop files
+dev-perl/Linux-Distribution 0.230.0: Perl extension to detect on which Linux distribution we are running
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
@@ -16805,7 +16806,7 @@ sys-block/afacli 4.1: Dell AACRAID-based PERC RAID controller management tool
 sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
 sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
-sys-block/btrace 1.0.1-r1 1.0.3 1.1.0: btrace can show detailed info about what is happening on a block device io queue
+sys-block/btrace 1.0.1-r1 1.0.3 1.1.0 1.1.0-r1: btrace can show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
