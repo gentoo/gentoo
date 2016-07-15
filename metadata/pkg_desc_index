@@ -6843,7 +6843,7 @@ dev-php/pecl-yaz 1.1.6 1.1.9: This extension implements a Z39.50 client for PHP 
 dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation
-dev-php/php-redmine-api 1.5.2 1.5.6: A simple, object-oriented, PHP Redmine API client
+dev-php/php-redmine-api 1.5.2 1.5.9: A simple, object-oriented, PHP Redmine API client
 dev-php/phpDocumentor 2.3.0 2.7.0 2.8.2: The phpDocumentor package provides automatic documenting of php api directly from the source
 dev-php/phpcov 1.1.0: CLI frontend for PHP_CodeCoverage
 dev-php/phpdepend 1.1.1 2.2.2: Static code analyser for PHP
