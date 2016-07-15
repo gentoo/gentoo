@@ -28,11 +28,8 @@ RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(net:src)"
 BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} V=1"
-CONFIG_CHECK="NET_UDP_TUNNEL IPV6 NETFILTER_XT_MATCH_HASHLIMIT ~PADATA"
-ERROR_NET_UDP_TUNNEL="WireGuard requires NET_UDP_TUNNEL."
-ERROR_IPV6="WireGuard requires IPV6 support in the kernel."
-ERROR_NETFILTER_XT_MATCH_HASHLIMIT="WireGuard requires NETFILTER_XT_MATCH_HASHLIMIT."
-ERROR_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
+CONFIG_CHECK="NET INET NET_UDP_TUNNEL NF_CONNTRACK NETFILTER_XT_MATCH_HASHLIMIT CRYPTO_BLKCIPHER ~PADATA"
+WARNING_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
 
 pkg_setup() {
 	linux-mod_pkg_setup
