@@ -4448,7 +4448,7 @@ dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.03 2016.04 2016.04-r2 2016.05 2016.06 9999: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
-dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
+dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.3.0 2.3.1: An object-oriented scripting language
