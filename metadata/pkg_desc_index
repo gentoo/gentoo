@@ -14508,6 +14508,7 @@ net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (
 net-mail/libpst 0.6.64 0.6.66: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
 net-mail/mailbase 1 1.1: MTA layout package
+net-mail/mailbox-count 0.0.2-r1: Count mailboxes in a SQL database
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailfront 0.88 0.98 1.12 1.16: Mail server network protocol front-ends
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
