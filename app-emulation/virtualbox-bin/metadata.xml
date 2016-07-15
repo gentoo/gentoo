@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>masterzorag@gmail.com</email>
+		<description>Proxy maintainer</description>
+	</maintainer>
 	<use>
 		<flag name="additions">Install Guest System Tools ISO</flag>
 		<flag name="chm">Install kchmviewer binary to enable online help (in MS CHM format)</flag>

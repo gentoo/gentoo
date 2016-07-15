@@ -5,6 +5,10 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <maintainer type="person">
+    <email>masterzorag@gmail.com</email>
+    <description>Proxy maintainer. CC him on bugs</description>
+  </maintainer>
 <use>
 	<flag name="additions">Install Guest System Tools ISO</flag>
 	<flag name="extensions">Install extension module packages</flag>
