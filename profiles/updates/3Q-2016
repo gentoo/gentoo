@@ -1,2 +1,3 @@
 move kde-base/kactivitymanagerd kde-plasma/kactivitymanagerd
 move app-portage/cpuinfo2cpuflags app-portage/cpuid2cpuflags
+move app-crypt/openssl-af_alg-engine app-crypt/af_alg
