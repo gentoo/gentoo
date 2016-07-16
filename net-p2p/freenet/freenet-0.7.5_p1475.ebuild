@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI="5"
-DATE=20160521
+#DATE=20160521
+DATE=20150812
 JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2 multilib systemd user
