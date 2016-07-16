@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (16 Jul 2016)
+# Radically changed upstream and is critical to all Perl modules.
+# Masked for extended testing.
+# Will likely not be unmasked till equivalent versions ship in Perl itself.
+>=perl-core/Test-Simple-1.301.0
+>=virtual/perl-Test-Simple-1.301.0
+
 # Mike Pagano <mpagano@gentoo.org> (15 Jul 2016)
 # These two kernels have a serious OOM regression
 # Fix in 4.1.28-r1 and 3.18.37-r1
