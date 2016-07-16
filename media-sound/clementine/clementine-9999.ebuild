@@ -68,7 +68,7 @@ RDEPEND="${COMMON_DEPEND}
 	dbus? ( udisks? ( sys-fs/udisks:2 )
 	        udisks_legacy? ( sys-fs/udisks:0 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
-	mtp? ( gnome-base/gvfs )
+	mtp? ( gnome-base/gvfs[mtp] )
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-soup:1.0
 	media-plugins/gst-plugins-taglib:1.0
