@@ -3874,7 +3874,7 @@ dev-java/commons-vfs 1.0 2.0-r1: A single API for accessing various different fi
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables, shared and static libraries
-dev-java/cssparser 0.9.18 0.9.19: API for parsing CSS 2 in Java
+dev-java/cssparser 0.9.19: API for parsing CSS 2 in Java
 dev-java/db4o-jdk11 7.4: Core files for the object database for java
 dev-java/db4o-jdk12 7.4: Core files for the object database for java
 dev-java/db4o-jdk5 7.4: Core files for the object database for java
@@ -4211,7 +4211,7 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.91 1.8.0.92: Oracle's Java SE Development Kit
+dev-java/oracle-jdk-bin 1.8.0.92: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.8.0.92: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
