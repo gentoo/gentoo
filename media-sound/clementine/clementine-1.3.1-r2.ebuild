@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	dev-libs/libxml2
 	dev-libs/protobuf:=
 	dev-libs/qjson
-	>=dev-qt/qtcore-4.5:4
+	>=dev-qt/qtcore-4.5:4[ssl]
 	>=dev-qt/qtgui-4.5:4
 	>=dev-qt/qtopengl-4.5:4
 	>=dev-qt/qtsql-4.5:4
@@ -67,7 +67,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	dbus? ( udisks? ( sys-fs/udisks:0 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
-	mtp? ( gnome-base/gvfs )
+	mtp? ( gnome-base/gvfs[mtp] )
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-soup:1.0
 	media-plugins/gst-plugins-taglib:1.0
