@@ -578,7 +578,7 @@ app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
 app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
-app-crypt/ophcrack 3.1.0-r2 3.3.0 3.3.1 3.4.0 3.6.0: A time-memory-trade-off-cracker
+app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
 app-crypt/p11-kit 0.20.7 0.23.2: Provides a standard configuration setup for installing PKCS#11
@@ -17578,7 +17578,7 @@ virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0 4.40.0: Virtual for Term-ANSIColor
 virtual/perl-Term-ReadLine 1.140.0 1.150.0-r1: Virtual for Term-ReadLine
 virtual/perl-Test 1.260.0-r3 1.280.0: Virtual for Test
 virtual/perl-Test-Harness 3.330.0 3.350.0 3.360.0: Virtual for Test-Harness
-virtual/perl-Test-Simple 1.1.2 1.1.14-r1: Virtual for Test-Simple
+virtual/perl-Test-Simple 1.1.2 1.1.14-r2 1.1.14_p522: Virtual for Test-Simple
 virtual/perl-Text-Balanced 2.20.0-r6 2.30.0-r1: Virtual for Text-Balanced
 virtual/perl-Text-ParseWords 3.290.0-r1 3.300.0-r1: Virtual for Text-ParseWords
 virtual/perl-Text-Tabs+Wrap 2013.52.300-r3: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
