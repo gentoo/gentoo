@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND=">=app-emulation/dynamips-0.2.12
-		>=dev-python/aiohttp-0.14.4[${PYTHON_USEDEP}]
+		=dev-python/aiohttp-0.21.5[${PYTHON_USEDEP}]
 		>=dev-python/docker-py-1.4.0[${PYTHON_USEDEP}]
 		>=dev-python/netifaces-0.8-r2[${PYTHON_USEDEP}]
 		>=dev-python/jinja-2.7.3[${PYTHON_USEDEP}]
@@ -26,6 +26,7 @@ RDEPEND=">=app-emulation/dynamips-0.2.12
 		>=dev-python/raven-5.2.0[${PYTHON_USEDEP}]
 		>=dev-python/psutil-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pyzmq-14.3.1[${PYTHON_USEDEP}]
+		>=dev-python/python-zipstream-1.1.4[${PYTHON_USEDEP}]
 		>=www-servers/tornado-3.1.1[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
