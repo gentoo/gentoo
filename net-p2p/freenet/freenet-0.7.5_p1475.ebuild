@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
-DATE=20150812
+DATE=20160521
 JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2 multilib systemd user
@@ -19,25 +19,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND="dev-java/bcprov:1.52
+CDEPEND="dev-java/bcprov:1.54
 	dev-java/commons-compress:0
-	dev-db/db-je:3.3
 	dev-java/fec:0
 	dev-java/java-service-wrapper:0
-	dev-java/db4o-jdk11:0
-	dev-java/db4o-jdk12:0
-	dev-java/db4o-jdk5:0
 	dev-java/jbitcollider-core:0
 	dev-java/lzma:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0"
 DEPEND="app-arch/unzip
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.7
 	${CDEPEND}
 	test? ( dev-java/junit:0
 		dev-java/ant-junit:0 )
 	dev-java/ant-core:0"
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.7
 	net-libs/nativebiginteger:0
 	${CDEPEND}"
 PDEPEND="net-libs/NativeThread:0"
@@ -50,7 +46,7 @@ JAVA_ANT_ENCODING="utf8"
 EANT_BUILD_TARGET="package"
 EANT_TEST_TARGET="unit"
 EANT_BUILD_XML="build-clean.xml"
-EANT_GENTOO_CLASSPATH="bcprov-1.52,commons-compress,db4o-jdk5,db4o-jdk12,db4o-jdk11,db-je-3.3,fec,java-service-wrapper,jbitcollider-core,lzma,lzmajio,mersennetwister"
+EANT_GENTOO_CLASSPATH="bcprov-1.54,commons-compress,fec,java-service-wrapper,jbitcollider-core,lzma,lzmajio,mersennetwister"
 EANT_EXTRA_ARGS="-Dsuppress.gjs=true -Dlib.contrib.present=true -Dlib.bouncycastle.present=true -Dlib.junit.present=true -Dtest.skip=true"
 
 S=${WORKDIR}/fred-build0${PV#*p}
@@ -73,7 +69,7 @@ src_unpack() {
 }
 
 java_prepare() {
-	cp "${FILESDIR}"/freenet-0.7.5_p1422-wrapper.conf freenet-wrapper.conf || die
+	cp "${FILESDIR}"/freenet-0.7.5_p1474-wrapper.conf freenet-wrapper.conf || die
 	cp "${FILESDIR}"/run.sh-20090501 run.sh || die
 	epatch "${FILESDIR}"/0.7.5_p1321-ext.patch
 
