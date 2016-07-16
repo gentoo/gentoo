@@ -14,7 +14,7 @@ SRC_URI="http://www.pdoubleya.com/projects/${PN}/downloads/r${PV}/${PN}-R${PV}fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="minimal svg ${JAVA_PKG_IUSE}"
 
