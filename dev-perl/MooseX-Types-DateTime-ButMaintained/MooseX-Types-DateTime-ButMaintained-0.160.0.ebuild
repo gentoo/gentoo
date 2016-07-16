@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-perl/Test-Exception-0.27
-		|| ( >=virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-use-ok-0.02 )
+		>=virtual/perl-Test-Simple-1.1.10
 		>=dev-perl/Time-Duration-Parse-0.06
 	)"
 

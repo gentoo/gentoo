@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,6 @@ KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="test"
 
 RDEPEND=""
-DEPEND="test? ( || ( >=virtual/perl-Test-Simple-1.1.10 dev-perl/Test-use-ok ) )"
+DEPEND="test? ( >=virtual/perl-Test-Simple-1.1.10 )"
 
 SRC_TEST=do
