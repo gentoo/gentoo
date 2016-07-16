@@ -65,7 +65,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	dbus? ( udisks? ( sys-fs/udisks:0 ) )
 	mms? ( media-plugins/gst-plugins-libmms:0.10 )
-	mtp? ( gnome-base/gvfs )
+	mtp? ( gnome-base/gvfs[mtp] )
 	projectm? ( >=media-libs/libprojectm-1.2.0 )
 	media-plugins/gst-plugins-meta:0.10
 	media-plugins/gst-plugins-gio:0.10
