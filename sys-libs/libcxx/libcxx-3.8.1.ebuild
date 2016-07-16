@@ -29,7 +29,7 @@ fi
 IUSE="elibc_glibc elibc_musl +libcxxrt libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( libcxxrt )"
 
-RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[libunwind?,static-libs?,${MULTILIB_USEDEP}] )
+RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] )"
 DEPEND="${RDEPEND}
 	test? ( sys-devel/clang )
@@ -43,9 +43,10 @@ pkg_setup() {
 		ewarn "libsupc++. Please note that this is not well supported."
 		ewarn "In particular, static linking will not work."
 	fi
-	if [[ $(gcc-version) < 4.7 ]] && [[ $(tc-getCXX) != *clang++* ]] ; then
-		eerror "${PN} needs to be built with clang++ or gcc-4.7 or later."
-		eerror "Please use gcc-config to switch to gcc-4.7 or later version."
+	if tc-is-gcc && [[ $(gcc-version) < 4.7 ]] ; then
+		eerror "${PN} needs to be built with gcc-4.7 or later (or other"
+		eerror "conformant compilers). Please use gcc-config to switch to"
+		eerror "gcc-4.7 or later version."
 		die
 	fi
 }
