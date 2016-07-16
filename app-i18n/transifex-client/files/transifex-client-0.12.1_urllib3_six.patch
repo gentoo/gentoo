@@ -1,0 +1,24 @@
+diff -Nuar transifex-client-0.12.1.orig/txclib/commands.py transifex-client-0.12.1/txclib/commands.py
+--- transifex-client-0.12.1.orig/txclib/commands.py	2016-07-16 23:40:14.476353681 +0500
++++ transifex-client-0.12.1/txclib/commands.py	2016-07-16 23:53:28.121315176 +0500
+@@ -25,7 +25,7 @@
+ except ImportError:
+     import ConfigParser as configparser
+ 
+-from urllib3.packages.six.moves import input
++from six.moves import input
+ 
+ from txclib import utils, project
+ from txclib.utils import parse_json, compile_json, files_in_project
+diff -Nuar transifex-client-0.12.1.orig/txclib/utils.py transifex-client-0.12.1/txclib/utils.py
+--- transifex-client-0.12.1.orig/txclib/utils.py	2016-07-16 23:40:14.477353681 +0500
++++ transifex-client-0.12.1/txclib/utils.py	2016-07-16 23:40:37.376352570 +0500
+@@ -15,7 +15,7 @@
+ from email.parser import Parser
+ from urllib3.exceptions import SSLError
+ from urllib3.packages import six
+-from urllib3.packages.six.moves import input
++from six.moves import input
+ from txclib.urls import API_URLS
+ from txclib.exceptions import UnknownCommandError, HttpNotFound, HttpNotAuthorized
+ from txclib.paths import posix_path, native_path, posix_sep
