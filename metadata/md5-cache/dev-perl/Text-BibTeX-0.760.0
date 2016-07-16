@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Config-AutoConf-0.16 >=dev-perl/ExtUtils-LibBuilder-0.02 >=virtual/perl-ExtUtils-CBuilder-0.27 >=dev-perl/Module-Build-0.36.03 dev-lang/perl:=[-build(-)]
+DESCRIPTION=A Perl library for reading, parsing, and processing BibTeX files
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Text-BibTeX/
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!dev-libs/btparse >=dev-perl/Capture-Tiny-0.06 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/Text-BibTeX-0.76.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=8d9561d2882093fc958dc18795a15754
