@@ -51,10 +51,6 @@ src_prepare() {
 	# Remove unused build systems
 	rm Makefile scripts/{unixbuild.sh,vcproj2cmake.rb} || die
 	find "${S}" -name SConscript -delete || die
-
-	# Fix insecure RUNPATHS vulnerability
-	sed '/link_directories/i SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)' \
-		-i COLLADAValidator/CMakeLists.txt || die "sed failed"
 }
 
 src_configure() {
