@@ -13704,7 +13704,7 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6-r1 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8f-r1 0.8.8h: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti 0.8.8h: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 0.8.8e 0.8.8h: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r1: An rsync logfile analyzer
@@ -15306,7 +15306,7 @@ perl-core/Pod-Simple 3.280.0: Framework for parsing Pod
 perl-core/Sys-Syslog 0.330.0-r1: Provides same functionality as BSD syslog
 perl-core/Term-ANSIColor 4.20.0: Color screen output using ANSI escape sequences
 perl-core/Test 1.260.0: Utilities for writing test scripts
-perl-core/Test-Simple 1.1.14-r1: Basic utilities for writing tests
+perl-core/Test-Simple 1.1.14-r1 1.302.40: Basic utilities for writing tests
 perl-core/Text-Balanced 2.20.0-r1: Extract balanced-delimiter substrings
 perl-core/Text-ParseWords 3.290.0: Parse strings containing shell-style quoting
 perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand and line wrapping
@@ -16980,7 +16980,7 @@ sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack 
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.5.0-r2 2.8.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.5.0-r2 2.8.0 2.9.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
@@ -17578,7 +17578,7 @@ virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0 4.40.0: Virtual for Term-ANSIColor
 virtual/perl-Term-ReadLine 1.140.0 1.150.0-r1: Virtual for Term-ReadLine
 virtual/perl-Test 1.260.0-r3 1.280.0: Virtual for Test
 virtual/perl-Test-Harness 3.330.0 3.350.0 3.360.0: Virtual for Test-Harness
-virtual/perl-Test-Simple 1.1.2 1.1.14-r2 1.1.14_p522: Virtual for Test-Simple
+virtual/perl-Test-Simple 1.1.2 1.1.14-r2 1.1.14_p522 1.302.40: Virtual for Test-Simple
 virtual/perl-Text-Balanced 2.20.0-r6 2.30.0-r1: Virtual for Text-Balanced
 virtual/perl-Text-ParseWords 3.290.0-r1 3.300.0-r1: Virtual for Text-ParseWords
 virtual/perl-Text-Tabs+Wrap 2013.52.300-r3: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
