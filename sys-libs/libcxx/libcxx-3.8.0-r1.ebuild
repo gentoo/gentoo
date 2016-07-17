@@ -37,6 +37,11 @@ DEPEND="${RDEPEND}
 DOCS=( CREDITS.TXT )
 
 pkg_setup() {
+	if use libunwind && ! use libcxxrt ; then
+		eerror "Currently libunwind must be used along with libcxxrt. Building"
+		eerror "${PN} against both libsupc++ and libunwind is not supported."
+		die
+	fi
 	if ! use libcxxrt ; then
 		ewarn "You have disabled USE=libcxxrt. This will build ${PN} against"
 		ewarn "libsupc++. Please note that this is not well supported."
