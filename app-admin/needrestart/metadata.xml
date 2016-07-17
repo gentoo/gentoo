@@ -4,14 +4,11 @@
     <maintainer type="person">
         <email>candrews@integralblue.com</email>
         <name>Craig Andrews</name>
-        <description>Proxied maintainer; set to assignee in all bugs</description>
     </maintainer>
     <maintainer type="project">
         <email>proxy-maint@gentoo.org</email>
         <name>Proxy Maintainers</name>
     </maintainer>
-    <use>
-    </use>
     <longdescription lang="en">
         Restart daemons after library updates
     </longdescription>
