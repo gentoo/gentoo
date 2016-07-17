@@ -1,0 +1,38 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -19,6 +19,6 @@
+ add_subdirectory(plugin)
+ add_subdirectory(micro)
+ 
+-if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "IRIX")
++if (${WITH_GENTOO_TEST})
+	add_subdirectory(test)
+ endif()
+--- a/src/lib/synergy/SubscriptionManager.h
++++ b/src/lib/synergy/SubscriptionManager.h
+@@ -20,7 +20,9 @@
+ #include "SubscriptionKey.h"
+ #include "common/common.h"
+ 
++#if WITH_GENTOO_TEST
+ #include "gtest/gtest_prod.h"
++#endif
+ 
+ class SubscriptionManager {
+ public:
+@@ -35,6 +37,7 @@
+ 	//! Use standard output to return subscription filename to gui
+ 	void				printFilename();
+ 
++#if WITH_GENTOO_TEST
+ private:
+ 	FRIEND_TEST(SubscriptionTests, decode_invalidLength_throwException);
+ 	FRIEND_TEST(SubscriptionTests, decode_invalidSerial_outputPlainText);
+@@ -45,6 +48,7 @@
+ 	FRIEND_TEST(SubscriptionTests, parsePlainSerial_expiredTrialSerial_throwException);
+ 	FRIEND_TEST(SubscriptionTests, parsePlainSerial_expiredBasicSerial_validSubscriptionKey);
+ 	FRIEND_TEST(SubscriptionTests, parsePlainSerial_validSerialWithoutCompany_validSubscriptionKey);
++#endif
+ 
+ private:
+ 	String				decode(const String& input);
