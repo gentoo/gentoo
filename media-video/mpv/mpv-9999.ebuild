@@ -9,7 +9,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=1.8.12
 
-inherit fdo-mime gnome2-utils pax-utils python-any-r1 toolchain-funcs waf-utils
+inherit fdo-mime gnome2-utils pax-utils python-any-r1 toolchain-funcs versionator waf-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/"
@@ -125,6 +125,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-0.18.1-make-ffmpeg-version-check-non-fatal.patch" )
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
@@ -268,6 +270,26 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+
+	local softvol_0_18_1=0
+	for rv in ${REPLACING_VERSIONS}; do
+		version_compare ${rv} 0.18.1
+		[[ $? -eq 1 ]] && softvol_0_18_1=1
+	done
+
+	if [[ ${softvol_0_18_1} -eq 1 ]]; then
+		echo
+		elog "Starting from version 0.18.1 the software volume control is"
+		elog "enabled by default, see:"
+		elog "https://github.com/mpv-player/mpv/blob/v0.18.1/DOCS/interface-changes.rst"
+		elog "https://github.com/mpv-player/mpv/issues/3322"
+		elog
+		elog "This means that volume controls don't change the system volume,"
+		elog "e.g. per-application volume with PulseAudio."
+		elog "If you want to restore the old behaviour, please refer to"
+		elog "https://bugs.gentoo.org/show_bug.cgi?id=588492#c4"
+		echo
+	fi
 
 	# bash-completion < 2.3-r1 already installs (mostly broken) mpv completion.
 	if use cli && ! has_version '<app-shells/bash-completion-2.3-r1' && \
