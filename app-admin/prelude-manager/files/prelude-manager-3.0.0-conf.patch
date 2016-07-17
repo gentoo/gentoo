@@ -1,0 +1,11 @@
+--- prelude-manager-3.0.0/prelude-manager.conf.in	2016-04-22 23:27:29.486000362 +0200
++++ prelude-manager-3.0.0/prelude-manager.conf.in.new	2016-04-30 01:19:47.913333335 +0200
+@@ -361,7 +361,7 @@
+ # (same source, target and classification combination) every 2 minutes
+ # to reporting plugins (eg. to the database).
+ [thresholding]
+-path = alert.classification.text, alert.source.node.address.address, alert.target.node.address.address
++path = alert.classification.text, alert.source(0).node.address(0).address, alert.target(0).node.address(0).address
+ limit = 120
+ count = 100
+ hook = reporting
