@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 # Upstream expect liblangtag to be installed when one runs tests...
 RESTRICT="test"
 
+PATCHES=("${FILESDIR}"/${P}-enum.patch)
+
 src_configure() {
 	econf \
 		$(use_enable introspection) \
