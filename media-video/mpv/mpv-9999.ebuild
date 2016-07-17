@@ -126,6 +126,8 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.18.1-make-ffmpeg-version-check-non-fatal.patch" )
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
 		die "Your compiler lacks C++11 TLS support. Use GCC>=4.8.0 or Clang>=3.3."

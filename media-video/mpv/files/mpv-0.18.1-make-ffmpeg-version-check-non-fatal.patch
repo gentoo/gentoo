@@ -1,0 +1,33 @@
+commit 6194693c360db959b70f9f727ce9b1f6aa6d96bf
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Sun Jul 17 23:40:00 2016 +0300
+
+player: make ffmpeg/libav version check non-fatal
+
+Just like it was before 0.18.1 release.
+We already enforce mpv rebuilds when ffmpeg/libav SONAME changes.
+
+diff --git a/player/main.c b/player/main.c
+index 88b60e1..1d12679 100644
+--- a/player/main.c
++++ b/player/main.c
+@@ -421,13 +421,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
+     if (!print_libav_versions(mp_null_log, 0)) {
+         // Using mismatched libraries can be legitimate, but even then it's
+         // a bad idea. We don't acknowledge its usefulness and stability.
+-        print_libav_versions(mpctx->log, MSGL_FATAL);
+-        MP_FATAL(mpctx, "\nmpv was compiled against a different version of "
+-                 "FFmpeg/Libav than the shared\nlibrary it is linked against. "
+-                 "This is most likely a broken build and could\nresult in "
+-                 "misbehavior and crashes.\n\nmpv does not support this "
+-                 "configuration and will not run - rebuild mpv instead.\n");
+-        return -1;
++        print_libav_versions(mpctx->log, MSGL_WARN);
++        MP_WARN(mpctx, "\nmpv was compiled against a different version of "
++                "FFmpeg/Libav than the shared\nlibrary it is linked against. "
++                "This is most likely a broken build and could\nresult in "
++                "misbehavior and crashes.\n\nUpstream does not support this "
++                "configuration.\nPlease rebuild mpv in case of any problems.\n");
+     }
+
+     if (opts->dump_stats && opts->dump_stats[0]) {
