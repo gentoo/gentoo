@@ -1,0 +1,23 @@
+commit 4a4a9f330281ad11eb39a013bf7308063767bab8
+Author: Martin Herkt <lachs0r@srsfckn.biz>
+Date:   Fri Jul 15 12:57:12 2016 +0200
+
+man: fix PDF build error
+
+ReportLab really doesn’t like breaking inline literals, so insert an
+explicit line break.
+
+Fixes #3338
+
+diff --git a/DOCS/man/options.rst b/DOCS/man/options.rst
+index 9a251ae..74d17a6 100644
+--- a/DOCS/man/options.rst
++++ b/DOCS/man/options.rst
+@@ -588,6 +588,7 @@ Video
+     :videotoolbox: requires ``--vo=opengl`` (OS X 10.8 and up only)
+     :videotoolbox-copy: copies video back into system RAM (OS X 10.8 and up only)
+     :dxva2: requires ``--vo=opengl:backend=angle`` or
++
+         ``--vo=opengl:backend=dxinterop`` (Windows only)
+     :dxva2-copy: copies video back to system RAM (Windows only)
+     :d3d11va: requires ``--vo=opengl:backend=angle`` (Windows only)
