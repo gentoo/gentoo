@@ -11585,7 +11585,6 @@ kde-frameworks/sonnet 5.21.0 5.23.0 5.24.0: Framework for providing spell-checki
 kde-frameworks/threadweaver 5.21.0 5.23.0 5.24.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
 kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
-kde-misc/akonadi-facebook 0_p20130209: Facebook services integration in Akonadi
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
 kde-misc/baloo-kcmadv 2014.04.27: Alternative configuration module for the Baloo search framework
 kde-misc/basket 1.81: A DropDrawers clone. Multiple information organizer
