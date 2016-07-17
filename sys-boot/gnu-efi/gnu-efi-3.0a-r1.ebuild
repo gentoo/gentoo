@@ -8,7 +8,7 @@ DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://developer.intel.com/technology/efi"
 SRC_URI="ftp://ftp.hpl.hp.com/pub/linux-ia64/gnu-efi-3.0a.tar.gz"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="ia64 x86"
 IUSE=""

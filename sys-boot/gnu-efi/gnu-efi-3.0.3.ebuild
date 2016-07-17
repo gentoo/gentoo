@@ -10,7 +10,7 @@ DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://gnu-efi.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gnu-efi/${P}.tar.bz2"
 
-LICENSE="BSD"
+LICENSE="BSD BSD-2"
 SLOT="0"
 # IA64 build is broken in setjmp code:
 # https://sourceforge.net/p/gnu-efi/bugs/9/

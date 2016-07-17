@@ -13,7 +13,7 @@ HOMEPAGE="http://developer.intel.com/technology/efi"
 SRC_URI="mirror://sourceforge/gnu-efi/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/g/gnu-efi/${PN}_${DEB_VER}.diff.gz"
 
-LICENSE="BSD"
+LICENSE="BSD BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ia64 x86"
 IUSE=""

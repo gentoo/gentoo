@@ -10,7 +10,7 @@ DESCRIPTION="Library for build EFI Applications"
 HOMEPAGE="http://developer.intel.com/technology/efi"
 SRC_URI="mirror://sourceforge/gnu-efi/${MY_P}.orig.tar.gz"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ia64 ~x86"
 IUSE=""
