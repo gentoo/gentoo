@@ -11,7 +11,6 @@ makes sense, so it can't certainly be considered server misbehavior.
 Do 2 things against this: allow if the server returns a larger image (we
 just crop it then), and also allocate a properly aligned image in the
 first place.
----
 
 diff --git a/video/out/vo_xv.c b/video/out/vo_xv.c
 index 1e7ae7c..a5a4728 100644
