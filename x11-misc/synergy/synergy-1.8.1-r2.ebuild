@@ -97,7 +97,7 @@ src_install () {
 	dobin bin/${PN}{c,s} bin/syntool
 
 	insinto /usr/$(get_libdir)/${PN}/plugins
-	doins bin/plugins/libns.so
+	doexe bin/plugins/libns.so
 
 	if use qt4 ; then
 		newbin bin/${PN} qsynergy
