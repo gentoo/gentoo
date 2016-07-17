@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Libprelude is a library that guarantees secure connections between all sensors
+		and the Prelude Manager. Libprelude provides an Application Programming Interface
+		(API) for the communication with Prelude sub-systems, it supplies the necessary
+		functionality for generating and emitting IDMEF events with Prelude and automates
+		the saving and re-transmission of data in times of temporary interruption of one
+		of the components of the system.
+	</longdescription>
+</pkgmetadata>
