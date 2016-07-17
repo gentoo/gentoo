@@ -74,6 +74,9 @@ DEPEND="
 		doc-pdf? ( dev-java/fop )
 		www-client/lynx
 	)
+	qt5? (
+		dev-qt/linguist-tools:5
+	)
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
