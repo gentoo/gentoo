@@ -9,8 +9,7 @@ inherit kde5
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
 HOMEPAGE="https://kmplayer.kde.org"
-COMMIT_ID="266320addf9180b5733d9832f2b8796212c116b1"
-SRC_URI="https://quickgit.kde.org/?p=kmplayer.git&a=snapshot&h=${COMMIT_ID}&fmt=tbz2 -> ${P}.tar.bz2"
+SRC_URI="mirror://kde/stable/${PN}/${EGIT_BRANCH}/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
@@ -28,6 +27,7 @@ CDEPEND="
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kmediaplayer)
 	$(add_frameworks_dep kparts)
+	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtdbus)
@@ -54,10 +54,6 @@ RDEPEND="${CDEPEND}
 	media-video/mplayer
 	!media-video/kmplayer:4
 "
-
-if [[ ${KDE_BUILD_TYPE} != live ]] ; then
-	S="${WORKDIR}/${PN}"
-fi
 
 src_prepare() {
 	use npp && epatch "${FILESDIR}/${PN}-flash.patch"
