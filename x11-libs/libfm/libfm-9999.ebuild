@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/lxde/${PN}"
 inherit autotools git-r3 fdo-mime vala
@@ -74,6 +74,7 @@ src_prepare() {
 	eautoreconf
 	rm -r autom4te.cache || die
 	use vala && export VALAC="$(type -p valac-$(vala_best_api_version))"
+	default
 }
 
 src_configure() {
