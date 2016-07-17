@@ -6867,7 +6867,7 @@ dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: Xdebug cl
 dev-php/xhprof 0.9.4_p20150226: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.1.0: In-process task scheduler with Cron-like capabilities
-dev-python/Babel 2.0 2.1.1 2.2.0: A collection of tools for internationalizing Python applications
+dev-python/Babel 2.0 2.1.1 2.2.0 2.3.4: A collection of tools for internationalizing Python applications
 dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation for bit arrays
 dev-python/CacheControl 0.11.5 0.11.6: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
@@ -6951,7 +6951,7 @@ dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 1.2.2 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/awscli 1.10.38 1.10.42: Universal Command Line Environment for AWS
+dev-python/awscli 1.10.38 1.10.42 1.10.47: Universal Command Line Environment for AWS
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
@@ -6965,8 +6965,8 @@ dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1 0.14.1 0.17.0 0.17.3 1.0
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
 dev-python/batinfo 0.3: A simple Python lib to retreive battery information
-dev-python/bcolz 0.10.0 0.11.3 0.12.1: Provides columnar and compressed data containers
-dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1: Modern password hashing for software and servers
+dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed data containers
+dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
@@ -6979,7 +6979,7 @@ dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1: Next generation Python numpy
-dev-python/bleach 1.4.1 1.4.2: an easy whitelist-based HTML-sanitizing tool
+dev-python/bleach 1.4.1 1.4.2 1.4.3: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
 dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
@@ -6987,13 +6987,13 @@ dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and disk
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
-dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0: Amazon Web Services API
+dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0: Amazon Web Services API
 dev-python/boto3 1.2.3 1.3.0 1.3.1: The AWS SDK for Python
 dev-python/botocore 1.3.22 1.4.28 1.4.31 1.4.34: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.14 0.14.2 0.15: Syntax highlighting and autocompletion for the Python interpreter
-dev-python/brython 3.2.6: A Python 3 implementation for client-side web programming
+dev-python/brython 3.2.6 3.2.7: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
