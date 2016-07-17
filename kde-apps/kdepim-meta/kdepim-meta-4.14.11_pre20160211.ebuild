@@ -12,6 +12,7 @@ KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 RDEPEND="
+	kde-frameworks/oxygen-icons:5
 	$(add_kdeapps_dep akonadiconsole '' ${PV})
 	$(add_kdeapps_dep akregator '' ${PV})
 	$(add_kdeapps_dep blogilo '' ${PV})
@@ -19,10 +20,6 @@ RDEPEND="
 	$(add_kdeapps_dep kabcclient '' ${PV})
 	$(add_kdeapps_dep kaddressbook '' ${PV})
 	$(add_kdeapps_dep kalarm '' ${PV})
-	|| (
-		$(add_kdeapps_dep kdepim-icons)
-		>=kde-frameworks/oxygen-icons-5.19.0:5
-	)
 	$(add_kdeapps_dep kdepim-kresources '' ${PV})
 	$(add_kdeapps_dep kdepim-runtime '' ${PV})
 	$(add_kdeapps_dep kjots '' ${PV})
