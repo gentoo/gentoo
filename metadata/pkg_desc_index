@@ -3845,7 +3845,7 @@ dev-java/commons-chain 1.2: API exposing the Chain of Responsability design patt
 dev-java/commons-cli 1.2: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7: Implementations of common encoders and decoders in Java
 dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
-dev-java/commons-compress 1.8.1-r1 1.10: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
+dev-java/commons-compress 1.10: Java API for working with archive files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.15: Tools to allow Java programs to run as UNIX daemons
 dev-java/commons-dbcp 2.1: Jakarta component providing database connection pooling API
@@ -13606,7 +13606,7 @@ media-video/mpv 0.9.2-r1 0.17.0-r6 0.18.0 9999: Media player based on MPlayer an
 media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r2: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
-media-video/obs-studio 0.14.2 9999: Software for Recording and Streaming Live Video Content
+media-video/obs-studio 0.14.2 0.15.1 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
