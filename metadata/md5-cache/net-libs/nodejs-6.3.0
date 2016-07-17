@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=icu? ( >=dev-libs/icu-56:= ) npm? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.6.2:= >=dev-libs/libuv-1.9.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] test? ( net-misc/curl )
+DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
+EAPI=6
+HOMEPAGE=https://nodejs.org/
+IUSE=cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos
+LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
+RDEPEND=icu? ( >=dev-libs/icu-56:= ) npm? ( >=dev-lang/python-2.7.5-r2:2.7[threads] >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=net-libs/http-parser-2.6.2:= >=dev-libs/libuv-1.9.0:= >=dev-libs/openssl-1.0.2g:0=[-bindist] sys-libs/zlib
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://nodejs.org/dist/v6.3.0/node-v6.3.0.tar.xz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=7b2c824dbb1f2961e58063e93f10f968
