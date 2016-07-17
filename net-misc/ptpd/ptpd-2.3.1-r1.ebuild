@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Precision Time Protocol daemon"
 HOMEPAGE="https://github.com/ptpd/ptpd"
@@ -56,5 +56,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "Do not forget to setup correct network interface."
-	elog "Change the config file /etc/ptpd2.conf to suit your needs."
+	elog "Change the config file ${EROOT}etc/ptpd2.conf to suit your needs."
 }
