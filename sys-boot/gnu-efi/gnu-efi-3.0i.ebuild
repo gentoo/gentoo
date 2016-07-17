@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://developer.intel.com/technology/efi"
 SRC_URI="mirror://sourceforge/gnu-efi/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/g/gnu-efi/gnu-efi_3.0i-2.diff.gz"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ia64 ~x86"
 IUSE=""
