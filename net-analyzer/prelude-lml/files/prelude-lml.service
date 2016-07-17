@@ -1,0 +1,13 @@
+[Unit]
+Description=Prelude-LML service
+DefaultDependencies=no
+After=remote_fs.target prelude-manager.service
+
+[Service]
+ExecStart=/usr/bin/prelude-lml -d -P /run/prelude-lml/prelude-lml.pid
+Type=forking
+PIDFile=/run/prelude-lml/prelude-lml.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
