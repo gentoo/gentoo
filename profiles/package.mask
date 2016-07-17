@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (17 Jul 2016)
+# Contents superseded by virtual/perl-Test-Simple >=1.1.10
+# and now only creates depdendency resolution headaches.
+#
+# Please migrate overlay dependencies to an exclusive
+# >=virtual/perl-Test-Simple-1.1.10
+#
+# Removal in 30 days. Bug 589018
+dev-perl/Test-use-ok
+
 # Johannes Huber <johu@gentoo.org> (17 Jul 2016)
 # Masked for removal in 30 days. Superseded by
 # kde-frameworks/oxygen-icons.
