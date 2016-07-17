@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Prelude-Correlator allows conducting multi-stream correlations
+		thanks to a powerful programming language for writing correlation
+		rules. With any type of alert able to be correlated, event
+		analysis becomes simpler, quicker and more incisive. This
+		correlation alert then appears within the Prewikka interface
+		and indicates the potential target information via the set of
+		correlation rules.
+	</longdescription>
+</pkgmetadata>
