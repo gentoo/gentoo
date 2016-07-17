@@ -46,7 +46,7 @@ RDEPEND="
 	)
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
-	!dev-qt/qtwebkit:4[gstreamer]
+	!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
 "
 DEPEND="${RDEPEND}
 	qt4? ( >=dev-util/automoc-0.9.87 )
