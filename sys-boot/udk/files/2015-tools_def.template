@@ -1,0 +1,42 @@
+
+#################
+# My custom toolchain
+#################
+*_CUSTOM_*_*_FAMILY          = GCC
+*_CUSTOM_*_MAKE_PATH         = make
+*_CUSTOM_*_ASL_PATH          = DEF(UNIX_IASL_BIN)
+*_CUSTOM_*_OBJCOPY_PATH      = «OBJCOPY»
+*_CUSTOM_*_CC_PATH           = «CC»
+*_CUSTOM_*_SLINK_PATH        = «AR»
+*_CUSTOM_*_DLINK_PATH        = «LD»
+*_CUSTOM_*_ASLDLINK_PATH     = «LD»
+*_CUSTOM_*_ASM_PATH          = «CC»
+*_CUSTOM_*_PP_PATH           = «CC»
+*_CUSTOM_*_VFRPP_PATH        = «CC»
+*_CUSTOM_*_ASLCC_PATH        = «CC»
+*_CUSTOM_*_ASLPP_PATH        = «CC»
+*_CUSTOM_*_RC_PATH           = «OBJCOPY»
+*_CUSTOM_*_PP_FLAGS          = DEF(GCC_PP_FLAGS)
+*_CUSTOM_*_ASLPP_FLAGS       = DEF(GCC_ASLPP_FLAGS)
+*_CUSTOM_*_ASLCC_FLAGS       = DEF(GCC_ASLCC_FLAGS)
+*_CUSTOM_*_VFRPP_FLAGS       = DEF(GCC_VFRPP_FLAGS)
+*_CUSTOM_*_APP_FLAGS         =
+*_CUSTOM_*_ASL_FLAGS         = DEF(IASL_FLAGS)
+*_CUSTOM_*_ASL_OUTFLAGS      = DEF(IASL_OUTFLAGS)
+*_CUSTOM_*_OBJCOPY_FLAGS     =
+*_CUSTOM_IA32_ASLCC_FLAGS    = DEF(GCC_ASLCC_FLAGS) -m32
+*_CUSTOM_IA32_ASM_FLAGS      = DEF(GCC_ASM_FLAGS) -m32 -march=i386
+*_CUSTOM_IA32_CC_FLAGS       = «CFLAGS» -include AutoGen.h -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings -D EFI32
+*_CUSTOM_IA32_ASLDLINK_FLAGS = -nostdlib -n -q --gc-sections -z common-page-size=0x40 --entry ReferenceAcpiTable -u ReferenceAcpiTable -m elf_i386
+*_CUSTOM_IA32_DLINK_FLAGS    = -nostdlib -n -q --gc-sections -z common-page-size=0x40 --entry $(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Map $(DEST_DIR_DEBUG)/$(BASE_NAME).map -m elf_i386 --oformat=elf32-i386
+*_CUSTOM_IA32_DLINK2_FLAGS   = DEF(GCC_DLINK2_FLAGS_COMMON) --defsym=PECOFF_HEADER_SIZE=0x220
+*_CUSTOM_IA32_RC_FLAGS       = DEF(GCC_IA32_RC_FLAGS)
+*_CUSTOM_IA32_NASM_FLAGS     = -f elf32
+*_CUSTOM_X64_ASLCC_FLAGS     = DEF(GCC_ASLCC_FLAGS) -m64
+*_CUSTOM_X64_ASM_FLAGS       = DEF(GCC_ASM_FLAGS) -m64
+*_CUSTOM_X64_CC_FLAGS        = «CFLAGS» -include AutoGen.h -DSTRING_ARRAY_NAME=$(BASE_NAME)Strings "-DEFIAPI=__attribute__((ms_abi))" -DNO_BUILTIN_VA_FUNCS
+*_CUSTOM_X64_ASLDLINK_FLAGS  = -nostdlib -n -q --gc-sections -z common-page-size=0x40 --entry ReferenceAcpiTable -u ReferenceAcpiTable -m elf_x86_64
+*_CUSTOM_X64_DLINK_FLAGS     = -nostdlib -n -q --gc-sections -z common-page-size=0x40 --entry $(IMAGE_ENTRY_POINT) -u $(IMAGE_ENTRY_POINT) -Map $(DEST_DIR_DEBUG)/$(BASE_NAME).map -m elf_x86_64 --oformat=elf64-x86-64
+*_CUSTOM_X64_DLINK2_FLAGS    = DEF(GCC_DLINK2_FLAGS_COMMON) --defsym=PECOFF_HEADER_SIZE=0x228
+*_CUSTOM_X64_RC_FLAGS        = DEF(GCC_X64_RC_FLAGS)
+*_CUSTOM_X64_NASM_FLAGS      = -f elf64
