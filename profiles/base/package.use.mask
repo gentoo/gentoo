@@ -547,13 +547,6 @@ x11-libs/cairo gles2
 dev-libs/weston rpi
 <dev-libs/weston-1.9.0 gles2
 
-# Alexis Ballier <aballier@gentoo.org> (03 Jul 2013)
-# The idea behind using libunwind there is to avoid needing to link to libgcc_s
-# and have a C++ stack without gcc with libcxx.
-# However, in any case, clang links its binaries to libgcc_s, hence at the
-# moment there is not much point in enabling this.
-sys-libs/libcxxrt libunwind
-
 # Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2013)
 # mask because requires unstable depends not ready for the stabilization
 app-leechcraft/leechcraft-meta unstable
