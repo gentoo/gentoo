@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/rosserial_msgs
 	dev-ros/rosserial_python
 	dev-ros/rosserial_server
+	dev-ros/rosserial_tivac
 	dev-ros/rosserial_windows
 	dev-ros/rosserial_xbee
 "
