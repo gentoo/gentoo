@@ -37,7 +37,7 @@ DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 COMMONDEPEND=">=dev-libs/boost-1.34:=
 	${PYTHON_DEPS}
 	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 dev-qt/qtsvg:4 )
-	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtsvg:5 )"
+	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtsvg:5 dev-qt/qtconcurrent:5 )"
 
 RDEPEND="${COMMONDEPEND}
 	dev-texlive/texlive-fontsextra
