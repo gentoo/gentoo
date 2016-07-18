@@ -4944,8 +4944,8 @@ dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture 
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/unittest++ 1.6.0 1.6.1: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
-dev-libs/urdfdom 0.3.0 0.4.1 9999: URDF (U-Robot Description Format) library
-dev-libs/urdfdom_headers 0.3.0 0.4.0 0.4.1 9999: URDF (U-Robot Description Format) headers
+dev-libs/urdfdom 0.3.0 0.4.1 0.4.2 9999: URDF (U-Robot Description Format) library
+dev-libs/urdfdom_headers 0.3.0 0.4.0 0.4.1 0.4.2 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.7.13 0.8.6 0.9.1 0.9.2: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
@@ -8454,7 +8454,7 @@ dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to est
 dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
-dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
+dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
@@ -8476,8 +8476,8 @@ dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 9999: Tests for the 
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.12.0 9999: Converts between ROS Image messages and OpenCV images
-dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 9999: Nodelets for processing depth images such as those produced by OpenNI camera
+dev-ros/cv_bridge 1.12.0 1.12.1 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.9 1.8.10 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 1.8.9 1.8.10 9999: Converts diagnostics data into a series of CSV files
@@ -8523,11 +8523,11 @@ dev-ros/hector_pose_estimation_core 0.2.0 0.2.1 0.3.0 9999: Extended Kalman Filt
 dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 0.3.5 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.12.0-r1 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.12.14 1.12.15 1.12.16 9999: Single image rectification and color processing
-dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
+dev-ros/image_geometry 1.12.0-r1 1.12.1 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Single image rectification and color processing
+dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 1.12.18 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.14-r1 1.12.15 1.12.16 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.14-r1 1.12.15 1.12.16 1.12.18 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
@@ -8573,7 +8573,7 @@ dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib defini
 dev-ros/octomap_msgs 0.3.2 0.3.3 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
 dev-ros/opencv_apps 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: OpenCV applications for ROS
-dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: Tests for ROS OpenCV integration
+dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 1.12.1 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.5 0.2.6 0.2.7 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
@@ -8635,14 +8635,15 @@ dev-ros/rospack 2.2.5 2.2.6 2.3.0 9999: Retrieves information about ROS packages
 dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
-dev-ros/rosserial_arduino 0.7.1 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
-dev-ros/rosserial_client 0.7.1 9999: Generalized client side source for rosserial
-dev-ros/rosserial_embeddedlinux 0.7.1 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
-dev-ros/rosserial_msgs 0.7.1 9999: Messages for automatic topic configuration using rosserial
-dev-ros/rosserial_python 0.7.1 9999: A Python-based implementation of the ROS serial protocol
-dev-ros/rosserial_server 0.7.1 9999: C++ implementation of the rosserial server side
-dev-ros/rosserial_windows 0.7.1 9999: Libraries and examples for ROSserial usage on Windows Platforms
-dev-ros/rosserial_xbee 0.7.1 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
+dev-ros/rosserial_arduino 0.7.1 0.7.2 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
+dev-ros/rosserial_client 0.7.1 0.7.2 9999: Generalized client side source for rosserial
+dev-ros/rosserial_embeddedlinux 0.7.1 0.7.2 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
+dev-ros/rosserial_msgs 0.7.1 0.7.2 9999: Messages for automatic topic configuration using rosserial
+dev-ros/rosserial_python 0.7.1 0.7.2 9999: A Python-based implementation of the ROS serial protocol
+dev-ros/rosserial_server 0.7.1 0.7.2 9999: C++ implementation of the rosserial server side
+dev-ros/rosserial_tivac 0.7.2 9999: Definitions for rosserial_client targets for TivaC Launchpad evaluation boards.
+dev-ros/rosserial_windows 0.7.1 0.7.2 9999: Libraries and examples for ROSserial usage on Windows Platforms
+dev-ros/rosserial_xbee 0.7.1 0.7.2 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
 dev-ros/rosservice 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Command-line tool for listing and querying ROS Services
 dev-ros/rostest 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
 dev-ros/rostime 0.5.6 0.5.7 0.6.0 9999: Time and Duration implementations for C++ libraries
@@ -8700,7 +8701,7 @@ dev-ros/sound_play 0.2.12 9999: ROS node that translates commands on a ROS topic
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
-dev-ros/stereo_image_proc 1.12.14 1.12.15 1.12.16 9999: Stereo and single image rectification and disparity processing
+dev-ros/stereo_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 1.7.17 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.8 1.8.9 1.8.10 9999: diagnostic_aggregator tests
@@ -12760,7 +12761,7 @@ media-libs/waffle 1.5.1 1.5.2 9999: Library that allows selection of GL API and 
 media-libs/webrtc-audio-processing 0.1-r1 0.2 0.3: AudioProcessing library from the webrtc.org code base
 media-libs/wxsvg 1.1.13 1.4.2 1.5.4 1.5.4-r1 1.5.5: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20140308 0.0.20150820 0.0.20151011 0.0.20160523 0.0.20160712 9999: A free library for encoding X264/AVC streams
-media-libs/x265 1.5 1.7 1.8 1.8-r3 1.9 9999: Library for encoding video streams into the H.265/HEVC format
+media-libs/x265 1.5 1.7 1.8 1.8-r3 1.9 2.0 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.3 1.2.6 1.2.6-r1 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.3 1.3.4: XviD, a high performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.0.1 2.0.2 2.0.3 2.0.4 9999: Scaling, colorspace conversion, and dithering library
@@ -13965,7 +13966,7 @@ net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.4.5 2.4.7 2.4.8 3.0.3-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.10.2 1.10.9999 9999: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
 net-dialup/capidivert 0.0.2: CAPI based utility to control ISDN diversion facilities
 net-dialup/capifwd 0.6.3-r1 0.6.3-r2: A daemon forwarding CAPI messages to capi20proxy clients
@@ -15336,7 +15337,7 @@ ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.7 1.11.8 1.11.9 1.11.10 9999: Common code for working with images in ROS
-ros-meta/image_pipeline 1.12.14 1.12.15 1.12.16 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
+ros-meta/image_pipeline 1.12.14 1.12.15 1.12.16 1.12.18 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
@@ -15357,14 +15358,14 @@ ros-meta/ros_core 1.2.0 1.3.0 9999: Metapackage to aggregate the packages requir
 ros-meta/ros_tutorials 0.6.1 0.7.0 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
 ros-meta/rosbridge_suite 0.7.13 0.7.14 0.7.15 9999: JSON API to ROS functionality for non-ROS programs
 ros-meta/roscpp_core 0.5.6 0.5.7 0.6.0 9999: Underlying data libraries for roscpp messages
-ros-meta/rosserial 0.7.1 9999: Metapackage for core of rosserial
+ros-meta/rosserial 0.7.1 0.7.2 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.2.14 0.3.1 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.3.12 0.3.13 0.4.0 0.4.1 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
 ros-meta/rqt_robot_plugins 0.4.2 0.4.3 0.5.2 0.5.3 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 1.3.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
-ros-meta/vision_opencv 1.11.8 1.11.9-r1 1.11.10 1.11.11 1.11.12 1.12.0 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/vision_opencv 1.12.0 1.12.1 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.8.0 0.9.1 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 0.10.1 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 1.3.0 9999: Metapackage for ROS visualization packages
@@ -15698,7 +15699,7 @@ sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logi
 sci-electronics/fasthenry 3.0_p082514: Three dimensional inductance computation program, Whiteley Research version
 sci-electronics/freehdl 0.0.7: A free VHDL simulator
 sci-electronics/fritzing 0.8.7b 0.9.2b 0.9.2b-r1: Electronic Design Automation
-sci-electronics/gazebo 7.2.0: A 3D multiple robot simulator with dynamics
+sci-electronics/gazebo 7.2.0 7.3.1: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.8.1 1.8.2 1.9.1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20110427: Metapackage which installs all the components required for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r2 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
