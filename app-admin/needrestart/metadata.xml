@@ -12,4 +12,7 @@
     <longdescription lang="en">
         Restart daemons after library updates
     </longdescription>
+    <upstream>
+        <remote-id type="github">liske/needrestart</remote-id>
+    </upstream>
 </pkgmetadata>
