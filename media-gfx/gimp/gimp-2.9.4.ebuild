@@ -102,7 +102,6 @@ pkg_setup() {
 		$(use_enable smp mp) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_with svg librsvg) \
-		$(use_with tiff libtiff) \
 		$(use_with udev gudev) \
 		$(use_with wmf) \
 		--with-xmc \
