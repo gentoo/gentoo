@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare test unpack
-DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git dev-libs/openssl:0[-bindist] test? ( dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)] ) >=app-shells/bash-4.1 sys-apps/sed
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git dev-libs/openssl:0[-bindist] test? ( dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)] ) dev-libs/openssl:0[-bindist] >=app-shells/bash-4.1 sys-apps/sed
 DESCRIPTION=Bitcoin Core consensus library
 EAPI=5
 HOMEPAGE=http://bitcoincore.org/
 IUSE=test
 LICENSE=MIT
-RDEPEND=dev-libs/openssl:0[-bindist] test? ( dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)] )
+RDEPEND=dev-libs/openssl:0[-bindist]
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_test:bitcoincore src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bitcoincore	62bccbb5a6077b2e26a2b40a2b93de73	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bitcoincore	04affb425827a646f64800df629ca59c	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=74f39f71d9eac8ee945fddb2a32ec0c1
