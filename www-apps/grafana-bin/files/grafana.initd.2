@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting grafana server"
+
+	start-stop-daemon --start -b \
+		--make-pidfile \
+		--pidfile /run/grafana.pid \
+		--chdir /usr/share/grafana \
+		--user ${GRAFANA_USER}:${GRAFANA_GROUP} \
+		--exec /usr/bin/grafana-server -- \
+		-config=/etc/grafana/grafana.ini \
+		cfg:default.paths.data=/var/lib/grafana \
+		cfg:default.paths.logs=/var/log/grafana
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping grafana server"
+
+	start-stop-daemon --stop \
+		--pidfile /run/grafana.pid \
+		--user "${GRAFANA_USER}" \
+		--retry=TERM/20/KILL/5
+
+	eend $?
+}
