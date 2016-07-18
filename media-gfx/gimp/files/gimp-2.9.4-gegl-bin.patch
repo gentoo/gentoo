@@ -1,0 +1,28 @@
+From 8d5de5ce62cd0410c9bccaa77725d0cad051faad Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 18 Jul 2016 17:42:45 +0200
+Subject: [PATCH] Fix gegl executable name to check for
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 45b31b1..0e5be99 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -674,9 +674,9 @@ else
+ fi
+ AC_MSG_RESULT($have_glib_2_43)
+ 
+-AC_PATH_PROG(GEGL, gegl, no)
++AC_PATH_PROG(GEGL, gegl-0.3, no)
+ if test "x$GEGL" = xno; then
+-  add_deps_error([gegl], [Could not find gegl in your PATH.])
++  add_deps_error([gegl], [Could not find gegl-0.3 in your PATH.])
+ fi
+ 
+ 
+-- 
+2.9.2
+
