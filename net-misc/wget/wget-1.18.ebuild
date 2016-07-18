@@ -1,5 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI="5"
 
@@ -51,7 +52,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.17.1-gnulib-cygwin-sys_select.patch
 	# revert some hack that breaks linking, bug #585924
-	if [[ ${CHOST} == *-darwin* ]] || [[ ${CHOST} == *-solaris* ]] ; then
+	if [[ ${CHOST} == *-darwin* ]] || [[ ${CHOST} == *-solaris* ]] || [[ ${CHOST} == *-uclibc* ]]; then
 		sed -i \
 			-e 's/^  LIBICONV=$/:/' \
 			configure || die
