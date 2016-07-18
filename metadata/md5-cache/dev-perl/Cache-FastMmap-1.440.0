@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Uses an mmaped file to act as a shared memory interprocess cache
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Cache-FastMmap/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-ExtUtils-MakeMaker virtual/perl-Storable dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RO/ROBM/Cache-FastMmap-1.44.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=3dfcf8ed6c49493028726991e9f4718e
