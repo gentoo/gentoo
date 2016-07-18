@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= ) convert? ( sys-apps/acl ) app-text/asciidoc app-text/docbook-xml-dtd:4.5 app-text/xmlto static? ( dev-libs/lzo:2[static-libs(+)] sys-apps/util-linux:0[static-libs(+)] sys-libs/zlib:0[static-libs(+)] convert? ( sys-fs/e2fsprogs:0[static-libs(+)] sys-libs/e2fsprogs-libs:0[static-libs(+)] ) )
+DEPEND=dev-libs/lzo:2= sys-apps/util-linux:0=[static-libs(+)?] sys-libs/zlib:0= convert? ( sys-fs/e2fsprogs:0= sys-libs/e2fsprogs-libs:0= ) convert? ( sys-apps/acl ) >=app-text/asciidoc-8.6.0 app-text/docbook-xml-dtd:4.5 app-text/xmlto static? ( dev-libs/lzo:2[static-libs(+)] sys-apps/util-linux:0[static-libs(+)] sys-libs/zlib:0[static-libs(+)] convert? ( sys-fs/e2fsprogs:0[static-libs(+)] sys-libs/e2fsprogs-libs:0[static-libs(+)] ) )
 DESCRIPTION=Btrfs filesystem utilities
 EAPI=5
 HOMEPAGE=https://btrfs.wiki.kernel.org
@@ -12,4 +12,4 @@ SLOT=0/0
 SRC_URI=https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v4.4.1.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=19fc4ee7010019ce5c1549ca7376601c
+_md5_=485b0187a12c7815c241f7e1e37d018e
