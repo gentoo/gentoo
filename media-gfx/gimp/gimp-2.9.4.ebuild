@@ -123,6 +123,12 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
+src_compile() {
+	addwrite /dev/nvidiactl  # bug #569738
+	addwrite /dev/dri/  # bug #574038
+	gnome2_src_compile
+}
+
 _clean_up_locales() {
 	einfo "Cleaning up locales..."
 	for lang in ${LANGS}; do
