@@ -4,6 +4,7 @@
 
 EAPI=5
 OASIS_BUILD_TESTS=1
+OASIS_BUILD_DOCS=1
 
 inherit oasis
 
