@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
+# Pre-release of a complete rewrite, provided for early testing. Not all
+# functionality is provided yet. Use --pretend to make sure correct
+# files will be removed.
+>=app-admin/eclean-kernel-1.99
+
 # Kent Fredric <kentnl@gentoo.org> (17 Jul 2016)
 # Contents superseded by virtual/perl-Test-Simple >=1.1.10
 # and now only creates depdendency resolution headaches.
