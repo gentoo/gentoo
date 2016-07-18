@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
@@ -25,4 +25,7 @@ ruby_add_bdepend "test? ( >=dev-ruby/rr-1.1.0 >=dev-ruby/hoe-2.3.0 )"
 all_ruby_prepare() {
 	# Avoid test failing on different whitespace.
 	sed -i -e '/test_fragment_whitewash_on_microsofty_markup/askip "gentoo"' test/integration/test_ad_hoc.rb || die
+
+	# Fix test for new libxml2 results (fixed upstream)
+	sed -i -e '348i "xhtml": "&lt;&lt;script&gt;alert(\\\"XSS\\\");//&lt;&lt;/script&gt;",' test/assets/testdata_sanitizer_tests1.dat || die
 }

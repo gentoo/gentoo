@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rails/sprockets-rails/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1)"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~amd64-linux"
 
 IUSE="test"
 
