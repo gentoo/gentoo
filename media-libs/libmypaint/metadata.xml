@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sping@gentoo.org</email>
+		<name>Sebastian Pipping</name>
+	</maintainer>
+	<use>
+		<flag name="gegl">Add support for <pkg>media-libs/gegl</pkg></flag>
+	</use>
+</pkgmetadata>
