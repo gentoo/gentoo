@@ -4014,6 +4014,7 @@ media-libs/libgroove:loudness - Enable loudness detection according to the EBU R
 media-libs/libgroove:sound - Enable audio playing.
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
+media-libs/libmypaint:gegl - Add support for media-libs/gegl
 media-libs/libomxil-bellagio:audioeffects - enable audio volume/mixer effects components
 media-libs/libomxil-bellagio:clocksrc - enable clock component
 media-libs/libomxil-bellagio:videoscheduler - enable xvideosink video scheduler
