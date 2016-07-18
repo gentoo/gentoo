@@ -37,10 +37,10 @@ RDEPEND="${DEPEND}
 		$(add_kdeapps_dep kdebase-kioslaves)
 		$(add_kdeapps_dep kfind)
 		$(add_kdeapps_dep konsolepart)
+		!kde-apps/dolphin:4
 	)
 	svg? ( $(add_kdeapps_dep svgpart) )
 	!app-text/evince[nsplugin]
-	!kde-apps/dolphin:4
 "
 
 KMEXTRA="
