@@ -3,20 +3,18 @@
 # $Id$
 
 EAPI=5
-ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
+ROS_REPO_URI="https://github.com/ros-drivers/rosserial"
+CATKIN_HAS_MESSAGES=yes
 KEYWORDS="~amd64 ~arm"
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Converts between ROS Image messages and OpenCV images"
+DESCRIPTION="Messages for automatic topic configuration using rosserial"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-ros/cv_bridge
-	dev-ros/image_geometry
-	dev-ros/opencv_tests
-"
+RDEPEND=""
 DEPEND="${RDEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,5 @@ RDEPEND="
 	dev-ros/cv_bridge
 	dev-ros/image_geometry
 	dev-ros/opencv_tests
-	dev-ros/opencv_apps
 "
 DEPEND="${RDEPEND}"

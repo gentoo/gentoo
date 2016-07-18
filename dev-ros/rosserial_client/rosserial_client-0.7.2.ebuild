@@ -5,24 +5,20 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-drivers/rosserial"
 KEYWORDS="~amd64 ~arm"
+PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Metapackage for core of rosserial"
+DESCRIPTION="Generalized client side source for rosserial"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosserial_arduino
-	dev-ros/rosserial_client
-	dev-ros/rosserial_embeddedlinux
-	dev-ros/rosserial_msgs
-	dev-ros/rosserial_python
-	dev-ros/rosserial_server
-	dev-ros/rosserial_tivac
-	dev-ros/rosserial_windows
-	dev-ros/rosserial_xbee
+	dev-ros/tf[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/std_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

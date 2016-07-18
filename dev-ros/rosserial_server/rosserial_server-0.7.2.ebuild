@@ -9,20 +9,15 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Metapackage for core of rosserial"
+DESCRIPTION="C++ implementation of the rosserial server side"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/rosserial_arduino
-	dev-ros/rosserial_client
-	dev-ros/rosserial_embeddedlinux
-	dev-ros/rosserial_msgs
-	dev-ros/rosserial_python
-	dev-ros/rosserial_server
-	dev-ros/rosserial_tivac
-	dev-ros/rosserial_windows
-	dev-ros/rosserial_xbee
+	dev-ros/roscpp
+	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/topic_tools
+	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}"

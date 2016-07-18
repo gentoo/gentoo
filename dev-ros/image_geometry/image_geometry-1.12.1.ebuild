@@ -5,18 +5,19 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
 KEYWORDS="~amd64 ~arm"
+PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Converts between ROS Image messages and OpenCV images"
+DESCRIPTION="C++ and Python libraries for interpreting images geometrically"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/cv_bridge
-	dev-ros/image_geometry
-	dev-ros/opencv_tests
+	media-libs/opencv:=
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-python/nose[${PYTHON_USEDEP}] dev-cpp/gtest )"
