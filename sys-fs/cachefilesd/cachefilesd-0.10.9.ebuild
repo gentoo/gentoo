@@ -2,29 +2,30 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic systemd toolchain-funcs
+inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Provides a caching directory on an already mounted filesystem"
 HOMEPAGE="https://people.redhat.com/~dhowells/fscache/"
-SRC_URI="https://people.redhat.com/~dhowells/fscache/${P}.tar.bz2 -> ${P}.tar"
+SRC_URI="https://people.redhat.com/~dhowells/fscache/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2+"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-cachefilesd )"
 DEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.10.4-makefile.patch
-	tc-export CC
+	eapply_user
+	eapply "${FILESDIR}"/${PN}-0.10.9-makefile.patch
 	if ! use selinux; then
 		sed -e '/^secctx/s:^:#:g' -i cachefilesd.conf || die
 	fi
 
+	tc-export CC
 	append-flags -fpie
 }
 
