@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://digint.ch/download/btrbk/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Tool for creating snapshots and remote backups of btrfs subvolumes"
