@@ -16,6 +16,16 @@
     <longdescription lang="en">
         Tool for creating snapshots and remote backups of btrfs subvolumes
     </longdescription>
+    <upstream>
+        <maintainer status="active">
+            <email>axel@tty0.ch</email>
+            <name>Axel Burri</name>
+        </maintainer>
+        <bugs-to>https://github.com/digint/btrbk/issues</bugs-to>
+        <changelog>https://raw.githubusercontent.com/digint/btrbk/master/ChangeLog</changelog>
+        <doc>https://github.com/digint/btrbk/blob/master/README.md</doc>
+        <remote-id type="github">digint/btrbk</remote-id>
+    </upstream>
     <use>
         <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
     </use>
