@@ -5105,7 +5105,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 2.1.0 2.2.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0 0.5.1 0.6.0 0.6.2: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5119,7 +5119,7 @@ dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1: Regular expression library for OCaml
-dev-ml/ocaml-redis 0.2.3 0.3.0: Redis bindings for OCaml
+dev-ml/ocaml-redis 0.3.0 0.3.1: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 4.0.3 4.0.4 4.0.5: A package for ocaml that provides access to SQLite databases
