@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools-multilib
+EAPI=6
+inherit multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-2
@@ -24,7 +24,7 @@ IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
 DEPEND="doc? ( app-doc/doxygen )"
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable custom-modes)
 		$(use_enable doc)
@@ -32,5 +32,6 @@ src_configure() {
 	for i in ${INTRINSIC_FLAGS} ; do
 		use ${i} && myeconfargs+=( --enable-intrinsics )
 	done
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" \
+	econf "${myeconfargs[@]}"
 }
