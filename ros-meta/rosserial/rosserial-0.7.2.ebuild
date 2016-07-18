@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/rosserial_msgs
 	dev-ros/rosserial_python
 	dev-ros/rosserial_server
+	dev-ros/rosserial_tivac
 	dev-ros/rosserial_windows
 	dev-ros/rosserial_xbee
 "
