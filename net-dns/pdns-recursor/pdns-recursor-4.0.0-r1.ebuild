@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic eutils versionator
 
 DESCRIPTION="The PowerDNS Recursor"
 HOMEPAGE="http://www.powerdns.com/"
@@ -36,6 +36,7 @@ pkg_setup() {
 
 src_configure() {
 	econf \
+		--sysconfdir=/etc/powerdns \
 		$(use_enable systemd) \
 		$(use_with lua) \
 		$(use_with luajit) \
@@ -43,15 +44,32 @@ src_configure() {
 }
 
 src_install() {
-	dosbin pdns_recursor rec_control
-	doman pdns_recursor.1 rec_control.1
+	default
 
-	insinto /etc/powerdns
-	doins "${FILESDIR}"/recursor.conf
+	mv "${D}"/etc/powerdns/recursor.conf{-dist,}
 
-	doinitd "${FILESDIR}"/precursor
+	# set defaults: setuid=nobody, setgid=nobody
+	sed -i \
+		-e 's/^# set\([ug]\)id=$/set\1id=nobody/' \
+		-e 's/^# quiet=/quiet=on/' \
+		-e 's/^# chroot=/chroot=\/var\/lib\/powerdns/' \
+		"${D}"/etc/powerdns/recursor.conf
+
+	doinitd "${FILESDIR}"/pdns-recursor
 
 	# Pretty ugly, uh?
 	dodir /var/lib/powerdns/var/lib
 	dosym ../.. /var/lib/powerdns/var/lib/powerdns
+}
+
+pkg_postinst() {
+	local old
+
+	for old in ${REPLACING_VERSIONS}; do
+		version_compare ${old} 4.0.0-r1
+		[[ $? -eq 1 ]] || continue
+		ewarn "Starting with 4.0.0-r1 the init script has been renamed from precursor"
+		ewarn "to pdns-recursor, please update your runlevels accordingly."
+		break
+	done
 }
