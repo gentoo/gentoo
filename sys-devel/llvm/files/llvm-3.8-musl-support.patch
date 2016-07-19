@@ -1,0 +1,32 @@
+diff --git a/include/llvm/ADT/Triple.h b/include/llvm/ADT/Triple.h
+index e01db0a..5d85897 100644
+--- a/include/llvm/ADT/Triple.h
++++ b/include/llvm/ADT/Triple.h
+@@ -173,6 +173,7 @@ public:
+     EABI,
+     EABIHF,
+     Android,
++    Musl,
+ 
+     MSVC,
+     Itanium,
+diff --git a/lib/Support/Triple.cpp b/lib/Support/Triple.cpp
+index 11afcf7..c04c4bf 100644
+--- a/lib/Support/Triple.cpp
++++ b/lib/Support/Triple.cpp
+@@ -200,6 +200,7 @@ const char *Triple::getEnvironmentTypeName(EnvironmentType Kind) {
+   case EABI: return "eabi";
+   case EABIHF: return "eabihf";
+   case Android: return "android";
++  case Musl: return "musl";
+   case MSVC: return "msvc";
+   case Itanium: return "itanium";
+   case Cygnus: return "cygnus";
+@@ -454,6 +455,7 @@ static Triple::EnvironmentType parseEnvironment(StringRef EnvironmentName) {
+     .StartsWith("code16", Triple::CODE16)
+     .StartsWith("gnu", Triple::GNU)
+     .StartsWith("android", Triple::Android)
++    .StartsWith("musl", Triple::Musl)
+     .StartsWith("msvc", Triple::MSVC)
+     .StartsWith("itanium", Triple::Itanium)
+     .StartsWith("cygnus", Triple::Cygnus)
