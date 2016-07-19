@@ -20,7 +20,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=sys-libs/timezone-data-2015g"
+	|| ( >=sys-libs/timezone-data-2015g sys-libs/glibc[vanilla] )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
