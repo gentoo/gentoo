@@ -5320,7 +5320,7 @@ dev-perl/Cache-Memcached-Fast 0.230.0: Perl client for memcached, in C language
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
-dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
+dev-perl/Canary-Stability 2006 2011.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0 0.360.0: Capture STDOUT and STDERR from Perl, XS or external programs
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
