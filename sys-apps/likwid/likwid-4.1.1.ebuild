@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 FORTRAN_NEEDED=fortran
 
@@ -10,8 +10,7 @@ inherit eutils fcaps linux-info multilib fortran-2
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
 HOMEPAGE="https://github.com/rrze-likwid/likwid"
-# Upstream have made a habit of making changes to the tagged realesed tarball
-SRC_URI="https://dev.gentoo.org/~idella4/tarballs/likwid-${PV}.tar.gz"
+SRC_URI="https://github.com/RRZE-HPC/likwid/archive/likwid-4.1.1.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,8 +23,6 @@ DEPEND="${RDEPEND}
 	fortran? ( sys-devel/gcc:*[fortran] )
 	dev-lang/lua:0"
 
-RESTRICT="mirror"
-
 CONFIG_CHECK="~X86_MSR"
 
 FILECAPS=(
@@ -33,16 +30,16 @@ FILECAPS=(
 	-M 755 cap_sys_rawio usr/bin/likwid-{perfctr,bench,powermeter}
 )
 
+# See Bug 558402
+PATCHES=(
+	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${P}-fix-gnustack.patch"
+	"${FILESDIR}/${P}-config.mk.patch"
+)
+
 S=${WORKDIR}/likwid-likwid-${PV}
 
 src_prepare() {
-	# See Bug 558402
-	epatch "${FILESDIR}"/${P}-Makefile.patch \
-			"${FILESDIR}"/${P}-fix-gnustack.patch \
-			"${FILESDIR}"/${P}-lua-makefile.patch \
-			"${FILESDIR}"/${P}-config.mk.patch \
-			"${FILESDIR}"/${P}-access-daemon.patch
-
 	# Set PREFIX path to include sandbox path
 	sed -e 's:^PREFIX = .*:PREFIX = '${D}'/usr:' -i config.mk || die
 
@@ -60,7 +57,7 @@ src_prepare() {
 
 	# Set path to the access daemon, once installed into the system
 	sed -e "/exeprog/s|TOSTRING(ACCESSDAEMON)|\"/usr/sbin/likwid-accessD\"|" \
-		-i src/accessClient.c || die
+		-i src/access_client.c || die
 
 	# Ensure we build with a non executable stack
 	sed -e "s:CFLAGS += \$(SHARED_CFLAGS):CFLAGS += \$(SHARED_CFLAGS) -g -Wa,--noexecstack:" \
@@ -77,6 +74,8 @@ src_prepare() {
 		# Set the correct FCFLAGS for gcc fortran
 		sed -i '/^FCFLAGS/c\FCFLAGS  = -J ./ -fsyntax-only' make/include_GCC.mk || die
 	fi
+
+	default
 
 }
 
