@@ -2,38 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
-if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64"
-	SRC_URI="http://llvm.org/releases/${PV}/libunwind-${PV}.src.tar.xz"
-else
-	KEYWORDS=""
-	SRC_URI=""
-fi
+
+MY_P="libunwind-${PV}"
+SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
+S="${WORKDIR}/${MY_P}.src"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="+static-libs"
 
 DEPEND=""
 RDEPEND="!sys-libs/libunwind"
 
-src_unpack() {
-	default
-	S="${WORKDIR}/libunwind-${PV}.src"
-}
-
 src_prepare() {
+	default
 	cp "${FILESDIR}/Makefile" src/ || die
 }
 
 src_compile() {
-	cd src || die
-	emake shared
-	use static-libs && emake static
+	emake -C src shared
+	use static-libs && emake -C src static
 }
 
 src_install() {
