@@ -50,7 +50,7 @@ src_install() {
 	insinto /etc/powerdns
 	doins "${FILESDIR}"/recursor.conf
 
-	doinitd "${FILESDIR}"/precursor
+	doinitd "${FILESDIR}"/pdns-recursor
 
 	# Pretty ugly, uh?
 	dodir /var/lib/powerdns/var/lib
