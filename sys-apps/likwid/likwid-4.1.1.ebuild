@@ -6,13 +6,13 @@ EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit eutils fcaps linux-info multilib fortran-2
+inherit fcaps linux-info fortran-2
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
 HOMEPAGE="https://github.com/rrze-likwid/likwid"
 SRC_URI="https://github.com/RRZE-HPC/likwid/archive/likwid-4.1.1.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="fortran"
