@@ -44,11 +44,16 @@ src_configure() {
 }
 
 src_install() {
-	dosbin pdns_recursor rec_control
-	doman pdns_recursor.1 rec_control.1
+	default
 
-	insinto /etc/powerdns
-	doins "${FILESDIR}"/recursor.conf
+	mv "${D}"/etc/powerdns/recursor.conf{-dist,}
+
+	# set defaults: setuid=nobody, setgid=nobody
+	sed -i \
+		-e 's/^# set\([ug]\)id=$/set\1id=nobody/' \
+		-e 's/^# quiet=/quiet=on/' \
+		-e 's/^# chroot=/chroot=\/var\/lib\/powerdns/' \
+		"${D}"/etc/powerdns/recursor.conf
 
 	doinitd "${FILESDIR}"/pdns-recursor
 

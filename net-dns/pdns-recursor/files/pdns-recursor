@@ -17,12 +17,12 @@ start() {
 
 stop() {
 	ebegin "Stopping PowerDNS Recursor"
-	/usr/sbin/rec_control quit &>/dev/null
+	/usr/bin/rec_control quit &>/dev/null
 	eend $?
 }
 
 ping() {
 	ebegin "Pinging PowerDNS Recursor"
-	/usr/sbin/rec_control ping &>/dev/null
+	/usr/bin/rec_control ping &>/dev/null
 	eend $?
 }
