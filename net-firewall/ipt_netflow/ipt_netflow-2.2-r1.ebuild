@@ -9,11 +9,11 @@ inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
 HOMEPAGE="http://sourceforge.net/projects/ipt-netflow"
-SRC_URI="http://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${MY_P}.tgz"
+SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="debug snmp"
 
@@ -50,6 +50,9 @@ src_prepare() {
 
 	# bug #455984
 	eapply "${FILESDIR}/${PN}-2.0-configure.patch"
+
+	# Compatibility with kernel 4.6
+	eapply "${FILESDIR}/${P}-linux-4.6.patch"
 
 	eapply_user
 }
