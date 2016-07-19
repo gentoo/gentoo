@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/SchedMD/slurm.git"
-	INHERIT_GIT="git-2"
+	INHERIT_GIT="git-r3"
 	SRC_URI=""
 	KEYWORDS=""
 else
@@ -18,19 +18,19 @@ else
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="http://www.schedmd.com/download/total/${MY_P}.tar.bz2"
+	SRC_URI="http://www.schedmd.com/download/latest/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools base eutils pam perl-module user ${INHERIT_GIT}
+inherit autotools eutils pam perl-module user ${INHERIT_GIT}
 
 DESCRIPTION="SLURM: A Highly Scalable Resource Manager"
 HOMEPAGE="http://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="lua maui multiple-slurmd +munge mysql pam perl postgres ssl static-libs torque ypbind"
+IUSE="lua multiple-slurmd +munge mysql pam perl ssl static-libs torque"
 
 DEPEND="
 	!sys-cluster/torque
@@ -38,16 +38,13 @@ DEPEND="
 	!net-analyzer/sinfo
 	mysql? ( virtual/mysql )
 	munge? ( sys-auth/munge )
-	ypbind? ( net-nds/ypbind )
 	pam? ( virtual/pam )
-	postgres? ( dev-db/postgresql )
-	ssl? ( dev-libs/openssl )
-	lua? ( dev-lang/lua )
+	ssl? ( dev-libs/openssl:0= )
+	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
 	>=sys-apps/hwloc-1.1.1-r1"
 RDEPEND="${DEPEND}
-	dev-libs/libcgroup
-	maui? ( sys-cluster/maui[slurm] )"
+	dev-libs/libcgroup"
 
 REQUIRED_USE="torque? ( perl )"
 
@@ -57,7 +54,7 @@ LIBSLURMDB_PERL_S="${WORKDIR}/${P}/contribs/perlapi/libslurmdb/perl"
 RESTRICT="primaryuri"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.5.4-nogtk.patch"
+	"${FILESDIR}/${P}-disable-sview.patch"
 )
 
 src_unpack() {
@@ -74,16 +71,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Gentoo uses /sys/fs/cgroup instead of /cgroup
-	# FIXME: Can the "^/cgroup" and "\([ =\"]\)/cgroup" patterns be merged?
-	sed \
-		-e 's|\([ =\"]\)/cgroup|\1/sys/fs/cgroup|g' \
-		-e "s|^/cgroup|/sys/fs/cgroup|g" \
-		-i "${S}/doc/man/man5/cgroup.conf.5" \
-		-i "${S}/etc/cgroup.release_common.example" \
-		-i "${S}/src/common/xcgroup_read_config.c" \
-			|| die "Can't sed /cgroup for /sys/fs/cgroup"
-	# and pids should go to /var/run/slurm
+	if [ ${#PATCHES[0]} -ne 0 ]; then
+		epatch ${PATCHES[@]}
+	fi
+	eapply_user
+	# pids should go to /var/run/slurm
 	sed -e 's:/var/run/slurmctld.pid:/var/run/slurm/slurmctld.pid:g' \
 		-e 's:/var/run/slurmd.pid:/var/run/slurm/slurmd.pid:g' \
 		-i "${S}/etc/slurm.conf.example" \
@@ -97,14 +89,7 @@ src_prepare() {
 	sed -e 's:/tmp:/var/tmp:g' \
 		-i "${S}/etc/slurm.conf.example" \
 			|| die "Can't sed for StateSaveLocation=*./tmp"
-	# disable sview since it need gtk+
-	sed -e '/sview/d' \
-		-i configure.ac
-	sed -e 's:sview::g' \
-		-i src/Makefile.am
-	# apply patches
-	epatch "${PATCHES[@]}"
-	elibtoolize
+
 	eautoreconf
 }
 
@@ -117,7 +102,6 @@ src_configure() {
 			)
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
-	use postgres || myconf+=( --without-pg_config )
 	econf "${myconf[@]}" \
 		$(use_enable pam) \
 		$(use_with ssl) \
@@ -206,9 +190,6 @@ src_install() {
 pkg_preinst() {
 	if use munge; then
 		sed -i 's,\(SLURM_USE_MUNGE=\).*,\11,' "${D}"etc/conf.d/slurm || die
-	fi
-	if use ypbind; then
-		sed -i 's,\(SLURM_USE_YPBIND=\).*,\11,' "${D}"etc/conf.d/slurm || die
 	fi
 }
 
