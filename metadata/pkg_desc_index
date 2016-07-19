@@ -15576,7 +15576,7 @@ sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instrumen
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
 sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
-sci-chemistry/GromacsWrapper 0.3.1 0.3.2: Python framework for Gromacs
+sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
 sci-chemistry/acpype 389: AnteChamber PYthon Parser interfacE
 sci-chemistry/ambertools 1.5-r1: A suite for carrying out complete molecular mechanics investigations
@@ -16980,7 +16980,7 @@ sys-cluster/projections 6.2.1: Projections Performance Analysis Framework for Ch
 sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack for Heartbeat / Pacemaker
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
-sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
+sys-cluster/slurm 16.05.2: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.5.0-r2 2.8.0 2.9.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
