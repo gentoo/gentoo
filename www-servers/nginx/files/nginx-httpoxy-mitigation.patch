@@ -1,0 +1,33 @@
+httpoxy mitigation
+
+See https://httpoxy.org/ and https://www.nginx.com/blog/?p=41962 for details.
+---
+ conf/fastcgi.conf   | 3 +++
+ conf/fastcgi_params | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/conf/fastcgi.conf b/conf/fastcgi.conf
+index 091738c..9f7e192 100644
+--- a/conf/fastcgi.conf
++++ b/conf/fastcgi.conf
+@@ -24,3 +24,6 @@ fastcgi_param  SERVER_NAME        $server_name;
+ 
+ # PHP only, required if PHP was built with --enable-force-cgi-redirect
+ fastcgi_param  REDIRECT_STATUS    200;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++fastcgi_param  HTTP_PROXY         "";
+diff --git a/conf/fastcgi_params b/conf/fastcgi_params
+index 28decb9..3be3a95 100644
+--- a/conf/fastcgi_params
++++ b/conf/fastcgi_params
+@@ -23,3 +23,6 @@ fastcgi_param  SERVER_NAME        $server_name;
+ 
+ # PHP only, required if PHP was built with --enable-force-cgi-redirect
+ fastcgi_param  REDIRECT_STATUS    200;
++
++# httpoxy mitigation (https://httpoxy.org/ https://www.nginx.com/blog/?p=41962)
++fastcgi_param  HTTP_PROXY         "";
+-- 
+2.9.2
+
