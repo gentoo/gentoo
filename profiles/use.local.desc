@@ -1324,7 +1324,6 @@ dev-db/mariadb:systemtap - Build support for profiling and tracing using dev-uti
 dev-db/mariadb:test - Install upstream testsuites for end use.
 dev-db/mariadb:tokudb - Add support for TokuDB storage engine
 dev-db/mariadb:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
-dev-db/mariadb-galera:client-libs - Build the libmysqlclient libraries
 dev-db/mariadb-galera:embedded - Build embedded server (libmysqld)
 dev-db/mariadb-galera:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
 dev-db/mariadb-galera:jemalloc - Use dev-libs/jemalloc for allocations.
@@ -1340,7 +1339,6 @@ dev-db/mariadb-galera:sst-xtrabackup - Add tools needed to support the xtrabacku
 dev-db/mariadb-galera:systemtap - Build support for profiling and tracing using dev-util/systemtap
 dev-db/mariadb-galera:test - Install upstream testsuites for end use.
 dev-db/mariadb-galera:tokudb - Add support for TokuDB storage engine
-dev-db/mariadb-galera:tools - Build the command line tools (mysql, mysqldump, mysqladmin, etc)
 dev-db/mariadb-galera:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
 dev-db/maxscale:jemalloc - Use dev-libs/jemalloc for allocations
 dev-db/maxscale:rabbitmq - Add support for RabbitMQ message queue
