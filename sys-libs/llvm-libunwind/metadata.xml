@@ -5,4 +5,8 @@
 		<email>zhanglei.april@gmail.com</email>
 		<name>Lei Zhang</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo ToolChain Project</name>
+	</maintainer>
 </pkgmetadata>
