@@ -171,7 +171,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
@@ -269,7 +269,7 @@ CDEPEND="
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -320,12 +320,6 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation.patch"
-
-	if use nginx_modules_http_sticky; then
-		cd "${HTTP_STICKY_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http-sticky-nginx-1.11.2.patch
-		cd "${S}" || die
-	fi
 
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
