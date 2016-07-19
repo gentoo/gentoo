@@ -6810,7 +6810,7 @@ dev-php/pecl-http 1.7.6-r2 1.7.6-r3 2.5.6 3.0.1: Extended HTTP Support for PHP
 dev-php/pecl-imagick 3.1.2-r1 3.3.0 3.4.1: PHP wrapper for the ImageMagick library
 dev-php/pecl-libevent 0.1.0-r1: PHP wrapper for libevent
 dev-php/pecl-lzf 1.6.3: This package handles LZF de/compression
-dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r3 3.0.0 3.0.1: PHP extension for parsing and working with RFC822 and MIME compliant messages
+dev-php/pecl-mailparse 2.1.6-r1 2.1.6-r3 3.0.1-r1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.9 1.6.11 1.6.14: Legacy MongoDB database driver for PHP
