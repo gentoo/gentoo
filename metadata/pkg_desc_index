@@ -5325,7 +5325,7 @@ dev-perl/Capture-Tiny 0.300.0 0.360.0 0.420.0: Capture STDOUT and STDERR from Pe
 dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
-dev-perl/Carp-Clan 6.40.0-r1: Report errors from perspective of caller of a clan of modules
+dev-perl/Carp-Clan 6.40.0-r1 6.60.0: Report errors from perspective of caller of a clan of modules
 dev-perl/Chart 2.4.6-r1: The Perl Chart Module
 dev-perl/Chart-Math-Axis 1.60.0-r1: Implements an algorithm to find good values for chart axis
 dev-perl/Cisco-IPPhone 0.50.0-r1: Cisco IP Phone interface using XML Objects
