@@ -93,7 +93,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack "${P}".tar.gz
-	cp "${DISTDIR}"/database-v1.tar.xz "${S}"/test-databases/
+	mkdir -p "${S}"/test/test-databases || die
+	cp "${DISTDIR}"/database-v1.tar.xz "${S}"/test/test-databases/ || die
 }
 
 src_prepare() {
