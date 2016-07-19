@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit eutils flag-o-matic autotools readme.gentoo
 PPP_P="ppp-2.4.7"
 
 DESCRIPTION="A user-mode PPPoE client and server suite for Linux"
-HOMEPAGE="http://www.roaringpenguin.com/pppoe/"
+HOMEPAGE="https://www.roaringpenguin.com/products/pppoe"
 SRC_URI="http://www.roaringpenguin.com/files/download/${P}.tar.gz
 	ftp://ftp.samba.org/pub/ppp/${PPP_P}.tar.gz"
 
