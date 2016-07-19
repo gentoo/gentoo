@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic eutils versionator
 
 DESCRIPTION="The PowerDNS Recursor"
 HOMEPAGE="http://www.powerdns.com/"
@@ -60,4 +60,16 @@ src_install() {
 	# Pretty ugly, uh?
 	dodir /var/lib/powerdns/var/lib
 	dosym ../.. /var/lib/powerdns/var/lib/powerdns
+}
+
+pkg_postinst() {
+	local old
+
+	for old in ${REPLACING_VERSIONS}; do
+		version_compare ${old} 4.0.0-r1
+		[[ $? -eq 1 ]] || continue
+		ewarn "Starting with 4.0.0-r1 the init script has been renamed from precursor"
+		ewarn "to pdns-recursor, please update your runlevels accordingly."
+		break
+	done
 }
