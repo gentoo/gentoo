@@ -27,6 +27,7 @@ else
 	KEYWORDS=""
 fi
 IUSE="elibc_glibc elibc_musl +libcxxrt libunwind +static-libs test"
+REQUIRED_USE="libunwind? ( libcxxrt )"
 
 RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[libunwind?,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] )"
@@ -37,11 +38,6 @@ DEPEND="${RDEPEND}
 DOCS=( CREDITS.TXT )
 
 pkg_setup() {
-	if use libunwind && ! use libcxxrt ; then
-		eerror "Currently libunwind must be used along with libcxxrt. Building"
-		eerror "${PN} against both libsupc++ and libunwind is not supported."
-		die
-	fi
 	if ! use libcxxrt ; then
 		ewarn "You have disabled USE=libcxxrt. This will build ${PN} against"
 		ewarn "libsupc++. Please note that this is not well supported."
