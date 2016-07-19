@@ -56,7 +56,7 @@ pkg_setup() {
 
 src_prepare() {
 	cp -f "${FILESDIR}/Makefile" lib/ || die
-	use elibc_musl && epatch "${FILESDIR}/${PN}-3.8-musl-support.patch"
+	use elibc_musl && epatch "${FILESDIR}/${P}-musl-support.patch"
 	multilib_copy_sources
 }
 
