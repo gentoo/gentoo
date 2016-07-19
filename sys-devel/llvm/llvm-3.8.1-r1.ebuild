@@ -24,7 +24,7 @@ SLOT="0/3.8.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon
-	elibc_musl +sanitizer libcxx compiler-rt
+	elibc_musl +sanitize libcxx compiler-rt
 	kernel_Darwin kernel_FreeBSD"
 
 COMMON_DEPEND="
@@ -303,8 +303,8 @@ multilib_src_configure() {
 			-DCLANG_DEFAULT_RTLIB=$(usex compiler-rt compiler-rt "")
 
 			# compiler-rt's test cases depend on sanitizer
-			-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitizer)
-			-DCOMPILER_RT_INCLUDE_TESTS=$(usex sanitizer)
+			-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+			-DCOMPILER_RT_INCLUDE_TESTS=$(usex sanitize)
 		)
 	fi
 
