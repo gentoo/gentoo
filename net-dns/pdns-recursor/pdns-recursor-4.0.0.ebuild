@@ -36,6 +36,7 @@ pkg_setup() {
 
 src_configure() {
 	econf \
+		--sysconfdir=/etc/powerdns \
 		$(use_enable systemd) \
 		$(use_with lua) \
 		$(use_with luajit) \
