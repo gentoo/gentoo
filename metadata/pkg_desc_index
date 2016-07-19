@@ -16600,7 +16600,7 @@ sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
 sys-apps/less 481 483-r1: Excellent text file viewer
-sys-apps/likwid 3.1.3 4.0.1-r2: A performance-oriented tool suite for x86 multicore environments
+sys-apps/likwid 4.1.1: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18 4.4 4.4-r1: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
 sys-apps/lm_sensors 3.3.4-r1 3.3.5 3.4.0: Hardware Monitoring user-space utilities
