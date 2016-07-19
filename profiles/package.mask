@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (1 Aug 2016)
+# Masked for testing, handling keywords and  collecting more changes
+# before unleashing the huge rebuild on all users. Has gotten musl
+# support and switches to control the default rtlib and C++ library.
+=sys-devel/llvm-3.8.1-r1
+
 # Johannes Huber <johu@gentoo.org> (1 Aug 2016)
 # Masked for removal in 30 days. Dead by upstream. Last release
 # with 15.08. Exported to kde-sunset overlay.
