@@ -3,10 +3,6 @@
 # $Id$
 
 
-# Fabian Groffen <grobian@gentoo.org> (19 Jul 2016)
-# produces -isysroot without argument in FLAGS, bug #589152
-=dev-util/cmake-3.6.0
-
 # Fabian Groffen <grobian@gentoo.org> (31 May 2015)
 # fails to compile due to some missing compilerrt stuff, hints at asan,
 # not sure what the problem actually is
