@@ -1,0 +1,164 @@
+diff --git a/include/llvm/ADT/Triple.h b/include/llvm/ADT/Triple.h
+index e01db0a..bf9361a 100644
+--- a/include/llvm/ADT/Triple.h
++++ b/include/llvm/ADT/Triple.h
+@@ -173,6 +173,9 @@ public:
+     EABI,
+     EABIHF,
+     Android,
++    Musl,
++    MuslEABI,
++    MuslEABIHF,
+ 
+     MSVC,
+     Itanium,
+@@ -544,6 +547,13 @@ public:
+   /// Tests whether the target is Android
+   bool isAndroid() const { return getEnvironment() == Triple::Android; }
+ 
++  /// Tests whether the environment is musl-libc
++  bool isMusl() const {
++    return getEnvironment() == Triple::Musl ||
++           getEnvironment() == Triple::MuslEABI ||
++           getEnvironment() == Triple::MuslEABIHF;
++  }
++
+   /// @}
+   /// @name Mutators
+   /// @{
+diff --git a/lib/Support/Triple.cpp b/lib/Support/Triple.cpp
+index 11afcf7..ad9cffd 100644
+--- a/lib/Support/Triple.cpp
++++ b/lib/Support/Triple.cpp
+@@ -200,6 +200,9 @@ const char *Triple::getEnvironmentTypeName(EnvironmentType Kind) {
+   case EABI: return "eabi";
+   case EABIHF: return "eabihf";
+   case Android: return "android";
++  case Musl: return "musl";
++  case MuslEABI: return "musleabi";
++  case MuslEABIHF: return "musleabihf";
+   case MSVC: return "msvc";
+   case Itanium: return "itanium";
+   case Cygnus: return "cygnus";
+@@ -454,6 +457,9 @@ static Triple::EnvironmentType parseEnvironment(StringRef EnvironmentName) {
+     .StartsWith("code16", Triple::CODE16)
+     .StartsWith("gnu", Triple::GNU)
+     .StartsWith("android", Triple::Android)
++    .StartsWith("musleabihf", Triple::MuslEABIHF)
++    .StartsWith("musleabi", Triple::MuslEABI)
++    .StartsWith("musl", Triple::Musl)
+     .StartsWith("msvc", Triple::MSVC)
+     .StartsWith("itanium", Triple::Itanium)
+     .StartsWith("cygnus", Triple::Cygnus)
+@@ -1431,6 +1437,7 @@ StringRef Triple::getARMCPUForArch(StringRef MArch) const {
+     switch (getEnvironment()) {
+     case llvm::Triple::EABIHF:
+     case llvm::Triple::GNUEABIHF:
++    case llvm::Triple::MuslEABIHF:
+       return "arm1176jzf-s";
+     default:
+       return "arm7tdmi";
+diff --git a/lib/Target/ARM/ARMAsmPrinter.cpp b/lib/Target/ARM/ARMAsmPrinter.cpp
+index f3813c8..45e8c4a 100644
+--- a/lib/Target/ARM/ARMAsmPrinter.cpp
++++ b/lib/Target/ARM/ARMAsmPrinter.cpp
+@@ -541,7 +541,8 @@ void ARMAsmPrinter::EmitEndOfAsmFile(Module &M) {
+   ARMTargetStreamer &ATS = static_cast<ARMTargetStreamer &>(TS);
+ 
+   if (OptimizationGoals > 0 &&
+-      (Subtarget->isTargetAEABI() || Subtarget->isTargetGNUAEABI()))
++      (Subtarget->isTargetAEABI() || Subtarget->isTargetGNUAEABI() ||
++       Subtarget->isTargetMuslAEABI()))
+     ATS.emitAttribute(ARMBuildAttrs::ABI_optimization_goals, OptimizationGoals);
+   OptimizationGoals = -1;
+ 
+diff --git a/lib/Target/ARM/ARMISelLowering.cpp b/lib/Target/ARM/ARMISelLowering.cpp
+index a2daa89..3b2c0bb 100644
+--- a/lib/Target/ARM/ARMISelLowering.cpp
++++ b/lib/Target/ARM/ARMISelLowering.cpp
+@@ -254,7 +254,7 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
+   // RTLIB
+   if (Subtarget->isAAPCS_ABI() &&
+       (Subtarget->isTargetAEABI() || Subtarget->isTargetGNUAEABI() ||
+-       Subtarget->isTargetAndroid())) {
++       Subtarget->isTargetMuslAEABI() || Subtarget->isTargetAndroid())) {
+     static const struct {
+       const RTLIB::Libcall Op;
+       const char * const Name;
+@@ -787,7 +787,8 @@ ARMTargetLowering::ARMTargetLowering(const TargetMachine &TM,
+   setOperationAction(ISD::SREM,  MVT::i32, Expand);
+   setOperationAction(ISD::UREM,  MVT::i32, Expand);
+   // Register based DivRem for AEABI (RTABI 4.2)
+-  if (Subtarget->isTargetAEABI() || Subtarget->isTargetAndroid()) {
++  if (Subtarget->isTargetAEABI() || Subtarget->isTargetAndroid() ||
++      Subtarget->isTargetMuslAEABI()) {
+     setOperationAction(ISD::SREM, MVT::i64, Custom);
+     setOperationAction(ISD::UREM, MVT::i64, Custom);
+ 
+@@ -11651,7 +11652,8 @@ static TargetLowering::ArgListTy getDivRemArgList(
+ }
+ 
+ SDValue ARMTargetLowering::LowerDivRem(SDValue Op, SelectionDAG &DAG) const {
+-  assert((Subtarget->isTargetAEABI() || Subtarget->isTargetAndroid()) &&
++  assert((Subtarget->isTargetAEABI() || Subtarget->isTargetAndroid() ||
++          Subtarget->isTargetMuslAEABI()) &&
+          "Register-based DivRem lowering only");
+   unsigned Opcode = Op->getOpcode();
+   assert((Opcode == ISD::SDIVREM || Opcode == ISD::UDIVREM) &&
+diff --git a/lib/Target/ARM/ARMSubtarget.h b/lib/Target/ARM/ARMSubtarget.h
+index 4d54e57..fa1c516 100644
+--- a/lib/Target/ARM/ARMSubtarget.h
++++ b/lib/Target/ARM/ARMSubtarget.h
+@@ -399,14 +399,21 @@ public:
+             TargetTriple.getEnvironment() == Triple::GNUEABIHF) &&
+            !isTargetDarwin() && !isTargetWindows();
+   }
++  bool isTargetMuslAEABI() const {
++    return (TargetTriple.getEnvironment() == Triple::MuslEABI ||
++            TargetTriple.getEnvironment() == Triple::MuslEABIHF) &&
++           !isTargetDarwin() && !isTargetWindows();
++  }
+ 
+   // ARM Targets that support EHABI exception handling standard
+   // Darwin uses SjLj. Other targets might need more checks.
+   bool isTargetEHABICompatible() const {
+     return (TargetTriple.getEnvironment() == Triple::EABI ||
+             TargetTriple.getEnvironment() == Triple::GNUEABI ||
++            TargetTriple.getEnvironment() == Triple::MuslEABI ||
+             TargetTriple.getEnvironment() == Triple::EABIHF ||
+             TargetTriple.getEnvironment() == Triple::GNUEABIHF ||
++            TargetTriple.getEnvironment() == Triple::MuslEABIHF ||
+             isTargetAndroid()) &&
+            !isTargetDarwin() && !isTargetWindows();
+   }
+@@ -414,6 +421,7 @@ public:
+   bool isTargetHardFloat() const {
+     // FIXME: this is invalid for WindowsCE
+     return TargetTriple.getEnvironment() == Triple::GNUEABIHF ||
++           TargetTriple.getEnvironment() == Triple::MuslEABIHF ||
+            TargetTriple.getEnvironment() == Triple::EABIHF ||
+            isTargetWindows() || isAAPCS16_ABI();
+   }
+diff --git a/lib/Target/ARM/ARMTargetMachine.cpp b/lib/Target/ARM/ARMTargetMachine.cpp
+index fca1901..a96b1f9 100644
+--- a/lib/Target/ARM/ARMTargetMachine.cpp
++++ b/lib/Target/ARM/ARMTargetMachine.cpp
+@@ -99,6 +99,8 @@ computeTargetABI(const Triple &TT, StringRef CPU,
+     case llvm::Triple::Android:
+     case llvm::Triple::GNUEABI:
+     case llvm::Triple::GNUEABIHF:
++    case llvm::Triple::MuslEABI:
++    case llvm::Triple::MuslEABIHF:
+     case llvm::Triple::EABIHF:
+     case llvm::Triple::EABI:
+       TargetABI = ARMBaseTargetMachine::ARM_ABI_AAPCS;
+@@ -192,7 +194,8 @@ ARMBaseTargetMachine::ARMBaseTargetMachine(const Target &T, const Triple &TT,
+   // Default to triple-appropriate EABI
+   if (Options.EABIVersion == EABI::Default ||
+       Options.EABIVersion == EABI::Unknown) {
+-    if (Subtarget.isTargetGNUAEABI())
++    // musl is compatible with glibc with regard to EABI version
++    if (Subtarget.isTargetGNUAEABI() || Subtarget.isTargetMuslAEABI())
+       this->Options.EABIVersion = EABI::GNU;
+     else
+       this->Options.EABIVersion = EABI::EABI5;

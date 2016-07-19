@@ -1,0 +1,108 @@
+diff --git a/lib/Basic/Targets.cpp b/lib/Basic/Targets.cpp
+index 9c6eaff..92872ab 100644
+--- a/lib/Basic/Targets.cpp
++++ b/lib/Basic/Targets.cpp
+@@ -4513,6 +4513,8 @@ public:
+       case llvm::Triple::Android:
+       case llvm::Triple::GNUEABI:
+       case llvm::Triple::GNUEABIHF:
++      case llvm::Triple::MuslEABI:
++      case llvm::Triple::MuslEABIHF:
+         setABI("aapcs-linux");
+         break;
+       case llvm::Triple::EABIHF:
+diff --git a/lib/CodeGen/TargetInfo.cpp b/lib/CodeGen/TargetInfo.cpp
+index 04edc0c..298b2cc 100644
+--- a/lib/CodeGen/TargetInfo.cpp
++++ b/lib/CodeGen/TargetInfo.cpp
+@@ -4811,6 +4811,8 @@ public:
+     case llvm::Triple::EABIHF:
+     case llvm::Triple::GNUEABI:
+     case llvm::Triple::GNUEABIHF:
++    case llvm::Triple::MuslEABI:
++    case llvm::Triple::MuslEABIHF:
+       return true;
+     default:
+       return false;
+@@ -4821,6 +4823,7 @@ public:
+     switch (getTarget().getTriple().getEnvironment()) {
+     case llvm::Triple::EABIHF:
+     case llvm::Triple::GNUEABIHF:
++    case llvm::Triple::MuslEABIHF:
+       return true;
+     default:
+       return false;
+@@ -7548,7 +7551,8 @@ const TargetCodeGenInfo &CodeGenModule::getTargetCodeGenInfo() {
+         Kind = ARMABIInfo::AAPCS16_VFP;
+       else if (CodeGenOpts.FloatABI == "hard" ||
+                (CodeGenOpts.FloatABI != "soft" &&
+-                Triple.getEnvironment() == llvm::Triple::GNUEABIHF))
++                (Triple.getEnvironment() == llvm::Triple::GNUEABIHF ||
++                 Triple.getEnvironment() == llvm::Triple::MuslEABIHF)))
+         Kind = ARMABIInfo::AAPCS_VFP;
+ 
+       return *(TheTargetCodeGenInfo = new ARMTargetCodeGenInfo(Types, Kind));
+diff --git a/lib/Driver/Tools.cpp b/lib/Driver/Tools.cpp
+index b7ac24f..2a529fb 100644
+--- a/lib/Driver/Tools.cpp
++++ b/lib/Driver/Tools.cpp
+@@ -724,13 +724,19 @@ arm::FloatABI arm::getARMFloatABI(const ToolChain &TC, const ArgList &Args) {
+     default:
+       switch (Triple.getEnvironment()) {
+       case llvm::Triple::GNUEABIHF:
++      case llvm::Triple::MuslEABIHF:
+       case llvm::Triple::EABIHF:
+         ABI = FloatABI::Hard;
+         break;
+       case llvm::Triple::GNUEABI:
++      case llvm::Triple::MuslEABI:
+       case llvm::Triple::EABI:
+         // EABI is always AAPCS, and if it was not marked 'hard', it's softfp
+-        ABI = FloatABI::SoftFP;
++        //
++        // Also consider triples like armv7a-hardfloat-linux-eabi, where 'hard'
++        // is marked in the vender field.
++        ABI = (Triple.getVendorName() == "hardfloat") ?
++            FloatABI::Hard : FloatABI::SoftFP;
+         break;
+       case llvm::Triple::Android:
+         ABI = (SubArch == 7) ? FloatABI::SoftFP : FloatABI::Soft;
+@@ -968,6 +974,8 @@ void Clang::AddARMTargetArgs(const llvm::Triple &Triple, const ArgList &Args,
+     case llvm::Triple::Android:
+     case llvm::Triple::GNUEABI:
+     case llvm::Triple::GNUEABIHF:
++    case llvm::Triple::MuslEABI:
++    case llvm::Triple::MuslEABIHF:
+       ABIName = "aapcs-linux";
+       break;
+     case llvm::Triple::EABIHF:
+@@ -8632,6 +8640,29 @@ static std::string getLinuxDynamicLinker(const ArgList &Args,
+       return "/system/bin/linker64";
+     else
+       return "/system/bin/linker";
++  } else if (ToolChain.getTriple().isMusl()) {
++    std::string ArchName;
++    bool IsArm = false;
++    switch (Arch) {
++    case llvm::Triple::arm:
++    case llvm::Triple::thumb:
++      ArchName = "arm";
++      IsArm = true;
++      break;
++    case llvm::Triple::armeb:
++    case llvm::Triple::thumbeb:
++      ArchName = "armeb";
++      IsArm = true;
++      break;
++    default:
++      ArchName = ToolChain.getTriple().getArchName().str();
++    }
++    if (IsArm &&
++        (ToolChain.getTriple().getEnvironment() == llvm::Triple::MuslEABIHF ||
++         arm::getARMFloatABI(ToolChain, Args) == arm::FloatABI::Hard))
++      ArchName += "hf";
++
++    return "/lib/ld-musl-" + ArchName + ".so.1";
+   } else if (Arch == llvm::Triple::x86 || Arch == llvm::Triple::sparc ||
+              Arch == llvm::Triple::sparcel)
+     return "/lib/ld-linux.so.2";

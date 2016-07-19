@@ -20,11 +20,14 @@
    4. LLVM does not imply things that you would expect from a high-level virtual machine. It does not require garbage collection or run-time code generation (In fact, LLVM makes a great static compiler!). Note that optional LLVM components can be used to build high-level virtual machines and other systems that need these services.</longdescription>
 	<use>
 		<flag name="clang">Build the clang C/C++ compiler</flag>
+		<flag name="default-compiler-rt">Use compiler-rt instead of libgcc as the default rtlib for clang</flag>
+		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
 		<flag name="doc">Build and install the HTML documentation and regenerate the man pages</flag>
 		<flag name="gold">Build the gold linker plugin</flag>
 		<flag name="lldb">Build the lldb debugger</flag>
 		<flag name="multitarget">Build all host targets (default: host only)</flag>
 		<flag name="ncurses">Support querying terminal properties using ncurses' terminfo</flag>
+		<flag name="sanitize">Build compiler-rt's sanitizers</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer (requires USE=clang)</flag>
 	</use>
 </pkgmetadata>
