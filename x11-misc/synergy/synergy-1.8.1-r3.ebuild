@@ -96,7 +96,7 @@ src_test() {
 src_install () {
 	dobin bin/${PN}{c,s} bin/syntool
 
-	insinto /usr/$(get_libdir)/${PN}/plugins
+	exeinto /usr/$(get_libdir)/${PN}/plugins
 	doexe bin/plugins/libns.so
 
 	if use qt4 ; then
