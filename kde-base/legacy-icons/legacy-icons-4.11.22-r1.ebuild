@@ -14,7 +14,7 @@ SRC_URI="
 	mirror://kde/stable/applications/15.08.3/src/libksane-15.08.3.tar.xz
 "
 
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND=""
