@@ -1,0 +1,12 @@
+diff --git a/src/runtime/runtime-gdb_test.go b/src/runtime/runtime-gdb_test.go
+index 6ebc69a..648092a 100644
+--- a/src/runtime/runtime-gdb_test.go
++++ b/src/runtime/runtime-gdb_test.go
+@@ -87,6 +87,7 @@ func TestGdbPython(t *testing.T) {
+ 
+ 	args := []string{"-nx", "-q", "--batch", "-iex",
+ 		fmt.Sprintf("add-auto-load-safe-path %s/src/runtime", runtime.GOROOT()),
++		"-ex", "set startup-with-shell off",
+ 		"-ex", "info auto-load python-scripts",
+ 		"-ex", "br main.go:10",
+ 		"-ex", "run",
