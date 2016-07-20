@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,9 +12,9 @@ SRC_URI="https://github.com/cmus/cmus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="aac alsa ao cue cdio cddb discid debug examples +flac jack libsamplerate
+IUSE="aac alsa ao cue cdio cddb discid debug examples ffmpeg +flac jack libsamplerate
 	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio tremor +unicode
-	+vorbis wavpack wma"
+	+vorbis wavpack"
 
 CDEPEND="sys-libs/ncurses[unicode?]
 	aac? ( media-libs/faad2 )
@@ -24,6 +24,7 @@ CDEPEND="sys-libs/ncurses[unicode?]
 	cdio? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
 	discid? ( media-libs/libdiscid )
+	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
 	jack? ( media-sound/jack-audio-connection-kit )
 	libsamplerate? ( media-libs/libsamplerate )
@@ -36,8 +37,7 @@ CDEPEND="sys-libs/ncurses[unicode?]
 	pulseaudio? ( media-sound/pulseaudio )
 	tremor? ( media-libs/tremor )
 	!tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) )
-	wavpack? ( media-sound/wavpack )
-	wma? ( media-video/ffmpeg:= )"
+	wavpack? ( media-sound/wavpack )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -101,4 +101,9 @@ src_install() {
 	if use pidgin; then
 		newbin contrib/cmus-updatepidgin.py cmus-updatepidgin
 	fi
+}
+
+pkg_postinst() {
+	einfo "USE flag 'wma' was replaced by 'ffmpeg'"
+	einfo "Details here - https://bugs.gentoo.org/show_bug.cgi?id=553834"
 }
