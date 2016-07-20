@@ -4340,7 +4340,6 @@ media-sound/cmus:discid - enable reading the ID of the inserted CD
 media-sound/cmus:opus - enable support for media-libs/opusfile
 media-sound/cmus:pidgin - install support script for net-im/pidgin
 media-sound/cmus:tremor - use libivorbis from media-libs/tremor instead of media-libs/libvorbis
-media-sound/cmus:wma - add support for Windows Media Audio
 media-sound/csound:beats - Build the beats score frontend
 media-sound/csound:chua - Build the chua opcodes
 media-sound/csound:csoundac - Build the CsoundAC extension module
