@@ -14,13 +14,14 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
@@ -38,6 +39,8 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
+# bug 587170 for frameworkintegration
 RDEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep frameworkintegration)
 	!kde-misc/rsibreak:4
 "
