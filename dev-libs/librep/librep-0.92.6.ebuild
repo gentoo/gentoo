@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit elisp-common eutils flag-o-matic
+inherit autotools elisp-common eutils flag-o-matic
 
 DESCRIPTION="Shared library implementing a Lisp dialect"
 HOMEPAGE="http://librep.sourceforge.net/"
@@ -35,6 +35,9 @@ src_prepare() {
 	# fix #570072 by restoring pre-GCC5 inline semantics
 	append-cflags -std=gnu89
 	default
+
+	# The configure script is missing from this version.
+	eautoreconf
 }
 
 src_configure() {
@@ -58,7 +61,6 @@ src_install() {
 	default
 	prune_libtool_files --modules
 
-	docinto doc
 	dodoc doc/*
 
 	if use emacs; then
