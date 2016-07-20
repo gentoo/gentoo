@@ -5,7 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="yes"
 
-inherit gnome2 multilib readme.gentoo versionator
+inherit gnome2 multilib autotools readme.gentoo versionator
 
 MATE_BRANCH="$(get_version_component_range 1-2)"
 
@@ -62,6 +62,12 @@ DEPEND="${RDEPEND}
 	x11-proto/xextproto:0
 	x11-proto/xf86miscproto:0
 	virtual/pkgconfig:*"
+
+src_prepare() {
+	gnome2_src_prepare
+	epatch "${FILESDIR}/mate-screensaver-1.10-fix-systemd-configure.ac.patch"
+	eautoreconf
+}
 
 src_configure() {
 	gnome2_src_configure \
