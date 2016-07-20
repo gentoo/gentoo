@@ -22,10 +22,10 @@ RDEPEND="sys-libs/e2fsprogs-libs
 	dev-libs/libxml2
 	dev-lang/perl
 	sys-libs/zlib
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite:3 )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:=[server] )
 	pcre? ( dev-libs/libpcre )
 	pam? ( virtual/pam )
 "
@@ -96,7 +96,7 @@ src_install() {
 	done
 
 	diropts -g kannel -m0770
-	keepdir /var/log/kannel /var/run/kannel
+	keepdir /var/log/kannel
 }
 
 pkg_postinst() {
