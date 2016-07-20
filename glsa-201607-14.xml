@@ -7,13 +7,14 @@
   </synopsis>
   <product type="ebuild">ansible</product>
   <announced>July 20, 2016</announced>
-  <revised>July 20, 2016: 1</revised>
+  <revised>July 20, 2016: 2</revised>
   <bug>578814</bug>
   <access>local</access>
   <affected>
     <package name="app-admin/ansible" auto="yes" arch="*">
-      <unaffected range="ge">1.9.6</unaffected>
-      <vulnerable range="lt">1.9.6</vulnerable>
+      <unaffected range="ge">2.0.2.0-r1</unaffected>
+      <unaffected range="rge">1.9.6</unaffected>
+      <vulnerable range="lt">2.0.2.0-r1</vulnerable>
     </package>
   </affected>
   <background>
@@ -52,5 +53,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3096">CVE-2016-3096</uri>
   </references>
   <metadata tag="requester" timestamp="Sat, 25 Jun 2016 23:46:35 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:28:01 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:34:27 +0000">ackle</metadata>
 </glsa>
