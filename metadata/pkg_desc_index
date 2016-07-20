@@ -144,7 +144,7 @@ app-admin/makepasswd 1.10: Random password generator
 app-admin/mate-system-tools 1.8.1: Tools aimed to make easy the administration of UNIX systems
 app-admin/matter 254: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
-app-admin/mcollective 2.8.0: Framework to build server orchestration or parallel job execution systems
+app-admin/mcollective 2.8.0 2.8.8: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
@@ -2949,7 +2949,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Tra
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.6.30.76.3: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.31.77.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.15 2.2.17: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
@@ -4393,7 +4393,7 @@ dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Has
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnat-gpl 3.4.5.2005 3.4.6.2006-r1 4.1.3.2007 4.1.3.2008-r2: GNAT Ada Compiler - AdaCore GPL version
 dev-lang/gnu-smalltalk 3.2.4: GNU Smalltalk
-dev-lang/go 1.6-r2 1.6.1 1.6.2 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.6-r2 1.6.1 1.6.2 1.6.3 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
 dev-lang/helium 1.6 1.8.1: The Helium Compiler
