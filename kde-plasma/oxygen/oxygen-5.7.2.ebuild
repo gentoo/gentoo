@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="KDE window manager theme"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/oxygen"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="wayland"
 
 RDEPEND="
 	$(add_frameworks_dep frameworkintegration)
@@ -20,7 +20,6 @@ RDEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_plasma_dep kdecoration)
@@ -29,9 +28,18 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	x11-libs/libxcb
+	wayland? ( $(add_frameworks_dep kwayland) )
 	!kde-base/kdebase-cursors:4
 	!kde-base/oxygen:4
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep kservice)
 "
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_find_package wayland KF5Wayland)
+	)
+
+	kde5_src_configure
+}
