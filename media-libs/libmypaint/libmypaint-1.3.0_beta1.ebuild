@@ -5,7 +5,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1
+inherit python-any-r1 xdg-utils
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
@@ -39,6 +39,11 @@ RDEPEND="${CDEPEND}
 	"
 
 S="${WORKDIR}"/${MY_P}
+
+src_prepare() {
+	xdg_environment_reset
+	eapply_user
+}
 
 src_configure() {
 	econf \
