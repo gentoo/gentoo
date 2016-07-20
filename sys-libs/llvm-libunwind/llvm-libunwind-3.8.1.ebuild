@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit cmake-utils
+
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
 
@@ -21,15 +23,23 @@ RDEPEND="!sys-libs/libunwind"
 
 src_prepare() {
 	default
-	cp "${FILESDIR}/Makefile" src/ || die
+	eapply "${FILESDIR}/libunwind-3.8-cmake.patch"
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DLLVM_CONFIG=OFF
+		-DLIBUNWIND_BUILT_STANDALONE=ON
+		-DLIBUNWIND_ENABLE_STATIC=$(usex static-libs)
+	)
+
+	cmake-utils_src_configure
 }
 
 src_compile() {
-	emake -C src shared
-	use static-libs && emake -C src static
+	cmake-utils_src_compile
 }
 
 src_install() {
-	dolib.so src/libunwind.so*
-	use static-libs && dolib.a src/libunwind.a
+	cmake-utils_src_install
 }
