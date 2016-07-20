@@ -245,15 +245,6 @@ dev-ml/typehashlib
 # Integrated in media-video/bashnapi. Removal in 30 days.
 media-video/subotage
 
-# Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
-# Ancient, untested, never unmasked. Removal in 30 days. Bug 586172.
-sys-auth/pam_keystore
-
-# Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
-# Fails to build. Unmaintained. Dead upstream.
-# Masked for removal in 30 days. Bug 586348.
-net-misc/mdidentd
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
