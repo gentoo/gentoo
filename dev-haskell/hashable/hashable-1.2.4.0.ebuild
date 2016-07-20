@@ -17,7 +17,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="+cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 +gmp"
+IUSE="+cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
 
 RDEPEND=">=dev-haskell/text-0.11.0.5:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
@@ -34,7 +34,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag gmp integer-gmp) \
 		$(cabal_flag cpu_flags_x86_sse2 sse2) \
 		$(cabal_flag cpu_flags_x86_sse4_1 sse41)
 }
