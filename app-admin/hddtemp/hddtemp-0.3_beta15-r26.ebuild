@@ -49,6 +49,7 @@ PATCHES=(
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+	mv "${S}"/configure.{in,ac} || die
 	AT_M4DIR="m4" eautoreconf
 }
 
