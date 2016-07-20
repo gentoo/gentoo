@@ -65,6 +65,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kitemmodels)
 	$(add_qt_dep qtxml)
 	!<kde-apps/kcontrol-15.08.0[handbook]
+	!<kde-apps/kde4-l10n-16.04.3
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kdoctools)
