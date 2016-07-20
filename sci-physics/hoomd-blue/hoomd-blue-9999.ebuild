@@ -14,8 +14,8 @@ HOMEPAGE="http://codeblue.umich.edu/hoomd-blue/"
 EGIT_REPO_URI="https://bitbucket.org/glotzer/${PN}.git"
 
 if [[ ${PV} != 9999 ]]; then
+	KEYWORDS="~amd64"
 	EGIT_COMMIT="v${PV}"
-	PATCHES=( "${FILESDIR}/${P}-cxx11.patch" )
 fi
 
 LICENSE="hoomd-blue"
@@ -30,11 +30,9 @@ RDEPEND="${PYTHON_DEPS}
 	zlib? ( sys-libs/zlib )
 	dev-libs/boost:=[threads,python,mpi,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-	#doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	use cuda && cuda_src_prepare
-
 	cmake-utils_src_prepare
 }
 
@@ -48,9 +46,4 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX=$(python_get_sitedir)
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	#use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/hoomd-*doc* )
-	cmake-utils_src_install
 }
