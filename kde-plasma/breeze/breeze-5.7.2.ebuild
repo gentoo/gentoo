@@ -9,7 +9,7 @@ inherit kde5 multibuild
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="qt4"
+IUSE="qt4 wayland"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep frameworkintegration)
@@ -19,7 +19,6 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_plasma_dep kdecoration)
@@ -32,6 +31,7 @@ COMMON_DEPEND="
 		kde-base/kdelibs:4
 		x11-libs/libX11
 	)
+	wayland? ( $(add_frameworks_dep kwayland) )
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kpackage)
@@ -48,7 +48,9 @@ pkg_setup() {
 
 src_configure() {
 	myconfigure() {
-		local mycmakeargs=()
+		local mycmakeargs=(
+			$(cmake-utils_use_find_package wayland KF5Wayland)
+		)
 
 		if [[ ${MULTIBUILD_VARIANT} = qt4 ]] ; then
 			mycmakeargs+=( -DUSE_KDE4=true )
