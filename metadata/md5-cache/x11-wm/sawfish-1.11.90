@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=emacs? ( virtual/emacs !app-emacs/sawfish ) >=dev-libs/librep-0.92.1 >=x11-libs/rep-gtk-0.90.7 x11-libs/pangox-compat >=x11-libs/gtk+-2.24.0:2 x11-libs/libXtst nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=Extensible window manager using a Lisp-based scripting language
+EAPI=6
+HOMEPAGE=http://sawfish.wikia.com/
+IUSE=emacs nls xinerama
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2 Artistic-2
+RDEPEND=emacs? ( virtual/emacs !app-emacs/sawfish ) >=dev-libs/librep-0.92.1 >=x11-libs/rep-gtk-0.90.7 x11-libs/pangox-compat >=x11-libs/gtk+-2.24.0:2 x11-libs/libXtst nls? ( sys-devel/gettext ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/sawfish/sawfish_1.11.90.tar.xz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=e8643ed5c460c9bba84b1f5deaed72e0
