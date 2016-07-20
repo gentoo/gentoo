@@ -127,7 +127,7 @@ src_install() {
 
 	insinto /
 	doins -r opt usr
-	dosym "/${CHROME_HOME}/${PN}" "/usr/bin/${PN}"
+	dosym "/${CHROME_HOME}/${PN}" "/usr/bin/${MY_PN}"
 
 	find "${ED}" -type d -empty -delete || die
 	chmod 755 "${ED}${CHROME_HOME}"/{chrome,${PN},nacl_helper{,_bootstrap},xdg-{mime,settings}} || die
