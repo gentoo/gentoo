@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-13">
+  <title>libbsd: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in libbsd might allow remote attackers to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>573160</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libbsd" auto="yes" arch="*">
+      <unaffected range="ge">0.8.2</unaffected>
+      <vulnerable range="lt">0.8.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>This library provides useful functions commonly found on BSD systems,
+      and lacking on others like GNU systems, thus making it easier to port
+      projects with strong BSD origins, without needing to embed the same code
+      over and over again on each project.
+    </p>
+  </background>
+  <description>
+    <p>libbsd contains a buffer overflow in the fgetwln() function. An if
+      statement, which is responsible for checking the necessity to reallocate
+      memory in the target buffer, is off by one therefore an out of bounds
+      write occurs.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could potentially execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libbsd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --verbose --oneshot "&gt;=dev-libs/libbsd-0.8.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2090">CVE-2016-2090</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 19 Mar 2016 13:08:02 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 11:20:49 +0000">b-man</metadata>
+</glsa>
