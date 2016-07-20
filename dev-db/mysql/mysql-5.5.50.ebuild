@@ -89,7 +89,7 @@ src_test() {
 		# The tool is deprecated anyway
 		# Bug 532288
 
-		for t in main.mysql_client_test \
+		for t in main.mysql_client_test main.openssl_1 \
 			binlog.binlog_statement_insert_delayed main.information_schema \
 			main.mysqld--help-notwin main.mysqlhotcopy_archive main.mysqlhotcopy_myisam ; do
 				mysql-v2_disable_test  "$t" "False positives in Gentoo"
