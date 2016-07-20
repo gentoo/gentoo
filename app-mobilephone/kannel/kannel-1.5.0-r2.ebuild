@@ -96,7 +96,7 @@ src_install() {
 	done
 
 	diropts -g kannel -m0770
-	keepdir /var/log/kannel /var/run/kannel
+	keepdir /var/log/kannel
 }
 
 pkg_postinst() {

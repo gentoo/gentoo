@@ -19,6 +19,7 @@ checkconfig() {
 
 start() {
 	checkconfig || return 1
+	checkpath -o root:kannel -m 0770 -d /var/run/kannel
 
 	ebegin "Starting kannel ${KANNEL_SERVICE}"
 	start-stop-daemon --start --quiet --exec /usr/sbin/${KANNEL_SERVICE} -- \
