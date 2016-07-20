@@ -95,7 +95,10 @@ multilib_src_test() {
 	has usersandbox $FEATURES && eerror "Some tests may fail with FEATURES=usersandbox"
 
 	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-	addpredict /this-dir-does-not-exist/t9.MYI
+	# Silence repoman, this is only valid in tests
+	if use test ; then
+		addpredict /this-dir-does-not-exist/t9.MYI
+	fi
 
 	# Run CTest (test-units)
 	cmake-utils_src_test
