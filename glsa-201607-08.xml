@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201607-08">
+  <title>Dropbear: Privilege escalation</title>
+  <synopsis>A vulnerability has been found in Dropbear, which allows remote
+    authenticated users to bypass intended shell-command restrictions.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>July 20, 2016</announced>
+  <revised>July 20, 2016: 1</revised>
+  <bug>577050</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/dropbear" auto="yes" arch="*">
+      <unaffected range="ge">2016.73</unaffected>
+      <vulnerable range="lt">2016.73</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dropbear is a relatively small SSH server and client.</p>
+  </background>
+  <description>
+    <p>A CRLF injection vulnerability in Dropbear SSH allows remote
+      authenticated users to bypass intended shell-command restrictions via
+      crafted X11 forwarding data.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated user could execute arbitrary code with the
+      privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dropbear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/dropbear-2016.73"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3116">CVE-2016-3116</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 21 Jun 2016 05:13:38 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 20 Jul 2016 08:45:10 +0000">b-man</metadata>
+</glsa>
