@@ -32,6 +32,10 @@ RDEPEND="${DEPEND}
 	>=sys-devel/autoconf-wrapper-13"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
+PATCHES=(
+        "${FILESDIR}"/${P}-texinfo.patch
+        "${FILESDIR}"/${P}-runstatedir.patch # https://bugs.gentoo.org/show_bug.cgi?id=589248
+)
 
 if [[ -z ${__EBLITS__} && -n ${FILESDIR} ]] ; then
 	source "${FILESDIR}"/eblits/main.eblit || die
