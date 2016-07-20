@@ -23,7 +23,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdebase-data)
-	|| ( $(add_kdeapps_dep konsolepart) $(add_kdeapps_dep konsole) )
+	$(add_kdeapps_dep konsolepart)
 	|| (
 		$(add_kdeapps_dep okular 'pdf?,postscript')
 		app-text/acroread
@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	)
 	png? (
 		app-text/dvipng
-		media-gfx/imagemagick[png]
+		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )
 	)
 "
 
