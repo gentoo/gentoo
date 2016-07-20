@@ -127,7 +127,10 @@ src_prepare() {
 
 src_compile() {
 	addwrite /dev/nvidiactl  # bug #569738
+	addwrite /dev/nvidia0  # bug #569738
 	addwrite /dev/dri/  # bug #574038
+	addwrite /proc/mtrr  # bug 589198
+
 	gnome2_src_compile
 }
 

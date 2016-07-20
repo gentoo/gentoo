@@ -293,7 +293,7 @@ _calculate_src_uri() {
 	esac
 
 	if [[ ${KDEBASE} = kdel10n ]] ; then
-		local uri_base="${SRC_URI/${PN}-${PV}.tar.xz/}kde-l10n/kde-l10n"
+		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
 		SRC_URI=""
 		for my_l10n in ${KDE_L10N[@]} ; do
 			case ${my_l10n} in
