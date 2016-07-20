@@ -20,6 +20,7 @@ DEPEND="
 	media-libs/mesa[egl]
 "
 RDEPEND="${DEPEND}
+	$(add_qt_dep qtwayland)
 	!kde-plasma/kwayland
 "
 
