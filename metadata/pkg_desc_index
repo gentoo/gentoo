@@ -5137,7 +5137,7 @@ dev-ml/ocamlnet 3.7.7-r1 4.1.2: Modules for OCaml application-level Internet pro
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
-dev-ml/ocplib-endian 0.8-r1: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
+dev-ml/ocplib-endian 0.8-r1 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6 0.7.7: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/opam 1.2.2-r1: A source-based package manager for OCaml
