@@ -39,6 +39,8 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
+# bug 587170 for frameworkintegration
 RDEPEND="${COMMON_DEPEND}
+	$(add_frameworks_dep frameworkintegration)
 	!kde-misc/rsibreak:4
 "
