@@ -1019,7 +1019,7 @@ app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.5.5: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.5.5 1.5.6: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3 3.20.2: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0 3.20.0: Official plugins for gedit
@@ -16165,7 +16165,7 @@ sci-physics/hepmc 2.06.03 2.06.08 2.06.09-r1: Event Record for Monte Carlo Gener
 sci-physics/heppdt 3.04.01: Data about each particle from the Review of Particle Properties
 sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
-sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
+sci-physics/hoomd-blue 1.0.2 2.0.1: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160216 20160301 20160310 20160314 20160321 20160407: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
