@@ -11897,7 +11897,7 @@ mate-extra/mate-media 1.8.0 1.10.1: Multimedia related programs for the MATE des
 mate-extra/mate-netbook 1.10.0: MATE utilities for netbooks
 mate-extra/mate-polkit 1.8.0 1.10.3: A MATE specific DBUS service that is used to bring up authentication dialogs
 mate-extra/mate-power-manager 1.8.1 1.10.2: A session daemon for MATE that makes it easy to manage your laptop or desktop
-mate-extra/mate-screensaver 1.8.1-r1 1.10.2-r1: Replaces xscreensaver, integrating with the MATE desktop
+mate-extra/mate-screensaver 1.8.1-r1 1.10.2-r2: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.8.0-r1 1.10.4-r1: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.8.0 1.10.1: The MATE System Monitor
 mate-extra/mate-user-share 1.8.0-r1 1.10.1-r1: Personal file sharing for the MATE desktop
