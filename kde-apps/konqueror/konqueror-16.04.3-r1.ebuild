@@ -55,8 +55,6 @@ KMEXTRACTONLY="
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc
 
-	use filemanager || cmake_comment_add_subdirectory dolphin
-
 	# required for dolphin
 	sed -e "/konq_copytomenu.h/ s/# //" \
 		-e "/konq_copytomenu.h/ s/ - anyone needs it?//" \
@@ -64,6 +62,8 @@ src_prepare() {
 		|| die "Failed to fix libkonq CMakeLists.txt"
 
 	kde4-meta_src_prepare
+
+	use filemanager || cmake_comment_add_subdirectory dolphin
 
 	# Do not install *.desktop files for kfmclient
 	sed -e "/kfmclient\.desktop/d" -i konqueror/CMakeLists.txt \
