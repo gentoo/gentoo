@@ -4,11 +4,11 @@
 
 EAPI="6"
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_419 et fa fi fil fr gu he
-	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh_CN zh_TW fake_bidi"
+CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
+	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit readme.gentoo-r1 chromium eutils pax-utils unpacker
+inherit readme.gentoo-r1 chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
@@ -127,6 +127,7 @@ src_install() {
 
 	insinto /
 	doins -r opt usr
+	dosym "/${CHROME_HOME}/${PN}" "/usr/bin/${MY_PN}"
 
 	find "${ED}" -type d -empty -delete || die
 	chmod 755 "${ED}${CHROME_HOME}"/{chrome,${PN},nacl_helper{,_bootstrap},xdg-{mime,settings}} || die
@@ -137,11 +138,16 @@ src_install() {
 }
 
 pkg_preinst() {
-	chromium_pkg_preinst
+	gnome2_icon_savelist
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	readme.gentoo_print_elog
 }
