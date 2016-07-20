@@ -14,7 +14,6 @@ HOMEPAGE="http://codeblue.umich.edu/hoomd-blue/"
 EGIT_REPO_URI="https://bitbucket.org/glotzer/${PN}.git"
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64"
 	EGIT_COMMIT="v${PV}"
 	PATCHES=( "${FILESDIR}/${P}-cxx11.patch" )
 fi
