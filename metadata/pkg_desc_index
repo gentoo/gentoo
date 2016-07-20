@@ -11619,7 +11619,7 @@ kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
 kde-misc/kdeconnect 0.8-r1 0.9g: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
-kde-misc/kdiff3 0.9.98-r1: Qt/KDE based frontend to diff3
+kde-misc/kdiff3 0.9.97-r2 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 3.0-r1: Nice KDE replacement to the du command
 kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma theme and wallpaper
 kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
@@ -14377,7 +14377,7 @@ net-libs/libnftnl 1.0.5 1.0.6: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
-net-libs/libnm-qt 0.9.8.3 0.9.8.4: NetworkManager bindings for Qt
+net-libs/libnm-qt 0.9.8.4: NetworkManager bindings for Qt
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
 net-libs/liboauth 1.0.1: C library implementing the OAuth secure authentication protocol
