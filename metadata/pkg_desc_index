@@ -4677,7 +4677,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.4.0.1 0.5.1 0.5.2 0.5.3: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.5.3 0.6.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented interface for C++
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
@@ -6978,7 +6978,7 @@ dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1: Next generation Python numpy
+dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0: Next generation Python numpy
 dev-python/bleach 1.4.1 1.4.2 1.4.3: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
@@ -7402,7 +7402,7 @@ dev-python/jingo 0.7 0.7.1 0.8.2 0.9.0: An adapter for using Jinja2 templates wi
 dev-python/jinja 2.7.3 2.8: A small but fast and easy to use stand-alone template engine written in pure Python
 dev-python/jira 1.0.5: Python library for interacting with the JIRA REST API
 dev-python/jmespath 0.5.0 0.7.1 0.9.0: JSON Matching Expressions
-dev-python/joblib 0.8.4 0.9.2 0.9.3 0.9.4: Tools to provide lightweight pipelining in Python
+dev-python/joblib 0.8.4 0.9.2 0.9.3 0.9.4 0.10.0: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.10-r1 0.11 0.12 0.13: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
 dev-python/jpype 0.6.1: JPype is an effort to allow Python programs full access to Java class librairies
 dev-python/jsmin 2.1.1 2.1.2 2.1.6 2.2.0 2.2.1: JavaScript minifier
@@ -7460,7 +7460,7 @@ dev-python/line_profiler 1.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0 1.1: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0 0.12.1: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
@@ -8060,7 +8060,7 @@ dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple st
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.7.2 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
-dev-python/reconfigure 0.1.50 0.1.72 0.1.75: An ORM for config files
+dev-python/reconfigure 0.1.50 0.1.72 0.1.75 0.1.79: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
@@ -8230,7 +8230,7 @@ dev-python/tempora 1.4: Objects and routines pertaining to date and time
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6: Terminals served to term.js using Tornado websockets
 dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0 4.9.1: A collection of helpers and mock objects for unit tests and doc tests
-dev-python/testify 0.5.7 0.7.2 0.8.0 0.9.0: A more pythonic replacement for the unittest module and nose
+dev-python/testify 0.5.7 0.7.2 0.8.0 0.9.0 0.10.0: A more pythonic replacement for the unittest module and nose
 dev-python/testpath 0.2 0.3: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 1.0.0: A pyunit extension for managing expensive test resources
@@ -8324,7 +8324,7 @@ dev-python/waitress 0.8.9 0.8.10-r1: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8: Framework for plotting astronomical and geospatial data
-dev-python/wcwidth 0.1.4 0.1.5 0.1.6 0.1.6-r1: Measures number of Terminal column cells of wide-character codes
+dev-python/wcwidth 0.1.4 0.1.5 0.1.6 0.1.6-r1 0.1.7: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 0.21-r1 0.22 0.23 0.26 0.29: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
