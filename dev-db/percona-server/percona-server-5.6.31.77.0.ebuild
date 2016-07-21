@@ -140,6 +140,8 @@ multilib_src_test() {
 	# Called with bad parameters should be reported upstream
 	#
 
+	local t
+
 	for t in main.mysql_client_test \
 		binlog.binlog_statement_insert_delayed main.information_schema \
 		main.mysqld--help-notwin binlog.binlog_mysqlbinlog_filter \
@@ -159,6 +161,11 @@ multilib_src_test() {
 			mysql-multilib-r1_disable_test "$t" "Test $t requires USE=extraengine (Need federated engine)"
 		done
 	fi
+
+	# Fixed upstream in next version
+	for t in main.ssl_crl main.ssl_ca ; do
+		mysql-multilib-r1_disable_test "${t}" "False positive due to Percona bug 1603073"
+	done
 
 	# Run mysql tests
 	pushd "${TESTDIR}" || die
