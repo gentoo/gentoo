@@ -42,6 +42,7 @@ src_configure() {
 	econf \
 		--enable-jumbograms \
 		--disable-silent-rules \
+		--enable-legacy-protocol \
 		--disable-tunemu  \
 		--with-systemd=/usr/$(get_libdir)/systemd/system \
 		$(use_enable lzo) \
@@ -50,8 +51,8 @@ src_configure() {
 		$(use_enable uml) \
 		$(use_enable vde) \
 		$(use_enable zlib) \
-		$(use_with ssl openssl) \
-		$(use_with upnp miniupnpc )
+		$(use_enable upnp miniupnpc) \
+		$(use_with ssl openssl)
 		#--without-libgcrypt \
 }
 
