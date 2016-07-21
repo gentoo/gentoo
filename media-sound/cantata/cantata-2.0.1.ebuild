@@ -59,7 +59,7 @@ RDEPEND="
 		virtual/ffmpeg
 	)
 	taglib? (
-		media-libs/taglib[asf,mp4]
+		media-libs/taglib[asf(+),mp4(+)]
 		media-libs/taglib-extras
 		!kde? ( udisks? ( sys-fs/udisks:2 ) )
 	)
