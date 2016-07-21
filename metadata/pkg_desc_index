@@ -7272,7 +7272,7 @@ dev-python/frozen-flask 0.11-r1 0.12: Freezes a Flask application into a set of 
 dev-python/fs 0.5.4: Filesystem abstraction layer
 dev-python/fudge 0.9.6-r1 1.0.3-r2 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on functional combinators
-dev-python/funcsigs 0.4: Python function signatures from PEP362 for Python 2.7
+dev-python/funcsigs 0.4 1.0.2: Python function signatures backport from PEP362 for Python 2.7-3.5
 dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
@@ -7645,7 +7645,7 @@ dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
 dev-python/pecan 1.0.2 1.0.3 1.0.4: A WSGI object-dispatching web framework, designed to be lean and fast, with few dependencies.
-dev-python/peewee 2.6.2 2.7.4 2.8.0: Small python ORM
+dev-python/peewee 2.6.2 2.7.4 2.8.0 2.8.1: Small python ORM
 dev-python/pep8 1.4.5 1.5.6 1.5.7 1.6.1 1.6.2 1.6.2-r1 1.7.0: Python style guide checker
 dev-python/peppercorn 0.4-r1 0.5: A library for converting a token stream into a data structure for use in web form posts
 dev-python/pexpect 3.3 4.0.1: Python module for spawning child applications and responding to expected patterns
@@ -17610,7 +17610,7 @@ virtual/python-asyncio 0: A virtual for the Python 3.4+ asyncio module
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-dnspython 1: A virtual for dnspython, for Python 2 & 3
 virtual/python-enum34 1: A virtual for Python enum34 module
-virtual/python-funcsigs 0-r1: A Virtual for Python function signatures from PEP362
+virtual/python-funcsigs 0-r1 1: A Virtual for Python function signatures from PEP362
 virtual/python-futures 0: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0: A virtual for Python greenlet module
 virtual/python-ipaddress 1.0: A virtual for Python ipaddress module
