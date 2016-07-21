@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
@@ -48,6 +48,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -75,7 +76,7 @@ src_configure() {
 }
 
 src_compile() {
-	MAKEOPTS=-j1 default
+	default
 
 	if use perl; then
 		pushd "${S}/scripting/perl" > /dev/null
@@ -112,6 +113,10 @@ src_install() {
 
 	doinitd "${T}"/cups-browsed
 	systemd_dounit "${S}/utils/cups-browsed.service"
+}
+
+src_test() {
+	emake check
 }
 
 pkg_postinst() {
