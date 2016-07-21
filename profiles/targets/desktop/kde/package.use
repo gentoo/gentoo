@@ -5,9 +5,6 @@
 # Resolve conflicts with slot 5 ebuilds
 kde-base/baloo minimal
 kde-apps/kde4-l10n minimal
-kde-apps/kwalletmanager:4 minimal
-kde-apps/libkipi:4 minimal
-kde-apps/libksane:4 minimal
 
 # Required by kde-frameworks/kauth
 sys-auth/polkit-qt qt5
