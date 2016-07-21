@@ -608,11 +608,8 @@ gnatbuild-r1_src_compile() {
 					confgcc="${confgcc} --disable-nls"
 				fi
 
-				if tc_version_is_at_least 4.6 ; then
-					confgcc="${confgcc} --enable-lto"
-				else
-					confgcc="${confgcc} --disable-lto"
-				fi
+				# bug 586538: extra lto-wrapper dorks up system gcc
+				confgcc="${confgcc} --disable-lto"
 
 				# setup multilib abi stuff
 				gcc-multilib-configure
