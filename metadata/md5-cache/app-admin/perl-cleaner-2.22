@@ -8,5 +8,5 @@ RDEPEND=app-shells/bash || ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-fre
 SLOT=0
 SRC_URI=mirror://gentoo/perl-cleaner-2.22.tar.bz2 https://dev.gentoo.org/~dilfridge/distfiles/perl-cleaner-2.22.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=prefix	e7f2b9c6e57342e5d25eac22fce23062
+_eclasses_=prefix	e41dbc7154fb2749724e2adedfdf71df
 _md5_=0031f92f5a954c3f00d318943a1c9dea
