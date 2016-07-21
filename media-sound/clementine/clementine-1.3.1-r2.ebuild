@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	media-libs/gst-plugins-base:1.0
 	media-libs/libechonest:=[qt4]
 	>=media-libs/libmygpo-qt-1.0.8
-	>=media-libs/taglib-1.8[mp4]
+	>=media-libs/taglib-1.8[mp4(+)]
 	sys-libs/zlib
 	dev-libs/crypto++
 	virtual/glu
