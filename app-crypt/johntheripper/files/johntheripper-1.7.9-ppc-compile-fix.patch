@@ -1,0 +1,17 @@
+diff -ru john-1.7.9.orig/src/gost_plug.c john-1.7.9/src/gost_plug.c
+--- john-1.7.9.orig/src/gost_plug.c     2013-01-20 16:15:45.464000001 +0000
++++ john-1.7.9/src/gost_plug.c  2013-01-20 16:16:06.104000001 +0000
+@@ -531,7 +531,6 @@
+ }
+ #endif
+ 
+-#ifndef __GLIBC__
+ void rhash_u32_swap_copy(void* to, int index, const void* from, size_t length) {
+	size_t i;
+	unsigned int *pO, *pI;
+@@ -542,4 +541,3 @@
+		*pO++ = bswap_32(*pI++);
+ 	}
+ }
+-#endif
+

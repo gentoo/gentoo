@@ -1,0 +1,14 @@
+--- build/main.mk.old	2015-01-18 12:18:50.608153217 +0100
++++ build/main.mk	2015-01-18 12:20:00.352861984 +0100
+@@ -541,10 +541,9 @@
+ DEPEND_SUBST=$(patsubst $(SOURCES_PATH)/%.cc,$(DEPEND_PATH)/%.d,$<)
+ $(OBJECTS_FULL): $(INIT_DUMMY_FILE)
+ $(OBJECTS_FULL): $(OBJECTS_PATH)/%.o: $(SOURCES_PATH)/%.cc $(DEPEND_PATH)/%.d
+-	@echo "Compiling $(patsubst $(SOURCES_PATH)/%,%,$<)..."
+ 	@mkdir -p $(@D)
+ 	@mkdir -p $(patsubst $(OBJECTS_PATH)%,$(DEPEND_PATH)%,$(@D))
+-	@$(COMPILE_ENV) $(CXX) \
++	$(COMPILE_ENV) $(CXX) \
+ 		$(DEPEND_FLAGS) -MMD -MF $(DEPEND_SUBST) \
+ 		-o $@ $(CXXFLAGS) $(COMPILE_FLAGS) -c $<
+ 	@touch $@ # Force .o file to be newer than .d file.

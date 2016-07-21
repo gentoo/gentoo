@@ -1,0 +1,25 @@
+--- build.xml.orig	2015-06-30 21:07:56.621000000 +0000
++++ build.xml	2015-06-30 21:10:19.060000000 +0000
+@@ -99,6 +99,7 @@
+             <classpath>
+                 <pathelement path="${output.generator_classes}"/>
+             </classpath>
++            <sysproperty key="java.io.tmpdir" value="${output.tmp}" />
+         </java>
+     </target>
+     
+@@ -339,6 +340,7 @@
+         <mkdir dir="${output.generated}/gnu"/>
+         <mkdir dir="${output.generated}/gnu/trove"/>
+         <mkdir dir="${output.lib}"/>
++        <mkdir dir="${output.tmp}"/>
+         <mkdir dir="${dist.root}"/>
+     </target>
+ 
+@@ -442,4 +444,4 @@
+             <format property="fullVersion" pattern="'build time' yyMMddHHmmss"/>
+         </tstamp>
+     </target>
+-</project>
+\ No newline at end of file
++</project>

@@ -1,0 +1,25 @@
+Index: macros/goo-canvas.m4
+===================================================================
+--- macros/goo-canvas.m4	(revision 3307)
++++ macros/goo-canvas.m4	(working copy)
+@@ -56,9 +56,9 @@
+   fi
+ fi
+ 
+-AC_MSG_CHECKING([for Goocanvas])
++PKG_CHECK_MODULES(GOOCANVAS, goocanvas)
+ 
+-LIBS="$saved_LIBS $GOOCANVAS_LDOPTS $GTK_LIBS"
++LIBS="$saved_LIBS $GOOCANVAS_LIBS $GTK_LIBS"
+ CXXFLAGS="$saved_CXXFLAGS $GOOCANVAS_CFLAGS $GTK_CFLAGS"
+ #
+ # AC_TRY_LINK uses the c compiler (set by AC_LANG), so we will
+@@ -76,7 +76,7 @@
+ if test x$have_goocanvas = xyes; then
+ 
+  GOOCANVAS_CFLAGS="$GOOCANVAS_CFLAGS"
+- GOOCANVAS_LIBS="$GOOCANVAS_LDOPTS"
++ GOOCANVAS_LIBS="$GOOCANVAS_LIBS"
+ 
+ ifelse([$1], , :, [$1])
+ 

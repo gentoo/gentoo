@@ -1,0 +1,28 @@
+--- ardour-2.8.11/SConstruct.orig
++++ ardour-2.8.11/SConstruct
+@@ -414,6 +414,15 @@
+     if os.environ.has_key('CXX'):
+ 	context['CXX'] = os.environ['CXX']
+ 
++	if os.environ.has_key('CFLAGS'):
++		env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++
++	if os.environ.has_key('CXXFLAGS'):
++		env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++
++	if os.environ.has_key('LDFLAGS'):
++		env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++
+     if os.environ.has_key('DISTCC_HOSTS'):
+ 	context['ENV']['DISTCC_HOSTS'] = os.environ['DISTCC_HOSTS']
+ 	context['ENV']['HOME'] = os.environ['HOME']
+@@ -807,9 +816,6 @@
+ if env['DEBUG'] == 1:
+     env.Append(CCFLAGS=" ".join (debug_flags))
+     env.Append(LINKFLAGS=" ".join (debug_flags))
+-else:
+-    env.Append(CCFLAGS=" ".join (opt_flags))
+-    env.Append(LINKFLAGS=" ".join (opt_flags))
+ 
+ if env['STL_DEBUG'] == 1:
+     env.Append(CXXFLAGS="-D_GLIBCXX_DEBUG")

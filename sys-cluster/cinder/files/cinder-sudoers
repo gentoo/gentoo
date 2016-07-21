@@ -1,0 +1,4 @@
+Defaults:cinder !requiretty
+
+cinder ALL = (root) NOPASSWD: /usr/bin/cinder-rootwrap 
+

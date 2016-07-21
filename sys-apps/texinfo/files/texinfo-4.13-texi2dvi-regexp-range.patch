@@ -1,0 +1,23 @@
+Fix texi2dvi problem with egrep in some locales.
+This patch is taken from the texinfo CVS repository, but stripped of
+keyword substitutions to make it apply to a wider range of source code
+revisions.
+
+Fix suggested by Martin von Gagern on 2010-03-29, committed by Karl Berry.
+
+References:
+http://bugs.gentoo.org/311885
+http://thread.gmane.org/gmane.comp.tex.texinfo.bugs/5023
+http://cvs.savannah.gnu.org/viewvc/texinfo/util/texi2dvi?root=texinfo&r1=1.157&r2=1.158
+
+--- util/texi2dvi	2010/02/09 18:37:08	1.157
++++ util/texi2dvi	2010/03/30 23:13:37	1.158
+@@ -1848,7 +1848,7 @@
+ 
+   # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
+   # prepend `./' in order to avoid that the tools take it as an option.
+-  echo "$command_line_filename" | $EGREP '^(/|[A-z]:/)' >&6 \
++  echo "$command_line_filename" | $EGREP '^(/|[A-Za-z]:/)' >&6 \
+   || command_line_filename="./$command_line_filename"
+ 
+   # See if the file exists.  If it doesn't we're in trouble since, even

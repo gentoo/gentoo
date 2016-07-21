@@ -1,0 +1,44 @@
+--- Makefile
++++ Makefile
+@@ -2,32 +2,24 @@
+ # Mixer.app Makefile
+ #
+ 
+-DESTDIR =
+-GNUSTEP_BINDIR = /usr/local/GNUstep/Apps/Mixer.app
+-X11_BINDIR = /usr/X11R6/bin
+-
+-CXX=c++
+-CXXFLAGS += -Wall -pedantic -fno-rtti -fno-exceptions -O2 -I/usr/X11R6/include
+-LDFLAGS += -L/usr/X11R6/lib -lXpm -lXext -lX11
++BINDIR = /usr/bin
++
++CXX ?= g++
++CXXFLAGS += -Wall -pedantic -fno-rtti -fno-exceptions
++LIBS = -lXpm -lXext -lX11
+ 
+ OBJECTS = Main.o Mixer.o Xpm.o
+ 
+ all: Mixer.app
+ 
+ Mixer.app: $(OBJECTS)
+-	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
++	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@ $(LIBS)
+ 
+ .PHONY:	install clean distclean
+ 
+-install: install-gnustep
+-
+-install-gnustep: all
+-	install -d  $(DESTDIR)$(GNUSTEP_BINDIR)
+-	install -m 0755 Mixer.app $(DESTDIR)$(GNUSTEP_BINDIR)/Mixer
+-
+-install-x11: all
+-	install -d  $(DESTDIR)$(X11_BINDIR)
+-	install -m 0755 Mixer.app $(DESTDIR)$(X11_BINDIR)/Mixer.app
++install: all
++	install -d  $(DESTDIR)$(BINDIR)
++	install -m 0755 Mixer.app $(DESTDIR)$(BINDIR)/Mixer.app
+ 
+ clean:
+ 	rm -f *~ *.o

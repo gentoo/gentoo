@@ -1,0 +1,12 @@
+diff -Nur work.orig/contrib/libarchive/tar/bsdtar.c work/contrib/libarchive/tar/bsdtar.c
+--- work.orig/contrib/libarchive/tar/bsdtar.c	2012-07-12 13:44:29.000000000 +0900
++++ work/contrib/libarchive/tar/bsdtar.c	2012-07-29 00:57:25.000000000 +0900
+@@ -691,7 +691,7 @@
+ {
+ 	printf("bsdtar %s - %s\n",
+ 	    BSDTAR_VERSION_STRING,
+-	    archive_version());
++	    archive_version_string());
+ 	exit(0);
+ }
+ 

@@ -1,0 +1,38 @@
+ACTION!="add", GOTO="rio_rules_end"
+SUBSYSTEM!="usb|usb_device", GOTO="rio_rules_end"
+
+# Diamond flash players
+# Rio 600
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5001", MODE="0660", GROUP="usb"
+# Rio 800
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5002", MODE="0660", GROUP="usb"
+# Nike psa[play
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5003", MODE="0660", GROUP="usb"
+# Rio S10
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5005", MODE="0660", GROUP="usb"
+# Rio S50
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5006", MODE="0660", GROUP="usb"
+# Rio S35
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5007", MODE="0660", GROUP="usb"
+# Rio 900
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5008", MODE="0660", GROUP="usb"
+# Rio S30
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5009", MODE="0660", GROUP="usb"
+# Fuse
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="500d", MODE="0660", GROUP="usb"
+# Chiba
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="500e", MODE="0660", GROUP="usb"
+# Cali
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="500f", MODE="0660", GROUP="usb"
+# Cali256
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="503f", MODE="0660", GROUP="usb"
+# Rio S11
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5010", MODE="0660", GROUP="usb"
+
+# Diamond hard drive players
+# Rio Riot
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5202", MODE="0660", GROUP="usb"
+# Nitrus
+ATTRS{idVendor}=="045a", ATTRS{idProduct}=="5220", MODE="0660", GROUP="usb"
+
+LABEL="rio_rules_end"

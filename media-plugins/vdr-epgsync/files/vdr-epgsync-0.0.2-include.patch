@@ -1,0 +1,12 @@
+diff -uNr epgsync-0.0.1.orig/thread.h epgsync-0.0.1/thread.h
+--- epgsync-0.0.1.orig/thread.h	2006-07-15 14:15:48.000000000 +0200
++++ epgsync-0.0.1/thread.h	2006-07-25 20:08:30.039828500 +0200
+@@ -10,7 +10,7 @@
+ #include <vdr/thread.h>
+ #include <vdr/tools.h>
+ #include <vdr/plugin.h>
+-#include "../svdrpservice/svdrpservice.h"
++#include <svdrpservice/svdrpservice.h>
+ 
+ class cEpgSyncThread: public cThread {
+ 	private:

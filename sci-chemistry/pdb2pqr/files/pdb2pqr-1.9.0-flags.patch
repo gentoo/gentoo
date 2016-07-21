@@ -1,0 +1,45 @@
+ pdb2pka/SConscript           | 9 ++++++++-
+ pdb2pka/substruct/SConscript | 6 ++++++
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/pdb2pka/SConscript b/pdb2pka/SConscript
+index 583cdc5..6c30011 100644
+--- a/pdb2pka/SConscript
++++ b/pdb2pka/SConscript
+@@ -1,4 +1,11 @@
+ Import('env')
++import os
++
++env['CCFLAGS'].extend(os.environ['CXXFLAGS'].split())
++env['LINKFLAGS'].extend(os.environ['LDFLAGS'].split())
++env['CXX'] = os.environ['CXX']
++env['LINK'] = os.environ['CXX']
++
+ 
+ if env['REBUILD_SWIG']:
+     pyc = env.LoadableModule('_pMC_mult', ['pMC_mult.cpp', 'pMC_mult.i'])
+@@ -9,4 +16,4 @@ Default(pyc)
+     
+ algorithms_module = SConscript('substruct/SConscript')
+ 
+-Return('pyc algorithms_module')
+\ No newline at end of file
++Return('pyc algorithms_module')
+diff --git a/pdb2pka/substruct/SConscript b/pdb2pka/substruct/SConscript
+index 7dbcdb0..56fb577 100644
+--- a/pdb2pka/substruct/SConscript
++++ b/pdb2pka/substruct/SConscript
+@@ -1,7 +1,13 @@
+ import distutils
+ import numpy
++import os
+ Import('env')
+ 
++env['CCFLAGS'].extend(os.environ['CXXFLAGS'].split())
++env['LINKFLAGS'].extend(os.environ['LDFLAGS'].split())
++env['CXX'] = os.environ['CXX']
++env['LINK'] = os.environ['CXX']
++
+ env.Append(CPPPATH=[distutils.sysconfig.get_python_inc(), numpy.get_include()])
+ 
+ algorithms_pyc = env.LoadableModule('Algorithms', ['Algorithms.cpp'])

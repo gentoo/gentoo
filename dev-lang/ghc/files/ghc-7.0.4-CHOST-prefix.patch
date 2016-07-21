@@ -1,0 +1,17 @@
+Strip versioning components from *HOST for Darwin and Solaris
+
+--- aclocal.m4
++++ aclocal.m4
+@@ -1358,6 +1358,12 @@
+   freebsd*)
+     $2="freebsd"
+     ;;
++  darwin*)
++    $2="darwin"
++	;;
++  solaris2.*)
++    $2="solaris2"
++	;;
+   *)
+     echo "Unknown OS $1"
+     exit 1

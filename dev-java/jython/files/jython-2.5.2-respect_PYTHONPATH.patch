@@ -1,0 +1,15 @@
+--- src/org/python/core/PySystemState.java
++++ src/org/python/core/PySystemState.java
+@@ -646,6 +646,12 @@
+             if (jythonpath != null) {
+                 registry.setProperty("python.path", jythonpath);
+             }
++            else {
++                jythonpath = System.getenv("PYTHONPATH");
++                if (jythonpath != null) {
++                    registry.setProperty("python.path", jythonpath);
++                }
++            }
+         } catch (SecurityException e) {
+         }
+         registry.putAll(postProperties);

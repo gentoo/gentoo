@@ -1,0 +1,126 @@
+diff -ur NAMD_2.7b2_Source.orig//arch/Linux-x86_64.fftw NAMD_2.7b2_Source//arch/Linux-x86_64.fftw
+--- NAMD_2.7b2_Source.orig//arch/Linux-x86_64.fftw	2010-04-23 14:40:54.566510874 -0500
++++ NAMD_2.7b2_Source//arch/Linux-x86_64.fftw	2010-04-23 14:41:08.106528893 -0500
+@@ -1,7 +1,7 @@
+ 
+-FFTDIR=/Projects/namd2/fftw/linux-x86_64
++FFTDIR=/usr
+ FFTINCL=-I$(FFTDIR)/include
+-FFTLIB=-L$(FFTDIR)/lib -lsrfftw -lsfftw
++FFTLIB=-L$(FFTDIR)/gentoo-libdir -lsrfftw -lsfftw
+ FFTFLAGS=-DNAMD_FFTW
+ FFT=$(FFTINCL) $(FFTFLAGS)
+ 
+diff -ur NAMD_2.7b2_Source.orig//arch/Linux-x86_64.tcl NAMD_2.7b2_Source//arch/Linux-x86_64.tcl
+--- NAMD_2.7b2_Source.orig//arch/Linux-x86_64.tcl	2010-04-23 14:40:54.566510874 -0500
++++ NAMD_2.7b2_Source//arch/Linux-x86_64.tcl	2010-04-23 14:41:08.106528893 -0500
+@@ -1,7 +1,7 @@
+ 
+-TCLDIR=/Projects/namd2/tcl/linux-x86_64
++TCLDIR=/usr
+ TCLINCL=-I$(TCLDIR)/include
+-TCLLIB=-L$(TCLDIR)/lib -ltcl8.3 -ldl
++TCLLIB=-L$(TCLDIR)/gentoo-libdir -ltcl8.5 -ldl
+ TCLFLAGS=-DNAMD_TCL
+ TCL=$(TCLINCL) $(TCLFLAGS)
+ 
+diff -ur NAMD_2.7b2_Source.orig//Make.charm NAMD_2.7b2_Source//Make.charm
+--- NAMD_2.7b2_Source.orig//Make.charm	2010-04-23 14:40:54.556517020 -0500
++++ NAMD_2.7b2_Source//Make.charm	2010-04-23 14:42:16.026530011 -0500
+@@ -2,5 +2,5 @@
+ # The config script will override this setting if there is a directory
+ # called charm-6.1 or charm in the NAMD base directory.
+ 
+-CHARMBASE = /Projects/namd2/charm-6.1.3
++CHARMBASE = /usr/include/charm-6.1.3
+ 
+Only in NAMD_2.7b2_Source/: Make.charm.~1~
+Only in NAMD_2.7b2_Source/: Make.charm.porig
+diff -ur NAMD_2.7b2_Source.orig//Makefile NAMD_2.7b2_Source//Makefile
+--- NAMD_2.7b2_Source.orig//Makefile	2010-04-23 14:40:54.556517020 -0500
++++ NAMD_2.7b2_Source//Makefile	2010-04-23 14:42:59.446523306 -0500
+@@ -300,10 +300,10 @@
+ 	$(DSTDIR)/stringhash.o
+ 
+ # definitions for Charm routines
+-CHARMC = $(CHARM)/bin/charmc
+-CHARMXI = $(CHARM)/bin/charmc
+-CHARMINC = $(CHARM)/include $(COPTD)CMK_OPTIMIZE=1
+-CHARMLIB = $(CHARM)/lib
++CHARMC = /usr/bin/charmc
++CHARMXI = /usr/bin/charmc
++CHARMINC = /usr/include/gentoo-charm $(COPTD)CMK_OPTIMIZE=1
++CHARMLIB = /usr/gentoo-libdir
+ 
+ # Libraries we may have changed
+ LIBS = $(CUDAOBJS) $(PLUGINLIB) $(DPMTALIBS) $(DPMELIBS) $(TCLDLL)
+@@ -323,7 +323,7 @@
+ 
+ # Add new executables here.
+ 
+-BINARIES = namd2 psfgen charmrun flipdcd flipbinpdb
++BINARIES = namd2 psfgen flipdcd flipbinpdb
+ 
+ # This should be rebuilt at every compile, but not on Win32.
+ BUILDINFO = $(DSTDIR)/buildinfo
+@@ -354,9 +354,6 @@
+ 	$(CHARMOPTS) \
+ 	-lm -o namd2
+ 
+-charmrun: $(CHARM)/bin/charmrun # XXX
+-	$(COPY) $(CHARM)/bin/charmrun $@
+-
+ $(LIBCUDARTSO):
+ 	if [ -r $(CUDADIR)/lib64/$(LIBCUDARTSO) ]; then \
+ 	  $(COPY) $(CUDADIR)/lib64/$(LIBCUDARTSO) $@; \
+@@ -364,10 +361,6 @@
+ 	  $(COPY) $(CUDADIR)/lib/$(LIBCUDARTSO) $@; \
+ 	fi
+ 
+-WINDOWSBINARIES = namd2.exe psfgen.exe
+-# WINDOWSBINARIES = namd2.exe psfgen.exe charmd.exe charmd_faceless.exe charmrun.exe
+-windowsbinaries: $(WINDOWSBINARIES)
+-
+ namd2.exe:  $(INCDIR) $(DSTDIR) $(OBJS) $(LIBS) $(TCLDLL)
+ 	$(MAKEBUILDINFO)
+ 	$(CHARMC) -verbose \
+@@ -390,9 +383,6 @@
+ charmd_faceless.exe:
+ 	$(COPY) $(CHARM)/bin/charmd_faceless.exe charmd_faceless.exe
+ 
+-charmrun.exe:
+-	$(COPY) $(CHARM)/bin/charmrun.exe charmrun.exe
+-
+ psfgen:	$(DSTDIR) $(SBOBJS) $(PLUGINOBJS)
+ 	$(CC) $(SBCFLAGS) -o psfgen $(SBOBJS) $(PLUGINOBJS) $(TCLLIB) $(TCLAPPLIB) -lm
+ 
+@@ -716,9 +706,7 @@
+ 
+ DOC_FILES = README.txt announce.txt license.txt notes.txt
+ 
+-RELEASE_FILES = $(LIBCUDARTSO) flipdcd flipbinpdb psfgen charmrun namd2
+-
+-WINDOWS_RELEASE_FILES = $(WINDOWSBINARIES) $(TCLDLL)
++RELEASE_FILES = $(LIBCUDARTSO) flipdcd flipbinpdb psfgen namd2
+ 
+ release: all
+ 	$(ECHO) Creating release $(RELEASE_DIR_NAME)
+@@ -727,17 +715,9 @@
+ 	for f in $(DOC_FILES); do cp .rootdir/$$f $(RELEASE_DIR_NAME); done
+ 	cp -r .rootdir/lib $(RELEASE_DIR_NAME)
+ 	/bin/rm -rf $(RELEASE_DIR_NAME)/lib/CVS $(RELEASE_DIR_NAME)/lib/*/CVS
+-	if [ -r $(CHARM)/bin/charmd ]; then \
+-	  $(COPY) $(CHARM)/bin/charmd $(RELEASE_DIR_NAME); \
+-	fi
+-	if [ -r $(CHARM)/bin/charmd_faceless ]; then \
+-	  $(COPY) $(CHARM)/bin/charmd_faceless $(RELEASE_DIR_NAME); \
+-	fi
+ 	chmod -R a+rX $(RELEASE_DIR_NAME)
+ 	tar cf $(RELEASE_DIR_NAME).tar $(RELEASE_DIR_NAME)
+ 	gzip $(RELEASE_DIR_NAME).tar
+-	echo $(CHARM)
+-	ls -l $(CHARM)/lib
+ 	-for f in $(RELEASE_FILES); do echo $$f; $(LDD) $$f; done
+ 
+ winrelease: winall
+Only in NAMD_2.7b2_Source/: Makefile.porig

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-boot category contains bootloaders and related tools.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-boot contiene algunos cargadores de arranque y
+		herramientas relacionadas.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-bootカテゴリにはブートとブート関連ツールが含まれます。
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-boot enthält Bootloader sowie damit in 
+		Zusammenhang stehende Programme.
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-boot categorie bevat bootloaders en bijbehorende gereedschappen. 
+	</longdescription>
+	<longdescription lang="vi">
+			Nhóm sys-boot chứa các bootloader và công cụ liên quan.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-boot contiene bootloaders e strumenti correlati al boot del sistema.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-boot contém gerenciadores de inicialização e
+		ferramentas relacionadas.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-boot zawiera programy ładujące (bootloadery) i związane z
+		nimi pakiety.
+	</longdescription>
+</catmetadata>
+

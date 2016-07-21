@@ -1,0 +1,26 @@
+From 93228f3dd3355a25583d22dbb96791678b93be3e Mon Sep 17 00:00:00 2001
+From: Thomas Hellstrom <thellstrom@vmware.com>
+Date: Wed, 11 Dec 2013 14:54:02 +0000
+Subject: vmwgfx: Really allow XA version 2.
+
+When XA starts to correctly advertise version 2, we didn't allow it.
+Fix this.
+
+Signed-off-by: Thomas Hellstrom <thellstrom@vmware.com>
+Reviewed-by: Jakob Bornecrantz <jakob@vmware.com>
+---
+diff --git a/vmwgfx/vmwgfx_driver.c b/vmwgfx/vmwgfx_driver.c
+index 6301c29..4e28097 100644
+--- a/vmwgfx/vmwgfx_driver.c
++++ b/vmwgfx/vmwgfx_driver.c
+@@ -79,7 +79,7 @@ typedef uint8_t uint8;
+ 
+ #define XA_VERSION_MINOR_REQUIRED 0
+ #define XA_VERSION_MAJOR_REQUIRED 1
+-#define XA_VERSION_MAJOR_COMPAT 1
++#define XA_VERSION_MAJOR_COMPAT 2
+ 
+ #define DRM_VERSION_MAJOR_REQUIRED 2
+ #define DRM_VERSION_MINOR_REQUIRED 3
+--
+cgit v0.9.0.2-2-gbebe

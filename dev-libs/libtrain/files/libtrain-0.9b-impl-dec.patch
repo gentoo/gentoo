@@ -1,0 +1,29 @@
+ libtrain/lcommon.c |    1 +
+ libtrain/roma.c    |    2 ++
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/libtrain/lcommon.c b/libtrain/lcommon.c
+index 8519c86..01a775e 100644
+--- a/libtrain/lcommon.c
++++ b/libtrain/lcommon.c
+@@ -2,6 +2,7 @@
+ /* this file is modified by FURUKAWA Yo (you@ss.iij4u.or.jp) */
+ 
+ #include	"lfunc.h"
++#include <string.h>
+ 
+ BYTE	Tmpbuf[ 256 ] ;
+ char		FileBuf[ 1024 ] ;
+diff --git a/libtrain/roma.c b/libtrain/roma.c
+index e61a428..41b969c 100644
+--- a/libtrain/roma.c
++++ b/libtrain/roma.c
+@@ -13,6 +13,8 @@
+ #include	<string.h>
+ #endif	/* MAIN */
+ 
++#include <string.h>
++
+ #define		Strlen(s)	strlen((s))
+ #define		Strcpy(d,s)	strcpy((d),(s))
+ #define		iskanji(x)	(((x)>=0x81 && (x)<=0x9F)||((x)>=0xE0 && (x)<=0xFC))

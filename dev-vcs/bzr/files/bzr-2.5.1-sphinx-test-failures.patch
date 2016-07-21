@@ -1,0 +1,24 @@
+Upstream revno 6523 ((vila) Avoid test sphinx-related failures now
+that we don't have direct sphinx anymore. (Vincent Ladeuil))
+
+=== modified file 'bzrlib/tests/test_utextwrap.py'
+--- bzrlib/tests/test_utextwrap.py	2011-05-28 06:44:01 +0000
++++ bzrlib/tests/test_utextwrap.py	2012-04-17 12:18:27 +0000
+@@ -171,16 +171,6 @@
+ 
+ 
+     def setup_both(testcase, base_class, reused_class):
+-
+-        if (features.sphinx.available()):
+-            # Until https://bitbucket.org/birkenfeld/sphinx/issue/706 is fixed,
+-            # we can't run these tests when sphinx <= 1.0.1 as it breaks
+-            # textwrap.TextWrapper.wordsep_re
+-            version = tuple(map(int,
+-                                features.sphinx.module.__version__.split('.')))
+-            if version <= (1, 0, 7):
+-                raise tests.TestSkipped(
+-                    'sphinx textwrap monkeypatch breaks utextwrap')
+         super(base_class, testcase).setUp()
+         override_textwrap_symbols(testcase)
+         reused_class.setUp(testcase)
+

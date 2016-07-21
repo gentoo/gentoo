@@ -1,0 +1,46 @@
+Index: clxclient-3.9.0/Makefile
+===================================================================
+--- clxclient-3.9.0.orig/Makefile
++++ clxclient-3.9.0/Makefile
+@@ -24,6 +24,7 @@
+ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+ LIBDIR = lib$(SUFFIX)
++PKGCONFIG = pkg-config
+ 
+ 
+ MAJVERS = 3
+@@ -31,9 +32,9 @@ MINVERS = 9.0
+ VERSION = $(MAJVERS).$(MINVERS)
+ 
+ 
+-CPPFLAGS += -Wall -I. -I/usr/X11R6/include `freetype-config --cflags` -fpic -DVERSION=\"$(VERSION)\" -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -O2 
+-LDFLAGS += -L/usr/X11R6/$(LIBDIR) `freetype-config --libs`
+-LDLIBS +=
++CPPFLAGS += -Wall -I. -I/usr/X11R6/include `$(PKGCONFIG) --cflags freetype2` -fpic -DVERSION=\"$(VERSION)\" -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
++LDFLAGS += -L/usr/X11R6/$(LIBDIR)
++LDLIBS += `$(PKGCONFIG) --libs freetype2`
+ 
+ 
+ CLXCLIENT_SO = libclxclient.so
+@@ -46,15 +47,14 @@ CLXCLIENT_H = clxclient.h
+ 
+ 
+ $(CLXCLIENT_MIN): $(CLXCLIENT_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP) $(LDLIBS)
+ 
+ 
+ install:	$(CLXCLIENT_MIN)
+-	install -d $(PREFIX)/$(LIBDIR)
+-	install -m 644 $(CLXCLIENT_H) $(PREFIX)/include
+-	install -m 755 $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)
+-	ldconfig
+-	ln -sf $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)/$(CLXCLIENT_SO)
++	install -m 644 -D $(CLXCLIENT_H) $(PREFIX)/include/$(CLXCLIENT_H)
++	install -m 755 -D $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)/$(CLXCLIENT_MIN)
++	ln -sf $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)/$(CLXCLIENT_MAJ)
++	ln -sf $(CLXCLIENT_MAJ) $(PREFIX)/$(LIBDIR)/$(CLXCLIENT_SO)
+ 
+ 
+ clean:

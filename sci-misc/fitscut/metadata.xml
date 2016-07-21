@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  fitscut is designed to extract cutouts from FITS image format
+  files. FITS, PNG, and JPEG output types are supported.
+  When multiple input files are specified and the output type is PNG or
+  JPEG the resulting image is an RGB color image. 
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,153 @@
+ - fix errors in subdir makes
+ - parallelize subdir runs
+ - cleanup flag handling
+
+--- a/Makefile
++++ b/Makefile
+@@ -9,19 +9,19 @@
+ 	   vmconvert vmcp man mon_tools dasdinfo vmur cpuplugd ipl_tools \
+ 	   ziomon iucvterm hyptop cmsfs-fuse qethqoat
+ 
+-all: subdirs_make
++SUB_DIRS_ALL = $(patsubst %,subdirs_all_%,$(SUB_DIRS))
++SUB_DIRS_CLEAN = $(patsubst %,subdirs_clean_%,$(SUB_DIRS))
++SUB_DIRS_INSTALL = $(patsubst %,subdirs_install_%,$(SUB_DIRS))
+ 
+-subdirs_make:
+-	set -e ; for dir in $(SUB_DIRS) ; do \
+-		cd $$dir ; $(MAKE) TOPDIR=$(TOPDIR) ARCH=$(ARCH); cd ..; \
+-	done
++all: $(SUB_DIRS_ALL)
+ 
+-clean:
+-	set -e ; for dir in $(SUB_DIRS) ; do \
+-		cd $$dir ; $(MAKE) TOPDIR=$(TOPDIR) ARCH=$(ARCH) clean; cd ..; \
+-	done
++_subdir   = $(patsubst subdirs_%,%,$@)
++subdir    = $(shell expr $(_subdir) : '[^_]*_\(.*\)')
++subtarget = $(shell expr $(_subdir) : '\([^_]*\)_.*')
++subdirs_%:
++	$(MAKE) TOPDIR=$(TOPDIR) ARCH=$(ARCH) -C $(subdir) $(subtarget)
++
++clean: $(SUB_DIRS_CLEAN)
+ 
+ install:
+-	set -e ; for dir in $(SUB_DIRS) ; do \
+-		cd $$dir ; $(MAKE) TOPDIR=$(TOPDIR) ARCH=$(ARCH) install; cd ..; \
+-	done
++	$(MAKE) $(SUB_DIRS_INSTALL)
+--- a/common.mak
++++ b/common.mak
+@@ -17,10 +17,10 @@
+ # Cross Compiling Support
+ CROSS_COMPILE   =
+ AS              = $(call echocmd,"  AS      ",/$@)$(CROSS_COMPILE)as
+-LINK            = $(call echocmd,"  LINK    ",/$@)$(CROSS_COMPILE)gcc
++LINK            = $(call echocmd,"  LINK    ",/$@)$(CROSS_COMPILE)gcc $(CFLAGS) $(LDFLAGS)
+ LD              = $(call echocmd,"  LD      ",/$@)$(CROSS_COMPILE)ld
+ CC              = $(call echocmd,"  CC      ",/$@)$(CROSS_COMPILE)gcc
+-LINKXX          = $(call echocmd,"  LINKXX  ",/$@)$(CROSS_COMPILE)g++
++LINKXX          = $(call echocmd,"  LINKXX  ",/$@)$(CROSS_COMPILE)g++ $(CXXFLAGS) $(LDFLAGS)
+ CXX             = $(call echocmd,"  CXX     ",/$@)$(CROSS_COMPILE)g++
+ CPP             = $(call echocmd,"  CPP     ",/$@)$(CROSS_COMPILE)gcc -E
+ AR              = $(call echocmd,"  AR      ",/$@)$(CROSS_COMPILE)ar
+@@ -41,14 +41,13 @@
+ ZFCPDUMP_RD     = zfcpdump.rd
+ export ZFCPDUMP_DIR ZFCPDUMP_IMAGE ZFCPDUMP_RD
+ 
+-CFLAGS		= $(WARNFLAGS) -O3 -DS390_TOOLS_RELEASE=$(S390_TOOLS_RELEASE) \
+-			-DS390_TOOLS_LIBDIR=$(TOOLS_LIBDIR) \
+-			-DS390_TOOLS_SYSCONFDIR=$(SYSCONFDIR) \
+-			-g $(OPT_FLAGS)
+-CXXFLAGS	= $(WARNFLAGS) -O3 -DS390_TOOLS_RELEASE=$(S390_TOOLS_RELEASE) \
+-			-DS390_TOOLS_LIBDIR=$(TOOLS_LIBDIR) \
+-			-DS390_TOOLS_SYSCONFDIR=$(SYSCONFDIR) \
+-			 -g $(OPT_FLAGS)
++CFLAGS		+= $(WARNFLAGS) $(OPT_FLAGS)
++CXXFLAGS	+= $(WARNFLAGS) $(OPT_FLAGS)
++CPPFLAGS	+= \
++	-DS390_TOOLS_RELEASE=$(S390_TOOLS_RELEASE) \
++	-DS390_TOOLS_LIBDIR=$(TOOLS_LIBDIR) \
++	-DS390_TOOLS_SYSCONFDIR=$(SYSCONFDIR)
++export CPPFLAGS
+ 
+ # make G=1
+ # Compile tools so that gcov can be used to collect code coverage data.
+@@ -76,7 +75,7 @@
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+ 
+ %: %.o
+-	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
++	$(LINK) $(CFLAGS) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
+ 
+ all:
+ 
+--- a/zfcpdump/ramdisk/Makefile
++++ b/zfcpdump/ramdisk/Makefile
+@@ -12,16 +12,14 @@
+ 
+ all: $(ZFCPDUMP_RD)
+ 
+-CFLAGS += -D_FILE_OFFSET_BITS=64
++CPPFLAGS += -D_FILE_OFFSET_BITS=64 -I../../include
++LDFLAGS  += -static
++LDLIBS   += -lz
+ 
+ $(ZFCPDUMP_RD): zfcp_dumper
+ 	/bin/sh ./create_rd.sh $(ARCH)
+ 
+-zfcp_dumper: zfcp_dumper.o
+-	$(CC) -o zfcp_dumper -static zfcp_dumper.o -lz
+-
+ zfcp_dumper.o: zfcp_dumper.c zfcp_dumper.h
+-	$(CC) $(CFLAGS) -c -I../../include zfcp_dumper.c
+ 
+ install: $(ZFCPDUMP_RD)
+ 	/bin/sh ./create_rd.sh -i
+@@ -29,6 +27,3 @@
+ clean clobber:
+ 	/bin/sh ./create_rd.sh -r
+ 	rm -f *.o
+-
+-%.o: %.c
+-	$(CC) $(CFLAGS) -c -o $@ $<
+--- a/zfcpdump_v2/Makefile
++++ b/zfcpdump_v2/Makefile
+@@ -6,12 +6,13 @@
+ LINUX_DIR := linux-$(LINUX_VERSION)
+ E2FSPROGS := e2fsprogs-1.41.3
+ 
+-CFLAGS        += -D_FILE_OFFSET_BITS=64
++CPPFLAGS += -D_FILE_OFFSET_BITS=64 -DGZIP_SUPPORT
++LDFLAGS  += -static
++LDLIBS   += -lz
+ 
+ all: zfcpdump.image
+ 
+ zfcpdump: zfcpdump.c zfcpdump.h
+-	$(CC) $(CFLAGS) -D GZIP_SUPPORT -static -o $@ zfcpdump.c -lz
+ 
+ e2fsck:
+ 	tar xfzv $(E2FSPROGS).tar.gz
+--- a/zipl/boot/Makefile
++++ b/zipl/boot/Makefile
+@@ -3,9 +3,8 @@
+ 
+ S390_TOOLS_VERSION_EBCDIC := $(shell echo -n $(S390_TOOLS_RELEASE) | dd conv=ebcdic 2> /dev/null | hexdump -v -e '/1 "0x%02x,"' | sed 's/.$$//')
+ 
+-CFLAGS  += -I../include -D__ASSEMBLY__ \
++CPPFLAGS  += -I../include -D__ASSEMBLY__ \
+ 		-DS390_TOOLS_VERSION_EBCDIC=$(S390_TOOLS_VERSION_EBCDIC)
+-LDFLAGS = -O2
+ FILES	:= fba0.bin fba1b.bin fba2.bin \
+ 	   eckd0_ldl.bin eckd0_cdl.bin \
+ 	   eckd1.bin eckd1b.bin eckd2.bin \
+@@ -16,7 +15,7 @@
+ %:	%.S
+ 
+ %.o:	%.S
+-	$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
+ %.exec:	%.o
+ 	@STAGE=$$(                                  \

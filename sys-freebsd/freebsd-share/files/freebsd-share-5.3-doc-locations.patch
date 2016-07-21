@@ -1,0 +1,20 @@
+--- examples/smbfs/Makefile.orig	Tue Mar 22 15:20:20 2005
++++ examples/smbfs/Makefile	Tue Mar 22 15:20:46 2005
+@@ -2,6 +2,7 @@
+ 
+ NOOBJ=
+ BINDIR=	/usr/share/examples/smbfs
++FILESDIR=      ${DOCDIR}/smbfs
+ FILES=	dot.nsmbrc
+ 
+ .PATH: ${.CURDIR}/../../../contrib/smbfs/examples
+--- examples/smbfs/print/Makefile.orig	Tue Mar 22 15:22:17 2005
++++ examples/smbfs/print/Makefile	Tue Mar 22 15:22:35 2005
+@@ -2,6 +2,7 @@
+ 
+ NOOBJ=
+ BINDIR=	/usr/share/examples/smbfs/print
++FILESDIR=      ${DOCDIR}/smbfs/print
+ FILES=	lj6l ljspool printcap.sample tolj
+ 
+ .PATH: ${.CURDIR}/../../../../contrib/smbfs/examples/print

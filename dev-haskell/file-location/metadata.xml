@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Common debugging/error/exception functions that give file location information
+		
+		&gt; $(err "OH NO!")
+		&gt;
+		&gt; main:Main main.hs:16:1 OH NO!
+		
+		Notice how it displays package:module file:line:character
+		It exposes the functions err (error), undef (undefined), and trc (Debug.Trace.trace). All of these behave the same as their normal counterpart but also spit out a location.
+		
+		Here is my favorite helper, debug, which is like trace but just show the value.
+		
+		&gt; debug [1,2,3]
+		&gt;
+		&gt; DEBUG: [1,2,3]
+		&gt; [1,2,3]
+		
+		And The Template Haskell version.
+		
+		&gt; $(dbg) [1,2,3]
+		&gt;
+		&gt; DEBUG main:Main main.hs:1:3 [1,2,3]
+		&gt; [1,2,3]
+		
+		Also there is a version of thrwIO that gives location information
+		&gt; ($(thrwIO) $ AException) `catch` \e -&gt; putStrLn ("Caught " ++ show (e :: AException))
+		&gt;
+		&gt; Caught AException "main:Main test/main.hs:25:6"
+		
+		See module for a listing of all the functions with short descriptions, and the homepage for some more examples https://github.com/gregwebs/ErrorLocation.hs
+	</longdescription>
+	<upstream>
+		<remote-id type="github">gregwebs/FileLocation.hs</remote-id>
+	</upstream>
+</pkgmetadata>

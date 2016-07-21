@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
+  </maintainer>
+  <use>
+    <flag name="maildrop">Filter spam using maildrop</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">qmailadmin</remote-id>
+  </upstream>
+</pkgmetadata>

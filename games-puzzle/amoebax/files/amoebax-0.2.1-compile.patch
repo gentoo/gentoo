@@ -1,0 +1,12 @@
+--- src/binreloc.cxx
++++ src/binreloc.cxx
+@@ -739,7 +739,8 @@
+ char *
+ br_dirname (const char *path)
+ {
+-	char *end, *result;
++	const char *end;
++	char *result;
+ 
+ 	if (path == (const char *) NULL)
+ 		return (char *) NULL;

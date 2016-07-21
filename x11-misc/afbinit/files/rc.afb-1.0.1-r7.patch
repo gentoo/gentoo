@@ -1,0 +1,62 @@
+--- rc.afb-	1999-09-08 06:42:36.000000000 +0000
++++ rc.afb	2008-03-18 17:55:11.000000000 +0000
+@@ -10,11 +10,6 @@
+ 	exit 0
+ fi
+ 
+-if [ `/bin/dmesg | /bin/grep -c "Elite 3D"` -eq 0 ]
+-then
+-	exit 0
+-fi
+-
+ # The microcode loader binary and the microcode
+ # itself must exist.
+ if [ ! -x /usr/sbin/afbinit -o ! -f /usr/lib/afb.ucode ]
+@@ -22,13 +17,38 @@
+ 	exit 0
+ fi
+ 
+-# Make FB device list.
+-afb_devs=`/bin/dmesg | /bin/egrep -i "Elite 3D" | /bin/sed 's/\:.*//'`
++# Make FB device list, depending on which kind of kernel we have.
++# First, try kernel 2.4.x
++
++if [ `/bin/dmesg | /bin/grep -c "Elite 3D"` -gt 0 ]
++then
++
++	afb_devs=`/bin/dmesg | /bin/egrep -i "Elite 3D" | /bin/sed 's/\:.*//'`
++
++	# Load microcode onto each card.
++	for AFB in ${afb_devs}
++	do
++		echo -n "${AFB}: Loading Elite3D microcode... "
++		/usr/sbin/afbinit /dev/${AFB} /usr/lib/afb.ucode
++		echo "done."
++	done
++	exit 0
++else
++##
++#	OK, we're not kernel 2.4.x
++#	try kernel 2.6.x
++
++## if [ `/bin/dmesg | /bin/grep -c "AFB"` -gt 0 ]
++## then
+ 
+-# Load microcode onto each card.
+-for AFB in ${afb_devs}
+-do
+-	echo -n "${AFB}: Loading Elite3D microcode... "
+-	/usr/sbin/afbinit /dev/${AFB} /usr/lib/afb.ucode
+-	echo "done."
+-done
++	[[ -e /proc/fb ]] || exit 0
++	afb_devs=`/bin/more -s /proc/fb  | /bin/egrep -i "Elite 3D" | /bin/sed 's/\ .*//'`
++	# Load microcode onto each card.
++	for AFB in ${afb_devs}
++	do
++		echo -n "/dev/fb${AFB}: Loading Elite3D microcode... "
++		/usr/sbin/afbinit /dev/fb${AFB} /usr/lib/afb.ucode
++		echo "done."
++	done
++	exit 0
++fi

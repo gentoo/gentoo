@@ -1,0 +1,13 @@
+--- a/configure
++++ b/configure
+@@ -38,8 +38,8 @@
+   return 0;
+ }
+ EOF
+-CXX=unknown;
+-for i in "CC" "g++" "cc" "$CC"; do
++CXX=${CXX-unknown}
++for i in "$CXX" "CC" "g++" "cc"; do
+   if $i -c $tmp_file.C 2>/dev/null; then
+     CXX="$i";
+     break;

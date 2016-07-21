@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-DomainKeys</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Header</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Key</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Key::Private</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Key::Public</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Message</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Policy</remote-id>
+    <remote-id type="cpan-module">Mail::DomainKeys::Signature</remote-id>
+  </upstream>
+</pkgmetadata>

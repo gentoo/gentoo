@@ -1,0 +1,33 @@
+Fix build system to remove hardcoded debugging flags.
+
+--- allpathslg-52488/configure.ac
++++ allpathslg-52488/configure.ac
+@@ -12,7 +12,7 @@
+ AC_OPENMP
+ AC_OPENMP_CHECK
+ 
+-CXXFLAGS="$CXXFLAGS -std=c++11 -Wextra -Wall -Wsign-promo -Woverloaded-virtual -Wendif-labels -Wno-unused -Wno-deprecated -Wno-long-long -Wno-parentheses -Wno-unused-parameter -fno-nonansi-builtins -mieee-fp -fno-strict-aliasing -iquote . -ggdb -DNDEBUG"
++CXXFLAGS="$CXXFLAGS -std=c++11 -Wextra -Wall -Wsign-promo -Woverloaded-virtual -Wendif-labels -Wno-unused -Wno-deprecated -Wno-long-long -Wno-parentheses -Wno-unused-parameter -mieee-fp -fno-strict-aliasing -iquote . -DNDEBUG"
+ 
+ OS_RELEASE="`uname -r`"
+ AC_SUBST(CXXFLAGS)
+--- allpathslg-52488/m4/broad.m4
++++ allpathslg-52488/m4/broad.m4
+@@ -35,12 +35,14 @@
+     OLD_CFLAGS=$CFLAGS
+     CFLAGS="$OPENMP_CFLAGS $CFLAGS"
+     AC_MSG_CHECKING([validity of OpenMP configuation.])
+-    AC_LINK_IFELSE([#ifndef _OPENMP
++	AC_LINK_IFELSE([
++        AC_LANG_SOURCE([[
++	#ifndef _OPENMP
+      choke me
+     #endif
+     #include <omp.h>
+-    int main () { return omp_get_num_threads (); }],
+-    [],
++    int main () { return omp_get_num_threads (); }
++    ]])],[],
+     [AC_MSG_BROAD_FAIL([Your compiler must support OpenMP.])])
+     CXXFLAGS=$OLD_CXXFLAGS
+     CFLAGS=$OLD_CFLAGS

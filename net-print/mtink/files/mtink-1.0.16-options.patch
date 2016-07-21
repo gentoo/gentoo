@@ -1,0 +1,39 @@
+diff -ruN mtink-1.0.16.orig/Makefile.ORG mtink-1.0.16/Makefile.ORG
+--- mtink-1.0.16.orig/Makefile.ORG	2007-08-28 12:52:30.000000000 +0200
++++ mtink-1.0.16/Makefile.ORG	2011-06-05 21:29:23.000000000 +0200
+@@ -4,7 +4,7 @@
+ setUid=1
+ gimpVersion=
+ 
+-DBG = -s -O
++DBG =
+ 
+ # comment this out for Solaris
+ 
+@@ -235,7 +235,7 @@
+ 
+ ttink: $(TTYOBJ) $(SRCDIR)/d4lib.h $(SRCDIR)/cmd.h $(SRCDIR)/mtink.h $(SRCDIR)/model.h $(SRCDIR)/version.h Makefile
+ 	@echo Link ttink
+-	@$(CC) -o ttink $(TTYOBJ) $(CFLAGS) $(MTINK_CFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSLDFLG) -DWITH_X=0
++	@$(CC) -o ttink $(LDFLAGS) $(TTYOBJ) $(CFLAGS) $(MTINK_CFLAGS) $(RDTIMEOUT) $(DEVICE) $(WRTIMEOUT) $(DEBUG) $(KERNEL_USB_BUG) $(MACOSLDFLG) -DWITH_X=0
+ 
+ ############# PLUG-IN #######################
+ gimp-mtink: $(SRCDIR)/gimp-mtink.c Makefile
+@@ -257,7 +257,7 @@
+ 
+ mtinkd: $(SVR_OBJ) Makefile
+ 	@echo Link mtinkd
+-	@$(CC) -o mtinkd $(SVR_OBJ) $(CFLAGS) $(MTINK_CFLAGS) $(MACOSLDFLG) 
++	@$(CC) -o mtinkd $(LDFLAGS) $(SVR_OBJ) $(CFLAGS) $(MTINK_CFLAGS) $(MACOSLDFLG) 
+ 
+ ########### Chooser ##############
+ 
+@@ -269,7 +269,7 @@
+ 
+ $(DETDIR)/askPrinter: $(DETDIR)/askPrinter.c
+ 	@echo Compile and link askPrinter.c
+-	@$(CC) -o $(DETDIR)/askPrinter $(DETDIR)/askPrinter.c -I. -I$(DETDIR)
++	@$(CC) -o $(DETDIR)/askPrinter $(LDFLAGS) $(DETDIR)/askPrinter.c -I. -I$(DETDIR)
+ 
+ ########### utilities ######################
+ 

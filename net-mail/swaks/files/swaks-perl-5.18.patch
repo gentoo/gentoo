@@ -1,0 +1,106 @@
+--- swaks-20130209.0.orig/doc/ref.pod	2014-04-02 19:30:12.742814178 +0300
++++ swaks-20130209.0.orig/doc/ref.pod	2014-04-02 19:31:49.135105112 +0300
+@@ -824,83 +824,83 @@ 
+ 
+ =over 4
+ 
+-=item 0
++=item C<0>
+ 
+ no errors occurred
+ 
+-=item 1
++=item C<1>
+ 
+ error parsing command line options
+ 
+-=item 2
++=item C<2>
+ 
+ error connecting to remote server
+ 
+-=item 3
++=item C<3>
+ 
+ unknown connection type
+ 
+-=item 4
++=item C<4>
+ 
+ while running with connection type of "pipe", fatal problem writing to or reading from the child process
+ 
+-=item 5
++=item C<5>
+ 
+ while running with connection type of "pipe", child process died unexpectedly.  This can mean that the program specified with --pipe doesn't exist.
+ 
+-=item 6
++=item C<6>
+ 
+ Connection closed unexpectedly.  If the close is detected in response to the 'QUIT' swaks sends following an unexpected response, the error code for that unexpected response is used instead.  For instance, if a mail server returns a 550 response to a MAIL FROM: and then immediately closes the connection, swaks detects that the connection is closed, but uses the more specific exit code 23 to detail the nature of the failure.  If instead the server return a 250 code and then immediately closes the connection, swaks will use the exit code 6 because there is not a more specific exit code.
+ 
+-=item 10
++=item C<10>
+ 
+ error in prerequisites (needed module not available)
+ 
+-=item 21
++=item C<21>
+ 
+ error reading initial banner from server
+ 
+-=item 22
++=item C<22>
+ 
+ error in HELO transaction
+ 
+-=item 23
++=item C<23>
+ 
+ error in MAIL transaction
+ 
+-=item 24
++=item C<24>
+ 
+ no RCPTs accepted
+ 
+-=item 25
++=item C<25>
+ 
+ server returned error to DATA request
+ 
+-=item 26
++=item C<26>
+ 
+ server did not accept mail following data
+ 
+-=item 27
++=item C<27>
+ 
+ server returned error after normal-session quit request
+ 
+-=item 28
++=item C<28>
+ 
+ error in AUTH transaction
+ 
+-=item 29
++=item C<29>
+ 
+ error in TLS transaction
+ 
+-=item 32
++=item C<32>
+ 
+ error in EHLO following TLS negotiation
+ 
+-=item 33
++=item C<33>
+ 
+ error in XCLIENT transaction
+ 
+-=item 34
++=item C<34>
+ 
+ error in EHLO following XCLIENT
+ 

@@ -1,0 +1,40 @@
+Debian patch: 10_ftbfs_fix_powerpc.patch
+Fixing build on PowerPC
+https://bugs.gentoo.org/show_bug.cgi?id=365303
+
+--- a/include/memcache.h.in
++++ b/include/memcache.h.in
+@@ -61,6 +61,11 @@
+ #ifndef MEMCACHE_H
+ #define MEMCACHE_H
+ 
++/* fix FTBFS on powerpc for Debian libmemcache */
++#ifndef __USE_POSIX
++#define __USE_POSIX
++#endif
++
+ #include <netdb.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+--- a/src/memcache.c
++++ b/src/memcache.c
+@@ -39,12 +39,17 @@
+ #include <sysexits.h>
+ #include <errno.h>
+ #include <sys/types.h>
+-#ifdef __linux
++
++/* fix FTBFS on powerpc for Debian libmemcache.  I personally think this
++ * shouldnt be the case, as Debian Bug#345587 seems to show. */
++
++/* #ifdef __linux */
+ # ifndef __USE_POSIX
+ #  define __USE_POSIX
+ #warning "Working around busted-ass Linux header include problems: use FreeBSD instead"
+ #warning "http://www.FreeBSD.org/ - you won't regret it"
+-# endif
++/* #endif */
++
+ #endif
+ #include <sys/time.h>
+ #include <sys/socket.h>

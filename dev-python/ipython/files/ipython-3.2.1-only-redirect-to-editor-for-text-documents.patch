@@ -1,0 +1,38 @@
+Upstream patch to fix
+"Maliciously crafted text files in IPython/Jupyter editor".
+
+http://seclists.org/oss-sec/2015/q3/558
+https://bugs.gentoo.org/show_bug.cgi?id=560708
+
+
+From df24d9153b86863ccfa98bf509704d9304143ce1 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Mon, 20 Jul 2015 12:11:04 -0700
+Subject: [PATCH 3/4] only redirect to editor for text documents
+
+treat unidentified mime-types as text
+---
+ IPython/html/static/tree/js/notebooklist.js | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/IPython/html/static/tree/js/notebooklist.js b/IPython/html/static/tree/js/notebooklist.js
+index 0065143..d8c7b2a 100644
+--- a/IPython/html/static/tree/js/notebooklist.js
++++ b/IPython/html/static/tree/js/notebooklist.js
+@@ -532,6 +532,13 @@ define([
+             icon = 'running_' + icon;
+         }
+         var uri_prefix = NotebookList.uri_prefixes[model.type];
++        if (model.type === 'file' &&
++            model.mimetype && model.mimetype.substr(0,5) !== 'text/'
++        ) {
++            // send text/unidentified files to editor, others go to raw viewer
++            uri_prefix = 'files';
++        }
++        
+         item.find(".item_icon").addClass(icon).addClass('icon-fixed-width');
+         var link = item.find("a.item_link")
+             .attr('href',
+-- 
+2.4.6
+

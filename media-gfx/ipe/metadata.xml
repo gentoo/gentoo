@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Ipe is a drawing editor for creating figures in PDF or
+  (encapsulated) Postscript format. Ipe supports making small figures
+  for inclusion into LaTeX documents as well as making multi-page PDF
+  presentations.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">ipe7</remote-id>
+  </upstream>
+</pkgmetadata>

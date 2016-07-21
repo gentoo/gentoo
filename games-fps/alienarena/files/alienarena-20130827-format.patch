@@ -1,0 +1,11 @@
+--- source/game/p_client.c.old	2016-01-18 20:13:25.147714704 +0100
++++ source/game/p_client.c	2016-01-18 20:13:38.776476727 +0100
+@@ -2123,7 +2123,7 @@
+ #else
+ 	ent->ctype = 0; //alien is default
+ 	sprintf(modelpath, "players/%s/human", playermodel);
+-	sprintf(ent->charModel, playermodel);
++	sprintf(ent->charModel, "%s", playermodel);
+ 	Q2_FindFile (modelpath, &file);
+ 	if(file) 
+ 	{ 

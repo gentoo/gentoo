@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>moaxcp@gmail.com</email>
+		<name>John Mercier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="xrandr">Add support for xrandr</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">notion</remote-id>
+		<remote-id type="github">raboof/notion</remote-id>
+	</upstream>
+</pkgmetadata>

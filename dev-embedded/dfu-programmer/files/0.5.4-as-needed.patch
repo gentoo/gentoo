@@ -1,0 +1,12 @@
+diff -u dfu-programmer-0.5.4.ORIG/configure.ac dfu-programmer-0.5.4/configure.ac
+--- dfu-programmer-0.5.4.ORIG/configure.ac	2012-11-15 11:54:24.938577990 +0000
++++ dfu-programmer-0.5.4/configure.ac	2012-11-15 11:55:47.730575031 +0000
+@@ -27,7 +27,7 @@
+   PKG_CHECK_MODULES(LIBUSB_1_0, [ libusb-1.0 >= 1.0.0 ], have_libusb_1_0=yes, have_libusb_1_0=no)
+   if test "$have_libusb_1_0" = "yes"; then
+     CFLAGS="$CFLAGS $LIBUSB_1_0_CFLAGS"
+-    LDFLAGS="$LDFLAGS $LIBUSB_1_0_LIBS"
++    LIBS="$LIBS $LIBUSB_1_0_LIBS"
+     HAVE_USB=yes
+   fi
+ fi

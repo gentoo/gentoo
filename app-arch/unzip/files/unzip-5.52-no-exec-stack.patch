@@ -1,0 +1,13 @@
+Make sure that the asm files don't incorrectly trigger an executable
+stack marking in the final shared library.  That's bad, mmmkay.
+
+--- unzip/crc_i386.S
++++ unzip/crc_i386.S
+@@ -238,3 +238,7 @@
+ #endif /* i386 || _i386 || _I386 || __i386 */
+ 
+ #endif /* !USE_ZLIB */
++
++#ifdef __ELF__
++.section .note.GNU-stack,"",%progbits
++#endif

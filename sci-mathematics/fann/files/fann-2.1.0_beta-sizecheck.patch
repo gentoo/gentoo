@@ -1,0 +1,25 @@
+From: Christian Kastner <debian@kvr.at>
+Date: Sun, 6 Feb 2011 17:09:05 +0100
+Subject: [PATCH] Correct a typo in a size comparison
+
+Origin: http://leenissen.dk/fann/forum/viewtopic.php?f=1&t=626
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/712290
+Last-Update: 2011-02-06
+---
+ python/pyfann/pyfann.i |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/python/pyfann/pyfann.i b/python/pyfann/pyfann.i
+index 47b17ba..ec55535 100644
+--- a/python/pyfann/pyfann.i
++++ b/python/pyfann/pyfann.i
+@@ -108,7 +108,7 @@
+     for (j = 0; j< num; j++)
+     {
+         PyObject* o1=PySequence_GetItem($input,j);
+-        if ((unsigned int)PySequence_Length(o1) == dim) {
++        if ((unsigned int)PySequence_Length(o1) != dim) {
+             PyErr_SetString(PyExc_ValueError,"Size mismatch. All items must be of the same size");
+             SWIG_fail;
+         }
+-- 

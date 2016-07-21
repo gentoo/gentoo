@@ -1,0 +1,26 @@
+--- INCHI_API/gcc_so_makefile/makefile	2012-05-13 14:52:53.587632989 +0300
++++ INCHI_API/gcc_so_makefile/makefile	2012-05-13 14:52:11.668635419 +0300
+@@ -209,6 +209,14 @@
+ 
+ else
+ 
++ifdef STATIC
++
++libinchi.a: $(INCHI_LIB_OBJS)
++	$(AR) rcs $(INCHI_LIB_PATHNAME).a $(INCHI_LIB_OBJS)
++	$(RANLIB) $(INCHI_LIB_PATHNAME).a
++
++else
++
+ $(INCHI_LIB_PATHNAME).so$(VERSION): $(INCHI_LIB_OBJS)
+ 	$(SHARED_LINK) $(SHARED_LINK_PARM) -o \
+   $(INCHI_LIB_PATHNAME).so$(VERSION) \
+@@ -219,6 +226,8 @@
+ 
+ endif
+ 
++endif
++
+ # === InChI Library compile rule =========
+ 
+ %.o: $(P_LIBR)%.c

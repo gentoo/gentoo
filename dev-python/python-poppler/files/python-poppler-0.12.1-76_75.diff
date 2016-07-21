@@ -1,0 +1,66 @@
+--- poppler.override
++++ poppler.override
+@@ -600,3 +600,62 @@
+     return PycairoSurface_FromSurface(surface, NULL, NULL);
+ #endif
+ }
++%%
++override poppler_page_render_to_pixbuf kwargs
++static PyObject *
++_wrap_poppler_page_render_to_pixbuf(PyGObject *self,
++                                    PyObject *args,
++                                    PyObject *kwargs)
++{
++    static char *kwlist[] = { "src_x", "src_y", "src_width",
++                              "src_height", "scale", "rotation", NULL };
++    int src_x, src_y, src_width, src_height, rotation;
++    double scale;
++    GdkPixbuf *pixbuf = NULL;
++
++    if (!PyArg_ParseTupleAndKeywords(args, kwargs,
++                                     "iiiidi:Poppler.Page.render_to_pixbuf",
++                                     kwlist, &src_x, &src_y, &src_width,
++                                     &src_height, &scale, &rotation))
++        return NULL;
++
++    pyg_begin_allow_threads;
++
++    poppler_page_render_to_pixbuf(POPPLER_PAGE(self->obj), src_x, src_y,
++                                  src_width, src_height, scale,
++                                  rotation, pixbuf);
++
++    pyg_end_allow_threads;
++
++    return pygobject_new((GObject *)pixbuf);
++}
++%%
++override poppler_page_render_to_pixbuf_for_printing kwargs
++static PyObject *
++_wrap_poppler_page_render_to_pixbuf_for_printing(PyGObject *self,
++                                                 PyObject *args,
++                                                 PyObject *kwargs)
++{
++    static char *kwlist[] = { "src_x", "src_y", "src_width",
++                              "src_height", "scale", "rotation", NULL };
++    int src_x, src_y, src_width, src_height, rotation;
++    double scale;
++    GdkPixbuf *pixbuf = NULL;
++
++    if (!PyArg_ParseTupleAndKeywords(args, kwargs,
++                                     "iiiidi:Poppler.Page.render_to_pixbuf_for_printing",
++                                     kwlist, &src_x, &src_y, &src_width,
++                                     &src_height, &scale, &rotation))
++        return NULL;
++
++    pyg_begin_allow_threads;
++
++    poppler_page_render_to_pixbuf_for_printing(POPPLER_PAGE(self->obj),
++                                               src_x, src_y, src_width,
++                                               src_height, scale,
++                                               rotation, pixbuf);
++
++    pyg_end_allow_threads;
++
++    return pygobject_new((GObject *)pixbuf);
++}
+

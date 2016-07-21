@@ -1,0 +1,34 @@
+# /etc/conf.d/vdr.streamdev-server
+
+# Use your own remux script 
+#
+# default: streamdevserver remux script is used
+# take a look at the README for handling
+#
+# allowed values: full path to your replacement script
+#
+#STREAMDEV_REMUX_SCRIPT="/full/path/to/your/own/remux-script"
+
+# You can configure optional authentication credentials
+# for the http protocol here
+#
+# ATTENTION: the colon character ":" is not allowed in 
+#            both the login and password !
+#
+# enable http_auth
+#	allowed values: yes | no
+#	default: no
+#
+#STREAMDEV_HTTP_AUTH_ENABLE="yes"
+
+# Set the user for http_auth
+#	allowed values: your_user
+#	default:
+#
+STREAMDEV_HTTP_LOGIN=""
+
+# Set the password for http_auth
+#	allowed values: your_password
+#	default:
+#
+STREAMDEV_HTTP_PASSWORD=""

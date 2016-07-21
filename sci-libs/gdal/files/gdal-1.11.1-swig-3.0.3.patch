@@ -1,0 +1,161 @@
+svn diff -c 28298 https://svn.osgeo.org/gdal/branches/1.11
+r28298 | rouault | 2015-01-06 10:03:37 +0100 (Di, 06 Jan 2015) | 1 line
+Python bindings: fix processing error of ogr_python.i with SWIG 3 (#5795)
+http://trac.osgeo.org/gdal/ticket/5795#comment:3
+https://bugs.gentoo.org/534168
+
+Index: gdal/swig/python/osgeo/ogr.py
+===================================================================
+--- gdal/swig/python/osgeo/ogr.py	(revision 28297)
++++ gdal/swig/python/osgeo/ogr.py	(revision 28298)
+@@ -2025,12 +2025,12 @@
+         """Returns the number of features in the layer"""
+         return self.GetFeatureCount()
+ 
+-
+-
++    # To avoid __len__ being called when testing boolean value
++    # which can have side effects (#4758)
+     def __nonzero__(self):
+         return True
+ 
+-
++    # For Python 3 compat
+     __bool__ = __nonzero__
+ 
+     def __getitem__(self, value):
+@@ -2041,9 +2041,9 @@
+             import sys
+             output = []
+             if value.stop == sys.maxint:
+-                
+-                
+-                
++                #for an unending slice, sys.maxint is used
++                #We need to stop before that or GDAL will write an
++                ##error to stdout
+                 stop = len(self) - 1
+             else:
+                 stop = value.stop
+@@ -2944,8 +2944,8 @@
+     def __copy__(self):
+         return self.Clone()
+ 
+-
+-
++    # This makes it possible to fetch fields in the form "feature.area". 
++    # This has some risk of name collisions.
+     def __getattr__(self, key):
+         """Returns the values of fields by the given name"""
+         if key == 'this':
+@@ -2961,8 +2961,8 @@
+         else:
+             return self.GetField(idx)
+ 
+-
+-
++    # This makes it possible to set fields in the form "feature.area". 
++    # This has some risk of name collisions.
+     def __setattr__(self, key, value):
+         """Set the values of fields by the given name"""
+         if key == 'this' or key == 'thisown':
+@@ -2978,7 +2978,7 @@
+                 else:
+                     self.__dict__[key] = value
+ 
+-
++    # This makes it possible to fetch fields in the form "feature['area']". 
+     def __getitem__(self, key):
+         """Returns the values of fields by the given name / field_index"""
+         if isinstance(key, str):
+@@ -2993,7 +2993,7 @@
+         else:
+             return self.GetField(fld_index)
+ 
+-
++    # This makes it possible to set fields in the form "feature['area'] = 123". 
+     def __setitem__(self, key, value):
+         """Returns the value of a field by field name / index"""
+         if isinstance(key, str):
+@@ -3026,9 +3026,9 @@
+             return self.GetFieldAsIntegerList(fld_index)
+         if fld_type == OFTRealList:
+             return self.GetFieldAsDoubleList(fld_index)
+-        
+-        
+-        
++        ## if fld_type == OFTDateTime or fld_type == OFTDate or fld_type == OFTTime:
++        #     return self.GetFieldAsDate(fld_index)
++        # default to returning as a string.  Should we add more types?
+         return self.GetFieldAsString(fld_index)
+ 
+     def SetField2(self, fld_index, value):
+Index: gdal/swig/include/python/ogr_python.i
+===================================================================
+--- gdal/swig/include/python/ogr_python.i	(revision 28297)
++++ gdal/swig/include/python/ogr_python.i	(revision 28298)
+@@ -111,7 +111,7 @@
+ }
+ 
+ %extend OGRLayerShadow {
+-  %pythoncode {
++  %pythoncode %{
+     def Reference(self):
+       "For backwards compatibility only."
+       pass
+@@ -183,12 +183,12 @@
+         return output
+     schema = property(schema)
+ 
+-  }
++  %}
+ 
+ }
+ 
+ %extend OGRFeatureShadow {
+-  %pythoncode {
++  %pythoncode %{
+     def Reference(self):
+       pass
+ 
+@@ -383,12 +383,12 @@
+         return output
+ 
+ 
+-}
++%}
+ 
+ }
+ 
+ %extend OGRGeometryShadow {
+-%pythoncode {
++%pythoncode %{
+   def Destroy(self):
+     self.__swig_destroy__(self) 
+     self.__del__()
+@@ -416,8 +416,8 @@
+           return subgeom
+       else:
+           raise StopIteration
++%}
+ }
+-}
+ 
+ 
+ %extend OGRFieldDefnShadow {
+@@ -449,13 +449,13 @@
+ }
+ 
+ %extend OGRFieldDefnShadow {
+-%pythoncode {
++%pythoncode %{
+   def Destroy(self):
+     "Once called, self has effectively been destroyed.  Do not access. For backwards compatiblity only"
+     _ogr.delete_FieldDefn( self )
+     self.thisown = 0
++%}
+ }
+-}
+ 
+ %import typemaps_python.i
+ 

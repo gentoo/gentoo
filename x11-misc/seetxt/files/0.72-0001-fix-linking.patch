@@ -1,0 +1,39 @@
+From 0eb39c4c08e7e3787d411a36e4997ae144e2bed5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Tue, 9 Apr 2013 07:23:19 +0200
+Subject: [PATCH 1/2] Fix linking.
+
+---
+ configure.ac    | 2 +-
+ src/Makefile.am | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3a1aa30..f1d3f30 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,7 +13,7 @@ AM_PROG_CC_C_O
+ AC_PROG_LN_S  # for ln -s (mandatory)
+ 
+ # Checks for libraries.
+-GTK_REQUIRED_VERSION=2.12.0
++PKG_CHECK_MODULES([DEPS], [gtk+-2.0 >= 2.12.0])
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([dirent.h errno.h fcntl.h pthread.h stdlib.h string.h regex.h sys/socket.h sys/time.h time.h unistd.h])
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 2c8a24d..fca6504 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,7 @@
++AM_CPPFLAGS = $(DEPS_CFLAGS)
++
+ bin_PROGRAMS = seetxt
+ seetxt_CFLAGS = -D SDIR=\"$(datadir)/seetxt-runtime\"
+-seetxt_LDFLAGS = `pkg-config --libs gtk+-2.0` -lpthread
++seetxt_LDADD = $(DEPS_LIBS) -lpthread
+ INCLUDES = `pkg-config --cflags gtk+-2.0`
+ seetxt_SOURCES = see.c server.c util.c
+-- 
+1.8.1.5
+

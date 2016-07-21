@@ -1,0 +1,11 @@
+--- dic/Makefile.am~	2003-07-22 16:56:03.000000000 +0200
++++ dic/Makefile.am	2009-06-01 00:40:17.000000000 +0200
+@@ -1,7 +1,7 @@
+ DICTS=bg.xml ca.xml cs.xml cy.xml da.xml de.xml el.xml en.xml eo.xml es.xml \
+       et.xml eu.xml fi.xml fr.xml ga.xml gl.xml he.xml hu.xml ia.xml id.xml \
+       is.xml it.xml lv.xml mi.xml ms.xml mt.xml nl.xml nn.xml pl.xml pt.xml \
+-      ro.xml ru.xml sv.xml tl.xml tr.xml uk.xml yi.xml en.xml
++      ro.xml ru.xml sv.xml tl.xml tr.xml uk.xml yi.xml
+ 
+ pkgdata_DATA = $(DICTS)
+ 

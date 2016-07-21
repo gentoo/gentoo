@@ -1,0 +1,75 @@
+Index: gcc-4.5.4/configure
+===================================================================
+--- gcc-4.5.4.orig/configure
++++ gcc-4.5.4/configure
+@@ -8384,9 +8384,9 @@ case " $build_configdirs " in
+   *)
+ 
+     # For an installed makeinfo, we require it to be from texinfo 4.7 or
+-    # higher, else we use the "missing" dummy.
++    # some higher 4.x, else we use the "missing" dummy.
+     if ${MAKEINFO} --version \
+-       | egrep 'texinfo[^0-9]*(4\.([7-9]|[1-9][0-9])|[5-9]|[1-9][0-9])' >/dev/null 2>&1; then
++       | egrep 'texinfo[^0-9]*(4\.([7-9]|[1-9][0-9]))' >/dev/null 2>&1; then
+       :
+     else
+       MAKEINFO="$MISSING makeinfo"
+Index: gcc-4.5.4/gcc/configure
+===================================================================
+--- gcc-4.5.4.orig/gcc/configure
++++ gcc-4.5.4/gcc/configure
+@@ -7401,8 +7401,8 @@ fi
+ 
+   if test -n "$MAKEINFO"; then
+     # Found it, now check the version.
+-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for modern makeinfo" >&5
+-$as_echo_n "checking for modern makeinfo... " >&6; }
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for 4.7+ makeinfo" >&5
++$as_echo_n "checking for 4.7+ makeinfo... " >&6; }
+ if test "${gcc_cv_prog_makeinfo_modern+set}" = set; then :
+   $as_echo_n "(cached) " >&6
+ else
+@@ -7411,7 +7411,7 @@ else
+ 
+                     case $ac_prog_version in
+                       '')  gcc_cv_prog_makeinfo_modern=no;;
+-                      4.[7-9]*|4.[1-9][0-9]*|[5-9]*|[1-9][0-9]*)  gcc_cv_prog_makeinfo_modern=yes;;
++                      4.[7-9]*|4.[1-9][0-9]*)  gcc_cv_prog_makeinfo_modern=yes;;
+                       *)   gcc_cv_prog_makeinfo_modern=no;;
+                     esac
+ 
+@@ -7427,10 +7427,10 @@ $as_echo "$gcc_cv_prog_makeinfo_modern"
+ 
+ if test $gcc_cv_prog_makeinfo_modern = no; then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
+-*** Makeinfo is missing or too old.
++*** Makeinfo is missing, too old or too new.
+ *** Info documentation will not be built." >&5
+ $as_echo "$as_me: WARNING:
+-*** Makeinfo is missing or too old.
++*** Makeinfo is missing, too old or too new.
+ *** Info documentation will not be built." >&2;}
+   BUILD_INFO=
+ else
+Index: gcc-4.5.4/libiberty/configure
+===================================================================
+--- gcc-4.5.4.orig/libiberty/configure
++++ gcc-4.5.4/libiberty/configure
+@@ -2440,13 +2440,13 @@ $as_echo "$as_me: WARNING:
+         ;;
+       *)
+ 	case x"`$MAKEINFO --version | grep 'GNU texinfo'`" in
+-	  x*\ [1-3].* )
+-	    MAKEINFO="@echo $MAKEINFO is too old, 4.0 or newer required; true"
++	  x*\ [1-35-9].* )
++	    MAKEINFO="@echo $MAKEINFO is not 4.x; true"
+ 	    BUILD_INFO=
+ 	    { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
+-*** Makeinfo is too old. Info documentation will not be built." >&5
++*** Makeinfo is not 4.x. Info documentation will not be built." >&5
+ $as_echo "$as_me: WARNING:
+-*** Makeinfo is too old. Info documentation will not be built." >&2;}
++*** Makeinfo is not 4.x. Info documentation will not be built." >&2;}
+ 	  ;;
+ 	esac
+ 	;;

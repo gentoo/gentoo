@@ -1,0 +1,13 @@
+Nur in cocaine-core-0.9.2: build.
+Nur in cocaine-core-0.9.2/include/cocaine: config.hpp.
+diff -ru cocaine-core-0.9.2_org/include/cocaine/interfaces/storage.hpp cocaine-core-0.9.2/include/cocaine/interfaces/storage.hpp
+--- cocaine-core-0.9.2_org/include/cocaine/interfaces/storage.hpp	2012-08-29 15:54:35.000000000 +0200
++++ cocaine-core-0.9.2/include/cocaine/interfaces/storage.hpp	2014-07-29 13:49:40.130375695 +0200
+@@ -22,6 +22,7 @@
+ #define COCAINE_STORAGE_INTERFACE_HPP
+ 
+ #include <boost/thread/mutex.hpp>
++#include <boost/thread/lock_guard.hpp>
+ #include <boost/tuple/tuple.hpp>
+ 
+ #include "cocaine/common.hpp"

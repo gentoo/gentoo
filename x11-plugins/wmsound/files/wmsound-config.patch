@@ -1,0 +1,86 @@
+--- wmsound-0.9.5/Install.orig	Sun May  2 13:02:43 1999
++++ wmsound-0.9.5/Install	Wed Sep  4 12:59:56 2002
+@@ -7,62 +7,15 @@
+ DEVICE="/dev/dsp"
+ 
+ echo
+-echo "----------------------------"
+-echo " WMSound-$VERSION Installation "
+-echo "----------------------------"
++echo "-----------------------------"
++echo " WMSound-$VERSION Configuration "
++echo "-----------------------------"
+ 
+-WHOAMI=`whoami`
+-if test $WHOAMI != "root"
+-then
+-  echo "It is advised to run this script as the root user"
+-  echo "Your current user is $WHOAMI, if you want to continue press <Enter>"
+-  read CONTINUE
+-  if test $CONTINUE
+-  then
+-    echo "Installation aborted."
+-  else
+-    echo "Proceeding with installation ..."
+-  fi
+-fi
+-
+-done=0
+-while test $done = 0
+-do
+-  echo "Specify your default audio device [$DEVICE]"
+-  echo -n ":  "
+-  read AUDIODEV
+-  if !(test $AUDIODEV)
+-  then
+-    AUDIODEV=$DEVICE
+-  fi
+-  if test -e $AUDIODEV
+-  then
+-    echo "Using audio-device : $AUDIODEV"
+-    DEVICE=$AUDIODEV
+-    done=1
+-  else
+-    echo "$AUDIODEV does not exist ..."
+-  fi
+-
+-done
+-echo "----------------------"
+-echo " Generating Makefiles "
+-echo "----------------------"
+-xmkmf -a
+-
+-echo "------------------------"
+-echo " Building WMSound-$VERSION"
+-echo "------------------------"
+-make install
+-
+-echo "-----------------------------------"
+-echo " Generating Default WMSound Domain "
+-echo "-----------------------------------"
+ (echo "{";\
+ echo "  SoundPath = (\"~/GNUstep/Library/WindowMaker/Sounds\",";\
+-echo "              \"/usr/local/share/WindowMaker/Sounds\");";\
++echo "              \"/usr/X11R6/share/WindowMaker/Sounds\");";\
+ echo "  SoundSetPath = (\"~/GNUstep/Library/WindowMaker/SoundSets\",";\
+-echo "              \"/usr/local/share/WindowMaker/SoundSets\");";\
++echo "              \"/usr/X11R6/share/WindowMaker/SoundSets\");";\
+ echo "  Device = $DEVICE;";\
+ echo "  AppExit = appexit.wav;";\
+ echo "  AppStart = appstart.wav;";\
+@@ -73,13 +26,8 @@
+ echo "  Shade = shade.wav;";\
+ echo "  Startup = startup.wav;";\
+ echo "  UnHide = unhide.wav;";\
+-echo "  DeIconify = uniconify.wav;";\
++echo "  DeIconify = deiconify.wav;";\
+ echo "  UnShade = unshade.wav;";\
+ echo "  UserDefined = replaceme.wav;";\
+-echo "}";) > WMSound
++echo "}";) > config/WMSound
+ 
+-echo "Make sure you copy the generated WMSound config to your Window Maker Global"
+-echo "Defaults path ... (probably /usr/local/etc/WindowMaker)"
+-echo
+-echo "Installation completed."
+-  

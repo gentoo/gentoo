@@ -1,0 +1,31 @@
+--- src/calc.yy
++++ src/calc.yy
+@@ -8,6 +8,7 @@
+ 
+ #include <cmath>
+ #include <cctype>
++#include <cstring>
+ 
+ #include <vector>
+ #include <sstream>
+--- src/tinyxml/tinyxml.h
++++ src/tinyxml/tinyxml.h
+@@ -28,6 +28,8 @@
+ #include <string>
+ #include <stdio.h>
+ #include <assert.h>
++#include <cstring>
++#include <cstdlib>
+ 
+ class TiXmlDocument;
+ class TiXmlElement;
+--- src/tinyxml/tinyxmlparser.cpp
++++ src/tinyxml/tinyxmlparser.cpp
+@@ -24,6 +24,7 @@
+ 
+ #include "tinyxml.h"
+ #include <ctype.h>
++#include <cstring>
+ 
+ const char* TiXmlBase::SkipWhiteSpace( const char* p )
+ {

@@ -1,0 +1,5 @@
+blas/reference/libcblas.so /usr/@LIBDIR@/libcblas.so
+blas/reference/libcblas.so.0 /usr/@LIBDIR@/libcblas.so.0
+blas/reference/libcblas.a /usr/@LIBDIR@/libcblas.a
+../blas/reference/cblas.pc /usr/@LIBDIR@/pkgconfig/cblas.pc
+cblas/cblas.h /usr/include/cblas.h

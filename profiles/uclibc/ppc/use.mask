@@ -1,0 +1,62 @@
+-altivec
+
+# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
+# Unmask the Apple drivers
+-alsa_cards_aoa
+-alsa_cards_aoa-fabric-layout
+-alsa_cards_aoa-onyx
+-alsa_cards_aoa-soundbus
+-alsa_cards_aoa-soundbus-i2s
+-alsa_cards_aoa-tas
+-alsa_cards_aoa-toonie
+-alsa_cards_powermac
+# Mask ALSA drivers for ISA cards
+alsa_cards_cs4232
+alsa_cards_msnd-pinnacle
+alsa_cards_cs4231-lib
+alsa_cards_adlib
+alsa_cards_ad1816a
+alsa_cards_ad1848
+alsa_cards_als100
+alsa_cards_azt2320
+alsa_cards_cmi8330
+alsa_cards_cs4231
+alsa_cards_cs4236
+alsa_cards_dt019x
+alsa_cards_es968
+alsa_cards_es1688
+alsa_cards_es18xx
+alsa_cards_gusclassic
+alsa_cards_gusextreme
+alsa_cards_gusmax
+alsa_cards_interwave
+alsa_cards_interwave-stb
+alsa_cards_opl3sa2
+alsa_cards_opti92x-ad1848
+alsa_cards_opti92x-cs4231
+alsa_cards_opti93x
+alsa_cards_miro
+alsa_cards_sb8
+alsa_cards_sb16
+alsa_cards_sbawe
+alsa_cards_sb16_csp
+alsa_cards_sgalaxy
+alsa_cards_sscape
+alsa_cards_wavefront
+
+# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
+# Masked Parallel LCD devices for bug #180683
+
+# app-misc/lcd4linux
+lcd_devices_lph7508
+lcd_devices_m50530
+lcd_devices_noritake
+lcd_devices_routerboard
+
+# app-misc/lcdproc
+lcd_devices_sed1330
+lcd_devices_sed1520
+lcd_devices_stv5730
+
+# Both
+lcd_devices_t6963

@@ -1,0 +1,11 @@
+--- a/configuration/install-sh	2008-04-21 03:55:33.000000000 -0400
++++ b/configuration/install-sh	2015-04-08 16:59:32.000000000 -0400
+@@ -79,7 +79,7 @@
+ 	    shift
+ 	    continue;;
+ 
+-	-s) stripcmd="$stripprog"
++	-s) stripcmd=""
+ 	    shift
+ 	    continue;;
+ 

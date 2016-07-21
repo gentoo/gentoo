@@ -1,0 +1,11 @@
+--- a/bones/metadata	2013-12-04 19:12:17.677881011 +0000
++++ b/bones/metadata	2013-12-04 19:14:36.905130687 +0000
+@@ -28,7 +28,7 @@
+   name: rdoc
+   requirement: !ruby/object:Gem::Requirement
+     requirements:
+-    - - ~>
++    - - '>='
+       - !ruby/object:Gem::Version
+         version: '3.0'
+   type: :runtime

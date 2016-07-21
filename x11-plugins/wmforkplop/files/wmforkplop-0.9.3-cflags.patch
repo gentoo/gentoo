@@ -1,0 +1,12 @@
+--- configure.orig	2012-10-23 15:54:48.098767586 +0200
++++ configure	2012-10-23 15:54:56.946510053 +0200
+@@ -3483,9 +3483,6 @@
+ 
+ 
+ 
+-if test x$GCC = xyes; then
+-  CFLAGS="-O3 -fomit-frame-pointer -ffast-math -Wall -W";
+-fi
+ 
+ echo "$as_me:$LINENO: checking for X" >&5
+ echo $ECHO_N "checking for X... $ECHO_C" >&6

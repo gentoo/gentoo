@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# $Id$
+
+NAME="mogstored"
+BINARY="/usr/bin/mogstored"
+MOGILE_UID="mogile"
+MOGILE_GID="mogile"
+
+depend() {
+	use net
+	before mogilefsd
+	need mogautomount
+}
+
+start() {
+	install -o $MOGILE_UID -g $MOGILE_GID -d $(dirname $PIDFILE)
+	ebegin "Starting $NAME"
+	start-stop-daemon --start --quiet \
+		--pidfile=${PIDFILE} --exec ${BINARY} \
+		-- --daemonize --pidfile=${PIDFILE} ${MOGSTORED_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $NAME"
+	start-stop-daemon --stop --quiet --pidfile="${PIDFILE}"
+	eend $?
+}
+
+# vim: ft=gentoo-init-d:

@@ -1,0 +1,30 @@
+Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=542676
+
+https://svnweb.freebsd.org/base/head/sys/boot/i386/boot2/Makefile?r1=272249&r2=276479
+
+diff --git a/sys/boot/i386/boot2/Makefile b/sys/boot/i386/boot2/Makefile
+index 8a6e771..c030853 100644
+--- a/sys/boot/i386/boot2/Makefile
++++ b/sys/boot/i386/boot2/Makefile
+@@ -22,8 +22,7 @@ BOOT2_UFS?=	UFS1_AND_UFS2
+ #BOOT2_UFS?=	UFS2_ONLY
+ #BOOT2_UFS?=	UFS1_ONLY
+ 
+-CFLAGS=	-Os \
+-	-fomit-frame-pointer \
++CFLAGS= -fomit-frame-pointer \
+ 	-mrtd \
+ 	-mregparm=3 \
+ 	-DUSE_XREAD \
+@@ -40,7 +39,10 @@ CFLAGS=	-Os \
+ 	-Winline \
+ 	${CLANG_OPT_SMALL}
+ 
+-CFLAGS.gcc+=	-fno-guess-branch-probability \
++CFLAGS.clang+=	-Oz
++
++CFLAGS.gcc+=	-Os \
++		-fno-guess-branch-probability \
+ 		-fno-unit-at-a-time \
+ 		--param max-inline-insns-single=100
+ .if ${COMPILER_TYPE} == "gcc" && ${COMPILER_VERSION} <= 40201

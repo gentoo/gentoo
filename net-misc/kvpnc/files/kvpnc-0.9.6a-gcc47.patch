@@ -1,0 +1,11 @@
+diff -ruN kvpnc-0.9.6a-kde4.orig/src/kvpnc.cpp kvpnc-0.9.6a-kde4/src/kvpnc.cpp
+--- kvpnc-0.9.6a-kde4.orig/src/kvpnc.cpp	2012-06-25 22:16:25.395420711 +0200
++++ kvpnc-0.9.6a-kde4/src/kvpnc.cpp	2012-06-25 22:17:41.598424971 +0200
+@@ -75,6 +75,7 @@
+ #include <cstdlib>
+ #include <ctime>
+ #include <iomanip>
++#include <unistd.h>
+ 
+ #include "ui_mainviewbase4.h"
+ #include "ciscocertificateenrollment.h"

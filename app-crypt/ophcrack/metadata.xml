@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>ikelos@gentoo.org</email>
+    <name>Mike Auty</name>
+  </maintainer>
+  <use>
+    <flag name="tables">Require the additional tables used to carry out cracking (<pkg>app-crypt/ophcrack-tables</pkg>)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">ophcrack</remote-id>
+  </upstream>
+</pkgmetadata>

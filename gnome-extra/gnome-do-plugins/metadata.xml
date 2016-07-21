@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="banshee">Enables the Banshee (<pkg>media-sound/banshee</pkg>) plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">do-plugins</remote-id>
+	</upstream>
+</pkgmetadata>

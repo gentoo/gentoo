@@ -1,0 +1,12 @@
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -19,8 +19,7 @@
+ ##  along with this program; if not, write to the Free Software
+ ##  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111 USA
+ 
+-man_MANS = gerbv.1 gerbv.ru.1
+-PO_FILES= gerbv.ru.1.in.po
++man_MANS = gerbv.1
+ 
+ MOSTLYCLEANFILES = *~
+ CLEANFILES = *~  *.pot $(man_MANS)

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Glib</remote-id>
+    <remote-id type="cpan-module">Glib</remote-id>
+    <remote-id type="cpan-module">Glib::CodeGen</remote-id>
+    <remote-id type="cpan-module">Glib::Error</remote-id>
+    <remote-id type="cpan-module">Glib::Flags</remote-id>
+    <remote-id type="cpan-module">Glib::GenPod</remote-id>
+    <remote-id type="cpan-module">Glib::MakeHelper</remote-id>
+    <remote-id type="cpan-module">Glib::Object</remote-id>
+    <remote-id type="cpan-module">Glib::Object::Property</remote-id>
+    <remote-id type="cpan-module">Glib::Object::Property::ReadWrite</remote-id>
+    <remote-id type="cpan-module">Glib::Object::Property::Readable</remote-id>
+    <remote-id type="cpan-module">Glib::Object::Property::Writable</remote-id>
+    <remote-id type="cpan-module">Glib::Object::Subclass</remote-id>
+    <remote-id type="cpan-module">Glib::Object::_LazyLoader</remote-id>
+    <remote-id type="cpan-module">Glib::ParseXSDoc</remote-id>
+    <remote-id type="cpan-module">MY</remote-id>
+  </upstream>
+</pkgmetadata>

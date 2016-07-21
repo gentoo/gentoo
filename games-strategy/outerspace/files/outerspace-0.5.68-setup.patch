@@ -1,0 +1,83 @@
+--- setup.py
++++ setup.py
+@@ -42,12 +42,7 @@
+ 
+ # collect data files
+ data_files = []
+-data_files.append(
+-    (
+-        ".",
+-        ["../ChangeLog.txt", "../COPYING", "../README", "../README_CZ"]
+-    )
+-)
++
+ 
+ # resources
+ for root, dirs, files in os.walk('res'):
+@@ -57,16 +52,6 @@
+         pass
+     if files:
+         data_files.append((root, [os.path.join(root, file) for file in files]))
+-
+-data_files.append(
+-    (
+-        "res/techspec",
+-        [
+-            "../server/lib/ige/ospace/Rules/techs.spf",
+-            "../server/lib/ige/ospace/Rules/Tech.spf",
+-        ]
+-    )
+-)
+ 
+ if havePy2Exe:
+     data_files.append((".", ["../updater/update.exe"]))
+@@ -114,10 +99,3 @@
+     **extraArgs
+ )
+ 
+-# cleanup
+-def onerror(func, path, err):
+-    if func is os.remove:
+-        os.chmod(path, stat.S_IWRITE)
+-        os.remove(path)
+-
+-shutil.rmtree("libsrvr", onerror = onerror)
+--- osc.py
++++ osc.py
+@@ -23,12 +23,36 @@
+ # tweak PYTHONPATH
+ import sys
+ import os
++import errno
+ sys.path.insert(0, "lib")
+ 
+ for item in ("libsrvr", "../server/lib"):
+     if os.path.exists(item):
+         sys.path.insert(0, item)
+         break
++
++userdir=os.path.expanduser("~/.outerspace")
++resdir=os.path.join(userdir, "res")
++rootresdir="@GENTOO_DATADIR@/res"
++
++if not (os.path.isdir(userdir)):
++	try:
++		os.makedirs(userdir)
++	except:
++		sys.exit("unable to create %s" % userdir)
++
++try:
++	os.symlink(rootresdir, resdir)
++except OSError, e:
++	if e.errno == errno.EEXIST:
++		os.remove(resdir)
++		os.symlink(rootresdir, resdir)
++
++try:
++	os.chdir(userdir)
++except:
++	sys.exit("unable to cd into %s" % userdir)
++
+ 
+ #configure gc
+ #import gc

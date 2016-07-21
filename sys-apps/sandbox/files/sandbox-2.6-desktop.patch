@@ -1,0 +1,30 @@
+From 00044ab0c8aaaabf048b5ff0ec2da5b3d7d25752 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 17 Nov 2012 14:14:26 -0500
+Subject: [PATCH] sandbox.desktop: drop .svg from Icon field
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+URL: http://bugs.gentoo.org/443672
+Reported-by: Petteri Räty <betelgeuse@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ data/sandbox.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/sandbox.desktop b/data/sandbox.desktop
+index 5b5b576..27a887e 100644
+--- a/data/sandbox.desktop
++++ b/data/sandbox.desktop
+@@ -5,6 +5,6 @@ Type=Application
+ Comment=launch a sandboxed shell ... useful for debugging ebuilds
+ Exec=sandbox
+ TryExec=sandbox
+-Icon=sandbox.svg
++Icon=sandbox
+ Categories=Development;
+ Terminal=true
+-- 
+1.8.1.2
+

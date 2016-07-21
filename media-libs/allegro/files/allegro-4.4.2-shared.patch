@@ -1,0 +1,11 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -830,7 +830,7 @@
+ option(WANT_LOGG "Enable logg" on)
+ option(WANT_JPGALLEG "Enable JPGAlleg" on)
+ 
+-if(WANT_FRAMEWORKS)
++if(SHARED)
+     set(ADDON_LINKAGE SHARED)
+ else()
+     set(ADDON_LINKAGE STATIC)

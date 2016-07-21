@@ -1,0 +1,11 @@
+--- a/mozldap.pc.in
++++ b/mozldap.pc.in
+@@ -11,6 +11,6 @@
+ Name: mozldap
+ Description: Mozilla LDAP C SDK
+ Version: %MOZLDAP_VERSION%
+-Requires: nspr >= %NSPR_VERSION% , nss >= %NSS_VERSION%
+-Libs: -lssldap%libsuffix% -lprldap%libsuffix% -lldap%libsuffix%
++Requires: nspr >= %NSPR_VERSION% , nss >= %NSS_VERSION% , svrcore >= %SVRCORE_VERSION%
++Libs: -L${libdir} -lssldap%libsuffix% -lprldap%libsuffix% -lldap%libsuffix%
+ Cflags: -I${includedir}

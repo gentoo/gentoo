@@ -1,0 +1,11 @@
+--- include/beecrypt/c++/util/AbstractSet.h
++++ include/beecrypt/c++/util/AbstractSet.h
+@@ -56,7 +56,7 @@
+ 					if (c->size() != size())
+ 						return false;
+ 
+-					return containsAll(*c);
++					return this->containsAll(*c);
+ 				}
+ 				return false;
+ 			}

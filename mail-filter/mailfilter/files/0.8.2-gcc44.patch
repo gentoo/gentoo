@@ -1,0 +1,26 @@
+diff -ur mailfilter-0.8.2_orig/src/header.cc mailfilter-0.8.2/src/header.cc
+--- mailfilter-0.8.2_orig/src/header.cc	2009-06-07 03:49:57.000000000 +0200
++++ mailfilter-0.8.2/src/header.cc	2009-08-15 13:05:05.968397778 +0200
+@@ -63,7 +63,6 @@
+    * domain-literal = "[" *(dtext / quoted-pair) "]"
+    */
+ 
+-  char* dom;
+   unsigned int l, i;
+ 
+   if (!msgid || !*msgid)
+@@ -74,12 +73,12 @@
+     return -1;
+   if (msgid[0] != '<' || msgid[l-1] != '>')
+     return -1;
+-  if (!(dom = strrchr (msgid, '@')))
++  if (!(strrchr (msgid, '@')))
+     return -1;
+ 
+   /* TODO: complete parser */
+   for (i = 0; i < l; i++)
+-    if (msgid[i] > 127)
++    if ((unsigned char)msgid[i] > 127)
+       return -1;
+ 
+   return 0;

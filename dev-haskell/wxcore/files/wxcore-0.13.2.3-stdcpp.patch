@@ -1,0 +1,6 @@
+diff --git a/wxcore.cabal b/wxcore.cabal
+index 886c77d..e1bfeb6 100644
+--- a/wxcore.cabal
++++ b/wxcore.cabal
+@@ -173,0 +174 @@ library
++  extra-libraries: stdc++

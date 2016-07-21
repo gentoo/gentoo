@@ -1,0 +1,48 @@
+diff -Nru Xdialog-2.3.1.vanilla/configure.in Xdialog-2.3.1/configure.in
+--- Xdialog-2.3.1.vanilla/configure.in	2009-02-11 09:54:10.000000000 +0000
++++ Xdialog-2.3.1/configure.in	2009-02-11 09:59:28.000000000 +0000
+@@ -36,13 +36,8 @@
+   CPPFLAGS="$CPPFLAGS -DUSE_GTK2"
+   AC_MSG_RESULT(Compiling for GTK2)
+   ])
+-if test "$compile_for" = "gtk2" ; then
+-  AM_PATH_GTK_2_0(2.2.0, ,
+-            AC_MSG_ERROR(Cannot find GTK2.))
+-else
+-  AM_PATH_GTK(1.2.0, ,
+-            AC_MSG_ERROR(Cannot find GTK: Is gtk-config in path?))
+-fi
++AM_PATH_GTK_2_0(2.2.0, ,
++		AC_MSG_ERROR(Cannot find GTK2.))
+ 
+ dnl Set PACKAGE_DATA_DIR in config.h.
+ if test "x${datadir}" = 'x${prefix}/share'; then
+@@ -59,28 +54,6 @@
+ packagesrcdir=`cd $srcdir && pwd`
+ AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", [ ])
+ 
+-dnl Use -Wall if we have gcc.
+-if test "x$GCC" = "xyes"; then
+-  case " $CFLAGS " in
+-  *[[\ \	]-Wall[\ \	]]*) ;;
+-  *) CFLAGS="$CFLAGS -Wall" ;;
+-  esac
+-  case " $CFLAGS " in
+-  *[[\ \	]-s[\ \	]]*) ;;
+-  *) CFLAGS="$CFLAGS -s" ;;
+-  esac
+-  case `gcc --version` in
+-  2.95*|2.96*|2.97*)
+-  case " $CFLAGS " in
+-  *[[\ \	]-fno-omit-frame-pointer[\ \	]]*) ;;
+-  *) CFLAGS="$CFLAGS -fno-omit-frame-pointer" ;;
+-  esac
+-  AC_MSG_RESULT(Buggy GCC version: compiling with -fno-omit-frame-pointer)
+-  ;;
+-  *) ;;
+-  esac
+-fi
+-
+ AC_ARG_WITH(french-labels,
+   [  --with-french-labels    Enables french labels in menus],[
+   CPPFLAGS="$CPPFLAGS -DFRENCH"

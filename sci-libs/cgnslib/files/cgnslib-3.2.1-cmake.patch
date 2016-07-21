@@ -1,0 +1,149 @@
+ CMakeLists.txt     | 20 +--------------
+ src/CMakeLists.txt | 72 +++++++++++++++++++++++++++---------------------------
+ 2 files changed, 37 insertions(+), 55 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9c1b3c..d4c2bf7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -81,7 +81,7 @@ if (CGNS_ENABLE_LFS)
+     if (HAVE_OPEN64)
+       add_definitions(-DHAVE_LSEEK64)
+     endif (HAVE_OPEN64)
+-    if (HAVE_OPEN64)
++    if (HAVE_LSEEK64)
+       add_definitions(-DHAVE_LSEEK64)
+     endif (HAVE_LSEEK64)
+   endif (WIN32)
+@@ -254,24 +254,6 @@ else (CGNS_ENABLE_HDF5 AND HDF5_NEED_MPI)
+   mark_as_advanced(FORCE CGNS_ENABLE_PARALLEL)
+ endif (CGNS_ENABLE_HDF5 AND HDF5_NEED_MPI)
+ 
+-####################
+-# RPATH Management #
+-####################
+-
+-# use, i.e. don't skip the full RPATH for the build tree
+-set(CMAKE_SKIP_BUILD_RPATH  FALSE)
+-
+-# when building, don't use the install RPATH already
+-# (but later on when installing)
+-set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+-
+-# the RPATH to be used when installing
+-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+-
+-# add the automatically determined parts of the RPATH
+-# which point to directories outside the build tree to the install RPATH
+-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+-
+ ########
+ # CGNS #
+ ########
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3c12c6d..694da42 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -69,7 +69,7 @@ set(SYSCFLAGS "")
+ set(CFGFLAGS "")
+ set(LIBS "")
+ 
+-file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX}/lib LIBDIR)
++file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX} LIBDIR)
+ file(TO_NATIVE_PATH ${CMAKE_INSTALL_PREFIX}/include INCLUDEDIR)
+ file(TO_NATIVE_PATH ${CMAKE_C_COMPILER} CC)
+ if (WIN32)
+@@ -102,42 +102,42 @@ set(ZLIBLIB "")
+ set(MPIINC "")
+ set(MPILIBS "")
+ 
+-macro(native_paths INPUT_PATH_VARIABLE RESULT_VARIABLE)
+-  set(${RESULT_VARIABLE} "")
+-  foreach(PATH ${${INPUT_PATH_VARIABLE}})
+-    file(TO_NATIVE_PATH ${PATH} NATIVE_PATH)
+-    list(APPEND ${RESULT_VARIABLE} ${NATIVE_PATH})
+-  endforeach(PATH ${${INPUT_PATH_VARIABLE}})
+-endmacro(native_paths)
++macro(native_paths INPUT_PATH_VARIABLE RESULT_VARIABLE)
++  set(${RESULT_VARIABLE} "")
++  foreach(PATH ${${INPUT_PATH_VARIABLE}})
++    file(TO_NATIVE_PATH ${PATH} NATIVE_PATH)
++    list(APPEND ${RESULT_VARIABLE} ${NATIVE_PATH})
++  endforeach(PATH ${${INPUT_PATH_VARIABLE}})
++endmacro(native_paths)
+ 
+ if (CGNS_ENABLE_HDF5)
+   set(BUILDHDF5 1)
+-  if (HDF5_INCLUDE_PATH)
+-    native_paths(HDF5_INCLUDE_PATH HDF5INC)
+-  endif (HDF5_INCLUDE_PATH)
+-  if (HDF5_LIBRARY)
+-    native_paths(HDF5_LIBRARY HDF5LIB)
+-  endif (HDF5_LIBRARY)
+-  if (HDF5_NEED_SZIP)
+-    set(H5NEEDSZIP 1)
+-    if (SZIP_LIBRARY)
+-      native_paths(SZIP_LIBRARY SZIPLIB)
+-    endif (SZIP_LIBRARY)
+-  endif (HDF5_NEED_SZIP)
+-  if (HDF5_NEED_ZLIB)
+-    set(H5NEEDZLIB 1)
+-    if (ZLIB_LIBRARY)
+-      native_paths(${ZLIB_LIBRARY} ZLIBLIB)
+-    endif (ZLIB_LIBRARY)
+-  endif (HDF5_NEED_ZLIB)
+-  if (HDF5_NEED_MPI)
+-    set(H5NEEDMPI 1)
+-    if (MPI_INC)
+-      native_paths(MPI_INC MPIINC)
+-    endif (MPI_INC)
+-    if (MPI_LIBS)
+-      native_paths(MPI_LIBS MPILIBS)
+-    endif (MPI_LIBS)
++  if (HDF5_INCLUDE_PATH)
++    native_paths(HDF5_INCLUDE_PATH HDF5INC)
++  endif (HDF5_INCLUDE_PATH)
++  if (HDF5_LIBRARY)
++    native_paths(HDF5_LIBRARY HDF5LIB)
++  endif (HDF5_LIBRARY)
++  if (HDF5_NEED_SZIP)
++    set(H5NEEDSZIP 1)
++    if (SZIP_LIBRARY)
++      native_paths(SZIP_LIBRARY SZIPLIB)
++    endif (SZIP_LIBRARY)
++  endif (HDF5_NEED_SZIP)
++  if (HDF5_NEED_ZLIB)
++    set(H5NEEDZLIB 1)
++    if (ZLIB_LIBRARY)
++      native_paths(${ZLIB_LIBRARY} ZLIBLIB)
++    endif (ZLIB_LIBRARY)
++  endif (HDF5_NEED_ZLIB)
++  if (HDF5_NEED_MPI)
++    set(H5NEEDMPI 1)
++    if (MPI_INC)
++      native_paths(MPI_INC MPIINC)
++    endif (MPI_INC)
++    if (MPI_LIBS)
++      native_paths(MPI_LIBS MPILIBS)
++    endif (MPI_LIBS)
+     if (CGNS_ENABLE_PARALLEL)
+       set(BUILDPARALLEL 1)
+     endif (CGNS_ENABLE_PARALLEL)
+@@ -251,7 +251,7 @@ if(CGNS_BUILD_SHARED)
+ endif(CGNS_BUILD_SHARED)
+ 
+ # Set the install path of the static library
+-install(TARGETS cgns_static ARCHIVE DESTINATION lib)
++install(TARGETS cgns_static ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ # Set the install path of the shared library
+ if(CGNS_BUILD_SHARED)
+   # for windows, need to install both cgnsdll.dll and cgnsdll.lib
+@@ -259,7 +259,7 @@ if(CGNS_BUILD_SHARED)
+     install(TARGETS cgns_shared ARCHIVE DESTINATION lib)
+     install(TARGETS cgns_shared RUNTIME DESTINATION lib)
+   else (WIN32 OR CYGWIN)
+-    install(TARGETS cgns_shared LIBRARY DESTINATION lib)
++    install(TARGETS cgns_shared LIBRARY DESTINATION lib${LIB_SUFFIX})
+   endif (WIN32 OR CYGWIN)
+ endif(CGNS_BUILD_SHARED)
+ 

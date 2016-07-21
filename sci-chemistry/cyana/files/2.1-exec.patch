@@ -1,0 +1,77 @@
+diff --git a/cyana b/cyana
+index 4f746cf..a7ff060 100755
+--- a/cyana
++++ b/cyana
+@@ -45,16 +45,13 @@ shift `expr $optind - 1`
+ 
+ if [ "$h" ]; then usage=1; fi
+ if [ "$usage" ]; then
+-  echo "Usage: $prog -hctx parameters ..."					         
++  echo "Usage: $prog -hS parameters ..."					         
+   echo  									         
+   echo "       -h	     help"						         
+   echo "       -c command    command to start program (must contain \$exefile)"          
+   echo "       -S            run in safe mode, i.e. within one directory"				         
+-  echo "       -t system     explicit system type"				         
+-  echo "       -x	     display name of executable without executing it"	         
+   exit 2
+ fi
+-if [ "$c" ]; then cmd="$c"; fi
+ sys=$t
+ mode=$x
+ safe=$S
+@@ -65,23 +62,6 @@ safe=$S
+ eval ${PROG}ARG='$*'
+ export ${PROG}ARG
+ 
+-
+-# ------ Set library name ------ 
+-
+-f=$0
+-if [ `echo $f | sed 's,^/.*,+,'` != "+" ]; then f=`which $0`; fi
+-odir=`pwd`
+-while [ "`ls -l $f | awk '{ print substr($1,1,1) }'`" = "l" ]; do
+-  l=`ls -l $f | awk '{ i = NF; print $i }'`
+-  cd `dirname $f`; cd `dirname $l`; l=`pwd`/`basename $l`
+-  f=$l
+-done
+-cd `dirname $f`
+-libdir=`pwd | sed 's,/src/'${prog}'$,,'`
+-cd $odir
+-eval ${PROG}LIB=$libdir
+-export ${PROG}LIB
+-
+ if [ "$safe" ]; then 
+   CYANAINIT=initsafe; export CYANAINIT
+ fi
+@@ -89,29 +69,4 @@ fi
+ 
+ # ------ Start the program ------
+ 
+-if [ -d $libdir/src/$prog ]; then
+-  exe=$libdir/src/$prog/$exe
+-else
+-  exe=$libdir/$exe
+-fi
+-if [ "$sys" = "" ]; then
+-  sys=`$libdir/etc/identify`
+-  files="$exe.$sys* $exe.gnu $exe.*"
+-else
+-  files=$exe.$sys
+-fi
+-for exefile in $files; do
+-  if [ -x $exefile ]; then
+-    if [ "$mode" ]; then
+-      echo $exefile; exit 0
+-    else
+-      if [ "`echo $cmd | grep -c '\$exefile'`" -gt 0 ]; then
+-        eval exec $cmd
+-      else
+-        eval exec $cmd $exefile
+-      fi
+-    fi
+-  fi
+-done
+-echo "No executable found in \"`dirname $exe`\"."
+-exit 1
++exec cyana

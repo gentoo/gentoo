@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>stasibear@gentoo.org</email>
+		<name>Erik Mackdanz</name>
+	</maintainer>
+	<longdescription>
+		By combining the speed and density of containers with
+		the security of traditional virtual machines, LXD is
+		the next-generation of container hypervisor for Linux
+		from Canonical.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">lxc/lxd</remote-id>
+	</upstream>
+	<use>
+		<flag name="daemon">
+			Build the system daemon, not just the client tool
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,103 @@
+--- mrt/base_file.h.old	2012-10-08 10:16:43.941487723 +0200
++++ mrt/base_file.h	2012-10-08 10:18:55.788771445 +0200
+@@ -20,6 +20,7 @@
+ */
+ 
+ #include <string>
++#include <unistd.h>
+ #include "export_mrt.h"
+ 
+ namespace mrt {
+--- math/range_list.h.old	2012-10-08 09:49:34.283887937 +0200
++++ math/range_list.h	2012-10-08 09:50:36.258212096 +0200
+@@ -53,14 +53,14 @@
+ 			return;
+ 		}
+ 	
+-		typename parent_type::iterator i = lower_bound(value);
++		typename parent_type::iterator i = this->lower_bound(value);
+ 		if (i != parent_type::end()) {
+ 			if (i->first == value)
+ 				return;
+ 
+ 			if (value + 1 == i->first) {
+ 				T e = i->second;
+-				erase(i);
++				this->erase(i);
+ 				i = parent_type::insert(typename parent_type::value_type(value, e)).first; //expand beginning
+ 				i = pack_left(i);
+ 			}
+--- engine/sl08/sl08.h.old	2012-10-04 09:50:37.845681514 +0200
++++ engine/sl08/sl08.h	2012-10-08 09:58:32.873166723 +0200
+@@ -272,7 +272,7 @@
+ 			inline slot1(object_type *object, func_t func, signal_type * signal = NULL) : object(object), func(func) {}
+ 
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline return_type operator() (arg1_type a1) const { 
+ 				return (object->*func) (a1) ;
+@@ -293,7 +293,7 @@
+ 			inline slot1 () : object(NULL), func(NULL) {}
+ 			inline slot1 (object_type *object, func_t func) : object(object), func(func) {}
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline void operator() (arg1_type a1) const { 
+ 				(object->*func) (a1); 
+@@ -447,7 +447,7 @@
+ 			inline slot2(object_type *object, func_t func, signal_type * signal = NULL) : object(object), func(func) {}
+ 
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline return_type operator() (arg1_type a1, arg2_type a2) const { 
+ 				return (object->*func) (a1, a2) ;
+@@ -468,7 +468,7 @@
+ 			inline slot2 () : object(NULL), func(NULL) {}
+ 			inline slot2 (object_type *object, func_t func) : object(object), func(func) {}
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline void operator() (arg1_type a1, arg2_type a2) const { 
+ 				(object->*func) (a1, a2); 
+@@ -643,7 +643,7 @@
+ 			inline slot3 () : object(NULL), func(NULL) {}
+ 			inline slot3 (object_type *object, func_t func) : object(object), func(func) {}
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline void operator() (arg1_type a1, arg2_type a2, arg3_type a3) const { 
+ 				(object->*func) (a1, a2, a3); 
+@@ -797,7 +797,7 @@
+ 			inline slot4(object_type *object, func_t func, signal_type * signal = NULL) : object(object), func(func) {}
+ 
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline return_type operator() (arg1_type a1, arg2_type a2, arg3_type a3, arg4_type a4) const { 
+ 				return (object->*func) (a1, a2, a3, a4) ;
+@@ -818,7 +818,7 @@
+ 			inline slot4 () : object(NULL), func(NULL) {}
+ 			inline slot4 (object_type *object, func_t func) : object(object), func(func) {}
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline void operator() (arg1_type a1, arg2_type a2, arg3_type a3, arg4_type a4) const { 
+ 				(object->*func) (a1, a2, a3, a4); 
+@@ -972,7 +972,7 @@
+ 			inline slot5(object_type *object, func_t func, signal_type * signal = NULL) : object(object), func(func) {}
+ 
+ 			inline void assign(object_type *o, func_t f) { object = o; func = f; }
+-			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; connect(signal_ref); }
++			inline void assign(object_type *o, func_t f, signal_type &signal_ref = NULL) { object = o; func = f; this->connect(signal_ref); }
+ 	
+ 			inline return_type operator() (arg1_type a1, arg2_type a2, arg3_type a3, arg4_type a4, arg5_type a5) const { 
+ 				return (object->*func) (a1, a2, a3, a4, a5) ;

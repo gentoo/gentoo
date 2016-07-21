@@ -1,0 +1,18 @@
+# $Id$
+ifplugin Mail::SpamAssassin::Plugin::GoogleSafeBrowsing
+
+# Replace DEADBEEF with your API key
+# from http://code.google.com/apis/safebrowsing/key_signup.html
+google_safebrowsing_apikey DEADBEEF
+
+# Change these scores if you want
+google_safebrowsing_blocklist goog-black-hash 0.2
+google_safebrowsing_blocklist goog-malware-hash 0.1
+
+# Do not change these two lines!
+body GOOGLE_SAFEBROWSING eval:check_google_safebrowsing_blocklists()
+google_safebrowsing_dir /var/lib/spamassassin/google_safebrowsing/
+
+endif # Mail::SpamAssassin::Plugin::GoogleSafeBrowsing
+
+# vim: ft=conf:

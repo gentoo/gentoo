@@ -1,0 +1,23 @@
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Sat, 16 Dec 2006 05:38:41 +0000 (+0000)
+Subject: * lib/autoconf/functions.m4 (AC_FUNC_GETMNTENT):
+X-Git-Tag: v2.62~386
+X-Git-Url: http://git.savannah.gnu.org/gitweb/?p=autoconf.git;a=commitdiff_plain;h=a152d401584cd901f7295647af0382948369de79
+
+* lib/autoconf/functions.m4 (AC_FUNC_GETMNTENT):
+Define HAVE_GETMNTENT to 1, not to the empty string.
+Problem originally reported by Jochen Friedrich in
+<http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=403243>.
+---
+
+--- a/lib/autoconf/functions.m4
++++ b/lib/autoconf/functions.m4
+@@ -798,7 +798,7 @@ AC_DEFUN([AC_FUNC_GETMNTENT],
+ # -lseq on Dynix/PTX, -lgen on Unixware.
+ AC_SEARCH_LIBS(getmntent, [sun seq gen],
+ 	       [ac_cv_func_getmntent=yes
+-		AC_DEFINE([HAVE_GETMNTENT], [],
++		AC_DEFINE([HAVE_GETMNTENT], 1,
+ 			  [Define to 1 if you have the `getmntent' function.])],
+ 	       [ac_cv_func_getmntent=no])
+ ])

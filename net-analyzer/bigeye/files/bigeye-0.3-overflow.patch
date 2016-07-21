@@ -1,0 +1,11 @@
+--- a/src/bigeye.c
++++ b/src/bigeye.c
+@@ -787,7 +787,7 @@
+ 	local.sin_family = 	AF_INET;
+ 	local.sin_port   =	htons(porta);
+ 	local.sin_addr.s_addr =	INADDR_ANY;
+-	bzero(&(local.sin_zero),sizeof(local));
++	memset(&(local.sin_zero), "\0", sizeof(local.sin_zero));
+ 
+ 	if(setsockopt(sock_a, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) < 0) {
+ 		perror("setsockopt");

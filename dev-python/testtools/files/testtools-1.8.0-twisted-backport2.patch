@@ -1,0 +1,57 @@
+From 2e03ffaff15bc5d83c5f6d092aab4072f166aca0 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@canonical.com>
+Date: Mon, 24 Aug 2015 13:45:01 +0100
+Subject: [PATCH] Only run Twisted tests on Python 2.
+
+---
+ .travis.yml | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index a706b27..bc007f2 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -7,27 +7,37 @@ python:
+   - "3.4"
+   - "pypy"
+ 
+-env:
+-  - TWISTED="==13.0.0"
+-  - TWISTED="==15.2.0"
+-
+ # We have to pin Jinja2 < 2.7  for Python 3.2 because 2.7 drops/breaks support:
+ # http://jinja.pocoo.org/docs/changelog/#version-2-7
+-# And Spinx to < 1.3 for pypy3 and python 3.2 similarly.
++# And Sphinx to < 1.3 for pypy3 and python 3.2 similarly.
+ #
+ # See also:
+ # http://stackoverflow.com/questions/18252804/syntax-error-in-jinja-2-library
++#
++# Twisted tests currently only work on Python 2.
+ matrix:
+   include:
++    - python: "2.6"
++      env:
++        - TWISTED_REQ="Twisted==13.0.0"
++        - TWISTED_REQ="Twisted==15.2.0"
++    - python: "2.7"
++      env:
++        - TWISTED_REQ="Twisted==13.0.0"
++        - TWISTED_REQ="Twisted==15.2.0"
+     - python: "3.2"
+       env:
+         - JINJA_REQ="jinja2<2.7, Pygments<2.0"
+         - SPHINX="<1.3"
++    - python: "pypy"
++      env:
++        - TWISTED_REQ="Twisted==13.0.0"
++        - TWISTED_REQ="Twisted==15.2.0"
+     - python: "pypy3"
+       env: SPHINX="<1.3"
+ 
+ install:
+-  - pip install fixtures $JINJA_REQ sphinx$SPHINX Twisted$TWISTED
++  - pip install fixtures $JINJA_REQ sphinx$SPHINX $TWISTED_REQ
+   - python setup.py install
+ 
+ script:

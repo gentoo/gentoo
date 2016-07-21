@@ -1,0 +1,58 @@
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+Subject: Store and retrieve entropy from a file in a directory
+	writable/readable by ultimateircd.
+Date: 2011/04/28
+
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -32,7 +32,7 @@
+ LEX		= @LEX@
+ LEXLIB		= @LEXLIB@
+ CCDV	= @CCDV@
+-CFLAGS		= @IRC_CFLAGS@ -DIRCD_PREFIX=\"@prefix@\"
++CFLAGS		= @IRC_CFLAGS@ -DIRCD_PREFIX=\"@prefix@\" -DLOCALSTATEDIR='"$(localstatedir)"'
+ LDFLAGS   	= @LDFLAGS@
+ MKDEP		= @MKDEP@ -DIRCD_PREFIX=\"@prefix@\"
+ MV		= @MV@
+--- a/src/dh.c
++++ b/src/dh.c
+@@ -214,10 +214,10 @@
+   printf ("Done.\n");
+   fclose (fp);
+ 
+-  fp = fopen (".ircd.entropy", "w");
++  fp = fopen (LOCALSTATEDIR "/.ircd.entropy", "w");
+   if (!fp)
+   {
+-    printf ("Could not open .ircd.entropy for writing: %s\n",
++    printf ("Could not open " LOCALSTATEDIR "/.ircd.entropy for writing: %s\n",
+             strerror (errno));
+     return 0;
+   }
+@@ -225,7 +225,7 @@
+   fwrite (randbuf, RAND_BYTES * 4, 1, fp);
+   fclose (fp);
+ 
+-  RAND_load_file (".ircd.entropy", -1);
++  RAND_load_file (LOCALSTATEDIR "/.ircd.entropy", -1);
+ 
+   return 1;
+ }
+@@ -236,7 +236,7 @@
+   int ret;
+   time_t now;
+ 
+-  ret = RAND_load_file (".ircd.entropy", -1);
++  ret = RAND_load_file (LOCALSTATEDIR "/.ircd.entropy", -1);
+   if (ret <= 0)
+   {
+     if (!make_entropy ())
+@@ -250,7 +250,7 @@
+   /* this is probably not too good, but it saves just writing
+      the whole state back to disk with no changes. */
+   RAND_seed (&now, 4);
+-  RAND_write_file (".ircd.entropy");
++  RAND_write_file (LOCALSTATEDIR "/.ircd.entropy");
+ 
+   return 0;
+ }

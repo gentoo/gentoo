@@ -1,0 +1,11 @@
+--- a/src/build.py
++++ b/src/build.py
+@@ -38,7 +38,7 @@ def call(cmd, silent=True):
+         print stderr
+ 
+ def ldconfig(*args,**kwargs):
+-    call('ldconfig')
++    pass
+ 
+ if env['LINKING'] == 'static':
+     lib_env.Append(CXXFLAGS="-fPIC")

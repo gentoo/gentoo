@@ -1,0 +1,151 @@
+Index: gnono-1.9.1/src/ai.c
+===================================================================
+--- gnono-1.9.1.orig/src/ai.c
++++ gnono-1.9.1/src/ai.c
+@@ -24,9 +24,7 @@
+ #include <config.h>
+ #endif
+ 
+-#include <glib/garray.h>
+-#include <glib/gmessages.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "cards.h"
+ #include "game.h"
+Index: gnono-1.9.1/src/ai.h
+===================================================================
+--- gnono-1.9.1.orig/src/ai.h
++++ gnono-1.9.1/src/ai.h
+@@ -23,7 +23,7 @@
+ #ifndef __GN_AI_H__
+ #define __GN_AI_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ void computer_play (gboolean pickup);
+ 
+Index: gnono-1.9.1/src/cards.c
+===================================================================
+--- gnono-1.9.1.orig/src/cards.c
++++ gnono-1.9.1/src/cards.c
+@@ -25,9 +25,7 @@
+ #endif
+ 
+ #include <stdlib.h>			/* for rand() */
+-#include <glib/garray.h>
+-#include <glib/gmem.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <gdk-pixbuf/gdk-pixbuf-core.h>
+ 
+ #include "cards.h"
+Index: gnono-1.9.1/src/cards.h
+===================================================================
+--- gnono-1.9.1.orig/src/cards.h
++++ gnono-1.9.1/src/cards.h
+@@ -23,7 +23,7 @@
+ #ifndef __GN_CARDS_H__
+ #define __GN_CARDS_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <gdk-pixbuf/gdk-pixbuf-core.h>
+ 
+ static const gdouble GN_CARD_HEIGHT = 98.0;
+Index: gnono-1.9.1/src/game.c
+===================================================================
+--- gnono-1.9.1.orig/src/game.c
++++ gnono-1.9.1/src/game.c
+@@ -24,9 +24,7 @@
+ #include <config.h>
+ #endif
+ 
+-#include <glib/garray.h>
+-#include <glib/gmessages.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <gtk/gtkmain.h>
+ #include <libgnome/gnome-config.h>
+ 
+Index: gnono-1.9.1/src/game.h
+===================================================================
+--- gnono-1.9.1.orig/src/game.h
++++ gnono-1.9.1/src/game.h
+@@ -23,7 +23,7 @@
+ #ifndef __GN_GAME_H__
+ #define __GN_GAME_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ /*#define GN_DEBUG*/
+ 
+Index: gnono-1.9.1/src/interface.h
+===================================================================
+--- gnono-1.9.1.orig/src/interface.h
++++ gnono-1.9.1/src/interface.h
+@@ -23,7 +23,7 @@
+ #ifndef __GN_INTERFACE_H__
+ #define __GN_INTERFACE_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <gtk/gtkwidget.h>
+ #include <gtk/gtkwindow.h>
+ 
+Index: gnono-1.9.1/src/main.c
+===================================================================
+--- gnono-1.9.1.orig/src/main.c
++++ gnono-1.9.1/src/main.c
+@@ -26,7 +26,7 @@
+ 
+ #include <unistd.h>
+ #include <glib/gi18n.h>
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <gtk/gtkmain.h>
+ 
+ #include "interface.h"
+Index: gnono-1.9.1/src/players.c
+===================================================================
+--- gnono-1.9.1.orig/src/players.c
++++ gnono-1.9.1/src/players.c
+@@ -24,8 +24,7 @@
+ #include <config.h>
+ #endif
+ 
+-#include <glib/garray.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtklabel.h>
+ #include <gtk/gtkwidget.h>
+Index: gnono-1.9.1/src/players.h
+===================================================================
+--- gnono-1.9.1.orig/src/players.h
++++ gnono-1.9.1/src/players.h
+@@ -23,8 +23,7 @@
+ #ifndef __GN_PLAYERS_H__
+ #define __GN_PLAYERS_H__
+ 
+-#include <glib/garray.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "cards.h"
+ 
+Index: gnono-1.9.1/src/preferences.h
+===================================================================
+--- gnono-1.9.1.orig/src/preferences.h
++++ gnono-1.9.1/src/preferences.h
+@@ -23,7 +23,7 @@
+ #ifndef __GN_PREFERENCES_H__
+ #define __GN_PREFERENCES_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <gtk/gtkwidget.h>
+ 
+ void dlg_preferences (GtkWidget *caller, gpointer data);

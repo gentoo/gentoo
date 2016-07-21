@@ -1,0 +1,10 @@
+--- configure.ac.orig	2013-08-06 10:18:37.329909242 -0700
++++ configure.ac	2013-08-06 10:18:51.011975942 -0700
+@@ -30,6 +30,7 @@
+ 
+ dnl Disable automatic po/ support, because PSPP provides its own po/ support.
+ AC_PROVIDE([AM_PO_SUBDIRS])
++AM_GNU_GETTEXT_VERSION([0.17])
+ AM_GNU_GETTEXT([external], [need-ngettext])
+ LIBS="$LIBINTL $LIBS"
+ 

@@ -1,0 +1,21 @@
+Gentoo bug:
+https://bugs.gentoo.org/show_bug.cgi?id=486426
+
+Upstream bug:
+http://redmine.lighttpd.net/issues/2515
+
+Upstream Commit:
+http://redmine.lighttpd.net/projects/lighttpd/repository/revisions/2911
+
+Index: src/mod_extforward.c
+===================================================================
+--- src/mod_extforward.c	(revision 2909)
++++ src/mod_extforward.c	(working copy)
+@@ -439,7 +439,6 @@
+ #ifdef HAVE_IPV6
+ 		ipstr_to_sockaddr(srv, real_remote_addr, &sock);
+ #else
+-		UNUSED(addrs_left);
+ 		sock.ipv4.sin_addr.s_addr = inet_addr(real_remote_addr);
+ 		sock.plain.sa_family = (sock.ipv4.sin_addr.s_addr == 0xFFFFFFFF) ? AF_UNSPEC : AF_INET;
+ #endif

@@ -1,0 +1,18 @@
+--- localepurge.orig	2012-12-04 23:08:17.754765708 +0100
++++ localepurge	2012-12-04 23:09:02.397765264 +0100
+@@ -165,7 +165,14 @@
+     ${ACTION} `find ${REMOVEPATH} -type f -o -type l`
+ 
+     if [ "$SHOWFREEDSPACE" = "enabled" ]; then
+-        SPACEAFTER=$(df -P ${REMOVEPATH} | awk '{if ( NR==2 ) { print $3 }}')
++        # if symlink, REMOVEPATH could be removed
++        # check from parentdir then
++        if [ -d ${REMOVEPATH} ]; then
++            SPACEAFTER=$(df -P ${REMOVEPATH} | awk '{if ( NR==2 ) { print $3 }}')
++        else
++            SPACEAFTER=$(df -P ${REMOVEPATH%/*} | awk '{if ( NR==2 ) { print $3 }}')
++        fi
++
+         SPACESUM=$(($SPACEBEFORE - $SPACEAFTER))
+ 
+         if test $SPACESUM -gt 0 ; then

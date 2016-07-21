@@ -1,0 +1,142 @@
+From: Kir Kolyshkin <kir@openvz.org>
+Date: Thu, 3 Jan 2013 19:37:00 +0000 (-0800)
+Subject: init.d/vz-gentoo: don't call tools by absolute path
+X-Git-Url: http://git.openvz.org/?p=vzctl;a=commitdiff_plain;h=2fc34ffb5f5e;hp=9a4a85397f7dd99e2c4059de7fb6ef5d750242c5
+
+init.d/vz-gentoo: don't call tools by absolute path
+
+Apparently in recent Gentoo the ip tool was moved from /sbin to /bin,
+so this initscript stopped working.
+
+Apparently runscript makes sure all the needed directories are in PATH
+(I have tested with runscript from baselayout-1.12.11.1, pretty old one)
+so we can just drop the /sbin/ prefix.
+
+While at it, do it not only for ip, but also for modprobe and sysctl.
+
+http://bugzilla.openvz.org/2477
+https://bugs.gentoo.org/show_bug.cgi?id=444201
+
+Reported-by: Andrei Vinogradov <spamslepnoga@inbox.ru>
+Reported-by: Joakim <moonwalker@astro.nu>
+Signed-off-by: Kir Kolyshkin <kir@openvz.org>
+---
+
+diff --git a/etc/init.d/vz-gentoo.in b/etc/init.d/vz-gentoo.in
+index 2dd2186..51231bc 100755
+--- a/etc/init.d/vz-gentoo.in
++++ b/etc/init.d/vz-gentoo.in
+@@ -87,7 +87,7 @@ start_net() {
+ 
+ 	# load necessary modules
+ 	for mod in ${NET_MODULES}; do
+-		/sbin/modprobe ${mod} 2>/dev/null
++		modprobe ${mod} 2>/dev/null
+ 	done
+ 
+ 	if [ ! -f ${VZVEINFO} ]; then
+@@ -95,22 +95,22 @@ start_net() {
+ 	fi
+ 
+ 	# we don't operate on a running interface
+-	if /sbin/ip addr list | grep -q "venet0:.*UP" 2>/dev/null; then
++	if ip addr list | grep -q "venet0:.*UP" 2>/dev/null; then
+ 		return 0
+ 	fi
+ 
+ 	# configure the device
+ 	ebegin "Bringing up interface ${VZDEV}"
+-		/sbin/ip link set ${VZDEV} up
++		ip link set ${VZDEV} up
+ 	eend $?
+ 
+-	/sbin/ip addr add 0.0.0.0/0 dev ${VZDEV}
++	ip addr add 0.0.0.0/0 dev ${VZDEV}
+ 
+ 	ebegin "Configuring interface ${VZDEV}"
+-		/sbin/sysctl -q -w net.ipv4.conf.${VZDEV}.send_redirects=0
++		sysctl -q -w net.ipv4.conf.${VZDEV}.send_redirects=0
+ 	eend $?
+ 
+-	if [ "x$(/sbin/sysctl -n -e net.ipv4.ip_forward)" != "x1" ]; then
++	if [ "x$(sysctl -n -e net.ipv4.ip_forward)" != "x1" ]; then
+ 		ewarn "It looks like you have ip forwarding disabled. To make networking"
+ 		ewarn "available for containers, please, run sysctl -w net.ipv4.ip_forward=1"
+ 	fi
+@@ -119,15 +119,15 @@ start_net() {
+ stop_net() {
+ 	local mod
+ 
+-	if /sbin/ip addr list | grep -q "venet0:.*UP" 2>/dev/null; then
++	if ip addr list | grep -q "venet0:.*UP" 2>/dev/null; then
+ 		ebegin "Bringing down interface ${VZDEV}"
+-			/sbin/ip link set ${VZDEV} down 2>/dev/null
++			ip link set ${VZDEV} down 2>/dev/null
+ 		eend $?
+ 	fi
+ 
+ 	# remove all modules we probably loaded on start_net
+ 	for mod in ${NET_MODULES}; do
+-		/sbin/modprobe -r ${mod} > /dev/null 2>&1
++		modprobe -r ${mod} > /dev/null 2>&1
+ 	done
+ }
+ 
+@@ -146,7 +146,7 @@ start_ve() {
+ 	# Then sort by bootorder
+ 	test -n "$velist" && velist=$(vzlist -aH -octid -s-bootorder $velist)
+ 
+-	/sbin/sysctl -q -w net.ipv4.route.src_check=0
++	sysctl -q -w net.ipv4.route.src_check=0
+ 
+ 	for veid in ${velist}; do
+ 		ebegin "Starting CT ${veid}"
+@@ -302,16 +302,16 @@ start() {
+ 
+ 	ebegin "Loading OpenVZ modules"
+ 	for mod in ${IPTABLES_MODULES}; do
+-		/sbin/modprobe ${mod} >/dev/null 2>&1
++		modprobe ${mod} >/dev/null 2>&1
+ 	done
+ 
+ 	for mod in ${PRELOAD_MODULES}; do
+-		/sbin/modprobe -r ${mod} >/dev/null 2>&1
+-		/sbin/modprobe ${mod} >/dev/null 2>&1
++		modprobe -r ${mod} >/dev/null 2>&1
++		modprobe ${mod} >/dev/null 2>&1
+ 	done
+ 
+ 	for mod in ${MODULES}; do
+-		/sbin/modprobe ${mod} >/dev/null 2>&1
++		modprobe ${mod} >/dev/null 2>&1
+ 		rc=$?
+ 		if [ ${rc} -ne 0 ]; then
+ 			eend ${rc} "failed to load module ${mod}"
+@@ -320,7 +320,7 @@ start() {
+ 	done
+ 
+ 	for mod in ${MIGRATE_MODULES} ${PLOOP_MODULES}; do
+-		/sbin/modprobe ${mod} >/dev/null 2>&1
++		modprobe ${mod} >/dev/null 2>&1
+ 	done
+ 	eend
+ 
+@@ -365,15 +365,15 @@ stop() {
+ 	stop_net
+ 
+ 	for mod in ${MIGRATE_MODULES} ${PLOOP_MODULES}; do
+-		/sbin/modprobe -r ${mod} > /dev/null 2>&1
++		modprobe -r ${mod} > /dev/null 2>&1
+ 	done
+ 
+ 	for mod in ${MODULES}; do
+-		/sbin/modprobe -r ${mod} > /dev/null 2>&1
++		modprobe -r ${mod} > /dev/null 2>&1
+ 	done
+ 
+ 	for mod in ${PRELOAD_MODULES}; do
+-		/sbin/modprobe -r ${mod} > /dev/null 2>&1
++		modprobe -r ${mod} > /dev/null 2>&1
+ 	done
+ 
+ 	# Even if some modules failed to unload (say they were not loaded)

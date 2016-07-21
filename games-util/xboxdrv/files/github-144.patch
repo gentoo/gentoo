@@ -1,0 +1,15 @@
+diff -Naur xboxdrv-linux-0.8.5.orig/src/usb_gsource.cpp xboxdrv-linux-0.8.5/src/usb_gsource.cpp
+--- xboxdrv-linux-0.8.5.orig/src/usb_gsource.cpp	2013-04-07 18:27:49.000000000 +0100
++++ xboxdrv-linux-0.8.5/src/usb_gsource.cpp	2016-07-02 12:35:41.692355904 +0100
+@@ -174,7 +174,10 @@
+ gboolean
+ USBGSource::on_source()
+ {
+-  libusb_handle_events(NULL);
++  struct timeval to;
++  to.tv_sec = 0;
++  to.tv_usec = 0;
++  libusb_handle_events_timeout_completed(NULL, &to, NULL);
+   return TRUE;
+ }
+ 

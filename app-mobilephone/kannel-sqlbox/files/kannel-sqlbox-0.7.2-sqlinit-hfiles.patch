@@ -1,0 +1,84 @@
+diff -Naur sqlbox-0.7.2/gw/sqlbox_mssql.h sqlbox-0.7.2.new/gw/sqlbox_mssql.h
+--- sqlbox-0.7.2/gw/sqlbox_mssql.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_mssql.h	2009-09-16 11:23:03.000000000 -0400
+@@ -46,7 +46,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt /*, Octstr smsbox_id */);
+ Msg *mssql_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_mssql(Cfg *cfg);
++struct server_type *sqlbox_init_mssql(Cfg *cfg);
+ #ifndef sqlbox_mssql_c
+ extern
+ #endif
+diff -Naur sqlbox-0.7.2/gw/sqlbox_mysql.h sqlbox-0.7.2.new/gw/sqlbox_mysql.h
+--- sqlbox-0.7.2/gw/sqlbox_mysql.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_mysql.h	2009-09-16 11:23:03.000000000 -0400
+@@ -48,7 +48,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt);
+ Msg *mysql_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_mysql(Cfg *cfg);
++struct server_type *sqlbox_init_mysql(Cfg *cfg);
+ #ifndef sqlbox_mysql_c
+ extern
+ #endif
+diff -Naur sqlbox-0.7.2/gw/sqlbox_oracle.h sqlbox-0.7.2.new/gw/sqlbox_oracle.h
+--- sqlbox-0.7.2/gw/sqlbox_oracle.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_oracle.h	2009-09-16 11:23:03.000000000 -0400
+@@ -52,7 +52,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt /*, Octstr smsbox_id */);
+ Msg *oracle_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_oracle(Cfg *cfg);
++struct server_type *sqlbox_init_oracle(Cfg *cfg);
+ #ifndef sqlbox_oracle_c
+ extern
+ #endif
+diff -Naur sqlbox-0.7.2/gw/sqlbox_pgsql.h sqlbox-0.7.2.new/gw/sqlbox_pgsql.h
+--- sqlbox-0.7.2/gw/sqlbox_pgsql.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_pgsql.h	2009-09-16 11:23:03.000000000 -0400
+@@ -44,7 +44,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt /*, Octstr smsbox_id */);
+ Msg *pgsql_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_pgsql(Cfg *cfg);
++struct server_type *sqlbox_init_pgsql(Cfg *cfg);
+ void sqlbox_configure_pgsql(Cfg* cfg);
+ #ifndef sqlbox_pgsql_c
+ extern
+diff -Naur sqlbox-0.7.2/gw/sqlbox_sdb.h sqlbox-0.7.2.new/gw/sqlbox_sdb.h
+--- sqlbox-0.7.2/gw/sqlbox_sdb.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_sdb.h	2009-09-16 11:23:03.000000000 -0400
+@@ -21,7 +21,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt );
+ Msg *sdb_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_sdb(Cfg *cfg);
++struct server_type *sqlbox_init_sdb(Cfg *cfg);
+ #ifndef sqlbox_sdb_c
+ extern
+ #endif
+diff -Naur sqlbox-0.7.2/gw/sqlbox_sqlite3.h sqlbox-0.7.2.new/gw/sqlbox_sqlite3.h
+--- sqlbox-0.7.2/gw/sqlbox_sqlite3.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_sqlite3.h	2009-09-16 11:23:03.000000000 -0400
+@@ -41,7 +41,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt );
+ Msg *sqlite3_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_sqlite3(Cfg *cfg);
++struct server_type *sqlbox_init_sqlite3(Cfg *cfg);
+ #ifndef sqlbox_sqlite3_c
+ extern
+ #endif
+diff -Naur sqlbox-0.7.2/gw/sqlbox_sqlite.h sqlbox-0.7.2.new/gw/sqlbox_sqlite.h
+--- sqlbox-0.7.2/gw/sqlbox_sqlite.h	2009-05-19 11:08:35.000000000 -0400
++++ sqlbox-0.7.2.new/gw/sqlbox_sqlite.h	2009-09-16 11:23:03.000000000 -0400
+@@ -41,7 +41,7 @@
+ void sql_save_msg(Msg *msg, Octstr *momt );
+ Msg *sqlite_fetch_msg();
+ void sql_shutdown();
+-struct server_type *sql_init_sqlite(Cfg *cfg);
++struct server_type *sqlbox_init_sqlite(Cfg *cfg);
+ #ifndef sqlbox_sqlite_c
+ extern
+ #endif

@@ -1,0 +1,14 @@
+fix building with newer glibc
+
+http://bugs.gentoo.org/246734
+
+--- cancd.c
++++ cancd.c
+@@ -36,6 +36,7 @@
+ #include <libgen.h>
+ #include <getopt.h>
+ #include <stdarg.h>
++#include <limits.h>
+ #include <sys/socket.h>
+ #include <arpa/inet.h>
+ #include <netinet/in.h>

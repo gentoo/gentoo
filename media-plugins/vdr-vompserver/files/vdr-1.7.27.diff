@@ -1,0 +1,36 @@
+diff -Naur vompserver-0.3.1.orig/mvpreceiver.c vompserver-0.3.1/mvpreceiver.c
+--- vompserver-0.3.1.orig/mvpreceiver.c	2012-05-01 14:35:39.000000000 +0200
++++ vompserver-0.3.1/mvpreceiver.c	2012-05-01 14:49:08.000000000 +0200
+@@ -40,7 +40,7 @@
+ #elif VDRVERSNUM < 10500
+ : cReceiver(channel->Ca(), 0, channel->Vpid(), channel->Apids(), channel->Dpids(), mergeSpidsTpid(channel->Spids(),channel->Tpid()))
+ #else
+-: cReceiver(channel->GetChannelID(), 0, channel->Vpid(), channel->Apids(), channel->Dpids(), mergeSpidsTpid(channel->Spids(),channel->Tpid()))
++: cReceiver(channel, 0)
+ #endif
+ {
+   logger = Log::getInstance();
+diff -Naur vompserver-0.3.1.orig/vompclientrrproc.c vompserver-0.3.1/vompclientrrproc.c
+--- vompserver-0.3.1.orig/vompclientrrproc.c	2012-05-01 14:35:39.000000000 +0200
++++ vompserver-0.3.1/vompclientrrproc.c	2012-05-01 14:46:41.000000000 +0200
+@@ -615,7 +615,7 @@
+ 
+   for (cRecording *recording = Recordings.First(); recording; recording = Recordings.Next(recording))
+   {
+-    resp->addULONG(recording->start);
++    resp->addULONG(recording->Start());
+     resp->addString(recording->Name());
+     resp->addString(recording->FileName());
+   }
+@@ -1770,9 +1770,9 @@
+     {
+       for (const cMark *m = Marks.First(); m; m = Marks.Next(m))
+       {
+-        log->log("RRProc", Log::DEBUG, "found Mark %i", m->position);
++        log->log("RRProc", Log::DEBUG, "found Mark %i", m->Position());
+ 
+-        resp->addULONG(m->position);
++        resp->addULONG(m->Position());
+       }
+     }
+     else

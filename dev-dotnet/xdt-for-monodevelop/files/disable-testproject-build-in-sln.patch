@@ -1,0 +1,12 @@
+--- work.unpacked/xdt-Release-NuGet-2.8.1-Mono/Microsoft.Web.XmlTransform.sln	2014-10-26 21:16:30.000000000 +0300
++++ work/xdt-Release-NuGet-2.8.1-Mono/Microsoft.Web.XmlTransform.sln	2015-03-06 16:29:38.736085076 +0300
+@@ -12,9 +12,7 @@
+ 	EndGlobalSection
+ 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+ 		{22AC988D-26C0-43A9-8EB1-102DA31F0F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+-		{22AC988D-26C0-43A9-8EB1-102DA31F0F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+ 		{22AC988D-26C0-43A9-8EB1-102DA31F0F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+-		{22AC988D-26C0-43A9-8EB1-102DA31F0F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+ 		{0684EE2A-6F30-4BC7-B5E7-8CBA15534E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+ 		{0684EE2A-6F30-4BC7-B5E7-8CBA15534E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+ 		{0684EE2A-6F30-4BC7-B5E7-8CBA15534E06}.Release|Any CPU.ActiveCfg = Release|Any CPU

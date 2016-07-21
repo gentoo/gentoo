@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-libs category contains various X11-related libraries.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-libs enthält verschiedene Bibliotheken für
+		die X11-Programmierung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-libs contiene varias librerías para X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-libsカテゴリーには様々なX11関連のライブラリが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De categorie x11-libs bevat allerlei aan X11 gerelateerde bibliotheken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-libs chứa các thư viện liên quan đến X11.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-libs contiene varie librerie per X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-libs contém várias bibliotecas relacionadas a
+		X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-libs zawiera biblioteki powiązane z X11.
+	</longdescription>
+</catmetadata>
+

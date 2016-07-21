@@ -1,0 +1,10 @@
+--- libgnomecups-1.0.pc.in~	2007-01-02 01:18:51.000000000 +0100
++++ libgnomecups-1.0.pc.in	2011-05-08 13:21:35.000000000 +0200
+@@ -7,5 +7,6 @@
+ Description: GNOME CUPS Library
+ Version: @VERSION@
+ Requires: glib-2.0 gobject-2.0
+-Libs: -L${libdir} -lgnomecups-1.0 @CUPS_LIBS@
++Libs: -L${libdir} -lgnomecups-1.0
++Libs.private: -L${libdir} -lgnomecups-1.0 @CUPS_LIBS@
+ Cflags: -I${includedir} @CUPS_CFLAGS@

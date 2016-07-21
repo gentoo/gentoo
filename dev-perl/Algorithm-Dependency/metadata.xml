@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Algorithm-Dependency</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Item</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Ordered</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Source</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Source::File</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Source::HoA</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Source::Invert</remote-id>
+    <remote-id type="cpan-module">Algorithm::Dependency::Weight</remote-id>
+  </upstream>
+</pkgmetadata>

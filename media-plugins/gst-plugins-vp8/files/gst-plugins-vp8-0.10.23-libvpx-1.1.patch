@@ -1,0 +1,46 @@
+From 7e51c854b28f68e434523b83cd4bd76ea18aab54 Mon Sep 17 00:00:00 2001
+From: Vincent Penquerc'h <vincent.penquerch@collabora.co.uk>
+Date: Fri, 18 May 2012 12:46:55 +0100
+Subject: [PATCH] vp8enc: fix target bitrate config with libvpx 1.1.0
+
+libvpx 1.1.0 disallows a bitrate of 0, which was used by
+vp8enc as a default value.
+
+Instead, we use the default libvpx bitrate, scaled to our
+video size, if no bitrate was specified.
+
+This fixes encoding VP8 video with libvpx 1.1.0.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=676245
+
+[Alexandre Rostovtsev <tetromino@gentoo.org>: backport to 0.10.23]
+---
+ ext/vp8/gstvp8enc.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/ext/vp8/gstvp8enc.c b/ext/vp8/gstvp8enc.c
+index b1f06e0..123d4dd 100644
+--- a/ext/vp8/gstvp8enc.c
++++ b/ext/vp8/gstvp8enc.c
+@@ -732,6 +732,10 @@ gst_vp8_enc_set_format (GstBaseVideoEncoder * base_video_encoder,
+     return FALSE;
+   }
+ 
++  /* Scale default bitrate to our size */
++  cfg.rc_target_bitrate = gst_util_uint64_scale (cfg.rc_target_bitrate,
++      state->width * state->height, cfg.g_w * cfg.g_h);
++
+   cfg.g_w = state->width;
+   cfg.g_h = state->height;
+   cfg.g_timebase.num = state->fps_d;
+@@ -755,7 +759,6 @@ gst_vp8_enc_set_format (GstBaseVideoEncoder * base_video_encoder,
+   } else {
+     cfg.rc_min_quantizer = (gint) (63 - encoder->quality * 6.2);
+     cfg.rc_max_quantizer = (gint) (63 - encoder->quality * 6.2);
+-    cfg.rc_target_bitrate = encoder->bitrate;
+   }
+   cfg.rc_dropframe_thresh = encoder->drop_frame;
+   cfg.rc_resize_allowed = encoder->resize_allowed;
+-- 
+1.8.0
+

@@ -1,0 +1,60 @@
+# HG changeset patch
+# User Gary Wilson Jr. <gary@thegarywilson.com>
+# Date 1397849538 18000
+# Branch python3-iteritems
+# Node ID 3753b49ca9f3d34c94156622b380def245d88e80
+# Parent  0e17add9b5e0f30f7cf5acf47961eea6a7f4032c
+Fixed a Python 3 incompatibility by replacing dict.iteritems() usage with an iteritems py3 util function from six.
+
+diff --git a/south/migration/migrators.py b/south/migration/migrators.py
+--- a/south/migration/migrators.py
++++ b/south/migration/migrators.py
+@@ -16,7 +16,7 @@
+ from south.db import DEFAULT_DB_ALIAS
+ from south.models import MigrationHistory
+ from south.signals import ran_migration
+-from south.utils.py3 import StringIO
++from south.utils.py3 import StringIO, iteritems
+ 
+ 
+ class Migrator(object):
+@@ -161,7 +161,7 @@
+             if self.verbosity:
+                 print(" - Migration '%s' is marked for no-dry-run." % migration)
+             return
+-        for name, db in south.db.dbs.iteritems():
++        for name, db in iteritems(south.db.dbs):
+             south.db.dbs[name].dry_run = True
+         # preserve the constraint cache as it can be mutated by the dry run
+         constraint_cache = deepcopy(south.db.db._constraint_cache)
+@@ -181,7 +181,7 @@
+             if self._ignore_fail:
+                 south.db.db.debug = old_debug
+             south.db.db.clear_run_data(pending_creates)
+-            for name, db in south.db.dbs.iteritems():
++            for name, db in iteritems(south.db.dbs):
+                 south.db.dbs[name].dry_run = False
+             # restore the preserved constraint cache from before dry run was
+             # executed
+diff --git a/south/utils/py3.py b/south/utils/py3.py
+--- a/south/utils/py3.py
++++ b/south/utils/py3.py
+@@ -26,3 +26,18 @@
+ def with_metaclass(meta, base=object):
+     """Create a base class with a metaclass."""
+     return meta("NewBase", (base,), {})
++
++
++def _add_doc(func, doc):
++    """Add documentation to a function."""
++    func.__doc__ = doc
++
++if PY3:
++    def iteritems(d, **kw):
++        return iter(d.items(**kw))
++else:
++    def iteritems(d, **kw):
++        return iter(d.iteritems(**kw))
++
++_add_doc(iteritems,
++         "Return an iterator over the (key, value) pairs of a dictionary.")

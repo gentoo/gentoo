@@ -1,0 +1,183 @@
+https://banu.com/bugzilla/show_bug.cgi?id=110#c4
+
+From 526215dbb4abb1cff9a170343fa50dbda9492eb1 Mon Sep 17 00:00:00 2001
+From: Michael Adam <obnox@samba.org>
+Date: Fri, 15 Mar 2013 12:34:01 +0100
+Subject: [PATCH 1/2] [BB#110] secure the hashmaps by adding a seed
+
+Based on patch provided by gpernot@praksys.org on bugzilla.
+
+Signed-off-by: Michael Adam <obnox@samba.org>
+---
+ configure.ac  |    2 ++
+ src/child.c   |    1 +
+ src/hashmap.c |   14 ++++++++------
+ 3 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ecbcba0..cc40e85 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -205,6 +205,8 @@ AC_CHECK_FUNCS([gethostname inet_ntoa memchr memset select socket strcasecmp \
+ AC_CHECK_FUNCS([isascii memcpy setrlimit ftruncate regcomp regexec])
+ AC_CHECK_FUNCS([strlcpy strlcat])
+ 
++AC_CHECK_FUNCS([time rand srand])
++
+ 
+ dnl Enable extra warnings
+ DESIRED_FLAGS="-fdiagnostics-show-option -Wall -Wextra -Wno-unused-parameter -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations -Wfloat-equal -Wundef -Wformat=2 -Wlogical-op -Wmissing-include-dirs -Wformat-nonliteral -Wold-style-definition -Wpointer-arith -Waggregate-return -Winit-self -Wpacked --std=c89 -ansi -pedantic -Wno-overlength-strings -Wc++-compat -Wno-long-long -Wno-overlength-strings -Wdeclaration-after-statement -Wredundant-decls -Wmissing-noreturn -Wshadow -Wendif-labels -Wcast-qual -Wcast-align -Wwrite-strings -Wp,-D_FORTIFY_SOURCE=2 -fno-common"
+diff --git a/src/child.c b/src/child.c
+index 34e20e0..0d778d9 100644
+--- a/src/child.c
++++ b/src/child.c
+@@ -196,6 +196,7 @@ static void child_main (struct child_s *ptr)
+         }
+ 
+         ptr->connects = 0;
++        srand(time(NULL));
+ 
+         while (!config.quit) {
+                 ptr->status = T_WAITING;
+diff --git a/src/hashmap.c b/src/hashmap.c
+index f46fdcb..8cf7c6b 100644
+--- a/src/hashmap.c
++++ b/src/hashmap.c
+@@ -50,6 +50,7 @@ struct hashbucket_s {
+ };
+ 
+ struct hashmap_s {
++        uint32_t seed;
+         unsigned int size;
+         hashmap_iter end_iterator;
+ 
+@@ -65,7 +66,7 @@ struct hashmap_s {
+  *
+  * If any of the arguments are invalid a negative number is returned.
+  */
+-static int hashfunc (const char *key, unsigned int size)
++static int hashfunc (const char *key, unsigned int size, uint32_t seed)
+ {
+         uint32_t hash;
+ 
+@@ -74,7 +75,7 @@ static int hashfunc (const char *key, unsigned int size)
+         if (size == 0)
+                 return -ERANGE;
+ 
+-        for (hash = tolower (*key++); *key != '\0'; key++) {
++        for (hash = seed; *key != '\0'; key++) {
+                 uint32_t bit = (hash & 1) ? (1 << (sizeof (uint32_t) - 1)) : 0;
+ 
+                 hash >>= 1;
+@@ -104,6 +105,7 @@ hashmap_t hashmap_create (unsigned int nbuckets)
+         if (!ptr)
+                 return NULL;
+ 
++        ptr->seed = (uint32_t)rand();
+         ptr->size = nbuckets;
+         ptr->buckets = (struct hashbucket_s *) safecalloc (nbuckets,
+                                                            sizeof (struct
+@@ -201,7 +203,7 @@ hashmap_insert (hashmap_t map, const char *key, const void *data, size_t len)
+         if (!data || len < 1)
+                 return -ERANGE;
+ 
+-        hash = hashfunc (key, map->size);
++        hash = hashfunc (key, map->size, map->seed);
+         if (hash < 0)
+                 return hash;
+ 
+@@ -382,7 +384,7 @@ ssize_t hashmap_search (hashmap_t map, const char *key)
+         if (map == NULL || key == NULL)
+                 return -EINVAL;
+ 
+-        hash = hashfunc (key, map->size);
++        hash = hashfunc (key, map->size, map->seed);
+         if (hash < 0)
+                 return hash;
+ 
+@@ -416,7 +418,7 @@ ssize_t hashmap_entry_by_key (hashmap_t map, const char *key, void **data)
+         if (!map || !key || !data)
+                 return -EINVAL;
+ 
+-        hash = hashfunc (key, map->size);
++        hash = hashfunc (key, map->size, map->seed);
+         if (hash < 0)
+                 return hash;
+ 
+@@ -451,7 +453,7 @@ ssize_t hashmap_remove (hashmap_t map, const char *key)
+         if (map == NULL || key == NULL)
+                 return -EINVAL;
+ 
+-        hash = hashfunc (key, map->size);
++        hash = hashfunc (key, map->size, map->seed);
+         if (hash < 0)
+                 return hash;
+ 
+-- 
+1.7.9.5
+
+https://banu.com/bugzilla/show_bug.cgi?id=110#c5
+
+From f1189daec6866efeb44f24073cd19d7ece86e537 Mon Sep 17 00:00:00 2001
+From: Michael Adam <obnox@samba.org>
+Date: Fri, 15 Mar 2013 13:10:01 +0100
+Subject: [PATCH 2/2] [BB#110] limit the number of headers per request to
+ prevent DoS
+
+Based on patch provided by gpernot@praksys.org on bugzilla.
+
+Signed-off-by: Michael Adam <obnox@samba.org>
+---
+ src/reqs.c |   17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/reqs.c b/src/reqs.c
+index 2de43a8..af014ba 100644
+--- a/src/reqs.c
++++ b/src/reqs.c
+@@ -611,12 +611,19 @@ add_header_to_connection (hashmap_t hashofheaders, char *header, size_t len)
+ }
+ 
+ /*
++ * define max number of headers.
++ * big enough to handle legitimate cases, but limited to avoid DoS
++ */
++#define MAX_HEADERS 10000
++
++/*
+  * Read all the headers from the stream
+  */
+ static int get_all_headers (int fd, hashmap_t hashofheaders)
+ {
+         char *line = NULL;
+         char *header = NULL;
++        int count;
+         char *tmp;
+         ssize_t linelen;
+         ssize_t len = 0;
+@@ -625,7 +632,7 @@ static int get_all_headers (int fd, hashmap_t hashofheaders)
+         assert (fd >= 0);
+         assert (hashofheaders != NULL);
+ 
+-        for (;;) {
++        for (count = 0; count < MAX_HEADERS; count++) {
+                 if ((linelen = readline (fd, &line)) <= 0) {
+                         safefree (header);
+                         safefree (line);
+@@ -691,6 +698,14 @@ static int get_all_headers (int fd, hashmap_t hashofheaders)
+ 
+                 safefree (line);
+         }
++
++        /*
++         * if we get there, this is we reached MAX_HEADERS count
++         * bail out with error
++         */
++        safefree (header);
++        safefree (line);
++        return -1;
+ }
+ 
+ /*
+-- 
+1.7.9.5

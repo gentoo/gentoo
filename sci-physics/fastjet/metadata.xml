@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
+<longdescription lang="en">
+  The FastJet package provides a fast implementation of the
+  longitudinally invariant kt longitudinally invariant inclusive
+  Cambridge/Aachen and anti-kt jet finders and a uniform interface
+  to external jet finders (notably SISCone) via a plugin
+  mechanism. It also includes tools for calculating jet areas and
+  performing background (pileup/UE) subtraction.
+</longdescription>
+<use>
+  <flag name="plugins"> Build all standard and C++ plugins </flag>
+  <flag name="cgal"> Use <pkg>sci-mathematics/cgal</pkg> instead of
+  bundled algorithms</flag>
+</use>
+</pkgmetadata>

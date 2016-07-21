@@ -1,0 +1,17 @@
+[Unit]
+Description=PIM-SSM routing daemon
+Documentation=man:zebra(8)
+BindTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/pimd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/pimd.pid
+ExecStart=/usr/sbin/pimd -d
+ExecReload=/bin/kill -HUP $MAINPID
+SuccessExitStatus=1
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

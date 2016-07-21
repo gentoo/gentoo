@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  ClusterSSH is a tool for making the same change on multiple servers 
+  at the same time. The 'cssh' command opens an administration console 
+  and an xterm to all specified hosts. Any text typed into 
+  the administration console is replicated to all windows. 
+  All windows may also be typed into directly.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">clusterssh</remote-id>
+  </upstream>
+</pkgmetadata>

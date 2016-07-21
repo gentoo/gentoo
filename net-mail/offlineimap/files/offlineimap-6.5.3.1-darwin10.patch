@@ -1,0 +1,10 @@
+--- offlineimap.py	2012-04-10 14:19:03.335823779 +0200
++++ offlineimap.py.new	2012-04-10 14:18:57.631852822 +0200
+@@ -17,6 +17,7 @@
+ #    along with this program; if not, write to the Free Software
+ #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
++from locale import *
+ from offlineimap import OfflineImap
+ 
+ oi = OfflineImap()

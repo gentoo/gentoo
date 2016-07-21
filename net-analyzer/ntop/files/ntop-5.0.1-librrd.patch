@@ -1,0 +1,31 @@
+--- a/configure.in
++++ b/configure.in
+@@ -887,28 +887,6 @@
+    fi
+ fi
+ 
+-RRD_LIB="-L${RRD_HOME}/lib -lrrd_th"
+-
+-if test -f "$RRD_HOME/lib/librrd_th.so"; then
+-   AC_MSG_RESULT(checking for rrdtool... yes)
+-else
+-  if test -f "$RRD_HOME/lib/librrd_th.dylib"; then # OSX
+-     AC_MSG_RESULT(checking for rrdtool... yes)
+-  else
+-     if test -f "$RRD_HOME/lib/librrd_th.a"; then
+-       AC_MSG_RESULT(checking for rrdtool... yes)
+-     else
+-       AC_CHECK_LIB([rrd_th], [main])
+-       if test ".${ac_cv_lib_rrd_th_main}" != ".yes"; then
+-         AC_MSG_ERROR(Unable to find RRD at $RRD_HOME: please use --with-rrd-home=DIR);
+-	 AC_MSG_ERROR(RRD source can be downloaded from http://www.rrdtool.org/);
+-       else
+-         RRD_LIB=
+-       fi
+-     fi
+-  fi
+-fi
+-
+ RRD_INC=
+ if test -d "${RRD_HOME}/include"; then
+   RRD_INC="-I${RRD_HOME}/include"

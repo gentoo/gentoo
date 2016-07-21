@@ -1,0 +1,34 @@
+From e5d3ac2ab70cb773671a63dfed45816d6e24d36d Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Thu, 13 Feb 2014 21:40:48 +0100
+Subject: [PATCH 1/3] Fix installation of man pages
+
+Signed-off-by: Christian Ruppert <idl0r@gentoo.org>
+---
+ doc/Makefile.am | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index a0a68f4..cba2e30 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -6,14 +6,12 @@ DOCFILES=\
+ #docfiledir=$(datarootdir)/doc/$(PACKAGE)
+ #docfile_DATA=$(DOCFILES)
+ 
+-manpagedir=$(mandir)
+-manpage_DATA= \
+-  cyberjack.8
++man8_MANS=cyberjack.8
+ 
+ EXTRA_DIST=\
+   README.xml LIESMICH.xml \
+   verifypin_ascii.c verifypin_fpin2.c \
+-  $(DOCFILES) $(manpage_DATA)
++  $(DOCFILES) $(man8_MANS)
+ 
+ 
+ %.ps: %.xml
+-- 
+1.8.3.2
+

@@ -1,0 +1,70 @@
+From f59c5f424a268313c1fcc009fd1e40c00bf6c4f2 Mon Sep 17 00:00:00 2001
+From: Alex Chernetz <andy80586@gmail.com>
+Date: Fri, 1 May 2015 13:32:27 -0700
+Subject: [PATCH] or32 and openrisc architectures are replaced by or1k in
+ current binutils
+
+---
+ src/architecturefactory.cc | 6 ++----
+ src/bfd-disassembly.cc     | 3 +--
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/architecturefactory.cc b/src/architecturefactory.cc
+index 709b770..25ccf80 100644
+--- a/src/architecturefactory.cc
++++ b/src/architecturefactory.cc
+@@ -10,7 +10,7 @@ ArchitectureFactory::ArchitectureFactory() :
+ 	m_architectureNameMap[(unsigned)bfd_arch_m68k] = "m68k";
+ 	m_architectureNameMap[(unsigned)bfd_arch_vax] = "vax";
+ 	m_architectureNameMap[(unsigned)bfd_arch_i960] = "i960";
+-	m_architectureNameMap[(unsigned)bfd_arch_or32] = "or32";
++	m_architectureNameMap[(unsigned)bfd_arch_or1k] = "or1k";
+ 	m_architectureNameMap[(unsigned)bfd_arch_sparc] = "sparc";
+ 	m_architectureNameMap[(unsigned)bfd_arch_mips] = "mips";
+ 	m_architectureNameMap[(unsigned)bfd_arch_i386] = "i386";
+@@ -68,7 +68,6 @@ ArchitectureFactory::ArchitectureFactory() :
+ 	m_architectureNameMap[(unsigned)bfd_arch_cris] = "cris";
+ 	m_architectureNameMap[(unsigned)bfd_arch_s390] = "s390";
+ 	m_architectureNameMap[(unsigned)bfd_arch_score] = "score";
+-	m_architectureNameMap[(unsigned)bfd_arch_openrisc] = "openrisc";
+ 	m_architectureNameMap[(unsigned)bfd_arch_mmix] = "mmix";
+ 	m_architectureNameMap[(unsigned)bfd_arch_xstormy16] =  "xstormy16";
+ 	m_architectureNameMap[(unsigned)bfd_arch_xc16x] = "xc16x";
+@@ -81,7 +80,7 @@ ArchitectureFactory::ArchitectureFactory() :
+ 	m_nameArchitectureMap["m68k"] = (unsigned)bfd_arch_m68k;
+ 	m_nameArchitectureMap["vax"] = (unsigned)bfd_arch_vax;
+ 	m_nameArchitectureMap["i960"] = (unsigned)bfd_arch_i960;
+-	m_nameArchitectureMap["or32"] = (unsigned)bfd_arch_or32;
++	m_nameArchitectureMap["or1k"] = (unsigned)bfd_arch_or1k;
+ 	m_nameArchitectureMap["sparc"] = (unsigned)bfd_arch_sparc;
+ 	m_nameArchitectureMap["mips"] = (unsigned)bfd_arch_mips;
+ 	m_nameArchitectureMap["i386"] = (unsigned)bfd_arch_i386;
+@@ -139,7 +138,6 @@ ArchitectureFactory::ArchitectureFactory() :
+ 	m_nameArchitectureMap["cris"] = (unsigned)bfd_arch_cris;
+ 	m_nameArchitectureMap["s390"] = (unsigned)bfd_arch_s390;
+ 	m_nameArchitectureMap["score"] = (unsigned)bfd_arch_score;
+-	m_nameArchitectureMap["openrisc"] = (unsigned)bfd_arch_openrisc;
+ 	m_nameArchitectureMap["mmix"] = (unsigned)bfd_arch_mmix;
+ 	m_nameArchitectureMap["xstormy16"] =  (unsigned)bfd_arch_xstormy16;
+ 	m_nameArchitectureMap["xc16x"] = (unsigned)bfd_arch_xc16x;
+diff --git a/src/bfd-disassembly.cc b/src/bfd-disassembly.cc
+index 5cda9e2..bf3e768 100644
+--- a/src/bfd-disassembly.cc
++++ b/src/bfd-disassembly.cc
+@@ -38,7 +38,7 @@ class Disassembly : public IDisassembly,
+ 	    m_arch[bfd_arch_m68k] = BfdArch(bfd_arch_m68k, bfd_mach_m68040, print_insn_m68k);      /* Motorola 68xxx */
+ 	    m_arch[bfd_arch_vax] = BfdArch(bfd_arch_vax, 0, print_insn_vax);       /* DEC Vax */
+ 	    m_arch[bfd_arch_i960] = BfdArch(bfd_arch_i960, 0, print_insn_i960);      /* Intel 960 */
+-	    m_arch[bfd_arch_or32] = BfdArch(bfd_arch_or32, 0, print_insn_little_or32);      /* OpenRISC 32 */
++	    m_arch[bfd_arch_or1k] = BfdArch(bfd_arch_or1k, 0, print_insn_little_or1k);      /* OpenRISC 32 */
+ 	    m_arch[bfd_arch_sparc] = BfdArch(bfd_arch_sparc, 0, print_insn_sparc);     /* SPARC */
+ 	    m_arch[bfd_arch_spu] = BfdArch(bfd_arch_spu, 0, print_insn_spu);       /* PowerPC SPU */
+ 	    m_arch[bfd_arch_i860] = BfdArch(bfd_arch_i860, 0, print_insn_i860);      /* Intel 860 */
+@@ -89,7 +89,6 @@ class Disassembly : public IDisassembly,
+ 	    m_arch[bfd_arch_rl78] = BfdArch(bfd_arch_rl78, 0, print_insn_rl78);
+ 	    m_arch[bfd_arch_rx] = BfdArch(bfd_arch_rx, 0, print_insn_rx);        /* Renesas RX.  */
+ 	    m_arch[bfd_arch_s390] = BfdArch(bfd_arch_s390, bfd_mach_s390_64, print_insn_s390);      /* IBM s390 */
+-	    m_arch[bfd_arch_openrisc] = BfdArch(bfd_arch_openrisc, 0, print_insn_openrisc);  /* OpenRISC */
+ 	    m_arch[bfd_arch_mmix] = BfdArch(bfd_arch_mmix, 0, print_insn_mmix);      /* Donald Knuth's educational processor.  */
+ 	    m_arch[bfd_arch_xstormy16] = BfdArch(bfd_arch_xstormy16, 0, print_insn_xstormy16);
+ 	    m_arch[bfd_arch_msp430] = BfdArch(bfd_arch_msp430, 0, print_insn_msp430);    /* Texas Instruments MSP430 architecture.  */

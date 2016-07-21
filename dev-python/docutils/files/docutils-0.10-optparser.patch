@@ -1,0 +1,34 @@
+Patch by Arfrever
+http://sourceforge.net/tracker/?func=detail&aid=3598893&group_id=38414&atid=422030
+
+Index: docutils/frontend.py
+===================================================================
+--- docutils/frontend.py	(revision 7578)
++++ docutils/frontend.py	(working copy)
+@@ -158,7 +158,7 @@
+ 
+ def validate_colon_separated_string_list(
+     setting, value, option_parser, config_parser=None, config_section=None):
+-    if isinstance(value, unicode):
++    if isinstance(value, basestring):
+         value = value.split(':')
+     else:
+         last = value.pop()
+@@ -171,7 +171,7 @@
+     """
+     # `value` is already a list when  given as command line option
+     # and "action" is "append"
+-    if isinstance(value, unicode):
++    if isinstance(value, basestring):
+         value = [value]
+     # this function is called for every option added to `value`
+     # -> split the last item and apped the result:
+@@ -731,7 +731,7 @@
+         """Wrapper around sys.stderr catching en-/decoding errors"""
+ 
+     def read(self, filenames, option_parser):
+-        if type(filenames) in (str, unicode):
++        if isinstance(filenames, basestring):
+             filenames = [filenames]
+         for filename in filenames:
+             try:

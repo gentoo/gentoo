@@ -1,0 +1,19 @@
+commit 248d6dbd351c22989090d318128cb38b11a89f98
+Author: Jehan <jehan@girinstud.io>
+Date:   Thu Jan 21 18:16:42 2016 +0100
+
+    tools: exit with non-zero value on uchardet error.
+
+diff --git a/src/tools/uchardet.cpp b/src/tools/uchardet.cpp
+index 91912a0..bcfa234 100644
+--- a/src/tools/uchardet.cpp
++++ b/src/tools/uchardet.cpp
+@@ -60,7 +60,7 @@ void detect(FILE * fp)
+         if (retval != 0)
+         {
+             fprintf(stderr, "Handle data error.\n");
+-            exit(0);
++            exit(1);
+         }
+     }
+     uchardet_data_end(handle);

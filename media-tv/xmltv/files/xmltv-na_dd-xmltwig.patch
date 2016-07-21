@@ -1,0 +1,10 @@
+--- grab/na_dd/tv_grab_na_dd.in.orig	2006-11-29 18:06:47.000000000 +0100
++++ grab/na_dd/tv_grab_na_dd.in	2007-03-12 16:17:56.000000000 +0100
+@@ -737,7 +737,6 @@
+ #
+ $twig=XML::Twig->new(   
+          twig_roots    => { HTML => 1, message => 1, xtvd =>1},
+-         ignore_elts   => { schedules => 1 },
+ 		 twig_handlers => 
+ 		      {
+ 		         HTML     => sub {

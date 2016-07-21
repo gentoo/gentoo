@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Coro</remote-id>
+    <remote-id type="cpan-module">Coro</remote-id>
+    <remote-id type="cpan-module">Coro::AIO</remote-id>
+    <remote-id type="cpan-module">Coro::AnyEvent</remote-id>
+    <remote-id type="cpan-module">Coro::BDB</remote-id>
+    <remote-id type="cpan-module">Coro::Channel</remote-id>
+    <remote-id type="cpan-module">Coro::Debug</remote-id>
+    <remote-id type="cpan-module">Coro::EV</remote-id>
+    <remote-id type="cpan-module">Coro::Event</remote-id>
+    <remote-id type="cpan-module">Coro::Handle</remote-id>
+    <remote-id type="cpan-module">Coro::Handle::FH</remote-id>
+    <remote-id type="cpan-module">Coro::LWP</remote-id>
+    <remote-id type="cpan-module">Coro::LWP::Socket</remote-id>
+    <remote-id type="cpan-module">Coro::MakeMaker</remote-id>
+    <remote-id type="cpan-module">Coro::RWLock</remote-id>
+    <remote-id type="cpan-module">Coro::Select</remote-id>
+    <remote-id type="cpan-module">Coro::Semaphore</remote-id>
+    <remote-id type="cpan-module">Coro::SemaphoreSet</remote-id>
+    <remote-id type="cpan-module">Coro::Signal</remote-id>
+    <remote-id type="cpan-module">Coro::Socket</remote-id>
+    <remote-id type="cpan-module">Coro::Specific</remote-id>
+    <remote-id type="cpan-module">Coro::State</remote-id>
+    <remote-id type="cpan-module">Coro::Storable</remote-id>
+    <remote-id type="cpan-module">Coro::Timer</remote-id>
+    <remote-id type="cpan-module">Coro::Timer::Timeout</remote-id>
+    <remote-id type="cpan-module">Coro::Util</remote-id>
+  </upstream>
+</pkgmetadata>

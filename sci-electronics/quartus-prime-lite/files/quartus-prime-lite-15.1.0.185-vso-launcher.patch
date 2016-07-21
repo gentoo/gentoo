@@ -1,0 +1,19 @@
+--- /opt/quartus-lite-15.1.0.185/modelsim_ase/vco.org	2016-03-02 19:05:09.566449182 +0800
++++ /opt/quartus-lite-15.1.0.185/modelsim_ase/vco	2016-03-02 19:06:19.020221005 +0800
+@@ -48,6 +48,7 @@
+ done
+ 
+ dir=`dirname "$arg0"`
++export LD_LIBRARY_PATH=${dir}/lib32
+ 
+ vco=${uname}${utype}
+ case $vco in
+@@ -203,7 +204,7 @@
+           2.[5-9]*)         vco="linux" ;;
+           2.[1-9][0-9]*)    vco="linux" ;;
+           3.[0-9]*)    		vco="linux" ;;
+-          *)                vco="linux_rh60" ;;
++          *)                vco="linux" ;;
+         esac
+         if [ ! -x "$dir/$vco/vsim" ]; then
+           if [ -x "$dir/linuxle/vsim" ]; then

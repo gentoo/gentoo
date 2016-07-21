@@ -1,0 +1,55 @@
+From patchwork Thu Jul 23 05:10:38 2015
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: tdb: Fix broken build with --disable-python
+Date: Thu, 23 Jul 2015 04:10:38 -0000
+From: Martin Schwenke <martin@meltin.net>
+X-Patchwork-Id: 11098
+Message-Id: <20150723151038.617e1c49@martins.ozlabs.org>
+To: Samba Technical <samba-technical@lists.samba.org>
+
+Please NACK if you don't want this pushed...  :-)
+
+peace & happiness,
+martin
+
+
+>From c7609c35b6bdb488b74d63ebfd27838b9b8e7e2f Mon Sep 17 00:00:00 2001
+From: Martin Schwenke <martin@meltin.net>
+Date: Thu, 23 Jul 2015 09:47:24 +1000
+Subject: [PATCH] tdb: Fix broken build with --disable-python
+
+With --disable-python, we should not install any python files.
+
+Signed-off-by: Martin Schwenke <martin@meltin.net>
+Reviewed-by: Amitay Isaacs <amitay@gmail.com>
+---
+ lib/tdb/wscript | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/lib/tdb/wscript b/lib/tdb/wscript
+index 5845fa0..1822e74 100644
+--- a/lib/tdb/wscript
++++ b/lib/tdb/wscript
+@@ -187,12 +187,13 @@ def build(bld):
+                              realname='tdb.so',
+                              cflags='-DPACKAGE_VERSION=\"%s\"' % VERSION)
+ 
+-        for env in bld.gen_python_environments(['PKGCONFIGDIR']):
+-            bld.SAMBA_SCRIPT('_tdb_text.py',
+-                             pattern='_tdb_text.py',
+-                             installdir='python')
++        if not bld.env.disable_python:
++            for env in bld.gen_python_environments(['PKGCONFIGDIR']):
++                bld.SAMBA_SCRIPT('_tdb_text.py',
++                                 pattern='_tdb_text.py',
++                                 installdir='python')
+ 
+-            bld.INSTALL_FILES('${PYTHONARCHDIR}', '_tdb_text.py')
++                bld.INSTALL_FILES('${PYTHONARCHDIR}', '_tdb_text.py')
+ 
+ def testonly(ctx):
+     '''run tdb testsuite'''
+-- 
+2.1.4

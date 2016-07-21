@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/330717
+
+--- src/socket.cc
++++ src/socket.cc
+@@ -64,7 +64,11 @@
+ #ifdef USE_SSL
+   SSL*        ssl;
+   BIO*        sbio;
++  #if OPENSSL_VERSION_NUMBER >= 0x10000000L
++  const SSL_METHOD* ssl_meth;
++  #else
+   SSL_METHOD* ssl_meth;
++  #endif
+   SSL_CTX*    ssl_ctx;
+ #endif
+ 

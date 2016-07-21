@@ -1,0 +1,85 @@
+commit dfba5258dc230669a7e1ad309e25ef190c77e854
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Thu Feb 14 16:54:08 2013 -0300
+
+    Fix build with libav-9 (#38333)
+    
+    Signed-off-by: Sandro Santilli <strk@keybit.net>
+
+diff --git a/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp b/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
+index 5c8e1ad..50947fb 100644
+--- a/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
++++ b/libmedia/ffmpeg/AudioDecoderFfmpeg.cpp
+@@ -133,12 +133,20 @@ void AudioDecoderFfmpeg::setup(SoundInfo& info)
+         }
+     }
+ 
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    _audioCodecCtx = avcodec_alloc_context3(_audioCodec);
++#else
+     _audioCodecCtx = avcodec_alloc_context();
++#endif
+     if (!_audioCodecCtx) {
+         throw MediaException(_("libavcodec couldn't allocate context"));
+     }
+ 
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    int ret = avcodec_open2(_audioCodecCtx, _audioCodec, NULL);
++#else
+     int ret = avcodec_open(_audioCodecCtx, _audioCodec);
++#endif
+     if (ret < 0) {
+         av_free(_audioCodecCtx);
+         _audioCodecCtx=0;
+@@ -259,7 +267,11 @@ void AudioDecoderFfmpeg::setup(const AudioInfo& info)
+     _needsParsing = (_parser != NULL);
+ 
+     // Create an audioCodecCtx from the ffmpeg parser if exists/possible
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    _audioCodecCtx = avcodec_alloc_context3(_audioCodec);
++#else
+     _audioCodecCtx = avcodec_alloc_context();
++#endif
+     if (!_audioCodecCtx) {
+         throw MediaException(_("AudioDecoderFfmpeg: libavcodec couldn't "
+                     "allocate context"));
+@@ -310,7 +322,11 @@ void AudioDecoderFfmpeg::setup(const AudioInfo& info)
+ #ifdef GNASH_DEBUG_AUDIO_DECODING
+     log_debug("  Opening codec");
+ #endif // GNASH_DEBUG_AUDIO_DECODING
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    int ret = avcodec_open2(_audioCodecCtx, _audioCodec, NULL);
++#else
+     int ret = avcodec_open(_audioCodecCtx, _audioCodec);
++#endif
+     if (ret < 0) {
+         //avcodec_close(_audioCodecCtx);
+         av_free(_audioCodecCtx);
+diff --git a/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp b/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
+index eeefafe..e5263c6 100644
+--- a/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
++++ b/libmedia/ffmpeg/VideoDecoderFfmpeg.cpp
+@@ -183,7 +183,11 @@ VideoDecoderFfmpeg::init(enum CodecID codecId, int /*width*/, int /*height*/,
+         throw MediaException(_("libavcodec can't decode this video format"));
+     }
+ 
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    _videoCodecCtx.reset(new CodecContextWrapper(avcodec_alloc_context3(_videoCodec)));
++#else
+     _videoCodecCtx.reset(new CodecContextWrapper(avcodec_alloc_context()));
++#endif
+     if (!_videoCodecCtx->getContext()) {
+         throw MediaException(_("libavcodec couldn't allocate context"));
+     }
+@@ -206,7 +210,11 @@ VideoDecoderFfmpeg::init(enum CodecID codecId, int /*width*/, int /*height*/,
+     }
+ #endif
+ 
++#if LIBAVCODEC_VERSION_INT > AV_VERSION_INT(53,8,0)
++    int ret = avcodec_open2(ctx, _videoCodec, NULL);
++#else
+     int ret = avcodec_open(ctx, _videoCodec);
++#endif
+     if (ret < 0) {
+         boost::format msg = boost::format(_("libavcodec "
+                             "failed to initialize FFMPEG "

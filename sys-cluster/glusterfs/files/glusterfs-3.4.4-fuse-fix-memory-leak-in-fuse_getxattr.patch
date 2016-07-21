@@ -1,0 +1,91 @@
+From 0cf6f0727482b5b8816b5e58cb67ef124eae808e Mon Sep 17 00:00:00 2001
+From: Justin Clift <justin@gluster.org>
+Date: Tue, 24 Jun 2014 20:57:02 +0100
+Subject: [PATCH] fuse: fix memory leak in fuse_getxattr()
+
+The fuse_getxattr() function was not freeing fuse_state_t resulting in a
+memory leak. As a result, when continuous writes (run dd command in a loop)
+were done from a FUSE mount point, the OOM killer killed the client
+process (glusterfs).
+
+Manual backport of: http://review.gluster.org/#/c/5392/, provided
+by Martin Svec <martin.svec@zoner.cz>.
+
+BUG: 1112844
+Change-Id: Ic723675c53384d48c79ad1b11b21c1b17fb56866
+---
+ xlators/mount/fuse/src/fuse-bridge.c | 27 ++++++++++++++-------------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/xlators/mount/fuse/src/fuse-bridge.c b/xlators/mount/fuse/src/fuse-bridge.c
+index e531970..da5937b 100644
+--- a/xlators/mount/fuse/src/fuse-bridge.c
++++ b/xlators/mount/fuse/src/fuse-bridge.c
+@@ -3207,6 +3207,7 @@ fuse_getxattr (xlator_t *this, fuse_in_header_t *finh, void *msg)
+         fuse_state_t *state = NULL;
+         struct fuse_private *priv = NULL;
+         int rv = 0;
++        int op_errno = EINVAL;
+         char *newkey = NULL;
+ 
+         priv = this->private;
+@@ -3227,26 +3228,23 @@ fuse_getxattr (xlator_t *this, fuse_in_header_t *finh, void *msg)
+                         "%"PRIu64": GETXATTR %s/%"PRIu64" (%s):"
+                         "refusing positioned getxattr",
+                         finh->unique, state->loc.path, finh->nodeid, name);
+-                send_fuse_err (this, finh, EINVAL);
+-                FREE (finh);
+-                return;
++                op_errno = EINVAL;
++                goto err;
+         }
+ #endif
+ 
+         if (!priv->acl) {
+                 if ((strcmp (name, "system.posix_acl_access") == 0) ||
+                     (strcmp (name, "system.posix_acl_default") == 0)) {
+-                        send_fuse_err (this, finh, ENOTSUP);
+-                        GF_FREE (finh);
+-                        return;
++                        op_errno = ENOTSUP;
++                        goto err;
+                 }
+         }
+ 
+         if (!priv->selinux) {
+                 if (strncmp (name, "security.", 9) == 0) {
+-                        send_fuse_err (this, finh, ENODATA);
+-                        GF_FREE (finh);
+-                        return;
++                        op_errno = ENODATA;
++                        goto err;
+                 }
+         }
+ 
+@@ -3254,16 +3252,19 @@ fuse_getxattr (xlator_t *this, fuse_in_header_t *finh, void *msg)
+ 
+         rv = fuse_flip_xattr_ns (priv, name, &newkey);
+         if (rv) {
+-                send_fuse_err (this, finh, ENOMEM);
+-                free_fuse_state (state);
+-                goto out;
++                op_errno = ENOMEM;
++                goto err;
+         }
+ 
+         state->size = fgxi->size;
+         state->name = newkey;
+ 
+         fuse_resolve_and_resume (state, fuse_getxattr_resume);
+- out:
++
++        return;
++ err:
++        send_fuse_err (this, finh, op_errno);
++        free_fuse_state (state);
+         return;
+ }
+ 
+-- 
+1.9.2
+

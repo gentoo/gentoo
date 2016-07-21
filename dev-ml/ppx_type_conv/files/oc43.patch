@@ -1,0 +1,122 @@
+diff -uNr ppx_type_conv-113.33.00/js-utils/gen_install.ml ppx_type_conv-113.33.01+4.03/js-utils/gen_install.ml
+--- ppx_type_conv-113.33.00/js-utils/gen_install.ml	2016-03-09 16:44:55.000000000 +0100
++++ ppx_type_conv-113.33.01+4.03/js-utils/gen_install.ml	2016-04-18 12:11:00.000000000 +0200
+@@ -31,7 +31,7 @@
+   |> List.map (fun line -> Scanf.sscanf line "%[^=]=%S" (fun k v -> (k, v)))
+ 
+ let remove_cwd =
+-  let prefix = Sys.getcwd () ^ "/" in
++  let prefix = Sys.getcwd () ^ Filename.dir_sep in
+   let len_prefix = String.length prefix in
+   fun fn ->
+     let len = String.length fn in
+diff -uNr ppx_type_conv-113.33.00/_oasis ppx_type_conv-113.33.01+4.03/_oasis
+--- ppx_type_conv-113.33.00/_oasis	2016-03-09 16:44:55.000000000 +0100
++++ ppx_type_conv-113.33.01+4.03/_oasis	2016-04-18 12:11:00.000000000 +0200
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_type_conv
+-Version:          113.33.00
++Version:          113.33.01+4.03
+ Synopsis:         Support Library for type-driven code generators
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_type_conv-113.33.00/opam ppx_type_conv-113.33.01+4.03/opam
+--- ppx_type_conv-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_type_conv-113.33.01+4.03/opam	2016-04-18 12:27:13.000000000 +0200
+@@ -17,4 +17,4 @@
+   "ppx_driver"
+   "ppx_tools"    {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_type_conv-113.33.00/src/ignore_unused_warning.ml ppx_type_conv-113.33.01+4.03/src/ignore_unused_warning.ml
+--- ppx_type_conv-113.33.00/src/ignore_unused_warning.ml	2016-03-09 16:44:55.000000000 +0100
++++ ppx_type_conv-113.33.01+4.03/src/ignore_unused_warning.ml	2016-04-18 12:11:00.000000000 +0200
+@@ -30,11 +30,11 @@
+           List.fold_left vbs ~init:[] ~f:(fun acc vb -> vars_of#pattern vb.pvb_pat acc)
+         in
+         let ign =
+-          pstr_value ~loc Nonrecursive
++          pstr_value_list ~loc Nonrecursive
+             (List.rev_map vars ~f:(fun v ->
+                underscore_binding (pexp_ident ~loc:v.loc v)))
+         in
+-        loop rest (ign :: item :: acc)
++        loop rest (ign @ (item :: acc))
+       | item :: rest ->
+         loop rest (item :: acc)
+     in
+diff -uNr ppx_type_conv-113.33.00/src/type_conv.ml ppx_type_conv-113.33.01+4.03/src/type_conv.ml
+--- ppx_type_conv-113.33.00/src/type_conv.ml	2016-03-09 16:44:55.000000000 +0100
++++ ppx_type_conv-113.33.01+4.03/src/type_conv.ml	2016-04-18 12:11:00.000000000 +0200
+@@ -472,9 +472,10 @@
+     Ast_pattern.(
+       let label =
+         map' __ ~f:(fun loc f label ->
+-          if label = "" || label.[0] = '?' then
++          match label with
++          | Nolabel | Optional _ ->
+             Location.raise_errorf ~loc "non-optional labeled argument expected"
+-          else
++          | Labelled label ->
+             f label)
+       in
+       let generator_name () =
+@@ -530,16 +531,6 @@
+ let get_str_exception_derivers = get_derivers deriving_attr_ec Deriver.Field.str_exception
+ let get_sig_exception_derivers = get_derivers deriving_attr_ec Deriver.Field.sig_exception
+ 
+-let get_rec_flag tds =
+-  let has_nonrec td =
+-    List.exists td.ptype_attributes ~f:(fun (name, _) -> name.txt = "nonrec")
+-  in
+-  if List.exists tds ~f:has_nonrec then
+-    Nonrecursive
+-  else
+-    Recursive
+-;;
+-
+ (* +-----------------------------------------------------------------+
+    | Unused warning stuff                                            |
+    +-----------------------------------------------------------------+ *)
+@@ -627,17 +618,16 @@
+       let item = super#structure_item path item in
+       let loc = item.pstr_loc in
+       match item.pstr_desc with
+-      | Pstr_type tds ->
++      | Pstr_type (rec_flag, tds) ->
+         begin match get_str_type_decl_derivers tds with
+         | None -> [item]
+         | Some (tds, generators) ->
+-          let rec_flag = get_rec_flag tds in
+           let generated =
+             types_used_by_type_conv tds
+             @ Generator.apply_all ~rev:true ~loc ~path (rec_flag, tds) generators;
+           in
+           let tds = List.map tds ~f:(remove generators)#type_declaration in
+-          let item = { item with pstr_desc = Pstr_type tds } in
++          let item = { item with pstr_desc = Pstr_type (rec_flag, tds) } in
+           item :: disable_unused_warning_str ~loc generated
+         end
+ 
+@@ -670,14 +660,13 @@
+       let item = super#signature_item path item in
+       let loc = item.psig_loc in
+       match item.psig_desc with
+-      | Psig_type tds ->
++      | Psig_type (rec_flag, tds) ->
+         begin match get_sig_type_decl_derivers tds with
+         | None -> [item]
+         | Some (tds, generators) ->
+-          let rec_flag = get_rec_flag tds in
+           let generated = Generator.apply_all ~loc ~path (rec_flag, tds) generators in
+           let tds = List.map tds ~f:(remove generators)#type_declaration in
+-          let item = { item with psig_desc = Psig_type tds } in
++          let item = { item with psig_desc = Psig_type (rec_flag, tds) } in
+           item :: disable_unused_warning_sig ~loc generated
+         end
+ 

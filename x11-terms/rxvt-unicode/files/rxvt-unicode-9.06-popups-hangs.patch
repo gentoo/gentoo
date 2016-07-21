@@ -1,0 +1,13 @@
+--- a/src/rxvtperl.xs	30 May 2009 08:51:23 -0000	1.127
++++ b/src/rxvtperl.xs	30 Jul 2009 22:19:33 -0000
+@@ -929,7 +929,9 @@
+ rxvt_term::grab (Time eventtime, int sync = 0)
+ 	CODE:
+ {
+-        int mode = sync ? GrabModeSync : GrabModeAsync;
++        // TA:  20090730:  Always assume Async mode here -- recent Xorg
++        // Servers don't appreciate being put in Sync mode.
++        int mode = GrabModeAsync;
+ 
+         THIS->perl.grabtime = 0;
+ 

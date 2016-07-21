@@ -1,0 +1,46 @@
+--- src/cli/Makefile
++++ src/cli/Makefile
+@@ -1,4 +1,4 @@
+-CC   = g++
++CXX ?= g++
+ mingw = false
+ WINDRES =
+ RES  =
+@@ -27,7 +27,7 @@
+     LINKOBJ  = scrobble-cli.o libscrobble.o md5.o ConvertUTF.o mtp.o $(RES)
+ endif
+ 
+-CFLAGS = -Wall -O2 -g $(INCLUDE) $(CURL_FLAGS) $(MTP_FLAGS)
++CXXFLAGS += -Wall $(INCLUDE) $(CURL_FLAGS) $(MTP_FLAGS)
+ 
+ .PHONY: all all-before all-after clean clean-custom
+ 
+@@ -37,22 +37,22 @@
+ 	rm -f *.o *~ *.d $(BIN) $(BIN).exe
+ 
+ $(BIN): $(OBJ)
+-	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
++	$(CXX) $(LDFLAGS) $(LINKOBJ) -o $(BIN) $(LIBS)
+ 
+ scrobble-cli.o: scrobble-cli.cpp
+-	$(CC) -c scrobble-cli.cpp -o scrobble-cli.o $(CFLAGS)
++	$(CXX) -c scrobble-cli.cpp -o scrobble-cli.o $(CXXFLAGS)
+ 
+ libscrobble.o: ../lib/libscrobble.cpp
+-	$(CC) -c ../lib/libscrobble.cpp -o libscrobble.o $(CFLAGS)
++	$(CXX) -c ../lib/libscrobble.cpp -o libscrobble.o $(CXXFLAGS)
+ 
+ md5.o: ../lib/md5.c
+-	$(CC) -c ../lib/md5.c -o md5.o $(CFLAGS)
++	$(CXX) -c ../lib/md5.c -o md5.o $(CXXFLAGS)
+ 
+ ConvertUTF.o: ../lib/ConvertUTF.c
+-	$(CC) -c ../lib/ConvertUTF.c -o ConvertUTF.o $(CFLAGS)
++	$(CXX) -c ../lib/ConvertUTF.c -o ConvertUTF.o $(CXXFLAGS)
+ 
+ mtp.o: ../lib/mtp-libmtp.cpp
+-	$(CC) -c ../lib/mtp-libmtp.cpp -o mtp.o $(CFLAGS)
++	$(CXX) -c ../lib/mtp-libmtp.cpp -o mtp.o $(CXXFLAGS)
+ 
+ install:
+ 	install -D -m 755 scrobble-cli -p $(DESTDIR)$(bindir)/scrobble-cli

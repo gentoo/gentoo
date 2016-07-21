@@ -1,0 +1,44 @@
+From 1f17f96b538793a0e665e471f602c6fa490ec167 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Thu, 10 Jul 2014 15:59:06 +1000
+Subject: [PATCH 12/14] DDF: validate metadata_update size before using it.
+
+process_update already checks update->len, for all but
+the 'magic', prepare_update doesn't at all.
+
+So add tests to prepare_update that we don't exceed the buffer.
+This will consequently protect process_update from looking
+for a 'magic' which isn't there.
+
+Reported-by: Vincent Berg <vberg@ioactive.com>
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ super-ddf.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/super-ddf.c b/super-ddf.c
+index 1e43ca2..8957c2e 100644
+--- a/super-ddf.c
++++ b/super-ddf.c
+@@ -4914,10 +4914,16 @@ static int ddf_prepare_update(struct supertype *st,
+ 	 * If a malloc is needed, do it here.
+ 	 */
+ 	struct ddf_super *ddf = st->sb;
+-	be32 *magic = (be32 *)update->buf;
++	be32 *magic;
++	if (update->len < 4)
++		return 0;
++	magic = (be32 *)update->buf;
+ 	if (be32_eq(*magic, DDF_VD_CONF_MAGIC)) {
+ 		struct vcl *vcl;
+-		struct vd_config *conf = (struct vd_config *) update->buf;
++		struct vd_config *conf;
++		if (update->len < (int)sizeof(*conf))
++			return 0;
++		conf = (struct vd_config *) update->buf;
+ 		if (posix_memalign(&update->space, 512,
+ 				   offsetof(struct vcl, conf)
+ 				   + ddf->conf_rec_len * 512) != 0) {
+-- 
+2.0.0
+

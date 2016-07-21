@@ -1,0 +1,59 @@
+Some parts of the iovec API were replaced by the similar message API. Refactoring the code to use that.
+--- a/vmci-only/linux/vmciKernelIf.c	2015-02-07 03:11:55.000000000 +0300
++++ c/vmci-only/linux/vmciKernelIf.c	2015-02-24 03:58:06.041605450 +0300
+@@ -40,6 +40,7 @@
+ #include <linux/socket.h>       /* For memcpy_{to,from}iovec(). */
+ #include <linux/vmalloc.h>
+ #include <linux/wait.h>
++#include <linux/skbuff.h>
+ 
+ #include "compat_highmem.h"
+ #include "compat_interrupt.h"
+@@ -1196,21 +1197,21 @@
+       } else {
+          toCopy = size - bytesCopied;
+       }
+-
++      /* Code cloned from kernels drivers/misc/vmw_vmci/vmci_queue_pair.c */
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)src;
+-         int err;
++         struct msghdr *msg = (struct msghdr *)src;
++         int err;
+ 
+-         /* The iovec will track bytesCopied internally. */
+-         err = memcpy_fromiovec((uint8 *)va + pageOffset, iov, toCopy);
+-         if (err != 0) {
+-            if (kernelIf->host) {
+-               kunmap(kernelIf->u.h.page[pageIndex]);
++         /* The iovec will track bytes_copied internally. */
++         err = memcpy_from_msg((u8 *)va + pageOffset, msg, toCopy);
++         if (err != 0) {
++            if (kernelIf->host)
++               kunmap(kernelIf->u.h.page[pageIndex]);
++               return VMCI_ERROR_INVALID_ARGS;
+             }
+-            return VMCI_ERROR_INVALID_ARGS;
+-         }
+-      } else {
+-         memcpy((uint8 *)va + pageOffset, (uint8 *)src + bytesCopied, toCopy);
++        } else {
++            memcpy((u8 *)va + pageOffset,
++                   (u8 *)src + bytesCopied, toCopy);
+       }
+ 
+       bytesCopied += toCopy;
+@@ -1273,11 +1274,11 @@
+       }
+ 
+       if (isIovec) {
+-         struct iovec *iov = (struct iovec *)dest;
++	  struct msghdr *msg = (struct msghdr *)dest;
+          int err;
+ 
+          /* The iovec will track bytesCopied internally. */
+-         err = memcpy_toiovec(iov, (uint8 *)va + pageOffset, toCopy);
++	  err = memcpy_to_msg(msg, (uint8 *)va + pageOffset, toCopy);
+          if (err != 0) {
+             if (kernelIf->host) {
+                kunmap(kernelIf->u.h.page[pageIndex]);

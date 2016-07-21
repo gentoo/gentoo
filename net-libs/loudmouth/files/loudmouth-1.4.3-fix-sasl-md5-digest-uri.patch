@@ -1,0 +1,24 @@
+diff --git a/loudmouth/lm-connection.c b/loudmouth/lm-connection.c
+index 21c1bc2..ae8de94 100644
+--- a/loudmouth/lm-connection.c
++++ b/loudmouth/lm-connection.c
+@@ -1441,11 +1441,18 @@ lm_connection_authenticate (LmConnection      *connection,
+ 	connection->effective_jid = g_strdup_printf ("%s/%s", 
+ 		connection->jid, connection->resource);
+ 
+ 	if (connection->use_sasl) {
++		gchar *domain = NULL;
++
++		if (!connection_get_server_from_jid (connection->jid, &domain)) {
++			domain = g_strdup (connection->server);
++		}
++
+ 		lm_sasl_authenticate (connection->sasl,
+ 				      username, password,
+-				      connection->server,
++				      domain,
+ 				      connection_sasl_auth_finished);
++		g_free (domain);
+ 
+ 		connection->features_cb  =
+ 			lm_message_handler_new (connection_features_cb,

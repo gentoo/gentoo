@@ -1,0 +1,20 @@
+diff -urN PyOpenAL-0.1.6.orig/setup.py PyOpenAL-0.1.6/setup.py
+--- PyOpenAL-0.1.6.orig/setup.py	2006-04-30 11:23:44.000000000 -0400
++++ PyOpenAL-0.1.6/setup.py	2006-06-13 12:15:46.000000000 -0400
+@@ -4,16 +4,6 @@
+ LIBDIRS = ["/usr/lib", "/usr/local/lib"]
+ LIBS    = ["openal", "alut"]
+ 
+-try:
+-  openal_version = os.popen("openal-config --version").read()
+-  if openal_version[0] == "0":
+-    LIBDIRS = ["/usr/lib", "/usr/local/lib"]
+-    LIBS    = ["openal"]
+-    
+-except:
+-  print "Warning: error while running 'openal-config --version', using default values..."
+-
+-
+ setup(
+   name         = "PyOpenAL",
+   version      = "0.1.6",

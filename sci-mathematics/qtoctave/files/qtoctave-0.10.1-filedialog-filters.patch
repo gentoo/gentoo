@@ -1,0 +1,37 @@
+Description: Fix *.m filename filters in file dialogs
+ Not forwarded to upstream since upstream author stopped development.
+Author: Sébastien Villemot <sebastien@debian.org>
+Bug-Debian: http://bugs.debian.org/620062
+Forwarded: no
+Last-Update: 2011-08-21
+--- a/qtoctave/src/editor.cpp
++++ b/qtoctave/src/editor.cpp
+@@ -295,7 +295,7 @@
+ {
+   QStringList filters;
+ 
+-  filters << "Octave (*.m; *.M)"
++  filters << "Octave (*.m *.M)"
+ 	  << "Plain text (*.txt)"
+ 	  << "All files (*)";
+ 
+@@ -475,7 +475,7 @@
+ 		QFileDialog openDialog(this, tr("Open") /*Qt::Dialog*/);
+ 
+ 		QStringList filters;
+-		filters << "Octave (*.m; *.M)"
++		filters << "Octave (*.m *.M)"
+ 			<< "Plain text (*.txt)"
+ 			<< "All files (*)";
+ 
+--- a/qtoctave/src/main.cpp
++++ b/qtoctave/src/main.cpp
+@@ -308,7 +308,7 @@
+   QFileDialog openDialog(NULL, tr("Open"), ".");
+   QStringList filters;
+ 
+-  filters << "Octave (*.m; *.M)";
++  filters << "Octave (*.m *.M)";
+ 
+   openDialog.setFilters(filters);
+   openDialog.setAcceptMode(QFileDialog::AcceptOpen);

@@ -1,0 +1,16 @@
+ rman.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rman.c b/rman.c
+index d09e547..e5fc88d 100644
+--- a/rman.c
++++ b/rman.c
+@@ -1372,7 +1372,7 @@ HTML(enum command cmd) {
+ 		break;
+ 	   case BEGINSECTION:	break;
+ 	   case ENDSECTION:
+-		if (sectheadid==NAME && message!=NULL) printf(message);
++		if (sectheadid==NAME && message!=NULL) printf("%s", message);
+ 		break;
+ 	   case BEGINSUBSECTION:	break;
+ 	   case ENDSUBSECTION:	break;

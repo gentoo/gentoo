@@ -1,0 +1,15 @@
+Fix building with gcc-47
+
+https://bugs.gentoo.org/show_bug.cgi?id=423045
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/valknut/main.cpp
++++ b/valknut/main.cpp
+@@ -22,6 +22,7 @@
+ #endif
+ 
+ #include <stdlib.h>
++#include <unistd.h>   /* _exit */
+ #ifndef WIN32
+ #include <signal.h>
+ #endif

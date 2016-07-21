@@ -1,0 +1,11 @@
+diff -Naur gnuradio-9999/cmake/Modules/GrBuildTypes.cmake gnuradio-9999-hacked/cmake/Modules/GrBuildTypes.cmake
+--- gnuradio-9999/cmake/Modules/GrBuildTypes.cmake	2014-07-26 01:54:47.645866658 -0400
++++ gnuradio-9999-hacked/cmake/Modules/GrBuildTypes.cmake	2014-07-26 01:56:47.193869859 -0400
+@@ -61,7 +61,6 @@
+     endif(${_settype} STREQUAL ${_btype})
+   endforeach(btype)
+   # Build type not found; error out
+-  message(FATAL_ERROR "Build type '${settype}' not valid, must be one of: ${AVAIL_BUILDTYPES}")
+ endfunction(GR_CHECK_BUILD_TYPE)
+ 
+ ########################################################################

@@ -1,0 +1,75 @@
+From 80305ad20ebd481dde19fa7ff2d90249269aa588 Mon Sep 17 00:00:00 2001
+From: Eli Bendersky <eliben@gmail.com>
+Date: Wed, 23 Apr 2014 16:44:11 -0700
+Subject: [PATCH] Issue #29: Fail more gracefully when no string table is found
+ for dynamic.
+
+---
+ elftools/elf/dynamic.py |  4 ++++
+ test/test_dynamic.py    | 25 +++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+)
+ create mode 100644 test/test_dynamic.py
+
+diff --git a/elftools/elf/dynamic.py b/elftools/elf/dynamic.py
+index e36598e..6f88bf9 100644
+--- a/elftools/elf/dynamic.py
++++ b/elftools/elf/dynamic.py
+@@ -10,6 +10,7 @@ import itertools
+ 
+ from .sections import Section
+ from .segments import Segment
++from ..common.exceptions import ELFError
+ from ..common.utils import struct_parse
+ 
+ from .enums import ENUM_D_TAG
+@@ -29,6 +30,8 @@ class DynamicTag(object):
+          'DT_SUNW_FILTER'])
+ 
+     def __init__(self, entry, stringtable):
++        if stringtable is None:
++            raise ELFError('Creating DynamicTag without string table')
+         self.entry = entry
+         if entry.d_tag in self._HANDLED_TAGS:
+             setattr(self, entry.d_tag[3:].lower(),
+@@ -114,6 +117,7 @@ class DynamicSegment(Segment, Dynamic):
+         # So we must look for the dynamic section contained in the dynamic
+         # segment, we do so by searching for the dynamic section whose content
+         # is located at the same offset as the dynamic segment
++        stringtable = None
+         for section in elffile.iter_sections():
+             if (isinstance(section, DynamicSection) and
+                     section['sh_offset'] == header['p_offset']):
+diff --git a/test/test_dynamic.py b/test/test_dynamic.py
+new file mode 100644
+index 0000000..0ee9b35
+--- /dev/null
++++ b/test/test_dynamic.py
+@@ -0,0 +1,25 @@
++#-------------------------------------------------------------------------------
++# elftools tests
++#
++# Eli Bendersky (eliben@gmail.com)
++# This code is in the public domain
++#-------------------------------------------------------------------------------
++try:
++    import unittest2 as unittest
++except ImportError:
++    import unittest
++import os
++
++from utils import setup_syspath; setup_syspath()
++from elftools.common.exceptions import ELFError
++from elftools.elf.dynamic import DynamicTag
++
++
++class TestDynamicTag(unittest.TestCase):
++    def test_requires_stringtable(self):
++        with self.assertRaises(ELFError):
++            dt = DynamicTag('', None)
++
++
++if __name__ == '__main__':
++    unittest.main()
+-- 
+2.0.0
+

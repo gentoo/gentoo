@@ -1,0 +1,56 @@
+--- a/nmz/search.c	2011-08-05 09:26:47.000000000 +0900
++++ b/nmz/search.c	2011-08-05 09:32:25.000000000 +0900
+@@ -572,7 +572,7 @@
+ {
+     if (*expr == '*' && expr[strlen(expr) - 1] != '*') {
+         /* If suffix match such as '*bar', enforce it into regex */
+-        strcpy(expr, expr + 1);
++        memmove(expr, expr + 1, strlen(expr));
+         escape_meta_characters(expr, BUFSIZE * 2);
+         strncat(expr, "$", BUFSIZE * 2 - strlen(expr) - 1);
+         expr[BUFSIZE * 2 - 1] = '\0';
+@@ -584,7 +584,7 @@
+         expr[BUFSIZE * 2 - 1] = '\0';
+     } else if (*expr == '*' && expr[strlen(expr) - 1] == '*') {
+         /* If internal match such as '*foo*', enforce it into regex */
+-        strcpy(expr, expr + 1);
++        memmove(expr, expr + 1, strlen(expr));
+         expr[strlen(expr) - 1] = '\0';
+         escape_meta_characters(expr, BUFSIZE * 2);
+     } else if (*expr == '/' && expr[strlen(expr) - 1] == '/') {
+@@ -592,7 +592,7 @@
+             nmz_debug_printf("do REGEX search\n");
+             /* Genuine regex */
+             /* Remove the both of '/' chars at begging and end of string */
+-            strcpy(expr, expr + 1);
++            memmove(expr, expr + 1, strlen(expr));
+             expr[strlen(expr) - 1]= '\0';
+         } else {
+             nmz_debug_printf("disabled REGEX search\n");
+@@ -605,7 +605,7 @@
+             || (*expr == '{' && expr[strlen(expr) - 1] == '}')) 
+         {
+             /* Delimiters of field search */
+-            strcpy(expr, expr + 1); 
++            memmove(expr, expr + 1, strlen(expr)); 
+             expr[strlen(expr) - 1] = '\0';
+         }
+         escape_meta_characters(expr, BUFSIZE * 2);
+@@ -695,7 +695,7 @@
+ delete_beginning_backslash(char *str)
+ {
+     if (*str == '\\') {
+-        strcpy(str, str + 1);
++        memmove(str, str + 1, strlen(str));
+     }
+ }
+ 
+@@ -935,7 +935,7 @@
+     if ((strlen(str) >= 3 && (*str == '"' && str[strlen(str) - 1] == '"'))
+         || (*str == '{' && str[strlen(str) - 1] == '}')) 
+     {
+-        strcpy(str, str + 1); 
++        memmove(str , str + 1, strlen(str)); 
+         str[strlen(str) - 1]= '\0';
+     } 
+ }

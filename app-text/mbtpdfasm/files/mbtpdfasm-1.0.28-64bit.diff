@@ -1,0 +1,37 @@
+--- pdfFile.hpp.orig	2007-07-26 16:32:50.000000000 +0200
++++ pdfFile.hpp	2007-10-05 22:40:50.000000000 +0200
+@@ -161,7 +161,7 @@
+ 
+       //int findInheritRes(C_pdfFile *org, char *fBuf, int lg, char **pcRes);
+       int makeRes(C_pdfFile *org, char *fBuf, int lg, char **pcRes);
+-      int makeAttrib(C_pdfFile *org, char *fBuf, int lgOrgBuf, char **pcRes, char *add, int lgAdd);
++      int makeAttrib(C_pdfFile *org, char *fBuf, int lgOrgBuf, char **pcRes, int add, int lgAdd);
+ 
+       bool fast; // version rapide, on ne gère pas les options
+       bool closed; //protection plus rien n'est possible aprés l'appel à la fonction close
+--- pdfFile.cpp.orig	2007-08-22 20:44:31.000000000 +0200
++++ pdfFile.cpp	2007-10-05 22:42:39.000000000 +0200
+@@ -934,7 +934,7 @@
+ /* ********************************************** */
+ #pragma warning(disable : 4100)
+ 
+-int C_pdfFile::makeAttrib(C_pdfFile *org, char *buf, int lgOrgBuf, char **pcRes, char *add, int lgAdd) {
++int C_pdfFile::makeAttrib(C_pdfFile *org, char *buf, int lgOrgBuf, char **pcRes, int add, int lgAdd) {
+ char *pc;
+ int lgRes, lgBuf, j, nObj, r;
+ 
+@@ -973,12 +973,12 @@
+    }
+ 
+    if ( (lgAdd != 0) && (add != 0) ) {
+-      switch ( (int)add ) {
++      switch ( add ) {
+       case _Resources:
+ 
+          break;
+       default:
+-         memcpy(pc + lgRes, add + sizeof(int), lgAdd);
++         memcpy(pc + lgRes, (char *)add + sizeof(int), lgAdd);
+          lgRes += lgAdd;
+       }
+    }

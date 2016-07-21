@@ -1,0 +1,14 @@
+--- twelf-orig/doc/guide/twelf.texi	2004-04-01 04:26:38.000000000 +1000
++++ twelf/doc/guide/twelf.texi	2012-12-08 21:14:17.026139996 +1100
+@@ -12,6 +12,11 @@
+ @syncodeindex fn cp
+ @c %**end of header
+ 
++@dircategory Programming
++@direntry
++* Twelf User Guide: (twelf).   The Twelf User's Guide.
++@end direntry
++
+ @titlepage
+ @title Twelf User's Guide
+ @subtitle Version @value{VERSION}

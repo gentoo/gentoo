@@ -1,0 +1,50 @@
+commit af059a7ac7815d1edac67b21e5c1bd6b805d4493
+Author: Hans de Graaff <hans@degraaff.org>
+Date:   Mon Jul 4 20:09:25 2016 +0200
+
+    Support Alpha architecture for processor_count
+    
+    Alpha machines with Linux do have /proc/cpuinfo but its format is
+    different from normal Linux machines, and most specifically the
+    processor entry is missing. Moreover, Alpha machines can be configured
+    to compartimentalize their CPUs into different machines leading to
+    further confusion when reading /proc/cpuinfo.
+    
+    Using /usr/bin/nproc seems to be the most reliable method of determining
+    the number of processors on Alpha. Since reading /proc/cpuinfo is not
+    reliable this patch places the nproc method before trying /proc/cpuinfo.
+    
+    For futher reference see our downstream bug report at
+    https://bugs.gentoo.org/show_bug.cgi?id=587986
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index e84c683..18dd8cc 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,5 @@
++* Support Alpha with `Concurrent::processor_count`
++
+ ## Current Release v1.0.2 (2 May 2016)
+ 
+ * Fix bug with `Concurrent::Map` MRI backend `#inspect` method
+diff --git a/lib/concurrent/utility/processor_counter.rb b/lib/concurrent/utility/processor_counter.rb
+index d18b0bb..e82c0a6 100644
+--- a/lib/concurrent/utility/processor_counter.rb
++++ b/lib/concurrent/utility/processor_counter.rb
+@@ -28,6 +28,7 @@ module Concurrent
+       # processor", which taked into account hyperthreading.
+       #
+       # * AIX: /usr/sbin/pmcycles (AIX 5+), /usr/sbin/lsdev
++      # * Alpha: /usr/bin/nproc (/proc/cpuinfo exists but cannot be used)
+       # * BSD: /sbin/sysctl
+       # * Cygwin: /proc/cpuinfo
+       # * Darwin: /usr/bin/hwprefs, /usr/sbin/sysctl
+@@ -84,6 +85,8 @@ module Concurrent
+             result = WIN32OLE.connect("winmgmts://").ExecQuery(
+               "select NumberOfLogicalProcessors from Win32_Processor")
+             result.to_enum.collect(&:NumberOfLogicalProcessors).reduce(:+)
++          elsif File.executable?("/usr/bin/nproc")
++            IO.popen("/usr/bin/nproc --all").read.to_i
+           elsif File.readable?("/proc/cpuinfo")
+             IO.read("/proc/cpuinfo").scan(/^processor/).size
+           elsif File.executable?("/usr/bin/hwprefs")

@@ -1,0 +1,11 @@
+--- submux-dvd_orig.c	2004-05-27 13:54:20.980889376 +0100
++++ submux-dvd.c	2004-05-27 13:55:06.090031744 +0100
+@@ -1967,7 +1967,7 @@
+ 							fprintf(stdout,\
+ 							"sub_size=%d\n\
+ 	bytes_send=%d\n\
+-	available_space=%d
++	available_space=%d\
+ 	bytes_left=%d\n\
+ 	bytes_free=%d\n\
+ 	header_mode=%d\n\

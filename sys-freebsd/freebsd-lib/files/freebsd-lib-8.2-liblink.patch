@@ -1,0 +1,19 @@
+--- lib/libproc/Makefile.old	2011-07-06 00:58:04.000000000 +0000
++++ lib/libproc/Makefile	2011-07-06 00:58:58.000000000 +0000
+@@ -18,5 +18,6 @@
+ WARNS?=	6
+ 
+ WITHOUT_MAN=	yes
++LDADD=-lelf
+ 
+ .include <bsd.lib.mk>
+--- lib/librtld_db/Makefile.old	2011-07-06 00:58:12.000000000 +0000
++++ lib/librtld_db/Makefile	2011-07-06 00:59:27.000000000 +0000
+@@ -10,5 +10,7 @@
+ INCS=		rtld_db.h
+ 
+ CFLAGS+= -I${.CURDIR}
++LDADD=-lutil -lproc
++LDFLAGS+=-L${.CURDIR}/../libutil -L${.CURDIR}/../libproc
+ 
+ .include <bsd.lib.mk>

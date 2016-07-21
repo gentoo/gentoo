@@ -1,0 +1,11 @@
+--- src/log.c.old	2005-10-02 03:49:34.495603240 +0200
++++ src/log.c	2005-10-02 03:50:18.064979688 +0200
+@@ -183,7 +183,7 @@ void log_flush(void)
+ 
+ 	fp=log_open();
+ 	for(i=0;i<max_log;i++){
+-		fprintf(fp,log_str[i]);
++		fprintf(fp,"%s",log_str[i]);
+ 		free(log_str[i]);
+ 	}
+ 	free(log_str);

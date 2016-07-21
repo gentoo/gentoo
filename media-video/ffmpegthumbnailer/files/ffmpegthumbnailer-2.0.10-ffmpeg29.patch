@@ -1,0 +1,62 @@
+Index: ffmpegthumbnailer-2.0.10/libffmpegthumbnailer/moviedecoder.cpp
+===================================================================
+--- ffmpegthumbnailer-2.0.10.orig/libffmpegthumbnailer/moviedecoder.cpp
++++ ffmpegthumbnailer-2.0.10/libffmpegthumbnailer/moviedecoder.cpp
+@@ -266,7 +266,7 @@ bool MovieDecoder::decodeVideoPacket()
+         return false;
+     }
+ 
+-    avcodec_get_frame_defaults(m_pFrame);
++    av_frame_unref(m_pFrame);
+ 
+     int frameFinished;
+ 
+@@ -312,14 +312,8 @@ bool MovieDecoder::getVideoPacket()
+ 
+ void MovieDecoder::getScaledVideoFrame(int scaledSize, bool maintainAspectRatio, VideoFrame& videoFrame)
+ {
+-    if (m_pFrame->interlaced_frame)
+-    {
+-        avpicture_deinterlace((AVPicture*) m_pFrame, (AVPicture*) m_pFrame, m_pVideoCodecContext->pix_fmt,
+-                              m_pVideoCodecContext->width, m_pVideoCodecContext->height);
+-    }
+-
+     int scaledWidth, scaledHeight;
+-    convertAndScaleFrame(PIX_FMT_RGB24, scaledSize, maintainAspectRatio, scaledWidth, scaledHeight);
++    convertAndScaleFrame(AV_PIX_FMT_RGB24, scaledSize, maintainAspectRatio, scaledWidth, scaledHeight);
+ 
+     videoFrame.width = scaledWidth;
+     videoFrame.height = scaledHeight;
+@@ -330,7 +324,7 @@ void MovieDecoder::getScaledVideoFrame(i
+     memcpy((&(videoFrame.frameData.front())), m_pFrame->data[0], videoFrame.lineSize * videoFrame.height);
+ }
+ 
+-void MovieDecoder::convertAndScaleFrame(PixelFormat format, int scaledSize, bool maintainAspectRatio, int& scaledWidth, int& scaledHeight)
++void MovieDecoder::convertAndScaleFrame(AVPixelFormat format, int scaledSize, bool maintainAspectRatio, int& scaledWidth, int& scaledHeight)
+ {
+     calculateDimensions(scaledSize, maintainAspectRatio, scaledWidth, scaledHeight);
+ 
+@@ -427,7 +421,7 @@ void MovieDecoder::calculateDimensions(i
+     }
+ }
+ 
+-void MovieDecoder::createAVFrame(AVFrame** pAvFrame, uint8_t** pFrameBuffer, int width, int height, PixelFormat format)
++void MovieDecoder::createAVFrame(AVFrame** pAvFrame, uint8_t** pFrameBuffer, int width, int height, AVPixelFormat format)
+ {
+     *pAvFrame = av_frame_alloc();
+ 
+Index: ffmpegthumbnailer-2.0.10/libffmpegthumbnailer/moviedecoder.h
+===================================================================
+--- ffmpegthumbnailer-2.0.10.orig/libffmpegthumbnailer/moviedecoder.h
++++ ffmpegthumbnailer-2.0.10/libffmpegthumbnailer/moviedecoder.h
+@@ -54,8 +54,8 @@ private:
+ 
+     bool decodeVideoPacket();
+     bool getVideoPacket();
+-    void convertAndScaleFrame(PixelFormat format, int scaledSize, bool maintainAspectRatio, int& scaledWidth, int& scaledHeight);
+-    void createAVFrame(AVFrame** pAvFrame, uint8_t** pFrameBuffer, int width, int height, PixelFormat format);
++    void convertAndScaleFrame(AVPixelFormat format, int scaledSize, bool maintainAspectRatio, int& scaledWidth, int& scaledHeight);
++    void createAVFrame(AVFrame** pAvFrame, uint8_t** pFrameBuffer, int width, int height, AVPixelFormat format);
+     void calculateDimensions(int squareSize, bool maintainAspectRatio, int& destWidth, int& destHeight);
+ 
+ private:

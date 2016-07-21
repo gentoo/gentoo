@@ -1,0 +1,27 @@
+From d0d7954713541df4612ab5b54b2808aae9a3d6f0 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 16 Nov 2011 00:41:10 -0500
+Subject: [PATCH] Don't use server response as a format string
+
+It's bad practice even for trusted servers, and makes gcc complain about
+format-security.
+---
+ src/plugins/abrt-retrace-client.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/plugins/abrt-retrace-client.c b/src/plugins/abrt-retrace-client.c
+index 0fb17a3..4c30334 100644
+--- a/src/plugins/abrt-retrace-client.c
++++ b/src/plugins/abrt-retrace-client.c
+@@ -958,7 +958,7 @@ static int create(bool delete_temp_archive,
+     if (response_code == 500 || response_code == 507)
+     {
+         alert_server_error();
+-        error_msg_and_die(http_body);
++        error_msg_and_die("%s", http_body);
+     }
+     else if (response_code == 403)
+     {
+-- 
+1.7.8.rc1
+

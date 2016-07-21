@@ -1,0 +1,24 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Fix -Werror=format-security errors
+--- a/src/er_paramutils.c
++++ b/src/er_paramutils.c
+@@ -731,7 +731,7 @@
+             (void) strcat (tmp, " to ");
+             (void) strcat (tmp, er_strutils_dblstr (cpl_parameter_get_range_max_double (p)));
+             (void) strcat (tmp, ".\n");
+-            cpl_msg_error (er_func, tmp);
++            cpl_msg_error (er_func, "%s", tmp);
+ 
+             cpl_free(tmp);
+             return -1;
+--- a/src/er_plugin.c
++++ b/src/er_plugin.c
+@@ -367,7 +367,7 @@
+             if (wer != 0)
+                {
+                (void) snprintf(estr,(size_t)238,"Expansion of %s failed...",xpath);
+-               cpl_msg_error (er_func, estr);
++               cpl_msg_error (er_func, "%s", estr);
+                goto dealloc;
+                }
+             }

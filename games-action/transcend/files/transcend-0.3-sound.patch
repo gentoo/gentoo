@@ -1,0 +1,89 @@
+Author: Barry deFreese <bdefreese@debian.org>
+Description: Build with portaudio19.
+--- a/Transcend/game/SoundPlayer.h
++++ b/Transcend/game/SoundPlayer.h
+@@ -204,7 +204,7 @@
+         double mMusicLoudness;
+         
+         
+-        PortAudioStream *mAudioStream;
++        PaStream *mAudioStream;
+ 
+         // realtime sounds that should be mixed into the next to-speaker call
+         SimpleVector<PlayableSound *> *mRealtimeSounds;
+--- a/Transcend/game/SoundPlayer.cpp
++++ b/Transcend/game/SoundPlayer.cpp
+@@ -47,9 +47,11 @@
+ 
+ 
+ // callback passed into portaudio
+-static int portaudioCallback( void *inputBuffer, void *outputBuffer,
++int portaudioCallback( const void *inputBuffer, void *outputBuffer,
+                               unsigned long framesPerBuffer,
+-                              PaTimestamp outTime, void *userData ) {
++                              const PaStreamCallbackTimeInfo *outTime,
++                              PaStreamCallbackFlags statusFlags,
++                              void *userData ) {
+ 
+ 
+     SoundPlayer *player = (SoundPlayer *)userData;
+@@ -147,21 +149,13 @@
+ 
+     if( error == paNoError ) {
+     
+-        error = Pa_OpenStream(
++        error = Pa_OpenDefaultStream(
+             &mAudioStream,
+-            paNoDevice,// default input device 
+             0,              // no input 
+-            paFloat32,  // 32 bit floating point input 
+-            NULL,
+-            Pa_GetDefaultOutputDeviceID(),
+             2,          // stereo output 
+             paFloat32,      // 32 bit floating point output 
+-            NULL,
+             mSampleRate,
+             1024,   // frames per buffer
+-            0,    // number of buffers, if zero then use default minimum 
+-            paClipOff, // we won't output out of range samples so
+-                       // don't bother clipping them 
+             portaudioCallback,
+             (void *)this );  // pass self-pointer to callback function
+         
+Description: Link to dynamic portaudio instead of static.
+Author: Miriam Ruiz <miriam@debian.org>
+--- a/Transcend/Makefile.GnuLinuxX86
++++ b/Transcend/Makefile.GnuLinuxX86
+@@ -22,7 +22,7 @@
+ 
+ # pthread library needed for linux
+ # also need portaudio library (which in turn needs pthreads)
+-PLATFORM_LINK_FLAGS = -L/usr/X11R6/lib -lGL -lglut -lGLU -lX11 -lXi -lXext -lXmu ${ROOT_PATH}/Transcend/portaudio/lib/libportaudio.a -lpthread
++PLATFORM_LINK_FLAGS = -L/usr/X11R6/lib -lGL -lglut -lGLU -lX11 -lXi -lXext -lXmu $(shell pkg-config portaudio-2.0 --libs)
+ 
+ 
+ # All platforms but OSX support g++ and need no linker hacks
+--- a/Transcend/game/SoundPlayer.h
++++ b/Transcend/game/SoundPlayer.h
+@@ -46,8 +46,7 @@
+ #include "SoundFilter.h"
+ #include "PlayableSound.h"
+ 
+-#include "Transcend/portaudio/pa_common/portaudio.h"
+-#include "Transcend/portaudio/pablio/pablio.h"
++#include <portaudio.h>
+ 
+ 
+ #include "minorGems/util/SimpleVector.h"
+--- a/Transcend/game/SoundPlayerActive.h
++++ b/Transcend/game/SoundPlayerActive.h
+@@ -16,8 +16,7 @@
+ 
+ #include "SoundSamples.h"
+ 
+-#include "Transcend/portaudio/pa_common/portaudio.h"
+-#include "Transcend/portaudio/pablio/pablio.h"
++#include <portaudio.h>
+ 
+ 
+ #include "minorGems/util/SimpleVector.h"

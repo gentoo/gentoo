@@ -1,0 +1,11 @@
+--- a/hwsetup.c
++++ b/hwsetup.c
+@@ -456,7 +456,7 @@
+      else if(strcasestr(xi.xdesc,"Newport")) strcpy(xi.xmodule,"newport");
+      else if(strcasestr(xi.xdesc,"Siliconmotion")||strcasestr(xi.xdesc,"Silicon Motion")) strcpy(xi.xmodule,"siliconmotion");
+      else if(strcasestr(xi.xdesc,"Chips")) strcpy(xi.xmodule,"chips");
+-     else if(strcasestr(xi.xdesc,"VIA ")) strcpy(xi.xmodule,"via");
++     else if(strcasestr(xi.xdesc,"VIA ")) strcpy(xi.xmodule,"openchrome");
+     }
+    else strcpy(xi.xmodule,xvesa4);
+   }

@@ -1,0 +1,26 @@
+--- cropgui.orig/cropgui_common.py	2016-01-28 12:54:47.424636620 +0300
++++ cropgui/cropgui_common.py	2016-01-28 12:55:15.176635735 +0300
+@@ -13,9 +13,9 @@
+ #    You should have received a copy of the GNU General Public License
+ #    along with this program; if not, write to the Free Software
+ #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-import Image
+-import ImageFilter
+-import ImageDraw
++from PIL import Image
++from PIL import ImageFilter
++from PIL import ImageDraw
+ import subprocess
+ import threading
+ import Queue
+--- cropgui.orig/filechooser.py	2016-01-28 12:55:26.505635374 +0300
++++ cropgui/filechooser.py	2016-01-28 12:55:32.649635178 +0300
+@@ -8,7 +8,7 @@
+ import gobject
+ 
+ import os
+-import Image
++from PIL import Image
+ import cropgui_common
+ 
+ def apply_rotation(rotation, image):

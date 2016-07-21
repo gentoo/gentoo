@@ -1,0 +1,23 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Write correct syskeys instead of patching in install/unix/setup
+--- a/monit/syskeys.datorg
++++ b/monit/syskeys.datorg
+@@ -60,7 +60,8 @@
+ C (31:32) no. of bits for memory addresses (32 or 64)
+ C SECT./END_OF_KEY
+ MID$SYS/C/32/R
+-Vax/VMS            $EDIT      32
++PC/Linux            $vi       
++C Vax/VMS            $EDIT      32
+ C Sun/Solaris         $vi       32
+ C HP/UX               $vi       32
+ C PC/Linux            $vi       32
+@@ -426,7 +427,7 @@
+ C $debugger debug_flags MID$EXE:module options
+ C SECT./END_OF_KEY
+ MID$DEBUG/C*40/3/R
+-$dbx                                    
++$gdb                                    
+ ?                                       
+ ?                                       
+ C

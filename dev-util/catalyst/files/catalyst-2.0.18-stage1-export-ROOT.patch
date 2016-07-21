@@ -1,0 +1,42 @@
+From 5fd2d5edd3c4c1e99687beb9acc130bab162866b Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Sat, 4 Jun 2016 12:43:44 -0400
+Subject: stage1-preclean-chroot.sh: export ROOT=/tmp/stage1root for
+ setup_gcc()
+
+setup_gcc() calls gcc-config to select a particular gcc profile.  At stage1 this
+needs to be done in the /tmp/stage1root chroot.  gcc-config looks for ROOT to
+choose the root directory in which to make the selection.  If we don't export
+ROOT, then setup_gcc is ineffective.
+
+X-Gentoo-Bug: 584234
+X-Gentoo-Bug-Url: https://bugs.gentoo.org/show_bug.cgi?id=584234
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+---
+ targets/stage1/stage1-preclean-chroot.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/targets/stage1/stage1-preclean-chroot.sh b/targets/stage1/stage1-preclean-chroot.sh
+index a80fc92..dc67521 100755
+--- a/targets/stage1/stage1-preclean-chroot.sh
++++ b/targets/stage1/stage1-preclean-chroot.sh
+@@ -1,5 +1,6 @@
+ #!/bin/bash
+ 
++export ROOT=/tmp/stage1root
+ export RUN_DEFAULT_FUNCS="no"
+ 
+ source /tmp/chroot-functions.sh
+@@ -8,8 +9,6 @@ update_env_settings
+ show_debug
+ 
+ # Now, some finishing touches to initialize gcc-config....
+-unset ROOT
+-
+ setup_gcc
+ setup_binutils
+ 
+-- 
+cgit v0.12
+

@@ -1,0 +1,31 @@
+From 865a813078c1b447713aeb1f1bb860c441a88365 Mon Sep 17 00:00:00 2001
+From: Jon Salz <jsalz@chromium.org>
+Date: Fri, 20 Apr 2012 02:41:50 +0800
+Subject: [PATCH] Fix importing of nested modules.
+
+https://github.com/joshmarshall/jsonrpclib/issues/15
+---
+ jsonrpclib/jsonclass.py |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/jsonrpclib/jsonclass.py b/jsonrpclib/jsonclass.py
+index 298c3da..1d86d5f 100644
+--- a/jsonrpclib/jsonclass.py
++++ b/jsonrpclib/jsonclass.py
+@@ -129,6 +129,13 @@ def load(obj):
+         except ImportError:
+             raise TranslationError('Could not import %s from module %s.' %
+                                    (json_class_name, json_module_tree))
++
++        # The returned class is the top-level module, not the one we really
++        # want.  (E.g., if we import a.b.c, we now have a.)  Walk through other
++        # path components to get to b and c.
++        for i in json_module_parts[1:]:
++            temp_module = getattr(temp_module, i)
++
+         json_class = getattr(temp_module, json_class_name)
+     # Creating the object...
+     new_obj = None
+-- 
+1.7.3.4
+

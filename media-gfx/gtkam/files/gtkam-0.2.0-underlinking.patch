@@ -1,0 +1,86 @@
+diff -ur gtkam-0.2.0/configure.ac gtkam-0.2.0.new/configure.ac
+--- gtkam-0.2.0/configure.ac	2012-07-10 09:50:52.000000000 +0200
++++ gtkam-0.2.0.new/configure.ac	2013-12-28 17:10:16.899893905 +0100
+@@ -32,7 +32,6 @@
+ dnl Some programs we need
+ dnl ---------------------------------------------------------------------------
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL
+@@ -86,9 +85,7 @@
+ )
+ LIBS="$save_LIBS"
+ 
+-PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+-AC_SUBST([GTK_CFLAGS])
+-AC_SUBST([GTK_LIBS])
++GP_CHECK_LIBRARY([GTK2], [gtk+-2.0])
+ 
+ 
+ dnl ---------------------------------------------------------------------------
+Sólo en gtkam-0.2.0.new/: configure.ac.orig
+diff -ur gtkam-0.2.0/src/Makefile.am gtkam-0.2.0.new/src/Makefile.am
+--- gtkam-0.2.0/src/Makefile.am	2009-10-10 11:10:26.000000000 +0200
++++ gtkam-0.2.0.new/src/Makefile.am	2013-12-28 17:10:13.118834763 +0100
+@@ -6,7 +6,7 @@
+ 	$(LIBEXIF_GTK_CFLAGS)		\
+ 	$(LIBGPHOTO2_CFLAGS)		\
+ 	$(GNOME_CFLAGS) 		\
+-	$(GTK_CFLAGS)			\
++	$(GTK2_CFLAGS)			\
+ 	$(BONOBO_CFLAGS)		\
+ 	$(GTKAM_GIMP_CFLAGS)
+ 
+@@ -46,14 +46,14 @@
+ 	gtkam-exif.c gtkam-exif.h 		\
+ 	gtkam-main.c gtkam-main.h 		\
+ 	i18n.h main.c
+-gtkam_LDADD = \
+-	libgtkam.a	\
+-	$(LIBEXIF_LIBS) \
+-	$(LIBEXIF_GTK_LIBS) \
++gtkam_LDADD = 			\
++	libgtkam.a		\
++	$(LIBEXIF_LIBS) 	\
++	$(LIBEXIF_GTK_LIBS) 	\
+ 	$(LIBGPHOTO2_LIBS)	\
+-	$(GTKAM_LIBS) 	\
+-	$(BONOBO_LIBS)	\
+-	$(GNOME_LIBS)	\
++	$(GTK2_LIBS) 		\
++	$(BONOBO_LIBS)		\
++	$(GNOME_LIBS)		\
+ 	$(INTLLIBS)
+ 
+ if HAVE_GIMP
+@@ -69,6 +69,7 @@
+ 	$(LIBEXIF_LIBS)		\
+ 	$(LIBEXIF_GTK_LIBS) 	\
+ 	$(LIBGPHOTO2_LIBS)	\
++	$(GTK2_LIBS) 		\
+ 	$(BONOBO_LIBS)		\
+ 	$(GNOME_LIBS)		\
+ 	$(INTLLIBS)
+diff -ur gtkam-0.2.0/test/Makefile.am gtkam-0.2.0.new/test/Makefile.am
+--- gtkam-0.2.0/test/Makefile.am	2009-10-10 11:10:25.000000000 +0200
++++ gtkam-0.2.0.new/test/Makefile.am	2013-12-28 17:10:13.119834775 +0100
+@@ -4,7 +4,7 @@
+ 	$(LIBEXIF_GTK_CFLAGS)		\
+ 	$(LIBGPHOTO2_CFLAGS)		\
+ 	$(GNOME_CFLAGS) 		\
+-	$(GTK_CFLAGS)			\
++	$(GTK2_CFLAGS)			\
+ 	$(BONOBO_CFLAGS)		\
+ 	$(GTKAM_GIMP_CFLAGS)
+ 
+@@ -13,7 +13,7 @@
+ 	$(LIBEXIF_LIBS)			\
+ 	$(LIBEXIF_GTK_LIBS)		\
+ 	$(LIBGPHOTO2_LIBS)	\
+-	$(GTK_LIBS)			\
++	$(GTK2_LIBS)			\
+ 	$(BONOBO_LIBS)			\
+ 	$(INTLLIBS)
+ 

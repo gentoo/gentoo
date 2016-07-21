@@ -1,0 +1,15 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -16,10 +16,10 @@ INSTALLDIR=$(bindir)
+ all:	$(EXEC)
+ 
+ netresolv:	netresolv.o netresolv.h
+-	$(CC) -o netresolv $(XCFLAGS) netresolv.o 
++	$(CC) -o netresolv $(XCFLAGS) $(XLDFLAGS) netresolv.o 
+ 
+ netwatch:	$(OBJECTS) $(DEFS)
+-	$(CC) -DVERSION='$(CVERSION)' -DRELEASE='$(CRELEASE)' -o netwatch $(XCFLAGS) $(OBJECTS) $(XLIBS)
++	$(CC) -DVERSION='$(CVERSION)' -DRELEASE='$(CRELEASE)' -o netwatch $(XCFLAGS) $(XLDFLAGS) $(OBJECTS) $(XLIBS)
+ 
+ install:	$(EXEC)
+ 	install --owner=root --group=root --mode=0755 -d $(INSTALLDIR)

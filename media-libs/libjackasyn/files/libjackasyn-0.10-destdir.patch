@@ -1,0 +1,32 @@
+diff -Naur libjackasyn-0.10.orig/Makefile.in libjackasyn-0.10/Makefile.in
+--- libjackasyn-0.10.orig/Makefile.in	2003-11-14 11:45:15.000000000 -0800
++++ libjackasyn-0.10/Makefile.in	2004-10-07 00:02:31.915756779 -0700
+@@ -13,7 +13,7 @@
+ 
+ 
+ prefix = @prefix@
+-
++libdir = @libdir@
+ 
+ all: static shared
+ 
+@@ -25,13 +25,12 @@
+ 	gcc -shared -Wl,-soname=libjackasyn.so.0 -o libjackasyn.so.$(VERSION) *.o $(LIBS)
+ 
+ install:
+-	-rm $(prefix)/lib/libjackasyn.so*
+-	install -m 644 libjackasyn.a $(prefix)/lib
+-	install -m 644 libjackasyn.so.$(VERSION) $(prefix)/lib
+-	install -m 644 libjackoss.h $(prefix)/include
+-	ln -s libjackasyn.so.$(VERSION) $(prefix)/lib/libjackasyn.so.0
+-	ln -s libjackasyn.so.$(VERSION) $(prefix)/lib/libjackasyn.so
+-	install -m 755 jacklaunch $(prefix)/bin
++	install -m 644 libjackasyn.a $(DESTDIR)$(libdir)
++	install -m 644 libjackasyn.so.$(VERSION) $(DESTDIR)$(libdir)
++	install -m 644 libjackoss.h $(DESTDIR)$(prefix)/include
++	ln -s libjackasyn.so.$(VERSION) $(DESTDIR)$(libdir)/libjackasyn.so.0
++	ln -s libjackasyn.so.$(VERSION) $(DESTDIR)$(libdir)/libjackasyn.so
++	install -m 755 jacklaunch $(DESTDIR)$(prefix)/bin
+ 
+ test:
+ 	gcc -o test test.c libjackasyn.a -ljack -ldl -lm

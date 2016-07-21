@@ -1,0 +1,14 @@
+diff -uNr mongo-c-driver-0.8.1.ORIG/src/mongo.h mongo-c-driver-0.8.1/src/mongo.h
+--- mongo-c-driver-0.8.1.ORIG/src/mongo.h	2014-03-27 17:00:42.880465606 +0000
++++ mongo-c-driver-0.8.1/src/mongo.h	2014-03-27 17:01:05.131465940 +0000
+@@ -33,8 +33,8 @@
+ #endif
+ 
+ #define MONGO_MAJOR 0
+-#define MONGO_MINOR 7
+-#define MONGO_PATCH 0
++#define MONGO_MINOR 8
++#define MONGO_PATCH 1
+ 
+ #define MONGO_OK 0
+ #define MONGO_ERROR -1

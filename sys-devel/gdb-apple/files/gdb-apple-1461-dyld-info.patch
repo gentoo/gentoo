@@ -1,0 +1,22 @@
+If dyld-info is not available, don't try to compile unreachable code
+using it either.
+
+--- gdb-1461.2/src/gdb/macosx/macosx-nat-dyld.c
++++ gdb-1461.2/src/gdb/macosx/macosx-nat-dyld.c
+@@ -731,7 +731,7 @@
+ {
+ #if !defined (TASK_DYLD_INFO) || !defined (NM_NEXTSTEP)
+   return 0;
+-#endif
++#else
+ 
+   if (target_is_remote () || value == NULL)
+     return 0;
+@@ -791,6 +791,7 @@
+     }
+ #endif /* NM_NEXTSTEP */
+   return 0;
++#endif
+ }
+ 
+ /* Searches the target address space for dyld itself, returning it in

@@ -1,0 +1,40 @@
+--- libnih-1.0.1/configure.ac
++++ libnih-1.0.1/configure.ac
+@@ -23,12 +23,21 @@
+ PKG_PROG_PKG_CONFIG([0.22])
+ 
+ # Checks for libraries.
+-PKG_CHECK_MODULES([DBUS], [dbus-1 >= 1.2.16])
+-AC_CHECK_LIB([expat], [XML_ParserCreate],
++AC_ARG_WITH([dbus],
++  [AS_HELP_STRING([--without-dbus],
++    [disable support for dbus])],
++  [],
++  [with_dbus=yes])
++
++AS_IF([test "x$with_dbus" != xno],[
++	PKG_CHECK_MODULES([DBUS], [dbus-1 >= 1.2.16])
++	AC_CHECK_LIB([expat], [XML_ParserCreate],
+ 	     [AC_CHECK_LIB([expat], [XML_StopParser],
+ 	     		   [AC_SUBST([EXPAT_LIBS], [-lexpat])],
+ 			   [AC_MSG_ERROR([expat >= 2.0.0 required])])],
+-	     [AC_MSG_ERROR([expat library not found])])
++	     [AC_MSG_ERROR([expat library not found])])])
++
++AM_CONDITIONAL([DBUS_SUPPORT], [test "x$with_dbus" != xno])
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([valgrind/valgrind.h])
+--- libnih-1.0.1.orig/Makefile.am
++++ libnih-1.0.1/Makefile.am
+@@ -1,6 +1,9 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = m4 intl nih nih-dbus nih-dbus-tool po
++SUBDIRS = m4 intl nih po
++if DBUS_SUPPORT
++SUBDIRS += nih-dbus nih-dbus-tool
++endif
+ 
+ EXTRA_DIST = HACKING
+ 

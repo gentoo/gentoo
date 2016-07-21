@@ -1,0 +1,17 @@
+Support any/all compression formats for data.tar
+--- deb2targz
++++ deb2targz
+@@ -47,10 +47,11 @@
+ 	($header, $data) = ($data =~ /(.*?)\n(.*)/s);
+ 	my($name, $num1, $num2, $num3, $num4, $len) = split /\s+/, $header;
+ 	#print "header='$header'\n\tname='$name', len=$len\n";
+-	if ($name eq "data.tar.gz") {
++	if ($name =~ /^data\.tar(.*)$/) {
+ 	    # Found it
++	    my $ext = $1;
+ 	    $data = substr($data, 0, $len);
+-	    $filename =~ s/\.deb$/.tar.gz/;
++	    $filename =~ s/\.deb$/.tar$ext/;
+ 	    my $fh = new IO::File(">$filename")
+ 		or die "can't write '$filename': $!";
+ 	    print $fh $data;

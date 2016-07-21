@@ -1,0 +1,198 @@
+https://github.com/geopy/geopy/commit/6c9714c480d62dcd04d514dcad10785d5a0816c2
+diff --git a/test/geocoders/arcgis.py b/test/geocoders/arcgis.py
+index fdca58c..b154a60 100644
+--- a/test/geocoders/arcgis.py
++++ b/test/geocoders/arcgis.py
+@@ -7,6 +7,10 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('ARCGIS_USERNAME')),
++    "No ARCGIS_USERNAME env variable set"
++)
+ class ArcGISTestCase(GeocoderTestBase):
+ 
+     @classmethod
+diff --git a/test/geocoders/baidu.py b/test/geocoders/baidu.py
+index 8ba249c..827ab12 100644
+--- a/test/geocoders/baidu.py
++++ b/test/geocoders/baidu.py
+@@ -6,8 +6,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['BAIDU_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('BAIDU_KEY')),
+     "No BAIDU_KEY env variable set"
+ )
+ class BaiduTestCase(GeocoderTestBase):
+diff --git a/test/geocoders/bing.py b/test/geocoders/bing.py
+index 17b1aae..d23e99b 100644
+--- a/test/geocoders/bing.py
++++ b/test/geocoders/bing.py
+@@ -6,8 +6,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['BING_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('BING_KEY')),
+     "No BING_KEY env variable set"
+ )
+ class BingTestCase(GeocoderTestBase):
+diff --git a/test/geocoders/dotus.py b/test/geocoders/dotus.py
+index e777278..d2bbfa2 100644
+--- a/test/geocoders/dotus.py
++++ b/test/geocoders/dotus.py
+@@ -5,9 +5,9 @@
+ from geopy.geocoders import GeocoderDotUS
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['GEOCODERDOTUS_USERNAME'] is not None and \
+-    env['GEOCODERDOTUS_PASSWORD'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('GEOCODERDOTUS_USERNAME')) and \
++    bool(env.get('GEOCODERDOTUS_PASSWORD')),
+     "No GEOCODERDOTUS_USERNAME and GEOCODERDOTUS_PASSWORD env variables set"
+ )
+ class GeocoderDotUSTestCase(GeocoderTestBase): # pylint: disable=R0904,C0111
+diff --git a/test/geocoders/geocodefarm.py b/test/geocoders/geocodefarm.py
+index 151bac6..ffa28a4 100644
+--- a/test/geocoders/geocodefarm.py
++++ b/test/geocoders/geocodefarm.py
+@@ -8,8 +8,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['GEOCODEFARM_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('GEOCODEFARM_KEY')),
+     "GEOCODEFARM_KEY env variable not set"
+ )
+ class GeocodeFarmTestCase(GeocoderTestBase): # pylint: disable=R0904,C0111
+diff --git a/test/geocoders/geonames.py b/test/geocoders/geonames.py
+index 7ff6f11..3dcc3b4 100644
+--- a/test/geocoders/geonames.py
++++ b/test/geocoders/geonames.py
+@@ -4,21 +4,23 @@
+ from geopy.geocoders import GeoNames
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['GEONAMES_USERNAME'] is not None,
++
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('GEONAMES_USERNAME')),
+     "No GEONAMES_USERNAME env variable set"
+ )
+ class GeoNamesTestCase(GeocoderTestBase):
+ 
+     @classmethod
+     def setUpClass(cls):
+-        cls.geocoder = GeoNames(username=env['GEONAMES_USERNAME'])
+         cls.delta = 0.04
+ 
+     def test_unicode_name(self):
+         """
+         GeoNames.geocode unicode
+         """
++        # work around ConfigurationError raised in GeoNames init
++        self.geocoder = GeoNames(username=env['GEONAMES_USERNAME'])
+         self.geocode_run(
+             {"query": u"\u6545\u5bab"},
+             {"latitude": 30.90097, "longitude": 118.49436},
+diff --git a/test/geocoders/mapquest.py b/test/geocoders/mapquest.py
+index eb12781..03ba4d8 100644
+--- a/test/geocoders/mapquest.py
++++ b/test/geocoders/mapquest.py
+@@ -5,8 +5,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['MAPQUEST_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('MAPQUEST_KEY')),
+     "No MAPQUEST_KEY env variable set"
+ )
+ class MapQuestTestCase(GeocoderTestBase):
+diff --git a/test/geocoders/opencage.py b/test/geocoders/opencage.py
+index c00114f..eb65000 100644
+--- a/test/geocoders/opencage.py
++++ b/test/geocoders/opencage.py
+@@ -5,8 +5,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['OPENCAGE_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('OPENCAGE_KEY')),
+     "No OPENCAGE_KEY env variables set"
+ )
+ class OpenCageTestCase(GeocoderTestBase):
+diff --git a/test/geocoders/placefinder.py b/test/geocoders/placefinder.py
+index 3bf0a66..ed3304f 100644
+--- a/test/geocoders/placefinder.py
++++ b/test/geocoders/placefinder.py
+@@ -6,8 +6,8 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['YAHOO_KEY'] is not None and env['YAHOO_SECRET'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('YAHOO_KEY')) and bool(env.get('YAHOO_SECRET')),
+     "YAHOO_KEY and YAHOO_SECRET env variables not set"
+ )
+ class YahooPlaceFinderTestCase(GeocoderTestBase): # pylint: disable=R0904,C0111
+diff --git a/test/geocoders/smartystreets.py b/test/geocoders/smartystreets.py
+index 83f3b34..ed9e7f2 100644
+--- a/test/geocoders/smartystreets.py
++++ b/test/geocoders/smartystreets.py
+@@ -5,17 +5,19 @@
+ from test.geocoders.util import GeocoderTestBase, env
+ 
+ 
+-@unittest.skipUnless( # pylint: disable=R0904,C0111
+-    env['LIVESTREETS_AUTH_KEY'] is not None,
++@unittest.skipUnless(  # pylint: disable=R0904,C0111
++    bool(env.get('LIVESTREETS_AUTH_KEY')),
+     "No LIVESTREETS_AUTH_KEY env variable set"
+ )
+ class LiveAddressTestCase(GeocoderTestBase):
+-    def setUp(self):
+-        self.geocoder = LiveAddress(
++
++    @classmethod
++    def setUpClass(cls):
++        cls.geocoder = LiveAddress(
+             auth_token=env['LIVESTREETS_AUTH_KEY'],
+             scheme='http'
+         )
+-        self.delta = 0.04
++        cls.delta = 0.04
+ 
+     def test_geocode(self):
+         """
+diff --git a/test/geocoders/util.py b/test/geocoders/util.py
+index 4a130f1..7de103d 100644
+--- a/test/geocoders/util.py
++++ b/test/geocoders/util.py
+@@ -12,6 +12,9 @@
+         env.update(json.loads(fp.read()))
+ except IOError:
+     keys = (
++        'ARCGIS_USERNAME',
++        'ARCGIS_PASSWORD',
++        'ARCGIS_REFERER',
+         'YAHOO_KEY',
+         'YAHOO_SECRET',
+         'BING_KEY',
+

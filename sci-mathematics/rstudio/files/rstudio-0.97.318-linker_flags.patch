@@ -1,0 +1,18 @@
+Some gcc hardening options were added, however since we add
+"-Wl,--as-needed" we end up with "-Wl,--as-needed;-Wl,-z,relro" which
+leads to linker errors about unknown options, if we make it so the
+as-needed option is the last option on the line, everything is fine.
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 0589ca0..fe5bd5f 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -57,7 +57,7 @@ if(UNIX)
+       add_definitions(-D_FORTIFY_SOURCE=2)
+       add_definitions(-fstack-protector --param ssp-buffer-size=4)
+       add_definitions(-pie -fPIE)
+-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-z,relro,-z,now")
++      set(CMAKE_EXE_LINKER_FLAGS "-Wl,-z,relro,-z,now ${CMAKE_EXE_LINKER_FLAGS}")
+    endif()
+ 
+ # Win32 specific global directives

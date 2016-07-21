@@ -1,0 +1,20 @@
+Fix a bug involving CheckFriendReliability (see bug #482439)
+
+Index: cfengine2-2.2.9/src/instrument.c
+===================================================================
+--- cfengine2-2.2.9.orig/src/instrument.c	2009-03-06 21:25:59.000000000 +0000
++++ cfengine2-2.2.9/src/instrument.c	2009-03-06 21:26:31.000000000 +0000
+@@ -716,11 +716,11 @@
+       key.data = timekey;
+       key.size = strlen(timekey)+1;
+ 
+-      if ((errno = dbp->get(dbp,NULL,&key,&value,0)) != 0)
++      if ((errno = dbpent->get(dbpent,NULL,&key,&value,0)) != 0)
+          {
+          if (errno != DB_NOTFOUND)
+             {
+-            dbp->err(dbp,errno,NULL);
++            dbpent->err(dbpent,errno,NULL);
+             exit(1);
+             }
+          }

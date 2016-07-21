@@ -1,0 +1,74 @@
+diff -ur duke3d/source/buildengine/Makefile duke3d-patched/source/buildengine/Makefile
+--- duke3d/source/buildengine/Makefile	2004-05-15 05:15:05.000000000 +0200
++++ duke3d-patched/source/buildengine/Makefile	2008-02-27 23:10:46.000000000 +0100
+@@ -99,11 +99,11 @@
+   ifeq ($(strip $(SDL_LIB_DIR)),please_set_me_cygwin_users)
+     $(error Cygwin users need to set the SDL_LIB_DIR envr var.)
+   else
+-    SDL_LDFLAGS := -L$(SDL_LIB_DIR) -lSDL
++    SDL_LIBS := -L$(SDL_LIB_DIR) -lSDL
+   endif
+ else
+   SDL_CFLAGS := $(shell sdl-config --cflags)
+-  SDL_LDFLAGS := $(shell sdl-config --libs)
++  SDL_LIBS := $(shell sdl-config --libs)
+ endif
+ 
+ CC = gcc
+@@ -202,7 +202,7 @@
+ ASMFLAGS = -f $(ASMOBJFMT) $(ASMDEFS)
+ LINKER = gcc
+ CFLAGS += $(USE_ASM) -funsigned-char  -DPLATFORM_UNIX -Wall $(SDL_CFLAGS) -fno-omit-frame-pointer
+-LDFLAGS += $(SDL_LDFLAGS)
++LDLIBS += $(SDL_LIBS)
+ 
+ # Rules for turning source files into .o files
+ %.o: %.c
+@@ -236,17 +236,17 @@
+ 
+ ifeq ($(strip $(usedlls)),true)
+ $(ENGINEDLL) : $(ENGINEOBJS)
+-	$(LINKER) -shared -o $(ENGINEDLL) $(LDFLAGS) $(ENGINEOBJS)
++	$(LINKER) -shared -o $(ENGINEDLL) $(LDFLAGS) $(ENGINEOBJS) $(LDLIBS)
+ 
+ $(NETDLL) : $(NETOBJS)
+-	$(LINKER) -shared -o $(NETDLL) $(LDFLAGS) $(NETOBJS)
++	$(LINKER) -shared -o $(NETDLL) $(LDFLAGS) $(NETOBJS) $(LDLIBS)
+ endif
+ 
+ $(GAMEEXE) : $(ENGINEDLL) $(NETDLL) $(GAMEOBJS) $(PERLOBJS)
+-	$(LINKER) -o $(GAMEEXE) $(LDFLAGS) $(LDPERL) $(PERLOBJS) $(GAMEOBJS) $(ENGINEDLL) $(NETDLL)
++	$(LINKER) -o $(GAMEEXE) $(LDFLAGS) $(PERLOBJS) $(GAMEOBJS) $(LDPERL) $(LDLIBS) $(ENGINEDLL) $(NETDLL)
+ 
+ $(BUILDEXE) : $(ENGINEDLL) $(BUILDOBJS)
+-	$(LINKER) -o $(BUILDEXE) $(LDFLAGS) $(BUILDOBJS) $(ENGINEDLL)
++	$(LINKER) -o $(BUILDEXE) $(LDFLAGS) $(BUILDOBJS) $(LDLIBS) $(ENGINEDLL)
+ 
+ listclean:
+ 	@echo "A 'make clean' would remove" $(CLEANUP)
+diff -ur duke3d/source/Makefile duke3d-patched/source/Makefile
+--- duke3d/source/Makefile	2004-05-15 05:14:16.000000000 +0200
++++ duke3d-patched/source/Makefile	2008-02-27 23:09:57.000000000 +0100
+@@ -45,11 +45,11 @@
+   ifeq ($(strip $(SDL_LIB_DIR)),please_set_me_cygwin_users)
+     $(error Cygwin users need to set the SDL_LIB_DIR envr var.)
+   else
+-    SDL_LDFLAGS := -L$(SDL_LIB_DIR) -lSDL
++    SDL_LIBS := -L$(SDL_LIB_DIR) -lSDL
+   endif
+ else
+   SDL_CFLAGS := $(shell sdl-config --cflags)
+-  SDL_LDFLAGS := $(shell sdl-config --libs) -L.
++  SDL_LIBS := $(shell sdl-config --libs) -L.
+ endif
+ 
+ ifeq ($(strip $(macosx)),true)
+@@ -104,7 +104,7 @@
+ #CC = icc
+ #CFLAGS = -g $(SDL_CFLAGS) -DUSE_SDL=1 -DPLATFORM_UNIX=1 -DUSE_I386_ASM=1 $(EXTRACFLAGS) -O2
+ 
+-LDLIBS = $(SDL_LDFLAGS) -lSDL -lSDL_mixer $(EXTRALDFLAGS)
++LDLIBS = $(SDL_LIBS) -lSDL -lSDL_mixer $(EXTRALDFLAGS)
+ 
+ # !!! FIXME: Do we even need this? It doesn't fly on MacOS X.  --ryan.
+ #LDLIBS += -Wl,-E

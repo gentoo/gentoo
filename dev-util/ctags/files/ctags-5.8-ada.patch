@@ -1,0 +1,28 @@
+--- parsers-orig.h	2009-11-16 23:39:49.747328066 +0200
++++ parsers.h	2009-11-16 23:40:26.541581805 +0200
+@@ -16,6 +16,7 @@
+ 
+ /* Add the name of any new parser definition function here */
+ #define PARSER_LIST \
++	AdaParser, \
+ 	AntParser, \
+ 	AsmParser, \
+ 	AspParser, \
+--- source-orig.mak	2009-11-16 23:41:17.184586699 +0200
++++ source.mak	2009-11-16 23:41:48.358331136 +0200
+@@ -8,6 +8,7 @@
+ 	strlist.h vstring.h
+ 
+ SOURCES = \
++	ada.c \
+ 	args.c \
+ 	ant.c \
+ 	asm.c \
+@@ -70,6 +71,7 @@
+ REGEX_HEADERS = gnu_regex/regex.h
+ 
+ OBJECTS = \
++	ada.$(OBJEXT) \
+ 	args.$(OBJEXT) \
+ 	ant.$(OBJEXT) \
+ 	asm.$(OBJEXT) \

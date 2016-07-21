@@ -1,0 +1,91 @@
+diff --git a/Makefile b/Makefile
+index 9ebf4c8..fe5ed73 100644
+--- a/Makefile
++++ b/Makefile
+@@ -212,7 +212,7 @@ warn-auto.sh choose.sh conf-home
+ 	chmod 755 choose
+ 
+ clientloc.o: \
+-compile clientloc.c open.h byte.h cdb.h ip6.h
++compile clientloc.c open.h byte.h cdb.h uint32.h ip6.h
+ 	./compile clientloc.c
+ 
+ compile: \
+@@ -336,7 +336,7 @@ taia.h tai.h uint64.h taia.h
+ 
+ dns_transmit.o: \
+ compile dns_transmit.c socket.h uint16.h alloc.h error.h byte.h \
+-uint16.h dns.h stralloc.h gen_alloc.h iopause.h taia.h tai.h uint64.h \
++uint32.h dns.h stralloc.h gen_alloc.h iopause.h taia.h tai.h uint64.h \
+ taia.h
+ 	./compile dns_transmit.c
+ 
+@@ -859,15 +859,15 @@ trylsock.c compile load
+ 	rm -f trylsock.o trylsock
+ 
+ socket_accept.o: \
+-compile socket_accept.c byte.h socket.h uint16.h
++compile socket_accept.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_accept.c
+ 
+ socket_accept6.o: \
+-compile socket_accept6.c byte.h socket.h uint16.h
++compile socket_accept6.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_accept6.c
+ 
+ socket_bind.o: \
+-compile socket_bind.c byte.h socket.h uint16.h
++compile socket_bind.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_bind.c
+ 
+ socket_bind6.o: \
+@@ -875,7 +875,7 @@ compile socket_bind6.c sockaddr_in6.h haveip6.h byte.h socket.h uint16.h uint32.
+ 	./compile socket_bind6.c
+ 
+ socket_conn.o: \
+-compile socket_conn.c byte.h socket.h uint16.h
++compile socket_conn.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_conn.c
+ 
+ socket_connect6.o: \
+@@ -883,11 +883,11 @@ compile socket_connect6.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_connect6.c
+ 
+ socket_listen.o: \
+-compile socket_listen.c socket.h uint16.h
++compile socket_listen.c socket.h uint16.h uint32.h
+ 	./compile socket_listen.c
+ 
+ socket_recv.o: \
+-compile socket_recv.c byte.h socket.h uint16.h
++compile socket_recv.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_recv.c
+ 
+ socket_recv6.o: \
+@@ -895,7 +895,7 @@ compile socket_recv6.c sockaddr_in6.h haveip6.h byte.h socket.h uint16.h uint32.
+ 	./compile socket_recv6.c
+ 
+ socket_send.o: \
+-compile socket_send.c byte.h socket.h uint16.h
++compile socket_send.c byte.h socket.h uint16.h uint32.h
+ 	./compile socket_send.c
+ 
+ socket_send6.o: \
+@@ -903,7 +903,7 @@ compile socket_send6.c byte.h socket.h uint16.h uint32.h ip6.h haveip6.h error.h
+ 	./compile socket_send6.c
+ 
+ socket_tcp.o: \
+-compile socket_tcp.c ndelay.h socket.h uint16.h
++compile socket_tcp.c ndelay.h socket.h uint16.h uint32.h
+ 	./compile socket_tcp.c
+ 
+ socket_tcp6.o: \
+@@ -911,7 +911,7 @@ compile socket_tcp6.c ndelay.h socket.h uint16.h uint32.h haveip6.h
+ 	./compile socket_tcp6.c
+ 
+ socket_udp.o: \
+-compile socket_udp.c ndelay.h socket.h uint16.h
++compile socket_udp.c ndelay.h socket.h uint16.h uint32.h
+ 	./compile socket_udp.c
+ 
+ socket_udp6.o: \

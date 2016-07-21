@@ -1,0 +1,20 @@
+--- rescue/rescue/Makefile.old	2011-07-06 01:35:13.000000000 +0000
++++ rescue/rescue/Makefile	2011-07-06 01:35:54.000000000 +0000
+@@ -143,7 +143,7 @@
+ .if ${MK_ZFS} != "no"
+ CRUNCH_LIBS+= -lzfs -lnvpair -luutil -lavl
+ .endif
+-CRUNCH_LIBS+= -lgeom -lbsdxml -ljail -lkiconv -lmd -lreadline -lsbuf -lufs -lz
++CRUNCH_LIBS+= -lgeom -lbsdxml -ljail -lkiconv -lmd -lreadline -lsbuf -lufs
+ 
+ .if ${MACHINE_ARCH} == "i386"
+ CRUNCH_PROGS_sbin+= bsdlabel sconfig fdisk
+@@ -234,7 +234,7 @@
+ CRUNCH_PROGS_usr.sbin+= chown
+ CRUNCH_ALIAS_chown= chgrp
+ ##################################################################
+-CRUNCH_LIBS+= -lm
++CRUNCH_LIBS+= -lz -lm
+ 
+ ##################################################################
+ #  The following is pretty nearly a generic crunchgen-handling makefile

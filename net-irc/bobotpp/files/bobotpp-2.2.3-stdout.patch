@@ -1,0 +1,13 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Reduce amount of noise printed to stdout.
+
+--- a/source/Utils.C
++++ b/source/Utils.C
+@@ -97,7 +97,6 @@
+       if (host == "") host = "*";
+     }
+ 
+-  std::cout << nick + "!" + user + "@" + host << std::endl;
+   
+   return nick + "!" + user + "@" + host;
+ }

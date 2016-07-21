@@ -1,0 +1,200 @@
+diff -urN xscavenger-1.4.4.orig/src/Imakefile xscavenger-1.4.4/src/Imakefile
+--- xscavenger-1.4.4.orig/src/Imakefile
++++ xscavenger-1.4.4/src/Imakefile
+@@ -1,20 +1,36 @@
+ # set this to the path where data files should be stored.  LIBDIR
+ # is automatically defined by imake, usually to /usr/X11R6/lib/X11, so
+ # this should be a good default.
+-LIBNAME = $(LIBDIR)/scavenger
++LIBNAME = GENTOO_DATADIR/scavenger
+ 
+ SRCS = anim.c edit.c scav.c x.c sound.c
+ OBJS = $(SRCS:.c=.o)
+ 
++# the "subst" hack below is because imake uses the C preprocessor, which
++# will interpret an unquoted "/*" as a comment beginning.
++#LIB_DATA = $(subst S,/,..SdataS*)
+ LIB_DATA = \
+-	../data/badguy.lbm   ../data/brownblue.lbm ../data/death.raw \
+-	../data/dig.raw      ../data/fall.raw      ../data/levels.scl \
+-        ../data/microman.lbm ../data/pop.raw       ../data/redbrick.lbm \
+-	../data/reddevil.lbm ../data/regularguy.lbm ../data/spiralthing.lbm \
++	../data/badguy.lbm	\
++	../data/brownblue.lbm	\
++	../data/death.raw	\
++	../data/dig.raw		\
++	../data/fall.raw	\
++	../data/flashspiral.lbm	\
++	../data/gems.lbm	\
++	../data/jungle.lbm	\
++	../data/levels.scl	\
++	../data/microman.lbm	\
++	../data/pop.raw		\
++	../data/redbrick.lbm	\
++	../data/reddevil.lbm	\
++	../data/regularguy.lbm	\
++	../data/spiralthing.lbm	\
+ 	../data/victory.raw
+ 
+ LOCAL_LIBRARIES = $(XLIB)
+ EXTRA_DEFINES = -DLIBNAME=\"$(LIBNAME)\"
+ 
+-ComplexProgramTarget(scavenger)
++AllTarget(scavenger)
++NormalProgramTarget(scavenger,$(OBJS),,,$(XLIB))
++InstallProgram(scavenger,GENTOO_BINDIR)
+ InstallMultipleFlags($(LIB_DATA),$(LIBNAME),-m 644)
+diff -urN xscavenger-1.4.4.orig/src/scav.c xscavenger-1.4.4/src/scav.c
+--- xscavenger-1.4.4.orig/src/scav.c
++++ xscavenger-1.4.4/src/scav.c
+@@ -240,15 +240,19 @@
+ 
+ 
+ 
++/* 14 Dec 2002: re-wrote to be more portable - don't assume two's-complement
++ * representation for integers, and fix bug when sizeof(long) > 4.
++ */
+ long readlong()
+ {
+-long val1=0;
+-
+-	val1=myci()<<24L;
+-	val1|=myci()<<16L;
+-	val1|=myci()<<8;
+-	val1|=myci();
++	long val1=0;
++	int i,j;
+ 
++	for (i=0; i<4; i++) {
++		j = myci();
++		if (j==-1) return -1L;
++		val1 = (val1<<8) + j;
++	}
+ 	return val1;
+ }
+ int rbs()
+@@ -309,7 +313,7 @@
+ 	bmw=bmh=byteswide=0;
+ 	while( (type=readlong()) )
+ 	{
+-		if(type==0xffffffffL) break;
++		if(type==-1L) break;
+ 		size=readlong();
+ 		if(size&1) size++;
+ 		if(type==BMHD)
+@@ -402,16 +406,16 @@
+ 	input=open(resourcename,O_RDONLY);
+ 	if(input<0) return -1;
+ 	got=read(input,buff,8);
+-	if(got!=8) return -2;
+-	if (strncmp(buff,"SCAV",4)) return -3;
++	if(got!=8) {close(input);return -2;}
++	if (strncmp(buff,"SCAV",4)) {close(input);return -3;}
+ 	max=(buff[4]<<24) | (buff[5]<<16) | (buff[6]<<8) | buff[7];
+-	if(num>=max) return 0;
++	if(num>=max) {close(input);return 0;}
+ 	lseek(input,(num+1)<<3,SEEK_SET);
+ 	got=read(input,buff,8);
+ 	offset=(buff[0]<<24) | (buff[1]<<16) | (buff[2]<<8) | buff[3];
+ 	length=(buff[4]<<24) | (buff[5]<<16) | (buff[6]<<8) | buff[7];
+ 	if(len>length) len=length;
+-	if(!offset || !len) return 0;
++	if(!offset || !len) {close(input);return 0;}
+ 	lseek(input,offset,SEEK_SET);
+ 	got=read(input,put,len);
+ 	close(input);
+@@ -448,8 +452,8 @@
+ 	input=open(resourcename,O_RDONLY);
+ 	if(input==-1) return -4;
+ 	got=read(input,buff,8);
+-	if(got!=8) return -2;
+-	if(strncmp(buff,"SCAV",4)) return -3;
++	if(got!=8) {close(input);return -2;}
++	if(strncmp(buff,"SCAV",4)) {close(input);return -3;}
+ 	output=creat(bakname,00600);
+ 	if(output==-1) {close(input);return -6;}
+ 
+@@ -473,12 +477,12 @@
+ 		for(i=0;i<max;i++)
+ 			if(headers[i+i])
+ 				headers[i+i]+=delta;
+-	if (write(output,"SCAV",4) != 4) return -200;
+-	if (!rlout(output,max))	return -200;
++	if (write(output,"SCAV",4) != 4) {close(input);close(output);return -200;}
++	if (!rlout(output,max))	{close(input);close(output);return -200;}
+ 	headers[num+num]=0;
+ 	headers[num+num+1]=len;
+ 	for(i=0;i<max+max;i++)
+-		if (!rlout(output,headers[i])) return -200;
++	    if (!rlout(output,headers[i])) {close(input);close(output);return -200;}
+ 
+ 	if(offset)
+ 	{
+@@ -487,8 +491,8 @@
+ 		while(count)
+ 		{
+ 			got=count>1024 ? 1024 : count;
+-			if (read(input,copybuff,got) != got) return -200;
+-			if (write(output,copybuff,got) != got) return -200;
++			if (read(input,copybuff,got) != got) {close(input);close(output);return -200;}
++			if (write(output,copybuff,got) != got) {close(input);close(output);return -200;}
+ 			count-=got;
+ 		}
+ 		lseek(input,length,SEEK_CUR);
+@@ -498,17 +502,17 @@
+ 	{
+ 		got=read(input, copybuff, 1024);
+ 		if (!got) break;
+-		if (write (output, copybuff, got) != got) return -200;
++		if (write (output, copybuff, got) != got) {close(input);close(output);return -200;}
+ 		offset += got;
+ 	}
+ 	if(len)
+ 	{
+-		if (write (output, take, len) != len) return -200;
++	    if (write (output, take, len) != len) {close(input);close(output);return -200;}
+ 		lseek (output, (num+1) << 3, SEEK_SET);
+-		if (!rlout (output, offset)) return -200;
++		if (!rlout (output, offset)) {close(input);close(output);return -200;}
+ 	}
+ 	close (input);
+-	if (fsync(output)) return -200;
++	if (fsync(output)) {close(output);return -200;}
+ 	if (close(output)) return -200;
+ 	err=rename(bakname,resourcename);
+ 	if(err) return -1;
+@@ -1382,6 +1386,7 @@
+ 			break;
+ 		}
+ 	}
++	close(file);
+ }
+ 
+ void remslash(char *str)
+@@ -1416,6 +1421,8 @@
+ 			return -3;
+ 		}
+ 	} while(len);
++	close(input);
++	close(output);
+ 	return 0;
+ }
+ 
+@@ -1448,7 +1455,7 @@
+ 			printf("Failed to create directory %s, exiting\n",temp);
+ 			exit(1);
+ 		}
+-	}
++	} else close(file);
+ 
+ 	sprintf(resourcename,"%s/%s/%s",localname,localdirname,LEVELSNAME);
+ 	file=open(resourcename,O_RDONLY);
+@@ -1485,7 +1492,7 @@
+ 			printf("Couldn't create %s\n",temp);
+ 			exit(1);
+ 		}
+-	}
++	} else close(file);
+ }
+ 
+ void makercname(char *str)

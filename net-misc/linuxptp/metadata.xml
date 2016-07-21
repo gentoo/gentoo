@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<longdescription>The package implements the Linux version of the
+		Precision Time Protocol (PTP)
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">linuxptp</remote-id>
+	</upstream>
+</pkgmetadata>

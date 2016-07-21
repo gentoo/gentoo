@@ -1,0 +1,24 @@
+diff --git a/src/firewall/core/io/direct.py b/src/firewall/core/io/direct.py
+index b698e4c..6b80201 100644
+--- a/src/firewall/core/io/direct.py
++++ b/src/firewall/core/io/direct.py
+@@ -295,8 +295,8 @@ class Direct(IO_Object):
+             if len(self.passthroughs[ipv]) == 0:
+                 del self.passthroughs[ipv]
+         else:
+-            raise ValueError, "Passthrough '%s' for ipv '%s'" % \
+-                ("',".join(args), ipv) + "not in list"
++            raise ValueError("Passthrough '%s' for ipv '%s'" % \
++                ("',".join(args), ipv) + "not in list")
+ 
+     def query_passthrough(self, ipv, args):
+         return (ipv in self.passthroughs and args in self.passthroughs[ipv])
+@@ -305,7 +305,7 @@ class Direct(IO_Object):
+         if ipv in self.passthroughs:
+             return self.passthroughs[ipv]
+         else:
+-            raise ValueError, "No passthroughs for ipv '%s'" % (ipv)
++            raise ValueError("No passthroughs for ipv '%s'" % (ipv))
+ 
+     def get_all_passthroughs(self):
+         return self.passthroughs

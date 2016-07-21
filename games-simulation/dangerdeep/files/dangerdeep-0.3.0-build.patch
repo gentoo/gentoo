@@ -1,0 +1,39 @@
+--- SConstruct
++++ SConstruct
+@@ -119,6 +119,7 @@
+ 
+ else:
+ 	print "Compiling for Unix/Posix/Linux Environment"
++	SConsignFile()
+ 	env = Environment(ENV = os.environ)
+ 	env.Append(CPPPATH = ['/usr/include/SDL', '/usr/include/GL'])
+ 	libpath = ['/usr/X11R6/lib']
+@@ -126,13 +127,18 @@
+ 	sdllibs = ['SDL', 'SDL_image']
+ 	ccflags = '-Wall `sdl-config --cflags` `pkg-config --cflags x11`'
+ 	env.Append(LINKFLAGS = '`pkg-config --libs-only-L x11`')
++	if os.environ.has_key('CXX'):
++		env['CXX'] = os.environ['CXX']
++	if os.environ.has_key('CXXFLAGS'):
++		ccflags += os.environ['CXXFLAGS']
++	if os.environ.has_key('LDFLAGS'):
++		env.Append(LINKFLAGS = os.environ['LDFLAGS'])
+ 	if (debug >= 3):
+ 		ccflags += ' -g -pg -O3'	# profiling
+ 	elif (debug == 2):
+ 		ccflags += ' -g -O0'
+ 		env.Append(CPPDEFINES = ['DEBUG'])
+ 	elif (debug == 1):
+-		ccflags += ' -g -O1'
+ 		env.Append(CPPDEFINES = ['DEBUG'])
+ 	elif (debug == -1):
+ 		ccflags += ' -g -O3 -march=athlon-xp -mfpmath=sse -mmmx -msse -m3dnow'
+@@ -140,8 +144,6 @@
+ 		ccflags += ' -g -O3 -march=athlon-xp -mfpmath=sse -mmmx -msse -m3dnow -ftree-vectorize -ftree-vectorizer-verbose=2'
+ 	elif (debug == -3):	# special g++4.0+ auto vectorization
+ 		ccflags += ' -g -O3 -march=athlon64 -mfpmath=sse -mmmx -msse -msse2 -m3dnow -ftree-vectorize -ftree-vectorizer-verbose=2'
+-	else:
+-		ccflags += ' -g -O2' # debug symbols will be stripped by the linker for a debian package
+ 	# choose specific architecture if requested
+ 	if archflag != '':
+ 		ccflags += ' -march=' + archflag

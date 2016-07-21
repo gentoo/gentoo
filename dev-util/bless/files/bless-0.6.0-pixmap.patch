@@ -1,0 +1,20 @@
+=== modified file 'src/gui/drawers/HexDrawer.cs'
+--- src/gui/drawers/HexDrawer.cs	2007-06-13 12:20:53 +0000
++++ src/gui/drawers/HexDrawer.cs	2009-04-10 23:21:41 +0000
+@@ -57,11 +57,14 @@
+ 
+ 		//System.Console.WriteLine(s);
+ 
+-		pangoLayout.SetText(s);
++		pangoLayout.SetText(s.Substring(0,256));
+ 
+ 
+ 		gc.RgbFgColor = fg;
+ 		pix.DrawLayout(gc, 0, 0, pangoLayout);
++		
++		pangoLayout.SetText(s.Substring(256,256));
++		pix.DrawLayout(gc, 128*2*width, 0, pangoLayout);
+ 
+ 		return pix;
+ 	}
+

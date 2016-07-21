@@ -1,0 +1,21 @@
+Index: polyml/mlsource/extra/XWindows/ml_bind.ML
+===================================================================
+--- polyml/mlsource/extra/XWindows/ml_bind.ML	(revision 1600)
++++ polyml/mlsource/extra/XWindows/ml_bind.ML	(revision 1601)
+@@ -2437,7 +2437,7 @@
+ 
+ exception XWindows = XWindows.XWindows;
+ 
+-let
++local
+   open XWindows;
+   
+   fun printRect _ _ (r:XRectangle) =
+@@ -2447,6 +2447,6 @@
+     PolyML.PrettyString ("Rect " ^ PolyML.makestring R)
+   end;
+ in
+-  PolyML.addPrettyPrinter printRect
++  val () = PolyML.addPrettyPrinter printRect
+ end;
+ 

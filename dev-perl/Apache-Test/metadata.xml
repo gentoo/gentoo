@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription>The Apache::Test framework was designed for creating test
+		suites for products running on the Apache httpd webserver (not
+		necessarily mod_perl). Originally designed for the mod_perl Apache
+		module, it was extended to be used for any Apache
+		module.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Apache-Test</remote-id>
+    <remote-id type="cpan-module">Apache::Test</remote-id>
+    <remote-id type="cpan-module">Apache::Test5005compat</remote-id>
+    <remote-id type="cpan-module">Apache::TestBuild</remote-id>
+    <remote-id type="cpan-module">Apache::TestClient</remote-id>
+    <remote-id type="cpan-module">Apache::TestClientResponse</remote-id>
+    <remote-id type="cpan-module">Apache::TestCommon</remote-id>
+    <remote-id type="cpan-module">Apache::TestCommonPost</remote-id>
+    <remote-id type="cpan-module">Apache::TestConfig</remote-id>
+    <remote-id type="cpan-module">Apache::TestConfigC</remote-id>
+    <remote-id type="cpan-module">Apache::TestConfigPHP</remote-id>
+    <remote-id type="cpan-module">Apache::TestConfigParrot</remote-id>
+    <remote-id type="cpan-module">Apache::TestHandler</remote-id>
+    <remote-id type="cpan-module">Apache::TestHarness</remote-id>
+    <remote-id type="cpan-module">Apache::TestHarnessPHP</remote-id>
+    <remote-id type="cpan-module">Apache::TestMB</remote-id>
+    <remote-id type="cpan-module">Apache::TestMM</remote-id>
+    <remote-id type="cpan-module">Apache::TestReport</remote-id>
+    <remote-id type="cpan-module">Apache::TestReportPerl</remote-id>
+    <remote-id type="cpan-module">Apache::TestRequest</remote-id>
+    <remote-id type="cpan-module">Apache::TestRun</remote-id>
+    <remote-id type="cpan-module">Apache::TestRunPHP</remote-id>
+    <remote-id type="cpan-module">Apache::TestRunParrot</remote-id>
+    <remote-id type="cpan-module">Apache::TestRunPerl</remote-id>
+    <remote-id type="cpan-module">Apache::TestSSLCA</remote-id>
+    <remote-id type="cpan-module">Apache::TestServer</remote-id>
+    <remote-id type="cpan-module">Apache::TestSmoke</remote-id>
+    <remote-id type="cpan-module">Apache::TestSmokePerl</remote-id>
+    <remote-id type="cpan-module">Apache::TestSort</remote-id>
+    <remote-id type="cpan-module">Apache::TestToString</remote-id>
+    <remote-id type="cpan-module">Apache::TestTrace</remote-id>
+    <remote-id type="cpan-module">Apache::TestUtil</remote-id>
+    <remote-id type="cpan-module">Bundle::ApacheTest</remote-id>
+    <remote-id type="cpan-module">HTTP::Request::Common</remote-id>
+    <remote-id type="cpan-module">warnings</remote-id>
+  </upstream>
+</pkgmetadata>

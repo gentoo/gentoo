@@ -1,0 +1,15 @@
+Fixing build with gcc 4.5
+
+http://bugs.gentoo.org/show_bug.cgi?id=320879
+
+--- src/scim_sinhala_imengine.cpp
++++ src/scim_sinhala_imengine.cpp
+@@ -233,7 +233,7 @@
+ 
+ void SinhalaInstance::backspace()
+ {
+-	KeyEvent e = scim::KeyEvent::KeyEvent(SCIM_KEY_BackSpace, 0);
++	KeyEvent e = scim::KeyEvent(SCIM_KEY_BackSpace, 0);
+ 	forward_key_event(e);
+ }
+ 

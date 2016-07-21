@@ -1,0 +1,22 @@
+From: Tim Gardner <tim.gardner@canonical.com>
+Date: Thu, 6 Aug 2015 09:13:30 -0600
+Subject: Support kernel 4.2
+
+---
+ driver/ntoskernel.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/driver/ntoskernel.h b/driver/ntoskernel.h
+index 4b8166c..6b49594 100644
+--- a/driver/ntoskernel.h
++++ b/driver/ntoskernel.h
+@@ -46,6 +46,9 @@
+ #include <linux/percpu.h>
+ #include <linux/kthread.h>
+ #include <linux/workqueue.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,2,0)
++#include <linux/vmalloc.h>
++#endif
+ 
+ #if !defined(CONFIG_X86) && !defined(CONFIG_X86_64)
+ #error "this module is for x86 or x86_64 architectures only"

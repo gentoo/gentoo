@@ -1,0 +1,13 @@
+diff --git a/mythtv/configure b/mythtv/configure
+index 4aa8727..f890df3 100755
+--- a/mythtv/configure
++++ b/mythtv/configure
+@@ -6475,7 +6475,7 @@ if enabled mythlogserver; then
+     echo "Configuring zeromq..."
+     (cd external/zeromq ; \
+              ./configure --quiet --without-documentation --prefix=${prefix} \
+-                         --includedir=${prefix}/include/mythtv/zeromq)
++                         --includedir=${prefix}/include/mythtv/zeromq --libdir=${libdir})
+     echo "Configuring nzmqt..."
+     (cd external/nzmqt/src ; \
+            ${qmakeconf} -o Makefile)

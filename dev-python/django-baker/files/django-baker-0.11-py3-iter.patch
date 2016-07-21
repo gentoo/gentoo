@@ -1,0 +1,42 @@
+From c6c856c999cb9a9ce4ec8ecee714da7f6719019d Mon Sep 17 00:00:00 2001
+From: Matt Clement <mclement@savantgroup.com>
+Date: Tue, 3 Mar 2015 14:57:41 -0500
+Subject: [PATCH] Switch iteritems to items for Py3 compatibility
+
+---
+ django_baker/templates/django_baker/__init__urls | 2 +-
+ django_baker/templates/django_baker/forms        | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/django_baker/templates/django_baker/__init__urls b/django_baker/templates/django_baker/__init__urls
+index 1baf063..d6c9bec 100644
+--- a/django_baker/templates/django_baker/__init__urls
++++ b/django_baker/templates/django_baker/__init__urls
+@@ -1,6 +1,6 @@
+ from django.conf.urls import patterns, include
+ 
+ urlpatterns = patterns('',
+-{% for model_name_slug, plural_model_name_slug in model_names_dict.iteritems %}
++{% for model_name_slug, plural_model_name_slug in model_names_dict.items %}
+     (r'^{{ plural_model_name_slug }}/', include('{{ app_label }}.urls.{{ model_name_slug }}_urls')),{% if forloop.first %}  # NOQA{% endif %}{% endfor %}
+ )
+diff --git a/django_baker/templates/django_baker/forms b/django_baker/templates/django_baker/forms
+index 1f55c86..a21234d 100644
+--- a/django_baker/templates/django_baker/forms
++++ b/django_baker/templates/django_baker/forms
+@@ -1,7 +1,7 @@
+ from django import forms
+ from .models import {{ model_names|join:", " }}
+ 
+-{% for model_name, model_fields in model_names.iteritems %}
++{% for model_name, model_fields in model_names.items %}
+ class {{ model_name }}Form(forms.ModelForm):
+ 
+     class Meta:
+@@ -36,4 +36,4 @@ class {{ model_name }}Form(forms.ModelForm):
+     def save(self, commit=True):
+         return super({{ model_name }}Form, self).save(commit)
+ {% if not forloop.last %}
+-{% endif %}{% endfor %}
+\ No newline at end of file
++{% endif %}{% endfor %}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="display">Enable a text-based display</flag>
+		<flag name="tremor">Use a fixed-point version of the Ogg Vorbis decoder (<pkg>media-libs/tremor</pkg>)</flag>
+		<flag name="wma">Enable support for streaming Windows Media Audio</flag>
+		<flag name="zones">Pairs surround sound speakers into stereo zones (requires 5.1 setup or better)</flag>
+	</use>
+</pkgmetadata>

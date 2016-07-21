@@ -1,0 +1,9 @@
+--- Makefile
++++ Makefile
+@@ -23,5 +23,5 @@
+       bzlib.o
+ 
+-all: libbz2.a bzip2 bzip2recover test
++all: libbz2.a bzip2 bzip2recover
+ 
+ bzip2: libbz2.a bzip2.o

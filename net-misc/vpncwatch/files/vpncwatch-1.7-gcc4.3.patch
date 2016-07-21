@@ -1,0 +1,11 @@
+--- vpncwatch.c.orig	2009-02-08 17:03:14.296036582 +0100
++++ vpncwatch.c	2009-02-08 17:02:56.932904474 +0100
+@@ -31,6 +31,7 @@
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ #include <errno.h>
++#include <linux/limits.h>
+ 
+ 
+ #include "vpncwatch.h"
+

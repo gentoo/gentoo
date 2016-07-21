@@ -1,0 +1,21 @@
+From: Pietro Battiston <me@pietrobattiston.it>
+Date: Sun, 21 Dec 2014 11:50:28 +0100
+Subject: Do not crash on empty pogs list
+
+---
+ fontypythonmodules/gui_PogChooser.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fontypythonmodules/gui_PogChooser.py b/fontypythonmodules/gui_PogChooser.py
+index 94b7f2e..f233529 100644
+--- a/fontypythonmodules/gui_PogChooser.py
++++ b/fontypythonmodules/gui_PogChooser.py
+@@ -80,7 +80,7 @@ class PogChooser(wx.ListCtrl) :
+ 			i = self.FindItem(-1, select)
+ 			self.indexselected = i # Set this to help initial icon settings.
+ 			self.Select(i, True)
+-		else:
++		elif self.__poglistCopy:
+ 			self.Select(0, False)
+ 			self.indexselected = -1
+ 

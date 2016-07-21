@@ -1,0 +1,32 @@
+commit 096ee717070bdde9c1adc29f02fcb537920daca9
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Sat Mar 3 20:24:21 2012 +0300
+
+    Makefile: set proper link order for libraries
+    
+    '-Wl,--as-needed' enforces libraries to go in proper dependency order:
+    
+        $ x86_64-pc-linux-gnu-gcc -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu -Wl,--hash-style=gnu `pkg-config xmms2-client --libs` `pkg-config libcurl --libs` src/xmms2-scrobbler.o src/list.o src/queue.o src/strbuf.o src/md5.o src/submission.o -o bin/xmms2-scrobbler
+        src/xmms2-scrobbler.o: In function `save_profile_submissions_queue':
+        xmms2-scrobbler.c:(.text+0x281): undefined reference to `xmmsc_userconfdir_get'
+        src/xmms2-scrobbler.o: In function `load_config':
+        xmms2-scrobbler.c:(.text+0x3e2): undefined reference to `xmmsc_userconfdir_get'
+        src/xmms2-scrobbler.o: In function `maybe_submit_to_profile':
+        xmms2-scrobbler.c:(.text+0x7e3): undefined reference to `xmmsc_medialib_get_info'
+        xmms2-scrobbler.c:(.text+0x7f7): undefined reference to `xmmsc_result_notifier_set'
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/Makefile b/Makefile
+index 7693bd2..4207cda 100644
+--- a/Makefile
++++ b/Makefile
+@@ -36,7 +36,7 @@ install: $(BINARY)
+ 	install -m 755 $(BINARY) $(DESTDIR)$(PREFIX)/bin
+ 
+ $(BINARY): $(OBJECTS) bin
+-	$(QUIET_LINK)$(CC) $(OBJECTS) $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) -o $@ $(LIBS)
++	$(QUIET_LINK)$(CC) $(OBJECTS) -o $@ $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) $(LIBS)
+ 
+ src/%.o : src/%.c
+ 	$(QUIET_CC)$(CC) $(CFLAGS) $(XMMS_CFLAGS) $(CURL_CFLAGS) $(ENDIAN_CFLAGS) -o $@ -c $<

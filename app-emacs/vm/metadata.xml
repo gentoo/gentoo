@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  VM is a mail reader that runs inside GNU Emacs and XEmacs. It was written as
+  an alternative to the Emacs RMAIL mail reader. VM is highly configurable and
+  easy to use. It supports POP and IMAP for mail retrieval, understands MIME,
+  and reads both the standard UNIX mailbox format and the BABYL format used by
+  the RMAIL mailer.
+</longdescription>
+<use>
+  <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
+</use>
+<upstream>
+  <remote-id type="launchpad">vm</remote-id>
+</upstream>
+</pkgmetadata>

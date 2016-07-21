@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>prolog@gentoo.org</email>
+	<name>Prolog</name>
+</maintainer>
+<use>
+	<flag name="archive">Use libarchive for extension packs</flag>
+	<flag name="uuid">Use ossp-uuid for UUID pack</flag>
+</use>
+</pkgmetadata>

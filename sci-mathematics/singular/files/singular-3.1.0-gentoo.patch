@@ -1,0 +1,81 @@
+--- kernel/feResource.cc.orig	2010-04-30 10:20:14.000000000 +0000
++++ kernel/feResource.cc	2010-10-11 09:19:01.431179334 +0000
+@@ -41,7 +41,7 @@
+ #define SINGULAR_DEFAULT_DIR "/usr/local/Singular/"S_VERSION1
+ #endif
+ #else // ! defined(MAKE_DISTRIBUTION)
+-#define SINGULAR_DEFAULT_DIR S_ROOT_DIR
++#define SINGULAR_DEFAULT_DIR "@GENTOO_PORTAGE_EPREFIX@/usr"
+ #endif // defined(MAKE_DISTRIBUTION)
+ 
+ /*****************************************************************
+@@ -73,33 +73,31 @@
+ {
+   {"SearchPath",    's', feResPath,  NULL,
+    "$SINGULARPATH;"
+-   "%b/LIB;"
+-   "%b/MOD;"
++   "%r/share/singular/MOD;"
+    "%r/LIB;"
+-   "%r/../LIB;"
++   "%r/share/singular/LIB;"
+    "%d/LIB;"
+-   "%d/../LIB"
+    ""},
+-  {"Singular",  'S',    feResBinary,"SINGULAR_EXECUTABLE",  "%d/"S_UNAME"/Singular",(char *)""},
+-  {"BinDir",    'b',    feResDir,   "SINGULAR_BIN_DIR",     "%d/"S_UNAME,           (char *)""},
+-  {"RootDir",   'r',    feResDir,   "SINGULAR_ROOT_DIR",    "%b/..",                (char *)""},
++  {"Singular",  'S',    feResBinary,"SINGULAR_EXECUTABLE",  "%d/bin/Singular",(char *)""},
++  {"BinDir",    'b',    feResDir,   "SINGULAR_BIN_DIR",     "%d/bin",           (char *)""},
++  {"RootDir",   'r',    feResDir,   "SINGULAR_ROOT_DIR",    "%d",                (char *)""},
+   {"DefaultDir",'d',    feResDir,   "SINGULAR_DEFAULT_DIR",  SINGULAR_DEFAULT_DIR,  (char *)""},
+-  {"InfoFile",  'i',    feResFile,  "SINGULAR_INFO_FILE",   "%r/info/singular.hlp", (char *)""},
+-  {"IdxFile",   'x',    feResFile,  "SINGULAR_IDX_FILE",    "%r/doc/singular.idx",  (char *)""},
+-  {"HtmlDir",   'h',    feResDir,   "SINGULAR_HTML_DIR",    "%r/html",              (char *)""},
++  {"InfoFile",  'i',    feResFile,  "SINGULAR_INFO_FILE",   "%r/share/info/singular.info.bz2", (char *)""},
++  {"IdxFile",   'x',    feResFile,  "SINGULAR_IDX_FILE",    "%r/share/singular/singular.idx",  (char *)""},
++  {"HtmlDir",   'h',    feResDir,   "SINGULAR_HTML_DIR",    "%r/share/doc/PFSUBST/html",              (char *)""},
+ #ifdef ix86_Win
+   {"HtmlHelpFile",'C',  feResFile,  "SINGULAR_CHM_FILE",    "%r/doc/Manual.chm",    (char *)""},
+ #endif
+   {"ManualUrl", 'u',    feResUrl,   "SINGULAR_URL",         "http://www.singular.uni-kl.de/Manual/"S_VERSION1,    (char *)""},
+-  {"ExDir",     'm',    feResDir,   "SINGULAR_EXAMPLES_DIR","%r/examples",          (char *)""},
++  {"ExDir",     'm',    feResDir,   "SINGULAR_EXAMPLES_DIR","%r/share/doc/PFSUBST/examples",          (char *)""},
+   {"Path",      'p',    feResPath,  NULL,                   "%b;$PATH",             (char *)""},
+ 
+ #ifdef ESINGULAR
+   {"emacs",     'E',    feResBinary,"ESINGULAR_EMACS",      "%b/emacs",             (char *)""},
+   {"xemacs",    'A',    feResBinary,"ESINGULAR_EMACS",      "%b/xemacs",            (char *)""},
+   {"SingularEmacs",'M', feResBinary,"ESINGULAR_SINGULAR",   "%b/Singular",          (char *)""},
+-  {"EmacsLoad", 'l',    feResFile,  "ESINGULAR_EMACS_LOAD", "%e/.emacs-singular",   (char *)""},
+-  {"EmacsDir",  'e',    feResDir,   "ESINGULAR_EMACS_DIR",  "%r/emacs",             (char *)""},
++  {"EmacsLoad", 'l',    feResFile,  "ESINGULAR_EMACS_LOAD", "%r/share/emacs/site-lisp/singular/.emacs-singular",   (char *)""},
++  {"EmacsDir",  'e',    feResDir,   "ESINGULAR_EMACS_DIR",  "%r/share/emacs/site-lisp/singular",             (char *)""},
+ #elif defined(TSINGULAR)
+   {"SingularXterm",'M', feResBinary,"TSINGULAR_SINGULAR",   "%b/Singular",          (char *)""},
+ #ifdef ix86_Win
+@@ -108,7 +106,7 @@
+   {"xterm",     'X',    feResBinary,"XTERM",                "%b/xterm",             (char *)""},
+ #endif
+ #else
+-  {"EmacsDir",  'e',    feResDir,   "SINGULAR_EMACS_DIR",   "%r/emacs",             (char *)""},
++  {"EmacsDir",  'e',    feResDir,   "SINGULAR_EMACS_DIR",   "%r/share/emacs/site-lisp/singular",             (char *)""},
+ #endif
+   {NULL, 0, feResUndef, NULL, NULL, NULL}, // must be the last record
+ };
+--- kernel/mod_raw.cc.orig	2009-11-02 10:12:22.000000000 +0000
++++ kernel/mod_raw.cc	2010-10-11 09:19:01.432179264 +0000
+@@ -109,11 +109,11 @@
+ void* dynl_open_binary_warn(const char* binary_name, const char* msg)
+ {
+   void* handle = NULL;
+-  const char* bin_dir = feGetResource('b');
++  const char* bin_dir = feGetResource('r');
+   if (bin_dir != NULL)
+   {
+     char path_name[MAXPATHLEN];
+-    sprintf(path_name, "%s%s%s.%s", bin_dir, DIR_SEPP, binary_name,
++    sprintf(path_name, "%s%s%s%s.%s", bin_dir,"/lib/singular", DIR_SEPP, binary_name,
+             DL_TAIL);
+     handle = dynl_open(path_name);
+     if (handle == NULL && ! warn_handle)

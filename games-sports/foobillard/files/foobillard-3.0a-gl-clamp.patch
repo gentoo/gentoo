@@ -1,0 +1,14 @@
+diff -ur foobillard-3.0a/src/table.c foobillard-3.0a-glclamp/src/table.c
+--- foobillard-3.0a/src/table.c	2004-01-11 21:53:02.000000000 +0000
++++ foobillard-3.0a-glclamp/src/table.c	2011-02-21 09:14:36.000000000 +0000
+@@ -1214,8 +1214,8 @@
+                           GL_UNSIGNED_BYTE, tabletexdata);
+         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, options_tex_min_filter);
+         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, options_tex_mag_filter);
+-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
++        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+         free( tabletexdata );
+     } else {
+         tabletexbind=0;

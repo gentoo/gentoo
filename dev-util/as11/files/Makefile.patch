@@ -1,0 +1,11 @@
+--- /tmp/as11/Makefile	1996-01-09 01:02:53.000000000 +0100
++++ Makefile	2012-10-15 18:11:19.398154832 +0200
+@@ -5,7 +5,4 @@
+ AS11DEP=as11.c as.c do11.c pseudo.c eval.c symtab.c util.c ffwd.c output.c as.h
+ 
+ as11: $(AS11DEP)
+-	$(CC) $(STATIC) -o as11 as11.c
+-
+-as9:
+-	$(CC) -o as9 as9.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o as11 as11.c

@@ -1,0 +1,19 @@
+commit 00f4736bbb8ebc88a08e24e98d384b43d5afbbe4
+Author: Raphaël Bois <virtualdust@gmail.com>
+Date:   Sun Feb 12 16:39:46 2012 +0100
+
+    OTHER: fix erroneous sizeof usage
+
+diff --git a/src/plugins/daap/daap_md5.c b/src/plugins/daap/daap_md5.c
+index d4d8d74..69c84a5 100644
+--- a/src/plugins/daap/daap_md5.c
++++ b/src/plugins/daap/daap_md5.c
+@@ -191,7 +191,7 @@ OpenDaap_MD5Final (MD5_CTX *ctx,
+ 	MD5Transform (ctx->buf, (guint32 *) ctx->in, ctx->version);
+ 	byteReverse ((unsigned char *) ctx->buf, 4);
+ 	memcpy (digest, ctx->buf, 16);
+-	memset (ctx, 0, sizeof (ctx));     /* In case it's sensitive */
++	memset (ctx, 0, sizeof (*ctx));     /* In case it's sensitive */
+ 
+ 	return;
+ }

@@ -1,0 +1,29 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Don't strip binaries during build
+ This allows a debugging during packaging. The binaries are stripped
+ later with dh_strip.
+--- a/install/unix/install1
++++ b/install/unix/install1
+@@ -536,9 +536,9 @@
+    fi
+ else
+    echo "NOT FOUND."
+-   echo "*** STRIP set to echo."
+-   ed_moptions add STRIP=echo >/dev/null
+ fi
++echo "*** STRIP set to echo."
++ed_moptions add STRIP=echo >/dev/null
+ #*************** END: Checking the strip command **************
+ 
+ #*************** START: Checking the ranlib command ***********
+--- a/install/unix/default_mk
++++ b/install/unix/default_mk
+@@ -32,7 +32,7 @@
+ LD77_OPT = $(LDFLAGS)
+ LD77 = $(LD77_CMD) $(LD77_OPT)
+ RANLIB = ranlib
+-STRIP = strip
++STRIP = echo
+ AR = ar
+ AR_OPT = ruv
+ AR_XOPT = xv

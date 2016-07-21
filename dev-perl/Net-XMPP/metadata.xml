@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription>Net::XMPP is a collection of Perl modules that provide a Perl Developer access to the XMPP protocol.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Net-XMPP</remote-id>
+    <remote-id type="cpan-module">Net::XMPP</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Client</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Connection</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Debug</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::IQ</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::JID</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Message</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Namespaces</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Presence</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::PrivacyLists</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Protocol</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Roster</remote-id>
+    <remote-id type="cpan-module">Net::XMPP::Stanza</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- sonic-visualiser-1.8/configure.orig
++++ sonic-visualiser-1.8/configure
+@@ -18,7 +18,7 @@
+ 	\$(MAKE) --directory=svgui
+ sub-svapp:
+ 	\$(MAKE) --directory=svapp
+-sub-sonic-visualiser:
++sub-sonic-visualiser: sub-svcore sub-svgui sub-svapp
+ 	\$(MAKE) --directory=sonic-visualiser
+ EOF
+ echo " *** Generated Makefile"

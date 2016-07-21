@@ -1,0 +1,11 @@
+--- src/gui/aboutbox.cpp.orig	2008-11-17 20:12:32.000000000 +0000
++++ src/gui/aboutbox.cpp	2008-11-17 20:12:50.000000000 +0000
+@@ -209,7 +209,7 @@
+   infoLabel->setOpenExternalLinks( true );
+ 
+   QLabel * iconLabel = new QLabel( this );
+-  iconLabel->setPixmap( QPixmap( ":/crunch.png" ) );
++  iconLabel->setPixmap( QPixmap( ":/speedcrunch.png" ) );
+   iconLabel->setAlignment( Qt::AlignVCenter | Qt::AlignRight );
+ 
+   MarqueeText * marqueeText = new MarqueeText( this );

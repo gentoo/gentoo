@@ -1,0 +1,11 @@
+--- src/GNUmakefile.orig	2013-12-06 10:47:18.554784621 +0400
++++ src/GNUmakefile	2013-12-06 10:47:43.129785804 +0400
+@@ -9,7 +9,7 @@
+ CC       = gcc
+ LD       = $(CC)
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -I. -I$(VPATH)
+-CFLAGS   += -Wall -Wextra -O2
++CFLAGS   += -Wall -Wextra
+ LDFLAGS  += -ltalloc
+ 
+ OBJECTS = \

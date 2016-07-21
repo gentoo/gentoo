@@ -1,0 +1,17 @@
+diff -ruN phonon-qt7.orig/CMakeLists.txt phonon-qt7/CMakeLists.txt
+--- phonon-qt7.orig/CMakeLists.txt	2011-04-24 20:22:59.000000000 +0200
++++ phonon-qt7/CMakeLists.txt	2011-04-24 20:42:15.000000000 +0200
+@@ -2,6 +2,8 @@
+ 
+ cmake_minimum_required(VERSION 2.6.2 FATAL_ERROR)
+ 
++set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
++
+ find_package(Phonon REQUIRED)
+ find_package(OpenGL REQUIRED)
+ 
+@@ -17,4 +19,3 @@
+   add_subdirectory(qt7)
+ endif (Q_WS_MAC)
+ 
+-macro_display_feature_log()

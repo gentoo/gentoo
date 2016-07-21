@@ -1,0 +1,42 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Oct 24 15:41:33 UTC 2012
+Subject: build system
+
+don't overwrite system CFLAGS, only append "-g -Os" if DEBUG=1 is passed
+as argument
+
+always use $(CC) instead of "gcc"
+
+--- Makefile
++++ Makefile
+@@ -1,4 +1,11 @@
+-CFLAGS := -g -Os
++CC ?= gcc
++
++# set to 1 to enable debug flags
++DEBUG = 0
++ifeq ($(DEBUG),1)
++CFLAGS += -g -Os
++endif
++
+ prefix := /usr
+ etcprefix :=
+ # Define appropiately for your distribution
+@@ -70,7 +77,7 @@
+ 	rm -f ${CLEAN} ${OBJ} 
+ 
+ tsc:    tsc.c
+-	gcc -o tsc ${CFLAGS} -DSTANDALONE tsc.c ${LDFLAGS}
++	$(CC) -o tsc ${CFLAGS} -DSTANDALONE tsc.c ${LDFLAGS}
+ 
+ dbquery: db.o dbquery.o memutil.o
+ 
+@@ -101,7 +108,7 @@
+ 	echo $(SRC)
+ 
+ config-test: config.c
+-	gcc -DTEST=1 config.c -o config-test
++	$(CC) -DTEST=1 config.c -o config-test
+ 
+ test:
+ 	$(MAKE) -C tests test DEBUG=""

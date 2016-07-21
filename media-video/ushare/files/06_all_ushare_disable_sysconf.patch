@@ -1,0 +1,20 @@
+Do not try to parse the default configuration file as everyting
+should be handled by the /etc/conf.d/ushare file in Gentoo
+Index: ushare-1.1a/src/ushare.c
+===================================================================
+--- ushare-1.1a.orig/src/ushare.c
++++ ushare-1.1a/src/ushare.c
+@@ -813,13 +813,6 @@ main (int argc, char **argv)
+     return EXIT_SUCCESS;
+   }
+ 
+-  if (parse_config_file (ut) < 0)
+-  {
+-    /* fprintf here, because syslog not yet ready */
+-    fprintf (stderr, _("Warning: can't parse file \"%s\".\n"),
+-             ut->cfg_file ? ut->cfg_file : SYSCONFDIR "/" USHARE_CONFIG_FILE);
+-  }
+-
+   if (ut->xbox360)
+   {
+     char *name;

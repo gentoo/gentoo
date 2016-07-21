@@ -1,0 +1,13 @@
+diff -ruN SoQt-1.5.0/SoQt.pc.in my/SoQt.pc.in
+--- SoQt-1.5.0/SoQt.pc.in	2010-03-02 23:57:41.000000000 +0100
++++ my/SoQt.pc.in	2013-05-28 01:14:13.083619183 +0200
+@@ -10,7 +10,8 @@
+ Version: @SOQT_VERSION@
+ Requires: Coin
+ Conflicts:
+-Libs: -L${libdir} @SOGUI_EXTRA_LDFLAGS@ @SOGUI_EXTRA_LIBS@
++Libs: -L${libdir} -lSoQt
++Libs.private: -L${libdir} @SOGUI_EXTRA_LIBS@
+ Cflags: -I${includedir} @SOGUI_EXTRA_CFLAGS@ @SOGUI_EXTRA_CPPFLAGS@
+ 
+ soqt_host=@host@

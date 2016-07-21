@@ -1,0 +1,125 @@
+From 7d8dadfdb2d59ac60c6a579f602e13ac7c743e39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Wed, 2 Oct 2013 22:40:43 +0200
+Subject: [PATCH 2/4] Install dracut-install and skipcpio into libexec dir
+ instead of lib dir
+
+dracut-install and skipcpio are the only ABI specific things atm.
+
+See https://bugs.gentoo.org/show_bug.cgi?id=485218 for details on the
+problem.
+---
+ Makefile                    | 7 +++++--
+ configure                   | 1 +
+ dracut-functions.sh         | 4 ++++
+ dracut-initramfs-restore.sh | 4 ++--
+ dracut.sh                   | 1 +
+ lsinitrd.sh                 | 4 ++--
+ 6 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 41968b0..bb007d1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -104,6 +104,7 @@ install: dracut-version.sh
+ 	mkdir -p $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(mandir)/man5 $(DESTDIR)$(mandir)/man7 $(DESTDIR)$(mandir)/man8
+ 	install -m 0755 dracut.sh $(DESTDIR)$(bindir)/dracut
+ 	sed -r \
++		-e "s|^(libexecdir)=.*|\1=$(libexecdir)|" \
+ 		-e "s|^(pkglibdir)=.*|\1=$(pkglibdir)|" \
+ 		-i $(DESTDIR)$(bindir)/dracut
+ 	install -m 0755 dracut-catimages.sh $(DESTDIR)$(bindir)/dracut-catimages
+@@ -147,10 +148,12 @@ endif
+ 		done \
+ 	fi
+ 	if [ -f install/dracut-install ]; then \
+-		install -m 0755 install/dracut-install $(DESTDIR)$(pkglibdir)/dracut-install; \
++		mkdir -p $(DESTDIR)$(libexecdir)/dracut; \
++		install -m 0755 install/dracut-install $(DESTDIR)$(libexecdir)/dracut/dracut-install; \
+ 	fi
+ 	if [ -f skipcpio/skipcpio ]; then \
+-		install -m 0755 skipcpio/skipcpio $(DESTDIR)$(pkglibdir)/skipcpio; \
++		mkdir -p $(DESTDIR)$(libexecdir)/dracut; \
++		install -m 0755 skipcpio/skipcpio $(DESTDIR)$(libexecdir)/dracut/skipcpio; \
+ 	fi
+ 	mkdir -p $(DESTDIR)${prefix}/lib/kernel/install.d
+ 	install -m 0755 50-dracut.install $(DESTDIR)${prefix}/lib/kernel/install.d/50-dracut.install
+diff --git a/configure b/configure
+index 0bd3d2d..17370de 100755
+--- a/configure
++++ b/configure
+@@ -59,6 +59,7 @@ sbindir ?= ${sbindir:-${prefix}/sbin}
+ mandir ?= ${mandir:-${prefix}/share/man}
+ enable_documentation ?= ${enable_documentation:-yes}
+ bindir ?= ${bindir:-${prefix}/bin}
++libexecdir ?= ${libexecdir:-${prefix}/libexec}
+ EOF
+ 
+ {
+diff --git a/dracut-functions.sh b/dracut-functions.sh
+index 37ddca2..953acd1 100755
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -733,6 +733,10 @@ if ! [[ $DRACUT_INSTALL ]]; then
+     DRACUT_INSTALL=$(find_binary dracut-install)
+ fi
+ 
++if ! [[ $DRACUT_INSTALL ]] && [[ -x $dracutlibexecdir/dracut-install ]]; then
++    DRACUT_INSTALL=$dracutlibexecdir/dracut-install
++fi
++
+ if ! [[ $DRACUT_INSTALL ]] && [[ -x $dracutbasedir/dracut-install ]]; then
+     DRACUT_INSTALL=$dracutbasedir/dracut-install
+ elif ! [[ $DRACUT_INSTALL ]] && [[ -x $dracutbasedir/install/dracut-install ]]; then
+diff --git a/dracut-initramfs-restore.sh b/dracut-initramfs-restore.sh
+index 8b9b80f..8dd358e 100644
+--- a/dracut-initramfs-restore.sh
++++ b/dracut-initramfs-restore.sh
+@@ -8,8 +8,8 @@ set -e
+ 
+ KERNEL_VERSION="$(uname -r)"
+ 
+-[[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
+-SKIP="$dracutbasedir/skipcpio"
++[[ $dracutlibexecdir ]] || dracutlibexecdir=/usr/libexec/dracut
++SKIP="$dracutlibexecdir/skipcpio"
+ [[ -x $SKIP ]] || SKIP=cat
+ 
+ [[ -f /etc/machine-id ]] && read MACHINE_ID < /etc/machine-id
+diff --git a/dracut.sh b/dracut.sh
+index 89a711e..9cfeef1 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -25,6 +25,7 @@
+ dracut_args=( "$@" )
+ 
+ # base dirs
++dracutlibexecdir=/usr/libexec/dracut
+ pkglibdir=/usr/lib/dracut
+ dracutbasedir="$pkglibdir"
+ 
+diff --git a/lsinitrd.sh b/lsinitrd.sh
+index 4f12c2c..2ed6e56 100755
+--- a/lsinitrd.sh
++++ b/lsinitrd.sh
+@@ -33,7 +33,7 @@ usage()
+ }
+ 
+ 
+-[[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
++[[ $dracutlibexecdir ]] || dracutlibexecdir=/usr/libexec/dracut
+ 
+ sorted=0
+ modules=0
+@@ -158,7 +158,7 @@ case $bin in
+                 echo "Early CPIO image"
+                 list_files
+             fi
+-            SKIP="$dracutbasedir/skipcpio"
++            SKIP="$dracutlibexecdir/skipcpio"
+             if ! [[ -x $SKIP ]]; then
+                 echo
+                 echo "'$SKIP' not found, cannot display remaining contents!" >&2
+-- 
+2.3.3
+

@@ -1,0 +1,39 @@
+From ffbc68cc8518c7e7263a42d4284b749b40c5e871 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 29 Jun 2014 10:47:41 +0200
+Subject: [PATCH] Use AC_PATH_TOOL to find proper cups-config.
+
+---
+ configure.in | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 729278d..186fabf 100644
+--- a/configure.in
++++ b/configure.in
+@@ -223,17 +223,18 @@ AC_ARG_WITH(cups,
+ )
+ if test "x$try_cups" = "xyes"; then
+ 	PKG_CHECK_MODULES(CUPS, "gmodule-2.0")
++	AC_PATH_TOOL(CUPS_CONFIG, cups-config)
+ 	AC_MSG_CHECKING(for CUPS libraries version >= 1.1.20)
+-	if cups-config --version --libs > /dev/null 2>&1; then
+-	    verstxt=`cups-config --version`
++	if $CUPS_CONFIG --version --libs > /dev/null 2>&1; then
++	    verstxt=`$CUPS_CONFIG --version`
+ 	    vers=`echo "$verstxt" | \
+ 		awk -F. '{ printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+ 	    if test "$vers" -lt 1001020; then
+ 		    AC_MSG_RESULT(Cups found but the version found is less than 1.1.20)
+               cups_msg="Version requirement not satisfied"
+ 	    else
+-		    CUPS_LIBS="$CUPS_LIBS `cups-config --ldflags` `cups-config --libs`"
+-		    CUPS_CFLAGS="$CUPS_CFLAGS `cups-config --cflags`"
++		    CUPS_LIBS="$CUPS_LIBS `$CUPS_CONFIG --ldflags` `$CUPS_CONFIG --libs`"
++		    CUPS_CFLAGS="$CUPS_CFLAGS `$CUPS_CONFIG --cflags`"
+ 		    AC_MSG_RESULT(Found version $verstxt)
+ 	    fi
+ 
+-- 
+2.0.0
+

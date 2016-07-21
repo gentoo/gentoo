@@ -1,0 +1,11 @@
+--- dialup_admin/conf/admin.conf~	2005-07-24 17:32:01.000000000 -0400
++++ dialup_admin/conf/admin.conf	2005-07-24 17:32:24.000000000 -0400
+@@ -247,7 +247,7 @@
+ #
+ # Uncomment to enable sql debug
+ #
+-sql_debug: true
++#sql_debug: true
+ #
+ # If set to yes then the HTTP credentials (http authentication)
+ # will be used to connect to the sql server instead of sql_username

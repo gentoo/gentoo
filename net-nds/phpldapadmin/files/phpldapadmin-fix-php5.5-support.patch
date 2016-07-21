@@ -1,0 +1,152 @@
+commit 7e53dab990748c546b79f0610c3a7a58431e9ebc
+Author: Michael Laccetti <michael@laccetti.com>
+Date:   Thu Aug 29 09:13:56 2013 -0400
+
+    Fixed two issues to get phpLdapAdmin to work under PHP 5.5.x
+    1) password_hash is an actual function, so renamed instances to password_hash_custom (HT: https://sourceforge.net/mailarchive/message.php?msg_id=31302386)
+    2) Fixed the preg_replace to preg_replace_callback to use the /e/ functionality in the officially endorsed fashion
+
+diff --git a/lib/PageRender.php b/lib/PageRender.php
+index 7d86a54..eed5d5f 100644
+--- a/lib/PageRender.php
++++ b/lib/PageRender.php
+@@ -287,7 +287,7 @@ class PageRender extends Visitor {
+ 						break;
+ 
+ 					default:
+-						$vals[$i] = password_hash($passwordvalue,$enc);
++						$vals[$i] = password_hash_custom($passwordvalue,$enc);
+ 				}
+ 
+ 				$vals = array_unique($vals);
+@@ -957,7 +957,7 @@ class PageRender extends Visitor {
+ 		if (trim($val))
+ 			$enc_type = get_enc_type($val);
+ 		else
+-			$enc_type = $server->getValue('appearance','password_hash');
++			$enc_type = $server->getValue('appearance','password_hash_custom');
+ 
+ 		$obfuscate_password = obfuscate_password_display($enc_type);
+ 
+@@ -982,7 +982,7 @@ class PageRender extends Visitor {
+ 		if (trim($val))
+ 			$enc_type = get_enc_type($val);
+ 		else
+-			$enc_type = $server->getValue('appearance','password_hash');
++			$enc_type = $server->getValue('appearance','password_hash_custom');
+ 
+ 		echo '<table cellspacing="0" cellpadding="0"><tr><td valign="top">';
+ 
+diff --git a/lib/ds_ldap.php b/lib/ds_ldap.php
+index c346660..7532539 100644
+--- a/lib/ds_ldap.php
++++ b/lib/ds_ldap.php
+@@ -1116,13 +1116,24 @@ class ldap extends DS {
+ 
+ 		if (is_array($dn)) {
+ 			$a = array();
+-			foreach ($dn as $key => $rdn)
+-				$a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
++			foreach ($dn as $key => $rdn) {
++				$a[$key] = preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',
++					function ($m) {
++						return ''.chr(hexdec('\\1')).'';
++					},
++					$rdn
++					);
++			}
+ 
+ 			return $a;
+ 
+ 		} else
+-			return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
++			 return preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',
++				function ($m) {
++					return ''.chr(hexdec('\\1')).'';
++				},
++				$dn
++			);
+ 	}
+ 
+ 	public function getRootDSE($method=null) {
+diff --git a/lib/ds_ldap_pla.php b/lib/ds_ldap_pla.php
+index 7ece393..6b0990e 100644
+--- a/lib/ds_ldap_pla.php
++++ b/lib/ds_ldap_pla.php
+@@ -16,7 +16,7 @@ class ldap_pla extends ldap {
+ 	function __construct($index) {
+ 		parent::__construct($index);
+ 
+-		$this->default->appearance['password_hash'] = array(
++		$this->default->appearance['password_hash_custom'] = array(
+ 			'desc'=>'Default HASH to use for passwords',
+ 			'default'=>'md5');
+ 
+diff --git a/lib/functions.php b/lib/functions.php
+index 56d8bf3..5ac3caf 100644
+--- a/lib/functions.php
++++ b/lib/functions.php
+@@ -2127,7 +2127,7 @@ function password_types() {
+  *        crypt, ext_des, md5crypt, blowfish, md5, sha, smd5, ssha, sha512, or clear.
+  * @return string The hashed password.
+  */
+-function password_hash($password_clear,$enc_type) {
++function password_hash_custom($password_clear,$enc_type) {
+ 	if (DEBUG_ENABLED && (($fargs=func_get_args())||$fargs='NOARGS'))
+ 		debug_log('Entered (%%)',1,0,__FILE__,__LINE__,__METHOD__,$fargs);
+ 
+@@ -2318,7 +2318,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+ 
+ 		# SHA crypted passwords
+ 		case 'sha':
+-			if (strcasecmp(password_hash($plainpassword,'sha'),'{SHA}'.$cryptedpassword) == 0)
++			if (strcasecmp(password_hash_custom($plainpassword,'sha'),'{SHA}'.$cryptedpassword) == 0)
+ 				return true;
+ 			else
+ 				return false;
+@@ -2327,7 +2327,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+ 
+ 		# MD5 crypted passwords
+ 		case 'md5':
+-			if( strcasecmp(password_hash($plainpassword,'md5'),'{MD5}'.$cryptedpassword) == 0)
++			if( strcasecmp(password_hash_custom($plainpassword,'md5'),'{MD5}'.$cryptedpassword) == 0)
+ 				return true;
+ 			else
+ 				return false;
+@@ -2392,7 +2392,7 @@ function password_check($cryptedpassword,$plainpassword,$attribute='userpassword
+ 
+ 		# SHA512 crypted passwords
+ 		case 'sha512':
+-			if (strcasecmp(password_hash($plainpassword,'sha512'),'{SHA512}'.$cryptedpassword) == 0)
++			if (strcasecmp(password_hash_custom($plainpassword,'sha512'),'{SHA512}'.$cryptedpassword) == 0)
+ 				return true;
+ 			else
+ 				return false;
+@@ -2564,13 +2564,24 @@ function dn_unescape($dn) {
+ 	if (is_array($dn)) {
+ 		$a = array();
+ 
+-		foreach ($dn as $key => $rdn)
+-			$a[$key] = preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$rdn);
++		foreach ($dn as $key => $rdn) {
++			$a[$key] = preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',
++				function ($m) {
++					return ''.chr(hexdec('\\1')).'';
++				},
++				$rdn
++			);
++		}
+ 
+ 		return $a;
+ 
+ 	} else {
+-		return preg_replace('/\\\([0-9A-Fa-f]{2})/e',"''.chr(hexdec('\\1')).''",$dn);
++		 return  preg_replace_callback('/\\\([0-9A-Fa-f]{2})/',
++			 function ($m) {
++				return ''.chr(hexdec('\\1')).'';
++			},
++			$dn
++		);
+ 	}
+ }
+ 

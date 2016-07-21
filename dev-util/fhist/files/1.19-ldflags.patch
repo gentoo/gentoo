@@ -1,0 +1,43 @@
+diff --git a/Makefile.in b/Makefile.in
+index 8aa8408..2c39b28 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -500,8 +500,9 @@ common/sub/expr.$(OBJEXT): common/sub/expr.c common/ac/stdarg.h \
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -I. -c common/sub/expr.c
+ 	mv expr.$(OBJEXT) common/sub/expr.$(OBJEXT)
+ 
+-common/sub/expr_gram.yacc.c common/sub/expr_gram.yacc.h: \
+-		common/sub/expr_gram.y
++common/sub/expr_gram.yacc.c: common/sub/expr_gram.yacc.h
++
++common/sub/expr_gram.yacc.h:  common/sub/expr_gram.y
+ 	$(YACC) -d common/sub/expr_gram.y
+ 	sed -e 's/[yY][yY]/sub_expr_gram_/g' y.tab.c > \
+ 		common/sub/expr_gram.yacc.c
+@@ -961,7 +962,7 @@ common/libcommon.a: $(lib_obj)
+ fcomp_obj = fcomp/main.$(OBJEXT)
+ 
+ bin/fcomp$(EXEEXT): $(fcomp_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fcomp_obj) \
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fcomp_obj) \
+ 		common/libcommon.a $(LIBS)
+ 
+ $(bindir)/fcomp$(EXEEXT): bin/fcomp$(EXEEXT) .bindir
+@@ -974,7 +975,7 @@ fhist_obj = fhist/breaks.$(OBJEXT) fhist/diff.$(OBJEXT) \
+ 		fhist/subroutine.$(OBJEXT) fhist/update.$(OBJEXT)
+ 
+ bin/fhist$(EXEEXT): $(fhist_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fhist_obj) \
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fhist_obj) \
+ 		common/libcommon.a $(LIBS)
+ 
+ $(bindir)/fhist$(EXEEXT): bin/fhist$(EXEEXT) .bindir
+@@ -983,7 +984,7 @@ $(bindir)/fhist$(EXEEXT): bin/fhist$(EXEEXT) .bindir
+ fmerge_obj = fmerge/main.$(OBJEXT) fmerge/work.$(OBJEXT)
+ 
+ bin/fmerge$(EXEEXT): $(fmerge_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fmerge_obj) \
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fmerge_obj) \
+ 		common/libcommon.a $(LIBS)
+ 
+ $(bindir)/fmerge$(EXEEXT): bin/fmerge$(EXEEXT) .bindir

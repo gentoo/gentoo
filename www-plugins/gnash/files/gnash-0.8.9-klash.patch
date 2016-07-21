@@ -1,0 +1,12 @@
+diff -ur a/macros/kde4.m4 b/macros/kde4.m4
+--- a/macros/kde4.m4	2011-02-26 19:11:08.000000000 +0100
++++ b/macros/kde4.m4	2011-03-21 00:04:38.845997945 +0100
+@@ -210,7 +210,7 @@
+       KDE4_CONFIGDIR="${KDE4_PREFIX}/share/kde4/config"
+     fi
+     if test x"${KDE4_APPSDATADIR}" = x ; then 
+-      KDE4_APPSDATADIR="${KDE4_PREFIX}/share/kde4/apps/klash"
++      KDE4_APPSDATADIR="${KDE4_PREFIX}/share/apps/klash"
+     fi
+ 
+   if test x"${ac_cv_path_kde4_incl}" != x ; then

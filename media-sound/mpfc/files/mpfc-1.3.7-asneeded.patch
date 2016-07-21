@@ -1,0 +1,26 @@
+Index: mpfc-1.3.7/libmpfc/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/libmpfc/Makefile.am
++++ mpfc-1.3.7/libmpfc/Makefile.am
+@@ -18,6 +18,6 @@ libmpfc_la_SOURCES = cfg.c charset.c fil
+ 					 song_info.c string.c vfs.c logger.c cfg_rcfile.c \
+ 					 plugin.c plugin_general.c command.c \
+ 					 $(libmpfchdr_HEADERS)
+-libmpfc_la_LIBADD = @COMMON_LIBS@ @RESOLV_LIBS@ 
++libmpfc_la_LIBADD = @COMMON_LIBS@ @RESOLV_LIBS@ @DL_LIBS@
+ INCLUDES = -I$(top_builddir)/src -I$(top_builddir)/libmpfcwnd
+ localedir = $(datadir)/locale
+Index: mpfc-1.3.7/src/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/src/Makefile.am
++++ mpfc-1.3.7/src/Makefile.am
+@@ -13,6 +13,7 @@ localedir = $(datadir)/locale
+ DEFS = -DLOCALEDIR=\"$(localedir)\" -DLIBDIR=\"$(libdir)\" \
+ 	   -DSYSCONFDIR=\"$(sysconfdir)\" @DEFS@
+ INCLUDES = -I$(top_builddir)/libmpfcwnd/
+-mpfc_LDADD = @COMMON_LIBS@ @PTHREAD_LIBS@ @DL_LIBS@ @MATH_LIBS@ \
++mpfc_LDADD =  \
+ 			 $(top_builddir)/libmpfc/libmpfc.la \
+-			 $(top_builddir)/libmpfcwnd/libmpfcwnd.la
++			 $(top_builddir)/libmpfcwnd/libmpfcwnd.la \
++                         @COMMON_LIBS@ @PTHREAD_LIBS@ @DL_LIBS@ @MATH_LIBS@

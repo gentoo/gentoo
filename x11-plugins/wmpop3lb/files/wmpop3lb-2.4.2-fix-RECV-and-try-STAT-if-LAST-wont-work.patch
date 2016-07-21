@@ -1,0 +1,190 @@
+--- wmpop3lb2.4.2/wmpop3/Pop3Client.c	2002-06-27 16:04:42.000000000 +0200
++++ wmpop3lb2.4.2-pathed/wmpop3/Pop3Client.c	2007-01-11 14:39:12.000000000 +0200
+@@ -27,6 +27,49 @@
+ 
+ #include "Pop3Client.h"
+ 
++/* receive full responce */
++int do_recv(int s, void *ibuf, size_t len, int flags)
++{
++  size_t ret, total;
++  char *p, *buf = ibuf;
++
++  total = 0;
++  while (1)
++  {
++    /* left one byte for null termination */
++    ret = recv(s, buf + total, len - 1 - total, flags);
++    /* if we got error or close, then brea */
++    if (ret <= 0)
++    {
++      break;
++    }
++    /* increase size of received data */
++    total += ret;
++    /* null terminating received data */
++    buf[total] = 0;
++    /* left one byte for null termination
++     * if out of buffer, return */
++    if (len - total <= 1)
++    {
++      break;
++    }
++    /* if we found end of line signal, then stop */
++    p = strstr(buf, "\r\n");
++    printf("p == %p\n", p);
++    if (p != 0)
++    {
++      break;
++    }
++  }
++
++  /* if there wasn't any data, then return error code */
++  if (total == 0)
++  {
++    return ret;
++  }
++  return total;
++}
++
+ /* return size if all goes well, -1 if not expected answer */
+ int	send_command(char *exp_answer, char **retour, Pop3 pc) 
+ {
+@@ -61,18 +104,29 @@
+     return (pc);
+ }
+ int pop3MakeConnection(Pop3 pc, char *serverName, int port){
++    struct timeval t;
+ 
+     pc->s = socket(AF_INET, SOCK_STREAM, 0 );
+     memset( &(pc->server), 0 , sizeof(pc->server));
+     pc->server.sin_family = AF_INET;
+     pc->hp = gethostbyname(serverName);
+     if( pc->hp == 0)
++    {
++        close(pc->s);
+         return -1;
++    }
+     memcpy( &(pc->server.sin_addr), pc->hp->h_addr, pc->hp->h_length);
+     pc->server.sin_port = htons(port);
+     if ( connect(pc->s, (struct sockaddr *)&(pc->server)
+                                , sizeof(pc->server)) < 0 )
++    {
++        close(pc->s);
+         return -1;
++    }
++    t.tv_sec = 60;
++    t.tv_usec = 0;
++    setsockopt(pc->s, SOL_SOCKET, SO_RCVTIMEO, &t, sizeof(t));
++    setsockopt(pc->s, SOL_SOCKET, SO_SNDTIMEO, &t, sizeof(t));
+     pc->connected = CONNECTED;
+    return 0;
+ }
+@@ -94,7 +148,7 @@
+           return -1;
+       }
+ 
+-      size = recv(pc->s,&pc->inBuf,1024,0);
++      size = do_recv(pc->s,&pc->inBuf,1024,0);
+       memset(temp,0,1024);
+       memcpy(temp,pc->inBuf,size);
+       if( temp[0] != '+' ){
+@@ -104,10 +158,10 @@
+ 
+       sprintf(pc->outBuf,"USER %s\r\n",name);
+       send(pc->s, &pc->outBuf,strlen(pc->outBuf),0); 
+-      size =recv(pc->s,pc->inBuf,1024,0);
++      size = do_recv(pc->s,pc->inBuf,1024,0);
+       memset(temp,0,1024);
+       memcpy(temp,pc->inBuf,size);
+-      if( temp[0] != '+' ){
++      if( temp[0] != '+' && temp[0] != '\r' ){
+           fprintf(stderr,"Invalid User Name\n");
+           return -1;
+       }
+@@ -115,10 +169,10 @@
+       memset(pc->outBuf,0,1024);
+       sprintf(pc->outBuf,"PASS %s\r\n",pass);
+       send(pc->s, pc->outBuf, strlen(pc->outBuf),0 );
+-      size =recv(pc->s,&pc->inBuf,1024,0);
++      size = do_recv(pc->s,&pc->inBuf,1024,0);
+       memset(temp,0,1024);
+       memcpy(temp,pc->inBuf,size);
+-      if( temp[0] != '+' ){
++      if( temp[0] != '+' && temp[0] != '\r'){
+           fprintf(stderr,"Incorrect Password\n");
+           return -1;
+       }
+@@ -213,7 +267,7 @@
+   /* Find total number of messages in mail box */
+   sprintf(pc->outBuf,"STAT\r\n");
+   send(pc->s, pc->outBuf, strlen(pc->outBuf),0 );
+-  size = recv(pc->s,pc->inBuf,1024,0);
++  size = do_recv(pc->s,pc->inBuf,1024,0);
+   if( pc->inBuf[0] != '+' ){
+     perror("Error Receiving Stats");
+     return (-1);
+@@ -266,7 +320,7 @@
+   /* Find total number of messages in mail box */
+   sprintf(pc->outBuf,"STAT\r\n");
+   send(pc->s, pc->outBuf, strlen(pc->outBuf),0 );
+-  size = recv(pc->s,pc->inBuf,1024,0);
++  size = do_recv(pc->s,pc->inBuf,1024,0);
+   pc->inBuf[size] = '\0';
+ #ifdef _DEBUG
+   printf("  pop3CheckMail, stat received buf (size=%d): [%s]\n",
+@@ -313,7 +367,7 @@
+ 
+   sprintf(pc->outBuf,"LAST\r\n");
+   send(pc->s, pc->outBuf, strlen(pc->outBuf),0 );
+-  size = recv(pc->s,pc->inBuf,1024,0);
++  size = do_recv(pc->s,pc->inBuf,1024,0);
+   pc->inBuf[size] = '\0';
+ #ifdef _DEBUG
+   printf("  pop3CheckMail, last received buf (size=%d): [%s]\n",
+@@ -325,9 +379,25 @@
+ #ifdef _DEBUG
+     printf("  Error Receiving LAST: [%s]\n", temp);
+ #endif
+-    pc->numOfUnreadMessages = pc->numOfMessages;
++    /* TRY STAT instead LAST */
++    sprintf(pc->outBuf,"STAT\r\n");
++    send(pc->s, pc->outBuf, strlen(pc->outBuf),0 );
++    size = do_recv(pc->s,pc->inBuf,1024,0);
++    pc->inBuf[size] = '\0';
++#ifdef _DEBUG
++    printf("  pop3CheckMail, last received buf (size=%d): [%s]\n",
++		    size, pc->inBuf);
++#endif
++    memset(temp,0,1024);
++    memcpy(temp,pc->inBuf,size);
++    if( temp[0] != '+' ){
++#ifdef _DEBUG
++      printf("  Error Receiving STAT: [%s]\n", temp);
++#endif
++      pc->numOfUnreadMessages = pc->numOfMessages;
++    }
+   }
+-  else {
++  if( temp[0] != '+' ){
+     ptr = strtok(temp, " ");
+     ptr = strtok( 0," ");
+     pc->numOfUnreadMessages = pc->numOfMessages - atoi(ptr);
+@@ -545,7 +615,7 @@
+   printf("  %s\n", pc->outBuf);
+ #endif
+   send(pc->s, pc->outBuf, strlen(pc->outBuf), 0);
+-  size = recv(pc->s, pc->inBuf, 4096, 0);
++  size = do_recv(pc->s, pc->inBuf, 4096, 0);
+   if ('+' != pc->inBuf[0]) {
+     perror("error while deleting mail");
+     return (1);
+@@ -579,7 +649,7 @@
+     if( pc->connected == NOT_CONNECTED )
+         return -1;
+     send(pc->s, "quit\r\n", 6,0 );
+-    size =recv(pc->s,&pc->inBuf,1024,0);
++    size = do_recv(pc->s,&pc->inBuf,1024,0);
+     pc->connected = NOT_CONNECTED;
+     if(pc->s != 0)
+         close(pc->s);

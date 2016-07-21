@@ -1,0 +1,20 @@
+--- pedro-1.6.orig/configure	2011-08-23 11:01:21.000000000 +1200
++++ pedro-1.6/configure	2011-11-19 21:28:47.000000000 +1300
+@@ -10478,7 +10478,7 @@
+ ac_config_headers="$ac_config_headers config.h"
+ 
+ #AC_CONFIG_MACRO_DIR([m4])
+-CPPFLAGS="-O2 -g `pkg-config --cflags glib-2.0`"
++CPPFLAGS="`pkg-config --cflags glib-2.0`"
+ case "${host}" in
+         i[3456789]86-*-mingw32*)
+                 WIN32="yes"
+@@ -10486,7 +10486,7 @@
+                 ;;
+         *)
+                 WIN32="no"
+-                LDFLAGS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
++                LDFLAGS="$LDFLAGS -L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
+                 ;;
+ esac
+ ac_config_files="$ac_config_files Makefile src/Makefile src/server/Makefile src/lib/Makefile src/examples/Makefile doc/Makefile"

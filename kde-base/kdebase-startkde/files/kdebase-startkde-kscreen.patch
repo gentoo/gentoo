@@ -1,0 +1,20 @@
+Only try to run krandrstartup if it exists wrt bug #524266.
+
+After f7f5d84c85b6c7f946b94808849648b4cb6ea667, krandrstartup is no longer
+available if kde-base/systemsettings is built with USE="kscreen". Otherwise,
+KDE will fail to start
+
+Source: http://pkgs.fedoraproject.org/cgit/kde-workspace.git/tree/startkde.cmake
+diff --git a/startkde.cmake b/startkde.cmake
+index afc2cfb..4220e64 100644
+--- a/startkde.cmake
++++ b/startkde.cmake
+@@ -105,7 +105,7 @@ if test -n "$kcminputrc_mouse_cursortheme" -o -n "$kcminputrc_mouse_cursorsize"
+     fi
+ fi
+ 
+-. krandrstartup
++KRANDRSTARTUP=`which krandrstartup 2>/dev/null` && . $KRANDRSTARTUP
+ 
+ if test "$kcmfonts_general_forcefontdpi" -ne 0; then
+     xrdb -quiet -merge -nocpp <<EOF

@@ -1,0 +1,127 @@
+commit 2df15fc79acc7ef5ea9213c87f6700faf138518d
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Sun Oct 10 21:08:05 2010 +0300
+
+    OTHER: one more me in AUTHORS
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/AUTHORS b/AUTHORS
+index f2ef9af..e33acb5 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -354,6 +354,7 @@ D: Various fixes
+ 
+ N: Sergei Trofimovich
+ E: slyich@gmail.com
++E: slyfox@gentoo.org
+ E: slyfox@inbox.ru
+ E: st@anti-virus.by
+ D: Various Cleanups
+
+commit fb4eede29ba11d2ecec039de6899f8cce55dde8d
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Sun Oct 10 21:01:49 2010 +0300
+
+    OTHER: explicitely declare xmmsc_mainloop_gmain_init() and _xmmsc_medialib_encode_url()
+    
+    Added according includefiles
+    
+    Was spotted by ZogG on #xmms2
+    And reported as: https://bugs.gentoo.org/show_bug.cgi?id=340361
+    
+    gcc's warning:
+    ../src/clients/medialib-updater/main.c: In function 'updater_connect':
+    ../src/clients/medialib-updater/main.c:135: warning: implicit declaration of function 'xmmsc_mainloop_gmain_init'
+    ../src/clients/medialib-updater/main.c: In function 'updater_remove_directory':
+    ../src/clients/medialib-updater/main.c:468: warning: implicit declaration of function '_xmmsc_medialib_encode_url'
+    ../src/clients/medialib-updater/main.c:468: warning: cast to pointer from integer of different size
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/src/clients/medialib-updater/main.c b/src/clients/medialib-updater/main.c
+index 3b36bc9..2dd7b08 100644
+--- a/src/clients/medialib-updater/main.c
++++ b/src/clients/medialib-updater/main.c
+@@ -18,6 +18,9 @@
+ 
+ #include <gio/gio.h>
+ #include <xmmsclient/xmmsclient.h>
++#include <xmmsclient/xmmsclient-glib.h>
++
++#include "xmmsclientpriv/xmmsclient.h" // _xmmsc_medialib_encode_url
+ 
+ #include <xmms_configuration.h>
+ 
+diff --git a/src/clients/medialib-updater/wscript b/src/clients/medialib-updater/wscript
+index 841ae85..cd38b5e 100644
+--- a/src/clients/medialib-updater/wscript
++++ b/src/clients/medialib-updater/wscript
+@@ -4,7 +4,7 @@ def build(bld):
+     obj = bld.new_task_gen('cc', 'program')
+     obj.target = 'xmms2-mlib-updater'
+     obj.source = "main.c"
+-    obj.includes = '. ../../.. ../../include'
++    obj.includes = '. ../../.. ../../include ../../includepriv'
+     obj.uselib = 'glib2 GIO-2.0 GTHREAD-2.0'
+     obj.uselib_local = 'xmmsclient-glib xmmsclient'
+ 
+
+commit a3dff97f048bae91cdfd8b2bc761cd9ebe184eb9
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Sun Oct 10 20:52:30 2010 +0300
+
+    OTHER: explicitely declare g_sprintf()
+    
+    g_sprintf is not defined by glib.h (glib-2.24.2),
+    but it's defined by <glib/gsprintf.h>
+    
+    Was spotted by ZogG on #xmms2
+    And reported as: https://bugs.gentoo.org/show_bug.cgi?id=340361
+    
+    gcc's warning:
+    ../src/xmms/magic.c: In function 'xmms_magic_match':
+    ../src/xmms/magic.c:470: warning: implicit declaration of function 'g_sprintf'
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/src/xmms/magic.c b/src/xmms/magic.c
+index 31b0b00..a0f9658 100644
+--- a/src/xmms/magic.c
++++ b/src/xmms/magic.c
+@@ -15,8 +15,8 @@
+  */
+ 
+ 
+-
+ #include <glib.h>
++#include <glib/gprintf.h>
+ #include <string.h>
+ #include <stdlib.h>
+ 
+
+commit 43648e7b701a9598d9a9769caec152fd23b4e2f5
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Sun Oct 10 20:47:23 2010 +0300
+
+    OTHER: explicitely declare semtimedop()
+    
+    semtimedop(2) is a GNU extension which needs _GNU_SOURCE
+    to be defined. Was spotted by ZogG on #xmms2
+    And reported as: https://bugs.gentoo.org/show_bug.cgi?id=340361
+    
+    gcc's warning:
+    
+     * ../src/clients/lib/xmmsclient/visualization/unixshm.c:102: warning: implicit declaration of function 'semtimedop'
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/src/clients/lib/xmmsclient/visualization/unixshm.c b/src/clients/lib/xmmsclient/visualization/unixshm.c
+index 50883a9..3d28ccc 100644
+--- a/src/clients/lib/xmmsclient/visualization/unixshm.c
++++ b/src/clients/lib/xmmsclient/visualization/unixshm.c
+@@ -1,3 +1,4 @@
++#define _GNU_SOURCE // semtimedop is a GNU extension
+ #include "common.h"
+ 
+ #include <sys/shm.h>

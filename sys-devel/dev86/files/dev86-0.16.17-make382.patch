@@ -1,0 +1,11 @@
+--- libc/i386sys/Makefile
++++ libc/i386sys/Makefile
+@@ -12,7 +12,7 @@
+ DOBJ=opendir.o closedir.o readdir.o
+ 
+ ifeq ($(LIB_CPU)-$(LIB_OS),i386-ELKS)
+-OBJ=$(LOBJ3) $(LOBJ) $(EOBJ) $(DOBJ) setjmp3.o
++OBJ=$(LOBJ) $(LOBJ) $(EOBJ) $(DOBJ) setjmp3.o
+ SYSCALLS=syscalls
+ 
+ CFLAGS=$(ARCH) $(CCFLAGS) $(DEFS)

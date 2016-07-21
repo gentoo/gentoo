@@ -1,0 +1,31 @@
+From: Michael Pyne <mpyne@kde.org>
+Date: Mon, 28 Dec 2015 01:33:23 +0000
+Subject: Check sockaddr_un buffer size before strcpy()ing into it.
+X-Git-Url: http://quickgit.kde.org/?p=kwallet-pam.git&a=commitdiff&h=9543cc4058b24e4e5bfe8d324de309ca7050058b
+---
+Check sockaddr_un buffer size before strcpy()ing into it.
+
+Coverity strikes again, and notes in CID 1335116 that copying the socket name
+into a fixed-size buffer here could overflow the buffer. I don't see any reason
+it would be wrong in all cases, so best to double-check.
+
+REVIEW:126539
+---
+
+
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -422,6 +422,12 @@
+ 
+     struct sockaddr_un local;
+     local.sun_family = AF_UNIX;
++
++    if ((size_t)len > sizeof(local.sun_path)) {
++        pam_syslog(pamh, LOG_ERR, "%s: socket path %s too long to open",
++                   logPrefix, fullSocket);
++        return;
++    }
+     strcpy(local.sun_path, fullSocket);
+     unlink(local.sun_path);//Just in case it exists from a previous login
+ 
+

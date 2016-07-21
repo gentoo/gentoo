@@ -1,0 +1,11 @@
+--- src/gettext.h~	2007-02-23 16:05:21.000000000 +0000
++++ src/gettext.h	2009-02-03 12:41:31.584312058 +0000
+@@ -24,7 +24,7 @@
+ 
+ /* Get declarations of GNU message catalog functions.  */
+ # include <libintl.h>
+-
++# include <locale.h>
+ #else
+ 
+ /* Solaris /usr/include/locale.h includes /usr/include/libintl.h, which

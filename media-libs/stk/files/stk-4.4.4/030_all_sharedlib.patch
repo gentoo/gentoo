@@ -1,0 +1,13 @@
+Index: stk-4.4.3/src/Makefile.in
+===================================================================
+--- stk-4.4.3.orig/src/Makefile.in
++++ stk-4.4.3/src/Makefile.in
+@@ -64,7 +64,7 @@ DEFS    += -DRAWWAVE_PATH=\"$(RAWWAVES)\
+ %.o : ../src/include/%.cpp
+ 	$(CC) $(CFLAGS) $(DEFS) -c $(<) -o $(OBJECT_PATH)/$@
+ 
+-all : $(STATICLIB)
++all : $(STATICLIB) $(SHAREDLIB)
+ 
+ $(STATICLIB) : $(OBJECTS)
+ 	$(RM) -f $(STATICLIB)

@@ -1,0 +1,12 @@
+diff -uNr sipsak-0.9.6.ORIG/helper.c sipsak-0.9.6/helper.c
+--- sipsak-0.9.6.ORIG/helper.c	2015-01-27 14:14:12.208729426 +0000
++++ sipsak-0.9.6/helper.c	2015-01-27 14:14:55.406728851 +0000
+@@ -250,7 +250,7 @@
+ 	return aptr;
+ }
+ 
+-static void cares_callback(void *arg, int status, unsigned char *abuf, int alen) {
++static void cares_callback(void *arg, int status, int timeouts, unsigned char *abuf, int alen) {
+ 	int i;
+ 	unsigned int ancount, nscount, arcount;
+ 	const unsigned char *aptr;

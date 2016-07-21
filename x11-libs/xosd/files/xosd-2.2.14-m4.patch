@@ -1,0 +1,9 @@
+Fix aclocal warning:
+/usr/share/aclocal/libxosd.m4:9: warning: underquoted definition of AM_PATH_LIBXOSD
+--- xosd-2.2.14/libxosd.m4
++++ xosd-2.2.14/libxosd.m4
+@@ -8,3 +8,3 @@
+ dnl
+-AC_DEFUN(AM_PATH_LIBXOSD,
++AC_DEFUN([AM_PATH_LIBXOSD],
+ [dnl

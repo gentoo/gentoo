@@ -1,0 +1,46 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Oct 21 19:33:04 UTC 2012
+Subject: build system
+
+	respect flags where possible
+
+--- configure.ac
++++ configure.ac
+@@ -18,26 +18,6 @@
+ 
+ 
+ dnl linker optimizations
+-AC_MSG_CHECKING([whether $LD accepts --as-needed])
+-case `$LD --as-needed -v 2>&1 </dev/null` in
+-*GNU* | *'with BFD'*)
+-  LDFLAGS="$LDFLAGS -Wl,--as-needed"
+-  AC_MSG_RESULT([yes])
+-  ;;
+-*)
+-  AC_MSG_RESULT([no])
+-  ;;
+-esac
+-AC_MSG_CHECKING([whether $LD accepts -O1])
+-case `$LD -O1 -v 2>&1 </dev/null` in
+-*GNU* | *'with BFD'*)
+-  LDFLAGS="$LDFLAGS -Wl,-O1"
+-  AC_MSG_RESULT([yes])
+-  ;;
+-*)
+-  AC_MSG_RESULT([no])
+-  ;;
+-esac
+ AC_MSG_CHECKING([whether $LD accepts -Bsymbolic-functions])
+ case `$LD -Bsymbolic-functions -v 2>&1 </dev/null` in
+ *GNU* | *'with BFD'*)
+@@ -49,10 +29,6 @@
+   ;;
+ esac
+ 
+-dnl advanced compiler tweaking
+-CPPFLAGS="$CPPFLAGS -fstrict-aliasing -fmessage-length=0"
+-
+-
+ # program paths
+ AC_ARG_WITH(mount-prog, 
+ 	AC_HELP_STRING([--with-mount-prog=PATH], [Path to mount program (default: /bin/mount)]),

@@ -1,0 +1,16 @@
+Now please read the installation manual at
+/usr/share/doc/${PF}/html
+
+MoinMoin can work with a variety of webservers. Simple Apache instructions
+are given below:
+
+1. ExecCGI needs to be enabled in your Moinmoin directory by doing:
+# echo "Options ExecCGI" > ${MY_INSTALLDIR}/.htaccess
+# echo "AddHandler cgi-script .cgi" >> ${MY_INSTALLDIR}/.htaccess
+
+2. Add the following lines to your Apache configs:
+ScriptAlias /mywiki "${MY_INSTALLDIR}/moin.cgi"
+
+3. Restart Apache
+
+4. Go to http://${VHOST_HOSTNAME}/mywiki/ and follow the instructions there.

@@ -1,0 +1,11 @@
+diff -ur openexr_ctl-1.0.1.orig/exr_ctl_exr/applyCtl.cpp openexr_ctl-1.0.1/exr_ctl_exr/applyCtl.cpp
+--- openexr_ctl-1.0.1.orig/exr_ctl_exr/applyCtl.cpp	2007-07-13 06:24:37.000000000 +0300
++++ openexr_ctl-1.0.1/exr_ctl_exr/applyCtl.cpp	2009-07-30 11:46:29.000000000 +0300
+@@ -60,6 +60,7 @@
+ #include <ImfStandardAttributes.h>
+ #include <ImfHeader.h>
+ #include <ImfFrameBuffer.h>
++#include <cstdio>
+ #include <cassert>
+ #include <iostream>
+ #include <vector>

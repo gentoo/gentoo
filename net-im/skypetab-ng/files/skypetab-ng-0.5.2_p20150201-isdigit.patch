@@ -1,0 +1,14 @@
+Missing header noticed by gcc:
+ * skype-poll-fix.c:38:9: warning: implicit declaration of function ‘isdigit’ [-Wimplicit-function-declaration]
+diff --git a/skype-poll-fix.c b/skype-poll-fix.c
+index ccc88a1..fd21ba8 100644
+--- a/skype-poll-fix.c
++++ b/skype-poll-fix.c
+@@ -2,2 +2,3 @@
+ #define _GNU_SOURCE
++#include <ctype.h>
+ #include <stdio.h>
+@@ -13,3 +14,2 @@
+ #include <sys/time.h>
+-#include <ctype.h>
+ #endif

@@ -1,0 +1,22 @@
+commit 1361899d1a336938811eceb17e2f71abe650ae17
+Author: Davide Viti <zinosat@tiscali.it>
+Date:   Sun Nov 9 21:37:28 2014 +0100
+
+    Add "WITH_OPENGL" option to make OpenGL and Glut inclusion conditional
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6cc473d..7fda151 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -403,7 +403,10 @@ if(WITH_PCAP)
+ endif(WITH_PCAP)
+ 
+ # OpenGL and GLUT
+-include("${PCL_SOURCE_DIR}/cmake/pcl_find_gl.cmake")
++option(WITH_OPENGL "Support for OpenGL" TRUE)
++if(WITH_OPENGL)
++  include("${PCL_SOURCE_DIR}/cmake/pcl_find_gl.cmake")
++endif(WITH_OPENGL)
+ 
+ ### ---[ Create the config.h file
+ set(pcl_config_h_in "${CMAKE_CURRENT_SOURCE_DIR}/pcl_config.h.in")

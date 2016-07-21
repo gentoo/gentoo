@@ -1,0 +1,266 @@
+diff -Nru linux-atm-2.4.1.orig/src/arpd/io.c linux-atm-2.4.1/src/arpd/io.c
+--- linux-atm-2.4.1.orig/src/arpd/io.c	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/arpd/io.c	2007-04-14 18:30:54.000000000 +0300
+@@ -16,7 +16,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+-#include <net/if.h>
++#include <linux/if.h>
+ #include <netinet/in.h>
+ #include <atm.h>
+ #include <linux/atmclip.h> /* for CLIP_DEFAULT_IDLETIMER */
+diff -Nru linux-atm-2.4.1.orig/src/debug/svctor.c linux-atm-2.4.1/src/debug/svctor.c
+--- linux-atm-2.4.1.orig/src/debug/svctor.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/debug/svctor.c	2007-04-14 18:37:01.000000000 +0300
+@@ -20,6 +20,7 @@
+ #define QOS		"ubr,aal5:tx:max_sdu=100,rx:max_sdu=100"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <signal.h>
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/asn1/asn_bits.c linux-atm-2.4.1/src/ilmid/asn1/asn_bits.c
+--- linux-atm-2.4.1.orig/src/ilmid/asn1/asn_bits.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/asn1/asn_bits.c	2007-04-14 18:31:56.000000000 +0300
+@@ -20,6 +20,8 @@
+ #if HAVE_CONFIG_H
+ #include <config.h>
+ #endif
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "asn_config.h"
+ #include "asn_len.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/asn1/asn_list.c linux-atm-2.4.1/src/ilmid/asn1/asn_list.c
+--- linux-atm-2.4.1.orig/src/ilmid/asn1/asn_list.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/asn1/asn_list.c	2007-04-14 18:42:38.000000000 +0300
+@@ -20,6 +20,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include "asn_config.h"
+ #include "asn_list.h"
+ 
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/asn1/asn_octs.c linux-atm-2.4.1/src/ilmid/asn1/asn_octs.c
+--- linux-atm-2.4.1.orig/src/ilmid/asn1/asn_octs.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/asn1/asn_octs.c	2007-04-14 18:32:06.000000000 +0300
+@@ -20,6 +20,8 @@
+ #if HAVE_CONFIG_H
+ #include <config.h>
+ #endif
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "asn_config.h"
+ #include "asn_len.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/asn1/asn_oid.c linux-atm-2.4.1/src/ilmid/asn1/asn_oid.c
+--- linux-atm-2.4.1.orig/src/ilmid/asn1/asn_oid.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/asn1/asn_oid.c	2007-04-14 18:32:54.000000000 +0300
+@@ -20,6 +20,8 @@
+ #if HAVE_CONFIG_H
+ #include <config.h>
+ #endif
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "asn_config.h"
+ #include "asn_len.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/asn1/nibble_alloc.c linux-atm-2.4.1/src/ilmid/asn1/nibble_alloc.c
+--- linux-atm-2.4.1.orig/src/ilmid/asn1/nibble_alloc.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/asn1/nibble_alloc.c	2007-04-14 18:43:04.000000000 +0300
+@@ -20,6 +20,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <memory.h>
+ #include "asn_config.h"
+ #include "nibble_alloc.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/atmf_uni.c linux-atm-2.4.1/src/ilmid/atmf_uni.c
+--- linux-atm-2.4.1.orig/src/ilmid/atmf_uni.c	2007-04-14 18:30:41.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/atmf_uni.c	2007-04-14 18:43:35.000000000 +0300
+@@ -25,6 +25,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include "atmf_uni.h"
+ #include "atmd.h"
+ #include "util.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/ilmid.c linux-atm-2.4.1/src/ilmid/ilmid.c
+--- linux-atm-2.4.1.orig/src/ilmid/ilmid.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/ilmid.c	2007-04-14 18:33:47.000000000 +0300
+@@ -34,6 +34,7 @@
+ #endif
+ 
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <sys/time.h>
+ #include <errno.h>
+ #include "asn_incl.h"
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/io.c linux-atm-2.4.1/src/ilmid/io.c
+--- linux-atm-2.4.1.orig/src/ilmid/io.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/io.c	2007-04-14 18:44:42.000000000 +0300
+@@ -25,6 +25,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <sys/ioctl.h>
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/mib.c linux-atm-2.4.1/src/ilmid/mib.c
+--- linux-atm-2.4.1.orig/src/ilmid/mib.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/mib.c	2007-04-14 18:45:49.000000000 +0300
+@@ -30,6 +30,7 @@
+ #include "atmf_uni.h"
+ #include "util.h"
+ #include "atmd.h"
++#include "io.h"
+ 
+ #include <unistd.h>		/* gethostname()	*/
+ #include <netdb.h>		/* gethostbyname()	*/
+diff -Nru linux-atm-2.4.1.orig/src/lane/lecs_db.l linux-atm-2.4.1/src/lane/lecs_db.l
+--- linux-atm-2.4.1.orig/src/lane/lecs_db.l	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/lane/lecs_db.l	2007-04-14 18:35:17.000000000 +0300
+@@ -7,6 +7,7 @@
+ /*Standard includes*/
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ /* Local includes */
+ #include "lecs_load.h"
+diff -Nru linux-atm-2.4.1.orig/src/lane/load_lex.l linux-atm-2.4.1/src/lane/load_lex.l
+--- linux-atm-2.4.1.orig/src/lane/load_lex.l	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/lane/load_lex.l	2007-04-14 18:34:51.000000000 +0300
+@@ -4,6 +4,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ 
+diff -Nru linux-atm-2.4.1.orig/src/lane/mem_lecs.c linux-atm-2.4.1/src/lane/mem_lecs.c
+--- linux-atm-2.4.1.orig/src/lane/mem_lecs.c	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/lane/mem_lecs.c	2007-04-14 18:35:47.000000000 +0300
+@@ -13,6 +13,7 @@
+ /* System includes */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ 
+ /* Local includes */
+diff -Nru linux-atm-2.4.1.orig/src/mpoad/k_interf.c linux-atm-2.4.1/src/mpoad/k_interf.c
+--- linux-atm-2.4.1.orig/src/mpoad/k_interf.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/mpoad/k_interf.c	2007-04-14 18:36:40.000000000 +0300
+@@ -3,6 +3,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <errno.h>
+diff -Nru linux-atm-2.4.1.orig/src/qgen/ql_y.y linux-atm-2.4.1/src/qgen/ql_y.y
+--- linux-atm-2.4.1.orig/src/qgen/ql_y.y	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/qgen/ql_y.y	2007-04-14 19:10:07.000000000 +0300
+@@ -26,6 +26,8 @@
+ static STRUCTURE *structures = NULL;
+ static const char *abort_id; /* indicates abort flag */
+ 
++void yyerror(const char *s);
++int yylex ( void );
+ 
+ static NAME_LIST *get_name_list(const char *name)
+ {
+diff -Nru linux-atm-2.4.1.orig/src/sigd/cfg_y.y linux-atm-2.4.1/src/sigd/cfg_y.y
+--- linux-atm-2.4.1.orig/src/sigd/cfg_y.y	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/sigd/cfg_y.y	2007-04-14 19:10:56.000000000 +0300
+@@ -7,6 +7,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include <limits.h>
+@@ -23,6 +24,9 @@
+ static RULE *rule;
+ static SIG_ENTITY *curr_sig = &_entity;
+ 
++void yyerror(const char *s);
++void yywarn(const char *s);
++int yylex ( void );
+ 
+ static int hex2num(char digit)
+ {
+@@ -126,7 +130,7 @@
+ 	    for (sig = entities; sig; sig = sig->next)
+ 		if (atm_equal((struct sockaddr *) &sig->signaling_pvc,
+ 		  (struct sockaddr *) &$2,0,0))
+-		    yyerror("duplicate PVC address %d.%d.%d",S_PVC(sig));
++		    yyerror("duplicate PVC address");
+ 	    curr_sig = alloc_t(SIG_ENTITY);
+ 	    *curr_sig = _entity;
+ 	    curr_sig->signaling_pvc = $2;
+diff -Nru linux-atm-2.4.1.orig/src/switch/cfg_y.y linux-atm-2.4.1/src/switch/cfg_y.y
+--- linux-atm-2.4.1.orig/src/switch/cfg_y.y	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/switch/cfg_y.y	2007-04-14 19:11:34.000000000 +0300
+@@ -7,6 +7,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+ #include <limits.h>
+@@ -22,6 +23,9 @@
+ static int itf;
+ static SIGNALING_ENTITY *sig;
+ 
++void yyerror(const char *s);
++int yylex ( void );
++
+ %}
+ 
+ %union {
+diff -Nru linux-atm-2.4.1.orig/src/test/ispl_y.y linux-atm-2.4.1/src/test/ispl_y.y
+--- linux-atm-2.4.1.orig/src/test/ispl_y.y	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/test/ispl_y.y	2007-04-14 19:08:33.000000000 +0300
+@@ -19,6 +19,7 @@
+ 
+ static struct atmsvc_msg msg;
+ 
++int yylex ( void );
+ 
+ %}
+ 
+diff -Nru linux-atm-2.4.1.orig/src/test/ttcp.c linux-atm-2.4.1/src/test/ttcp.c
+--- linux-atm-2.4.1.orig/src/test/ttcp.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/test/ttcp.c	2007-04-14 18:30:54.000000000 +0300
+@@ -54,7 +54,11 @@
+ /* #define BSD41a */
+ /* #define SYSV */	/* required on SGI IRIX releases before 3.3 */
+ 
++#include <stdlib.h>
++#include <unistd.h>
++#include <string.h>
+ #include <stdio.h>
++#include <sys/select.h>
+ #include <signal.h>
+ #include <ctype.h>
+ #include <errno.h>
+@@ -120,7 +124,6 @@
+ static struct rusage ru0;		/* Resource utilization at the start */
+ 
+ struct hostent *addr;
+-extern int errno;
+ extern int optind;
+ extern char *optarg;
+ 

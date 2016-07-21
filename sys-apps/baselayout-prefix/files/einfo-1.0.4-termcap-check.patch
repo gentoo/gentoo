@@ -1,0 +1,83 @@
+#diff -ru einfo-1.0.4/configure.ac einfo/configure.ac
+#--- einfo-1.0.4/configure.ac	2013-10-27 17:39:07.000000000 +0100
+#+++ einfo/configure.ac	2013-10-29 18:01:51.975745907 +0100
+#@@ -22,7 +22,7 @@
+# 	  )
+# 	)
+# fi
+#-AC_DEFINE([HAVE_TERMCAP], test "x$HAVE_TERMCAP" != "x",
+#+AC_DEFINE_UNQUOTED([HAVE_TERMCAP], `test "x$HAVE_TERMCAP" = "x"; echo $?`,
+# 		  [Define if termcap.h and library exist])
+# AC_SUBST([TERMCAP_LIBS], [$HAVE_TERMCAP])
+# 
+diff -ru einfo-1.0.4/configure einfo/configure
+--- einfo-1.0.4/configure	2013-10-27 17:42:20.000000000 +0100
++++ einfo/configure	2013-10-29 18:02:08.405707018 +0100
+@@ -11447,7 +11432,9 @@
+ 
+ fi
+ 
+-$as_echo "#define HAVE_TERMCAP test \"x\$HAVE_TERMCAP\" != \"x\"" >>confdefs.h
++cat >>confdefs.h <<_ACEOF
++#define HAVE_TERMCAP `test "x$HAVE_TERMCAP" = "x"; echo $?`
++_ACEOF
+ 
+ TERMCAP_LIBS=$HAVE_TERMCAP
+ 
+diff -ru einfo-1.0.4/src/libeinfo/libeinfo.c einfo/src/libeinfo/libeinfo.c
+--- einfo-1.0.4/src/libeinfo/libeinfo.c	2013-10-27 17:37:25.000000000 +0100
++++ einfo/src/libeinfo/libeinfo.c	2013-10-29 18:05:38.081876730 +0100
+@@ -50,7 +50,7 @@
+ #include <string.h>
+ #include <strings.h>
+ #include <syslog.h>
+-#ifdef HAVE_TERMCAP
++#if HAVE_TERMCAP
+ # include <termcap.h>
+ #endif
+ #include <unistd.h>
+@@ -155,7 +155,7 @@
+ 
+ /* Termcap buffers and pointers
+  * Static buffers suck hard, but some termcap implementations require them */
+-#ifdef HAVE_TERMCAP
++#if HAVE_TERMCAP
+ static char termcapbuf[2048];
+ static char tcapbuf[512];
+ #else
+@@ -287,7 +287,7 @@
+ }
+ 
+ /* Fake tgoto call - very crapy, but works for our needs */
+-#ifndef HAVE_TERMCAP
++#if !HAVE_TERMCAP
+ static char *
+ tgoto(const char *cap, int col, int line)
+ {
+@@ -363,7 +363,7 @@
+ 	const char *bold;
+ 	char tmp[100];
+ 	unsigned int i = 0;
+-#ifdef HAVE_TERMCAP
++#if HAVE_TERMCAP
+ 	char *bp;
+ #endif
+ 
+@@ -387,7 +387,7 @@
+ 	if (strcmp(term, "cons25") == 0)
+ 		term_is_cons25 = true;
+ 
+-#ifdef HAVE_TERMCAP
++#if HAVE_TERMCAP
+ 	/* Check termcap to see if we can do colour or not */
+ 	if (tgetent(termcapbuf, term) == 1) {
+ 		bp = tcapbuf;
+@@ -433,7 +433,7 @@
+ 			_me = ME;
+ 		if (!_up)
+ 			_up = UP;
+-#ifdef HAVE_TERMCAP
++#if HAVE_TERMCAP
+ 	}
+ 
+ 	if (!_af || !_ce || !_me || !_md || !_up) {

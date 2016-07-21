@@ -1,0 +1,129 @@
+--- a/configure
++++ b/configure
+@@ -163,44 +163,6 @@
+     exit 1
+ }
+ 
+-check_xf86misc() {
+-
+-    cat << EOF > tmp.c
+-#include <X11/Xlib.h>
+-#include <X11/extensions/xf86misc.h>
+-int main() {
+-    XF86MiscSetGrabKeysState(NULL, True);
+-    return 0;
+-}
+-EOF
+-    msg_chkfor "extensions/xf86misc.h"
+-    if ${CC} ${CFLAGS} -c tmp.c -o /dev/null 2>&3
+-    then
+-        echo "ok."
+-        msg_chkfor "xf86misc"
+-        if ${CC} ${CFLAGS} tmp.c -o /dev/null ${LDFLAGS} -lX11 -lXxf86misc 2>&3
+-        then
+-            echo "ok."
+-            echo "#_______________________" >&4
+-            echo "WITH_XF86MISC:=1" >&4
+-            echo "LIBS += -lXxf86misc" >&4
+-            echo "" >&4
+-            return
+-        fi
+-    fi
+-    echo "no."
+-    echo " "
+-    echo "!!! WARNING !!!"
+-    echo "   if the xserver is configured to allow"
+-    echo "   'AllowDeactivateGrabs' or 'AllowClosedownGrabs'"
+-    echo "   people can bypass alock !!! consider"
+-    echo "   to install the xf86misc extension!"
+-    echo "!!! WARNING !!!"
+-    echo " "
+-}
+-
+-
+-
+ 
+ check_xlib() {
+ 
+@@ -431,7 +393,6 @@
+ check_docs
+ check_tools
+ check_xlib
+-check_xf86misc
+ check_xlogo16
+ [ "$CHECK_XPM" -eq 1 ] && check_xpm
+ [ "$CHECK_XRENDER" -eq 1 ] && check_xrender
+--- a/src/GNUmakefile
++++ b/src/GNUmakefile
+@@ -46,7 +46,7 @@
+ 
+ ######################
+ 
+-MODULES = PAM PASSWD HASH XRENDER XCURSOR XF86MISC IMLIB2 XPM
++MODULES = PAM PASSWD HASH XRENDER XCURSOR IMLIB2 XPM
+ STAND_ALONES = $(subst auth_,,$(SRC_HASH:.c=))
+ 
+ $(foreach module,$(MODULES),$(eval $(call funcAddModule,$(module))))
+--- a/src/alock.c
++++ b/src/alock.c
+@@ -24,10 +24,6 @@
+ #include <unistd.h>
+ #include <poll.h>
+ 
+-#ifdef HAVE_XF86MISC
+-#include <X11/extensions/xf86misc.h>
+-#endif
+-
+ /*----------------------------------------------*\
+ \*----------------------------------------------*/
+ 
+@@ -405,11 +401,6 @@
+     struct aXInfo xinfo;
+     struct aOpts opts;
+ 
+-#if HAVE_XF86MISC
+-    int xf86misc_major = -1;
+-    int xf86misc_minor = -1;
+-#endif
+-
+     int arg = 0;
+     const char* cursor_args = NULL;
+     const char* background_args = NULL;
+@@ -587,23 +578,6 @@
+         }
+     }
+ 
+-#if HAVE_XF86MISC
+-    {
+-        if (XF86MiscQueryVersion(xinfo.display, &xf86misc_major, &xf86misc_minor) == True) {
+-
+-            if (xf86misc_major >= 0 &&
+-                xf86misc_minor >= 5 &&
+-                XF86MiscSetGrabKeysState(xinfo.display, False) == MiscExtGrabStateLocked) {
+-
+-                printf("%s", "alock: cant disable xserver hotkeys to remove grabs.\n");
+-                exit(EXIT_FAILURE);
+-            }
+-
+-            printf("%s", "disabled AllowDeactivateGrabs and AllowClosedownGrabs\n.");
+-        }
+-    }
+-#endif
+-
+     /* TODO: think about it: do we really need NR_SCREEN cursors ? we grab the
+      * pointer on :*.0 anyway ... */
+     if (XGrabPointer(xinfo.display, xinfo.window[0], False, None,
+@@ -621,13 +595,6 @@
+     opts.cursor->deinit(&xinfo);
+     opts.background->deinit(&xinfo);
+ 
+-#if HAVE_XF86MISC
+-    if (xf86misc_major >= 0 && xf86misc_minor >= 5) {
+-        XF86MiscSetGrabKeysState(xinfo.display, True);
+-        XFlush(xinfo.display);
+-    }
+-#endif
+-
+     XCloseDisplay(xinfo.display);
+ 
+     return EXIT_SUCCESS;

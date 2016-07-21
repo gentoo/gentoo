@@ -1,0 +1,19 @@
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sun Sep 29 17:41:02 2013 +0200
+
+    remove obsolete macro
+
+    AC_PROG_CC is already called anyway
+
+diff --git a/configure.ac b/configure.ac
+index 22bc235..81f6277 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -39,7 +39,6 @@ AC_ISC_POSIX
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_C_INLINE
+-AM_PROG_CC_STDC
+ AC_HEADER_STDC
+ AM_PROG_CC_C_O
+ AC_CHECK_PROGS(MD5SUM,[md5sum md5])

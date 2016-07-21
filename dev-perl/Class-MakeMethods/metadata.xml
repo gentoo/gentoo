@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Class-MakeMethods</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Attribute</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Autoload</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Basic</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Basic::Array</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Basic::Global</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Basic::Hash</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite::Array</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite::Global</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite::Hash</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite::Inheritable</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Composite::Universal</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::AccessorFast</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::Inheritable</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::MethodMaker</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::Singleton</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::Struct</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::accessors</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::accessors::chained</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::accessors::classic</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Emulator::mcoder</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Evaled</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Evaled::Hash</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard::Array</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard::Global</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard::Hash</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard::Inheritable</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Standard::Universal</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Array</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Class</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::ClassInherit</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::ClassName</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::ClassVar</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Flyweight</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Generic</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Global</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Hash</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Inheritable</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::InsideOut</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::PackageVar</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Ref</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Scalar</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Static</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Struct</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::StructBuiltin</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Template::Universal</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Utility::ArraySplicer</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Utility::DiskCache</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Utility::Inheritable</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Utility::Ref</remote-id>
+    <remote-id type="cpan-module">Class::MakeMethods::Utility::TextBuilder</remote-id>
+    <remote-id type="cpan-module">TieScalarTest</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- kit.orig/draw.c	2012-10-14 20:25:10.000000000 +0200
++++ kit/draw.c	2016-01-12 16:45:54.123549077 +0100
+@@ -2847,7 +2847,7 @@
+ 	char *seed;
+ 	char *registry;
+ 
+-	if (code >= 0xa0 && ((!argregistry || !argregistry[0]) && mgp_charset))
++	if (code >= 0xa0 && ((!argregistry || !argregistry[0]) && mgp_charset[0]))
+ 		registry = mgp_charset;
+ 	else 
+ 		registry = argregistry;

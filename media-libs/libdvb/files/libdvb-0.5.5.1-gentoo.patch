@@ -1,0 +1,33 @@
+--- Makefile.orig	2005-03-22 14:23:25.000000000 +0100
++++ Makefile	2005-04-06 16:25:50.000000000 +0200
+@@ -11,7 +11,7 @@
+ 
+ 
+ 
+-main: $(DVB_LIBS) $(TEST_PROGS) $(DVB-MPEGTOOLS)
++main: $(DVB_LIBS) $(DVB-MPEGTOOLS)
+ 
+ install: $(DVB_LIBS) $(HEADERS)
+ 	mkdir -p $(DESTDIR)$(PREFIX)/lib
+--- config.mk.orig	2005-03-22 14:23:25.000000000 +0100
++++ config.mk	2005-04-06 16:27:14.000000000 +0200
+@@ -1,7 +1,7 @@
+ # -*- makefile -*-
+ #
+ 
+-PREFIX = /usr/local
++PREFIX = /usr
+ VERSION = 0.5.5.1
+ CFLAGS=-O2 -Wall -g
+ INCLUDES=-I. -I../include 
+--- dvb-mpegtools/Makefile.orig	2005-03-22 14:23:25.000000000 +0100
++++ dvb-mpegtools/Makefile	2005-04-06 16:28:08.000000000 +0200
+@@ -62,7 +62,7 @@
+ 	install -m 755 dvb-mpegtools_main $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 dvbaudio $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 show_dvb_image $(DESTDIR)$(PREFIX)/bin/
+-	install -m 755 dia $(DESTDIR)$(PREFIX)/bin/
++	install -m 755 dia $(DESTDIR)$(PREFIX)/bin/dia_dvb
+ 	for f in $(LINKS); do\
+ 		(cd $(DESTDIR)$(PREFIX)/bin && ln -s -f dvb-mpegtools_main $$f) ;\
+ 	done

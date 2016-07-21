@@ -1,0 +1,45 @@
+# -*- Makefile -*-
+#
+# Overwrite some default kBuild settings
+#
+
+#
+# Copyright (C) 2006-2008 Sun Microsystems, Inc.
+#
+# This file is part of VirtualBox Open Source Edition (OSE), as
+# available from http://www.virtualbox.org. This file is free software;
+# you can redistribute it and/or modify it under the terms of the GNU
+# General Public License as published by the Free Software Foundation,
+# in version 2 as it comes in the "COPYING" file of the VirtualBox OSE
+# distribution. VirtualBox OSE is distributed in the hope that it will
+# be useful, but WITHOUT ANY WARRANTY of any kind.
+#
+
+# shut up wine complaining about unknown locale
+EXEC_X86_WIN32          := wine
+
+# don't build testcases to save time, they are not needed for the package
+VBOX_WITH_TESTCASES     :=
+VBOX_WITH_TESTSUITE     :=
+VBOX_DOCBOOK_WITH_LATEX := 1
+
+KBUILD_MSG_STYLE        := brief
+
+## paths, origin, hardening
+VBOX_WITH_HARDENING        := 1
+VBOX_WITH_ORIGIN           :=
+VBOX_PATH_APP_PRIVATE_ARCH := /usr/MY_LIBDIR/virtualbox
+VBOX_PATH_SHARED_LIBS      := $(VBOX_PATH_APP_PRIVATE_ARCH)
+VBOX_WITH_RUNPATH          := $(VBOX_PATH_APP_PRIVATE_ARCH)
+VBOX_PATH_APP_PRIVATE      := /usr/share/virtualbox
+VBOX_PATH_APP_DOCS          = $(VBOX_PATH_PACKAGE_DOCS)
+
+## don't build unwanted/splitted stuff
+VBOX_WITHOUT_ADDITIONS := 1
+VBOX_WITH_VBOXDRV :=
+VBOX_WITH_VBOXBFE :=
+VBOX_WITH_KCHMVIEWER :=
+
+## don't build with -Werror
+VBOX_WITH_WARNINGS_AS_ERRORS :=
+

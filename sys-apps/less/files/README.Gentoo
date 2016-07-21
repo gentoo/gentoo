@@ -1,0 +1,22 @@
+This version of less comes with some Gentoo enhancements:
+	- default lesspipe.sh script to "view" files
+	- colorization support
+
+To see what file types are supported, just read the /usr/bin/lesspipe.sh
+script (it's just a plain text bash script).
+
+Colorization support is disabled by default.  To enable it, export the
+LESSCOLOR variable to "yes":
+	$ export LESSCOLOR=yes
+
+We also provide a colorization script, 'code2color', that is used by
+default.  If you wish to use another script, simply export the LESSCOLORIZER
+variable to name of the script:
+	$ export LESSCOLORIZER=some-other-script
+
+If you want to use the code2color script and the default color schemes are
+not acceptable, you can develop your own schemes and save them in one of
+the following places:
+	/etc/code2color
+	~/.code2color
+	CODE2COLOR_CONFIG env var

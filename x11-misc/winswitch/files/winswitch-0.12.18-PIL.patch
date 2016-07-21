@@ -1,0 +1,84 @@
+https://bugs.gentoo.org/show_bug.cgi?id=471564
+https://winswitch.org/trac/ticket/238
+
+--- winswitch-0.12.18/winswitch/virt/xpra_client_util.py
++++ winswitch-0.12.18/winswitch/virt/xpra_client_util.py
+@@ -95,8 +95,8 @@
+ 		widgets = []
+ 		has_pil = False
+ 		try:
+-			import Image
+-			has_pil = Image is not None
++			import PIL.Image
++			has_pil = PIL.Image is not None
+ 		except:
+ 			pass
+ 		jw = self.get_encoding_widget(server, server_command, options, change_cb, has_pil)
+--- winswitch-0.12.18/winswitch/ui/capture_util.py
++++ winswitch-0.12.18/winswitch/ui/capture_util.py
+@@ -125,16 +125,16 @@
+ 		#resize it
+ 		img_data = load_binary_file(self.filename)
+ 		import StringIO
+-		import Image
+-		image = Image.open(StringIO.StringIO(img_data))
++		import PIL.Image
++		image = PIL.Image.open(StringIO.StringIO(img_data))
+ 		self.save_resized(image)
+ 
+ 	def save_resized(self, image):
+ 		""" save a PIL.Image after resizing it to thumbnail size """
+-		import Image
++		import PIL.Image
+ 		(w,h) = image.size
+ 		w,h = self.get_thumbnail_dimensions(w, h)
+-		image.thumbnail((w,h), Image.ANTIALIAS)
++		image.thumbnail((w,h), PIL.Image.ANTIALIAS)
+ 		image.save(self.filename, "PNG")
+ 
+ 
+@@ -190,13 +190,13 @@
+ 
+ 	def	do_capture(self):
+ 		#force py2exe to include these:
+-		import Image
+-		import GifImagePlugin
+-		import JpegImagePlugin
+-		import PngImagePlugin
+-		import ImageGrab
+-		assert Image and GifImagePlugin and JpegImagePlugin and PngImagePlugin and ImageGrab		#avoid pydev warnings
+-		screenshot = ImageGrab.grab()
++		import PIL.Image
++		import PIL.GifImagePlugin
++		import PIL.JpegImagePlugin
++		import PIL.PngImagePlugin
++		import PIL.ImageGrab
++		assert PIL.Image and PIL.GifImagePlugin and PIL.JpegImagePlugin and PIL.PngImagePlugin and PIL.ImageGrab		#avoid pydev warnings
++		screenshot = PIL.ImageGrab.grab()
+ 		self.save_resized(screenshot)
+ 		self.finish()
+ 
+--- winswitch-0.12.18/winswitch/util/icon_util.py
++++ winswitch-0.12.18/winswitch/util/icon_util.py
+@@ -27,7 +27,7 @@
+ 	HAS_CAIRO_RSVG = False
+ 
+ try:
+-	import Image
++	import PIL.Image
+ 	has_PIL = True
+ except:
+ 	has_PIL = False
+@@ -58,10 +58,10 @@
+ 	return	scaled_data
+ 
+ def pil_load_scaled_pixmap(filename, size_limit):
+-	img = Image.open(filename)
++	img = PIL.Image.open(filename)
+ 	(w,h) = img.size
+ 	if w>size_limit or h>size_limit:
+-		img.thumbnail((size_limit,size_limit), Image.ANTIALIAS)
++		img.thumbnail((size_limit,size_limit), PIL.Image.ANTIALIAS)
+ 	assert img
+ 	return	pil_image_to_png_data(img)
+ 

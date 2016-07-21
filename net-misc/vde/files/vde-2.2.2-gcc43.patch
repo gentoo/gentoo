@@ -1,0 +1,60 @@
+diff -NrU5 vde2-2.2.2.orig/src/kvde_switch/consmgmt.c vde2-2.2.2/src/kvde_switch/consmgmt.c
+--- vde2-2.2.2.orig/src/kvde_switch/consmgmt.c	2008-09-04 21:14:55.000000000 +0200
++++ vde2-2.2.2/src/kvde_switch/consmgmt.c	2008-09-04 21:16:26.000000000 +0200
+@@ -22,10 +22,11 @@
+ #include <net/if.h>
+ #include <stdarg.h>
+ #include <getopt.h>
+ #include <dlfcn.h>
+ #include <time.h>
++#include <linux/limits.h>
+ 
+ #include <config.h>
+ #include <vde.h>
+ #include <vdecommon.h>
+ 
+diff -NrU5 vde2-2.2.2.orig/src/kvde_switch/datasock.c vde2-2.2.2/src/kvde_switch/datasock.c
+--- vde2-2.2.2.orig/src/kvde_switch/datasock.c	2008-09-04 21:14:55.000000000 +0200
++++ vde2-2.2.2/src/kvde_switch/datasock.c	2008-09-04 21:19:59.000000000 +0200
+@@ -24,10 +24,11 @@
+ #include <net/if.h>
+ #include <stdarg.h>
+ #include <grp.h>
+ #define _GNU_SOURCE
+ #include <getopt.h>
++#include <linux/limits.h>
+ 
+ #include <config.h>
+ #include <vde.h>
+ #include <vdecommon.h>
+ 
+diff -NrU5 vde2-2.2.2.orig/src/vde_plug2tap.c vde2-2.2.2/src/vde_plug2tap.c
+--- vde2-2.2.2.orig/src/vde_plug2tap.c	2008-09-04 21:14:55.000000000 +0200
++++ vde2-2.2.2/src/vde_plug2tap.c	2008-09-04 21:22:23.000000000 +0200
+@@ -16,10 +16,11 @@
+ #include <stdarg.h>
+ #include <syslog.h>
+ #include <libgen.h>
+ #define _GNU_SOURCE
+ #include <getopt.h>
++#include <linux/limits.h>
+ 
+ #include <config.h>
+ #include <vde.h>
+ #include <vdecommon.h>
+ #include <libvdeplug.h>
+diff -NrU5 vde2-2.2.2.orig/src/wirefilter.c vde2-2.2.2/src/wirefilter.c
+--- vde2-2.2.2.orig/src/wirefilter.c	2008-09-04 21:14:55.000000000 +0200
++++ vde2-2.2.2/src/wirefilter.c	2008-09-04 21:25:21.000000000 +0200
+@@ -29,10 +29,11 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
++#include <linux/limits.h>
+ 
+ #include <config.h>
+ #include <vde.h>
+ #include <vdecommon.h>
+ #include <libvdeplug.h>

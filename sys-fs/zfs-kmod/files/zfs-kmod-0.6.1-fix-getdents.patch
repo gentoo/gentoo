@@ -1,0 +1,32 @@
+From 8f1e11b6105bf46a4258958eb3dcae2ab21ed8b2 Mon Sep 17 00:00:00 2001
+From: Caleb James DeLisle <calebdelisle@lavabit.com>
+Date: Tue, 16 Apr 2013 05:23:39 -0400
+Subject: [PATCH] Remove .readdir from zpl_file_operations table
+
+The zpl_readdir() function shouldn't be registered as part of
+the zpl_file_operations table, it must only be part of the
+zpl_dir_file_operations table.  By removing this callback
+the VFS will now correctly return ENOTDIR when calling
+getdents() on a file.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1404
+---
+ module/zfs/zpl_file.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/module/zfs/zpl_file.c b/module/zfs/zpl_file.c
+index 9c27b7f..db6a72c 100644
+--- a/module/zfs/zpl_file.c
++++ b/module/zfs/zpl_file.c
+@@ -446,7 +446,6 @@
+ 	.llseek		= generic_file_llseek,
+ 	.read		= zpl_read,
+ 	.write		= zpl_write,
+-	.readdir	= zpl_readdir,
+ 	.mmap		= zpl_mmap,
+ 	.fsync		= zpl_fsync,
+ #ifdef HAVE_FILE_FALLOCATE
+-- 
+1.8.1.6
+

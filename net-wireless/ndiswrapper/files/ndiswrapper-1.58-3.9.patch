@@ -1,0 +1,32 @@
+diff --git a/driver/loader.c b/driver/loader.c
+index 406e6ba..6f2113f 100644
+--- a/driver/loader.c
++++ b/driver/loader.c
+@@ -575,7 +575,11 @@ static int load_user_space_driver(struct load_driver *load_driver)
+ 	} else {
+ 		printk(KERN_INFO "%s: driver %s (%s) loaded\n",
+ 		       DRIVER_NAME, wrap_driver->name, wrap_driver->version);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 9, 0)
+ 		add_taint(TAINT_PROPRIETARY_MODULE);
++#else
++		add_taint(TAINT_PROPRIETARY_MODULE, LOCKDEP_STILL_OK);
++#endif
+ 		EXIT1(return 0);
+ 	}
+ }
+diff --git a/driver/wrapper.c b/driver/wrapper.c
+index f77c879..4fcbbe8 100644
+--- a/driver/wrapper.c
++++ b/driver/wrapper.c
+@@ -72,7 +72,11 @@ static void module_cleanup(void)
+ static int __init wrapper_init(void)
+ {
+ #ifdef TAINT_OOT_MODULE
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 9, 0)
+ 	add_taint(TAINT_OOT_MODULE);
++#else
++	add_taint(TAINT_OOT_MODULE, LOCKDEP_STILL_OK);
++#endif
+ #endif
+ 	printk(KERN_INFO "%s version %s loaded (smp=%s, preempt=%s)\n",
+ 	       DRIVER_NAME, DRIVER_VERSION,

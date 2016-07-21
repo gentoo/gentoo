@@ -1,0 +1,26 @@
+--- maxima-5.37.3.orig/configure.ac
++++ maxima-5.37.3/configure.ac
+@@ -991,6 +991,11 @@
+ 	[  --with-wish=<prog>           Use <prog> for Tk wish shell (default wish)],
+-	[WISH="${withval}"],
+-	[WISH="wish"])
++	[],
++	[with_wish="wish"])
++case "${with_wish}" in
++     no) WISH="none" ;;
++     yes) WISH="wish" ;;
++     *) WISH="${with_wish}" ;;
++esac
+ AC_SUBST(WISH)
+-
++AM_CONDITIONAL(WANT_TK, test x"${with_wish}" != xno)
+ 
+--- maxima-5.37.3.orig/interfaces/Makefile.am
++++ maxima-5.37.3/interfaces/Makefile.am
+@@ -1,2 +1,5 @@
+-SUBDIRS = emacs xmaxima
++if WANT_TK
++   MAYBE_XMAXIMA = xmaxima
++endif
++SUBDIRS = emacs $(MAYBE_XMAXIMA)
+ EXTRA_DIST = bin/xmaxima.iss

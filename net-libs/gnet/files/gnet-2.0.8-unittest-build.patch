@@ -1,0 +1,22 @@
+Fix build failure with newer releases of check library.
+
+--- a/tests/check/gnetcheck.h	2014-09-27 15:32:17.088312230 +0200
++++ b/tests/check/gnetcheck.h	2014-09-27 15:32:35.728239492 +0200
+@@ -281,7 +281,7 @@
+   _gnet_check_expecting_log = TRUE;				\
+   _gnet_check_raised_critical = FALSE;				\
+   code;								\
+-  _fail_unless (_gnet_check_raised_critical, __FILE__, __LINE__, \
++  (_gnet_check_raised_critical) ? _mark_point(__FILE__, __LINE__) : _ck_assert_failed (__FILE__, __LINE__, \
+                 "Expected g_critical, got nothing", NULL);      \
+   _gnet_check_expecting_log = FALSE;				\
+ } G_STMT_END
+@@ -291,7 +291,7 @@
+   _gnet_check_expecting_log = TRUE;				\
+   _gnet_check_raised_warning = FALSE;				\
+   code;								\
+-  _fail_unless (_gnet_check_raised_warning, __FILE__, __LINE__,  \
++  (_gnet_check_raised_warning) ? _mark_point(__FILE__, __LINE__) : _ck_assert_failed (__FILE__, __LINE__, \
+                 "Expected g_warning, got nothing", NULL);       \
+   _gnet_check_expecting_log = FALSE;				\
+ } G_STMT_END

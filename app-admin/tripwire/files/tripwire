@@ -1,0 +1,10 @@
+#!/bin/sh
+HOST_NAME=`uname -n`
+if [ ! -e /var/lib/tripwire/${HOST_NAME}.twd ] ; then
+	echo "****    Error: Tripwire database for ${HOST_NAME} not found.  ****"
+	echo "**** Check tripwire.txt file for instructions or install      ****"
+	echo "**** app-admin/mktwpol package (if you used the \"tools\"  ****"
+	echo "**** USE flag, this has been done for you already.            ****"
+else
+        test -f /etc/tripwire/tw.cfg &&  /usr/sbin/tripwire --check --quiet
+fi

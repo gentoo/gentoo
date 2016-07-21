@@ -1,0 +1,42 @@
+Index: ocaml-uri-1.9.1/_tags
+===================================================================
+--- ocaml-uri-1.9.1.orig/_tags
++++ ocaml-uri-1.9.1/_tags
+@@ -22,7 +22,7 @@ true: annot, bin_annot
+ "lib/services_full.cmxs": use_services_full
+ <lib/*.ml{,i,y}>: package(re.posix)
+ <lib/*.ml{,i,y}>: package(sexplib)
+-<lib/*.ml{,i,y}>: package(sexplib.syntax)
++<lib/*.ml{,i,y}>: package(pa_sexp_conv.syntax)
+ <lib/*.ml{,i,y}>: package(stringext)
+ <lib/*.ml{,i,y}>: use_uri
+ # Library uri_top
+@@ -32,13 +32,13 @@ true: annot, bin_annot
+ <lib_test/test_runner.{native,byte}>: package(oUnit)
+ <lib_test/test_runner.{native,byte}>: package(re.posix)
+ <lib_test/test_runner.{native,byte}>: package(sexplib)
+-<lib_test/test_runner.{native,byte}>: package(sexplib.syntax)
++<lib_test/test_runner.{native,byte}>: package(pa_sexp_conv)
+ <lib_test/test_runner.{native,byte}>: package(stringext)
+ <lib_test/test_runner.{native,byte}>: use_uri
+ <lib_test/*.ml{,i,y}>: package(oUnit)
+ <lib_test/*.ml{,i,y}>: package(re.posix)
+ <lib_test/*.ml{,i,y}>: package(sexplib)
+-<lib_test/*.ml{,i,y}>: package(sexplib.syntax)
++<lib_test/*.ml{,i,y}>: package(pa_sexp_conv)
+ <lib_test/*.ml{,i,y}>: package(stringext)
+ <lib_test/*.ml{,i,y}>: use_uri
+ <lib_test/test_runner.{native,byte}>: custom
+Index: ocaml-uri-1.9.1/setup.ml
+===================================================================
+--- ocaml-uri-1.9.1.orig/setup.ml
++++ ocaml-uri-1.9.1/setup.ml
+@@ -6964,7 +6964,7 @@ let setup_t =
+                         [
+                            FindlibPackage ("re.posix", None);
+                            FindlibPackage ("stringext", None);
+-                           FindlibPackage ("sexplib.syntax", None);
++                           FindlibPackage ("pa_sexp_conv.syntax", None);
+                            FindlibPackage ("sexplib", None)
+                         ];
+                       bs_build_tools = [ExternalTool "ocamlbuild"];

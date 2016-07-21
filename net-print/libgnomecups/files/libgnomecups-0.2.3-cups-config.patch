@@ -1,0 +1,34 @@
+From 8f5e326dd89d98b2d34cf6f97583be4eb819b02b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 29 Jun 2014 10:36:14 +0200
+Subject: [PATCH] Use AC_PATH_TOOL to find cups-config. And actually use the
+ result.
+
+---
+ configure.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index 3f0ccc5..0bd367e 100644
+--- a/configure.in
++++ b/configure.in
+@@ -22,13 +22,13 @@ AC_SUBST(GLIB_REQUIRED)
+ 
+ PKG_CHECK_MODULES(LIBGNOMECUPS, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 >= $GLIB_REQUIRED gthread-2.0 >= $GLIB_REQUIRED)
+ 
+-AC_PATH_PROG(CUPS_CONFIG, cups-config, no)
++AC_PATH_TOOL(CUPS_CONFIG, cups-config, no)
+ if test "$CUPS_CONFIG" = "no"; then
+   AC_MSG_ERROR([Please install cups development packages])
+ fi
+ 
+-CUPS_CFLAGS=`cups-config --cflags | sed 's/-O[0-9]*//' | sed 's/-m[^\t]*//g'`
+-CUPS_LIBS=`cups-config --libs`
++CUPS_CFLAGS=`$CUPS_CONFIG --cflags | sed 's/-O[0-9]*//' | sed 's/-m[^\t]*//g'`
++CUPS_LIBS=`$CUPS_CONFIG --libs`
+ 
+ AC_SUBST(CUPS_CFLAGS)
+ AC_SUBST(CUPS_LIBS)
+-- 
+2.0.0
+

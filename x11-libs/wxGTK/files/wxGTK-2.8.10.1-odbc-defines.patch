@@ -1,0 +1,39 @@
+unixODBC 2.2.14 defines SQLLEN and SQLULEN using the compiler typedef
+declaration instead of preprocessor #define macro definition.  This breaks
+the preprocessor checks in this include file.cpp, causing the source to fall
+back to older types instead, leading to compile time errors like this:
+
+db.cpp:1636: error: cannot convert ‘SQLINTEGER*’ to ‘SQLLEN*’ for argument ‘6’ to
+‘SQLRETURN SQLGetData(void*, SQLUSMALLINT, SQLSMALLINT, void*, SQLLEN, SQLLEN*)’
+...
+dbtable.cpp:592: error: cannot convert ‘SQLUINTEGER*’ to ‘SQLULEN*’ for argument ‘4’ to
+‘SQLRETURN SQLExtendedFetch(void*, SQLUSMALLINT, SQLLEN, SQLULEN*, SQLUSMALLINT*)’
+...
+
+This change hard-wires the new names, breaking compatibility with ancient
+(pre 2001) unixODBC versions.  This change may break other ODBC implementations
+but in Gentoo only unixODBC is supported.
+
+References:
+http://bugs.gentoo.org/310923
+
+2010-03-23 Martin von Gagern
+
+--- wxPython-src-2.6.4.0.orig/include/wx/db.h
++++ wxPython-src-2.6.4.0/include/wx/db.h
+@@ -134,15 +134,6 @@ enum enumDummy {enumDum1};
+     #endif
+ #endif
+ 
+-#ifndef _WIN64
+-#ifndef SQLLEN
+-#define SQLLEN SQLINTEGER
+-#endif
+-#ifndef SQLULEN
+-#define SQLULEN SQLUINTEGER
+-#endif
+-#endif
+-
+ const int wxDB_PATH_MAX                 = 254;
+ 
+ extern WXDLLIMPEXP_DATA_ODBC(wxChar const *) SQL_LOG_FILENAME;

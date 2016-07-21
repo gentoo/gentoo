@@ -1,0 +1,28 @@
+diff -rupN PyXML-0.8.4-old/xml/xpath/ParsedAbbreviatedAbsoluteLocationPath.py PyXML-0.8.4/xml/xpath/ParsedAbbreviatedAbsoluteLocationPath.py
+--- PyXML-0.8.4-old/xml/xpath/ParsedAbbreviatedAbsoluteLocationPath.py	2008-12-15 16:54:36.000000000 +0900
++++ PyXML-0.8.4/xml/xpath/ParsedAbbreviatedAbsoluteLocationPath.py	2008-12-15 16:57:02.000000000 +0900
+@@ -24,8 +24,8 @@ class ParsedAbbreviatedAbsoluteLocationP
+         self._rel = rel
+         nt = ParsedNodeTest.ParsedNodeTest('node', '')
+         ppl = ParsedPredicateList.ParsedPredicateList([])
+-        as = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
+-        self._step = ParsedStep.ParsedStep(as, nt, ppl)
++        as_ = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
++        self._step = ParsedStep.ParsedStep(as_, nt, ppl)
+         return
+ 
+     def evaluate(self, context):
+diff -rupN PyXML-0.8.4-old/xml/xpath/ParsedAbbreviatedRelativeLocationPath.py PyXML-0.8.4/xml/xpath/ParsedAbbreviatedRelativeLocationPath.py
+--- PyXML-0.8.4-old/xml/xpath/ParsedAbbreviatedRelativeLocationPath.py	2008-12-15 16:54:36.000000000 +0900
++++ PyXML-0.8.4/xml/xpath/ParsedAbbreviatedRelativeLocationPath.py	2008-12-15 16:58:58.000000000 +0900
+@@ -28,8 +28,8 @@ class ParsedAbbreviatedRelativeLocationP
+         self._right = right
+         nt = ParsedNodeTest.ParsedNodeTest('node','')
+         ppl = ParsedPredicateList.ParsedPredicateList([])
+-        as = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
+-        self._middle = ParsedStep.ParsedStep(as, nt, ppl)
++        as_ = ParsedAxisSpecifier.ParsedAxisSpecifier('descendant-or-self')
++        self._middle = ParsedStep.ParsedStep(as_, nt, ppl)
+ 
+     def evaluate(self, context):
+         res = []

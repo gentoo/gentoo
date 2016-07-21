@@ -1,0 +1,11 @@
+--- a/ddd/GDBAgent.C	2004-09-01 20:07:38.000000000 +0200
++++ b/ddd/GDBAgent.C	2010-06-15 14:16:34.000000000 +0200
+@@ -3078,7 +3078,7 @@
+     {
+         string end_( end );
+ 	normalize_address(end_);
+-	cmd += ' ';
++	cmd += ',';
+ 	cmd += end_;
+     }
+     return cmd;

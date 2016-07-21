@@ -1,0 +1,36 @@
+commit 388a76f24c96767c831ee7682234fd9f2bc5b9ac
+Author: Johan Bergström <bugs@bergstroem.nu>
+Date:   Mon Nov 25 09:17:14 2013 +1100
+
+    Use shared jemalloc
+
+diff --git src/Makefile src/Makefile
+index c37549d..77e6255 100644
+--- src/Makefile
++++ src/Makefile
+@@ -26,12 +26,7 @@ PREFIX?=/usr/local
+ INSTALL_BIN=$(PREFIX)/bin
+ INSTALL=install
+ 
+-# Default allocator
+-ifeq ($(uname_S),Linux)
+-	MALLOC=jemalloc
+-else
+-	MALLOC=libc
+-endif
++MALLOC?=jemalloc
+ 
+ # Backwards compatibility for selecting an allocator
+ ifeq ($(USE_TCMALLOC),yes)
+@@ -79,9 +74,8 @@ ifeq ($(MALLOC),tcmalloc_minimal)
+ endif
+ 
+ ifeq ($(MALLOC),jemalloc)
+-	DEPENDENCY_TARGETS+= jemalloc
+-	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+-	FINAL_LIBS+= ../deps/jemalloc/lib/libjemalloc.a -ldl
++	FINAL_CFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE
++	FINAL_LIBS+= -ljemalloc -ldl
+ endif
+ 
+ REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)

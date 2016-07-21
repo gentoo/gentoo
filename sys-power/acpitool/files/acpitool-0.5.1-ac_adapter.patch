@@ -1,0 +1,73 @@
+Author: Michael Meskes <meskes@debian.org>
+Description: Fix reading of ac_adapter information.
+
+--- src/ac_adapter.cpp
++++ src/ac_adapter.cpp
+@@ -149,7 +149,7 @@
+ int Do_AC_Info_Sys()
+ {
+     ifstream file_in;
+-    char filename[2][65], str[100], temp[100];
++    char filename[2][65], str[100], temp[100], attr[100];
+     int ac_count = 0, start = 0, findex = 0;
+     DIR *ac_dir;
+     char *name, *dirname;
+@@ -206,31 +206,40 @@
+ 
+     if(ac_count>0)
+     {
+-    	for(int i=0; i<ac_count; i++)            /* I don't expect to find > 1, but you never know */
++    	for(int i=0, t=0; i<ac_count; i++)            /* I don't expect to find > 1, but you never know */
+     	{
+     	    FILE *power_fp = fopen(filename[i], "r");
+     	    if(power_fp)                   
+     	    {
+-		for(int t=0; t<5; t++) 
+-		    fgets(str, 100, power_fp);              /* just skip the first 5 lines */
+-
+-		memset(str, '\0', 100);
+-		fgets(str, 100, power_fp);  
++		// see linux-2.6/drivers/power/power_supply_sysfs.c
++		// there can be different number of lines, so read up to 40 lines
++		for(; t<40; t++)
++		{
++		    memset(str, '\0', 100);
++		    fgets(str, 100, power_fp);  
+ 		
+-		if (strlen(str)!=0)
+-    		{
+-    		    memset(temp, '\0', 100);
+-    		    sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
++		    if (strlen(str)!=0)
++    		    {
++    			memset(temp, '\0', 100);
++			memset(attr, '\0', 100);
++			sscanf(str, "%[^=]s %*s %[^\n]", attr);
++    			sscanf(str, "%*[^=] %*c %s %[^\n]",temp); 
+     		    
+-    		    /* keep this for debugging */
+-    		    /* printf(" from Do_AC_SYS: temp = %s \n", temp);*/
+-    		    
+-    		    if(strncmp(temp,"1",1)==0)
+-    			printf("  AC adapter     : online \n");
+-    		    else
+-    			printf("  AC adapter     : off-line \n");
++    			/* keep this for debugging */
++    			/* printf(" from Do_AC_SYS: temp = %s \n", temp);*/
++    		   
++			if (strcmp(attr, "POWER_SUPPLY_ONLINE") == 0)
++			{
++    			    if(strncmp(temp,"1",1)==0)
++    				printf("  AC adapter     : online \n");
++    			    else
++    				printf("  AC adapter     : off-line \n");
++
++			    break;
++			}
++		    }
+     		}
+-    		else
++    		if (t == 40) 
+     		    printf("  AC adapter     : <info not available> \n");
+     	    }	    	
+     	    else

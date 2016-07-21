@@ -1,0 +1,239 @@
+diff -Naur libcompizconfig-0.8.2.orig/config.h.in libcompizconfig-0.8.2/config.h.in
+--- libcompizconfig-0.8.2.orig/config.h.in	2009-03-05 15:29:12.000000000 +0000
++++ libcompizconfig-0.8.2/config.h.in	2009-05-02 14:55:48.000000000 +0100
+@@ -30,6 +30,9 @@
+ /* Define if your <locale.h> file defines LC_MESSAGES. */
+ #undef HAVE_LC_MESSAGES
+ 
++/* Define to 1 if you have the `iniparser' library (-liniparser). */
++#undef HAVE_LIBINIPARSER
++
+ /* Define to 1 if you have the `protobuf' library (-lprotobuf). */
+ #undef HAVE_LIBPROTOBUF
+ 
+diff -Naur libcompizconfig-0.8.2.orig/configure.ac libcompizconfig-0.8.2/configure.ac
+--- libcompizconfig-0.8.2.orig/configure.ac	2009-03-05 03:22:22.000000000 +0000
++++ libcompizconfig-0.8.2/configure.ac	2009-05-02 14:55:48.000000000 +0100
+@@ -116,6 +116,16 @@
+ fi
+ AM_CONDITIONAL([USE_PROTOBUF], [test "x$use_protobuf" = "xyes"])
+ 
++AC_ARG_WITH(internal-iniparser,
++  [AS_HELP_STRING([--without-internal-iniparser],[Don't use bundled iniparser lib])],
++  [], [with_internal_iniparser=yes])
++
++if test "x$with_internal_iniparser" = "xno"; then
++  AC_CHECK_LIB([iniparser], [iniparser_getnsec], [],
++    [AC_MSG_ERROR([Error! You need to have libiniparser])])
++fi
++AM_CONDITIONAL([WITH_INTERNAL_INIPARSER], [test "x$with_internal_iniparser" = "xyes"])
++
+ AC_CHECK_HEADERS([sys/inotify.h], [have_inotify=yes], [have_inotify=no])
+ 
+ AC_ARG_ENABLE(debug,
+diff -Naur libcompizconfig-0.8.2.orig/include/ccs.h libcompizconfig-0.8.2/include/ccs.h
+--- libcompizconfig-0.8.2.orig/include/ccs.h	2009-03-05 03:22:22.000000000 +0000
++++ libcompizconfig-0.8.2/include/ccs.h	2009-05-02 14:55:48.000000000 +0100
+@@ -695,19 +695,9 @@
+ 
+ /* INI file stuff */
+ 
+-typedef struct _dictionary_
+-{
+-    /** Number of entries in dictionary */
+-    int n;
+-    /** Storage size */
+-    int size;
+-    /** List of string values */
+-    char **val;
+-    /** List of string keys */
+-    char **key ;
+-    /** List of hash values for keys */
+-    unsigned *hash;
+-} IniDictionary;
++#include <iniparser.h>
++
++typedef dictionary IniDictionary;
+ 
+ IniDictionary* ccsIniNew (void);
+ IniDictionary* ccsIniOpen (const char *fileName);
+diff -Naur libcompizconfig-0.8.2.orig/src/Makefile.am libcompizconfig-0.8.2/src/Makefile.am
+--- libcompizconfig-0.8.2.orig/src/Makefile.am	2009-03-05 15:28:59.000000000 +0000
++++ libcompizconfig-0.8.2/src/Makefile.am	2009-05-02 14:55:48.000000000 +0100
+@@ -39,14 +39,17 @@
+ 	lists.c 	\
+ 	compiz.cpp 	\
+ 	config.c 	\
+-	iniparser.c 	\
+ 	ini.c 		\
+ 	bindings.c 	\
+ 	filewatch.c 	\
+-	ccs-private.h	\
+-	iniparser.h
++	ccs-private.h
+ 
+ libcompizconfig_la_LIBADD = @LIBXML2_LIBS@ @LIBX11_LIBS@ $(PROTOBUF_LIB)
+ 
+ lib_LTLIBRARIES=libcompizconfig.la
+ 
++if WITH_INTERNAL_INIPARSER
++
++  libcompizconfig_la_SOURCES += iniparser.h iniparser.c
++
++endif
+diff -Naur libcompizconfig-0.8.2.orig/src/ini.c libcompizconfig-0.8.2/src/ini.c
+--- libcompizconfig-0.8.2.orig/src/ini.c	2009-03-05 03:22:22.000000000 +0000
++++ libcompizconfig-0.8.2/src/ini.c	2009-05-02 14:56:12.000000000 +0100
+@@ -23,9 +23,10 @@
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <errno.h>
++#include <ctype.h>
+ 
+ #include <ccs.h>
+-#include "iniparser.h"
++#include <iniparser.h>
+ 
+ /** 
+  * Creates the parent directory for @fileName, recursively creating a directory
+@@ -77,7 +78,7 @@
+     if (file)
+ 	fclose (file);
+ 
+-    return iniparser_new ((char*) fileName);
++    return iniparser_load ((char*) fileName);
+ }
+ 
+ IniDictionary*
+@@ -89,17 +90,22 @@
+ void
+ ccsIniClose (IniDictionary *dictionary)
+ {
+-    iniparser_free (dictionary);
++    iniparser_freedict (dictionary);
+ }
+ 
+ void
+ ccsIniSave (IniDictionary *dictionary,
+ 	    const char    *fileName)
+ {
++    FILE *f;
+     if (!ccsCreateDirFor (fileName))
+ 	return;
+ 
+-    iniparser_dump_ini (dictionary, fileName);
++    f = fopen(fileName, "w");
++    if(!f)
++        return;
++    iniparser_dump_ini (dictionary, f);
++    fclose(f);
+ }
+ 
+ static char*
+@@ -127,11 +133,11 @@
+     char *sectionName;
+ 
+     asprintf (&sectionName, "%s:%s", section, entry);
+-
++/*
+     if (!iniparser_find_entry (dictionary, (char*) section))
+ 	iniparser_add_entry (dictionary, (char*) section, NULL, NULL);
+-
+-    iniparser_setstr (dictionary, sectionName, (char*) value);
++*/
++    iniparser_set (dictionary, sectionName, (char*) value);
+ 
+     free (sectionName);
+ }
+diff -Naur libcompizconfig-0.8.2.orig/src/iniparser.h libcompizconfig-0.8.2/src/iniparser.h
+--- libcompizconfig-0.8.2.orig/src/iniparser.h	2009-03-05 03:22:22.000000000 +0000
++++ libcompizconfig-0.8.2/src/iniparser.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,65 +0,0 @@
+-/*
+- Based upon libiniparser, by Nicolas Devillard
+- Hacked into 1 file (m-iniparser) by Freek/2005
+- Original terms following:
+-
+- -- -
+-
+- Copyright (c) 2000 by Nicolas Devillard (ndevilla AT free DOT fr).
+-
+- Written by Nicolas Devillard. Not derived from licensed software.
+-
+- Permission is granted to anyone to use this software for any
+- purpose on any computer system, and to redistribute it freely,
+- subject to the following restrictions:
+-
+- 1. The author is not responsible for the consequences of use of
+- this software, no matter how awful, even if they arise
+- from defects in it.
+-
+- 2. The origin of this software must not be misrepresented, either
+- by explicit claim or by omission.
+-
+- 3. Altered versions must be plainly marked as such, and must not
+- be misrepresented as being the original software.
+-
+- 4. This notice may not be removed or altered.
+-
+- */
+-
+-
+-#ifndef _INIPARSER_H_
+-#define _INIPARSER_H_
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <unistd.h>
+-#include <ctype.h>
+-
+-#include <ccs.h>
+-
+-typedef IniDictionary dictionary;
+-
+-typedef struct _FileLock
+-{
+-	int fd;
+-} FileLock;
+-
+-/* generated by genproto */
+-
+-dictionary * iniparser_new(char *ininame);
+-dictionary * dictionary_new(int size);
+-void iniparser_free(dictionary * d);
+-
+-
+-int iniparser_getnsec(dictionary * d);
+-char * iniparser_getsecname(dictionary * d, int n);
+-void iniparser_dump_ini(dictionary * d, const char * file_name);
+-char * iniparser_getstring(dictionary * d, char * key, char * def);
+-void iniparser_add_entry(dictionary * d, char * sec, char * key, char * val);
+-int iniparser_find_entry(dictionary  *   ini, char        *   entry);
+-int iniparser_setstr(dictionary * ini, char * entry, char * val);
+-void iniparser_unset(dictionary * ini, char * entry);
+-
+-#endif
+-
+diff -Naur libcompizconfig-0.8.2.orig/src/main.c libcompizconfig-0.8.2/src/main.c
+--- libcompizconfig-0.8.2.orig/src/main.c	2009-03-05 03:22:22.000000000 +0000
++++ libcompizconfig-0.8.2/src/main.c	2009-05-02 14:56:26.000000000 +0100
+@@ -34,9 +34,9 @@
+ #include <math.h>
+ 
+ #include <ccs.h>
++#include <iniparser.h>
+ 
+ #include "ccs-private.h"
+-#include "iniparser.h"
+ 
+ Bool basicMetadata = FALSE;
+ 
+@@ -2577,7 +2577,7 @@
+ 	return FALSE;
+     fclose (fp);
+ 
+-    importFile = iniparser_new ((char *) fileName);
++    importFile = iniparser_load ((char *) fileName);
+     if (!importFile)
+ 	return FALSE;
+ 

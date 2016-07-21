@@ -1,0 +1,217 @@
+ core/Makefile | 100 +++++++++++++++++++++++++++++-----------------------------
+ 1 file changed, 50 insertions(+), 50 deletions(-)
+
+diff --git a/core/Makefile b/core/Makefile
+index 9acebb3..3838a45 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -145,151 +145,151 @@ mltaln.h : functions.h
+ 	touch mltaln.h
+ 
+ version : version.c mltaln.h
+-	$(CC) -o $@ version.c $(MYCFLAGS)
++	$(CC) $(LDFLAGS) -o $@ version.c $(MYCFLAGS)
+ 
+ tbfast : $(OBJTBFAST)
+-	$(CC) -o $@ $(OBJTBFAST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTBFAST) $(MYCFLAGS) $(LIBS)
+ 
+ addsingle : $(OBJADDSINGLE)
+-	$(CC) -o $@ $(OBJADDSINGLE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJADDSINGLE) $(MYCFLAGS) $(LIBS)
+ 
+ tbfast2 : $(OBJTBFAST2)
+-	$(CC) -o $@ $(OBJTBFAST2) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTBFAST2) $(MYCFLAGS) $(LIBS)
+ 
+ disttbfast : $(OBJDISTTBFAST)
+-	$(CC) -o $@ $(OBJDISTTBFAST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDISTTBFAST) $(MYCFLAGS) $(LIBS)
+ 
+ makedirectionlist : $(OBJMAKEDIRECTIONLIST)
+-	$(CC) -o $@ $(OBJMAKEDIRECTIONLIST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJMAKEDIRECTIONLIST) $(MYCFLAGS) $(LIBS)
+ 
+ splittbfast : $(OBJSPLITTBFAST)
+-	$(CC) -o $@ $(OBJSPLITTBFAST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSPLITTBFAST) $(MYCFLAGS) $(LIBS)
+ 
+ splitfromaln : $(OBJSPLITFROMALN)
+-	$(CC) -o $@ $(OBJSPLITFROMALN) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSPLITFROMALN) $(MYCFLAGS) $(LIBS)
+ 
+ splittbfast2 : $(OBJSPLITTBFAST2)
+-	$(CC) -o $@ $(OBJSPLITTBFAST2) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSPLITTBFAST2) $(MYCFLAGS) $(LIBS)
+ 
+ dummy : $(OBJDUMMY)
+-	$(CC) -o $@ $(OBJDUMMY) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDUMMY) $(MYCFLAGS) $(LIBS)
+ 
+ setcore : $(OBJSETCORE)
+-	$(CC) -o $@ $(OBJSETCORE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSETCORE) $(MYCFLAGS) $(LIBS)
+ 
+ countlen : $(OBJCOUNTLEN)
+-	$(CC) -o $@ $(OBJCOUNTLEN) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJCOUNTLEN) $(MYCFLAGS) $(LIBS)
+ 
+ seq2regtable : $(OBJSEQ2REGTABLE)
+-	$(CC) -o $@ $(OBJSEQ2REGTABLE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSEQ2REGTABLE) $(MYCFLAGS) $(LIBS)
+ 
+ regtable2seq : $(OBJREGTABLE2SEQ)
+-	$(CC) -o $@ $(OBJREGTABLE2SEQ) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJREGTABLE2SEQ) $(MYCFLAGS) $(LIBS)
+ 
+ setdirection : $(OBJSETDIRECTION)
+-	$(CC) -o $@ $(OBJSETDIRECTION) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSETDIRECTION) $(MYCFLAGS) $(LIBS)
+ 
+ replaceu : $(OBJREPLACEU)
+-	$(CC) -o $@ $(OBJREPLACEU) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJREPLACEU) $(MYCFLAGS) $(LIBS)
+ 
+ restoreu : $(OBJRESTOREU)
+-	$(CC) -o $@ $(OBJRESTOREU) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJRESTOREU) $(MYCFLAGS) $(LIBS)
+ 
+ f2cl : $(OBJF2CL)
+-	$(CC) -o $@ $(OBJF2CL) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJF2CL) $(MYCFLAGS) $(LIBS)
+ 
+ mccaskillwrap : $(OBJMCCASKILLWRAP)
+-	$(CC) -o $@ $(OBJMCCASKILLWRAP) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJMCCASKILLWRAP) $(MYCFLAGS) $(LIBS)
+ 
+ contrafoldwrap : $(OBJCONTRAFOLDWRAP)
+-	$(CC) -o $@ $(OBJCONTRAFOLDWRAP) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJCONTRAFOLDWRAP) $(MYCFLAGS) $(LIBS)
+ 
+ pairlocalalign : $(OBJPAIRLOCALALIGN)
+-	$(CC) -o $@ $(OBJPAIRLOCALALIGN) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJPAIRLOCALALIGN) $(MYCFLAGS) $(LIBS)
+ 
+ pairash : $(OBJPAIRASH)
+-	$(CC) -o $@ $(OBJPAIRASH) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJPAIRASH) $(MYCFLAGS) $(LIBS)
+ 
+ rnatest : $(OBJRNATEST)
+-	$(CC) -o $@ $(OBJRNATEST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJRNATEST) $(MYCFLAGS) $(LIBS)
+ 
+ pair2hat3s : $(OBJPAIR2HAT3S)
+-	$(CC) -o $@ $(OBJPAIR2HAT3S) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJPAIR2HAT3S) $(MYCFLAGS) $(LIBS)
+ 
+ multi2hat3s : $(OBJMULTI2HAT3S)
+-	$(CC) -o $@ $(OBJMULTI2HAT3S) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJMULTI2HAT3S) $(MYCFLAGS) $(LIBS)
+ 
+ getlag : $(OBJGETLAG)
+-	$(CC) -o $@ $(OBJGETLAG) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJGETLAG) $(MYCFLAGS) $(LIBS)
+ 
+ tditr : $(OBJTDITR)
+-	$(CC) -o $@ $(OBJTDITR) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTDITR) $(MYCFLAGS) $(LIBS)
+ 
+ dvtditr : $(OBJDVTDITR)
+-	$(CC) -o $@ $(OBJDVTDITR) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDVTDITR) $(MYCFLAGS) $(LIBS)
+ 
+ mafft-profile : $(OBJGALN)
+-	$(CC) -o $@ $(OBJGALN) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJGALN) $(MYCFLAGS) $(LIBS)
+ 
+ gapfill : $(OBJGAPFILL)
+-	$(CC) -o $@ $(OBJGAPFILL) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJGAPFILL) $(MYCFLAGS) $(LIBS)
+ 
+ dndfast4 : $(OBJDNDFAST4)
+-	$(CC) -o $@ $(OBJDNDFAST4) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDFAST4) $(MYCFLAGS) $(LIBS)
+ 
+ dndfast5 : $(OBJDNDFAST5)
+-	$(CC) -o $@ $(OBJDNDFAST5) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDFAST5) $(MYCFLAGS) $(LIBS)
+ 
+ dndfast6 : $(OBJDNDFAST6)
+-	$(CC) -o $@ $(OBJDNDFAST6) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDFAST6) $(MYCFLAGS) $(LIBS)
+ 
+ dndfast7 : $(OBJDNDFAST7)
+-	$(CC) -o $@ $(OBJDNDFAST7) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDFAST7) $(MYCFLAGS) $(LIBS)
+ 
+ dndblast : $(OBJDNDBLAST)
+-	$(CC) -o $@ $(OBJDNDBLAST) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDBLAST) $(MYCFLAGS) $(LIBS)
+ 
+ dndfast3 : $(OBJDNDFAST3)
+-	$(CC) -o $@ $(OBJDNDFAST3) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDFAST3) $(MYCFLAGS) $(LIBS)
+ 
+ triplet : $(OBJTRIPLET)
+-	$(CC) -o $@ $(OBJTRIPLET) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTRIPLET) $(MYCFLAGS) $(LIBS)
+ 
+ triplet3 : $(OBJTRIPLET3)
+-	$(CC) -o $@ $(OBJTRIPLET3) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTRIPLET3) $(MYCFLAGS) $(LIBS)
+ 
+ sextet3 : $(OBJSEXTET3)
+-	$(CC) -o $@ $(OBJSEXTET3) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSEXTET3) $(MYCFLAGS) $(LIBS)
+ 
+ sextet4 : $(OBJSEXTET4)
+-	$(CC) -o $@ $(OBJSEXTET4) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSEXTET4) $(MYCFLAGS) $(LIBS)
+ 
+ sextet5 : $(OBJSEXTET5)
+-	$(CC) -o $@ $(OBJSEXTET5) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSEXTET5) $(MYCFLAGS) $(LIBS)
+ 
+ mafft-distance : $(OBJDISTANCE)
+-	$(CC) -o $@ $(OBJDISTANCE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDISTANCE) $(MYCFLAGS) $(LIBS)
+ 
+ triplet5 : $(OBJTRIPLET5)
+-	$(CC) -o $@ $(OBJTRIPLET5) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTRIPLET5) $(MYCFLAGS) $(LIBS)
+ 
+ triplet6 : $(OBJTRIPLET6)
+-	$(CC) -o $@ $(OBJTRIPLET6) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJTRIPLET6) $(MYCFLAGS) $(LIBS)
+ 
+ octet4 : $(OBJOCTET4)
+-	$(CC) -o $@ $(OBJOCTET4) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJOCTET4) $(MYCFLAGS) $(LIBS)
+ 
+ dndpre : $(OBJDNDPRE)
+-	$(CC) -o $@ $(OBJDNDPRE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDPRE) $(MYCFLAGS) $(LIBS)
+ 
+ dndpre2 : $(OBJDNDPRESCORE)
+-	$(CC) -o $@ $(OBJDNDPRESCORE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJDNDPRESCORE) $(MYCFLAGS) $(LIBS)
+ 
+ score : $(OBJSCORE)
+-	$(CC) -o $@ $(OBJSCORE) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJSCORE) $(MYCFLAGS) $(LIBS)
+ 
+ genMtx : $(OBJGENMTX)
+-	$(CC) -o $@ $(OBJGENMTX) $(MYCFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJGENMTX) $(MYCFLAGS) $(LIBS)
+ 
+ gapfill.o : gapfill.c $(HEADER)
+ 	$(CC) $(MYCFLAGS) -c gapfill.c
+@@ -525,7 +525,7 @@ install : all
+ 	chmod 755 $(SCRIPTS)
+ 	$(INSTALL) $(SCRIPTS)  $(BINDIR)
+ 	chmod 755 $(PROGS)
+-	$(INSTALL) -s $(PROGS) $(LIBDIR)
++	$(INSTALL) $(PROGS) $(LIBDIR)
+ 	$(INSTALL) -m 644 $(MANPAGES) $(LIBDIR)
+ 
+ 	( cd $(BINDIR); \

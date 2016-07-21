@@ -1,0 +1,24 @@
+commit fd0df6d098b1e6a4f60275c48a3ec88d15ba1fbb
+Author: Colin Watson <cjwatson@ubuntu.com>
+Date:   Fri Nov 29 12:19:36 2013 +0000
+
+    Fix build with FreeType 2.5.1
+    
+    * util/grub-gen-asciih.c: Include FT_SYNTHESIS_H rather than
+    <freetype/ftsynth.h>, fixing build with FreeType 2.5.1.
+    * util/grub-gen-widthspec.c: Likewise.
+    * util/grub-mkfont.c: Likewise.
+
+diff --git a/util/grub-mkfont.c b/util/grub-mkfont.c
+index 0d8eb78..242dd01 100644
+--- a/util/grub-mkfont.c
++++ b/util/grub-mkfont.c
+@@ -43,7 +43,7 @@
+ #include FT_FREETYPE_H
+ #include FT_TRUETYPE_TAGS_H
+ #include FT_TRUETYPE_TABLES_H
+-#include <freetype/ftsynth.h>
++#include FT_SYNTHESIS_H
+ 
+ #undef __FTERRORS_H__
+ #define FT_ERROR_START_LIST   const char *ft_errmsgs[] = { 

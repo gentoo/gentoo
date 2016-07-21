@@ -1,0 +1,24 @@
+And now we fix src/gwt/build.xml since java's user preference class is
+braindead and insists on writing where it is not allowed.
+much thanks to http://www.allaboutbalance.com/articles/disableprefs/
+
+diff --git a/src/gwt/build.xml b/src/gwt/build.xml
+index e7d2418..ae3a331 100644
+--- a/src/gwt/build.xml
++++ b/src/gwt/build.xml
+@@ -25,6 +25,7 @@
+    <property name="gwt.extra.args" value=""/>
+    <property name="gwt.main.module" value="org.rstudio.studio.RStudio"/>
+    <property name="ace.bin" value="src/org/rstudio/studio/client/workbench/views/source/editors/text/ace"/>
++   <property environment="env"/>
+ 
+    <path id="project.class.path">
+       <pathelement location="bin"/>
+@@ -109,6 +110,7 @@
+          </classpath>
+          <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+          <jvmarg value="-Xmx1024M"/>
++         <jvmarg value="-Djava.util.prefs.userRoot=${env.T}"/>
+          <arg value="-war"/>
+          <arg value="www"/>
+          <arg value="-localWorkers"/>

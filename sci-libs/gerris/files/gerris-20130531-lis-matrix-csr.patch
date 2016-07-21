@@ -1,0 +1,11 @@
+--- modules/lis.c.orig	2013-07-22 15:34:05.346631560 -0700
++++ modules/lis.c	2013-07-22 15:33:28.621427315 -0700
+@@ -45,7 +45,7 @@
+ 			    g_array_index (stencil->coeff, double, j), 
+ 			    A);
+   }
+-  lis_matrix_set_type (A, LIS_MATRIX_CRS);
++  lis_matrix_set_type (A, LIS_MATRIX_CSR);
+   lis_matrix_assemble (A);
+ 
+   LIS_VECTOR b, x;

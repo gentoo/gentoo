@@ -1,0 +1,204 @@
+Index: ffmpeg2theora-0.29/src/avinfo.c
+===================================================================
+--- ffmpeg2theora-0.29.orig/src/avinfo.c
++++ ffmpeg2theora-0.29/src/avinfo.c
+@@ -174,7 +174,7 @@ void json_codec_info(FILE *output, AVCod
+ 
+     if (p) {
+         codec_name = p->name;
+-    } else if (enc->codec_id == CODEC_ID_MPEG2TS) {
++    } else if (enc->codec_id == AV_CODEC_ID_MPEG2TS) {
+         /* fake mpeg2 transport stream codec (currently not
+            registered) */
+         codec_name = "mpeg2ts";
+@@ -200,7 +200,7 @@ void json_codec_info(FILE *output, AVCod
+     case AVMEDIA_TYPE_VIDEO:
+         codec_name = fix_codec_name(codec_name);
+         json_add_key_value(output, "codec", (void *)codec_name, JSON_STRING, 0, indent);
+-        if (enc->pix_fmt != PIX_FMT_NONE) {
++        if (enc->pix_fmt != AV_PIX_FMT_NONE) {
+             json_add_key_value(output, "pixel_format", (void *)av_get_pix_fmt_name(enc->pix_fmt), JSON_STRING, 0, indent);
+         }
+         if (enc->width) {
+@@ -235,37 +235,37 @@ void json_codec_info(FILE *output, AVCod
+ 
+         /* for PCM codecs, compute bitrate directly */
+         switch(enc->codec_id) {
+-        case CODEC_ID_PCM_F64BE:
+-        case CODEC_ID_PCM_F64LE:
++        case AV_CODEC_ID_PCM_F64BE:
++        case AV_CODEC_ID_PCM_F64LE:
+             bitrate = enc->sample_rate * enc->channels * 64;
+             break;
+-        case CODEC_ID_PCM_S32LE:
+-        case CODEC_ID_PCM_S32BE:
+-        case CODEC_ID_PCM_U32LE:
+-        case CODEC_ID_PCM_U32BE:
+-        case CODEC_ID_PCM_F32BE:
+-        case CODEC_ID_PCM_F32LE:
++        case AV_CODEC_ID_PCM_S32LE:
++        case AV_CODEC_ID_PCM_S32BE:
++        case AV_CODEC_ID_PCM_U32LE:
++        case AV_CODEC_ID_PCM_U32BE:
++        case AV_CODEC_ID_PCM_F32BE:
++        case AV_CODEC_ID_PCM_F32LE:
+             bitrate = enc->sample_rate * enc->channels * 32;
+             break;
+-        case CODEC_ID_PCM_S24LE:
+-        case CODEC_ID_PCM_S24BE:
+-        case CODEC_ID_PCM_U24LE:
+-        case CODEC_ID_PCM_U24BE:
+-        case CODEC_ID_PCM_S24DAUD:
++        case AV_CODEC_ID_PCM_S24LE:
++        case AV_CODEC_ID_PCM_S24BE:
++        case AV_CODEC_ID_PCM_U24LE:
++        case AV_CODEC_ID_PCM_U24BE:
++        case AV_CODEC_ID_PCM_S24DAUD:
+             bitrate = enc->sample_rate * enc->channels * 24;
+             break;
+-        case CODEC_ID_PCM_S16LE:
+-        case CODEC_ID_PCM_S16BE:
+-        case CODEC_ID_PCM_S16LE_PLANAR:
+-        case CODEC_ID_PCM_U16LE:
+-        case CODEC_ID_PCM_U16BE:
++        case AV_CODEC_ID_PCM_S16LE:
++        case AV_CODEC_ID_PCM_S16BE:
++        case AV_CODEC_ID_PCM_S16LE_PLANAR:
++        case AV_CODEC_ID_PCM_U16LE:
++        case AV_CODEC_ID_PCM_U16BE:
+             bitrate = enc->sample_rate * enc->channels * 16;
+             break;
+-        case CODEC_ID_PCM_S8:
+-        case CODEC_ID_PCM_U8:
+-        case CODEC_ID_PCM_ALAW:
+-        case CODEC_ID_PCM_MULAW:
+-        case CODEC_ID_PCM_ZORK:
++        case AV_CODEC_ID_PCM_S8:
++        case AV_CODEC_ID_PCM_U8:
++        case AV_CODEC_ID_PCM_ALAW:
++        case AV_CODEC_ID_PCM_MULAW:
++        case AV_CODEC_ID_PCM_ZORK:
+             bitrate = enc->sample_rate * enc->channels * 8;
+             break;
+         default:
+Index: ffmpeg2theora-0.29/src/ffmpeg2theora.c
+===================================================================
+--- ffmpeg2theora-0.29.orig/src/ffmpeg2theora.c
++++ ffmpeg2theora-0.29/src/ffmpeg2theora.c
+@@ -143,7 +143,7 @@ static AVFrame *frame_alloc(int pix_fmt,
+     uint8_t *picture_buf;
+     int size;
+ 
+-    picture = avcodec_alloc_frame();
++    picture = av_frame_alloc();
+     if (!picture)
+         return NULL;
+     size = avpicture_get_size (pix_fmt, width, height);
+@@ -226,7 +226,7 @@ static ff2theora ff2theora_init() {
+         this->kate_streams=NULL;
+         this->ignore_non_utf8 = 0;
+ 
+-        this->pix_fmt = PIX_FMT_YUV420P;
++        this->pix_fmt = AV_PIX_FMT_YUV420P;
+ 
+         // ffmpeg2theora --nosound -f dv -H 32000 -S 0 -v 8 -x 384 -y 288 -G 1.5 input.dv
+         this->video_gamma  = 0.0;
+@@ -350,14 +350,14 @@ static const char *find_category_for_sub
+   AVCodecContext *enc = this->context->streams[idx]->codec;
+   if (enc->codec_type != AVMEDIA_TYPE_SUBTITLE) return 0;
+   switch (enc->codec_id) {
+-    case CODEC_ID_TEXT:
+-    case CODEC_ID_SSA:
+-    case CODEC_ID_MOV_TEXT:
++    case AV_CODEC_ID_TEXT:
++    case AV_CODEC_ID_SSA:
++    case AV_CODEC_ID_MOV_TEXT:
+       if (included_subtitles & INCSUB_TEXT)
+         return "SUB";
+       else
+         return NULL;
+-    case CODEC_ID_DVD_SUBTITLE:
++    case AV_CODEC_ID_DVD_SUBTITLE:
+       if (included_subtitles & INCSUB_SPU)
+         return "K-SPU";
+       else
+@@ -1434,18 +1434,9 @@ void ff2theora_output(ff2theora this) {
+                                 av_picture_copy((AVPicture *)output_tmp, (AVPicture *)frame, this->pix_fmt,
+                                                 display_width, display_height);
+                                 output_tmp_p=NULL;
+-                            }
+-                            if ((this->deinterlace==0 && frame->interlaced_frame) ||
+-                                this->deinterlace==1) {
+-                                if (avpicture_deinterlace((AVPicture *)output,(AVPicture *)output_tmp,this->pix_fmt,display_width,display_height)<0) {
+-                                        fprintf(stderr, "Deinterlace failed.\n");
+-                                        exit(1);
+-                                }
+-                            }
+-                            else{
+-                                av_picture_copy((AVPicture *)output, (AVPicture *)output_tmp, this->pix_fmt,
+-                                                display_width, display_height);
+-                            }
++			    }
++			    av_picture_copy((AVPicture *)output, (AVPicture *)output_tmp, this->pix_fmt,
++					    display_width, display_height);
+                             // now output
+ 
+                             if (ppMode)
+@@ -1537,11 +1528,37 @@ void ff2theora_output(ff2theora this) {
+                     int bytes_per_sample = av_get_bytes_per_sample(aenc->sample_fmt);
+ 
+                     if (avpkt.size > 0) {
+-                        len1 = avcodec_decode_audio3(astream->codec, audio_buf, &data_size, &avpkt);
++		    	AVFrame *frame = av_frame_alloc();
++			int got_frame = 0;
++
++			if(!frame) break;
++
++                        len1 = avcodec_decode_audio4(astream->codec, frame, &got_frame, &avpkt);
+                         if (len1 < 0) {
+                             /* if error, we skip the frame */
+                             break;
+                         }
++
++			if (len1 >= 0 && got_frame) {
++				int ch, plane_size;
++				int planar    = av_sample_fmt_is_planar(astream->codec->sample_fmt);
++				data_size = av_samples_get_buffer_size(&plane_size, astream->codec->channels,
++						frame->nb_samples,
++						astream->codec->sample_fmt, 1);
++				memcpy(audio_buf, frame->extended_data[0], plane_size);
++
++				if (planar && astream->codec->channels > 1) {
++					uint8_t *out = ((uint8_t *)audio_buf) + plane_size;
++					for (ch = 1; ch < astream->codec->channels; ch++) {
++						memcpy(out, frame->extended_data[ch], plane_size);
++						out += plane_size;
++					}
++				}
++			} else {
++				data_size = 0;
++			}
++			av_frame_free(&frame);
++
+                         avpkt.size -= len1;
+                         avpkt.data += len1;
+                         if (data_size >0) {
+@@ -1642,15 +1659,15 @@ void ff2theora_output(ff2theora this) {
+                     }
+                   }
+                 }
+-                else if (enc->codec_id == CODEC_ID_TEXT) {
++                else if (enc->codec_id == AV_CODEC_ID_TEXT) {
+                   utf8 = pkt.data;
+                   utf8len = pkt.size;
+                 }
+-                else if (enc->codec_id == CODEC_ID_SSA) {
++                else if (enc->codec_id == AV_CODEC_ID_SSA) {
+                   // SSA has control stuff in there, extract raw text
+                   extra_info_from_ssa(&pkt,&utf8,&utf8len,&allocated_utf8,&duration);
+                 }
+-                else if (enc->codec_id == CODEC_ID_MOV_TEXT) {
++                else if (enc->codec_id == AV_CODEC_ID_MOV_TEXT) {
+                   utf8 = pkt.data;
+                   utf8len = pkt.size;
+                   if (utf8len >= 2) {

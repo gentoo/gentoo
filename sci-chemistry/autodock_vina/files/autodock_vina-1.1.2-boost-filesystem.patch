@@ -1,0 +1,79 @@
+ src/main/main.cpp   | 10 +++++++++-
+ src/split/split.cpp | 11 ++++++++++-
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/src/main/main.cpp b/src/main/main.cpp
+index f49c8f5..b566aa2 100644
+--- a/src/main/main.cpp
++++ b/src/main/main.cpp
+@@ -47,7 +47,7 @@
+ using boost::filesystem::path;
+ 
+ path make_path(const std::string& str) {
+-	return path(str, boost::filesystem::native);
++	return path(str);
+ }
+ 
+ void doing(int verbosity, const std::string& str, tee& log) {
+@@ -661,7 +661,11 @@ Thank you!\n";
+ 					cpu, seed, verbosity, max_modes_sz, energy_range, log);
+ 	}
+ 	catch(file_error& e) {
++#if defined(BOOST_FILESYSTEM_VERSION) && BOOST_FILESYSTEM_VERSION >= 3
++		std::cerr << "\n\nError: could not open \"" << e.name.string() << "\" for " << (e.in ? "reading" : "writing") << ".\n";
++#else
+ 		std::cerr << "\n\nError: could not open \"" << e.name.native_file_string() << "\" for " << (e.in ? "reading" : "writing") << ".\n";
++#endif
+ 		return 1;
+ 	}
+ 	catch(boost::filesystem::filesystem_error& e) {
+@@ -673,7 +677,11 @@ Thank you!\n";
+ 		return 1;
+ 	}
+ 	catch(parse_error& e) {
++#if defined(BOOST_FILESYSTEM_VERSION) && BOOST_FILESYSTEM_VERSION >= 3
++		std::cerr << "\n\nParse error on line " << e.line << " in file \"" << e.file.string() << "\": " << e.reason << '\n';
++#else
+ 		std::cerr << "\n\nParse error on line " << e.line << " in file \"" << e.file.native_file_string() << "\": " << e.reason << '\n';
++#endif
+ 		return 1;
+ 	}
+ 	catch(std::bad_alloc&) {
+diff --git a/src/split/split.cpp b/src/split/split.cpp
+index 54c614b..bc5530e 100644
+--- a/src/split/split.cpp
++++ b/src/split/split.cpp
+@@ -38,7 +38,7 @@
+ using boost::filesystem::path;
+ 
+ path make_path(const std::string& str) {
+-	return path(str, boost::filesystem::native);
++	return path(str);
+ }
+ 
+ std::string default_prefix(const std::string& input_name, const std::string& add) {
+@@ -208,7 +208,12 @@ Thank you!\n";
+ 		write_multimodel_pdbqt(tmp, ligand_prefix, flex_prefix);
+ 	}
+ 	catch(file_error& e) {
++
++#if defined(BOOST_FILESYSTEM_VERSION) && BOOST_FILESYSTEM_VERSION >= 3
++		std::cerr << "\n\nError: could not open \"" << e.name.string() << "\" for " << (e.in ? "reading" : "writing") << ".\n";
++#else
+ 		std::cerr << "\n\nError: could not open \"" << e.name.native_file_string() << "\" for " << (e.in ? "reading" : "writing") << ".\n";
++#endif
+ 		return 1;
+ 	}
+ 	catch(boost::filesystem::filesystem_error& e) {
+@@ -220,7 +225,11 @@ Thank you!\n";
+ 		return 1;
+ 	}
+ 	catch(parse_error& e) {
++#if defined(BOOST_FILESYSTEM_VERSION) && BOOST_FILESYSTEM_VERSION >= 3
++		std::cerr << "\n\nParse error on line " << e.line << " in file \"" << e.file.string() << "\": " << e.reason << '\n';
++#else
+ 		std::cerr << "\n\nParse error on line " << e.line << " in file \"" << e.file.native_file_string() << "\": " << e.reason << '\n';
++#endif
+ 		return 1;
+ 	}
+ 	catch(std::bad_alloc&) {

@@ -1,0 +1,39 @@
+taken from upstream repo & tweaked; drop with 3.4 release
+
+From c96ffb7733b56a8c5c20d473d8fd83b62b6abfde Mon Sep 17 00:00:00 2001
+From: Bernd Zeimetz <bernd@bzed.de>
+Date: Thu, 10 Nov 2011 22:18:07 +0100
+Subject: [PATCH] SConstruct: Use gpsd_version as revision for releases.
+
+---
+ SConstruct |   13 ++++++++-----
+ 1 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index d367403..3d95e7e 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -978,12 +978,15 @@ env.Command(target="ais_json.i", source="jsongen.py", action='''\
+     chmod a-w $TARGET''')
+ 
+ # generate revision.h
+-(st, rev) = commands.getstatusoutput('git describe')
+-if st != 0:
+-    from datetime import datetime
+-    rev = datetime.now().isoformat()[:-4]
++if 'dev' in gpsd_version:
++    (st, rev) = commands.getstatusoutput('git describe')
++    if st != 0:
++        from datetime import datetime
++        rev = datetime.now().isoformat()[:-4]
++else:
++    rev = gpsd_version
+ revision='#define REVISION "%s"\n' %(rev.strip(),)
+-env.NoClean(env.Textfile(target="revision.h", source=[revision]))
++env.Textfile(target="revision.h", source=[revision])
+ 
+ # generate pps_pin.h
+ pps_pin = env['pps_pin']
+-- 
+1.7.6.1
+

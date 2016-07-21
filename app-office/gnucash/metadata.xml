@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="chipcard">Enable support for chipcard reading and
+		processing.</flag>
+		<flag name="hbci">Enable HBCI support, for connecting to some internet
+		banks</flag>
+		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gnucash</remote-id>
+	</upstream>
+</pkgmetadata>

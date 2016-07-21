@@ -1,0 +1,17 @@
+--- icmake-7.20.00/icm_bootstrap
++++ icmake-7.20.00/icm_bootstrap
+@@ -31,12 +31,13 @@
+ 
+ if [ "${CFLAGS}" == "" ] ; then CFLAGS="-Wall -O2 -g"; fi
+ if [ "${CC}" == "" ] ; then CC="gcc"; fi
++if [ "${AR}" == "" ] ; then AR="ar"; fi
+   
+ echo Creating tmp/libicrss.a
+ 
+ try cd rss
+ try ${CC} -c ${CFLAGS} ${GLB} *.c
+-try ar rs ../tmp/libicrss.a *.o
++try ${AR} rs ../tmp/libicrss.a *.o
+ rm *.o
+ cd ..
+ 

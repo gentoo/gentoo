@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  cfortran is a header file to ease bridge between C and FORTRAN. It
+  provides an interface  between C and FORTRAN routines and global
+  data, i.e. structures and COMMON blocks. This package includes
+  patches from Debian for better support on newer compilers and architectures.
+</longdescription>
+</pkgmetadata>

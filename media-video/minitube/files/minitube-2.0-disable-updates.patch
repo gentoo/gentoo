@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=455976
+
+Index: minitube/src/mainwindow.cpp
+===================================================================
+--- minitube.orig/src/mainwindow.cpp
++++ minitube/src/mainwindow.cpp
+@@ -145,9 +145,6 @@ MainWindow::MainWindow() :
+     mouseTimer->setInterval(5000);
+     mouseTimer->setSingleShot(true);
+     connect(mouseTimer, SIGNAL(timeout()), SLOT(hideMouse()));
+-
+-    QTimer::singleShot(0, this, SLOT(checkForUpdate()));
+-
+ }
+ 
+ MainWindow::~MainWindow() {

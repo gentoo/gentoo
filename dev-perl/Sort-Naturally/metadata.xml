@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription lang="en">
+	This module exports two functions, nsort and ncmp; they are used in
+	implementing my idea of a "natural sorting" algorithm. Under natural
+	sorting, numeric substrings are compared numerically, and other
+	word-characters are compared lexically.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Sort-Naturally</remote-id>
+    <remote-id type="cpan-module">Sort::Naturally</remote-id>
+  </upstream>
+</pkgmetadata>

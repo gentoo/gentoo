@@ -1,0 +1,29 @@
+diff -U 3 -dHrN wicd-1.7.1b2/encryption/templates/active wicd-1.7.1b2.new/encryption/templates/active
+--- wicd-1.7.1b2/encryption/templates/active	2010-10-29 16:36:55.000000000 +0100
++++ wicd-1.7.1b2.new/encryption/templates/active	2011-09-13 19:58:54.000000000 +0100
+@@ -1,5 +1,6 @@
+ wpa
+ wpa-psk
++wpa-psk-hex
+ wep-hex
+ wep-passphrase
+ wep-shared
+diff -U 3 -dHrN wicd-1.7.1b2/encryption/templates/wpa-psk-hex wicd-1.7.1b2.new/encryption/templates/wpa-psk-hex
+--- wicd-1.7.1b2/encryption/templates/wpa-psk-hex	1970-01-01 01:00:00.000000000 +0100
++++ wicd-1.7.1b2.new/encryption/templates/wpa-psk-hex	2011-09-13 19:59:11.000000000 +0100
+@@ -0,0 +1,15 @@
++name = WPA 1/2 (Preshared Hex Key)
++author = Thomas Kahle
++version = 1
++require apsk *Preshared_Key
++-----
++ctrl_interface=/var/run/wpa_supplicant
++network={
++       ssid="$_ESSID"
++       scan_ssid=$_SCAN
++       proto=WPA RSN
++       key_mgmt=WPA-PSK
++       pairwise=CCMP TKIP
++       group=CCMP TKIP
++       psk=$_APSK
++}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">NetxAP</remote-id>
+    <remote-id type="cpan-module">Net::IMAP</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Acl</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Addr</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Bad</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::BodyStructure</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Bodypart</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Bye</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Capability</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Cond</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Envelope</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Exists</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Expunge</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Fetch</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::FetchData</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Flags</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::List</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Listrights</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Lsub</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Multipart</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Myrights</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Namespace</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::No</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Ok</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Quota</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Quotaroot</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Recent</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Response</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Search</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::Status</remote-id>
+    <remote-id type="cpan-module">Net::IMAP::UntaggedResponse</remote-id>
+    <remote-id type="cpan-module">Net::xAP</remote-id>
+    <remote-id type="cpan-module">Net::xAP::Response</remote-id>
+  </upstream>
+</pkgmetadata>

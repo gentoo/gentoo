@@ -1,0 +1,16 @@
+upstream has reworked their code, so just do a minimal hack for the older ver
+
+http://bugs.gentoo.org/270621
+
+--- sdcc/as/link/getline.h
++++ sdcc/as/link/getline.h
+@@ -30,6 +30,9 @@
+ 
+ #include <stdio.h>
+ 
++#undef getline	/* just in case */
++#define getline sdcc_getline
++
+ #ifdef __cplusplus
+ extern "C"
+ {

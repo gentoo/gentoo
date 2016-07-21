@@ -1,0 +1,85 @@
+https://build.opensuse.org/package/view_file?expand=1&file=DirectFB-setregion.patch&package=DirectFB&project=openSUSE%3AFactory
+
+--- gfxdrivers/cyber5k/cyber5k.c
++++ gfxdrivers/cyber5k/cyber5k.c
+@@ -636,7 +636,8 @@ osdSetRegion( CoreLayer
+               CoreLayerRegionConfigFlags  updated,
+               CoreSurface                *surface,
+               CorePalette                *palette,
+-              CoreSurfaceBufferLock      *lock )
++              CoreSurfaceBufferLock      *left_lock,
++              CoreSurfaceBufferLock      *right_lock )
+ {
+      DFBResult ret;
+ 
+@@ -644,7 +645,7 @@ osdSetRegion( CoreLayer
+      ret = oldPrimaryFuncs.SetRegion( layer, oldPrimaryDriverData,
+                                       layer_data, region_data,
+                                       config, updated, surface,
+-                                      palette, lock );
++                                      palette, left_lock, right_lock );
+      if (ret)
+           return ret;
+ 
+--- gfxdrivers/radeon/radeon_crtc1.c
++++ gfxdrivers/radeon/radeon_crtc1.c
+@@ -147,14 +147,15 @@ crtc1SetRegion( CoreLayer
+                 CoreLayerRegionConfigFlags  updated,
+                 CoreSurface                *surface,
+                 CorePalette                *palette,
+-                CoreSurfaceBufferLock      *lock )
++                CoreSurfaceBufferLock      *left_lock,
++                CoreSurfaceBufferLock      *right_lock )
+ {
+      
+      if (updated & ~CLRCF_OPTIONS) {
+           return OldPrimaryLayerFuncs.SetRegion( layer,
+                                                  OldPrimaryLayerDriverData,
+                                                  layer_data, region_data,
+-                                                 config, updated, surface, palette, lock );
++                                                 config, updated, surface, palette, left_lock, right_lock );
+      }
+ 
+      return DFB_OK;
+--- gfxdrivers/cle266/uc_primary.c
++++ gfxdrivers/cle266/uc_primary.c
+@@ -138,7 +138,8 @@ osdSetRegion( CoreLayer
+               CoreLayerRegionConfigFlags  updated,
+               CoreSurface                *surface,
+               CorePalette                *palette,
+-              CoreSurfaceBufferLock      *lock )
++              CoreSurfaceBufferLock      *left_lock,
++              CoreSurfaceBufferLock      *right_lock )
+ {
+      DFBResult     ret;
+      UcDriverData *ucdrv = (UcDriverData*) driver_data;
+@@ -147,7 +148,7 @@ osdSetRegion( CoreLayer
+      ret = ucOldPrimaryFuncs.SetRegion( layer, ucOldPrimaryDriverData,
+                                         layer_data, region_data,
+                                         config, updated, surface,
+-                                        palette, lock );
++                                        palette, left_lock, right_lock );
+      if (ret)
+           return ret;
+ 
+--- gfxdrivers/unichrome/uc_primary.c
++++ gfxdrivers/unichrome/uc_primary.c
+@@ -135,7 +135,8 @@ osdSetRegion( CoreLayer
+               CoreLayerRegionConfigFlags  updated,
+               CoreSurface                *surface,
+               CorePalette                *palette,
+-              CoreSurfaceBufferLock      *lock )
++              CoreSurfaceBufferLock      *left_lock,
++              CoreSurfaceBufferLock      *right_lock )
+ {
+      DFBResult     ret;
+      UcDriverData *ucdrv = (UcDriverData*) driver_data;
+@@ -144,7 +145,7 @@ osdSetRegion( CoreLayer
+      ret = ucOldPrimaryFuncs.SetRegion( layer, ucOldPrimaryDriverData,
+                                         layer_data, region_data,
+                                         config, updated, surface,
+-                                        palette, lock );
++                                        palette, left_lock, right_lock );
+      if (ret)
+           return ret;
+ 

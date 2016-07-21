@@ -1,0 +1,13 @@
+diff --git a/jni/GNUmakefile b/jni/GNUmakefile
+index efe6230..25053c7 100755
+--- a/jni/GNUmakefile
++++ b/jni/GNUmakefile
+@@ -64,7 +64,7 @@ JFLAGS = -fno-omit-frame-pointer -fno-strict-aliasing -DNDEBUG
+ OFLAGS = -O2 $(JFLAGS)
+ 
+ # MacOS headers aren't completely warning free, so turn them off
+-WERROR = -Werror
++WERROR =
+ ifneq ($(OS),darwin)
+   WFLAGS += -Wundef $(WERROR)
+ endif

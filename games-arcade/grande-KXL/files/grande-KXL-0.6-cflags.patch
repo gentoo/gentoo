@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Aug  8 19:37:19 UTC 2012
+Subject: build system
+
+respect CFLAGS
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -8,7 +8,7 @@
+ 
+ SUBDIRS = bmp wav stg
+ 
+-CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@ @INST_FLAG@ @SCORE_FLAG@
++AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@ @INST_FLAG@ @SCORE_FLAG@
+ LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL
+ 
+ install-data-local:

@@ -1,0 +1,24 @@
+From 9cb09430444e36415e887317525a24e542e135fb Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Fri, 31 Aug 2012 02:15:30 +1000
+Subject: [PATCH] Fix build with GCC 4.7.
+
+---
+ single_inst/qtlocalpeer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/single_inst/qtlocalpeer.cpp b/single_inst/qtlocalpeer.cpp
+index 6d7c24f..f9663c9 100644
+--- a/single_inst/qtlocalpeer.cpp
++++ b/single_inst/qtlocalpeer.cpp
+@@ -50,6 +50,7 @@ static PProcessIdToSessionId pProcessIdToSessionId = 0;
+ #endif
+ #if defined(Q_OS_UNIX)
+ #include <time.h>
++#include <unistd.h>
+ #endif
+ 
+ namespace QtLP_Private {
+-- 
+1.7.12
+

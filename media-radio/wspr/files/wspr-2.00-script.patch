@@ -1,0 +1,25 @@
+# make python code into a script
+# and fix shell script
+--- wspr.py.orig	2013-02-01 13:24:30.000000000 +0000
++++ wspr.py	2013-02-01 13:23:30.000000000 +0000
+@@ -1,3 +1,4 @@
++#!/usr/bin/python
+ #------------------------------------------------------------------- WSPR
+ # $Date: 2013/02/07 14:35:21 $ $Revision: 1.1 $
+ #
+--- wspr.orig	2013-02-02 08:10:17.000000000 +0000
++++ wspr	2013-02-02 08:10:56.000000000 +0000
+@@ -1,12 +1,7 @@
+ #!/bin/sh
+-if [ -e /usr/local/bin/python ] ; then
+-	LOCALBASE=/usr/local/
+-else
+-	LOCALBASE=/usr/
+-fi
+ if [ ! -e ~/.wspr ] ; then
+ 	mkdir ~/.wspr
+ 	mkdir ~/.wspr/save
+ fi
+ cd ~/.wspr
+-python ${LOCALBASE}/bin/wspr.py
++/usr/bin/wspr.py

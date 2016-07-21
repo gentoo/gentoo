@@ -1,0 +1,11 @@
+--- src/Makefile.in.orig	2009-01-05 19:23:26.671861574 +0100
++++ src/Makefile.in	2009-01-05 19:23:37.603959062 +0100
+@@ -83,7 +83,7 @@
+ detectos.o remote_attack_module.o lookfor.o
+ raccess_LDADD = $(LDADD)
+ raccess_DEPENDENCIES = 
+-raccess_LDFLAGS = -lm
++raccess_LDADD = -lm
+ BINFILES = -DLOCATION_BIN_FILES=\"@bindir@\"
+ CFGFILES = -DLOCATION_CONFIG_FILES=\"@sysconfdir@\"
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) $(BINFILES) $(CFGFILES)

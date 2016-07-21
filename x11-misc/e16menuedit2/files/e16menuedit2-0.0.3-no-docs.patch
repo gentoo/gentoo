@@ -1,0 +1,19 @@
+--- Makefile.in
++++ Makefile.in
+@@ -220,14 +220,7 @@
+ yelphelpdir = @yelphelpdir@
+ SUBDIRS = src po pixmaps help
+-e16menuedit2docdir = ${prefix}/${packagedocdir}
++e16menuedit2docdir = ${prefix}
+-e16menuedit2doc_DATA = \
+-		README\
+-		COPYING\
+-		AUTHORS\
+-		ChangeLog\
+-		INSTALL\
+-		NEWS\
+-                TODO
++e16menuedit2doc_DATA = 
+ 
+ GLADE_FILES = e16menuedit2.glade
+ e16menuedit2datadir = ${prefix}/${packagedatadir}/glade

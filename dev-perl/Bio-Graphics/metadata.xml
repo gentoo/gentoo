@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Bio-Graphics</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::ConfiguratorI</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::DrawTransmembrane</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Feature</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::FeatureBase</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::FeatureDir</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::FeatureFile</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::FeatureFile::Iterator</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::FileSplitter</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::Factory</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::alignment</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::allele_tower</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::anchored_arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::box</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::broken_line</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::cds</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::christmas_arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::cross</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::crossbox</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::dashed_line</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::diamond</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::dna</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::dot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::dumbbell</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ellipse</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ex</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::extending_arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::fb_shmiggle</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::fixedwidth</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::flag</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::gene</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::generic</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::graded_segments</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::group</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::hat</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::heat_map</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::heat_map_ideogram</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::heterogeneous_segments</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::hidden</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::hybrid_plot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ideogram</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::image</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::lightning</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::line</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::merge_parts</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::merged_alignment</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::minmax</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::operon</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::oval</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::pairplot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::pentagram</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::phylo_align</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::pinsertion</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::point_glyph</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::primers</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::processed_transcript</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::protein</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ragged_ends</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::rainbow_gene</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::read_pair</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::redgreen_box</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::redgreen_segment</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::repeating_shape</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::rndrect</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ruler_arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::saw_teeth</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::scale</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::segmented_keyglyph</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::segments</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::smoothing</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::so_transcript</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::span</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::spectrogram</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::splice_site</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::stackedplot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::ternary_plot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::text_in_box</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::three_letters</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::tic_tac_toe</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::toomany</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::trace</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::track</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::transcript</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::transcript2</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::translation</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::triangle</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::two_bolts</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::vista_plot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wave</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::weighted_arrow</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::whiskerplot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wiggle_box</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wiggle_data</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wiggle_density</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wiggle_whiskers</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::wiggle_xyplot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Glyph::xyplot</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Layout</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Layout::Contour</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Math</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Panel</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Pictogram</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::RendererI</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Util</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Wiggle</remote-id>
+    <remote-id type="cpan-module">Bio::Graphics::Wiggle::Loader</remote-id>
+  </upstream>
+</pkgmetadata>

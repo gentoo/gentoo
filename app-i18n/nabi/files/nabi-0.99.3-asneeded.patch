@@ -1,0 +1,13 @@
+Index: nabi-0.99.3/src/Makefile.am
+===================================================================
+--- nabi-0.99.3.orig/src/Makefile.am
++++ nabi-0.99.3/src/Makefile.am
+@@ -29,6 +29,6 @@ nabi_SOURCES = \
+ 	sctc.h util.h util.c \
+ 	main.c
+ 
+-nabi_LDFLAGS = @LIBHANGUL_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lX11 @GTK_LIBS@ 
+-nabi_LDADD = ../IMdkit/libXimd.a
++nabi_LDADD = @LIBHANGUL_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lX11 @GTK_LIBS@ \
++	../IMdkit/libXimd.a
+ 

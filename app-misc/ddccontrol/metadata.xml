@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="pci">enable direct PCI memory access (the setuid ddcpci util)</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ddccontrol/ddccontrol</remote-id>
+    <remote-id type="sourceforge">ddccontrol</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- xmms/impulser2.cpp
++++ xmms/impulser2.cpp
+@@ -1221,7 +1221,8 @@
+ 									   presetLatencyValue2[latencyIndex]);
+ 	    }
+ 	  CFILELOADER fileLoader;
+-	  double l_stretch = std::pow(std::sqrt(2), (*slotVector)[i].stretch);
++	  // NOTE: Casting to double to help compile select from pow(double,double) and pow(float,float)
++	  double l_stretch = std::pow(static_cast<double>(std::sqrt(2)), static_cast<double>((*slotVector)[i].stretch));
+ 	  int ret = fileLoader.load((*slotVector)[i].filename.c_str(), srate,
+ 				    l_stretch, (*slotVector)[i].limit, SRC_SINC_BEST_QUALITY);
+ 	  

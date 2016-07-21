@@ -1,0 +1,43 @@
+--- Makefile.Linux.orig	2016-03-23 07:25:19.209178284 +0200
++++ Makefile.Linux	2016-03-23 07:27:06.704181518 +0200
+@@ -10,11 +10,11 @@
+ BUILDDIR =
+ CC = gcc
+ 
+-CFLAGS = -g -O2 -c -pthread -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
++CFLAGS += -g -c -pthread -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
+ COUT = -o 
+ LN = gcc
+ DCFLAGS = -fpic
+-LDFLAGS = -O2 -pthread
++LDFLAGS += -pthread
+ DLFLAGS = -shared
+ DLSUFFICS = .ld.so
+ # -lpthreads may be reuqired on some platforms instead of -pthreads
+@@ -39,12 +39,12 @@
+ include Makefile.inc
+ 
+ allplugins:
+-	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; make ;	cd ../.. ; done
++	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; $(MAKE) ;	cd ../.. ; done
+ 
+ DESTDIR		=
+-prefix		= /usr/local
++prefix		=
+ exec_prefix	= $(prefix)
+-man_prefix	= $(prefix)/share
++man_prefix	= $(prefix)/usr/share
+ 
+ INSTALL		= /usr/bin/install
+ INSTALL_BIN	= $(INSTALL) -m 755
+--- src/stringtable.c.orig	2016-03-23 07:27:41.216182556 +0200
++++ src/stringtable.c	2016-03-23 07:27:55.280182979 +0200
+@@ -38,7 +38,7 @@
+ /* 24 */	NULL,
+ #ifndef TPROXY_CONF
+ #ifndef _WIN32
+-/* 25 */	(unsigned char *)"/usr/local/etc/3proxy/3proxy.cfg",
++/* 25 */	(unsigned char *)"/etc/3proxy/3proxy.cfg",
+ #else
+ /* 25 */	(unsigned char *)"3proxy.cfg",
+ #endif

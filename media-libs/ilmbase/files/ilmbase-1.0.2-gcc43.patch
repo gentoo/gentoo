@@ -1,0 +1,11 @@
+--- Imath/ImathMatrix.h
++++ Imath/ImathMatrix.h
+@@ -37,6 +37,8 @@
+ #ifndef INCLUDED_IMATHMATRIX_H
+ #define INCLUDED_IMATHMATRIX_H
+ 
++#include <cstring>
++
+ //----------------------------------------------------------------
+ //
+ //      2D (3x3) and 3D (4x4) transformation matrix templates.

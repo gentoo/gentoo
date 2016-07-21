@@ -1,0 +1,22 @@
+diff -Naur shake-fs-0.999.orig/judge.c shake-fs-0.999/judge.c
+--- shake-fs-0.999.orig/judge.c	2013-01-21 13:21:17.171974754 +0100
++++ shake-fs-0.999/judge.c	2013-01-21 13:21:31.346958593 +0100
+@@ -26,7 +26,6 @@
+ #include <fcntl.h>		// open()
+ #include <sys/types.h>		// open(), umask()
+ #include <dirent.h>		// scandir()
+-#include <sys/stat.h>		// stat(), umask()
+ #include <unistd.h>		// stat()
+ #include <stdio.h>		// printf(), tmpfile()
+ #include <error.h>		// error()
+diff -Naur shake-fs-0.999.orig/judge.h shake-fs-0.999/judge.h
+--- shake-fs-0.999.orig/judge.h	2013-01-21 13:21:17.171974754 +0100
++++ shake-fs-0.999/judge.h	2013-01-21 13:21:47.630940034 +0100
+@@ -22,6 +22,7 @@
+ #include <stdbool.h>
+ #include <fcntl.h>
+ #include <time.h>
++#include <sys/stat.h>
+ typedef unsigned int uint;
+ typedef long long int llint;
+ 

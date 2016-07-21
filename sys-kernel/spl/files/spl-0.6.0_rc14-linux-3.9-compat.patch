@@ -1,0 +1,237 @@
+diff --git a/config/spl-build.m4 b/config/spl-build.m4
+index 3dcc05e..6a8e658 100644
+--- a/config/spl-build.m4
++++ b/config/spl-build.m4
+@@ -64,6 +64,7 @@ AC_DEFUN([SPL_AC_CONFIG_KERNEL], [
+ 	SPL_AC_USER_PATH_DIR
+ 	SPL_AC_SET_FS_PWD
+ 	SPL_AC_2ARGS_SET_FS_PWD
++	SPL_AC_SET_FS_PWD_WITH_CONST
+ 	SPL_AC_2ARGS_VFS_UNLINK
+ 	SPL_AC_4ARGS_VFS_RENAME
+ 	SPL_AC_VFS_FSYNC
+@@ -88,6 +89,8 @@ AC_DEFUN([SPL_AC_CONFIG_KERNEL], [
+ 	SPL_AC_2ARGS_ZLIB_DEFLATE_WORKSPACESIZE
+ 	SPL_AC_SHRINK_CONTROL_STRUCT
+ 	SPL_AC_RWSEM_SPINLOCK_IS_RAW
++	SPL_AC_SCHED_RT_HEADER
++	SPL_AC_2ARGS_VFS_GETATTR
+ ])
+ 
+ AC_DEFUN([SPL_AC_MODULE_SYMVERS], [
+@@ -1684,12 +1687,55 @@ AC_DEFUN([SPL_AC_2ARGS_SET_FS_PWD],
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_2ARGS_SET_FS_PWD, 1,
+ 		          [set_fs_pwd() wants 2 args])
++		HAVE_2ARGS_SET_FS_PWD=yes
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+ ])
+ 
+ dnl #
++dnl # 3.9 API change
++dnl # set_fs_pwd takes const struct path *
++dnl #
++AC_DEFUN([SPL_AC_SET_FS_PWD_WITH_CONST],
++if test "x$HAVE_2ARGS_SET_FS_PWD" = xyes; then
++	tmp_flags="$EXTRA_KCFLAGS"
++	EXTRA_KCFLAGS="-Werror"
++	[AC_MSG_CHECKING([whether set_fs_pwd() requires const struct path *])
++	SPL_LINUX_TRY_COMPILE([
++		#include <linux/spinlock.h>
++		#include <linux/fs_struct.h>
++		#include <linux/path.h>
++		void (*const set_fs_pwd_func)
++			(struct fs_struct *, const struct path *)
++			= set_fs_pwd;
++	],[
++		return 0;
++	],[
++		AC_MSG_RESULT(yes)
++		AC_DEFINE(HAVE_SET_FS_PWD_WITH_CONST, 1,
++			[set_fs_pwd() needs const path *])
++	],[
++		SPL_LINUX_TRY_COMPILE([
++			#include <linux/spinlock.h>
++			#include <linux/fs_struct.h>
++			#include <linux/path.h>
++			void (*const set_fs_pwd_func)
++				(struct fs_struct *, struct path *)
++				= set_fs_pwd;
++		],[
++			return 0;
++		],[
++			AC_MSG_RESULT(no)
++		],[
++			AC_MSG_ERROR(unknown)
++		])
++	])
++	EXTRA_KCFLAGS="$tmp_flags"
++fi
++])
++
++dnl #
+ dnl # SLES API change, never adopted in mainline,
+ dnl # Third 'struct vfsmount *' argument removed.
+ dnl #
+@@ -2217,3 +2263,53 @@ AC_DEFUN([SPL_AC_RWSEM_SPINLOCK_IS_RAW], [
+ 	])
+ 	EXTRA_KCFLAGS="$tmp_flags"
+ ])
++
++dnl #
++dnl # 3.9 API change,
++dnl # Moved things from linux/sched.h to linux/sched/rt.h
++dnl #
++AC_DEFUN([SPL_AC_SCHED_RT_HEADER],
++	[AC_MSG_CHECKING([whether header linux/sched/rt.h exists])
++	SPL_LINUX_TRY_COMPILE([
++		#include <linux/sched.h>
++		#include <linux/sched/rt.h>
++	],[
++		return 0;
++	],[
++		AC_DEFINE(HAVE_SCHED_RT_HEADER, 1, [linux/sched/rt.h exists])
++		AC_MSG_RESULT(yes)
++	],[
++		AC_MSG_RESULT(no)
++	])
++])
++
++dnl #
++dnl # 3.9 API change,
++dnl # vfs_getattr() uses 2 args
++dnl # It takes struct path * instead of struct vfsmount * and struct dentry *
++dnl #
++AC_DEFUN([SPL_AC_2ARGS_VFS_GETATTR], [
++	AC_MSG_CHECKING([whether vfs_getattr() wants])
++	SPL_LINUX_TRY_COMPILE([
++		#include <linux/fs.h>
++	],[
++		vfs_getattr((struct path *) NULL,
++			(struct kstat *)NULL);
++	],[
++		AC_MSG_RESULT(2 args)
++		AC_DEFINE(HAVE_2ARGS_VFS_GETATTR, 1,
++		          [vfs_getattr wants 2 args])
++	],[
++		SPL_LINUX_TRY_COMPILE([
++			#include <linux/fs.h>
++		],[
++			vfs_getattr((struct vfsmount *)NULL,
++				(struct dentry *)NULL,
++				(struct kstat *)NULL);
++		],[
++			AC_MSG_RESULT(3 args)
++		],[
++			AC_MSG_ERROR(unknown)
++		])
++	])
++])
+diff --git a/include/sys/sysmacros.h b/include/sys/sysmacros.h
+index 7c4da67..b4778b7 100644
+--- a/include/sys/sysmacros.h
++++ b/include/sys/sysmacros.h
+@@ -26,12 +26,17 @@
+ #define _SPL_SYSMACROS_H
+ 
+ #include <linux/module.h>
++#include <linux/sched.h>
+ #include <linux/cpumask.h>
+ #include <sys/debug.h>
+ #include <sys/varargs.h>
+ #include <sys/zone.h>
+ #include <sys/signal.h>
+ 
++#ifdef HAVE_SCHED_RT_HEADER
++#include <linux/sched/rt.h>
++#endif
++
+ #ifndef _KERNEL
+ #define _KERNEL				__KERNEL__
+ #endif
+diff --git a/module/spl/spl-kmem.c b/module/spl/spl-kmem.c
+index e3538b5..f9c1114 100644
+--- a/module/spl/spl-kmem.c
++++ b/module/spl/spl-kmem.c
+@@ -404,7 +404,8 @@ kmem_del_init(spinlock_t *lock, struct hlist_head *table, int bits, const void *
+ 	spin_lock_irqsave(lock, flags);
+ 
+ 	head = &table[hash_ptr(addr, bits)];
+-	hlist_for_each_entry_rcu(p, node, head, kd_hlist) {
++	hlist_for_each_rcu(node, head) {
++		p = list_entry_rcu(node, struct kmem_debug, kd_hlist);
+ 		if (p->kd_addr == addr) {
+ 			hlist_del_init(&p->kd_hlist);
+ 			list_del_init(&p->kd_list);
+diff --git a/module/spl/spl-tsd.c b/module/spl/spl-tsd.c
+index d7749cf..6e5605b 100644
+--- a/module/spl/spl-tsd.c
++++ b/module/spl/spl-tsd.c
+@@ -113,7 +113,8 @@ tsd_hash_search(tsd_hash_table_t *table, uint_t key, pid_t pid)
+ 	hash = hash_long((ulong_t)key * (ulong_t)pid, table->ht_bits);
+ 	bin = &table->ht_bins[hash];
+ 	spin_lock(&bin->hb_lock);
+-	hlist_for_each_entry(entry, node, &bin->hb_head, he_list) {
++	hlist_for_each(node, &bin->hb_head) {
++		entry = list_entry(node, tsd_hash_entry_t, he_list);
+ 		if ((entry->he_key == key) && (entry->he_pid == pid)) {
+ 			spin_unlock(&bin->hb_lock);
+ 			SRETURN(entry);
+diff --git a/module/spl/spl-vnode.c b/module/spl/spl-vnode.c
+index 4d571c6..dac452c 100644
+--- a/module/spl/spl-vnode.c
++++ b/module/spl/spl-vnode.c
+@@ -175,7 +175,11 @@ vn_open(const char *path, uio_seg_t seg, int flags, int mode,
+ 	if (IS_ERR(fp))
+ 		SRETURN(-PTR_ERR(fp));
+ 
+-	rc = vfs_getattr(fp->f_vfsmnt, fp->f_dentry, &stat);
++#ifdef HAVE_2ARGS_VFS_GETATTR
++	rc = vfs_getattr(&fp->f_path, &stat);
++#else
++	rc = vfs_getattr(fp->f_path.mnt, fp->f_dentry, &stat);
++#endif
+ 	if (rc) {
+ 		filp_close(fp, 0);
+ 		SRETURN(-rc);
+@@ -602,7 +606,11 @@ vn_getattr(vnode_t *vp, vattr_t *vap, int flags, void *x3, void *x4)
+ 
+ 	fp = vp->v_file;
+ 
+-        rc = vfs_getattr(fp->f_vfsmnt, fp->f_dentry, &stat);
++#ifdef HAVE_2ARGS_VFS_GETATTR
++	rc = vfs_getattr(&fp->f_path, &stat);
++#else
++	rc = vfs_getattr(fp->f_path.mnt, fp->f_dentry, &stat);
++#endif
+ 	if (rc)
+ 		SRETURN(-rc);
+ 
+@@ -754,7 +762,12 @@ vn_getf(int fd)
+ 	if (vp == NULL)
+ 		SGOTO(out_fget, rc);
+ 
+-        if (vfs_getattr(lfp->f_vfsmnt, lfp->f_dentry, &stat))
++#ifdef HAVE_2ARGS_VFS_GETATTR
++	rc = vfs_getattr(&lfp->f_path, &stat);
++#else
++	rc = vfs_getattr(lfp->f_path.mnt, lfp->f_dentry, &stat);
++#endif
++        if (rc)
+ 		SGOTO(out_vnode, rc);
+ 
+ 	mutex_enter(&vp->v_lock);
+@@ -827,7 +840,11 @@ EXPORT_SYMBOL(releasef);
+ # ifdef HAVE_2ARGS_SET_FS_PWD
+ /* Used from 2.6.25 - 2.6.31+ */
+ void
++#  ifdef HAVE_SET_FS_PWD_WITH_CONST
++set_fs_pwd(struct fs_struct *fs, const struct path *path)
++#  else
+ set_fs_pwd(struct fs_struct *fs, struct path *path)
++#  endif
+ {
+ 	struct path old_pwd;
+ 

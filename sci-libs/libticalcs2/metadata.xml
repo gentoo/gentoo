@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  The libticalcs provides a set of functions to communicate with Texas
+  Instruments calculators. It implements the TI protocol for each type
+  of calculator, independently of the link cable used to establish the
+  link.
+  All graphing calculators from Texas Instruments are supported 
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">tilp</remote-id>
+  </upstream>
+</pkgmetadata>

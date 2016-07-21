@@ -1,0 +1,22 @@
+If dyld-info is not available, don't try to compile unreachable code
+using it either.
+
+--- gdb-1518/src/gdb/macosx/macosx-nat-dyld.c
++++ gdb-1518/src/gdb/macosx/macosx-nat-dyld.c
+@@ -779,7 +779,7 @@
+     {
+ #if !defined (TASK_DYLD_INFO)
+       return 0;
+-#endif
++#else
+       if (macosx_status->task == TASK_NULL)
+         return 0;
+ 
+@@ -799,6 +799,7 @@
+           task_dyld_info.all_image_info_size == 0)
+           return 0;
+       s->dyld_image_infos = task_dyld_info.all_image_info_addr;
++#endif /* TASK_DYLD_INFO */
+     }
+ #endif /* NM_NEXTSTEP */
+ 

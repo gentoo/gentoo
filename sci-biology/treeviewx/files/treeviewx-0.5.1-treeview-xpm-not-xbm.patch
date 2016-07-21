@@ -1,0 +1,16 @@
+Description: Fix the extension of the icon
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-06-21
+Forwarded: http://code.google.com/p/treeviewx/issues/detail?id=4
+
+--- tv-0.5.orig/tv.cpp
++++ tv-0.5/tv.cpp
+@@ -215,7 +215,7 @@
+ 	frame->SetIcon(wxIcon("app")); // use the name of the icon in the resource file
+ #endif
+ #if defined(__WXGTK__) || defined(__WXMOTIF__)
+-	frame->SetIcon(wxIcon(wxT("bitmaps/treeview.xbm")));
++	frame->SetIcon(wxIcon(wxT("/usr/share/pixmaps/treeviewx.xpm")));
+ #endif
+ 
+ #ifdef __WXMAC__

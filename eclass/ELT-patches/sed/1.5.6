@@ -1,0 +1,16 @@
+--- ltmain.sh	2005-04-16 16:50:02.000000000 +0200
++++ ltmain.sh	2005-04-16 16:46:46.000000000 +0200
+@@ -39,6 +39,13 @@
+ if [ "x$SED" = x ] ; then
+     SED=sed
+ fi
++# Same for EGREP, and just to be sure, do LTCC as well
++if test "x$EGREP" = x ; then
++    EGREP=egrep
++fi
++if test "x$LTCC" = x ; then
++    LTCC=${CC-gcc}
++fi
+ 
+ # The name of this program:
+ progname=`echo "$progpath" | $SED $basename`

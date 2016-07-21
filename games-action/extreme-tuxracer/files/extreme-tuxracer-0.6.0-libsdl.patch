@@ -1,0 +1,39 @@
+From 2c08358e424b36d50e6088e5acadc6d8ac2762a9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 16 May 2014 23:26:18 +0200
+Subject: [PATCH] Append SDL flags to CXXFLAGS rather than CFLAGS.
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5646c82..b3732c8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,19 +43,19 @@ AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([floor getcwd memmove memset mkdir pow sqrt strchr strdup])
+ 
+ AM_PATH_SDL([1.0.0])
+-CFLAGS="$CFLAGS $SDL_CFLAGS"
++CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+ LIBS="$LIBS $SDL_LIBS"
+ 
+ PKG_CHECK_MODULES([SDLIMAGE], [SDL_image],
+ [
+-  CFLAGS="${CFLAGS} $SDLIMAGE_CFLAGS"
++  CXXFLAGS="${CXXFLAGS} $SDLIMAGE_CFLAGS"
+   LIBS="${LIBS} $SDLIMAGE_LIBS"
+ ],
+ [AC_MSG_ERROR([SDL_image not found])])
+ 
+ PKG_CHECK_MODULES([SDLMIXER], [SDL_mixer],
+ [
+-  CFLAGS="${CFLAGS} $SDLMIXER_CFLAGS"
++  CXXFLAGS="${CXXFLAGS} $SDLMIXER_CFLAGS"
+   LIBS="${LIBS} $SDLMIXER_LIBS"
+ ],
+ [AC_MSG_ERROR([SDL_mixer not found])])
+-- 
+1.9.3
+

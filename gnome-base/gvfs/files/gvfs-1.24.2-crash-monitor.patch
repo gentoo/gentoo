@@ -1,0 +1,33 @@
+From c259305847b1ebde1ae89a3c921a13b6c0b67116 Mon Sep 17 00:00:00 2001
+From: Tristan Van Berkom <tristan.vanberkom@codethink.co.uk>
+Date: Tue, 6 Oct 2015 15:09:04 +0900
+Subject: Avoid crash when no monitor implementations exist.
+
+The GVariantBuilder is unable to create any GVariant for
+an untyped array - while an empty vector is a valid variant,
+it is not valid for an untyped array.
+
+Passing the resulting null to gvfs_dbus_daemon_complete_cancel()
+causes gvfs to abort with a g_error().
+
+https://bugzilla.gnome.org/show_bug.cgi?id=756105
+---
+ daemon/gvfsdaemon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/daemon/gvfsdaemon.c b/daemon/gvfsdaemon.c
+index 7bc334b..b7a3b88 100644
+--- a/daemon/gvfsdaemon.c
++++ b/daemon/gvfsdaemon.c
+@@ -957,7 +957,7 @@ handle_list_monitor_implementations (GVfsDBusDaemon        *object,
+ 
+   impls = g_vfs_list_monitor_implementations ();
+ 
+-  g_variant_builder_init (&builder, G_VARIANT_TYPE_ARRAY);
++  g_variant_builder_init (&builder, G_VARIANT_TYPE ("a(ssbia{sv})"));
+ 
+   for (l = impls; l != NULL; l = l->next)
+     {
+-- 
+cgit v0.11.2
+

@@ -1,0 +1,28 @@
+From 2fb900e9e915f9ec6ac2f233255a0a527da164c2 Mon Sep 17 00:00:00 2001
+From: "W. Trevor King" <wking@tremily.us>
+Date: Sun, 23 Aug 2015 21:59:45 -0700
+Subject: [PATCH 2/7] Free rawdevices after opening the connected device
+
+Avoid leaking the raw-device memory.  For a similar example in the
+libmtp source, see LIBMTP_Get_First_Device [1].
+
+[1]: http://sourceforge.net/p/libmtp/code/ci/libmtp-1-1-9/tree/src/libmtp.c#l1690
+---
+ mtpfs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mtpfs.c b/mtpfs.c
+index 286cd24..bdd5f46 100644
+--- a/mtpfs.c
++++ b/mtpfs.c
+@@ -1390,6 +1390,7 @@ main (int argc, char *argv[])
+ 
+     fprintf(stdout, "Attempting to connect device\n");
+     device = LIBMTP_Open_Raw_Device(&rawdevices[i]);
++    free (rawdevices);
+     if (device == NULL) {
+         fprintf(stderr, "Unable to open raw device %d\n", i);
+         return 1;
+-- 
+2.5.3
+

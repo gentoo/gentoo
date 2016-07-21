@@ -1,0 +1,22 @@
+From 3c43751dc90e4cdb08f57f48e2a8e6adf715ed8e Mon Sep 17 00:00:00 2001
+From: Cosimo Cecchi <cosimoc@gnome.org>
+Date: Wed, 12 Oct 2011 16:45:49 +0000
+Subject: test-resolver: don't include glib/types.h directly
+
+Use the glib.h header instead.
+---
+diff --git a/lib/ext/wocky/tests/test-resolver.h b/lib/ext/wocky/tests/test-resolver.h
+index 7823ee6..3948fdc 100644
+--- a/lib/ext/wocky/tests/test-resolver.h
++++ b/lib/ext/wocky/tests/test-resolver.h
+@@ -22,7 +22,7 @@
+ #define __TEST_RESOLVER_H__
+ 
+ #include <gio/gio.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+--
+cgit v0.9.0.2-2-gbebe

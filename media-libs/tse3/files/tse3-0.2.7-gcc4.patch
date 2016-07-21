@@ -1,0 +1,10 @@
+--- ./src/tse3/cmd/Phrase.h~	2002-07-28 17:17:11.000000000 +0200
++++ ./src/tse3/cmd/Phrase.h	2005-07-29 15:45:03.000000000 +0200
+@@ -19,6 +19,7 @@
+ 
+ #include "tse3/cmd/Command.h"
+ #include "tse3/Phrase.h"
++#include "tse3/PhraseEdit.h"
+ #include "tse3/DisplayParams.h"
+ 
+ #include <vector>

@@ -1,0 +1,28 @@
+From 126414cf2731a3fe8a42393d0b41ce0060844b34 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Aug 2015 03:46:00 +0200
+Subject: [PATCH] Fix CompositeGrammer.getIndirectDelegates for JDK 8
+
+https://github.com/antlr/antlr3/issues/151
+---
+ tool/src/main/java/org/antlr/tool/CompositeGrammar.java | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tool/src/main/java/org/antlr/tool/CompositeGrammar.java b/tool/src/main/java/org/antlr/tool/CompositeGrammar.java
+index bb15723..fc16f01 100644
+--- a/tool/src/main/java/org/antlr/tool/CompositeGrammar.java
++++ b/tool/src/main/java/org/antlr/tool/CompositeGrammar.java
+@@ -219,7 +219,9 @@ public class CompositeGrammar {
+ 	public List<Grammar> getIndirectDelegates(Grammar g) {
+ 		List<Grammar> direct = getDirectDelegates(g);
+ 		List<Grammar> delegates = getDelegates(g);
+-		delegates.removeAll(direct);
++		if (direct != null) {
++			delegates.removeAll(direct);
++		}
+ 		return delegates;
+ 	}
+ 
+-- 
+2.5.0
+

@@ -1,0 +1,314 @@
+diff -ru dxpc-3.8.2-orig/Compresser.H dxpc-3.8.2/Compresser.H
+--- dxpc-3.8.2-orig/Compresser.H	1999-08-19 19:58:28.000000000 +0200
++++ dxpc-3.8.2/Compresser.H	2006-08-14 17:45:19.000000000 +0200
+@@ -1,8 +1,8 @@
+ #ifndef COMPRESSER_H_
+ #define COMPRESSER_H_
+ 
+-#include "lzo1x.h"
+-#include "lzo1c.h"
++#include "lzo/lzo1x.h"
++#include "lzo/lzo1c.h"
+ 
+ class EncodeBuffer;
+ struct cEntry;
+diff -ru dxpc-3.8.2-orig/configure dxpc-3.8.2/configure
+--- dxpc-3.8.2-orig/configure	2002-11-14 05:52:02.000000000 +0100
++++ dxpc-3.8.2/configure	2006-08-14 17:45:19.000000000 +0200
+@@ -3102,16 +3102,19 @@
+ fi
+ 
+ 
+-echo "$as_me:$LINENO: checking for lzo_version in -llzo" >&5
+-echo $ECHO_N "checking for lzo_version in -llzo... $ECHO_C" >&6
+-if test "${ac_cv_lib_lzo_lzo_version+set}" = set; then
++echo "$as_me:$LINENO: checking for lzo_version in -llzo2" >&5
++echo $ECHO_N "checking for lzo_version in -llzo2... $ECHO_C" >&6
++if test "${ac_cv_lib_lzo2_lzo_version+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-llzo  $LIBS"
++LIBS="-llzo2  $LIBS"
+ cat >conftest.$ac_ext <<_ACEOF
+-#line $LINENO "configure"
+-#include "confdefs.h"
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
+ 
+ /* Override any gcc2 internal prototype to avoid an error.  */
+ #ifdef __cplusplus
+@@ -3130,29 +3133,41 @@
+ _ACEOF
+ rm -f conftest.$ac_objext conftest$ac_exeext
+ if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+-  (eval $ac_link) 2>&5
++  (eval $ac_link) 2>conftest.er1
+   ac_status=$?
++  grep -v '^ *+' conftest.er1 >conftest.err
++  rm -f conftest.er1
++  cat conftest.err >&5
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); } &&
+-         { ac_try='test -s conftest$ac_exeext'
++	 { ac_try='test -z "$ac_cxx_werror_flag"
++			 || test ! -s conftest.err'
++  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; } &&
++	 { ac_try='test -s conftest$ac_exeext'
+   { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+   (eval $ac_try) 2>&5
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  ac_cv_lib_lzo_lzo_version=yes
++  ac_cv_lib_lzo2_lzo_version=yes
+ else
+   echo "$as_me: failed program was:" >&5
+-cat conftest.$ac_ext >&5
+-ac_cv_lib_lzo_lzo_version=no
++sed 's/^/| /' conftest.$ac_ext >&5
++
++ac_cv_lib_lzo2_lzo_version=no
+ fi
+-rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
++rm -f conftest.err conftest.$ac_objext \
++      conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_lib_lzo_lzo_version" >&5
+-echo "${ECHO_T}$ac_cv_lib_lzo_lzo_version" >&6
+-if test $ac_cv_lib_lzo_lzo_version = yes; then
+-  LIBS="$LIBS -llzo"
++echo "$as_me:$LINENO: result: $ac_cv_lib_lzo2_lzo_version" >&5
++echo "${ECHO_T}$ac_cv_lib_lzo2_lzo_version" >&6
++if test $ac_cv_lib_lzo2_lzo_version = yes; then
++  LIBS="$LIBS -llzo2"
+ else
+   { { echo "$as_me:$LINENO: error: lzo library required: you may need to use the --with-lzo-lib
+ option to specify path to LZO if it is installed in a non-standard
+@@ -3482,31 +3497,44 @@
+ if test $ac_cv_header_lzoconf_h = yes; then
+   :
+ else
+-  if test "${ac_cv_header__usr_local_include_lzoconf_h+set}" = set; then
+-  echo "$as_me:$LINENO: checking for /usr/local/include/lzoconf.h" >&5
+-echo $ECHO_N "checking for /usr/local/include/lzoconf.h... $ECHO_C" >&6
+-if test "${ac_cv_header__usr_local_include_lzoconf_h+set}" = set; then
++  if test "${ac_cv_header__usr_include_lzo_lzoconf_h+set}" = set; then
++  echo "$as_me:$LINENO: checking for /usr/include/lzo/lzoconf.h" >&5
++echo $ECHO_N "checking for /usr/include/lzo/lzoconf.h... $ECHO_C" >&6
++if test "${ac_cv_header__usr_include_lzo_lzoconf_h+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_header__usr_local_include_lzoconf_h" >&5
+-echo "${ECHO_T}$ac_cv_header__usr_local_include_lzoconf_h" >&6
++echo "$as_me:$LINENO: result: $ac_cv_header__usr_include_lzo_lzoconf_h" >&5
++echo "${ECHO_T}$ac_cv_header__usr_include_lzo_lzoconf_h" >&6
+ else
+   # Is the header compilable?
+-echo "$as_me:$LINENO: checking /usr/local/include/lzoconf.h usability" >&5
+-echo $ECHO_N "checking /usr/local/include/lzoconf.h usability... $ECHO_C" >&6
++echo "$as_me:$LINENO: checking /usr/include/lzo/lzoconf.h usability" >&5
++echo $ECHO_N "checking /usr/include/lzo/lzoconf.h usability... $ECHO_C" >&6
+ cat >conftest.$ac_ext <<_ACEOF
+-#line $LINENO "configure"
+-#include "confdefs.h"
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
+ $ac_includes_default
+-#include </usr/local/include/lzoconf.h>
++#include </usr/include/lzo/lzoconf.h>
+ _ACEOF
+ rm -f conftest.$ac_objext
+ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+-  (eval $ac_compile) 2>&5
++  (eval $ac_compile) 2>conftest.er1
+   ac_status=$?
++  grep -v '^ *+' conftest.er1 >conftest.err
++  rm -f conftest.er1
++  cat conftest.err >&5
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); } &&
+-         { ac_try='test -s conftest.$ac_objext'
++	 { ac_try='test -z "$ac_cxx_werror_flag"
++			 || test ! -s conftest.err'
++  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; } &&
++	 { ac_try='test -s conftest.$ac_objext'
+   { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+   (eval $ac_try) 2>&5
+   ac_status=$?
+@@ -3515,20 +3543,24 @@
+   ac_header_compiler=yes
+ else
+   echo "$as_me: failed program was:" >&5
+-cat conftest.$ac_ext >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
+ ac_header_compiler=no
+ fi
+-rm -f conftest.$ac_objext conftest.$ac_ext
++rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+ echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
+ echo "${ECHO_T}$ac_header_compiler" >&6
+ 
+ # Is the header present?
+-echo "$as_me:$LINENO: checking /usr/local/include/lzoconf.h presence" >&5
+-echo $ECHO_N "checking /usr/local/include/lzoconf.h presence... $ECHO_C" >&6
++echo "$as_me:$LINENO: checking /usr/include/lzo/lzoconf.h presence" >&5
++echo $ECHO_N "checking /usr/include/lzo/lzoconf.h presence... $ECHO_C" >&6
+ cat >conftest.$ac_ext <<_ACEOF
+-#line $LINENO "configure"
+-#include "confdefs.h"
+-#include </usr/local/include/lzoconf.h>
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
++#include </usr/include/lzo/lzoconf.h>
+ _ACEOF
+ if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+   (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
+@@ -3558,33 +3590,50 @@
+ echo "${ECHO_T}$ac_header_preproc" >&6
+ 
+ # So?  What about this header?
+-case $ac_header_compiler:$ac_header_preproc in
+-  yes:no )
+-    { echo "$as_me:$LINENO: WARNING: /usr/local/include/lzoconf.h: accepted by the compiler, rejected by the preprocessor!" >&5
+-echo "$as_me: WARNING: /usr/local/include/lzoconf.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: /usr/local/include/lzoconf.h: proceeding with the preprocessor's result" >&5
+-echo "$as_me: WARNING: /usr/local/include/lzoconf.h: proceeding with the preprocessor's result" >&2;};;
+-  no:yes )
+-    { echo "$as_me:$LINENO: WARNING: /usr/local/include/lzoconf.h: present but cannot be compiled" >&5
+-echo "$as_me: WARNING: /usr/local/include/lzoconf.h: present but cannot be compiled" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: /usr/local/include/lzoconf.h: check for missing prerequisite headers?" >&5
+-echo "$as_me: WARNING: /usr/local/include/lzoconf.h: check for missing prerequisite headers?" >&2;}
+-    { echo "$as_me:$LINENO: WARNING: /usr/local/include/lzoconf.h: proceeding with the preprocessor's result" >&5
+-echo "$as_me: WARNING: /usr/local/include/lzoconf.h: proceeding with the preprocessor's result" >&2;};;
++case $ac_header_compiler:$ac_header_preproc:$ac_cxx_preproc_warn_flag in
++  yes:no: )
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: accepted by the compiler, rejected by the preprocessor!" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: proceeding with the compiler's result" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: proceeding with the compiler's result" >&2;}
++    ac_header_preproc=yes
++    ;;
++  no:yes:* )
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: present but cannot be compiled" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: present but cannot be compiled" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h:     check for missing prerequisite headers?" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h:     check for missing prerequisite headers?" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: see the Autoconf documentation" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: see the Autoconf documentation" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h:     section \"Present But Cannot Be Compiled\"" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h:     section \"Present But Cannot Be Compiled\"" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: proceeding with the preprocessor's result" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: proceeding with the preprocessor's result" >&2;}
++    { echo "$as_me:$LINENO: WARNING: /usr/include/lzo/lzoconf.h: in the future, the compiler will take precedence" >&5
++echo "$as_me: WARNING: /usr/include/lzo/lzoconf.h: in the future, the compiler will take precedence" >&2;}
++    (
++      cat <<\_ASBOX
++## ------------------------------------------ ##
++## Report this to the AC_PACKAGE_NAME lists.  ##
++## ------------------------------------------ ##
++_ASBOX
++    ) |
++      sed "s/^/$as_me: WARNING:     /" >&2
++    ;;
+ esac
+-echo "$as_me:$LINENO: checking for /usr/local/include/lzoconf.h" >&5
+-echo $ECHO_N "checking for /usr/local/include/lzoconf.h... $ECHO_C" >&6
+-if test "${ac_cv_header__usr_local_include_lzoconf_h+set}" = set; then
++echo "$as_me:$LINENO: checking for /usr/include/lzo/lzoconf.h" >&5
++echo $ECHO_N "checking for /usr/include/lzo/lzoconf.h... $ECHO_C" >&6
++if test "${ac_cv_header__usr_include_lzo_lzoconf_h+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+-  ac_cv_header__usr_local_include_lzoconf_h=$ac_header_preproc
++  ac_cv_header__usr_include_lzo_lzoconf_h=$ac_header_preproc
+ fi
+-echo "$as_me:$LINENO: result: $ac_cv_header__usr_local_include_lzoconf_h" >&5
+-echo "${ECHO_T}$ac_cv_header__usr_local_include_lzoconf_h" >&6
++echo "$as_me:$LINENO: result: $ac_cv_header__usr_include_lzo_lzoconf_h" >&5
++echo "${ECHO_T}$ac_cv_header__usr_include_lzo_lzoconf_h" >&6
+ 
+ fi
+-if test $ac_cv_header__usr_local_include_lzoconf_h = yes; then
+-  CXXFLAGS="$CXXFLAGS -I/usr/local/include"
++if test $ac_cv_header__usr_include_lzo_lzoconf_h = yes; then
++  CXXFLAGS="$CXXFLAGS -I/usr/include/lzo"
+ else
+   { { echo "$as_me:$LINENO: error: lzoconf.h required (part of LZO library)" >&5
+ echo "$as_me: error: lzoconf.h required (part of LZO library)" >&2;}
+diff -ru dxpc-3.8.2-orig/configure.in dxpc-3.8.2/configure.in
+--- dxpc-3.8.2-orig/configure.in	2002-11-14 05:26:28.000000000 +0100
++++ dxpc-3.8.2/configure.in	2006-08-14 17:45:19.000000000 +0200
+@@ -21,8 +21,8 @@
+ dnl Checks for header files.
+ AC_PATH_XTRA
+ 
+-AC_CHECK_LIB(lzo, lzo_version, 
+-             [LIBS="$LIBS -llzo"],
++AC_CHECK_LIB(lzo2, lzo_version, 
++             [LIBS="$LIBS -llzo2"],
+              AC_MSG_ERROR(
+ [lzo library required: you may need to use the --with-lzo-lib 
+ option to specify path to LZO if it is installed in a non-standard
+@@ -31,8 +31,8 @@
+ # The LZO installer likes to put headers in /usr/local/include, even on
+ # systems where that is not searched. Try to be nice and detect this case...
+ AC_CHECK_HEADER(lzoconf.h, ,
+- [AC_CHECK_HEADER(/usr/local/include/lzoconf.h,
+-		   [CXXFLAGS="$CXXFLAGS -I/usr/local/include"],
++ [AC_CHECK_HEADER(/usr/include/lzo/lzoconf.h,
++		   [CXXFLAGS="$CXXFLAGS -I/usr/include/lzo"],
+ 		   AC_MSG_ERROR([lzoconf.h required (part of LZO library)]))])
+ 
+ AC_DEFUN(dxpc_ACCEPT_LENGTH_T,
+diff -ru dxpc-3.8.2-orig/Decompresser.H dxpc-3.8.2/Decompresser.H
+--- dxpc-3.8.2-orig/Decompresser.H	1999-08-19 20:00:16.000000000 +0200
++++ dxpc-3.8.2/Decompresser.H	2006-08-14 17:45:19.000000000 +0200
+@@ -1,7 +1,7 @@
+ #ifndef DECOMPRESSER_H_
+ #define DECOMPRESSER_H_
+ 
+-#include "lzo1c.h"
++#include "lzo/lzo1c.h"
+ 
+ class DecodeBuffer;
+ #include "Compresser.H"
+diff -ru dxpc-3.8.2-orig/Makefile.in dxpc-3.8.2/Makefile.in
+--- dxpc-3.8.2-orig/Makefile.in	2002-11-11 19:37:52.000000000 +0100
++++ dxpc-3.8.2/Makefile.in	2006-08-14 17:45:19.000000000 +0200
+@@ -53,12 +53,12 @@
+ install: install.bin install.man
+ 
+ install.bin:	$(TARGET)
+-	$(srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL) $(TARGET) $(bindir)/$(TARGET)
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL) $(TARGET) $(DESTDIR)$(bindir)/$(TARGET)
+ 
+ install.man:
+-	$(srcdir)/mkinstalldirs $(man1dir)
+-	$(INSTALL_DATA) $(TARGET).man $(man1dir)/$(TARGET).1
++	$(srcdir)/mkinstalldirs $(DESTDIR)$(man1dir)
++	$(INSTALL_DATA) $(TARGET).man $(DESTDIR)$(man1dir)/$(TARGET).1
+ 
+ clean:
+ 	-rm -f *~ *.o $(TARGET) pure_* quant_* *.bak core gmon.out

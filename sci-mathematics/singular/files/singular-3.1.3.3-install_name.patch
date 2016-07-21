@@ -1,0 +1,23 @@
+--- kernel/Makefile.in.orig	2011-10-13 23:36:54.000000000 +0200
++++ kernel/Makefile.in	2011-10-13 23:37:46.000000000 +0200
+@@ -267,7 +267,7 @@
+ 	-rm -f p_Procs_Dynamic p_Procs_Dynamic.exe
+ 
+ p_Procs_%.so: p_Procs_Lib_%.dl_o
+-	$(LD) ${SLDFLAGS} -o $@ $^
++	$(LD) ${SLDFLAGS} -install_name @GENTOO_PORTAGE_EPREFIX@/usr/lib/singular/$@ -o $@ $^
+ 
+ ##
+ ## install targets
+
+--- Singular/Makefile.in.orig	2011-10-14 23:59:07.000000000 +0200
++++ Singular/Makefile.in	2011-10-14 23:58:34.000000000 +0200
+@@ -492,7 +492,7 @@
+ 	$(LD) ${SLDFLAGS} -o $@ $^ -L${libdir} ${MP_LIBS} ${GLIBC_DYN_FIX}
+ 
+ dbmsr.so: $(DBMSR_SOURCES:.cc=.dl_o)
+-	$(LD) ${SLDFLAGS} -o $@ $^ ${GLIBC_DYN_FIX}
++	$(LD) ${SLDFLAGS} -install_name @GENTOO_PORTAGE_EPREFIX@/usr/lib/singular/$@ -o $@ $^ ${GLIBC_DYN_FIX}
+ 
+ # dynamic module for python bject support
+ pyobject.${MODULE_SUFFIX}: pyobject.dl_o

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Plack</remote-id>
+    <remote-id type="cpan-module">HTTP::Message::PSGI</remote-id>
+    <remote-id type="cpan-module">HTTP::Server::PSGI</remote-id>
+    <remote-id type="cpan-module">Plack</remote-id>
+    <remote-id type="cpan-module">Plack::App::CGIBin</remote-id>
+    <remote-id type="cpan-module">Plack::App::Cascade</remote-id>
+    <remote-id type="cpan-module">Plack::App::Directory</remote-id>
+    <remote-id type="cpan-module">Plack::App::File</remote-id>
+    <remote-id type="cpan-module">Plack::App::PSGIBin</remote-id>
+    <remote-id type="cpan-module">Plack::App::URLMap</remote-id>
+    <remote-id type="cpan-module">Plack::App::WrapCGI</remote-id>
+    <remote-id type="cpan-module">Plack::Builder</remote-id>
+    <remote-id type="cpan-module">Plack::Component</remote-id>
+    <remote-id type="cpan-module">Plack::HTTPParser</remote-id>
+    <remote-id type="cpan-module">Plack::HTTPParser::PP</remote-id>
+    <remote-id type="cpan-module">Plack::Handler</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::Apache1</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::Apache2</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::Apache2::Registry</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::CGI</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::FCGI</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::HTTP::Server::PSGI</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::Standalone</remote-id>
+    <remote-id type="cpan-module">Plack::LWPish</remote-id>
+    <remote-id type="cpan-module">Plack::Loader</remote-id>
+    <remote-id type="cpan-module">Plack::Loader::Delayed</remote-id>
+    <remote-id type="cpan-module">Plack::Loader::Restarter</remote-id>
+    <remote-id type="cpan-module">Plack::Loader::Shotgun</remote-id>
+    <remote-id type="cpan-module">Plack::MIME</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::AccessLog</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::AccessLog::Timed</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Auth::Basic</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::BufferedStreaming</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Chunked</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Conditional</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::ConditionalGET</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::ContentLength</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::ContentMD5</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::ErrorDocument</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::HTTPExceptions</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Head</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::IIS6ScriptNameFix</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::IIS7KeepAliveFix</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::JSONP</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::LighttpdScriptNameFix</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Lint</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Log4perl</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::LogDispatch</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::NullLogger</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::RearrangeHeaders</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Recursive</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Refresh</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Runtime</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::SimpleContentFilter</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::SimpleLogger</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::StackTrace</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::Static</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::XFramework</remote-id>
+    <remote-id type="cpan-module">Plack::Middleware::XSendfile</remote-id>
+    <remote-id type="cpan-module">Plack::Request</remote-id>
+    <remote-id type="cpan-module">Plack::Request::Upload</remote-id>
+    <remote-id type="cpan-module">Plack::Response</remote-id>
+    <remote-id type="cpan-module">Plack::Runner</remote-id>
+    <remote-id type="cpan-module">Plack::TempBuffer</remote-id>
+    <remote-id type="cpan-module">Plack::Test</remote-id>
+    <remote-id type="cpan-module">Plack::Test::MockHTTP</remote-id>
+    <remote-id type="cpan-module">Plack::Test::Server</remote-id>
+    <remote-id type="cpan-module">Plack::Test::Suite</remote-id>
+    <remote-id type="cpan-module">Plack::Util</remote-id>
+    <remote-id type="cpan-module">Plack::Util::Accessor</remote-id>
+  </upstream>
+</pkgmetadata>

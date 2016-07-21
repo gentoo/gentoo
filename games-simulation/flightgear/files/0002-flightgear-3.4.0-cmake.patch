@@ -1,0 +1,54 @@
+From 14405fe2e397b9a6ab9b004cb8c7459eeb41ec59 Mon Sep 17 00:00:00 2001
+From: "Rebecca N. Palmer" <rebecca_palmer@zoho.com>
+Date: Fri, 3 Apr 2015 19:15:52 +0100
+Subject: [PATCH] Fix compile with CMake 3.2.1, by Kevin Seroux
+
+Explicitly link X11, as this no longer comes with OpenGL
+---
+ CMakeLists.txt                | 1 +
+ src/Main/CMakeLists.txt       | 4 +++-
+ utils/fgviewer/CMakeLists.txt | 4 ++++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c881c32..c443f58 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,6 +110,7 @@ IF(APPLE)
+ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR
+ 	${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+     find_package(Threads REQUIRED)
++    find_package(X11 REQUIRED)
+     
+     set(USE_DBUS_DEFAULT 1)
+ 
+diff --git a/src/Main/CMakeLists.txt b/src/Main/CMakeLists.txt
+index 949b379..4b6926e 100644
+--- a/src/Main/CMakeLists.txt
++++ b/src/Main/CMakeLists.txt
+@@ -130,7 +130,9 @@ endif()
+ if (CRASHRPT_FOUND)
+ 	target_link_libraries(fgfs ${CRASHRPT_LIBRARY})
+ endif()
+-
++if(X11_FOUND)
++    target_link_libraries(fgfs ${X11_LIBRARIES})
++endif()
+ target_link_libraries(fgfs
+ 	${SQLITE3_LIBRARY}
+ 	${SIMGEAR_LIBRARIES}
+diff --git a/utils/fgviewer/CMakeLists.txt b/utils/fgviewer/CMakeLists.txt
+index 165be74..bfc52ad 100644
+--- a/utils/fgviewer/CMakeLists.txt
++++ b/utils/fgviewer/CMakeLists.txt
+@@ -42,6 +42,10 @@ else()
+ endif()
+ 
+ add_executable(fgviewer ${FGVIEWER_SOURCES} ${FGVIEWER_RTI_SOURCES})
++if(X11_FOUND)
++    target_link_libraries(fgviewer ${X11_LIBRARIES})
++endif()
++
+ target_link_libraries(fgviewer
+ 	${SIMGEAR_LIBRARIES}
+ 	${OPENSCENEGRAPH_LIBRARIES}

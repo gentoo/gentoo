@@ -1,0 +1,53 @@
+commit ed566185fe698c71714009602c4dfbe4a91e0313
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu May 5 00:32:34 2016 +0200
+
+    Fix dependencies (drop unused, add missing)
+    
+    REVIEW: 127832
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2df6ca6..884a4b5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,23 +6,18 @@ set (QT_MIN_VERSION "5.3.0")
+ find_package(ECM 1.7.0 REQUIRED CONFIG)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+-find_package(KF5 REQUIRED COMPONENTS 
+-    CoreAddons
+-    Config
+-    ItemModels
+-    WidgetsAddons
+-    WindowSystem
++find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS PrintSupport Svg Widgets Xml)
++find_package(KF5 REQUIRED COMPONENTS
++    Completion
+     Config
++    ConfigWidgets
++    CoreAddons
+     DBusAddons
+     I18n
+-    ConfigWidgets
+-    TextWidgets
++    KDELibs4Support #TODO eventually remove kdelibs4support
++    WidgetsAddons
+     XmlGui
+-    KIO
+-    NotifyConfig
+-    NewStuff
+-    KDELibs4Support) #TODO eventually remove kdelibs4support
++)
+ 
+ find_package(KF5KDEGames 4.9.0 REQUIRED)
+ find_package(Phonon4Qt5 CONFIG REQUIRED)
+@@ -58,7 +53,7 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-ktuberling.png")
+ ecm_add_app_icon(ktuberling_SRCS ICONS ${ICONS_SRCS})
+ add_executable(ktuberling ${ktuberling_SRCS})
+ 
+-target_link_libraries(ktuberling   KF5::KIOCore KF5KDEGames Phonon::phonon4qt5 Qt5::Svg Phonon::phonon4qt5 KF5::DBusAddons KF5::XmlGui KF5::Completion Qt5::PrintSupport KF5::KDELibs4Support)
++target_link_libraries(ktuberling  KF5KDEGames Phonon::phonon4qt5 Qt5::Svg KF5::DBusAddons KF5::XmlGui KF5::Completion Qt5::PrintSupport KF5::KDELibs4Support)
+ 
+ install(TARGETS ktuberling  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+ 

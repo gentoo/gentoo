@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription>
+MSMS is an excellent tool for computing protein solvent excluded surface (SES).
+MSMS Plugin for PyMOL provides a graphical user interface for running MSMS and 
+displaying its results in PyMOL. 
+
+1. Citation for this plugin: 
+    Hongbo Zhu. MSMS plugin for PyMOL, 2010, Biotechnology Center (BIOTEC), TU Dresden.
+2. Citation for PyMOL can be found at: http://pymol.sourceforge.net/faq.html#CITE
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a036f9b..92a471a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -187,9 +187,13 @@ include_directories (
+ )
+ if (NOT QTSINGLEAPPLICATION_FOUND)
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/qtsingleapplication)
++else ()
++    include_directories(${QTSINGLEAPPLICATION_INCLUDE_DIR})
+ endif (NOT QTSINGLEAPPLICATION_FOUND)
+ if (NOT QXT_FOUND)
+     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/qxt)
++else ()
++    include_directories(${QXT_INCLUDE_PATH})
+ endif (NOT QXT_FOUND)
+ 
+ 

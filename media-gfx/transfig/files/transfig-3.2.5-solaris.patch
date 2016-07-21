@@ -1,0 +1,12 @@
+Fixes complation error on both Darwin and Solaris
+
+--- fig2dev/fig2dev.h
++++ fig2dev/fig2dev.h
+@@ -20,6 +20,7 @@
+ #include "patchlevel.h"
+ #include <math.h>
+ #include <sys/file.h>
++#include <sys/stat.h>
+ #include <signal.h>
+ #include <string.h>
+ #include <pwd.h>

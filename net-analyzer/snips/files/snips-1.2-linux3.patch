@@ -1,0 +1,26 @@
+Index: snips-1.2/Configure
+===================================================================
+--- snips-1.2.orig/Configure
++++ snips-1.2/Configure
+@@ -274,7 +274,7 @@ case "$OS" in
+ 		CURSESLIB='-lncurses -ltermcap'
+ 		PING="/bin/ping"
+ 		;; 
+-  LINUX20|Linux\ 2*)
++  LINUX20|Linux\ [23]*)
+ 		OS_CFLAGS="-DLINUX2";
+ 		OS_LIBS="${LIBRESOLV}"
+ 		if [ -f /usr/lib/libgdbm.so ]; then
+Index: snips-1.2/utility/snipsprog.init
+===================================================================
+--- snips-1.2.orig/utility/snipsprog.init
++++ snips-1.2/utility/snipsprog.init
+@@ -45,7 +45,7 @@ getpid() {
+ 
+     # Finally try to extract it from ps depending on the OS
+     case "`uname -s -r`" in
+-	LINUX20|Linux\ 2*)
++	LINUX20|Linux\ [23]*)
+ 	    ps auxw | awk 'BEGIN { prog=ARGV[1]; dir=ARGV[2]; ARGC=1 } 
+ 		       { if ((prog == $11) || (("(" prog ")") == $11) ||
+ 			    ((prog ":") == $11) || ((dir "/" prog) == $11))

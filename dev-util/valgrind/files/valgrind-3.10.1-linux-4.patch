@@ -1,0 +1,29 @@
+From ecb3746d69820905c076b89e1be7042f52ceaa5f Mon Sep 17 00:00:00 2001
+From: Janne Grunau <j@jannau.net>
+Date: Thu, 19 Mar 2015 22:44:51 +0100
+Subject: [PATCH 1/1] configure: support linux 4.*
+
+There is nothing special in linux 4.0. Handle it as another 3.* (or
+another 2.6.*) release. Compare changeset 14955 in valgrind's
+subversion repository. Valgrind trunk also drops support for linux 2.4
+but there is no need to do that for realeased software.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0fd2a41..33c7954 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -303,7 +303,7 @@ case "${host_os}" in
+         kernel=`uname -r`
+ 
+         case "${kernel}" in
+-             2.6.*|3.*) 
++             2.6.*|3.*|4.*)
+         	    AC_MSG_RESULT([2.6.x/3.x family (${kernel})])
+         	    AC_DEFINE([KERNEL_2_6], 1, [Define to 1 if you're using Linux 2.6.x or Linux 3.x])
+         	    ;;
+-- 
+2.3.3
+

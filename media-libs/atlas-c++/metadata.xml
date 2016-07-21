@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+Atlas-C++ is the current C++ implementation of the Atlas protocol, a
+communications layer designed to be used in the WorldForge MMORPG gaming
+system.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">worldforge</remote-id>
+	</upstream>
+</pkgmetadata>

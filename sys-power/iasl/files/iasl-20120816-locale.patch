@@ -1,0 +1,15 @@
+diff -Nuar acpica-unix-20120816.orig/generate/unix/Makefile.config acpica-unix-20120816/generate/unix/Makefile.config
+--- acpica-unix-20120816.orig/generate/unix/Makefile.config	2012-08-16 15:51:15.000000000 +0000
++++ acpica-unix-20120816/generate/unix/Makefile.config	2012-09-07 18:31:41.887229126 +0000
+@@ -161,9 +161,9 @@
+ #YACC=      byacc
+ #YFLAGS +=  -v -d
+ #
+-YACC=       bison
++YACC=       LC_ALL=C bison
+ YFLAGS +=   -v -d -y
+ 
+-LEX=        flex
++LEX=        LC_ALL=C flex
+ LFLAGS +=   -i -s
+ 

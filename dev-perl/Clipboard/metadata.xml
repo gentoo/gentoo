@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Clipboard</remote-id>
+    <remote-id type="cpan-module">Clipboard</remote-id>
+    <remote-id type="cpan-module">Clipboard::MacPasteboard</remote-id>
+    <remote-id type="cpan-module">Clipboard::Win32</remote-id>
+    <remote-id type="cpan-module">Clipboard::Xclip</remote-id>
+    <remote-id type="cpan-module">PhonyClipboard</remote-id>
+  </upstream>
+</pkgmetadata>

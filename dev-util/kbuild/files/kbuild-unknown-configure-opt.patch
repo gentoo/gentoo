@@ -1,0 +1,11 @@
+--- a/bootstrap.gmk
++++ b/bootstrap.gmk
+@@ -179,7 +179,7 @@
+ 	echo done > $@
+ 
+ $(OUTDIR)/sed/ts-configured: $(OUTDIR)/sed/ts-autoreconf
+-	cd $(OUTDIR)/sed && $(SRCDIR)/src/sed/configure --without-libintl --disable-nls
++	cd $(OUTDIR)/sed && $(SRCDIR)/src/sed/configure --disable-nls
+ 	echo done > $@
+ 
+ $(OUTDIR)/sed/config.h: $(OUTDIR)/sed/ts-configured

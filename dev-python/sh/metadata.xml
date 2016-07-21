@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+	sh (previously pbs) is a full-fledged subprocess interface 
+	for Python 2.6 - 3.2 that allows you to call any program 
+	as if it were a function:
+
+	from sh import ifconfig
+	print ifconfig("eth0")
+
+	sh is not a collection of system commands implemented in Python.
+</longdescription>
+	<upstream>
+		<remote-id type="pypi">sh</remote-id>
+		<remote-id type="github">amoffat/sh</remote-id>
+	</upstream>
+</pkgmetadata>

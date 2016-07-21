@@ -1,0 +1,79 @@
+From 386f6af25a4f5276765a121f98dd00d0bf6a743d Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sun, 26 Jul 2015 17:04:43 +0200
+Subject: [PATCH] set proper cmake min req, matching kdelibs4, before project;
+ fix build accordingly
+
+---
+ CMakeLists.txt             | 2 +-
+ gtk3proxies/CMakeLists.txt | 2 +-
+ gtkproxies/CMakeLists.txt  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0ef2243..9d77fcd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
++cmake_minimum_required(VERSION 2.8.9)
+ project(kdegtkconfig)
+-cmake_minimum_required(VERSION 2.6)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+ 
+ find_package(KDE4 REQUIRED)
+diff --git a/gtk3proxies/CMakeLists.txt b/gtk3proxies/CMakeLists.txt
+index 856a3f6..d43597e 100644
+--- a/gtk3proxies/CMakeLists.txt
++++ b/gtk3proxies/CMakeLists.txt
+@@ -2,7 +2,7 @@ find_package(GTK3 REQUIRED)
+ 
+ include_directories(${GTK3_INCLUDE_DIRS})
+ 
+-add_definitions("-DDATA_DIR=\\\"${DATA_INSTALL_DIR}/kcm-gtk-module/\\\"")
++add_definitions(-DDATA_DIR="\\\"${DATA_INSTALL_DIR}/kcm-gtk-module/\\\"")
+ 
+ add_executable(gtk3_preview preview3.c)
+ target_link_libraries(gtk3_preview ${GTK3_LIBRARY} ${GOBJECT2_LIBRARY} ${GLIB2_LIBRARY})
+diff --git a/gtkproxies/CMakeLists.txt b/gtkproxies/CMakeLists.txt
+index 9821cbf..18ee2d5 100644
+--- a/gtkproxies/CMakeLists.txt
++++ b/gtkproxies/CMakeLists.txt
+@@ -6,7 +6,7 @@ add_executable(reload_gtk_apps reload.c)
+ target_link_libraries(reload_gtk_apps ${GTK2_LIBRARIES})
+ install(TARGETS reload_gtk_apps RUNTIME DESTINATION "${KDE4_LIBEXEC_INSTALL_DIR}")
+ 
+-add_definitions("-DDATA_DIR=\\\"${DATA_INSTALL_DIR}/kcm-gtk-module/\\\"")
++add_definitions(-DDATA_DIR="\\\"${DATA_INSTALL_DIR}/kcm-gtk-module/\\\"")
+ 
+ add_executable(gtk_preview preview.c)
+ target_link_libraries(gtk_preview ${GTK2_LIBRARIES} ${GTK2_GIOMM_LIBRARY})
+-- 
+2.4.6
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,6 +47,4 @@
+ add_subdirectory(gtkproxies)
+ add_subdirectory(gtk3proxies)
+ add_subdirectory(icons)
+-find_package(Msgfmt REQUIRED)
+-find_package(Gettext REQUIRED)
+ add_subdirectory( po )
+
+--- a/po/CMakeLists.txt
++++ b/po/CMakeLists.txt
+@@ -0,0 +1,14 @@
++# The pofiles macro creates in some versions same name targets
++# which since cmake 2.8 leads to target clashes.
++# Hence force the old policy for all po directories.
++# http://public.kitware.com/Bug/view.php?id=12952
++cmake_policy(SET CMP0002 OLD)
++
++find_package(Gettext REQUIRED)
++if (NOT GETTEXT_MSGMERGE_EXECUTABLE)
++MESSAGE(FATAL_ERROR "Please install msgmerge binary")
++endif (NOT GETTEXT_MSGMERGE_EXECUTABLE)
++if (NOT GETTEXT_MSGFMT_EXECUTABLE)
++MESSAGE(FATAL_ERROR "Please install msgmerge binary")
++endif (NOT GETTEXT_MSGFMT_EXECUTABLE)
++

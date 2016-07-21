@@ -1,0 +1,232 @@
+--- src/gui/debugger/dbg_bkpts.c
++++ src/gui/debugger/dbg_bkpts.c
+@@ -29,10 +29,15 @@
+ #  include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+-#include <string.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_regs.c
++++ src/gui/debugger/dbg_regs.c
+@@ -28,14 +28,19 @@
+ #  include <config.h>
+ #endif
+ 
+-#include <gtk/gtk.h>
+-#include <glade/glade.h>
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <gtk/gtk.h>
++#include <glade/glade.h>
+ #include <gdk/gdkkeysyms.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_pclog.c
++++ src/gui/debugger/dbg_pclog.c
+@@ -31,6 +31,11 @@
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_wnds.c
++++ src/gui/debugger/dbg_wnds.c
+@@ -38,6 +38,11 @@
+ #include <windows.h>
+ #endif
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "ti68k_int.h"
+ #include "struct.h"
+--- src/gui/debugger/dbg_mem.c
++++ src/gui/debugger/dbg_mem.c
+@@ -33,6 +33,11 @@
+ #include <glade/glade.h>
+ #include <gdk/gdkkeysyms.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <string.h>
+--- src/gui/debugger/dbg_iop.c
++++ src/gui/debugger/dbg_iop.c
+@@ -28,13 +28,18 @@
+ #  include <config.h>
+ #endif
+ 
+-#include <gtk/gtk.h>
+-#include <glade/glade.h>
+ #include <stdio.h>
+ #include <stdint.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <gtk/gtk.h>
++#include <glade/glade.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_stack.c
++++ src/gui/debugger/dbg_stack.c
+@@ -28,11 +28,16 @@
+ #  include <config.h>
+ #endif
+ 
++#include <stdlib.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ #include <gdk/gdkkeysyms.h>
+-#include <stdlib.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_all.c
++++ src/gui/debugger/dbg_all.c
+@@ -38,6 +38,13 @@
+ #include <windows.h>
+ #endif
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_SENSITIVE
++#define GTK_WIDGET_SENSITIVE(wid) (gtk_widget_get_sensitive(wid))
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "ti68k_int.h"
+ #include "struct.h"
+ #include "dbg_all.h"
+--- src/gui/debugger/dbg_code.c
++++ src/gui/debugger/dbg_code.c
+@@ -28,11 +28,16 @@
+ #  include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ #include <gdk/gdkkeysyms.h>
+-#include <string.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_SENSITIVE
++#define GTK_WIDGET_SENSITIVE(wid) (gtk_widget_get_sensitive(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_heap.c
++++ src/gui/debugger/dbg_heap.c
+@@ -31,6 +31,11 @@
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/debugger/dbg_dock.c
++++ src/gui/debugger/dbg_dock.c
+@@ -37,11 +37,16 @@
+ #  include <config.h>
+ #endif
+ 
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ #include <gdk/gdkkeysyms.h>
+-#include <string.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_VISIBLE
++#define GTK_WIDGET_VISIBLE(wid) (gtk_widget_get_visible(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "support.h"
+--- src/gui/calc/calc.c
++++ src/gui/calc/calc.c
+@@ -39,6 +39,11 @@
+ #include <glade/glade.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_STATE
++#define GTK_WIDGET_STATE(wid) (gtk_widget_get_state(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "skinops.h"
+--- src/gui/calc/screen.c
++++ src/gui/calc/screen.c
+@@ -29,11 +29,16 @@
+ #  include <config.h>
+ #endif				/*  */
+ 
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <glade/glade.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+-#include <string.h>
+ 
++#if GTK_CHECK_VERSION(2,18,0)
++#undef GTK_WIDGET_STATE
++#define GTK_WIDGET_STATE(wid) (gtk_widget_get_state(wid))
++#endif
++
+ #include "intl.h"
+ #include "paths.h"
+ #include "skinops.h"

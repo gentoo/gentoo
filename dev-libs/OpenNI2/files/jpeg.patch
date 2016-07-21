@@ -1,0 +1,90 @@
+Index: OpenNI2-9999/Source/Core/Makefile
+===================================================================
+--- OpenNI2-9999.orig/Source/Core/Makefile
++++ OpenNI2-9999/Source/Core/Makefile
+@@ -5,14 +5,12 @@ BIN_DIR = ../../Bin
+ INC_DIRS = \
+ 	../../Include \
+ 	../../ThirdParty/PSCommon/XnLib/Include \
+-	../Drivers/OniFile/Formats \
+-	../../ThirdParty/LibJPEG
++	../Drivers/OniFile/Formats
+ 
+ SRC_FILES = \
+ 	*.cpp \
+ 	../Drivers/OniFile/Formats/XnCodec.cpp \
+-	../Drivers/OniFile/Formats/XnStreamCompression.cpp \
+-	../../ThirdParty/LibJPEG/*.c \
++	../Drivers/OniFile/Formats/XnStreamCompression.cpp
+ 
+ ifeq ("$(OSTYPE)","Darwin")
+ 	INC_DIRS += /opt/local/include
+@@ -23,7 +21,7 @@ endif
+ LIB_NAME = OpenNI2
+ 
+ LIB_DIRS = ../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
+-USED_LIBS = XnLib dl pthread
++USED_LIBS = XnLib jpeg dl pthread
+ ifneq ("$(OSTYPE)","Darwin")
+         USED_LIBS += rt  
+ endif
+Index: OpenNI2-9999/Source/Drivers/OniFile/Makefile
+===================================================================
+--- OpenNI2-9999.orig/Source/Drivers/OniFile/Makefile
++++ OpenNI2-9999/Source/Drivers/OniFile/Makefile
+@@ -6,14 +6,12 @@ INC_DIRS = \
+ 	. \
+ 	../../../Include \
+ 	../../../ThirdParty/PSCommon/XnLib/Include \
+-	../../../ThirdParty/LibJPEG \
+ 	Formats
+ 
+ SRC_FILES = \
+ 	*.cpp \
+ 	Formats/*.cpp \
+-	XnLibExtensions/*.cpp \
+-	../../../ThirdParty/LibJPEG/*.c
++	XnLibExtensions/*.cpp
+ 
+ 
+ ifeq ("$(OSTYPE)","Darwin")
+@@ -25,7 +23,7 @@ endif
+ LIB_NAME = OniFile
+ 
+ LIB_DIRS = ../../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
+-USED_LIBS = XnLib pthread 
++USED_LIBS = XnLib jpeg pthread 
+ ifneq ("$(OSTYPE)","Darwin")
+         USED_LIBS += rt  
+ endif
+Index: OpenNI2-9999/Source/Drivers/PS1080/Makefile
+===================================================================
+--- OpenNI2-9999.orig/Source/Drivers/PS1080/Makefile
++++ OpenNI2-9999/Source/Drivers/PS1080/Makefile
+@@ -7,7 +7,6 @@ INC_DIRS = \
+ 	Include \
+ 	../../../Include \
+ 	../../../ThirdParty/PSCommon/XnLib/Include \
+-	../../../ThirdParty/LibJPEG \
+ 	../../DepthUtils
+ 
+ SRC_FILES = \
+@@ -16,8 +15,7 @@ SRC_FILES = \
+ 	DriverImpl/*.cpp\
+ 	Formats/*.cpp	\
+ 	Include/*.cpp	\
+-	Sensor/*.cpp	\
+-	../../../ThirdParty/LibJPEG/*.c
++	Sensor/*.cpp	
+ 
+ 
+ ifeq ("$(OSTYPE)","Darwin")
+@@ -30,7 +28,7 @@ LIB_NAME = PS1080
+ 
+ LIB_DIRS += ../../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
+ LIB_DIRS += $(BIN_DIR)/$(PLATFORM)-$(CFG)
+-USED_LIBS = XnLib dl pthread DepthUtils
++USED_LIBS = XnLib jpeg dl pthread DepthUtils
+ ifneq ("$(OSTYPE)","Darwin")
+         USED_LIBS += rt usb-1.0 udev
+ else

@@ -1,0 +1,15 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,10 +11,10 @@
+ BINDIR      = @bindir@
+ 
+ nbtscan: $(OBJECTS)
+-	$(CC) $(CFLAGS) -o nbtscan $(OBJECTS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nbtscan $(OBJECTS) $(LIBS)
+ 
+ install:
+-	$(INSTALL) $(TARGET) $(BINDIR)/$(TARGET)
++	$(INSTALL) $(TARGET) $(DESTDIR)/$(BINDIR)/$(TARGET)
+ 
+ nbtscan.o: nbtscan.c statusq.h range.h list.h
+ 	$(CC) $(CFLAGS) $(DEFS) -c nbtscan.c

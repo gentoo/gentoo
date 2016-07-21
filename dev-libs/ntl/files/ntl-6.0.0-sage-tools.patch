@@ -1,0 +1,61 @@
+--- src.orig/src/tools.c	2012-08-06 11:54:53.652334400 +0200
++++ src/src/tools.c	2012-08-06 11:59:18.183993600 +0200
+@@ -18,8 +18,35 @@
+ void (*ErrorCallback)() = 0;
+ 
+ 
++/*
++   The following code differs from vanilla NTL.
++
++   We add a SetErrorCallbackFunction(). This sets a global callback function _function_,
++   which gets called with parameter _context_ and an error message string whenever Error()
++   gets called.
++
++   Note that if the custom error handler *returns*, then NTL will dump the error message
++   back to stderr and abort() as it habitually does.
++
++   -- David Harvey (2008-04-12)
++*/
++
++void (*ErrorCallbackFunction)(const char*, void*) = NULL;
++void *ErrorCallbackContext = NULL;
++
++
++void SetErrorCallbackFunction(void (*function)(const char*, void*), void *context)
++{
++   ErrorCallbackFunction = function;
++   ErrorCallbackContext = context;
++}
++
++
+ void Error(const char *s)
+ {
++   if (ErrorCallbackFunction != NULL)
++      ErrorCallbackFunction(s, ErrorCallbackContext);
++
+    cerr << s << "\n";
+    _ntl_abort();
+ }
+--- src.orig/include/NTL/tools.h	2012-08-06 11:54:52.830333000 +0200
++++ src/include/NTL/tools.h	2012-08-06 11:59:18.143993600 +0200
+@@ -10,6 +10,7 @@
+ 
+ #include <cstdlib>
+ #include <cmath>
++#include <cstdio>
+ #include <iostream>
+ 
+ #else
+@@ -252,6 +253,12 @@
+ char IntValToChar(long a);
+ 
+ 
++/*
++  This function is not present in vanilla NTL.
++  See tools.c for documentation.
++ */
++void SetErrorCallbackFunction(void (*func)(const char *s, void *context), void *context);
++
+ 
+ void Error(const char *s);
+ 

@@ -1,0 +1,49 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Hardcode shadersDir to the correct path in Debian in various plugins
+Git-Branch: p/shadersdir
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..06b8aa9ce525fc0c5c221f5d675c29
+
+ meshlab/src/meshlabplugins/render_gdp/meshrender.cpp   |    2 +-
+ meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp |    2 +-
+ meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp   |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/meshlab/src/meshlabplugins/render_gdp/meshrender.cpp b/meshlab/src/meshlabplugins/render_gdp/meshrender.cpp
+index 64dbcc3..c07998c 100644
+--- a/meshlab/src/meshlabplugins/render_gdp/meshrender.cpp
++++ b/meshlab/src/meshlabplugins/render_gdp/meshrender.cpp
+@@ -39,7 +39,7 @@ void MeshShaderRenderPlugin::initActionList() {
+ 	qaNone->setCheckable(false);
+ 	actionList << qaNone;*/
+ 
+-	QDir shadersDir = QDir(qApp->applicationDirPath());
++	QDir shadersDir = QDir("/usr/share/meshlab");
+ #if defined(Q_OS_WIN)
+ 	if (shadersDir.dirName() == "debug" || shadersDir.dirName() == "release" || shadersDir.dirName() == "plugins"  )
+ 		shadersDir.cdUp();
+diff --git a/meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp b/meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp
+index 9c45981..0256805 100644
+--- a/meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp
++++ b/meshlab/src/meshlabplugins/render_gdp/shaderDialog.cpp
+@@ -323,7 +323,7 @@ void ShaderDialog::changeTexturePath(int i) {
+ void ShaderDialog::browseTexturePath(int i) {
+ 	QFileDialog fd(0,"Choose new texture");
+ 
+-	QDir shadersDir = QDir(qApp->applicationDirPath());
++	QDir shadersDir = QDir("/usr/share/meshlab");
+ #if defined(Q_OS_WIN)
+ 	if (shadersDir.dirName() == "debug" || shadersDir.dirName() == "release")
+ 		shadersDir.cdUp();
+diff --git a/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp b/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp
+index e327cea..eb67fd2 100755
+--- a/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp
++++ b/meshlab/src/meshlabplugins/render_rfx/render_rfx.cpp
+@@ -55,7 +55,7 @@ QList<QAction*> RenderRFX::actions()
+ 
+ void RenderRFX::initActionList()
+ {
+-	QDir shadersDir = PluginManager::getBaseDirPath();
++	QDir shadersDir = QDir("/usr/share/meshlab");
+ 
+ #if defined(Q_OS_WIN)
+ 	if (shadersDir.dirName() == "debug"   ||

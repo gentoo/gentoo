@@ -1,0 +1,6 @@
+ARCH="ppc"
+ACCEPT_KEYWORDS="ppc"
+
+CHOST="powerpc-gentoo-linux-uclibc"
+
+UCLIBC_CPU_DEFAULT=""

@@ -1,0 +1,30 @@
+Add missing init task changes.
+
+-ck
+
+---
+ include/linux/init_task.h |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: linux-4.0.2-ck1/include/linux/init_task.h
+===================================================================
+--- linux-4.0.2-ck1.orig/include/linux/init_task.h	2015-05-08 09:03:54.922287214 +1000
++++ linux-4.0.2-ck1/include/linux/init_task.h	2015-05-08 14:09:52.046246570 +1000
+@@ -200,6 +200,9 @@ extern struct task_group root_task_group
+ 	.cpus_allowed	= CPU_MASK_ALL,					\
+ 	.mm		= NULL,						\
+ 	.active_mm	= &init_mm,					\
++	.restart_block = {						\
++		.fn = do_no_restart_syscall,				\
++	},								\
+ 	.run_list	= LIST_HEAD_INIT(tsk.run_list),			\
+ 	.time_slice	= HZ,					\
+ 	.tasks		= LIST_HEAD_INIT(tsk.tasks),			\
+@@ -243,6 +246,7 @@ extern struct task_group root_task_group
+ 	INIT_FTRACE_GRAPH						\
+ 	INIT_TRACE_RECURSION						\
+ 	INIT_TASK_RCU_PREEMPT(tsk)					\
++	INIT_KASAN(tsk)							\
+ }
+ #else /* CONFIG_SCHED_BFS */
+ #define INIT_TASK_COMM "swapper"

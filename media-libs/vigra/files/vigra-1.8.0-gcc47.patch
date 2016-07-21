@@ -1,0 +1,25 @@
+From 11113f8f5ffa868e32259e8d6dcdb543fd58848b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Mon, 11 Jun 2012 08:33:06 +0200
+Subject: [PATCH] Fix building with gcc-4.7
+
+---
+ include/vigra/numpy_array.hxx |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/vigra/numpy_array.hxx b/include/vigra/numpy_array.hxx
+index 1d06a79..7806f6b 100644
+--- a/include/vigra/numpy_array.hxx
++++ b/include/vigra/numpy_array.hxx
+@@ -1074,7 +1074,7 @@ void NumpyArray<N, T, Stride>::setupArrayView()
+ 
+         this->m_stride /= sizeof(value_type);
+         this->m_ptr = reinterpret_cast<pointer>(pyArray()->data);
+-        vigra_precondition(checkInnerStride(Stride()),
++        vigra_precondition(this->checkInnerStride(Stride()),
+             "NumpyArray<..., UnstridedArrayTag>::setupArrayView(): First dimension of given array is not unstrided (should never happen).");
+ 
+     }
+-- 
+1.7.8.6
+

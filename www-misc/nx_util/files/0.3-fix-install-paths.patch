@@ -1,0 +1,47 @@
+diff --git a/nx_util.conf b/nx_util.conf
+index cd2a591..818daaf 100644
+--- a/nx_util.conf
++++ b/nx_util.conf
+@@ -1,4 +1,4 @@
+ [nx_util]
+-data_dir=/usr/local/nx_datas
++data_dir=/usr/share/nx_datas
+ database_dir=
+ naxsi_core_rules=/etc/nginx/naxsi_core.rules
+diff --git a/nx_util.py b/nx_util.py
+index 81c5030..eb7e888 100755
+--- a/nx_util.py
++++ b/nx_util.py
+@@ -61,8 +61,8 @@ nginx/naxsi log parser, whitelist and report generator.
+ 	
+ 	# Configuration
+ 	parser.add_option("-c", "--config", dest="conf_path",
+-			  help="Path to configuration (defaults to /usr/local/etc/nx_util.conf)", 
+-			  type="string", default="/usr/local/etc/nx_util.conf")
++			  help="Path to configuration (defaults to /etc/nx_util.conf)", 
++			  type="string", default="/etc/nx_util.conf")
+ 	
+ 	# Filtering options should go here :)
+ 	parser.add_option("-f", "--filters", dest="usr_filter",
+diff --git a/setup.py b/setup.py
+index c08f4e6..7b15fd8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,14 +8,14 @@ setup(name='nx_util',
+       author='Naxsi Dev Team',
+       author_email='thibault.koechlin@nbs-system.com',
+       url='naxsi.googlecode.com',
+-      scripts=['nx_util.py'],
++      scripts=['nx_util'],
+       packages=['nx_lib'],
+-      data_files=[('nx_datas', ['nx_datas/bootstrap.min.css',
++      data_files=[('/usr/share/nx_datas', ['nx_datas/bootstrap.min.css',
+                                 'nx_datas/bootstrap-responsive.min.css',
+                                 'nx_datas/highcharts.js',
+                                 'nx_datas/map.tpl',
+                                 'nx_datas/bootstrap.min.js',
+                                 'nx_datas/country2coords.txt']),
+                   ('/usr/share/man/man1', ['nx_util.1.gz']),
+-                  ('/usr/local/etc/', ['nx_util.conf'])]
++                  ('/etc/', ['nx_util.conf'])]
+       )

@@ -1,0 +1,45 @@
+diff --git a/Makefile b/Makefile
+index e21d52e..4a22862 100644
+--- a/Makefile
++++ b/Makefile
+@@ -85,7 +85,7 @@ else
+ INCLUDES = -I$(INC)
+ endif
+ 
+-COMPILE_COMMAND        =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
++COMPILE_COMMAND        =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -shared -c
+ LIBRARY_LINK_COMMAND   =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -release $(RELEASE) $(LDFLAGS)
+ BUILD_COMMAND_LOCAL    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES)
+ BUILD_COMMAND_DYNAMIC  =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -dynamic
+@@ -93,8 +93,8 @@ BUILD_COMMAND_STATIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -sta
+ INSTALL_COMMAND        =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND =  $(LIBTOOL) --mode=finish
+ 
+-OBJ_EXT                =  lo
+-LIB_EXT                =  la
++OBJ_EXT                =  o
++LIB_EXT                =  so
+ 
+ ######################################################################
+ #  You should not need to make modifications below this line         #
+@@ -178,8 +178,7 @@ default:
+ # Compile the library and examples
+ #
+ all:	$(LIB) $(BIN) $(SOURCE) $(HEADERS) \
+-		$(LIB)/libCQRlib.$(LIB_EXT) \
+-		$(BIN)/CQRlibTest
++		$(LIB)/libCQRlib.$(LIB_EXT)
+ 		
+ install:  all $(INSTALLDIR) $(INSTALLDIR)/lib $(INSTALLDIR)/include \
+           $(INC) $(LIB)/libCQRlib.$(LIB_EXT)  $(INC)/cqrlib.h
+@@ -229,8 +228,8 @@ $(BIN):
+ # CQRlib library
+ #
+ $(LIB)/libCQRlib.$(LIB_EXT): $(SOURCE) $(HEADERS) $(COMMONDEP)
+-	$(COMPILE_COMMAND) -c $(SOURCE)
+-	$(LIBRARY_LINK_COMMAND) -o $(LIB)/libCQRlib.$(LIB_EXT) *.$(OBJ_EXT) 
++	$(CC) $(CFLAGS) -fPIC -c $(SOURCE) -o cqrlib.o -I.
++	$(CC) $(LDFLAGS) -Wl,--soname,libCQRlib.so.1 -shared -o libCQRlib.so.$(RELEASE) *.$(OBJ_EXT) -lm 
+ 
+ #
+ # CQRlibTest example program

@@ -1,0 +1,72 @@
+From b8fe9902f3c6c50ca6a23e24fcea99582beebc65 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martinpitt@gnome.org>
+Date: Tue, 22 Oct 2013 08:02:51 +0000
+Subject: linux: Clamp percentage for overfull batteries
+
+Some batteries report energy > energy_full and a percentage ("capacity"
+attribute) > 100%. Clamp these within 0 and 100% for both plausibility as well
+as to avoid setting an out-of-range property which would then become 0%.
+
+https://launchpad.net/bugs/1240673
+---
+diff --git a/src/linux/integration-test b/src/linux/integration-test
+index 8489bf3..4be1922 100755
+--- a/src/linux/integration-test
++++ b/src/linux/integration-test
+@@ -442,6 +442,39 @@ class Tests(unittest.TestCase):
+         self.assertEqual(self.get_dbus_property('OnLowBattery'), False)
+         self.stop_daemon()
+ 
++    def test_battery_overfull(self):
++        '''battery which reports a > 100% percentage for a full battery'''
++
++        self.testbed.add_device('power_supply', 'BAT0', None,
++                                ['type', 'Battery',
++                                 'present', '1',
++                                 'status', 'Full',
++                                 'current_now', '1000',
++                                 'charge_now', '11000000',
++                                 'charge_full', '10000000',
++                                 'charge_full_design', '11000000',
++                                 'capacity', '110',
++                                 'voltage_now', '12000000'], [])
++
++        self.start_daemon()
++        devs = self.proxy.EnumerateDevices()
++        self.assertEqual(len(devs), 1)
++        bat0_up = devs[0]
++
++        # should clamp percentage
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'Percentage'), 100.0)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'IsPresent'), True)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'State'),
++                         UP_DEVICE_STATE_FULLY_CHARGED)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'Energy'), 132.0)
++        # should adjust EnergyFull to reality, not what the battery claims
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'EnergyFull'), 132.0)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'EnergyFullDesign'), 132.0)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'Voltage'), 12.0)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'PowerSupply'), True)
++        self.assertEqual(self.get_dbus_dev_property(bat0_up, 'Type'), 2)
++        self.stop_daemon()
++
+     def test_battery_temperature(self):
+         '''battery which reports temperature'''
+ 
+diff --git a/src/linux/up-device-supply.c b/src/linux/up-device-supply.c
+index 8020277..b953d65 100644
+--- a/src/linux/up-device-supply.c
++++ b/src/linux/up-device-supply.c
+@@ -708,6 +708,10 @@ up_device_supply_refresh_battery (UpDeviceSupply *supply)
+ 	/* get a precise percentage */
+         if (sysfs_file_exists (native_path, "capacity")) {
+ 		percentage = sysfs_get_double (native_path, "capacity");
++		if (percentage < 0.0f)
++			percentage = 0.0f;
++		if (percentage > 100.0f)
++			percentage = 100.0f;
+                 /* for devices which provide capacity, but not {energy,charge}_now */
+                 if (energy < 0.1f && energy_full > 0.0f)
+                     energy = energy_full * percentage / 100;
+--
+cgit v0.9.0.2-2-gbebe

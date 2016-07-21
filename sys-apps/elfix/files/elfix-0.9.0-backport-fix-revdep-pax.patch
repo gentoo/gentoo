@@ -1,0 +1,25 @@
+From 581b53b3c1ca3166dc394d1f4b08260bd088c346 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Mon, 22 Dec 2014 12:30:12 -0500
+Subject: [PATCH 2/2] scripts/revdep-pax: change .get_maps() to .get_graph()
+
+---
+ scripts/revdep-pax | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/revdep-pax b/scripts/revdep-pax
+index a718fd6..7c1cf85 100755
+--- a/scripts/revdep-pax
++++ b/scripts/revdep-pax
+@@ -465,7 +465,7 @@ def run_soname(name, verbose, use_soname, mark, allyes, executable_only):
+     shell_path = os.getenv('PATH').split(':')
+ 
+     (object_linkings, object_reverse_linkings,
+-     library2soname, soname2library) = LinkGraph().get_maps()
++     library2soname, soname2library) = LinkGraph().get_graph()
+ 
+     if use_soname:
+         soname = name
+-- 
+2.0.5
+

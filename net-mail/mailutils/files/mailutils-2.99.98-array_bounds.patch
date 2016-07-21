@@ -1,0 +1,11 @@
+--- libmu_auth/ldap.c	2012-03-25 14:02:22.000000000 +0300
++++ libmu_auth/ldap.c	2013-03-22 12:29:19.034880845 +0200
+@@ -534,7 +534,7 @@
+ 
+   env[0] = "user";
+   env[1] = key;
+-  env[3] = NULL;
++  env[2] = NULL;
+ 
+   ws.ws_env = env;
+   if (mu_wordsplit (filter_pat, &ws,

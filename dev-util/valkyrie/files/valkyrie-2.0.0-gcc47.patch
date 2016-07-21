@@ -1,0 +1,37 @@
+Fix building with gcc-4.7
+
+https://bugs.gentoo.org/show_bug.cgi?id=421867
+
+Patch written by LE GARREC Vincent <legarrec.vincent@gmail.com>
+--- a/src/objects/tool_object.cpp
++++ b/src/objects/tool_object.cpp
+@@ -50,6 +50,7 @@ stopProcess()
+ #include <QKeySequence>
+ #include <QString>
+ #include <QStringList>
++#include <unistd.h>              // usleep
+ 
+ 
+ #if 1
+--- a/src/utils/vk_config.cpp
++++ b/src/utils/vk_config.cpp
+@@ -25,6 +25,8 @@
+ #include "utils/vk_utils.h"
+ 
+ #include <pwd.h>     // getpwuid
++#include <sys/types.h>         // getuid
++#include <unistd.h>            // getuid
+ 
+ #include <QColor>
+ #include <QDir>
+--- a/src/utils/vk_utils.cpp
++++ b/src/utils/vk_utils.cpp
+@@ -22,6 +22,8 @@
+ #include "utils/vk_config.h"        // vkname()
+ 
+ #include <cstdlib>                  // exit, mkstemp, free/malloc, etc
++#include <sys/types.h>              // getpid
++#include <unistd.h>                 // getpid
+ 
+ #include <QDateTime>
+ #include <QFile>

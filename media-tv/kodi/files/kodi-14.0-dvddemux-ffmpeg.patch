@@ -1,0 +1,16 @@
+sniped from:
+http://cvs.rpmfusion.org/viewvc/rpms/kodi/devel/kodi-14.0-dvddemux-ffmpeg.patch?root=free&view=markup
+
+--- xbmc/cores/dvdplayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
++++ xbmc/cores/dvdplayer/DVDDemuxers/DVDDemuxFFmpeg.cpp
+@@ -519,10 +519,6 @@
+ 
+ void CDVDDemuxFFmpeg::Flush()
+ {
+-  // naughty usage of an internal ffmpeg function
+-  if (m_pFormatContext)
+-    av_read_frame_flush(m_pFormatContext);
+-
+   m_currentPts = DVD_NOPTS_VALUE;
+ 
+   m_pkt.result = -1;

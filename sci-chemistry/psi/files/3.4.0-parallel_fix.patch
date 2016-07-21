@@ -1,0 +1,400 @@
+--- Makefile.in
++++ Makefile.in
+@@ -17,62 +17,19 @@
+ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ 
+-all:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making in $${dir} && $(MAKE) all) || exit 1; \
+-          done
+-
+-install: install_host
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making depend in $${dir} && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making clean in $${dir} && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making dclean in $${dir} && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs) tests doc; \
+-          do \
+-            (cd $${dir} && echo Making clean in $${dir} && $(MAKE) targetclean) || exit 1; \
+-          done
++all clean install install_inc install_man depend dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ tests:
+-	(cd tests && echo Running test suite... && $(MAKE)) || exit 1;
++	$(MAKE) -C tests
+ 
+ testsclean:
+-	(cd tests && echo Cleaning test suite... && $(MAKE) clean) || exit 1;
++	$(MAKE) -C tests clean
+ 
+ doc:
+-	(cd doc && echo Building documentation... && $(MAKE)) || exit 1;
++	$(MAKE) -C doc
+ 
+ $(top_srcdir)/configure: $(top_srcdir)/configure.ac $(top_srcdir)/aclocal.m4
+ 	cd $(top_srcdir) && autoconf
+--- lib/Makefile.in
++++ lib/Makefile.in
+@@ -31,7 +31,7 @@
+ 	$(INSTALL_DATA) $(srcdir)/psi.dat $(DESTDIR)$(pkgdatadir)
+ 	for dir in $(subdirs); \
+           do \
+-            (cd $${dir}; echo Making in $${dir}; $(MAKE) install) || exit 1; \
++            $(MAKE) -C $$dir install; \
+           done
+ 
+ install_man: macro.psi
+--- src/Makefile.in
++++ src/Makefile.in
+@@ -6,53 +6,10 @@
+ 
+ default: all
+ 
+-all:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making in $${dir} && $(MAKE) all) || exit 1; \
+-          done
+-
+-install:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making install in $${dir} && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making depend in $${dir} && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making clean in $${dir} && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making dclean in $${dir} && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo Making clean in $${dir} && $(MAKE) targetclean) || exit 1; \
+-          done
++all clean install depend dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+--- src/lib/Makefile.in
++++ src/lib/Makefile.in
+@@ -4,56 +4,10 @@
+ subdirs = libipv1 libciomr libchkpt libqt libpsio libiwl libdpd libutil \
+           liboptions libmoinfo libbasis libmints
+ 
+-all: default
+-
+-default:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making in $${dir} ... && $(MAKE) default) || exit 1; \
+-          done
+-
+-install:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making depend in $${dir} ... && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making dclean in $${dir} ... && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) targetclean) || exit 1; \
+-          done
+-
++all clean install install_inc install_man depend dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ #
+ # keep the configuration information and makefile up-to-date
+--- src/bin/Makefile.in
++++ src/bin/Makefile.in
+@@ -13,55 +13,10 @@
+ subdirs += psirb
+ endif
+ 
+-all: default
+-
+-default:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making in $${dir} ... && $(MAKE) default) || exit 1; \
+-          done
+-
+-install:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making depend in $${dir} ... && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making dclean in $${dir} ... && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) targetclean) || exit 1; \
+-          done
++all install depend clean dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+--- src/samples/Makefile.in
++++ src/samples/Makefile.in
+@@ -5,55 +5,10 @@
+ 
+ subdirs = mints
+ 
+-all: default
+-
+-default:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making in $${dir} ... && $(MAKE) default) || exit 1; \
+-          done
+-
+-install:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making depend in $${dir} ... && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making dclean in $${dir} ... && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) targetclean) || exit 1; \
+-          done
++all install depend clean dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+--- src/util/Makefile.in
++++ src/util/Makefile.in
+@@ -3,55 +3,10 @@
+ 
+ subdirs = tocprint psi2molden
+ 
+-all: default
+-
+-default:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making in $${dir} ... && $(MAKE) default) || exit 1; \
+-          done
+-
+-install:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install) || exit 1; \
+-          done
+-
+-install_inc:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_inc) || exit 1; \
+-          done
+-
+-install_man:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making install in $${dir} ... && $(MAKE) install_man) || exit 1; \
+-          done
+-
+-depend:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making depend in $${dir} ... && $(MAKE) depend) || exit 1; \
+-          done
+-
+-clean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) clean) || exit 1; \
+-          done
+-
+-dclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making dclean in $${dir} ... && $(MAKE) dclean) || exit 1; \
+-          done
+-
+-targetclean:
+-	for dir in $(subdirs); \
+-          do \
+-            (cd $${dir} && echo ... Making clean in $${dir} ... && $(MAKE) targetclean) || exit 1; \
+-          done
++all install depend clean dclean targetclean:
++	for dir in $(subdirs); do \
++		$(MAKE) -C $$dir $@; \
++	done
+ 
+ top_srcdir = @top_srcdir@
+ srcdir = @srcdir@
+--- src/lib/libipv1/Makefile.in
++++ src/lib/libipv1/Makefile.in
+@@ -58,4 +58,4 @@
+ # in case DODEPEND is no
+ #
+ 
+-ip_read.o: y.tab.h
++ip_read.o: y.tab.c y.tab.h

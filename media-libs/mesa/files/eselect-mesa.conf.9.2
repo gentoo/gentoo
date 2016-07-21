@@ -1,0 +1,39 @@
+# mesa classic/gallium implementations in this release
+
+# Syntax description:
+# * MESA_IMPLEMENTATIONS contains a space-delimited list of switchable
+#   classic/gallium implementations.
+# * MESA_DRIVERS is an associative array, for each member "foo" of
+#   MESA_IMPLEMENTATIONS it contains the following elements:
+#   foo,description - Human-readable description of the driver
+#   foo,classicdriver - Filename of the classic driver
+#   foo,galliumdriver - Filename of the gallium driver
+#   foo,default - which of classic or gallium is chosen by default
+
+MESA_IMPLEMENTATIONS="i915 i965 r300 r600 sw"
+declare -A MESA_DRIVERS || die "MESA_DRIVERS already in environment and not associative."
+
+MESA_DRIVERS[i915,description]="i915 (Intel 915, 945)"
+MESA_DRIVERS[i915,classicdriver]="i915_dri.so"
+MESA_DRIVERS[i915,galliumdriver]="i915g_dri.so"
+MESA_DRIVERS[i915,default]="gallium"
+
+MESA_DRIVERS[i965,description]="i965 (Intel GMA 965, G/Q3x, G/Q4x, HD)"
+MESA_DRIVERS[i965,classicdriver]="i965_dri.so"
+MESA_DRIVERS[i965,galliumdriver]="ilo_dri.so"
+MESA_DRIVERS[i965,default]="classic"
+
+MESA_DRIVERS[r300,description]="r300 (Radeon R300-R500)"
+MESA_DRIVERS[r300,classicdriver]="r300_dri.so"
+MESA_DRIVERS[r300,galliumdriver]="r300g_dri.so"
+MESA_DRIVERS[r300,default]="gallium"
+
+MESA_DRIVERS[r600,description]="r600 (Radeon R600-R700, Evergreen, Northern Islands)"
+MESA_DRIVERS[r600,classicdriver]="r600_dri.so"
+MESA_DRIVERS[r600,galliumdriver]="r600g_dri.so"
+MESA_DRIVERS[r600,default]="gallium"
+
+MESA_DRIVERS[sw,description]="sw (Software renderer)"
+MESA_DRIVERS[sw,classicdriver]="swrast_dri.so"
+MESA_DRIVERS[sw,galliumdriver]="swrastg_dri.so"
+MESA_DRIVERS[sw,default]="gallium"

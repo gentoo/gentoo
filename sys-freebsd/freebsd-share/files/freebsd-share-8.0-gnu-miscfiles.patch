@@ -1,0 +1,26 @@
+--- share/misc/Makefile.old	2010-03-12 01:32:39 +0100
++++ share/misc/Makefile	2010-03-12 01:33:25 +0100
+@@ -3,9 +3,9 @@
+ 
+ .PATH:	${.CURDIR}/../../sys/dev/usb
+ 
+-FILES=	ascii birthtoken bsd-family-tree committers-doc.dot committers-ports.dot \
++FILES=	bsd-family-tree committers-doc.dot committers-ports.dot \
+ 	committers-src.dot eqnchar flowers init.ee \
+-	iso3166 iso639 latin1 man.template mdoc.template operator pci_vendors \
++	iso3166 iso639 man.template mdoc.template pci_vendors \
+ 	scsi_modes usb_hid_usages usbdevs
+ 
+ NO_OBJ=
+--- share/dict/Makefile.old	2010-03-12 01:33:53 +0100
++++ share/dict/Makefile	2010-03-12 01:34:18 +0100
+@@ -4,8 +4,7 @@
+ NO_OBJ=
+ 
+ # XXX MISSING:	connectives words
+-FILES=		README propernames web2 web2a freebsd
++FILES=		README freebsd
+ FILESDIR=	${BINDIR}/dict
+-SYMLINKS=	web2 ${FILESDIR}/words
+ 
+ .include <bsd.prog.mk>

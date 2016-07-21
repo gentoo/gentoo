@@ -1,0 +1,22 @@
+# Pool time interval
+PGA_POLL="10"
+
+# Retry period
+PGA_RETRY="30"
+
+# Log file
+PGA_LOG="/var/log/pgagent.log"
+
+# Logging verbosity
+# ERROR=0, WARNING=1, DEBUG=2
+PGA_LEVEL="1"
+
+# Server parameters
+# Host address
+PG_HOST="localhost"
+
+# DB name
+PG_DBNAME="postgres"
+
+# Username
+PG_USER="postgres"

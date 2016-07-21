@@ -1,0 +1,24 @@
+diff -ru ipkungfu-0.6.1.orig/ipkungfu.in ipkungfu-0.6.1/ipkungfu.in
+--- ipkungfu-0.6.1.orig/ipkungfu.in	2007-01-22 04:47:04.000000000 +0100
++++ ipkungfu-0.6.1/ipkungfu.in	2007-07-04 12:49:23.000000000 +0200
+@@ -753,11 +753,15 @@
+ fi
+ 
+ function delTestChain {
+-# {{{ Flush and delete test chains
+-	$IPTABLES -t filter -F SYSTEST
+-	$IPTABLES -t filter -X SYSTEST
+-	$IPTABLES -t mangle -F SYSTEST
+-	$IPTABLES -t mangle -X SYSTEST
++# {{{ Flush and delete test chains, if exist
++	if $IPTABLES -t filter -L SYSTEST > /dev/null 2>&1 ; then
++		$IPTABLES -t filter -F SYSTEST
++		$IPTABLES -t filter -X SYSTEST
++	fi
++	if $IPTABLES -t mangle -L SYSTEST > /dev/null 2>&1 ; then
++		$IPTABLES -t mangle -F SYSTEST
++		$IPTABLES -t mangle -X SYSTEST
++	fi
+ # }}}
+ }
+ 

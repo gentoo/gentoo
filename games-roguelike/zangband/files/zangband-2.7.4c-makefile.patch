@@ -1,0 +1,29 @@
+--- makefile.in.orig
++++ makefile.in
+@@ -111,17 +111,6 @@
+ %.o: %.c
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEFS) $< -c -o $@ $(DEFS)
+ 
+-##
+-## Hack - make sure the build system is consistant.
+-##
+-makefile: configure makefile.in
+-	$(CONFIGURE)
+-	
+-configure: configure.in
+-	aclocal
+-	autoheader
+-	autoconf
+-
+ dirs:
+ 	-mkdir $(DESTDIR)
+ 	-mkdir $(addprefix $(DESTDIR),$(filter-out $(srcdirlist), $(dirlist)))
+@@ -205,7 +194,7 @@
+ 	@echo $(srcdirlist) $(srcfiles)
+ 
+ # Hack to remake files depending on DEFAULT_PATH
+-.default_path: makefile
++.default_path: 
+ 	@if [ ! -r .default_path ]; then \
+ 		echo "$(DESTDIR)" > .default_path; \
+ 	fi

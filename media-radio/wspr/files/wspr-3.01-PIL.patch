@@ -1,0 +1,11 @@
+--- wspr.py.orig	2014-06-23 21:25:51.000000000 +0200
++++ wspr.py	2014-06-23 21:26:03.000000000 +0200
+@@ -35,7 +35,7 @@
+     from Numeric import zeros
+ import array
+ import dircache
+-import Image, ImageTk, ImageDraw
++from PIL import Image, ImageTk, ImageDraw
+ from WsprMod.palettes import colormapblue, colormapgray0, colormapHot, \
+      colormapAFMHot, colormapgray1, colormapLinrad, Colormap2Palette
+ from types import *

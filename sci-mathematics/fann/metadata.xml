@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Fast Artificial Neural Network Library implements multilayer artificial
+    neural networks in C with support for both fully connected and sparsely
+    connected networks. Cross-platform execution in both fixed and floating
+    point are supported. It includes a framework for easy handling of
+    training data sets. It is easy to use, versatile, well documented, and
+    fast. Delphi, PHP, Python and other bindings are available.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">fann</remote-id>
+  </upstream>
+</pkgmetadata>

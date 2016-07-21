@@ -1,0 +1,15 @@
+Index: punc/src/aaa_lib/Makefile.am
+===================================================================
+--- punc.orig/src/aaa_lib/Makefile.am
++++ punc/src/aaa_lib/Makefile.am
+@@ -88,8 +88,8 @@ else
+ LIBPMG    = 
+ endif
+ 
+-libdir = ${prefix}/lib/${fetk_cpu_vendor_os}
+-lib_LTLIBRARIES = libpunc.la ${LIBVF2C} ${LIBBLAS} ${LIBLAPACK} ${LIBSUPERLU} ${LIBARPACK} ${LIBCGCODE} ${LIBPMG}
++mylibdir = ${libdir}/${fetk_cpu_vendor_os}
++mylib_LTLIBRARIES = libpunc.la ${LIBVF2C} ${LIBBLAS} ${LIBLAPACK} ${LIBSUPERLU} ${LIBARPACK} ${LIBCGCODE} ${LIBPMG}
+ 
+ libpunc_la_SOURCES =
+ libpunc_la_LIBADD  = ${BASE_LIBS}

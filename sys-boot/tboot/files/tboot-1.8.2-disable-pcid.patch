@@ -1,0 +1,26 @@
+diff -ur tboot-1.8.2.orig/tboot/common/shutdown.S tboot-1.8.2/tboot/common/shutdown.S
+--- tboot-1.8.2.orig/tboot/common/shutdown.S	2014-07-28 12:24:22.000000000 +0400
++++ tboot-1.8.2/tboot/common/shutdown.S	2015-05-07 03:05:47.300985413 +0400
+@@ -34,6 +34,11 @@
+  */
+ 
+ compat_mode_entry:
++	/* Disable PCID */
++        movl %cr4, %eax
++        andl $~CR4_PCIDE, %eax
++        movl %eax, %cr4
++
+ 	/* Disable paging and therefore leave 64 bit mode. */
+         movl %cr0, %eax
+         andl $~CR0_PG, %eax
+diff -ur tboot-1.8.2.orig/tboot/include/processor.h tboot-1.8.2/tboot/include/processor.h
+--- tboot-1.8.2.orig/tboot/include/processor.h	2014-07-28 12:24:22.000000000 +0400
++++ tboot-1.8.2/tboot/include/processor.h	2015-05-07 03:04:58.721244858 +0400
+@@ -92,6 +92,7 @@
+ #define CR4_XMM 0x00000400 /* enable SIMD/MMX2 to use except 16 */
+ #define CR4_VMXE 0x00002000/* enable VMX */
+ #define CR4_SMXE 0x00004000/* enable SMX */
++#define CR4_PCIDE 0x00020000/* enable PCID */
+ 
+ #ifndef __ASSEMBLY__
+ 

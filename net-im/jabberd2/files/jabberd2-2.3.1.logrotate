@@ -1,0 +1,10 @@
+/var/log/jabber/c2s.log /var/log/jabber/s2s.log /var/log/jabber/sm.log /var/log/jabber/router.log {
+	su jabber jabber
+	sharedscripts
+	postrotate
+	kill -HUP $(cat /var/run/jabberd/c2s.pid)
+	kill -HUP $(cat /var/run/jabberd/s2s.pid)
+	kill -HUP $(cat /var/run/jabberd/sm.pid)
+	kill -HUP $(cat /var/run/jabberd/router.pid)
+	endscript
+}

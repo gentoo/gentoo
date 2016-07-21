@@ -1,0 +1,99 @@
+--- a/js-1.8.5/js/src/configure.in	2011-03-31 15:08:36.000000000 -0400
++++ b/js-1.8.5/js/src/configure.in	2012-11-02 15:32:38.000000000 -0400
+@@ -3550,7 +3550,7 @@
+ _SAVE_CFLAGS="$CFLAGS"
+ if test "$GNU_CC"; then
+   # gcc needs -mfpu=neon to recognize NEON instructions
+-  CFLAGS="$CFLAGS -mfpu=neon -mfloat-abi=softfp"
++  CFLAGS="$CFLAGS -mfpu=neon"
+ fi
+ AC_TRY_COMPILE([],
+                [asm("vadd.i8 d0, d0, d0");],
+@@ -4654,12 +4654,6 @@
+ dnl ========================================================
+ MOZ_ARG_HEADER(Individual module options)
+ 
+-dnl Setup default CPU arch for arm target
+-case "$target_cpu" in
+-  arm*)
+-    MOZ_ARM_ARCH=armv7
+-  ;;
+-esac
+ dnl ========================================================
+ dnl = Enable building the Thumb2 instruction set
+ dnl ========================================================
+@@ -4668,66 +4662,32 @@
+     MOZ_THUMB2=1,
+     MOZ_THUMB2=)
+ if test -n "$MOZ_THUMB2"; then
+-  MOZ_ARM_ARCH=armv7
++    AC_MSG_WARN([thumb2 enabled instead of autodetected -- hope you know what you are doing])
++else
++    AC_MSG_CHECKING([whether to build for thumb2])
++    AC_TRY_COMPILE([],[return sizeof(__thumb2__);],
++      [MOZ_THUMB2=1
++        AC_MSG_RESULT([yes])],
++      [MOZ_THUMB2=
++        AC_MSG_RESULT([no])])
+ fi
+ 
+ dnl ========================================================
+ dnl = Enable building for ARM specific CPU features
+ dnl ========================================================
+-MOZ_ARG_WITH_STRING(cpu-arch,
+-[  --with-cpu-arch=arch      Use specific arm architecture CPU features, default armv7],
+-    MOZ_ARM_ARCH=$withval)
+-
+ if test -n "$MOZ_THUMB2"; then
+   case "$target_cpu" in
+     arm*)
+-      if test "$MOZ_ARM_ARCH" != "armv7"; then
+-        AC_MSG_ERROR([--enable-thumb2 is not compatible with cpu-arch=$MOZ_ARM_ARCH])
+-      fi
+       if test "$GNU_CC"; then
+         AC_DEFINE(MOZ_THUMB2)
+-        AC_DEFINE(MOZ_ARM_ARCH)
+-        CFLAGS="$CFLAGS -march=armv7-a -mthumb -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+-        CXXFLAGS="$CXXFLAGS -march=armv7-a -mthumb -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+-        ASFLAGS="$ASFLAGS -march=armv7-a -mthumb -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+       else
+         AC_MSG_ERROR([--enable-thumb2 is not supported for non-GNU toolchains])
+       fi
+     ;;
+-    *)
+-      AC_MSG_ERROR([--enable-thumb2 is not supported for non-ARM CPU architectures])
+-    ;;
+-  esac
+-elif test "$MOZ_ARM_ARCH" = "armv7"; then
+-  case "$target_cpu" in
+-    arm*)
+-      if test "$GNU_CC"; then
+-        AC_DEFINE(MOZ_ARM_ARCH)
+-        CFLAGS="$CFLAGS -march=armv7-a -marm -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+-        CXXFLAGS="$CXXFLAGS -march=armv7-a -marm -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+-        ASFLAGS="$ASFLAGS -march=armv7-a -marm -mfloat-abi=softfp $MOZ_ARM_VFP_FLAGS"
+-      else
+-        AC_MSG_ERROR([--with-cpu-arch=armv7 is not supported for non-GNU toolchains])
+-      fi
+-    ;;
+-    *)
+-      AC_MSG_ERROR([--with-cpu-arch=armv7 is not supported for non-ARM CPU architectures])
+-    ;;
+-  esac
+-else
+-  case "$target_cpu" in
+-    arm*)
+-      if test "$GNU_CC"; then
+-        CFLAGS="$CFLAGS -march=armv5te -mthumb-interwork -msoft-float"
+-        CXXFLAGS="$CXXFLAGS -march=armv5te -mthumb-interwork -msoft-float"
+-        ASFLAGS="$ASFLAGS -march=armv5te -mthumb-interwork -msoft-float"
+-      fi
+-      ;;
+   esac
+ fi
+ 
+ AC_SUBST(MOZ_THUMB2)
+-AC_SUBST(MOZ_ARM_ARCH)
+ 
+ dnl ========================================================
+ dnl =

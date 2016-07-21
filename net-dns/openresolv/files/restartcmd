@@ -1,0 +1,20 @@
+#!/bin/sh
+# This script currently supports:
+# - openrc
+# - systemd
+
+if [ -z "${1}" ]; then
+    echo "Missing arguments." >&2
+    exit 1
+fi
+
+if [ -e /run/openrc/softlevel ]; then
+    if /sbin/rc-service -e ${1}; then
+        exec rc-service ${1} -- -Ds restart
+    fi
+elif [ -d /run/systemd/system ]; then
+    exec systemctl try-restart ${1}
+else
+    echo "Unsupported init system." >&2
+    exit 1
+fi

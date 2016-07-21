@@ -1,0 +1,72 @@
+diff --git a/tcpd/configure.in b/tcpd/configure.in
+index 7261515..406914e 100644
+--- a/tcpd/configure.in
++++ b/tcpd/configure.in
+@@ -356,7 +356,7 @@ then
+ 
+ 		CPPFLAGS="$save_CPPFLAGS"
+ 	else
+-		have_gnutls="no: pkgconfig --modeversion gnutls failed"
++		have_gnutls="no: pkgconfig --modversion gnutls failed"
+ 	fi
+ else
+ 	have_gnutls="no: pkg-config not found"
+@@ -368,7 +368,15 @@ if test "$have_gnutls" = "yes"
+ then
+ 	LIBCOURIERTLSGNUTLS="libcouriertlsgnutls.la"
+ 	CPPFLAGS="$CPPFLAGS `$PKGCONFIG --cflags gnutls`"
+-	gnutlsdep="`$PKGCONFIG --libs gnutls` -lgnutls-extra"
++	have_gnutls3=no
++	PKG_CHECK_EXISTS([gnutls >= 3.0], [have_gnutls3=yes])
++	if test "x$have_gnutls3" = "xno"
++	then
++		gnutlsdep="`$PKGCONFIG --libs gnutls` -lgnutls-extra"
++	else
++		gnutlsdep="`$PKGCONFIG --libs gnutls`"
++		AC_DEFINE([HAVE_GNUTLS3], [1], [Use GnuTLS3])
++	fi
+ fi
+ 
+ AC_CHECK_SIZEOF(gnutls_transport_ptr_t,0, [
+diff --git a/tcpd/libcouriergnutls.c b/tcpd/libcouriergnutls.c
+index 4aa4996..ef8cb70 100644
+--- a/tcpd/libcouriergnutls.c
++++ b/tcpd/libcouriergnutls.c
+@@ -9,7 +9,9 @@
+ #include	"tlscache.h"
+ #include	"soxwrap/soxwrap.h"
+ #include	<gnutls/gnutls.h>
++#ifndef HAVE_GNUTLS3
+ #include	<gnutls/extra.h>
++#endif
+ #include	<gnutls/x509.h>
+ #include	<gnutls/openpgp.h>
+ #include	<stdio.h>
+@@ -146,7 +148,11 @@ static const struct intmap {
+ 		{ NULL, 0}
+ 	}, all_comps[]={
+ 		{ "DEFLATE", GNUTLS_COMP_DEFLATE},
++#ifndef HAVE_GNUTLS3
+ 		{ "LZO", GNUTLS_COMP_LZO},
++#else
++		{ "ZLIB", GNUTLS_COMP_ZLIB},
++#endif
+ 		{ "NULL", GNUTLS_COMP_NULL},
+ 		{ NULL, 0}
+ 	}, all_certs[]={
+@@ -408,6 +414,7 @@ ssl_context tls_create(int isserver, const struct tls_info *info)
+ 			return (NULL);
+ 		}
+ 
++#ifndef HAVE_GNUTLS3
+ 		if (gnutls_global_init_extra() < 0)
+ 		{
+ 			gnutls_global_deinit();
+@@ -416,6 +423,7 @@ ssl_context tls_create(int isserver, const struct tls_info *info)
+ 			errno=EINVAL;
+ 			return (NULL);
+ 		}
++#endif
+ 	}
+ 
+ 	if (!(words=splitwords(safe_getenv(p, "TLS_PROTOCOL",

@@ -1,0 +1,15 @@
+--- a/setup.py
++++ b/setup.py
+@@ -107,12 +107,6 @@ class Install(_install, object):
+         for f in [ script, manpage, manpage_f ]:
+             self.mkpath(os.path.dirname(f))
+ 
+-        # update the interpreter to that of the one the user specified for setup
+-        print("Updating staging/ufw to use %s" % (sys.executable))
+-        subprocess.call(["sed",
+-                         "-i",
+-                         "1s%^#.*python.*%#! /usr/bin/env " + sys.executable + "%g",
+-                         'staging/ufw'])
+         self.copy_file('staging/ufw', script)
+         self.copy_file('doc/ufw.8', manpage)
+         self.copy_file('doc/ufw-framework.8', manpage_f)

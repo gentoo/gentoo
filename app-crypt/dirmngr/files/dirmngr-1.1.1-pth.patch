@@ -1,0 +1,17 @@
+Index: src/dirmngr.c
+===================================================================
+--- src/dirmngr.c	(revision 348)
++++ src/dirmngr.c	(working copy)
+@@ -665,8 +665,11 @@
+      the option parsing may need services of the libraries. */
+ 
+   /* Libgcrypt requires us to register the threading model first.
+-     Note that this will also do the pth_init. */
++     Note that this will also do the pth_init for libgcrypt < 1.6 */
+ 
++#if GCRYPT_VERSION_NUMBER >= 0x010600
++  pth_init ();
++#endif
+   /* Init Libgcrypt. */
+   rc = gcry_control (GCRYCTL_SET_THREAD_CBS, &gcry_threads_pth);
+   if (rc)

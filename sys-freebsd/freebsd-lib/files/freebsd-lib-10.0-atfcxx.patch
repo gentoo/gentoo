@@ -1,0 +1,49 @@
+diff --git a/lib/atf/Makefile.inc b/lib/atf/Makefile.inc
+index 937187a..d5277f3 100644
+--- a/lib/atf/Makefile.inc
++++ b/lib/atf/Makefile.inc
+@@ -49,6 +49,24 @@ CFLAGS+=	-DATF_PKGDATADIR='"${SHAREDIR}/atf"'
+ CFLAGS+=	-DATF_SHELL='"/bin/sh"'
+ CFLAGS+=	-DATF_WORKDIR='"/tmp"'
+ 
++CXXFLAGS+=	-DHAVE_CONFIG_H
++CXXFLAGS+=	-DATF_ARCH='"${MACHINE}"'
++CXXFLAGS+=	-DATF_BUILD_CC='"${CC}"'
++CXXFLAGS+=	-DATF_BUILD_CXXFLAGS='"${_CXXFLAGS}"'
++CXXFLAGS+=	-DATF_BUILD_CPP='"${CPP}"'
++CXXFLAGS+=	-DATF_BUILD_CPPFLAGS='"${_CPPFLAGS}"'
++CXXFLAGS+=	-DATF_BUILD_CXX='"${CXX}"'
++CXXFLAGS+=	-DATF_BUILD_CXXFLAGS='"${_CXXFLAGS}"'
++CXXFLAGS+=	-DATF_CONFDIR='"${CONFDIR}/atf"'
++CXXFLAGS+=	-DATF_INCLUDEDIR='"${INCLUDEDIR}"'
++CXXFLAGS+=	-DATF_LIBDIR='"${LIBDIR}"'
++CXXFLAGS+=	-DATF_LIBEXECDIR='"${LIBEXECDIR}"'
++CXXFLAGS+=	-DATF_MACHINE='"${MACHINE_ARCH}"'
++CXXFLAGS+=	-DATF_M4='"/usr/bin/m4"'
++CXXFLAGS+=	-DATF_PKGDATADIR='"${SHAREDIR}/atf"'
++CXXFLAGS+=	-DATF_SHELL='"/bin/sh"'
++CXXFLAGS+=	-DATF_WORKDIR='"/tmp"'
++
+ WARNS?=		3
+ 
+ # vim: syntax=make
+diff --git a/lib/atf/libatf-c++/Makefile b/lib/atf/libatf-c++/Makefile
+index 37d6073..90a2687 100644
+--- a/lib/atf/libatf-c++/Makefile
++++ b/lib/atf/libatf-c++/Makefile
+@@ -40,11 +40,11 @@ LDFLAGS+=	-L${.OBJDIR}/../libatf-c
+ .PATH:		${ATF}/atf-c++
+ .PATH:		${ATF}/atf-c++/detail
+ 
+-CFLAGS+=	-I${ATF}
+-CFLAGS+=	-I${.CURDIR}/../libatf-c
+-CFLAGS+=	-I.
++CXXFLAGS+=	-I${ATF}
++CXXFLAGS+=	-I${.CURDIR}/../libatf-c
++CXXFLAGS+=	-I.
+ 
+-CFLAGS+=	-DHAVE_CONFIG_H
++CXXFLAGS+=	-DHAVE_CONFIG_H
+ 
+ SRCS=		application.cpp \
+ 		build.cpp \

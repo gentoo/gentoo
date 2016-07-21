@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>perl@gentoo.org</email>
+  <name>Gentoo Perl Project</name>
+</maintainer>
+<upstream>
+  <remote-id type="cpan">PerlIO-Layers</remote-id>
+  <remote-id type="cpan-module">PerlIO::Layers</remote-id>
+</upstream>
+</pkgmetadata>

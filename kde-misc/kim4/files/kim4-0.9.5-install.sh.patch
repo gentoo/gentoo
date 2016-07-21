@@ -1,0 +1,39 @@
+--- install.sh.orig	2009-02-22 18:08:21.000000000 +0200
++++ install.sh	2009-10-29 00:00:04.000000000 +0200
+@@ -19,19 +19,22 @@
+ 
+ kdeinstdir=`kde4-config --prefix`
+ 
+-cp src/kim_*.desktop $kdeinstdir/share/kde4/services/ServiceMenus/
+-cp src/bin/kim_* $kdeinstdir/bin/
+-chmod a+rx $kdeinstdir/bin/kim_*
+-chmod a+r $kdeinstdir/share/kde4/services/ServiceMenus/kim_*.desktop
+-mv $kdeinstdir/share/kde4/services/ServiceMenus/imageconverter.desktop $kdeinstdir/share/kde4/services/ServiceMenus/imageconverter.desktop~
+-
+-mkdir $kdeinstdir/share/kim
+-cp COPYING $kdeinstdir/share/kim/kim_about.txt
++mkdir -p ${DESTDIR}$kdeinstdir/share/kde4/services/ServiceMenus
++cp src/kim_*.desktop ${DESTDIR}$kdeinstdir/share/kde4/services/ServiceMenus/
+ 
+-mkdir $kdeinstdir/share/kim/slideshow/
+-cp src/slideshow/* $kdeinstdir/share/kim/slideshow/
++mkdir -p ${DESTDIR}$kdeinstdir/bin
++cp src/bin/kim_* ${DESTDIR}$kdeinstdir/bin/
+ 
+-mkdir $kdeinstdir/share/kim/gallery
+-cp src/gallery/* $kdeinstdir/share/kim/gallery
++chmod a+rx ${DESTDIR}$kdeinstdir/bin/kim_*
++chmod a+r ${DESTDIR}$kdeinstdir/share/kde4/services/ServiceMenus/kim_*.desktop
+ 
+-echo "Kim has been installed. Good bye!"
+\ No newline at end of file
++mkdir -p ${DESTDIR}$kdeinstdir/share/apps/kim
++cp COPYING ${DESTDIR}$kdeinstdir/share/apps/kim/kim_about.txt
++
++mkdir -p ${DESTDIR}$kdeinstdir/share/kim/slideshow
++cp src/slideshow/* ${DESTDIR}$kdeinstdir/share/kim/slideshow/
++
++mkdir -p ${DESTDIR}$kdeinstdir/share/kim/gallery
++cp src/gallery/* ${DESTDIR}$kdeinstdir/share/kim/gallery
++
++echo "Kim has been installed. Good bye!"

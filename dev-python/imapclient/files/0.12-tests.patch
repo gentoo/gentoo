@@ -1,0 +1,36 @@
+diff -ur IMAPClient-0.12.orig/imapclient/test/test_imapclient.py IMAPClient-0.12/imapclient/test/test_imapclient.py
+--- imapclient/test/test_imapclient.py	2015-01-12 19:36:18.000000000 +0800
++++ imapclient/test/test_imapclient.py	2015-01-17 08:42:46.669121934 +0800
+@@ -10,7 +10,7 @@
+ from datetime import datetime
+ from mock import patch, sentinel, Mock
+ 
+-from imapclient import six
++import six
+ from imapclient.fixed_offset import FixedOffset
+ from .testable_imapclient import TestableIMAPClient as IMAPClient
+ from .imapclient_test import IMAPClientTest
+diff -ur IMAPClient-0.12.orig/imapclient/test/test_imap_utf7.py IMAPClient-0.12/imapclient/test/test_imap_utf7.py
+--- imapclient/test/test_imap_utf7.py	2015-01-12 19:36:18.000000000 +0800
++++ imapclient/test/test_imap_utf7.py	2015-01-17 08:43:23.893392410 +0800
+@@ -4,7 +4,7 @@
+ 
+ from __future__ import unicode_literals
+ 
+-from imapclient.six import text_type, binary_type, int2byte, unichr
++from six import text_type, binary_type, int2byte, unichr
+ from imapclient.imap_utf7 import decode, encode
+ from imapclient.test.util import unittest
+ 
+diff -ur IMAPClient-0.12.orig/imapclient/test/test_response_lexer.py IMAPClient-0.12/imapclient/test/test_response_lexer.py
+--- imapclient/test/test_response_lexer.py	2015-01-12 19:36:18.000000000 +0800
++++ imapclient/test/test_response_lexer.py	2015-01-17 08:42:14.749747748 +0800
+@@ -5,7 +5,7 @@
+ from __future__ import unicode_literals
+ 
+ from imapclient.response_lexer import TokenSource
+-from imapclient.six import next
++from six import next
+ from imapclient.test.util import unittest
+ 
+ 

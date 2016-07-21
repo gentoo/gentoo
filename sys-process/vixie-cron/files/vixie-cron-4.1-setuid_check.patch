@@ -1,0 +1,29 @@
+--- vixie-cron-4.1/do_command.c	2006-05-25 16:44:26.000000000 +0400
++++ vixie-cron-4.1.lk/do_command.c	2006-05-25 16:42:25.000000000 +0400
+@@ -240,12 +240,23 @@
+ 			}
+ 		}
+ #else
+-		setgid(e->pwd->pw_gid);
++		
+ 		initgroups(usernm, e->pwd->pw_gid);
+ #if (defined(BSD)) && (BSD >= 199103)
+ 		setlogin(usernm);
+ #endif /* BSD */
+-		setuid(e->pwd->pw_uid);	/* we aren't root after this... */
++		// setuid(e->pwd->pw_uid);	/* we aren't root after this... */
++		
++	if ( setgid(e->pwd->pw_gid) == -1 ) {
++		fprintf(stderr,"can't set gid for %s\n", e->pwd->pw_name);
++		_exit(1);
++	}
++		
++	if ( setuid(e->pwd->pw_uid) == -1 ) {
++		fprintf(stderr,"can't set uid for %s\n", e->pwd->pw_name);
++		_exit(1);
++	}
++		
+ 
+ #endif /* LOGIN_CAP */
+ 		chdir(env_get("HOME", e->envp));
+

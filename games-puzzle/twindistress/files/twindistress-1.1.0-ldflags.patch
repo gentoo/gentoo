@@ -1,0 +1,11 @@
+--- Makefile.old	2010-10-19 09:06:48.000000000 +0200
++++ Makefile	2010-10-19 09:06:59.000000000 +0200
+@@ -50,7 +50,7 @@
+ 	make twind MIXER_LIB= AUDIOFLAG=NOAUDIO
+  	
+ twind: twind.o
+-	$(CC) twind.o $(LIBS) $(SDL_LIBS) $(MIXER_LIB) -o twind
++	$(CC) $(LDFLAGS) twind.o $(LIBS) $(SDL_LIBS) $(MIXER_LIB) -o twind
+ 
+ twind.o: twind.c
+ 	$(CC) $(CFLAGS) $(SDL_CFLAGS) -c twind.c

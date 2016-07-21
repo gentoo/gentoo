@@ -1,0 +1,121 @@
+From a25036fbf37941e241da520fa7fab45e13c9c4a4 Mon Sep 17 00:00:00 2001
+From: Joseph Artsimovich <joseph.artsimovich@gmail.com>
+Date: Sat, 1 Oct 2011 19:37:10 +0100
+Subject: [PATCH] Fix build issues with certain version combinations of boost
+ and gcc.
+
+---
+ ProjectWriter.cpp                      |    1 +
+ compat/boost_multi_index_foreach_fix.h |   46 ++++++++++++++++++++++++++++++++
+ zones/EditableZoneSet.h                |   18 ++++++++++++-
+ 3 files changed, 64 insertions(+), 1 deletions(-)
+ create mode 100644 compat/boost_multi_index_foreach_fix.h
+
+diff --git a/ProjectWriter.cpp b/ProjectWriter.cpp
+index e6e519b..44329d7 100644
+--- a/ProjectWriter.cpp
++++ b/ProjectWriter.cpp
+@@ -25,6 +25,7 @@
+ #include "ImageMetadata.h"
+ #include "AbstractFilter.h"
+ #include "FileNameDisambiguator.h"
++#include "compat/boost_multi_index_foreach_fix.h"
+ #include <QtXml>
+ #include <QFile>
+ #include <QTextStream>
+diff --git a/compat/boost_multi_index_foreach_fix.h b/compat/boost_multi_index_foreach_fix.h
+new file mode 100644
+index 0000000..7800c79
+--- /dev/null
++++ b/compat/boost_multi_index_foreach_fix.h
+@@ -0,0 +1,46 @@
++/*
++    Scan Tailor - Interactive post-processing tool for scanned pages.
++    Copyright (C)  Joseph Artsimovich <joseph.artsimovich@gmail.com>
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#ifndef BOOST_MULTI_INDEX_FOREACH_FIX_H_
++#define BOOST_MULTI_INDEX_FOREACH_FIX_H_
++
++#include <boost/foreach.hpp>
++#include <boost/mpl/bool.hpp>
++#include <boost/multi_index/sequenced_index.hpp>
++
++// BOOST_FOREACH() in boost >= 1.47 has problems with gcc >= 4.6
++// These problems aren't specific to boost::multi_index,
++// but the code below only deals with it.
++// In future versions of boost, they might include equivalent
++// code in boost::multi_index itself, which will lead to build problems.
++// If / when this happens, conditional compilation will be necessary.
++
++namespace boost 
++{
++namespace foreach
++{
++
++template<typename SuperMeta, typename TagList>
++struct is_noncopyable<boost::multi_index::detail::sequenced_index<SuperMeta, TagList> > : mpl::true_
++{
++};
++
++} // namespace foreach
++} // namespace boost
++
++#endif
+diff --git a/zones/EditableZoneSet.h b/zones/EditableZoneSet.h
+index 153693d..4ecfd0d 100644
+--- a/zones/EditableZoneSet.h
++++ b/zones/EditableZoneSet.h
+@@ -1,7 +1,7 @@
+ /*
+ 
+ 	Scan Tailor - Interactive post-processing tool for scanned pages.
+-	Copyright (C) 2007-2009  Joseph Artsimovich <joseph_a@mail.ru>
++	Copyright (C)  Joseph Artsimovich <joseph.artsimovich@gmail.com>
+ 
+ 	This program is free software: you can redistribute it and/or modify
+ 	it under the terms of the GNU General Public License as published by
+@@ -24,6 +24,8 @@
+ #include "PropertySet.h"
+ #include "IntrusivePtr.h"
+ #include <QObject>
++#include <boost/mpl/bool.hpp>
++#include <boost/foreach.hpp>
+ #include <boost/iterator/iterator_facade.hpp>
+ #include <map>
+ 
+@@ -102,4 +104,18 @@ private:
+ 	PropertySet m_defaultProps;
+ };
+ 
++namespace boost
++{
++namespace foreach
++{
++
++// Make BOOST_FOREACH work with the above class (necessary for boost >= 1.46 with gcc >= 4.6)
++template<>
++struct is_noncopyable<EditableZoneSet> : public boost::mpl::true_
++{
++};
++
++} // namespace foreach
++} // namespace boost
++
+ #endif
+-- 
+1.7.8.rc4
+

@@ -1,0 +1,29 @@
+diff -up rocksndiamonds-3.3.0.1/src/libgame/setup.c.CVE-2011-4606 rocksndiamonds-3.3.0.1/src/libgame/setup.c
+--- rocksndiamonds-3.3.0.1/src/libgame/setup.c.CVE-2011-4606	2011-12-12 14:28:30.083078680 -0500
++++ rocksndiamonds-3.3.0.1/src/libgame/setup.c	2011-12-12 14:34:36.758744753 -0500
+@@ -1293,11 +1293,14 @@ void sortTreeInfo(TreeInfo **node_first)
+ #define MODE_W_ALL		(S_IWUSR | S_IWGRP | S_IWOTH)
+ #define MODE_X_ALL		(S_IXUSR | S_IXGRP | S_IXOTH)
+ 
++#define MODE_R_PRIVATE		(S_IRUSR)
+ #define MODE_W_PRIVATE		(S_IWUSR)
++#define MODE_X_PRIVATE		(S_IXUSR)
++
+ #define MODE_W_PUBLIC		(S_IWUSR | S_IWGRP)
+ #define MODE_W_PUBLIC_DIR	(S_IWUSR | S_IWGRP | S_ISGID)
+ 
+-#define DIR_PERMS_PRIVATE	(MODE_R_ALL | MODE_X_ALL | MODE_W_PRIVATE)
++#define DIR_PERMS_PRIVATE	(MODE_R_PRIVATE | MODE_X_PRIVATE | MODE_W_PRIVATE)
+ #define DIR_PERMS_PUBLIC	(MODE_R_ALL | MODE_X_ALL | MODE_W_PUBLIC_DIR)
+ 
+ #define FILE_PERMS_PRIVATE	(MODE_R_ALL | MODE_W_PRIVATE)
+@@ -1456,7 +1459,8 @@ void createDirectory(char *dir, char *te
+   if (running_setgid)
+     posix_umask(last_umask & group_umask);
+   else
+-    dir_mode |= MODE_W_ALL;
++    if (permission_class == PERMS_PUBLIC)
++      dir_mode |= MODE_W_ALL;
+ 
+   if (!fileExists(dir))
+     if (posix_mkdir(dir, dir_mode) != 0)

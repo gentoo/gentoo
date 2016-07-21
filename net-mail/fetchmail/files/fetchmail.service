@@ -1,0 +1,11 @@
+[Unit]
+Description=A remote-mail retrieval utility
+After=network.target
+
+[Service]
+User=fetchmail
+ExecStart=/usr/bin/fetchmail -d 60 -f /etc/fetchmailrc
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

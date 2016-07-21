@@ -1,0 +1,8 @@
+#%PAM-1.0
+# * pam_smbpass.so authenticates against the smbpasswd file
+# * changed Redhat's 'pam_stack' with 'include' for *BSD compatibility
+#    (Diego "Flameeyes" Petteno'): enable with pam>=0.78 only
+auth       required     pam_smbpass.so nodelay
+account    include      system-auth
+session    include      system-auth
+password   required     pam_smbpass.so nodelay smbconf=/etc/samba/smb.conf

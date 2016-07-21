@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-backup category contains tools for performing backups of data,
+		including both full and incremental backups, as well as backups to other
+		media (CD-R, Tape, etc.).
+	</longdescription>
+	<longdescription lang="ja">
+		app-backupカテゴリにはデータバックアップ(充実と増分)を実行すると
+		メディア(CD-R、テープ…)にバックアップするツールが含まれます。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-backup chứa các công cụ để sao lưu dữ liệu, bao gồm
+		sao lưu toàn bộ và sao lưu tăng tiến, cũng như sao lưu ra các phương
+		tiện khác (CD-R, băng từ ...).
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-backup enthält Programme zur Erstellung inkrementeller und
+		vollständiger Backups, sowie zur Sicherung auf andere Medien (CD-R, Band, etc.).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-backup contiene strumenti per il backup dei dati, incluso
+		backup completo o incrementale, come backup su altri media (CD-R, nastri, ecc.).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-backup contém ferramentas para fazer backup de dados,
+		incluindo tanto backups completos como incrementais, bem como backups
+		para outras mídias (CD-R, Fita, etc.).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-backup zawiera programy służące do tworzenia pełnych i
+		przyrostowych kopii zapasowych danych oraz do zapisywania
+		ich na inne nośniki danych (jak płyty CD-R, taśmy etc.).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-backup contiene herramientas para realizar copias
+		de respaldo de datos, incluyendo copias completas e incrementales,
+		así como respaldos realizados a otros medios (CD-R, cinta, etc.).
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,11 @@
+--- configure.in
++++ configure.in
+@@ -646,8 +646,6 @@
+         CFLAGS="$CFLAGS -g"
+ 	enable_fatal_warnings=no
+ else
+-        CFLAGS="$CFLAGS -ggdb3 -O0"
+-
+ 	# We had to eliminate -Wnested-externs because of libtool changes
+ 	# Also remove -Waggregate-return because we use one libnet
+ 	# call which returns a struct

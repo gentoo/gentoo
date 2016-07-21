@@ -1,0 +1,104 @@
+--- a/raddb/radiusd.conf.in
++++ b/raddb/radiusd.conf.in
+@@ -103,7 +103,7 @@
+ #	make
+ #	make install
+ #
+-libdir = @libdir@
++libdir = @libdir@/freeradius
+ 
+ #  pidfile: Where to place the PID of the RADIUS server.
+ #
+--- a/src/modules/Makefile
++++ b/src/modules/Makefile
+@@ -12,7 +12,7 @@
+ 	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
+ 
+ install:
+-	$(INSTALL) -d -m 755 $(R)$(libdir)
++	$(INSTALL) -d -m 755 $(R)$(pkglibdir)
+ 	@$(MAKE) $(MFLAGS) WHAT_TO_MAKE=$@ common
+ 
+ clean:
+--- a/src/modules/rules.mak
++++ b/src/modules/rules.mak
+@@ -122,7 +122,7 @@
+ $(TARGET).la: $(RLM_SUBDIRS) $(LT_OBJS)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) -release $(RADIUSD_VERSION_STRING) \
+ 	-module $(LINK_MODE) $(LDFLAGS) $(RLM_LDFLAGS) -o $@     \
+-	-rpath $(libdir) $^ $(LIBRADIUS) $(RLM_LIBS) $(LIBS)
++	-rpath $(pkglibdir) $^ $(LIBRADIUS) $(RLM_LIBS) $(LIBS)
+ 
+ #######################################################################
+ #
+@@ -163,13 +163,11 @@
+ #  Do any module-specific installation.
+ #
+ #  If there isn't a TARGET defined, then don't do anything.
+-#  Otherwise, install the libraries into $(libdir)
++#  Otherwise, install the libraries into $(pkglibdir)
+ #
+ install:
+ 	@[ "x$(RLM_INSTALL)" = "x" ] || $(MAKE) $(MFLAGS) $(RLM_INSTALL)
+ 	if [ "x$(TARGET)" != "x" ]; then \
+ 	    $(LIBTOOL) --mode=install $(INSTALL) -c \
+-		$(TARGET).la $(R)$(libdir)/$(TARGET).la || exit $$?; \
+-	    rm -f $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION_STRING).la; \
+-	    ln -s $(TARGET).la $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION_STRING).la || exit $$?; \
++		$(TARGET).la $(R)$(pkglibdir)/$(TARGET).la || exit $$?; \
+ 	fi
+--- a/src/modules/rlm_sql/drivers/rules.mak
++++ b/src/modules/rlm_sql/drivers/rules.mak
+@@ -103,7 +103,7 @@
+ $(TARGET).la: $(LT_OBJS)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) -release $(RADIUSD_VERSION_STRING) \
+ 	-module $(LINK_MODE) $(LDFLAGS) $(RLM_SQL_LDFLAGS) -o $@ \
+-	-rpath $(libdir) $^ $(RLM_SQL_LIBS)
++	-rpath $(pkglibdir) $^ $(RLM_SQL_LIBS)
+ 
+ #######################################################################
+ #
+@@ -141,12 +141,10 @@
+ #  Do any module-specific installation.
+ #
+ #  If there isn't a TARGET defined, then don't do anything.
+-#  Otherwise, install the libraries into $(libdir)
++#  Otherwise, install the libraries into $(pkglibdir)
+ #
+ install:
+ 	if [ "x$(TARGET)" != "x" ]; then \
+ 	    $(LIBTOOL) --mode=install $(INSTALL) -c \
+-		$(TARGET).la $(R)$(libdir)/$(TARGET).la || exit $$?; \
+-	    rm -f $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION_STRING).la; \
+-	    ln -s $(TARGET).la $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION_STRING).la || exit $$?; \
++		$(TARGET).la $(R)$(pkglibdir)/$(TARGET).la || exit $$?; \
+ 	fi
+--- a/src/lib/Makefile
++++ b/src/lib/Makefile
+@@ -42,7 +42,7 @@
+ 
+ $(TARGET).la: $(LT_OBJS)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) -release $(RADIUSD_VERSION) \
+-	$(LDFLAGS) $(LINK_MODE) -o $@ -rpath $(libdir) $^
++	$(LDFLAGS) $(LINK_MODE) -o $@ -rpath $(libdir) $^ $(LIBS)
+ 
+ $(LT_OBJS): $(INCLUDES)
+ 
+@@ -54,7 +54,5 @@
+ 	$(INSTALL) -d -m 755	$(R)$(libdir)
+ 	$(LIBTOOL) --mode=install $(INSTALL) -c $(TARGET).la \
+ 		$(R)$(libdir)/$(TARGET).la
+-	rm -f $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION).la;
+-	ln -s $(TARGET).la $(R)$(libdir)/$(TARGET)-$(RADIUSD_VERSION).la
+ 
+ reconfig:
+--- a/Make.inc.in
++++ b/Make.inc.in
+@@ -10,6 +10,7 @@
+ sysconfdir	= @sysconfdir@
+ localstatedir	= @localstatedir@
+ libdir		= @libdir@
++pkglibdir	= @libdir@/freeradius
+ bindir		= @bindir@
+ sbindir		= @sbindir@
+ docdir		= @docdir@

@@ -1,0 +1,15 @@
+ compiler/lexer.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/compiler/lexer.cpp b/compiler/lexer.cpp
+index 14e6d92..274b1a7 100755
+--- a/compiler/lexer.cpp
++++ b/compiler/lexer.cpp
+@@ -10,6 +10,7 @@
+ #define YY_FLEX_MAJOR_VERSION 2
+ #define YY_FLEX_MINOR_VERSION 5
+ 
++#include <unistd.h>
+ #include <stdio.h>
+ 
+ #if defined(__MWERKS__) && !__MACH__ && !YY_NEVER_INTERACTIVE

@@ -1,0 +1,28 @@
+http://bugs.gentoo.org/33296#26
+
+patch by Steve <steviedizzle@gmail.com>
+
+explanation:
+It changes the 16bit integers for setting and clearing collision maps to 32bit
+because if the surface is too large the program will segfault.
+
+--- sge030809/sge_collision.cpp
++++ sge030809/sge_collision.cpp
+@@ -336,7 +336,7 @@
+ void sge_unset_cdata(sge_cdata *cd, Sint16 x, Sint16 y, Sint16 w, Sint16 h)
+ {
+ 	Uint8 *map=cd->map;
+-	Sint16 offs,len;
++	Sint32 offs,len;
+ 	int i,n=0;
+ 	
+ 	offs=y*cd->w + x;
+@@ -365,7 +365,7 @@
+ void sge_set_cdata(sge_cdata *cd, Sint16 x, Sint16 y, Sint16 w, Sint16 h)
+ {
+ 	Uint8 *map=cd->map;
+-	Sint16 offs,len;
++	Sint32 offs,len;
+ 	int i,n=0;
+ 	
+ 	offs=y*cd->w + x;

@@ -1,0 +1,16 @@
+diff -pruN 3.52.6-1/configure.in 3.52.6-1ubuntu1/configure.in
+--- 3.52.6-1/configure.in	2007-10-08 14:04:32.000000000 +0100
++++ 3.52.6-1ubuntu1/configure.in	2007-12-06 00:12:00.000000000 +0000
+@@ -315,12 +315,6 @@ then
+   no_gtk=""
+   # Check for GTK+ 2.x
+   AM_PATH_GTK_2_0(2.0.0)
+-  if test x$no_gtk != x
+-  then
+-      # Try GTK 1.2.x instead
+-      no_gtk=""
+-      AM_PATH_GTK(1.2.3)
+-  fi
+   if test x$no_gtk = x
+   then
+     USE_GTK=true

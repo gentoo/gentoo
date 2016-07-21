@@ -1,0 +1,12 @@
+diff -ur a/macros/kde4.m4 b/macros/kde4.m4
+--- a/macros/kde4.m4	2011-02-26 19:11:08.000000000 +0100
++++ b/macros/kde4.m4	2011-11-25 18:09:25.000000000 +0100
+@@ -198,7 +198,7 @@
+       if test -d ${KDE4_PREFIX}/lib64 -a -f /etc/redhat-release; then
+         KDE4_PLUGINDIR="${KDE4_PREFIX}/lib64/kde4"
+       else
+-        KDE4_PLUGINDIR="${KDE4_PREFIX}/lib/kde4"
++        KDE4_PLUGINDIR="${KDE4_PREFIX}/${acl_libdirstem}/kde4"
+       fi
+     fi
+     if test x"${with_kde4_servicesdir}" != x ; then 

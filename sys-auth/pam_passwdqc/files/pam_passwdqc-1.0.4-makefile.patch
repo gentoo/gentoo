@@ -1,0 +1,44 @@
+Index: pam_passwdqc-1.0.4/Makefile
+===================================================================
+--- pam_passwdqc-1.0.4.orig/Makefile
++++ pam_passwdqc-1.0.4/Makefile
+@@ -7,11 +7,11 @@ LD = $(CC)
+ RM = rm -f
+ MKDIR = mkdir -p
+ INSTALL = install -c
+-CFLAGS = -Wall -fPIC -O2
+-LDFLAGS = -s --shared
+-LDFLAGS_LINUX = -s --shared -Wl,--version-script,$(MAP)
+-LDFLAGS_SUN = -s -G
+-LDFLAGS_HP = -s -b
++CFLAGS = -Wall -fPIC $(OPTCFLAGS)
++LDFLAGS_GENERIC = --shared
++LDFLAGS_LINUX = --shared -Wl,--version-script,$(MAP)
++LDFLAGS_SUN = -G
++LDFLAGS_HP = -b
+ LDLIBS = -lpam -lcrypt
+ LDLIBS_LINUX = -lpam -lcrypt
+ LDLIBS_SUN = -lpam -lcrypt
+@@ -41,18 +41,18 @@ MAP = pam_passwdqc.map
+ all:
+ 	if [ "`uname -s`" = "Linux" ]; then \
+ 		$(MAKE) CFLAGS="$(CFLAGS) -DHAVE_SHADOW" \
+-			LDFLAGS="$(LDFLAGS_LINUX)" LDLIBS="$(LDLIBS_LINUX)" \
++			LDFLAGS="$(LDFLAGS) $(LDFLAGS_LINUX)" LDLIBS="$(LDLIBS_LINUX)" \
+ 			$(PROJ); \
+ 	elif [ "`uname -s`" = "SunOS" ]; then \
+ 		$(MAKE) CFLAGS="$(CFLAGS) -DHAVE_SHADOW" \
+-			LD=ld LDFLAGS="$(LDFLAGS_SUN)" LDLIBS="$(LDLIBS_SUN)" \
++			LD=ld LDFLAGS="$(LDFLAGS) $(LDFLAGS_SUN)" LDLIBS="$(LDLIBS_SUN)" \
+ 			$(PROJ); \
+ 	elif [ "`uname -s`" = "HP-UX" ]; then \
+ 		$(MAKE) CFLAGS="$(CFLAGS) -DHAVE_SHADOW" \
+-			LD=ld LDFLAGS="$(LDFLAGS_HP)" LDLIBS="$(LDLIBS_HP)" \
++			LD=ld LDFLAGS="$(LDFLAGS) $(LDFLAGS_HP)" LDLIBS="$(LDLIBS_HP)" \
+ 			$(PROJ); \
+ 	else \
+-		$(MAKE) $(PROJ); \
++		$(MAKE) LDFLAGS="$(LDFLAGS) $(LDFLAGS_GENERIC)" $(PROJ); \
+ 	fi
+ 
+ $(LIBSHARED): $(OBJS) $(MAP)

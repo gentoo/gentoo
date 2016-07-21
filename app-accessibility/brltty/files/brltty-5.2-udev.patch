@@ -1,0 +1,28 @@
+diff -Naur brltty-5.2/Autostart/Udev/udev.rules brltty-5.2-new/Autostart/Udev/udev.rules
+--- brltty-5.2/Autostart/Udev/udev.rules	2014-11-06 07:28:41.000000000 -0800
++++ brltty-5.2-new/Autostart/Udev/udev.rules	2014-11-20 05:28:44.404885312 -0800
+@@ -182,20 +182,22 @@
+ # FreedomScientific [Focus Blue]
+ ENV{PRODUCT}=="f4e/114/*", ENV{BRLTTY_BRAILLE_DRIVER}="fs", GOTO="brltty_usb_run"
+ 
++# Seika rules are commented out, because they conflict with USB-to-serial
++# converters.
+ # Device: 10C4:EA60
+ # Generic Identifier
+ # Vendor: Cygnal Integrated Products, Inc.
+ # Product: CP210x UART Bridge / myAVR mySmartUSB light
+ # BrailleMemo [Pocket]
+ # Seika [Braille Display]
+-ENV{PRODUCT}=="10c4/ea60/*", ENV{BRLTTY_BRAILLE_DRIVER}="mm,sk", GOTO="brltty_usb_run"
++#ENV{PRODUCT}=="10c4/ea60/*", ENV{BRLTTY_BRAILLE_DRIVER}="mm,sk", GOTO="brltty_usb_run"
+ 
+ # Device: 10C4:EA80
+ # Generic Identifier
+ # Vendor: Cygnal Integrated Products, Inc.
+ # Product: CP210x UART Bridge
+ # Seika [Note Taker]
+-ENV{PRODUCT}=="10c4/ea80/*", ENV{BRLTTY_BRAILLE_DRIVER}="sk", GOTO="brltty_usb_run"
++#ENV{PRODUCT}=="10c4/ea80/*", ENV{BRLTTY_BRAILLE_DRIVER}="sk", GOTO="brltty_usb_run"
+ 
+ # Device: 1148:0301
+ # BrailleMemo [Smart]

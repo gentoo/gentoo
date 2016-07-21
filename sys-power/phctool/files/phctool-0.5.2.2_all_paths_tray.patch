@@ -1,0 +1,32 @@
+--- phctray.sh	2007-09-08 08:29:31.000000000 +0200
++++ phctray.sh	2009-09-05 23:16:54.000000000 +0200
+@@ -2,6 +2,5 @@
+ #this shellscript is just a wrapper to phctray.py
+ #but necessary to run phctray from another directory
+ 
+-PROGPATH=`dirname "$0"`
+-cd $PROGPATH
++cd /usr/share/phctool
+ ./phctray.py
+--- phctray.py	2009-09-08 12:17:11.000000000 +0200
++++ phctray.py	2009-09-08 12:17:33.000000000 +0200
+@@ -61,7 +61,7 @@
+ t.show_all()
+ 
+ ##call phctool without GUI to set stored values
+-cmd=[sys.path[0]+"/phctool.sh","background"]	##command
++cmd=["/usr/bin/phctool","background"]	##command
+ subprocess.Popen(cmd, shell=False)		##call the affinated programm
+ 
+ gtk.main()
+--- phctray.py	2009-09-08 12:22:28.000000000 +0200
++++ phctray.py	2009-09-08 12:23:44.000000000 +0200
+@@ -11,7 +11,7 @@
+ 	return;
+ 
+ def run_phctool( *args ):
+-	cmd=[sys.path[0]+"/phctool.sh"]		##command
++	cmd=["/usr/bin/phctool"]		##command
+ 	subprocess.Popen(cmd, shell=False)	##call the affinated programm
+ 
+ def applet_face_click( window, event, *data ):

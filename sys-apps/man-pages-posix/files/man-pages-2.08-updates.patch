@@ -1,0 +1,11 @@
+--- man1p/ipcs.1p
++++ man1p/ipcs.1p
+@@ -544,7 +544,7 @@
+ None.
+ .SH SEE ALSO
+ .LP
+-The System Interfaces volume of IEEE\ Std\ 1003.1-2001, \fImsgrcv\fP(),
++\fIipcrm\fP , The System Interfaces volume of IEEE\ Std\ 1003.1-2001, \fImsgrcv\fP(),
+ \fImsgsnd\fP(), \fIsemget\fP(), \fIsemop\fP(), \fIshmat\fP(), \fIshmdt\fP(),
+ \fIshmget\fP()
+ .SH COPYRIGHT

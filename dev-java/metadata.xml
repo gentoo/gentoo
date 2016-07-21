@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-java category contains libraries and utilities relevant to the
+		Java programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-java enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Java.
+	</longdescription>
+	<longdescription lang="fi">
+		Kategoria dev-java sisältää kirjastoja ja työkaluja
+		Java-ohjelmointikielen hyödyntämiseen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-java contiene librerias y utilidades para el lenguaje
+		de programación Java.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-java カテゴリーにはJavaプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-java categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal Java.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-java chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Java.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-java contiene librerie ed utilità per il linguaggio Java.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-java contém bibliotecas e utilitários para a
+		linguagem de programação Java.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-java zawiera biblioteki i narzędzia związane z
+		z językiem programowania Java.
+	</longdescription>
+</catmetadata>
+

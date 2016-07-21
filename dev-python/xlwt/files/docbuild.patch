@@ -1,0 +1,17 @@
+diff -ur xlwt-1.0.0.orig/docs/conf.py xlwt-1.0.0/docs/conf.py
+--- docs/conf.py	2015-04-16 04:43:57.000000000 +0800
++++ docs/conf.py	2015-05-11 11:13:22.320470128 +0800
+@@ -4,7 +4,7 @@
+ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+ pkg_info = pkginfo.Develop(os.path.join(os.path.dirname(__file__), os.pardir))
+ 
+-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx']
++extensions = ['sphinx.ext.autodoc']
+ source_suffix = '.rst'
+ master_doc = 'index'
+ project = u'xlwt'
+@@ -19,4 +19,3 @@
+     html_theme = 'classic'
+ 
+ htmlhelp_basename = project+'doc'
+-intersphinx_mapping = {'python': ('http://docs.python.org', None)}

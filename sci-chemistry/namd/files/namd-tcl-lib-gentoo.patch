@@ -1,0 +1,16 @@
+# adjust paths for proper linking to tcl libs 
+
+--- NAMD_2.6b1_Source/arch/Linux-i686.tcl	2004-10-27 21:40:55.000000000 +0000
++++ NAMD_2.6b1_Source_patched/arch/Linux-i686.tcl	2005-09-14 20:50:14.000000000 +0000
+@@ -1,8 +1,8 @@
+ 
+-TCLDIR=/Projects/namd2/tcl/linux
++#TCLDIR=/Projects/namd2/tcl/linux
+ #TCLDIR=$(HOME)/tcl/cray-xt3
+-TCLINCL=-I$(TCLDIR)/include -I$(HOME)/tcl/include
+-TCLLIB=-L$(TCLDIR)/lib -L$(HOME)/tcl/lib -ltcl8.3 -ldl
++TCLINCL=-I/usr/include 
++TCLLIB=-L/usr/lib -L$(HOME)/tcl/lib -ltcl -ldl
+ TCLFLAGS=-DNAMD_TCL -DUSE_NON_CONST
+ TCL=$(TCLINCL) $(TCLFLAGS)
+ 

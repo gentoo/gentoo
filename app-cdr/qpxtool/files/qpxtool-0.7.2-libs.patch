@@ -1,0 +1,11 @@
+--- qpxtool-0.7.2/gui/qpxtool.pro
++++ qpxtool-0.7.2/gui/qpxtool.pro
+@@ -13,6 +13,8 @@
+ DEPENDPATH += . include locale src
+ INCLUDEPATH += . include
+ 
++LIBS+=-L../lib/lib -lqpxtransport
++
+ # Input
+ HEADERS += include/about.h \
+            include/abstractpreview.h \

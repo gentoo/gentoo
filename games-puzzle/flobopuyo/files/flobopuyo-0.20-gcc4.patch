@@ -1,0 +1,25 @@
+Index: flobopuyo-0.20/IosVector.cpp
+===================================================================
+--- flobopuyo-0.20.orig/IosVector.cpp
++++ flobopuyo-0.20/IosVector.cpp
+@@ -102,6 +102,6 @@ void IosVector::increaseVectorSize()
+ void IosVector::dumpVector() const {
+ 	fprintf(stderr, "Size: %d\n", getSize());
+ 	for (int i = 0, j = getSize() ; i < j ; i++)
+-		fprintf(stderr, "elt[%d]=%d ", i, (int)getElementAt(i));
++		fprintf(stderr, "elt[%d]=%p ", i, getElementAt(i));
+ 	fprintf(stderr, "\n");
+ }
+Index: flobopuyo-0.20/PuyoGame.cpp
+===================================================================
+--- flobopuyo-0.20.orig/PuyoGame.cpp
++++ flobopuyo-0.20/PuyoGame.cpp
+@@ -45,7 +45,7 @@ PuyoState PuyoRandomSystem::getPuyoForSe
+ 		return (PuyoState)newItem;
+ 	}
+ 	else
+-		return (PuyoState)(int)(sequenceItems.getElementAt(sequence));
++		return (PuyoState)(long)(sequenceItems.getElementAt(sequence));
+ }
+ 
+ PuyoPuyo::PuyoPuyo(PuyoState state)

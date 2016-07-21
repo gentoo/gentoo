@@ -1,0 +1,13 @@
+diff -ur clx-0.7.4.orig/requests.lisp clx-0.7.4/requests.lisp
+--- clx-0.7.4.orig/requests.lisp	2009-11-28 16:43:30.000000000 +0100
++++ clx-0.7.4/requests.lisp	2010-12-16 23:37:07.122629835 +0100
+@@ -466,8 +466,7 @@
+ 	   (type event-key event-key)
+ 	   (type (or null event-mask) event-mask)
+ 	   (type generalized-boolean propagate-p)
+-	   (type (or null display) display)
+-	   (dynamic-extent args))
++	   (type (or null display) display))
+   (unless event-mask (setq event-mask 0))
+   (unless display (setq display (window-display window)))
+   (let ((internal-event-code (get-event-code event-key))

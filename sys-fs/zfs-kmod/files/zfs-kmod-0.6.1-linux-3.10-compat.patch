@@ -1,0 +1,108 @@
+commit a1d9543a39942be56879ca9338078afc77c25cea
+Author: Chris Dunlop <chris@onthe.net.au>
+Date:   Mon Jun 3 16:58:52 2013 +1000
+
+    3.10 API change: block_device_operations->release() returns void
+    
+    Linux kernel commit torvalds/linux@db2a144 changed the return type
+    of block_device_operations->release() to void.  Detect the expected
+    prototype and defined our callout accordingly.
+    
+    Signed-off-by: Chris Dunlop <chris@onthe.net.au>
+    Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+    Closes #1494
+
+diff --git a/config/kernel-bdev-block-device-operations.m4 b/config/kernel-bdev-block-device-operations.m4
+index 8b5e0a3..faacc19 100644
+--- a/config/kernel-bdev-block-device-operations.m4
++++ b/config/kernel-bdev-block-device-operations.m4
+@@ -10,7 +10,6 @@ AC_DEFUN([ZFS_AC_KERNEL_BDEV_BLOCK_DEVICE_OPERATIONS], [
+ 
+ 		int blk_open(struct block_device *bdev, fmode_t mode)
+ 		    { return 0; }
+-		int blk_release(struct gendisk *g, fmode_t mode) { return 0; }
+ 		int blk_ioctl(struct block_device *bdev, fmode_t mode,
+ 		    unsigned x, unsigned long y) { return 0; }
+ 		int blk_compat_ioctl(struct block_device * bdev, fmode_t mode,
+@@ -19,7 +18,7 @@ AC_DEFUN([ZFS_AC_KERNEL_BDEV_BLOCK_DEVICE_OPERATIONS], [
+ 		static const struct block_device_operations
+ 		    bops __attribute__ ((unused)) = {
+ 			.open		= blk_open,
+-			.release	= blk_release,
++			.release	= NULL,
+ 			.ioctl		= blk_ioctl,
+ 			.compat_ioctl	= blk_compat_ioctl,
+ 		};
+diff --git a/config/kernel-block-device-operations-release-void.m4 b/config/kernel-block-device-operations-release-void.m4
+new file mode 100644
+index 0000000..a73f858
+--- /dev/null
++++ b/config/kernel-block-device-operations-release-void.m4
+@@ -0,0 +1,29 @@
++dnl #
++dnl # 3.10.x API change
++dnl #
++AC_DEFUN([ZFS_AC_KERNEL_BLOCK_DEVICE_OPERATIONS_RELEASE_VOID], [
++	AC_MSG_CHECKING([whether block_device_operations.release is void])
++	tmp_flags="$EXTRA_KCFLAGS"
++	EXTRA_KCFLAGS="${NO_UNUSED_BUT_SET_VARIABLE}"
++	ZFS_LINUX_TRY_COMPILE([
++		#include <linux/blkdev.h>
++
++		void blk_release(struct gendisk *g, fmode_t mode) { return; }
++
++		static const struct block_device_operations
++		    bops __attribute__ ((unused)) = {
++			.open		= NULL,
++			.release	= blk_release,
++			.ioctl		= NULL,
++			.compat_ioctl	= NULL,
++		};
++	],[
++	],[
++		AC_MSG_RESULT(void)
++		AC_DEFINE(HAVE_BLOCK_DEVICE_OPERATIONS_RELEASE_VOID, 1,
++		          [struct block_device_operations.release returns void])
++	],[
++		AC_MSG_RESULT(int)
++	])
++	EXTRA_KCFLAGS="$tmp_flags"
++])
+diff --git a/config/kernel.m4 b/config/kernel.m4
+index 7b8e3b0..46c0255 100644
+--- a/config/kernel.m4
++++ b/config/kernel.m4
+@@ -7,6 +7,7 @@ AC_DEFUN([ZFS_AC_CONFIG_KERNEL], [
+ 	ZFS_AC_TEST_MODULE
+ 	ZFS_AC_KERNEL_CONFIG
+ 	ZFS_AC_KERNEL_BDEV_BLOCK_DEVICE_OPERATIONS
++	ZFS_AC_KERNEL_BLOCK_DEVICE_OPERATIONS_RELEASE_VOID
+ 	ZFS_AC_KERNEL_TYPE_FMODE_T
+ 	ZFS_AC_KERNEL_KOBJ_NAME_LEN
+ 	ZFS_AC_KERNEL_3ARG_BLKDEV_GET
+diff --git a/module/zfs/zvol.c b/module/zfs/zvol.c
+index e35c91b..b516156 100644
+--- a/module/zfs/zvol.c
++++ b/module/zfs/zvol.c
+@@ -1024,7 +1024,11 @@ out_mutex:
+ 	return (error);
+ }
+ 
++#ifdef HAVE_BLOCK_DEVICE_OPERATIONS_RELEASE_VOID
++static void
++#else
+ static int
++#endif
+ zvol_release(struct gendisk *disk, fmode_t mode)
+ {
+ 	zvol_state_t *zv = disk->private_data;
+@@ -1044,7 +1048,9 @@ zvol_release(struct gendisk *disk, fmode_t mode)
+ 	if (drop_mutex)
+ 		mutex_exit(&zvol_state_lock);
+ 
++#ifndef HAVE_BLOCK_DEVICE_OPERATIONS_RELEASE_VOID
+ 	return (0);
++#endif
+ }
+ 
+ static int

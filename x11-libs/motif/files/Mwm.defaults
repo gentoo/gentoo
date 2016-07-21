@@ -1,0 +1,14 @@
+Mwm*fontList:			variable
+Mwm*iconClick:			False
+Mwm*iconPlacement:		top left
+Mwm*moveOpaque:			True
+Mwm*rootButtonClick:		True
+Mwm*foreground:			#000000
+Mwm*background:			#B8B8C0
+Mwm*enableThinThickness:	True
+Mwm*enableEtchedInMenu:		True
+Mwm*menu*fontList:		-adobe-helvetica-medium-r-*--*-120-*-*-*-*-*-*
+Mwm*client*title*fontList:	-adobe-helvetica-bold-r-*--*-100-*-*-*-*-*-*
+Mwm*icon*fontList:		-adobe-helvetica-bold-r-*--*-80-*-*-*-*-*-*
+Mwm*feedback*fontList:		-adobe-helvetica-bold-r-*--*-100-*-*-*-*-*-*
+Mwm*multiClickTime:		300

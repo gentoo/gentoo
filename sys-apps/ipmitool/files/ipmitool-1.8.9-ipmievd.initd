@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+# /etc/init.d/ipmievd
+
+depend() {
+    use logger
+}
+PN="ipmievd"
+
+start() {
+    /sbin/modprobe -sq ipmi_msghandler
+    /sbin/modprobe -sq ipmi_devintf
+    /sbin/modprobe -sq ipmi_si
+    ebegin "Starting ${PN}"
+    start-stop-daemon --start --pidfile /var/run/${PN}.pid0 --exec /usr/sbin/${PN} -- -I ${INTERFACE} ${OPTIONS} ${COMMAND}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${PN}"
+    start-stop-daemon --stop --pidfile /var/run/${PN}.pid0
+    eend $?
+}

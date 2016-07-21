@@ -1,0 +1,7 @@
+/var/log/chrony/*.log {
+	missingok
+	sharedscripts
+	postrotate
+		/usr/bin/chronyc cyclelogs
+	endscript
+}

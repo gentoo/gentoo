@@ -1,0 +1,12 @@
+diff --git vcglib/wrap/ply/plystuff.h vcglib/wrap/ply/plystuff.h
+index 3e41e63..4af9508 100644
+--- vcglib/wrap/ply/plystuff.h
++++ vcglib/wrap/ply/plystuff.h
+@@ -75,6 +75,7 @@ using namespace vcg;
+ #define pb_close  _close
+ #define DIR_SEP "\\"
+ #else
++#include <unistd.h>
+ #define pb_mkdir(n)  mkdir(n,0755)
+ #define pb_access access
+ #define pb_stat   stat

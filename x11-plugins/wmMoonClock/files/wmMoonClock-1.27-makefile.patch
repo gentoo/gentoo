@@ -1,0 +1,36 @@
+--- Makefile.orig	1999-03-23 03:20:32.000000000 +0100
++++ Makefile	2008-01-27 23:44:28.000000000 +0100
+@@ -1,8 +1,9 @@
+-CC     = gcc
+-CFLAGS = -O2
+-INCDIR = -I/usr/X11R6/include/X11
+-DESTDIR= /usr/X11R6
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += 
++INCDIR = -I/usr/include/X11
++PREFIX ?= /usr
++LIBDIR ?= /usr/lib
++MANDIR = $(PREFIX)/share/man
+ 
+ # for Linux
+ LIBS   = -lXpm -lX11 -lXext
+@@ -22,7 +23,7 @@
+ 
+ wmMoonClock.o: wmMoonClock_master.xpm wmMoonClock_mask.xbm CalcEphem.h
+ wmMoonClock:	$(OBJS) 
+-	$(CC) $(COPTS) $(SYSTEM) -lm -o wmMoonClock $^ $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(COPTS) $(SYSTEM) -o wmMoonClock $^ $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS) -lm
+ 
+ clean:
+ 	for i in $(OBJS) ; do \
+@@ -31,6 +32,7 @@
+ 	rm -f wmMoonClock
+ 
+ install:: wmMoonClock
+-	install -s -m 0755 wmMoonClock $(DESTDIR)/bin
+-	install    -m 0644 wmMoonClock.1 $(DESTDIR)/man/man1 
++	install -d $(DESTDIR)$(PREFIX)/bin $(DESTDIR)$(MANDIR)/man1
++	install -m 0755 wmMoonClock $(DESTDIR)$(PREFIX)/bin
++	install -m 0644 wmMoonClock.1 $(DESTDIR)$(MANDIR)/man1
+ 

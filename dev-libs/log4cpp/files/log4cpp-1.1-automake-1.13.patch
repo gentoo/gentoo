@@ -1,0 +1,11 @@
+--- configure.ac.orig	2015-01-14 09:37:13.616446476 +0300
++++ configure.ac	2015-01-14 09:37:26.119445770 +0300
+@@ -17,7 +17,7 @@
+ 
+ #AC_CONFIG_SRCDIR(configure.in)
+ AC_CONFIG_AUX_DIR(config)
+-AM_CONFIG_HEADER(include/config.h)
++AC_CONFIG_HEADERS([include/config.h])
+ 
+ AM_INIT_AUTOMAKE
+ 

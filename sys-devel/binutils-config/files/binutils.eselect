@@ -1,0 +1,45 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2005-2015 Gentoo Foundation
+# Distributed under the terms of the GNU GPL version 2 or later
+
+DESCRIPTION="Manage installed versions of sys-devel/binutils"
+MAINTAINER="toolchain@gentoo.org"
+
+### list action
+
+describe_list() {
+	echo "List all installed version of binutils"
+}
+
+do_list() {
+	binutils-config -l
+}
+
+### set action
+
+describe_set() {
+	echo "Activate one of the installed binutils"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+describe_set_options() {
+	echo "target : Target name or number (from 'list' action)"
+}
+
+do_set() {
+	[[ $# -eq 1 ]] || die -q "Please specify exactly one version to activate!"
+	binutils-config "$1"
+}
+
+### show action
+
+describe_show() {
+	echo "Print the currently active binutils version"
+}
+
+do_show() {
+	binutils-config -c
+}

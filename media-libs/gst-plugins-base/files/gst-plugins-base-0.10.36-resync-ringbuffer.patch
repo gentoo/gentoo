@@ -1,0 +1,15 @@
+--- a/gst-libs/gst/audio/gstbaseaudiosink.c
++++ b/gst-libs/gst/audio/gstbaseaudiosink.c
+@@ -921,6 +921,12 @@
+   if (!gst_ring_buffer_acquire (sink->ringbuffer, spec))
+     goto acquire_error;
+ 
++  /* We need to resync since the ringbuffer restarted */
++  sink->priv->avg_skew = -1;
++  sink->next_sample = -1;
++  sink->priv->eos_time = -1;
++  sink->priv->discont_time = -1;
++
+   if (bsink->pad_mode == GST_ACTIVATE_PUSH) {
+     GST_DEBUG_OBJECT (sink, "activate ringbuffer");
+     gst_ring_buffer_activate (sink->ringbuffer, TRUE);

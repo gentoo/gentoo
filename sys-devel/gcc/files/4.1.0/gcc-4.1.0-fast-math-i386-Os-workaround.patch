@@ -1,0 +1,64 @@
+workaround for lame stack packing on i386 ...
+
+	- build gcc with -Os (crtfastmath.o to be specific)
+	- crtfastmath.o is installed into gcc libdir
+	- run gcc with -ffast-math and get crtfastmath.o linked in
+	- resulting compiled app segfaults due to init code in
+	  crtfastmath.o that has mis-aligned structure on stack
+
+http://bugs.gentoo.org/147020
+http://gcc.gnu.org/PR28621
+
+this is supposed to be fixed in current 4.1 branch, but i'm unable to get
+the fix to work so until i can figure out what i'm doing wrong, we'll use
+this workaround for now.
+
+--- gcc-4.1.1/gcc/config/i386/crtfastmath.c
++++ gcc-4.1.1/gcc/config/i386/crtfastmath.c
+@@ -37,6 +37,23 @@
+ #define FXSAVE	(1 << 24)
+ #define SSE	(1 << 25)
+ 
++struct
++{
++	unsigned short int cwd;
++	unsigned short int swd;
++	unsigned short int twd;
++	unsigned short int fop;
++	long int fip;
++	long int fcs;
++	long int foo;
++	long int fos;
++	long int mxcsr;
++	long int mxcsr_mask;
++	long int st_space[32];
++	long int xmm_space[32];
++	long int padding[56];
++} __attribute__ ((aligned (16))) fxsave;
++
+ static void __attribute__((constructor))
+ set_fast_math (void)
+ {
+@@ -75,22 +92,6 @@
+       if (edx & FXSAVE)
+ 	{
+ 	  /* Check if DAZ is available.  */
+-	  struct
+-	    {
+-	      unsigned short int cwd;
+-	      unsigned short int swd;
+-	      unsigned short int twd;
+-	      unsigned short int fop;
+-	      long int fip;
+-	      long int fcs;
+-	      long int foo;
+-	      long int fos;
+-	      long int mxcsr;
+-	      long int mxcsr_mask;
+-	      long int st_space[32];
+-	      long int xmm_space[32];
+-	      long int padding[56];
+-	    } __attribute__ ((aligned (16))) fxsave;
+ 
+ 	  __builtin_memset (&fxsave, 0, sizeof (fxsave));
+ 

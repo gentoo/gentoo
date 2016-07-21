@@ -1,0 +1,88 @@
+Fixing as-needed issues, debundling libquicktime, respect FLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=247919
+
+--- Makefile
++++ Makefile
+@@ -72,9 +72,6 @@
+ #         a setup problem on my SunOS machine.   Under Solaris, gcc worked
+ #         fine.
+ #
+-# CC = cc
+- CC = gcc
+-#CC = egcs
+ #
+ ######### OPTIMIZATION FLAGS
+ # -- Specifiy Any compiler Optimization flags that you wish to use. This
+@@ -116,7 +113,7 @@
+ #  to link against symbols inside xanim.
+ #
+ ### Linux
+-LD_FLAGS = -rdynamic
++LD_FLAGS = $(LDFLAGS) -rdynamic
+ ### SunOS/Solaris use:
+ # LD_FLAGS =
+ 
+@@ -133,7 +130,7 @@
+ #
+ XA_DLL_DEF = -DXA_DLL -DXA_PRINT
+ #### Use this only if the above doesn't work.
+-XA_DLL_DEF = -DXA_DLL
++#XA_DLL_DEF = -DXA_DLL
+ #
+ #### You may need this library.
+ XA_DLL_LIB = -ldl
+@@ -141,7 +138,7 @@
+ # If you'd like to change the default directory that XAnim searches while
+ # looking for dlls, then change the directory below. 
+ #
+-XA_DLL_PATH = /usr/local/xanim/mods
++XA_DLL_PATH = /usr/lib/xanim/mods-export
+ 
+ 
+ ##########################################################################
+@@ -208,9 +205,9 @@
+ # XA_CVID_DEF = -DXA_CVID
+ # XA_CYUV_DEF = -DXA_CYUV
+ #
+-#XA_IV32_LIB = mods/xa2.0_iv32_linuxELF.o
+-#XA_CVID_LIB = mods/xa2.0_cvid_linuxELF.o
+-#XA_CYUV_LIB = mods/xa1.0_cyuv_linuxELF.o
++XA_IV32_LIB = mods/xa2.1_iv32_linuxELFg21.o
++XA_CVID_LIB = mods/xa2.0_cvid_linuxELFg21.o
++XA_CYUV_LIB = mods/xa1.0_cyuv_linuxELFg21.o
+ #
+ ###########################
+ # NOTE: SGI Machines Only: 
+@@ -297,16 +294,16 @@
+ # XLIBDIR = -L/usr/openwin/lib
+ #
+ ###-- Linux using X11R6
+-INCLUDE =  -I/usr/X11R6/include -I/usr/X11R6/include/X11
+-XLIBDIR = -L/usr/X11R6/lib
++INCLUDE =  -I/usr/include -I/usr/include/X11
++XLIBDIR = -L/usr/lib
+ #
+ ###-- My SunOS machine running X11R5
+ # INCLUDE = -I/usr/X11R5/include -I/usr/X11R5/include/X11
+ # XLIBDIR = -L/usr/X11R5/lib  -lnsl
+ #
+ ###-- My SunOS machine running X11R6
+-# INCLUDE = -I/usr/X11R6/include -I/usr/X11R6/include/X11
+-# XLIBDIR = -L/usr/X11R6/lib  -lnsl
++# INCLUDE = -I/usr/include -I/usr/include/X11
++# XLIBDIR = -L/usr/lib  -lnsl
+ #
+ ###-- Win32 
+ #-- This depends on where you installed the Cygnus X11 includes and libs.
+@@ -534,8 +531,8 @@
+ #
+ 
+ XA_DEFS = $(XA_MISC_DEFS) $(XA_MOD_DEFS) $(XA_AUDIO_DEFS) -DXA_PETUNIA -DXA_KPCD -DXA_EXPORT -DXA_EXPORT_QT
+-XA_LIBS = $(XA_X11R6_LIBS) $(XA_MACH_LIBS) $(XA_MOD_LIBS) $(XA_AUDIO_LIBS) -lpthread quicktime/quicktime/libquicktime.a -ljpeg -lpng -lz
+-XA_INCS = $(INCLUDE) $(XA_VIDEO_INCS) $(XA_AUDIO_INCS) -Iquicktime/quicktime
++XA_LIBS = $(XA_X11R6_LIBS) $(XA_MACH_LIBS) $(XA_MOD_LIBS) $(XA_AUDIO_LIBS) -ljpeg -lpng $(shell pkg-config --libs libquicktime)
++XA_INCS = $(INCLUDE) $(XA_VIDEO_INCS) $(XA_AUDIO_INCS) $(shell pkg-config --cflags libquicktime)
+ CFLAGS	=  $(DEBUG) $(OPTIMIZE)
+ 
+ #####################################

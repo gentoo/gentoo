@@ -1,0 +1,105 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Fix FTBFS with GCC-4.7
+Git-Branch: p/gcc47
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..07a6c6cf991f44779236b31381a7ca
+
+Closes: #667276
+
+Thanks to Matej Vela for the patch.
+
+ meshlab/src/meshlabplugins/decorate_base/colorhistogram.h      |    2 +-
+ .../vcg/complex/algorithms/local_optimization/tri_edge_flip.h  |    8 ++++----
+ vcglib/vcg/space/index/grid_static_obj.h                       |    2 +-
+ vcglib/wrap/gl/trimesh.h                                       |    2 +-
+ vcglib/wrap/ply/plystuff.h                                     |    1 +
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/meshlab/src/meshlabplugins/decorate_base/colorhistogram.h b/meshlab/src/meshlabplugins/decorate_base/colorhistogram.h
+index 2351b2a..90c6d76 100644
+--- a/meshlab/src/meshlabplugins/decorate_base/colorhistogram.h
++++ b/meshlab/src/meshlabplugins/decorate_base/colorhistogram.h
+@@ -40,7 +40,7 @@ public:
+ 
+   //! Reset histogram data.
+   void Clear() {
+-    this->::Clear();
++    Histogram<ScalarType>::Clear();
+     CV.clear();
+   }
+   /*
+diff --git a/vcglib/vcg/complex/algorithms/local_optimization/tri_edge_flip.h b/vcglib/vcg/complex/algorithms/local_optimization/tri_edge_flip.h
+index 9054166..f40f0dc 100644
+--- a/vcglib/vcg/complex/algorithms/local_optimization/tri_edge_flip.h
++++ b/vcglib/vcg/complex/algorithms/local_optimization/tri_edge_flip.h
+@@ -558,13 +558,13 @@ public:
+ 		// edges of the first face, except the flipped edge
+ 		for(int i = 0; i < 3; i++) if(i != flipped) {
+ 			PosType newpos(f1, i);
+-			Insert(heap, newpos, this->GlobalMark());
++			this->Insert(heap, newpos, this->GlobalMark());
+ 		}
+ 
+ 		// edges of the second face, except the flipped edge
+ 		for(int i = 0; i < 3; i++) if(i != f1->FFi(flipped)) {
+ 			PosType newpos(f2, i);
+-			Insert(heap, newpos, this->GlobalMark());
++			this->Insert(heap, newpos, this->GlobalMark());
+ 		}
+ 
+ 		// every edge with v0, v1 v3 of f1
+@@ -583,7 +583,7 @@ public:
+ 			do {
+ 				VertexPointer v = pos.VFlip();
+ 				if(v != v0 && v != v1 && v != v2 && v != v3)
+-				Insert(heap, pos, this->GlobalMark());
++				this->Insert(heap, pos, this->GlobalMark());
+ 
+ 				pos.NextE();
+ 			} while(pos != startpos && !pos.IsBorder());
+@@ -603,7 +603,7 @@ public:
+ 		do {
+ 			VertexPointer v = pos.VFlip();
+ 			if(v != v0 && v != v1 && v != v2 && v != v3)
+-			Insert(heap, pos, this->GlobalMark());
++			this->Insert(heap, pos, this->GlobalMark());
+ 
+ 			pos.NextE();
+ 		} while(pos != startpos && !pos.IsBorder());
+diff --git a/vcglib/vcg/space/index/grid_static_obj.h b/vcglib/vcg/space/index/grid_static_obj.h
+index 0554393..26608d5 100644
+--- a/vcglib/vcg/space/index/grid_static_obj.h
++++ b/vcglib/vcg/space/index/grid_static_obj.h
+@@ -72,7 +72,7 @@ class GridStaticObj : public BasicGrid<FLT>
+ 	 inline ~GridStaticObj() { if(grid) delete[] grid; }
+ 	 inline void Init(const ObjType &val)
+ 	 {
+-		 fill(grid,grid+size(),val);
++		 std::fill(grid,grid+size(),val);
+ 	 }
+ 
+ 
+diff --git a/vcglib/wrap/gl/trimesh.h b/vcglib/wrap/gl/trimesh.h
+index 5d40404..ba72456 100644
+--- a/vcglib/wrap/gl/trimesh.h
++++ b/vcglib/wrap/gl/trimesh.h
+@@ -1003,7 +1003,7 @@ void Crease(MESH_TYPE &m, typename MESH_TYPE::scalar_type angleRad)
+ 			}
+ 		}
+ 
+-	m.vert.math::Swap(newvert);
++	m.vert.swap(newvert);
+ 	m.vn=m.vert.size();
+ }
+ 
+diff --git a/vcglib/wrap/ply/plystuff.h b/vcglib/wrap/ply/plystuff.h
+index 3e41e63..4af9508 100644
+--- a/vcglib/wrap/ply/plystuff.h
++++ b/vcglib/wrap/ply/plystuff.h
+@@ -75,6 +75,7 @@ using namespace vcg;
+ #define pb_close  _close
+ #define DIR_SEP "\\"
+ #else
++#include <unistd.h>
+ #define pb_mkdir(n)  mkdir(n,0755)
+ #define pb_access access
+ #define pb_stat   stat

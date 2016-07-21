@@ -1,0 +1,14 @@
+--- configure.old	2006-04-19 22:00:42.000000000 +0200
++++ configure	2006-04-19 22:02:38.000000000 +0200
+@@ -193,8 +193,8 @@
+ MINOR = $VMINOR
+ REVISION = $VREVISION
+ 
+-LEVELSETS_DIR = \$(PREFIX)/share/\$(NAME)/levelsets
+-THEMES_DIR = \$(PREFIX)/share/\$(NAME)/themes
+-BIN_DIR = \$(PREFIX)/bin
++LEVELSETS_DIR = \$(PREFIX)@GENTOO_DATA@/\$(NAME)/levelsets
++THEMES_DIR = \$(PREFIX)@GENTOO_DATA@/\$(NAME)/themes
++BIN_DIR = \$(PREFIX)@GENTOO_BIN@
+ DOC_DIR = \$(PREFIX)/doc/\$(NAME)-\$(MAJOR).\$(MINOR).\$(REVISION)
+ LIB_DIR = \$(PREFIX)/lib

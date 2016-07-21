@@ -1,0 +1,57 @@
+ nemesis/CMakeLists.txt | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/nemesis/CMakeLists.txt b/nemesis/CMakeLists.txt
+index 64aff5d..bed5ede 100644
+--- a/nemesis/CMakeLists.txt
++++ b/nemesis/CMakeLists.txt
+@@ -19,7 +19,7 @@ find_path( NETCDF_INCLUDE_DIR netcdf.h
+ find_library( NETCDF_LIBRARY netcdf
+   $ENV{ACCESS}/lib/shared
+   $ENV{ACCESS}/lib
+-  $ENV{NETCDF_DIR}/lib
++  $ENV{NETCDF_DIR}/${CMAKE_INSTALL_LIBDIR}
+   $ENV{NETCDF_DIR}/libsrc/.libs
+   )
+ 
+@@ -29,16 +29,17 @@ find_program (NETCDF_NCDUMP ncdump
+    $ENV{NETCDF_DIR}/ncdump
+    )
+ 
+-find_library( EXODUS_LIBRARY exodus
++find_library( EXODUS_LIBRARY exoIIv2c
+   $ENV{ACCESS}/lib/shared
+   $ENV{ACCESS}/lib
++  $ENV{EXODUS_DIR}/${CMAKE_INSTALL_LIBDIR}
+   )
+ 
+ # Hack for HDF5
+ find_library( HDF5_LIBRARY hdf5
+   $ENV{ACCESS}/lib/shared
+   $ENV{ACCESS}/lib
+-  $ENV{NETCDF_DIR}/lib
++  $ENV{NETCDF_DIR}/${CMAKE_INSTALL_LIBDIR}
+   $ENV{NETCDF_DIR}/libsrc/.libs
+   /usr/local/hdf5/lib
+   )
+@@ -46,7 +47,7 @@ find_library( HDF5_LIBRARY hdf5
+ find_library( HDF5HL_LIBRARY hdf5_hl
+   $ENV{ACCESS}/lib/shared
+   $ENV{ACCESS}/lib
+-  $ENV{NETCDF_DIR}/lib
++  $ENV{NETCDF_DIR}/${CMAKE_INSTALL_LIBDIR}
+   $ENV{NETCDF_DIR}/libsrc/.libs
+   /usr/local/hdf5/lib
+   )
+@@ -79,8 +80,8 @@ ADD_EXECUTABLE(ne_test ne_ctest_wrap.c)
+ TARGET_LINK_LIBRARIES( ne_test nemesis ${EXODUS_LIBRARY} ${NETCDF_LIBRARY} ${HDF5HL_LIBRARY} ${HDF5_LIBRARY} ${Z_LIBRARY} ${MATH_LIBRARY})
+  
+ INSTALL(TARGETS nemesis
+-  RUNTIME DESTINATION lib COMPONENT Runtime
+-  LIBRARY DESTINATION lib COMPONENT Runtime
+-  ARCHIVE DESTINATION lib COMPONENT Development)
++  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development)
+ INSTALL(FILES ${HEADERS} DESTINATION include COMPONENT Development)
+ 

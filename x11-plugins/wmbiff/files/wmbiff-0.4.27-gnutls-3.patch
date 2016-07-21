@@ -1,0 +1,60 @@
+diff -Naur wmbiff-0.4.27.orig/wmbiff/gnutls-common.c wmbiff-0.4.27/wmbiff/gnutls-common.c
+--- wmbiff-0.4.27.orig/wmbiff/gnutls-common.c	2012-07-04 21:45:00.013010829 +0200
++++ wmbiff-0.4.27/wmbiff/gnutls-common.c	2012-07-04 21:48:39.306250592 +0200
+@@ -4,7 +4,6 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <gnutls/gnutls.h>
+-#include <gnutls/extra.h>
+ #include <gnutls/x509.h>
+ #include <gnutls/openpgp.h>
+ #include <time.h>
+@@ -335,8 +334,8 @@
+ void print_cert_vrfy(gnutls_session session)
+ {
+ 
+-	int status;
+-	status = gnutls_certificate_verify_peers(session);
++	int verify_ret, status;
++	verify_ret = gnutls_certificate_verify_peers2(session, &status);
+ 	printf("\n");
+ 
+ 	if (status == GNUTLS_E_NO_CERTIFICATE_FOUND) {
+@@ -509,7 +508,6 @@
+ 
+ 	printf("Compression methods:");
+ 	printf(" ZLIB");
+-	printf(", LZO");
+ 	printf(", NULL\n");
+ }
+ 
+@@ -637,8 +635,6 @@
+ 				comp_priority[j++] = GNUTLS_COMP_NULL;
+ 			if (strncasecmp(comp[i], "ZLI", 3) == 0)
+ 				comp_priority[j++] = GNUTLS_COMP_ZLIB;
+-			if (strncasecmp(comp[i], "LZO", 3) == 0)
+-				comp_priority[j++] = GNUTLS_COMP_LZO;
+ 		}
+ 		comp_priority[j] = 0;
+ 	}
+diff -Naur wmbiff-0.4.27.orig/wmbiff/tlsComm.c wmbiff-0.4.27/wmbiff/tlsComm.c
+--- wmbiff-0.4.27.orig/wmbiff/tlsComm.c	2012-07-04 21:45:00.013010829 +0200
++++ wmbiff-0.4.27/wmbiff/tlsComm.c	2012-07-04 21:50:27.897367863 +0200
+@@ -410,7 +410,7 @@
+ tls_check_certificate(struct connection_state *scs,
+ 					  const char *remote_hostname) 
+ {
+-	int certstat;
++	int verify_ret, certstat;
+ 	const gnutls_datum *cert_list;
+ 	int cert_list_size = 0;
+ 	gnutls_x509_crt cert;
+@@ -419,7 +419,7 @@
+ 		bad_certificate(scs, "Unable to get certificate from peer.\n");
+ 		return;	/* bad_cert will exit if -skip-certificate-check was not given */
+ 	}
+-	certstat = gnutls_certificate_verify_peers(scs->tls_state);
++	verify_ret = gnutls_certificate_verify_peers2(scs->tls_state, &certstat);
+ 	if (certstat == GNUTLS_E_NO_CERTIFICATE_FOUND) {
+ 		bad_certificate(scs, "server presented no certificate.\n");
+ #ifdef GNUTLS_CERT_CORRUPTED

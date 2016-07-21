@@ -1,0 +1,34 @@
+diff -Nru 3proxy-0.6.orig/Makefile.unix 3proxy-0.6/Makefile.unix
+--- 3proxy-0.6.orig/Makefile.unix	2007-04-10 16:29:25.000000000 +0000
++++ 3proxy-0.6/Makefile.unix	2009-03-24 19:13:09.000000000 +0000
+@@ -12,10 +12,10 @@
+ CC = gcc
+ 
+ # you may need -L/usr/pkg/lib for older NetBSD versions
+-CFLAGS = -Wall -g -O2 -c -pthread -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
++CFLAGS += -Wall -g -c -pthread -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
+ COUT = -o 
+ LN = gcc
+-LDFLAGS = -Wall -O2 -pthread
++LDFLAGS += -Wall -pthread
+ # -lpthreads may be reuqired on some platforms instead of -pthreads
+ # -ldl or -lld may be required for some platforms
+ DCFLAGS = -fpic
+@@ -55,4 +55,4 @@
+ 	fi
+ 
+ allplugins:
+-	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; make ;	cd ../.. ; done
++	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; $(MAKE) ;	cd ../.. ; done
+diff -Nru 3proxy-0.6.orig/src/stringtable.c 3proxy-0.6/src/stringtable.c
+--- 3proxy-0.6.orig/src/stringtable.c	2008-02-03 11:28:24.000000000 +0000
++++ 3proxy-0.6/src/stringtable.c	2009-03-24 19:12:44.000000000 +0000
+@@ -38,7 +38,7 @@
+ /* 24 */	NULL,
+ #ifndef TPROXY_CONF
+ #ifndef _WIN32
+-/* 25 */	(unsigned char *)"/usr/local/etc/3proxy/3proxy.cfg",
++/* 25 */	(unsigned char *)"/etc/3proxy.cfg",
+ #else
+ /* 25 */	(unsigned char *)"3proxy.cfg",
+ #endif

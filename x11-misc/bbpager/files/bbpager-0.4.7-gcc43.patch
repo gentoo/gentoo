@@ -1,0 +1,33 @@
+diff -urNad bbpager-0.4.7~/src/Baseresource.cxx bbpager-0.4.7/src/Baseresource.cxx
+--- bbpager-0.4.7~/src/Baseresource.cxx	2008-03-28 06:55:16.000000000 -0400
++++ bbpager-0.4.7/src/Baseresource.cxx	2008-04-09 21:58:03.000000000 -0400
+@@ -20,6 +20,7 @@
+ //
+ 
+ #include <string>
++#include <cstring>
+ #include "Baseresource.h"
+ #include <stdio.h>
+ #include "Menu.hh"
+diff -urNad bbpager-0.4.7~/src/main.cxx bbpager-0.4.7/src/main.cxx
+--- bbpager-0.4.7~/src/main.cxx	2008-03-28 06:55:16.000000000 -0400
++++ bbpager-0.4.7/src/main.cxx	2008-04-09 21:58:03.000000000 -0400
+@@ -25,6 +25,7 @@
+ 
+ #include <stdio.h>
+ #include <string>
++#include <cstring>
+ #include <iostream>
+ 
+ 
+diff -urNad bbpager-0.4.7~/src/resource.cxx bbpager-0.4.7/src/resource.cxx
+--- bbpager-0.4.7~/src/resource.cxx	2007-03-11 17:47:07.000000000 -0400
++++ bbpager-0.4.7/src/resource.cxx	2008-04-09 21:58:39.000000000 -0400
+@@ -19,6 +19,7 @@
+ // (See the included file COPYING / GPL-2.0)
+ //
+ 
++#include <cstring>
+ #include "resource.h"
+ #include "blackboxstyle.h"
+ 

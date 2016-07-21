@@ -1,0 +1,55 @@
+diff -up openexr_viewers-1.0.1/exrdisplay/applyCtl.h.gcc43 openexr_viewers-1.0.1/exrdisplay/applyCtl.h
+--- openexr_viewers-1.0.1/exrdisplay/applyCtl.h.gcc43	2006-12-09 01:14:07.000000000 +0100
++++ openexr_viewers-1.0.1/exrdisplay/applyCtl.h	2008-01-10 02:07:14.000000000 +0100
+@@ -49,6 +49,7 @@
+ #include <ImfArray.h>
+ #include <ImfHeader.h>
+ #include <vector>
++#include <cstdlib>
+ 
+ //
+ // Apply a series of CTL transforms to the raw pixel data from an image file
+diff -up openexr_viewers-1.0.1/configure.ac.gcc43 openexr_viewers-1.0.1/configure.ac
+--- openexr_viewers-1.0.1/configure.ac.gcc43	2007-10-10 00:20:51.000000000 +0200
++++ openexr_viewers-1.0.1/configure.ac	2008-01-10 02:07:14.000000000 +0100
+@@ -126,6 +126,7 @@ AM_COMPILELINKRUN(
+ #include <ImfFrameBuffer.h>
+ #include <ImathBox.h>
+ #include <vector>
++#include <cstdlib>
+     using namespace Ctl;
+     using namespace Imf;
+     using namespace Imath;
+diff -up openexr_viewers-1.0.1/configure.gcc43 openexr_viewers-1.0.1/configure
+--- openexr_viewers-1.0.1/configure.gcc43	2007-10-10 00:21:01.000000000 +0200
++++ openexr_viewers-1.0.1/configure	2008-01-10 02:07:14.000000000 +0100
+@@ -20869,6 +20869,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ #include <ImfFrameBuffer.h>
+ #include <ImathBox.h>
+ #include <vector>
++#include <cstdlib>
+     using namespace Ctl;
+     using namespace Imf;
+     using namespace Imath;
+diff -up openexr_viewers-1.0.1/playexr/ctlToLut.h.gcc43 openexr_viewers-1.0.1/playexr/ctlToLut.h
+--- openexr_viewers-1.0.1/playexr/ctlToLut.h.gcc43	2008-01-10 03:09:55.000000000 +0100
++++ openexr_viewers-1.0.1/playexr/ctlToLut.h	2008-01-10 03:11:18.000000000 +0100
+@@ -88,6 +88,7 @@
+ #include <string>
+ #include <vector>
+ #include <half.h>
++#include <cstdlib>
+ 
+ 
+ void
+diff -up openexr_viewers-1.0.1/playexr/main.cpp.gcc43 openexr_viewers-1.0.1/playexr/main.cpp
+--- openexr_viewers-1.0.1/playexr/main.cpp.gcc43	2008-01-10 03:05:03.000000000 +0100
++++ openexr_viewers-1.0.1/playexr/main.cpp	2008-01-10 03:05:48.000000000 +0100
+@@ -48,6 +48,7 @@
+ #include <vector>
+ #include <string>
+ #include <stdlib.h>
++#include <cstring>
+ 
+ using namespace std;
+ 

@@ -1,0 +1,20 @@
+diff -aruN akonadi-1.13.0.old/server/src/storage/dbconfigmysql.cpp akonadi-1.13.0/server/src/storage/dbconfigmysql.cpp
+--- akonadi-1.13.0.old/server/src/storage/dbconfigmysql.cpp	2014-08-10 06:38:58.000000000 -0400
++++ akonadi-1.13.0/server/src/storage/dbconfigmysql.cpp	2015-01-08 15:08:36.906134212 -0500
+@@ -76,6 +76,7 @@
+       << QLatin1String( "/usr/local/sbin" )
+       << QLatin1String( "/usr/local/libexec" )
+       << QLatin1String( "/usr/libexec" )
++      << QLatin1String( "/usr/share/mysql/scripts" )
+       << QLatin1String( "/opt/mysql/libexec" )
+       << QLatin1String( "/opt/local/lib/mysql5/bin" )
+       << QLatin1String( "/opt/mysql/sbin" );
+@@ -278,7 +279,7 @@
+   // first run, some MySQL versions need a mysql_install_db run for that
+   const QString confFile = XdgBaseDirs::findResourceFile( "config", QLatin1String( "akonadi/mysql-global.conf" ) );
+   if ( QDir( dataDir ).entryList( QDir::NoDotAndDotDot | QDir::AllEntries ).isEmpty() && !mMysqlInstallDbPath.isEmpty() ) {
+-    const QStringList arguments = QStringList() << QString::fromLatin1( "--force" ) << QString::fromLatin1( "--defaults-file=%1" ).arg( confFile ) << QString::fromLatin1( "--datadir=%1/" ).arg( dataDir );
++    const QStringList arguments = QStringList() << QString::fromLatin1( "--force" ) << QString::fromLatin1( "--defaults-file=%1" ).arg( confFile ) << QString::fromLatin1( "--datadir=%1/" ).arg( dataDir ) << QString::fromLatin1( "--basedir=/usr" ) ;
+     QProcess::execute( mMysqlInstallDbPath, arguments );
+   }
+ 

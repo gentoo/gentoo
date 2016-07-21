@@ -1,0 +1,18 @@
+--- libsidplay/unix/libsidplay2.pc.in
++++ libsidplay/unix/libsidplay2.pc.in
+@@ -7,5 +7,5 @@
+ Name: @PACKAGE@
+ Description: C64 cycle exact stereo sidplayer library.
+ Version: @VERSION@
+-Libs: ${libdir}/libsidplay2.la
++Libs: -lsidplay2
+ Cflags: -DHAVE_UNIX -I${includedir}
+--- libsidutils/unix/libsidutils.pc.in
++++ libsidutils/unix/libsidutils.pc.in
+@@ -6,5 +6,5 @@
+ Name: @PACKAGE@
+ Description: Utils for supporting the libsidplay2 library.
+ Version: @VERSION@
+-Libs: ${libdir}/libsidutils.la
++Libs: -lsidutils
+ Cflags: -DHAVE_UNIX -I${includedir}

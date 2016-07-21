@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+	Wireshark is the world's foremost network protocol analyzer, and is the de
+	facto (and often de jure) standard across many industries and educational
+	institutions. Wireshark has a rich feature set which includes 1) deep
+	inspection of hundreds of protocols, with more being added all the time, 2)
+	live capture and offline analysis, 3) standard three-pane packet browser, 4)
+	captured network data can be browsed via a GUI, or via the TTY-mode TShark
+	utility, 5) the most powerful display filters in the industry, 6) rich VoIP
+	analysis, 7) read/write many different capture file formats: tcpdump
+	(libpcap), Catapult DCT2000, Cisco Secure IDS iplog, Microsoft Network
+	Monitor, Network General Sniffer® (compressed and uncompressed), Sniffer®
+	Pro, and NetXray®, Network Instruments Observer, Novell LANalyzer, RADCOM
+	WAN/LAN Analyzer, Shomiti/Finisar Surveyor, Tektronix K12xx, Visual Networks
+	Visual UpTime, WildPackets EtherPeek/TokenPeek/AiroPeek, and many others, 8)
+	capture files compressed with gzip can be decompressed on the fly, 9) live
+	data can be read from Ethernet, IEEE 802.11, PPP/HDLC, ATM, Bluetooth, USB,
+	Token Ring, Frame Relay, FDDI, and others, 10) decryption support for many
+	protocols, including IPsec, ISAKMP, Kerberos, SNMPv3, SSL/TLS, WEP, and
+	WPA/WPA2, 11) coloring rules can be applied to the packet list for quick,
+	intuitive analysis, 12) output can be exported to XML, PostScript®, CSV, or
+	plain text 
+</longdescription>
+<use>
+<flag name="adns">Use the GNU <pkg>net-dns/c-ares</pkg> library to resolve DNS names</flag>
+<flag name="androiddump">Install androiddump</flag>
+<flag name="crypt">Use <pkg>dev-libs/libgcrypt</pkg> to decrypt traffic</flag>
+<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
+<flag name="gtk3">Build the wireshark executable with a GTK+ UI version 3.</flag>
+<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
+<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="qt4">Build the wireshark executable with an experimental Qt UI instead of GTK+.</flag>
+<flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
+<flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
+<flag name="tfshark">Install tfshark</flag>
+</use>
+</pkgmetadata>

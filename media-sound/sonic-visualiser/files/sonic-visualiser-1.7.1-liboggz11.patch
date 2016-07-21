@@ -1,0 +1,37 @@
+Index: sonic-visualiser-1.7.1/data/fileio/OggVorbisFileReader.cpp
+===================================================================
+--- sonic-visualiser-1.7.1.orig/data/fileio/OggVorbisFileReader.cpp
++++ sonic-visualiser-1.7.1/data/fileio/OggVorbisFileReader.cpp
+@@ -138,15 +138,15 @@ OggVorbisFileReader::DecodeThread::run()
+ } 
+ 
+ int
+-OggVorbisFileReader::readPacket(OGGZ *, ogg_packet *packet, long, void *data)
++OggVorbisFileReader::readPacket(OGGZ *, oggz_packet *packet, long, void *data)
+ {
+     OggVorbisFileReader *reader = (OggVorbisFileReader *)data;
+     FishSound *fs = reader->m_fishSound;
+ 
+-    fish_sound_prepare_truncation(fs, packet->granulepos, packet->e_o_s);
+-    fish_sound_decode(fs, packet->packet, packet->bytes);
++    fish_sound_prepare_truncation(fs, packet->op.granulepos, packet->op.e_o_s);
++    fish_sound_decode(fs, packet->op.packet, packet->op.bytes);
+ 
+-    reader->m_bytesRead += packet->bytes;
++    reader->m_bytesRead += packet->op.bytes;
+ 
+     // The number of bytes read by this function is smaller than
+     // the file size because of the packet headers
+Index: sonic-visualiser-1.7.1/data/fileio/OggVorbisFileReader.h
+===================================================================
+--- sonic-visualiser-1.7.1.orig/data/fileio/OggVorbisFileReader.h
++++ sonic-visualiser-1.7.1/data/fileio/OggVorbisFileReader.h
+@@ -82,7 +82,7 @@ protected:
+     bool m_cancelled;
+     int m_completion;
+  
+-    static int readPacket(OGGZ *, ogg_packet *, long, void *);
++    static int readPacket(OGGZ *, oggz_packet *, long, void *);
+     static int acceptFrames(FishSound *, float **, long, void *);
+ 
+     class DecodeThread : public Thread

@@ -1,0 +1,25 @@
+http://bugs.gentoo.org/454216
+
+Mon Jan  7 16:34:47 FET 2013  Judah Jacobson <judah.jacobson@gmail.com>
+  * Search for terminfo in libtinfo; fixes GHC #7281.
+  
+  Patch from Paul Johnson.
+diff -rN -u old-terminfo/configure.ac new-terminfo/configure.ac
+--- old-terminfo/configure.ac	2013-02-14 00:16:11.816111434 +0300
++++ new-terminfo/configure.ac	2013-02-14 00:16:11.819111434 +0300
+@@ -39,10 +39,11 @@
+     TERMINFO_INCLUDES="$CursesIncludes term.h"
+ fi
+ 
+-AC_CHECK_LIB(ncursesw, setupterm, HaveLibCurses=YES; LibCurses=ncursesw,
+-  [AC_CHECK_LIB(ncurses, setupterm, HaveLibCurses=YES; LibCurses=ncurses,
+-    [AC_CHECK_LIB(curses, setupterm, HaveLibCurses=YES; LibCurses=curses,
+-      HaveLibCurses=NO; LibCurses=not-installed)])])
++AC_CHECK_LIB(tinfo, setupterm, HaveLibCurses=YES; LibCurses=tinfo,
++  [AC_CHECK_LIB(ncursesw, setupterm, HaveLibCurses=YES; LibCurses=ncursesw,
++    [AC_CHECK_LIB(ncurses, setupterm, HaveLibCurses=YES; LibCurses=ncurses,
++      [AC_CHECK_LIB(curses, setupterm, HaveLibCurses=YES; LibCurses=curses,
++        HaveLibCurses=NO; LibCurses=not-installed)])])])
+ 
+ if test "x$HaveLibCurses" = "xNO" ; then
+     AC_MSG_FAILURE([curses library not found, so this package cannot be built])

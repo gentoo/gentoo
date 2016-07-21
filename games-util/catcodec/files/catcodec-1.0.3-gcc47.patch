@@ -1,0 +1,24 @@
+diff -ruN src/io.cpp.orig src/io.cpp
+--- src/io.cpp.orig     2012-05-19 20:48:05.930777509 +0200
++++ src/io.cpp  2012-05-19 20:49:04.303822711 +0200
+@@ -20,6 +20,8 @@
+ 
+ /** @file io.cpp Implementation of reading/writing to files */
+ 
++#include <unistd.h>
++
+ #include "stdafx.h"
+ #include "io.hpp"
+ 
+diff -ruN src/catcodec.cpp.orig src/catcodec.cpp
+--- src/catcodec.cpp.orig       2012-05-19 20:47:55.847255343 +0200
++++ src/catcodec.cpp    2012-05-19 20:48:38.937144091 +0200
+@@ -22,6 +22,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "stdafx.h"
+ #include "io.hpp"
+

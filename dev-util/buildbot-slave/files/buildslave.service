@@ -1,0 +1,15 @@
+[Unit]
+Description=buildbot slave instances
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+User=buildbot
+WorkingDirectory=/var/lib/buildslave
+# The following assume there is a 'slave' directory
+# in $WorkingDirectory with the slave configuration files
+ExecStart=/usr/bin/buildslave start slave
+ExecStop=/usr/bin/buildslave stop slave
+
+[Install]
+WantedBy=multi-user.target

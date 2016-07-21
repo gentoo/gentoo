@@ -1,0 +1,15 @@
+[Unit]
+Description=A minimalistic Mumble server
+After=network.target
+
+[Service]
+Type=simple
+User=murmur
+Group=murmur
+PIDFile=/run/umurmurd.pid
+ExecStartPre=/usr/bin/umurmurd -t -c /etc/umurmur/umurmur.conf
+ExecStart=/usr/bin/umurmurd -d -r -p /run/umurmurd.pid -c /etc/umurmur/umurmur.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

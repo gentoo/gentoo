@@ -1,0 +1,16 @@
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index d1318e7..ee184b5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,7 +40,7 @@ setup(name='cement',
+     author_email='team@datafolklabs.com',
+     url='http://builtoncement.org',
+     license='BSD',
+-    packages=find_packages(exclude=['ez_setup', 'tests*']),
++    packages=find_packages(exclude=['ez_setup', 'tests*', 'examples']),
+     include_package_data=True,
+     zip_safe=False,
+     test_suite='nose.collector',

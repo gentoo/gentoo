@@ -1,0 +1,51 @@
+--- a/profiles/audio/a2dp-codecs.h
++++ b/profiles/audio/a2dp-codecs.h
+@@ -149,6 +149,17 @@
+ 	uint16_t codec_id;
+ } __attribute__ ((packed)) a2dp_vendor_codec_t;
+ 
++typedef struct {
++	a2dp_vendor_codec_t info;
++	uint8_t channel_mode:4;
++	uint8_t frequency:4;
++} __attribute__ ((packed)) a2dp_aptx_t;
++
++typedef struct {
++	a2dp_vendor_codec_t info;
++	uint8_t unknown[2];
++} __attribute__ ((packed)) a2dp_ldac_t;
++
+ #if __BYTE_ORDER == __LITTLE_ENDIAN
+ 
+ typedef struct {
+@@ -183,17 +194,6 @@
+ 	uint8_t bitrate3;
+ } __attribute__ ((packed)) a2dp_aac_t;
+ 
+-typedef struct {
+-	a2dp_vendor_codec_t info;
+-	uint8_t channel_mode:4;
+-	uint8_t frequency:4;
+-} __attribute__ ((packed)) a2dp_aptx_t;
+-
+-typedef struct {
+-	a2dp_vendor_codec_t info;
+-	uint8_t unknown[2];
+-} __attribute__ ((packed)) a2dp_ldac_t;
+-
+ #elif __BYTE_ORDER == __BIG_ENDIAN
+ 
+ typedef struct {
+@@ -228,12 +228,6 @@
+ 	uint8_t bitrate3;
+ } __attribute__ ((packed)) a2dp_aac_t;
+ 
+-typedef struct {
+-	a2dp_vendor_codec_t info;
+-	uint8_t frequency:4;
+-	uint8_t channel_mode:4;
+-} __attribute__ ((packed)) a2dp_aptx_t;
+-
+ #else
+ #error "Unknown byte order"
+ #endif

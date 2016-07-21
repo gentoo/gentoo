@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">PPIx-Regexp</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Constant</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Dumper</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Element</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Lexer</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Node</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Node::Range</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Node::Unknown</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::StringTokenizer</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Assertion</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::BranchReset</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Capture</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::CharClass</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Code</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Main</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Modifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::NamedCapture</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Quantifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::RegexSet</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Regexp</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Replacement</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Subexpression</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Switch</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Structure::Unknown</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Support</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Assertion</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Backreference</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Backtrack</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::CharClass</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::CharClass::POSIX</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::CharClass::POSIX::Unknown</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::CharClass::Simple</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Code</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Comment</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Condition</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Control</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Delimiter</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Greediness</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::Assertion</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::BranchReset</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::Code</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::Modifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::NamedCapture</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::Subexpression</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::GroupType::Switch</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Interpolation</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Literal</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Modifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::NoOp</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Operator</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Quantifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Recursion</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Reference</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Structure</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Unknown</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Unmatched</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::Whitespace</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Tokenizer</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Util</remote-id>
+  </upstream>
+</pkgmetadata>

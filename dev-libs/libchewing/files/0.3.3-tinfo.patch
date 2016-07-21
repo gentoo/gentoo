@@ -1,0 +1,43 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -91,38 +91,8 @@
+ AM_CONDITIONAL(ENABLE_UNIT_TEST, test x$enable_check = "xyes")
+ 
+ # Checks for ncursesw
+-OLDCFLAGS=$CFLAGS
+-LIB_NAME=ncursesw
+-NCURSESW_CFLAGS=
+-NCURSESW_LIBS=
+-for p in "$HOME/include" "$prefix/include" /usr/local/include /usr/include
+-do
+-	if test -f "$p/ncursesw/ncurses.h"
+-	then
+-		NCURSESW_CFLAGS="-I$p"
+-		AC_DEFINE(HAVE_NCURSESW_NCURSES_H, 1, [ Define to 1 if you have the <ncursesw/ncurses.h> header file. ])
+-		break
+-	elif test -f "$p/ncurses/ncurses.h"
+-	then
+-		NCURSESW_CFLAGS="-I$p"
+-		AC_DEFINE(HAVE_NCURSES_NCURSES_H, 1, [ Define to 1 if you have the <ncurses/ncurses.h> header file. ])
+-		break
+-	fi
+-done
+-
+-for p in "$HOME/lib" "$prefix/lib" /usr/local/lib /usr/lib
+-do
+-	if test -f "$p/libncursesw.so"
+-	then
+-		if test "$p" != x/usr/lib
+-		then
+-			NCURSESW_LIBS="-L$p -lncursesw"
+-		else
+-			NCURSESW_LIBS="-lncursesw"
+-		fi
+-		break
+-	fi
+-done
++PKG_CHECK_MODULES(NCURSESW,ncursesw,
++	AC_DEFINE(HAVE_NCURSESW_NCURSES_H, 1, [ Define to 1 if you have the <ncursesw/ncurses.h> header file. ]),)
+ 
+ enable_ncursesw=yes
+ if test -z "$NCURSESW_CFLAGS"; then

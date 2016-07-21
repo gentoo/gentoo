@@ -1,0 +1,43 @@
+diff -urN meshlab-1.3.2-r1.old/meshlab/src/meshlabplugins/io_tri/io_tri.cpp meshlab-1.3.2-r1/meshlab/src/meshlabplugins/io_tri/io_tri.cpp
+--- meshlab-1.3.2-r1.old/meshlab/src/meshlabplugins/io_tri/io_tri.cpp	2014-08-11 18:01:55.329182160 +0200
++++ meshlab-1.3.2-r1/meshlab/src/meshlabplugins/io_tri/io_tri.cpp	2014-08-11 15:11:20.000000000 +0200
+@@ -149,9 +149,11 @@
+     fread(&numFaces,sizeof(int),1,fp);
+   }
+   // advance pointer ??
+-  char s[4];
++  
++  char s[5];
+   fread(s,sizeof(char),4,fp);
+-	printf("extara is %s (%d)\n", s, *(int*)(&s[0]));
++  s[4]=0;
++  printf("extara is %s (%d)\n", s, ((unsigned)s[0])|(((unsigned)s[1])<<8)|(((unsigned)s[2])<<16)|(((unsigned)s[3])<<24));
+   return 0;
+ }
+ 
+@@ -284,7 +286,7 @@
+ 			bool floatFlag=false;
+ 			
+ 			int ret=fread(texCode,sizeof(char),4,fp);
+-			qDebug("TexString code is '%s' (int:%d) (float:%f)\n", texCode, *(int*)(&texCode[0]),  *(float*)(&texCode[0]));
++			//qDebug("TexString code is '%s' (int:%d) (float:%f)\n", texCode, *(int*)((void*)(&texCode[0])),  *(float*)((void*)(&texCode[0])));
+ 
+ 			if(feof(fp)){
+ 					qDebug("Premature end of file");
+diff -urN meshlab-1.3.2-r1.old/vcglib/vcg/complex/algorithms/clustering.h meshlab-1.3.2-r1/vcglib/vcg/complex/algorithms/clustering.h
+--- meshlab-1.3.2-r1.old/vcglib/vcg/complex/algorithms/clustering.h	2014-08-11 18:01:55.366182161 +0200
++++ meshlab-1.3.2-r1/vcglib/vcg/complex/algorithms/clustering.h	2014-08-11 14:36:38.000000000 +0200
+@@ -233,12 +233,12 @@
+   // DuplicateFace=false a model with looks ok if you enable doublesided lighting and disable backfaceculling
+ 
+   bool DuplicateFaceParam;
+-
+   // This class keeps the references to the three cells where a face has its vertexes.
+ 	class SimpleTri
+   {
+   public:
+     CellType *v[3];
++#pragma GCC diagnostic ignored "-Wstrict-aliasing"
+     int ii(int i) const {return *((int *)(&(v[i])));}
+     bool operator < ( const SimpleTri &p) const {
+       return	(v[2]!=p.v[2])?(v[2]<p.v[2]):

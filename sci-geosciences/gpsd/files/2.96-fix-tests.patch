@@ -1,0 +1,23 @@
+diff -urN gpsd-2.96.old//Makefile.am gpsd-2.96//Makefile.am
+--- gpsd-2.96.old//Makefile.am	2011-05-16 11:41:11.763256750 +0200
++++ gpsd-2.96//Makefile.am	2011-05-16 12:37:34.095971771 +0200
+@@ -615,8 +615,8 @@
+ pkgconfigdir = $(libdir)/pkgconfig
+ 
+ # These are not distributed
+-libgps: libgps_core.c gps.h .libs/libgps.a
+-	$(CC) $(CFLAGS) -o libgps $(LIBM) -DTESTMAIN $(LIBPTHREAD) -g libgps_core.c .libs/libgps.a
++libgps: libgps_core.c gps.h .libs/libgps.so
++	$(CC) $(CFLAGS) $(LDFLAGS) -o libgps $(LIBM) -DTESTMAIN $(LIBPTHREAD) -g libgps_core.c .libs/libgps.so
+ 
+ 
+ # Report splint warnings
+@@ -720,7 +720,7 @@
+ 
+ # Use make REGRESSOPTS=-u to force running with UDP rather than pty devices
+ 
+-run_regress_driver = PYTHON=$(PYTHON) $(srcdir)/regress-driver $(REGRESSOPTS)
++run_regress_driver = PYTHON=$(PYTHON) LD_LIBRARY_PATH="./.libs/" $(srcdir)/regress-driver $(REGRESSOPTS)
+ 
+ # Regression-test the daemon
+ gps-regress: gpsd stamp-python

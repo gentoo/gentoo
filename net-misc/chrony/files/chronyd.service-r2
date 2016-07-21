@@ -1,0 +1,12 @@
+[Unit]
+Description=Chrony Network Time Service
+After=ntpdate.service sntp.service network.target
+Conflicts=ntpd.service systemd-timesyncd.service
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/chronyd
+PIDFile=/run/chronyd.pid
+
+[Install]
+WantedBy=multi-user.target

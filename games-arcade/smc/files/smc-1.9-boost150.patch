@@ -1,0 +1,101 @@
+--- src/overworld/world_manager.cpp.old	2012-11-14 17:05:19.759087973 +0100
++++ src/overworld/world_manager.cpp	2012-11-14 17:06:55.365644219 +0100
+@@ -111,14 +111,14 @@
+ void cOverworld_Manager :: Load_Dir( const std::string &dir, bool user_dir /* = 0 */ ) 
+ {
+ 	// set world directory
+-	fs::path full_path( dir, fs::native );
++	fs::path full_path( dir );
+ 	fs::directory_iterator end_iter;
+ 
+ 	for( fs::directory_iterator dir_itr( full_path ); dir_itr != end_iter; ++dir_itr )
+ 	{
+ 		try
+ 		{
+-			std::string current_dir = dir_itr->path().leaf();
++			std::string current_dir = dir_itr->path().filename().string();
+ 
+ 			// only directories with an existing description
+ 			if( fs::is_directory( *dir_itr ) && File_Exists( dir + "/" + current_dir + "/description.xml" ) )
+--- src/video/video.cpp.old	2012-11-14 17:10:26.448625365 +0100
++++ src/video/video.cpp	2012-11-14 17:11:37.486580531 +0100
+@@ -749,7 +749,7 @@
+ 		{
+ 			try
+ 			{
+-				fs::remove_all( fs::path( m_imgcache_dir, fs::native ) );
++				fs::remove_all( fs::path( m_imgcache_dir ) );
+ 			}
+ 			// could happen if a file is locked or we have no write rights
+ 			catch( const std::exception &ex )
+@@ -771,7 +771,7 @@
+ 	// no cache available
+ 	if( !Dir_Exists( imgcache_dir_active ) )
+ 	{
+-		fs::create_directories( fs::path( imgcache_dir_active + "/" GAME_PIXMAPS_DIR, fs::native ) );
++		fs::create_directories( fs::path( imgcache_dir_active + "/" GAME_PIXMAPS_DIR ) );
+ 	}
+ 	// cache available
+ 	else
+--- src/core/filesystem/filesystem.cpp.old	2012-11-14 09:00:41.965617165 +0100
++++ src/core/filesystem/filesystem.cpp	2012-11-14 16:57:11.282043980 +0100
+@@ -64,7 +64,7 @@
+ 
+ bool Dir_Exists( const std::string &dir )
+ {
+-	return fs::exists( fs::path( dir, fs::native ) );
++	return fs::exists( fs::path( dir ) );
+ 
+ 	/*struct stat file_info;
+ 
+@@ -89,7 +89,7 @@
+ 
+ bool Create_Directory( const std::string &dir )
+ {
+-	return fs::create_directory( fs::path( dir, fs::native ) );
++	return fs::create_directory( fs::path( dir ) );
+ }
+ 
+ size_t Get_File_Size( const std::string &filename )
+@@ -130,7 +130,7 @@
+ {
+ 	vector<std::string> valid_files;
+ 
+-	fs::path full_path( dir, fs::native );
++	fs::path full_path( dir );
+ 	fs::directory_iterator end_iter;
+ 
+ 	// load all available objects
+@@ -142,27 +142,27 @@
+ 			if( fs::is_directory( *dir_itr ) )
+ 			{
+ 				// ignore hidden directories
+-				if( dir_itr->path().leaf().find( "." ) == 0 )
++				if( dir_itr->path().filename().string().find( "." ) == 0 )
+ 				{
+ 					continue;
+ 				}
+ 
+ 				if( with_directories )
+ 				{
+-					valid_files.push_back( dir + "/" + dir_itr->path().leaf() );
++					valid_files.push_back( dir + "/" + dir_itr->path().filename().string() );
+ 				}
+ 
+ 				// load all items from the sub-directory
+ 				if( search_in_sub_directories )
+ 				{
+-					vector<std::string> new_valid_files = Get_Directory_Files( dir + "/" + dir_itr->path().leaf(), file_type, with_directories );
++					vector<std::string> new_valid_files = Get_Directory_Files( dir + "/" + dir_itr->path().filename().string(), file_type, with_directories );
+ 					valid_files.insert( valid_files.end(), new_valid_files.begin(), new_valid_files.end() );
+ 				}
+ 			}
+ 			// valid file
+-			else if( file_type.empty() || dir_itr->path().leaf().rfind( file_type ) != std::string::npos )
++			else if( file_type.empty() || dir_itr->path().filename().string().rfind( file_type ) != std::string::npos )
+ 			{
+-				valid_files.push_back( dir + "/" + dir_itr->path().leaf() );
++				valid_files.push_back( dir + "/" + dir_itr->path().filename().string() );
+ 			}
+ 		}
+ 		catch( const std::exception &ex )

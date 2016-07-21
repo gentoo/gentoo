@@ -1,0 +1,33 @@
+--- etc/rancid.conf.sample.in
++++ etc/rancid.conf.sample.in
+@@ -42,7 +42,10 @@
+ RCSSYS=@RCSSYS@; export RCSSYS
+ #
+ # if ACLSORT is NO, access-lists will NOT be sorted.
+-#ACLSORT=YES; export ACLSORT
++#
++#Gentoo - changing default to NO because access-list order matters in most instances
++#and many people expect to use rancid as a backup system
++ACLSORT=NO; export ACLSORT
+ #
+ # if NOPIPE is set, temp files will be used instead of a cmd pipe during
+ # collection from the router(s).
+@@ -50,10 +53,16 @@
+ #
+ # FILTER_PWDS determines which passwords are filtered from configs by the
+ # value set (NO | YES | ALL).  see rancid.conf(5).
+-#FILTER_PWDS=YES; export FILTER_PWDS
++#
++#Gentoo - changing default to ALL; diffs are emailed and even the most secure
++#password hashes on most routers are easily brute-forceable with modern systems
++FILTER_PWDS=ALL; export FILTER_PWDS
+ #
+ # if NOCOMMSTR is set, snmp community strings will be stripped from the configs
+-#NOCOMMSTR=YES; export NOCOMMSTR
++#
++#Gentoo - changing default to YES; diffs are emailed and SNMP communities
++#can be just as dangerous as passwords
++NOCOMMSTR=YES; export NOCOMMSTR
+ #
+ # How many times failed collections are retried (for each run) before
+ # giving up.  Minimum: 1

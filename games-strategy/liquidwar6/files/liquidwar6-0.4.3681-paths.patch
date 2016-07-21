@@ -1,0 +1,27 @@
+commit b121fe3d9fb7e5fc52f592482e02b6a28430435f
+Author: hasufell <hasufell@gentoo.org>
+Date:   Wed Jan 8 17:23:56 2014 +0100
+
+    respect datarootdir
+
+--- a/data/icon/Makefile.am
++++ b/data/icon/Makefile.am
+@@ -19,6 +19,6 @@
+ # Contact author        : ufoot@ufoot.org
+ 
+ pkgdata_DATA = liquidwar6.png liquidwar6.xpm
+-pkgdatadir = $(datadir)/pixmaps
++pkgdatadir = $(datarootdir)/pixmaps
+ EXTRA_DIST = $(pkgdata_DATA) liquidwar6.ico liquidwar6.icns
+ 
+--- a/pkg/Makefile.am
++++ b/pkg/Makefile.am
+@@ -19,7 +19,7 @@
+ # Contact author        : ufoot@ufoot.org
+ 
+ pkgdata_DATA = liquidwar6.desktop
+-pkgdatadir = $(datadir)/applications
++pkgdatadir = $(datarootdir)/applications
+ EXTRA_DIST =  $(pkgdata_DATA) liquidwar6.spec liquidwar6d 406FFCAB.gnupg.txt FD409E94.gnupg.txt
+ 
+ distclean-local:

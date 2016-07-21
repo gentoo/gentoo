@@ -1,0 +1,37 @@
+--- src/png.c
++++ src/png.c
+@@ -102,8 +102,8 @@
+ 		0x00,
+ 		NULL);
+ 
+-   alpha = (info_ptr->channels == 4 || info_ptr->channels == 2) ? 1: 0;
+-   image = stimg_new(info_ptr->width, info_ptr->height, alpha);
++   alpha = (png_get_channels(png_ptr, info_ptr) == 4 || png_get_channels(png_ptr, info_ptr) == 2) ? 1: 0;
++   image = stimg_new(png_get_image_width(png_ptr, info_ptr), png_get_image_height(png_ptr, info_ptr), alpha);
+ 
+    if (image == NULL) {
+       png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
+@@ -112,18 +112,18 @@
+    }     
+ 
+    row_pointers = png_get_rows(png_ptr, info_ptr);
+-   row_size = info_ptr->width * (3 + alpha);
++   row_size = png_get_image_width(png_ptr, info_ptr) * (3 + alpha);
+    data = stimg_get_data(image);
+-   if (info_ptr->channels > 2) {
+-     for (i = 0; i < info_ptr->height; i++) {
++   if (png_get_channels(png_ptr, info_ptr) > 2) {
++     for (i = 0; i < png_get_image_height(png_ptr, info_ptr); i++) {
+        memcpy(data + row_size * i, row_pointers[i], row_size);
+      }
+    } else {
+      unsigned char *buf = data;
+      int x;
+-     for (i = 0; i < info_ptr->height; i++) {
++     for (i = 0; i < png_get_image_height(png_ptr, info_ptr); i++) {
+        x = 0;
+-       for (j = 0; j < info_ptr->width; j++) {
++       for (j = 0; j < png_get_image_width(png_ptr, info_ptr); j++) {
+ 	 buf[0] = buf[1] = buf[2] = row_pointers[i][x];
+ 	 if (alpha) {
+ 	   buf[3] = row_pointers[i][++x];

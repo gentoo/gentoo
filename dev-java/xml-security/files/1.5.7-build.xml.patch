@@ -1,0 +1,38 @@
+diff --git a/xml-security-1_5_5/build.xml b/xml-security-1_5_5/build.xml
+index d959d67..d91f98e 100644
+--- a/xml-security-1_5_5/build.xml
++++ b/xml-security-1_5_5/build.xml
+@@ -668,7 +668,7 @@
+     </target>
+ 
+     <target name="build.jar"
+-	    depends="manifest,build.src,build.test,build.samples">
++	    depends="manifest,build.src">
+ 
+ 	<!-- Main Library -->
+ 	<jar basedir="${dir.build.bin}"
+@@ -678,24 +678,6 @@
+ 	     manifest="${jar.manifest}">
+ 	  <metainf file="${dir.manifest}/*.txt"/>
+ 	</jar>
+-
+-	<!-- Samples -->
+-	<jar basedir="${dir.build.samples}" 
+-	     excludes="org/apache/xml/security/temp/**" 
+-	     includes="org/apache/**, javax/xml/crypto/**"
+-	     destfile="${jar.samples}" 
+-	     manifest="${jar.manifest}">
+-	  <metainf file="${dir.manifest}/*.txt"/>
+-	</jar>
+-		
+-	<!-- Tests -->
+-	<jar basedir="${dir.build.test}" 
+-	     excludes="org/apache/xml/security/temp/**" 
+-	     includes="org/apache/**, javax/xml/crypto/**"
+-	     destfile="${jar.tests}" 
+-	     manifest="${jar.manifest}">
+-	  <metainf file="${dir.manifest}/*.txt"/>
+-	</jar>
+     </target>
+ 
+     <target name="build.src.jar"

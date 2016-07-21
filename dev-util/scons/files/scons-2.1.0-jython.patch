@@ -1,0 +1,13 @@
+http://scons.tigris.org/issues/show_bug.cgi?id=2791
+
+--- setup.py
++++ setup.py
+@@ -325,7 +325,7 @@
+                 self.copy_scons(src, scons_version_bat)
+ 
+         # --- distutils copy/paste ---
+-        if os.name == 'posix':
++        if hasattr(os, 'chmod'):
+             # Set the executable bits (owner, group, and world) on
+             # all the scripts we just installed.
+             for file in self.get_outputs():

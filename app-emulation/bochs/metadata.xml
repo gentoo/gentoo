@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="3dnow">Enable support for emulating 3DNow! instructions (incomplete)</flag>
+		<flag name="avx">Enable support for emulating Advanced Vector Extensions (AVX)</flag>
+		<flag name="debugger">Enable debugger (slows down emulation)</flag>
+		<flag name="gdb">Enable support for the remote GDB stub</flag>
+		<flag name="x86-64">Enable support for emulation of 64-bit CPUs</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">bochs</remote-id>
+	</upstream>
+</pkgmetadata>

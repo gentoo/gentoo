@@ -1,0 +1,13 @@
+http://lists.gnu.org/archive/html/bug-bash/2014-11/msg00097.html
+
+--- bash-4.3/builtins/mapfile.def
++++ bash-4.3/builtins/mapfile.def
+@@ -339,7 +339,7 @@
+   else
+     array_name = list->word->word;
+   
+-  if (legal_identifier (array_name) == 0 && valid_array_reference (array_name) == 0)
++  if (legal_identifier (array_name) == 0)
+     {
+       sh_invalidid (array_name);
+       return (EXECUTION_FAILURE);

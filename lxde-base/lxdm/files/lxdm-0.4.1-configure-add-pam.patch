@@ -1,0 +1,45 @@
+From 949ee91acb55baeb4b8761957eabd2e5a345d2ae Mon Sep 17 00:00:00 2001
+From: Mitch Harder <mitch.harder@sabayonlinux.org>
+Date: Thu, 8 Dec 2011 11:02:28 -0600
+Subject: Fix configure.ac test for pam libs.
+
+A bug report on Gentoo noted that the configure test for pam
+wasn't working correctly.
+https://bugs.gentoo.org/show_bug.cgi?id=384615
+
+This corrections borrows the configure.ac pam testing method used in xdm.
+---
+ configure.ac |   13 +++++++++++--
+ 1 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e952473..eaa883a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,12 +14,21 @@ AC_PROG_INSTALL
+ AM_PROG_CC_C_O
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([crypt], [crypt])
+ 
+-AC_ARG_WITH(pam,AC_HELP_STRING([--without-pam],[build without pam]),
+-[],[AC_CHECK_LIB([pam], [pam_open_session])])
++# Check for PAM support
++AC_ARG_WITH(pam, AC_HELP_STRING([--with-pam],[Use PAM for authentication]),
++	[USE_PAM=$withval], [USE_PAM=$use_pam_default])
++if test "x$USE_PAM" != "xno" ; then
++	AC_SEARCH_LIBS(pam_open_session,[pam])
++	AC_CHECK_FUNC(pam_open_session, 
++		[AC_DEFINE(USE_PAM,1,[Use PAM for authentication])],
++		[if test "x$USE_PAM" != "xtry" ; then
++			AC_MSG_ERROR(["PAM support requested, but pam_open_session not found."])
++		 fi])
++fi
+ 
+ AC_CHECK_LIB([ck-connector],[ck_connector_open_session])
+ 
+ # Checks for header files.
+ AC_PATH_X
+-- 
+1.7.3.4
+

@@ -1,0 +1,13 @@
+--- openglad-0.98.orig/util/gladpack.c	2002-09-14 18:37:50.000000000 +1000
++++ openglad-0.98/util/gladpack.c	2003-12-06 12:42:31.393812945 +1100
+@@ -9,8 +9,8 @@
+ 
+ int main(int argc, char **argv)
+ {
+-	if (argc > 1 && !strcmp(argv[1], "p")) pack(argc, argv);
+-	else if (argc > 1 && !strcmp(argv[1], "u")) unpack(argc, argv);
++	if (argc > 1 && !strcmp(argv[1], "p")) return pack(argc, argv);
++	else if (argc > 1 && !strcmp(argv[1], "u")) return unpack(argc, argv);
+ 	else
+ 	{
+ 		printf("Usage: gladpack (p|u) ...\n");

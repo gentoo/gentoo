@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Certificates and Key reader/writer
+		
+		At the moment only X509 certificate and unencrypted private key are supported,
+		but will include PGP certificate and pkcs8 private keys
+	</longdescription>
+	<use>
+		<flag name="executable">Build the executable</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vincenthz/hs-certificate</remote-id>
+	</upstream>
+</pkgmetadata>

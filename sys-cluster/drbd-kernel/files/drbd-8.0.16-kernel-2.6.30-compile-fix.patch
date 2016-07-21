@@ -1,0 +1,12 @@
+--- drbd-8.0.16/drbd/drbd_main.c.orig	2009-08-04 17:55:52.000000000 +0300
++++ drbd-8.0.16/drbd/drbd_main.c	2009-08-04 17:56:35.000000000 +0300
+@@ -2770,7 +2770,9 @@
+ 	}
+ 
+ 	drbd_proc->proc_fops = &drbd_proc_fops;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,30)
+ 	drbd_proc->owner = THIS_MODULE;
++#endif
+ #else
+ # error "Currently drbd depends on the proc file system (CONFIG_PROC_FS)"
+ #endif

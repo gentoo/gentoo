@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <use>
+    <flag name="chardet">Try to handle non-UTF8 chinese/japanese/korean ID3 tags</flag>
+	<flag name="gtk3">Link against version 3 of the GIMP Toolkit instead of version 2 (x11-libs/gtk+)</flag>
+  </use>
+</pkgmetadata>

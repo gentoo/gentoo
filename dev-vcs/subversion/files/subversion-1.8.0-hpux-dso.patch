@@ -1,0 +1,16 @@
+--- subversion-1.8.0/subversion/libsvn_ra/ra_loader.c
++++ subversion-1.8.0/subversion/libsvn_ra/ra_loader.c
+@@ -141,8 +141,13 @@
+     const char *compat_funcname;
+     apr_status_t status;
+ 
++#if defined(__hpux) && defined(__hppa)
++    libname = apr_psprintf(pool, "libsvn_ra_%s-%d.sl.%d",
++			   ra_name, SVN_VER_MAJOR, SVN_SOVERSION);
++#else
+     libname = apr_psprintf(pool, "libsvn_ra_%s-%d.so.%d",
+                            ra_name, SVN_VER_MAJOR, SVN_SOVERSION);
++#endif
+     funcname = apr_psprintf(pool, "svn_ra_%s__init", ra_name);
+     compat_funcname = apr_psprintf(pool, "svn_ra_%s_init", ra_name);
+ 

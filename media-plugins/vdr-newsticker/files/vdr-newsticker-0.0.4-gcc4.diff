@@ -1,0 +1,51 @@
+Nur in newsticker-0.0.4: libvdr-newsticker.so.
+Nur in newsticker-0.0.4: libvdr-newsticker.so.1.4.1.
+diff -ru newsticker-0.0.4-orig/news.c newsticker-0.0.4/news.c
+--- newsticker-0.0.4-orig/news.c	2006-07-08 20:51:58.078637544 +0200
++++ newsticker-0.0.4/news.c	2006-07-08 20:53:29.315335150 +0200
+@@ -48,7 +48,7 @@
+ bool strloadfile(char* file,char* output)
+ {
+ 	//int count = 0;
+-	ifstream fin(file);
++	std::ifstream fin(file);
+ 	if(fin)
+ 	{
+ 		char ch;
+@@ -73,7 +73,7 @@
+ int getfilestringlength(char* filename)
+ {
+ 	int count = 0;
+-	ifstream fin(filename);
++	std::ifstream fin(filename);
+ 	if(fin)
+ 	{
+ 		char ch;
+diff -ru newsticker-0.0.4-orig/news.h newsticker-0.0.4/news.h
+--- newsticker-0.0.4-orig/news.h	2006-07-08 20:51:58.078637544 +0200
++++ newsticker-0.0.4/news.h	2006-07-08 20:52:51.039686999 +0200
+@@ -20,8 +20,8 @@
+ #include <netinet/in.h>
+ #include <netdb.h>
+ #include <unistd.h>
+-#include <iostream.h>
+-#include <fstream.h>
++#include <iostream>
++#include <fstream>
+ 
+ #define INT_SIZEOFBUF 300 * 1024 // Buffer 200Kb 
+ 
+Dateien newsticker-0.0.4-orig/news.o und newsticker-0.0.4/news.o sind verschieden.
+diff -ru newsticker-0.0.4-orig/newsticker.c newsticker-0.0.4/newsticker.c
+--- newsticker-0.0.4-orig/newsticker.c	2006-07-08 20:51:58.078637544 +0200
++++ newsticker-0.0.4/newsticker.c	2006-07-08 20:53:02.660794735 +0200
+@@ -98,7 +98,7 @@
+   void Show(void) {Start(); }
+   eOSState ProcessKey(eKeys Key);
+   int scrollMessage(char* message, int speed, int position, cOsd *osd, tColor ColorFg, tColor ColorBg, eDvbFont font);
+-  cOsd* cOSDNewsticker::createOSDLine(int row, eDvbFont font);
++  cOsd* createOSDLine(int row, eDvbFont font);
+   };
+ 
+ cOSDNewsticker::cOSDNewsticker(void)
+Nur in newsticker-0.0.4: newsticker.o.

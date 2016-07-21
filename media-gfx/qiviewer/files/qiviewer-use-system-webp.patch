@@ -1,0 +1,41 @@
+--- qiviewer.pro.orig	2012-08-27 15:29:24.435612352 +0400
++++ qiviewer.pro	2012-08-27 15:30:12.286611983 +0400
+@@ -58,24 +58,9 @@
+     message(This feature isn't ready yet, use it carefully!)
+     # rules to execute when myfeature IS defined:
+     DEFINES += WEBP_SUPPORT
+-    INCLUDEPATH += . ./3rdparty/webp
+-    HEADERS += webpdecoder.h \
+-               3rdparty/webp/dec/bits.h \
+-               3rdparty/webp/dec/vp8i.h \
+-               3rdparty/webp/dec/yuv.h \
+-               3rdparty/webp/webp/decode.h \
+-               3rdparty/webp/webp/decode_vp8.h \
+-               3rdparty/webp/webp/encode.h \
+-               3rdparty/webp/webp/types.h
+-    SOURCES += webpdecoder.cpp \
+-               3rdparty/webp/dec/bits.c \
+-               3rdparty/webp/dec/dsp.c \
+-               3rdparty/webp/dec/frame.c \
+-               3rdparty/webp/dec/quant.c \
+-               3rdparty/webp/dec/tree.c \
+-               3rdparty/webp/dec/vp8.c \
+-               3rdparty/webp/dec/webp.c \
+-               3rdparty/webp/dec/yuv.c
++    HEADERS += webpdecoder.h
++    SOURCES += webpdecoder.cpp
++    LIBS += -lwebp
+ }
+ 
+ # Tell Qt Linguist that we use UTF-8 strings in our sources
+--- webpdecoder.cpp.orig	2012-08-27 15:29:30.110612309 +0400
++++ webpdecoder.cpp	2012-08-27 15:29:49.919612154 +0400
+@@ -2,7 +2,7 @@
+ #include <QPainter>
+ #include <QPixmap>
+ #include "webpdecoder.h"
+-#include "3rdparty/webp/webp/decode.h"
++#include <webp/decode.h>
+ 
+ WebpDecoder::WebpDecoder(QWidget *parent) : QWidget(parent)
+ {

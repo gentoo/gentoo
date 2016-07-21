@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>
+		The vconfig program allows you to create and remove vlan-devices on a
+		vlan enabled kernel. Vlan-devices are virtual ethernet devices which
+		represents the virtual lans on the physical lan.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library provides an abstraction of buffered output of
+		byte streams and several convenience functions to exploit
+		it. For example, it allows to efficiently serialize
+		Haskell values to lazy bytestrings with a large average
+		chunk size. The large average chunk size allows to make
+		good use of cache prefetching in later processing steps
+		(e.g. compression) and reduces the sytem call overhead
+		when writing the resulting lazy bytestring to a file or
+		sending it over the network.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">meiersi/blaze-builder</remote-id>
+	</upstream>
+</pkgmetadata>

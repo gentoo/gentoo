@@ -1,0 +1,11 @@
+--- ConfigureChecks.cmake.orig	2013-10-07 10:50:00.000000000 +0400
++++ ConfigureChecks.cmake	2015-03-31 13:42:40.179527224 +0300
+@@ -53,7 +53,7 @@
+ if(VIGRA_FOUND AND NOT VIGRA_VERSION_CHECK)
+   unset(VIGRA_SETIMAGEINDEX CACHE)
+   set(CMAKE_REQUIRED_INCLUDES ${VIGRA_INCLUDE_DIR})
+-  set(CMAKE_REQUIRED_LIBRARIES ${VIGRA_LIBRARIES})
++  set(CMAKE_REQUIRED_LIBRARIES ${VIGRA_LIBRARIES} -lpthread)
+   check_cxx_source_compiles(
+   "
+   #include <vigra/imageinfo.hxx>

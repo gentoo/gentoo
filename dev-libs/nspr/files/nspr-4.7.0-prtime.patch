@@ -1,0 +1,26 @@
+--- mozilla/nsprpub/pr/src/misc/prtime.c.orig	2007-09-14 19:41:08.000000000 +0200
++++ mozilla/nsprpub/pr/src/misc/prtime.c	2007-09-14 19:42:17.000000000 +0200
+@@ -1536,7 +1536,7 @@
+                 case TT_EET: zone_offset =  2 * 60; break;
+                 case TT_JST: zone_offset =  9 * 60; break;
+                 default:
+-                  PR_ASSERT (0);
++                  return PR_FAILURE;
+                   break;
+                 }
+         }
+@@ -1578,11 +1578,12 @@
+           struct tm localTime;
+           time_t secs;
+ 
+-          PR_ASSERT(result->tm_month > -1 &&
++          if (!(result->tm_month > -1 &&
+                     result->tm_mday > 0 &&
+                     result->tm_hour > -1 &&
+                     result->tm_min > -1 &&
+-                    result->tm_sec > -1);
++                    result->tm_sec > -1))
++		    return PR_FAILURE;
+ 
+             /*
+              * To obtain time_t from a tm structure representing the local

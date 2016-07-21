@@ -1,0 +1,12 @@
+diff -r e10ae0e7b778 modules/Makerules
+--- a/modules/Makerules	Tue Jun 21 00:44:38 2011 -0400
++++ b/modules/Makerules	Tue Jun 21 13:00:07 2011 -0400
+@@ -104,7 +104,7 @@
+ 
+ # Compile one or more objects into a dynamic module.
+ $(TARGET).so: $(TARGET).o $(OBJECTS)
+-	$(CC_SHARED) $^ -o $@
++	$(CC_SHARED) $(CFLAGS) $(LFLAGS) $^ -o $@
+ 
+ # Compile one or more objects into a static module and generate a symbol
+ # list.  The .a file we create here is just a placeholder to show that

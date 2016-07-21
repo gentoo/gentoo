@@ -1,0 +1,15 @@
+Add missing edges to dependency graph in order to
+allow for parallel building.
+
+--- qcodeedit-2.2.3/qcodeedit.pro
++++ qcodeedit-2.2.3/qcodeedit.pro
+@@ -4,6 +4,9 @@
+ 
+ SUBDIRS += lib example designer-plugin
+ 
++example.depends = lib
++designer-plugin.depends = lib
++
+ CONFIG(debug, debug|release) {
+ 	# placeholder
+ 	QCODE_EDIT_EXTRA_DEFINES += _DEBUG_BUILD_

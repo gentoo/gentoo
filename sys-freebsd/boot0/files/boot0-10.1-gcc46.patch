@@ -1,0 +1,67 @@
+diff --git a/sys/boot/i386/Makefile.inc b/sys/boot/i386/Makefile.inc
+index 472b275..0c9409d 100644
+--- a/sys/boot/i386/Makefile.inc
++++ b/sys/boot/i386/Makefile.inc
+@@ -13,8 +13,6 @@ LDFLAGS+=	-nostdlib
+ .if ${MACHINE_CPUARCH} == "amd64"
+ CFLAGS+=	-m32
+ ACFLAGS+=	-m32
+-# LD_FLAGS is passed directly to ${LD}, not via ${CC}:
+-LD_FLAGS+=	-m elf_i386_fbsd
+ AFLAGS+=	--32
+ .endif
+ 
+diff --git a/sys/boot/i386/boot2/Makefile b/sys/boot/i386/boot2/Makefile
+index 428950e..6a15450 100644
+--- a/sys/boot/i386/boot2/Makefile
++++ b/sys/boot/i386/boot2/Makefile
+@@ -113,3 +113,10 @@ machine:
+ # XXX: clang integrated-as doesn't grok .codeNN directives yet
+ CFLAGS.boot1.S=		${CLANG_NO_IAS}
+ CFLAGS+=		${CFLAGS.${.IMPSRC:T}}
++
++# gcc 4.6 or later version, -fno-asynchronous-unwind-tables is required to build.
++CFLAGS+=		-fno-asynchronous-unwind-tables
++
++.if ${MACHINE_CPUARCH} == "amd64"
++LD_FLAGS+=		-m elf_i386_fbsd
++.endif
+diff --git a/sys/boot/i386/gptboot/Makefile b/sys/boot/i386/gptboot/Makefile
+index a90e712..d60ae00 100644
+--- a/sys/boot/i386/gptboot/Makefile
++++ b/sys/boot/i386/gptboot/Makefile
+@@ -81,3 +81,8 @@ machine:
+ # XXX: clang integrated-as doesn't grok .codeNN directives yet
+ CFLAGS.gptldr.S=	${CLANG_NO_IAS}
+ CFLAGS+=		${CFLAGS.${.IMPSRC:T}}
++
++.if ${MACHINE_CPUARCH} == "amd64"
++LD_FLAGS+=		-m elf_i386_fbsd
++.endif
++
+diff --git a/sys/boot/i386/gptzfsboot/Makefile b/sys/boot/i386/gptzfsboot/Makefile
+index 5eb2383..c10a917 100644
+--- a/sys/boot/i386/gptzfsboot/Makefile
++++ b/sys/boot/i386/gptzfsboot/Makefile
+@@ -78,3 +78,8 @@ machine:
+ # XXX: clang integrated-as doesn't grok .codeNN directives yet
+ CFLAGS.gptldr.S=	${CLANG_NO_IAS}
+ CFLAGS+=		${CFLAGS.${.IMPSRC:T}}
++
++.if ${MACHINE_CPUARCH} == "amd64"
++LD_FLAGS+=		-m elf_i386_fbsd
++.endif
++
+diff --git a/sys/boot/i386/zfsboot/Makefile b/sys/boot/i386/zfsboot/Makefile
+index 149f43a..be1e46a 100644
+--- a/sys/boot/i386/zfsboot/Makefile
++++ b/sys/boot/i386/zfsboot/Makefile
+@@ -91,3 +91,8 @@ machine:
+ # XXX: clang integrated-as doesn't grok .codeNN directives yet
+ CFLAGS.zfsldr.S=	${CLANG_NO_IAS}
+ CFLAGS+=		${CFLAGS.${.IMPSRC:T}}
++
++.if ${MACHINE_CPUARCH} == "amd64"
++LD_FLAGS+=		-m elf_i386_fbsd
++.endif
++

@@ -1,0 +1,9 @@
+You are almost done!
+
+  1. You will need to create a blank database for phprojekt to use. Consult
+  your database manual.
+
+  2. Complete the installation by logging on to
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/index.html
+
+  Enjoy!

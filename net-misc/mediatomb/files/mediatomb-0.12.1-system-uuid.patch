@@ -1,0 +1,36 @@
+use libuuid from the system rather than local bundled code
+
+http://bugs.gentoo.org/270830
+
+--- a/build/Makefile.am
++++ b/build/Makefile.am
+@@ -58,6 +58,7 @@ mediatomb_CXXFLAGS = -I$(top_srcdir)/src \
+ mediatomb_LDADD = \
+     libmediatomb.a \
+     $(top_srcdir)/tombupnp/build/libtombupnp.a \
++    -luuid \
+     $(LIBEXIF_LDFLAGS) \
+     $(ZLIB_LDFLAGS) \
+     $(EXPAT_LDFLAGS) \
+--- a/build/libmediatomb_src
++++ b/build/libmediatomb_src
+@@ -231,19 +231,6 @@ libmediatomb_a_SOURCES = \
+ ../src/url.h \
+ ../src/url_request_handler.cc \
+ ../src/url_request_handler.h \
+-../src/uuid/clear.c \
+-../src/uuid/compare.c \
+-../src/uuid/copy.c \
+-../src/uuid/gen_uuid.c \
+-../src/uuid/isnull.c \
+-../src/uuid/pack.c \
+-../src/uuid/parse.c \
+-../src/uuid/unpack.c \
+-../src/uuid/unparse.c \
+-../src/uuid/uuid.h \
+-../src/uuid/uuidP.h \
+-../src/uuid/uuid_time.c \
+-../src/uuid/uuid_types.h \
+ ../src/web/action.cc \
+ ../src/web/add.cc \
+ ../src/web/add_object.cc \

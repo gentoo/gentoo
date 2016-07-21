@@ -1,0 +1,14 @@
+--- svgalib-1.9.21/Makefile.makefiles	2005-03-18 14:49:10.000000000 +0100
++++ svgalib-1.9.21/Makefile	2005-07-08 21:16:12.000000000 +0200
+@@ -152,8 +126,10 @@
+ 	@echo "savetextmode:     Script that saves textmode information used by 'textmode'."
+ 	@$(INSTALL_SCRIPT) utils/savetextmode $(bindir)
+ ifeq ($(LRMI),lrmi)
+-	@echo "mode3:       Restore textmode by setting VESA mode 3."
++	@echo "mode3:            Restore textmode by setting VESA mode 3."
+ 	@$(INSTALL_PROGRAM) lrmi-0.6m/mode3 $(bindir)
++	@echo "vga_reset:        Restore textmode by resetting graphic board."
++	@cp lrmi-0.6m/vga_reset $(bindir)
+ endif
+ 	@echo "Installing keymap utilities in $(bindir):"
+ 	@echo "svgakeymap:       Perl script that generates scancode conversion maps."

@@ -1,0 +1,27 @@
+--- jmupdf-0.4.1/jmupdf/build.xml
++++ jmupdf-0.4.1/jmupdf/build.xml
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 	<project name="jmupdf" default="jmupdf" basedir=".">
+ 
+-		<property name="source.dir" value="${basedir}/bin"/>		
++		<property name="source.dir" value="${basedir}/src"/>		
+ 		<property name="target.dir" value="${basedir}"/>
+ 		<property name="build.dir" value="${basedir}/build"/>
+ 
+@@ -11,9 +11,12 @@
+ 			
+ 			<mkdir dir="${build.dir}"/>
+ 
+-	    	<copy todir="${build.dir}"> 
+-	    		<fileset dir="${source.dir}" includes="**/*"/>
+-	    	</copy>
++			<javac srcdir="${source.dir}"
++				includeantruntime="false"
++				destdir="${build.dir}"
++				debug="on"
++				source="1.5"
++			/>
+ 
+ 			<jar destfile="${build.dir}/jmupdf.jar">
+ 				<manifest>

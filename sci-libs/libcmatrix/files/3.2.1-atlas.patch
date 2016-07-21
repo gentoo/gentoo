@@ -1,0 +1,33 @@
+ configure-libraries.ac |    5 ++++-
+ 1 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/configure-libraries.ac b/configure-libraries.ac
+index a64e79c..afc75b8 100755
+--- a/configure-libraries.ac
++++ b/configure-libraries.ac
+@@ -33,6 +33,7 @@ AC_ARG_WITH(atlas,
+ 	AS_HELP_STRING([--with-atlas],[use the ATLAS BLAS library (default-use if found)]),,with_atlas=check)
+ if test x$with_atlas != xno; then
+ 	FOUNDATLAS=yes
++	PKG_CHECK_MODULES([ATLAS], [cblas])
+ 	AC_CHECK_HEADERS(cblas.h,,FOUNDATLAS=no
+ 		AC_MSG_WARN([ATLAS header files (cblas.h) not found 
+ Is CPPFLAGS is defined to include relevant directory?]))
+@@ -40,7 +41,7 @@ Is CPPFLAGS is defined to include relevant directory?]))
+ 		AC_MSG_WARN([ATLAS library (libatlas.a) not found
+ Is LDFLAGS is defined to include relevant directory?]))
+ 	if test x$FOUNDATLAS = xyes; then	
+-		LIBS="-lcblas $LIBS"
++		LIBS="$ATLAS_LIBS $LIBS"
+ 		CXXFLAGS="$CXXFLAGS -DLCM_USE_EXTERNAL"
+ 	else
+ 		if test x$with_atlas = xyes; then
+@@ -49,6 +50,8 @@ Is LDFLAGS is defined to include relevant directory?]))
+ 	fi	
+ fi
+ 
++AC_SUBST(ATLAS_LIBS)
++
+ AC_ARG_WITH(acml,
+ 	AS_HELP_STRING([--with-acml],[use the ACML BLAS library (default=no)]),,with_acml=no)
+ if test x$with_acml = xyes; then

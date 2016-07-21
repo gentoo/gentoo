@@ -1,0 +1,16 @@
+diff -r -U1 sbcl-1.1.12.orig/contrib/sb-concurrency/tests/test-frlock.lisp sbcl-1.1.12/contrib/sb-concurrency/tests/test-frlock.lisp
+--- sbcl-1.1.12.orig/contrib/sb-concurrency/tests/test-frlock.lisp	2013-09-30 20:15:42.000000000 +0700
++++ sbcl-1.1.12/contrib/sb-concurrency/tests/test-frlock.lisp	2013-10-14 20:43:05.586366791 +0700
+@@ -19,5 +19,5 @@
+ 
+-(defun test-frlocks (&key (reader-count 100) (read-count 1000000)
++(defun test-frlocks (&key (reader-count 50) (read-count 500000)
+                           (outer-read-pause 0) (inner-read-pause 0)
+-                          (writer-count 10) (write-count 10000)
++                          (writer-count 10) (write-count 5000)
+                           (outer-write-pause 0.0001) (inner-write-pause 0))
+@@ -84,3 +84,3 @@
+     (handler-case
+-        (sb-ext:with-timeout 60 (test-frlocks))
++        (sb-ext:with-timeout 240 (test-frlocks))
+       (sb-ext:timeout (c)

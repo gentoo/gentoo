@@ -1,0 +1,25 @@
+From 21dfcf6343cec2feb0e4ebd8b9e22a3aa39e5d9d Mon Sep 17 00:00:00 2001
+From: Jim McDonough <jmcd@samba.org>
+Date: Mon, 10 Mar 2014 10:16:28 -0400
+Subject: [PATCH 1/2] Remove backward compatibility option for newer cmake
+ builds to work.
+
+---
+ src/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6732a3f..40225e4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -41,7 +41,6 @@ include_directories(
+   ${PAM_CSYNC_PRIVATE_INCLUDE_DIRS}
+ )
+ 
+-set(CMAKE_BACKWARDS_COMPATIBILITY "2.2")
+ macro_add_plugin(${PAM_CSYNC_LIBRARY} ${pam_SRCS})
+ 
+ target_link_libraries(${PAM_CSYNC_LINK_LIBRARIES})
+-- 
+1.8.4.5
+

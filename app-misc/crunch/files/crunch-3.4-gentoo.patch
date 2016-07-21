@@ -1,0 +1,34 @@
+--- Makefile.orig	2013-11-21 11:53:21.835712927 +0400
++++ Makefile	2013-11-21 11:53:42.557713372 +0400
+@@ -16,19 +16,19 @@
+ # General variables
+ PACKAGE	    = crunch
+ VERSION	    = 3.4
+-PREFIX	    = /usr
++PREFIX	    ?= /usr
+ DISTDIR	    = $(PACKAGE)-$(VERSION)
+ DISTFILES   = crunch.c crunch.1 charset.lst
+ BINDIR	    = $(PREFIX)/bin
+ BTBINDIR    = /pentest/passwords/$(PACKAGE)
+ MANDIR	    = $(PREFIX)/share/man/man1
+ INSTALL	    = $(shell which install)
+-CC	    = $(shell which gcc)
++CC	    ?= $(shell which gcc)
+ LIBFLAGS    = -lm
+ THREADFLAGS = -pthread
+ OPTFLAGS    = -g -o0
+ LINTFLAGS   = -Wall -pedantic
+-CFLAGS	    = $(THREADFLAGS) $(LINTFLAGS) -std=c99
++CFLAGS	    += $(THREADFLAGS) $(LINTFLAGS) -std=c99
+ VCFLAGS	    = $(THREADFLAGS) $(LINTFLAGS) -std=c99 $(OPTFLAGS)
+ LFS	    = $(shell getconf POSIX_V6_ILP32_OFFBIG_CFLAGS)
+ INSTALL_OPTIONS	= -o root -g root
+@@ -46,7 +46,7 @@
+ 
+ crunch: crunch.c
+ 	@echo "Building binary..."
+-	$(CC) $(CFLAGS) $(LFS) $? $(LIBFLAGS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LFS) $? $(LIBFLAGS) -o $@
+ 	@echo ""
+ 
+ # Clean target

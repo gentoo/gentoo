@@ -1,0 +1,100 @@
+diff -ur plotmm-0.1.2-old/plotmm/compat.h plotmm-0.1.2/plotmm/compat.h
+--- plotmm-0.1.2-old/plotmm/compat.h	2005-11-09 17:36:02.000000000 +0100
++++ plotmm-0.1.2/plotmm/compat.h	2008-07-25 00:13:55.000000000 +0200
+@@ -58,7 +58,7 @@
+ #else
+ 
+ namespace PlotMM {
+-  typedef SigC::ObjectBase ObjectBase;
++  typedef sigc::ObjectBase ObjectBase;
+ }
+ 
+ #endif
+diff -ur plotmm-0.1.2-old/plotmm/curve.h plotmm-0.1.2/plotmm/curve.h
+--- plotmm-0.1.2-old/plotmm/curve.h	2005-11-09 17:47:21.000000000 +0100
++++ plotmm-0.1.2/plotmm/curve.h	2008-07-25 00:24:02.000000000 +0200
+@@ -140,7 +140,7 @@
+ 			  int from = 0, int to = -1);
+ 
+ 	//! Signals that this curve has changed in some way or the other
+-	SigC::Signal0<void> signal_curve_changed;
++	sigc::signal0<void> signal_curve_changed;
+ 
+     protected:
+ 	virtual void init(const Glib::ustring &title);
+diff -ur plotmm-0.1.2-old/plotmm/plot.cc plotmm-0.1.2/plotmm/plot.cc
+--- plotmm-0.1.2-old/plotmm/plot.cc	2005-11-09 17:59:48.000000000 +0100
++++ plotmm-0.1.2/plotmm/plot.cc	2008-07-25 00:24:30.000000000 +0200
+@@ -322,7 +322,7 @@
+       connect(sigc::mem_fun(*this,&Plot::on_canvas_expose_event));
+ #else
+     canvas_.signal_expose_event().
+-      connect(SigC::slot(*this,&Plot::on_canvas_expose_event));
++      connect(sigc::slot(*this,&Plot::on_canvas_expose_event));
+ #endif
+ 
+     show_all();
+@@ -406,19 +406,19 @@
+ }
+ 
+ //! Return the signal owned by plot canvas
+-SigC::Signal3<void,int,int,GdkEventButton*> Plot::signal_plot_mouse_press()
++sigc::signal3<void,int,int,GdkEventButton*> Plot::signal_plot_mouse_press()
+ {
+     return canvas_.signal_plot_mouse_press;
+ }
+ 
+ //! Return the signal owned by plot canvas
+-SigC::Signal3<void,int,int,GdkEventButton*> Plot::signal_plot_mouse_release()
++sigc::signal3<void,int,int,GdkEventButton*> Plot::signal_plot_mouse_release()
+ {
+     return canvas_.signal_plot_mouse_release;
+ }
+ 
+ //! Return the signal owned by plot canvas
+-SigC::Signal3<void,int,int,GdkEventMotion*> Plot::signal_plot_mouse_move()
++sigc::signal3<void,int,int,GdkEventMotion*> Plot::signal_plot_mouse_move()
+ {
+     return canvas_.signal_plot_mouse_move;
+ }
+diff -ur plotmm-0.1.2-old/plotmm/plot.h plotmm-0.1.2/plotmm/plot.h
+--- plotmm-0.1.2-old/plotmm/plot.h	2004-03-09 10:51:55.000000000 +0100
++++ plotmm-0.1.2/plotmm/plot.h	2008-07-25 00:25:17.000000000 +0200
+@@ -79,9 +79,9 @@
+ 	virtual void clear();
+ 	virtual void end_replot();
+ 
+-	SigC::Signal3<void,int,int,GdkEventButton*> signal_plot_mouse_press;
+-	SigC::Signal3<void,int,int,GdkEventButton*> signal_plot_mouse_release;
+-	SigC::Signal3<void,int,int,GdkEventMotion*> signal_plot_mouse_move;
++	sigc::signal3<void,int,int,GdkEventButton*> signal_plot_mouse_press;
++	sigc::signal3<void,int,int,GdkEventButton*> signal_plot_mouse_release;
++	sigc::signal3<void,int,int,GdkEventMotion*> signal_plot_mouse_move;
+ 
+     protected:
+ 	virtual bool on_expose_event(GdkEventExpose* event);
+@@ -141,9 +141,9 @@
+ 	Scale *scale(PlotAxisID id) { return tickMark_[id]; }
+ 	PlotLabel *label(PlotAxisID id) { return axisLabel_[id]; }
+ 
+-	SigC::Signal3<void,int,int,GdkEventButton*> signal_plot_mouse_press();
+-	SigC::Signal3<void,int,int,GdkEventButton*> signal_plot_mouse_release();
+-	SigC::Signal3<void,int,int,GdkEventMotion*> signal_plot_mouse_move();
++	sigc::signal3<void,int,int,GdkEventButton*> signal_plot_mouse_press();
++	sigc::signal3<void,int,int,GdkEventButton*> signal_plot_mouse_release();
++	sigc::signal3<void,int,int,GdkEventMotion*> signal_plot_mouse_move();
+ 
+ 	void set_selection(const Rectangle &r);
+ 	Rectangle get_selection() { return select_; }
+diff -ur plotmm-0.1.2-old/plotmm/scale.h plotmm-0.1.2/plotmm/scale.h
+--- plotmm-0.1.2-old/plotmm/scale.h	2004-03-05 16:25:43.000000000 +0100
++++ plotmm-0.1.2/plotmm/scale.h	2008-07-25 00:25:30.000000000 +0200
+@@ -133,7 +133,7 @@
+ 	/*! This signal is thrown whenever the scale is enabled or disabled
+ 	 *  \sa set_enabled, enabled
+ 	 */
+-	SigC::Signal1<void,bool> signal_enabled;
++	sigc::signal1<void,bool> signal_enabled;
+ 
+     protected:
+ 	virtual void on_realize();

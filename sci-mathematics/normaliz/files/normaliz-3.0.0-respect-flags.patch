@@ -1,0 +1,47 @@
+diff -U 3 -dHrN Normaliz3.0.orig/source/Makefile Normaliz3.0/source/Makefile
+--- Normaliz3.0.orig/source/Makefile	2015-09-29 14:05:44.960631514 +0200
++++ Normaliz3.0/source/Makefile	2015-09-29 14:06:06.510346764 +0200
+@@ -19,16 +19,16 @@
+ 	@$(MAKE) normaliz
+ 
+ normaliz.o: $(SOURCES) $(HEADERS) $(LIBHEADERS)
+-	$(CXX) $(CXXFLAGS) $(NORMFLAGS) -c Normaliz.cpp -o normaliz.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -c Normaliz.cpp -o normaliz.o
+ 
+ normaliz: $(SOURCES) $(HEADERS) normaliz.o libnormaliz/libnormaliz.a
+-	$(CXX) $(CXXFLAGS) $(NORMFLAGS) normaliz.o libnormaliz/libnormaliz.a $(LINKFLAGS) -o normaliz
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) normaliz.o libnormaliz/libnormaliz.a $(LINKFLAGS) -o normaliz
+ 
+ normaliz1: $(SOURCES) $(HEADERS) $(LIBHEADERS) $(LIBSOURCES)
+-	$(CXX) $(CXXFLAGS) $(NORMFLAGS) Normaliz-impl.cpp $(LINKFLAGS) -o normaliz1
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) Normaliz-impl.cpp $(LINKFLAGS) -o normaliz1
+ 
+ normaliz-pg: $(SOURCES) $(HEADERS) $(LIBHEADERS) $(LIBSOURCES)
+-	$(CXX) $(CXXFLAGS) $(NORMFLAGS) -pg Normaliz-impl.cpp $(LINKFLAGS) -o normaliz-pg
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -pg Normaliz-impl.cpp $(LINKFLAGS) -o normaliz-pg
+ 
+ 
+ #always go down the directory and let the make there check what has to be done
+diff -U 3 -dHrN Normaliz3.0.orig/source/Makefile.configuration Normaliz3.0/source/Makefile.configuration
+--- Normaliz3.0.orig/source/Makefile.configuration	2015-09-29 14:05:44.960631514 +0200
++++ Normaliz3.0/source/Makefile.configuration	2015-09-29 14:07:16.419426513 +0200
+@@ -1,11 +1,9 @@
+ ##
+ ## Makefile configuration for normaliz
+ ##
+-CXX = g++ 
+ #CXX = linux32 g++ -m32 -march=i686  #compile it for linux32
+ CXXFLAGS += -std=c++0x
+ CXXFLAGS += -Wall -pedantic
+-CXXFLAGS += -O3 -funroll-loops
+ #CXXFLAGS += -I /usr/local/boost_1_45_0
+ #CXXFLAGS += -g       ## debugging
+ #CXXFLAGS += -pg      ## profiling
+@@ -21,7 +19,6 @@
+ endif
+ 
+ ## for distributing the executables link static (does not work for mac)
+-CXXFLAGS += -static
+ ## for almost static compilation on Mac use
+ #CXXFLAGS += -static-libgcc
+ ## make it compatible with older Mac versions

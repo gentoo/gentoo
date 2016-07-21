@@ -1,0 +1,16 @@
+Index: m17n-lib-1.6.2/configure.ac
+===================================================================
+--- m17n-lib-1.6.2.orig/configure.ac
++++ m17n-lib-1.6.2/configure.ac
+@@ -100,9 +100,9 @@ dnl Checks which levels of APIs should b
+ AC_ARG_ENABLE(gui,
+ 	      AS_HELP_STRING([--enable-gui],[enable GUI level APIs (default is YES)]))
+ 
+-AM_CONDITIONAL(WITH_GUI, test x$with_gui != xno)
++AM_CONDITIONAL(WITH_GUI, test x$enable_gui != xno)
+ 
+-if test x$with_gui != xno; then
++if test x$enable_gui != xno; then
+ 
+ dnl Checks if dlopen exists, and if it's in libc or libdl.
+ 

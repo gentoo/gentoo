@@ -1,0 +1,114 @@
+diff -ru cddl.orig/lib/libctf/Makefile cddl/lib/libctf/Makefile
+--- cddl.orig/lib/libctf/Makefile	2009-01-24 03:36:33 -0200
++++ cddl/lib/libctf/Makefile	2009-01-24 03:55:10 -0200
+@@ -4,6 +4,7 @@
+ 
+ LIB=		ctf
+ SHLIB_MAJOR=	2
++LDADD+=-lz
+ 
+ SRCS=		ctf_create.c \
+ 		ctf_decl.c \
+diff -ru cddl.orig/lib/libdtrace/Makefile cddl/lib/libdtrace/Makefile
+--- cddl.orig/lib/libdtrace/Makefile	2009-01-24 00:18:47 -0200
++++ cddl/lib/libdtrace/Makefile	2009-01-24 03:31:06 -0200
+@@ -74,7 +74,7 @@
+ .endif
+ 
+ LFLAGS+=-l
+-
++LDADD+=-lz -lproc
+ YFLAGS+=-d
+ 
+ CLEANFILES=	dt_errtags.c dt_names.c
+diff -ru cddl.orig/lib/libzfs/Makefile cddl/lib/libzfs/Makefile
+--- cddl.orig/lib/libzfs/Makefile	2008-06-22 10:26:18 -0300
++++ cddl/lib/libzfs/Makefile	2008-06-22 10:26:26 -0300
+@@ -7,7 +7,8 @@
+
+ LIB=	zfs
+ DPADD=	${LIBUTIL}
+-LDADD=	-lutil
++LDADD=	-lutil -lgeom -lm -luutil -lumem
++LDFLAGS+=      -L${.CURDIR}/../libuutil -L${.CURDIR}/../libumem
+
+ SRCS=	deviceid.c \
+ 	mnttab.c \
+diff -ru cddl.orig/lib/libzpool/Makefile cddl/lib/libzpool/Makefile
+--- cddl.orig/lib/libzpool/Makefile	2008-06-22 10:35:15 -0300
++++ cddl/lib/libzpool/Makefile	2008-06-22 10:37:06 -0300
+@@ -42,7 +42,8 @@
+ CFLAGS+=	-I${.CURDIR}/../../../contrib/opensolaris/lib/libnvpair
+ 
+ DPADD=		${LIBPTHREAD} ${LIBZ}
+-LDADD=		-lpthread -lz
++LDADD=		-lpthread -lz -lavl -lumem
++LDFLAGS+=	-L${.CURDIR}/../libavl -L${.CURDIR}/../libumem
+ 
+ # atomic.S doesn't like profiling.
+ NO_PROFILE=
+diff -ru cddl.orig/sbin/zfs/Makefile cddl/sbin/zfs/Makefile
+--- cddl.orig/sbin/zfs/Makefile	2008-06-22 10:02:30 -0300
++++ cddl/sbin/zfs/Makefile	2008-06-22 10:14:23 -0300
+@@ -23,5 +23,7 @@
+ 	${LIBM} ${LIBNVPAIR} ${LIBUUTIL} ${LIBUTIL}
+ LDADD=	-lzfs -lgeom -lbsdxml -lsbuf \
+ 	-lm -lnvpair -luutil -lutil
++LDFLAGS+=-L${.CURDIR}/../../lib/libzfs -L${.CURDIR}/../../lib/libnvpair \
++	-L${.CURDIR}/../../lib/libuutil -L/lib -L/usr/lib
+ 
+ .include <bsd.prog.mk>
+diff -ru cddl.orig/sbin/zpool/Makefile cddl/sbin/zpool/Makefile
+--- cddl.orig/sbin/zpool/Makefile	2008-06-22 10:02:30 -0300
++++ cddl/sbin/zpool/Makefile	2008-06-22 10:14:47 -0300
+@@ -23,5 +23,7 @@
+ 	${LIBM} ${LIBNVPAIR} ${LIBUUTIL} ${LIBUTIL}
+ LDADD=	-lavl -lzfs -lgeom -lbsdxml -lsbuf \
+ 	-lm -lnvpair -luutil -lutil
++LDFLAGS+=-L${.CURDIR}/../../lib/libzfs -L${.CURDIR}/../../lib/libavl  -L/lib -L/usr/lib \
++	-L${.CURDIR}/../../lib/libnvpair -L${.CURDIR}/../../lib/libuutil
+ 
+ .include <bsd.prog.mk>
+diff -ru cddl.orig/usr.bin/ztest/Makefile cddl/usr.bin/ztest/Makefile
+--- cddl.orig/usr.bin/ztest/Makefile	2008-06-22 10:02:30 -0300
++++ cddl/usr.bin/ztest/Makefile	2008-06-22 10:12:40 -0300
+@@ -18,5 +18,7 @@
+ DPADD=	${LIBM} ${LIBNVPAIR} ${LIBUMEM} ${LIBZPOOL} \
+ 	${LIBPTHREAD} ${LIBZ} ${LIBAVL}
+ LDADD=	-lm -lnvpair -lumem -lzpool -lpthread -lz -lavl
++LDFLAGS+=-L${.CURDIR}/../../lib/libnvpair -L${.CURDIR}/../../lib/libumem \
++	-L${.CURDIR}/../../lib/libzpool -L${.CURDIR}/../../lib/libavl -L/lib -L/usr/lib
+ 
+ .include <bsd.prog.mk>
+diff -ru cddl.orig/usr.bin/Makefile.inc cddl/usr.bin/Makefile.inc
+--- cddl.orig/usr.bin/Makefile.inc   2009-01-10 07:21:10 +0000
++++ cddl/usr.bin/Makefile.inc        2009-01-10 07:18:55 +0000
+@@ -1,5 +1,6 @@
+ # $FreeBSD: src/cddl/usr.bin/Makefile.inc,v 1.1.6.1 2008/11/25 02:59:29 kensmith Exp $
+ 
+ BINDIR?=	/usr/bin
++LDFLAGS+=	-L${.CURDIR}/../../lib/libctf
+ 
+ .include "../Makefile.inc"
+--- cddl.orig/usr.sbin/zdb/Makefile	2010-03-11 13:19:48 +0100
++++ cddl/usr.sbin/zdb/Makefile	2010-03-11 13:20:08 +0100
+@@ -22,6 +22,8 @@
+ DPADD=	${LIBAVL} ${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBPTHREAD} ${LIBUMEM} \
+ 	${LIBUUTIL} ${LIBZ} ${LIBZFS} ${LIBZPOOL}
+ LDADD=	-lavl -lgeom -lm -lnvpair -lpthread -lumem -luutil -lz -lzfs -lzpool
++LDFLAGS+=-L${.CURDIR}/../../lib/libnvpair -L${.CURDIR}/../../lib/libumem \
++	-L${.CURDIR}/../../lib/libzpool -L${.CURDIR}/../../lib/libavl -L${.CURDIR}/../../lib/libuutil -L${.CURDIR}/../../lib/libzfs
+ 
+ CSTD=	c99
+ 
+--- cddl.orig/usr.bin/zinject/Makefile	2010-03-11 13:30:32 +0100
++++ cddl/usr.bin/zinject/Makefile	2010-03-11 13:33:27 +0100
+@@ -21,5 +21,8 @@
+ DPADD=	${LIBAVL} ${LIBGEOM} ${LIBM} ${LIBNVPAIR} ${LIBUMEM} ${LIBUUTIL} \
+ 	${LIBZFS} ${LIBZPOOL} ${LIBUUTIL}
+ LDADD=	-lavl -lgeom -lm -lnvpair -lumem -luutil -lzfs -lzpool
++LDFLAGS+= -L${.CURDIR}/../../lib/libavl -L${.CURDIR}/../../lib/libnvpair \
++	-L${.CURDIR}/../../lib/libumem -L${.CURDIR}/../../lib/libuutil \
++	-L${.CURDIR}/../../lib/libzfs -L${.CURDIR}/../../lib/libzpool
+ 
+ .include <bsd.prog.mk>

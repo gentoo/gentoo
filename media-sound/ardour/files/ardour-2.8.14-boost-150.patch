@@ -1,0 +1,13 @@
+--- /home/mad/ardour-2.8.14/SConstruct      2012-11-21 00:30:54.000000000 +0100
++++ SConstruct  2012-11-21 17:34:02.000000000 +0100
+@@ -955,7 +961,9 @@
+ # FLAC ....
+ #
+
+-# boost (we don't link against boost, just use some header files)
++# boost (we need to link against boost with >=1.50. header files alone will not work anymore)
++
++env.Append(LIBS=['boost_system'])
+
+ libraries['boost'] = LibraryInfo ()
+ prep_libcheck(env, libraries['boost'])

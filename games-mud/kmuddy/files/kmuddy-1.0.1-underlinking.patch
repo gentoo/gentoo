@@ -1,0 +1,24 @@
+diff -ruN kmuddy-1.0.1.orig/kmuddy/CMakeLists.txt kmuddy-1.0.1/kmuddy/CMakeLists.txt
+--- kmuddy-1.0.1.orig/kmuddy/CMakeLists.txt	2009-03-14 13:24:55.000000000 +0100
++++ kmuddy-1.0.1/kmuddy/CMakeLists.txt	2012-01-01 11:40:31.000000000 +0100
+@@ -49,7 +49,7 @@
+ 
+ kde4_add_executable(kmuddy ${kmuddy_SRCS})
+ 
+-set (KMUDDY_LIBRARIES kmuddycore dialogs ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KDE3SUPPORT_LIBS})
++set (KMUDDY_LIBRARIES kmuddycore dialogs ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KUTILS_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_PHONON_LIBS} ${KDE4_KDE3SUPPORT_LIBS} z)
+ 
+ if (MXP_FOUND)
+   set (KMUDDY_LIBRARIES ${KMUDDY_LIBRARIES} ${MXP_LIBRARIES})
+diff -ruN kmuddy-1.0.1.orig/plugins/mapper/plugins/speedwalk/CMakeLists.txt kmuddy-1.0.1/plugins/mapper/plugins/speedwalk/CMakeLists.txt
+--- kmuddy-1.0.1.orig/plugins/mapper/plugins/speedwalk/CMakeLists.txt	2009-01-10 12:40:59.000000000 +0100
++++ kmuddy-1.0.1/plugins/mapper/plugins/speedwalk/CMakeLists.txt	2012-01-01 13:15:35.000000000 +0100
+@@ -17,7 +17,7 @@
+ 
+ kde4_add_plugin(kmuddymapper_speedwalk WITH_PREFIX ${kmuddymapper_speedwalk_PART_SRCS})
+ 
+-target_link_libraries(kmuddymapper_speedwalk  ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KDE3SUPPORT_LIBS} kmuddymapper )
++target_link_libraries(kmuddymapper_speedwalk kmuddymapper kmuddycore ${KDE4_KDECORE_LIBS} ${KDE4_KPARTS_LIBS} ${KDE4_KDE3SUPPORT_LIBS} )
+ 
+ install(TARGETS kmuddymapper_speedwalk DESTINATION ${PLUGIN_INSTALL_DIR} )
+ 

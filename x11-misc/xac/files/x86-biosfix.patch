@@ -1,0 +1,40 @@
+diff -u -B -r1.1 -r1.2
+--- src/bioscall.h	25 Aug 2006 19:48:26 -0000	1.1
++++ src/bioscall.h	30 Sep 2009 15:05:49 -0000	1.2
+@@ -1,6 +1,8 @@
+ #ifndef bioscall_h
+ #define bioscall_h
+ 
++#include "int10defs.h"
++
+ /* Print some of the interesting parts of a vm86_regs structure. */
+ void dump_regs(struct vm86_regs *regs);
+ 
+diff -u -B -r1.1 -r1.2
+--- src/lrmi.h	25 Aug 2006 19:48:26 -0000	1.1
++++ src/lrmi.h	30 Sep 2009 15:05:49 -0000	1.2
+@@ -26,6 +26,8 @@
+ #ifndef LRMI_H
+ #define LRMI_H
+ 
++#include "int10defs.h"
++
+ #if defined(__i386__) && (defined(__linux__) || defined(__NetBSD__) \
+ 	|| defined(__FreeBSD__) || defined(__OpenBSD__))
+ 
+diff -Naur
+--- src/int10defs.h 
++++ src/int10defs.h 30 Sep 2009 15:05:49 -0000
+@@ -0,0 +1,12 @@
++/* Fix missing INT10 defines */
++#ifndef IF_MASK
++#define TF_MASK		0x00000100
++#define IF_MASK		0x00000200
++#define IOPL_MASK	0x00003000
++#define NT_MASK		0x00004000
++#define VM_MASK		0x00020000
++#define AC_MASK		0x00040000
++#define VIF_MASK	0x00080000	/* virtual interrupt flag */
++#define VIP_MASK	0x00100000	/* virtual interrupt pending */
++#define ID_MASK		0x00200000
++#endif

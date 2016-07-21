@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Control Group manager proxy"
+pidfile="/run/cgproxy.pid"
+command="/usr/sbin/cgproxy"
+command_args="--daemon"
+command_background="yes"
+retry="TERM/45"
+NESTED="${NESTED:-no}"
+
+depend() {
+	after cgmanager
+}
+
+start_pre() {
+	if ! /usr/sbin/cgproxy --check-master; then
+		ewarn "cgmanager is not running"
+		return 1
+	fi
+	# cgproxy should only run on container unless on older kernel
+	if [ -e /proc/self/ns/pid ] && [ "$NESTED" != "yes" ]; then
+		eerror "Too old kernel to support cgroup, please update to >3.8"
+		return 1
+	fi
+}

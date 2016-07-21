@@ -1,0 +1,52 @@
+From 9ba1bea5e24fe839ef5bd833c3974a55d5333bf1 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Mon, 16 May 2016 02:45:45 -0700
+Subject: [PATCH] portage.const.py: Remove repoman from PORTAGE_PYM_PACKAGES
+
+Decca (in IRC) got a traceback due to the missing repoman install
+
+sysresccd / # emerge -e @system
+Calculating dependencies... done!
+Traceback (most recent call last):
+  File "/usr/lib/python-exec/python3.5/emerge", line 50, in <module>
+    retval = emerge_main()
+  File "/usr/lib64/python3.5/site-packages/_emerge/main.py", line 1185, in emerge_main
+    return run_action(emerge_config)
+  File "/usr/lib64/python3.5/site-packages/_emerge/actions.py", line 3236, in run_action
+    emerge_config.args, spinner)
+  File "/usr/lib64/python3.5/site-packages/_emerge/actions.py", line 505, in action_build
+    retval = mergetask.merge()
+  File "/usr/lib64/python3.5/site-packages/_emerge/Scheduler.py", line 958, in merge
+    rval = self._handle_self_update()
+  File "/usr/lib64/python3.5/site-packages/_emerge/Scheduler.py", line 323, in _handle_self_update
+    _prepare_self_update(self.settings)
+  File "/usr/lib64/python3.5/site-packages/portage/package/ebuild/doebuild.py", line 2489, in _prepare_self_update
+    symlinks=True)
+  File "/usr/lib64/python3.5/site-packages/portage/__init__.py", line 259, in __call__
+    rval = self._func(*wrapped_args, **wrapped_kwargs)
+  File "/usr/lib64/python3.5/shutil.py", line 303, in copytree
+    names = os.listdir(src)
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/lib64/python3.5/site-packages/repoman'
+
+Dirkjan <djc> found  repoman was still included in the PORTAGE_PYM_PACKAGES which
+caused the traceback.
+---
+ pym/portage/const.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pym/portage/const.py b/pym/portage/const.py
+index 814d7f4..179efce 100644
+--- a/pym/portage/const.py
++++ b/pym/portage/const.py
+@@ -278,7 +278,7 @@ SUPPORTED_XPAK_EXTENSIONS = (".tbz2", ".xpak")
+ TIMESTAMP_FORMAT = "%a, %d %b %Y %H:%M:%S +0000"	# to be used with time.gmtime()
+ 
+ # Top-level names of Python packages installed by Portage.
+-PORTAGE_PYM_PACKAGES = ("_emerge", "portage", "repoman")
++PORTAGE_PYM_PACKAGES = ("_emerge", "portage")
+ 
+ RETURNCODE_POSTINST_FAILURE = 5
+ 
+-- 
+2.8.2
+

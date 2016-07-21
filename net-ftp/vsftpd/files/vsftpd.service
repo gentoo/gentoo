@@ -1,0 +1,11 @@
+[Unit]
+Description=Vsftpd ftp daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/libexec/vsftpd-checkconfig.sh
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+
+[Install]
+WantedBy=multi-user.target

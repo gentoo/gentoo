@@ -1,0 +1,18 @@
+--- src/xim/Makefile.am.old	2014-06-01 20:06:19.209885674 +0200
++++ src/xim/Makefile.am	2014-06-01 20:06:27.020040088 +0200
+@@ -88,4 +88,4 @@
+     @DISABLE_SKK_FLAG@       \
+     @X_CFLAGS@
+ im_ja_xim_server_LDADD = IMdkit/libXimd.a
+-im_ja_xim_server_LDFLAGS = @GTK_LIBS@ @GCONF_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lX11 @CANNA_LIBS@ @WNN_LIBS@ @ANTHY_LIBS@
++im_ja_xim_server_LDFLAGS = @GTK_LIBS@ @GCONF_LIBS@ @X_LIBS@ @X_PRE_LIBS@ -lX11 -lm @CANNA_LIBS@ @WNN_LIBS@ @ANTHY_LIBS@
+--- src/helper/Makefile.am.old	2014-06-01 20:09:11.592293279 +0200
++++ src/helper/Makefile.am	2014-06-01 20:09:24.454547489 +0200
+@@ -23,6 +23,6 @@
+     @DISABLE_SKK_FLAG@       		\
+     @DISABLE_WNN_FLAG@ 
+ 
+-im_ja_helper_LDADD = @GTK_LIBS@ @GCONF_LIBS@
++im_ja_helper_LDADD = @GTK_LIBS@ @GCONF_LIBS@ -lX11
+ 
+ 

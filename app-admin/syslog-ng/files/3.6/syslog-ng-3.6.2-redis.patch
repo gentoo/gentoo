@@ -1,0 +1,29 @@
+From 0e51c69056a93bd2b95341f005b8b1fdceec2b10 Mon Sep 17 00:00:00 2001
+From: Tibor Benke <ihrwein@gmail.com>
+Date: Wed, 17 Dec 2014 23:52:41 +0100
+Subject: [PATCH] redis: free reply object after a succesful ping
+
+---
+ modules/redis/redis.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/modules/redis/redis.c b/modules/redis/redis.c
+index 46a5b6b..9114324 100644
+--- a/modules/redis/redis.c
++++ b/modules/redis/redis.c
+@@ -132,9 +132,14 @@ redis_dd_format_persist_name(LogThrDestDriver *d)
+ static gboolean
+ redis_dd_connect(RedisDriver *self, gboolean reconnect)
+ {
++  redisReply *reply;
++  
+   if (reconnect && (self->c != NULL))
+     {
+-      redisCommand(self->c, "ping");
++      reply = redisCommand(self->c, "ping");
++
++      if (reply)
++        freeReplyObject(reply);
+ 
+       if (!self->c->err)
+         return TRUE;

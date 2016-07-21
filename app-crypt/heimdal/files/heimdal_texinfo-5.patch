@@ -1,0 +1,28 @@
+--- a/doc/whatis.texi
++++ b/doc/whatis.texi
+@@ -35,10 +35,11 @@ services can authenticate each other.
+ @end macro
+ @end ifinfo
+ 
+-@tex
+-@def@xsub#1{$_{#1}$}
+-@global@let@sub=@xsub
+-@end tex
++@iftex
++@macro sub{arg}
++@textsubscript{\arg\}
++@end macro
++@end iftex
+ 
+ @ifhtml
+ @macro sub{arg}
+--- a/doc/win2k.texi
++++ b/doc/win2k.texi
+@@ -311,4 +311,5 @@ Other useful programs include these:
+ 
+ @itemize @bullet
+ @item pwdump2
+-@uref{http://www.bindview.com/Support/RAZOR/Utilities/Windows/pwdump2_readme.cfm}@end itemize
++@uref{http://www.bindview.com/Support/RAZOR/Utilities/Windows/pwdump2_readme.cfm}
++@end itemize
+

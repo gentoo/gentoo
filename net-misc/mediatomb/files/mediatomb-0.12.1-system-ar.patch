@@ -1,0 +1,35 @@
+--- configure.ac	2010-04-08 00:38:51.000000000 +0200
++++ configure.ac	2013-05-30 12:27:55.620514386 +0200
+@@ -318,6 +318,10 @@
+ AC_PROG_CC
+ AC_PROG_RANLIB
+ AC_PROG_GCC_TRADITIONAL
++AN_MAKEVAR([AR], [AC_PROG_AR])
++AN_PROGRAM([ar], [AC_PROG_AR])
++AC_DEFUN([AC_PROG_AR], [AC_CHECK_TOOL(AR, ar, :)])
++AC_PROG_AR
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ AC_HEADER_SYS_WAIT
+--- build/Makefile.in	2010-04-08 00:40:15.000000000 +0200
++++ build/Makefile.in	2013-05-30 12:25:55.310337928 +0200
+@@ -50,7 +50,7 @@
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ libmediatomb_a_AR = $(AR) $(ARFLAGS)
+ libmediatomb_a_LIBADD =
+--- tombupnp/build/Makefile.in	2010-04-08 00:40:16.000000000 +0200
++++ tombupnp/build/Makefile.in	2013-05-30 12:26:18.420371823 +0200
+@@ -48,7 +48,7 @@
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ libtombupnp_a_AR = $(AR) $(ARFLAGS)
+ libtombupnp_a_LIBADD =

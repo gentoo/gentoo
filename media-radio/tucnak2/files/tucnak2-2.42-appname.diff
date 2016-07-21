@@ -1,0 +1,23 @@
+
+--- src/Makefile.am.orig	2011-05-12 17:51:43.000000000 +0200
++++ src/Makefile.am	2011-05-12 17:52:01.000000000 +0200
+@@ -1,9 +1,9 @@
+ datarootdir = @datarootdir@
+ 
+ #bin_PROGRAMS = tucnak soundwrapper stucnak
+-bin_PROGRAMS = tucnak soundwrapper 
++bin_PROGRAMS = tucnak2 soundwrapper 
+ 
+-tucnak_SOURCES = adif.c alsa.c bfu.c cabrillo.c charsets.c \
++tucnak2_SOURCES = adif.c alsa.c bfu.c cabrillo.c charsets.c \
+     chart.c codepage.h codepage.inc \
+ 	control.c cor.c cor.h cordata.c cordata.h cordata.inc \
+ 	cwdaemon.c cwdb.c cwwindow.c davac4.c dsp.c dwdb.c dxc.c ebw.c edi.c \
+@@ -24,7 +24,7 @@
+ 	ttys.c txts.c txts.h txts.inc uni_7b.inc \
+ 	win32.c winkey.c wiki.c wizz.c zstring.c
+ 
+-tucnak_LDADD = @TUCNAK_LDADD@
++tucnak2_LDADD = @TUCNAK_LDADD@
+ 
+ soundwrapper_SOURCES = soundwrapper.c	

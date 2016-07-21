@@ -1,0 +1,81 @@
+From ed9375739c3f7e48f6e1c3037c5a589c49d78613 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Wed, 2 Oct 2013 22:40:43 +0200
+Subject: [PATCH 4/4] Install dracut-install into libexec dir instead of lib
+ dir
+
+dracut-install script is the only thing ABI specific atm.
+
+See https://bugs.gentoo.org/show_bug.cgi?id=485218 for details on the
+problem.
+---
+ Makefile            | 4 +++-
+ configure           | 1 +
+ dracut-functions.sh | 4 ++++
+ dracut.sh           | 1 +
+ 4 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index a4c35e5..af61faf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -104,6 +104,7 @@ install: dracut-version.sh
+ 	mkdir -p $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(mandir)/man5 $(DESTDIR)$(mandir)/man7 $(DESTDIR)$(mandir)/man8
+ 	install -m 0755 dracut.sh $(DESTDIR)$(bindir)/dracut
+ 	sed -r \
++		-e "s|^(libexecdir)=.*|\1=$(libexecdir)|" \
+ 		-e "s|^(pkglibdir)=.*|\1=$(pkglibdir)|" \
+ 		-i $(DESTDIR)$(bindir)/dracut
+ 	install -m 0755 dracut-catimages.sh $(DESTDIR)$(bindir)/dracut-catimages
+@@ -147,7 +148,8 @@ endif
+ 		done \
+ 	fi
+ 	if [ -f install/dracut-install ]; then \
+-		install -m 0755 install/dracut-install $(DESTDIR)$(pkglibdir)/dracut-install; \
++		mkdir -p $(DESTDIR)$(libexecdir); \
++		install -m 0755 install/dracut-install $(DESTDIR)$(libexecdir)/dracut-install; \
+ 	fi
+ 	if [ -f skipcpio/skipcpio ]; then \
+ 		install -m 0755 skipcpio/skipcpio $(DESTDIR)$(pkglibdir)/skipcpio; \
+diff --git a/configure b/configure
+index 0bd3d2d..17370de 100755
+--- a/configure
++++ b/configure
+@@ -59,6 +59,7 @@ sbindir ?= ${sbindir:-${prefix}/sbin}
+ mandir ?= ${mandir:-${prefix}/share/man}
+ enable_documentation ?= ${enable_documentation:-yes}
+ bindir ?= ${bindir:-${prefix}/bin}
++libexecdir ?= ${libexecdir:-${prefix}/libexec}
+ EOF
+ 
+ {
+diff --git a/dracut-functions.sh b/dracut-functions.sh
+index 72afce2..1d85315 100755
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -741,6 +741,10 @@ if ! [[ $DRACUT_INSTALL ]]; then
+     DRACUT_INSTALL=$(find_binary dracut-install)
+ fi
+ 
++if ! [[ $DRACUT_INSTALL ]] && [[ -x $libexecdir/dracut-install ]]; then
++    DRACUT_INSTALL=$libexecdir/dracut-install
++fi
++
+ if ! [[ $DRACUT_INSTALL ]] && [[ -x $dracutbasedir/dracut-install ]]; then
+     DRACUT_INSTALL=$dracutbasedir/dracut-install
+ fi
+diff --git a/dracut.sh b/dracut.sh
+index ea30a7b..08f27eb 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -25,6 +25,7 @@
+ dracut_args=( "$@" )
+ 
+ # base dirs
++libexecdir=/usr/libexec
+ pkglibdir=/usr/lib/dracut
+ dracutbasedir="$pkglibdir"
+ 
+-- 
+2.1.3
+

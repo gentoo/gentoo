@@ -1,0 +1,26 @@
+From b37da095c8e8b70d8d4300b32e787b6da88e28c0 Mon Sep 17 00:00:00 2001
+From: Apostolos Bessas <mpessas@transifex.com>
+Date: Wed, 11 Jul 2012 11:44:07 +0300
+Subject: [PATCH] Do not install the tests.
+
+Exclude the tests from the installed packages.
+---
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index b3fa910..05bb2b4 100755
+--- a/setup.py
++++ b/setup.py
+@@ -49,7 +49,7 @@
+     ],
+     test_suite="tests",
+     zip_safe=False,
+-    packages=find_packages(),
++    packages=['txclib', ],
+     include_package_data=True,
+     package_data = package_data,
+     keywords = ('translation', 'localization', 'internationalization',),
+-- 
+1.7.10
+

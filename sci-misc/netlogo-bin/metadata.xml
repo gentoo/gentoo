@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>creffett@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+NetLogo is a programmable modeling environment for simulating natural and 
+social phenomena. It is particularly well suited for modeling complex 
+systems developing over time. Modelers can give instructions to hundreds 
+or thousands of independent "agents" all operating concurrently. This makes 
+it possible to explore the connection between the micro-level behavior of 
+individuals and the macro-level patterns that emerge from the interaction 
+of many individuals.
+</longdescription>
+</pkgmetadata>

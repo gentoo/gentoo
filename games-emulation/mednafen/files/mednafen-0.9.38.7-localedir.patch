@@ -1,0 +1,278 @@
+--- mednafen.orig/intl/Makefile.in
++++ mednafen/intl/Makefile.in
+@@ -44,7 +44,7 @@
+ includedir = @includedir@
+ datarootdir = @datarootdir@
+ datadir = @datadir@
+-localedir = $(datadir)/locale
++localedir = /usr/share/locale
+ gettextsrcdir = $(datadir)/gettext/intl
+ aliaspath = $(localedir)
+ subdir = intl
+--- mednafen.orig/src/cdplay/Makefile.am
++++ mednafen/src/cdplay/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libcdplay.a
+--- mednafen.orig/src/demo/Makefile.am
++++ mednafen/src/demo/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libdemo.a
+--- mednafen.orig/src/desa68/Makefile.am
++++ mednafen/src/desa68/Makefile.am
+@@ -6,7 +6,7 @@
+ 
+ AUTOMAKE_OPTIONS = subdir-objects
+ AM_CFLAGS = @AM_CFLAGS@ -Wno-multichar
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libdesa68.a
+--- mednafen.orig/src/drivers/Makefile.am
++++ mednafen/src/drivers/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @SDL_CFLAGS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  @SDL_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfnsdl.a
+--- mednafen.orig/src/drivers_dos/Makefile.am
++++ mednafen/src/drivers_dos/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @SDL_CFLAGS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  @SDL_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfndos.a
+--- mednafen.orig/src/gb/Makefile.am
++++ mednafen/src/gb/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libgb.a
+--- mednafen.orig/src/gba/Makefile.am
++++ mednafen/src/gba/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libgba.a
+--- mednafen.orig/src/hw_cpu/Makefile.am
++++ mednafen/src/hw_cpu/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libmdfnhwcpu.a
+--- mednafen.orig/src/hw_misc/Makefile.am
++++ mednafen/src/hw_misc/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libmdfnhwmisc.a
+--- mednafen.orig/src/hw_sound/Makefile.am
++++ mednafen/src/hw_sound/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libmdfnhwsound.a
+--- mednafen.orig/src/hw_video/Makefile.am
++++ mednafen/src/hw_video/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libmdfnhwvideo.a
+--- mednafen.orig/src/lynx/Makefile.am
++++ mednafen/src/lynx/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	liblynx.a
+--- mednafen.orig/src/Makefile.am
++++ mednafen/src/Makefile.am
+@@ -1,6 +1,6 @@
+ SUBDIRS	= trio
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ bin_PROGRAMS	=	mednafen
+--- mednafen.orig/src/md/Makefile.am
++++ mednafen/src/md/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmd.a
+--- mednafen.orig/src/nes/Makefile.am
++++ mednafen/src/nes/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libnes.a
+--- mednafen.orig/src/ngp/Makefile.am
++++ mednafen/src/ngp/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  -fno-strict-aliasing
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  -fno-strict-aliasing
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libngp.a
+--- mednafen.orig/src/pce/Makefile.am
++++ mednafen/src/pce/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libpce.a
+--- mednafen.orig/src/pce_fast/Makefile.am
++++ mednafen/src/pce_fast/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libpce_fast.a
+--- mednafen.orig/src/pcfx/Makefile.am
++++ mednafen/src/pcfx/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libpcfx.a
+--- mednafen.orig/src/psx/Makefile.am
++++ mednafen/src/psx/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @MMX_CFLAGS@ @SSE_CFLAGS@ @SSE2_CFLAGS@ -funroll-loops
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  @MMX_CFLAGS@ @SSE_CFLAGS@ @SSE2_CFLAGS@ -funroll-loops
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libpsx.a
+--- mednafen.orig/src/quicklz/Makefile.am
++++ mednafen/src/quicklz/Makefile.am
+@@ -1,6 +1,6 @@
+ AM_CFLAGS = @AM_CFLAGS@ -fno-strict-aliasing -Wno-shadow -Wno-unused-but-set-variable
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ -fno-strict-aliasing
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ -fno-strict-aliasing
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfnquicklz.a
+--- mednafen.orig/src/sexyal/Makefile.am
++++ mednafen/src/sexyal/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @SDL_CFLAGS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  @SDL_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libsexyal.a
+--- mednafen.orig/src/sms/Makefile.am
++++ mednafen/src/sms/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES        =       libsms.a
+--- mednafen.orig/src/snes/Makefile.am
++++ mednafen/src/snes/Makefile.am
+@@ -1,7 +1,7 @@
+ AM_CFLAGS = @AM_CFLAGS@ @SNES_EXTRA_FLAGS@
+ AM_CXXFLAGS = @AM_CXXFLAGS@ @SNES_EXTRA_FLAGS@ @SNES_EXTRA_CXXFLAGS@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  -DNOMINMAX
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  -DNOMINMAX
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl -I$(srcdir)/src/lib
+ 
+ noinst_LIBRARIES	=	libsnes.a
+--- mednafen.orig/src/snes_faust/Makefile.am
++++ mednafen/src/snes_faust/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  @MMX_CFLAGS@ @SSE_CFLAGS@ @SSE2_CFLAGS@ -funroll-loops
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  @MMX_CFLAGS@ @SSE_CFLAGS@ @SSE2_CFLAGS@ -funroll-loops
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libsnes_faust.a
+--- mednafen.orig/src/sound/Makefile.am
++++ mednafen/src/sound/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libmdfnsound.a
+--- mednafen.orig/src/trio/Makefile.am
++++ mednafen/src/trio/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ @TRIO_CFLAGS@
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ @TRIO_CFLAGS@
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libtrio.a
+--- mednafen.orig/src/vb/Makefile.am
++++ mednafen/src/vb/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@  -fno-strict-aliasing
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@  -fno-strict-aliasing
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libvb.a
+--- mednafen.orig/src/wswan/Makefile.am
++++ mednafen/src/wswan/Makefile.am
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = subdir-objects
+-DEFS = -DLOCALEDIR=\"$(datadir)/locale\" @DEFS@ 
++DEFS = -DLOCALEDIR=\"/usr/share/locale\" @DEFS@ 
+ DEFAULT_INCLUDES = -I$(top_builddir)/include -I$(top_srcdir)/include -I$(top_srcdir)/intl
+ 
+ noinst_LIBRARIES	=	libwswan.a

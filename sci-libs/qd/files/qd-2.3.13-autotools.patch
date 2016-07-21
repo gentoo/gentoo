@@ -1,0 +1,15 @@
+ fortran/Makefile.am |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/fortran/Makefile.am b/fortran/Makefile.am
+index 1ab54f7..7889fa3 100644
+--- a/fortran/Makefile.am
++++ b/fortran/Makefile.am
+@@ -16,6 +16,7 @@ endif
+ 
+ lib_LTLIBRARIES = libqdmod.la libqd_f_main.la
+ libqdmod_la_SOURCES = ddext.f ddmod.f qdext.f qdmod.f f_dd.cpp f_qd.cpp
++libqdmod_la_LIBADD = $(FCLIBS)
+ libqd_f_main_la_SOURCES = main.cpp
+ ddmod.lo: $(DDEXT) ddext.lo
+ qdmod.lo: ddmod.lo $(DDMOD) qdext.lo

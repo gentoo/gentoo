@@ -1,0 +1,4 @@
+SUBSYSTEM=="usb", ATTR{idVendor}=="22b8", MODE="0664", GROUP="android"
+SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", MODE="0664", GROUP="android"
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0664", GROUP="android"
+SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0664", GROUP="android"

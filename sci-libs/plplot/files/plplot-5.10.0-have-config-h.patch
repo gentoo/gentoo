@@ -1,0 +1,117 @@
+Apply upstream patch http://sourceforge.net/p/plplot/bugs/146/
+to fix conflicting macros in installed header files.
+
+diff -Nur plplot-5.10.0.orig/CMakeLists.txt plplot-5.10.0/CMakeLists.txt
+--- plplot-5.10.0.orig/CMakeLists.txt	2014-04-07 09:51:53.732857993 -0700
++++ plplot-5.10.0/CMakeLists.txt	2014-04-07 09:54:03.739699328 -0700
+@@ -125,7 +125,7 @@
+   ${CMAKE_CURRENT_BINARY_DIR}/plplot_config.h
+   )
+ # Allow access to the generated plplot_config.h for this build.
+-add_definitions("-DHAVE_CONFIG_H")
++add_definitions("-DPLPLOT_HAVE_CONFIG_H")
+ # Install top-level files
+ 
+ # Enable testing framework for examples
+diff -Nur plplot-5.10.0.orig/bindings/ocaml/CMakeLists.txt plplot-5.10.0/bindings/ocaml/CMakeLists.txt
+--- plplot-5.10.0.orig/bindings/ocaml/CMakeLists.txt	2014-04-07 09:51:53.629857267 -0700
++++ plplot-5.10.0/bindings/ocaml/CMakeLists.txt	2014-04-07 09:54:03.934700592 -0700
+@@ -99,7 +99,7 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/dllplplot_stubs.so
+     ${CMAKE_CURRENT_BINARY_DIR}/libplplot_stubs.a
+     COMMAND ${OCAMLC} -ccopt -I${CAMLIDL_LIB_DIR} -c ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+-    COMMAND ${OCAMLC} -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime -ccopt -I${CMAKE_BINARY_DIR} -ccopt -I${CAMLIDL_LIB_DIR} -ccopt -DHAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c
++    COMMAND ${OCAMLC} -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime -ccopt -I${CMAKE_BINARY_DIR} -ccopt -I${CAMLIDL_LIB_DIR} -ccopt -DPLPLOT_HAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plplot_impl.c
+     COMMAND ${OCAMLMKLIB} -o plplot_stubs -L${CAMLIDL_LIB_DIR} -lcamlidl -L${CMAKE_BINARY_DIR}/src -lplplot${LIB_TAG} ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.o ${CMAKE_CURRENT_BINARY_DIR}/plplot_impl.o ${ocaml_STATIC_FLAGS}
+     DEPENDS
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot_core_stubs.c
+diff -Nur plplot-5.10.0.orig/bindings/ocaml/plcairo/CMakeLists.txt plplot-5.10.0/bindings/ocaml/plcairo/CMakeLists.txt
+--- plplot-5.10.0.orig/bindings/ocaml/plcairo/CMakeLists.txt	2014-04-07 09:51:53.629857267 -0700
++++ plplot-5.10.0/bindings/ocaml/plcairo/CMakeLists.txt	2014-04-07 09:54:03.934700592 -0700
+@@ -36,7 +36,7 @@
+     ${CMAKE_CURRENT_BINARY_DIR}/plcairo_impl.o
+     ${CMAKE_CURRENT_BINARY_DIR}/dllplcairo_stubs.so
+     ${CMAKE_CURRENT_BINARY_DIR}/libplcairo_stubs.a
+-    COMMAND ${OCAMLC} -ccopt "${CAIRO_COMPILE_FLAGS}" -cclib "${CAIRO_LINK_FLAGS}" -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime  -ccopt -I${CMAKE_BINARY_DIR} -ccopt -DHAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
++    COMMAND ${OCAMLC} -ccopt "${CAIRO_COMPILE_FLAGS}" -cclib "${CAIRO_LINK_FLAGS}" -ccopt -I${CMAKE_SOURCE_DIR}/include -ccopt -I${CMAKE_BINARY_DIR}/include -ccopt -I${CMAKE_SOURCE_DIR}/lib/qsastime  -ccopt -I${CMAKE_BINARY_DIR} -ccopt -DPLPLOT_HAVE_CONFIG_H -c ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
+     COMMAND ${OCAMLMKLIB} -o plcairo_stubs ${CAIRO_LINK_FLAGS_LIST} -L${CMAKE_BINARY_DIR}/src -lplplot${LIB_TAG} ${CMAKE_CURRENT_BINARY_DIR}/plcairo_impl.o
+     DEPENDS
+     ${CMAKE_CURRENT_SOURCE_DIR}/plcairo_impl.c
+diff -Nur plplot-5.10.0.orig/doc/doxygen/html/plConfig_8h_source.html plplot-5.10.0/doc/doxygen/html/plConfig_8h_source.html
+--- plplot-5.10.0.orig/doc/doxygen/html/plConfig_8h_source.html	2014-04-07 09:51:53.712857853 -0700
++++ plplot-5.10.0/doc/doxygen/html/plConfig_8h_source.html	2014-04-07 09:54:03.935700600 -0700
+@@ -136,7 +136,7 @@
+ <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// any user applications).  Therefore, the configured plConfig.h</span></div>
+ <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// should be installed.  In contrast, plplot_config.h.in (note,</span></div>
+ <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// plConfig.h #includes plplot_config.h for the core build because</span></div>
+-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// HAVE_CONFIG_H is #defined in that case) contains configured macros</span></div>
++<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// PLPLOT_HAVE_CONFIG_H is #defined in that case) contains configured macros</span></div>
+ <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// that are only required for the core build.  Therefore, in contrast</span></div>
+ <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// to plConfig.h, plplot_config.h should not be installed.</span></div>
+ <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//</span></div>
+@@ -150,7 +150,7 @@
+ <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifndef __PLCONFIG_H__</span></div>
+ <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __PLCONFIG_H__</span></div>
+ <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor"></span></div>
+-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifdef HAVE_CONFIG_H</span></div>
++<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifdef PLPLOT_HAVE_CONFIG_H</span></div>
+ <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#  include &lt;<a class="code" href="plplot__config_8h.html">plplot_config.h</a>&gt;</span></div>
+ <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+ <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor"></span></div>
+diff -Nur plplot-5.10.0.orig/doc/doxygen/html/plplot__config_8h_source.html plplot-5.10.0/doc/doxygen/html/plplot__config_8h_source.html
+--- plplot-5.10.0.orig/doc/doxygen/html/plplot__config_8h_source.html	2014-04-07 09:51:53.708857825 -0700
++++ plplot-5.10.0/doc/doxygen/html/plplot__config_8h_source.html	2014-04-07 09:54:03.935700600 -0700
+@@ -109,7 +109,7 @@
+ <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// examples (and presumably any user applications).  Therefore, the</span></div>
+ <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// configured plplot_config.h should not be installed.  In contrast,</span></div>
+ <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// include/plConfig.h.in (note, the configured plConfig.h result</span></div>
+-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// #includes plplot_config.h for the core build because HAVE_CONFIG_H</span></div>
++<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// #includes plplot_config.h for the core build because PLPLOT_HAVE_CONFIG_H</span></div>
+ <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// is #defined in that case) contains configured macros that are</span></div>
+ <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// required for the core build, installed examples build, and build of</span></div>
+ <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// user applications.  Therefore, in contrast to plplot_config.h,</span></div>
+diff -Nur plplot-5.10.0.orig/examples/CMakeLists.txt plplot-5.10.0/examples/CMakeLists.txt
+--- plplot-5.10.0.orig/examples/CMakeLists.txt	2014-04-07 09:51:53.610857133 -0700
++++ plplot-5.10.0/examples/CMakeLists.txt	2014-04-07 09:54:03.938700634 -0700
+@@ -414,7 +414,7 @@
+ endif(CORE_BUILD)
+ 
+ if(CORE_BUILD AND BUILD_TEST)
+-  remove_definitions("-DHAVE_CONFIG_H")
++  remove_definitions("-DPLPLOT_HAVE_CONFIG_H")
+ endif(CORE_BUILD AND BUILD_TEST)
+ 
+ # Decide on device to be used for generic interactive tests.
+diff -Nur plplot-5.10.0.orig/include/plConfig.h.in plplot-5.10.0/include/plConfig.h.in
+--- plplot-5.10.0.orig/include/plConfig.h.in	2014-04-07 09:51:53.616857175 -0700
++++ plplot-5.10.0/include/plConfig.h.in	2014-04-07 09:54:03.938700634 -0700
+@@ -30,7 +30,7 @@
+ // any user applications).  Therefore, the configured plConfig.h
+ // should be installed.  In contrast, plplot_config.h.in (note,
+ // plConfig.h #includes plplot_config.h for the core build because
+-// HAVE_CONFIG_H is #defined in that case) contains configured macros
++// PLPLOT_HAVE_CONFIG_H is #defined in that case) contains configured macros
+ // that are only required for the core build.  Therefore, in contrast
+ // to plConfig.h, plplot_config.h should not be installed.
+ //
+@@ -44,7 +44,7 @@
+ #ifndef __PLCONFIG_H__
+ #define __PLCONFIG_H__
+ 
+-#ifdef HAVE_CONFIG_H
++#ifdef PLPLOT_HAVE_CONFIG_H
+ #  include <plplot_config.h>
+ #endif
+ 
+diff -Nur plplot-5.10.0.orig/plplot_config.h.in plplot-5.10.0/plplot_config.h.in
+--- plplot-5.10.0.orig/plplot_config.h.in	2014-04-07 09:51:53.732857993 -0700
++++ plplot-5.10.0/plplot_config.h.in	2014-04-07 09:54:03.938700634 -0700
+@@ -3,7 +3,7 @@
+ // examples (and presumably any user applications).  Therefore, the
+ // configured plplot_config.h should not be installed.  In contrast,
+ // include/plConfig.h.in (note, the configured plConfig.h result
+-// #includes plplot_config.h for the core build because HAVE_CONFIG_H
++// #includes plplot_config.h for the core build because PLPLOT_HAVE_CONFIG_H
+ // is #defined in that case) contains configured macros that are
+ // required for the core build, installed examples build, and build of
+ // user applications.  Therefore, in contrast to plplot_config.h,

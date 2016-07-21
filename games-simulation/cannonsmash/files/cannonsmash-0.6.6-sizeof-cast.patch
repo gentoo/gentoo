@@ -1,0 +1,11 @@
+Don't typecast otherwise C++ will fail to match on some arches.
+
+http://bugs.gentoo.org/84187
+
+--- loadparts.cpp
++++ loadparts.cpp
+@@ -247,3 +247,3 @@
+             // concat next line(s)
+-	    int bufsize = clamp(0U, sizeof(line)-l, sizeof(line)-1);
++	    int bufsize = clamp((size_t)0, sizeof(line)-l, sizeof(line)-1);
+ 	    fgets(&line[l-2], bufsize, fp);

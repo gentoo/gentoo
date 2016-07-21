@@ -1,0 +1,10 @@
+--- a/devil-1.7.8/test/Makefile.am
++++ b/devil-1.7.8/test/Makefile.am
+@@ -12,5 +12,6 @@ else
+ testil_LDADD += ../lib/libIL.la
+ endif
+ 
+-TESTS_ENVIRONMENT = /bin/bash
++TESTS_ENVIRONMENT =
+ TESTS = $(check_SCRIPTS)
++LOG_COMPILER = $(SHELL)

@@ -1,0 +1,45 @@
+diff --git a/configure.in b/configure.in
+index 648f742..2ac4e92 100644
+--- a/configure.in
++++ b/configure.in
+@@ -108,22 +108,24 @@ if test "$with_cdb" = "no"; then
+ else
+   if test "$with_cdb" = "yes"; then
+     for i in /usr/local /usr; do
+-      if test -d "$i/include" -a -f "$i/include/cdb.h"; then
+-        CDB_DIR="$i"
+-        CDB_INCLUDES="-I$i/include"
+-        available_cdb="yes"
+-        for j in cdb.a buffer.a unix.a byte.a alloc.a; do
+-          if test -f "$i/lib/$j"; then
+-            LIBADD_CDB="$LIBADD_CDB $i/lib/$j"
+-          else
+-	      available_cdb="no"
+-	      break
+-          fi
+-        done
+-        if test "$available_cdb" = "yes"; then
+-	    break
+-	fi
+-      fi
++      for inc in include include/cdb; do
++        if test -d "$i/$inc" -a -f "$i/$inc/cdb.h"; then
++          CDB_DIR="$i"
++          CDB_INCLUDES="-I$i/$inc"
++          available_cdb="yes"
++          for j in cdb.a buffer.a unix.a byte.a alloc.a; do
++            if test -f "$i/lib/$j"; then
++              LIBADD_CDB="$LIBADD_CDB $i/lib/$j"
++            else
++  	      available_cdb="no"
++  	      break
++            fi
++          done
++          if test "$available_cdb" = "yes"; then
++  	    break
++  	fi
++        fi
++      done
+     done
+   else
+     if test -d "$with_cdb" -a -f "$with_cdb/cdb.h"; then

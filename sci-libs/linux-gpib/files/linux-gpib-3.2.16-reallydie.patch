@@ -1,0 +1,16 @@
+Index: drivers/Makefile.am
+===================================================================
+--- drivers/Makefile.am	(revision 1602)
++++ drivers/Makefile.am	(working copy)
+@@ -15,10 +15,8 @@
+ 
+ -include $(top_srcdir)/util/linux_flags/flags
+ 
+-#ignore errors from kernel's make modules in all-local, to avoid failure of make install
+-#on nfs filesystem with root_squash
+ all-local:
+-	-$(MAKE) -C $(LINUX_SRCDIR) V=1 modules\
++	$(MAKE) -C $(LINUX_SRCDIR) V=1 modules\
+ 		CC="$(LINUX_CC) -I@abs_top_srcdir@ -I@abs_top_srcdir@/drivers/gpib/include -I@abs_top_srcdir@/include" \
+ 		SUBDIRS="$(GPIB_ABS_MODULE_SUBDIR)"
+ 

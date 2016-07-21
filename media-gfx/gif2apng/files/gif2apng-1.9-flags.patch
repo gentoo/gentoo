@@ -1,0 +1,15 @@
+--- gif2apng-1.9-src/Makefile
++++ gif2apng-1.9-src/Makefile
+@@ -1,10 +1,9 @@
+ PACKAGE    = gif2apng
+ CC         = gcc
+ SRC_DIRS   = . 7z zopfli
+-CFLAGS     = -Wall -pedantic
+-CFLAGS_OPT = -O2
++CFLAGS     += -Wall -pedantic
++CFLAGS_OPT =
+ CFLAGS_7Z  = -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses
+-LDFLAGS    = -s
+ LIBS       = -lstdc++ -lm -lz
+ 
+ INCUDE_DIRS := $(addprefix -I./, $(SRC_DIRS))

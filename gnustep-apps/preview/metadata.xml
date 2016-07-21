@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
+<longdescription>
+* Open GNUstep images file supported by GNUstep (usaly tiff/jpeg/gif/png)
+* Save as and Save To (tiff only)
+* Print and Page Layout
+* Zoom
+* The image can be copy into the Pasboard (to be paste or use by services)
+* Documentation
+* Source fully available
+* Release under the GNU GENERAL PUBLIC LICENSE 2
+</longdescription>
+</pkgmetadata>

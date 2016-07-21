@@ -1,0 +1,19 @@
+--- gtkdiskfree.desktop.orig	2012-04-05 21:59:26.000000000 +0400
++++ gtkdiskfree.desktop	2013-08-19 20:26:50.127669805 +0400
+@@ -1,13 +1,9 @@
+-
+ [Desktop Entry]
+ Name=GtkDiskFree
+-Name[ru_RU.CP1251]=GtkDiskFree
+-Name[ru_RU.KOI8-R]=GtkDiskFree
+ Comment=Free space monitor
+-Comment[ru_RU.CP1251]=хМДХЙЮРНП ЯБНАНДМНЦН ЛЕЯРЮ МЮ ДХЯЙЕ.
+-Comment[ru_RU.KOI8-R]=Индикатор свободного места на диске.
++Comment[ru]=п≤п╫п╢п╦п╨п╟я┌п╬я─ я│п╡п╬п╠п╬п╢п╫п╬пЁп╬ п╪п╣я│я┌п╟ п╫п╟ п╢п╦я│п╨п╣
+ Exec=gtkdiskfree 
+-Icon=/usr/share/pixmaps/gtkdiskfree.png
++Icon=gtkdiskfree
+ Terminal=false
+-MultipleArgs=false
++X-MultipleArgs=false
+ Type=Application

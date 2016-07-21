@@ -1,0 +1,12 @@
+diff -u -r a/Makefile b/Makefile
+--- a/Makefile	2004-02-22 02:04:07.000000000 +0100
++++ b/Makefile	2008-12-30 19:31:19.000000000 +0100
+@@ -12,7 +12,7 @@
+ LDFLAGS=-lncurses -O3 -Wall
+ 
+ dav: $(OBJECTS) 
+-	$(CC) $(LDFLAGS) $(OBJECTS) -o dav
++	$(CC) $(OBJECTS) $(LDFLAGS) -o dav
+ 
+ install:
+ 	mkdir -p $(DESTDIR)/usr/bin

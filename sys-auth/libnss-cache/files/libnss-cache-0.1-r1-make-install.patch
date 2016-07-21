@@ -1,0 +1,34 @@
+--- Makefile	2010-09-15 02:16:20.851387801 +0200
++++ Makefile	2010-09-15 02:23:26.651387798 +0200
+@@ -1,21 +1,24 @@
+-CC=gcc
++CC?=gcc
+ #CFLAGS=-Wall -fPIC -DDEBUG -g -O0
+-CFLAGS=-Wall -fPIC
++CFLAGS+=-Wall -fPIC
++LDFLAGS+=
+ LIBRARY=libnss_cache.so.2.0
+ LINKS=libnss_cache.so.2 libnss_cache.so
++DESTDIR?=
+ PREFIX=/usr
+ BUILD=.libs
+-LIBDIR=$(PREFIX)/lib
++LIBDIR?=$(PREFIX)/lib
++SONAME=libnss_cache.so.2
+ 
+ nss_cache:
+ 	[ -d $(BUILD) ] || mkdir $(BUILD)
+ 	$(CC) $(CFLAGS) -c nss_cache.c -o $(BUILD)/nss_cache.o
+-	$(CC) -shared -o $(BUILD)/$(LIBRARY) $(BUILD)/nss_cache.o
++	$(CC) -shared -Wl,-soname,$(SONAME) -o $(BUILD)/$(LIBRARY) $(BUILD)/nss_cache.o $(LDFLAGS)
+ 
+ clean:
+ 	rm -rf $(BUILD)
+ 
+ install:
+-	[ -d $(LIBDIR) ] || install -d $(LIBDIR)
+-	install $(BUILD)/$(LIBRARY) $(LIBDIR)
+-	cd $(LIBDIR); for link in $(LINKS); do ln -sf $(LIBRARY) $$link ; done
++	[ -d $(DESTDIR)$(LIBDIR) ] || install -d $(DESTDIR)$(LIBDIR)
++	install $(BUILD)/$(LIBRARY) $(DESTDIR)$(LIBDIR)
++	cd $(DESTDIR)$(LIBDIR); for link in $(LINKS); do ln -sf $(LIBRARY) $$link ; done

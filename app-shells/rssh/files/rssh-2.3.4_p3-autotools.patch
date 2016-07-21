@@ -1,0 +1,33 @@
+diff -Naur rssh-2.3.4.orig/configure.ac rssh-2.3.4/configure.ac
+--- rssh-2.3.4.orig/configure.ac	2013-11-15 16:11:21.301056547 -0700
++++ rssh-2.3.4/configure.ac	2013-11-15 16:11:51.471424233 -0700
+@@ -13,12 +13,6 @@
+ AC_PROG_MAKE_SET
+ AC_CHECK_TOOL([STRIP],[strip])
+ 
+-if test yes = "$GCC" ; then
+-       defcflags="-O2 -Wall -Wshadow"
+-else
+-       echo "Using default flags"
+-fi
+-
+ # Checks for libraries.
+ 
+ # Checks for header files.
+diff -Naur rssh-2.3.4.orig/Makefile.am rssh-2.3.4/Makefile.am
+--- rssh-2.3.4.orig/Makefile.am	2013-11-15 16:11:21.301056547 -0700
++++ rssh-2.3.4/Makefile.am	2013-11-15 16:12:28.581876494 -0700
+@@ -15,7 +15,7 @@
+ base=`echo @PACKAGE_STRING@|tr " " "-"`
+ 
+ install-exec-hook:
+-	chmod u+s $(libexecdir)/rssh_chroot_helper
++	chmod u+s $(DESTDIR)/$(libexecdir)/rssh_chroot_helper
+ 
+ rpm:	dist
+ 	rpmbuild -ta --sign $(base).tar.gz
+@@ -24,3 +24,4 @@
+ 	gpg -ba --default-key ddm@pizzashack.org $(base).tar.gz
+ 	mv $(base).tar.gz.asc $(base).tar.gz.sig
+ 
++AM_CPPFLAGS += -I. -I$(srcdir)

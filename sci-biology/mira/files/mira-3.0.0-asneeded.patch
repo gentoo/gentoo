@@ -1,0 +1,56 @@
+http://bugs.gentoo.org/show_bug.cgi?id=305547
+
+--- config/m4/ax_lib_expat.m4
++++ config/m4/ax_lib_expat.m4
+@@ -96,6 +99,7 @@
+ 
+     EXPAT_CFLAGS=""
+     EXPAT_LDFLAGS=""
++    EXPAT_LIBS=""
+     EXPAT_VERSION=""
+ 
+     dnl
+@@ -105,7 +109,8 @@
+ 
+     if test -n "$expat_prefix"; then
+         expat_include_dir="$expat_prefix/include"
+-        expat_lib_flags="-L$expat_prefix/lib -lexpat"
++        expat_lib_flags="-L$expat_prefix/lib"
++        expat_libs="-lexpat"
+         run_expat_test="yes"
+     elif test "$expat_requested" = "yes"; then
+         if test -n "$expat_include_dir" -a -n "$expat_lib_flags"; then
+@@ -126,6 +131,8 @@
+         saved_LDFLAGS="$LDFLAGS"
+         LDFLAGS="$LDFLAGS $expat_lib_flags"
+ 
++        saved_LIBS="$LIBS"
++        LIBS="$LIBS $expat_libs"
+         dnl
+         dnl Check Expat headers
+         dnl
+@@ -171,7 +178,8 @@
+                     ]]
+                 )],
+                 [
+                 EXPAT_LDFLAGS="$expat_lib_flags"
++                EXPAT_LIBS="$expat_libs"
+                 expat_lib_found="yes"
+                 AC_MSG_RESULT([found])
+                 ],
+@@ -185,6 +193,7 @@
+ 
+         CPPFLAGS="$saved_CPPFLAGS"
+         LDFLAGS="$saved_LDFLAGS"
++        LIBS="$saved_LIBS"
+     fi
+ 
+     AC_MSG_CHECKING([for Expat XML Parser])
+@@ -194,6 +203,7 @@
+ 
+             AC_SUBST([EXPAT_CFLAGS])
+             AC_SUBST([EXPAT_LDFLAGS])
++            AC_SUBST([EXPAT_LIBS])
+ 
+             HAVE_EXPAT="yes"
+         else

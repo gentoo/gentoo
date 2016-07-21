@@ -1,0 +1,161 @@
+diff -Nru linux-atm-2.4.1.orig/src/ilmid/atmf_uni.c linux-atm-2.4.1/src/ilmid/atmf_uni.c
+--- linux-atm-2.4.1.orig/src/ilmid/atmf_uni.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/ilmid/atmf_uni.c	2007-04-14 18:03:27.000000000 +0300
+@@ -187,7 +187,7 @@
+       newPrefix->name = alloc_t(AsnOid);
+       newPrefix->name->octs = alloc(varBindName->octetLen);
+       AsnOidCopy(newPrefix->name, varBindName);
+-      Q_INSERT_BEFORE((NetPrefixNode *) var->value, newPrefix, prefix);
++      Q_INSERT_BEFORE((*((NetPrefixNode **)&var->value)), newPrefix, prefix);
+       if(atmNetPrefix.octs == NULL)
+ 	{
+ 	  atmNetPrefix.octetLen = varBindName->octetLen - NETPREFIX_LEN - 2;
+@@ -197,7 +197,7 @@
+     }
+   else if (varbind->value->a.simple->a.number == INVALID && cmp == AsnOidEqual)
+     {
+-      Q_REMOVE((NetPrefixNode *) var->value, prefix);
++      Q_REMOVE((*((NetPrefixNode **) &var->value)), prefix);
+     }
+ 
+   return NOERROR;
+diff -Nru linux-atm-2.4.1.orig/src/lib/sapequal.c linux-atm-2.4.1/src/lib/sapequal.c
+--- linux-atm-2.4.1.orig/src/lib/sapequal.c	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/lib/sapequal.c	2007-04-14 18:03:23.000000000 +0300
+@@ -65,6 +65,7 @@
+ 	    CHECK(l2.itu.window,a.l2.itu.window > b.l2.itu.window);
+ 	    break;
+ 	default:
++	    ;
+     }
+     switch (a.l3_proto) {
+ 	case ATM_L3_X25:
+@@ -83,6 +84,7 @@
+ 	    if (a.l3.user != b.l3.user) return 0;
+ 	    break;
+ 	default:
++	    ;
+     }
+     return 1;
+ }
+diff -Nru linux-atm-2.4.1.orig/src/maint/atmtcp.c linux-atm-2.4.1/src/maint/atmtcp.c
+--- linux-atm-2.4.1.orig/src/maint/atmtcp.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/maint/atmtcp.c	2007-04-14 18:03:27.000000000 +0300
+@@ -60,7 +60,7 @@
+ static IN *inputs = NULL;
+ static fd_set in_set;
+ static int fds = 0;
+-static int debug = 0;
++int debug = 0;
+ static int links = 0;
+ 
+ 
+diff -Nru linux-atm-2.4.1.orig/src/maint/enitune.c linux-atm-2.4.1/src/maint/enitune.c
+--- linux-atm-2.4.1.orig/src/maint/enitune.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/maint/enitune.c	2007-04-14 18:03:23.000000000 +0300
+@@ -44,6 +44,7 @@
+ 		if (*end || mult.rx <= 100) usage(name);
+ 		break;
+ 	    default:
++	    ;
+ 	}
+     if (argc != optind+1) usage(name);
+     sioc.number = strtol(argv[optind],&end,0);
+diff -Nru linux-atm-2.4.1.orig/src/mpoad/p_factory.c linux-atm-2.4.1/src/mpoad/p_factory.c
+--- linux-atm-2.4.1.orig/src/mpoad/p_factory.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/mpoad/p_factory.c	2007-04-14 18:03:27.000000000 +0300
+@@ -31,16 +31,17 @@
+             *         beginning at location "addr".
+             */
+        uint32_t sum = 0;
++       uint16_t *addr16 = addr;
+ 
+         while( count > 1 )  {
+            /*  This is the inner loop */
+-               sum += * ((uint16_t *) addr)++;
++               sum += * addr16++;
+                count -= 2;
+        }
+ 
+            /*  Add left-over byte, if any */
+        if( count > 0 )
+-               sum += * (unsigned char *) addr;
++               sum += * (unsigned char *) addr16;
+ 
+            /*  Fold 32-bit sum to 16 bits */
+        while (sum>>16)
+diff -Nru linux-atm-2.4.1.orig/src/qgen/qlib.c linux-atm-2.4.1/src/qgen/qlib.c
+--- linux-atm-2.4.1.orig/src/qgen/qlib.c	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/qgen/qlib.c	2007-04-14 18:03:27.000000000 +0300
+@@ -26,8 +26,6 @@
+ #include "op.h"
+ 
+ 
+-static int debug = 0;
+-
+ 
+ void PREFIX(report)(int severity,const char *msg,...)
+ {
+@@ -830,6 +828,8 @@
+ 
+ #ifdef STANDALONE
+ 
++int debug = 0;
++
+ int main(int argc,const char **argv)
+ {
+     unsigned char msg[5000]; /* should be large enough for that */
+diff -Nru linux-atm-2.4.1.orig/src/qgen/qlib.h linux-atm-2.4.1/src/qgen/qlib.h
+--- linux-atm-2.4.1.orig/src/qgen/qlib.h	2001-09-03 21:41:05.000000000 +0300
++++ linux-atm-2.4.1/src/qgen/qlib.h	2007-04-14 18:03:27.000000000 +0300
+@@ -23,7 +23,6 @@
+ #define Q_FATAL		-1
+ 
+ 
+-extern int q_dump;
+ extern void q_report(int severity,const char *msg,...);
+ 
+ #ifdef DUMP_MODE
+diff -Nru linux-atm-2.4.1.orig/src/sigd/proto.c linux-atm-2.4.1/src/sigd/proto.c
+--- linux-atm-2.4.1.orig/src/sigd/proto.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/sigd/proto.c	2007-04-14 18:03:23.000000000 +0300
+@@ -259,6 +259,7 @@
+ 		break;
+ 	    }
+ 	default:
++	    ;
+     }
+     va_end(ap);
+     if ((size = q_close(&dsc)) >= 0) to_signaling(sock->sig,q_buffer,size);
+@@ -288,6 +289,7 @@
+ 		}
+ 		break;
+ 	    default:
++	    ;
+ 	}
+ 	va_end(ap);
+     }
+diff -Nru linux-atm-2.4.1.orig/src/switch/debug/debug.c linux-atm-2.4.1/src/switch/debug/debug.c
+--- linux-atm-2.4.1.orig/src/switch/debug/debug.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/switch/debug/debug.c	2007-04-14 18:03:27.000000000 +0300
+@@ -18,7 +18,7 @@
+ #define COMPONENT "FAB(debug)"
+ 
+ 
+-#define PRV(call) ((FAB *) (call)->fab)
++#define PRV(call) (*((FAB **) &(call)->fab))
+ 
+ 
+ typedef struct _fab {
+diff -Nru linux-atm-2.4.1.orig/src/switch/tcp/tcpsw.c linux-atm-2.4.1/src/switch/tcp/tcpsw.c
+--- linux-atm-2.4.1.orig/src/switch/tcp/tcpsw.c	2001-09-03 21:41:06.000000000 +0300
++++ linux-atm-2.4.1/src/switch/tcp/tcpsw.c	2007-04-14 18:03:27.000000000 +0300
+@@ -27,7 +27,7 @@
+ 
+ #define COMPONENT "FAB(tcp)"
+ 
+-#define PRV(call) ((FAB *) (call)->fab)
++#define PRV(call) (*((FAB **) &(call)->fab))
+ 
+ #define MAX_VCI	1024
+ 

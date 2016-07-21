@@ -1,0 +1,37 @@
+Fix QA issue wrt Bug 457586
+diff -ur wxPython-src-2.8.12.1.orig/wxPython/distrib/PyAlaMode.desktop wxPython-src-2.8.12.1/wxPython/distrib/PyAlaMode.desktop
+--- distrib/PyAlaMode.desktop	2007-07-19 06:33:55.000000000 +0800
++++ distrib/PyAlaMode.desktop	2013-03-04 13:48:51.737419595 +0800
+@@ -5,4 +5,4 @@
+ Icon=PyCrust.png
+ Terminal=false
+ Type=Application
+-Categories=Application;Development;
++Categories=Development;
+diff -ur wxPython-src-2.8.12.1.orig/wxPython/distrib/PyCrust.desktop wxPython-src-2.8.12.1/wxPython/distrib/PyCrust.desktop
+--- distrib/PyCrust.desktop	2007-07-19 06:33:55.000000000 +0800
++++ distrib/PyCrust.desktop	2013-03-04 13:49:12.209418445 +0800
+@@ -5,4 +5,4 @@
+ Icon=PyCrust.png
+ Terminal=false
+ Type=Application
+-Categories=Application;Development;
++Categories=Development;
+diff -ur wxPython-src-2.8.12.1.orig/wxPython/distrib/PyShell.desktop wxPython-src-2.8.12.1/wxPython/distrib/PyShell.desktop
+--- distrib/PyShell.desktop	2007-07-19 06:33:55.000000000 +0800
++++ distrib/PyShell.desktop	2013-03-04 13:49:28.713417518 +0800
+@@ -5,4 +5,4 @@
+ Icon=PyCrust.png
+ Terminal=false
+ Type=Application
+-Categories=Application;Development;
++Categories=Development;
+diff -ur wxPython-src-2.8.12.1.orig/wxPython/distrib/XRCed.desktop wxPython-src-2.8.12.1/wxPython/distrib/XRCed.desktop
+--- distrib/XRCed.desktop	2007-07-19 06:33:55.000000000 +0800
++++ distrib/XRCed.desktop	2013-03-04 13:49:46.345416526 +0800
+@@ -5,4 +5,4 @@
+ Icon=XRCed.png
+ Terminal=false
+ Type=Application
+-Categories=Application;Development;
++Categories=Development;

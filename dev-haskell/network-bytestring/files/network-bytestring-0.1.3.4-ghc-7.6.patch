@@ -1,0 +1,29 @@
+diff --git a/Network/Socket/ByteString.hs b/Network/Socket/ByteString.hs
+index 2fbeaa3..adf3116 100644
+--- a/Network/Socket/ByteString.hs
++++ b/Network/Socket/ByteString.hs
+@@ -45,7 +45,7 @@ import Data.ByteString (ByteString)
+ import Data.ByteString.Internal (createAndTrim)
+ import Data.ByteString.Unsafe (unsafeUseAsCStringLen)
+ import Data.Word (Word8)
+-import Foreign.C.Types (CInt)
++import Foreign.C.Types
+ import Foreign.Marshal.Alloc (allocaBytes)
+ import Foreign.Ptr (Ptr, castPtr)
+ import Network.Socket (SockAddr, Socket(..), sendBufTo, recvBufFrom)
+diff --git a/Network/Socket/ByteString/Internal.hs b/Network/Socket/ByteString/Internal.hs
+index c6a835b..eb41194 100644
+--- a/Network/Socket/ByteString/Internal.hs
++++ b/Network/Socket/ByteString/Internal.hs
+@@ -11,9 +11,9 @@ module Network.Socket.ByteString.Internal
+ import System.IO.Error (ioeSetErrorString, mkIOError)
+ 
+ #if !defined(mingw32_HOST_OS)
+-import Foreign.C.Types (CInt)
++import Foreign.C.Types
+ import Foreign.Ptr (Ptr)
+-import System.Posix.Types (CSsize)
++import System.Posix.Types
+ 
+ import Network.Socket.ByteString.IOVec (IOVec)
+ import Network.Socket.ByteString.MsgHdr (MsgHdr)

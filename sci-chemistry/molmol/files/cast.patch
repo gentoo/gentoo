@@ -1,0 +1,21 @@
+diff --git a/src/data/DataDist.c b/src/data/DataDist.c
+index 7f7121f..18eef33 100644
+--- a/src/data/DataDist.c
++++ b/src/data/DataDist.c
+@@ -27,6 +27,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ 
+ #include <hashtab.h>
+ 
+@@ -89,7 +90,7 @@ hashInter(void *p, unsigned size)
+ {
+   TabEntryInter *entryP = p;
+ 
+-  return ((unsigned) entryP->atom1P + (unsigned) entryP->atom2P) % size;
++  return ((unsigned)(uintptr_t) entryP->atom1P + (unsigned)(uintptr_t) entryP->atom2P) % size;
+ }
+ 
+ static int

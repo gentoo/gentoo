@@ -1,0 +1,19 @@
+Fix include path on cabal-1.14
+
+Building cairo-0.12.3...
+Preprocessing library cairo-0.12.3...
+dist/build/Graphics/Rendering/Cairo/Matrix.h:1:26: fatal error: cairo-gtk2hs.h: No such file or directory
+compilation terminated.
+gtk2hsC2hs: Error during preprocessing custom header file
+diff --git a/cairo.cabal b/cairo.cabal
+index af7cee9..62fe84b 100644
+--- a/cairo.cabal
++++ b/cairo.cabal
+@@ -69,6 +69,7 @@ Library
+                           Graphics.Rendering.Cairo.Internal.Surfaces.PS
+                           Graphics.Rendering.Cairo.Internal.Surfaces.SVG
+         extensions:     ForeignFunctionInterface
++        Include-dirs: .
+         x-c2hs-Header:  cairo-gtk2hs.h
+         pkgconfig-depends: cairo >= 1.2.0
+         if flag(cairo_pdf)

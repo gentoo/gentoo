@@ -1,0 +1,15 @@
+diff --git a/source/initial.f b/source/initial.f
+index 835f228..4099c74 100644
+--- a/source/initial.f
++++ b/source/initial.f
+@@ -73,8 +73,8 @@ c
+ c
+ c     Intel compiler extensions to OpenMP standard
+ c
+-!$    call kmp_set_stacksize (2**30)
+-!$    call kmp_set_blocktime (0)
++!    call kmp_set_stacksize (2**30)
++!    call kmp_set_blocktime (0)
+ c
+ c     values of machine precision constants
+ c

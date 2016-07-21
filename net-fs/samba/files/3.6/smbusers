@@ -1,0 +1,7 @@
+# $Id$
+
+# Syntax:
+#   Unix_name = SMB_name1 SMB_name2 ...
+
+root = Administrator admin
+nobody = guest pcguest smbguest

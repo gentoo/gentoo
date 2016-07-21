@@ -1,0 +1,28 @@
+From b34edb6de512e5735d87cb0893804a4abd14f9b7 Mon Sep 17 00:00:00 2001
+From: baoilleach <baoilleach@71e0b675-c112-0410-beda-96664073b5c2>
+Date: Mon, 1 Oct 2012 20:40:36 +0000
+Subject: [PATCH] scripts/python/testpybel.py: Minor fix to enable failing
+ test to pass. Failures due to the new MOL Chiral Flag data
+ that I stored a while ago.
+
+git-svn-id: https://openbabel.svn.sourceforge.net/svnroot/openbabel/openbabel/trunk@5022 71e0b675-c112-0410-beda-96664073b5c2
+---
+ scripts/python/examples/testpybel.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/python/examples/testpybel.py b/scripts/python/examples/testpybel.py
+index aa5fcd4..7951851 100644
+--- a/scripts/python/examples/testpybel.py
++++ b/scripts/python/examples/testpybel.py
+@@ -336,7 +336,7 @@ class TestPybel(TestToolkit):
+     tpsaname = "TPSA"
+     Nbits = 3
+     Nfpbits = 32
+-    datakeys = ['NSC', 'Comment', 'OpenBabel Symmetry Classes']
++    datakeys = ['NSC', 'Comment', 'OpenBabel Symmetry Classes', 'MOL Chiral Flag']
+ 
+     def testFP_FP3(self):
+         "Checking the results from FP3"
+-- 
+1.7.12.3
+

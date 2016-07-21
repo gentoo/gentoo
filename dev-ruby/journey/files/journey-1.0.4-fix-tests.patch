@@ -1,0 +1,66 @@
+From d836e960d9a20c4c5bc986630d2ba34a340959ea Mon Sep 17 00:00:00 2001
+From: Aaron Patterson <aaron.patterson@gmail.com>
+Date: Fri, 27 Jul 2012 11:20:58 -0700
+Subject: [PATCH] fix assertion calls
+
+---
+ test/path/test_pattern.rb | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/test/path/test_pattern.rb b/test/path/test_pattern.rb
+index c684a0a..ec93471 100644
+--- a/test/path/test_pattern.rb
++++ b/test/path/test_pattern.rb
+@@ -85,9 +85,9 @@ def test_to_regexp_with_extended_group
+           ["/", ".", "?"]
+         )
+         path = Pattern.new strexp
+-        assert_match('/page/tender', path)
+-        assert_match('/page/love', path)
+-        refute_match('/page/loving', path)
++        assert_match(path, '/page/tender')
++        assert_match(path, '/page/love')
++        refute_match(path, '/page/loving')
+       end
+ 
+       def test_optional_names
+@@ -108,8 +108,8 @@ def test_to_regexp_match_non_optional
+           ["/", ".", "?"]
+         )
+         path = Pattern.new strexp
+-        assert_match('/123', path)
+-        refute_match('/', path)
++        assert_match(path, '/123')
++        refute_match(path, '/')
+       end
+ 
+       def test_to_regexp_with_group
+@@ -119,9 +119,9 @@ def test_to_regexp_with_group
+           ["/", ".", "?"]
+         )
+         path = Pattern.new strexp
+-        assert_match('/page/tender', path)
+-        assert_match('/page/love', path)
+-        refute_match('/page/loving', path)
++        assert_match(path, '/page/tender')
++        assert_match(path, '/page/love')
++        refute_match(path, '/page/loving')
+       end
+ 
+       def test_ast_sets_regular_expressions
+@@ -186,9 +186,9 @@ def test_insensitive_regexp_with_group
+           ["/", ".", "?"]
+         )
+         path = Pattern.new strexp
+-        assert_match('/page/TENDER/aaron', path)
+-        assert_match('/page/loVE/aaron', path)
+-        refute_match('/page/loVE/AAron', path)
++        assert_match(path, '/page/TENDER/aaron')
++        assert_match(path, '/page/loVE/aaron')
++        refute_match(path, '/page/loVE/AAron')
+       end
+ 
+       def test_to_regexp_with_strexp
+-- 
+1.9.1
+

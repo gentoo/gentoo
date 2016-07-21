@@ -1,0 +1,23 @@
+Index: jaaa-0.6.0/Makefile
+===================================================================
+--- jaaa-0.6.0.orig/Makefile
++++ jaaa-0.6.0/Makefile
+@@ -24,8 +24,7 @@ SUFFIX := $(shell uname -m | sed -e 's/^
+ LIBDIR = lib$(SUFFIX)
+ VERSION = 0.6.0
+ DISTDIR = jaaa-$(VERSION)
+-CPPFLAGS += -O2 -Wall -MMD -MP -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
+-CPPFLAGS += -march=native
++CPPFLAGS += -Wall -MMD -MP -DVERSION=\"$(VERSION)\" -DPREFIX=\"$(PREFIX)\" -I/usr/include/freetype2
+ 
+ LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L/usr/X11R6/$(LIBDIR)
+ LDLIBS += -lclalsadrv -lclthreads -lclxclient -lpthread -lfftw3f -ljack -lasound -lpthread -lXft -lX11 -lrt
+@@ -33,7 +32,7 @@ LDLIBS += -lclalsadrv -lclthreads -lclxc
+ 
+ JAAA_O = jaaa.o styles.o spectwin.o audio.o rngen.o
+ jaaa:	$(JAAA_O)
+-	g++ $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(JAAA_O) $(LDLIBS)
+ 
+ $(JAAA_O):
+ -include $(JAAA_O:%.o=%.d)

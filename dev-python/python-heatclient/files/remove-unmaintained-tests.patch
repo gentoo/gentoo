@@ -1,0 +1,59 @@
+diff --git a/heatclient/tests/unit/test_common_http.py b/heatclient/tests/unit/test_common_http.py
+index bb2fa20..309db93 100644
+--- a/heatclient/tests/unit/test_common_http.py
++++ b/heatclient/tests/unit/test_common_http.py
+@@ -624,15 +624,6 @@ class HttpClientTest(testtools.TestCase):
+         self.assertEqual(200, resp.status_code)
+         self.assertEqual({}, body)
+ 
+-    def test_get_system_ca_file(self):
+-        chosen = '/etc/ssl/certs/ca-certificates.crt'
+-        self.m.StubOutWithMock(os.path, 'exists')
+-        os.path.exists(chosen).AndReturn(chosen)
+-        self.m.ReplayAll()
+-
+-        ca = http.get_system_ca_file()
+-        self.assertEqual(chosen, ca)
+-
+     def test_insecure_verify_cert_None(self):
+         client = http.HTTPClient('https://foo', insecure=True)
+         self.assertFalse(client.verify_cert)
+diff --git a/heatclient/tests/unit/test_shell.py b/heatclient/tests/unit/test_shell.py
+index 0e4bf03..dad8a9f 100644
+--- a/heatclient/tests/unit/test_shell.py
++++ b/heatclient/tests/unit/test_shell.py
+@@ -3449,34 +3449,6 @@ class ShellTestResources(ShellBase):
+     def test_resource_list_no_resource_name(self):
+         self._test_resource_list(False)
+ 
+-    def test_resource_list_empty(self):
+-        self.register_keystone_auth_fixture()
+-        resp_dict = {"resources": []}
+-        resp = fakes.FakeHTTPResponse(
+-            200,
+-            'OK',
+-            {'content-type': 'application/json'},
+-            jsonutils.dumps(resp_dict))
+-        stack_id = 'teststack/1'
+-        http.SessionClient.request(
+-            '/stacks/%s/resources' % (
+-                stack_id), 'GET').AndReturn(resp)
+-
+-        self.m.ReplayAll()
+-
+-        resource_list_text = self.shell('resource-list {0}'.format(stack_id))
+-
+-        self.assertEqual('''\
+-+---------------+----------------------+---------------+-----------------+\
+---------------+
+-| resource_name | physical_resource_id | resource_type | resource_status |\
+- updated_time |
+-+---------------+----------------------+---------------+-----------------+\
+---------------+
+-+---------------+----------------------+---------------+-----------------+\
+---------------+
+-''', resource_list_text)
+-
+     def test_resource_list_nested(self):
+         self.register_keystone_auth_fixture()
+         resp_dict = {"resources": [{

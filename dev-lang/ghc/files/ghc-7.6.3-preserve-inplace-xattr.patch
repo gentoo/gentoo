@@ -1,0 +1,14 @@
+On hardened 'cp' drops out XT-pax parking.
+perfinion suggested using 'install', where portage
+might have a chance to save our marking.
+
+Reported-by: Jay Yang
+Gentoo-bug: https://bugs.gentoo.org/518734
+diff --git a/rules/build-prog.mk b/rules/build-prog.mk
+index 399369e..2ee9cd5 100644
+--- a/rules/build-prog.mk
++++ b/rules/build-prog.mk
+@@ -288,3 +288,3 @@ endif
+ $$($1_$2_INPLACE) : $1/$2/build/tmp/$$($1_$2_PROG_INPLACE) | $$$$(dir $$$$@)/.
+-	"$$(CP)" -p $$< $$@
++	$$(INSTALL) -m 755 $$< $$@

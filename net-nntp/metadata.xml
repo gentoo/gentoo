@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-nntp category contains NNTP (Network News Transfer Protocol)
+		software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-nntp enthält Software für das Network News Transfer Protocol
+		(NNTP).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-nntp contiene software NNTP (Network News Transfer
+		Protocol).
+	</longdescription>
+	<longdescription lang="ja">
+		net-nntpカテゴリーにはネットワーク・ニュース・トランスファー・プロトコルの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-nntp categorie bevat applicaties voor NNTP (Network News Transfer Protocol).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-nntp chứa các phần mềm NNTP (Network News Transfer Protocol).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-nntp contiene software NNTP (Network News Transfer
+		Protocol).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-nntp contém programas de NNTP (Network News
+		Transfer Protocol).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-nntp zawiera oprogramowanie związane z NNTP (Network News
+		Transfer Protocol).
+	</longdescription>
+</catmetadata>
+

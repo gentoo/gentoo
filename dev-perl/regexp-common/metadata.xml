@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Regexp-Common</remote-id>
+    <remote-id type="cpan-module">Regexp::Common</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::CC</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::Entry</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::SEN</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC1035</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC1738</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC1808</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC2384</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC2396</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::RFC2806</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::fax</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::file</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::ftp</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::gopher</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::http</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::news</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::pop</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::prospero</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::tel</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::telnet</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::tv</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::URI::wais</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::_support</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::balanced</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::comment</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::delimited</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::lingua</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::list</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::net</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::number</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::profanity</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::whitespace</remote-id>
+    <remote-id type="cpan-module">Regexp::Common::zip</remote-id>
+  </upstream>
+</pkgmetadata>

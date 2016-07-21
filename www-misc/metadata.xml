@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The www-misc category contains various miscellaneous world wide web
+		software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie www-misc enthält verschiedene Programme für das World
+		Wide Web (z.B. htdig, squidanalyser)
+	</longdescription>
+	<longdescription lang="es">
+		La categoría www-misc contiene software misceláneo relacionado con la
+		world wide web (WWW).
+	</longdescription>
+	<longdescription lang="ja">
+		www-miscカテゴリーには多種多様なワールド・ワイド・ウェブの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De www-misc categorie bevat verschillende programma's voor het WWW zoals
+		htdig en squidanalyser.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm www-misc chứa các phần mềm www khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria www-misc contiene software per il world wide web (WWW).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria www-misc contém vários programas de world wide web
+		(WWW) mistos.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria www-misc zawiera dodatkowe oprogramowanie związane z WWW.
+	</longdescription>
+</catmetadata>
+

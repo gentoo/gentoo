@@ -1,0 +1,44 @@
+Index: lastfm-1.5.4.27091+dfsg/definitions.pro.inc
+===================================================================
+--- lastfm-1.5.4.27091+dfsg.orig/definitions.pro.inc
++++ lastfm-1.5.4.27091+dfsg/definitions.pro.inc
+@@ -10,7 +10,7 @@ CONFIG( service ) {
+     CONFIG += plugin
+ 
+     win32: DESTDIR = $$BIN_DIR
+-    else:  DESTDIR = $$BIN_DIR/services
++    else:  DESTDIR = $$BIN_DIR/lastfm_services
+ 
+     TARGET = srv_$$TARGET
+ }
+@@ -19,7 +19,7 @@ CONFIG( extension ) {
+     CONFIG += plugin
+ 
+     win32: DESTDIR = $$BIN_DIR
+-    else:  DESTDIR = $$BIN_DIR/extensions
++    else:  DESTDIR = $$BIN_DIR/lastfm_services/extensions
+ 
+     TARGET = ext_$$TARGET
+ }
+Index: lastfm-1.5.4.27091+dfsg/src/libMoose/MooseCommon.cpp
+===================================================================
+--- lastfm-1.5.4.27091+dfsg.orig/src/libMoose/MooseCommon.cpp
++++ lastfm-1.5.4.27091+dfsg/src/libMoose/MooseCommon.cpp
+@@ -112,7 +112,7 @@ servicePath( QString name )
+         // Hack to get it working with VS2005
+         dirPath = qApp->applicationDirPath();
+     #else
+-        dirPath = qApp->applicationDirPath() + "/services";
++        dirPath = "/usr/lib/lastfm_services";
+     #endif
+ 
+     #ifndef QT_NO_DEBUG
+@@ -358,7 +358,7 @@ extensionPaths()
+     // Hack to get it working with VS2005
+     QString path = qApp->applicationDirPath();
+   #else
+-    QString path = qApp->applicationDirPath() + "/extensions";
++    QString path = "/usr/lib/lastfm_services/extensions";
+   #endif
+ 
+   #ifndef QT_NO_DEBUG

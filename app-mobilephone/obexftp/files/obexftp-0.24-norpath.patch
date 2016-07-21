@@ -1,0 +1,11 @@
+--- obexftp-0.22/swig/perl/Makefile.PL.in.norpath	2007-07-11 21:22:30.000000000 +0200
++++ obexftp-0.22/swig/perl/Makefile.PL.in	2007-08-06 20:17:39.000000000 +0200
+@@ -11,7 +11,7 @@ WriteMakefile(
+     'INC'       =>	q[-I@top_srcdir@ @CPPFLAGS@],
+ # Default value for LDDLFLAGS is $Config{lddlflags}="-shared -L/usr/local/lib"
+ # but we want rpath to be @libdir@ or @exec_prefix@/lib
+-    'LDDLFLAGS' =>      q[-shared -Wl,-rpath=@prefix@/lib],
++    'LDDLFLAGS' =>      q[-shared],
+     'LIBS'      =>	q[-L@top_builddir@/obexftp/.libs -lobexftp
+     			  -L@top_builddir@/multicobex/.libs -lmulticobex
+ 			  -L@top_builddir@/bfb/.libs -lbfb

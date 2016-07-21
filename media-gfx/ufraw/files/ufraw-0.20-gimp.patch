@@ -1,0 +1,24 @@
+http://ufraw.cvs.sourceforge.net/viewvc/ufraw/ufraw/ufraw-gimp.c?r1=1.82&r2=1.83&diff_format=u
+http://sourceforge.net/p/ufraw/bugs/392/
+https://bugs.gentoo.org/show_bug.cgi?id=527836
+
+--- ufraw-gimp.c	2014/01/07 13:00:08	1.82
++++ ufraw-gimp.c	2014/10/20 04:00:10	1.83
+@@ -79,12 +79,16 @@
+                            load_args,
+                            load_return_vals);
+ 
++#if HAVE_GIMP_2_9
+     gimp_register_magic_load_handler("file_ufraw_load",
+                                      (char *)raw_ext,
+                                      "",
+                                      "0,string,II*\\0,"
+                                      "0,string,MM\\0*,"
+                                      "0,string,<?xml");
++#else
++    gimp_register_load_handler("file_ufraw_load", (char *)raw_ext, "");
++#endif
+ 
+     gimp_install_procedure("file_ufraw_load_thumb",
+                            "Loads thumbnails from digital camera raw files.",
+

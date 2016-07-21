@@ -1,0 +1,23 @@
+--- sasldb/db_berkeley.c.orig	2010-10-04 21:11:15.044010468 -0400
++++ sasldb/db_berkeley.c	2010-10-04 21:12:18.921998718 -0400
+@@ -100,7 +100,7 @@
+     ret = db_create(mbdb, NULL, 0);
+     if (ret == 0 && *mbdb != NULL)
+     {
+-#if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1) || DB_VERSION_MAJOR >= 5
+ 	ret = (*mbdb)->open(*mbdb, NULL, path, NULL, DB_HASH, flags, 0660);
+ #else
+ 	ret = (*mbdb)->open(*mbdb, path, NULL, DB_HASH, flags, 0660);
+
+--- utils/dbconverter-2.c.orig	2010-10-04 21:23:39.778000256 -0400
++++ utils/dbconverter-2.c	2010-10-04 21:24:50.384999893 -0400
+@@ -214,7 +214,7 @@
+     ret = db_create(mbdb, NULL, 0);
+     if (ret == 0 && *mbdb != NULL)
+     {
+-#if DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1
++#if (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1) || DB_VERSION_MAJOR >= 5
+ 	ret = (*mbdb)->open(*mbdb, NULL, path, NULL, DB_HASH, DB_CREATE, 0664);
+ #else
+ 	ret = (*mbdb)->open(*mbdb, path, NULL, DB_HASH, DB_CREATE, 0664);

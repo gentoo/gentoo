@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<project name="jxplorer" default="jar">
+	<!-- some properties -->
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="docs.dir" value="docs" />
+	<property name="lib.dir" value="lib" />
+	<property name="dist.dir" value="dist" />
+	<property name="jarfile" value="${dist.dir}/jxplorer.jar" />
+	<property name="target.jdk" value="1.4" />
+
+	<path id="jxplorer.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- init -->
+	<target name="init">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+	</target>	
+
+	<!-- compile everything -->
+	<target name="compile" depends="init">
+		<mkdir dir="${build.dir}" />
+		<javac srcdir="${src.dir}" 
+			destdir="${build.dir}"
+			source="${target.jdk}"
+			target="${target.jdk}"
+			classpathref="jxplorer.classpath"/>
+	</target>
+
+	<!-- build the jar file -->
+	<target name="jar" depends="compile">
+		<jar jarfile="${jarfile}" basedir="${build.dir}">
+			<manifest>
+			<attribute name="Main-Class" value="com.ca.directory.jxplorer.JXplorer" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<!-- generate javadocs -->
+	<target name="docs" depends="init">
+		<javadoc sourcepath="${src.dir}"
+			packagenames="com.*"
+           		destdir="${docs.dir}"
+           		author="true"
+           		version="true"
+           		use="true"
+           		windowtitle="${ant.project.name} API" />
+	</target>
+	
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+        <!-- zip the sources -->
+        <target name="sourcezip">
+                <zip destfile="$dist}/${ant.project.name}-src.zip">
+                        <zipfileset dir="${src.dir}" />
+                </zip>
+        </target>
+
+</project>

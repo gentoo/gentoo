@@ -1,0 +1,20 @@
+--- src/packlib/cspack/tcpaw/tcpaw.c.old	2011-01-30 21:18:35.326089059 +0000
++++ src/packlib/cspack/tcpaw/tcpaw.c	2011-01-30 21:18:01.876081979 +0000
+@@ -984,7 +984,7 @@
+  int s, addrlen;
+  int sx, nn = 0;                     /* REXEC */
+ #ifndef IBM
+- char get[50], *getp = get;          /* REXEC */
++ char get[80], *getp = get;          /* REXEC */
+ #endif /*^IBM */
+  char sys[30];
+  register int i, j, k;
+@@ -1036,7 +1036,7 @@
+  char buff[100];
+  char *get;
+  char *getp;
+- char getbuf[50];                        /* REXEC */
++ char getbuf[80];                        /* REXEC */
+  getp = getbuf;                          /* REXEC */
+  get = getbuf;                           /* REXEC */
+ /* j = 80; */      /* (crude kludge) length of srvc in Fortran */

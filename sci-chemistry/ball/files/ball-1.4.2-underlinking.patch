@@ -1,0 +1,16 @@
+ source/APPLICATIONS/BALLVIEW/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/APPLICATIONS/BALLVIEW/CMakeLists.txt b/source/APPLICATIONS/BALLVIEW/CMakeLists.txt
+index 6d16212..f94ce76 100644
+--- a/source/APPLICATIONS/BALLVIEW/CMakeLists.txt
++++ b/source/APPLICATIONS/BALLVIEW/CMakeLists.txt
+@@ -85,7 +85,7 @@ IF (UNIX)
+ 	LIST(APPEND BALLVIEW_SUPPORT_LIBRARIES "pthread")
+ ENDIF ()
+ 
+-TARGET_LINK_LIBRARIES(BALLView BALL VIEW ${BALLVIEW_SUPPORT_LIBRARIES})
++TARGET_LINK_LIBRARIES(BALLView BALL VIEW ${BALLVIEW_SUPPORT_LIBRARIES} X11)
+ 
+ #Setup the translations
+ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/BALLViewTranslations.cmake)

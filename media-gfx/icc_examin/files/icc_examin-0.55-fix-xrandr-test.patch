@@ -1,0 +1,25 @@
+Upstream as https://sourceforge.net/p/oyranos/patches/6/
+
+Michael Weber
+
+--- icc_examin-0.55/configure_tests.sh
++++ icc_examin-0.55/configure_tests.sh
+@@ -689,7 +689,8 @@
+     if [ -z "$found" ]; then
+       pkg-config  --atleast-version=1.2 $pc_package
+       if [ $? = 0 ]; then
+-        found=`pkg-config --cflags $pc_package`
++	found="yes"
++        cflags=`pkg-config --cflags $pc_package`
+         version=`pkg-config --modversion $pc_package`
+       fi
+     fi
+@@ -703,7 +704,7 @@
+       if [ -n "$MAKEFILE_DIR" ]; then
+         for i in $MAKEFILE_DIR; do
+           test -f "$ROOT_DIR/$i/makefile".in && echo "XRANDR = 1" >> "$i/makefile"
+-          test -f "$ROOT_DIR/$i/makefile".in && echo "XRANDR_INC = $found" >> "$i/makefile"
++          test -f "$ROOT_DIR/$i/makefile".in && echo "XRANDR_INC = $cflags" >> "$i/makefile"
+         done
+       fi
+     elif [ $OSUNAME = "Linux" ]; then

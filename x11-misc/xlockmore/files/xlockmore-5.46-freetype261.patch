@@ -1,0 +1,11 @@
+--- xlockmore-5.46/configure.ac
++++ xlockmore-5.46/configure.ac
+@@ -1912,7 +1912,7 @@
+ AC_DEFUN([AC_PATH_FREETYPE_DIRECT],
+ [test -z "$freetype_direct_test_library" && freetype_direct_test_library=freetype
+ test -z "$freetype_direct_test_function" && freetype_direct_test_function=FT_Init_FreeType
+-test -z "$freetype_direct_test_include" && freetype_direct_test_include=freetype2/freetype.h
++test -z "$freetype_direct_test_include" && freetype_direct_test_include=freetype2/ft2build.h
+   for ac_dir in               \
+     /usr/X11R6.5.1/include	    \
+     /usr/X11R6.4/include	      \

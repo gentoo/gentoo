@@ -1,0 +1,50 @@
+--- dagrab-S0.513/dagrab.c
++++ dagrab-S0.513/dagrab.c
+@@ -776,6 +776,7 @@
+ 		thread_save(NULL);
+ #endif
+ 	      do_not_write_now:
++		;
+ 	}
+ 	/****************************************************************
+ 	 * Close output file 						*
+--- dagrab-S0.513/jit_in.c
++++ dagrab-S0.513/jit_in.c
+@@ -74,5 +74,6 @@
+ 			*p = (*(p + SSIZE) + *(p - SSIZE)) / 2;
+ 			view_status(ID_JITTER, NULL);
+ 		      is_ok:	/* means continue */
++			;
+ 		}
+ }
+--- dagrab-S0.513/Makefile
++++ dagrab-S0.513/Makefile
+@@ -3,14 +3,12 @@
+ # Note: PTHREAD support is optional, you can comment it out
+ ################################################################################
+ 
+-CC=	gcc
+-CFLAGS=	-O ${UCD} -W -Wall -DPTHREAD #-g # #-DDEBUG
+-LDFLAGS=-O -s -lpthread # -static
+ PREFIX=/usr/local
+-
+-ifneq ($(wildcard /usr/include/linux/ucdrom.h),)
+-       CFLAGS +=-DUSE_UCDROM
+-endif
++CC ?= gcc
++CFLAGS ?= -O
++CFLAGS += -W -Wall -DPTHREAD
++LDFLAGS ?= -O
++LIBS = -lpthread
+ 
+ all:	dagrab
+ 
+@@ -28,7 +26,7 @@
+ err.o:		dagrab.h main.h
+ 
+ dagrab:	$(OBJ) Makefile
+-	$(CC) $(LDFLAGS) $(OBJ) $(LIBS) -o dagrab
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBS) -o dagrab
+ 
+ clean:
+ 	rm -f dagrab *.o *.wav *.mp[23] *.ogg .*swp *~ gmon.out tags

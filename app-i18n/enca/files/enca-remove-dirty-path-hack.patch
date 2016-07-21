@@ -1,0 +1,19 @@
+diff -Naur enca-1.13.orig//configure.ac enca-1.13/configure.ac
+--- enca-1.13.orig//configure.ac	2010-02-09 05:23:03.000000000 -0500
++++ enca-1.13/configure.ac	2012-06-29 18:04:51.000000000 -0400
+@@ -97,15 +97,6 @@
+ dnl Check for good random number sources
+ AC_CHECK_FILES(/dev/random /dev/urandom /dev/srandom /dev/arandom)
+ 
+-dnl Dirty path hack.  Helps some people with badly set up search paths.
+-if test "$prefix" = "NONE"; then
+-  LDFLAGS="$LDFLAGS -L$ac_default_prefix/lib"
+-  CPPFLAGS="$CPPFLAGS -I$ac_default_prefix/include"
+-else
+-  LDFLAGS="$LDFLAGS -L$prefix/lib"
+-  CPPFLAGS="$CPPFLAGS -I$prefix/include"
+-fi
+-
+ dnl Checks for libraries.
+ ye_CHECK_LIBM
+ 

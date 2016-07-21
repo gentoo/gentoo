@@ -1,0 +1,15 @@
+--- src/inclan/unix.for.orig	2011-01-05 14:56:46.572193759 +0100
++++ src/inclan/unix.for	2011-01-05 14:57:27.833627375 +0100
+@@ -206,11 +206,8 @@
+       end if
+       if (iwbeg.lt.0) then
+         iwbeg=igttim
+-        iexpir=(julday(12,31,2010)-julday(1,1,1970))*24*3600
+-        if (iwbeg.gt.iexpir) call fatmsg ('License expired.')
++        iexpir=iwbeg+100
+         j=(iexpir-iwbeg)/(24*3600)
+-        if (j.lt.1000)
+-     *    call wrnmsg ('License expires in '//plural(j,'day')//'.')
+       end if
+       iwall=igttim-iwbeg
+ c      print *,'iwall = ',iwall,iwbeg,idat,itim

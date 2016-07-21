@@ -1,0 +1,17 @@
+Make tools compiled successfully with forced C++98
+
+Gentoo bugreport: https://bugs.gentoo.org/show_bug.cgi?id=503468
+
+diff --git a/tools/regression/src/compiler_status.cpp b/tools/regression/src/compiler_status.cpp
+index 63f8134..3f3374a 100644
+--- a/tools/regression/src/compiler_status.cpp
++++ b/tools/regression/src/compiler_status.cpp
+@@ -128,7 +128,7 @@ namespace
+         string ln(line);
+         if (ln.find("Revision: ") != string::npos)
+         {
+-          for(auto itr = ln.begin()+10; itr != ln.end() && isdigit(*itr); ++itr)
++          for(string::iterator itr = ln.begin()+10; itr != ln.end() && isdigit(*itr); ++itr)
+             rev += *itr;
+         }
+       }

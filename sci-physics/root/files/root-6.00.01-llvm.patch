@@ -1,0 +1,13 @@
+diff --git a/interpreter/llvm/src/Makefile.config.in b/interpreter/llvm/src/Makefile.config.in
+index 7633be2..c8756b1 100644
+--- a/interpreter/llvm/src/Makefile.config.in
++++ b/interpreter/llvm/src/Makefile.config.in
+@@ -170,6 +170,8 @@ CXXFLAGS += @CXXFLAGS@
+ 
+ # Linker flags.
+ LDFLAGS += @LDFLAGS@
++NOUNDEF := -Wl,--no-undefined
++LDFLAGS := $(filter-out $(NOUNDEF),$(LDFLAGS))
+ 
+ # Path to the library archiver program.
+ AR_PATH = @AR@

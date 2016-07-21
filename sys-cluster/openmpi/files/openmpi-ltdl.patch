@@ -1,0 +1,78 @@
+diff -up openmpi-1.6.3/ompi/debuggers/dlopen_test.c.ltdl openmpi-1.6.3/ompi/debuggers/dlopen_test.c
+--- openmpi-1.6.3/ompi/debuggers/dlopen_test.c.ltdl	2012-04-03 08:30:25.000000000 -0600
++++ openmpi-1.6.3/ompi/debuggers/dlopen_test.c	2012-11-02 14:50:12.613702426 -0600
+@@ -13,7 +13,17 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
+-#include "opal/libltdl/ltdl.h"
++#if OPAL_WANT_LIBLTDL
++  #ifndef __WINDOWS__
++    #if OPAL_LIBLTDL_INTERNAL
++      #include "opal/libltdl/ltdl.h"
++    #else
++      #include "ltdl.h"
++    #endif
++  #else
++    #include "ltdl.h"
++  #endif
++#endif
+ 
+ static int do_test(void);
+ 
+diff -up openmpi-1.6.3/ompi/debuggers/Makefile.am.ltdl openmpi-1.6.3/ompi/debuggers/Makefile.am
+--- openmpi-1.6.3/ompi/debuggers/Makefile.am.ltdl	2012-04-03 08:30:25.000000000 -0600
++++ openmpi-1.6.3/ompi/debuggers/Makefile.am	2012-11-02 15:04:53.636926260 -0600
+@@ -47,7 +47,7 @@ headers = \
+ 
+ dlopen_test_SOURCES = dlopen_test.c
+ dlopen_test_CPPFLAGS = -I$(top_srcdir)/opal/libltdl
+-dlopen_test_LDADD = $(top_builddir)/opal/libltdl/libltdlc.la
++dlopen_test_LDADD = $(LIBLTDL)
+ 
+ predefined_gap_test_SOURCES = predefined_gap_test.c
+ predefined_gap_test_LDFLAGS = $(WRAPPER_EXTRA_LDFLAGS)
+diff -up openmpi-1.6.3/test/support/components.c.ltdl openmpi-1.6.3/test/support/components.c
+--- openmpi-1.6.3/test/support/components.c.ltdl	2012-04-03 08:29:44.000000000 -0600
++++ openmpi-1.6.3/test/support/components.c	2012-11-02 14:50:29.204705380 -0600
+@@ -24,7 +24,17 @@
+ 
+ #include "opal/constants.h"
+ #include "opal/mca/mca.h"
+-#include "opal/libltdl/ltdl.h"
++#if OPAL_WANT_LIBLTDL
++  #ifndef __WINDOWS__
++    #if OPAL_LIBLTDL_INTERNAL
++      #include "opal/libltdl/ltdl.h"
++    #else
++      #include "ltdl.h"
++    #endif
++  #else
++    #include "ltdl.h"
++  #endif
++#endif
+ 
+ #include "components.h"
+ 
+diff -up openmpi-1.6.3/test/support/components.h.ltdl openmpi-1.6.3/test/support/components.h
+--- openmpi-1.6.3/test/support/components.h.ltdl	2012-04-03 08:29:44.000000000 -0600
++++ openmpi-1.6.3/test/support/components.h	2012-11-02 14:50:22.409703519 -0600
+@@ -20,7 +20,17 @@
+ #ifndef OMPI_SUPPORT_COMPONENTS_H
+ #define OMPI_SUPPORT_COMPONENTS_H
+ 
+-#include "opal/libltdl/ltdl.h"
++#if OPAL_WANT_LIBLTDL
++  #ifndef __WINDOWS__
++    #if OPAL_LIBLTDL_INTERNAL
++      #include "opal/libltdl/ltdl.h"
++    #else
++      #include "ltdl.h"
++    #endif
++  #else
++    #include "ltdl.h"
++  #endif
++#endif
+ #include "opal/mca/mca.h"
+ 
+ BEGIN_C_DECLS

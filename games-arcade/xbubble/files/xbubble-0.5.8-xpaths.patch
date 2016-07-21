@@ -1,0 +1,11 @@
+the x_libraries variable isnt always defined
+http://bugs.gentoo.org/92688
+
+--- configure
++++ configure
+@@ -4511,3 +4511,5 @@
+ fi
++if test x"$x_libraries" != x; then
+ LIBS="-L$x_libraries $LIBS"
++fi
+ 

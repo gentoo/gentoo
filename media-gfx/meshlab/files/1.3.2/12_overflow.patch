@@ -1,0 +1,23 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Fix overflowing array index in VCGlib
+Git-Branch: p/overflow
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..ec0961589f0d134ab51265b8431c5f
+
+Fixes also E-array-bounds error in Debian build log scanner.
+
+ vcglib/wrap/gl/addons.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vcglib/wrap/gl/addons.h b/vcglib/wrap/gl/addons.h
+index 002ff1b..bc863bf 100644
+--- a/vcglib/wrap/gl/addons.h
++++ b/vcglib/wrap/gl/addons.h
+@@ -292,7 +292,7 @@ public:
+ 						P[1] = Point3f( 0,   sinf(angle), cosf(angle));
+ 						assert(!glGetError());
+ 						glBegin(GL_TRIANGLES);
+-						Point3f n =  ( (P[0]-p0) ^ (P[2]-p0) ).Normalize();
++						Point3f n =  ( (P[0]-p0) ^ (P[1]-p0) ).Normalize();
+ 						glNormal3f(n[0],n[1],n[2]);
+ 						glVertex3f(p0[0],p0[1],p0[2]);
+ 						glNormal3f(N[0][0],N[0][1],N[0][2]);

@@ -1,0 +1,226 @@
+diff --git a/DataRows/data_rows.c b/DataRows/data_rows.c
+index 054fa1f..a07eedc 100644
+--- a/DataRows/data_rows.c
++++ b/DataRows/data_rows.c
+@@ -1,4 +1,5 @@
+ #include "data_rows.h"
++#include "utility.h"
+ 
+ #include "par.h"
+ 
+diff --git a/DataRows/py_data_rows.c b/DataRows/py_data_rows.c
+index fc8b3c8..985e6c3 100644
+--- a/DataRows/py_data_rows.c
++++ b/DataRows/py_data_rows.c
+@@ -1,4 +1,6 @@
+ #include "Python.h"             /* Python header files */
++#include "modsupport.h"
++#include "intobject.h"
+ 
+ #include "data_rows.h"
+ 
+diff --git a/connect/crosspeak.c b/connect/crosspeak.c
+index 0de57bf..7b016e1 100644
+--- a/connect/crosspeak.c
++++ b/connect/crosspeak.c
+@@ -1,4 +1,5 @@
+ #include "crosspeak.h"
++#include "utility.h"
+ 
+ #include "atom.h"
+ #include "table.h"
+diff --git a/connect/shift.c b/connect/shift.c
+index f54ba9f..a880001 100644
+--- a/connect/shift.c
++++ b/connect/shift.c
+@@ -1,4 +1,5 @@
+ #include "shift.h"
++#include "utility.h"
+ 
+ #include "atom.h"
+ #include "table.h"
+diff --git a/global/macros.h b/global/macros.h
+index 43fc43e..bb1d267 100644
+--- a/global/macros.h
++++ b/global/macros.h
+@@ -8,6 +8,7 @@
+ #include <math.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ 
+ #ifdef WIN32
+ #include <ctype.h>
+diff --git a/global/parser.c b/global/parser.c
+index 007d926..0f19575 100644
+--- a/global/parser.c
++++ b/global/parser.c
+@@ -1,4 +1,5 @@
+ #include "parser.h"
++#include "utility.h"
+ 
+ #define  MAX_NARGS		20
+ 
+diff --git a/peak/fitter.c b/peak/fitter.c
+index ba6b175..b58f573 100644
+--- a/peak/fitter.c
++++ b/peak/fitter.c
+@@ -1,4 +1,5 @@
+ #include "fitter.h"
++#include "data.h"
+ 
+ #include "nonlinear_model.h"
+ 
+diff --git a/peak/peak_fit.c b/peak/peak_fit.c
+index 92c69a8..5b9791f 100644
+--- a/peak/peak_fit.c
++++ b/peak/peak_fit.c
+@@ -6,6 +6,7 @@
+ #include "output.h"
+ #include "ref.h"
+ #include "script_fit.h"
++#include "fitter.h"
+ 
+ #define  MEGAWORD		(1024 * 1024)
+ #define  DEFAULT_STORE		(2 * MEGAWORD)
+diff --git a/plot1/draw.c b/plot1/draw.c
+index 4fdce96..a2a2e8a 100644
+--- a/plot1/draw.c
++++ b/plot1/draw.c
+@@ -1,4 +1,5 @@
+ #include "draw.h"
++#include "ticks.h"
+ 
+ #include "color.h"
+ #include "data.h"
+diff --git a/plot1/object.c b/plot1/object.c
+index 973897c..e043a53 100644
+--- a/plot1/object.c
++++ b/plot1/object.c
+@@ -1,4 +1,5 @@
+ #include "object.h"
++#include "script.h"
+ 
+ #include "color.h"
+ #include "parser.h"
+diff --git a/plot1/output_popup.c b/plot1/output_popup.c
+index 0794584..e73976e 100644
+--- a/plot1/output_popup.c
++++ b/plot1/output_popup.c
+@@ -1,4 +1,5 @@
+ #include "output_popup.h"
++#include "script.h"
+ 
+ #include "output.hlp"
+ 
+diff --git a/plot1/plots.c b/plot1/plots.c
+index 3790f5b..7ac58df 100644
+--- a/plot1/plots.c
++++ b/plot1/plots.c
+@@ -1,4 +1,5 @@
+ #include "plots.h"
++#include "script.h"
+ 
+ #include "data.h"
+ #include "input.h"
+diff --git a/plot1/region_popup.c b/plot1/region_popup.c
+index 68b3930..f049d29 100644
+--- a/plot1/region_popup.c
++++ b/plot1/region_popup.c
+@@ -1,4 +1,5 @@
+ #include "region_popup.h"
++#include "data.h"
+ 
+ #include "region.hlp"
+ 
+diff --git a/plot2/data_popup.c b/plot2/data_popup.c
+index 851b1d4..1c9026e 100644
+--- a/plot2/data_popup.c
++++ b/plot2/data_popup.c
+@@ -1,4 +1,5 @@
+ #include "data_popup.h"
++#include "rowcol_popup.h"
+ 
+ #include "data.hlp"
+ 
+diff --git a/plot2/extract_popup.c b/plot2/extract_popup.c
+index 416aab0..a7fcbf3 100644
+--- a/plot2/extract_popup.c
++++ b/plot2/extract_popup.c
+@@ -1,4 +1,5 @@
+ #include "extract_popup.h"
++#include "script.h"
+ 
+ #include "extract.hlp"
+ 
+diff --git a/plot2/levels_popup.c b/plot2/levels_popup.c
+index 197cf2c..e1ac22c 100644
+--- a/plot2/levels_popup.c
++++ b/plot2/levels_popup.c
+@@ -1,4 +1,5 @@
+ #include "levels_popup.h"
++#include "levels_func.h"
+ 
+ #include "levels.hlp"
+ 
+diff --git a/plot2/plot2.c b/plot2/plot2.c
+index 9ca91c3..0c10d5a 100644
+--- a/plot2/plot2.c
++++ b/plot2/plot2.c
+@@ -1,4 +1,6 @@
+ #include "plot2.h"
++#include "object_popup.h"
++#include "prop_popup.h"
+ 
+ #include "baseline_popup.h"
+ #include "callback.h"
+diff --git a/plot2/rowcol_popup.c b/plot2/rowcol_popup.c
+index e9f4843..6c50426 100644
+--- a/plot2/rowcol_popup.c
++++ b/plot2/rowcol_popup.c
+@@ -1,4 +1,5 @@
+ #include "rowcol_popup.h"
++#include "ref_popup.h"
+ 
+ #include "rowcol.hlp"
+ 
+diff --git a/plot2/script.c b/plot2/script.c
+index 2f55182..d7d886f 100644
+--- a/plot2/script.c
++++ b/plot2/script.c
+@@ -1,4 +1,5 @@
+ #include "script.h"
++#include "macros.h"
+ 
+ #include "param.h"
+ #include "stack.h"
+diff --git a/plot2/slice_popup.c b/plot2/slice_popup.c
+index b601834..1b1e686 100644
+--- a/plot2/slice_popup.c
++++ b/plot2/slice_popup.c
+@@ -1,4 +1,5 @@
+ #include "slice_popup.h"
++#include "rowcol_func.h"
+ 
+ #include "baseline.h"
+ #include "baseline_popup.h"
+diff --git a/process/files.c b/process/files.c
+index e09127e..d95d681 100644
+--- a/process/files.c
++++ b/process/files.c
+@@ -1,4 +1,5 @@
+ #include "files.h"
++#include "macros.h"
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff --git a/project/project.c b/project/project.c
+index 92b70e3..a3e6d94 100644
+--- a/project/project.c
++++ b/project/project.c
+@@ -1,4 +1,5 @@
+ #include "project.h"
++#include "utility.h"
+ 
+ #include "block.h"
+ #include "par.h"

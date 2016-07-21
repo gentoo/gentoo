@@ -1,0 +1,15 @@
+--- tvision/config.pl
++++ tvision/config.pl
+@@ -1193,12 +1193,6 @@
+     $rep.="\t".GenInstallFiles('0644',"$makeDir/$ver",'$(libdir)');
+     $stripDebug=($OSf eq 'Darwin') ? '-S' : '--strip-debug';
+     $rep.="\tstrip $stripDebug \$(libdir)/$ver\n" unless $conf{'debugInfo'} eq 'yes';
+-    # FreeBSD: merge data from libdir.
+-    # Darwin: doesn't have ldconfig.
+-    if ($OSf ne 'Darwin')
+-      {
+-       $rep.=($OSf eq 'FreeBSD') ? "\t-ldconfig -m \$(libdir)\n" : "\t-ldconfig\n";
+-      }
+    }
+  if ($internac)
+    {

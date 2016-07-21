@@ -1,0 +1,20 @@
+--- empty.c.orig	2009-07-27 18:26:42.000000000 +0100
++++ empty.c	2011-12-22 17:17:11.037090159 +0000
+@@ -584,7 +584,7 @@
+ 
+ 		for (i = 1; i < argc; i++) {
+ 			strncat(buf, " ", 1);
+-			strncat(buf, argv[i], sizeof(buf));
++			strncat(buf, argv[i], sizeof(buf) -1);
+ 		}
+ 
+ 		(void)syslog(LOG_NOTICE, "forked %s", buf);
+@@ -686,7 +686,7 @@
+ 	while ((dent = readdir(dir)) != NULL) {
+ 		if (!strncmp(fmask, dent->d_name, len)) {
+ 			strncpy(fname, dent->d_name, sizeof(fname) - 1);
+-			fname[sizeof(buf) - 1] = '\0';
++			fname[MAXPATHLEN - 1] = '\0';
+ 
+ 			strtok(fname, sep);		/* empty */
+ 			strtok(NULL, sep);		/* PPID */

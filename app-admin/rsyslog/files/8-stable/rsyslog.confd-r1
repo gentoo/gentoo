@@ -1,0 +1,30 @@
+# /etc/conf.d/rsyslog
+
+# Configuration file
+#RSYSLOG_CONFIGFILE="/etc/rsyslog.conf"
+
+# PID file
+# If you should ever change this, remember to update
+# "/etc/logrotate.d/rsyslog", too.
+#RSYSLOG_PIDFILE="/run/rsyslogd.pid"
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we wait 1000ms after we have started the service to ensure
+# that the daemon is really up and running.
+#RSYSLOG_SSDARGS="--wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (60 + 5 seconds
+# per default) when you are stopping the service.
+# You need to increase the value when you are working with a large queue.
+# See http://www.rsyslog.com/doc/queues.html for further information.
+#RSYSLOG_TERMTIMEOUT="TERM/60/KILL/5"
+
+
+# Options to rsyslogd
+# See rsyslogd(8) for more details
+# Notes:
+# * Do not specify another PIDFILE but use the variable above to change the location
+# * Do not specify another CONFIGFILE but use the variable above to change the location
+#RSYSLOG_OPTS=""

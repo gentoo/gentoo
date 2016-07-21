@@ -1,0 +1,36 @@
+--- autoconf/Makefile.common.in.orig	1999-05-06 23:35:32.000000000 +0200
++++ autoconf/Makefile.common.in	2006-09-11 23:07:41.000000000 +0200
+@@ -9,11 +9,10 @@
+ install:	install.bin install.man
+ 
+ install.bin:	$(PROG)
+-		$(STRIP) $(PROG)
+-		$(INSTALL_PROGRAM) $(PROG) $(AFTER_BIN_DIR)
++		$(INSTALL_PROGRAM) $(PROG) $(DESTDIR)$(AFTER_BIN_DIR)
+ 
+ install.man:
+-		$(INSTALL_DATA) $(PROG).man $(AFTER_MAN_DIR)/$(PROG).1x
++		$(INSTALL_DATA) $(PROG).man $(DESTDIR)$(AFTER_MAN_DIR)/$(PROG).1x
+ 
+ uninstall:
+ 		$(RMF) $(AFTER_BIN_DIR)/$(PROG)
+--- autoconf/Makefile.defines.in.orig	1999-05-06 23:35:32.000000000 +0200
++++ autoconf/Makefile.defines.in	2006-09-11 23:17:40.000000000 +0200
+@@ -2,6 +2,7 @@
+ # Copyright (c) 1998, Guylhem AZNAR <guylhem@oeil.qc.ca>
+ #
+ 
++DESTDIR		=
+ CC		= @CC@
+ CCFLAGS         = @CFLAGS@
+ # -march=pentiumpro -mcpu=pentiumpro
+@@ -21,7 +22,7 @@
+ LEXFLAGS	=
+ 
+ INSTALL		= @INSTALL@
+-INSTALL_PROGRAM	= @INSTALL@ -s -m 755
++INSTALL_PROGRAM	= @INSTALL@ -m 755
+ INSTALL_DATA	= @INSTALL@ -m 644
+ 
+ INCS_X		= @X_CFLAGS@
+

@@ -1,0 +1,9 @@
+--- Makefile.orig	2009-10-17 23:37:30.307257014 -0700
++++ Makefile	2009-10-17 23:38:25.914190883 -0700
+@@ -1,6 +1,7 @@
+ 
+ #LINKOPT	=	/usr/local/lib/libdbmalloc.a
++LINKOPT	=	$(LDFLAGS)
+ CFLAGS	=	-g
+ 
+ default:	all

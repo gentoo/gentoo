@@ -1,0 +1,49 @@
+From 100a7b38222a63c6435a72b4974b55f39a28989e Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lubo.rintel@gooddata.com>
+Date: Mon, 9 Jan 2012 19:24:41 +0100
+Subject: [PATCH 2/2] Correctly parse empty object and arrays in JSON
+
+Add a test case.
+Fix from David Lutterkort <lutter@redhat.com>.
+
+https://fedorahosted.org/augeas/ticket/248
+---
+ lenses/json.aug            |    4 ++--
+ lenses/tests/test_json.aug |    5 +++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/lenses/json.aug b/lenses/json.aug
+index 6ceab09..2645806 100644
+--- a/lenses/json.aug
++++ b/lenses/json.aug
+@@ -37,9 +37,9 @@ let const (r:regexp) = [ label "const" . store r . ws ]
+ let value0 = str | number | const /true|false|null/
+ 
+ let fix_value (value:lens) =
+-  let array = [ label "array" . lbrack . Build.opt_list value comma . rbrack ] in
++  let array = [ label "array" . lbrack . (Build.opt_list value comma)? . rbrack ] in
+   let pair = [ label "entry" . str_store . colon . value ] in
+-  let obj = [ label "dict" . lbrace . Build.opt_list pair comma . rbrace ] in
++  let obj = [ label "dict" . lbrace . (Build.opt_list pair comma)? . rbrace ] in
+   (str | number | obj | array | const /true|false|null/)
+ 
+ (* Typecheck finitely deep nesting *)
+diff --git a/lenses/tests/test_json.aug b/lenses/tests/test_json.aug
+index d8b7fa8..aec7d4c 100644
+--- a/lenses/tests/test_json.aug
++++ b/lenses/tests/test_json.aug
+@@ -30,6 +30,11 @@ test lns get "{ \"0\": true, \"1\":false }" =
+ test lns get "{\"menu\": \"entry one\"}" =
+   { "dict" { "entry" = "menu" { "string" = "entry one" } } }
+ 
++test lns get "[ ]" =
++  { "array" }
++
++test lns get "{}" =
++  { "dict" }
+ 
+ let s = "{\"menu\": {
+   \"id\": \"file\",
+-- 
+1.7.7.5
+

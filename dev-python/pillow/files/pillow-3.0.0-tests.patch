@@ -1,0 +1,63 @@
+ Tests/test_imagefont.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Tests/test_imagefont.py b/Tests/test_imagefont.py
+index dd22344..d0a0826 100644
+--- a/Tests/test_imagefont.py
++++ b/Tests/test_imagefont.py
+@@ -112,6 +112,7 @@ try:
+             self.assert_image_equal(img_path, img_filelike)
+             self._clean()
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1259")
+         def test_textsize_equal(self):
+             im = Image.new(mode='RGB', size=(300, 100))
+             draw = ImageDraw.Draw(im)
+@@ -126,6 +127,7 @@ try:
+             target_img = Image.open(target)
+             self.assert_image_similar(im, target_img, .5)
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1259")
+         def test_render_multiline(self):
+             im = Image.new(mode='RGB', size=(300, 100))
+             draw = ImageDraw.Draw(im)
+@@ -145,6 +147,7 @@ try:
+             # at epsilon = ~38.
+             self.assert_image_similar(im, target_img, .5)
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1259")
+         def test_render_multiline_text(self):
+             ttf = ImageFont.truetype(FONT_PATH, FONT_SIZE)
+ 
+@@ -200,6 +203,7 @@ try:
+                              draw.multiline_textsize("longest line\nline",
+                                                      font=ttf)[0])
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1259")
+         def test_multiline_spacing(self):
+             ttf = ImageFont.truetype(FONT_PATH, FONT_SIZE)
+ 
+@@ -255,6 +259,7 @@ try:
+             # Check boxes a and b are same size
+             self.assertEqual(box_size_a, box_size_b)
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1456")
+         def test_rotated_transposed_font_get_mask(self):
+             # Arrange
+             text = "mask this"
+@@ -269,6 +274,7 @@ try:
+             # Assert
+             self.assertEqual(mask.size, (13, 108))
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1456")
+         def test_unrotated_transposed_font_get_mask(self):
+             # Arrange
+             text = "mask this"
+@@ -316,6 +322,7 @@ try:
+             # Assert
+             self.assertEqual(offset, (0, 3))
+ 
++        @unittest.skip("https://github.com/python-pillow/Pillow/issues/1456")
+         def test_free_type_font_get_mask(self):
+             # Arrange
+             font = ImageFont.truetype(FONT_PATH, FONT_SIZE)

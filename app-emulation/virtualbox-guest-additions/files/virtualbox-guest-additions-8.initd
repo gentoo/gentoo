@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+pidfile="/var/run/vboxguest-service.pid"
+command="/usr/sbin/vboxguest-service"
+command_args="--foreground"
+command_background="true"
+
+depend() {
+        need dbus localmount
+	before xdm
+}
+
+start_pre() {
+	einfo "Loading kernel modules"
+	/sbin/modprobe vboxguest 2>&1
+	/sbin/modprobe vboxsf 2>&1
+}
+
+stop_post() {
+	einfo "Removing kernel modules"
+	/sbin/modprobe -r vboxsf 2>&1
+	/sbin/modprobe -r vboxguest 2>&1
+}

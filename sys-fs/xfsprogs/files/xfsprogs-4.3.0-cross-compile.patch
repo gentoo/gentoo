@@ -1,0 +1,181 @@
+From 1a366eedc0eb4da46da48e9f6e2da27c7b5d2076 Mon Sep 17 00:00:00 2001
+From: Gwendal Grignou <gwendal@chromium.org>
+Date: Fri, 3 Jun 2016 09:17:28 -0700
+Subject: [PATCH] Allow compiling xfsprogs in a cross compile environment.
+
+Without this patch, we are using the same compiler and options for the host
+compiler (BUILD_CC) and the target compiler (CC), and we would get error
+messages at compilation:
+x86_64-pc-linux-gnu-gcc -O2 -O2 -pipe -march=armv7-a -mtune=cortex-a15 ...
+x86_64-pc-linux-gnu-gcc.real: error: unrecognized command line option
+'-mfpu=neon'
+'-mfloat-abi=hard'
+'-clang-syntax'
+'-mfpu=neon'
+'-mfloat-abi=hard'
+'-clang-syntax'
+
+Add BUILD_CC and BUILD_CFLAGS as precious variables to allow setting it up
+from the ebuild.
+
+Signed-off-by: Gwendal Grignou <gwendal@chromium.org>
+---
+ configure            | 26 +++++++++++++++++++++-----
+ configure.ac         | 20 +++++++++++++++-----
+ include/builddefs.in |  6 ++++--
+ libxfs/Makefile      |  4 ++--
+ 4 files changed, 42 insertions(+), 14 deletions(-)
+
+diff --git a/configure b/configure
+index 325081f..863a447 100755
+--- a/configure
++++ b/configure
+@@ -700,6 +700,7 @@ libreadline
+ enable_blkid
+ enable_gettext
+ enable_shared
++BUILD_CFLAGS
+ BUILD_CC
+ CPP
+ LT_SYS_LIBRARY_PATH
+@@ -806,7 +807,9 @@ LDFLAGS
+ LIBS
+ CPPFLAGS
+ LT_SYS_LIBRARY_PATH
+-CPP'
++CPP
++BUILD_CC
++BUILD_CFLAGS'
+ 
+ 
+ # Initialize some variables set by options.
+@@ -1456,6 +1459,9 @@ Some influential environment variables:
+   LT_SYS_LIBRARY_PATH
+               User-defined run-time library search path.
+   CPP         C preprocessor
++  BUILD_CC    C compiler for build tools
++  BUILD_CFLAGS
++              C compiler flags for build tools
+ 
+ Use these variables to override the choices made by `configure' or to help
+ it to find libraries and programs with nonstandard names/locations.
+@@ -11957,11 +11963,12 @@ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+-if test $cross_compiling = no; then
+-  BUILD_CC="$CC"
+ 
+-else
+-  for ac_prog in gcc cc
++if test "${BUILD_CC+set}" != "set"; then
++  if test $cross_compiling = no; then
++    BUILD_CC="$CC"
++  else
++    for ac_prog in gcc cc
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+@@ -12003,6 +12010,15 @@ fi
+   test -n "$BUILD_CC" && break
+ done
+ 
++  fi
++fi
++
++if test "${BUILD_CFLAGS+set}" != "set"; then
++  if test $cross_compiling = no; then
++    BUILD_CFLAGS="$CFLAGS"
++  else
++    BUILD_CFLAGS="-g -O2"
++  fi
+ fi
+ 
+ # Check whether --enable-shared was given.
+diff --git a/configure.ac b/configure.ac
+index d44438f..fc286b3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -9,11 +9,21 @@ AC_PREFIX_DEFAULT(/usr)
+ AC_PROG_LIBTOOL
+ 
+ AC_PROG_CC
+-if test $cross_compiling = no; then
+-  BUILD_CC="$CC"
+-  AC_SUBST(BUILD_CC)
+-else
+-  AC_CHECK_PROGS(BUILD_CC, gcc cc)
++AC_ARG_VAR(BUILD_CC, [C compiler for build tools])
++if test "${BUILD_CC+set}" != "set"; then
++  if test $cross_compiling = no; then
++    BUILD_CC="$CC"
++  else
++    AC_CHECK_PROGS(BUILD_CC, gcc cc)
++  fi
++fi
++AC_ARG_VAR(BUILD_CFLAGS, [C compiler flags for build tools])
++if test "${BUILD_CFLAGS+set}" != "set"; then
++  if test $cross_compiling = no; then
++    BUILD_CFLAGS="$CFLAGS"
++  else
++    BUILD_CFLAGS="-g -O2"
++  fi
+ fi
+ 
+ AC_ARG_ENABLE(shared,
+diff --git a/include/builddefs.in b/include/builddefs.in
+index c2ca4cb..9ca57a6 100644
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -27,6 +27,7 @@ MALLOCLIB = @malloc_lib@
+ LOADERFLAGS = @LDFLAGS@
+ LTLDFLAGS = @LDFLAGS@
+ CFLAGS = @CFLAGS@
++BUILD_CFLAGS = @BUILD_CFLAGS@
+ 
+ LIBRT = @librt@
+ LIBUUID = @libuuid@
+@@ -150,7 +151,7 @@ PCFLAGS+= -DENABLE_BLKID
+ endif
+ 
+ 
+-GCFLAGS = $(OPTIMIZER) $(DEBUG) \
++GCFLAGS = $(DEBUG) \
+ 	  -DVERSION=\"$(PKG_VERSION)\" -DLOCALEDIR=\"$(PKG_LOCALE_DIR)\"  \
+ 	  -DPACKAGE=\"$(PKG_NAME)\" -I$(TOPDIR)/include -I$(TOPDIR)/libxfs
+ 
+@@ -158,8 +159,9 @@ ifeq ($(ENABLE_GETTEXT),yes)
+ GCFLAGS += -DENABLE_GETTEXT
+ endif
+ 
++BUILD_CFLAGS += $(GCFLAGS) $(PCFLAGS)
+ # First, Global, Platform, Local CFLAGS
+-CFLAGS += $(FCFLAGS) $(GCFLAGS) $(PCFLAGS) $(LCFLAGS)
++CFLAGS += $(FCFLAGS) $(OPTIMIZER) $(GCFLAGS) $(PCFLAGS) $(LCFLAGS)
+ 
+ include $(TOPDIR)/include/buildmacros
+ 
+diff --git a/libxfs/Makefile b/libxfs/Makefile
+index 873d4ec..8d728c0 100644
+--- a/libxfs/Makefile
++++ b/libxfs/Makefile
+@@ -111,7 +111,7 @@ default: crc32selftest ltdepend $(LTLIBRARY)
+ 
+ crc32table.h: gen_crc32table.c
+ 	@echo "    [CC]     gen_crc32table"
+-	$(Q) $(BUILD_CC) $(CFLAGS) -o gen_crc32table $<
++	$(Q) $(BUILD_CC) $(BUILD_CFLAGS) -o gen_crc32table $<
+ 	@echo "    [GENERATE] $@"
+ 	$(Q) ./gen_crc32table > crc32table.h
+ 
+@@ -122,7 +122,7 @@ crc32table.h: gen_crc32table.c
+ # disk.
+ crc32selftest: gen_crc32table.c crc32table.h crc32.c
+ 	@echo "    [TEST]    CRC32"
+-	$(Q) $(BUILD_CC) $(CFLAGS) -D CRC32_SELFTEST=1 crc32.c -o $@
++	$(Q) $(BUILD_CC) $(BUILD_CFLAGS) -D CRC32_SELFTEST=1 crc32.c -o $@
+ 	$(Q) ./$@
+ 
+ # set up include/xfs header directory
+-- 
+2.8.0.rc3.226.g39d4020

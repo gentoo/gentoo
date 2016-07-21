@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/367509
+
+pluginserver.C is using dlsym, dlopen, dlclose and dlerror
+
+--- cinelerra/Makefile.am
++++ cinelerra/Makefile.am
+@@ -692,7 +692,8 @@
+ 	$(LIBDV_LIBS) \
+ 	-luuid \
+ 	$(MJPEG_LIBS) \
+-	-lstdc++
++	-lstdc++ \
++	-ldl
+ 
+ EXTRA_DIST = gen-feather-h
+ 

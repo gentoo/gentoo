@@ -1,0 +1,11 @@
+--- configure.ac
++++ configure.ac
+@@ -20,6 +20,8 @@
+ AC_CHECK_HEADERS([unistd.h])
+ AC_CHECK_HEADERS([limits.h])
+ 
++PKG_PROG_PKG_CONFIG
++
+ #
+ # Check if libgd is needed
+ #

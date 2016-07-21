@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<longdescription>
+	The Anti-Spam SMTP Proxy (ASSP) Server project is an open source
+	platform-independent SMTP Proxy server which implements whitelists
+	and Bayesian filtering to rid the planet of the blight of unsolicited
+	email (UCE). UCE must be stopped at the SMTP server. Anti-spam tools
+	must be adaptive to new spam and customized for each site's mail
+	patterns. This free, easy-to-use tool works with any mail transport
+	and achieves these goals requiring no operator intervention after the
+	initial setup phase.
+	</longdescription>
+	<use>
+		<flag name="spf">Adds support for Sender Policy Framework</flag>
+		<flag name="srs">Adds support for Sender Rewriting Scheme</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">assp</remote-id>
+	</upstream>
+</pkgmetadata>

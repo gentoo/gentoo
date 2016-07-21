@@ -1,0 +1,26 @@
+From 46eb6a5a9a90049920ea84018b69b643c2809bfa Mon Sep 17 00:00:00 2001
+From: Paul Varner <fuzzyray@gentoo.org>
+Date: Thu, 19 Feb 2015 09:46:47 -0600
+Subject: [PATCH] Fix genlop -r to work with new Portage sync code. (Bug
+ 540050)
+
+---
+ genlop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/genlop b/genlop
+index e36c678..4e0faf0 100755
+--- a/genlop
++++ b/genlop
+@@ -968,7 +968,7 @@ sub rsync() {
+ 		my $handle;
+ 		open_file($_, \$handle);
+ 		while(<$handle>) {
+-			if ($_ =~ m/^(.*?)\: \=\=\= Sync completed with/) {
++			if ($_ =~ m/^(.*?)\: \=\=\= Sync completed/) {
+ 				if ($date_found) {
+ 					if (datecompare($1) <= 0) {
+ 						next;
+-- 
+2.3.0
+

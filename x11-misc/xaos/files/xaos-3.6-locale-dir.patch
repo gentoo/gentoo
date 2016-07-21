@@ -1,0 +1,11 @@
+--- configure.in.orig	2014-06-09 10:54:18.459186718 -0700
++++ configure.in	2014-06-09 10:56:47.472204763 -0700
+@@ -141,7 +141,7 @@
+ dnl Checks for programs.
+ 
+ DRIVERDIRS=""
+-LOCALEDIR="/usr/share/locale"
++LOCALEDIR="$prefix/share/locale"
+ DRIVERLIBS="lib/libui.a lib/libui-hlp.a lib/libengine.a lib/libutil.a lib/libfilter.a"
+ AC_PROG_INSTALL
+ 

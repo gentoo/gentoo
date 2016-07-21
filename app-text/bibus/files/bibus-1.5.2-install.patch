@@ -1,0 +1,110 @@
+ Makefile |   62 ++++++++++++++++++++++++--------------------------------------
+ 1 files changed, 24 insertions(+), 38 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d41b12d..b07cdff 100755
+--- a/Makefile
++++ b/Makefile
+@@ -14,62 +14,60 @@ mandir = $(prefix)/share/man
+ man1dir = $(mandir)/man1
+ 
+ define install-files
+-	install -d $(datadir)/bibus
+-	install -m644 *.py MySQL_Bibus.ini $(datadir)/bibus/
++	install -d $(DESTDIR)$(pythondir)/bibus
++	install -m644 *.py MySQL_Bibus.ini $(DESTDIR)/$(pythondir)/bibus/
+ 	#
+ 	for dir in Export Format Import StyleEditor FirstStart bibOOo db_models Pixmaps Data LyX Utilities; do \
+-		find $$dir ! -wholename '*CVS*' -a -type f -exec install -m644 '{}' -D $(datadir)/bibus/'{}' ';' ; \
++		find $$dir ! -wholename '*CVS*' -a -type f -exec install -m644 '{}' -D $(DESTDIR)/$(pythondir)/bibus/'{}' ';' ; \
+ 	done
+-	install -m644 Setup/UnoConnectionListener.odg -D $(datadir)/bibus/Setup/UnoConnectionListener.odg
++	install -m644 Setup/UnoConnectionListener.odg -D $(DESTDIR)/$(datadir)/bibus/Setup/UnoConnectionListener.odg
+ 	# locale files. We look for all the directory in locale/
+ 	for dir in $(wildcard locale/*); do \
+ 		if [ -d $$dir ] && [ $$dir != "locale/CVS" ]; then \
+-			install -m644 $$dir/LC_MESSAGES/bibus.mo -D $(datadir)/$$dir/LC_MESSAGES/bibus.mo ; \
++			install -m644 $$dir/LC_MESSAGES/bibus.mo -D $(DESTDIR)/$(datadir)/$$dir/LC_MESSAGES/bibus.mo ; \
+ 		fi; \
+ 	done
+ 	# bibus.config in /etc
+-	install -m644 bibus.config -D $(sysconfdir)/bibus.config
++	install -m644 bibus.config -D $(DESTDIR)/$(sysconfdir)/bibus.config
+ 	# man page
+-	install -m644 Setup/bibus.1 -D $(man1dir)/bibus.1
++	install -m644 Setup/bibus.1 -D $(DESTDIR)/$(man1dir)/bibus.1
+ 
+ 	# freedesktop icon and shortcut
+-	install -m644 Pixmaps/bibus.png -D $(datadir)/icons/hicolor/48x48/apps/bibus.png
+-	install -m644 Setup/bibus.desktop -D $(datadir)/applications/bibus.desktop
++	install -m644 Pixmaps/bibus.png -D $(DESTDIR)$(datadir)/pixmaps/bibus.png
++	install -m644 Setup/bibus.desktop -D $(DESTDIR)/$(datadir)/applications/bibus.desktop
+ 	# The following lines are presumably not needed since icons/desktop are in standard locations
+ 	#echo 'Exec=$(bindir)/bibus' >> $(datadir)/applications/bibus.desktop
+ 	#echo 'Icon=$(datadir)/icons/hicolor/48x48/apps/bibus.png' >> $(datadir)/applications/bibus.desktop
+ 
+ 	# bibus command
+-	install -d $(bindir)
+-	ln -sf $(datadir)/bibus/bibusStart.py $(bindir)/bibus
+-	chmod 755 $(datadir)/bibus/bibusStart.py
++	install -d $(DESTDIR)/$(bindir)
++	ln -sf $(pythondir)/bibus/bibusStart.py $(DESTDIR)/$(bindir)/bibus
++	chmod 755 $(DESTDIR)$(pythondir)/bibus/bibusStart.py
+ 
+ 	# basic doc files
+-	install -m755 -d $(datadir)/doc/bibus
+-	install -m644 Docs/*.txt Docs/CHANGELOG Docs/copying $(datadir)/doc/bibus
++	install -m755 -d $(DESTDIR)/$(datadir)/doc/${PF}
++	install -m644 Docs/*.txt Docs/CHANGELOG Docs/copying $(DESTDIR)/$(datadir)/doc/${PF}
+ 
+ 	# generating bibus.cfg file
+-	echo '[PATH]' > $(datadir)/bibus/bibus.cfg
+-	echo 'python = $(python)' >> $(datadir)/bibus/bibus.cfg
+-	echo 'oopath = $(oopath)' >> $(datadir)/bibus/bibus.cfg
+-	echo 'ooure = $(ooure)' >> $(datadir)/bibus/bibus.cfg
+-	echo 'oobasis = $(oobasis)' >> $(datadir)/bibus/bibus.cfg
+-	echo 'docdir = $(datadir)/doc/bibus/html' >> $(datadir)/bibus/bibus.cfg
+-	echo 'licence = $(datadir)/doc/bibus/copying' >> $(datadir)/bibus/bibus.cfg
+-	echo 'localedir = $(datadir)/locale' >> $(datadir)/bibus/bibus.cfg
+-	echo 'systemconf = $(sysconfdir)/bibus.config' >> $(datadir)/bibus/bibus.cfg
++	echo '[PATH]' > $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'python = $(python)' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'oopath = $(oopath)' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'ooure = $(ooure)' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'oobasis = $(oobasis)' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'docdir = $(datadir)/doc/${PF}/html' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'localedir = $(datadir)/locale' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
++	echo 'systemconf = $(sysconfdir)/bibus.config' >> $(DESTDIR)/$(pythondir)/bibus/bibus.cfg
+ endef
+ 
+ define install-doc-en
+ 	# copying docs in from Docs/html/en/ for bibus-doc-en
+ 	cd Docs;\
+-	find html/en/* -type f -exec install -m644 '{}' -D $(datadir)/doc/bibus/'{}' ';'
++	find html/en/* -type f -exec install -m644 '{}' -D $(DESTDIR)/$(datadir)/doc/${PF}/'{}' ';'
+ endef
+ 
+ define compile
+ 	# compile recursively all the python files located in $(datadir)/bibus
+-	$(python) -c "import compileall ; compileall.compile_dir('$(datadir)/bibus')"
+-	$(python) -O -c "import compileall ; compileall.compile_dir('$(datadir)/bibus')"
++	echo "No compilation"
+ endef
+ 
+ install-files:
+@@ -83,15 +81,3 @@ install:
+ 	$(install-doc-en)
+ 	$(compile)
+ 
+-	# write uninstaller in $(datadir)/bibus/Setup/uninstall.sh
+-		echo "#!/bin/sh" > $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm -rf $(datadir)/bibus" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm $(bindir)/bibus" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "find $(datadir)/locale -name bibus.mo -exec rm -f {} \;" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm $(sysconfdir)/bibus.config" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm $(man1dir)/bibus.1" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm -rf $(datadir)/doc/bibus" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm $(datadir)/applications/bibus.desktop" >> $(datadir)/bibus/Setup/uninstall.sh
+-		echo "rm $(datadir)/icons/hicolor/48x48/apps/bibus.png" >> $(datadir)/bibus/Setup/uninstall.sh
+-	chmod 744 $(datadir)/bibus/Setup/uninstall.sh
+-	# end uninstaller

@@ -1,0 +1,12 @@
+diff -Naur opendchub-0.7.14.vanilla/src/commands.c opendchub-0.7.14/src/commands.c
+--- opendchub-0.7.14.vanilla/src/commands.c	2003-11-15 08:07:43.000000000 -0600
++++ opendchub-0.7.14/src/commands.c	2004-11-27 09:54:57.113410240 -0600
+@@ -2842,7 +2842,7 @@
+ {
+    char move_string[MAX_HOST_LEN+20];
+    
+-   sprintf(move_string, "$ForceMove %s", buf);
++   snprintf(move_string, MAX_HOST_LEN, "$ForceMove %s", buf);
+  
+    send_to_humans(move_string, REGULAR | REGISTERED | OP, user);
+    remove_all(UNKEYED | NON_LOGGED | REGULAR | REGISTERED | OP, 1, 1);

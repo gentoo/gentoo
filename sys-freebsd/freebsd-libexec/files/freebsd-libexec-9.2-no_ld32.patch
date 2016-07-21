@@ -1,0 +1,15 @@
+Use LD_* variables for 32bits too instead of the FreeBSD invention LD_32_*.
+We use LD_* everywhere on Gentoo and things like libtool wrappers have no clue
+about LD_32_* and thus fail to run from the build directory.
+
+diff -uNr libexec.old/rtld-elf/rtld.h libexec/rtld-elf/rtld.h
+--- libexec.old/rtld-elf/rtld.h	2013-08-24 12:30:26.000000000 -0400
++++ libexec/rtld-elf/rtld.h	2013-08-26 17:10:19.000000000 -0400
+@@ -47,7 +47,6 @@
+ #define	_PATH_ELF_HINTS		"/var/run/ld-elf32.so.hints"
+ /* For running 32 bit binaries  */
+ #define	STANDARD_LIBRARY_PATH	"/lib32:/usr/lib32"
+-#define LD_ "LD_32_"
+ #endif
+ 
+ #ifndef STANDARD_LIBRARY_PATH

@@ -1,0 +1,19 @@
+diff --git a/sys/unix/configure.in b/sys/unix/configure.in
+index e034edc..b62535d 100644
+--- a/sys/unix/configure.in
++++ b/sys/unix/configure.in
+@@ -83,8 +83,12 @@ AC_DEFINE_UNQUOTED(RMDIR_CMD, "$rmdir_cmd")
+ dnl If the user wants canna support.
+ AC_MSG_CHECKING(if --enable-canna option specified)
+ AC_ARG_ENABLE(canna,
+-	[  --enable-canna[=DIR]    Build a canna version.],
+-	[cv_canna="yes"; cannapath=$enableval], [cv_canna="no"])
++	[  --enable-canna[=DIR]    Build a canna version.])
++AS_IF([test "x$enable_canna" != "xno"], [
++	cv_canna="yes"; cannapath=$enableval
++][
++	cv_canna="no";
++])
+ AC_MSG_RESULT($cv_canna)
+ if test "$cv_canna" = "yes"; then
+ 

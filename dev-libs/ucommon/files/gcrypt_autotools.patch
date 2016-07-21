@@ -1,0 +1,62 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,6 +8,8 @@
+ # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
++ACLOCAL_AMFLAGS = -I m4
++
+ AUTOMAKE_OPTIONS = no-dependencies dist-zip
+ EXTRA_DIST = autogen.sh README* *.pc.in *.spec.in *.spec *-config.in \
+     *-config.1 Doxyfile cmodel.sh BUILDS SUPPORT COPYING* COPYRIGHT \
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,8 +37,12 @@
+ UCOMMON_LIBS=""
+ OPENSSL_LINK=""
+ 
++AM_SILENT_RULES([yes])
++
+ CHECKFLAGS="$CHECKFLAGS"
+ 
++m4_include([m4/libgcrypt.m4])
++
+ case "$with_crypto" in
+ ssl|openssl)
+     ssl="openssl"
+@@ -664,7 +668,8 @@
+     ;;
+ gnutls|gnu)
+     if test ! -z "$GNUTLS_LIBS" ; then
+-        SECURE_LIBS="$GNUTLS_LIBS"
++    	AM_PATH_LIBGCRYPT
++        SECURE_LIBS="$GNUTLS_LIBS $LIBGCRYPT_LIBS"
+         SECURE="gnutls"
+     fi
+     ;;
+diff --git a/utils/Makefile.am b/utils/Makefile.am
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
+@@ -9,9 +9,9 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ MAINTAINERCLEANFILES = Makefile.in Makefile
+-AM_CXXFLAGS = -I$(top_srcdir)/inc @UCOMMON_FLAGS@
++AM_CXXFLAGS = -I$(top_srcdir)/inc @UCOMMON_FLAGS@ @LIBGCRYPT_CFLAGS@
+ INCLUDES = -I$(top_srcdir)/inc
+-LDADD = ../corelib/libucommon.la @UCOMMON_LIBS@ @UCOMMON_CLINK@
++LDADD = ../corelib/libucommon.la @UCOMMON_LIBS@ @UCOMMON_CLINK@ @LIBGCRYPT_LIBS@
+ EXTRA_DIST = *.1
+ 
+ man_MANS = args.1 scrub-files.1 mdsum.1 zerofill.1 car.1 sockaddr.1 pdetach.1
+@@ -27,7 +27,7 @@
+ scrub_files_LDFLAGS = @SECURE_LOCAL@
+ 
+ mdsum_SOURCES = mdsum.cpp
+-mdsum_LDFLAGS = @SECURE_LOCAL@
++mdsum_LDFLAGS = @SECURE_LOCAL@ @LIBGCRYPT_LIBS@
+ 
+ zerofill_SOURCES = zerofill.cpp
+ zerofill_LDFLAGS = @SECURE_LOCAL@

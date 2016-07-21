@@ -1,0 +1,69 @@
+compilefix vdr-2.3.1
+http://www.vdr-portal.de/board1-news/board2-vdr-news/p1254237-announce-vdr-developer-version-2-3-1/#post1254237
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (25 Okt 2015)
+
+--- displayinfo.c	2008-11-09 10:31:23.000000000 +0100
++++ displayinfo.c	2015-10-14 16:18:28.328868172 +0200
+@@ -224,7 +224,7 @@
+ void cInfoLines::Action()
+ {
+    int line = 0;
+-   Lock();
++   cThread::Lock();
+    Clear();
+    Unlock();
+    cString osdline = NULL;
+@@ -236,7 +236,7 @@
+ 
+       osdline = PrepareInfoline(++line, &isStatic);
+       if ((const char*)osdline) {
+-         Lock();
++         cThread::Lock();
+          Add(new cInfoLine(osdline, isStatic));
+          Unlock();
+       }
+@@ -244,7 +244,7 @@
+    while (Running() && NULL != (const char*)osdline && line <= MAX_LINES);
+ 
+    if (!First()) {
+-      Lock();
++      cThread::Lock();
+       osdline = tr("Error getting system information");
+       Add(new cInfoLine(osdline, true));
+       state++;
+@@ -252,7 +252,7 @@
+    }
+       else
+    {
+-      Lock();
++      cThread::Lock();
+       state++;
+       Unlock();
+       if (Running())
+@@ -260,7 +260,7 @@
+ 
+       while (Running()) {
+          cInfoLine * currentline = NULL;
+-         Lock();
++         cThread::Lock();
+          if (OsdInitialized)
+             firstDisplay = false;
+          currentline = First();
+@@ -274,7 +274,7 @@
+             if (!currentline || !currentline->isStatic()) {
+                osdline = PrepareInfoline(line, &isStatic);
+                if ((const char*)osdline) {
+-                  Lock();
++                  cThread::Lock();
+                   currentline->SetStr(osdline);
+                   Unlock();
+                }
+@@ -283,7 +283,7 @@
+          }
+          while (Running() && NULL != currentline && line <= MAX_LINES);
+ 
+-         Lock();
++         cThread::Lock();
+          state++;
+          Unlock();
+ 

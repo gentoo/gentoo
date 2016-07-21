@@ -1,0 +1,70 @@
+diff -urN martian-full-20100123.orig/kmodule/martian.c martian-full-20100123/kmodule/martian.c
+--- martian-full-20100123.orig/kmodule/martian.c	2015-03-21 16:21:21.228514759 -0400
++++ martian-full-20100123/kmodule/martian.c	2015-03-21 16:29:23.402126727 -0400
+@@ -184,8 +184,12 @@
+ static int martian_open (struct inode *inode, struct file *filp)
+ {
+ 	// allow single open
+-	struct proc_dir_entry *entry = PDE (inode);
+-	struct martian *mdev = (struct martian *) entry->data;
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
++        struct martian *mdev = (struct martian *) PDE_DATA (inode);
++    #else
++        struct proc_dir_entry *entry = PDE (inode);
++        struct martian *mdev = (struct martian *) entry->data;
++    #endif
+ 
+ 	if (test_and_set_bit (MARTIAN_STATE_OPEN, &mdev->state)) {
+ 		// already opened
+@@ -736,20 +740,37 @@
+ 	// create proc entry for this device
+ 	name[ strlen(name) - 1 ] = '0' + dev_idx;
+ 
+-	mdev->entry = create_proc_entry (name, 0400, NULL);
+-	if (! mdev->entry) {
+-		MERROR ("martian: failed to create /proc/%s\n", name);
+-		ret = -ENOMEM;
+-		goto err_free_irq;
+-	}
+-
+-	martian_init_mcb(mdev);
+-
+-	// set an index
+-	mdev->index = dev_idx;
+-
+-	mdev->entry->proc_fops = & martian_fops;
+-	mdev->entry->data 	 = mdev;
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
++        // initialize data before 3.10-style proc create call
++        martian_init_mcb(mdev);
++
++        // set an index
++        mdev->index = dev_idx;
++
++        mdev->entry = proc_create_data (name, 0400, NULL, & martian_fops, mdev);
++        if (! mdev->entry) {
++            MERROR ("martian: failed to create /proc/%s\n", name);
++            ret = -ENOMEM;
++            goto err_free_irq;
++        }
++
++    #else
++
++        mdev->entry = create_proc_entry (name, 0400, NULL);
++        if (! mdev->entry) {
++            MERROR ("martian: failed to create /proc/%s\n", name);
++            ret = -ENOMEM;
++            goto err_free_irq;
++        }
++
++        martian_init_mcb(mdev);
++
++        // set an index
++        mdev->index = dev_idx;
++
++        mdev->entry->proc_fops = & martian_fops;
++        mdev->entry->data 	 = mdev;
++    #endif
+ 
+ 	pr_info("martian: added device %x:%x " 
+ 			"BaseAddress = 0x%x, CommAddres = 0x%x, irq = %d%s\n", 

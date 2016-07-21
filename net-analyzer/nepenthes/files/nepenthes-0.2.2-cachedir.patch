@@ -1,0 +1,11 @@
+--- a/modules/shellcode-signatures/shellcode-signatures.cpp
++++ b/modules/shellcode-signatures/shellcode-signatures.cpp
+@@ -80,7 +80,7 @@
+ 	m_ModuleManager 	= m_Nepenthes->getModuleMgr();
+ 
+ 	g_Nepenthes->getShellcodeMgr()->registerShellcodeHandler(new EngineUnicode());
+-	return loadSignaturesFromFile(string("var/cache/nepenthes/signatures/shellcode-signatures.sc"));
++	return loadSignaturesFromFile(string("/var/lib/nepenthes/cache/signatures/shellcode-signatures.sc"));
+ }
+ 
+ bool SignatureShellcodeHandler::Exit()

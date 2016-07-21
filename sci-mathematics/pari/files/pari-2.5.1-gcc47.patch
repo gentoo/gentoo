@@ -1,0 +1,18 @@
+Index: pari-2.5.1/src/basemath/bibli2.c
+===================================================================
+--- pari-2.5.1.orig/src/basemath/bibli2.c	2012-01-26 17:26:13.000000000 +0100
++++ pari-2.5.1/src/basemath/bibli2.c	2012-06-04 10:08:41.000000000 +0200
+@@ -1394,12 +1394,12 @@
+   int (*CMP)(void*,GEN,GEN);
+   int (*cmp)(GEN,GEN) = (flag & cmp_LEX)? &lexcmp: &gcmp;
+   void *E;
++  struct veccmp_s v;
+ 
+   if (flag < 0 || flag > (cmp_REV|cmp_LEX|cmp_IND|cmp_UNIQ))
+     pari_err(flagerr,"vecsort");
+   if (k) {
+     long i, j, l, lk, tx, lx;
+-    struct veccmp_s v;
+     GEN y;
+ 
+     /* cf init_sort */

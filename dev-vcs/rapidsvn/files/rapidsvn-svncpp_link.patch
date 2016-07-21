@@ -1,0 +1,12 @@
+Index: src/svncpp/Makefile.am
+===================================================================
+--- src/svncpp/Makefile.am	(revision 7100)
++++ src/svncpp/Makefile.am	(working copy)
+@@ -27,3 +27,7 @@
+ 	url.cpp \
+ 	wc.cpp
+ 
++libsvncpp_la_LIBADD= $(SVN_LIBS) \
++	$(NEON_LIBS) \
++	$(APR_LIBS) \
++	-lstdc++

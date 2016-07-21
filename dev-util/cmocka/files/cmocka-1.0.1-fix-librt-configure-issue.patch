@@ -1,0 +1,56 @@
+From b2732b52202ae48f866a024c633466efdbb8e85a Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Thu, 3 Mar 2016 09:12:21 +0100
+Subject: cmake: Fix possible issues with librt during configure
+
+Signed-off-by: Andreas Schneider <asn@cryptomilk.org>
+---
+ ConfigureChecks.cmake | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/ConfigureChecks.cmake b/ConfigureChecks.cmake
+index c2064dd..31c5a94 100644
+--- a/ConfigureChecks.cmake
++++ b/ConfigureChecks.cmake
+@@ -100,11 +100,9 @@ else (WIN32)
+ endif (WIN32)
+ 
+ find_library(RT_LIBRARY rt)
+-if (RT_LIBRARY)
+-    set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
+-endif (RT_LIBRARY)
+-
+-set(CMOCKA_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} CACHE INTERNAL "cmocka required system libraries")
++if (RT_LIBRARY AND NOT LINUX)
++    set(CMOCKA_REQUIRED_LIBRARIES ${RT_LIBRARY} CACHE INTERNAL "cmocka required system libraries")
++endif ()
+ 
+ # OPTIONS
+ check_c_source_compiles("
+@@ -124,9 +122,10 @@ int main(void) {
+ endif(WIN32)
+ 
+ if (HAVE_TIME_H AND HAVE_STRUCT_TIMESPEC AND HAVE_CLOCK_GETTIME)
+-    set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
++    if (RT_LIBRARY)
++        set(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
++    endif()
+ 
+-    message(STATUS "CMAKE_REQUIRED_INCLUDES=${CMAKE_REQUIRED_INCLUDES} CMAKE_REQUIRED_LIBRARIES=${CMAKE_REQUIRED_LIBRARIES}")
+     check_c_source_compiles("
+ #include <time.h>
+ 
+@@ -137,7 +136,10 @@ int main(void) {
+ 
+     return 0;
+ }" HAVE_CLOCK_GETTIME_REALTIME)
++
++    # reset cmake requirements
+     set(CMAKE_REQUIRED_INCLUDES)
++    set(CMAKE_REQUIRED_LIBRARIES)
+ endif ()
+ 
+ # ENDIAN
+-- 
+cgit v0.12
+

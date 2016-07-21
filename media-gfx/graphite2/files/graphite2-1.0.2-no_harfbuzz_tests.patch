@@ -1,0 +1,12 @@
+diff -urN graphite2-1.0.2.old/tests/comparerenderer/CMakeLists.txt graphite2-1.0.2/tests/comparerenderer/CMakeLists.txt
+--- graphite2-1.0.2.old/tests/comparerenderer/CMakeLists.txt	2011-09-04 13:39:16.206450690 +0200
++++ graphite2-1.0.2/tests/comparerenderer/CMakeLists.txt	2011-09-04 13:39:44.516450716 +0200
+@@ -43,7 +43,7 @@
+     find_package(PkgConfig)
+ 
+     pkg_check_modules(GR silgraphite)
+-    pkg_check_modules(HB harfbuzz)
++    #pkg_check_modules(HB harfbuzz)
+     pkg_check_modules(GLIB glib-2.0)
+     # pkg_check_modules(GRNG graphite)
+ 

@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/562020
+
+Index: libtransmission/upnp.c
+===================================================================
+--- libtransmission/upnp.c	(revision 14564)
++++ libtransmission/upnp.c	(revision 14565)
+@@ -88,7 +88,11 @@
+ 
+ #if (MINIUPNPC_API_VERSION >= 8) /* adds ipv6 and error args */
+   int err = UPNPDISCOVER_SUCCESS;
++ #if (MINIUPNPC_API_VERSION >= 14) /* adds ttl */
++  ret = upnpDiscover (msec, NULL, NULL, 0, 0, 2, &err);
++ #else
+   ret = upnpDiscover (msec, NULL, NULL, 0, 0, &err);
++ #endif
+   have_err = err != UPNPDISCOVER_SUCCESS;
+ #else
+   ret = upnpDiscover (msec, NULL, NULL, 0);

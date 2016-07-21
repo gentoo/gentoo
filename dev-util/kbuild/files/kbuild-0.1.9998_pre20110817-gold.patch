@@ -1,0 +1,16 @@
+ src/kmk/Makefile.kmk |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/kmk/Makefile.kmk b/src/kmk/Makefile.kmk
+index fe2cd43..135431e 100644
+--- a/src/kmk/Makefile.kmk
++++ b/src/kmk/Makefile.kmk
+@@ -59,7 +59,7 @@ TEMPLATE_BIN-KMK_INCS.dragonfly = glob
+ TEMPLATE_BIN-KMK_INCS.freebsd = glob
+ TEMPLATE_BIN-KMK_INCS.openbsd = glob
+ TEMPLATE_BIN-KMK_INCS.solaris = glob
+-TEMPLATE_BIN-KMK_LIBS = $(TEMPLATE_BIN-THREADED_LIBS) $(kmkmissing_1_TARGET) $(LIB_KUTIL)
++TEMPLATE_BIN-KMK_LIBS = $(TEMPLATE_BIN-THREADED_LIBS) $(kmkmissing_1_TARGET) $(LIB_KUTIL) pthread
+ ifdef ELECTRIC_HEAP # for electric heap (see electric.c) - windows only.
+ ifeq ($(KBUILD_TARGET),win)
+  TEMPLATE_BIN-KMK_CFLAGS = $(TEMPLATE_BIN-THREADED_CFLAGS) /FI$(kmk_DEFPATH)/electric.h -DELECTRIC_HEAP=1

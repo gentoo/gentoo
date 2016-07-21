@@ -1,0 +1,35 @@
+From: Göktürk Yüksek <gokturk@binghamton.edu>
+Subject: [PATCH] Fix array indexing in Zcav::Read when max_loop > 1 and start_offset > 0
+
+In method Zcav::Read, the variable 'i' holds the block index. It is
+also used as an index to arrays of measurement values (read times and
+block counts) when (max_loops > 0). However, the blocks array and
+measurements arrays will be out of sync if some initial blocks are to
+be skipped (by having start_offset > 0). Using the same index value
+for arrays of different sizes causes segfaults. Fix it by substracting
+the start_offset properly when accessing the measurements arrays.
+
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=309319
+
+--- a/zcav_io.cpp
++++ b/zcav_io.cpp
+@@ -108,7 +108,7 @@
+     double total_read_time = 0.0;
+     bool nextLoop = false;
+     for( ; !nextLoop && (!max_size || i < max_size)
+-              && (loops == 0 || (m_times[i] && m_times[i][0] != -1.0))
++              && (loops == 0 || (m_times[i - start_offset] && m_times[i - start_offset][0] != -1.0))
+               && (!max_size || i < max_size); i++)
+     {
+       double read_time = access_data(i ? skip_rate - 1 : 0);
+@@ -135,8 +135,8 @@
+           m_times.push_back(new double[max_loops]);
+           m_count.push_back(0);
+         }
+-        m_times[i][loops] = read_time;
+-        m_count[i]++;
++        m_times[i - start_offset][loops] = read_time;
++        m_count[i - start_offset]++;
+       }
+     } // end loop for reading blocks
+ 

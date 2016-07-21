@@ -1,0 +1,27 @@
+--- qwtplot3d.orig/qwtplot3d.pro	2007-11-26 22:16:54.000000000 +0000
++++ qwtplot3d/qwtplot3d.pro	2007-11-26 23:45:18.000000000 +0000
+@@ -3,7 +3,7 @@
+ 
+ TARGET            = qwtplot3d
+ TEMPLATE          = lib
+-CONFIG           += qt warn_on opengl thread zlib debug
++CONFIG           += qt warn_on opengl thread zlib
+ MOC_DIR           = tmp
+ OBJECTS_DIR       = tmp
+ INCLUDEPATH       = include
+@@ -21,7 +21,7 @@
+ win32:CONFIG -= zlib
+ 
+ linux-g++:TMAKE_CXXFLAGS += -fno-exceptions
+-unix:VERSION = 0.2.6
++unix:VERSION = 0.2.7
+ 
+ # Input
+ SOURCES += src/qwt3d_axis.cpp \
+@@ -92,4 +92,4 @@
+   DEFINES += GL2PS_HAVE_ZLIB
+   win32:LIBS += zlib.lib
+ 	unix:LIBS  += -lz
+-}
+\ No newline at end of file
++}

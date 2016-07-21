@@ -1,0 +1,30 @@
+From 9c1db6d13a51a2e009f0027ef336ce03624eac0d Mon Sep 17 00:00:00 2001
+From: "Guan, Xin" <guanx.bac@gmail.com>
+Date: Sat, 13 Sep 2014 13:15:26 +0200
+Subject: [PATCH] Fix 2GB-limit of the is_fragment(...) function.
+
+Applies to squashfs-tools 4.3.
+
+Reported-by: Bruno Wolff III <bruno@wolff.to>
+Signed-off-by: Guan, Xin <guanx.bac@gmail.com>
+Signed-off-by: Phillip Lougher <phillip@squashfs.org.uk>
+---
+ squashfs-tools/mksquashfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/squashfs-tools/mksquashfs.c b/squashfs-tools/mksquashfs.c
+index f1fcff1cc284..d221c35865a0 100644
+--- a/squashfs-tools/mksquashfs.c
++++ b/squashfs-tools/mksquashfs.c
+@@ -2029,7 +2029,7 @@ struct file_info *duplicate(long long file_size, long long bytes,
+ 
+ inline int is_fragment(struct inode_info *inode)
+ {
+-	int file_size = inode->buf.st_size;
++	off_t file_size = inode->buf.st_size;
+ 
+ 	/*
+ 	 * If this block is to be compressed differently to the
+-- 
+2.8.2
+

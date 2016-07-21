@@ -1,0 +1,121 @@
+diff -crB lcd4linux-0.10.1-RC2-orig/drv_BWCT.c lcd4linux-0.10.1-RC2/drv_BWCT.c
+*** lcd4linux-0.10.1-RC2-orig/drv_BWCT.c	2007-02-25 13:39:09.000000000 +0100
+--- lcd4linux-0.10.1-RC2/drv_BWCT.c	2013-11-10 21:32:06.119047221 +0100
+***************
+*** 72,78 ****
+  static usb_dev_handle *lcd;
+  static int interface;
+  
+- extern int usb_debug;
+  extern int got_signal;
+  
+  
+--- 72,77 ----
+***************
+*** 89,96 ****
+  
+      info("%s: scanning USB for BWCT LCD...", Name);
+  
+-     usb_debug = 0;
+- 
+      usb_init();
+      usb_find_busses();
+      usb_find_devices();
+--- 88,93 ----
+diff -crB lcd4linux-0.10.1-RC2-orig/drv_LCD2USB.c lcd4linux-0.10.1-RC2/drv_LCD2USB.c
+*** lcd4linux-0.10.1-RC2-orig/drv_LCD2USB.c	2007-02-25 13:39:10.000000000 +0100
+--- lcd4linux-0.10.1-RC2/drv_LCD2USB.c	2013-11-10 21:32:15.686677498 +0100
+***************
+*** 98,104 ****
+  static usb_dev_handle *lcd;
+  static int controllers = 0;
+  
+- extern int usb_debug;
+  extern int got_signal;
+  
+  /****************************************/
+--- 98,103 ----
+***************
+*** 120,127 ****
+      if (device_id != NULL)
+  	info("%s: scanning for device id: %s", Name, device_id);
+  
+-     usb_debug = 0;
+- 
+      usb_init();
+      usb_find_busses();
+      usb_find_devices();
+--- 119,124 ----
+diff -crB lcd4linux-0.10.1-RC2-orig/drv_picoLCD.c lcd4linux-0.10.1-RC2/drv_picoLCD.c
+*** lcd4linux-0.10.1-RC2-orig/drv_picoLCD.c	2007-02-25 13:39:10.000000000 +0100
+--- lcd4linux-0.10.1-RC2/drv_picoLCD.c	2013-11-10 21:32:30.102120440 +0100
+***************
+*** 75,81 ****
+  static char *BufPtr;
+  
+  static usb_dev_handle *lcd;
+- extern int usb_debug;
+  
+  
+  
+--- 75,80 ----
+***************
+*** 97,104 ****
+  
+      info("%s: scanning for picoLCD...", Name);
+  
+-     usb_debug = 0;
+- 
+      usb_init();
+      usb_find_busses();
+      usb_find_devices();
+--- 96,101 ----
+diff -crB lcd4linux-0.10.1-RC2-orig/drv_Trefon.c lcd4linux-0.10.1-RC2/drv_Trefon.c
+*** lcd4linux-0.10.1-RC2-orig/drv_Trefon.c	2007-02-25 13:39:10.000000000 +0100
+--- lcd4linux-0.10.1-RC2/drv_Trefon.c	2013-11-10 21:32:46.441489039 +0100
+***************
+*** 72,78 ****
+  static usb_dev_handle *lcd;
+  static int interface;
+  
+- extern int usb_debug;
+  
+  
+  /****************************************/
+--- 72,77 ----
+***************
+*** 88,95 ****
+  
+      info("%s: scanning USB for TREFON LCD...", Name);
+  
+-     usb_debug = 0;
+- 
+      usb_init();
+      usb_find_busses();
+      usb_find_devices();
+--- 87,92 ----
+diff -crB lcd4linux-0.10.1-RC2-orig/drv_USBLCD.c lcd4linux-0.10.1-RC2/drv_USBLCD.c
+*** lcd4linux-0.10.1-RC2-orig/drv_USBLCD.c	2007-02-25 13:39:10.000000000 +0100
+--- lcd4linux-0.10.1-RC2/drv_USBLCD.c	2013-11-10 21:33:01.508906792 +0100
+***************
+*** 86,93 ****
+  static usb_dev_handle *lcd;
+  static int interface;
+  
+- extern int usb_debug;
+- 
+  #endif
+  
+  
+--- 86,91 ----
+***************
+*** 107,114 ****
+  
+      info("%s: scanning for USBLCD...", Name);
+  
+-     usb_debug = 0;
+- 
+      usb_init();
+      usb_find_busses();
+      usb_find_devices();
+--- 105,110 ----

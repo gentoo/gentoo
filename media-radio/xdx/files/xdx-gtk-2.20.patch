@@ -1,0 +1,34 @@
+# fix for bug #326627 deprecated macro from gtk+-2.20 on
+diff -Nur xdx-2.4.2.orig//src/gui.c xdx-2.4.2//src/gui.c
+--- xdx-2.4.2.orig//src/gui.c	2010-07-03 11:09:59.000000000 +0000
++++ xdx-2.4.2//src/gui.c	2010-07-03 11:10:45.000000000 +0000
+@@ -841,7 +841,7 @@
+   GtkWidget *mainentry;
+ 
+   mainentry = g_object_get_data (G_OBJECT (gui->window), "mainentry");
+-  if (GTK_WIDGET_HAS_FOCUS(mainentry))
++  if (gtk_widget_has_focus(mainentry))
+   {
+     switch (event->keyval)
+     {
+diff -Nur xdx-2.4.2.orig//src/text.c xdx-2.4.2//src/text.c
+--- xdx-2.4.2.orig//src/text.c	2010-07-03 11:09:59.000000000 +0000
++++ xdx-2.4.2//src/text.c	2010-07-03 11:11:16.000000000 +0000
+@@ -528,7 +528,7 @@
+ 
+ 
+         /* focusing the treeview will stop scrolling */ 
+-	if (!GTK_WIDGET_HAS_FOCUS(treeview))
++	if (!gtk_widget_has_focus(treeview))
+         {
+           path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), &iter);
+           gtk_tree_view_set_cursor (GTK_TREE_VIEW (treeview), path, NULL, FALSE);
+@@ -797,7 +797,7 @@
+           }
+         }
+         /* focusing (clicking) the textview will stop scrolling */
+-	if (!GTK_WIDGET_HAS_FOCUS(maintext))
++	if (!gtk_widget_has_focus(maintext))
+ 	{
+           gtk_text_buffer_get_bounds (buffer, &start, &end);
+           gtk_text_buffer_place_cursor(buffer, &end);

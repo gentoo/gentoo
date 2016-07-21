@@ -1,0 +1,30 @@
+--- setup/setup.ml.old	2007-08-07 19:25:13.000000000 +0200
++++ setup/setup.ml	2007-08-07 19:24:59.000000000 +0200
+@@ -5,8 +5,8 @@
+ 
+ value port = ref 2316;
+ value default_lang = ref "en";
+-value setup_dir = ref ".";
+-value bin_dir = ref "";
++value setup_dir = ref "/usr/share/geneweb";
++value bin_dir = ref "/usr/bin";
+ value lang_param = ref "";
+ value only_file = ref "";
+ 
+--- tools/Makefile.inc.unix.old	2008-04-23 15:22:50.000000000 +0200
++++ tools/Makefile.inc.unix	2008-04-23 15:23:04.000000000 +0200
+@@ -5,11 +5,11 @@
+ CAMLP5F=-DUNIX
+ CAMLP5D=+camlp5
+ LIBUNIX=-cclib -lunix
+-OCAMLC=ocamlc.opt -warn-error A
+-OCAMLOPT=ocamlopt.opt -warn-error A
++OCAMLC=ocamlc.opt
++OCAMLOPT=ocamlopt.opt
+ OCAMLI=
+ OCAMLD=
+-STRIP=strip
++STRIP=true
+ RM=/bin/rm -f
+ EXE=
+ STATIC=-ccopt -static

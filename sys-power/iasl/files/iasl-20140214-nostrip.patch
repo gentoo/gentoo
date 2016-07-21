@@ -1,0 +1,11 @@
+--- acpica-unix-20140214/generate/unix/Makefile.config
++++ acpica-unix-20140214/generate/unix/Makefile.config
+@@ -52,7 +52,7 @@
+ INSTALLFLAGS ?= -f
+ else
+ INSTALL =    install
+-INSTALLFLAGS ?= -m 555 -s
++INSTALLFLAGS ?= -m 555
+ endif
+ 
+ INSTALLPROG = \

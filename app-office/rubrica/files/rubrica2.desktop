@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Rubrica Addressbook
+Name[de_DE]=Rubrica Adressbuch
+Name[en_US]=Rubrica Addressbook
+Name[es_ES]=Anuario Rubrica
+Name[fr_FR]=Annuaire Rubrica
+Name[hu_HU]=Rubrika címjegyzék
+Name[it_IT]=Rubrica
+Comment=Manage contacts and addresses
+Comment[de_DE]=Kontakte und Adressen verwalten.
+Comment[en_US]=Manage contacts and addresses
+Comment[es_ES]=Maneje los contactos y las direcciones.
+Comment[fr_FR]=Organiser des numéros de téléphone et des adresses.
+Comment[hu_HU]=Telefonszámokat, hagyományos és internetes címeket rendszerezni.
+Comment[it_IT]=Rubrica, gestore di indirizzi per GNOME
+MimeType=application/x-rubrica;
+Exec=rubrica2
+Icon=stock_addressbook
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=true
+

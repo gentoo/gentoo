@@ -1,0 +1,65 @@
+From: Christian Kastner <debian@kvr.at>
+Date: Thu, 1 Jul 2010 01:02:47 +0200
+Subject: [PATCH] Portable handling for va_list
+
+The current code wrongly assumes va_list is always implemented as an array. va_list
+however is an opaque type, and may also be implemented as a struct, for
+example. This patch implements handling of va_list in a platform-independent
+way, fixing a FTBFS on alpha and armel.
+
+Forwarded: no
+Last-Update: 2010-07-01
+---
+ src/include/fann_cpp.h |   21 +++++++++++++++------
+ 1 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/src/include/fann_cpp.h b/src/include/fann_cpp.h
+index eb647af..bf6e75b 100644
+--- a/src/include/fann_cpp.h
++++ b/src/include/fann_cpp.h
+@@ -916,9 +916,12 @@ public:
+         bool create_standard(unsigned int num_layers, ...)
+         {
+             va_list layers;
++            unsigned int arr[num_layers];
++
+             va_start(layers, num_layers);
+-            bool status = create_standard_array(num_layers,
+-                reinterpret_cast<const unsigned int *>(layers));
++            for (unsigned int ii = 0; ii < num_layers; ii++)
++                arr[ii] = va_arg(layers, unsigned int);
++            bool status = create_standard_array(num_layers, arr);
+             va_end(layers);
+             return status;
+         }
+@@ -966,9 +969,12 @@ public:
+         bool create_sparse(float connection_rate, unsigned int num_layers, ...)
+         {
+             va_list layers;
++            unsigned int arr[num_layers];
++
+             va_start(layers, num_layers);
+-            bool status = create_sparse_array(connection_rate, num_layers,
+-                reinterpret_cast<const unsigned int *>(layers));
++            for (unsigned int ii = 0; ii < num_layers; ii++)
++                arr[ii] = va_arg(layers, unsigned int);
++            bool status = create_sparse_array(connection_rate, num_layers, arr);
+             va_end(layers);
+             return status;
+         }
+@@ -1013,9 +1019,12 @@ public:
+         bool create_shortcut(unsigned int num_layers, ...)
+         {
+             va_list layers;
++            unsigned int arr[num_layers];
++
+             va_start(layers, num_layers);
+-            bool status = create_shortcut_array(num_layers,
+-                reinterpret_cast<const unsigned int *>(layers));
++            for (unsigned int ii = 0; ii < num_layers; ii++)
++                arr[ii] = va_arg(layers, unsigned int);
++            bool status = create_shortcut_array(num_layers, arr);
+             va_end(layers);
+             return status;
+         }
+-- 

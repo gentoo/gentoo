@@ -1,0 +1,30 @@
+diff -Naurp elinks-0.11.5-orig/Makefile.lib elinks-0.11.5/Makefile.lib
+--- elinks-0.11.5-orig/Makefile.lib	2008-11-30 13:30:08.000000000 +0100
++++ elinks-0.11.5/Makefile.lib	2008-11-30 19:50:46.000000000 +0100
+@@ -95,9 +95,14 @@ endif
+ 
+ # All files in $(OBJS) and any $(subdir)/lib.o are linked into lib.o.
+ # Sort them to filter out duplicated and get uniform order.
++SUBDIR_LIB_O_DEPS = \
++ $(foreach subdir,$(sort $(SUBDIRS)),$(subdir)/$(LIB_O_NAME))
++
+ LIB_O_DEPS = \
+- $(sort $(filter-out $(LIB_O_NAME),$(OBJS))) \
+- $(foreach subdir,$(sort $(SUBDIRS)),$(wildcard $(subdir)/$(LIB_O_NAME)))
++ $(sort $(filter-out $(LIB_O_NAME),$(OBJS))) $(SUBDIR_LIB_O_DEPS)
++
++$(SUBDIR_LIB_O_DEPS):
++	@$(call ncmd,recmake,$(subst /$(LIB_O_NAME),,$@),all) || exit 1;
+ 
+ $(LIB_O_NAME): $(LIB_O_DEPS)
+ 	$(call cmd,ld_objs)
+@@ -222,7 +227,8 @@ $(RULES_LOCAL):
+ 
+ # Default deps
+ rule_deps = $(1)-recursive $(1)-default $(1)-local
+-all:	  $(call rule_deps,all)
++all:	  all-default all-local
++	@$(MAKE) all-recursive
+ install:  $(call rule_deps,install)
+ clean:	  $(call rule_deps,clean)
+ cleanall: $(call rule_deps,cleanall)

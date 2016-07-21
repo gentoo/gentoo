@@ -1,0 +1,26 @@
+--- Isabelle2015-orig/lib/Tools/java	2015-05-25 20:06:24.000000000 +1000
++++ Isabelle2015/lib/Tools/java	2015-07-07 16:00:19.283326554 +1000
+@@ -10,5 +10,5 @@
+ unset CLASSPATH
+ 
+ isabelle_java java "${JAVA_ARGS[@]}" \
+-  -classpath "$(jvmpath "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(jvmpath "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+ 
+--- Isabelle2015-orig/lib/Tools/scala	2015-05-25 20:06:24.000000000 +1000
++++ Isabelle2015/lib/Tools/scala	2015-07-07 16:00:45.926327297 +1000
+@@ -14,4 +14,4 @@
+ done
+ 
+ isabelle_scala scala "${SCALA_ARGS[@]}" \
+-  -classpath "$(jvmpath "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(jvmpath "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+--- Isabelle2015-orig/lib/Tools/scalac	2015-05-25 20:06:24.000000000 +1000
++++ Isabelle2015/lib/Tools/scalac	2015-07-07 15:59:33.906325289 +1000
+@@ -7,5 +7,5 @@
+ isabelle_admin_build jars || exit $?
+ 
+ isabelle_scala scalac -Dfile.encoding=UTF-8 \
+-  -classpath "$(jvmpath "$ISABELLE_CLASSPATH")" "$@"
++  -classpath "$(jvmpath "$ISABELLE_CLASSPATH:$(java-config -p scala-2.11)")" "$@"
+ 

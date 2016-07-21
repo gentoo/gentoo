@@ -1,0 +1,40 @@
+ bindings/ocaml/CMakeLists.txt         | 4 ++--
+ bindings/ocaml/plcairo/CMakeLists.txt | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bindings/ocaml/CMakeLists.txt b/bindings/ocaml/CMakeLists.txt
+index 93d073a..d31a64f 100644
+--- a/bindings/ocaml/CMakeLists.txt
++++ b/bindings/ocaml/CMakeLists.txt
+@@ -154,11 +154,11 @@ if(ENABLE_ocaml)
+     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/plplot.cmo
+     )
+ 
+-  # ocamlc -a -custom builds a *.cma library from *.cmo
++  # ocamlc -a builds a *.cma library from *.cmo
+   add_custom_command(
+     OUTPUT
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot.cma
+-    COMMAND ${OCAMLC} -a -custom -o ${CMAKE_CURRENT_BINARY_DIR}/plplot.cma ${CMAKE_CURRENT_BINARY_DIR}/plplot_core.cmo ${CMAKE_CURRENT_BINARY_DIR}/plplot.cmo -dllib -lplplot_stubs -ccopt -L${CMAKE_CURRENT_BINARY_DIR} -cclib -lplplot_stubs -ccopt -L${CAMLIDL_LIB_DIR} -cclib -lcamlidl -ccopt -L${CMAKE_BINARY_DIR}/src -cclib -lplplot -dllpath ${CMAKE_BINARY_DIR}/src ${ocaml_STATIC_FLAGS}
++    COMMAND ${OCAMLC} -a -o ${CMAKE_CURRENT_BINARY_DIR}/plplot.cma ${CMAKE_CURRENT_BINARY_DIR}/plplot_core.cmo ${CMAKE_CURRENT_BINARY_DIR}/plplot.cmo -dllib -lplplot_stubs -ccopt -L${CMAKE_CURRENT_BINARY_DIR} -cclib -lplplot_stubs -ccopt -L${CAMLIDL_LIB_DIR} -cclib -lcamlidl -ccopt -L${CMAKE_BINARY_DIR}/src -cclib -lplplot -dllpath ${CMAKE_BINARY_DIR}/src ${ocaml_STATIC_FLAGS}
+     DEPENDS
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot_core.cmo
+     ${CMAKE_CURRENT_BINARY_DIR}/plplot.cmo
+diff --git a/bindings/ocaml/plcairo/CMakeLists.txt b/bindings/ocaml/plcairo/CMakeLists.txt
+index c4b4a41..ce1dc92 100644
+--- a/bindings/ocaml/plcairo/CMakeLists.txt
++++ b/bindings/ocaml/plcairo/CMakeLists.txt
+@@ -84,11 +84,11 @@ if(ENABLE_ocaml AND OCAML_HAS_CAIRO)
+     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cmo
+     )
+ 
+-  # ocamlc -a -custom builds a *.cma library from *.cmo
++  # ocamlc -a builds a *.cma library from *.cmo
+   add_custom_command(
+     OUTPUT
+     ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cma
+-    COMMAND ${OCAMLC} -a -custom -o ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cma -I ${PATH_TO_PLPLOT_CMA} plplot.cma ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cmo -dllib -lplcairo_stubs -ccopt -L${CMAKE_CURRENT_BINARY_DIR} -cclib -lplcairo_stubs -ccopt -L${CMAKE_BINARY_DIR}/src -cclib -lplplot -dllpath ${CMAKE_BINARY_DIR}/src
++    COMMAND ${OCAMLC} -a -o ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cma -I ${PATH_TO_PLPLOT_CMA} plplot.cma ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cmo -dllib -lplcairo_stubs -ccopt -L${CMAKE_CURRENT_BINARY_DIR} -cclib -lplcairo_stubs -ccopt -L${CMAKE_BINARY_DIR}/src -cclib -lplplot -dllpath ${CMAKE_BINARY_DIR}/src
+     DEPENDS
+     ${CMAKE_CURRENT_BINARY_DIR}/plcairo.cmo
+     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}

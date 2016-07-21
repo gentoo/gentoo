@@ -1,0 +1,6 @@
+# /etc/conf.d/hpfall
+
+# The name of the disk device that hpfall should protect.
+# Usually this is 'sda' or 'hda' the primary master.
+
+DISK="sda"

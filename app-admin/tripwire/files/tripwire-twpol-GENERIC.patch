@@ -1,0 +1,25 @@
+--- a/policy/twpol-GENERIC.txt	2011-11-21 11:06:56.000000000 -0500
++++ b/policy/twpol-GENERIC.txt	2013-09-11 08:13:34.000000000 -0400
+@@ -55,14 +55,14 @@
+ ##############################################################################
+ 
+ @@section GLOBAL
+-TWROOT=;
+-TWBIN=;
+-TWPOL=;
+-TWDB=;
+-TWSKEY=;
+-TWLKEY=;
+-TWREPORT=;
+-HOSTNAME=;
++#TWROOT=;
++TWBIN=/usr/sbin;
++TWPOL=/etc/tripwire;
++TWDB=/var/lib/tripwire/YOUR_HOSTNAME.twd;
++TWSKEY=/etc/tripwire;
++TWLKEY=/etc/tripwire;
++TWREPORT=/var/lib/tripwire/report;
++#HOSTNAME=;
+ 
+ @@section FS
+ SEC_CRIT      = $(IgnoreNone)-SHa ;  # Critical files that cannot change

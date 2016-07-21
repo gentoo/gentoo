@@ -1,0 +1,11 @@
+--- a/freewrl-1.22.13/data/freewrl.desktop	2009-06-08 06:26:21.000000000 -0400
++++ b/freewrl-1.22.13/data/freewrl.desktop	2013-12-23 10:45:54.916307951 -0500
+@@ -3,7 +3,7 @@
+ Name=FreeWRL
+ Comment=View X3D and VRML files
+ Exec=/usr/bin/freewrl
+-Icon=freewrl.png
++Icon=freewrl
+ Terminal=false
+ Type=Application
+ Categories=Graphics;3DGraphics;Viewer;

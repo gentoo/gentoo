@@ -1,0 +1,48 @@
+diff -Nur json_simple-1.1-all/src/org/json/simple/JSONArray.java json_simple-1.1-all_patched//src/org/json/simple/JSONArray.java
+--- json_simple-1.1-all/src/org/json/simple/JSONArray.java	2009-02-01 12:45:34.000000000 +0200
++++ json_simple-1.1-all_patched//src/org/json/simple/JSONArray.java	2011-09-25 11:23:37.398818358 +0300
+@@ -19,6 +19,18 @@
+ public class JSONArray extends ArrayList implements List, JSONAware, JSONStreamAware {
+ 	private static final long serialVersionUID = 3957988303675231981L;
+ 
++	public JSONArray() {
++		super();
++	}
++
++	public JSONArray(java.util.Collection arg0) {
++		super(arg0);
++	}
++
++	public JSONArray(int initialCapacity) {
++		super(initialCapacity);
++	}
++
+     /**
+      * Encode a list into JSON text and write it to out. 
+      * If this list is also a JSONStreamAware or a JSONAware, JSONStreamAware and JSONAware specific behaviours will be ignored at this top level.
+diff -Nur json_simple-1.1-all/src/org/json/simple/JSONObject.java json_simple-1.1-all_patched//src/org/json/simple/JSONObject.java
+--- json_simple-1.1-all/src/org/json/simple/JSONObject.java	2009-02-01 12:45:34.000000000 +0200
++++ json_simple-1.1-all_patched//src/org/json/simple/JSONObject.java	2011-09-25 11:24:34.815103065 +0300
+@@ -18,6 +18,22 @@
+ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAware{
+ 	private static final long serialVersionUID = -503443796854799292L;
+ 
++	public JSONObject() {
++		super();
++	}
++
++	public JSONObject(int initialCapacity, float loadFactor) {
++		super(initialCapacity, loadFactor);
++	}
++
++	public JSONObject(int initialCapacity) {
++		super(initialCapacity);
++	}
++
++	public JSONObject(Map arg0) {
++		super(arg0);
++	}
++
+     /**
+      * Encode a map into JSON text and write it to out.
+      * If this map is also a JSONAware or JSONStreamAware, JSONAware or JSONStreamAware specific behaviours will be ignored at this top level.

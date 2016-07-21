@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/567332
+
+this is a snippet taken from the upstream commit:
+09eae589d3954a1e1206aa01108ee75ef57776da Used in-tree header file for c++ tests.
+
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -35,6 +35,8 @@
+ # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ # PURPOSE.
+ 
++AM_CPPFLAGS = -I$(top_srcdir)/src
++
+ VPATH = @srcdir@
+ am__is_gnu_make = { \
+   if test -z '$(MAKELEVEL)'; then \

@@ -1,0 +1,70 @@
+diff -ru snes9x-1.53-src.orig/gtk/configure.ac snes9x-1.53-src/gtk/configure.ac
+--- snes9x-1.53-src.orig/gtk/configure.ac	2011-04-24 09:38:10.000000000 -0400
++++ snes9x-1.53-src/gtk/configure.ac	2011-09-26 16:06:46.746352405 -0400
+@@ -29,7 +29,7 @@
+ 
+ AM_GLIB_GNU_GETTEXT
+ 
+-snes9xlocaledir='${prefix}/${DATADIRNAME}/locale'
++snes9xlocaledir='/usr/share/locale'
+ AC_SUBST(snes9xlocaledir)
+ 
+ AC_ARG_WITH(debug,
+diff -ru snes9x-1.53-src.orig/gtk/po/Makefile.in.in snes9x-1.53-src/gtk/po/Makefile.in.in
+--- snes9x-1.53-src.orig/gtk/po/Makefile.in.in	2011-04-24 16:12:50.000000000 -0400
++++ snes9x-1.53-src/gtk/po/Makefile.in.in	2011-09-26 16:07:05.844485532 -0400
+@@ -34,7 +34,7 @@
+ datarootdir = @datarootdir@
+ libdir = @libdir@
+ DATADIRNAME = @DATADIRNAME@
+-itlocaledir = $(prefix)/$(DATADIRNAME)/locale
++itlocaledir = /usr/share/locale
+ subdir = po
+ install_sh = @install_sh@
+ # Automake >= 1.8 provides @mkdir_p@.
+diff -ru snes9x-1.53-src.orig/unix/Makefile.in snes9x-1.53-src/unix/Makefile.in
+--- snes9x-1.53-src.orig/unix/Makefile.in	2011-04-24 09:38:10.000000000 -0400
++++ snes9x-1.53-src/unix/Makefile.in	2011-09-26 16:06:46.746352405 -0400
+@@ -47,7 +47,7 @@
+ 	exit 1
+ 
+ snes9x: $(OBJECTS)
+-	$(CCC) $(INCLUDES) -o $@ $(OBJECTS) -lm @S9XLIBS@
++	$(CCC) $(LDFLAGS) $(INCLUDES) -o $@ $(OBJECTS) -lm @S9XLIBS@
+ 
+ ../jma/s9x-jma.o: ../jma/s9x-jma.cpp
+ 	$(CCC) $(INCLUDES) -c $(CCFLAGS) -fexceptions $*.cpp -o $@
+diff -ru snes9x-1.53-src.orig/unix/configure.ac snes9x-1.53-src/unix/configure.ac
+--- snes9x-1.53-src.orig/unix/configure.ac	2011-04-24 09:38:10.000000000 -0400
++++ snes9x-1.53-src/unix/configure.ac	2011-09-26 16:06:46.747352203 -0400
+@@ -56,20 +56,6 @@
+ # *** Execution begins here ***
+ # *****************************
+ 
+-# Remove -g and -O2 flags manually.
+-
+-if test "x$CFLAGS" != "x"; then
+-	CFLAGS="`echo \"$CFLAGS\" | sed -e 's/-g//'`"
+-	CFLAGS="`echo \"$CFLAGS\" | sed -e 's/-O2//'`"
+-fi
+-
+-if test "x$CXXFLAGS" != "x"; then
+-	CXXFLAGS="`echo \"$CXXFLAGS\" | sed -e 's/-g//'`"
+-	CXXFLAGS="`echo \"$CXXFLAGS\" | sed -e 's/-O2//'`"
+-fi
+-
+-# Test what compiler flags we should use.
+-
+ AC_ARG_ENABLE([debug],
+ 	[AS_HELP_STRING([--enable-debug],
+ 		[leave debug information in the final binary (default: no)])],
+@@ -79,9 +65,6 @@
+ 	AC_S9X_COMPILER_FLAG([-g],  [g])
+ 	AC_S9X_COMPILER_FLAG([-O0], [o0])
+ else
+-	AC_S9X_COMPILER_FLAG([-O3], [o3], [
+-		AC_S9X_COMPILER_FLAG([-O2], [o2], [
+-			AC_S9X_COMPILER_FLAG([-O1], [o1])])])
+ 	AC_S9X_COMPILER_FLAG([-fomit-frame-pointer], [omit_frame_pointer])
+ fi
+ 

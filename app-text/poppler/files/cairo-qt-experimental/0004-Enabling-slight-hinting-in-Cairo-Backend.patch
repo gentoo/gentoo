@@ -1,0 +1,45 @@
+From 1604ec6cb759b6f2b8aa006faa0ec990cd511b36 Mon Sep 17 00:00:00 2001
+From: Paul Gideon Dann <pdgiddie@gmail.com>
+Date: Thu, 21 May 2009 10:55:49 +0100
+Subject: [PATCH 4/4] Enabling slight hinting in Cairo Backend
+
+Originally suggested at:
+http://bugs.freedesktop.org/show_bug.cgi?id=3307#c20
+---
+ poppler/CairoFontEngine.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
+index 3cff917..75a1c50 100644
+--- a/poppler/CairoFontEngine.cc
++++ b/poppler/CairoFontEngine.cc
+@@ -132,7 +132,7 @@ CairoFont::getSubstitutionCorrection(GfxFont *gfxFont)
+ 	cairo_matrix_t m;
+ 	cairo_matrix_init_identity(&m);
+ 	cairo_font_options_t *options = cairo_font_options_create();
+-	cairo_font_options_set_hint_style(options, CAIRO_HINT_STYLE_NONE);
++	cairo_font_options_set_hint_style(options, CAIRO_HINT_STYLE_SLIGHT);
+ 	cairo_font_options_set_hint_metrics(options, CAIRO_HINT_METRICS_OFF);
+ 	cairo_scaled_font_t *scaled_font = cairo_scaled_font_create(cairo_font_face, &m, &m, options);
+ 
+@@ -189,7 +189,7 @@ _ft_new_face_uncached (FT_Library lib,
+   }
+ 
+   font_face = cairo_ft_font_face_create_for_ft_face (face,
+-							  FT_LOAD_NO_HINTING |
++							  FT_LOAD_TARGET_LIGHT |
+ 							  FT_LOAD_NO_BITMAP);
+   if (cairo_font_face_set_user_data (font_face,
+ 				     &_ft_cairo_key,
+@@ -358,7 +358,7 @@ _ft_new_face (FT_Library lib,
+   _ft_open_faces = l;
+ 
+   l->font_face = cairo_ft_font_face_create_for_ft_face (tmpl.face,
+-							  FT_LOAD_NO_HINTING |
++							  FT_LOAD_TARGET_LIGHT |
+ 							  FT_LOAD_NO_BITMAP);
+   if (cairo_font_face_set_user_data (l->font_face,
+ 				     &_ft_cairo_key,
+-- 
+2.7.3
+

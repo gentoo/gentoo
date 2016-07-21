@@ -1,0 +1,230 @@
+Description: Fix build with mpi enabled hdf5 libraries
+Author: Jens-Malte Gottfried <jmgottfried@web.de>
+Forwarded: not-needed
+Last-Update: 2013-12-11
+
+Index: vigra-1.10.0/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/CMakeLists.txt
++++ vigra-1.10.0/CMakeLists.txt
+@@ -63,6 +63,7 @@ OPTION(WITH_TIFF "Enable tiff support" O
+ OPTION(WITH_JPEG "Enable jpeg support" ON)
+ OPTION(WITH_PNG "Enable png support" ON)
+ OPTION(WITH_FFTW3 "Enable fftw support" ON)
++OPTION(WITH_MPI "Link against mpi libraries" ON)
+ OPTION(ENABLE_DOC "Build documentation" ON)
+ IF(WITH_TIFF)
+ 	VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
+@@ -70,6 +71,9 @@ ENDIF()
+ IF(WITH_JPEG)
+ 	VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
+ ENDIF()
++IF(WITH_MPI)
++	VIGRA_FIND_PACKAGE(MPI)
++ENDIF()
+ IF(WITH_PNG)
+ 	VIGRA_FIND_PACKAGE(PNG)
+ ENDIF()
+Index: vigra-1.10.0/src/impex/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/src/impex/CMakeLists.txt
++++ vigra-1.10.0/src/impex/CMakeLists.txt
+@@ -79,7 +79,7 @@ IF(OPENEXR_FOUND)
+ ENDIF(OPENEXR_FOUND)
+ 
+ IF(HDF5_FOUND)
+-  TARGET_LINK_LIBRARIES(vigraimpex ${HDF5_LIBRARIES})
++  TARGET_LINK_LIBRARIES(vigraimpex ${HDF5_LIBRARIES} ${MPI_LIBRARIES})
+ ENDIF(HDF5_FOUND)
+ 
+ INSTALL(TARGETS vigraimpex
+Index: vigra-1.10.0/test/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/CMakeLists.txt
++++ vigra-1.10.0/test/CMakeLists.txt
+@@ -1,4 +1,7 @@
+ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
++IF(WITH_MPI)
++	INCLUDE_DIRECTORIES(${MPI_INCLUDE_PATH})
++ENDIF()
+ 
+ INCLUDE(VigraAddTest)
+ 
+Index: vigra-1.10.0/test/impex/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/impex/CMakeLists.txt
++++ vigra-1.10.0/test/impex/CMakeLists.txt
+@@ -15,7 +15,7 @@ IF(OPENEXR_FOUND)
+   ADD_DEFINITIONS(-DHasEXR)
+ ENDIF(OPENEXR_FOUND)
+ 
+-VIGRA_ADD_TEST(test_impex test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_impex test.cxx LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+ VIGRA_COPY_TEST_DATA(lenna.xv lenna_gifref.xv lennafloat.xv lennafloatrgb.xv lennargb.xv no-image.txt lenna_0.tif lenna_1.tif lenna_2.tif lenna_masked_color.tif  lenna_masked_gray.tif)
+ 
+Index: vigra-1.10.0/test/classifier/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/classifier/CMakeLists.txt
++++ vigra-1.10.0/test/classifier/CMakeLists.txt
+@@ -2,13 +2,15 @@ if(HDF5_FOUND)
+     INCLUDE_DIRECTORIES(${HDF5_INCLUDE_DIR})
+   
+     ADD_DEFINITIONS(${HDF5_CPPFLAGS} -DHasHDF5)
+-    VIGRA_ADD_TEST(test_classifier test.cxx LIBRARIES vigraimpex ${HDF5_LIBRARIES})
++    VIGRA_ADD_TEST(test_classifier test.cxx
++		LIBRARIES vigraimpex ${HDF5_LIBRARIES} ${MPI_LIBRARIES})
+ else()
+     MESSAGE(STATUS "** WARNING: test_classifier::RFHDF5Test() will not be executed")
+     VIGRA_ADD_TEST(test_classifier test.cxx )
+ endif()
+ 
+-VIGRA_ADD_TEST(classifier_speed_comparison speed_comparison.cxx)
++VIGRA_ADD_TEST(classifier_speed_comparison speed_comparison.cxx
++	LIBRARIES ${MPI_LIBRARIES})
+ 
+ add_subdirectory(data)
+ 
+Index: vigra-1.10.0/test/imgproc/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/imgproc/CMakeLists.txt
++++ vigra-1.10.0/test/imgproc/CMakeLists.txt
+@@ -1,3 +1,9 @@
+-VIGRA_ADD_TEST(test_imgproc test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_imgproc test.cxx LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+-VIGRA_COPY_TEST_DATA(lenna128.xv lenna128rgb.xv splineimageview2.xv splineimageview3.xv splineimageview5.xv lenna42lin.xv lenna288neu.xv lenna42neu.xv lenna288rgbneu.xv lenna42rgbneu.xv lenna367FIR.xv lenna42FIR.xv lenna367IIR.xv lenna42IIR.xv lenna42linrgb.xv lennargb42FIR.xv lennargb42IIR.xv lenna_rotate.xv)
++VIGRA_COPY_TEST_DATA(
++	lenna128.xv lenna128rgb.xv
++	splineimageview2.xv splineimageview3.xv splineimageview5.xv
++	lenna42lin.xv lenna288neu.xv lenna42neu.xv lenna288rgbneu.xv
++	lenna42rgbneu.xv lenna367FIR.xv lenna42FIR.xv lenna367IIR.xv
++	lenna42IIR.xv lenna42linrgb.xv lennargb42FIR.xv
++	lennargb42IIR.xv lenna_rotate.xv)
+Index: vigra-1.10.0/test/convolution/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/convolution/CMakeLists.txt
++++ vigra-1.10.0/test/convolution/CMakeLists.txt
+@@ -1,3 +1,11 @@
+-VIGRA_ADD_TEST(test_convolution test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_convolution test.cxx LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+-VIGRA_COPY_TEST_DATA(lenna128.xv lenna_simple_sharpening_orig.xv lenna_gaussian_sharpening_orig.xv lenna128sepgrad.xv lennahessxx.xv lennastxx.xv lenna128recgrad.xv lenna128nonlinear.xv resampling.xv lennahessyy.xv lennastyy.xv lennahessxy.xv lennastxy.xv lenna128rgb.xv lenna128rgbsepgrad.xv lenna_level-2.xv lenna_level-1.xv lenna_level1.xv lenna_level2.xv lenna_levellap0.xv lenna_levellap1.xv lenna_levellap2.xv lennargbst.xv)
++VIGRA_COPY_TEST_DATA(
++	lenna128.xv lenna_simple_sharpening_orig.xv
++	lenna_gaussian_sharpening_orig.xv lenna128sepgrad.xv
++	lennahessxx.xv lennastxx.xv lenna128recgrad.xv
++	lenna128nonlinear.xv resampling.xv lennahessyy.xv
++	lennastyy.xv lennahessxy.xv lennastxy.xv lenna128rgb.xv
++	lenna128rgbsepgrad.xv lenna_level-2.xv lenna_level-1.xv
++	lenna_level1.xv lenna_level2.xv lenna_levellap0.xv
++	lenna_levellap1.xv lenna_levellap2.xv lennargbst.xv)
+Index: vigra-1.10.0/test/fourier/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/fourier/CMakeLists.txt
++++ vigra-1.10.0/test/fourier/CMakeLists.txt
+@@ -1,7 +1,8 @@
+ if(FFTW3_FOUND)
+     INCLUDE_DIRECTORIES(${FFTW3_INCLUDE_DIR})
+ 
+-    VIGRA_ADD_TEST(test_fourier test.cxx LIBRARIES vigraimpex ${FFTW3_LIBRARIES})
++    VIGRA_ADD_TEST(test_fourier test.cxx
++		LIBRARIES vigraimpex ${FFTW3_LIBRARIES} ${MPI_LIBRARIES})
+ 
+     VIGRA_COPY_TEST_DATA(ghouse.gif filter.xv gaborresult.xv)
+ else()
+Index: vigra-1.10.0/test/tensorimaging/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/tensorimaging/CMakeLists.txt
++++ vigra-1.10.0/test/tensorimaging/CMakeLists.txt
+@@ -1,3 +1,7 @@
+-VIGRA_ADD_TEST(test_tensorimaging test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_tensorimaging test.cxx
++	LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+-VIGRA_COPY_TEST_DATA(l2.xv riesz00.xv riesz10.xv riesz01.xv riesz20.xv riesz11.xv riesz02.xv boundaryTensor.xv l2_boundary1.xv l2_boundary.xv l2_hourglass.xv l2_get.xv)
++VIGRA_COPY_TEST_DATA(
++	l2.xv riesz00.xv riesz10.xv riesz01.xv riesz20.xv
++	riesz11.xv riesz02.xv boundaryTensor.xv
++	l2_boundary1.xv l2_boundary.xv l2_hourglass.xv l2_get.xv)
+Index: vigra-1.10.0/test/simpleanalysis/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/simpleanalysis/CMakeLists.txt
++++ vigra-1.10.0/test/simpleanalysis/CMakeLists.txt
+@@ -1,10 +1,12 @@
+ if(FFTW3_FOUND)
+     INCLUDE_DIRECTORIES(${FFTW3_INCLUDE_DIR})
+     ADD_DEFINITIONS(-DHasFFTW3)
+-    
+-    VIGRA_ADD_TEST(test_simpleanalysis test.cxx LIBRARIES vigraimpex ${FFTW3_LIBRARIES})
++
++    VIGRA_ADD_TEST(test_simpleanalysis test.cxx
++		LIBRARIES vigraimpex ${FFTW3_LIBRARIES} ${MPI_LIBRARIES})
+ else()
+-    VIGRA_ADD_TEST(test_simpleanalysis test.cxx LIBRARIES vigraimpex)
++	VIGRA_ADD_TEST(test_simpleanalysis test.cxx
++		LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ endif()
+ 
+ VIGRA_COPY_TEST_DATA(noiseNormalizationTest.xv slantedEdgeMTF.xv lenna128.xv)
+Index: vigra-1.10.0/test/image/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/image/CMakeLists.txt
++++ vigra-1.10.0/test/image/CMakeLists.txt
+@@ -1,3 +1,3 @@
+-VIGRA_ADD_TEST(test_image test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_image test.cxx LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+ VIGRA_COPY_TEST_DATA(lenna.xv)
+Index: vigra-1.10.0/test/multiarray/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/multiarray/CMakeLists.txt
++++ vigra-1.10.0/test/multiarray/CMakeLists.txt
+@@ -10,6 +10,6 @@ IF(TIFF_FOUND)
+   ADD_DEFINITIONS(-DHasTIFF)
+ ENDIF(TIFF_FOUND)
+ 
+-VIGRA_ADD_TEST(test_multiarray test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_multiarray test.cxx LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+ FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/impex)
+Index: vigra-1.10.0/test/multiconvolution/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/multiconvolution/CMakeLists.txt
++++ vigra-1.10.0/test/multiconvolution/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-VIGRA_ADD_TEST(test_multiconvolution test.cxx LIBRARIES vigraimpex)
++VIGRA_ADD_TEST(test_multiconvolution test.cxx
++	LIBRARIES vigraimpex ${MPI_LIBRARIES})
+ 
+ VIGRA_ADD_TEST(test_multiconvolution_speed speedtest.cxx)
+ 
+Index: vigra-1.10.0/test/hdf5impex/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/hdf5impex/CMakeLists.txt
++++ vigra-1.10.0/test/hdf5impex/CMakeLists.txt
+@@ -3,7 +3,8 @@ if(HDF5_FOUND)
+   
+     ADD_DEFINITIONS(${HDF5_CPPFLAGS})
+ 
+-    VIGRA_ADD_TEST(test_hdf5impex test.cxx LIBRARIES vigraimpex ${HDF5_LIBRARIES})
++    VIGRA_ADD_TEST(test_hdf5impex test.cxx
++		LIBRARIES vigraimpex ${HDF5_LIBRARIES} ${MPI_LIBRARIES})
+ else()
+     MESSAGE(STATUS "** WARNING: test_hdf5impex will not be executed")
+ endif()
+Index: vigra-1.10.0/test/sifImport/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/test/sifImport/CMakeLists.txt
++++ vigra-1.10.0/test/sifImport/CMakeLists.txt
+@@ -4,5 +4,8 @@ if(HDF5_FOUND)
+     ADD_DEFINITIONS(-DHasHDF5 ${HDF5_CPPFLAGS})
+ endif()
+ 
+-VIGRA_ADD_TEST(test_sifImport test.cxx LIBRARIES vigraimpex)
+-VIGRA_COPY_TEST_DATA(testSif_4_16_30001.sif testSif_4_13_30000.sif testSif_4_6_30000.sif testSif_forBlocks_4_16_30001.sif)
++VIGRA_ADD_TEST(test_sifImport test.cxx
++	LIBRARIES vigraimpex ${MPI_LIBRARIES})
++VIGRA_COPY_TEST_DATA(
++	testSif_4_16_30001.sif testSif_4_13_30000.sif
++	testSif_4_6_30000.sif testSif_forBlocks_4_16_30001.sif)

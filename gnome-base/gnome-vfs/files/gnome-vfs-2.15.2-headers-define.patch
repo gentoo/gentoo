@@ -1,0 +1,19 @@
+--- configure.in	2006-06-13 00:36:14.000000000 -0500
++++ configure.in	2006-06-13 00:54:15.000000000 -0500
+@@ -191,6 +191,16 @@
+ 
+ AC_CHECK_HEADERS(sys/param.h sys/resource.h sys/vfs.h sys/mount.h sys/statfs.h sys/statvfs.h sys/param.h wctype.h sys/poll.h poll.h)
+ 
++AC_CHECK_HEADERS([pwd.h])
++if test "$ac_cv_header_pwd_h" = "yes"; then
++	AC_DEFINE(HAVE_PWD_H, [1], [pwd.h present])
++fi
++
++AC_CHECK_HEADERS([grp.h])
++if test "$ac_cv_header_grp_h" = "yes"; then
++	AC_DEFINE(HAVE_GRP_H, [1], [grp.h present])
++fi
++
+ dnl
+ dnl file system type member in statfs struct
+ dnl

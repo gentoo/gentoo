@@ -1,0 +1,32 @@
+# HG changeset patch
+# User Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+# Date 1315717091 0
+# Node ID 30297b7085c3a1ea1ecd390330ff291761128bae
+# Parent  b44ad1bfbdbefb74cf53502ee6d0e5e7a5f97da5
+The embedded spidermonkey libjs.a needs nspr, fix -Wl,--as-needed.
+
+diff -r b44ad1bfbdbe -r 30297b7085c3 common-CMakeLists.txt
+--- a/common-CMakeLists.txt	Thu Sep 01 12:09:41 2011 +0000
++++ b/common-CMakeLists.txt	Sun Sep 11 04:58:11 2011 +0000
+@@ -297,10 +297,6 @@
+ INCLUDE_DIRECTORIES(${CURL_INCLUDE_DIR})
+ set(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${CURL_LIBRARIES})
+ 
+-FIND_LIBRARY(NSPR_LIB NAMES nspr4 libnspr4)
+-set(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${NSPR_LIB})
+-MARK_AS_ADVANCED(NSPR_LIB)
+-
+ FIND_PACKAGE(PkgConfig REQUIRED)
+ PKG_CHECK_MODULES(SQLITE REQUIRED sqlite3)
+ SET(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${SQLITE_LDFLAGS})
+@@ -321,6 +317,10 @@
+ MARK_AS_ADVANCED(SPIDERMONKEY_LIB)
+ set(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${SPIDERMONKEY_LIB})
+ 
++FIND_LIBRARY(NSPR_LIB NAMES nspr4 libnspr4)
++set(SG_THIRDPARTY_LIBRARIES ${SG_THIRDPARTY_LIBRARIES} ${NSPR_LIB})
++MARK_AS_ADVANCED(NSPR_LIB)
++
+ SET(CMAKE_DATA_DIR "share/veracity" CACHE STRING "Install location for data (relative to prefix).")
+ SET(CMAKE_DOC_DIR "share/veracity" CACHE STRING "Install location for documentation (relative to prefix).")
+ SET(CMAKE_MAN_DIR "man" CACHE STRING "Install location for man pages (relative to prefix).")

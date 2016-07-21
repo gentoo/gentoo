@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -114,6 +114,8 @@
+ 
+ AC_CHECK_LIB(ncurses, resizeterm, AC_DEFINE(HAVE_RESIZETERM, 1, [Define to 1 if you have the 'resizeterm' function in -lncurses.]))
+ 
++AC_SEARCH_LIBS(stdscr, tinfo)
++
+ AC_CHECK_TYPE(u_int32_t, uint32_t)
+ if test "$ac_cv_type_u_int32_t" = "no"; then
+ 	AC_CHECK_TYPE(uint32_t, unsigned int)

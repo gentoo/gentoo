@@ -1,0 +1,242 @@
+Submitted By:            Fernando de Oliveira <famobr at yahoo dot com dot br>
+Date:                    2015-05-17
+Initial Package Version: 31.7.0
+Upstream Status:         Unknown
+Origin:                  Upstream, self
+URL:                     URL=https://bug1024492.bugzilla.mozilla.org/attachment.cgi?id=8439834&action=diff&context=patch&format=raw&headers=1
+Description:             Fix building with gcc5
+
+diff -Nur comm-esr31.orig/mozilla/js/src/builtin/TypedObject.cpp comm-esr31/mozilla/js/src/builtin/TypedObject.cpp
+--- comm-esr31.orig/mozilla/js/src/builtin/TypedObject.cpp	2015-05-07 15:53:49.000000000 -0300
++++ comm-esr31/mozilla/js/src/builtin/TypedObject.cpp	2015-05-17 09:38:36.550714030 -0300
+@@ -710,12 +710,12 @@
+     contents.append(")");
+     RootedAtom stringRepr(cx, contents.finishAtom());
+     if (!stringRepr)
+-        return nullptr;
++        return false;
+ 
+     // Extract ArrayType.prototype
+     RootedObject arrayTypePrototype(cx, GetPrototype(cx, arrayTypeGlobal));
+     if (!arrayTypePrototype)
+-        return nullptr;
++        return false;
+ 
+     // Create the instance of ArrayType
+     Rooted<UnsizedArrayTypeDescr*> obj(cx);
+@@ -728,7 +728,7 @@
+     if (!JSObject::defineProperty(cx, obj, cx->names().length,
+                                   UndefinedHandleValue, nullptr, nullptr,
+                                   JSPROP_READONLY | JSPROP_PERMANENT))
+-        return nullptr;
++        return false;
+ 
+     args.rval().setObject(*obj);
+     return true;
+@@ -762,7 +762,7 @@
+     if (!size.isValid()) {
+         JS_ReportErrorNumber(cx, js_GetErrorMessage, nullptr,
+                              JSMSG_TYPEDOBJECT_TOO_BIG);
+-        return nullptr;
++        return false;
+     }
+ 
+     // Construct a canonical string `new ArrayType(<elementType>).dimension(N)`:
+@@ -775,7 +775,7 @@
+     contents.append(")");
+     RootedAtom stringRepr(cx, contents.finishAtom());
+     if (!stringRepr)
+-        return nullptr;
++        return false;
+ 
+     // Create the sized type object.
+     Rooted<SizedArrayTypeDescr*> obj(cx);
+@@ -793,7 +793,7 @@
+     if (!JSObject::defineProperty(cx, obj, cx->names().length,
+                                   lengthVal, nullptr, nullptr,
+                                   JSPROP_READONLY | JSPROP_PERMANENT))
+-        return nullptr;
++        return false;
+ 
+     // Add `unsized` property, which is a link from the sized
+     // array to the unsized array.
+@@ -801,7 +801,7 @@
+     if (!JSObject::defineProperty(cx, obj, cx->names().unsized,
+                                   unsizedTypeDescrValue, nullptr, nullptr,
+                                   JSPROP_READONLY | JSPROP_PERMANENT))
+-        return nullptr;
++        return false;
+ 
+     args.rval().setObject(*obj);
+     return true;
+@@ -1253,7 +1253,7 @@
+     Rooted<TypedProto*> proto(cx);
+     proto = NewObjectWithProto<TypedProto>(cx, objProto, nullptr, TenuredObject);
+     if (!proto)
+-        return nullptr;
++        return false;
+     proto->initTypeDescrSlot(*descr);
+     descr->initReservedSlot(JS_DESCR_SLOT_TYPROTO, ObjectValue(*proto));
+ 
+@@ -1358,14 +1358,14 @@
+ #define BINARYDATA_SCALAR_DEFINE(constant_, type_, name_)                       \
+     if (!DefineSimpleTypeDescr<ScalarTypeDescr>(cx, global, module, constant_,      \
+                                             cx->names().name_))                 \
+-        return nullptr;
++        return false;
+     JS_FOR_EACH_SCALAR_TYPE_REPR(BINARYDATA_SCALAR_DEFINE)
+ #undef BINARYDATA_SCALAR_DEFINE
+ 
+ #define BINARYDATA_REFERENCE_DEFINE(constant_, type_, name_)                    \
+     if (!DefineSimpleTypeDescr<ReferenceTypeDescr>(cx, global, module, constant_,   \
+                                                cx->names().name_))              \
+-        return nullptr;
++        return false;
+     JS_FOR_EACH_REFERENCE_TYPE_REPR(BINARYDATA_REFERENCE_DEFINE)
+ #undef BINARYDATA_REFERENCE_DEFINE
+ 
+@@ -1375,14 +1375,14 @@
+     arrayType = DefineMetaTypeDescr<ArrayMetaTypeDescr>(
+         cx, global, module, TypedObjectModuleObject::ArrayTypePrototype);
+     if (!arrayType)
+-        return nullptr;
++        return false;
+ 
+     RootedValue arrayTypeValue(cx, ObjectValue(*arrayType));
+     if (!JSObject::defineProperty(cx, module, cx->names().ArrayType,
+                                   arrayTypeValue,
+                                   nullptr, nullptr,
+                                   JSPROP_READONLY | JSPROP_PERMANENT))
+-        return nullptr;
++        return false;
+ 
+     // StructType.
+ 
+@@ -1390,14 +1390,14 @@
+     structType = DefineMetaTypeDescr<StructMetaTypeDescr>(
+         cx, global, module, TypedObjectModuleObject::StructTypePrototype);
+     if (!structType)
+-        return nullptr;
++        return false;
+ 
+     RootedValue structTypeValue(cx, ObjectValue(*structType));
+     if (!JSObject::defineProperty(cx, module, cx->names().StructType,
+                                   structTypeValue,
+                                   nullptr, nullptr,
+                                   JSPROP_READONLY | JSPROP_PERMANENT))
+-        return nullptr;
++        return false;
+ 
+     // Everything is setup, install module on the global object:
+     RootedValue moduleValue(cx, ObjectValue(*module));
+@@ -1407,7 +1407,7 @@
+                                   nullptr, nullptr,
+                                   0))
+     {
+-        return nullptr;
++        return false;
+     }
+ 
+     return module;
+@@ -2466,7 +2466,7 @@
+         if (length < 0) {
+             JS_ReportErrorNumber(cx, js_GetErrorMessage,
+                                  nullptr, JSMSG_TYPEDOBJECT_BAD_ARGS);
+-            return nullptr;
++            return false;
+         }
+         Rooted<TypedObject*> obj(cx, createZeroed(cx, callee, length));
+         if (!obj)
+diff -Nur comm-esr31.orig/mozilla/js/src/frontend/BytecodeCompiler.cpp comm-esr31/mozilla/js/src/frontend/BytecodeCompiler.cpp
+--- comm-esr31.orig/mozilla/js/src/frontend/BytecodeCompiler.cpp	2015-05-07 15:53:49.000000000 -0300
++++ comm-esr31/mozilla/js/src/frontend/BytecodeCompiler.cpp	2015-05-17 09:39:00.183186652 -0300
+@@ -544,7 +544,7 @@
+ 
+     RootedScriptSource sourceObject(cx, CreateScriptSourceObject(cx, options));
+     if (!sourceObject)
+-        return nullptr;
++        return false;
+     ScriptSource* ss = sourceObject->source();
+ 
+     SourceCompressionTask sct(cx);
+diff -Nur comm-esr31.orig/mozilla/js/src/vm/ScopeObject.h comm-esr31/mozilla/js/src/vm/ScopeObject.h
+--- comm-esr31.orig/mozilla/js/src/vm/ScopeObject.h	2015-05-07 15:53:56.000000000 -0300
++++ comm-esr31/mozilla/js/src/vm/ScopeObject.h	2015-05-17 09:53:20.202966820 -0300
+@@ -63,21 +63,9 @@
+     bool onNamedLambda;
+ 
+   public:
+-    StaticScopeIter(ExclusiveContext* cx, JSObject* obj)
+-      : obj(cx, obj), onNamedLambda(false)
+-    {
+-        JS_STATIC_ASSERT(allowGC == CanGC);
+-        JS_ASSERT_IF(obj, obj->is<StaticBlockObject>() || obj->is<StaticWithObject>() ||
+-                     obj->is<JSFunction>());
+-    }
++    StaticScopeIter(ExclusiveContext *cx, JSObject *obj);
+ 
+-    StaticScopeIter(JSObject* obj)
+-      : obj((ExclusiveContext*) nullptr, obj), onNamedLambda(false)
+-    {
+-        JS_STATIC_ASSERT(allowGC == NoGC);
+-        JS_ASSERT_IF(obj, obj->is<StaticBlockObject>() || obj->is<StaticWithObject>() ||
+-                     obj->is<JSFunction>());
+-    }
++    explicit StaticScopeIter(JSObject *obj);
+ 
+     bool done() const;
+     void operator++(int);
+diff -Nur comm-esr31.orig/mozilla/js/src/vm/ScopeObject-inl.h comm-esr31/mozilla/js/src/vm/ScopeObject-inl.h
+--- comm-esr31.orig/mozilla/js/src/vm/ScopeObject-inl.h	2015-05-07 15:53:56.000000000 -0300
++++ comm-esr31/mozilla/js/src/vm/ScopeObject-inl.h	2015-05-17 09:51:33.939344362 -0300
+@@ -13,6 +13,26 @@
+ 
+ namespace js {
+ 
++template <AllowGC allowGC>
++inline
++StaticScopeIter<allowGC>::StaticScopeIter(ExclusiveContext *cx, JSObject *obj)
++  : obj(cx, obj), onNamedLambda(false)
++{
++    JS_STATIC_ASSERT(allowGC == CanGC);
++    JS_ASSERT_IF(obj, obj->is<StaticBlockObject>() || obj->is<StaticWithObject>() ||
++                 obj->is<JSFunction>());
++}
++
++template <AllowGC allowGC>
++inline
++StaticScopeIter<allowGC>::StaticScopeIter(JSObject *obj)
++  : obj((ExclusiveContext *) nullptr, obj), onNamedLambda(false)
++{
++    JS_STATIC_ASSERT(allowGC == NoGC);
++    JS_ASSERT_IF(obj, obj->is<StaticBlockObject>() || obj->is<StaticWithObject>() ||
++                 obj->is<JSFunction>());
++}
++
+ inline void
+ ScopeObject::setAliasedVar(JSContext* cx, ScopeCoordinate sc, PropertyName* name, const Value& v)
+ {
+diff -Naur comm-esr31.orig/mozilla/netwerk/ipc/NeckoParent.cpp porg-build-2015.05.17-10h30m39s/comm-esr31/mozilla/netwerk/ipc/NeckoParent.cpp
+--- comm-esr31.orig/mozilla/netwerk/ipc/NeckoParent.cpp	2015-05-07 15:53:46.000000000 -0300
++++ porg-build-2015.05.17-10h30m39s/comm-esr31/mozilla/netwerk/ipc/NeckoParent.cpp	2015-05-17 10:51:24.013181648 -0300
+@@ -359,7 +359,7 @@
+   RtspChannelParent* p = static_cast<RtspChannelParent*>(aActor);
+   return p->Init(aConnectArgs);
+ #else
+-  return nullptr;
++  return false;
+ #endif
+ }
+
+diff -Naur comm-esr31.orig/mozilla/js/xpconnect/wrappers/XrayWrapper.cpp comm-esr31/mozilla/js/xpconnect/wrappers/XrayWrapper.cpp
+--- comm-esr31.orig/mozilla/js/xpconnect/wrappers/XrayWrapper.cpp	2015-05-07 15:53:42.000000000 -0300
++++ comm-esr31/mozilla/js/xpconnect/wrappers/XrayWrapper.cpp	2015-05-17 11:22:59.442942469 -0300
+@@ -351,7 +351,7 @@
+         {
+             JSAutoCompartment ac(cx, target);
+             if (!JS_GetClassPrototype(cx, key, protop))
+-                return nullptr;
++                return false;
+         }
+         return JS_WrapObject(cx, protop);
+     }

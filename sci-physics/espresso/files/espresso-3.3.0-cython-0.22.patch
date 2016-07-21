@@ -1,0 +1,23 @@
+From 9e6caa3294b0f5f377c16550a07429b73c871ac3 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Thu, 12 Mar 2015 08:55:51 -0600
+Subject: [PATCH] fix build with cython-0.22
+
+---
+ src/python/espressomd/particle_data.pxd | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/python/espressomd/particle_data.pxd b/src/python/espressomd/particle_data.pxd
+index fff022b..4cc39e8 100644
+--- a/src/python/espressomd/particle_data.pxd
++++ b/src/python/espressomd/particle_data.pxd
+@@ -185,5 +185,5 @@ cdef class ParticleHandle(object):
+   cdef public int id
+   cdef bint valid
+   cdef Particle particleData
+-  cdef int updateParticleData(self)
++  cdef int updateParticleData(self) except -1
+ 
+-- 
+2.0.5
+

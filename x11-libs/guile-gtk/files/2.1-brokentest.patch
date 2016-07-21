@@ -1,0 +1,33 @@
+diff --git a/tests/gdk.scm b/tests/gdk.scm
+index 6e08f9f..6b01e83 100644
+--- a/tests/gdk.scm
++++ b/tests/gdk.scm
+@@ -1102,28 +1102,6 @@
+ 	  (got  (exact-positive-integer? (gdk-screen-height-mm))))
+      (test "gdk-screen-height-mm" #f want got))))
+ 
+-;;
+-;; gdk-selection-property-get
+-;;
+-
+-(malloced-steady  ;; with nothing ever requested
+- (lambda ()
+-   (let* ((win    sample-win)
+-	  (want   '(#f NONE 0))
+-	  (got    (gdk-selection-property-get win)))
+-     (test "gdk-selection-property-get" sample-win want got))))
+-
+-(malloced-steady  ;; on a destroyed window
+- (lambda ()
+-   (let* ((win    (gdk-window-new #f 100 100 '() 'input-output 'toplevel))
+-	  (want   '(#f NONE 0))
+-	  (got    (begin
+-		    (gdk-window-destroy win)
+-		    (gdk-selection-property-get win))))
+-     ;; final free()s only take place under the main loop, so need this to
+-     ;; satisfy `malloced-steady
+-     (gtk-main-iteration-do #f)
+-     (test "gdk-selection-property-get" (list "destroyed win" win) want got))))
+ 
+ ;;
+ ;; gdk-text-extents

@@ -1,0 +1,10 @@
+--- dnsproxy.c.orig	2010-01-11 16:02:00.000000000 +0100
++++ dnsproxy.c	2010-10-27 05:07:05.000000000 +0200
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <grp.h> /* setgroups() */
+ #include <unistd.h>
+ 
+ #define GLOBALS 1

@@ -1,0 +1,14 @@
+--- a/paste/httpheaders.py
++++ b/paste/httpheaders.py
+@@ -137,7 +137,10 @@
+ import mimetypes
+ import urllib2
+ import re
+-from rfc822 import formatdate, parsedate_tz, mktime_tz
++try:
++    from rfc822 import formatdate, parsedate_tz, mktime_tz
++except ImportError:
++    from email.utils import formatdate, parsedate_tz, mktime_tz
+ from time import time as now
+ from httpexceptions import HTTPBadRequest
+ 

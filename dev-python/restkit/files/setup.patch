@@ -1,0 +1,23 @@
+diff -ur restkit-4.2.2.org/setup.py restkit-4.2.2/setup.py
+--- setup.py	2013-08-30 23:07:36.000000000 +0800
++++ setup.py	2015-01-16 21:38:04.342084550 +0800
+@@ -38,11 +38,6 @@
+     with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
+         long_description = f.read()
+ 
+-    DATA_FILES = [
+-        ('restkit', ["LICENSE", "MANIFEST.in", "NOTICE", "README.rst",
+-                        "THANKS", "TODO.txt"])
+-        ]
+-
+     options=dict(
+             name = 'restkit',
+             version = version.__version__,
+@@ -54,7 +49,6 @@
+             url = 'http://benoitc.github.com/restkit',
+             classifiers = CLASSIFIERS,
+             packages = find_packages(exclude=['tests']),
+-            data_files = DATA_FILES,
+             scripts = SCRIPTS,
+             zip_safe =  False,
+             entry_points =  {

@@ -1,0 +1,30 @@
+diff -Nru sqlbox-0.7.2.orig/configure.in sqlbox-0.7.2/configure.in
+--- sqlbox-0.7.2.orig/configure.in	2009-05-19 17:08:35.000000000 +0200
++++ sqlbox-0.7.2/configure.in	2009-09-23 00:22:05.000000000 +0200
+@@ -207,7 +207,7 @@
+   then
+     AC_CHECK_PROG(JADE, openjade, openjade, no)
+   else
+-    JADE = $OLDJADE
++    JADE=$OLDJADE
+ fi
+ AC_CHECK_PROG(JADETEX, jadetex, jadetex, no)
+ AC_CHECK_PROG(PDFJADETEX, pdfjadetex, pdfjadetex, no)
+@@ -402,7 +402,7 @@
+                         AC_MSG_RESULT($loc)
+                         AC_CHECK_FILE("$loc/include/kannel/gw-config.h",
+                                 [CFLAGS="$CFLAGS -I$loc/include/kannel -I$loc/include/kannel"; 
+-                LDFLAGS="$LDFLAGS -L$loc/lib/kannel -lwap -lgwlib";
++                LIBS="$LIBS -L$loc/lib/kannel -lwap -lgwlib";
+                 found=1
+                                 ])
+                 fi
+@@ -417,7 +417,7 @@
+         AC_MSG_RESULT([$gw_version])
+         AC_MSG_CHECKING([Kannel libs])
+         if ! $GW_CONFIG --libs &>/dev/null ; then
+-                LDFLAGS="$LDFLAGS `$GW_CONFIG --libs`"
++                LIBS="$LIBS `$GW_CONFIG --libs`"
+                 gw_libdir=`$GW_CONFIG --libs`
+                 AC_MSG_RESULT([$gw_libdir])
+         fi

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+command="/usr/bin/bopm"
+description="Blitzed Open Proxy Monitor"
+start_stop_daemon_args="--quiet --chuid ${BOPM_UID}"
+pidfile="${PIDFILE}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -o ${BOPM_UID} -d "$(dirname "${PIDFILE}")"
+}

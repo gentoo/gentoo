@@ -1,0 +1,40 @@
+diff --git a/setup.py b/setup.py
+index 0b0fa58..a4fdab6 100755
+--- a/setup.py
++++ b/setup.py
+@@ -41,34 +41,8 @@ for line in file(os.path.join('PyMca', 'PyMcaMain.py')).readlines():
+ print "PyMca X-Ray Fluorescence Toolkit %s" % __version__
+ print 
+ 
+-print "Type 'L' to view the license."
+-print "Type 'yes' to accept the terms of the license."
+-print "Type 'no' to decline the terms of the license."
+-print
+-
+-while 1:
+-    try:
+-        resp = raw_input("Do you accept the terms of the license? ")
+-    except KeyboardInterrupt:
+-        raise SystemExit
+-    except:
+-        resp = ""
+-
+-    resp = string.lower(string.strip(resp))
+-
+-    if resp == "yes":
+-        break
+-
+-    if resp == "no":
+-        sys.exit(1)
+-
+-    if resp == "l":
+-        os.system("more LICENSE.GPL")
+-
+-
+ # Specify all the required PyMca data
+-data_files = [('PyMca', ['LICENSE.GPL',
+-                         'PyMca/Scofield1973.dict',
++data_files = [('PyMca', ['PyMca/Scofield1973.dict',
+                          'PyMca/changelog.txt',
+                          'PyMca/McaTheory.cfg',
+                          'PyMca/PyMcaSplashImage.png',

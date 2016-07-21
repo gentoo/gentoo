@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+	The goal of this library is to provide an easy to use programming interface to
+	the serial ports of the Linux system. This release comes with some support for
+	the CYGWIN toolchain. Due to the great work of the cygwin folks, only minimal
+	changes are needed. I know that the cygwin-stuff of 'ezV24' isn't the final
+	stuff, but it's a first step and it works.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ezv24</remote-id>
+	</upstream>
+</pkgmetadata>

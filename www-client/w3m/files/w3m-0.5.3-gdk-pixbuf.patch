@@ -1,0 +1,46 @@
+--- w3mimg/x11/x11_w3mimg.c	2004-11-08 18:14:06.000000000 +0100
++++ w3mimg/x11/x11_w3mimg.c	2012-05-19 06:31:08.908783927 +0200
+@@ -14,7 +14,7 @@
+ #elif defined(USE_GDKPIXBUF)
+ #if defined(USE_GTK2)
+ #include <glib-object.h>
+-#include <gdk/gdk.h>
++#include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>
+ #else
+ #include <gdk-pixbuf/gdk-pixbuf-xlib.h>
+--- w3mimg/fb/fb_gdkpixbuf.c	2004-11-08 18:14:06.000000000 +0100
++++ w3mimg/fb/fb_gdkpixbuf.c	2012-05-20 05:06:07.744816661 +0200
+@@ -6,7 +6,7 @@
+ #include "config.h"
+ #if defined(USE_GTK2)
+ #include <glib-object.h>
+-#include <gdk/gdk.h>
++#include <gdk-pixbuf/gdk-pixbuf.h>
+ #endif
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include "fb.h"
+--- acinclude.m4	2011-01-04 10:22:18.000000000 +0100
++++ acinclude.m4	2012-05-20 05:15:36.158981506 +0200
+@@ -705,8 +705,8 @@ AC_DEFUN([AC_W3M_IMAGE],
+      IMGTARGETS="x11"    
+      AC_DEFINE(USE_GDKPIXBUF)
+      AC_DEFINE(USE_GTK2)
+-     IMGX11CFLAGS="`${PKG_CONFIG} --cflags gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0 gtk+-2.0`"
+-     IMGX11LDFLAGS="`${PKG_CONFIG} --libs gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0 gtk+-2.0`"
++     IMGX11CFLAGS="`${PKG_CONFIG} --cflags gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0`"
++     IMGX11LDFLAGS="`${PKG_CONFIG} --libs gdk-pixbuf-2.0 gdk-pixbuf-xlib-2.0`"
+    elif test x"$have_gdkpixbuf" = xyes; then
+      AC_DEFINE(USE_W3MIMG_X11)
+      IMGOBJS="$IMGOBJS x11/x11_w3mimg.o"
+@@ -740,8 +740,8 @@ AC_DEFUN([AC_W3M_IMAGE],
+      IMGTARGETS="${IMGTARGETS} fb"
+      AC_DEFINE(USE_GDKPIXBUF)
+      AC_DEFINE(USE_GTK2)
+-     IMGFBCFLAGS="`${PKG_CONFIG} --cflags gdk-pixbuf-2.0 gtk+-2.0`"
+-     IMGFBLDFLAGS="`${PKG_CONFIG} --libs gdk-pixbuf-2.0 gtk+-2.0`"
++     IMGFBCFLAGS="`${PKG_CONFIG} --cflags gdk-pixbuf-2.0`"
++     IMGFBLDFLAGS="`${PKG_CONFIG} --libs gdk-pixbuf-2.0`"
+    elif test x"$have_gdkpixbuf" = xyes; then
+      AC_DEFINE(USE_W3MIMG_FB)
+      IMGOBJS="$IMGOBJS fb/fb_w3mimg.o fb/fb.o fb/fb_img.o"

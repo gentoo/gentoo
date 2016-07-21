@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-video category contains video-related applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-video enthält Applikationen rund um das Thema Video.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-video contiene aplicaciones para video.
+	</longdescription>
+	<longdescription lang="ja">
+		media-videoカテゴリーにはビデオ関連のアプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-video categorie bevat video-applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-video chứa các ứng dụng liên quan đến phim ảnh.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória media-video obsahuje aplikácie pre prácu s videomateriálom.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-video contiene applicazioni video.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-video contém aplicações de vídeo.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-video zawiera pakiety związane z odtwarzaniem i
+		przetwarzaniem filmów.
+	</longdescription>
+</catmetadata>
+

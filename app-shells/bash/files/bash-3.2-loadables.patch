@@ -1,0 +1,239 @@
+--- bash-3.2/examples/loadables/basename.c
++++ bash-3.2/examples/loadables/basename.c
+@@ -11,6 +11,7 @@
+ #include <stdio.h>
+ #include "builtins.h"
+ #include "shell.h"
++#include "common.h"
+ 
+ basename_builtin (list)
+      WORD_LIST *list;
+--- bash-3.2/examples/loadables/cut.c
++++ bash-3.2/examples/loadables/cut.c
+@@ -63,6 +63,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int	errno;
+--- bash-3.2/examples/loadables/dirname.c
++++ bash-3.2/examples/loadables/dirname.c
+@@ -11,6 +11,7 @@
+ #include <stdio.h>
+ #include "builtins.h"
+ #include "shell.h"
++#include "common.h"
+ 
+ dirname_builtin (list)
+      WORD_LIST *list;
+--- bash-3.2/examples/loadables/finfo.c
++++ bash-3.2/examples/loadables/finfo.c
+@@ -12,6 +12,7 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <errno.h>
++#include <time.h>
+ 
+ #include "bashansi.h"
+ #include "shell.h"
+--- bash-3.2/examples/loadables/head.c
++++ bash-3.2/examples/loadables/head.c
+@@ -21,6 +21,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/ln.c
++++ bash-3.2/examples/loadables/ln.c
+@@ -18,6 +18,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/logname.c
++++ bash-3.2/examples/loadables/logname.c
+@@ -11,6 +11,7 @@
+ 
+ #include "builtins.h"
+ #include "shell.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/mkdir.c
++++ bash-3.2/examples/loadables/mkdir.c
+@@ -16,6 +16,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/pathchk.c
++++ bash-3.2/examples/loadables/pathchk.c
+@@ -45,6 +45,7 @@
+ #include "stdc.h"
+ #include "bashgetopt.h"
+ #include "maxpath.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/print.c
++++ bash-3.2/examples/loadables/print.c
+@@ -17,6 +17,8 @@
+ #include "builtins.h"
+ #include "stdc.h"
+ #include "bashgetopt.h"
++#include "builtext.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/printenv.c
++++ bash-3.2/examples/loadables/printenv.c
+@@ -11,6 +11,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ extern char **export_env;
+ 
+--- bash-3.2/examples/loadables/push.c
++++ bash-3.2/examples/loadables/push.c
+@@ -11,6 +11,7 @@
+ #include "shell.h"
+ #include "jobs.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #ifndef errno
+ extern int errno;
+--- bash-3.2/examples/loadables/realpath.c
++++ bash-3.2/examples/loadables/realpath.c
+@@ -34,6 +34,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #ifndef errno
+ extern int	errno;
+@@ -67,14 +68,14 @@
+ 			vflag = 1;
+ 			break;
+ 		default:
+-			usage();
++			builtin_usage();
+ 		}
+ 	}
+ 
+ 	list = loptend;
+ 
+ 	if (list == 0)
+-		usage();
++		builtin_usage();
+ 
+ 	for (es = EXECUTION_SUCCESS; list; list = list->next) {
+ 		p = list->word->word;
+--- bash-3.2/examples/loadables/rmdir.c
++++ bash-3.2/examples/loadables/rmdir.c
+@@ -8,6 +8,7 @@
+ #include <errno.h>
+ #include "builtins.h"
+ #include "shell.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/sleep.c
++++ bash-3.2/examples/loadables/sleep.c
+@@ -27,6 +27,7 @@
+ 
+ #include "shell.h"
+ #include "builtins.h"
++#include "common.h"
+ 
+ #define RETURN(x) \
+ 	do { \
+--- bash-3.2/examples/loadables/tee.c
++++ bash-3.2/examples/loadables/tee.c
+@@ -22,6 +22,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #if !defined (errno)
+ extern int errno;
+--- bash-3.2/examples/loadables/truefalse.c
++++ bash-3.2/examples/loadables/truefalse.c
+@@ -1,5 +1,7 @@
+ /* true and false builtins */
+ 
++#include <config.h>
++
+ #include "bashtypes.h"
+ #include "shell.h"
+ #include "builtins.h"
+--- bash-3.2/examples/loadables/tty.c
++++ bash-3.2/examples/loadables/tty.c
+@@ -8,6 +8,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ extern char *ttyname ();
+ 
+--- bash-3.2/examples/loadables/uname.c
++++ bash-3.2/examples/loadables/uname.c
+@@ -27,6 +27,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ #define FLAG_SYSNAME	0x01	/* -s */
+ #define FLAG_NODENAME	0x02	/* -n */
+--- bash-3.2/examples/loadables/unlink.c
++++ bash-3.2/examples/loadables/unlink.c
+@@ -14,6 +14,7 @@
+ 
+ #include "builtins.h"
+ #include "shell.h"
++#include "common.h"
+ 
+ #ifndef errno
+ extern int errno;
+--- bash-3.2/examples/loadables/whoami.c
++++ bash-3.2/examples/loadables/whoami.c
+@@ -8,6 +8,7 @@
+ #include "builtins.h"
+ #include "shell.h"
+ #include "bashgetopt.h"
++#include "common.h"
+ 
+ whoami_builtin (list)
+      WORD_LIST *list;
+--- bash-3.2/examples/loadables/Makefile.in
++++ bash-3.2/examples/loadables/Makefile.in
+@@ -68,7 +68,7 @@
+ SHOBJ_CC = @SHOBJ_CC@
+ SHOBJ_CFLAGS = @SHOBJ_CFLAGS@
+ SHOBJ_LD = @SHOBJ_LD@
+-SHOBJ_LDFLAGS = @SHOBJ_LDFLAGS@
++SHOBJ_LDFLAGS = @SHOBJ_LDFLAGS@ @LDFLAGS@
+ SHOBJ_XLDFLAGS = @SHOBJ_XLDFLAGS@
+ SHOBJ_LIBS = @SHOBJ_LIBS@
+ SHOBJ_STATUS = @SHOBJ_STATUS@

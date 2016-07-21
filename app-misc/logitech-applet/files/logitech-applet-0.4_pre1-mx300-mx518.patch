@@ -1,0 +1,139 @@
+--- a/logitech_applet.c
++++ b/logitech_applet.c
+@@ -40,6 +40,44 @@
+ #endif
+ 
+ #define VENDOR_LOGITECH 0x046D
++#define HAS_RES 0x01  /* mouse supports variable resolution */
++#define HAS_SS  0x02  /* mouse supports smart scroll control */
++#define HAS_CSR  0x04  /* mouse supports cordless status reporting and control */
++#define HAS_SSR  0x08  /* mouse supports smart scroll reporting */
++#define USE_CH2  0x10 /* mouse needs to use the second channel */
++
++struct device_table {
++    int idVendor;
++    int idProduct;
++    char* Model;
++    char* Name;
++    int flags;
++} 
++
++device_table[] = {
++    { VENDOR_LOGITECH, 0xC00E, "M-BJ58", "Wheel Mouse Optical", HAS_RES },
++    { VENDOR_LOGITECH, 0xC00F, "M-BJ79", "MouseMan Traveler", HAS_RES },
++    { VENDOR_LOGITECH, 0xC012, "M-BL63B", "MouseMan Dual Optical", HAS_RES },
++    { VENDOR_LOGITECH, 0xC01B, "M-BP86", "MX310 Optical Mouse", HAS_RES },
++    { VENDOR_LOGITECH, 0xC01D, "M-BS81A", "MX510 Optical Mouse", HAS_RES | HAS_SS | HAS_SSR },
++    { VENDOR_LOGITECH, 0xC01E, "M-BS81A", "MX518 Optical Mouse", HAS_RES },
++    { VENDOR_LOGITECH, 0xC01F, "M-BS82", "MX300 Optical Mouse", HAS_RES },
++    { VENDOR_LOGITECH, 0xC024, "M-BP82", "MX300 Optical Mouse", HAS_RES },
++    { VENDOR_LOGITECH, 0xC025, "M-BP81A", "MX500 Optical Mouse", HAS_RES | HAS_SS | HAS_SSR },
++    { VENDOR_LOGITECH, 0xC031, "M-UT58A", "iFeel Mouse (silver)", HAS_RES },
++    { VENDOR_LOGITECH, 0xC051, "M-BS81A", "MX518 Optical Mouse", HAS_RES },
++    { VENDOR_LOGITECH, 0xC501, "C-BA4-MSE", "Mouse Receiver", HAS_CSR },
++    { VENDOR_LOGITECH, 0xC502, "C-UA3-DUAL", "Dual Receiver", HAS_CSR | USE_CH2},
++    { VENDOR_LOGITECH, 0xC504, "C-BD9-DUAL", "Cordless Freedom Optical", HAS_CSR | USE_CH2 },
++    { VENDOR_LOGITECH, 0xC505, "C-BG17-DUAL", "Cordless Elite Duo", HAS_SS | HAS_SSR | HAS_CSR | USE_CH2},
++    { VENDOR_LOGITECH, 0xC506, "C-BF16-MSE", "MX700 Optical Mouse", HAS_SS | HAS_CSR },
++    { VENDOR_LOGITECH, 0xC508, "C-BA4-MSE", "Cordless Optical TrackMan", HAS_SS | HAS_CSR },
++    { VENDOR_LOGITECH, 0xC50B, "967300-0403", "Cordless MX Duo Receiver", HAS_SS|HAS_CSR },
++    { VENDOR_LOGITECH, 0xC50E, "M-RAG97", "MX1000 Laser Mouse", HAS_SS | HAS_CSR },
++    { VENDOR_LOGITECH, 0xC702, "C-UF15", "Receiver for Cordless Presenter", HAS_CSR },
++    { 0, 0, 0, 0, 0 }
++};
++
+ 
+ int get_resolution(struct usb_device *dev)
+ {
+@@ -141,7 +179,12 @@
+     return cruise;
+ }
+ 
+-/* resolution should be 0x03 for 400cpi, 0x04 for 800cpi */
++/* resolution should be:
++ *  - 0x03 for 400cpi
++ *  - 0x04 for 800cpi
++ *  - 0x05 for 1200cpi
++ *  - 0x06 for 1600cpi (actually 1800cpi on newer MX518)
++ */
+ int set_resolution(struct usb_device *dev, int resolution)
+ {
+     usb_dev_handle *usb_h;
+@@ -233,39 +276,6 @@
+     printf("Logitech Mouse Applet, Version %s\n", VERSION);
+ }
+ 
+-#define HAS_RES 0x01  /* mouse supports variable resolution */
+-#define HAS_SS  0x02  /* mouse supports smart scroll control */
+-#define HAS_CSR  0x04  /* mouse supports cordless status reporting and control */
+-#define HAS_SSR  0x08  /* mouse supports smart scroll reporting */
+-#define USE_CH2  0x10 /* mouse needs to use the second channel */
+-
+-struct device_table {
+-    int idVendor;
+-    int idProduct;
+-    char* Model;
+-    char* Name;
+-    int flags;
+-} device_table[] = {
+-    { VENDOR_LOGITECH, 0xC00E, "M-BJ58", "Wheel Mouse Optical", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC00F, "M-BJ79", "MouseMan Traveler", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC012, "M-BL63B", "MouseMan Dual Optical", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC01B, "M-BP86", "MX310 Optical Mouse", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC01D, "M-BS81A", "MX510 Optical Mouse", HAS_RES | HAS_SS | HAS_SSR },
+-    { VENDOR_LOGITECH, 0xC024, "M-BP82", "MX300 Optical Mouse", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC025, "M-BP81A", "MX500 Optical Mouse", HAS_RES | HAS_SS | HAS_SSR },
+-    { VENDOR_LOGITECH, 0xC031, "M-UT58A", "iFeel Mouse (silver)", HAS_RES },
+-    { VENDOR_LOGITECH, 0xC501, "C-BA4-MSE", "Mouse Receiver", HAS_CSR },
+-    { VENDOR_LOGITECH, 0xC502, "C-UA3-DUAL", "Dual Receiver", HAS_CSR | USE_CH2},
+-    { VENDOR_LOGITECH, 0xC504, "C-BD9-DUAL", "Cordless Freedom Optical", HAS_CSR | USE_CH2 },
+-    { VENDOR_LOGITECH, 0xC505, "C-BG17-DUAL", "Cordless Elite Duo", HAS_SS | HAS_SSR | HAS_CSR | USE_CH2},
+-    { VENDOR_LOGITECH, 0xC506, "C-BF16-MSE", "MX700 Optical Mouse", HAS_SS | HAS_CSR },
+-    { VENDOR_LOGITECH, 0xC508, "C-BA4-MSE", "Cordless Optical TrackMan", HAS_SS | HAS_CSR },
+-    { VENDOR_LOGITECH, 0xC50B, "967300-0403", "Cordless MX Duo Receiver", HAS_SS|HAS_CSR },
+-    { VENDOR_LOGITECH, 0xC50E, "M-RAG97", "MX1000 Laser Mouse", HAS_SS | HAS_CSR },
+-    { VENDOR_LOGITECH, 0xC702, "C-UF15", "Receiver for Cordless Presenter", HAS_CSR },
+-    { 0, 0, 0, 0, 0 }
+-};
+-
+ int main(int argc, char **argv)
+ {
+     struct usb_bus *bus;
+@@ -318,8 +328,12 @@
+ 		resolution = 400;
+ 	    else if (!strcmp("800", optarg))
+ 		resolution = 800;
++	    else if (!strcmp("1200", optarg))
++		resolution = 1200;
++	    else if (!strcmp("1600", optarg))
++		resolution = 1600;
+ 	    else
+-		printf("Bad argument (should be 400 or 800)\n");
++		printf("Bad argument (should be 400, 800, 1200 or 1600)\n");
+             break;
+         case 'v':
+ 	    version();
+@@ -363,14 +377,22 @@
+ 				    break;
+ 				case 4: printf("800cpi\n");
+ 				    break;
++				case 5: printf("1200cpi\n");
++				    break;
++				case 6: printf("1600cpi\n");
++				    break;
+ 				default: printf("(Unexpected result:%i)\n", resolution);
+ 				    break;
+ 				}
+ 			} else {
+ 			    if (400 == resolution)
+ 				set_resolution(dev, 0x03);
+-			    else 
++			    else if (800 == resolution) 
+ 				set_resolution(dev, 0x04);
++			    else if (1200 == resolution)
++				set_resolution(dev, 0x05);
++			    else
++				set_resolution(dev, 0x06);
+ 			}
+ 		    }
+ 

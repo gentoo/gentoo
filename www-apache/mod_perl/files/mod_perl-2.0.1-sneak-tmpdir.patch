@@ -1,0 +1,11 @@
+--- t/conf/modperl_extra.pl.orig	2005-05-16 18:27:45.000000000 +1000
++++ t/conf/modperl_extra.pl	2005-05-16 18:34:46.000000000 +1000
+@@ -136,6 +136,8 @@
+ sub test_modperl_env {
+     # see t/response/TestModperl/env.pm
+     $ENV{MODPERL_EXTRA_PL} = __FILE__;
++    $ENV{TMPDIR} = __FILE__;
++    $ENV{TMPDIR} =~ s,/work/.*,/temp,;
+ }
+ 
+ 1;

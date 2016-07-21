@@ -1,0 +1,26 @@
+diff --git a/shout.c b/shout.c
+index 0a1bded..00bae8d 100644
+--- a/shout.c
++++ b/shout.c
+@@ -441,7 +441,7 @@ post_config ()
+ 			perror ("fopen");
+ 			px_shutdown (44);
+ 		}
+-		my_snprintf (pid, BUFSIZE, "%d\n", (int) getpid ());
++		my_snprintf (pid, 30, "%d\n", (int) getpid ());
+ 		fputs (pid, fp);
+ 		fclose (fp);
+ 	}
+diff --git a/sock.c b/sock.c
+index 4a67c00..3b4e539 100644
+--- a/sock.c
++++ b/sock.c
+@@ -81,7 +81,7 @@ sock_connect (char *hostname, int port)
+ 			sock_close (sockfd);
+ 			return -1;
+ 		}
+-		memcpy (&server.sin_addr, &sin.sin_addr, sizeof (sin));
++		memcpy (&server.sin_addr, &sin.sin_addr, sizeof (sin.sin_addr));
+ 	} else {
+ 		host = gethostbyname (hostname);
+ 		if (host == NULL) {

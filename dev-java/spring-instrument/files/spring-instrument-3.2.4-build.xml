@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="spring-instrument" default="jar" basedir=".">
+
+	<property name="src.dir" value="${basedir}/src/main/java" />
+	<property name="resources.dir" value="${basedir}/src/main/resources" />
+
+	<property name="test.src.dir" value="${basedir}/src/test/java" />
+	<property name="test.resources.dir" value="${basedir}/src/test/resources" />
+	
+	<property name="reports.tests" value="${basedir}/test-output" />
+	<property name="classes.dir" value="${basedir}/classes" />
+	<property name="classes.dir.test" value="${basedir}/classes-test" />
+	<property name="dist.dir" value="${basedir}/dist" />
+
+	<property name="jar.file" value="${dist.dir}/${ant.project.name}.jar" />
+	
+	<target name="clean" description="Clean the output directory">
+		<delete dir="${classes.dir}" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<mkdir dir="${classes.dir}" />
+
+		<javac destdir="${classes.dir}" nowarn="false" debug="true" optimize="true" deprecation="false" target="1.5" verbose="false" fork="false" source="1.5">
+			<src>
+				<pathelement location="${src.dir}" />
+			</src>
+		</javac>
+	</target>
+
+	<!-- this target gets called from the other spring-* build.xml files to compile the required test utils -->
+	<target name="compile-instrument-testutils">
+		<mkdir dir="${classes.dir.test}" />
+		<javac destdir="${classes.dir.test}" nowarn="false" debug="true" optimize="true" deprecation="false" target="1.5" verbose="false" fork="false" source="1.5">
+			<src path="${test.src.dir}" />
+
+			<!-- these excludes are a little bit fuzzy, but they should work -->
+			<exclude name="org/springframework/**/*Tests.java"/>
+			<exclude name="org/springframework/**/*TestCase.java"/>
+
+			<classpath>
+				<pathelement location="${classes.dir}" />
+			</classpath>
+		</javac>
+		
+		<copy todir="${classes.dir.test}" verbose="true">
+			<fileset dir="${test.resources.dir}"/>
+		</copy>
+	</target>
+
+	<target name="compile-tests" depends="compile-instrument-testutils">
+		<ant antfile="${basedir}/../spring-core/build.xml" target="compile-core-testutils" dir="${basedir}/../spring-core/" inheritall="false" />
+
+		<mkdir dir="${classes.dir.test}" />
+		<javac destdir="${classes.dir.test}" nowarn="false" debug="true" optimize="true" deprecation="false" target="1.5" verbose="false" fork="false" source="1.5">
+			<src path="${test.src.dir}" />
+			<exclude name="**/DirectFieldAccessorTests.java"/> <!-- tries to instantiate a JPanel which needs an X-Server -->
+
+			<classpath>
+				<pathelement location="${classes.dir}" />
+
+				<pathelement location="${basedir}/../spring-core/classes-test" />
+			</classpath>
+		</javac>
+
+		<copy todir="${classes.dir.test}" verbose="true">
+			<fileset dir="${test.resources.dir}"/>
+		</copy>
+	</target>
+
+	<target name="test" depends="jar, compile-tests">
+		<mkdir dir="${reports.tests}" />
+		<junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
+			<sysproperty key="log4j.configuration" value="log4j.xml"/>
+
+			<classpath>
+				<pathelement location="${jar.file}" />
+				<pathelement location="${classes.dir.test}" />
+				<pathelement location="${test.src.dir}" />
+
+				<pathelement location="${basedir}/../spring-core/classes-test" />
+			</classpath>
+
+			<sysproperty key="basedir" value="." />
+
+			<formatter type="xml" />
+			<formatter type="plain" usefile="false" />
+
+			<batchtest todir="${reports.tests}">
+				<fileset dir="${classes.dir.test}">
+					<include name="**/*Tests.class" />
+					<exclude name="**/*Abstract*.*" />
+					<exclude name="**/*$*.class" />
+					
+					<exclude name="**/org/springframework/beans/factory/support/security/CallbacksSecurityTests*" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="javadoc">
+		<javadoc sourcepath="${src.dir}" packagenames="*" destdir="${dist.dir}/apidocs" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar jarfile="${jar.file}" compress="true" index="false" basedir="${classes.dir}" excludes="**/package.html" />
+	</target>
+</project>

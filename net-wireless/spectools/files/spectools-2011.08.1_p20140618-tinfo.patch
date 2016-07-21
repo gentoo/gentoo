@@ -1,0 +1,41 @@
+ configure.in | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index a15258c..af4ae57 100644
+--- a/configure.in
++++ b/configure.in
+@@ -131,22 +131,23 @@ AC_CHECK_LIB([usb], [usb_init], AC_DEFINE(HAVE_LIBUSB, 1, LibUSB) LIBS="$LIBS -l
+ dnl Look for curses/libcurses
+ termcontrol="none";
+ 
+-AC_CHECK_LIB([ncurses], [initscr], 
++PKG_CHECK_MODULES([NCURSES], [ncurses], [foundhcurses=yesyes curseaux="${NCURSES_LIBS}" termcontrol="ncurses"], [
++	AC_CHECK_LIB([ncurses], [initscr], 
+ 			 AC_DEFINE(HAVE_LIBNCURSES, 1, NCurses terminal lib) \
+ 			 foundlcurses=yes curseaux="-lncurses" termcontrol="ncurses" )
+ 
+-if test "$foundlcurses" != "yes"; then
+-	AC_CHECK_LIB([curses], [initscr],
++	if test "$foundlcurses" != "yes"; then
++		AC_CHECK_LIB([curses], [initscr],
+ 			 AC_DEFINE(HAVE_LIBCURSES, 1, Curses terminal lib) \
+ 			 foundlcurses=yes curseaux="-lcurses" termcontrol="curses" )
+-fi
+-
+-if test "$termcontrol" = "ncurses"; then
+-	AC_CHECK_HEADER([ncurses.h], [foundhcurses=yes])
+-elif test "$termcontrol" = "curses"; then
+-	AC_CHECK_HEADER([curses.h], [foundhcurses=yes])
+-fi
++	fi
+ 
++	if test "$termcontrol" = "ncurses"; then
++		AC_CHECK_HEADER([ncurses.h], [foundhcurses=yes])
++	elif test "$termcontrol" = "curses"; then
++		AC_CHECK_HEADER([curses.h], [foundhcurses=yes])
++	fi
++])
+ if test "$foundhcurses$foundlcurses" != "yesyes"; then
+ 	AC_MSG_WARN(*** Could not find curses library.  Curses grapher will not be built.)
+ else

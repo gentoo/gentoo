@@ -1,0 +1,37 @@
+diff -Naur src.orig/deadbeef/SupTools/Core.java src/deadbeef/SupTools/Core.java
+--- src.orig/deadbeef/SupTools/Core.java	2010-07-28 22:56:08.319223422 +0200
++++ src/deadbeef/SupTools/Core.java	2010-07-28 22:56:08.890223411 +0200
+@@ -22,6 +22,8 @@
+ import deadbeef.Tools.Props;
+ import deadbeef.Tools.ToolBox;
+ 
++import java.io.File;
++
+ /*
+  * Copyright 2009 Volker Oth (0xdeadbeef)
+  *
+@@ -768,6 +770,11 @@
+ 			}
+ 			fnameProps += Core.iniName;
+ 
++			// use XDG spec
++			fnameProps = System.getenv("XDG_CONFIG_HOME");
++			if (fnameProps == null) fnameProps = System.getProperty("user.home") + "/.config";
++			fnameProps += "/" + Core.iniName;
++
+ 			// read properties from ini file
+ 			props = new Props();
+ 			props.setHeader(Core.progNameVer+" settings - don't modify manually");
+@@ -905,8 +912,11 @@
+ 	 * Write properties
+ 	 */
+ 	public static void storeProps() {
+-		if (props != null)
++		if (props != null) {
++			File path = new File(ToolBox.getPathName(fnameProps));
++			path.mkdirs();
+ 			props.save(fnameProps);
++		}
+ 	}
+ 	
+ 	/**

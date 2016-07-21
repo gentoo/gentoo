@@ -1,0 +1,10 @@
+--- cyrus-sasl2.orig/plugins/ldapdb.c
++++ cyrus-sasl2/plugins/ldapdb.c
+@@ -406,6 +406,7 @@ ldapdb_canon_server(void *glob_context,
+ 	if ( len > out_max )
+ 	    len = out_max;
+ 	memcpy(out, bvals[0]->bv_val, len);
++    out[len] = '\0';
+ 	*out_ulen = len;
+ 	ber_bvecfree(bvals);
+     }

@@ -1,0 +1,32 @@
+Taken from debian GNU/kFreeBSD.
+
+Regretably, with GCC 4.4 or later this is the only flag combination
+I could find that doesn't cause kernel panics CPU triple-faults or
+other kind of severe breakage. This is Gentoo Bug #410945.
+
+Clang can use -O2, so we do not force -O1 on it
+
+--- a/sys/conf/kern.pre.mk
++++ b/sys/conf/kern.pre.mk
+@@ -41,6 +41,9 @@
+ .if !empty(COPTFLAGS:M-O[23s]) && empty(COPTFLAGS:M-fno-strict-aliasing)
+ COPTFLAGS+= -fno-strict-aliasing
+ .endif
++.if ${CC:T:Mclang} != "clang" && !empty(COPTFLAGS:M-O[23s])
++COPTFLAGS+= -O1
++.endif
+ .if !defined(NO_CPU_COPTFLAGS)
+ COPTFLAGS+= ${_CPUCFLAGS}
+ .endif
+--- a/sys/conf/kmod.mk
++++ b/sys/conf/kmod.mk
+@@ -91,6 +91,9 @@
+ .if !empty(CFLAGS:M-O[23s]) && empty(CFLAGS:M-fno-strict-aliasing)
+ CFLAGS+=	-fno-strict-aliasing
+ .endif
++.if ${CC:T:Mclang} != "clang" && !empty(CFLAGS:M-O[23s])
++CFLAGS+=	-O1
++.endif
+ WERROR?=	-Werror
+ CFLAGS+=	${WERROR}
+ CFLAGS+=	-D_KERNEL

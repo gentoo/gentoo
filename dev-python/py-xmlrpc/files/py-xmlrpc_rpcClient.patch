@@ -1,0 +1,15 @@
+Patch added by neurogeek@gentoo.org
+Patch added 03/01/2010
+Taken from: http://www.freebsd.org/cgi/cvsweb.cgi/ports/net/py-xmlrpc/files/
+Thanks to sobomax @ FreeBSD
+
+--- src/rpcClient.c
++++ src/rpcClient.c
+@@ -179,7 +179,7 @@
+ 	cp->url = NULL;
+ 	Py_DECREF(cp->src);
+ 	Py_DECREF(cp->disp);
+-	PyMem_DEL(cp);
++	PyObject_DEL(cp);
+ }
+

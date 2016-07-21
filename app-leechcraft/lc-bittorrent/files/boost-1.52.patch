@@ -1,0 +1,14 @@
+diff --git a/src/plugins/bittorrent/torrentplugin.cpp b/src/plugins/bittorrent/torrentplugin.cpp
+index b41f0f2..c20f847 100644
+--- a/src/plugins/bittorrent/torrentplugin.cpp
++++ b/src/plugins/bittorrent/torrentplugin.cpp
+@@ -31,6 +31,9 @@
+ #include <QToolBar>
+ #include <QHeaderView>
+ #include <QInputDialog>
++#include <boost/preprocessor/seq/size.hpp>
++#include <boost/preprocessor/seq/elem.hpp>
++#include <boost/preprocessor/repetition/repeat.hpp>
+ #include <libtorrent/session.hpp>
+ #include <libtorrent/version.hpp>
+ #include <interfaces/entitytesthandleresult.h>

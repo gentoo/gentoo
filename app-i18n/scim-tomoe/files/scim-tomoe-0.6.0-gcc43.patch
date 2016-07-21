@@ -1,0 +1,11 @@
+diff -Naur scim-tomoe-0.6.0.orig/src/scim_tomoe_prefs_widget.cpp scim-tomoe-0.6.0/src/scim_tomoe_prefs_widget.cpp
+--- scim-tomoe-0.6.0.orig/src/scim_tomoe_prefs_widget.cpp	2007-05-07 16:49:15.000000000 +0900
++++ scim-tomoe-0.6.0/src/scim_tomoe_prefs_widget.cpp	2008-09-24 00:57:47.000000000 +0900
+@@ -22,6 +22,7 @@
+ #endif
+ 
+ #include <glib/gi18n-lib.h>
++#include <cstring>
+ 
+ #include "scim_tomoe_prefs_widget.h"
+ #include "scim_tomoe_prefs.h"

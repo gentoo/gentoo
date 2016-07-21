@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -38,5 +38,7 @@
+ 		install -g root -m 0644 -D tenshi.conf ${DESTDIR}${sysconfdir}/tenshi/tenshi.conf
+ 	install -d ${DESTDIR}${docdir}
+ 	install -m 0644 ${DOCS} ${DESTDIR}${docdir}/
++	[ -d ${DESTDIR}${mandir}/man8 ] || \
++		install -d ${DESTDIR}${mandir}/man8
+ 	install -g root -m 0644 tenshi.8 ${DESTDIR}${mandir}/man8/
+ 	install -g root -m 755 -d ${DESTDIR}${libdir}

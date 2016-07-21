@@ -1,0 +1,35 @@
+diff -ur a/tclreadline.c b/tclreadline.c
+--- a/tclreadline.c	2013-11-16 20:14:28.876272386 +0100
++++ b/tclreadline.c	2013-11-16 20:14:24.191390550 +0100
+@@ -503,25 +503,22 @@
+ 	char* expansion = (char*) NULL;
+ 	int status = history_expand(ptr, &expansion);
+ 
+-	if (status >= 1) {
++	if (status >= 2) {
+ 	    /* TODO: make this a valid tcl output */
+ 	    printf("%s\n", expansion);
+ 		free(ptr);
+ 		free(expansion);
+ 		return;
+-	} else if (-1 == status) {
++	} else if (status <= -1) {
+ 	    Tcl_AppendResult
+-	    (tclrl_interp, "error in history expansion\n", (char*) NULL);
++	    (tclrl_interp, "error in history expansion: ", expansion, "\n", (char*) NULL);
+ 	    TclReadlineTerminate(TCL_ERROR);
+ 		free(ptr);
+ 		free(expansion);
+ 		return;
+-	}
+-	/**
+-	 * TODO: status == 2 ...
+-	 */
+-
+-	Tcl_AppendResult(tclrl_interp, expansion, (char*) NULL);
++	} else {
++        Tcl_AppendResult(tclrl_interp, expansion, (char*) NULL);
++    }
+ 
+ #ifdef EXECUTING_MACRO_HACK
+ 	/**

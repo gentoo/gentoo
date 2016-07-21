@@ -1,0 +1,29 @@
+--- src/systray.c
++++ src/systray.c
+@@ -6,6 +6,12 @@
+ #include "systray.h"
+ #include "main_window_cb.h"
+ 
++#ifdef HAVE_NOTIFY
++#ifndef NOTIFY_CHECK_VERSION
++#define NOTIFY_CHECK_VERSION(x,y,z) 0
++#endif
++#endif
++
+ static GdkPixbuf *systray_load_icon (const gchar *filename);
+ static GdkPixbuf *systray_pixbuf_new_from_file(const gchar *filename);
+ static void systray_clicked(GtkStatusIcon *status_icon,guint button,guint activate_time,gpointer user_data);
+@@ -224,7 +230,12 @@
+        		if (!notify_is_initted ())
+ 			if (!notify_init ("gwget"))
+ 		               return;
+-       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name,NULL);
++       NotifyNotification *notification = notify_notification_new(primary,secondary,icon_name
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++       );
++#else
++       ,NULL);
++#endif
+        notify_notification_show(notification,NULL);
+ #endif
+ 

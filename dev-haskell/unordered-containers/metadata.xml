@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Efficient hashing-based container types.  The containers have been
+		optimized for performance critical use, both in terms of large data
+		quantities and high speed.
+		
+		The declared cost of each operation is either worst-case or
+		amortized, but remains valid even if structures are shared.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/unordered-containers</remote-id>
+	</upstream>
+</pkgmetadata>

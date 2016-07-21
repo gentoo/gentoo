@@ -1,0 +1,48 @@
+--- cmake/modules/FindXscreensaver.cmake
++++ cmake/modules/FindXscreensaver.cmake
+@@ -113,6 +113,45 @@
+ endif(XSCREENSAVER_DIR)
+ endif(NOT XSCREENSAVER_DIR)
+
++if(NOT XSCREENSAVER_DIR)
++FIND_PATH(XSCREENSAVER_DIR lib${LIB_SUFFIX}/misc/xscreensaver/deco
++   ${KDE4_INCLUDE_DIR}
++   /usr/
++   /usr/local/
++   /opt/local/
++   /usr/X11R6/
++   /opt/kde/
++   /opt/kde3/
++   /usr/kde/
++   /usr/local/kde/
++   /usr/local/xscreensaver/
++   /usr/openwin/lib/xscreensaver/
++   /etc/
++)
++if( XSCREENSAVER_DIR)
++   set(XSCREENSAVER_DIR ${XSCREENSAVER_DIR}/lib${LIB_SUFFIX}/misc/xscreensaver/)
++endif(XSCREENSAVER_DIR)
++endif(NOT XSCREENSAVER_DIR)
++
++if(NOT XSCREENSAVER_DIR)
++FIND_PATH(XSCREENSAVER_DIR lib/misc/xscreensaver/deco
++   ${KDE4_INCLUDE_DIR}
++   /usr/
++   /usr/local/
++   /opt/local/
++   /usr/X11R6/
++   /opt/kde/
++   /opt/kde3/
++   /usr/kde/
++   /usr/local/kde/
++   /usr/local/xscreensaver/
++   /usr/openwin/lib/xscreensaver/
++   /etc/
++)
++if( XSCREENSAVER_DIR)
++   set(XSCREENSAVER_DIR ${XSCREENSAVER_DIR}/lib/misc/xscreensaver/)
++endif(XSCREENSAVER_DIR)
++endif(NOT XSCREENSAVER_DIR)
+
+
+ set(XSCREENSAVER_CONFIG_DIR)

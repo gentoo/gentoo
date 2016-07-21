@@ -1,0 +1,27 @@
+diff --git a/src/native/Makefile b/src/native/Makefile
+index 679adb7..a1f2a6a 100644
+--- a/src/native/Makefile
++++ b/src/native/Makefile
+@@ -51,11 +51,11 @@ JavaEditline_LIBS = -ledit -ltermcap
+ ifeq (cygwin,$(WIN32))
+ JavaGetline_LIBS = -lcygwin
+ endif
+-CC = gcc
++CC ?= gcc
+ OBJ_EXT := o
+ LIB_PRE := lib
+ LIB_EXT := so
+-CFLAGS=-fPIC -DPOSIX
++CFLAGS += -fPIC -DPOSIX
+ endif
+ 
+ 
+@@ -97,7 +97,7 @@ ifeq (CYGWIN,$(WIN32))
+ 	$(CC) -W1,$(ROOTDIR)/lib$(TG).exp -o $@ \
+ 		$(OBJECTS) -W1,-e,_readline_init@12
+ else
+-	$(CC) -shared $(OBJECTS) $(LIBPATH) $($(TG)_LIBS) -o $@
++	$(CC) -shared $(LDFLAGS) $(OBJECTS) $(LIBPATH) $($(TG)_LIBS) -o $@
+ endif
+ endif
+ 

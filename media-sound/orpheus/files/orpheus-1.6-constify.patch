@@ -1,0 +1,60 @@
+Index: orpheus-1.6/kkstrtext-0.1/kkstrtext.cc
+===================================================================
+--- orpheus-1.6.orig/kkstrtext-0.1/kkstrtext.cc
++++ orpheus-1.6/kkstrtext-0.1/kkstrtext.cc
+@@ -41,17 +41,17 @@ char *strimlead(char *str)  { return tri
+ char *strimtrail(char *str) { return trimtrail(str, " \t"); }
+ char *strim(char *str)      { return trim(str, " \t");      }
+ 
+-char *trimlead(char *str, char *chr) {
++char *trimlead(char *str, const char *chr) {
+     while(strchr(chr, str[0]) && strlen(str)) strcpy(str, str + 1);
+     return str;
+ }
+ 
+-char *trimtrail(char *str, char *chr) {
++char *trimtrail(char *str, const char *chr) {
+     while(strchr(chr, str[strlen(str)-1]) && strlen(str)) str[strlen(str)-1] = 0;
+     return str;
+ }
+ 
+-char *trim(char *str, char *chr) {
++char *trim(char *str, const char *chr) {
+     return trimlead(trimtrail(str, chr), chr);
+ }
+ 
+@@ -370,7 +370,7 @@ const char *strqstr(const char *s, const
+     return ret;
+ }
+ 
+-char *strinsert(char *buf, int pos, char *ins) {
++char *strinsert(char *buf, int pos, const char *ins) {
+     char *p = strdup(buf+pos);
+     memcpy(buf+pos+strlen(ins), p, strlen(p)+1);
+     memcpy(buf+pos, ins, strlen(ins));
+Index: orpheus-1.6/kkstrtext-0.1/kkstrtext.h
+===================================================================
+--- orpheus-1.6.orig/kkstrtext-0.1/kkstrtext.h
++++ orpheus-1.6/kkstrtext-0.1/kkstrtext.h
+@@ -119,9 +119,9 @@ __KTOOL_BEGIN_C
+ 
+ char *strcut(char *strin, int frompos, int count);
+ 
+-char *trimlead(char *str, char *chr);
+-char *trimtrail(char *str, char *chr);
+-char *trim(char *str, char *chr);
++char *trimlead(char *str, const char *chr);
++char *trimtrail(char *str, const char *chr);
++char *trim(char *str, const char *chr);
+ 
+ char *strimlead(char *str);
+ char *strimtrail(char *str);
+@@ -145,7 +145,7 @@ const char *strqstr(const char *s,
+     const char *esc = "");
+ 
+ char *strccat(char *dest, char c);
+-char *strinsert(char *buf, int pos, char *ins);
++char *strinsert(char *buf, int pos, const char *ins);
+ char *strcinsert(char *buf, int pos, char ins);
+ 
+ int strchcount(char *s, char *accept);

@@ -1,0 +1,16 @@
+Changing order allows ACX_PHTREAD to find -lthread 
+before trying to use -pthread
+
+http://bugs.gentoo.org/show_bug.cgi?id=282426
+
+--- m4/acx_pthread.m4
++++ m4/acx_pthread.m4
+@@ -123,7 +123,7 @@
+ # which indicates that we try without any flags at all, and "pthread-config"
+ # which is a program returning the flags for the Pth emulation library.
+ 
+-acx_pthread_flags="pthreads none -Kthread -kthread lthread -pthread -pthreads -mthreads pthread --thread-safe -mt pthread-config"
++acx_pthread_flags="pthreads none -Kthread -kthread lthread pthread -pthread -pthreads -mthreads --thread-safe -mt pthread-config"
+ 
+ # The ordering *is* (sometimes) important.  Some notes on the
+ # individual items follow:

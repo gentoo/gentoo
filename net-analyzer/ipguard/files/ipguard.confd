@@ -1,0 +1,8 @@
+# ipguard configuration file
+
+# IFACE - the name of the network interface you want to monitor
+# IFACE=eth0
+IFACE=eth0
+
+# OPTS - command line options (see ipguard(8)
+OPTS="-u 300 -xz -r"

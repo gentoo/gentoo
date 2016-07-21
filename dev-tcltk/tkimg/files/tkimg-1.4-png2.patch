@@ -1,0 +1,36 @@
+--- png/png.c.orig	2010-06-17 06:40:24.000000000 -0700
++++ png/png.c	2013-04-23 20:57:32.000000000 -0700
+@@ -332,6 +332,16 @@
+ 	png_set_expand(png_ptr);
+     }
+ 
++    if (png_get_sRGB && png_get_sRGB(png_ptr, info_ptr, &intent)) {
++	png_set_sRGB(png_ptr, info_ptr, intent);
++    } else if (png_get_gAMA) {
++	double gamma;
++	if (!png_get_gAMA(png_ptr, info_ptr, &gamma)) {
++	    gamma = 0.45455;
++	}
++	png_set_gamma(png_ptr, 1.0, gamma);
++    }
++
+     png_read_update_info(png_ptr,info_ptr);
+     block.pixelSize = png_get_channels(png_ptr, info_ptr);
+     block.pitch = png_get_rowbytes(png_ptr, info_ptr);
+@@ -353,16 +363,6 @@
+ 	block.offset[3] = 0;
+     }
+ 
+-    if (png_get_sRGB && png_get_sRGB(png_ptr, info_ptr, &intent)) {
+-	png_set_sRGB(png_ptr, info_ptr, intent);
+-    } else if (png_get_gAMA) {
+-	double gamma;
+-	if (!png_get_gAMA(png_ptr, info_ptr, &gamma)) {
+-	    gamma = 0.45455;
+-	}
+-	png_set_gamma(png_ptr, 1.0, gamma);
+-    }
+-
+     png_data= (char **) ckalloc(sizeof(char *) * info_height +
+ 	    info_height * block.pitch);
+ 

@@ -1,0 +1,21 @@
+http://bugs.ntp.org/show_bug.cgi?id=2951
+
+--- a/tests/ntpd/Makefile.in
++++ b/tests/ntpd/Makefile.in
+@@ -205,7 +205,7 @@ test_ntp_scanner_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+ 	-o $@
+ am_test_ntp_signd_OBJECTS = t-ntp_signd.$(OBJEXT) \
+ 	run-t-ntp_signd.$(OBJEXT) test-libntp.$(OBJEXT) \
+-	ntp_signd.$(OBJEXT) $(am__objects_1)
++	$(am__objects_1)
+ test_ntp_signd_OBJECTS = $(am_test_ntp_signd_OBJECTS)
+ test_ntp_signd_DEPENDENCIES = $(am__DEPENDENCIES_3) \
+ 	$(top_builddir)/ntpd/ntp_config.o \
+@@ -871,7 +871,6 @@ test_ntp_signd_SOURCES = \
+ 	t-ntp_signd.c				\
+ 	run-t-ntp_signd.c			\
+ 	$(srcdir)/../libntp/test-libntp.c	\
+-	$(srcdir)/../../ntpd/ntp_signd.c	\
+ 	$(NULL)
+ 
+ 

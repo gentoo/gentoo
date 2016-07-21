@@ -1,0 +1,12 @@
+service poppassd
+{
+	socket_type     = stream
+	protocol        = tcp
+	wait            = no
+	user            = root
+	server          = /usr/sbin/poppassd
+	log_on_success  += HOST DURATION
+	log_on_failure  += HOST
+	disable         = yes
+}
+								

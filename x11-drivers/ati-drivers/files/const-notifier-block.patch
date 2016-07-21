@@ -1,0 +1,25 @@
+diff -Nur common/lib/modules/fglrx/build_mod/kcl_acpi.c common-r1/lib/modules/fglrx/build_mod/kcl_acpi.c
+--- common/lib/modules/fglrx/build_mod/kcl_acpi.c	2013-01-29 17:03:51.000000000 +0200
++++ common-r1/lib/modules/fglrx/build_mod/kcl_acpi.c	2013-02-15 20:33:10.611838616 +0200
+@@ -15,6 +15,9 @@
+  ****************************************************************************/
+ 
+ #include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0)
++#include <linux/notifier.h>
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)
+ #include <generated/autoconf.h>
+ #else
+@@ -145,7 +148,11 @@
+     return NOTIFY_OK;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0)
++static notifier_block_no_const firegl_acpi_lid_notifier = {
++#else
+ static struct notifier_block firegl_acpi_lid_notifier = {
++#endif
+         .notifier_call = firegl_acpi_lid_event,
+ };
+ #endif

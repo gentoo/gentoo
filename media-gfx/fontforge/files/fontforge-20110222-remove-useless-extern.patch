@@ -1,0 +1,11 @@
+diff -Naur fontforge-20110222.orig/gutils/gimagereadrgb.c fontforge-20110222/gutils/gimagereadrgb.c
+--- fontforge-20110222.orig/gutils/gimagereadrgb.c	2013-05-05 18:03:18.884623199 +0000
++++ fontforge-20110222/gutils/gimagereadrgb.c	2013-05-05 18:03:35.452624126 +0000
+@@ -86,7 +86,6 @@
+ 
+ static void find_scanline(FILE *fp,struct sgiheader *header,int cur,
+ 	unsigned long *starttab,unsigned char **ptrtab) {
+-    extern int fgetc(FILE *);
+     int (*getthingamy)(FILE *) = header->bpc==1?fgetc:getshort;
+     int ch,i,cnt,val;
+     unsigned char *pt;

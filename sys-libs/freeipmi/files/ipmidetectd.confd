@@ -1,0 +1,5 @@
+# This configuration file controls the behaviour of the ipmid daemon
+# from FreeIPMI.
+# See `man 8 ipmitdetectd` for further information.
+
+# OPTIONS="-c /etc/freeipmi/ipmidetectd.conf"

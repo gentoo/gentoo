@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/447810
+
+fix from upstream to workaround broken BSD kernels
+
+commit 208fdb509e072977ae7a621e916dfcd32c76047d
+Author: Chet Ramey <chet@caleb.ins.cwru.edu>
+Date:   Mon Mar 4 08:09:29 2013 -0500
+
+    commit bash-20130201 snapshot
+
+diff --git a/redir.c b/redir.c
+index d7da2f3..aa3d16d 100644
+--- a/redir.c
++++ b/redir.c
+@@ -650,7 +650,7 @@ redir_open (filename, flags, mode, ri)
+      int flags, mode;
+      enum r_instruction ri;
+ {
+-  int fd, r;
++  int fd, r, e;
+ 
+   r = find_string_in_alist (filename, _redir_special_filenames, 1);
+   if (r >= 0)
+@@ -666,7 +666,16 @@ redir_open (filename, flags, mode, ri)
+     }
+   else
+     {
+-      fd = open (filename, flags, mode);
++      do
++	{
++	  fd = open (filename, flags, mode);
++	  e = errno;
++	  if (fd < 0 && e == EINTR)
++	    QUIT;
++	  errno = e;
++	}
++      while (fd < 0 && errno == EINTR);
++
+ #if defined (AFS)
+       if ((fd < 0) && (errno == EACCES))
+ 	{

@@ -1,0 +1,30 @@
+--- a/XXkb.ad.var
++++ b/XXkb.ad.var
+@@ -4,10 +4,10 @@
+ XXkb.group.alt: 2
+ 
+ XXkb.mainwindow.enable: yes
+-XXkb.mainwindow.geometry: 48x48
+-XXkb.mainwindow.image.1: en48.xpm
+-XXkb.mainwindow.image.2: ru48.xpm
+-XXkb.mainwindow.image.3: su48.xpm
++XXkb.mainwindow.geometry: 48x48+0+0
++XXkb.mainwindow.image.1: en.svg
++XXkb.mainwindow.image.2: ru.svg
++XXkb.mainwindow.image.3: su.svg
+ XXkb.mainwindow.image.4:
+ XXkb.mainwindow.label.font: -misc-*-r-*-20-*
+ 
+@@ -23,9 +23,9 @@
+ 
+ XXkb.button.enable: yes
+ XXkb.button.geometry: 15x15-60+7
+-XXkb.button.image.1: en15.xpm
+-XXkb.button.image.2: ru15.xpm
+-XXkb.button.image.3: su15.xpm
++XXkb.button.image.1: en.svg
++XXkb.button.image.2: ru.svg
++XXkb.button.image.3: su.svg
+ XXkb.button.image.4:
+ XXkb.button.label.font: -misc-*-r-*-13-*
+ 

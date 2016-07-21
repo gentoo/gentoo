@@ -1,0 +1,44 @@
+diff -u probcons.orig/CompareToRef.cc probcons/CompareToRef.cc
+--- probcons.orig/CompareToRef.cc	2008-04-08 16:38:46.000000000 -0700
++++ probcons/CompareToRef.cc	2008-04-08 16:39:41.000000000 -0700
+@@ -16,6 +16,7 @@
+ #include <limits>
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstring>
+ #include <cerrno>
+ #include <iomanip>
+ 
+diff -u probcons.orig/FixRef.cc probcons/FixRef.cc
+--- probcons.orig/FixRef.cc	2008-04-08 16:38:46.000000000 -0700
++++ probcons/FixRef.cc	2008-04-08 16:39:33.000000000 -0700
+@@ -17,6 +17,7 @@
+ #include <algorithm>
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstring>
+ #include <cerrno>
+ #include <iomanip>
+ 
+diff -u probcons.orig/Main.cc probcons/Main.cc
+--- probcons.orig/Main.cc	2008-04-08 16:38:46.000000000 -0700
++++ probcons/Main.cc	2008-04-08 16:39:14.000000000 -0700
+@@ -21,6 +21,7 @@
+ #include <climits>
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstring>
+ #include <cerrno>
+ #include <iomanip>
+ 
+diff -u probcons.orig/ProjectPairwise.cc probcons/ProjectPairwise.cc
+--- probcons.orig/ProjectPairwise.cc	2008-04-08 16:38:46.000000000 -0700
++++ probcons/ProjectPairwise.cc	2008-04-08 16:39:25.000000000 -0700
+@@ -16,6 +16,7 @@
+ #include <limits>
+ #include <cstdio>
+ #include <cstdlib>
++#include <cstring>
+ #include <cerrno>
+ #include <iomanip>
+ 

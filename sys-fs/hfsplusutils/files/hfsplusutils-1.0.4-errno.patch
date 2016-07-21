@@ -1,0 +1,19 @@
+diff -ruN hfsplus.orig/src/hpmkdir.c hfsplus-1.0.4/src/hpmkdir.c
+--- hfsplus.orig/src/hpmkdir.c	2003-03-30 20:09:59.000000000 +0200
++++ hfsplus-1.0.4/src/hpmkdir.c	2003-03-30 20:11:15.000000000 +0200
+@@ -46,8 +46,9 @@
+ # include <string.h>
+ # include <time.h>
+ # include <ctype.h>
+-# include <errno.h>
+ */
++# include <errno.h>
++
+ # include <stdio.h>
+ # include <stdlib.h>
+ 
+@@ -164,3 +165,4 @@
+     hfsputil_perrorp(argv0);
+     return -1;
+ }
++

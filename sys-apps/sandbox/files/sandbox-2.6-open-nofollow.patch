@@ -1,0 +1,54 @@
+From 45fa8714a1d35e6555083d88a71851ada2aacac4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 24 Dec 2012 18:46:29 -0500
+Subject: [PATCH] libsandbox: handle open(O_NOFOLLOW)
+
+We don't check for O_NOFOLLOW in the open wrappers, so we end up
+returning the wrong error when operating on broken symlinks.
+
+URL: https://bugs.gentoo.org/413441
+Reported-by: Marien Zwart <marienz@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/wrapper-funcs/__64_post.h        |  1 +
+ libsandbox/wrapper-funcs/__64_pre.h         |  1 +
+ libsandbox/wrapper-funcs/openat_pre_check.c |  2 +-
+ tests/open-2.sh                             | 10 ++++++++++
+ tests/open.at                               |  1 +
+ 5 files changed, 14 insertions(+), 1 deletion(-)
+ create mode 100755 tests/open-2.sh
+
+diff --git a/libsandbox/wrapper-funcs/__64_post.h b/libsandbox/wrapper-funcs/__64_post.h
+index 2fd2182..82d2a16 100644
+--- a/libsandbox/wrapper-funcs/__64_post.h
++++ b/libsandbox/wrapper-funcs/__64_post.h
+@@ -1,3 +1,4 @@
+ #undef SB64
+ #undef stat
++#undef lstat
+ #undef off_t
+diff --git a/libsandbox/wrapper-funcs/__64_pre.h b/libsandbox/wrapper-funcs/__64_pre.h
+index 2132110..0b34b25 100644
+--- a/libsandbox/wrapper-funcs/__64_pre.h
++++ b/libsandbox/wrapper-funcs/__64_pre.h
+@@ -1,3 +1,4 @@
+ #define SB64
+ #define stat stat64
++#define lstat lstat64
+ #define off_t off64_t
+diff --git a/libsandbox/wrapper-funcs/openat_pre_check.c b/libsandbox/wrapper-funcs/openat_pre_check.c
+index c827ee6..0127708 100644
+--- a/libsandbox/wrapper-funcs/openat_pre_check.c
++++ b/libsandbox/wrapper-funcs/openat_pre_check.c
+@@ -29,7 +29,7 @@ bool sb_openat_pre_check(const char *func, const char *pathname, int dirfd, int
+ 
+ 	/* Doesn't exist -> skip permission checks */
+ 	struct stat st;
+-	if (-1 == stat(pathname, &st)) {
++	if (((flags & O_NOFOLLOW) ? lstat(pathname, &st) : stat(pathname, &st)) == -1) {
+ 		sb_debug_dyn("EARLY FAIL: %s(%s): %s\n",
+ 			func, pathname, strerror(errno));
+ 		return false;
+-- 
+1.8.1.2
+

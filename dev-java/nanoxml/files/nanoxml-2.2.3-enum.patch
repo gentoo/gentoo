@@ -1,0 +1,208 @@
+--- Sources/Java/net/n3/nanoxml/XMLElement.java.orig	2016-03-04 09:21:07.908000000 +0000
++++ Sources/Java/net/n3/nanoxml/XMLElement.java	2016-03-04 09:35:16.283000000 +0000
+@@ -484,9 +484,9 @@
+      * @return the child element, or null if no such child was found.
+      */
+     public IXMLElement getFirstChildNamed(String name) {
+-        Enumeration enum = this.children.elements();
+-        while (enum.hasMoreElements()) {
+-            IXMLElement child = (IXMLElement) enum.nextElement();
++        Enumeration myEnum = this.children.elements();
++        while (myEnum.hasMoreElements()) {
++            IXMLElement child = (IXMLElement) myEnum.nextElement();
+             String childName = child.getFullName();
+             if ((childName != null) && childName.equals(name)) {
+                 return child;
+@@ -506,9 +506,9 @@
+      */
+     public IXMLElement getFirstChildNamed(String name,
+                                           String namespace) {
+-        Enumeration enum = this.children.elements();
+-        while (enum.hasMoreElements()) {
+-            IXMLElement child = (IXMLElement) enum.nextElement();
++        Enumeration myEnum = this.children.elements();
++        while (myEnum.hasMoreElements()) {
++            IXMLElement child = (IXMLElement) myEnum.nextElement();
+             String str = child.getName();
+             boolean found = (str != null) && (str.equals(name));
+             str = child.getNamespace();
+@@ -534,9 +534,9 @@
+      */
+     public Vector getChildrenNamed(String name) {
+         Vector result = new Vector(this.children.size());
+-        Enumeration enum = this.children.elements();
+-        while (enum.hasMoreElements()) {
+-            IXMLElement child = (IXMLElement) enum.nextElement();
++        Enumeration myEnum = this.children.elements();
++        while (myEnum.hasMoreElements()) {
++            IXMLElement child = (IXMLElement) myEnum.nextElement();
+             String childName = child.getFullName();
+             if ((childName != null) && childName.equals(name)) {
+                 result.addElement(child);
+@@ -557,9 +557,9 @@
+     public Vector getChildrenNamed(String name,
+                                    String namespace) {
+         Vector result = new Vector(this.children.size());
+-        Enumeration enum = this.children.elements();
+-        while (enum.hasMoreElements()) {
+-            IXMLElement child = (IXMLElement) enum.nextElement();
++        Enumeration myEnum = this.children.elements();
++        while (myEnum.hasMoreElements()) {
++            IXMLElement child = (IXMLElement) myEnum.nextElement();
+             String str = child.getName();
+             boolean found = (str != null) && (str.equals(name));
+             str = child.getNamespace();
+@@ -585,9 +585,9 @@
+      * @return the attribute, or null if the attribute does not exist.
+      */
+     private XMLAttribute findAttribute(String fullName) {
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             if (attr.getFullName().equals(fullName)) {
+                 return attr;
+             }
+@@ -606,9 +606,9 @@
+      */
+     private XMLAttribute findAttribute(String name,
+                                        String namespace) {
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             boolean found = attr.getName().equals(name);
+             if (namespace == null) {
+                 found &= (attr.getNamespace() == null);
+@@ -860,9 +860,9 @@
+      */
+     public Enumeration enumerateAttributeNames() {
+         Vector result = new Vector();
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             result.addElement(attr.getFullName());
+         }
+         return result.elements();
+@@ -897,9 +897,9 @@
+      */
+     public Properties getAttributes() {
+         Properties result = new Properties();
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             result.put(attr.getFullName(), attr.getValue());
+         }
+         return result;
+@@ -915,9 +915,9 @@
+      */
+     public Properties getAttributesInNamespace(String namespace) {
+         Properties result = new Properties();
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             if (namespace == null) {
+                 if (attr.getNamespace() == null) {
+                     result.put(attr.getName(), attr.getValue());
+@@ -1007,9 +1007,9 @@
+         if (this.attributes.size() != elt.getAttributeCount()) {
+             return false;
+         }
+-        Enumeration enum = this.attributes.elements();
+-        while (enum.hasMoreElements()) {
+-            XMLAttribute attr = (XMLAttribute) enum.nextElement();
++        Enumeration myEnum = this.attributes.elements();
++        while (myEnum.hasMoreElements()) {
++            XMLAttribute attr = (XMLAttribute) myEnum.nextElement();
+             if (! elt.hasAttribute(attr.getName(), attr.getNamespace())) {
+                 return false;
+             }
+--- Sources/Java/net/n3/nanoxml/NonValidator.java.orig	2016-03-04 09:36:05.247000000 +0000
++++ Sources/Java/net/n3/nanoxml/NonValidator.java	2016-03-04 09:36:25.195000000 +0000
+@@ -587,10 +587,10 @@
+                                           int        lineNr)
+    {
+       Properties props = (Properties) this.currentElements.pop();
+-      Enumeration enum = props.keys();
++      Enumeration myEnum = props.keys();
+ 
+-      while (enum.hasMoreElements()) {
+-         String key = (String) enum.nextElement();
++      while (myEnum.hasMoreElements()) {
++         String key = (String) myEnum.nextElement();
+          extraAttributes.put(key, props.get(key));
+       }
+    }
+--- Sources/Java/net/n3/nanoxml/XMLWriter.java.orig	2016-03-04 09:36:53.616000000 +0000
++++ Sources/Java/net/n3/nanoxml/XMLWriter.java	2016-03-04 09:38:11.868000000 +0000
+@@ -182,10 +182,10 @@
+             }
+          }
+ 
+-         Enumeration enum = xml.enumerateAttributeNames();
++         Enumeration myEnum = xml.enumerateAttributeNames();
+ 
+-         while (enum.hasMoreElements()) {
+-            String key = (String) enum.nextElement();
++         while (myEnum.hasMoreElements()) {
++            String key = (String) myEnum.nextElement();
+             int index = key.indexOf(':');
+ 
+             if (index >= 0) {
+@@ -203,10 +203,10 @@
+             }
+          }
+ 
+-         enum = xml.enumerateAttributeNames();
++         myEnum = xml.enumerateAttributeNames();
+ 
+-         while (enum.hasMoreElements()) {
+-            String key = (String) enum.nextElement();
++         while (myEnum.hasMoreElements()) {
++            String key = (String) myEnum.nextElement();
+             String value = xml.getAttribute(key, null);
+             this.writer.print(" " + key + "=\"");
+             this.writeEncoded(value);
+@@ -229,10 +229,10 @@
+                writer.println();
+             }
+ 
+-            enum = xml.enumerateChildren();
++            myEnum = xml.enumerateChildren();
+ 
+-            while (enum.hasMoreElements()) {
+-               IXMLElement child = (IXMLElement) enum.nextElement();
++            while (myEnum.hasMoreElements()) {
++               IXMLElement child = (IXMLElement) myEnum.nextElement();
+                this.write(child, prettyPrint, indent + 4,
+                           collapseEmptyElements);
+             }
+--- Sources/Java/net/n3/nanoxml/StdXMLParser.java.orig	2016-03-04 09:38:44.521000000 +0000
++++ Sources/Java/net/n3/nanoxml/StdXMLParser.java	2016-03-04 09:39:08.028000000 +0000
+@@ -492,10 +492,10 @@
+                                                 extraAttributes,
+                                                 this.reader.getSystemID(),
+                                                 this.reader.getLineNr());
+-      Enumeration enum = extraAttributes.keys();
++      Enumeration myEnum = extraAttributes.keys();
+ 
+-      while (enum.hasMoreElements()) {
+-         String key = (String) enum.nextElement();
++      while (myEnum.hasMoreElements()) {
++         String key = (String) myEnum.nextElement();
+          String value = extraAttributes.getProperty(key);
+          attrNames.addElement(key);
+          attrValues.addElement(value);

@@ -1,0 +1,39 @@
+Index: griffith-0.12.1/lib/add.py
+===================================================================
+--- griffith-0.12.1.orig/lib/add.py
++++ griffith-0.12.1/lib/add.py
+@@ -26,7 +26,7 @@ import logging
+ import os
+ 
+ import gtk
+-from sqlalchemy.exceptions import IntegrityError
++from sqlalchemy.exc import IntegrityError
+ 
+ import quick_filter
+ import db
+Index: griffith-0.12.1/lib/db/tables.py
+===================================================================
+--- griffith-0.12.1.orig/lib/db/tables.py
++++ griffith-0.12.1/lib/db/tables.py
+@@ -64,7 +64,7 @@ movies = Table('movies', metadata,
+     Column('poster_md5', ForeignKey(posters.c.md5sum)),
+     Column('loaned', Boolean, nullable=False, default=False),
+     Column('seen', Boolean, nullable=False, default=False),
+-    Column('rating', SmallInteger(2)),
++    Column('rating', SmallInteger),
+     Column('color', SmallInteger),
+     Column('cond', SmallInteger), # MySQL will not accept name "condition"
+     Column('layers', SmallInteger),
+Index: griffith-0.12.1/lib/sql.py
+===================================================================
+--- griffith-0.12.1.orig/lib/sql.py
++++ griffith-0.12.1/lib/sql.py
+@@ -29,7 +29,7 @@ import logging
+ import os.path
+ 
+ from sqlalchemy import create_engine, or_, and_, not_, exists, asc, desc
+-from sqlalchemy.exceptions import OperationalError
++from sqlalchemy.exc import OperationalError
+ from sqlalchemy.orm import sessionmaker, scoped_session
+ from sqlalchemy.sql.expression import Update, Delete
+ 

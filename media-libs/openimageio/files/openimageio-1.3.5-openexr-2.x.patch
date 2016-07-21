@@ -1,0 +1,36 @@
+There is no IlmBaseConfig.h in OpenEXR 2.x
+
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_mutexattr_init'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_mutexattr_settype'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_mutexattr_destroy'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_spin_lock'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_spin_unlock'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_spin_destroy'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_spin_init'
+../libOpenImageIO/libOpenImageIO.so.1.3.5: error: undefined reference to 'pthread_detach'
+
+--- src/cmake/modules/FindIlmBase.cmake
++++ src/cmake/modules/FindIlmBase.cmake
+@@ -176,17 +176,11 @@
+ set (ILMBASE_CACHED_STATE ${ILMBASE_CURRENT_STATE}
+   CACHE INTERNAL "State last seen by FindIlmBase.cmake" FORCE)
+ 
+-# Link with pthreads if required
+-if (NOT WIN32 AND EXISTS ${ILMBASE_INCLUDE_DIR}/OpenEXR/IlmBaseConfig.h)
+-  file (STRINGS ${ILMBASE_INCLUDE_DIR}/OpenEXR/IlmBaseConfig.h
+-    ILMBASE_HAVE_PTHREAD
+-    REGEX "^[ \\t]*#define[ \\t]+HAVE_PTHREAD[ \\t]1[ \\t]*\$"
+-  )
+-  if (ILMBASE_HAVE_PTHREAD)
+-    find_package (Threads)
+-    if (CMAKE_USE_PTHREADS_INIT)
+-      set (ILMBASE_PTHREADS ${CMAKE_THREAD_LIBS_INIT})
+-    endif ()
++# Always link to pthreads for OpenEXR 2.x
++if (NOT WIN32)
++  find_package (Threads)
++  if (CMAKE_USE_PTHREADS_INIT)
++    set (ILMBASE_PTHREADS ${CMAKE_THREAD_LIBS_INIT})
+   endif ()
+ endif ()
+ 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Module-Build</remote-id>
+    <remote-id type="cpan-module">Module::Build</remote-id>
+    <remote-id type="cpan-module">Module::Build::Base</remote-id>
+    <remote-id type="cpan-module">Module::Build::Compat</remote-id>
+    <remote-id type="cpan-module">Module::Build::Config</remote-id>
+    <remote-id type="cpan-module">Module::Build::Cookbook</remote-id>
+    <remote-id type="cpan-module">Module::Build::Dumper</remote-id>
+    <remote-id type="cpan-module">Module::Build::ModuleInfo</remote-id>
+    <remote-id type="cpan-module">Module::Build::Notes</remote-id>
+    <remote-id type="cpan-module">Module::Build::PPMMaker</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::Amiga</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::Default</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::EBCDIC</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::MPEiX</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::MacOS</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::RiscOS</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::Unix</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::VMS</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::VOS</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::Windows</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::aix</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::cygwin</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::darwin</remote-id>
+    <remote-id type="cpan-module">Module::Build::Platform::os2</remote-id>
+    <remote-id type="cpan-module">Module::Build::PodParser</remote-id>
+    <remote-id type="cpan-module">Module::Build::Version</remote-id>
+    <remote-id type="cpan-module">Module::Build::YAML</remote-id>
+    <remote-id type="cpan-module">inc::latest</remote-id>
+    <remote-id type="cpan-module">inc::latest::private</remote-id>
+  </upstream>
+</pkgmetadata>

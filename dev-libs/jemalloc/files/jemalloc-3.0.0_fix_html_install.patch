@@ -1,0 +1,14 @@
+diff --git a/Makefile.in b/Makefile.in
+index 6675b59..3032c6d 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -240,7 +240,7 @@ install_doc_man:
+ 	install -m 644 $$d $(MANDIR)/man3; \
+ done
+ 
+-install_doc: install_doc_html install_doc_man
++install_doc: install_doc_man
+ 
+ install: install_bin install_include install_lib install_doc
+ 
+

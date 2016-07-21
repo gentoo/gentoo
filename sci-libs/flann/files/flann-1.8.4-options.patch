@@ -1,0 +1,41 @@
+ CMakeLists.txt | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 410a8f9..b6244a4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,6 +54,8 @@ option(BUILD_PYTHON_BINDINGS "Build Python bindings" ON)
+ option(BUILD_MATLAB_BINDINGS "Build Matlab bindings" ON)
+ option(BUILD_CUDA_LIB "Build CUDA library" OFF)
+ option(BUILD_EXAMPLES "Build examples" ON)
++option(BUILD_TESTS "Build tests" ON)
++option(BUILD_DOC "Build documentation" ON)
+ option(USE_OPENMP "Use OpenMP multi-threading" ON)
+ option(USE_MPI "Use MPI" OFF)
+ 
+@@ -158,8 +160,12 @@ add_subdirectory( src )
+ if (BUILD_EXAMPLES)
+   add_subdirectory( examples )
+ endif(BUILD_EXAMPLES)
+-add_subdirectory( test )
+-add_subdirectory( doc )
++if (BUILD_TESTS)
++  add_subdirectory( test )
++endif (BUILD_TESTS)
++if (BUILD_DOC)
++  add_subdirectory( doc )
++endif (BUILD_DOC)
+ 
+ 
+ # CPACK options
+@@ -202,6 +208,9 @@ include(CPack)
+ message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
+ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+ message(STATUS "Building C bindings: ${BUILD_C_BINDINGS}")
++message(STATUS "Building examples: ${BUILD_EXAMPLES}")
++message(STATUS "Building tests: ${BUILD_TESTS}")
++message(STATUS "Building documentation: ${BUILD_DOC}")
+ message(STATUS "Building python bindings: ${BUILD_PYTHON_BINDINGS}")
+ message(STATUS "Building matlab bindings: ${BUILD_MATLAB_BINDINGS}")
+ message(STATUS "Building CUDA library: ${BUILD_CUDA_LIB}")

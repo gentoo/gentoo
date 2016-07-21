@@ -1,0 +1,12 @@
+Index: work/php5.3/ffmpeg-php.c
+===================================================================
+--- work.orig/php5.3/ffmpeg-php.c
++++ work/php5.3/ffmpeg-php.c
+@@ -101,6 +101,7 @@ PHP_MINIT_FUNCTION(ffmpeg)
+     if (INI_BOOL("ffmpeg.show_warnings")) {
+         av_log_set_callback(ffmpeg_errorhandler);
+     } 
++    else av_log_set_level(AV_LOG_QUIET);
+    
+     register_ffmpeg_movie_class(module_number);
+     register_ffmpeg_frame_class(module_number);

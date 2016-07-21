@@ -1,0 +1,38 @@
+From 58a382c73ad3393d7591421950624e75d3c4aea1 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Thu, 21 Mar 2013 13:21:11 -0400
+Subject: [PATCH] Do not call cond_resched() in spl_slab_reclaim()
+
+Calling cond_resched() after each object is freed and then after each
+slab is freed can cause slabs of objects to live for excessive periods
+of time following reclaimation. This interferes with the kernel's own
+memory management when called from kswapd and can cause direct reclaim
+to occur in response to memory pressure that should have been resolved.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+---
+ module/spl/spl-kmem.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/module/spl/spl-kmem.c b/module/spl/spl-kmem.c
+index f9c1114..a0ca2d2 100644
+--- a/module/spl/spl-kmem.c
++++ b/module/spl/spl-kmem.c
+@@ -1112,14 +1112,11 @@ char *kvasprintf(gfp_t gfp, const char *fmt, va_list ap)
+ 
+ 		if (skc->skc_flags & KMC_OFFSLAB)
+ 			kv_free(skc, sko->sko_addr, size);
+-
+-		cond_resched();
+ 	}
+ 
+ 	list_for_each_entry_safe(sks, m, &sks_list, sks_list) {
+ 		ASSERT(sks->sks_magic == SKS_MAGIC);
+ 		kv_free(skc, sks, skc->skc_slab_size);
+-		cond_resched();
+ 	}
+ 
+ 	SEXIT;
+-- 
+1.8.1.5
+

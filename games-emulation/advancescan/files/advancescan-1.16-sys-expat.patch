@@ -1,0 +1,77 @@
+--- configure.ac
++++ configure.ac
+@@ -30,6 +30,7 @@
+ 
+ # Checks for libraries.
+ AC_CHECK_LIB([z], [adler32], [], [AC_MSG_ERROR([the libz library is missing])])
++AC_CHECK_LIB([expat], [XML_Parse], [], [AC_MSG_ERROR([the expat library is missing])])
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+--- gamexml.cc
++++ gamexml.cc
+@@ -22,7 +22,7 @@
+ 
+ #include "game.h"
+ #include "strcov.h"
+-#include "expat/expat.h"
++#include <expat.h>
+ 
+ #include <string>
+ #include <iostream>
+--- Makefile.am
++++ Makefile.am
+@@ -18,10 +18,7 @@
+ 	siglock.cc \
+ 	getopt.c \
+ 	snprintf.c \
+-	lib/readinfo.c \
+-	expat/xmlrole.c \
+-	expat/xmlparse.c \
+-	expat/xmltok.c
++	lib/readinfo.c
+ 
+ advscan_SOURCES =  \
+ 	scan.cc \
+@@ -43,10 +40,7 @@
+ 	siglock.cc \
+ 	getopt.c \
+ 	snprintf.c \
+-	lib/readinfo.c \
+-	expat/xmlrole.c \
+-	expat/xmlparse.c \
+-	expat/xmltok.c
++	lib/readinfo.c
+ 
+ EXTRA_DIST = advscan.rc.linux advscan.rc.dos \
+ 	README AUTHORS HISTORY INSTALL COPYING \
+@@ -82,28 +76,7 @@
+ 	portable.h \
+ 	lib/readinfo.h \
+ 	lib/endianrw.h \
+-	lib/extra.h \
+-	expat/COPYING \
+-	expat/README \
+-	expat/ascii.h \
+-	expat/asciitab.h \
+-	expat/expat-1.95.8.diff \
+-	expat/expat.h \
+-	expat/iasciitab.h \
+-	expat/expatcfg.h \
+-	expat/expat_external.h \
+-	expat/internal.h \
+-	expat/latin1tab.h \
+-	expat/nametab.h \
+-	expat/utf8tab.h \
+-	expat/xmlparse.c \
+-	expat/xmlrole.c \
+-	expat/xmlrole.h \
+-	expat/xmltok.c \
+-	expat/xmltok.h \
+-	expat/xmltok_impl.c \
+-	expat/xmltok_impl.h \
+-	expat/xmltok_ns.c
++	lib/extra.h
+ 
+ man_MANS = doc/advscan.1 doc/advdiff.1
+ 

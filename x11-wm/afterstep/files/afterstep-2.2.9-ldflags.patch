@@ -1,0 +1,37 @@
+Respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=325309
+
+--- autoconf/Makefile.common.lib.in
++++ autoconf/Makefile.common.lib.in
+@@ -245,7 +245,7 @@
+ 	$(LN_S) -f $(LIB_SHARED).$(LIBVER) $(LIB_SHARED).$(LIBVERMAJOR)
+ 
+ $(LIB_SHARED).$(LIBVER): $(LIB_OBJS) $(LIB_INCS)
+-	$(CC) -shared -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
++	$(CC) -shared $(LDFLAGS) -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
+ 	 $(LIB_OBJS)
+ 
+ install:	install.lib install.bin
+--- libAfterImage/Makefile.in
++++ libAfterImage/Makefile.in
+@@ -395,7 +395,7 @@
+ 	$(LN_S) -f $(LIB_SHARED).$(LIBVER) $(LIB_SHARED).$(LIBVERMAJOR)
+ 
+ $(LIB_SHARED).$(LIBVER): $(LIB_OBJS) $(LIB_INCS) config.h
+-	$(CC) -shared -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
++	$(CC) -shared $(LDFLAGS) -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
+ 	 $(LIB_OBJS)
+ 
+ install.man:
+--- libAfterBase/Makefile.in
++++ libAfterBase/Makefile.in
+@@ -325,7 +325,7 @@
+ 	$(LN_S) -f $(LIB_SHARED).$(LIBVER) $(LIB_SHARED).$(LIBVERMAJOR)
+ 
+ $(LIB_SHARED).$(LIBVER): $(LIB_OBJS) $(LIB_INCS)
+-	$(CC) -shared -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
++	$(CC) -shared $(LDFLAGS) -Wl,-soname,$(LIB_SHARED).$(LIBVERMAJOR) -o $(LIB_SHARED).$(LIBVER) \
+ 	 $(USER_LD_FLAGS) $(LIBS_X) $(LIB_OBJS)
+ 
+ install:	install.lib

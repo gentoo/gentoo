@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-UPnP</remote-id>
+    <remote-id type="cpan-module">Net::UPnP</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::AV::Container</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::AV::Content</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::AV::Item</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::AV::MediaRenderer</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::AV::MediaServer</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::ActionResponse</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::ControlPoint</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::Device</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::GW::Gateway</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::HTTP</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::HTTPResponse</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::QueryResponse</remote-id>
+    <remote-id type="cpan-module">Net::UPnP::Service</remote-id>
+  </upstream>
+</pkgmetadata>

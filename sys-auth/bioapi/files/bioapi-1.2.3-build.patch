@@ -1,0 +1,42 @@
+http://code.google.com/p/bioapi-linux/issues/detail?id=4
+
+--- a/addins/pwbsp/Makefile.in
++++ b/addins/pwbsp/Makefile.in
+@@ -87,7 +87,7 @@ CC = @CC@
+ CCDEPMODE = @CCDEPMODE@
+ CFLAGS = @CFLAGS@
+ CPP = @CPP@
+-CPPFLAGS = -I${top_srcdir}/include/ \
++AM_CPPFLAGS = -I${top_srcdir}/include/ \
+ 		-I${top_srcdir}/imports/cdsa/v2_0/inc/
+ 
+ CXX = @CXX@
+@@ -111,7 +111,7 @@ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+-LDFLAGS = -Wl,--version-script=${srcdir}/libpwbsp.ver
++AM_LDFLAGS = -Wl,--version-script=${srcdir}/libpwbsp.ver
+ LEX = @LEX@
+ LEXLIB = @LEXLIB@
+ LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
+--- a/addins/qtpwbsp/Makefile.in
++++ b/addins/qtpwbsp/Makefile.in
+@@ -96,7 +96,7 @@ CC = @CC@
+ CCDEPMODE = @CCDEPMODE@
+ CFLAGS = @CFLAGS@
+ CPP = @CPP@
+-CPPFLAGS = -I${top_srcdir}/include \
++AM_CPPFLAGS = -I${top_srcdir}/include \
+ 		-I${top_srcdir}/imports/cdsa/v2_0/inc \
+ 		${QT_CXXFLAGS}
+ 
+@@ -121,7 +121,7 @@ INSTALL_DATA = @INSTALL_DATA@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_SCRIPT = @INSTALL_SCRIPT@
+ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+-LDFLAGS = -Wl,--version-script=${srcdir}/libqtpwbsp.ver \
++AM_LDFLAGS = -Wl,--version-script=${srcdir}/libqtpwbsp.ver \
+ 		${QT_LIBS}
+ 
+ LEX = @LEX@

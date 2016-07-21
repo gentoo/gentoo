@@ -1,0 +1,30 @@
+Index: pwsafe.1.in
+===================================================================
+RCS file: /cvsroot/pwsafe/pwsafe/pwsafe.1.in,v
+retrieving revision 1.8
+diff -u -r1.8 pwsafe.1.in
+--- pwsafe.1.in	18 Mar 2006 14:17:41 -0000	1.8
++++ pwsafe.1.in	30 Mar 2011 07:42:23 -0000
+@@ -52,18 +52,18 @@
+ .B  \-\-passwd
+ Change the database's passphrase.
+ .TP 
+-.B  \-\-list[=REGEX]
++.B  \-\-list [REGEX]
+ List all [matching] entries in database.
+ .BR 
+ If \-u or \-p is given then REGEX must match only one entry, and only the requested field(s) are emitted.
+ .TP 
+-.B  \-a, \-\-add[=NAME]
++.B  \-a, \-\-add [NAME]
+ Add an entry to database.
+ .TP 
+-.B  \-e, \-\-edit=REGEX
++.B  \-e, \-\-edit REGEX
+ Edit an entry.
+ .TP 
+-.B  \-\-delete=NAME
++.B  \-\-delete NAME
+ Delete an entry from database.
+ .TP 
+ If no command is given, an interactive mode is entered.

@@ -1,0 +1,18 @@
+diff -ur Preferences.backup/GNUmakefile.preamble Preferences/GNUmakefile.preamble
+--- Preferences.backup/GNUmakefile.preamble	2003-08-16 13:19:29.000000000 -0400
++++ Preferences/GNUmakefile.preamble	2004-06-28 19:51:30.104604048 -0400
+@@ -49,8 +49,8 @@
+ GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
+ 
+ # Additional directories to be created during installation
+-ADDITIONAL_INSTALL_DIRS += \
+-	$(GNUSTEP_USER_ROOT)/Library/Preferences \
+-	$(GNUSTEP_LOCAL_ROOT)/Library/Preferences \
+-	$(GNUSTEP_NETWORK_ROOT)/Library/Preferences \
+-	$(GNUSTEP_SYSTEM_ROOT)/Library/Preferences
++#ADDITIONAL_INSTALL_DIRS += \
++#	$(GNUSTEP_USER_ROOT)/Library/Preferences
++#	$(GNUSTEP_LOCAL_ROOT)/Library/Preferences
++#	$(GNUSTEP_NETWORK_ROOT)/Library/Preferences
++#	$(GNUSTEP_SYSTEM_ROOT)/Library/Preferences
+Only in Preferences: GNUmakefile.preamble~

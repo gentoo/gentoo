@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+
+JCalendar is a Java date chooser bean for graphically picking a date. JCalendar
+is composed of several other Java beans, a JDayChooser, a JMonthChooser and a
+JYearChooser. All these beans have a locale property, provide several icons
+(Color 16x16, Color 32x32, Mono 16x16 and Mono 32x32) and their own locale
+property editor. So they can easily be used in GUI builders.
+
+</longdescription>
+</pkgmetadata>

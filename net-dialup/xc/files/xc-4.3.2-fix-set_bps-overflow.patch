@@ -1,0 +1,14 @@
+diff -Naurp xc-4.3.2.orig/xcmain.c xc-4.3.2/xcmain.c
+--- xc-4.3.2.orig/xcmain.c	1996-11-24 01:35:41.000000000 -0500
++++ xc-4.3.2/xcmain.c	2014-04-18 19:58:26.267227496 -0400
+@@ -696,8 +696,8 @@ static void
+ SET_bps()
+ {
+ 	if (statflag){
+-		char br[6];
+-		sprintf(br, "%d", mrate( NULL ));
++		char br[11];
++		snprintf(br, 11, "%d", mrate( NULL ));
+ 		fprintf(tfp, statfmt, "bps", "Bits per Second", br);
+ 		return;
+ 	}

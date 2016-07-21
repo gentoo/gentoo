@@ -1,0 +1,4 @@
+# /etc/conf.d/hyperdex: config file for /etc/init.d/hyperdex
+
+# see documentation for HyperDex for help
+#HYPERDEX_OPTS=""

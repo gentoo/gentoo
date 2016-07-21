@@ -1,0 +1,218 @@
+https://bugs.gentoo.org/show_bug.cgi?id=479394
+By Helmut Jarausch
+
+--- cinelerra/ffmpeg.h.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ cinelerra/ffmpeg.h	2013-08-01 12:58:12.342474136 +0200
+@@ -26,7 +26,7 @@
+ 	static int convert_cmodel_transfer(VFrame *frame_in,VFrame *frame_out);
+ 	static int init_picture_from_frame(AVPicture *picture, VFrame *frame);
+ 
+-	static CodecID codec_id(char *codec_string);
++	static AVCodecID codec_id(char *codec_string);
+ 
+  private:
+ 	static PixelFormat color_model_to_pix_fmt(int color_model);
+--- cinelerra/ffmpeg.C.ORIG	2013-08-01 11:24:43.794419246 +0200
++++ cinelerra/ffmpeg.C	2013-08-01 12:57:48.121473899 +0200
+@@ -25,7 +25,7 @@
+ 
+ 	avcodec_register_all();
+ 
+-	CodecID id = codec_id(codec_string);
++	AVCodecID id = codec_id(codec_string);
+ 	codec = avcodec_find_decoder(id);
+ 	if (codec == NULL) {
+ 		printf("FFMPEG::init no decoder for '%s'", codec_string);
+@@ -51,7 +51,7 @@
+ }
+ 
+ 
+-CodecID FFMPEG::codec_id(char *codec_string) {
++AVCodecID FFMPEG::codec_id(char *codec_string) {
+ #define CODEC_IS(x) (! strncmp(codec_string, x, 4))
+ 
+ 	if (CODEC_IS(QUICKTIME_DV) ||
+--- quicktime/ffmpeg/ffmpeg.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/ffmpeg.c	2013-08-01 12:57:59.025474005 +0200
+@@ -2663,7 +2663,7 @@
+     return 0;
+ }
+ 
+-static enum CodecID find_codec_or_die(const char *name, int type, int encoder)
++static enum AVCodecID find_codec_or_die(const char *name, int type, int encoder)
+ {
+     const char *codec_string = encoder ? "encoder" : "decoder";
+     AVCodec *codec;
+--- quicktime/ffmpeg/libavformat/electronicarts.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/electronicarts.c	2013-08-01 13:00:57.855475755 +0200
+@@ -49,11 +49,11 @@
+ typedef struct EaDemuxContext {
+     int big_endian;
+ 
+-    enum CodecID video_codec;
++    enum AVCodecID video_codec;
+     AVRational time_base;
+     int video_stream_index;
+ 
+-    enum CodecID audio_codec;
++    enum AVCodecID audio_codec;
+     int audio_stream_index;
+     int audio_frame_counter;
+ 
+--- quicktime/ffmpeg/libavformat/img2.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/img2.c	2013-08-01 12:59:21.408474812 +0200
+@@ -34,7 +34,7 @@
+ } VideoData;
+ 
+ typedef struct {
+-    enum CodecID id;
++    enum AVCodecID id;
+     const char *str;
+ } IdStrMap;
+ 
+@@ -97,7 +97,7 @@
+     }
+     return -1;
+ }
+-static enum CodecID av_str2id(const IdStrMap *tags, const char *str)
++static enum AVCodecID av_str2id(const IdStrMap *tags, const char *str)
+ {
+     str= strrchr(str, '.');
+     if(!str) return CODEC_ID_NONE;
+@@ -175,7 +175,7 @@
+     return 0;
+ }
+ 
+-enum CodecID av_guess_image2_codec(const char *filename){
++enum AVCodecID av_guess_image2_codec(const char *filename){
+     return av_str2id(img_tags, filename);
+ }
+ 
+--- quicktime/ffmpeg/libavformat/matroskadec.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/matroskadec.c	2013-08-01 12:59:57.556475165 +0200
+@@ -2476,7 +2476,7 @@
+         AVStream *st;
+ 
+         for (i = 0; i < matroska->num_tracks; i++) {
+-            enum CodecID codec_id = CODEC_ID_NONE;
++            enum AVCodecID codec_id = CODEC_ID_NONE;
+             uint8_t *extradata = NULL;
+             int extradata_size = 0;
+             int extradata_offset = 0;
+@@ -2495,7 +2495,7 @@
+                 }
+             }
+ 
+-            /* Set the FourCC from the CodecID. */
++            /* Set the FourCC from the AVCodecID. */
+             /* This is the MS compatibility mode which stores a
+              * BITMAPINFOHEADER in the CodecPrivate. */
+             if (!strcmp(track->codec_id,
+@@ -2600,7 +2600,7 @@
+ 
+             if (codec_id == CODEC_ID_NONE) {
+                 av_log(matroska->ctx, AV_LOG_INFO,
+-                       "Unknown/unsupported CodecID %s.\n",
++                       "Unknown/unsupported AVCodecID %s.\n",
+                        track->codec_id);
+             }
+ 
+--- quicktime/ffmpeg/libavformat/matroska.h.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/matroska.h	2013-08-01 13:00:22.218475407 +0200
+@@ -220,12 +220,12 @@
+ 
+ typedef struct CodecTags{
+     char str[16];
+-    enum CodecID id;
++    enum AVCodecID id;
+ }CodecTags;
+ 
+ typedef struct CodecMime{
+     char str[32];
+-    enum CodecID id;
++    enum AVCodecID id;
+ }CodecMime;
+ 
+ #define MATROSKA_CODEC_ID_VIDEO_VFW_FOURCC   "V_MS/VFW/FOURCC"
+--- quicktime/ffmpeg/libavformat/mov.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/mov.c	2013-08-01 12:59:33.935474934 +0200
+@@ -678,7 +678,7 @@
+ 
+     for(pseudo_stream_id=0; pseudo_stream_id<entries; pseudo_stream_id++) {
+         //Parsing Sample description table
+-        enum CodecID id;
++        enum AVCodecID id;
+         int dref_id;
+         MOV_atom_t a = { 0, 0, 0 };
+         offset_t start_pos = url_ftell(pb);
+--- quicktime/ffmpeg/libavformat/mxf.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/mxf.c	2013-08-01 12:59:12.025474720 +0200
+@@ -157,7 +157,7 @@
+ typedef struct {
+     UID uid;
+     unsigned matching_len;
+-    enum CodecID id;
++    enum AVCodecID id;
+ } MXFCodecUL;
+ 
+ typedef struct {
+--- quicktime/ffmpeg/libavformat/riff.h.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/riff.h	2013-08-01 12:59:45.950475052 +0200
+@@ -48,7 +48,7 @@
+ extern const AVCodecTag codec_wav_tags[];
+ 
+ unsigned int codec_get_tag(const AVCodecTag *tags, int id);
+-enum CodecID codec_get_id(const AVCodecTag *tags, unsigned int tag);
++enum AVCodecID codec_get_id(const AVCodecTag *tags, unsigned int tag);
+ void ff_parse_specific_params(AVCodecContext *stream, int *au_rate, int *au_ssize, int *au_scale);
+ 
+ #endif /* FFMPEG_RIFF_H */
+--- quicktime/ffmpeg/libavformat/rtp.c.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/rtp.c	2013-08-01 12:59:01.778474619 +0200
+@@ -40,7 +40,7 @@
+     int pt;
+     const char enc_name[6];
+     enum CodecType codec_type;
+-    enum CodecID codec_id;
++    enum AVCodecID codec_id;
+     int clock_rate;
+     int audio_channels;
+ } AVRtpPayloadTypes[]=
+@@ -120,7 +120,7 @@
+     return "";
+ }
+ 
+-enum CodecID ff_rtp_codec_id(const char *buf, enum CodecType codec_type)
++enum AVCodecID ff_rtp_codec_id(const char *buf, enum CodecType codec_type)
+ {
+     int i;
+ 
+--- quicktime/ffmpeg/libavformat/rtp_internal.h.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/ffmpeg/libavformat/rtp_internal.h	2013-08-01 13:00:09.147475279 +0200
+@@ -61,7 +61,7 @@
+     // fields from AVRtpDynamicPayloadType_s
+     const char enc_name[50];    /* XXX: still why 50 ? ;-) */
+     enum CodecType codec_type;
+-    enum CodecID codec_id;
++    enum AVCodecID codec_id;
+ 
+     // may be null
+     int (*parse_sdp_a_line) (AVStream * stream,
+@@ -123,7 +123,7 @@
+ 
+ void ff_rtp_send_data(AVFormatContext *s1, const uint8_t *buf1, int len, int m);
+ const char *ff_rtp_enc_name(int payload_type);
+-enum CodecID ff_rtp_codec_id(const char *buf, enum CodecType codec_type);
++enum AVCodecID ff_rtp_codec_id(const char *buf, enum CodecType codec_type);
+ 
+ void av_register_rtp_dynamic_payload_handlers(void);
+ 
+--- quicktime/wma.h.ORIG	2012-07-06 22:40:26.000000000 +0200
++++ quicktime/wma.h	2013-08-01 13:11:46.431482103 +0200
+@@ -3,5 +3,6 @@
+ 
+ extern void quicktime_init_codec_wmav1(quicktime_audio_map_t *);
+ extern void quicktime_init_codec_wmav2(quicktime_audio_map_t *);
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000
+ 
+ #endif

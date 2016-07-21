@@ -1,0 +1,13 @@
+diff --git a/config.pri b/config.pri
+index 97854bc..db7e20f 100644
+--- a/config.pri
++++ b/config.pri
+@@ -8,7 +8,7 @@ win32:CONFIG += HAVE_GDI_PLUS
+ #DEFINES     += HAVE_ANTIALIASED_TEXT
+ 
+ # Comment the following line if you want to build EmfEngine statically
+-#CONFIG      += EmfEngineDll
++CONFIG      += EmfEngineDll
+ 
+ 
+ 

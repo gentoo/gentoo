@@ -1,0 +1,306 @@
+When building glibc PIE (which is not something upstream support),
+several modifications are necessary to the glibc build process.
+
+First, any syscalls in PIEs must be of the PIC variant, otherwise
+textrels ensue.  Then, any syscalls made before the initialisation
+of the TLS will fail on i386, as the sysenter variant on i386 uses
+the TLS, giving rise to a chicken-and-egg situation.  This patch
+defines a PIC syscall variant that doesn't use sysenter, even when the sysenter
+version is normally used, and uses the non-sysenter version for the brk
+syscall that is performed by the TLS initialisation.  Further, the TLS
+initialisation is moved in this case prior to the initialisation of
+dl_osversion, as that requires further syscalls.
+
+csu/libc-start.c: Move initial TLS initialization to before the
+initialisation of dl_osversion, when INTERNAL_SYSCALL_PRE_TLS is defined
+
+csu/libc-tls.c: Use the no-sysenter version of sbrk when
+INTERNAL_SYSCALL_PRE_TLS is defined.
+
+misc/sbrk.c: Define a no-sysenter version of sbrk, using the no-sysenter
+version of brk - if INTERNAL_SYSCALL_PRE_TLS is defined.
+
+misc/brk.c: Define a no-sysenter version of brk if
+INTERNAL_SYSCALL_PRE_TLS is defined.
+
+sysdeps/unix/sysv/linux/i386/sysdep.h: Define INTERNAL_SYSCALL_PRE_TLS
+Make INTERNAL_SYSCALL always use the PIC variant, even if not SHARED.
+
+Patch by Kevin F. Quinn <kevquinn@gentoo.org>
+Fixed for 2.10 by Magnus Granberg <zorry@ume.nu>
+Fixed for 2.18 by Magnus Granberg <zorry@gentoo.org>
+Fixed for 2.20 by Francisco Blas Izquierdo Riera <klondike@gentoo.org>
+
+--- a/csu/libc-start.c
++++ b/csu/libc-start.c
+@@ -28,6 +28,7 @@
+ extern int __libc_multiple_libcs;
+ 
+ #include <tls.h>
++#include <sysdep.h>
+ #ifndef SHARED
+ # include <dl-osinfo.h>
+ extern void __pthread_initialize_minimal (void);
+@@ -170,6 +171,11 @@ LIBC_START_MAIN (int (*main) (int, char
+         }
+     }
+ 
++# ifdef INTERNAL_SYSCALL_PRE_TLS
++  /* Do the initial TLS initialization before _dl_osversion,
++     since the latter uses the uname syscall.  */
++  __pthread_initialize_minimal ();
++# endif
+ # ifdef DL_SYSDEP_OSCHECK
+   if (!__libc_multiple_libcs)
+     {
+@@ -138,10 +144,12 @@
+     }
+ # endif
+ 
++# ifndef INTERNAL_SYSCALL_PRE_TLS
+   /* Initialize the thread library at least a bit since the libgcc
+      functions are using thread functions if these are available and
+      we need to setup errno.  */
+   __pthread_initialize_minimal ();
++# endif
+ 
+   /* Set up the stack checker's canary.  */
+   uintptr_t stack_chk_guard = _dl_setup_stack_chk_guard ();
+--- a/csu/libc-tls.c
++++ b/csu/libc-tls.c
+@@ -22,12 +22,17 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <sys/param.h>
++#include <sysdep.h>
+ 
+ 
+ #ifdef SHARED
+  #error makefile bug, this file is for static only
+ #endif
+ 
++#ifdef INTERNAL_SYSCALL_PRE_TLS
++extern void *__sbrk_nosysenter (intptr_t __delta);
++#endif
++
+ dtv_t _dl_static_dtv[2 + TLS_SLOTINFO_SURPLUS];
+ 
+ 
+@@ -139,20 +144,29 @@ __libc_setup_tls (size_t tcbsize, size_t
+ 
+      The initialized value of _dl_tls_static_size is provided by dl-open.c
+      to request some surplus that permits dynamic loading of modules with
+-     IE-model TLS.  */
++     IE-model TLS.
++
++     Where the normal sbrk would use a syscall that needs the TLS (i386)
++     use the special non-sysenter version instead.  */
++#ifdef INTERNAL_SYSCALL_PRE_TLS
++# define __sbrk __sbrk_nosysenter
++#endif
+ #if TLS_TCB_AT_TP
+   tcb_offset = roundup (memsz + GL(dl_tls_static_size), tcbalign);
+   tlsblock = __sbrk (tcb_offset + tcbsize + max_align);
+ #elif TLS_DTV_AT_TP
+   tcb_offset = roundup (tcbsize, align ?: 1);
+   tlsblock = __sbrk (tcb_offset + memsz + max_align
+ 		     + TLS_PRE_TCB_SIZE + GL(dl_tls_static_size));
+   tlsblock += TLS_PRE_TCB_SIZE;
+ #else
+   /* In case a model with a different layout for the TCB and DTV
+      is defined add another #elif here and in the following #ifs.  */
+ # error "Either TLS_TCB_AT_TP or TLS_DTV_AT_TP must be defined"
+ #endif
++#ifdef INTERNAL_SYSCALL_PRE_TLS
++# undef __sbrk
++#endif
+ 
+   /* Align the TLS block.  */
+   tlsblock = (void *) (((uintptr_t) tlsblock + max_align - 1)
+--- a/misc/sbrk.c
++++ b/misc/sbrk.c
+@@ -18,6 +18,7 @@
+ #include <errno.h>
+ #include <stdint.h>
+ #include <unistd.h>
++#include <sysdep.h>
+ 
+ /* Defined in brk.c.  */
+ extern void *__curbrk;
+@@ -29,6 +30,35 @@
+ /* Extend the process's data space by INCREMENT.
+    If INCREMENT is negative, shrink data space by - INCREMENT.
+    Return start of new space allocated, or -1 for errors.  */
++#ifdef INTERNAL_SYSCALL_PRE_TLS
++/* This version is used by csu/libc-tls.c whem initialising the TLS
++   if the SYSENTER version requires the TLS (which it does on i386).
++   Obviously using the TLS before it is initialised is broken. */
++extern int __brk_nosysenter (void *addr);
++void *
++__sbrk_nosysenter (intptr_t increment)
++{
++  void *oldbrk;
++
++  /* If this is not part of the dynamic library or the library is used via
++     dynamic loading in a statically linked program update __curbrk from the
++     kernel's brk value.  That way two separate instances of __brk and __sbrk
++     can share the heap, returning interleaved pieces of it.  */
++  if (__curbrk == NULL || __libc_multiple_libcs)
++    if (__brk_nosysenter (0) < 0)		/* Initialize the break.  */
++      return (void *) -1;
++
++  if (increment == 0)
++    return __curbrk;
++
++  oldbrk = __curbrk;
++  if (__brk_nosysenter (oldbrk + increment) < 0)
++    return (void *) -1;
++
++  return oldbrk;
++}
++#endif
++
+ void *
+ __sbrk (intptr_t increment)
+ {
+--- a/sysdeps/unix/sysv/linux/i386/brk.c
++++ b/sysdeps/unix/sysv/linux/i386/brk.c
+@@ -31,6 +31,30 @@
+    linker.  */
+ weak_alias (__curbrk, ___brk_addr)
+ 
++#ifdef INTERNAL_SYSCALL_PRE_TLS
++/* This version is used by csu/libc-tls.c whem initialising the TLS
++   if the SYSENTER version requires the TLS (which it does on i386).
++   Obviously using the TLS before it is initialised is broken.  */
++int
++__brk_nosysenter (void *addr)
++{
++  void *newbrk;
++
++  INTERNAL_SYSCALL_DECL (err);
++  newbrk = (void *) INTERNAL_SYSCALL_PRE_TLS (brk, err, 1, addr);
++
++  __curbrk = newbrk;
++
++  if (newbrk < addr)
++    {
++      __set_errno (ENOMEM);
++      return -1;
++    }
++
++  return 0;
++}
++#endif
++
+ int
+ __brk (void *addr)
+ {
+--- a/sysdeps/unix/sysv/linux/i386/sysdep.h
++++ b/sysdeps/unix/sysv/linux/i386/sysdep.h
+@@ -187,7 +187,7 @@
+ /* The original calling convention for system calls on Linux/i386 is
+    to use int $0x80.  */
+ #ifdef I386_USE_SYSENTER
+-# ifdef SHARED
++# ifdef __PIC__
+ #  define ENTER_KERNEL call *%gs:SYSINFO_OFFSET
+ # else
+ #  define ENTER_KERNEL call *_dl_sysinfo
+@@ -358,7 +358,7 @@
+    possible to use more than four parameters.  */
+ #undef INTERNAL_SYSCALL
+ #ifdef I386_USE_SYSENTER
+-# ifdef SHARED
++# ifdef __PIC__
+ #  define INTERNAL_SYSCALL(name, err, nr, args...) \
+   ({									      \
+     register unsigned int resultvar;					      \
+@@ -384,6 +384,18 @@
+     : "0" (name), "i" (offsetof (tcbhead_t, sysinfo))			      \
+       ASMFMT_##nr(args) : "memory", "cc");				      \
+     (int) resultvar; })
++#  define INTERNAL_SYSCALL_PRE_TLS(name, err, nr, args...) \
++  ({									      \
++    register unsigned int resultvar;					      \
++    EXTRAVAR_##nr							      \
++    asm volatile (							      \
++    LOADARGS_NOSYSENTER_##nr						      \
++    "movl %1, %%eax\n\t"						      \
++    "int $0x80\n\t"							      \
++    RESTOREARGS_NOSYSENTER_##nr						      \
++    : "=a" (resultvar)							      \
++    : "i" (__NR_##name) ASMFMT_##nr(args) : "memory", "cc");		      \
++    (int) resultvar; })
+ # else
+ #  define INTERNAL_SYSCALL(name, err, nr, args...) \
+   ({									      \
+@@ -447,12 +459,20 @@
+ 
+ #define LOADARGS_0
+ #ifdef __PIC__
+-# if defined I386_USE_SYSENTER && defined SHARED
++# if defined I386_USE_SYSENTER && defined __PIC__
+ #  define LOADARGS_1 \
+     "bpushl .L__X'%k3, %k3\n\t"
+ #  define LOADARGS_5 \
+     "movl %%ebx, %4\n\t"						      \
+     "movl %3, %%ebx\n\t"
++#  define LOADARGS_NOSYSENTER_1 \
++    "bpushl .L__X'%k2, %k2\n\t"
++#  define LOADARGS_NOSYSENTER_2	LOADARGS_NOSYSENTER_1
++#  define LOADARGS_NOSYSENTER_3	LOADARGS_3
++#  define LOADARGS_NOSYSENTER_4	LOADARGS_3
++#  define LOADARGS_NOSYSENTER_5 \
++    "movl %%ebx, %3\n\t"						      \
++    "movl %2, %%ebx\n\t"
+ # else
+ #  define LOADARGS_1 \
+     "bpushl .L__X'%k2, %k2\n\t"
+@@ -474,11 +494,18 @@
+ 
+ #define RESTOREARGS_0
+ #ifdef __PIC__
+-# if defined I386_USE_SYSENTER && defined SHARED
++# if defined I386_USE_SYSENTER && defined __PIC__
+ #  define RESTOREARGS_1 \
+     "bpopl .L__X'%k3, %k3\n\t"
+ #  define RESTOREARGS_5 \
+     "movl %4, %%ebx"
++#  define RESTOREARGS_NOSYSENTER_1 \
++    "bpopl .L__X'%k2, %k2\n\t"
++#  define RESTOREARGS_NOSYSENTER_2	RESTOREARGS_NOSYSENTER_1
++#  define RESTOREARGS_NOSYSENTER_3	RESTOREARGS_3
++#  define RESTOREARGS_NOSYSENTER_4	RESTOREARGS_3
++#  define RESTOREARGS_NOSYSENTER_5 \
++    "movl %3, %%ebx"
+ # else
+ #  define RESTOREARGS_1 \
+     "bpopl .L__X'%k2, %k2\n\t"
+--- a/sysdeps/i386/nptl/tls.h
++++ b/sysdeps/i386/nptl/tls.h
+@@ -189,6 +189,15 @@
+   desc->vals[3] = 0x51;
+ }
+ 
++/* We have no sysenter until the tls is initialized which is a
++   problem for PIC. Thus we need to do the right call depending
++   on the situation.  */
++#ifndef INTERNAL_SYSCALL_PRE_TLS
++# define TLS_INIT_SYSCALL INTERNAL_SYSCALL
++#else
++# define TLS_INIT_SYSCALL INTERNAL_SYSCALL_PRE_TLS
++#endif
++
+ /* Code to initially initialize the thread pointer.  This might need
+    special attention since 'errno' is not yet available and if the
+    operation can cause a failure 'errno' must not be touched.  */
+@@ -209,7 +218,7 @@
+ 									      \
+      /* Install the TLS.  */						      \
+      INTERNAL_SYSCALL_DECL (err);					      \
+-     _result = INTERNAL_SYSCALL (set_thread_area, err, 1, &_segdescr.desc);   \
++     _result = TLS_INIT_SYSCALL (set_thread_area, err, 1, &_segdescr.desc);   \
+ 									      \
+      if (_result == 0)							      \
+        /* We know the index in the GDT, now load the segment register.	      \

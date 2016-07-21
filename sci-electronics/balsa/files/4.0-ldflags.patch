@@ -1,0 +1,11 @@
+--- bin/balsa-make-builtin-lib.in.orig	2010-08-27 11:14:54.000000000 +0200
++++ bin/balsa-make-builtin-lib.in	2010-08-27 11:15:09.000000000 +0200
+@@ -89,7 +89,7 @@
+ # Test compilation
+ if [ -n "${DOCOMPILE}" ]; then
+ 	if ${LIBTOOL} --mode=compile @CC@ @CFLAGS@ -c ${INCLUDES} -o ${LIBNAME}.o $* &&
+-		${LIBTOOL} --mode=link @CC@ @CFLAGS@ -o ${LIBNAME}.la -c ${INCLUDES} ${LIBNAME}.lo -rpath ${INSTALLDIR} -module
++		${LIBTOOL} --mode=link @CC@ @CFLAGS@ @LDFLAGS@ -o ${LIBNAME}.la -c ${INCLUDES} ${LIBNAME}.lo -rpath ${INSTALLDIR} -module
+ 	then
+ 		:
+ 	else

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Haskell bindings to the International Components for Unicode (ICU)
+		libraries.  These libraries provide robust and full-featured Unicode
+		services on a wide variety of platforms.
+		
+		Features include:
+		
+		* Both pure and impure bindings, to allow for fine control over efficiency
+		and ease of use.
+		
+		* Breaking of strings on character, word, sentence, and line boundaries.
+		
+		* Access to the Unicode Character Database (UCD) of character metadata.
+		
+		* String collation functions, for locales where the conventions for
+		lexicographic ordering differ from the simple numeric ordering of
+		character codes.
+		
+		* Character set conversion functions, allowing conversion between
+		Unicode and over 220 character encodings.
+		
+		* Unicode normalization.  (When implementations keep strings in a
+		normalized form, they can be assured that equivalent strings have a
+		unique binary representation.)
+		
+		* Regular expression search and replace.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bos/text-icu</remote-id>
+		<remote-id type="bitbucket">bos/text-icu</remote-id>
+	</upstream>
+</pkgmetadata>

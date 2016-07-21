@@ -1,0 +1,25 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 05a4f8a..23d0309 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+-SUBDIRS = libsphinx2 \
+-	libsphinx2fe \
++SUBDIRS = libsphinx2fe \
+ 	libsphinx2ad \
++	libsphinx2 \
+ 	examples
+ 
+diff --git a/src/libsphinx2/Makefile.am b/src/libsphinx2/Makefile.am
+index 66f0ac3..537381c 100644
+--- a/src/libsphinx2/Makefile.am
++++ b/src/libsphinx2/Makefile.am
+@@ -88,7 +88,7 @@ libsphinx2_la_SOURCES = \
+ 	word_fsg.c
+ 
+ 
+-# libsphinx2_la_LIBADD = -lc -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
++libsphinx2_la_LIBADD = -lc -lm $(top_srcdir)/src/libsphinx2fe/libsphinx2fe.la
+ 
+ # hjf@cs.brown.edu - Added for Solaris build
+ # LDADD = -L/usr/demo/SOUND/lib/ -laudio

@@ -1,0 +1,29 @@
+Index: foobillard-3.0a/configure.in
+===================================================================
+--- foobillard-3.0a.orig/configure.in
++++ foobillard-3.0a/configure.in
+@@ -13,7 +13,7 @@ dnl Checks for libraries.
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(limits.h unistd.h math.h stdlib.h stdio.h ft2build.h)
++AC_CHECK_HEADERS(limits.h unistd.h math.h stdlib.h stdio.h ft2build.h endian.h sys/endian.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+Index: foobillard-3.0a/src/billard3d.c
+===================================================================
+--- foobillard-3.0a.orig/src/billard3d.c
++++ foobillard-3.0a/src/billard3d.c
+@@ -24,7 +24,11 @@
+ #include <string.h>
+ #include <math.h>
+ #include <unistd.h>
++#ifdef HAVE_ENDIAN_H
+ #include <endian.h>
++#elif defined(HAVE_SYS_ENDIAN_H)
++#include <sys/endian.h>
++#endif
+ 
+ #ifndef USE_SDL
+ #include <GL/glut.h>

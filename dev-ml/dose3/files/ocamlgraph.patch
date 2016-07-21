@@ -1,0 +1,13 @@
+Index: dose3-4.3/algo/dominators.ml
+===================================================================
+--- dose3-4.3.orig/algo/dominators.ml
++++ dose3-4.3/algo/dominators.ml
+@@ -101,7 +101,7 @@ let dominators_tarjan graph =
+   ) graph;
+ 
+   Util.Timer.start tjntimer;
+-#if OCAMLGRAPHVERSION <= 186
++#if OCAMLGRAPHVERSION >= 186
+   let module Dom = Dominator.Make_graph(G) in
+ #else
+   let module Dom = Dominator.Make(G) in

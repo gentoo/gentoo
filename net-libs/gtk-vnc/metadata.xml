@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>virtualization@gentoo.org</email>
+    <name>Gentoo Virtualization Project</name>
+  </maintainer>
+  <use>
+    <flag name="gtk3">Build the gtk3 gtk-vnc library and other gtk3 assets</flag>
+  </use>
+</pkgmetadata>

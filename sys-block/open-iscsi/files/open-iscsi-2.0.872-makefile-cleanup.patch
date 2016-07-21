@@ -1,0 +1,20 @@
+--- usr/Makefile	2010-10-10 22:48:04.000000000 +0200
++++ usr/Makefile.ori	2010-10-10 22:48:34.000000000 +0200
+@@ -53,14 +53,14 @@
+ 
+ iscsid: $(ISCSI_LIB_SRCS) $(IPC_OBJ) $(INITIATOR_SRCS) $(DISCOVERY_SRCS) \
+ 	iscsid.o session_mgmt.o discoveryd.o
+-	$(CC) $(CFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
+ 
+ iscsiadm: $(ISCSI_LIB_SRCS) $(DISCOVERY_SRCS) iscsiadm.o session_mgmt.o
+-	$(CC) $(CFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -L../utils/open-isns -lisns -lcrypto
+ 
+ iscsistart: $(IPC_OBJ) $(ISCSI_LIB_SRCS) $(INITIATOR_SRCS) $(FW_BOOT_SRCS) \
+ 		iscsistart.o statics.o
+-	$(CC) $(CFLAGS) -static $^ -o $@
++	$(CC) $(CFLAGS) -static $(LDFLAGS) $^ -o $@
+ clean:
+ 	rm -f *.o $(PROGRAMS) .depend $(LIBSYS)
+ 

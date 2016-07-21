@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael G. Martins</name>
+  </maintainer>
+  <use>
+    <flag name="lua52compat">
+      Enable some upwards-compatible features
+      from Lua 5.2 that are unlikely to break existing code.
+    </flag>
+  </use>
+  <longdescription lang="en">
+    LuaJIT is a Just-In-Time Compiler for the Lua programming language.
+  </longdescription>
+</pkgmetadata>

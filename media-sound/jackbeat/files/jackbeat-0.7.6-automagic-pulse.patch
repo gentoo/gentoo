@@ -1,0 +1,36 @@
+--- jackbeat-0.7.6/configure.ac.orig
++++ jackbeat-0.7.6/configure.ac
+@@ -67,20 +67,25 @@
+ AC_SUBST(JACK_LIBS)
+ AM_CONDITIONAL(HAVE_JACK, [test "$have_jack" = "1"])
+ 
+-PKG_CHECK_MODULES(PULSE, libpulse-simple >= 0.9.10, [have_pulse=1], true)
+-AC_SUBST(PULSE_CFLAGS)
+-AC_SUBST(PULSE_LIBS)
+-if test "$have_pulse" = "1"
++AC_ARG_WITH([pulse], [AS_HELP_STRING([--without-pulse], [disable PulseAudio support])], [], [with_pulse=yes])
++
++if test "x$with_pulse" != xno
+ then
+-  AC_DEFINE(HAVE_PULSE, [1], [PulseAudio support])
++  PKG_CHECK_MODULES(PULSE, libpulse-simple >= 0.9.10, [have_pulse=1], true)
++else
++  AC_MSG_CHECKING([for PULSE])
++  AC_MSG_RESULT([disabled])
+ fi
+-AM_CONDITIONAL(HAVE_PULSE, [test "$have_pulse" = "1"])
+ 
+-if test "$have_pulse" = "" && test "$is_linux" = "1"
++if test "$have_pulse" != ""
+ then
+-  AC_MSG_WARN([Can't find libpulse, PulseAudio will not be supported])
++  AC_DEFINE(HAVE_PULSE, [1], [PulseAudio support])
+ fi
+ 
++AC_SUBST(PULSE_CFLAGS)
++AC_SUBST(PULSE_LIBS)
++AM_CONDITIONAL(HAVE_PULSE, [test "$have_pulse" = "1"])
++
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12, [have_pkg_gtk=true], true)
+ 
+ if test x$have_pkg_gtk = xtrue

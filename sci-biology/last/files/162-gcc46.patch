@@ -1,0 +1,15 @@
+ src/XdropAligner.hh |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/XdropAligner.hh b/src/XdropAligner.hh
+index 9dea32e..3c0e35f 100644
+--- a/src/XdropAligner.hh
++++ b/src/XdropAligner.hh
+@@ -12,6 +12,7 @@
+ #include <vector>
+ #include <cassert>
+ #include <climits>  // INT_MAX
++#include <cstddef>
+ 
+ namespace cbrc{
+ 

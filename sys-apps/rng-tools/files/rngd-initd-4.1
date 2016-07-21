@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need localmount
+	after urandom
+	provide entropy
+}
+
+# Do NOT add /dev/tpm to this.
+DEFAULT_DEVICE="/dev/hw_random* /dev/hwrandom* /dev/i810_rng /dev/hwrng*"
+
+find_device() {
+	local d
+	# The echo is to cause globbing
+	for d in $(echo ${DEFAULT_DEVICE}) ; do
+		[ -e "${d}" ] && echo "${d}"
+	done
+}
+
+RNG_DEVICE="${DEVICE:-$(find_device)}"
+
+command=/usr/sbin/rngd
+pidfile="/var/run/${SVCNAME}.pid"
+command_args="--pid-file ${pidfile} --background --random-step ${STEP:-64} ${NO_TPM:+--no-tpm=1} ${NO_DRNG:+--no-drng=1} --fill-watermark ${WATERMARK} ${RNG_DEVICE:+--rng-device ${RNG_DEVICE}}"
+start_stop_daemon_args="--wait 1000"
+retry="SIGKILL/5000"

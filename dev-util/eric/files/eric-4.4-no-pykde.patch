@@ -1,0 +1,146 @@
+Index: eric4-4.4-snapshot-20091129/eric/KdeQt/__init__.py
+===================================================================
+--- eric4-4.4-snapshot-20091129.orig/eric/KdeQt/__init__.py
++++ eric4-4.4-snapshot-20091129/eric/KdeQt/__init__.py
+@@ -20,19 +20,6 @@ import sys
+ import Preferences
+ 
+ if Preferences.getUI("UseKDEDialogs") and not sys.e4nokde:
+-    try:
+-        import PyKDE4
+-        from PyQt4.QtCore import QString
+-        
+-        def __kdeIsKDE():
+-            """
+-            Public function to signal the availability of KDE4.
+-            
+-            @return availability flag (always True)
+-            """
+-            return True
+-        
+-    except (ImportError, RuntimeError):
+         sys.e4nokde = True
+ 
+ def __kdeKdeVersionString():
+@@ -56,96 +43,29 @@ def __kdeKdeVersionString():
+         return QString("unknown")
+     
+ def __kdePyKdeVersionString():
+-    """
+-    Public function to return the PyKDE4 version as a string.
+-    
+-    @return PyKDE4 version as a string (QString)
+-    """
+-    try:
+-        try:
+-            from PyKDE4.kdecore import pykde_versionMajor, pykde_versionMinor, \
+-                                       pykde_versionRelease
+-            return QString("%d.%d.%d" % \
+-                (pykde_versionMajor(), pykde_versionMinor(), 
+-                 pykde_versionRelease()))
+-        except (ImportError, AttributeError):
+-            from PyKDE4 import pykdeconfig
+-            try:
+-                return QString(pykdeconfig.Configuration().pykde_version_str)
+-            except AttributeError:
+-                return QString("unknown")
+-    except ImportError:
+-        return QString("unknown")
++        return QString("PyKDE support is disabled")
+     
+ from PyQt4.QtCore import QString
+ 
+ def __qtIsKDE():
+-    """
+-    Private function to signal the availability of KDE.
+-    
+-    @return availability flag (always False)
+-    """
+     return False
+     
+ def __qtKdeVersionString():
+-    """
+-    Private function to return the KDE version as a string.
+-    
+-    @return KDE version as a string (QString) (always empty)
+-    """
+     return QString("")
+     
+ def __qtPyKdeVersionString():
+-    """
+-    Private function to return the PyKDE version as a string.
+-    
+-    @return PyKDE version as a string (QString) (always empty)
+-    """
+     return QString("")
+ 
+ ################################################################################
+ 
+ def isKDEAvailable():
+-    """
+-    Public function to signal the availability of KDE.
+-    
+-    @return availability flag (always False)
+-    """
+-    try:
+-        import PyKDE4
+-        return True
+-    except ImportError:
+-        return False
++	return False
+ 
+ def isKDE():
+-    """
+-    Public function to signal, if KDE usage is enabled.
+-    
+-    @return KDE support flag (always False)
+-    """
+-    if Preferences.getUI("UseKDEDialogs") and not sys.e4nokde:
+-        return __kdeIsKDE()
+-    else:
+-        return __qtIsKDE()
++	return __qtIsKDE()
+     
+ def kdeVersionString():
+-    """
+-    Public function to return the KDE version as a string.
+-    
+-    @return KDE version as a string (QString) (always empty)
+-    """
+-    if isKDEAvailable():
+-        return __kdeKdeVersionString()
+-    else:
+-        return __qtKdeVersionString()
++	return __qtKdeVersionString()
+     
+ def pyKdeVersionString():
+-    """
+-    Public function to return the PyKDE version as a string.
+-    
+-    @return PyKDE version as a string (QString) (always empty)
+-    """
+-    if isKDEAvailable():
+-        return __kdePyKdeVersionString()
+-    else:
+-        return __qtPyKdeVersionString()
++	return __qtPyKdeVersionString()
+Index: eric4-4.4-snapshot-20091129/eric/eric4.py
+===================================================================
+--- eric4-4.4-snapshot-20091129.orig/eric/eric4.py
++++ eric4-4.4-snapshot-20091129/eric/eric4.py
+@@ -32,13 +32,12 @@ restartArgsList = ["--nokde", "--nosplas
+ restartArgs = [arg for arg in sys.argv[1:] if arg.split("=", 1)[0] in restartArgsList]
+ 
+ # disable the usage of KDE widgets, if requested
+-sys.e4nokde = False
++sys.e4nokde = True
+ if "--nokde" in sys.argv:
+     del sys.argv[sys.argv.index("--nokde")]
+     sys.e4nokde = True
+ else:
+-    sys.e4nokde = os.getenv("e4nokde") is not None and os.getenv("e4nokde") == "1"
+-
++	print "PyKDE support has been disabled. Enable 'kde' useflag to bring it back"
+ if "--debug" in sys.argv:
+     del sys.argv[sys.argv.index("--debug")]
+     logging.basicConfig(level = logging.DEBUG)

@@ -1,0 +1,16 @@
+--- simon-0.4.1/CMakeLists.txt
++++ simon-0.4.1/CMakeLists.txt
+@@ -59,11 +59,11 @@
+ macro_optional_find_package(QAccessibilityClient)
+ macro_log_feature(QAccessibilityClient_FOUND "qaccessibilityclient" "KDE client-side accessibility library" "https://projects.kde.org/projects/playground/accessibility/libkdeaccessibilityclient" FALSE "" "Required to enable ATSPI plugin.")
+ 
+-find_package(Sphinxbase)
++macro_optional_find_package(Sphinxbase)
+ macro_log_feature(SphinxBase_LIBRARIES "Sphinxbase"
+   "Open source toolkit for speech recognition" "http://cmusphinx.sourceforge.net/"
+   FALSE "" "Required to build Sphinx backend")
+-find_package(Pocketsphinx)
++macro_optional_find_package(Pocketsphinx)
+ macro_log_feature(POCKETSPHINX_LIBRARIES "PocketSphinx"
+   "PocketSphinx is a small-footprint continuous speech recognition system"
+   "http://cmusphinx.sourceforge.net/" FALSE "" 

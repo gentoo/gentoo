@@ -1,0 +1,2 @@
+# owfs owserver configuration
+OWSERVER_OPTS="--nozero -p 127.0.0.1:4304 -d /dev/ttyS0 --timeout_volatile 5"

@@ -1,0 +1,13 @@
+Index: soxr-0.1.0-Source/CMakeLists.txt
+===================================================================
+--- soxr-0.1.0-Source.orig/CMakeLists.txt
++++ soxr-0.1.0-Source/CMakeLists.txt
+@@ -180,7 +180,7 @@ if (NOT DEFINED BIN_INSTALL_DIR)
+   set (BIN_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/bin")
+ endif ()
+ if (NOT DEFINED LIB_INSTALL_DIR)
+-  set (LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib")
++  set (LIB_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}")
+ endif ()
+ if (NOT DEFINED INCLUDE_INSTALL_DIR)
+   set (INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/include")

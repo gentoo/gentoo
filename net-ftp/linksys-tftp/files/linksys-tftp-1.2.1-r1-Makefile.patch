@@ -1,0 +1,28 @@
+Fix LDFLAGS (bug http://bugs.gentoo.org/336956 ) and
+CFLAGS (bug http://bugs.gentoo.org/240894 ) by
+Michael Weber <xmw@gentoo.org>
+
+--- linksys-tftp-1.2.1/Makefile
++++ linksys-tftp-1.2.1/Makefile
+@@ -19,18 +19,18 @@
+ # We override /usr/include/arpa/tftp.h with our own because
+ # we want tu_block to be unsigned short, not short as on most platforms
+ #
+-CFLAGS=	-I. -O2 -Dsin=sin_x
++CFLAGS +=	-I. -Dsin=sin_x
+ #DEBUG
+ # CFLAGS=	-I. -Wall -ggdb -Dsin=sin_x
+ SRCS=	main.c tftp.c tftpsubs.c
+ OBJS=	main.o tftp.o tftpsubs.o
+ DOBJS=	tftpsubs.o
+-CC=	gcc
++CC?=	gcc
+ 
+ all: linksys-tftp
+ 
+ linksys-tftp: ${OBJS}
+-	${CC} -o $@ ${CFLAGS} ${OBJS} 
++	${CC} -o $@ ${CFLAGS} ${OBJS} ${LDFLAGS}
+ 
+ clean:
+ 	rm -f ${OBJS} ${DOBJS} *core linksys-tftp

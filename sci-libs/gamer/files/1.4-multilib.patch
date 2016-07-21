@@ -1,0 +1,26 @@
+diff --git a/src/aaa_lib/Makefile.am b/src/aaa_lib/Makefile.am
+index de1d7c3..b2420c8 100644
+--- a/src/aaa_lib/Makefile.am
++++ b/src/aaa_lib/Makefile.am
+@@ -35,18 +35,17 @@ LIBTETGEN   = libtetgen.la
+ #LIBTETGEN   = 
+ #endif
+ 
+-libdir = ${prefix}/lib
+ lib_LTLIBRARIES = libgamer.la ${LIBTRIANGLE} ${LIBTETGEN}
+ 
+ libgamer_la_SOURCES = 
+-libgamer_la_LIBADD  = ${BASE_LIBS} ${BIOM_LIBS}
++libgamer_la_LIBADD  = ${BASE_LIBS} ${BIOM_LIBS} -lm -lstdc++ ../tetgen/libtetgen.la
+ libgamer_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libtriangle_la_SOURCES = 
+-libtriangle_la_LIBADD  = ${TRIANGLE_LIBS}
++libtriangle_la_LIBADD  = ${TRIANGLE_LIBS} -lm
+ libtriangle_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libtetgen_la_SOURCES = 
+-libtetgen_la_LIBADD  = ${TETGEN_LIBS}
++libtetgen_la_LIBADD  = ${TETGEN_LIBS} -lm -lstdc++
+ libtetgen_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 

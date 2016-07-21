@@ -1,0 +1,8 @@
+[Unit]
+Description=Dibbler IPv6 DHCPv6 Client
+
+[Service]
+ExecStart=/usr/sbin/dibbler-client run
+
+[Install]
+WantedBy=multi-user.target

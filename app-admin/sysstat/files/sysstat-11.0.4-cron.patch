@@ -1,0 +1,38 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -368,25 +368,19 @@
+ 	$(CHOWN) $(CRON_OWNER) $(DESTDIR)$(SA_DIR)
+ ifdef SYSTEMD_UNIT_DIR
+ 	mkdir -p $(DESTDIR)$(SYSTEMD_UNIT_DIR)
+-else
+-	if [ -d /etc/cron.d ]; then \
+-		mkdir -p $(DESTDIR)/etc/cron.d; \
+-	elif [ -d /etc/cron.hourly -a -d /etc/cron.daily ]; then \
+-		mkdir -p $(DESTDIR)/etc/cron.hourly $(DESTDIR)/etc/cron.daily; \
+-	fi
+-	if [ -d $(INIT_DIR) ]; then \
+-		mkdir -p $(DESTDIR)$(INIT_DIR); \
+-	elif [ -d $(RC_DIR) ]; then \
++endif
++ifeq ($(INSTALL_CRON),y)
++	mkdir -p $(DESTDIR)/etc/cron.d; \
++	mkdir -p $(DESTDIR)$(INIT_DIR); \
++	if [ -d $(RC_DIR) ]; then \
+ 		mkdir -p $(DESTDIR)$(RC_DIR); \
+ 	fi
+ endif
+-	if [ -z "$(SYSTEMD_UNIT_DIR)" -o ! -d "$(DESTDIR)$(SYSTEMD_UNIT_DIR)" ]; then \
+-		if [ -d $(DESTDIR)/etc/cron.d ]; then \
+-			$(INSTALL_DATA) cron/sysstat.crond $(DESTDIR)/etc/cron.d/sysstat; \
+-		elif [ -d $(DESTDIR)/etc/cron.hourly -a -d $(DESTDIR)/etc/cron.daily ]; then \
+-			$(INSTALL_BIN) cron/sysstat.cron.hourly $(DESTDIR)/etc/cron.hourly/sysstat; \
+-			$(INSTALL_BIN) cron/sysstat.cron.daily $(DESTDIR)/etc/cron.daily/sysstat; \
+-		fi \
++	if [ -d $(DESTDIR)/etc/cron.d ]; then \
++		$(INSTALL_DATA) cron/sysstat.crond $(DESTDIR)/etc/cron.d/sysstat; \
++	elif [ -d $(DESTDIR)/etc/cron.hourly -a -d $(DESTDIR)/etc/cron.daily ]; then \
++		$(INSTALL_BIN) cron/sysstat.cron.hourly $(DESTDIR)/etc/cron.hourly/sysstat; \
++		$(INSTALL_BIN) cron/sysstat.cron.daily $(DESTDIR)/etc/cron.daily/sysstat; \
+ 	fi
+ ifeq ($(COPY_ONLY),n)
+ 	if [ \( -z "$(SYSTEMD_UNIT_DIR)" -o ! -d "$(DESTDIR)$(SYSTEMD_UNIT_DIR)" \) -a ! -d $(DESTDIR)/etc/cron.d ]; then \

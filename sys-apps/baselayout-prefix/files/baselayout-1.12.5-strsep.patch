@@ -1,0 +1,42 @@
+--- src/core/misc.h
++++ src/core/misc.h
+@@ -284,5 +284,9 @@
+ void file_unmap(char *buf, size_t bufsize);
+ size_t buf_get_line(char *buf, size_t buflen, size_t cur);
+ 
++#if defined (__SVR4) && defined (__sun)
++char* strsep(char** str, const char* delims);
++#endif
++
+ #endif /* _MISC_H */
+ 
+--- src/core/misc.c
++++ src/core/misc.c
+@@ -647,3 +647,27 @@
+ 	return count - cur;
+ }
+ 
++#if defined (__SVR4) && defined (__sun)
++char* strsep(char** str, const char* delims)
++{
++	char* token;
++
++	if (*str == NULL) {
++		/* No more tokens */
++		return NULL;
++	}
++
++	token=*str;
++	while (**str != '\0') {
++		if (strchr(delims, **str) != NULL) {
++			**str = '\0';
++			(*str)++;
++			return token;
++		}
++		(*str)++;
++	}
++	/* There is no other token */
++	*str = NULL;
++	return token;
++}
++#endif

@@ -1,0 +1,10 @@
+diff -ruN kcollectd-0.9.orig/kcollectd/CMakeLists.txt kcollectd-0.9/kcollectd/CMakeLists.txt
+--- kcollectd-0.9.orig/kcollectd/CMakeLists.txt	2009-11-30 22:01:54.000000000 +0100
++++ kcollectd-0.9/kcollectd/CMakeLists.txt	2011-04-24 15:35:21.596229942 +0200
+@@ -1,5 +1,5 @@
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAG} ${KDE4_ENABLE_EXCEPTIONS}")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+ 
+ find_package(Boost COMPONENTS filesystem system)
+ 

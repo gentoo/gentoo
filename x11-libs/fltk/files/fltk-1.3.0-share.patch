@@ -1,0 +1,44 @@
+ fluid/Makefile |   20 ++++++++++----------
+ 1 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/fluid/Makefile b/fluid/Makefile
+index 1cb3210..9d438a5 100644
+--- a/fluid/Makefile
++++ b/fluid/Makefile
+@@ -82,16 +82,16 @@ install: all
+ 	$(INSTALL_BIN) $(FLUID) $(DESTDIR)$(bindir)/fluid$(EXEEXT)
+ 
+ install-linux:
+-	-$(INSTALL_DIR) $(DESTDIR)/usr/share/applications
+-	$(INSTALL_DATA) fluid.desktop  $(DESTDIR)/usr/share/applications
++	-$(INSTALL_DIR) $(DESTDIR)$(datadir)/applications
++	$(INSTALL_DATA) fluid.desktop  $(DESTDIR)$(datadir)/applications
+ 	for size in 16 32 48 64 128; do \
+-		if test ! -d $(DESTDIR)/usr/share/icons/hicolor/$${size}x$${size}/apps; then \
+-			$(INSTALL_DIR) $(DESTDIR)/usr/share/icons/hicolor/$${size}x$${size}/apps; \
++		if test ! -d $(DESTDIR)$(datadir)/icons/hicolor/$${size}x$${size}/apps; then \
++			$(INSTALL_DIR) $(DESTDIR)$(datadir)/icons/hicolor/$${size}x$${size}/apps; \
+ 		fi; \
+-		$(INSTALL_DATA) icons/fluid-$$size.png $(DESTDIR)/usr/share/icons/hicolor/$${size}x$${size}/apps/fluid.png; \
++		$(INSTALL_DATA) icons/fluid-$$size.png $(DESTDIR)$(datadir)/icons/hicolor/$${size}x$${size}/apps/fluid.png; \
+ 	done
+-	-$(INSTALL_DIR) $(DESTDIR)/usr/share/mimelnk/application
+-	$(INSTALL_DATA) x-fluid.desktop  $(DESTDIR)/usr/share/mimelnk/application
++	-$(INSTALL_DIR) $(DESTDIR)$(datadir)/mimelnk/application
++	$(INSTALL_DATA) x-fluid.desktop  $(DESTDIR)$(datadir)/mimelnk/application
+ 
+ install-osx:
+ 	echo Installing Fluid in $(DESTDIR)/Applications...
+@@ -109,9 +109,9 @@ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/fluid$(EXEEXT)
+ 
+ uninstall-linux:
+-	$(RM) $(DESTDIR)/usr/share/applications/fluid.desktop
+-	$(RM) $(DESTDIR)/usr/share/icons/hicolor/*/fluid.png
+-	$(RM) $(DESTDIR)/usr/share/mimelnk/application/x-fluid.desktop
++	$(RM) $(DESTDIR)$(datadir)/applications/fluid.desktop
++	$(RM) $(DESTDIR)$(datadir)/icons/hicolor/*/fluid.png
++	$(RM) $(DESTDIR)$(datadir)/mimelnk/application/x-fluid.desktop
+ 
+ uninstall-osx:
+ 	$(RM) -r $(DESTDIR)/Applications/fluid.app

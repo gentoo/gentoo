@@ -1,0 +1,70 @@
+diff --git a/source/libnormaliz/HilbertSeries.cpp b/source/libnormaliz/HilbertSeries.cpp
+index 311b839..47a84cd 100644
+--- a/source/libnormaliz/HilbertSeries.cpp
++++ b/source/libnormaliz/HilbertSeries.cpp
+@@ -399,7 +399,7 @@ void HilbertSeries::computeHilbertQuasiPolynomial() const {
+     //divide by gcd //TODO operate directly on vector
+     Matrix<mpz_class> QP(quasi_poly);
+     mpz_class g = QP.matrix_gcd();
+-    g = gcd(g,quasi_denom);
++    g = libnormaliz::gcd(g,quasi_denom);
+     quasi_denom /= g;
+     QP.scalar_division(g);
+     //we use a normed shift, so that the cylcic shift % period always yields a non-negative integer
+diff --git a/source/libnormaliz/matrix.cpp b/source/libnormaliz/matrix.cpp
+index d643eca..ae7684c 100644
+--- a/source/libnormaliz/matrix.cpp
++++ b/source/libnormaliz/matrix.cpp
+@@ -735,7 +735,7 @@ Integer Matrix<Integer>::matrix_gcd() const{
+     Integer g=0,h;
+     for (size_t i = 0; i <nr; i++) {
+         h = v_gcd(elem[i]);
+-        g = gcd<Integer>(g, h);
++        g = libnormaliz::gcd<Integer>(g, h);
+         if (g==1) return g;
+     }
+     return g;
+@@ -1766,7 +1766,7 @@ vector<Integer> Matrix<Integer>::solve_rectangular(const vector<Integer>& v, Int
+             return vector<Integer>();
+         }
+     }
+-    Integer total_gcd =gcd(denom,v_gcd(Linear_Form)); // extract the gcd of denom and solution
++    Integer total_gcd = libnormaliz::gcd(denom,v_gcd(Linear_Form)); // extract the gcd of denom and solution
+     denom/=total_gcd;
+     v_scalar_division(Linear_Form,total_gcd);
+     return Linear_Form;
+diff --git a/source/libnormaliz/sublattice_representation.cpp b/source/libnormaliz/sublattice_representation.cpp
+index e3a7c9d..f5bba3e 100644
+--- a/source/libnormaliz/sublattice_representation.cpp
++++ b/source/libnormaliz/sublattice_representation.cpp
+@@ -213,7 +213,7 @@ void Sublattice_Representation<Integer>::compose(const Sublattice_Representation
+     
+     //check if a factor can be extraced from B  //TODO necessary?
+     Integer g = B.matrix_gcd();
+-    g = gcd(g,c);  //TODO necessary??
++    g = libnormaliz::gcd(g,c);  //TODO necessary??
+     if (g > 1) {
+         c /= g;
+         B.scalar_division(g);
+diff --git a/source/libnormaliz/vector_operations.cpp b/source/libnormaliz/vector_operations.cpp
+index 7c676e9..7103775 100644
+--- a/source/libnormaliz/vector_operations.cpp
++++ b/source/libnormaliz/vector_operations.cpp
+@@ -240,7 +240,7 @@ Integer v_gcd(const vector<Integer>& v){
+     size_t i, size=v.size();
+     Integer g=0;
+     for (i = 0; i < size; i++) {
+-        g=gcd(g,v[i]);
++        g = libnormaliz::gcd(g,v[i]);
+         if (g==1) {
+             return 1;
+         }
+@@ -255,7 +255,7 @@ Integer v_lcm(const vector<Integer>& v){
+     size_t i,size=v.size();
+     Integer g=1;
+     for (i = 0; i < size; i++) {
+-        g=lcm(g,v[i]);
++        g = libnormaliz::lcm(g,v[i]);
+         if (g==0) {
+             return 0;
+         }

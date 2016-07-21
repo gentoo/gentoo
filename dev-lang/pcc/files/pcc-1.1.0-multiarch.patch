@@ -1,0 +1,11 @@
+--- cc/cc/cc.c	2014-12-06 09:52:55.000000000 +0000
++++ cc/cc/cc.c.new	2015-03-09 09:22:25.569376330 +0000
+@@ -206,7 +206,7 @@
+ #define PCCLIBDIR	NULL
+ #endif
+ #ifndef DEFLIBDIRS	/* default library search paths */
+-#ifdef MULTIARCH_PATH
++#ifndef MULTIARCH_PATH
+ #define DEFLIBDIRS	{ "/usr/lib/", 0 }
+ #else
+ #define DEFLIBDIRS	{ "/usr/lib/", "/usr/lib/" MULTIARCH_PATH "/", 0 }

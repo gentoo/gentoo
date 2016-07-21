@@ -1,0 +1,9 @@
+--- ginac-1.4.4.org/ginac.pc.in	2009-03-16 21:17:22.000000000 +0530
++++ ginac-1.4.4/ginac.pc.in	2009-03-16 21:25:28.000000000 +0530
+@@ -7,5 +7,5 @@
+ Description: C++ library for symbolic calculations
+ Version: @VERSION@
+ Requires: cln >= 1.1.6
+-Libs: -L${libdir} -lginac @GINACLIB_RPATH@
++Libs: -L${libdir} -lginac
+ Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+--- a/src/libcommon/logger.c
++++ b/src/libcommon/logger.c
+@@ -92,9 +92,9 @@
+ 
+   switch (type)
+     {
+-    case CONNECT_LOG: status = fprintf(connect_log, text);
++    case CONNECT_LOG: status = fprintf(connect_log, "%s\n", text);
+       break;
+-    case ERROR_LOG: status = fprintf(error_log, text);
++    case ERROR_LOG: status = fprintf(error_log, "%s\n", text);
+       break;
+     default: // do nothing?
+       break;

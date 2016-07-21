@@ -1,0 +1,10 @@
+--- stglibs/Makefile.org	2013-01-19 18:21:57.000000000 +0200
++++ stglibs/Makefile	2013-01-19 18:24:25.000000000 +0200
+@@ -15,6 +15,6 @@
+ 
+ clean: all
+ 
+-install: all
++install:
+ 
+ uninstall: all

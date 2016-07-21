@@ -1,0 +1,32 @@
+From: Kir Kolyshkin <kir@openvz.org>
+Date: Tue, 14 Oct 2014 09:22:49 +0000 (-0700)
+Subject: init.d/vz-gentoo: fix a typo
+X-Git-Url: http://git.openvz.org/?p=vzctl;a=commitdiff_plain;h=7dd296400299f13964b2665792fbe1ea89ac6241
+
+init.d/vz-gentoo: fix a typo
+
+As reported in
+
+http://forum.openvz.org/index.php?t=msg&th=12775&S=cec69936a4b7d441bf7f44478dbb6c3c#msg_51690
+
+there's a missing bracket.
+
+This is a fix to commit 8e7fdb5.
+
+Reported-by: Sergey Ya Korshunoff
+Signed-off-by: Kir Kolyshkin <kir@openvz.org>
+---
+
+diff --git a/etc/init.d/vz-gentoo.in b/etc/init.d/vz-gentoo.in
+index d937408..c7b5604 100755
+--- a/etc/init.d/vz-gentoo.in
++++ b/etc/init.d/vz-gentoo.in
+@@ -202,7 +202,7 @@ start_ve() {
+ 
+ get_parallel()
+ {
+-	[ -n "${VE_PARALLEL}" -a "${VE_PARALLEL" != "0" ] && return
++	[ -n "${VE_PARALLEL}" -a "${VE_PARALLEL}" != "0" ] && return
+ 	VE_PARALLEL=`awk '
+ BEGIN { num=0; }
+ $1 == "processor" { num++; }

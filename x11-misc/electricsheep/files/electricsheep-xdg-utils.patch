@@ -1,0 +1,15 @@
+Index: client/electricsheep-preferences.c
+===================================================================
+--- client/electricsheep-preferences.c	(revision 1257)
++++ client/electricsheep-preferences.c	(working copy)
+@@ -121,8 +121,8 @@
+ }
+ 
+ void on_helpButton_clicked(GtkWidget *widget, gpointer user_data) {
+-    if (system("gnome-open http://electricsheep.org/client/LNX_" VERSION ".html &"))
+-	perror("gnome-open");
++    if (system("xdg-open http://electricsheep.org/client/LNX_" VERSION ".html &"))
++	perror("xdg-open");
+ }
+ 
+ static void tick() {

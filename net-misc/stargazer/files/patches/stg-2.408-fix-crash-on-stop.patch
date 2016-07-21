@@ -1,0 +1,190 @@
+diff -Naur stg-2.408/projects/rscriptd/listener.cpp stg-2.408-patched/projects/rscriptd/listener.cpp
+--- stg-2.408/projects/rscriptd/listener.cpp	2012-02-09 12:26:59.000000000 +0200
++++ stg-2.408-patched/projects/rscriptd/listener.cpp	2013-02-11 09:04:32.000000000 +0200
+@@ -49,6 +49,8 @@
+       receiverStopped(true),
+       processorStopped(true),
+       userTimeout(0),
++      receiverThread(0),
++      processorThread(0),
+       listenSocket(0)
+ {
+ version = "rscriptd listener v.1.2";
+@@ -149,8 +151,10 @@
+         }
+     }
+ 
+-pthread_join(receiverThread, NULL);
+-pthread_join(processorThread, NULL);
++if (receiverThread != 0)
++    pthread_join(receiverThread, NULL);
++if (processorThread != 0)
++    pthread_join(processorThread, NULL);
+ 
+ pthread_mutex_destroy(&mutex);
+ 
+diff -Naur stg-2.408/projects/stargazer/eventloop.cpp stg-2.408-patched/projects/stargazer/eventloop.cpp
+--- stg-2.408/projects/stargazer/eventloop.cpp	2012-02-09 12:27:06.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/eventloop.cpp	2013-02-11 09:03:11.000000000 +0200
+@@ -10,7 +10,7 @@
+     : ACTIONS_LIST(),
+       _running(false),
+       _stopped(true),
+-      _tid(),
++      _tid(0),
+       _mutex(),
+       _condition()
+ {
+@@ -41,7 +41,8 @@
+ // Wake up thread
+ pthread_cond_signal(&_condition);
+ // Wait until thread exit
+-pthread_join(_tid, NULL);
++if (_tid != 0)
++    pthread_join(_tid, NULL);
+ return false;
+ }
+ 
+diff -Naur stg-2.408/projects/stargazer/plugins/capture/cap_nf/cap_nf.cpp stg-2.408-patched/projects/stargazer/plugins/capture/cap_nf/cap_nf.cpp
+--- stg-2.408/projects/stargazer/plugins/capture/cap_nf/cap_nf.cpp	2012-02-09 12:27:14.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/plugins/capture/cap_nf/cap_nf.cpp	2013-02-11 09:01:34.000000000 +0200
+@@ -55,8 +55,8 @@
+ NF_CAP::NF_CAP()
+     : traffCnt(NULL),
+       settings(),
+-      tidTCP(),
+-      tidUDP(),
++      tidTCP(0),
++      tidUDP(0),
+       runningTCP(false),
+       runningUDP(false),
+       stoppedTCP(true),
+@@ -153,7 +153,8 @@
+         }
+     if (stoppedUDP)
+         {
+-        pthread_join(tidUDP, NULL);
++        if (tidUDP != 0)
++            pthread_join(tidUDP, NULL);
+         }
+     else
+         {
+@@ -176,7 +177,8 @@
+         }
+     if (stoppedTCP)
+         {
+-        pthread_join(tidTCP, NULL);
++        if (tidTCP != 0)
++            pthread_join(tidTCP, NULL);
+         }
+     else
+         {
+diff -Naur stg-2.408/projects/stargazer/plugins/capture/ether_linux/ether_cap.cpp stg-2.408-patched/projects/stargazer/plugins/capture/ether_linux/ether_cap.cpp
+--- stg-2.408/projects/stargazer/plugins/capture/ether_linux/ether_cap.cpp	2012-02-09 12:27:15.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/plugins/capture/ether_linux/ether_cap.cpp	2013-02-11 09:02:05.000000000 +0200
+@@ -74,7 +74,7 @@
+ //-----------------------------------------------------------------------------
+ ETHER_CAP::ETHER_CAP()
+     : errorStr(),
+-      thread(),
++      thread(0),
+       nonstop(false),
+       isRunning(false),
+       capSock(-1),
+@@ -140,7 +140,8 @@
+         }
+     else
+         {
+-        pthread_join(thread, NULL);
++        if (thread != 0)
++            pthread_join(thread, NULL);
+         }
+     }
+ 
+diff -Naur stg-2.408/projects/stargazer/plugins/capture/ipq_linux/ipq_cap.cpp stg-2.408-patched/projects/stargazer/plugins/capture/ipq_linux/ipq_cap.cpp
+--- stg-2.408/projects/stargazer/plugins/capture/ipq_linux/ipq_cap.cpp	2012-02-09 12:27:15.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/plugins/capture/ipq_linux/ipq_cap.cpp	2013-02-11 09:02:37.000000000 +0200
+@@ -58,7 +58,7 @@
+ IPQ_CAP::IPQ_CAP()
+     : ipq_h(NULL),
+       errorStr(),
+-      thread(),
++      thread(0),
+       nonstop(false),
+       isRunning(false),
+       capSock(-1),
+@@ -120,7 +120,8 @@
+         }
+     else
+         {
+-        pthread_join(thread, NULL);
++        if (thread != 0)
++            pthread_join(thread, NULL);
+         }
+     }
+ IPQCapClose();
+diff -Naur stg-2.408/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp stg-2.408-patched/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp
+--- stg-2.408/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp	2012-02-09 12:27:16.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/plugins/configuration/rpcconfig/rpcconfig.cpp	2013-02-11 09:00:33.000000000 +0200
+@@ -93,7 +93,7 @@
+       rpcServer(NULL),
+       running(false),
+       stopped(true),
+-      tid(),
++      tid(0),
+       cookies(),
+       dayFee(0),
+       dirNames()
+@@ -201,7 +201,8 @@
+     }
+ else
+     {
+-    pthread_join(tid, NULL);
++    if (tid != 0)
++        pthread_join(tid, NULL);
+     }
+ 
+ close(fd);
+diff -Naur stg-2.408/projects/stargazer/plugins/other/smux/smux.cpp stg-2.408-patched/projects/stargazer/plugins/other/smux/smux.cpp
+--- stg-2.408/projects/stargazer/plugins/other/smux/smux.cpp	2012-02-09 12:27:24.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/plugins/other/smux/smux.cpp	2013-02-11 09:07:54.000000000 +0200
+@@ -99,7 +99,7 @@
+       errorStr(),
+       smuxSettings(),
+       settings(),
+-      thread(),
++      thread(0),
+       mutex(),
+       running(false),
+       stopped(true),
+@@ -227,7 +227,7 @@
+         }
+     }
+ 
+-if (stopped)
++if (stopped && thread != 0)
+     pthread_join(thread, NULL);
+ 
+ ResetNotifiers();
+diff -Naur stg-2.408/projects/stargazer/stg_timer.cpp stg-2.408-patched/projects/stargazer/stg_timer.cpp
+--- stg-2.408/projects/stargazer/stg_timer.cpp	2012-02-09 12:27:30.000000000 +0200
++++ stg-2.408-patched/projects/stargazer/stg_timer.cpp	2013-02-11 08:58:55.000000000 +0200
+@@ -7,7 +7,7 @@
+ #include "stg/common.h"
+ 
+ static int nonstop;
+-static pthread_t thrStgTimer;
++static pthread_t thrStgTimer(0);
+ static bool isTimerRunning = false;
+ volatile time_t stgTime;
+ 
+@@ -101,7 +101,8 @@
+ void StopStgTimer()
+ {
+ nonstop = 0;
+-pthread_join(thrStgTimer, NULL); // Cleanup thread resources
++if (thrStgTimer != 0)
++    pthread_join(thrStgTimer, NULL); // Cleanup thread resources
+ printfd(__FILE__, "STG_TIMER stopped\n");
+ }
+ //-----------------------------------------------------------------------------

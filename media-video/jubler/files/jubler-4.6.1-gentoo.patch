@@ -1,0 +1,163 @@
+diff -Nur Jubler-4.6.1/build.xml Jubler-4.6.1_patched/build.xml
+--- Jubler-4.6.1/build.xml	2011-02-05 23:46:03.000000000 +0200
++++ Jubler-4.6.1_patched/build.xml	2011-02-13 14:46:56.562977001 +0200
+@@ -1,36 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<project name="Jubler" default="dist" basedir=".">
++<project name="Jubler" default="allparts" basedir=".">
+ 	<description>Builds, tests, and runs the project Jubler.</description>
+ 	<property file="core/src/com/panayotis/jubler/information/version.prop" />
+-
+-	<taskdef resource="net/sf/antcontrib/antlib.xml">
+-		<classpath>
+-			<pathelement location="resources/libs/ant-contrib/ant-contrib-1.0b3.jar"/>
+-		</classpath>
+-	</taskdef>
++	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+ 	
+-	<taskdef name="jarbundler"
+-		onerror="report"
+-		classpath="/opt/local/share/java/jarbundler.jar"
+-		classname="net.sourceforge.jarbundler.JarBundler" />
+-
+-   <taskdef name="izpack"
+-		onerror="report"
+-		classpath="../../Tools/IzPack/standalone-compiler.jar"
+-		classname="com.izforge.izpack.ant.IzPackTask"/>
+-
+-	<taskdef name="launch4j"
+-		onerror="report"
+-		classpath="/opt/local/share/launch4j/launch4j.jar:/opt/local/share/launch4j/lib/xstream.jar" 
+-		classname="net.sf.launch4j.ant.Launch4jTask"/>
+-
+-	<target name="jupidator">
+-		<ant antfile="../jupidator/build.xml" inheritall="false" target="jar"/>
+-		<copy file="../jupidator/dist/jupidator.jar" todir="dist/lib"/>
+-		<ant antfile="../jupidator/build.xml" inheritall="false" target="clean"/>
+-	</target>
+-		
+-
+ 	<target name="i18n">
+ 		<exec dir="resources/i18n" executable="bash" failonerror="true">
+ 			<arg line="compile"/>
+@@ -45,12 +18,14 @@
+ 		<move file="resources/help/jubler-faq.html" todir="dist/help"/>
+ 		<copy file="resources/help/question.png" todir="dist/help"/>
+ 	</target>
+-
++	
++	<target name="jupidator"/>
++	
+ 	<target name="changelog" depends="jupidator">
+ 		<delete file="ChangeLog.html"/>
+ 		<echo message="" file="ChangeLog.html"/>
+-		<java fork="true" classname="com.panayotis.jupidator.helpers.ChangeLogCreator" classpath="dist/lib/jupidator.jar">
+-			<arg value="http://www.jubler.org/files/updates/update.xml"/>
++		<java fork="true" classname="com.panayotis.jupidator.helpers.ChangeLogCreator" classpath="resources/libs/jupidator.jar">
++			<arg value="update-${version}.xml"/>
+ 			<arg value="ChangeLog.html"/>
+ 		</java>
+ 	</target>
+@@ -311,7 +286,7 @@
+ 	</target>
+ 
+ 	<!-- Create an isntallation-like file tree -->
+-	<target name="-linuxinstall" depends="-linuxproperties, -cleandestdir, -linuxdesktopintegration">
++	<target name="-linuxinstall" depends="-linuxproperties, -cleandestdir, linuxdesktopintegration">
+ 		<!-- Basic Jubler files -->
+ 		<copy file="dist/Jubler.jar" todir="${libdir}"/>
+ 		<copy todir="${libdir}/lib">
+@@ -337,7 +312,7 @@
+ 	</target>
+ 
+ 	<!-- Linux desktop intergration -->
+-	<target name="-linuxdesktopintegration" depends="-linuxproperties">
++	<target name="linuxdesktopintegration" depends="-linuxproperties">
+ 		<!-- Icon files -->
+ 		<copy file="resources/installers/linux/jubler.menu" tofile="${sharedir}/menu/jubler"/>
+ 		<copy file="resources/installers/linux/jubler.xpm" todir="${sharedir}/pixmaps"/>
+diff -Nur Jubler-4.6.1/core/src/com/panayotis/jubler/information/HelpBrowser.java Jubler-4.6.1_patched/core/src/com/panayotis/jubler/information/HelpBrowser.java
+--- Jubler-4.6.1/core/src/com/panayotis/jubler/information/HelpBrowser.java	2011-01-31 01:19:02.000000000 +0200
++++ Jubler-4.6.1_patched/core/src/com/panayotis/jubler/information/HelpBrowser.java	2011-02-12 14:38:50.220780001 +0200
+@@ -47,7 +47,7 @@
+ 
+         history = new ArrayList<String>();
+ 
+-        String initpage = "file:" + SystemFileFinder.getJublerAppPath() + "/help/jubler-faq.html";
++        String initpage = "file:" + SystemFileFinder.getJublerAppPath() + "/../help/jubler-faq.html";
+         setPage(initpage);
+         history.add(initpage);
+ 
+diff -Nur Jubler-4.6.1/core/src/com/panayotis/jubler/os/SystemDependent.java Jubler-4.6.1_patched/core/src/com/panayotis/jubler/os/SystemDependent.java
+--- Jubler-4.6.1/core/src/com/panayotis/jubler/os/SystemDependent.java	2011-01-31 01:19:02.000000000 +0200
++++ Jubler-4.6.1_patched/core/src/com/panayotis/jubler/os/SystemDependent.java	2011-02-12 14:43:25.740780001 +0200
+@@ -182,7 +182,7 @@
+                 Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+             else { //assume Unix or Linux
+                 String[] browsers = {
+-                    "firefox", "konqueror", "opera", "epiphany", "mozilla", "netscape"};
++                    "xdg-open", "firefox", "konqueror", "opera", "epiphany", "mozilla", "netscape"};
+                 String browser = null;
+                 for (int count = 0; count < browsers.length && browser == null; count++)
+                     if (Runtime.getRuntime().exec(
+diff -Nur Jubler-4.6.1/core/src/com/panayotis/jubler/os/SystemFileFinder.java Jubler-4.6.1_patched/core/src/com/panayotis/jubler/os/SystemFileFinder.java
+--- Jubler-4.6.1/core/src/com/panayotis/jubler/os/SystemFileFinder.java	2011-02-05 01:59:45.000000000 +0200
++++ Jubler-4.6.1_patched/core/src/com/panayotis/jubler/os/SystemFileFinder.java	2011-02-12 14:38:18.520780001 +0200
+@@ -56,9 +56,8 @@
+ 
+     public static boolean loadLibrary(String name) {
+         File libfile = findFile("lib" + FileCommunicator.FS + System.mapLibraryName(name));
+-        if (libfile != null)
+             try {
+-                System.load(libfile.getAbsolutePath());
++                System.loadLibrary(name);
+                 return true;
+             } catch (UnsatisfiedLinkError e) {
+                 DEBUG.debug(e);
+diff -Nur Jubler-4.6.1/resources/ffmpeg/ffdecode/Makefile Jubler-4.6.1_patched/resources/ffmpeg/ffdecode/Makefile
+--- Jubler-4.6.1/resources/ffmpeg/ffdecode/Makefile	2011-01-31 16:26:26.000000000 +0200
++++ Jubler-4.6.1_patched/resources/ffmpeg/ffdecode/Makefile	2011-02-15 20:26:34.213149001 +0200
+@@ -12,9 +12,6 @@
+ # Name of the produced library
+ PROJ=ffdecode
+ 
+-# Paths of include files
+-JAVA_HOME=${shell /bin/sh ../../system/findjava.sh -j}
+-
+ # Current Path
+ CPATH=${shell pwd}
+ 
+@@ -42,7 +39,6 @@
+ # Various options
+ FFCONF=configure
+ LIBSUF=_${SYSTEM}.${ARCH}
+-MAKEOPTS=-j3
+ 
+ # Find requested files
+ NATIVES=${shell cd ../../src && grep -r ' native ' * | grep -v '/.svn/' | gawk -F ':' '{print $$1}' | uniq | sed -e 's/\.java$$//g' | tr '/' '.' }
+@@ -136,7 +132,6 @@
+ CCPREF_NOS=${shell echo ${CCPREF} | sed -e 's/-$$//g' }
+ DCONFIG=--with-mp4v2 --host=${CCPREF_NOS}
+ 
+-CC=${CCPREF}gcc
+ RANLIB=${CCPREF}ranlib
+ 
+ ifeq (${NOSTRIP},) 
+@@ -151,7 +146,7 @@
+ .SUFFIXES:.o .c
+ 
+ .c.o:
+-	${CC} ${CFLAGS} ${GCCOPTS} -std=c99 -pedantic -O3 -Wall ${INCS} ${JINCLUDE} -c -o $@ $?
++	${CC} ${CFLAGS} ${GCCOPTS} -std=c99 -pedantic -Wall ${INCS} ${JINCLUDE} -c -o $@ $?
+ 
+ 
+ develop:javacheck
+@@ -208,7 +203,7 @@
+ LIB:${LIBNAME}
+ 
+ ${LIBNAME}:${LIBRARYREQ} ${OBJS} ${RANLIBREQ}
+-	${LD} ${GCCOPTS} -o ${LIBNAME} ${OBJS} ${LIBS}
++	${LD} ${LDFLAGS} ${GCCOPTS} -o ${LIBNAME} ${OBJS} ${LIBS}
+ 	${STRIPCMD} ${LIBNAME}
+ 
+ 

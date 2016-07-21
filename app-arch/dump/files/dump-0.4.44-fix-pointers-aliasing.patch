@@ -1,0 +1,126 @@
+https://sourceforge.net/tracker/?func=detail&aid=3322910&group_id=1306&atid=301306
+
+=== modified file 'dump/tape.c'
+--- dump/tape.c	2011-06-20 07:22:40 +0000
++++ dump/tape.c	2011-06-20 07:57:11 +0000
+@@ -1281,9 +1281,9 @@
+ 			compresult = 1;
+ #ifdef HAVE_ZLIB
+ 			if (zipflag == COMPRESS_ZLIB) {
+-				compresult = compress2(comp_buf->buf, 
++				compresult = compress2((Bytef *)comp_buf->buf, 
+ 						       &worklen,
+-						       (char *)slp->tblock[0],
++						       (Bytef *)slp->tblock[0],
+ 						       writesize, 
+ 						       compressed);
+ 				if (compresult == Z_OK)
+@@ -1313,8 +1313,9 @@
+ #ifdef HAVE_LZO
+ 			if (zipflag == COMPRESS_LZO) {
+ 				lzo_uint worklen2 = worklen;
+-				compresult = lzo1x_1_compress((char *)slp->tblock[0],writesize,
+-                                                              comp_buf->buf,
++				compresult = lzo1x_1_compress((lzo_bytep)slp->tblock[0],
++                                                              writesize,
++                                                              (lzo_bytep)comp_buf->buf,
+ 							      &worklen2,
+                                                               LZO_WorkMem);
+ 				worklen = worklen2;
+
+=== modified file 'dump/traverse.c'
+--- dump/traverse.c	2011-06-20 07:22:40 +0000
++++ dump/traverse.c	2011-06-20 07:57:11 +0000
+@@ -782,13 +782,13 @@
+ 	for (i = p->next_block; i < blockcnt; i++) {
+ 		p->buf[p->cnt++] = 0;
+ 		if (p->cnt == p->max) {
+-			blksout (p->buf, p->cnt, p->ino);
++			blksout ((blk_t *)p->buf, p->cnt, p->ino);
+ 			p->cnt = 0;
+ 		}
+ 	}
+ 	p->buf[p->cnt++] = *blocknr;
+ 	if (p->cnt == p->max) {
+-		blksout (p->buf, p->cnt, p->ino);
++		blksout ((blk_t *)p->buf, p->cnt, p->ino);
+ 		p->cnt = 0;
+ 	}
+ 	p->next_block = blockcnt + 1;
+@@ -868,14 +868,15 @@
+ void
+ dumpino(struct dinode *dp, dump_ino_t ino, int metaonly)
+ {
++	fsizeT remaining;
++	char buf[TP_BSIZE];
++	struct new_bsd_inode nbi;
++	int i;
++#ifdef	__linux__
++	struct block_context bc;
++#else
+ 	unsigned long cnt;
+-	fsizeT size, remaining;
+-	char buf[TP_BSIZE];
+-	struct new_bsd_inode nbi;
+-	int i;
+-#ifdef	__linux__
+-	struct block_context bc;
+-#else
++	fsizeT size;
+ 	int ind_level;
+ #endif
+ 	u_quad_t i_size;
+@@ -1001,13 +1002,13 @@
+ 		for (i = 0; i < (int)howmany(remaining, sblock->fs_fsize); i++) {
+ 			bc.buf[bc.cnt++] = 0;
+ 			if (bc.cnt == bc.max) {
+-				blksout (bc.buf, bc.cnt, bc.ino);
++				blksout ((blk_t *)bc.buf, bc.cnt, bc.ino);
+ 				bc.cnt = 0;
+ 			}
+ 		}
+ 	}
+ 	if (bc.cnt > 0) {
+-		blksout (bc.buf, bc.cnt, bc.ino);
++		blksout ((blk_t *)bc.buf, bc.cnt, bc.ino);
+ 	}
+ 	free(bc.buf);
+ 	dump_xattr(ino, dp);
+@@ -1016,7 +1017,7 @@
+ 		cnt = NDADDR * sblock->fs_frag;
+ 	else
+ 		cnt = howmany(i_size, sblock->fs_fsize);
+-	blksout(&dp->di_db[0], cnt, ino);
++	blksout((blk_t *)&dp->di_db[0], cnt, ino);
+ 	if ((quad_t) (size = i_size - NDADDR * sblock->fs_bsize) <= 0) {
+ 		dump_xattr(ino, dp);
+ 		return;
+
+=== modified file 'restore/tape.c'
+--- restore/tape.c	2011-06-20 07:22:40 +0000
++++ restore/tape.c	2011-06-20 07:57:11 +0000
+@@ -2335,8 +2335,10 @@
+ #ifndef HAVE_ZLIB
+ 			errx(1,"This restore version doesn't support zlib decompression");
+ #else
+-			cresult = uncompress(comprbuf, &worklen, 
+-					     tpbin->buf, blocklen);
++			cresult = uncompress((Bytef *)comprbuf,
++			                     &worklen, 
++					     (Bytef *)tpbin->buf,
++					     blocklen);
+ 			output = comprbuf;
+ 			switch (cresult) {
+ 				case Z_OK:
+@@ -2397,8 +2399,8 @@
+ 			errx(1,"This restore version doesn't support lzo decompression");
+ #else
+ 			lzo_uint worklen2 = worklen;
+-			cresult = lzo1x_decompress(tpbin->buf, blocklen,
+-                                                   comprbuf, &worklen2, NULL);
++			cresult = lzo1x_decompress((lzo_bytep)tpbin->buf, blocklen,
++                                                   (lzo_bytep)comprbuf, &worklen2, NULL);
+ 			worklen = worklen2;
+ 			output = comprbuf;
+ 			switch (cresult) {
+

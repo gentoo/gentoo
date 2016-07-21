@@ -1,0 +1,15 @@
+https://github.com/textile/python-textile/commit/83c81db387fa5f0c5ca25c27b8bc36d105bce599
+diff --git a/textile/tools/sanitizer.py b/textile/tools/sanitizer.py
+index 83b6799..4fc8fb2 100644
+--- a/textile/tools/sanitizer.py
++++ b/textile/tools/sanitizer.py
+@@ -12,7 +12,7 @@ def sanitize(string):
+     p = html5lib.HTMLParser(tokenizer=sanitizer.HTMLSanitizer)
+     tree = p.parseFragment(string)
+ 
+-    walker = treewalkers.getTreeWalker("simpletree")
++    walker = treewalkers.getTreeWalker("etree")
+     stream = walker(tree)
+ 
+     s = serializer.htmlserializer.HTMLSerializer(omit_optional_tags=False,
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$DESKTOP_SESSION" = "mate" ]; then
+	if [ -z "$XDG_DATA_DIRS" ]; then
+		export XDG_DATA_DIRS=/usr/share/mate:/usr/local/share/:/usr/share/
+	else
+		export XDG_DATA_DIRS=/usr/share/mate:"$XDG_DATA_DIRS"
+	fi
+fi

@@ -1,0 +1,30 @@
+http://bugs.gentoo.org/512336
+http://bugs.freedesktop.org/show_bug.cgi?id=78077
+
+From 8691b580ab3f7ac36182060e2253307fbd0aba75 Mon Sep 17 00:00:00 2001
+From: Andrew Oakley <aoakley@espial.com>
+Date: Tue, 29 Apr 2014 13:14:35 +0100
+Subject: [PATCH 1/1] Strip system library directories reliably
+
+This loop was changed from a while loop to a for loop in commit
+9bf6277b, but the iterator is now advanced twice each time round the
+loop.
+---
+ pkg.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pkg.c b/pkg.c
+index 3697fec..c847c95 100644
+--- a/pkg.c
++++ b/pkg.c
+@@ -917,7 +917,6 @@ verify_package (Package *pkg)
+             }
+           system_dir_iter = system_dir_iter->next;
+         }
+-      iter = iter->next;
+     }
+   g_list_free (system_directories);
+ 
+-- 
+1.8.3.2
+

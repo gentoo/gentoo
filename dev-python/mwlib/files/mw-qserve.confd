@@ -1,0 +1,14 @@
+# The port to listen to
+MW_QSERVE_PORT=14311
+
+# The interface to listen to (for example: 127.0.0.1)
+MW_QSERVE_INTERFACE="127.0.0.1"
+
+# The user running the mw-qserve service, defaults to 'mwlib'
+# MW_QSERVE_USER="mwlib"
+
+# The group running the mq-qserve service, defaults to 'mwlib'
+# MW_QSERVE_GROUP="mwlib"
+
+# The logfile collecting all output from stdout and stderr, comment out for no logging
+MW_QSERVE_LOGFILE="/var/log/mwlib/mw-qserve.log"

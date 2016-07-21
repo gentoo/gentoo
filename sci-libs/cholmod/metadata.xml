@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  CHOLMOD is a set of ANSI C routines for sparse Cholesky
+  factorization and update/downdate.
+</longdescription>
+  <use>
+    <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
+    <flag name="metis">Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg></flag>
+  </use>
+</pkgmetadata>

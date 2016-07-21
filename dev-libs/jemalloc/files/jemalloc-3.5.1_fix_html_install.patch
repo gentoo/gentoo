@@ -1,0 +1,12 @@
+diff -urN a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2014-02-25 18:49:15.000000000 -0600
++++ b/Makefile.in	2014-03-07 18:26:23.074138895 -0600
+@@ -317,7 +317,7 @@
+ 	install -m 644 $$d $(MANDIR)/man3; \
+ done
+ 
+-install_doc: install_doc_html install_doc_man
++install_doc: install_doc_man
+ 
+ install: install_bin install_include install_lib install_doc
+ 

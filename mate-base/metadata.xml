@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The mate-base category contains core MATE packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie mate-base enthält die MATE Basispakete.
+	</longdescription>
+	<longdescription lang="es">
+		La catagoría mate-base contiene los paquetes principales de MATE.
+	</longdescription>
+	<longdescription lang="ja">
+		mate-baseカテゴリーにはMATEのコア・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De mate-base categorie bevat de basisonderdelen van de MATE desktopomgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm mate-base chứa các gói MATE cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria mate-base contiene i pacchetti base di MATE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria mate-base contém os pacotes principais de MATE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria mate-base zawiera podstawowe pakiety środowiska MATE.
+	</longdescription>
+</catmetadata>

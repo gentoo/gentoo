@@ -1,0 +1,16 @@
+--- DSV/DSV.py
++++ DSV/DSV.py
+@@ -134,6 +134,13 @@
+ os.putenv('LANG', 'C')
+ 
+ try:
++    import wxversion
++    wxversion.select("2.8")
++except Exception, e:
++    print >> sys.stderr, "%s: wxPython 2.8 not installed." %e
++    sys.exit(1)
++
++try:
+     from wxPython import wx, grid
+ except ImportError:
+     wx = None

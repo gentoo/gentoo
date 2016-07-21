@@ -1,0 +1,22 @@
+diff -Nuar ipv6toolkit-v1.4.orig/tools/scan6.c ipv6toolkit-v1.4/tools/scan6.c
+--- ipv6toolkit-v1.4.orig/tools/scan6.c	2013-08-24 10:38:02.557531033 -0700
++++ ipv6toolkit-v1.4/tools/scan6.c	2013-08-24 11:32:21.244173537 -0700
+@@ -62,6 +62,9 @@
+ #include "scan6.h"
+ #include "ipv6toolkit.h"
+ #include <netinet/tcp.h>
++#ifndef OUI_DATABASE // keep this the same as the Makefiles
++#define OUI_DATABASE "/usr/share/ipv6toolkit/oui.txt"
++#endif
+ 
+ /* Function prototypes */
+ int					init_iface_data(struct iface_data *);
+@@ -6027,7 +6030,7 @@
+ 	fclose(fp);
+ 
+ 	if(!fname_f)
+-		strncpy(fname, "/usr/share/ipv6toolkit/oui.txt", MAX_FILENAME_SIZE-1);
++		strncpy(fname, OUI_DATABASE, MAX_FILENAME_SIZE-1);
+ 
+ 	return(1);
+ }

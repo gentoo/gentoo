@@ -1,0 +1,16 @@
+ libdo/keybinder.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/libdo/keybinder.h b/libdo/keybinder.h
+index 2a39958..da202e6 100644
+--- a/libdo/keybinder.h
++++ b/libdo/keybinder.h
+@@ -24,7 +24,7 @@
+ #ifndef __DO_KEY_BINDER_H__
+ #define __DO_KEY_BINDER_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

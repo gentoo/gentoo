@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		MazesOfMonad is a console-based Role Playing Game. You create
+		characters with their strong and weak points, and try to complete
+		mazes that are randomly generated. You can pick up gold and items
+		on the way, meet monsters, and deal with them as you want. You can
+		fight, use magic, bribe, trade, steal... This is only a simple game
+		that I did to see what building a full blown Haskell application
+		is like to develop. Versions 1.0.5 and above are complete
+		and working.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">JPMoresmau/MazesOfMonad</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
+  The Open Data Explorer brings together dynamic computational
+  and rendering tools in a dynamic, programmable framework that
+  enables users to rapidly create visualizations of highly complex
+  data from disparate sources.
+     
+  Data Explorer can be used to add visualization capabilities to
+  existing applications. It is used by companies and institutions for
+  applications in a large variety of visualization fields including
+  computational fluid dynamics, medical imagery, computational
+  chemistry, and engineering analysis.
+</longdescription>
+<use>
+  <flag name="cdf">Add support for <pkg>sci-libs/cdf</pkg> data exchange
+    format</flag>
+  <flag name="hdf">Add support for the Hierarchical Data Format
+    (<pkg>sci-libs/hdf</pkg>)</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,169 @@
+diff -Nur SPR-3.3.2.orig/configure.ac SPR-3.3.2/configure.ac
+--- SPR-3.3.2.orig/configure.ac	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/configure.ac	2011-05-04 00:48:43.000000000 +0100
+@@ -35,9 +35,6 @@
+ AC_FUNC_STAT
+ AC_CHECK_FUNCS([gettimeofday pow sqrt])
+ 
+-## Default compiler flags
+-DEFAULTCXXFLAGS="-O4"
+-
+ ## ROOT installation
+ AC_ARG_VAR([ROOTPATH], [path to ROOT installation])
+ AC_ARG_WITH([root], AC_HELP_STRING([--with-root], [path to ROOT installation]), 
+@@ -97,7 +94,6 @@
+     ## Test ROOT libs
+     AC_MSG_CHECKING([ROOT libraries])
+     if test -f ${ROOTLIBPATH}/libCore.so; then
+-      DEFAULTCXXFLAGS="-O2"
+       AC_MSG_RESULT([using ROOT libraries in $ROOTLIBPATH])
+     else
+       AC_MSG_WARN([ROOT libraries not found under $ROOTLIBPATH... disabling ROOT])
+@@ -117,16 +113,6 @@
+ ################################
+ 
+ 
+-## Set default compiler flags if CXXFLAGS not defined
+-if test -z "$CXXFLAGS"; then
+-  CXXFLAGS=$DEFAULTCXXFLAGS
+-fi
+-
+-
+-AM_CXXFLAGS="-ansi -pedantic"
+-AC_SUBST(AM_CPPFLAGS)
+-AC_SUBST(AM_CXXFLAGS)
+-AC_SUBST(CXXFLAGS)
+ 
+ AC_CONFIG_FILES(Makefile)
+ AC_CONFIG_FILES(math/Makefile)
+diff -Nur SPR-3.3.2.orig/data/Makefile.am SPR-3.3.2/data/Makefile.am
+--- SPR-3.3.2.orig/data/Makefile.am	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/data/Makefile.am	2011-03-29 05:54:19.000000000 +0100
+@@ -1,4 +1,5 @@
+-dist_data_DATA = \
++
++pkgdata_DATA = \
+ discrete_square.pat          gausscorr_uniform_2d_train.pat \
+ gauss2_uniform_2d_train.pat  trainRoot.pat \
+ gauss2_uniform_2d_valid.pat  triangle_square_00_train.pat \
+@@ -9,4 +10,4 @@
+ lambda-test.pat              cmc.data \
+ gauss2_uniform_2d_train_root.pat  mlp_root.pat \
+ tmva_root.pat                cleveland.data \
+-samplematrixindicator.cfg
+\ No newline at end of file
++samplematrixindicator.cfg
+diff -Nur SPR-3.3.2.orig/src/Makefile.am SPR-3.3.2/src/Makefile.am
+--- SPR-3.3.2.orig/src/Makefile.am	2011-03-29 05:52:30.000000000 +0100
++++ SPR-3.3.2/src/Makefile.am	2011-05-04 00:45:22.000000000 +0100
+@@ -1,20 +1,14 @@
+ lib_LTLIBRARIES = libSPR.la
+ 
+ AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)
+-AM_LDFLAGS  = -L/usr/lib -L$(top_srcdir)/src
+-AM_LIBS     = -lSPR 
+-APPLDADD    = -lSPR
++
+ if WITH_ROOT
+-   AM_CXXFLAGS += $(ROOTCXXFLAGS) -O2
++   AM_CXXFLAGS = $(ROOTCXXFLAGS)
+    AM_CPPFLAGS += $(ROOTCPPFLAGS) -DSPRROOTTUPLE
+-   AM_LDFLAGS  += $(ROOTLDFLAGS)
+-   AM_LIBS     += $(ROOTLIBS)
+-   APPLDADD    += $(ROOTLIBS)
+-else
+-   AM_CXXFLAGS += -O4
++   AM_LDFLAGS  = $(ROOTLDFLAGS)
+ endif
+ 
+-libSPR_la_LIBADD = $(top_srcdir)/math/libSPRmath.la
++libSPR_la_LIBADD = $(top_srcdir)/math/libSPRmath.la $(ROOTLIBS)
+ libSPR_la_SOURCES  = \
+   SprDataMoments.cc                 SprDecisionTree.cc \
+   SprFisher.cc                      SprFomCalculator.cc \
+@@ -60,81 +54,52 @@
+ #####################################################################
+ 
+ 
++LDADD = libSPR.la
+ 
+-noinst_PROGRAMS = exampleBootstrapVarianceEst  exampleCorrTest \
++check_PROGRAMS = exampleBootstrapVarianceEst  exampleCorrTest \
+                   exampleUserCuts  exampleMatrixTest
+ 
+ exampleBootstrapVarianceEst_SOURCES = exampleBootstrapVarianceEst.cc
+-exampleBootstrapVarianceEst_LDADD   = $(APPLDADD)
+ exampleCorrTest_SOURCES             = exampleCorrTest.cc
+-exampleCorrTest_LDADD               = $(APPLDADD)
+ exampleMatrixTest_SOURCES           = exampleMatrixTest.cc
+-exampleMatrixTest_LDADD             = $(APPLDADD)
+ 
+ bin_PROGRAMS = SprFisherLogitApp             SprDecisionTreeApp         SprExploratoryAnalysisApp \
+                SprMultiClassApp              SprGoFDecisionTreeApp      SprAdaBoostBinarySplitApp \
+                SprRBFNetApp                  SprAdaBoostDecisionTreeApp SprStdBackpropApp \
+                SprCombinerApp                SprBaggerDecisionTreeApp   SprBumpHunterApp  \
+                SprInteractiveAnalysisApp     SprOutputAnalyzerApp       SprOutputWriterApp \
+-               SprBoosterApp                 SprBaggerApp               exampleUserCuts \
++               SprBoosterApp                 SprBaggerApp               \
+                SprVariableImportanceApp      SprIOTestApp               SprAddBaggersApp \
+                SprTransformationApp          SprSplitterApp             SprAddNRemoveRApp \
+                SprGEPApp                     SprCrossValidatorApp       SprAddColumnsForMCLApp \
+                SprIndicatorMatrixApp
+ 
+ SprFisherLogitApp_SOURCES = SprFisherLogitApp.cc
+-SprFisherLogitApp_LDADD = $(APPLDADD)
+ SprDecisionTreeApp_SOURCES = SprDecisionTreeApp.cc
+-SprDecisionTreeApp_LDADD = $(APPLDADD)
+ SprExploratoryAnalysisApp_SOURCES = SprExploratoryAnalysisApp.cc
+-SprExploratoryAnalysisApp_LDADD = $(APPLDADD)
+ SprMultiClassApp_SOURCES = SprMultiClassApp.cc
+-SprMultiClassApp_LDADD = $(APPLDADD)
+ SprGoFDecisionTreeApp_SOURCES = SprGoFDecisionTreeApp.cc
+-SprGoFDecisionTreeApp_LDADD = $(APPLDADD)
+ SprAdaBoostBinarySplitApp_SOURCES = SprAdaBoostBinarySplitApp.cc
+-SprAdaBoostBinarySplitApp_LDADD = $(APPLDADD)
+ SprRBFNetApp_SOURCES = SprRBFNetApp.cc
+-SprRBFNetApp_LDADD = $(APPLDADD)
+ SprAdaBoostDecisionTreeApp_SOURCES = SprAdaBoostDecisionTreeApp.cc
+-SprAdaBoostDecisionTreeApp_LDADD = $(APPLDADD)
+ SprStdBackpropApp_SOURCES = SprStdBackpropApp.cc
+-SprStdBackpropApp_LDADD = $(APPLDADD)
+ SprCombinerApp_SOURCES = SprCombinerApp.cc
+-SprCombinerApp_LDADD = $(APPLDADD)
+ SprBaggerDecisionTreeApp_SOURCES = SprBaggerDecisionTreeApp.cc
+-SprBaggerDecisionTreeApp_LDADD = $(APPLDADD)
+ SprBumpHunterApp_SOURCES = SprBumpHunterApp.cc
+-SprBumpHunterApp_LDADD = $(APPLDADD)
+ SprInteractiveAnalysisApp_SOURCES = SprInteractiveAnalysisApp.cc
+-SprInteractiveAnalysisApp_LDADD = $(APPLDADD)
+ SprOutputAnalyzerApp_SOURCES = SprOutputAnalyzerApp.cc
+-SprOutputAnalyzerApp_LDADD = $(APPLDADD)
+ SprOutputWriterApp_SOURCES = SprOutputWriterApp.cc
+-SprOutputWriterApp_LDADD = $(APPLDADD)
+ SprBoosterApp_SOURCES = SprBoosterApp.cc
+-SprBoosterApp_LDADD = $(APPLDADD)
+ SprBaggerApp_SOURCES = SprBaggerApp.cc
+-SprBaggerApp_LDADD = $(APPLDADD)
+ exampleUserCuts_SOURCES = exampleUserCuts.cc
+-exampleUserCuts_LDADD = $(APPLDADD)
+ SprVariableImportanceApp_SOURCES = SprVariableImportanceApp.cc
+-SprVariableImportanceApp_LDADD = $(APPLDADD)
+ SprIOTestApp_SOURCES = SprIOTestApp.cc
+-SprIOTestApp_LDADD = $(APPLDADD)
+ SprAddBaggersApp_SOURCES = SprAddBaggersApp.cc
+-SprAddBaggersApp_LDADD = $(APPLDADD)
+ SprTransformationApp_SOURCES = SprTransformationApp.cc
+-SprTransformationApp_LDADD = $(APPLDADD)
+ SprSplitterApp_SOURCES = SprSplitterApp.cc
+-SprSplitterApp_LDADD = $(APPLDADD)
+ SprAddNRemoveRApp_SOURCES = SprAddNRemoveRApp.cc
+-SprAddNRemoveRApp_LDADD = $(APPLDADD)
+ SprGEPApp_SOURCES = SprGEPApp.cc
+-SprGEPApp_LDADD = $(APPLDADD)
+ SprCrossValidatorApp_SOURCES = SprCrossValidatorApp.cc
+-SprCrossValidatorApp_LDADD = $(APPLDADD)
+ SprAddColumnsForMCLApp_SOURCES = SprAddColumnsForMCLApp.cc
+-SprAddColumnsForMCLApp_LDADD = $(APPLDADD)
+ SprIndicatorMatrixApp_SOURCES = SprIndicatorMatrixApp.cc
+-SprIndicatorMatrixApp_LDADD = $(APPLDADD)
++

@@ -1,0 +1,24 @@
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
+@@ -109,20 +109,7 @@
+             <link>static:<define>BOOST_PYTHON_STATIC_LIB 
+             <define>BOOST_PYTHON_SOURCE
+             [ cond $(python2) : <cxxflags>-fno-strict-aliasing ]
+-          
+-            # On Windows, all code using Python has to link to the Python
+-            # import library.
+-            #
+-            # On *nix we never link libboost_python to libpython.  When
+-            # extending Python, all Python symbols are provided by the
+-            # Python interpreter executable.  When embedding Python, the
+-            # client executable is expected to explicitly link to
+-            # /python//python (the target representing libpython) itself.
+-            #
+-            # python_for_extensions is a target defined by Boost.Build to
+-            # provide the Python include paths, and on Windows, the Python
+-            # import library, as usage requirements.
+-            [ cond [ python.configured ] : <library>/python//python_for_extensions ]
++            [ cond [ python.configured ] : <library>/python//python ]
+             
+             # we prevent building when there is no python available
+             # as it's not possible anyway, and to cause dependents to

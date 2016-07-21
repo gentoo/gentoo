@@ -1,0 +1,221 @@
+From 07ecfcc72d977cfd364f0337032d5be7a0ff64e0 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 23 May 2012 10:09:26 -0400
+Subject: [PATCH] nmea2000: fix build failures when debugging is disabled
+
+When debugging is disabled, there is no libgps_debuglevel, so building
+this driver fails with:
+driver_nmea2000.c: In function 'print_data':
+driver_nmea2000.c:50:10: error: 'libgps_debuglevel' undeclared (first use in this function)
+
+Add some ifdef to this driver to fix that, and change the return type
+of print_data to void since it always returns 0 and no one ever checks
+the return value.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ driver_nmea2000.c |   45 +++++++++++++++++++++++----------------------
+ 1 files changed, 23 insertions(+), 22 deletions(-)
+
+diff --git a/driver_nmea2000.c b/driver_nmea2000.c
+index 1db6686..b3d2734 100644
+--- a/driver_nmea2000.c
++++ b/driver_nmea2000.c
+@@ -44,8 +44,9 @@ typedef struct PGN
+ FILE *logFile = NULL;
+ #endif /* of if LOG_FILE */
+ 
+-static int print_data(unsigned char *buffer, int len, PGN *pgn)
++static void print_data(unsigned char *buffer, int len, PGN *pgn)
+ {
++#ifdef LIBGPS_DEBUG
+     /*@-bufferoverflowhigh@*/
+     if ((libgps_debuglevel >= LOG_IO) != 0) {
+ 	int   l1, l2, ptr;
+@@ -67,7 +68,7 @@ static int print_data(unsigned char *buffer, int len, PGN *pgn)
+         gpsd_report(LOG_IO,"%s\n", bu);
+     }
+     /*@+bufferoverflowhigh@*/
+-    return(0);
++#endif
+ }
+ 
+ static gps_mask_t get_mode(struct gps_device_t *session)
+@@ -84,7 +85,7 @@ static gps_mask_t get_mode(struct gps_device_t *session)
+ 
+ static gps_mask_t hnd_059392(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -92,7 +93,7 @@ static gps_mask_t hnd_059392(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_060928(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -100,7 +101,7 @@ static gps_mask_t hnd_060928(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_126208(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -108,7 +109,7 @@ static gps_mask_t hnd_126208(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_126464(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -116,7 +117,7 @@ static gps_mask_t hnd_126464(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_126996(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -124,7 +125,7 @@ static gps_mask_t hnd_126996(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129025(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     /*@-type@*//* splint has a bug here */
+@@ -140,7 +141,7 @@ static gps_mask_t hnd_129025(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129026(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     session->driver.nmea2000.sid[0]  =  bu[0];
+@@ -161,10 +162,10 @@ static gps_mask_t hnd_126992(unsigned char *bu, int len, PGN *pgn, struct gps_de
+     //uint8_t        sid;
+     //uint8_t        source;
+ 
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     //sid        = bu[0];
+@@ -187,7 +188,7 @@ static gps_mask_t hnd_129539(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ {
+     gps_mask_t mask;
+ 
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     mask                             = 0;
+@@ -222,7 +223,7 @@ static gps_mask_t hnd_129540(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ {
+     int         l1, l2;
+ 
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     session->driver.nmea2000.sid[2]           = bu[0];
+@@ -261,7 +262,7 @@ static gps_mask_t hnd_129029(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ {
+     gps_mask_t mask;
+ 
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+ 
+     mask                             = 0;
+@@ -326,7 +327,7 @@ static gps_mask_t hnd_129029(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129038(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -334,7 +335,7 @@ static gps_mask_t hnd_129038(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129039(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -342,7 +343,7 @@ static gps_mask_t hnd_129039(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129040(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -350,7 +351,7 @@ static gps_mask_t hnd_129040(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129794(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -358,7 +359,7 @@ static gps_mask_t hnd_129794(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129798(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -366,7 +367,7 @@ static gps_mask_t hnd_129798(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129802(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -374,7 +375,7 @@ static gps_mask_t hnd_129802(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129809(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+@@ -382,7 +383,7 @@ static gps_mask_t hnd_129809(unsigned char *bu, int len, PGN *pgn, struct gps_de
+ 
+ static gps_mask_t hnd_129810(unsigned char *bu, int len, PGN *pgn, struct gps_device_t *session)
+ {
+-    (void)print_data(bu, len, pgn);
++    print_data(bu, len, pgn);
+     gpsd_report(LOG_DATA, "pgn %6d(%3d):\n", pgn->pgn, session->driver.nmea2000.unit);
+     return(0);
+ }
+-- 
+1.7.8.6
+

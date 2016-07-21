@@ -1,0 +1,113 @@
+Index: mpfc-1.3.7/libmpfc/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/libmpfc/Makefile.am
++++ mpfc-1.3.7/libmpfc/Makefile.am
+@@ -1,7 +1,5 @@
+ lib_LTLIBRARIES = libmpfc.la
+ 
+-libdir = $(prefix)/lib/
+-
+ libmpfchdrdir = $(prefix)/include/mpfc
+ libmpfchdr_HEADERS = ../mpfc-config.h ../src/types.h ../src/cfg.h \
+ 					 ../src/charset.h \
+Index: mpfc-1.3.7/libmpfcwnd/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/libmpfcwnd/Makefile.am
++++ mpfc-1.3.7/libmpfcwnd/Makefile.am
+@@ -1,5 +1,4 @@
+ lib_LTLIBRARIES = libmpfcwnd.la
+-libdir = $(prefix)/lib/
+ libmpfcwndhdrdir = $(prefix)/include/mpfc/libmpfcwnd
+ libmpfcwndhdr_HEADERS = wnd.h wnd_print.h wnd_msg.h wnd_kbd.h \
+ 						wnd_def_handlers.h wnd_root.h wnd_mouse.h wnd_types.h \
+Index: mpfc-1.3.7/plugins/input/audiocd/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/input/audiocd/Makefile.am
++++ mpfc-1.3.7/plugins/input/audiocd/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libaudiocd.la
++plugin_LTLIBRARIES = libaudiocd.la
+ 
+-libdir = $(prefix)/lib/mpfc/input
++plugindir = $(libdir)/mpfc/input
+ 
+ libaudiocd_la_SOURCES = audiocd.c audiocd.h cddb.c cddb.h
+ libaudiocd_la_LIBADD = @COMMON_LIBS@ @RESOLV_LIBS@
+Index: mpfc-1.3.7/plugins/input/mp3/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/input/mp3/Makefile.am
++++ mpfc-1.3.7/plugins/input/mp3/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libmp3.la
++plugin_LTLIBRARIES = libmp3.la
+ 
+-libdir = $(prefix)/lib/mpfc/input
++plugindir = $(libdir)/mpfc/input
+ 
+ libmp3_la_SOURCES = mp3.c mp3.h 
+ INCLUDES = -I$(top_builddir)/src -I$(top_builddir)/libmpfcwnd
+Index: mpfc-1.3.7/plugins/input/ogg/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/input/ogg/Makefile.am
++++ mpfc-1.3.7/plugins/input/ogg/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libogg_vorbis.la
++plugin_LTLIBRARIES = libogg_vorbis.la
+ 
+-libdir = $(prefix)/lib/mpfc/input
++plugindir = $(libdir)/mpfc/input
+ 
+ libogg_vorbis_la_SOURCES = ogg.c vcedit.c vcedit.h
+ INCLUDES = -I$(top_builddir)/src -I$(top_builddir)/libmpfcwnd
+Index: mpfc-1.3.7/plugins/input/wav/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/input/wav/Makefile.am
++++ mpfc-1.3.7/plugins/input/wav/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libwav.la
++plugin_LTLIBRARIES = libwav.la
+ 
+-libdir = $(prefix)/lib/mpfc/input
++plugindir = $(libdir)/mpfc/input
+ 
+ libwav_la_SOURCES = wav.c wav.h
+ libwav_la_LIBADD = @COMMON_LIBS@
+Index: mpfc-1.3.7/plugins/output/alsa/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/output/alsa/Makefile.am
++++ mpfc-1.3.7/plugins/output/alsa/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libalsa.la
++plugin_LTLIBRARIES = libalsa.la
+ 
+-libdir = $(prefix)/lib/mpfc/output
++plugindir = $(libdir)/mpfc/output
+ 
+ libalsa_la_SOURCES = alsa.c
+ INCLUDES = -I$(top_builddir)/src -I$(top_builddir)/libmpfcwnd
+Index: mpfc-1.3.7/plugins/output/disk_writer/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/output/disk_writer/Makefile.am
++++ mpfc-1.3.7/plugins/output/disk_writer/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = libdisk_writer.la
++plugin_LTLIBRARIES = libdisk_writer.la
+ 
+-libdir = $(prefix)/lib/mpfc/output
++plugindir = $(libdir)/mpfc/output
+ 
+ libdisk_writer_la_SOURCES = writer.c
+ libdisk_writer_la_LIBADD = @COMMON_LIBS@
+Index: mpfc-1.3.7/plugins/output/oss/Makefile.am
+===================================================================
+--- mpfc-1.3.7.orig/plugins/output/oss/Makefile.am
++++ mpfc-1.3.7/plugins/output/oss/Makefile.am
+@@ -1,6 +1,6 @@
+-lib_LTLIBRARIES = liboss.la
++plugin_LTLIBRARIES = liboss.la
+ 
+-libdir = $(prefix)/lib/mpfc/output
++plugindir = $(libdir)/mpfc/output
+ 
+ liboss_la_SOURCES = oss.c
+ liboss_la_LIBADD = @COMMON_LIBS@

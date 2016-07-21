@@ -1,0 +1,16 @@
+ itcl/tests/ensemble.test |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/itcl/tests/ensemble.test b/itcl/tests/ensemble.test
+index c21531e..c36ad5f 100644
+--- a/itcl/tests/ensemble.test
++++ b/itcl/tests/ensemble.test
+@@ -98,7 +98,7 @@ test ensemble-1.10 {part errors are handled gracefully} {
+ 
+ test ensemble-1.11 {part argument errors are handled gracefully} {
+     list [catch "itcl::ensemble test_numbers {part foo {{}} {}}" msg] $msg $errorInfo
+-} {1 {procedure "foo" has argument with no name} {procedure "foo" has argument with no name
++} {1 {argument with no name} {argument with no name
+     while executing
+ "part foo {{}} {}"
+     ("ensemble" body line 1)

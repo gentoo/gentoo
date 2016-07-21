@@ -1,0 +1,9 @@
+;;; -*- Mode: Lisp; Syntax: ANSI-Common-Lisp; indent-tabs-mode: nil -*-
+;;;
+
+(in-package :common-lisp-user)
+
+(if (probe-file "/etc/gentoo-init.lisp")
+	(load "/etc/gentoo-init.lisp")
+  (format t "~%;;; Warning: There is no /etc/gentoo-init.lisp file ~
+\(which should be provided by dev-lisp/gentoo-init"))

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		cue2toc is a free program for UNIX systems to convert CUE files to cdrdao's
+		TOC format. Features include: support for complete set of CUE commands (e.g.
+		catalog number, data and audio tracks, ISRC codes, CD-Text, Pre-/Postgaps
+		(with zero data or data from file), subindexes etc.), automatic determination
+		of session type and conversion of data files by user configurable commands
+		based on file name extension matching.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">cue2toc</remote-id>
+	</upstream>
+</pkgmetadata>

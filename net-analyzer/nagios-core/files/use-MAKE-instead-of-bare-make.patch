@@ -1,0 +1,37 @@
+From e043015081c9dc6869b282da76ae0de5ac9840a2 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 5 Nov 2014 13:46:04 -0500
+Subject: [PATCH 1/1] Use $(MAKE) instead of bare "make" in subtarget of
+ install-html.
+
+When running make as a subprocess of itself, it's best to invoke it as
+$(MAKE). The rest of Makefile.in does this correctly, but there was
+one instance where it was forgotten. For posterity, this can lead to
+warnings like,
+
+  make[1]: warning: jobserver unavailable: using -j1.
+  Add '+' to parent make rule.
+
+More info is available at,
+
+  https://www.gnu.org/software/make/manual/html_node/Error-Messages.html
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index f487c47..1341160 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -222,7 +222,7 @@ test-perl: cgis
+ 
+ install-html:
+ 	cd $(SRC_HTM) && $(MAKE) install
+-	make install-exfoliation
++	$(MAKE) install-exfoliation
+ 
+ install-base:
+ 	cd $(SRC_BASE) && $(MAKE) install
+-- 
+2.0.4
+

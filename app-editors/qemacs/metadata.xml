@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  QEmacs (for Quick Emacs) is a very small but powerful text editor. It has
+  the following features:
+   * Full screen editor with an Emacs look and feel with all Emacs common
+     features: multi-buffer, multi-window, command mode, universal argument,
+     keyboard macros, config file with C like syntax, minibuffer with
+     completion and history.
+   * Can edit files of hundreds of megabytes quickly by using a highly
+     optimized internal representation and by mmaping the file.
+   * Full UTF8 support, including bidirectional editing respecting the Unicode
+     bidi algorithm. Arabic and Indic scripts handling (in progress).
+   * WYSIWYG HTML/XML/CSS2 mode graphical editing. Also supports lynx like
+     rendering on VT100 terminals. WYSIWYG DocBook mode based on XML/CSS2
+     renderer.
+   * C mode: coloring with immediate update. Emacs like auto-indent.
+   * Shell mode: colorized VT100 emulation so that your shell work exactly as
+     you expect. You can run interactive terminal apps directly in the process
+     buffer: mc, MenuConfig, or even qemacs itself! Compile mode with
+     next/prev error.
+   * Input methods for most languages, including Chinese (input methods come
+     from the Yudit editor).
+   * Hexadecimal editing mode with insertion and block commands. Unicode hexa
+     editing of UTF8 files also supported.
+   * Works on any VT100 terminals without termcap. UTF8 VT100 support included
+     with double width glyphs.
+   * X11 support. Support multiple proportionnal fonts at the same time (as
+     XEmacs).
+   * Small! Full version is about 150KB. Smaller custom versions can be built
+     by removing modules.
+</longdescription>
+</pkgmetadata>

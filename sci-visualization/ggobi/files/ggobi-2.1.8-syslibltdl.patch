@@ -1,0 +1,26 @@
+--- ./Makefile.am.orig	2009-12-14 20:56:57.000000000 +0000
++++ ./Makefile.am	2009-12-14 20:57:24.000000000 +0000
+@@ -1,4 +1,4 @@
+-SUBDIRS = libltdl src plugins po
++SUBDIRS = src plugins po
+ 
+ EXTRA_DIST = bootstrap CPLicense.txt
+ 
+--- ./configure.ac.orig	2009-12-14 20:56:49.000000000 +0000
++++ ./configure.ac	2009-12-14 21:00:11.000000000 +0000
+@@ -144,14 +144,12 @@
+ # and to support DLLs on Windows. Also build libltdl for loading plugins.
+ AC_DISABLE_STATIC
+ AC_LIBTOOL_WIN32_DLL
+-AC_LIBLTDL_CONVENIENCE
+-AC_LIBTOOL_DLOPEN
+ AC_PROG_LIBTOOL
+ 
+ # Configure libltdl build
++AC_WITH_LTDL
+ AC_SUBST(INCLTDL)
+ AC_SUBST(LIBLTDL)
+-AC_CONFIG_SUBDIRS(libltdl)
+ 
+ # Configure for building against local libintl
+ AC_SUBST(INCINTL)

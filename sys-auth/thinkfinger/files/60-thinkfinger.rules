@@ -1,0 +1,5 @@
+# SGS Thomson Microelectronics Fingerprint Reader
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="2016", SYMLINK+="input/thinkfinger-%k", MODE="0660", GROUP="fingerprint"
+
+# the also-needed uinput device
+KERNEL=="uinput", MODE="0660", GROUP="fingerprint"

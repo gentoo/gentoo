@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Jun 2014)
+# On x86 Chromium can be built in non-PIC mode, and this
+# flag can affect performance, see http://crbug.com/332109 .
+www-client/chromium -pic

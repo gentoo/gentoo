@@ -1,0 +1,11 @@
+--- Makefile.orig	2012-03-02 16:10:33.127036949 +0400
++++ Makefile	2012-03-02 16:10:35.873002619 +0400
+@@ -169,7 +169,7 @@
+ 
+ $(EXEC) : $(DEPFILE) $(OBJ)
+ 	@rm -f $(EXEC)
+-	$(CC) $(CFLAGS) $(COPT) -o $(EXEC) $(OBJ)
++	$(CC) $(CFLAGS) $(COPT) -o $(EXEC) $(OBJ) $(LDFLAGS)
+ 	@ls -l $(EXEC)
+ ifneq (yes, $(NO_UDPXREC))
+ 	@rm -f $(UDPXREC)

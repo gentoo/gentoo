@@ -1,0 +1,60 @@
+From e1fd25a3d0c18bd941f685bbdf5aa3812403a48e Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Tue, 6 Oct 2015 09:11:38 +0200
+Subject: [PATCH] Run only pixbuf-lowmem test on GNU libc
+
+The test case depends on GNU libc specific internals so we only run it
+on GNU libc.
+
+This fixes build on Linux with musl libc.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=756078
+---
+ tests/Makefile.am     | 5 -----
+ tests/pixbuf-lowmem.c | 8 ++++++++
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 1f09711..2a0325a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -19,13 +19,8 @@ LDADD = \
+ noinst_PROGRAMS += 			\
+ 	pixbuf-read			\
+ 	pixbuf-random			\
+-	$(NULL)
+-
+-if OS_LINUX
+-noinst_PROGRAMS += 			\
+ 	pixbuf-lowmem			\
+ 	$(NULL)
+-endif
+ 
+ test_programs = 			\
+ 	animation			\
+diff --git a/tests/pixbuf-lowmem.c b/tests/pixbuf-lowmem.c
+index ae71788..9e9571f 100644
+--- a/tests/pixbuf-lowmem.c
++++ b/tests/pixbuf-lowmem.c
+@@ -24,6 +24,7 @@
+ #include <time.h>
+ #include <string.h>
+ 
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
+ #define PRETEND_MEM_SIZE (16 * 1024 * 1024)
+ #define REMAINING_MEM_SIZE 100000
+ 
+@@ -225,3 +226,10 @@ main (int argc, char **argv)
+   
+   return 0;
+ }
++#else
++int
++main (int argc, char **argv)
++{
++	return 0;
++}
++#endif
+-- 
+2.6.1
+

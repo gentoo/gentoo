@@ -1,0 +1,21 @@
+--- l7-filter-userspace-0.11/l7-filter.cpp.old	2010-07-12 10:43:58.485002456 +0100
++++ l7-filter-userspace-0.11/l7-filter.cpp	2010-07-12 11:14:38.825001868 +0100
+@@ -186,15 +186,11 @@
+   conffilename = ""; 
+   const char *opts = "f:q:vh?sb:dn:p:m:cz";
+ 
+-  int done = 0;
+-  while(!done)
++  int c;
++  while ((c = getopt (argc, argv, opts)) != -1)
+   {
+-    char c;
+-    switch(c = getopt(argc, argv, opts))
++    switch(c)
+     {
+-      case -1:
+-        done = 1;
+-        break;
+       case 'f':
+         conffilename = optarg;
+         break;

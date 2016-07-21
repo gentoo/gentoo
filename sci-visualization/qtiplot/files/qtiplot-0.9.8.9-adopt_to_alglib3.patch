@@ -1,0 +1,115 @@
+Description: adoptation to alglib3.
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2013-05-16
+
+--- a/qtiplot/src/analysis/dialogs/GriddingDialog.cpp
++++ b/qtiplot/src/analysis/dialogs/GriddingDialog.cpp
+@@ -41,7 +41,7 @@
+ #include <QComboBox>
+ #include <QLayout>
+ 
+-#include <idwint.h>
++#include <interpolation.h>
+ 
+ GriddingDialog::GriddingDialog(Table* t, const QString& colName, int nodes, QWidget* parent, Qt::WFlags fl )
+ 	: QDialog( parent, fl ),
+@@ -365,26 +365,27 @@
+ 	Matrix* m = app->newMatrix(rows, cols);
+ 	m->setCoordinates(xmin, xmax, ymin, ymax);
+ 
+-	idwinterpolant z;
++	alglib::idwinterpolant z;
++  
+ 	switch (boxMethod->currentIndex()){
+ 		case 0:
+-			idwbuildmodifiedshepardr(xy, d_nodes, 2, boxRadius->value(), z);
++			alglib::idwbuildmodifiedshepardr(xy, d_nodes, 2, boxRadius->value(), z);
+ 		break;
+ 		case 1:
+-			idwbuildmodifiedshepard(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
++			alglib::idwbuildmodifiedshepard(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
+ 		break;
+ 		case 2:
+-			idwbuildnoisy(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
++			alglib::idwbuildnoisy(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
+ 		break;
+ 	}
+ 
+-	ap::real_1d_array p;
++	alglib::real_1d_array p;
+ 	p.setlength(2);
+ 	for (int i = 0; i < rows; i++){
+ 		p(1) = ymin + i*ystep;
+ 		for (int j = 0; j < cols; j++){
+ 			p(0) = xmin + j*xstep;
+-			m->setCell(i, j, idwcalc(z, p));
++			m->setCell(i, j, alglib::idwcalc(z, p));
+ 		}
+ 	}
+ 
+@@ -435,20 +436,20 @@
+ 	double xstep = fabs(xmax - xmin)/(cols - 1);
+ 	double ystep = fabs(ymax - ymin)/(rows - 1);
+ 
+-	idwinterpolant z;
++	alglib::idwinterpolant z;
+ 	switch (boxMethod->currentIndex()){
+ 		case 0:
+-			idwbuildmodifiedshepardr(xy, d_nodes, 2, boxRadius->value(), z);
++			alglib::idwbuildmodifiedshepardr(xy, d_nodes, 2, boxRadius->value(), z);
+ 		break;
+ 		case 1:
+-			idwbuildmodifiedshepard(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
++			alglib::idwbuildmodifiedshepard(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
+ 		break;
+ 		case 2:
+-			idwbuildnoisy(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
++			alglib::idwbuildnoisy(xy, d_nodes, 2, boxModel->currentIndex() + 1, boxNQ->value(), boxNW->value(), z);
+ 		break;
+ 	}
+ 
+-	ap::real_1d_array p;
++	alglib::real_1d_array p;
+ 	p.setlength(2);
+ 
+ 	double **data_matrix = Matrix::allocateMatrixData(cols, rows);
+@@ -456,7 +457,7 @@
+ 		p(1) = ymin + i*ystep;
+ 		for (int j = 0; j < cols; j++){
+ 			p(0) = xmin + j*xstep;
+-			data_matrix[j][i] = idwcalc(z, p);
++			data_matrix[j][i] = alglib::idwcalc(z, p);
+ 		}
+ 	}
+ 
+--- a/qtiplot/src/analysis/dialogs/GriddingDialog.h
++++ b/qtiplot/src/analysis/dialogs/GriddingDialog.h
+@@ -71,7 +71,7 @@
+ 
+ 	QString d_col_name;
+ 	int d_nodes;
+-	ap::real_2d_array xy;
++	alglib::real_2d_array xy;
+ 
+ 	QPushButton* buttonFit;
+ 	QPushButton* buttonCancel;
+--- a/qtiplot/src/matrix/MatrixModel.cpp
++++ b/qtiplot/src/matrix/MatrixModel.cpp
+@@ -45,7 +45,7 @@
+ #include <stdlib.h>
+ 
+ #ifdef HAVE_ALGLIB
+-	#include <spline2d.h>
++	#include <interpolation.h>
+ #endif
+ 
+ MatrixModel::MatrixModel(int rows, int cols, QObject *parent)
+@@ -1026,7 +1026,7 @@
+ #ifdef HAVE_ALGLIB
+ 	QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+ 
+-	ap::real_2d_array oldValues, newValues;
++	alglib::real_2d_array oldValues, newValues;
+ 	oldValues.setlength(d_rows, d_cols);
+ 	newValues.setlength(rows, cols);
+ 

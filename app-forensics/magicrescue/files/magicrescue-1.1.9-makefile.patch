@@ -1,0 +1,52 @@
+--- magicrescue-1.1.9/Makefile.in.orig
++++ magicrescue-1.1.9/Makefile.in
+@@ -57,34 +57,31 @@
+ maintainer-clean: distclean docs-clean
+ 
+ install: all
+-	[ -d $(PREFIX) ]
++	mkdir -p $(DESTDIR)$(PREFIX)/share/magicrescue/tools \
++	    $(DESTDIR)$(PREFIX)/share/magicrescue/recipes \
++	    $(DESTDIR)$(PREFIX)/share/man/man1 \
++	    $(DESTDIR)$(PREFIX)/bin
+ 	
+-	mkdir -p $(PREFIX)/share/magicrescue/tools \
+-	    $(PREFIX)/share/magicrescue/recipes \
+-	    $(PREFIX)/man/man1 \
+-	    $(PREFIX)/bin
+-	
+-	cp magicrescue$(EXE) dupemap$(EXE) magicsort $(PREFIX)/bin/
+-	cp recipes/* $(PREFIX)/share/magicrescue/recipes/
+-	cp $(DOCS) $(PREFIX)/man/man1
++	cp magicrescue$(EXE) dupemap$(EXE) magicsort $(DESTDIR)$(PREFIX)/bin
++	cp recipes/* $(DESTDIR)$(PREFIX)/share/magicrescue/recipes/
++	cp $(DOCS) $(DESTDIR)$(PREFIX)/share/man/man1
+ 	
+ 	for f in tools/*; do \
+ 	  if [ -x "$$f" ]; then \
+-	    cp -f "$$f" $(PREFIX)/share/magicrescue/tools/; \
++	    cp -f "$$f" $(DESTDIR)$(PREFIX)/share/magicrescue/tools/; \
+ 	  fi; \
+ 	done
+ 
+ uninstall:
+-	[ -d $(PREFIX) ]
+-	rm -f $(PREFIX)/bin/magicrescue$(EXE)
+-	rm -f $(PREFIX)/bin/dupemap$(EXE)
+-	rm -f $(PREFIX)/bin/magicsort
++	rm -f $(DESTDIR)$(PREFIX)/bin/magicrescue$(EXE)
++	rm -f $(DESTDIR)$(PREFIX)/bin/dupemap$(EXE)
++	rm -f $(DESTDIR)$(PREFIX)/bin/magicsort
+ 	for f in $(DOCS); do \
+-	   rm -f "$(PREFIX)/man/man1/`basename $$f`"; \
++	   rm -f "$(DESTDIR)$(PREFIX)/share/man/man1/`basename $$f`"; \
+ 	done
+-	rm -rf $(PREFIX)/share/magicrescue/tools
+-	rm -rf $(PREFIX)/share/magicrescue/recipes
+-	-rmdir $(PREFIX)/share/magicrescue
++	rm -rf $(DESTDIR)$(PREFIX)/share/magicrescue/tools
++	rm -rf $(DESTDIR)$(PREFIX)/share/magicrescue/recipes
++	-rmdir $(DESTDIR)$(PREFIX)/share/magicrescue
+ 
+ .PHONY: all clean distclean docs-clean maintainer-clean install uninstall docs
+ 

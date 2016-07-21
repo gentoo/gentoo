@@ -1,0 +1,28 @@
+ pandas/tests/test_categorical.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/pandas/tests/test_categorical.py b/pandas/tests/test_categorical.py
+old mode 100755
+new mode 100644
+index e97010e..1d14323
+--- a/pandas/tests/test_categorical.py
++++ b/pandas/tests/test_categorical.py
+@@ -86,12 +86,14 @@ class TestCategorical(tm.TestCase):
+         factor = Categorical.from_array(arr, ordered=False)
+         self.assertFalse(factor.ordered)
+ 
+-        # this however will raise as cannot be sorted
+-        # but fixed in newer versions of numpy
+-        if LooseVersion(np.__version__) < "1.10":
++        if compat.PY3:
+             self.assertRaises(TypeError, lambda :  Categorical.from_array(arr, ordered=True))
+         else:
+-            Categorical.from_array(arr, ordered=True)
++            # this however will raise as cannot be sorted (on PY3 or older numpies)
++            if LooseVersion(np.__version__) < "1.10":
++                self.assertRaises(TypeError, lambda :  Categorical.from_array(arr, ordered=True))
++            else:
++                Categorical.from_array(arr, ordered=True)
+ 
+     def test_is_equal_dtype(self):
+ 

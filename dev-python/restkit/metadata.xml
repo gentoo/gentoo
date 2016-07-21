@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <use>
+    <flag name="cli">Install the restcli command line interface/tool, based on <pkg>dev-python/ipython</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">restkit</remote-id>
+    <remote-id type="github">benoitc/restkit</remote-id>
+  </upstream>
+</pkgmetadata>

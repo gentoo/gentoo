@@ -1,0 +1,20 @@
+--- build.xml.orig	2015-05-20 19:58:28.345000000 +0000
++++ build.xml	2015-05-20 19:58:44.809000000 +0000
+@@ -11,8 +11,6 @@
+         <property name="antlr3.version" value="3.5.2"/>
+         <property name="antlr3.jar.name" value="antlr-${antlr3.version}-complete-no-st3.jar"/>
+         <property name="antlr3.jar" value="${lib.dir}/${antlr3.jar.name}"/>
+-        <mkdir dir="${lib.dir}"/>
+-        <get src="http://www.antlr3.org/download/${antlr3.jar.name}" dest="${antlr3.jar}" skipexisting="true"/>
+         <path id="cp.antlr3" path="${antlr3.jar}"/>
+ 
+         <property name="build.antlr3.dir" value="${build.dir}/generated-sources/antlr3" />
+@@ -23,8 +21,6 @@
+         <property name="antlr4.version" value="4.3"/>
+         <property name="antlr4.jar.name" value="antlr-${antlr4.version}-complete.jar"/>
+         <property name="antlr4.jar" value="${lib.dir}/${antlr4.jar.name}"/>
+-        <mkdir dir="${lib.dir}"/>
+-        <get src="http://www.antlr.org/download/${antlr4.jar.name}" dest="${antlr4.jar}" skipexisting="true"/>
+         <path id="cp.antlr4" path="${antlr4.jar}"/>
+ 
+         <property name="build.antlr4.dir" value="${build.dir}/generated-sources/antlr4" />

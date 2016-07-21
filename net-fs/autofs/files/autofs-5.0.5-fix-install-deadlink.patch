@@ -1,0 +1,12 @@
+--- modules/Makefile.old	2010-06-19 20:43:45.373371321 +0200
++++ modules/Makefile	2010-06-19 20:45:26.062417092 +0200
+@@ -63,7 +63,9 @@ install: all
+ 	-rm -f $(INSTALLROOT)$(autofslibdir)/mount_smbfs.so
+ 	ln -fs lookup_file.so $(INSTALLROOT)$(autofslibdir)/lookup_files.so
+ 	ln -fs lookup_yp.so $(INSTALLROOT)$(autofslibdir)/lookup_nis.so
++ifeq ($(SASL), 1)
+ 	ln -fs lookup_ldap.so $(INSTALLROOT)$(autofslibdir)/lookup_ldaps.so
++endif
+ 	ln -fs mount_nfs.so $(INSTALLROOT)$(autofslibdir)/mount_nfs4.so
+ ifeq ($(EXT2FS), 1)
+  ifeq ($(EXT3FS), 1)

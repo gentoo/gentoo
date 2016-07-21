@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+	<longdescription>
+		Printed Circuit Board layout tool. Used together with the gEDA tools for
+		Electronic Design Automation or on its own.  
+	</longdescription>
+	<use>
+		<flag name="gif">GIF graphics export</flag>
+		<flag name="jpeg">JPEG graphics export</flag>
+		<flag name="nelma">NELMA file export</flag>
+		<flag name="png">PNG graphics export</flag>
+		<flag name="gcode">gcode file export</flag>
+		<flag name="tk">Build tcl/tk graphical QFP footprint generator</flag>
+		<flag name="xrender">Translucent PCB display for Motif/Lesstif GUI</flag>
+		<flag name="m4lib-png">Enable creating png previews for the m4 library</flag>
+		<flag name="toporouter">Build toporouter</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">pcb</remote-id>
+	</upstream>
+</pkgmetadata>

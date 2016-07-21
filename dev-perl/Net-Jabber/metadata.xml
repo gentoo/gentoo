@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Jabber</remote-id>
+    <remote-id type="cpan-module">Net::Jabber</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Client</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Component</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Data</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Debug</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Dialback</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Dialback::Result</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Dialback::Verify</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::IQ</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::JID</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Key</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Log</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Message</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Namespaces</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Presence</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Protocol</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Server</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::Stanza</remote-id>
+    <remote-id type="cpan-module">Net::Jabber::XDB</remote-id>
+  </upstream>
+</pkgmetadata>

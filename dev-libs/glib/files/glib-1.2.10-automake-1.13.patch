@@ -1,0 +1,23 @@
+Replace macros deprecated in automake-1.13; fixed upstream in glib-2.36
+
+diff --git a/configure.in b/configure.in
+index e94cc77..d88d834 100644
+--- a/configure.in
++++ b/configure.in
+@@ -60,7 +60,7 @@ PACKAGE=glib
+ AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+ 
+ # Specify a configuration file
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AC_DEFINE_UNQUOTED(GLIB_MAJOR_VERSION, $GLIB_MAJOR_VERSION)
+ AC_DEFINE_UNQUOTED(GLIB_MINOR_VERSION, $GLIB_MINOR_VERSION)
+@@ -151,7 +151,6 @@ AC_DEFINE_UNQUOTED(G_COMPILED_WITH_DEBUGGING, "${enable_debug}")
+ 
+ # Checks for programs.
+ AC_PROG_CC
+-AM_PROG_CC_STDC
+ AC_PROG_INSTALL
+ 
+ changequote(,)dnl

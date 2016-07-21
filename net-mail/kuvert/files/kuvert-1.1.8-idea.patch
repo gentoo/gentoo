@@ -1,0 +1,20 @@
+--- kuvert.orig	2004-09-03 21:29:11.871880016 +0100
++++ kuvert	2004-09-03 21:28:59.299791264 +0100
+@@ -1179,7 +1179,7 @@
+ 	    $cmd.="|$config{gpgpath} -q -t --batch --armor --detach-sign --passphrase-fd 0 --status-fd 1 --default-key";
+ 	    if ($type eq "std")
+ 	    {
+-		$cmd.=" $config{stdkey} --rfc1991 --cipher-algo idea --digest-algo md5 --compress-algo 1";
++		$cmd.=" $config{stdkey} --rfc1991 --digest-algo md5 --compress-algo 1";
+ 	    }
+ 	    else
+ 	    { 
+@@ -1296,7 +1296,7 @@
+ 	    
+     # and finally encrypt all this for the wanted recipients.
+     unlink($outfile);
+-    $cmd="$config{gpgpath} --no-literal --batch --encrypt --rfc1991 --cipher-algo idea "
++    $cmd="$config{gpgpath} --no-literal --batch --encrypt --rfc1991"
+ 	.($config{alwaystrust}?"--always-trust ":"")
+ 	."--armor -o $outfile -r "
+ 	.join(" -r ",@recips)

@@ -1,0 +1,13 @@
+[Unit]
+Description=VirtualGL service
+After=display-manager.service
+
+[Service]
+RemainAfterExit=yes
+PIDFile=/var/run/named/named.pid
+ExecStart=/usr/libexec/vgl-helper.sh start
+ExecStop=/usr/libexec/vgl-helper.sh stop
+
+[Install]
+WantedBy=multi-user.target
+

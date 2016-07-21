@@ -1,0 +1,11 @@
+--- Makefile.old        2009-02-09 16:37:58.000000000 +0100
++++ Makefile    2009-02-09 16:38:13.000000000 +0100
+@@ -49,7 +49,7 @@
+ 
+ 
+ $(TARGET): $(OBJECTS)
+-	$(CXX) $(LNFLAGS) $(OBJECTS) -o $(TARGET)
++	$(CXX) $(LDFLAGS) $(OBJECTS) -o $(TARGET) $(LNFLAGS)
+ 
+ clean:
+ 	rm -f $(OBJECTS) core* *core $(TARGET) *~

@@ -1,0 +1,59 @@
+From 7824fd5291f570de3c2c64185035d1a6a0a3445a Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 13 Aug 2012 04:42:47 -0400
+Subject: [PATCH] Replace horrible slow python libs search
+
+---
+ acinclude.m4 |   36 ++----------------------------------
+ 1 files changed, 2 insertions(+), 34 deletions(-)
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 8694a65..f5373eb 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -59,40 +59,8 @@ $1],dnl
+ [AC_MSG_RESULT(not found)
+ $2])
+ CPPFLAGS="$save_CPPFLAGS"
+-
+-	# This bit is copied from Planner. murrayc.
+-	# Check for Python library path
+-        AC_MSG_CHECKING([for Python library path])
+-
+-	# Win32 has libpython25.a instead of libpython2.5.a, so we look
+-	# for both. TODO: Only look for libpython25.a on Windows, and for
+-	# libpython2.5.a on unix.
+-	WIN32_PYTHON_VERSION=`echo $PYTHON_VERSION | sed "s,\.,,"`
+-
+-        python_path=`dirname $PYTHON | sed "s,/bin.*$,,"`
+-        for i in "$python_path/lib/python$PYTHON_VERSION/config/" "$python_path/lib/python$PYTHON_VERSION/" "$python_path/lib/python/config/" "$python_path/lib/python/" "$python_path/" ; do
+-		if test -e "$i"; then
+-	                python_path=`find $i -type f -name libpython$PYTHON_VERSION.* -print | sed "1q"`
+-        	        if test -n "$python_path" ; then
+-				python_lib="python$PYTHON_VERSION"
+-                	        break
+-	                fi
+-
+-			# Additionally test WIN32_PYTHON_VERSION
+-	                python_path=`find $i -type f -name libpython$WIN32_PYTHON_VERSION.* -print | sed "1q"`
+-        	        if test -n "$python_path" ; then
+-				python_lib="python$WIN32_PYTHON_VERSION"
+-                	        break
+-	                fi
+-		fi
+-        done
+-
+-        python_path=`echo $python_path | sed "s,/libpython.*$,,"`
+-        AC_MSG_RESULT([$python_path])
+-        if test -z "$python_path" ; then
+-                AC_MSG_ERROR([cannot find Python library path])
+-        fi
+-        AC_SUBST([PYTHON_LDFLAGS],["-L$python_path -l$python_lib"])
++PYTHON_LDFLAGS=`$PYTHON -c "import distutils.sysconfig; print('-L%s -lpython${PYTHON_VERSION}' % distutils.sysconfig.get_config_var('LIBDIR'))"`
++AC_SUBST([PYTHON_LDFLAGS],["$PYTHON_LDFLAGS"])
+ ])
+ 
+ dnl
+-- 
+1.7.8.6
+

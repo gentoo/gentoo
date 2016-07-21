@@ -1,0 +1,13 @@
+--- libircclient-1.6/configure.in
++++ libircclient-1.6.new/configure.in
+@@ -61,9 +61,7 @@ AC_CHECK_FUNCS([localtime_r socket])
+ AC_CHECK_LIB(socket, socket, AC_DEFINE(HAVE_SOCKET) LIBS="$LIBS -lsocket")
+ 
+ if test "$use_debug" = "yes"; then
+-	CFLAGS="${CFLAGS} -g -DENABLE_DEBUG"
+-else
+-	CFLAGS="${CFLAGS} -O3"
++	CFLAGS="${CFLAGS} -DENABLE_DEBUG"
+ fi
+ 
+ # Choosing the target

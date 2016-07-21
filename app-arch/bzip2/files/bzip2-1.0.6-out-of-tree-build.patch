@@ -1,0 +1,79 @@
+--- a/Makefile
++++ b/Makefile
+@@ -53,7 +53,6 @@ libbz2.a: $(OBJS)
+ 
+ check: test
+ test: bzip2
+-	@cat words1
+ 	./bzip2 -1  < sample1.ref > sample1.rb2
+ 	./bzip2 -2  < sample2.ref > sample2.rb2
+ 	./bzip2 -3  < sample3.ref > sample3.rb2
+@@ -66,7 +65,6 @@ test: bzip2
+ 	cmp sample1.tst sample1.ref
+ 	cmp sample2.tst sample2.ref
+ 	cmp sample3.tst sample3.ref
+-	@cat words3
+ 
+ install: bzip2 bzip2recover
+ 	if ( test ! -d $(PREFIX)/bin ) ; then mkdir -p $(PREFIX)/bin ; fi
+@@ -115,25 +113,8 @@ clean:
+ 	sample1.rb2 sample2.rb2 sample3.rb2 \
+ 	sample1.tst sample2.tst sample3.tst
+ 
+-blocksort.o: blocksort.c
+-	@cat words0
+-	$(CC) $(CFLAGS) -c blocksort.c
+-huffman.o: huffman.c
+-	$(CC) $(CFLAGS) -c huffman.c
+-crctable.o: crctable.c
+-	$(CC) $(CFLAGS) -c crctable.c
+-randtable.o: randtable.c
+-	$(CC) $(CFLAGS) -c randtable.c
+-compress.o: compress.c
+-	$(CC) $(CFLAGS) -c compress.c
+-decompress.o: decompress.c
+-	$(CC) $(CFLAGS) -c decompress.c
+-bzlib.o: bzlib.c
+-	$(CC) $(CFLAGS) -c bzlib.c
+-bzip2.o: bzip2.c
+-	$(CC) $(CFLAGS) -c bzip2.c
+-bzip2recover.o: bzip2recover.c
+-	$(CC) $(CFLAGS) -c bzip2recover.c
++%.o: %.c
++	$(CC) $(CFLAGS) -c $<
+ 
+ 
+ distclean: clean
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
+@@ -36,9 +36,7 @@ OBJS= blocksort.o  \
+ 
+ all: $(OBJS)
+ 	$(CC) $(LDFLAGS) -shared -Wl,-soname -Wl,libbz2.so.1 -o libbz2.so.1.0.6 $(OBJS)
+-	$(CC) $(LDFLAGS) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.6
+-	rm -f libbz2.so.1.0
+-	ln -s libbz2.so.1.0.6 libbz2.so.1.0
++	ln -sf libbz2.so.1.0.6 libbz2.so.1.0
+ 
+ clean: 
+ 	rm -f $(OBJS) bzip2.o libbz2.so.1.0.6 libbz2.so.1.0 bzip2-shared
+@@ -43,17 +43,5 @@ all: $(OBJS)
+ clean: 
+ 	rm -f $(OBJS) bzip2.o libbz2.so.1.0.6 libbz2.so.1.0 bzip2-shared
+ 
+-blocksort.o: blocksort.c
+-	$(CC) $(CFLAGS) -c blocksort.c
+-huffman.o: huffman.c
+-	$(CC) $(CFLAGS) -c huffman.c
+-crctable.o: crctable.c
+-	$(CC) $(CFLAGS) -c crctable.c
+-randtable.o: randtable.c
+-	$(CC) $(CFLAGS) -c randtable.c
+-compress.o: compress.c
+-	$(CC) $(CFLAGS) -c compress.c
+-decompress.o: decompress.c
+-	$(CC) $(CFLAGS) -c decompress.c
+-bzlib.o: bzlib.c
+-	$(CC) $(CFLAGS) -c bzlib.c
++%.o: %.c
++	$(CC) $(CFLAGS) -c $<

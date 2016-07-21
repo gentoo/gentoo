@@ -1,0 +1,37 @@
+diff --git a/tests/unit/modules/grains_test.py b/tests/unit/modules/grains_test.py
+index 3473c03..ea37d66 100644
+--- a/tests/unit/modules/grains_test.py
++++ b/tests/unit/modules/grains_test.py
+@@ -1,6 +1,8 @@
+ # -*- coding: utf-8 -*-
+ 
+ import copy
++import os.path
++import tempfile
+ 
+ # Import Salt Testing libs
+ from salttesting import TestCase, skipIf
+@@ -20,8 +22,8 @@ from salt.modules import grains as grainsmod
+ from salt.utils import dictupdate
+ 
+ grainsmod.__opts__ = {
+-  'conf_file': '/tmp/__salt_test_grains',
+-  'cachedir':  '/tmp/__salt_test_grains_cache_dir'
++  'conf_file': os.path.join(tempfile.gettempdir(), '__salt_test_grains'),
++  'cachedir':  os.path.join(tempfile.gettempdir(), '__salt_test_grains_cache_dir')
+ }
+ 
+ grainsmod.__salt__ = {}
+diff --git a/tests/unit/states/archive_test.py b/tests/unit/states/archive_test.py
+index 3cfb2f0..b3f3bee 100644
+--- a/tests/unit/states/archive_test.py
++++ b/tests/unit/states/archive_test.py
+@@ -69,7 +69,7 @@ class ArchiveTest(TestCase):
+                                                    'cmd.run_all': mock_run}):
+                     filename = os.path.join(
+                         tmp_dir,
+-                        'files/test/_tmp_test_archive_.tar'
++                        'files/test/' + tempfile.gettempdir().replace('/', '_') + '_test_archive_.tar'
+                     )
+                     for test_opts, ret_opts in zip(test_tar_opts, ret_tar_opts):
+                         ret = archive.extracted(tmp_dir,

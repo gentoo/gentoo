@@ -1,0 +1,15 @@
+# adjust paths for proper linking to fftw libs
+
+--- NAMD_2.6b1_Source/arch/Linux-i686.fftw	2004-02-20 22:38:36.000000000 +0000
++++ NAMD_2.6b1_Source_patched/arch/Linux-i686.fftw	2005-08-22 18:50:38.000000000 +0000
+@@ -1,7 +1,7 @@
+ 
+-FFTDIR=/Projects/namd2/fftw/linux
+-FFTINCL=-I$(FFTDIR)/include -I$(HOME)/fftw/include
+-FFTLIB=-L$(FFTDIR)/lib -L$(HOME)/fftw/lib -lsrfftw -lsfftw
++#FFTDIR=/Projects/namd2/fftw/linux
++FFTINCL=-I/usr/include 
++FFTLIB=-L/usr/lib -lsrfftw -lsfftw
+ FFTFLAGS=-DNAMD_FFTW
+ FFT=$(FFTINCL) $(FFTFLAGS)
+ 

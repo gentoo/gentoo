@@ -1,0 +1,52 @@
+commit 3bc7fbff50bfcb065fb89d020c1b3fb8de049b19
+Author: Sergei Trofimovich <st@anti-virus.by>
+Date:   Mon Apr 19 13:16:56 2010 +0300
+
+    OTHER: fix build failure on windres aware binutils (linux host, native build)
+    
+    Trying to use windres under linux (native build) is worthless:
+    
+    [ 26/269] winrc: pixmaps/xmms2.rc -> _build_/default/pixmaps/xmms2.rc.o
+    /usr/bin/windres: can't get BFD_RELOC_RVA relocation type: No error
+    Waf: Leaving directory `/var/tmp/paludis/media-sound-xmms2-9999-r3/work/xmms2-devel/_build_'
+    Build failed
+     -> task failed (err #1):
+            {task: winrc xmms2.rc -> xmms2.rc.o}
+    
+    Signed-off-by: Sergei Trofimovich <st@anti-virus.by>
+
+diff --git a/wscript b/wscript
+index 2a29016..1d73813 100644
+--- a/wscript
++++ b/wscript
+@@ -265,12 +265,6 @@ def configure(conf):
+     conf.check_tool('gcc')
+     conf.check_tool('g++')
+ 
+-    try:
+-        conf.check_tool('winres')
+-        conf.env['WINRCFLAGS'] = '-I' + os.path.abspath('pixmaps')
+-        conf.env['xmms_icon'] = True
+-    except Configure.ConfigurationError:
+-        conf.env['xmms_icon'] = False
+ 
+     if Options.options.target_platform:
+         Options.platform = Options.options.target_platform
+@@ -412,6 +406,17 @@ def configure(conf):
+     else:
+         conf.env['socket_impl'] = 'posix'
+ 
++    # platform does not support icons ...
++    conf.env['xmms_icon'] = False
++    # ... unless we target on windows
++    if Options.platform == 'win32':
++        try:
++            conf.check_tool('winres')
++            conf.env['WINRCFLAGS'] = '-I' + os.path.abspath('pixmaps')
++            conf.env['xmms_icon'] = True
++        except Configure.ConfigurationError:
++            pass
++
+     # Glib is required by everyone, so check for it here and let them
+     # assume its presence.
+     conf.check_cfg(package='glib-2.0', atleast_version='2.8.0', uselib_store='glib2', args='--cflags --libs', mandatory=1)

@@ -1,0 +1,38 @@
+diff --git a/src/Makefile b/src/Makefile
+index abed8af..26061fa 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,9 +6,9 @@
+ #### CFLAGS	Flags to pass to C compiler.
+ 
+ INCDIR		= .
+-CC		= cc
++CC		?= gcc
+ 
+-CFLAGS		= -O
++CFLAGS		?= -O2
+ LIBS		= -lm
+ 
+ all:		psipred psipass2 chkparse seq2mtx pfilt
+@@ -20,16 +20,16 @@ clean:
+ 		/bin/rm -f psipred psipass2 chkparse seq2mtx pfilt
+ 
+ psipred:	sspred_avpred.c ssdefs.h sspred_net.h
+-		$(CC) $(CFLAGS) sspred_avpred.c $(LIBS) -o psipred
++		$(CC) $(CFLAGS) $(LDFLAGS) sspred_avpred.c $(LIBS) -o psipred
+ 
+ psipass2:	sspred_hmulti.c ssdefs.h sspred_net2.h
+-		$(CC) $(CFLAGS) sspred_hmulti.c $(LIBS) -o psipass2
++		$(CC) $(CFLAGS) $(LDFLAGS) sspred_hmulti.c $(LIBS) -o psipass2
+ 
+ chkparse:	chkparse.c
+-		$(CC) $(CFLAGS) chkparse.c $(LIBS) -o chkparse
++		$(CC) $(CFLAGS) $(LDFLAGS) chkparse.c $(LIBS) -o chkparse
+ 
+ seq2mtx:	seq2mtx.c
+-		$(CC) $(CFLAGS) seq2mtx.c $(LIBS) -o seq2mtx
++		$(CC) $(CFLAGS) $(LDFLAGS) seq2mtx.c $(LIBS) -o seq2mtx
+ 
+ pfilt:		pfilt.c
+-		$(CC) $(CFLAGS) pfilt.c $(LIBS) -o pfilt
++		$(CC) $(CFLAGS) $(LDFLAGS) pfilt.c $(LIBS) -o pfilt

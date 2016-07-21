@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
+# Masking due to unsolved dependencies
+app-admin/puppet rrdtool

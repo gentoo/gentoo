@@ -1,0 +1,18 @@
+diff -ur a/docs/manual/Makefile.am b/docs/manual/Makefile.am
+--- a/docs/manual/Makefile.am	2013-09-02 05:46:56.000000000 +0200
++++ b/docs/manual/Makefile.am	2015-03-05 11:22:03.645828113 +0100
+@@ -1,4 +1,4 @@
+-docdir = ${datadir}/docs/udis86/manual
++docdir = @docdir@/manual
+ 
+ rst_sources = \
+ 	index.rst \
+diff -ur a/docs/x86/Makefile.am b/docs/x86/Makefile.am
+--- a/docs/x86/Makefile.am	2013-06-29 21:58:38.000000000 +0200
++++ b/docs/x86/Makefile.am	2015-03-05 11:22:30.477826105 +0100
+@@ -1,4 +1,4 @@
+-docdir = ${datadir}/docs/udis86/x86
++docdir = @docdir@/x86
+ dist_doc_DATA = optable.xml optable.xsl
+ 
+ MAINTAINERCLEANFILES = Makefile.in

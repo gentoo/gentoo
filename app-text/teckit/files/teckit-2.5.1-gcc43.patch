@@ -1,0 +1,12 @@
+Index: TECkit_2_5_1/source/Compiler.cpp
+===================================================================
+--- TECkit_2_5_1.orig/source/Compiler.cpp
++++ TECkit_2_5_1/source/Compiler.cpp
+@@ -29,6 +29,7 @@ Description:
+ 
+ #include "Compiler.h"
+ 
++#include <cstdio>
+ #include <iostream>
+ #include <iomanip>
+ #include <algorithm>

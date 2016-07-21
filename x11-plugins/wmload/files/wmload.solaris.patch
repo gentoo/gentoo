@@ -1,0 +1,141 @@
+* original: http://www.rampant.org/~dp/software/wmload.solaris.patch
+
+--- wmload.c
++++ wmload.c
+@@ -6,6 +6,11 @@
+ #include <math.h>
+ #include <fcntl.h>
+ #include <X11/Xatom.h>
++#ifdef sun
++#include <sys/types.h>
++#include <sys/sysinfo.h>
++#include <kstat.h>
++#endif
+ 
+ #include "back.xpm"
+ #include "mask2.xbm"
+@@ -214,7 +219,7 @@
+   NormalGC = XCreateGC(dpy, Root, gcm, &gcv);  
+ 
+   if (ONLYSHAPE) { /* try to make shaped window here */
+-    pixmask = XCreateBitmapFromData(dpy, win, mask2_bits, mask2_width, 
++    pixmask = XCreateBitmapFromData(dpy, win, (char *)mask2_bits, mask2_width, 
+ 				    mask2_height);
+     XShapeCombineMask(dpy, win, ShapeBounding, 0, 0, pixmask, ShapeSet);
+     XShapeCombineMask(dpy, iconwin, ShapeBounding, 0, 0, pixmask, ShapeSet);
+@@ -410,6 +415,107 @@
+     return (char *)p;
+ }
+ 
++#ifdef sun
++
++static kstat_ctl_t *kc;
++static kstat_t **cpu_ksp_list;
++static int ncpus;
++
++void
++cpu_stats_init()
++{
++	int i = 0;
++	kstat_t *ksp;
++	static int kstats_ready = 0;
++
++	if (!kstats_ready) {
++		if ((kc = kstat_open()) == NULL) {
++		      fprintf(stderr,"wmload: can't open /dev/kstat\n");
++		      exit (1);
++		}
++		kstats_ready = 1;
++	}
++
++	for (ksp = kc->kc_chain; ksp; ksp = ksp->ks_next) {
++                if (strcmp(ksp->ks_module, "cpu_stat") == 0)
++			i++;
++	}
++
++	if (cpu_ksp_list) {
++		free(cpu_ksp_list);
++	}
++	cpu_ksp_list = (kstat_t **) calloc(i * sizeof (kstat_t *), 1); 
++	ncpus = i;
++
++	/*
++	 * stash the ksp for each CPU.
++	 */
++	i = 0;
++	for (ksp = kc->kc_chain; ksp; ksp = ksp->ks_next) {
++                if (strcmp(ksp->ks_module, "cpu_stat") == 0) {
++			cpu_ksp_list[i] = ksp;
++			i++;
++		}
++	}
++}
++
++int
++get_cpu_stats()
++{
++	int i;
++	cpu_stat_t stat;
++	static int firsttime = 1;
++
++	if (firsttime) {
++		firsttime = 0;
++		return (1);	/* force code to go initialize kstat stuff */
++	}
++
++	/*
++	 * Read each cpu's data.  If the chain has changed (a state change
++	 * has happened, maybe a new cpu was added to the system), then
++	 * return 1.  This will cause the code to reinitialize the cpu_ksp_list
++	 * array.  word.
++	 */
++	cp_time[0] = cp_time[1] = cp_time[2] = cp_time[3] = 0;
++	for (i = 0; i < ncpus; i++) {
++		if (kstat_read(kc, cpu_ksp_list[i], (void *) &stat) == -1)
++			return (1);
++		cp_time[0] += stat.cpu_sysinfo.cpu[CPU_USER]; /* user */
++		cp_time[1] += stat.cpu_sysinfo.cpu[CPU_WAIT]; /* "nice" */
++		cp_time[2] += stat.cpu_sysinfo.cpu[CPU_KERNEL]; /* sys */
++		cp_time[3] += stat.cpu_sysinfo.cpu[CPU_IDLE]; /* idle ("free")*/
++	}
++	return (0);
++}
++
++void GetLoad(int Maximum, int *usr, int *nice, int *sys, int *free)
++{
++  int total;
++
++  while (get_cpu_stats() != 0) {
++	  cpu_stats_init();
++  }
++
++  *usr  = cp_time[0] - last[0];
++  *nice = cp_time[1] - last[1];
++  *sys  = cp_time[2] - last[2];
++  *free = cp_time[3] - last[3];
++
++  /* printf("[%d %d %d %d]\n", *usr, *nice, *sys, *free); */
++
++  total = *usr + *nice + *sys + *free;
++  last[0] = cp_time[0];
++  last[1] = cp_time[1];
++  last[2] = cp_time[2];
++  last[3] = cp_time[3];
++
++  *usr = rint(Maximum * (float)(*usr)   /total);
++  *nice =rint(Maximum * (float)(*nice)  /total);
++  *sys = rint(Maximum * (float)(*sys)   /total);
++  *free = rint(Maximum * (float)(*free) /total);
++}
++#else /* sun */
+ void GetLoad(int Maximum, int *usr, int *nice, int *sys, int *free)
+ { 
+   char buffer[100];/*[4096+1];*/
+@@ -445,6 +551,7 @@
+   *sys = rint(Maximum * (float)(*sys)   /total);
+   *free = rint(Maximum * (float)(*free) /total);
+ }
++#endif
+ 
+ void InsertLoad()
+ {

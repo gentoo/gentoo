@@ -1,0 +1,29 @@
+From 97814f566aeb84f60031008c3dda5457ba176fe7 Mon Sep 17 00:00:00 2001
+From: Kai Krakow <kai@kaishome.de>
+Date: Mon, 28 Jul 2008 20:57:06 +0200
+Subject: [PATCH] Create short overlapping io bursts
+
+Modify the wait_for_children() mechanism to create short
+burst instead of constant flow of new io requests. This
+is more fair and should enable the kernel to rearrange
+io requests better.
+---
+ src/readahead.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/readahead.c b/src/readahead.c
+index 7617449..466961d 100644
+--- a/src/readahead.c
++++ b/src/readahead.c
+@@ -121,7 +121,7 @@ process_file(const char *path, size_t offset, size_t length)
+   int maxprocs = conf->system.maxprocs;
+ 
+   if (procs >= maxprocs)
+-    wait_for_children (maxprocs);
++    wait_for_children (maxprocs >> 1);
+ 
+   if (maxprocs > 0)
+     {
+-- 
+1.5.4.5
+

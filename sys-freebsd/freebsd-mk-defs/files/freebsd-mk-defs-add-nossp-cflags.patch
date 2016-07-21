@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/show_bug.cgi?id=511698
+
+diff --git a/share/mk/bsd.sys.mk b/share/mk/bsd.sys.mk
+index e438633..de4a05b 100644
+--- a/share/mk/bsd.sys.mk
++++ b/share/mk/bsd.sys.mk
+@@ -111,12 +111,18 @@ CLANG_OPT_SMALL= -mstack-alignment=8 -mllvm -inline-threshold=3\
+ CFLAGS+=	 -Qunused-arguments
+ .endif # CLANG
+ 
+-.if ${MK_SSP} != "no" && ${MACHINE_CPUARCH} != "ia64" && \
+-    ${MACHINE_CPUARCH} != "arm" && ${MACHINE_CPUARCH} != "mips"
++.if ${MACHINE_CPUARCH} != "ia64" && ${MACHINE_CPUARCH} != "arm" \
++    && ${MACHINE_CPUARCH} != "mips"
++.if ${MK_SSP} != "no"
+ # Don't use -Wstack-protector as it breaks world with -Werror.
+ SSP_CFLAGS?=	-fstack-protector
++.else
++# gcc-4.9, -fstack-protector-strong is enabled by default.
++# Add -fno-stack-protector to disable it. Gentoo Bug #511698.
++SSP_CFLAGS=	-fno-stack-protector
++.endif #SSP
+ CFLAGS+=	${SSP_CFLAGS}
+-.endif # SSP && !IA64 && !ARM && !MIPS
++.endif # !IA64 && !ARM && !MIPS
+ 
+ # Allow user-specified additional warning flags
+ CFLAGS+=	${CWARNFLAGS}

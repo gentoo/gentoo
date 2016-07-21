@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<use>
+		<flag name="ancient">Install ancient semitic scripts</flag>
+		<flag name="fancy">Install fancy fonts</flag>
+		<flag name="fontforge">Use <pkg>media-gfx/fontforge</pkg> to build fonts from source</flag>
+		<flag name="taamey">Install taamey fonts</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">culmus</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,54 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Michael Palimaka <kensington@gentoo.org> (25 May 2016)
+# Dependencies not stable
+app-arch/p7zip kde
+app-i18n/uim kde
+app-text/kchmviewer kde
+dev-vcs/subversion kde
+games-arcade/jumpnbump kde
+media-video/vlc kde
+net-irc/quassel kde
+net-libs/libproxy kde
+net-voip/ekiga kde
+sys-auth/polkit kde
+www-plugins/gnash kde
+x11-themes/qtcurve kde
+x11-misc/xscreensaver new-login
+
+# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
+# Missing stable
+dev-libs/protobuf python
+
+# Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
+# webkit-gtk is going to stay in ~all but amd64/x86
+# that are the only arches upstream is taking care
+>=x11-libs/wxGTK-3.0.2.0-r1 webkit
+
+# Justin Lecher <jlec@gentoo.org> (21 Feb 2015)
+# Needs stable GNOME-3
+net-fs/netatalk tracker
+app-office/homebank ofx
+net-libs/aqbanking ofx
+
+# Michael Palimaka <kensington@gentoo.org> (11 Dec 2014)
+# Dependencies not yet stable
+kde-base/systemsettings kscreen

@@ -1,0 +1,139 @@
+diff -Naur graphtft-30.orig/dfbrenderer/dfbrenderer.c graphtft-30/dfbrenderer/dfbrenderer.c
+--- graphtft-30.orig/dfbrenderer/dfbrenderer.c	2012-03-12 03:27:38.000000000 +0100
++++ graphtft-30/dfbrenderer/dfbrenderer.c	2012-03-12 03:29:35.000000000 +0100
+@@ -257,7 +257,7 @@
+       {
+          // make path relative to the themes directory
+ 
+-         asprintf(&path, "%s/graphTFT/themes/%s/%s", 
++         asprintf(&path, "%s/themes/%s/%s", 
+                   confPath.c_str(), themePath.c_str(), p.c_str());
+       }
+       else
+@@ -281,7 +281,7 @@
+    
+    // at least add the default path
+ 
+-   asprintf(&path, "%s/graphTFT/fonts/", confPath.c_str());
++   asprintf(&path, "%s/fonts/", confPath.c_str());
+    tell(0, "Info: Adding font path '%s'", path);
+    fontPaths[count] = path;
+    free(path);
+@@ -483,7 +483,7 @@
+    else
+    {
+       const char* tmp = themePath.c_str();
+-      asprintf(&fpath, "%s/graphTFT/themes/%s/%s", confPath.c_str(), tmp, fname);
++      asprintf(&fpath, "%s/themes/%s/%s", confPath.c_str(), tmp, fname);
+    }
+ 
+    tell(4,"creating imageprovider for %s", fpath);
+@@ -561,7 +561,7 @@
+    else
+    {
+       const char* tmp = themePath.c_str();
+-      asprintf(&fpath, "%s/graphTFT/themes/%s/%s", confPath.c_str(), tmp, fname);
++      asprintf(&fpath, "%s/themes/%s/%s", confPath.c_str(), tmp, fname);
+    }
+ 
+    tell(4,"creating imageprovider for %s", fpath);
+diff -Naur graphtft-30.orig/dspitems.c graphtft-30/dspitems.c
+--- graphtft-30.orig/dspitems.c	2012-03-12 03:27:38.000000000 +0100
++++ graphtft-30/dspitems.c	2012-03-12 03:30:16.000000000 +0100
+@@ -107,7 +107,7 @@
+       if (p[0] != '/')
+       {
+          p = string(GraphTFTSetup.PluginConfPath) 
+-            + "/graphTFT/themes/" 
++            + "/themes/" 
+             + string(Thms::theTheme->getDir()) 
+             + "/" + p;
+       }
+diff -Naur graphtft-30.orig/graphtft.c graphtft-30/graphtft.c
+--- graphtft-30.orig/graphtft.c	2012-03-12 03:27:38.000000000 +0100
++++ graphtft-30/graphtft.c	2012-03-12 03:32:48.000000000 +0100
+@@ -22,6 +22,8 @@
+ #include <graphtft.h>
+ #include <span.h>
+ 
++#define DATA_DIR "/usr/share/vdr/graphTFT"
++
+ //***************************************************************************
+ // cGraphTFTMenu
+ //***************************************************************************
+@@ -300,13 +302,13 @@
+ 
+    // try to get the config dir
+ 
+-   if (!ConfigDirectory())
+-      return false;
++//   if (!ConfigDirectory())
++//      return false;
+ 
+    // init 
+ 
+    GraphTFTSetup.setClient(this);
+-   GraphTFTSetup.PluginConfPath = strdup(ConfigDirectory());
++   GraphTFTSetup.PluginConfPath = strdup(DATA_DIR);
+ 
+ #if APIVERSNUM < 10507
+    RegisterI18n(Phrases);
+@@ -322,7 +324,7 @@
+    if (loadThemes() != 0)
+       return false;
+ 
+-   if (display->Init(_dev, ConfigDirectory(), port) != success)
++   if (display->Init(_dev, DATA_DIR, port) != success)
+    {
+       tell(0, "Error: Initializing graphTFT device faild, aborting!");
+ 
+@@ -355,8 +357,8 @@
+ 
+    // look for the themes in the config directory
+ 
+-   asprintf(&buffer, "find %s/graphTFT/themes -follow -type f -name '*.theme' | sort", 
+-            ConfigDirectory());
++   asprintf(&buffer, "find %s/themes -follow -type f -name '*.theme' | sort", 
++            DATA_DIR);
+ 
+    p = popen(buffer, "r");
+ 
+diff -Naur graphtft-30.orig/imlibrenderer/imlibrenderer.c graphtft-30/imlibrenderer/imlibrenderer.c
+--- graphtft-30.orig/imlibrenderer/imlibrenderer.c	2012-03-12 03:27:38.000000000 +0100
++++ graphtft-30/imlibrenderer/imlibrenderer.c	2012-03-12 03:33:54.000000000 +0100
+@@ -123,7 +123,7 @@
+       {
+          // make path relative to the themes directory
+ 
+-         asprintf(&path, "%s/graphTFT/themes/%s/%s", 
++         asprintf(&path, "%s/themes/%s/%s", 
+                   confPath.c_str(), themePath.c_str(), p.c_str());
+       }
+       else
+@@ -146,7 +146,7 @@
+    
+    // at least add the default path
+ 
+-   asprintf(&path, "%s/graphTFT/fonts/", confPath.c_str());
++   asprintf(&path, "%s/fonts/", confPath.c_str());
+    tell(0, "Info: Adding font path '%s'", path);
+    imlib_add_path_to_font_path(path);
+    free(path);
+@@ -217,7 +217,7 @@
+    if (fname[0] == '/')
+       path << fname;
+    else
+-      path << confPath << "/graphTFT/themes/" << themePath << "/" << fname; 
++      path << confPath << "/themes/" << themePath << "/" << fname; 
+ 
+    if (!fileExists(path.str().c_str()))
+    { 
+@@ -291,7 +291,7 @@
+    if (fname[0] == '/')
+       path << fname;
+    else
+-      path << confPath << "/graphTFT/themes/" << themePath << "/" << fname; 
++      path << confPath << "/themes/" << themePath << "/" << fname; 
+ 
+    if (!fileExists(path.str().c_str()))
+    { 

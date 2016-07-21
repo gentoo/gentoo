@@ -1,0 +1,38 @@
+Fix several insecure calls to sscanf(), bug 278186. Patch by a3li@gentoo.org.
+
+diff -ru a/htmldoc/htmllib.cxx b/htmldoc/htmllib.cxx
+--- a/htmldoc/htmllib.cxx	2006-06-07 19:43:52.000000000 +0200
++++ b/htmldoc/htmllib.cxx	2009-08-01 19:52:46.301099436 +0200
+@@ -2139,7 +2139,7 @@
+ 	  * assigned charset...
+ 	  */
+ 
+-          if (sscanf(line, "%*s%*s%*s%*s%f%*s%*s%s", &width, glyph) != 2)
++          if (sscanf(line, "%*s%*s%*s%*s%f%*s%*s%63s", &width, glyph) != 2)
+ 	    continue;
+ 
+           for (ch = 0; ch < 256; ch ++)
+diff -ru a/htmldoc/ps-pdf.cxx b/htmldoc/ps-pdf.cxx
+--- a/htmldoc/ps-pdf.cxx	2006-08-01 18:58:50.000000000 +0200
++++ b/htmldoc/ps-pdf.cxx	2009-08-01 19:53:14.300610480 +0200
+@@ -12512,7 +12512,7 @@
+ 	  * assigned charset...
+ 	  */
+ 
+-	  if (sscanf(line, "%*s%*s%*s%*s%d%*s%*s%s", &width, glyph) != 2)
++	  if (sscanf(line, "%*s%*s%*s%*s%d%*s%*s%63s", &width, glyph) != 2)
+ 	    continue;
+ 
+ 	  for (ch = 0; ch < 256; ch ++)
+diff -ru a/htmldoc/util.cxx b/htmldoc/util.cxx
+--- a/htmldoc/util.cxx	2005-04-24 21:20:32.000000000 +0200
++++ b/htmldoc/util.cxx	2009-08-01 19:52:14.469652088 +0200
+@@ -484,7 +484,7 @@
+     PageWidth  = 595;
+     PageLength = 792;
+   }
+-  else if (sscanf(size, "%fx%f%s", &width, &length, units) >= 2)
++  else if (sscanf(size, "%fx%f%254s", &width, &length, units) >= 2)
+   {
+    /*
+     * Custom size...

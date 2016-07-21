@@ -1,0 +1,129 @@
+commit 4d4d07704ee78221607a18b8118294b0aea1bac4
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Tue Sep 2 00:06:56 2014 +0300
+
+    systools: fix gcc version detecton on non-english locale
+    
+    Summary:
+    ghc runs 'gcc -v' to check if we run under vanilla gcc
+    or disaguised clang by checking for string
+    
+        "gcc version <something>"
+    
+    But this check does not always work as gcc has that string
+    localized via gettext mechanism:
+    
+        (some gcc's locale strings)
+        be.po-msgstr "версія gcc %s\n"
+        da.po-msgstr "GCC version %s\n"
+        de.po-msgstr "gcc-Version %s %s\n"
+        el.po-msgstr "έκδοση gcc %s\n"
+        ...
+    
+    To ping gcc to English locale we now override environment
+    variable with 'LANGUAGE=en' value.
+    
+    Fixes Issue #8825
+    
+    Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+    
+    Test Plan: validate
+    
+    Reviewers: austin
+    
+    Reviewed By: austin
+    
+    Subscribers: simonmar, ezyang, carter
+    
+    Differential Revision: https://phabricator.haskell.org/D185
+    
+    GHC Trac Issues: #8825
+
+diff --git a/compiler/main/SysTools.lhs b/compiler/main/SysTools.lhs
+index 72fa19b..67926f5 100644
+--- a/compiler/main/SysTools.lhs
++++ b/compiler/main/SysTools.lhs
+@@ -492,6 +492,51 @@ readCreateProcess proc = do
+ 
+     return (ex, output)
+ 
++readProcessEnvWithExitCode
++    :: String -- ^ program path
++    -> [String] -- ^ program args
++    -> [(String, String)] -- ^ environment to override
++    -> IO (ExitCode, String, String) -- ^ (exit_code, stdout, stderr)
++readProcessEnvWithExitCode prog args env_update = do
++    current_env <- getEnvironment
++    let new_env = env_update ++ [ (k, v)
++                                | let overriden_keys = map fst env_update
++                                , (k, v) <- current_env
++                                , k `notElem` overriden_keys
++                                ]
++        p       = proc prog args
++
++    (_stdin, Just stdoh, Just stdeh, pid) <-
++        createProcess p{ std_out = CreatePipe
++                       , std_err = CreatePipe
++                       , env     = Just new_env
++                       }
++
++    outMVar <- newEmptyMVar
++    errMVar <- newEmptyMVar
++
++    _ <- forkIO $ do
++        stdo <- hGetContents stdoh
++        _ <- evaluate (length stdo)
++        putMVar outMVar stdo
++
++    _ <- forkIO $ do
++        stde <- hGetContents stdeh
++        _ <- evaluate (length stde)
++        putMVar errMVar stde
++
++    out <- takeMVar outMVar
++    hClose stdoh
++    err <- takeMVar errMVar
++    hClose stdeh
++
++    ex <- waitForProcess pid
++
++    return (ex, out, err)
++
++-- Don't let gcc localize version info string, #8825
++en_locale_env :: [(String, String)]
++en_locale_env = [("LANGUAGE", "en")]
+ 
+ -- If the -B<dir> option is set, add <dir> to PATH.  This works around
+ -- a bug in gcc on Windows Vista where it can't find its auxiliary
+@@ -746,8 +791,9 @@ getLinkerInfo' dflags = do
+                _ -> do
+                  -- In practice, we use the compiler as the linker here. Pass
+                  -- -Wl,--version to get linker version info.
+-                 (exitc, stdo, stde) <- readProcessWithExitCode pgm
+-                                        ["-Wl,--version"] ""
++                 (exitc, stdo, stde) <- readProcessEnvWithExitCode pgm
++                                        ["-Wl,--version"]
++                                        en_locale_env
+                  -- Split the output by lines to make certain kinds
+                  -- of processing easier. In particular, 'clang' and 'gcc'
+                  -- have slightly different outputs for '-Wl,--version', but
+@@ -802,7 +848,8 @@ getCompilerInfo' dflags = do
+ 
+   -- Process the executable call
+   info <- catchIO (do
+-                (exitc, stdo, stde) <- readProcessWithExitCode pgm ["-v"] ""
++                (exitc, stdo, stde) <-
++                    readProcessEnvWithExitCode pgm ["-v"] en_locale_env
+                 -- Split the output by lines to make certain kinds
+                 -- of processing easier.
+                 parseCompilerInfo (lines stdo) (lines stde) exitc
+@@ -952,7 +999,8 @@ readElfSection _dflags section exe = do
+      prog = "readelf"
+      args = [Option "-p", Option section, FileOption "" exe]
+   --
+-  r <- readProcessWithExitCode prog (filter notNull (map showOpt args)) ""
++  r <- readProcessEnvWithExitCode prog (filter notNull (map showOpt args))
++                                  en_locale_env
+   case r of
+     (ExitSuccess, out, _err) -> return (doFilter (lines out))
+     _ -> return Nothing

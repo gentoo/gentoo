@@ -1,0 +1,18 @@
+Index: smile/helpfrm.cpp
+===================================================================
+--- smile.orig/helpfrm.cpp
++++ smile/helpfrm.cpp
+@@ -26,11 +26,11 @@ helpfrm::helpfrm(QWidget *parent) : QDia
+ 			qDebug() << "LOADING HELP LANGUAGE ... " + wlpack.left(2);
+ 			if ( wlpack.left(2) == "fr" )
+ 			{
+-				webhelp->load(QUrl(wg_tmp_002 + "/BIB_ManSlide/Help/doc_fr.html"));
++				webhelp->load(QUrl("/usr/share/doc/smile-0.9.10/doc_fr.html"));
+ 			}
+ 			else
+ 			{
+-				webhelp->load(QUrl(wg_tmp_002 + "/BIB_ManSlide/Help/doc_en.html"));
++				webhelp->load(QUrl("/usr/share/doc/smile-0.9.10/doc_en.html"));
+ 			}
+ 		}
+ 		configfile.close();

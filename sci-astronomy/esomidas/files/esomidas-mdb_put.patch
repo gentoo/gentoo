@@ -1,0 +1,29 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix another probably off-by-one error in prim/dio/libsrc/fitsmdb.c
+ This shall fix the following crash:
+ .
+  ERROR: AddressSanitizer: global-buffer-overflow on address 0x7f5ae9867e28 at pc 0x7f5ae979569c bp 0x7fff8c3c744
+  READ of size 1 at 0x7f5ae9867e28 thread T0
+    #0 0x7f5ae979569b in mdb_put prim/dio/libsrc/fitsmdb.c:173
+    #1 0x7f5ae978f489 in fitsckw prim/dio/libsrc/fitsckw.c:872
+    #2 0x7f5ae97a3ee4 in fitsrhd prim/dio/libsrc/fitsrhd.c:258
+    #3 0x401ee4 in main prim/dio/src/infile.c:263
+    #4 0x7f5ae90bab44 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #5 0x4024e2 (prim/exec/infile.exe+0x4024e2)
+
+0x7f5ae9867e28 is located 0 bytes to the right of global variable '*.LC46' from 'fitsckw.c' (0x7f5ae9867e20) of size 8
+  '*.LC46' is ascii string 'COMMENT'
+0x7f5ae9867e28 is located 56 bytes to the left of global variable '*.LC47' from 'fitsckw.c' (0x7f5ae9867e60) of size 3
+  '*.LC47' is ascii string 'O_'
+
+--- a/prim/dio/libsrc/fitsmdb.c
++++ b/prim/dio/libsrc/fitsmdb.c
+@@ -170,7 +170,7 @@
+ 
+ ps = myptr->desc;
+ pc = kwd->desc;
+-for (i=0; i<MXMDN; i++) *ps++ = *pc++;
++strncpy(ps, pc, MXMDN);
+ 
+ myptr->type = kwd->type;
+ myptr->idx = kwd->idx;

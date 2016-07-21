@@ -1,0 +1,30 @@
+Both extensions have been dropped from the X-Server in 2008:
+    http://cgit.freedesktop.org/xorg/xserver/commit/?id=1c8bd31
+    http://cgit.freedesktop.org/xorg/xserver/commit/?id=f4036f6
+
+Don't build them by default.
+
+Reviewed-by: Julien Cristau <jcristau@debian.org>
+Signed-off-by: Daniel Martin <consume.noise@gmail.com>
+Signed-off-by: Uli Schlachter <psychon@znc.in>
+
+diff --git a/a/configure.ac b/b/configure.ac
+index eb4a971..c9a1e91 100644
+--- a/a/configure.ac
++++ b/b/configure.ac
+@@ -227,13 +227,13 @@ XCB_EXTENSION(Screensaver, "yes")
+ XCB_EXTENSION(Shape, "yes")
+ XCB_EXTENSION(Shm, "yes")
+ XCB_EXTENSION(Sync, "yes")
+-XCB_EXTENSION(Xevie, "yes")
++XCB_EXTENSION(Xevie, "no")
+ XCB_EXTENSION(XFixes, "yes")
+ XCB_EXTENSION(XFree86-DRI, "yes")
+ XCB_EXTENSION(Xinerama, "yes")
+ XCB_EXTENSION(XInput, "no")
+ XCB_EXTENSION(XKB, "yes")
+-XCB_EXTENSION(Xprint, "yes")
++XCB_EXTENSION(Xprint, "no")
+ XCB_EXTENSION(SELinux, "no")
+ XCB_EXTENSION(XTest, "yes")
+ XCB_EXTENSION(Xv, "yes")

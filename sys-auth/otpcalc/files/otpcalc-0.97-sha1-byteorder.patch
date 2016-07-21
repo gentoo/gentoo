@@ -1,0 +1,53 @@
+Fix SHA1 byte-order issue for conformance with RFC 2289.
+
+--- otpCalc-0.97-orig/crypto.c
++++ otpCalc-0.97/crypto.c
+@@ -199,6 +199,8 @@
+ 	for (i = 0; i < 4; i++)
+ 		digest[i] ^= digest[i+16];
+ 
+-	memcpy(message, digest, 8);
++	/* Fix byte order, as required by RFC 2289 Appendix A */
++	for (i = 0; i < 8; i++)
++		 message[i] = digest[i^3];
+ 
+ }
+--- otpCalc-0.97-orig/sha1.h
++++ otpCalc-0.97/sha1.h
+@@ -1,3 +1,5 @@
++#include "config.h"
++
+ #ifndef  i386
+ typedef          long int int64;
+ typedef unsigned long int uint64;
+@@ -28,7 +30,7 @@
+ 
+ #define rol(value, bits) (((value) << (bits)) | ((value) >> (32 - (bits))))
+ 
+-#ifdef WORDS_BIGENDIAN
++#ifndef WORDS_BIGENDIAN
+ #define blk0(i) (block->l[i] = (rol(block->l[i],24)&0xFF00FF00) \
+     |(rol(block->l[i],8)&0x00FF00FF))
+ #else
+--- otpCalc-0.97-orig/otpCalc.man
++++ otpCalc-0.97/otpCalc.man
+@@ -47,9 +47,6 @@
+ RFC 2289, RFC 1740
+ .SH "AUTHOR"
+ Anthony D. Urso <anthonyu@killa.net>.
+-.SH "BUGS"
+-SHA1 output differs from RFC2289; however, the output is consistant with
+-other implementations.
+ .SH "COPYRIGHT"
+ Copyright \(co 2001 Anthony D. Urso.
+ .br
+--- otpCalc-0.97-orig/BUGS
++++ otpCalc-0.97/BUGS
+@@ -16,3 +16,7 @@
+ 
+ Thanks,
+ Anthony
++
++Note: Above-mentioned SHA1 issue is fixed in the Gentoo version.
++The output now agrees with RFC 2289 and with S/Key.
++ - Ulrich Mueller <ulm@gentoo.org>

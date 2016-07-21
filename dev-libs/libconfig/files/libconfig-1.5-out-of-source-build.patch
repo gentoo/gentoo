@@ -1,0 +1,11 @@
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -3,7 +3,7 @@
+ 
+ libconfig_tests_SOURCES = tests.c
+ 
+-libconfig_tests_CPPFLAGS = -I$(top_srcdir)/tinytest -I../lib
++libconfig_tests_CPPFLAGS = -I$(top_srcdir)/tinytest -I$(top_srcdir)/lib
+ 
+ libconfig_tests_LDADD = -L$(top_builddir)/tinytest -ltinytest \
+ 	-L$(top_builddir)/lib/.libs -lconfig

@@ -1,0 +1,50 @@
+From 14f407a5d183cdac7029cc54a9d8ae6b0cb5cbcd Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Fri, 27 Sep 2013 10:52:18 -0600
+Subject: [PATCH 3/4] charmrun.c: parsing of strings now parses "\n" into '\n'
+
+Since gdb lacks anything like ';' to separate several commands in one line,
+the commands need to be separated by a newline character. I have added some
+parsing logic so that the string "\n" will now be translated into the
+character '\n'.
+---
+ src/arch/net/charmrun/charmrun.c | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/src/arch/net/charmrun/charmrun.c b/src/arch/net/charmrun/charmrun.c
+index 6837712..8818cf8 100644
+--- a/src/arch/net/charmrun/charmrun.c
++++ b/src/arch/net/charmrun/charmrun.c
+@@ -454,8 +454,27 @@ static int pparam_setdef(def, value)
+       if (*p) return -1;
+       return 0;
+     case 's' :
+-      *def->where.s = strdup(value);
+-      return 0;
++      {
++        /* Parse input string and convert a literal "\n" into '\n'. */
++        *def->where.s = (char*) calloc(strlen(value)+1, sizeof(char));
++        char* parsed_value = (char*) *def->where.s;
++        int i;
++        int j = 0;
++        for(i = 0; i < strlen(value); i++)
++        {
++          if(i+1 < strlen(value))
++          {
++            if(value[i] == '\\' && value[i+1] == 'n')
++            {
++              parsed_value[j++] = '\n';
++              i++;
++              continue;
++            }
++          }
++          parsed_value[j++] = value[i];
++        }
++        return 0;
++      }
+     case 'f' :
+       *def->where.f = strtol(value, &p, 10);
+       if (*p) return -1;
+-- 
+1.8.1.5
+

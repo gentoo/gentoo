@@ -1,0 +1,11 @@
+--- cfengine-3.6.2.orig/libenv/unix_iface.c	2014-09-25 07:53:31.000000000 -0400
++++ cfengine-3.6.2/libenv/unix_iface.c	2014-11-26 23:55:20.151351070 -0500
+@@ -625,7 +625,7 @@
+         return;
+     }
+ #else
+-    if ((pp = cf_popen("/sbin/ifconfig -a", "r", true)) == NULL)
++    if ((pp = cf_popen("/sbin/ifconfig -a", "r", true)) == NULL || (pp = cf_popen("/bin/ifconfig -a", "r", true)) == NULL)
+     {
+         Log(LOG_LEVEL_VERBOSE, "Could not find interface info");
+         return;

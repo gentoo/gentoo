@@ -1,0 +1,43 @@
+From a0ea1cc47330a3ab316713d720892b6272401890 Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sun, 10 Jul 2011 21:46:09 +0300
+Subject: [PATCH] GvCV() isn't an lvalue since Perl 5.13.10
+
+GvCV() can't be assigned to anymore with recent perls, so use the new
+GvCV_set() macro when available or implement it the old way if it isn't.
+---
+ perl_ext/Exports.c  |    2 +-
+ perl_ext/perl_swf.h |    4 ++++
+ 2 files changed, 5 insertions(+), 1 deletions(-)
+
+diff --git a/perl_ext/Exports.c b/perl_ext/Exports.c
+index 65f8912..5529728 100644
+--- a/perl_ext/Exports.c
++++ b/perl_ext/Exports.c
+@@ -190,7 +190,7 @@ void export_cv(SV *class, SV *caller, char *sub)
+             SvPVX(caller), sub, SvPVX(class), sub); 
+ #endif 
+     gv = gv_fetchpv(form("%s::%s",SvPVX( caller), sub), TRUE, SVt_PVCV); 
+-    GvCV(gv) = perl_get_cv(form("%s::%s", SvPVX(class), sub), TRUE); 
++    GvCV_set(gv, perl_get_cv(form("%s::%s", SvPVX(class), sub), TRUE)); 
+     GvIMPORTED_CV_on(gv); 
+     GvMULTI_on(gv);
+ } 
+diff --git a/perl_ext/perl_swf.h b/perl_ext/perl_swf.h
+index b960229..1a3656e 100644
+--- a/perl_ext/perl_swf.h
++++ b/perl_ext/perl_swf.h
+@@ -58,6 +58,10 @@ typedef SWFFontCollection  SWF__FontCollection;
+ #define aTHXo_
+ #endif
+ 
++#ifndef GvCV_set
++# define GvCV_set(G, C) (GvCV(G) = (C))
++#endif
++
+ #ifndef S_DEBUG
+ #define swf_debug 0   /* Should we get this from, say, $SWF::debug? */
+ #define S_DEBUG(level,code)  if (swf_debug >= level) { code; }
+-- 
+1.7.5.4
+

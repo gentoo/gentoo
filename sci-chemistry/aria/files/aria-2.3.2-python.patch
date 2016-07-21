@@ -1,0 +1,30 @@
+ src/py/aria/legacy/QualityChecks/Descriptive.py |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/py/aria/legacy/QualityChecks/Descriptive.py b/src/py/aria/legacy/QualityChecks/Descriptive.py
+index ae5913c..550d20c 100644
+--- a/src/py/aria/legacy/QualityChecks/Descriptive.py
++++ b/src/py/aria/legacy/QualityChecks/Descriptive.py
+@@ -1,3 +1,6 @@
++from math import *
++from numpy import *
++
+ class Descriptive:
+     """
+     some basic statistics
+@@ -55,7 +58,6 @@ class Descriptive:
+ 
+     def getStdDev(self):
+ 	if( len(self.myData) == 0): return None
+-	from math import *
+ 	if( (self.count - 1) > 0 ):
+ 	    return sqrt( self.pseudoVariance/ (self.count - 1))
+ 	else:
+@@ -89,7 +91,6 @@ class Descriptive:
+     def getMedian(self):
+ 	if( len(self.myData) == 0): return None
+ 	if( self.median == None ):
+-	    from numpy import *
+ 	    sort(self.myData)
+ 	    if( self.count%2 == 1):
+ 		self.median = self.myData[(self.count-1)/2] 

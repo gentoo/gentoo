@@ -1,0 +1,188 @@
+Index: session.cpp
+===================================================================
+--- session.cpp	(revision 15)
++++ session.cpp	(revision 16)
+@@ -131,7 +131,7 @@
+         throw CursorException("Cursor is not opened");
+     }
+     fillBuffer(sizeof(oid_t));
+-    oid_t currOid = *(oid_t*)&sockBuf[bufPos];
++    oid_t currOid = *(oid_t*)(sockBuf + bufPos);
+     bufPos += sizeof(oid_t);
+     if (currObj != NULL) { 
+         delete[] currObj;
+@@ -139,7 +139,7 @@
+     }
+     if (currOid != 0) { 
+         fillBuffer(sizeof(int));
+-        size_t size = *(int*)&sockBuf[bufPos];
++        size_t size = *(int*)(sockBuf + bufPos);
+         if (size <= SOCKET_BUFFER_SIZE) { 
+             fillBuffer(size);
+             if (record != NULL) { 
+Index: database.cpp
+===================================================================
+--- database.cpp	(revision 15)
++++ database.cpp	(revision 16)
+@@ -739,40 +739,55 @@
+         return;
+ 
+       case dbvmInvokeMethodBool:
+-        execute(expr->ref.base, iattr, sattr);
+-        expr->ref.field->method->invoke(sattr.base, &sattr.bvalue);
+-        sattr.bvalue = *(bool*)&sattr.bvalue;
+-        iattr.free(sattr);
+-        return;
++      { 
++          bool val;
++          execute(expr->ref.base, iattr, sattr);
++          expr->ref.field->method->invoke(sattr.base, &val);
++          sattr.bvalue = val;
++          iattr.free(sattr);
++          return;
++      }
+       case dbvmInvokeMethodInt1:
+-        execute(expr->ref.base, iattr, sattr);
+-        expr->ref.field->method->invoke(sattr.base, &sattr.ivalue);
+-        sattr.ivalue = *(int1*)&sattr.ivalue;
+-        iattr.free(sattr);
+-        return;
++      {
++          int1 val;
++          execute(expr->ref.base, iattr, sattr);
++          expr->ref.field->method->invoke(sattr.base, &val);
++          sattr.ivalue = val;
++          iattr.free(sattr);
++          return;
++      }
+       case dbvmInvokeMethodInt2:
+-        execute(expr->ref.base, iattr, sattr);
+-        expr->ref.field->method->invoke(sattr.base, &sattr.ivalue);
+-        sattr.ivalue = *(int2*)&sattr.ivalue;
+-        iattr.free(sattr);
+-        return;
++      {
++          int2 val;
++          execute(expr->ref.base, iattr, sattr);
++          expr->ref.field->method->invoke(sattr.base, &val);
++          sattr.ivalue = val;
++          iattr.free(sattr);
++          return;
++      }
+       case dbvmInvokeMethodInt4:
+-        execute(expr->ref.base, iattr, sattr);
+-        expr->ref.field->method->invoke(sattr.base, &sattr.ivalue);
+-        sattr.ivalue = *(int4*)&sattr.ivalue;
+-        iattr.free(sattr);
+-        return;
++      {
++          int4 val;
++          execute(expr->ref.base, iattr, sattr);
++          expr->ref.field->method->invoke(sattr.base, &val);
++          sattr.ivalue = val;
++          iattr.free(sattr);
++          return;
++      }
+       case dbvmInvokeMethodInt8:
+         execute(expr->ref.base, iattr, sattr);
+         expr->ref.field->method->invoke(sattr.base, &sattr.ivalue);
+         iattr.free(sattr);
+         return;
+       case dbvmInvokeMethodReal4:
+-        execute(expr->ref.base, iattr, sattr);
+-        expr->ref.field->method->invoke(sattr.base, &sattr.fvalue);
+-        sattr.fvalue = *(real4*)&sattr.fvalue;
+-        iattr.free(sattr);
+-        return;
++      {
++          real4 val;
++          execute(expr->ref.base, iattr, sattr);
++          expr->ref.field->method->invoke(sattr.base, &val);
++          sattr.fvalue = val;
++          iattr.free(sattr);
++          return;
++      }
+       case dbvmInvokeMethodReal8:
+         execute(expr->ref.base, iattr, sattr);
+         expr->ref.field->method->invoke(sattr.base, &sattr.fvalue);
+@@ -792,28 +807,43 @@
+         return;
+  
+       case dbvmInvokeSelfMethodBool:
+-        expr->ref.field->method->invoke(iattr.record, &sattr.bvalue);
+-        sattr.bvalue = *(bool*)&sattr.bvalue;
+-        return;
++      {
++          bool val;
++          expr->ref.field->method->invoke(iattr.record, &val);
++          sattr.bvalue = val;
++          return;
++      }
+       case dbvmInvokeSelfMethodInt1:
+-        expr->ref.field->method->invoke(iattr.record, &sattr.ivalue);
+-        sattr.ivalue = *(int1*)&sattr.ivalue;
+-        return;
++      {
++          int1 val;
++          expr->ref.field->method->invoke(iattr.record, &val);
++          sattr.ivalue = val;
++          return;
++      }
+       case dbvmInvokeSelfMethodInt2:
+-        expr->ref.field->method->invoke(iattr.record, &sattr.ivalue);
+-        sattr.ivalue = *(int2*)&sattr.ivalue;
+-        return;
++      {
++          int2 val;
++          expr->ref.field->method->invoke(iattr.record, &val);
++          sattr.ivalue = val;
++          return;
++      }
+       case dbvmInvokeSelfMethodInt4:
+-        expr->ref.field->method->invoke(iattr.record, &sattr.ivalue);
+-        sattr.ivalue = *(int4*)&sattr.ivalue;
+-        return;
++      {
++          int4 val;
++          expr->ref.field->method->invoke(iattr.record, &val);
++          sattr.ivalue = val;
++          return;
++      }
+       case dbvmInvokeSelfMethodInt8:
+         expr->ref.field->method->invoke(iattr.record, &sattr.ivalue);
+         return;
+       case dbvmInvokeSelfMethodReal4:
+-        expr->ref.field->method->invoke(iattr.record, &sattr.fvalue);
+-        sattr.fvalue = *(real4*)&sattr.fvalue;
+-        return;
++      {
++          real4 val;
++          expr->ref.field->method->invoke(iattr.record, &val);
++          sattr.fvalue = *(real4*)&sattr.fvalue;
++          return;
++      }
+       case dbvmInvokeSelfMethodReal8:
+         expr->ref.field->method->invoke(iattr.record, &sattr.fvalue);
+         return;
+Index: server.cpp
+===================================================================
+--- server.cpp	(revision 15)
++++ server.cpp	(revision 16)
+@@ -2097,7 +2097,7 @@
+                 bufUsed = 0;
+             }
+             oid_t oid = cursor.getOid();
+-            *(oid_t*)&buf[bufUsed] = oid;
++            *(oid_t*)(buf + bufUsed) = oid;
+             bufUsed += sizeof(oid_t);
+             dbRecord* record = db->getRow(tie, oid);
+             size_t size = record->size;
+@@ -2129,7 +2129,7 @@
+             bufUsed = 0;
+         }
+     }
+-    *(oid_t*)&buf[bufUsed] = 0;
++    *(oid_t*)(buf + bufUsed) = 0;
+     return session->sock->write(buf, bufUsed + sizeof(oid_t));
+ }
+ 

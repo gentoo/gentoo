@@ -1,0 +1,27 @@
+--- Makefile.o	2010-08-31 01:17:46.505000089 +0200
++++ Makefile	2010-08-31 01:19:11.841000098 +0200
+@@ -1,6 +1,4 @@
+ UNAME = $(shell uname)
+-CC = gcc
+-CFLAGS = -g -Wall -O2
+ LIBS = -lz
+ OFILES = util.o keywords.o flasm.o unflasm.o lex.yy.o assembler.tab.o
+ GARBAGE = assembler.tab.* lex.yy.c memwatch.o gmon.out memwatch.log core
+@@ -9,8 +7,6 @@
+ ifneq (,$(findstring debug,$(MAKECMDGOALS)))
+ 	CFLAGS += -DMEMWATCH -pg -p -pedantic -W -Wcast-align -Wcast-qual -Wshadow -Wnested-externs -Wstrict-prototypes -Waggregate-return -Wmissing-prototypes -Wpointer-arith
+ 	OFILES += memwatch.o
+-else
+-	CFLAGS += -s
+ endif
+ 
+ # executable should not depend on cygwin.dll
+@@ -26,7 +22,7 @@
+ 	-rm -f ${OFILES} ${GARBAGE}
+ 
+ flasm:	${OFILES}
+-	${CC} $(CFLAGS) -o flasm ${OFILES} ${LIBS}
++	${CC} $(CFLAGS) $(LDFLAGS) -o flasm ${OFILES} ${LIBS}
+ 
+ assembler.tab.c assembler.tab.h: assembler.y
+ 	bison --defines --debug assembler.y

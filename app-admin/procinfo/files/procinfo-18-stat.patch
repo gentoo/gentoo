@@ -1,0 +1,21 @@
+diff -ur procinfo-18/procinfo.c procinfo-18-mod/procinfo.c
+--- procinfo-18/procinfo.c	2001-02-25 11:29:16.000000000 +0000
++++ procinfo-18-mod/procinfo.c	2008-04-16 10:16:29.000000000 +0100
+@@ -76,7 +76,7 @@
+     *devicesfp, *filesystemsfp, *interruptsfp, *dmafp, *cmdlinefp,
+     *versionfp, *cpuinfofp;
+ 
+-char line[1024], cmdline[1024], booted[40], *version = NULL, *message = NULL;
++char line[4096], cmdline[1024], booted[40], *version = NULL, *message = NULL;
+ 
+ float rate = 1.0;		/* per interval or per sec */
+ 
+@@ -446,7 +446,7 @@
+ 		    */
+ 		    char *q;
+ 
+-		    if ((q = strstr (p, "PIC"))) {
++		    if ((q = strstr (p, "PIC")) || (q = strstr (p, "MSI"))) {
+ 			while (*q != ' ')	/* eat up "PIC" or "PIC-foo" */
+ 			    q++;
+ 			while (*q == ' ')	/* eat up spaces */

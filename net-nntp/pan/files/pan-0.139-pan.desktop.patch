@@ -1,0 +1,31 @@
+From 1dba05f87839a6fa347414a800824812f2642554 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Heinrich=20M=C3=BCller?= <henmull@src.gnome.org>
+Date: Wed, 25 Jul 2012 19:36:44 +0200
+Subject: [PATCH] https://bugzilla.gnome.org/show_bug.cgi?id=680468
+
+---
+ pan.desktop.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pan.desktop.in b/pan.desktop.in
+index 4660140..4bbeca5 100644
+--- a/pan.desktop.in
++++ b/pan.desktop.in
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-_Name=Pan Newsreader
++_Name=Pan
++_GenericName=Newsreader
+ _Comment=Read and Post Usenet Articles
+ Exec=pan
+-Icon=pan.png
++Icon=pan
+ Terminal=false
+ Type=Application
+-Categories=GTK;Application;Network;News
++Categories=GTK;Network;News;
+ StartupNotify=false
+-- 
+1.8.0
+

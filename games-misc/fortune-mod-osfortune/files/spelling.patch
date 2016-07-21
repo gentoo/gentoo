@@ -1,0 +1,100 @@
+--- osfortune.orig	2004-08-18 07:40:54.000000000 -0400
++++ osfortune	2004-08-19 07:14:41.008409016 -0400
+@@ -15,7 +15,7 @@
+ 
+   -- Bruce Perens, on the future of Open Source software. (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"The reason for the success of this somewhat communist-sounding strategy, while the failure of communism itself is visible around the world, is that the economics of information are fundamentaly different from those of other products."
++"The reason for the success of this somewhat communist-sounding strategy, while the failure of communism itself is visible around the world, is that the economics of information are fundamentally different from those of other products."
+ 
+   -- Bruce Perens, on Open Source software. (Open Sources, 1999 O'Reilly and Associates)
+ %
+@@ -29,7 +29,7 @@
+ %
+ "I'm not saying that they were knowingly dishonest, perhaps they were simply stupid. "
+ 
+-  -- Linus Torvalds, commenting on those who really thought Microkernels were wise. (Open Sources, 1999 O'Reilly and Associates)
++  -- Linus Torvalds, commenting on those who really thought microkernels were wise. (Open Sources, 1999 O'Reilly and Associates)
+ %
+ "The idea of abstracting away the one thing that must be blindingly fast, the kernel, is inherently counter productive." 
+ 
+@@ -37,11 +37,11 @@
+ %
+ "So right now the only vendor that does such a stupid thing is Microsoft."
+ 
+-  -- Linus Torvalds on bad file system interface design. (Open Sources , 1999 O'Reilly and Associates.)
++  -- Linus Torvalds on bad file system interface design. (Open Sources, 1999 O'Reilly and Associates)
+ %
+ "Eric also holds a black belt in Tae Kwon Do and shoots pistols for relaxation,  His favorite gun is the classic 1911-pattern .45 semiautomatic"
+ 
+-  -- Chris DiBona on neo-renassaince Homo Heileinias Eric S. Raymond. (Open Sources, 1999 O'Reilly and Associates)
++  -- Chris DiBona on neo-renaissance Homo Heileinias Eric S. Raymond. (Open Sources, 1999 O'Reilly and Associates)
+ %
+ "The world is beating a path to our door"
+ 
+@@ -59,19 +59,19 @@
+ 
+   -- Chris DiBona from the introduction. (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"The funny thing is if you actually read those papers, you find that, while the researchers were applying thier optomizational tricks on a microkernel, in fact those same tricks could be applied to traditional kernels to accelerate thier execution."
++"The funny thing is if you actually read those papers, you find that, while the researchers were applying their optimizational tricks on a microkernel, in fact those same tricks could be applied to traditional kernels to accelerate their execution."
+ 
+   -- Linus Torvalds on Microkernels (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"Computers and autmation have become so ingrained and essentaial to day-to-day business that a sensible business should not rely on a single vendor to provide essential services........Thus is is always in a customers' interests to demand that the software they deploy be based on non-proprietary platforms."
++"Computers and automation have become so ingrained and essential to day-to-day business that a sensible business should not rely on a single vendor to provide essential services...Thus it is always in customers' interests to demand that the software they deploy be based on non-proprietary platforms."
+ 
+   -- Brian Behlendorf on OSS (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"Nature abhors a Vacuum"
++"Nature abhors a vacuum"
+ 
+   -- Brian Behlendorf on OSS (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"While not obviously a business-friendly licensem there are certain aspects of the GNU license which are attractive, believe it or not, for commercial purposes."
++"While not obviously a business-friendly license, there are certain aspects of the GNU license which are attractive, believe it or not, for commercial purposes."
+ 
+   -- Brian Behlendorf on OSS (Open Sources, 1999 O'Reilly and Associates)
+ %
+@@ -83,19 +83,19 @@
+ 
+   -- Scott Bradner (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"The basic publication series for te IETF is the RFC series. RPF once stood for 'Request for Comments,' but since documents published as RFCs have generally gone through an extensive review process before publication, RFC is now best known understood to mean 'RFC' "
++"The basic publication series for the IETF is the RFC series. RFC once stood for 'Request for Comments,' but since documents published as RFCs have generally gone through an extensive review process before publication, RFC is now best known understood to mean 'RFC' "
+  
+   -- Scott Bradner (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"The IETF motto is 'rouch consesus and running code'"
++"The IETF motto is 'rough consensus and running code'"
+   
+   -- Scott Bradner (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"Open Standars, Open Documents, and Open Source"
++"Open Standards, Open Documents, and Open Source"
+ 
+   -- Scott Bradner (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"So here's a picture of reality: (picture of circle with lots of sqiggles in it) As we all know, reality is a mess."
++"So here's a picture of reality: (picture of circle with lots of squiggles in it) As we all know, reality is a mess."
+ 
+   -- Larry Wall (Open Sources, 1999 O'Reilly and Associates)
+ %
+@@ -119,7 +119,7 @@
+ 
+   -- Larry Wall (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"Of course, in Perl culture, almost nothis is prohibited. My feeling is that the rest of the world already has plenty of perfectly good prohibitions, so why invent more?"
++"Of course, in Perl culture, almost nothing is prohibited. My feeling is that the rest of the world already has plenty of perfectly good prohibitions, so why invent more?"
+ 
+   -- Larry Wall (Open Sources, 1999 O'Reilly and Associates)
+ %
+@@ -129,7 +129,7 @@
+ 
+   -- Larry Wall (Open Sources, 1999 O'Reilly and Associates)
+ %
+-"In a way they were right the basics of operating systems, and by extension the Linux kernel, were well understood by the early 70s; anything after that has been to some degree an exercise in self-gratification."
++"In a way they were right - the basics of operating systems, and by extension the Linux kernel, were well understood by the early 70s; anything after that has been to some degree an exercise in self-gratification."
+ 
+   -- Linus Torvalds (Open Sources, 1999 O'Reilly and Associates)
+ %

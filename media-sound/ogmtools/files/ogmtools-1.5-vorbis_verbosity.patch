@@ -1,0 +1,12 @@
+diff -ur ogmtools-1.5.orig/ogminfo.c ogmtools-1.5/ogminfo.c
+--- ogmtools-1.5.orig/ogminfo.c	2003-11-21 00:21:36.000000000 +0200
++++ ogmtools-1.5/ogminfo.c	2009-05-12 12:42:56.000000000 +0300
+@@ -188,7 +188,7 @@
+     }
+     vorbis_comment_clear(&vc);
+   } else if ((stream->stype == 'a') && stream->vorbis) {
+-    if (verbose < 1)
++    if (verbose < 2)
+       return;
+     fprintf(stdout, "(%s) a%d: % 7ld bytes granulepos: % 10lld pno: % 10lld ",
+              __FILE__, stream->sno, pack->bytes, ogg_page_granulepos(page),

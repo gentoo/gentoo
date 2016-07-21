@@ -1,0 +1,10 @@
+--- sendmail/conf.c.orig	2004-07-14 21:54:23.000000000 +0000
++++ sendmail/conf.c	2004-12-06 15:22:05.000000000 +0000
+@@ -117,6 +117,7 @@
+ 	{ "content-length",		H_ACHECK,		NULL	},
+ 	{ "subject",			H_ENCODABLE,		NULL	},
+ 	{ "x-authentication-warning",	H_FORCE,		NULL	},
++	{ "delivered-to",	    H_FORCE,		NULL	},
+ 
+ 	{ NULL,				0,			NULL	}
+ };

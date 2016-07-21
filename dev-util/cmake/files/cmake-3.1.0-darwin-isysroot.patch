@@ -1,0 +1,48 @@
+Do not detect Xcode and set -isysroot for its SDK, since that messes up
+our toolchain, and hence makes any compilation fail, bug #445308
+
+--- a/Modules/Platform/Darwin-Initialize.cmake
++++ b/Modules/Platform/Darwin-Initialize.cmake
+@@ -1,16 +1,16 @@
+ # Ask xcode-select where to find /Developer or fall back to ancient location.
+-execute_process(COMMAND xcode-select -print-path
+-  OUTPUT_VARIABLE _stdout
+-  OUTPUT_STRIP_TRAILING_WHITESPACE
+-  ERROR_VARIABLE _stderr
+-  RESULT_VARIABLE _failed)
+-if(NOT _failed AND IS_DIRECTORY ${_stdout})
+-  set(OSX_DEVELOPER_ROOT ${_stdout})
+-elseif(IS_DIRECTORY "/Developer")
+-  set(OSX_DEVELOPER_ROOT "/Developer")
+-else()
++#execute_process(COMMAND xcode-select -print-path
++#  OUTPUT_VARIABLE _stdout
++#  OUTPUT_STRIP_TRAILING_WHITESPACE
++#  ERROR_VARIABLE _stderr
++#  RESULT_VARIABLE _failed)
++#if(NOT _failed AND IS_DIRECTORY ${_stdout})
++#  set(OSX_DEVELOPER_ROOT ${_stdout})
++#elseif(IS_DIRECTORY "/Developer")
++#  set(OSX_DEVELOPER_ROOT "/Developer")
++#else()
+   set(OSX_DEVELOPER_ROOT "")
+-endif()
++#endif()
+ 
+ execute_process(COMMAND sw_vers -productVersion
+   OUTPUT_VARIABLE CURRENT_OSX_VERSION
+@@ -91,10 +91,10 @@
+ # CMAKE_OSX_DEPLOYMENT_TARGET
+ 
+ # Set cache variable - end user may change this during ccmake or cmake-gui configure.
+-if(_CURRENT_OSX_VERSION VERSION_GREATER 10.3)
+-  set(CMAKE_OSX_DEPLOYMENT_TARGET "$ENV{MACOSX_DEPLOYMENT_TARGET}" CACHE STRING
+-    "Minimum OS X version to target for deployment (at runtime); newer APIs weak linked. Set to empty string for default value.")
+-endif()
++#if(_CURRENT_OSX_VERSION VERSION_GREATER 10.3)
++#  set(CMAKE_OSX_DEPLOYMENT_TARGET "$ENV{MACOSX_DEPLOYMENT_TARGET}" CACHE STRING
++#    "Minimum OS X version to target for deployment (at runtime); newer APIs weak linked. Set to empty string for default value.")
++#endif()
+ 
+ #----------------------------------------------------------------------------
+ # CMAKE_OSX_SYSROOT

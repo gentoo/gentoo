@@ -1,0 +1,44 @@
+--- a/bmp/Makefile.am
++++ b/bmp/Makefile.am
+@@ -1,4 +1,4 @@
+-bmpdir = $(prefix)/share/geki2/bmp
++bmpdir = $(BMP_PATH)
+ bmp_DATA =   back1.bmp boss2.bmp enemyshot4.bmp kuru.bmp myshot.bmp back2.bmp\
+ 	     boss3.bmp enemyshot5.bmp mboss.bmp uraura.bmp back3.bmp\
+ 	     boss3laser.bmp flash.bmp uturn.bmp back4.bmp back6.bmp boss6.bmp\
+--- a/configure.in
++++ b/configure.in
+@@ -25,9 +25,9 @@
+         BMP_PATH=/usr/local/share/geki2/bmp
+         WAV_PATH=/usr/local/share/geki2/wav
+ else
+-        DATA_PATH=$prefix/share/geki2/data
+-        BMP_PATH=$prefix/share/geki2/bmp
+-        WAV_PATH=$prefix/share/geki2/wav
++        DATA_PATH=$datadir/geki2/data
++        BMP_PATH=$datadir/geki2/bmp
++        WAV_PATH=$datadir/geki2/wav
+ fi
+ AC_DEFINE_UNQUOTED(DATA_PATH,"$DATA_PATH")
+ AC_DEFINE_UNQUOTED(BMP_PATH,"$BMP_PATH")
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -1,9 +1,7 @@
+-datadir = $(prefix)/share/geki2/data
++datadir = $(DATA_PATH)
+ data_DATA = stage1.dat stage2.dat stage3.dat stage4.dat stage5.dat stage6.dat\
+ 	    map1.dat map2.dat map3.dat map4.dat map5.dat map6.dat
+ EXTRA_DIST = stage1.dat stage2.dat stage3.dat stage4.dat stage5.dat stage6.dat\
+ 	    map1.dat map2.dat map3.dat map4.dat map5.dat map6.dat .score
+ 
+-install:
+-	$(INSTALL) -c -m 666 ./.score $(DESTDIR)$(DATA_PATH)
+ 
+--- a/wav/Makefile.am
++++ b/wav/Makefile.am
+@@ -1,4 +1,4 @@
+-wavdir = $(prefix)/share/geki2/wav
++wavdir = $(WAV_PATH)
+ wav_DATA =   bgm1.wav bgm2.wav bgm3.wav bgm4.wav bgm5.wav\
+ 	     bomb.wav laser5.wav warning.wav boss.wav open.wav\
+ 	     laser.wav pow.wav go.wav bgm6.wav

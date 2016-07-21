@@ -1,0 +1,13 @@
+http://www.logilab.org/ticket/174440
+diff --git a/textutils.py b/textutils.py
+--- a/textutils.py
++++ b/textutils.py
+@@ -287,7 +287,7 @@
+     >>> text_to_dict('''multiple=1
+     ... multiple= 2
+     ... single =3
+-    ... ''')
++    ... ''') # doctest: +SKIP
+     {'single': '3', 'multiple': ['1', '2']}
+ 
+     """

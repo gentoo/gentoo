@@ -1,0 +1,217 @@
+From c26a519da1ed182e7cfd67e7a353932dda53d811 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jean-Pierre=20Andr=C3=A9?= <jpandre@users.sourceforge.net>
+Date: Mon, 4 Aug 2014 17:39:50 +0200
+Subject: [PATCH] Fixed fstrim(8) applied to partitions
+
+The new way goes via /sys/dev/block/MAJOR:MINOR to map partitions to
+devices and get discard parameters of the parent device. It also ensures
+that the partition is aligned to the discard block size.
+
+Contributed by Richard W.M. Jones
+---
+ libntfs-3g/ioctl.c | 140 ++++++++++++++++++++++++++---------------------------
+ 1 file changed, 68 insertions(+), 72 deletions(-)
+
+diff --git a/libntfs-3g/ioctl.c b/libntfs-3g/ioctl.c
+index bbbceb9..eb7c8e7 100644
+--- a/libntfs-3g/ioctl.c
++++ b/libntfs-3g/ioctl.c
+@@ -66,8 +66,6 @@
+ #include <linux/fs.h>
+ #endif
+ 
+-#include <dirent.h>
+-
+ #include "compat.h"
+ #include "debug.h"
+ #include "bitmap.h"
+@@ -135,17 +133,14 @@ static int read_u64(const char *path, u64 *n)
+ }
+ 
+ /* Find discard limits for current backing device.
+- * XXX Kernel makes this a pain in the neck.
+  */
+-static int fstrim_limits(ntfs_volume *vol, u64 *discard_granularity,
++static int fstrim_limits(ntfs_volume *vol,
++			u64 *discard_alignment,
++			u64 *discard_granularity,
+ 			u64 *discard_max_bytes)
+ {
+ 	struct stat statbuf;
+-	DIR *dir;
+-	struct dirent *d;
+-	char path[80];
+-	char line[64];
+-	char dev[64];
++	char path1[80], path2[80];
+ 	int ret;
+ 
+ 	/* Stat the backing device.  Caller has ensured it is a block device. */
+@@ -155,82 +150,78 @@ static int fstrim_limits(ntfs_volume *vol, u64 *discard_granularity,
+ 		return -errno;
+ 	}
+ 
+-	/* Now look for a /sys/block/<dev>/dev file which contains
+-	 * "major:minor\n".
++	/* For whole devices,
++	 * /sys/dev/block/MAJOR:MINOR/discard_alignment
++	 * /sys/dev/block/MAJOR:MINOR/queue/discard_granularity
++	 * /sys/dev/block/MAJOR:MINOR/queue/discard_max_bytes
++	 * will exist.
++	 * For partitions, we also need to check the parent device:
++	 * /sys/dev/block/MAJOR:MINOR/../queue/discard_granularity
++	 * /sys/dev/block/MAJOR:MINOR/../queue/discard_max_bytes
+ 	 */
+-	snprintf(dev, sizeof dev, "%d:%d\n",
++	snprintf(path1, sizeof path1, "/sys/dev/block/%d:%d",
+ 		major(statbuf.st_rdev), minor(statbuf.st_rdev));
+ 
+-	dir = opendir("/sys/block");
+-	if (dir == NULL) {
+-		ntfs_log_debug("fstrim_limits: could not open /sys/block\n");
+-		return -errno;
++	snprintf(path2, sizeof path2, "%s/discard_alignment", path1);
++	ret = read_u64(path2, discard_alignment);
++	if (ret) {
++		if (ret != -ENOENT)
++			return ret;
++		else
++			/* We would expect this file to exist on all
++			 * modern kernels.  But for the sake of very
++			 * old kernels:
++			 */
++			goto not_found;
+ 	}
+-	for (;;) {
+-		errno = 0;
+-		d = readdir(dir);
+-		if (!d) break;
+ 
+-		snprintf(path, sizeof path, "/sys/block/%s/dev", d->d_name);
+-		ret = read_line(path, line, sizeof line);
+-		if (ret)
+-			continue;
+-		if (strcmp(line, dev) == 0)
+-			goto found;
++	snprintf(path2, sizeof path2, "%s/queue/discard_granularity", path1);
++	ret = read_u64(path2, discard_granularity);
++	if (ret) {
++		if (ret != -ENOENT)
++			return ret;
++		else {
++			snprintf(path2, sizeof path2,
++				"%s/../queue/discard_granularity", path1);
++			ret = read_u64(path2, discard_granularity);
++			if (ret) {
++				if (ret != -ENOENT)
++					return ret;
++				else
++					goto not_found;
++			}
++		}
+ 	}
+ 
+-	/* Check readdir didn't fail. */
+-	if (errno != 0) {
+-		ret = -errno;
+-		ntfs_log_debug("fstrim_limits: readdir failed\n");
+-		goto out;
++	snprintf(path2, sizeof path2, "%s/queue/discard_max_bytes", path1);
++	ret = read_u64(path2, discard_max_bytes);
++	if (ret) {
++		if (ret != -ENOENT)
++			return ret;
++		else {
++			snprintf(path2, sizeof path2,
++				"%s/../queue/discard_max_bytes", path1);
++			ret = read_u64(path2, discard_max_bytes);
++			if (ret) {
++				if (ret != -ENOENT)
++					return ret;
++				else
++					goto not_found;
++			}
++		}
+ 	}
+ 
++	return 0;
++
++not_found:
+ 	/* If we reach here then we didn't find the device.  This is
+ 	 * not an error, but set discard_max_bytes = 0 to indicate
+ 	 * that discard is not available.
+ 	 */
++	*discard_alignment = 0;
+ 	*discard_granularity = 0;
+ 	*discard_max_bytes = 0;
+-	ntfs_log_debug("fstrim_limits: /sys/block entry corresponding to device %s not found\n",
+-		vol->dev->d_name);
+-	ret = 0;
+-	goto out;
+-
+-found:
+-	/* Found the device at /sys/block/ + d->d_name */
+-	snprintf (path, sizeof path,
+-		"/sys/block/%s/queue/discard_granularity",
+-		d->d_name);
+-	ret = read_u64(path, discard_granularity);
+-	if (ret) {
+-		ntfs_log_debug("fstrim_limits: could not read %s\n", path);
+-		goto out;
+-	}
+-
+-	snprintf (path, sizeof path,
+-		"/sys/block/%s/queue/discard_max_bytes",
+-		d->d_name);
+-	ret = read_u64(path, discard_max_bytes);
+-	if (ret) {
+-		ntfs_log_debug("fstrim_limits: could not read %s\n", path);
+-		goto out;
+-	}
+-
+-	ntfs_log_debug("fstrim_limits: device %s discard granularity = %llu max_bytes = %llu\n",
+-		d->d_name,
+-		(unsigned long long) *discard_granularity,
+-		(unsigned long long) *discard_max_bytes);
+-
+-	ret = 0;
+-out:
+-	if (closedir (dir) == -1) {
+-		ret = -errno;
+-		ntfs_log_debug("fstrim_limits: closedir failed\n");
+-		return ret;
+-	}
+-
+-	return ret;
++	return 0;
+ }
+ 
+ #define FSTRIM_BUFSIZ 4096
+@@ -247,7 +238,7 @@ static int fstrim(ntfs_volume *vol, void *data)
+ 	u64 start = range->start;
+ 	u64 len = range->len;
+ 	u64 minlen = range->minlen;
+-	u64 discard_granularity, discard_max_bytes;
++	u64 discard_alignment, discard_granularity, discard_max_bytes;
+ 	u8 *buf = NULL;
+ 	LCN start_buf;
+ 	int ret;
+@@ -279,9 +270,14 @@ static int fstrim(ntfs_volume *vol, void *data)
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	ret = fstrim_limits(vol, &discard_granularity, &discard_max_bytes);
++	ret = fstrim_limits(vol, &discard_alignment,
++			&discard_granularity, &discard_max_bytes);
+ 	if (ret)
+ 		return ret;
++	if (discard_alignment != 0) {
++		ntfs_log_debug("fstrim: backing device is not aligned for discards\n");
++		return -EOPNOTSUPP;
++	}
+ 	if (discard_granularity > vol->cluster_size) {
+ 		ntfs_log_debug("fstrim: discard granularity of backing device is larger than cluster size\n");
+ 		return -EOPNOTSUPP;
+-- 
+1.9.3
+

@@ -1,0 +1,144 @@
+diff -urN Canna37b1.ORIG/Canna.conf Canna37b1/Canna.conf
+--- Canna37b1.ORIG/Canna.conf	2003-09-27 15:23:08.000000000 +0900
++++ Canna37b1/Canna.conf	2003-09-27 19:09:13.000000000 +0900
+@@ -114,7 +114,7 @@
+ #  define DefErrDir /usr/spool/canna
+ #  define DefLibCannaDir /usr/lib
+ # else
+-#  define DefErrDir /var/log
++#  define DefErrDir /var/log/canna
+ #  define DefLibCannaDir $(cannaExecPrefix)/lib
+ # endif
+ #endif
+@@ -140,16 +140,18 @@
+ # define ModernElfLinkAvailable NO
+ #endif
+ 
+-cannaPrefix = DefCannaPrefix
++cannaPrefix = /usr
+ cannaExecPrefix = $(cannaPrefix)
+ cannaBinDir = $(cannaExecPrefix)/bin
+ cannaSrvDir = DefCannaSrvDir
+ XCOMM cannaLibDir = /var/lib/canna
+ XCOMM cannaLibDir = /var/db/canna
+ cannaLibDir = DefCannaLibDir
+-XCOMM cannaManDir = $(cannaPrefix)/share/man
+-cannaManDir = $(cannaPrefix)/man
++cannaManDir = $(cannaPrefix)/share/man
++XCOMM cannaManDir = $(cannaPrefix)/man
+ cannaIncDir = $(cannaPrefix)/include/canna
++cannaDocDir = $(cannaPrefix)/share/doc/@cannapkgver@
++cannaShareDir = $(cannaPrefix)/share/canna
+ 
+ libCannaDir = DefLibCannaDir
+ ErrDir  = DefErrDir
+@@ -158,7 +160,7 @@
+ #define SupportOldWchar 1
+ 
+ /* IPv6を用いる場合は1と定義してください */
+-#define UseInet6 0 /* requires newer IPv6 implementation */
++/* #define UseInet6 0 /* requires newer IPv6 implementation */
+ 
+ /* 3.2系から3.6系までの形式の辞書を作る場合はこれを定義してください */
+ /* #define DIC_3_6_COMPAT */
+@@ -237,7 +239,7 @@
+ /* #define UseInstalledLibCanna YES */
+ #define UseInstalledLibCanna NO
+ 
+-DicDir   = $(cannaLibDir)/dic
++DicDir   = /var/lib/canna/dic
+ 
+ /* ここから下は変更不要です */
+ 
+diff -urN Canna37b1.ORIG/Imakefile Canna37b1/Imakefile
+--- Canna37b1.ORIG/Imakefile	2003-09-25 15:30:20.000000000 +0900
++++ Canna37b1/Imakefile	2003-09-27 19:09:00.000000000 +0900
+@@ -55,6 +55,7 @@
+ 	@echo "#define CANNAHOSTFILE '$(cannaLibDir)/cannahost'" >> junkjunk
+ 	@echo "/* for lib/canna */" >> junkjunk
+ 	@echo "#define CANNALIBDIR '$(cannaLibDir)'" >> junkjunk
++	@echo "#define CANNASHAREDIR '$(cannaShareDir)'" >> junkjunk
+ 	@echo "#define SUPPORT_OLD_WCHAR '$(supportOldWchar)'" >> junkjunk
+ 	@echo "/* for scripts */" >> junkjunk
+ 	@echo "#define CANNABINDIR $(cannaBinDir)" >> junkjunk
+@@ -83,6 +84,7 @@
+ 	 echo "#define CANNAHOSTFILE \"$(cannaLibDir)/cannahost\"";\
+ 	 echo "/* for lib/canna */";\
+ 	 echo "#define CANNALIBDIR \"$(cannaLibDir)\""; \
++	 echo "#define CANNASHAREDIR \"$(cannaShareDir)\""; \
+ 	 echo "#define SUPPORT_OLD_WCHAR $(supportOldWchar)"; \
+ 	 echo "/* for scripts */";\
+ 	 echo "#define CANNABINDIR $(cannaBinDir)"; \
+diff -urN Canna37b1.ORIG/dic/phono/Imakefile Canna37b1/dic/phono/Imakefile
+--- Canna37b1.ORIG/dic/phono/Imakefile	2002-10-19 17:27:40.000000000 +0900
++++ Canna37b1/dic/phono/Imakefile	2003-09-27 19:09:00.000000000 +0900
+@@ -27,9 +27,10 @@
+ 
+        ROMAJI_DIC_DEF = -DSHIFT
+ 
+-               DICDIR = $(cannaLibDir)/dic
+-            SAMPLEDIR = $(cannaLibDir)/sample
+-         SAMPLESRCDIR = $(cannaLibDir)/sample/src
++               DICDIR = $(DicDir)
++        CANNASHAREDIR = $(cannaShareDir)
++            SAMPLEDIR = $(cannaDocDir)/sample
++         SAMPLESRCDIR = $(cannaDocDir)/sample/src
+ 
+     KPDEF = default.kpdef jdaemon.kpdef just.kpdef kaisoku.kpdef kana.kpdef \
+             lan5.kpdef matsu.kpdef newjis.kpdef romaji.kpdef sokuon.kpdef \
+@@ -69,7 +70,7 @@
+ MakeDirectories(install,$(DICDIR))
+ MakeDirectories(install,$(SAMPLESRCDIR))
+ 
+-InstallMultiple($(ROMKANA_TABLES),$(DICDIR))
++InstallMultiple($(ROMKANA_TABLES),$(CANNASHAREDIR))
+ 
+ #ifdef USE_OBSOLETE_STYLE_FILENAME
+ InstallNonExec(default.kpdef,$(SAMPLESRCDIR))
+diff -urN Canna37b1.ORIG/lib/canna/romaji.c Canna37b1/lib/canna/romaji.c
+--- Canna37b1.ORIG/lib/canna/romaji.c	2003-09-17 17:50:53.000000000 +0900
++++ Canna37b1/lib/canna/romaji.c	2003-09-27 19:09:00.000000000 +0900
+@@ -427,7 +427,7 @@
+ 	}
+       }
+       
+-#if 0 /* currently CANNASHAREDDIR is not defined */
++#if 1 /* currently CANNASHAREDDIR is defined */
+       if (retval == (struct RkRxDic *)NULL) { /* added for Debian by ISHIKAWA Mutsumi <ishikawa@linux.or.jp> */
+         extern jrUserInfoStruct *uinfo;
+ 	
+diff -urN Canna37b1.ORIG/misc/Imakefile Canna37b1/misc/Imakefile
+--- Canna37b1.ORIG/misc/Imakefile	2003-03-05 04:23:53.000000000 +0900
++++ Canna37b1/misc/Imakefile	2003-09-27 19:09:00.000000000 +0900
+@@ -48,7 +48,7 @@
+ MakeLintLibSubdirs($(SUBDIRS))
+ MakeLintSubdirs($(SUBDIRS),install.ln,install.ln)
+ 
+-MakeDirectories(install,$(cannaLibDir)/sample/src)
++MakeDirectories(install,$(cannaDocDir)/sample/src)
+ 
+ #ifdef USE_OBSOLETE_STYLE_FILENAME
+ default.canna: default.ca
+@@ -58,8 +58,8 @@
+ 	$(CP) default.ca default.canna
+ #endif
+ 
+-InstallNonExec(default.canna,$(cannaLibDir))
+-InstallNonExec(is.c,$(cannaLibDir)/sample/src)
++InstallNonExec(default.canna,$(cannaDocDir))
++InstallNonExec(is.c,$(cannaDocDir)/sample/src)
+ 
+ clean::
+ 	$(RM) $(PROGRAMS)
+diff -urN Canna37b1.ORIG/misc/initfiles/Imakefile Canna37b1/misc/initfiles/Imakefile
+--- Canna37b1.ORIG/misc/initfiles/Imakefile	2003-02-04 05:13:01.000000000 +0900
++++ Canna37b1/misc/initfiles/Imakefile	2003-09-27 19:09:00.000000000 +0900
+@@ -6,7 +6,7 @@
+ #endif
+ 
+             CANNAROOT = ../..
+-            SAMPLEDIR = $(cannaLibDir)/sample
++            SAMPLEDIR = $(cannaShareDir)
+ 
+ all::
+ 

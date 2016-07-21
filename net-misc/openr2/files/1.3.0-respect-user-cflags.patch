@@ -1,0 +1,15 @@
+diff -uNr openr2-1.3.0.ORIG//configure.in openr2-1.3.0/configure.in
+--- openr2-1.3.0.ORIG//configure.in	2010-05-13 11:59:14.000000000 +0100
++++ openr2-1.3.0/configure.in	2010-05-13 11:59:35.000000000 +0100
+@@ -25,11 +25,6 @@
+ AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE
+ 
+-# let's default to compile with debugging information
+-# most users will not even care about it
+-CFLAGS='-ggdb3 -O0'
+-CXXFLAGS='-ggdb3 -O0'
+-
+ AC_PROG_CC
+ AC_PROG_LIBTOOL
+ AC_LANG([C])

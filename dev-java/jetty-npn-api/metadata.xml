@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+    <longdescription>The Jetty project provides an implementation of the Next Protocol Negotiation TLS Extension (NPN) for OpenJDK 7 or greater. NPN allows the application layer to negotiate which protocol to use over the secure connection.
+
+NPN currently negotiates using SPDY as an application level protocol on port 443, and also negotiates the SPDY version. However, NPN is not SPDY specific in any way. Jetty's NPN implementation, although hosted under the umbrella of the Jetty project, is independent of Jetty (the servlet container); you can use it in any other Java network server.</longdescription>
+</pkgmetadata>

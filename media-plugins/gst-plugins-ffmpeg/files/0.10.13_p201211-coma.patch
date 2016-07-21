@@ -1,0 +1,16 @@
+Some muxers come with a ',' in their name, replace it by '_' as in the other
+places.
+
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegmux.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegmux.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegmux.c
+@@ -936,7 +936,7 @@ gst_ffmpegmux_register (GstPlugin * plug
+     p = type_name;
+ 
+     while (*p) {
+-      if (*p == '.')
++      if (*p == '.' || *p == ',')
+         *p = '_';
+       p++;
+     }

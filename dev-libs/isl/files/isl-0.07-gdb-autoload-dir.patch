@@ -1,0 +1,17 @@
+Install python module into gdb auto-load directory.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -2189,9 +2189,9 @@ install-data-local: $(srcdir)/isl.py
+ 	case $$libisl in \
+ 	'') echo Cannot find isl library name. GDB bindings not installed.;; \
+ 	*) echo $(INSTALL_DATA) $(srcdir)/isl.py \
+-		$(DESTDIR)$(libdir)/$$libisl-gdb.py; \
+-	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"; \
+-	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(libdir)/$$libisl-gdb.py; esac
++		$(DESTDIR)$(prefix)/share/gdb/auto-load$(libdir)/$$libisl-gdb.py; \
++	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(prefix)/share/gdb/auto-load$(libdir)"; \
++	$(INSTALL_DATA) $(srcdir)/isl.py $(DESTDIR)$(prefix)/share/gdb/auto-load$(libdir)/$$libisl-gdb.py; esac
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

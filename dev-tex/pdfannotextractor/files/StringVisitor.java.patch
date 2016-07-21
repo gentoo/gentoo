@@ -1,0 +1,14 @@
+Index: work/source/latex/pax/src/StringVisitor.java
+--- StringVisitor.java.org	2015-11-26 16:20:35.434967156 +0800
++++ work/source/latex/pax/src/StringVisitor.java	2015-11-26 16:20:56.504072659 +0800
+@@ -22,8 +22,8 @@
+ 
+ import java.io.*;
+ import java.util.*;
+-import org.pdfbox.cos.*;
+-import org.pdfbox.exceptions.*;
++import org.apache.pdfbox.cos.*;
++import org.apache.pdfbox.exceptions.*;
+ 
+ public class StringVisitor implements ICOSVisitor {
+ 

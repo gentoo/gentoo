@@ -1,0 +1,16 @@
+ libgnome-desktop/Makefile.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/libgnome-desktop/Makefile.in b/libgnome-desktop/Makefile.in
+index 39209f6..a57b09e 100644
+--- a/libgnome-desktop/Makefile.in
++++ b/libgnome-desktop/Makefile.in
+@@ -388,7 +388,7 @@ libgnome_desktop_2_la_SOURCES = \
+ 
+ libgnome_desktop_2_la_LIBADD = \
+ 	$(XLIB_LIBS)		\
+-	$(GNOME_DESKTOP_LIBS)
++	$(GNOME_DESKTOP_LIBS) -lm
+ 
+ libgnome_desktop_2_la_LDFLAGS = \
+ 	-version-info $(LT_VERSION) \

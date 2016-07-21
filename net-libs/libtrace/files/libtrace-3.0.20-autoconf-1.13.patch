@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -61,7 +61,7 @@
+ ])
+ 
+ # Put all our automake definitions in config.h
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ # Checks for C and C++ compilers
+ AC_PROG_CC

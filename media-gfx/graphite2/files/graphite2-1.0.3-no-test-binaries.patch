@@ -1,0 +1,9 @@
+diff -urN graphite2-1.0.3.old/tests/comparerenderer/CMakeLists.txt graphite2-1.0.3/tests/comparerenderer/CMakeLists.txt
+--- graphite2-1.0.3.old/tests/comparerenderer/CMakeLists.txt	2011-10-28 10:28:43.688602080 +0200
++++ graphite2-1.0.3/tests/comparerenderer/CMakeLists.txt	2011-10-28 10:30:06.694603526 +0200
+@@ -132,4 +132,4 @@
+ # comparetest(scheherazade_arb Scheherazadegr.ttf udhr_arb.txt --rtl)
+ 
+ # comparerenderer can also be used for font testing
+-install(TARGETS comparerenderer EXPORT comparerenderer RUNTIME DESTINATION bin)
++# install(TARGETS comparerenderer EXPORT comparerenderer RUNTIME DESTINATION bin)

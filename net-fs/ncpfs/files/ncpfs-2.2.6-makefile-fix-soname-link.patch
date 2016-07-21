@@ -1,0 +1,15 @@
+diff -Naurp ncpfs-2.2.6.orig/lib/Makefile.in ncpfs-2.2.6/lib/Makefile.in
+--- ncpfs-2.2.6.orig/lib/Makefile.in	2014-08-12 23:23:27.149141996 -0400
++++ ncpfs-2.2.6/lib/Makefile.in	2014-08-12 23:23:55.969141824 -0400
+@@ -99,9 +99,10 @@ distclean: mrproper
+ install_shared: $(SHARED_NCPLIB_BIN)
+ 	$(INSTALL) -d $(DESTDIR)$(libsodir)
+ 	$(INSTALL) $(SHARED_NCPLIB_BIN) $(DESTDIR)$(libsodir)
++	ln -sf $(SHARED_NCPLIB_BIN) $(DESTDIR)$(libsodir)/$(SHARED_NCPLIB)
++	ln -sf $(SHARED_NCPLIB_BIN) $(DESTDIR)$(libsodir)/$(SHARED_NCPLIB_SONAME)
+ 
+ install-dev: install_shared install_static
+-	ln -sf $(SHARED_NCPLIB_SONAME) $(DESTDIR)$(libsodir)/$(SHARED_NCPLIB)
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/ncp
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/ncp/ext
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/ncp/kernel

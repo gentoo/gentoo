@@ -1,0 +1,9 @@
+--- gengetopt-2.22.6/Makefile.am
++++ gengetopt-2.22.6/Makefile.am
+@@ -19,5 +19,3 @@
+ 
+ EXTRA_DIST = configure TODO LICENSE gl/m4/gnulib-cache.m4
+ SUBDIRS = gl src doc tests
+-
+-gengetoptdoc_DATA = ChangeLog COPYING NEWS THANKS INSTALL README LICENSE
+\ No newline at end of file

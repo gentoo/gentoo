@@ -1,0 +1,172 @@
+--- src/linux/snd_alsa.c.old
++++ src/linux/snd_alsa.c
+@@ -22,13 +22,22 @@
+ 	$Id: quake2-icculus-0.16.1-alsa.patch,v 1.2 2015/03/27 06:40:34 mr_bones_ Exp $
+ */
+ 
+-#define BUFFER_SIZE 4096
++//    quake2-r0.16.1/src/linux/snd_alsa.c 2010-08-29 09:58:50
++//    Alsa Redux Patch
++#define BUFFER_SIZE 16384
+ 
+ #include <alsa/asoundlib.h>
+ 
+ #include "../client/client.h"
+ #include "../client/snd_loc.h"
+ 
++#define AFSize 4 
++static int  snd_inited=0;
++static snd_pcm_t *playback_handle;
++static int AlsaFrames;
++static int AlsaPos;
++
++/*
+ #define snd_buf BUFFER_SIZE
+ 
+ static int  snd_inited;
+@@ -43,17 +52,58 @@
+ cvar_t *snddevice;
+ 
+ static int tryrates[] = { 44100, 22051, 11025, 8000 };
+-
++*/
+ qboolean SNDDMA_Init (void)
+ {
+-  int i;
+-  int err;
+-  int buffersize;
+-  int framesize;
+-  int format;
++  int confirm;
++  int latency;
++  Com_Printf("Setting up ALSA driver .....\n");
+ 
+   if (snd_inited) { return 1; }
+-  
++  int s_khz=(Cvar_Get("s_khz", "22", CVAR_ARCHIVE))->value;
++  if (s_khz <22 ){
++    Com_Printf("Low Performance 11KHz.\n");
++    Cvar_Set("s_mixahead","0.2");
++    dma.speed=11025;
++    AlsaFrames=2048;
++    latency=200000;
++    }else{
++    Com_Printf("High Quality 48KHz.\n");     
++        Cvar_Set("s_mixahead","0.1");      
++     dma.speed=48000;
++    AlsaFrames=4800;
++    latency=110000;}
++
++  dma.channels = 2;
++  dma.samplebits = 16;
++  AlsaPos = 0;
++  playback_handle = NULL;
++      confirm =
++snd_pcm_open(&playback_handle,"default",SND_PCM_STREAM_PLAYBACK,SND_PCM_NONBLOCK);
++      if (confirm < 0) {
++            Com_Printf("ALSA sound error: cannot open device \n"); 
++            return 0;}
++        confirm = snd_pcm_set_params(playback_handle,
++                    SND_PCM_FORMAT_S16_LE,
++                                      SND_PCM_ACCESS_RW_INTERLEAVED,
++                                      dma.channels,
++                                      dma.speed,
++                                      1,//soft resample
++                                      latency);
++     if (confirm < 0){ 
++                Com_Printf("Alsa error: %s\n", snd_strerror(confirm));
++                return 0;}
++    confirm = snd_pcm_prepare(playback_handle);
++        if (confirm  < 0) {
++        Com_Printf("...failed.\n");
++         return 0;}
++
++  int rambuffer = (BUFFER_SIZE+AlsaFrames)*AFSize;
++  dma.buffer=malloc(rambuffer);    
++  dma.samplepos = 0;
++  dma.samples = BUFFER_SIZE*dma.channels;
++  dma.submission_chunk = 16;
++  /*
+   sndbits = Cvar_Get("sndbits", "16", CVAR_ARCHIVE);
+   sndspeed = Cvar_Get("sndspeed", "0", CVAR_ARCHIVE);
+   sndchannels = Cvar_Get("sndchannels", "2", CVAR_ARCHIVE);
+@@ -159,7 +209,6 @@
+     return 0;
+   }
+ 
+-  /*
+     buffer_size = snd_pcm_hw_params_get_buffer_size(hw_params);
+     frame_size = (snd_pcm_format_physical_width(format)*dma.channels)/8;
+     
+@@ -172,7 +221,6 @@
+     }
+     
+     snd_buf = buffer_size*frame_size;
+-  */
+ 
+   //snd_buf = BUFFER_SIZE;
+ 
+@@ -183,7 +231,7 @@
+   dma.samples = snd_buf / (dma.samplebits/8);
+   dma.submission_chunk = 1;
+   dma.buffer = (char *)buffer;
+-
++  */
+   snd_inited = 1;
+   return 1;
+ }
+@@ -191,11 +239,25 @@
+ int
+ SNDDMA_GetDMAPos (void)
+ {
+-  if(snd_inited)
+-    return dma.samplepos;
+-  else
+-    Com_Printf ("Sound not inizialized\n");
+-  return 0;
++    int timerpos;
++    int send;
++    int taken;
++    timerpos = snd_pcm_avail(playback_handle);
++    if (timerpos<0){// likely buffer underrun.
++        timerpos = snd_pcm_prepare(playback_handle);
++        timerpos=0;}
++
++    send=AlsaFrames-timerpos;
++    if ( (send+AlsaPos)>BUFFER_SIZE )
++    {    memcpy (dma.buffer+BUFFER_SIZE*AFSize,
++                dma.buffer,AlsaFrames*AFSize);}
++    taken = snd_pcm_writei(playback_handle, dma.buffer+AlsaPos*AFSize, send);    
++    if (taken<0) {taken=0;}    
++
++    AlsaPos+=taken;
++    if (BUFFER_SIZE<=AlsaPos){AlsaPos -= BUFFER_SIZE;}
++    return AlsaPos*dma.channels; 
++
+ }
+ 
+ void
+@@ -205,8 +267,8 @@
+     snd_pcm_drop(playback_handle);
+     snd_pcm_close(playback_handle);
+     snd_inited = 0;
++    free(dma.buffer);
+   }
+-  free(dma.buffer);
+   dma.buffer = NULL;
+ }
+ 
+@@ -217,13 +279,6 @@
+ void
+ SNDDMA_Submit (void)
+ {
+-  int written;
+-  
+-  if ((written = snd_pcm_writei(playback_handle, dma.buffer, snd_buf)) < 0) {
+-    snd_pcm_prepare(playback_handle);
+-    Com_Printf("alsa: buffer underrun\n");
+-  }
+-  dma.samplepos += written/(dma.samplebits/8);
+ }
+ 
+ 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">POE-Component-IKC</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Channel</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Client</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::ClientLite</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Freezer</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::LocalKernel</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Protocol</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Proxy</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Responder</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Server</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Specifier</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Timing</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Util</remote-id>
+  </upstream>
+</pkgmetadata>

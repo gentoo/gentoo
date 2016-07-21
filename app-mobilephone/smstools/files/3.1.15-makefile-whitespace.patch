@@ -1,0 +1,11 @@
+--- smstools3/src/Makefile.old	2014-04-25 23:28:46.324045112 +1000
++++ smstools3/src/Makefile	2014-04-25 23:33:26.453061496 +1000
+@@ -43,7 +43,7 @@
+ 
+ ifneq (,$(findstring SOLARIS,$(CFLAGS)))
+ ifeq (,$(findstring DISABLE_INET_SOCKET,$(CFLAGS)))
+-override LFLAGS += -lsocket -lnsl
++	override LFLAGS += -lsocket -lnsl
+ endif
+ endif
+ 

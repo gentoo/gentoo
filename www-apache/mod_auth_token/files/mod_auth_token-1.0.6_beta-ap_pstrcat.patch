@@ -1,0 +1,13 @@
+Index: mod_auth_token/mod_auth_token.c
+===================================================================
+--- mod_auth_token.orig/mod_auth_token.c
++++ mod_auth_token/mod_auth_token.c
+@@ -64,7 +64,7 @@ static const char *auth_token_set_prefix
+ 	auth_token_config_rec *conf = (auth_token_config_rec*)config;
+ 
+ 	if (arg[len - 1] != '/') {
+-		ap_set_string_slot(cmd, config, apr_pstrcat(cmd->pool, arg, '/'));
++		ap_set_string_slot(cmd, config, apr_pstrcat(cmd->pool, arg, "/", NULL));
+ 		conf->prefix_len = len + 1;
+ 	}
+ 	else {

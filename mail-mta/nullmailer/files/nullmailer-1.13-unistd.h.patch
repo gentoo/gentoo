@@ -1,0 +1,28 @@
+From 5e9316c669e752fcd9058b28952919bccd967640 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Sat, 31 Jan 2015 23:55:48 +0000
+Subject: [PATCH] lib/fdbuf/fdbuf.h: include <unistd.h>
+
+class fdobuf in lib/fdbuf/fdobuf.h makes use of uid_t and gid_t,
+but these are defined in <unistd.h> according to POSIX.  With libc's
+that adhere strictly to standards, like musl, this breaks the build.
+
+We add <unistd.h> to fdbuf.h which is included by fdbuf.h.
+
+Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+---
+ lib/fdbuf/fdbuf.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/fdbuf/fdbuf.h b/lib/fdbuf/fdbuf.h
+index 4b0e9cb..0054b01 100644
+--- a/lib/fdbuf/fdbuf.h
++++ b/lib/fdbuf/fdbuf.h
+@@ -20,6 +20,7 @@
+ #include "config.h"
+ #include <string.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #ifdef _REENTRANT
+ #include <pthread.h>

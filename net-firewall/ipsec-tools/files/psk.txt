@@ -1,0 +1,10 @@
+# THIS IS A SAMPLE FILE!
+#
+# This is a sample file to test Gentoo's ipsec-tools out of the box.
+# Do not use it in production.  See: http://www.ipsec-howto.org/
+#
+# Make sure to switch 192.168.3.21 <-> 192.168.3.25 on the peer
+#
+# Peer IP/FQDN	Secret
+# 192.168.3.25	sample
+192.168.3.21	sample

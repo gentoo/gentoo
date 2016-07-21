@@ -1,0 +1,22 @@
+--- wmtimer.c.orig	2004-01-29 02:45:48.000000000 +0000
++++ wmtimer.c	2008-10-17 20:49:05.000000000 +0100
+@@ -128,7 +128,8 @@
+     switch (mode)
+     {
+       case TIMER:
+-	if (prevSec < thisTime->tm_sec) 
++	if (   (prevSec < thisTime->tm_sec) 
++        || ((prevSec == 59) && (thisTime->tm_sec == 0)))
+ 	{
+ 	  decrementTimer();
+ 	  updateACT();
+@@ -138,7 +139,8 @@
+ 	prevSec = thisTime->tm_sec;
+ 	break;
+       case CHRONO:
+-	if (prevSec < thisTime->tm_sec)
++	if (   (prevSec < thisTime->tm_sec)
++        || ((prevSec == 59) && (thisTime->tm_sec == 0)))
+ 	{
+ 	  incrementTimer();
+ 	  updateACT();

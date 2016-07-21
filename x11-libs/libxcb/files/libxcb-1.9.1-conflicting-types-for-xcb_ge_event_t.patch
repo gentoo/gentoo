@@ -1,0 +1,18 @@
+--- libxcb-1.9.1-orig/src/xcb.h	2013-05-31 01:38:01.000000000 +1000
++++ libxcb-1.9.1/src/xcb.h	2013-11-17 18:30:27.664675840 +1100
+@@ -143,6 +143,7 @@
+  * An event as sent by the XGE extension. The length field specifies the
+  * number of 4-byte blocks trailing the struct.
+  */
++#if 0
+ typedef struct {
+     uint8_t  response_type;  /**< Type of the response */
+     uint8_t  pad0;           /**< Padding */
+@@ -153,6 +154,7 @@
+     uint32_t pad[5];         /**< Padding */
+     uint32_t full_sequence;  /**< full sequence */
+ } xcb_ge_event_t;
++#endif
+ 
+ /**
+  * @brief Generic error.

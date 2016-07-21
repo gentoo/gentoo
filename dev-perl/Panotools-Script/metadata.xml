@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="gui">
+			Installs GUIs for some tools
+		</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">Panotools-Script</remote-id>
+    <remote-id type="cpan-module">Panotools::Makefile</remote-id>
+    <remote-id type="cpan-module">Panotools::Makefile::Comment</remote-id>
+    <remote-id type="cpan-module">Panotools::Makefile::Rule</remote-id>
+    <remote-id type="cpan-module">Panotools::Makefile::Utils</remote-id>
+    <remote-id type="cpan-module">Panotools::Makefile::Variable</remote-id>
+    <remote-id type="cpan-module">Panotools::Matrix</remote-id>
+    <remote-id type="cpan-module">Panotools::Photos</remote-id>
+    <remote-id type="cpan-module">Panotools::Script</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Control</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::ControlMorph</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Image</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::ImageMetadata</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Mask</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Mode</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Option</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Output</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Panorama</remote-id>
+    <remote-id type="cpan-module">Panotools::Script::Line::Variable</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+    <description>Primary Maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Gearman-Server</remote-id>
+    <remote-id type="cpan-module">Gearman::Server</remote-id>
+    <remote-id type="cpan-module">Gearman::Server::Client</remote-id>
+    <remote-id type="cpan-module">Gearman::Server::Job</remote-id>
+    <remote-id type="cpan-module">Gearman::Server::Listener</remote-id>
+  </upstream>
+</pkgmetadata>

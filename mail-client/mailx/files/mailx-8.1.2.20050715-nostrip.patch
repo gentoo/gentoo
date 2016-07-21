@@ -1,0 +1,22 @@
+Index: mailx-8.1.2-0.20050715cvs.orig/Makefile
+===================================================================
+--- mailx-8.1.2-0.20050715cvs.orig.orig/Makefile
++++ mailx-8.1.2-0.20050715cvs.orig/Makefile
+@@ -3,16 +3,7 @@
+ PROG=mail
+ CC=gcc
+ 
+-CFLAGS=-D_BSD_SOURCE -DDEBIAN -g -Wall -IEXT
+-
+-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+-  CFLAGS += -O0
+-else
+-  CFLAGS += -O2
+-endif
+-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+-  LDFLAGS += -s
+-endif
++CFLAGS=-D_BSD_SOURCE -DDEBIAN -g -Wall -IEXT ${EXTRAFLAGS}
+ 
+ SRCS=	version.c aux.c cmd1.c cmd2.c cmd3.c cmdtab.c collect.c \
+ 	edit.c fio.c getname.c head.c v7.local.c lex.c list.c main.c names.c \

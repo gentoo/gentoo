@@ -1,0 +1,16 @@
+Fix build failure with automake-1.13; fixed upstream in >=2.24.15 and >=3.0
+https://bugs.gentoo.org/467520
+
+diff --git a/configure.in b/configure.in
+index 27294c8..798a259 100644
+--- a/configure.in
++++ b/configure.in
+@@ -61,7 +61,7 @@ dnl Initialize automake stuff
+ AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+ 
+ # Specify a configuration file
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ 
+ dnl Initialize libtool
+ AC_PROG_LIBTOOL

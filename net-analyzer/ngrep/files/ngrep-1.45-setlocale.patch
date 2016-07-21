@@ -1,0 +1,23 @@
+Call setlocale to make isprint() decide what's printable depending
+on the current locale.  See bugs.debian.org/307496 .
+
+--- a/ngrep.c
++++ b/ngrep.c
+@@ -97,6 +97,8 @@
+ #include "regex-0.12/regex.h"
+ #endif
+ 
++#include <locale.h>
++
+ #include "ngrep.h"
+ 
+ 
+@@ -195,6 +197,8 @@
+     signal(SIGWINCH, update_windowsize);
+ #endif
+ 
++    setlocale(LC_ALL, "");
++
+     while ((c = getopt(argc, argv, "LNhXViwqpevxlDtTRMs:n:c:d:A:I:O:S:P:F:W:")) != EOF) {
+         switch (c) {
+             case 'W': {

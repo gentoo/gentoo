@@ -1,0 +1,30 @@
+X-Bugs-Gentoo: https://bugs.gentoo.org/358081
+--- libwww-perl-6.01/lib/LWP/Protocol/https.pm
++++ libwww-perl-6.01/lib/LWP/Protocol/https.pm
+@@ -21,25 +21,7 @@
+     }
+     if ($ssl_opts{SSL_verify_mode}) {
+ 	unless (exists $ssl_opts{SSL_ca_file} || exists $ssl_opts{SSL_ca_path}) {
+-	    eval {
+-		require Mozilla::CA;
+-	    };
+-	    if ($@) {
+-		if ($@ =! /^Can't locate Mozilla\/CA\.pm/) {
+-		    $@ = <<'EOT';
+-Can't verify SSL peers without knowning which Certificate Authorities to trust
+-
+-This problem can be fixed by either setting the PERL_LWP_SSL_CA_FILE
+-envirionment variable or by installing the Mozilla::CA module.
+-
+-To disable verification of SSL peers set the PERL_LWP_SSL_VERIFY_HOSTNAME
+-envirionment variable to 0.  If you do this you can't be sure that you
+-communicate with the expected peer.
+-EOT
+-		}
+-		die $@;
+-	    }
+-	    $ssl_opts{SSL_ca_file} = Mozilla::CA::SSL_ca_file();
++	    $ssl_opts{SSL_ca_path} = '/etc/ssl/certs';
+ 	}
+     }
+     $self->{ssl_opts} = \%ssl_opts;

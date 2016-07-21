@@ -1,0 +1,11 @@
+--- common/gr_texture.c.old	2011-09-14 14:23:46.820207882 +0200
++++ common/gr_texture.c	2011-09-14 14:24:22.861203604 +0200
+@@ -431,7 +431,7 @@
+   if (!info_ptr) {
+     goto ERROR;
+   }
+-  if (setjmp (png_ptr->jmpbuf)) {
++  if (setjmp (png_jmpbuf(png_ptr))) {
+     goto ERROR;
+   }
+   png_init_io (png_ptr, file);

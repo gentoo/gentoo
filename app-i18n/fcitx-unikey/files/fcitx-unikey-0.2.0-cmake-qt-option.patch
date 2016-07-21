@@ -1,0 +1,56 @@
+From f0f0d7c1ee5d83f33ceacaf78f4b7845ec2819de Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Sat, 26 Jan 2013 14:45:29 -0500
+Subject: [PATCH] [unikey] option for qt, detect qt 4.8
+
+---
+ CMakeLists.txt              |    7 ++++++-
+ macro-editor/CMakeLists.txt |    4 ++--
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cef1625..5ccf21c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,8 @@ project(fcitx-unikey)
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+ 
++option(ENABLE_QT "Enable Qt based macro editor" On)
++
+ # uninstall target
+ configure_file(
+     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+@@ -21,9 +23,12 @@ set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--as-needed ${CMAKE_MODULE_LINKER_FLAGS}")
+ find_package(Fcitx 4.2.7 REQUIRED)
+ find_package(Libiconv REQUIRED)
+ find_package(Gettext REQUIRED)
+-find_package(Qt4)
++
++if (ENABLE_QT)
++find_package(Qt4 4.8)
+ 
+ pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.7")
++endif (ENABLE_QT)
+ 
+ configure_file(config.h.in config.h)
+ 
+diff --git a/macro-editor/CMakeLists.txt b/macro-editor/CMakeLists.txt
+index fbb2482..145ee0b 100644
+--- a/macro-editor/CMakeLists.txt
++++ b/macro-editor/CMakeLists.txt
+@@ -16,9 +16,9 @@ fcitx_translate_add_sources(
+     ${MACRO_EDITOR_SRCS}
+     ${MACRO_EDITOR_HDRS})
+ 
+-if (NOT QT_FOUND OR NOT FCITX_QT_FOUND)
++if (NOT QT_FOUND OR NOT FCITX_QT_FOUND OR NOT ENABLE_QT)
+     return()
+-endif (NOT QT_FOUND OR NOT FCITX_QT_FOUND)
++endif (NOT QT_FOUND OR NOT FCITX_QT_FOUND OR NOT ENABLE_QT)
+ 
+ include_directories(
+     ${FCITX_QT_INCLUDE_DIRS}
+-- 
+1.7.10
+

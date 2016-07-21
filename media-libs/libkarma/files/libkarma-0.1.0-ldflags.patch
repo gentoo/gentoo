@@ -1,0 +1,11 @@
+--- tools/Makefile~	2007-05-15 18:29:02.000000000 +0200
++++ tools/Makefile	2010-09-12 14:31:31.000000000 +0200
+@@ -40,7 +40,7 @@
+ 	$(CC) $(INCLUDES) $(LDFLAGS) $(CFLAGS) $@.c -o $@  $(LKARMA)
+ 
+ karma_helper: karma_helper.c
+-	$(CC) $(INCLUDES) $(CFLAGS) $@.c -o $@ -lusb
++	$(CC) $(INCLUDES) $(LDFLAGS) $(CFLAGS) $@.c -o $@ -lusb
+ 
+ install:
+ 	../install-sh -m 0755 -d $(DEST)/bin

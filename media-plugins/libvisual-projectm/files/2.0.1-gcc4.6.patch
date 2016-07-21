@@ -1,0 +1,15 @@
+Fix build failure with GCC4.6
+
+http://projectm.svn.sourceforge.net/viewvc/projectm?view=revision&revision=1355
+
+--- trunk/src/projectM-libvisual/actor_projectM.cpp	2009/02/20 19:07:44	1210
++++ trunk/src/projectM-libvisual/actor_projectM.cpp	2011/05/06 12:04:58	1355
+@@ -209,7 +209,7 @@
+  * we aren't with projectm, so just ignore :) */
+ extern "C" VisPalette *lv_projectm_palette (VisPluginData *plugin)
+ {
+-	return NULL;
++	return (VisPalette *) NULL;
+ }
+ 
+ /* This is where the real rendering happens! This function is what we call, many times

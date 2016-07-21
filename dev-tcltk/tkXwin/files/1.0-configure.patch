@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index d92a1bf..6d75569 100755
+--- a/configure
++++ b/configure
+@@ -3534,7 +3534,7 @@ fi
+     
+ 
+ 
+-PKG_TCL=${TCL_PACKAGE_PATH}/tkXwin
++PKG_TCL=${libdir}/tkXwin
+ 
+ 
+ 

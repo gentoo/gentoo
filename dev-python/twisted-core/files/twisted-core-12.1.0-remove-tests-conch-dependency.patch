@@ -1,0 +1,15 @@
+Index: twisted/test/test_strcred.py
+===================================================================
+--- twisted/test/test_strcred.py	(revision 34525)
++++ twisted/test/test_strcred.py	(working copy)
+@@ -352,6 +352,10 @@
+     except ImportError:
+         skip = "PyCrypto is not available"
+ 
++    try:
++        from twisted import conch
++    except ImportError:
++        skip = "Twisted Conch is not available"
+ 
+     def test_isChecker(self):
+         """

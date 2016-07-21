@@ -1,0 +1,86 @@
+--- yatex1.77-orig/docs/yahtmle.tex
++++ yatex1.77/docs/yahtmle.tex
+@@ -1,4 +1,4 @@
+-\def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{eng} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yahtml.info
+ @settitle Yet Another html-mode for Emacs
+--- yatex1.77-orig/docs/yahtmlj.tex
++++ yatex1.77/docs/yahtmlj.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yahtml-ja.info
+ @settitle Yet Another html-mode for Emacs
+--- yatex1.77-orig/docs/yatexe.tex
++++ yatex1.77/docs/yatexe.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*-
++@c \def\lang{jp} % -*- texinfo -*-
+ \input texinfo.tex
+ @setfilename yatex.info
+ @settitle Yet Another tex-mode for Emacs
+@@ -705,7 +705,7 @@
+ @item M-x YaTeX-section-overview
+         @dots{} Generate *Sectioning Lines* buffer
+ @end table
+-@cindex{Generate the listing of sectioning units}
++@cindex Generate the listing of sectioning units
+ from the LaTeX source buffer.  In this listing buffer, typing @kbd{u} on
+ the sectioning command shifts up the corresponding sectioning command in
+ source text and @kbd{d} shifts down.  After marking lines in the listing
+@@ -1087,7 +1087,7 @@
+ @node Invoking image processor, Jump to main file, Jump to corresponding object, Cursor jump
+ @comment  node-name,  next,  previous,  up
+ @section Invoking image processor
+-@cindex{Drawing tool invocation}
++@cindex Drawing tool invocation
+ 
+ `image-including line' described above means such lines as
+ @code{\epsfile@{file=foo.ps@}}.  If you type @kbd{[prefix] g} on that
+@@ -2179,9 +2179,9 @@
+ @table @kbd
+ @item [F]
+ YaTeX:read-position
+-@itemx [A]
++@item [A]
+ Character list which can show up in the brackets
+-@itemx [D]
++@item [D]
+    Return the location specifier such as `[htb]'.  When
+ nothing is entered, omit [] itself.  If the possible characters
+ are "htbp", call this function as
+@@ -2189,9 +2189,9 @@
+ 
+ @item [F]
+ YaTeX:read-coordinates
+-@itemx [A]
++@item [A]
+ Base prompt, X-axis prompt, Y-axis prompt     (each optional)        
+-@itemx [D]
++@item [D]
+   Read the coordinates with the prompt ``BasePrompt X-axisPrompt:'' for
+ X-axis, ``BasePrompt Y-axisPrompt:'' for Y-axis, and return it in the form 
+ of ``(X,Y)''.  The default prompts are @code{Dimension}, @code{X},
+@@ -2199,9 +2199,9 @@
+ 
+ @item [F]
+ YaTeX:check-completion-type
+-@itemx [A]
++@item [A]
+ One of the symbols: 'begin, 'section, or 'maketitle
+-@itemx [D]
++@item [D]
+   Check the current completion type is specified one and cause error if
+ not. The variable @code{YaTeX-current-completion-type} holds the symbol
+ according to the current completion type.
+--- yatex1.77-orig/docs/yatexj.tex
++++ yatex1.77/docs/yatexj.tex
+@@ -1,4 +1,4 @@
+-\def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
++@c \def\lang{jp} % -*- texinfo -*- for Texinfo V.3.1 
+ \input texinfo
+ @setfilename yatex-ja.info
+ @settitle Yet Another tex-mode for Emacs

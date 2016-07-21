@@ -1,0 +1,16 @@
+diff -ru procmail-3.22.orig/src/setid.c procmail-3.22/src/setid.c
+--- procmail-3.22.orig/src/setid.c	2010-02-04 10:05:43 +0100
++++ procmail-3.22/src/setid.c	2010-02-04 10:11:18 +0100
+@@ -15,7 +15,11 @@
+      return EX_USAGE;
+    }
+   endpwent();
+-  if(initgroups(argv[1],p->pw_gid)||setgid(p->pw_gid)||setuid(p->pw_uid))
++  if(
++#ifndef __INTERIX
++  	initgroups(argv[1],p->pw_gid)||
++#endif
++	setgid(p->pw_gid)||setuid(p->pw_uid))
+      return EX_OSERR;
+   if(fopen(CHECK_FILE,"r"))
+    { struct stat stbuf;

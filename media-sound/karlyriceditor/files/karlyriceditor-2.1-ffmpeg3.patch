@@ -1,0 +1,54 @@
+Index: karlyriceditor-2.1/src/ffmpegvideodecoder.cpp
+===================================================================
+--- karlyriceditor-2.1.orig/src/ffmpegvideodecoder.cpp
++++ karlyriceditor-2.1/src/ffmpegvideodecoder.cpp
+@@ -151,12 +151,12 @@ bool FFMpegVideoDecoder::openFile( const
+ 	}
+ 
+ 	// Determine required buffer size and allocate buffer
+-	int numBytes = avpicture_get_size( PIX_FMT_RGB24, d->pCodecCtx->width, d->pCodecCtx->height );
++	int numBytes = avpicture_get_size( AV_PIX_FMT_RGB24, d->pCodecCtx->width, d->pCodecCtx->height );
+ 	d->m_buffer.resize( numBytes );
+ 
+ 	// Assign appropriate parts of buffer to image planes in pFrameRGB
+ 	avpicture_fill( (AVPicture *) d->pFrameRGB, (uint8_t*) d->m_buffer.data(),
+-					PIX_FMT_RGB24, d->pCodecCtx->width, d->pCodecCtx->height );
++					AV_PIX_FMT_RGB24, d->pCodecCtx->width, d->pCodecCtx->height );
+ 
+ 	d->skipFrames = seekto;
+ 	return true;
+@@ -215,7 +215,7 @@ bool FFMpegVideoDecoderPriv::readFrame(
+ 					int w = pCodecCtx->width;
+ 					int h = pCodecCtx->height;
+ 
+-					img_convert_ctx = sws_getCachedContext(img_convert_ctx,w, h, pCodecCtx->pix_fmt, w, h, PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
++					img_convert_ctx = sws_getCachedContext(img_convert_ctx,w, h, pCodecCtx->pix_fmt, w, h, AV_PIX_FMT_RGB24, SWS_BICUBIC, NULL, NULL, NULL);
+ 
+ 					if ( img_convert_ctx == NULL )
+ 					{
+Index: karlyriceditor-2.1/src/ffmpegvideoencoder.cpp
+===================================================================
+--- karlyriceditor-2.1.orig/src/ffmpegvideoencoder.cpp
++++ karlyriceditor-2.1/src/ffmpegvideoencoder.cpp
+@@ -333,7 +333,7 @@ av_log_set_level(AV_LOG_VERBOSE);
+ 	videoCodecCtx->time_base.num = m_videoformat->frame_rate_num;
+ 	videoCodecCtx->time_base.den = m_videoformat->frame_rate_den;
+ 	videoCodecCtx->gop_size = (m_videoformat->frame_rate_den / m_videoformat->frame_rate_num) / 2;	// GOP size is framerate / 2
+-	videoCodecCtx->pix_fmt = PIX_FMT_YUV420P;
++	videoCodecCtx->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	videoCodecCtx->bit_rate = m_videobitrate;
+ 	videoCodecCtx->bit_rate_tolerance = m_videobitrate * av_q2d(videoCodecCtx->time_base);
+ 
+@@ -865,10 +865,10 @@ bool FFMpegVideoEncoderPriv::convertImag
+ 	videoConvertCtx = sws_getCachedContext( videoConvertCtx,
+ 										   m_videoformat->width,
+ 										   m_videoformat->height,
+-										   PIX_FMT_BGRA,
++										   AV_PIX_FMT_BGRA,
+ 										   m_videoformat->width,
+ 										   m_videoformat->height,
+-										   PIX_FMT_YUV420P,
++										   AV_PIX_FMT_YUV420P,
+ 										   SWS_BICUBIC,
+ 										   NULL,
+ 										   NULL,

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Rough equivalents to XV's Sharpen algorithm
+
+cat > sharpen50.pgm << xx
+P2 3 3 18
+8 8 8 8 26 8 8 8 8
+xx
+cat > sharpen66.pgm << xx
+P2 3 3 18
+7 7 7 7 34 7 7 7 7
+xx
+cat > sharpen75.pgm << xx
+P2 3 3 6
+2 2 2 2 14 2 2 2 2
+xx
+cat > sharpen90.pgm << xx
+P2 3 3 2
+0 0 0 0 10 0 0 0 0
+xx
+
+for x in `ls *.crw | cut -d. -f1`
+do
+  dcraw -f -c $x.crw | pnmconvol sharpen66.pgm \
+	| cjpeg -quality 90 > $x.jpeg
+  touch -r $x.crw $x.jpeg
+done

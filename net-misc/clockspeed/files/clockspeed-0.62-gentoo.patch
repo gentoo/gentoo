@@ -1,0 +1,225 @@
+--- clockspeed-0.62/INSTALL
++++ clockspeed-0.62/INSTALL
+@@ -4,8 +4,8 @@
+ 
+ Things you have to decide before starting:
+ 
+-* Where the clockspeed package will be installed, normally
+-/usr/local/clockspeed. To change this directory, edit conf-home now.
++* Where the clockspeed package will be installed, normally /usr. 
++To change this directory, edit conf-home now.
+ 
+ 
+ How to install:
+@@ -16,9 +16,9 @@
+     or with gethrtime(). The compiler must support a 64-bit type, either
+     long or long long.
+ 
+- 2. Install the programs, the man pages, and /etc/leapsecs.dat:
++ 2. Install the programs, the man pages, and /var/lib/clockspeed/leapsecs.dat:
+        # make setup check
+-    Put /usr/local/clockspeed/bin into $PATH.
++    Put /usr/bin into $PATH.
+ 
+ 
+ How to test:
+@@ -39,20 +39,20 @@
+  5. Start clockspeed:
+        # clockspeed &
+     Give clockspeed a time measurement:
+-       # sntpclock 1.2.3.4 > /usr/local/clockspeed/adjust &
++       # sntpclock 1.2.3.4 > /var/lib/clockspeed/adjust &
+ 
+  6. After a few hours, give clockspeed a second time measurement:
+-       # sntpclock 1.2.3.4 > /usr/local/clockspeed/adjust &
++       # sntpclock 1.2.3.4 > /var/lib/clockspeed/adjust &
+     You can run sntpclock as a non-root user, if you change
+-    /usr/local/clockspeed/adjust to be owned by that user. I recommend
++    /var/lib/clockspeed/adjust to be owned by that user. I recommend
+     this for security.
+ 
+  7. After a few days, check how well clockspeed has adjusted your clock:
+        % sntpclock 1.2.3.4 | clockview
+     Check how many attoseconds clockspeed thinks are in one tick:
+-       % clockview < /usr/local/clockspeed/etc/atto
++       % clockview < /var/lib/clockspeed/atto
+     Give it another time measurement:
+-       # sntpclock 1.2.3.4 > /usr/local/clockspeed/adjust &
++       # sntpclock 1.2.3.4 > /var/lib/clockspeed/adjust &
+ 
+  8. Repeat step 7 after a few weeks, then after a few months. Your clock
+     should now be synchronized to the remote clock to within a few
+@@ -70,7 +70,7 @@
+     Here 5.6.7.8 is the master's IP address. Set the client's clock:
+        # clockadd < adjustment
+     Finally, run clockspeed as in step 5, and do
+-       % taiclock 5.6.7.8 > /usr/local/clockspeed/adjust &
++       % taiclock 5.6.7.8 > /var/lib/clockspeed/adjust &
+     after a few days.
+ 
+ 
+--- clockspeed-0.62/Makefile
++++ clockspeed-0.62/Makefile
+@@ -7,8 +7,8 @@
+ auto-ccld.sh: \
+ conf-cc conf-ld warn-auto.sh
+ 	( cat warn-auto.sh; \
+-	echo CC=\'`head -1 conf-cc`\'; \
+-	echo LD=\'`head -1 conf-ld`\' \
++	echo CC=\'`head -n 1 conf-cc`\'; \
++	echo LD=\'`head -n 1 conf-ld`\' \
+ 	) > auto-ccld.sh
+ 
+ auto-str: \
+@@ -21,7 +21,7 @@
+ 
+ auto_home.c: \
+ auto-str conf-home
+-	./auto-str auto_home `head -1 conf-home` > auto_home.c
++	./auto-str auto_home `head -n 1 conf-home` > auto_home.c
+ 
+ auto_home.o: \
+ compile auto_home.c
+--- clockspeed-0.62/clockspeed.1
++++ clockspeed-0.62/clockspeed.1
+@@ -12,7 +12,7 @@
+ 
+ .B clockspeed
+ reads the real-time measurements from
+-.BR /usr/local/clockspeed/adjust .
++.BR /var/lib/clockspeed/adjust .
+ Each real-time measurement must be a single 16-byte packet,
+ expressed as a TAI64NA time adjustment to the local UNIX clock.
+ 
+@@ -24,12 +24,12 @@
+ .B clockspeed
+ can figure out the number of real attoseconds per tick.
+ It saves this number in TAI64NA format in
+-.BR /usr/local/clockspeed/etc/atto ,
++.BR /var/lib/clockspeed/atto ,
+ overwriting
+-.B /usr/local/clockspeed/etc/atto.tmp
++.B /var/lib/clockspeed/atto.tmp
+ for reliability.
+ It reads
+-.B /usr/local/clockspeed/etc/atto
++.B /var/lib/clockspeed/atto
+ when it starts up again.
+ 
+ .B clockspeed
+--- clockspeed-0.62/clockspeed.c
++++ clockspeed-0.62/clockspeed.c
+@@ -83,7 +83,7 @@
+   if (deriv <= 0) return;
+   if (deriv > 200000000) return; /* 5Hz ticks? be serious */
+ 
+-  fd = open_trunc("etc/atto.tmp");
++  fd = open_trunc("/var/lib/clockspeed/atto.tmp");
+   if (fd == -1) return;
+ 
+   buf[0] = 0;
+@@ -119,7 +119,7 @@
+   if (fsync(fd) == -1) { close(fd); return; }
+   if (close(fd) == -1) return; /* NFS stupidity */
+ 
+-  rename("etc/atto.tmp","etc/atto"); /* if it fails, bummer */
++  rename("/var/lib/clockspeed/atto.tmp","/var/lib/clockspeed/atto"); /* if it fails, bummer */
+ }
+ 
+ void main()
+@@ -136,16 +136,16 @@
+   if (chdir(auto_home) == -1) _exit(1);
+   umask(033);
+ 
+-  if (open_read("etc/atto") == 0) {
++  if (open_read("/var/lib/clockspeed/atto") == 0) {
+     r = read(0,buf,sizeof buf);
+     if (r == sizeof buf)
+       deriv = nano(buf);
+     close(0);
+   }
+ 
+-  if (fifo_make("adjust",0600) == -1) if (errno != error_exist) _exit(1);
+-  if (open_read("adjust") != 0) _exit(1);
+-  if (open_write("adjust") == -1) _exit(1);
++  if (fifo_make("/var/lib/clockspeed/adjust",0600) == -1) if (errno != error_exist) _exit(1);
++  if (open_read("/var/lib/clockspeed/adjust") != 0) _exit(1);
++  if (open_write("/var/lib/clockspeed/adjust") == -1) _exit(1);
+ 
+   now(&first);
+ 
+--- clockspeed-0.62/clockview.c
++++ clockspeed-0.62/clockview.c
+@@ -1,5 +1,5 @@
+ #include <sys/types.h>
+-#include <sys/time.h>
++#include <time.h>
+ #include "substdio.h"
+ #include "readwrite.h"
+ #include "strerr.h"
+--- clockspeed-0.62/conf-home
++++ clockspeed-0.62/conf-home
+@@ -1,4 +1,4 @@
+-/usr/local/clockspeed
++/usr
+ 
+ This is the clockspeed home directory. Programs will be installed in
+ .../bin.
+--- clockspeed-0.62/error.h
++++ clockspeed-0.62/error.h
+@@ -1,7 +1,7 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;
+--- clockspeed-0.62/hier.c
++++ clockspeed-0.62/hier.c
+@@ -2,7 +2,9 @@
+ 
+ void hier()
+ {
+-  c("/","etc","leapsecs.dat",-1,-1,0644);
++  d("/var/lib","clockspeed",-1,-1,0755);
++  
++  c("/","var/lib/clockspeed","leapsecs.dat",-1,-1,0644);
+ 
+   h(auto_home,-1,-1,0755);
+ 
+--- clockspeed-0.62/leapsecs.3
++++ clockspeed-0.62/leapsecs.3
+@@ -52,10 +52,10 @@
+ 
+ .B leapsecs_read
+ reads the leap-second table from
+-.BR /etc/leapsecs.dat .
++.BR /var/lib/clockspeed/leapsecs.dat .
+ It returns 0 on success, -1 on error.
+ If
+-.B /etc/leapsecs.dat
++.B /var/lib/clockspeed/leapsecs.dat
+ does not exist,
+ .B leapsecs_read
+ treats it as an empty file.
+--- clockspeed-0.62/leapsecs_read.c
++++ clockspeed-0.62/leapsecs_read.c
+@@ -2,7 +2,6 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
+-extern int errno;
+ #include "tai.h"
+ #include "leapsecs.h"
+ 
+@@ -18,7 +17,7 @@
+   int i;
+   struct tai u;
+ 
+-  fd = open("/etc/leapsecs.dat",O_RDONLY | O_NDELAY);
++  fd = open("/var/lib/clockspeed/leapsecs.dat",O_RDONLY | O_NDELAY);
+   if (fd == -1) {
+     if (errno != ENOENT) return -1;
+     if (leapsecs) free(leapsecs);

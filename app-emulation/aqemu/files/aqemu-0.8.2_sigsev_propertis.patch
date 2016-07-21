@@ -1,0 +1,41 @@
+--- a/Device_Manager_Widget.cpp	2011-09-13 21:45:58.883389571 +0200
++++ b/Device_Manager_Widget.cpp	2011-09-13 21:55:01.401866022 +0200
+@@ -981,9 +981,10 @@
+ 		{
+ 			if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
+ 			{
+-				finded = true;
+-				
+ 				Storage_Devices.removeAt( fx );
++				ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
++				finded = true;
++				break;
+ 			}
+ 		}
+ 		
+@@ -993,10 +994,24 @@
+ 					 "Incorrect Device!" );
+ 			return;
+ 		}
++		else
++		{
++			// Rename items
++			for( int ix = 0, count = 0; ix < ui.Devices_List->count(); ++ix )
++			{
++				if( ui.Devices_List->item(ix)->data(512).toString().contains("device") )
++				{
++					ui.Devices_List->item(ix)->setData( 512, QString("device%1").arg(count) );
++					++count;
++				}
++			}
++
++			emit Device_Changet();
++			return;
++		}
+ 	}
+ 	
+ 	ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
+-	
+ 	emit Device_Changet();
+ }
+ 

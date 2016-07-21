@@ -1,0 +1,21 @@
+ coot.desktop | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/coot.desktop b/coot.desktop
+index 74aecf3..8668018 100644
+--- a/coot.desktop
++++ b/coot.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+ Type=Application
+-Encoding=UTF-8
+ Name=Coot
+ Comment=Macromolecular model builder
+ Exec=coot
+-Icon=coot.png
++Icon=coot
+ Terminal=true
+-Categories=Science;Graphics
+-MimeType=chemical/x-pdb;chemical/x-mmcif;chemical/x-mdl-molfile
++Categories=Science;Graphics;
++MimeType=chemical/x-pdb;chemical/x-mmcif;chemical/x-mdl-molfile;

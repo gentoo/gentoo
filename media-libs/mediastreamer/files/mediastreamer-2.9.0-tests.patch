@@ -1,0 +1,26 @@
+From d9f448013bd5ea92ce42c99ef3338932ec694b62 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Wed, 9 Oct 2013 21:18:28 +0200
+Subject: [PATCH] fix tests
+
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 4b923a9..4aec221 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -873,6 +873,9 @@ case "$target_os" in
+ 		#hack for macport
+ 		CUNIT_LIBS+=" -lncurses"
+ 	;;
++	*linux*)
++		CUNIT_LIBS+=" -lncurses"
++	;;
+ 	*mingw*)
+ 		CPPFLAGS="$CPPFLAGS -D_WIN32_WINNT=0x0501"
+ 		LIBS="$LIBS -lws2_32 -liphlpapi"
+-- 
+1.8.3.2
+

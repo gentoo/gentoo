@@ -1,0 +1,38 @@
+--- a/configure.in
++++ b/configure.in
+@@ -5,30 +5,15 @@
+ 
+ AC_INIT(sniffit.h)
+ 
+-dnl Config of libpcap
+-AC_CONFIG_SUBDIRS(libpcap)
+-
+ dnl Check the C compiler
+ AC_PROG_CC
+ 
+ dnl Check NCURSES availability
+-NCURSES_PATH=/usr/include:/usr/include/ncurses:/usr/include/curses:/usr/local/include:/usr/local/include/ncurses:/usr/local/include/curses:./:./ncurses.h
+-ncurses_warn=0
+-AC_CHECK_LIB(ncurses,main,,ncurses_warn=1)
+-
+-AC_PATH_PROGS(NCURSES_LOCATION,ncurses.h,no,$NCURSES_PATH)
+-if test "$NCURSES_LOCATION" != no; then
+-	echo "#include \"$NCURSES_LOCATION\"" >sn_curses.h
+-	AC_DEFINE(HAVE_NCURSES_H,1)
+-else
+-	ncurses_warn=1
+-fi
+-
+-dnl Print warning for interactive mode
+-if test $ncurses_warn -ne 0; then
+-        AC_MSG_WARN(Interactive mode (-i/-I) will NOT be supported.!)
+-	AC_MSG_WARN(Install ncurses!)       
+-fi
++PKG_CHECK_MODULES(ncurses,ncurses,main,
++	LIBS="$LIBS $ncurses_LIBS"
++	echo "#include <ncurses.h>" > sn_curses.h
++	AC_DEFINE(HAVE_NCURSES_H),
++	AC_MSG_ERROR([ncurses not found]))
+ 
+ dnl Check Shared Memory support
+ AC_CHECK_FUNCS(shmget)

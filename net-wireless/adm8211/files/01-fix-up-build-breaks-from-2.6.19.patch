@@ -1,0 +1,44 @@
+From 108f260412a71614665e8867a3356231af43f374 Mon Sep 17 00:00:00 2001
+From: John W. Linville <linville@tuxdriver.com>
+Date: Tue, 17 Oct 2006 13:02:27 -0400
+Subject: [PATCH] [PATCH] adm8211: fix-up build breaks from 2.6.19
+
+Signed-off-by: John W. Linville <linville@tuxdriver.com>
+---
+ adm8211/adm8211_hw.c |    6 ++----
+ 1 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/adm8211/adm8211_hw.c b/adm8211/adm8211_hw.c
+index a45c74d..f95d798 100644
+--- a/adm8211/adm8211_hw.c
++++ b/adm8211/adm8211_hw.c
+@@ -15,7 +15,6 @@
+  * more details.
+  */
+ 
+-#include <linux/config.h>
+ #include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/moduleparam.h>
+@@ -737,8 +736,7 @@ static void adm8211_interrupt_rci(struct net_device *dev)
+ }
+ 
+ 
+-static irqreturn_t adm8211_interrupt(int irq, void *dev_id,
+-				     struct pt_regs *regs)
++static irqreturn_t adm8211_interrupt(int irq, void *dev_id)
+ {
+ #define ADM8211_INT(x) if (unlikely(stsr & ADM8211_STSR_ ## x)) printk(KERN_DEBUG "%s: " #x "\n", dev->name)
+ 
+@@ -2041,7 +2039,7 @@ static int adm8211_open(struct net_device *dev)
+ 	adm8211_set_rx_mode(dev);
+ 
+ 	retval = request_irq(dev->irq, &adm8211_interrupt,
+-			     SA_SHIRQ, dev->name, dev);
++			     IRQF_SHARED, dev->name, dev);
+ 	if (retval) {
+ 		printk(KERN_ERR "%s: failed to register IRQ handler\n",
+ 		       dev->name);
+-- 
+1.5.2.1
+

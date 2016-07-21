@@ -1,0 +1,20 @@
+diff -ur cmn.old/utils.h cmn/utils.h
+--- cmn.old/utils.h	2009-08-22 02:16:21.000000000 +0300
++++ cmn/utils.h	2009-08-22 02:26:33.000000000 +0300
+@@ -238,13 +238,13 @@
+      same. */
+ 
+   static char* strchr(const char* cs,int c)
+-    {return ::strchr(cs,c);}
++    {return const_cast<char*>(::strchr(cs,c));}
+ 
+   static char* strrchr(const char* cs,int c)
+-    {return ::strrchr(cs,c);}
++    {return const_cast<char*>(::strrchr(cs,c));}
+ 
+   static char* strstr(const char* cs,const char* ct)
+-    {return ::strstr(cs,ct);}
++    {return const_cast<char*>(::strstr(cs,ct));}
+ 
+   static void strcpy(char* s,const char* ct)
+     {::strcpy(s,ct);}

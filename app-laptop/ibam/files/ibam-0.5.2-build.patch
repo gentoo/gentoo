@@ -1,0 +1,42 @@
+--- Makefile
++++ Makefile
+@@ -17,8 +17,8 @@
+ #
+ IBAM_VERSION=0.5.2
+ 
+-CC=g++
+-CFLAGS=-O3 -DIBAM_VERSION=\"$(IBAM_VERSION)\" -Wall
++CXX?=g++
++CXXFLAGS+=-DIBAM_VERSION=\"$(IBAM_VERSION)\" -Wall
+ 
+ PREFIX=/usr
+ 
+@@ -30,23 +30,23 @@
+ all:    ibam
+ 
+ ibam:	ibam.cpp ibam.inl ibam.hpp
+-	$(CC) $(CFLAGS) ibam.cpp -o ibam
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) ibam.cpp -o ibam
+ 
+ krell:	ibam-krell.so
+ 
+ ibam-krell.so: ibam-krell.o
+-	$(CC) $(CFLAGS) -fPIC -shared -Wl -o ibam-krell.so ibam-krell.o
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -fPIC -shared -Wl -o ibam-krell.so ibam-krell.o
+ 
+ ibam-krell.o: ibam-krell.cpp ibam.hpp ibam.inl
+-	$(CC) $(CFLAGS) -fPIC `pkg-config gtk+-2.0 --cflags` `gdk-pixbuf-config --cflags` -c ibam-krell.cpp
++	$(CXX) $(CXXFLAGS) -fPIC `pkg-config gtk+-2.0 --cflags` `gdk-pixbuf-config --cflags` -c ibam-krell.cpp
+ 
+ krell1:	ibam-krell1.so
+ 
+ ibam-krell1.so: ibam-krell1.o
+-	$(CC) $(CFLAGS) -shared -Wl -o ibam-krell1.so ibam-krell1.o
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -shared -Wl -o ibam-krell1.so ibam-krell1.o
+ 
+ ibam-krell1.o: ibam-krell1.cpp ibam.hpp ibam.inl
+-	$(CC) $(CFLAGS) -fPIC `gtk-config --cflags` `imlib-config --cflags-gdk` -c ibam-krell1.cpp
++	$(CXX) $(CXXFLAGS) -fPIC `gtk-config --cflags` `imlib-config --cflags-gdk` -c ibam-krell1.cpp
+ 
+ install: ibam
+ 	$(INSTALL) ./ibam $(PREFIX)/local/bin/

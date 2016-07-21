@@ -1,0 +1,35 @@
+diff --git a/Makefile.am b/Makefile.am
+index df62fdf..b034d32 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1865,7 +1865,7 @@ $(SHELL_ENV_INIT): Makefile stamp-directories
+ 	  echo; \
+ 	  echo 'readonly PKGLIBDIR=$(libdir)/ganeti'; \
+ 	  echo 'readonly LOG_DIR="$$LOCALSTATEDIR/log/ganeti"'; \
+-	  echo 'readonly RUN_DIR="$$LOCALSTATEDIR/run/ganeti"'; \
++	  echo 'readonly RUN_DIR="/run/ganeti"'; \
+ 	  echo 'readonly DATA_DIR="$$LOCALSTATEDIR/lib/ganeti"'; \
+ 	  echo 'readonly CONF_DIR="$$SYSCONFDIR/ganeti"'; \
+ 	} > $@
+@@ -2208,7 +2208,7 @@ dist-release: dist
+ install-exec-local:
+ 	@mkdir_p@ "$(DESTDIR)${localstatedir}/lib/ganeti" \
+ 	  "$(DESTDIR)${localstatedir}/log/ganeti" \
+-	  "$(DESTDIR)${localstatedir}/run/ganeti"
++	  "$(DESTDIR)/run/ganeti"
+ 	for dir in $(SYMLINK_TARGET_DIRS); do \
+ 	  @mkdir_p@  $(DESTDIR)$$dir; \
+ 	done
+diff --git a/lib/pathutils.py b/lib/pathutils.py
+index f075e22..38b02e9 100644
+--- a/lib/pathutils.py
++++ b/lib/pathutils.py
+@@ -62,7 +62,7 @@ ETC_HOSTS = vcluster.ETC_HOSTS
+ DATA_DIR = LOCALSTATEDIR + "/lib/ganeti"
+ LOCK_DIR = LOCALSTATEDIR + "/lock"
+ LOG_DIR = LOCALSTATEDIR + "/log/ganeti"
+-RUN_DIR = LOCALSTATEDIR + "/run/ganeti"
++RUN_DIR = "/run/ganeti"
+ 
+ #: Script to configure master IP address
+ DEFAULT_MASTER_SETUP_SCRIPT = TOOLSDIR + "/master-ip-setup"

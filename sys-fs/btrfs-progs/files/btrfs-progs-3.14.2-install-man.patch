@@ -1,0 +1,13 @@
+diff --git a/Documentation/Makefile b/Documentation/Makefile
+index 034559e..f461bf2 100644
+--- a/Documentation/Makefile
++++ b/Documentation/Makefile
+@@ -75,7 +75,7 @@ install: install-man
+ install-man: man
+ 	$(INSTALL) -d -m 755 $(DESTDIR)$(man8dir)
+ 	$(INSTALL) -m 644 $(GZ_MAN8) $(DESTDIR)$(man8dir)
+-	$(LNS) btrfs-check.8.gz $(DESTDIR)$(man8dir)
++	$(LNS) btrfs-check.8.gz $(DESTDIR)$(man8dir)/btrfsck.8.gz
+ 
+ clean:
+ 	$(RM) *.xml *.xml+ *.8 *.8.gz

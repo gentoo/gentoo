@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library allows to load externally stored user interfaces into
+		programs. This allows alteration of the interface without recompilation
+		of the program.
+		
+		Note that this functionality is now provided in gtk directly
+		(as of version 2.12 of the gtk+ C lib) by the
+		Graphics.UI.Gtk.Builder module.
+	</longdescription>
+</pkgmetadata>

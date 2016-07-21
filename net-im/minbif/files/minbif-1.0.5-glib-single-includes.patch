@@ -1,0 +1,26 @@
+Index: minbif-1.0.5/src/server_poll/daemon_fork.cpp
+===================================================================
+--- minbif-1.0.5.orig/src/server_poll/daemon_fork.cpp
++++ minbif-1.0.5/src/server_poll/daemon_fork.cpp
+@@ -20,7 +20,7 @@
+ #include <cassert>
+ #include <cstring>
+ #include <cerrno>
+-#include <glib/gmain.h>
++#include <glib.h>
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <arpa/inet.h>
+Index: minbif-1.0.5/src/server_poll/inetd.cpp
+===================================================================
+--- minbif-1.0.5.orig/src/server_poll/inetd.cpp
++++ minbif-1.0.5/src/server_poll/inetd.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include <cassert>
+-#include <glib/gmain.h>
++#include <glib.h>
+ 
+ #include "inetd.h"
+ #include "irc/irc.h"

@@ -1,0 +1,15 @@
+--- ASSP_1.3.3.7-Install/ASSP/assp.pl	2007-10-20 13:10:09.000000000 -0400
++++ ASSP_1.3.3.7-Install_orig/ASSP/assp.pl	2007-10-20 13:09:47.000000000 -0400
+@@ -83,11 +83,7 @@
+ if($ARGV[0]) {
+  $base=$ARGV[0];
+ } else {
+- # the last one is the one used if all else fails
+- foreach ('.','assp','/usr/local/assp','/home/assp','/etc/assp','/usr/assp','/applications/assp','/assp','.') {
+-  $base=$_;
+-  last if -e "/etc/assp/assp.cfg";
+- }
++  $base='$base/';
+ }
+ if ( !-e "/usr/share/assp/images/noIcon.png")
+ { die "Abort: folder 'images' not correctly installed";}

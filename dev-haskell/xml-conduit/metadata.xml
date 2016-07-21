@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This package provides parsing and rendering functions for XML. It is based on the datatypes found in the xml-types package. This package is broken up into the following modules:
+		
+		* Text.XML: DOM-based parsing and rendering. This is the most commonly used module.
+		
+		* Text.XML.Cursor: A wrapper around "Text.XML" which allows bidirectional traversing of the DOM, similar to XPath. (Note: Text.XML.Cursor.Generic is the same concept, but will work with any node representation.)
+		
+		* Text.XML.Unresolved: A slight modification to "Text.XML" which does not require all entities to be resolved at parsing. The datatypes are slightly more complicated here, and therefore this module is only recommended when you need to deal directly with raw entities.
+		
+		* Text.XML.Stream.Parse: Streaming parser, including some streaming parser combinators.
+		
+		* Text.XML.Stream.Render: Streaming renderer.
+		
+		Additionally, the xml-hamlet package &lt;http://hackage.haskell.org/package/xml-hamlet&gt; provides a more convenient syntax for creating XML documents. For a more thorough tutorial on this library, please see &lt;http://www.yesodweb.com/book/xml-enumerator&gt;.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">snoyberg/xml</remote-id>
+	</upstream>
+</pkgmetadata>

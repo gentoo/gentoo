@@ -1,0 +1,22 @@
+--- LexmarkProtocol300c.cc.orig	2000-11-21 09:06:22.000000000 +0100
++++ LexmarkProtocol300c.cc	2004-06-16 13:28:04.397060286 +0200
+@@ -69,7 +69,7 @@
+ Jet **LexmarkProtocol300c::createJets(int *numJets, Map *imageMap)
+ {
+ 	*numJets = 6;
+-	class Jet **jets = new (Jet *)[6];
++	class Jet **jets = new Jet*[6];
+ 	jets[0] = new Jet(0,9,0,imageMap,LEFT_JET,0,8);
+ 	jets[1] = new Jet(1,0,0,imageMap,RIGHT_JET,0,8);
+ 	jets[2] = new Jet(2,-9,20,imageMap,LEFT_JET,1,8);
+--- LexmarkProtocolBW.cc.orig	2000-11-21 09:06:22.000000000 +0100
++++ LexmarkProtocolBW.cc	2004-06-16 13:32:51.291509280 +0200
+@@ -68,7 +68,7 @@
+ Jet **LexmarkProtocolBW::createJets(int *numJets, Map *imageMap)
+ {
+ 	*numJets = 2;
+-	class Jet **jets = new (Jet *)[2];
++	class Jet **jets = new Jet*[2];
+ 	jets[0] = new Jet(0,9,0,imageMap,LEFT_JET,0,28);
+ 	jets[1] = new Jet(0,0,0,imageMap,RIGHT_JET,0,28);
+ 

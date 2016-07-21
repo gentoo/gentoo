@@ -1,0 +1,14 @@
+diff --git a/m4/ost_socket.m4 b/m4/ost_socket.m4
+index bd9db7c..122c938 100644
+--- a/m4/ost_socket.m4
++++ b/m4/ost_socket.m4
+@@ -93,6 +93,9 @@ AC_DEFUN([OST_SYS_SOCKET],[
+                 AC_CHECK_HEADERS([linux/netfilter_ipv4.h linux/netfilter_ipv6.h],,,
+                     [#ifdef HAVE_LIMITS_H
+                     #include <limits.h>
++                    #endif
++                    #ifdef HAVE_NETINET_IN_H
++                    #include <netinet/in.h>
+                     #endif])
+                 if test "$ac_cv_header_linux_netfilter_ipv4_h" = "yes" &&
+                    [ test "$ac_cv_header_linux_netfilter_ipv6_h" = "yes" &&

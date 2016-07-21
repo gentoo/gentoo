@@ -1,0 +1,11 @@
+--- a/contrib/php/php_auth_nds.c
++++ b/contrib/php/php_auth_nds.c
+@@ -1102,7 +1102,7 @@
+ 	php_info_print_table_end();
+ }
+ 
+-function_entry auth_nds_functions[] = {
++zend_function_entry auth_nds_functions[] = {
+ 	PHP_FE(auth_bindery,			NULL)
+ 	PHP_FE(auth_nds,			NULL)
+ 	PHP_FE(auth_tree,			NULL)

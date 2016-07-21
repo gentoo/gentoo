@@ -1,0 +1,12 @@
+diff -Nuar db-5.2.28.orig//dist/aclocal/sql.m4 db-5.2.28//dist/aclocal/sql.m4
+--- db-5.2.28.orig//dist/aclocal/sql.m4	2011-06-10 09:50:45.000000000 -0700
++++ db-5.2.28//dist/aclocal/sql.m4	2011-07-15 17:02:54.646521189 -0700
+@@ -91,7 +91,7 @@
+ # !!! END COPIED from autoconf distribution
+ 
+ sqlite_dir=$srcdir/../lang/sql/sqlite
+-(cd sql && eval "\$SHELL ../$sqlite_dir/configure --disable-option-checking $ac_sub_configure_args CPPFLAGS=\"-I.. $CPPFLAGS\" --enable-amalgamation=$db_cv_sql_amalgamation --enable-readline=$with_readline" && cat build_config.h >> config.h) || exit 1
++(cd sql && eval "\$SHELL $sqlite_dir/configure --disable-option-checking $ac_sub_configure_args CPPFLAGS=\"-I.. $CPPFLAGS\" --enable-amalgamation=$db_cv_sql_amalgamation --enable-readline=$with_readline" && cat build_config.h >> config.h) || exit 1
+ 
+ # Configure JDBC if --enable-jdbc
+ if test "$db_cv_jdbc" != "no"; then

@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/ypbind
+
+# Set any command line options you want to pass to ypbind.
+YPBIND_OPTS=""

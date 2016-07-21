@@ -1,0 +1,75 @@
+From 64526ea7d3b5ec04f398bd28cb4e505e6a0f3218 Mon Sep 17 00:00:00 2001
+From: Stanislas Marquis <stnsls@gmail.com>
+Date: Sun, 9 Jan 2011 08:40:00 +0100
+Subject: [PATCH] [mongo] [cmake] Fix problems with Linux x64.
+
+---
+ modules/native/mongodb/CMakeLists.txt     |   11 +++++++++--
+ modules/native/mongodb/mongodb_mod.cpp    |    2 +-
+ modules/native/mongodb/src/CMakeLists.txt |    8 ++++++--
+ 3 files changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/modules/native/mongodb/CMakeLists.txt b/modules/native/mongodb/CMakeLists.txt
+index ba7e5cf..bf2d869 100644
+--- a/modules/native/mongodb/CMakeLists.txt
++++ b/modules/native/mongodb/CMakeLists.txt
+@@ -8,6 +8,10 @@ falcon_define_module( FALCON_MODULE mongo )
+ 
+ message( STATUS "Adding mongodb module" )
+ 
++if ( NOT MSVC )
++    option( MONGO_HAVE_STDINT "MongoDB problem with int64_t?" OFF )
++endif()
++
+ ##
+ #   Find Falcon
+ #
+@@ -28,8 +32,11 @@ add_subdirectory( src )
+ if ( MSVC )
+     add_definitions( -DMONGO_USE__INT64 )
+ else()
+-    #add_definitions( -DMONGO_HAVE_STDINT )
+-    add_definitions( -DMONGO_USE_LONG_LONG_INT )
++    if ( MONGO_HAVE_STDINT )
++        add_definitions( -DMONGO_HAVE_STDINT )
++    else()
++        add_definitions( -DMONGO_USE_LONG_LONG_INT )
++    endif()
+ endif()
+ 
+ ##
+diff --git a/modules/native/mongodb/mongodb_mod.cpp b/modules/native/mongodb/mongodb_mod.cpp
+index 6102664..4d47fac 100644
+--- a/modules/native/mongodb/mongodb_mod.cpp
++++ b/modules/native/mongodb/mongodb_mod.cpp
+@@ -1321,7 +1321,7 @@ BSONIter::makeItem( const bson_type tp,
+         //...
+         break;
+     case bson_long:
+-        it = new Item( bson_iterator_long_raw( iter ) );
++        it = new Item( (int64) bson_iterator_long_raw( iter ) );
+         break;
+     case bson_eoo:
+     default:
+diff --git a/modules/native/mongodb/src/CMakeLists.txt b/modules/native/mongodb/src/CMakeLists.txt
+index 48cdaef..d883af3 100644
+--- a/modules/native/mongodb/src/CMakeLists.txt
++++ b/modules/native/mongodb/src/CMakeLists.txt
+@@ -7,8 +7,12 @@ include_directories( BEFORE . )
+ if ( MSVC )
+     add_definitions( -DMONGO_USE__INT64 )
+ else()
+-    add_definitions( -DMONGO_USE_LONG_LONG_INT )
+-    #add_definitions( --std=c99 )
++    add_definitions( -fPIC )
++    if ( MONGO_HAVE_STDINT )
++        add_definitions( -DMONGO_HAVE_STDINT )
++    else()
++        add_definitions( -DMONGO_USE_LONG_LONG_INT )
++    endif()
+ endif()
+ 
+ set( MONGO_SRCS
+-- 
+1.7.9.1
+

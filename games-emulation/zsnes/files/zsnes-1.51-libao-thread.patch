@@ -1,0 +1,25 @@
+--- linux/audio.c.old   2007-01-09 20:19:12.000000000 -0500 
++++ linux/audio.c   2007-12-30 20:33:07.000000000 -0500 
+@@ -177,11 +177,7 @@ 
+   }
+   else
+   {
+-    if (pthread_create(&audio_thread, 0, SoundThread_ao, 0))
+-    {
+-      puts("pthread_create() failed.");
+-    }
+-    else if (pthread_mutex_init(&audio_mutex, 0))
++    if (pthread_mutex_init(&audio_mutex, 0))
+     {
+       puts("pthread_mutex_init() failed.");
+     }
+@@ -189,6 +185,10 @@
+     {
+       puts("pthread_cond_init() failed.");
+     }
++    else if (pthread_create(&audio_thread, 0, SoundThread_ao, 0))
++    {
++      puts("pthread_create() failed.");
++    }
+     InitSampleControl();
+   }

@@ -1,0 +1,35 @@
+diff -ru werken.xpath/build.xml werken.xpath-patched/build.xml
+--- werken.xpath/build.xml	2000-11-19 21:45:16.000000000 -0500
++++ werken.xpath-patched/build.xml	2005-07-14 21:14:01.000000000 -0400
+@@ -49,6 +49,9 @@
+     <!-- JDK1.1 collections -->
+     <property name="coll.import" value="com.sun.java.util.collections"/>
+     <available classname="${coll.import}.Collection" property="coll.present"/>
++	<path id="lib.classpath">
++		<fileset dir="${lib.dir}" includes="**/*.jar"/>
++	</path>
+   </target>
+ 
+   <!-- =================================================================== -->
+@@ -174,7 +177,8 @@
+     <javac srcdir="${build.src}"
+            destdir="${build.dest}"
+            debug="${debug}"
+-           optimize="${optimize}">
++           optimize="${optimize}"
++		   classpathref="lib.classpath">
+     </javac>
+   </target>
+ 
+diff -ru werken.xpath/src/com/werken/xpath/Test.java werken.xpath-patched/src/com/werken/xpath/Test.java
+--- werken.xpath/src/com/werken/xpath/Test.java	2000-10-23 23:45:32.000000000 -0400
++++ werken.xpath-patched/src/com/werken/xpath/Test.java	2005-07-14 21:22:42.000000000 -0400
+@@ -57,7 +57,7 @@
+       System.err.println("Results :: " + results);
+ 
+     }
+-    catch (JDOMException jde)
++    catch (Exception jde)
+     {
+       jde.printStackTrace(System.err);
+     }

@@ -1,0 +1,20 @@
+Revert changes made to fix HDFFV-8944
+
+https://bugs.gentoo.org/show_bug.cgi?id=530746
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,12 +115,7 @@
+ AM_CXXFLAGS="${AM_CXXFLAGS}"
+ AM_FCFLAGS="${AM_FCFLAGS}"
+ AM_CPPFLAGS="${AM_CPPFLAGS}"
+-# Added to address HDFFV-8944
+-if test "x$prefix" = xNONE; then
+-  AM_LDFLAGS="$AM_LDFLAGS -L$ac_default_prefix/lib"
+-else
+-  AM_LDFLAGS="$AM_LDFLAGS -L$prefix/lib"
+-fi
++AM_LDFLAGS="${AM_LDFLAGS}"
+ CFLAGS="${CFLAGS}"
+ CXXFLAGS="${CXXFLAGS}"
+ FCFLAGS="${FCFLAGS}"

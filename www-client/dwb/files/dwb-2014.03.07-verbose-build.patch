@@ -1,0 +1,159 @@
+--- dwb-2014.03.07/dwbem/Makefile
++++ dwb-2014.03.07/dwbem/Makefile
+@@ -27,12 +27,10 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJ)
+-	@echo $(CC) -o $@
+-	@$(CC) $(OBJ) -o $@ $(LDFLAGS)
++	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+ 
+ %.o: %.c
+-	@echo $(CC) $< 
+-	@$(CC) $(CFLAGS) -c $< -o $@ $(CPPFLAGS)
++	$(CC) $(CFLAGS) -c $< -o $@ $(CPPFLAGS)
+ 
+ clean: 
+ 	rm -f $(TARGET) $(OBJ)
+--- dwb-2014.03.07/dwbremote/Makefile
++++ dwb-2014.03.07/dwbremote/Makefile
+@@ -27,12 +27,10 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(SHARED_OBJ) main.o
+-	@echo $(CC) -o $@
+-	@$(CC) $(OBJ) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
++	$(CC) $(OBJ) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ %.o: %.c 
+-	@echo $(CC) $< 
+-	@$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
++	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+ 
+ debug: 
+ 	make CFLAGS="$(DCFLAGS)"
+--- dwb-2014.03.07/exar/Makefile
++++ dwb-2014.03.07/exar/Makefile
+@@ -14,12 +14,10 @@
+ all: $(SHARED_OBJ)
+ 
+ $(TARGET): $(OBJ)
+-	@echo $(CC) -o $@
+-	@$(CC) $(OBJ) -o $@ $(CFLAGS) $(CPPFLAGS)
++	$(CC) $(OBJ) -o $@ $(CFLAGS) $(CPPFLAGS)
+ 
+ %.o: %.c 
+-	@echo $(CC) $< 
+-	@$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
++	$(CC) -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
+ 
+ debug: 
+ 	make CFLAGS="$(DCFLAGS)"
+--- dwb-2014.03.07/Makefile
++++ dwb-2014.03.07/Makefile
+@@ -14,18 +14,18 @@
+ $(TARGET): $(SUBDIRS:%=%.subdir-make)
+ 
+ %.subdir-make: $(SUBDIR_BUILD_FIRST:%=%.subdir-buildfirst)
+-	@$(MAKE) $(MFLAGS) -C $*
++	$(MAKE) $(MFLAGS) -C $*
+ 
+ #$(SRCDIR)/%: $(SUBDIR_BUILD_FIRST:%=%.subdir-buildfirst)
+ 
+ %.subdir-buildfirst: 
+-	@$(MAKE) $(MFLAGS) -C $*
++	$(MAKE) $(MFLAGS) -C $*
+ 
+ clean:  $(SUBDIRS:%=%.subdir-clean) $(SUBDIR_BUILD_FIRST:%=%.subdir-cleanfirst) $(SUBDIR_BUILD_LIB:%=%.subdir-cleanlib)
+ 	-$(RM) -r sandbox
+ 
+ %.subdir-clean %.subdir-cleanfirst %.subdir-cleanlib:
+-	@$(MAKE) $(MFLAGS) clean -C $*
++	$(MAKE) $(MFLAGS) clean -C $*
+ 
+ 
+ install: $(TARGET) install-man install-data
+--- dwb-2014.03.07/scripts/lib/Makefile
++++ dwb-2014.03.07/scripts/lib/Makefile
+@@ -1,6 +1,6 @@
+ # See COPYING for copyright and license details
+ TARGETS := $(patsubst %.js.in, %.js, $(wildcard *.js.in)) 
+-CFLAGS := -std=c99 -Wall -Wextra -pedantic -Werror -O2
++CFLAGS += -std=c99 -Wall -Wextra -pedantic
+ 
+ all: $(TARGETS)
+ 
+@@ -9,7 +9,7 @@
+ 	@./minify $< $@
+ 
+ minify: minify.c
+-	$(CC) $< -o $@ ${CFLAGS} ${CPPFLAGS}
++	$(CC) $< -o $@ ${CFLAGS} ${CPPFLAGS} ${LDFLAGS}
+ 
+ clean:  
+ 	$(RM) $(TARGETS)
+--- dwb-2014.03.07/src/Makefile
++++ dwb-2014.03.07/src/Makefile
+@@ -26,30 +26,25 @@
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJ) 
+-	@echo $(CC) -o $@
+-	@$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS) 
++	$(CC) $(OBJ) -o $(TARGET) $(LDFLAGS) 
+ 
+ -include $(OBJ:.o=.d)
+ -include $(DOBJ:.do=.dd)
+ 
+ %.o: %.c %.h config.h dwb.h
+-	@echo $(CC) $<
+-	@$(CC) -c -o $@ $< $(CFLAGS) $(CPPFLAGS) 
++	$(CC) -c -o $@ $< $(CFLAGS) $(CPPFLAGS) 
+ 
+ debug: $(DTARGET)
+ 
+ deps.d: %.c %.h
+-	@echo "$(CC) -MM $@"
+-	@$(CC) $(CFLAGS) -MM $< -o $@
++	$(CC) $(CFLAGS) -MM $< -o $@
+ 
+ 
+ %.do: %.c %.h config.h
+-	@echo "${CC} $<"
+-	@$(CC) -c -o $@ $< $(DCFLAGS) 
++	$(CC) -c -o $@ $< $(DCFLAGS) 
+ 
+ $(DTARGET): $(DOBJ) ../exar/exar.o ../dwbremote/dwbremote.o
+-	@echo "$(CC) $@"
+-	@$(CC) $(DOBJ) ../exar/exar.o ../dwbremote/dwbremote.o -o $(DTARGET) $(LDFLAGS) 
++	$(CC) $(DOBJ) ../exar/exar.o ../dwbremote/dwbremote.o -o $(DTARGET) $(LDFLAGS) 
+ 
+ dependencies: $(DEPS)
+ 
+--- dwb-2014.03.07/src/util/Makefile
++++ dwb-2014.03.07/src/util/Makefile
+@@ -30,20 +30,16 @@
+ all: $(OUTFILES)
+ 
+ $(TLDS_H): $(TLDS_IN) $(MKTLDS)
+-	@echo gen $(notdir $@)
+-	@./$(MKTLDS) < $(TLDS_IN) > $@
++	./$(MKTLDS) < $(TLDS_IN) > $@
+ 
+ $(MKTLDS): $(MKTLDS_SRC)
+-	@echo $(CC) $< 
+-	@$(CC) -o $@ $< $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
++	$(CC) -o $@ $< $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
+ 
+ $(HSTS_PRELOAD): $(HSTS) $(TRANSPORT_SECURITY_CERTS) $(TRANSPORT_SECURITY_JSON)
+-	@echo gen $(notdir $@)
+-	@./$(HSTS) > $@
++	./$(HSTS) > $@
+ 
+ $(HSTS): $(HSTS).c
+-	@echo $(CC) $< 
+-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $(HSTS) $(HSTS).c $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o $(HSTS) $(HSTS).c $(LDFLAGS)
+ 
+ clean: 
+ 	$(RM) $(OUTFILES) $(GEN_TOOLS)

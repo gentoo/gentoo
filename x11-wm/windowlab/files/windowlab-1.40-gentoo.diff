@@ -1,0 +1,53 @@
+--- Makefile.orig	2009-11-05 21:04:45.000000000 +0000
++++ Makefile	2010-05-30 15:31:04.047559352 +0000
+@@ -5,18 +5,18 @@
+ EXTRA_LIBS += -lXext
+ 
+ # Set this to the hardcoded location of all files if it's not /
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ # Set this to the directory, below PREFIX, where man pages 
+ # are expected. Below this directory, the target "install"
+ # will put "windowlab.1x" in section "man1".
+-MANBASE = /man
++MANBASE = /share/man
+ 
+ # Set this to the location of the X installation you want to compile against
+-XROOT = /usr/X11R6
++XROOT = /usr
+ 
+ # Some flexibility for configuration location
+-CONFPREFIX = $(PREFIX)
++CONFPREFIX =
+ CONFDIR = /etc/X11/windowlab
+ 
+ # Set this to the location of the global configuration files
+@@ -43,7 +43,6 @@
+ 
+ # --------------------------------------------------------------------
+ 
+-CC = gcc
+ ifndef CFLAGS
+ CFLAGS = -g -O2 -Wall -W
+ endif
+@@ -63,15 +62,15 @@
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(OBJS) $(LDPATH) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDPATH) $(LIBS) -o $@
+ 
+ $(OBJS): %.o: %.c $(HEADERS)
+ 	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+ 
+ install: all
+-	mkdir -p $(BINDIR) && install -m 755 -s $(PROG) $(BINDIR)
+-	mkdir -p $(MANDIR) && install -m 644 $(MANPAGE) $(MANDIR) && gzip -9vfn $(MANDIR)/$(MANPAGE)
+-	mkdir -p $(CFGDIR) && cp -i windowlab.menurc $(CFGDIR)/windowlab.menurc && chmod 644 $(CFGDIR)/windowlab.menurc
++	install -D -m 755 $(PROG) $(BINDIR)/$(PROG)
++	install -D -m 644 $(MANPAGE) $(MANDIR)/windowlab.1
++	install -D -m 644 windowlab.menurc $(CFGDIR)/windowlab.menurc
+ 
+ clean:
+ 	rm -f $(PROG) $(OBJS)

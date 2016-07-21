@@ -1,0 +1,16 @@
+--- yatex1.73-orig/yatexhlp.el	2006-12-24 07:25:29.000000000 +0100
++++ yatex1.73/yatexhlp.el	2008-05-12 12:19:02.000000000 +0200
+@@ -9,12 +9,7 @@
+ 			 (cond (YaTeX-japan "jp")
+ 			       (t "eng"))))
+       (help-dir
+-       (cond
+-	((and (boundp 'site-directory) site-directory) site-directory)
+-	((string-match "\\.app/" doc-directory)	;For Emacs.app(Darwin)
+-	 (expand-file-name "../site-lisp" doc-directory))
+-	(YaTeX-emacs-19 (expand-file-name "../../site-lisp" doc-directory))
+-	(t exec-directory))))
++       "/usr/share/emacs/etc/yatex"))
+   (defvar YaTeX-help-file
+     (expand-file-name help-file help-dir)
+     "*Help file of LaTeX/TeX commands or macros.")

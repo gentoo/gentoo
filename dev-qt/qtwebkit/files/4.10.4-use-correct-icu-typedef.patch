@@ -1,0 +1,40 @@
+From 916f00008b602ae1b260106e7fb1274d2282f61f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jan=20Kundr=C3=A1t?= <jkt@flaska.net>
+Date: Tue, 3 Sep 2013 16:59:35 +0200
+Subject: [PATCH] ICU has defined UChar32 to be an int32_t since 2002
+
+This fixes the build failure of qtwebkit23 on my Gentoo machine.
+---
+ Source/WTF/wtf/unicode/qt4/UnicodeQt4.h     |    2 +-
+ Source/WTF/wtf/unicode/wchar/UnicodeWchar.h |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/WTF/wtf/unicode/qt4/UnicodeQt4.h b/Source/WTF/wtf/unicode/qt4/UnicodeQt4.h
+index a2d1ad4..392d2db 100644
+--- a/Source/WTF/wtf/unicode/qt4/UnicodeQt4.h
++++ b/Source/WTF/wtf/unicode/qt4/UnicodeQt4.h
+@@ -69,7 +69,7 @@ typedef uint16_t UChar;
+ #endif
+ 
+ #if !USE(ICU_UNICODE)
+-typedef uint32_t UChar32;
++typedef int32_t UChar32;
+ #endif
+ 
+ namespace WTF {
+diff --git a/Source/WTF/wtf/unicode/wchar/UnicodeWchar.h b/Source/WTF/wtf/unicode/wchar/UnicodeWchar.h
+index 10c2026..db8944e 100644
+--- a/Source/WTF/wtf/unicode/wchar/UnicodeWchar.h
++++ b/Source/WTF/wtf/unicode/wchar/UnicodeWchar.h
+@@ -31,7 +31,7 @@
+ #include <wtf/unicode/UnicodeMacrosFromICU.h>
+ 
+ typedef wchar_t UChar;
+-typedef uint32_t UChar32;
++typedef int32_t UChar32;
+ 
+ namespace WTF {
+ namespace Unicode {
+-- 
+1.7.1
+

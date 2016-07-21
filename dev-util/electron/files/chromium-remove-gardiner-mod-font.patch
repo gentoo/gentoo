@@ -1,0 +1,13 @@
+diff --git a/test_runner.gyp b/test_runner.gyp
+index 30ffa75..8838bdf 100644
+--- a/components/test_runner/test_runner.gyp
++++ b/components/test_runner/test_runner.gyp
+@@ -162,8 +162,6 @@
+             'files': [
+               'resources/fonts/AHEM____.TTF',
+               'resources/fonts/fonts.conf',
+-              '../../third_party/gardiner_mod/GardinerModBug.ttf',
+-              '../../third_party/gardiner_mod/GardinerModCat.ttf',
+             ]
+           }],
+         }],

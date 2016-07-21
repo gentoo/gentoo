@@ -1,0 +1,13 @@
+https://lists.gnu.org/archive/html/bug-bash/2014-06/msg00046.html
+
+--- a/builtins/shopt.def
++++ b/builtins/shopt.def
+@@ -160,7 +160,7 @@ static struct {
+   { "compat32", &shopt_compat32, set_compatibility_level },
+   { "compat40", &shopt_compat40, set_compatibility_level },
+   { "compat41", &shopt_compat41, set_compatibility_level },
+-  { "compat42", &shopt_compat41, set_compatibility_level },
++  { "compat42", &shopt_compat42, set_compatibility_level },
+ #if defined (READLINE)
+   { "complete_fullquote", &complete_fullquote, (shopt_set_func_t *)NULL},
+   { "direxpand", &dircomplete_expand, shopt_set_complete_direxpand },

@@ -1,0 +1,28 @@
+ vmd-1.9.1/src/CUDAMarchingCubes.cu | 1 +
+ vmd-1.9.1/src/CUDAQuickSurf.cu     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/vmd-1.9.1/src/CUDAMarchingCubes.cu b/vmd-1.9.1/src/CUDAMarchingCubes.cu
+index 5bfe7bf..36faaf0 100755
+--- a/vmd-1.9.1/src/CUDAMarchingCubes.cu
++++ b/vmd-1.9.1/src/CUDAMarchingCubes.cu
+@@ -45,6 +45,7 @@
+ #include "CUDAMarchingCubes.h"
+ #include <thrust/scan.h>
+ #include <thrust/functional.h>
++#include <thrust/device_ptr.h>
+ 
+ // The number of threads to use for triangle generation 
+ // (limited by shared memory size)
+diff --git a/vmd-1.9.1/src/CUDAQuickSurf.cu b/vmd-1.9.1/src/CUDAQuickSurf.cu
+index a21ebde..56a42c8 100755
+--- a/vmd-1.9.1/src/CUDAQuickSurf.cu
++++ b/vmd-1.9.1/src/CUDAQuickSurf.cu
+@@ -22,6 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <cuda.h>
++#include <thrust/device_ptr.h>
+ 
+ #if CUDART_VERSION < 4000
+ #error The VMD QuickSurf feature requires CUDA 4.0 or later

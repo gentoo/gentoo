@@ -1,0 +1,49 @@
+diff -urN gtkmathview-0.8.0_old/src/widget/gtkmathview_common.h gtkmathview-0.8.0/src/widget/gtkmathview_common.h
+--- gtkmathview-0.8.0_old/src/widget/gtkmathview_common.h	2011-03-01 12:17:35.000000000 +0300
++++ gtkmathview-0.8.0/src/widget/gtkmathview_common.h	2011-03-01 12:25:00.000000000 +0300
+@@ -22,6 +22,20 @@
+ 
+ #include <gtk/gtkwidget.h>
+ 
++#if GTKMATHVIEW_USES_CUSTOM_READER
++#include "c_customXmlReader.h"
++#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##custom_reader
++#elif GTKMATHVIEW_USES_LIBXML2_READER
++#include <libxml/xmlreader.h>
++#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##libxml2_reader
++#elif GTKMATHVIEW_USES_LIBXML2
++#include <libxml/tree.h>
++#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##libxml2
++#elif GTKMATHVIEW_USES_GMETADOM
++#include <gdome.h>
++#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##gmetadom
++#endif
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+@@ -45,24 +59,16 @@
+   typedef void*                     GtkMathViewReaderData;
+ 
+ #if GTKMATHVIEW_USES_CUSTOM_READER
+-#include "c_customXmlReader.h"
+-#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##custom_reader
+   typedef void*                     GtkMathViewModelId;
+   typedef const char*               GtkMathViewModelString;
+ #elif GTKMATHVIEW_USES_LIBXML2_READER
+-#include <libxml/xmlreader.h>
+-#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##libxml2_reader
+   typedef void*                     GtkMathViewModelId;
+   typedef const xmlChar*            GtkMathViewModelString;
+ #elif GTKMATHVIEW_USES_LIBXML2
+-#include <libxml/tree.h>
+-#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##libxml2
+   typedef xmlElement*               GtkMathViewModelId;
+   typedef xmlDoc*                   GtkMathViewModelDocument;
+   typedef const xmlChar*            GtkMathViewModelString;
+ #elif GTKMATHVIEW_USES_GMETADOM
+-#include <gdome.h>
+-#define GTKMATHVIEW_METHOD_NAME(name) gtk_math_view_##name##__##gmetadom
+   typedef GdomeElement*             GtkMathViewModelId;
+   typedef GdomeDocument*            GtkMathViewModelDocument;
+   typedef GdomeDOMString*           GtkMathViewModelString;

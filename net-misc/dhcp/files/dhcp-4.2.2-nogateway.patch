@@ -1,0 +1,46 @@
+http://bugs.gentoo.org/265531
+
+--- dhcp-4.2.2/client/scripts/linux
++++ dhcp-4.2.2/client/scripts/linux
+@@ -193,12 +193,14 @@
+     ifconfig $interface inet $new_ip_address $new_subnet_arg \
+ 					$new_broadcast_arg $mtu_arg
+     # Add a network route to the computed network address.
+-    for router in $new_routers; do
+-      if [ "x$new_subnet_mask" = "x255.255.255.255" ] ; then
+-	route add -host $router dev $interface
+-      fi
+-      route add default gw $router $metric_arg dev $interface
+-    done
++    if [ x$PEER_ROUTERS = x ] || [ x$PEER_ROUTERS = xyes ]; then
++      for router in $new_routers; do
++        if [ "x$new_subnet_mask" = "x255.255.255.255" ] ; then
++	  route add -host $router dev $interface
++        fi
++        route add default gw $router $metric_arg dev $interface
++      done
++    fi
+   else
+     # we haven't changed the address, have we changed other options           
+     # that we wish to update?
+@@ -244,12 +246,14 @@
+       ifconfig $interface:0 inet $alias_ip_address $alias_subnet_arg
+       route add -host $alias_ip_address dev $interface:0
+     fi
+-    for router in $new_routers; do
+-      if [ "x$new_subnet_mask" = "x255.255.255.255" ] ; then
+-	route add -host $router dev $interface
+-      fi
+-      route add default gw $router $metric_arg dev $interface
+-    done
++    if [ x$PEER_ROUTERS = x ] || [ x$PEER_ROUTERS = xyes ]; then
++      for router in $new_routers; do
++        if [ "x$new_subnet_mask" = "x255.255.255.255" ] ; then
++	  route add -host $router dev $interface
++        fi
++        route add default gw $router $metric_arg dev $interface
++      done
++    fi
+     make_resolv_conf
+     exit_with_hooks 0
+   fi

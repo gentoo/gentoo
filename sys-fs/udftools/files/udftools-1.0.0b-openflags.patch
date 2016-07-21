@@ -1,0 +1,15 @@
+From: Magnus Granberg <zorry@ume.nu>
+https://bugs.gentoo.org/232100
+Remove nonsense O_CREAT flag
+
+--- pktsetup/pktsetup.c	2008-06-19 00:27:08.000000000 +0200
++++ pktsetup/pktsetup.c	2008-06-19 00:20:31.000000000 +0200
+@@ -85,7 +85,7 @@
+ {
+ 	int pkt_fd, dev_fd, cmd;
+ 
+-	if ((pkt_fd = open(pkt_device, O_RDONLY | O_CREAT)) == -1) {
++	if ((pkt_fd = open(pkt_device, O_RDONLY)) == -1) {
+ 		perror("open packet device");
+ 		return;
+ 	}

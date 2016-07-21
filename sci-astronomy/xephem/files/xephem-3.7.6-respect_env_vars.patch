@@ -1,0 +1,129 @@
+diff --git a/GUI/xephem/Makefile b/GUI/xephem/Makefile
+index b4c26f2..ab4f256 100644
+--- a/GUI/xephem/Makefile
++++ b/GUI/xephem/Makefile
+@@ -10,9 +10,9 @@
+ # one executable, xephem.
+ 
+ # These -I and -L flags point to the supporting XEphem libraries
+-LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I../../libjpegd -I../../libpng -I../../libz
+-LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L../../libjpegd -L../../libpng -L../../libz
+-LIBLIB = -lastro -lip -llilxml -ljpegd -lpng -lz
++LIBINC = -I../../libastro -I../../libip -I../../liblilxml
++LIBLNK = -L../../libastro -L../../libip -L../../liblilxml
++LIBLIB = -lastro -lip -llilxml -ljpeg -lpng -lz
+ 
+ # MOTIFI is the directory containing the Xm directory of include files.
+ # MOTIFL is the directory containing the libXm.a library.
+@@ -32,12 +32,9 @@ endif
+ 
+ # for linux and Apple OS X
+ # some systems now use just /usr/X11 (not /usr/X11R6)
+-CC = gcc
+-CLDFLAGS = -g
+-CFLAGS = $(LIBINC) $(CLDFLAGS) -O2 -Wall -I$(MOTIFI) -I/usr/X11R6/include
+-LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) -L/usr/X11R6/lib
++CFLAGS := $(LIBINC) $(CFLAGS)
+ XLIBS = -lXm -lXp -lXt -lXext -lXmu -lX11
+-LIBS = $(XLIBS) $(LIBLIB) -lm
++LIBS = $(LIBLNK) $(XLIBS) $(LIBLIB) -lm
+ 
+ # for ppc Apple OS X to make universal (i386 and ppc binary), requires
+ # Xcode 2.2, /Developers/SDK/MacOSX10.4u.sdk and all libs, including libXm,
+@@ -187,12 +184,9 @@ xephem.1: xephem.man
+ 	nroff -man $? > $@
+ 
+ libs:
+-	cd ../../libastro; make
+-	cd ../../libip; make
+-	cd ../../libjpegd; make
+-	cd ../../liblilxml; make
+-	cd ../../libpng; make
+-	cd ../../libz; make
++	$(MAKE) -C ../../libastro
++	$(MAKE) -C ../../libip
++	$(MAKE) -C ../../liblilxml
+ 
+ clean:
+ 	rm -fr *.o ../../lib*/*.[ao]
+diff --git a/libastro/Makefile b/libastro/Makefile
+index b1ab0bf..62c5412 100644
+--- a/libastro/Makefile
++++ b/libastro/Makefile
+@@ -4,8 +4,6 @@
+ # compiler and flags
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+@@ -83,11 +81,11 @@ OBJS =			\
+ 	vsop87_data.o
+ 
+ libastro.a: $(HS) $(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libastro.so: $(HS) $(OBJS)
+-	$(CC) -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libastro.a
+diff --git a/libip/Makefile b/libip/Makefile
+index 35cb9c6..cba71e1 100644
+--- a/libip/Makefile
++++ b/libip/Makefile
+@@ -2,8 +2,7 @@
+ # (C) 2001 Elwood Charles Downey
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -I../libastro -O2 -Wall
++CFLAGS += -I../libastro
+ 
+ # macosx universal binary
+ # CFLAGS= -I../libastro -O2 -Wall -arch i386 -arch ppc
+@@ -36,11 +35,11 @@ OBJS =	\
+ HS = ip.h fsmatch.h
+ 
+ libip.a: $(HS)	$(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libip.so:    $(OBJS)
+-	gcc -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libip.a
+diff --git a/liblilxml/Makefile b/liblilxml/Makefile
+index 9ab98cb..85e7889 100644
+--- a/liblilxml/Makefile
++++ b/liblilxml/Makefile
+@@ -4,8 +4,6 @@
+ # compiler and flags
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+@@ -27,8 +25,8 @@ HS = lilxml.h
+ OBJS = lilxml.o base64.o
+ 
+ liblilxml.a: $(HS) $(OBJS)
+-	ar r $@ $(OBJS)
+-	ranlib $@
++	$(AR) r $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ liltest: liltest.o liblilxml.a
+ 	$(CC) $(LDFLAGS) -o liltest liltest.o liblilxml.a

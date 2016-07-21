@@ -1,0 +1,96 @@
+ source/back.c     | 2 +-
+ source/concosts.c | 4 ++--
+ source/count.c    | 4 ++--
+ source/eden.c     | 2 +-
+ source/util.c     | 4 ++--
+ 5 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/source/back.c b/source/back.c
+index fd517b9..185a02b 100644
+--- a/source/back.c
++++ b/source/back.c
+@@ -112,7 +112,7 @@ void	back_main(int argc, char *argv[])
+           ballpark(caller) ;
+ 
+      if (argc > optind+2)
+-	  sprintf(sf_filename, argv[optind+2]) ;
++	  sprintf(sf_filename, "%s", argv[optind+2]) ;
+ 
+   /*********************************************
+   Pull off prefix defining whereabouts of input 
+diff --git a/source/concosts.c b/source/concosts.c
+index d62d2e3..590f073 100644
+--- a/source/concosts.c
++++ b/source/concosts.c
+@@ -452,7 +452,7 @@ void	prepare_singlets(char *filename)
+                       sprintf(message, 
+ 		      "s=%d, p=%d, n=%d, phase=%g, old phase=%g, delta=%g\n", 
+                       s, p, n, phase, *(checks+n), phase-*(checks+n)) ;
+-                      fprintf(fp_log, message) ;
++                      fprintf(fp_log, "%s", message) ;
+                  }
+               } 
+ 		/***********************************************
+@@ -556,7 +556,7 @@ void	prepare_triplets(char *filename)
+ 		 sprintf(message, 
+ "Triplet (%d %d %d) from input (%d %d %d) corresponds to point w/o fobs info!\n",
+ 		   newh, newk, newl, t_h[q], t_k[q], t_l[q]) ;
+-		 fprintf(fp_log, message) ;
++		 fprintf(fp_log, "%s", message) ;
+ 		 legal_triplet = FALSE ;
+               }
+            }
+diff --git a/source/count.c b/source/count.c
+index c3bc390..ca13008 100644
+--- a/source/count.c
++++ b/source/count.c
+@@ -460,12 +460,12 @@ void	print_el_count(char *filename,
+      }
+ 
+      sprintf(message, "\nTotal no. of electrons is %g\n", totnump*volvox) ;
+-     fprintf(fp, message) ;
++     fprintf(fp, "%s", message) ;
+      printTwice(message) ;
+ 
+      sprintf(message, "Count of all remaining electrons: %g %g %g\n", 
+      remainder0*volvox, remainder1*volvox, remainder2*volvox) ;
+-     fprintf(fp, message) ;
++     fprintf(fp, "%s", message) ;
+      printTwice(message) ;
+ 
+      fclose(fp) ;
+diff --git a/source/eden.c b/source/eden.c
+index dea3246..5a9b389 100644
+--- a/source/eden.c
++++ b/source/eden.c
+@@ -319,7 +319,7 @@ int	main(int argc, char *argv[])
+ 
+      get_unique_logname() ;
+ 
+-     sprintf(command_line, argv[0]) ;
++     sprintf(command_line, "%s", argv[0]) ;
+ 
+      for (k = 1; k < argc; k++) { 
+          strcat(command_line, " ") ;
+diff --git a/source/util.c b/source/util.c
+index 6fff179..41c624c 100644
+--- a/source/util.c
++++ b/source/util.c
+@@ -266,7 +266,7 @@ void	printTwice(char *mess)	/* send info to terminal (stdout) and to log */
+  
+ void	prompt(char *mess)	/* Send message to user, await reply */
+ {
+-    fprintf(stdout, mess) ;
++    fprintf(stdout, "%s", mess) ;
+ 
+     while (fgets(terminp, MAXSTRING, stdin) != NULL)  {
+ 	if ((int)strlen(terminp) > 0) 
+@@ -722,7 +722,7 @@ void	start_record()
+      int	k ;
+ 
+      rec_length = k = sprintf(record, "\n") ;
+-     rec_length += sprintf(record+k, timestamp()) ;
++     rec_length += sprintf(record+k, "%s", timestamp()) ;
+      k = rec_length ;
+ 
+      if ((cwd = getcwd(NULL, 120)) == NULL) 

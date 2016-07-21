@@ -1,0 +1,65 @@
+ CMakeLists.txt         | 1 +
+ json/CMakeLists.txt    | 2 +-
+ udav/CMakeLists.txt    | 2 +-
+ widgets/CMakeLists.txt | 4 ++--
+ 4 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3364973..0c3a645 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -316,6 +316,7 @@ endif(enable-wx)
+ if(enable-qt)
+ 	set(MGL_HAVE_QT 1)
+ 	FIND_PACKAGE(Qt4 4.8 REQUIRED QtCore QtGui QtNetwork QtWebKit)
++	FIND_PACKAGE(X11)
+ 	if(NOT QT4_FOUND)
+ 		message(SEND_ERROR "Couldn't find Qt4 library.")
+ 	endif(NOT QT4_FOUND)
+diff --git a/json/CMakeLists.txt b/json/CMakeLists.txt
+index 79d4716..0a53874 100644
+--- a/json/CMakeLists.txt
++++ b/json/CMakeLists.txt
+@@ -9,6 +9,6 @@ include_directories(${MathGL_BINARY_DIR}/json)
+ qt4_wrap_ui(json_ui_src MainWindow.ui)
+ qt4_wrap_cpp(json_moc_src ${json_moc_hdr} )
+ add_executable(MglForJsTestBench ${json_src} ${json_moc_src} ${json_ui_src})
+-target_link_libraries(MglForJsTestBench mgl-qt ${QT_LIBRARIES})
++target_link_libraries(MglForJsTestBench mgl-qt ${QT_LIBRARIES} ${X11_LIBRARIES})
+ 
+ endif(MGL_HAVE_QT)
+diff --git a/udav/CMakeLists.txt b/udav/CMakeLists.txt
+index 9a9c574..a1ff2df 100644
+--- a/udav/CMakeLists.txt
++++ b/udav/CMakeLists.txt
+@@ -27,7 +27,7 @@ qt4_add_resources(udav_rc_src ${udav_rc} )
+ qt4_wrap_cpp(udav_moc_src ${udav_moc_hdr} )
+ add_executable(udav ${udav_src} ${udav_moc_src} ${udav_rc_src})
+ #set_target_properties(udav PROPERTIES COMPILE_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+-target_link_libraries(udav mgl-qt ${QT_LIBRARIES})
++target_link_libraries(udav mgl-qt ${QT_LIBRARIES} ${X11_LIBRARIES})
+ 
+ if(MGL_HAVE_PTHREAD)
+ 	target_link_libraries(udav ${CMAKE_THREAD_LIBS_INIT})
+diff --git a/widgets/CMakeLists.txt b/widgets/CMakeLists.txt
+index 90ea00c..f582003 100644
+--- a/widgets/CMakeLists.txt
++++ b/widgets/CMakeLists.txt
+@@ -93,7 +93,7 @@ if(MGL_HAVE_QT)
+ 	set_target_properties(mgl-qt-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+ 	set_target_properties(mgl-qt-static PROPERTIES COMPILE_FLAGS -DMGL_STATIC_DEFINE)
+ 	target_link_libraries(mgl-qt mgl)
+-	target_link_libraries(mgl-qt ${QT_LIBRARIES})
++	target_link_libraries(mgl-qt ${QT_LIBRARIES} ${X11_LIBRARIES})
+ 
+ 	if(enable-mgl2)
+ 		set_target_properties(mgl-qt PROPERTIES OUTPUT_NAME "mgl2-qt")
+@@ -137,7 +137,7 @@ if(MGL_HAVE_QT AND MGL_HAVE_FLTK)
+ 	endif(enable-mgl2)
+ 
+ 	target_link_libraries(mgl-wnd mgl)
+-	target_link_libraries(mgl-wnd ${QT_LIBRARIES})
++	target_link_libraries(mgl-wnd ${QT_LIBRARIES} ${X11_LIBRARIES})
+ #	target_link_libraries(mgl-wnd ${wxWidgets_LIBRARIES})
+ 	target_link_libraries(mgl-wnd ${FLTK_LIBRARIES})
+ 

@@ -1,0 +1,27 @@
+From 9b21d88a4f4a681f9e80c11e83e81c976e0fc91e Mon Sep 17 00:00:00 2001
+From: Andrey Rijov <rdron@users.sourceforge.net>
+Date: Sat, 29 Oct 2011 10:20:32 +0400
+Subject: [PATCH 1/1] Fix build error on Qt 4.8
+
+---
+ Embedded_Display/vncview.cpp |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Embedded_Display/vncview.cpp b/Embedded_Display/vncview.cpp
+index 9e105c9..0be5944 100644
+--- a/Embedded_Display/vncview.cpp
++++ b/Embedded_Display/vncview.cpp
+@@ -27,8 +27,8 @@
+     #include <QMessageBox>
+     #include <QInputDialog>
+     #define KMessageBox QMessageBox
+-    #define error(parent, message, caption) \
+-        critical(parent, caption, message)
++/*    #define error(parent, message, caption) \
++        critical(parent, caption, message)*/
+ #else
+     #include "settings.h"
+     #include <KActionCollection>
+-- 
+1.7.4.1
+

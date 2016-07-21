@@ -1,0 +1,14 @@
+diff -urN ./exim-4.20.orig/src/configure.default exim-4.20/src/configure.default
+--- ./exim-4.20.orig/src/configure.default	2003-06-27 16:48:22.000000000 -0700
++++ exim-4.20/src/configure.default	2003-06-27 16:52:20.000000000 -0700
+@@ -451,7 +451,9 @@
+ 
+ local_delivery:
+   driver = appendfile
+-  file = /var/mail/$local_part
++#  file = /var/mail/$local_part
++  directory = /home/$local_part/.maildir
++  maildir_format
+   delivery_date_add
+   envelope_to_add
+   return_path_add

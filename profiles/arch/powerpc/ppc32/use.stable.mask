@@ -1,0 +1,9 @@
+# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# no stable versions on ppc
+clisp
+ecls
+sbcl
+
+# Chí-Thanh Christopher Nguyễn (25 Mar 2014)
+# appears to not work correctly since mesa-10
+opencl

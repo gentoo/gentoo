@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/503954
+
+fix build w/readline-6.3
+
+patch by Martin von Gagern
+
+--- mailutils-2.99.98/mu/shell.c
++++ mailutils-2.99.98/mu/shell.c
+@@ -336,7 +336,7 @@ mutool_initialize_readline (const char *
+ {
+   /* Allow conditional parsing of the ~/.inputrc file. */
+   rl_readline_name = (char *) name;
+-  rl_attempted_completion_function = (CPPFunction *) shell_completion;
++  rl_attempted_completion_function = shell_completion;
+   rl_getc_function = _shell_getc;
+   read_history (get_history_file_name ());
+ }
+--- mailutils-2.99.98/mail/mailline.c
++++ mailutils-2.99.98/mail/mailline.c
+@@ -93,7 +93,7 @@ ml_readline_init ()
+ 
+ #ifdef WITH_READLINE
+   rl_readline_name = "mail";
+-  rl_attempted_completion_function = (CPPFunction*)ml_command_completion;
++  rl_attempted_completion_function = ml_command_completion;
+   rl_getc_function = ml_getc;
+ #endif
+ #ifdef HAVE_SIGACTION
+--- mailutils-2.99.98/examples/nntpclient.c
++++ mailutils-2.99.98/examples/nntpclient.c
+@@ -163,7 +163,7 @@ initialize_readline ()
+   rl_readline_name = (char *) "nntp";
+ 
+   /* Tell the completer that we want a crack first. */
+-  rl_attempted_completion_function = (CPPFunction *) nntp_completion;
++  rl_attempted_completion_function = nntp_completion;
+ }
+ 
+ /* Attempt to complete on the contents of TEXT.  START and END bound the

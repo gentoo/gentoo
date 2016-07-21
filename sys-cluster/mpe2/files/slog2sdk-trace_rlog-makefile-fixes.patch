@@ -1,0 +1,68 @@
+From 5bc91497bd4b3d2e4e962ffb2d5b9b471c4183c2 Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Mon, 13 Sep 2010 14:18:51 -0400
+Subject: [PATCH 1/2] slog2sdk/trace_rlog makefile fixes
+
+- Respect user-defined LDFLAGS when linking PGM_PRINT and PGM_CHECK.
+- Do not install libraries during the compile phase.
+---
+ src/slog2sdk/trace_rlog/src/Makefile.in |   19 ++++++++-----------
+ 1 files changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/src/slog2sdk/trace_rlog/src/Makefile.in b/src/slog2sdk/trace_rlog/src/Makefile.in
+index 9b289b8..2d772e0 100644
+--- a/src/slog2sdk/trace_rlog/src/Makefile.in
++++ b/src/slog2sdk/trace_rlog/src/Makefile.in
+@@ -48,7 +48,8 @@ RM               = @RM@
+ 
+ JNI_INC          = @JNI_INC@
+ CFLAGS           = -I.. $(JNI_INC) -I$(TRACE_INCDIR) @COPTS@
+-LDFLAGS          = -module -no-undefined -avoid-version @LDFLAGS@
++LDFLAGS          = @LDFLAGS@
++LIBLDFLAGS       = -module -no-undefined -avoid-version @LDFLAGS@
+ 
+ # memory leak checker
+ MEMLIBS          = @DEBUG_LIBS@
+@@ -66,33 +67,29 @@ ALL: $(libbuild_dir)/$(LIB_TRACE) $(binbuild_dir)/$(PGM_PRINT) $(binbuild_dir)/$
+ 
+ $(libbuild_dir)/$(LIB_TRACE): $(LOBJ)
+ 	if [ "$(EXPORT_SYMBOLS)" = "yes" ] ; then \
+-	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LDFLAGS) \
++	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LIBLDFLAGS) \
+ 	               -export-symbols $(srcdir)/JavaTraceInput.sym \
+ 	               -rpath $(libbuild_dir) ; \
+ 	else \
+-	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LDFLAGS) \
++	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LIBLDFLAGS) \
+ 	               -rpath $(libbuild_dir) ; \
+ 	fi
+-	$(LIBTOOL) --mode=install $(INSTALL) $(LIB_TRACE) $(libbuild_dir)
+-	$(LIBTOOL) --finish $(libbuild_dir)
+ 
+ INSTALL_LIBSO: $(LOBJ)
+ 	if [ "$(EXPORT_SYMBOLS)" = "yes" ] ; then \
+-	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LDFLAGS) \
++	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LIBLDFLAGS) \
+ 	               -export-symbols $(srcdir)/JavaTraceInput.sym \
+ 	               -rpath $(LIBDIR) ; \
+ 	else \
+-	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LDFLAGS) \
++	    $(LIBTOOL) --mode=link $(CC) -o $(LIB_TRACE) $(LOBJ) $(LIBLDFLAGS) \
+ 	               -rpath $(LIBDIR) ; \
+ 	fi
+-	$(LIBTOOL) --mode=install $(INSTALL) $(LIB_TRACE) $(DESTDIR)$(LIBDIR)
+-	$(LIBTOOL) --finish $(LIBDIR)
+ 
+ $(binbuild_dir)/$(PGM_PRINT): $(OBJ4T)
+-	$(CC) @COPTS@ -o $@ $(OBJ4T) $(MEMLIBS)
++	$(CC) @COPTS@ $(LDFLAGS) -o $@ $(OBJ4T) $(MEMLIBS)
+ 
+ $(binbuild_dir)/$(PGM_CHECK): $(OBJ4E)
+-	$(CC) @COPTS@ -o $@ $(OBJ4E) $(MEMLIBS)
++	$(CC) @COPTS@ $(LDFLAGS) -o $@ $(OBJ4E) $(MEMLIBS)
+ 
+ clean:
+ 	@-$(RM) *.@OBJEXT@ *.lo *.la
+-- 
+1.7.1
+

@@ -1,0 +1,63 @@
+use standard AC_CHECK_SIZEOF as it supports non-builtin types and
+supports cross-compiling sanely
+
+https://issues.apache.org/bugzilla/show_bug.cgi?id=56053
+
+--- a/configure.in
++++ b/configure.in
+@@ -1684,7 +1684,7 @@ else
+     socklen_t_value="int"
+ fi
+ 
+-APR_CHECK_SIZEOF_EXTENDED([#include <sys/types.h>], pid_t, 8)
++AC_CHECK_SIZEOF(pid_t)
+ 
+ if test "$ac_cv_sizeof_pid_t" = "$ac_cv_sizeof_short"; then
+     pid_t_fmt='#define APR_PID_T_FMT "hd"'
+@@ -1753,7 +1753,7 @@ APR_CHECK_TYPES_COMPATIBLE(ssize_t, long, [ssize_t_fmt="ld"])
+ APR_CHECK_TYPES_COMPATIBLE(size_t, unsigned int, [size_t_fmt="u"])
+ APR_CHECK_TYPES_COMPATIBLE(size_t, unsigned long, [size_t_fmt="lu"])
+ 
+-APR_CHECK_SIZEOF_EXTENDED([#include <sys/types.h>], ssize_t, 8)
++AC_CHECK_SIZEOF(ssize_t)
+ 
+ AC_MSG_CHECKING([which format to use for apr_ssize_t])
+ if test -n "$ssize_t_fmt"; then
+@@ -1770,7 +1770,7 @@ fi
+ 
+ ssize_t_fmt="#define APR_SSIZE_T_FMT \"$ssize_t_fmt\""
+ 
+-APR_CHECK_SIZEOF_EXTENDED([#include <stddef.h>], size_t, 8)
++AC_CHECK_SIZEOF(size_t)
+ 
+ AC_MSG_CHECKING([which format to use for apr_size_t])
+ if test -n "$size_t_fmt"; then
+@@ -1787,7 +1787,7 @@ fi
+ 
+ size_t_fmt="#define APR_SIZE_T_FMT \"$size_t_fmt\""
+ 
+-APR_CHECK_SIZEOF_EXTENDED([#include <sys/types.h>], off_t, 8)
++AC_CHECK_SIZEOF(off_t)
+ 
+ if test "${ac_cv_sizeof_off_t}${apr_cv_use_lfs64}" = "4yes"; then
+     # Enable LFS
+@@ -1866,7 +1866,7 @@ case $host in
+     ;;
+ *)
+     ino_t_value=ino_t
+-    APR_CHECK_SIZEOF_EXTENDED(AC_INCLUDES_DEFAULT, ino_t, $ac_cv_sizeof_long)
++    AC_CHECK_SIZEOF(ino_t)
+     if test $ac_cv_sizeof_ino_t = 4; then
+         if test $ac_cv_sizeof_long = 4; then
+             ino_t_value="unsigned long"
+@@ -1886,8 +1886,8 @@ else
+     bigendian=0
+ fi
+ 
+-APR_CHECK_SIZEOF_EXTENDED([#include <sys/types.h>
+-#include <sys/uio.h>],struct iovec,0)
++AC_CHECK_SIZEOF(struct iovec,,[AC_INCLUDES_DEFAULT
++#include <sys/uio.h>])
+ if test "$ac_cv_sizeof_struct_iovec" = "0"; then
+     have_iovec=0
+ else

@@ -1,0 +1,18 @@
+--- configure.ac.orig	2010-04-20 20:29:01.136283062 +0200
++++ configure.ac	2010-04-20 20:29:45.884283632 +0200
+@@ -455,11 +455,11 @@
+   for flag in "pthreads" "pthread"; do
+     if test "x$checkpthread" = "xyes"; then
+       AC_MSG_CHECKING([for pthread_create with -$flag])
+-      OLDFLAGS="$LDFLAGS"
+-      LDFLAGS="-$flag $LDFLAGS"
+-      AC_TRY_LINK([], [pthread_create();], 
++       OLDLIBS="$LIBS"
++       LIBS="$LIBS -l$flag"
++       AC_TRY_LINK([], [pthread_create();], 
+                       [pthflag=yes; checkpthread=no], 
+-                      [pthflag=no; LDFLAGS="$OLDFLAGS"])
++                      [pthflag=no; LIBS="$OLDLIBS"])
+       AC_MSG_RESULT($pthflag)
+     fi
+   done

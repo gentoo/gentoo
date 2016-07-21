@@ -1,0 +1,13 @@
+--- check-pci-ids.py
++++ check-pci-ids.py
+@@ -5,8 +5,8 @@
+ 
+ # Check that the sorting order is preserved in pci.ids
+ 
+-vendor_id = None
+-device_id = None
++vendor_id = -1
++device_id = -1
+ lineno    = 1
+ 
+ file = open("pci.ids")

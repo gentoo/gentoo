@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The games-kids category contains games designed for children.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-kids enthält Spiele für Kinder.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-kids contiene juegos diseñados para niños.
+	</longdescription>
+	<longdescription lang="ja">
+		games-kidsカテゴリーには子供向けのゲームが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-kids categorie bevat spellen die gemaakt zijn voor kinderen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-kids chứa các trò chơi thiết kế cho thiếu nhi.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória games-kids obsahuje hry navrhnuté pre menšie deti.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-kids contiene giochi per bambini.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria games-kids contém jogos para crianças.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria games-kids zawiera gry dla dzieci.
+	</longdescription>
+</catmetadata>
+

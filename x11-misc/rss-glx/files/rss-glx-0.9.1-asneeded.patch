@@ -1,0 +1,12 @@
+Fixing as-needed issue
+
+http://bugs.gentoo.org/313837
+
+--- a/src/PixelCity/Makefile.am
++++ b/src/PixelCity/Makefile.am
+@@ -23,3 +23,5 @@
+ 	Texture.cpp \
+ 	Visible.cpp \
+ 	World.cpp
++libPixelCity_la_LIBADD=@quesoglc_LIBS@
++libPixelCity_la_CFLAGS=@quesoglc_CFLAGS@

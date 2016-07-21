@@ -1,0 +1,26 @@
+diff --git a/configure.in b/configure.ac
+rename from configure.in
+rename to configure.ac
+--- a/configure.in
++++ b/configure.ac
+@@ -215,13 +215,17 @@
+ AC_CHECK_LIB(pthread, main,,AC_MSG_ERROR(Sagan needs pthreads!))
+ AC_CHECK_LIB(m, main,,AC_MSG_ERROR(Sagan needs libm!))
+ 
++save_LIBS=$LIBS
+ if test "$MYSQL" = "yes"; then
+ 	AC_MSG_RESULT([------- MySQL support is enabled -------])
++	AC_CHECK_PROGS(MYSQL_CONFIG, mysql_config)
+ 	AC_CHECK_HEADER([mysql/mysql.h])
+ 	AC_CHECK_HEADER([mysql/errmsg.h])
+-	AC_CHECK_LIB(mysqlclient_r, main,,AC_MSG_ERROR(The MySQL library libmysqlclient_r is missing!
+-If you're not interested in MySQL support use the --disable-mysql flag.))
+-	fi
++	LIBS=$(mysql_config --libs_r) 
++	AC_CHECK_LIB(mysqlclient_r, main,,AC_MSG_ERROR(The MySQL library libmysqlclient_r is missing!))
++fi
++LIBS="$save_LIBS $LIBS"
++
+ 
+ if test "$POSTGRES" = "yes"; then
+        AC_MSG_RESULT([------- PostgreSQL support is enabled -------])

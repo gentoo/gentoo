@@ -1,0 +1,7 @@
+# Load firmware via fxload
+
+SUBSYSTEM=="usb_device", ACTION=="add", ATTRS{idVendor}=="1604", ATTRS{idProduct}=="800[157]", RUN+="/usr/bin/usx2yloader"
+SUBSYSTEM=="usb_device", ACTION=="add", ATTRS{idVendor}=="1604", ATTRS{idProduct}=="800[15]", RUN+="/sbin/startproc /usr/bin/us428control"
+SUBSYSTEM=="usb_device", ACTION=="add", ATTRS{idVendor}=="1604", ATTRS{idProduct}=="8000", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us428fw.ihx -D %N"
+SUBSYSTEM=="usb_device", ACTION=="add", ATTRS{idVendor}=="1604", ATTRS{idProduct}=="8004", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us224fw.ihx -D %N"
+SUBSYSTEM=="usb_device", ACTION=="add", ATTRS{idVendor}=="1604", ATTRS{idProduct}=="8006", RUN+="/sbin/fxload -s /usr/share/alsa/firmware/usx2yloader/tascam_loader.ihx -I /usr/share/alsa/firmware/usx2yloader/us122fw.ihx -D %N"

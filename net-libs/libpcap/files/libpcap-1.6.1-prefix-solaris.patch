@@ -1,0 +1,36 @@
+Prefix' Solaris uses GNU ld
+
+
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -415,7 +415,7 @@
+ 	    aix*)
+ 		    ;;
+ 
+-	    freebsd*|netbsd*|openbsd*|dragonfly*|linux*|osf*)
++	    freebsd*|solaris*|netbsd*|openbsd*|dragonfly*|linux*|osf*)
+ 	    	    #
+ 		    # Platforms where the linker is the GNU linker
+ 		    # or accepts command-line arguments like
+@@ -429,10 +429,10 @@
+ 		    PIC_OPT=-fpic
+ 		    case "$host_cpu" in
+ 
+-		    sparc64*)
++		    sparc64*|sparcv9*)
+ 			case "$host_os" in
+ 
+-			freebsd*|openbsd*)
++			freebsd*|solaris*|openbsd*)
+ 			    PIC_OPT=-fPIC
+ 			    ;;
+ 			esac
+@@ -497,7 +497,7 @@
+ 		    V_SHLIB_OPT="-G -bnoentry -bexpall"
+ 		    ;;
+ 
+-	    freebsd*|netbsd*|openbsd*|dragonfly*|linux*)
++	    freebsd*|solaris*|netbsd*|openbsd*|dragonfly*|linux*)
+ 		    #
+ 		    # "cc" is GCC.
+ 		    #

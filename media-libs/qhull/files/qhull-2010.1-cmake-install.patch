@@ -1,0 +1,98 @@
+diff -Nur qhull-2010.1.orig/CMakeLists.txt qhull-2010.1/CMakeLists.txt
+--- qhull-2010.1.orig/CMakeLists.txt	2010-10-03 23:04:04.000000000 +0100
++++ qhull-2010.1/CMakeLists.txt	2010-10-03 23:26:54.000000000 +0100
+@@ -1,8 +1,44 @@
+ project(qhull)
+-cmake_minimum_required(VERSION 2.4)
+-if(COMMAND cmake_policy)
+-  cmake_policy(SET CMP0003 NEW)
+-endif(COMMAND cmake_policy)
++cmake_minimum_required(VERSION 2.6)
++
++
++set(QHULL_VERSION "2010.1")
++
++if(INCLUDE_INSTALL_DIR)
++else()
++set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include)
++endif()
++if(LIB_INSTALL_DIR)
++else()
++set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
++endif()
++if(BIN_INSTALL_DIR)
++else()
++set(BIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin)
++endif()
++if(DOC_INSTALL_DIR)
++else()
++set(DOC_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/share/doc/qhull)
++endif()
++
++message(STATUS)
++message(STATUS "========== qhull Build Information ==========")
++message(STATUS "Build Version: ${QHULL_VERSION}")
++message(STATUS "Install Prefix (CMAKE_INSTALL_PREFIX): ${CMAKE_INSTALL_PREFIX}")
++message(STATUS "Binary Directory (BIN_INSTALL_DIR): ${BIN_INSTALL_DIR}")
++message(STATUS "Library Directory (LIB_INSTALL_DIR): ${LIB_INSTALL_DIR}")
++message(STATUS "Include Directory (INCLUDE_INSTALL_DIR): ${INCLUDE_INSTALL_DIR}")
++message(STATUS "Documentation Directory (DOC_INSTALL_DIR): ${DOC_INSTALL_DIR}")
++message(STATUS)
++message(STATUS "To change any of these options, override them using -D{OPTION_NAME} on the commandline.")
++message(STATUS "To build and install qhull, run \"make\" and \"make install\"")
++message(STATUS)
++
+ 
+ add_subdirectory(src)
++option(WITH_STATIC_LIBS "Build with a static library" OFF)
++option(WITH_DOCS "Install HTML documentation" OFF)
+ 
++if (WITH_DOCS)
++install(DIRECTORY html/ DESTINATION ${DOC_INSTALL_DIR})
++endif (WITH_DOCS)
+diff -Nur qhull-2010.1.orig/src/CMakeLists.txt qhull-2010.1/src/CMakeLists.txt
+--- qhull-2010.1.orig/src/CMakeLists.txt	2010-10-03 23:04:04.000000000 +0100
++++ qhull-2010.1/src/CMakeLists.txt	2010-10-04 00:23:47.000000000 +0100
+@@ -23,8 +23,25 @@
+ 
+ file(GLOB qhull_hdr *.h)
+ 
+-add_library(qhull ${qhull_src})
++add_library(qhull SHARED ${qhull_src})
+ target_link_libraries(qhull m)
++if(UNIX)
++	if(APPLE)
++		set_target_properties(qhull PROPERTIES 
++			INSTALL_NAME_DIR "${LIB_INSTALL_DIR}")
++	else(APPLE)
++		set_target_properties(qhull PROPERTIES 
++			INSTALL_RPATH "${LIB_INSTALL_DIR}"
++			INSTALL_RPATH_USE_LINK_PATH TRUE
++			BUILD_WITH_INSTALL_RPATH FALSE)
++	endif(APPLE)
++endif(UNIX)
++
++if(WITH_STATIC_LIBS)
++  add_library(qhullstatic STATIC ${qhull_src})
++  set_property(TARGET qhullstatic PROPERTY OUTPUT_NAME "qhull")
++  install(TARGETS qhullstatic ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
++endif(WITH_STATIC_LIBS)
+ 
+ set(qhullcmd_SOURCES  unix.c)
+ set(rbox_SOURCES  rbox.c)
+@@ -36,6 +53,7 @@
+ 
+ add_executable(qhullcmd ${qhullcmd_SOURCES})
+ target_link_libraries(qhullcmd qhull)
++set_property(TARGET qhullcmd PROPERTY OUTPUT_NAME "qhull")
+ 
+ add_executable(rbox ${rbox_SOURCES})
+ target_link_libraries(rbox qhull)
+@@ -52,3 +70,7 @@
+ add_executable(qhalf ${qhalf_SOURCES})
+ target_link_libraries(qhalf qhull)
+ 
++install(TARGETS qhull qhullcmd rbox qconvex qdelaunay qvoronoi qhalf
++	RUNTIME DESTINATION ${BIN_INSTALL_DIR} 
++	LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++install(FILES ${qhull_hdr} DESTINATION ${INCLUDE_INSTALL_DIR}/qhull)

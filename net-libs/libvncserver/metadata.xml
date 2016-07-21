@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alex_y_xu@yahoo.ca</email>
+		<name>Alex Xu</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+If you don't know VNC, have a look at the original VNC or at Tridia 
+VNC, who also have commercial support for it.
+
+Now that you know what it is, maybe you want to make your own server. If 
+this is not the case, you can ignore the rest of this page an go on 
+surfing the internet.
+
+Now that you want to make a VNC server, that is, a server which speaks 
+the RFB protocol, you can download this library from sourceforge.
+	</longdescription>
+	<use>
+		<flag name="24bpp">enable 24bpp support</flag>
+		<flag name="gcrypt">enable support for gcrypt</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">LibVNC/libvncserver</remote-id>
+		<remote-id type="sourceforge">libvncserver</remote-id>
+	</upstream>
+</pkgmetadata>

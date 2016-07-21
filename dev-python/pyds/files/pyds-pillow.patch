@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/show_bug.cgi?id=471508
+--- a/PyDS/PictureTool.py
++++ a/PyDS/PictureTool.py
+@@ -35,8 +35,8 @@
+ import string
+ import mimetypes
+ 
+-import Image
+-import ImageDraw
++from PIL import Image
++from PIL import ImageDraw
+ 
+ import PyDS.Tool
+ import PyDS.EXIF

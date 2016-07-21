@@ -1,0 +1,18 @@
+srcshelton@gmail.com: Patch for IRIX
+
+http://bugs.gentoo.org/show_bug.cgi?id=275295
+
+Sent upstream:
+https://savannah.gnu.org/patch/?7838
+
+--- src/cpiohdr.h.dist  2009-06-24 15:41:26.983725240 +0100
++++ src/cpiohdr.h       2009-06-24 15:41:59.753567720 +0100
+@@ -24,6 +24,8 @@
+
+ #ifdef HAVE_ATTRIB_PACKED
+ #define ATTRIB_PACKED __attribute__((packed))
++#else
++#define ATTRIB_PACKED
+ #endif
+
+ #ifdef HAVE_PRAGMA_PACK

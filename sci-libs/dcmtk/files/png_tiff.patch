@@ -1,0 +1,11 @@
+--- dcmtk-3.5.5_20100504/dcmjpls/apps/Makefile.in	2010-12-09 11:27:05.000000000 +0100
++++ dcmtk-3.5.5_20100504.old/dcmjpls/apps/Makefile.in	2010-12-09 11:27:44.000000000 +0100
+@@ -50,7 +50,7 @@
+ LIBDIRS = -L$(top_srcdir)/libsrc $(dcmjplslibdir) $(libcharlslibdir) $(dcmimagelibdir) \
+ 	$(dcmimglelibdir) $(dcmdatalibdir) $(ofloglibdir) $(ofstdlibdir)
+ LOCALLIBS = $(dcmjplslib) $(dcmimagelib) $(dcmimglelib) $(dcmdatalib) $(ofloglib) $(ofstdlib) \
+-	$(libcharlslib) $(ZLIBLIBS)
++	$(libcharlslib) $(ZLIBLIBS) $(TIFFLIBS) $(PNGLIBS)
+ PNMLIBS = $(TIFFLIBS) $(PNGLIBS) $(ZLIBLIBS)
+ 
+ objs = dcmdjpls.o dcmcjpls.o dcml2pnm.o

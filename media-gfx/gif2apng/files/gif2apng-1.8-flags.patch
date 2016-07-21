@@ -1,0 +1,26 @@
+--- gif2apng-1.8-src/Makefile
++++ gif2apng-1.8-src/Makefile
+@@ -11,19 +11,19 @@
+ all : $(PROG_NAME)
+ 
+ gif2apng : objdirs $(OBJECTS)
+-	$(CC) -o $@ $(OBJECTS) -s -lstdc++ -lz
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) -lstdc++ -lz -lm
+ 
+ objdirs :
+ 	mkdir -p $(OBJ_DIRS)
+ 
+ obj/%.o : %.cpp
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) -O2 -Wall -pedantic -lz
++	$(CC) $(CFLAGS) -o $@ -c $< $(INCUDE_DIRS) -Wall -pedantic -lz -lm
+ 
+ obj/%.o : %.c
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) -O2 -Wall -pedantic -lz
++	$(CC) $(CFLAGS) -o $@ -c $< $(INCUDE_DIRS) -Wall -pedantic -lz -lm
+ 
+ obj/%.o : %.cc
+-	$(CC) -o $@ -c $< $(INCUDE_DIRS) -O2 -Wall -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses -lz
++	$(CC) $(CFLAGS) -o $@ -c $< $(INCUDE_DIRS) -Wall -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses -lz -lm
+ 
+ .PHONY : clean
+ 

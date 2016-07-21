@@ -1,0 +1,11 @@
+--- a/test/bbackupd/testbbackupd.cpp	2010-05-01 15:52:27.000000000 +0200
++++ b/test/bbackupd/testbbackupd.cpp	2010-05-07 07:12:42.000000000 +0200
+@@ -1176,7 +1176,7 @@
+ 		std::string touchfile = 
+ 			"testfiles/TestDir1/spacetest/d1/touch-me";
+ 
+-		fd = open(touchfile.c_str(), O_CREAT | O_WRONLY);
++		fd = open(touchfile.c_str(), O_CREAT | O_WRONLY, 700);
+ 		TEST_THAT(fd > 0);
+ 		// write again, to update the file's timestamp
+ 		TEST_EQUAL_LINE(sizeof(buffer),

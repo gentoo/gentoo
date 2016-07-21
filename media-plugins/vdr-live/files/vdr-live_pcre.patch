@@ -1,0 +1,26 @@
+From 6b2965a86a20c885fc1fae8d4dea24b29b38805e Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Mon, 4 Jun 2012 02:29:55 +0200
+Subject: [PATCH] Make PCRE optional
+
+---
+ pages/recordings.ecpp |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/pages/recordings.ecpp b/pages/recordings.ecpp
+index ebd57e0..8bdad66 100644
+--- a/pages/recordings.ecpp
++++ b/pages/recordings.ecpp
+@@ -1,6 +1,9 @@
+ <%pre>
+ #include <string>
++
++#ifdef HAVE_LIBPCRECPP
+ #include <pcrecpp.h>
++#endif
+ 
+ #include <vdr/plugin.h>
+ #include <vdr/config.h>
+-- 
+1.7.3.4
+

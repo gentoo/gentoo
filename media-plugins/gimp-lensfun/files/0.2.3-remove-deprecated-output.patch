@@ -1,0 +1,22 @@
+From 730e1280bb1968ec1e31f8c87949187b022a74bb Mon Sep 17 00:00:00 2001
+From: Sebastian Kraft <mail@sebastiankraft.net>
+Date: Mon, 11 Aug 2014 21:30:07 +0200
+Subject: [PATCH] CCI has been removed from lensfun, also remove it here
+
+---
+ src/gimplensfun.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/gimplensfun.cpp b/src/gimplensfun.cpp
+index 0b4bb8f..6a66a8f 100644
+--- a/src/gimplensfun.cpp
++++ b/src/gimplensfun.cpp
+@@ -297,7 +297,6 @@ static void PrintLens (const lfLens *lens)
+     g_print ("\tFocal: %g-%g\n", lens->MinFocal, lens->MaxFocal);
+     g_print ("\tAperture: %g-%g\n", lens->MinAperture, lens->MaxAperture);
+     g_print ("\tCenter: %g,%g\n", lens->CenterX, lens->CenterY);
+-    g_print ("\tCCI: %g/%g/%g\n", lens->RedCCI, lens->GreenCCI, lens->BlueCCI);
+     if (lens->Mounts)
+         for (int j = 0; lens->Mounts [j]; j++)
+             g_print ("\tMount: %s\n", lf_db_mount_name (ldb, lens->Mounts [j]));
+

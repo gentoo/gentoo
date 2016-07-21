@@ -1,0 +1,73 @@
+diff -U 3 -dHrN M2source/Macaulay2/packages/FourTiTwo.m2 M2source.patch/Macaulay2/packages/FourTiTwo.m2
+--- M2source/Macaulay2/packages/FourTiTwo.m2	2011-09-22 14:36:51.000000000 +0100
++++ M2source.patch/Macaulay2/packages/FourTiTwo.m2	2011-09-24 21:24:12.000000000 +0100
+@@ -47,7 +47,7 @@
+ 
+ path'4ti2 = (options FourTiTwo).Configuration#"path"
+ -- NOTE: the absolute path should be put into the .init file for 4ti2 inside the .Macaulay2 directory.
+-if path'4ti2 == "" then path'4ti2 = prefixDirectory | currentLayout#"programs"
++if path'4ti2 == "" then path'4ti2 = "/usr/bin/"
+ 
+ getFilename = () -> (
+      filename := temporaryFileName();
+diff -U 3 -dHrN M2source/Macaulay2/packages/gfanInterface.m2 M2source.patch/Macaulay2/packages/gfanInterface.m2
+--- M2source/Macaulay2/packages/gfanInterface.m2	2011-05-14 12:00:59.000000000 +0100
++++ M2source.patch/Macaulay2/packages/gfanInterface.m2	2011-09-24 21:24:12.000000000 +0100
+@@ -25,7 +25,7 @@
+      }
+ 
+ gfan'path = gfanInterface#Options#Configuration#"path"
+-if gfan'path == "" then gfan'path = prefixDirectory | currentLayout#"programs"
++if gfan'path == "" then gfan'path = "/usr/bin/"
+ if instance(gfan'path, String) then gfan'path = {gfan'path}
+ if not instance(gfan'path,List) then error "expected configuration option gfan'path to be a list of strings or a string"
+ gfan'path = join(
+diff -U 3 -dHrN M2source/Macaulay2/packages/NautyGraphs.m2 M2source.patch/Macaulay2/packages/NautyGraphs.m2
+--- M2source/Macaulay2/packages/NautyGraphs.m2	2011-08-26 11:05:30.000000000 +0100
++++ M2source.patch/Macaulay2/packages/NautyGraphs.m2	2011-09-24 21:25:53.000000000 +0100
+@@ -32,7 +32,7 @@
+ -- Check the ~/.Macaulay2/init-NautyGraphs.m2 file for the absolute path.
+ -- If it's not there, then use the M2-Programs directory.
+ nauty'path = (options NautyGraphs).Configuration#"path";
+-if nauty'path == "" then nauty'path = prefixDirectory | currentLayout#"programs";
++if nauty'path == "" then nauty'path = "/usr/bin/";
+ 
+ -------------------
+ -- Exports
+diff -U 3 -dHrN M2source/Macaulay2/packages/Nauty.m2 M2source.patch/Macaulay2/packages/Nauty.m2
+--- M2source/Macaulay2/packages/Nauty.m2	2011-08-26 11:05:30.000000000 +0100
++++ M2source.patch/Macaulay2/packages/Nauty.m2	2011-09-24 21:24:12.000000000 +0100
+@@ -48,7 +48,8 @@
+ -- Check the ~/.Macaulay2/init-Nauty.m2 file for the absolute path.
+ -- If it's not there, then use the M2-Programs directory.
+ nauty'path = (options Nauty).Configuration#"path";
+-if nauty'path == "" then nauty'path = prefixDirectory | currentLayout#"programs";
++if nauty'path == "" then nauty'path = "/usr/bin/";
++
+ 
+ -------------------
+ -- Exports
+diff -U 3 -dHrN M2source/Macaulay2/packages/Normaliz.m2 M2source.patch/Macaulay2/packages/Normaliz.m2
+--- M2source/Macaulay2/packages/Normaliz.m2	2011-05-25 16:47:50.000000000 +0100
++++ M2source.patch/Macaulay2/packages/Normaliz.m2	2011-09-24 21:24:12.000000000 +0100
+@@ -166,7 +166,7 @@
+         nmzExec="normaliz";
+     );
+ --    return nmzExec;
+-    return prefixDirectory | currentLayout#"programs" | nmzExec;
++    return "/usr/bin/" | nmzExec;
+ );
+ 
+ 
+diff -U 3 -dHrN M2source/Macaulay2/packages/StatePolytope.m2 M2source.patch/Macaulay2/packages/StatePolytope.m2
+--- M2source/Macaulay2/packages/StatePolytope.m2	2010-09-10 16:47:20.000000000 +0100
++++ M2source.patch/Macaulay2/packages/StatePolytope.m2	2011-09-24 21:24:12.000000000 +0100
+@@ -31,7 +31,7 @@
+ 
+ 
+ gfanCommand = (options StatePolytope)#Configuration#"gfan command"
+-if gfanCommand === "gfan" then gfanCommand = prefixDirectory | currentLayout#"programs" | gfanCommand
++if gfanCommand === "gfan" then gfanCommand = "/usr/bin/" | gfanCommand
+ gfanCommand = "!" | gfanCommand
+ 
+ --The next two functions print out the ring and the ideal in the format required by gfan

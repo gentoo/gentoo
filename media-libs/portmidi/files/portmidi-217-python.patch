@@ -1,0 +1,25 @@
+--- portmidi/pm_python/setup.py
++++ portmidi/pm_python/setup.py
+@@ -15,12 +15,10 @@
+ 
+ 
+ DESCRIPTION = open('README_PYTHON.txt').read()
+-CHANGES = open('CHANGES.txt').read()
+-TODO = open('TODO.txt').read()
+ 
+ EXTRAS = {}
+ 
+-long_description = DESCRIPTION + CHANGES + TODO
++long_description = DESCRIPTION
+ #import sys
+ #if "checkdocs" in sys.argv:
+ #    print long_description
+@@ -173,7 +171,8 @@
+     EXTENSION = dict(
+         ext_modules=[ 
+             Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
+                       library_dirs=["./linux"],
++                      include_dirs=["../pm_common", "../porttime"],
+                       libraries = ["portmidi", "asound", "pthread"]
+                       )
+         ]

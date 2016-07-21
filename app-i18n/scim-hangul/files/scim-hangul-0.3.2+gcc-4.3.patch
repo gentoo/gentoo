@@ -1,0 +1,23 @@
+diff -up scim-hangul-0.3.2/src/scim_hangul_imengine.cpp.gcc43~ scim-hangul-0.3.2/src/scim_hangul_imengine.cpp
+--- scim-hangul-0.3.2/src/scim_hangul_imengine.cpp.gcc43~	2008-01-13 08:01:34.000000000 +0000
++++ scim-hangul-0.3.2/src/scim_hangul_imengine.cpp	2008-01-13 08:01:34.000000000 +0000
+@@ -29,6 +29,7 @@
+ #define Uses_SCIM_LOOKUP_TABLE
+ #define Uses_SCIM_CONFIG_BASE
+ 
++#include <cstring>
+ #ifdef HAVE_CONFIG_H
+   #include <config.h>
+ #endif
+diff -up scim-hangul-0.3.2/src/scim_hangul_imengine_setup.cpp.gcc43~ scim-hangul-0.3.2/src/scim_hangul_imengine_setup.cpp
+--- scim-hangul-0.3.2/src/scim_hangul_imengine_setup.cpp.gcc43~	2008-01-13 08:01:37.000000000 +0000
++++ scim-hangul-0.3.2/src/scim_hangul_imengine_setup.cpp	2008-01-13 08:01:37.000000000 +0000
+@@ -28,7 +28,8 @@
+ 
+ #define Uses_SCIM_CONFIG_BASE
+ 
++#include <cstring>
+ #include <gtk/gtk.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ 

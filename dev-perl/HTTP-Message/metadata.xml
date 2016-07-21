@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">HTTP-Message</remote-id>
+		<remote-id type="cpan-module">HTTP::Config</remote-id>
+		<remote-id type="cpan-module">HTTP::Headers</remote-id>
+		<remote-id type="cpan-module">HTTP::Headers::Auth</remote-id>
+		<remote-id type="cpan-module">HTTP::Headers::ETag</remote-id>
+		<remote-id type="cpan-module">HTTP::Headers::Util</remote-id>
+		<remote-id type="cpan-module">HTTP::Message</remote-id>
+		<remote-id type="cpan-module">HTTP::Request</remote-id>
+		<remote-id type="cpan-module">HTTP::Request::Common</remote-id>
+		<remote-id type="cpan-module">HTTP::Response</remote-id>
+		<remote-id type="cpan-module">HTTP::Status</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- demo/Makefile.am.old	2011-05-20 11:13:18.822445466 +0200
++++ demo/Makefile.am	2011-05-20 11:13:28.271042994 +0200
+@@ -17,7 +17,7 @@
+     $(NULL)
+ c_demo_CFLAGS = $(FT2_CFLAGS) $(GL_CFLAGS)
+ c_demo_LDFLAGS = $(FT2_LIBS) $(GLUT_LIBS)
+-c_demo_LDADD = ../src/libftgl.la
++c_demo_LDADD = ../src/libftgl.la -lm
+ 
+ FTGLDemo_SOURCES = \
+ 	FTGLDemo.cpp \

@@ -1,0 +1,214 @@
+diff --git a/Configure.pl b/Configure.pl
+index 2064ac8..73e2d27 100755
+--- a/Configure.pl
++++ b/Configure.pl
+@@ -34,6 +34,7 @@ MAIN: {
+                'no-clean',
+                'with-parrot=s', 'gen-parrot:s', 'parrot-config=s', 'parrot-option=s@',
+                'with-moar=s', 'gen-moar:s', 'moar-option=s@',
++               'with-asm=s', 'with-asm-tree=s', 'with-jline=s', 'with-jna=s',
+                'make-install!', 'makefile-timing!',
+                'git-protocol=s',
+                'git-depth=s', 'git-reference=s',);
+@@ -50,6 +51,53 @@ MAIN: {
+               "Use --prefix to specify a directory in which parrot is installed.";
+     }
+ 
++    if ($options{'with-asm'}) {
++        if ($options{'with-asm'} ne '-') {
++            $config{'asm'} = $options{'with-asm'};
++        }
++    } else {
++        $config{'asm'} = "3rdparty/asm/asm-4.1.jar";
++    }
++    if ($options{'with-asm-tree'}) {
++        if ($options{'with-asm-tree'} ne '-') {
++            $config{'asmtree'} = $options{'with-asm-tree'};
++        }
++    } else {
++        $config{'asmtree'} = "3rdparty/asm/asm-tree-4.1.jar";
++    }
++    if ($options{'with-jline'}) {
++        if ($options{'with-jline'} ne '-') {
++            $config{'jline'} = $options{'with-jline'};
++        }
++    } else {
++        $config{'jline'} = "3rdparty/jline/jline-1.0.jar";
++    }
++    if ($options{'with-jna'}) {
++        if ($options{'with-jna'} ne '-') {
++            $config{'jna'} = $options{'with-jna'};
++        }
++    } else {
++        $config{'jna'} = "3rdparty/jna/jna.jar";
++    }
++
++    if ($^O eq 'MSWin32') {
++        $config{'asmfile'} = $config{'asm'};
++        $config{'asmfile'} =~ s/.*\\//;
++        $config{'jlinefile'} = $config{'jline'};
++        $config{'jlinefile'} =~ s/.*\\//;
++    } else {
++        $config{'asmfile'} = $config{'asm'};
++        $config{'asmfile'} =~ s/.*\///;
++        $config{'jlinefile'} = $config{'jline'};
++        $config{'jlinefile'} =~ s/.*\///;
++    }
++
++    fill_template_file(
++        'tools/build/install-jvm-runner.pl.in',
++        'tools/build/install-jvm-runner.pl',
++        %config,
++    );
++
+     my $default_backend;
+     my @backends;
+     my %backends;
+@@ -357,6 +405,11 @@ General Options:
+     --gen-moar         Download and build a copy of MoarVM to use
+     --moar-option='--option=value'
+                        Options to pass to MoarVM configuration for --gen-moar
++    --with-asm='/path/to/jar'
++    --with-asm-tree='/path/to/jar'
++    --with-jline='/path/to/jar'
++    --with-jna='/path/to/jar'
++                       Provide paths to already installed jars
+     --git-protocol={ssh,https,git}
+                        Protocol to use for git clone. Default: https
+     --make-install     Immediately run `MAKE install` after configuring
+diff --git a/tools/build/Makefile-JVM.in b/tools/build/Makefile-JVM.in
+index 27959ad..c19965a 100644
+--- a/tools/build/Makefile-JVM.in
++++ b/tools/build/Makefile-JVM.in
+@@ -2,7 +2,6 @@ BAT    = @bat@
+ JAVA   = java
+ JAVAC  = javac
+ JAR    = jar
+-ASM    = 3rdparty/asm/
+ J_RUNNER = nqp-j$(BAT)
+ 
+ NQP_JAR_DIR = $(NQP_LANG_DIR)/runtime
+@@ -18,7 +17,11 @@ RUNTIME_JAVAS = \
+ 
+ RUNTIME_JAR = nqp-runtime.jar
+ 
+-THIRDPARTY_JARS = $(ASM)asm-4.1.jar@cpsep@$(ASM)asm-tree-4.1.jar@cpsep@3rdparty/jline/jline-1.0.jar@cpsep@3rdparty/jna/jna.jar
++ASM = @asm@
++ASMTREE = @asmtree@
++JLINE = @jline@
++JNA = @jna@
++THIRDPARTY_JARS = $(ASM)@cpsep@$(ASMTREE)@cpsep@$(JLINE)@cpsep@$(JNA)
+ J_STAGE0 = src/vm/jvm/stage0
+ J_STAGE1 = $(JVM_BUILD_DIR)/stage1
+ J_STAGE2 = $(JVM_BUILD_DIR)/stage2
+@@ -80,8 +83,8 @@ j-install: j-all
+ 	$(MKPATH) $(DESTDIR)$(BIN_DIR)
+ 	$(MKPATH) $(DESTDIR)$(NQP_JAR_DIR)
+ 	$(MKPATH) $(DESTDIR)$(NQP_LIB_DIR)
+-	$(CP) 3rdparty/asm/asm-4.1.jar 3rdparty/asm/asm-tree-4.1.jar  $(DESTDIR)$(NQP_JAR_DIR)
+-	$(CP) 3rdparty/jline/jline-1.0.jar 3rdparty/jna/jna.jar $(DESTDIR)$(NQP_JAR_DIR)
++	$(CP) $(ASM) $(ASMTREE) $(DESTDIR)$(NQP_JAR_DIR)
++	$(CP) $(JLINE) $(JNA) $(DESTDIR)$(NQP_JAR_DIR)
+ 	$(CP) $(RUNTIME_JAR) $(DESTDIR)$(NQP_JAR_DIR)
+ 	$(CP) $(NQP_MO_JAR) $(MODULE_LOADER_JAR) $(DESTDIR)$(NQP_LIB_DIR)
+ 	$(CP) $(CORE_SETTING_JAR) $(QASTNODE_JAR) $(QREGEX_JAR) $(DESTDIR)$(NQP_LIB_DIR)
+diff --git a/tools/build/install-jvm-runner.pl b/tools/build/install-jvm-runner.pl
+deleted file mode 100644
+index 14541d6..0000000
+--- a/tools/build/install-jvm-runner.pl
++++ /dev/null
+@@ -1,44 +0,0 @@
+-#!/usr/bin/perl
+-# Copyright (C) 2013, The Perl Foundation.
+-
+-use strict;
+-use warnings;
+-use 5.008;
+-use File::Spec;
+-
+-my ($destdir, $prefix) = @ARGV;
+-my $realpath = $destdir.$prefix;
+-
+-unless (File::Spec->file_name_is_absolute($prefix)) {
+-    $prefix = File::Spec->rel2abs($prefix);
+-}
+-
+-if ($^O eq 'MSWin32') {
+-    my $jar_dir = File::Spec->catfile($prefix, 'share', 'nqp', 'runtime');
+-    my $lib_dir = File::Spec->catfile($prefix, 'share', 'nqp', 'lib');
+-    my $install_to = File::Spec->catfile($realpath, 'bin', 'nqp-j.bat');
+-
+-    open my $fh, ">", $install_to
+-        or die "Could not open $install_to: $!";
+-    print $fh '@java -Xss1m -Xmx512m -Xbootclasspath/a:' . $jar_dir . '\\nqp-runtime.jar;' .
+-              "$jar_dir\\asm-4.1.jar;$jar_dir\\jline-1.0.jar;$lib_dir\\nqp.jar -cp $lib_dir nqp %*\n";
+-    close $fh
+-        or die "Could not close $install_to: $!";
+-}
+-else {
+-    my $nqp_dir = File::Spec->catfile($prefix, qw/share nqp/);
+-    my $jar_dir = File::Spec->catfile('${NQP_DIR}', 'runtime');
+-    my $lib_dir = File::Spec->catfile('${NQP_DIR}', 'lib');
+-    my $jars = "$jar_dir/nqp-runtime.jar:$jar_dir/asm-4.1.jar:$jar_dir/jline-1.0.jar:$lib_dir/nqp.jar";
+-    my $install_to = File::Spec->catfile($realpath, 'bin', 'nqp-j');
+-
+-    open my $fh, ">", $install_to
+-        or die "Could not open $install_to: $!";
+-    print $fh "#!/bin/sh\n";
+-    print $fh ": \${NQP_DIR:=\"$nqp_dir\"}\n";
+-    print $fh ": \${NQP_JARS:=\"$jars\"}\n";
+-    print $fh "exec java -Xss1m -Xmx512m -Xbootclasspath/a:\${NQP_JARS} -cp $lib_dir nqp \"\$\@\"\n";
+-    close $fh
+-        or die "Could not close $install_to: $!";
+-    chmod 0755, $install_to;
+-}
+diff --git a/tools/build/install-jvm-runner.pl.in b/tools/build/install-jvm-runner.pl.in
+new file mode 100644
+index 0000000..92a1109
+--- /dev/null
++++ b/tools/build/install-jvm-runner.pl.in
+@@ -0,0 +1,44 @@
++#!/usr/bin/perl
++# Copyright (C) 2013, The Perl Foundation.
++
++use strict;
++use warnings;
++use 5.008;
++use File::Spec;
++
++my ($destdir, $prefix) = @ARGV;
++my $realpath = $destdir.$prefix;
++
++unless (File::Spec->file_name_is_absolute($prefix)) {
++    $prefix = File::Spec->rel2abs($prefix);
++}
++
++if ($^O eq 'MSWin32') {
++    my $jar_dir = File::Spec->catfile($prefix, 'share', 'nqp', 'runtime');
++    my $lib_dir = File::Spec->catfile($prefix, 'share', 'nqp', 'lib');
++    my $install_to = File::Spec->catfile($realpath, 'bin', 'nqp-j.bat');
++
++    open my $fh, ">", $install_to
++        or die "Could not open $install_to: $!";
++    print $fh '@java -Xss1m -Xmx512m -Xbootclasspath/a:' . $jar_dir . '\\nqp-runtime.jar;' .
++              "$jar_dir\\@asmfile@;$jar_dir\\@jlinefile@;$lib_dir\\nqp.jar -cp $lib_dir nqp %*\n";
++    close $fh
++        or die "Could not close $install_to: $!";
++}
++else {
++    my $nqp_dir = File::Spec->catfile($prefix, qw/share nqp/);
++    my $jar_dir = File::Spec->catfile('${NQP_DIR}', 'runtime');
++    my $lib_dir = File::Spec->catfile('${NQP_DIR}', 'lib');
++    my $jars = "$jar_dir/nqp-runtime.jar:$jar_dir/@asmfile@:$jar_dir/@jlinefile@:$lib_dir/nqp.jar";
++    my $install_to = File::Spec->catfile($realpath, 'bin', 'nqp-j');
++
++    open my $fh, ">", $install_to
++        or die "Could not open $install_to: $!";
++    print $fh "#!/bin/sh\n";
++    print $fh ": \${NQP_DIR:=\"$nqp_dir\"}\n";
++    print $fh ": \${NQP_JARS:=\"$jars\"}\n";
++    print $fh "exec java -Xss1m -Xmx512m -Xbootclasspath/a:\${NQP_JARS} -cp $lib_dir nqp \"\$\@\"\n";
++    close $fh
++        or die "Could not close $install_to: $!";
++    chmod 0755, $install_to;
++}

@@ -1,0 +1,170 @@
+diff -ur dmake.orig/dbug/malloc/testmem.c dmake-4.1/dbug/malloc/testmem.c
+--- dmake.orig/dbug/malloc/testmem.c	1997-07-15 17:02:26.000000000 +0100
++++ dmake-4.1/dbug/malloc/testmem.c	2003-03-10 15:02:38.000000000 +0000
+@@ -64,7 +64,7 @@
+ int f;
+ extern char *sys_errlist[];
+ extern int sys_nerr;
+-extern int errno;
++#include <errno.h>
+ #endif
+ 
+ /* ARGSUSED */
+diff -ur dmake.orig/qssl/runargv.c dmake-4.1/qssl/runargv.c
+--- dmake.orig/qssl/runargv.c	1997-07-15 17:02:29.000000000 +0100
++++ dmake-4.1/qssl/runargv.c	2003-03-10 15:03:09.000000000 +0000
+@@ -24,6 +24,7 @@
+ */
+ 
+ #include <signal.h>
++#include <errno.h>
+ #include "extern.h"
+ #include "sysintf.h"
+ 
+@@ -67,7 +68,6 @@
+ int     shell;
+ char	*cmd;
+ {
+-   extern  int  errno;
+    int          pid;
+    char         **argv;
+ 
+diff -ur dmake.orig/qssl/stdlib.h dmake-4.1/qssl/stdlib.h
+--- dmake.orig/qssl/stdlib.h	1997-07-15 17:02:29.000000000 +0100
++++ dmake-4.1/qssl/stdlib.h	2003-03-10 15:03:35.000000000 +0000
+@@ -39,7 +39,7 @@
+ extern free();
+ #endif
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/unix/386ix/stdlib.h dmake-4.1/unix/386ix/stdlib.h
+--- dmake.orig/unix/386ix/stdlib.h	1997-07-15 17:02:34.000000000 +0100
++++ dmake-4.1/unix/386ix/stdlib.h	2003-03-10 15:04:33.000000000 +0000
+@@ -35,7 +35,7 @@
+ extern char *malloc();
+ extern char *realloc();
+ extern free();
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/unix/bsd43/stdlib.h dmake-4.1/unix/bsd43/stdlib.h
+--- dmake.orig/unix/bsd43/stdlib.h	1997-07-15 17:02:35.000000000 +0100
++++ dmake-4.1/unix/bsd43/stdlib.h	2003-03-10 15:04:55.000000000 +0000
+@@ -35,7 +35,7 @@
+ extern char *malloc();
+ extern char *realloc();
+ extern free();
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/unix/coherent/stdlib.h dmake-4.1/unix/coherent/stdlib.h
+--- dmake.orig/unix/coherent/stdlib.h	1997-07-15 17:02:35.000000000 +0100
++++ dmake-4.1/unix/coherent/stdlib.h	2003-03-10 15:05:33.000000000 +0000
+@@ -35,7 +35,7 @@
+ extern char *malloc();
+ extern char *realloc();
+ extern free();
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/unix/runargv.c dmake-4.1/unix/runargv.c
+--- dmake.orig/unix/runargv.c	1997-07-15 17:02:34.000000000 +0100
++++ dmake-4.1/unix/runargv.c	2003-03-10 15:05:53.000000000 +0000
+@@ -24,6 +24,7 @@
+ */
+ 
+ #include <signal.h>
++#include <errno.h>
+ #include "extern.h"
+ #include "sysintf.h"
+ 
+@@ -67,8 +68,7 @@
+ int     shell;
+ char	*cmd;
+ {
+-   extern  int  errno;
+-   extern  char *sys_errlist[];
++   
+    int          pid;
+    char         **argv;
+ 
+diff -ur dmake.orig/unix/startup.h dmake-4.1/unix/startup.h
+--- dmake.orig/unix/startup.h	1997-07-15 17:02:34.000000000 +0100
++++ dmake-4.1/unix/startup.h	2003-03-10 15:00:46.000000000 +0000
+@@ -24,4 +24,4 @@
+ --      Use cvs log to obtain detailed change logs.
+ */
+ 
+-"MAKESTARTUP := $(ROOTDIR)/usr/local/lib/dmake/startup/startup.mk",
++"MAKESTARTUP := $(ROOTDIR)/usr/share/dmake/startup/startup.mk",
+diff -ur dmake.orig/unix/sysvr1/stdlib.h dmake-4.1/unix/sysvr1/stdlib.h
+--- dmake.orig/unix/sysvr1/stdlib.h	1997-07-15 17:02:36.000000000 +0100
++++ dmake-4.1/unix/sysvr1/stdlib.h	2003-03-10 15:06:16.000000000 +0000
+@@ -35,7 +35,7 @@
+ extern char *malloc();
+ extern char *realloc();
+ extern free();
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/unix/sysvr3/stdlib.h dmake-4.1/unix/sysvr3/stdlib.h
+--- dmake.orig/unix/sysvr3/stdlib.h	1997-07-15 17:02:36.000000000 +0100
++++ dmake-4.1/unix/sysvr3/stdlib.h	2003-03-10 15:06:50.000000000 +0000
+@@ -46,10 +46,6 @@
+ #define NAME_MAX pathconf("/dev/null",_PC_NAME_MAX)
+ #endif
+ 
+-extern int errno;
+-
+-#ifndef EIO
+-#	include <errno.h>
+-#endif
++#include <errno.h>
+ 
+ #endif /* _STDLIB_INCLUDED_ */
+diff -ur dmake.orig/unix/xenix/stdlib.h dmake-4.1/unix/xenix/stdlib.h
+--- dmake.orig/unix/xenix/stdlib.h	1997-07-15 17:02:36.000000000 +0100
++++ dmake-4.1/unix/xenix/stdlib.h	2003-03-10 15:05:15.000000000 +0000
+@@ -41,7 +41,7 @@
+ extern free();
+ #endif
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ #ifndef EIO
+ #	include <errno.h>
+diff -ur dmake.orig/win95/microsft/vpp40/runargv.c dmake-4.1/win95/microsft/vpp40/runargv.c
+--- dmake.orig/win95/microsft/vpp40/runargv.c	1997-07-15 17:02:37.000000000 +0100
++++ dmake-4.1/win95/microsft/vpp40/runargv.c	2003-03-10 15:07:06.000000000 +0000
+@@ -73,7 +73,6 @@
+ int     shell;
+ char	*cmd;
+ {
+-   extern  int  errno;
+    extern  char *sys_errlist[];
+    int          pid;
+    char         **argv;
+diff -ur dmake.orig/winnt/microsft/vpp40/runargv.c dmake-4.1/winnt/microsft/vpp40/runargv.c
+--- dmake.orig/winnt/microsft/vpp40/runargv.c	1997-07-15 17:02:38.000000000 +0100
++++ dmake-4.1/winnt/microsft/vpp40/runargv.c	2003-03-10 15:07:21.000000000 +0000
+@@ -73,7 +73,6 @@
+ int     shell;
+ char	*cmd;
+ {
+-   extern  int  errno;
+    extern  char *sys_errlist[];
+    int          pid;
+    char         **argv;

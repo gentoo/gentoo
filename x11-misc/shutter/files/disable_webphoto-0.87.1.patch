@@ -1,0 +1,17 @@
+Index: shutter-0.87.1/bin/shutter
+===================================================================
+--- shutter-0.87.1.orig/bin/shutter
++++ shutter-0.87.1/bin/shutter
+@@ -9181,11 +9181,7 @@ if ($app->is_running) {
+ 			die "ERROR: imagemagick is missing --> aborting!\n\n";
+ 		}
+ 
+-		#gnome-web-photo
+-		unless ( File::Which::which('gnome-web-photo') ) {
+-			warn "WARNING: gnome-web-photo is missing --> screenshots of websites will be disabled!\n\n";
+-			$gnome_web_photo = FALSE;
+-		}
++		$gnome_web_photo = FALSE;
+ 
+ 		#nautilus-sendto
+ 		unless ( File::Which::which('nautilus-sendto') ) {

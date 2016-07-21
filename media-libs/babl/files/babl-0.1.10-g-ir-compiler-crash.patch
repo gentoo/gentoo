@@ -1,0 +1,12 @@
+Index: babl-0.1.10/babl/Makefile.am
+===================================================================
+--- babl-0.1.10.orig/babl/Makefile.am
++++ babl-0.1.10/babl/Makefile.am
+@@ -95,6 +95,7 @@ INTROSPECTION_COMPILER_ARGS = --included
+ if HAVE_INTROSPECTION
+ Babl-$(BABL_API_VERSION).gir: $(G_IR_SCANNER) $(library_include_HEADERS) $(c_sources) $(srcdir)/Makefile.am libbabl-@BABL_API_VERSION@.la
+ 	$(INTROSPECTION_SCANNER) -v --namespace Babl --nsversion=$(BABL_API_VERSION) \
++            --identifier-prefix= --symbol-prefix=babl \
+             --add-include-path=$(srcdir) --add-include-path=. \
+             --library=$(builddir)/libbabl-$(BABL_API_VERSION).la \
+             --libtool="$(LIBTOOL)" \

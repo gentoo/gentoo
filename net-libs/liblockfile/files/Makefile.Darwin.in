@@ -1,0 +1,80 @@
+#
+# Makefile.in	Makefile for the liblockfile package (Darwin version)
+#
+# Gentoo version for Darwin, based on original:
+# version:	@(#)Makefile.in  1.01  16-Apr-1999  miquels@cistron.nl
+#
+
+VER	= 1.0
+NVER	= 0.1
+
+CFLAGS		= @CFLAGS@ -I.
+LDFLAGS		= @LDFLAGS@
+CC		= @CC@
+
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+bindir		= @bindir@
+libdir		= @libdir@
+mandir		= @mandir@
+nfslockdir	= @nfslockdir@
+includedir	= @includedir@
+
+MAILGROUP	= @MAILGROUP@
+
+all:		@TARGETS@
+install:	@INSTALL_TARGETS@
+
+static:		liblockfile.a dotlockfile
+shared:		liblockfile.dylib dotlockfile
+nfslib:		nfslock.$(VER).dylib
+
+liblockfile.a:	lockfile.o
+		ar rv liblockfile.a lockfile.o
+
+liblockfile.dylib: liblockfile.a
+		$(CC) $(LDFLAGS) -fPIC -dynamiclib -install_name @libdir@/liblockfile.1.0.dylib \
+			-o liblockfile.dylib lockfile.o -lc
+
+nfslock.$(VER).dylib:	nfslock.o
+		$(CC) $(LDFLAGS) -fPIC -dynamiclib -install_name nfslock.0.dylib \
+			-o nfslock.$(NVER).dylib nfslock.o
+
+dotlockfile:	dotlockfile.o xlockfile.o
+		$(CC) $(LDFLAGS) -o dotlockfile dotlockfile.o xlockfile.o
+
+lockfile.o:	lockfile.c
+		$(CC) $(CFLAGS) -DLIB -DLOCKPROG=\"$(bindir)/dotlockfile\" \
+			-c lockfile.c
+
+xlockfile.o:	lockfile.c
+		$(CC) $(CFLAGS) -c lockfile.c -o xlockfile.o
+
+install_static:	static install_common
+		install -m 644 liblockfile.a $(ROOT)$(libdir)
+
+install_shared:	shared install_common
+		install -m 755 liblockfile.dylib \
+			$(ROOT)$(libdir)/liblockfile.$(VER).dylib
+		ln -s liblockfile.$(VER).dylib $(ROOT)$(libdir)/liblockfile.dylib
+
+install_common:
+		install -m 644 lockfile.h maillock.h $(ROOT)$(includedir)
+		if [ "$(MAILGROUP)" != "" ]; then\
+		  install -g $(MAILGROUP) -m 2755 dotlockfile $(ROOT)$(bindir);\
+		else \
+		  install -g root -m 755 dotlockfile $(ROOT)$(bindir); \
+		fi
+		install -m 644 *.1 $(ROOT)$(mandir)/man1
+		install -m 644 *.3 $(ROOT)$(mandir)/man3
+
+install_nfslib:	nfslib
+		install -m 755 nfslock.$(VER).dylib $(ROOT)$(nfslockdir)
+
+clean:
+		rm -f *.a *.o *.dylib dotlockfile
+
+distclean:	clean
+		rm -f Makefile autoconf.h maillock.h \
+			config.cache config.log config.status
+

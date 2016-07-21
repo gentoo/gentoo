@@ -1,0 +1,13 @@
+diff --git a/convertible.cabal b/convertible.cabal
+index 377562d..98b7cc7 100644
+--- a/convertible.cabal
++++ b/convertible.cabal
+@@ -50,7 +50,7 @@ flag time_gte_113
+ 
+ library
+   if flag(splitBase)
+-    Build-Depends: base>=3 && <5, old-time, time>=1.1.2.4 && <=1.2.0.3,
++    Build-Depends: base>=3 && <5, old-time, time>=1.1.2.4 && < 1.3,
+      bytestring, containers, old-locale
+     if flag(time_gte_113)
+       Build-Depends: time>=1.1.3

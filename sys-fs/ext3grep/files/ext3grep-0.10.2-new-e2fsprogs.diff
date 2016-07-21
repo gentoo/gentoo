@@ -1,0 +1,34 @@
+diff -ur ext3grep-0.10.1/src/ext3.h ext3grep-0.10.1.new/src/ext3.h
+--- ext3grep-0.10.1/src/ext3.h	2008-04-09 11:20:31.000000000 +0000
++++ ext3grep-0.10.1.new/src/ext3.h	2011-12-10 07:00:50.000000000 +0000
+@@ -24,6 +24,17 @@
+ #ifndef EXT3_H
+ #define EXT3_H
+ 
++// this trickery needs to happen before ext2_fs is included so
++// bail out if it has already been included by another path
++#ifdef _LINUX_EXT2_FS_H
++  #error please include this file before any other includes of ext2fs/ext2_fs.h
++#endif
++
++// some versions of the ext2 headers call this s_frags_per_group and some
++// call it s_clusters_per_group, define one to the other so our code works 
++// with both
++#define s_clusters_per_group s_frags_per_group
++
+ // Use the header files from e2progs (http://e2fsprogs.sourceforge.net)
+ // We can use these headers and then everything named ext2 or ext3.
+ #include <ext2fs/ext2_fs.h>			// Definitions of ext2, ext3 and ext4.
+@@ -110,6 +121,12 @@
+     __u32 faddr(void) const { return i_faddr; }
+     __u16 uid_high(void) const { return i_uid_high; }
+     __u16 gid_high(void) const { return i_gid_high; }
++#ifndef i_reseved2
++    //i_reseved2 has been split into two fields in recent 
++    //versions of the headers, luckilly we can still access
++    //it in one peice through the hurd side of the union
++    #define i_reserved2 osd2.hurd2.h_i_author
++#endif
+     __u32 reserved2(void) const { return i_reserved2; }
+ 
+     void set_reserved2(__u32 val) { i_reserved2 = val; }

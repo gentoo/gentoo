@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-Element-Extended</remote-id>
+    <remote-id type="cpan-module">HTML::ElementGlob</remote-id>
+    <remote-id type="cpan-module">HTML::ElementRaw</remote-id>
+    <remote-id type="cpan-module">HTML::ElementSuper</remote-id>
+    <remote-id type="cpan-module">HTML::ElementSuper::ContentWatchdog</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable::DataElement</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable::Element</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable::HeaderElement</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable::RowElement</remote-id>
+    <remote-id type="cpan-module">HTML::ElementTable::RowGlob</remote-id>
+  </upstream>
+</pkgmetadata>

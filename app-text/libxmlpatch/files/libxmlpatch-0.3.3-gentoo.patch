@@ -1,0 +1,56 @@
+Index: libxmlpatch-0.3.3/tests/check_diff.c
+===================================================================
+--- libxmlpatch-0.3.3.orig/tests/check_diff.c
++++ libxmlpatch-0.3.3/tests/check_diff.c
+@@ -259,7 +259,13 @@ static struct {
+ static void
+ add_test (TCase *tc, int i)
+ {
+-    _tcase_add_test (tc, arr_tests[i].fn, arr_tests[i].name, 0, 0, 1);
++    _tcase_add_test (tc, arr_tests[i].fn, arr_tests[i].name,
++#if CHECK_MAJOR_VERSION > 0 || \
++  (CHECK_MAJOR_VERSION == 0 && CHECK_MINOR_VERSION > 9) || \
++  (CHECK_MAJOR_VERSION == 0 && CHECK_MINOR_VERSION == 9 && CHECK_MICRO_VERSION >= 7)
++                     0,
++#endif
++                     0, 0, 1);
+ }
+ 
+ static void
+Index: libxmlpatch-0.3.3/configure.in
+===================================================================
+--- libxmlpatch-0.3.3.orig/configure.in
++++ libxmlpatch-0.3.3/configure.in
+@@ -74,7 +74,13 @@ fi
+ 
+ PKG_CHECK_MODULES(DEPS_XML, libxml-2.0)
+ PKG_CHECK_MODULES(DEPS_GLIB, glib-2.0)
+-PKG_CHECK_MODULES([CHECK], [check >= 0.9.4])
++
++AC_ARG_WITH([check],
++  AS_HELP_STRING([--without-check], [Do not build tests based on check package @<:@default=auto@:>@]))
++AS_IF([test "x$with_check" != "xno"], [
++PKG_CHECK_MODULES([CHECK], [check >= 0.9.4], , [with_check=no])
++])
++AM_CONDITIONAL([TESTS], [test "x$with_check" != "xno"])
+ 
+ AC_SUBST(DEPS_XML_CFLAGS)
+ AC_SUBST(DEPS_XML_LIBS)
+Index: libxmlpatch-0.3.3/tests/Makefile.am
+===================================================================
+--- libxmlpatch-0.3.3.orig/tests/Makefile.am
++++ libxmlpatch-0.3.3/tests/Makefile.am
+@@ -1,10 +1,11 @@
++if TESTS
+ TESTS = test-diff
++check_PROGRAMS = test-diff
++endif
+ 
+-test_PROGRAMS = test-diff
+ test_diff_SOURCES = check_diff.c
+ test_diff_CFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/diff @CHECK_CFLAGS@ $(DEPS_XML_CFLAGS) $(DEPS_GLIB_CFLAGS)
+ test_diff_LDADD = @CHECK_LIBS@ $(top_builddir)/src/libxmlpatch.la $(top_builddir)/diff/libxmldiff.la $(DEPS_XML_LIBS) $(DEPS_GLIB_LIBS)
+-testdir = $(libdir)/tests/xml_diff
+ 
+ bin_PROGRAMS = xml_patch xml_diff
+ 

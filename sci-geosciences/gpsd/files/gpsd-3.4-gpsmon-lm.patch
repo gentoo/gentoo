@@ -1,0 +1,29 @@
+From 55131187b6a0290f99d1dd70b5cce48040bba7bb Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 13 Jan 2012 11:53:39 -0500
+Subject: [PATCH] gpsmon: always link with -lm
+
+Since the gpsmon pkg uses math funcs itself (and not just via libgps),
+we need to link in -lm for the app.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ SConstruct |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 68bf367..a5249c1 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -851,7 +851,7 @@ gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'], parse_flags=gpslibs)
+ env.Depends(gpsdctl, compiled_gpslib)
+ 
+ gpsmon = env.Program('gpsmon', gpsmon_sources,
+-                     parse_flags=gpsdlibs + ncurseslibs)
++                     parse_flags=gpsdlibs + ncurseslibs + ['-lm'])
+ env.Depends(gpsmon, [compiled_gpsdlib, compiled_gpslib])
+ 
+ gpspipe = env.Program('gpspipe', ['gpspipe.c'], parse_flags=gpslibs)
+-- 
+1.7.8.3
+

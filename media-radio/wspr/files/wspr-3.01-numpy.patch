@@ -1,0 +1,23 @@
+# Numpy-1.9 dropped oldnumeric and numarray
+--- WsprMod/specjt.py.orig	2015-05-18 15:49:37.000000000 +0200
++++ WsprMod/specjt.py	2015-05-18 15:49:48.000000000 +0200
+@@ -12,7 +12,7 @@
+ import w
+ 
+ try:
+-    from numpy.oldnumeric import zeros, multiarray
++    from numpy import zeros, multiarray
+ except:
+     from Numeric import zeros, multiarray
+ import Image, ImageTk, ImageDraw
+--- wspr.py.orig	2015-05-18 15:47:13.000000000 +0200
++++ wspr.py	2015-05-18 15:47:38.000000000 +0200
+@@ -31,7 +31,7 @@
+ from WsprMod import palettes
+ from math import log10
+ try:
+-    from numpy.oldnumeric import zeros
++    from numpy import zeros
+ except: 
+     from Numeric import zeros
+ import array

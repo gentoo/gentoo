@@ -1,0 +1,15 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -30,11 +30,9 @@
+ DEFS= \
+   -DPKGDATADIR=\"$(pkgdatadir)/\"
+ 
+-LIBS=$(DEPS_LIBS)
++LIBS+=$(DEPS_LIBS)
+ 
+ AM_CPPFLAGS = \
+-  -g \
+-  -O2 \
+   -Wall \
+   -Wmissing-prototypes \
+   -Wmissing-declarations \

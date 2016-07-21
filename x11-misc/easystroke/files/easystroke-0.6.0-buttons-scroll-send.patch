@@ -1,0 +1,43 @@
+From 5388934e722308cd314d65e362ddfaf6e5ab6c94 Mon Sep 17 00:00:00 2001
+From: Thomas Jaeger <ThJaeger@gmail.com>
+Date: Sat, 13 Apr 2013 14:10:35 -0400
+Subject: Make buttons and scroll work properly with 'send'
+
+---
+ handler.cc | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/handler.cc b/handler.cc
+index f47aae3..c1bd279 100644
+--- a/handler.cc
++++ b/handler.cc
+@@ -545,7 +545,7 @@ class AbstractScrollHandler : public Handler {
+ 
+ protected:
+ 	AbstractScrollHandler() : last_t(0), offset_x(0.0), offset_y(0.0) {
+-		if (!prefs.move_back.get() || xstate->current_dev->absolute)
++		if (!prefs.move_back.get() || (xstate->current_dev && xstate->current_dev->absolute))
+ 			return;
+ 		Window dummy1, dummy2;
+ 		int dummy3, dummy4;
+@@ -563,7 +563,7 @@ protected:
+ 	}
+ protected:
+ 	void move_back() {
+-		if (!prefs.move_back.get() || xstate->current_dev->absolute)
++		if (!prefs.move_back.get() || (xstate->current_dev && xstate->current_dev->absolute))
+ 			return;
+ 		XTestFakeMotionEvent(dpy, DefaultScreen(dpy), orig_x, orig_y, 0);
+ 	}
+@@ -1115,6 +1115,8 @@ XState::XState() : current_dev(NULL), in_proximity(false), accepted(true) {
+ 
+ void XState::run_action(RAction act) {
+ 	RModifiers mods = act->prepare();
++	IF_BUTTON(act, b)
++		return handler->replace_child(new ButtonHandler(mods, b));
+ 	if (IS_IGNORE(act))
+ 		return handler->replace_child(new IgnoreHandler(mods));
+ 	if (IS_SCROLL(act))
+-- 
+1.8.4
+

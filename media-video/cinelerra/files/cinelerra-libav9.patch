@@ -1,0 +1,93 @@
+diff -urN cinelerra-20120707/cinelerra/ffmpeg.C /tmp/cinelerra-20120707/cinelerra/ffmpeg.C
+--- cinelerra-20120707/cinelerra/ffmpeg.C	2013-06-22 18:07:43.632978553 +0200
++++ /tmp/cinelerra-20120707/cinelerra/ffmpeg.C	2013-06-22 18:07:21.668979334 +0200
+@@ -32,9 +32,9 @@
+ 		return 1;
+ 	}
+ 
+-	context = avcodec_alloc_context();
++	context = avcodec_alloc_context3(NULL);
+ 
+-	if (avcodec_open(context, codec)) {
++	if (avcodec_open2(context, codec, NULL)) {
+ 		printf("FFMPEG::init avcodec_open() failed\n");
+ 	}
+
+diff -urN cinelerra-20120707/cinelerra/fileac3.C /tmp/cinelerra-20120707/cinelerra/fileac3.C
+--- cinelerra-20120707/cinelerra/fileac3.C	2013-06-22 18:07:43.632978553 +0200
++++ /tmp/cinelerra-20120707/cinelerra/fileac3.C	2013-06-22 18:07:21.668979334 +0200
+@@ -91,11 +91,11 @@
+ 			eprintf("codec not found.\n");
+ 			return 1;
+ 		}
+-		codec_context = avcodec_alloc_context();
++		codec_context = avcodec_alloc_context3(NULL);
+ 		codec_context->bit_rate = asset->ac3_bitrate * 1000;
+ 		codec_context->sample_rate = asset->sample_rate;
+ 		codec_context->channels = asset->channels;
+-		if(avcodec_open(codec_context, codec))
++		if(avcodec_open2(codec_context, codec, NULL))
+ 		{
+ 			eprintf("failed to open codec.\n");
+ 			return 1;
+diff -urN cinelerra-20120707/quicktime/mpeg4.c /tmp/cinelerra-20120707/quicktime/mpeg4.c
+--- cinelerra-20120707/quicktime/mpeg4.c	2013-06-22 18:07:43.633978553 +0200
++++ /tmp/cinelerra-20120707/quicktime/mpeg4.c	2013-06-22 18:07:21.690979334 +0200
+@@ -642,7 +642,7 @@
+ 				return 1;
+ 			}
+ 
+-			codec->encoder_context[current_field] = avcodec_alloc_context();
++			codec->encoder_context[current_field] = avcodec_alloc_context3(NULL);
+ 			AVCodecContext *context = codec->encoder_context[current_field];
+ 
+ 			context->width = width_i;
+@@ -676,8 +676,6 @@
+ 			context->error_resilience = FF_ER_CAREFUL;
+ #elif LIBAVCODEC_VERSION_INT < ((54<<16)+(0<<8)+0)
+ 			context->error_recognition = FF_ER_CAREFUL;
+-#else
+-			context->err_recognition |= AV_EF_CAREFUL;
+ #endif
+ 			context->error_concealment = 3;
+ 			context->frame_skip_cmp = FF_CMP_DCTMAX;
+diff -urN cinelerra-20120707/quicktime/qtffmpeg.c /tmp/cinelerra-20120707/quicktime/qtffmpeg.c
+--- cinelerra-20120707/quicktime/qtffmpeg.c	2013-06-22 18:07:43.633978553 +0200
++++ /tmp/cinelerra-20120707/quicktime/qtffmpeg.c	2013-06-22 18:07:21.690979334 +0200
+@@ -67,7 +67,7 @@
+ 			return 0;
+ 		}
+ 
+-		AVCodecContext *context = ptr->decoder_context[i] = avcodec_alloc_context();
++		AVCodecContext *context = ptr->decoder_context[i] = avcodec_alloc_context3(NULL);
+ 		static char fake_data[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+ 		context->width = ptr->width_i;
+ 		context->height = ptr->height_i;
+@@ -93,8 +93,8 @@
+ 		{
+ 			context->thread_count = cpus;
+ 		}
+-		if(avcodec_open(context, 
+-			ptr->decoder[i]) < 0)
++		if(avcodec_open2(context, 
++			ptr->decoder[i], NULL) < 0)
+ 		{
+ 			printf("quicktime_new_ffmpeg: avcodec_open failed.\n");
+ 			quicktime_delete_ffmpeg(ptr);
+diff -urN cinelerra-20120707/quicktime/wma.c /tmp/cinelerra-20120707/quicktime/wma.c
+--- cinelerra-20120707/quicktime/wma.c	2013-06-22 18:07:43.634978553 +0200
++++ /tmp/cinelerra-20120707/quicktime/wma.c	2013-06-22 18:07:21.690979334 +0200
+@@ -76,10 +76,10 @@
+ 			printf("init_decode: avcodec_find_decoder returned NULL.\n");
+ 			return 1;
+ 		}
+-		codec->decoder_context = avcodec_alloc_context();
++		codec->decoder_context = avcodec_alloc_context3(NULL);
+ 		codec->decoder_context->sample_rate = trak->mdia.minf.stbl.stsd.table[0].sample_rate;
+ 		codec->decoder_context->channels = track_map->channels;
+-		if(avcodec_open(codec->decoder_context, codec->decoder) < 0)
++		if(avcodec_open2(codec->decoder_context, codec->decoder, NULL) < 0)
+ 		{
+ 			printf("init_decode: avcodec_open failed.\n");
+ 			return 1;
+

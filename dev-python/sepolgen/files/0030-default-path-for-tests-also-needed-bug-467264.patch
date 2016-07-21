@@ -1,0 +1,12 @@
+diff -uNr sepolgen-1.2.1.orig/src/sepolgen/defaults.py sepolgen-1.2.1/src/sepolgen/defaults.py
+--- sepolgen-1.2.1.orig/src/sepolgen/defaults.py	2013-11-04 22:24:13.620024022 +0100
++++ sepolgen-1.2.1/src/sepolgen/defaults.py	2013-11-04 22:25:05.619024133 +0100
+@@ -27,7 +27,7 @@
+         self.config = dict()
+         if not os.path.exists(pathname):
+             self.config_pathname = "(defaults)"
+-            self.config["SELINUX_DEVEL_PATH"] = "/usr/share/selinux/default:/usr/share/selinux/mls:/usr/share/selinux/devel"
++            self.config["SELINUX_DEVEL_PATH"] = "/usr/share/selinux/strict/include:/usr/share/selinux/mcs/include:/usr/share/selinux/targeted/include:/usr/share/selinux/mls/include:/usr/share/selinux/default:/usr/share/selinux/mls:/usr/share/selinux/devel"
+             return
+         self.config_pathname = pathname
+         ignore = re.compile(r"^\s*(?:#.+)?$")

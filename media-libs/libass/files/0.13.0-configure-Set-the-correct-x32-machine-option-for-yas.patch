@@ -1,0 +1,26 @@
+From 4778001b673c73133d7d1dd48a385d0ca424ccfc Mon Sep 17 00:00:00 2001
+From: Luke Dashjr <luke-jr+git@utopios.org>
+Date: Sat, 10 Oct 2015 08:11:38 +0000
+Subject: [PATCH] configure: Set the correct x32 machine option for yasm
+
+---
+ configure.ac | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 117b23b..d6fbe34 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,6 +56,12 @@ AS_IF([test x$enable_asm != xno], [
+             X86=true
+             BITS=32
+             ASFLAGS="$ASFLAGS -DARCH_X86_64=0 -m x86" ],
++        [x86_64-*-gnux32|amd64-*-gnux32], [
++            AS=yasm
++            INTEL=true
++            X64=true
++            BITS=64
++            ASFLAGS="$ASFLAGS -DARCH_X86_64=1 -m x32" ],
+         [x86_64-*|amd64-*], [
+             AS=yasm
+             INTEL=true

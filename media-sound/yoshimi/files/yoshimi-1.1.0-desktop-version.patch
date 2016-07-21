@@ -1,0 +1,11 @@
+--- yoshimi-1.1.0/desktop/yoshimi.desktop.in
++++ yoshimi-1.1.0/desktop/yoshimi.desktop.in
+@@ -2,7 +2,7 @@
+ Name=Yoshimi
+ Comment=Real Time Synthesizer
+ GenericName=Synthesizer
+-Version=@YOSHIMI_VERSION@
++Version=1.0
+ Type=Application
+ Categories=AudioVideo;X-Sound;Audio;
+ Exec=yoshimi

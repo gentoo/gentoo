@@ -1,0 +1,105 @@
+r2175 | giraffedata | 2014-04-01 22:28:23 -0400 (Tue, 01 Apr 2014) | 1 line
+
+Fix bug: inconsistent use of upper and lower case Y and N in make file variables.  Make it consistently upper case
+
+--- buildtools/configure.pl	(revision 2174)
++++ buildtools/configure.pl	(revision 2175)
+@@ -835,16 +835,16 @@ sub getLibTypes($$$$$$$$) {
+         my $response = prompt("(y)es or (n)o", $default);
+         
+         if (uc($response) =~ /^(Y|YES)$/)  {
+-            $staticlib_too = "y";
++            $staticlib_too = "Y";
+         } elsif (uc($response) =~ /^(N|NO)$/)  {
+-            $staticlib_too = "n";
++            $staticlib_too = "N";
+         } else {
+             print("'$response' isn't one of the choices.  \n" .
+               "You must choose 'yes' or 'no' (or 'y' or 'n').\n");
+             exit 12;
+         }
+     } else {
+-        $staticlib_too = "n";
++        $staticlib_too = "N";
+     }
+     print("\n");
+ 
+--- config.mk.in	(revision 2174)
++++ config.mk.in	(revision 2175)
+@@ -503,7 +503,7 @@ LINUXSVGAHDR_DIR =
+ #LINUXSVGALIB = /usr/lib/libvga.so
+ #LINUXSVGAHDR_DIR = /usr/include/vgalib
+ 
+-# If you don't want any network functions, set OMIT_NETWORK to "y".
++# If you don't want any network functions, set OMIT_NETWORK to "Y".
+ # The only thing that requires network functions is the option in
+ # ppmtompeg to run it on multiple computers simultaneously.  On some
+ # systems network functions don't work or we haven't figured out how to 
+@@ -512,11 +512,11 @@ OMIT_NETWORK =
+ #DJGPP/Windows, Tru64:
+ #   (there's some minor header problem that prevents network functions from 
+ #   building on Tru64 2000.10.06)
+-#OMIT_NETWORK = y
++#OMIT_NETWORK = Y
+ 
+ # These are -l options to link in the network libraries.  Often, these are
+ # built into the standard C library, so this can be null.  This is irrelevant
+-# if OMIT_NETWORK is "y".
++# if OMIT_NETWORK is "Y".
+ 
+ NETWORKLD = 
+ # Solaris, SunOS:
+@@ -602,12 +602,12 @@ NETPBMLIBSUFFIX = so
+ # Windows shared library:
+ #NETPBMLIBSUFFIX = dll
+ 
+-#STATICLIB_TOO is "y" to signify that you want a static library built
++#STATICLIB_TOO is "Y" to signify that you want a static library built
+ #and installed in addition to whatever library type you specified by
+ #NETPBMLIBTYPE.  If NETPBMLIBTYPE specified a static library,
+ #STATICLIB_TOO simply has no effect.
+-STATICLIB_TOO = y
+-#STATICLIB_TOO = n
++STATICLIB_TOO = Y
++#STATICLIB_TOO = N
+ 
+ #STATICLIBSUFFIX is the suffix that static libraries have.  It's
+ #meaningless if you aren't building static libraries.
+--- GNUmakefile	(revision 2174)
++++ GNUmakefile	(revision 2175)
+@@ -396,19 +396,19 @@ lib/install.hdr:
+ 	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/Makefile \
+ 	    SRCDIR=$(SRCDIR) BUILDDIR=$(BUILDDIR) $(notdir $@)
+ 
+-ifeq ($(STATICLIB_TOO),y)
+-BUILD_STATIC = y
++ifeq ($(STATICLIB_TOO),Y)
++BUILD_STATIC = Y
+ else
+   ifeq ($(NETPBMLIBTYPE),unixstatic)
+-    BUILD_STATIC = y
++    BUILD_STATIC = Y
+   else
+-    BUILD_STATIC = n
++    BUILD_STATIC = N
+   endif
+ endif
+ 
+ .PHONY: install.staticlib
+ install.staticlib: 
+-ifeq ($(BUILD_STATIC),y)
++ifeq ($(BUILD_STATIC),Y)
+ 	$(MAKE) -C lib -f $(SRCDIR)/lib/Makefile \
+ 	SRCDIR=$(SRCDIR) BUILDDIR=$(BUILDDIR) install.staticlib 
+ endif
+--- lib/Makefile	(revision 2174)
++++ lib/Makefile	(revision 2175)
+@@ -175,7 +175,7 @@ else
+   ifeq ($(STATICLIB_TOO),Y)
+     BUILD_STATICLIB = Y
+   else
+-    BUILD_STATICLIB = n
++    BUILD_STATICLIB = N
+   endif
+ endif
+ 

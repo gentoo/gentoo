@@ -1,0 +1,28 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Fix issues of langstrs.h not being built before modules and
+	tools are, hopefully fixing parallel make.
+
+diff -r ad64cfd2cacc -r b323b647fe91 Makefile
+--- a/Makefile	Mon Jun 20 22:29:07 2011 -0400
++++ b/Makefile	Tue Jun 21 00:42:59 2011 -0400
+@@ -115,17 +115,17 @@
+ 	$(CC) $(LFLAGS) $(OBJS) version.o $(MODLIB) $(LIBS) -o $@
+ 
+ ifneq ($(STATIC_MODULES),)
+-modules:
++modules: langstrs.h
+ 	@$(MAKE) -C modules all-static CFLAGS="$(CFLAGS)"
+ else
+-modules:
++modules: langstrs.h
+ 	@$(MAKE) -C modules all-dynamic CFLAGS="$(CFLAGS)"
+ endif
+ 
+ languages:
+ 	@$(MAKE) -C lang CFLAGS="$(CFLAGS)"
+ 
+-tools: services.h
++tools: langstrs.h services.h
+ 	@$(MAKE) -C tools CFLAGS="$(CFLAGS)"
+ 
+ 

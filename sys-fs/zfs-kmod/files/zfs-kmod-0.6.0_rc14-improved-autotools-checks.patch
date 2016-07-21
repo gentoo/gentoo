@@ -1,0 +1,105 @@
+From d75af3c0ebb4e31ece087aeecfeff282cb6f1361 Mon Sep 17 00:00:00 2001
+From: Etienne Dechamps <etienne@edechamps.fr>
+Date: Sun, 24 Feb 2013 12:42:28 +0000
+Subject: [PATCH] Use -Werror for all kernel configure tests.
+
+As a matter of fact, we're already using -Werror for most tests because
+of a bug in kernel-bio-empty-barrier.m4 which sets -Werror without
+reverting it afterwards. This meant that all tests which ran after this
+one was using -Werror.
+
+This patch simply makes it clear that we're using -Werror and makes
+the code more readable and more predictable.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1317
+---
+ config/kernel-bio-empty-barrier.m4   |    1 -
+ config/kernel-bio-end-io-t-args.m4   |    3 ---
+ config/kernel-security-inode-init.m4 |    6 ------
+ config/kernel.m4                     |    2 +-
+ 4 files changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/config/kernel-bio-empty-barrier.m4 b/config/kernel-bio-empty-barrier.m4
+index 99549fe..fda16b3 100644
+--- a/config/kernel-bio-empty-barrier.m4
++++ b/config/kernel-bio-empty-barrier.m4
+@@ -4,7 +4,6 @@ dnl # Empty write barriers are now supported and we should use them.
+ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_BIO_EMPTY_BARRIER], [
+ 	AC_MSG_CHECKING([whether bio_empty_barrier() is defined])
+-	EXTRA_KCFLAGS="-Werror"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/bio.h>
+ 	],[
+diff --git a/config/kernel-bio-end-io-t-args.m4 b/config/kernel-bio-end-io-t-args.m4
+index ced4861..44e4826 100644
+--- a/config/kernel-bio-end-io-t-args.m4
++++ b/config/kernel-bio-end-io-t-args.m4
+@@ -9,8 +9,6 @@ dnl # to void.
+ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_BIO_END_IO_T_ARGS], [
+ 	AC_MSG_CHECKING([whether bio_end_io_t wants 2 args])
+-	tmp_flags="$EXTRA_KCFLAGS"
+-	EXTRA_KCFLAGS="-Werror"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/bio.h>
+ 	],[
+@@ -25,5 +23,4 @@ AC_DEFUN([ZFS_AC_KERNEL_BIO_END_IO_T_ARGS], [
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+-	EXTRA_KCFLAGS="$tmp_flags"
+ ])
+diff --git a/config/kernel-security-inode-init.m4 b/config/kernel-security-inode-init.m4
+index c21588a..a62176d 100644
+--- a/config/kernel-security-inode-init.m4
++++ b/config/kernel-security-inode-init.m4
+@@ -7,8 +7,6 @@ dnl # security checks will just be skipped.
+ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_6ARGS_SECURITY_INODE_INIT_SECURITY], [
+ 	AC_MSG_CHECKING([whether security_inode_init_security wants 6 args])
+-	tmp_flags="$EXTRA_KCFLAGS"
+-	EXTRA_KCFLAGS="-Werror"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/security.h>
+ 	],[
+@@ -27,7 +25,6 @@ AC_DEFUN([ZFS_AC_KERNEL_6ARGS_SECURITY_INODE_INIT_SECURITY], [
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+-	EXTRA_KCFLAGS="$tmp_flags"
+ ])
+ 
+ dnl #
+@@ -39,8 +36,6 @@ dnl # and the EVM xattr.
+ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_CALLBACK_SECURITY_INODE_INIT_SECURITY], [
+ 	AC_MSG_CHECKING([whether security_inode_init_security wants callback])
+-	tmp_flags="$EXTRA_KCFLAGS"
+-	EXTRA_KCFLAGS="-Werror"
+ 	ZFS_LINUX_TRY_COMPILE([
+ 		#include <linux/security.h>
+ 	],[
+@@ -57,5 +52,4 @@ AC_DEFUN([ZFS_AC_KERNEL_CALLBACK_SECURITY_INODE_INIT_SECURITY], [
+ 	],[
+ 		AC_MSG_RESULT(no)
+ 	])
+-	EXTRA_KCFLAGS="$tmp_flags"
+ ])
+diff --git a/config/kernel.m4 b/config/kernel.m4
+index 6d28074..5623785 100644
+--- a/config/kernel.m4
++++ b/config/kernel.m4
+@@ -488,7 +488,7 @@ AC_DEFUN([ZFS_LINUX_COMPILE_IFELSE], [
+ 	modpost_flag=''
+ 	test "x$enable_linux_builtin" = xyes && modpost_flag='modpost=true' # fake modpost stage
+ 	AS_IF(
+-		[AC_TRY_COMMAND(cp conftest.c build && make [$2] -C $LINUX_OBJ EXTRA_CFLAGS="-Werror-implicit-function-declaration $EXTRA_KCFLAGS" $ARCH_UM M=$PWD/build $modpost_flag) >/dev/null && AC_TRY_COMMAND([$3])],
++		[AC_TRY_COMMAND(cp conftest.c build && make [$2] -C $LINUX_OBJ EXTRA_CFLAGS="-Werror $EXTRA_KCFLAGS" $ARCH_UM M=$PWD/build $modpost_flag) >/dev/null && AC_TRY_COMMAND([$3])],
+ 		[$4],
+ 		[_AC_MSG_LOG_CONFTEST m4_ifvaln([$5],[$5])]
+ 	)
+-- 
+1.7.10
+

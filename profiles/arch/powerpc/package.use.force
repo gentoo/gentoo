@@ -1,0 +1,18 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Needs dev-lang/luajit tested #499974
+dev-libs/efl oldlua
+
+# Matti Bickel <mabi@gentoo.org> - 2007-12-31
+# only the java interface is usable on ppc
+net-p2p/sancho-bin java
+
+# Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
+# bug 303931
+# sci-chemistry/arp-warp-bin is not available for ppc
+# sci-chemistry/solve-resolve-bin is not available for ppc
+# sci-chemistry/cns is not available for ppc
+sci-libs/cctbx minimal

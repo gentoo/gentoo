@@ -1,0 +1,30 @@
+diff --git a/core/base/doc/macros/fillpatterns.C b/core/base/doc/macros/fillpatterns.C
+index b0a5132..fca81c8 100644
+--- a/core/base/doc/macros/fillpatterns.C
++++ b/core/base/doc/macros/fillpatterns.C
+@@ -20,11 +20,11 @@ TCanvas * fillpatterns()
+ 
+    // Fixed patterns.
+    for (i=1; i<=5; i++) {
+-      box(j++, 0.01, y-bh, 0.19, y);
+-      box(j++, 0.21, y-bh, 0.39, y);
+-      box(j++, 0.41, y-bh, 0.59, y);
+-      box(j++, 0.61, y-bh, 0.79, y);
+-      box(j++, 0.81, y-bh, 0.99, y);
++      box(j, 0.01, y-bh, 0.19, y); j++;
++      box(j, 0.21, y-bh, 0.39, y); j++;
++      box(j, 0.41, y-bh, 0.59, y); j++;
++      box(j, 0.61, y-bh, 0.79, y); j++;
++      box(j, 0.81, y-bh, 0.99, y); j++;
+       y = y-bh-db;
+    }
+ 
+@@ -55,7 +55,7 @@ TCanvas * fillpatterns()
+    return Pat;
+ }
+ 
+-box(Int_t pat, Double_t x1, Double_t y1, Double_t x2, Double_t  y2)
++void box(Int_t pat, Double_t x1, Double_t y1, Double_t x2, Double_t  y2)
+ {
+    // Draw an box using the fill pattern "pat" with the "pat" value
+    // written on top.

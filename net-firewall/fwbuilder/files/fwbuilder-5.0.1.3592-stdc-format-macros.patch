@@ -1,0 +1,51 @@
+From: Vadim Kurland <vadim@slot.vk.crocodile.org>
+Date: Tue, 14 Feb 2012 04:59:26 +0000 (-0800)
+Subject: fix for SF bug #3468802. Define macro __STDC_FORMAT_MACROS. This still
+X-Git-Url: http://fwbuilder.git.sourceforge.net/git/gitweb.cgi?p=fwbuilder%2Ffwbuilder;a=commitdiff_plain;h=f97a1b50ba51be5fa31cc54dba829a9e77609160;hp=15565ade5dc843e5fefe83568a023c37256c3c3c
+
+fix for SF bug #3468802. Define macro __STDC_FORMAT_MACROS. This still
+needs to be tested on all build machines.
+---
+
+diff --git a/qmake.inc.in b/qmake.inc.in
+index 6bf27e0..3e31fd6 100644
+--- a/qmake.inc.in
++++ b/qmake.inc.in
+@@ -67,6 +67,9 @@ unix {
+ 
+         CONFIG += warn_on
+ 
++        QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS
++        QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS
++
+     }
+ }
+ 
+diff --git a/src/libfwbuilder/qmake.inc.in b/src/libfwbuilder/qmake.inc.in
+index b4f15bb..a8114cf 100644
+--- a/src/libfwbuilder/qmake.inc.in
++++ b/src/libfwbuilder/qmake.inc.in
+@@ -34,6 +34,9 @@ unix {
+     QMAKE_CXXFLAGS_DEBUG += -Wno-unused-parameter @CXXFLAGS@
+     QMAKE_CXXFLAGS_RELEASE += -Wno-unused-parameter @CXXFLAGS@
+ 
++    QMAKE_CXXFLAGS_DEBUG += -D__STDC_FORMAT_MACROS
++    QMAKE_CXXFLAGS_RELEASE += -D__STDC_FORMAT_MACROS
++
+     exec_prefix = @EXEC_PREFIX@
+     DESTDIR =
+ 
+diff --git a/src/libfwbuilder/src/fwbuilder/uint128.h b/src/libfwbuilder/src/fwbuilder/uint128.h
+index 0a2e7a4..b00ab47 100644
+--- a/src/libfwbuilder/src/fwbuilder/uint128.h
++++ b/src/libfwbuilder/src/fwbuilder/uint128.h
+@@ -36,7 +36,7 @@
+ 
+ #include <stdio.h>
+ 
+-#define __STDC_FORMAT_MACROS
++// #define __STDC_FORMAT_MACROS
+ #include <inttypes.h>   // for sprintf formats for "long long"
+ 
+ // convinience macro
+

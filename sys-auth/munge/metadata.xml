@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="gcrypt">Use libgcrypt instead of openssl</flag>
+	</use>
+	<longdescription>MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for creating
+	and validating credentials. It is designed to be highly scalable for use in
+	an HPC cluster environment. It allows a process to authenticate the UID and
+	GID of another local or remote process within a group of hosts having common
+	users and groups. These hosts form a security realm that is defined by a
+	shared cryptographic key. Clients within this security realm can create and
+	validate credentials without the use of root privileges, reserved ports, or
+	platform-specific methods.</longdescription>
+	<upstream>
+		<remote-id type="google-code">munge</remote-id>
+		<remote-id type="github">dun/munge</remote-id>
+	</upstream>
+</pkgmetadata>

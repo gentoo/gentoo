@@ -1,0 +1,15 @@
+fix building with newer glibc
+
+http://bugs.gentoo.org/227923
+
+--- pretrace.h
++++ pretrace.h
+@@ -20,3 +20,8 @@
+ #include <sys/time.h>
+ # define RANDOMIZE(x) { struct timeval tv; gettimeofday(&tv, NULL); x = tv.tv_usec; }
+ #endif
++
++#include <unistd.h>
++#ifndef ARG_MAX
++# define ARG_MAX sysconf(_SC_ARG_MAX)
++#endif

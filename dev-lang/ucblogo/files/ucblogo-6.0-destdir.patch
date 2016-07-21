@@ -1,0 +1,63 @@
+diff -Nuar a/docs/makefile b/docs/makefile
+--- a/docs/makefile	2008-08-19 21:56:59.000000000 +0200
++++ b/docs/makefile	2015-05-18 11:18:00.349956599 +0200
+@@ -1,6 +1,6 @@
+ BUILDIR	      = `pwd`
+ INFODIR	      = $(prefix)/info
+-DOCSDIR	      = $(LIBLOC)/docs
++DOCSDIR	      = $(prefix)/doc
+ HTMLDIR	      = $(DOCSDIR)/html
+ 
+ all: usermanual.ps usermanual.pdf html/usermanual_1.html ucblogo.info
+@@ -31,10 +31,10 @@
+ 	-rm -f *.{aux,cp,cps,dvi,fn,ky,log,pg,toc,tp,vr}
+ 
+ install: all
+-	for d in $(INFODIR) $(DOCSDIR) $(HTMLDIR); do [ -d $$d ] || mkdir -p $$d || exit 1; done
+-	-cp -f *.info* $(INFODIR)/.
+-	-cp -f html/*.html $(HTMLDIR)/.
+-	-cp -f usermanual.ps $(DOCSDIR)/.
+-	-cp -f usermanual.pdf $(DOCSDIR)/.
+-	-cp -f usermanual.texi $(DOCSDIR)/.
+-	-cp -f ../usermanual $(DOCSDIR)/.
++	for d in $(INFODIR) $(DOCSDIR) $(HTMLDIR); do [ -d $(DESTDIR)$$d ] || mkdir -p $(DESTDIR)$$d || exit 1; done
++	-cp -f *.info* $(DESTDIR)$(INFODIR)/.
++	-cp -f html/*.html $(DESTDIR)$(HTMLDIR)/.
++	-cp -f usermanual.ps $(DESTDIR)$(DOCSDIR)/.
++	-cp -f usermanual.pdf $(DESTDIR)$(DOCSDIR)/.
++	-cp -f usermanual.texi $(DESTDIR)$(DOCSDIR)/.
++	-cp -f ../usermanual $(DESTDIR)$(DOCSDIR)/.
+diff -Nuar a/makefile.in b/makefile.in
+--- a/makefile.in	2008-09-14 01:27:17.000000000 +0200
++++ b/makefile.in	2015-05-18 11:45:43.649947257 +0200
+@@ -1,7 +1,7 @@
+ CC	= @CC@
+ CFLAGS	= @CFLAGS@ @CPPFLAGS@ @X_CFLAGS@ -O0 -DUSE_OLD_TTY
+ CXX     = g++
+-CXXFLAGS = -g @CXXFLAGS@
++CXXFLAGS = @CXXFLAGS@
+ LDFLAGS	= @LDFLAGS@
+ LIBS  = @X_PRE_LIBS@ @X_LIBS@ @LIBS@ @X_EXTRA_LIBS@
+ prefix = @prefix@
+@@ -70,14 +70,14 @@
+ #	cd emacs; $(MAKE) ship
+ 	cd docs; $(MAKE) ship
+ 
+-install: all
+-	for d in $(BINDIR) $(LIBLOC) $(LIBLOC)/logolib $(LIBLOC)/helpfiles $(LIBLOC)/csls; do [ -d $$d ] || mkdir -p $$d || exit 1; done
+-	cp logo $(BINDIR)/.
+-	cp -f logolib/* $(LIBLOC)/logolib/.
+-	cp -f helpfiles/* $(LIBLOC)/helpfiles/.
+-	cp -f csls/* $(LIBLOC)/csls/.
++install: everything
++	for d in $(BINDIR) $(LIBLOC) $(LIBLOC)/logolib $(LIBLOC)/helpfiles $(LIBLOC)/csls; do [ -d $(DESTDIR)$$d ] || mkdir -p $(DESTDIR)$$d || exit 1; done
++	cp logo $(DESTDIR)$(BINDIR)/.
++	cp -f logolib/* $(DESTDIR)$(LIBLOC)/logolib/.
++	cp -f helpfiles/* $(DESTDIR)$(LIBLOC)/helpfiles/.
++	cp -f csls/* $(DESTDIR)$(LIBLOC)/csls/.
+ #	(cd emacs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) $(MAKE) install)
+-	(cd docs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) $(MAKE) install)
++	(cd docs; prefix=/usr/share DESTDIR=$(DESTDIR) $(MAKE) install)
+ #	prefix=$(prefix); LIBLOC=$(LIBLOC); BINDIR=$(BINDIR); export prefix LIBLOC BINDIR; cd emacs; $(MAKE) install
+ 
+ logo-mode: 

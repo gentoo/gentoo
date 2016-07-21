@@ -1,0 +1,11 @@
+diff -urN a/ganglia-3.1.1/gmond/python_modules/disk/multidisk.py b/ganglia-3.1.1/gmond/python_modules/disk/multidisk.py
+--- a/ganglia-3.1.1/gmond/python_modules/disk/multidisk.py	2008-08-25 13:44:57.000000000 -0400
++++ b/ganglia-3.1.1/gmond/python_modules/disk/multidisk.py	2008-11-18 21:40:41.768077035 -0500
+@@ -92,6 +92,7 @@
+         'slope': slope,
+         'format': fmt,
+         'description': desc, 
++        'groups': 'disk',
+         'mount': line[1]}
+     return d
+     

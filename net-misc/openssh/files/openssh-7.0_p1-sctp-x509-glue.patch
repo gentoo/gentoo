@@ -1,0 +1,74 @@
+--- openssh-6.8_p1-sctp.patch.1	2015-08-12 16:01:13.854769013 -0700
++++ openssh-6.8_p1-sctp.patch	2015-08-12 16:00:38.208488789 -0700
+@@ -195,14 +195,6 @@
+  .Op Fl c Ar cipher
+  .Op Fl F Ar ssh_config
+  .Op Fl i Ar identity_file
+-@@ -178,6 +178,7 @@ For full details of the options listed b
+- .It ServerAliveCountMax
+- .It StrictHostKeyChecking
+- .It TCPKeepAlive
+-+.It Transport
+- .It UpdateHostKeys
+- .It UsePrivilegedPort
+- .It User
+ @@ -218,6 +219,8 @@ and
+  to print debugging messages about their progress.
+  This is helpful in
+@@ -477,19 +469,11 @@
+  .Sh SYNOPSIS
+  .Nm ssh
+  .Bk -words
+--.Op Fl 1246AaCfGgKkMNnqsTtVvXxYy
+-+.Op Fl 1246AaCfGgKkMNnqsTtVvXxYyz
++-.Op Fl 1246AaCdfgKkMNnqsTtVvXxYy
+++.Op Fl 1246AaCdfgKkMNnqsTtVvXxYyz
+  .Op Fl b Ar bind_address
+  .Op Fl c Ar cipher_spec
+  .Op Fl D Oo Ar bind_address : Oc Ns Ar port
+-@@ -473,6 +473,7 @@ For full details of the options listed b
+- .It StreamLocalBindUnlink
+- .It StrictHostKeyChecking
+- .It TCPKeepAlive
+-+.It Transport
+- .It Tunnel
+- .It TunnelDevice
+- .It UsePrivilegedPort
+ @@ -665,6 +666,8 @@ Trusted X11 forwardings are not subjecte
+  controls.
+  .It Fl y
+@@ -501,7 +485,7 @@
+  By default this information is sent to stderr.
+ --- a/ssh.c
+ +++ b/ssh.c
+-@@ -194,12 +194,17 @@ extern int muxserver_sock;
++@@ -194,11 +194,16 @@ extern int muxserver_sock;
+  extern u_int muxclient_command;
+  
+  /* Prints a help message to the user.  This function never returns. */
+@@ -515,18 +499,17 @@
+  usage(void)
+  {
+  	fprintf(stderr,
+--"usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]\n"
+-+"usage: ssh [-1246AaCfGgKkMNnqsTtVvXxYy" SCTP_OPT "] [-b bind_address] [-c cipher_spec]\n"
++-"usage: ssh [-1246AaCdfgKkMNnqsTtVvXxYy] [-b bind_address] [-c cipher_spec]\n"
+++"usage: ssh [-1246AaCdfgKkMNnqsTtVvXxYy" SCTP_OPT "] [-b bind_address] [-c cipher_spec]\n"
+  "           [-D [bind_address:]port] [-E log_file] [-e escape_char]\n"
+  "           [-F configfile] [-I pkcs11] [-i identity_file]\n"
+- "           [-L [bind_address:]port:host:hostport] [-l login_name] [-m mac_spec]\n"
+ @@ -506,7 +512,7 @@ main(int ac, char **av)
+- 	argv0 = av[0];
++ #  define ENGCONFIG ""
++ #endif
+  
+-  again:
+--	while ((opt = getopt(ac, av, "1246ab:c:e:fgi:kl:m:no:p:qstvx"
+-+	while ((opt = getopt(ac, av, "1246ab:c:e:fgi:kl:m:no:p:qstvx" SCTP_OPT
+- 	    "ACD:E:F:GI:KL:MNO:PQ:R:S:TVw:W:XYy")) != -1) {
++-	while ((opt = getopt(ac, av, "1246ab:c:de:fgi:kl:m:no:p:qstvx"
+++	while ((opt = getopt(ac, av, "1246ab:c:de:fgi:kl:m:no:p:qstvx" SCTP_OPT
++ 	    "ACD:E:F:" ENGCONFIG "I:KL:MNO:PQ:R:S:TVw:W:XYy")) != -1) {
+  		switch (opt) {
+  		case '1':
+ @@ -732,6 +738,11 @@ main(int ac, char **av)

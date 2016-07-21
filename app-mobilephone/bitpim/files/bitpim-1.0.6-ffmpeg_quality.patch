@@ -1,0 +1,12 @@
+diff -Nru bitpim-1.0.6.orig/src/conversions.py bitpim-1.0.6/src/conversions.py
+--- bitpim-1.0.6.orig/src/conversions.py	2008-11-02 13:51:31.000000000 +0000
++++ bitpim-1.0.6/src/conversions.py	2008-11-02 13:52:21.000000000 +0000
+@@ -239,7 +239,7 @@
+     ffmpeg=gethelperbinary("ffmpeg")
+     with common.usetempfile('mp3') as mp3file:
+         try:
+-            run(ffmpeg, "-i", shortfilename(inputfilename), "-hq", "-ab", `bitrate`, "-ar", `samplerate`, "-ac", `channels`, shortfilename(mp3file))
++            run(ffmpeg, "-i", shortfilename(inputfilename), "-sameq", "-ab", `bitrate`, "-ar", `samplerate`, "-ac", `channels`, shortfilename(mp3file))
+         except common.CommandExecutionFailed, e:
+             # we get this exception on bad parameters, or any other
+             # issue so we assume bad parameters for the moment.

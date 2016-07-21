@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription>
+Program v1.03 implementing IUPAC (Standard) InChI/InChIKey version 1.
+</longdescription>
+</pkgmetadata>

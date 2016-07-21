@@ -1,0 +1,34 @@
+--- a/src/acinclude.m4
++++ b/src/acinclude.m4
+@@ -107,7 +107,7 @@ int main (int argc, char *argv[])
+   with_zlib=yes,
+   with_zlib=no,
+   [AC_MSG_RESULT(cross-compiling)
+-  with_zlib=""
++  with_zlib="cross"
+   AC_MSG_WARN(Assuming zlib is available)])
+ 
+ if test x$with_zlib != x; then
+@@ -116,7 +116,7 @@ fi
+ if test x$with_zlib = xyes; then
+   ZLIB_VERSION=$(<conf.zlibtest)
+   ifelse([$2], , :, [$2])
+-else
++elif test x$with_zlib != xcross; then
+   ZLIB_CFLAGS=""
+   ZLIB_LIBS=""
+   ZLIB_VERSION=""
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -103,8 +103,10 @@ main: makefile.dep $(Z_OBJS)
+ 	@ZC@ -o @ZSNESEXE@ $(Z_OBJS) @ZCFLAGS@ @LDFLAGS@
+ 	rm -f version.o
+ 
++BUILD_CXX ?= g++
++BUILD_CXXFLAGS ?= -O2 -pipe
+ $(PSR): parsegen.cpp
+-	@CXX@ @CXXFLAGS@ -o $@ $< -lz
++	$(BUILD_CXX) $(BUILD_CXXFLAGS) -o $@ $< -lz
+ 
+ TOOLSEXE=$(TOOL_D)/archopt $(TOOL_D)/cutrtype $(TOOL_D)/extraext\
+ 	$(TOOL_D)/macroll $(TOOL_D)/minwhite $(TOOL_D)/nreplace\

@@ -1,0 +1,37 @@
+From e904df784b91fd45e7dfcdec0713c471bb03efff Mon Sep 17 00:00:00 2001
+From: Thomas Robitaille <thomas.robitaille@gmail.com>
+Date: Fri, 1 Jan 2016 19:36:39 +0000
+Bug: https://bugs.debian.org/812648
+Bug: https://github.com/astropy/astropy/pull/4349
+Subject: [PATCH] Fixes to pytest plugins for pytest >= 2.8.0
+--- a/astropy/tests/pytest_plugins.py
++++ b/astropy/tests/pytest_plugins.py
+@@ -161,7 +161,10 @@
+         # handling __doctest_skip__) doesn't happen.
+         def collect(self):
+             if self.fspath.basename == "conftest.py":
+-                module = self.config._conftest.importconftest(self.fspath)
++                try:
++                    module = self.config._conftest.importconftest(self.fspath)
++                except AttributeError:  # pytest >= 2.8.0
++                    module = self.config.pluginmanager._importconftest(self.fspath)
+             else:
+                 try:
+                     module = self.fspath.pyimport()
+@@ -191,8 +194,14 @@
+         def runtest(self):
+             # satisfy `FixtureRequest` constructor...
+             self.funcargs = {}
+-            self._fixtureinfo = doctest_plugin.FuncFixtureInfo((), [], {})
+-            fixture_request = doctest_plugin.FixtureRequest(self)
++            try:
++                self._fixtureinfo = doctest_plugin.FuncFixtureInfo((), [], {})
++                fixture_request = doctest_plugin.FixtureRequest(self)
++            except AttributeError:  # pytest >= 2.8.0
++                python_plugin = config.pluginmanager.getplugin('python')
++                self._fixtureinfo = python_plugin.FuncFixtureInfo((), [], {})
++                fixture_request = python_plugin.FixtureRequest(self)
++
+             failed, tot = doctest.testfile(
+                 str(self.fspath), module_relative=False,
+                 optionflags=opts, parser=DocTestParserPlus(),

@@ -1,0 +1,64 @@
+From 36a9f9dd05c3b9df77c44c91663e9bd6cae1c848 Mon Sep 17 00:00:00 2001
+From: Ken Thomases <ken@codeweavers.com>
+Date: Mon, 15 Jun 2015 20:42:33 -0500
+Subject: [PATCH 1/1] configure: Only check for libunwind.h on OS X.
+
+---
+ configure    | 13 ++++++++++++-
+ configure.ac |  2 +-
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index a104097..c0951db 100755
+--- a/configure
++++ b/configure
+@@ -6626,7 +6626,6 @@ for ac_header in \
+ 	lber.h \
+ 	ldap.h \
+ 	libproc.h \
+-	libunwind.h \
+ 	link.h \
+ 	linux/cdrom.h \
+ 	linux/compiler.h \
+@@ -7849,6 +7848,18 @@ uninstall::
+     ;;
+ 
+   darwin*|macosx*)
++    for ac_header in libunwind.h
++do :
++  ac_fn_c_check_header_mongrel "$LINENO" "libunwind.h" "ac_cv_header_libunwind_h" "$ac_includes_default"
++if test "x$ac_cv_header_libunwind_h" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBUNWIND_H 1
++_ACEOF
++
++fi
++
++done
++
+     LIBEXT="dylib"
+     DLLFLAGS="$DLLFLAGS -fPIC"
+     LIBWINE_LDFLAGS="-multiply_defined suppress"
+diff --git a/configure.ac b/configure.ac
+index df28b27..f9df3f0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -424,7 +424,6 @@ AC_CHECK_HEADERS(\
+ 	lber.h \
+ 	ldap.h \
+ 	libproc.h \
+-	libunwind.h \
+ 	link.h \
+ 	linux/cdrom.h \
+ 	linux/compiler.h \
+@@ -751,6 +750,7 @@ uninstall::
+     ;;
+ 
+   darwin*|macosx*)
++    AC_CHECK_HEADERS(libunwind.h)
+     LIBEXT="dylib"
+     DLLFLAGS="$DLLFLAGS -fPIC"
+     LIBWINE_LDFLAGS="-multiply_defined suppress"
+-- 
+1.9.1
+

@@ -1,0 +1,12 @@
+Tue Aug  2 12:16:38 EEST 2011  Sergei Trofimovich <slyfox@community.haskell.org>
+  * doc: make happy.1 be buildabale with doc/configure
+diff -rN -u old-happy/doc/configure.ac new-happy/doc/configure.ac
+--- old-happy/doc/configure.ac	2011-08-02 12:24:20.913926740 +0300
++++ new-happy/doc/configure.ac	2011-08-02 12:24:20.923926615 +0300
+@@ -9,5 +9,5 @@
+ 
+ AC_PATH_PROG(DbLatexCmd,dblatex)
+ 
+-AC_CONFIG_FILES([config.mk])
++AC_CONFIG_FILES([config.mk happy.1])
+ AC_OUTPUT

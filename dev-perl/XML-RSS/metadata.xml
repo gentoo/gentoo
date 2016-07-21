@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-RSS</remote-id>
+    <remote-id type="cpan-module">XML::RSS</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::Base</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::Roles::ImageDims</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::Roles::ModulesElems</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::V0_9</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::V0_91</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::V1_0</remote-id>
+    <remote-id type="cpan-module">XML::RSS::Private::Output::V2_0</remote-id>
+    <remote-id type="sourceforge">perl-rss</remote-id>
+  </upstream>
+</pkgmetadata>

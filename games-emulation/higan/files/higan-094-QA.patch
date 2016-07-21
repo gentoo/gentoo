@@ -1,0 +1,90 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Jun  9 10:23:38 UTC 2013
+Subject: 
+
+--- a/Makefile
++++ b/Makefile
+@@ -13,8 +13,8 @@
+ # console := true
+ 
+ # compiler
+-flags   += -I. -O3 -fomit-frame-pointer
+-link    +=
++flags   += -I.
++link    += $(LDFLAGS)
+ objects := libco
+ 
+ # profile-guided optimization mode
+@@ -41,14 +41,12 @@
+   endif
+   link += -s -mthreads -luuid -lkernel32 -luser32 -lgdi32 -lcomctl32 -lcomdlg32 -lshell32 -lole32 -lws2_32
+   link += -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc
+-else ifeq ($(platform),macosx)
+-  flags += -march=native
+ else ifeq ($(platform),linux)
+-  flags += -march=native
+-  link += -s -Wl,-export-dynamic -lX11 -lXext -ldl
++  flags += 
++  link += -Wl,-export-dynamic -lX11 -lXext -ldl
+ else ifeq ($(platform),bsd)
+-  flags += -march=native
+-  link += -s -Wl,-export-dynamic -lX11 -lXext
++  flags += 
++  link += -Wl,-export-dynamic -lX11 -lXext
+ else
+   $(error unsupported platform.)
+ endif
+@@ -59,9 +57,9 @@
+ compile = \
+   $(strip \
+     $(if $(filter %.c,$<), \
+-      $(compiler) $(cflags) $(flags) $1 -c $< -o $@, \
++      $(compiler) $(cflags) $(flags) $(CFLAGS) $1 -c $< -o $@, \
+       $(if $(filter %.cpp,$<), \
+-        $(compiler) $(cppflags) $(flags) $1 -c $< -o $@ \
++        $(compiler) $(cppflags) $(flags) $(CXXFLAGS) $1 -c $< -o $@ \
+       ) \
+     ) \
+   )
+--- a/target-ethos/Makefile
++++ b/target-ethos/Makefile
+@@ -55,10 +55,10 @@
+ obj/ui-tools.o: $(ui)/tools/tools.cpp $(call rwildcard,$(ui)/)
+ 
+ obj/ruby.o: ruby/ruby.cpp $(call rwildcard,ruby/*)
+-	$(compiler) $(rubyflags) -c $< -o $@
++	$(compiler) $(rubyflags) $(CXXFLAGS) -c $< -o $@
+ 
+ obj/phoenix.o: phoenix/phoenix.cpp $(call rwildcard,phoenix/*)
+-	$(compiler) $(phoenixflags) -c $< -o $@
++	$(compiler) $(phoenixflags) $(CXXFLAGS) -c $< -o $@
+ 
+ obj/resource.o: $(ui)/resource.rc
+ ifeq ($(arch),win32)
+@@ -82,7 +82,7 @@
+ 	sips -s format icns data/higan.png --out out/$(name).app/Contents/Resources/higan.icns
+ 	$(strip $(compiler) -o out/$(name).app/Contents/MacOS/$(name) $(objects) $(link))
+ else
+-	$(strip $(compiler) -o out/$(name) $(objects) $(link))
++	$(strip $(CXX) $(CXXFLAGS) -o out/$(name) $(objects) $(link))
+ endif
+ 
+ resource:
+--- a/nall/Makefile
++++ b/nall/Makefile
+@@ -53,11 +53,11 @@
+     link :=
+   endif
+ 
+-  cflags := -x c -std=c99
+-  objcflags := -x objective-c -std=c99
+-  cppflags := -x c++ -std=c++11
+-  objcppflags := -x objective-c++ -std=c++11
+ endif
++cflags := -x c -std=c99
++objcflags := -x objective-c -std=c99
++cppflags := -x c++ -std=c++11
++objcppflags := -x objective-c++ -std=c++11
+ 
+ # cross-compilation support
+ ifeq ($(arch),x86)

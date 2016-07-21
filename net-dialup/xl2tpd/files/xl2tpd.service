@@ -1,0 +1,12 @@
+[Unit]
+Description=Layer 2 Tunneling Protocol Daemon (L2TP)
+After=syslog.target network.target
+After=ipsec.service
+
+[Service]
+ExecStart=/usr/sbin/xl2tpd -D
+KillSignal=SIGINT
+SuccessExitStatus=1
+
+[Install]
+WantedBy=multi-user.target

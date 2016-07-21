@@ -1,0 +1,27 @@
+From f43108d900a2ce7fa52d1c6741fdf41b6747c94c Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Sat, 26 Jan 2013 19:56:31 -0500
+Subject: [PATCH] [sunpinyin] gcc46 compatible.
+
+---
+ src/eim.cpp |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/eim.cpp b/src/eim.cpp
+index e09521f..c1c898f 100644
+--- a/src/eim.cpp
++++ b/src/eim.cpp
+@@ -49,8 +49,8 @@
+ extern "C" {
+ #endif
+     FCITX_DEFINE_PLUGIN(fcitx_sunpinyin, ime, FcitxIMClass) = {
+-        .Create = FcitxSunpinyinCreate,
+-        .Destroy = FcitxSunpinyinDestroy
++        FcitxSunpinyinCreate,
++        FcitxSunpinyinDestroy
+     };
+ #ifdef __cplusplus
+ }
+-- 
+1.7.10
+

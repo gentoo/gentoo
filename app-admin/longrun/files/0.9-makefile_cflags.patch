@@ -1,0 +1,14 @@
+Common subdirectories: longrun.old/debian and longrun/debian
+diff -u longrun.old/Makefile longrun/Makefile
+--- longrun.old/Makefile	2005-08-12 22:36:14.186390784 +0300
++++ longrun/Makefile	2005-08-12 22:37:36.157929216 +0300
+@@ -3,7 +3,7 @@
+ all: longrun README stamp-po
+ 
+ longrun: longrun.c
+-	gcc -DLOCALEDIR=\"$(LOCALEDIR)\" -g -O2 -W -Wall -o longrun longrun.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -DLOCALEDIR=\"$(LOCALEDIR)\" -W -Wall -o longrun longrun.c
+ 
+ README: longrun.1
+ 	groff -Tascii -man longrun.1 | col -bx > README
+Common subdirectories: longrun.old/po and longrun/po

@@ -1,0 +1,45 @@
+
+# Configuration file for 
+# gcc, Linux, 64bit
+# release build
+
+# Compiler options
+
+# Compiler general
+INC=-I$(TOP_SOURCE) -I$(SOURCE) -I. -I$(QTINCLUDE) 
+DEFS=-DQT_THREAD_SUPPORT -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII
+
+# C++
+CXXOPT_DEP=-MM -MG 
+CXXWARN=-Wall -pedantic -Wno-deprecated -Woverloaded-virtual \
+       -Wsign-promo -Wsynth -Wno-long-long -Wno-strict-aliasing
+CXXOPT=-c $(CXXFLAGS) -o
+CXXOPT_SO=-fPIC $(CXXOPT) 
+
+# C
+CCOPT_DEP=-MM -MG 
+CCWARN=
+CCOPT=-c $(CFLAGS) -o
+CCOPT_SO=-fPIC $(CCOPT) 
+
+# Linker
+LINK=$(CXX)
+LOPT=-Wl,-E ${LDFLAGS} -o
+LOPT_SO=-shared -fPIC $(LOPT) 
+
+LIBS=-L$(QTLIB) -lQtGui -lQtCore -lQtXml -lQtNetwork -lQtSql -lQtDesigner -lrt -lstdc++ -lcrypt -ldl -lz -lpthread
+
+.PHONY: install
+install:
+	mkdir -p $(INSTALL_BINDIR)
+	cp main/$(EXEC_NAME) $(INSTALL_BINDIR)
+	for bin in $(OTHER_BIN) ; \
+	do \
+	  cp main/$$bin $(INSTALL_BINDIR) ; \
+	done
+	for plugin in $(PLUGINS) ; \
+	do \
+	  cp $$plugin/*.so $(INSTALL_BINDIR) ; \
+	done
+	chmod 755 $(INSTALL_BINDIR) $(INSTALL_BINDIR)/*
+

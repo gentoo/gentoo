@@ -1,0 +1,27 @@
+--- mupdf-1.5/Makerules
++++ mupdf-1.5/Makerules
+@@ -58,17 +58,23 @@
+ 
+ HAVE_X11 ?= yes
+ 
++WANT_OPENSSL ?= yes
++ifeq "$(WANT_OPENSSL)" "yes"
+ ifeq "$(shell pkg-config --exists libcrypto && echo yes)" "yes"
+ SYS_OPENSSL_CFLAGS = -DHAVE_OPENSSL $(shell pkg-config --cflags libcrypto)
+ SYS_OPENSSL_LIBS = $(shell pkg-config --libs libcrypto)
+ endif
++endif
+ 
++WANT_CURL ?= yes
++ifeq "$(WANT_CURL)" "yes"
+ ifeq "$(shell pkg-config --exists libcurl && echo yes)" "yes"
+ HAVE_CURL = yes
+ SYS_CURL_CFLAGS = $(shell pkg-config --cflags libcurl)
+ SYS_CURL_LIBS = $(shell pkg-config --libs libcurl)
+-endif
+ SYS_CURL_DEPS = -lpthread -lrt
++endif
++endif
+ 
+ SYS_X11_CFLAGS = $(shell pkg-config --cflags x11 xext)
+ SYS_X11_LIBS = $(shell pkg-config --libs x11 xext)

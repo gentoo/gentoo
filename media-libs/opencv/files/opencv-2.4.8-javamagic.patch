@@ -1,0 +1,32 @@
+diff -ruN opencv-2.4.8.orig/CMakeLists.txt opencv-2.4.8/CMakeLists.txt
+--- opencv-2.4.8.orig/CMakeLists.txt	2013-12-27 18:09:18.000000000 +0100
++++ opencv-2.4.8/CMakeLists.txt	2014-01-24 22:06:12.000000000 +0100
+@@ -164,6 +164,7 @@
+ OCV_OPTION(WITH_OPENCLAMDFFT   "Include AMD OpenCL FFT library support"      ON   IF (NOT ANDROID AND NOT IOS) )
+ OCV_OPTION(WITH_OPENCLAMDBLAS  "Include AMD OpenCL BLAS library support"     ON   IF (NOT ANDROID AND NOT IOS) )
+ OCV_OPTION(WITH_INTELPERC      "Include Intel Perceptual Computing support"  OFF  IF WIN32 )
++OCV_OPTION(WITH_JAVA           "Include Java support"                        ON)
+ 
+ # OpenCV build components
+ # ===================================================
+@@ -449,6 +450,8 @@
+ include(cmake/OpenCVDetectPython.cmake)
+ 
+ # --- Java Support ---
++if(WITH_JAVA)
++
+ include(cmake/OpenCVDetectApacheAnt.cmake)
+ if(ANDROID)
+   include(cmake/OpenCVDetectAndroidSDK.cmake)
+@@ -466,6 +469,11 @@
+   SET(CAN_BUILD_ANDROID_PROJECTS FALSE)
+ endif()
+ 
++else()
++  SET(ANT_EXECUTABLE "")
++  SET(CAN_BUILD_ANDROID_PROJECTS FALSE)
++endif()
++
+ # --- OpenCL ---
+ if(WITH_OPENCL)
+   include(cmake/OpenCVDetectOpenCL.cmake)

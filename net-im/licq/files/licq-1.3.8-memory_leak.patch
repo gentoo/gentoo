@@ -1,0 +1,9 @@
+--- src/user.cpp
++++ src/user.cpp
+@@ -3631,6 +3631,7 @@
+     {
+       gLog.Error("%sUnable to open picture file (%s):\n%s%s.\n", L_ERRORxSTR,
+                                      szFilename, L_BLANKxSTR, strerror(errno));
++      close(source);
+       return;
+     }

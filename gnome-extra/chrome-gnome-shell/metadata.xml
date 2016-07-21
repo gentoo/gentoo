@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ykonotopov@gmail.com</email>
+		<name>Yuri Konotopov</name>
+	</maintainer>
+	<maintainer type="project">
+                <email>proxy-maint@gentoo.org</email>
+                <name>Proxy Maintainers</name>
+        </maintainer>
+	<upstream>
+		<bugs-to>https://github.com/nE0sIghT/chrome-gnome-shell-mirror/issues</bugs-to>
+		<remote-id type="github">GNOME/chrome-gnome-shell</remote-id>
+	</upstream>
+</pkgmetadata>

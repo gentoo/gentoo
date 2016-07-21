@@ -1,0 +1,13 @@
+diff --git a/gqrx.pro b/gqrx.pro
+index 2998186..b1e7687 100644
+--- a/gqrx.pro
++++ b/gqrx.pro
+@@ -9,7 +9,7 @@
+ #    BOOST_SUFFIX=-mt       To link against libboost-xyz-mt (needed for pybombs)
+ #--------------------------------------------------------------------------------
+ 
+-QT       += core gui svg network
++QT       += core gui network
+ contains(QT_MAJOR_VERSION,5) {
+     QT += widgets
+ }

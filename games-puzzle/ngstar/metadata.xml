@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+NGStar is a clone of a HP48 game called dstar.
+The goal is to catch all gifts in the level to get access to the next one.
+Use the ball to catch them, use the cube to stop the ball. The ball only move
+to the next obstacle (wall or cube).
+</longdescription>
+	<upstream>
+		<remote-id type="freshmeat">ngstar</remote-id>
+	</upstream>
+</pkgmetadata>

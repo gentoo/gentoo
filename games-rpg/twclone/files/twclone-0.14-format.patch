@@ -1,0 +1,75 @@
+--- bigbang.c.old	2015-10-27 09:21:51.172611109 +0100
++++ bigbang.c	2015-10-27 09:25:41.117233447 +0100
+@@ -530,13 +530,11 @@
+     planetfile = fopen ("./planets.data", "w");
+     for (loop = 1; loop <= 299 - strlen(terraInfo); loop++)
+         strcat(terraInfo, " ");
+-    strcat(terraInfo, "\n");
+-    fprintf (planetfile, terraInfo);
++    fprintf (planetfile, "%s\n", terraInfo);
+     sprintf (ferrinfo, "%d:%d:Ferringhi:1:-2:Unknown:1000:1000:1000:0:0:0:0:3:100000:20:30:10:0:0:0:0:", 2, ferringhiSector);
+     for (loop = 1; loop <= 299 - strlen(ferrinfo); loop++)
+         strcat(ferrinfo, " ");
+-    strcat(ferrinfo, "\n");
+-    fprintf(planetfile, ferrinfo);
++    fprintf(planetfile, "%s\n", ferrinfo);
+     randomPlanetInfo = malloc (sizeof (strNameLength));
+     if (numRandomPlanets > 0)
+     {
+@@ -552,8 +550,7 @@
+                      , c, tempint, randomname (randomPlanetInfo), randomnum(1,5));
+             for (loop = 1; loop <= 299 - strlen(ferrinfo); loop++)
+                 strcat(ferrinfo, " ");
+-            strcat(ferrinfo, "\n");
+-            fprintf(planetfile, ferrinfo);
++            fprintf(planetfile, "%s\n", ferrinfo);
+ 
+             c++;
+         }
+@@ -616,10 +613,9 @@
+         fileline = strcat (fileline, ":");
+         if (sectorlist[x]->nebulae != NULL)
+             fileline = strcat (fileline, sectorlist[x]->nebulae);
+-        fileline = strcat (fileline, ":\n");
+         /*  Later put in whitespace buffer for saving */
+         /*  Not needed until user created beacons put in */
+-        fprintf (file, fileline);
++        fprintf (file, "%s:\n", fileline);
+     }
+     fclose (file);
+     free (fileline);
+@@ -646,8 +642,7 @@
+         len = (int) strlen (fileline);
+         for (y = 0; y <= 99 - len; y++)
+             strcat (fileline, " ");
+-        strcat (fileline, "\n");
+-        fprintf (file, fileline);
++        fprintf (file, "%s\n", fileline);
+     }
+     fclose (file);
+ 
+--- config.c.old	2015-10-27 09:30:00.091283678 +0100
++++ config.c	2015-10-27 09:30:25.068806593 +0100
+@@ -140,9 +140,8 @@
+ 
+   for (loop=0; loop < 199 - strlen(buffer); loop++)
+ 		strcat(buffer, " ");
+-  strcat(buffer, "\n");
+ 
+-  fprintf(configfile, buffer);
++  fprintf(configfile, "%s\n", buffer);
+ 
+   fclose(configfile);
+   free(buffer);
+--- planet.c.old	2015-10-27 09:31:44.867282757 +0100
++++ planet.c	2015-10-27 09:32:17.083667674 +0100
+@@ -59,8 +59,7 @@
+ 		addint(stufftosave, planets[index]->citdl->upgradestart, ':', BUFF_SIZE);
+ 		for (loop=0; loop< 399 - strlen(stufftosave); loop++)
+ 			strcat(stufftosave, " ");
+-		strcat(stufftosave, "\n");
+-		fprintf(planetfile, stufftosave);
++		fprintf(planetfile, "%s\n", stufftosave);
+ 		}
+ 	}
+ 	fclose(planetfile);

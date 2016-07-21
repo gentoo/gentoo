@@ -1,0 +1,13 @@
+Gentoo: https://bugs.gentoo.org/show_bug.cgi?id=501804
+Upstream: http://sourceforge.net/p/fbpanel/code/474/
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+
+--- a/exec/xlogout
++++ b/exec/xlogout
+@@ -45,5 +45,5 @@
+ [ -z "$SPID" ] && exit 1
+ echo "Session start up script"
+ ps -o uid,pid,ppid,sess,cmd --pid $SPID
+-kill -SIGTERM -$SPID
++kill -SIGTERM -$SPID $SPID

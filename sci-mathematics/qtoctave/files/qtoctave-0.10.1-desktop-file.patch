@@ -1,0 +1,8 @@
+--- qtoctave/src/config_files/qtoctave.desktop.orig	2013-07-16 11:26:02.619168052 -0700
++++ qtoctave/src/config_files/qtoctave.desktop	2013-07-16 11:25:54.316124742 -0700
+@@ -4,4 +4,4 @@
+ Icon=qtoctave
+ Exec=qtoctave
+ Type=Application
+-Categories=Education;Science;Math;Qt;
++Categories=Development;Education;Science;Math;Qt;

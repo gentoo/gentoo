@@ -1,0 +1,26 @@
+#!/bin/bash
+
+webDavWrapper="webdavwrapper"
+webDavWrapperPath="${VHOST_CGIBINDIR}/${webDavWrapper}"
+
+chmodCmd="/bin/chmod"
+chownCmd="/bin/chown"
+
+
+function die ()
+{
+	echo "reconfig error: $1" >&2
+    	exit 1
+}
+
+if [ $1 = "install" ]; then
+	# In order to change the user and group ID at runtime, the webdavwrapper
+	# needs to be run as root (set-user-ID and set-group-ID bit)
+	if ! ${chownCmd} root:root ${webDavWrapperPath}; then
+		die "Chown for ${webDavWrapperPath} failed"
+	fi
+
+	if ! ${chmodCmd} 6755 ${webDavWrapperPath}; then
+		die "Setting SUID and SGID bit on ${webDavWrapperPath} failed"
+	fi
+fi

@@ -1,0 +1,17 @@
+--- Makefile.orig	2012-09-23 16:31:55.761755338 +0400
++++ Makefile	2012-09-23 16:32:46.159759345 +0400
+@@ -1,4 +1,4 @@
+-LDFLAGS = -lnet
++LIBS = -lnet
+ TGTS = gvrpcd
+ 
+ all: $(TGTS)
+@@ -8,7 +8,7 @@
+ # gvrpcd.c:(.text+0x228): undefined reference to `libnet_init'
+ # But after moving LDFLAGS to end of the line, works just fine. Sigh...
+ gvrpcd: gvrpcd.c
+-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ 
+ clean:
+ 	rm -f $(TGTS) *.o

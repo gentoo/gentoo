@@ -1,0 +1,13 @@
+--- initdb-mysql	2004-07-20 11:31:24.000000000 -0400
++++ initdb-mysql.patched	2006-01-26 15:41:43.000000000 -0500
+@@ -34,8 +34,8 @@ create table lxr_indexes (
+
+ create table lxr_releases
+         (fileid         int not null references lxr_files,
+-        releaseid             char(255) binary not null,
+-        primary key     (fileid,releaseid)
++        `releaseid`             char(255) binary not null,
++        primary key     (fileid,`releaseid`)
+ );
+
+ create table lxr_usage

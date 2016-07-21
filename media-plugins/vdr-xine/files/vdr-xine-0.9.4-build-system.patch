@@ -1,0 +1,59 @@
+From 537ad5fa86305cf55f37dd9c87a9ec3260668049 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Tue, 10 Jan 2012 13:58:40 +0100
+Subject: [PATCH] patch 1
+
+---
+ Makefile |   14 ++++++++------
+ 1 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 674f4fb..e1fdba2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -25,9 +25,9 @@ CXXFLAGS ?= -g -O3 -Wall -Woverloaded-virtual
+ 
+ ### The directory environment:
+ 
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
+-TMPDIR = /tmp
++VDRDIR ?= ../../..
++LIBDIR ?= ../../lib
++TMPDIR ?= /tmp
+ 
+ ### Make sure that necessary options are included:
+ 
+@@ -37,7 +37,7 @@ TMPDIR = /tmp
+ 
+ -include $(VDRDIR)/Make.config
+ 
+-INCLUDES += `pkg-config --cflags libxine` 
++INCLUDES += `pkg-config --cflags libxine`
+ 
+ # where to create fifos (xine expects them at /tmp/vdr-xine)
+ VDR_XINE_FIFO_DIR ?= /tmp/vdr-xine
+@@ -114,9 +114,9 @@ $(DEPFILE): Makefile
+ -include $(DEPFILE)
+ 
+ ### Internationalization (I18N):
+-
++ifeq ($(ENABLE_I18N), yes)
+ PODIR     = po
+-LOCALEDIR = $(VDRDIR)/locale
++LOCALEDIR = $(DESTDIR)$(VDRDIR)/locale
+ I18Npo    = $(wildcard $(PODIR)/*.po)
+ I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
+ I18Npot   = $(PODIR)/$(PLUGIN).pot
+@@ -135,6 +135,8 @@ $(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
+ 	@mkdir -p $(dir $@)
+ 	cp $< $@
+ 
++endif
++
+ .PHONY: i18n
+ i18n: $(I18Nmsgs) $(I18Npot)
+ 
+-- 
+1.7.3.4
+

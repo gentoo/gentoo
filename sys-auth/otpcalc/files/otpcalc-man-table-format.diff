@@ -1,0 +1,35 @@
+Make missing list appear in man page, bug 90900.
+
+--- otpCalc.man.orig
++++ otpCalc.man
+@@ -24,18 +24,20 @@
+ the Challenge input:
+ .IP
+ .TS
+-s/key		MD4
+-.br
+-otp-md4		MD4
+-.br
+-otp-md5		MD5
+-.br
+-otp-rmd160	RIPEMD-160
+-.br
+-otp-sha1		SHA1
+-.br
++allbox tab(#);
++cb l
++cb l
++cb l
++cb l
++cb l.
++s/key#MD4
++otp-md4#MD4
++otp-md5#MD5
++otp-rmd160#RIPEMD-160
++otp-sha1#SHA1
+ .TE
+ .LP
++.LP
+ In the absence of a prefix, the default hash, specified in the Settings menu,
+ is used.
+ .SH "SEE ALSO"

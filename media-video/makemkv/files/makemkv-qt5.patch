@@ -1,0 +1,28 @@
+--- makemkv-oss-1.9.8/configure.orig	2015-12-20 16:22:19.000000000 +0000
++++ makemkv-oss-1.9.8/configure	2015-12-27 00:05:18.659860655 +0000
+@@ -5108,6 +5108,7 @@
+ 
+ 
+ 
++: '
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for qt4" >&5
+ $as_echo_n "checking for qt4... " >&6; }
+@@ -5257,7 +5258,9 @@
+      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+ 
++'
+       as_fn_error $? "Qt library (version 5 or 4) is required to build GUI" "$LINENO" 5
++: '
+ 
+ else
+ 	qt4_CFLAGS=$pkg_cv_qt4_CFLAGS
+@@ -5270,6 +5273,7 @@
+       QT_MOC=`$PKG_CONFIG --variable moc_location "QtCore" 2>/dev/null`;
+ 
+ fi
++'
+ 
+ else
+ 	qt5_CFLAGS=$pkg_cv_qt5_CFLAGS

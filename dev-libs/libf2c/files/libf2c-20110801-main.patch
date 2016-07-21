@@ -1,0 +1,40 @@
+Add weak alias for MAIN__
+
+https://bugs.gentoo.org/show_bug.cgi?id=421975
+https://bugs.gentoo.org/show_bug.cgi?id=433782
+https://groups.google.com/forum/#!msg/comp.os.linux.development.apps/41siJKfcJ78/iIcRfZ4y9G8J
+
+Patch written by Chris Reffett <creffett@gentoo.org>
+and Kacper Kowalik <xarthisius@gentoo.org>
+--- a/makefile.u
++++ b/makefile.u
+@@ -27,7 +27,7 @@
+ ## If your system does not have the x86_64-pc-linux-gnu-ld command, comment out
+ ## or remove both the x86_64-pc-linux-gnu-ld and mv lines above.
+ 
+-MISC =	f77vers.o i77vers.o main.o s_rnge.o abort_.o exit_.o getarg_.o iargc_.o\
++MISC =	f77vers.o i77vers.o main.o main_foo.o s_rnge.o abort_.o exit_.o getarg_.o iargc_.o\
+ 	getenv_.o signal_.o s_stop.o s_paus.o system_.o cabs.o ctype.o\
+ 	derf_.o derfc_.o erf_.o erfc_.o sig_die.o uninit.o
+ POW =	pow_ci.o pow_dd.o pow_di.o pow_hh.o pow_ii.o pow_ri.o pow_zi.o pow_zz.o
+@@ -206,7 +206,7 @@
+ 	i77vers.c i_abs.c i_dim.c i_dnnt.c i_indx.c i_len.c i_mod.c \
+ 	i_nint.c i_sign.c iargc_.c iio.c ilnw.c inquire.c l_ge.c l_gt.c \
+ 	l_le.c l_lt.c lbitbits.c lbitshft.c libf2c.lbc libf2c.sy lio.h \
+-	lread.c lwrite.c main.c makefile.sy makefile.u makefile.vc \
++	lread.c lwrite.c main.c main_foo.c makefile.sy makefile.u makefile.vc \
+ 	makefile.wat math.hvc mkfile.plan9 open.c pow_ci.c pow_dd.c \
+ 	pow_di.c pow_hh.c pow_ii.c pow_qq.c pow_ri.c pow_zi.c pow_zz.c \
+ 	qbitbits.c qbitshft.c r_abs.c r_acos.c r_asin.c r_atan.c r_atn2.c \
+--- /dev/null
++++ b/main_foo.c
+@@ -0,0 +1,9 @@
++#include <stdio.h>
++#include <stdlib.h>
++
++void missing_MAIN__ (void)
++{
++  fprintf(stderr, "The Fortran main program is missing.\n");
++  abort();
++}
++void MAIN__ (void) __attribute__ ((weak, alias("missing_MAIN__")));

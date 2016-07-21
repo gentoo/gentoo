@@ -1,0 +1,37 @@
+--- a/redis.conf	2016-05-06 09:11:36.000000000 +0200
++++ b/redis.conf	2016-06-14 09:20:05.980855432 +0200
+@@ -146,7 +146,7 @@
+ #
+ # Creating a pid file is best effort: if Redis is not able to create it
+ # nothing bad happens, the server will start and run normally.
+-pidfile /var/run/redis.pid
++pidfile /run/redis/redis.pid
+ 
+ # Specify the server verbosity level.
+ # This can be one of:
+@@ -159,7 +159,7 @@
+ # Specify the log file name. Also the empty string can be used to force
+ # Redis to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile /var/log/redis/redis.log
+ 
+ # To enable logging to the system logger, just set 'syslog-enabled' to yes,
+ # and optionally update the other syslog parameters to suit your needs.
+@@ -243,7 +243,7 @@
+ # The Append Only File will also be created inside this directory.
+ #
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/redis/
+ 
+ ################################# REPLICATION #################################
+ 
+@@ -505,6 +505,7 @@
+ # output buffers (but this is not needed if the policy is 'noeviction').
+ #
+ # maxmemory <bytes>
++maxmemory 67108864
+ 
+ # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
+ # is reached. You can select among five behaviors:

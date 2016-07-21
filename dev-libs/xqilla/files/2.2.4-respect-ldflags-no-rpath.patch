@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 1c08992..ffeb840 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@ AUTOMAKE_OPTIONS = foreign dist-zip
+ SUBDIRS = include
+ 
+ INCLUDES = -I$(top_srcdir)/include/ $(xerces_include) -I$(top_srcdir)/src/lexer/ $(faxpp_include) $(tidy_include)
+-LDFLAGS = -L$(xerces_lib) -R$(xerces_lib) $(faxpp_lib) $(tidy_lib) -lxerces-c $(faxpp_library) $(tidy_library)
++LDFLAGS += -L$(xerces_lib) $(faxpp_lib) $(tidy_lib) -lxerces-c $(faxpp_library) $(tidy_library)
+ LDADD = libxqilla.la
+ ACLOCAL_AMFLAGS = -I autotools/m4
+ 

@@ -1,0 +1,16 @@
+ src/cpp/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 8e72409..a4b35b1 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -15,7 +15,7 @@ endif()
+ set_property(TARGET flann_cpp_s PROPERTY COMPILE_DEFINITIONS FLANN_STATIC FLANN_USE_CUDA)
+ 
+ if (BUILD_CUDA_LIB)
+-    SET(CUDA_NVCC_FLAGS -DFLANN_USE_CUDA)
++    SET(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS};-DFLANN_USE_CUDA")
+     if(CMAKE_COMPILER_IS_GNUCC)
+ 		set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS};-Xcompiler;-fPIC;-arch=sm_13" )
+         if (NVCC_COMPILER_BINDIR)

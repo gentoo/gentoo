@@ -1,0 +1,15 @@
+Upstream changed default to no icons for menus. We don't want that. No one wants
+that.
+
+---
+--- schemas/desktop_gnome_interface.schemas.in.in
++++ schemas/desktop_gnome_interface.schemas.in.in
+@@ -65,7 +65,7 @@
+       <applyto>/desktop/gnome/interface/menus_have_icons</applyto>
+       <owner>gnome</owner>
+       <type>bool</type>
+-      <default>false</default>
++      <default>true</default>
+       <locale name="C">
+         <short>Menus Have Icons</short>
+         <long>Whether menus may display an icon next to a menu entry.</long>

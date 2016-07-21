@@ -1,0 +1,56 @@
+diff --git a/tests/unit/modules/qemu_nbd_test.py b/tests/unit/modules/qemu_nbd_test.py
+index 615e6b5..fbd24aa 100644
+--- a/tests/unit/modules/qemu_nbd_test.py
++++ b/tests/unit/modules/qemu_nbd_test.py
+@@ -77,6 +77,7 @@ class QemuNbdTestCase(TestCase):
+         Test if it mount the named image via qemu-nbd
+         and return the mounted roots
+         '''
++        tmpdir = os.environ.get('TMPDIR', '/tmp')
+         mock = MagicMock(return_value=True)
+         with patch.dict(qemu_nbd.__salt__, {'cmd.run': mock}):
+             self.assertEqual(qemu_nbd.init('/srv/image.qcow2'), '')
+@@ -89,7 +90,7 @@ class QemuNbdTestCase(TestCase):
+                                  'mount.mount': mock,
+                                  'cmd.retcode': MagicMock(side_effect=[1, 0])}):
+                     self.assertDictEqual(qemu_nbd.init('/srv/image.qcow2'),
+-                                         {'/tmp/nbd/nbd0/nbd0': '/dev/nbd0'})
++                                         {os.path.join(tmpdir, 'nbd/nbd0/nbd0'): '/dev/nbd0'})
+ 
+     # 'clear' function tests: 1
+ 
+diff --git a/tests/unit/states/archive_test.py b/tests/unit/states/archive_test.py
+index 63e4a53..20b196f 100644
+--- a/tests/unit/states/archive_test.py
++++ b/tests/unit/states/archive_test.py
+@@ -26,7 +26,7 @@ from salt.ext.six.moves import zip  # pylint: disable=import-error,redefined-bui
+ 
+ # Globals
+ archive.__salt__ = {}
+-archive.__opts__ = {"cachedir": "/tmp", "test": False}
++archive.__opts__ = {"cachedir": os.environ.get('TMPDIR', "/tmp"), "test": False}
+ archive.__env__ = 'test'
+ 
+ 
+@@ -75,7 +75,7 @@ class ArchiveTestCase(TestCase):
+                                                    'cmd.run_all': mock_run}):
+                     filename = os.path.join(
+                         tmp_dir,
+-                        'files/test/_tmp_test_archive_.tar'
++                        'files/test/' + tempfile.gettempdir().replace('/', '_') + '_test_archive_.tar'
+                     )
+                     for test_opts, ret_opts in zip(test_tar_opts, ret_tar_opts):
+                         ret = archive.extracted(tmp_dir,
+diff --git a/tests/unit/utils/context_test.py b/tests/unit/utils/context_test.py
+index 71e4330..d6f3f30 100644
+--- a/tests/unit/utils/context_test.py
++++ b/tests/unit/utils/context_test.py
+@@ -18,7 +18,7 @@ import salt.payload
+ import salt.utils
+ 
+ __context__ = {'a': 'b'}
+-__opts__ = {'cachedir': '/tmp'}
++__opts__ = {'cachedir': os.environ.get('TMPDIR', '/tmp')}
+ 
+ 
+ @skipIf(NO_MOCK, NO_MOCK_REASON)

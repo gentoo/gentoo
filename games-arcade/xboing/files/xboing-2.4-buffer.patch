@@ -1,0 +1,12 @@
+diff -ruN xboing.orig/init.c xboing/init.c
+--- xboing.orig/init.c	1996-11-22 02:28:46.000000000 +0100
++++ xboing/init.c	2013-02-02 19:57:55.000000000 +0100
+@@ -266,7 +266,7 @@
+ #endif
+ {
+ 	/* Create all required font structures */
+-	char str[80];
++	char str[200];
+ 
+ 	/* Font used for titles */
+     if (!(titleFont = XLoadQueryFont(display, TITLE_FONT)))

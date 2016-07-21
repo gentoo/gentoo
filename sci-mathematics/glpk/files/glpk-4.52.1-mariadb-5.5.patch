@@ -1,0 +1,11 @@
+--- glpk-4.52.1/src/glpsql.c.orig	2014-02-05 22:14:21.487843989 +0100
++++ glpk-4.52.1/src/glpsql.c	2014-02-05 22:14:32.764510562 +0100
+@@ -1106,8 +1106,6 @@
+ #define byte_defined 1
+ #endif
+ 
+-#include <my_global.h>
+-#include <my_sys.h>
+ #include <mysql.h>
+ 
+ struct db_mysql

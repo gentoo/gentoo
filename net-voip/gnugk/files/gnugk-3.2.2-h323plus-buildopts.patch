@@ -1,0 +1,53 @@
+diff -ur a/configure.in b/configure.in
+--- a/configure.in	2013-01-14 23:56:02.000000000 +0100
++++ b/configure.in	2013-03-05 21:24:02.639204755 +0100
+@@ -203,16 +203,16 @@
+     AC_CHECK_FILE(${OPENH323MAKEDIR}/openh323buildopts.h, HAS_OPENH323_VERSIONFILE=1)
+     if test "${HAS_OPENH323_VERSIONFILE:-unset}" != "unset"; then
+       OPENH323_VERSION_FILE=${OPENH323MAKEDIR}/openh323buildopts.h
+-      OPENH323_MAJOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep OPENH323_MAJOR | cut -f3 -d' '`
+-      OPENH323_MINOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep OPENH323_MINOR | cut -f3 -d' '`
+-      OPENH323_BUILD_NUMBER=`cat ${OPENH323_VERSION_FILE} | grep OPENH323_BUILD | cut -f3 -d' '`
++      OPENH323_MAJOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep -m1 OPENH323_MAJOR | cut -f3 -d' '`
++      OPENH323_MINOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep -m1 OPENH323_MINOR | cut -f3 -d' '`
++      OPENH323_BUILD_NUMBER=`cat ${OPENH323_VERSION_FILE} | grep -m1 OPENH323_BUILD | cut -f3 -d' '`
+     else
+       AC_CHECK_FILE(${OPENH323MAKEDIR}/../../include/openh323/openh323buildopts.h, HAS_OPENH323_VERSIONFILE=1)
+       if test "${HAS_OPENH323_VERSIONFILE:-unset}" != "unset"; then
+         OPENH323_VERSION_FILE=${OPENH323MAKEDIR}/../../include/openh323/openh323buildopts.h
+-        OPENH323_MAJOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep OPENH323_MAJOR | cut -f2 -d' '`
+-        OPENH323_MINOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep OPENH323_MINOR | cut -f2 -d' '`
+-        OPENH323_BUILD_NUMBER=`cat ${OPENH323_VERSION_FILE} | grep "OPENH323_BUILD " | cut -f2 -d' '`
++        OPENH323_MAJOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep -m1 OPENH323_MAJOR | cut -f3 -d' '`
++        OPENH323_MINOR_VERSION=`cat ${OPENH323_VERSION_FILE} | grep -m1 OPENH323_MINOR | cut -f3 -d' '`
++        OPENH323_BUILD_NUMBER=`cat ${OPENH323_VERSION_FILE} | grep -m1 "OPENH323_BUILD " | cut -f3 -d' '`
+       fi
+     fi
+   fi
+@@ -269,7 +269,7 @@
+ [ h46017="${enableval}" ], [h46017="yes"] 
+ )
+ 
+-H460SUPPORT=`cat ${OPENH323DIR}/include/openh323buildopts.h | grep 'define H323_H460'`
++H460SUPPORT=`cat ${OPENH323DIR}/include/{,openh323/}openh323buildopts.h | grep 'define H323_H460'`
+ if test "${H460SUPPORT:-unset}" = "unset" ; then
+ 	if test "x${h46017}" != "xno" ; then     
+ 		AC_MSG_RESULT(No H.460 support available)
+@@ -301,7 +301,7 @@
+ [ h46018="${enableval}" ], [h46018="no"] 
+ )
+ 
+-H460SUPPORT=`cat ${OPENH323DIR}/include/openh323buildopts.h | grep 'define H323_H460'`
++H460SUPPORT=`cat ${OPENH323DIR}/include/{,openh323/}openh323buildopts.h | grep 'define H323_H460'`
+ if test "${H460SUPPORT:-unset}" = "unset" ; then
+ 	if test "x${h46018}" != "xno" ; then     
+ 		AC_MSG_RESULT(No H.460 support available)
+@@ -332,7 +332,7 @@
+ [ h46023="${enableval}" ], [h46023="yes"] 
+ )
+ 
+-H460SUPPORT=`cat ${OPENH323DIR}/include/openh323buildopts.h | grep 'define H323_H460'`
++H460SUPPORT=`cat ${OPENH323DIR}/include/{,openh323/}openh323buildopts.h | grep 'define H323_H460'`
+ if test "${H460SUPPORT:-unset}" = "unset" ; then
+ 	if test "x${h46023}" != "xno" ; then     
+ 		AC_MSG_RESULT(No H.460 support available)

@@ -1,0 +1,20 @@
+--- plugins/ldapuserdata/setup.php.orig	2004-01-15 23:40:41.000000000 -0800
++++ plugins/ldapuserdata/setup.php	2004-01-15 23:40:52.000000000 -0800
+@@ -92,7 +92,7 @@
+ 	global $ldap_bind_dn, $ldap_host;
+ 
+ 	/* fill $ldap_prefs_cache with data from LDAP. */
+-	$ldap_prefs_cache = retrieve_data($login_username);
++	$ldap_prefs_cache = ldap_retrieve_data($login_username);
+ 
+ 	/*
+ 	print "<pre>";
+@@ -121,7 +121,7 @@
+ }
+ 
+ 
+-function retrieve_data ($uid) {
++function ldap_retrieve_data ($uid) {
+ 	global $ldap_host, $username, $ldap_base_dn, $ldap_bind_dn, $ldap_bind_pw;
+ 	global $ldap_manager_dn, $ldap_manager_pw;
+ 	global $ldap_objectclass, $prefs_default, $ldap_attributes, $boolean_attrs, $multivalue_attrs;

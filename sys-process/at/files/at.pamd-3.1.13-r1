@@ -1,0 +1,9 @@
+#
+# The PAM configuration file for the at daemon
+#
+
+auth    required        pam_env.so
+auth    include         system-services
+account include         system-services
+session include         system-services
+

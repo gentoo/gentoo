@@ -1,0 +1,11 @@
+--- gmorgan-0.70/configure.in
++++ gmorgan-0.70/configure.in
+@@ -15,7 +15,7 @@
+ AC_CHECK_FUNCS([bzero memset select strdup])
+ AM_GNU_GETTEXT([external])
+ LIBS="`fltk-config --use-images --ldflags` -lasound"
+-CXXFLAGS=" `fltk-config --use-images --cxxflags`"
++CXXFLAGS="${CXXFLAGS} `fltk-config --use-images --cxxflags`"
+ AC_CHECK_HEADERS([unistd.h])
+ AC_CHECK_HEADER(alsa/asoundlib.h, true, AC_MSG_ERROR([Alsa is required]))
+ AC_PATH_PROG(FLTK_CONFIG, fltk-config, no)

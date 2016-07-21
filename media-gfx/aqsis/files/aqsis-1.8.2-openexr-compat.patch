@@ -1,0 +1,15 @@
+--- libs/tex/io/exrinputfile.h.orig	2012-08-24 16:26:50.000000000 +0400
++++ libs/tex/io/exrinputfile.h	2014-02-14 16:26:47.293497092 +0400
+@@ -48,10 +48,9 @@
+ 
+ #include <aqsis/tex/io/itexinputfile.h>
+ 
++#include <OpenEXR/ImfInputFile.h>
++
+ //------------------------------------------------------------------------------
+-namespace Imf {
+-	class InputFile;
+-}
+ 
+ namespace Aqsis {
+ 

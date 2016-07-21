@@ -1,0 +1,11 @@
+--- a/src/suricata.c	2015-10-02 00:21:55.634213646 +0200
++++ b/src/suricata.c	2015-10-02 00:22:39.143940007 +0200
+@@ -774,7 +774,7 @@
+     printf("compiled with -fstack-protector-all\n");
+ #endif
+ #ifdef _FORTIFY_SOURCE
+-    printf("compiled with _FORTIFY_SOURCE=%d\n", _FORTIFY_SOURCE);
++    printf("compiled with _FORTIFY_SOURCE\n");
+ #endif
+ #ifdef CLS
+     printf("L1 cache line size (CLS)=%d\n", CLS);

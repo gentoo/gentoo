@@ -1,0 +1,13 @@
+--- Makefile.orig	2005-06-12 04:06:33.000000000 +0200
++++ Makefile	2005-06-12 04:06:39.000000000 +0200
+@@ -12,10 +12,3 @@
+ CFLAGS=-Wall -g
+ 
+ include ../../Makefile.modules
+-
+-
+-install:
+-	-serctl stop
+-	rm -f /usr/local/lib/ser/modules/ldap.so
+-	cp ldap.so /usr/local/lib/ser/modules
+-	-serctl start

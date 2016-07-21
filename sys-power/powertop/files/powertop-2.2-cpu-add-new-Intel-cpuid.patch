@@ -1,0 +1,41 @@
+From 6626761dec9b3d1e3053d214913f329ed27c468c Mon Sep 17 00:00:00 2001
+From: Kristen Carlson Accardi <kristen@linux.intel.com>
+Date: Tue, 19 Mar 2013 16:45:47 -0700
+Subject: [PATCH] cpu: add new Intel cpuid
+
+update cpu to support next generation Intel core processor
+---
+ src/cpu/cpu.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/cpu/cpu.cpp b/src/cpu/cpu.cpp
+index 1eb340c..afe6a8c 100644
+--- a/src/cpu/cpu.cpp
++++ b/src/cpu/cpu.cpp
+@@ -78,6 +78,7 @@ static class abstract_cpu * new_package(int package, int cpu, char * vendor, int
+ 			case 0x3A:      /* IVB */
+ 			case 0x3C:
+ 			case 0x3D:      /* IVB Xeon */
++			case 0x45:	/* Next Gen Intel Core Processor */
+ 				has_c2c7_res = 1;
+ 				ret = new class nhm_package;
+ 				break;
+@@ -116,6 +117,7 @@ static class abstract_cpu * new_core(int core, int cpu, char * vendor, int famil
+ 			case 0x3A:      /* IVB */
+ 			case 0x3C:
+ 			case 0x3D:      /* IVB Xeon */
++			case 0x45:	/* Next Gen Intel Core Processor */
+ 				ret = new class nhm_core;
+ 			}
+ 	}
+@@ -159,6 +161,7 @@ static class abstract_cpu * new_cpu(int number, char * vendor, int family, int m
+ 			case 0x3A:      /* IVB */
+ 			case 0x3C:
+ 			case 0x3D:      /* IVB Xeon */
++			case 0x45:	/* Next Gen Intel Core Processor */
+ 				ret = new class nhm_cpu;
+ 			}
+ 	}
+-- 
+1.8.1.2
+

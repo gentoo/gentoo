@@ -1,0 +1,11 @@
+--- blinkperl/blinkserver.pl.orig	2016-05-03 16:22:49.510379864 -0500
++++ blinkperl/blinkserver.pl	2016-05-03 16:22:27.172380760 -0500
+@@ -148,6 +148,8 @@
+ 
+ =item B<--port>=I<number>: On which Port should the server listen?
+ 
++=back
++
+ =head1 DESCRIPTION
+ 
+ B<This program> will listen on the defined port (current default value: 10001)

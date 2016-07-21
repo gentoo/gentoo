@@ -1,0 +1,26 @@
+--- duke3d/source/buildengine/platform.h	2003-08-07 12:06:17.000000000 +0200
++++ duke3d.new/source/buildengine/platform.h	2004-08-24 18:35:05.292291088 +0200
+@@ -5,6 +5,7 @@
+ #include "win32_compat.h"
+ #elif (defined PLATFORM_UNIX)
+ #include "unix_compat.h"
++#include <endian.h>
+ #elif (defined PLATFORM_DOS)
+ #include "doscmpat.h"
+ #else
+@@ -60,9 +61,15 @@
+ #define BUILDSWAP_INTEL16(x) _swap16(x)
+ #define BUILDSWAP_INTEL32(x) _swap32(x)
+ #else
++#if __BYTE_ORDER == __LITTLE_ENDIAN
+ #define PLATFORM_LITTLEENDIAN 1
+ #define BUILDSWAP_INTEL16(x) (x)
+ #define BUILDSWAP_INTEL32(x) (x)
++#else
++#define PLATFORM_BIGENDIAN 1
++#define BUILDSWAP_INTEL16(x) _swap16(x)
++#define BUILDSWAP_INTEL32(x) _swap32(x)
++#endif
+ #endif
+ 
+ extern int has_altivec;  /* PowerPC-specific. */

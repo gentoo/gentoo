@@ -1,0 +1,136 @@
+--- atftp-0.7/tftp_file.c~	2010-05-27 13:05:12.000000000 -0500
++++ atftp-0.7/tftp_file.c	2010-05-27 12:50:05.000000000 -0500
+@@ -133,19 +133,21 @@
+      int mcast_sockfd = 0;
+      struct sockaddr_in sa_mcast;
+      struct ip_mreq mreq;
+      struct hostent *host;
+      int master_client = 0;
+      unsigned int file_bitmap[NB_BLOCK];
+      int prev_bitmap_hole = -1; /* the previous hole found in the bitmap */
+      char string[MAXLEN];
++     int rx_block_number;
+ 
+      int prev_block_number = 0; /* needed to support netascii convertion */
+      int temp = 0;
++     size_t ignore;
+ 
+      data->file_size = 0;
+      tftp_cancel = 0;
+      from.sin_addr.s_addr = 0;
+ 
+      memset(&sa_mcast, 0, sizeof(struct sockaddr_in));
+      memset(&file_bitmap, 0, sizeof(file_bitmap));
+ 
+@@ -300,17 +302,17 @@
+                     {
+                          connect(sockfd, (struct sockaddr *)&sa, sizeof(sa));
+                          connected = 1;
+                     }
+                     state = S_OACK_RECEIVED;
+                     break;
+                case GET_ERROR:
+                     fprintf(stderr, "tftp: error received from server <");
+-                    fwrite(tftphdr->th_msg, 1, data_size - 4 - 1, stderr);
++                    ignore = fwrite(tftphdr->th_msg, 1, data_size - 4 - 1, stderr);
+                     fprintf(stderr, ">\n");
+                     state = S_ABORT;
+                     break;
+                case GET_DATA:
+                     number_of_timeout = 0;
+                     /* if the socket if not connected, connect it */
+                     if (!connected)
+                     {
+@@ -513,21 +515,24 @@
+                     state = S_WAIT_PACKET;
+                break;
+           case S_DATA_RECEIVED:
+                if ((multicast && master_client) || (!multicast))
+                     timeout_state = S_SEND_ACK;
+                else
+                     timeout_state = S_WAIT_PACKET;
+ 
+-               block_number = ntohs(tftphdr->th_block);
++               rx_block_number = ntohs(tftphdr->th_block);
+                if (data->trace)
+                     fprintf(stderr, "received DATA <block: %d, size: %d>\n",
+                             ntohs(tftphdr->th_block), data_size - 4);
+ 
++               if ((uint16_t)rx_block_number == (uint16_t)(block_number+1))
++                    ++block_number;
++
+                if (tftp_file_write(fp, tftphdr->th_data, data->data_buffer_size - 4, block_number,
+                                    data_size - 4, convert, &prev_block_number, &temp)
+                    != data_size - 4)
+                {
+                     
+                     fprintf(stderr, "tftp: error writing to file %s\n",
+                             data->local_file);
+                     tftp_send_error(sockfd, &sa, ENOSPACE, data->data_buffer,
+@@ -613,19 +618,21 @@
+      int connected;             /* 1 when sockfd is connected */
+      struct tftphdr *tftphdr = (struct tftphdr *)data->data_buffer;
+      FILE *fp;                  /* the local file pointer */
+      int number_of_timeout = 0;
+      struct stat file_stat;
+      int convert = 0;           /* if true, do netascii convertion */
+      char string[MAXLEN];
+ 
++     int ack_block_number;
+      int prev_block_number = 0; /* needed to support netascii convertion */
+      int prev_file_pos = 0;
+      int temp = 0;
++     size_t ignore;
+ 
+      data->file_size = 0;
+      tftp_cancel = 0;
+      from.sin_addr.s_addr = 0;
+ 
+      /* make sure the socket is not connected */
+      sa.sin_family = AF_UNSPEC;
+      connect(sockfd, (struct sockaddr *)&sa, sizeof(sa));
+@@ -759,20 +766,23 @@
+                case GET_ACK:
+                     number_of_timeout = 0;
+                     /* if the socket if not connected, connect it */
+                     if (!connected)
+                     {
+                          //connect(sockfd, (struct sockaddr *)&sa, sizeof(sa));
+                          connected = 1;
+                     }
+-                    block_number = ntohs(tftphdr->th_block);
++                    ack_block_number = ntohs(tftphdr->th_block);
++                    if ((uint16_t)(block_number+1) == ack_block_number)
++                         ++block_number;
+                     if (data->trace)
+                          fprintf(stderr, "received ACK <block: %d>\n",
+-                                 block_number);
++                                 ack_block_number);
++                    
+                     if ((last_block != -1) && (block_number > last_block))
+                     {
+                          state = S_END;
+                          break;
+                     }
+                     state = S_SEND_DATA;
+                     break;
+                case GET_OACK:
+@@ -782,17 +792,17 @@
+                     {
+                          //connect(sockfd, (struct sockaddr *)&sa, sizeof(sa));
+                          connected = 1;
+                     }
+                     state = S_OACK_RECEIVED;
+                     break;
+                case GET_ERROR:
+                     fprintf(stderr, "tftp: error received from server <");
+-                    fwrite(tftphdr->th_msg, 1, data_size - 4 - 1, stderr);
++                    ignore = fwrite(tftphdr->th_msg, 1, data_size - 4 - 1, stderr);
+                     fprintf(stderr, ">\n");
+                     state = S_ABORT;
+                     break;
+                case GET_DISCARD:
+                     /* consider discarded packet as timeout to make sure when don't lock up
+                        if routing is broken */
+                     number_of_timeout++;
+                     fprintf(stderr, "tftp: packet discard <%s:%d>.\n",

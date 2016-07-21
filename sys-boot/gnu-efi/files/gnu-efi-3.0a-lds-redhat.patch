@@ -1,0 +1,42 @@
+Updated lds patch from redhat which works with newer binutils.
+
+http://bugs.gentoo.org/show_bug.cgi?id=79091
+
+--- gnuefi/elf_ia64_efi.lds
++++ gnuefi/elf_ia64_efi.lds
+@@ -28,6 +28,5 @@
+   {
+    *(.rodata*)
+    *(.ctors)
+-   *(.data)
+-   *(.data1)
++   *(.data*)
+    *(.gnu.linkonce.d*)
+@@ -31,8 +31,4 @@ SECTIONS
+    *(.plabel)	/* data whose relocs we want to ignore */
+-   *(.IA_64.unwind)
+-   *(.IA_64.unwind_info)
+-   *(.IA64.unwind)
+-   *(.IA64.unwind_info)
+    /* the EFI loader doesn't seem to like a .bss section, so we stick
+       it all into .data: */
+    *(.dynbss)
+@@ -48,7 +47,7 @@
+   .rela :
+   {
+     *(.rela.text)
+-    *(.rela.data)
++    *(.rela.data*)
+     *(.rela.sdata)
+     *(.rela.got)
+     *(.rela.gnu.linkonce.d*)
+@@ -68,4 +64,9 @@ SECTIONS
+     *(.rela.plabel)
+     *(.rela.reloc)
+   }
++  /DISCARD/ :
++  {
++    *(.IA_64.unwind*)
++    *(.IA64.unwind*)
++  }
+ }

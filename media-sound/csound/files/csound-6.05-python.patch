@@ -1,0 +1,19 @@
+--- csound-6.05.0.orig/CMakeLists.txt	2015-04-26 03:06:22.941646148 +0800
++++ csound-6.05.0/CMakeLists.txt	2015-07-08 22:31:16.637995822 +0800
+@@ -41,15 +41,9 @@
+     set(PLUGIN_INSTALL_DIR "${LIBRARY_INSTALL_DIR}/csound/plugins-${APIVERSION}")
+ endif()
+
+-
+-execute_process (
+-     COMMAND python -c
+-     "import site, sys; sys.stdout.write(site.getusersitepackages())"
+-     OUTPUT_VARIABLE PYTHON_MODULE_INSTALL_DIR
+-   )
+-
+ set(JAVA_MODULE_INSTALL_DIR ${LIBRARY_INSTALL_DIR})
+ set(LUA_MODULE_INSTALL_DIR ${LIBRARY_INSTALL_DIR})
++set(PYTHON_MODULE_INSTALL_DIR ${REPLACE_ME})
+ set(LOCALE_INSTALL_DIR "share/locale")
+ set(HEADER_INSTALL_DIR "include/csound")
+

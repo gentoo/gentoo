@@ -1,0 +1,21 @@
+--- configure.old	2010-10-18 15:05:02.000000000 +0200
++++ configure	2010-10-18 15:05:31.000000000 +0200
+@@ -5516,12 +5516,12 @@
+ 
+ 
+ if test "x$x_includes" != "x"; then
+-  CFLAGS="-I $x_includes"
+-else
+-  CFLAGS=""
+-fi
+-LDFLAGS="-L/usr/local/lib -L$x_libraries -L$libdir"
+-CXXFLAGS="$CFLAGS -Wall"
++  CFLAGS="${CFLAGS} -I $x_includes"
++else
++  CFLAGS="${CFLAGS}"
++fi
++LDFLAGS="${LDFLAGS} -L/usr/local/lib -L$x_libraries -L$libdir"
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ 
+ echo "$as_me:$LINENO: checking for main in -lXmu" >&5

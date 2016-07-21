@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/343439
+
+From 182626687f2640609f8eb28ad1b04b078342f2c7 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 12 Jan 2013 00:19:40 -0500
+Subject: [PATCH] ithreads: use runtime (not configure time) detection of perl
+ threads
+
+I can't imagine the runtime checks being a big runtime penalty, so there
+shouldn't be a need to do the checks at configure check and hardcode the
+result in the generated automake.
+
+With the current system, it means if you change your perl config (build
+perl w/threads, build automake, build perl w/out threads), or deploy a
+compiled automake package on a different system (build had threads, but
+deployed system does not), you get errors when trying to run automake.
+
+So take the logic from configure.ac and move it to the one place where
+PERL_THREADS is used (lib/Automake/Config.in) and do the version/config
+checking at runtime.
+
+* bootstrap.sh (PERL_THREADS): Delete assignment and use in sed.
+* configure.ac (am_cv_prog_PERL_ithreads, PERL_THREADS): Delete all code
+related to these two variables.
+* lib/Automake/Config.in (perl_threads): Initialize to 0, and only set to
+1 if the perl version is at least 5.007_002, and useithreads is in Config.
+
+Copyright-paperwork-exempt: yes
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+Signed-off-by: Stefano Lattarini <stefano.lattarini@gmail.com>
+---
+ bootstrap.sh           |  2 --
+ configure.ac           | 26 --------------------------
+ lib/Automake/Config.in |  9 ++++++++-
+ 3 files changed, 8 insertions(+), 29 deletions(-)
+
+diff --git a/lib/Automake/Config.in b/lib/Automake/Config.in
+index fe6ef9d..885e74e 100644
+--- a/lib/Automake/Config.in
++++ b/lib/Automake/Config.in
+@@ -33,7 +33,14 @@ our $PACKAGE_BUGREPORT = '@PACKAGE_BUGREPORT@';
+ our $VERSION = '@VERSION@';
+ our $RELEASE_YEAR = '@RELEASE_YEAR@';
+ our $libdir = '@datadir@/@PACKAGE@-@APIVERSION@';
+-our $perl_threads = @PERL_THREADS@;
++
++our $perl_threads = 0;
++# We need at least this version for CLONE support.
++if (eval { require 5.007_002; })
++  {
++    use Config;
++    $perl_threads = $Config{useithreads};
++  }
+ 
+ 1;
+ 
+-- 
+1.8.0.2
+

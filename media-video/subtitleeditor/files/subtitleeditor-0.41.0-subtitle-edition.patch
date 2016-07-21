@@ -1,0 +1,27 @@
+Author: Philip Rinn <rinni@inventati.org>
+Description: With glib >= 2.42.0  you need to add interfaces before class_init
+--- a/src/gui/textviewcell.cc
++++ b/src/gui/textviewcell.cc
+@@ -30,8 +30,8 @@
+  * Initialize the widget with the AutomaticSpellChecker.
+  */
+ TextViewCell::TextViewCell()
++:	Gtk::CellEditable(), 
++	Glib::ObjectBase(typeid(TextViewCell)),
+-:	Glib::ObjectBase(typeid(TextViewCell)),
+-	Gtk::CellEditable(), 
+ 	m_editing_canceled(false), 
+ 	m_used_ctrl_enter_to_confirm_change(false)
+ {
+ 
+--- a/src/gui/textviewcell.h
++++ b/src/gui/textviewcell.h
+@@ -29,7 +29,7 @@
+ /*
+  * Cell text editable with multiline support.
+  */
+-class TextViewCell : public Gtk::TextView, public Gtk::CellEditable
++class TextViewCell : public Gtk::CellEditable, public Gtk::TextView
+ {
+ public:
+ 

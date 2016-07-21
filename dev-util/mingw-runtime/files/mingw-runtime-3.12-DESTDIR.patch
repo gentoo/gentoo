@@ -1,0 +1,22 @@
+--- Makefile.in
++++ Makefile.in
+@@ -58,5 +58,11 @@
+ endif
+ 
++inst_bindir:=$(DESTDIR)$(inst_bindir)
++inst_includedir:=$(DESTDIR)$(inst_includedir)
++inst_libdir:=$(DESTDIR)$(inst_libdir)
++inst_docdir:=$(DESTDIR)$(inst_docdir)
++mandir:=$(DESTDIR)$(mandir)
++
+ # The Mingw headers are installed under a subdirectory of
+ # $(tooldir)/include when configuring in Cygwin.
+ HEADER_SUBDIR = @HEADER_SUBDIR@
+@@ -199,6 +199,6 @@
+ all_dlls_host: $(DLLS)
+ 
+-install_dlls_host:
++install_dlls_host: install-dirs
+ 	for i in $(DLLS); do \
+ 		$(INSTALL_PROGRAM) $$i $(inst_bindir)/$$i ; \
+ 	done

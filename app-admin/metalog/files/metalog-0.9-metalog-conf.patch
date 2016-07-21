@@ -1,0 +1,11 @@
+--- metalog.conf
++++ metalog.conf
+@@ -21,6 +21,8 @@
+ # merely write $@ to some device (your console for messages):
+ # echo "$@" > /dev/tty10
+ #
++# Hint: you can control the consolelog.sh behavior in /etc/conf.d/metalog
++#
+ #console logging :
+ #
+ #  facility  = "*"

@@ -1,0 +1,109 @@
+# https://sourceforge.net/tracker2/?func=detail&aid=2622610&group_id=118573&atid=681722
+--- a/gnomecatalog/data.py	(revision 1)
++++ b/gnomecatalog/data.py	(working copy)
+@@ -33,32 +33,34 @@
+ 
+ 	""" Leemos el disco y lo insertamos en la base de datos """
+ 	def import_disk(self):
+-		path = self.config.get("source")
++		
++		for path in utils.get_path():
++			#~ path = self.config.get("source")
+ 
+-		database = storage.Sqlite(self.opened_database, self.app, True)
++			database = storage.Sqlite(self.opened_database, self.app, True)
+ 
+-		if self.config.get("thumbnails") == "True":
+-			if not os.path.exists(database.database + "_thumbs"):
+-				os.mkdir(database.database + "_thumbs")
++			if self.config.get("thumbnails") == "True":
++				if not os.path.exists(database.database + "_thumbs"):
++					os.mkdir(database.database + "_thumbs")
+ 
+-		"""Importamos un nuevo disco"""
+-		if not utils.is_mounted(path):
+-			self.__path = path
+-			self.__progress = self.app.progress_bar
+-			utils.mount(path, self._mount_callback)
++			"""Importamos un nuevo disco"""
++			if not utils.is_mounted(path):
++				self.__path = path
++				self.__progress = self.app.progress_bar
++				utils.mount(path, self._mount_callback)
+ 
+-		disk = self.reader.read(path, self.app.progress_bar)
++			disk = self.reader.read(path, self.app.progress_bar)
+ 
+-		if disk:
+-			""" ahora insertamos los datos en la base de datos. """
+-			disk = database.insert_disk(disk)
+-			if self.config.get("eject") == "True": utils.eject(path)
+-			self.app.set_guardar_state(True)
+-#			self.load_data()
+-#			self.treeDisk.select(disk)
+-	#		self.show_files_from_selected()
+-			database.close()
+-			return disk
++			if disk:
++				""" ahora insertamos los datos en la base de datos. """
++				disk = database.insert_disk(disk)
++				if self.config.get("eject") == "True": utils.eject(path)
++				self.app.set_guardar_state(True)
++	#			self.load_data()
++	#			self.treeDisk.select(disk)
++		#		self.show_files_from_selected()
++				database.close()
++				return disk
+ 
+ 
+ 	""" Carga los discos de a base de datos en el treeview tree """
+--- a/gnomecatalog/utils.py	(revision 1)
++++ b/gnomecatalog/utils.py	(working copy)
+@@ -1,6 +1,28 @@
+ import os, commands, time
+ import gnomevfs, gtk
++import dbus, dbus.glib, sys, urllib
+ 
++
++def get_path():
++	path = []
++	bus = dbus.SystemBus()
++	hal_obj = bus.get_object ('org.freedesktop.Hal', '/org/freedesktop/Hal/Manager')
++	hal = dbus.Interface (hal_obj, 'org.freedesktop.Hal.Manager')
++	udis = hal.FindDeviceByCapability ('storage')
++	for udi in udis:
++		dev_obj = bus.get_object ('org.freedesktop.Hal', udi)
++		dev = dbus.Interface (dev_obj, 'org.freedesktop.Hal.Device')
++		if (dev.GetProperty ('storage.removable')):
++			block = dev.GetProperty ('block.device')
++			f = open ('/etc/mtab')
++			for line in f.readlines():
++				if (line.find (block) == 0):
++					mount = line.split()
++					path.append(mount[1].replace('\\040',' '))
++			f.close()
++	return path
++
++
+ def locate_file(path, type = "icons"):
+ 	prefixes = ['', 'usr/', 'usr/local/']
+ 	if type == "glade":
+--- a/gnomecatalog/ui/app.py	(revision 1)
++++ b/gnomecatalog/ui/app.py	(working copy)
+@@ -162,14 +162,6 @@
+ 		self.import_thread.start()
+ 		gobject.timeout_add(1000, self.wait_import_cb)
+ 
+-#		t2 = threading.Thread(target=self.wait_import_cb)
+-#		t2.setDaemon(True)
+-#		t2.start()
+-
+-#		gobject.idle_add(self.wait_import_cb, t)
+-
+-		#dialogs.addDisk(self.data).loadDisk()
+-
+ 	def wait_import_cb(self):
+ 		if not self.import_thread.isAlive():
+ 			self.hbox_import.hide()
+
+ 	  	 

@@ -1,0 +1,12 @@
+[Unit]
+Description=RPC GSS-API Client Daemon
+Documentation=man:rpc.gssd(8)
+After=rpcbind.service var-lib-nfs-rpc_pipefs.mount
+Requires=rpcbind.service var-lib-nfs-rpc_pipefs.mount
+Before=remote-fs-pre.target
+
+[Service]
+ExecStart=/usr/sbin/rpc.gssd -f
+
+[Install]
+WantedBy=multi-user.target

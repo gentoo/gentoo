@@ -1,0 +1,12 @@
+Index: c_icap-0.1.6/txtTemplate.c
+===================================================================
+--- c_icap-0.1.6.orig/txtTemplate.c
++++ c_icap-0.1.6/txtTemplate.c
+@@ -27,6 +27,7 @@
+ #include <sys/param.h>
+ #include <assert.h>
+ #include <stdlib.h>
++#include <ctype.h>
+ 
+ #include "body.h"
+ #include "c-icap.h"

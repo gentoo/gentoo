@@ -1,0 +1,28 @@
+diff --git a/vigranumpy/docsrc/CMakeLists.txt b/vigranumpy/docsrc/CMakeLists.txt
+index 547cf81..d12a6f7 100644
+--- a/vigranumpy/docsrc/CMakeLists.txt
++++ b/vigranumpy/docsrc/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-IF(PYTHON_SPHINX)
++IF(PYTHON_SPHINX AND ENABLE_DOC)
+     # vigranumpy documentation generation using sphinx
+     IF(DEFINED VIGRANUMPY_DOCDIR)
+         MESSAGE(SEND_ERROR "VIGRANUMPY_DOCDIR already defined! Please delete from Cache.")
+@@ -49,7 +49,7 @@ IF(PYTHON_SPHINX)
+             ${VIGRANUMPY_DOCDIR}
+         COMMENT "Generating vigranumpy documentation")
+ 
+-ELSE(PYTHON_SPHINX)
++ELSE(PYTHON_SPHINX AND ENABLE_DOC)
+     # no vigranumpy documentation if sphinx not available
+     ADD_CUSTOM_TARGET (doc_python 
+         ${CMAKE_COMMAND} -E echo
+@@ -57,7 +57,7 @@ ELSE(PYTHON_SPHINX)
+         "(sphinx-build not found)"
+         VERBATIM)
+ 
+-ENDIF(PYTHON_SPHINX)
++ENDIF(PYTHON_SPHINX AND ENABLE_DOC)
+ 
+ ADD_DEPENDENCIES(doc_python vigranumpy)
+ ADD_DEPENDENCIES(doc_python doc_cpp)

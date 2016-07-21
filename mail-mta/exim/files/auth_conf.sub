@@ -1,0 +1,25 @@
+######################################################################
+#                   AUTHENTICATION CONFIGURATION                     #
+######################################################################
+# If you're using PAM to authenticate, lifes real simple.
+# This plain directive works for nearly everything except windows MUA's the
+# login directive will allow you to authenticate your Outlook 2000 and
+# outlook express clients.
+
+
+
+plain:
+  driver = plaintext
+  public_name = PLAIN
+  server_condition = "${if pam{$2:$3}{1}{0}}"
+  server_set_id = $2
+
+login:
+  driver = plaintext
+  public_name = LOGIN
+  server_prompts = "Username:: : Password::"
+  server_condition = "${if pam{$1:${sg{$2}{:}{::}}}{1}{0}}"
+  server_set_id = $1
+#
+# FIXME
+# Need to add authenticator for SPA!!

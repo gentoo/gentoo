@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="dietlibc">Compile against <pkg>dev-libs/dietlibc</pkg></flag>
+		<flag name="intel_led">Enable Intel LED support</flag>
+		<flag name="klibc">Compile against <pkg>dev-libs/klibc</pkg></flag>
+		<flag name="led">Enable LED support</flag>
+		<flag name="mini">Create a minimal binary suitable for early boot environments</flag>
+	</use>
+	<maintainer type="person">
+		<email>axs@gentoo.org</email>
+		<name>Ian Stakenvicius</name>
+	</maintainer>
+	<longdescription>This software discovers, activates, deactivates and displays properties of software RAID sets eg: ATARAID and contained DOS partitions.</longdescription>
+</pkgmetadata>

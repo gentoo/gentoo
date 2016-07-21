@@ -1,0 +1,49 @@
+--- netsurf-3.4/image/image.c
++++ netsurf-3.4/image/image.c
+@@ -26,14 +26,28 @@
+ #include "desktop/gui_internal.h"
+ 
+ #include "image/bitmap.h"
++#ifdef WITH_BMP
+ #include "image/bmp.h"
+-#include "image/gif.h"
+ #include "image/ico.h"
++#endif
++#ifdef WITH_GIF
++#include "image/gif.h"
++#endif
++#ifdef WITH_JPEG
+ #include "image/jpeg.h"
++#endif
++#ifdef WITH_NSSPRITE
+ #include "image/nssprite.h"
++#endif
++#ifdef WITH_PNG
+ #include "image/png.h"
++#endif
++#ifdef WITH_RSVG
+ #include "image/rsvg.h"
++#endif
++#ifdef WITH_NS_SVG
+ #include "image/svg.h"
++#endif
+ #include "image/image.h"
+ 
+ /**
+@@ -68,6 +82,16 @@
+ 	if (error != NSERROR_OK)
+ 		return error;
+ #endif
++
++#ifdef WITH_MNG
++	error = nsmng_init();
++	if (error != NSERROR_OK)
++		return error;
++
++	error = nsjpng_init();
++	if (error != NSERROR_OK)
++		return error;
++#endif
+ 
+ #ifdef WITH_PNG
+ 	error = nspng_init();

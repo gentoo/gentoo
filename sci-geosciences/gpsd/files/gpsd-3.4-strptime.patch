@@ -1,0 +1,26 @@
+From 083ee79e5b6acbd08008965cbca496eb61957fa4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 13 Jan 2012 11:56:12 -0500
+Subject: [PATCH] fix missing strptime prototype
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ gpsutils.c |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/gpsutils.c b/gpsutils.c
+index a1530ec..cc47d52 100644
+--- a/gpsutils.c
++++ b/gpsutils.c
+@@ -3,6 +3,8 @@
+  * This file is Copyright (c) 2010 by the GPSD project
+  * BSD terms apply: see the file COPYING in the distribution root for details.
+  */
++#define _XOPEN_SOURCE 700
++
+ #include <stdio.h>
+ #include <time.h>
+ #include <sys/time.h>
+-- 
+1.7.8.3
+

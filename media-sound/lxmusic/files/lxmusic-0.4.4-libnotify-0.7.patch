@@ -1,0 +1,32 @@
+--- src/lxmusic-notify.c
++++ src/lxmusic-notify.c
+@@ -56,12 +56,26 @@
+ 	g_return_if_fail (message != NULL);
+ 
+ 	lxmusic_clear_notify (n);
+-
+-	notify = notify_notification_new (summary, message,
+-	                                  "lxmusic", NULL);
++#ifdef NOTIFY_CHECK_VERSION
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++	notify = notify_notification_new (summary, message, "lxmusic");
++#else
++	notify = notify_notification_new (summary, message, "lxmusic", NULL);
++#endif
++#else
++	notify = notify_notification_new (summary, message, "lxmusic", NULL);
++#endif
+ 	n->notification = notify;
+ 
++#ifdef NOTIFY_CHECK_VERSION
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++/* lazy */
++#else
++/* lazy */
++#endif
++#else
+ 	notify_notification_attach_to_status_icon (notify, n->status_icon);
++#endif
+ 	notify_notification_set_urgency (notify, NOTIFY_URGENCY_NORMAL);
+ 	notify_notification_set_timeout (notify, NOTIFY_EXPIRES_DEFAULT);
+ 

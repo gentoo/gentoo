@@ -1,0 +1,11 @@
+--- rules~	2007-01-11 08:49:52.000000000 -0700
++++ rules	2008-01-28 11:52:49.629153456 -0700
+@@ -21,7 +21,7 @@
+ header /From/ /ebay\.com/i
+ header /From/ /sabresfc11@aol\.com/i
+ header /From/ /ictp\.ch/i
+-header /From/ /(sgi.org.uk/ei
++header /From/ /(sgi.org.uk)/ei
+ header /From/ /tera-byte/i
+ header /From/ /google\.com/i
+ header /Subject/ /item/i

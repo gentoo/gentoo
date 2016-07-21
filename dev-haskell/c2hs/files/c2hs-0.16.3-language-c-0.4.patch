@@ -1,0 +1,25 @@
+diff --git a/c2hs.cabal b/c2hs.cabal
+index 89f978f..53a96e5 100644
+--- a/c2hs.cabal
++++ b/c2hs.cabal
+@@ -41,7 +41,7 @@ flag base3
+ 
+ Executable c2hs
+     Build-Depends:  base >= 2 && < 5,
+-                    language-c >= 0.3.1.1 && < 0.4.0,
++                    language-c >= 0.3.1.1 && < 0.5,
+                     filepath
+ 
+     if flag(base3)
+diff --git a/src/C2HS/Gen/Bind.hs b/src/C2HS/Gen/Bind.hs
+index 1fd2acc..9c25b42 100644
+--- a/src/C2HS/Gen/Bind.hs
++++ b/src/C2HS/Gen/Bind.hs
+@@ -117,6 +117,7 @@ import Control.Monad (when, unless, liftM, mapAndUnzipM)
+ import Language.C.Data.Position
+ import Language.C.Data.Ident
+ import Language.C.Pretty
++import Language.C.Syntax.AST
+ import Text.PrettyPrint.HughesPJ (render)
+ import Data.Errors
+ import Data.Attributes (newAttrsOnlyPos)

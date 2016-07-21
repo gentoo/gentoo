@@ -1,0 +1,19 @@
+Fix build failure with giflib 4.2.
+Patch by Andrew Savchenko <bircoph@gmail.com>.
+https://bugs.gentoo.org/486804
+
+--- libAfterImage-1.20/ungif.h.orig
++++ libAfterImage-1.20/ungif.h
+@@ -7,6 +7,12 @@
+ extern "C" {
+ #endif
+ 
++#if (GIFLIB_MAJOR>4) || ((GIFLIB_MAJOR==4) && (GIFLIB_MINOR>=2)) 
++static inline void PrintGifError(void) {
++    fprintf(stderr, "%s\n", GifErrorString());
++}
++#endif
++
+ #ifdef __GNUC__
+ #define ASIM_PrintGifError() do{ fprintf( stderr, "%s():%d:<%s> ",__FUNCTION__, __LINE__, path?path:"null" ); PrintGifError(); }while(0)
+ #else

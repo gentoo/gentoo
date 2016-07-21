@@ -1,0 +1,431 @@
+From fa81aa6d027049e855b76f5408586a288f160575 Mon Sep 17 00:00:00 2001
+From: Markus Goetz <markus@woboq.com>
+Date: Tue, 28 Apr 2015 11:57:36 +0200
+Subject: QNAM: Fix upload corruptions when server closes connection
+
+This patch fixes several upload corruptions if the server closes the connection
+while/before we send data into it. They happen inside multiple places in the HTTP
+layer and are explained in the comments.
+Corruptions are:
+* The upload byte device has an in-flight signal with pending upload data, if
+it gets reset (because server closes the connection) then the re-send of the
+request was sometimes taking this stale in-flight pending upload data.
+* Because some signals were DirectConnection and some were QueuedConnection, there
+was a chance that a direct signal overtakes a queued signal. The state machine
+then sent data down the socket which was buffered there (and sent later) although
+it did not match the current state of the state machine when it was actually sent.
+* A socket was seen as being able to have requests sent even though it was not
+encrypted yet. This relates to the previous corruption where data is stored inside
+the socket's buffer and then sent later.
+
+The included auto test produces all fixed corruptions, I detected no regressions
+via the other tests.
+This code also adds a bit of sanity checking to protect from possible further
+problems.
+
+[ChangeLog][QtNetwork] Fix HTTP(s) upload corruption when server closes connection
+
+(cherry picked from commit qtbase/cff39fba10ffc10ee4dcfdc66ff6528eb26462d3)
+Change-Id: I9793297be6cf3edfb75b65ba03b65f7a133ef194
+Reviewed-by: Richard J. Moore <rich@kde.org>
+---
+ src/corelib/io/qnoncontiguousbytedevice.cpp        |  19 +++
+ src/corelib/io/qnoncontiguousbytedevice_p.h        |   4 +
+ .../access/qhttpnetworkconnectionchannel.cpp       |  47 +++++-
+ src/network/access/qhttpthreaddelegate_p.h         |  36 ++++-
+ src/network/access/qnetworkaccesshttpbackend.cpp   |  24 ++-
+ src/network/access/qnetworkaccesshttpbackend_p.h   |   5 +-
+ tests/auto/qnetworkreply/tst_qnetworkreply.cpp     | 174 ++++++++++++++++++++-
+ 7 files changed, 280 insertions(+), 29 deletions(-)
+
+diff --git a/src/corelib/io/qnoncontiguousbytedevice.cpp b/src/corelib/io/qnoncontiguousbytedevice.cpp
+index bf58eee..1a0591e 100644
+--- a/src/corelib/io/qnoncontiguousbytedevice.cpp
++++ b/src/corelib/io/qnoncontiguousbytedevice.cpp
+@@ -245,6 +245,12 @@ qint64 QNonContiguousByteDeviceByteArrayImpl::size()
+     return byteArray->size();
+ }
+
++qint64 QNonContiguousByteDeviceByteArrayImpl::pos()
++{
++    return currentPosition;
++}
++
++
+ QNonContiguousByteDeviceRingBufferImpl::QNonContiguousByteDeviceRingBufferImpl(QSharedPointer<QRingBuffer> rb)
+     : QNonContiguousByteDevice(), currentPosition(0)
+ {
+@@ -296,6 +302,11 @@ qint64 QNonContiguousByteDeviceRingBufferImpl::size()
+     return ringBuffer->size();
+ }
+
++qint64 QNonContiguousByteDeviceRingBufferImpl::pos()
++{
++    return currentPosition;
++}
++
+ QNonContiguousByteDeviceIoDeviceImpl::QNonContiguousByteDeviceIoDeviceImpl(QIODevice *d)
+     : QNonContiguousByteDevice(),
+     currentReadBuffer(0), currentReadBufferSize(16*1024),
+@@ -415,6 +426,14 @@ qint64 QNonContiguousByteDeviceIoDeviceImpl::size()
+     return device->size() - initialPosition;
+ }
+
++qint64 QNonContiguousByteDeviceIoDeviceImpl::pos()
++{
++    if (device->isSequential())
++        return -1;
++
++    return device->pos();
++}
++
+ QByteDeviceWrappingIoDevice::QByteDeviceWrappingIoDevice(QNonContiguousByteDevice *bd) : QIODevice((QObject*)0)
+ {
+     byteDevice = bd;
+diff --git a/src/corelib/io/qnoncontiguousbytedevice_p.h b/src/corelib/io/qnoncontiguousbytedevice_p.h
+index b6966eb..d1a99a1 100644
+--- a/src/corelib/io/qnoncontiguousbytedevice_p.h
++++ b/src/corelib/io/qnoncontiguousbytedevice_p.h
+@@ -69,6 +69,7 @@ public:
+     virtual const char* readPointer(qint64 maximumLength, qint64 &len) = 0;
+     virtual bool advanceReadPointer(qint64 amount) = 0;
+     virtual bool atEnd() = 0;
++    virtual qint64 pos() { return -1; }
+     virtual bool reset() = 0;
+     void disableReset();
+     bool isResetDisabled() { return resetDisabled; }
+@@ -108,6 +109,7 @@ public:
+     bool atEnd();
+     bool reset();
+     qint64 size();
++    qint64 pos();
+ protected:
+     QByteArray* byteArray;
+     qint64 currentPosition;
+@@ -123,6 +125,7 @@ public:
+     bool atEnd();
+     bool reset();
+     qint64 size();
++    qint64 pos();
+ protected:
+     QSharedPointer<QRingBuffer> ringBuffer;
+     qint64 currentPosition;
+@@ -140,6 +143,7 @@ public:
+     bool atEnd();
+     bool reset();
+     qint64 size();
++    qint64 pos();
+ protected:
+     QIODevice* device;
+     QByteArray* currentReadBuffer;
+diff --git a/src/network/access/qhttpnetworkconnectionchannel.cpp b/src/network/access/qhttpnetworkconnectionchannel.cpp
+index 550e090..db2f712 100644
+--- a/src/network/access/qhttpnetworkconnectionchannel.cpp
++++ b/src/network/access/qhttpnetworkconnectionchannel.cpp
+@@ -107,15 +107,19 @@ void QHttpNetworkConnectionChannel::init()
+     socket->setProxy(QNetworkProxy::NoProxy);
+ #endif
+
++    // We want all signals (except the interactive ones) be connected as QueuedConnection
++    // because else we're falling into cases where we recurse back into the socket code
++    // and mess up the state. Always going to the event loop (and expecting that when reading/writing)
++    // is safer.
+     QObject::connect(socket, SIGNAL(bytesWritten(qint64)),
+                      this, SLOT(_q_bytesWritten(qint64)),
+-                     Qt::DirectConnection);
++                     Qt::QueuedConnection);
+     QObject::connect(socket, SIGNAL(connected()),
+                      this, SLOT(_q_connected()),
+-                     Qt::DirectConnection);
++                     Qt::QueuedConnection);
+     QObject::connect(socket, SIGNAL(readyRead()),
+                      this, SLOT(_q_readyRead()),
+-                     Qt::DirectConnection);
++                     Qt::QueuedConnection);
+
+     // The disconnected() and error() signals may already come
+     // while calling connectToHost().
+@@ -144,13 +148,13 @@ void QHttpNetworkConnectionChannel::init()
+         // won't be a sslSocket if encrypt is false
+         QObject::connect(sslSocket, SIGNAL(encrypted()),
+                          this, SLOT(_q_encrypted()),
+-                         Qt::DirectConnection);
++                         Qt::QueuedConnection);
+         QObject::connect(sslSocket, SIGNAL(sslErrors(QList<QSslError>)),
+                          this, SLOT(_q_sslErrors(QList<QSslError>)),
+                          Qt::DirectConnection);
+         QObject::connect(sslSocket, SIGNAL(encryptedBytesWritten(qint64)),
+                          this, SLOT(_q_encryptedBytesWritten(qint64)),
+-                         Qt::DirectConnection);
++                         Qt::QueuedConnection);
+     }
+ #endif
+ }
+@@ -163,7 +167,8 @@ void QHttpNetworkConnectionChannel::close()
+     else
+         state = QHttpNetworkConnectionChannel::ClosingState;
+
+-    socket->close();
++    if (socket)
++        socket->close();
+ }
+
+
+@@ -280,6 +285,14 @@ bool QHttpNetworkConnectionChannel::sendRequest()
+                 // nothing to read currently, break the loop
+                 break;
+             } else {
++                if (written != uploadByteDevice->pos()) {
++                    // Sanity check. This was useful in tracking down an upload corruption.
++                    qWarning() << "QHttpProtocolHandler: Internal error in sendRequest. Expected to write at position" << written << "but read device is at" << uploadByteDevice->pos();
++                    Q_ASSERT(written == uploadByteDevice->pos());
++                    connection->d_func()->emitReplyError(socket, reply, QNetworkReply::ProtocolFailure);
++                    return false;
++                }
++
+                 qint64 currentWriteSize = socket->write(readPointer, currentReadSize);
+                 if (currentWriteSize == -1 || currentWriteSize != currentReadSize) {
+                     // socket broke down
+@@ -639,6 +652,14 @@ bool QHttpNetworkConnectionChannel::ensureConnection()
+         }
+         return false;
+     }
++
++    // This code path for ConnectedState
++    if (pendingEncrypt) {
++        // Let's only be really connected when we have received the encrypted() signal. Else the state machine seems to mess up
++        // and corrupt the things sent to the server.
++        return false;
++    }
++
+     return true;
+ }
+
+@@ -980,6 +1001,13 @@ void QHttpNetworkConnectionChannel::_q_readyRead()
+ void QHttpNetworkConnectionChannel::_q_bytesWritten(qint64 bytes)
+ {
+     Q_UNUSED(bytes);
++
++    if (ssl) {
++        // In the SSL case we want to send data from encryptedBytesWritten signal since that one
++        // is the one going down to the actual network, not only into some SSL buffer.
++        return;
++    }
++
+     // bytes have been written to the socket. write even more of them :)
+     if (isSocketWriting())
+         sendRequest();
+@@ -1029,7 +1057,7 @@ void QHttpNetworkConnectionChannel::_q_connected()
+
+     // ### FIXME: if the server closes the connection unexpectedly, we shouldn't send the same broken request again!
+     //channels[i].reconnectAttempts = 2;
+-    if (!pendingEncrypt) {
++    if (!pendingEncrypt && !ssl) { // FIXME: Didn't work properly with pendingEncrypt only, we should refactor this into an EncrypingState
+         state = QHttpNetworkConnectionChannel::IdleState;
+         if (!reply)
+             connection->d_func()->dequeueRequest(socket);
+@@ -1157,7 +1185,10 @@ void QHttpNetworkConnectionChannel::_q_proxyAuthenticationRequired(const QNetwor
+
+ void QHttpNetworkConnectionChannel::_q_uploadDataReadyRead()
+ {
+-    sendRequest();
++    if (reply && state == QHttpNetworkConnectionChannel::WritingState) {
++        // There might be timing issues, make sure to only send upload data if really in that state
++        sendRequest();
++    }
+ }
+
+ #ifndef QT_NO_OPENSSL
+diff --git a/src/network/access/qhttpthreaddelegate_p.h b/src/network/access/qhttpthreaddelegate_p.h
+index 7648325..9dd0deb 100644
+--- a/src/network/access/qhttpthreaddelegate_p.h
++++ b/src/network/access/qhttpthreaddelegate_p.h
+@@ -190,6 +190,7 @@ protected:
+     QByteArray m_dataArray;
+     bool m_atEnd;
+     qint64 m_size;
++    qint64 m_pos; // to match calls of haveDataSlot with the expected position
+ public:
+     QNonContiguousByteDeviceThreadForwardImpl(bool aE, qint64 s)
+         : QNonContiguousByteDevice(),
+@@ -197,7 +198,8 @@ public:
+           m_amount(0),
+           m_data(0),
+           m_atEnd(aE),
+-          m_size(s)
++          m_size(s),
++          m_pos(0)
+     {
+     }
+
+@@ -205,6 +207,11 @@ public:
+     {
+     }
+
++    qint64 pos()
++    {
++        return m_pos;
++    }
++
+     const char* readPointer(qint64 maximumLength, qint64 &len)
+     {
+         if (m_amount > 0) {
+@@ -232,11 +239,10 @@ public:
+
+         m_amount -= a;
+         m_data += a;
++        m_pos += a;
+
+-        // To main thread to inform about our state
+-        emit processedData(a);
+-
+-        // FIXME possible optimization, already ask user thread for some data
++        // To main thread to inform about our state. The m_pos will be sent as a sanity check.
++        emit processedData(m_pos, a);
+
+         return true;
+     }
+@@ -253,10 +259,21 @@ public:
+     {
+         m_amount = 0;
+         m_data = 0;
++        m_dataArray.clear();
++
++        if (wantDataPending) {
++            // had requested the user thread to send some data (only 1 in-flight at any moment)
++            wantDataPending = false;
++        }
+
+         // Communicate as BlockingQueuedConnection
+         bool b = false;
+         emit resetData(&b);
++        if (b) {
++            // the reset succeeded, we're at pos 0 again
++            m_pos = 0;
++            // the HTTP code will anyway abort the request if !b.
++        }
+         return b;
+     }
+
+@@ -267,8 +284,13 @@ public:
+
+ public slots:
+     // From user thread:
+-    void haveDataSlot(QByteArray dataArray, bool dataAtEnd, qint64 dataSize)
++    void haveDataSlot(qint64 pos, QByteArray dataArray, bool dataAtEnd, qint64 dataSize)
+     {
++        if (pos != m_pos) {
++            // Sometimes when re-sending a request in the qhttpnetwork* layer there is a pending haveData from the
++            // user thread on the way to us. We need to ignore it since it is the data for the wrong(later) chunk.
++            return;
++        }
+         wantDataPending = false;
+
+         m_dataArray = dataArray;
+@@ -288,7 +310,7 @@ signals:
+
+     // to main thread:
+     void wantData(qint64);
+-    void processedData(qint64);
++    void processedData(qint64 pos, qint64 amount);
+     void resetData(bool *b);
+ };
+
+diff --git a/src/network/access/qnetworkaccesshttpbackend.cpp b/src/network/access/qnetworkaccesshttpbackend.cpp
+index cc67258..fe2f627 100644
+--- a/src/network/access/qnetworkaccesshttpbackend.cpp
++++ b/src/network/access/qnetworkaccesshttpbackend.cpp
+@@ -193,6 +193,7 @@ QNetworkAccessHttpBackendFactory::create(QNetworkAccessManager::Operation op,
+ QNetworkAccessHttpBackend::QNetworkAccessHttpBackend()
+     : QNetworkAccessBackend()
+     , statusCode(0)
++    , uploadByteDevicePosition(false)
+     , pendingDownloadDataEmissions(new QAtomicInt())
+     , pendingDownloadProgressEmissions(new QAtomicInt())
+     , loadingFromCache(false)
+@@ -610,9 +611,9 @@ void QNetworkAccessHttpBackend::postRequest()
+             forwardUploadDevice->setParent(delegate); // needed to make sure it is moved on moveToThread()
+             delegate->httpRequest.setUploadByteDevice(forwardUploadDevice);
+
+-            // From main thread to user thread:
+-            QObject::connect(this, SIGNAL(haveUploadData(QByteArray, bool, qint64)),
+-                             forwardUploadDevice, SLOT(haveDataSlot(QByteArray, bool, qint64)), Qt::QueuedConnection);
++            // From user thread to http thread:
++            QObject::connect(this, SIGNAL(haveUploadData(qint64,QByteArray,bool,qint64)),
++                forwardUploadDevice, SLOT(haveDataSlot(qint64,QByteArray,bool,qint64)), Qt::QueuedConnection);
+             QObject::connect(uploadByteDevice.data(), SIGNAL(readyRead()),
+                              forwardUploadDevice, SIGNAL(readyRead()),
+                              Qt::QueuedConnection);
+@@ -620,8 +621,8 @@ void QNetworkAccessHttpBackend::postRequest()
+             // From http thread to user thread:
+             QObject::connect(forwardUploadDevice, SIGNAL(wantData(qint64)),
+                              this, SLOT(wantUploadDataSlot(qint64)));
+-            QObject::connect(forwardUploadDevice, SIGNAL(processedData(qint64)),
+-                             this, SLOT(sentUploadDataSlot(qint64)));
++            QObject::connect(forwardUploadDevice,SIGNAL(processedData(qint64, qint64)),
++                             this, SLOT(sentUploadDataSlot(qint64,qint64)));
+             connect(forwardUploadDevice, SIGNAL(resetData(bool*)),
+                     this, SLOT(resetUploadDataSlot(bool*)),
+                     Qt::BlockingQueuedConnection); // this is the only one with BlockingQueued!
+@@ -915,12 +916,21 @@ void QNetworkAccessHttpBackend::replySslConfigurationChanged(const QSslConfigura
+ void QNetworkAccessHttpBackend::resetUploadDataSlot(bool *r)
+ {
+     *r = uploadByteDevice->reset();
++    if (*r) {
++        // reset our own position which is used for the inter-thread communication
++        uploadByteDevicePosition = 0;
++    }
+ }
+
+ // Coming from QNonContiguousByteDeviceThreadForwardImpl in HTTP thread
+-void QNetworkAccessHttpBackend::sentUploadDataSlot(qint64 amount)
++void QNetworkAccessHttpBackend::sentUploadDataSlot(qint64 pos, qint64 amount)
+ {
++    if (uploadByteDevicePosition + amount != pos) {
++        // Sanity check, should not happen.
++        error(QNetworkReply::UnknownNetworkError, "");
++    }
+     uploadByteDevice->advanceReadPointer(amount);
++    uploadByteDevicePosition += amount;
+ }
+
+ // Coming from QNonContiguousByteDeviceThreadForwardImpl in HTTP thread
+@@ -933,7 +943,7 @@ void QNetworkAccessHttpBackend::wantUploadDataSlot(qint64 maxSize)
+     QByteArray dataArray(data, currentUploadDataLength);
+
+     // Communicate back to HTTP thread
+-    emit haveUploadData(dataArray, uploadByteDevice->atEnd(), uploadByteDevice->size());
++    emit haveUploadData(uploadByteDevicePosition, dataArray, uploadByteDevice->atEnd(), uploadByteDevice->size());
+ }
+
+ /*
+diff --git a/src/network/access/qnetworkaccesshttpbackend_p.h b/src/network/access/qnetworkaccesshttpbackend_p.h
+index 13519c6..b4ed67c 100644
+--- a/src/network/access/qnetworkaccesshttpbackend_p.h
++++ b/src/network/access/qnetworkaccesshttpbackend_p.h
+@@ -112,7 +112,7 @@ signals:
+
+     void startHttpRequestSynchronously();
+
+-    void haveUploadData(QByteArray dataArray, bool dataAtEnd, qint64 dataSize);
++    void haveUploadData(const qint64 pos, QByteArray dataArray, bool dataAtEnd, qint64 dataSize);
+ private slots:
+     // From HTTP thread:
+     void replyDownloadData(QByteArray);
+@@ -129,13 +129,14 @@ private slots:
+     // From QNonContiguousByteDeviceThreadForwardImpl in HTTP thread:
+     void resetUploadDataSlot(bool *r);
+     void wantUploadDataSlot(qint64);
+-    void sentUploadDataSlot(qint64);
++    void sentUploadDataSlot(qint64, qint64);
+
+     bool sendCacheContents(const QNetworkCacheMetaData &metaData);
+
+ private:
+     QHttpNetworkRequest httpRequest; // There is also a copy in the HTTP thread
+     int statusCode;
++    qint64 uploadByteDevicePosition;
+     QString reasonPhrase;
+     // Will be increased by HTTP thread:
+     QSharedPointer<QAtomicInt> pendingDownloadDataEmissions;
+

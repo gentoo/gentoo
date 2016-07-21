@@ -1,0 +1,9 @@
+[Unit]
+Description=Open vSwitch OpenFlow controller
+Requires=network.target
+
+[Service]
+ExecStart=/usr/bin/ovs-controller --monitor ptcp:
+
+[Install]
+WantedBy=multi-user.target

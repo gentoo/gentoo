@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>vdr@gentoo.org</email>
+<name>Gentoo VDR Project</name>
+</maintainer>
+<longdescription lang="en">
+</longdescription>
+<use>
+	<flag name="conflictcheckonly">ToDo</flag>
+	<flag name="epgsearchonly">ToDo</flag>
+	<flag name="quicksearch">ToDo</flag>
+	<flag name="tre">Add support for unlimited fuzzy searching with help of <pkg>dev-libs/tre</pkg> library</flag>
+</use>
+</pkgmetadata>

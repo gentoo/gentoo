@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -55,11 +55,12 @@
+ AC_PROG_CC
+ AC_PROG_CXX
+ 
++# fixme. always returns false.
+ # see if we actually have a CXX program
+-if test "$ac_cv_prog_CXX" = "" -o ! -x "$ac_cv_prog_CXX"; then
+-    AC_MSG_WARN(could not find C++ compiler $ac_cv_prog_CXX)
+-    enable_cxx=no
+-fi
++#if test "$ac_cv_prog_CXX" = "" -o ! -x "$ac_cv_prog_CXX"; then
++#    AC_MSG_WARN(could not find C++ compiler $ac_cv_prog_CXX)
++#    enable_cxx=no
++#fi
+ 
+ # hopefully we have a stdc c-compiler
+ if test "$ac_cv_prog_cc_stdc" = "no" ; then

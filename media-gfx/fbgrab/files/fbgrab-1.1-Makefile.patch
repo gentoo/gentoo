@@ -1,0 +1,12 @@
+diff -ru fbgrab.orig/Makefile fbgrab/Makefile
+--- fbgrab.orig/Makefile	2013-05-24 00:14:45.000000000 +0400
++++ fbgrab/Makefile	2013-08-22 14:39:18.000000000 +0400
+@@ -4,7 +4,7 @@
+ ###
+ 
+ fbgrab: fbgrab.c
+-	gcc -g -Wall fbgrab.c -lpng -lz -o fbgrab
++	$(CC) -Wall ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} fbgrab.c -lpng -lz -o fbgrab
+ 
+ install:
+ 	install fbgrab /usr/bin/fbgrab

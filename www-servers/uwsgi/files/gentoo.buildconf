@@ -1,0 +1,30 @@
+[uwsgi]
+xml = VAR_XML
+yaml = VAR_YAML
+json = VAR_JSON
+ssl = VAR_SSL
+pcre = VAR_PCRE
+zeromq = VAR_ZMQ
+routing = VAR_ROUTING
+debug = VAR_DEBUG
+unbit = false
+malloc_implementation = VAR_MALLOC
+extras =
+plugins = VAR_PLUGINS
+bin_name = uwsgi
+append_version =
+plugin_dir = VAR_PLUGIN_DIR
+plugin_build_dir = VAR_BUILD_DIR
+embedded_plugins = VAR_EMBEDDED
+as_shared_library = false
+
+locking = auto
+event = auto
+timer = auto
+filemonitor = auto
+
+blacklist =
+whitelist =
+
+embed_files =
+embed_config =

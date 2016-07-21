@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+Dataproviders are small plugins for applications whose work is to push the 
+user’s activities as events in the Zeitgeist daemon. The work of dataproviders 
+are limited to pushing events and not consuming. Without dataproviders being 
+enabled having exhaustive log of user’s activities is tough as Zeitgeist 
+datahub does not track events like opening websites etc.
+</longdescription>
+  <use>
+    <flag name="bzr">Zeitgeist plugin for <pkg>dev-vcs/bzr</pkg> as data source</flag>
+    <flag name="geany">Zeitgeist plugin for <pkg>dev-util/geany</pkg> as data source</flag>
+    <flag name="vim">Zeitgeist plugin for vim as data source</flag>
+    <flag name="emacs">Zeitgeist plugin for emacs as data source</flag>
+    <flag name="tomboy">Zeitgeist plugin for <pkg>app-misc/tomboy</pkg> as data source</flag>
+    <flag name="telepathy">Zeitgeist plugin for telepathy framework as data source</flag>
+    <flag name="firefox">Zeitgeist plugin for <pkg>www-client/firefox</pkg> as data source</flag>
+    <flag name="chromium">Zeitgeist plugin for <pkg>www-client/chromium</pkg> as data source</flag>
+    <flag name="thunderbird">Zeitgeist plugin for <pkg>mail-client/thunderbird</pkg> as data source</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">zeitgeist-datasources</remote-id>
+  </upstream>
+</pkgmetadata>

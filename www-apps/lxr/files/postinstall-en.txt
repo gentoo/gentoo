@@ -1,0 +1,44 @@
+0. Create a db for lxr:
+
+ MySQL: run mysql and read in the initdb file using:
+   \. ${MY_SQLSCRIPTSDIR}/mysql/${PVR}_create.sql
+
+ PostgreSQL:
+   createuser lxr
+   createdb -U lxr lxr
+   psql -U lxr lxr
+   \i ${MY_SQLSCRIPTSDIR}/postgresql/${PVR}_create.sql
+
+1. Edit ${MY_INSTALLDIR}/lxr.conf and set:
+ - db settings
+ - 'v'
+ - 'sourceroot'
+ - 'graphicfile'
+ - 'filetype'
+ - 'incprefix'
+
+2. If you want to use CVS, also set:
+  'range' => sub { return
+	($files->allreleases($LXR::Common::pathname),
+	$files->allrevisions($LXR::Common::pathname))
+	}, # deferred function call.
+
+	You should also set the default version retrieved to a version that really
+	does exist otherwise you will receive errors when generating your index.
+
+	A good value for the default version is head.
+	  'default' => 'head'
+	Set 'sourceroot' and 'sourcerootname'.
+
+3. If you want to use swish-e:
+	Create a directory for the swish index files to go in, and put the
+	path of this directory in the 'swishdir' variable.
+
+4. An .htaccess file has been installed into ${MY_INSTALLDIR}. Please note that
+you must take special care not to make lxr.conf visible to the world. If you
+are not using mod_perl, use .htaccess_cgi instead.
+
+5. Create the index:
+ ${MY_INSTALLDIR}/genxref --url http://${VHOST_HOSTNAME}${VHOST_APPDIR}
+
+6. Browse to http://${VHOST_HOSTNAME}${VHOST_APPDIR}/source

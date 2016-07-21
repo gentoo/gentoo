@@ -1,0 +1,11 @@
+--- src/system.cpp.old	2012-07-19 13:37:12.324303303 +0200
++++ src/system.cpp	2012-07-19 13:38:05.451584273 +0200
+@@ -2,6 +2,8 @@
+ #include <strings.h>
+ #include <string>
+ #include <cstring>
++#include <unistd.h>
++#include <sys/types.h>
+ 
+ #ifdef WINDOWS
+ static const char * type(){

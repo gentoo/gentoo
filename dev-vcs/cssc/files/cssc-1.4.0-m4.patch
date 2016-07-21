@@ -1,0 +1,13 @@
+libtoolize chokes on this line
+
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,6 @@
+ 
+ # Changes to AC_CONFIG_MACRO_DIR shoulld be reflected in ACLOCAL_AMFLAGS in Makefile.am.
+ AC_CONFIG_MACRO_DIR([m4])
+-AC_CONFIG_MACRO_DIR([unit-tests/googletest/m4])
+ 
+ AM_INIT_AUTOMAKE([gnits readme-alpha check-news tar-ustar 1.11.6])
+ AC_CONFIG_HEADERS(config.h)

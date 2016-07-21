@@ -1,0 +1,15 @@
+diff --git a/lib/pathutils.py b/lib/pathutils.py
+index db860ff..53a9cc4 100644
+--- a/lib/pathutils.py
++++ b/lib/pathutils.py
+@@ -63,9 +63,9 @@ ETC_HOSTS = vcluster.ETC_HOSTS
+ 
+ # Top-level paths
+ DATA_DIR = LOCALSTATEDIR + "/lib/ganeti"
+-LOCK_DIR = LOCALSTATEDIR + "/lock"
++LOCK_DIR = "/run/lock"
+ LOG_DIR = LOCALSTATEDIR + "/log/ganeti"
+ RUN_DIR = "/run/ganeti"
+ 
+ #: Script to configure master IP address
+ DEFAULT_MASTER_SETUP_SCRIPT = TOOLSDIR + "/master-ip-setup"

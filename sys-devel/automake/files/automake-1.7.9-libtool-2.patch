@@ -1,0 +1,43 @@
+fixup tests w/libtool-2
+
+https://bugs.gentoo.org/257544
+
+--- automake-1.7.9/tests/libtool5.test
++++ automake-1.7.9/tests/libtool5.test
+@@ -45,5 +45,6 @@
+ END
+ 
+ libtoolize
++[ -e config.guess ] || libtoolize --install
+ $ACLOCAL
+ $AUTOMAKE
+--- automake-1.7.9/tests/ltcond2.test
++++ automake-1.7.9/tests/ltcond2.test
+@@ -73,6 +73,7 @@
+ echo 'int main() { print(); return 0; }' >main.c
+ 
+ libtoolize
++[ -e config.guess ] || libtoolize --install
+ $ACLOCAL
+ $AUTOCONF
+ $AUTOMAKE
+--- automake-1.7.9/tests/ltcond.test
++++ automake-1.7.9/tests/ltcond.test
+@@ -62,6 +62,7 @@
+ mkdir empty
+ 
+ libtoolize
++[ -e config.guess ] || libtoolize --install
+ $ACLOCAL
+ $AUTOCONF
+ $AUTOMAKE
+--- automake-1.7.9/tests/ltconv.test
++++ automake-1.7.9/tests/ltconv.test
+@@ -111,6 +111,7 @@
+ EOF
+ 
+ libtoolize
++[ -e config.guess ] || libtoolize --install
+ $ACLOCAL
+ $AUTOCONF
+ $AUTOMAKE

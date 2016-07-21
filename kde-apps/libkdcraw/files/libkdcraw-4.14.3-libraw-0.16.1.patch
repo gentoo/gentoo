@@ -1,0 +1,18 @@
+commit 46898ec97a0462eb08a5b6d09999450a86b27aae
+Author: Gilles Caulier <caulier.gilles@gmail.com>
+Date:   Thu May 14 22:54:16 2015 +0200
+
+libraw 0.16.1 needs C++ exceptions rules while compilation
+BUGS: 347728
+FIXED-IN: 4.11.0
+--- libkdcraw/CMakeLists.txt
++++ libkdcraw/CMakeLists.txt
+@@ -22,6 +22,8 @@
+ #
+ # ============================================================
+ 
++add_definitions (${KDE4_ENABLE_EXCEPTIONS})
++
+ CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/version.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version.h)
+ 
+ SET(kdcraw_LIB_SRCS kdcraw.cpp

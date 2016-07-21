@@ -1,0 +1,63 @@
+diff --git a/module/spl/spl-proc.c b/module/spl/spl-proc.c
+index cd4fa1b..3cac8a1 100644
+--- a/module/spl/spl-proc.c
++++ b/module/spl/spl-proc.c
+@@ -37,6 +37,12 @@
+ 
+ #define SS_DEBUG_SUBSYS SS_PROC
+ 
++#ifdef CONSTIFY_PLUGIN
++typedef struct ctl_table __no_const spl_ctl_table;
++#else
++typedef struct ctl_table spl_ctl_table;
++#endif
++
+ #ifdef DEBUG_KMEM
+ static unsigned long table_min = 0;
+ static unsigned long table_max = ~0;
+@@ -323,7 +329,7 @@ enum {
+ SPL_PROC_HANDLER(proc_console_max_delay_cs)
+ {
+         int rc, max_delay_cs;
+-        struct ctl_table dummy = *table;
++        spl_ctl_table dummy = *table;
+         long d;
+ 	SENTRY;
+ 
+@@ -355,7 +361,7 @@ enum {
+ SPL_PROC_HANDLER(proc_console_min_delay_cs)
+ {
+         int rc, min_delay_cs;
+-        struct ctl_table dummy = *table;
++        spl_ctl_table dummy = *table;
+         long d;
+ 	SENTRY;
+ 
+@@ -387,7 +393,7 @@ enum {
+ SPL_PROC_HANDLER(proc_console_backoff)
+ {
+         int rc, backoff;
+-        struct ctl_table dummy = *table;
++        spl_ctl_table dummy = *table;
+ 	SENTRY;
+ 
+         dummy.data = &backoff;
+@@ -417,7 +423,7 @@ enum {
+ {
+         int rc = 0;
+         unsigned long min = 0, max = ~0, val;
+-        struct ctl_table dummy = *table;
++        spl_ctl_table dummy = *table;
+ 	SENTRY;
+ 
+         dummy.data = &val;
+@@ -444,7 +450,7 @@ enum {
+ {
+         int rc = 0;
+         unsigned long min = 0, max = ~0, val = 0, mask;
+-        struct ctl_table dummy = *table;
++        spl_ctl_table dummy = *table;
+         spl_kmem_cache_t *skc;
+         SENTRY;
+ 
+-- 

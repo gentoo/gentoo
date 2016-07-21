@@ -1,0 +1,9 @@
+Index: soxr-0.1.0-Source/examples/CMakeLists.txt
+===================================================================
+--- soxr-0.1.0-Source.orig/examples/CMakeLists.txt
++++ soxr-0.1.0-Source/examples/CMakeLists.txt
+@@ -34,4 +34,3 @@ if (${BUILD_TESTS} AND ${WITH_LSR_BINDIN
+ endif ()
+ 
+ file (GLOB INSTALL_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.[cCh])
+-install (FILES ${INSTALL_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/README DESTINATION ${DOC_INSTALL_DIR}/examples)

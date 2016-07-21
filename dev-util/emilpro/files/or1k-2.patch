@@ -1,0 +1,22 @@
+From 5b41e51bfb9fdeac7c6a2441badf8c3b92463fef Mon Sep 17 00:00:00 2001
+From: Alex Chernetz <andy80586@gmail.com>
+Date: Fri, 1 May 2015 14:34:31 -0700
+Subject: [PATCH] Function is print_insn_or1k, not print_insn_little_or1k
+
+---
+ src/bfd-disassembly.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bfd-disassembly.cc b/src/bfd-disassembly.cc
+index bf3e768..eeecbe4 100644
+--- a/src/bfd-disassembly.cc
++++ b/src/bfd-disassembly.cc
+@@ -38,7 +38,7 @@ class Disassembly : public IDisassembly,
+ 	    m_arch[bfd_arch_m68k] = BfdArch(bfd_arch_m68k, bfd_mach_m68040, print_insn_m68k);      /* Motorola 68xxx */
+ 	    m_arch[bfd_arch_vax] = BfdArch(bfd_arch_vax, 0, print_insn_vax);       /* DEC Vax */
+ 	    m_arch[bfd_arch_i960] = BfdArch(bfd_arch_i960, 0, print_insn_i960);      /* Intel 960 */
+-	    m_arch[bfd_arch_or1k] = BfdArch(bfd_arch_or1k, 0, print_insn_little_or1k);      /* OpenRISC 32 */
++	    m_arch[bfd_arch_or1k] = BfdArch(bfd_arch_or1k, 0, print_insn_or1k);      /* OpenRISC 32 */
+ 	    m_arch[bfd_arch_sparc] = BfdArch(bfd_arch_sparc, 0, print_insn_sparc);     /* SPARC */
+ 	    m_arch[bfd_arch_spu] = BfdArch(bfd_arch_spu, 0, print_insn_spu);       /* PowerPC SPU */
+ 	    m_arch[bfd_arch_i860] = BfdArch(bfd_arch_i860, 0, print_insn_i860);      /* Intel 860 */

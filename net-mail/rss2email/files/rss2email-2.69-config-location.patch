@@ -1,0 +1,16 @@
+--- rss2email.py	2010-11-25 02:22:14.607431246 +0100
++++ rss2email.py	2010-11-25 02:26:54.478306015 +0100
+@@ -254,7 +254,12 @@
+ 
+ # Read options from config file if present.
+ import sys
+-sys.path.insert(0,".")
++import os
++_conf_dir = os.path.expanduser('~/.rss2email')
++if not os.path.exists(os.path.join(_conf_dir, 'config.py')):
++	_conf_dir = '/etc/rss2email'
++sys.path.insert(0, _conf_dir)
++
+ try:
+ 	from config import *
+ except:

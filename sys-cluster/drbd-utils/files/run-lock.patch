@@ -1,0 +1,13 @@
+--- configure.ac.orig	2015-01-31 23:19:18.745021931 +0000
++++ configure.ac	2015-01-31 23:19:38.988027506 +0000
+@@ -353,8 +353,8 @@
+ AH_TEMPLATE(DRBD_LEGACY_84, [Include support for drbd-8.4 kernel code])
+ 
+ AC_SUBST(DRBD_LIB_DIR, [$localstatedir/lib/$PACKAGE_TARNAME])
+-AC_SUBST(DRBD_RUN_DIR, [$localstatedir/run/$PACKAGE_TARNAME])
+-AC_SUBST(DRBD_LOCK_DIR, [$localstatedir/lock])
++AC_SUBST(DRBD_RUN_DIR, [/run/$PACKAGE_TARNAME])
++AC_SUBST(DRBD_LOCK_DIR, [/run/lock])
+ AC_SUBST(DRBD_CONFIG_DIR, [$sysconfdir])
+ 
+ AC_DEFINE_UNQUOTED(DRBD_LIB_DIR, ["$DRBD_LIB_DIR"])

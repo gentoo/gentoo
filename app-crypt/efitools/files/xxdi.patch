@@ -1,0 +1,110 @@
+From gregkh@linuxfoundation.org Sun Sep  1 14:55:47 2013
+Date: Sun, 1 Sep 2013 14:58:15 -0700
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: James Bottomley <James.Bottomley@HansenPartnership.com>
+Cc: JBottomley@Parallels.com, greg@kroah.com
+Subject: [efitools PATCH] Makefile/Make.rules: don't rely on vim-core
+Message-ID: <20130901215815.GA8749@kroah.com>
+
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+Subject: Makefile/Make.rules: don't rely on vim-core
+
+This adds the xxdi.pl script to replace the call to 'xxd -i', removing a
+build dependancy on vim-core, which some distros don't really want to
+have (i.e. Gentoo and its build derivatives like ChromeOS and CoreOS.)
+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ Make.rules |  2 +-
+ Makefile   |  2 +-
+ xxdi.pl    | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 52 insertions(+), 2 deletions(-)
+ create mode 100755 xxdi.pl
+
+diff --git a/Make.rules b/Make.rules
+index 419b3b9..309b231 100644
+--- a/Make.rules
++++ b/Make.rules
+@@ -38,7 +38,7 @@ endif
+ 	nm -D $@ | grep ' U ' && exit 1 || exit 0
+ 
+ %.h: %.auth
+-	xxd -i $< > $@
++	./xxdi.pl $< > $@
+ 
+ %.hash: %.efi hash-to-efi-sig-list
+ 	./hash-to-efi-sig-list $< $@
+diff --git a/Makefile b/Makefile
+index 52f4551..a39cafe 100644
+--- a/Makefile
++++ b/Makefile
+@@ -62,7 +62,7 @@ DB.auth: DB.esl KEK.crt sign-efi-sig-list
+ 
+ hashlist.h: HashTool.hash
+ 	cat $^ > /tmp/tmp.hash
+-	xxd -i /tmp/tmp.hash > $@
++	./xxdi.pl /tmp/tmp.hash > $@
+ 	rm -f /tmp/tmp.hash
+ 
+ 
+diff --git a/xxdi.pl b/xxdi.pl
+new file mode 100755
+index 0000000..acc974c
+--- /dev/null
++++ b/xxdi.pl
+@@ -0,0 +1,50 @@
++#!/usr/bin/env perl
++#
++# xxdi.pl - perl implementation of 'xxd -i' mode
++#
++# Copyright 2013 Greg Kroah-Hartman <gregkh@linuxfoundation.org>
++# Copyright 2013 Linux Foundation
++#
++# Released under the GPLv2.
++#
++# Implements the "basic" functionality of 'xxd -i' in perl to keep build
++# systems from having to build/install/rely on vim-core, which not all
++# distros want to do.  But everyone has perl, so use it instead.
++#
++
++use strict;
++use warnings;
++use File::Slurp qw(slurp);
++
++my $indata = slurp(@ARGV ? $ARGV[0] : \*STDIN);
++my $len_data = length($indata);
++my $num_digits_per_line = 12;
++my $var_name;
++my $outdata;
++
++# Use the variable name of the file we read from, converting '/' and '.
++# to '_', or, if this is stdin, just use "stdin" as the name.
++if (@ARGV) {
++	$var_name = $ARGV[0];
++	$var_name =~ s/\//_/g;
++	$var_name =~ s/\./_/g;
++} else {
++	$var_name = "stdin";
++}
++
++$outdata .= "unsigned char $var_name\[] = {";
++
++# trailing ',' is acceptable, so instead of duplicating the logic for
++# just the last character, live with the extra ','.
++for (my $key= 0; $key < $len_data; $key++) {
++	if ($key % $num_digits_per_line == 0) {
++		$outdata .= "\n\t";
++	}
++	$outdata .= sprintf("0x%.2x, ", ord(substr($indata, $key, 1)));
++}
++
++$outdata .= "\n};\nunsigned int $var_name\_len = $len_data;\n";
++
++binmode STDOUT;
++print {*STDOUT} $outdata;
++
+-- 
+1.8.4.6.g82e253f.dirty
+
+

@@ -1,0 +1,40 @@
+ Makefile.am          | 3 +--
+ examples/Makefile.am | 5 ++---
+ src/Makefile.am      | 3 +--
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index e6bba05..67274c1 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -8,8 +8,7 @@ noinst_PROGRAMS = \
+  command
+ 
+ AM_CFLAGS =\
+-  -Wall	\
+-  -g
++  -Wall
+ 
+ simple_SOURCES = \
+   simple.c
+@@ -30,4 +29,4 @@ command_SOURCES = \
+ 
+ command_LDADD = \ 
+   $(GTX_LIBS)  \
+-  $(top_builddir)/src/libgtx.la
+\ No newline at end of file
++  $(top_builddir)/src/libgtx.la
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f5f873e..a40d772 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,8 +4,7 @@ INCLUDES =      \
+   $(GTX_CFLAGS)
+ 
+ AM_CFLAGS =\
+-  -Wall	\
+-  -g
++  -Wall
+ 
+ #
+ # Headers to be installed

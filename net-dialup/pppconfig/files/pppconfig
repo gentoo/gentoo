@@ -1,0 +1,9 @@
+#!/bin/sh
+# Since I don't feel like installing whiptail, we need to wrap this app
+PPPCONFIG="/usr/sbin/pppconfig.real"
+if [ -x ${PPPCONFIG} ]; then
+	$PPPCONFIG --dialog
+else
+	echo "Error starting $PPPCONFIG"
+	exit 1
+fi

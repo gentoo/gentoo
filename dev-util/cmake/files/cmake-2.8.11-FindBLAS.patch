@@ -1,0 +1,48 @@
+--- b/Modules/FindBLAS.cmake
++++ a/Modules/FindBLAS.cmake
+@@ -1,3 +1,9 @@
++#
++# Version modified for Gentoo Linux
++# If a valid PkgConfig configuration for blas is found, this overrides and cancels
++# all further checks.
++#
++
+ # - Find BLAS library
+ # This module finds an installed fortran library that implements the BLAS
+ # linear-algebra interface (see http://www.netlib.org/blas/).
+@@ -40,6 +46,26 @@
+ # (To distribute this file outside of CMake, substitute the full
+ #  License text for the above reference.)
+ 
++#
++# first, try PkgConfig
++#
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PC_BLAS blas)
++if(PC_BLAS_FOUND)
++  foreach(PC_LIB ${PC_BLAS_LIBRARIES})
++    find_library(${PC_LIB}_LIBRARY NAMES ${PC_LIB} HINTS ${PC_BLAS_LIBRARY_DIRS} )
++    if (NOT ${PC_LIB}_LIBRARY)
++      message(FATAL_ERROR "Something is wrong in your pkg-config file - lib ${PC_LIB} not found in ${PC_BLAS_LIBRARY_DIRS}")
++    endif (NOT ${PC_LIB}_LIBRARY)
++    list(APPEND BLAS_LIBRARIES ${${PC_LIB}_LIBRARY}) 
++  endforeach(PC_LIB)
++  find_package_handle_standard_args(BLAS DEFAULT_MSG BLAS_LIBRARIES)
++  mark_as_advanced(BLAS_LIBRARIES)
++else(PC_BLAS_FOUND)
++message(STATUS "No PkgConfig configuration for BLAS found; starting more extensive search.")
++
++
++
+ include(${CMAKE_CURRENT_LIST_DIR}/CheckFunctionExists.cmake)
+ include(${CMAKE_CURRENT_LIST_DIR}/CheckFortranFunctionExists.cmake)
+ 
+@@ -604,3 +630,8 @@
+ endif()
+ 
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ${_blas_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES})
++
++
++endif(PC_BLAS_FOUND)
++
++

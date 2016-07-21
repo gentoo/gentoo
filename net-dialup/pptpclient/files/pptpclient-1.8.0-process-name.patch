@@ -1,0 +1,39 @@
+--- pptp.c.orig	2013-10-23 12:10:46.000000000 +0400
++++ pptp.c	2013-11-26 13:05:43.259867888 +0400
+@@ -60,9 +60,6 @@
+ #include "pptp_callmgr.h"
+ #include "pptp_gre.h"
+ #include "version.h"
+-#if defined(__linux__)
+-#include <sys/prctl.h>
+-#endif
+ #include "inststr.h"
+ #include "util.h"
+ #include "pptp_quirks.h"
+@@ -413,12 +410,7 @@
+     tty_name = ttyname(tty_fd);
+     snprintf(buf, sizeof(buf), "pptp: GRE-to-PPP gateway on %s",
+               tty_name ? tty_name : "(null)");
+-#ifdef PR_SET_NAME
+-    rc = prctl(PR_SET_NAME, "pptpgw", 0, 0, 0);
+-    if (rc != 0) perror("prctl");
+-#else
+     inststr(argc, argv, envp, buf);
+-#endif
+     if (sigsetjmp(env, 1)!= 0) goto shutdown;
+ 
+     signal(SIGINT,  sighandler);
+@@ -517,13 +509,7 @@
+       char *my_argv[3] = { argv[0], inet_ntoa(inetaddr), phonenr };
+       char buf[128];
+       snprintf(buf, sizeof(buf), "pptp: call manager for %s", my_argv[1]);
+-#ifdef PR_SET_NAME
+-      int rc;
+-      rc = prctl(PR_SET_NAME, "pptpcm", 0, 0, 0);
+-      if (rc != 0) perror("prctl");
+-#else
+       inststr(argc, argv, envp, buf);
+-#endif
+       exit(callmgr_main(3, my_argv, envp));
+ }
+ 

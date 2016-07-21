@@ -1,0 +1,43 @@
+https://github.com/martinpitt/umockdev/pull/52
+https://bugs.gentoo.org/579988
+
+--- a/src/libumockdev-preload.c
++++ b/src/libumockdev-preload.c
+@@ -39,6 +39,7 @@
+ #include <inttypes.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/inotify.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+--- a/src/umockdev-record.c
++++ b/src/umockdev-record.c
+@@ -31,6 +31,7 @@
+ #include <stdarg.h>
+ #include <sys/stat.h>
+ #include <errno.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <glib/gstdio.h>
+ #include <fcntl.h>
+--- a/tests/test-umockdev-vala.c
++++ b/tests/test-umockdev-vala.c
+@@ -36,6 +36,7 @@
+ #include <unistd.h>
+ #include <glib/gstdio.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <gobject/gvaluecollector.h>
+ 
+ #define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
+--- a/tests/test-umockdev.c
++++ b/tests/test-umockdev.c
+@@ -29,6 +29,7 @@
+ #include <errno.h>
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
++#include <sys/sysmacros.h>
+ #include <sys/un.h>
+ #include <linux/usbdevice_fs.h>
+ #include <linux/input.h>

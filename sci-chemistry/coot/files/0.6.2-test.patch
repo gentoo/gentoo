@@ -1,0 +1,16 @@
+ src/testing.cc |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/src/testing.cc b/src/testing.cc
+index f767bf6..097b9b9 100644
+--- a/src/testing.cc
++++ b/src/testing.cc
+@@ -86,6 +86,8 @@ std::string greg_test(const std::string &file_name) {
+    const char *c = getenv("COOT_TEST_DATA_DIR");
+    if (c) {
+       dd = c;
++      dd += "/";
++      dd += file_name;
+    } else { 
+       const char *d = getenv("HOME");
+       if (d) {

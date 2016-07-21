@@ -1,0 +1,12 @@
+diff -ur a/std232.c b/std232.c
+--- a/std232.c	2003-07-18 22:08:33.000000000 -0300
++++ b/std232.c	2006-05-11 21:31:33.000000000 -0300
+@@ -89,7 +89,7 @@
+ {
+ 	unsigned int index;
+ 
+-	(unsigned int) index = strtol(temp, NULL, 16);
++	index = strtol(temp, NULL, 16);
+ 	if (index < 256)
+ 	     return (&cmatrix[index][0]);
+ 	else return (&dmatrix[0]);

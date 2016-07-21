@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Crypt-RSA</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::DataFormat</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Debug</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::ES::OAEP</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::ES::PKCS1v15</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Errorhandler</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key::Private</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key::Private::SSH</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key::Private::SSH::Buffer</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key::Public</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Key::Public::SSH</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::Primitives</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::SS::PKCS1v15</remote-id>
+    <remote-id type="cpan-module">Crypt::RSA::SS::PSS</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+# Config file for /etc/init.d/msfrpcd
+
+# msfrpcd -h for more info
+
+# Bind to the following IP instead of 0.0.0.0
+MSF_OPTS="-a 127.0.0.1"
+
+# Bind to the following TCP port instead of default 55553
+#MSF_OPTS="${MSF_OPTS} -p 55553"
+
+# Specify the username to access msfrpcd
+MSF_OPTS="${MSF_OPTS} -U msf"
+
+# Specify the password to access msfrpcd
+MSF_OPTS="${MSF_OPTS} -P secret"
+
+# Server type, [Basic|Web]
+#MSF_OPTS="${MSF_OPTS} -t Basic"
+
+# URI for Web server
+#MSF_OPTS="${MSF_OPTS} -u "
+
+# Disable SSL on the XMLRPC socket
+# JAVA GUI doesn't support SSL as of Nov 6, 2010
+MSF_OPTS="${MSF_OPTS} -S"

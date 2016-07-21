@@ -1,0 +1,10 @@
+--- screenshot.c
++++ screenshot.c
+@@ -48,6 +48,7 @@
+ 
+ #ifdef USE_LIBPNG
+ 
++#include <zlib.h>
+ #include <png.h>
+ 
+ static int get_rgb32_data( libspectrum_byte *rgb32_data, size_t stride,

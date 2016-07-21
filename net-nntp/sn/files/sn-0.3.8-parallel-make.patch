@@ -1,0 +1,56 @@
+--- sn-0.3.8/Makefile.orig
++++ sn-0.3.8/Makefile
+@@ -94,39 +94,39 @@
+ 	ar rc $@ $^
+ 	ranlib $@
+ 
+-snsplit: snsplit.o sn.a
++snsplit: snsplit.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snscan: snscan.o sn.a
++snscan: snscan.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS) $(ZLIB)
+ sncat: snscan
+ 	ln -s snscan sncat
+ sncancel: snscan
+ 	ln -s snscan sncancel
+-snprimedb: snprimedb.o sn.a
++snprimedb: snprimedb.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-sndumpdb: sndumpdb.o sn.a
++sndumpdb: sndumpdb.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snntpd: snntpd.o post.o commands.o list.o sn.a
++snntpd: snntpd.o post.o commands.o list.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS) $(ZLIB)
+-snsend: snsend.o sn.a
++snsend: snsend.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS) $(ZLIB)
+ snstore: snsend
+ 	ln -s snsend snstore
+-snfetch: snfetch.o sn.a
++snfetch: snfetch.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snexpire: snexpire.o sn.a
++snexpire: snexpire.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snmail: snmail.o sn.a
++snmail: snmail.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snget: snget.o get.o sn.a
++snget: snget.o get.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-sngetd: sngetd.o get.o sn.a
++sngetd: sngetd.o get.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snnewgroup: snnewgroup.o sn.a
++snnewgroup: snnewgroup.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-sndelgroup: sndelgroup.o sn.a
++sndelgroup: sndelgroup.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+-snlockf: snlockf.o
++snlockf: snlockf.o sn.a lib/libstuff.a
+ 	$(LD) `cat cc-flags` $^ -o $@ $(LIBS)
+ 
+ %: %.in sed-cmd

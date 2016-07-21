@@ -1,0 +1,13 @@
+diff --git a/example/mimx-ispell.c b/example/mimx-ispell.c
+index daa244f..7507de8 100644
+--- a/example/mimx-ispell.c
++++ b/example/mimx-ispell.c
+@@ -166,7 +166,7 @@ ispell_word (MPlist *args)
+     return add_action (actions, msymbol ("shift"), Msymbol, init_state);
+ 
+   buf[nbytes] = '\0';
+-  sprintf (command, "echo %s | ispell -a -m", (char *) buf);
++  sprintf (command, "echo %s | ispell-aspell -a -m", (char *) buf);
+   ispell = popen (command, "r");
+   if (! ispell)
+     return add_action (actions, msymbol ("shift"), Msymbol, init_state);

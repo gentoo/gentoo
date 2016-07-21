@@ -1,0 +1,25 @@
+# adapt to new automake 0.13.1 (bug #467708)
+# switch to AC_CONFIG_HEADERS, correct AM_INIT_AUTOMAKE, quote text in
+# AC_MSG_ERROR
+--- configure.ac.old	2013-04-28 15:49:22.000000000 +0000
++++ configure.ac	2013-04-28 15:50:25.000000000 +0000
+@@ -1,7 +1,7 @@
+-AC_INIT(AUTHORS)
+-AM_INIT_AUTOMAKE(oregano, 0.81)
++AC_INIT(oregano,0.81,AUTHORS)
++AM_INIT_AUTOMAKE
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_MAINTAINER_MODE
+ 
+ AC_CONFIG_MACRO_DIR([m4])
+@@ -38,7 +38,7 @@
+ AC_SUBST(SCROLLKEEPER_REQUIRED)
+ AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
+ if test x$SCROLLKEEPER_CONFIG = xno; then
+-	AC_MSG_ERROR(Couldn't find scrollkeeper-config, please install the scrollkeeper package)
++	AC_MSG_ERROR([Couldn't find scrollkeeper-config, please install the scrollkeeper package])
+ fi
+ 
+ 

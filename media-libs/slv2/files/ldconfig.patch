@@ -1,0 +1,14 @@
+Index: slv2-0.6.2/autowaf.py
+===================================================================
+--- slv2-0.6.2.orig/autowaf.py
++++ slv2-0.6.2/autowaf.py
+@@ -324,8 +324,5 @@ def build_dox(bld, name, version, srcdir
+ 	out1.command_is_external = True
+ 
+ def shutdown():
+-	# This isn't really correct (for packaging), but people asking is annoying
+-	if Options.commands['install']:
+-		try: os.popen("/sbin/ldconfig")
+-		except: pass
++	return
+ 

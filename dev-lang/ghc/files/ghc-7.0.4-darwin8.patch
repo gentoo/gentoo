@@ -1,0 +1,18 @@
+Workaround headers problem in Darwin 8 as well.
+
+--- rts/PosixSource.h
++++ rts/PosixSource.h
+@@ -11,6 +11,13 @@
+ 
+ #include <ghcplatform.h>
+ 
++#if defined(darwin_HOST_OS)
++/* unfortunately the hack below only works for Darwin 9 and
++ * above, so as hack include sys/types early (before setting
++ * _POSIX_C_SOURCE) (this obviously obsoletes the hack below) */
++#include <sys/types.h>
++#endif
++
+ #if defined(freebsd_HOST_OS)
+ #define _POSIX_C_SOURCE 200112L
+ #define _XOPEN_SOURCE   600

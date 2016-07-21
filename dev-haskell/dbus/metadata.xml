@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		D-Bus is a simple, message-based protocol for inter-process
+		communication, which allows applications to interact with other parts of
+		the machine and the user's session using remote procedure calls.
+		
+		D-Bus is a essential part of the modern Linux desktop, where it replaces
+		earlier protocols such as CORBA and DCOP.
+		
+		This library is an implementation of the D-Bus protocol in Haskell. It
+		can be used to add D-Bus support to Haskell applications, without the
+		awkward interfaces common to foreign bindings.
+		
+		Example: connect to the session bus, and get a list of active names.
+		
+		@
+		&amp;#x7b;-\# LANGUAGE OverloadedStrings \#-&amp;#x7d;
+		
+		import Data.List (sort)
+		import DBus
+		import DBus.Client
+		
+		main = do
+		&amp;#x20;   client &lt;- connectSession
+		&amp;#x20;   //
+		&amp;#x20;   \-- Request a list of connected clients from the bus
+		&amp;#x20;   reply &lt;- call_ client (methodCall \"\/org\/freedesktop\/DBus\" \"org.freedesktop.DBus\" \"ListNames\")
+		&amp;#x20;       &amp;#x7b; methodCallDestination = Just \"org.freedesktop.DBus\"
+		&amp;#x20;       &amp;#x7d;
+		&amp;#x20;   //
+		&amp;#x20;   \-- org.freedesktop.DBus.ListNames() returns a single value, which is
+		&amp;#x20;   \-- a list of names (here represented as [String])
+		&amp;#x20;   let Just names = fromVariant (methodReturnBody reply !! 0)
+		&amp;#x20;   //
+		&amp;#x20;   \-- Print each name on a line, sorted so reserved names are below
+		&amp;#x20;   \-- temporary names.
+		&amp;#x20;   mapM_ putStrLn (sort names)
+		@
+		
+		&gt;$ ghc --make list-names.hs
+		&gt;$ ./list-names
+		&gt;:1.0
+		&gt;:1.1
+		&gt;:1.10
+		&gt;:1.106
+		&gt;:1.109
+		&gt;:1.110
+		&gt;ca.desrt.dconf
+		&gt;org.freedesktop.DBus
+		&gt;org.freedesktop.Notifications
+		&gt;org.freedesktop.secrets
+		&gt;org.gnome.ScreenSaver
+	</longdescription>
+</pkgmetadata>

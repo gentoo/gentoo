@@ -1,0 +1,157 @@
+diff -ur wmmaiload-2.2.1.orig/wmmaiload/dockapp.c wmmaiload-2.2.1/wmmaiload/dockapp.c
+--- wmmaiload-2.2.1.orig/wmmaiload/dockapp.c	2005-07-12 22:39:47.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload/dockapp.c	2008-01-12 11:53:00.000000000 +0200
+@@ -27,6 +27,7 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ 
+ #define WINDOWED_SIZE_W 64
+ #define WINDOWED_SIZE_H 64
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/actions.c wmmaiload-2.2.1/wmmaiload-config/actions.c
+--- wmmaiload-2.2.1.orig/wmmaiload-config/actions.c	2005-07-13 22:54:46.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/actions.c	2008-01-12 11:54:15.000000000 +0200
+@@ -3,6 +3,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include "defines.h"
+ #include "variables.h"
+ #include "dialogs.h"
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/dialogs.c wmmaiload-2.2.1/wmmaiload-config/dialogs.c
+--- wmmaiload-2.2.1.orig/wmmaiload-config/dialogs.c	2005-07-07 21:54:17.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/dialogs.c	2008-01-12 11:47:42.000000000 +0200
+@@ -38,7 +38,6 @@
+                            bouton, TRUE, TRUE, 0);
+         GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+         gtk_widget_grab_default(GTK_WIDGET(bouton));
+-        gtk_widget_draw_default(GTK_WIDGET(bouton));
+         gtk_widget_show(bouton);
+ 
+         bouton = gtk_button_new_with_label("No");
+@@ -97,7 +96,6 @@
+                            bouton, TRUE, TRUE, 0);
+         GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+         gtk_widget_grab_default(GTK_WIDGET(bouton));
+-        gtk_widget_draw_default(GTK_WIDGET(bouton));
+         gtk_widget_show(bouton);
+ 
+         gtk_container_set_border_width(GTK_CONTAINER
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/Init.make wmmaiload-2.2.1/wmmaiload-config/Init.make
+--- wmmaiload-2.2.1.orig/wmmaiload-config/Init.make	2005-08-26 21:37:33.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/Init.make	2008-01-12 11:48:12.000000000 +0200
+@@ -35,9 +35,9 @@
+ #
+ 
+ CROSS_COMPILE =
+-USER_CPPFLAGS = `gtk-config --cflags`
++USER_CPPFLAGS = `pkg-config gtk+-2.0 --cflags`
+ USER_CFLAGS   =
+-USER_LDFLAGS  = `gtk-config --libs` -lX11
++USER_LDFLAGS  = `pkg-config gtk+-2.0 --libs` -lX11
+ 
+ 
+ #*****************************************************************
+Only in wmmaiload-2.2.1/wmmaiload-config: Init.make.orig
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/main.c wmmaiload-2.2.1/wmmaiload-config/main.c
+--- wmmaiload-2.2.1.orig/wmmaiload-config/main.c	2005-07-13 22:51:28.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/main.c	2008-01-12 11:54:01.000000000 +0200
+@@ -3,6 +3,8 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include "config.h"
+ #include "defines.h"
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/mainwindow.c wmmaiload-2.2.1/wmmaiload-config/mainwindow.c
+--- wmmaiload-2.2.1.orig/wmmaiload-config/mainwindow.c	2005-07-13 22:51:52.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/mainwindow.c	2008-01-12 11:47:42.000000000 +0200
+@@ -10,9 +10,9 @@
+ #include "actions.h"
+ 
+ 
+-static GtkWidget *edit;
+-static GtkWidget *set;
+-static GtkWidget *remove;
++static GtkWidget *b_edit;
++static GtkWidget *b_set;
++static GtkWidget *b_remove;
+ 
+ static gint list_sel_cb (GtkCList *clist,
+                          gint row,
+@@ -21,9 +21,9 @@
+                          void *data)
+ {
+         selected_row = row;
+-        gtk_widget_set_sensitive(edit, TRUE);
+-        gtk_widget_set_sensitive(set, TRUE);
+-        gtk_widget_set_sensitive(remove, TRUE);
++        gtk_widget_set_sensitive(b_edit, TRUE);
++        gtk_widget_set_sensitive(b_set, TRUE);
++        gtk_widget_set_sensitive(b_remove, TRUE);
+         return TRUE;
+ }
+ 
+@@ -35,9 +35,9 @@
+                     void *data)
+ {
+         selected_row = -1;
+-        gtk_widget_set_sensitive(edit, FALSE);
+-        gtk_widget_set_sensitive(set, FALSE);
+-        gtk_widget_set_sensitive(remove, FALSE);
++        gtk_widget_set_sensitive(b_edit, FALSE);
++        gtk_widget_set_sensitive(b_set, FALSE);
++        gtk_widget_set_sensitive(b_remove, FALSE);
+         return TRUE;
+ }
+ 
+@@ -230,7 +230,7 @@
+         gtk_table_attach_defaults(GTK_TABLE(table), bouton, 0, 1, 0, 1);
+         gtk_widget_set_sensitive(bouton, FALSE);
+         gtk_widget_show(bouton);
+-        edit = bouton;
++        b_edit = bouton;
+ 
+         bouton = gtk_button_new_with_label(" Set default ");
+         gtk_signal_connect(GTK_OBJECT(bouton), "clicked",
+@@ -238,7 +238,7 @@
+         gtk_table_attach_defaults(GTK_TABLE(table), bouton, 1, 2, 0, 1);
+         gtk_widget_set_sensitive(bouton, FALSE);
+         gtk_widget_show(bouton);
+-        set = bouton;
++        b_set = bouton;
+ 
+         bouton = gtk_button_new_with_label(" Remove box ");
+         gtk_signal_connect(GTK_OBJECT(bouton), "clicked",
+@@ -246,7 +246,7 @@
+         gtk_table_attach_defaults(GTK_TABLE(table), bouton, 2, 3, 0, 1);
+         gtk_widget_set_sensitive(bouton, FALSE);
+         gtk_widget_show(bouton);
+-        remove = bouton;
++        b_remove = bouton;
+ 
+         /*--- Frame 5 ---*/
+         frame = gtk_frame_new(NULL);
+@@ -322,7 +322,6 @@
+         gtk_box_pack_start(GTK_BOX(buttons_hbox), bouton, TRUE, TRUE, 0);
+         GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+         gtk_widget_grab_default(GTK_WIDGET(bouton));
+-        gtk_widget_draw_default(GTK_WIDGET(bouton));
+         gtk_widget_show(bouton);
+ 
+         bouton = gtk_button_new_with_label(" Cancel ");
+diff -ur wmmaiload-2.2.1.orig/wmmaiload-config/popedit.c wmmaiload-2.2.1/wmmaiload-config/popedit.c
+--- wmmaiload-2.2.1.orig/wmmaiload-config/popedit.c	2005-07-07 21:54:17.000000000 +0300
++++ wmmaiload-2.2.1/wmmaiload-config/popedit.c	2008-01-12 11:47:42.000000000 +0200
+@@ -68,7 +68,6 @@
+                            bouton, TRUE, TRUE, 0);
+         GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+         gtk_widget_grab_default(GTK_WIDGET(bouton));
+-        gtk_widget_draw_default(GTK_WIDGET(bouton));
+         gtk_widget_show(bouton);
+ 
+         bouton = gtk_button_new_with_label("Cancel");

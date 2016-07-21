@@ -1,0 +1,31 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,10 +21,18 @@
+ 
+ AC_PROG_LIBTOOL
+ 
++PKG_PROG_PKG_CONFIG
++
+ dnl Checks for libraries.
+ 
+-AM_PATH_GLIB_2_0(2.0.0)
+-AM_PATH_GNET_2_0(2.0.4)
++PKG_CHECK_MODULES(GLIB, glib-2.0 > 2.0.0,[
++	LIBS="$LIBS $GLIB_LIBS"
++	CPPFLAGS="$CPPFLAGS $GLIB_CFLAGS"
++	], AC_MSG_ERROR[Could not find glib])
++PKG_CHECK_MODULES(GNET, gnet-2.0 > 2.0.4,[
++	LIBS="$LIBS $GNET_LIBS"
++	CPPFLAGS="$CPPFLAGS $GNET_CFLAGS"
++	], AC_MSG_ERROR[Could not find gnet])
+ 
+ dnl Checks for header files.
+ dnl AC_HEADER_STDC
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,3 @@
+-AM_CPPFLAGS = $(GNET_CFLAGS)
+-
+ lib_LTLIBRARIES		= libgsnmp.la
+ libgsnmp_la_SOURCES	= ber.c ber.h			\
+ 			  pdu.c pdu.h			\

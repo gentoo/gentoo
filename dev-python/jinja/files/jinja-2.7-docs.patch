@@ -1,0 +1,53 @@
+From da94a8b504d981cb5f877219811d169823a2095e Mon Sep 17 00:00:00 2001
+From: Armin Ronacher <armin.ronacher@active-4.com>
+Date: Mon, 20 May 2013 14:06:59 +0100
+Subject: [PATCH] Fixed docs not building
+
+---
+ docs/faq.rst       | 2 +-
+ docs/jinjaext.py   | 2 +-
+ docs/templates.rst | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/faq.rst b/docs/faq.rst
+index 4db5079..00a4d0d 100644
+--- a/docs/faq.rst
++++ b/docs/faq.rst
+@@ -157,7 +157,7 @@ Python 2.3 support you either have to use `Jinja 1`_ or other templating
+ engines that still support 2.3.
+ 
+ My Macros are overridden by something
+-------------------------------------
++-------------------------------------
+ 
+ In some situations the Jinja scoping appears arbitrary:
+ 
+diff --git a/docs/jinjaext.py b/docs/jinjaext.py
+index 8395a55..3c217f8 100644
+--- a/docs/jinjaext.py
++++ b/docs/jinjaext.py
+@@ -23,7 +23,7 @@
+ from pygments.token import Keyword, Name, Comment, String, Error, \
+      Number, Operator, Generic
+ from jinja2 import Environment, FileSystemLoader
+-from jinja2.utils import next
++from jinja2._compat import next
+ 
+ 
+ def parse_rst(state, content_offset, doc):
+diff --git a/docs/templates.rst b/docs/templates.rst
+index e0a19fa..4a6a379 100644
+--- a/docs/templates.rst
++++ b/docs/templates.rst
+@@ -579,7 +579,7 @@ Inside of a for-loop block you can access some special variables:
+ | `loop.depth`          | Indicates how deep in deep in a recursive loop    |
+ |                       | the rendering currently is.  Starts at level 1    |
+ +-----------------------+---------------------------------------------------+
+-| `loop.depth0          | Indicates how deep in deep in a recursive loop    |
++| `loop.depth0`         | Indicates how deep in deep in a recursive loop    |
+ |                       | the rendering currently is.  Starts at level 0    |
+ +-----------------------+---------------------------------------------------+
+ 
+-- 
+1.8.1.6
+

@@ -1,0 +1,13 @@
+diff --git a/examples/Makefile b/examples/Makefile
+index 8d7d433..11b9c8c 100644
+--- a/examples/Makefile
++++ b/examples/Makefile
+@@ -4,7 +4,7 @@ default:
+ 
+ include ../make.include
+ 
+-EXAMPLE_LIBS = ${DSDPLIB} ${LAPACKBLAS}
++EXAMPLE_LIBS = ${DSDPLIB} ${LAPACKBLAS} -lm
+ 
+ dsdp: exinfo clean
+ 	${MEX} -I${DSDPROOT}/include dsdp.c ${DSDPLIB}; 

@@ -1,0 +1,12 @@
+Index: ZynAddSubFX-2.4.1/CMakeLists.txt
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/CMakeLists.txt
++++ ZynAddSubFX-2.4.1/CMakeLists.txt
+@@ -5,7 +5,3 @@ project(zynaddsubfx)
+ enable_testing()
+ #Currently the only directory that uses cmake
+ add_subdirectory(src)
+-
+-install(FILES AUTHORS.txt COPYING FAQ.txt HISTORY.txt README.txt
+-	DESTINATION share/doc/zynaddsubfx
+-	)

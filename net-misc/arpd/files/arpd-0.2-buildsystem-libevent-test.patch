@@ -1,0 +1,11 @@
+--- configure.in.orig	2003-02-09 19:30:33.000000000 +0100
++++ configure.in	2010-09-17 00:33:36.138294836 +0200
+@@ -62,7 +62,7 @@
+      ;;
+   *)
+      AC_MSG_RESULT($withval)
+-     if test -f $withval/include/event.h -a -f $withval/lib/libevent.a; then
++     if test -f $withval/include/event.h -a -f $withval/lib/libevent.so; then
+         owd=`pwd`
+         if cd $withval; then withval=`pwd`; cd $owd; fi
+         EVENTINC="-I$withval/include"

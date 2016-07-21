@@ -1,0 +1,11 @@
+--- loki_patch/load_patch.c
++++ loki_patch/load_patch.c
+@@ -8,7 +8,7 @@
+ #include "load_patch.h"
+ #include "log_output.h"
+ 
+-#define BASE "patchdata"
++#define BASE "data"
+ 
+ 
+ int load_add_file(FILE *file, int *line_num, const char *dst, loki_patch *patch)

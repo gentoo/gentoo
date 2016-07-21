@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vmware@gentoo.org</email>
+		<name>Gentoo VMware Project</name>
+	</maintainer>
+	<longdescription>
+		The Open Virtual Machine Tools (open-vm-tools) are the open source
+		implementation of VMware Tools. They are a set of guest operating system
+		virtualization components that enhance performance and user experience
+		of virtual machines.
+	</longdescription>
+	<use>
+		<flag name="doc">Generate API documentation</flag>
+		<flag name="fuse">Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD</flag>
+		<flag name="grabbitmqproxy">Enable grabbitmqproxy</flag>
+		<flag name="pic">Force shared libraries to be built as PIC</flag>
+		<flag name="vgauth">Enable vgauth</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vmware/open-vm-tools</remote-id>
+		<remote-id type="sourceforge">open-vm-tools</remote-id>
+	</upstream>
+</pkgmetadata>

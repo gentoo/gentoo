@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Mini-SNMP Daemon"
+command="/usr/bin/bsnmpd"
+pidfile="/var/run/snmpd.pid"
+
+depend() {
+    use net
+}

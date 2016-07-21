@@ -1,0 +1,7 @@
+#Zero or more of the following may be given:
+#
+#    -p [address:]httpport
+#    -s [address:]httpsport
+#    -w webroot
+#
+#AXHTTPD_OPTS="-w /var/www/localhost/htdocs -p 8080 -s 4343"

@@ -1,0 +1,59 @@
+From: Christian Kujau <lists@nerdbynature.de>
+Subject: Document SFTP sitecopy functionality
+
+diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' 
+'--exclude=_darcs' '--exclude=.bzr' sitecopy~/doc/sitecopy.1 sitecopy/doc/sitecopy.1
+--- sitecopy~/doc/sitecopy.1	2011-01-03 00:03:07.596559823 +0100
++++ sitecopy/doc/sitecopy.1	2011-01-03 00:03:07.852560823 +0100
+@@ -16,7 +16,7 @@
+ files using an FTP client.  sitecopy will also optionally try to spot
+ files you move locally, and move them remotely.
+ 
+-FTP, WebDAV and other HTTP-based authoring servers (for instance,
++FTP, SFTP, WebDAV and other HTTP-based authoring servers (for instance,
+ AOLserver and Netscape Enterprise) are supported.
+ 
+ .SH GETTING STARTED
+@@ -229,6 +229,8 @@
+ .br
+   ftp       FTP driver
+ .br
++  sftp      SFTP driver
++.br
+   xml       XML parsing information
+ .br
+   xmlparse  Low-level XML parsing information
+@@ -297,7 +299,7 @@
+ .BR "url " "siteURL ]"
+ .br
+  [ 
+-.BR "protocol " "{ ftp | webdav } ]"
++.BR "protocol " "{ ftp | sftp | webdav } ]"
+ .br
+  [ 
+ .BR ftp " nopasv ]"
+@@ -353,12 +355,12 @@
+ to the default port for the protocol used, or that given by the
+ .B port
+ key.
+-sitecopy supports the WebDAV or FTP protocols - the 
++sitecopy supports the WebDAV or (S)FTP protocols - the 
+ .B protocol
+ key specifies which to use, taking the value of either
+ .B webdav
+ or 
+-.B ftp
++.B ftp/sftp
+ respectively. By default, FTP will be used.
+ 
+ The 
+@@ -769,7 +771,7 @@
+ be a useful resource for others.
+ 
+ .SH SEE ALSO
+-rsync(1), ftp(1), mirror(1)
++rsync(1), ftp(1), sftp(1), mirror(1)
+ 
+ .SH STANDARDS
+ 
+

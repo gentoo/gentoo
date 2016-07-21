@@ -1,0 +1,658 @@
+diff -rupN base/configure.ac mod/configure.ac
+--- base/configure.ac	2011-03-25 23:28:18.000000000 +0100
++++ mod/configure.ac	2013-03-21 16:25:07.218419985 +0100
+@@ -383,7 +383,7 @@ AC_CHECK_HEADERS(linux/input.h,[
+ dnl check if hiddev is available
+ AC_CHECK_HEADERS([linux/types.h])
+ AC_CHECK_HEADERS([linux/hiddev.h],[
+-  possible_drivers="${possible_drivers} (asusdh) (bw6130) (dvico) (macmini)"
++  possible_drivers="${possible_drivers} (asusdh) (bw6130) (dvico) (macmini) (zotac)"
+   AC_MSG_CHECKING(for HIDDEV_FLAG_UREF support)
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <linux/types.h>
+@@ -393,7 +393,7 @@ AC_CHECK_HEADERS([linux/hiddev.h],[
+     ]])],[
+     AC_MSG_RESULT(yes)
+     AC_DEFINE(HAVE_LINUX_HIDDEV_FLAG_UREF)
+-    possible_drivers="${possible_drivers} (samsung) (sb0540)"
++    possible_drivers="${possible_drivers} (samsung) (sb0540) (zotac)"
+     ],[
+     AC_MSG_RESULT(no)
+     ])
+@@ -446,7 +446,7 @@ AC_ARG_WITH(driver,
+                           srm7500libusb, tekram,
+                           tekram_bt829, tira, tira_raw, ttusbir,
+                           tuxbox, tvbox, udp, uirt2, uirt2_raw,
+-                          usb_uirt_raw, usbx, wpc8769l],
++                          usb_uirt_raw, usbx, wpc8769l, zotac],
+ driver=${withval},
+ driver="unset"
+ )
+@@ -464,6 +464,7 @@ portaudio_lib=""
+ alsa_lib=""
+ atilibusb_lib=""
+ atwf83_lib=""
++zotac_lib=""
+ awlibusb_lib=""
+ dfclibusb_lib=""
+ srm7500libusb_lib=""
+@@ -683,6 +684,10 @@ if test "$driver" = "userspace" -o "$dri
+ 	usbx)
+ 		hw_module="${hw_module} hw_usbx.o serial.o"
+ 		;;
++	zotac)
++		hw_module="${hw_module} hw_zotac.o"
++		zotac_lib=-lpthread
++		;;
+   esac
+   done
+   #remove duplicates
+@@ -733,6 +738,14 @@ if test "$driver" = "alsa_usb"; then
+   lircd_conf="creative/lircd.conf.alsa_usb"
+ fi
+ 
++if test "$driver" = "zotac"; then
++  lirc_driver="$driver"
++  hw_module="hw_zotac.o"
++  HW_DEFAULT="hw_zotac"
++  lircd_conf="zotac/lircd.conf.zotac"
++  zotac_lib=-lpthread
++fi
++
+ if test "$driver" = "animax"; then
+   lirc_driver="lirc_dev lirc_serial"
+   lircd_conf="animax/lircd.conf.animax"
+@@ -1499,6 +1512,7 @@ if test "$lirc_driver" = "none" || \
+ 	test "$lirc_driver" = "macmini" || \
+ 	test "$lirc_driver" = "samsung" || \
+ 	test "$lirc_driver" = "sb0540" || \
++	test "$lirc_driver" = "zotac" || \
+ 	test "$lirc_driver" = "srm7500libusb" || \
+ 	test "$lirc_driver" = "userspace"; then
+   lirc_driver=
+@@ -1669,7 +1683,7 @@ if ! echo ${hw_module}|grep " receive.o"
+ 	receive="receive.o"
+ fi
+ 
+-hw_module_libs="${alsa_lib} ${atilibusb_lib} ${awlibusb_lib} ${caraca_lib} ${commandir_lib} ${dfclibusb_lib} ${ftdi_lib} ${iguanaIR_lib} ${irman_lib} ${portaudio_lib} ${srm7500libusb_lib} ${atwf83_lib}"
++hw_module_libs="${alsa_lib} ${atilibusb_lib} ${awlibusb_lib} ${caraca_lib} ${commandir_lib} ${dfclibusb_lib} ${ftdi_lib} ${iguanaIR_lib} ${irman_lib} ${portaudio_lib} ${srm7500libusb_lib} ${atwf83_lib} ${zotac_lib}"
+ 
+ dnl tell the Makefiles what we decided
+ AC_SUBST(daemon)
+diff -rupN base/daemons/Makefile.am mod/daemons/Makefile.am
+--- base/daemons/Makefile.am	2011-03-25 23:28:18.000000000 +0100
++++ mod/daemons/Makefile.am	2013-03-21 16:25:40.488790784 +0100
+@@ -58,7 +58,8 @@ EXTRA_libhw_module_a_SOURCES = \
+ 			hw_usbx.c hw_usbx.h \
+ 			receive.c receive.h \
+ 			transmit.c transmit.h \
+-			serial.c serial.h
++			serial.c serial.h \
++			hw_zotac.c
+ 
+ libhw_module_a_LIBADD = @hw_module@
+ libhw_module_a_DEPENDENCIES = @hw_module@
+diff -rupN base/daemons/hw-types.c mod/daemons/hw-types.c
+--- base/daemons/hw-types.c	2011-03-25 23:28:18.000000000 +0100
++++ mod/daemons/hw-types.c	2013-03-21 16:26:38.913200218 +0100
+@@ -59,6 +59,7 @@ extern struct hardware hw_uirt2;
+ extern struct hardware hw_uirt2_raw;
+ extern struct hardware hw_usb_uirt_raw;
+ extern struct hardware hw_usbx;
++extern struct hardware hw_zotac;
+ 
+ #ifndef HW_DEFAULT
+ # define HW_DEFAULT hw_default
+@@ -160,6 +161,7 @@ struct hardware *hw_list[] = {
+ #ifdef HAVE_LINUX_HIDDEV_FLAG_UREF
+ 	&hw_samsung,
+ 	&hw_sb0540,
++	&hw_zotac,
+ #endif
+ 	&hw_silitek,
+ #ifdef HAVE_LIBUSB
+diff -rupN base/daemons/hw_zotac.c mod/daemons/hw_zotac.c
+--- base/daemons/hw_zotac.c	1970-01-01 01:00:00.000000000 +0100
++++ mod/daemons/hw_zotac.c	2013-03-21 16:31:06.989272556 +0100
+@@ -0,0 +1,429 @@
++/****************************************************************************
++ ** hw_zotac.c *************************************************************
++ ****************************************************************************
++ *
++ * Lirc driver for Zotac remote
++ *
++ * Copyright (C) 2010 Rainer Hochecker
++ *
++ * Distribute under GPL version 2 or later.
++ *
++ */
++
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
++#include <stdio.h>
++#include <pthread.h>
++#include <sys/fcntl.h>
++#include <signal.h>
++#include <linux/hiddev.h>
++#include <sys/ioctl.h>
++#include "hardware.h"
++#include "ir_remote.h"
++#include "lircd.h"
++
++enum {
++	RPT_NO = 0,
++	RPT_YES = 1,
++};
++
++static int zotac_init();
++static int zotac_deinit();
++static char *zotac_rec(struct ir_remote *remotes);
++static int zotac_decode(struct ir_remote *remote, ir_code * prep, ir_code * codep, ir_code * postp, int *repeat_flagp,
++			 lirc_t * min_remaining_gapp, lirc_t * max_remaining_gapp);
++static void *zotac_repeat();
++static int zotac_getcode();
++
++/** Max number of repetitions */
++static unsigned max_repeat_count = 500;
++/** Code that triggers key release */
++static unsigned release_code = 0x00000000;
++/** Code that triggers device remove  */
++static unsigned remove_code =0x00FFFFFF;
++/** Time to wait before first repetition */
++static unsigned repeat_time1_us = 500000;
++/** Time to wait between two repetitions */
++static unsigned repeat_time2_us = 100000;
++/** Pipe between main thread and repetition thread */
++static int fd_pipe[2] = { -1, -1 };
++
++/** Thread that simulates repetitions */
++static pthread_t repeat_thread;
++/** File descriptor for the real device */
++static int fd_hidraw;
++
++static int main_code_length = 32;
++static signed int main_code = 0;
++static struct timeval start, end, last;
++static int repeat_state = RPT_NO;
++static int error_state = 0;
++static int probe_code = 0;
++
++#ifdef HAVE_LINUX_HIDDEV_FLAG_UREF
++/* Zotac USB iR Receiver */
++struct hardware hw_zotac = {
++	"/dev/usb/hiddev0",		/* "device" */
++	-1,			/* fd (device) */
++	LIRC_CAN_REC_LIRCCODE,	/* features */
++	0,			/* send_mode */
++	LIRC_MODE_LIRCCODE,	/* rec_mode */
++	32,			/* code_length */
++	zotac_init,		/* init_func */
++	zotac_deinit,		/* deinit_func */
++	NULL,			/* send_func */
++	zotac_rec,		/* rec_func */
++	zotac_decode,		/* decode_func */
++	NULL,			/* ioctl_func */
++	NULL,			/* readdata */
++	"zotac"		/* name */
++};
++#endif
++
++static int zotac_decode(struct ir_remote *remote, ir_code * prep, ir_code * codep, ir_code * postp, int *repeat_flagp,
++		  lirc_t * min_remaining_gapp, lirc_t * max_remaining_gapp)
++{
++	LOGPRINTF(1, "zotac_decode");
++
++	if (!map_code(remote, prep, codep, postp, 0, 0, main_code_length, main_code, 0, 0)) {
++		return 0;
++	}
++
++	map_gap(remote, &start, &last, 0, repeat_flagp, min_remaining_gapp, max_remaining_gapp);
++	/* override repeat */
++	*repeat_flagp = repeat_state;
++
++	return 1;
++}
++
++static int zotac_getcode() {
++
++	ssize_t rd;
++	struct hiddev_usage_ref uref;
++	struct hiddev_report_info rinfo;
++	struct hiddev_field_info finfo;
++	int shift = 0;
++
++	rd = read(fd_hidraw, &uref, sizeof(uref));
++	if (rd < 0) {
++		logprintf(LOG_ERR, "error reading '%s'", hw.device);
++		logperror(LOG_ERR, NULL);
++		zotac_deinit();
++		error_state = 1;
++		return -1;
++	}
++
++	if (uref.field_index == HID_FIELD_INDEX_NONE) {
++		/*
++		 * we get this when the new report has been send from
++		 * device at this point we have the uref structure
++		 * prefilled with correct report type and id
++		 *
++		 */
++
++		switch (uref.report_id) {
++		case 1:	/* USB standard keyboard usage page */
++			{
++				/* This page reports cursor keys */
++				LOGPRINTF(3, "Keyboard (standard)\n");
++
++				/* check for special codes */
++				uref.field_index = 0;
++				uref.usage_index = 1;
++				/* fetch the usage code for given indexes */
++				ioctl(fd_hidraw, HIDIOCGUCODE, &uref, sizeof(uref));
++				/* fetch the value from report */
++				ioctl(fd_hidraw, HIDIOCGUSAGE, &uref, sizeof(uref));
++
++				if (uref.value)
++					shift = 1;
++
++				/* populate required field number */
++				uref.field_index = 1;
++				uref.usage_index = 0;
++				/* fetch the usage code for given indexes */
++				ioctl(fd_hidraw, HIDIOCGUCODE, &uref, sizeof(uref));
++				/* fetch the value from report */
++				ioctl(fd_hidraw, HIDIOCGUSAGE, &uref, sizeof(uref));
++				/* now we have the key */
++
++				LOGPRINTF(3, "usage: %x   value: %x   shift: %d\n",uref.usage_code, uref.value, shift);
++
++				/* now we have the key */
++				if (uref.value) {
++					probe_code = (uref.usage_code | uref.value);
++					if (shift)
++						probe_code |= 0x10000000;
++					LOGPRINTF(3, "Main code 1: %x\n", probe_code);
++					return 1;
++				}
++				else {
++					LOGPRINTF(3, "rel button\n");
++					probe_code = release_code;
++					return 2;
++				}
++			}
++			break;
++
++		case 2:
++		case 3:	/* USB generic desktop usage page */
++		case 4:
++			{
++				/* This page reports power key
++				 * (via SystemControl SLEEP)
++				 */
++				LOGPRINTF(3, "Generic desktop (standard)\n");
++
++
++				/* traverse report descriptor */
++				rinfo.report_type = HID_REPORT_TYPE_INPUT;
++				rinfo.report_id = HID_REPORT_ID_FIRST;
++				rd = ioctl(fd_hidraw, HIDIOCGREPORTINFO, &rinfo);
++
++				unsigned int i,j;
++				while (rd >= 0) {
++					for (i = 0; i < rinfo.num_fields; i++) {
++						finfo.report_type = rinfo.report_type;
++				        finfo.report_id = rinfo.report_id;
++				        finfo.field_index = i;
++				        ioctl(fd_hidraw, HIDIOCGFIELDINFO, &finfo);
++				        for (j = 0; j < finfo.maxusage; j++) {
++				        	uref.field_index = i;
++				            uref.usage_index = j;
++				            ioctl(fd_hidraw, HIDIOCGUCODE, &uref);
++				            ioctl(fd_hidraw, HIDIOCGUSAGE, &uref);
++
++				            if (uref.value != 0) {
++				            	LOGPRINTF(3, "field: %d, idx: %d, usage: %x   value: %x\n",i, j, uref.usage_code, uref.value);
++				            	probe_code = uref.usage_code;
++				            	return 1;
++				            }
++				        }
++					}
++					rinfo.report_id |= HID_REPORT_ID_NEXT;
++				 	rd = ioctl(fd_hidraw, HIDIOCGREPORTINFO, &rinfo);
++				}
++				return 2;
++			}
++			break;
++		default:
++			/* Unknown/unsupported report id.
++			 * Should not happen because remaining reports
++			 * from report descriptor seem to be unused by remote.
++			 */
++			logprintf(LOG_ERR, "Unexpected report id %d", uref.report_id);
++			break;
++		}
++	}
++	else {
++			/* This page reports power key
++			 * (via SystemControl SLEEP)
++			 */
++			LOGPRINTF(3, "Same Event ...\n");
++
++			/* traverse report descriptor */
++			rinfo.report_type = HID_REPORT_TYPE_INPUT;
++			rinfo.report_id = HID_REPORT_ID_FIRST;
++			rd = ioctl(fd_hidraw, HIDIOCGREPORTINFO, &rinfo);
++
++			unsigned int i,j;
++			while (rd >= 0) {
++				for (i = 0; i < rinfo.num_fields; i++) {
++					finfo.report_type = rinfo.report_type;
++				    finfo.report_id = rinfo.report_id;
++				    finfo.field_index = i;
++				    ioctl(fd_hidraw, HIDIOCGFIELDINFO, &finfo);
++				    for (j = 0; j < finfo.maxusage; j++) {
++				       	uref.field_index = i;
++				        uref.usage_index = j;
++				        ioctl(fd_hidraw, HIDIOCGUCODE, &uref);
++				        ioctl(fd_hidraw, HIDIOCGUSAGE, &uref);
++
++				        if (uref.value != 0) {
++				         	LOGPRINTF(3, "usage: %x   value: %x\n",uref.usage_code, uref.value);
++				          	//probe_code = uref.usage_code;
++				          	return 0;
++						}
++					}
++				}
++				rinfo.report_id |= HID_REPORT_ID_NEXT;
++			 	rd = ioctl(fd_hidraw, HIDIOCGREPORTINFO, &rinfo);
++			}
++			return 2;
++	}
++	return 0;
++}
++
++static int zotac_init()
++{
++	logprintf(LOG_INFO, "zotac initializing '%s'", hw.device);
++	if ((fd_hidraw = open(hw.device, O_RDONLY)) < 0) {
++		logprintf(LOG_ERR, "unable to open '%s'", hw.device);
++		return 0;
++	}
++	int flags = HIDDEV_FLAG_UREF | HIDDEV_FLAG_REPORT;
++	if (ioctl(fd_hidraw, HIDIOCSFLAG, &flags)) {
++		return 0;
++	}
++	hw.fd = fd_hidraw;
++
++	/* Create pipe so that events sent by the repeat thread will
++	   trigger main thread */
++	if (pipe(fd_pipe) != 0) {
++		logperror(LOG_ERR, "couldn't open pipe");
++		close(fd_hidraw);
++		return 0;
++	}
++	hw.fd = fd_pipe[0];
++	/* Create thread to simulate repetitions */
++	if (pthread_create(&repeat_thread, NULL, zotac_repeat, NULL)) {
++		logprintf(LOG_ERR, "Could not create \"repeat thread\"");
++		return 0;
++	}
++	return 1;
++}
++
++static int zotac_deinit()
++{
++	pthread_cancel(repeat_thread);
++	if (fd_hidraw != -1) {
++		// Close device if it is open
++		logprintf(LOG_INFO, "closing '%s'", hw.device);
++		close(fd_hidraw);
++		fd_hidraw = -1;
++	}
++	// Close pipe input
++	if (fd_pipe[1] >= 0) {
++		close(fd_pipe[1]);
++		fd_pipe[1] = -1;
++	}
++	// Close pipe output
++	if (fd_pipe[0] >= 0) {
++		close(fd_pipe[0]);
++		fd_pipe[0] = -1;
++	}
++	hw.fd = -1;
++	return 1;
++}
++
++/**
++ *	Runtime that reads device, forwards codes to main thread
++ *	and simulates repetitions.
++ */
++static void *zotac_repeat()
++{
++	int repeat_count = 0;
++	unsigned current_code;
++	int ret;
++	int sel;
++	fd_set files;
++	struct timeval delay;
++	int pressed = 0;
++	int fd = fd_pipe[1];
++
++	while (1) {
++		// Initialize set to monitor device's events
++		FD_ZERO(&files);
++		FD_SET(fd_hidraw, &files);
++		if (pressed) {
++			sel = select(FD_SETSIZE, &files, NULL, NULL, &delay);
++		} else {
++			sel = select(FD_SETSIZE, &files, NULL, NULL, NULL);
++		}
++
++		switch (sel) {
++		case 1:
++			// Data ready in device's file
++			ret = zotac_getcode();
++
++			if (ret < 0) {
++				// Error
++				logprintf(LOG_ERR, "(%s) Could not read %s", __FUNCTION__, hw.device);
++				goto exit_loop;
++			}
++			if (ret == 1) {
++				// Key code : forward it to main thread
++				pressed = 1;
++				repeat_count = 0;
++				delay.tv_sec = 0;
++				delay.tv_usec = repeat_time1_us;
++				current_code = probe_code;
++			} else if (ret == 2) {
++				// Release code : stop repetitions
++				pressed = 0;
++				current_code = release_code;
++			} else if (ret == 0) {
++				continue;
++			}
++			break;
++		case 0:
++			repeat_count++;
++			if (repeat_count >= max_repeat_count) {
++				// Too many repetitions, something must have gone wrong
++				logprintf(LOG_ERR,"(%s) too many repetitions", __FUNCTION__);
++				goto exit_loop;
++			}
++			// Timeout : send current_code again to main
++			//           thread to simulate repetition
++			delay.tv_sec = 0;
++			delay.tv_usec = repeat_time2_us;
++			break;
++		default:
++			// Error
++			logprintf(LOG_ERR, "(%s) select() failed", __FUNCTION__);
++			goto exit_loop;
++		}
++		// Send code to main thread through pipe
++		write(fd, &current_code, sizeof(current_code));
++	}
++exit_loop:
++
++	// Wake up main thread with special key code
++	current_code = remove_code;
++	write(fd, &current_code, sizeof(current_code));
++	return NULL;
++}
++
++/*
++*  Aureal Technology ATWF@83 cheap remote
++*  specific code.
++*/
++
++static char *zotac_rec(struct ir_remote *remotes)
++{
++	unsigned ev;
++	int rd;
++	last = end;
++	gettimeofday(&start, NULL);
++	rd = read(hw.fd, &ev, sizeof(ev));
++
++	if (rd == -1) {
++		// Error
++		logprintf(LOG_ERR, "(%s) could not read pipe", __FUNCTION__);
++		zotac_deinit();
++		return 0;
++	}
++
++	if (ev == release_code) {
++		// Release code
++		main_code = 0;
++		return 0;
++	} else if (ev == remove_code) {
++		// Device has been removed
++		zotac_deinit();
++		return 0;
++	}
++
++	LOGPRINTF(1, "zotac : %x", ev);
++	// Record the code and check for repetition
++	if (main_code == ev) {
++		repeat_state = RPT_YES;
++	} else {
++		main_code = ev;
++		repeat_state = RPT_NO;
++	}
++	gettimeofday(&end, NULL);
++	return decode_all(remotes);
++}
+diff -rupN base/remotes/zotac/lircd.conf.zotac mod/remotes/zotac/lircd.conf.zotac
+--- base/remotes/zotac/lircd.conf.zotac	1970-01-01 01:00:00.000000000 +0100
++++ mod/remotes/zotac/lircd.conf.zotac	2013-03-21 16:31:31.343367869 +0100
+@@ -0,0 +1,77 @@
++
++# Please make this file available to others
++# by sending it to <lirc@bartelmus.de>
++#
++# this config file was automatically generated
++# using lirc-0.9.1-git(zotac) on Mon Apr  2 14:10:29 2012
++#
++# contributed by 
++#
++# brand:                       zotac.conf
++# model no. of remote control: 
++# devices being controlled by this remote:
++#
++
++begin remote
++
++  name  zotac.conf
++  bits           32
++  eps            30
++  aeps          100
++
++  one             0     0
++  zero            0     0
++  gap          100123
++  min_repeat      9
++#  suppress_repeat 9
++#  uncomment to suppress unwanted repeats
++#  toggle_bit_mask 0x7004F
++
++      begin codes
++          KEY_SLEEP                0x00010082
++          KEY_WAKEUP               0x00010083
++          KEY_RECORD               0x000C00B2
++          KEY_PAUSE                0x000C00B1
++          KEY_STOP                 0x000C00B7
++          KEY_REWIND               0x000C00B4
++          KEY_PLAY                 0x000C00B0
++          KEY_FORWARD              0x000C00B3
++          KEY_LEFTSHIFT            0x000C00B6
++          KEY_RIGHTSHIFT           0x000C00B5
++          KEY_BACK                 0x000C0224
++          KEY_INFO                 0x000C0209
++          KEY_MENU                 0xFFBC000D
++          KEY_UP                   0x00070052
++          KEY_LEFT                 0x00070050
++          KEY_RIGHT                0x0007004F
++          KEY_DOWN                 0x00070051
++          KEY_OK                   0x00070028
++          KEY_VOLUMEUP             0x000C00E9
++          KEY_VOLUMEDOWN           0x000C00EA
++          KEY_MUTE                 0x000C00E2
++          KEY_CHANNELUP            0x000C009C
++          KEY_CHANNELDOWN          0x000C009D
++          KEY_1                    0x0007001E
++          KEY_2                    0x0007001F
++          KEY_3                    0x00070020
++          KEY_4                    0x00070021
++          KEY_5                    0x00070022
++          KEY_6                    0x00070023
++          KEY_7                    0x00070024
++          KEY_8                    0x00070025
++          KEY_9                    0x00070026
++          KEY_0                    0x00070027
++          KEY_NUMERIC_STAR         0x10070025
++          KEY_NUMERIC_POUND        0x10070020
++          KEY_CLEAR                0x00070029
++          KEY_TEXT                 0xFFBC005A
++          KEY_TITLE                0x000C008D
++          KEY_ENTER                0x00070028
++          KEY_RED                  0xFFBC005B
++          KEY_GREEN                0xFFBC005C
++          KEY_YELLOW               0xFFBC005D
++          KEY_BLUE                 0xFFBC005E
++      end codes
++
++end remote
++
+diff -rupN base/setup.data mod/setup.data
+--- base/setup.data	2011-03-25 23:28:18.000000000 +0100
++++ mod/setup.data	2013-03-21 16:28:11.433935463 +0100
+@@ -146,6 +146,7 @@ hw_menu_entry: @hw-usb
+ 	usb_uirt_raw: "USB-UIRT"
+ 	mplay: "VLSystem MPlay Blast"
+ 	mplay: "VLSystem MPlay Mini"
++	zotac: "Zotac USB IR Receiver"
+ 
+ param_type: \
+ 	act200l \
+@@ -260,7 +261,8 @@ param_type: \
+ 	ttusbir \
+ 	tvbox \
+ 	udp \
+-	wpc8769l
++	wpc8769l \
++	zotac
+ 	none:
+ 
+ default_param: \
+@@ -331,7 +333,8 @@ default_param: \
+ 	ttusbir \
+ 	tvbox \
+ 	udp \
+-	wpc8769l
++	wpc8769l \
++	zotac
+ 	none:
+ 
+ default_param: \

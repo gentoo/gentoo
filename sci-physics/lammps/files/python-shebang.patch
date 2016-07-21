@@ -1,0 +1,7 @@
+--- lammps-25Mar15/python/lammps.py	2015-03-13 16:06:20.000000000 -0600
++++ lammps-25Mar15-new/python/lammps.py	2015-04-10 15:31:14.000000000 -0600
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python
+ # ----------------------------------------------------------------------
+ #   LAMMPS - Large-scale Atomic/Molecular Massively Parallel Simulator
+ #   http://lammps.sandia.gov, Sandia National Laboratories

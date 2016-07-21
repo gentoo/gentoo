@@ -1,0 +1,42 @@
+From f2c465ffa508459216f7093bf95ba001ad994206 Mon Sep 17 00:00:00 2001
+From: vslashg <veloso@verylowsodium.com>
+Date: Mon, 29 Feb 2016 13:33:35 -0500
+Subject: [PATCH] Fix auto-pointer registration in Boost Python 1.60.
+
+The conditional instantiation magic of maybe_register_pointer_to_python() assumes that use_value_holder and use_back_reference will be one of the boost::mpl::bool_ types, but this assumption is no longer true in Boost 1.60, where they can be standard library bool wrappers instead.
+
+Explicitly defining these types as mpl::bool_ classes fixes https://github.com/boostorg/python/issues/56.
+---
+ boost/python/object/class_metadata.hpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/boost/python/object/class_metadata.hpp b/boost/python/object/class_metadata.hpp
+index c71cf67..5009c17 100644
+--- a/boost/python/object/class_metadata.hpp
++++ b/boost/python/object/class_metadata.hpp
+@@ -164,7 +164,7 @@ struct class_metadata
+     >::type held_type;
+ 
+     // Determine if the object will be held by value
+-    typedef is_convertible<held_type*,T*> use_value_holder;
++    typedef mpl::bool_<is_convertible<held_type*,T*>::value> use_value_holder;
+     
+     // Compute the "wrapped type", that is, if held_type is a smart
+     // pointer, we're talking about the pointee.
+@@ -175,10 +175,12 @@ struct class_metadata
+     >::type wrapped;
+ 
+     // Determine whether to use a "back-reference holder"
+-    typedef mpl::or_<
+-        has_back_reference<T>
+-      , is_same<held_type_arg,T>
+-      , is_base_and_derived<T,wrapped>
++    typedef mpl::bool_<
++        mpl::or_<
++            has_back_reference<T>
++          , is_same<held_type_arg,T>
++          , is_base_and_derived<T,wrapped>
++        >::value
+     > use_back_reference;
+ 
+     // Select the holder.

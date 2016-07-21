@@ -1,0 +1,26 @@
+--- Makefile.unix.orig	2005-04-30 18:29:00.000000000 +0000
++++ Makefile.unix	2008-10-12 17:18:21.000000000 +0000
+@@ -9,10 +9,10 @@
+ CC = gcc
+ 
+ # you may need -L/usr/pkg/lib for older NetBSD versions
+-CFLAGS = -Wall -g -O2 -c -pthread -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
++CFLAGS += -Wall -g -c -pthread -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
+ COUT = -o 
+ LN = gcc
+-LDFLAGS = -Wall -O2 -pthread
++LDFLAGS += -Wall -pthread
+ # -lpthreads may be reuqired on some platforms instead of -pthreads
+ LIBS =
+ LNOUT = -o 
+--- src/stringtable.c.orig	2008-01-09 21:14:46.000000000 +0000
++++ src/stringtable.c	2008-10-12 17:19:19.000000000 +0000
+@@ -23,7 +23,7 @@
+ /* 19 */	NULL,
+ #ifndef TPROXY_CONF
+ #ifndef _WIN32
+-/* 20 */	(unsigned char *)"/usr/local/etc/3proxy.cfg",
++/* 20 */	(unsigned char *)"/etc/3proxy.cfg",
+ #else
+ /* 20 */	(unsigned char *)"3proxy.cfg",
+ #endif

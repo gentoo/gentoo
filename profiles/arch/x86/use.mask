@@ -1,0 +1,217 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Id$
+
+# Unmask the flag which corresponds to ARCH.
+-x86
+
+# 2015/11/13 - Daniel Kuehn <lejonet@gentoo.org>
+# Unmask sssd USE-flag as it is tested on this arch in regards to bugs
+# 540540 and 525674
+-sssd
+
+# cilk has been ported to this arch.
+-cilk
+
+# Mike Gilbert <floppym@gentoo.org (19 Oct 2014)
+# sys-libs/libapparmor
+-apparmor
+
+# Alexey Shvetsov <alexxy@gentoo.org> (08 Apr 2014)
+# Cuda works here
+-cuda
+
+# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# PyPy is keyworded on this arch.
+-python_targets_pypy
+-python_single_target_pypy
+-python_targets_pypy3
+-python_single_target_pypy3
+
+# Michał Górny <mgorny@gentoo.org> (4 May 2013)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# keyworded on x86
+-clisp
+-clozurecl
+-cmucl
+-ecls
+-gcl
+-sbcl
+
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Unmask the flag corresponding to the only ABI. This allows x86 binary
+# packages to have uniform dependencies for amd64-multilib & x86.
+-abi_x86_32
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Dec 2012)
+# Orc optimisations work fine on amd64 and x86
+-orc
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# IPMI is only implemented for x86, amd64 and ia64
+-ipmi
+
+# Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
+# Keyworded on x86
+-python_targets_jython2_7
+-python_single_target_jython2_7
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (05. Mar 2012)
+# Unmask, works with v4l2, #350211
+-dxr3
+
+# Samuli Suominen <ssuominen@gentoo.org> (28 Feb 2012)
+# Unmasking vidix for x86 which is masked in base/use.mask for others
+-vidix
+
+# Justin Lecher <jlec@gentoo.org> (04 Feb 2012)
+# Unmask because deps are keyworded
+-zeitgeist
+
+# This file masks out USE flags that are simply NOT allowed in the default
+# x86 profile.  This works, for example, if another architecture's
+# profile have a USE flag associated with (such as altivec, mmx, etc).
+
+# 2011/12/22 - Alexis Ballier <aballier@gentoo.org>
+# Unmask vdpau as its supported here
+-vdpau
+
+# 2011/07/01 - Alexey Shvetsov <alexxy@gentoo.org>
+# Infiniband stuff works on x86
+-infiniband
+
+# 2010/07/27 - Matti Bickel <mabi@gentoo.org>
+# app-text/fdf is only supported on x86
+-fdftk
+
+# 2010/02/14 - Samuli Suominen <ssuominen@gentoo.org>
+# Unmask amd64/x86 only SANE_BACKENDS
+-sane_backends_canon_pp
+-sane_backends_hpsj5s
+-sane_backends_mustek_pp
+-sane_backends_qcam
+
+# 2010/05/03 - Alex Legler <a3li@gentoo.org>
+# Add support for Ruby Enterprise Edition targets where rubyee is available
+# -ruby_targets_ree18
+
+# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
+# Add support for JRuby targets where jruby is available
+#-ruby_targets_jruby
+
+# pbbuttonsd and macbook for KDE and pbuttonsd it
+#-pbbuttonsd
+-macbook
+
+# Unmask x86 instruction sets
+-3dnow
+-3dnowext
+-lilo
+-mmx
+-mmxext
+-mpx
+-sse
+-sse2
+-sse3
+-sse4
+-sse4_1
+-sse4_2
+-sse4a
+-ssse3
+-avx
+-avx128fma
+-avx2
+-avx256
+-fma3
+-fma4
+-xop
+-svga
+-kqemu
+-nvram
+-cpu_flags_x86_3dnow
+-cpu_flags_x86_3dnowext
+-cpu_flags_x86_aes
+-cpu_flags_x86_avx
+-cpu_flags_x86_avx2
+-cpu_flags_x86_fma3
+-cpu_flags_x86_fma4
+-cpu_flags_x86_mmx
+-cpu_flags_x86_mmxext
+-cpu_flags_x86_padlock
+-cpu_flags_x86_popcnt
+-cpu_flags_x86_sse
+-cpu_flags_x86_sse2
+-cpu_flags_x86_sse3
+-cpu_flags_x86_sse4_1
+-cpu_flags_x86_sse4_2
+-cpu_flags_x86_sse4a
+-cpu_flags_x86_ssse3
+-cpu_flags_x86_xop
+
+# Unmask nvidia XvMC support
+-nvidia
+
+# Unmask dev-db/oracle-instantclient-basic support
+-oci8-instant-client
+-oracle
+
+# Unmask osp, used by asterisk; bug 115798
+-osp
+
+# Unmask yellownet, used by aqbanking (bug 149970)
+-yellownet
+
+# Modular X: unmask for architectures on which they are available
+-input_devices_synaptics
+-input_devices_virtualbox
+-input_devices_vmmouse
+-input_devices_wacom
+-video_cards_nvidia
+-video_cards_fglrx
+-video_cards_vmware
+-video_cards_geode
+-video_cards_via
+-video_cards_virtualbox
+-video_cards_xgi
+-video_cards_qxl
+
+# Modular X: mask for architectures on which they aren't available
+video_cards_newport
+
+#codec support
+-x264
+
+# lvm2 cluster
+-gulm
+
+# psyco works on x86
+-psyco
+
+# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
+# Unmask the flags for PHP that are available only on x86
+-frontbase
+# Shared with amd64
+-oci8
+
+# Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
+# Unmask as it works on x86
+-lcd_devices_svga
+-lcd_devices_luise
+
+# George Shapovalov <george@gentoo.org> (8 Apr 2007)
+# supported on x86
+-ada
+
+# tcc is x86 only
+-tcc
+
+# 64bit Windows doesn't work on 32bit systems
+win64
+
+# fdk-aac is already keyworded here
+-fdk
+
+

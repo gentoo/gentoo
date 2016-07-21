@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Smart Common Input Method (SCIM) input pad is a tool used to
+		input special characters, in an easy way. You select the text
+		zone you wish to write in, and just click on the wanted character
+		in the right multilevel tabbed table, from the SCIM Input Pad
+		interface. By default, there is special characters from Japanese
+		(including kana), Chinese, Korean, Latin, braille, mathematics
+		and a lot of other miscellaneous symbols such as arrows, box
+		elements, etc. You may also add new characters (see
+		documentation).
+	</longdescription>
+	<longdescription lang="fr">
+		L'outils SCIM (Smart Common Input Method, "méthode commune et
+		intelligente de saisie de caractères", en français) Input Pad
+		("tableau d'entrée de caractère", en français), est utilisé pour
+		saisir divers symboles de façon simple. Vous n'avez qu'à
+		sélectionner la zone de texte dans laquelle vous souhaitez
+		écrire, et à cliquer sur le caractère désiré, dans le tableau à
+		onglets multi-niveaux, de l'interface de SCIM Input Pad. Par
+		défaut, sont disponibles des caractères spéciaux provenant du
+		japonais (kana y compris), du chinois, du coréen, du latin, du
+		braille, des mathématiques, et beaucoup d'autres symboles divers
+		comme des flèches, des éléments de boîtes, etc. Vous pouvez
+		également rajouter de nouveaux caractères (cf. documentation).
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">scim</remote-id>
+	</upstream>
+</pkgmetadata>

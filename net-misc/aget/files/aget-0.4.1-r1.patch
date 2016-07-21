@@ -1,0 +1,88 @@
+
+Subsequent snprintf calls treat the buffer as having size GETREQSIZ, so
+drop the subtraction. Fix for http://bugs.gentoo.org/337874 by Kevin Pyle 
+
+--- aget-0.4.1/Aget.c
++++ aget-0.4.1/Aget.c
+@@ -86,7 +86,7 @@
+ 	}
+ 
+ 	/* Get the starting time, prepare GET format string, and start the threads */
+-	fmt = (char *)calloc(GETREQSIZ - 2, sizeof(char));
++	fmt = (char *)calloc(GETREQSIZ, sizeof(char));
+ 	time(&t_start);
+ 	for (i = 0; i < nthreads; i++) {
+ 		soffset = calc_offset(req->clength, i, nthreads);
+@@ -139,7 +139,7 @@
+ 
+ 	nthreads = h->nthreads;
+ 
+-	fmt = (char *)calloc(GETREQSIZ - 2, sizeof(char));
++	fmt = (char *)calloc(GETREQSIZ, sizeof(char));
+ 
+ 	wthread = (struct thread_data *)malloc(nthreads * sizeof(struct thread_data));
+ 	memcpy(req, &h->req, sizeof(struct request));
+
+Fix useless memset that set 0 bytes to the value of GETRECVSIZ, rather
+than setting GETRECVSIZ bytes to the value of 0. By Kevin Pyle.
+
+--- aget-0.4.1/Download.c
++++ aget-0.4.1/Download.c
+@@ -107,7 +107,7 @@
+ 	pthread_mutex_unlock(&bwritten_mutex);
+ 
+ 	while (td->offset < foffset) {
+-		memset(rbuf, GETRECVSIZ, 0);
++		memset(rbuf, 0, GETRECVSIZ);
+ 		dr = recv(sd, rbuf, GETRECVSIZ, 0);
+ 		if ((td->offset + dr) > foffset)
+ 			dw = pwrite(td->fd, rbuf, foffset - td->offset, td->offset);
+--- aget-0.4.1/Head.c	2010-09-20 03:41:27.236019179 +0200
++++ aget-0.4.1/Head.c	2010-09-20 03:43:00.087098655 +0200
+@@ -1,5 +1,4 @@
+ #ifndef SOLARIS
+-#define _XOPEN_SOURCE 500
+ #endif
+ 
+ 
+--- aget-0.4.1/Misc.c
++++ aget-0.4.1/Misc.c
+@@ -129,7 +129,7 @@
+ 	fprintf(stderr, "\t\t-h this screen\n");
+ 	fprintf(stderr, "\t\t-v version info\n");
+ 	fprintf(stderr, "\n");
+-	fprintf(stderr, "http//www.enderunix.org/aget/\n");
++	fprintf(stderr, "http://www.enderunix.org/aget/\n");
+ }
+ 
+ /* reverse a given string	*/
+--- aget-0.4.1/Makefile
++++ aget-0.4.1/Makefile
+@@ -2,20 +2,21 @@
+ # http://www.enderunix.org/aget/
+ 
+ OBJS = main.o Aget.o Misc.o Head.o Signal.o Download.o Resume.o
+-CFLAGS = -g -W
+-LDFLAGS = -pthread
++CFLAGS += 
++LDFLAGS += -pthread
+ CC = gcc
+ STRIP = strip
+ 
+-all: $(OBJS)
+-	$(CC) -o aget $(OBJS) $(LDFLAGS)
++all: aget
++aget: $(OBJS)
++	$(LINK.o) $^ $(OUTPUT_OPTION)
+ 
+ strip: $(all)
+ 	$(STRIP) aget
+ 	
+ install:
+-	cp -f aget /usr/local/bin/aget
+-	cp -f aget.1 /usr/share/man/man1/
++	install -m 0755 -D aget $(DESTDIR)/usr/bin/aget
++	install -m 0644 -D aget.1 $(DESTDIR)/usr/share/man/man1/aget.1
+ 
+ clean: 
+ 	rm -f aget *.o core.* *~

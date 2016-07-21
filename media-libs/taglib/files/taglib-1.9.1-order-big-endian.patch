@@ -1,0 +1,33 @@
+From db3e961d1098d5efe57364f540f68a5996dc83c2 Mon Sep 17 00:00:00 2001
+From: Tsuda Kageyu <tsuda.kageyu@gmail.com>
+Date: Tue, 13 May 2014 18:22:16 +0900
+Subject: [PATCH] Fixed a wrong byte order handling on big-endian machines.
+
+---
+ taglib/toolkit/tstring.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/taglib/toolkit/tstring.cpp b/taglib/toolkit/tstring.cpp
+index 603455a..1ec083b 100644
+--- a/taglib/toolkit/tstring.cpp
++++ b/taglib/toolkit/tstring.cpp
+@@ -47,10 +47,14 @@
+ 
+ namespace 
+ {
+-
+   inline unsigned short combine(unsigned char c1, unsigned char c2)
+   {
+-    return (c1 << 8) | c2;
++    using namespace TagLib::Utils;
++
++    if(SystemByteOrder == LittleEndian)
++      return (c1 << 8) | c2;
++    else
++      return (c2 << 8) | c1;
+   }
+ 
+   void UTF16toUTF8(const wchar_t *src, size_t srcLength, char *dst, size_t dstLength)
+-- 
+1.9.0
+

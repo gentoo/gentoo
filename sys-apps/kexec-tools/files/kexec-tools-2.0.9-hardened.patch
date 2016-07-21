@@ -1,0 +1,16 @@
+the purgatory subdir gets loaded into the kernel so we need to
+make sure it does not get built with compiler settings like the
+rest of the userland tools.  that means no PIC/PIE/SSP/etc...
+
+--- a/purgatory/Makefile
++++ b/purgatory/Makefile
+@@ -47,7 +47,8 @@ purgatory/sha256.o: $(srcdir)/util_lib/sha256.c
+ $(PURGATORY): CC=$(TARGET_CC)
+ $(PURGATORY): CFLAGS+=$(PURGATORY_EXTRA_CFLAGS) \
+ 		      $($(ARCH)_PURGATORY_EXTRA_CFLAGS) \
+-		      -Os -fno-builtin -ffreestanding
++		      -Os -fno-builtin -ffreestanding \
++		      -fno-PIC -fno-PIE -fno-stack-protector
+ 
+ $(PURGATORY): CPPFLAGS=$($(ARCH)_PURGATORY_EXTRA_CFLAGS) \
+ 			-I$(srcdir)/purgatory/include \

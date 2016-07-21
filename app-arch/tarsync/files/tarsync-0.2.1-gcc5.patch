@@ -1,0 +1,59 @@
+diff --git a/excludes.c b/excludes.c
+index b7c928d..fa43cef 100644
+--- a/excludes.c
++++ b/excludes.c
+@@ -106,7 +106,7 @@ build_exclude(fnm_exclude **ex_ptr, const char *pattern)
+ }
+ 
+ 
+-inline int
++int
+ match_excludes(const char *dir, const char *file, fnm_exclude **excludes)
+ {
+ 	char *p;
+diff --git a/main.c b/main.c
+index 84feed4..2c2da3e 100644
+--- a/main.c
++++ b/main.c
+@@ -42,8 +42,8 @@ int remove_node(const char *path, struct stat *st);
+ int ensure_files_layout(const tar_entry **ttar, const unsigned int ttar_count, tar_entry ***missing, 
+ 	unsigned int *missing_count, tar_entry ***existing, unsigned int *existing_count,
+ 	fnm_exclude **excludes);
+-inline int check_existing_node(const struct dirent *de, const tar_entry *t, struct stat *st);
+-inline int enforce_owner(const char *path, const tar_entry *t, struct stat *st);
++int check_existing_node(const struct dirent *de, const tar_entry *t, struct stat *st);
++int enforce_owner(const char *path, const tar_entry *t, struct stat *st);
+ int copy_whole_file(cfile *tar_cfh, const tar_entry *ttent);
+ 
+ static int check_mtime = 1;
+@@ -669,7 +669,7 @@ recursively_delete_dir(const char *path)
+ 	return ret;
+ }
+ 
+-inline int
++int
+ check_existing_node(const struct dirent *de, const tar_entry *t, struct stat *st)
+ {
+ 	int type;
+@@ -685,7 +685,7 @@ check_existing_node(const struct dirent *de, const tar_entry *t, struct stat *st
+ 	return 0;
+ }
+ 
+-inline int
++int
+ enforce_owner(const char *path, const tar_entry *t, struct stat *st)
+ {
+ 	struct stat st2;
+diff --git a/tar.c b/tar.c
+index 792ccd4..42dc8e7 100644
+--- a/tar.c
++++ b/tar.c
+@@ -40,7 +40,7 @@ int check_str_chksum(const char *block)
+ 
+ /* possibly this could be done different, what of endptr of strtol?
+    Frankly I worry about strtol trying to go too far and causing a segfault, due to tar fields not always having trailing \0 */
+-inline unsigned long octal_str2long(const char *string, unsigned int length)
++unsigned long octal_str2long(const char *string, unsigned int length)
+ {
+ 	if(string[length]) {
+ 		char *ptr = strndup(string, length);

@@ -1,0 +1,8 @@
+/var/log/ttrssd.log {
+	daily
+	missingok
+	notifempty
+	postrotate
+		/etc/init.d/ttrssd restart > /dev/null
+	endscript
+}

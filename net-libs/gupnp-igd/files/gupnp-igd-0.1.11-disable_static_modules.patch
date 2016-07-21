@@ -1,0 +1,10 @@
+--- python/Makefile.am
++++ python/Makefile.am
+@@ -27,7 +28,7 @@
+ 
+ igd_la_LDFLAGS =					\
+-	-module -avoid-version
++	-module -avoid-version -shared
+ 
+ pygupnp-igd.c: $(srcdir)/pygupnp-igd.override $(srcdir)/pygupnp-igd.defs
+ 	$(PYCODEGEN)						\

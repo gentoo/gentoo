@@ -1,0 +1,25 @@
+diff -Naur kterm-6.2.0/Imakefile kterm-6.2.0-Xaw3d/Imakefile
+--- kterm-6.2.0/Imakefile	2003-12-13 15:35:05.000000000 +0900
++++ kterm-6.2.0-Xaw3d/Imakefile	2003-12-13 23:10:24.000000000 +0900
+@@ -23,6 +23,10 @@
+     PUCCPTYDDEF = -DPUCC_PTYD		/* does not need to be setuid */
+          PTYLIB = -lpucc
+ #endif
++#ifdef KTERM_XAW3D
++	XAWLIB = -lXaw3d
++	XAW6LIB =  -lXaw3d
++#endif
+ 
+  OSMAJORVERSION = OSMajorVersion
+  OSMINORVERSION = OSMinorVersion
+diff -Naur kterm-6.2.0/kterm.h kterm-6.2.0-Xaw3d/kterm.h
+--- kterm-6.2.0/kterm.h	2003-12-13 15:35:05.000000000 +0900
++++ kterm-6.2.0-Xaw3d/kterm.h	2003-12-13 15:35:55.000000000 +0900
+@@ -36,6 +36,6 @@
+ #define KTERM_KINPUT2	/* Kinput2 protocol */
+ #define KTERM_COLOR	/* color sequence */
+ #define KTERM_NOTEK	/* disables Tektronix emulation */
+-#undef  KTERM_XAW3D	/* Xaw3d -DARROW_SCROLLBAR support */
++#define KTERM_XAW3D	/* Xaw3d -DARROW_SCROLLBAR support */
+ 
+ #endif /* !_KTERM_H_ */

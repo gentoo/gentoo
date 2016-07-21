@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The www-apache category contains modules for the Apache webserver.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría www-apache contiene módulos del servidor web Apache.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie www-apache enthält Module für den Webserver Apache.
+	</longdescription>
+	<longdescription lang="ja">
+		www-apacheカテゴリーにはApacheウエブサーバーのモジュールが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De www-apache categorie bevat modules voor de Apache webserver.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória www-apache obsahuje moduly pre webserver Apache.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm www-apache chứa các module cho Apache server.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria www-apache contiene moduli per il web server Apache.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria www-apache contém certos módulos para o servidor de
+		web Apache.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria www-apache zawiera moduły serwera Apache.
+	</longdescription>
+</catmetadata>
+

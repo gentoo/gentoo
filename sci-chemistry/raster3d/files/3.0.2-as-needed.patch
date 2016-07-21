@@ -1,0 +1,50 @@
+diff --git a/Makefile b/Makefile
+index 1a1c549..4d74dd0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,7 @@ linux:
+ 	@echo OSDEFS =  -DLINUX -DNETWORKBYTEORDER       >> Makefile.incl
+ 	@echo include Makefile.package        >> Makefile.incl
+ 	@echo                                 >> Makefile.incl
+-	@echo qinp.o: qinp.f                  >> Makefile.incl
++	@echo qinp.o: qinp.f normal3d.o render.o >> Makefile.incl
+ 	@echo "	\$$(FC) -g -O0 -Wall -Wtabs -c -o qinp.o qinp.f" >> Makefile.incl
+ 	@echo                                 >> Makefile.incl
+ 
+@@ -214,20 +214,20 @@ ribbon:	ribbon.f ribbon1.f modsubs.f
+ 	ribbon.f ribbon1.f modsubs.f -o ribbon
+ 
+ rastep:	rastep.f quadric.o suv.o
+-	$(FC) $(FFLAGS) \
+-	rastep.f quadric.o suv.o $(LDFLAGS) \
++	$(FC) $(FFLAGS) $(LDFLAGS) \
++	rastep.f quadric.o suv.o \
+ 	-o rastep 
+ 
+ render:	render.o local.o quadric.o parse.o r3dtogd.o ungz.o qinp.o
+-	$(FC) $(FFLAGS) \
++	$(FC) $(FFLAGS) $(LDFLAGS) \
+ 	render.o local.o quadric.o parse.o r3dtogd.o ungz.o \
+ 	qinp.o \
+-	$(LIBS) $(LDFLAGS) \
+-	-o render
++	-o render \
++	$(LIBS)
+ 
+ normal3d:	normal3d.o quadric.o qinp.o ungz.o parameters.incl
+-	$(FC) $(FFLAGS) \
+-	normal3d.o quadric.o ungz.o qinp.o $(LDFLAGS) \
++	$(FC) $(FFLAGS) $(LDFLAGS) \
++	normal3d.o quadric.o ungz.o qinp.o \
+ 	-o normal3d
+ 
+ stereo3d:
+@@ -264,7 +264,7 @@ example1.png: render_small
+ 	./render_small
+ 
+ render_small: render_small.o local.o quadric.o parse_small.o r3dtogd.o ungz.o qinp_small.o
+-	$(FC) $(FFLAGS) $^ $(LIBS) $(LDFLAGS) -o $@
++	$(FC) $(FFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ .SUFFIXES: .incl
+ SMALL=10

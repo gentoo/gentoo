@@ -1,0 +1,11 @@
+--- xoscope-2.1/configure.ac
++++ xoscope-2.1/configure.ac
+@@ -132,7 +132,7 @@
+ 
+ AC_DEFINE(MSECREFRESH, 30, [minimum number of milliseconds between refresh on libsx version])
+ 
+-AC_DEFINE(HELPCOMMAND, "man -Tutf8 xoscope 2>&1", [shell command for X11 help])
++AC_DEFINE(HELPCOMMAND, "man xoscope 2>&1", [shell command for X11 help])
+ 
+ AC_DEFINE(FILENAME, "oscope.dat", [default file name])
+ 

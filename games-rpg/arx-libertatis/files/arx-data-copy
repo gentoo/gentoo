@@ -1,0 +1,108 @@
+#!/bin/sh
+
+die() {
+	echo "$@" >&2
+	exit 1
+}
+
+# Handle arguments
+if [ "$1" != "--help" ] && [ "$1" != "-h" ] ; then
+	SOURCE="$(readlink -f "$1")"
+else 
+	die "\
+Usage: arx-data-copy path/to/ArxFatalis/ [output_dir]
+
+This script can be used to copy the game data from a fully patched
+Arx Fatalis 1.21 install (for example a Steam download).
+Files will be renamed as needed by Arx Libertatis.
+
+You can get the 1.21 patch from http://www.arkane-studios.com/uk/arx_downloads.php"
+fi
+
+if [ "$2" = "" ] ; then
+	DESTDIR="$(pwd)"
+else
+	DESTDIR="$(readlink -f "$2")"
+fi
+
+cd "$(dirname "$0")"
+
+echo "Installing Arx Fatalis data from \"$SOURCE\" to \"$DESTDIR\".
+"
+
+# Check for required files
+[ -d "$SOURCE" ] || die "$SOURCE does not exist"
+
+# files
+set -- \
+	"data2.pak" \
+	"graph/interface/misc/arkane.bmp" \
+	"graph/interface/misc/quit1.bmp" \
+	"graph/obj3d/textures/fixinter_barrel.jpg" \
+	"graph/obj3d/textures/fixinter_bell.bmp" \
+	"graph/obj3d/textures/fixinter_metal_door.jpg" \
+	"graph/obj3d/textures/fixinter_public_notice.bmp" \
+	"graph/obj3d/textures/item_bread.bmp" \
+	"graph/obj3d/textures/item_club.jpg" \
+	"graph/obj3d/textures/item_long_sword.jpg" \
+	"graph/obj3d/textures/item_mauld_sabre.jpg" \
+	"graph/obj3d/textures/item_mauldsword.jpg" \
+	"graph/obj3d/textures/item_mirror.jpg" \
+	"graph/obj3d/textures/item_ring_casting.bmp" \
+	"graph/obj3d/textures/item_rope.bmp" \
+	"graph/obj3d/textures/item_spell_sheet.jpg" \
+	"graph/obj3d/textures/item_torch2.jpg" \
+	"graph/obj3d/textures/item_torch.jpg" \
+	"graph/obj3d/textures/item_zohark.bmp" \
+	"graph/obj3d/textures/l7_dwarf_[wood]_board08.jpg" \
+	"graph/obj3d/textures/l7_dwarf_[wood]_board80.jpg" \
+	"graph/obj3d/textures/npc_dog.bmp" \
+	"graph/obj3d/textures/npc_pig.bmp" \
+	"graph/obj3d/textures/npc_pig_dirty.bmp" \
+	"graph/obj3d/textures/npc_rat_base.bmp" \
+	"graph/obj3d/textures/npc_rat_base_cm.bmp" \
+	"graph/obj3d/textures/npc_worm_body_part1.jpg" \
+	"graph/obj3d/textures/npc_worm_body_part2.bmp" \
+	"graph/obj3d/textures/[wood]_light_door.jpg" \
+	"manual.pdf" \
+	"map.pdf" \
+	"misc/arx_default.ttf" \
+	"misc/arx_russian.ttf" \
+	"misc/arx_taiwanese.ttf" \
+	"misc/logo.avi" \
+	"misc/logo.bmp" \
+	"sfx.pak" \
+	"data.pak" \
+	"loc.pak" \
+	"speech.pak"
+
+# Install required files
+ret=0
+for f in "$@" ; do
+	DEST="$DESTDIR/$f"
+	DIRNAME="$(dirname "$f")"
+	FILE="$(basename "$f" | sed 's/[^[:alnum:]_-]/\\&/g')"
+	FILE_DEFAULT="$(echo "$FILE" | sed 's/^\(.*\)\(\.[^.]*\)$/\1_default\2/g')"
+	
+	# don't screw permissions on existent folders
+	[ -e "$DESTDIR/$DIRNAME" ] || { mkdir -pv "$DESTDIR/$DIRNAME"
+		chmod 755 "$DESTDIR/$DIRNAME" ; }
+
+	find "$SOURCE" -iname "$FILE" -exec cp -fv '{}' "$DEST" \;
+	find "$SOURCE" -iname "$FILE_DEFAULT" -exec cp -fv '{}' "$DEST" \;
+
+	chmod 644 "$DEST" || { missing_files="$missing_files
+	$f" ; return 1 ; }
+
+	ret="$(($ret + $?))"
+done
+
+[ "$ret" = "0" ] || die "
+$ret errors and following files not installed:$missing_files
+
+You either have incorrect permissions on \"${DESTDIR}\"
+or don't have patch 1.21 installed. Fix it and rerun this script."
+
+echo
+echo "Now run:
+	arx --data-dir \"$DESTDIR\""

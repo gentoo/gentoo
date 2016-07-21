@@ -1,0 +1,34 @@
+diff -ur qp9.5.orig/Makefile.in qp9.5/Makefile.in
+--- qp9.5.orig/Makefile.in	2014-11-17 06:46:22.000000000 +0100
++++ qp9.5/Makefile.in	2015-05-03 11:29:52.000000000 +0200
+@@ -23,7 +23,7 @@
+ 
+ export PROLOG		= prolog
+ 
+-
++export CXX=@CXX@
+ 
+ .PHONY: all
+ all:	objects
+diff -ur qp9.5.orig/src/Makefile.in qp9.5/src/Makefile.in
+--- qp9.5.orig/src/Makefile.in	2014-11-17 06:46:22.000000000 +0100
++++ qp9.5/src/Makefile.in	2015-05-03 11:29:52.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ #export DEBUGGING=
+ 
+-export CXXFLAGS = @GCC_ALIAS_FLAG@ -Wall -D_GNU_SOURCE=1 $(OPTIMISATION) @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized
++#export CXXFLAGS = @GCC_ALIAS_FLAG@ -Wall -D_GNU_SOURCE=1 $(OPTIMISATION) @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized
+ export QACXXFLAGS = -Wall -D_GNU_SOURCE=1 @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized
+ 
+ .PHONY: all
+@@ -79,6 +79,9 @@
+ 
+ # Targets
+ 
++.cc.o:
++	$(CXX) $(CXXFLAGS) @GCC_ALIAS_FLAG@ -Wall -D_GNU_SOURCE=1 @DEBUGGING@ @GCCINCLUDES@ -Wno-uninitialized -c $<
++
+ .PHONY: commands
+ commands: $(GENERATED) $(LIBRARIES) $(BIG_LIBRARY)
+ 	@$(MAKE) $(ALL_COMMANDS)

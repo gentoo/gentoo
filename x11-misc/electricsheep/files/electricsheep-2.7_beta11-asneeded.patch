@@ -1,0 +1,13 @@
+diff -ur electricsheep-2.7_beta11.orig/Makefile.am electricsheep-2.7_beta11/Makefile.am
+--- electricsheep-2.7_beta11.orig/Makefile.am	2009-09-18 00:42:49.000000000 +0300
++++ electricsheep-2.7_beta11/Makefile.am	2010-02-26 14:35:07.000000000 +0200
+@@ -9,7 +9,8 @@
+ pkgdata_DATA = electricsheep-wait.avi electricsheep-preferences.glade
+ 
+ electricsheep_preferences_CFLAGS = @libglade_CFLAGS@ -DPACKAGE_DATA_DIR=\"$(pkgdatadir)\"
+-electricsheep_preferences_LDFLAGS = @libglade_LIBS@ -export-dynamic
++electricsheep_preferences_LDADD = @libglade_LIBS@
++electricsheep_preferences_LDFLAGS = -export-dynamic
+ electricsheep_preferences_SOURCES = electricsheep-preferences.c utils.c md5.c
+ 
+ 

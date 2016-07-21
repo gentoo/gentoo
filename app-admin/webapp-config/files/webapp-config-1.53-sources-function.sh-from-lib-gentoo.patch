@@ -1,0 +1,25 @@
+From ff7ba0d89c79584f14a8137d886a656a9af6de5c Mon Sep 17 00:00:00 2001
+From: Devan Franchini <twitch153@gentoo.org>
+Date: Sat, 27 Dec 2014 20:43:08 -0500
+Subject: [PATCH] webapp-cleaner: sources function.sh from /lib/gentoo
+
+---
+ sbin/webapp-cleaner | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sbin/webapp-cleaner b/sbin/webapp-cleaner
+index bfec623..52e44ac 100755
+--- a/sbin/webapp-cleaner
++++ b/sbin/webapp-cleaner
+@@ -13,7 +13,7 @@ CMD="emerge -Cav"
+ WEBAPP_DIR="/usr/share/webapps"
+ WEBAPP_CONFIG=
+ 
+-[[ -z ${RC_GOT_FUNCTIONS} ]] && source /etc/init.d/functions.sh
++[[ -z ${RC_GOT_FUNCTIONS} ]] && source /lib/gentoo/functions.sh
+ 
+ function help() {
+ 	echo "Remove obsolete and unused versions of web applications"
+-- 
+2.0.5
+

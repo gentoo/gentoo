@@ -1,0 +1,10 @@
+--- a/configure.ac	2012-06-13 13:17:43.000000000 -0400
++++ b/configure.ac	2012-06-18 15:34:59.000000000 -0400
+@@ -192,6 +192,7 @@
+         AC_MY_CHECK_MODULE(JAVASCRIPT_ENGINE,[spidermonkey],[>=],[1.7.0])
+         ;;
+      *)
++        AC_MY_CHECK_MODULE(JAVASCRIPT_ENGINE,[mozjs187])
+         AC_MY_CHECK_MODULE(JAVASCRIPT_ENGINE,[mozjs185])
+         AC_MY_CHECK_MODULE(JAVASCRIPT_ENGINE,[mozilla-js],[>=],[1.9])
+         AC_MY_CHECK_MODULE(JAVASCRIPT_ENGINE,[xulrunner-js],[>=],[1.8])

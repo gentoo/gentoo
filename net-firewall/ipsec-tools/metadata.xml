@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="hybrid">Makes available both mode-cfg and xauth support</flag>
+		<flag name="idea">Enable support for the IDEA algorithm</flag>
+		<flag name="nat">Enable NAT-Traversal</flag>
+		<flag name="rc5">Enable support for the patented RC5 algorithm</flag>
+		<flag name="stats">Enable statistics reporting</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">ipsec-tools</remote-id>
+	</upstream>
+</pkgmetadata>

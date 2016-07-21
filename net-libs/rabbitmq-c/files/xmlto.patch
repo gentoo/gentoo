@@ -1,0 +1,25 @@
+--- CMakeLists.txt.orig	2013-01-19 02:58:22.179338944 -0700
++++ CMakeLists.txt	2013-01-19 03:18:40.936984417 -0700
+@@ -49,6 +49,7 @@
+ include(CheckFunctionExists)
+ include(CheckLibraryExists)
+ include(CMakePushCheckState)
++include(FindXmlTo)
+ 
+ # Detect if we need to link against a socket library:
+ cmake_push_check_state()
+@@ -195,7 +196,13 @@
+ endif (REGENERATE_AMQP_FRAMING)
+ 
+ find_package(POPT)
+-find_package(XmlTo)
++
++set ( XmlTo_FOUND false )
++find_program ( XMLTO_EXECUTABLE NAMES xmlto
++  DOC "path to the xmlto docbook xslt frontend" )
++if ( XMLTO_EXECUTABLE )
++  set ( XmlTo_FOUND true )
++endif ( XMLTO_EXECUTABLE )
+ 
+ if (POPT_FOUND AND XmlTo_FOUND)
+   set(DO_DOCS ON)

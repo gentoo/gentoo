@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/show_bug.cgi?id=511698
+
+diff --git a/sys/boot/Makefile.inc b/sys/boot/Makefile.inc
+index e0039b9..533dea0 100644
+--- a/sys/boot/Makefile.inc
++++ b/sys/boot/Makefile.inc
+@@ -1,3 +1,3 @@
+ # $FreeBSD: release/10.0.0/sys/boot/Makefile.inc 188895 2009-02-21 15:04:31Z ru $
+ 
+-SSP_CFLAGS=
++SSP_CFLAGS= -fno-stack-protector

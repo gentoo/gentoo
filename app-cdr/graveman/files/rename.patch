@@ -1,0 +1,11 @@
+--- a/src/callbacks.c.old	2006-05-23 17:42:48.642913000 +0200
++++ b/src/callbacks.c	2006-05-23 17:42:52.553201500 +0200
+@@ -268,7 +268,7 @@
+ 
+   gtk_tree_model_get(Ltreemodel, &Liter, 2, &Lname, -1);
+ 
+-  Ltitle = g_strdup_printf(Ltitle, _("Enter the new name for %s"), Lname);
++  Ltitle = g_strdup_printf(_("Enter the new name for %s"), Lname);
+  
+   Lboite = gtk_dialog_new_with_buttons(Ltitle, NULL, GTK_DIALOG_MODAL,
+         GTK_STOCK_OK,GTK_RESPONSE_OK, GTK_STOCK_CANCEL,GTK_RESPONSE_CANCEL, NULL);

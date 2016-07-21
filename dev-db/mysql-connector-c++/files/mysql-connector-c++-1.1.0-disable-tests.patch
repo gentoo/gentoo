@@ -1,0 +1,14 @@
+diff -urNad mysql-connector-c++-1.0.6~r754~/CMakeLists.txt mysql-connector-c++-1.0.6~r754/CMakeLists.txt
+--- mysql-connector-c++-1.0.6~r754~/CMakeLists.txt	2009-08-20 22:25:35.000000000 +0200
++++ mysql-connector-c++-1.0.6~r754/CMakeLists.txt	2009-08-20 22:25:57.000000000 +0200
+@@ -241,10 +241,6 @@
+ ADD_SUBDIRECTORY(cppconn)
+ ADD_SUBDIRECTORY(driver)
+ ADD_SUBDIRECTORY(examples)
+-ADD_SUBDIRECTORY(test)
+-ADD_SUBDIRECTORY(test/framework)
+-ADD_SUBDIRECTORY(test/CJUnitTestsPort)
+-ADD_SUBDIRECTORY(test/unit)
+ 
+ IF(DEFINED CMAKE_SYSTEM_NAME AND ${CMAKE_SYSTEM_NAME} STREQUAL "SunOS")
+ 	# see also README

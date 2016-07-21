@@ -1,0 +1,12 @@
+diff -uNr snips-1.2.ORIG/trapmon/Makefile.mid snips-1.2/trapmon/Makefile.mid
+--- snips-1.2.ORIG/trapmon/Makefile.mid	2012-06-26 14:50:38.787581669 +0100
++++ snips-1.2/trapmon/Makefile.mid	2012-06-26 14:52:11.381587122 +0100
+@@ -17,7 +17,7 @@
+ INITFILES = trapmon
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(PROGLIBS) $(LIBS) -o $@
+ 
+ install: $(TARG)
+ 	$(INSTALL) -c -m 4750 $(TARG) $(DESTDIR)$(BINDIR)/

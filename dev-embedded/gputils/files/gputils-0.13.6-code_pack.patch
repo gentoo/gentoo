@@ -1,0 +1,182 @@
+Index: gpasm/lst.c
+===================================================================
+--- gpasm/lst.c	(revision 541)
++++ gpasm/lst.c	(revision 542)
+@@ -212,11 +212,75 @@
+   }
+ }
+ 
++unsigned int lst_data(char *m, unsigned int byte_org,
++    unsigned int bytes_emitted, size_t sizeof_m)
++{
++  char buf[BUFSIZ];
++  unsigned int i;
++  unsigned int lst_bytes = 0;
++
++  if ((byte_org & 1) != 0) {
++    /* not word-aligned */
++    /* list first byte */
++    unsigned char emit_byte = (unsigned char)(i_memory_get(state.i_memory,
++        (byte_org >> 1)) >> 8);
++    snprintf(buf, sizeof(buf), "%02X", emit_byte);
++    strncat(m, buf, sizeof_m);
++    ++lst_bytes;
++    /* list whole words */
++    for (i = 0; (i < ((bytes_emitted-1) >> 1)) && (i < 1); ++i) {
++      unsigned int emit_word = i_memory_get(state.i_memory,
++          ((byte_org+1) >> 1) + i) & 0xffff;
++      snprintf(buf, sizeof(buf), "%02X %02X", emit_word & 0x00ff,
++          emit_word >> 8);
++      strncat(m, buf, sizeof_m);
++      lst_bytes += 2;
++    }
++    /* list extra byte if odd */
++    if (((byte_org+bytes_emitted) & 1) != 0) {
++      snprintf(buf, sizeof(buf), "%02X ", i_memory_get(state.i_memory,
++          ((byte_org + bytes_emitted - 2) >> 1)) & 0x00ff);
++      strncat(m, buf, sizeof_m);
++      ++lst_bytes;
++    }
++    else {
++      strncat(m, "   ", sizeof_m);
++    }
++  }
++  else {    /* word-aligned */
++    /* list full words as bytes */
++    for (i = 0; (i < (bytes_emitted >> 1)) && (i < 2); ++i) {
++      unsigned int emit_word = i_memory_get(state.i_memory,
++            (byte_org>>1) + i) & 0xffff;
++      snprintf(buf, sizeof(buf), "%04X ", emit_word);
++      strncat(m, buf, sizeof_m);
++      lst_bytes += 2;
++    }
++    if (bytes_emitted < 4) {
++      /* list extra byte if odd */
++      if (((byte_org+bytes_emitted) & 1) != 0) {
++        snprintf(buf, sizeof(buf), "%02X   ", i_memory_get(state.i_memory,
++                (byte_org+bytes_emitted)>>1) & 0x00ff);
++        strncat(m, buf, sizeof_m);
++        ++lst_bytes;
++      }
++      else {
++        strncat(m, "     ", sizeof_m);
++      }
++    }
++  }
++
++  return lst_bytes;
++}
++
+ void lst_format_line(char *src_line, int value)
+ {
+   char m[BUFSIZ];
+   char buf[BUFSIZ];
+   unsigned int emitted = 0;
++  unsigned int byte_org = 0;
++  unsigned int bytes_emitted = 0;
++  unsigned int lst_bytes;
+ 
+   assert(src_line != NULL);
+   
+@@ -239,41 +303,21 @@
+ 		         state.device.id_location + 1) & 0xffff);
+     break;
+   case insn:
+-    emitted = state.org - state.lst.line.was_org
+-	     				+ (state.obj.section &&
+-					   state.obj.section->emitted_pack_byte ? 1 : 0);
+-    snprintf(m, sizeof(m), "%04X ", (state.lst.line.was_org << _16bit_core)
+-	     				- (state.obj.section &&
+-					   ((emitted == 0 && 
+-					     state.obj.section->have_pack_byte) ||
+-					    state.obj.section->emitted_pack_byte) ? 1 : 0));
++    byte_org = (state.lst.line.was_org << 1);
++    if (state.obj.section)
++      byte_org -= (state.obj.section->emitted_pack_byte ? 1 : 0);
++    bytes_emitted = (state.org << 1) - byte_org;
++    if (state.obj.section)
++      bytes_emitted -= (state.obj.section->have_pack_byte ? 1 : 0);
++    emitted = (bytes_emitted >> 1);
++    if (((byte_org & 1) == 0) && ((bytes_emitted & 1) != 0))
++      emitted += 1;
++    snprintf(m, sizeof(m), "%04X ", byte_org >> (1 - _16bit_core));
+ 
+-    if (emitted >= 1) {
+-      if(state.obj.section && state.obj.section->have_pack_byte && emitted == 1)
+-	snprintf(buf, sizeof(buf), "%02X   ", i_memory_get(state.i_memory, state.lst.line.was_org) & 0xff);
+-      else if(state.obj.section && state.obj.section->emitted_pack_byte)
+-	snprintf(buf, sizeof(buf), "  %02X ", (i_memory_get(state.i_memory, state.lst.line.was_org - 1) & 0xff00) >> 8);
+-      else
+-        snprintf(buf, sizeof(buf), "%04X ", i_memory_get(state.i_memory, 
+-			                 state.lst.line.was_org) & 0xffff);
++    lst_bytes = lst_data(m, byte_org, bytes_emitted, sizeof(m));
++    byte_org += lst_bytes;
++    bytes_emitted -= lst_bytes;
+ 
+-      strncat(m, buf, sizeof(m));
+-    } else
+-      strncat(m, "     ", sizeof(m));
+-
+-    if (emitted >= 2) {
+-      if(state.obj.section && state.obj.section->have_pack_byte && emitted == 2)
+-        snprintf(buf, sizeof(buf), "%02X   ", i_memory_get(state.i_memory, 
+-	  		                  state.lst.line.was_org
+-				          + (state.obj.section->emitted_pack_byte ? 0 : 1)) & 0xffff);
+-      else
+-        snprintf(buf, sizeof(buf), "%04X ", i_memory_get(state.i_memory, 
+-	  		                  state.lst.line.was_org
+-				          + (state.obj.section &&
+-					     state.obj.section->emitted_pack_byte ? 0 : 1)) & 0xffff);
+-      strncat(m, buf, sizeof(buf));
+-    } else
+-      strncat(m, "     ", sizeof(m));
+     break;
+   case config:
+     if(_16bit_core) {
+@@ -376,39 +420,16 @@
+     lst_line(m);   
+   }
+ 
+-  if (emitted > 2) {
+-    int i;
++  if (bytes_emitted > 0) {
++    while (bytes_emitted > 0) {
++      /* data left to print on separate lines */
+ 
+-    for (i = 2; i < emitted; i += 2) {
+-      unsigned int org = state.lst.line.was_org + i -
+-			  (state.obj.section && state.obj.section->emitted_pack_byte ? 1 : 0);
+-
+-      if ((i + 1) < emitted)
+-        if(state.obj.section && state.obj.section->have_pack_byte)
+-          snprintf(m, sizeof(m), "%04X %04X %02X   ",
+-                   org << _16bit_core,
+-                   i_memory_get(state.i_memory, org) & 0xffff,
+-		   i_memory_get(state.i_memory, org + 1) & 0xff);
+-     	else
+-          snprintf(m, sizeof(m), "%04X %04X %04X",
+-                   org << _16bit_core,
+-                   i_memory_get(state.i_memory, org) & 0xffff,
+-	  	   i_memory_get(state.i_memory, org + 1) & 0xffff);
+-      else {
+-        if(state.obj.section && state.obj.section->have_pack_byte)
+-	  snprintf(m, sizeof(m), "%04X %02X   ", 
+-		   ((state.lst.line.was_org + i) << _16bit_core),
+-		   i_memory_get(state.i_memory,
+-			        state.lst.line.was_org + i) & 0xff);
+-	else
+-          snprintf(m, sizeof(m), "%04X %04X",
+-		   ((state.lst.line.was_org + i) << _16bit_core),
+-		   i_memory_get(state.i_memory, 
+-			        state.lst.line.was_org + i) & 0xffff);
+-      }
++      strncpy(m, "     ", sizeof(m));
++      lst_bytes = lst_data(m, byte_org, bytes_emitted, sizeof(m));
++      byte_org += lst_bytes;
++      bytes_emitted -= lst_bytes;
+       lst_line(m);
+     }
+-
+     state.cod.emitting = 0;
+   }
+  

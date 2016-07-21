@@ -1,0 +1,18 @@
+Description: if you don't initialize the "i" variable, or initialize it to 0.0
+ qtiplot won't let you set the column values using muparser.
+Author: Scott Howard <showard@debian.org>
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=707736
+
+Index: qtiplot/qtiplot/src/table/Table.cpp
+===================================================================
+--- qtiplot.orig/qtiplot/src/table/Table.cpp	2013-06-08 02:06:35.550201324 -0400
++++ qtiplot/qtiplot/src/table/Table.cpp	2013-06-08 02:08:30.026204044 -0400
+@@ -564,7 +564,7 @@
+ 	QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+ 
+     muParserScript *mup = new muParserScript(scriptEnv, cmd, this,  QString("<%1>").arg(colName(col)));
+-    double *r = mup->defineVariable("i");
++    double *r = mup->defineVariable("i",startRow + 1.0);
+     mup->defineVariable("j", (double)col);
+     mup->defineVariable("sr", startRow + 1.0);
+     mup->defineVariable("er", endRow + 1.0);

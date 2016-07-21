@@ -1,0 +1,56 @@
+# Remove any path listed here. Comments are ignored
+# KDE Runtime 4
+kde-runtime/attica_kde.po
+kde-runtime/drkonqi.po
+kde-runtime/filetypes.po
+kde-runtime/htmlsearch.po
+kde-runtime/kcmcomponentchooser.po
+kde-runtime/kcm_device_automounter.po
+kde-runtime/kcm_emoticons.po
+kde-runtime/kcmhtmlsearch.po
+kde-runtime/kcmicons.po
+kde-runtime/kcmkded.po
+kde-runtime/kcmnotify.po
+kde-runtime/kcm_phonon.po
+kde-runtime/kcmshell.po
+kde-runtime/kdesu.po
+kde-runtime/kglobalaccel.po
+kde-runtime/khelpcenter.po
+kde-runtime/kio_applications.po
+kde-runtime/kio_archive.po
+kde-runtime/kio_bookmarks.po
+kde-runtime/kioclient.po
+kde-runtime/kio_fish.po
+kde-runtime/kio_info.po
+kde-runtime/kio_man.po
+kde-runtime/kio_nfs.po
+kde-runtime/kio_recentdocuments.po
+kde-runtime/kio_remote.po
+kde-runtime/kio_sftp.po
+kde-runtime/kio_smb.po
+kde-runtime/kio_thumbnail.po
+kde-runtime/kmimetypefinder.po
+kde-runtime/knetattach.po
+kde-runtime/kstart.po
+kde-runtime/ktraderclient.po
+kde-runtime/phonon_kde.po
+kde-runtime/soliduiserver.po
+# KDELIBS 4
+kdelibs/akonadi_baloo_indexer.po
+kdelibs/baloo_file_extractor.po
+kdelibs/baloo_file.po
+kdelibs/baloosearch.po
+kdelibs/balooshow.po
+kdelibs/baloowidgets.po
+kdelibs/kcm_activities.po
+kdelibs/kcm_baloofile.po
+kdelibs/kfilemetadata.po
+kdelibs/kio_baloosearch.po
+kdelibs/kio_tags.po
+kdelibs/kio_timeline.po
+kdelibs/plasma_runner_baloosearchrunner.po
+# KDE Applications 4
+applications/useraccount.po
+# KDE SDK 4
+kdesdk/org.kde.umbrello.appdata.po
+kdesdk/umbrello.po

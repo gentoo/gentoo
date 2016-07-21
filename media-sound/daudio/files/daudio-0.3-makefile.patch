@@ -1,0 +1,50 @@
+Index: daudio-0.3/client/Makefile
+===================================================================
+--- daudio-0.3.orig/client/Makefile
++++ daudio-0.3/client/Makefile
+@@ -13,10 +13,10 @@ install: $(PROG)
+ 	install -c -m755 --owner=0 --group=0 -b -D daudioc $(PREFIX)/bin/daudioc
+ 
+ debug: $(SRCS)
+-	gcc $(DEFINES) -DDEBUG $(INCLUDES) $(LIBS) -o $(PROG) $^
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) -DDEBUG $(INCLUDES) -o $(PROG) $^ $(LIBS)
+ 
+ $(PROG): $(SRCS)
+-	gcc $(DEFINES) $(INCLUDES) $(LIBS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDES) -o $@ $^ $(LIBS)
+ 
+ clean:
+ 	rm -f $(PROG)
+Index: daudio-0.3/server/Makefile
+===================================================================
+--- daudio-0.3.orig/server/Makefile
++++ daudio-0.3/server/Makefile
+@@ -10,13 +10,13 @@ PREFIX = /usr/local
+ all: $(SBINS)
+ 
+ debug: $(SRCS)
+-	gcc -g $(DEFINES) $(INCLUDES) $(LIBS) -o daudiod $^
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDES) -o daudiod $^ $(LIBS)
+ 
+ install: $(SBINS)
+ 	install -c -m755 --owner=0 --group=0 -b -D daudiod $(PREFIX)/bin/daudiod
+ 
+ $(SBINS): $(SRCS)
+-	gcc $(DEFINES) $(INCLUDES) $(LIBS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDES) -o $@ $^ $(LIBS)
+ 
+ clean:
+ 	rm -f $(SBINS)
+Index: daudio-0.3/streamer/Makefile
+===================================================================
+--- daudio-0.3.orig/streamer/Makefile
++++ daudio-0.3/streamer/Makefile
+@@ -12,7 +12,7 @@ install: $(SBINS)
+ 	install -c -m755 --owner=0 --group=0 -b -D dstreamer $(PREFIX)/bin/dstreamer
+ 
+ $(SBINS): $(SRCS)
+-	gcc $(DEFINES) $(INCLUDES) $(LIBS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDES) -o $@ $^ $(LIBS)
+ 
+ clean:
+ 	rm -f $(SBINS)

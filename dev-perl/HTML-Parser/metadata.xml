@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-Parser</remote-id>
+    <remote-id type="cpan-module">HTML::Entities</remote-id>
+    <remote-id type="cpan-module">HTML::Filter</remote-id>
+    <remote-id type="cpan-module">HTML::HeadParser</remote-id>
+    <remote-id type="cpan-module">HTML::LinkExtor</remote-id>
+    <remote-id type="cpan-module">HTML::Parser</remote-id>
+    <remote-id type="cpan-module">HTML::PullParser</remote-id>
+    <remote-id type="cpan-module">HTML::TokeParser</remote-id>
+  </upstream>
+</pkgmetadata>

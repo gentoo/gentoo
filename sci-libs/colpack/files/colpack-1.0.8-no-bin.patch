@@ -1,0 +1,15 @@
+From: Sebastien Fabbro <bicatali@gentoo.org>
+Avoid installing the ColPack binary on an absolute path
+
+--- Makefile.am	2012-03-20 21:37:34.000000000 -0700
++++ Makefile.am	2012-09-17 14:24:02.168309078 -0700
+@@ -17,8 +17,7 @@
+ LDADD = libColPack.la
+ AM_DEFAULT_SOURCE_EXT = .cpp
+ 
+-noinst_bin_PROGRAMS = ColPack
+-noinst_bindir = $(abs_top_builddir)/progs
++noinst_PROGRAMS = ColPack
+ lib_LTLIBRARIES = libColPack.la
+ pkginclude_HEADERS = \
+ 			Utilities/CoutLock.h Utilities/command_line_parameter_processor.h  \

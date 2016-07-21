@@ -1,0 +1,18 @@
+diff -Naur usr.orig/share/applications/tribler.desktop usr/share/applications/tribler.desktop
+--- usr.orig/share/applications/tribler.desktop	2012-09-24 20:50:23.000000000 -0400
++++ usr/share/applications/tribler.desktop	2013-02-18 13:58:57.000000000 -0500
+@@ -5,4 +5,4 @@
+ Icon=tribler
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;P2P
++Categories=Network;P2P;
+diff -Naur usr.orig/share/tribler/Tribler/Main/Build/Ubuntu/tribler.desktop usr/share/tribler/Tribler/Main/Build/Ubuntu/tribler.desktop
+--- usr.orig/share/tribler/Tribler/Main/Build/Ubuntu/tribler.desktop	2012-11-19 23:26:42.000000000 -0500
++++ usr/share/tribler/Tribler/Main/Build/Ubuntu/tribler.desktop	2013-02-18 13:59:08.000000000 -0500
+@@ -5,4 +5,4 @@
+ Icon=tribler
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;P2P
++Categories=Network;P2P;

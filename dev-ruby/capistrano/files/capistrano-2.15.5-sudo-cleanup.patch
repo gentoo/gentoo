@@ -1,0 +1,12 @@
+diff -ur /usr/lib/ruby/gems/1.9.1/gems/capistrano-2.15.5/lib/capistrano/recipes/deploy.rb ./lib/capistrano/recipes/deploy.rb
+--- ./lib/capistrano/recipes/deploy.rb	2014-08-13 15:11:31.423773610 +0200
++++ /usr/lib/ruby/gems/1.9.1/gems/capistrano-2.15.5/lib/capistrano/recipes/deploy.rb	2014-05-04 11:40:39.000000000 +0200
+@@ -462,7 +462,7 @@
+   DESC
+   task :cleanup, :except => { :no_release => true } do
+     count = fetch(:keep_releases, 5).to_i
+-    try_sudo "ls -1dt #{releases_path}/* | tail -n +#{count + 1} | #{try_sudo} xargs rm -rf"
++    run "ls -1dt #{releases_path}/* | tail -n +#{count + 1} | #{try_sudo} xargs rm -rf"
+   end
+ 
+   desc <<-DESC

@@ -1,0 +1,151 @@
+From bb8654db870d983d5b6558d9f16b22f443315eaf Mon Sep 17 00:00:00 2001
+From: Alexander Golubev <fatzer2@gmail.com>
+Date: Mon, 3 Nov 2014 16:30:27 +0300
+Subject: [PATCH 3/3] protocol/astral: migrate to qt-telepaphy API v0.9
+
+---
+ protocols/astral/src/astralaccount.cpp | 12 ++++++------
+ protocols/astral/src/astralaccount.h   | 14 +++++++-------
+ protocols/astral/src/astralcontact.h   |  6 +++---
+ protocols/astral/src/astralplugin.cpp  |  6 +++---
+ protocols/astral/src/astralroster.cpp  | 14 +++++++-------
+ protocols/astral/src/astralsession.h   |  4 ++--
+ 6 files changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/protocols/astral/src/astralaccount.cpp b/protocols/astral/src/astralaccount.cpp
+index 1d51707..e9bf729 100644
+--- a/protocols/astral/src/astralaccount.cpp
++++ b/protocols/astral/src/astralaccount.cpp
+@@ -26,9 +26,9 @@
+ #include "astralprotocol.h"
+ #include "astralroster.h"
+ #include "astralsessionmanager.h"
+-#include <TelepathyQt4/Account>
+-#include <TelepathyQt4/AccountManager>
+-#include <TelepathyQt4/PendingChannel>
++#include <TelepathyQt/Account>
++#include <TelepathyQt/AccountManager>
++#include <TelepathyQt/PendingChannel>
+ #include <QDebug>
+ 
+ struct AstralAccountPrivate
+@@ -146,14 +146,14 @@ void AstralAccount::onNewChannels(const Tp::ChannelDetailsList &channels)
+ 	qDebug() << "AstralAccount::onNewChannels";
+ 	foreach (const Tp::ChannelDetails &details, channels)
+ 	{
+-		QString channelType = details.properties.value(QLatin1String(TELEPATHY_INTERFACE_CHANNEL ".ChannelType")).toString();
+-		bool requested = details.properties.value(QLatin1String(TELEPATHY_INTERFACE_CHANNEL ".Requested")).toBool();
++		QString channelType = details.properties.value(TP_QT_IFACE_CHANNEL + QLatin1String(".ChannelType")).toString();
++		bool requested = details.properties.value(TP_QT_IFACE_CHANNEL + QLatin1String(".Requested")).toBool();
+ 		qDebug() << " channelType:" << channelType;
+ 		qDebug() << " requested  :" << requested;
+ 		qDebug() << " channelPath:" << details.channel.path();
+ 		qDebug() << " properties :" << details.properties;
+ 
+-		if (channelType == TELEPATHY_INTERFACE_CHANNEL_TYPE_TEXT && !requested)
++		if (channelType == TP_QT_IFACE_CHANNEL_TYPE_TEXT && !requested)
+ 		{
+ 			TextChannelPtr channel = TextChannel::create(p->conn,
+ 														 details.channel.path(),
+diff --git a/protocols/astral/src/astralaccount.h b/protocols/astral/src/astralaccount.h
+index 2781fb9..6e4378d 100644
+--- a/protocols/astral/src/astralaccount.h
++++ b/protocols/astral/src/astralaccount.h
+@@ -26,13 +26,13 @@
+ #define ASTRALACCOUNT_H
+ 
+ #include <qutim/account.h>
+-#include <TelepathyQt4/ConnectionManager>
+-#include <TelepathyQt4/Connection>
+-#include <TelepathyQt4/TextChannel>
+-#include <TelepathyQt4/AccountManager>
+-#include <TelepathyQt4/PendingConnection>
+-#include <TelepathyQt4/PendingOperation>
+-#include <TelepathyQt4/PendingReady>
++#include <TelepathyQt/ConnectionManager>
++#include <TelepathyQt/Connection>
++#include <TelepathyQt/TextChannel>
++#include <TelepathyQt/AccountManager>
++#include <TelepathyQt/PendingConnection>
++#include <TelepathyQt/PendingOperation>
++#include <TelepathyQt/PendingReady>
+ 
+ #include "astralroster.h"
+ 
+diff --git a/protocols/astral/src/astralcontact.h b/protocols/astral/src/astralcontact.h
+index ce0e9dd..5adfb07 100644
+--- a/protocols/astral/src/astralcontact.h
++++ b/protocols/astral/src/astralcontact.h
+@@ -26,9 +26,9 @@
+ #define ASTRALCONTACT_H
+ 
+ #include <qutim/contact.h>
+-#include <TelepathyQt4/Types>
+-#include <TelepathyQt4/Contact>
+-#include <TelepathyQt4/Connection>
++#include <TelepathyQt/Types>
++#include <TelepathyQt/Contact>
++#include <TelepathyQt/Connection>
+ 
+ using namespace Tp;
+ using namespace qutim_sdk_0_3;
+diff --git a/protocols/astral/src/astralplugin.cpp b/protocols/astral/src/astralplugin.cpp
+index e907866..d79642e 100644
+--- a/protocols/astral/src/astralplugin.cpp
++++ b/protocols/astral/src/astralplugin.cpp
+@@ -24,9 +24,9 @@
+ ****************************************************************************/
+ #include "astralplugin.h"
+ #include <QtCore/QtDebug>
+-#include <TelepathyQt4/Debug>
+-#include <TelepathyQt4/Constants>
+-#include <TelepathyQt4/Types>
++#include <TelepathyQt/Debug>
++#include <TelepathyQt/Constants>
++#include <TelepathyQt/Types>
+ //#include <TelepathyQt4/ConnectionInterfaceAvatarsInterface>
+ 
+ AstralPlugin::AstralPlugin()
+diff --git a/protocols/astral/src/astralroster.cpp b/protocols/astral/src/astralroster.cpp
+index 9eb209f..588cc55 100644
+--- a/protocols/astral/src/astralroster.cpp
++++ b/protocols/astral/src/astralroster.cpp
+@@ -24,13 +24,13 @@
+ ****************************************************************************/
+ #include "astralroster.h"
+ #include "astralaccount.h"
+-#include <TelepathyQt4/Types>
+-#include <TelepathyQt4/Contact>
+-#include <TelepathyQt4/ContactManager>
+-#include <TelepathyQt4/PendingConnection>
+-#include <TelepathyQt4/PendingContacts>
+-#include <TelepathyQt4/PendingOperation>
+-#include <TelepathyQt4/PendingReady>
++#include <TelepathyQt/Types>
++#include <TelepathyQt/Contact>
++#include <TelepathyQt/ContactManager>
++#include <TelepathyQt/PendingConnection>
++#include <TelepathyQt/PendingContacts>
++#include <TelepathyQt/PendingOperation>
++#include <TelepathyQt/PendingReady>
+ 
+ struct AstralRosterPrivate
+ {
+diff --git a/protocols/astral/src/astralsession.h b/protocols/astral/src/astralsession.h
+index fa78e45..a5dd1c3 100644
+--- a/protocols/astral/src/astralsession.h
++++ b/protocols/astral/src/astralsession.h
+@@ -26,8 +26,8 @@
+ #define ASTRALSESSION_H
+ 
+ #include <qutim/chatunit.h>
+-#include <TelepathyQt4/TextChannel>
+-#include <TelepathyQt4/Message>
++#include <TelepathyQt/TextChannel>
++#include <TelepathyQt/Message>
+ 
+ using namespace qutim_sdk_0_3;
+ using namespace Tp;
+-- 
+2.0.4
+

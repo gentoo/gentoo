@@ -1,0 +1,17 @@
+diff -urN xvba-driver-0.8.0.old/src/utils_glx.h xvba-driver-0.8.0/src/utils_glx.h
+--- xvba-driver-0.8.0.old/src/utils_glx.h	2013-02-04 20:04:00.476332874 +0100
++++ xvba-driver-0.8.0/src/utils_glx.h	2013-02-04 20:04:40.228329931 +0100
+@@ -25,6 +25,13 @@
+ #include <GL/glext.h>
+ #include <GL/glx.h>
+ 
++
++#if GL_GLEXT_VERSION >= 85
++/* XXX: PFNGLMULTITEXCOORD2FPROC got out of the GL_VERSION_1_3_DEPRECATED
++   block and is not defined if GL_VERSION_1_3 is defined in <GL/gl.h>
++   Redefine the type here as an interim solution */
++typedef void (*PFNGLMULTITEXCOORD2FPROC) (GLenum target, GLfloat s, GLfloat t);
++#endif
+ #ifndef GL_FRAMEBUFFER_BINDING
+ #define GL_FRAMEBUFFER_BINDING GL_FRAMEBUFFER_BINDING_EXT
+ #endif

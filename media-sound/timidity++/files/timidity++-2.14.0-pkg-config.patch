@@ -1,0 +1,109 @@
+use $PKG_CONFIG rather than `pkg-config`
+
+https://bugs.gentoo.org/497362
+get ncurses info via pkg-config while we're at it
+
+patch by Mike Frysinger <vapier@gentoo.org>
+
+--- a/configure.in
++++ b/configure.in
+@@ -148,6 +148,7 @@ AC_SUBST(xawresdir)
+ 
+ # Checks for programs.
+ AM_PATH_LISPDIR
++PKG_PROG_PKG_CONFIG
+ AC_PROG_CC
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_INSTALL
+@@ -1318,8 +1319,8 @@ AC_MSG_CHECKING(enable_audio=jack)
+ if test "x$au_enable_jack" = xyes; then
+   AC_MSG_RESULT(yes)
+   SYSEXTRAS="$SYSEXTRAS jack_a.c"
+-  EXTRALIBS="$EXTRALIBS $(pkg-config --libs jack)"
+-  EXTRADEFS="$EXTRADEFS -DAU_JACK $(pkg-config --cflags jack)"
++  EXTRALIBS="$EXTRALIBS $(${PKG_CONFIG} --libs jack)"
++  EXTRADEFS="$EXTRADEFS -DAU_JACK $(${PKG_CONFIG} --cflags jack)"
+ else
+   AC_MSG_RESULT(no)
+ fi
+@@ -1635,60 +1636,8 @@ dnl ncurses
+ AM_CONDITIONAL(ENABLE_NCURSES, false)
+ CONFIG_INTERFACE(ncurses,NCURSES,n,
+   AS_HELP_STRING([--enable-ncurses], [Enable ncurses interface        (default is no)]),
+-  [ AC_CHECK_HEADERS(ncurses.h ncurses/curses.h curses.h)
+-
+-dnl #include <ncurses/curses.h> is failure on Plamo Linux 1.3/ncurses 1.9.9e
+-dnl because <ncurses/curses.h> includes <unctrl.h>:
+-dnl /usr/include/ncurses/curses.h:34: unctrl.h: No such file or directory
+-dnl But surely there is unctl.h at /usr/include/ncurses/unctrl.h.
+-dnl configure must check ncurses header with -I/usr/include/ncurses option.
+-
+-  case "$ac_cv_header_curses_h$ac_cv_header_ncurses_curses_h$ac_cv_header_ncurses_h" in
+-    *yes*);;
+-    *)	for i in /usr/include /usr/local/include; do
+-	  if test -f "$i/ncurses/curses.h" -a -f "$i/ncurses/unctrl.h"; then
+-	    AC_MSG_WARN(ncurses test is failure.  Please check config.h and common.makefile later)
+-	    CPPFLAGS="$CPPFLAGS -I$i/ncurses"
+-	    break
+-	  fi
+-	done
+-	;;
+-    esac
+-
+-    AC_CHECK_LIB(ncurses,initscr,lib_curses_opt=-lncurses,
+-      [ dnl checking pdcurses
+-	AC_CHECK_LIB(curses,PDC_set_ctrl_break,
+-          [ lib_curses_opt=-lcurses
+-	    AC_DEFINE(USE_PDCURSES,1,Define to 1 if you use PDcurses)
+-	    lib_user32_opt="$lib_user32_test"
+-	  ],
+-	  [ dnl checking libpdcurses
+-	    AC_CHECK_LIB(pdcurses,PDC_set_ctrl_break,
+-	    [ lib_curses_opt=-lpdcurses
+-	      AC_DEFINE(USE_PDCURSES,1,Define to 1 if you use PDcurses)
+-	      lib_user32_opt="$lib_user32_test"
+-	    ],
+-	    [ dnl OpenBSD use -lcurses instead of -lncurses.
+-	      case "$target" in
+-		*openbsd*)
+-		  AC_CHECK_LIB(curses,initscr,lib_curses_opt=-lcurses,
+-		    [ AC_MSG_WARN(ncurses interface is not enabled)
+-		      enable_ncurses=no ])
+-		  ;;
+-		*)
+-		  if test "x$VCPP" = xyes || test "x$BORLANDC" = xyes || test "x$WATCOM_C" = xyes || test "x$DMC" = xyes || test "x$POCC" = xyes; then
+-		    lib_curses_opt=libpdcurses.lib
+-		    AC_DEFINE(USE_PDCURSES,1,Define to 1 if you use PDcurses)
+-		  else
+-		    AC_MSG_WARN(ncurses interface is not enabled)
+-		    enable_ncurses=no
+-		  fi
+-		  ;;
+-	      esac
+-	    ])
+-	],
+-	$lib_user32_test)
+-      ])
++  [ CPPFLAGS="$CPPFLAGS $(${PKG_CONFIG} --cflags ncurses)"
++    lib_curses_opt=$(${PKG_CONFIG} --libs ncurses)
+   ],
+   [ LIBS="$LIBS $lib_curses_opt"
+     case "$target" in
+@@ -1855,7 +1804,7 @@ CONFIG_INTERFACE(xaw,XAW,a,
+     lib_xmu_opt=-lXmu
+     lib_xt_opt=-lXt
+     if test "x$enable_xft" = "xyes" && test "x$have_xaw" != "xno"; then
+-      XFT_CFLAGS="$(pkg-config --cflags xft)";
++      XFT_CFLAGS="$(${PKG_CONFIG} --cflags xft)";
+       EXTRACT_CPPFLAGS(CPPFLAGS,CFLAGS,$XFT_CFLAGS)
+       lib_xft_opt="-lXft";
+     fi
+@@ -1909,7 +1858,7 @@ CONFIG_INTERFACE(xaw,XAW,a,
+ 	;;
+     esac
+     if test "x$enable_xft" = "xyes" && test "x$have_xaw" != "xno"; then
+-      XFT_CFLAGS="$(pkg-config --cflags xft)";
++      XFT_CFLAGS="$(${PKG_CONFIG} --cflags xft)";
+       EXTRACT_CPPFLAGS(CPPFLAGS,CFLAGS,$XFT_CFLAGS)
+       a_so_libs="$a_so_libs -lXft";
+     fi

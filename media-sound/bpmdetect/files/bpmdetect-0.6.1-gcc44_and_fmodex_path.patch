@@ -1,0 +1,36 @@
+diff -ur bpmdetect.orig/src/main.cpp bpmdetect/src/main.cpp
+--- bpmdetect.orig/src/main.cpp	2008-05-01 12:50:18.000000000 +0300
++++ bpmdetect/src/main.cpp	2009-06-03 22:24:56.000000000 +0300
+@@ -20,6 +20,8 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
++#include <cstdio>
++
+ #ifndef NO_GUI
+  #ifdef USE_QT3
+   #include "dlgbpmdetect3.h"
+diff -ur bpmdetect.orig/src/SConscript bpmdetect/src/SConscript
+--- bpmdetect.orig/src/SConscript	2008-04-24 19:49:52.000000000 +0300
++++ bpmdetect/src/SConscript	2009-06-03 22:33:57.000000000 +0300
+@@ -234,7 +234,7 @@
+ 
+   env.Append(LIBS = ['id3', 'fmodex', 'z'])
+   env.Append(CPPPATH = ['.', '..', '../includes'])
+-  env.Append(LIBPATH = ['.', '../libs'])
++  env.Append(LIBPATH = ['.', '../libs', '/opt/fmodex/api/lib'])
+   env['ISCONFIGURED']=1
+   # And finally save the options in the cache
+   opts.Save(cachefile, env)
+diff -ur bpmdetect.orig/src/track.cpp bpmdetect/src/track.cpp
+--- bpmdetect.orig/src/track.cpp	2008-04-25 22:33:18.000000000 +0300
++++ bpmdetect/src/track.cpp	2009-06-03 22:26:24.000000000 +0300
+@@ -20,6 +20,8 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
++#include <cstdio>
++
+ #include "track.h"
+ #include "trackfmod.h"
+ #include "BPMDetect.h"

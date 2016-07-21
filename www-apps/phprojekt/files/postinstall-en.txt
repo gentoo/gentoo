@@ -1,0 +1,19 @@
+You are almost done!
+
+  1. Restart your webserver
+
+  2. You will need to create a blank database for phprojekt to use. Consult
+  your database manual.
+
+  3. If this is a new install, you will need to
+  touch ${MY_INSTALLDIR}/config.inc.php
+  chown ${VHOST_SERVER_GID}:${VHOST_SERVER_UID} ${MY_INSTALLDIR}/config.inc.php
+
+  4. It's a good idea to check your configuration by running
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/env_test.php
+  Examine its output and fix whatever problems you encounter.
+
+  5. Complete the installation by logging on to
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/setup.php
+
+  Enjoy!

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Abstract</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::BuildNode</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::add_podcmds</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::clear_podcmds</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::cut</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::find</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::number_sections</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::overlay</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::sort</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::summary</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::uncut</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Filter::unoverlay</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Node</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Parser</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Path</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Serial</remote-id>
+    <remote-id type="cpan-module">Pod::Abstract::Tree</remote-id>
+  </upstream>
+</pkgmetadata>

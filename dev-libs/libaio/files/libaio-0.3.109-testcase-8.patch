@@ -1,0 +1,19 @@
+Do not ignore return value of ftruncate(): testcases are compiled with -Werror,
+and ftruncate is declared with attribute warn_unused_result.
+--- harness/cases/8.t.orig	2012-03-09 16:40:04.074168070 +0100
++++ harness/cases/8.t	2012-03-09 16:40:57.777278646 +0100
+@@ -9,12 +9,13 @@
+ {
+ 	long long min = 0, max = 9223372036854775807LL;
+ 	char c = 0;
++	int ret;
+ 
+ 	while (max - min > 1) {
+ 		if (pwrite64(fd, &c, 1, (min + max) / 2) == -1)
+ 			max = (min + max) / 2;
+ 		else {
+-			ftruncate(fd, 0);
++			ret = ftruncate(fd, 0);		assert(ret == 0);
+ 			min = (min + max) / 2;
+ 		}
+ 	}

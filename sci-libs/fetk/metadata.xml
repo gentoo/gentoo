@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <longdescription>
+The Finite Element ToolKit (FETK) is a collaboratively developed, evolving 
+collection of adaptive finite element method (AFEM) software libraries and 
+tools for solving coupled systems of nonlinear geometric partial differential 
+equations (PDE). The FETK libraries and tools are written in an 
+object-oriented form of ANSI-C and in C++, and include a common portability 
+layer (MALOC) for all of FETK, a collection of standard numerical 
+libraries (PUNC), a stand-alone high-quality surface and volume simplex mesh 
+generator (GAMer), a stand-alone networked polygon display tool (SG), 
+a general nonlinear finite element modeling kernel (MC), 
+and a MATLAB toolkit (MCLite) for protyping finite element methods and 
+examining simplex meshes using MATLAB. The entire FETK Suite of tools is 
+highly portable (from iPhone to Blue Gene/L), thanks to use of 
+a small abstraction layer (MALOC).
+</longdescription>
+</pkgmetadata>

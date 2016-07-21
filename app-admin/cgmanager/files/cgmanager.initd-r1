@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Control Group manager daemon"
+pidfile="/run/cgmanager.pid"
+command="/usr/sbin/cgmanager"
+command_args="-m name=systemd"
+command_background="yes"
+retry="TERM/45"
+
+depend() {
+	before cgproxy
+}

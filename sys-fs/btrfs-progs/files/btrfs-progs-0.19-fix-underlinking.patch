@@ -1,0 +1,11 @@
+--- btrfs-progs-0.19/Makefile~	2011-06-05 10:21:04.000000000 -0600
++++ btrfs-progs-0.19/Makefile	2011-06-05 10:21:46.000000000 -0600
+@@ -75,7 +75,7 @@ quick-test: $(objects) quick-test.o
+ 	gcc $(CFLAGS) -o quick-test $(objects) quick-test.o $(LDFLAGS) $(LIBS)
+ 
+ convert: $(objects) convert.o
+-	gcc $(CFLAGS) -o btrfs-convert $(objects) convert.o -lext2fs $(LDFLAGS) $(LIBS)
++	gcc $(CFLAGS) -o btrfs-convert $(objects) convert.o -lext2fs -lcom_err $(LDFLAGS) $(LIBS)
+ 
+ ioctl-test: $(objects) ioctl-test.o
+ 	gcc $(CFLAGS) -o ioctl-test $(objects) ioctl-test.o $(LDFLAGS) $(LIBS)

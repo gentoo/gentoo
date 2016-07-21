@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>vapier@gentoo.org</email>
+	<description>feel free to update</description>
+</maintainer>
+<use>
+	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for hash functions.</flag>
+	<flag name="mhash">Use <pkg>app-crypt/mhash</pkg> for hash functions.</flag>
+	<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for hash functions.</flag>
+</use>
+<upstream>
+	<remote-id type="github">cvsync/cvsync</remote-id>
+</upstream>
+</pkgmetadata>

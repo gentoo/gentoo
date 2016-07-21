@@ -1,0 +1,35 @@
+Description: Do not export docked window menubars to desktop panel
+Author: Aurélien Gâteau <aurelien.gateau@canonical.com>
+Forwarded: Sent to http://groups.google.com/group/qtoctave-english
+Bug-Ubuntu: https://bugs.launchpad.net/appmenu-qt/+bug/673210
+Index: qtoctave-0.10.1/qtoctave/src/basewidget.cpp
+===================================================================
+--- qtoctave-0.10.1.orig/qtoctave/src/basewidget.cpp	2011-01-06 22:48:07.000000000 +0100
++++ qtoctave-0.10.1/qtoctave/src/basewidget.cpp	2011-09-14 11:03:11.000000000 +0200
+@@ -30,6 +30,7 @@
+ 	//setFocusPolicy(Qt::StrongFocus);
+ 	session=NULL;
+ 	QWidget *central=new QWidget(this);
++	menuBar()->setNativeMenuBar(false);
+ 	setCentralWidget(central);
+ 	
+ 	QMenu *windows_menu=menuBar()->addMenu(tr("View"));
+Index: qtoctave-0.10.1/qtoctave/src/mainwindow.cpp
+===================================================================
+--- qtoctave-0.10.1.orig/qtoctave/src/mainwindow.cpp	2011-01-06 22:48:07.000000000 +0100
++++ qtoctave-0.10.1/qtoctave/src/mainwindow.cpp	2011-09-14 12:03:14.000000000 +0200
+@@ -39,7 +39,13 @@
+ 	setSession(session);
+ 	setWindowIcon(QIcon(QString(ICON_PATH) + "/qtoctave.png"));
+ 
+-	menuBar()->clear();
++	//The menubar provided by BaseWidget is set as not-native to avoid showing up
++	//in top-panel menubars on desktops like Unity, but we want a native menubar
++	//here, and we also want to get rid of the generic "View" item BaseWidget
++	//added to the menubar. Setting a new menubar is the simplest way to do this
++	//(the old one gets deleted).
++	//[1] https://bugs.launchpad.net/appmenu-qt/+bug/673210
++	setMenuBar(new QMenuBar());
+ 
+ 	setWindowTitle("QtOctave ["+session->getProjectName()+"]");
+ 	//resize(QSize(800, 600).expandedTo(minimumSizeHint()));

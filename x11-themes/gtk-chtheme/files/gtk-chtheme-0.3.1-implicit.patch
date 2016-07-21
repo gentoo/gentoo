@@ -1,0 +1,12 @@
+diff -aur gtk-chtheme-0.3.1-orig/Makefile gtk-chtheme-0.3.1/Makefile
+--- gtk-chtheme-0.3.1-orig/Makefile	2004-02-09 12:08:41.000000000 -0500
++++ gtk-chtheme-0.3.1/Makefile	2008-06-27 12:19:02.000000000 -0400
+@@ -4,7 +4,7 @@
+ 
+ LDFLAGS = $(shell pkg-config --libs gtk+-2.0)
+ CFLAGS += -Wall
+-CFLAGS += $(shell pkg-config --cflags gtk+-2.0) -DGTK_DISABLE_BROKEN -DGTK_DISABLE_DEPRECATED
++CFLAGS += $(shell pkg-config --cflags gtk+-2.0) -DGTK_DISABLE_BROKEN
+ CFLAGS += -DPROJNAME='"$(PROJNAME)"' -DVERSION='"$(VERSION)"'
+ CPPFLAGS =
+ CXXFLAGS =

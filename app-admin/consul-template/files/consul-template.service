@@ -1,0 +1,15 @@
+[Unit]
+Description=consul-template daemon
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=consul-template
+Environment=CONSUL_TEMPLATE_DAEMON_OPTS="-config=/etc/consul-template.d"
+ExecStart=/usr/bin/consul-template $CONSUL_TEMPLATE_DAEMON_OPTS
+Restart=on-failure
+SuccessExitStatus=12
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=default.target

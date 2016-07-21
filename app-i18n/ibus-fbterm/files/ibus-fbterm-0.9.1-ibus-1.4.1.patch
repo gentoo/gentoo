@@ -1,0 +1,23 @@
+diff -Nurap ibus-fbterm-0.9.1.orig//src/display.c ibus-fbterm-0.9.1//src/display.c
+--- ibus-fbterm-0.9.1.orig//src/display.c	2012-06-06 17:59:26.000000000 +0900
++++ ibus-fbterm-0.9.1//src/display.c	2012-06-06 18:05:22.000000000 +0900
+@@ -212,7 +212,7 @@ static void calculate_status_win()
+ 		IBusProperty *prop = ibus_prop_list_get(property_list, i);
+ 		if (!prop) break;
+ 
+-		w += text_width(prop->label->text);
++		w += text_width(ibus_property_get_label(prop)->text);
+ 	}
+ 
+ 	status_bar_win.x = cursor_x;
+@@ -238,8 +238,8 @@ static void draw_status_bar()
+ 		IBusProperty *prop = ibus_prop_list_get(property_list, i);
+ 		if (!prop) break;
+ 
+-		draw_text(x, y, COLOR_FG, COLOR_BG, prop->label->text, strlen(prop->label->text));
+-		x += FW(text_width(prop->label->text));
++		draw_text(x, y, COLOR_FG, COLOR_BG, ibus_property_get_label(prop)->text, strlen(ibus_property_get_label(prop)->text));
++		x += FW(text_width(ibus_property_get_label(prop)->text));
+ 
+ 		char space = ' ';
+ 		draw_text(x, y, COLOR_FG, COLOR_BG, &space, 1);

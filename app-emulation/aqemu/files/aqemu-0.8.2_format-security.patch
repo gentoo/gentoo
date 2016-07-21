@@ -1,0 +1,38 @@
+--- aqemu-0.8.2-orig/Utils.cpp
++++ aqemu-0.8.2-format-security/Utils.cpp
+@@ -66,9 +66,9 @@ void AQDebug( const QString &sender, con
+ 		std::cout << QString( "\nAQEMU Debug [%1] >>>\nSender: %2\nMessage: %3" )
+ 							  .arg(Messages_Index).arg(sender).arg(mes).toStdString();
+ 	#else
+-		qDebug( qPrintable(QString(
++		qDebug() << qPrintable(QString(
+ 			"\n\33[32mAQEMU Debug\33[0m [%1] >>>\n\33[32mSender:\33[0m %2\n\33[32mMessage:\33[0m %3")
+-			.arg(Messages_Index).arg(sender).arg(mes)) );
++			.arg(Messages_Index).arg(sender).arg(mes));
+ 	#endif
+ 	}
+ 	
+@@ -87,9 +87,9 @@ void AQWarning( const QString &sender, c
+ 		std::cout << QString( "\nAQEMU Warning [%1] >>>\nSender: %2\nMessage: %3" )
+ 							  .arg(Messages_Index).arg(sender).arg(mes).toStdString();
+ 	#else
+-		qDebug( qPrintable(QString(
++		qDebug() << qPrintable(QString(
+ 			"\n\33[34mAQEMU Warning\33[0m [%1] >>>\n\33[34mSender:\33[0m %2\n\33[34mMessage:\33[0m %3")
+-			.arg(Messages_Index).arg(sender).arg(mes)) );
++			.arg(Messages_Index).arg(sender).arg(mes));
+ 	#endif
+ 	}
+ 	
+@@ -108,9 +108,9 @@ void AQError( const QString &sender, con
+ 		std::cout << QString( "\nAQEMU Error [%1] >>>\nSender: %2\nMessage: %3" )
+ 							  .arg(Messages_Index).arg(sender).arg(mes).toStdString();
+ 	#else
+-		qDebug( qPrintable(QString(
++		qDebug() << qPrintable(QString(
+ 			"\n\33[31mAQEMU Error\33[0m [%1] >>>\n\33[31mSender:\33[0m %2\n\33[31mMessage:\33[0m %3")
+-			.arg(Messages_Index).arg(sender).arg(mes)) );
++			.arg(Messages_Index).arg(sender).arg(mes));
+ 	#endif
+ 	}
+ 	

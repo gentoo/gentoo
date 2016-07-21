@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -46,7 +46,7 @@
+ AC_FUNC_STRTOD
+ AC_CHECK_FUNCS([fdatasync getpagesize gettimeofday memmove memset mkdir munmap pow realpath regcomp select setlocale socket sqrt strcasecmp strchr strdup strerror strncasecmp strstr strtoul strtoull])
+ 
+-AC_SEARCH_LIBS([delwin], [ncursesw ncurses], [], AC_MSG_ERROR([ncurses is required but was not found]), [])
++PKG_CHECK_MODULES(ncurses, ncurses, [LIBS="$LIBS $ncurses_LIBS"], AC_MSG_ERROR([ncurses is required but was not found]))
+ 
+ has_libpci=0
+ PKG_CHECK_MODULES([PCIUTILS], [libpci],[has_libpci=1],[

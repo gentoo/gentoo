@@ -1,0 +1,13 @@
+#
+# Pure-FTPd FTP daemon - http://www.pureftpd.org
+#
+service ftp
+{
+       socket_type	= stream
+       wait		= no
+       user		= root
+       server		= /usr/sbin/pure-ftpd
+       server_args	= -s -a 42
+       protocol		= tcp
+       disable		= yes
+}

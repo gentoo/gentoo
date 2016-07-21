@@ -1,0 +1,54 @@
+From 8bfe3752c3a0a4db49a879048cdd089da6c45ed0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Thu, 26 Jun 2014 19:04:54 +0200
+Subject: [PATCH] Add libraries using LIBADD instead of LDFLAGS
+
+---
+ xlators/encryption/crypt/src/Makefile.am  | 6 +++---
+ xlators/features/compress/src/Makefile.am | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/xlators/encryption/crypt/src/Makefile.am b/xlators/encryption/crypt/src/Makefile.am
+index b13f650..d7ebac6 100644
+--- a/xlators/encryption/crypt/src/Makefile.am
++++ b/xlators/encryption/crypt/src/Makefile.am
+@@ -3,10 +3,10 @@ if ENABLE_CRYPT_XLATOR
+ xlator_LTLIBRARIES = crypt.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/encryption
+ 
+-crypt_la_LDFLAGS = -module -avoid-version -lssl -lcrypto
++crypt_la_LDFLAGS = -module -avoid-version
+ 
+ crypt_la_SOURCES = keys.c data.c metadata.c atom.c crypt.c
+-crypt_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
++crypt_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la -lssl -lcrypto
+ 
+ noinst_HEADERS = crypt-common.h crypt-mem-types.h crypt.h metadata.h
+ 
+@@ -21,4 +21,4 @@ else
+ noinst_DIST = keys.c data.c metadata.c atom.c crypt.c
+ noinst_HEADERS = crypt-common.h crypt-mem-types.h crypt.h metadata.h
+ 
+-endif
+\ No newline at end of file
++endif
+diff --git a/xlators/features/compress/src/Makefile.am b/xlators/features/compress/src/Makefile.am
+index 0bf757c..d3abe03 100644
+--- a/xlators/features/compress/src/Makefile.am
++++ b/xlators/features/compress/src/Makefile.am
+@@ -4,10 +4,10 @@ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+ noinst_HEADERS = cdc.h cdc-mem-types.h
+ 
+-cdc_la_LDFLAGS = -module -avoid-version $(LIBZ_LIBS)
++cdc_la_LDFLAGS = -module -avoid-version
+ 
+ cdc_la_SOURCES = cdc.c cdc-helper.c
+-cdc_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
++cdc_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la $(LIBZ_LIBS)
+ 
+ AM_CPPFLAGS = $(GF_CPPFLAGS) -I$(top_srcdir)/libglusterfs/src -fPIC -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE -D$(GF_HOST_OS) \
+ -shared -nostartfiles  $(LIBZ_CFLAGS)
+-- 
+1.9.2
+

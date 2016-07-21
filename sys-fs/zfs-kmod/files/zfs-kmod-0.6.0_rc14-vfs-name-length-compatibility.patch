@@ -1,0 +1,36 @@
+From 7f235381a0e501df55ebe2de10b69124e928d175 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Mon, 11 Feb 2013 12:55:24 -0800
+Subject: [PATCH] Add explicit MAXNAMELEN check
+
+It turns out that the Linux VFS doesn't strictly handle all cases
+where a component path name exceeds MAXNAMELEN.  It does however
+appear to correctly handle MAXPATHLEN for us.
+
+The right way to handle this appears to be to add an explicit
+check to the zpl_lookup() function.  Several in-tree filesystems
+handle this case the same way.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #1279
+---
+ module/zfs/zpl_inode.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/module/zfs/zpl_inode.c b/module/zfs/zpl_inode.c
+index e406288..8c8ec24 100644
+--- a/module/zfs/zpl_inode.c
++++ b/module/zfs/zpl_inode.c
+@@ -41,6 +41,9 @@
+ 	struct inode *ip;
+ 	int error;
+ 
++	if (dlen(dentry) > ZFS_MAXNAMELEN)
++		return ERR_PTR(-ENAMETOOLONG);
++
+ 	crhold(cr);
+ 	error = -zfs_lookup(dir, dname(dentry), &ip, 0, cr, NULL, NULL);
+ 	ASSERT3S(error, <=, 0);
+-- 
+1.7.10
+

@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt	2015-10-02 22:36:55.186480671 +0200
++++ b/CMakeLists.txt	2015-10-02 22:38:40.048169719 +0200
+@@ -17,6 +17,7 @@
+ include(ECMSetupVersion)
+ include(ECMInstallIcons)
+ include(ECMMarkAsTest)
++include(ECMOptionalAddSubdirectory)
+ include(GenerateExportHeader)
+ include(FeatureSummary)
+ include(KDEInstallDirs)
+@@ -62,7 +63,7 @@
+ install(FILES kde-gtk-config.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+ 
+ add_subdirectory(gtkproxies)
+-add_subdirectory(gtk3proxies)
++ecm_optional_add_subdirectory(gtk3proxies)
+ add_subdirectory(icons)
+ add_subdirectory(tests)
+ 

@@ -1,0 +1,25 @@
+###################################################################
+# Added by Tavis Ormandy <taviso@gentoo.org> 01/05/2003
+# Reproduce with
+#
+#  $ xargs <<< ${EMTPY_VARIABLE}
+#  Segmentation fault.
+#
+# note: bash will still give you a "\n" with this patch, but this is
+# standard behaviour, if you need proof:
+#
+#  $ wc -l <<< ""
+###############################
+
+--- bash-2.05b/redir.c
++++ bash-2.05b/redir.c
+@@ -263,7 +263,7 @@
+   int herelen, n, e;
+ 
+   herestr = expand_string_to_string (redirectee->word, 0);
+-  herelen = strlen (herestr);
++  herelen = (herestr == NULL) ? 0 : strlen (herestr);
+ 
+   n = write (fd, herestr, herelen);
+   if (n == herelen)
+     {

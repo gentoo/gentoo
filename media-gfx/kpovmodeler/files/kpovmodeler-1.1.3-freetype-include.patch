@@ -1,0 +1,15 @@
+Use the correct freetype include directory to avoid a build failure.
+
+Gentoo bug #467998.
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -11,7 +11,7 @@
+ 
+ configure_file(config-kpovmodeler.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kpovmodeler.h )
+ 
+-include_directories(${FREETYPE_INCLUDE_DIR})
++include_directories(${FREETYPE_INCLUDE_DIRS})
+ add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
+ 
+ ########### next target ###############

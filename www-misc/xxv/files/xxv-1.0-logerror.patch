@@ -1,0 +1,29 @@
+--- html/bloecke/tooltip.tmpl   (Revision 1189)
++++ html/bloecke/tooltip.tmpl   (Arbeitskopie)
+@@ -7,6 +7,6 @@
+       IF !ttp_offset;ttp_offset = 0;END %?>
+                     <a href="<?% IF link;link;ELSE;"#";END %?>"<?% IF eventid %?> 
+                        onmouseover="ttpreq(this, '<?% escape(title) %?>
+-                                                   <?% IF subtitle.length > 0 %?>~<?% escape(subtitle) %?>
++                                                   <?% IF subtitle && subtitle.length > 0 %?>~<?% escape(subtitle) %?>
+                                                    <?% END %?>',<?% eventid %?>, <?% ttp_offset %?>);"
+                       <?% END %?> >
+Index: html/tlist.tmpl
+===================================================================
+--- html/tlist.tmpl     (Revision 1189)
++++ html/tlist.tmpl     (Arbeitskopie)
+@@ -51,10 +51,10 @@
+ <?% END %?>
+         </tr>
+         <?% FOREACH zeile = data %?>
+-            <?% aktiv = ( zeile.1 mod 2 );
+-                vps = zeile.1 mod 8 div 4;
++            <?% aktiv= ( zeile.1 ? zeile.1 mod 2 : 0 );
++                vps= ( zeile.1 ? zeile.1 mod 8 div 4 : 0 );
+                 day = date.format(zeile.9, "%A, %x", locale);
+-                IF aktiv; rest = rest - zeile.last; END;
++                IF aktiv; rest = rest - zeile.13; END;
+             %?>
+             <?% IF oldDay != day %?>
+             <tr><td colspan='<?% zeile.size + 1 %?>' bgcolor='#DDDDDD'><b><?% day %?></b></td><tr>
+

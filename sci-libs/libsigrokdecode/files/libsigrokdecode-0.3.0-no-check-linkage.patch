@@ -1,0 +1,30 @@
+http://sourceforge.net/p/sigrok/mailman/message/32459770/
+
+From 27ecf0c85482786f7617571c690797ab3f07f795 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 14 Jun 2014 01:38:58 -0400
+Subject: [PATCH 2/2] do not add check to common cflags/libs
+
+Only the unittests use these flags, so don't go linking them in for
+the main library too.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3f661ec..10213a7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -134,8 +134,7 @@ AC_SEARCH_LIBS([pow], [m])
+ 
+ # The Check unit testing framework is optional. Disable if not found.
+ PKG_CHECK_MODULES([check], [check >= 0.9.4],
+-	[have_check="yes"; CFLAGS="$CFLAGS $check_CFLAGS";
+-	LIBS="$LIBS $check_LIBS"], [have_check="no"])
++	[have_check="yes"], [have_check="no"])
+ AM_CONDITIONAL(HAVE_CHECK, test x"$have_check" = "xyes")
+ 
+ # libsigrok is optional (only used for the protocol decoder test framework).
+-- 
+2.0.0
+

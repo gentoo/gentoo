@@ -1,0 +1,2 @@
+# >=dev-lang/python-3.2 requires threads, #494744
+=dev-lang/python-3* threads

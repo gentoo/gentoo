@@ -1,0 +1,54 @@
+--- gwave2-20090213.orig/src/Makefile.am	2008-01-22 05:36:59.000000000 +0100
++++ gwave2-20090213/src/Makefile.am	2010-02-06 18:10:38.011218381 +0100
+@@ -15,8 +15,7 @@
+ 	rgeval.c xgserver.c measurebtn.c measurebtn.h \
+ 	GtkTable_indel.c GtkTable_indel.h  xsnarf.h
+ 
+-gwave_LDADD = ../spicefile/libspicefile.a  @GTK_LIBS@ @GUILE_GNOME_LIBS@ 
+-gwave_LDFLAGS =  @GUILE_LDFLAGS@
++gwave_LDADD = ../spicefile/libspicefile.a  @GTK_LIBS@ @GUILE_GNOME_LIBS@ @GUILE_LDFLAGS@
+ 
+ AM_CFLAGS = @GTK_CFLAGS@ @GUILE_CFLAGS@ @GUILE_GNOME_CFLAGS@ \
+ 	-DDATADIR=\"$(datadir)\" -DBINGWAVE=\"$(bindir)/gwave\"
+--- gwave2-20090213.orig/spicefile/Makefile.am	2008-01-22 05:31:45.000000000 +0100
++++ gwave2-20090213/spicefile/Makefile.am	2010-02-06 18:11:53.008964326 +0100
+@@ -10,11 +10,9 @@
+ 
+ noinst_PROGRAMS = test_read
+ test_read_SOURCES =  test_read.c
+-test_read_LDFLAGS = @GTK_LIBS@
+-test_read_LDADD = libspicefile.a
++test_read_LDADD = libspicefile.a @GTK_LIBS@
+ 
+ bin_PROGRAMS=sp2sp
+ sp2sp_SOURCES=sp2sp.c
+-sp2sp_LDFLAGS= @GTK_LIBS@
+-sp2sp_LDADD= libspicefile.a
++sp2sp_LDADD= libspicefile.a @GTK_LIBS@
+ 
+--- gwave2-20090213.orig/configure.ac	2009-02-13 06:00:57.000000000 +0100
++++ gwave2-20090213/configure.ac	2010-02-06 18:23:11.522964311 +0100
+@@ -84,7 +84,8 @@
+ dnl GUILE_MODULE_REQUIRED(gnome gtk)
+ 
+ PKG_CHECK_MODULES(GUILE_GNOME, guile-gnome-gtk-2, ,AC_MSG_ERROR(Can not find Guile-gnome-platform))
+-
++PKG_CHECK_MODULES([X11], [x11])
++PKG_CHECK_MODULES([GLIB], [glib-2.0])
+ dnl remind myself how to check for somthing I know exists
+ dnl GUILE_MODULE_EXPORTS(foo_widget_show, (gnome-0)(gnome gtk),gtk-widget-show)
+ dnl if test "$foo_widget_show" = yes; then
+--- gwave2-20090213.orig/remote/Makefile.am	2010-02-06 18:33:14.340215309 +0100
++++ gwave2-20090213/remote/Makefile.am	2010-02-06 18:34:19.810967947 +0100
+@@ -4,7 +4,9 @@
+ AM_CFLAGS = @GTK_CFLAGS@ 
+ bin_PROGRAMS=gwave-exec gwaverepl
+ gwave_exec_SOURCES=gwave-exec.c xgclient.c xgexec.h
+-gwave_exec_LDADD= @GTK_LIBS@
++gwave_exec_CFLAGS= @X11_CFLAGS@
++gwave_exec_LDADD= @GTK_LIBS@ @X11_LIBS@
+ 
+ gwaverepl_SOURCES=gwaverepl.c xgclient.c xgexec.h repllib.c
+-gwaverepl_LDADD= @GTK_LIBS@ @READLINE_LIB@
++gwaverepl_CFLAGS= @X11_CFLAGS@ @GLIB_CFLAGS@
++gwaverepl_LDADD= @GTK_LIBS@ @READLINE_LIB@ @X11_LIBS@ @GLIB_LIBS@

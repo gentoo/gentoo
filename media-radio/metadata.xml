@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-radio category contains radio-related media applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-radio enthält Applikationen zum Thema Amateur Radio.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-radio contiene aplicaciones de media para radio.
+	</longdescription>
+	<longdescription lang="ja">
+		media-radioカテゴリーにはラジオ関連のメディア・アプリケーションが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-radio categorie bevat radio-gerelateerde applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-radio chứa các ứng dụng liên quan đến radio.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-radio contiene applicazioni per la radio.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-radio contém aplicações de mídia para rádio.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-radio zawiera oprogramowanie multimedialne związane z
+		radiem.
+	</longdescription>
+</catmetadata>
+

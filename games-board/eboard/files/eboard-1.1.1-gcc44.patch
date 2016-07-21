@@ -1,0 +1,11 @@
+--- ntext.cc
++++ ntext.cc
+@@ -244,7 +244,7 @@
+     return;
+   }
+ 
+-  p = strchr(text, '\n');
++  p = strchr((char *)text, '\n');
+   if (p!=NULL) {
+     *p = 0;
+     i = strlen(text);

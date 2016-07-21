@@ -1,0 +1,140 @@
+--- fdutils-5.5/doc/Makefile.in.orig	2005-07-16 19:54:56.000000000 +1000
++++ fdutils-5.5/doc/Makefile.in	2005-07-16 20:00:42.000000000 +1000
+@@ -79,68 +79,68 @@
+ 
+ # Don't cd, to avoid breaking install-sh references.
+ install-info: info
+-	$(top_srcdir)/mkinstalldirs $(infodir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(infodir)
+ 	if test -f fdutils.info; then \
+ 	  for i in fdutils.info*; do \
+-	    $(INSTALL_DATA) $$i $(infodir)/$$i; \
++	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i; \
+ 	  done; \
+ 	else \
+ 	  for i in $(srcdir)/fdutils.info*; do \
+-	    $(INSTALL_DATA) $$i $(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
++	    $(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/`echo $$i | sed 's|^$(srcdir)/||'`; \
+ 	  done; \
+ 	fi; \
+ 	if [ -n "$(INSTALL_INFO)" ] ; then \
+ 		if [ -f $(infodir)/dir.info ] ; then \
+-			$(INSTALL_INFO) $(infodir)/fdutils.info $(infodir)/dir.info; \
++			$(INSTALL_INFO) $(DESTDIR)$(infodir)/fdutils.info $(DESTDIR)$(infodir)/dir.info; \
+ 		fi; \
+ 		if [ -f $(infodir)/dir ] ; then \
+-			$(INSTALL_INFO) $(infodir)/fdutils.info $(infodir)/dir; \
++			$(INSTALL_INFO) $(DESTDIR)$(infodir)/fdutils.info $(DESTDIR)$(infodir)/dir; \
+ 		fi; \
+ 	fi
+ 
+ 
+ 
+ install-man:
+-	$(top_srcdir)/mkinstalldirs $(mandir1)
+-	$(top_srcdir)/mkinstalldirs $(mandir4)
+-	$(top_srcdir)/mkinstalldirs $(mandir8)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir1)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir4)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir8)
+ 	for i in $(MANPAGES1); do \
+ 		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-			$(srcdir)/$$i $(mandir1)/$$i; \
++			$(srcdir)/$$i $(DESTDIR)$(mandir1)/$$i; \
+ 	done
+ 
+ 	for i in $(MANPAGES4); do \
+ 		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-			$(srcdir)/$$i $(mandir4)/$$i; \
++			$(srcdir)/$$i $(DESTDIR)$(mandir4)/$$i; \
+ 	done
+ 
+ #	for i in $(MANPAGES8); do \
+ #		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-#			$(srcdir)/$$i $(mandir8)/$$i; \
++#			$(srcdir)/$$i $(DESTDIR)$(mandir8)/$$i; \
+ #	done
+ 
+-	( cd $(mandir1); \
+-		ln -sf fdmount.1 $(mandir1)/fdumount.1; \
+-		ln -sf fdmount.1 $(mandir1)/fdlist.1; \
+-		ln -sf fdmount.1 $(mandir1)/fdmountd.1; \
+-		ln -sf xdfcopy.1 $(mandir1)/xdfformat.1 \
++	( cd $(DESTDIR)$(mandir1); \
++		ln -sf fdmount.1 $(DESTDIR)$(mandir1)/fdumount.1; \
++		ln -sf fdmount.1 $(DESTDIR)$(mandir1)/fdlist.1; \
++		ln -sf fdmount.1 $(DESTDIR)$(mandir1)/fdmountd.1; \
++		ln -sf xdfcopy.1 $(DESTDIR)$(mandir1)/xdfformat.1 \
+ 	)
+ 
+ install-zman:
+ 	for i in $(MANPAGES1); do \
+ 		gzip < $(srcdir)/$$i >_; \
+ 		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-			_ $(mandir1)/$$i.gz; \
++			_ $(DESTDIR)$(mandir1)/$$i.gz; \
+ 	done
+ 	for i in $(MANPAGES4); do \
+ 		gzip < $(srcdir)/$$i >_; \
+ 		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-			_ $(mandir4)/$$i.gz; \
++			_ $(DESTDIR)$(mandir4)/$$i.gz; \
+ 	done
+ 	for i in $(MANPAGES8); do \
+ 		gzip < $(srcdir)/$$i >_; \
+ 		install -c -m $(MANPERM) -o $(UID) -g $(GID) \
+-			_ $(mandir8)/$$i.gz; \
++			_ $(DESTDIR)$(mandir8)/$$i.gz; \
+ 	done
+ 	rm _
+ 
+--- fdutils-5.5/src/Makefile.in.orig	2005-07-16 19:51:09.000000000 +1000
++++ fdutils-5.5/src/Makefile.in	2005-07-16 19:54:39.000000000 +1000
+@@ -116,27 +116,27 @@
+ 
+ 
+ install-conf:
+-	$(top_srcdir)/mkinstalldirs $(syconfdir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(syconfdir)
+ 	if [ ! -f $(sysconfdir)/mediaprm ] ; then \
+-		cp $(srcdir)/mediaprm  $(sysconfdir) ; \
++		cp $(srcdir)/mediaprm  $(DESTDIR)$(sysconfdir) ; \
+ 	fi
+ 
+ install-bin: all
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL) -c -m $(PERM) -o $(UID) -g $(GID) $(srcdir)/MAKEFLOPPIES $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) diskd $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) diskseekd $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) floppycontrol $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) floppymeter $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) getfdprm $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) setfdprm $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) fdrawcmd $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) superformat $(bindir)
+-	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) xdfcopy $(bindir)
+-	$(INSTALL) -c -s -m $(SPERM) -o $(UID) -g $(GID) fdmount $(bindir)
+-	$(INSTALL) -c -s -m $(SPERM) -o $(UID) -g $(GID) fdmount $(bindir)/fdumount
+-	( cd $(bindir); \
+-	ln -sf xdfcopy $(bindir)/xdfformat; \
+-	ln -sf fdmount $(bindir)/fdumount; \
+-	ln -sf fdmount $(bindir)/fdlist; \
+-	ln -sf fdmount $(bindir)/fdmountd )
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL) -c -m $(PERM) -o $(UID) -g $(GID) $(srcdir)/MAKEFLOPPIES $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) diskd $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) diskseekd $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) floppycontrol $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) floppymeter $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) getfdprm $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) setfdprm $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) fdrawcmd $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) superformat $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(PERM) -o $(UID) -g $(GID) xdfcopy $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(SPERM) -o $(UID) -g $(GID) fdmount $(DESTDIR)$(bindir)
++	$(INSTALL) -c -s -m $(SPERM) -o $(UID) -g $(GID) fdmount $(DESTDIR)$(bindir)/fdumount
++	( cd $(DESTDIR)$(bindir); \
++	ln -sf xdfcopy xdfformat; \
++	ln -sf fdmount fdumount; \
++	ln -sf fdmount fdlist; \
++	ln -sf fdmount fdmountd )

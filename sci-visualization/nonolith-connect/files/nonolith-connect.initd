@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+	after logger
+}
+
+start() {
+	ebegin "Starting nonolith-connect"
+	start-stop-daemon --start --quiet -b -m -p /var/run/nonolith-connect.pid -u nonolithd:usb --exec /usr/bin/nonolith-connect
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping nonolith-connect"
+	start-stop-daemon --stop --quiet -p /var/run/nonolith-connect.pid
+	eend $?
+}

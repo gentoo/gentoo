@@ -1,0 +1,17 @@
+diff --git a/Makefile.in b/Makefile.in
+index 4f14819..1092891 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -9,9 +9,9 @@ prefix=@prefix@
+ eprefix=@exec_prefix@
+ #MORE_WARNINGS=-Weffc++
+ WFLAGS=-Wall -W -Wshadow -Wpointer-arith -Wwrite-strings -pedantic -ffor-scope -Wcast-align -Wsign-compare -Wpointer-arith -Wwrite-strings -Wformat-security -Wswitch-enum -Winit-self $(MORE_WARNINGS)
+-CFLAGS=-O2 @debug@ -DNDEBUG $(WFLAGS) $(MORECFLAGS)
+-CXX=@CXX@ $(CFLAGS)
+-LINK=@CXX@
++CXXFLAGS += @debug@ -DNDEBUG $(WFLAGS)
++CXX=@CXX@ $(CXXFLAGS)
++LINK=@CXX@ $(LDFLAGS)
+ THREAD_LFLAGS=@thread_ldflags@
+ 
+ INSTALL=@INSTALL@

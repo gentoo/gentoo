@@ -1,0 +1,3 @@
+# Switch ABI flags for this arch.
+abi_s390_32
+-abi_s390_64

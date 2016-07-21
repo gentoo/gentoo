@@ -1,0 +1,625 @@
+Patch for autohide issue https://github.com/lxde/lxqt/issues/871
+taken from https://github.com/lxde/lxqt-panel/pull/275
+
+diff --git panel/CMakeLists.txt panel/CMakeLists.txt
+index 4e23b53..a7f8176 100644
+--- panel/CMakeLists.txt
++++ panel/CMakeLists.txt
+@@ -2,6 +2,7 @@ set(PROJECT lxqt-panel)
+ 
+ set(PRIV_HEADERS
+     panelpluginsmodel.h
++    windownotifier.h
+     lxqtpanel.h
+     lxqtpanelapplication.h
+     lxqtpanellayout.h
+@@ -26,6 +27,7 @@ set(PUB_HEADERS
+ set(SOURCES
+     main.cpp
+     panelpluginsmodel.cpp
++    windownotifier.cpp
+     lxqtpanel.cpp
+     lxqtpanelapplication.cpp
+     lxqtpanellayout.cpp
+diff --git panel/ilxqtpanel.h panel/ilxqtpanel.h
+index e7b2844..71e4990 100644
+--- panel/ilxqtpanel.h
++++ panel/ilxqtpanel.h
+@@ -32,6 +32,7 @@
+ #include "lxqtpanelglobals.h"
+ 
+ class ILXQtPanelPlugin;
++class QWidget;
+ 
+ /**
+  **/
+@@ -74,6 +75,17 @@ public:
+      **/
+     virtual QRect calculatePopupWindowPos(const QPoint &absolutePos, const QSize &windowSize) const = 0;
+     virtual QRect calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const = 0;
++
++    /*!
++     * \brief By calling this function plugin (or any other object) notifies the panel
++     * about showing a (standalone) window/menu -> panel needs this to avoid "hiding" in case any
++     * standalone window is shown. The widget must be shown later than this notification call because
++     * panel need to observe it's show/hide/close events.
++     *
++     * \param w the shown window
++     *
++     */
++    virtual void willShowWindow(QWidget * w) = 0;
+ };
+ 
+ #endif // ILXQTPANEL_H
+diff --git panel/ilxqtpanelplugin.h panel/ilxqtpanelplugin.h
+index 1503923..3a09def 100644
+--- panel/ilxqtpanelplugin.h
++++ panel/ilxqtpanelplugin.h
+@@ -186,6 +186,16 @@ public:
+         return mPanel->calculatePopupWindowPos(this, windowSize);
+     }
+ 
++    /*!
++     * \brief By calling this function plugin notifies the panel about showing a (standalone) window/menu.
++     *
++     * \param w the shown window
++     *
++     */
++    inline void willShowWindow(QWidget * w)
++    {
++        mPanel->willShowWindow(w);
++    }
+ 
+     virtual bool isSeparate() const { return false;  }
+     virtual bool isExpandable() const { return false; }
+diff --git panel/lxqtpanel.cpp panel/lxqtpanel.cpp
+index 5159c15..d6b70ca 100644
+--- panel/lxqtpanel.cpp
++++ panel/lxqtpanel.cpp
+@@ -35,6 +35,7 @@
+ #include "popupmenu.h"
+ #include "plugin.h"
+ #include "panelpluginsmodel.h"
++#include "windownotifier.h"
+ #include <LXQt/PluginInfo>
+ 
+ #include <QScreen>
+@@ -116,6 +117,7 @@ LXQtPanel::LXQtPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
+     mSettings(settings),
+     mConfigGroup(configGroup),
+     mPlugins{nullptr},
++    mStandaloneWindows{new WindowNotifier},
+     mPanelSize(0),
+     mIconSize(0),
+     mLineCount(0),
+@@ -175,6 +177,9 @@ LXQtPanel::LXQtPanel(const QString &configGroup, LXQt::Settings *settings, QWidg
+     connect(LXQt::Settings::globalSettings(), SIGNAL(settingsChanged()), this, SLOT(update()));
+     connect(lxqtApp, SIGNAL(themeChanged()), this, SLOT(realign()));
+ 
++    connect(mStandaloneWindows.data(), &WindowNotifier::firstShown, this, &LXQtPanel::showPanel);
++    connect(mStandaloneWindows.data(), &WindowNotifier::lastHidden, this, &LXQtPanel::hidePanel);
++
+     readSettings();
+     // the old position might be on a visible screen
+     ensureVisible();
+@@ -589,6 +594,7 @@ void LXQtPanel::showConfigDialog()
+         mConfigDialog = new ConfigPanelDialog(this, nullptr /*make it top level window*/);
+ 
+     mConfigDialog->showConfigPanelPage();
++    mStandaloneWindows->observeWindow(mConfigDialog.data());
+     mConfigDialog->show();
+     mConfigDialog->raise();
+     mConfigDialog->activateWindow();
+@@ -608,6 +614,7 @@ void LXQtPanel::showAddPluginDialog()
+         mConfigDialog = new ConfigPanelDialog(this, nullptr /*make it top level window*/);
+ 
+     mConfigDialog->showConfigPluginsPage();
++    mStandaloneWindows->observeWindow(mConfigDialog.data());
+     mConfigDialog->show();
+     mConfigDialog->raise();
+     mConfigDialog->activateWindow();
+@@ -967,6 +974,7 @@ void LXQtPanel::showPopupMenu(Plugin *plugin)
+      * of QDesktopWidget::availableGeometry)
+      */
+     menu->setGeometry(calculatePopupWindowPos(QCursor::pos(), menu->sizeHint()));
++    willShowWindow(menu);
+     menu->show();
+ }
+ 
+@@ -1043,6 +1051,14 @@ QRect LXQtPanel::calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const Q
+ /************************************************
+ 
+  ************************************************/
++void LXQtPanel::willShowWindow(QWidget * w)
++{
++    mStandaloneWindows->observeWindow(w);
++}
++
++/************************************************
++
++ ************************************************/
+ QString LXQtPanel::qssPosition() const
+ {
+     return positionToStr(position());
+@@ -1107,20 +1123,17 @@ void LXQtPanel::showPanel()
+ 
+ void LXQtPanel::hidePanel()
+ {
+-    if (mHidable && !mHidden)
++    if (mHidable && !mHidden
++            && !geometry().contains(QCursor::pos())
++            && !mStandaloneWindows->isAnyWindowShown()
++       )
+         mHideTimer.start();
+ }
+ 
+ void LXQtPanel::hidePanelWork()
+ {
+-    if (mHidable && !mHidden && !geometry().contains(QCursor::pos()))
+-    {
+-        mHidden = true;
+-        setPanelGeometry();
+-    } else
+-    {
+-        mHideTimer.start();
+-    }
++    mHidden = true;
++    setPanelGeometry();
+ }
+ 
+ void LXQtPanel::setHidable(bool hidable, bool save)
+@@ -1128,7 +1141,7 @@ void LXQtPanel::setHidable(bool hidable, bool save)
+     if (mHidable == hidable)
+         return;
+ 
+-    mHidable = mHidden = hidable;
++    mHidable = hidable;
+ 
+     if (save)
+         saveSettings(true);
+diff --git panel/lxqtpanel.h panel/lxqtpanel.h
+index 8ff4b8c..990063f 100644
+--- panel/lxqtpanel.h
++++ panel/lxqtpanel.h
+@@ -48,6 +48,7 @@ class PluginInfo;
+ class LXQtPanelLayout;
+ class ConfigPanelDialog;
+ class PanelPluginsModel;
++class WindowNotifier;
+ 
+ /*! \brief The LXQtPanel class provides a single lxqt-panel.
+  */
+@@ -80,11 +81,12 @@ public:
+     void showPopupMenu(Plugin *plugin = 0);
+ 
+     // ILXQtPanel .........................
+-    ILXQtPanel::Position position() const { return mPosition; }
+-    QRect globalGometry() const;
++    ILXQtPanel::Position position() const override { return mPosition; }
++    QRect globalGometry() const override;
+     Plugin *findPlugin(const ILXQtPanelPlugin *iPlugin) const;
+-    QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const;
+-    QRect calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const;
++    QRect calculatePopupWindowPos(QPoint const & absolutePos, QSize const & windowSize) const override;
++    QRect calculatePopupWindowPos(const ILXQtPanelPlugin *plugin, const QSize &windowSize) const override;
++    void willShowWindow(QWidget * w) override;
+ 
+     // For QSS properties ..................
+     QString qssPosition() const;
+@@ -95,8 +97,8 @@ public:
+ 
+     // Settings
+     int panelSize() const { return mPanelSize; }
+-    int iconSize() const { return mIconSize; }
+-    int lineCount() const { return mLineCount; }
++    int iconSize() const override { return mIconSize; }
++    int lineCount() const override { return mLineCount; }
+     int length() const { return mLength; }
+     bool lengthInPercents() const { return mLengthInPercents; }
+     LXQtPanel::Alignment alignment() const { return mAlignment; }
+@@ -138,8 +140,8 @@ signals:
+     void pluginRemoved();
+ 
+ protected:
+-    bool event(QEvent *event);
+-    void showEvent(QShowEvent *event);
++    bool event(QEvent *event) override;
++    void showEvent(QShowEvent *event) override;
+ 
+ public slots:
+     void showConfigDialog();
+@@ -156,6 +158,7 @@ private:
+     QFrame *LXQtPanelWidget;
+     QString mConfigGroup;
+     QScopedPointer<PanelPluginsModel> mPlugins;
++    QScopedPointer<WindowNotifier> mStandaloneWindows; //!< object for storing info if some standalone window is shown (for preventing hide)
+ 
+     int findAvailableScreen(LXQtPanel::Position position);
+     void updateWmStrut();
+diff --git panel/plugin.cpp panel/plugin.cpp
+index a4acc78..be23a8e 100644
+--- panel/plugin.cpp
++++ panel/plugin.cpp
+@@ -477,6 +477,7 @@ void Plugin::showConfigureDialog()
+     if (!dialog)
+         return;
+ 
++    mPanel->willShowWindow(dialog);
+     dialog->show();
+     dialog->raise();
+     dialog->activateWindow();
+diff --git panel/windownotifier.cpp panel/windownotifier.cpp
+new file mode 100644
+index 0000000..0b41057
+--- /dev/null
++++ panel/windownotifier.cpp
+@@ -0,0 +1,65 @@
++/* BEGIN_COMMON_COPYRIGHT_HEADER
++ * (c)LGPL2+
++ *
++ * LXQt - a lightweight, Qt based, desktop toolset
++ * http://lxqt.org
++ *
++ * Copyright: 2015 LXQt team
++ * Authors:
++ *   Palo Kisa <palo.kisa@gmail.com>
++ *
++ * This program or library is free software; you can redistribute it
++ * and/or modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++ * Boston, MA 02110-1301 USA
++ *
++ * END_COMMON_COPYRIGHT_HEADER */
++
++#include "windownotifier.h"
++#include <QWidget>
++#include <QEvent>
++
++void WindowNotifier::observeWindow(QWidget * w)
++{
++    //installing the same filter object multiple times doesn't harm
++    w->installEventFilter(this);
++}
++
++
++bool WindowNotifier::eventFilter(QObject * watched, QEvent * event)
++{
++    QWidget * widget = qobject_cast<QWidget *>(watched); //we're observing only QWidgetw
++    auto it = std::lower_bound(mShownWindows.begin(), mShownWindows.end(), widget);
++    switch (event->type())
++    {
++        case QEvent::Close:
++            watched->removeEventFilter(this);
++            //no break
++        case QEvent::Hide:
++            Q_ASSERT(mShownWindows.end() != it);
++            mShownWindows.erase(it);
++            if (mShownWindows.isEmpty())
++                emit lastHidden();
++            break;
++        case QEvent::Show:
++            {
++                const bool first_shown = mShownWindows.isEmpty();
++                mShownWindows.insert(it, widget); //we keep the mShownWindows sorted
++                if (first_shown)
++                    emit firstShown();
++            }
++        default:
++            break;
++    }
++    return false;
++}
+diff --git panel/windownotifier.h panel/windownotifier.h
+new file mode 100644
+index 0000000..53f2f3f
+--- /dev/null
++++ panel/windownotifier.h
+@@ -0,0 +1,53 @@
++/* BEGIN_COMMON_COPYRIGHT_HEADER
++ * (c)LGPL2+
++ *
++ * LXQt - a lightweight, Qt based, desktop toolset
++ * http://lxqt.org
++ *
++ * Copyright: 2015 LXQt team
++ * Authors:
++ *   Palo Kisa <palo.kisa@gmail.com>
++ *
++ * This program or library is free software; you can redistribute it
++ * and/or modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++
++ * You should have received a copy of the GNU Lesser General
++ * Public License along with this library; if not, write to the
++ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++ * Boston, MA 02110-1301 USA
++ *
++ * END_COMMON_COPYRIGHT_HEADER */
++
++#if !defined(WINDOWNOTIFIER_H)
++#define WINDOWNOTIFIER_H
++
++#include <QObject>
++
++class QWidget;
++
++class WindowNotifier : public QObject
++{
++    Q_OBJECT
++public:
++    using QObject::QObject;
++
++    void observeWindow(QWidget * w);
++    inline bool isAnyWindowShown() const { return !mShownWindows.isEmpty(); }
++
++    virtual bool eventFilter(QObject * watched, QEvent * event) override;
++signals:
++    void lastHidden();
++    void firstShown();
++
++private:
++    QList<QWidget *> mShownWindows; //!< known shown windows (sorted)
++};
++
++#endif
+diff --git plugin-clock/lxqtclock.cpp plugin-clock/lxqtclock.cpp
+index 79c2c17..d4603de 100644
+--- plugin-clock/lxqtclock.cpp
++++ plugin-clock/lxqtclock.cpp
+@@ -286,6 +286,7 @@ void LXQtClock::activated(ActivationReason reason)
+     {
+         QRect pos = calculatePopupWindowPos(mCalendarPopup->size());
+         mCalendarPopup->move(pos.topLeft());
++        willShowWindow(mCalendarPopup);
+         mCalendarPopup->show();
+     }
+     else
+diff --git plugin-directorymenu/directorymenu.cpp plugin-directorymenu/directorymenu.cpp
+index 8c5ec28..e332e05 100644
+--- plugin-directorymenu/directorymenu.cpp
++++ plugin-directorymenu/directorymenu.cpp
+@@ -58,11 +58,11 @@ DirectoryMenu::DirectoryMenu(const ILXQtPanelPluginStartupInfo &startupInfo) :
+ 
+ DirectoryMenu::~DirectoryMenu()
+ {
+-	if(mMenu)
+-	{
+-		delete mMenu;
+-		mMenu = 0;
+-	}
++    if(mMenu)
++    {
++        delete mMenu;
++        mMenu = 0;
++    }
+ }
+ 
+ void DirectoryMenu::showMenu()
+@@ -102,67 +102,67 @@ void DirectoryMenu::showMenu()
+             break;
+     }
+ 
++    willShowWindow(mMenu);
+     // Just using Qt`s activateWindow() won't work on some WMs like Kwin.
+     // Solution is to execute menu 1ms later using timer
+-    mButton.activateWindow();
+-    mMenu->exec(QPoint(x, y));
++    mMenu->popup(calculatePopupWindowPos(mMenu->sizeHint()).topLeft());
+ }
+ 
+ void DirectoryMenu::buildMenu(const QString& path)
+ {
+-	if(mMenu)
+-	{
+-		delete mMenu;
+-		mMenu = 0;
+-	}
++    if(mMenu)
++    {
++        delete mMenu;
++        mMenu = 0;
++    }
+ 
+-	mPathStrings.clear();
++    mPathStrings.clear();
+ 
+-	mMenu = new QMenu();
++    mMenu = new QMenu();
+ 
+-	addActions(mMenu, path);
++    addActions(mMenu, path);
+ }
+ 
+ void DirectoryMenu::openDirectory(const QString& path)
+ {
+-	QDesktopServices::openUrl(QUrl("file://" + QDir::toNativeSeparators(path)));
++    QDesktopServices::openUrl(QUrl("file://" + QDir::toNativeSeparators(path)));
+ }
+ 
+ void DirectoryMenu::addMenu(QString path)
+ {
+-	QSignalMapper* sender = (QSignalMapper* )QObject::sender();
+-	QMenu* parentMenu = (QMenu*) sender->mapping(path);
++    QSignalMapper* sender = (QSignalMapper* )QObject::sender();
++    QMenu* parentMenu = (QMenu*) sender->mapping(path);
+ 
+-	if(parentMenu->isEmpty())
+-	{
+-		addActions(parentMenu, path);
+-	}
++    if(parentMenu->isEmpty())
++    {
++        addActions(parentMenu, path);
++    }
+ }
+ 
+ void DirectoryMenu::addActions(QMenu* menu, const QString& path)
+ {
+-	mPathStrings.push_back(path);
++    mPathStrings.push_back(path);
+ 
+-	QAction* openDirectoryAction = menu->addAction(XdgIcon::fromTheme("folder"), tr("Open"));
+-	connect(openDirectoryAction, SIGNAL(triggered()), mOpenDirectorySignalMapper, SLOT(map()));
+-	mOpenDirectorySignalMapper->setMapping(openDirectoryAction, mPathStrings.back());
++    QAction* openDirectoryAction = menu->addAction(XdgIcon::fromTheme("folder"), tr("Open"));
++    connect(openDirectoryAction, SIGNAL(triggered()), mOpenDirectorySignalMapper, SLOT(map()));
++    mOpenDirectorySignalMapper->setMapping(openDirectoryAction, mPathStrings.back());
+ 
+-	menu->addSeparator();
++    menu->addSeparator();
+ 
+-	QDir dir(path);
+-	QFileInfoList list = dir.entryInfoList();
++    QDir dir(path);
++    QFileInfoList list = dir.entryInfoList();
+ 
+-	foreach (const QFileInfo& entry, list)
++    foreach (const QFileInfo& entry, list)
+     {
+-    	if(entry.isDir() && !entry.isHidden())
+-    	{
+-			mPathStrings.push_back(entry.fileName());
++        if(entry.isDir() && !entry.isHidden())
++        {
++            mPathStrings.push_back(entry.fileName());
+ 
+-			QMenu* subMenu = menu->addMenu(XdgIcon::fromTheme("folder"), mPathStrings.back());
++            QMenu* subMenu = menu->addMenu(XdgIcon::fromTheme("folder"), mPathStrings.back());
+ 
+-    		connect(subMenu, SIGNAL(aboutToShow()), mMenuSignalMapper, SLOT(map()));
+-    		mMenuSignalMapper->setMapping(subMenu, entry.absoluteFilePath());
+-    	}
++            connect(subMenu, SIGNAL(aboutToShow()), mMenuSignalMapper, SLOT(map()));
++            mMenuSignalMapper->setMapping(subMenu, entry.absoluteFilePath());
++        }
+     }
+ }
+ 
+diff --git plugin-dom/domplugin.cpp plugin-dom/domplugin.cpp
+index ffd05c6..0988a2b 100644
+--- plugin-dom/domplugin.cpp
++++ plugin-dom/domplugin.cpp
+@@ -51,6 +51,7 @@ void DomPlugin::showDialog()
+         dialog->setAttribute(Qt::WA_DeleteOnClose);
+     }
+ 
++    willShowWindow(dialog);
+     dialog->show();
+     dialog->activateWindow();
+ }
+diff --git plugin-mainmenu/lxqtmainmenu.cpp plugin-mainmenu/lxqtmainmenu.cpp
+index 9673a4f..b9ff6e4 100644
+--- plugin-mainmenu/lxqtmainmenu.cpp
++++ plugin-mainmenu/lxqtmainmenu.cpp
+@@ -130,6 +130,7 @@ void LXQtMainMenu::showMenu()
+     if (!mMenu)
+         return;
+ 
++    willShowWindow(mMenu);
+     // Just using Qt`s activateWindow() won't work on some WMs like Kwin.
+     // Solution is to execute menu 1ms later using timer
+     mMenu->popup(calculatePopupWindowPos(mMenu->sizeHint()).topLeft());
+@@ -227,8 +228,6 @@ void LXQtMainMenu::buildMenu()
+     menu->installEventFilter(this);
+     connect(menu, &QMenu::aboutToHide, &mHideTimer, static_cast<void (QTimer::*)()>(&QTimer::start));
+     connect(menu, &QMenu::aboutToShow, &mHideTimer, &QTimer::stop);
+-    // panel notification (needed in case of auto-hide)
+-    connect(menu, &QMenu::aboutToHide, dynamic_cast<LXQtPanel *>(panel()), &LXQtPanel::hidePanel);
+ 
+     QMenu *oldMenu = mMenu;
+     mMenu = menu;
+diff --git plugin-mount/popup.cpp plugin-mount/popup.cpp
+index 1c3e7c1..7993681 100644
+--- plugin-mount/popup.cpp
++++ plugin-mount/popup.cpp
+@@ -90,7 +90,12 @@ Popup::Popup(ILXQtPanelPlugin * plugin, QWidget* parent):
+ 
+ void Popup::showHide()
+ {
+-    setVisible(isHidden());
++    if (isHidden())
++    {
++        mPlugin->willShowWindow(this);
++        show();
++    } else
++        close();
+ }
+ 
+ void Popup::onDeviceAdded(QString const & udi)
+diff --git plugin-statusnotifier/statusnotifierbutton.cpp plugin-statusnotifier/statusnotifierbutton.cpp
+index fb124c6..71cf78f 100644
+--- plugin-statusnotifier/statusnotifierbutton.cpp
++++ plugin-statusnotifier/statusnotifierbutton.cpp
+@@ -249,8 +249,10 @@ void StatusNotifierButton::mouseReleaseEvent(QMouseEvent *event)
+     else if (Qt::RightButton == event->button())
+     {
+         if (mMenu)
+-            mMenu->popup(QCursor::pos());
+-        else
++        {
++            mPlugin->willShowWindow(mMenu);
++            mMenu->popup(mPlugin->calculatePopupWindowPos(mMenu->sizeHint()).topLeft());
++        } else
+             interface->ContextMenu(QCursor::pos().x(), QCursor::pos().y());
+     }
+ 
+diff --git plugin-taskbar/lxqttaskgroup.cpp plugin-taskbar/lxqttaskgroup.cpp
+index 6828216..79e27f5 100644
+--- plugin-taskbar/lxqttaskgroup.cpp
++++ plugin-taskbar/lxqttaskgroup.cpp
+@@ -84,6 +84,7 @@ void LXQtTaskGroup::contextMenuEvent(QContextMenuEvent *event)
+         mPreventPopup = false;
+     });
+     menu->setGeometry(mPlugin->panel()->calculatePopupWindowPos(mapToGlobal(event->pos()), menu->sizeHint()));
++    mPlugin->willShowWindow(menu);
+     menu->show();
+ }
+ 
+@@ -418,6 +419,7 @@ void LXQtTaskGroup::setPopupVisible(bool visible, bool fast)
+             recalculateFramePosition();
+         }
+ 
++        mPlugin->willShowWindow(mPopup);
+         mPopup->show();
+         emit popupShown(this);
+     }
+diff --git plugin-volume/volumebutton.cpp plugin-volume/volumebutton.cpp
+index a738a1a..98b3f10 100644
+--- plugin-volume/volumebutton.cpp
++++ plugin-volume/volumebutton.cpp
+@@ -133,6 +133,7 @@ void VolumeButton::showVolumeSlider()
+     m_volumePopup->updateGeometry();
+     m_volumePopup->adjustSize();
+     QRect pos = mPlugin->calculatePopupWindowPos(m_volumePopup->size());
++    mPlugin->willShowWindow(m_volumePopup);
+     m_volumePopup->openAt(pos.topLeft(), Qt::TopLeftCorner);
+     m_volumePopup->activateWindow();
+ }
+diff --git plugin-worldclock/lxqtworldclock.cpp plugin-worldclock/lxqtworldclock.cpp
+index 7386049..8fa795d 100644
+--- plugin-worldclock/lxqtworldclock.cpp
++++ plugin-worldclock/lxqtworldclock.cpp
+@@ -356,6 +356,7 @@ void LXQtWorldClock::activated(ActivationReason reason)
+         mPopup->adjustSize();
+         mPopup->setGeometry(calculatePopupWindowPos(mPopup->size()));
+ 
++        willShowWindow(mPopup);
+         mPopup->show();
+     }
+     else

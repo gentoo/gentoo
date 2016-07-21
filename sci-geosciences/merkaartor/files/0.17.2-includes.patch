@@ -1,0 +1,11 @@
+diff -urN merkaartor-0.17.2.old/src/MainWindow.cpp merkaartor-0.17.2/src/MainWindow.cpp
+--- merkaartor-0.17.2.old/src/MainWindow.cpp	2011-06-09 22:01:46.624543619 +0200
++++ merkaartor-0.17.2/src/MainWindow.cpp	2011-06-09 22:02:27.891027716 +0200
+@@ -92,6 +92,7 @@
+ #include <QtGui/QFileDialog>
+ #include <QtGui/QMessageBox>
+ #include <QtGui/QMouseEvent>
++#include <QtNetwork>
+ #include <QInputDialog>
+ #include <QClipboard>
+ #include <QProgressDialog>

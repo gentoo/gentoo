@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-OpenID-Common</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Common</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Extension</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Extension::SimpleRegistration</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::ExtensionMessage</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::IndirectMessage</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::URIFetch</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Yadis</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Yadis::Service</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Extension::SimpleRegistration::Request</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::Extension::SimpleRegistration::Response</remote-id>
+    <remote-id type="cpan-module">Net::OpenID::URIFetch::Response</remote-id>
+    <remote-id type="cpan-module">OpenID::util</remote-id>
+  </upstream>
+</pkgmetadata>

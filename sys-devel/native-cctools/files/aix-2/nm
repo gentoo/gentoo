@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# /usr/bin/sort (used by nm) cannot work with TMPDIR longer than 85 characters.
+test ${#TMPDIR} -le 85 || TMPDIR=/tmp export TMPDIR
+
+exec /usr/ccs/bin/nm ${1+"$@"}

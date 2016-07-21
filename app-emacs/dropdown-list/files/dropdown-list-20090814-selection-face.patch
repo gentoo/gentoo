@@ -1,0 +1,13 @@
+http://code.google.com/p/yasnippet/issues/detail?id=23
+
+--- dropdown-list.el~
++++ dropdown-list.el
+@@ -69,7 +69,7 @@
+   "*Bla." :group 'dropdown-list)
+ 
+ (defface dropdown-list-selection-face
+-    '((t :inherit dropdown-list :background "purple"))
++    '((t :inherit dropdown-list-face :background "purple"))
+   "*Bla." :group 'dropdown-list)
+ 
+ (defvar dropdown-list-overlays nil)

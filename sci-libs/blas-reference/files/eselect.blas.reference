@@ -1,0 +1,4 @@
+blas/reference/libblas.so /usr/@LIBDIR@/libblas.so
+blas/reference/libblas.so.0 /usr/@LIBDIR@/libblas.so.0
+blas/reference/libblas.a /usr/@LIBDIR@/libblas.a
+../blas/reference/blas.pc /usr/@LIBDIR@/pkgconfig/blas.pc

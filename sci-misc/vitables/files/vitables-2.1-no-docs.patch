@@ -1,0 +1,19 @@
+--- setup.py.orig	2011-02-15 11:05:17.000000000 -0800
++++ setup.py	2012-08-04 12:00:40.704723726 -0700
+@@ -34,13 +34,14 @@
+ from distutils.dir_util import copy_tree
+ from distutils.file_util import copy_file
+ 
++sphinx_found = True
+ try:
+     from sphinx.setup_command import BuildDoc
+ except ImportError:
+-    pass
++	sphinx_found = False
++
+ 
+ 
+-sphinx_found = True
+ 
+ 
+ 

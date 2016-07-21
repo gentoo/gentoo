@@ -1,0 +1,25 @@
+From d2ed7d2d38e4548b23d105c124737a871b1fc72c Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Wed, 16 Oct 2013 13:27:19 +0200
+Subject: [PATCH] Update slice path for Ice 3.5.1
+
+---
+ src/murmur/murmur.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/murmur/murmur.pro b/src/murmur/murmur.pro
+index adaeb2b..7621699 100644
+--- a/src/murmur/murmur.pro
++++ b/src/murmur/murmur.pro
+@@ -77,7 +77,7 @@ ice {
+ 	win32 {
+ 		slice.commands = slice2cpp --checksum -I\"$$ICE_PATH/slice\" ${QMAKE_FILE_NAME}
+ 	} else {
+-		slice.commands = slice2cpp --checksum -I/usr/local/share/Ice -I/usr/share/Ice/slice -I/usr/share/slice -I/usr/share/Ice-3.4.1/slice/ -I/usr/share/Ice-3.3.1/slice/ -I/usr/share/Ice-3.4.2/slice/ -I/usr/share/Ice-3.5.0/slice/ ${QMAKE_FILE_NAME}
++		slice.commands = slice2cpp --checksum -I/usr/local/share/Ice -I/usr/share/Ice/slice -I/usr/share/slice -I/usr/share/Ice-3.4.1/slice/ -I/usr/share/Ice-3.3.1/slice/ -I/usr/share/Ice-3.4.2/slice/ -I/usr/share/Ice-3.5.0/slice/ -I/usr/share/Ice-3.5.1/slice/ ${QMAKE_FILE_NAME}
+ 	}
+ 	slice.input = SLICEFILES
+ 	slice.CONFIG *= no_link explicit_dependencies
+-- 
+1.8.4
+

@@ -1,0 +1,27 @@
+--- a/palo/Makefile
++++ b/palo/Makefile
+@@ -12,13 +12,12 @@
+ OS := $(shell uname -s)
+ CC?=cc
+ ifeq ($(strip ${OS}),HP-UX)
+-CFLAGS=-g -O -I../include -I../lib -I$(PA)/include
++CFLAGS=-O -I../include -I../lib -I$(PA)/include
+ else
+-CFLAGS=-g -O -I../include -I../lib -D_FILE_OFFSET_BITS=64
++CFLAGS=-O -I../include -I../lib -D_FILE_OFFSET_BITS=64
+ endif
+ 
+ # LDFLAGS=-Wl,-Bstatic 
+-LDFLAGS=
+ 
+ OFILES2=mkbootable.o elf64.o load.o paloio.o elf32.o error.o gzip.o
+ 
+@@ -34,7 +33,7 @@
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o palo palo.a build.o
+ 
+ palo.a:	$(OFILES)
+-	ar rv palo.a $?
++	$(AR) rv palo.a $?
+ 
+ mkbootable:	$(OFILES2)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o mkbootable $(OFILES2)

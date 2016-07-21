@@ -1,0 +1,44 @@
+ gsim.pro |   25 +++++++++++++++----------
+ 1 files changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/gsim.pro b/gsim.pro
+index 7316aee..9278b6a 100755
+--- a/gsim.pro
++++ b/gsim.pro
+@@ -16,21 +16,26 @@
+ #CONFIG+=use_script
+ 
+ # Change directories locations for libcmatrix, MinUIT and muParser libraries
+-unix:INCLUDEPATH += /home/vjuser/gsim/libcmatrixR3/include \
+-                    /home/vjuser/gsim/Minuit2/include \
+-                    /usr/include/muParser
++#unix:INCLUDEPATH += /home/vjuser/gsim/libcmatrixR3/include \
++#                    /home/vjuser/gsim/Minuit2/include \
++#                    /usr/include/muParser
+ 
+-win32:INCLUDEPATH += "C:\gsim\libcmatrixR3\include" "C:\gsim\Minuit2\include" "C:\gsim\muparser\include"
++#win32:INCLUDEPATH += "C:\gsim\libcmatrixR3\include" "C:\gsim\Minuit2\include" "C:\gsim\muparser\include"
+ 
+-unix:LIBS += -lcmatrix -L/home/vjuser/gsim/libcmatrixR3/lib  -lMinuit2 -L/home/vjuser/gsim/Minuit2/lib -L/home/vjuser/gsim/muparser/lib -lmuparser
++#unix:LIBS += -lcmatrix -L/home/vjuser/gsim/libcmatrixR3/lib  -lMinuit2 -L/home/vjuser/gsim/Minuit2/lib -L/home/vjuser/gsim/muparser/lib -lmuparser
+ 
+-win32:LIBS += -lcmatrix -L"C:\gsim\libcmatrixR3\lib" -lMinuit2 -L"C:\gsim\Minuit2\lib" -L"C:\gsim\muparser\lib" -lmuparser
++#win32:LIBS += -lcmatrix -L"C:\gsim\libcmatrixR3\lib" -lMinuit2 -L"C:\gsim\Minuit2\lib" -L"C:\gsim\muparser\lib" -lmuparser
+ 
+ #Change directories location for libEMF (if used)
+-use_emf {
+-	DEFINES+=USE_EMF_OUTPUT
+-	unix:LIBS +=-lEMF -L/usr/include/libEmf
+-	win32:LIBS +=-lgdi32
++#use_emf {
++#	DEFINES+=USE_EMF_OUTPUT
++#	unix:LIBS +=-lEMF -L/usr/include/libEmf
++#	win32:LIBS +=-lgdi32
++#}
++
++GSIM_ROOT = .
++!include( $$GSIM_ROOT/build.conf ) {
++  message( "You need a build.conf file with local settings!" )
+ }
+ 
+ #################################################################################################

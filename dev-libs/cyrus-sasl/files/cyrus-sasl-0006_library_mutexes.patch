@@ -1,0 +1,25 @@
+Author: Fabian Fagerholm <fabbe@debian.org>
+Description: Exact description unknown; make sure mutex-related code works.
+--- trunk.orig/lib/common.c
++++ trunk/lib/common.c
+@@ -771,7 +771,7 @@
+     result = sasl_canonuser_add_plugin("INTERNAL", internal_canonuser_init);
+     if(result != SASL_OK) return result;    
+ 
+-    if (!free_mutex)
++    if (!free_mutex || free_mutex == 0x1)
+ 	free_mutex = sasl_MUTEX_ALLOC();
+     if (!free_mutex) return SASL_FAIL;
+ 
+@@ -790,6 +790,11 @@
+ 
+   /* serialize disposes. this is necessary because we can't
+      dispose of conn->mutex if someone else is locked on it */
++
++  if (!free_mutex || free_mutex == 0x1)
++    free_mutex = sasl_MUTEX_ALLOC();
++  if (!free_mutex) return SASL_FAIL;
++
+   result = sasl_MUTEX_LOCK(free_mutex);
+   if (result!=SASL_OK) return;
+   

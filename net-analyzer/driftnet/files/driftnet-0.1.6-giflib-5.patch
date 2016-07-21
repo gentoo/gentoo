@@ -1,0 +1,50 @@
+--- a/gif.c
++++ b/gif.c
+@@ -20,7 +20,12 @@
+  */
+ int gif_load_hdr(img I) {
+     GifFileType *g;
++#if GIFLIB_MAJOR > 4
++	int *GifError = NULL;
++    g = I->us = DGifOpenFileHandle(fileno(I->fp), GifError);
++#else
+     g = I->us = DGifOpenFileHandle(fileno(I->fp));
++#endif /* GIFLIB_MAJOR */
+     if (!I->us) {
+         I->err = IE_HDRFORMAT;
+         return 0;
+@@ -36,7 +41,12 @@
+  * Abort loading a GIF file after the header is done.
+  */
+ int gif_abort_load(img I) {
++#if GIFLIB_MAJOR > 4
++	int *GifError = NULL;
++    DGifCloseFile((GifFileType*)I->us, GifError);
++#else
+     DGifCloseFile((GifFileType*)I->us);
++#endif /* GIFLIB_MAJOR */
+     return 1;
+ }
+ 
+@@ -44,6 +54,9 @@
+  * Load GIF image.
+  */
+ int gif_load_img(img I) {
++#if GIFLIB_MAJOR > 4
++	int *GifError = NULL;
++#endif /* GIFLIB_MAJOR */
+     GifFileType *g = I->us;
+     struct SavedImage *si;
+     int ret = 0;
+@@ -114,7 +127,11 @@
+     ret = 1;
+ fail:
+ 
++#if GIFLIB_MAJOR > 4
++    DGifCloseFile(g, GifError);
++#else
+     DGifCloseFile(g);
++#endif /* GIFLIB_MAJOR */
+     
+     return ret;
+ }

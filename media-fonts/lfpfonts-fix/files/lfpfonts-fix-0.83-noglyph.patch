@@ -1,0 +1,16 @@
+--- src/ucs2any.agriffis	2001-02-17 12:34:50.000000000 -0500
++++ src/ucs2any	2006-01-11 10:53:15.000000000 -0500
+@@ -225,12 +225,7 @@
+ 	    if (!is_control($ucs)) {
+ 		if ($startchar{$ucs}) {
+ 		    $map{$target} = $ucs;
+-		} else {
+-		    printf STDERR "No glyph for character U+%04X " .
+-			"(0x%02x) available.\n", $ucs, $target
+-			    unless (is_blockgraphics($ucs) && $slant ne "R") ||
+-				   ($ucs >= 0x200e && $ucs <= 0x200f);
+-		}
++		} 
+ 	    }
+ 	} else {
+ 	    printf STDERR "Unrecognized line in '$fmap':\n$_";

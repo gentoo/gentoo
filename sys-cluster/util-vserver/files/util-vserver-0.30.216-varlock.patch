@@ -1,0 +1,19 @@
+commit 13a83fe9e08e8667ee42c62d0631ca8ebbed7e89
+Author: Benedikt Böhm <bb@xnull.de>
+Date:   Sun Feb 10 20:35:06 2013 +0100
+
+    gentoo: use /var/run for new /run compatibility
+
+diff --git a/scripts/vserver-init.functions b/scripts/vserver-init.functions
+index fef3c82..7feb27d 100755
+--- a/scripts/vserver-init.functions
++++ b/scripts/vserver-init.functions
+@@ -27,7 +27,7 @@ elif test -e /etc/gentoo-release; then
+     success() { eend 0; }
+     passed()  { eend 0; }
+     failure() { eend 1; }
+-    lockfile=/var/lock/vservers/$LOCKFILE
++    lockfile=/var/run/$LOCKFILE
+ else
+     _beginResult() { echo -n "$@..."; }
+     _postResult() { :; }

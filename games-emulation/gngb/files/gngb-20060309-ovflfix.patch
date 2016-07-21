@@ -1,0 +1,17 @@
+--- src/serial.c.old	2010-10-28 14:40:23.000000000 +0200
++++ src/serial.c	2010-10-28 14:41:07.000000000 +0200
+@@ -302,11 +302,11 @@
+ /* Gbserial_read: Read a byte on the serial 
+    This is a block function */
+ Uint8 gbserial_read(void) {
+-  Uint8 b;
++  Uint8 b[2];
+ 
+   gbserial.ready2read=0;
+-  if ((read(dest_socket,&b,2))<=0) return 0xFF;
+-  return b;
++  if ((read(dest_socket,b,2))<=0) return 0xFF;
++  return b[0];
+ }
+ 
+ /* Gbserial_write: Write a byte on the serial 

@@ -1,0 +1,21 @@
+Solve validation errors and add an additional category.
+
+--- qtagconvert.desktop
++++ qtagconvert.desktop
+@@ -1,14 +1,12 @@
+ [Desktop Entry]
+ Type=Application
+-Version=2.0.0
+-Encoding=UTF-8
++Version=1.0
+ Name=QTagConvert
+ Name[ru]=QTagConvert
+ GenericName=Tag Editor
+ GenericName[ru]=Редактор тегов
+ Exec=qtagconvert
+-Comment=QTagConvert
+ Icon=qtagconvert
+ MimeType=audio/mpeg;audio/x-mp3;
+ Terminal=false
+-Categories=AudioVideo;
++Categories=Qt;AudioVideo;

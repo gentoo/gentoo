@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-office category contains 'office' (word processing,
+		spreadsheets, presentation) software packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-office enthält Bürosoftware (Textverarbeitung,
+		Tabellenkalkulation, Präsentation).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-office contiene paquetes de oficina 
+		(procesadores de palabras, hojas de balance, presentación).
+	</longdescription>
+	<longdescription lang="ja">
+		app-officeカテゴリには「オフィス」(ワープロや表計算やプレゼンテーション)
+		と言うソフトウェアパッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-office categorie bevat applicaties voor kantoorwerk, zoals text-
+		verwerkers, spreadsheets, presentatiehulpmiddelen enz.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-office chứa các ứng dụng 'văn phòng' (soạn
+		thảo văn bản, bảng tính, trình diễn).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-office contiene pacchetti per ufficio
+		(videoscrittura, fogli elettronici, presentazioni).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-office contém pacotes de software para
+		escritório (processadores de textos, planilhas, apresentações).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-office zawiera programy biurowe takie jak edytory tekstu,
+		arkuszy kalkulacyjnych i prezentacji.
+	</longdescription>
+</catmetadata>
+

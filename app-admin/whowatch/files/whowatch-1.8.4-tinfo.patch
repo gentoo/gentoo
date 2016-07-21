@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,14 +16,8 @@
+ dnl Replace `main' with a function in -lkvm:
+ AC_CHECK_LIB(kvm, kvm_openfiles)
+ dnl Replace `main' with a function in -lncurses:
+-CURS=0
+-AC_CHECK_LIB(ncurses, scrollok, [CURS=1 ; LIBS="$LIBS -lncurses"])
+-if test "$CURS" !=  "1"; then
+-	AC_CHECK_LIB(curses, scrollok, [CURS=1 ; LIBS="$LIBS -lcurses"])
+-fi
+-if test "$CURS" != "1"; then
+-	AC_MSG_ERROR([Could not find proper curses library])
+-fi
++PKG_CHECK_MODULES(NCURSES, ncurses, [LIBS="$LIBS $NCURSES_LIBS"],
++	AC_MSG_ERROR([Could not find proper curses library]))
+ 
+ dnl Checks for header files.
+ AC_HEADER_DIRENT

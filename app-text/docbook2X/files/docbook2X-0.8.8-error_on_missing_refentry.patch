@@ -1,0 +1,33 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 05_fix_439214_error_on_missing_refentry.dpatch by Daniel Leidert <daniel.leidert@wgdd.de>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: If there is no refentry element, the manpage stylesheets silently
+## DP:   "ignores" this. It has been requested to print at least a
+## DP:   warning.
+## DP:
+## DP: <URL:http://bugs.debian.org/439214>
+## DP: <URL:http://lists.gnu.org/archive/html/groff/2007-11/msg00023.html>
+
+@DPATCH@
+diff -urNad trunk~/xslt/man/docbook.xsl trunk/xslt/man/docbook.xsl
+--- trunk~/xslt/man/docbook.xsl	2006-04-11 21:00:19.000000000 +0200
++++ trunk/xslt/man/docbook.xsl	2008-02-05 03:31:48.000000000 +0100
+@@ -111,11 +111,15 @@
+     <xsl:when test="child::refentry">
+       <xsl:apply-templates />
+     </xsl:when>
+-
+-    <xsl:otherwise>
++    <xsl:when test="descendant-or-self::refentry">
+       <manpageset>
+         <xsl:apply-templates select="descendant-or-self::refentry" />
+       </manpageset>
++    </xsl:when>
++    <xsl:otherwise>
++      <xsl:message terminate="no">
++        <xsl:text>WARNING: Sorry, but I cannot find a refentry element in your source!</xsl:text>
++      </xsl:message>
+     </xsl:otherwise>
+   </xsl:choose>
+ </xsl:template>

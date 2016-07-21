@@ -1,0 +1,15 @@
+flist->genre is defined as 'char genre[17]' so don't copy 22 into it
+
+Patch by Kevin McCarthy <signals42@gmail.com>
+
+--- librioutil/file_list.c
++++ librioutil/file_list.c
+@@ -241,7 +241,7 @@
+   strncpy(flist->title,  info.data->title, 64);
+   strncpy(flist->album,  info.data->album, 64);
+   strncpy(flist->name,   info.data->name, 64);
+-  strncpy(flist->genre,  (char *)info.data->genre2, 22);
++  strncpy(flist->genre,  (char *)info.data->genre2, 17);
+ 
+   strncpy(flist->year,   (char *)info.data->year2, 4);
+   

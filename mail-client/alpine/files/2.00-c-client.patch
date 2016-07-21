@@ -1,0 +1,251 @@
+--- Makefile.am	2012-10-10 12:30:39.442107211 +0000
++++ Makefile.am	2012-10-10 12:31:17.235528699 +0000
+@@ -16,7 +16,7 @@
+ 
+ SUBDIRS = m4 po $(REGEX_BUILD) pith pico alpine $(WEB_PUBCOOKIE_BUILD) $(WEB_BUILD)
+ 
+-BUILT_SOURCES = c-client.d c-client $(WEB_PUBCOOKIE_LINK)
++BUILT_SOURCES = $(WEB_PUBCOOKIE_LINK)
+ 
+ CLEANFILES = c-client
+ 
+@@ -38,3 +38,4 @@
+ man_MANS = doc/alpine.1 doc/pico.1 doc/pilot.1 doc/rpdump.1 doc/rpload.1
+ 
+ ACLOCAL_AMFLAGS = -I m4
++AM_LDFLAGS = -lc-client
+--- pico/Makefile.am	2012-10-10 13:01:06.851900583 +0000
++++ pico/Makefile.am	2012-10-10 13:07:40.960017458 +0000
+@@ -24,8 +24,9 @@
+ 
+ pilot_LDADD = $(LDADD) $(INTLLIBS)
+ 
+-LDADD = ../c-client/utf8.o libpico.a osdep/libpicoosd.a \
++LDADD = libpico.a osdep/libpicoosd.a \
+ 	../pith/osdep/libpithosd.a ../pith/charconv/libpithcc.a
++AM_LDFLAGS = -lc-client
+ 
+ noinst_LIBRARIES = libpico.a
+ 
+diff --git a/alpine/callbacks.c b/alpine/callbacks.c
+new file mode 100644
+index 0000000..e92beb5
+--- /dev/null
++++ alpine/callbacks.c
+@@ -0,0 +1,184 @@
++/* ========================================================================
++ * Copyright 1988-2007 University of Washington
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * 
++ * ========================================================================
++ */
++
++#include <stdio.h>
++#include <signal.h>
++#include <imap/c-client.h>
++
++/* Excellent reasons to hate ifdefs, and why my real code never uses them */
++
++#ifndef unix
++# define unix 0
++#endif
++
++#if unix
++# define UNIXLIKE 1
++# define MACOS 0
++# include <pwd.h>
++#else
++# define UNIXLIKE 0
++# ifdef noErr
++#  define MACOS 1
++#  include <Memory.h>
++# else
++#  define MACOS 0
++# endif
++#endif
++
++char *curhst = NIL;             /* currently connected host */
++char *curusr = NIL;             /* current login user */
++
++
++/* Interfaces to C-client */
++
++
++void mm_searched (MAILSTREAM *stream,unsigned long number)
++{
++}
++
++
++void mm_exists (MAILSTREAM *stream,unsigned long number)
++{
++}
++
++
++void mm_expunged (MAILSTREAM *stream,unsigned long number)
++{
++}
++
++
++void mm_flags (MAILSTREAM *stream,unsigned long number)
++{
++}
++
++
++void mm_notify (MAILSTREAM *stream,char *string,long errflg)
++{
++  mm_log (string,errflg);
++}
++
++
++void mm_list (MAILSTREAM *stream,int delimiter,char *mailbox,long attributes)
++{
++  putchar (' ');
++  if (delimiter) putchar (delimiter);
++  else fputs ("NIL",stdout);
++  putchar (' ');
++  fputs (mailbox,stdout);
++  if (attributes & LATT_NOINFERIORS) fputs (", no inferiors",stdout);
++  if (attributes & LATT_NOSELECT) fputs (", no select",stdout);
++  if (attributes & LATT_MARKED) fputs (", marked",stdout);
++  if (attributes & LATT_UNMARKED) fputs (", unmarked",stdout);
++  putchar ('\n');
++}
++
++
++void mm_lsub (MAILSTREAM *stream,int delimiter,char *mailbox,long attributes)
++{
++  putchar (' ');
++  if (delimiter) putchar (delimiter);
++  else fputs ("NIL",stdout);
++  putchar (' ');
++  fputs (mailbox,stdout);
++  if (attributes & LATT_NOINFERIORS) fputs (", no inferiors",stdout);
++  if (attributes & LATT_NOSELECT) fputs (", no select",stdout);
++  if (attributes & LATT_MARKED) fputs (", marked",stdout);
++  if (attributes & LATT_UNMARKED) fputs (", unmarked",stdout);
++  putchar ('\n');
++}
++
++
++void mm_status (MAILSTREAM *stream,char *mailbox,MAILSTATUS *status)
++{
++  printf (" Mailbox %s",mailbox);
++  if (status->flags & SA_MESSAGES) printf (", %lu messages",status->messages);
++  if (status->flags & SA_RECENT) printf (", %lu recent",status->recent);
++  if (status->flags & SA_UNSEEN) printf (", %lu unseen",status->unseen);
++  if (status->flags & SA_UIDVALIDITY) printf (", %lu UID validity",
++					      status->uidvalidity);
++  if (status->flags & SA_UIDNEXT) printf (", %lu next UID",status->uidnext);
++  printf ("\n");
++}
++
++
++void mm_log (char *string,long errflg)
++{
++  switch ((short) errflg) {
++  case NIL:
++    printf ("[%s]\n",string);
++    break;
++  case PARSE:
++  case WARN:
++    printf ("%%%s\n",string);
++    break;
++  case ERROR:
++    printf ("?%s\n",string);
++    break;
++  }
++}
++
++
++void mm_dlog (char *string)
++{
++  puts (string);
++}
++
++
++void mm_login (NETMBX *mb,char *user,char *pwd,long trial)
++{
++  char *s,tmp[MAILTMPLEN];
++  if (curhst) fs_give ((void **) &curhst);
++  curhst = (char *) fs_get (1+strlen (mb->host));
++  strcpy (curhst,mb->host);
++  sprintf (s = tmp,"{%s/%s",mb->host,mb->service);
++  if (*mb->user) sprintf (tmp+strlen (tmp),"/user=%s",strcpy (user,mb->user));
++  if (*mb->authuser) sprintf (tmp+strlen (tmp),"/authuser=%s",mb->authuser);
++  if (*mb->user) strcat (s = tmp,"} password:");
++  else {
++    printf ("%s} username: ",tmp);
++    fgets (user,NETMAXUSER-1,stdin);
++    user[NETMAXUSER-1] = '\0';
++    if (s = strchr (user,'\n')) *s = '\0';
++    s = "password: ";
++  }
++  if (curusr) fs_give ((void **) &curusr);
++  curusr = cpystr (user);
++  strcpy (pwd,getpass (s));
++}
++
++
++void mm_critical (MAILSTREAM *stream)
++{
++}
++
++
++void mm_nocritical (MAILSTREAM *stream)
++{
++}
++
++
++long mm_diskerror (MAILSTREAM *stream,long errcode,long serious)
++{
++#if UNIXLIKE
++  kill (getpid (),SIGSTOP);
++#else
++  abort ();
++#endif
++  return NIL;
++}
++
++
++void mm_fatal (char *string)
++{
++  printf ("?%s\n",string);
++}
+diff --git a/pico/Makefile.am b/pico/Makefile.am
+index f5f694b..e782324 100644
+--- pico/Makefile.am
++++ pico/Makefile.am
+@@ -16,9 +16,9 @@ SUBDIRS = osdep
+ 
+ bin_PROGRAMS = pico pilot
+ 
+-pico_SOURCES = main.c utf8stub.c
++pico_SOURCES = main.c utf8stub.c ../alpine/callbacks.c
+ 
+-pilot_SOURCES = pilot.c utf8stub.c
++pilot_SOURCES = pilot.c utf8stub.c ../alpine/callbacks.c
+ 
+ pico_LDADD = $(LDADD) $(INTLLIBS)
+ 
+--- alpine/Makefile.am	2012-10-11 07:53:35.749024355 +0000
++++ alpine/Makefile.am	2012-10-11 07:54:15.931528157 +0000
+@@ -35,11 +35,11 @@
+ LDADD = ../pico/libpico.a ../pico/osdep/libpicoosd.a \
+ 	../pith/libpith.a ../pith/osdep/libpithosd.a  \
+ 	../pith/charconv/libpithcc.a \
+-	osdep/libpineosd.a ../c-client/c-client.a
++	osdep/libpineosd.a
+ 
+ AM_CPPFLAGS = -I$(top_builddir)/include -I$(top_srcdir)/include -DLOCALEDIR=\"$(localedir)\"
+ 
+-AM_LDFLAGS = `cat $(top_srcdir)/c-client/LDFLAGS`
++AM_LDFLAGS = -lc-client
+ 
+ CLEANFILES = date.c
+ 

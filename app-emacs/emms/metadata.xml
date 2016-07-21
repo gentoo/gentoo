@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  EMMS, the Emacs Multimedia System, is an extensible, light-weight
+  multimedia player system for Emacs.  It includes support for audio
+  and video formats such as MP3, FLAC, Ogg Vorbis, MPEG, WMV, MOV,
+  AVI, OGM, MKV via external players such as MPlayer, GStreamer,
+  mpg321, ogg123 etc.
+  
+  EMMS also includes meta data tagging capabilities (including batched
+  tagging), play-list management, play-list scoring, streamed media
+  and support for synchronized song lyrics display.
+</longdescription>
+</pkgmetadata>

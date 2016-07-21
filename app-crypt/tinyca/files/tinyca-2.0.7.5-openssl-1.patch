@@ -1,0 +1,48 @@
+--- a/lib/OpenSSL.pm.orig	2013-03-05 15:57:46.332286060 +0100
++++ b/lib/OpenSSL.pm	2013-03-05 15:57:53.408466038 +0100
+@@ -605,6 +605,8 @@
+          # dirty fix (incompleted) --curly
+          $i = sprintf( "%x", $1);
+          $tmp->{'SERIAL'} = length($i)%2?"0".uc($i):uc($i);
++      } elsif ($_ =~ /^\s*([da-f]{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2}:\w{2})\s*$/i) {
++	$tmp->{'SERIAL'} = $1;
+       } elsif ($_ =~ /Signature Algorithm.*: (\w+)/i) {
+          $tmp->{'SIG_ALGORITHM'} = $1;
+       } elsif ($_ =~ /Issuer: (.+)/i) {
+@@ -823,10 +825,10 @@
+    $cmd = "$self->{'bin'} $opts->{'cmd'}";
+    $cmd .= " -config $opts->{'config'}" if(defined($opts->{'config'}));
+    $cmd .= " -inform $opts->{'inform'}";
+-   $cmd .= " -out \"$file\"";
+    if($opts->{'outform'} eq 'TEXT') {
+       $cmd .= " -text -noout";
+    } else {
++      $cmd .= " -out \"$file\"";
+       $cmd .= " -outform $opts->{'outform'}";
+    }
+ 
+@@ -859,13 +861,17 @@
+       }
+    }
+ 
+-   open(IN, $file) || do {
+-      my $t = sprintf(_("Can't open file %s: %s"), $file, $!);
+-      GUI::HELPERS::print_warning($t);
+-      return;
+-   };
+-   $tmp .= $_ while(<IN>);
+-   close(IN);
++   if ($opts->{'outform'} eq 'TEXT') {
++      $tmp = $ext;
++   } else {
++      open(IN, $file) || do {
++         my $t = sprintf(_("Can't open file %s: %s"), $file, $!);
++         GUI::HELPERS::print_warning($t);
++         return;
++      };
++      $tmp .= $_ while(<IN>);
++      close(IN);
++   }
+ 
+    unlink($file);
+ 

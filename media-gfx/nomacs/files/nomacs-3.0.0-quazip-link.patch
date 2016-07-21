@@ -1,0 +1,25 @@
+From 060f4e972fec0308404a7e535b43254b06908a84 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Thu, 14 Jan 2016 00:24:05 +1100
+Subject: [PATCH] Fix linking failure with system quazip.
+
+---
+ ImageLounge/cmake/UnixBuildTarget.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ImageLounge/cmake/UnixBuildTarget.cmake b/ImageLounge/cmake/UnixBuildTarget.cmake
+index ce95617..8a59c97 100644
+--- a/ImageLounge/cmake/UnixBuildTarget.cmake
++++ b/ImageLounge/cmake/UnixBuildTarget.cmake
+@@ -93,7 +93,7 @@ else()
+ 		  
+   add_library(${DLL_NAME} SHARED ${NOMACS_SOURCES} ${NOMACS_UI} ${NOMACS_HEADERS} ${NOMACS_RC} ${LIBQPSD_SOURCES} ${LIBQPSD_HEADERS} ${WEBP_SOURCE}  ${QUAZIP_SOURCES} ${NOMACS_RESOURCES} ${NOMACS_RCC})
+   target_include_directories(${DLL_NAME} PRIVATE  ${OpenCV_INCLUDE_DIRS})
+-  target_link_libraries(${DLL_NAME} ${QT_LIBRARIES} ${EXIV2_LIBRARIES} ${LIBRAW_LIBRARIES} ${OpenCV_LIBRARIES} ${VERSION_LIB} ${TIFF_LIBRARIES} ${HUPNP_LIBS} ${HUPNPAV_LIBS} ${WEBP_LIBRARIES} ${WEBP_STATIC_LIBRARIES})
++  target_link_libraries(${DLL_NAME} ${QT_LIBRARIES} ${EXIV2_LIBRARIES} ${LIBRAW_LIBRARIES} ${OpenCV_LIBRARIES} ${VERSION_LIB} ${TIFF_LIBRARIES} ${HUPNP_LIBS} ${HUPNPAV_LIBS} ${WEBP_LIBRARIES} ${QUAZIP_LIBRARIES} ${WEBP_STATIC_LIBRARIES})
+   add_dependencies(${BINARY_NAME} ${DLL_NAME})
+   set_target_properties(${DLL_NAME} PROPERTIES PREFIX "")
+ 
+-- 
+2.4.10
+

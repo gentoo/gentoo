@@ -1,0 +1,29 @@
+--- Makefile.in.orig	2008-08-08 18:59:39.000000000 +0200
++++ Makefile.in	2008-08-08 19:00:51.000000000 +0200
+@@ -71,7 +71,8 @@
+ 
+ module.clean:
+  
+-install:  install.alternative install.desktop install.wmprops mkdir
++#install:  install.alternative install.desktop install.wmprops mkdir
++install:  install.desktop install.wmprops mkdir
+ 	@for I in ${subdirs} ; do if [ -d $$I ]; then (cd $$I; ${MAKE} install || exit 1); fi; done
+ 
+ install.bin: mkdir.bin
+@@ -86,11 +87,11 @@
+ install.script: mkdir.bin
+ 	@for I in ${subdirs}; do if [ -d $$I ]; then (cd $$I; ${MAKE} install.script || exit 1); fi; done
+ 
+-install.alternative:
+-	@if update-alternatives --version > /dev/null 2>&1 ; then 	\
+-		update-alternatives --install /etc/alternatives/x-window-manager x-window-manager $(AFTER_BIN_DIR)/afterstep 100; \
+-		echo "added AfterStep as an x-window-manager alternative"; \
+-	fi
++#install.alternative:
++#	@if update-alternatives --version > /dev/null 2>&1 ; then 	\
++#		update-alternatives --install /etc/alternatives/x-window-manager x-window-manager $(AFTER_BIN_DIR)/afterstep 100; \
++#		echo "added AfterStep as an x-window-manager alternative"; \
++#	fi
+ 	
+ 
+ install.desktop: AfterStep.desktop.final mkdir.share

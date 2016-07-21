@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+depend() {
+	need dbus
+	use logger
+}
+
+start() {
+	ebegin "Starting ConsoleKit daemon"
+
+	checkpath -q -d -m 0755 /var/run/ConsoleKit
+
+	start-stop-daemon --start -q \
+		--pidfile /var/run/ConsoleKit/pid \
+		--exec /usr/sbin/console-kit-daemon -- 
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ConsoleKit daemon"
+	start-stop-daemon --stop -q --pidfile /var/run/ConsoleKit/pid 
+	eend $?
+}

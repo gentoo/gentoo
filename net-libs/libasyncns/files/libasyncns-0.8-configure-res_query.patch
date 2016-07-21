@@ -1,0 +1,12 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2009-10-15 03:42:51.000000000 +0200
++++ b/configure.ac	2015-10-07 02:18:06.571175156 +0200
+@@ -82,6 +82,8 @@
+ ACF_SEARCH_FUNCTION([res_query], [-lresolv, -lbind],
+   [], [AC_MSG_ERROR([res_query not found])],
+   [AC_LANG_PROGRAM([[
++      #include <netinet/in.h>
++      #include <arpa/nameser.h>
+       #include <resolv.h>
+      ]], [[res_query(0, 0, 0, 0, 0);]])
+   ])

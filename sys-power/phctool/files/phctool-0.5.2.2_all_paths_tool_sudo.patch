@@ -1,0 +1,18 @@
+--- phctool.sh	2007-10-27 22:32:35.000000000 +0200
++++ phctool.sh	2009-09-05 23:20:18.000000000 +0200
+@@ -1,10 +1,7 @@
+ #!/bin/sh
+-#this shellscript is just a wrapper to subphctool.sh
+-#but necessary to run phctool with sudo even from the tray icon
+-PROGPATH=`dirname "$0"`
+-cd $PROGPATH
+-if test -e /usr/bin/gksu
+-  then gksu  ./subphctool.sh $1
+-  else sudo ./subphctool.sh $1
+-fi
++#this shellscript is just a wrapper to subphctool.py
++#but necessary to run phctool from another directory
++
++cd /usr/share/phctool
++sudo ./subphctool.sh $1
+ 

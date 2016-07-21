@@ -1,0 +1,59 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Eblit to handle src_unpack.
+
+eblit-mips-sources-src_unpack() {
+	# Unpack the kernel sources, update to the latest rev (if needed),
+	# and apply the latest patch from linux-mips git.
+	kernel-2_src_unpack
+
+	# Unpack the mips-sources patchset to ${WORKDIR}/mips-patches-${BASE_KV}.
+	echo -e ""
+	cd "${WORKDIR}"
+	unpack "${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+
+	# Create a new folder, patch-symlinks, and create symlinks to
+	# mips-patches in there.  If we want to exclude a patch, we'll
+	# just delete the symlink instead of the actual patch.
+	local psym="patch-symlinks"
+	mkdir "${psym}"
+	cd "${psym}"
+	for x in ../mips-patches-${BASE_KV}/*.patch; do
+		ln -s "${x}" "${x##../mips-patches-*/}"
+	done
+
+	# With symlinks created, setup the variables referencing external
+	# machine patches and if a machine USE flag is enabled, then unset
+	# its corresponding variable.
+	# See 0000_README for the patch numbers and their meanings.
+	local p_generic="51*"
+	local p_ip27="52*" p_ip28="53*" p_ip30="54*"
+	use ip27 && unset p_generic p_ip27
+	use ip28 && unset p_ip28
+	use ip30 && unset p_generic p_ip30
+
+	# Remove symlinks for any patches that we don't want applied.  We do
+	# this by looping through all the above variables, and deleting
+	# matching symlinks that point to the corresponding patches.
+	# The remaining symlinks will be applied to the kernel source.
+	local patchlist="${p_generic} ${p_ip27} ${p_ip28} ${p_ip30}"
+	for x in $patchlist; do rm -f "./${x}"; done
+
+	# Rename the source tree to match the linux-mips git checkout date and
+	# machine type.
+	local fkv="${F_KV%-*}"
+	local v="${fkv}-${GITDATE}"
+	for x in {ip27,ip28,ip30,cobalt}; do use ${x} && v="${v}.${x}" && break; done
+	mv "${WORKDIR}/linux-${fkv/_/-}" "${WORKDIR}/linux-${v}" || die
+	S="${WORKDIR}/linux-${v}"
+
+	# Now go into the kernel source and patch it.
+	cd "${S}"
+	epatch "${WORKDIR}/${psym}"/*.patch
+
+	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
+	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
+	unpack_set_extraversion
+}

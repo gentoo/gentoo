@@ -1,0 +1,69 @@
+http://bugs.gentoo.org/331979
+
+patch by William Throwe <wthrowe@mit.edu>
+
+The problem is that a failed match() resets the RSTART variable used to
+extract filename_no_gz (visible in the trailing context of the patch),
+so it is important that no more match() commands are attempted after the
+successful one.  Without the scoping, if (for example) the test for .bz2
+succeeds, it prevents testing for .lzma, but doesn't prevent testing for
+.xz.  The failing .xz test causes RSTART to be set to zero so
+filename_no_gz becomes the empty string.
+
+--- man-1.6f/src/makewhatis.sh
++++ man-1.6f/src/makewhatis.sh
+@@ -234,7 +234,7 @@
+ 	    find $mandir/${pages}$i/. -name '*' $findarg0 $findarg -print | $AWK '
+ 
+ 	    function readline() {
+-              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
++	      if (use_compression) {
+ 		result = (pipe_cmd | getline);
+ 		if (result < 0) {
+ 		  print "Pipe error: " pipe_cmd " " ERRNO > "/dev/stderr";
+@@ -249,7 +249,7 @@
+ 	    }
+ 	    
+ 	    function closeline() {
+-              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
++	      if (use_compression) {
+ 		return close(pipe_cmd);
+ 	      } else {
+ 		return close(filename);
+@@ -263,16 +263,20 @@
+ 	      if (verbose) {
+ 		print "adding " filename > "/dev/stderr"
+ 	      }
+-	      
++
+ 	      use_zcat = match(filename,"\\.Z$") ||
+ 			 match(filename,"\\.z$") || match(filename,"\\.gz$");
+-	      if (!use_zcat)
++	      if (!use_zcat) {
+ 		use_bzcat = match(filename,"\\.bz2");
+-              if(!use_bzcat)
+-                use_lzcat = match(filename,"\\.lzma");
+-              if(!use_lzcat)
+-                use_xzcat = match(filename,"\\.xz");
+-              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
++		if (!use_bzcat) {
++		  use_lzcat = match(filename,"\\.lzma");
++		  if (!use_lzcat) {
++		    use_xzcat = match(filename,"\\.xz");
++		  }
++		}
++	      }
++	      use_compression = (use_zcat || use_bzcat || use_lzcat || use_xzcat);
++	      if (use_compression) {
+ 		filename_no_gz = substr(filename, 0, RSTART - 1);
+ 	      } else {
+ 		filename_no_gz = filename;
+@@ -285,7 +289,7 @@
+ 		actual_section = section;
+ 	      }
+ 	      sub(/\..*/, "", progname);
+-              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
++	      if (use_compression) {
+ 		if (use_zcat) {
+ 		  pipe_cmd = "zcat \"" filename "\"";
+                 } else if (use_bzcat) {

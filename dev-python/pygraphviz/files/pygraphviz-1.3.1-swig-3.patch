@@ -1,0 +1,23 @@
+ pygraphviz/graphviz.i | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pygraphviz/graphviz.i b/pygraphviz/graphviz.i
+index 0d9b43b..5f1f6b0 100644
+--- a/pygraphviz/graphviz.i
++++ b/pygraphviz/graphviz.i
+@@ -1,9 +1,9 @@
+-#    Copyright (C) 2004-2006 by 
+-#    Aric Hagberg <hagberg@lanl.gov>
+-#    Dan Schult <dschult@colgate.edu>
+-#    Manos Renieris, http://www.cs.brown.edu/~er/
+-#    Distributed with BSD license.     
+-#    All rights reserved, see LICENSE for details.
++//    Copyright (C) 2004-2006 by 
++//    Aric Hagberg <hagberg@lanl.gov>
++//    Dan Schult <dschult@colgate.edu>
++//    Manos Renieris, http://www.cs.brown.edu/~er/
++//    Distributed with BSD license.     
++//    All rights reserved, see LICENSE for details.
+ 
+ %module graphviz
+ 

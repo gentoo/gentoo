@@ -1,0 +1,73 @@
+--- gtkextra/Makefile.in-orig	2010-08-22 16:18:31.099596456 -0500
++++ gtkextra/Makefile.in	2010-08-22 16:20:46.375575923 -0500
+@@ -106,16 +106,16 @@
+     first=`echo "$$dir1" | sed -e "$$sed_first"`; \
+     if test "$$first" != "."; then \
+       if test "$$first" = ".."; then \
+-        dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
+-        dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
++	dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
++	dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
+       else \
+-        first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
+-        if test "$$first2" = "$$first"; then \
+-          dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
+-        else \
+-          dir2="../$$dir2"; \
+-        fi; \
+-        dir0="$$dir0"/"$$first"; \
++	first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
++	if test "$$first2" = "$$first"; then \
++	  dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
++	else \
++	  dir2="../$$dir2"; \
++	fi; \
++	dir0="$$dir0"/"$$first"; \
+       fi; \
+     fi; \
+     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
+@@ -391,7 +391,7 @@
+ 	  case '$(am__configure_deps)' in \
+ 	    *$$dep*) \
+ 	      ( cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh ) \
+-	        && { if test -f $@; then exit 0; else break; fi; }; \
++		&& { if test -f $@; then exit 0; else break; fi; }; \
+ 	      exit 1;; \
+ 	  esac; \
+ 	done; \
+@@ -670,12 +670,12 @@
+ 	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
+ 	    ($(am__cd) $$subdir && \
+ 	      $(MAKE) $(AM_MAKEFLAGS) \
+-	        top_distdir="$$new_top_distdir" \
+-	        distdir="$$new_distdir" \
++		top_distdir="$$new_top_distdir" \
++		distdir="$$new_distdir" \
+ 		am__remove_distdir=: \
+ 		am__skip_length_check=: \
+ 		am__skip_mode_fix=: \
+-	        distdir) \
++		distdir) \
+ 	      || exit 1; \
+ 	  fi; \
+ 	done
+@@ -800,13 +800,13 @@
+ 
+ 
+ $(srcdir)/gtkextra-marshal.h: gtkextra-marshal.list
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --header > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.h ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ $(srcdir)/gtkextra-marshal.c: gtkextra-marshal.h
+-        ( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
+-        && mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
+-        || ( rm -f gtkextra-marshal.tmp && exit 1 )
++	( @GLIB_GENMARSHAL@ --prefix=gtkextra gtkextra-marshal.list --body > gtkextra-marshal.tmp \
++	&& mv gtkextra-marshal.tmp gtkextra-marshal.c ) \
++	|| ( rm -f gtkextra-marshal.tmp && exit 1 )
+ 
+ $(srcdir)/gtkextratypebuiltins.h: $(public_h_sources)
+ 	( cd $(srcdir) && glib-mkenums \

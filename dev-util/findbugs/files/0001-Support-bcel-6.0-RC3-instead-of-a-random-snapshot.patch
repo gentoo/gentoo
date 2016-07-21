@@ -1,0 +1,48 @@
+From d4ef7a75e6d0e50f6417825d851ad9e5ed757985 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 10 Mar 2015 23:47:00 +0000
+Subject: [PATCH 1/2] Support bcel 6.0 RC3 instead of a random snapshot
+
+---
+ .../src/java/edu/umd/cs/findbugs/ba/AbstractFrameModelingVisitor.java | 2 +-
+ findbugs/src/java/edu/umd/cs/findbugs/visitclass/BetterVisitor.java   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/findbugs/src/java/edu/umd/cs/findbugs/ba/AbstractFrameModelingVisitor.java b/findbugs/src/java/edu/umd/cs/findbugs/ba/AbstractFrameModelingVisitor.java
+index 52468c9..d7cbd0e 100644
+--- a/findbugs/src/java/edu/umd/cs/findbugs/ba/AbstractFrameModelingVisitor.java
++++ b/findbugs/src/java/edu/umd/cs/findbugs/ba/AbstractFrameModelingVisitor.java
+@@ -50,7 +50,7 @@ import edu.umd.cs.findbugs.bcel.generic.NULL2Z;
+  * @see Frame
+  * @see DataflowAnalysis
+  */
+-public abstract class AbstractFrameModelingVisitor<Value, FrameType extends Frame<Value>> implements VisitorSupportsInvokeDynamic {
++public abstract class AbstractFrameModelingVisitor<Value, FrameType extends Frame<Value>> extends EmptyVisitor {
+     private FrameType frame;
+ 
+     private Location location;
+diff --git a/findbugs/src/java/edu/umd/cs/findbugs/visitclass/BetterVisitor.java b/findbugs/src/java/edu/umd/cs/findbugs/visitclass/BetterVisitor.java
+index 5d62092..a36abac 100644
+--- a/findbugs/src/java/edu/umd/cs/findbugs/visitclass/BetterVisitor.java
++++ b/findbugs/src/java/edu/umd/cs/findbugs/visitclass/BetterVisitor.java
+@@ -56,7 +56,7 @@ import org.apache.bcel.classfile.StackMap;
+ import org.apache.bcel.classfile.StackMapEntry;
+ import org.apache.bcel.classfile.Synthetic;
+ import org.apache.bcel.classfile.Unknown;
+-import org.apache.bcel.classfile.Visitor;
++import org.apache.bcel.classfile.EmptyVisitor;
+ 
+ /**
+  * Fixedup of from org.apache.bcel.classfile.Visitor
+@@ -64,7 +64,7 @@ import org.apache.bcel.classfile.Visitor;
+  * @author <A HREF="http://www.cs.umd.edu/~pugh">William Pugh</A>
+  * @version 980818
+  */
+-public abstract class BetterVisitor implements Visitor {
++public abstract class BetterVisitor extends EmptyVisitor {
+ 
+     /**
+      * clone() is overridden to change access control from protected to public.
+-- 
+2.0.4
+

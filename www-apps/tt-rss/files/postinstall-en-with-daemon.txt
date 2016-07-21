@@ -1,0 +1,19 @@
+Please read http://tt-rss.org/redmine/projects/tt-rss/wiki/InstallationNotes
+
+Once you have configured TT-RSS, put the path to this instance into
+the INSTANCE_DIRS variable in /etc/conf.d/ttrssd. Make sure that
+the ttrssd user can access the path, and then start the update daemon
+with
+
+  /etc/init.d/ttrssd start
+
+to get your feeds updated. Add the daemon to your default runlevel,
+so that it gets launched after a system restart:
+
+  rc-update add ttrssd default
+
+
+With the update to 1.7.0 the 'magpie' RSS parser has been removed.
+That means TT-RSS will use the 'simplepie' parser. If you have been
+using 'magpie' so far, the switch might cause lots of duplicate
+articles - it's a one-time thing for each instance.

@@ -1,0 +1,11 @@
+diff -ruN kcoloredit-2.0.0-kde4.4.0.orig/src/CMakeLists.txt kcoloredit-2.0.0-kde4.4.0/src/CMakeLists.txt
+--- kcoloredit-2.0.0-kde4.4.0.orig/src/CMakeLists.txt	2010-02-11 21:40:05.000000000 +0100
++++ kcoloredit-2.0.0-kde4.4.0/src/CMakeLists.txt	2011-08-11 22:25:09.747295562 +0200
+@@ -56,6 +56,6 @@
+ 
+ kde4_add_executable ( kcoloredit ${kcoloredit_SRCS} )
+ 
+-target_link_libraries ( kcoloredit ${KDE4_KFILE_LIBS} )
++target_link_libraries ( kcoloredit ${KDE4_KFILE_LIBS} ${X11_LIBRARIES} )
+ 
+ install (TARGETS kcoloredit  ${INSTALL_TARGETS_DEFAULT_ARGS} )

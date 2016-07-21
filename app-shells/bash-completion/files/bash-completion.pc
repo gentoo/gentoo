@@ -1,0 +1,9 @@
+prefix=/usr
+compatdir=/etc/bash_completion.d
+completionsdir=${prefix}/share/bash-completion
+helpersdir=${prefix}/share/bash-completion/helpers
+
+Name: bash-completion
+Description: programmable completion for the bash shell
+URL: http://bash-completion.alioth.debian.org/
+Version: 1.3

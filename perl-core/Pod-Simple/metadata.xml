@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Simple</remote-id>
+    <remote-id type="cpan-module">Pod::Simple</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::BlackBox</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Checker</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Debug</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::DumpAsText</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::DumpAsXML</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::HTML</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::HTMLBatch</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::HTMLLegacy</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::LinkSection</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Methody</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Progress</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::PullParser</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::PullParserEndToken</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::PullParserStartToken</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::PullParserTextToken</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::PullParserToken</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::RTF</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Search</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::SimpleTree</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Text</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::TextContent</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::TiedOutFH</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::Transcode</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::TranscodeDumb</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::TranscodeSmart</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::XHTML</remote-id>
+    <remote-id type="cpan-module">Pod::Simple::XMLOutStream</remote-id>
+  </upstream>
+</pkgmetadata>

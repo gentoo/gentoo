@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	need localmount
+	use net
+}
+
+start() {
+	ebegin Starting VMware USB Arbitrator
+	#start-stop-daemon --start --exec @@BINDIR@@/vmware-usbarbitrator
+	@@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	ebegin Starting VMware services
+	
+	# quiet for vmci because it may not be there
+	modprobe -vq vmci || modprobe -v vmw_vmci
+	eend $?
+	
+	# vmci or vmw_vmci was loaded by the previous modprobe 
+	# no need to do it here
+	modprobe -av vmmon vsock vmblock vmnet 
+	eend $?
+	@@BINDIR@@/vmware-networks --start
+	eend $?
+}
+
+stop() {
+	ebegin Stopping VMware USB Arbitrator
+	#start-stop-daemon --stop --exec @@BINDIR@@/vmware-usbarbitrator
+	killall --wait @@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	@@BINDIR@@/vmware-networks --stop 
+	eend $?
+	ebegin Stopping VMware services
+	modprobe -rv vsock vmmon vmblock vmnet
+	eend $?
+	
+	# quiet for vmci because it may not be there
+	modprobe -rvq vmci || modprobe -rv vmw_vmci
+	eend $?
+}

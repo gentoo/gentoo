@@ -1,0 +1,15 @@
+Fix macro definition for ptlib-2.10.10 compatibility
+http://lists.packetizer.com/pipermail/h323plus/2012-December/002543.html
+
+diff -ur a/include/openh323buildopts.h.in b/include/openh323buildopts.h.in
+--- a/include/openh323buildopts.h.in	2012-09-21 05:53:21.000000000 +0200
++++ b/include/openh323buildopts.h.in	2013-03-05 19:26:25.251373540 +0100
+@@ -35,7 +35,7 @@
+ #include <ptbuildopts.h>
+ #include <ptlib/../../revision.h>
+ 
+-#if PTLIB_MAJOR == 2 && PTLIB_MINOR < 10
++#if PTLIB_MAJOR == 2 && PTLIB_MINOR <= 10
+    #define PTLIB_VER ( PTLIB_MAJOR*100 + PTLIB_MINOR*10 + PTLIB_BUILD )
+ #else
+    #define PTLIB_VER ( PTLIB_MAJOR*1000 + PTLIB_MINOR*10 + PTLIB_BUILD )

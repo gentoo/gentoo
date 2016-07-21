@@ -1,0 +1,13 @@
+diff --git a/src/database/wscript b/src/database/wscript
+index 8eca1d0..3916a7d 100644
+--- a/src/database/wscript
++++ b/src/database/wscript
+@@ -20,7 +20,7 @@ def configure(conf):
+   conf.env.BUILD_PGSQL = False
+   if not Options.options.disable_database:
+     try:
+-      incdir = subprocess.check_output(['pg_config', '--includedir-server']).decode()
++      incdir = subprocess.check_output(['pg_config', '--includedir-server']).decode('utf-8')
+       libdir = subprocess.check_output(['pg_config', '--libdir']).decode()
+       if conf.check_cxx(lib = 'pq',
+                         header_name = 'postgres.h',

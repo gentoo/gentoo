@@ -1,0 +1,38 @@
+Description: fix FTBFS with --as-needed linker option
+ Libraries must be placed after object files in command line.
+Author: Ilya Barygin <randomaction@ubuntu.com>
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -135,6 +135,10 @@
+ # All libraries for .exe files
+ set(all_libs ${aseprite_libraries} ${libs3rdparty} ${sys_libs})
+ 
++if(LIBALLEGRO4_LINK_FLAGS)
++  set(all_libs ${all_libs} ${LIBALLEGRO4_LINK_FLAGS})
++endif()
++
+ ######################################################################
+ # ASEPRITE libraries
+ 
+@@ -405,10 +409,6 @@
+ 
+ add_executable(aseprite WIN32 main.cpp ${win32_resources} ${x11_resources})
+ target_link_libraries(aseprite ${all_libs})
+-if(LIBALLEGRO4_LINK_FLAGS)
+-  set_target_properties(aseprite
+-    PROPERTIES LINK_FLAGS ${LIBALLEGRO4_LINK_FLAGS})
+-endif()
+ 
+ install(TARGETS aseprite
+   RUNTIME DESTINATION bin)
+@@ -450,8 +450,7 @@
+     endif()
+ 
+     if(LIBALLEGRO4_LINK_FLAGS)
+-      set_target_properties(${testname}
+-	PROPERTIES LINK_FLAGS ${LIBALLEGRO4_LINK_FLAGS})
++      target_link_libraries(${testname} ${LIBALLEGRO4_LINK_FLAGS})
+     endif()
+ 
+     if(extra_definitions)

@@ -1,0 +1,25 @@
+From 2bd9c15391b0bd6ef0bff76aebf09cfb53003199 Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Thu, 09 Jan 2014 22:13:15 +0000
+Subject: Fix the use of --no-recursion and --recursion options.
+
+Each option remains in effect until cancelled by the next ocurrence
+of its counterpart, as stated in the documentation.
+
+* src/names.c (name_next_elt): Restore recursion_option from the
+value of matching_flags.
+---
+diff --git a/src/names.c b/src/names.c
+index fc9841e..7777dc1 100644
+--- a/src/names.c
++++ b/src/names.c
+@@ -570,6 +570,7 @@ name_next_elt (int change_dirs)
+ 
+ 	case NELT_FMASK:
+ 	  matching_flags = ep->v.matching_flags;
++	  recursion_option = matching_flags & FNM_LEADING_DIR;
+ 	  name_list_advance ();
+ 	  continue;
+ 
+--
+cgit v0.9.0.2

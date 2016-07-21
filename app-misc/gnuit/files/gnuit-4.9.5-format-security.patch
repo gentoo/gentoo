@@ -1,0 +1,16 @@
+ src/git.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/git.c b/src/git.c
+index c6040b2..595912d 100644
+--- a/src/git.c
++++ b/src/git.c
+@@ -1917,7 +1917,7 @@ main(argc, argv)
+     printf("%s %s (%s)\n", PRODUCT, VERSION, HOST);
+ #endif /* !HAVE_GCC */
+ 
+-    printf(copyright);
++    printf("%s", copyright);
+ 
+ #ifdef DEBIAN
+     add_to_environment("GIT_EDITOR",    "EDITOR",     "sensible-editor");

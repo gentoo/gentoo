@@ -1,0 +1,24 @@
+diff -ru PythonCAD-DS1-R37~/PythonCAD/Interface/Gtk/gtkDialog.py PythonCAD-DS1-R37/PythonCAD/Interface/Gtk/gtkDialog.py
+--- PythonCAD-DS1-R37~/PythonCAD/Interface/Gtk/gtkDialog.py	2010-03-11 00:01:58.000000000 +0100
++++ PythonCAD-DS1-R37/PythonCAD/Interface/Gtk/gtkDialog.py	2010-03-11 00:03:48.000000000 +0100
+@@ -107,7 +107,7 @@
+     _abautDialog.set_program_name("PythonCad")
+     _abautDialog.set_version("DS1-R37")
+     _abautDialog.set_comments("CAD built from Python")
+-    _iconPath=os.path.join(os.getcwd(),"gtkpycad.png")
++    _iconPath=os.path.join("/usr/share/pixmaps/pythoncad.png")
+     _pixBuf=gtk.gdk.pixbuf_new_from_file(_iconPath)
+     _abautDialog.set_logo(_pixBuf)
+     _abautDialog.set_website("http://sourceforge.net/projects/pythoncad")
+diff -ru PythonCAD-DS1-R37~/PythonCAD/Interface/Gtk/gtkimage.py PythonCAD-DS1-R37/PythonCAD/Interface/Gtk/gtkimage.py
+--- PythonCAD-DS1-R37~/PythonCAD/Interface/Gtk/gtkimage.py	2010-03-11 00:01:58.000000000 +0100
++++ PythonCAD-DS1-R37/PythonCAD/Interface/Gtk/gtkimage.py	2010-03-11 00:02:59.000000000 +0100
+@@ -154,7 +154,7 @@
+         self.__image = image
+         self.__window = gtk.Window()
+         self.__window.set_title(image.filename)
+-        self.__window.set_icon_from_file("gtkpycad.png")
++        self.__window.set_icon_from_file("/usr/share/pixmaps/pythoncad.png")
+         self.__window.connect("destroy", self.__destroyEvent)
+         self.__window.connect("event", self.__windowEvent)
+         self.__window.connect("key_press_event", self.__keyPressEvent)

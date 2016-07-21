@@ -1,0 +1,12 @@
+diff --git a/src/src.pro b/src/src.pro
+index 13a627d..f720a22 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -72,6 +72,7 @@ unix:!macx {
+                 platform_base_hottrigger.h
+ 
+     PREFIX = /usr
++    LIBS += -lX11 -lXext -lXrender
+     DEFINES += SKINS_PATH=\\\"$$PREFIX/share/launchy/skins/\\\" \
+         PLUGINS_PATH=\\\"$$PREFIX/lib64/launchy/plugins/\\\" \
+         PLATFORMS_PATH=\\\"$$PREFIX/lib64/launchy/\\\"

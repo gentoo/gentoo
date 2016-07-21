@@ -1,0 +1,45 @@
+use standard automake rules rather than hand coding the install rules
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,24 +24,13 @@
+ MIT.TXT \
+ depcomp
+ 
++bin_SCRIPTS = share/zthread-config
+ 
+-## install the config script
+-install-exec-hook:
+-	$(mkinstalldirs) $(bindir)
+-	$(INSTALL_PROGRAM) $(top_srcdir)/share/zthread-config $(bindir)
++aclocaldir = $(datadir)/aclocal
++aclocal_DATA = share/zthread.m4 share/pthread.m4
+ 
+-## install the config script & m4 macros
+-install-data-hook:
+-	$(mkinstalldirs) $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/zthread.m4 $(datadir)/aclocal
+-	$(INSTALL_DATA) $(top_srcdir)/share/pthread.m4 $(datadir)/aclocal
+-	mkdir -p $(DESTDIR)$(includedir)/zthread
+-	cp -pR $(top_srcdir)/include/zthread $(DESTDIR)$(includedir)/
+-
+-## uninstall the config script & m4 macros
+-uninstall-local:
+-	-rm -rf $(datadir)/aclocal/pthread.m4
+-	-rm -rf $(datadir)/aclocal/zthread.m4
++zincludedir = $(includedir)/zthread
++zinclude_HEADERS = include/zthread/*.h
+ 
+ distclean-local: 
+ 	-rm -rf $(top_srcdir)/$(PACKAGE)-$(VERSION).tar.gz
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -21,8 +21,6 @@
+ INCLUDES = -I$(top_srcdir)/include
+ SUBDIRS=.
+ 
+-libdir=$(prefix)/lib
+-
+ lib_LTLIBRARIES = libZThread.la
+ 
+ libZThread_la_LIBADD=@LINKER_OPTIONS@ @EXTRA_LINKER_OPTIONS@

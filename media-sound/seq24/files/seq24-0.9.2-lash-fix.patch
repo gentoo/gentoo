@@ -1,0 +1,248 @@
+Upstream fix for segfault when built with lash support.
+https://bugs.launchpad.net/seq24/+bug/696371
+
+=== modified file 'src/lash.cpp'
+--- old/src/lash.cpp
++++ new/src/lash.cpp
+@@ -29,17 +29,9 @@
+ lash::lash(int *argc, char ***argv)
+ {
+ #ifdef LASH_SUPPORT
+-   m_lash_args = lash_extract_args(argc, argv);
+-#endif // LASH_SUPPORT
+-}
+-
+-
+-void lash::init(perform* perform)
+-{
+-#ifdef LASH_SUPPORT
+-    m_perform = perform;
+-
+-    m_client = lash_init(m_lash_args, PACKAGE_NAME,
++    m_perform = NULL;
++
++    m_client = lash_init(lash_extract_args(argc, argv), PACKAGE_NAME,
+             LASH_Config_File, LASH_PROTOCOL(2, 0));
+ 
+     if (m_client == NULL) {
+@@ -65,9 +57,10 @@
+ 
+ 
+ void
+-lash::start()
++lash::start(perform* perform)
+ {
+ #ifdef LASH_SUPPORT
++    m_perform = perform;
+     /* Process any LASH events every 250 msec (arbitrarily chosen interval) */
+     Glib::signal_timeout().connect(sigc::mem_fun(*this, &lash::process_events), 250);
+ #endif // LASH_SUPPORT
+
+=== modified file 'src/lash.h'
+--- old/src/lash.h
++++ new/src/lash.h
+@@ -43,7 +43,6 @@
+ #ifdef LASH_SUPPORT
+     perform       *m_perform;
+     lash_client_t *m_client;
+-    lash_args_t *m_lash_args;
+ 
+     bool process_events();
+     void handle_event(lash_event_t* conf);
+@@ -54,13 +53,12 @@
+ public:
+     lash(int *argc, char ***argv);
+ 
+-    void init(perform* perform);
+     void set_alsa_client_id(int id);
+-    void start();
++    void start(perform* perform);
+ };
+ 
+ 
+-/* global lash driver, defined in seq24.cpp */
++/* global lash driver, defined in seq24.cpp and used in midibus.cpp*/
+ extern lash *lash_driver;
+ 
+ 
+
+=== modified file 'src/midibus.cpp'
+--- old/src/midibus.cpp
++++ new/src/midibus.cpp
+@@ -877,11 +877,11 @@
+ 
+     /* set up our clients queue */
+     m_queue = snd_seq_alloc_queue( m_alsa_seq );
+-#endif
+ #ifdef LASH_SUPPORT
+ 	/* notify lash of our client ID so it can restore connections */
+ 	lash_driver->set_alsa_client_id(snd_seq_client_id(m_alsa_seq));
+ #endif
++#endif
+ }
+ 
+ 
+
+=== modified file 'src/perform.cpp'
+--- old/src/perform.cpp
++++ new/src/perform.cpp
+@@ -1342,6 +1342,7 @@
+             stats_last_clock_us= (last.tv_sec * 1000000) + (last.tv_nsec / 1000);
+ #else
+         /* get start time position */
++        /* timeGetTime() returns a "DWORD" type (= unsigned long)*/
+         last = timeGetTime();
+ 
+         if ( global_stats )
+
+=== modified file 'src/seq24.cpp'
+--- old/src/seq24.cpp
++++ new/src/seq24.cpp
+@@ -108,12 +108,66 @@
+      * GTK+. */
+     Gtk::Main kit(argc, argv);
+ 
+-    /* Init the lash driver (strips lash specific command line
+-     * arguments, but does not connect to daemon) */
++    /*prepare global MIDI definitions*/
++    for ( int i=0; i<c_maxBuses; i++ )
++    {
++        for ( int j=0; j<16; j++ )
++            global_user_midi_bus_definitions[i].instrument[j] = -1;
++    }
++
++    for ( int i=0; i<c_max_instruments; i++ )
++    {
++        for ( int j=0; j<128; j++ )
++            global_user_instrument_definitions[i].controllers_active[j] = false;
++    }
++
++
++    /* Init the lash driver (strip lash specific command line
++     * arguments and connect to daemon) */
+ #ifdef LASH_SUPPORT
+     lash_driver = new lash(&argc, &argv);
+ #endif
+ 
++    /* the main performance object */
++    /* lash must be initialized here because mastermidibus uses the global
++     * lash_driver variable*/
++    perform p;
++
++    /* read user preferences files */
++    if ( getenv( HOME ) != NULL )
++    {
++        Glib::ustring home( getenv( HOME ));
++        last_used_dir = home;
++        Glib::ustring total_file = home + SLASH + config_filename;
++        
++        if (Glib::file_test(total_file, Glib::FILE_TEST_EXISTS))
++        {
++            printf( "Reading [%s]\n", total_file.c_str());
++
++            optionsfile options( total_file );
++
++            if ( !options.parse( &p ) ){
++                printf( "Error Reading [%s]\n", total_file.c_str());
++            }
++        }
++
++        total_file = home + SLASH + user_filename;
++        if (Glib::file_test(total_file, Glib::FILE_TEST_EXISTS))
++        {
++            printf( "Reading [%s]\n", total_file.c_str());
++
++            userfile user( total_file );
++
++            if ( !user.parse( &p ) ){
++                printf( "Error Reading [%s]\n", total_file.c_str());
++            }
++        }
++
++    }
++    else
++        printf( "Error calling getenv( \"%s\" )\n", HOME );
++
++
+     /* parse parameters */
+     int c;
+ 
+@@ -229,65 +283,14 @@
+     } /* end while */
+ 
+ 
+-    /*prepare global MIDI definitions*/
+-    for ( int i=0; i<c_maxBuses; i++ )
+-    {
+-        for ( int j=0; j<16; j++ )
+-            global_user_midi_bus_definitions[i].instrument[j] = -1;
+-    }
+-
+-    for ( int i=0; i<c_max_instruments; i++ )
+-    {
+-        for ( int j=0; j<128; j++ )
+-            global_user_instrument_definitions[i].controllers_active[j] = false;
+-    }
+-
+-
+-    /* the main performance object */
+-    perform p;
+-
+-    p_font_renderer = new font();
+-
+-
+-    if ( getenv( HOME ) != NULL )
+-    {
+-        Glib::ustring home( getenv( HOME ));
+-        last_used_dir = home;
+-        Glib::ustring total_file = home + SLASH + config_filename;
+-        
+-        if (Glib::file_test(total_file, Glib::FILE_TEST_EXISTS))
+-        {
+-            printf( "Reading [%s]\n", total_file.c_str());
+-
+-            optionsfile options( total_file );
+-
+-            if ( !options.parse( &p ) ){
+-                printf( "Error Reading [%s]\n", total_file.c_str());
+-            }
+-        }
+-
+-        total_file = home + SLASH + user_filename;
+-        if (Glib::file_test(total_file, Glib::FILE_TEST_EXISTS))
+-        {
+-            printf( "Reading [%s]\n", total_file.c_str());
+-
+-            userfile user( total_file );
+-
+-            if ( !user.parse( &p ) ){
+-                printf( "Error Reading [%s]\n", total_file.c_str());
+-            }
+-        }
+-
+-    }
+-    else
+-        printf( "Error calling getenv( \"%s\" )\n", HOME );
+-
+     p.init();
+     p.launch_input_thread();
+     p.launch_output_thread();
+     p.init_jack();
+ 
+ 
++    p_font_renderer = new font();
++
+     mainwnd seq24_window( &p );
+     if (optind < argc)
+     {
+@@ -299,8 +302,7 @@
+ 
+     /* connect to lash daemon and poll events*/
+ #ifdef LASH_SUPPORT
+-    lash_driver->init(&p);
+-    lash_driver->start();
++    lash_driver->start(&p);
+ #endif
+     kit.run(seq24_window);
+ 
+

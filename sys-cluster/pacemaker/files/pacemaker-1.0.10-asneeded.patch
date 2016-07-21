@@ -1,0 +1,22 @@
+--- Makefile.am
++++ Makefile.am
+@@ -23,7 +23,7 @@
+ MAINTAINERCLEANFILES    = Makefile.in aclocal.m4 configure DRF/config-h.in \
+                         DRF/stamp-h.in libtool.m4 ltdl.m4 libltdl.tar
+
+-SUBDIRS	= debian $(LIBLTDL_DIR) replace include lib pengine cib crmd fencing tools shell xml cts extra doc
++SUBDIRS	= $(LIBLTDL_DIR) replace include lib pengine cib crmd fencing tools shell xml cts extra doc
+
+ doc_DATA = AUTHORS COPYING COPYING.LIB
+
+--- lib/pengine/Makefile.am
++++ lib/pengine/Makefile.am
+@@ -34,7 +34,7 @@
+
+ libpe_status_la_LDFLAGS	= -version-info 2:0:0
+ libpe_status_la_SOURCES	=  $(rule_files) $(status_files)
+-libpe_status_la_LIBADD	= -llrm
++libpe_status_la_LIBADD	= -llrm @CURSESLIBS@
+
+ clean-generic:
+ 	rm -f *.log *.debug *~

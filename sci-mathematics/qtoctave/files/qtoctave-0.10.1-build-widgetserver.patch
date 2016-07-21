@@ -1,0 +1,98 @@
+From: Jordi Gutiérrez Hermoso <jordigh@gmail.com>
+Subject: widgetserver wasn't included in newer CMake build, this fixes this
+Forwarded: http://lists.alioth.debian.org/pipermail/pkg-octave-devel/2010-June/007430.html
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,6 +38,7 @@
+ 
+ add_subdirectory (qtoctave_pkg/src)
+ add_subdirectory (xmlwidget/qt4)
++add_subdirectory (widgetserver)
+ add_subdirectory (easy_plot)
+ add_subdirectory (simple_rcs)
+ add_subdirectory (qtjs)
+--- /dev/null
++++ b/widgetserver/CMakeLists.txt
+@@ -0,0 +1,11 @@
++add_subdirectory(widgetserver)
++
++install(
++  DIRECTORY doc
++  DESTINATION share/doc/qtoctave-utils/widgetserver
++)
++
++install(
++  FILES "leeme.txt" "readme.txt"
++  DESTINATION share/doc/qtoctave-utils/widgetserver
++)
+--- /dev/null
++++ b/widgetserver/widgetserver/CMakeLists.txt
+@@ -0,0 +1,48 @@
++FIND_PACKAGE(Qt4 REQUIRED)
++
++MESSAGE (STATUS "Use file: ${QT_USE_FILE}")
++
++SET(QT_USE_QTXML 1)
++
++include(UseQt4)
++
++include_directories(${QT_INCLUDE_DIR})
++include_directories(${QT_QT_INCLUDE_DIR})
++include_directories(${QT_QTCORE_INCLUDE_DIR})
++include_directories(${QT_QTGUI_INCLUDE_DIR})
++include_directories(${QT_QTXML_INCLUDE_DIR})
++include_directories(${CMAKE_CURRENT_BINARY_DIR})
++include_directories(${QT_QTSCRIPT_INCLUDE_DIR})
++include_directories(${QT_QTUITOOLS_INCLUDE_DIR})
++
++FILE(GLOB widgetserver_moc_headers *.h  )
++FILE(GLOB widgetserver_sources *.cpp )
++
++# run moc on these files:
++QT4_WRAP_CPP( widgetserver_moc_sources ${widgetserver_moc_headers} )
++
++add_executable(widgetserver
++       ${widgetserver_sources}  ${widgetserver_moc_sources} ${widgetserver_moc_headers}
++)
++
++SET_TARGET_PROPERTIES(widgetserver
++       PROPERTIES INSTALL_RPATH ":usr/lib"
++       BUILD_WITH_INSTALL_RPATH true
++       INSTALL_RPATH_USE_LINK_PATH true
++)
++
++TARGET_LINK_LIBRARIES(widgetserver
++       ${Qt4_LIBRARIES}
++       ${QT_QTCORE_LIBRARY}
++       ${QT_QTGUI_LIBRARY}
++       ${QT_QTXML_LIBRARY}
++       ${QT_QTSCRIPT_LIBRARY}
++       ${QT_QTUITOOLS_LIBRARY}
++)
++
++
++install (
++       TARGETS widgetserver
++       RUNTIME DESTINATION bin
++       )
++
+--- a/widgetserver/widgetserver/input.h
++++ b/widgetserver/widgetserver/input.h
+@@ -4,6 +4,7 @@
+ #include <QThread>
+ #include "process.h"
+ #include "buffer.h"
++#include <cstdio>
+ 
+ class Input:public QThread
+ {
+--- a/widgetserver/widgetserver/process.h
++++ b/widgetserver/widgetserver/process.h
+@@ -5,6 +5,7 @@
+ #include <QMap>
+ #include <QWidget>
+ #include <QBuffer>
++#include <cstdio>
+ 
+ 
+ class Widget: public QObject

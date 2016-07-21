@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+CircleMUD is a multi-user dungeon game system (MUD) written by Jeremy Elson, originally at 
+Johns Hopkins University's Department of Computer Science (I graduated in May of 1996). 
+CircleMUD is a derivative of DikuMUD Gamma 0.0, which was written in 1990 at DIKU, the 
+Department of Computer Science at the University of Copenhagen, by Katja Nyboe, Tom 
+Madsen, Hans Henrik Staerfeldt, Michael Seifert, and Sebastian Hammer.
+</longdescription>
+</pkgmetadata>

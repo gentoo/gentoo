@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<longdescription>
+This program tries to prevent unauthorized usage of IPs within the local
+ethernet broadcastdomain by giving an answer to ARP-requests. After receiving
+such a faked reply, the requesting party stores the told MAC in its ARP-table
+and will send future packets to this MAC. Because this MAC is invalid, the host
+with the invalid IP can not be reached.
+</longdescription>
+<longdescription lang="ja">
+このプログラムは ARP リクエストへの応答を利用したローカルイーサネットの
+ブロードキャストドメイン内で認められていない IP パケットの使用法を阻止し
+ようと試みます。偽造された応答を受信すれば、そのリクエスト・パーティは 
+ARP テーブル内の該当する MAC アドレスを覚え、その後のパケットをこの MAC 
+アドレスへ送ります。何故ならばこの MAC アドレスは不正なもので、無効な IP 
+パケットはそのホストへ到達できないからです。
+</longdescription>
+</pkgmetadata>

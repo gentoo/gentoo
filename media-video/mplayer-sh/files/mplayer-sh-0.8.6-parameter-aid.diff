@@ -1,0 +1,84 @@
+--- mplayer.sh.orig	2006-03-26 23:31:10.000000000 +0200
++++ mplayer.sh	2006-03-26 23:50:39.000000000 +0200
+@@ -6,6 +6,7 @@
+ declare VERSION="0.8.6"
+ 
+ # History (as always in the source code :-)
++#       - add -aid to mplayer when AID is given (Matthias Schwarzott <zzam@gentoo.org>)
+ # 0.8.6 - fixed a copy'n'paste bug regarding the subtitle background 
+ #	  alpha color (thanks to Christian Haider)
+ #	- changed the fps values from rational values to integer ones
+@@ -208,6 +209,11 @@
+   fi
+   debugvar REMOTE "$REMOTE"
+ 
++  if test -n "${AID}"; then
++    AUDIO="-aid ${AID}"
++  fi
++  debugvar AUDIO "${AUDIO}"
++
+   if ! test -z "$USERDEF"; then echolog "*** Use Option USERDEF at your own risk!"; fi
+   debugvar USERDEF "$USERDEF"
+ 
+@@ -478,15 +484,24 @@
+ declare -i NEW_X NEW_Y
+ declare -i HALF_Y FULL_Y
+ declare ORIG_FPS NEW_FPS ORIG_ASPECT VIDEO_FORMAT AUDIO_CODEC
+-declare CMDLINE AOUT REMOTE USERDEF SUFFIX
++declare CMDLINE AOUT REMOTE AUDIO USERDEF SUFFIX
+ declare FILE="$1"
+-declare SLAVE="$2"
++shift
+ declare -a XResPAL[0]
+ declare -a XResNTSC[0]
+ declare FDSTR=""
+ declare SUBTITLES=""
+ declare DETC=""
+ 
++while [[ -n $1 ]]; do
++	case ${1} in
++	SLAVE) SLAVE=SLAVE ;;
++	AID) AID=${2}; shift ;;
++	esac
++
++	shift
++done
++
+ echolog "*** Starting mplayer.sh Version $VERSION"
+ 
+ if test -z "$FILE"; then echolog "*** USAGE: mplayer.sh <File_to_be_played>"; exit; fi
+@@ -504,18 +519,18 @@
+ if test \( "$FILE" == "$DVDFiles/DVD" -o "$FILE" == "$DVDFiles/VCD" \) -a -n "$DVDFiles" -a -n "$DVD"; then
+     if test "$FILE" == "$DVDFiles/DVD"; then
+     	$USEAC3 && AOUT="$AC3AOUT"
+-        CMDLINE="$MPLAYER -vo $VO $AOUT -alang $DVDLANG $DVDOPTIONS $FDSTR $CACHESTR $REMOTE $USERDEF -dvd-device $DVD dvd://"
++        CMDLINE="$MPLAYER -vo $VO $AOUT -alang $DVDLANG $DVDOPTIONS $FDSTR $CACHESTR $AUDIO $REMOTE $USERDEF -dvd-device $DVD dvd://"
+     fi
+     if test "$FILE" == "$DVDFiles/VCD"; then
+-        CMDLINE="$MPLAYER -vo $VO $AOUT $VCDOPTIONS $FDSTR $CACHESTR $REMOTE $USERDEF -cdrom-device $DVD vcd://"
++        CMDLINE="$MPLAYER -vo $VO $AOUT $VCDOPTIONS $FDSTR $CACHESTR $AUDIO $REMOTE $USERDEF -cdrom-device $DVD vcd://"
+     fi
+     unset FILE
+ elif test "${SUFFIX}" == ".cue"; then
+     if $MPLAYER_V1; then      
+-        CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $REMOTE $USERDEF cue://$FILE:2"
++        CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $AUDIO $REMOTE $USERDEF cue://$FILE:2"
+ 	unset FILE
+     else
+-        CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $REMOTE $USERDEF -vcd 2 -cuefile"
++        CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $AUDIO $REMOTE $USERDEF -vcd 2 -cuefile"
+     fi
+ else
+     # Try to determine the video attributes
+@@ -545,9 +560,9 @@
+              \( $NTSC -a $NEW_FPS == "30" -a \( \( $ORIG_X == "352" -a $ORIG_Y == "240" \) -o \( $ORIG_Y == "480" -a \
+              \( $ORIG_X == "352" -o $ORIG_X == "480" -o $ORIG_X == "512" -o $ORIG_X == "640" -o $ORIG_X == "704" -o $ORIG_X == "720" \) \) \) \) \
+        \) ; then
+-      CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $REMOTE $USERDEF"
++      CMDLINE="$MPLAYER -vo $VO $AOUT $FDSTR $CACHESTR $AUDIO $REMOTE $USERDEF"
+     else
+-      CMDLINE="$MPLAYER -vo $VO $AOUT -vop $VOP:$NEW_FPS,expand=$NEW_X:$REAL_Y:-1:-1:1,scale=$NEW_X:${NEW_Y}${DETC} $SPEED $FDSTR $CACHESTR $REMOTE $SUBTITLES $USERDEF $FORCEIDX"
++      CMDLINE="$MPLAYER -vo $VO $AOUT -vop $VOP:$NEW_FPS,expand=$NEW_X:$REAL_Y:-1:-1:1,scale=$NEW_X:${NEW_Y}${DETC} $SPEED $FDSTR $CACHESTR $AUDIO $REMOTE $SUBTITLES $USERDEF $FORCEIDX"
+     fi
+ fi
+ 

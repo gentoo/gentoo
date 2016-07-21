@@ -1,0 +1,27 @@
+--- a/configure
++++ b/configure
+@@ -18983,7 +18983,7 @@
+     else
+         LIBS="${LIBS} ${PYTHON_LIBS}"
+ 
+-            PYTHON_INCS=`$PYTHON_CONFIG --cflags | sed -e "s/-arch i386//" | sed -e "s/-arch ppc//" | sed -e "s/-arch x86_64//"`
++            PYTHON_INCS=`$PYTHON_CONFIG --includes | sed -e "s/-arch i386//" | sed -e "s/-arch ppc//" | sed -e "s/-arch x86_64//"`
+ 
+     INCS="${INCS} ${PYTHON_INCS}"
+ 
+@@ -19335,15 +19335,6 @@
+         for(i=NF; i>0; i--) { \
+             if ($i in fields) { } else { fields[$i]="."; out[i]=$i } \
+         } \
+-        for(i=1; i<=NF; i++) { \
+-            if (i in out) { printf("%s ", out[i]) } \
+-        } \
+-        print "" \
+-    }'`
+-    INCS=`echo ${INCS} | ${ac_cv_prog_AWK} '{ \
+-        for(i=NF; i>0; i--) { \
+-            if ($i in fields) { } else { fields[$i]="."; out[i]=$i } \
+-        } \
+         for(i=1; i<=NF; i++) { \
+             if (i in out) { printf("%s ", out[i]) } \
+         } \

@@ -1,0 +1,26 @@
+diff -u pambase-20120417.old/system-auth.in pambase-20120417/system-auth.in
+--- pambase-20120417.old/system-auth.in	2013-10-27 15:58:21.766193297 +0100
++++ pambase-20120417/system-auth.in	2013-10-27 16:01:10.614555766 +0100
+@@ -35,3 +35,7 @@
+ session		optional	pam_ssh.so
+ #endif
+ #include "system-session.inc"
++
++#if HAVE_SYSTEMD
++-session        optional        pam_systemd.so
++#endif
+Sólo en pambase-20120417: system-auth.in~
+diff -u pambase-20120417.old/system-login.in pambase-20120417/system-login.in
+--- pambase-20120417.old/system-login.in	2013-10-27 15:58:21.766193297 +0100
++++ pambase-20120417/system-login.in	2013-10-27 15:59:42.032316285 +0100
+@@ -47,9 +47,6 @@
+ #if HAVE_CONSOLEKIT
+ -session	optional	pam_ck_connector.so nox11
+ #endif
+-#if HAVE_SYSTEMD
+--session	optional	pam_systemd.so
+-#endif
+ #if HAVE_GNOME_KEYRING
+ session		optional	pam_gnome_keyring.so auto_start
+ #endif
+Sólo en pambase-20120417: system-login.in~

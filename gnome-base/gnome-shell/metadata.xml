@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<use>
+	<flag name="openrc-force">Skip systemd dependency (#480336),
+		enabling this flag will become your setup to be fully
+		unsupported by upstream and downstream Gnome team. Do not
+		try to enable it unless completely needed</flag>
+</use>
+</pkgmetadata>

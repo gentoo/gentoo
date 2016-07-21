@@ -1,0 +1,95 @@
+https://code.google.com/p/serf/source/detail?r=2443
+https://code.google.com/p/serf/source/detail?r=2444
+https://code.google.com/p/serf/source/detail?r=2445
+
+--- test/test_buckets.c
++++ test/test_buckets.c
+@@ -1232,9 +1232,9 @@
+ 
+     /* The largest buffer we should need is 0.1% larger than the
+        uncompressed data, + 12 bytes. This info comes from zlib.h.
++       buf_size = orig_len + (orig_len / 1000) + 12;
+        Note: This isn't sufficient when using Z_NO_FLUSH and extremely compressed
+        data. Use a buffer bigger than what we need. */
+-//    buf_size = orig_len + (orig_len / 1000) + 12;
+     buf_size = 100000;
+ 
+     write_buf = apr_palloc(pool, buf_size);
+@@ -1309,12 +1309,12 @@
+                           expected_len);
+ }
+ 
+-static void deflate_buckets(CuTest *tc, int nr_of_loops)
++static void deflate_buckets(CuTest *tc, int nr_of_loops, apr_pool_t *pool)
+ {
+     const char *msg = "12345678901234567890123456789012345678901234567890";
+ 
+     test_baton_t *tb = tc->testBaton;
+-    serf_bucket_alloc_t *alloc = serf_bucket_allocator_create(tb->pool, NULL,
++    serf_bucket_alloc_t *alloc = serf_bucket_allocator_create(pool, NULL,
+                                                               NULL);
+     z_stream zdestr;
+     int i;
+@@ -1333,8 +1333,8 @@
+     {
+         serf_config_t *config;
+ 
+-        serf_context_t *ctx = serf_context_create(tb->pool);
+-        /* status = */ serf__config_store_get_config(ctx, NULL, &config, tb->pool);
++        serf_context_t *ctx = serf_context_create(pool);
++        /* status = */ serf__config_store_get_config(ctx, NULL, &config, pool);
+ 
+         serf_bucket_set_config(defbkt, config);
+     }
+@@ -1356,11 +1356,11 @@
+         if (i == nr_of_loops - 1) {
+             CuAssertIntEquals(tc, APR_SUCCESS,
+                               deflate_compress(&data, &len, &zdestr, msg,
+-                                               strlen(msg), 1, tb->pool));
++                                               strlen(msg), 1, pool));
+         } else {
+             CuAssertIntEquals(tc, APR_SUCCESS,
+                               deflate_compress(&data, &len, &zdestr, msg,
+-                                               strlen(msg), 0, tb->pool));
++                                               strlen(msg), 0, pool));
+         }
+ 
+         if (len == 0)
+@@ -1378,10 +1378,15 @@
+ static void test_deflate_buckets(CuTest *tc)
+ {
+     int i;
++    apr_pool_t *iterpool;
++    test_baton_t *tb = tc->testBaton;
+ 
++    apr_pool_create(&iterpool, tb->pool);
+     for (i = 1; i < 1000; i++) {
+-        deflate_buckets(tc, i);
++        apr_pool_clear(iterpool);
++        deflate_buckets(tc, i, iterpool);
+     }
++    apr_pool_destroy(iterpool);
+ }
+ 
+ static apr_status_t discard_data(serf_bucket_t *bkt,
+--- test/test_util.c
++++ test/test_util.c
+@@ -363,10 +363,18 @@
+     return status;
+ }
+ 
++static int pool_abort_func(int retcode)
++{
++    fprintf(stderr, "Out of memory\n");
++    abort();
++    return 0;
++}
++
+ void *test_setup(void *dummy)
+ {
+     apr_pool_t *test_pool;
+     apr_pool_create(&test_pool, NULL);
++    apr_pool_abort_set(pool_abort_func, test_pool);
+     return test_pool;
+ }
+ 

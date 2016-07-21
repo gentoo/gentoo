@@ -1,0 +1,40 @@
+ Utility.h |   20 ++++++++++----------
+ 1 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Utility.h b/Utility.h
+index 890eada..99f9a4e 100644
+--- a/Utility.h
++++ b/Utility.h
+@@ -92,16 +92,6 @@ QRegExp::PatternSyntax uint2syntax(uint _index);
+     CallEach(observers, searchable, &Subject::Register);
+     here the Subject is the type of Caller
+ */
+-template <typename CalleeContainer, typename Caller, typename Op>
+-void CallEach(const CalleeContainer& container, Caller& caller, Op op)
+-{
+-    for_each(container.begin(), container.end(), bind1st(mem_fun(op), caller));
+-}
+-template <typename T>
+-bool IsValueInRange(T value, T lowerBound, T upperBound)
+-{
+-    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
+-}
+ template <typename T>
+ bool BoundSpecified(T boundValue)
+ {
+@@ -129,5 +119,15 @@ bool UpperBoundFit(T value, T upperBound)
+ 
+     return false;
+ }
++template <typename CalleeContainer, typename Caller, typename Op>
++void CallEach(const CalleeContainer& container, Caller& caller, Op op)
++{
++    for_each(container.begin(), container.end(), bind1st(mem_fun(op), caller));
++}
++template <typename T>
++bool IsValueInRange(T value, T lowerBound, T upperBound)
++{
++    return LowerBoundFit(value, lowerBound) && UpperBoundFit(value, upperBound);
++}
+ 
+ #endif

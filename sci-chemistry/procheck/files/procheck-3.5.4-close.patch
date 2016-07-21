@@ -1,0 +1,35 @@
+diff --git a/pplot.f b/pplot.f
+index 7e06e68..c86b2b2 100644
+--- a/pplot.f
++++ b/pplot.f
+@@ -4720,6 +4720,7 @@ C---- Initialise variables
+           SCORE(IDIST) = 0.0
+  50   CONTINUE
+ 
++      REWIND(3)
+ C---- If the required residue is of a greater number than that required,
+ C     read through the file until come to it
+       IF (IRESID.GT.INRES) THEN
+diff --git a/ps.f b/ps.f
+index b652a7d..858b8e5 100644
+--- a/ps.f
++++ b/ps.f
+@@ -1705,12 +1705,14 @@ CVAX     -    CARRIAGECONTROL='LIST',
+ C---- If this is an existing file, then read through all its records until
+ C     get to the end of file
+       IF (.NOT.NEWFIL) THEN
++          CLOSE(14)
++          OPEN(14, file=fname, status='old', position='append', err=900)
+ 
+ C----     Loop through the file until reach the end
+- 100      CONTINUE
+-             READ(14,110,END=500) IREC
+- 110         FORMAT(A)
+-          GO TO 100
++C 100      CONTINUE
++C             READ(14,110,END=500) IREC
++C 110         FORMAT(A)
++C          GO TO 100
+ 
+ C---- If this is a new file, then write the header records to it
+       ELSE

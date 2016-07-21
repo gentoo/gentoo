@@ -1,0 +1,30 @@
+sniped from mandrivia:
+http://svn.mandriva.com/cgi-bin/viewvc.cgi/packages/cooker/autoconf/current/SOURCES/autoconf-2.62-fix-multiline-string.patch
+
+this may not be the correct fix, but it seems to get the job done until we can
+grab whatever upstream merges
+http://lists.gnu.org/archive/html/bug-autoconf/2008-04/msg00031.html
+
+--- autoconf-2.62/lib/autoconf/status.m4
++++ autoconf-2.62/lib/autoconf/status.m4
+@@ -1360,16 +1360,16 @@ _ACEOF
+ cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
+ # Files that config.status was made for.
+ m4_ifdef([_AC_SEEN_CONFIG(FILES)],
+-[config_files="$ac_config_files"
++[config_files="`echo $ac_config_files`"
+ ])dnl
+ m4_ifdef([_AC_SEEN_CONFIG(HEADERS)],
+-[config_headers="$ac_config_headers"
++[config_headers="`echo $ac_config_headers`"
+ ])dnl
+ m4_ifdef([_AC_SEEN_CONFIG(LINKS)],
+-[config_links="$ac_config_links"
++[config_links="`echo $ac_config_links`"
+ ])dnl
+ m4_ifdef([_AC_SEEN_CONFIG(COMMANDS)],
+-[config_commands="$ac_config_commands"
++[config_commands="`echo $ac_config_commands`"
+ ])dnl
+ 
+ _ACEOF

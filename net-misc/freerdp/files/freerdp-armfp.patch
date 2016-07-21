@@ -1,0 +1,84 @@
+From 2355b54f8516a6e1c600df8f26ac7d56916bfd99 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 1 May 2015 17:35:21 -0400
+Subject: [PATCH] Remove the ARM_FP_ABI option
+
+It's unclear why this option would be necessary, and it causes problems
+when people do not match it to their toolchain and CFLAGS.
+
+To set the float abi, either use a toolchain with an appropriate default
+or set the float-abi option in the CFLAGS environment variable.
+
+This should resolve #2586.
+---
+ cmake/ConfigOptions.cmake           | 6 ------
+ libfreerdp/CMakeLists.txt           | 4 ++--
+ packaging/deb/freerdp-nightly/rules | 7 -------
+ 3 files changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/cmake/ConfigOptions.cmake b/cmake/ConfigOptions.cmake
+index b51a46b..cef6ba6 100644
+--- a/cmake/ConfigOptions.cmake
++++ b/cmake/ConfigOptions.cmake
+@@ -29,12 +29,6 @@ if(TARGET_ARCH MATCHES "ARM")
+ 	else()
+ 		option(WITH_NEON "Enable NEON optimization." OFF)
+ 	endif()
+-	if (NOT DEFINED ARM_FP_ABI)
+-		set(ARM_FP_ABI "softfp" CACHE STRING "Floating point ABI to use on arm")
+-	else()
+-		set(ARM_FP_ABI ${ARM_FP_API} CACHE STRING "Floating point ABI to use on arm")
+-	endif()
+-	mark_as_advanced(ARM_FP_ABI)
+ else()
+ 	if(NOT APPLE)
+ 		option(WITH_IPP "Use Intel Performance Primitives." OFF)
+diff --git a/libfreerdp/CMakeLists.txt b/libfreerdp/CMakeLists.txt
+index a1cbd9d..112b75a 100644
+--- a/libfreerdp/CMakeLists.txt
++++ b/libfreerdp/CMakeLists.txt
+@@ -156,7 +156,7 @@ if(WITH_SSE2)
+ endif()
+ 
+ if(WITH_NEON)
+-	set_source_files_properties(${CODEC_NEON_SRCS} PROPERTIES COMPILE_FLAGS "-mfpu=neon -mfloat-abi=${ARM_FP_ABI} -Wno-unused-variable" )
++	set_source_files_properties(${CODEC_NEON_SRCS} PROPERTIES COMPILE_FLAGS "-mfpu=neon -Wno-unused-variable" )
+ 	set(CODEC_SRCS ${CODEC_SRCS} ${CODEC_NEON_SRCS})
+ endif()
+ 
+@@ -236,7 +236,7 @@ if(WITH_SSE2)
+ 	endif()
+ elseif(WITH_NEON)
+ 	if(CMAKE_COMPILER_IS_GNUCC)
+-	    set(OPTIMIZATION "${OPTIMIZATION} -mfpu=neon -mfloat-abi=${ARM_FP_ABI}")
++	    set(OPTIMIZATION "${OPTIMIZATION} -mfpu=neon")
+ 	endif()
+ 	# TODO: Add MSVC equivalent
+ endif()
+diff --git a/packaging/deb/freerdp-nightly/rules b/packaging/deb/freerdp-nightly/rules
+index 4366f63..44ceb56 100755
+--- a/packaging/deb/freerdp-nightly/rules
++++ b/packaging/deb/freerdp-nightly/rules
+@@ -1,11 +1,5 @@
+ #!/usr/bin/make -f
+ 
+-DEB_HOST_ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
+-ifneq (,$(filter armhf,$(DEB_HOST_ARCH)))
+-ARM_FLOAT_ABI = -DARM_FP_ABI=hard
+-else
+-ARM_FLOAT_ABI =
+-endif
+ NULL =
+ 
+ DEB_CMAKE_EXTRA_FLAGS :=  -DCMAKE_SKIP_RPATH=FALSE \
+@@ -26,7 +20,6 @@ DEB_CMAKE_EXTRA_FLAGS :=  -DCMAKE_SKIP_RPATH=FALSE \
+                           -DCMAKE_INSTALL_PREFIX=/opt/freerdp-nightly/ \
+                           -DCMAKE_INSTALL_INCLUDEDIR=include \
+                           -DCMAKE_INSTALL_LIBDIR=lib \
+-                          $(ARM_FLOAT_ABI) \
+                           $(NULL)
+ 
+ %:
+-- 
+2.5.0
+

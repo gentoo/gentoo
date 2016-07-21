@@ -1,0 +1,51 @@
+From 853b42c86432eefc6d4cfba86197fb37d446366d Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 3 Mar 2013 05:34:09 -0500
+Subject: [PATCH] sandbox: accept SANDBOX_LOG vars whatever their values
+
+Commit 40abb498ca4a24495fe34e133379382ce8c3eaca subtly broke the sandbox
+with portage.  It changed how the sandbox log env var was accessed by
+moving from getenv() to get_sandbox_log().  The latter has path checking
+and will kick out values that contain a slash.  That means every time a
+new process starts, a new sandbox log path will be generated, and when a
+program triggers a violation, it'll write to the new file.  Meanwhile,
+portage itself watches the original one which never gets updated.
+
+This code has been around forever w/out documentation, and I can't think
+of a reason we need it.  So punt it.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsbutil/get_sandbox_log.c | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/libsbutil/get_sandbox_log.c b/libsbutil/get_sandbox_log.c
+index a79b399..bdb4278 100644
+--- a/libsbutil/get_sandbox_log.c
++++ b/libsbutil/get_sandbox_log.c
+@@ -21,17 +21,13 @@ static void _get_sb_log(char *path, const char *tmpdir, const char *env, const c
+ 
+ 	sandbox_log_env = getenv(env);
+ 
+-	if (sandbox_log_env && is_env_on(ENV_SANDBOX_TESTING)) {
+-		/* When testing, just use what the env says to */
++	if (sandbox_log_env) {
++		/* If the env is viable, roll with it.  We aren't really
++		 * about people breaking the security of the sandbox by
++		 * exporting SANDBOX_LOG=/dev/null.
++		 */
+ 		strncpy(path, sandbox_log_env, SB_PATH_MAX);
+ 	} else {
+-		/* THIS CHUNK BREAK THINGS BY DOING THIS:
+-		 * SANDBOX_LOG=/tmp/sandbox-app-admin/superadduser-1.0.7-11063.log
+-		 */
+-		if ((NULL != sandbox_log_env) &&
+-		    (NULL != strchr(sandbox_log_env, '/')))
+-		    sandbox_log_env = NULL;
+-
+ 		snprintf(path, SB_PATH_MAX, "%s%s%s%s%d%s",
+ 			SANDBOX_LOG_LOCATION, prefix,
+ 			(sandbox_log_env == NULL ? "" : sandbox_log_env),
+-- 
+1.8.1.2
+

@@ -1,0 +1,21 @@
+diff -Naurp subtitleripper-orig/vobsub.c subtitleripper/vobsub.c
+--- subtitleripper-orig/vobsub.c	2003-12-08 03:28:02.000000000 -0600
++++ subtitleripper/vobsub.c	2009-05-30 19:09:13.266973499 -0600
+@@ -56,7 +56,7 @@ extern ssize_t getline(char **, size_t *
+ /* FIXME This should go into a general purpose library or even a
+    separate file. */
+ static ssize_t
+-getline (char **lineptr, size_t *n, FILE *stream)
++get_line (char **lineptr, size_t *n, FILE *stream)
+ {
+     size_t res = 0;
+     int c;
+@@ -753,7 +753,7 @@ vobsub_parse_one_line(vobsub_t *vob, FIL
+     do {
+ 	size_t line_reserve = 0;
+ 	char *line = NULL;
+-	line_size = getline(&line, &line_reserve, fd);
++	line_size = get_line(&line, &line_reserve, fd);
+ 	if (line_size < 0) {
+ 	    if (line)
+ 		free(line);

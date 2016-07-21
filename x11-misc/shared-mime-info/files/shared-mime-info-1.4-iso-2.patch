@@ -1,0 +1,29 @@
+From 824cff3da0f17812715795f0e64a47f7331a338b Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 18 Feb 2015 10:37:36 +0100
+Subject: [PATCH] Bump priority for ISO images glob matching
+
+To work-around file managers that cannot use magic to differentiate
+mime-types.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=80877
+---
+ freedesktop.org.xml.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/freedesktop.org.xml.in b/freedesktop.org.xml.in
+index 64f34b9..59e399c 100644
+--- a/freedesktop.org.xml.in
++++ b/freedesktop.org.xml.in
+@@ -1515,7 +1515,7 @@ command to generate the output files.
+     <sub-class-of type="application/x-raw-disk-image"/>
+     <alias type="application/x-iso9660-image"/>
+     <!-- No magic, see https://bugs.freedesktop.org/show_bug.cgi?id=10049 -->
+-    <glob pattern="*.iso"/>
++    <glob pattern="*.iso" weight="80"/>
+     <glob pattern="*.iso9660"/>
+   </mime-type>
+   <mime-type type="application/x-cdrdao-toc">
+-- 
+2.4.1
+

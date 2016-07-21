@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">TimeDate</remote-id>
+    <remote-id type="cpan-module">Date::Format</remote-id>
+    <remote-id type="cpan-module">Date::Format::Generic</remote-id>
+    <remote-id type="cpan-module">Date::Language</remote-id>
+    <remote-id type="cpan-module">Date::Language::Afar</remote-id>
+    <remote-id type="cpan-module">Date::Language::Amharic</remote-id>
+    <remote-id type="cpan-module">Date::Language::Austrian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Brazilian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Bulgarian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Chinese</remote-id>
+    <remote-id type="cpan-module">Date::Language::Chinese_GB</remote-id>
+    <remote-id type="cpan-module">Date::Language::Czech</remote-id>
+    <remote-id type="cpan-module">Date::Language::Danish</remote-id>
+    <remote-id type="cpan-module">Date::Language::Dutch</remote-id>
+    <remote-id type="cpan-module">Date::Language::English</remote-id>
+    <remote-id type="cpan-module">Date::Language::Finnish</remote-id>
+    <remote-id type="cpan-module">Date::Language::French</remote-id>
+    <remote-id type="cpan-module">Date::Language::Gedeo</remote-id>
+    <remote-id type="cpan-module">Date::Language::German</remote-id>
+    <remote-id type="cpan-module">Date::Language::Greek</remote-id>
+    <remote-id type="cpan-module">Date::Language::Hungarian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Icelandic</remote-id>
+    <remote-id type="cpan-module">Date::Language::Italian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Norwegian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Oromo</remote-id>
+    <remote-id type="cpan-module">Date::Language::Romanian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Russian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Russian_cp1251</remote-id>
+    <remote-id type="cpan-module">Date::Language::Russian_koi8r</remote-id>
+    <remote-id type="cpan-module">Date::Language::Sidama</remote-id>
+    <remote-id type="cpan-module">Date::Language::Somali</remote-id>
+    <remote-id type="cpan-module">Date::Language::Spanish</remote-id>
+    <remote-id type="cpan-module">Date::Language::Swedish</remote-id>
+    <remote-id type="cpan-module">Date::Language::Tigrinya</remote-id>
+    <remote-id type="cpan-module">Date::Language::TigrinyaEritrean</remote-id>
+    <remote-id type="cpan-module">Date::Language::TigrinyaEthiopian</remote-id>
+    <remote-id type="cpan-module">Date::Language::Turkish</remote-id>
+    <remote-id type="cpan-module">Date::Parse</remote-id>
+    <remote-id type="cpan-module">Time::Zone</remote-id>
+  </upstream>
+</pkgmetadata>

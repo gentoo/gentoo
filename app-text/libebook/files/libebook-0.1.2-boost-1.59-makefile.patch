@@ -1,0 +1,10 @@
+--- a/src/lib/Makefile.am
++++ b/src/lib/Makefile.am
+@@ -64,6 +64,7 @@
+ libe_book_@EBOOK_MAJOR_VERSION@_@EBOOK_MINOR_VERSION@_la_SOURCES = \
+ 	EBOOKDocument.cpp
+ 
++libe_book_internal_la_CPPFLAGS = -DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_DEPRECATED
+ libe_book_internal_la_SOURCES = \
+ 	EBOOKBitStream.cpp \
+ 	EBOOKBitStream.h \

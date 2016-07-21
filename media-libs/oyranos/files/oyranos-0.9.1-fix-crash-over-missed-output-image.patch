@@ -1,0 +1,50 @@
+From 2b62b97d76ec64ebfd5ea3fe3a67ef7c3e4a017c Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Mon, 24 Dec 2012 10:34:53 +0100
+Subject: [PATCH] * [lcms]: fix crash over missed output image
+
+---
+ modules/oyranos_cmm_lcm2.c |    4 ++--
+ modules/oyranos_cmm_lcms.c |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/modules/oyranos_cmm_lcm2.c b/modules/oyranos_cmm_lcm2.c
+index 56c2228..90f0bf9 100644
+--- a/modules/oyranos_cmm_lcm2.c
++++ b/modules/oyranos_cmm_lcm2.c
+@@ -1494,11 +1494,11 @@ oyPointer lcm2FilterNode_CmmIccContextToMem (
+              OY_DBG_FORMAT_" missed input image %d", OY_DBG_ARGS_,
+              image_input->type_ );
+   }
+-  if(image_output->type_ != oyOBJECT_IMAGE_S)
++  if(!image_output || image_output->type_ != oyOBJECT_IMAGE_S)
+   {
+     oyFilterSocket_Callback( plug, oyCONNECTOR_EVENT_INCOMPATIBLE_DATA );
+     lcm2_msg( oyMSG_WARN, (oyStruct_s*)node,
+-             OY_DBG_FORMAT_" missed output image %d", OY_DBG_ARGS_, image_input->type_ );
++             OY_DBG_FORMAT_" missed output image %d", OY_DBG_ARGS_, image_output?image_output->type_:0 );
+   }
+ 
+   data_type = oyToDataType_m( oyImage_GetPixelLayout( image_input, oyLAYOUT ) );
+diff --git a/modules/oyranos_cmm_lcms.c b/modules/oyranos_cmm_lcms.c
+index b42fc99..9352ea2 100644
+--- a/modules/oyranos_cmm_lcms.c
++++ b/modules/oyranos_cmm_lcms.c
+@@ -1225,12 +1225,12 @@ oyPointer lcmsFilterNode_CmmIccContextToMem (
+              OY_DBG_FORMAT_" missed input image %d", OY_DBG_ARGS_,
+              image_input->type_ );
+   }
+-  if(image_output->type_ != oyOBJECT_IMAGE_S)
++  if(!image_output || image_output->type_ != oyOBJECT_IMAGE_S)
+   {
+     oyFilterSocket_Callback( plug, oyCONNECTOR_EVENT_INCOMPATIBLE_DATA );
+     lcms_msg( oyMSG_WARN, (oyStruct_s*)node,
+               OY_DBG_FORMAT_" missed output image %d", OY_DBG_ARGS_,
+-              image_input->type_ );
++              image_output?image_output->type_:0 );
+   }
+ 
+   data_type = oyToDataType_m( oyImage_GetPixelLayout( image_input, oyLAYOUT ) );
+-- 
+1.5.6.5
+

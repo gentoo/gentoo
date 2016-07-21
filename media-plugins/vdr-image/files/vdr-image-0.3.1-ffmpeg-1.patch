@@ -1,0 +1,40 @@
+diff -urN image-0.3.1.old/liboutput/encode.c image-0.3.1/liboutput/encode.c
+--- image-0.3.1.old/liboutput/encode.c	2013-06-17 21:23:23.308430203 +0200
++++ image-0.3.1/liboutput/encode.c	2013-06-17 21:27:37.126421173 +0200
+@@ -49,7 +49,6 @@
+ 
+ bool cEncode::Register()
+ {
+-    avcodec_init();
+ #if 0 
+     // XXX to resolv: dosen't work with osdpip
+     register_avcodec(&mpeg2video_encoder);
+@@ -100,7 +99,7 @@
+     AVCodecContext  *pAVCC = NULL;
+     AVFrame         *pAVF = NULL;
+ 
+-    pAVCC = avcodec_alloc_context();
++    pAVCC = avcodec_alloc_context3(NULL);
+     if (! pAVCC) 
+     {
+         esyslog("imageplugin: Failed to alloc memory for AVCodecContext.");
+@@ -116,7 +115,7 @@
+         {
+             SetupEncodingParameters(pAVCC);
+ 
+-            if (avcodec_open(pAVCC, m_pavCodec) < 0) 
++            if (avcodec_open2(pAVCC, m_pavCodec, NULL) < 0) 
+             {
+                 esyslog("imageplugin: Couldn't open Codec.");
+             }
+diff -urN image-0.3.1.old/liboutput/encode.h image-0.3.1/liboutput/encode.h
+--- image-0.3.1.old/liboutput/encode.h	2013-06-17 21:23:23.308430203 +0200
++++ image-0.3.1/liboutput/encode.h	2013-06-17 21:27:37.127421173 +0200
+@@ -14,6 +14,7 @@
+ 
+ extern "C" {
+ #include <libavcodec/avcodec.h>
++#include <libavutil/mem.h>
+ }
+ 
+ #include "../setup-image.h"

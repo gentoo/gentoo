@@ -1,0 +1,15 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Nov 16 00:03:56 UTC 2012
+Subject: desktop file
+
+	comply with fd.o spec
+
+--- data/pnmixer.desktop
++++ data/pnmixer.desktop
+@@ -12,4 +12,4 @@
+ Icon=pnmixer
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;
+\ No newline at end of file
++Categories=AudioVideo;

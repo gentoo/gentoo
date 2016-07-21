@@ -1,0 +1,21 @@
+--- xmonad-contrib-0.11.4-orig/XMonad/Util/Invisible.hs	2015-03-28 05:00:21.000000000 +1100
++++ xmonad-contrib-0.11.4/XMonad/Util/Invisible.hs	2015-04-03 15:12:17.485143018 +1100
+@@ -22,6 +22,8 @@
+                             , fromIMaybe
+                             ) where
+ 
++import Control.Applicative
++
+ -- $usage
+ -- A wrapper data type to store layout state that shouldn't be persisted across
+ -- restarts. A common wrapped type to use is @Maybe a@.
+--- xmonad-contrib-0.11.4-orig/XMonad/Hooks/DebugEvents.hs	2015-03-28 05:00:21.000000000 +1100
++++ xmonad-contrib-0.11.4/XMonad/Hooks/DebugEvents.hs	2015-04-03 15:17:02.207816322 +1100
+@@ -30,6 +30,7 @@
+ 
+ -- import           Graphics.X11.Xlib.Extras.GetAtomName        (getAtomName)
+ 
++import           Control.Applicative
+ import           Control.Exception.Extensible         as E
+ import           Control.Monad.State
+ import           Control.Monad.Reader

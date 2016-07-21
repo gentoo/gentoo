@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gienah@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+Kodkod is an efficient SAT-based constraint solver for first order
+logic with relations, transitive closure, bit-vector arithmetic, and
+partial models. It provides analyses for both satisfiable and
+unsatisfiable problems: a finite model finder for the former and a
+minimal unsatisfiable core extractor for the latter. Kodkod is used in
+a wide range of applications, including code checking, test-case
+generation, declarative execution, declarative configuration, and
+lightweight analysis of Alloy, UML, and Isabelle/HOL.
+</longdescription>
+</pkgmetadata>

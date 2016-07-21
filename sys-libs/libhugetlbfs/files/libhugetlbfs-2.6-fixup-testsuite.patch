@@ -1,0 +1,31 @@
+diff -Nuar --exclude '*.S' --exclude Makefile libhugetlbfs-2.6.orig/tests/run_tests.py libhugetlbfs-2.6/tests/run_tests.py
+--- libhugetlbfs-2.6.orig/tests/run_tests.py	2009-08-24 05:56:07.000000000 -0700
++++ libhugetlbfs-2.6/tests/run_tests.py	2009-10-31 00:40:28.520387427 -0700
+@@ -56,6 +56,11 @@
+     local_env["LD_LIBRARY_PATH"] = "../obj%d:obj%d:%s" \
+         % (bits, bits, local_env.get("LD_LIBRARY_PATH", ""))
+     local_env["HUGETLB_DEFAULT_PAGE_SIZE"] = repr(pagesize)
++    if isinstance(cmd, types.StringType):
++        cmd = 'obj%d/%s' % (bits, cmd)
++    else:
++        s = 'obj%d/%s' % (bits, cmd[0])
++        cmd = (s,)+(cmd[1:])
+ 
+     p = subprocess.Popen(cmd, env=local_env, stdout=subprocess.PIPE)
+     try:
+@@ -523,10 +528,11 @@
+     elfshare_test("linkshare")
+     elflink_and_share_test("linkhuge")
+ 
+-    # elflink_rw tests
+-    elflink_rw_test("linkhuge_rw")
+-    # elflink_rw sharing tests
+-    elflink_rw_and_share_test("linkhuge_rw")
++    if 32 in wordsizes:
++        # elflink_rw tests
++        elflink_rw_test("linkhuge_rw")
++        # elflink_rw sharing tests
++        elflink_rw_and_share_test("linkhuge_rw")
+ 
+     # Accounting bug tests
+     # reset free hpages because sharing will have held some

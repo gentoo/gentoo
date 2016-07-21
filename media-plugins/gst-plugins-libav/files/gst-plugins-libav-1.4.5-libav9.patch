@@ -1,0 +1,180 @@
+Add compatibility for libav-9 not to require still hardmasked libav-10.
+aballier@gentoo.org
+
+
+Index: work/gst-libav-1.4.5/ext/libav/gstavauddec.c
+===================================================================
+--- work.orig/gst-libav-1.4.5/ext/libav/gstavauddec.c
++++ work/gst-libav-1.4.5/ext/libav/gstavauddec.c
+@@ -582,9 +582,11 @@ gst_ffmpegauddec_audio_frame (GstFFMpegA
+           ffmpegdec->info.position);
+     }
+ 
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52,17,0)
+     /* Mark corrupted frames as corrupted */
+     if (frame.flags & AV_FRAME_FLAG_CORRUPT)
+       GST_BUFFER_FLAG_SET (*outbuf, GST_BUFFER_FLAG_CORRUPTED);
++#endif
+   } else {
+     *outbuf = NULL;
+   }
+Index: work/gst-libav-1.4.5/ext/libav/gstavcodecmap.c
+===================================================================
+--- work.orig/gst-libav-1.4.5/ext/libav/gstavcodecmap.c
++++ work/gst-libav-1.4.5/ext/libav/gstavcodecmap.c
+@@ -1206,6 +1206,7 @@ gst_ffmpeg_codecid_to_caps (enum AVCodec
+       }
+       break;
+ 
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,41,0)
+     case AV_CODEC_ID_HEVC:
+       caps =
+           gst_ff_vid_caps_new (context, NULL, codec_id, encode, "video/x-h265",
+@@ -1226,6 +1227,7 @@ gst_ffmpeg_codecid_to_caps (enum AVCodec
+         g_value_unset (&arr);
+       }
+       break;
++#endif
+ 
+     case AV_CODEC_ID_INDEO5:
+       caps =
+@@ -1706,11 +1708,13 @@ gst_ffmpeg_codecid_to_caps (enum AVCodec
+       }
+       break;
+ 
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,5,0)
+     case AV_CODEC_ID_AIC:
+       caps =
+           gst_ff_vid_caps_new (context, NULL, codec_id, encode,
+           "video/x-apple-intermediate-codec", NULL);
+       break;
++#endif
+ 
+     case AV_CODEC_ID_WS_VQA:
+     case AV_CODEC_ID_IDCIN:
+@@ -3760,9 +3764,11 @@ gst_ffmpeg_caps_to_codecid (const GstCap
+       id = AV_CODEC_ID_FFV1;
+       video = TRUE;
+     }
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,5,0)
+   } else if (!strcmp (mimetype, "video/x-apple-intermediate-codec")) {
+     id = AV_CODEC_ID_AIC;
+     video = TRUE;
++#endif
+   } else if (!strcmp (mimetype, "audio/x-adpcm")) {
+     const gchar *layout;
+ 
+@@ -3924,9 +3930,11 @@ gst_ffmpeg_caps_to_codecid (const GstCap
+   } else if (!strcmp (mimetype, "video/x-h264")) {
+     id = AV_CODEC_ID_H264;
+     video = TRUE;
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,41,0)
+   } else if (!strcmp (mimetype, "video/x-h265")) {
+     id = AV_CODEC_ID_HEVC;
+     video = TRUE;
++#endif
+   } else if (!strcmp (mimetype, "video/x-flash-video")) {
+     gint flvversion = 0;
+ 
+Index: work/gst-libav-1.4.5/ext/libav/gstavviddec.c
+===================================================================
+--- work.orig/gst-libav-1.4.5/ext/libav/gstavviddec.c
++++ work/gst-libav-1.4.5/ext/libav/gstavviddec.c
+@@ -368,8 +368,10 @@ gst_ffmpegviddec_open (GstFFMpegVidDec *
+       break;
+   }
+ 
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52,17,0)
+   gst_ffmpegviddec_context_set_flags (ffmpegdec->context,
+       CODEC_FLAG_OUTPUT_CORRUPT, ffmpegdec->output_corrupt);
++#endif
+ 
+   return TRUE;
+ 
+@@ -733,17 +735,21 @@ invalid_frame:
+ fallback:
+   {
+     int c;
++#if LIBAVUTIL_VERSION_MAJOR >= 53
+     gboolean first = TRUE;
++#endif
+     int ret = avcodec_default_get_buffer (context, picture);
+ 
+     for (c = 0; c < AV_NUM_DATA_POINTERS; c++) {
+       ffmpegdec->stride[c] = picture->linesize[c];
+ 
++#if LIBAVUTIL_VERSION_MAJOR >= 53
+       if (picture->buf[c] == NULL && first) {
+         picture->buf[c] =
+             av_buffer_create (NULL, 0, dummy_free_buffer, dframe, 0);
+         first = FALSE;
+       }
++#endif
+     }
+ 
+     return ret;
+@@ -1280,8 +1286,10 @@ gst_ffmpegviddec_video_frame (GstFFMpegV
+       ffmpegdec->picture->repeat_pict);
+   GST_DEBUG_OBJECT (ffmpegdec, "interlaced_frame:%d (current:%d)",
+       ffmpegdec->picture->interlaced_frame, ffmpegdec->ctx_interlaced);
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52,17,0)
+   GST_DEBUG_OBJECT (ffmpegdec, "corrupted frame: %d",
+       ! !(ffmpegdec->picture->flags & AV_FRAME_FLAG_CORRUPT));
++#endif
+ 
+   if (G_UNLIKELY (ffmpegdec->picture->interlaced_frame !=
+           ffmpegdec->ctx_interlaced)) {
+@@ -1298,9 +1306,11 @@ gst_ffmpegviddec_video_frame (GstFFMpegV
+   if (G_UNLIKELY (*ret != GST_FLOW_OK))
+     goto no_output;
+ 
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52,17,0)
+   /* Mark corrupted frames as corrupted */
+   if (ffmpegdec->picture->flags & AV_FRAME_FLAG_CORRUPT)
+     GST_BUFFER_FLAG_SET (out_frame->output_buffer, GST_BUFFER_FLAG_CORRUPTED);
++#endif
+ 
+   if (ffmpegdec->ctx_interlaced) {
+     /* set interlaced flags */
+@@ -1980,7 +1990,9 @@ gst_ffmpegviddec_register (GstPlugin * p
+       case AV_CODEC_ID_MPEG4:
+       case AV_CODEC_ID_MSMPEG4V3:
+       case AV_CODEC_ID_H264:
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,41,0)
+       case AV_CODEC_ID_HEVC:
++#endif
+       case AV_CODEC_ID_RV10:
+       case AV_CODEC_ID_RV20:
+       case AV_CODEC_ID_RV30:
+Index: work/gst-libav-1.4.5/ext/libav/gstavaudenc.c
+===================================================================
+--- work.orig/gst-libav-1.4.5/ext/libav/gstavaudenc.c
++++ work/gst-libav-1.4.5/ext/libav/gstavaudenc.c
+@@ -409,7 +409,11 @@ gst_ffmpegaudenc_set_format (GstAudioEnc
+ static void
+ gst_ffmpegaudenc_free_avpacket (gpointer pkt)
+ {
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,16,0)
+   av_packet_unref ((AVPacket *) pkt);
++#else
++  av_destruct_packet ((AVPacket *) pkt);
++#endif
+   g_slice_free (AVPacket, pkt);
+ }
+ 
+Index: work/gst-libav-1.4.5/ext/libav/gstavvidenc.c
+===================================================================
+--- work.orig/gst-libav-1.4.5/ext/libav/gstavvidenc.c
++++ work/gst-libav-1.4.5/ext/libav/gstavvidenc.c
+@@ -576,7 +576,11 @@ gst_ffmpegvidenc_propose_allocation (Gst
+ static void
+ gst_ffmpegvidenc_free_avpacket (gpointer pkt)
+ {
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(55,16,0)
+   av_packet_unref ((AVPacket *) pkt);
++#else
++  av_destruct_packet ((AVPacket *) pkt);
++#endif
+   g_slice_free (AVPacket, pkt);
+ }
+ 

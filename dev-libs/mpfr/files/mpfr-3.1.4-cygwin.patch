@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/579840
+
+fix from upstream
+
+r10260 | vlefevre | 2016-04-08 19:17:07 -0400 (Fri, 08 Apr 2016) | 8 lines
+
+[src/mpfr-impl.h] Removed the detection of possible inconsistencies
+under Unix because the tests could yield spurious errors with Cygwin
+or other similar implementations. Moreover, such tests were used for
+debugging purpose or to detect potential problems in the environment,
+thus were not really useful for the end user. They were initially
+added in the win-thread-safe-dll branch (r9682, following a problem
+found in r9680). One alternative for checking by the MPFR developers
+would be to output the status of some internal macros in tversion.
+
+Index: src/mpfr-impl.h
+===================================================================
+--- src/mpfr-impl.h	(revision 10259)
++++ src/mpfr-impl.h	(revision 10260)
+@@ -208,19 +208,6 @@ typedef struct __gmpfr_cache_s *mpfr_cac
+ # define MPFR_WIN_THREAD_SAFE_DLL 1
+ #endif
+ 
+-/* Detect some possible inconsistencies under Unix. */
+-#if defined(__unix__)
+-# if defined(_WIN32)
+-#  error "Both __unix__ and _WIN32 are defined"
+-# endif
+-# if __GMP_LIBGMP_DLL
+-#  error "__unix__ is defined and __GMP_LIBGMP_DLL is true"
+-# endif
+-# if defined(MPFR_WIN_THREAD_SAFE_DLL)
+-#  error "Both __unix__ and MPFR_WIN_THREAD_SAFE_DLL are defined"
+-# endif
+-#endif
+-
+ #if defined(__MPFR_WITHIN_MPFR) || !defined(MPFR_WIN_THREAD_SAFE_DLL)
+ extern MPFR_THREAD_ATTR mpfr_flags_t __gmpfr_flags;
+ extern MPFR_THREAD_ATTR mpfr_exp_t   __gmpfr_emin;

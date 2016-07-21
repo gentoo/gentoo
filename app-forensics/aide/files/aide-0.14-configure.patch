@@ -1,0 +1,38 @@
+diff -Naur aide-0.14.orig/configure.in aide-0.14/configure.in
+--- aide-0.14.orig/configure.in	2010-02-26 17:25:29.000000000 +0900
++++ aide-0.14/configure.in	2010-06-09 14:24:43.000000000 +0900
+@@ -407,14 +407,14 @@
+ AC_ARG_WITH([zlib],
+ 	AC_HELP_STRING([--with-zlib],
+ 		[use zlib compression]),
+-	,
++	[with_zlib="$withval"],
+ 	[with_zlib=yes]
+ )
+ 
+ AC_ARG_WITH([curl],
+ 	AC_HELP_STRING([--with-curl],
+ 		[use curl for http,https and ftp backends]),
+-		,
++	[with_curl="$withval"],
+ 	[with_curl=no]
+ )
+ 
+@@ -422,7 +422,7 @@
+ AC_ARG_WITH([sun-acl],
+ 	[AC_HELP_STRING([--with-sun-acl],
+ 		[use ACL on solaris (no checking)])],
+-	[],
++	[with_sun_acl="$withval"],
+ 	[with_sun_acl=no]
+ )
+ 
+@@ -440,7 +440,7 @@
+ AC_ARG_WITH([posix-acl],
+ 	[AC_HELP_STRING([--with-posix-acl],
+ 		[use POSIX ACLs (no checking)])],
+-	[],
++	[with_posix_acl_support="$withval"],
+ 	[with_posix_acl_support=no]
+ )
+ 

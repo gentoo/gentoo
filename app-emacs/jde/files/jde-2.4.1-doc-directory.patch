@@ -1,0 +1,53 @@
+Move definition of jde-find-jde-doc-directory to jde-util.el.
+
+--- jdee-orig/lisp/beanshell.el
++++ jdee/lisp/beanshell.el
+@@ -82,7 +82,7 @@
+ (eval-when-compile
+   (require 'cl))
+ 
+-(declare-function jde-find-jde-doc-directory "jde" nil)
++(require 'jde-util)
+ 
+ (defgroup bsh nil
+   "Customizations for the Emacs inteface to Pat Neimeyer's Java
+--- jdee-orig/lisp/jde-util.el
++++ jdee/lisp/jde-util.el
+@@ -139,6 +139,17 @@
+ 	  (if dir dir (jde-root)))
+       (jde-root))))
+ 
++(defun jde-find-jde-doc-directory ()
++  "Return the path of the JDE documentation directory.
++Returns  nil if the directory cannot be found. At some
++point, XEmacs will include the JDE. Versions of XEmacs
++that include JDE will store the JDE doc in a data
++directory called jde. On all other Emacs versions, the JDE
++expects to find the documentation in a subdirectory
++named doc of the directory that contains the file
++jde.el."
++  (jde-find-jde-data-directory))
++
+ (defun jde-temp-directory ()
+ "Get the location used by the host system to store temporary files."
+   (or (if (boundp 'temporary-file-directory) temporary-file-directory)
+--- jdee-orig/lisp/jde.el
++++ jdee/lisp/jde.el
+@@ -1762,17 +1762,6 @@
+ 
+ 
+ ;; JDE help
+-(defun jde-find-jde-doc-directory ()
+-  "Return the path of the JDE documentation directory.
+-Returns  nil if the directory cannot be found. At some
+-point, XEmacs will include the JDE. Versions of XEmacs
+-that include JDE will store the JDE doc in a data
+-directory called jde. On all other Emacs versions, the JDE
+-expects to find the documentation in a subdirectory
+-named doc of the directory that contains the file
+-jde.el."
+-  (jde-find-jde-data-directory))
+-
+ (defcustom jde-html-directory
+   (expand-file-name "doc/html" (jde-find-jde-doc-directory))
+   "Directory of the JDE HTML documentation."

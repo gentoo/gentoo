@@ -1,0 +1,20 @@
+diff -Naur crackle-0.1/Makefile crackle-0.1-patched/Makefile
+--- crackle-0.1/Makefile	2013-02-15 01:04:24.000000000 -0500
++++ crackle-0.1-patched/Makefile	2014-03-05 11:30:20.907003818 -0500
+@@ -4,13 +4,13 @@
+ 
+ OBJS = crackle.o aes.o aes-ccm.o aes-enc.o test.o
+ 
+-CFLAGS  = -Wall -Werror -g
+-LDFLAGS = -lpcap
++CFLAGS  ?= -Wall -Werror -g
++LDFLAGS ?= 
+ 
+ all: crackle
+ 
+ crackle: $(OBJS)
+-	$(CC) -o crackle $(OBJS) $(LDFLAGS)
++	$(CC) $(CFLAGS) -o crackle $(OBJS) -lpcap $(LDFLAGS)
+ 
+ install: crackle
+ 	$(INSTALL) -m 0755 crackle $(INSTALL_DIR)

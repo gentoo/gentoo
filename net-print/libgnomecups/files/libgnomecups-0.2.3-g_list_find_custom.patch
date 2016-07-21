@@ -1,0 +1,94 @@
+From 14979a2356fd751d82d037db65ce92072097bbf3 Mon Sep 17 00:00:00 2001
+From: Kjartan Maraas <kmaraas@gnome.org>
+Date: Wed, 30 Jan 2008 17:30:43 +0000
+Subject: [PATCH] Fix some warnings. Fix wrong order of arguments to
+ g_list_find_custom.
+
+2008-01-30  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* libgnomecups/gnome-cups-printer.c: (set_timeout),
+	(gnome_cups_printer_get_state_name),
+	(_gnome_cups_printer_get_host): Fix some warnings.
+	* libgnomecups/gnome-cups-queue.c: (gnome_cups_queue_get_job):
+	Fix wrong order of arguments to g_list_find_custom.
+
+svn path=/trunk/; revision=237
+---
+ ChangeLog                         |    8 ++++++++
+ libgnomecups/gnome-cups-printer.c |    7 +++----
+ libgnomecups/gnome-cups-queue.c   |    4 ++--
+ 3 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index b41ac9e..166c87a 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,11 @@
++2008-01-30  Kjartan Maraas  <kmaraas@gnome.org>
++
++	* libgnomecups/gnome-cups-printer.c: (set_timeout),
++	(gnome_cups_printer_get_state_name),
++	(_gnome_cups_printer_get_host): Fix some warnings.
++	* libgnomecups/gnome-cups-queue.c: (gnome_cups_queue_get_job):
++	Fix wrong order of arguments to g_list_find_custom.
++
+ 2008-01-18  Gil Forcada  <gforcada@gnome.org>
+ 
+ 	* configure.in: Added mk, tr and zh_HK to ALL_LINGUAS.
+diff --git a/libgnomecups/gnome-cups-printer.c b/libgnomecups/gnome-cups-printer.c
+index 9c5c7d3..704f205 100644
+--- a/libgnomecups/gnome-cups-printer.c
++++ b/libgnomecups/gnome-cups-printer.c
+@@ -791,7 +791,7 @@ set_timeout (void)
+ 
+ 	if (should_timeout && !update_timeout_id) {
+ 		update_timeout_id = g_timeout_add (UPDATE_TIMEOUT, 
+-						   update_printers_timeout,
++						   (GSourceFunc)update_printers_timeout,
+ 						   NULL);
+ 	} else if (!should_timeout && update_timeout_id) {
+ 		g_source_remove (update_timeout_id);
+@@ -1069,7 +1069,6 @@ gnome_cups_printer_get_state (GnomeCupsPrinter *printer)
+ const char *
+ gnome_cups_printer_get_state_name (GnomeCupsPrinter *printer)
+ {
+-	const char *state_str;
+ 	ipp_pstate_t state;
+ 
+ 	g_return_val_if_fail (GNOME_CUPS_IS_PRINTER (printer), NULL);
+@@ -1079,7 +1078,7 @@ gnome_cups_printer_get_state_name (GnomeCupsPrinter *printer)
+ 
+ 	state = printer->details->state;
+ 
+-	return state_str =  _(printer_state_strings[state - IPP_PRINTER_IDLE]);
++	return _(printer_state_strings[state - IPP_PRINTER_IDLE]);
+ }
+ 
+ const char *
+@@ -2001,7 +2000,7 @@ _gnome_cups_printer_get_host (GnomeCupsPrinter *printer)
+ {
+ 	gchar *host = NULL;
+ 
+-#warning this is broken for smb://user:pass@host/printer urls
++	/* warning this is broken for smb://user:pass@host/printer urls */
+ 	if (go_directly_to_printer_when_possible &&
+ 	    printer->details->printer_uri) {
+ 		gchar *x, *y;
+diff --git a/libgnomecups/gnome-cups-queue.c b/libgnomecups/gnome-cups-queue.c
+index d9b9a92..9f98ed9 100644
+--- a/libgnomecups/gnome-cups-queue.c
++++ b/libgnomecups/gnome-cups-queue.c
+@@ -413,8 +413,8 @@ gnome_cups_queue_get_job (GnomeCupsQueue *queue,
+ {
+ 	if (cache_ok) {
+ 		GList *link = g_list_find_custom (queue->details->jobs,
+-						  (GCompareFunc) find_job_by_id,
+-						  GINT_TO_POINTER (job_id));
++						  GINT_TO_POINTER (job_id),
++						  (GCompareFunc) find_job_by_id);
+ 		if (link)
+ 			return gnome_cups_job_dup (link->data);
+ 	}
+-- 
+1.7.8.4
+

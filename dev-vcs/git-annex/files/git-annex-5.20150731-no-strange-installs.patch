@@ -1,0 +1,9 @@
+diff --git a/Setup.hs b/Setup.hs
+index f90a9b2..97afb7f 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -25,3 +25,3 @@ main = defaultMainWithHooks simpleUserHooks
+ 		return (Nothing, [])	
+-	, postCopy = myPostCopy
++	-- , postCopy = myPostCopy
+ 	}

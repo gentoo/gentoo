@@ -1,0 +1,26 @@
+diff --git a/make/Makefile.pcom b/make/Makefile.pcom
+index a808667..405be95 100644
+--- a/make/Makefile.pcom
++++ b/make/Makefile.pcom
+@@ -274,16 +274,16 @@ print_pssm : print_pssm.c getseq.c karlin.c apam.c
+ 	$(CC) -o print_pssm $(CFLAGS) print_pssm.c getseq.c karlin.c apam.c $(LIB_M)
+ 
+ map_db : map_db.c uascii.h ncbl2_head.h
+-	$(CC) $(CFLAGS) -o $(BIN)/map_db map_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/map_db map_db.c
+ 
+ list_db : list_db.c
+-	$(CC) $(CFLAGS) -o $(BIN)/list_db list_db.c
++	$(CC) $(CFLAGS) $(HFLAGS) $(BIN)/list_db list_db.c
+ 
+ lav2ps : lav2plt.o lavplt_ps.o
+-	$(CC) -DUNIX -o $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2ps lav2plt.o lavplt_ps.o -lm
+ 
+ lav2svg : lav2plt.o lavplt_svg.o
+-	$(CC) -DUNIX -o $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/lav2svg  lav2plt.o lavplt_svg.o -lm
+ 
+ res_stats : res_stats.o scale_se.o
+-	$(CC) -DUNIX -o $(BIN)/res_stats res_stats.o scale_se.o -lm
++	$(CC) -DUNIX $(HFLAGS) $(BIN)/res_stats res_stats.o scale_se.o -lm

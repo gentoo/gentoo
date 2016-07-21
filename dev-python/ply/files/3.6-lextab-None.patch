@@ -1,0 +1,49 @@
+From dbf122652d38ba03ff9f9fe4aa9bee3693e6775f Mon Sep 17 00:00:00 2001
+From: David Beazley <dave@dabeaz.com>
+Date: Fri, 8 May 2015 10:10:55 -0500
+Subject: [PATCH] Minor fix to account for bad None arguments for
+ tabmodule/lextab
+
+---
+ ply/lex.py  | 4 ++++
+ ply/yacc.py | 5 ++++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/ply/lex.py b/ply/lex.py
+index ed1e2ed..772325c 100644
+--- a/ply/lex.py
++++ b/ply/lex.py
+@@ -859,6 +859,10 @@ def validate_module(self, module):
+ # -----------------------------------------------------------------------------
+ def lex(module=None, object=None, debug=False, optimize=False, lextab='lextab',
+         reflags=0, nowarn=False, outputdir=None, debuglog=None, errorlog=None):
++
++    if lextab is None:
++        lextab = 'lextab'
++
+     global lexer
+ 
+     ldict = None
+diff --git a/ply/yacc.py b/ply/yacc.py
+index e0b4faf..eb02cc2 100644
+--- a/ply/yacc.py
++++ b/ply/yacc.py
+@@ -2709,7 +2709,7 @@ def write_table(self, tabmodule, outputdir='', signature=''):
+ _lr_method = %r
+ 
+ _lr_signature = %r
+-    ''' % (filename, __tabversion__, self.lr_method, signature))
++    ''' % (os.path.basename(filename), __tabversion__, self.lr_method, signature))
+ 
+             # Change smaller to 0 to go back to original tables
+             smaller = 1
+@@ -3183,6 +3183,9 @@ def yacc(method='LALR', debug=yaccdebug, module=None, tabmodule=tab_module, star
+          check_recursion=True, optimize=False, write_tables=True, debugfile=debug_file,
+          outputdir=None, debuglog=None, errorlog=None, picklefile=None):
+ 
++    if tabmodule is None:
++        tabmodule = tab_module
++
+     # Reference to the parsing method of the last built parser
+     global parse
+ 

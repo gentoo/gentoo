@@ -1,0 +1,69 @@
+https://svn.boost.org/trac/boost/ticket/6286
+
+--- a/boostcpp.jam
++++ b/boostcpp.jam
+@@ -99,13 +99,6 @@
+     BUILD_ID = [ regex.replace $(build-id) "[*\\/:.\"\' ]" _ ] ;
+ }
+ 
+-# Python build id (for Python libraries only).
+-python-id = [ option.get "python-buildid" ] ;
+-if $(python-id)
+-{
+-    PYTHON_ID = [ regex.replace $(python-id) [*\\/:.\"\'] _ ] ;
+-}
+-
+ 
+ ################################################################################
+ #
+--- a/libs/mpi/build/Jamfile.v2
++++ b/libs/mpi/build/Jamfile.v2
+@@ -8,6 +8,8 @@
+ #  Authors: Douglas Gregor
+ #           Andrew Lumsdaine
+ 
++import option ;
++import regex ;
+ import mpi ;
+ import indirect ;
+ import python ;
+@@ -24,6 +26,13 @@
+     <tag>@$(__name__).tag
+   ;
+ 
++# Python build id (for Python libraries only).
++python-id = [ option.get "python-buildid" ] ;
++if $(python-id)
++{
++    PYTHON_ID = [ regex.replace $(python-id) [*\\/:.\"\'] _ ] ;
++}
++
+ rule tag ( name : type ? : property-set )
+ {
+     local result = $(name) ;
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
+@@ -2,6 +2,8 @@
+ # Software License, Version 1.0. (See accompanying
+ # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+ 
++import option ;
++import regex ;
+ import os ;
+ import indirect ;
+ import modules ;
+@@ -30,6 +32,14 @@
+         ;
+ }
+ 
++# Python build id (for Python libraries only).
++python-id = [ option.get "python-buildid" ] ;
++if $(python-id)
++{
++    PYTHON_ID = [ regex.replace $(python-id) [*\\/:.\"\'] _ ] ;
++}
++
++
+ rule find-py3-version
+ {
+     local versions = [ feature.values python ] ;

@@ -1,0 +1,25 @@
+Index: pkgsrc/pkgtools/libnbcompat/files/nbcompat/limits.h
+===================================================================
+--- pkgsrc.orig/pkgtools/libnbcompat/files/nbcompat/limits.h
++++ pkgsrc/pkgtools/libnbcompat/files/nbcompat/limits.h
+@@ -43,6 +43,11 @@
+ # include <limits.h>
+ #endif
+ 
++/* Needed for glibc 2.8 */
++#ifdef HAVE_SYS_PARAM_H
++# include <sys/param.h>
++#endif
++
+ /*
+  * Declare functions and macros that may be missing in <limits.h>.
+  */
+@@ -77,4 +82,8 @@
+ # define UID_MAX	2147483647U  /* max value for a uid_t (2^31-2) */
+ #endif
+ 
++#if !defined(ARG_MAX) && (__GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 8) )
++# define ARG_MAX sysconf(_SC_ARG_MAX)
++#endif
++
+ #endif	/* !_NBCOMPAT_LIMITS_H_ */

@@ -1,0 +1,42 @@
+--- Makefile.orig	2011-01-21 00:43:02.000000000 +0100
++++ Makefile	2011-01-21 00:47:27.000000000 +0100
+@@ -61,7 +61,7 @@
+ check-ipsvd-cdb: load check-ipsvd-cdb.o uint32_unpack.o unix.a byte.a
+ 	./load check-ipsvd-cdb uint32_unpack.o unix.a byte.a
+ 
+-tcpsvd.o: compile sysdeps tcpsvd.c ipsvd_log.h
++tcpsvd.o: compile sysdeps tcpsvd.c ipsvd_log.h iopause.h
+ 	./compile tcpsvd.c
+ 
+ sslsvd.o: compile sysdeps tcpsvd.c ssl_io.c ipsvd_log.h matrixssl
+@@ -70,7 +70,7 @@
+ ssl_io.o: compile sysdeps ssl_io.c matrixssl
+ 	./compile -I./matrixssl ssl_io.c
+ 
+-udpsvd.o: compile sysdeps udpsvd.c ipsvd_log.h
++udpsvd.o: compile sysdeps udpsvd.c ipsvd_log.h iopause.h
+ 	./compile udpsvd.c
+ 
+ ipsvd-cdb.o: compile sysdeps ipsvd-cdb.c
+@@ -94,10 +94,10 @@
+ ipsvd_fmt.o: compile ipsvd_fmt.c
+ 	./compile ipsvd_fmt.c
+ 
+-ipsvd_check.o: compile ipsvd_check.c uint64.h
++ipsvd_check.o: compile ipsvd_check.c uint64.h iopause.h
+ 	./compile ipsvd_check.c
+ 
+-ipsvd_hostname.o: compile ipsvd_hostname.c uint64.h
++ipsvd_hostname.o: compile ipsvd_hostname.c uint64.h iopause.h
+ 	./compile ipsvd_hostname.c
+ 
+ ipsvd_phcc.o: compile ipsvd_phcc.c
+@@ -274,7 +274,7 @@
+ 	./compile dns_rcrw.c
+ 
+ dns_resolve.o: compile dns_resolve.c iopause.h taia.h tai.h uint64.h taia.h \
+-	  byte.h dns.h stralloc.h gen_alloc.h iopause.h taia.h
++	  byte.h dns.h stralloc.h gen_alloc.h taia.h
+ 	./compile dns_resolve.c
+ 
+ dns_sortip.o: compile dns_sortip.c byte.h dns.h stralloc.h gen_alloc.h \

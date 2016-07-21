@@ -1,0 +1,27 @@
+diff -cr alpine-2.00.orig/imap/src/c-client/mail.h alpine-2.00.new/imap/src/c-client/mail.h
+*** src/c-client/mail.h	2008-08-08 18:34:22.000000000 +0100
+--- src/c-client/mail.h	2009-05-01 13:40:37.000000000 +0100
+***************
+*** 775,780 ****
+--- 775,781 ----
+      unsigned long bytes;	/* size of text in octets */
+    } size;
+    char *md5;			/* MD5 checksum */
++   unsigned short topal_hack;    /* set to 1 if topal has wrecked the sending */
+    void *sparep;			/* spare pointer reserved for main program */
+  };
+  
+diff -cr alpine-2.00.orig/imap/src/c-client/mail.c alpine-2.00.new/imap/src/c-client/mail.c
+*** src/c-client/mail.c	2008-06-04 19:39:54.000000000 +0100
+--- src/c-client/mail.c	2009-04-30 22:34:13.000000000 +0100
+***************
+*** 2712,2717 ****
+--- 2712,2719 ----
+    BODY *b = NIL;
+    PART *pt;
+    unsigned long i;
++   /* Topal hack 2 */
++   mail_fetchstructure (stream,msgno,&b);
+  				/* make sure have a body */
+    if (section && *section && mail_fetchstructure (stream,msgno,&b) && b)
+      while (*section) {		/* find desired section */

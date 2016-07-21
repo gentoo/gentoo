@@ -1,0 +1,13 @@
+Fixes build error caused by API changes in KDE 4.10
+
+--- nightmode.cpp
++++ nightmode.cpp
+@@ -74,7 +74,7 @@
+ void NightmodeEffect::paintWindow(EffectWindow *w, int mask, QRegion region, WindowPaintData &data )
+ {
+     if (m_active) {
+-        data.brightness *= (m_brightness / 100.0);
++        data.setBrightness(data.brightness() * (m_brightness / 100.0));
+ //         data.saturation *= (m_brightness / 100.0);
+     }
+     effects->paintWindow( w, mask, region, data );

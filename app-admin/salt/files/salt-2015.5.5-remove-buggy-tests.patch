@@ -1,0 +1,46 @@
+diff --git a/tests/unit/modules/darwin_sysctl_test.py b/tests/unit/modules/darwin_sysctl_test.py
+index 51e8f23..36d005f 100644
+--- a/tests/unit/modules/darwin_sysctl_test.py
++++ b/tests/unit/modules/darwin_sysctl_test.py
+@@ -64,18 +64,6 @@ class DarwinSysctlTestCase(TestCase):
+                 'net.inet.icmp.icmplim', 50), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           darwin_sysctl.persist,
+-                                           'net.inet.icmp.icmplim',
+-                                           50, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     def test_persist_no_conf_success(self):
+         '''
+         Tests successful add of config file when previously not one
+diff --git a/tests/unit/modules/linux_sysctl_test.py b/tests/unit/modules/linux_sysctl_test.py
+index 08fc80f..c6e40b8 100644
+--- a/tests/unit/modules/linux_sysctl_test.py
++++ b/tests/unit/modules/linux_sysctl_test.py
+@@ -82,18 +82,6 @@ class LinuxSysctlTestCase(TestCase):
+                 'net.ipv4.ip_forward', 1), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           linux_sysctl.persist,
+-                                           'net.ipv4.ip_forward',
+-                                           1, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     def test_persist_no_conf_success(self):
+         '''
+         Tests successful add of config file when previously not one

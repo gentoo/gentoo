@@ -1,0 +1,46 @@
+--- bidiv.c
++++ bidiv.c
+@@ -172,7 +172,7 @@
+ 		}
+ #ifndef TRY_UTF8
+ 		in[len]='\0';
+-		fribidi_iso8859_8_to_unicode(in, unicode_in);
++		fribidi_charset_to_unicode(FRIBIDI_CHAR_SET_ISO8859_8, in, unicode_in);
+ #endif
+ 
+ 		/* output the line */
+@@ -201,10 +201,10 @@
+ 			rtl_line=0;
+ 
+ 		if(out_utf8)
+-			fribidi_unicode_to_utf8(unicode_out, len,
++			fribidi_unicode_to_charset(FRIBIDI_CHAR_SET_UTF8, unicode_out, len,
+ 					     out);
+ 		else
+-			fribidi_unicode_to_iso8859_8(unicode_out, len,
++			fribidi_unicode_to_charset(FRIBIDI_CHAR_SET_ISO8859_8, unicode_out, len,
+ 						     out);
+ 		/* if rtl_line (i.e., base_dir is RL), and we didn't fill the
+ 		   entire width, we need to pad with spaces. Maybe in the
+--- Makefile
++++ Makefile
+@@ -1,16 +1,14 @@
+ PREFIX=/usr/local
+ BIN_DIR=$(PREFIX)/bin
+ MAN_PATH=$(PREFIX)/man
+-CC_OPT_FLAGS=-O2 -Wall
+ 
+-
+-CFLAGS= $(CC_OPT_FLAGS) $(DEFS) `fribidi-config --cflags`
+-LDFLAGS=`fribidi-config --libs`
++CFLAGS+=`pkg-config fribidi --cflags` -Wall
++LIBS=`pkg-config fribidi --libs`
+ 
+ all: bidiv
+ 
+ bidiv: bidiv.o
+-	$(CC) -o bidiv bidiv.o $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o bidiv bidiv.o $(LIBS)
+ 
+ clean:
+ 	rm -f bidiv.o *~

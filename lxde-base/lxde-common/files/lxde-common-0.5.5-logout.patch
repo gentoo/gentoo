@@ -1,0 +1,14 @@
+Index: lxde-common-0.5.5/Makefile.am
+===================================================================
+--- lxde-common-0.5.5.orig/Makefile.am
++++ lxde-common-0.5.5/Makefile.am
+@@ -20,6 +20,9 @@ images_DATA= \
+ 	images/logout-banner.png \
+ 	images/lxde-icon.png
+ 
++lxlogoutdir=$(datadir)/applications/
++lxlogout_DATA=lxde-logout.desktop
++
+ lxpaneldir=$(datadir)/lxpanel/profile/LXDE
+ lxpanel_DATA=lxpanel/config
+ 

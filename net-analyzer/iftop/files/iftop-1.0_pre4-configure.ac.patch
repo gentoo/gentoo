@@ -1,0 +1,278 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,10 +51,10 @@
+ 			  forking        use the REALLY SUCKY forking resolver.
+ 			  guess          run experiments to guess a
+ 					 reasonable value.  Only works if you
+-					 aren't cross-compiling.  This
++					 are not cross-compiling.  This
+ 					 is the default.  guess will
+ 					 either select netdb or netdb_1thread.
+-			  none           don't do name resolution.],
++			  none           do not do name resolution.],
+     [resolver=$withval],
+     [resolver=guess])
+ 
+@@ -98,45 +98,14 @@
+ AC_CHECK_FUNCS(inet_aton inet_pton)
+ 
+ dnl
+-dnl Find integers of known physical size. This is a pain in the arse because
+-dnl we can't use AC_CHECK_SIZEOF to find the original variables, since that
+-dnl function doesn't permit us to include a header file. Sigh.
+-dnl
+-
+-for type in u_int8_t u_int16_t u_int32_t ; do
+-    AC_MSG_CHECKING([size of $type])
+-    AC_RUN_IFELSE([AC_LANG_SOURCE([
+-#include <sys/types.h>
+-#include <stdio.h>
+-int main() {
+-    $type dummy;
+-    FILE *f=fopen("conftestval", "w");
+-    if (!f) exit(1);
+-    fprintf(f, "%d\n", sizeof($1));
+-    exit(0);
+-}
+-    ])], [
+-        x=`cat conftestval`
+-        eval "size_$type=$x"
+-        AC_MSG_RESULT([$x])
+-    ], [
+-        eval "size_$type=0"
+-        AC_MSG_RESULT([unknown type])
+-    ], [
+-        eval "size_$type=0"
+-        AC_MSG_RESULT([can't determine when cross-compiling])
+-    ])
+-done
+-
+-dnl Groan. Have to do things this way so that autoheader can do its thing....
+-AC_DEFINE_UNQUOTED(SIZEOF_U_INT8_T,  [$size_u_int8_t],  [size of u_int8_t])
+-AC_DEFINE_UNQUOTED(SIZEOF_U_INT16_T, [$size_u_int16_t], [size of u_int16_t])
+-AC_DEFINE_UNQUOTED(SIZEOF_U_INT32_T, [$size_u_int32_t], [size of u_int32_t])
++dnl Find integers of known physical size.
++dnl
+ 
+-dnl If we already have these types, don't piss about any more....
++AC_CHECK_SIZEOF([u_int8_t])
++AC_CHECK_SIZEOF([u_int16_t])
++AC_CHECK_SIZEOF([u_int32_t])
+ 
+-if test $size_u_int8_t != 1 || test $size_u_int16_t != 2 || test $size_u_int32_t != 4 ; then
+-dnl XXXif test $size_u_int8_t != 1 -o $size_u_int16_t != 2 -o $size_u_int32_t != 4 ; then
++if test $ac_cv_sizeof_u_int8_t = 0 || test $ac_cv_sizeof_u_int16_t = 0 || test $ac_cv_sizeof_u_int32_t = 0; then
+     do_int_types=1
+     AC_CHECK_HEADERS(
+         stdint.h             dnl C99
+@@ -154,12 +123,16 @@
+     fi
+ fi
+ 
++AC_DEFINE_UNQUOTED([SIZEOF_U_INT8_T],[$ac_cv_sizeof_u_int8_t],[size of u_int8_t])
++AC_DEFINE_UNQUOTED([SIZEOF_U_INT16_T],[$ac_cv_sizeof_u_int16_t],[size of u_int16_t])
++AC_DEFINE_UNQUOTED([SIZEOF_U_INT32_T],[$ac_cv_sizeof_u_int32_t],[size of u_int32_t])
++
+ dnl
+ dnl Name resolution.
+ dnl
+ dnl This is complicated because we need some sort of reentrant mechanism for
+ dnl name resolution. Naturally, UNIX vendors have come up with a variety of
+-dnl incompatible schemes for this, many of which don't work at all.
++dnl incompatible schemes for this, many of which do not work at all.
+ dnl
+ 
+ dnl First, the default resolver, which uses getnameinfo or gethostbyaddr_r. If
+@@ -175,7 +148,7 @@
+     use_getnameinfo=0
+     AC_SEARCH_LIBS(getnameinfo, [nsl], [use_getnameinfo=1])
+ 
+-    dnl XXX For the moment, don't use getnameinfo, since it isn't actually
++    dnl XXX For the moment, do not use getnameinfo, since it is not actually
+     dnl thread safe on, e.g., NetBSD.
+     use_getnameinfo=0
+ 
+@@ -192,7 +165,7 @@
+     dnl Can use gethostbyaddr_r?
+     AC_SEARCH_LIBS(gethostbyaddr_r, [nsl], , [resolver=guess])
+     if test x$resolver = xguess && test x$specified_resolver != xguess ; then
+-       dnl They wanted gethostbyaddr_r, but they can't have it, so stop.
++       dnl They wanted gethostbyaddr_r, but they cannot have it, so stop.
+        AC_MSG_ERROR([no library defines gethostbyaddr_r])
+     fi
+ fi
+@@ -216,15 +189,15 @@
+ 	            AC_DEFINE(GETHOSTBYADDR_R_RETURNS_INT, 1,
+                     [8-argument gethostbyaddr_r returns int])], [
+     dnl Neither.
+-    AC_MSG_RESULT([don't know how])
++    AC_MSG_RESULT([do not know how])
+     resolver=guess])])
+     if test x$resolver = xguess && test x$specified_resolver != xguess ; then
+-       dnl They wanted gethostbyaddr_r, but they can't have it, so stop.
++       dnl They wanted gethostbyaddr_r, but they cannot have it, so stop.
+        AC_MSG_ERROR([gethostbyaddr_r has no known calling convention])
+     fi
+ fi
+ 
+-dnl If we still want to do gethostbyaddr_r, and we aren't
++dnl If we still want to do gethostbyaddr_r, and we are not
+ dnl cross-compiling, test it.
+ if test x$resolver = xnetdb ; then
+     if test x$ghba_args = x8 ; then
+@@ -237,13 +210,13 @@
+                   [AC_MSG_RESULT([yes])],
+ 		  [AC_MSG_RESULT([no])
+ 		   resolver=guess],
+-		  [AC_MSG_RESULT([can't test because we are cross-compiling])])
++		  [AC_MSG_RESULT([cannot test because we are cross-compiling])])
+     if test x$resolver = xguess ; then
+         if test x$specified_resolver = xguess ; then
+-           AC_MSG_RESULT([gethostbyaddr_r doesn't work, so we'll try something else])
++           AC_MSG_RESULT([gethostbyaddr_r does not work, so we will try something else])
+         else
+-           dnl They wanted gethostbyaddr_r, but it doesn't work, so stop.
+-           AC_MSG_ERROR([gethostbyaddr_r doesn't work])
++           dnl They wanted gethostbyaddr_r, but it does not work, so stop.
++           AC_MSG_ERROR([gethostbyaddr_r does not work])
+         fi
+     fi
+ fi
+@@ -260,11 +233,11 @@
+     AC_SEARCH_LIBS(ares_init, [ares], [
+         AC_DEFINE(USE_ARES, 1, [use ARES for name resolution])
+         ], [
+-        dnl They asked for ares, but we can't give it to them, so stop.
+-        AC_MSG_ERROR([can't find ARES.  Re-run configure and ask for a different resolver.])])
++        dnl They asked for ares, but we cannot give it to them, so stop.
++        AC_MSG_ERROR([cannot find ARES.  Re-run configure and ask for a different resolver.])])
+ fi
+ 
+-dnl Last thing to try if we haven't decided yet is netdb_1thread.
++dnl Last thing to try if we have not decided yet is netdb_1thread.
+ if test x$resolver = xguess ; then
+    resolver=netdb_1thread
+ fi
+@@ -317,16 +290,16 @@
+ 
+ if test $foundpcaph = 0 ; then
+     AC_MSG_RESULT([no idea])
+-    AC_MSG_ERROR([can't find pcap.h
+-  You're not going to get very far without libpcap.])
++    AC_MSG_ERROR([cannot find pcap.h
++  You are not going to get very far without libpcap.])
+ else
+     dnl assume that -lpcap is under $test_prefix/lib
+     if test x$test_prefix != x ; then
+         LDFLAGS="$LDFLAGS -L$test_prefix/lib"
+     fi
+     AC_CHECK_LIB(pcap, pcap_open_live, , [
+-            AC_MSG_ERROR([can't find libpcap
+-  You're not going to get very far without libpcap.])
++            AC_MSG_ERROR([cannot find libpcap
++  You are not going to get very far without libpcap.])
+         ])
+ fi
+ 
+@@ -337,79 +310,50 @@
+     ])
+ 
+ if test $foundpcap = 0 ; then
+-    AC_MSG_ERROR([can't find pcap.h
+-  You're not going to get very far without libpcap.])
++    AC_MSG_ERROR([cannot find pcap.h
++  You are not going to get very far without libpcap.])
+ fi
+ 
+ dnl
+ dnl Curses. Really, we need ncurses or something similarly advanced, since
+ dnl we use the (apparently obscure) mvchgat function. Unfortunately, there's
+-dnl a solid chance that mvchgat is a macro, so we can't just use
++dnl a solid chance that mvchgat is a macro, so we cannot just use
+ dnl AC_SEARCH_LIBS....
+ dnl
+ 
+-AC_MSG_CHECKING([for a curses library containing mvchgat])
+-oldLIBS=$LIBS
+-for curseslib in ncursesw curses ncurses ; do
+-    LIBS="$oldLIBS -l$curseslib"
+-    AC_TRY_LINK([
++PKG_PROG_PKG_CONFIG()
++
++PKG_CHECK_MODULES([ncurses], [ncursesw], [foundcurseslib="$ncurses_LIBS"], [
++    PKG_CHECK_MODULES([ncurses], [ncurses], [foundcurseslib="$ncurses_LIBS"], [
++    AC_MSG_CHECKING([for a curses library containing mvchgat])
++    oldLIBS=$LIBS
++    for curseslib in ncursesw curses ncurses ; do
++        LIBS="$oldLIBS -l$curseslib"
++        AC_TRY_LINK([
+ #include <$curseslib.h>
+         ], [
+         mvchgat(0, 0, 1, A_REVERSE, 0, NULL)
+         ], [
+-        foundcurseslib=$curseslib
++        foundcurseslib=-l$curseslib
+         break
+         ])
+-done
+-
+-if test x$foundcurseslib = x ; then
+-    AC_MSG_RESULT([none found])
++    done
++	],
+     AC_MSG_ERROR([Curses! Foiled again!
+-  (Can't find a curses library supporting mvchgat.)
++  (Cannot find a curses library supporting mvchgat.)
+   Consider installing ncurses.])
+-else
+-    AC_MSG_RESULT([-l$foundcurseslib])
+-fi
+-
++	)
++])
+ 
+ dnl
+ dnl POSIX threads. Different systems like different combinations of flags,
+ dnl libraries, etc. We use a test program to figure this stuff out.
+ dnl
+ 
+-AC_MSG_CHECKING([POSIX threads compilation])
+-thrfail=1
+-oldCFLAGS=$CFLAGS
+-oldLIBS=$LIBS
+-for flag in "" -mt -pthread -thread ; do
+-    CFLAGS="$oldCFLAGS $flag"
+-    for lib in "" -lpthread "-lpthread -lposix4" ; do
+-        LIBS="$oldLIBS $lib"
+-        AC_LINK_IFELSE([AC_LANG_SOURCE([`cat config/pthread.c`])], [
+-            foundthrlib=$lib
+-            foundthrflag=$flag
+-            thrfail=0
+-            break
+-            ])
+-    done
+-    if test $thrfail = 0 ; then
+-        break
+-    fi
+-done
+-
+-if test $thrfail = 1 ; then
+-    AC_MSG_RESULT([no idea])
+-    AC_MSG_ERROR([can't figure out how to compile with POSIX threads
+-  If your system actually supports POSIX threads, this means we've messed up.])
+-fi
+-
+-AC_MSG_RESULT([CFLAGS=$foundthrflag and LIBS=$foundthrlib])
+-AC_MSG_CHECKING([POSIX threads usability])
+-AC_RUN_IFELSE([AC_LANG_SOURCE([`cat config/pthread.c`])],
+-	      [AC_MSG_RESULT([yes])],
+-              [AC_MSG_ERROR(
+-	       [it fails.  We probably guessed the wrong CFLAGS.])],
+-	      [AC_MSG_RESULT([can't test because we are cross-compiling])])
++AX_PTHREAD(
++  [LIBS="$PTHREAD_LIBS $LIBS"
++  CFLAGS="$CFLAGS $PTHREAD_CFLAGS"],
++  AC_MSG_ERROR([Could not find out how to enable POSIX threads]))
+ 
+ dnl
+ dnl Are we on a system (like Solaris) that requires promiscuous mode in order to

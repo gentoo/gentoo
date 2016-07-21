@@ -1,0 +1,11 @@
+--- a/paste/auth/cookie.py
++++ b/paste/auth/cookie.py
+@@ -52,7 +52,7 @@
+ 
+ def make_time(value):
+     return time.strftime("%Y%m%d%H%M", time.gmtime(value))
+-_signature_size = len(hmac.new('x', 'x', sha1).digest())
++_signature_size = len(hmac.new(b'x', b'x', sha1).digest())
+ _header_size = _signature_size + len(make_time(time.time()))
+ 
+ # @@: Should this be using urllib.quote?

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="set time once when started"
+
+depend() {
+	use net
+}
+
+start() {
+	: ${TLSDATE_CMD:=tlsdate}
+	ebegin "Setting clock via tlsdate '${TLSDATE_CMD}'"
+	"${TLSDATE_CMD}" ${TLSDATE_OPTS}
+	eend $? "Failed to set clock"
+}

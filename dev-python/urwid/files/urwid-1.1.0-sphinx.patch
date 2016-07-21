@@ -1,0 +1,11 @@
+--- urwid-1.1.0/docs/conf.py
++++ urwid-1.1.0/docs/conf.py
+@@ -46,7 +46,7 @@
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+ # built documents.
+-FILE_PATH = os.path.dirname(__file__).decode('utf-8')
++FILE_PATH = os.path.dirname(__file__)
+ VERSION_MODULE = os.path.abspath(os.path.join(FILE_PATH,
+     '../urwid/version.py'))
+ VERSION_VARS = {}

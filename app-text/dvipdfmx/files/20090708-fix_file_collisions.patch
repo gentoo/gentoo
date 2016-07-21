@@ -1,0 +1,11 @@
+diff -urN dvipdfmx-20090708/data/Makefile.am dvipdfmx-20090708.new/data/Makefile.am
+--- dvipdfmx-20090708/data/Makefile.am	2009-05-01 01:49:00.000000000 +0200
++++ dvipdfmx-20090708.new/data/Makefile.am	2009-11-29 23:05:55.000000000 +0100
+@@ -10,7 +10,3 @@
+ mapdatadir = $(datadir)/texmf/fonts/map/dvipdfmx
+ dist_mapdata_DATA = \
+   $(srcdir)/cid-x.map
+-
+-cmapdatadir = $(datadir)/texmf/fonts/cmap/dvipdfmx
+-dist_cmapdata_DATA = \
+-  $(srcdir)/EUC-UCS2

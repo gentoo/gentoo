@@ -1,0 +1,16 @@
+--- rtaudio-4.0.12/Makefile.in
++++ rtaudio-4.0.12/Makefile.in
+@@ -24,9 +24,11 @@
+ tests:
+ 	cd tests && $(MAKE) all
+ 
+-$(LIBRARIES): $(OBJECTS)
++$(STATIC): $(OBJECTS)
+ 	$(AR) ruv $(STATIC) $(OBJECTS)
+-	ranlib $(STATIC)
++	$(RANLIB) $(STATIC)
++
++$(SHARED): $(OBJECTS)
+ 	$(CC) -fPIC @libflags@ $(OBJECTS) @LIBS@
+ 	$(LN) -sf @sharedname@ $(SHARED)
+ 	$(LN) -sf @sharedname@ $(SHARED).$(MAJOR)

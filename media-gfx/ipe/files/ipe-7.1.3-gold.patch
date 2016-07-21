@@ -1,0 +1,30 @@
+ src/ipe/Makefile       | 2 +-
+ src/ipescript/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ipe/Makefile b/src/ipe/Makefile
+index 21ac500..5a7a1ad 100644
+--- a/src/ipe/Makefile
++++ b/src/ipe/Makefile
+@@ -10,7 +10,7 @@ TARGET = $(call exe_target,ipe)
+ CPPFLAGS += -I../include -I../ipecanvas -I../ipecairo -I../ipelua \
+ 	$(LUA_CFLAGS) $(UI_CFLAGS) $(CAIRO_CFLAGS) $(ZLIB_CFLAGS)
+ LIBS += -L$(buildlib) -lipecanvas -lipecairo -lipelua -lipe -lipeui \
+-	$(LUA_LIBS) $(UI_LIBS) $(CAIRO_LIBS) $(ZLIB_LIBS)
++	$(LUA_LIBS) $(UI_LIBS) $(CAIRO_LIBS) $(ZLIB_LIBS) -ldl
+ 
+ CPPFLAGS += -DIPELETDIR=\"$(IPELETDIR)\"
+ CPPFLAGS += -DIPELUADIR=\"$(IPELUADIR)\"
+diff --git a/src/ipescript/Makefile b/src/ipescript/Makefile
+index ff35fd9..2315f1f 100644
+--- a/src/ipescript/Makefile
++++ b/src/ipescript/Makefile
+@@ -8,7 +8,7 @@ include ../common.mak
+ TARGET = $(call exe_target,ipescript)
+ 
+ CPPFLAGS += -I../include -I../ipelua $(LUA_CFLAGS) 
+-LIBS += -L$(buildlib) -lipelua -lipe $(LUA_LIBS)
++LIBS += -L$(buildlib) -lipelua -lipe $(LUA_LIBS) -ldl
+ 
+ CPPFLAGS += -DIPELETDIR=\"$(IPELETDIR)\"
+ CPPFLAGS += -DIPESTYLEDIR=\"$(IPESTYLEDIR)\"

@@ -1,0 +1,11 @@
+--- /usr/bin/flexbackup	2010-12-30 08:09:10.000000000 +0100
++++ flexbackup	2013-12-24 15:44:25.000000000 +0100
+@@ -2688,7 +2688,7 @@
+     }
+ 
+     # Flag old config file
+-    if (defined(@cfg::filesystems) or defined($cfg::mt_var_blksize)) {
++    if (@cfg::filesystems or $cfg::mt_var_blksize) {
+ 	# so strict shuts up
+ 	my $junk = @cfg::filesystems;
+ 	$junk = $cfg::mt_var_blksize;

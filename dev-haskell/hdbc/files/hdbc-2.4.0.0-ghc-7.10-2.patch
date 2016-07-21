@@ -1,0 +1,43 @@
+diff --git a/Database/HDBC/SqlValue.hs b/Database/HDBC/SqlValue.hs
+index 0e278cd..1ebf114 100644
+--- a/Database/HDBC/SqlValue.hs
++++ b/Database/HDBC/SqlValue.hs
+@@ -19,8 +19,13 @@ import Data.Int
+ import qualified System.Time as ST
+ import Data.Time ( Day (ModifiedJulianDay), DiffTime, LocalTime, NominalDiffTime, ParseTime
+                  , TimeOfDay, TimeZone, UTCTime, ZonedTime, formatTime, localDay, localTimeOfDay
+-                 , parseTime, timeOfDayToTime, timeToTimeOfDay, toModifiedJulianDay, utc
++                 , timeOfDayToTime, timeToTimeOfDay, toModifiedJulianDay, utc
+                  , utcToZonedTime, zonedTimeToLocalTime, zonedTimeToUTC, zonedTimeZone
++#if MIN_VERSION_time(1,5,0)
++                 , parseTimeM
++#else
++                 , parseTime
++#endif
+                  )
+ import Data.Time.Clock.POSIX
+ import Database.HDBC.Locale (defaultTimeLocale, iso8601DateFormat)
+@@ -665,7 +670,11 @@ instance Convertible (TimeOfDay, TimeZone) SqlValue where
+ instance Convertible SqlValue (TimeOfDay, TimeZone) where
+     safeConvert (SqlString x) = 
+         do tod <- parseTime' "%T%Q %z" x
++#if MIN_VERSION_time(1,5,0)
++           tz <- case parseTimeM True defaultTimeLocale "%T%Q %z" x of
++#else
+            tz <- case parseTime defaultTimeLocale "%T%Q %z" x of
++#endif
+                       Nothing -> convError "Couldn't extract timezone in" (SqlString x)
+                       Just y -> Right y
+            return (tod, tz)
+@@ -939,7 +948,11 @@ parseTime' _ inpstr =
+ #else
+ parseTime' :: (Typeable t, Convertible SqlValue t, ParseTime t) => String -> String -> ConvertResult t
+ parseTime' fmtstr inpstr = 
++#if MIN_VERSION_time(1,5,0)
++    case parseTimeM True defaultTimeLocale fmtstr inpstr of
++#else
+     case parseTime defaultTimeLocale fmtstr inpstr of
++#endif
+       Nothing -> convError ("Cannot parse using default format string " ++ show fmtstr)
+                  (SqlString inpstr)
+       Just x -> Right x

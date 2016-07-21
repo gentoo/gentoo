@@ -1,0 +1,19 @@
+diff --git a/Makefile b/Makefile
+index 3331e30..7693bd2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,5 @@
+ CFLAGS += -std=gnu99 -Wall -Wwrite-strings -pthread
++LIBS = -lrt -lpthread
+ ENDIAN_CFLAGS=
+ PREFIX ?= /usr/local
+ 
+@@ -35,7 +36,7 @@ install: $(BINARY)
+ 	install -m 755 $(BINARY) $(DESTDIR)$(PREFIX)/bin
+ 
+ $(BINARY): $(OBJECTS) bin
+-	$(QUIET_LINK)$(CC) $(OBJECTS) $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) -o $@
++	$(QUIET_LINK)$(CC) $(OBJECTS) $(LDFLAGS) $(XMMS_LDFLAGS) $(CURL_LDFLAGS) -o $@ $(LIBS)
+ 
+ src/%.o : src/%.c
+ 	$(QUIET_CC)$(CC) $(CFLAGS) $(XMMS_CFLAGS) $(CURL_CFLAGS) $(ENDIAN_CFLAGS) -o $@ -c $<

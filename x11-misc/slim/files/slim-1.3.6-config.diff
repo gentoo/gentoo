@@ -1,0 +1,77 @@
+--- slim.conf.orig	2010-08-25 11:52:23.000000000 -0400
++++ slim.conf	2010-08-25 11:58:58.000000000 -0400
+@@ -2,7 +2,7 @@
+ # Note: -xauth $authfile is automatically appended
+ default_path        /bin:/usr/bin:/usr/local/bin
+ default_xserver     /usr/bin/X
+-#xserver_arguments   -dpi 75
++xserver_arguments   -nolisten tcp -br -deferglyphs 16 vt07
+ 
+ # Commands for halt, login, etc.
+ halt_cmd            /sbin/shutdown -h now
+@@ -18,7 +18,7 @@
+ 
+ 
+ # Activate numlock when slim starts. Valid values: on|off
+-# numlock             on
++numlock             on
+ 
+ # Hide the mouse cursor (note: does not work with some WMs).
+ # Valid values: true|false
+@@ -33,7 +33,8 @@
+ # to adjust the command according to your preferred shell,
+ # i.e. for freebsd use:
+ # login_cmd           exec /bin/sh - ~/.xinitrc %session
+-login_cmd           exec /bin/bash -login ~/.xinitrc %session
++# login_cmd           exec /bin/bash -login ~/.xinitrc %session
++login_cmd           exec /bin/bash -login /usr/share/slim/Xsession %session
+ 
+ # Commands executed when starting and exiting a session.
+ # They can be used for registering a X11 session with
+@@ -41,20 +42,30 @@
+ #
+ # sessionstart_cmd	some command
+ # sessionstop_cmd	some command
++sessionstart_cmd	/usr/bin/sessreg -a -l :0.0 %user
++sessionstop_cmd     /usr/bin/sessreg -d -l :0.0 %user
+ 
+ # Start in daemon mode. Valid values: yes | no
+ # Note that this can be overriden by the command line
+ # options "-d" and "-nodaemon"
+-# daemon	yes
++daemon	yes
+ 
+-# Available sessions (first one is the default).
+-# The current chosen session name is replaced in the login_cmd
++# Available sessions:
++# The current chosen session name replaces %session in the login_cmd
+ # above, so your login command can handle different sessions.
++# If no session is chosen (via F1), %session will be an empty string.
+ # see the xinitrc.sample file shipped with slim sources
+-sessions            xfce4,icewm-session,wmaker,blackbox
++#sessions            xfce4,icewm-session,wmaker,blackbox
++# Alternatively, read available sessions from a directory of scripts:
++#sessiondir           /etc/X11/Sessions
++# Or, read available sessions from the xsessions desktop files --
++# note that this may provide a full path to the session executable!
++sessiondir	/usr/share/xsessions
+ 
+-# Executed when pressing F11 (requires imagemagick)
++# Executed when pressing F11 (requires media-gfx/imagemagick for import)
++# Alternative is media-gfx/scrot. See Gentoo bug 252241 for more info.
+ screenshot_cmd      import -window root /slim.png
++#screenshot_cmd      scrot /root/slim.png
+ 
+ # welcome message. Available variables: %host, %domain
+ welcome_msg         Welcome to %host
+@@ -83,8 +91,8 @@
+ # randomly choose from
+ current_theme       default
+ 
+-# Lock file
+-lockfile            /var/run/slim.lock
++# Lock file, /etc/init.d/xdm expects slim.pid
++lockfile            /run/slim.pid
+ 
+ # Log file
+ logfile             /var/log/slim.log

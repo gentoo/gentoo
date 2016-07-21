@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>leechcraft@gentoo.org</email>
+	<name>LeechCraft</name>
+</maintainer>
+<use>
+	<flag name="deathnote">Support LiveJournal FotoBilder service</flag>
+	<flag name="rappor">Support VKontakte service</flag>
+	<flag name="spegnersi">Support Flickr service</flag>
+	<flag name="vangog">Support Picasa service</flag>
+</use>
+</pkgmetadata>

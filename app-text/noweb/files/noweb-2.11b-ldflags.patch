@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/show_bug.cgi?id=338899
+
+Index: noweb-2.11b/src/c/Makefile
+===================================================================
+--- noweb-2.11b.orig/src/c/Makefile
++++ noweb-2.11b/src/c/Makefile
+@@ -41,16 +41,16 @@ CPIF=>
+ all:	nt markup mnt finduses
+ 
+ nt:	$(TANGLEOBJS)
+-	$(CC) $(CFLAGS) -o nt $(TANGLEOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o nt $(TANGLEOBJS)
+ 
+ finduses:	$(FINDUSESOBJS)
+-	$(CC) $(CFLAGS) -o finduses $(FINDUSESOBJS)
++
+ 
+ markup:	$(MARKUPOBJS)
+-	$(CC) $(CFLAGS) -o markup $(MARKUPOBJS)
++
+ 
+ mnt:	$(MNTOBJS)
+-	$(CC) $(CFLAGS) -o mnt $(MNTOBJS)
++
+ 
+ source:	$(SRCS)
+ touch: $(SRCS)

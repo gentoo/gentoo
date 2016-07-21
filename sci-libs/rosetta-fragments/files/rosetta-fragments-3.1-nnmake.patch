@@ -1,0 +1,153 @@
+ nnmake/dipolar_nn.f      |  2 +-
+ nnmake/make.system       | 33 ++++++++++++++++-----------------
+ nnmake/make_fragments.pl | 36 ++++++++++++++++++------------------
+ nnmake/makefile          |  2 +-
+ 4 files changed, 36 insertions(+), 37 deletions(-)
+
+diff --git a/nnmake/dipolar_nn.f b/nnmake/dipolar_nn.f
+index c159888..4412a20 100644
+--- a/nnmake/dipolar_nn.f
++++ b/nnmake/dipolar_nn.f
+@@ -1396,7 +1396,7 @@ car pairDipolar(1,i) .le.  pairDipolar(1,i+1)
+             write(0,*)'rejected' 
+             write(0,*)x(1,iset),x(2,iset),x(3,iset),x(4,iset),x(5,iset)
+             do i=1,maplength(iset)
+-               write(0,'(i,6f6.3)')i,A(i,1),A(i,2),A(i,3),A(i,4),A(i,5),
++               write(0,'(i6,6f6.3)')i,A(i,1),A(i,2),A(i,3),A(i,4),A(i,5),
+      #              b(i)
+             enddo
+             goto 300
+diff --git a/nnmake/make.system b/nnmake/make.system
+index 34bea8f..2fbfabf 100644
+--- a/nnmake/make.system
++++ b/nnmake/make.system
+@@ -55,18 +55,17 @@ endif
+ ########## once COMPILER is set, here are the options
+ 
+ # defaults
+-F77=f77
+-FFLAGS=
+-FOPTIMFLAGS=-O
+-FDEBUGFLAGS=-g
+-FPROFILEFLAGS=-P
++F77?=f77
++FOPTIMFLAGS=
++FDEBUGFLAGS=
++FPROFILEFLAGS=
+ 
+ ifeq ($(COMPILER),gnu)
+-	F77 = g77
+-	FFLAGS = -finline-functions -funroll-loops -W  -ffixed-line-length-132 -Wimplicit
+-	FOPTIMFLAGS = -O -ffast-math -malign-double
+-	FDEBUGFLAGS = -g -Wall -Wimplicit -Wsurprising -Wformat -W
+-	FPROFILEFLAGS = -pg
++	F77 ?= g77
++	FFLAGS += -W  -ffixed-line-length-132 -Wimplicit
++	FOPTIMFLAGS += -malign-double
++	FDEBUGFLAGS += -Wall -Wimplicit -Wsurprising -Wformat -W
++	FPROFILEFLAGS =
+ endif
+ 
+ ifeq ($(COMPILER),pgi) # on mary, good bounds checking
+@@ -82,9 +81,9 @@ ifeq ($(COMPILER),pgi) # on mary, good bounds checking
+ endif
+ 
+ ifeq ($(COMPILER),absoft) # on mary, fast
+-	F77 = f77
+-	FFLAGS = -N109 -s -W
+-	LINKFLAGS = -lU77
++	F77 ?= f77
++	FFLAGS ?= -N109 -s -W
++	LINKFLAGS += -lU77
+ 	FDEBUGFLAGS = -C -g
+ 	FOPTIMFLAGS = -O -N18
+ 	FPROFILEFLAGS = -P -O
+@@ -103,10 +102,10 @@ endif
+ 
+ # Suse ppc gnu
+ ifeq ($(COMPILER),ppc)
+-	F77 = g77
+-	FFLAGS = -Wall -finline-functions -funroll-loops -W -ffixed-line-length-132
+-	FDEBUGFLAGS = -g -C -Mbounds
+-	FOPTIMFLAGS =
++	F77 ?= g77
++	FFLAGS += -Wall -W -ffixed-line-length-132
++	FDEBUGFLAGS += -C -Mbounds
++	FOPTIMFLAGS +=
+ endif
+ 
+ # alpha flags 
+diff --git a/nnmake/make_fragments.pl b/nnmake/make_fragments.pl
+index 5273685..29619a2 100755
+--- a/nnmake/make_fragments.pl
++++ b/nnmake/make_fragments.pl
+@@ -19,38 +19,38 @@
+ 
+ my $TAIL = "_v1_3";
+ 
+-$src_dir = '/work/chu/rosetta/rosetta_C++/rosetta-2.2.0/rosetta_fragments';
+-$shareware_dir = '/work/chu/src/shareware';
+-$scratch = "/scratch/shared";
++$src_dir = '@GENTOO_PORTAGE_EPREFIX@/';
++$shareware_dir = '$src_dir/usr/share';
++$scratch = "$src_dir/scratch/shared";
+ 
+ # psi-blast
+ #my $BLAST_BIN_DIR = "$shareware_dir/new_blast/blast-2.2.12/bin";
+-my $PSIBLAST = "$shareware_dir/blast/bin/blastpgp";     # PSI-BLAST (duh.)
+-my $NR = "/$scratch/genomes/nr";                # nr blast database filename
+-my $VALL_BLAST_DB = "/$scratch/nnmake_database/vall.blast.2006-05-05";        # vall blast database filename (cvs respository 'nnmake_database')
+-my $BLOSUM = "$scratch/nnmake_database/";      # BLOSUM score matrices directory (cvs repository 'nnmake_database')
++my $PSIBLAST = "$src_dir/usr/bin/blastpgp";     # PSI-BLAST (duh.)
++my $NR = "$shareware_dir/nr";                # nr blast database filename
++my $VALL_BLAST_DB = "$shareware_dir/rosetta-fragments/nnmake_database/vall.blast.2006-05-05";        # vall blast database filename (cvs respository 'nnmake_database')
++my $BLOSUM = "$shareware_dir/rosetta-fragments/nnmake_database/";      # BLOSUM score matrices directory (cvs repository 'nnmake_database')
+ 
+ # psipred
+-my $FILTNR = "$scratch/genomes/filtnr";        # filtnr blast database filename
+-my $MAKEMAT = "$shareware_dir/blast/bin/makemat";       # makemat utility (part of NCBI tools)
+-my $PSIPRED = "$shareware_dir/psipred/bin/psipred";       # psipred
+-my $PSIPASS2 = "$shareware_dir/psipred/bin/psipass2";     # psipass2 (part of psipred pkg)
++my $FILTNR = "$src_dir/tmp/filtnr";        # filtnr blast database filename
++my $MAKEMAT = "$src_dir/usr/bin/makemat";       # makemat utility (part of NCBI tools)
++my $PSIPRED = "$src_dir/usr/bin/psipred";       # psipred
++my $PSIPASS2 = "$src_dir/usr/bin/psipass2";     # psipass2 (part of psipred pkg)
+ my $PSIPRED_DATA = "$shareware_dir/psipred/data";         # dir containing psipred data files.
+ 
+ # prof
+ #my $PROF = "$shareware_dir/prof/run_prof.py";
+-my $PROF = "$src_dir/nnmake/run_prof.py"; # remember to change prof executable location in run_prof.py
++my $PROF = "$src_dir/usr/bin/run_prof.py"; # remember to change prof executable location in run_prof.py
+ 
+ # nnmake
+-my $VALL = "$scratch/nnmake_database";          # dir containing vall database (cvs repository 'nnmake_database')
+-my $VALL2 = "$scratch/nnmake_database";             # alt dir containing vall database (cvs repository 'nnmake_database')
++my $VALL = "$shareware_dir/rosetta-fragments/nnmake_database";          # dir containing vall database (cvs repository 'nnmake_database')
++my $VALL2 = "$shareware_dir/rosetta-fragments/nnmake_database";             # alt dir containing vall database (cvs repository 'nnmake_database')
+ my $VALL_NAME = "vall.dat.2006-05-05";                 # filename of vall (vall.dat.<id> and vall_cst_coord.dat.<id> must exist)
+-my $NNMAKE = "$src_dir/nnmake/pNNMAKE.gnu";                         # nnmake binary  (cvs respository 'nnmake')
+-my $TRIMLOOPS = "$src_dir/nnmake/trimLoopLibrary.pl";                  # trimLoopLibrary.pl (cvs respository 'nnmake')
++my $NNMAKE = "$src_dir/usr/bin/pNNMAKE";                         # nnmake binary  (cvs respository 'nnmake')
++my $TRIMLOOPS = "$src_dir/usr/bin/trimLoopLibrary.pl";                  # trimLoopLibrary.pl (cvs respository 'nnmake')
+ 
+ # chemshift
+-my $CHEMSHIFT = "$src_dir/chemshift/pCHEMSHIFT.gnu";     # chemshift binary (cvs repository 'chemshift')
+-my $TALOS_DB = "$scratch/chemshift_database";                          # TALOS databases directory (cvs respository 'chemshift_database')
++my $CHEMSHIFT = "$src_dir/usr/bin/pCHEMSHIFT";     # chemshift binary (cvs repository 'chemshift')
++my $TALOS_DB = "$shareware_dir/rosetta-fragments/chemshift_database";                          # TALOS databases directory (cvs respository 'chemshift_database')
+ 
+ # jufo (secondary structure prediction software)
+ my $JUFO = "$shareware_dir/jufo/molecule.exe";                              # jufo executable
+diff --git a/nnmake/makefile b/nnmake/makefile
+index c09ac1c..ebfde68 100644
+--- a/nnmake/makefile
++++ b/nnmake/makefile
+@@ -102,7 +102,7 @@ VallCoord: coord_compile
+ # rule to compile executable
+ compile: print $(BASE_NAME).$(COMPILER)
+ $(BASE_NAME).$(COMPILER) :  ${OBJS}
+-	$(F77) $(FFLAGS) -o $@ $(OBJS) $(LINKFLAGS)
++	$(F77) $(FFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LINKFLAGS)
+ 
+ coord_compile: print $(COORD_BASE_NAME).$(COMPILER)
+ $(COORD_BASE_NAME).$(COMPILER) :  ${COORD_OBJS}

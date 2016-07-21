@@ -1,0 +1,15 @@
+diff -ur Glances-2.4.2.orig/setup.py Glances-2.4.2/setup.py
+--- setup.py	2015-05-29 04:10:10.000000000 +0800
++++ setup.py	2015-07-10 14:47:54.333415133 +0800
+@@ -13,9 +13,7 @@
+ 
+ def get_data_files():
+     data_files = [
+-        ('share/doc/glances', ['AUTHORS', 'COPYING', 'NEWS', 'README.rst',
+-                               'conf/glances.conf', 'docs/glances-doc.html']),
+-        ('share/doc/glances/images', glob.glob('docs/images/*.png')),
+-        ('share/man/man1', ['man/glances.1'])
++        ('share/man/man1', ['man/glances.1']),
++        ('etc/glances', ['conf/glances.conf'])
+     ]
+ 

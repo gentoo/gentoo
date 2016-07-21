@@ -1,0 +1,171 @@
+commit b614459dc1ea353d6c24b4a77c7f92a5577d5bc3
+Author: Uli Franke <cls@nebadje.org>
+Date:   Thu Jan 19 11:53:57 2012 +0100
+
+    BUG(2510): Add more bitrates/samplerates to AAC/ALAC.
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index 1b4a659..b32de4d 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -60,6 +60,7 @@ static gint xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len
+                                xmms_error_t *error);
+ static gint64 xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples,
+                                  xmms_xform_seek_mode_t whence, xmms_error_t *err);
++static xmms_sample_format_t xmms_avcodec_translate_sample_format (enum AVSampleFormat av_sample_format);
+ 
+ /*
+  * Plugin header
+@@ -168,12 +169,12 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 		data->channels = ret;
+ 	}
+ 
+-	/* bitrate required for WMA files */
++	/* Required by WMA xform. */
+ 	xmms_xform_auxdata_get_int (xform,
+ 	                            "bitrate",
+ 	                            &data->bitrate);
+ 
+-	/* ALAC and MAC require bits per sample field to be 16 */
++	/* Required by tta and apefile xforms. */
+ 	xmms_xform_auxdata_get_int (xform,
+ 	                            "samplebits",
+ 	                            &data->samplebits);
+@@ -238,12 +239,17 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 
+ 	data->samplerate = data->codecctx->sample_rate;
+ 	data->channels = data->codecctx->channels;
++	data->sampleformat = xmms_avcodec_translate_sample_format (data->codecctx->sample_fmt);
++	if (data->sampleformat == XMMS_SAMPLE_FORMAT_UNKNOWN) {
++		avcodec_close (data->codecctx);
++		goto err;
++	}
+ 
+ 	xmms_xform_outdata_type_add (xform,
+ 	                             XMMS_STREAM_TYPE_MIMETYPE,
+ 	                             "audio/pcm",
+ 	                             XMMS_STREAM_TYPE_FMT_FORMAT,
+-	                             XMMS_SAMPLE_FORMAT_S16,
++	                             data->sampleformat,
+ 	                             XMMS_STREAM_TYPE_FMT_CHANNELS,
+ 	                             data->channels,
+ 	                             XMMS_STREAM_TYPE_FMT_SAMPLERATE,
+@@ -428,3 +434,23 @@ xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t w
+ 
+ 	return ret;
+ }
++
++static xmms_sample_format_t
++xmms_avcodec_translate_sample_format (enum AVSampleFormat av_sample_format)
++{
++	switch (av_sample_format) {
++	case AV_SAMPLE_FMT_U8:
++		return XMMS_SAMPLE_FORMAT_U8;
++	case AV_SAMPLE_FMT_S16:
++		return XMMS_SAMPLE_FORMAT_S16;
++	case AV_SAMPLE_FMT_S32:
++		return XMMS_SAMPLE_FORMAT_S32;
++	case AV_SAMPLE_FMT_FLT:
++		return XMMS_SAMPLE_FORMAT_FLOAT;
++	case AV_SAMPLE_FMT_DBL:
++		return XMMS_SAMPLE_FORMAT_DOUBLE;
++	default:
++		XMMS_DBG ("AVSampleFormat (%i) not supported.", av_sample_format);
++		return XMMS_SAMPLE_FORMAT_UNKNOWN;
++	}
++}
+diff --git a/src/plugins/mp4/mp4.c b/src/plugins/mp4/mp4.c
+index 7c915c4..3ee9357 100644
+--- a/src/plugins/mp4/mp4.c
++++ b/src/plugins/mp4/mp4.c
+@@ -186,9 +186,6 @@ xmms_mp4_init (xmms_xform_t *xform)
+ 	xmms_xform_auxdata_set_bin (xform, "decoder_config", tmpbuf, tmpbuflen);
+ 	g_free (tmpbuf);
+ 
+-	/* This is only for ALAC to set 16-bit samples, ignored for AAC */
+-	xmms_xform_auxdata_set_int (xform, "samplebits", 16);
+-
+ 	xmms_mp4_get_mediainfo (xform);
+ 
+ 	XMMS_DBG ("MP4 demuxer inited successfully!");
+@@ -288,7 +285,7 @@ xmms_mp4_get_mediainfo (xmms_xform_t *xform)
+ 	data = xmms_xform_private_data_get (xform);
+ 	g_return_if_fail (data);
+ 
+-	if ((temp = mp4ff_get_sample_rate (data->mp4ff, data->track)) >= 0) {
++	if ((temp = mp4ff_get_sample_rate (data->mp4ff, data->track)) > 0) {
+ 		glong srate = temp;
+ 
+ 		if ((temp = mp4ff_get_track_duration_use_offsets (data->mp4ff,
+@@ -492,7 +489,7 @@ xmms_mp4_get_track (xmms_xform_t *xform, mp4ff_t *infile)
+ 		case 0x69: /* MPEG-2 audio */
+ 		case 0x6B: /* MPEG-1 audio */
+ 			continue;
+-		case 0xff:
++		case 0xff: /* ALAC */
+ 			chans = mp4ff_get_channel_count (infile, i);
+ 			rate = mp4ff_get_sample_rate (infile, i);
+ 			if (chans <= 0 || rate <= 0) {
+diff --git a/src/plugins/mp4/mp4ff/README.xmms2 b/src/plugins/mp4/mp4ff/README.xmms2
+index c2737c5..8021618 100644
+--- a/src/plugins/mp4/mp4ff/README.xmms2
++++ b/src/plugins/mp4/mp4ff/README.xmms2
+@@ -12,3 +12,4 @@ Changes:
+  * Add value_length variable to tag type and use it when adding new item-value pairs,
+    necessary for cover art since it's binary data and can't be handled as a string
+  * Add support for Apple Lossless audio files
++ * Add a workaround for supporting higher samplerates.
+diff --git a/src/plugins/mp4/mp4ff/mp4ff.c b/src/plugins/mp4/mp4ff/mp4ff.c
+index ee7f7fb..b6f0a37 100644
+--- a/src/plugins/mp4/mp4ff/mp4ff.c
++++ b/src/plugins/mp4/mp4ff/mp4ff.c
+@@ -32,6 +32,8 @@
+ #include <string.h>
+ #include "mp4ffint.h"
+ 
++static uint32_t mp4ff_normalize_flawed_sample_rate (uint16_t samplerate);
++
+ mp4ff_t *mp4ff_open_read(mp4ff_callback_t *f)
+ {
+     mp4ff_t *ff = malloc(sizeof(mp4ff_t));
+@@ -304,12 +306,39 @@ int32_t mp4ff_num_samples(const mp4ff_t *f, const int32_t track)
+     return total;
+ }
+ 
++static uint32_t
++mp4ff_normalize_flawed_sample_rate (uint16_t samplerate)
++{
++	/* A list of common rates can be found at
++	 * http://en.wikipedia.org/wiki/Sampling_rate */
++	uint32_t rates[] = {8000, 11025, 16000, 22050, 32000, 44056, 44100,
++	                  47250, 48000, 50000, 50400, 88200, 96000, 176400,
++	                  192000, 352800, 384000, 0};
++	uint32_t* rate;
++
++	/* First check standard rates. */
++	for (rate = rates; *rate; rate++) {
++		if (*rate == samplerate) {
++			return *rate;
++		}
++	}
++
++	/* No standard rates matching - check if sample rate got truncated when
++	 * added to MP4 container */
++	for (rate = rates; *rate; rate++) {
++		if ((*rate & 0x0000FFFF) == samplerate) {
++			return *rate;
++		}
++	}
+ 
++	/* Failed to find a standard rate - we give up returning the original rate */
++	return samplerate;
++}
+ 
+ 
+ uint32_t mp4ff_get_sample_rate(const mp4ff_t *f, const int32_t track)
+ {
+-	return f->track[track]->sampleRate;
++	return mp4ff_normalize_flawed_sample_rate (f->track[track]->sampleRate);
+ }
+ 
+ uint32_t mp4ff_get_channel_count(const mp4ff_t * f,const int32_t track)

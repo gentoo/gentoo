@@ -1,0 +1,21 @@
+diff -Naur paxtest-0.9.13.orig/Makefile paxtest-0.9.13/Makefile
+--- paxtest-0.9.13.orig/Makefile	2014-12-09 19:53:48.000000000 -0500
++++ paxtest-0.9.13/Makefile	2014-12-12 13:07:55.715099100 -0500
+@@ -52,12 +52,14 @@
+ endif
+ 
+ # for some reason the .c files need it, else GNU_STACK=RWE
+-OPT_FLAGS  := -O2 $(ASFLAGS)
++# Gentoo's CFLAGS should be honored
++OPT_FLAGS  := $(CFLAGS) $(ASFLAGS)
+ PTHREAD := -lpthread
+ # define stripping of binaries/libs here, or set these on make's commandline,
+ # else you'll loose the chpax flags!
+-LDFLAGS :=
+-SHLDFLAGS :=
++# Gentoo's LDFLAGS should be honored
++LDFLAGS := $(LDFLAGS)
++SHLDFLAGS := $(LDFLAGS)
+ ifndef RUNDIR
+ RUNDIR := .
+ endif

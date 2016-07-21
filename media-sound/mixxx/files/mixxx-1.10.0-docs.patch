@@ -1,0 +1,10 @@
+--- mixxx-1.10.0/src/SConscript
++++ mixxx-1.10.0/src/SConscript
+@@ -219,7 +218,6 @@
+ 		env.Alias('install', keyboardmappings)
+ 		if int(flags['ladspa']):
+ 			env.Alias('install', ladspapresets)
+-		env.Alias('install', docs)
+ 		env.Alias('install', dotdesktop)
+ 		env.Alias('install', icon)
+ 		env.Alias('install', promotracks)

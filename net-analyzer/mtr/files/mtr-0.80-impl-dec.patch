@@ -1,0 +1,12 @@
+diff --git a/gtk.c b/gtk.c
+index e42f4f6..333d7c8 100644
+--- a/gtk.c
++++ b/gtk.c
+@@ -24,6 +24,7 @@
+ #include <unistd.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
++#include <string.h>
+ 
+ #ifndef NO_GTK
+ #include <stdio.h>

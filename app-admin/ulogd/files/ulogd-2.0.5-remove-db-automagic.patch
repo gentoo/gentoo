@@ -1,0 +1,45 @@
+commit c61c05c2d050410c24346d42b013d7cb39149949
+Author: Harald Welte <laforge@gnumonks.org>
+Date:   Sun May 3 11:08:54 2015 +0200
+
+    configure.ac: Add --without-{mysql,pgsql}
+    
+    In some cases you may not want to build a certain output plugin, even
+    if the headers/libraries actually exist on the build host.
+
+diff --git a/configure.ac b/configure.ac
+index c814bec..1a7f8de 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -85,7 +85,10 @@ if [! test "x$enable_nfacct" = "xyes"]; then
+ 	enable_nfacct="no"
+ fi
+ 
+-CT_CHECK_POSTGRES_DB()
++AC_ARG_WITH([pgsql], AS_HELP_STRING([--without-pgsql], [Build without postgresql output plugin [default=test]]))
++AS_IF([test "x$with_pgsql" != "xno"], [
++	CT_CHECK_POSTGRES_DB()
++])
+ AM_CONDITIONAL(HAVE_PGSQL, test "x$PQLIBPATH" != "x")
+ if test "x$PQLIBPATH" != "x"; then
+ 	enable_pgsql="yes"
+@@ -93,7 +96,10 @@ else
+ 	enable_pgsql="no"
+ fi
+ 
+-CT_CHECK_MYSQL_DB()
++AC_ARG_WITH([mysql], AS_HELP_STRING([--without-mysql], [Build without mysql output plugin [default=test]]))
++AS_IF([test "x$with_mysql" != "xno"], [
++	CT_CHECK_MYSQL_DB()
++])
+ AM_CONDITIONAL(HAVE_MYSQL, test "x$MYSQL_LIB" != "x")
+ if test "x$MYSQL_LIB" != "x"; then
+ 	enable_mysql="yes"
+@@ -101,6 +107,7 @@ else
+ 	enable_mysql="no"
+ fi
+ 
++
+ AC_ARG_WITH([sqlite], AS_HELP_STRING([--without-sqlite], [Build without SQLITE3 output plugin [default=test]]))
+ AS_IF([test "x$with_sqlite" != "xno"], [
+     PKG_CHECK_MODULES([libsqlite3], [sqlite3], [], [:])

@@ -1,0 +1,22 @@
+http://code.google.com/p/iotools/issues/detail?id=2
+
+--- a/misc.c
++++ b/misc.c
+@@ -149,8 +149,16 @@ cpuid_inline(int cpu, int function, int index, uint32_t *data)
+ 	}
+ 
+ 	asm volatile (
++#ifdef __i386__
++	      "xchg %%ebx, %%esi;" /* save ebx (for PIC) */
++	      "cpuid;"
++	      "xchg %%esi, %%ebx;" /* restore ebx & pass to caller */
++	      : "=S" (data[1]),
++#else
+ 	      "cpuid\n\t"
+-	      : "=a" (data[0]), "=b" (data[1]), "=c" (data[2]), "=d" (data[3])
++	      : "=b" (data[1]),
++#endif
++	        "=a" (data[0]), "=c" (data[2]), "=d" (data[3])
+ 	      : "0" (function), "2" (index)
+ 	      : "memory"
+ 	);

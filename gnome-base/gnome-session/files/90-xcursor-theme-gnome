@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$DESKTOP_SESSION" = "gnome" -o "$DESKTOP_SESSION" = "cinnamon" ]; then
+    XCURSOR_THEME=`dconf read /org/gnome/desktop/interface/cursor-theme` 2> /dev/null
+    if [ x"$XCURSOR_THEME" = "x" ]; then
+        export XCURSOR_THEME="Adwaita"
+    else
+        # 'dconf read' wraps string output in single quotes
+        eval export "XCURSOR_THEME=$XCURSOR_THEME"
+    fi
+fi

@@ -1,0 +1,21 @@
+--- makefile.orig	2012-05-21 14:59:56.000000000 +0200
++++ makefile	2012-05-21 15:00:47.000000000 +0200
+@@ -13,9 +13,6 @@
+ 
+ # see also ./make_pc for a simpler script, not requiring make
+ 
+-CC=gcc
+-CFLAGS=-O2 -DNXT	# on some systems add: -I/usr/include
+-
+ # CC=gcc -m32 	# 32bit compilation on a 64bit system
+ # for a more picky compilation use gcc-4 and:
+ # CFLAGS=-std=c99 -Wstrict-prototypes -pedantic -fno-strength-reduce -fno-builtin -W -Wshadow -Wpointer-arith -Wcast-qual -Winline -Wall -g -DNXT -DPC
+@@ -43,7 +40,7 @@
+ 	tl_mem.o tl_rewrt.o tl_cache.o
+ 
+ spin:	$(SPIN_OS) $(TL_OS) spin.o
+-	$(CC) $(CFLAGS) -o spin spin.o $(SPIN_OS) $(TL_OS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o spin spin.o $(SPIN_OS) $(TL_OS)
+ 
+ spin.o:	spin.y
+ 	$(YACC) $(YFLAGS) spin.y

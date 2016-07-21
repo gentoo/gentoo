@@ -1,0 +1,16 @@
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80f5bd2..33f0562 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -161,7 +161,7 @@ endif (NOT INCLUDEDIR)
+ set (OPENVAS_DATA_DIR     "${DATADIR}/openvas")
+ set (OPENVAS_STATE_DIR    "${LOCALSTATEDIR}/lib/openvas")
+ set (OPENVAS_LOG_DIR      "${LOCALSTATEDIR}/log/openvas")
+-set (OPENVAS_PID_DIR      "${LOCALSTATEDIR}/run")
++set (OPENVAS_PID_DIR      "/run")
+ set (OPENVAS_SYSCONF_DIR  "${SYSCONFDIR}/openvas")
+ set (OPENVAS_SCAP_RES_DIR "${OPENVAS_DATA_DIR}/scap")
+ set (OPENVAS_SCAP_DATA_DIR "${OPENVAS_STATE_DIR}/scap-data")

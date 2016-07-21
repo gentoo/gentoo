@@ -1,0 +1,57 @@
+From 4453b4773688eef6c60736d9cf07100716308a5e Mon Sep 17 00:00:00 2001
+From: Nate House <nathan.house@rackspace.com>
+Date: Sun, 19 Oct 2014 15:49:35 -0500
+Subject: [PATCH] Updated tests to check for either ifconfig/iproute2
+
+---
+ tests/test_resetnetwork_interfaces.py | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_resetnetwork_interfaces.py b/tests/test_resetnetwork_interfaces.py
+index f2b73bf..dc8e7e7 100644
+--- a/tests/test_resetnetwork_interfaces.py
++++ b/tests/test_resetnetwork_interfaces.py
+@@ -343,8 +343,8 @@ def test_gentoo_legacy_ipv4(self):
+         self.assertTrue('net' in outfiles)
+ 
+         generated = outfiles['net'].rstrip()
+-
+-        pattern = ('modules=\( "ifconfig" \)\n*' +
++        # (todo: naterh) Update tests to mock for both ifconfig/iproute2
++        pattern = ('modules=\( "ifconfig|iproute2" \)\n*' +
+                    '# Label public\n*' +
+                    'config_eth0=\(\s*"192.0.2.42 netmask 255.255.255.0"\s*\)\n*' +
+                    'routes_eth0=\(\s*"default via 192.0.2.1"\s*\)\n*' +
+@@ -371,8 +371,9 @@ def test_gentoo_legacy_ipv6(self):
+ 
+         self.assertTrue('net' in outfiles)
+ 
++        # (todo: naterh) Update tests to mock for both ifconfig/iproute2
+         generated = outfiles['net'].rstrip()
+-        pattern = ('modules=\( "ifconfig" \)\n*' +
++        pattern = ('modules=\( "ifconfig|iproute2" \)\n*' +
+                    '# Label public\n*' +
+                    'config_eth0=\(\s*"{ip}/{netmask_len}"\s*\)\n*' +
+                    'routes_eth0=\(\s*"default via {gateway}"\s*\)\n*' +
+@@ -399,8 +400,9 @@ def test_gentoo_openrc_ipv4(self):
+ 
+         self.assertTrue('net' in outfiles)
+ 
++        # (todo: naterh) Update tests to mock for both ifconfig/iproute2
+         generated = outfiles['net'].rstrip()
+-        pattern = ('modules="ifconfig"\n*' +
++        pattern = ('modules="ifconfig|iproute2"\n*' +
+                    '# Label public\n*' +
+                    'config_eth0="\s*{ip}/{netmask_len}\s*"\n*' +
+                    'routes_eth0="\s*default via {gateway}\s*"\n*' +
+@@ -429,8 +431,9 @@ def test_gentoo_openrc_ipv6(self):
+ 
+         self.assertTrue('net' in outfiles)
+ 
++        # (todo: naterh) Update tests to mock for both ifconfig/iproute2
+         generated = outfiles['net'].rstrip()
+-        pattern = ('modules="ifconfig"\n*' +
++        pattern = ('modules="ifconfig|iproute2"\n*' +
+                    '# Label public\n*' +
+                    'config_eth0="\s*{ip}/{netmask_len}\s*"\n*' +
+                    'routes_eth0="\s*default via {gateway}\s*"\n*' +

@@ -1,0 +1,21 @@
+--- awstats-6.3.orig/tools/awstats_configure.pl	2005-01-24 09:28:43.980923725 -0500
++++ awstats-6.3/tools/awstats_configure.pl	2005-01-24 09:28:52.034571769 -0500
+@@ -658,6 +658,18 @@
+     		print "\n-----> Restart Web server with '$command'\n";
+ 	 	    my $ret=`$command`;
+ 	 	    print "$ret";
++	} elsif (-f "/etc/gentoo-release") {
++	    my $command;
++	    if (-x "/etc/init.d/apache2") {
++		$command="/etc/init.d/apache2 graceful";
++	    } else {
++		print "\n-----> Don't forget to restart manually your web server\n";
++	    }
++	    if ($command != "") {
++		print "\n-----> Restart Web server with '$command'\n";
++		my $ret=`$command`;
++		print "$ret";
++	    }
+         } elsif (-x "/sbin/service") {
+             # We are not on debian
+        	 	my $command="/sbin/service httpd restart";

@@ -1,0 +1,44 @@
+--- a/configure
++++ b/configure
+@@ -66,8 +66,6 @@
+ MYSQL_IPATH=""
+ AFP_PATH=""
+ AFP_IPATH=""
+-NCP_PATH=""
+-NCP_IPATH=""
+ SVN_PATH=""
+ SVN_IPATH=""
+ APR_IPATH=""
+@@ -508,32 +506,6 @@
+ fi
+ 
+ echo "Checking for NCP (libncp.so / nwcalls.h) ..."
+-for i in $LIBDIRS ; do
+-    if [ "X" = "X$NCP_PATH" ]; then
+-        if [ -f "$i/libncp.so" -o -f "$i/libncp.dylib" -o -f "$i/libncp.a"  ]; then
+-            NCP_PATH="$i"
+-        fi
+-    fi
+-    if [ "X" = "X$NCP_PATH" ]; then
+-        TMP_LIB=`/bin/ls $i/libncp.so.* 2> /dev/null | grep ncp.`
+-        if [ -n "$TMP_LIB" ]; then
+-            NCP_PATH="$i"
+-        fi
+-    fi
+-    if [ "X" = "X$NCP_PATH" ]; then
+-        TMP_LIB=`/bin/ls $i/libncp.dll* 2> /dev/null | grep ncp.`
+-        if [ -n "$TMP_LIB" ]; then
+-            NCP_PATH="$i"
+-        fi
+-    fi
+-done
+-for i in $INCDIRS ; do
+-    if [ "X" != "X$NCP_PATH" ]; then
+-        if [ -f "$i/ncp/nwcalls.h" ]; then
+-            NCP_IPATH="$i"
+-        fi
+-    fi
+-done
+ if [ -n "$NCP_PATH" -a -n "$NCP_IPATH" ]; then
+     echo "                                         ... found"
+ fi

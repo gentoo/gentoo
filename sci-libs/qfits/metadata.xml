@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sci-astronomy@gentoo.org</email>
+	<name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+qfits is a stand-alone library written in C to interact with files
+complying with the FITS format. It is fast and portable over any kind
+of POSIX-compliant platform. 
+Rather than going through the FITS format specification and trying to
+implement some support for everything that is described there, this
+library was built day after day upon request. This guarantees that
+all the functions you will find in the library have been written for
+some purpose in the VLT pipeline context, and all of them are used
+daily in a production environment.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+--- fim-0.4-rc1/src/FbiStuffGif.cpp.orig	2014-05-27 13:06:10.521394320 +0200
++++ fim-0.4-rc1/src/FbiStuffGif.cpp	2014-05-27 13:13:48.754866607 +0200
+@@ -58,14 +58,14 @@
+ #if FIM_GIFLIB_RETIRED_PrintGifError  
+ void
+ FimPrintGifError(struct gif_state * gs) {
+-    int ErrorCode = gs->gif->Error;
++    int ErrorCode = GifError();
+     /* On the basis of giflib-5.0.5/util/qprintf.c suggestion, after retirement of PrintGifError  */
+     char *Err = NULL;
+ 
+     if(ErrorCode == 0)   
+ 	    return;
+ 
+-    Err = GifErrorString(ErrorCode);
++    Err = GifErrorString();
+                                                                                                                               
+     if (Err != NULL)
+         fprintf(stderr, "GIF-LIB error: %s.\n", Err);

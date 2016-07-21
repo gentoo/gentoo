@@ -1,0 +1,37 @@
+--- nemesis-1.4-orig/source/src/nemesis-fileio.c	Fri Oct 31 16:29:36 2003
++++ nemesis-1.4/source/src/nemesis-fileio.c	Fri May 19 17:31:13 2006
+@@ -63,7 +63,7 @@
+         fp = stdin;
+         fd = fileno(fp);
+     }
+-    else if ((fd = open(file, O_RDONLY)) < 0)
++    else if ((fp = fopen(file, "rb")) < 0)
+     {
+ #if !defined(WIN32)
+         fprintf(stderr, "ERROR: Unable to open %s file: %s. %s\n",
+@@ -82,8 +82,12 @@
+         return -1;
+     }
+ 
++#ifdef DEBUG
++    printf("DEBUG: trying to read max %u bytes from %s\n", maxsize, file);
++#endif
++
+     /* read() can return negative values on successful reads, test for -1 */
+-    if ((bytesread = read(fd, (void *)memory, maxsize)) == -1)
++    if ((bytesread = fread((void *)memory, 1, maxsize, fp)) == -1)
+     {
+ #if !defined(WIN32)
+         fprintf(stderr, "ERROR: Unable to read %s file: %s. %s\n",
+@@ -106,6 +110,11 @@
+         if (strncmp(file, "-", 1))
+             close(fd);
+     }
++
++#ifdef DEBUG
++    printf("DEBUG: bytes read from %s: %u.\n", file, bytesread);
++#endif
++
+     return bytesread;
+ }
+ 

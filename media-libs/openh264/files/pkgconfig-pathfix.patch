@@ -1,0 +1,40 @@
+--- a/Makefile	2015-03-25 03:43:00.000000000 -0400
++++ b/Makefile	2015-06-18 17:28:42.436110085 -0400
+@@ -24,6 +24,7 @@
+ OBJ=o
+ DESTDIR=
+ SHAREDLIB_DIR=$(PREFIX)/lib
++INCLUDES_DIR=$(PREFIX)/include
+ PROJECT_NAME=openh264
+ MODULE_NAME=gmpopenh264
+ GMP_API_BRANCH=Firefox38
+@@ -229,14 +230,14 @@
+ endif
+ 
+ $(PROJECT_NAME).pc: $(PROJECT_NAME).pc.in
+-	@sed -e 's;@prefix@;$(PREFIX);' -e 's;@VERSION@;$(VERSION);' -e 's;@LIBS@;;' -e 's;@LIBS_PRIVATE@;$(STATIC_LDFLAGS);' < $(PROJECT_NAME).pc.in > $@
++	@sed -e 's;@prefix@;$(PREFIX);' -e 's;@sharedlibdir@;$(SHAREDLIB_DIR);' -e 's;@includesdir@;$(INCLUDES_DIR);' -e 's;@VERSION@;$(VERSION);' -e 's;@LIBS@;;' -e 's;@LIBS_PRIVATE@;$(STATIC_LDFLAGS);' < $(PROJECT_NAME).pc.in > $@
+ 
+ $(PROJECT_NAME)-static.pc: $(PROJECT_NAME).pc.in
+-	@sed -e 's;@prefix@;$(PREFIX);' -e 's;@VERSION@;$(VERSION);' -e 's;@LIBS@;$(STATIC_LDFLAGS);' -e 's;@LIBS_PRIVATE@;;' < $(PROJECT_NAME).pc.in > $@
++	@sed -e 's;@prefix@;$(PREFIX);' -e 's;@sharedlibdir@;;' -e 's;@includesdir@;$(INCLUDES_DIR);' -e 's;@VERSION@;$(VERSION);' -e 's;@LIBS@;$(STATIC_LDFLAGS);' -e 's;@LIBS_PRIVATE@;;' < $(PROJECT_NAME).pc.in > $@
+ 
+ install-headers:
+-	mkdir -p $(DESTDIR)/$(PREFIX)/include/wels
+-	install -m 644 codec/api/svc/codec*.h $(DESTDIR)/$(PREFIX)/include/wels
++	mkdir -p $(DESTDIR)/$(INCLUDES_DIR)/wels
++	install -m 644 codec/api/svc/codec*.h $(DESTDIR)/$(INCLUDES_DIR)/wels
+ 
+ install-static-lib: $(LIBPREFIX)$(PROJECT_NAME).$(LIBSUFFIX) install-headers
+ 	mkdir -p $(DESTDIR)/$(PREFIX)/lib
+--- a/openh264.pc.in	2015-06-18 17:32:58.356114757 -0400
++++ b/openh264.pc.in	2015-06-18 17:31:12.096112817 -0400
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+-libdir=${prefix}/lib
+-includedir=${prefix}/include
++libdir=@sharedlibdir@
++includedir=@includesdir@
+ 
+ Name: OpenH264
+ Description: OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.

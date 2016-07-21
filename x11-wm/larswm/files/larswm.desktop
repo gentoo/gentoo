@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=larswm
+Comment=This session logs you into larswm
+Exec=larswm-session
+Icon=
+Type=Application

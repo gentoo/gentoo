@@ -1,0 +1,81 @@
+diff -ur barnyard-0.2.0/src/barnyard.h barnyard-0.2.0.64bit/src/barnyard.h
+--- barnyard-0.2.0/src/barnyard.h	2004-05-01 12:43:29.000000000 -0400
++++ barnyard-0.2.0.64bit/src/barnyard.h	2007-08-11 23:22:53.000000000 -0400
+@@ -34,7 +34,8 @@
+ 
+ typedef struct _SnortPktHeader
+ {
+-    struct timeval ts;     /* packet timestamp */
++    // struct timeval ts;     /* packet timestamp */
++    struct pcap_timeval ts;     /* packet timestamp */
+     u_int32_t caplen;      /* packet capture length */
+     u_int32_t pktlen;      /* packet "real" length */
+ } SnortPktHeader;
+Only in barnyard-0.2.0.64bit/src: barnyard.h~
+diff -ur barnyard-0.2.0/src/event.h barnyard-0.2.0.64bit/src/event.h
+--- barnyard-0.2.0/src/event.h	2003-05-02 22:44:12.000000000 -0400
++++ barnyard-0.2.0.64bit/src/event.h	2007-08-12 00:13:44.000000000 -0400
+@@ -19,6 +19,11 @@
+ #include <sys/types.h>
+ #include <sys/time.h>
+ 
++struct pcap_timeval {
++    u_int32_t tv_sec;      /* seconds */
++    u_int32_t tv_usec;     /* microseconds */
++};
++
+ typedef struct _Event
+ {
+     u_int32_t sig_generator;   /* which part of snort generated the alert? */
+@@ -30,6 +35,7 @@
+     u_int32_t event_reference; /* reference to other events that have gone off,
+                                 * such as in the case of tagged packets...
+                                 */
+-    struct timeval ref_time;   /* reference time for the event reference */
++    // struct timeval ref_time;   /* reference time for the event reference */
++    struct pcap_timeval ref_time;   /* reference time for the event reference */
+ } Event;
+ #endif /* __EVENT_H__ */
+Only in barnyard-0.2.0.64bit/src: event.h~
+diff -ur barnyard-0.2.0/src/input-plugins/dp_alert.h barnyard-0.2.0.64bit/src/input-plugins/dp_alert.h
+--- barnyard-0.2.0/src/input-plugins/dp_alert.h	2004-02-19 20:59:48.000000000 -0500
++++ barnyard-0.2.0.64bit/src/input-plugins/dp_alert.h	2007-08-11 23:24:25.000000000 -0400
+@@ -34,7 +34,8 @@
+ typedef struct _UnifiedAlertRecord
+ {
+     Event event;
+-    struct timeval ts;         /* event timestamp */
++    // struct timeval ts;         /* event timestamp */
++    struct pcap_timeval ts;         /* event timestamp */
+     u_int32_t sip;             /* src ip */
+     u_int32_t dip;             /* dest ip */
+     u_int16_t sp;              /* src port */
+Only in barnyard-0.2.0.64bit/src/input-plugins: dp_alert.h~
+diff -ur barnyard-0.2.0/src/util.c barnyard-0.2.0.64bit/src/util.c
+--- barnyard-0.2.0/src/util.c	2004-03-06 17:30:15.000000000 -0500
++++ barnyard-0.2.0.64bit/src/util.c	2007-08-12 00:14:52.000000000 -0400
+@@ -514,7 +514,8 @@
+ 
+ static char tmpbuf[256];
+ 
+-int RenderTimeval(struct timeval *tv, char *timebuf, size_t len)
++// int RenderTimeval(struct timeval *tv, char *timebuf, size_t len)
++int RenderTimeval(struct pcap_timeval *tv, char *timebuf, size_t len)
+ {
+     struct tm *lt;
+     time_t timet;
+Only in barnyard-0.2.0.64bit/src: util.c~
+diff -ur barnyard-0.2.0/src/util.h barnyard-0.2.0.64bit/src/util.h
+--- barnyard-0.2.0/src/util.h	2004-03-06 19:23:50.000000000 -0500
++++ barnyard-0.2.0.64bit/src/util.h	2007-08-11 23:23:46.000000000 -0400
+@@ -39,7 +39,8 @@
+ void ClearDumpBuf();
+ void GoDaemon();
+ size_t RenderTimestamp(time_t timet, char *timebuf, size_t len);
+-int RenderTimeval(struct timeval *tv, char *timebuf, size_t len);
++// int RenderTimeval(struct timeval *tv, char *timebuf, size_t len);
++int RenderTimeval(struct pcap_timeval *tv, char *timebuf, size_t len);
+ int CreatePidFile(char *filename);
+ int String2Long(char *string, long *result);
+ int String2ULong(char *string, unsigned long *result);
+Only in barnyard-0.2.0.64bit/src: util.h~

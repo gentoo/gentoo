@@ -1,0 +1,27 @@
+diff -r -U1 maxima-5.30.0.orig/src/Makefile.am maxima-5.30.0/src/Makefile.am
+--- maxima-5.30.0.orig/src/Makefile.am	2013-03-23 08:32:07.000000000 +0700
++++ maxima-5.30.0/src/Makefile.am	2013-04-13 13:12:37.521437190 +0700
+@@ -77,3 +77,3 @@
+ if CMUCL
+-EXECUTECMUCL = $(CMUCL_NAME) -noinit -batch
++EXECUTECMUCL = $(CMUCL_NAME) -nositeinit -noinit -batch
+ # Newer versions of CMUCL have an INTL package that is compatible with
+diff -r -U1 maxima-5.30.0.orig/src/maxima.in maxima-5.30.0/src/maxima.in
+--- maxima-5.30.0.orig/src/maxima.in	2012-12-04 12:54:50.000000000 +0700
++++ maxima-5.30.0/src/maxima.in	2013-04-13 13:11:26.647371277 +0700
+@@ -155,5 +155,5 @@
+ 	if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -quiet -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+ 	else
+-	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CMUCL_RUNTIME@" $MAXIMA_LISP_OPTIONS -quiet -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CMUCL_RUNTIME@" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+ 	fi
+@@ -161,5 +161,5 @@
+ 	if [ -x "$maxima_image_base" ]; then
+-	    exec "$maxima_image_base" $MAXIMA_LISP_OPTIONS -quiet -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	    exec "$maxima_image_base" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+ 	else
+-	    exec "@CMUCL_NAME@" $MAXIMA_LISP_OPTIONS -quiet -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	    exec "@CMUCL_NAME@" $MAXIMA_LISP_OPTIONS -quiet -nositeinit -noinit -core "$maxima_image_base.core" -eval '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+ 	fi

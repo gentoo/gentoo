@@ -1,0 +1,10 @@
+service skkserv
+{
+	socket_type = stream
+	wait        = no
+	user        = dbskkd
+	protocol    = tcp
+	port        = 1178
+	server      = /usr/libexec/dbskkd-cdb
+	disable     = yes
+}

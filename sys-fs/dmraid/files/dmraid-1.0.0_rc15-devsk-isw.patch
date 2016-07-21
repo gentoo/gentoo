@@ -1,0 +1,24 @@
+--- ./lib/device/scsi.c.org	2009-06-25 15:22:26.605895909 -0700
++++ ./lib/device/scsi.c	2009-06-25 15:56:39.784749181 -0700
+@@ -110,7 +110,9 @@
+ 		}
+ 
+ 		ret = ret &&
+-		     (di->serial = dbg_strdup((char *) &response[p->start + 1]));
++		     (di->serial = dbg_strdup(remove_white_space
++                                        (lc, (char *)&response[p->start + 1],
++                                         MAX_RESPONSE_LEN)));
+ 	}
+ 
+ 	dbg_free(response);
+--- ./lib/metadata/metadata.c.org	2009-06-25 17:32:19.856309659 -0700
++++ ./lib/metadata/metadata.c	2009-06-25 17:32:35.502920755 -0700
+@@ -839,7 +839,7 @@
+ 		 */
+ 		if (T_GROUP(rs)) {
+ 			_discover_partitions(lc, &rs->sets);
+-			return;
++			continue;
+ 		}
+ 
+ 		/*

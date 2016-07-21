@@ -1,0 +1,40 @@
+diff -urN osdpip-0.1.2.old/decoder.c osdpip-0.1.2/decoder.c
+--- osdpip-0.1.2.old/decoder.c	2013-06-17 21:01:31.795476861 +0200
++++ osdpip-0.1.2/decoder.c	2013-06-17 21:01:57.153475959 +0200
+@@ -34,8 +34,8 @@
+         printf("codec not found\n");
+         return -1;
+     }
+-    m_Context = avcodec_alloc_context();
+-    if (avcodec_open(m_Context, m_Codec) < 0)
++    m_Context = avcodec_alloc_context3(m_Codec);
++    if (avcodec_open2(m_Context, m_Codec, NULL) < 0)
+     {
+         printf("could not open codec\n");
+         return -1;
+@@ -106,17 +106,17 @@
+         return -1;
+     }
+ 
+-    av_set_int(context, "srcw", m_Context->width - (OsdPipSetup.CropLeft + OsdPipSetup.CropRight));
+-    av_set_int(context, "srch", m_Context->height - (OsdPipSetup.CropTop + OsdPipSetup.CropBottom));
+-    av_set_int(context, "src_format", PIX_FMT_YUV420P);
+-    av_set_int(context, "dstw", m_Width);
+-    av_set_int(context, "dsth", m_Height);
++    av_opt_set_int(context, "srcw", m_Context->width - (OsdPipSetup.CropLeft + OsdPipSetup.CropRight), 0);
++    av_opt_set_int(context, "srch", m_Context->height - (OsdPipSetup.CropTop + OsdPipSetup.CropBottom), 0);
++    av_opt_set_int(context, "src_format", PIX_FMT_YUV420P, 0);
++    av_opt_set_int(context, "dstw", m_Width, 0);
++    av_opt_set_int(context, "dsth", m_Height, 0);
+ #ifdef USE_NEW_FFMPEG_HEADERS
+-    av_set_int(context, "dst_format", ConvertToRGB ? PIX_FMT_RGB32 : PIX_FMT_YUV420P);
++    av_opt_set_int(context, "dst_format", ConvertToRGB ? PIX_FMT_RGB32 : PIX_FMT_YUV420P, 0);
+ #else
+-    av_set_int(context, "dst_format", ConvertToRGB ? PIX_FMT_RGBA32 : PIX_FMT_YUV420P);
++    av_opt_set_int(context, "dst_format", ConvertToRGB ? PIX_FMT_RGBA32 : PIX_FMT_YUV420P, 0);
+ #endif
+-    av_set_int(context, "sws_flags", SWS_LANCZOS);
++    av_opt_set_int(context, "sws_flags", SWS_LANCZOS, 0);
+ 
+     if (sws_init_context(context, NULL, NULL) < 0) {
+         printf("Error initializing conversion context.\n");

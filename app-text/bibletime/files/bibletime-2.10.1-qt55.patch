@@ -1,0 +1,32 @@
+From: Gary Holmlund <gary.holmlund@gmail.com>
+Date: Fri, 3 Jul 2015 21:32:26 -0700
+Subject: [PATCH] backend: Fix Qt 5.5 compile error with Q_ASSERT.
+
+---
+ src/backend/drivers/cswordmoduleinfo.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/backend/drivers/cswordmoduleinfo.cpp b/src/backend/drivers/cswordmoduleinfo.cpp
+index f86f9ac..ae7444f 100644
+--- a/src/backend/drivers/cswordmoduleinfo.cpp
++++ b/src/backend/drivers/cswordmoduleinfo.cpp
+@@ -54,7 +54,7 @@ const unsigned long BT_MAX_LUCENE_FIELD_LENGTH = 1024 * 1024;
+ CSwordModuleInfo::CSwordModuleInfo(sword::SWModule * module,
+                                    CSwordBackend & backend,
+                                    ModuleType type)
+-    : m_module((Q_ASSERT(module), module)),
++    : m_module(module),
+       m_backend(backend),
+       m_type(type),
+       m_cancelIndexing(false),
+@@ -63,6 +63,7 @@ CSwordModuleInfo::CSwordModuleInfo(sword::SWModule * module,
+ {
+     initCachedCategory();
+     initCachedLanguage();
++    Q_ASSERT(module);
+ 
+     m_hidden = btConfig().value<QStringList>("state/hiddenModules",
+                                              QStringList()).contains(m_cachedName);
+-- 
+2.4.10
+

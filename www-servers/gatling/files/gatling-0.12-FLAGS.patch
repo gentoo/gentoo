@@ -1,0 +1,40 @@
+diff -NrU5 gatling-0.12.original/GNUmakefile gatling-0.12/GNUmakefile
+--- gatling-0.12.original/GNUmakefile	2010-05-30 16:58:29.000000000 -0600
++++ gatling-0.12/GNUmakefile	2010-05-30 17:03:21.000000000 -0600
+@@ -1,8 +1,8 @@
+ #DEBUG=1
+ ZLIB=1
+-prefix=/opt/diet
++prefix=/usr
+ BINDIR=${prefix}/bin
+ MANDIR=${prefix}/man
+ man1dir=$(MANDIR)/man1
+ 
+ TARGETS=gatling httpbench bindbench dl ioerr bench tlsgatling \
+@@ -14,12 +14,12 @@
+ all: $(ALLTARGETS)
+ 
+ CROSS=
+ #CROSS=i686-mingw32-
+ CC=$(CROSS)gcc
+-CFLAGS=-pipe -Wall
+-LDFLAGS=
++CFLAGS+=-pipe -Wall -I/usr/include/libowfat
++LDFLAGS+=
+ 
+ path = $(subst :, ,$(PATH))
+ diet_path = $(foreach dir,$(path),$(wildcard $(dir)/diet))
+ ifeq ($(strip $(diet_path)),)
+ ifneq ($(wildcard /opt/diet/bin/diet),)
+@@ -37,11 +37,10 @@
+ ifneq ($(DEBUG),)
+ CFLAGS+=-g
+ LDFLAGS+=-g
+ else
+ CFLAGS+=-O2 -fomit-frame-pointer -I/usr/local/include
+-LDFLAGS+=-s
+ ifneq ($(DIET),)
+ DIET+=-Os
+ endif
+ endif
+ 

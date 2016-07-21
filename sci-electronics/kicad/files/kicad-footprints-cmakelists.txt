@@ -1,0 +1,16 @@
+project( kicad-footprints )
+
+cmake_minimum_required( VERSION 2.6.1 FATAL_ERROR )
+
+file(GLOB footprint_dirs "*.pretty")
+
+# Everything without leading / is relative to CMAKE_INSTALL_PREFIX.
+set( KICAD_DATA share/kicad
+    CACHE PATH "Location of KiCad data files." )
+set( KICAD_MODULES ${KICAD_DATA}/modules )
+
+mark_as_advanced( KICAD_DATA KICAD_MODULES )
+
+install(DIRECTORY ${footprint_dirs}
+    DESTINATION ${KICAD_MODULES}
+    COMPONENT resources)

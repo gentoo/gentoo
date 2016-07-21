@@ -1,0 +1,12 @@
+--- a/Makefile.in	2004-04-14 07:48:23.088418656 +0000
++++ b/Makefile.in	2004-04-14 07:48:38.233116312 +0000
+@@ -37,7 +37,7 @@
+ 	bzip2 -9f $(OUTDIR)/mscompress-$(VERS)-$(OSTYPE).tar
+ 
+ mscompress:	mscompress.o version.o
+-	$(CC) -o mscompress mscompress.o version.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o mscompress mscompress.o version.o
+ 
+ msexpand:	msexpand.o version.o
+-	$(CC) -o msexpand msexpand.o version.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o msexpand msexpand.o version.o

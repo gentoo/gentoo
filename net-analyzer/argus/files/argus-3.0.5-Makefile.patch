@@ -1,0 +1,20 @@
+Do not continue when a sub-make errors (bug #380953).
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -55,11 +55,11 @@
+ .PHONY: install installdirs all
+ 
+ all: force
+-	@-for d in $(DIRS);\
++	@for d in $(DIRS);\
+ 	do \
+-		(cd $$d; echo "### Making in" `pwd`;\
+-			$(MAKE) $(MFLAGS) ;\
+-			echo "### Done with" `pwd`);\
++		echo "### Making in" $$d;\
++			$(MAKE) -C $$d $(MFLAGS) || exit 1;\
++		echo "### Done with" $$d;\
+ 	done
+ 
+ install:  force

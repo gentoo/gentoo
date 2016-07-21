@@ -1,0 +1,10 @@
+--- fritz/src/driver.c_old	2012-01-10 17:10:26.000000000 +0100
++++ fritz/src/driver.c	2012-01-10 17:10:35.000000000 +0100
+@@ -28,6 +28,7 @@
+ #include <linux/ioport.h>
+ #include <linux/sched.h>
+ #include <linux/interrupt.h>
++#include <linux/export.h>
+ #include <linux/spinlock.h>
+ #include <linux/netdevice.h>
+ #include <linux/skbuff.h>

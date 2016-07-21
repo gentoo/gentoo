@@ -1,0 +1,12 @@
+diff -ur fuse4bsd-0.3.0.old/fuse_module/fuse.c fuse4bsd-0.3.0/fuse_module/fuse.c
+--- fuse4bsd-0.3.0.old/fuse_module/fuse.c	2006-11-05 14:32:44.000000000 +0100
++++ fuse4bsd-0.3.0/fuse_module/fuse.c	2006-11-05 14:33:43.000000000 +0100
+@@ -5971,7 +5971,7 @@
+ extern struct cdevsw fmaster_cdevsw[5];
+ static struct cdev *fmaster_dev[5];
+ #endif
+-extern struct vfsconf fuse_vfsconf;
++static struct vfsconf fuse_vfsconf;
+ 
+ 
+ static void

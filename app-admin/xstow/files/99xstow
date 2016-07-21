@@ -1,0 +1,3 @@
+LDPATH=/var/lib/lib
+PATH=/var/lib/bin
+MANPATH=/var/lib/share/man

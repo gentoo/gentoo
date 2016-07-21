@@ -1,0 +1,56 @@
+--- a/talkd/talkd.c
++++ b/talkd/talkd.c
+@@ -164,13 +164,14 @@
+ 	const char *theirip;
+ 
+ 	struct hostent *hp;
++	struct sockaddr_in6 addr;
+ 	struct sockaddr_in sn;
+ 	int cc, i, ok;
+ 	socklen_t addrlen;
+ 
+-	addrlen = sizeof(sn);
++	addrlen = sizeof(addr);
+ 	cc = recvfrom(0, inbuf, sizeof(inbuf), 0,
+-		      (struct sockaddr *)&sn, &addrlen);
++		      (struct sockaddr *)&addr, &addrlen);
+ 	if (cc<0) {
+ 		if (errno==EINTR || errno==EAGAIN) {
+ 			return;
+@@ -185,14 +186,30 @@
+ 	 */
+ 	lastmsgtime = time(NULL);
+ 
+-	if (addrlen!=sizeof(sn)) {
+-		syslog(LOG_WARNING, "recvfrom: bogus address length");
+-		return;
+-	}
+-	if (sn.sin_family!=AF_INET) {
++        sn.sin_family = AF_INET;
++	switch (addr.sin6_family)
++	{
++        case AF_INET:
++            sn.sin_addr=((struct sockaddr_in*)&addr)->sin_addr;
++            sn.sin_port=((struct sockaddr_in*)&addr)->sin_port;
++            break;
++	case AF_INET6:
++            // addr must be ::FFFF:x.x.x.x
++            if (addr.sin6_addr.s6_addr32[0]!=0 ||
++                addr.sin6_addr.s6_addr32[1]!=0 ||
++                addr.sin6_addr.s6_addr16[5]!=0xffff ||
++                addr.sin6_addr.s6_addr16[4]!=0)
++            {
++                syslog(LOG_WARNING, "IPv6 address family not supported by talkd");
++                return;
++            }
++            sn.sin_port=addr.sin6_port;
++            sn.sin_addr.s_addr=addr.sin6_addr.s6_addr32[3];
++            break;
++        default:
+ 		syslog(LOG_WARNING, "recvfrom: bogus address family");
+ 		return;
+-	}
++        }
+ 
+ 	/* 
+ 	 * If we get here we have an address we can reply to, although

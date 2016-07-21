@@ -1,0 +1,16 @@
+--- libsmbios-2.3.0/Makefile.am
++++ libsmbios-2.3.0/Makefile.am
+@@ -89,10 +89,12 @@
+ 
+ 
+ ########## DOCS ################
+-all: doxygen
+ if HAVE_DOXYGEN
++all: doxygen
+ DOXYGEN_DEPS=out/libsmbios_c/html/index.html out/libsmbios_c++/html/index.html
+ doxygen: $(DOXYGEN_DEPS)
++else
++all:
+ endif
+ 
+ DOT=@DOT@

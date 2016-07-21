@@ -1,0 +1,43 @@
+diff -Nur lttoolbox-3.2.0.orig/configure.ac lttoolbox-3.2.0/configure.ac
+--- lttoolbox-3.2.0.orig/configure.ac	2011-07-29 06:36:44.000000000 +0100
++++ lttoolbox-3.2.0/configure.ac	2011-07-29 06:38:04.000000000 +0100
+@@ -51,39 +51,6 @@
+ 
+ # Checks for programs.
+ 
+-AC_MSG_CHECKING([Compilation architecture: PPC, i686, x86_64, Other])
+-if test x$(which arch) = x
+-then ARCH=$($(which uname) -m)
+-else ARCH=$($(which arch))
+-fi
+-
+-if test x$ARCH = xppc
+-then
+-  AC_MSG_RESULT([PowerPC])
+-  CFLAGS="-Wall -fomit-frame-pointer $CFLAGS"
+-  CXXFLAGS="-Wall -fomit-frame-pointer $CXXFLAGS"
+-else
+-  if test x$ARCH = xi686
+-  then
+-    AC_MSG_RESULT([i686])
+-    CFLAGS="-Wall -march=i686 -O3 -fomit-frame-pointer -funroll-loops $CFLAGS"
+-    CXXFLAGS="-Wall -march=i686 -O3 \
+-              -fomit-frame-pointer -funroll-loops $CXXFLAGS"
+-  
+-  else
+-    if test x$ARCH = xx86_64
+-    then
+-      AC_MSG_RESULT([x86_64])
+-      CFLAGS="-Wall -O3 -mtune=nocona -fomit-frame-pointer -funroll-loops $CFLAGS"
+-      CXXFLAGS="-Wall -O3 -mtune=nocona \
+-              -fomit-frame-pointer -funroll-loops $CXXFLAGS"
+-    else
+-      AC_MSG_RESULT([Other])
+-      CFLAGS="-Wall -O3 $CFLAGS"
+-      CXXFLAGS="-Wall -O3 $CXXFLAGS"
+-    fi
+-  fi
+-fi
+ 
+ AC_CANONICAL_HOST
+ 

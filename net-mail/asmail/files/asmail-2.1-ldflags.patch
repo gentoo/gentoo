@@ -1,0 +1,19 @@
+commit 89ac271856ad5ecc7bd38c5aabc393b41976aca2
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Tue Jun 7 18:11:43 2011 +0300
+
+    Respect LDFLAGS
+
+diff --git a/autoconf/Makefile.common.in b/autoconf/Makefile.common.in
+index de290d0..cebe471 100644
+--- a/autoconf/Makefile.common.in
++++ b/autoconf/Makefile.common.in
+@@ -49,7 +49,7 @@ indent:
+ 		done
+ 
+ $(PROG):        $(OBJS)
+-		$(CC) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@)
++		$(CC) $(LDFLAGS) $(OBJS) $(LIBRARIES) $(EXTRA_LIBRARIES) -o $(@)
+ 
+ .c.o:
+ 		$(CC) $(CCFLAGS) $(EXTRA_DEFINES) $(INCLUDES) $(EXTRA_INCLUDES) -c $*.c

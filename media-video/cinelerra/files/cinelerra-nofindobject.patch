@@ -1,0 +1,16 @@
+Depends on features removed in opencv3.
+https://bugs.gentoo.org/show_bug.cgi?id=554516
+
+Index: cinelerra-20140710/configure.ac
+===================================================================
+--- cinelerra-20140710.orig/configure.ac
++++ cinelerra-20140710/configure.ac
+@@ -317,7 +317,7 @@ fi
+ AC_DEFINE_UNQUOTED(HAVE_OPENCV_SURF, $HAVE_OPENCV_SURF,
+ 	[define if SURF support is compiled into opencv])
+ if test "x$opencv" = "xyes" && test "x$opencvh" = "xyes" ; then
+-	enable_findobject=ok
++	enable_findobject=no
+ fi
+ AM_CONDITIONAL(ENABLE_FINDOBJECT,test "x$enable_findobject" = "xok")
+ ############## END OF MISC LIBRARIES

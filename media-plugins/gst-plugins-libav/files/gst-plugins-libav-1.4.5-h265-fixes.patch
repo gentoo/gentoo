@@ -1,0 +1,34 @@
+From ac54ee0473f71e0c7fc195883b9ac6ae15f302af Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sebastian=20Dr=C3=B6ge?= <sebastian@centricular.com>
+Date: Fri, 5 Jun 2015 11:57:37 +0200
+Subject: avviddec: Release stream lock while calling avcodec_decode_video2()
+
+It might call back into us from another thread and try to take
+the stream lock again, e.g. to allocate a buffer. Fixes avdec_h265
+not outputting anything.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=726020
+
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index e2d8245..b876b18 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -1246,8 +1246,15 @@ gst_ffmpegviddec_video_frame (GstFFMpegVidDec * ffmpegdec,
+     GST_DEBUG_OBJECT (ffmpegdec, "copy pal %p %p", &packet, pal);
+   }
+ 
++  /* This might call into get_buffer() from another thread,
++   * which would cause a deadlock. Release the lock here
++   * and taking it again later seems safe
++   * See https://bugzilla.gnome.org/show_bug.cgi?id=726020
++   */
++  GST_VIDEO_DECODER_STREAM_UNLOCK (ffmpegdec);
+   len = avcodec_decode_video2 (ffmpegdec->context,
+       ffmpegdec->picture, have_data, &packet);
++  GST_VIDEO_DECODER_STREAM_LOCK (ffmpegdec);
+ 
+   GST_DEBUG_OBJECT (ffmpegdec, "after decode: len %d, have_data %d",
+       len, *have_data);
+-- 
+cgit v0.10.2
+

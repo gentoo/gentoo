@@ -1,0 +1,74 @@
+diff -urN vigra-1.9.0.old/CMakeLists.txt vigra-1.9.0/CMakeLists.txt
+--- vigra-1.9.0.old/CMakeLists.txt	2013-06-04 13:38:43.158564579 +0200
++++ vigra-1.9.0/CMakeLists.txt	2013-06-04 13:45:19.290550486 +0200
+@@ -57,13 +57,27 @@
+ #     search for dependencies
+ #
+ ##################################################
++OPTION(WITH_TIFF "Enable tiff support" ON)
++OPTION(WITH_JPEG "Enable jpeg support" ON)
++OPTION(WITH_PNG "Enable png support" ON)
++OPTION(WITH_OPENEXR "Enable openexr support" ON)
++OPTION(WITH_FFTW3 "Enable fftw support" ON)
++OPTION(ENABLE_DOC "Build documentation" ON)
+ 
+ INCLUDE(VigraFindPackage)
+-VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
+-VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
+-VIGRA_FIND_PACKAGE(PNG)
+-VIGRA_FIND_PACKAGE(FFTW3 NAMES libfftw3-3 libfftw-3.3)
+-VIGRA_FIND_PACKAGE(FFTW3F NAMES libfftw3f-3 libfftwf-3.3)
++IF(WITH_TIFF)
++    VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
++ENDIF()
++IF(WITH_JPEG)
++    VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
++ENDIF()
++IF(WITH_PNG)
++    VIGRA_FIND_PACKAGE(PNG)
++ENDIF()
++IF(WITH_FFTW3)
++    VIGRA_FIND_PACKAGE(FFTW3 NAMES libfftw3-3 libfftw-3.3)
++    VIGRA_FIND_PACKAGE(FFTW3F NAMES libfftw3f-3 libfftwf-3.3)
++ENDIF()
+ IF(WITH_OPENEXR)
+     VIGRA_FIND_PACKAGE(OpenEXR)
+ ENDIF()
+@@ -72,8 +86,10 @@
+ ENDIF()
+ 
+ SET(DOXYGEN_SKIP_DOT TRUE)
++IF(ENABLE_DOC)
+ FIND_PACKAGE(Doxygen)
+ FIND_PACKAGE(PythonInterp)
++ENDIF()
+ 
+ IF(WITH_VIGRANUMPY)
+     FIND_PACKAGE( VIGRANUMPY_DEPENDENCIES )
+diff -urN vigra-1.9.0.old/vigranumpy/docsrc/CMakeLists.txt vigra-1.9.0/vigranumpy/docsrc/CMakeLists.txt
+--- vigra-1.9.0.old/vigranumpy/docsrc/CMakeLists.txt	2013-06-04 13:38:43.207564577 +0200
++++ vigra-1.9.0/vigranumpy/docsrc/CMakeLists.txt	2013-06-04 13:45:51.962549323 +0200
+@@ -1,4 +1,4 @@
+-IF(PYTHON_SPHINX)
++IF(PYTHON_SPHINX AND ENABLE_DOC)
+     # vigranumpy documentation generation using sphinx
+     IF(DEFINED VIGRANUMPY_DOCDIR)
+         MESSAGE(SEND_ERROR "VIGRANUMPY_DOCDIR already defined! Please delete from Cache.")
+@@ -49,7 +49,7 @@
+             ${VIGRANUMPY_DOCDIR}
+         COMMENT "Generating vigranumpy documentation")
+ 
+-ELSE(PYTHON_SPHINX)
++ELSE(PYTHON_SPHINX AND ENABLE_DOC)
+     # no vigranumpy documentation if sphinx not available
+     ADD_CUSTOM_TARGET (doc_python 
+         ${CMAKE_COMMAND} -E echo
+@@ -57,7 +57,7 @@
+         "(sphinx-build not found)"
+         VERBATIM)
+ 
+-ENDIF(PYTHON_SPHINX)
++ENDIF(PYTHON_SPHINX AND ENABLE_DOC)
+ 
+ ADD_DEPENDENCIES(doc_python vigranumpy)
+ ADD_DEPENDENCIES(doc_python doc_cpp)

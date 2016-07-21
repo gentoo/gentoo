@@ -1,0 +1,12 @@
+diff --git a/PyMca/specfile/src/sfwrite.c b/PyMca/specfile/src/sfwrite.c
+index 24df907..93c18e9 100755
+--- a/PyMca/specfile/src/sfwrite.c
++++ b/PyMca/specfile/src/sfwrite.c
+@@ -55,6 +55,7 @@
+  */
+ #include <SpecFile.h>
+ #include <SpecFileP.h>
++#include <unistd.h>
+ 
+ /*
+  * Declarations

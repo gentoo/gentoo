@@ -1,0 +1,37 @@
+Make docs optional
+
+--- configure.ac
++++ configure.ac
+@@ -432,7 +432,7 @@
+ fi
+ 
+ # final build of *FLAGS
+-CFLAGS="$ENV_CFLAGS $OPT_CFLAGS $GDB_FLAGS $OS_CFLAGS \
++CFLAGS="$ENV_CFLAGS $OS_CFLAGS \
+ 	$COVERAGE_CFLAGS $EXTRA_WARNINGS $WERROR_CFLAGS $NSS_CFLAGS"
+ CPPFLAGS="$ENV_CPPFLAGS $ANSI_CPPFLAGS $OS_CPPFLAGS"
+ LDFLAGS="$ENV_LDFLAGS $COVERAGE_LDFLAGS $OS_LDFLAGS"
+@@ -458,7 +458,10 @@
+ AC_SUBST([DARWIN_OPTS])
+ AC_SUBST([SOLARIS_OPTS])
+ 
+-AM_CONDITIONAL(BUILD_HTML_DOCS, test -n "${GROFF}")
++AC_ARG_ENABLE([doc],
++  AS_HELP_STRING([--enable-doc],[Build html documentation])
++)
++AM_CONDITIONAL(BUILD_HTML_DOCS, [test -n "${GROFF}" && test "x$enable_doc" = "xyes"] )
+ 
+ AC_SUBST([LINT_FLAGS])
+ 
+--- Makefile.am
++++ Makefile.am
+@@ -41,9 +41,6 @@
+ 			  config.guess config.sub missing install-sh \
+ 			  autoheader automake autoconf
+ 
+-dist_doc_DATA		= LICENSE INSTALL README.devmap \
+-			  README.recovery SECURITY TODO AUTHORS
+-
+ corosysconfdir		= ${COROSYSCONFDIR}
+
+ corosysconf_DATA        = conf/corosync.conf.example

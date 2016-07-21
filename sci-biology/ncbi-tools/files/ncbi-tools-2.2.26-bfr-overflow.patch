@@ -1,0 +1,103 @@
+ cdromlib/cdnewlib.c | 6 +++---
+ corelib/ncbierr.c   | 2 +-
+ corelib/ncbisgml.c  | 8 ++++----
+ demo/errhdr.c       | 2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/cdromlib/cdnewlib.c b/cdromlib/cdnewlib.c
+index 461292c..be4a2d6 100644
+--- a/cdromlib/cdnewlib.c
++++ b/cdromlib/cdnewlib.c
+@@ -2676,7 +2676,7 @@ static int CdDevice_FileBuildPath (CdDevice *cddev, char *fpath, const char *fdi
+ 			char volname[16];
+ 			volname[0] = '\0';
+ 			if (cddev->volume != NULL)
+-				strncat(volname,cddev->volume->volume_name,sizeof volname);
++				strncat(volname,cddev->volume->volume_name,sizeof volname - 1);
+ 			else
+ 				sprintf(volname,"entrez%d",cddev->hint);
+ 			if (!FileBuildPath(fpath,volname,NULL))
+@@ -2748,7 +2748,7 @@ static int CdDevice_Init (CdDevice *cddev)
+ 	memset((void*)&info,0,sizeof info);
+ 	fpath[0] = '\0';
+ 	if (cddev->inf.root !=NULL)
+-		strncat(fpath,cddev->inf.root,sizeof fpath);
++		strncat(fpath,cddev->inf.root,sizeof fpath - 1);
+ 		
+ 	if (cddev->ins_volname)
+ 	{
+@@ -2766,7 +2766,7 @@ static int CdDevice_Init (CdDevice *cddev)
+ 			{
+ 				fpath[0] = '\0';
+ 				if (cddev->inf.root !=NULL)
+-					strncat(fpath,cddev->inf.root,sizeof fpath);
++					strncat(fpath,cddev->inf.root,sizeof fpath - 1);
+ 				sprintf(volname,"entrez%d",j+1);
+ 				FileBuildPath(fpath,volname,NULL);
+ 				if (CdTestPath(fpath,&info))
+diff --git a/corelib/ncbierr.c b/corelib/ncbierr.c
+index 0429d86..7b96a2e 100644
+--- a/corelib/ncbierr.c
++++ b/corelib/ncbierr.c
+@@ -952,7 +952,7 @@ static FILE * ErrMsgRoot_fopen (ErrMsgRoot *ctx)
+ 	if (FileLength(file)==0 || (fd = FileOpen(file,s_msg_mode)) == NULL)
+           {
+             strcpy(path,info->msgpath);
+-            strncat(path,file,sizeof(path));
++            strncat(path,file,sizeof(path) - 1);
+             fd = FileOpen(path,s_msg_mode);
+           }
+ 
+diff --git a/corelib/ncbisgml.c b/corelib/ncbisgml.c
+index 99412be..a653aef 100644
+--- a/corelib/ncbisgml.c
++++ b/corelib/ncbisgml.c
+@@ -260,7 +260,7 @@ NLM_EXTERN char * LIBCALL  Nlm_Sgml2Ascii (const char *sgml, char *ascii, size_t
+ 			}
+ 			if (i >= num_sgml_entity)
+ 			{
+-				char bad[SGML_ERROR_MSG_LIM];
++				char bad[SGML_ERROR_MSG_LIM + 2];
+ 				bad[0] = '\0';
+ 				strncat(bad,sgml,SGML_ERROR_MSG_LIM);
+ 				ErrPostEx(SEV_ERROR,E_SGML,3,"Unrecognized SGML entity &%s in [%s]",tbuf,bad);
+@@ -279,7 +279,7 @@ NLM_EXTERN char * LIBCALL  Nlm_Sgml2Ascii (const char *sgml, char *ascii, size_t
+ 				from++;
+ 			if (*from == '\0')
+ 			{
+-				char bad[SGML_ERROR_MSG_LIM];
++				char bad[SGML_ERROR_MSG_LIM + 2];
+ 				bad[0] = '\0';
+ 				strncat(bad,sgml,SGML_ERROR_MSG_LIM);
+ 				ErrPostEx(SEV_ERROR,E_SGML,2, "Unbalanced <> in SGML [%s]",bad);
+@@ -335,7 +335,7 @@ NLM_EXTERN size_t LIBCALL  Nlm_Sgml2AsciiLen (const char *sgml)
+ 			}
+ 			if (i >= num_sgml_entity)
+ 			{
+-				char bad[SGML_ERROR_MSG_LIM];
++				char bad[SGML_ERROR_MSG_LIM + 2];
+ 				bad[0] = '\0';
+ 				strncat(bad,sgml,SGML_ERROR_MSG_LIM);
+ 				ErrPostEx(SEV_ERROR,E_SGML,3,"Unrecognized SGML entity &%s in [%s]",tbuf,bad);
+@@ -349,7 +349,7 @@ NLM_EXTERN size_t LIBCALL  Nlm_Sgml2AsciiLen (const char *sgml)
+ 				from++;
+ 			if (*from == '\0')
+ 			{
+-				char bad[SGML_ERROR_MSG_LIM];
++				char bad[SGML_ERROR_MSG_LIM + 2];
+ 				bad[0] = '\0';
+ 				strncat(bad,sgml,SGML_ERROR_MSG_LIM);
+ 				ErrPostEx(SEV_ERROR,E_SGML,2,"Unbalanced <> in SGML [%s]",bad);
+diff --git a/demo/errhdr.c b/demo/errhdr.c
+index 01cd955..5081489 100644
+--- a/demo/errhdr.c
++++ b/demo/errhdr.c
+@@ -41,7 +41,7 @@ int main (int argc, char **argv)
+ 		else if (mod[0] == '\0')
+ 		{
+ 			char *p;
+-			strncat(mod,argv[i],sizeof mod);
++			strncat(mod,argv[i],sizeof mod - 1);
+ 			if ((p = strstr(argv[i],".msg")) != NULL)
+ 				*p = '\0';
+ 		}

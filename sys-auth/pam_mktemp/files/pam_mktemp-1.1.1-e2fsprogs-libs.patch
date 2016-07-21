@@ -1,0 +1,49 @@
+Index: pam_mktemp-1.1.1/pam_mktemp.c
+===================================================================
+--- pam_mktemp-1.1.1.orig/pam_mktemp.c
++++ pam_mktemp-1.1.1/pam_mktemp.c
+@@ -55,7 +55,7 @@
+  */
+ # include <fcntl.h>
+ # include <sys/ioctl.h>
+-# include <ext2fs/ext2_fs.h>
++# include <linux/fs.h>
+ #else
+ # undef USE_APPEND_FL
+ #endif /* HAVE_APPEND_FL */
+@@ -88,7 +88,7 @@ static int ext2fs_chflags(const char *na
+ 	if ((fd = open(name, O_RDONLY)) < 0)
+ 		return -1;
+ 
+-	if (ioctl(fd, EXT2_IOC_GETFLAGS, &old_flags)) {
++	if (ioctl(fd, FS_IOC_GETFLAGS, &old_flags)) {
+ 		if ((errno == ENOTTY) /* Inappropriate ioctl for device */
+ 		    || (errno == ENOSYS)) /* Function not implemented */
+ 			errno = EOPNOTSUPP;
+@@ -98,7 +98,7 @@ static int ext2fs_chflags(const char *na
+ 
+ 	new_flags = (old_flags | set) & ~clear;
+ 	if (new_flags != old_flags)
+-		retval = ioctl(fd, EXT2_IOC_SETFLAGS, &new_flags);
++		retval = ioctl(fd, FS_IOC_SETFLAGS, &new_flags);
+ 
+ 	if (close(fd))
+ 		retval = -1;
+@@ -233,7 +233,7 @@ PAM_EXTERN int pam_sm_open_session(pam_h
+  */
+ 
+ #ifdef USE_APPEND_FL
+-	ext2fs_chflags(PRIVATE_PREFIX, EXT2_APPEND_FL, 0);
++	ext2fs_chflags(PRIVATE_PREFIX, FS_APPEND_FL, 0);
+ #endif /* USE_APPEND_FL */
+ 
+ 	userdir = malloc(strlen(PRIVATE_PREFIX) + strlen(user) + 2);
+@@ -260,7 +260,7 @@ PAM_EXTERN int pam_sm_open_session(pam_h
+ 	} else {
+ 		/* Don't let the append-only flag get inherited
+ 		 * from the parent directory. */
+-		if (ext2fs_chflags(userdir, 0, EXT2_APPEND_FL) &&
++		if (ext2fs_chflags(userdir, 0, FS_APPEND_FL) &&
+ 		    errno != EOPNOTSUPP)
+ 			goto out;
+ #endif /* HAVE_APPEND_FL */

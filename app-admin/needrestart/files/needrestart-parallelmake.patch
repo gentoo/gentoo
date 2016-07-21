@@ -1,0 +1,17 @@
+https://github.com/liske/needrestart/pull/34
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c432772..8cc2fe0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,5 +64,5 @@ po/needrestart-notify/messages.pot: ex/notify.d/*-*
+ 
+ 
+ mo-files:
+-	make -C po/needrestart
+-	make -C po/needrestart-notify
++	$(MAKE) -C po/needrestart
++	$(MAKE) -C po/needrestart-notify

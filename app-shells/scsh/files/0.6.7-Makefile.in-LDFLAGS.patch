@@ -1,0 +1,11 @@
+--- Makefile.in.orig	2010-08-11 16:55:09.246939884 +0200
++++ Makefile.in	2010-08-11 16:55:31.309819842 +0200
+@@ -853,7 +853,7 @@
+ cig/libcig.c:		cig/libcig.scm
+ 
+ scsh/scsh: scsh/scsh-tramp.c
+-	$(CC) -o $@ $(CPPFLAGS) $(CFLAGS) \
++	$(CC) -o $@ $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) \
+ 	-DVM=\"$(LIB)/$(VM)\" \
+ 	-DIMAGE=\"$(LIB)/scsh.image\" \
+ 	$(srcdir)/scsh/scsh-tramp.c

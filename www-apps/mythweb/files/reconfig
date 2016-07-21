@@ -1,0 +1,39 @@
+#!/bin/bash
+
+die() {
+    echo "###"
+    echo $1
+    echo "###"
+    exit 1
+}
+
+if [[ $1 = "install" ]]; then
+
+    if [[ "${VHOST_SERVER}" = "apache" ]]; then
+        sed -e "s|/var/www/html/data|${MY_INSTALLDIR}/data|g" \
+            -e "s|/var/www/html|${MY_INSTALLDIR}|g" \
+            ${MY_SERVERCONFIGDIR}/${VHOST_SERVER}-mythweb.conf > \
+            ${VHOST_CONFDIR}/mythweb.include || \
+            die "apache sed failed"
+    elif [[ "${VHOST_SERVER}" = "lighttpd" ]]; then
+        sed -e "s|/var/www/localhost/htdocs/mythweb|${MY_INSTALLDIR}|g" \
+            ${MY_SERVERCONFIGDIR}/${VHOST_SERVER}-mythweb.conf > \
+            ${VHOST_CONFDIR}/mythweb.include || \
+            die "lighttpd sed failed"
+    elif [[ "${VHOST_SERVER}" = "nginx" ]]; then
+        sed -e "s|VHOST_HTDOCS|${VHOST_HTDOCSDIR}|g" \
+            -e "s|VHOST_APPDIR|${VHOST_APPDIR}|g" \
+            ${MY_SERVERCONFIGDIR}/${VHOST_SERVER}-mythweb.include > \
+            ${VHOST_CONFDIR}/mythweb.include || \
+            die "nginx sed failed"
+    fi
+
+    # Ownership fixes
+    chown ${VHOST_SERVER_UID}:${VHOST_SERVER_GID} "${MY_INSTALLDIR}"/data || \
+        die "chown failed"
+
+elif [[ $1 = "clean" ]]; then
+    echo $1
+fi
+
+exit 0

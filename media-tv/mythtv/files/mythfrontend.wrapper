@@ -1,0 +1,29 @@
+#!/bin/sh
+# Based on Mythbuntu's script
+
+# Check if the frontend is already running,
+# if it is bring it to the foreground.
+# This is to prevent multiple frontends from running
+/usr/bin/pgrep mythfrontend.real 2>&1 > /dev/null && \
+    /usr/bin/wmctrl -a "MythTV Frontend" 2> /dev/null && \
+    exit 0
+
+# Check if you're part of the video group
+if [ -n "$(groups | grep -v video)" ]; then
+    echo "'$USER' is not part of the 'video' group." >&2
+    echo "For best results add '$USER' to the 'video' group." >&2
+fi
+
+if [ -e /etc/conf.d/mythfrontend ]; then
+    . /etc/conf.d/mythfrontend
+fi
+
+if [ "x${MYTHWELCOME}" = "xtrue" ]; then
+    exec /usr/bin/mythwelcome ${MYTHFRONTEND_OPTS} "$@"
+    RET=$?
+else
+    exec /usr/bin/mythfrontend.real ${MYTHFRONTEND_OPTS} "$@"
+    RET=$?
+fi
+
+exit ${RET}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		The main purpose of declick is the removal of digital clicks in the
+		input material. It is intended for the automatic removal of clicks
+		produced by scratched CDs or poorly working CD grabbers, for example
+		when using an IDE CD-ROM. It is not designed to remove analogue clicks
+		as from scratched LPs.
+	</longdescription>
+</pkgmetadata>

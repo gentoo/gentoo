@@ -1,0 +1,36 @@
+diff --git a/share/balsa/parts/Makefile.am b/share/balsa/parts/Makefile.am
+index 6873e26..e168d70 100644
+--- a/share/balsa/parts/Makefile.am
++++ b/share/balsa/parts/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-balsapartsdir = $(datadir)/balsa/parts
++balsapartsdir = $(libdir)/balsa/parts
+ 
+ balsa_files = buffers.balsa counters.balsa
+ breeze_files = buffers.breeze counters.breeze
+diff --git a/share/balsa/sim/Makefile.am b/share/balsa/sim/Makefile.am
+index 2cd2932..233d2ec 100644
+--- a/share/balsa/sim/Makefile.am
++++ b/share/balsa/sim/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-balsasimdir = $(datadir)/balsa/sim
++balsasimdir = $(libdir)/balsa/sim
+ 
+ breeze_files = fileio.breeze string.breeze memory.breeze sim.breeze portio.breeze
+ balsa_files = fileio.balsa string.balsa memory.balsa sim.balsa portio.balsa
+diff --git a/share/balsa/types/Makefile.am b/share/balsa/types/Makefile.am
+index 475058a..317176f 100644
+--- a/share/balsa/types/Makefile.am
++++ b/share/balsa/types/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-balsatypesdir = $(datadir)/balsa/types
++balsatypesdir = $(libdir)/balsa/types
+ 
+ balsa_files = basic.balsa builtin.balsa synthesis.balsa types.balsa
+ breeze_files = basic.breeze builtin.breeze synthesis.breeze types.breeze

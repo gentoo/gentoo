@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/show_bug.cgi?id=425274
+Build with gcc 4.7
+
+Index: raul-0.8.0/raul/PathTable.hpp
+===================================================================
+--- raul-0.8.0.orig/raul/PathTable.hpp
++++ raul-0.8.0/raul/PathTable.hpp
+@@ -37,13 +37,13 @@ public:
+ 	typename Table<Path, T>::iterator find_descendants_end(
+ 			typename Table<Path, T>::iterator parent)
+ 	{
+-		return find_range_end(parent, &Path::descendant_comparator);
++		return this->find_range_end(parent, &Path::descendant_comparator);
+ 	}
+ 
+ 	typename Table<Path, T>::const_iterator find_descendants_end(
+ 			typename Table<Path, T>::const_iterator parent) const
+ 	{
+-		return find_range_end(parent, &Path::descendant_comparator);
++		return this->find_range_end(parent, &Path::descendant_comparator);
+ 	}
+ };
+ 
+Index: raul-0.8.0/raul/TableImpl.hpp
+===================================================================
+--- raul-0.8.0.orig/raul/TableImpl.hpp
++++ raul-0.8.0/raul/TableImpl.hpp
+@@ -249,7 +249,7 @@ Table<K, T>::cram(const Table<K,T>& rang
+ 	assert(is_sorted());
+ #endif
+ 
+-	return make_pair(iterator(*this, insert_index), true);
++	return std::make_pair(iterator(*this, insert_index), true);
+ }
+ 
+ 
+@@ -339,7 +339,7 @@ Table<K, T>::operator[](const K& key)
+ 	if (i != end()) {
+ 		return i->second;
+ 	} else {
+-		std::pair<iterator,bool> ret = insert(make_pair(key, T()));
++		std::pair<iterator,bool> ret = insert(std::make_pair(key, T()));
+ 		return ret.first->second;
+ 	}
+ }

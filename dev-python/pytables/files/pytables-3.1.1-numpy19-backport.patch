@@ -1,0 +1,51 @@
+From 854d5798ca9fd78c00e18710de2e93202f675f3e Mon Sep 17 00:00:00 2001
+From: Antonio Valentino <antonio.valentino@tiscali.it>
+Date: Sun, 6 Jul 2014 21:21:39 +0200
+Subject: [PATCH] Fix a compatibility problem with numpy 1.9 (close: #362)
+
+---
+ RELEASE_NOTES.txt | 6 ++++++
+ tables/table.py   | 6 +++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/RELEASE_NOTES.txt b/RELEASE_NOTES.txt
+index f219eb3..1da20e2 100644
+--- a/RELEASE_NOTES.txt
++++ b/RELEASE_NOTES.txt
+@@ -19,6 +19,12 @@ Improvements
+   requiring strict access alignment.
+ 
+ 
++Bugs fixed
++----------
++
++- Fixed compatibitily problems with numpy 1.9 (closes :issue:`362`)
++
++
+ Changes from 3.1.0 to 3.1.1
+ ===========================
+ 
+diff --git a/tables/table.py b/tables/table.py
+index 235f599..ffe8fd6 100644
+--- a/tables/table.py
++++ b/tables/table.py
+@@ -3406,6 +3406,10 @@ def _getindex(self):
+                      associated with this column (None if the column is not
+                      indexed).""")
+ 
++    @lazyattr
++    def _itemtype(self):
++        return self.descr._v_dtypes[self.name]
++
+     def _getshape(self):
+         return (self.table.nrows,) + self.descr._v_dtypes[self.name].shape
+ 
+@@ -3529,7 +3533,7 @@ def __iter__(self):
+         table = self.table
+         itemsize = self.dtype.itemsize
+         nrowsinbuf = table._v_file.params['IO_BUFFER_SIZE'] // itemsize
+-        buf = numpy.empty((nrowsinbuf, ), self.dtype)
++        buf = numpy.empty((nrowsinbuf, ), self._itemtype)
+         max_row = len(self)
+         for start_row in xrange(0, len(self), nrowsinbuf):
+             end_row = min(start_row + nrowsinbuf, max_row)

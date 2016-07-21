@@ -1,0 +1,11 @@
+[Unit]
+Description=Cron Daemon
+After=syslog.target
+
+[Service]
+ExecStart=/usr/sbin/crond -S -l info
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
+

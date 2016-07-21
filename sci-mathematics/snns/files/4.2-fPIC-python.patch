@@ -1,0 +1,12 @@
+diff -urpN configuration.orig/Makefile.din configuration/Makefile.din
+--- configuration.orig/Makefile.din	2005-01-30 16:40:54.430169528 +0100
++++ configuration/Makefile.din	2005-01-30 16:41:20.971134688 +0100
+@@ -114,7 +114,7 @@ SUBSTOBJECTS       = @LIBOBJS@ @ALLOCA@ 
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ .c.o:
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $<
++	$(CC) -fPIC $(CPPFLAGS) $(CFLAGS) -c $<
+ 
+ #*****************************************************************************
+ # End of common Makefile.defs

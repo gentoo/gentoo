@@ -1,0 +1,79 @@
+ Makefile.am     |  3 +--
+ configure.in    | 15 ++++++++-------
+ src/Makefile.am |  2 +-
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f90cc9d..36495a7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,10 +5,9 @@
+ 
+ SUBDIRS = src pixmaps po
+ 
+-owwdocdir = ${prefix}/doc/oww
++owwdocdir = ${docdir}
+ owwdoc_DATA = \
+ 	README\
+-	COPYING\
+ 	AUTHORS\
+ 	ChangeLog\
+ 	INSTALL\
+diff --git a/configure.in b/configure.in
+index dbc694e..a9c779f 100644
+--- a/configure.in
++++ b/configure.in
+@@ -6,6 +6,8 @@ AM_INIT_AUTOMAKE
+ 
+ AM_CONFIG_HEADER(config.h)
+ 
++AC_CONFIG_MACRO_DIR([.])
++
+ AC_ISC_POSIX
+ dnl CFLAGS=""
+ AC_SUBST(CFLAGS)
+@@ -134,17 +136,16 @@ else
+ AC_MSG_WARN(interactive CLI will not be build)
+ fi
+ 
+-AC_ARG_ENABLE(gui, , build_gui=no, build_gui=yes)
+-AM_CONDITIONAL(DISABLEGUI, test "x$build_gui" = "xno")
++AC_ARG_ENABLE([gui],AS_HELP_STRING([--disable-gui], [Do not build gtk gui]))
+ 
+-if test "$build_gui" = yes ;  then
++AM_CONDITIONAL([DISABLEGUI], [test "x$enable_gui" != "xyes"])
++
++AS_IF([test "x$enable_gui" != "xno"], [
+   AC_MSG_WARN(building gui)
+   PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.4.0 gdk-2.0 gdk-pixbuf-2.0 gmodule-export-2.0,,exit)
+   AC_SUBST(GTK_LIBS)
+   AC_SUBST(GTK_CFLAGS)
+-else
+-	AC_MSG_WARN(skipping GTK gui)
+-fi
++])
+ 
+ dnl How many times do we retry T on failure?
+ AC_ARG_ENABLE(temptries,
+@@ -319,7 +320,7 @@ cat<<EOF
+ ------------------------------
+ Oww version $VERSION by Simon Melhuish (simon@melhuish.info)
+ 
+-	build_gui = $build_gui
++	build_gui = $xgui
+ 	interactive = $interactive
+ 	seriallock = $seriallock 
+ 	USB support = $usb_msg
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e0f6746..c02aab5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ # Needs USB_CFLAGS here else things like musbllnk compile will fail if usb.h
+ # isn't in the compilers standard include path.
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	 $(USB_CFLAGS)\
+ 	$(GTK_CFLAGS)
+ 

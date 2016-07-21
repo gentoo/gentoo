@@ -1,0 +1,15 @@
+--- samba-4.1.14/source4/setup/named.conf.dlz
++++ samba-4.1.14/source4/setup/named.conf.dlz
+@@ -11,10 +11,10 @@
+ #
+ dlz "AD DNS Zone" {
+     # For BIND 9.8.x
+-    database "dlopen ${MODULESDIR}/bind9/dlz_bind9.so";
++    # database "dlopen ${MODULESDIR}/bind9/dlz_bind9.so";
+ 
+     # For BIND 9.9.x
+-    # database "dlopen ${MODULESDIR}/bind9/dlz_bind9_9.so";
++    database "dlopen ${MODULESDIR}/bind9/dlz_bind9_9.so";
+ 
+     # For BIND 9.10.x
+     # database "dlopen ${MODULESDIR}/bind9/dlz_bind9_10.so";

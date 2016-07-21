@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Crypt-Random-Source</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Base</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Base::File</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Base::Handle</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Base::Proc</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Base::RandomDevice</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Factory</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Strong</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Strong::devrandom</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Weak</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Weak::devurandom</remote-id>
+		<remote-id type="cpan-module">Crypt::Random::Source::Weak::rand</remote-id>
+	</upstream>
+</pkgmetadata>

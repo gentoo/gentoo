@@ -1,0 +1,17 @@
+--- third_party/pdfium/xfa/fxbarcode/utils.h.orig	2016-05-30 10:24:54.071773744 +0000
++++ third_party/pdfium/xfa/fxbarcode/utils.h	2016-05-30 10:25:15.808219373 +0000
+@@ -26,12 +26,10 @@
+ #endif
+ #if (_FX_OS_ == _FX_WIN32_DESKTOP_ || _FX_OS_ == _FX_WIN64_)
+ #define FXSYS_isnan(x) _isnan(x)
+-#elif(_FX_OS_ == _FX_MACOSX_ || _FX_OS_ == _FX_IOS_)
++#elif(_FX_OS_ == _FX_MACOSX_ || _FX_OS_ == _FX_IOS_ || \
++      _FX_OS_ == _FX_LINUX_DESKTOP_ || _FX_OS_ == _FX_ANDROID_)
+ #include <cmath>
+ #define FXSYS_isnan(x) std::isnan(x)
+-#elif(_FX_OS_ == _FX_LINUX_DESKTOP_ || _FX_OS_ == _FX_ANDROID_)
+-#include <math.h>
+-#define FXSYS_isnan(x) isnan(x)
+ #endif
+ #if (_FX_OS_ == _FX_WIN32_DESKTOP_ || _FX_OS_ == _FX_WIN64_)
+ #define FXSYS_nan() (std::numeric_limits<float>::quiet_NaN())

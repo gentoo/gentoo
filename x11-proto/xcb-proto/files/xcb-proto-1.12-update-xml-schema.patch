@@ -1,0 +1,120 @@
+From 95a262e0e66cd88b9d7a133917b3ba70ace77301 Mon Sep 17 00:00:00 2001
+From: Jon Turney <jon.turney@dronecode.org.uk>
+Date: Wed, 3 Feb 2016 16:41:57 +0000
+Subject: Update XML schema to fix 'make check'
+
+Here is an attempt at updating the schema to add serialize attribute to pad
+element and required_start_align element.
+
+Not sure if I've added required_start_align element in the right place. The
+default case in the switch element is removed as it doesn't seem to be used, and
+otherwise makes the schema ambiguous.
+
+$ make check
+Making check in src
+make[1]: Entering directory '/jhbuild/x86_64-pc-cygwin/build/xcb/proto/src'
+make  check-local
+make[2]: Entering directory '/jhbuild/x86_64-pc-cygwin/build/xcb/proto/src'
+/usr/bin/xmllint --noout --schema /jhbuild/checkout/xcb/proto/src/xcb.xsd
+/jhbuild/checkout/xcb/proto/src/*.xml
+/jhbuild/checkout/xcb/proto/src/bigreq.xml validates
+/jhbuild/checkout/xcb/proto/src/composite.xml validates
+/jhbuild/checkout/xcb/proto/src/damage.xml validates
+/jhbuild/checkout/xcb/proto/src/dpms.xml validates
+/jhbuild/checkout/xcb/proto/src/dri2.xml validates
+/jhbuild/checkout/xcb/proto/src/dri3.xml validates
+/jhbuild/checkout/xcb/proto/src/ge.xml validates
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd ).
+/jhbuild/checkout/xcb/proto/src/glx.xml fails to validate
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd, exprfield, switch, reply, doc ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd, exprfield, switch, reply, doc ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd, doc ).
+Element 'required_start_align': This element is not expected. Expected is one of ( pad, field, list, fd, doc ).
+/jhbuild/checkout/xcb/proto/src/present.xml fails to validate
+/jhbuild/checkout/xcb/proto/src/randr.xml validates
+/jhbuild/checkout/xcb/proto/src/record.xml validates
+/jhbuild/checkout/xcb/proto/src/render.xml validates
+/jhbuild/checkout/xcb/proto/src/res.xml validates
+/jhbuild/checkout/xcb/proto/src/screensaver.xml validates
+/jhbuild/checkout/xcb/proto/src/shape.xml validates
+/jhbuild/checkout/xcb/proto/src/shm.xml validates
+/jhbuild/checkout/xcb/proto/src/sync.xml validates
+/jhbuild/checkout/xcb/proto/src/xc_misc.xml validates
+/jhbuild/checkout/xcb/proto/src/xevie.xml validates
+/jhbuild/checkout/xcb/proto/src/xf86dri.xml validates
+/jhbuild/checkout/xcb/proto/src/xf86vidmode.xml validates
+/jhbuild/checkout/xcb/proto/src/xfixes.xml validates
+/jhbuild/checkout/xcb/proto/src/xinerama.xml validates
+Element 'required_start_align': This element is not expected. Expected is one of ( bitcase, case, pad, field, list, fd ).
+Element 'required_start_align': This element is not expected. Expected is one of ( bitcase, case, pad, field, list, fd ).
+Element 'required_start_align': This element is not expected. Expected is one of ( bitcase, case, pad, field, list, fd ).
+/jhbuild/checkout/xcb/proto/src/xinput.xml fails to validate
+Element 'pad', attribute 'serialize': The attribute 'serialize' is not allowed.
+Element 'pad', attribute 'serialize': The attribute 'serialize' is not allowed.
+Element 'pad', attribute 'serialize': The attribute 'serialize' is not allowed.
+Element 'pad', attribute 'serialize': The attribute 'serialize' is not allowed.
+Element 'pad', attribute 'serialize': The attribute 'serialize' is not allowed.
+/jhbuild/checkout/xcb/proto/src/xkb.xml fails to validate
+/jhbuild/checkout/xcb/proto/src/xprint.xml validates
+/jhbuild/checkout/xcb/proto/src/xproto.xml validates
+/jhbuild/checkout/xcb/proto/src/xselinux.xml validates
+/jhbuild/checkout/xcb/proto/src/xtest.xml validates
+/jhbuild/checkout/xcb/proto/src/xv.xml validates
+/jhbuild/checkout/xcb/proto/src/xvmc.xml validates
+Makefile:534: recipe for target 'check-local' failed
+
+Signed-off-by: Jon Turney <jon.turney@dronecode.org.uk>
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=95494
+Reviewd-by: Ran Benita <ran234@gmail.com>
+Signed-off-by: Uli Schlachter <psychon@znc.in>
+
+diff --git a/src/xcb.xsd b/src/xcb.xsd
+index c1dce3e..f0c5f44 100644
+--- a/src/xcb.xsd
++++ b/src/xcb.xsd
+@@ -44,6 +44,15 @@ authorization from the authors.
+     <xsd:complexType>
+       <xsd:attribute name="bytes" type="xsd:integer" use="optional" />
+       <xsd:attribute name="align" type="xsd:integer" use="optional" />
++      <xsd:attribute name="serialize" type="xsd:boolean" use="optional" />
++    </xsd:complexType>
++  </xsd:element>
++
++  <!-- Alignment -->
++  <xsd:element name="required_start_align" >
++    <xsd:complexType>
++      <xsd:attribute name="align" type="xsd:integer" use="required" />
++      <xsd:attribute name="offset" type="xsd:integer" use="optional" />
+     </xsd:complexType>
+   </xsd:element>
+ 
+@@ -76,14 +85,13 @@ authorization from the authors.
+     <xsd:sequence>
+       <!-- switch(expression) -->
+       <xsd:group ref="expression" minOccurs="1" maxOccurs="1" />
++      <xsd:element ref="required_start_align" minOccurs="0" maxOccurs="1" />
+       <xsd:choice>
+         <!-- bitcase expression - bit test -->
+         <xsd:element name="bitcase" type="caseexpr" minOccurs="0" maxOccurs="unbounded" />
+         <!-- case expression - value test -->
+         <xsd:element name="case" type="caseexpr" minOccurs="0" maxOccurs="unbounded" />
+       </xsd:choice>
+-      <!-- default: -->
+-      <xsd:group ref="fields" minOccurs="0" maxOccurs="1" />
+     </xsd:sequence>
+     <xsd:attribute name="name" type="xsd:string" use="required" />
+   </xsd:complexType>
+@@ -201,6 +209,7 @@ authorization from the authors.
+       <xsd:element ref="field" />
+       <xsd:element ref="list" />
+       <xsd:element ref="fd" />
++      <xsd:element ref="required_start_align" />
+     </xsd:choice>
+   </xsd:group>
+ 
+-- 
+cgit v0.10.2
+

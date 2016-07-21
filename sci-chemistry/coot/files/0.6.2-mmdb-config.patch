@@ -1,0 +1,18 @@
+ macros/mmdb.m4 |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/macros/mmdb.m4 b/macros/mmdb.m4
+index b477597..d05cf66 100644
+--- a/macros/mmdb.m4
++++ b/macros/mmdb.m4
+@@ -86,6 +86,10 @@ else
+  ac_MMDB_LDOPTS="-lmmdb -lm"
+ fi
+ 
++PKG_CHECK_MODULES([MMDB],[mmdb >= 1.2])
++ac_MMDB_LDOPTS="${MMDB_LIBS}"
++ac_MMDB_CXXFLAGS="${MMDB_CFLAGS}"
++
+ AC_MSG_CHECKING([for MMDB])
+ 
+ 	LIBS="$save_LIBS $ac_MMDB_LDOPTS"

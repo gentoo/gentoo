@@ -1,0 +1,10 @@
+--- Ice-3.4.1.old/cpp/include/Ice/Buffer.h	2010-06-03 17:48:33.000000000 +0100
++++ Ice-3.4.1.old/cpp/include/Ice/Buffer.h	2011-07-20 13:20:04.000000000 +0100
+@@ -11,6 +11,7 @@ 
+ #define ICEE_BUFFER_H
+ 
+ #include <Ice/Config.h>
++#include <cstddef>
+ 
+ namespace IceInternal
+ {

@@ -1,0 +1,14 @@
+--- drop_privs.c	2012-03-09 12:36:04.792191180 -0500
++++ drop_privs.c.new	2012-03-09 12:36:00.827333242 -0500
+@@ -47,9 +47,9 @@
+ #endif
+ 
+ #ifdef HAVE_PAM_MODUTIL_DROP_PRIV
+-#ifdef HAVE_SECURITY_PAM_MODUTIL_H
++//#ifdef HAVE_SECURITY_PAM_MODUTIL_H
+ #include <security/pam_modutil.h>
+-#endif /* HAVE_SECURITY_PAM_MODUTIL_H */
++//#endif /* HAVE_SECURITY_PAM_MODUTIL_H */
+ #else
+ static uid_t saved_euid;
+ static gid_t saved_egid;

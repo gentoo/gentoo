@@ -1,0 +1,11 @@
+--- mk/beforeauto.mk.in.orig	2010-04-24 21:13:17.000000000 +0200
++++ mk/beforeauto.mk.in	2010-04-24 21:14:24.000000000 +0200
+@@ -541,7 +541,7 @@
+ SharedLibraryLibNameTemplate  	= lib$$1$$2.$(SHAREDLIB_SUFFIX)
+ SharedLibraryImplibNameTemplate = lib$$1$$2.a
+ 
+-SharedLibraryPlatformLinkFlagsTemplate = -shared -Wl,-soname,$$soname
++SharedLibraryPlatformLinkFlagsTemplate = -shared -Wl,-soname,$$soname @LDFLAGS@
+ 
+ define SharedLibraryFullName
+ fn() { \

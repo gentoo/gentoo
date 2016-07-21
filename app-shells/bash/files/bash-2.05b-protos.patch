@@ -1,0 +1,25 @@
+move prototypes around so they show up when needed
+
+--- a/externs.h
++++ b/externs.h
+@@ -327,6 +327,9 @@
+ #undef xstrchr
+ extern char *xstrchr __P((const char *, int));
+ 
++/* declarations for functions defined in lib/sh/zcatfd.c */
++extern int zcatfd __P((int, int, char *));
++
+ /* declarations for functions defined in lib/sh/zread.c */
+ extern ssize_t zread __P((int, char *, size_t));
+ extern ssize_t zreadintr __P((int, char *, size_t));
+--- a/jobs.h
++++ b/jobs.h
+@@ -175,6 +175,8 @@
+ extern void ignore_tty_job_signals __P((void));
+ extern void default_tty_job_signals __P((void));
+ 
++extern void close_pgrp_pipe __P((void));
++
+ #if defined (JOB_CONTROL)
+ extern int job_control;
+ #endif

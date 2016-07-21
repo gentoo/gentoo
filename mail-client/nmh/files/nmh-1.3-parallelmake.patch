@@ -1,0 +1,99 @@
+diff --git a/etc/Makefile.in b/etc/Makefile.in
+index f1412b1..9af408d 100644
+--- a/etc/Makefile.in
++++ b/etc/Makefile.in
+@@ -86,13 +86,13 @@ sendfiles: $(srcdir)/sendfiles.in Makefile
+ install: install-bin-files install-etc-files
+ 
+ install-bin-files:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	mkdir -p $(DESTDIR)$(bindir)
+ 	for script in $(GENERATED_BIN_FILES); do \
+ 	  $(INSTALL_SCRIPT) $$script $(DESTDIR)$(bindir)/$$script; \
+ 	done
+ 
+ install-etc-files:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(etcdir)
++	mkdir -p $(DESTDIR)$(etcdir)
+ 	INSTALL_FILES="$(GENERATED_ETC_FILES)"; \
+ 	for file in $(STATIC_FILES); do \
+ 	  INSTALL_FILES="$$INSTALL_FILES $(srcdir)/$$file"; \
+diff --git a/man/Makefile.in b/man/Makefile.in
+index 2ac26f3..7c613bf 100644
+--- a/man/Makefile.in
++++ b/man/Makefile.in
+@@ -130,14 +130,14 @@ install: install-man1 install-man5 install-man8
+ 
+ # install the man pages in man1
+ install-man1:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir)/man$(manext1)
++	mkdir -p $(DESTDIR)$(mandir)/man$(manext1)
+ 	for file in $(MAN1); do \
+ 	  $(INSTALL_DATA) $$file $(DESTDIR)$(mandir)/man$(manext1) ; \
+ 	done
+ 
+ # install the man pages in man5
+ install-man5:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir)/man$(manext5)
++	mkdir -p $(DESTDIR)$(mandir)/man$(manext5)
+ 	for file in $(MAN5); do \
+ 	  $(INSTALL_DATA) $$file $(DESTDIR)$(mandir)/man$(manext5) ; \
+ 	done
+@@ -148,7 +148,7 @@ install-man5:
+ 
+ # install the man pages in man8
+ install-man8:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir)/man$(manext8)
++	mkdir -p $(DESTDIR)$(mandir)/man$(manext8)
+ 	for file in $(MAN8); do \
+ 	  $(INSTALL_DATA) $$file $(DESTDIR)$(mandir)/man$(manext8) ; \
+ 	done
+diff --git a/mts/Makefile.in b/mts/Makefile.in
+index f739e30..f606fef 100644
+--- a/mts/Makefile.in
++++ b/mts/Makefile.in
+@@ -43,7 +43,7 @@ SUBDIRS = smtp
+ 
+ all: all-recursive libmts.a
+ 
+-all-recursive:
++all-recursive $(OBJS):
+ 	for subdir in $(SUBDIRS); do \
+ 	  (cd $$subdir && $(MAKE) $(MAKEDEFS) all) || exit 1; \
+ 	done
+diff --git a/uip/Makefile.in b/uip/Makefile.in
+index 5ed34f8..c9239b1 100644
+--- a/uip/Makefile.in
++++ b/uip/Makefile.in
+@@ -256,13 +256,13 @@ install: install-cmds install-misc install-lcmds install-scmds
+ 
+ # install commands
+ install-cmds:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	mkdir -p $(DESTDIR)$(bindir)
+ 	for cmd in $(CMDS); do \
+ 	  $(INSTALL_PROGRAM) $$cmd $(DESTDIR)$(bindir)/$$cmd; \
+ 	done
+ 
+ # install links
+-install-lcmds:
++install-lcmds: install-cmds
+ 	rm -f $(DESTDIR)$(bindir)/flists
+ 	rm -f $(DESTDIR)$(bindir)/folders
+ 	rm -f $(DESTDIR)$(bindir)/prev
+@@ -274,13 +274,13 @@ install-lcmds:
+ 
+ # install misc support binaries
+ install-misc:
+-	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(libdir)
++	mkdir -p $(DESTDIR)$(libdir)
+ 	for misc in $(MISC); do \
+ 	  $(INSTALL_PROGRAM) $$misc $(DESTDIR)$(libdir)/$$misc; \
+ 	done
+ 
+ # install commands with special installation needs (thus no $(SCMDS) use here)
+-install-scmds:
++install-scmds: install-cmds
+ 	if test x$(SETGID_MAIL) != x; then \
+ 	  $(INSTALL_PROGRAM) -g $(MAIL_SPOOL_GRP) -m 2755 inc $(DESTDIR)$(bindir)/$$cmd; \
+ 	else \

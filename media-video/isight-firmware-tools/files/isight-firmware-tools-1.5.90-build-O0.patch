@@ -1,0 +1,32 @@
+--- src/export.c
++++ src/export.c
+@@ -35,6 +35,8 @@
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+ 
++#include <locale.h>
++
+ /* OPTIONS */
+ static gchar *input	= NULL;
+ static gchar *output	= "isight.ihx";
+--- src/extract.c
++++ src/extract.c
+@@ -36,6 +36,8 @@
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+ 
++#include <locale.h>
++
+ /*
+  * Foreach file identified by their sha1sum, we store the offset where
+  * the firmware begin in the file.
+--- src/load.h
++++ src/load.h
+@@ -36,6 +36,8 @@
+ #include <glib.h>
+ #include <usb.h>
+ 
++#include <locale.h>
++
+ #ifndef _LOAD_H_
+ #define	_LOAD_H_

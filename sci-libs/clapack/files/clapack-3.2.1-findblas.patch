@@ -1,0 +1,49 @@
+diff -ruN clapack-3.2.1-CMAKE.orig/CMakeLists.txt clapack-3.2.1-CMAKE/CMakeLists.txt
+--- clapack-3.2.1-CMAKE.orig/CMakeLists.txt	2011-06-17 23:01:05.275747599 +0200
++++ clapack-3.2.1-CMAKE/CMakeLists.txt	2011-06-17 23:07:49.128747755 +0200
+@@ -30,6 +30,28 @@
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+ 
++if(BLAS_LIBRARIES)
++  include(CheckFortranFunctionExists)
++  set(CMAKE_REQUIRED_LIBRARIES ${BLAS_LIBRARIES})
++  CHECK_FORTRAN_FUNCTION_EXISTS("dgemm" BLAS_FOUND)
++  unset( CMAKE_REQUIRED_LIBRARIES )
++  if(BLAS_FOUND)
++    message(STATUS "--> BLAS supplied by user is WORKING, will use ${BLAS_LIBRARIES}.")
++  else(BLAS_FOUND)
++    message(ERROR "--> BLAS supplied by user is not WORKING, CANNOT USE ${BLAS_LIBRARIES}.")
++    message(ERROR "-->     Will use REFERENCE BLAS (by default)")
++    message(ERROR "-->     Or Correct your BLAS_LIBRARIES entry ")
++    message(ERROR "-->     Or Consider checking USE_OPTIMIZED_BLAS")
++  endif(BLAS_FOUND)
++else(BLAS_LIBRARIES)
++   # User did not provide a BLAS Library
++   find_package( BLAS )
++endif (BLAS_LIBRARIES)
++
++if(NOT BLAS_FOUND)
++    message(FATAL_ERROR "--> BLAS libraries needed but not found.")
++endif(NOT BLAS_FOUND)
++
+ add_subdirectory(SRC)
+ 
+ if(ENABLE_TESTS)
+@@ -44,4 +66,3 @@
+   ${CLAPACK_BINARY_DIR}/clapack-config-version.cmake @ONLY)
+ configure_file(${CLAPACK_SOURCE_DIR}/clapack-config.cmake.in
+   ${CLAPACK_BINARY_DIR}/clapack-config.cmake @ONLY)
+-
+diff -ruN clapack-3.2.1-CMAKE.orig/SRC/CMakeLists.txt clapack-3.2.1-CMAKE/SRC/CMakeLists.txt
+--- clapack-3.2.1-CMAKE.orig/SRC/CMakeLists.txt	2011-06-17 23:01:05.276747599 +0200
++++ clapack-3.2.1-CMAKE/SRC/CMakeLists.txt	2011-06-17 23:08:43.761747789 +0200
+@@ -377,7 +377,7 @@
+ endif()
+ 
+ add_library(clapack SHARED ${ALLOBJ} ${ALLXOBJ})
+-target_link_libraries(clapack blas f2c m)
++target_link_libraries(clapack ${BLAS_LIBRARIES} f2c m)
+ set_target_properties(clapack PROPERTIES SOVERSION "${CLAPACK_VERSION}")
+ 
+ install(

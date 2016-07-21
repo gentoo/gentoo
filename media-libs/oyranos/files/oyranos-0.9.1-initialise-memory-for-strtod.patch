@@ -1,0 +1,62 @@
+From 996f512cca3d19f7408e6fb9a8e0c133a54561e4 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Thu, 3 Jan 2013 16:38:52 +0100
+Subject: [PATCH] * [sources]: initialise memory for strtod
+
+fixes warnings in valgrind about uninitialised memory usage
+
+2013-03-31: backport to oyranos-0.9.1, remove patch for nonexistent file
+
+---
+ API_generated/oyranos_object.c      |    8 ++++----
+ oyranos_string.c                    |   10 ++++++----
+
+diff --git a/API_generated/oyranos_object.c b/API_generated/oyranos_object.c
+index aacc2f5..1db9f42 100644
+--- a/API_generated/oyranos_object.c
++++ b/API_generated/oyranos_object.c
+@@ -768,10 +768,10 @@ int    oyTextIccDictMatch            ( const char        * text,
+   int n = 0, p_n = 0, i, j;
+   char ** texts = 0, * t;
+   char ** patterns = 0, * p;
+-  long num[2];
+-  int num_valid[2];
+-  double dbl[2];
+-  int dbl_valid[2]; 
++  long num[2] = {0,0};
++  int num_valid[2] = {0,0};
++  double dbl[2] = {0,0};
++  int dbl_valid[2] = {0,0}; 
+ 
+   DBG_MEM_START
+ 
+diff --git a/oyranos_string.c b/oyranos_string.c
+index d43b0dd..b9c9bc4 100644
+--- a/oyranos_string.c
++++ b/oyranos_string.c
+@@ -68,15 +68,17 @@ int          oyStringToDouble        ( const char        * text,
+   setlocale(LC_NUMERIC, "C");
+   /* avoid irritating valgrind output of "Invalid read of size 8"
+    * might be a glibc error or a false positive in valgrind */
+-  t = oyAllocateFunc_( len + 2*sizeof(long) + 1 );
++  t = oyAllocateFunc_( len + 2*sizeof(double) + 1 );
++  memset( t, 0, len + 2*sizeof(double) + 1 );
++
+   memcpy( t, text, len );
+-  t[len] = 0;
++
+   if(0 && oy_debug_memory)
+   {
+-    printf( OY_DBG_FORMAT_""OY_PRINT_POINTER" \"%s\" %d "OY_PRINT_POINTER" \"%s\"\n",
++    fprintf( stderr, OY_DBG_FORMAT_""OY_PRINT_POINTER" \"%s\" %d "OY_PRINT_POINTER" \"%s\"\n",
+             OY_DBG_ARGS_,(intptr_t)text, text, len,
+             t, t  );
+-    fflush( stdout );
++    fflush( stderr );
+   }
+ 
+   *value = strtod( t, &p );
+-- 
+1.5.6.5
+
+

@@ -1,0 +1,23 @@
+--- xvt-1.0/xvt.c.orig	2009-09-04 15:49:13.000000000 +0200
++++ xvt-1.0/xvt.c	2009-09-04 15:49:13.000000000 +0200
+@@ -41,9 +41,9 @@
+ #endif /* UKC_LOCATIONS */
+ 
+ #ifdef __STDC__
+-void main(int,char **);
++int main(int,char **);
+ #else
+-void main();
++int main();
+ #endif
+ 
+ extern int debugging;
+@@ -67,7 +67,7 @@
+  *  master end of the pseudo-teletype pair with the command talking to
+  *  the slave.
+  */
+-void
++int
+ main(argc,argv)
+ int argc;
+ char **argv;

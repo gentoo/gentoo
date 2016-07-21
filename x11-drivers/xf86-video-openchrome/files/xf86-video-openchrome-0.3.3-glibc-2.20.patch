@@ -1,0 +1,42 @@
+From 879f098cf8b8dc134569b9943f9665bfae17467e Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Wed, 5 Nov 2014 11:29:37 +0100
+Subject: [PATCH] xf86.h cannot be included without first including
+ xorg-server.h.
+
+Without this the build fails on systems with the latest glibc,
+throwing this error:
+
+In file included from /usr/include/string.h:634:0,
+                 from /usr/include/xorg/os.h:53,
+                 from /usr/include/xorg/misc.h:115,
+                 from /usr/include/xorg/xf86str.h:37,
+                 from /usr/include/xorg/xf86.h:44,
+                 from via_3d.h:28,
+                 from via_3d.c:24:
+/usr/include/xorg/os.h:579:1: error: expected identifier or '(' before '__extension__'
+ strndup(const char *str, size_t n);
+
+This is caused by HAVE_STRNDUP not being set (it is set from xorg-server.h),
+causing os.h to redefine it.
+
+Signed-off-by: Stefan Dirsch <sndirsch@suse.de>
+---
+ src/via_3d.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/via_3d.h b/src/via_3d.h
+index c33228e..15be0be 100644
+--- a/src/via_3d.h
++++ b/src/via_3d.h
+@@ -24,6 +24,7 @@
+ #ifndef VIA_3D_H
+ #define VIA_3D_H
+ 
++#include "xorg-server.h"
+ #include "xf86.h"
+ #include "via_dmabuffer.h"
+ 
+-- 
+1.8.4.5
+

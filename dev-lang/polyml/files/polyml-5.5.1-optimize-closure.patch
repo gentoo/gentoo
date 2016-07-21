@@ -1,0 +1,141 @@
+http://sourceforge.net/p/polyml/code/1869/
+Required for sci-mathematics/isabelle-2013.2
+
+------------------------------------------------------------------------
+r1869 | dcjm | 2013-10-11 05:59:58 -0600 (Fri, 11 Oct 2013) | 1 line
+
+Back-port commits 1855 and 1867 from trunk.  These fix two optimiser bugs.  Includes the regression tests.
+
+Index: polyml/mlsource/MLCompiler/CodeTree/CODETREE_OPTIMISER.sml
+===================================================================
+--- polyml/mlsource/MLCompiler/CodeTree/CODETREE_OPTIMISER.sml	(revision 1851)
++++ polyml/mlsource/MLCompiler/CodeTree/CODETREE_OPTIMISER.sml	(working copy)
+@@ -645,8 +645,9 @@
+                     (thisDec :: decs, thisArg @ args, LoadLocal newAddr :: mapList)
+                 end
+ 
+-            |   mapPattern(ArgPattCurry(currying, ArgPattTuple{allConst=false, filter, ...}) :: patts, n, m) =
+-                (* It's a function that returns a tuple. *)
++            |   mapPattern(ArgPattCurry(currying as [_], ArgPattTuple{allConst=false, filter, ...}) :: patts, n, m) =
++                (* It's a function that returns a tuple.  The function must not be curried because
++                   otherwise it returns a function not a tuple. *)
+                 let
+                     val (thisDec, thisArg, thisMap) =
+                         transformFunctionArgument(currying, [LoadArgument m], [LoadArgument n], SOME filter)
+@@ -657,7 +658,7 @@
+ 
+             |   mapPattern(ArgPattCurry(currying as firstArgSet :: _, _) :: patts, n, m) =
+                 (* Transform it if it's curried or if there is a tuple in the first arg. *)
+-                if List.length currying >= 2 orelse
++                if (*List.length currying >= 2 orelse *) (* This transformation is unsafe. *)
+                    List.exists(fn ArgPattTuple{allConst=false, ...} => true | _ => false) firstArgSet
+                 then
+                 let
+@@ -685,6 +686,13 @@
+ 
+             and transformFunctionArgument(argumentArgs, loadPack, loadThisArg, filterOpt) =
+             let
++                (* Disable the transformation of curried arguments for the moment.
++                   This is unsafe.  See Test146.  The problem is that this transformation
++                   is only safe if the function is applied immediately to all the arguments.
++                   However the usage information is propagated so that if the result of
++                   the first application is bound to a variable and then that variable is
++                   applied it still appears as curried. *)
++                val argumentArgs = [hd argumentArgs]
+                 (* We have a function that takes a series of curried argument.
+                    Change that so that the function takes a list of arguments. *)
+                 val newAddr = ! localCounter before localCounter := ! localCounter + 1
+@@ -1214,9 +1222,11 @@
+                             let
+                                 fun checkArg (ArgPattTuple{allConst=false, ...}) = true
+                                         (* Function has at least one tupled arg. *)
+-                                |   checkArg (ArgPattCurry(_, ArgPattTuple{allConst=false, ...})) = true
+-                                        (* Function has an arg that is a function that returns a tuple. *)
+-                                |   checkArg (ArgPattCurry(_ :: _ :: _, _)) = true
++                                |   checkArg (ArgPattCurry([_], ArgPattTuple{allConst=false, ...})) = true
++                                        (* Function has an arg that is a function that returns a tuple.
++                                           It must not be curried otherwise it returns a function not a tuple. *)
++                                (* This transformation is unsafe.  See comment in transformFunctionArgument above. *)
++                                (*|   checkArg (ArgPattCurry(_ :: _ :: _, _)) = true *)
+                                         (* Function has an arg that is a curried function. *)
+                                 |   checkArg (ArgPattCurry(firstArgSet :: _, _)) =
+                                         (* Function has an arg that is a function that
+Index: polyml/Tests/Succeed/Test146.ML
+===================================================================
+--- polyml/Tests/Succeed/Test146.ML	(revision 0)
++++ polyml/Tests/Succeed/Test146.ML	(revision 1875)
+@@ -0,0 +1,24 @@
++(* Bug in transformation of arguments which are curried functions.  It is not
++   safe to transform "f" in the argument to "bar".  Although it is curried
++   the application to the first argument "()" is not immediately followed
++   by the application to the second. *)
++
++local
++    val r = ref 0
++in
++    (* Foo should be called exactly once *)
++    fun foo () = (r:= !r+1; fn i => i)
++
++    fun checkOnce () = if !r = 1 then () else raise Fail "bad"
++end;
++
++fun bar f = let val r = f() in (r 1; r 2; List.map r [1, 2, 3]) end;
++
++bar foo;
++
++checkOnce();
++
++exception A and B and C;
++fun rA () = raise A and rB () = raise B;
++fun h (f, g) = let val a = f() in g(); a () end;
++h(rA, rB) handle A => ();
+
+Property changes on: polyml/Tests/Succeed/Test146.ML
+___________________________________________________________________
+Added: svn:eol-style
+## -0,0 +1 ##
++native
+\ No newline at end of property
+Index: polyml/Tests/Succeed/Test147.ML
+===================================================================
+--- polyml/Tests/Succeed/Test147.ML	(revision 0)
++++ polyml/Tests/Succeed/Test147.ML	(revision 1875)
+@@ -0,0 +1,31 @@
++(* Bug in optimiser transformation.  A function argument that returns a tuple
++   can be transformed to take a container but only if it is not curried. *)
++
++(* Cut down example from Isabelle that caused an internal error exception. *)
++
++fun one _ [] = raise Fail "bad"
++  | one pred (x :: xs) =
++      if pred x then (x, xs) else raise Fail "bad";
++
++fun foo (scan, f) xs = let val (x, y) = scan xs in (f x, y) end;
++  
++fun bar (scan1, scan2) xs =
++  let
++    val (x, ys) = scan1 xs;
++    val (y, zs) = scan2 x ys;
++  in ((x, y), zs) end;
++
++fun bub (scan1, scan2) = foo(bar(scan1, (fn _ => scan2)), op ^);
++
++val qqq: string list -> string * int = bub(one (fn _ => raise Match), (foo((fn _ => raise Match), String.concat)));
++
++(* Further example - This caused a segfault. *)
++
++PolyML.Compiler.maxInlineSize := 1;
++fun f g = let val (x,y) = g 1 2 in x+y end;
++
++fun r (x, y, z) = fn _ => (x, y+z);
++
++val h: int-> int*int = r (4,5,6);
++
++f (fn _ => h);
+
+Property changes on: polyml/Tests/Succeed/Test147.ML
+___________________________________________________________________
+Added: svn:eol-style
+## -0,0 +1 ##
++native
+\ No newline at end of property

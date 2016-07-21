@@ -1,0 +1,96 @@
+From e11815bb7f0656f39e122073e0e3284ec7f5d021 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 29 Mar 2016 23:35:44 -0400
+Subject: [PATCH] libsandbox: fix symtab walking with some ELFs
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The strtab assumption works if there is no SysV hash table.
+Add logic to handle that scenario.
+
+URL: https://bugs.gentoo.org/578524
+Reported-by: Toralf Förster <toralf.foerster@gmx.de>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/wrapper-funcs/__wrapper_exec.c | 30 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/libsandbox/wrapper-funcs/__wrapper_exec.c b/libsandbox/wrapper-funcs/__wrapper_exec.c
+index f7f51ab..d372366 100644
+--- a/libsandbox/wrapper-funcs/__wrapper_exec.c
++++ b/libsandbox/wrapper-funcs/__wrapper_exec.c
+@@ -83,10 +83,10 @@ static bool sb_check_exec(const char *filename, char *const argv[])
+ ({ \
+ 	Elf##n##_Ehdr *ehdr = (void *)elf; \
+ 	Elf##n##_Phdr *phdr = (void *)(elf + ehdr->e_phoff); \
+-	Elf##n##_Addr vaddr, filesz, vsym = 0, vstr = 0; \
+-	Elf##n##_Off offset, symoff = 0, stroff = 0; \
++	Elf##n##_Addr vaddr, filesz, vsym = 0, vstr = 0, vhash = 0; \
++	Elf##n##_Off offset, symoff = 0, stroff = 0, hashoff = 0; \
+ 	Elf##n##_Dyn *dyn; \
+-	Elf##n##_Sym *sym; \
++	Elf##n##_Sym *sym, *symend; \
+ 	uint##n##_t ent_size = 0, str_size = 0; \
+ 	bool dynamic = false; \
+ 	size_t i; \
+@@ -106,6 +106,7 @@ static bool sb_check_exec(const char *filename, char *const argv[])
+ 				case DT_SYMENT: ent_size = dyn->d_un.d_val; break; \
+ 				case DT_STRTAB: vstr = dyn->d_un.d_val; break; \
+ 				case DT_STRSZ:  str_size = dyn->d_un.d_val; break; \
++				case DT_HASH:   vhash = dyn->d_un.d_val; break; \
+ 				} \
+ 				++dyn; \
+ 			} \
+@@ -123,6 +124,8 @@ static bool sb_check_exec(const char *filename, char *const argv[])
+ 				symoff = offset + (vsym - vaddr); \
+ 			if (vstr >= vaddr && vstr < vaddr + filesz) \
+ 				stroff = offset + (vstr - vaddr); \
++			if (vhash >= vaddr && vhash < vaddr + filesz) \
++				hashoff = offset + (vhash - vaddr); \
+ 		} \
+ 		\
+ 		/* Finally walk the symbol table.  This should generally be fast as \
+@@ -130,18 +133,20 @@ static bool sb_check_exec(const char *filename, char *const argv[])
+ 		 * out there do not export any symbols at all. \
+ 		 */ \
+ 		if (symoff && stroff) { \
+-			sym = (void *)(elf + symoff); \
++			/* Hash entries are always 32-bits. */ \
++			uint32_t *hashes = (void *)(elf + hashoff); \
+ 			/* Nowhere is the # of symbols recorded, or the size of the symbol \
+-			 * table.  Instead, we do what glibc does: assume that the string \
+-			 * table always follows the symbol table.  This seems like a poor \
+-			 * assumption to make, but glibc has gotten by this long.  We could \
+-			 * rely on DT_HASH and walking all the buckets to find the largest \
+-			 * symbol index, but that's also a bit hacky. \
++			 * table.  Instead, we do what glibc does: use the sysv hash table \
++			 * if it exists, else assume that the string table always directly \
++			 * follows the symbol table.  This seems like a poor assumption to \
++			 * make, but glibc has gotten by this long. \
+ 			 * \
+ 			 * We don't sanity check the ranges here as you aren't executing \
+ 			 * corrupt programs in the sandbox. \
+ 			 */ \
+-			for (i = 0; i < (vstr - vsym) / ent_size; ++i) { \
++			sym = (void *)(elf + symoff); \
++			symend = vhash ? (sym + hashes[1]) : (void *)(elf + stroff); \
++			while (sym < symend) { \
+ 				char *symname = (void *)(elf + stroff + sym->st_name); \
+ 				if (ELF##n##_ST_VISIBILITY(sym->st_other) == STV_DEFAULT && \
+ 				    sym->st_shndx != SHN_UNDEF && sym->st_shndx < SHN_LORESERVE && \
+@@ -149,9 +154,8 @@ static bool sb_check_exec(const char *filename, char *const argv[])
+ 				    /* Minor optimization to avoid strcmp. */ \
+ 				    symname[0] == '_' && symname[1] == '_') { \
+ 					/* Blacklist internal C library symbols. */ \
+-					size_t j; \
+-					for (j = 0; j < ARRAY_SIZE(libc_alloc_syms); ++j) \
+-						if (!strcmp(symname, libc_alloc_syms[j])) { \
++					for (i = 0; i < ARRAY_SIZE(libc_alloc_syms); ++i) \
++						if (!strcmp(symname, libc_alloc_syms[i])) { \
+ 							run_in_process = false; \
+ 							goto use_trace; \
+ 						} \
+-- 
+2.7.4
+

@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/555094
+
+patch by Gokturk Yuksek <gokturk@binghamton.edu>
+
+--- rngd.8.in
++++ rngd.8.in
+@@ -66,7 +66,9 @@
+ .TP
+ \fB\-W\fI n\fR, \fB\-\-fill\-watermark=\fInnn\fR
+ Once we start doing it, feed entropy to \fIrandom-device\fR until at least
+-\fIfill-watermark\fR bits of entropy are available in its entropy pool (default: 2048).
++\fIfill-watermark\fR bits of entropy are available in its entropy pool.
++By default, this value is set to 75% of the entropy pool size or 2048 bits
++if the entropy pool size couldn't be determined.
+ Setting this too high will cause \fIrngd\fR to dominate the contents of the
+ entropy pool.  Low values will hurt system performance during entropy 
+ starves.  Do not set \fIfill-watermark\fR above the size of the

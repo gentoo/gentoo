@@ -1,0 +1,78 @@
+commit efe8bec33931522f60719102f53099f1796c7b75
+Author: Ben Dean-Kawamura <ben@pculture.org>
+Date:   Fri Aug 31 16:30:59 2012 -0400
+
+    Update segmenter code to not use deprecated functions
+
+diff --git a/tv/linux/miro-segmenter.c b/tv/linux/miro-segmenter.c
+index 1bfdda3..fd2a726 100644
+--- a/tv/linux/miro-segmenter.c
++++ b/tv/linux/miro-segmenter.c
+@@ -156,7 +156,7 @@ int main(int argc, char **argv)
+         exit(1);
+     }
+ 
+-    ret = av_open_input_file(&ic, input, ifmt, 0, NULL);
++    ret = avformat_open_input(&ic, input, ifmt, 0);
+     if (ret != 0) {
+         fprintf(stderr, "Could not open input file, make sure it is an mpegts file: %d\n", ret);
+         exit(1);
+@@ -215,12 +215,7 @@ int main(int argc, char **argv)
+         }
+     }
+ 
+-    if (av_set_parameters(oc, NULL) < 0) {
+-        fprintf(stderr, "Invalid output format parameters\n");
+-        exit(1);
+-    }
+-
+-    dump_format(oc, 0, input, 1);
++    av_dump_format(oc, 0, input, 1);
+ 
+     if (video_st) {
+         codec = avcodec_find_decoder(video_st->codec->codec_id);
+@@ -233,12 +228,12 @@ int main(int argc, char **argv)
+         }
+     }
+ 
+-    if (url_fopen(&oc->pb, output_filename, URL_WRONLY) < 0) {
++    if (avio_open(&oc->pb, output_filename, AVIO_FLAG_WRITE) < 0) {
+         fprintf(stderr, "Could not open '%s'\n", output_filename);
+         exit(1);
+     }
+ 
+-    if (av_write_header(oc)) {
++    if (avformat_write_header(oc, NULL)) {
+         fprintf(stderr, "Could not write mpegts header to first output file\n");
+ 
+         exit(1);
+@@ -274,10 +269,10 @@ int main(int argc, char **argv)
+         }
+ 
+         if (segment_time - prev_segment_time >= segment_duration) {
+-            put_flush_packet(oc->pb);
+-            url_fclose(oc->pb);
++            avio_flush(oc->pb);
++            avio_close(oc->pb);
+ 
+-            if (url_fopen(&oc->pb, output_filename, URL_WRONLY) < 0) {
++            if (avio_open(&oc->pb, output_filename, AVIO_FLAG_WRITE) < 0) {
+                 fprintf(stderr, "Could not open '%s'\n", output_filename);
+                 break;
+             }
+@@ -307,13 +302,13 @@ int main(int argc, char **argv)
+         av_freep(&oc->streams[i]);
+     }
+ 
+-    url_fclose(oc->pb);
++    avio_close(oc->pb);
+     av_free(oc);
+ 
+     /* End-of-transcode marker. */
+     {
+         struct sockaddr_in sockaddr;
+-	int rc, s;
++        int rc, s;
+ 
+         memset(&sockaddr, 0, sizeof(sockaddr));
+         sockaddr.sin_family = AF_INET;

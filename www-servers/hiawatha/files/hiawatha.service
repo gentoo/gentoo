@@ -1,0 +1,9 @@
+[Unit]
+Description=Hiawatha webserver
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/hiawatha -d
+
+[Install]
+WantedBy=multi-user.target

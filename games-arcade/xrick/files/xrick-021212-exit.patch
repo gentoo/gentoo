@@ -1,0 +1,23 @@
+diff -ur xrick-021212/src/sysjoy.c xrick-021212.patched/src/sysjoy.c
+--- xrick-021212/src/sysjoy.c	2010-10-23 00:33:33.000000000 +0400
++++ xrick-021212.patched/src/sysjoy.c	2010-10-23 00:42:25.000000000 +0400
+@@ -56,6 +56,7 @@
+ {
+   if (j)
+     SDL_JoystickClose(j);
++  j = NULL;
+ }
+ 
+ #endif /* ENABLE_JOYSTICK */
+diff -ur xrick-021212/src/xrick.c xrick-021212.patched/src/xrick.c
+--- xrick-021212/src/xrick.c	2010-10-23 00:33:33.000000000 +0400
++++ xrick-021212.patched/src/xrick.c	2010-10-23 00:40:47.000000000 +0400
+@@ -29,7 +29,7 @@
+ 		data_setpath("/usr/games/lib/xrick/data.zip");
+ 	game_run();
+ 	data_closepath();
+-	sys_shutdown();
++    /* sys_shutdown is called via atexit */
+ 	return 0;
+ }
+ 

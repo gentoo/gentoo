@@ -1,0 +1,12 @@
+diff -ru mhash-0.9.9.9.orig/src/keygen_test.c mhash-0.9.9.9/src/keygen_test.c
+--- mhash-0.9.9.9.orig/src/keygen_test.c	2007-02-21 07:39:08.000000000 +0100
++++ mhash-0.9.9.9/src/keygen_test.c	2009-12-04 01:29:16.000000000 +0100
+@@ -121,8 +121,6 @@
+ 	
+ 	mhash_keygen_ext(KEYGEN_S2K_SALTED, data, key, keysize, password, passlen);
+ 
+-	mutils_memset(tmp, 0, keysize * 2);
+-
+ 	tmp = mutils_asciify(key, keysize);
+ 
+ 	result = mutils_strcmp((mutils_word8 *) KEY2, tmp);

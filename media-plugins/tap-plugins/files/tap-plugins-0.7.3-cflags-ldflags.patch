@@ -1,0 +1,27 @@
+Index: tap-plugins-0.7.3/Makefile
+===================================================================
+--- tap-plugins-0.7.3.orig/Makefile
++++ tap-plugins-0.7.3/Makefile
+@@ -35,8 +35,11 @@ INSTALL_LRDF_DIR	=	/usr/local/share/lads
+ # GENERAL
+ 
+ CC	= gcc
+-CFLAGS	= -I. -O3 -Wall -fomit-frame-pointer -fstrength-reduce -funroll-loops -ffast-math -c -fPIC -DPIC
+-LDFLAGS	= -nostartfiles -shared -Wl,-Bsymbolic -lc -lm -lrt
++OPT_CFLAGS = -O3 -fomit-frame-pointer -fstrength-reduce -funroll-loops -ffast-math 
++CFLAGS	= -I. -Wall $(OPT_CFLAGS) -c -fPIC -DPIC
++EXTRA_LDFLAGS  = 
++LDFLAGS	= -nostartfiles -shared -Wl,-Bsymbolic  $(EXTRA_LDFLAGS)
++LIBADD = -lc -lm -lrt
+ MODULES = $(wildcard *.c)
+ 
+ all: $(MODULES:%.c=%.so)
+@@ -51,7 +54,7 @@ tap_dynamics_st.o: tap_dynamics_presets.
+ 	$(CC) $(CFLAGS) $< -o $@
+ 
+ %.so: %.o
+-	$(CC) -o $@ $< $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $< $(LIBADD)
+ 
+ # OTHER TARGETS
+ 

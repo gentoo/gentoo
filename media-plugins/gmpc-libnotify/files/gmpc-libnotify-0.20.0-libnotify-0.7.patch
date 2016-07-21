@@ -1,0 +1,37 @@
+--- src/plugin.c
++++ src/plugin.c
+@@ -28,6 +28,10 @@
+ #include <gmpc/misc.h>
+ #include <config.h>
+ 
++#ifndef NOTIFY_CHECK_VERSION
++#define NOTIFY_CHECK_VERSION(x,y,z) 0
++#endif
++
+ #define LOG_DOMAIN "LibNotifyPlugin"
+ 
+ extern GtkStatusIcon *tray_icon2_gsi;
+@@ -149,15 +153,23 @@
+ 		if(not == NULL)
+ 		{
+ 			//            notify_notification_close(not, NULL);
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++			not = notify_notification_new(summary, buffer,NULL);
++#else
+ 			not = notify_notification_new(summary, buffer,NULL, NULL);
++#endif
+ 		}
+ 		else{
+ 			notify_notification_update(not, summary, buffer, NULL);
+ 		}
+ 		notify_notification_set_urgency(not, NOTIFY_URGENCY_LOW);
+ 
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++		/* notify_notification_attach_to_status_icon was removed */
++#else
+ 		if(cfg_get_single_value_as_int_with_default(config, "libnotify-plugin", "attach-to-tray", TRUE))
+ 			notify_notification_attach_to_status_icon(not, tray_icon2_gsi);
++#endif
+ 
+ 		g_free(summary);
+ 		/* Add the song to the widget */

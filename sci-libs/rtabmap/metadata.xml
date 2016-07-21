@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <use>
+    <flag name="openni2">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI2</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">introlab/rtabmap</remote-id>
+  </upstream>
+</pkgmetadata>

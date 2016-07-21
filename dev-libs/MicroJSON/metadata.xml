@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>gorelov@grigory.info</email>
+    <name>Gorelov Grigory</name>
+    <description>Maintainer and upstream developer.</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    Small and simple to use JSON generation and parsing library.
+  </longdescription>
+</pkgmetadata>

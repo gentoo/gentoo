@@ -1,0 +1,66 @@
+From 4be412db53ce6342103836163c7b809f36d88a03 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sun, 26 Jul 2015 17:29:49 +0200
+Subject: [PATCH] set cmake_min_req to 2.8.9 to match kdelibs4 policy; fix
+ build accordingly
+
+(working around the lack of ${KDE4_KMEDIAPLAYER_LIBS})
+
+CCMAIL: kde-buildsystem@kde.org
+---
+ CMakeLists.txt     | 1 +
+ src/CMakeLists.txt | 8 +++++---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 43d78ab..ff94308 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,4 @@
++cmake_minimum_required(VERSION 2.8.9)
+ project(kmplayer)
+ 
+ cmake_policy(VERSION 2.6)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 01180df..ac230ef 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -13,7 +13,7 @@ IF (KMPLAYER_WITH_CAIRO)
+     MESSAGE("have cairo cflags:${optionalCFlags} ldflags:${optionalLinkFlags}")
+ endif (KMPLAYER_WITH_CAIRO)
+ 
+-add_definitions(-DQT3_SUPPORT -DKDE3_SUPPORT -DKMPLAYER_VERSION_STRING=\\"${KMPLAYER_VERSION_STRING}\\")
++add_definitions(-DQT3_SUPPORT -DKDE3_SUPPORT -DKMPLAYER_VERSION_STRING="\\\"${KMPLAYER_VERSION_STRING}\\\"")
+ 
+ ADD_DEFINITIONS(${CAIROCFlags})
+ 
+@@ -73,6 +73,7 @@ SET_TARGET_PROPERTIES(kmplayercommon PROPERTIES COMPILE_FLAGS
+     "${CAIROCflags} ${GLibDBusCflags}")
+ 
+ target_link_libraries(kmplayercommon
++   LINK_PRIVATE
+   ${CAIROLinkFlags}
+   ${GLibDBusLinkFlags}
+   ${KDE4_KPARTS_LIBS}
+@@ -81,7 +82,7 @@ target_link_libraries(kmplayercommon
+   ${X11_X11_LIB}
+   ${EXPAT_LIBRARIES}
+   ${KDE4_SOLID_LIBS}
+-  kmediaplayer
++  ${KDE4_TARGET_PREFIX}kmediaplayer
+ )
+ 
+ install(TARGETS kmplayercommon ${INSTALL_TARGETS_DEFAULT_ARGS} )
+@@ -93,7 +94,8 @@ set(kmplayerpart_SRCS kmplayer_part.cpp)
+ kde4_add_plugin(kmplayerpart WITH_PREFIX ${kmplayerpart_SRCS})
+ 
+ target_link_libraries(kmplayerpart
+-  kmplayercommon kmediaplayer
++  kmplayercommon
++  ${KDE4_TARGET_PREFIX}kmediaplayer
+   ${KDE4_KPARTS_LIBS}
+   ${KDE4_KDEUI_LIBS}
+   ${QT_QT3SUPPORT_LIBRARY}
+-- 
+2.4.6
+

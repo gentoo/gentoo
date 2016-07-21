@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7178d25..934f38f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,6 +119,18 @@ else(${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.${CMAKE_PATCH_VERSION} VERSIO
+   message("-- CMake >= 2.8.8 is needed to enable Qt5")
+ endif(${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.${CMAKE_PATCH_VERSION} VERSION_GREATER 2.8.7)
+ 
++#
++# Ugly workaround: Manually patch library paths for Qt4 and Qt5:
++#
++IF( "${CMAKE_CXX_FLAGS}" MATCHES "-m32")
++  GET_CMAKE_PROPERTY(_res VARIABLES)
++  FOREACH(_var ${_res})
++    IF(_var MATCHES "^QT" AND ${_var} MATCHES "lib64")
++      STRING(REPLACE "lib64" "lib32" ${_var} "${${_var}}")
++    ENDIF()
++  ENDFOREACH()
++ENDIF()
++
+ macro_optional_find_package(Cairo ${CAIRO_VERSION})
+ if(CAIRO_FOUND)
+   set(HAVE_CAIRO ${CAIRO_FOUND})

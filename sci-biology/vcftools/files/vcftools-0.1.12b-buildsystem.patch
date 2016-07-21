@@ -1,0 +1,53 @@
+diff -ur vcftools_0.1.12b.orig/cpp/Makefile vcftools_0.1.12b/cpp/Makefile
+--- vcftools_0.1.12b.orig/cpp/Makefile	2014-08-01 21:11:22.000000000 +0200
++++ vcftools_0.1.12b/cpp/Makefile	2015-04-03 17:24:38.830781049 +0200
+@@ -3,8 +3,8 @@
+ # ($Revision: 1.1 $)
+ 
+ # Compiler
+-CC = gcc
+-CPP = g++
++CC ?= gcc
++CPP ?= g++
+ # Output executable
+ EXECUTABLE = vcftools
+ # Flag used to turn on compilation of PCA routines
+@@ -12,9 +12,9 @@
+ 	VCFTOOLS_PCA = 0
+ endif
+ # Compiler flags
+-CFLAGS = -O2 -m64
++CFLAGS ?= -O2 -m64
+ #CFLAGS = -Wall -O2 -pg -m64
+-CPPFLAGS = -O2 -D_FILE_OFFSET_BITS=64 
++CPPFLAGS ?= -O2 -D_FILE_OFFSET_BITS=64 
+ #CPPFLAGS = -O2 -Wall -pg -D_FILE_OFFSET_BITS=64
+ # Included libraries (zlib)
+ LIB = -lz 
+@@ -29,13 +29,13 @@
+ 	# Define flag for PCA routine compilation
+ 	CPPFLAGS += -DVCFTOOLS_PCA
+ 	# Add LAPACK library
+-	LIB += -llapack	
++	LIB += `$(PKG_CONFIG) --libs lapack`
+ 	# Add PCA source code
+ 	OBJS+= dgeev.o
+ endif
+ 
+ vcftools: $(OBJS)
+-	$(CPP) $(CPPFLAGS) $(OBJS) -o vcftools $(LIB)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) -o vcftools $(LIB)
+ ifdef BINDIR
+ 	cp $(CURDIR)/$@ $(BINDIR)/$@
+ endif
+@@ -47,8 +47,8 @@
+ -include $(OBJS:.o=.d)
+ 
+ %.o: %.cpp
+-	$(CPP) -c $(CPPFLAGS) $*.cpp -o $*.o
+-	$(CPP) -MM $(CPPFLAGS) $*.cpp > $*.d
++	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $*.cpp -o $*.o
++	$(CXX) -MM $(CXXFLAGS) $(CPPFLAGS)  $*.cpp > $*.d
+ 
+ # remove compilation products
+ clean:

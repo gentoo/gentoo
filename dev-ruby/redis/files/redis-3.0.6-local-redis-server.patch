@@ -1,0 +1,69 @@
+--- a/Rakefile	1970-01-01 01:00:00.000000000 +0100
++++ b/Rakefile	2014-01-04 00:19:25.206135726 +0000
+@@ -2,15 +2,12 @@
+ require 'rubygems/package_task'
+ require 'rake/testtask'
+ 
+-ENV["REDIS_BRANCH"] ||= "unstable"
+-
+ $:.unshift File.join(File.dirname(__FILE__), 'lib')
+ require 'redis/version'
+ 
+ REDIS_DIR = File.expand_path(File.join("..", "test"), __FILE__)
+ REDIS_CNF = File.join(REDIS_DIR, "test.conf")
+ REDIS_PID = File.join(REDIS_DIR, "db", "redis.pid")
+-BINARY = "tmp/redis-#{ENV["REDIS_BRANCH"]}/src/redis-server"
+ 
+ task :default => :run
+ 
+@@ -18,9 +15,7 @@
+ task :run => [:start, :test, :stop]
+ 
+ desc "Start the Redis server"
+-task :start => BINARY do
+-  sh "#{BINARY} --version"
+-
++task :start do
+   redis_running = \
+   begin
+     File.exists?(REDIS_PID) && Process.kill(0, File.read(REDIS_PID).to_i)
+@@ -30,8 +25,14 @@
+   end
+ 
+   unless redis_running
+-    unless system("#{BINARY} #{REDIS_CNF}")
+-      abort "could not start redis-server"
++    unless system("which redis-server")
++      STDERR.puts "redis-server not in PATH"
++      exit 1
++    end
++
++    unless system("redis-server #{REDIS_CNF}")
++      STDERR.puts "could not start redis-server"
++      exit 1
+     end
+   end
+ end
+@@ -44,21 +45,9 @@
+   end
+ end
+ 
+-file BINARY do
+-  branch = ENV.fetch("REDIS_BRANCH")
+-
+-  sh <<-SH
+-  mkdir -p tmp;
+-  cd tmp;
+-  wget https://github.com/antirez/redis/archive/#{branch}.tar.gz -O #{branch}.tar.gz;
+-  tar xf #{branch}.tar.gz;
+-  cd redis-#{branch};
+-  make
+-  SH
+-end
+-
+ Rake::TestTask.new do |t|
+   t.options = "-v"
++  t.libs << "test"
+   t.test_files = FileList["test/*_test.rb"]
+ end
+ 

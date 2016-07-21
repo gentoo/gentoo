@@ -1,0 +1,92 @@
+gcc-4.7 compile fix
+https://bugs.gentoo.org/show_bug.cgi?id=424101
+
+signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2012/30/06)
+diff -Naur amarok-0.0.2.orig/Sockets.h amarok-0.0.2/Sockets.h
+--- amarok-0.0.2.orig/Sockets.h	2012-06-30 17:40:27.000000000 +0200
++++ amarok-0.0.2/Sockets.h	2012-06-30 17:43:21.000000000 +0200
+@@ -182,8 +182,8 @@
+ 	{
+ 		if (this->gptr() == NULL)
+ 		{
+-			setg(s, s + n, s + n);
+-			setp(s, s + n);
++			this->setg(s, s + n, s + n);
++			this->setp(s, s + n);
+ 			inbuf_ = s;
+ 			outbuf_ = s;
+ 			bufsize_ = n;
+@@ -215,9 +215,9 @@
+ 		{
+ 			_flush();
+ 		}
+-		setp(outbuf_, outbuf_ + bufsize_);
++		this->setp(outbuf_, outbuf_ + bufsize_);
+ 		if (c != traits::eof())
+-			sputc(traits::to_char_type(c));
++			this->sputc(traits::to_char_type(c));
+ 		return 0;
+ 	}
+ 
+@@ -225,7 +225,7 @@
+ 	{
+ 		// just flush the put area
+ 		_flush();
+-		setp(outbuf_, outbuf_ + bufsize_);
++		this->setp(outbuf_, outbuf_ + bufsize_);
+ 		return 0;
+ 	}
+ 
+@@ -256,7 +256,7 @@
+ 			return traits::eof();
+ 
+ 		size_t totalbytes = readn + remained_;
+-		setg(inbuf_, inbuf_,
++		this->setg(inbuf_, inbuf_,
+ 			inbuf_ + totalbytes / sizeof(char_type));
+ 
+ 		remained_ = totalbytes % sizeof(char_type);
+diff -Naur amarok-0.0.2.orig/vdramgw/Sockets.h amarok-0.0.2/vdramgw/Sockets.h
+--- amarok-0.0.2.orig/vdramgw/Sockets.h	2012-06-30 17:40:27.000000000 +0200
++++ amarok-0.0.2/vdramgw/Sockets.h	2012-06-30 17:41:52.000000000 +0200
+@@ -182,8 +182,8 @@
+ 	{
+ 		if (this->gptr() == NULL)
+ 		{
+-			setg(s, s + n, s + n);
+-			setp(s, s + n);
++			this->setg(s, s + n, s + n);
++			this->setp(s, s + n);
+ 			inbuf_ = s;
+ 			outbuf_ = s;
+ 			bufsize_ = n;
+@@ -215,9 +215,9 @@
+ 		{
+ 			_flush();
+ 		}
+-		setp(outbuf_, outbuf_ + bufsize_);
++		this->setp(outbuf_, outbuf_ + bufsize_);
+ 		if (c != traits::eof())
+-			sputc(traits::to_char_type(c));
++			this->sputc(traits::to_char_type(c));
+ 		return 0;
+ 	}
+ 
+@@ -225,7 +225,7 @@
+ 	{
+ 		// just flush the put area
+ 		_flush();
+-		setp(outbuf_, outbuf_ + bufsize_);
++		this->setp(outbuf_, outbuf_ + bufsize_);
+ 		return 0;
+ 	}
+ 
+@@ -256,7 +256,7 @@
+ 			return traits::eof();
+ 
+ 		size_t totalbytes = readn + remained_;
+-		setg(inbuf_, inbuf_,
++		this->setg(inbuf_, inbuf_,
+ 			inbuf_ + totalbytes / sizeof(char_type));
+ 
+ 		remained_ = totalbytes % sizeof(char_type);

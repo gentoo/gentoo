@@ -1,0 +1,58 @@
+Sounds hackish but that's the only way I found to force it to generate the
+functions in the .cxx files with fluid 1.3...
+
+Index: ZynAddSubFX-2.4.1/src/UI/BankUI.fl
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/src/UI/BankUI.fl
++++ ZynAddSubFX-2.4.1/src/UI/BankUI.fl
+@@ -32,7 +32,7 @@ decl {\#include "../Misc/Config.h"} {pub
+ 
+ class BankProcess_ {} {
+   Function {process()} {open return_type {virtual void}
+-  } {}
++  } {code{;}}
+   decl {Bank *bank;} {public
+   }
+ } 
+Index: ZynAddSubFX-2.4.1/src/UI/OscilGenUI.fl
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/src/UI/OscilGenUI.fl
++++ ZynAddSubFX-2.4.1/src/UI/OscilGenUI.fl
+@@ -129,7 +129,7 @@ delete [] spc;} {selected
+ 
+ class PSlider {: {public Fl_Slider}
+ } {
+-  Function {PSlider(int x,int y, int w, int h, const char *label=0):Fl_Slider(x,y,w,h,label)} {} {}
++  Function {PSlider(int x,int y, int w, int h, const char *label=0):Fl_Slider(x,y,w,h,label)} {} {code{;}}
+   Function {handle(int event)} {return_type int
+   } {
+     code {int X=x(),Y=y(),W=w(),H=h();
+Index: ZynAddSubFX-2.4.1/src/UI/PartUI.fl
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/src/UI/PartUI.fl
++++ ZynAddSubFX-2.4.1/src/UI/PartUI.fl
+@@ -85,7 +85,7 @@ end();} {}
+ 
+ class PartUI_ {} {
+   Function {showparameters(int kititem,int engine)} {return_type virtual
+-  } {}
++  } {code{;}}
+ } 
+ 
+ class PartKitItem {: {public Fl_Group}
+Index: ZynAddSubFX-2.4.1/src/UI/PresetsUI.fl
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/src/UI/PresetsUI.fl
++++ ZynAddSubFX-2.4.1/src/UI/PresetsUI.fl
+@@ -18,9 +18,9 @@ decl {\#include "../Params/Presets.h"} {
+ 
+ class PresetsUI_ {} {
+   Function {refresh()} {open return_type {virtual void}
+-  } {}
++  } {code{;}}
+   Function {~PresetsUI_()} {open return_type virtual
+-  } {}
++  } {code{;}}
+ } 
+ 
+ class PresetsUI {} {

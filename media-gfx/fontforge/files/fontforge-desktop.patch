@@ -1,0 +1,16 @@
+diff --git a/Packaging/fontforge.desktop b/Packaging/fontforge.desktop
+index a66b28b..18e049c 100644
+--- a/Packaging/fontforge.desktop
++++ b/Packaging/fontforge.desktop
+@@ -8,9 +8,8 @@ Comment[ru]=Редактор шрифтов
+ Comment[fr]=Un constructeur des polices
+ Comment[zh_TW]=FontForge 描邊字型編輯器
+ Exec=fontforge
+-Icon=fontforge.png
++Icon=fontforge
+ Terminal=false
+ Type=Application
+-Categories=Application;Graphics;
+-Encoding=UTF-8
++Categories=Graphics;
+ MimeType=application/vnd.font-fontforge-sfd;application/x-font-ttf;application/x-font-otf;application/x-font-type1;application/x-font-bdf;application/x-font-pcf;application/x-font-tex;

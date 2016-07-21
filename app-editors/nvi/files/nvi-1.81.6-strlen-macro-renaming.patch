@@ -1,0 +1,499 @@
+Created by: Karl Hakimian 
+Added by: Jesus Rivero <neurogeek@gentoo.org>
+Added on: Feb 18, 2015
+diff -rupN nvi-1.81.6.orig/common/api.c nvi-1.81.6/common/api.c
+--- nvi-1.81.6.orig/common/api.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/common/api.c	2015-02-17 11:04:50.199111784 -0800
+@@ -423,7 +423,7 @@ api_opts_get(SCR *sp, CHAR_T *name, char
+ 	switch (op->type) {
+ 	case OPT_0BOOL:
+ 	case OPT_1BOOL:
+-		MALLOC_RET(sp, *value, char *, STRLEN(op->name) + 2 + 1);
++		MALLOC_RET(sp, *value, char *, NVI_STRLEN(op->name) + 2 + 1);
+ 		(void)sprintf(*value,
+ 		    "%s"WS, O_ISSET(sp, offset) ? "" : "no", op->name);
+ 		if (boolvalue != NULL)
+diff -rupN nvi-1.81.6.orig/common/msg.c nvi-1.81.6/common/msg.c
+--- nvi-1.81.6.orig/common/msg.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/common/msg.c	2015-02-17 11:04:50.203891722 -0800
+@@ -378,7 +378,7 @@ msgq_wstr(SCR *sp, mtype_t mtype, CHAR_T
+ 		msgq(sp, mtype, fmt);
+ 		return;
+ 	}
+-	INT2CHAR(sp, str, STRLEN(str) + 1, nstr, nlen);
++	INT2CHAR(sp, str, NVI_STRLEN(str) + 1, nstr, nlen);
+ 	msgq_str(sp, mtype, nstr, fmt);
+ }
+ 
+diff -rupN nvi-1.81.6.orig/common/multibyte.h nvi-1.81.6/common/multibyte.h
+--- nvi-1.81.6.orig/common/multibyte.h	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/common/multibyte.h	2015-02-17 11:04:50.204262910 -0800
+@@ -12,7 +12,7 @@ typedef	wchar_t		CHAR_T;
+ typedef	u_int		UCHAR_T;
+ #define RCHAR_BIT	24
+ 
+-#define STRLEN		wcslen
++#define NVI_STRLEN		wcslen
+ #define STRTOL		wcstol
+ #define STRTOUL		wcstoul
+ #define SPRINTF		swprintf
+@@ -31,7 +31,7 @@ typedef	u_char		CHAR_T;
+ typedef	u_char		UCHAR_T;
+ #define RCHAR_BIT	CHAR_BIT
+ 
+-#define STRLEN		strlen
++#define NVI_STRLEN		strlen
+ #define STRTOL		strtol
+ #define STRTOUL		strtoul
+ #define SPRINTF		snprintf
+diff -rupN nvi-1.81.6.orig/common/options.c nvi-1.81.6/common/options.c
+--- nvi-1.81.6.orig/common/options.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/common/options.c	2015-02-17 11:04:50.195900457 -0800
+@@ -315,7 +315,7 @@ opts_init(SCR *sp, int *oargs)
+ 
+ 	/* Set numeric and string default values. */
+ #define	OI(indx, str) {							\
+-	a.len = STRLEN(str);						\
++	a.len = NVI_STRLEN(str);						\
+ 	if ((CHAR_T*)str != b2)	  /* GCC puts strings in text-space. */	\
+ 		(void)MEMCPY(b2, str, a.len+1);				\
+ 	if (opts_set(sp, argv, NULL)) {					\
+@@ -620,10 +620,10 @@ opts_set(SCR *sp, ARGS **argv, char *usa
+ 				goto badnum;
+ 			if ((nret =
+ 			    nget_uslong(sp, &value, sep, &endp, 10)) != NUM_OK) {
+-				INT2CHAR(sp, name, STRLEN(name) + 1, 
++				INT2CHAR(sp, name, NVI_STRLEN(name) + 1, 
+ 					     np, nlen);
+ 				p2 = msg_print(sp, np, &nf);
+-				INT2CHAR(sp, sep, STRLEN(sep) + 1, 
++				INT2CHAR(sp, sep, NVI_STRLEN(sep) + 1, 
+ 					     np, nlen);
+ 				t2 = msg_print(sp, np, &nf2);
+ 				switch (nret) {
+@@ -647,10 +647,10 @@ opts_set(SCR *sp, ARGS **argv, char *usa
+ 				break;
+ 			}
+ 			if (*endp && !ISBLANK(*endp)) {
+-badnum:				INT2CHAR(sp, name, STRLEN(name) + 1, 
++badnum:				INT2CHAR(sp, name, NVI_STRLEN(name) + 1, 
+ 					     np, nlen);
+ 				p2 = msg_print(sp, np, &nf);
+-				INT2CHAR(sp, sep, STRLEN(sep) + 1, 
++				INT2CHAR(sp, sep, NVI_STRLEN(sep) + 1, 
+ 					     np, nlen);
+ 				t2 = msg_print(sp, np, &nf2);
+ 				msgq(sp, M_ERR,
+@@ -680,7 +680,7 @@ badnum:				INT2CHAR(sp, name, STRLEN(nam
+ 				break;
+ 
+ 			/* Report to subsystems. */
+-			INT2CHAR(sp, sep, STRLEN(sep) + 1, np, nlen);
++			INT2CHAR(sp, sep, NVI_STRLEN(sep) + 1, np, nlen);
+ 			if (op->func != NULL &&
+ 			    op->func(sp, spo, np, &value) ||
+ 			    ex_optchange(sp, offset, np, &value) ||
+@@ -712,7 +712,7 @@ badnum:				INT2CHAR(sp, name, STRLEN(nam
+ 			 * Do nothing if the value is unchanged, the underlying
+ 			 * functions can be expensive.
+ 			 */
+-			INT2CHAR(sp, sep, STRLEN(sep) + 1, np, nlen);
++			INT2CHAR(sp, sep, NVI_STRLEN(sep) + 1, np, nlen);
+ 			if (!F_ISSET(op, OPT_ALWAYS) &&
+ 			    O_STR(sp, offset) != NULL &&
+ 			    !strcmp(O_STR(sp, offset), np))
+@@ -879,7 +879,7 @@ opts_dump(SCR *sp, enum optdisp type)
+ 		}
+ 		F_CLR(&sp->opts[cnt], OPT_SELECTED);
+ 
+-		curlen = STRLEN(op->name);
++		curlen = NVI_STRLEN(op->name);
+ 		switch (op->type) {
+ 		case OPT_0BOOL:
+ 		case OPT_1BOOL:
+@@ -1049,7 +1049,7 @@ opts_search(CHAR_T *name)
+ 	 * Check to see if the name is the prefix of one (and only one)
+ 	 * option.  If so, return the option.
+ 	 */
+-	len = STRLEN(name);
++	len = NVI_STRLEN(name);
+ 	for (found = NULL, op = optlist; op->name != NULL; ++op) {
+ 		if (op->name[0] < name[0])
+ 			continue;
+diff -rupN nvi-1.81.6.orig/dist/tags nvi-1.81.6/dist/tags
+--- nvi-1.81.6.orig/dist/tags	2007-11-18 08:43:55.000000000 -0800
++++ nvi-1.81.6/dist/tags	2015-02-17 11:04:50.225314084 -0800
+@@ -1068,8 +1068,8 @@ SPRINTF	../common/multibyte.h	37;"	d
+ STANDARD_TAB	../common/key.h	213;"	d
+ STRCMP	../common/multibyte.h	19;"	d
+ STRCMP	../common/multibyte.h	38;"	d
+-STRLEN	../common/multibyte.h	15;"	d
+-STRLEN	../common/multibyte.h	34;"	d
++NVI_STRLEN	../common/multibyte.h	15;"	d
++NVI_STRLEN	../common/multibyte.h	34;"	d
+ STRPBRK	../common/multibyte.h	20;"	d
+ STRPBRK	../common/multibyte.h	39;"	d
+ STRSET	../common/multibyte.h	22;"	d
+diff -rupN nvi-1.81.6.orig/ex/ex_argv.c nvi-1.81.6/ex/ex_argv.c
+--- nvi-1.81.6.orig/ex/ex_argv.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_argv.c	2015-02-17 11:04:50.267171388 -0800
+@@ -217,7 +217,7 @@ argv_exp2(SCR *sp, EXCMD *excp, CHAR_T *
+ 
+ 			*p = '\0';
+ 			INT2CHAR(sp, bp + SHELLOFFSET, 
+-				 STRLEN(bp + SHELLOFFSET) + 1, np, nlen);
++				 NVI_STRLEN(bp + SHELLOFFSET) + 1, np, nlen);
+ 			d = strdup(np);
+ 			rval = argv_lexp(sp, excp, d);
+ 			free (d);
+@@ -332,7 +332,7 @@ argv_fexp(SCR *sp, EXCMD *excp, CHAR_T *
+ 				    "115|No previous command to replace \"!\"");
+ 				return (1);
+ 			}
+-			len += tlen = STRLEN(exp->lastbcomm);
++			len += tlen = NVI_STRLEN(exp->lastbcomm);
+ 			off = p - bp;
+ 			ADD_SPACE_RETW(sp, bp, blen, len);
+ 			p = bp + off;
+@@ -683,7 +683,7 @@ err:		if (ifp != NULL)
+ 		 * XXX
+ 		 * Assume that all shells have -c.
+ 		 */
+-		INT2CHAR(sp, bp, STRLEN(bp)+1, np, nlen);
++		INT2CHAR(sp, bp, NVI_STRLEN(bp)+1, np, nlen);
+ 		execl(sh_path, sh, "-c", np, (char *)NULL);
+ 		msgq_str(sp, M_SYSERR, sh_path, "118|Error: execl: %s");
+ 		_exit(127);
+diff -rupN nvi-1.81.6.orig/ex/ex_cscope.c nvi-1.81.6/ex/ex_cscope.c
+--- nvi-1.81.6.orig/ex/ex_cscope.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_cscope.c	2015-02-17 11:04:50.261539058 -0800
+@@ -140,7 +140,7 @@ ex_cscope(SCR *sp, EXCMD *cmdp)
+ 		for (; *p && isspace(*p); ++p);
+ 	}
+ 
+-	INT2CHAR(sp, cmd, STRLEN(cmd) + 1, np, nlen);
++	INT2CHAR(sp, cmd, NVI_STRLEN(cmd) + 1, np, nlen);
+ 	if ((ccp = lookup_ccmd(np)) == NULL) {
+ usage:		msgq(sp, M_ERR, "309|Use \"cscope help\" for help");
+ 		return (1);
+@@ -214,7 +214,7 @@ cscope_add(SCR *sp, EXCMD *cmdp, CHAR_T
+ 	 * >1 additional args: object, too many args.
+ 	 */
+ 	cur_argc = cmdp->argc;
+-	if (argv_exp2(sp, cmdp, dname, STRLEN(dname))) {
++	if (argv_exp2(sp, cmdp, dname, NVI_STRLEN(dname))) {
+ 		return (1);
+ 	}
+ 	if (cmdp->argc == cur_argc) {
+@@ -228,7 +228,7 @@ cscope_add(SCR *sp, EXCMD *cmdp, CHAR_T
+ 		return (1);
+ 	}
+ 
+-	INT2CHAR(sp, dname, STRLEN(dname)+1, np, nlen);
++	INT2CHAR(sp, dname, NVI_STRLEN(dname)+1, np, nlen);
+ 
+ 	/*
+ 	 * The user can specify a specific file (so they can have multiple
+@@ -471,7 +471,7 @@ cscope_find(SCR *sp, EXCMD *cmdp, CHAR_T
+ 	}
+ 
+ 	/* Create the cscope command. */
+-	INT2CHAR(sp, pattern, STRLEN(pattern) + 1, np, nlen);
++	INT2CHAR(sp, pattern, NVI_STRLEN(pattern) + 1, np, nlen);
+ 	np = strdup(np);
+ 	if ((tqp = create_cs_cmd(sp, np, &search)) == NULL)
+ 		goto err;
+@@ -801,7 +801,7 @@ cscope_help(SCR *sp, EXCMD *cmdp, CHAR_T
+ 	char *np;
+ 	size_t nlen;
+ 
+-	INT2CHAR(sp, subcmd, STRLEN(subcmd) + 1, np, nlen);
++	INT2CHAR(sp, subcmd, NVI_STRLEN(subcmd) + 1, np, nlen);
+ 	return (csc_help(sp, np));
+ }
+ 
+@@ -842,7 +842,7 @@ cscope_kill(SCR *sp, EXCMD *cmdp, CHAR_T
+ 	char *np;
+ 	size_t nlen;
+ 
+-	INT2CHAR(sp, cn, STRLEN(cn) + 1, np, nlen);
++	INT2CHAR(sp, cn, NVI_STRLEN(cn) + 1, np, nlen);
+ 	return (terminate(sp, NULL, atoi(np)));
+ }
+ 
+diff -rupN nvi-1.81.6.orig/ex/ex_filter.c nvi-1.81.6/ex/ex_filter.c
+--- nvi-1.81.6.orig/ex/ex_filter.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_filter.c	2015-02-17 11:04:50.263257613 -0800
+@@ -138,7 +138,7 @@ err:		if (input[0] != -1)
+ 		else
+ 			++name;
+ 
+-		INT2SYS(sp, cmd, STRLEN(cmd)+1, np, nlen);
++		INT2SYS(sp, cmd, NVI_STRLEN(cmd)+1, np, nlen);
+ 		execl(O_STR(sp, O_SHELL), name, "-c", np, (char *)NULL);
+ 		msgq_str(sp, M_SYSERR, O_STR(sp, O_SHELL), "execl: %s");
+ 		_exit (127);
+@@ -283,7 +283,7 @@ err:		if (input[0] != -1)
+ 	 * Ignore errors on vi file reads, to make reads prettier.  It's
+ 	 * completely inconsistent, and historic practice.
+ 	 */
+-uwait:	INT2CHAR(sp, cmd, STRLEN(cmd) + 1, np, nlen);
++uwait:	INT2CHAR(sp, cmd, NVI_STRLEN(cmd) + 1, np, nlen);
+ 	return (proc_wait(sp, (long)utility_pid, np,
+ 	    ftype == FILTER_READ && F_ISSET(sp, SC_VI) ? 1 : 0, 0) || rval);
+ }
+diff -rupN nvi-1.81.6.orig/ex/ex_init.c nvi-1.81.6/ex/ex_init.c
+--- nvi-1.81.6.orig/ex/ex_init.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_init.c	2015-02-17 11:04:50.279419412 -0800
+@@ -61,7 +61,7 @@ ex_screen_copy(SCR *orig, SCR *sp)
+ 
+ 		if (oexp->lastbcomm != NULL &&
+ 		    (nexp->lastbcomm = v_wstrdup(sp, oexp->lastbcomm, 
+-				     STRLEN(oexp->lastbcomm))) == NULL) {
++				     NVI_STRLEN(oexp->lastbcomm))) == NULL) {
+ 			msgq(sp, M_SYSERR, NULL);
+ 			return(1);
+ 		}
+diff -rupN nvi-1.81.6.orig/ex/ex_tag.c nvi-1.81.6/ex/ex_tag.c
+--- nvi-1.81.6.orig/ex/ex_tag.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_tag.c	2015-02-17 11:04:50.275254557 -0800
+@@ -68,7 +68,7 @@ ex_tag_first(SCR *sp, CHAR_T *tagarg)
+ 
+ 	/* Build an argument for the ex :tag command. */
+ 	ex_cinit(sp, &cmd, C_TAG, 0, OOBLNO, OOBLNO, 0);
+-	argv_exp0(sp, &cmd, tagarg, STRLEN(tagarg));
++	argv_exp0(sp, &cmd, tagarg, NVI_STRLEN(tagarg));
+ 
+ 	/*
+ 	 * XXX
+@@ -115,7 +115,7 @@ ex_tag_push(SCR *sp, EXCMD *cmdp)
+ 
+ 		/* Taglength may limit the number of characters. */
+ 		if ((tl =
+-		    O_VAL(sp, O_TAGLENGTH)) != 0 && STRLEN(exp->tag_last) > tl)
++		    O_VAL(sp, O_TAGLENGTH)) != 0 && NVI_STRLEN(exp->tag_last) > tl)
+ 			exp->tag_last[tl] = '\0';
+ 		break;
+ 	case 0:
+@@ -587,7 +587,7 @@ ex_tag_copy(SCR *orig, SCR *sp)
+ 	/* Copy the last tag. */
+ 	if (oexp->tag_last != NULL &&
+ 	    (nexp->tag_last = v_wstrdup(sp, oexp->tag_last, 
+-					STRLEN(oexp->tag_last))) == NULL) {
++					NVI_STRLEN(oexp->tag_last))) == NULL) {
+ 		msgq(sp, M_SYSERR, NULL);
+ 		return (1);
+ 	}
+@@ -997,7 +997,7 @@ ctag_slist(SCR *sp, CHAR_T *tag)
+ 	exp = EXP(sp);
+ 
+ 	/* Allocate and initialize the tag queue structure. */
+-	INT2CHAR(sp, tag, STRLEN(tag) + 1, np, nlen);
++	INT2CHAR(sp, tag, NVI_STRLEN(tag) + 1, np, nlen);
+ 	len = nlen - 1;
+ 	CALLOC_GOTO(sp, tqp, TAGQ *, 1, sizeof(TAGQ) + len + 1);
+ 	CIRCLEQ_INIT(&tqp->tagq);
+diff -rupN nvi-1.81.6.orig/ex/ex_util.c nvi-1.81.6/ex/ex_util.c
+--- nvi-1.81.6.orig/ex/ex_util.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_util.c	2015-02-17 11:04:50.268378054 -0800
+@@ -153,7 +153,7 @@ ex_wemsg(SCR* sp, CHAR_T *p, exm_t which
+ 	char *np;
+ 	size_t nlen;
+ 
+-	if (p) INT2CHAR(sp, p, STRLEN(p), np, nlen);
++	if (p) INT2CHAR(sp, p, NVI_STRLEN(p), np, nlen);
+ 	else np = NULL;
+ 	ex_emsg(sp, np, which);
+ }
+diff -rupN nvi-1.81.6.orig/ex/ex_write.c nvi-1.81.6/ex/ex_write.c
+--- nvi-1.81.6.orig/ex/ex_write.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ex/ex_write.c	2015-02-17 11:04:50.277249383 -0800
+@@ -158,7 +158,7 @@ exwr(SCR *sp, EXCMD *cmdp, enum which cm
+ 			ex_emsg(sp, cmdp->cmd->usage, EXM_USAGE);
+ 			return (1);
+ 		}
+-		if (argv_exp1(sp, cmdp, p, STRLEN(p), 1))
++		if (argv_exp1(sp, cmdp, p, NVI_STRLEN(p), 1))
+ 			return (1);
+ 
+ 		/*
+@@ -203,7 +203,7 @@ exwr(SCR *sp, EXCMD *cmdp, enum which cm
+ 		    &cmdp->addr1, &cmdp->addr2, NULL, flags));
+ 
+ 	/* Build an argv so we get an argument count and file expansion. */
+-	if (argv_exp2(sp, cmdp, p, STRLEN(p)))
++	if (argv_exp2(sp, cmdp, p, NVI_STRLEN(p)))
+ 		return (1);
+ 
+ 	/*
+@@ -255,7 +255,7 @@ exwr(SCR *sp, EXCMD *cmdp, enum which cm
+ 			set_alt_name(sp, name);
+ 		break;
+ 	default:
+-		INT2CHAR(sp, p, STRLEN(p) + 1, n, nlen);
++		INT2CHAR(sp, p, NVI_STRLEN(p) + 1, n, nlen);
+ 		ex_emsg(sp, n, EXM_FILECOUNT);
+ 		return (1);
+ 	}
+diff -rupN nvi-1.81.6.orig/ip/ip_term.c nvi-1.81.6/ip/ip_term.c
+--- nvi-1.81.6.orig/ip/ip_term.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/ip/ip_term.c	2015-02-17 11:04:50.280203225 -0800
+@@ -127,7 +127,7 @@ ip_optchange(SCR *sp, int offset, char *
+ 
+ 	ipb.code = SI_EDITOPT;
+ 	ipb.str1 = (char*)opt->name;
+-	ipb.len1 = STRLEN(opt->name) * sizeof(CHAR_T);
++	ipb.len1 = NVI_STRLEN(opt->name) * sizeof(CHAR_T);
+ 
+ 	(void)vi_send(ipp->o_fd, "ab1", &ipb);
+ 	return (0);
+diff -rupN nvi-1.81.6.orig/perl_api/perl.xs nvi-1.81.6/perl_api/perl.xs
+--- nvi-1.81.6.orig/perl_api/perl.xs	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/perl_api/perl.xs	2015-02-17 11:04:50.189684363 -0800
+@@ -326,7 +326,7 @@ perl_ex_perl(scrp, cmdp, cmdlen, f_lno,
+ 	newVIrv(pp->svid, scrp);
+ 
+ 	istat = signal(SIGINT, my_sighandler);
+-	INT2CHAR(scrp, cmdp, STRLEN(cmdp)+1, np, nlen);
++	INT2CHAR(scrp, cmdp, NVI_STRLEN(cmdp)+1, np, nlen);
+ 	perl_eval(np);
+ 	signal(SIGINT, istat);
+ 
+@@ -421,7 +421,7 @@ perl_ex_perldo(scrp, cmdp, cmdlen, f_lno
+ 	/* Backwards compatibility. */
+ 	newVIrv(pp->svid, scrp);
+ 
+-	INT2CHAR(scrp, cmdp, STRLEN(cmdp)+1, np, nlen);
++	INT2CHAR(scrp, cmdp, NVI_STRLEN(cmdp)+1, np, nlen);
+ 	if (!(command = malloc(length = nlen - 1 + sizeof("sub {}"))))
+ 		return 1;
+ 	snprintf(command, length, "sub {%s}", np);
+diff -rupN nvi-1.81.6.orig/regex/engine.c nvi-1.81.6/regex/engine.c
+--- nvi-1.81.6.orig/regex/engine.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/regex/engine.c	2015-02-17 11:04:50.181456859 -0800
+@@ -161,7 +161,7 @@ int eflags;
+ 		stop = string + pmatch[0].rm_eo;
+ 	} else {
+ 		start = string;
+-		stop = start + STRLEN(start);
++		stop = start + NVI_STRLEN(start);
+ 	}
+ 	if (stop < start)
+ 		return(REG_INVARG);
+diff -rupN nvi-1.81.6.orig/regex/regcomp.c nvi-1.81.6/regex/regcomp.c
+--- nvi-1.81.6.orig/regex/regcomp.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/regex/regcomp.c	2015-02-17 11:04:50.175705539 -0800
+@@ -198,7 +198,7 @@ regcomp(regex_t *preg, const RCHAR_T *pa
+ 			return(REG_INVARG);
+ 		len = preg->re_endp - pattern;
+ 	} else
+-		len = STRLEN(pattern);
++		len = NVI_STRLEN(pattern);
+ 
+ 	/* do the mallocs early so failure handling is easy */
+ 	g = (struct re_guts *)malloc(sizeof(struct re_guts) +
+@@ -818,7 +818,7 @@ p_b_cclass(register struct parse *p, reg
+ 		NEXT();
+ 	len = p->next - sp;
+ 	for (cp = cclasses; cp->name != NULL; cp++)
+-		if (STRLEN(cp->name) == len && MEMCMP(cp->name, sp, len))
++		if (NVI_STRLEN(cp->name) == len && MEMCMP(cp->name, sp, len))
+ 			break;
+ 	if (cp->name == NULL) {
+ 		/* oops, didn't find it */
+@@ -889,7 +889,7 @@ p_b_coll_elem(register struct parse *p,
+ 	}
+ 	len = p->next - sp;
+ 	for (cp = cnames; cp->name != NULL; cp++)
+-		if (STRLEN(cp->name) == len && MEMCMP(cp->name, sp, len))
++		if (NVI_STRLEN(cp->name) == len && MEMCMP(cp->name, sp, len))
+ 			return(cp->code);	/* known name */
+ 	if (len == 1)
+ 		return(*sp);	/* single character */
+diff -rupN nvi-1.81.6.orig/vi/v_event.c nvi-1.81.6/vi/v_event.c
+--- nvi-1.81.6.orig/vi/v_event.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/vi/v_event.c	2015-02-17 11:04:50.242966563 -0800
+@@ -97,7 +97,7 @@ v_editopt(SCR *sp, VICMD *vp)
+ 	size_t nlen;
+ 	char *p2;
+ 
+-	INT2CHAR(sp, vp->ev.e_str2, STRLEN(vp->ev.e_str2)+1, np, nlen);
++	INT2CHAR(sp, vp->ev.e_str2, NVI_STRLEN(vp->ev.e_str2)+1, np, nlen);
+ 	p2 = strdup(np);
+ 	rval = api_opts_set(sp, vp->ev.e_str1, p2, 
+ 			    vp->ev.e_val1, vp->ev.e_val1);
+@@ -135,7 +135,7 @@ v_tag(SCR *sp, VICMD *vp)
+ 		return (1);
+ 
+ 	ex_cinit(sp, &cmd, C_TAG, 0, OOBLNO, OOBLNO, 0);
+-	argv_exp0(sp, &cmd, VIP(sp)->keyw, STRLEN(VIP(sp)->keyw));
++	argv_exp0(sp, &cmd, VIP(sp)->keyw, NVI_STRLEN(VIP(sp)->keyw));
+ 	return (v_exec_ex(sp, vp, &cmd));
+ }
+ 
+@@ -167,7 +167,7 @@ v_tagsplit(SCR *sp, VICMD *vp)
+ 
+ 	ex_cinit(sp, &cmd, C_TAG, 0, OOBLNO, OOBLNO, 0);
+ 	F_SET(&cmd, E_NEWSCREEN);
+-	argv_exp0(sp, &cmd, VIP(sp)->keyw, STRLEN(VIP(sp)->keyw));
++	argv_exp0(sp, &cmd, VIP(sp)->keyw, NVI_STRLEN(VIP(sp)->keyw));
+ 	return (v_exec_ex(sp, vp, &cmd));
+ }
+ 
+diff -rupN nvi-1.81.6.orig/vi/v_ex.c nvi-1.81.6/vi/v_ex.c
+--- nvi-1.81.6.orig/vi/v_ex.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/vi/v_ex.c	2015-02-17 11:04:50.246380280 -0800
+@@ -210,7 +210,7 @@ v_tagpush(SCR *sp, VICMD *vp)
+ 	EXCMD cmd;
+ 
+ 	ex_cinit(sp, &cmd, C_TAG, 0, OOBLNO, 0, 0);
+-	argv_exp0(sp, &cmd, VIP(sp)->keyw, STRLEN(VIP(sp)->keyw) + 1);
++	argv_exp0(sp, &cmd, VIP(sp)->keyw, NVI_STRLEN(VIP(sp)->keyw) + 1);
+ 	return (v_exec_ex(sp, vp, &cmd));
+ }
+ 
+diff -rupN nvi-1.81.6.orig/vi/vs_msg.c nvi-1.81.6/vi/vs_msg.c
+--- nvi-1.81.6.orig/vi/vs_msg.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/vi/vs_msg.c	2015-02-17 11:04:50.251093618 -0800
+@@ -175,7 +175,7 @@ vs_update(SCR *sp, const char *m1, const
+ 	 */
+ 	if (F_ISSET(sp, SC_SCR_EXWROTE)) {
+ 		if (m2 != NULL)
+-			INT2CHAR(sp, m2, STRLEN(m2) + 1, np, nlen);
++			INT2CHAR(sp, m2, NVI_STRLEN(m2) + 1, np, nlen);
+ 		(void)ex_printf(sp,
+ 		    "%s\n", m1 == NULL? "" : m1, m2 == NULL ? "" : np);
+ 		(void)ex_fflush(sp);
+@@ -203,7 +203,7 @@ vs_update(SCR *sp, const char *m1, const
+ 	} else
+ 		len = 0;
+ 	if (m2 != NULL) {
+-		mlen = STRLEN(m2);
++		mlen = NVI_STRLEN(m2);
+ 		if (len + mlen > sp->cols - 2)
+ 			mlen = (sp->cols - 2) - len;
+ 		(void)gp->scr_waddstr(sp, m2, mlen);
+diff -rupN nvi-1.81.6.orig/vi/vs_split.c nvi-1.81.6/vi/vs_split.c
+--- nvi-1.81.6.orig/vi/vs_split.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/vi/vs_split.c	2015-02-17 11:04:50.256136584 -0800
+@@ -628,7 +628,7 @@ vs_fg(SCR *sp, SCR **nspp, CHAR_T *name,
+ 	wp = sp->wp;
+ 
+ 	if (name)
+-	    INT2CHAR(sp, name, STRLEN(name) + 1, np, nlen);
++	    INT2CHAR(sp, name, NVI_STRLEN(name) + 1, np, nlen);
+ 	else
+ 	    np = NULL;
+ 	if (newscreen)
+diff -rupN nvi-1.81.6.orig/vi/v_txt.c nvi-1.81.6/vi/v_txt.c
+--- nvi-1.81.6.orig/vi/v_txt.c	2007-11-18 08:41:42.000000000 -0800
++++ nvi-1.81.6/vi/v_txt.c	2015-02-17 11:04:50.240596567 -0800
+@@ -2049,7 +2049,7 @@ retry:		for (len = 0,
+ 		return (0);
+ 	case 1:				/* One match. */
+ 		/* If something changed, do the exchange. */
+-		nlen = STRLEN(cmd.argv[0]->bp);
++		nlen = NVI_STRLEN(cmd.argv[0]->bp);
+ 		if (len != nlen || MEMCMP(cmd.argv[0]->bp, p, len))
+ 			break;
+ 

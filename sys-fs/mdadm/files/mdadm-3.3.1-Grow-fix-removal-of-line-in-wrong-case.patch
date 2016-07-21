@@ -1,0 +1,39 @@
+From e339dba2a1744dc6860a58e286ded39fc993c2db Mon Sep 17 00:00:00 2001
+From: Pawel Baldysiak <pawel.baldysiak@intel.com>
+Date: Wed, 11 Jun 2014 15:18:44 +0000
+Subject: [PATCH 02/14] Grow: fix removal of line in wrong case
+
+Commit 18d9bcfa33939cee345d4d7735bc6081bcc409c8
+removed wrong line (in case RAID0->RAID4).
+This patch corrects this mistake
+(line should be removed in case RAID4->RAID4).
+
+Signed-off-by: Pawel Baldysiak <pawel.baldysiak@intel.com>
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ Grow.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Grow.c b/Grow.c
+index 12730e2..a2f4f14 100644
+--- a/Grow.c
++++ b/Grow.c
+@@ -1324,6 +1324,7 @@ char *analyse_change(char *devname, struct mdinfo *info, struct reshape *re)
+ 
+ 		switch (re->level) {
+ 		case 4:
++			re->before.layout = 0;
+ 			re->after.layout = 0;
+ 			break;
+ 		case 5:
+@@ -1339,7 +1340,6 @@ char *analyse_change(char *devname, struct mdinfo *info, struct reshape *re)
+ 
+ 		switch (re->level) {
+ 		case 4:
+-			re->before.layout = 0;
+ 			re->after.layout = 0;
+ 			break;
+ 		case 5:
+-- 
+2.0.0
+

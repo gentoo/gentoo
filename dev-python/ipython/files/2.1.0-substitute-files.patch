@@ -1,0 +1,27 @@
+substitute the insource files with these messages
+diff --git a/IPython/extensions/octavemagic.py b/IPython/extensions/octavemagic.py
+new file mode 100644
+index 0000000..dc93fe4
+--- /dev/null
++++ b/IPython/extensions/octavemagic.py
+@@ -0,0 +1,7 @@
++import warnings
++
++def load_ipython_extension(ip):
++    msg = ("The octavemagic extension has been moved to oct2py. "
++           "After installing oct2py, you can load octavemagic with the "
++           "following command: '%load_ext oct2py.ipython'.")
++    warnings.warn(msg, Warning, stacklevel=2)
+diff --git a/IPython/extensions/rmagic.py b/IPython/extensions/rmagic.py
+new file mode 100644
+index 0000000..739e491
+--- /dev/null
++++ b/IPython/extensions/rmagic.py
+@@ -0,0 +1,7 @@
++import warnings
++
++def load_ipython_extension(ip):
++    msg = ("The rmagic extension has been moved to rpy2. "
++           "After installing rpy2, you can load rmagic with the "
++           "following command: '%load_ext rpy2.ipython'.")
++    warnings.warn(msg, Warning, stacklevel=2)

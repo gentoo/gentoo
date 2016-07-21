@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription>
+Utility to for advanced configuration of the following Razer mice: Copperhead
+Lachesis (Classic), DeathAdder (Classic, 3500 DPI, Black Edition, 2013), Taipan
+Naga (Classic, 2012, 2014, Hex), Krait, Boomslang CE. The tool architecture is
+based on "razerd", which is a background daemon doing all of the lowlevel
+privilege hardware accesses. The user interface tools are "razercfg", a
+commandline tool; and "qrazercfg", a QT4 based graphical device configuration
+tool.
+</longdescription>
+<!-- maintainer-needed -->
+<use>
+	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
+		requires <pkg>sys-power/pm-utils</pkg></flag>
+	<flag name="qt4">Installs a qt UI. Requires <pkg>dev-python/pyside</pkg></flag>
+</use>
+</pkgmetadata>

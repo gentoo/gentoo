@@ -1,0 +1,11 @@
+--- jasper-1.701.0.GEO/configure.GL	2006-02-20 20:01:30.000000000 -0600
++++ jasper-1.701.0.GEO/configure	2006-02-24 07:40:46.000000000 -0600
+@@ -9464,7 +9464,7 @@
+ OPENGL_LIBS=""
+ if test $ENABLE_OPENGL = yes; then
+ 	if test $HAVE_OPENGL = no; then
+-		TMPLIBS="-lglut -lGL -lGLU $X_PRE_LIBS -lX11 -lXmu -lXi -lXext -lXt $X_EXTRA_LIBS $X_LIBS"
++		TMPLIBS="-lglut -lGL -lGLU"
+ 		echo "$as_me:$LINENO: checking for glutInit in -lglut" >&5
+ echo $ECHO_N "checking for glutInit in -lglut... $ECHO_C" >&6
+ if test "${ac_cv_lib_glut_glutInit+set}" = set; then

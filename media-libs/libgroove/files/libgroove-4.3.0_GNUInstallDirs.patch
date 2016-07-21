@@ -1,0 +1,105 @@
+From 8b741249fc17d7cf7d72a702fcdf7f07870b0b27 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Thu, 20 Aug 2015 14:30:16 +0200
+Subject: [PATCH] CMake: make installation directories more configurable
+
+We use GNUInstallDirs now to be able to control the following variables:
+  CMAKE_INSTALL_LIBDIR
+  CMAKE_INSTALL_INCLUDEDIR
+
+This fixes support for distribution that have a multi-arch setup.
+Also see https://github.com/gentoo/gentoo/pull/22
+---
+ CMakeLists.txt | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2029eb..49e150e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 2.8.5)
++
++include(GNUInstallDirs)
+ 
+ if(NOT CMAKE_BUILD_TYPE)
+     set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
+@@ -157,7 +159,7 @@ add_library(groove_static STATIC ${LIBGROOVE_SOURCES} ${LIBGROOVE_HEADERS})
+ set_target_properties(groove_static PROPERTIES
+   OUTPUT_NAME groove
+   COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-install(TARGETS groove_static DESTINATION lib)
++install(TARGETS groove_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+ install(FILES
+@@ -165,7 +167,7 @@ install(FILES
+   "groove/queue.h"
+   "groove/encoder.h"
+   DESTINATION "include/groove")
+-install(TARGETS groove DESTINATION lib)
++install(TARGETS groove DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ add_executable(metadata example/metadata.c)
+ set_target_properties(metadata PROPERTIES
+@@ -207,8 +209,8 @@ else()
+   target_link_libraries(grooveplayer LINK_PRIVATE ${SDL2_LIBRARY})
+   include_directories(${SDL2_INCLUDE_DIR})
+ 
+-  install(FILES "grooveplayer/player.h" DESTINATION "include/grooveplayer")
+-  install(TARGETS grooveplayer DESTINATION lib)
++  install(FILES "grooveplayer/player.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/grooveplayer")
++  install(TARGETS grooveplayer DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+   add_library(grooveplayer_static STATIC
+     ${LIBGROOVE_PLAYER_SOURCES}
+@@ -216,7 +218,7 @@ else()
+   set_target_properties(grooveplayer_static PROPERTIES
+     OUTPUT_NAME grooveplayer
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS grooveplayer_static DESTINATION lib)
++  install(TARGETS grooveplayer_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+   add_executable(playlist example/playlist.c ${PROJECT_SOURCE_DIR}/grooveplayer/player.h)
+@@ -242,8 +244,8 @@ else()
+   target_link_libraries(grooveloudness LINK_PRIVATE ${EBUR128_LIBRARY})
+   include_directories(${EBUR128_INCLUDE_DIR})
+ 
+-  install(FILES "grooveloudness/loudness.h" DESTINATION "include/grooveloudness")
+-  install(TARGETS grooveloudness DESTINATION lib)
++  install(FILES "grooveloudness/loudness.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/grooveloudness")
++  install(TARGETS grooveloudness DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+   add_library(grooveloudness_static STATIC
+@@ -252,7 +254,7 @@ else()
+   set_target_properties(grooveloudness_static PROPERTIES
+     OUTPUT_NAME grooveloudness
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS grooveloudness_static DESTINATION lib)
++  install(TARGETS grooveloudness_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+   add_executable(replaygain example/replaygain.c)
+@@ -278,8 +280,8 @@ else()
+   target_link_libraries(groovefingerprinter LINK_PRIVATE ${CHROMAPRINT_LIBRARY})
+   include_directories(${CHROMAPRINT_INCLUDE_DIR})
+ 
+-  install(FILES "groovefingerprinter/fingerprinter.h" DESTINATION "include/groovefingerprinter")
+-  install(TARGETS groovefingerprinter DESTINATION lib)
++  install(FILES "groovefingerprinter/fingerprinter.h" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/groovefingerprinter")
++  install(TARGETS groovefingerprinter DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+   add_library(groovefingerprinter_static STATIC
+@@ -288,7 +290,7 @@ else()
+   set_target_properties(groovefingerprinter_static PROPERTIES
+     OUTPUT_NAME groovefingerprinter
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS groovefingerprinter_static DESTINATION lib)
++  install(TARGETS groovefingerprinter_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ 
+   add_executable(fingerprint example/fingerprint.c)

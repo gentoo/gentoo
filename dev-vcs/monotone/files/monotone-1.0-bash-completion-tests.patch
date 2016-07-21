@@ -1,0 +1,18 @@
+https://code.monotone.ca/p/monotone/issues/180/
+--- test/extra/bash_completion/bashrc	2011-09-07 09:00:12 +0000
++++ test/extra/bash_completion/bashrc	2011-09-07 12:14:59 +0000
+@@ -18,6 +18,13 @@
+ 	. /etc/bash_completion
+     elif [ -f /usr/local/etc/bash_completion ]; then
+ 	. /usr/local/etc/bash_completion
++    elif [ -f /usr/share/bash-completion/.pre -a \
++            -f /usr/share/bash-completion/base ]; then
++        # In Gentoo /etc/profile.d/bash-completion.sh sources required
++        # functions only if enabled with `eselect bashcomp`. We source
++        # required definitions manually.
++        source /usr/share/bash-completion/.pre
++        source /usr/share/bash-completion/base
+     else
+ 	echo No bash completion package present.
+ 	exit
+

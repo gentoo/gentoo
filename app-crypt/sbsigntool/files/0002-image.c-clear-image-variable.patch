@@ -1,0 +1,29 @@
+From 21e984fa9d93a760cc03f5d9d13d023809227df2 Mon Sep 17 00:00:00 2001
+From: James Bottomley <JBottomley@Parallels.com>
+Date: Thu, 11 Apr 2013 21:12:17 -0700
+Subject: image.c: clear image variable
+
+Not zeroing the image after talloc occasionally leads to a segfault because
+the programme thinks it has a signature when in reality it just has a junk
+pointer and segfaults.
+
+Signed-off-by: James Bottomley <JBottomley@Parallels.com>
+---
+ src/image.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/image.c b/src/image.c
+index cc55791..10eba0e 100644
+--- a/src/image.c
++++ b/src/image.c
+@@ -401,6 +401,7 @@ struct image *image_load(const char *filename)
+ 		return NULL;
+ 	}
+ 
++	memset(image, 0, sizeof(*image));
+ 	rc = fileio_read_file(image, filename, &image->buf, &image->size);
+ 	if (rc)
+ 		goto err;
+-- 
+1.8.2.1
+

@@ -1,0 +1,11 @@
+--- usr/sbin/xe-update-guest-attrs.orig	2011-04-18 10:56:30.000000000 -0500
++++ usr/sbin/xe-update-guest-attrs	2013-12-31 04:34:57.750083257 -0600
+@@ -172,7 +172,7 @@
+ #           collisions:0 txqueuelen:0 
+ #           RX bytes:3604609 (3.4 MiB)  TX bytes:3604609 (3.4 MiB)
+ 
+-eval $(/sbin/ifconfig | \
++eval $(/bin/ifconfig | \
+         sed -n -e '/^[0-9a-z][0-9a-z]*\:/,/^$/d' \
+                -e 's/^\([0-9a-z][0-9a-z]*\) .*/ifs="\$ifs \1"; current="\1"; /gp;' \
+                -e 's/  *inet addr:\('$IPADDR_RE'\) .*/eval inet_\${current}="\1"; /gp;')

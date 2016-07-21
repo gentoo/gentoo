@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription>
+nmbscan scans the shares of a SMB network, using the NMB and SMB protocols.
+It is useful for acquiring information on a local area network for such purposes as security auditing.
+It can obtain such information as NMB/SMB/Windows hostname, IP address, IP hostname, ethernet MAC address, Windows username, NMB/SMB/Windows domain name, and master browser.
+It can discover all the NMB/SMB/Windows hosts on a local area network by using the hosts lists maintained by master browsers. 
+</longdescription>
+</pkgmetadata>

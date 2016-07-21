@@ -1,0 +1,14 @@
+expectk is only built when TK_BIN_DIR is defined.  the configure script
+takes care of figuring out this value, but then they forgot to actually
+write it out to the Makefile.
+
+--- Makefile.in
++++ Makefile.in
+@@ -24,6 +24,7 @@
+ # SETUID = chmod u+s
+ 
+ LIB_RUNTIME_DIR = $(DESTDIR)@libdir@
++TK_BIN_DIR = @TK_BIN_DIR@
+ 
+ # The following Expect scripts are not necessary to have installed as
+ # commands, but are very useful. Edit out what you don't want

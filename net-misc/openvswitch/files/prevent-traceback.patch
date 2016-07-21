@@ -1,0 +1,107 @@
+commit d4d1107c3a49a4dadf6dc8ac55d6fefa25a8e06a
+Author: Alexei Starovoitov <ast@plumgrid.com>
+Date:   Wed Oct 16 15:28:23 2013 -0700
+
+    cherry-pick 8e04c6e10c28e42c715eb9fef749554c123bddbc
+
+diff --git a/AUTHORS b/AUTHORS
+index 2d29e66..7a62704 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -2,6 +2,8 @@ The following people, in alphabetical order, have either authored or
+ signed off on commits in the Open vSwitch version control repository.
+ 
+ Aaron Rosen             arosen@clemson.edu
++Alexandru Copot         alex.mihai.c@gmail.com
++Alexei Starovoitov      ast@plumgrid.com
+ Alexey I. Froloff       raorn@altlinux.org
+ Alex Wang               alexw@nicira.com
+ Andrew Evans            aevans@nicira.com
+diff --git a/datapath/dp_notify.c b/datapath/dp_notify.c
+index 847f611..a973623 100644
+--- a/datapath/dp_notify.c
++++ b/datapath/dp_notify.c
+@@ -66,8 +66,7 @@ void ovs_dp_notify_wq(struct work_struct *work)
+ 					continue;
+ 
+ 				netdev_vport = netdev_vport_priv(vport);
+-				if (netdev_vport->dev->reg_state == NETREG_UNREGISTERED ||
+-				    netdev_vport->dev->reg_state == NETREG_UNREGISTERING)
++				if (!(ovs_netdev_get_vport(netdev_vport->dev)))
+ 					dp_detach_port_notify(vport);
+ 			}
+ 		}
+@@ -89,6 +88,10 @@ static int dp_device_event(struct notifier_block *unused, unsigned long event,
+ 		return NOTIFY_DONE;
+ 
+ 	if (event == NETDEV_UNREGISTER) {
++		/* upper_dev_unlink and decrement promisc immediately */
++		ovs_netdev_detach_dev(vport);
++
++		/* schedule vport destroy, dev_put and genl notification */
+ 		ovs_net = net_generic(dev_net(dev), ovs_net_id);
+ 		queue_work(&ovs_net->dp_notify_work);
+ 	}
+diff --git a/datapath/linux/compat/include/linux/netdevice.h b/datapath/linux/compat/include/linux/netdevice.h
+index 4e2b7f5..908ed86 100644
+--- a/datapath/linux/compat/include/linux/netdevice.h
++++ b/datapath/linux/compat/include/linux/netdevice.h
+@@ -118,6 +118,11 @@ static inline void netdev_upper_dev_unlink(struct net_device *dev,
+ 					   struct net_device *upper_dev)
+ {
+ }
++
++static inline struct net_device *netdev_master_upper_dev_get(struct net_device *dev)
++{
++	return NULL;
++}
+ #endif
+ 
+ #endif
+diff --git a/datapath/vport-netdev.c b/datapath/vport-netdev.c
+index 215a47e..0c9f603 100644
+--- a/datapath/vport-netdev.c
++++ b/datapath/vport-netdev.c
+@@ -201,16 +201,27 @@ static void free_port_rcu(struct rcu_head *rcu)
+ 	ovs_vport_free(vport_from_priv(netdev_vport));
+ }
+ 
+-static void netdev_destroy(struct vport *vport)
++void ovs_netdev_detach_dev(struct vport *vport)
+ {
+ 	struct netdev_vport *netdev_vport = netdev_vport_priv(vport);
+ 
+-	netdev_exit();
+-	rtnl_lock();
++	ASSERT_RTNL();
+ 	netdev_vport->dev->priv_flags &= ~IFF_OVS_DATAPATH;
+ 	netdev_rx_handler_unregister(netdev_vport->dev);
+-	netdev_upper_dev_unlink(netdev_vport->dev, get_dpdev(vport->dp));
++	netdev_upper_dev_unlink(netdev_vport->dev,
++				netdev_master_upper_dev_get(netdev_vport->dev));
+ 	dev_set_promiscuity(netdev_vport->dev, -1);
++}
++
++static void netdev_destroy(struct vport *vport)
++{
++	struct netdev_vport *netdev_vport = netdev_vport_priv(vport);
++
++	netdev_exit();
++
++	rtnl_lock();
++	if (ovs_netdev_get_vport(netdev_vport->dev))
++		ovs_netdev_detach_dev(vport);
+ 	rtnl_unlock();
+ 
+ 	call_rcu(&netdev_vport->rcu, free_port_rcu);
+diff --git a/datapath/vport-netdev.h b/datapath/vport-netdev.h
+index dd298b5..8df01c1 100644
+--- a/datapath/vport-netdev.h
++++ b/datapath/vport-netdev.h
+@@ -39,5 +39,6 @@ netdev_vport_priv(const struct vport *vport)
+ }
+ 
+ const char *ovs_netdev_get_name(const struct vport *);
++void ovs_netdev_detach_dev(struct vport *);
+ 
+ #endif /* vport_netdev.h */

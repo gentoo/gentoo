@@ -1,0 +1,14 @@
+Honour MAKE variable for systems with make != GNU make (eg fbsd)
+
+Index: libsndfile-1.0.25/configure.ac
+===================================================================
+--- libsndfile-1.0.25.orig/configure.ac
++++ libsndfile-1.0.25/configure.ac
+@@ -701,5 +701,5 @@ if test x$prefix != "x/usr" ; then
+ 	echo
+ 	fi
+ 
+-(cd src && make genfiles)
+-(cd tests && make genfiles)
++(cd src && ${MAKE-make} genfiles)
++(cd tests && ${MAKE-make} genfiles)

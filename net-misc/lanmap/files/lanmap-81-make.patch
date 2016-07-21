@@ -1,0 +1,69 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -2,8 +2,8 @@
+ # $Id$
+ 
+ # complation
+-CFLAGS = -W -Wall -Wno-unused -DLINUX -DLANMAP_DATADIR=$(LANMAP_DATADIR)
+-LDFLAGS = -lpcap -lm
++CFLAGS += -DLINUX -DLANMAP_DATADIR=$(LANMAP_DATADIR)
++LDFLAGS += -lpcap -lm
+ CFLAGS_DEBUG = -D_DEBUG -ggdb
+ LDFLAGS_DEBUG = -pg
+ BINARY = lanmap
+@@ -14,12 +14,12 @@
+ 	$(CC) $(OBJS) -o $(BINARY) $(LDFLAGS)
+ 
+ static:
+-	make clean
+-	make LDFLAGS="$(LDFLAGS) -static" all
++	$(MAKE) clean
++	$(MAKE) LDFLAGS="$(LDFLAGS) -static" all
+ 
+ debug:
+-	make clean
+-	make CFLAGS="$(CFLAGS) $(CFLAGS_DEBUG)" LDFLAGS="$(LDFLAGS)"  all
++	$(MAKE) clean
++	$(MAKE) CFLAGS="$(CFLAGS) $(CFLAGS_DEBUG)" LDFLAGS="$(LDFLAGS)"  all
+ 
+ # for testing the classify code by itself
+ os_classify: os_classify.c misc.c
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10,18 +10,18 @@
+ DATADEST = ${prefix}/share/lanmap/
+ 
+ all:
+-	cd ./src && make LANMAP_DATADIR="$(DATADEST)"
++	cd ./src && $(MAKE) LANMAP_DATADIR="$(DATADEST)"
+ 
+ install:
+-	install -m 0755 ./src/$(BINARY) $(BINDEST)
++	install -m 0755 -D ./src/$(BINARY) $(BINDEST)/$(BINARY)
+ 	install -m 0755 -d $(DATADEST)
+ 	install -m 0755 -d $(DATADEST)data/
+ 	install -m 0755 -d $(DATADEST)data/graph/
+ 	install -m 0755 -d $(DATADEST)graph/img/
+ 	install -m 0644 ./data/mac_vendor $(DATADEST)data/
+-	install -m 0644 -d $(DATADEST)graph
++	install -m 0755 -d $(DATADEST)graph
+ 	install -m 0644 ./graph/lanmap.header $(DATADEST)graph/
+-	for f in ./graph/img/*.{png,gif,svg}; do install -m 0644 $$f $(DATADEST)graph/img/; done
++	for f in ./graph/img/*.gif ./graph/img/*.png ./graph/img/*.svg; do install -m 0644 $$f $(DATADEST)graph/img/; done
+ 	
+ uninstall:
+ 	rm $(BINDEST)$(BINARY)
+@@ -29,11 +29,11 @@
+ 
+ clean:
+ 	rm -f ./src/$(BINARY)
+-	cd ./src && make clean
++	cd ./src && $(MAKE) clean
+ 
+ distclean: clean
+ 	rm -f Makefile config.cache config.log config.status config.h
+ 
+ debug:
+-	cd ./src && make debug
++	cd ./src && $(MAKE) debug
+ 

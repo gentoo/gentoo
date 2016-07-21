@@ -1,0 +1,16 @@
+ mmdb.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mmdb.pc.in b/mmdb.pc.in
+index dd654a4..b3c28a9 100644
+--- a/mmdb.pc.in
++++ b/mmdb.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ libdir=@libdir@
+-includedir=@includedir@
++includedir=@includedir@/mmdb
+ 
+ Name: mmdb
+ Description: Macromolecular coordinate library

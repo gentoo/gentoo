@@ -1,0 +1,32 @@
+This is replaced by `AT_M4DIR=m4 eautoreconf` in the ebuild.
+
+--- bootstrap
++++ bootstrap
+@@ -26,17 +26,17 @@
+ 	INCLUDES="-I m4"
+ fi
+ set -x
+-aclocal $INCLUDES
+-autoheader
++# aclocal $INCLUDES
++# autoheader
+ 
+ # Check For OSX
+ # rhcp011235@gmail.com
+ 
+-KERNEL_NAME=`uname -s`
+-if [ "$KERNEL_NAME" = "Darwin" ]; then
+-	glibtoolize --copy --automake
+-else
+-	libtoolize --copy --automake
+-fi
+-automake --copy --foreign --add-missing
+-autoconf
++# KERNEL_NAME=`uname -s`
++# if [ "$KERNEL_NAME" = "Darwin" ]; then
++# 	glibtoolize --copy --automake
++# else
++# 	libtoolize --copy --automake
++# fi
++# automake --copy --foreign --add-missing
++# autoconf

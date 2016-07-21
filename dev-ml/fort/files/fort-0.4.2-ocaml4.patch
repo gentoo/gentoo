@@ -1,0 +1,22 @@
+Index: fort-0.4.2/Makefile
+===================================================================
+--- fort-0.4.2.orig/Makefile
++++ fort-0.4.2/Makefile
+@@ -3,7 +3,7 @@
+ 
+ include Makefile.config
+ 
+-OCAMLC     := ocamlc
++OCAMLC     := ocamlc -I +compiler-libs
+ 
+ # FORT top-level interpreter
+ NAME    := fort
+@@ -16,7 +16,7 @@ LIBS    := unix
+ EXECUTABLE := $(NAME)$(EXEC_SUFFIX)
+ 
+ $(EXECUTABLE): $(OBJECTS)
+-	$(OCAMLC) -linkall -o $@ toplevellib.cma $(LIBS:%=%.cma) $(OBJECTS)
++	$(OCAMLC) -linkall -o $@ ocamlcommon.cma ocamlbytecomp.cma ocamltoplevel.cma $(LIBS:%=%.cma) $(OBJECTS)
+ 
+ install: $(EXECUTABLE) $(OBJECTS)
+ 	mkdir -p $(DESTDIR)$(LIBDIR)

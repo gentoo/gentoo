@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+  <longdescription lang="en">
+    The dev-qt category contains packages for the Qt framework modules and
+    directly related libraries and development applications from the upstream
+    Qt Project. Do not add other packages to this category.
+  </longdescription>
+  <longdescription lang="es">
+    La categoría dev-qt contiene paquetes para los módulos del marco de trabajo
+    Qt y las librerías y aplicaciones de desarrollo directamente relacionadas
+    del proyecto Qt. No añadir otros paquetes a esta categoría.
+  </longdescription>
+</catmetadata>

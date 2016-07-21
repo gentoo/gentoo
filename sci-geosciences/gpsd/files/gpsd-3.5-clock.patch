@@ -1,0 +1,42 @@
+From f9f9bb6c10102f3d69a7f50e758a3a9256bf8744 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 21 May 2012 16:27:36 -0400
+Subject: [PATCH] fix building with clock_gettime and newer glibc
+
+Building with recent glibc versions fails in gpsutils.c due to missing
+definitions related to clock_gettime.  This is because we define the
+_XOPEN_SOURCE macro, but not to a new enough value.  So set it to a
+recent spec value that satisfies both strptime and clock_gettime.
+
+Example build failure with glibc-2.15:
+gpsutils.c: In function 'timestamp':
+gpsutils.c:299:22: error: storage size of 'ts' isn't known
+gpsutils.c:300:14: warning: implicit declaration of function 'clock_gettime' [-Wimplicit-function-declaration]
+gpsutils.c:300:34: error: 'CLOCK_REALTIME' undeclared (first use in this function)
+gpsutils.c:300:34: note: each undeclared identifier is reported only once for each function it appears in
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ gpsutils.c |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/gpsutils.c b/gpsutils.c
+index 523838a..3b4990a 100644
+--- a/gpsutils.c
++++ b/gpsutils.c
+@@ -5,8 +5,10 @@
+  */
+ 
+ /* The strptime prototype is not provided unless explicitly requested.
+- *  So add the define that POSIX says to to avoid: */
+-#define _XOPEN_SOURCE
++ * We also need to set the value high enough to signal inclusion of
++ * newer features (like clock_gettime).  See the POSIX spec for more info:
++ * http://pubs.opengroup.org/onlinepubs/9699919799/functions/V2_chap02.html#tag_15_02_01_02 */
++#define _XOPEN_SOURCE 600
+ 
+ #include <stdio.h>
+ #include <time.h>
+-- 
+1.7.8.6
+

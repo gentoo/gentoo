@@ -1,0 +1,56 @@
+From d055c4e9e2d414c9d51f7a6f2cf51cedfc79260f Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Tue, 6 Apr 2010 11:48:28 -0400
+Subject: [PATCH] unbundle libtool
+
+Bundled libltdl is vulnerable, CVE-2009-3736.
+Patch grabbed from Debian:
+http://ftp.de.debian.org/debian/pool/main/p/pdsh/pdsh_2.18-6.debian.tar.gz
+---
+ configure.ac         |    6 ++++--
+ src/pdsh/Makefile.am |    5 ++---
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2680344..196356b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,8 +38,10 @@ AC_DEBUG
+ # Libtool and ltld.[ch] support
+ #
+ AC_LIBTOOL_DLOPEN
+-AC_PROG_LIBTOOL
+-AC_LIB_LTDL
++LT_INIT
++AC_SUBST(LT_CURRENT)
++AC_SUBST(LT_REVISION)
++AC_SUBST(LT_AGE)
+ 
+ AM_CONDITIONAL(WITH_GNU_LD, test "$with_gnu_ld" = "yes")
+ 
+diff --git a/src/pdsh/Makefile.am b/src/pdsh/Makefile.am
+index dfc48a3..beac854 100644
+--- a/src/pdsh/Makefile.am
++++ b/src/pdsh/Makefile.am
+@@ -14,8 +14,7 @@ if WITH_STATIC_MODULES
+ MODULE_LIBS =              $(top_builddir)/src/modules/libmods.la 
+ else
+ MODULE_FLAGS =             -export-dynamic $(AIX_PDSH_LDFLAGS)
+-LTDL_FILES =               ltdl.h ltdl.c
+-LTDL_LDADD =               $(LIBADD_DL)
++LTDL_LDADD =               $(LIBADD_DL) -lltdl
+ endif
+ 
+ pdsh_LDADD =               $(READLINE_LIBS) $(LTDL_LDADD)
+@@ -25,7 +24,7 @@ pdsh_LDFLAGS =             $(MODULE_LIBS) $(MODULE_FLAGS) \
+ pdsh_inst_LDADD =          $(pdsh_LDADD)
+ pdsh_inst_LDFLAGS =        $(pdsh_LDFLAGS)
+ 
+-pdsh_SOURCES =             $(PDSH_SOURCES) $(LTDL_FILES)
++pdsh_SOURCES =             $(PDSH_SOURCES)
+ pdsh_inst_SOURCES =        $(pdsh_SOURCES)
+ nodist_pdsh_SOURCES =      testconfig.c
+ nodist_pdsh_inst_SOURCES = config.c
+-- 
+1.6.6.2
+

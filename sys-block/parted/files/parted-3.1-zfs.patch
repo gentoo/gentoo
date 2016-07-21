@@ -1,0 +1,170 @@
+commit 65f838008107a688751dd5a2753c9073e9353daf
+Author: root <root@desktop.(none)>
+Date:   Fri Jun 1 16:26:34 2012 -0400
+
+    Add ZFS Support
+
+diff --git a/libparted/fs/Makefile.am b/libparted/fs/Makefile.am
+index 8d48ea1..51b4151 100644
+--- a/libparted/fs/Makefile.am
++++ b/libparted/fs/Makefile.am
+@@ -49,7 +49,8 @@ libfs_la_SOURCES =		\
+   xfs/platform_defs.h		\
+   xfs/xfs.c			\
+   xfs/xfs_sb.h			\
+-  xfs/xfs_types.h
++  xfs/xfs_types.h		\
++  zfs/zfs.c
+ 
+ lib_LTLIBRARIES = libparted-fs-resize.la
+ 
+diff --git a/libparted/fs/Makefile.in b/libparted/fs/Makefile.in
+index 4335eb1..e3a134b 100644
+--- a/libparted/fs/Makefile.in
++++ b/libparted/fs/Makefile.in
+@@ -1112,7 +1112,8 @@ libfs_la_SOURCES = \
+   xfs/platform_defs.h		\
+   xfs/xfs.c			\
+   xfs/xfs_sb.h			\
+-  xfs/xfs_types.h
++  xfs/xfs_types.h		\
++  zfs/zfs.c
+ 
+ lib_LTLIBRARIES = libparted-fs-resize.la
+ EXTRA_DIST = hfs/DOC hfs/HISTORY hfs/TODO fsresize.sym
+diff --git a/libparted/fs/zfs/Makefile.am b/libparted/fs/zfs/Makefile.am
+new file mode 100644
+index 0000000..3273c6a
+--- /dev/null
++++ b/libparted/fs/zfs/zfs.c
+@@ -0,0 +1,81 @@
++/*
++    libparted - a library for manipulating disk partitions
++    Copyright (C) 2000, 2007, 2009-2010 Free Software Foundation, Inc.
++
++    This program is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation; either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#include <config.h>
++
++#include <parted/parted.h>
++#include <parted/endian.h>
++
++#if ENABLE_NLS
++#  include <libintl.h>
++#  define _(String) dgettext (PACKAGE, String)
++#else
++#  define _(String) (String)
++#endif /* ENABLE_NLS */
++
++#include <unistd.h>
++
++#define ZFS_BLOCK_SIZES       ((int[2]){512, 0})
++
++#define ZFS_SIGNATURE		0x00bab10c
++
++struct zfs_uberblock
++{ 
++  uint64_t signature;
++  uint64_t version;
++};
++
++static PedGeometry*
++zfs_probe (PedGeometry* geom)
++{
++	uint8_t	buf[512];
++	struct zfs_uberblock *uber = (void *) buf;
++
++	if (!ped_geometry_read (geom, buf, 256, 1))
++		return 0;
++
++	if ((le64toh (uber->signature) == ZFS_SIGNATURE
++		|| be64toh (uber->signature) == ZFS_SIGNATURE)
++		&& uber->version != 0)
++		return ped_geometry_new (geom->dev, geom->start, geom->length);
++	else
++		return NULL;
++}
++
++static PedFileSystemOps zfs_ops = {
++	probe:		zfs_probe,
++};
++
++static PedFileSystemType zfs_type = {
++	next:	NULL,
++	ops:	&zfs_ops,
++	name:	"zfs",
++	block_sizes: ZFS_BLOCK_SIZES
++};
++
++void
++ped_file_system_zfs_init ()
++{
++	ped_file_system_type_register (&zfs_type);
++}
++
++void
++ped_file_system_zfs_done ()
++{
++	ped_file_system_type_unregister (&zfs_type);
++}
+diff --git a/libparted/libparted.c b/libparted/libparted.c
+index a6d86f0..6545989 100644
+--- a/libparted/libparted.c
++++ b/libparted/libparted.c
+@@ -109,6 +109,7 @@ extern void ped_file_system_hfs_init (void);
+ extern void ped_file_system_fat_init (void);
+ extern void ped_file_system_ext2_init (void);
+ extern void ped_file_system_nilfs2_init (void);
++extern void ped_file_system_zfs_init (void);
+ 
+ static void
+ init_file_system_types ()
+@@ -124,6 +125,7 @@ init_file_system_types ()
+ 	ped_file_system_fat_init ();
+ 	ped_file_system_ext2_init ();
+ 	ped_file_system_nilfs2_init ();
++	ped_file_system_zfs_init ();
+ }
+ 
+ extern void ped_disk_aix_done ();
+@@ -186,6 +188,7 @@ extern void ped_file_system_reiserfs_done (void);
+ extern void ped_file_system_ufs_done (void);
+ extern void ped_file_system_xfs_done (void);
+ extern void ped_file_system_amiga_done (void);
++extern void ped_file_system_zfs_done (void);
+ 
+ static void
+ done_file_system_types ()
+@@ -201,6 +204,7 @@ done_file_system_types ()
+ 	ped_file_system_ufs_done ();
+ 	ped_file_system_xfs_done ();
+ 	ped_file_system_amiga_done ();
++	ped_file_system_zfs_done ();
+ }
+ 
+ static void _done() __attribute__ ((destructor));
+diff --git a/scripts/data/abi/baseline_symbols.txt b/scripts/data/abi/baseline_symbols.txt
+index 9162f1a..8bb87e6 100644
+--- a/scripts/data/abi/baseline_symbols.txt
++++ b/scripts/data/abi/baseline_symbols.txt
+@@ -344,6 +344,8 @@ FUNC:ped_file_system_ufs_done
+ FUNC:ped_file_system_ufs_init
+ FUNC:ped_file_system_xfs_done
+ FUNC:ped_file_system_xfs_init
++FUNC:ped_file_system_zfs_done
++FUNC:ped_file_system_zfs_init
+ FUNC:ped_geometry_check
+ FUNC:ped_geometry_destroy
+ FUNC:ped_geometry_duplicate

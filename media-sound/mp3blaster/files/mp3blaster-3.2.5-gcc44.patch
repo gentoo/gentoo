@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/362347
+
+--- src/global.cc
++++ src/global.cc
+@@ -371,7 +371,7 @@
+ is_sid(const char *filename)
+ {
+ #ifdef HAVE_SIDPLAYER
+-	char *ext = strrchr(filename, '.');
++	const char *ext = strrchr(filename, '.');
+ 	if (ext) {
+ 		if (!strcasecmp(ext, ".psid")) return 1;
+ 		if (!strcasecmp(ext, ".sid")) return 1;

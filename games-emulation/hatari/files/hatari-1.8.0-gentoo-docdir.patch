@@ -1,0 +1,13 @@
+--- hatari-1.6.1/python-ui/uihelpers.py
++++ hatari-1.6.1/python-ui/uihelpers.py
+@@ -97,9 +97,7 @@
+         # first try whether there are local Hatari docs in standard place
+         # for this Hatari/UI version
+         sep = os.sep
+-        path = self.get_binary_path("hatari")
+-        path = sep.join(path.split(sep)[:-2]) # remove "bin/hatari"
+-        path = path + sep + "share" + sep + "doc" + sep + "hatari" + sep
++        path = "@DOCDIR@"
+         if os.path.exists(path + "manual.html"):
+             return path
+         # if not, point to latest Hatari HG version docs

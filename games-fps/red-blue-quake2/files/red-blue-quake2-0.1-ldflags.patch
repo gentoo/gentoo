@@ -1,0 +1,92 @@
+--- Makefile.old	2010-10-18 09:09:48.000000000 +0200
++++ Makefile	2010-10-18 09:15:59.000000000 +0200
+@@ -59,7 +59,7 @@
+ endif
+ 
+ DEBUG_CFLAGS=$(BASE_CFLAGS) -g
+-LDFLAGS=-ldl -lm
++LDLIBS=-ldl -lm
+ SVGALDFLAGS=-lvga -lm
+ XLDFLAGS=-L/usr/X11R6/lib -lX11 -lXext -lXxf86dga
+ XCFLAGS=
+@@ -195,7 +195,7 @@
+ endif
+ 
+ $(BUILDDIR)/quake2 : $(QUAKE2_OBJS) $(QUAKE2_AS_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_AS_OBJS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_AS_OBJS) $(LDLIBS)
+ 
+ $(BUILDDIR)/client/cl_cin.o :     $(CLIENT_DIR)/cl_cin.c
+ 	$(DO_CC)
+@@ -374,7 +374,7 @@
+ 	$(BUILDDIR)/ded/cd_null.o
+ 
+ $(BUILDDIR)/q2ded : $(Q2DED_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(Q2DED_OBJS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(Q2DED_OBJS) $(LDLIBS)
+ 
+ $(BUILDDIR)/ded/cmd.o :        $(COMMON_DIR)/cmd.c
+ 	$(DO_DED_CC)
+@@ -503,7 +503,7 @@
+ 	$(BUILDDIR)/game/m_flash.o
+ 
+ $(BUILDDIR)/game$(ARCH).$(SHLIBEXT) : $(GAME_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(GAME_OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(GAME_OBJS)
+ 
+ $(BUILDDIR)/game/g_ai.o :        $(GAME_DIR)/g_ai.c
+ 	$(DO_SHLIB_CC)
+@@ -682,7 +682,7 @@
+ 	$(BUILDDIR)/ctf/q_shared.o
+ 
+ $(BUILDDIR)/ctf/game$(ARCH).$(SHLIBEXT) : $(CTF_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(CTF_OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(CTF_OBJS)
+ 
+ $(BUILDDIR)/ctf/g_ai.o :       $(CTF_DIR)/g_ai.c
+ 	$(DO_SHLIB_CC)
+@@ -821,7 +821,7 @@
+ 	$(BUILDDIR)/xatrix/q_shared.o
+ 
+ $(BUILDDIR)/xatrix/game$(ARCH).$(SHLIBEXT) : $(XATRIX_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(XATRIX_OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(XATRIX_OBJS)
+ 
+ $(BUILDDIR)/xatrix/g_ai.o :        $(XATRIX_DIR)/g_ai.c
+ 	$(DO_SHLIB_CC)
+@@ -1048,7 +1048,7 @@
+ 	$(BUILDDIR)/rogue/q_shared.o
+ 
+ $(BUILDDIR)/rogue/game$(ARCH).$(SHLIBEXT) : $(ROGUE_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(ROGUE_OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(ROGUE_OBJS)
+ 
+ $(BUILDDIR)/rogue/dm_ball.o :      $(ROGUE_DIR)/dm_ball.c
+ 	$(DO_SHLIB_CC)
+@@ -1287,11 +1287,11 @@
+ 	$(BUILDDIR)/ref_soft/rw_x11.o
+ 
+ $(BUILDDIR)/ref_soft.$(SHLIBEXT) : $(REF_SOFT_OBJS) $(REF_SOFT_SVGA_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -Xlinker -Map -Xlinker map.out -o $@ $(REF_SOFT_OBJS) \
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -Xlinker -Map -Xlinker map.out -o $@ $(REF_SOFT_OBJS) \
+ 		$(REF_SOFT_SVGA_OBJS) $(SVGALDFLAGS)
+ 
+ $(BUILDDIR)/ref_softx.$(SHLIBEXT) : $(REF_SOFT_OBJS) $(REF_SOFT_X11_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_SOFT_OBJS) \
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_SOFT_OBJS) \
+ 		$(REF_SOFT_X11_OBJS) $(XLDFLAGS)
+ 
+ $(BUILDDIR)/ref_soft/r_aclip.o :      $(REF_SOFT_DIR)/r_aclip.c
+@@ -1431,10 +1431,10 @@
+ 	$(BUILDDIR)/ref_gl/gl_glx.o
+ 
+ $(BUILDDIR)/ref_gl.$(SHLIBEXT) : $(REF_GL_OBJS) $(REF_GL_FXMESA_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_GL_OBJS) $(REF_GL_FXMESA_OBJS) $(GLLDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_GL_OBJS) $(REF_GL_FXMESA_OBJS) $(GLLDFLAGS)
+ 
+ $(BUILDDIR)/ref_glx.$(SHLIBEXT) : $(REF_GL_OBJS) $(REF_GL_GLX_OBJS)
+-	$(CC) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_GL_OBJS) $(REF_GL_GLX_OBJS) $(GLXLDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(SHLIBLDFLAGS) -o $@ $(REF_GL_OBJS) $(REF_GL_GLX_OBJS) $(GLXLDFLAGS)
+ 
+ $(BUILDDIR)/ref_gl/gl_draw.o :        $(REF_GL_DIR)/gl_draw.c
+ 	$(DO_GL_SHLIB_CC)

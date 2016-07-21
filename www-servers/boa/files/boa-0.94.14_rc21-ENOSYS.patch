@@ -1,0 +1,17 @@
+check for sendfile() returning ENOSYS and fall back to standard I/O.
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=330871
+
+diff -Naur boa-0.94.14rc21-orig/src/pipe.c boa-0.94.14rc21/src/pipe.c
+--- boa-0.94.14rc21-orig/src/pipe.c	2007-07-01 10:49:23.000000000 -0600
++++ boa-0.94.14rc21/src/pipe.c	2007-07-01 10:56:56.000000000 -0600
+@@ -215,7 +215,9 @@
+ 	}
+ 	req->ranges->start = sendfile_offset;
+         if (bytes_written < 0) {
+-            if (errno == EWOULDBLOCK || errno == EAGAIN) {
++            if (errno == ENOSYS) {
++                return io_shuffle(req);
++			} else if (errno == EWOULDBLOCK || errno == EAGAIN) {
+                 return -1;          /* request blocked at the pipe level, but keep going */
+             } else if (errno == EINTR) {
+                 goto retrysendfile;

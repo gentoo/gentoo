@@ -1,0 +1,49 @@
+From b6ef265b49d973acc2295f46f0518e0644ba7dbb Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 21 Nov 2011 16:05:27 -0500
+Subject: [PATCH] respect PKG_CONFIG in the build env
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ SConstruct |    9 +++++----
+ 1 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index cb578fe..5bb0fed 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -214,8 +214,9 @@ env['PYTHON'] = sys.executable
+ # explicitly quote them or (better yet) use the "=" form of GNU option
+ # settings.
+ env['STRIP'] = "strip"
++env['PKG_CONFIG'] = "pkg-config"
+ env['CHRPATH'] = 'chrpath'
+-for i in ["AR", "ARFLAGS", "CCFLAGS", "CFLAGS", "CC", "CXX", "CXXFLAGS", "STRIP", "CHRPATH", "LD", "TAR"]:
++for i in ["AR", "ARFLAGS", "CCFLAGS", "CFLAGS", "CC", "CXX", "CXXFLAGS", "STRIP", "PKG_CONFIG", "CHRPATH", "LD", "TAR"]:
+     if os.environ.has_key(i):
+         j = i
+         if i == "LD":
+@@ -407,9 +408,9 @@ cxx = config.CheckCXX()
+ # define a helper function for pkg-config - we need to pass
+ # --static for static linking, too.
+ if env["shared"]:
+-    pkg_config = lambda pkg: ['!pkg-config --cflags --libs %s' %(pkg, )]
++    pkg_config = lambda pkg: ['!%s --cflags --libs %s' %(env['PKG_CONFIG'], pkg, )]
+ else:
+-    pkg_config = lambda pkg: ['!pkg-config --cflags --libs --static %s' %(pkg, )]
++    pkg_config = lambda pkg: ['!%s --cflags --libs --static %s' %(env['PKG_CONFIG'], pkg, )]
+ 
+ # GCC isn't always named gcc, alas.
+ if env['CC'] == 'gcc' or (sys.platform.startswith('freebsd') and env['CC'] == 'cc'):
+@@ -339,7 +340,7 @@ if "help" in ARGLIST:
+ 
+ def CheckPKG(context, name):
+     context.Message( 'Checking for %s... ' % name )
+-    ret = context.TryAction('pkg-config --exists \'%s\'' % name)[0]
++    ret = context.TryAction('%s --exists \'%s\'' % (env['PKG_CONFIG'], name))[0]
+     context.Result( ret )
+     return ret
+ 
+-- 
+1.7.6.1
+

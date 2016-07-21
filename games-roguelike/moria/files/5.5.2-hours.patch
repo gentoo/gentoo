@@ -1,0 +1,30 @@
+diff -ru umoria.orig/source/files.c umoria/source/files.c
+--- umoria.orig/source/files.c	1994-07-21 21:47:22.000000000 -0400
++++ umoria/source/files.c	2010-05-05 14:51:44.334588483 -0400
+@@ -130,19 +130,19 @@
+ 	if (strlen(in_line) > 3)
+ 	  {
+ 	    if (!strncmp(in_line, "SUN:", 4))
+-	      (void) strcpy(days[0], in_line);
++	      (void) snprintf(days[0], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "MON:", 4))
+-	      (void) strcpy(days[1], in_line);
++	      (void) snprintf(days[1], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "TUE:", 4))
+-	      (void) strcpy(days[2], in_line);
++	      (void) snprintf(days[2], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "WED:", 4))
+-	      (void) strcpy(days[3], in_line);
++	      (void) snprintf(days[3], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "THU:", 4))
+-	      (void) strcpy(days[4], in_line);
++	      (void) snprintf(days[4], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "FRI:", 4))
+-	      (void) strcpy(days[5], in_line);
++	      (void) snprintf(days[5], sizeof(days[0]), "%s", in_line);
+ 	    else if (!strncmp(in_line, "SAT:", 4))
+-	      (void) strcpy(days[6], in_line);
++	      (void) snprintf(days[6], sizeof(days[0]), "%s", in_line);
+ 	  }
+       (void) fclose(file1);
+     }

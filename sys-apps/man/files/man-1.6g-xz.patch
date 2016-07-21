@@ -1,0 +1,53 @@
+add support for xz
+
+http://bugs.gentoo.org/302380
+
+--- a/src/makewhatis.sh
++++ b/src/makewhatis.sh
+@@ -230,7 +230,7 @@
+ 	    find $mandir/${pages}$i/. -name '*' $findarg0 $findarg -print | $AWK '
+ 
+ 	    function readline() {
+-              if (use_zcat || use_bzcat || use_lzcat) {
++              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
+ 		result = (pipe_cmd | getline);
+ 		if (result < 0) {
+ 		  print "Pipe error: " pipe_cmd " " ERRNO > "/dev/stderr";
+@@ -245,7 +245,7 @@
+ 	    }
+ 	    
+ 	    function closeline() {
+-              if (use_zcat || use_bzcat || use_lzcat) {
++              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
+ 		return close(pipe_cmd);
+ 	      } else {
+ 		return close(filename);
+@@ -266,7 +266,9 @@
+ 		use_bzcat = match(filename,"\\.bz2");
+               if(!use_bzcat)
+                 use_lzcat = match(filename,"\\.lzma");
+-              if (use_zcat || use_bzcat || use_lzcat ) {
++              if(!use_lzcat)
++                use_xzcat = match(filename,"\\.xz");
++              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
+ 		filename_no_gz = substr(filename, 0, RSTART - 1);
+ 	      } else {
+ 		filename_no_gz = filename;
+@@ -279,13 +281,15 @@
+ 		actual_section = section;
+ 	      }
+ 	      sub(/\..*/, "", progname);
+-              if (use_zcat || use_bzcat || use_lzcat) {
++              if (use_zcat || use_bzcat || use_lzcat || use_xzcat) {
+ 		if (use_zcat) {
+ 		  pipe_cmd = "zcat \"" filename "\"";
+                 } else if (use_bzcat) {
+ 		  pipe_cmd = "bzcat \"" filename "\"";
+-                } else {
++                } else if (use_lzcat) {
+                   pipe_cmd = "lzcat \"" filename "\"";
++                } else {
++                  pipe_cmd = "xzcat \"" filename "\"";
+                 }
+ 		# try to avoid suspicious stuff
+ 		if (filename ~ /[;&|`$(]/) {

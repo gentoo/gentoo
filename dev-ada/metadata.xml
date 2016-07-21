@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-ada category contains libraries and utilities relevant to the
+		Ada programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-ada enthält Bibliotheken und Werkzeuge für die 
+		Programmiersprache Ada.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-ada contiene librerias y utilidades referentes al
+		lenguaje de programación Ada.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-ada カテゴリーにはAdaプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-ada categorie bevat bibliotheken en hulpmiddelen voor het gebruik van
+		de Ada programmeertaal.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-ada chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Ada.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-ada contiene librerie ed utilità per il linguaggio Ada.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-ada contém bibliotecas e utilitários relevantes
+		para a linguagem de programação Ada.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-ada zawiera biblioteki i narzędzia związane z językiem
+		programowania Ada.
+	</longdescription>
+</catmetadata>
+

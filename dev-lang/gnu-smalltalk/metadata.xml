@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>pchrist@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    GNU Smalltalk is a free implementation of the Smalltalk-80
+    language which runs on most versions on Unix and, in general,
+    everywhere you can find a POSIX-compliance library. An uncommon
+    feature of it is that it is well-versed to scripting tasks and
+    headless processing.
+  </longdescription>
+</pkgmetadata>

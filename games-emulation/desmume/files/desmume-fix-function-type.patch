@@ -1,0 +1,22 @@
+diff -Naur a/src/gtk/glx_3Demu.cpp b/src/gtk/glx_3Demu.cpp
+--- a/src/gtk/glx_3Demu.cpp	2014-12-06 21:08:12.628393543 +0100
++++ b/src/gtk/glx_3Demu.cpp	2014-12-06 21:08:26.591393054 +0100
+@@ -31,7 +31,7 @@
+ static GLXContext ctx;
+ static GLXPbuffer pbuf;
+ 
+-void deinit_glx_3Demu(void)
++int deinit_glx_3Demu(void)
+ {
+     Display *dpy = glXGetCurrentDisplay();
+ 
+diff -Naur a/src/gtk/glx_3Demu.h b/src/gtk/glx_3Demu.h
+--- a/src/gtk/glx_3Demu.h	2014-12-06 21:08:12.628393543 +0100
++++ b/src/gtk/glx_3Demu.h	2014-12-06 21:08:23.999393145 +0100
+@@ -20,5 +20,5 @@
+ 
+ #ifdef HAVE_GL_GLX
+ int  init_glx_3Demu(void);
+-void deinit_glx_3Demu(void);
++int  deinit_glx_3Demu(void);
+ #endif

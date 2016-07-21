@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
+  <use>
+    <flag name="plugins">Build support for plugins using librest</flag>
+    <flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">synapse-project</remote-id>
+  </upstream>
+</pkgmetadata>

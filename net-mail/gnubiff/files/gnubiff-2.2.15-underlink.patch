@@ -1,0 +1,12 @@
+Bug #456302
+--- configure.ac	2013-02-15 13:15:01.306855243 +0200
++++ configure.ac	2013-02-15 13:20:07.921188143 +0200
+@@ -120,6 +120,8 @@
+ dnl needed for gold
+ AC_CHECK_LIB([X11],[XSync])
+ 
++AC_CHECK_LIB([gthread-2.0],[g_thread_init])
++
+ dnl GLIB, GTK, ...
+ GTK_REQUIRED="gtk+-3.0 >= 3.0.0"
+ GMODULE_REQUIRED="gmodule-export-2.0 >= 2.4"

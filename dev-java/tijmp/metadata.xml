@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+
+<longdescription>
+JMP is a profiler for java that can be used to trace objects usage and
+method timings. JMP uses the JVMPI interface to gather statistics
+and interact with the JVM. JMP uses a GTK+ interface to show the status.
+</longdescription>
+
+</pkgmetadata>

@@ -1,0 +1,30 @@
+# Fix test errors with python 3.4 - thanks to Ubuntu developer Barry Warsaw.
+
+diff -r d356250e275d mock.py
+--- a/mock.py	Tue Apr 09 14:53:33 2013 +0100
++++ b/mock.py	Wed Feb 26 15:12:18 2014 -0500
+@@ -239,12 +239,21 @@
+     funcopy.__name__ = func.__name__
+     funcopy.__doc__ = func.__doc__
+     #funcopy.__dict__.update(func.__dict__)
+-    funcopy.__module__ = func.__module__
++    try:
++        funcopy.__module__ = func.__module__
++    except AttributeError:
++        pass
+     if not inPy3k:
+         funcopy.func_defaults = func.func_defaults
+         return
+-    funcopy.__defaults__ = func.__defaults__
+-    funcopy.__kwdefaults__ = func.__kwdefaults__
++    try:
++        funcopy.__defaults__ = func.__defaults__
++    except AttributeError:
++        pass
++    try:
++        funcopy.__kwdefaults__ = func.__kwdefaults__
++    except AttributeError:
++        pass
+ 
+ 
+ def _callable(obj):

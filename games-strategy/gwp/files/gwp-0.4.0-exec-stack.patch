@@ -1,0 +1,89 @@
+--- src/starchart.c
++++ src/starchart.c
+@@ -3187,10 +3187,16 @@
+ /**
+  * Initializes starchart constellations.
+  */
++static GSList *planets;
++
++static void add_item (gpointer key, gpointer value, gpointer user_data) {
++  /*    GSList *p_list = (GSList *)user_data; */
++  planets = g_slist_append (planets, value);
++}
++
+ static void 
+ init_starchart_constellations (void)
+ {
+-  GSList *planets = NULL;
+   GSList *ppq[TOTAL_QUADS];
+   GSList *list_nearby = NULL;
+   GwpPlanet *planet_a, *planet_b;
+@@ -3199,10 +3205,6 @@
+   gdouble wx, wy;
+   gdouble ax, ay, bx, by, zoom;
+ 
+-  static void add_item (gpointer key, gpointer value, gpointer user_data) {
+-    /*    GSList *p_list = (GSList *)user_data; */
+-    planets = g_slist_append (planets, value);
+-  }
+ 
+   g_hash_table_foreach (planet_list, (GHFunc)add_item, NULL);
+   
+--- src/vcr.c
++++ src/vcr.c
+@@ -2687,12 +2687,29 @@
+   return( retval );
+ }
+ 
++static gchar *name;
++
++static void foreach_func( gpointer key, gpointer value, gpointer user_data )
++{
++  GwpShip *ship = GWP_SHIP( value );
++  GtkComboBox *box = GTK_COMBO_BOX( lookup_widget( "vcr_comboboxentry_sel_ext_shp_a" ) );
++  gint *idlist = (gint *)g_object_get_data(G_OBJECT(lookup_widget("vcr_comboboxentry_sel_ext_shp_a")), "shipidlist");
++  gint curr = idlist[0];
++
++  if( gwp_ship_is_mine( ship ) )
++  {
++    curr++;
++    idlist[curr] = gwp_object_get_id( GWP_OBJECT(ship) );
++    idlist[0]++;
++    g_sprintf( name, "%03d: ", idlist[curr] );
++    strncat( name, gwp_object_get_name (GWP_OBJECT(ship)), 50 );
++    gtk_combo_box_append_text( box, name );
++  }
++}
+ 
+ void vcr_populate_ship_a_list( GtkWidget *widget, gpointer user_data )
+ {
+-  gchar *name;
+   gint *idlist;
+-  static void foreach_func( gpointer key, gpointer value, gpointer user_data );
+ 
+   /* test if list is already populated */
+   idlist = (gint *)g_object_get_data(G_OBJECT(lookup_widget("vcr_comboboxentry_sel_ext_shp_a")), "shipidlist");
+@@ -2708,23 +2725,7 @@
+   GtkWidget *combox = lookup_widget("vcr_comboboxentry_sel_ext_shp_a");
+   g_object_set_data(G_OBJECT(combox), "shipidlist", idlist );
+ 
+-  void foreach_func( gpointer key, gpointer value, gpointer user_data )
+-  {
+-    GwpShip *ship = GWP_SHIP( value );
+-    GtkComboBox *box = GTK_COMBO_BOX( lookup_widget( "vcr_comboboxentry_sel_ext_shp_a" ) );
+-    gint *idlist = (gint *)g_object_get_data(G_OBJECT(lookup_widget("vcr_comboboxentry_sel_ext_shp_a")), "shipidlist");
+-    gint curr = idlist[0];
+ 
+-    if( gwp_ship_is_mine( ship ) )
+-    {
+-      curr++;
+-      idlist[curr] = gwp_object_get_id( GWP_OBJECT(ship) );
+-      idlist[0]++;
+-      g_sprintf( name, "%03d: ", idlist[curr] );
+-      strncat( name, gwp_object_get_name (GWP_OBJECT(ship)), 50 );
+-      gtk_combo_box_append_text( box, name );
+-    }
+-  }
+ 
+   g_hash_table_foreach( ship_list, (GHFunc) foreach_func, user_data );
+ 

@@ -1,0 +1,14 @@
+--- undelete-0.0.6/undelete.c.orig	2007-08-13 06:46:16.000000000 -0700
++++ undelete-0.0.6/undelete.c	2007-08-13 06:59:10.000000000 -0700
+@@ -198,7 +198,11 @@
+ private:
+   // Add any member variables or functions you may need here.
+   void FreeKeyNames(void);
++#if VDRVERSNUM >= 10507
++  char* OSDLanguage;
++#else
+   int OSDLanguage;
++#endif
+   void TestAndSetOSDLanguage(void);
+   bool ProcessArg(int argc, char *argv[]);
+ #ifdef UND_Debug

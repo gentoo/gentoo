@@ -1,0 +1,29 @@
+--- libs/libMatC/CMakeLists.txt.orig	2011-11-27 01:27:43.000000000 +0100
++++ libs/libMatC/CMakeLists.txt		2012-01-29 14:39:19.842402326 +0100
+@@ -1,10 +1,14 @@
+ 
+ INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDE_DIR} ${QT_QTCORE_INCLUDE_DIR} ${QT_QTGUI_INCLUDE_DIR} )
+ 
++IF( USE_LLVM )
++  set(LLVM_SOURCES "CJitFuncClang.cpp")
++endif( USE_LLVM )
++
+ ADD_LIBRARY( MatC 
+ 	JITFactory.cpp
+ 	CJitFunc.cpp
+-	CJitFuncClang.cpp
++	${LLVM_SOURCES}
+ 	CArray.cpp
+ )
+ 
+--- libs/libMatC.orig/JITFactory.cpp	2011-11-27 01:27:43.000000000 +0100
++++ libs/libMatC/JITFactory.cpp		2012-01-29 14:53:17.296686846 +0100
+@@ -1,5 +1,7 @@
+ #include "JITFactory.hpp"
+-#include "CJitFuncClang.hpp"
++#ifdef HAVE_LLVM
++# include "CJitFuncClang.hpp"
++#endif
+ 
+ JITFuncBase* JITFactory::GetJITFunc(Interpreter *eval)
+ {

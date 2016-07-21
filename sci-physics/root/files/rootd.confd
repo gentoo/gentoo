@@ -1,0 +1,8 @@
+# conf.d file for root daemon
+
+# User to run as (default is `rootd')
+ROOTD_USER="rootd"
+
+# Please refer to the rootd(1) man(1) page for more information on 
+# command line parameters. 
+ROOTD_OPTS=""

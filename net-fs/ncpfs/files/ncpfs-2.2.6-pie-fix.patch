@@ -1,0 +1,31 @@
+diff -Naurp ncpfs-2.2.6.orig/lib/Makefile.in ncpfs-2.2.6/lib/Makefile.in
+--- ncpfs-2.2.6.orig/lib/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/lib/Makefile.in	2014-08-12 21:05:24.349191234 -0400
+@@ -57,7 +57,7 @@ NDS_CFLAGS := $(BASE_CFLAGS) -DPORTABLE
+ CFLAGS_ncplib.o   := -DNWSFIND=\"$(bindir)/nwsfind\"
+ CFLAGS_cfgfile.o  := -DGLOBALCFGFILE=\"$(sysconfdir)/ncpfs.conf\"
+ 
+-STATIC_CFLAGS    := $(CFLAGS) $(CCFLAGS) $(REENTRANT_CFLAGS) @FFUNCTION_SECTIONS@
++STATIC_CFLAGS    := $(CFLAGS) $(CCFLAGS) $(REENTRANT_CFLAGS) $(PIC_FLAGS) @FFUNCTION_SECTIONS@
+ SHARED_CFLAGS    := $(CFLAGS) $(CCFLAGS) $(REENTRANT_CFLAGS) $(PIC_FLAGS) $(SHARED_VLINK_CFLAGS)
+ 
+ .PHONY : all dep install install-dev clean mrproper distclean
+diff -Naurp ncpfs-2.2.6.orig/sutil/Makefile.in ncpfs-2.2.6/sutil/Makefile.in
+--- ncpfs-2.2.6.orig/sutil/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/sutil/Makefile.in	2014-08-12 21:05:24.349191234 -0400
+@@ -34,11 +34,12 @@ endif
+ 
+ CFLAGS_ncpmount.o = -DNCPMOUNT=1 -DMAKE_NCPLIB
+ CFLAGS_ncpmap.o = -DNCPMAP=1 -DMAKE_NCPLIB
+-CFLAGS_ncplogin.o = -DMAKE_NCPLIB
++CFLAGS_ncplogin.o = -DMAKE_NCPLIB 
+ CFLAGS_ncpm_common.o = -DNWMSG=\"$(sbindir)/nwmsg\"
+ LDFLAGS_ncpmount = ncpm_common.o mount_login.o
+-LDFLAGS_ncplogin = ncpm_common.o mount_login.o
+-LDFLAGS_ncpmap = ncpm_common.o
++LDFLAGS_ncplogin = -pie ncpm_common.o mount_login.o
++LDFLAGS_ncpmap = -pie ncpm_common.o
++LDFLAGS_nwsfind = -pie
+ 
+ .PHONY : all install install-dev dep clean mrproper distclean
+ .PHONY : default

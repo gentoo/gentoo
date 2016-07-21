@@ -1,0 +1,11 @@
+diff -r -U2 root-6.04.06/documentation/primer/template.tex root-6.04.06_new/documentation/primer/template.tex
+--- root-6.04.06/documentation/primer/template.tex	2015-10-13 12:41:18.000000000 +0200
++++ root-6.04.06_new/documentation/primer/template.tex	2015-12-22 20:38:25.454396212 +0100
+@@ -130,4 +130,6 @@
+ \setlength{\parskip}{6pt plus 2pt minus 1pt}
+ \setlength{\emergencystretch}{3em}  % prevent overfull lines
++\providecommand{\tightlist}{%
++  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ $if(numbersections)$
+ \setcounter{secnumdepth}{5}
+Only in root-6.04.06_new/documentation/primer: template.tex~

@@ -1,0 +1,11 @@
+--- a/urlview.c
++++ b/urlview.c
+@@ -40,6 +40,8 @@
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ 
++#include "quote.h"
++
+ #ifdef HAVE_REGEX_H
+ #include <regex.h>
+ #else

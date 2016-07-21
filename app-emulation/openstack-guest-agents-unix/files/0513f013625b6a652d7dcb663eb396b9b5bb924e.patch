@@ -1,0 +1,60 @@
+From 84e1a32ee2b8d0607f2868365aa46aaea58f014c Mon Sep 17 00:00:00 2001
+From: Nate House <nathan.house@rackspace.com>
+Date: Mon, 20 Oct 2014 18:50:52 -0500
+Subject: [PATCH] Updated regexp to work with config headers added sometime ago
+
+---
+ tests/test_resetnetwork_interfaces.py | 26 +++++++++++---------------
+ 1 file changed, 11 insertions(+), 15 deletions(-)
+
+diff --git a/tests/test_resetnetwork_interfaces.py b/tests/test_resetnetwork_interfaces.py
+index dc8e7e7..b12b84c 100644
+--- a/tests/test_resetnetwork_interfaces.py
++++ b/tests/test_resetnetwork_interfaces.py
+@@ -344,17 +344,13 @@ def test_gentoo_legacy_ipv4(self):
+ 
+         generated = outfiles['net'].rstrip()
+         # (todo: naterh) Update tests to mock for both ifconfig/iproute2
+-        pattern = ('modules=\( "ifconfig|iproute2" \)\n*' +
++        # (todo: naterh) Remove excessive unused kwargs
++        pattern = ('.*?modules="(ifconfig|iproute2)"\n*' +
+                    '# Label public\n*' +
+                    'config_eth0=\(\s*"192.0.2.42 netmask 255.255.255.0"\s*\)\n*' +
+                    'routes_eth0=\(\s*"default via 192.0.2.1"\s*\)\n*' +
+-                   'dns_servers_eth0=\(\s*"192.0.2.2"\s*\)').format(
+-                       ip=interface['ipv4'][0][0],
+-                       netmask=interface['ipv4'][0][1],
+-                       gateway=interface['gateway4'],
+-                       dns=interface['dns'][0]
+-                   )
+-        expected_regex = re.compile(pattern, re.MULTILINE)
++                   'dns_servers_eth0=\(\s*"192.0.2.2"\s*\)')
++        expected_regex = re.compile(pattern, re.DOTALL)
+ 
+         self.assertRegexpMatches(generated, expected_regex)
+ 
+@@ -373,17 +369,17 @@ def test_gentoo_legacy_ipv6(self):
+ 
+         # (todo: naterh) Update tests to mock for both ifconfig/iproute2
+         generated = outfiles['net'].rstrip()
+-        pattern = ('modules=\( "ifconfig|iproute2" \)\n*' +
++        pattern = ('.*?modules="(ifconfig|iproute2)"\n*' +
+                    '# Label public\n*' +
+                    'config_eth0=\(\s*"{ip}/{netmask_len}"\s*\)\n*' +
+                    'routes_eth0=\(\s*"default via {gateway}"\s*\)\n*' +
+                    'dns_servers_eth0=\(\s*"{dns}"\s*\)').format(
+-                       ip=interface['ipv6'][0][0],
+-                       netmask_len=interface['ipv6'][0][1],
+-                       gateway=interface['gateway6'],
+-                       dns=interface['dns'][0]
+-                   )
+-        expected_regex = re.compile(pattern, re.MULTILINE)
++            ip=interface['ipv6'][0][0],
++            netmask_len=interface['ipv6'][0][1],
++            gateway=interface['gateway6'],
++            dns=interface['dns'][0]
++        )
++        expected_regex = re.compile(pattern, re.DOTALL)
+ 
+         self.assertRegexpMatches(generated, expected_regex)
+ 

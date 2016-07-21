@@ -1,0 +1,138 @@
+From 36e3816a89fd03261d7a50163a4b36a1fa4baded Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Tue, 3 Nov 2015 17:09:02 +0100
+Subject: [PATCH] configure: allow more explicit control over dependencies
+
+Previously the 'checkLinking <lib> optional' strings caused
+trouble for distributions, because these checks are automagic, as in:
+even if the user doesn't want ldap support, but ldap exists on the
+system, it will still be used, possibly causing problems if
+ldap is removed afterwards.
+
+Making these things explicit fixes those problems. Default is
+still automagic, unless --enable-<feature> or --disable-<feature>
+is passed.
+---
+ configure | 72 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 66 insertions(+), 6 deletions(-)
+
+diff --git a/configure b/configure
+index 0c4b5cf..90ee783 100755
+--- a/configure
++++ b/configure
+@@ -22,6 +22,10 @@ ARG_FHSMAKE="$PWD/fhs-postinstall.make"
+ ARG_WITH_GNUSTEP=0
+ ARG_WITH_DEBUG=1
+ ARG_WITH_STRIP=1
++ARG_WITH_MYSQL=auto
++ARG_WITH_POSTGRESQL=auto
++ARG_WITH_OPENLDAP=auto
++ARG_WITH_XML=auto
+ 
+ DARG_GNUSTEP_SH="$ARG_GSMAKE/GNUstep.sh"
+ DARG_IS_FHS=1
+@@ -65,10 +69,16 @@ Installation directories:
+   --frameworks=DIR        build frameworks and install in DIR
+   --gsmake=PATH           path to gnustep-make tree
+   --configmake=PATH       path to the config file being created
++
++Build flags:
+   --with-gnustep          install in GNUstep tree
+   --enable-debug          turn on debugging and compile time warnings
+   --enable-strip          turn on stripping of debug symbols
+   --with-ssl=SSL          specify ssl library (none, libssl, gnutls, auto) [auto]
++  --enable-xml            Enable xml support (auto if unspecified)
++  --enable-mysql          Enable mysql support (auto if unspecified)
++  --enable-postgresql     Enable postgresql support (auto if unspecified)
++  --enable-openldap       Enable ldap support (auto if unspecified)
+ 
+ _ACEOF
+ 
+@@ -475,9 +485,22 @@ checkDependencies() {
+   cfgwrite ""
+   cfgwrite "# library dependencies"
+   cfgwrite "BASE_LIBS := `gnustep-config --base-libs`"
+-  
+-  checkLinking "xml2"        optional;
+-  checkLinking "ldap"        optional;
++
++  if test "x$ARG_WITH_XML" = "xauto" ; then
++    checkLinking "xml2"        optional;
++  elif test $ARG_WITH_XML = 1 ; then
++    checkLinking "xml2"        required;
++  else
++    cfgwrite "HAS_LIBRARY_xml2=no"
++  fi
++
++  if test "x$ARG_WITH_OPENLDAP" = "xauto" ; then
++    checkLinking "ldap"        optional;
++  elif test $ARG_WITH_OPENLDAP = 1 ; then
++    checkLinking "ldap"        required;
++  else
++    cfgwrite "HAS_LIBRARY_ldap=no"
++  fi
+ 
+   if test "x$ARG_CFGSSL" = "xauto"; then
+       checkLinking "ssl"     optional;
+@@ -490,10 +513,24 @@ checkDependencies() {
+       checkLinking "gnutls"  required;
+   fi
+ 
+-  checkLinking "pq"          optional;
++  if test "x$ARG_WITH_POSTGRESQL" = "xauto" ; then
++    checkLinking "pq"          optional;
++  elif test $ARG_WITH_POSTGRESQL = 1 ; then
++    checkLinking "pq"          required;
++  else
++    cfgwrite "HAS_LIBRARY_pq=no"
++  fi
++
+ #  checkLinking "sqlite3"     optional;
+   cfgwrite "HAS_LIBRARY_sqlite3=no"
+-  checkLinking "mysqlclient" optional;
++
++  if test "x$ARG_WITH_MYSQL" = "xauto" ; then
++    checkLinking "mysqlclient"          optional;
++  elif test $ARG_WITH_MYSQL = 1 ; then
++    checkLinking "mysqlclient" required;
++  else
++    cfgwrite "HAS_LIBRARY_mysqlclient=no"
++  fi
+ }
+ 
+ runIt() {
+@@ -575,7 +612,30 @@ processOption() {
+         extractFuncValue $1;
+         ARG_CFGSSL="$VALUE"
+ 	;;
+-
++    "x--enable-mysql")
++        ARG_WITH_MYSQL=1
++	;;
++    "x--enable-postgresql")
++        ARG_WITH_POSTGRESQL=1
++	;;
++    "x--enable-openldap")
++        ARG_WITH_OPENLDAP=1
++	;;
++    "x--enable-xml")
++        ARG_WITH_XML=1
++	;;
++    "x--disable-mysql")
++        ARG_WITH_MYSQL=0
++	;;
++    "x--disable-postgresql")
++        ARG_WITH_POSTGRESQL=0
++	;;
++    "x--disable-openldap")
++        ARG_WITH_OPENLDAP=0
++	;;
++    "x--disable-xml")
++        ARG_WITH_XML=0
++	;;
+     *) echo "error: cannot process argument: $1"; exit 1; ;;
+   esac
+ }
+-- 
+2.6.1
+

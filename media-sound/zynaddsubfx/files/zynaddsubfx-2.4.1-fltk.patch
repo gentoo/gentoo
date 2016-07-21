@@ -1,0 +1,38 @@
+Index: ZynAddSubFX-2.4.1/src/CMakeLists.txt
+===================================================================
+--- ZynAddSubFX-2.4.1.orig/src/CMakeLists.txt
++++ ZynAddSubFX-2.4.1/src/CMakeLists.txt
+@@ -96,24 +96,7 @@ if(FltkGui)
+     #message(STATUS "FLTK_LIBRARIES: ${FLTK_LIBRARIES}")
+     #message(STATUS "FLTK_MATH_LIBRARY: ${FLTK_MATH_LIBRARY}")
+ 
+-    #UGLY WORKAROUND
+-    find_program (MYFLTK_CONFIG fltk-config)
+-    if (MYFLTK_CONFIG)
+-        execute_process (COMMAND ${MYFLTK_CONFIG} --ldflags OUTPUT_VARIABLE MYFLTK_LDFLAGS)
+-        string(STRIP ${MYFLTK_LDFLAGS} MYFLTK_LIBRARIES)
+-    endif()
+-    mark_as_advanced(FORCE FLTK_BASE_LIBRARY)
+-    mark_as_advanced(FORCE FLTK_CONFIG_SCRIPT)
+-    mark_as_advanced(FORCE FLTK_DIR)
+-    mark_as_advanced(FORCE FLTK_FLUID_EXECUTABLE)
+-    mark_as_advanced(FORCE FLTK_FORMS_LIBRARY)
+-    mark_as_advanced(FORCE FLTK_GL_LIBRARY)
+-    mark_as_advanced(FORCE FLTK_IMAGES_LIBRARY)
+-    mark_as_advanced(FORCE FLTK_INCLUDE_DIR)
+-    mark_as_advanced(FORCE FLTK_MATH_LIBRARY)
+-
+-
+-    set(GUI_LIBRARIES ${FLTK_LIBRARIES} ${MYFLTK_LIBRARIES} ${OPENGL_LIBRARIES} zynaddsubfx_gui)
++    set(GUI_LIBRARIES ${FLTK_LIBRARIES} ${OPENGL_LIBRARIES} zynaddsubfx_gui)
+     add_definitions(-DFLTK_GUI)
+ 
+     message(STATUS "Will build fltk gui")
+@@ -121,6 +104,7 @@ if(FltkGui)
+ 	include_directories(
+ 			"${CMAKE_CURRENT_SOURCE_DIR}/UI"
+ 			"${CMAKE_CURRENT_BINARY_DIR}/UI"
++                        ${FLTK_INCLUDE_DIR}
+ 			)
+ 
+ 	add_subdirectory(UI)

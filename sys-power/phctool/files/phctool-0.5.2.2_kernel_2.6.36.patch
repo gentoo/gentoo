@@ -1,0 +1,79 @@
+--- phctool-0.5.2-2/phctool/inc/libs/cpuinfo.py
++++ phctool-0.5.2-2/phctool/inc/libs/cpuinfo.py
+@@ -14,33 +14,49 @@
+ 
+ 
+ 	def _get_acpi_cpus(self):
+-	##count number of CPUs on this system using acpi proc interface
+-	##since we need acpi this i a good way to count CPUs
+-	##we also will remember the Directory-Name because on single CPU
+-	##systems the Dir may be named CPU while on Multicores they are indexed (CPU0, CPU1) ..
+-		directory="/proc/acpi/processor/"
+-		for f in os.listdir(directory):				##iterate the directory
+-			pathname = os.path.join(directory, f)		##
+-        		if os.path.isdir(pathname):			##is the object we found really a (sub-)directory?
+-				##We open the info-file to get the ID to this CPU,
+-				##i don't know if this really could happen but the ID may differ from 
+-				##from the Path iterator (maybe one CPU is supported and another isn't)
+-				if os.path.exists(pathname+'/info'):
+-					file = open(pathname+'/info', 'r');
+-					for line in file:
+-		   				if string.find(line,":"):
+-		     					content = line.split(":");
+-		    	 				if len(content)>1:
+-								info_ident=content[0].strip();
+-								info_value=content[1].strip();
+-								if info_ident == "processor id":
+-									cpunr=info_value
+-									self.data[cpunr]={}
+-									self.data[cpunr]['acpi']={}
+-									self.data[cpunr]['acpi']['exist']=True
+-									self.data[cpunr]['acpi']['acpiname']=f	##remember ACPI Pathname
+-				else:
+-					self.data[cpunr]['acpi']['exist']=False
++		# We need to ignore /proc/acpi/processor as it's becoming deprecated
++		# A good solution might be a look in online cpus, but it doesn't mean they are surely ACPI-supported
++		if os.path.exists('/sys/devices/system/cpu/online'):
++			file = open('/sys/devices/system/cpu/online', 'r');
++			for line in file:
++				if string.find(line,"-"):
++					content = line.split("-");
++					for val in content:
++						cpunr=val.strip();
++						self.data[cpunr]={}
++						self.data[cpunr]['acpi']={}
++						self.data[cpunr]['acpi']['exist']=True
++		# This sounds useful just for throttling, which is managed better by other stuff... I'll keep just for compatibility
++						if os.path.exists('/proc/acpi/processor/CPU'+cpunr):
++							##remember ACPI Pathname
++							self.data[cpunr]['acpi']['acpiname']='/proc/acpi/processor/CPU'+cpunr
++						else:
++							self.data[cpunr]['acpi']['exist']=False
++		# For some reason we have to fallback on the old function...
++		else:
++			directory="/proc/acpi/processor/"
++			for f in os.listdir(directory):				##iterate the directory
++				pathname = os.path.join(directory, f)		##
++        			if os.path.isdir(pathname):			##is the object we found really a (sub-)directory?
++					##We open the info-file to get the ID to this CPU,
++					##i don't know if this really could happen but the ID may differ from 
++					##from the Path iterator (maybe one CPU is supported and another isn't)
++					if os.path.exists(pathname+'/info'):
++						file = open(pathname+'/info', 'r');
++						for line in file:
++			   				if string.find(line,":"):
++			     					content = line.split(":");
++			    	 				if len(content)>1:
++									info_ident=content[0].strip();
++									info_value=content[1].strip();
++									if info_ident == "processor id":
++										cpunr=info_value
++										self.data[cpunr]={}
++										self.data[cpunr]['acpi']={}
++										self.data[cpunr]['acpi']['exist']=True
++										self.data[cpunr]['acpi']['acpiname']=f	##remember ACPI Pathname
++					else:
++						self.data[cpunr]['acpi']['exist']=False
+ 		
+ 
+ 	def _get_cpuinfos(self):

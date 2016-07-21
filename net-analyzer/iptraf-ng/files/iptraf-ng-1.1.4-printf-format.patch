@@ -1,0 +1,11 @@
+--- a/src/ipfilter.c
++++ b/src/ipfilter.c
+@@ -146,7 +146,7 @@
+ 				snprintf(msgstr, 60,
+ 					 "Invalid protocol input at or near token \"%s\"",
+ 					 bptr);
+-				tui_error(ANYKEY_MSG, msgstr);
++				tui_error(ANYKEY_MSG, "%s", msgstr);
+ 				doagain = 1;
+ 			} else
+ 				doagain = 0;

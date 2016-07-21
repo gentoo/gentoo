@@ -1,0 +1,20 @@
+--- wmacpimon.c	2004-07-08 14:16:22.184359328 +0200
++++ wmacpimon.c	2004-07-08 14:15:59.677780848 +0200
+@@ -314,7 +314,7 @@
+     acpinfo = calloc(1, sizeof(ACPInfo));
+     dockapp->blink = OFF;
+     init_acpinfo();
+-	strcpy(prcfile, ".wmacpimon.prc");
++	strcpy(prcfile, "/var/tmp/wmacpimon.prc");
+ 	
+     /* parse command-line options */
+     while ((ch = getopt(argc, argv, "pd:b:c:s:h")) != EOF) {
+@@ -345,7 +345,7 @@
+ 	    		printf("wmacpimon v%s (c) 2002 Costantino Pistagna (valvoline@vrlteam.org)\n"
+ 					"usage: wmacpimon [-d] [-b] [-p] [-c] [-s]\n\n"
+ 		   			"-d display\tdisplay on remote display <display>\n"
+-		   			"-b value\tprcfile for wmacpimond comunication (default: ~/.wmacpimon.prc)\n"
++		   			"-b value\tprcfile for wmacpimond comunication (default: /var/tmp/wmacpimon.prc)\n"
+ 		  			"-p\t\tset powersave mode\n"
+ 		  			"-c value\tset critical level (default to 10)\n"
+ 					"-s value\tshutdown pc when battery value (percent) has reached\n"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chainsaw@gentoo.org</email>
+		<name>Tony Vroon</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
+	</maintainer>
+	<use>
+		<flag name="aesicm">Use AES ICM cryptographic algorithm</flag>
+		<flag name="console">
+			Use /dev/console instead of stdout for error messages
+		</flag>
+		<flag name="openssl">Use OpenSSL crypto primitives</flag>
+		<flag name="syslog">Use syslog for error messages</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cisco/libsrtp</remote-id>
+		<remote-id type="sourceforge">srtp</remote-id>
+	</upstream>
+</pkgmetadata>

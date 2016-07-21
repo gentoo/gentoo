@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		To store passwords securely, they should be salted,
+		then hashed with a slow hash function. This library
+		uses PBKDF1-SHA256, and handles all the details.
+		It uses the cryptohash package for speed; if you need
+		a pure Haskell library, pwstore-purehaskell has the
+		exact same API, but uses only pure Haskell. It is
+		about 25 times slower than this package, but still
+		quite usable.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">PeterScott/pwstore</remote-id>
+	</upstream>
+</pkgmetadata>

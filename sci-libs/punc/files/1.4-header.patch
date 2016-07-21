@@ -1,0 +1,26 @@
+diff --git a/src/vf2c/punc/vsuperlu.h b/src/vf2c/punc/vsuperlu.h
+index d0e7fb3..cb7977a 100644
+--- a/src/vf2c/punc/vsuperlu.h
++++ b/src/vf2c/punc/vsuperlu.h
+@@ -34,7 +34,7 @@
+ 
+ #include <punc/punc_base.h>
+ 
+-#include <punc/slu_ddefs.h>
++#include <superlu/slu_ddefs.h>
+ 
+ #endif /* _VSUPERLU_H_ */
+ 
+diff --git a/src/vf2c/punc/vumfpack.h b/src/vf2c/punc/vumfpack.h
+index 06896f3..e90aca6 100644
+--- a/src/vf2c/punc/vumfpack.h
++++ b/src/vf2c/punc/vumfpack.h
+@@ -34,7 +34,7 @@
+ 
+ #include <punc/punc_base.h>
+ 
+-#include <punc/umfpack.h>
++#include <umfpack.h>
+ 
+ #endif /* _VUMFPACK_H_ */
+ 

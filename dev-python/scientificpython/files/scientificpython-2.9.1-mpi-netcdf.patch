@@ -1,0 +1,29 @@
+--- setup.py
++++ setup.py
+@@ -2,7 +2,7 @@
+ 
+ from distutils.core import setup, Extension
+ from distutils.command.install_headers import install_headers
+-import os, sys, platform
++import os, sys, platform, subprocess
+ from glob import glob
+ 
+ class Dummy:
+@@ -103,13 +103,16 @@
+         netcdf_include = os.path.join(netcdf_prefix, 'include')
+         netcdf_h_file = os.path.join(netcdf_prefix, 'include', 'netcdf.h')
+         netcdf_lib = os.path.join(netcdf_prefix, 'lib')
++        mpi_cflags = subprocess.Popen(["mpicc", "-showme:compile"], stdout=subprocess.PIPE).communicate()[0].rstrip().split()
++        mpi_ldflags = subprocess.Popen(["mpicc", "-showme:link"], stdout=subprocess.PIPE).communicate()[0].rstrip().split()
+     ext_modules = [Extension('Scientific_netcdf',
+                              ['Src/Scientific_netcdf.c'],
+                              include_dirs=['Include', netcdf_include]
+                                           + arrayobject_h_include,
+                              library_dirs=[netcdf_lib],
+                              libraries = ['netcdf'],
+-                             extra_compile_args=extra_compile_args)]
++                             extra_compile_args=extra_compile_args + mpi_cflags,
++                             extra_link_args=mpi_ldflags)]
+ 
+ try:
+     # Add code for including documentation in Mac packages

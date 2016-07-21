@@ -1,0 +1,356 @@
+diff -Naur common-orig/Makefile umoria/unix/Makefile
+--- common-orig/Makefile	2003-12-09 10:06:19.000000000 -0500
++++ umoria/unix/Makefile	2003-12-09 10:07:12.000000000 -0500
+@@ -14,9 +14,9 @@
+ CFLAGS = -O
+ 
+ # For BSD Systems
+-CURSES = -lcurses -ltermcap
++# CURSES = -lcurses -ltermcap
+ # For SYS V Systems
+-# CURSES = -lcurses
++CURSES = `pkg-config ncurses --libs`
+ # For XENIX, some XENIX systems may need -ltinfo
+ # CURSES = -ltcap -ltermcap -lx
+ 
+diff -Naur common-orig/death.c umoria/source/death.c
+--- common-orig/death.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/death.c	2003-12-09 10:06:56.000000000 -0500
+@@ -175,10 +175,12 @@
+ /* The following code is provided especially for systems which		-CJS-
+    have no flock system call. It has never been tested.		*/
+ 
++#ifndef LOCK_EX
+ #define LOCK_EX	1
+ #define LOCK_SH	2
+ #define LOCK_NB	4
+ #define LOCK_UN	8
++#endif
+ 
+ /* An flock HACK.  LOCK_SH and LOCK_EX are not distinguished.  DO NOT release
+    a lock which you failed to set!  ALWAYS release a lock you set! */
+diff -Naur common-orig/io.c umoria/source/io.c
+--- common-orig/io.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/io.c	2003-12-09 10:06:56.000000000 -0500
+@@ -62,6 +62,7 @@
+ 
+ 
+ #include <ctype.h>
++#include <termios.h>
+ 
+ #if defined(SYS_V) && defined(lint)
+ /* for AIX, prevent hundreds of unnecessary lint errors, must define before
+@@ -334,7 +335,9 @@
+ #ifdef  __386BSD__
+   (void) signal (SIGTSTP, (sig_t)suspend);
+ #else
+-  (void) signal (SIGTSTP, suspend);
++  /* (void) signal (SIGTSTP, suspend); */
++  /* libc6 defaults to BSD, this expects SYSV */
++  (void) sysv_signal (SIGTSTP, suspend);
+ #endif
+ #endif
+ #endif
+diff -Naur common-orig/misc3.c umoria/source/misc3.c
+--- common-orig/misc3.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/misc3.c	2003-12-09 10:06:56.000000000 -0500
+@@ -1249,8 +1249,7 @@
+ {
+   int i;
+   register inven_type *i_ptr;
+-  vtype prt2;
+-  bigvtype prt1;
++  bigvtype prt1, prt2;
+ #ifdef ATARIST_MWC
+   int32u holder;
+ #endif
+diff -Naur common-orig/misc4.c umoria/source/misc4.c
+--- common-orig/misc4.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/misc4.c	2003-12-09 10:06:56.000000000 -0500
+@@ -33,7 +33,7 @@
+ void scribe_object()
+ {
+   int item_val, j;
+-  vtype out_val, tmp_str;
++  bigvtype out_val, tmp_str;
+ 
+   if (inven_ctr > 0 || equip_ctr > 0)
+     {
+diff -Naur common-orig/moria1.c umoria/source/moria1.c
+--- common-orig/moria1.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/moria1.c	2003-12-09 10:06:56.000000000 -0500
+@@ -332,8 +332,8 @@
+ 	{
+ 	  objdes(tmp_val, &inventory[i], TRUE);
+ 	  tmp_val[lim] = 0;	 /* Truncate if too long. */
+-	  (void) sprintf(out_val[i], "  %c) %s", 'a'+i, tmp_val);
+-	  l = strlen(out_val[i]);
++	  (void) sprintf(out_val[i], "%c) %s", 'a'+i, tmp_val);
++	  l = strlen(out_val[i]) + 2;
+ 	  if (weight)
+ 	    l += 9;
+ 	  if (l > len)
+@@ -352,9 +352,12 @@
+ 	{
+ 	  /* don't need first two spaces if in first column */
+ 	  if (col == 0)
+-	    prt(&out_val[i][2], current_line, col);
+-	  else
+ 	    prt(out_val[i], current_line, col);
++	  else
++	    {
++	      put_buffer("  ", current_line, col);
++	      prt(out_val[i], current_line, col+2);
++	    }
+ 	  if (weight)
+ 	    {
+ 	      total_weight = inventory[i].weight*inventory[i].number;
+@@ -466,9 +469,9 @@
+ 	    }
+ 	  objdes(prt2, &inventory[i], TRUE);
+ 	  prt2[lim] = 0; /* Truncate if necessary */
+-	  (void) sprintf(out_val[line], "  %c) %-14s: %s", line+'a',
+-			 prt1, prt2);
+-	  l = strlen(out_val[line]);
++	  (void) sprintf(out_val[line], "%c) %-14s: %s", line+'a',
++	    prt1, prt2);
++	  l = strlen(out_val[line]) + 2;
+ 	  if (weight)
+ 	    l += 9;
+ 	  if (l > len)
+@@ -488,9 +491,12 @@
+ 	{
+ 	  /* don't need first two spaces when using whole screen */
+ 	  if (col == 0)
+-	    prt(&out_val[line][2], line+1, col);
+-	  else
+ 	    prt(out_val[line], line+1, col);
++	  else
++	    {
++	      put_buffer("  ", line+1, col);
++	      prt(out_val[line], line+1, col+2);
++	    }
+ 	  if (weight)
+ 	    {
+ 	      total_weight = i_ptr->weight*i_ptr->number;
+diff -Naur common-orig/signals.c umoria/source/signals.c
+--- common-orig/signals.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/source/signals.c	2003-12-09 10:06:56.000000000 -0500
+@@ -113,7 +113,11 @@
+   if(error_sig >= 0)	/* Ignore all second signals. */
+     {
+       if(++signal_count > 10)	/* Be safe. We will die if persistent enough. */
++#ifdef __FreeBSD__
+ 	(void) signal(sig, SIG_DFL);
++#else
++	(void) sysv_signal(sig, SIG_DFL);
++#endif
+       return;
+     }
+   error_sig = sig;
+@@ -126,7 +126,11 @@
+       )
+     {
+       if (death)
++#ifdef __FreeBSD__
+ 	(void) signal(sig, SIG_IGN);		/* Can't quit after death. */
++#else
++	(void) sysv_signal(sig, SIG_IGN);		/* Can't quit after death. */
++#endif
+       else if (!character_saved && character_generated)
+ 	{
+ 	  if (!get_check("Really commit *Suicide*?"))
+@@ -137,7 +137,11 @@
+ 	      put_qio();
+ 	      error_sig = -1;
+ #ifdef USG
++#ifdef __FreeBSD__
+ 	      (void) signal(sig, signal_handler);/* Have to restore handler. */
++#else
++	      (void) sysv_signal(sig, signal_handler);/* Have to restore handler. */
++#endif
+ #else
+ 	      (void) sigsetmask(smask);
+ #endif
+@@ -179,7 +179,11 @@
+   restore_term();
+ #if !defined(MSDOS) && !defined(AMIGA) && !defined(ATARIST_TC)
+   /* always generate a core dump */
++#ifdef __FreeBSD__
+   (void) signal(sig, SIG_DFL);
++#else
++  (void) sysv_signal(sig, SIG_DFL);
++#endif
+   (void) kill(getpid(), sig);
+   (void) sleep(5);
+ #endif
+@@ -199,7 +199,11 @@
+ #if defined(atarist) && defined(__GNUC__)
+   (void) signal(SIGTSTP, (__Sigfunc)SIG_IGN);
+ #else
++#ifdef __FreeBSD__
+   (void) signal(SIGTSTP, SIG_IGN);
++#else
++  (void) sysv_signal(SIGTSTP, SIG_IGN);
++#endif
+ #endif
+ #ifndef USG
+   mask = sigsetmask(0);
+@@ -220,7 +220,11 @@
+ #ifdef  __386BSD__
+   (void) signal(SIGTSTP, (sig_t)suspend);
+ #else
++#ifdef __FreeBSD__
+   (void) signal(SIGTSTP, suspend);
++#else
++  (void) sysv_signal(SIGTSTP, suspend);
++#endif
+ #endif
+ #endif
+ #ifndef USG
+@@ -237,7 +237,11 @@
+ {
+ #if !defined(ATARIST_MWC) && !defined(ATARIST_TC)
+   /* No signals for Atari ST compiled with MWC or TC.  */
++#ifdef __FreeBSD__
+   (void) signal(SIGINT, signal_handler);
++#else
++  (void) sysv_signal(SIGINT, signal_handler);
++#endif
+ 
+ #if defined(atarist) && defined(__GNUC__)
+   /* Atari ST compiled with GNUC has most signals, but we need a cast
+@@ -259,8 +259,13 @@
+ 
+ #else
+   /* Everybody except the atari st.  */
++#ifdef __FreeBSD__
+   (void) signal(SIGINT, signal_handler);
+   (void) signal(SIGFPE, signal_handler);
++#else
++  (void) sysv_signal(SIGINT, signal_handler);
++  (void) sysv_signal(SIGFPE, signal_handler);
++#endif
+ 
+ #if defined(MSDOS)
+   /* many fewer signals under MSDOS */
+@@ -278,30 +278,61 @@
+ 
+   /* Everybody except Atari, MSDOS, and Amiga.  */
+   /* Ignore HANGUP, and let the EOF code take care of this case. */
++#ifdef __FreeBSD__
+   (void) signal(SIGHUP, SIG_IGN);
+   (void) signal(SIGQUIT, signal_handler);
+   (void) signal(SIGILL, signal_handler);
+   (void) signal(SIGTRAP, signal_handler);
+   (void) signal(SIGIOT, signal_handler);
++#else
++  (void) sysv_signal(SIGHUP, SIG_IGN);
++  (void) sysv_signal(SIGQUIT, signal_handler);
++  (void) sysv_signal(SIGILL, signal_handler);
++  (void) sysv_signal(SIGTRAP, signal_handler);
++  (void) sysv_signal(SIGIOT, signal_handler);
++#endif
+ #ifdef SIGEMT  /* in BSD systems */
+   (void) signal(SIGEMT, signal_handler);
+ #endif
+ #ifdef SIGDANGER /* in SYSV systems */
+   (void) signal(SIGDANGER, signal_handler);
+ #endif
++#ifdef __FreeBSD__
+   (void) signal(SIGKILL, signal_handler);
+   (void) signal(SIGBUS, signal_handler);
+   (void) signal(SIGSEGV, signal_handler);
++#else
++  (void) sysv_signal(SIGKILL, signal_handler);
++  (void) sysv_signal(SIGBUS, signal_handler);
++  (void) sysv_signal(SIGSEGV, signal_handler);
++#endif
+ #ifdef SIGSYS
++#ifdef __FreeBSD__
+   (void) signal(SIGSYS, signal_handler);
++#else
++  (void) sysv_signal(SIGSYS, signal_handler);
++#endif
+ #endif
++#ifdef __FreeBSD__
+   (void) signal(SIGTERM, signal_handler);
+   (void) signal(SIGPIPE, signal_handler);
++#else
++  (void) sysv_signal(SIGTERM, signal_handler);
++  (void) sysv_signal(SIGPIPE, signal_handler);
++#endif
+ #ifdef SIGXCPU	/* BSD */
++#ifdef __FreeBSD__
+   (void) signal(SIGXCPU, signal_handler);
++#else
++  (void) sysv_signal(SIGXCPU, signal_handler);
++#endif
+ #endif
+ #ifdef SIGPWR /* SYSV */
++#ifdef __FreeBSD__
+   (void) signal(SIGPWR, signal_handler);
++#else
++  (void) sysv_signal(SIGPWR, signal_handler);
++#endif
+ #endif
+ #endif
+ #endif
+@@ -314,7 +314,11 @@
+ #if !defined(ATARIST_MWC)
+   (void) signal(SIGINT, SIG_IGN);
+ #ifdef SIGQUIT
++#ifdef __FreeBSD__
+   (void) signal(SIGQUIT, SIG_IGN);
++#else
++  (void) sysv_signal(SIGQUIT, SIG_IGN);
++#endif
+ #endif
+ #endif
+ }
+@@ -324,7 +324,11 @@
+ #if !defined(ATARIST_MWC)
+   (void) signal(SIGINT, SIG_DFL);
+ #ifdef SIGQUIT
++#ifdef __FreeBSD__
+   (void) signal(SIGQUIT, SIG_DFL);
++#else
++  (void) sysv_signal(SIGQUIT, SIG_DFL);
++#endif
+ #endif
+ #endif
+ }
+@@ -335,13 +335,21 @@
+ #if defined(atarist) && defined(__GNUC__)
+   (void) signal(SIGINT, (__Sigfunc)signal_handler);
+ #else
++#ifdef __FreeBSD__
+   (void) signal(SIGINT, signal_handler);
++#else
++  (void) sysv_signal(SIGINT, signal_handler);
++#endif
+ #endif
+ #ifdef SIGQUIT
+ #if defined(atarist) && defined(__GNUC__)
+   (void) signal(SIGQUIT, (__Sigfunc)signal_handler);
+ #else
++#ifdef __FreeBSD__
+   (void) signal(SIGQUIT, signal_handler);
++#else
++  (void) sysv_signal(SIGQUIT, signal_handler);
++#endif
+ #endif
+ #endif
+ #endif
+diff -Naur common-orig/unix.c umoria/unix/unix.c
+--- common-orig/unix.c	2003-12-09 10:06:19.000000000 -0500
++++ umoria/unix/unix.c	2003-12-09 10:06:56.000000000 -0500
+@@ -261,7 +261,7 @@
+ #endif
+ 
+ #ifdef USG
+-unsigned short getuid();
++/* unsigned short getuid(); */
+ #else
+ #ifndef SECURE
+ #ifdef BSD4_3

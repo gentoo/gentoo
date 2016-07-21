@@ -1,0 +1,65 @@
+Index: fcgi-2.4.0/doc/fcgi-devel-kit.htm
+===================================================================
+--- fcgi-2.4.0.orig/doc/fcgi-devel-kit.htm
++++ fcgi-2.4.0/doc/fcgi-devel-kit.htm
+@@ -19,7 +19,7 @@
+    </HEAD>
+    <BODY>
+       <P CLASS="c1">
+-         <IMG BORDER="0" SRC="../images/fcgi-hd.gif" ALT="[[FastCGI]]"><BR CLEAR="all">
++         <IMG BORDER="0" SRC="images/fcgi-hd.gif" ALT="[[FastCGI]]"><BR CLEAR="all">
+       </P>
+       <H3 CLASS="c2">
+          FastCGI Developer&#39;s Kit
+Index: fcgi-2.4.0/doc/fcgi-java.htm
+===================================================================
+--- fcgi-2.4.0.orig/doc/fcgi-java.htm
++++ fcgi-2.4.0/doc/fcgi-java.htm
+@@ -20,7 +20,7 @@
+    </HEAD>
+    <BODY>
+       <DIV CLASS="c1">
+-         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="../images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
++         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
+       </DIV>
+       <BR CLEAR="all">
+       <DIV CLASS="c1">
+Index: fcgi-2.4.0/doc/fcgi-perf.htm
+===================================================================
+--- fcgi-2.4.0.orig/doc/fcgi-perf.htm
++++ fcgi-2.4.0/doc/fcgi-perf.htm
+@@ -19,7 +19,7 @@
+    </HEAD>
+    <BODY>
+       <DIV CLASS="c1">
+-         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="../images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
++         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
+       </DIV>
+       <BR CLEAR="all">
+       <DIV CLASS="c1">
+Index: fcgi-2.4.0/doc/fcgi-perl.htm
+===================================================================
+--- fcgi-2.4.0.orig/doc/fcgi-perl.htm
++++ fcgi-2.4.0/doc/fcgi-perl.htm
+@@ -19,7 +19,7 @@
+    </HEAD>
+    <BODY>
+       <DIV CLASS="c1">
+-         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="../images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
++         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
+       </DIV>
+       <BR CLEAR="all">
+        
+Index: fcgi-2.4.0/doc/fcgi-tcl.htm
+===================================================================
+--- fcgi-2.4.0.orig/doc/fcgi-tcl.htm
++++ fcgi-2.4.0/doc/fcgi-tcl.htm
+@@ -19,7 +19,7 @@
+    </HEAD>
+    <BODY>
+       <DIV CLASS="c1">
+-         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="../images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
++         <A HREF="http://fastcgi.com"><IMG BORDER="0" SRC="images/fcgi-hd.gif" ALT="[[FastCGI]]"></A>
+       </DIV>
+       <BR CLEAR="all">
+       <DIV CLASS="c1">

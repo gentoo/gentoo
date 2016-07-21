@@ -1,0 +1,28 @@
+--- mujs-0_p20150202/Makefile
++++ mujs-0_p20150202/Makefile
+@@ -2,23 +2,17 @@
+ HDRS := $(wildcard js*.h mujs.h utf.h regex.h)
+ OBJS := $(SRCS:%.c=build/%.o)
+ 
+-prefix ?= /usr/local
++prefix ?= /usr
+ bindir ?= $(prefix)/bin
+ incdir ?= $(prefix)/include
+ libdir ?= $(prefix)/lib
+ 
+-CFLAGS := -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
++CFLAGS += -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter
+ 
+ ifeq "$(CC)" "clang"
+ CFLAGS += -Wunreachable-code
+ endif
+ 
+-ifeq "$(build)" "debug"
+-CFLAGS += -g
+-else
+-CFLAGS += -O2
+-endif
+-
+ default: build build/mujs build/mujsone
+ 
+ debug:

@@ -1,0 +1,71 @@
+--- intel2gas-1.3.3/intel2gas.cc.orig	2009-01-26 12:21:11.000000000 +1100
++++ intel2gas-1.3.3/intel2gas.cc	2009-01-26 12:38:54.000000000 +1100
+@@ -57,10 +57,6 @@
+   int counter = 0;
+   char* prev = 0;
+   while (l) {
+-    if (int(l->name) > 0x10000000) {
+-      printf("Error %d, prev=%s\n", counter, prev);
+-      break;
+-    }
+     if (!strcasecmp(name,l->name))
+       return l;
+     counter++;
+@@ -255,7 +251,7 @@
+   return len;
+ }
+ 
+-static int str_parse(syntaxlist_t *s, char *parse, char *outline);
++static int str_parse(syntaxlist_t *s, const char *parse, char *outline);
+ 
+ static int parsematch(char *text, char *parse)
+ {
+@@ -394,10 +390,10 @@
+ }
+ 
+ 
+-static int str_parse(syntaxlist_t *sl, char *parse, char *outline)
++static int str_parse(syntaxlist_t *sl, const char *parse, char *outline)
+ {
+   *outline = '\0';
+-  parse = str_skipspace(parse);
++  parse = str_skipspace((char *)parse);
+   if (str_empty(parse))
+     return 0;
+     
+@@ -412,7 +408,7 @@
+       return 0;
+     }
+     strcpy(tempstr, s->parseline);
+-    int size = parsematch(parse, tempstr);
++    int size = parsematch((char *)parse, tempstr);
+     if (size) {
+       setTheseVars(s->assignments);
+       if (!str_empty(s->output))
+@@ -535,7 +531,7 @@
+   if (str_empty(var)) return;
+     
+   static struct {
+-    char *reg;
++    const char *reg;
+     int   mask;
+   } reglist[] = {
+     {"bp",0x40000},{"ebp",0xc0000},
+@@ -717,7 +713,7 @@
+ static int load_syntax_files(char modedir[])
+ {
+   // Override the compiled in path
+-  char *resource_path = getenv("I2G_DATA");
++  const char *resource_path = getenv("I2G_DATA");
+   if (resource_path == NULL)
+     resource_path = RESOURCE_PATH;
+     
+@@ -768,7 +764,7 @@
+ 
+ static bool is_a_define_line(char const *line)
+ {
+-  static char *keywords[] = {
++  static const char *keywords[] = {
+     "if","define","else","endif",NULL,
+   };
+   for (int i=0; keywords[i]; i++) {

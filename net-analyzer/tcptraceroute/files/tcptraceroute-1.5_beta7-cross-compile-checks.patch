@@ -1,0 +1,62 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -148,11 +148,9 @@
+ 
+ # Is this Solaris?
+ AC_MSG_CHECKING(for Solaris)
+-AC_RUN_IFELSE([AC_LANG_PROGRAM( [], [
+-#if defined (__SVR4) && defined (__sun)
+-	exit(0);
+-#else
+-	exit(-1);
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM( [], [
++#if ! ( defined (__SVR4) && defined (__sun) )
++#error "Not Solaris"
+ #endif
+ 		])
+ 	],[
+@@ -165,11 +163,9 @@
+ 
+ # Is this BSDI?
+ AC_MSG_CHECKING(for BSDI)
+-AC_RUN_IFELSE([AC_LANG_PROGRAM( [], [
+-#if defined (__bsdi__)
+-	exit(0);
+-#else
+-	exit(-1);
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM( [], [
++#if ! defined (__bsdi__)
++#error "Not BSDI"
+ #endif
+ 		])
+ 	],[
+@@ -182,11 +178,9 @@
+ 
+ # Is this NetBSD?
+ AC_MSG_CHECKING(for NetBSD)
+-AC_RUN_IFELSE([AC_LANG_PROGRAM( [], [
+-#if defined (__NetBSD__)
+-	exit(0);
+-#else
+-	exit(-1);
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM( [], [
++#if ! defined (__NetBSD__)
++#error "Not NetBSD";
+ #endif
+ 		])
+ 	],[
+@@ -199,11 +193,9 @@
+ 
+ # Is this MacOS X?
+ AC_MSG_CHECKING(for MacOS X)
+-AC_RUN_IFELSE([AC_LANG_PROGRAM( [], [
+-#if defined (__APPLE__) && defined (__MACH__)
+-	exit(0);
+-#else
+-	exit(-1);
++AC_COMPILE_IFELSE([AC_LANG_PROGRAM( [], [
++#if ! ( defined (__APPLE__) && defined (__MACH__) )
++#error "Not Mac OS X"
+ #endif
+ 		])
+ 	],[

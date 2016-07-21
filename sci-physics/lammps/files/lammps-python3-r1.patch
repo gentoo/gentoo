@@ -1,0 +1,11 @@
+--- lammps-4Sep15-orig/python/lammps.py	2015-09-02 14:41:38.000000000 -0600
++++ lammps-4Sep15/python/lammps.py	2015-09-08 05:59:16.000000000 -0600
+@@ -33,7 +33,7 @@
+     except:
+       type,value,tb = sys.exc_info()
+       traceback.print_exception(type,value,tb)
+-      raise OSError,"Could not load LAMMPS dynamic library from %s" % modpath
++      raise OSError("Could not load LAMMPS dynamic library from %s" % modpath)
+ 
+     # if no ptr provided, create an instance of LAMMPS
+     #   don't know how to pass an MPI communicator from PyPar

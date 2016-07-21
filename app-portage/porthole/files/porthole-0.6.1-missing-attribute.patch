@@ -1,0 +1,14 @@
+diff -uNr porthole/db/user_configs.py.old porthole/db/user_configs.py
+
+--- porthole/db/user_configs.py.old	2010-11-27 13:34:35.000000000 +0600
++++ porthole/db/user_configs.py	2010-11-27 13:31:24.000000000 +0600
+@@ -364,7 +364,7 @@
+             debug.dprint("USER_CONFIGS: set_user_config(): add: " +
+                 "%s,\n remove: %s " %(str(add),str(remove)))
+             set_config.set_user_config(filename=file, name=name, ebuild=ebuild,
+-                comment=comment, username=privileges.USER, 
++                comment=comment, username=privileges.user, 
+                 add=add, remove=remove)
+             self.set_config_callback()
+         else:
+			 

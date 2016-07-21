@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">WWW-Mechanize-FormFiller</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Callback</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Default</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Fixed</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Interactive</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Keep</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Random</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Random::Chars</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Random::Date</remote-id>
+    <remote-id type="cpan-module">WWW::Mechanize::FormFiller::Value::Random::Word</remote-id>
+  </upstream>
+</pkgmetadata>

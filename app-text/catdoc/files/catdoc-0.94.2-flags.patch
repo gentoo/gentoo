@@ -1,0 +1,35 @@
+Index: catdoc-0.94.2/configure.in
+===================================================================
+--- catdoc-0.94.2.orig/configure.in
++++ catdoc-0.94.2/configure.in
+@@ -100,10 +100,6 @@ AC_C_CONST
+ dnl Checks for library functions.
+ AC_FUNC_SETVBUF_REVERSED
+ 
+-if test "$GCC" = "yes"; then
+-	CFLAGS="-g -O2 -Wall"
+-fi
+-
+ AC_DEFINE_UNQUOTED([SOURCE_CHARSET],"$sourcecharset",[Character encoding used by default for 8-bit source files])
+ AC_DEFINE_UNQUOTED([TARGET_CHARSET],"$targetcharset",[Output character encoding used by default, if impossible to determine encoding from locale])
+ AC_DEFINE_UNQUOTED([SPEC_EXT],"$specsuffix",[Suffix for files with special symbols map (ones to be replaced regardless of availability in target encoding)])
+Index: catdoc-0.94.2/src/Makefile.in
+===================================================================
+--- catdoc-0.94.2.orig/src/Makefile.in
++++ catdoc-0.94.2/src/Makefile.in
+@@ -74,12 +74,12 @@ OBJPPT=catppt.o pptparse.o $(COMMONOBJ)
+ #	$(CC) -c $(CFLAGS) $*
+ all: @buildtargets@
+ catdoc: $(OBJ)
+-	$(CC)  -o catdoc  $(OBJ)
++	$(CC)  $(LDFLAGS) -o catdoc  $(OBJ)
+ xls2csv: $(OBJXLS)
+-	$(CC) -o xls2csv $(OBJXLS) -lm
++	$(CC) $(LDFLAGS) -o xls2csv $(OBJXLS) -lm
+ 
+ catppt: $(OBJPPT)
+-	$(CC) -o catppt $(OBJPPT) -lm
++	$(CC) $(LDFLAGS) -o catppt $(OBJPPT) -lm
+ 
+ install: @installtargets@
+ install-catdoc:catdoc xls2csv catppt 

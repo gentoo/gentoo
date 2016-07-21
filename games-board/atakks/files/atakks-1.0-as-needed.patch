@@ -1,0 +1,16 @@
+--- Makefile.old        2009-02-03 10:02:08.000000000 +0100
++++ Makefile    2009-02-03 10:04:12.000000000 +0100
+@@ -1,10 +1,10 @@
+-LDFLAGS= -lSDL -lpthread -s
+-CFLAGS= -Wall -ansi # -DDEBUG
++LDLIBS = -lSDL
++CFLAGS= $(E_CFLAGS) -DUS -Wall -ansi # -DDEBUG
+ all: atakks
+ clean:
+ 	rm atakks *.o
+ atakks: main.o
+-	$(CC) $(LDFLAGS) $< -o $@
++	$(CC) $(LDFLAGS) $< -o $@ $(LDLIBS)
+ pkg:
+ 	mkdir atakks-src
+ 	cp *.bmp main.c Makefile README atakks-src

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    Dask is a simple task scheduling system that uses directed acyclic
+    graphs (DAGs) of tasks to break up large computations into many
+    small ones.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">dask</remote-id>
+  </upstream>
+</pkgmetadata>

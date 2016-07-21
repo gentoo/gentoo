@@ -1,0 +1,44 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Fix compilation errors with -Werror=format-security.
+Git-Branch: p/format-security
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..be247b855ebb49a4d826d60b7d21a0
+
+ .../meshlabplugins/decorate_raster_proj/decorate_raster_proj.cpp   |    4 ++--
+ meshlab/src/meshlabplugins/edit_arc3D/edit_arc3D.cpp               |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/meshlab/src/meshlabplugins/decorate_raster_proj/decorate_raster_proj.cpp b/meshlab/src/meshlabplugins/decorate_raster_proj/decorate_raster_proj.cpp
+index 4864214..233b657 100644
+--- a/meshlab/src/meshlabplugins/decorate_raster_proj/decorate_raster_proj.cpp
++++ b/meshlab/src/meshlabplugins/decorate_raster_proj/decorate_raster_proj.cpp
+@@ -526,7 +526,7 @@ bool DecorateRasterProjPlugin::startDecorate( QAction          *act,
+             GLenum err = glewInit();
+             if( err != GLEW_OK )
+             {
+-                qWarning( (std::string("Impossible to load GLEW library.")+(char*)glewGetErrorString(err)).c_str() );
++                qWarning("Impossible to load GLEW library: %s", glewGetErrorString(err));
+                 return false;
+             }
+             Log( "GLEW library correctly initialized." );
+@@ -536,7 +536,7 @@ bool DecorateRasterProjPlugin::startDecorate( QAction          *act,
+             std::string logs;
+             if( !initShaders(logs) )
+             {
+-                qWarning( ("Error while initializing shaders.\n"+logs).c_str() );
++                qWarning("Error while initializing shaders.\n%s", logs.c_str());
+                 return false;
+             }
+             Log( "Shaders correctly loaded." );
+diff --git a/meshlab/src/meshlabplugins/edit_arc3D/edit_arc3D.cpp b/meshlab/src/meshlabplugins/edit_arc3D/edit_arc3D.cpp
+index 88b6f9f..c23987c 100644
+--- a/meshlab/src/meshlabplugins/edit_arc3D/edit_arc3D.cpp
++++ b/meshlab/src/meshlabplugins/edit_arc3D/edit_arc3D.cpp
+@@ -269,7 +269,7 @@ void EditArc3DPlugin::ExportPly()
+ 					QString suffix = "." + qfInfo.completeSuffix();
+ 					QString path = qfInfo.absoluteFilePath().remove(suffix);
+ 					path.append("Undist" + suffix);
+-					qDebug(path.toLatin1());
++					qDebug("%s", path.toStdString().c_str());
+ 
+ 					QImage undistImg(originalImg.width(),originalImg.height(),originalImg.format()); 
+ 					undistImg.fill(qRgba(0,0,0,255));

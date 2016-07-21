@@ -1,0 +1,11 @@
+--- imap/statuscache_db.c.orig	2012-12-01 20:57:54.000000000 +0100
++++ imap/statuscache_db.c	2013-10-18 17:09:42.110915989 +0200
+@@ -152,7 +152,7 @@
+     len = strlcpy(key, mailboxname, sizeof(key));
+     key[len++] = '%';
+     key[len++] = '%';
+-    len += strlcpy(key + len, userid, sizeof(key) - len);
++    if (userid) len += strlcpy(key + len, userid, sizeof(key) - len);
+ 
+     *keylen = len;
+ 

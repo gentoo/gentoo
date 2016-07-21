@@ -1,0 +1,59 @@
+ Makefile | 26 ++++++++++++++++++--------
+ 1 file changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ae59abf..0d2788c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,11 +21,12 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ # DEALINGS IN THE SOFTWARE.
+ 
+-CC       = gcc
+-CPPFLAGS = $(DFLAGS) $(INCLUDES)
+-CFLAGS   = -g -Wall -O2
+-LDFLAGS  =
+-LDLIBS   =
++CC       ?= gcc
++CPPFLAGS += $(DFLAGS) $(INCLUDES)
++CFLAGS   ?= -g -Wall -O2
++LDFLAGS  +=
++LDLIBS   +=
++BAMLIB   ?= libbam.a
+ DFLAGS=     -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_CURSES_LIB=1
+ LOBJS=      bam_aux.o bam.o bam_import.o sam.o \
+             sam_header.o bam_plbuf.o
+@@ -42,6 +43,7 @@ LIBCURSES=  -lcurses # -lXCurses
+ prefix      = /usr/local
+ exec_prefix = $(prefix)
+ bindir      = $(exec_prefix)/bin
++bindir      = $(exec_prefix)/lib
+ mandir      = $(prefix)/share/man
+ man1dir     = $(mandir)/man1
+ 
+@@ -115,14 +117,22 @@ version.h:
+ .c.o:
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+ 
++$(LOBJS):
++	$(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -c -o $@ $<
+ 
+-lib:libbam.a
++
++lib:libbam.a libbam.so.1.0
+ 
+ libbam.a:$(LOBJS)
+ 	$(AR) -csru $@ $(LOBJS)
+ 
+-samtools: $(AOBJS) libbam.a $(HTSLIB)
+-	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) libbam.a $(HTSLIB) $(LDLIBS) $(LIBCURSES) -lm -lz
++libbam.so.1.0:$(LOBJS)
++	$(CC) $(LDFLAGS) -shared -Wl,--soname,$@ -o $@ $(LOBJS) $(HTSLIB) -lz
++	ln -sf $@ libbam.so.0
++	ln -sf $@ libbam.so
++
++samtools: $(AOBJS) $(HTSLIB) lib
++	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) $(BAMLIB) $(HTSLIB) $(LDLIBS) $(LIBCURSES) -lm -lz
+ 
+ bam_h = bam.h $(htslib_bgzf_h) $(htslib_sam_h)
+ bam2bcf_h = bam2bcf.h $(htslib_vcf_h) errmod.h

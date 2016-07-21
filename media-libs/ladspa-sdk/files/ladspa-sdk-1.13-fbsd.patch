@@ -1,0 +1,16 @@
+Index: ladspa_sdk/src/applyplugin.c
+===================================================================
+--- ladspa_sdk.orig/src/applyplugin.c
++++ ladspa_sdk/src/applyplugin.c
+@@ -6,7 +6,11 @@
+ /*****************************************************************************/
+ 
+ #include <dlfcn.h>
++#ifdef __FreeBSD__
++#include <machine/endian.h>
++#else
+ #include <endian.h>
++#endif
+ #include <errno.h>
+ #include <math.h>
+ #include <stdlib.h>

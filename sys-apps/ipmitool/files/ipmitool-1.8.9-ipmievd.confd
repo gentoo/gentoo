@@ -1,0 +1,23 @@
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+# /etc/conf.d/ipmievd
+
+# Interfaces:
+#   open      Linux OpenIPMI Interface
+#   imb       Intel IMB Interface
+#   bmc       IPMI v2.0 BMC interface
+#   lan       IPMI v1.5 LAN Interface
+#   lanplus   IPMI v2.0 RMCP+ LAN Interface
+
+INTERFACE="open"
+
+# Commands:
+#   open   Use OpenIPMI for asyncronous notification of events
+#   sel    Poll SEL for notification of events
+
+COMMAND="open"
+
+# Options.
+
+OPTIONS=""

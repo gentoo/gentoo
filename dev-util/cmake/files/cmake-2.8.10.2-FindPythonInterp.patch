@@ -1,0 +1,22 @@
+--- Modules/FindPythonInterp.cmake
++++ Modules/FindPythonInterp.cmake
+@@ -60,6 +60,10 @@
+ 
+ list(APPEND _Python_NAMES python)
+ 
++if (CMAKE_BUILD_TYPE STREQUAL Gentoo)
++    set(_Python_NAMES python)
++endif()
++
+ # Search for the current active python version first
+ find_program(PYTHON_EXECUTABLE NAMES ${_Python_NAMES})
+ 
+@@ -76,7 +80,7 @@
+ unset(_PYTHON3_VERSIONS)
+ 
+ # Search for newest python version if python executable isn't found
+-if(NOT PYTHON_EXECUTABLE)
++if(NOT PYTHON_EXECUTABLE AND NOT CMAKE_BUILD_TYPE STREQUAL Gentoo)
+     foreach(_CURRENT_VERSION ${_Python_VERSIONS})
+       set(_Python_NAMES python${_CURRENT_VERSION})
+       if(WIN32)

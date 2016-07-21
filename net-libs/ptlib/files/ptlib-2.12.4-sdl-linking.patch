@@ -1,0 +1,11 @@
+diff -urN ptlib-2.12.4/configure.ac ptlib-2.12.4.new/configure.ac
+--- ptlib-2.12.4/configure.ac	2013-06-21 07:02:48.000000000 +0200
++++ ptlib-2.12.4.new/configure.ac	2013-06-24 11:51:18.356368722 +0200
+@@ -1735,6 +1735,7 @@
+                        PTLIB_CFLAGS="$PTLIB_CFLAGS ${SDL_CFLAGS}"
+                        LDFLAGS="$LDFLAGS `pkg-config --libs sdl`"
+                       ],[HAS_SDL=])
++    ENDLDLIBS="$ENDLDLIBS ${SDL_LIBS}"
+   fi
+ fi
+ AC_SUBST(HAS_SDL)

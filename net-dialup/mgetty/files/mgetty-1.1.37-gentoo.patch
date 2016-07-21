@@ -1,0 +1,172 @@
+diff -Nru mgetty-1.1.37.orig/callback/Makefile mgetty-1.1.37/callback/Makefile
+--- mgetty-1.1.37.orig/callback/Makefile	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/callback/Makefile	2007-09-14 23:02:58.000000000 +0300
+@@ -37,7 +37,7 @@
+ # install programs
+ #
+ install: all
+-	$(INSTALL) -s -m 700 -o root callback $(SBINDIR)
+-	$(INSTALL) -s -m 4711 -o root ct $(BINDIR)
++	$(INSTALL) -m 700 -o root callback $(SBINDIR)
++	$(INSTALL) -m 4711 -o root ct $(BINDIR)
+ 
+ # source modules
+diff -Nru mgetty-1.1.37.orig/doc/mgetty.texi-in mgetty-1.1.37/doc/mgetty.texi-in
+--- mgetty-1.1.37.orig/doc/mgetty.texi-in	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/doc/mgetty.texi-in	2007-09-14 23:02:58.000000000 +0300
+@@ -19,6 +19,11 @@
+ Copyright @copyright{} 1993-2005 Gert Doering
+ @end ifinfo
+ 
++@dircategory User
++@direntry
++* MGETTY: (mgetty).    Modem+Voice+Fax utilities
++@end direntry
++
+ @titlepage
+ @sp 6
+ @center @titlefont{mgetty+sendfax}
+diff -Nru mgetty-1.1.37.orig/fax/faxspool.in mgetty-1.1.37/fax/faxspool.in
+--- mgetty-1.1.37.orig/fax/faxspool.in	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/fax/faxspool.in	2007-09-14 23:02:58.000000000 +0300
+@@ -390,7 +390,7 @@
+ 
+ #
+ # convert pdf data
+-# needs GNU GhostScript and Adobe acroread installed.
++# needs GNU GhostScript installed.
+ # For driver selection, see definition of GS_DRIVER_{HI,LO} above.
+ #
+ # contributed by mfvm@gmx.de (Michael Fischer v. Mollard)
+@@ -401,7 +401,7 @@
+     test X$3 = X-n && driver="$GS_DRIVER_LO"
+ 
+     cat $1 |
+-	acroread -toPostScript |
++	pdf2ps -sOutputFile=- - |
+ 	gs $driver -sOutputFile=$2%03d -dNOPAUSE -q -dSAFER -
+ }
+ 
+diff -Nru mgetty-1.1.37.orig/frontends/X11/viewfax/Makefile mgetty-1.1.37/frontends/X11/viewfax/Makefile
+--- mgetty-1.1.37.orig/frontends/X11/viewfax/Makefile	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/frontends/X11/viewfax/Makefile	2007-09-14 23:02:58.000000000 +0300
+@@ -61,7 +61,7 @@
+ g3hack:		g3hack.c
+ 
+ install: viewfax
+-	$(INSTALL) -s -m 755 viewfax $(BINDIR)
++	$(INSTALL) -m 755 viewfax $(BINDIR)
+ 	$(INSTALL) -m 644 viewfax.man $(MANDIR)/viewfax.1
+ 	$(INSTALL) -m 644 viewfax.tif $(LIBDIR)
+ 
+diff -Nru mgetty-1.1.37.orig/g3/Makefile mgetty-1.1.37/g3/Makefile
+--- mgetty-1.1.37.orig/g3/Makefile	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/g3/Makefile	2007-09-14 23:02:58.000000000 +0300
+@@ -37,13 +37,13 @@
+ # install programs
+ #
+ 	for f in $(G3_PROGRAMS) ; do \
+-		$(INSTALL) -s -m 755 $$f $(BINDIR) ; \
++		$(INSTALL) -m 755 $$f $(BINDIR) ; \
+ 	done
+ #
+ # make symlink for "g3topbm" (so third-party fax viewers won't fail)
+-#
+-	-cd $(BINDIR) ; \
+-	test -x g3topbm || ln -s g32pbm g3topbm
++# Note for Gentoo: following lines will create collision with netpbm if netpbm is installed after 
++#	-cd $(BINDIR) ; \
++#	test -x g3topbm || ln -s g32pbm g3topbm
+ 
+ 
+ # test suite
+diff -Nru mgetty-1.1.37.orig/Makefile mgetty-1.1.37/Makefile
+--- mgetty-1.1.37.orig/Makefile	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/Makefile	2007-09-14 23:02:58.000000000 +0300
+@@ -282,7 +282,7 @@
+ # please use the "mg.echo" program provided in the compat/ subdirectory.
+ # Set ECHO="mg.echo" and INSTALL_MECHO to mg.echo
+ #
+-ECHO="echo"
++ECHO="echo -e"
+ #
+ # INSTALL_MECHO=mg.echo
+ 
+@@ -596,12 +596,8 @@
+ 	$(INSTALL) -m 755 newslock $(BINDIR)
+ 
+ 	-test -d $(SBINDIR) || ( ./mkidirs $(SBINDIR) ; chmod 755 $(SBINDIR) )
+-	if [ -f $(SBINDIR)/mgetty ] ; then \
+-		mv -f $(SBINDIR)/mgetty $(SBINDIR)/mgetty.old ; fi
+-	if [ -f $(SBINDIR)/sendfax ] ; then \
+-		mv -f $(SBINDIR)/sendfax $(SBINDIR)/sendfax.old ; fi
+-	$(INSTALL) -s -m 700 mgetty $(SBINDIR)
+-	$(INSTALL) -s -m 755 sendfax $(SBINDIR)
++	$(INSTALL) -m 700 mgetty $(SBINDIR)
++	$(INSTALL) -m 755 sendfax $(SBINDIR)
+ #
+ # data files + directories
+ #
+@@ -663,7 +661,7 @@
+ 	if [ ! -z "$(INSTALL_MECHO)" ] ; then \
+ 	    cd compat ; \
+ 	    $(CC) $(CFLAGS) -o mg.echo mg.echo.c && \
+-	    $(INSTALL) -s -m 755 mg.echo $(BINDIR) ; \
++	    $(INSTALL) -m 755 mg.echo $(BINDIR) ; \
+ 	fi
+ 
+ #
+diff -Nru mgetty-1.1.37.orig/mgetty.cfg.in mgetty-1.1.37/mgetty.cfg.in
+--- mgetty-1.1.37.orig/mgetty.cfg.in	2003-11-17 21:09:41.000000000 +0200
++++ mgetty-1.1.37/mgetty.cfg.in	2007-09-14 23:02:58.000000000 +0300
+@@ -20,16 +20,16 @@
+ # access the modem(s) with @SPEED@ bps
+ speed @SPEED@
+ 
+-#  use these options to make the /dev/tty-device owned by "uucp.uucp" 
++#  use these options to make the /dev/tty-device owned by "fax.fax" 
+ #  and mode "rw-rw-r--" (0664). *LEADING ZERO NEEDED!*
+-#port-owner uucp
+-#port-group uucp
++#port-owner fax
++#port-group fax
+ #port-mode 0664
+ 
+-#  use these options to make incoming faxes owned by "root.uucp" 
++#  use these options to make incoming faxes owned by "root.fax" 
+ #  and mode "rw-r-----" (0640). *LEADING ZERO NEEDED!*
+ #fax-owner root
+-#fax-group uucp
++#fax-group fax
+ #fax-mode 0640
+ 
+ 
+diff -Nru mgetty-1.1.37.orig/voice/Makefile mgetty-1.1.37/voice/Makefile
+--- mgetty-1.1.37.orig/voice/Makefile	2007-09-14 23:03:32.000000000 +0300
++++ mgetty-1.1.37/voice/Makefile	2007-09-14 23:02:58.000000000 +0300
+@@ -85,6 +85,7 @@
+ 	@echo ""
+ 	$(INSTALL) -m 700 vgetty/vgetty $(SBINDIR)
+ 	$(INSTALL) -m 755 vm/vm $(BINDIR)
++	$(INSTALL) -m 644 voice.conf-dist $(CONFDIR)/voice.conf
+ 	for i in $(PVFTOOLS); \
+ 	do \
+ 	     $(INSTALL) -m 755 pvftools/$$i $(BINDIR); \
+diff -Nru mgetty-1.1.37.orig/voice/voice.conf-dist mgetty-1.1.37/voice/voice.conf-dist
+--- mgetty-1.1.37.orig/voice/voice.conf-dist	2005-03-19 18:10:20.000000000 +0200
++++ mgetty-1.1.37/voice/voice.conf-dist	2007-09-14 23:02:58.000000000 +0300
+@@ -47,11 +47,11 @@
+ voice_dir /var/spool/voice
+ 
+ #
+-# incoming messages are owned by "root.phone" and mode "rw-rw----" (0660)
++# incoming messages are owned by "fax:fax" and mode "rw-rw----" (0660)
+ #
+ 
+-phone_owner root
+-phone_group phone
++phone_owner fax
++phone_group fax
+ phone_mode 0660
+ 
+ #

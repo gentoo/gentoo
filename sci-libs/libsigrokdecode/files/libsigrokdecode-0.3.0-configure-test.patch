@@ -1,0 +1,28 @@
+http://sourceforge.net/p/sigrok/mailman/message/32459769/
+
+From dc83770847c39934f5cbc63c8652124fafcb8d0b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 14 Jun 2014 01:37:12 -0400
+Subject: [PATCH 1/2] fix test operator
+
+The == operator is not in POSIX.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9527379..3f661ec 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -125,7 +125,7 @@ AC_SUBST(MODNAME_PYTHON)
+ # We also need to find the name of the python3 executable (for 'make install').
+ # Some OSes call this python3, some call it python3.2, etc. etc.
+ AC_CHECK_PROGS([PYTHON3], [python3.4 python3.3 python3.2 python3])
+-if test "x$PYTHON3" == "x"; then
++if test "x$PYTHON3" = "x"; then
+ 	AC_MSG_ERROR([cannot find python3 executable.])
+ fi
+ 
+-- 
+2.0.0
+

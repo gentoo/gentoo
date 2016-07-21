@@ -1,0 +1,37 @@
+--- src/functions.cpp.old	2007-03-31 11:04:10.000000000 +0200
++++ src/functions.cpp	2007-03-31 11:11:52.000000000 +0200
+@@ -107,8 +107,8 @@
+ 	    pointer = end;
+ 	}
+ 
+-	memcpy(str, i, (int)pointer - (int)i);
+-	str[(int)pointer - (int)i] = 0;
++	memcpy(str, i, ssize_t(pointer - i));
++	str[pointer - i] = 0;
+ 
+ 	drawString(x, y, str);
+ 
+@@ -501,15 +501,21 @@
+ 
+ Uint32 timer(Uint32 interval, void* value) {
+     
++    union {
++    	void *value;
++	int   p_mode;
++    } p_modeConv;
++    p_modeConv.value = value;
++
+     //if ((int)value != gameModeValue)
+-    if ((int)value != p_mode)
++    if (p_modeConv.p_mode != p_mode)
+ 	return 0;
+ 
+     SDL_Event event;
+     SDL_UserEvent userevent;
+ 
+     userevent.type = SDL_USEREVENT;
+-    userevent.code = (int)value;
++    userevent.code = p_modeConv.p_mode;
+     userevent.data1 = NULL;
+     userevent.data2 = NULL;
+ 

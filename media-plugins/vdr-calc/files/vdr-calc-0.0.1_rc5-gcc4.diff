@@ -1,0 +1,12 @@
+diff -ru calc-0.0.1-rc5-orig/calc.c calc-0.0.1-rc5/calc.c
+--- calc-0.0.1-rc5-orig/calc.c	2006-07-08 20:57:47.571929926 +0200
++++ calc-0.0.1-rc5/calc.c	2006-07-08 20:58:03.045402607 +0200
+@@ -72,7 +72,7 @@
+   void AddDigit(eKeys key);
+   void CalculateResult(char* inOperand1, char* inOperand2, char *outOperand, char cOperator);
+   operType operatorSymbol;
+-  void cCalcMain::CalculateResultTrig(char* inOperand1, char *outOperand, char cOperator, gradType calculateGradType);
++  void CalculateResultTrig(char* inOperand1, char *outOperand, char cOperator, gradType calculateGradType);
+ public:
+   cCalcMain(void);
+   ~cCalcMain();

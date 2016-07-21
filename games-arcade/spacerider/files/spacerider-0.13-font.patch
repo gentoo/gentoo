@@ -1,0 +1,14 @@
+Ugly brute-force method for avoiding a double-free segfault on exit.
+Better patch welcome.
+
+--- spacerider.cpp.orig	2015-03-31 23:24:17.770966147 -0400
++++ spacerider.cpp	2015-03-31 23:24:41.592174463 -0400
+@@ -306,8 +306,6 @@
+ 		/* free screen */
+ 		SDL_FreeSurface(screen);
+ 	}
+-	/* call the TTF-Library cleanup function */
+-	TTF_Quit();
+ 
+ 	/* call the NET-Library cleanup function */
+ 	SDLNet_Quit();

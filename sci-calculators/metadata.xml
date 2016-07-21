@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-calculators category contains scientific calculator packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-calculators enthält wissenschaftliche Rechenprogramme.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-calculators contiene calculadoras científicas.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-calculatorsカテゴリーには科学計算機のパッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-calculators categorie bevat wetenschappelijke calculators.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-calculators chứa các phần mềm tính toán khoa học.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-calculators contiene calcolatori scientifici.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-calculators zawiera kalkulatory naukowe.
+	</longdescription>
+</catmetadata>
+

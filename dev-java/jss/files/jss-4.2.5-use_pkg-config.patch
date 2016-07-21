@@ -1,0 +1,25 @@
+Submitted By: Mario Fetka (mario-fetka at gmx dot at)
+Date: 2007-10-06
+Initial Package Version: 4.2.5
+Origin: me
+Upstream Status: #392775 UNCONFIRMED 
+Description: this patch adds pkgconfig support to jss coreconf 
+!!!! no check for NSS_PKGCONFIG NSPR_PKGCONFIG at the moment !!!!
+ 
+diff -Naur mozilla.orig/security/coreconf/location.mk mozilla/security/coreconf/location.mk
+--- mozilla.orig/security/coreconf/location.mk	2006-02-27 21:18:31.000000000 +0000
++++ mozilla/security/coreconf/location.mk	2007-10-06 10:10:17.000000000 +0000
+@@ -67,6 +67,13 @@
+ 
+ GARBAGE += $(DEPENDENCIES) core $(wildcard core.[0-9]*)
+ 
++ifdef USE_PKGCONFIG
++    NSPR_INCLUDE_DIR = `pkg-config --variable=includedir $(NSPR_PKGCONFIG)`
++    NSPR_LIB_DIR = `pkg-config --variable=libdir $(NSPR_PKGCONFIG)`
++    NSS_INCLUDE_DIR = `pkg-config --variable=includedir $(NSS_PKGCONFIG)`
++    NSS_LIB_DIR = `pkg-config --variable=libdir $(NSS_PKGCONFIG)`
++endif
++
+ ifdef NSPR_INCLUDE_DIR
+     INCLUDES += -I$(NSPR_INCLUDE_DIR)
+ endif

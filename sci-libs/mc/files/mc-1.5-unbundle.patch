@@ -1,0 +1,58 @@
+ configure.ac |   38 ++++++--------------------------------
+ 1 files changed, 6 insertions(+), 32 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6198ac0..4b1b169 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -191,44 +191,18 @@ dnl # -----------------------
+ dnl # HANDLE THE BLAS LIBRARY
+ dnl # -----------------------
+ blas_lib="";
+-AC_MSG_CHECKING([whether your environment defines FETK_BLAS_LIBRARY])
+-if test -n "${FETK_BLAS_LIBRARY}"; then
+-    AC_MSG_RESULT([yes])
+-    blas_lib_path="-L${FETK_BLAS_LIBRARY} ";
+-else
+-    AC_MSG_RESULT([no])
+-    blas_lib_path="-L${FETK_LIBRARY} ";
+-fi
+-LDFLAGS_SAVE=${LDFLAGS};
+-LDFLAGS=${blas_lib_path};
+-blas_use="";
+-AC_CHECK_LIB(blas,dscal_,
+-    [blas_use="yes";blas_lib="${blas_lib_path}-lblas";AC_DEFINE(HAVE_BLAS)],
+-    [blas_use="";blas_lib=""],
+-    [${blas_lib_path}-lblas ${vf2c_lib}])
+-LDFLAGS=${LDFLAGS_SAVE};
++blas_lib_path="";
++PKG_CHECK_MODULES([BLAS], [blas])
++blas_lib="${BLAS_LIBS}";
+ AC_SUBST(blas_lib)
+ 
+ dnl # -------------------------
+ dnl # HANDLE THE LAPACK LIBRARY
+ dnl # -------------------------
+ lapack_lib="";
+-AC_MSG_CHECKING([whether your environment defines FETK_LAPACK_LIBRARY])
+-if test -n "${FETK_LAPACK_LIBRARY}"; then
+-    AC_MSG_RESULT([yes])
+-    lapack_lib_path="-L${FETK_LAPACK_LIBRARY} ";
+-else
+-    AC_MSG_RESULT([no])
+-    lapack_lib_path="-L${FETK_LIBRARY} ";
+-fi
+-LDFLAGS_SAVE=${LDFLAGS};
+-LDFLAGS=${lapack_lib_path};
+-lapack_use="";
+-AC_CHECK_LIB(lapack,dsysv_,
+-    [lapack_use="yes";lapack_lib="${lapack_lib_path}-llapack";AC_DEFINE(HAVE_LAPACK)],
+-    [lapack_use="";lapack_lib=""],
+-    [${lapack_lib_path}-llapack ${blas_lib} ${vf2c_lib}])
+-LDFLAGS=${LDFLAGS_SAVE};
++lapack_lib_path="";
++PKG_CHECK_MODULES([LAPACK], [lapack])
++lapack_lib="${LAPACK_LIBS}"
+ AC_SUBST(lapack_lib)
+ 
+ dnl # --------------------------

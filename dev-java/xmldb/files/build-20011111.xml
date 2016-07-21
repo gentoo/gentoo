@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---
+   @author: Saleem Abdulrasool <compnerd@gentoo.org>
+   @date: 5/9/2005
+   @revision: 1.0_alpha
+
+   @notes: Call using the following: ant -f build.xml -Dproject.name=${project name} -Dpackage.name=${package name}
+-->
+
+<project name="Gentoo_Builder" default="jar" basedir=".">
+   <property name="src" value="src"/>
+   <property name="build" value="build"/>
+   <property name="dist" value="dist"/>
+   <property name="project.name" value="xmldb-api"/>
+
+   <property name="pkg" value="${package.name}"/>
+   <property name="jar" value="${project.name}.jar"/>
+   <property name="sdk-jar" value="${project.name}-sdk.jar"/>
+
+   <!-- Override any defined properties -->
+   <property file="build.properties"/>
+
+   <target name="init">
+      <tstamp/>
+      <mkdir dir="${build}"/>
+      <mkdir dir="${dist}"/>
+      <mkdir dir="${dist}/doc"/>
+   </target>
+
+   <target name="compile" depends="init">
+	   <javac source="1.4" srcdir="${src}" destdir="${build}" classpath="${classpath}" excludes="**/test"/>
+   </target>
+
+   <target name="manifest" depends="init">
+      <manifest file="${build}/MANIFEST.MF" mode="update">
+         <attribute name="Built-By" value="Gentoo Portage"/>
+      </manifest>
+   </target>
+   
+   <target name="jar" depends="compile,manifest">
+      <jar jarfile="${dist}/${jar}" manifest="${build}/MANIFEST.MF">
+	      <fileset dir="${build}" includes="org/xmldb/api/*.class,org/xmldb/api/base/**,org/xmldb/api/modules/**"/>
+      </jar>
+      <jar jarfile="${dist}/${sdk-jar}" manifest="${build}/MANIFEST.MF">
+	      <fileset dir="${build}" includes="org/xmldb/api/*.class,org/xmldb/api/reference/**,org/xmldb/api/sdk/**"/>
+      </jar>
+   </target>
+
+   <target name="javadoc" depends="compile">
+      <javadoc destdir="${dist}/doc/api" source="1.4">
+      	<fileset dir="${src}"/>
+      </javadoc>
+   </target>
+
+   <target name="clean">
+      <delete dir="${build}"/>
+      <delete dir="${dist}"/>
+   </target>
+</project>

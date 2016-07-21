@@ -1,0 +1,38 @@
+--- mimedefang-2.72/Makefile.in.orig
++++ mimedefang-2.72/Makefile.in
+@@ -52,7 +52,7 @@
+ all: mimedefang mimedefang-multiplexor md-mx-ctrl pod2man
+ 
+ mimedefang-multiplexor: mimedefang-multiplexor.o event.o event_tcp.o drop_privs_nothread.o notifier.o syslog-fac.o utils.o $(EMBPERLOBJS)
+-	$(CC) $(CFLAGS) -o mimedefang-multiplexor mimedefang-multiplexor.o event.o event_tcp.o drop_privs_nothread.o syslog-fac.o notifier.o utils.o $(EMBPERLOBJS) $(LIBS_WITHOUT_PTHREAD) $(EMBPERLLDFLAGS) $(EMBPERLLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o mimedefang-multiplexor mimedefang-multiplexor.o event.o event_tcp.o drop_privs_nothread.o syslog-fac.o notifier.o utils.o $(EMBPERLOBJS) $(LIBS_WITHOUT_PTHREAD) $(EMBPERLLDFLAGS) $(EMBPERLLIBS)
+ 
+ embperl.o: embperl.c
+ 	$(CC) $(CFLAGS) $(EMBPERLCFLAGS) $(PTHREAD_FLAG) $(DEFS) $(MINCLUDE) -c -o embperl.o $(srcdir)/embperl.c
+@@ -67,7 +67,7 @@
+ 	$(CC) $(CFLAGS) $(EMBPERLCFLAGS) $(PTHREAD_FLAG) $(DEFS) $(MINCLUDE) -c -o test-embed-perl.o $(srcdir)/test-embed-perl.c
+ 
+ te: test-embed-perl.o
+-	$(CC) $(CFLAGS) -o te test-embed-perl.o $(LIBS_WITHOUT_PTHREAD) $(EMBPERLLDFLAGS) $(EMBPERLLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o te test-embed-perl.o $(LIBS_WITHOUT_PTHREAD) $(EMBPERLLDFLAGS) $(EMBPERLLIBS)
+ rm_r.o: rm_r.c
+ 	$(CC) $(CFLAGS) $(PTHREAD_FLAG) $(DEFS) $(MINCLUDE) -c -o rm_r.o $(srcdir)/rm_r.c
+ 
+@@ -75,7 +75,7 @@
+ 	$(CC) $(CFLAGS) $(PTHREAD_FLAG) $(DEFS) $(MINCLUDE) -c -o syslog-fac.o $(srcdir)/syslog-fac.c
+ 
+ md-mx-ctrl: md-mx-ctrl.o
+-	$(CC) $(CFLAGS) -o md-mx-ctrl md-mx-ctrl.o $(LIBS_WITHOUT_PTHREAD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o md-mx-ctrl md-mx-ctrl.o $(LIBS_WITHOUT_PTHREAD)
+ 
+ md-mx-ctrl.o: md-mx-ctrl.c
+ 	$(CC) $(CFLAGS) $(DEFS) $(MINCLUDE) -c -o md-mx-ctrl.o $(srcdir)/md-mx-ctrl.c
+@@ -99,7 +99,7 @@
+ 	$(CC) $(CFLAGS) $(DEFS) $(MINCLUDE) -c -o mimedefang-multiplexor.o $(srcdir)/mimedefang-multiplexor.c
+ 
+ mimedefang: mimedefang.o drop_privs_threaded.o utils.o rm_r.o syslog-fac.o dynbuf.o milter_cap.o gen_id.o
+-	$(CC) $(CFLAGS) $(PTHREAD_FLAG) -o mimedefang mimedefang.o drop_privs_threaded.o utils.o rm_r.o syslog-fac.o dynbuf.o milter_cap.o gen_id.o $(LDFLAGS) -lmilter $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(PTHREAD_FLAG) -o mimedefang mimedefang.o drop_privs_threaded.o utils.o rm_r.o syslog-fac.o dynbuf.o milter_cap.o gen_id.o $(LDFLAGS) -lmilter $(LIBS)
+ 
+ mimedefang.o: mimedefang.c mimedefang.h
+ 	$(CC) $(CFLAGS) $(PTHREAD_FLAG) $(DEFS) $(MINCLUDE) -c -o mimedefang.o $(srcdir)/mimedefang.c

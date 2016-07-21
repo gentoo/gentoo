@@ -1,0 +1,11 @@
+--- lib/ivis_opengl/screen.cpp.old	2014-10-29 13:45:01.516359163 +0100
++++ lib/ivis_opengl/screen.cpp	2014-10-29 13:45:42.743968030 +0100
+@@ -261,7 +261,7 @@
+ 		__glewUseProgram = __glewUseProgramObjectARB;
+ 		__glewGetShaderiv = __glewGetObjectParameterivARB;
+ 		__glewLinkProgram = __glewLinkProgramARB;
+-		__glewShaderSource = __glewShaderSourceARB;
++		__glewShaderSource = (PFNGLSHADERSOURCEPROC)__glewShaderSourceARB;
+ 		__glewUniform1f = __glewUniform1fARB;
+ 		__glewUniform1i = __glewUniform1iARB;
+ 		__glewUniform4fv = __glewUniform4fvARB;

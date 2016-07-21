@@ -1,0 +1,37 @@
+Index: sam2p-0.45/configure.in
+===================================================================
+--- sam2p-0.45.orig/configure.in
++++ sam2p-0.45/configure.in
+@@ -81,7 +81,7 @@ fi
+ dnl Checks for programs.
+ dnl AC_PROG_CC
+ AC_LANG_CPLUSPLUS
+-CXXFLAGS=" "
++#CXXFLAGS=" "
+ dnl ^^^ set it to non-empty, so AC_PROG_CXX won't include `-g'
+ CCC="$CCC g++"
+ dnl ^^^ check g++ before c++ (see acspecific.m4, grep AC_PROG_CXX)
+@@ -215,7 +215,7 @@ AC_OUTPUT(Makehelp)
+ 
+ dnl AC_PTS_RUN_OK([perl -x -S ./ccdep.pl $CXX], [], [AC_MSG_ERROR(cannot compute depends)])
+ rm -f Makedep
+-AC_PTS_RUN_OK([make Makedep], [], [AC_MSG_ERROR(cannot compute depends)])
++AC_PTS_RUN_OK([gmake Makedep], [], [AC_MSG_ERROR(cannot compute depends)])
+ AC_PTS_OK
+ echo "configure done. Now you should run: make; make install"
+ 
+Index: sam2p-0.45/Makefile
+===================================================================
+--- sam2p-0.45.orig/Makefile
++++ sam2p-0.45/Makefile
+@@ -49,8 +49,8 @@ IDE_MODES := release debug
+ IDE_TARGETS_debug := $(patsubst %,%.yes, $(TARGETS))
+ IDE_TARGETS_release := $(TARGETS)
+ 
+-CXD_assert =$(CXX) -s -O2
+-CXD_no     =$(CXX) -s -DNDEBUG -O3
++CXD_assert =$(CXX)
++CXD_no     =$(CXX) -DNDEBUG
+ # CXD_yes    =$(CXX) $(GFLAG) -lefence
+ CXD_yes    =$(CXX) $(GFLAG)
+ CXD_checker=checkerg++ $(GFLAG)

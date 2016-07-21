@@ -1,0 +1,82 @@
+From 7ec0e758430f9e31fb9fc0f85d72339a307263d6 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Fri, 14 Aug 2015 03:09:57 +0200
+Subject: [PATCH] Texinfo: Fix parameter handling with macro "mainpurpose"
+
+---
+ doc/auxmac.texi |  6 +++---
+ doc/enfuse.texi | 10 +++++-----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/doc/auxmac.texi b/doc/auxmac.texi
+index 59520c3..ad35d6a 100644
+--- a/doc/auxmac.texi
++++ b/doc/auxmac.texi
+@@ -88,12 +88,12 @@ not displayed, because of lacking <acronym>SVG</acronym> and
+ 
+ @c Text Fragments
+ 
+-@macro mainpurpose
++@macro mainpurpose{purpose}
+ @ifinfo
+-@strong{Main Purpose}:
++@strong{Main Purpose}: \purpose\
+ @end ifinfo
+ @ifnotinfo
+-@strong{Main Purpose: }
++@strong{Main Purpose: }\purpose\
+ @end ifnotinfo
+ @end macro
+ 
+diff --git a/doc/enfuse.texi b/doc/enfuse.texi
+index 92fe597..9e601ea 100644
+--- a/doc/enfuse.texi
++++ b/doc/enfuse.texi
+@@ -5164,7 +5164,7 @@ Fire in rapid succession.
+ @cindex series, simple
+ @cindex noise reduction
+ 
+-@mainpurpose Reduce noise
++@mainpurpose{Reduce noise}
+ 
+ @noindent
+ With the default settings, Enfuse computes a weighted average of the
+@@ -5193,7 +5193,7 @@ be worth an extra run.
+ @cindex series, exposure
+ @cindex dynamic range increase
+ 
+-@mainpurpose Increase manageable dynamic range
++@mainpurpose{Increase manageable dynamic range}
+ 
+ @noindent
+ An exposure series is a set of images taken with identical parameters
+@@ -5322,7 +5322,7 @@ the multiply occuring exposures and reducing noise.
+ @cindex series, flash exposure
+ @cindex dynamic range increase
+ 
+-@mainpurpose ???
++@mainpurpose{???}
+ 
+ ...
+ 
+@@ -5333,7 +5333,7 @@ the multiply occuring exposures and reducing noise.
+ @cindex series, polarization
+ @cindex saturation enhancement
+ 
+-@mainpurpose Reflection suppression, saturation enhancement
++@mainpurpose{Reflection suppression, saturation enhancement}
+ 
+ In the current implementation of Enfuse, it is not possible in general
+ to fuse a polarization series.  Naively abusing
+@@ -5345,7 +5345,7 @@ to fuse a polarization series.  Naively abusing
+ @cindex focus stacks
+ @cindex depth-of-focus increase
+ 
+-@mainpurpose Synthetic Depth-of-Field Increase
++@mainpurpose{Synthetic Depth-of-Field Increase}
+ 
+ A @dfn{focus stack} is a series of images where the distance of the
+ focal plane from the sensor varies.  Sloppily speaking, the images
+-- 
+2.5.0
+

@@ -1,0 +1,36 @@
+From 513393e20f20cf62c09bd445057194ee378dda57 Mon Sep 17 00:00:00 2001
+From: Florian Wilhelm <Florian.Wilhelm@gmail.com>
+Date: Wed, 16 Sep 2015 12:59:49 +0200
+Subject: [PATCH] Fix issue 69
+
+---
+ CHANGES.rst      | 5 +++++
+ requirements.txt | 4 ++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/CHANGES.rst b/CHANGES.rst
+index 922d41b..0478701 100644
+--- a/CHANGES.rst
++++ b/CHANGES.rst
+@@ -2,6 +2,11 @@
+ Release Notes
+ =============
+ 
++Version 2.4.2, 2015-09-16
++=========================
++
++- Fix version conflicts due to too tight pinning, issue #69
++
+ Version 2.4.1, 2015-09-09
+ =========================
+ 
+diff --git a/requirements.txt b/requirements.txt
+index f9695f8..a620a77 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,3 +1,3 @@
+ six
+-setuptools_scm>=1.7,<1.8a0
+-pbr>=1.7,<1.8a0
++setuptools_scm>=1.7
++pbr>=1.6

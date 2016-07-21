@@ -1,0 +1,29 @@
+From 40e119bd5577fc383990ad02b175ec64292f764b Mon Sep 17 00:00:00 2001
+From: Jekyll Wu <adaptee@gmail.com>
+Date: Tue, 16 Oct 2012 11:24:06 +0900
+Subject: [PATCH] Fix a non-const lvalue build error with clang-3.1
+
+BUG=http://code.google.com/p/ibus/issues/detail?id=1506
+
+Review URL: https://codereview.appspot.com/6697048
+Patch from Jekyll Wu <adaptee@gmail.com>.
+---
+ src/qibusserializable.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qibusserializable.h b/src/qibusserializable.h
+index 594d973..92a32ed 100644
+--- a/src/qibusserializable.h
++++ b/src/qibusserializable.h
+@@ -91,7 +91,7 @@ class Serializable : public Object
+ 
+ template<typename T>
+ QVariant &
+-qVariantFromSerializable (const Pointer<T> &p, QVariant & variant = QVariant ())
++qVariantFromSerializable (const Pointer<T> &p, QVariant & variant)
+ {
+     QDBusArgument argument;
+ 
+-- 
+1.8.1.5
+

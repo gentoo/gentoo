@@ -1,0 +1,20 @@
+--- a/sysdeps.c
++++ b/sysdeps.c
+@@ -1,17 +1,7 @@
+ #include "sysdeps.h"
+ 
+ #ifdef linux
+-/* A real real big bad hack. *
+- * Never try this at home!   */
+-# define extern static
+-# if 0 /* This is required on older Linux versions, not anymore */
+-#  include <asm/io.h>
+-#  undef extern
+ #  include <sys/io.h>
+-# else
+-#  include <sys/io.h>
+-#  undef extern
+-# endif
+ # define inportb(x) inb(x)
+ # define outportb(p,x) outb(x,p)
+ #endif

@@ -1,0 +1,17 @@
+<project name="swidgets" default="jar" basedir=".">
+   <property file="build.properties"/>
+
+   <target name="init">
+      <tstamp/>
+      <mkdir dir="${build}"/>
+      <mkdir dir="${dest}"/>
+   </target>
+
+   <target name="compile" depends="init">
+      <javac classpath="${classpath}" srcdir="${src}" destdir="${build}"/>
+   </target>
+
+   <target name="jar" depends="compile">
+      <jar destfile="${dest}/swidgets-${version}.jar" basedir="${build}"/>
+   </target>
+</project>

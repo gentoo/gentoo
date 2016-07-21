@@ -1,0 +1,2 @@
+# Force disable multilib USE flag
+-multilib

@@ -1,0 +1,36 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -313,7 +313,8 @@
+     $(DHASH_LIBS) \
+     $(SSS_CRYPT_LIBS) \
+     $(OPENLDAP_LIBS) \
+-    $(TDB_LIBS)
++    $(TDB_LIBS) \
++	-lpthread
+ 
+ PYTHON_BINDINGS_LIBS = \
+     $(TALLOC_LIBS) \
+@@ -338,7 +339,8 @@
+     $(COLLECTION_LIBS) \
+     $(DHASH_LIBS) \
+     $(OPENLDAP_LIBS) \
+-    $(TDB_LIBS)
++    $(TDB_LIBS) \
++    -lpthread
+ 
+ if BUILD_SELINUX
+     PYTHON_BINDINGS_LIBS += $(SELINUX_LIBS)
+diff --git a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,7 +18,8 @@
+ AM_PROG_CC_C_O
+ AC_DISABLE_STATIC
+ AC_PROG_INSTALL
+-AC_PROG_LIBTOOL
++LT_INIT
++AM_PROG_AR
+ AC_CONFIG_MACRO_DIR([m4])
+ AM_GNU_GETTEXT([external])
+ AM_GNU_GETTEXT_VERSION([0.14])

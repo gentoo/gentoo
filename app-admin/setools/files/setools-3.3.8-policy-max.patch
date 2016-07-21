@@ -1,0 +1,29 @@
+trying to run compiled code fails when cross-compiling.
+probe the value using the preprocessor instead.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -621,21 +621,8 @@
+ 	        sepol_new_errcodes="yes",
+                 sepol_new_errcodes="no")
+ 
+-AC_RUN_IFELSE(
+-   [AC_LANG_SOURCE([
+-#include <sepol/policydb/policydb.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-int main(void) {
+-    FILE *f = fopen("conftest.data", "w");
+-    if (f != NULL && fprintf(f, "%d", POLICYDB_VERSION_MAX) > 0) {
+-       fclose(f);
+-       exit(EXIT_SUCCESS);
+-    }
+-    exit(EXIT_FAILURE);
+-}])],
+-    sepol_policy_version_max=`cat conftest.data`,
+-    AC_MSG_FAILURE([could not determine maximum libsepol policy version]))
++printf "#include <sepol/policydb/policydb.h>\nPOLICYDB_VERSION_MAX\n" > conftest.c
++sepol_policy_version_max=`${CPP} -E -P ${CPPFLAGS} conftest.c | tail -1`
+ AC_DEFINE_UNQUOTED(SEPOL_POLICY_VERSION_MAX, ${sepol_policy_version_max}, [maximum policy version supported by libsepol])
+ CFLAGS="${sepol_save_CFLAGS}"
+ CPPFLAGS="${sepol_save_CPPFLAGS}"

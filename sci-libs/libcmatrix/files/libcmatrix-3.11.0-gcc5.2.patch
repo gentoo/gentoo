@@ -1,0 +1,16 @@
+ include/MultiMatrix.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/MultiMatrix.h b/include/MultiMatrix.h
+index 2d54db5..e95ce4c 100755
+--- a/include/MultiMatrix.h
++++ b/include/MultiMatrix.h
+@@ -1225,7 +1225,7 @@ template<class T,size_t N> struct new_trait_<T,N,N> { typedef MultiMatrix<T,N> v
+ #endif
+  //LCM_SUPPRESS_VIEWS
+ 
+-  template<size_t N, template<size_t> class CheckClass =LCM_CheckBoundsDefault>
++  template<size_t N, template<size_t> class CheckClass>
+   class Indexer<N,CheckClass>::permuted_iterator : public ::std::iterator< ::std::bidirectional_iterator_tag,size_t> 
+   {
+     private:

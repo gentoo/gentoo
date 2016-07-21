@@ -1,0 +1,93 @@
+diff --git a/configdialog.cpp b/configdialog.cpp
+index dddb11e..9a1aee7 100644
+--- a/configdialog.cpp
++++ b/configdialog.cpp
+@@ -222,7 +222,7 @@ void ConfigDialog::browseAspell()
+ QDir spelldir(QCoreApplication::applicationDirPath());
+ #else
+ #ifdef DEBIAN_SPELLDIR
+-QDir spelldir(PREFIX"/share/myspell/dicts");
++QDir spelldir(PREFIX"/share/myspell");
+ #else
+ QDir spelldir(PREFIX"/share/texmaker");
+ #endif
+diff --git a/texmaker.cpp b/texmaker.cpp
+index b8a2143..a8bcd46 100644
+--- a/texmaker.cpp
++++ b/texmaker.cpp
+@@ -2787,7 +2787,7 @@ if (hasDecodingError)
+ QString dicDir=QCoreApplication::applicationDirPath() + "/";
+ #else
+ #ifdef DEBIAN_SPELLDIR
+-QString dicDir=PREFIX"/share/myspell/dicts/";
++QString dicDir=PREFIX"/share/myspell/";
+ #else
+ QString dicDir=PREFIX"/share/texmaker/";
+ #endif
+diff --git a/texmaker.pro b/texmaker.pro
+index 7e9b706..909eb62 100644
+--- a/texmaker.pro
++++ b/texmaker.pro
+@@ -98,29 +98,6 @@ HEADERS	+= texmaker.h \
+ 	unicodeview.h \
+ 	quickbeamerdialog.h \
+ 	svnhelper.h \
+-	hunspell/affentry.hxx \
+-	hunspell/affixmgr.hxx \
+-	hunspell/atypes.hxx \
+-	hunspell/baseaffix.hxx \
+-	hunspell/csutil.hxx \
+-	hunspell/dictmgr.hxx \
+-	hunspell/hashmgr.hxx \
+-	hunspell/htypes.hxx \
+-	hunspell/hunspell.hxx \
+-	hunspell/hunspell.h \
+-	hunspell/langnum.hxx \
+-	hunspell/license.hunspell \
+-	hunspell/phonet.hxx \
+-	hunspell/suggestmgr.hxx \
+-	hunspell/license.myspell \
+-	hunspell/filemgr.hxx \
+-	hunspell/hunzip.hxx \
+-	hunspell/replist.hxx \
+-	hunspell/w_char.hxx \
+-	singleapp/qtlocalpeer.h \
+-	singleapp/qtlockedfile.h \
+-	singleapp/qtsingleapplication.h \
+-	singleapp/qtsinglecoreapplication.h \
+ 	encodingprober/CharDistribution.h \
+ 	encodingprober/ChineseGroupProber.h \
+ 	encodingprober/ctype_test_p.h \
+@@ -210,22 +187,6 @@ SOURCES	+= main.cpp \
+ 	unicodeview.cpp \
+ 	quickbeamerdialog.cpp \
+ 	svnhelper.cpp \
+-	hunspell/affentry.cxx \
+-	hunspell/affixmgr.cxx \
+-	hunspell/csutil.cxx \
+-	hunspell/dictmgr.cxx \
+-	hunspell/hashmgr.cxx \
+-	hunspell/hunspell.cxx \
+-	hunspell/phonet.cxx \
+-	hunspell/suggestmgr.cxx \
+-	hunspell/utf_info.cxx \
+-	hunspell/filemgr.cxx \
+-	hunspell/replist.cxx \
+-	hunspell/hunzip.cxx \
+-	singleapp/qtlocalpeer.cpp \
+-	singleapp/qtlockedfile.cpp \
+-	singleapp/qtsingleapplication.cpp \
+-	singleapp/qtsinglecoreapplication.cpp \
+ 	encodingprober/CharDistribution.cpp \
+ 	encodingprober/ChineseGroupProber.cpp \
+ 	encodingprober/JapaneseGroupProber.cpp \
+@@ -336,8 +297,7 @@ icon.path = $${ICONDIR}
+ 
+ INSTALLS = target
+ HEADERS	+= x11fontdialog.h 
+-SOURCES	+= x11fontdialog.cpp \
+-	  singleapp/qtlockedfile_unix.cpp
++SOURCES	+= x11fontdialog.cpp 
+ FORMS += x11fontdialog.ui
+ 
+ utilities.files = doc/doc1.png \

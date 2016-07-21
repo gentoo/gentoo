@@ -1,0 +1,113 @@
+diff --git a/lib/DBus/Transport.hs b/lib/DBus/Transport.hs
+index 8c50ab9..9517212 100644
+--- a/lib/DBus/Transport.hs
++++ b/lib/DBus/Transport.hs
+@@ -42,3 +42,5 @@ import qualified Data.ByteString
+ import           Data.ByteString (ByteString)
++import qualified Data.ByteString.Lazy as BL
+ import qualified Data.Map as Map
++import qualified Data.Monoid as M
+ import           Data.Typeable (Typeable)
+@@ -49,3 +51,3 @@ import qualified System.Info
+ 
+-import qualified Data.Serialize.Builder as Builder
++import qualified Data.ByteString.Builder as Builder
+ 
+@@ -151,3 +153,3 @@ instance Transport SocketTransport where
+ recvLoop :: Socket -> Int -> IO ByteString
+-recvLoop s = loop Builder.empty where
++recvLoop s = loop M.mempty where
+ 	chunkSize = 4096
+@@ -156,3 +158,3 @@ recvLoop s = loop Builder.empty where
+ 			chunk <- recv s chunkSize
+-			let builder = Builder.append acc (Builder.fromByteString chunk)
++			let builder = M.mappend acc (Builder.byteString chunk)
+ 			loop builder (n - Data.ByteString.length chunk)
+@@ -163,8 +165,8 @@ recvLoop s = loop Builder.empty where
+ 				-- Return what we've got so far.
+-				0 -> return (Builder.toByteString acc)
++				0 -> return (BL.toStrict $ Builder.toLazyByteString acc)
+ 				
+ 				len -> do
+-					let builder = Builder.append acc (Builder.fromByteString chunk)
++					let builder = M.mappend acc (Builder.byteString chunk)
+ 					if len == n
+-						then return (Builder.toByteString builder)
++						then return (BL.toStrict $ Builder.toLazyByteString builder)
+ 						else loop builder (n - Data.ByteString.length chunk)
+diff --git a/lib/DBus/Wire.hs b/lib/DBus/Wire.hs
+index 43ae315..09bf8bd 100644
+--- a/lib/DBus/Wire.hs
++++ b/lib/DBus/Wire.hs
+@@ -34,2 +34,3 @@ import qualified Data.ByteString.Char8
+ import           Data.Int (Int16, Int32, Int64)
++import qualified Data.ByteString.Lazy as BL
+ import qualified Data.Map
+@@ -37,2 +38,3 @@ import           Data.Map (Map)
+ import           Data.Maybe (fromJust, listToMaybe, fromMaybe)
++import qualified Data.Monoid as M
+ import           Data.Text (Text)
+@@ -45,3 +47,3 @@ import           System.Posix.Types (Fd(..))
+ 
+-import qualified Data.Serialize.Builder as Builder
++import qualified Data.ByteString.Builder as Builder
+ import qualified Data.Serialize.Get as Get
+@@ -180,3 +182,3 @@ appendB :: Word64 -> Builder.Builder -> Marshal ()
+ appendB size bytes = Wire (\_ (MarshalState builder count) -> let
+-	builder' = Builder.append builder bytes
++	builder' = M.mappend builder bytes
+ 	count' = count + size
+@@ -187,3 +189,3 @@ appendS bytes = appendB
+ 	(fromIntegral (Data.ByteString.length bytes))
+-	(Builder.fromByteString bytes)
++	(Builder.byteString bytes)
+ 
+@@ -275,3 +277,3 @@ unmarshalGet count be le = do
+ marshalWord8 :: Word8 -> Marshal ()
+-marshalWord8 x = appendB 1 (Builder.singleton x)
++marshalWord8 x = appendB 1 (Builder.word8 x)
+ 
+@@ -282,4 +284,4 @@ marshalWord16 :: Word16 -> Marshal ()
+ marshalWord16 = marshalBuilder 2
+-	Builder.putWord16be
+-	Builder.putWord16le
++	Builder.word16BE
++	Builder.word16LE
+ 
+@@ -287,4 +289,4 @@ marshalWord32 :: Word32 -> Marshal ()
+ marshalWord32 = marshalBuilder 4
+-	Builder.putWord32be
+-	Builder.putWord32le
++	Builder.word32BE
++	Builder.word32LE
+ 
+@@ -292,4 +294,4 @@ marshalWord64 :: Word64 -> Marshal ()
+ marshalWord64 = marshalBuilder 8
+-	Builder.putWord64be
+-	Builder.putWord64le
++	Builder.word64BE
++	Builder.word64LE
+ 
+@@ -441,6 +443,6 @@ getArrayBytes itemType vs = do
+ 	
+-	putState (MarshalState Builder.empty afterPadding)
++	putState (MarshalState M.mempty afterPadding)
+ 	(MarshalState itemBuilder _) <- Data.Vector.mapM_ marshal vs >> getState
+ 	
+-	let itemBytes = Builder.toByteString itemBuilder
++	let itemBytes = BL.toStrict $ Builder.toLazyByteString itemBuilder
+ 	    paddingSize = fromIntegral (afterPadding - afterLength)
+@@ -568,3 +570,3 @@ marshalMessage e serial msg = runMarshal where
+ 		marshal (toValue (encodeEndianness e))
+-		let bodyBytes = Builder.toByteString bodyBytesB
++		let bodyBytes = BL.toStrict $ Builder.toLazyByteString bodyBytesB
+ 		marshalHeader msg serial sig (fromIntegral (Data.ByteString.length bodyBytes))
+@@ -573,6 +575,6 @@ marshalMessage e serial msg = runMarshal where
+ 		checkMaximumSize
+-	emptyState = MarshalState Builder.empty 0
++	emptyState = MarshalState M.mempty 0
+ 	runMarshal = case unWire marshaler e emptyState of
+ 		WireRL err -> Left (MarshalError err)
+-		WireRR _ (MarshalState builder _) -> Right (Builder.toByteString builder)
++		WireRR _ (MarshalState builder _) -> Right (BL.toStrict $ Builder.toLazyByteString builder)
+ 

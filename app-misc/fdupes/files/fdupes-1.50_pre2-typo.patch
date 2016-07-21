@@ -1,0 +1,12 @@
+diff -urNp fdupes-1.50-PR2.orig/fdupes.1 fdupes-1.50-PR2/fdupes.1
+--- fdupes-1.50-PR2.orig/fdupes.1	2009-01-31 20:11:49.581967819 +0530
++++ fdupes-1.50-PR2/fdupes.1	2009-01-31 20:32:46.383969471 +0530
+@@ -84,7 +84,7 @@ If fdupes returns with an error message 
+ .B fdupes: error invoking md5sum
+ it means the program has been compiled to use an external
+ program to calculate MD5 signatures (otherwise, fdupes uses
+-interal routines for this purpose), and an error has occurred
++internal routines for this purpose), and an error has occurred
+ while attempting to execute it. If this is the case, the 
+ specified program should be properly installed prior 
+ to running fdupes.

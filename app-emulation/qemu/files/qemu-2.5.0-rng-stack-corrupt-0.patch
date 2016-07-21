@@ -1,0 +1,98 @@
+From 3c52ddcdc548e7fbe65112d8a7bdc9cd105b4750 Mon Sep 17 00:00:00 2001
+From: Ladi Prosek <lprosek@redhat.com>
+Date: Thu, 3 Mar 2016 09:37:15 +0100
+Subject: [PATCH] rng: remove the unused request cancellation code
+
+rng_backend_cancel_requests had no callers and none of the code
+deleted in this commit ever ran.
+
+Signed-off-by: Ladi Prosek <lprosek@redhat.com>
+Reviewed-by: Amit Shah <amit.shah@redhat.com>
+Message-Id: <1456994238-9585-2-git-send-email-lprosek@redhat.com>
+Signed-off-by: Amit Shah <amit.shah@redhat.com>
+---
+ backends/rng-egd.c   | 12 ------------
+ backends/rng.c       |  9 ---------
+ include/sysemu/rng.h | 11 -----------
+ 3 files changed, 32 deletions(-)
+
+diff --git a/backends/rng-egd.c b/backends/rng-egd.c
+index 2de5cd5..0b2976a 100644
+--- a/backends/rng-egd.c
++++ b/backends/rng-egd.c
+@@ -125,17 +125,6 @@ static void rng_egd_free_requests(RngEgd *s)
+     s->requests = NULL;
+ }
+ 
+-static void rng_egd_cancel_requests(RngBackend *b)
+-{
+-    RngEgd *s = RNG_EGD(b);
+-
+-    /* We simply delete the list of pending requests.  If there is data in the 
+-     * queue waiting to be read, this is okay, because there will always be
+-     * more data than we requested originally
+-     */
+-    rng_egd_free_requests(s);
+-}
+-
+ static void rng_egd_opened(RngBackend *b, Error **errp)
+ {
+     RngEgd *s = RNG_EGD(b);
+@@ -213,7 +202,6 @@ static void rng_egd_class_init(ObjectClass *klass, void *data)
+     RngBackendClass *rbc = RNG_BACKEND_CLASS(klass);
+ 
+     rbc->request_entropy = rng_egd_request_entropy;
+-    rbc->cancel_requests = rng_egd_cancel_requests;
+     rbc->opened = rng_egd_opened;
+ }
+ 
+diff --git a/backends/rng.c b/backends/rng.c
+index b7820ef..2f2f3ee 100644
+--- a/backends/rng.c
++++ b/backends/rng.c
+@@ -26,15 +26,6 @@ void rng_backend_request_entropy(RngBackend *s, size_t size,
+     }
+ }
+ 
+-void rng_backend_cancel_requests(RngBackend *s)
+-{
+-    RngBackendClass *k = RNG_BACKEND_GET_CLASS(s);
+-
+-    if (k->cancel_requests) {
+-        k->cancel_requests(s);
+-    }
+-}
+-
+ static bool rng_backend_prop_get_opened(Object *obj, Error **errp)
+ {
+     RngBackend *s = RNG_BACKEND(obj);
+diff --git a/include/sysemu/rng.h b/include/sysemu/rng.h
+index 858be8c..87b3ebe 100644
+--- a/include/sysemu/rng.h
++++ b/include/sysemu/rng.h
+@@ -37,7 +37,6 @@ struct RngBackendClass
+ 
+     void (*request_entropy)(RngBackend *s, size_t size,
+                             EntropyReceiveFunc *receive_entropy, void *opaque);
+-    void (*cancel_requests)(RngBackend *s);
+ 
+     void (*opened)(RngBackend *s, Error **errp);
+ };
+@@ -68,14 +67,4 @@ struct RngBackend
+ void rng_backend_request_entropy(RngBackend *s, size_t size,
+                                  EntropyReceiveFunc *receive_entropy,
+                                  void *opaque);
+-
+-/**
+- * rng_backend_cancel_requests:
+- * @s: the backend to cancel all pending requests in
+- *
+- * Cancels all pending requests submitted by @rng_backend_request_entropy.  This
+- * should be used by a device during reset or in preparation for live migration
+- * to stop tracking any request.
+- */
+-void rng_backend_cancel_requests(RngBackend *s);
+ #endif
+-- 
+2.7.4
+

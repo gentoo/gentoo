@@ -1,0 +1,45 @@
+diff --git a/dooble.pro b/dooble.pro
+index 8df489e..d448f6e 100644
+--- a/dooble.pro
++++ b/dooble.pro
+@@ -240,33 +240,32 @@ TRANSLATIONS    = Translations/dooble_en.ts \
+ PROJECTNAME	= Dooble
+ TARGET		= Dooble
+ 
+-dooble.path		= /usr/local/dooble
++dooble.path		= /usr/bin
+ dooble.files		= Dooble
+-dooble_sh.path		= /usr/local/dooble
++dooble_sh.path		= /usr/share/dooble
+ dooble_sh.files		= dooble.sh
+ desktop.path            = /usr/share/applications
+ desktop.files           = dooble.desktop
+ desktopicon.path        = /usr/share/icons/hicolor/48x48
+ desktopicon.files       = Icons/48x48/dooble.png
+-icons.path		= /usr/local/dooble
++icons.path		= /usr/share/dooble
+ icons.files		= Icons
+-images.path		= /usr/local/dooble
++images.path		= /usr/share/dooble
+ images.files		= Images
+-libspoton_install.path	= /usr/local/dooble/Lib
++libspoton_install.path	= /usr/lib
+ libspoton_install.files = libSpotOn/libspoton.so
+ lrelease.extra          = $$[QT_INSTALL_BINS]/lrelease dooble.pro
+ lrelease.path           = .
+ lupdate.extra           = $$[QT_INSTALL_BINS]/lupdate dooble.pro
+ lupdate.path            = .
+-pluginsdir.path         = /usr/local/dooble/Plugins/dooble
++pluginsdir.path         = /usr/lib/nsbrowser/plugins
+-pluginsdir.files        = Plugins/README
+-plugspec.path           = /usr/local/include/dooble/plugin-spec
++plugspec.path           = /usr/include/dooble/plugin-spec
+ plugspec.files          = plugin-spec/*.h
+-postinstall.path	= /usr/local/dooble
++postinstall.path	= /usr/share/dooble
+ postinstall.extra	= find /usr/local/dooble -name .svn -exec rm -rf {} \\; 2>/dev/null; echo
+-tab.path		= /usr/local/dooble
++tab.path		= /usr/share/dooble
+ tab.files		= Tab
+ translations.path 	= /usr/local/dooble/Translations
+ translations.files	= Translations/*.qm

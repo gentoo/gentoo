@@ -1,0 +1,11 @@
+--- polyml.5.4.1-orig/configure.ac	2010-09-03 21:22:40.000000000 +1000
++++ polyml.5.4.1/configure.ac	2012-01-09 22:44:04.153668402 +1100
+@@ -321,7 +321,7 @@
+ AC_ARG_WITH([portable],
+     [AS_HELP_STRING([--with-portable],
+               [Build the portable interpreter version of Poly/ML instead of native @<:@default=no@:>@])], [
+-    ac_cv_with_portable=yes], [
++    ac_cv_with_portable="$withval"], [
+     ac_cv_with_portable=no])
+ 
+ case "${host_cpu}" in

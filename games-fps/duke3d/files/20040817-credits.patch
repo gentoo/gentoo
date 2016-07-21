@@ -1,0 +1,38 @@
+--- menues.c	2003-08-17 22:16:10.000000000 +0200
++++ menues.c	2004-03-29 01:59:28.000000000 +0200
+@@ -1747,9 +1747,10 @@
+         case 996:
+         case 997:
+ 
+-//            rotatesprite(c<<16,200<<15,65536L,0,MENUSCREEN,16,0,10+64,0,0,xdim-1,ydim-1);
+-//            rotatesprite(c<<16,19<<16,65536L,0,MENUBAR,16,0,10,0,0,xdim-1,ydim-1);
+-//            menutext(c,24,0,0,"CREDITS");
++            c = (320>>1);
++            rotatesprite(c<<16,200<<15,65536L,0,MENUSCREEN,16,0,10+64,0,0,xdim-1,ydim-1);
++            rotatesprite(c<<16,19<<16,65536L,0,MENUBAR,16,0,10,0,0,xdim-1,ydim-1);
++            menutext(c,24,0,0,"CREDITS");
+ 
+             if(KB_KeyPressed(sc_Escape)) { cmenu(0); break; }
+ 
+@@ -1926,6 +1927,21 @@
+ 
+             menutext(c,67+16+16+16+16+16,SHX(-7),PHX(-7),"QUIT");
+ 
++    gametext(c,67+16+16+16+16+16+16+16,"Duke Nukem 3D for "
++#if defined PLATFORM_MACOSX
++            "MacOS"
++#elif defined PLATFORM_DOS
++            "MS-Dos"
++#elif defined PLATFORM_WIN32
++            "Win32"
++#elif defined PLATFORM_UNIX
++            "Gentoo"
++#else       
++            "unknown"
++#endif      
++            ,16,2+8+16);
++    gametext(c,67+16+16+16+16+16+16+16+9,"build " __DATE__ " " __TIME__,16,2+8+16);
++
+             break;
+ // CTW END - MODIFICATION
+ 

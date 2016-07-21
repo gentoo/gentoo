@@ -1,0 +1,11 @@
+[Unit]
+Description=Murmurd - VoIP Server (for Mumble)
+After=network.target mysql.service
+
+[Service]
+User=murmur
+Group=murmur
+ExecStart=/usr/bin/murmurd -fg -ini /etc/murmur/murmur.ini
+
+[Install]
+WantedBy=multi-user.target

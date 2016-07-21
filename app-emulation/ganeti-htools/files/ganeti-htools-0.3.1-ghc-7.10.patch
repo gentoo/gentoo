@@ -1,0 +1,29 @@
+diff --git a/Ganeti/HTools/Types.hs b/Ganeti/HTools/Types.hs
+index 104bf64..8146870 100644
+--- a/Ganeti/HTools/Types.hs
++++ b/Ganeti/HTools/Types.hs
+@@ -65,2 +65,4 @@ import qualified Data.Map as M
+ import qualified Text.JSON as JSON
++import Control.Applicative
++import Control.Monad
+ 
+@@ -221,2 +223,9 @@ data Result a
+ 
++instance Functor Result where
++    fmap  = liftM
++
++instance Applicative Result where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad Result where
+@@ -252,2 +261,9 @@ data OpResult a = OpFail FailMode -- ^ Failed operation
+ 
++instance Functor OpResult where
++    fmap  = liftM
++
++instance Applicative OpResult where
++    pure  = return
++    (<*>) = ap  -- defined in Control.Monad
++
+ instance Monad OpResult where

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zx2c4@gentoo.org</email>
+		<name>Jason A. Donenfeld</name>
+	</maintainer>
+	<longdescription>
+		Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git.
+	</longdescription>
+	<use>
+		<flag name="X">
+			Use <pkg>x11-misc/xclip</pkg> to copy passwords to the clipboard.
+		</flag>
+		<flag name="git">
+			Use <pkg>dev-vcs/git</pkg> for password revisions.
+		</flag>
+		<flag name="fish-completion">
+			Enable fish completion support.
+		</flag>
+		<flag name="dmenu">
+			Add support for x11-misc/dmenu with the 'passmenu' program.
+		</flag>
+		<flag name="importers">
+			Allow importing passwords from other password managers using various contributed scripts.
+		</flag>
+	</use>
+</pkgmetadata>

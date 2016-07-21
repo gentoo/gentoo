@@ -1,0 +1,14 @@
+--- a/install/unix/preinstall
++++ b/install/unix/preinstall
+@@ -121,7 +121,10 @@
+ urels=`(uname -r) 2>/dev/null`
+ machine=`(uname -m) 2>/dev/null`
+ 
+-if [ "$uname" = "Darwin" ]; then
++if [ -d "Gentoo" -a -f "/etc/gentoo-release" ];  then
++    system="Gentoo"
++
++elif [ "$uname" = "Darwin" ]; then
+     system="Darwin"
+ 
+ elif [ "$machine" = "x86_64" ]; then

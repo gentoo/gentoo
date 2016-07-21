@@ -1,0 +1,10 @@
+--- fbgrab.c
++++ fbgrab.c
+@@ -22,6 +22,7 @@
+ 
+ #include <getopt.h>
+ #include <sys/vt.h>   /* to handle vt changing */
++#include <zlib.h>     /* Z_BEST_COMPRESSION */
+ #include <png.h>      /* PNG lib */
+ #include <linux/fb.h> /* to handle framebuffer ioctls */
+ 

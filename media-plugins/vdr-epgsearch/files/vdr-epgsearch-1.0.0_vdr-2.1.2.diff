@@ -1,0 +1,15 @@
+diff -Naur epgsearch-1.0.0.orig/uservars.h epgsearch-1.0.0/uservars.h
+--- epgsearch-1.0.0.orig/uservars.h	2013-10-23 00:54:29.000000000 +0200
++++ epgsearch-1.0.0/uservars.h	2013-10-23 00:56:21.000000000 +0200
+@@ -537,7 +537,11 @@
+     cVideodirVar() : cInternalVar("%videodir%") {}
+     string Evaluate(const cEvent*, bool escapeStrings = false) 
+ 	{ 
++#if APIVERSNUM > 20101
++        return cVideoDirectory::Name();
++#else
+ 	    return VideoDirectory;
++#endif
+ 	}
+ };
+  

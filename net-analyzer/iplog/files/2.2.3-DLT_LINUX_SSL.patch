@@ -1,0 +1,134 @@
+--- a/src/iplog_options.c
++++ b/src/iplog_options.c
+@@ -440,58 +440,58 @@
+ 
+ static void print_help(void) {
+ 	mysyslog(
+-"Usage: " PACKAGE " [options] (\"*\" Denotes enabled by default)
+---user      or -u <user|UID>     Run as specified the user or UID.
+---group     or -g <group|GID>    Run with specified the group or GID.
+---logfile   or -l <file>         Log to <file>.
+---pid-file  <file>               Use <file> as the pid file.
+---ignore    or -d                Ignore DNS traffic from nameservers listed in
+-                                 /etc/resolv.conf.
+---interface or -i <if0,...,ifN>  Listen on the specified interface(s).
+---promisc   or -a <network>      Log traffic to all hosts on <network>.
+---kill      or -k                Kill iplog, if it is running.
+---restart   or -R                Restart iplog, if it is running.
+---no-fork   or -o                Run in the foreground.
+---stdout    or -L                Log to stdout.
+---help      or -h                This help screen.
+---version   or -v                Print version information and exit.
+-
+---facility <facility>            Use the specified syslog facility.
+---priority <priority>            Use the specified syslog priority.
+-
+---tcp[=true|false|toggle]                      %cLog TCP traffic.
+---udp[=true|false|toggle]                      %cLog UDP traffic.
+---icmp[=true|false|toggle]                     %cLog ICMP traffic.
+-
+---log-ip[=true|false|toggle]            or -w  %cLog IP along with hostname.
+---log-dest[=true|false|toggle]          or -D  %cLog the destination of traffic.
+---dns-cache[=true|false|toggle]         or -c  %cUse the built-in DNS cache.
+---get-ident[=true|false|toggle]         or -e  %cGet ident info on connections
+-                                                to listening ports.
+-
+---tcp-resolve[=true|false|toggle]       or -T  %cResolve IPs of TCP traffic.
+---udp-resolve[=true|false|toggle]       or -U  %cResolve IPs of UDP traffic.
+---icmp-resolve[=true|false|toggle]      or -I  %cResolve IPs of ICMP traffic.
+---disable-resolver                      or -N  %cDo not resolve any IPs.
+-
+---verbose[=true|false|toggle]           or -V  %cBe verbose.
+---fool-nmap[=true|false|toggle]         or -z  %cFool nmap's OS detection.
+---scans-only[=true|false|toggle]        or -m  %cOnly log scans.
+---detect-syn-flood[=true|false|toggle]  or -s  %cStop resolving IPs if a
+-                                                SYN flood is detected.
+-
+---log-frag[=true|false|toggle]          or -y  %cLog fragment attacks.
+---log-traceroute[=true|false|toggle]    or -t  %cLog traceroutes.
+---log-ping-flood[=true|false|toggle]    or -P  %cLog ICMP ping floods.
+---log-smurf[=true|false|toggle]         or -S  %cLog smurf attacks.
+---log-bogus[=true|false|toggle]         or -b  %cLog bogus TCP flags.
+---log-portscan[=true|false|toggle]      or -p  %cLog port scans.
+---log-udp-scan[=true|false|toggle]      or -F  %cLog UDP scans/floods.
+---log-fin-scan[=true|false|toggle]      or -f  %cLog FIN scans.
+---log-syn-scan[=true|false|toggle]      or -q  %cLog SYN scans.
+---log-xmas-scan[=true|false|toggle]     or -x  %cLog Xmas scans.
+---log-null-scan[=true|false|toggle]     or -n  %cLog null scans.",
+-IS_DEFAULT(LOG_TCP),	IS_DEFAULT(LOG_UDP),	IS_DEFAULT(LOG_ICMP),
++"Usage: %s [options] (\"*\" Denotes enabled by default)\n"
++"--user      or -u <user|UID>     Run as specified the user or UID.\n"
++"--group     or -g <group|GID>    Run with specified the group or GID.\n"
++"--logfile   or -l <file>         Log to <file>.\n"
++"--pid-file  <file>               Use <file> as the pid file.\n"
++"--ignore    or -d                Ignore DNS traffic from nameservers listed in\n"
++"                                 /etc/resolv.conf.\n"
++"--interface or -i <if0,...,ifN>  Listen on the specified interface(s).\n"
++"--promisc   or -a <network>      Log traffic to all hosts on <network>.\n"
++"--kill      or -k                Kill iplog, if it is running.\n"
++"--restart   or -R                Restart iplog, if it is running.\n"
++"--no-fork   or -o                Run in the foreground.\n"
++"--stdout    or -L                Log to stdout.\n"
++"--help      or -h                This help screen.\n"
++"--version   or -v                Print version information and exit.\n"
++"\n"
++"--facility <facility>            Use the specified syslog facility.\n"
++"--priority <priority>            Use the specified syslog priority.\n"
++"\n"
++"--tcp[=true|false|toggle]                      %cLog TCP traffic.\n"
++"--udp[=true|false|toggle]                      %cLog UDP traffic.\n"
++"--icmp[=true|false|toggle]                     %cLog ICMP traffic.\n"
++"\n"
++"--log-ip[=true|false|toggle]            or -w  %cLog IP along with hostname.\n"
++"--log-dest[=true|false|toggle]          or -D  %cLog the destination of traffic.\n"
++"--dns-cache[=true|false|toggle]         or -c  %cUse the built-in DNS cache.\n"
++"--get-ident[=true|false|toggle]         or -e  %cGet ident info on connections\n"
++"                                                to listening ports.\n"
++"\n"
++"--tcp-resolve[=true|false|toggle]       or -T  %cResolve IPs of TCP traffic.\n"
++"--udp-resolve[=true|false|toggle]       or -U  %cResolve IPs of UDP traffic.\n"
++"--icmp-resolve[=true|false|toggle]      or -I  %cResolve IPs of ICMP traffic.\n"
++"--disable-resolver                      or -N  %cDo not resolve any IPs.\n"
++"\n"
++"--verbose[=true|false|toggle]           or -V  %cBe verbose.\n"
++"--fool-nmap[=true|false|toggle]         or -z  %cFool nmap's OS detection.\n"
++"--scans-only[=true|false|toggle]        or -m  %cOnly log scans.\n"
++"--detect-syn-flood[=true|false|toggle]  or -s  %cStop resolving IPs if a\n"
++"                                                SYN flood is detected.\n"
++"\n"
++"--log-frag[=true|false|toggle]          or -y  %cLog fragment attacks.\n"
++"--log-traceroute[=true|false|toggle]    or -t  %cLog traceroutes.\n"
++"--log-ping-flood[=true|false|toggle]    or -P  %cLog ICMP ping floods.\n"
++"--log-smurf[=true|false|toggle]         or -S  %cLog smurf attacks.\n"
++"--log-bogus[=true|false|toggle]         or -b  %cLog bogus TCP flags.\n"
++"--log-portscan[=true|false|toggle]      or -p  %cLog port scans.\n"
++"--log-udp-scan[=true|false|toggle]      or -F  %cLog UDP scans/floods.\n"
++"--log-fin-scan[=true|false|toggle]      or -f  %cLog FIN scans.\n"
++"--log-syn-scan[=true|false|toggle]      or -q  %cLog SYN scans.\n"
++"--log-xmas-scan[=true|false|toggle]     or -x  %cLog Xmas scans.\n"
++"--log-null-scan[=true|false|toggle]     or -n  %cLog null scans.",
++PACKAGE, IS_DEFAULT(LOG_TCP),	IS_DEFAULT(LOG_UDP),	IS_DEFAULT(LOG_ICMP),
+ IS_DEFAULT(LOG_IP),		IS_DEFAULT(LOG_DEST),	IS_DEFAULT(DNS_CACHE),
+ IS_DEFAULT(GET_IDENT),	IS_DEFAULT(TCP_RES),	IS_DEFAULT(UDP_RES),
+ IS_DEFAULT(ICMP_RES),	IS_DEFAULT(NO_RESOLV),	IS_DEFAULT(VERBOSE),
+--- a/src/iplog_pcap.c
++++ b/src/iplog_pcap.c
+@@ -189,8 +189,16 @@
+ 		case DLT_PPP_BSDOS:
+ 			dlt = 24;
+ 			break;
+-		case DLT_SLIP:
+-			dlt = 16;
++#ifdef DLT_FDDI
++	        case DLT_FDDI:
++	                dlt = 21;
++	                break;
++#endif
++	        case DLT_SLIP:
++#ifdef DLT_LINUX_SLL
++	        case DLT_LINUX_SLL:
++#endif
++	                dlt = 16;
+ 			break;
+ 		case DLT_PPP:
+ 		case DLT_NULL:

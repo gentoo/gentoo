@@ -1,0 +1,13 @@
+diff --git a/lib/rack/rewindable_input.rb b/lib/rack/rewindable_input.rb
+index accd96b..d71fde6 100644
+--- a/lib/rack/rewindable_input.rb
++++ b/lib/rack/rewindable_input.rb
+@@ -94,7 +94,7 @@ module Rack
+     end
+     
+     def filesystem_has_posix_semantics?
+-      RUBY_PLATFORM !~ /(mswin|mingw|cygwin|java)/
++      RUBY_PLATFORM !~ /(mswin|mingw|cygwin|java)/ && RUBY_VERSION < '1.9.1'
+     end
+   end
+ end

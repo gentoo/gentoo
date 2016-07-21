@@ -1,0 +1,83 @@
+diff --git a/makefile b/makefile
+index 4813b55..f20af02 100644
+--- a/makefile
++++ b/makefile
+@@ -1,21 +1,23 @@
+ 
+ include make.inc
+ 
+-THELIBS = libcgcode.a libblas_mini.a
++THELIBS = -lcgcode
+ 
+ default : goos good
+ 
+-libs :
+-	cd src ; make ; cd ../util ; make
++libs : src/libcgcode.so
++
++src/libcgcode.so:
++	$(MAKE) -C src
+ 
+ goos : mains.o libs
+-	$(F77) $(DEBUG) $(OFLAGS) $(LFLAGS) mains.o $(THELIBS) -o goos
++	$(F77) $(LDFLAGS) mains.o -L./src $(THELIBS) $(BLASLIBS) -o goos
+ 
+ good : maind.o libs
+-	$(F77) $(DEBUG) $(OFLAGS) $(LFLAGS) maind.o $(THELIBS) -o good
++	$(F77) $(LDFLAGS) maind.o -L./src $(THELIBS) $(BLASLIBS) -o good
+ 
+-.f.o :
+-	$(F77) $(CFLAGS) $(DEBUG) $(OFLAGS) $*$ .f
++%.o : %.f
++	$(F77) $(FFLAGS) -c $<
+ 	
+ clean :
+ 	rm -f *.o goos good
+diff --git a/src/makefile b/src/makefile
+index 10cf6c3..1dfd02d 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -1,16 +1,17 @@
+ 
+ include ../make.inc
+ 
+-THISLIB = libcgcode.a
++THISLIB = libcgcode.so
+ SOBJLIB = scgdrv.o scg.o scr.o scrind.o spcg.o scgnr.o scgne.o spcgnr.o spcgne.o sppcg.o spcgca.o sdpchb.o scbfix.o sckchb.o scgchk.o sonest.o msstop.o r1mach.o sratqr.o
+ DOBJLIB = dcgdrv.o dcg.o dcr.o dcrind.o dpcg.o dcgnr.o dcgne.o dpcgnr.o dpcgne.o dppcg.o dpcgca.o ddpchb.o dcbfix.o dckchb.o dcgchk.o donest.o mdstop.o d1mach.o dratqr.o depsln.o
+ 
+ $(THISLIB) : $(SOBJLIB) $(DOBJLIB)
+-	$(AR) $(THISLIB) $(SOBJLIB) $(DOBJLIB)
+-	cp $(THISLIB) ../.
++	$(F77) $(FFLAGS) $(LDFLAGS) -shared -fPIC -Wl,--soname,$(THISLIB).1 -o $(THISLIB).1.0 $(SOBJLIB) $(DOBJLIB) $(BLASLIBS)
++	ln -sf $(THISLIB).1.0 $(THISLIB).1
++	ln -sf $(THISLIB).1.0 $(THISLIB)
+ 
+-.f.o :
+-	$(F77) $(CFLAGS) $(DEBUG) $(OFLAGS) $*$ .f
++%.o : %.f
++	$(F77) $(FFLAGS) -fPIC -c $<
+ 	
+ clean :
+ 	rm -f *.o $(THISLIB)
+diff --git a/util/makefile b/util/makefile
+index 6dad0d1..5c9d24f 100644
+--- a/util/makefile
++++ b/util/makefile
+@@ -6,11 +6,12 @@ SOBJLIB = saxpy.o scopy.o sdot.o snrm2.o sscal.o
+ DOBJLIB = daxpy.o dcopy.o ddot.o dnrm2.o dscal.o
+ 
+ $(THISLIB) : $(SOBJLIB) $(DOBJLIB)
+-	$(AR) $(THISLIB) $(SOBJLIB) $(DOBJLIB)
+-	cp $(THISLIB) ../.
++	$(F77) $(FFLAGS) $(LDFLAGS) -shared -Wl,--soname,$(THISLIB).1 -o $(THISLIB).1.0 $(SOBJLIB) $(DOBJLIB) $(BLASLIBS)
++	ln -sf $(THISLIB).1.0 $(THISLIB)
++	cp $(THISLIB)* ../.
+ 
+-.f.o :
+-	$(F77) $(CFLAGS) $(DEBUG) $(OFLAGS) $*$ .f
++%.o : %.f
++	$(F77) $(FFLAGS) -c $<
+ 	
+ clean :
+ 	rm -f *.o $(THISLIB)

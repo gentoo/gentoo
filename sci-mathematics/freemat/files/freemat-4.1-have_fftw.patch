@@ -1,0 +1,78 @@
+diff -rupN libs/libCore.orig/FFT.cpp libs/libCore/FFT.cpp
+--- libs/libCore.orig/FFT.cpp	2011-11-27 01:27:43.856779929 +0100
++++ libs/libCore/FFT.cpp	2012-01-30 00:14:18.682460150 +0100
+@@ -104,6 +104,7 @@ public:
+ #endif
+ 
+ 
++#if HAVE_FFTWF
+ class OpVecFFT {
+   WrapFFTWF fft_float;
+   WrapFFTW  fft_double;
+@@ -169,7 +170,9 @@ public:
+     }
+   }  
+ };
++#endif
+ 
++#if HAVE_FFTWF
+ class OpVecIFFT {
+   WrapFFTWF fft_float;
+   WrapFFTW fft_double;
+@@ -228,6 +231,7 @@ public:
+     }
+   }
+ };
++#endif
+ 
+ //!
+ //@Module FFT (Inverse) Fast Fourier Transform Function
+@@ -350,6 +354,8 @@ public:
+ //inputs x len dim
+ //outputs y
+ //!
++
++#if HAVE_FFTWF
+ ArrayVector FFTFunction(int nargout, const ArrayVector& arg) {
+   // Get the data argument
+   if (arg.size() < 1)
+@@ -384,7 +390,9 @@ ArrayVector FFTFunction(int nargout, con
+   OpVecFFT op(FFTLength);
+   return ArrayVector(VectorOpDynamic<OpVecFFT>(arg0,FFTLength,FFTDim,op));
+ }
++#endif
+ 
++#if HAVE_FFTWF
+ ArrayVector IFFTFunction(int nargout, const ArrayVector& arg) {
+   // Get the data argument
+   if (arg.size() < 1)
+@@ -419,3 +427,4 @@ ArrayVector IFFTFunction(int nargout, co
+   OpVecIFFT op(FFTLength);
+   return ArrayVector(VectorOpDynamic<OpVecIFFT>(arg0,FFTLength,FFTDim,op));
+ }
++#endif
+diff -rupN libs/libCore.orig/Loader.cpp libs/libCore/Loader.cpp
+--- libs/libCore.orig/Loader.cpp	2012-01-30 00:08:41.463155562 +0100
++++ libs/libCore/Loader.cpp	2012-01-30 00:12:24.422448304 +0100
+@@ -43,8 +43,10 @@ ArrayVector FeofFunction(int, const Arra
+ ArrayVector FseekFunction(int, const ArrayVector&);
+ ArrayVector FgetlineFunction(int, const ArrayVector&);
+ ArrayVector FscanfFunction(int, const ArrayVector&);
++#ifdef HAVE_FFTW
+ ArrayVector FFTFunction(int, const ArrayVector&);
+ ArrayVector IFFTFunction(int, const ArrayVector&);
++#endif
+ ArrayVector StrCmpFunction(int, const ArrayVector&);
+ ArrayVector StrCmpiFunction(int, const ArrayVector&);
+ ArrayVector StrnCmpFunction(int, const ArrayVector&);
+@@ -286,8 +288,10 @@ void LoadBuiltinFunctionsCore(Context *c
+   context->addFunction("fseek",FseekFunction,0,3,0,"handle","offset","style",NULL);
+   context->addFunction("fgetline",FgetlineFunction,0,1,1,"handle",NULL);
+   context->addFunction("fscanf",FscanfFunction,0,-1,-1,NULL);
++#ifdef HAVE_FFTW
+   context->addFunction("fft",FFTFunction,0,3,1,"x","len","dim",NULL);
+   context->addFunction("ifft",IFFTFunction,0,3,1,"x","len","dim",NULL);
++#endif
+   context->addFunction("strcmp",StrCmpFunction,0,2,1,"string1","string2",NULL);
+   context->addFunction("strcmpi",StrCmpiFunction,0,2,1,"string1","string2",NULL);
+   context->addFunction("strncmp",StrnCmpFunction,0,3,1,"string1","string2","len",NULL);

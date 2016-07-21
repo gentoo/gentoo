@@ -1,0 +1,18 @@
+diff -ur toolame-02l.orig/audio_read.c toolame-02l/audio_read.c
+--- toolame-02l.orig/audio_read.c	2003-03-02 03:18:30.000000000 +0200
++++ toolame-02l/audio_read.c	2009-05-30 15:24:41.000000000 +0300
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "common.h"
+@@ -329,7 +330,7 @@
+       }
+     }
+     if (NativeByteOrder == order_littleEndian) {
+-      samplerate = *(unsigned long *) (&wave_header_buffer[24]);
++      samplerate = *(uint32_t *)(&wave_header_buffer[24]);
+     } else {
+       samplerate = wave_header_buffer[27] +
+ 	(wave_header_buffer[26] << 8) +

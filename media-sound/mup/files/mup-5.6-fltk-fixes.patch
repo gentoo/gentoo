@@ -1,0 +1,23 @@
+--- mup-5.6.orig/mupmate/Config.C
++++ mup-5.6/mupmate/Config.C
+@@ -264,7 +264,7 @@
+ //-----------------------------------------------------------------
+ 
+ // List of standard FLTK fonts, and info to map name to menu entry.
+-static struct Font {
++static struct FlFont {
+ 	const char * name;
+ 	Fl_Font	value;
+ 	int menu_offset;
+--- mup-5.6.orig/mupmate/Edit.C
++++ mup-5.6/mupmate/Edit.C
+@@ -201,8 +201,7 @@
+ 	// a previous Replace/Find Next
+ 	int start, end, isRect, rectStart, rectEnd;
+ 	bool at_pattern = false;
+-	if (editor_p->buffer()->highlight_position(&start, &end, &isRect,
+-						&rectStart, &rectEnd)) {
++	if (editor_p->buffer()->highlight_position(&start, &end)) {
+ 		int place = editor_p->insert_position();
+ 		if (place == end && (end - start == pattern_p->size())) {
+ 			if (casematch_p->value()) {

@@ -1,0 +1,25 @@
+diff -ur eden.orig/source/Makefile eden/source/Makefile
+--- eden.orig/source/Makefile	2004-10-18 10:40:03.000000000 -0700
++++ eden/source/Makefile	2005-12-15 22:32:45.000000000 -0800
+@@ -78,8 +78,10 @@
+ #CFLAGS		=   -Wall -pipe -marchi686 -pedantic  -gdwarf-2 -g3
+ #CFLAGS		=   -Wall -O3 -march=i686 
+ ifneq ($(FFTW),/usr/local)
++ifneq ($(FFTW),/usr)
+ CFLAGS		+= -I$(INC)
+ endif
++endif
+ 
+ #			NOTE:
+ # DOUBLESWITCH = ON	for double precision;
+@@ -129,8 +131,8 @@
+ 		mv fbyteswap $(BIN)
+ 		mv eden $(BIN)/$(TARGET)
+ 		chmod 751 $(BIN)/$(TARGET)
+-		chmod +x mkeden.csh
+-		./mkeden.csh $(BIN) $(BIN)/$(TARGET)
++#		chmod +x mkeden.csh
++#		./mkeden.csh $(BIN) $(BIN)/$(TARGET)
+ 
+ dist:		clean
+ 		cd ../..; tar -cvf eden_$(VERSION).tar --exclude CVS --exclude \#\*\# --exclude \*~ --exclude Misc --exclude .\* eden; gzip -f eden_$(VERSION).tar

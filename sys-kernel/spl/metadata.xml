@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ryao@gentoo.org</email>
+		<name>Richard Yao</name>
+	</maintainer>
+	<use>
+		<flag name="debug-log">Enable additional diagnostics</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zfsonlinux/spl</remote-id>
+	</upstream>
+</pkgmetadata>

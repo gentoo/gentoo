@@ -1,0 +1,53 @@
+From 2ee7e7f98dd6225b40d5cd570c240504be7bc86a Mon Sep 17 00:00:00 2001
+From: David Moore <david.moore@gmail.com>
+Date: Sun, 27 Mar 2011 22:48:15 -0700
+Subject: [PATCH 1/1] Conditionally compile dc1394_vloopback only when linux/videodev.h exists
+
+---
+ libdc1394/ChangeLog            |    3 +++
+ libdc1394/configure.in         |    3 +++
+ libdc1394/examples/Makefile.am |    2 ++
+ 3 files changed, 8 insertions(+), 0 deletions(-)
+
+diff --git a/libdc1394/ChangeLog b/libdc1394/ChangeLog
+index e1355de..536ccae 100644
+--- a/libdc1394/ChangeLog
++++ b/libdc1394/ChangeLog
+@@ -1,3 +1,6 @@
++2011-03-27  David Moore  <david.moore@gmail.com>
++	* Conditionally compile dc1394_vloopback only when linux/video.h exists
++
+ 2011-01-02  David Moore  <david.moore@gmail.com>
+ 	* dc1394/conversions.h: Fix typo in DC1394_STEREO_METHOD_MIN
+ 	* Update NEWS, README, AUTHORS and version for release 2.1.3.
+diff --git a/libdc1394/configure.in b/libdc1394/configure.in
+index 69babab..bdddc9b 100644
+--- a/libdc1394/configure.in
++++ b/libdc1394/configure.in
+@@ -75,6 +75,9 @@ AM_CONDITIONAL(HAVE_WINDOWS, test x$have_windows = xtrue)
+ AM_CONDITIONAL(HAVE_LIBRAW1394, test x$libraw1394 = xtrue)
+ AM_CONDITIONAL(HAVE_LIBUSB, test "x$LIBUSB_LIBS" != "x")
+ 
++AC_CHECK_HEADER([linux/videodev.h], [have_videodev=true])
++AM_CONDITIONAL(HAVE_VIDEODEV, test x$have_videodev = xtrue)
++
+ AC_ARG_ENABLE([examples], [AS_HELP_STRING([--disable-examples], [don't build example programs])], [build_examples=$enableval], [build_examples=true])
+ 
+ AM_CONDITIONAL(MAKE_EXAMPLES, test x$build_examples = xtrue)
+diff --git a/libdc1394/examples/Makefile.am b/libdc1394/examples/Makefile.am
+index fcebf18..035612e 100644
+--- a/libdc1394/examples/Makefile.am
++++ b/libdc1394/examples/Makefile.am
+@@ -8,7 +8,9 @@ A = grab_gray_image grab_partial_image grab_color_image \
+ B = dc1394_reset_bus
+ 
+ if HAVE_LINUX
++if HAVE_VIDEODEV
+ B += dc1394_vloopback
++endif
+ if HAVE_XV
+ A += dc1394_multiview
+ endif
+-- 
+1.7.0.1
+

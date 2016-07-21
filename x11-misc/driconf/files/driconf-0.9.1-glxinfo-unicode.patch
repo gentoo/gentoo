@@ -1,0 +1,22 @@
+http://cvs.fedoraproject.org/viewvc/rpms/driconf/devel/
+
+--- driconf_simpleui.py
++++ driconf_simpleui.py
+@@ -450,11 +450,13 @@ class MainWindow (gtk.Window):
+         else:
+             screen = self.screens[0]
+             if screen.glxInfo:
+-                text = "%s (%s)" % (
+-                    screen.glxInfo.renderer, screen.glxInfo.vendor)
++                text = u"%s (%s)" % (
++                    unicode(screen.glxInfo.renderer, "utf-8", "replace"),
++                    unicode(screen.glxInfo.vendor, "utf-8", "replace"))
+             else:
+-                text = _("Screen") + " %d: %s" % (
+-                    screen.num, screen.driver.name.capitalize())
++                text = _(u"Screen") + u" %d: %s" % (screen.num,
++                    unicode(screen.driver.name, "utf-8",
++                        "replace").capitalize())
+             deviceHBox = gtk.HBox()
+             deviceLabel = gtk.Label()
+             deviceLabel.set_justify(gtk.JUSTIFY_LEFT)

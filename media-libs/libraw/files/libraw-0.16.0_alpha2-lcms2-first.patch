@@ -1,0 +1,47 @@
+--- LibRaw-0.16.0-Alpha2/CMakeLists.txt
++++ LibRaw-0.16.0-Alpha2/CMakeLists.txt
+@@ -119,26 +119,26 @@
+ SET(LCMS_SUPPORT_CAN_BE_COMPILED false)
+ 
+ IF (ENABLE_LCMS)
+-    MESSAGE(STATUS "Check for LCMS1 availability...")
+-    FIND_PACKAGE(LCMS)
+-    IF (LCMS_FOUND)
+-        MESSAGE(STATUS "Found LCMS1: ${LCMS_LIBRARIES} ${LCMS_INCLUDE_DIR}")
+-        INCLUDE_DIRECTORIES(${LCMS_INCLUDE_DIR})
+-        MACRO_LOG_FEATURE(LCMS_FOUND "LCMS1" "A small-footprint color management engine" "http://www.littlecms.com" TRUE "" "Needed by libkdcraw")
+-        # Flag to compile Little CMS version 1 with LibRaw
+-        ADD_DEFINITIONS(-DUSE_LCMS)
+-        # For compatibility
+-        SET(LCMS2_LIBRARIES ${LCMS_LIBRARIES})
++    MESSAGE(STATUS "Check for LCMS2 availability...")
++    FIND_PACKAGE(LCMS2)
++    IF (LCMS2_FOUND AND (LCMS2_VERSION VERSION_EQUAL 2.1 OR LCMS2_VERSION VERSION_GREATER 2.1))
++        MESSAGE(STATUS "Found LCMS2: ${LCMS2_LIBRARIES} ${LCMS2_INCLUDE_DIR}")
++        INCLUDE_DIRECTORIES(${LCMS2_INCLUDE_DIR})
++        MACRO_LOG_FEATURE(LCMS2_FOUND "LCMS2" "A small-footprint color management engine" "http://www.littlecms.com" FALSE "" "Needed by libkdcraw")
++        # Flag to compile Little CMS version 2 with LibRaw
++        ADD_DEFINITIONS(-DUSE_LCMS2)
+         SET(LCMS_SUPPORT_CAN_BE_COMPILED true)
+     ELSE ()
+-        MESSAGE(STATUS "Check for LCMS2 availability instead LCMS1...")
+-        FIND_PACKAGE(LCMS2)
+-        IF (LCMS2_FOUND AND (LCMS2_VERSION VERSION_EQUAL 2.1 OR LCMS2_VERSION VERSION_GREATER 2.1))
+-            MESSAGE(STATUS "Found LCMS2 instead LCMS1: ${LCMS2_LIBRARIES} ${LCMS2_INCLUDE_DIR}")
+-            INCLUDE_DIRECTORIES(${LCMS2_INCLUDE_DIR})
+-            MACRO_LOG_FEATURE(LCMS2_FOUND "LCMS2" "A small-footprint color management engine" "http://www.littlecms.com" FALSE "" "Needed by libkdcraw")
+-            # Flag to compile Little CMS version 2 with LibRaw
+-            ADD_DEFINITIONS(-DUSE_LCMS2)
++        MESSAGE(STATUS "Check for LCMS1 availability...")
++        FIND_PACKAGE(LCMS)
++        IF (LCMS_FOUND)
++            MESSAGE(STATUS "Found LCMS1: ${LCMS_LIBRARIES} ${LCMS_INCLUDE_DIR}")
++            INCLUDE_DIRECTORIES(${LCMS_INCLUDE_DIR})
++            MACRO_LOG_FEATURE(LCMS_FOUND "LCMS1" "A small-footprint color management engine" "http://www.littlecms.com" TRUE "" "Needed by libkdcraw")
++            # Flag to compile Little CMS version 1 with LibRaw
++            ADD_DEFINITIONS(-DUSE_LCMS)
++            # For compatibility
++            SET(LCMS2_LIBRARIES ${LCMS_LIBRARIES})
+             SET(LCMS_SUPPORT_CAN_BE_COMPILED true)
+         ENDIF ()
+     ENDIF ()

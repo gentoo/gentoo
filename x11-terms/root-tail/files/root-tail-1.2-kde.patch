@@ -1,0 +1,125 @@
+diff -bBurN root-tail-1.2/config.h root-tail-my/config.h
+--- root-tail-1.2/config.h	2004-07-30 23:32:39.000000000 +0400
++++ root-tail-my/config.h	2005-02-23 13:02:48.878912688 +0300
+@@ -15,3 +15,4 @@
+ 
+ #define VERSION "1.2"
+ 
++#define KDE
+diff -bBurN root-tail-1.2/root-tail.c root-tail-my/root-tail.c
+--- root-tail-1.2/root-tail.c	2004-07-30 23:33:20.000000000 +0400
++++ root-tail-my/root-tail.c	2005-02-23 13:02:37.599627400 +0300
+@@ -148,6 +148,11 @@
+ regex_t *transformre;
+ #endif
+ 
++#ifdef KDE
++#define ATOM(a) XInternAtom(disp, #a, False)
++
++int screen, ScreenWidth, ScreenHeight;
++#endif
+ 
+ /* prototypes */
+ void list_files (int);
+@@ -227,7 +232,7 @@
+   return Color.pixel;
+ }
+ 
+-#ifndef USE_TOON_GET_ROOT_WINDOW
++#if !defined(USE_TOON_GET_ROOT_WINDOW) && !defined(KDE)
+ static void
+ find_root_window (Display *display, int screen_number)
+ {
+@@ -280,14 +285,91 @@
+         fprintf (stderr, "Can't query tree on root window 0x%lx", root);
+     }
+ }
+-#endif /* USE_TOON_GET_ROOT_WINDOW */
++#elif defined(KDE)
++static Window find_subwindow(Window win, int w, int h) {
++  unsigned int i, j;
++  Window troot, parent, *children;
++  unsigned int n;
++
++  /* search subwindows with same size as display or work area */
++
++  for (i=0; i<10; i++) {
++    XQueryTree(disp, win, &troot, &parent, &children, &n);
++
++    for (j=0; j<n; j++) {
++      XWindowAttributes attrs;
++
++      if (XGetWindowAttributes(disp, children[j], &attrs)) {
++        /* Window must be mapped and same size as display or work space */
++        if (attrs.map_state != 0 &&
++            ((attrs.width == ScreenWidth && attrs.height == ScreenHeight) ||
++             (attrs.width == w && attrs.height == h))) {
++          win = children[j];
++          break;
++        }
++      }
++    }
++
++    XFree(children);
++    if (j == n) break;
++  }
++
++  return win;
++}
++
++static void
++find_root_window (Display *display, int screen_number)
++{
++  Atom type;
++  int format, i;
++  unsigned long nitems, bytes;
++  unsigned int n;
++  root = RootWindow(display, screen_number);
++  Window win = root;
++  Window troot, parent, *children;
++  unsigned char *buf = NULL;
++
++  /* some window managers set __SWM_VROOT to some child of root window */
++
++  XQueryTree(display, root, &troot, &parent, &children, &n);
++  for (i=0; i<(int)n; i++) {
++    if (XGetWindowProperty(display, children[i], ATOM(__SWM_VROOT),
++          0, 1, False, XA_WINDOW, &type, &format, &nitems, &bytes,
++          &buf) == Success && type == XA_WINDOW) {
++      win = * (Window *) buf;
++      XFree(buf);
++      XFree(children);
++      fprintf(stderr, "torsmo: drawing to window from __SWM_VROOT property\n");
++      root=win;
++      return;
++    }
++
++    if (buf) {
++      XFree(buf);
++      buf = 0;
++    }
++  }
++  XFree(children);
++
++  /* get subwindows from root */
++  win = find_subwindow(root, -1, -1);
++
++  win = find_subwindow(win, width, height);
++
++  if (buf) { XFree(buf); buf = 0; }
++
++  root=win;
++}
++#endif /* USE_TOON_GET_ROOT_WINDOW && KDE*/
+ 
+ void
+ InitWindow (void)
+ {
+   XGCValues gcv;
+   unsigned long gcm;
++#ifndef KDE
+   int screen, ScreenWidth, ScreenHeight;
++#endif
+   struct logfile_entry *e;
+ 
+   if (!(disp = XOpenDisplay (dispname)))

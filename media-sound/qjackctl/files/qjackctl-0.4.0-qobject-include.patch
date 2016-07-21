@@ -1,0 +1,11 @@
+diff -ru qjackctl-0.4.0/src/qjackctlPatchbayRack.h qjackctl-0.4.0-zx2c4/src/qjackctlPatchbayRack.h
+--- qjackctl-0.4.0/src/qjackctlPatchbayRack.h	2015-07-15 15:30:36.801752820 +0200
++++ qjackctl-0.4.0-zx2c4/src/qjackctlPatchbayRack.h	2015-08-28 10:53:45.711811995 +0200
+@@ -24,6 +24,7 @@
+ 
+ #include "qjackctlAbout.h"
+ 
++#include <QObject>
+ #include <QStringList>
+ 
+ #include <jack/jack.h>

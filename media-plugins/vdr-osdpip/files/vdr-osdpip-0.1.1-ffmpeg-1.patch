@@ -1,0 +1,26 @@
+Index: osdpip-0.1.1/decoder.h
+===================================================================
+--- osdpip-0.1.1.orig/decoder.h
++++ osdpip-0.1.1/decoder.h
+@@ -34,7 +34,7 @@ extern "C"
+   #include <libavcodec/avcodec.h>
+   #ifdef USE_SWSCALE
+     #include <libswscale/swscale.h>
+-    #include <libavcodec/opt.h>
++    #include <libavutil/opt.h>
+   #endif
+ #else
+   #include <ffmpeg/avcodec.h>
+Index: osdpip-0.1.1/osdpip.c
+===================================================================
+--- osdpip-0.1.1.orig/osdpip.c
++++ osdpip-0.1.1/osdpip.c
+@@ -73,8 +73,6 @@ bool cPluginOsdpip::ProcessArgs(int argc
+ 
+ bool cPluginOsdpip::Initialize(void)
+ {
+-    // must be called before using avcodec lib
+-    avcodec_init();
+     // register all the codecs (you can also register only the codec
+     // you wish to have smaller code)
+     avcodec_register_all();

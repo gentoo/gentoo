@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/299665
+
+patch by Dennis Schridde <devurandom@gmx.net>
+
+--- a/debian/elilo.sh
++++ b/debian/elilo.sh
+@@ -321,6 +321,8 @@
+ 
+ mnt()
+ {
++    local loop
++
+     ## we can even create bootstrap filesystem images directly if you
+     ## ever wanted too.
+     if [ -f "$boot" ] ; then

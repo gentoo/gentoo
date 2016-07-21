@@ -1,0 +1,740 @@
+Index: mpage-2.5.6/file.c
+===================================================================
+--- mpage-2.5.6.orig/file.c	2008-08-11 23:14:20.500638502 +0200
++++ mpage-2.5.6/file.c	2008-08-11 23:28:25.560795737 +0200
+@@ -363,7 +363,7 @@
+         Debug(DB_STDIN, "%%iswanted: opt_first[i]: %d\n", opt_first[i]);
+         Debug(DB_STDIN, "%%iswanted: opt_alt[i]: %d\n", opt_alt[i]);
+         Debug(DB_STDIN, "%%iswanted: opt_last[i]: %d\n", opt_last[i]);
+-        if ((sn >= opt_first[i] && (opt_alt[i] <= 1 || (sn - opt_first[i]) % opt_alt[i] == 0) ) &&
++        if ((sn >= opt_first[i]) && ((sn - opt_first[i]) % opt_alt[i] == 0) &&
+             (sn <= opt_last[i])) {
+             Debug(DB_STDIN, "%%iswanted: wanted page %d\n", sn);
+             ps_outpages++;
+Index: mpage-2.5.6/mpage.1.in
+===================================================================
+--- mpage-2.5.6.orig/mpage.1.in	2008-08-11 23:17:10.154306512 +0200
++++ mpage-2.5.6/mpage.1.in	2008-08-11 23:27:23.605265090 +0200
+@@ -1,4 +1,4 @@
+-.TH MPAGE Local 2008/01/14
++.TH MPAGE 1 2008/01/14
+ 
+ .SH NAME
+ mpage \- print multiple pages per sheet on PostScript printer
+@@ -417,17 +417,33 @@
+ .TP
+ .B -t
+ Toggle printing on both sides of the paper.
+-This will toggle duplex mode of the printer.
+++This option has 3 states: nop, yes, no, which mean:
++.BR  NOP :
++ dont do anything on PostScript, so printer default will be used;
++.BR  YES :
++ force printer to do duplex;
++.BR  NO  :
++force printer not to do it.
++If there is no -t, then the duplex is NOP. If you put some -t on
++the command line, the state toggles as "yes,no,yes,no...".
++So, if your printer is set to print, by default, in duplex mode,
++you will use "-t -t" on command line to force it to print in non-duplex mode.
+ Use this option only if your printer is capable of printing in duplex mode. 
+ .RI ( default
+-off).
++NOP).
+ 
+ .TP
+ .B -T
+-Toggle tumble of every second pages when printing in duplex mode.
+-Use this option only if your printer is capable of printing in duplex mode
+-and together with
+-.BR -t . 
++Toggle tumble of every second pages.
++This option has 3 states: nop, yes, no (with behaviour similar to -t).
++So, if your printer is set to print, by default, in duplex mode,
++with tumble on,
++you will use "-T -T" on command line to print in nontumble mode.
++Use this option only if your printer is capable of printing in duplex mode.
++With this version of mpage,
++you may use this option even if you do not use -t.
++.RI ( default
++NOP.)
+ 
+ .TP
+ .B -u
+@@ -546,7 +562,7 @@
+ environment variables.
+ 
+ .SH FILES
+-/usr/tmp/mpageXXXXXX
++/tmp/mpageXXXXXX
+ .br
+ PREFIX/share/mpage
+ 
+Index: mpage-2.5.6/mpage.c
+===================================================================
+--- mpage-2.5.6.orig/mpage.c	2008-08-11 23:31:51.044505584 +0200
++++ mpage-2.5.6/mpage.c	2008-08-11 23:39:12.205645922 +0200
+@@ -44,9 +44,21 @@
+     struct sheet *thesheet;
+     char outcommand[LINESIZE]; /* the command which is the output filter */
+ 
++    char * paper;
++
+     current_locale = setlocale(LC_ALL,"");
+ 
+-   
++#ifdef LIBPAPER
++    paperinit();
++    paper = systempapername();
++    if (!paper)
++    {
++      fprintf(stderr,"systempapername() returned NULL! exiting\n");
++      exit(1);
++    }
++    strncpy(opt_page,paper,31);
++#endif
++
+ #ifdef __EMX__
+     /*
+      * wildcard expansion from emx package (used by OS/2)
+@@ -235,10 +247,10 @@
+     fprintf(outfd, "/mp_stm usertime def\n");
+     fprintf(outfd, "/mp_pgc statusdict begin pagecount end def\n");
+     fprintf(outfd, "statusdict begin /jobname (%s) def end\n", name);
+-    if (opt_duplex) {
++    if (opt_duplex && opt_duplex != 4 ) {
+        fprintf(outfd, "statusdict /setduplexmode known");
+        fprintf(outfd, " { statusdict begin true setduplexmode end } if\n");
+-       if (opt_tumble) {
++       if (opt_tumble && opt_tumble != 4 ) {
+            fprintf(outfd, "statusdict /settumble known ");
+            fprintf(outfd, "{ statusdict begin true settumble end } if\n"); 
+        }
+Index: mpage-2.5.6/mpage.h
+===================================================================
+--- mpage-2.5.6.orig/mpage.h	2008-08-11 23:39:40.279245746 +0200
++++ mpage-2.5.6/mpage.h	2008-08-11 23:45:02.565611800 +0200
+@@ -31,6 +31,10 @@
+ #include <limits.h>
+ #include <string.h>
+ 
++#ifdef LIBPAPER
++#include <paper.h>
++#endif
++
+ #define	VERSION		"2.5.6 Januari 2008"
+ 
+ #define	TRUE		1
+@@ -125,10 +129,11 @@
+ /*
+  * set default page size
+  */
++#ifndef LIBPAPER
+ #if !defined(PAGE_DEF)
+ # define PAGE_DEF	"A4"
+ #endif
+-
++#endif
+ /*
+  * define print spooler types
+  */
+@@ -221,9 +226,6 @@
+ extern int ps_height;	/* number of points in the Y direction (11 inches) */
+ extern char * media;	/* name of output page media */
+ 
+-
+-extern struct page_desc paper[];
+-
+ /* array of sheets where pages are ordered for coli ??? */
+ extern struct sheet coli[];
+ 
+@@ -280,7 +282,11 @@
+ extern int opt_width;		/* number of columns to fit on reduced page */
+ extern int opt_mp_header;	/* let mpage create a header */
+ extern int opt_sheetheader;     /* let mpage create sheetheaders */
++#ifndef LIBPAPER
+ extern char * opt_page;		/* sheets size: a4 or us letter */
++#else
++extern char opt_page[];                /* sheets size: a4 or us letter */
++#endif
+ extern int opt_fold;		/* fold long lines */
+ extern int opt_outline;		/* print a nice outline around pages */
+ extern int opt_verbose;		/* print a count of pages sent to printer */
+Index: mpage-2.5.6/page.c
+===================================================================
+--- mpage-2.5.6.orig/page.c	2008-08-11 23:48:28.317336922 +0200
++++ mpage-2.5.6/page.c	2008-08-11 23:55:46.090284181 +0200
+@@ -21,6 +21,8 @@
+ #include "mpage.h"
+ #include "string.h"
+ 
++extern struct page_desc paper[];
++
+ #define PAPERSIZE_FILE  "/etc/papersize"
+ void
+ check_papersize()
+@@ -59,12 +61,24 @@
+ void
+ set_page()
+ {
++#ifndef LIBPAPER
+     int i = select_pagetype(opt_page);
+  
+     media = paper[i].media;
+     ps_width = paper[i].width;
+     ps_height = paper[i].height;
+-
++#else
++    struct paper * ps;
++    ps=paperinfo(opt_page);
++    if (!ps) {
++      fprintf(stderr,"%s: unknown page format: %s\n",
++              MPAGE, opt_page);
++      exit(1);
++    }
++    media = papername(ps);
++    ps_width = paperpswidth(ps);
++    ps_height = paperpsheight(ps);
++#endif
+     return;
+ 
+ } /* set_page */
+@@ -76,11 +90,21 @@
+ {
+     int i = 0;
+ 
++#ifndef LIBPAPER
+     while (paper[i].media && strcasecmp(pt, paper[i].media))
+         i++;
+     if (paper[i].media)
+         opt_page = paper[i].media;
+     else
++#else
++    struct paper * ps;
++
++    strncpy(opt_page,pt,31);
++    opt_page[31]='\0';
++
++    ps=paperinfo(opt_page);
++    if (!ps)
++#endif
+         fprintf(stderr, "%s: ignoring unknown paper type: %s\n",
+                                 MPAGE, pt);
+     return i;
+Index: mpage-2.5.6/FAQ
+===================================================================
+--- mpage-2.5.6.orig/FAQ	2008-08-11 23:54:21.317453255 +0200
++++ mpage-2.5.6/FAQ	2008-08-11 23:55:38.833870662 +0200
+@@ -27,3 +27,14 @@
+ 
+     This information is buried in the dvips manual somewhere, but is not easy
+     to find!
++
++Using mpage with magicfilter
++============================
++Andreas Jellinghaus <aj@debian.org> writes:
++
++I'm using mpage with lprng and magicfilter. My local magic filter setup
++is /usr/sbin/ljet4l-filter, and this line passes all ASCII files to mpage :
++default                 pipe    /usr/bin/mpage -A -2
++
++I don't want to waste paper with ASCII texts. MPage also works for
++postscript files.
+Index: mpage-2.5.6/README
+===================================================================
+--- mpage-2.5.6.orig/README	2008-08-11 23:56:29.352749569 +0200
++++ mpage-2.5.6/README	2008-08-11 23:07:25.849008850 +0200
+@@ -1,28 +1,3 @@
+-
+-COPYRIGHT:
+-
+-Mpage and all the files distributed with mpage are covered by copyright:
+-
+- Copyright (c) 1994-2004 Marcel J.E. Mol, The Netherlands
+- Copyright (c) 1988 Mark P. Hahn, Herndon, Virginia
+-  
+-     Permission is granted to anyone to make or distribute verbatim
+-     copies of this document as received, in any medium, provided
+-     that this copyright notice is preserved, and that the
+-     distributor grants the recipient permission for further
+-     redistribution as permitted by this notice.
+-
+-   marcel@mesa.nl
+-   MESA Consulting  B.V.
+-   Nootdorp
+-   The Netherlands
+-   Phone: +31-15-3105252
+-   Mobile:+31-6-54724868
+-   Fax:   +31-15-3105253
+-   email: info@mesa.nl		http://www.mesa.nl   ftp://ftp.mesa.nl
+-   
+-
+-=================================================================
+ DESCRIPTION:
+ 
+ Mpage is a program to reduce and print multiple pages of text per
+@@ -30,54 +5,21 @@
+ It also has limited functionality to do the same directly with postscript
+ files.
+ 
+-The following are the files you should have for mpage.
+-
+-     README                 Notes and descriptions, this file
+-     README.OS2             OS/2 port description
+-     Copyright              Copyright notice
+-     CHANGES                Change history
+-     Makefile               The Makefile
+-     TODO                   Wish List for changes
+-     FAQ                    Useful tips and hints
+-     NEWS                   Global changes, User visible changes
+-     Mpage.lsm              LSM file for mpage
+-     args.c                 Command line and options processing
+-     encoding.h             Definition of internal default character encoding
+-     encoding.h.CP850       Popular for renaming to encoding.h
+-     file.c                 Generic file handling
+-     glob.c                 Global variable setup
+-     mpage.h                Definitions
+-     mpage.c                Main Control
+-     page.c                 Page layout routines
+-     post.c                 PostScript file processing
+-     sample.c               Prints sample page layout pages 
+-     text.c                 Text file processing
+-     util.c                 Misc utility functions
+-     mpage.1                Manual page
++The following are some of the files you should receive in the Debian
++package:
+ 
+      All.chars              Test file containing all ASCII characters
+      Encodings              Directory with character encoding library files
+      Characters             List of Postscript character encoding names
+      Encoding.format        Description on how to create character encoding
+                             library files
+-     gencodes.c             Util program to build All.chars file
+-     Test                   Directory with test pages
+-
+-     OS2                    Directory with simulated lpr for OS/2
+      Contrib                Directory with contributions by others
+      Contrib/mfix           Fix to mpage that makes it work with ArborText
+ 
+-
+-INSTRUCTIONS:
+-
+-All you should need to do is run make. Actually it is probably better
+-to have a look at the Makefile and to check settings like for example PAGESIZE
+-to set the default page size (e.g A4 or Letter ...).
+-This will create the programs mpage and msample.  Mpage is
+-the program to print n-up pages.  Msample prints a sample outline.  I
+-used it for debugging the placement of the layout.  It is also handy
+-for other layout purposes.  It accepts all the arguments that mpage
+-does, but does not print files.
++Msample prints a sample outline.  I used it for debugging the
++placement of the layout.  It is also handy for other layout purposes.
++It accepts all the arguments that mpage does, but does not print
++files.
+ 
+ As a quick sample try:
+ 
+@@ -87,9 +29,16 @@
+ or
+ 	"groff  -man mpage.1 | mpage -2"
+ 
++USING ENCODINGS:
+ 
+-The manual page, mpage.1, formats with UCB or ATT manual macros.
++Example supplied by Vassilis Virvilis.  To print Greek characters, use
++the Greek fonts from http://www.csd.uch.gr/~lourakis/genscript/.  Both
++enscript and a2ps embed the fonts in the generated postscript
++document. mpage utilizes the printer fonts. Therefore you will have to
++actually install the font for ghostscript.  To print the Greek
++characters, use the following command:
+ 
++   mpage -FCourier-ISOLatinGreek -CISO-8859.7 test.txt  > test.ps
+ 
+ 
+ USING MPAGE:
+Index: mpage-2.5.6/args.c
+===================================================================
+--- mpage-2.5.6.orig/args.c	2008-08-11 23:57:11.963177801 +0200
++++ mpage-2.5.6/args.c	2008-08-11 23:07:25.817007026 +0200
+@@ -91,7 +91,11 @@
+                                      UPDOWN : LEFTRIGHT;
+                         break;
+                 case 'A':    /* A4 sized, european paper */
++#ifndef LIBPAPER
+                         opt_page = "A4"; /* deprecated */
++#else
++	       		strcpy(opt_page,"a4");
++#endif
+                         break;
+                 case 'b':     /* base paper type */
+                         OPTARG();
+@@ -386,17 +390,25 @@
+                 case 'S':
+                         opt_square = 0;
+                         break;
++// opt_duplex and opt_tumble have 3 possible values:
++// 4 : do not do anything
++// 0 : force printer to do it
++// !0 : force printer not to do it
+                 case 't':
+-                        opt_duplex = 1 - opt_duplex;
++                        opt_duplex = ! opt_duplex;
+                         break;
+                 case 'T':
+-                        opt_tumble = 1 - opt_tumble;
++                        opt_tumble = ! opt_tumble;
+                         break;
+                 case 'u':
+                         check_utf8 = 1 - check_utf8;
+                         break;
+                 case 'U':    /* Letter sized, US paper */
++#ifndef LIBPAPER
+                         opt_page = "Letter"; /* deprecated */
++#else
++	       		strcpy(opt_page,"letter");
++#endif
+                         break;
+                 case 'v':    /* verbose (print page count) */
+                         opt_verbose = 1 - opt_verbose;
+Index: mpage-2.5.6/glob.c
+===================================================================
+--- mpage-2.5.6.orig/glob.c	2008-08-11 23:58:11.934595375 +0200
++++ mpage-2.5.6/glob.c	2008-08-11 23:07:25.829007710 +0200
+@@ -327,7 +327,11 @@
+ int opt_lines         = 0;		/* lines to fit on reduced page */
+ int opt_killtrail     = 1;		/* Quit reading input on %%TRailer */
+ int opt_width         = 0;	        /* columns to fit on reduced page */
++#ifndef LIBPAPER
+ char * opt_page       = PAGE_DEF;       /* default paper size */
++#else
++char opt_page [32]; /* default paper size */
++#endif
+ /* boolean's: set default to 0 or 1 */
+ int opt_pr            = 0;		/* if true use pr(1) to format output */
+ int opt_mp_header     = 0;              /* let mpage create headers */
+@@ -342,8 +346,12 @@
+ int opt_last[MAXJARG];         	  /* print as many as supplied per -j */
+ int opt_alt[MAXJARG];             /* by default print all sheets, odd+even per -j*/
+ int opt_file          = 1;        /* should each file appera on a new sheet */
+-int opt_duplex        = DEFAULT_DUPLEX;  /* duplex mode flag */
+-int opt_tumble        = 0;        /* tumble overy second pages */
++// opt_duplex and opt_tumble have 3 possible values:
++// 4 , aka NOP : dont do anything on PostScript,so printer default will be used
++// 0 , aka yes : force printer to do it
++// !0, aka no  : force printer not to do it
++int opt_duplex        = 4;        /* duplex mode flag */
++int opt_tumble        = 4;        /* tumble overy second pages */
+ int opt_textbox       = 0;        /* don't normally draw box around text */
+ int opt_input         = IN_AUTO;  /* select input file format */
+ int opt_encoding      = DEFAULT_ENCODING; /* use default encoding or not */
+@@ -420,10 +428,15 @@
+  -j Print specified sheets: first[-last][%%interval]\n\
+     -j 1-10 does first 10 sheets, -j 1%%2 prints odd ones, -j 2%%2 even ones.\n\
+  -J Set the start of the sheet page count\n\
+- -t Toggle printing both sides of the paper (Duplex mode, %s)\n\
+- -T Toggle tumble of every second pages when printing in duplex mode (off)\n",
+-    fontname, opt_tabstop, PAGE_DEF, printprog, printarg,
+-    opt_duplex ? "on" : "off"
+++ -t Toggle printing both sides of the paper (NOP,on,off,on...)\n\
+++ -T Toggle tumble of every second pages  (NOP,on,off,on...)\n",
++    fontname, opt_tabstop,
++#ifndef LIBPAPER
++    PAGE_DEF,
++#else
++    opt_page,
++#endif
++    PAGE_DEF, printprog, printarg
+     );
+     fprintf(stderr, "\n(c) 1993-2005 Marcel Mol, marcel@mesa.nl (MESA Consulting)\n");
+ 
+Index: mpage-2.5.6/Contrib/psprint
+===================================================================
+--- mpage-2.5.6.orig/Contrib/psprint	2008-08-12 00:01:13.312931539 +0200
++++ mpage-2.5.6/Contrib/psprint	2008-08-11 23:07:25.825007484 +0200
+@@ -1,10 +1,9 @@
+-#!/bin/ksh -
++#!/bin/sh -
+ 
+ STDIN_TMP_FILE=/tmp/psprint.$$
+ 
+ GS=/usr/local/bin/gs
+ GSLIB=/usr/local/lib/ghostscript/3.53
+-RM=/bin/rm
+ #
+ # define print command (SYSV or BSD ish)
+ # PRINT="lp -or -s"
+@@ -20,7 +19,7 @@
+     ${GSLIB}/quit.ps
+ done
+ 
+-${RM} -f "${STDIN_TMP_FILE}"
++rm -f "${STDIN_TMP_FILE}"
+ 
+ exit 0
+ 
+Index: mpage-2.5.6/Encodings/ISO-8859.7
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mpage-2.5.6/Encodings/ISO-8859.7	2008-08-11 23:07:25.853009079 +0200
+@@ -0,0 +1,231 @@
++%%%% ISO-8859.7 character encoding (I think...)
++27 255  % first and last encoding
++027 /florin
++028 /dagger
++029 /daggerdbl
++030 /perthousand
++031 /trademark
++032 /space
++033 /exclam
++034 /quotedbl
++035 /numbersign
++036 /dollar
++037 /percent
++038 /ampersand
++039 /quoteright
++040 /parenleft
++041 /parenright
++042 /asterisk
++043 /plus
++044 /comma
++045 /hyphen
++046 /period
++047 /slash
++048 /zero
++049 /one
++050 /two
++051 /three
++052 /four
++053 /five
++054 /six
++055 /seven
++056 /eight
++057 /nine
++058 /colon
++059 /semicolon
++060 /less
++061 /equal
++062 /greater
++063 /question
++064 /at
++065 /A
++066 /B
++067 /C
++068 /D
++069 /E
++070 /F
++071 /G
++072 /H
++073 /I
++074 /J
++075 /K
++076 /L
++077 /M
++078 /N
++079 /O
++080 /P
++081 /Q
++082 /R
++083 /S
++084 /T
++085 /U
++086 /V
++087 /W
++088 /X
++089 /Y
++090 /Z
++091 /bracketleft
++092 /backslash
++093 /bracketright
++094 /asciicircum
++095 /underscore
++096 /quoteleft
++097 /a
++098 /b
++099 /c
++100 /d
++101 /e
++102 /f
++103 /g
++104 /h
++105 /i
++106 /j
++107 /k
++108 /l
++109 /m
++110 /n
++111 /o
++112 /p
++113 /q
++114 /r
++115 /s
++116 /t
++117 /u
++118 /v
++119 /w
++120 /x
++121 /y
++122 /z
++123 /braceleft
++124 /bar
++125 /braceright
++126 /asciitilde
++127 /.notdef
++128 /.notdef
++129 /.notdef
++130 /.notdef
++131 /.notdef
++132 /.notdef
++133 /.notdef
++134 /.notdef
++135 /.notdef
++136 /.notdef
++137 /.notdef
++138 /.notdef
++139 /.notdef
++140 /.notdef
++141 /.notdef
++142 /.notdef
++143 /.notdef
++144 /.notdef
++145 /.notdef
++146 /.notdef
++147 /.notdef
++148 /.notdef
++149 /.notdef
++150 /.notdef
++151 /.notdef
++152 /.notdef
++153 /.notdef
++154 /.notdef
++155 /.notdef      	
++156 /.notdef
++157 /.notdef
++158 /.notdef
++159 /.notdef      	
++160 /space
++161 /quoteleft
++162 /quoteright
++163 /sterling     	
++164 /.notdef
++165 /.notdef
++166 /brokenbar
++167 /section      	
++168 /dieresis
++169 /copyright
++170 /.notdef
++171 /guillemotleft	
++172 /logicalnot
++173 /hyphen
++174 /.notdef
++175 /endash       	
++176 /degree
++177 /plusminus
++178 /twosuperior
++179 /threesuperior	
++180 /acute
++181 /dieresisacute
++182 /afii9936
++183 /periodcentered	
++184 /afii9937
++185 /afii9938
++186 /afii9939
++187 /guillemotright	
++188 /afii9940
++189 /onehalf
++190 /afii9941
++191 /afii9942     	
++192 /afii9977
++193 /afii9793
++194 /afii9794
++195 /afii9796     	
++196 /afii9797
++197 /afii9798
++198 /afii9801
++199 /afii9802     	
++200 /afii9803
++201 /afii9804
++202 /afii9805
++203 /afii9806     	
++204 /afii9807
++205 /afii9808
++206 /afii9809
++207 /afii9810     	
++208 /afii9811
++209 /afii9813
++210 /.notdef
++211 /afii9814     	
++212 /afii9816
++213 /afii9817
++214 /afii9818
++215 /afii9819     	
++216 /afii9820
++217 /afii9821
++218 /afii9943
++219 /afii9944     	
++220 /afii9968
++221 /afii9969
++222 /afii9970
++223 /afii9971     	
++224 /afii9978
++225 /afii9825
++226 /afii9826
++227 /afii9828
++228 /afii9829
++229 /afii9830
++230 /afii9833
++231 /afii9834
++232 /afii9835
++233 /afii9836
++234 /afii9837
++235 /afii9838
++236 /afii9839
++237 /afii9840
++238 /afii9841
++239 /afii9842
++240 /afii9843
++241 /afii9845
++242 /afii9847
++243 /afii9846
++244 /afii9848
++245 /afii9849
++246 /afii9850
++247 /afii9851
++248 /afii9852
++249 /afii9853
++250 /afii9975
++251 /afii9976
++252 /afii9972
++253 /afii9973
++254 /afii9974
++255 /.notdef
+Index: mpage-2.5.6/Contrib/mfix/mfix.c
+===================================================================
+--- mpage-2.5.6.orig/Contrib/mfix/mfix.c	2008-08-12 00:02:40.797917022 +0200
++++ mpage-2.5.6/Contrib/mfix/mfix.c	2008-08-11 23:07:25.829007710 +0200
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ 
+-FILE *in=stdin,*out=stdout;
+-char line[200]; line2[200];
++FILE *in,*out;
++char line[200], line2[200];
+ 
+ int
+ strcp(st1,st2)
+@@ -15,6 +15,8 @@
+ main()
+ {
+   int i;
++  in = stdin;
++  out = stdout;
+   for(i=0; i<10; i=1)
+   {
+     if (fgets(line,200,in)==NULL) { close(in); close(out); exit(1); }
+@@ -41,4 +43,4 @@
+     fprintf(out,"%s",line);
+   }
+ }
+-    
+\ No newline at end of file
++    

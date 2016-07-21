@@ -1,0 +1,318 @@
+--- ofstd/include/dcmtk/ofstd/ofoset.h.orig	2013-06-22 09:11:13.000000000 -0700
++++ ofstd/include/dcmtk/ofstd/ofoset.h	2013-06-22 09:12:07.000000000 -0700
+@@ -146,7 +146,7 @@
+       {
+         // if size equals num, we need more space
+         if( this->size == this->num )
+-          Resize( this->size * 2 );
++          this->Resize( this->size * 2 );
+ 
+         // copy item
+         T *newItem = new T( item );
+@@ -189,7 +189,7 @@
+         {
+           // if size equals num, we need more space
+           if( this->size == this->num )
+-            Resize( this->size * 2 );
++            this->Resize( this->size * 2 );
+ 
+           // copy item
+           T *newItem = new T( item );
+--- dcmimage/include/dcmtk/dcmimage/diargpxt.h.orig	2013-06-22 09:32:37.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/diargpxt.h	2013-06-22 09:34:20.000000000 -0700
+@@ -91,7 +91,7 @@
+                  const unsigned long planeSize,
+                  const int bits)
+     {                                             // not very much optimized, but no one really uses ARGB !!
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             register T2 value;
+             const T1 offset = OFstatic_cast(T1, DicomImageClass::maxval(bits - 1));
+--- dcmimage/include/dcmtk/dcmimage/dicmypxt.h.orig	2013-06-22 09:44:02.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dicmypxt.h	2013-06-22 09:51:29.000000000 -0700
+@@ -87,7 +87,7 @@
+                  const unsigned long planeSize,
+                  const int bits)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             // use the number of input pixels derived from the length of the 'PixelData'
+             // attribute), but not more than the size of the intermediate buffer
+--- dcmimgle/include/dcmtk/dcmimgle/discalet.h.orig	2013-06-22 09:52:08.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/discalet.h	2013-06-22 09:54:35.000000000 -0700
+@@ -206,12 +206,12 @@
+                 (Left >= OFstatic_cast(signed long, Columns)) || (Top >= OFstatic_cast(signed long, Rows)))
+             {                                                                         // no image to be displayed
+                 DCMIMGLE_DEBUG("clipping area is fully outside the image boundaries");
+-                fillPixel(dest, value);                                               // ... fill bitmap
++                this->fillPixel(dest, value);                                               // ... fill bitmap
+             }
+             else if ((this->Src_X == this->Dest_X) && (this->Src_Y == this->Dest_Y))  // no scaling
+             {
+                 if ((Left == 0) && (Top == 0) && (Columns == this->Src_X) && (Rows == this->Src_Y))
+-                    copyPixel(src, dest);                                             // copying
++                    this->copyPixel(src, dest);                                             // copying
+                 else if ((Left >= 0) && (OFstatic_cast(Uint16, Left + this->Src_X) <= Columns) &&
+                          (Top >= 0) && (OFstatic_cast(Uint16, Top + this->Src_Y) <= Rows))
+                     clipPixel(src, dest);                                             // clipping
+@@ -567,7 +567,7 @@
+         if ((xtemp == NULL) || (xvalue == NULL))
+         {
+             DCMIMGLE_ERROR("can't allocate temporary buffers for interpolation scaling");
+-            clearPixel(dest);
++            this->clearPixel(dest);
+         } else {
+             for (int j = 0; j < this->Planes; ++j)
+             {
+@@ -905,7 +905,7 @@
+         if (pTemp == NULL)
+         {
+             DCMIMGLE_ERROR("can't allocate temporary buffer for interpolation scaling");
+-            clearPixel(dest);
++            this->clearPixel(dest);
+         } else {
+ 
+             /*
+@@ -1029,7 +1029,7 @@
+         if (pTemp == NULL)
+         {
+             DCMIMGLE_ERROR("can't allocate temporary buffer for interpolation scaling");
+-            clearPixel(dest);
++            this->clearPixel(dest);
+         } else {
+ 
+             /*
+--- dcmimage/include/dcmtk/dcmimage/dicocpt.h.orig	2013-06-22 10:01:51.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dicocpt.h	2013-06-22 10:03:10.000000000 -0700
+@@ -86,7 +86,7 @@
+     inline void copy(const T *pixel[3],
+                      const unsigned long offset)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             for (int j = 0; j < 3; j++)
+                 OFBitmanipTemplate<T>::copyMem(pixel[j] + offset, this->Data[j], this->getCount());
+--- dcmimage/include/dcmtk/dcmimage/dicosct.h.orig	2013-06-22 10:03:27.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dicosct.h	2013-06-22 10:04:56.000000000 -0700
+@@ -107,8 +107,8 @@
+     inline void scale(const T *pixel[3],
+                       const int interpolate)
+     {
+-        if (Init(pixel))
+-            scaleData(pixel, this->Data, interpolate);
++        if (this->Init(pixel))
++            this->scaleData(pixel, this->Data, interpolate);
+     }
+ };
+ 
+--- dcmimage/include/dcmtk/dcmimage/dicoflt.h.orig	2013-06-22 10:05:04.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dicoflt.h	2013-06-22 10:08:17.000000000 -0700
+@@ -98,14 +98,14 @@
+                      const int horz,
+                      const int vert)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             if (horz && vert)
+-                flipHorzVert(pixel, this->Data);
++                this->flipHorzVert(pixel, this->Data);
+             else if (horz)
+-                flipHorz(pixel, this->Data);
++                this->flipHorz(pixel, this->Data);
+             else if (vert)
+-                flipVert(pixel, this->Data);
++                this->flipVert(pixel, this->Data);
+         }
+     }
+ };
+--- dcmimage/include/dcmtk/dcmimage/dicorot.h.orig	2013-06-22 10:08:25.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dicorot.h	2013-06-22 10:09:57.000000000 -0700
+@@ -98,14 +98,14 @@
+     inline void rotate(const T *pixel[3],
+                        const int degree)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             if (degree == 90)
+-                rotateRight(pixel, this->Data);
++                this->rotateRight(pixel, this->Data);
+             else if (degree == 180)
+-                rotateTopDown(pixel, this->Data);
++                this->rotateTopDown(pixel, this->Data);
+             else  if (degree == 270)
+-                rotateLeft(pixel, this->Data);
++                this->rotateLeft(pixel, this->Data);
+         }
+     }
+ };
+--- dcmimage/include/dcmtk/dcmimage/dihsvpxt.h.orig	2013-06-22 10:10:11.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dihsvpxt.h	2013-06-22 10:10:54.000000000 -0700
+@@ -87,7 +87,7 @@
+                  const unsigned long planeSize,
+                  const int bits)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             register T2 *r = this->Data[0];
+             register T2 *g = this->Data[1];
+--- dcmimage/include/dcmtk/dcmimage/dipalpxt.h.orig	2013-06-22 10:18:26.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dipalpxt.h	2013-06-22 10:19:13.000000000 -0700
+@@ -92,7 +92,7 @@
+     void convert(const T1 *pixel,
+                  DiLookupTable *palette[3])
+     {                                                                // can be optimized if necessary !
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             register const T1 *p = pixel;
+             register T2 value = 0;
+--- dcmimage/include/dcmtk/dcmimage/diybrpxt.h.orig	2013-06-22 10:34:13.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/diybrpxt.h	2013-06-22 10:34:48.000000000 -0700
+@@ -91,7 +91,7 @@
+                  const int bits,
+                  const OFBool rgb)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             const T1 offset = OFstatic_cast(T1, DicomImageClass::maxval(bits - 1));
+             // use the number of input pixels derived from the length of the 'PixelData'
+--- dcmimage/include/dcmtk/dcmimage/dirgbpxt.h.orig	2013-06-22 10:35:08.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/dirgbpxt.h	2013-06-22 10:35:39.000000000 -0700
+@@ -87,7 +87,7 @@
+                  const unsigned long planeSize,
+                  const int bits)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             // use the number of input pixels derived from the length of the 'PixelData'
+             // attribute), but not more than the size of the intermediate buffer
+--- dcmimage/include/dcmtk/dcmimage/diyp2pxt.h.orig	2013-06-22 10:35:45.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/diyp2pxt.h	2013-06-22 10:36:34.000000000 -0700
+@@ -91,7 +91,7 @@
+     void convert(const T1 *pixel,
+                  const int bits)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             register T2 *r = this->Data[0];
+             register T2 *g = this->Data[1];
+--- dcmimage/include/dcmtk/dcmimage/diyf2pxt.h.orig	2013-06-22 10:36:47.000000000 -0700
++++ dcmimage/include/dcmtk/dcmimage/diyf2pxt.h	2013-06-22 10:37:19.000000000 -0700
+@@ -95,7 +95,7 @@
+                  const int bits,
+                  const OFBool rgb)
+     {
+-        if (Init(pixel))
++        if (this->Init(pixel))
+         {
+             const T1 offset = OFstatic_cast(T1, DicomImageClass::maxval(bits - 1));
+             register unsigned long i;
+--- dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h.orig	2013-06-22 10:44:20.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/dimoipxt.h	2013-06-22 10:47:08.000000000 -0700
+@@ -76,10 +76,10 @@
+             else if ((this->Modality != NULL) && this->Modality->hasRescaling())
+             {
+                 rescale(pixel, this->Modality->getRescaleSlope(), this->Modality->getRescaleIntercept());
+-                determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
++                this->determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
+             } else {
+                 rescale(pixel);                     // "copy" or reference pixel data
+-                determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
++                this->determineMinMax(OFstatic_cast(T3, this->Modality->getMinValue()), OFstatic_cast(T3, this->Modality->getMaxValue()));
+             }
+         }
+     }
+--- dcmimgle/include/dcmtk/dcmimgle/dimosct.h.orig	2013-06-22 10:47:22.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/dimosct.h	2013-06-22 10:48:02.000000000 -0700
+@@ -124,7 +124,7 @@
+             {
+                 const T value = OFstatic_cast(T, OFstatic_cast(double, DicomImageClass::maxval(bits)) *
+                     OFstatic_cast(double, pvalue) / OFstatic_cast(double, DicomImageClass::maxval(WIDTH_OF_PVALUES)));
+-                scaleData(&pixel, &this->Data, interpolate, value);
++                this->scaleData(&pixel, &this->Data, interpolate, value);
+              }
+         }
+     }
+--- dcmimgle/include/dcmtk/dcmimgle/dimoflt.h.orig	2013-06-22 10:48:07.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/dimoflt.h	2013-06-22 10:48:37.000000000 -0700
+@@ -106,11 +106,11 @@
+             if (this->Data != NULL)
+             {
+                 if (horz && vert)
+-                    flipHorzVert(&pixel, &this->Data);
++                    this->flipHorzVert(&pixel, &this->Data);
+                 else if (horz)
+-                    flipHorz(&pixel, &this->Data);
++                    this->flipHorz(&pixel, &this->Data);
+                 else if (vert)
+-                    flipVert(&pixel, &this->Data);
++                    this->flipVert(&pixel, &this->Data);
+             }
+         }
+     }
+--- dcmimgle/include/dcmtk/dcmimgle/dimorot.h,orig	2013-06-22 10:50:38.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/dimorot.h	2013-06-22 10:53:57.000000000 -0700
+@@ -105,11 +105,11 @@
+             if (this->Data != NULL)
+             {
+                 if (degree == 90)
+-                    rotateRight(&pixel, &(this->Data));
++                    this->rotateRight(&pixel, &(this->Data));
+                 else if (degree == 180)
+-                    rotateTopDown(&pixel, &(this->Data));
++                    this->rotateTopDown(&pixel, &(this->Data));
+                 else if (degree == 270)
+-                    rotateLeft(&pixel, &(this->Data));
++                    this->rotateLeft(&pixel, &(this->Data));
+             }
+         }
+     }
+--- dcmimgle/include/dcmtk/dcmimgle/diflipt.h.orig	2013-06-22 11:03:34.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/diflipt.h	2013-06-22 11:04:43.000000000 -0700
+@@ -123,13 +123,13 @@
+         if ((src != NULL) && (dest != NULL))
+         {
+             if (horz && vert)
+-                flipHorzVert(src, dest);
++                this->flipHorzVert(src, dest);
+             else if (horz)
+-                flipHorz(src, dest);
++                this->flipHorz(src, dest);
+             else if (vert)
+-                flipVert(src, dest);
++                this->flipVert(src, dest);
+             else
+-                copyPixel(src, dest);
++                this->copyPixel(src, dest);
+         }
+     }
+ 
+--- dcmimgle/include/dcmtk/dcmimgle/dirotat.h.orig	2013-06-22 11:06:17.000000000 -0700
++++ dcmimgle/include/dcmtk/dcmimgle/dirotat.h	2013-06-22 11:07:00.000000000 -0700
+@@ -126,13 +126,13 @@
+                            const int degree)
+     {
+         if (degree == 90)
+-            rotateRight(src, dest);
++            this->rotateRight(src, dest);
+         else if (degree == 180)
+-            rotateTopDown(src, dest);
++            this->rotateTopDown(src, dest);
+         else if (degree == 270)
+-            rotateLeft(src, dest);
++            this->rotateLeft(src, dest);
+         else
+-            copyPixel(src, dest);
++            this->copyPixel(src, dest);
+     }
+ 
+ 

@@ -1,0 +1,24 @@
+Index: xcalib-0.8/Makefile
+===================================================================
+--- xcalib-0.8.orig/Makefile
++++ xcalib-0.8/Makefile
+@@ -50,16 +50,16 @@ all: xcalib
+ # low overhead version (internal parser)
+ xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -I$(XINCLUDEDIR) -DXCALIB_VERSION=\"$(XCALIB_VERSION)\"
+-	$(CC) $(CFLAGS) -L$(XLIBDIR) -lm -o xcalib xcalib.o -lX11 -lXxf86vm -lXext
++	$(CC) $(LDFLAGS) -L$(XLIBDIR) -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lm
+ 
+ fglrx_xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -I$(XINCLUDEDIR) -DXCALIB_VERSION=\"$(XCALIB_VERSION)\" -I$(FGLRXINCLUDEDIR) -DFGLRX
+-	$(CC) $(CFLAGS) -L$(XLIBDIR) -L$(FGLRXLIBDIR) -lm -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lfglrx_gamma
++	$(CC) $(LDFLAGS) -L$(XLIBDIR) -L$(FGLRXLIBDIR) -o xcalib xcalib.o -lX11 -lXxf86vm -lXext -lfglrx_gamma -lm
+ 
+ win_xcalib: xcalib.c
+ 	$(CC) $(CFLAGS) -c xcalib.c -DXCALIB_VERSION=\"$(XCALIB_VERSION)\" -DWIN32GDI
+ 	windres.exe resource.rc resource.o
+-	$(CC) $(CFLAGS) -mwindows -lm resource.o -o xcalib xcalib.o
++	$(CC) $(LDFLAGS) -mwindows -lm resource.o -o xcalib xcalib.o
+ 
+ install:
+ 	cp ./xcalib $(DESTDIR)/usr/local/bin/

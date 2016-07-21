@@ -1,0 +1,89 @@
+From 05c1df6a6da28734533722dc0ac99ea5b206a492 Mon Sep 17 00:00:00 2001
+From: Matthias Kramm <kramm@quiss.org>
+Date: Sat, 6 Jul 2013 12:09:53 -0700
+Subject: [PATCH] applied giflib patch from Jan Engelhardt
+
+---
+ src/gif2swf.c | 28 ++++++++++++++++++++++++----
+ 1 file changed, 24 insertions(+), 4 deletions(-)
+
+diff --git a/src/gif2swf.c b/src/gif2swf.c
+index 2359da5..5e52ea8 100644
+--- a/src/gif2swf.c
++++ b/src/gif2swf.c
+@@ -222,6 +222,7 @@ TAG *MovieAddFrame(SWF * swf, TAG * t, char *sname, int id, int imgidx)
+ 
+     GifFileType *gft;
+     FILE *fi;
++    int ret;
+ 
+     if ((fi = fopen(sname, "rb")) == NULL) {
+         if (VERBOSE(1))
+@@ -230,13 +231,24 @@ TAG *MovieAddFrame(SWF * swf, TAG * t, char *sname, int id, int imgidx)
+     }
+     fclose(fi);
+ 
+-    if ((gft = DGifOpenFileName(sname)) == NULL) {
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++    gft = DGifOpenFileName(sname, NULL);
++#else
++    gft = DGifOpenFileName(sname);
++#endif
++    if (gft == NULL) {
+         fprintf(stderr, "%s is not a GIF file!\n", sname);
+         return t;
+     }
+ 
+-    if (DGifSlurp(gft) != GIF_OK) {
++    if ((ret = DGifSlurp(gft)) != GIF_OK) {
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR == 4 && GIFLIB_MINOR >= 2
++        fprintf(stderr, "GIF-LIB: %s\n", GifErrorString());
++#elif defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++        fprintf(stderr, "GIF-LIB: %s\n", GifErrorString(ret));
++#else
+         PrintGifError();
++#endif
+         return t;
+     }
+ 
+@@ -465,6 +475,7 @@ int CheckInputFile(char *fname, char **realname)
+     FILE *fi;
+     char *s = malloc(strlen(fname) + 5);
+     GifFileType *gft;
++    int ret;
+ 
+     if (!s)
+         exit(2);
+@@ -488,7 +499,12 @@ int CheckInputFile(char *fname, char **realname)
+     }
+     fclose(fi);
+ 
+-    if ((gft = DGifOpenFileName(s)) == NULL) {
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++    gft = DGifOpenFileName(s, NULL);
++#else
++    gft = DGifOpenFileName(s);
++#endif
++    if (gft == NULL) {
+         fprintf(stderr, "%s is not a GIF file!\n", fname);
+         return -1;
+     }
+@@ -498,8 +514,14 @@ int CheckInputFile(char *fname, char **realname)
+     if (global.max_image_height < gft->SHeight)
+         global.max_image_height = gft->SHeight;
+ 
+-    if (DGifSlurp(gft) != GIF_OK) { 
++    if ((ret = DGifSlurp(gft)) != GIF_OK) {
++#if defined(GIFLIB_MAJOR) && GIFLIB_MAJOR == 4 && GIFLIB_MINOR >= 2
++        fprintf(stderr, "GIF-LIB: %s\n", GifErrorString());
++#elif defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5
++        fprintf(stderr, "GIF-LIB: %s\n", GifErrorString(ret));
++#else
+         PrintGifError();
++#endif
+         return -1;
+     }
+     // After DGifSlurp() call, gft->ImageCount become available
+-- 
+1.8.4
+

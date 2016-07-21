@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu Jun  7 14:31:12 UTC 2012
+Subject: fix QA warnings
+
+https://sourceforge.net/tracker/?func=detail&atid=660493&aid=3532590&group_id=111810
+
+--- CPP/7zip/Archive/NtfsHandler.cpp
++++ CPP/7zip/Archive/NtfsHandler.cpp
+@@ -1280,7 +1280,7 @@
+     if (recSizeLog < Header.SectorSizeLog)
+       return false;
+     numSectorsInRec = 1 << (recSizeLog - Header.SectorSizeLog);
+-    if (!mftRec.Parse(ByteBuf, Header.SectorSizeLog, numSectorsInRec, NULL, 0))
++    if (!mftRec.Parse(ByteBuf, Header.SectorSizeLog, numSectorsInRec, 0, NULL))
+       return S_FALSE;
+     if (!mftRec.IsFILE())
+       return S_FALSE;

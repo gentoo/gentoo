@@ -1,0 +1,23 @@
+at some point, a perl update broke this syntax.  use a newer style that works
+with at least perl-5.16.
+
+--- a/automake.in
++++ b/automake.in
+@@ -983,7 +983,7 @@ sub finish_languages
+ 
+ 	# Compute the function name of the finisher and then call it.
+ 	$name = 'lang_' . $lang . '_finish';
+-	do $name ();
++	&$name ();
+     }
+ 
+     # If the project is entirely C++ or entirely Fortran 77, don't
+@@ -1144,7 +1144,7 @@ sub handle_single_transform_list
+ 		# Found the language, so see what it says.
+ 		local ($subr) = 'lang_' . $lang . '_rewrite';
+ 		# Note: computed subr call.
+-		local ($r) = do $subr ($base, $extension);
++		local ($r) = &$subr ($base, $extension);
+ 		# Skip this entry if we were asked not to process it.
+ 		next if ! $r;
+ 

@@ -1,0 +1,182 @@
+#!@GENTOO_PORTAGE_EPREFIX@/bin/bash
+# Script to install a catalog in the centralized SGML catalog
+# Send any comments to Eric Bischoff <eric@caldera.de>
+# This program is under GPL license. See LICENSE file for details.
+
+# Modified by Gentoo developers to better integrate it to portage.
+# <text-markup@gentoo.org>
+
+# Set help message
+SGML_HELP_MESSAGE="Usage: `basename $0` [<option>] <action>\n\
+where <option> is:\n\
+\040 -d|--delegate: \t\t\t Use DELEGATE instead of CATALOG\n\
+and where <action> is:\n\
+\040 -a|--add <centralized> <ordinary>: \t Declare ordinary catalog in the centralized catalog\n\
+\040 -r|--remove <centralized> <ordinary>:\t Remove ordinary catalog from the centralized catalog\n\
+\040 -h, --help: \t\t\t\t Print this help message and exit\n\
+\040 -v, --version: \t\t\t Print the version number and exit\n"
+
+# Set version message
+SGML_VERSION_MESSAGE="sgml-common version @VERSION@ (install-catalog version 1.0)"
+
+# Set type of pointer
+SGML_POINTER="CATALOG"
+
+# Set action to be performed
+SGML_ACTION=""
+
+# Set catalogs
+SGML_CENTRALIZED=""
+SGML_ORDINARY=""
+
+# Default ROOT value (usually defined by portage)
+[ -z "$ROOT" ] && ROOT="/"
+[[ $ROOT == */ ]] || ROOT="${ROOT}/"
+EPREFIX="@GENTOO_PORTAGE_EPREFIX@"
+EROOT=${ROOT%/}${EPREFIX}/
+
+
+# Process options
+case $1 in
+   -d|--delegate) SGML_POINTER="DELEGATE"
+                shift 1
+                ;;
+esac
+
+# Process actions
+case $1 in
+   -a|--add)    SGML_ACTION="addition"
+		SGML_CENTRALIZED=$2
+		SGML_ORDINARY=$3
+		;;
+   -r|--remove)	if [ -z "$3" -o "$3" = "--version" ]
+		then
+		  echo "install-catalog: Old syntax; doing nothing"
+		  exit 0
+		fi
+   		SGML_ACTION="removal"
+		SGML_CENTRALIZED=$2
+		SGML_ORDINARY=$3
+		;;
+   -h|--help)	echo -e $SGML_HELP_MESSAGE
+		exit 0
+		;;
+   -v|--version) echo -e $SGML_VERSION_MESSAGE
+	 	exit 0
+		;;
+   --install)   echo "install-catalog: Old syntax; doing nothing"
+		exit 0
+		;;
+   *)		echo -e $SGML_HELP_MESSAGE >&2
+		exit 1
+		;;
+esac
+
+
+# The arguments to this program should always be relative to $ROOT. Here we
+# declare some extra variables to distingish between the absolute and
+# relative paths.
+SGML_ROOT_CENTRALIZED="${ROOT%/}${SGML_CENTRALIZED}"
+SGML_ROOT_ORDINARY="${ROOT%/}${SGML_ORDINARY}"
+
+
+# Check that the super catalog can be created and changed and deleted
+if [ ! -w "${EROOT}etc/sgml" ]
+then
+  echo "`basename $0`: unable to write in ${EROOT}etc/sgml." >&2
+  exit 2
+fi
+case $SGML_ACTION in
+   addition)
+	if [ -e "${EROOT}etc/sgml/catalog" -a ! -w "${EROOT}etc/sgml/catalog" ]
+	then
+	  echo "`basename $0`: can not modify \"${EROOT}etc/sgml/catalog\"." >&2
+	  exit 2
+	fi
+	;;
+   removal)
+	if [ ! -w "${EROOT}etc/sgml/catalog" ]
+	then
+	  echo "`basename $0`: can not modify \"${EROOT}etc/sgml/catalog\"." >&2
+	  exit 2
+	fi
+	;;
+esac
+
+# Check that the centralized catalog can be created, changed and deleted
+if [ -z "$SGML_ROOT_CENTRALIZED" ]
+then
+  echo -e $SGML_HELP_MESSAGE >&2
+  exit 1
+fi
+case $SGML_ACTION in
+   addition)
+	if [ -e "$SGML_ROOT_CENTRALIZED" -a ! -w "$SGML_ROOT_CENTRALIZED" ]
+	then
+	  echo "`basename $0`: can not modify \"$SGML_ROOT_CENTRALIZED\"." >&2
+	  exit 2
+	fi
+	;;
+   removal)
+	if [ ! -w "$SGML_ROOT_CENTRALIZED" ]
+	then
+	  echo "`basename $0`: can not modify \"$SGML_ROOT_CENTRALIZED\"." >&2
+	  exit 2
+	fi
+	;;
+esac
+
+# Check that we have at least one ordinary package to process
+if [ -z "$SGML_ROOT_ORDINARY" ]
+then
+  echo -e $SGML_HELP_MESSAGE >&2
+  exit 1
+fi
+case $SGML_ACTION in
+   addition)
+	if [ ! -s "$SGML_ROOT_ORDINARY" ]
+	then
+	  echo "`basename $0`: \"$SGML_ROOT_ORDINARY\" does not exist or is empty." >&2
+	  exit 2
+	fi
+	;;
+esac
+
+# Installation or removal of pointers
+case $SGML_ACTION in
+    addition)
+	echo "`basename $0`: addition of $SGML_ORDINARY in $SGML_CENTRALIZED"
+	if grep -q "$SGML_ORDINARY" "$SGML_ROOT_CENTRALIZED" 2>/dev/null
+	then
+	  echo "Warning: $SGML_ORDINARY is already installed in the centralized catalog $SGML_CENTRALIZED" >&2
+	else
+	  echo "$SGML_POINTER \"$SGML_ORDINARY\"" >> "$SGML_ROOT_CENTRALIZED"
+	fi
+	grep -q "$SGML_CENTRALIZED" "${EROOT}etc/sgml/catalog" 2>/dev/null
+	if [ $? -ne 0 ]
+	then
+		echo "`basename $0`: addition of $SGML_CENTRALIZED in ${EROOT}etc/sgml/catalog"
+		echo "$SGML_POINTER \"$SGML_CENTRALIZED\"" >> "${EROOT}etc/sgml/catalog"
+	fi
+	;;
+   removal)
+	echo "`basename $0`: removal of $SGML_ORDINARY from $SGML_CENTRALIZED"
+	if grep -q "$SGML_ORDINARY" "$SGML_ROOT_CENTRALIZED" 2>/dev/null
+	then
+		sed -e "\:$SGML_POINTER \"$SGML_ORDINARY\":d" < \
+			"$SGML_ROOT_CENTRALIZED" > "${SGML_ROOT_CENTRALIZED}.new"
+		mv "${SGML_ROOT_CENTRALIZED}.new" "$SGML_ROOT_CENTRALIZED"
+	else
+	  echo "Warning: $SGML_ORDINARY was not found in the centralized catalog $SGML_CENTRALIZED" >&2
+	fi
+	if [ ! -s "$SGML_ROOT_CENTRALIZED" ]
+	then
+	  rm "$SGML_ROOT_CENTRALIZED"
+	  echo "`basename $0`: removal of $SGML_CENTRALIZED from ${EROOT}etc/sgml/catalog"
+          sed -e "\:$SGML_POINTER \"$SGML_CENTRALIZED\":d" < "${EROOT}etc/sgml/catalog" > "${EROOT}etc/sgml/catalog.new"
+          mv "${EROOT}etc/sgml/catalog.new" "${EROOT}etc/sgml/catalog"
+	fi
+	;;
+esac
+
+exit 0

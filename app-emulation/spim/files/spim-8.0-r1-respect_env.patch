@@ -1,0 +1,183 @@
+--- spim/Makefile	2010-08-01 22:14:53.352906061 +0200
++++ spim/Makefile	2010-08-01 22:15:00.994905920 +0200
+@@ -66,13 +66,13 @@
+ 
+ 
+ # Full path for the directory that will hold the executable files:
+-BIN_DIR = /usr/local/bin
++BIN_DIR = $(DESTDIR)/usr/bin
+ 
+ # Full path for the directory that will hold the exception handler:
+-EXCEPTION_DIR = /usr/local/lib/spim
++EXCEPTION_DIR = $(DESTDIR)/var/lib/spim
+ 
+ # Full path for the directory that will hold the man files:
+-MAN_DIR = /usr/local/man/en
++MAN_DIR = $(DESTDIR)/usr/share/man
+ 
+ 
+ # If you have flex, use it instead of lex.  If you use flex, define this
+@@ -104,11 +104,10 @@
+ 
+ DEFINES = $(ENDIAN) $(MEM_SIZES) -DDEFAULT_EXCEPTION_HANDLER="\"$(EXCEPTION_DIR)/exceptions.s\"" -DSPIM_VERSION="\"`cat ../VERSION`\""
+ 
+-CC = gcc
+-CFLAGS = -I. -I$(CPU_DIR) $(DEFINES) -g -Wall
++CC ?= gcc
++CFLAGS += -I. -I$(CPU_DIR) $(DEFINES) -Wall
+ YFLAGS = -d --file-prefix=y
+ YCFLAGS =
+-LDFLAGS = -lm
+ CSH = bash
+ 
+ # lex.yy.c is usually compiled with -O to speed it up.
+@@ -122,10 +121,10 @@
+ 
+ 
+ spim:   force
+-	make -f Makefile spim2
++	$(MAKE) -f Makefile spim2
+ 
+ spim2:	$(OBJS) spim.o
+-	$(CC) -g $(OBJS) spim.o $(LDFLAGS) -o spim -lm
++	$(CC) $(OBJS) spim.o $(LDFLAGS) -o spim -lm
+ 
+ 
+ force:	configuration
+@@ -143,19 +142,19 @@
+ 	@echo
+ 	@echo "Testing tt.bare.s:"
+ 	$(CSH) -c "./spim -delayed_branches -delayed_loads -noexception -file $(TEST_DIR)/tt.bare.s >& test.out"
+-	@tail -2 test.out
++	@tail -n2 test.out
+ 	@echo
+ 
+ 	@echo
+ 	@echo "Testing tt.core.s:"
+ 	$(CSH) -c "./spim -ef $(CPU_DIR)/exceptions.s -file $(TEST_DIR)/tt.core.s < $(TEST_DIR)/tt.in >& test.out"
+-	@tail -2 test.out
++	@tail -n2 test.out
+ 	@echo
+ 
+ 	@echo
+ 	@echo "Testing tt.endian.s:"
+ 	$(CSH) -c "./spim -ef $(CPU_DIR)/exceptions.s -file $(TEST_DIR)/tt.endian.s  >& test.out"
+-	@tail -2 test.out
++	@tail -n2 test.out
+ 	@echo
+ 	@echo
+ 
+@@ -166,13 +165,13 @@
+ 	@echo
+ 	@echo "Testing tt.alu.bare.s:"
+ 	$(CSH) -c "./spim -bare -noexception -file $(TEST_DIR)/tt.alu.bare.s >& test.out"
+-	@tail -2 test.out
++	@tail -n2 test.out
+ 	@echo
+ 
+ 	@echo
+ 	@echo "Testing tt.fpt.bare.s:"
+ 	$(CSH) -c "./spim -bare -noexception -file $(TEST_DIR)/tt.fpu.bare.s >& test.out"
+-	@tail -2 test.out
++	@tail -n2 test.out
+ 	@echo
+ 	@echo
+ 
+@@ -192,8 +191,6 @@
+ 	install -m 0444 $(CPU_DIR)/exceptions.s $(EXCEPTION_DIR)/exceptions.s
+ 
+ install-man:
+-	install -d $(MAN_DIR)
+-	install -m 0444 $(DOC_DIR)/spim.man $(MAN_DIR)
+ 
+ very-clean: clean
+ 	rm -f configuration
+--- xspim/Makefile	2010-08-01 22:14:53.351905921 +0200
++++ xspim/Makefile	2010-08-01 22:26:08.361917058 +0200
+@@ -169,18 +169,18 @@
+ 
+          VARDBDIR = $(VARDIR)/lib
+ 
+-               AR = ar clq
++               AR = $(AR) clq
+ 
+ # Nice try but useless: make will inherit BOOTSTRAPCFLAGS
+ # from  top Makefile
+   BOOTSTRAPCFLAGS =
+ 
+-               CC = gcc -m32
+-               AS = gcc -m32 -c -x assembler
++               CC ?= gcc -m32
++               AS ?= gcc -m32 -c -x assembler
+ 
+ .SUFFIXES: .cc
+ 
+-              CXX = c++ -m32
++              CXX ?= c++ -m32
+ 
+           CXXFILT = c++filt
+ 
+@@ -199,14 +199,14 @@
+          COMPRESS = compress
+           GZIPCMD = gzip
+ 
+-              CPP = cpp $(STD_CPP_DEFINES)
+-           RAWCPP = cpp -undef $(STD_CPP_OPTIONS)
+-    PREPROCESSCMD = gcc -m32 -E $(STD_CPP_DEFINES)
++              CPP = $(CPP) $(STD_CPP_DEFINES)
++           RAWCPP = $(CPP) -undef $(STD_CPP_OPTIONS)
++    PREPROCESSCMD = $(CC) -E $(STD_CPP_DEFINES)
+ 
+           INSTALL = install
+      INSTALLFLAGS = -c
+ 
+-               LD = gcc -m32 -nostdlib
++               LD ?= $(CC) -nostdlib
+ 
+               LEX = flex -l
+                M4 = m4
+@@ -270,18 +270,18 @@
+               COL = col
+          COLFLAGS = -b
+ 
+-            MODCC = gcc -m32
++            MODCC ?= $(CC)
+ 
+-           MODCPP = cpp
++           MODCPP = $(CPP)
+         MODCFLAGS = $(CFLAGS)
+-            MODAS = gcc -m32 -c -x assembler
++            MODAS ?= $(CC) -c -x assembler
+        MODASFLAGS =
+ 
+-            MODLD = gcc -m32 -nostdlib
++            MODLD ?= $(CC) -nostdlib
+ 
+        MODLDFLAGS =
+ MODLDCOMBINEFLAGS = -r
+-            MODAR = ar clq
++            MODAR ?= $(AR) clq
+ 
+         MODRANLIB = ranlib
+ 
+@@ -330,7 +330,7 @@
+ 
+       ALLINCLUDES = $(INCLUDES) $(EXTRA_INCLUDES) $(TOP_INCLUDES) $(INSTALLED_INCLUDES) $(STD_INCLUDES)
+        ALLDEFINES = $(ALLINCLUDES) $(STD_DEFINES) $(PROTO_DEFINES) $(THREADS_DEFINES) $(MODULE_DEFINES) $(DEFINES) $(EXTRA_DEFINES)
+-           CFLAGS = $(CDEBUGFLAGS) $(CCOPTIONS) $(THREADS_CFLAGS) $(MODULE_CFLAGS) $(ALLDEFINES)
++           CFLAGS += $(CCOPTIONS) $(THREADS_CFLAGS) $(MODULE_CFLAGS) $(ALLDEFINES) 
+         LINTFLAGS = $(LINTOPTS) -DLINT $(ALLDEFINES) $(DEPEND_DEFINES)
+          LDPRELIB =  $(INSTALLED_LIBS)
+         LDPOSTLIB =
+@@ -339,9 +339,9 @@
+ 
+            LDLIBS = $(LDPOSTLIBS) $(THREADS_LIBS) $(SYS_LIBRARIES) $(EXTRA_LIBRARIES)
+ 
+-           CCLINK = $(CC)
++           CCLINK = $(CC) $(LDFLAGS)
+ 
+-          CXXLINK = $(CXX)
++          CXXLINK = $(CXX) $(LDFLAGS)
+ 
+      LDSTRIPFLAGS = -x
+    LDCOMBINEFLAGS = -r

@@ -1,0 +1,29 @@
+--- wmacpi-2.1rc1/wmacpi.c.orig	2005-01-05 07:16:09.000000000 +0100
++++ wmacpi-2.1rc1/wmacpi.c	2005-01-25 10:03:47.933403683 +0100
+@@ -574,7 +574,8 @@
+ 	   "\t\t\tdefault 20 (once every three seconds)\n"
+ 	   "-f\t\t\tforce the use of capacity mode for calculating time remaining\n"
+ 	   "-n\t\t\tdo not blink\n"
+-	   "-w\t\t\trun in command line mode\n"
++	   "-w\t\t\trun in windowed mode\n"
++	   "-x\t\t\trun in command line mode\n"
+ 	   "-a <samples>\t\tsamples to average over (cli mode only)\n"
+ 	   "-v\t\t\tincrease verbosity\n"
+ 	   "\t\t\tcan be used multiple times to increase verbosity further\n"
+@@ -728,9 +729,15 @@
+ 	case 'n':
+ 	    dockapp->blink = 0;
+ 	    break;
+-	case 'w':
++	case 'x':
+ 	    cli = 1;
+ 	    break;
++	case 'w':
++	    {
++		char *args[] = { "", "-w" };
++		DAParseArguments(2, args, NULL, 0, "", "");
++	    }
++	    break;
+ 	case 'a':
+ 	    if(optarg != NULL) {
+ 		samples = atoi(optarg);

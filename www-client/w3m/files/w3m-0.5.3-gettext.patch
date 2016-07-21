@@ -1,0 +1,12 @@
+diff -ur w3m-0.5.3.orig/po/ja.po w3m-0.5.3/po/ja.po
+--- w3m-0.5.3.orig/po/ja.po	2014-06-08 11:17:13.791260502 +0200
++++ w3m-0.5.3/po/ja.po	2014-06-08 11:24:27.887365926 +0200
+@@ -12,7 +12,7 @@
+ "PO-Revision-Date: 2010-08-20 18:45+0900\n"
+ "Last-Translator: Fumitoshi UKAI <ukai@debian.or.jp>\n"
+ "Language-Team: Japanese\n"
+-"Language: \n"
++"Language: ja\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"

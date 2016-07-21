@@ -1,0 +1,35 @@
+diff -uNr ppx_bench-113.33.00/_oasis ppx_bench-113.33.00+4.03/_oasis
+--- ppx_bench-113.33.00/_oasis	2016-03-09 16:44:53.000000000 +0100
++++ ppx_bench-113.33.00+4.03/_oasis	2016-03-22 15:13:49.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_bench
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         Syntax extension for writing in-line benchmarks in ocaml code
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_bench-113.33.00/opam ppx_bench-113.33.00+4.03/opam
+--- ppx_bench-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_bench-113.33.00+4.03/opam	2016-03-22 17:51:35.000000000 +0100
+@@ -17,4 +17,4 @@
+   "ppx_inline_test"
+   "ppx_tools"       {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_bench-113.33.00/src/ppx_bench.ml ppx_bench-113.33.00+4.03/src/ppx_bench.ml
+--- ppx_bench-113.33.00/src/ppx_bench.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_bench-113.33.00+4.03/src/ppx_bench.ml	2016-03-22 15:13:49.000000000 +0100
+@@ -113,7 +113,7 @@
+   assert_enabled loc;
+   apply_to_descr_bench
+     path "add_bench_module" loc ~inner_loc:m.pmod_loc None ?name_suffix name
+-    (pexp_fun ~loc "" None (punit ~loc)
++    (pexp_fun ~loc Nolabel None (punit ~loc)
+        (pexp_letmodule ~loc (Located.mk ~loc "M")
+           m
+           (eunit ~loc)))

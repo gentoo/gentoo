@@ -1,0 +1,22 @@
+Removes extra newline from output like this:
+
+Title: 01, Length: 02:18:41.834 Chapters: 06, Cells: 06, Audio streams: 01, Subpictures: 03
+
+Title: 02, Length: 00:46:16.000 Chapters: 03, Cells: 03, Audio streams: 01, Subpictures: 03
+
+Title: 03, Length: 00:46:11.834 Chapters: 03, Cells: 03, Audio streams: 01, Subpictures: 03
+--- lsdvd-0.16/ohuman.c.orig	2014-08-22 21:47:00.993538145 -0600
++++ lsdvd-0.16/ohuman.c	2014-08-22 21:52:11.964633226 -0600
+@@ -111,11 +111,10 @@
+ 				printf("\n");
+ 			}
+ 		}
+-		printf("\n");
+ 	}
+ 	}
+ 
+ 	if (! opt_t) {
+-		printf("Longest track: %02d\n\n", dvd_info->longest_track);
++		printf("Longest track: %02d\n", dvd_info->longest_track);
+ 	}
+ }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>robbat2@gentoo.org</email>
+</maintainer>
+<longdescription>RATS - Rough Auditing Tool for Security - is an open source
+    tool developed and maintained by Secure Software security engineers. RATS
+    is a tool for scanning C, C++, Perl, PHP and Python source code and
+    flagging common security related programming errors such as buffer
+    overflows and TOCTOU (Time Of Check, Time Of Use) race conditions.
+</longdescription>
+</pkgmetadata>

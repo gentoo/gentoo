@@ -1,0 +1,10 @@
+--- src/mysql-udf-http.c.orig	2010-09-06 06:00:32.000000000 +0200
++++ src/mysql-udf-http.c	2011-10-18 16:36:37.000000000 +0200
+@@ -2,6 +2,7 @@
+ #include <string.h>
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <curl/curl.h>
+ #include "mysql-udf-http.h"
+ 

@@ -1,0 +1,72 @@
+--- a/flexbackup	2003-10-10 07:12:09.000000000 -0700
++++ b/flexbackup	2006-05-14 13:14:54.000000000 -0700
+@@ -269,6 +269,7 @@
+     untie(%::index);
+ }
+ 
++system ('rm', '-rf', $cfg::tmpdir);
+ exit(0);
+ 
+ ######################################################################
+@@ -811,6 +812,11 @@
+ 	($remove, @cmds) = &backup_filelist($label, $localdir, $title, $level, $remote);
+     }
+ 
++	if(defined($remote)) {
++		# create our temporary directory as first remote command
++		unshift(@cmds, &maybe_remote_cmd("$::path{mkdir} -p $cfg::tmpdir", $remote));
++	}
++
+     # Nuke any tmp files used in the above routines
+     if ($remove ne '') {
+ 	push(@cmds, &maybe_remote_cmd("$::path{rm} -f $remove", $remote));
+@@ -827,6 +833,11 @@
+ 	    push(@cmds, &maybe_remote_cmd("$::path{rm} -f $pkglist", $remote));
+ 	}
+     }
++	
++	if(defined($remote)) {
++		# remove temporary directory as our last remote command
++		push(@cmds, &maybe_remote_cmd("$::path{rm} -rf $cfg::tmpdir", $remote));
++	}
+ 
+     # Strip multiple spaces
+     foreach my $cmd (@cmds) {
+@@ -2750,8 +2761,9 @@
+     $::path{'find'} = &checkinpath('find');
+     $::path{'dd'} = &checkinpath('dd');
+     $::path{'printf'} = &checkinpath('printf');
++    $::path{'mkdir'} = &checkinpath('mkdir');
+ 
+-    push(@::remoteprogs,($::path{'touch'},$::path{'rm'},$::path{'find'},$::path{'printf'}));
++    push(@::remoteprogs,($::path{'touch'},$::path{'rm'},$::path{'find'},$::path{'printf'},$::path{'mkdir'}));
+ 
+     # Check device (or dir)
+     $::ftape = 0;
+@@ -3442,6 +3454,15 @@
+ 	push(@::errors,"\$tmpdir $cfg::tmpdir is not writable");
+     }
+ 
++	$cfg::hostname = `hostname`;
++	chomp($cfg::hostname);
++
++	# Use a subdirectory of the user-specified directory as our tmpdir
++	# Also note that we make it closer to globally unique as we sometimes
++	# use this variable for remote systems, so PID isn't enough
++    $cfg::tmpdir = $cfg::tmpdir .'/flexbackup.'.$$.'.'.$cfg::hostname;
++    mkdir ($cfg::tmpdir) || die "Can't create temporary directory, $!";
++
+     # Levels
+     if (defined($::opt{'level'}) and
+ 	(defined($::opt{'incremental'}) or
+@@ -5236,8 +5257,8 @@
+     # Create a script which tests the buffer program
+     open(SCR,"> $tmp_script") || die;
+     print SCR "#!/bin/sh\n";
+-    print SCR "tmp_data=/tmp/bufftest\$\$.txt\n";
+-    print SCR "tmp_err=/tmp/bufftest\$\$.err\n";
++    print SCR "tmp_data=\`tempfile\`\n";
++    print SCR "tmp_err=\`tempfile\`\n";
+     print SCR "echo testme > \$tmp_data\n";
+     print SCR "$buffer_cmd > /dev/null 2> \$tmp_err < \$tmp_data\n";
+     print SCR "res=\$?\n";

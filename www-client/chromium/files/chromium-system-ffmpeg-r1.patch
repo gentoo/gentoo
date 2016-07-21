@@ -1,0 +1,50 @@
+--- a/media/ffmpeg/ffmpeg_common.h	2015-11-27 12:01:56.155462264 +0000
++++ b/media/ffmpeg/ffmpeg_common.h	2015-11-27 12:03:03.348846300 +0000
+@@ -19,10 +19,6 @@
+ 
+ // Include FFmpeg header files.
+ extern "C" {
+-// Disable deprecated features which result in spammy compile warnings.  This
+-// list of defines must mirror those in the 'defines' section of BUILD.gn file &
+-// ffmpeg.gyp file or the headers below will generate different structures!
+-#define FF_API_CONVERGENCE_DURATION 0
+ // Upstream libavcodec/utils.c still uses the deprecated
+ // av_dup_packet(), causing deprecation warnings.
+ // The normal fix for such things is to disable the feature as below,
+@@ -36,7 +32,6 @@
+ MSVC_PUSH_DISABLE_WARNING(4244);
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
+-#include <libavformat/internal.h>
+ #include <libavformat/avio.h>
+ #include <libavutil/avutil.h>
+ #include <libavutil/imgutils.h>
+diff --git a/media/filters/ffmpeg_demuxer.cc b/media/filters/ffmpeg_demuxer.cc
+index 155e980..7ba327a 100644
+--- a/media/filters/ffmpeg_demuxer.cc
++++ b/media/filters/ffmpeg_demuxer.cc
+@@ -966,24 +966,6 @@ void FFmpegDemuxer::OnFindStreamInfoDone(const PipelineStatusCB& status_cb,
+   // If no estimate is found, the stream entry will be kInfiniteDuration().
+   std::vector<base::TimeDelta> start_time_estimates(format_context->nb_streams,
+                                                     kInfiniteDuration());
+-  const AVFormatInternal* internal = format_context->internal;
+-  if (internal && internal->packet_buffer &&
+-      format_context->start_time != static_cast<int64>(AV_NOPTS_VALUE)) {
+-    struct AVPacketList* packet_buffer = internal->packet_buffer;
+-    while (packet_buffer != internal->packet_buffer_end) {
+-      DCHECK_LT(static_cast<size_t>(packet_buffer->pkt.stream_index),
+-                start_time_estimates.size());
+-      const AVStream* stream =
+-          format_context->streams[packet_buffer->pkt.stream_index];
+-      if (packet_buffer->pkt.pts != static_cast<int64>(AV_NOPTS_VALUE)) {
+-        const base::TimeDelta packet_pts =
+-            ConvertFromTimeBase(stream->time_base, packet_buffer->pkt.pts);
+-        if (packet_pts < start_time_estimates[stream->index])
+-          start_time_estimates[stream->index] = packet_pts;
+-      }
+-      packet_buffer = packet_buffer->next;
+-    }
+-  }
+ 
+   AVStream* audio_stream = NULL;
+   AudioDecoderConfig audio_config;

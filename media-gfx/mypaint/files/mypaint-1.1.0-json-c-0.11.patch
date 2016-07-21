@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/show_bug.cgi?id=467322
+Patch-by: Helmut Jarausch <jarausch@igpm.rwth-aachen.de>
+Fixes pkgconfig name for new json-c (since 0.11)
+
+--- brushlib/SConscript.ORIG	2012-12-31 18:03:38.000000000 +0100
++++ brushlib/SConscript	2013-04-26 11:47:27.008232199 +0200
+@@ -73,7 +73,7 @@
+ 
+ env.Append(CPPPATH='./')
+ 
+-pkg_deps = ['json']
++pkg_deps = ['json-c']
+ libs = ['m']
+ linkflags = []
+ 

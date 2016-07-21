@@ -1,0 +1,28 @@
+diff -Naur fbiterm.orig/src/Makefile.am fbiterm/src/Makefile.am
+--- fbiterm.orig/src/Makefile.am	2002-12-17 16:39:43.000000000 +0900
++++ fbiterm/src/Makefile.am	2008-11-25 01:35:18.000000000 +0900
+@@ -15,7 +15,7 @@
+ 	vt.c VTScreenView.c fbiterm.h palette.h VTScreenView.h
+ 
+ fbiterm_LDADD = \
+-	-L$(libdir) @X_LIBS@ -lXfont -literm
++	-L$(libdir) @X_LIBS@ -lm -lXfont -literm -lfreetype
+ 
+ CFLAGS = -I$(includedir) @X_CFLAGS@ -I$(top_srcdir)/include -I/usr/local/include $(EXTRA_CFLAGS)
+ 
+diff -Naur fbiterm.orig/src/fbiterm.h fbiterm/src/fbiterm.h
+--- fbiterm.orig/src/fbiterm.h	2002-10-24 21:44:01.000000000 +0900
++++ fbiterm/src/fbiterm.h	2008-11-25 01:34:12.000000000 +0900
+@@ -53,9 +53,9 @@
+ #define FB_ENV    "FRAMEBUFFER"
+ #define FB_DEFDEV "/dev/fb0"
+ 
+-#define DefaultAsc	"/usr/lib/X11/fonts/misc/8x16.pcf.gz"
+-#define DefaultMB	"/usr/lib/X11/fonts/misc/unifont.pcf.gz"
+-#define DefaultFont	"/usr/local/share/iterm/fonts/8x16.pcf.gz"
++#define DefaultAsc	"/usr/share/fonts/misc/8x16.pcf.gz"
++#define DefaultMB	"/usr/share/fonts/misc/unifont.pcf.gz"
++#define DefaultFont	"/usr/share/iterm/fonts/8x16.pcf.gz"
+ 
+ enum ITERM_RETCODE
+ {

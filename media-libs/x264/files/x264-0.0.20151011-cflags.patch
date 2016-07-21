@@ -1,0 +1,51 @@
+Index: x264-snapshot-20151011-2245/configure
+===================================================================
+--- x264-snapshot-20151011-2245.orig/configure
++++ x264-snapshot-20151011-2245/configure
+@@ -672,11 +672,6 @@ case $host_cpu in
+             if [[ "$asm" == auto && "$CFLAGS" != *-march* ]]; then
+                 CFLAGS="$CFLAGS -march=i686"
+             fi
+-            if [[ "$asm" == auto && "$CFLAGS" != *-mfpmath* ]]; then
+-                CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2"
+-            fi
+-            CFLAGS="-m32 $CFLAGS"
+-            LDFLAGS="-m32 $LDFLAGS"
+         fi
+         if [ "$SYS" = MACOSX ]; then
+             ASFLAGS="$ASFLAGS -f macho32 -DPREFIX"
+@@ -695,13 +690,8 @@ case $host_cpu in
+         AS_EXT=".asm"
+         ASFLAGS="$ASFLAGS -DARCH_X86_64=1 -I\$(SRCPATH)/common/x86/"
+         stack_alignment=16
+-        [ $compiler = GNU ] && CFLAGS="-m64 $CFLAGS" && LDFLAGS="-m64 $LDFLAGS"
+         if [ "$SYS" = MACOSX ]; then
+             ASFLAGS="$ASFLAGS -f macho64 -DPIC -DPREFIX"
+-            if cc_check '' "-arch x86_64"; then
+-                CFLAGS="$CFLAGS -arch x86_64"
+-                LDFLAGS="$LDFLAGS -arch x86_64"
+-            fi
+         elif [ "$SYS" = WINDOWS -o "$SYS" = CYGWIN ]; then
+             ASFLAGS="$ASFLAGS -f win64"
+             # only the GNU toolchain is inconsistent in prefixing function names with _
+@@ -1148,20 +1138,10 @@ if [ "$pic" = "yes" ] ; then
+     [ $SYS = SunOS -a "$ARCH" = "X86" ] && SOFLAGS="$SOFLAGS -mimpure-text"
+ fi
+ 
+-if [ "$debug" != "yes" -a "$gprof" != "yes" ]; then
+-    CFLAGS="$CFLAGS -fomit-frame-pointer"
+-fi
+-
+ if [ "$strip" = "yes" ]; then
+     LDFLAGS="$LDFLAGS -s"
+ fi
+ 
+-if [ "$debug" = "yes" ]; then
+-    CFLAGS="-O1 -g $CFLAGS"
+-else
+-    CFLAGS="-O3 -ffast-math $CFLAGS"
+-fi
+-
+ if cc_check '' -fno-tree-vectorize ; then
+     CFLAGS="$CFLAGS -fno-tree-vectorize"
+ fi

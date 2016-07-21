@@ -1,0 +1,36 @@
+Author: Ole Streicher <olebole@debian.net>
+Description: Fix overlappong buffers in sprintf
+ In sprintf, overlapping buffers lead to undefined behaviour.
+ This causes different results on Debian and Ubuntu.
+--- a/imstar.c
++++ b/imstar.c
+@@ -818,7 +818,7 @@
+ 	    sprintf (headline, "%7.2f %7.2f %6.2f  %d",
+ 		    sx[i],sy[i],smag[i],sp[i]);
+ 	    if (iswcs (wcs))
+-		sprintf (headline, "%s %s %s", headline, rastr, decstr);
++		sprintf (headline + strlen(headline), " %s %s", rastr, decstr);
+ 	    if (wfile)
+ 		fprintf (fd, "%s\n", headline);
+ 	    else
+@@ -827,14 +827,14 @@
+ 	else {
+ 	    sprintf (headline, "%3d %s %s %6.2f", i+1,rastr,decstr,smag[i]);
+ 	    if (wcs->nxpix < 100.0 && wcs->nypix > 100.0)
+-		sprintf (headline, "%s  %5.2f %5.2f %d",
+-		headline, sx[i],sy[i], sp[i]);
++		sprintf (headline + strlen(headline), "  %5.2f %5.2f %d",
++		sx[i],sy[i], sp[i]);
+ 	    else if (wcs->nxpix < 1000.0 && wcs->nypix < 1000.0)
+-		sprintf (headline, "%s  %6.2f %6.2f %d",
+-		headline, sx[i],sy[i], sp[i]);
++		sprintf (headline + strlen(headline), "  %6.2f %6.2f %d",
++		sx[i],sy[i], sp[i]);
+ 	    else
+-		sprintf (headline, "%s  %7.2f %7.2f %d",
+-		headline, sx[i],sy[i], sp[i]);
++		sprintf (headline + strlen(headline), "  %7.2f %7.2f %d",
++		sx[i],sy[i], sp[i]);
+ 	    if (wfile)
+ 		fprintf (fd, "%s\n", headline);
+ 	    else

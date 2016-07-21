@@ -1,0 +1,11 @@
+--- instantclient_10_2/sdk/demo/demo.mk.orig	2007-02-06 17:51:47.018247041 -0800
++++ instantclient_10_2/sdk/demo/demo.mk	2007-02-06 17:52:35.374869934 -0800
+@@ -30,7 +30,7 @@
+ 
+ ICINCHOME=../
+ ICLIBHOME=../../
+-ICLIBPATH=-L$(ICLIBHOME)
++ICLIBPATH=-L$(ICLIBHOME) -L$(ORACLE_HOME)/lib
+ THREADLIBS=-lthread
+ CCLIB=$(ICLIBPATH) -locci -lclntsh $(THREADLIBS)
+ 

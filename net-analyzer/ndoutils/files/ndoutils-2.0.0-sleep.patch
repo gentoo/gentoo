@@ -1,0 +1,10 @@
+--- a/src/queue.c
++++ b/src/queue.c
+@@ -8,6 +8,7 @@
+ #include "../include/queue.h"
+ #include <errno.h>
+ #include <time.h>
++#include <unistd.h> /* sleep() */
+ 
+ #define RETRY_LOG_INTERVAL	600		/* Seconds */
+ #define MAX_RETRIES	20				/* Max number of times to retry sending message */

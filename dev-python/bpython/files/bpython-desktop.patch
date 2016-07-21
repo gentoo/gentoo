@@ -1,0 +1,8 @@
+diff -r -U1 bpython-0.11.orig/data/bpython.desktop bpython-0.11/data/bpython.desktop
+--- bpython-0.11.orig/data/bpython.desktop	2012-04-05 04:06:42.000000000 +0700
++++ bpython-0.11/data/bpython.desktop	2012-11-15 17:20:09.000000000 +0700
+@@ -7,3 +7,3 @@
+ Type=Application
+-Categories=Development;Utility;ConsoleOnly;
++Categories=Development;ConsoleOnly;
+ StartupNotify=true

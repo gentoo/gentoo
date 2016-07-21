@@ -1,0 +1,22 @@
+Index: gpac/applications/generators/SVG/svggen.h
+===================================================================
+--- gpac.orig/applications/generators/SVG/svggen.h
++++ gpac/applications/generators/SVG/svggen.h
+@@ -107,6 +107,17 @@ typedef struct {
+ } SVGGenAttrGrp;
+ 
+ 
++SVGGenAttribute *findAttribute(SVGGenElement *e, char *name);
++void generateAttributes(FILE *output, GF_List *attributes, Bool inDefine);
++void generateSVGCode_V1(GF_List *svg_elements);
++void generate_laser_tables_da(GF_List *atts);
++void generate_laser_tables(GF_List *svg_elements);
++u32 generateCoreInfo(FILE *output, SVGGenElement *elt, u32 start);
++u32 generateGenericInfo(FILE *output, SVGGenElement *elt, u32 index, char *pointer_root, u32 start);
++void svgNameToImplementationName(xmlChar *svg_name, char implementation_name[50]);
++void generate_table(GF_List *elements);
++void generateSVGCode_V2(GF_List *svg_elements);
++void generateSVGCode_V3(GF_List *svg_elements);
+ 
+ /*******************************************
+  * Structures needed for static allocation *

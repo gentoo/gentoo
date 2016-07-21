@@ -1,0 +1,6 @@
+# $Id$
+#
+# creats protected records, only visibly with the right pin
+# 
+FSK Schutz hinzufügen: /usr/share/vdr/pin/bin/fskprotect.sh protect
+FSK Schutz entfernen:  /usr/share/vdr/pin/bin/fskprotect.sh unprotect

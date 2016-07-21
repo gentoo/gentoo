@@ -1,0 +1,54 @@
+--- configure.in.orig	2008-02-07 09:57:13.000000000 +1300
++++ configure.in	2008-05-26 08:59:21.000000000 +1200
+@@ -7,7 +7,7 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
++AC_PROG_LIBTOOL
+ 
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lg:
+--- lib-src-gmp/Makefile.am.orig	2008-02-07 09:57:13.000000000 +1300
++++ lib-src-gmp/Makefile.am	2008-05-26 08:55:35.000000000 +1200
+@@ -1,6 +1,6 @@
+-lib_LIBRARIES = libcddgmp.a
++lib_LTLIBRARIES = libcddgmp.la
+ 
+-libcddgmp_a_SOURCES = \
++libcddgmp_la_SOURCES = \
+ cddcore.c \
+ cddlp.c	\
+ cddmp.c \
+--- lib-src/Makefile.am.orig	2008-02-07 09:57:14.000000000 +1300
++++ lib-src/Makefile.am	2008-05-26 08:56:38.000000000 +1200
+@@ -1,6 +1,6 @@
+-lib_LIBRARIES = libcdd.a
++lib_LTLIBRARIES = libcdd.la
+ 
+-libcdd_a_SOURCES = \
++libcdd_la_SOURCES = \
+ cddcore.c \
+ cddlp.c	\
+ cddmp.c \
+--- src/Makefile.am.orig	2008-02-07 09:57:15.000000000 +1300
++++ src/Makefile.am	2008-05-26 08:57:49.000000000 +1200
+@@ -29,6 +29,6 @@
+ testlp3_SOURCES                = testlp3.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+-LDADD        = ../lib-src/libcdd.a
++LDADD        = ../lib-src/libcdd.la
+ INCLUDES     = -I../lib-src
+ AM_CPPFLAGS  = -UGMPRATIONAL
+--- src-gmp/Makefile.am.orig	2008-02-07 09:57:14.000000000 +1300
++++ src-gmp/Makefile.am	2008-05-26 08:58:35.000000000 +1200
+@@ -29,7 +29,7 @@
+ testlp3_gmp_SOURCES                = testlp3.c
+ # cddmathlink_SOURCES                = cddmathlink.c cddmlio.h cddmlio.c
+ 
+-LDADD        = ../lib-src-gmp/libcddgmp.a
++LDADD        = ../lib-src-gmp/libcddgmp.la
+ AM_LDFLAGS   = -L$(gmplibdir)
+ INCLUDES     = -I../lib-src-gmp
+ INCLUDES    += -I$(gmpincludedir)

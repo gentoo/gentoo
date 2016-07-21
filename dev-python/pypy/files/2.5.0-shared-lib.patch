@@ -1,0 +1,12 @@
+diff -ur pypy-2.5.0-src.orig/rpython/translator/platform/posix.py pypy-2.5.0-src/rpython/translator/platform/posix.py
+--- rpython/translator/platform/posix.py	2015-02-03 05:12:49.000000000 +0800
++++ rpython/translator/platform/posix.py	2015-03-22 07:36:01.420116684 +0800
+@@ -183,7 +183,7 @@
+                    'int main(int argc, char* argv[]) '
+                    '{ return $(PYPY_MAIN_FUNCTION)(argc, argv); }" > $@')
+             m.rule('$(DEFAULT_TARGET)', ['$(TARGET)', 'main.o'],
+-                   '$(CC_LINK) $(LDFLAGS_LINK) main.o -L. -l$(SHARED_IMPORT_LIB) -o $@ $(RPATH_FLAGS)')
++                   '$(CC_LINK) $(LDFLAGS_LINK) main.o -L. -l$(SHARED_IMPORT_LIB) \'-Wl,-rpath,$$ORIGIN\' -o $@')
+ 
+         return m
+ 

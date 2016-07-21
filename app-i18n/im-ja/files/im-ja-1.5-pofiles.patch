@@ -1,0 +1,17 @@
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index a52fa9a..7fac135 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -3,10 +3,12 @@ gnome/im-ja.desktop.in
+ src/actionmenu.c
+ src/candwin.c
+ src/conf.c
++src/eggtrayicon/eggtrayicon.c
+ src/gnome-panel-applet/GNOME_ImJaApplet.server.in.in
+ src/gnome-panel-applet/GNOME_ImJaApplet.xml
+ src/gnome-panel-applet/im-ja-applet.c
+ src/gtk/im-ja-gtk.c
++src/helper/im-ja-helper.c
+ src/im-ja-conf/im-ja-conf.c
+ src/im-ja-conf/im-ja-conf.glade
+ src/im-ja.c

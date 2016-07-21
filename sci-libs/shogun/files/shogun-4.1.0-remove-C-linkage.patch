@@ -1,0 +1,24 @@
+Prevent C linkage errors due to templates in extern "C" blocks:
+* /usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/bits/cpp_type_traits.h:85:3: error: template with C linkage
+*    template<bool>
+*    ^
+* /usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/include/g++-v5/bits/cpp_type_traits.h:89:3: error: template specialization with C linkage
+*    template<>
+*    ^
+extern "C" blocks can be removed in shogun, as R internally correctly protects C symbols
+
+--- shogun-4.1.0/src/interfaces/r_modular/sg_print_functions.cpp
++++ shogun-4.1.0/src/interfaces/r_modular/sg_print_functions.cpp
+@@ -1,4 +1,3 @@
+-extern "C" {
+ #include <R.h>
+ #include <Rinternals.h>
+ #include <Rdefines.h>
+@@ -7,7 +6,6 @@
+ #include <Rinterface.h>
+ #include <R_ext/RS.h>
+ #include <R_ext/Error.h>
+-}
+ 
+ #include <shogun/base/SGObject.h>
+ #include <stdio.h>

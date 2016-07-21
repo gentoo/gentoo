@@ -1,0 +1,181 @@
+diff -ur streamtuner-0.99.99.orig/data/streamtuner.pc.in streamtuner-0.99.99/data/streamtuner.pc.in
+--- streamtuner-0.99.99.orig/data/streamtuner.pc.in	2004-12-11 04:03:20.000000000 +0200
++++ streamtuner-0.99.99/data/streamtuner.pc.in	2007-07-29 09:40:44.000000000 +0300
+@@ -1,9 +1,8 @@
+ prefix=@prefix@
+ includedir=@includedir@/streamtuner
+-oldincludedir=@includedir@
+ 
+ Name: @PACKAGE@
+ Description: A stream directory browser
+ Version: @VERSION@
+ Requires: gmodule-2.0 gtk+-2.0
+-Cflags: -I${includedir} -I${oldincludedir}
++Cflags: -I${includedir}
+diff -ur streamtuner-0.99.99.orig/docs/reference/Makefile.in streamtuner-0.99.99/docs/reference/Makefile.in
+--- streamtuner-0.99.99.orig/docs/reference/Makefile.in	2004-12-21 17:31:18.000000000 +0200
++++ streamtuner-0.99.99/docs/reference/Makefile.in	2007-07-29 09:41:15.000000000 +0300
+@@ -517,7 +517,7 @@
+ @ENABLE_GTK_DOC_TRUE@	rm -rf $(srcdir)/html 
+ @ENABLE_GTK_DOC_TRUE@	mkdir $(srcdir)/html
+ @ENABLE_GTK_DOC_TRUE@	cd $(srcdir)/html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+-@ENABLE_GTK_DOC_TRUE@	sed -i "" -e \
++@ENABLE_GTK_DOC_TRUE@	sed -i -e \
+ @ENABLE_GTK_DOC_TRUE@		's/background: #ffeeee/background: #daffd1/g; \
+ @ENABLE_GTK_DOC_TRUE@		 s/border: solid 1px #ffaaaa/border: solid 1px #74ff54/g; \
+ @ENABLE_GTK_DOC_TRUE@		 s/background: #eeeeff/background: #feffde/g; \
+diff -ur streamtuner-0.99.99.orig/help/omf.make streamtuner-0.99.99/help/omf.make
+--- streamtuner-0.99.99.orig/help/omf.make	2004-03-23 18:17:10.000000000 +0200
++++ streamtuner-0.99.99/help/omf.make	2007-07-29 09:42:50.000000000 +0300
+@@ -42,7 +42,9 @@
+ 	for file in $(omffile); do \
+ 		$(INSTALL_DATA) $(srcdir)/$$file.out $(DESTDIR)$(omf_dest_dir)/$$file; \
+ 	done
+-	-scrollkeeper-update -p $(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir)
++	if test -z "$(DESTDIR)"; then \
++		scrollkeeper-update -p $(DESTDIR)$(scrollkeeper_localstate_dir) -o $(DESTDIR)$(omf_dest_dir); \
++	fi
+ 
+ uninstall-local-omf:
+ 	-for file in $(srcdir)/*.omf; do \
+diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-category-store.c streamtuner-0.99.99/src/streamtuner/st-category-store.c
+--- streamtuner-0.99.99.orig/src/streamtuner/st-category-store.c	2004-12-18 11:17:32.000000000 +0200
++++ streamtuner-0.99.99/src/streamtuner/st-category-store.c	2007-07-29 09:41:46.000000000 +0300
+@@ -356,7 +356,6 @@
+ {
+   STCategoryBag **bag = data;
+   STCategoryBag *this_bag;
+-  gboolean status;
+ 
+   gtk_tree_model_get(model, iter, ST_CATEGORY_STORE_COLUMN_BAG, &this_bag, -1);
+   if (! ST_CATEGORY_BAG_IS_STOCK(this_bag)
+@@ -376,8 +375,6 @@
+       g_object_unref(this_bag);
+       return FALSE;		/* continue */
+     }
+-
+-  return status;
+ }
+ 
+ static gboolean
+diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-network-preferences-page.c streamtuner-0.99.99/src/streamtuner/st-network-preferences-page.c
+--- streamtuner-0.99.99.orig/src/streamtuner/st-network-preferences-page.c	2004-12-16 15:05:07.000000000 +0200
++++ streamtuner-0.99.99/src/streamtuner/st-network-preferences-page.c	2007-07-29 09:43:21.000000000 +0300
+@@ -183,10 +183,10 @@
+   st_preferences_bind_boolean(GTK_TOGGLE_BUTTON(page->priv->proxy_check),
+ 			      &st_settings.proxy_enabled);
+   st_preferences_bind_int_radio(GTK_RADIO_BUTTON(page->priv->http_radio),
+-				(int *) &st_settings.proxy_type,
++				&st_settings.proxy_type,
+ 				ST_TRANSFER_PROXY_HTTP);
+   st_preferences_bind_int_radio(GTK_RADIO_BUTTON(page->priv->socks5_radio),
+-				(int *) &st_settings.proxy_type,
++				&st_settings.proxy_type,
+ 				ST_TRANSFER_PROXY_SOCKS5);
+   st_preferences_bind_string(GTK_ENTRY(page->priv->server_entry),
+ 			     &st_settings.proxy_server);
+diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.c streamtuner-0.99.99/src/streamtuner/st-preferences.c
+--- streamtuner-0.99.99.orig/src/streamtuner/st-preferences.c	2004-10-17 20:43:18.000000000 +0300
++++ streamtuner-0.99.99/src/streamtuner/st-preferences.c	2007-07-29 09:43:21.000000000 +0300
+@@ -140,13 +140,13 @@
+ }
+ 
+ void
+-st_preferences_bind_int_radio (GtkRadioButton *radio, int *ptr, int value)
++st_preferences_bind_int_radio (GtkRadioButton *radio, void *ptr, int value)
+ {
+   g_return_if_fail(GTK_IS_RADIO_BUTTON(radio));
+   g_return_if_fail(ptr != NULL);
+ 
+   g_object_set_data(G_OBJECT(radio), "value", GINT_TO_POINTER(value));
+-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio), value == *ptr);
++  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radio), value == *(int *)ptr);
+   g_signal_connect(radio, "toggled", G_CALLBACK(st_preferences_radio_toggled_h), ptr);
+ }
+ 
+diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-preferences.h streamtuner-0.99.99/src/streamtuner/st-preferences.h
+--- streamtuner-0.99.99.orig/src/streamtuner/st-preferences.h	2004-10-17 20:42:06.000000000 +0300
++++ streamtuner-0.99.99/src/streamtuner/st-preferences.h	2007-07-29 09:43:21.000000000 +0300
+@@ -42,7 +42,7 @@
+ void st_preferences_bind_int_spin	(GtkSpinButton		*spin,
+ 					 int			*ptr);
+ void st_preferences_bind_int_radio	(GtkRadioButton		*radio,
+-					 int			*ptr,
++					 void			*ptr,
+ 					 int			value);
+ 
+ #endif /* _ST_PREFERENCES_H */
+diff -ur streamtuner-0.99.99.orig/src/streamtuner/st-shell.c streamtuner-0.99.99/src/streamtuner/st-shell.c
+--- streamtuner-0.99.99.orig/src/streamtuner/st-shell.c	2004-12-20 18:09:03.000000000 +0200
++++ streamtuner-0.99.99/src/streamtuner/st-shell.c	2007-07-29 09:43:21.000000000 +0300
+@@ -465,8 +465,10 @@
+ static void
+ st_shell_make_window (STShell *shell)
+ {
++  union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->window };
++
+   shell->priv->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+-  g_object_add_weak_pointer(G_OBJECT(shell->priv->window), (gpointer *) &shell->priv->window);
++  g_object_add_weak_pointer(G_OBJECT(shell->priv->window), pun.gpp);
+ 
+   shell->priv->accel_group = gtk_accel_group_new();
+   gtk_window_add_accel_group(GTK_WINDOW(shell->priv->window), shell->priv->accel_group);
+@@ -1786,8 +1788,10 @@
+     gtk_window_present(GTK_WINDOW(shell->priv->find));
+   else
+     {
++      union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->find };
++
+       shell->priv->find = sgtk_find_dialog_new(GTK_WINDOW(shell->priv->window));
+-      g_object_add_weak_pointer(G_OBJECT(shell->priv->find), (gpointer *) &shell->priv->find);
++      g_object_add_weak_pointer(G_OBJECT(shell->priv->find), pun.gpp);
+ 
+       sgtk_find_dialog_set_token(SGTK_FIND_DIALOG(shell->priv->find), st_settings.find_token ? st_settings.find_token : "");
+       sgtk_find_dialog_set_history(SGTK_FIND_DIALOG(shell->priv->find), st_settings.find_history);
+@@ -2101,8 +2105,9 @@
+     gtk_window_present(GTK_WINDOW(shell->priv->stream_properties));
+   else
+     {
++      union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->stream_properties };
+       shell->priv->stream_properties = st_stream_properties_dialog_new(GTK_WINDOW(shell->priv->window));
+-      g_object_add_weak_pointer(G_OBJECT(shell->priv->stream_properties), (gpointer *) &shell->priv->stream_properties);
++      g_object_add_weak_pointer(G_OBJECT(shell->priv->stream_properties), pun.gpp);
+ 
+       g_signal_connect(shell->priv->stream_properties,
+ 		       "response",
+@@ -2161,9 +2166,10 @@
+   else
+     {
+       STBrowserTab *selected_tab;
++      union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->stream_columns };
+ 
+       shell->priv->stream_columns = st_stream_columns_dialog_new(GTK_WINDOW(shell->priv->window));
+-      g_object_add_weak_pointer(G_OBJECT(shell->priv->stream_columns), (gpointer *) &shell->priv->stream_columns);
++      g_object_add_weak_pointer(G_OBJECT(shell->priv->stream_columns), pun.gpp);
+ 
+       selected_tab = st_shell_get_selected_tab(shell);
+       if (selected_tab)
+@@ -2195,8 +2201,10 @@
+     gtk_window_present(GTK_WINDOW(shell->priv->about));
+   else
+     {
++     union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->about };
++
+       shell->priv->about = st_about_dialog_new(GTK_WINDOW(shell->priv->window));
+-      g_object_add_weak_pointer(G_OBJECT(shell->priv->about), (gpointer *) &shell->priv->about);
++      g_object_add_weak_pointer(G_OBJECT(shell->priv->about), pun.gpp);
+ 
+       g_signal_connect(shell->priv->about,
+ 		       "response",
+@@ -2244,8 +2252,10 @@
+ 
+   if (! shell->priv->preferences)
+     {
++      union { GtkWidget **wpp; gpointer *gpp; }pun = { &shell->priv->preferences };
++
+       shell->priv->preferences = st_preferences_dialog_new(GTK_WINDOW(shell->priv->window));
+-      g_object_add_weak_pointer(G_OBJECT(shell->priv->preferences), (gpointer *) &shell->priv->preferences);
++      g_object_add_weak_pointer(G_OBJECT(shell->priv->preferences), pun.gpp);
+     }
+ 
+   if (handler)

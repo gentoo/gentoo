@@ -1,0 +1,12 @@
+diff -Naur uClibc-ng-1.0.13.orig/ldso/ldso/Makefile.in uClibc-ng-1.0.13/ldso/ldso/Makefile.in
+--- uClibc-ng-1.0.13.orig/ldso/ldso/Makefile.in	2016-03-13 21:48:40.000000000 +0000
++++ uClibc-ng-1.0.13/ldso/ldso/Makefile.in	2016-04-08 13:45:06.837079637 +0000
+@@ -76,8 +76,6 @@
+ $(ldso:.$(ABI_VERSION)=): | $(top_builddir)lib
+ $(ldso:.$(ABI_VERSION)=): $($(UCLIBC_LDSO_NAME)_OUT)/$(UCLIBC_LDSO_NAME)_so.a
+ 	$(call link.so,$(ldso_FULL_NAME),$(ABI_VERSION))
+-	# link for backward compatibility
+-	(cd $(top_builddir)lib; ln -sf $(UCLIBC_LDSO_NAME).so.$(ABI_VERSION) $(UCLIBC_LDSO_NAME).so.0 )
+ 
+ $($(UCLIBC_LDSO_NAME)_OUT)/$(UCLIBC_LDSO_NAME)_so.a: $(ldso-y)
+ 	$(Q)$(RM) $@

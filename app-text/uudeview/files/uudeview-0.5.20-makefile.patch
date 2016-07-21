@@ -1,0 +1,29 @@
+--- Makefile.in.orig	2015-11-18 13:52:44.173432349 +0300
++++ Makefile.in	2015-11-18 13:53:39.244429093 +0300
+@@ -183,22 +183,22 @@
+ 
+ install: 		$(DOINST)
+ 	-for d in $(MPAGES) ; do \
+-		$(INSTALL_DATA) $(srcdir)/man/$$d $(MANDIR)/man1/$$d ; \
++		$(INSTALL_DATA) $(srcdir)/man/$$d $(DESTDIR)$(MANDIR)/man1/$$d ; \
+ 	done
+ 
+ install-uudeview:	uudeview
+ 	for d in uudeview uuenview ; do \
+-		$(INSTALL_PROGRAM) unix/$$d $(BINDIR)/$$d ; \
++		$(INSTALL_PROGRAM) unix/$$d $(DESTDIR)$(BINDIR)/$$d ; \
+ 	done
+ 
+ install-tcl:		xdeview
+ 	for d in xdeview uuwish ; do \
+-		$(INSTALL_PROGRAM) tcl/$$d $(BINDIR)/$$d ; \
++		$(INSTALL_PROGRAM) tcl/$$d $(DESTDIR)$(BINDIR)/$$d ; \
+ 	done
+ 
+ install-minews:		minews
+ 	for d in minews ; do \
+-		$(INSTALL_PROGRAM) inews/$$d $(BINDIR)/$$d ; \
++		$(INSTALL_PROGRAM) inews/$$d $(DESTDIR)$(BINDIR)/$$d ; \
+ 	done
+ 
+ links:		tcl/config.h unix/config.h uulib/config.h

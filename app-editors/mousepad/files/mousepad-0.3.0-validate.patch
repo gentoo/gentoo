@@ -1,0 +1,17 @@
+--- mousepad.desktop.in.in
++++ mousepad.desktop.in.in
+@@ -1,6 +1,4 @@
+-
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Mousepad
+ _Comment=Simple Text Editor
+ _GenericName=Text Editor
+@@ -9,5 +7,5 @@
+ Terminal=false
+ StartupNotify=true
+ Type=Application
+-Categories=Application;Utility;TextEditor;GTK;
+-MimeType=text/plain
++Categories=Utility;TextEditor;GTK;
++MimeType=text/plain;

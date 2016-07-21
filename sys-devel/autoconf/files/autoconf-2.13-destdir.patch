@@ -1,0 +1,26 @@
+--- Makefile.in.orig	2004-10-20 16:44:54.949117496 -0400
++++ Makefile.in	2004-10-20 16:45:39.999268832 -0400
+@@ -41,18 +41,18 @@
+ 
+ transform=@program_transform_name@
+ 
+-prefix = @prefix@
++prefix = $(DESTDIR)@prefix@
+-exec_prefix = @exec_prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
+ 
+ # Directory in which to install scripts.
+-bindir = @bindir@
++bindir = $(DESTDIR)@bindir@
+ 
+ # Directory in which to install library files.
+-datadir = @datadir@
++datadir = $(DESTDIR)@datadir@
+ acdatadir = $(datadir)/autoconf
+ 
+ # Directory in which to install documentation info files.
+-infodir = @infodir@
++infodir = $(DESTDIR)@infodir@
+ 
+ #### End of system configuration section. ####
+ 

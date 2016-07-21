@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="asn">Enable ASN decoding/encoding support</flag>
+		<flag name="dtmf">Enable DTMF encoding/decoding support</flag>
+		<flag name="http">Enable HTTP support</flag>
+		<flag name="mail">Enable mail protocols (POP3/SMTP)</flag>
+		<flag name="qos">Enable QOS support</flag>
+		<flag name="remote">Enable remote connection support</flag>
+		<flag name="serial">Enable serial port support</flag>
+		<flag name="shmvideo">Enable shared memory video devices</flag>
+		<flag name="socks">Enable SOCKS protocol support</flag>
+		<flag name="stun">Enable STUN support</flag>
+		<flag name="telnet">Enable telnet protocol support</flag>
+		<flag name="tts">Enable Text-To-Speech server support</flag>
+		<flag name="video">Enable video support</flag>
+		<flag name="vxml">Enable VoiceXML support</flag>
+		<flag name="wav">Enable WAVFILE support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">opalvoip</remote-id>
+	</upstream>
+</pkgmetadata>

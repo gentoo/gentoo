@@ -1,0 +1,140 @@
+fix from upstream
+
+From 2a2743361cf643b9dd2ba3e491da62e7cb83a101 Mon Sep 17 00:00:00 2001
+From: Jens Axboe <axboe@fb.com>
+Date: Mon, 29 Jun 2015 09:34:39 -0600
+Subject: [PATCH] workqueue: make it work on platforms without
+ __sync_fetch_and_add()
+
+Signed-off-by: Jens Axboe <axboe@fb.com>
+---
+ configure   | 22 ++++++++++++++++++++++
+ workqueue.c | 22 ++++++++++++++++++++++
+ workqueue.h |  1 +
+ 3 files changed, 45 insertions(+)
+
+diff --git a/configure b/configure
+index e459d63..e5cf34d 100755
+--- a/configure
++++ b/configure
+@@ -271,6 +271,7 @@ CYGWIN*)
+   output_sym "CONFIG_TCP_NODELAY"
+   output_sym "CONFIG_TLS_THREAD"
+   output_sym "CONFIG_IPV6"
++  output_sym "CONFIG_SFA"
+   echo "CC=$CC" >> $config_host_mak
+   echo "BUILD_CFLAGS=$CFLAGS -include config-host.h -D_GNU_SOURCE" >> $config_host_mak
+   exit 0
+@@ -1492,6 +1493,24 @@ if compile_prog "" "" "getmntinfo"; then
+ fi
+ echo "getmntinfo                    $getmntinfo"
+ 
++##########################################
++# Check whether we have __sync_fetch_and_add()
++sfa=="no"
++cat > $TMPC << EOF
++#include <stdio.h>
++#include <stdlib.h>
++#include <inttypes.h>
++int main(int argc, char **argv)
++{
++  uint64_t dst = 1, src = 3;
++  __sync_fetch_and_add(&dst, src);
++}
++EOF
++if compile_prog "" "" "__sync_fetch_and_add"; then
++  sfa="yes"
++fi
++echo "__sync_fetch_and_add          $sfa"
++
+ #############################################################################
+ 
+ if test "$wordsize" = "64" ; then
+@@ -1671,6 +1690,9 @@ fi
+ if test "$getmntinfo" = "yes" ; then
+   output_sym "CONFIG_GETMNTINFO"
+ fi
++if test "$sfa" = "yes" ; then
++  output_sym "CONFIG_SFA"
++fi
+ 
+ if test "$zlib" = "no" ; then
+   echo "Consider installing zlib-dev (zlib-devel), some fio features depend on it."
+diff --git a/workqueue.c b/workqueue.c
+index b9a967f..8f6963f 100644
+--- a/workqueue.c
++++ b/workqueue.c
+@@ -197,6 +197,7 @@ err:
+ 	return 1;
+ }
+ 
++#ifdef CONFIG_SFA
+ static void sum_val(uint64_t *dst, uint64_t *src)
+ {
+ 	if (*src) {
+@@ -204,15 +205,34 @@ static void sum_val(uint64_t *dst, uint64_t *src)
+ 		*src = 0;
+ 	}
+ }
++#else
++static void sum_val(uint64_t *dst, uint64_t *src)
++{
++	if (*src) {
++		*dst += *src;
++		*src = 0;
++	}
++}
++#endif
+ 
+ static void sum_ddir(struct thread_data *dst, struct thread_data *src,
+ 		     enum fio_ddir ddir)
+ {
++#ifndef CONFIG_SFA
++	pthread_mutex_lock(&dst->io_wq.stat_lock);
++	pthread_mutex_lock(&src->io_wq.stat_lock);
++#endif
++
+ 	sum_val(&dst->io_bytes[ddir], &src->io_bytes[ddir]);
+ 	sum_val(&dst->io_blocks[ddir], &src->io_blocks[ddir]);
+ 	sum_val(&dst->this_io_blocks[ddir], &src->this_io_blocks[ddir]);
+ 	sum_val(&dst->this_io_bytes[ddir], &src->this_io_bytes[ddir]);
+ 	sum_val(&dst->bytes_done[ddir], &src->bytes_done[ddir]);
++
++#ifndef CONFIG_SFA
++	pthread_mutex_unlock(&src->io_wq.stat_lock);
++	pthread_mutex_unlock(&dst->io_wq.stat_lock);
++#endif
+ }
+ 
+ static void update_accounting(struct submit_worker *sw)
+@@ -355,6 +375,7 @@ void workqueue_exit(struct workqueue *wq)
+ 	free(wq->workers);
+ 	pthread_mutex_destroy(&wq->flush_lock);
+ 	pthread_cond_destroy(&wq->flush_cond);
++	pthread_mutex_destroy(&wq->stat_lock);
+ }
+ 
+ static int start_worker(struct workqueue *wq, unsigned int index)
+@@ -393,6 +414,7 @@ int workqueue_init(struct thread_data *td, struct workqueue *wq,
+ 	wq->next_free_worker = 0;
+ 	pthread_cond_init(&wq->flush_cond, NULL);
+ 	pthread_mutex_init(&wq->flush_lock, NULL);
++	pthread_mutex_init(&wq->stat_lock, NULL);
+ 
+ 	wq->workers = calloc(wq->max_workers, sizeof(struct submit_worker));
+ 
+diff --git a/workqueue.h b/workqueue.h
+index 5d47a5e..4e92449 100644
+--- a/workqueue.h
++++ b/workqueue.h
+@@ -17,6 +17,7 @@ struct workqueue {
+ 
+ 	pthread_cond_t flush_cond;
+ 	pthread_mutex_t flush_lock;
++	pthread_mutex_t stat_lock;
+ 	volatile int wake_idle;
+ };
+ 
+-- 
+2.4.4
+

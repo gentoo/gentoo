@@ -1,0 +1,27 @@
+From d0e5d9120c27f678e9039bb2f65cfc0e457be6c7 Mon Sep 17 00:00:00 2001
+From: Douglas Freed <dwfreed@mtu.edu>
+Date: Sat, 26 Jul 2014 15:54:11 -0700
+Subject: [PATCH] Fix a bug when an overlay isn't in the remote list
+
+If the overlay isn't in the remote list, it obviously isn't a different
+type, nor has its URL changed, so just init those to False so we can
+sync the overlay without hitting UnboundLocalError.
+---
+ layman/api.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/layman/api.py b/layman/api.py
+index a86970f..930f449 100755
+--- a/layman/api.py
++++ b/layman/api.py
+@@ -426,6 +426,7 @@ class LaymanAPI(object):
+                 message = 'Overlay "%s" could not be found in the remote lists.\n' \
+                         'Please check if it has been renamed and re-add if necessary.' % ovl
+                 warnings.append((ovl, message))
++                (diff_type, update_url) = (False, False)
+             else:
+                 self.output.debug("API.sync(); else: self._get_remote_db().select(ovl)", 5)
+ 
+-- 
+1.8.5.5
+

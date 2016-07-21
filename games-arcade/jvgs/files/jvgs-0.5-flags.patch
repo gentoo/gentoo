@@ -1,0 +1,14 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Aug  5 19:57:32 UTC 2012
+Subject: build system
+
+respect cxxflags
+
+--- src/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-SET( CMAKE_CXX_FLAGS "-DTIXML_USE_STL -ggdb" )
++SET( CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -DTIXML_USE_STL" )
+ 
+ INCLUDE_DIRECTORIES(
+     ${SDL_INCLUDE_DIR}

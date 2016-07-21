@@ -1,0 +1,57 @@
+diff -up chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in.turbomole chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in
+--- chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in.turbomole	2009-08-10 09:37:06.000000000 +0200
++++ chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in	2009-08-10 09:40:57.000000000 +0200
+@@ -1290,7 +1290,7 @@
+ 		<specification url="http://ca.expasy.org/sprot/userman.html"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-basis" support="no">
++	<mime-type type="chemical/x-turbomole-basis" support="yes">
+ 		<_comment>Turbomole Basis Set File</_comment>
+ 		<glob pattern="basis"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1304,7 +1304,7 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-control" support="no">
++	<mime-type type="chemical/x-turbomole-control" support="yes">
+ 		<_comment>Turbomole Control File</_comment>
+ 		<glob pattern="control"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1320,7 +1320,7 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/node230.html"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-coord" support="no">
++	<mime-type type="chemical/x-turbomole-coord" support="yes">
+ 		<_comment>Turbomole Coordinate File</_comment>
+ 		<glob pattern="coord"/>
+ 		<glob pattern="*.tmol"/>
+@@ -1335,7 +1335,7 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-grad" support="no">
++	<mime-type type="chemical/x-turbomole-grad" support="yes">
+ 		<_comment>Turbomole Gradient File</_comment>
+ 		<glob pattern="gradient"/>
+ 		<sub-class-of type="text/plain"/>
+@@ -1383,7 +1383,7 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-scfmo" support="no">
++	<mime-type type="chemical/x-turbomole-scfmo" support="yes">
+ 		<_comment>Turbomole SCF Molecular Orbital File</_comment>
+ 		<acronym>MO</acronym>
+ 		<expanded-acronym>Molecular Orbital</expanded-acronym>
+@@ -1401,7 +1401,7 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-vibrational" support="no">
++	<mime-type type="chemical/x-turbomole-vibrational" support="yes">
+ 		<_comment>Turbomole Vibrational Data File</_comment>
+ 		<glob pattern="???"/>
+ 		<sub-class-of type="text/plain"/>

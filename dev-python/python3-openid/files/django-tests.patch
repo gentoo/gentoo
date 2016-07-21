@@ -1,0 +1,32 @@
+diff --git a/examples/djopenid/consumer/urls.py b/examples/djopenid/consumer/urls.py
+index d55e056..3926e27 100644
+--- a/examples/djopenid/consumer/urls.py
++++ b/examples/djopenid/consumer/urls.py
+@@ -1,5 +1,5 @@
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns(
+     'djopenid.consumer.views',
+diff --git a/examples/djopenid/server/urls.py b/examples/djopenid/server/urls.py
+index d6931a4..e61de52 100644
+--- a/examples/djopenid/server/urls.py
++++ b/examples/djopenid/server/urls.py
+@@ -1,5 +1,5 @@
+ 
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns(
+     'djopenid.server.views',
+diff --git a/examples/djopenid/urls.py b/examples/djopenid/urls.py
+index d91ee1f..16af9a1 100644
+--- a/examples/djopenid/urls.py
++++ b/examples/djopenid/urls.py
+@@ -1,4 +1,4 @@
+-from django.conf.urls.defaults import *
++from django.conf.urls import *
+ 
+ urlpatterns = patterns(
+     '',

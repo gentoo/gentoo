@@ -1,0 +1,178 @@
+diff -ur work.orig/src/cEffects.cpp work/src/cEffects.cpp
+--- work.orig/src/cEffects.cpp	2002-01-12 16:19:00.000000000 -0500
++++ work/src/cEffects.cpp	2009-06-10 18:14:27.000000000 -0400
+@@ -180,7 +180,6 @@
+ 	{
+ 		if(!i->update())
+ 			i=lEffects.erase(i);
+-		if(i==NULL)break;
+ 	}
+ 
+     for(p=lParticles.begin();p!=lParticles.end();++p)
+@@ -190,8 +189,6 @@
+ 		if(!p->active())
+ 		{
+ 			p=lParticles.erase(p);
+-			if(p==NULL)
+-				break;
+ 		}
+ 	}
+ 
+diff -ur work.orig/src/cFont.cpp work/src/cFont.cpp
+--- work.orig/src/cFont.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cFont.cpp	2009-06-10 18:19:15.000000000 -0400
+@@ -62,7 +62,7 @@
+ }
+ 
+ ///lädt einen TTF-Font ein
+-bool cFont::load(char *path,int size)
++bool cFont::load(const char *path,int size)
+ {
+ 	font = TTF_OpenFont(path,size);
+ 	if(font==NULL)
+diff -ur work.orig/src/cFont.h work/src/cFont.h
+--- work.orig/src/cFont.h	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cFont.h	2009-06-10 18:19:27.000000000 -0400
+@@ -34,7 +34,7 @@
+ 	static void		delInstance();
+ 	static bool		initttf();
+ 
+-	bool			load(char *path,int size);
++	bool			load(const char *path,int size);
+ 	void			setcolor(int r,int g,int b);
+ 	void			setshader(int r,int g,int b);
+ 	void			print(SDL_Surface *screen,int posx,int posy,const char *fmt, ...);
+diff -ur work.orig/src/cParticleSys.cpp work/src/cParticleSys.cpp
+--- work.orig/src/cParticleSys.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cParticleSys.cpp	2009-06-10 18:14:27.000000000 -0400
+@@ -81,9 +81,6 @@
+ 		if(time-p->getstarttime()>p->getlifetime())
+ 		{
+ 			p=lParticles.erase(p);
+-			if(p==NULL)
+-				break;
+-			
+ 		}
+ 	}
+ 
+diff -ur work.orig/src/cSound.cpp work/src/cSound.cpp
+--- work.orig/src/cSound.cpp	2002-01-12 16:27:34.000000000 -0500
++++ work/src/cSound.cpp	2009-06-10 18:17:44.000000000 -0400
+@@ -92,7 +92,7 @@
+ }
+ 
+ ///spielt eine ogg-datei ab
+-bool cSound::playogg(char *path)
++bool cSound::playogg(const char *path)
+ {
+ 	if(!sound_on)
+ 		return true;
+diff -ur work.orig/src/cSound.h work/src/cSound.h
+--- work.orig/src/cSound.h	2002-01-08 12:30:57.000000000 -0500
++++ work/src/cSound.h	2009-06-10 18:17:50.000000000 -0400
+@@ -35,7 +35,7 @@
+ 
+ 	bool			init();
+ 	void				close();
+-	bool			playogg(char *path);
++	bool			playogg(const char *path);
+ 	void				stopogg();
+ 	bool			loadwav(int index,char *path);
+ 	void				playwav(int index);
+diff -ur work.orig/src/cSprite.cpp work/src/cSprite.cpp
+--- work.orig/src/cSprite.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cSprite.cpp	2009-06-10 18:18:34.000000000 -0400
+@@ -29,7 +29,7 @@
+ 
+ ///lädt ein BMP in das image-Surface
+ ///gibt false zurück falls es schief geht
+-bool cSprite::loadBMP(char *path)
++bool cSprite::loadBMP(const char *path)
+ {
+ 	image=SDL_LoadBMP(path);
+ 	if(!image)
+@@ -73,4 +73,4 @@
+ int cSprite::getheight()
+ {
+ 	return image->h;
+-}
+\ No newline at end of file
++}
+diff -ur work.orig/src/cSprite.h work/src/cSprite.h
+--- work.orig/src/cSprite.h	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cSprite.h	2009-06-10 18:18:44.000000000 -0400
+@@ -26,7 +26,7 @@
+ 	cSprite();
+ 	~cSprite();
+ 
+-	bool 	loadBMP(char *path);
++	bool 	loadBMP(const char *path);
+ 	void 	render(SDL_Surface *screen,int x,int y);
+ 	void 	setColorKey(int r,int g,int b);
+ 
+diff -ur work.orig/src/cSpriteAnim.cpp work/src/cSpriteAnim.cpp
+--- work.orig/src/cSpriteAnim.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cSpriteAnim.cpp	2009-06-10 18:20:09.000000000 -0400
+@@ -145,7 +145,7 @@
+ }
+ 
+ ///einladen einer Animation aus einer Datei
+-bool cSpriteAnim::load(char *path)
++bool cSpriteAnim::load(const char *path)
+ {
+ 	FILE 	*file;
+ 	char	buffer[512];
+@@ -248,4 +248,4 @@
+ {
+ 	if(anim==NULL)return -1;
+ 	return gfx_sprite[anim->getAct()].getwidth();
+-}
+\ No newline at end of file
++}
+diff -ur work.orig/src/cSpriteAnim.h work/src/cSpriteAnim.h
+--- work.orig/src/cSpriteAnim.h	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cSpriteAnim.h	2009-06-10 18:20:16.000000000 -0400
+@@ -53,7 +53,7 @@
+ 	cSpriteAnim();
+ 	~cSpriteAnim();
+ 
+-	bool	load(char *path);
++	bool	load(const char *path);
+ 	void	setColorKey(int r,int g,int b);
+ 	void	render(SDL_Surface *screen,cAnim *anim,int x,int y);
+ 	int		getMaxNum();
+diff -ur work.orig/src/cUtil.cpp work/src/cUtil.cpp
+--- work.orig/src/cUtil.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cUtil.cpp	2009-06-10 18:16:29.000000000 -0400
+@@ -85,7 +85,7 @@
+ }
+ 
+ ///liest einen wert aus einer config-datei
+-char* cUtil::getconfigvalue(char *path,char *value)
++char* cUtil::getconfigvalue(const char *path,const char *value)
+ {
+ 	FILE	*file;
+ 	char	buffer[512];
+diff -ur work.orig/src/cUtil.h work/src/cUtil.h
+--- work.orig/src/cUtil.h	2002-01-02 07:57:46.000000000 -0500
++++ work/src/cUtil.h	2009-06-10 18:16:39.000000000 -0400
+@@ -31,7 +31,7 @@
+ 
+ 	void	updatetime();
+ 	float 	sync(float Faktor);
+-	char*	getconfigvalue(char *path,char *value);
++	char*	getconfigvalue(const char *path,const char *value);
+ 	void	drawpixel(SDL_Surface *screen, int x, int y,Uint8 R, Uint8 G,Uint8 B);
+ 	bool	collision(SDL_Rect objekt1,SDL_Rect objekt2);	
+ 
+diff -ur work.orig/src/mmgr.cpp work/src/mmgr.cpp
+--- work.orig/src/mmgr.cpp	2002-01-02 07:57:46.000000000 -0500
++++ work/src/mmgr.cpp	2009-06-10 18:14:23.000000000 -0400
+@@ -59,6 +59,7 @@
+ #include <time.h>
+ #include <stdarg.h>
+ #include <new>
++using namespace std;
+ 
+ #ifndef	WIN32
+ #include <unistd.h>

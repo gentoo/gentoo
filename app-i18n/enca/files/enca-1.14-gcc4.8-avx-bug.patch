@@ -1,0 +1,15 @@
+Avoid gcc-4.8.4 bug when built with -O3 -march=core-avx2
+https://bugs.gentoo.org/501386
+diff --git a/lib/multibyte.c b/lib/multibyte.c
+index d0d0680..d511f88 100644
+--- a/lib/multibyte.c
++++ b/lib/multibyte.c
+@@ -520,7 +520,7 @@ looks_like_ucs2(EncaAnalyserState *analyser)
+ static int
+ looks_like_ucs4(EncaAnalyserState *analyser)
+ {
+-  static const EncaSurface PERMS[] = {
++  /*static*/ const EncaSurface PERMS[] = {
+     ENCA_SURFACE_PERM_4321,
+     ENCA_SURFACE_PERM_21
+   };

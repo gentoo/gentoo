@@ -1,0 +1,378 @@
+diff -Nur octave-3.6.4.orig/doc/interpreter/audio.texi octave-3.6.4/doc/interpreter/audio.texi
+--- octave-3.6.4.orig/doc/interpreter/audio.texi	2013-02-21 12:37:50.000000000 -0800
++++ octave-3.6.4/doc/interpreter/audio.texi	2013-06-19 08:52:43.259790240 -0700
+@@ -146,18 +146,18 @@
+ Load the RIFF/WAVE sound file @var{filename}, and return the samples
+ in vector @var{y}.  If the file contains multichannel data, then
+ @var{y} is a matrix with the channels represented as columns.
+-
+-@deftypefnx {Function File} {[@var{y}, @var{Fs}, @var{bps}] =} wavread (@var{filename})
++@end deftypefn
++@deftypefn {Function File} {[@var{y}, @var{Fs}, @var{bps}] =} wavread (@var{filename})
+ Additionally return the sample rate (@var{fs}) in Hz and the number of bits
+ per sample (@var{bps}).
+-
+-@deftypefnx {Function File} {[@dots{}] =} wavread (@var{filename}, @var{n})
++@end deftypefn
++@deftypefn {Function File} {[@dots{}] =} wavread (@var{filename}, @var{n})
+ Read only the first @var{n} samples from each channel.
+-
+-@deftypefnx {Function File} {[@dots{}] =} wavread (@var{filename}, @var{n1} @var{n2})
++@end deftypefn
++@deftypefn {Function File} {[@dots{}] =} wavread (@var{filename}, @var{n1} @var{n2})
+ Read only samples @var{n1} through @var{n2} from each channel.
+-
+-@deftypefnx {Function File} {[@var{samples}, @var{channels}] =} wavread (@var{filename}, "size")
++@end deftypefn
++@deftypefn {Function File} {[@var{samples}, @var{channels}] =} wavread (@var{filename}, "size")
+ Return the number of samples (@var{n}) and channels (@var{ch})
+ instead of the audio data.
+ @seealso{@ref{doc-wavwrite,,wavwrite}}
+diff -Nur octave-3.6.4.orig/doc/interpreter/io.texi octave-3.6.4/doc/interpreter/io.texi
+--- octave-3.6.4.orig/doc/interpreter/io.texi	2013-02-21 12:37:51.000000000 -0800
++++ octave-3.6.4/doc/interpreter/io.texi	2013-06-19 08:52:43.259790240 -0700
+@@ -1391,22 +1391,22 @@
+ for the file.  Valid values for @var{arch} are:
+ 
+ @table @asis
+-@samp{native}
++@item @samp{native}
+ The format of the current machine (this is the default).
+ 
+-@samp{ieee-be}
++@item @samp{ieee-be}
+ IEEE big endian format.
+ 
+-@samp{ieee-le}
++@item @samp{ieee-le}
+ IEEE little endian format.
+ 
+-@samp{vaxd}
++@item @samp{vaxd}
+ VAX D floating format.
+ 
+-@samp{vaxg}
++@item @samp{vaxg}
+ VAX G floating format.
+ 
+-@samp{cray}
++@item @samp{cray}
+ Cray floating format.
+ @end table
+ 
+diff -Nur octave-3.6.4.orig/doc/interpreter/octave.texi octave-3.6.4/doc/interpreter/octave.texi
+--- octave-3.6.4.orig/doc/interpreter/octave.texi	2013-02-21 12:19:23.000000000 -0800
++++ octave-3.6.4/doc/interpreter/octave.texi	2013-06-19 08:52:43.259790240 -0700
+@@ -129,7 +129,9 @@
+ @sp 2
+ @multitable @columnfractions 0.4 0.025 0.65
+ @item
+-@flushright @image{octave_logo,2.1in} @end flushright
++@flushright
++@image{octave_logo,2.1in}
++@end flushright
+ @tab
+ @c this is a spacer column
+ @tab
+diff -Nur octave-3.6.4.orig/doc/interpreter/plot.texi octave-3.6.4/doc/interpreter/plot.texi
+--- octave-3.6.4.orig/doc/interpreter/plot.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/plot.texi	2013-06-19 08:52:43.260790204 -0700
+@@ -2707,21 +2707,20 @@
+ Set the data aspect ratio of the current axes.  The aspect ratio is
+ a normalized 3-element vector representing the span of the x, y, and
+ z-axes limits.
+-
+-@deftypefnx {Function File} {@var{data_aspect_ratio} =} daspect ( )
++@end deftypefn
++@deftypefn {Function File} {@var{data_aspect_ratio} =} daspect ( )
+ Return the data aspect ratio of the current axes.
+-
+-@deftypefnx {Function File} {} daspect (@var{mode})
++@end deftypefn
++@deftypefn {Function File} {} daspect (@var{mode})
+ Set the data aspect ratio mode of the current axes.
+-
+-@deftypefnx {Function File} {@var{data_aspect_ratio_mode} =} daspect ("mode")
++@end deftypefn
++@deftypefn {Function File} {@var{data_aspect_ratio_mode} =} daspect ("mode")
+ Return the data aspect ratio mode of the current axes.
+-
+-@deftypefnx {Function File} {} daspect (@var{hax}, @dots{})
++@end deftypefn
++@deftypefn {Function File} {} daspect (@var{hax}, @dots{})
+ Use the axes, with handle @var{hax}, instead of the current axes.
+-
+-@seealso{@ref{doc-axis,,axis}, @ref{doc-pbaspect,,pbaspect}, @ref{doc-xlim,,xlim}, @ref{doc-ylim,,ylim}, @ref{doc-zlim,,zlim}}
+ @end deftypefn
++@seealso{@ref{doc-axis,,axis}, @ref{doc-pbaspect,,pbaspect}, @ref{doc-xlim,,xlim}, @ref{doc-ylim,,ylim}, @ref{doc-zlim,,zlim}}
+ 
+ 
+ @c pbaspect scripts/plot/pbaspect.m
+@@ -2730,21 +2729,20 @@
+ Set the plot box aspect ratio of the current axes.  The aspect ratio
+ is a normalized 3-element vector representing the rendered lengths of
+ the x, y, and z-axes.
+-
+-@deftypefnx {Function File} {@var{plot_box_aspect_ratio} =} pbaspect ( )
++@end deftypefn
++@deftypefn {Function File} {@var{plot_box_aspect_ratio} =} pbaspect ( )
+ Return the plot box aspect ratio of the current axes.
+-
+-@deftypefnx {Function File} {} pbaspect (@var{mode})
++@end deftypefn
++@deftypefn {Function File} {} pbaspect (@var{mode})
+ Set the plot box aspect ratio mode of the current axes.
+-
+-@deftypefnx {Function File} {@var{plot_box_aspect_ratio_mode} =} pbaspect ("mode")
++@end deftypefn
++@deftypefn {Function File} {@var{plot_box_aspect_ratio_mode} =} pbaspect ("mode")
+ Return the plot box aspect ratio mode of the current axes.
+-
+-@deftypefnx {Function File} {} pbaspect (@var{hax}, @dots{})
++@end deftypefn
++@deftypefn {Function File} {} pbaspect (@var{hax}, @dots{})
+ Use the axes, with handle @var{hax}, instead of the current axes.
+-
+-@seealso{@ref{doc-axis,,axis}, @ref{doc-daspect,,daspect}, @ref{doc-xlim,,xlim}, @ref{doc-ylim,,ylim}, @ref{doc-zlim,,zlim}}
+ @end deftypefn
++@seealso{@ref{doc-axis,,axis}, @ref{doc-daspect,,daspect}, @ref{doc-xlim,,xlim}, @ref{doc-ylim,,ylim}, @ref{doc-zlim,,zlim}}
+ 
+ 
+ @node Three-dimensional Function Plotting
+@@ -3147,7 +3145,7 @@
+ @item "hide"
+   Hide legend on the plot
+ 
+-@itemx "toggle"
++@item "toggle"
+   Toggles between "hide" and "show"
+ 
+ @item "boxon"
+@@ -3162,7 +3160,7 @@
+ @item "right"
+   Place text to the right of the keys
+ 
+-@itemx "off"
++@item "off"
+   Delete the legend object
+ @end table
+ @end deftypefn
+@@ -4139,11 +4137,11 @@
+ is sent to a file the size is determined by the plot box defined by
+ the figure's "paperposition" property.
+ 
+-@itemx -append
++@item -append
+   Appends the PS, or PDF output to a pre-existing file of the
+ same type.
+ 
+-@itemx -r@var{NUM}
++@item -r@var{NUM}
+   Resolution of bitmaps in pixels per inch.  For both metafiles and
+ SVG the default is the screen resolution, for other it is 150 dpi.
+ To specify screen resolution, use "-r0".
+@@ -6296,15 +6294,15 @@
+ A character indicating a plot marker to be place at each data point, or
+ @code{"none"}, meaning no markers should be displayed.
+ 
+-@itemx markeredgecolor
++@item markeredgecolor
+ The color of the edge around the marker, or @code{"auto"}, meaning that
+ the edge color is the same as the face color.  @xref{Colors}.
+ 
+-@itemx markerfacecolor
++@item markerfacecolor
+ The color of the marker, or @code{"none"} to indicate that the marker
+ should not be filled.  @xref{Colors}.
+ 
+-@itemx markersize
++@item markersize
+ A number specifying the size of the marker.  The default is 1.  A value
+ of 2 is twice as large as the default, etc.
+ @end table
+@@ -6442,7 +6440,8 @@
+ @deftypefn {Function File} {@var{value} =} getappdata (@var{h}, @var{name})
+ Return the @var{value} for named application data for the object(s) with
+ handle(s) @var{h}.
+-@deftypefnx {Function File} {@var{appdata} =} getappdata (@var{h})
++@end deftypefn
++@deftypefn {Function File} {@var{appdata} =} getappdata (@var{h})
+ Return a structure, @var{appdata}, whose fields correspond to the appdata
+ properties.
+ @end deftypefn
+diff -Nur octave-3.6.4.orig/doc/interpreter/poly.texi octave-3.6.4/doc/interpreter/poly.texi
+--- octave-3.6.4.orig/doc/interpreter/poly.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/poly.texi	2013-06-19 08:52:43.260790204 -0700
+@@ -82,8 +82,8 @@
+ (@var{x}-@var{mu}(1))/@var{mu}(2).
+ If @var{x} is a vector or matrix, the polynomial is evaluated for each of
+ the elements of @var{x}.
+-
+-@deftypefnx {Function File} {[@var{y}, @var{dy}] =} polyval (@var{p}, @var{x}, @var{s})
++@end deftypefn
++@deftypefn {Function File} {[@var{y}, @var{dy}] =} polyval (@var{p}, @var{x}, @var{s})
+ @deftypefnx {Function File} {[@var{y}, @var{dy}] =} polyval (@var{p}, @var{x}, @var{s}, @var{mu})
+ In addition to evaluating the polynomial, the second output
+ represents the prediction interval, @var{y} +/- @var{dy}, which
+diff -Nur octave-3.6.4.orig/doc/interpreter/set.texi octave-3.6.4/doc/interpreter/set.texi
+--- octave-3.6.4.orig/doc/interpreter/set.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/set.texi	2013-06-19 08:52:43.260790204 -0700
+@@ -150,8 +150,9 @@
+        3   4
+ @end group
+ @end example
++@end deftypefn
+ 
+-@deftypefnx {Function File} {[@var{c}, @var{ia}, @var{ib}] =} union (@var{a}, @var{b})
++@deftypefn {Function File} {[@var{c}, @var{ia}, @var{ib}] =} union (@var{a}, @var{b})
+ 
+ Return index vectors @var{ia} and @var{ib} such that @code{a(ia)} and
+ @code{b(ib)} are disjoint sets whose union is @var{c}.
+diff -Nur octave-3.6.4.orig/doc/interpreter/signal.texi octave-3.6.4/doc/interpreter/signal.texi
+--- octave-3.6.4.orig/doc/interpreter/signal.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/signal.texi	2013-06-19 08:52:43.261790169 -0700
+@@ -454,17 +454,17 @@
+ 
+ For fastest computation, @var{n} should factor into a small number of
+ small primes.
+-
+-@deftypefnx {Function File} {@var{h} =} freqz (@var{b}, @var{a}, @var{w})
++@end deftypefn
++@deftypefn {Function File} {@var{h} =} freqz (@var{b}, @var{a}, @var{w})
+ Evaluate the response at the specific frequencies in the vector @var{w}.
+ The values for @var{w} are measured in radians.
+-
+-@deftypefnx {Function File} {[@dots{}] =} freqz (@dots{}, @var{Fs})
++@end deftypefn
++@deftypefn {Function File} {[@dots{}] =} freqz (@dots{}, @var{Fs})
+ Return frequencies in Hz instead of radians assuming a sampling rate
+ @var{Fs}.  If you are evaluating the response at specific frequencies
+ @var{w}, those frequencies should be requested in Hz rather than radians.
+-
+-@deftypefnx {Function File} {} freqz (@dots{})
++@end deftypefn
++@deftypefn {Function File} {} freqz (@dots{})
+ Plot the pass band, stop band and phase response of @var{h} rather
+ than returning them.
+ @end deftypefn
+diff -Nur octave-3.6.4.orig/doc/interpreter/strings.texi octave-3.6.4/doc/interpreter/strings.texi
+--- octave-3.6.4.orig/doc/interpreter/strings.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/strings.texi	2013-06-19 08:52:43.261790169 -0700
+@@ -1136,7 +1136,7 @@
+ @item %s
+ The word is parsed as a string.
+ 
+-@itemx %f
++@item %f
+ @itemx %n
+ The word is parsed as a number and converted to double.
+ 
+diff -Nur octave-3.6.4.orig/doc/interpreter/system.texi octave-3.6.4/doc/interpreter/system.texi
+--- octave-3.6.4.orig/doc/interpreter/system.texi	2013-02-21 12:37:52.000000000 -0800
++++ octave-3.6.4/doc/interpreter/system.texi	2013-06-19 08:52:43.261790169 -0700
+@@ -839,7 +839,7 @@
+ @deftypefnx {Function File} {} datetick (@var{axis}, @var{form})
+ @deftypefnx {Function File} {} datetick (@dots{}, "keeplimits")
+ @deftypefnx {Function File} {} datetick (@dots{}, "keepticks")
+-@deftypefnx {Function File} {} datetick (@dots{ax}, @dots{})
++@comment @deftypefnx {Function File} {} datetick (@dots{ax}, @dots{})
+ Add date formatted tick labels to an axis.  The axis the apply the
+ ticks to is determined by @var{axis} that can take the values "x",
+ "y" or "z".  The default value is "x".  The formatting of the labels is
+@@ -1261,9 +1261,10 @@
+ interpreted as filename globbing patterns (as they are used by Unix shells).
+ Within a pattern
+ @table @code
+-@itemx *
++
++@item *
+ matches any string, including the null string,
+-@itemx ?
++@item ?
+ matches any single character, and
+ 
+ @item [@dots{}]
+@@ -2789,8 +2790,8 @@
+ Display a header containing the current Octave version number, license
+ string and operating system, followed by the installed package names,
+ versions, and installation directories.
+-
+-@deftypefnx {Function File} {v =} ver ()
++@end deftypefn
++@deftypefn {Function File} {v =} ver ()
+ Return a vector of structures, respecting Octave and each installed package.
+ The structure includes the following fields.
+ 
+@@ -2807,11 +2808,11 @@
+ @item Date
+ Date respecting the version/revision.
+ @end table
+-
+-@deftypefnx {Function File} {v =} ver ("Octave")
++@end deftypefn
++@deftypefn {Function File} {v =} ver ("Octave")
+ Return version information for Octave only.
+-
+-@deftypefnx {Function File} {v =} ver (@var{package})
++@end deftypefn
++@deftypefn {Function File} {v =} ver (@var{package})
+ Return version information for @var{package}.
+ 
+ @seealso{@ref{doc-version,,version}, @ref{doc-octave_config_info,,octave_config_info}}
+@@ -2878,19 +2879,19 @@
+ @anchor{doc-license}
+ @deftypefn {Function File} {} license
+ Display the license of Octave.
+-
+-@deftypefnx {Function File} {} license ("inuse")
++@end deftypefn
++@deftypefn {Function File} {} license ("inuse")
+ Display a list of packages currently being used.
+-
+-@deftypefnx {Function File} {@var{retval} =} license ("inuse")
++@end deftypefn
++@deftypefn {Function File} {@var{retval} =} license ("inuse")
+ Return a structure containing the fields @code{feature} and @code{user}.
+-
+-@deftypefnx {Function File} {@var{retval} =} license ("test", @var{feature})
++@end deftypefn
++@deftypefn {Function File} {@var{retval} =} license ("test", @var{feature})
+ Return 1 if a license exists for the product identified by the string
+ @var{feature} and 0 otherwise.  The argument @var{feature} is case
+ insensitive and only the first 27 characters are checked.
+-
+-@deftypefnx {Function File} {} license ("test", @var{feature}, @var{toggle})
++@end deftypefn
++@deftypefn {Function File} {} license ("test", @var{feature}, @var{toggle})
+ Enable or disable license testing for @var{feature}, depending on
+ @var{toggle}, which may be one of:
+ 
+@@ -2902,8 +2903,8 @@
+ @item "disable"
+ Future tests for the specified license of @var{feature} return 0.
+ @end table
+-
+-@deftypefnx {Function File} {@var{retval} =} license ("checkout", @var{feature})
++@end deftypefn
++@deftypefn {Function File} {@var{retval} =} license ("checkout", @var{feature})
+ Check out a license for @var{feature}, returning 1 on success and 0
+ on failure.
+ 
+diff -Nur octave-3.6.4.orig/doc/liboctave/liboctave.texi octave-3.6.4/doc/liboctave/liboctave.texi
+--- octave-3.6.4.orig/doc/liboctave/liboctave.texi	2013-02-21 12:19:23.000000000 -0800
++++ octave-3.6.4/doc/liboctave/liboctave.texi	2013-06-19 08:54:27.914379692 -0700
+@@ -80,10 +80,10 @@
+ @end ifnottex
+ 
+ @titlepage
+-@title{Octave C++ Classes}
+-@subtitle{Edition 1.0 for Octave version @value{VERSION}}
+-@subtitle{September 1993}
+-@author{John W. Eaton}
++@title@{Octave C++ Classes@}
++@subtitle@{Edition 1.0 for Octave version @value{VERSION}@}
++@subtitle@{September 1993@}
++@author@{John W. Eaton@}
+ @page
+ @vskip 0pt plus 1filll
+ Copyright @copyright{} 1996, 1997 John W. Eaton.

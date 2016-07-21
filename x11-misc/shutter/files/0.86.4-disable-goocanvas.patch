@@ -1,0 +1,21 @@
+Index: shutter-0.86.4/bin/shutter
+===================================================================
+--- shutter-0.86.4.orig/bin/shutter
++++ shutter-0.86.4/bin/shutter
+@@ -8350,14 +8350,9 @@ sub fct_init_depend {
+ 		$nautilus_sendto = FALSE;
+ 	}
+ 
+-	#goocanvas
+-	eval { require Goo::Canvas };
+-	if ($@) {
+-		warn "WARNING: Goo::Canvas/libgoocanvas is missing --> drawing tool will be disabled!\n\n";
+-		$goocanvas = FALSE;
+-	}
++	$goocanvas = FALSE;
+ 	
+-	eval { require Net::DBus::GLib };
++		eval { require Net::DBus::GLib };
+ 	if ($@) {
+ 		warn "WARNING: Net::DBus::GLib is missing --> Ubuntu One support will be disabled!\n\n";
+ 		$ubuntuone = FALSE;

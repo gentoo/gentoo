@@ -1,0 +1,40 @@
+ Makefile.in | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index ba4e4c2..c0e552a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -916,8 +916,8 @@ common/libcommon.a: $(common_obj)
+ fcomp_obj = fcomp/main.$(OBJEXT)
+ 
+ bin/fcomp$(EXEEXT): $(fcomp_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fcomp_obj) common/libcommon.a \
+-		$(LDFLAGS) $(LIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fcomp_obj) common/libcommon.a \
++		$(LIBS)
+ 
+ $(bindir)/fcomp$(EXEEXT): bin/fcomp$(EXEEXT) .bindir
+ 	$(INSTALL_PROGRAM) bin/fcomp$(EXEEXT) $@
+@@ -928,8 +928,8 @@ fhist_obj = fhist/breaks.$(OBJEXT) fhist/diff.$(OBJEXT) fhist/extract.$(OBJEXT)
+ 		fhist/subroutine.$(OBJEXT) fhist/update.$(OBJEXT)
+ 
+ bin/fhist$(EXEEXT): $(fhist_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fhist_obj) common/libcommon.a \
+-		$(LDFLAGS) $(LIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fhist_obj) common/libcommon.a \
++		$(LIBS)
+ 
+ $(bindir)/fhist$(EXEEXT): bin/fhist$(EXEEXT) .bindir
+ 	$(INSTALL_PROGRAM) bin/fhist$(EXEEXT) $@
+@@ -937,8 +937,8 @@ $(bindir)/fhist$(EXEEXT): bin/fhist$(EXEEXT) .bindir
+ fmerge_obj = fmerge/main.$(OBJEXT) fmerge/work.$(OBJEXT)
+ 
+ bin/fmerge$(EXEEXT): $(fmerge_obj) common/libcommon.a .bin
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(fmerge_obj) common/libcommon.a \
+-		$(LDFLAGS) $(LIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $(fmerge_obj) common/libcommon.a \
++		$(LIBS)
+ 
+ $(bindir)/fmerge$(EXEEXT): bin/fmerge$(EXEEXT) .bindir
+ 	$(INSTALL_PROGRAM) bin/fmerge$(EXEEXT) $@

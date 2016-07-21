@@ -1,0 +1,17 @@
+--- src/Makefile.old	2009-10-15 12:59:54.000000000 +0000
++++ src/Makefile	2009-10-26 14:29:26.000000000 +0000
+@@ -33,10 +33,10 @@
+ all:
+ 
+ install: $(CMOD) $(LMOD)
+-	mkdir -p $(LUAPATH)/ssl
+-	cp $(CMOD) $(LUACPATH)
+-	cp $(LMOD) $(LUAPATH)
+-	cp https.lua $(LUAPATH)/ssl
++	mkdir -p $(DESTDIR)$(LUAPATH)/ssl $(DESTDIR)$(LUACPATH)
++	cp $(CMOD) $(DESTDIR)$(LUACPATH)
++	cp $(LMOD) $(DESTDIR)$(LUAPATH)
++	cp https.lua $(DESTDIR)$(LUAPATH)/ssl
+ 
+ linux:
+ 	@$(MAKE) $(CMOD) MYCFLAGS="$(LNX_CFLAGS)" MYLDFLAGS="$(LNX_LDFLAGS)"

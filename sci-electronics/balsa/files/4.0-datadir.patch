@@ -1,0 +1,73 @@
+diff --git a/share/scheme/Makefile.am b/share/scheme/Makefile.am
+index 37f9332..e3d81d0 100644
+--- a/share/scheme/Makefile.am
++++ b/share/scheme/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-schemedir = $(datadir)/scheme
++schemedir = $(datadir)/balsa/scheme
+ 
+ scheme_DATA = \
+ 	balsa-list-builtins.scm \
+diff --git a/share/style/dual_b/Makefile.am b/share/style/dual_b/Makefile.am
+index 478910d..d41a873 100644
+--- a/share/style/dual_b/Makefile.am
++++ b/share/style/dual_b/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-styledual_bdir = $(datadir)/style/dual_b
++styledual_bdir = $(datadir)/balsa/style/dual_b
+ 
+ styledual_b_DATA = \
+ 	startup.scm \
+diff --git a/share/style/four_b_rb/Makefile.am b/share/style/four_b_rb/Makefile.am
+index 9eeac84..b167939 100644
+--- a/share/style/four_b_rb/Makefile.am
++++ b/share/style/four_b_rb/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-stylefour_b_rbdir = $(datadir)/style/four_b_rb
++stylefour_b_rbdir = $(datadir)/balsa/style/four_b_rb
+ 
+ stylefour_b_rb_DATA = \
+ 	startup.scm \
+diff --git a/share/style/four_e_e/Makefile.am b/share/style/four_e_e/Makefile.am
+index d374125..f3d9db6 100644
+--- a/share/style/four_e_e/Makefile.am
++++ b/share/style/four_e_e/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-stylefour_e_edir = $(datadir)/style/four_e_e
++stylefour_e_edir = $(datadir)/balsa/style/four_e_e
+ 
+ stylefour_e_e_DATA = \
+ 	startup.scm \
+diff --git a/share/style/one_of_2_4/Makefile.am b/share/style/one_of_2_4/Makefile.am
+index ed02904..18d9201 100644
+--- a/share/style/one_of_2_4/Makefile.am
++++ b/share/style/one_of_2_4/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-styleone_of_2_4dir = $(datadir)/style/one_of_2_4
++styleone_of_2_4dir = $(datadir)/balsa/style/one_of_2_4
+ 
+ styleone_of_2_4_DATA = \
+ 	startup.scm \
+diff --git a/share/tech/common/Makefile.am b/share/tech/common/Makefile.am
+index 8a34646..0190b73 100644
+--- a/share/tech/common/Makefile.am
++++ b/share/tech/common/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ SUBDIRS =
+ 
+-techcommondir = $(datadir)/tech/common
++techcommondir = $(datadir)/balsa/tech/common
+ 
+ techcommon_DATA = \
+ 	components.abs \

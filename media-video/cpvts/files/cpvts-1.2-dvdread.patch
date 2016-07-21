@@ -1,0 +1,11 @@
+diff -Naur cpvts-orig/cpvts.c cpvts/cpvts.c
+--- cpvts-orig/cpvts.c	2006-03-31 20:47:16.000000000 -0600
++++ cpvts/cpvts.c	2006-03-31 20:47:40.000000000 -0600
+@@ -16,6 +16,7 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <math.h>
++#include <stdint.h>
+ 
+ /* libdvdread stuff */
+ #include <dvdread/dvd_reader.h>

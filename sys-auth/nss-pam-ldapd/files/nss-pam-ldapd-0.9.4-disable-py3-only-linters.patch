@@ -1,0 +1,13 @@
+diff --git a/tests/pylint.rc b/tests/pylint.rc
+index 7f0bc13..b66d018 100644
+--- a/tests/pylint.rc
++++ b/tests/pylint.rc
+@@ -19,7 +19,7 @@ enable=
+ # can either give multiple identifier separated by comma (,) or put this option
+ # multiple time (only on the command line, not in the configuration file where
+ # it should appear only once).
+-disable=E1101
++disable=E1101,E1608,E1606,E1601
+ 
+ 
+ [REPORTS]

@@ -1,0 +1,10 @@
+# Config file for /etc/init.d/namecoin
+
+# owner of namecoind process (don't change, must be existing)
+NAMECOIN_USER="namecoin"
+
+# See http://www.bitcoin.org/smf/index.php?topic=1063
+NAMECOIN_OPTS="${NAMECOIN_OPTS}"
+
+# nice level
+NICELEVEL="19"

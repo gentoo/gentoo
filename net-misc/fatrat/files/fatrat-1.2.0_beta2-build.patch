@@ -1,0 +1,29 @@
+--- fatrat-1.2.0_beta2/CMakeLists.txt
++++ fatrat-1.2.0_beta2/CMakeLists.txt
+@@ -121,16 +121,12 @@
+ 	endif(curl_FOUND)
+ endif(WITH_CURL)
+ 
+-ADD_DEFINITIONS(-Wl,--stack,524 288)
+ if(CMAKE_BUILD_TYPE MATCHES Debug)
++	ADD_DEFINITIONS(-Wl,--stack,524 288)
+ 	ADD_DEFINITIONS(-ggdb)
+ 	ADD_DEFINITIONS(-DDEBUG_BUILD)
+ 	ADD_DEFINITIONS(-DNDEBUG)
+ 	ADD_DEFINITIONS(-Wall)
+-else(CMAKE_BUILD_TYPE MATCHES Debug)
+-	ADD_DEFINITIONS(-ggdb)
+-	ADD_DEFINITIONS(-DNDEBUG)
+-	ADD_DEFINITIONS(-Wall)
+ endif(CMAKE_BUILD_TYPE MATCHES Debug)
+ 
+ CHECK_INCLUDE_FILES(sys/epoll.h HAVE_SYS_EPOLL_H)
+@@ -577,7 +573,7 @@
+ 
+ set(fatrat_DEV_HEADERS
+ 	${CMAKE_CURRENT_SOURCE_DIR}/src/fatrat.h
+-	${CMAKE_CURRENT_SOURCE_DIR}/config.h
++	${CMAKE_CURRENT_BINARY_DIR}/config.h
+ 	${CMAKE_CURRENT_SOURCE_DIR}/src/DelayedIcon.h
+ 	${CMAKE_CURRENT_SOURCE_DIR}/src/AppTools.h
+ 	${CMAKE_CURRENT_SOURCE_DIR}/src/Transfer.h

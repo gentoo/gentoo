@@ -1,0 +1,28 @@
+diff --git a/PKIN.h b/PKIN.h
+index 6cb6670..c9c6b89 100755
+--- a/PKIN.h
++++ b/PKIN.h
+@@ -533,8 +533,8 @@ EXTERN float xnext,ynext,znext,onext,Bnext,Uvalnext;
+ EXTERN char  aspectstrnext[MAXaspects+3]; /*in parens: (XXXX)*/
+ 
+ /* possible overlap with earlier PREKIN variables */
+-EXTERN char word[256],texts[256],temps[256];
+-EXTERN char alertstr[256],alertstr2[256],alertstr3[256];
++EXTERN char word[256],texts[256],temps[512];
++EXTERN char alertstr[1024],alertstr2[256],alertstr3[256];
+ EXTERN char oldstr[256],olderstr[256],newstr[256],InfoStr[256],MolNameStr[16];
+ EXTERN char NameStr[256],OutfileStr[256],ScriptinStr[256],ShortNameStr[256];
+ EXTERN char DirStr[256],PDBfileStr[256],helpoutStr[256]; /*040425 helpout*/
+diff --git a/PKINCOUT.c b/PKINCOUT.c
+index af8eb24..a9f3a5f 100755
+--- a/PKINCOUT.c
++++ b/PKINCOUT.c
+@@ -17,7 +17,7 @@ static float VRMLx=0,VRMLy=0,VRMLz=0;
+ void   writeoutput()
+ {
+   char  cntl[5];  /* 4 actual characters */
+-  char  kol[20],extra[256],aname[13];
++  char  kol[20],extra[256],aname[32];
+   char  chain[32],atoms[32],cpks[32],hygen[32],hbond[32];
+   char  subname[32],allstr[32];
+   char  mastername[32]; /*051128*/

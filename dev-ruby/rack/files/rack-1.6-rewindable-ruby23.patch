@@ -1,0 +1,38 @@
+From 11b5a15dd1c8a41d87eb73df7bb99a3affecd787 Mon Sep 17 00:00:00 2001
+From: deepj <deepjungle.maca@gmail.com>
+Date: Mon, 25 May 2015 22:41:31 +0200
+Subject: [PATCH] Clean up Rack::Rewindable
+
+---
+ lib/rack/rewindable_input.rb | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/lib/rack/rewindable_input.rb b/lib/rack/rewindable_input.rb
+index 64efdda..dd6b784 100644
+--- a/lib/rack/rewindable_input.rb
++++ b/lib/rack/rewindable_input.rb
+@@ -57,15 +57,6 @@ def close
+ 
+     private
+ 
+-    # Ruby's Tempfile class has a bug. Subclass it and fix it.
+-    class Tempfile < ::Tempfile
+-      def _close
+-        @tmpfile.close if @tmpfile
+-        @data[1] = nil if @data
+-        @tmpfile = nil
+-      end
+-    end
+-
+     def make_rewindable
+       # Buffer all data into a tempfile. Since this tempfile is private to this
+       # RewindableInput object, we chmod it so that nobody else can read or write
+@@ -77,8 +68,6 @@ def make_rewindable
+       @rewindable_io.set_encoding(Encoding::BINARY) if @rewindable_io.respond_to?(:set_encoding)
+       @rewindable_io.binmode
+       if filesystem_has_posix_semantics?
+-        # Use ::File.unlink as 1.9.1 Tempfile has a bug where unlink closes the file!
+-        ::File.unlink @rewindable_io.path
+         raise 'Unlink failed. IO closed.' if @rewindable_io.closed?
+         @unlinked = true
+       end

@@ -1,0 +1,16 @@
+open/close/etc. are defined in unistd.h, GCC 4.7 is stricter in this and
+breaks the build, bug #413859.  Upstream already applied a similar
+change for another issue, so next release should be fine.
+
+--- uncrustify-0.59/src/uncrustify.cpp
++++ uncrustify-0.59/src/uncrustify.cpp
+@@ -24,6 +24,9 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <cerrno>
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
+ #include <fcntl.h>
+ #include "unc_ctype.h"
+ #ifdef HAVE_SYS_STAT_H

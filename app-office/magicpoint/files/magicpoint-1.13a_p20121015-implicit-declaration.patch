@@ -1,0 +1,136 @@
+diff -ru kit.orig/contrib/xwintoppm/dsimple.c kit/contrib/xwintoppm/dsimple.c
+--- kit.orig/contrib/xwintoppm/dsimple.c	1998-02-13 08:48:29.000000000 +0100
++++ kit/contrib/xwintoppm/dsimple.c	2016-01-12 14:30:21.199834909 +0100
+@@ -48,10 +48,12 @@
+ #endif
+ 
+ extern Bool silent;
++extern void usage();
+ unsigned long Resolve_Color();
+ Pixmap Bitmap_To_Pixmap();
+ Window Select_Window();
+ void out();
++void outl();
+ void blip();
+ Window Window_With_Name();
+ void Fatal_Error();
+@@ -495,6 +497,7 @@
+  *       printf with up to 7 arguments.
+  */
+ /* VARARGS1 */
++void
+ outl(msg, arg0,arg1,arg2,arg3,arg4,arg5,arg6)
+      char *msg;
+      char *arg0, *arg1, *arg2, *arg3, *arg4, *arg5, *arg6;
+diff -ru kit.orig/contrib/xwintoppm/xwintoppm.c kit/contrib/xwintoppm/xwintoppm.c
+--- kit.orig/contrib/xwintoppm/xwintoppm.c	1998-08-26 07:30:16.000000000 +0200
++++ kit/contrib/xwintoppm/xwintoppm.c	2016-01-12 14:29:46.892836115 +0100
+@@ -139,6 +139,13 @@
+ extern int (*_XErrorFunction)();
+ extern int _XDefaultError();
+ 
++void usage();
++void Error(char *);
++void Window_Dump(Window, FILE *);
++extern void outl();
++int Image_Size(XImage *);
++int Get_XColors(XWindowAttributes *, XColor **);
++
+ static long parse_long (s)
+     char *s;
+ {
+@@ -281,6 +288,7 @@
+  *              writting.
+  */
+ 
++void
+ Window_Dump(window, out)
+      Window window;
+      FILE *out;
+@@ -609,6 +617,7 @@
+ /*
+  * Report the syntax for calling xwd.
+  */
++void
+ usage()
+ {
+     fprintf (stderr,
+@@ -623,6 +632,7 @@
+  * Error - Fatal xwd error.
+  */
+ 
++void
+ Error(string)
+ 	char *string;	/* Error description string. */
+ {
+diff -ru kit.orig/ctlwords.c kit/ctlwords.c
+--- kit.orig/ctlwords.c	1999-02-15 00:02:25.000000000 +0100
++++ kit/ctlwords.c	2016-01-12 14:14:20.395868676 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ main(int argc, char *argv[])
+ {
+diff -ru kit.orig/draw.c kit/draw.c
+--- kit.orig/draw.c	2012-10-14 20:25:10.000000000 +0200
++++ kit/draw.c	2016-01-12 14:15:12.847866833 +0100
+@@ -140,6 +140,8 @@
+ static void get_background_pixmap __P((struct ctrl *, struct render_state *));
+ static void regist_background_pixmap __P((XImageInfo *, Image *));
+ #ifdef MNG
++void mngload(char *, int, int, int, int);
++void mngpreload(struct render_state *, char *, int *, int *);
+ static void process_anim __P((struct render_state *, struct ctrl *));
+ static void obj_draw_anim __P((struct render_state *, 
+ 	u_int, u_int, struct render_object *));
+diff -ru kit.orig/image/image.h kit/image/image.h
+--- kit.orig/image/image.h      2004-07-28 17:47:31.000000000 +0200
++++ kit/image/image.h   2016-01-12 16:38:12.310565307 +0100
+@@ -10,6 +10,7 @@
+ 
+ #include "copyright.h"
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #if defined(SYSV) || defined(VMS) || 1
+ #include <string.h>
+diff -ru kit.orig/image/window.c kit/image/window.c
+--- kit.orig/image/window.c	2004-07-28 17:47:31.000000000 +0200
++++ kit/image/window.c	2016-01-12 14:19:03.347858732 +0100
+@@ -16,8 +16,8 @@
+ #include <signal.h>
+ #include <errno.h>
+ #include <sys/types.h>
+-#ifdef SYSV
+-#include <unistd.h>
++#ifdef HAVE_UNISTD_H
++# include <unistd.h>
+ #endif
+ #if TIME_WITH_SYS_TIME
+ # include <sys/time.h>
+@@ -32,9 +32,6 @@
+ #if HAVE_SYS_SELECT_H
+ # include <sys/select.h>
+ #endif
+-#ifdef __APPLE__
+-#include <unistd.h>
+-#endif
+ 
+ /* SUPPRESS 560 */
+ 
+diff -ru kit.orig/mgp.h kit/mgp.h
+--- kit.orig/mgp.h	2010-05-04 00:28:00.000000000 +0200
++++ kit/mgp.h	2016-01-12 14:16:47.967863490 +0100
+@@ -831,6 +831,9 @@
+ #ifndef HAVE_USLEEP
+ extern void usleep __P((u_int));
+ #endif
++#ifndef HAVE_STRLCPY
++extern size_t strlcpy __P((char *, const char *, size_t));
++#endif
+ 
+ #ifdef FREETYPE
+ #define RASTERLIB

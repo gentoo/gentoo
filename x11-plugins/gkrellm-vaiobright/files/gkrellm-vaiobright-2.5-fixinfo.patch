@@ -1,0 +1,38 @@
+diff -ur vaiobright-2.5/readme vaiobright-2.5-infofix/readme
+--- vaiobright-2.5/README	2004-03-20 13:58:13.000000000 -0500
++++ vaiobright-2.5-infofix/README	2004-03-20 13:59:30.000000000 -0500
+@@ -28,6 +28,7 @@
+ bright or max dark depending on the current value.
+ 
+ Changelog:
++              Sat 20 Mar 2004   Fixed the "Info" tab (Billy Goto)
+ 2.5           Sun 20 Oct 2002   Removed need for external helper applications
+                                 entirely.  SonyPI is now required, but no suid
+                                 or spicctrl binaries are needed.
+diff -ur vaiobright-2.5/vaiobright.c vaiobright-2.5-infofix/vaiobright.c
+--- vaiobright-2.5/vaiobright.c	2002-10-20 19:22:26.000000000 -0400
++++ vaiobright-2.5-infofix/vaiobright.c	2004-03-20 12:55:38.000000000 -0500
+@@ -422,21 +422,9 @@
+                        (GtkSignalFunc) vaiobright_toggle_toggled, REVERSE_TOGGLE);
+ 
+     /* Help tab */
+-    frame = gtk_frame_new(NULL);
+-    gtk_container_border_width(GTK_CONTAINER(frame),3);
+-    scrolled = gtk_scrolled_window_new(NULL,NULL);
+-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
+-                                   GTK_POLICY_AUTOMATIC,GTK_POLICY_AUTOMATIC);
+-
+-    gtk_container_add(GTK_CONTAINER(frame),scrolled);
+-    label = gtk_label_new("Info");
+-    gtk_notebook_append_page(GTK_NOTEBOOK(tabs),frame,label);
+-
+-    text = gtk_text_view_new();
+-    gtk_text_view_set_editable(GTK_TEXT_VIEW(text),FALSE);
++    vbox = gkrellm_gtk_framed_notebook_page(tabs,"Info");
++    text = gkrellm_gtk_scrolled_text_view(vbox, NULL, GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+     vaiobright_create_help_text(text);
+-    gtk_container_add(GTK_CONTAINER(scrolled),text);
+-
+ 
+     /* About tab */
+     plugin_about_text = g_strdup_printf(

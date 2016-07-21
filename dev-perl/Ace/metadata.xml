@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">AcePerl</remote-id>
+    <remote-id type="cpan-module">Ace</remote-id>
+    <remote-id type="cpan-module">Ace::Browser::AceSubs</remote-id>
+    <remote-id type="cpan-module">Ace::Browser::GeneSubs</remote-id>
+    <remote-id type="cpan-module">Ace::Browser::SearchSubs</remote-id>
+    <remote-id type="cpan-module">Ace::Browser::SiteDefs</remote-id>
+    <remote-id type="cpan-module">Ace::Browser::TreeSubs</remote-id>
+    <remote-id type="cpan-module">Ace::Freesubs</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Fk</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::anchored_arrow</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::arrow</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::box</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::crossbox</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::dot</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::ex</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::graded_segments</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::group</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::line</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::primers</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::segments</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::span</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::toomany</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::transcript</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Glyph::triangle</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::GlyphFactory</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Panel</remote-id>
+    <remote-id type="cpan-module">Ace::Graphics::Track</remote-id>
+    <remote-id type="cpan-module">Ace::Iterator</remote-id>
+    <remote-id type="cpan-module">Ace::Local</remote-id>
+    <remote-id type="cpan-module">Ace::Model</remote-id>
+    <remote-id type="cpan-module">Ace::Object</remote-id>
+    <remote-id type="cpan-module">Ace::Object::Wormbase</remote-id>
+    <remote-id type="cpan-module">Ace::RPC</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::Feature</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::FeatureList</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::GappedAlignment</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::Gene</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::Homol</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::Multi</remote-id>
+    <remote-id type="cpan-module">Ace::Sequence::Transcript</remote-id>
+    <remote-id type="cpan-module">Ace::SocketServer</remote-id>
+    <remote-id type="cpan-module">GFF::Filehandle</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+# Config file for /etc/init.d/bitcoinxt
+
+# owner of bitcoinxtd process (don't change, must be existing)
+BITCOINXT_USER="bitcoinxt"
+BITCOINXT_CONF="/var/lib/bitcoinxt/.bitcoinxt/bitcoinxt.conf"
+BITCOINXT_DATA="/var/lib/bitcoinxt/.bitcoinxt"
+
+# See http://www.bitcoin.org/smf/index.php?topic=1063
+BITCOINXT_OPTS="-conf=${BITCOINXT_CONF} -datadir=${BITCOINXT_DATA} ${BITCOINXT_OPTS}"
+
+# nice level
+NICELEVEL="19"

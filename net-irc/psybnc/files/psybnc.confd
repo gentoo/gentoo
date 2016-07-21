@@ -1,0 +1,5 @@
+# /etc/conf.d/psybnc
+
+PSYBNC_CONFIG="/etc/psybnc/psybnc.conf"
+PSYBNC_HOME="/var/lib/psybnc"
+PSYBNC_USER="psybnc"

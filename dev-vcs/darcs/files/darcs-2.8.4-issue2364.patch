@@ -1,0 +1,70 @@
+* resolve issue2364: fix file corruption on double fetch
+
+The bug is the result of attempt to fetch the same file
+(say F) by the same URL (U) multiple times concurrently.
+
+First time U gets fetched by speculative prefetch logic.
+Second time as an ordinary file (while first fetch is not finished).
+
+The function 'copyUrlWithPriority' sends download request
+to 'urlChan' both times (it's already not a nice situation,
+fixed by this patch).
+
+Later urlThread satisfies first request, notifies receiver,
+and starts downloading exactly the same U again.
+
+I don't know exact data corruption mechanics yet, but it has
+to do with non-random intermediate file names of downloaded
+files and 'truncate' call when temp file is opened for a new
+downlaod job.
+
+All temp names are completely non-random for a single darcs run:
+
+  urlThread :: Chan UrlRequest -> IO ()
+  urlThread ch = do
+    junk <- flip showHex "" `fmap` randomRIO rrange
+    evalStateT urlThread' (UrlState Map.empty emptyQ 0 junk)
+
+  createDownloadFileName :: FilePath -> UrlState -> FilePath
+  createDownloadFileName f st = f ++ "-new_" ++ randomJunk st
+
+My theory is next download manages to step on toes of previous job.
+
+I'll try to make file names truly random in other patch.
+That way such errors should manifest as read erros instead of data
+corruption.
+
+Thanks!
+diff --git a/src/URL.hs b/src/URL.hs
+index 4cb85ee..26de278 100644
+--- a/src/URL.hs
++++ b/src/URL.hs
+@@ -18,11 +18,12 @@ module URL ( copyUrl, copyUrlFirst, setDebugHTTP,
+ import Data.IORef ( newIORef, readIORef, writeIORef, IORef )
+ import Data.Map ( Map )
+ import qualified Data.Map as Map
++import Data.Tuple ( swap )
+ import System.Directory ( copyFile )
+ import System.IO.Unsafe ( unsafePerformIO )
+ import Control.Concurrent ( forkIO )
+ import Control.Concurrent.Chan ( isEmptyChan, newChan, readChan, writeChan, Chan )
+-import Control.Concurrent.MVar ( isEmptyMVar, modifyMVar_, newEmptyMVar, newMVar, putMVar, readMVar, withMVar, MVar )
++import Control.Concurrent.MVar ( isEmptyMVar, modifyMVar, modifyMVar_, newEmptyMVar, newMVar, putMVar, readMVar, withMVar, MVar )
+ import Control.Monad ( unless, when )
+ import Control.Monad.Trans ( liftIO )
+ import Control.Monad.State ( evalStateT, get, modify, put, StateT )
+@@ -196,10 +197,10 @@ copyUrlWithPriority p u f c = do
+   debugMessage ("URL.copyUrlWithPriority ("++u++"\n"++
+                 "                      -> "++f++")")
+   v <- newEmptyMVar
+-  let fn _ old_val = old_val
+-  modifyMVar_ urlNotifications (return . (Map.insertWith fn u v))
+-  let r = UrlRequest u f c p
+-  writeChan urlChan r
++  old_mv <- modifyMVar urlNotifications (return . swap . Map.insertLookupWithKey (\_k _n old -> old) u v)
++  case old_mv of
++    Nothing -> writeChan urlChan $ UrlRequest u f c p -- ok, new URL
++    Just _  -> debugMessage $ "URL.copyUrlWithPriority already in progress, skip (" ++ u ++ "\n" ++ "-> " ++ f ++ ")"
+ 
+ waitNextUrl :: StateT UrlState IO ()
+ waitNextUrl = do

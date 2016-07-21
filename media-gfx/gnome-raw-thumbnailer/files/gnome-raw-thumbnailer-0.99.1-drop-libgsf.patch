@@ -1,0 +1,32 @@
+--- configure.ac
++++ configure.ac
+@@ -17,9 +17,9 @@
+ 
+ SCROLLKEEPER_REQUIRED=0.1.4
+ 
+-PKG_CHECK_MODULES(GSF, gnome-vfs-2.0 libgsf-gnome-1 gdk-pixbuf-2.0)
+-AC_SUBST(GSF_CFLAGS)
+-AC_SUBST(GSF_LIBS)
++PKG_CHECK_MODULES(GNOME, gnome-vfs-2.0 gdk-pixbuf-2.0)
++AC_SUBST(GNOME_CFLAGS)
++AC_SUBST(GNOME_LIBS)
+ 
+ PKG_CHECK_MODULES(OPENRAW, libopenraw-gnome-1.0 >= 0.0.4)
+ AC_SUBST(OPENRAW_CFLAGS)
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -2,7 +2,7 @@
+ 
+ 
+ INCLUDES = -I$(top_srcdir)                                              \
+-           $(GSF_CFLAGS) \
++           $(GNOME_CFLAGS) \
+            $(OPENRAW_CFLAGS) \
+            -DG_LOG_DOMAIN=\"raw-thumbnailer\"    \
+            -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"       \
+@@ -15,4 +15,4 @@
+ 
+ raw_thumbnailer_SOURCES = raw-thumbnailer.c
+ 
+-raw_thumbnailer_LDADD = $(GSF_LIBS) $(OPENRAW_LIBS) $(INTLLIBS)
++raw_thumbnailer_LDADD = $(GNOME_LIBS) $(OPENRAW_LIBS) $(INTLLIBS)

@@ -1,0 +1,13 @@
+http://synergy-project.org/spit/issues/details/2935/
+https://bugs.gentoo.org/show_bug.cgi?id=505978
+
+--- a/src/lib/net/SocketMultiplexer.cpp
++++ b/src/lib/net/SocketMultiplexer.cpp
+@@ -243,6 +243,7 @@
+ 		for (CSocketJobMap::iterator i = m_socketJobMap.begin();
+ 							i != m_socketJobMap.end();) {
+ 			if (*(i->second) == NULL) {
++				m_socketJobs.erase(i->second);
+ 				m_socketJobMap.erase(i++);
+ 				m_update = true;
+ 			}

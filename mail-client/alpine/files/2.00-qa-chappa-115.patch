@@ -1,0 +1,40 @@
+--- pith/send.c	2012-10-11 11:21:43.027665295 +0000
++++ pith/send.c	2012-10-11 11:42:37.659237275 +0000
+@@ -48,6 +48,7 @@
+ #include <imap/smtp.h>
+ #include <imap/nntp.h>
+ 
++int maildir_file_path(char *name, char *tmp);
+ 
+ /* this is used in pine_send and pine_simple_send */
+ /* name::type::canedit::writehdr::localcopy::rcptto */
+--- pith/pattern.c	2012-10-11 11:21:48.069603095 +0000
++++ pith/pattern.c	2012-10-11 11:44:19.868974380 +0000
+@@ -91,6 +91,7 @@
+ ACTION_S   *combine_inherited_role_guts(ACTION_S *);
+ int	    move_filtered_msgs(MAILSTREAM *, MSGNO_S *, char *, int, char *);
+ void        set_some_flags(MAILSTREAM *, MSGNO_S *, long, char **, char **, int, char *);
++int         maildir_file_path(char *name, char *tmp);
+ 
+ 
+ /*
+--- pith/folder.c	2012-10-15 08:19:22.933383126 +0000
++++ pith/folder.c	2012-10-15 08:19:06.314585696 +0000
+@@ -28,6 +28,7 @@
+ #include "../pith/status.h"
+ #include "../pith/busy.h"
+ #include "../pith/mailindx.h"
++#include <imap/utf8aux.h>
+ 
+ 
+ typedef struct _build_folder_list_data {
+--- pith/state.c	2012-10-15 08:31:20.378623246 +0000
++++ pith/state.c	2012-10-15 08:38:07.089630169 +0000
+@@ -38,6 +38,7 @@
+  * Globals referenced throughout pine...
+  */
+ struct pine *ps_global;				/* THE global variable! */
++extern void free_allowed_qstr(void);
+ 
+ #ifdef	DEBUG
+ /*

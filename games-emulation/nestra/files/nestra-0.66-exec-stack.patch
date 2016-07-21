@@ -1,0 +1,10 @@
+--- x86.S.orig	2006-01-09 20:02:58.000000000 -0500
++++ x86.S	2006-01-09 20:03:38.000000000 -0500
+@@ -1458,3 +1458,7 @@
+  leal   0x1(%eax),%ebx
+  popl   %eax
+  jmp i_next
++
++#ifdef __ELF__
++.section .note.GNU-stack,"",@progbits
++#endif

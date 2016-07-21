@@ -1,0 +1,16 @@
+diff -Naur a/tls.c b/tls.c
+--- a/tls.c	2006-11-25 19:52:08.000000000 +0100
++++ b/tls.c	2015-11-10 16:16:25.000000000 +0100
+@@ -73,10 +73,12 @@
+ 		printf("egd_sock is %s\n", egd_sock);
+ #ifdef HAVE_RAND_STATUS
+ 	if (RAND_status() != 1) {
++#ifndef OPENSSL_NO_EGD
+ 		if ( RAND_egd(egd_sock) == -1 ) {
+ 			fprintf(stderr, "egd_sock is %s\n", egd_sock);
+ 			sys_err("RAND_egd failed\n");
+ 		}
++#endif
+ 		if (RAND_status() != 1)
+ 			sys_err("ssl_init: System without /dev/urandom, PRNG seeding must be done manually.\r\n");
+ 	}

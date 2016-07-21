@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Set-Scalar</remote-id>
+    <remote-id type="cpan-module">Set::Scalar</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Base</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Null</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Real</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Universe</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Valued</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::ValuedUniverse</remote-id>
+    <remote-id type="cpan-module">Set::Scalar::Virtual</remote-id>
+  </upstream>
+</pkgmetadata>

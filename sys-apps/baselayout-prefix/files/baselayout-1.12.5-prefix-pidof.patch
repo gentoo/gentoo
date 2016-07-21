@@ -1,0 +1,11 @@
+--- baselayout-1.12.5/sbin/rc-daemon.sh	2007-10-18 19:15:34 +0400
++++ baselayout-1.12.5/sbin/rc-daemon.sh	2007-10-18 19:20:32 +0400
+@@ -186,7 +186,7 @@
+ 		args="${args} '"${arg}"'"
+ 	done
+ 
+-	eval /bin/pidof -x ${args}
++	eval @GENTOO_PORTAGE_EPREFIX@/bin/pidof -x ${args}
+ }
+ 
+ # bool is_daemon_running(char* cmd, char* pidfile)

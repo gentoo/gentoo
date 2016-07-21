@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+Nebula aims to be a graphical IRC client, aimed at the unix and compatible platforms and using the motif/openmotif or the lesstif ToolKit.
+The goals are
+- portability to various unix systems (planned are already Linux, *BSD, Solaris, Irix and AIX)
+- small footprint and low system resource usage
+- speed
+- clear, non intrusive GUI
+- security
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">nebula-irc</remote-id>
+	</upstream>
+</pkgmetadata>

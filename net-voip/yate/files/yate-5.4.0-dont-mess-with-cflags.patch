@@ -1,0 +1,15 @@
+https://build.opensuse.org/package/view_file/network:telephony/yate/dont-mess-with-cflags.patch?expand=1
+
+Index: yate/configure.in
+===================================================================
+--- yate.orig/configure.in
++++ yate/configure.in
+@@ -1447,7 +1447,6 @@ fi
+ 
+ 
+ INSTALL_D="install -D"
+-CFLAGS=`echo "$CFLAGS" | sed 's/\(^\| *\)-g[[0-9]]*//' | sed 's/[[[:space:]]]\{2,\}/ /g'`
+ MODULE_CFLAGS="-fno-exceptions -fPIC $HAVE_GCC_FORMAT_CHECK $HAVE_BLOCK_RETURN"
+ MODULE_CPPFLAGS="-fno-check-new $RTTI_OPT $MODULE_CFLAGS"
+ MODULE_LDRELAX="-export-dynamic -shared"
+

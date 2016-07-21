@@ -1,0 +1,10 @@
+# /etc/conf.d/openhpid: config file for /etc/init.d/openhpid
+
+# Listening port. Default is 4743.
+#OPENHPID_PORT="4743"
+
+# Socket read timeout in seconds. Default is 1800 seconds.
+#OPENHPID_READTIMEOUT="1800"
+
+# Maximum number of connection threads. Default is unlimited.
+#OPENHPID_THREADS=""

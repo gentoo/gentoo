@@ -1,0 +1,12 @@
+diff -ur openldap-2.2.14.orig/servers/slapd/back-perl/Makefile.in openldap-2.2.14/servers/slapd/back-perl/Makefile.in
+--- openldap-2.2.14.orig/servers/slapd/back-perl/Makefile.in	2004-04-12 11:20:14.000000000 -0700
++++ openldap-2.2.14/servers/slapd/back-perl/Makefile.in	2004-06-20 18:43:41.000000000 -0700
+@@ -31,7 +31,7 @@
+ 
+ shared_LDAP_LIBS = $(LDAP_LIBLDAP_R_LA) $(LDAP_LIBLBER_LA)
+ NT_LINK_LIBS = -L.. -lslapd $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS)
+-UNIX_LINK_LIBS = $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS)
++UNIX_LINK_LIBS = $(@BUILD_LIBS_DYNAMIC@_LDAP_LIBS) `perl -MExtUtils::Embed -e ldopts`
+ 
+ LIBBASE = back_perl
+ 

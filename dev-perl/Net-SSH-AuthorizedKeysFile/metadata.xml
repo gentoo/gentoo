@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-SSH-AuthorizedKeysFile</remote-id>
+    <remote-id type="cpan-module">Net::SSH::AuthorizedKey</remote-id>
+    <remote-id type="cpan-module">Net::SSH::AuthorizedKey::Base</remote-id>
+    <remote-id type="cpan-module">Net::SSH::AuthorizedKey::SSH1</remote-id>
+    <remote-id type="cpan-module">Net::SSH::AuthorizedKey::SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH::AuthorizedKeysFile</remote-id>
+  </upstream>
+</pkgmetadata>

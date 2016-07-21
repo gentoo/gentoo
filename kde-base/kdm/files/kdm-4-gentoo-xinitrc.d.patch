@@ -1,0 +1,19 @@
+diff -Nurp kdm-4.3.1.orig/kdm/kfrontend/genkdmconf.c kdm-4.3.1/kdm/kfrontend/genkdmconf.c
+--- kdm-4.3.1.orig/kdm/kfrontend/genkdmconf.c	2009-09-20 07:57:19.746730568 +0200
++++ kdm-4.3.1/kdm/kfrontend/genkdmconf.c	2009-09-20 08:01:17.767496412 +0200
+@@ -687,6 +687,15 @@ static const char def_session2[] =
+ "[ -f /etc/xprofile ] && . /etc/xprofile\n"
+ "[ -f $HOME/.xprofile ] && . $HOME/.xprofile\n"
+ "\n"
++"# run all system xinitrc shell scripts.\n"
++"if [ -d /etc/X11/xinit/xinitrc.d ]; then\n"
++"    for i in /etc/X11/xinit/xinitrc.d/* ; do\n"
++"        if [ -x \"$i\" ]; then\n"
++"            . \"$i\"\n"
++"        fi\n"
++"    done\n"
++"fi\n"
++"\n"
+ "case $session in\n"
+ "  \"\")\n"
+ "    exec xmessage -center -buttons OK:0 -default OK \"Sorry, $DESKTOP_SESSION is no valid session.\"\n"

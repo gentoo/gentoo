@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 38b4c15..716203d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -375,7 +375,7 @@ myemail = "calvin@users.sourceforge.net"
+ data_files = [
+     ('share/linkchecker',
+         ['config/linkcheckerrc',
+-        'doc/html/lccollection.qhc', 'doc/html/lcdoc.qch']),
++        'doc/html/lccollection.qhcp', 'doc/html/lcdoc.qhp']),
+     ('share/linkchecker/examples',
+         ['cgi-bin/lconline/leer.html.en',
+          'cgi-bin/lconline/leer.html.de',

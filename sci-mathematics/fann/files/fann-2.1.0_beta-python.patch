@@ -1,0 +1,20 @@
+--- python/setup.py.orig	2008-04-22 10:11:05.284827392 +0000
++++ python/setup.py	2008-04-22 10:13:21.668599460 +0000
+@@ -9,7 +9,7 @@
+ import os
+ 
+ NAME='pyfann'
+-VERSION='2.0.0'
++VERSION='2.1.0'
+ 
+ LONG_DESCRIPTION="""\
+ Fast Artificial Neural Network Library implements multilayer
+@@ -42,7 +42,7 @@
+     py_modules=['pyfann.libfann'],
+     ext_modules=[Extension('pyfann._libfann',['pyfann/pyfann_wrap.cxx'], 
+                             include_dirs=['../src/include'], 
+-                            extra_objects=['../src/doublefann.o'],
++                            extra_objects=['../src/.libs/doublefann.o'],
+                             define_macros=[("SWIG_COMPILE",None)]
+                             ),
+                 ]

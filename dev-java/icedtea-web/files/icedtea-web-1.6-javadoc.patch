@@ -1,0 +1,11 @@
+--- Makefile.am.orig	2015-09-11 14:02:04.245280051 +0100
++++ Makefile.am	2016-01-01 14:00:49.857225492 +0000
+@@ -652,7 +652,7 @@
+ 
+ stamps/netx-docs.stamp:
+ if ENABLE_DOCS
+-	$(SYSTEM_JDK_DIR)/bin/javadoc $(JAVADOC_MEM_OPTS) $(	_OPTS) \
++	$(SYSTEM_JDK_DIR)/bin/javadoc $(JAVADOC_MEM_OPTS) $(JAVADOC_OPTS) \
+ 	 -d ${abs_top_builddir}/docs/netx -sourcepath $(NETX_SRCDIR) \
+ 	 -doctitle 'IcedTea-Web: NetX API Specification' \
+ 	 -windowtitle 'IcedTea-Web: NetX ' \

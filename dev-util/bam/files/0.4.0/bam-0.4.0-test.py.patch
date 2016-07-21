@@ -1,0 +1,11 @@
+--- scripts/test.py.old	2010-03-22 19:23:23.000000000 +0100
++++ scripts/test.py	2010-03-22 19:23:43.000000000 +0100
+@@ -178,6 +178,8 @@
+ 	print "FAILED TESTS:"
+ 	for t in failed_tests:
+ 		print "\t"+t
++	sys.exit(1)
+ else:
+ 	print "ALL TESTS PASSED!"
++	sys.exit(0)
+ 

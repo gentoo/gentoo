@@ -1,0 +1,46 @@
+diff -ur xar-1.5.2.orig/configure.ac xar-1.5.2/configure.ac
+--- xar-1.5.2.orig/configure.ac	2007-12-29 20:49:57.000000000 +0200
++++ xar-1.5.2/configure.ac	2008-05-19 17:07:23.000000000 +0300
+@@ -181,8 +181,13 @@
+ )
+ AC_SUBST([enable_autogen])
+ 
++AC_ARG_ENABLE(acl, AC_HELP_STRING([--disable-acl], [disable support for libacl (default=autodetect)]), [ enable_acl=$enableval ], [ enable_acl=yes ])
++
++if test "x$enable_acl" = "xyes"; then
+ AC_TRY_COMPILE([#include <sys/types.h>
+ #include <sys/acl.h>], [acl_t a], [AC_DEFINE([HAVE_SYS_ACL_H],[1], [define if you have sys/acl.h and it has a working acl_t type])])
++fi
++
+ AC_CHECK_HEADERS(ext2fs/ext2_fs.h sys/statfs.h sys/xattr.h sys/param.h sys/extattr.h libutil.h)
+ AC_CHECK_FUNCS(lgetxattr)
+ AC_CHECK_FUNCS(lsetxattr)
+@@ -251,7 +256,9 @@
+ AC_ERROR(can not detect the size of your system's dev_t type)
+ fi
+ 
+-AC_CHECK_LIB(acl, acl_get_file)
++if test "x$enable_acl" = "xyes"; then
++  AC_CHECK_LIB(acl, acl_get_file)
++fi
+ 
+ dnl Check for paths
+ AC_PREFIX_DEFAULT(/usr/local)
+@@ -342,9 +349,14 @@
+ dnl 
+ dnl Configure libbz2.
+ dnl 
+-have_libbz2="1"
+-AC_CHECK_HEADERS([bzlib.h], , [have_libbz2="0"])
+-AC_CHECK_LIB([bz2], [BZ2_bzCompress], , [have_libbz2="0"])
++AC_ARG_ENABLE(bzip2, AC_HELP_STRING([--disable-bzip2], [disable support for libbz2 (default=autodetect)]), [ enable_bzip2=$enableval ], [ enable_bzip2=yes ])
++
++if test "x$enable_bzip2" = "xyes"; then
++  have_libbz2="1"
++  AC_CHECK_HEADERS([bzlib.h], , [have_libbz2="0"])
++  AC_CHECK_LIB([bz2], [BZ2_bzCompress], , [have_libbz2="0"])
++fi
++
+ if test "x${have_libbz2}" = "x1" ; then
+   AC_DEFINE([HAVE_LIBBZ2])
+ fi

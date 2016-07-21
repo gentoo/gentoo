@@ -1,0 +1,52 @@
+--- main.c.orig	2004-02-21 07:31:53.000000000 +0900
++++ main.c	2005-03-06 16:34:27.949346504 +0900
+@@ -68,6 +68,7 @@
+ "  --solid          make background a solid color, not shaded-transparent\n" \
+ "  --topdown        insert lines at the top and scroll the rest down\n" \
+ "  --wrap           wrap long lines, instead of cutting them off\n" \
++"  --noversion      do not display xrootwindow version in output\n" \
+ "  -h or --help     a familiar-looking help screen\n" \
+ "  -v or --version  displays the version number\n" \
+ "  [console]        filename to read (defaults to standard input)\n" \
+@@ -102,6 +103,7 @@
+     int wrap;
+     int topdown;
+     int solid;
++    int show_version;
+ } InitOptions;
+ 
+ typedef struct {
+@@ -219,6 +221,7 @@
+     io->wrap = DEFAULT_WRAP;
+     io->topdown = DEFAULT_TOPDOWN;
+     io->solid = DEFAULT_SOLID;
++    io->show_version = 1;
+      
+     /* Process command-line arguments */
+     while (*++argv != NULL) {
+@@ -236,6 +239,8 @@
+             io->bw = atoi(*++argv);
+         else if (!strcmp(*argv, "-columns") || !strcmp(*argv, "-c"))
+             io->tc = atoi(*++argv);
++        else if (!strcmp(*argv, "--noversion"))
++            io->show_version = 0;
+         else if (!strcmp(*argv, "--solid"))
+             io->solid = True;
+         else if (!strcmp(*argv, "--wrap"))
+@@ -560,10 +565,12 @@
+     init_console(io.console_name, ws.colwidth, ws.nlines, &cs);
+ 
+     /* Display a message */
+-    put("xrootconsole ",&io,&ws,&cs);
+-    put(XROOTCONSOLE_VERSION,&io,&ws,&cs);
+-    put("\n",&io,&ws,&cs);
+-    
++    if (io.show_version) {
++        put("xrootconsole ",&io,&ws,&cs);
++        put(XROOTCONSOLE_VERSION,&io,&ws,&cs);
++        put("\n",&io,&ws,&cs);
++    }
++
+     draw_pixmap(&io,&ws,&cs);
+ 
+     event_loop(&io,&ws,&cs);

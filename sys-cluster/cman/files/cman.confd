@@ -1,0 +1,67 @@
+CCSD_OPTS=
+
+# CMAN_CLUSTER_TIMEOUT -- amount of time to wait for joinging a cluster
+#     before giving up.  If CMAN_CLUSTER_TIMEOUT is positive, then we will
+#     wait CMAN_CLUSTER_TIMEOUT seconds before giving up and failing when
+#     a cluster is not joined.  If CMAN_CLUSTER_TIMEOUT is zero, then
+#     wait indefinately for a cluster join.  If CMAN_CLUSTER_TIMEOUT is
+#     negative, do not check to see that the cluster has been joined
+CMAN_CLUSTER_TIMEOUT=120
+
+# CMAN_QUORUM_TIMEOUT -- amount of time to wait for a quorate cluster on
+#     startup quorum is needed by many other applications, so we may as
+#     well wait here.  If CMAN_QUORUM_TIMEOUT is less than 1, quorum will
+#     be ignored.
+CMAN_QUORUM_TIMEOUT=300
+
+# CMAN_SHUTDOWN_TIMEOUT -- amount of time to wait for cman to become a
+#     cluster member before calling cman_tool leave during shutdown.
+#     default is 60 seconds
+CMAN_SHUTDOWN_TIMEOUT=60
+
+# CMAN_JOIN_OPTIONS
+#CMAN_JOIN_OPTS="-c ...."
+
+# CMAN_LEAVE_OPTIONS
+#CMAN_LEAVE_OPTS=""
+
+
+# ex: FENCED_OPTS="-w -t 300"
+FENCED_OPTS=""
+
+
+# TODO ?
+# CMAN_NOTIFYD_START - control the startup behaviour for cmannotifyd
+# the variable can take 3 values:
+# yes                   | will always start cmannotifyd
+# no                    | will never start cmannotifyd
+# conditional (default) | will start cmannotifyd only if scriptlets
+#                         are found in @NOTIFYDDIR@
+[ -z "$CMAN_NOTIFYD_START" ] && CMAN_NOTIFYD_START=conditional
+
+# CMAN_SSHD_START - control sshd startup behaviour
+# the variable can take 2 values:
+# yes                   | cman will start sshd as early as possible
+# no (default)          | cman will not start sshd
+[ -z "$CMAN_SSHD_START" ] && CMAN_SSHD_START=no
+
+# FENCE_JOIN_TIMEOUT -- seconds to wait for fence domain join to
+#     complete.  If the join hasn't completed in this time, fence_tool join
+#     exits with an error, and this script exits with an error.  To wait
+#     indefinitely set the value to -1.
+[ -z "$FENCE_JOIN_TIMEOUT" ] && FENCE_JOIN_TIMEOUT=20
+
+# FENCED_MEMBER_DELAY -- amount of time to delay fence_tool join to allow
+#     all nodes in cluster.conf to become cluster members.  In seconds.
+[ -z "$FENCED_MEMBER_DELAY" ] && FENCED_MEMBER_DELAY=45
+
+# FENCE_JOIN -- boolean value used to control whether or not this node
+#     should join the fence domain. If FENCE_JOIN is set to "no", then
+#     the script will not attempt to the fence domain. If FENCE_JOIN is
+#     set to "yes", then the script will attempt to join the fence domain.
+#     If FENCE_JOIN is set to any other value, the default behavior is
+#     to join the fence domain (equivalent to "yes").
+[ -z "$FENCE_JOIN" ] && FENCE_JOIN="yes"
+
+# FENCED_OPTS -- allow extra options to be passed to fence daemon.
+[ -z "$FENCED_OPTS" ] && FENCED_OPTS=""

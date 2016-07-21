@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SGMLSpm</remote-id>
+    <remote-id type="cpan-module">SGMLS</remote-id>
+    <remote-id type="cpan-module">SGMLS::Output</remote-id>
+    <remote-id type="cpan-module">SGMLS::Refs</remote-id>
+    <remote-id type="cpan-module">SGMLS_Attribute</remote-id>
+    <remote-id type="cpan-module">SGMLS_Element</remote-id>
+    <remote-id type="cpan-module">SGMLS_Entity</remote-id>
+    <remote-id type="cpan-module">SGMLS_Event</remote-id>
+    <remote-id type="cpan-module">SGMLS_Notation</remote-id>
+  </upstream>
+</pkgmetadata>

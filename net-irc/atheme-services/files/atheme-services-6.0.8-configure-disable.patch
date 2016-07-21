@@ -1,0 +1,116 @@
+From be144253c54b41d9b2f3929f12025457f66ce288 Mon Sep 17 00:00:00 2001
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+Date: Mon, 13 Jun 2011 22:25:47 -0400
+Subject: [PATCH] Fix remaining AC_ARG_ENABLEs so that --disable-<feature> does not produce the same effect as --enable-<feature>.
+
+Fixes --disable-warnings, --disable-propolice, and --disable-profile. (Problems with --disable-profile resulted in https://bugs.gentoo.org/371119).
+---
+ configure    |   21 +++++++++++++++++----
+ configure.ac |   18 ++++++++++++------
+ 2 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/configure b/configure
+index a3337e0..9bd0428 100755
+--- a/configure
++++ b/configure
+@@ -8360,7 +8360,11 @@ $as_echo "no" >&6; }
+ 
+ # Check whether --enable-warnings was given.
+ if test "${enable_warnings+set}" = set; then :
+-  enableval=$enable_warnings;
++  enableval=$enable_warnings; enable_warnings=no
++fi
++
++if test "x$enable_warnings" = "xyes"; then :
++
+ 
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking GCC flag(s) -Wall" >&5
+ $as_echo_n "checking GCC flag(s) -Wall... " >&6; }
+@@ -9335,10 +9339,15 @@ $as_echo "no" >&6; }
+ 
+ fi
+ 
+-
+ # Check whether --enable-propolice was given.
+ if test "${enable_propolice+set}" = set; then :
+   enableval=$enable_propolice;
++else
++  enable_propolice=no
++fi
++
++if test "x$enable_propolice" = "xyes"; then :
++
+ 
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking GCC flag(s) -fno-stack-protector-all" >&5
+ $as_echo_n "checking GCC flag(s) -fno-stack-protector-all... " >&6; }
+@@ -9546,10 +9555,15 @@ $as_echo "no" >&6; }
+ 
+ fi
+ 
+-
+ # Check whether --enable-profile was given.
+ if test "${enable_profile+set}" = set; then :
+   enableval=$enable_profile;
++else
++  enable_profile=no
++fi
++
++if test "x$enable_profile" = "xyes"; then :
++
+ 
+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking GCC flag(s) -pg" >&5
+ $as_echo_n "checking GCC flag(s) -pg... " >&6; }
+@@ -9606,7 +9620,6 @@ LDFLAGS=${ac_save_LDFLAGS}
+ 
+ fi
+ 
+-
+ ac_save_CPPFLAGS="${CFLAGS} ${orig_CFLAGS} ${CWARNS} -DPREFIX=\\\"\${prefix}\\\" -DLOCALEDIR=\\\"\${LOCALEDIR}\\\" -DMODDIR=\\\"\${MODDIR}\\\" -DSHAREDIR=\\\"${SHAREDIR}\\\" -DSYSCONFDIR=\\\"${sysconfdir}\\\" -DLOGDIR=\\\"${LOGDIR}\\\" -DRUNDIR=\\\"${RUNDIR}\\\" -DDATADIR=\\\"${DATADIR}\\\""
+ CPPFLAGS=${ac_save_CPPFLAGS}
+ 
+diff --git a/configure.ac b/configure.ac
+index a8baa2e..36195ce 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -484,8 +484,10 @@ AC_SUBST(PICFLAGS)
+ ATHEME_C_GCC_TRY_FLAGS([-std=gnu99], atheme_cv_c_gcc_std_gnu99)
+ ATHEME_C_GCC_TRY_FLAGS([-Werror-implicit-function-declaration], atheme_cv_c_gcc_w_error_implicit_function_declaration)
+ 
+-AC_ARG_ENABLE(warnings,
+-AC_HELP_STRING([--enable-warnings],[ Enable compiler warnings]),
++AC_ARG_ENABLE([warnings],
++	[AS_HELP_STRING([--enable-warnings],[ Enable compiler warnings])],
++	[enable_warnings=no])
++AS_IF([test "x$enable_warnings" = "xyes"],
+ [
+ dnl See what warnings we can get away with
+ ATHEME_C_GCC_TRY_FLAGS([-Wall], atheme_cv_c_gcc_w_all)
+@@ -519,8 +521,10 @@ dnl ATHEME_C_GCC_TRY_FLAGS([-Wwrite-strings], atheme_cv_c_gcc_w_strings)
+ dnl ATHEME_C_GCC_TRY_FLAGS([-Werror], atheme_cv_c_gcc_w_error)
+ ])
+ 
+-AC_ARG_ENABLE(propolice,
+-AC_HELP_STRING([--disable-propolice],[ Disable propolice protections (for debugging.)]),
++AC_ARG_ENABLE([propolice],
++	[AS_HELP_STRING([--disable-propolice],[ Disable propolice protections (for debugging.)])],
++	[], [enable_propolice=no])
++AS_IF([test "x$enable_propolice" = "xyes"],
+ [
+ ATHEME_C_GCC_TRY_FLAGS([-fno-stack-protector-all], atheme_cv_nspa)
+ ATHEME_C_GCC_TRY_FLAGS([-fno-pie], atheme_cv_npie)
+@@ -528,8 +532,10 @@ ATHEME_C_GCC_TRY_FLAGS([-nonow], atheme_cv_nonow)
+ ATHEME_C_GCC_TRY_FLAGS([-norelro], atheme_cv_no_relro)
+ ])
+ 
+-AC_ARG_ENABLE(profile,
+-AC_HELP_STRING([--enable-profile],[ Enable profiling extensions]),
++AC_ARG_ENABLE([profile],
++	[AS_HELP_STRING([--enable-profile],[ Enable profiling extensions])],
++	[], [enable_profile=no])
++AS_IF([test "x$enable_profile" = "xyes"],
+ [
+ ATHEME_C_GCC_TRY_FLAGS([-pg], atheme_cv_pg)
+ ac_save_LDFLAGS="${LDFLAGS} -pg"
+-- 
+1.7.3.4
+

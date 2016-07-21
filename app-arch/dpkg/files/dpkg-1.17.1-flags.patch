@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,8 +104,6 @@
+ # Checks for the build machinery.
+ AC_DEFINE(LIBDPKG_VOLATILE_API, 1, [Acknowledge the volatility of the API.])
+ DPKG_COMPILER_WARNINGS
+-DPKG_COMPILER_OPTIMISATIONS
+-DPKG_LINKER_OPTIMISATIONS
+ DPKG_ARCHITECTURE
+ 
+ AC_CONFIG_FILES([ Makefile

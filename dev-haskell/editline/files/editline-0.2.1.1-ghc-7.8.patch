@@ -1,0 +1,13 @@
+diff --git a/System/Console/Editline/Readline.hsc b/System/Console/Editline/Readline.hsc
+index 1ea9d6c..3b95b59 100644
+--- a/System/Console/Editline/Readline.hsc
++++ b/System/Console/Editline/Readline.hsc
+@@ -173,7 +173,7 @@ import Foreign.Marshal.Array ( mallocArray, peekArray0, pokeArray0 )
+ import Foreign.C.Types	( CInt(..), CChar, CFile )
+ import Foreign.C.String	( newCString, peekCString, withCString,
+ 			  castCharToCChar, castCCharToChar )
+-import GHC.Handle	( fdToHandle )
++import GHC.IO.Handle.FD	( fdToHandle )
+ 
+ {-# CFILES HsReadline_cbits.c #-}
+ 

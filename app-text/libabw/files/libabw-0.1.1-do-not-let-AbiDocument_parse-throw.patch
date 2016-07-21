@@ -1,0 +1,35 @@
+From: David Tardon <dtardon@redhat.com>
+Date: Sat, 20 Dec 2014 17:40:45 +0000 (+0100)
+Subject: coverity#1259905 do not let AbiDocument::parse throw
+X-Git-Url: https://gerrit.libreoffice.org/gitweb?p=libabw.git;a=commitdiff_plain;h=2f372e8adf8e6b1f8cf70f08adddcf66be54d94a
+
+coverity#1259905 do not let AbiDocument::parse throw
+
+This also fixes coverity#1259906 and coverity#1259907 .
+
+Change-Id: I55d892517ac93ca43478d51d8e4a20c704ff6790
+---
+
+diff --git a/src/lib/AbiDocument.cpp b/src/lib/AbiDocument.cpp
+index b8ab661..23ff750 100644
+--- a/src/lib/AbiDocument.cpp
++++ b/src/lib/AbiDocument.cpp
+@@ -110,7 +110,7 @@ is not protected
+ \return A value that indicates whether the conversion was successful and in case it
+ was not, it indicates the reason of the error
+ */
+-ABWAPI bool libabw::AbiDocument::parse(librevenge::RVNGInputStream *input, librevenge::RVNGTextInterface *textInterface)
++ABWAPI bool libabw::AbiDocument::parse(librevenge::RVNGInputStream *input, librevenge::RVNGTextInterface *textInterface) try
+ {
+   ABW_DEBUG_MSG(("AbiDocument::parse\n"));
+   if (!input)
+@@ -122,4 +122,9 @@ ABWAPI bool libabw::AbiDocument::parse(librevenge::RVNGInputStream *input, libre
+     return true;
+   return false;
+ }
++catch (...)
++{
++  return false;
++}
++
+ /* vim:set shiftwidth=2 softtabstop=2 expandtab: */

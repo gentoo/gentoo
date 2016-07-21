@@ -1,0 +1,77 @@
+--- a/src/include/tcsps.h
++++ b/src/include/tcsps.h
+@@ -23,13 +23,8 @@ int		   get_file();
+ int		   put_file(int);
+ void		   close_file(int);
+ void		   ps_destroy();
+-#ifdef SOLARIS
+-TSS_RESULT  read_data(int, void *, UINT32);
+-TSS_RESULT  write_data(int, void *, UINT32);
+-#else
+-inline TSS_RESULT  read_data(int, void *, UINT32);
+-inline TSS_RESULT  write_data(int, void *, UINT32);
+-#endif
++TSS_RESULT	   read_data(int, void *, UINT32);
++TSS_RESULT	   write_data(int, void *, UINT32);
+ int		   write_key_init(int, UINT32, UINT32, UINT32);
+ TSS_RESULT	   cache_key(UINT32, UINT16, TSS_UUID *, TSS_UUID *, UINT16, UINT32, UINT32);
+ TSS_RESULT	   UnloadBlob_KEY_PS(UINT16 *, BYTE *, TSS_KEY *);
+--- a/src/include/tspps.h
++++ b/src/include/tspps.h
+@@ -18,8 +18,8 @@
+ 
+ TSS_RESULT	   get_file(int *);
+ int		   put_file(int);
+-inline TSS_RESULT  read_data(int, void *, UINT32);
+-inline TSS_RESULT  write_data(int, void *, UINT32);
++TSS_RESULT	   read_data(int, void *, UINT32);
++TSS_RESULT	   write_data(int, void *, UINT32);
+ UINT32		   psfile_get_num_keys(int);
+ TSS_RESULT	   psfile_get_parent_uuid_by_uuid(int, TSS_UUID *, TSS_UUID *);
+ TSS_RESULT	   psfile_remove_key_by_uuid(int, TSS_UUID *);
+--- a/src/tcs/ps/ps_utils.c
++++ b/src/tcs/ps/ps_utils.c
+@@ -42,11 +42,7 @@
+ struct key_disk_cache *key_disk_cache_head = NULL;
+ 
+ 
+-#ifdef SOLARIS
+ TSS_RESULT
+-#else
+-inline TSS_RESULT
+-#endif
+ read_data(int fd, void *data, UINT32 size)
+ {
+ 	int rc;
+@@ -64,11 +60,7 @@ read_data(int fd, void *data, UINT32 size)
+ }
+ 
+ 
+-#ifdef SOLARIS
+ TSS_RESULT
+-#else
+-inline TSS_RESULT
+-#endif
+ write_data(int fd, void *data, UINT32 size)
+ {
+ 	int rc;
+--- a/src/tspi/ps/ps_utils.c
++++ b/src/tspi/ps/ps_utils.c
+@@ -22,7 +22,7 @@
+ #include "tspps.h"
+ #include "tsplog.h"
+ 
+-inline TSS_RESULT
++TSS_RESULT
+ read_data(int fd, void *data, UINT32 size)
+ {
+ 	int rc;
+@@ -39,7 +39,7 @@ read_data(int fd, void *data, UINT32 size)
+ 	return TSS_SUCCESS;
+ }
+ 
+-inline TSS_RESULT
++TSS_RESULT
+ write_data(int fd, void *data, UINT32 size)
+ {
+ 	int rc;

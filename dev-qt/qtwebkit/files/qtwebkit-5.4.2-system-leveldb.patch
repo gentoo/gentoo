@@ -1,0 +1,25 @@
+Correct header location so system dev-libs/leveldb can be detected.
+
+--- a/Tools/qmake/config.tests/leveldb/leveldb.cpp
++++ b/Tools/qmake/config.tests/leveldb/leveldb.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include <leveldb/db.h>
+ #include <leveldb/env.h>
+-#include <helpers/memenv/memenv.h>
++#include <leveldb/helpers/memenv.h>
+ 
+ int main(int, char**)
+ {
+
+--- a/Source/WebCore/platform/leveldb/LevelDBDatabase.cpp
++++ b/Source/WebCore/platform/leveldb/LevelDBDatabase.cpp
+@@ -38,7 +38,7 @@
+ #include <leveldb/comparator.h>
+ #include <leveldb/db.h>
+ #include <leveldb/env.h>
+-#include <helpers/memenv/memenv.h>
++#include <leveldb/helpers/memenv.h>
+ #include <leveldb/slice.h>
+ #include <string>
+ #include <wtf/PassOwnPtr.h>

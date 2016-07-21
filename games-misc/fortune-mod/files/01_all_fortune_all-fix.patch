@@ -1,0 +1,21 @@
+--- fortune/fortune.c.old	2006-03-11 15:33:14.000000000 +0100
++++ fortune/fortune.c	2006-03-11 15:43:16.000000000 +0100
+@@ -974,7 +974,7 @@
+ 	  if (!ret)
+ 	    ret=add_file(percent, fullpathname, NULL, &File_list,
+ 			 &File_tail, NULL);
+-	  if ( (!ret && fullpathname != locpathname) || strcmp(sp, "all") == 0 )
++	  if (!ret && strncmp(fullpathname, locpathname, sizeof(fullpathname)))
+ 	    ret=add_file(percent, locpathname, NULL, &File_list,
+ 		         &File_tail, NULL);
+ 	  
+@@ -985,7 +985,8 @@
+ 	  }
+ 	  if (!ret)
+ 	    return FALSE;
+-	  
++	  if (strncmp(fullpathname, locpathname, sizeof(fullpathname)) && strcmp(sp, "all") == 0)
++	    add_file(percent, locpathname, NULL, &File_list, &File_tail, NULL);
+ 	}
+ 	else
+ 	  if (!add_file(percent, fullpathname, NULL, &File_list,

@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/520888
+http://sourceforge.net/p/fink/package-submissions/4336/
+
+--- lib/jfifcontainer.cpp
++++ lib/jfifcontainer.cpp
+@@ -145,7 +145,7 @@
+ 		{
+ 			int ret = 0;
+ 			if (::setjmp(m_jpegjmp) == 0) {
+-				ret = JPEG::jpeg_read_header(&m_cinfo, TRUE);
++				ret = JPEG::jpeg_read_header(&m_cinfo, JPEG::TRUE);
+ 				//Trace(DEBUG1) << "jpeg_read_header " << ret << "\n";
+ 				
+ 				JPEG::jpeg_calc_output_dimensions(&m_cinfo);
+@@ -181,7 +181,7 @@
+ 				src->pub.next_input_byte = NULL;
+ 				src->pub.bytes_in_buffer = 0;
+ 			}
+-			return TRUE;
++			return JPEG::TRUE;
+ 		}
+ 
+ 

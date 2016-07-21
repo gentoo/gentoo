@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  zmac is a Z80 macro cross-assembler. It has all the features you'd expect.
+  It assembles the specified input file and produces raw binary output.
+  (It can optionally produce CP/M-style Intel hex format.) By default it
+  also produces a nicely-formatted listing of the m/c alongside the source.
+
+  As well as normal Z80 programs, zmac lets you write 8080 programs in Z80
+  assembly.
+</longdescription>
+</pkgmetadata>

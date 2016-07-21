@@ -1,0 +1,22 @@
+--- a/src/net_uuid.c
++++ b/src/net_uuid.c
+@@ -28,6 +28,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <unistd.h> /* read(), close() */
+ 
+ #if defined(HAVE_INTTYPES_H)
+ #include <inttypes.h>
+--- a/src/netlib.c
++++ b/src/netlib.c
+@@ -81,6 +81,9 @@
+ #include <endian.h>
+ #endif
+ 
++#if defined(HAVE_SENDFILE)
++#include <sys/sendfile.h> /* sendfile() */
++#endif
+ 
+ #ifndef WIN32
+  /* at some point, I would like to get rid of all these "sys/"

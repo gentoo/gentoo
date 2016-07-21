@@ -1,0 +1,5 @@
+KERNEL=="umad*", NAME="infiniband/%k"
+KERNEL=="issm*", NAME="infiniband/%k"
+KERNEL=="uverbs*", NAME="infiniband/%k", MODE="0666"
+KERNEL=="ucm*", NAME="infiniband/%k", MODE="0666"
+KERNEL=="rdma_cm", NAME="infiniband/%k", MODE="0666"

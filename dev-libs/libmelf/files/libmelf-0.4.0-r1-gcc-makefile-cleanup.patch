@@ -1,0 +1,105 @@
+diff -Nuar --exclude '*~' libmelf-0.4.0.orig/example/Makefile.in libmelf-0.4.0/example/Makefile.in
+--- libmelf-0.4.0.orig/example/Makefile.in	2003-03-24 00:48:22.000000000 -0800
++++ libmelf-0.4.0/example/Makefile.in	2010-05-31 19:56:43.546947560 -0700
+@@ -1,7 +1,13 @@
+ cc=@CC@
+ DEFINES=@DEFINES@
++OPTFLAGS=-Wall -O3
++CFLAGS=${DEFINES} ${OPTFLAGS} -I..
++BINS = sign test new
+ 
+-all:
+-	${CC} ${DEFINES} -I.. -Wall -O3 sign.c -o sign ../libmelf.a
+-	${CC} ${DEFINES} -I.. -Wall -O3 test.c -o test ../libmelf.a
+-	${CC} ${DEFINES} -I.. -Wall -O3 new.c -o new ../libmelf.a
++%: %.c
++	${CC} $(CFLAGS) $^ -o $@ -L.. -lmelf
++
++all: $(BINS)
++
++clean:
++	-rm -f $(BINS)
+diff -Nuar --exclude '*~' libmelf-0.4.0.orig/Makefile.in libmelf-0.4.0/Makefile.in
+--- libmelf-0.4.0.orig/Makefile.in	2003-11-07 22:09:10.000000000 -0800
++++ libmelf-0.4.0/Makefile.in	2010-05-31 19:58:12.172822406 -0700
+@@ -6,35 +6,43 @@
+ DEFINES=@DEFINES@ -DMELF_COMP
+ INCLUDES=-I.
+ PREFIX=@PREFIX@
+-CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -fPIC
+-LFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} -Wall -O3 -o
++OPTFLAGS=-Wall -O3
++CFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} ${OPTFLAGS}
++LFLAGS=${DEBUG} ${DEFINES} ${INCLUDES} ${OPTFLAGS} -o
++LIBDIR=lib
+ LIBS=
+ OBJS=melf.o melf_dynamic.o melf_elf.o melf_list.o melf_note.o melf_program.o melf_reloc.o \
+ 	  melf_res.o melf_section.o melf_string.o melf_symbol.o melf_symbolTable.o
+ 
+-all: ${OBJS}
+-	ar rc ${STATICBIN} ${OBJS} && ranlib ${STATICBIN}
+-	@SHAREDEXEC@
+-	cd example && make
+-	cd tools && make
++all: ${STATICBIN} ${DYNAMICBIN}
++	cd example && $(MAKE)
++	cd tools && $(MAKE)
+ 
+ *.c.${O}:
+ 	${CC} ${CFLAGS} $*.c
+ 
++${STATICBIN}: ${OBJS}
++	ar rc ${STATICBIN} ${OBJS} && ranlib ${STATICBIN}
++${DYNAMICBIN}: ${OBJS}
++	@SHAREDEXEC@
++
+ clean:
+ 	rm -f *.o ${STATICBIN} ${DYNAMICBIN} example/test example/new example/sign tools/elfres config.*
+-	cd tools && make clean
++	cd tools && $(MAKE) clean
+ 
+-distclean:
+-	make clean
++distclean: clean
+ 	rm -f Makefile example/Makefile stdelf.h
+-	cd tools && make distclean
++	cd tools && $(MAKE) distclean
+ 
+ install: ${OBJS} ${STATICBIN}
+-	cp libmelf.a ${PREFIX}/lib
+-	cp libmelf.so ${PREFIX}/lib
++	cp ${STATICBIN} ${PREFIX}/$(LIBDIR)
++	cp ${DYNAMICBIN} ${PREFIX}/$(LIBDIR)
+ 	cp melf.h ${PREFIX}/include
+ 	cp stdelf.h ${PREFIX}/include
+ 
+ uninstall:
+-	rm -f ${PREFIX}/lib/libmelf.a ${PREFIX}/lib/libmelf.so ${PREFIX}/include/melf.h ${PREFIX}/include/stdelf.h
++	-rm -f \
++		${PREFIX}/$(LIBDIR)/${STATICBIN} \
++		${PREFIX}/$(LIBDIR)/${DYNAMICBIN} \
++		${PREFIX}/include/melf.h \
++		${PREFIX}/include/stdelf.h
+diff -Nuar --exclude '*~' libmelf-0.4.0.orig/tools/Makefile.in libmelf-0.4.0/tools/Makefile.in
+--- libmelf-0.4.0.orig/tools/Makefile.in	2003-09-17 01:03:49.000000000 -0700
++++ libmelf-0.4.0/tools/Makefile.in	2010-05-31 19:57:55.126198024 -0700
+@@ -1,11 +1,15 @@
+ cc=@CC@
+ DEFINES=@DEFINES@
++CFLAGS=${DEFINES} ${OPTFLAGS} -I..
++BINS=elfres
+ 
+-all:
+-	${CC} ${DEFINES} -I.. -Wall -O3 elfres.c -o elfres ../libmelf.a
++%: %.c
++	${CC} $(CFLAGS) $^ -o $@ -L.. -lmelf
++
++all: $(BINS)
+ 
+ clean:
+-	rm -f elfres
++	-rm -f $(BINS)
+ 
+ distclean:	
+-	rm -f elfres Makefile
++	-rm -f $(BINS) Makefile

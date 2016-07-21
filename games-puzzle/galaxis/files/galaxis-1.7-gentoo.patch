@@ -1,0 +1,83 @@
+diff -ru galaxis-1.7.orig/Makefile galaxis-1.7/Makefile
+--- galaxis-1.7.orig/Makefile	2003-12-29 04:09:53.000000000 -0500
++++ galaxis-1.7/Makefile	2010-10-18 13:08:43.929375025 -0400
+@@ -3,9 +3,8 @@
+ VERS=$(shell sed <galaxis.spec -n -e '/Version: \(.*\)/s//\1/p')
+ 
+ # Flags for use with the Linux ncurses package (recommended)
+-CFLAGS = -g -DNDEBUG  # -I/usr/local/include -L/usr/local/lib
++CFLAGS += -DNDEBUG  # -I/usr/local/include -L/usr/local/lib
+ TERMLIB = -lncurses
+-CC = gcc
+ 
+ # Flags for use with stock curses
+ #CFLAGS = -DNDEBUG
+@@ -13,7 +12,7 @@
+ #CC = gcc
+ 
+ galaxis: galaxis.c
+-	$(CC) $(CFLAGS) -o galaxis galaxis.c $(TERMLIB)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o galaxis galaxis.c $(TERMLIB)
+ 
+ galaxis.6: galaxis.xml
+ 	xmlto man galaxis.xml
+diff -ru galaxis-1.7.orig/galaxis.c galaxis-1.7/galaxis.c
+--- galaxis-1.7.orig/galaxis.c	2003-12-26 23:19:20.000000000 -0500
++++ galaxis-1.7/galaxis.c	2010-10-18 13:10:03.575307583 -0400
+@@ -8,6 +8,10 @@
+ #define _POSIX_SOURCE
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <time.h>
++#include <string.h>
+ #include <termios.h>
+ #include <curses.h>
+ #include <signal.h>
+@@ -29,7 +33,6 @@
+ extern long lrand48();
+ extern void srand48();
+ #define bzero(s, n)	(void)memset((char *)(s), '\0', n)
+-extern char *memset();
+ /*
+  * Try this if ungetch() fails to resolve.
+  *
+@@ -167,16 +170,17 @@
+ }		    
+ 
+ /* VARARGS1 */
+-static void prompt(f, s)
++static void prompt(s)
+ /* print a message at the prompt line */
+-char *f, *s;
++char *s;
+ {
+     (void) move(PROMPTLINE, 0);
+     (void) clrtoeol();
+-    (void) printw(f, s);
++    (void) printw("%s", s);
+     (void) refresh();
+ }
+ 
++#if 0
+ static void error(s)
+ char *s;
+ {
+@@ -188,6 +192,7 @@
+ 	(void) beep();
+     }
+ }
++#endif
+ 
+ static int rnd(n)
+ int n;
+@@ -647,7 +652,7 @@
+     }
+ }
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int argc;
+ char *argv[];
+ {

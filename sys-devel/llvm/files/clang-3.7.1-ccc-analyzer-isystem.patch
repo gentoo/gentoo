@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/586168
+
+Index: tools/clang/tools/scan-build/ccc-analyzer
+===================================================================
+--- a/tools/clang/tools/scan-build/ccc-analyzer	(revision 250980)
++++ b/tools/clang/tools/scan-build/ccc-analyzer	(working copy)
+@@ -586,9 +586,9 @@
+   }
+ 
+   # Compile mode flags.
+-  if ($Arg =~ /^-[D,I,U,isystem](.*)$/) {
++  if ($Arg =~ /^-(D|I|U|isystem)(.*)$/) {
+     my $Tmp = $Arg;
+-    if ($1 eq '') {
++    if ($2 eq '') {
+       # FIXME: Check if we are going off the end.
+       ++$i;
+       $Tmp = $Arg . $ARGV[$i];

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>scheme@gentoo.org</email>
+	<name>Gentoo Scheme Project</name>
+</maintainer>
+<longdescription lang="en">
+	Text files are nowadays usually encoded in Unicode, and may consist of very
+	different scripts – from Latin letters to Chinese Hanzi –, with many kinds
+	of special characters – accents, right-to-left writing marks, hyphens, Roman
+	numbers, and much more. But the POSIX platform APIs for text do not contain
+	adequate functions for dealing with particular properties of many Unicode
+	characters. In fact, the POSIX APIs for text have several assumptions at
+	their base which don't hold for Unicode text.
+	This library provides functions for manipulating Unicode strings and for
+	manipulating C strings according to the Unicode standard.
+</longdescription>
+</pkgmetadata>

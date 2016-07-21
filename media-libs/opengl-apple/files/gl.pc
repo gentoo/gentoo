@@ -1,0 +1,11 @@
+prefix=@GENTOO_PORTAGE_EPREFIX@/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: gl
+Description: Apple OpenGL library
+Version: 1.0.0
+# media-libs/opengl-apple provides symlinks to /.../X11/lib/libGL.?.?.dylib
+Libs: -L${libdir} -lGL
+Cflags: -I${includedir} 

@@ -1,0 +1,13 @@
+diff -Nur src.orig/configure src/configure
+--- src.orig/configure	2012-06-12 00:57:14.000000000 +0100
++++ src/configure	2012-06-12 18:03:33.000000000 +0100
+@@ -3512,7 +3512,8 @@
+ 	size_t input_length = (size_t) argc;
+ 	char* output = new char[snappy::MaxCompressedLength(input_length)];
+ 	size_t output_length;
+-	RawCompress(input, input_length, output, &output_length);
++	char *input;
++	snappy::RawCompress(input, input_length, output, &output_length);
+ 	delete [] output;
+ 	return int(output_length);
+ }

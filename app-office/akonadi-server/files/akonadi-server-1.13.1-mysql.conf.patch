@@ -1,0 +1,38 @@
+From: Daniel Vrátil <dvratil@kde.org>
+Date: Tue, 16 Feb 2016 17:26:22 +0000
+Subject: Drop mysql.conf option removed in MySQL 5.7
+X-Git-Url: http://quickgit.kde.org/?p=akonadi.git&a=commitdiff&h=9a9f7eaa38023f70c6fa85a87359a487ccf7a48c
+---
+Drop mysql.conf option removed in MySQL 5.7
+
+innodb_additional_mem_pool_size option has been deprecated in MySQL 5.6
+and removed in 5.7 so MySQL will no longer start it the option is present
+in mysql.conf.
+
+The option still seems to be supported by MariaDB, but the default value
+we had in the mysql.conf was below the minimum allowed value, so the harm
+in removing the option for MariaDB should be minimal.
+
+If options supported by MySQL and MariaDB begin to diverge more in the future
+we might consider having separate config files for each database.
+
+* 2016-02-21: Adjusted path for 1.13 branch
+---
+
+
+--- a/server/src/storage/mysql-global.conf
++++ b/server/src/storage/mysql-global.conf
+@@ -37,9 +37,9 @@
+ # use InnoDB for transactions and better crash recovery
+ default_storage_engine=innodb
+ 
+-# memory pool InnoDB uses to store data dictionary information and other internal data structures (default:1M)
+-# Deprecated in MySQL >= 5.6.3
+-innodb_additional_mem_pool_size=1M
++# memory pool InnoDB uses to store data dictionary information and other internal data structures (default:8M)
++# Deprecated in MySQL >= 5.6.3, removed in 5.7 (works in MariaDB)
++# innodb_additional_mem_pool_size=8M
+ 
+ # memory buffer InnoDB uses to cache data and indexes of its tables (default:128M)
+ # Larger values means less I/O
+

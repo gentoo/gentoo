@@ -1,0 +1,12 @@
+diff -Naur a/src/bin/pg_ctl/pg_ctl.c b/src/bin/pg_ctl/pg_ctl.c
+--- a/src/bin/pg_ctl/pg_ctl.c	2011-04-14 23:18:15 -0400
++++ b/src/bin/pg_ctl/pg_ctl.c	2011-08-01 19:44:54 -0400
+@@ -975,7 +975,7 @@
+ 		}
+ 	}
+ 	printf(_("%s: no server running\n"), progname);
+-	exit(1);
++	exit(3);
+ }
+ 
+ 

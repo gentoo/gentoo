@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>forensics@gentoo.org</email>
+		<name>Gentoo Forensics Project</name>
+	</maintainer>
+	<use>
+		<flag name="prelink">Enable support for <pkg>sys-devel/prelink</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">aide</remote-id>
+	</upstream>
+</pkgmetadata>

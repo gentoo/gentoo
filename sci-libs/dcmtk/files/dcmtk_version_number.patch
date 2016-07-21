@@ -1,0 +1,131 @@
+From: Joerg Riesmeier <dicom@offis.de>
+Date: Tue, 1 Feb 2011 17:01:14 +0000 (+0000)
+Subject: Made sure that OFFIS_DCMTK_VERSION_NUMBER is really a number and not a
+X-Git-Url: http://git.dcmtk.org/web?p=dcmtk.git;a=commitdiff_plain;h=12c35ca
+
+Made sure that OFFIS_DCMTK_VERSION_NUMBER is really a number and not a
+string.
+---
+
+Index: dcmtk-3.6.0/CMake/osconfig.h.in
+===================================================================
+--- dcmtk-3.6.0.orig/CMake/osconfig.h.in	2010-11-24 14:53:32.000000000 +0100
++++ dcmtk-3.6.0/CMake/osconfig.h.in	2011-06-17 14:34:56.000000000 +0200
+@@ -677,7 +677,7 @@
+ #define PACKAGE_VERSION_SUFFIX "@DCMTK_PACKAGE_VERSION_SUFFIX@"
+ 
+ /* Define to the version number of this package. */
+-#define PACKAGE_VERSION_NUMBER "@DCMTK_PACKAGE_VERSION_NUMBER@"
++#define PACKAGE_VERSION_NUMBER @DCMTK_PACKAGE_VERSION_NUMBER@
+ 
+ /* Define path separator */
+ #define PATH_SEPARATOR '@PATH_SEPARATOR@'
+Index: dcmtk-3.6.0/CMakeLists.txt
+===================================================================
+--- dcmtk-3.6.0.orig/CMakeLists.txt	2011-01-06 11:48:43.000000000 +0100
++++ dcmtk-3.6.0/CMakeLists.txt	2011-06-17 14:34:56.000000000 +0200
+@@ -21,7 +21,7 @@
+ SET(DCMTK_PACKAGE_DATE "2011-01-06")
+ #SET(DCMTK_PACKAGE_TARNAME "dcmtk-3.6.0")
+ SET(DCMTK_PACKAGE_VERSION "3.6.0")
+-SET(DCMTK_PACKAGE_VERSION_NUMBER "360")
++SET(DCMTK_PACKAGE_VERSION_NUMBER 360)
+ SET(DCMTK_PACKAGE_VERSION_SUFFIX "")
+ #SET(DCMTK_PACKAGE_STRING "dcmtk 3.6.0")
+ #SET(DCMTK_PACKAGE_BUGREPORT "dicom-bugs@offis.de")
+Index: dcmtk-3.6.0/config/configure
+===================================================================
+--- dcmtk-3.6.0.orig/config/configure	2011-01-06 11:48:47.000000000 +0100
++++ dcmtk-3.6.0/config/configure	2011-06-17 14:34:56.000000000 +0200
+@@ -1774,13 +1774,13 @@
+ 
+ 
+ 
+-PACKAGE_VERSION_NUMBER="360"
++PACKAGE_VERSION_NUMBER=360
+ PACKAGE_VERSION_SUFFIX=""
+ PACKAGE_DATE="2011-01-06"
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define PACKAGE_VERSION_NUMBER "${PACKAGE_VERSION_NUMBER}"
++#define PACKAGE_VERSION_NUMBER ${PACKAGE_VERSION_NUMBER}
+ _ACEOF
+ 
+ 
+Index: dcmtk-3.6.0/config/configure.in
+===================================================================
+--- dcmtk-3.6.0.orig/config/configure.in	2011-01-06 11:48:47.000000000 +0100
++++ dcmtk-3.6.0/config/configure.in	2011-06-17 14:34:56.000000000 +0200
+@@ -8,11 +8,11 @@
+ dnl Additional Package Information
+ dnl -------------------------------------------------------
+ 
+-PACKAGE_VERSION_NUMBER="360"
++PACKAGE_VERSION_NUMBER=360
+ PACKAGE_VERSION_SUFFIX=""
+ PACKAGE_DATE="2011-01-06"
+ 
+-AC_DEFINE_UNQUOTED(PACKAGE_VERSION_NUMBER,"${PACKAGE_VERSION_NUMBER}",[Define to the version number of this package.])
++AC_DEFINE_UNQUOTED(PACKAGE_VERSION_NUMBER,${PACKAGE_VERSION_NUMBER},[Define to the version number of this package.])
+ AC_DEFINE_UNQUOTED(PACKAGE_VERSION_SUFFIX,"${PACKAGE_VERSION_SUFFIX}",[Define to the version suffix of this package.])
+ AC_DEFINE_UNQUOTED(PACKAGE_DATE,"${PACKAGE_DATE}",[Define to the release date of this package.])
+ 
+Index: dcmtk-3.6.0/dcmdata/include/dcmtk/dcmdata/dcuid.h
+===================================================================
+--- dcmtk-3.6.0.orig/dcmdata/include/dcmtk/dcmdata/dcuid.h	2010-11-05 11:26:10.000000000 +0100
++++ dcmtk-3.6.0/dcmdata/include/dcmtk/dcmdata/dcuid.h	2011-06-17 14:34:56.000000000 +0200
+@@ -1,6 +1,6 @@
+ /*
+  *
+- *  Copyright (C) 1994-2010, OFFIS e.V.
++ *  Copyright (C) 1994-2011, OFFIS e.V.
+  *  All rights reserved.  See COPYRIGHT file for details.
+  *
+  *  This software and supporting documentation were developed by
+@@ -20,8 +20,8 @@
+  *  routines for finding and creating UIDs.
+  *
+  *  Last Update:      $Author: joergr $
+- *  Update Date:      $Date: 2010-11-05 10:26:10 $
+- *  CVS/RCS Revision: $Revision: 1.89 $
++ *  Update Date:      $Date: 2011-02-01 17:01:33 $
++ *  CVS/RCS Revision: $Revision: 1.90 $
+  *  Status:           $State: Exp $
+  *
+  *  CVS/RCS Log at end of file
+@@ -165,16 +165,21 @@
+ #error Required compiler definition PACKAGE_VERSION_NUMBER undefined
+ #endif
+ 
++// helper macros for version number conversion
++
++#define PACKAGE_VERSION_NUMBER_TO_STRING_( x ) #x
++#define PACKAGE_VERSION_NUMBER_TO_STRING( x ) PACKAGE_VERSION_NUMBER_TO_STRING_( x )
++
+ /* NOTE: Implementation version name VR=SH may not be longer than 16 chars
+  *       The second name is used to identify files written without dcmdata
+  *       (i.e. using the --bit-preserving switch in various tools)
+  */
+ 
+ /// implementation version name for this version of the toolkit
+-#define OFFIS_DTK_IMPLEMENTATION_VERSION_NAME   "OFFIS_DCMTK_" PACKAGE_VERSION_NUMBER
++#define OFFIS_DTK_IMPLEMENTATION_VERSION_NAME   "OFFIS_DCMTK_" PACKAGE_VERSION_NUMBER_TO_STRING(PACKAGE_VERSION_NUMBER)
+ 
+ /// implementation version name for this version of the toolkit, used for files received in "bit preserving" mode
+-#define OFFIS_DTK_IMPLEMENTATION_VERSION_NAME2  "OFFIS_DCMBP_" PACKAGE_VERSION_NUMBER
++#define OFFIS_DTK_IMPLEMENTATION_VERSION_NAME2  "OFFIS_DCMBP_" PACKAGE_VERSION_NUMBER_TO_STRING(PACKAGE_VERSION_NUMBER)
+ 
+ /// release date of current toolkit release
+ #ifdef DCMTK_BUILD_DATE
+@@ -704,6 +709,10 @@
+ /*
+ ** CVS/RCS Log:
+ ** $Log: dcuid.h,v $
++** Revision 1.90  2011-02-01 17:01:33  joergr
++** Made sure that OFFIS_DCMTK_VERSION_NUMBER is really a number and not a
++** string.
++**
+ ** Revision 1.89  2010-11-05 10:26:10  joergr
+ ** Added new SOP Class UIDs from Supplement 131 and 134 (Implant Templates).
+ **

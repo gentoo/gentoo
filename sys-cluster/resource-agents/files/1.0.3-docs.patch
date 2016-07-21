@@ -1,0 +1,31 @@
+--- configure.in
++++ configure.in
+@@ -481,10 +481,12 @@
+ AC_DEFINE_UNQUOTED(POWEROFF_CMD, "$POWEROFF_CMD", path to the poweroff command)
+ AC_DEFINE_UNQUOTED(POWEROFF_OPTIONS, "$POWEROFF_OPTIONS", poweroff options)
+ 
+-AC_PATH_PROGS(XSLTPROC, xsltproc)
+-AM_CONDITIONAL(BUILD_DOC, test "x$XSLTPROC" != "x" )
+-if test "x$XSLTPROC" = "x"; then
+-   AC_MSG_WARN([xsltproc not installed, unable to (re-)build manual pages])
+-fi
++AC_ARG_ENABLE([doc],
++	AS_HELP_STRING([--enable-doc],[Build documentation]))
++
++AS_IF([test "x$enable_doc" = "xyes"], [
++	AC_PATH_PROGS(XSLTPROC, xsltproc)
++])
++AM_CONDITIONAL([BUILD_DOC], [test "x$enable_doc" = "xyes"] )
+ AC_SUBST(XSLTPROC)
+ 
+--- doc/Makefile.am
++++ doc/Makefile.am	2010-06-20 22:04:12.649433890 +0000
+@@ -18,7 +18,7 @@
+ # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ #
+ 
+-STYLESHEET_PREFIX 	?= http://docbook.sourceforge.net/release/xsl/current
++STYLESHEET_PREFIX 	?= /usr/share/sgml/docbook/xsl-stylesheets/
+ MANPAGES_STYLESHEET 	?= $(STYLESHEET_PREFIX)/manpages/docbook.xsl
+ HTML_STYLESHEET 	?= $(STYLESHEET_PREFIX)/xhtml/docbook.xsl
+ FO_STYLESHEET 		?= $(STYLESHEET_PREFIX)/fo/docbook.xsl

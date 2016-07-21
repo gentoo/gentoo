@@ -1,0 +1,14 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -2,9 +2,9 @@
+ 
+ include Makefile.defs
+ 
+-INCLDIR = -I${prefix}/include `pkg-config --cflags glib-2.0`
++INCLDIR = -I${prefix}/include $(shell ${PKG_CONFIG} --cflags glib-2.0)
+ LIBDIR  =
+-LIBS    = `pkg-config --libs glib-2.0` -lreadline -lncurses
++LIBS    = $(shell ${PKG_CONFIG} --libs glib-2.0) -lreadline $(shell ${PKG_CONFIG} --libs ncurses)
+ 
+ SRC     = main.c colorize.c output.c input.c event.c rl.c html.c latex.c \
+           add.c edit.c del.c remind.c search.c manage.c

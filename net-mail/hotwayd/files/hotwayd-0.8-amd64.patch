@@ -1,0 +1,13 @@
+--- hotwayd-0.8/work/hotwayd-0.8/libghttp-1.0.9-mod/md5.h	2002-11-02 00:54:21.000000000 +0000
++++ hotwayd-0.8_patched/work/hotwayd-0.8/libghttp-1.0.9-mod/md5.h	2004-07-26 15:51:20.634345504 +0100
+@@ -38,7 +38,9 @@
+ typedef unsigned short int UINT2;
+ 
+ /* UINT4 defines a four byte word */
+-typedef unsigned long int UINT4;
++// not on x86_64 it ain't...
++//typedef unsigned long int UINT4;
++typedef unsigned int UINT4;
+ 
+ /* PROTO_LIST is defined depending on how PROTOTYPES is defined above.
+   If using PROTOTYPES, then PROTO_LIST returns the list, otherwise it

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-RawIP</remote-id>
+    <remote-id type="cpan-module">Net::RawIP</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::ethhdr</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::generichdr</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::icmphdr</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::iphdr</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::opt</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::tcphdr</remote-id>
+    <remote-id type="cpan-module">Net::RawIP::udphdr</remote-id>
+  </upstream>
+</pkgmetadata>

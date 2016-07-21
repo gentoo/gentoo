@@ -1,0 +1,7 @@
+# you can change the init script behavior by setting those parameters
+# - group (default: consul-template)
+# - pidfile (default: /run/consul-template/consul-template.pid)
+# - user (default: consul-template)
+
+# extra arguments for the consul agent
+command_args="-config=/etc/consul-template.d"

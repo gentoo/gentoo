@@ -1,0 +1,124 @@
+diff -Naurp ncpfs-2.2.6.orig/contrib/tcl-utils/chgpwd.c ncpfs-2.2.6/contrib/tcl-utils/chgpwd.c
+--- ncpfs-2.2.6.orig/contrib/tcl-utils/chgpwd.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/tcl-utils/chgpwd.c	2014-08-12 21:08:25.779190155 -0400
+@@ -292,12 +292,12 @@ int main(int argc, char *argv[]) {
+ 	        }
+         } else {
+                 if (!treeName[0]) {
+-                         NWCXGetPreferredDSTree(treeName,sizeof(treeName));
++                         dserr=NWCXGetPreferredDSTree(treeName,sizeof(treeName));
+ 
+                 }
+                 if (!treeName[0]) {
+                         fprintf(stderr,"failed: You must specify a server or a tree\n");
+-                        dserr=114;
++                        /*dserr=114;*/
+                         goto finished;
+                 }
+ 
+diff -Naurp ncpfs-2.2.6.orig/contrib/tcl-utils/ncplist.c ncpfs-2.2.6/contrib/tcl-utils/ncplist.c
+--- ncpfs-2.2.6.orig/contrib/tcl-utils/ncplist.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/tcl-utils/ncplist.c	2014-08-12 21:08:25.779190155 -0400
+@@ -299,7 +299,12 @@ int main(int argc, char *argv[]) {
+         }else {
+ 
+                 if (!treeName[0]) {
+-                         NWCXGetPreferredDSTree(treeName,sizeof(treeName));
++                         dserr=NWCXGetPreferredDSTree(treeName,sizeof(treeName));
++                         if (dserr){
++                            fprintf(stderr, "failed: Cannot get preffered DS tree: %s\n",
++                                    strnwerror(dserr);
++			    exit(106);
++			 }
+ 
+                 }
+                 if (!treeName[0]) {
+diff -Naurp ncpfs-2.2.6.orig/contrib/tcl-utils/ncpreadprop.c ncpfs-2.2.6/contrib/tcl-utils/ncpreadprop.c
+--- ncpfs-2.2.6.orig/contrib/tcl-utils/ncpreadprop.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/tcl-utils/ncpreadprop.c	2014-08-12 21:08:25.779190155 -0400
+@@ -470,7 +470,7 @@ main(int argc, char *argv[])
+             }
+         } else {
+                 if (!treeName[0]) {
+-                         NWCXGetPreferredDSTree(treeName,sizeof(treeName));
++                         dserr=NWCXGetPreferredDSTree(treeName,sizeof(treeName));
+ 
+                 }
+                 if (!treeName[0]) {
+diff -Naurp ncpfs-2.2.6.orig/contrib/tcl-utils/ncpreadprops.c ncpfs-2.2.6/contrib/tcl-utils/ncpreadprops.c
+--- ncpfs-2.2.6.orig/contrib/tcl-utils/ncpreadprops.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/tcl-utils/ncpreadprops.c	2014-08-12 21:08:25.779190155 -0400
+@@ -507,7 +507,7 @@ main(int argc, char *argv[])
+             }
+         } else {
+                 if (!treeName[0]) {
+-                         NWCXGetPreferredDSTree(treeName,sizeof(treeName));
++                         dserr=NWCXGetPreferredDSTree(treeName,sizeof(treeName));
+ 
+                 }
+                 if (!treeName[0]) {
+diff -Naurp ncpfs-2.2.6.orig/lib/nwclient.c ncpfs-2.2.6/lib/nwclient.c
+--- ncpfs-2.2.6.orig/lib/nwclient.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/lib/nwclient.c	2014-08-12 21:08:25.779190155 -0400
+@@ -481,6 +481,10 @@ static char* readnwinfosfile (char * use
+                 *err = EACCES;
+                 return NULL;
+         }
++        if (st.st_uid != getuid()) {
++                *err = EACCES;
++                return NULL;
++        }
+         if ((st.st_mode & (S_IRWXO | S_IRWXG)) != 0) {
+                 *err = NCPLIB_INVALID_MODE;
+                 return NULL;
+@@ -560,7 +564,7 @@ NWDSCCODE NWCXGetPreferredDSTree    (NWD
+   if (!res)
+         res=readnwinfosfile (NULL,NDS_PREFERRED_TREE,NULL, &err);
+   if (!res)
+-    return -1;
++    return err;
+   if (strlen (res)+1 >maxLen)
+      return NWE_BUFFER_OVERFLOW;
+   strcpy(preferTree,res);
+@@ -581,7 +585,7 @@ NWDSCCODE NWCXGetDefaultNameContext (con
+    if (!res)
+         res=readnwinfosfile (NULL,NDS_PREFERRED_NAME_CTX,forTree,&err);
+   if (!res)
+-    return -1;
++    return err;
+   if (strlen (res)+1 >maxLen)
+      return NWE_BUFFER_OVERFLOW;
+   strcpy(nameContext,res);
+@@ -603,7 +607,7 @@ NWDSCCODE NWCXGetPreferredServer    (con
+ 
+ 		res=readnwinfosfile (NULL, NDS_PREFERRED_SERVER, forTree, &err);
+ 		if (!res) {
+-			return -1;
++			return err;
+ 		}
+ 	}
+ 	/* test that this server DO belongs to tree forTree*/
+@@ -644,7 +648,7 @@ NWDSCCODE NWCXGetDefaultUserName (const
+          if (!res)
+                 res=readnwinfosfile (NULL,NDS_USER,forTree, &err);
+          if (!res)
+-                return -1;
++                return err;
+         if (strlen (res)+1 >maxLen)
+                 return NWE_BUFFER_OVERFLOW;
+         strcpy(defaultName,res);
+diff -Naurp ncpfs-2.2.6.orig/sutil/ncplogin.c ncpfs-2.2.6/sutil/ncplogin.c
+--- ncpfs-2.2.6.orig/sutil/ncplogin.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/sutil/ncplogin.c	2014-08-12 21:08:25.779190155 -0400
+@@ -588,7 +588,10 @@ main(int argc, char *argv[])
+ 		int flags = 0;
+ 
+ 		if (!info.tree) {
+-			NWCXGetPreferredDSTree(ntree, sizeof(ntree));
++			err=NWCXGetPreferredDSTree(ntree, sizeof(ntree));
++			if (err){
++			   errexit(104, _("Cannot get preffered DS tree: %s\n"),strnwerror(err));
++			}
+ 			info.tree = ntree;
+ 		}
+ 

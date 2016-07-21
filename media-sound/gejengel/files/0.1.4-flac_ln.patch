@@ -1,0 +1,42 @@
+Fixes Bug #542708
+The code uses functionality provided by libFLAC and libFLAC++ but only linked against libFLAC++.
+Included also is a check for libFLAC availability and added linking against libFLAC
+--- a/gejengel-0.1.4/configure.ac
++++ b/gejengel-0.1.4/configure.ac
+@@ -129,14 +129,20 @@ AC_ARG_ENABLE(flac,
+     [ enable_flac=$enableval ] )
+ 
+ if test "$enable_flac" != "no"; then
+-    PKG_CHECK_MODULES(FLAC, flac++, HAVE_FLAC=yes, HAVE_FLAC=no)
++    PKG_CHECK_MODULES(FLAC, flac, HAVE_FLAC=yes, HAVE_FLAC=no)
+     if test $HAVE_FLAC = yes; then
+-        AC_DEFINE(HAVE_FLAC, [1], Flac support enabled)
+-        AC_SUBST(FLAC_CFLAGS)
+-        AC_SUBST(FLAC_LIBS)
++	AC_DEFINE(HAVE_FLAC, [1], Flac found)
++	AC_SUBST(FLAC_CFLAGS)
++	AC_SUBST(FLAC_LIBS)
++        PKG_CHECK_MODULES(FLACPP, flac++, HAVE_FLACPP=yes, HAVE_FLACPP=no)
++        if test $HAVE_FLACPP = yes; then
++            AC_DEFINE(HAVE_FLACPP, [1], Flac support enabled)
++            AC_SUBST(FLACPP_CFLAGS)
++            AC_SUBST(FLACPP_LIBS)
++        fi
+     fi
+ fi
+-AM_CONDITIONAL(FLAC, test "$HAVE_FLAC" = "yes")
++AM_CONDITIONAL(FLAC, test "$HAVE_FLACPP" = "yes")
+ 
+ ########################################################################
+ # Mad
+--- a/gejengel-0.1.4/Makefile.am
++++ b/gejengel-0.1.4/Makefile.am
+@@ -256,7 +256,7 @@ libgejengel_la_LIBADD = libutils.la \
+                         libmusiclibrary.la \
+                         libcore.la \
+                         libplugins.la -lpthread \
+-                        $(FFMPEG_LIBS) $(ALSA_LIBS) $(OPENAL_LIBS) $(GLIBMM_LIBS) $(SQLITE3_LIBS) $(TAGLIB_LIBS) $(LASTFM_LIBS) $(LIBNOTIFY_LIBS) $(PULSE_LIBS) $(IMAGEMAGICK_LIBS) $(GSTREAMER_LIBS) $(FLAC_LIBS) $(MAD_LIBS) $(DBUS_LIBS) $(XDGBASEDIR_LIBS)
++                        $(FFMPEG_LIBS) $(ALSA_LIBS) $(OPENAL_LIBS) $(GLIBMM_LIBS) $(SQLITE3_LIBS) $(TAGLIB_LIBS) $(LASTFM_LIBS) $(LIBNOTIFY_LIBS) $(PULSE_LIBS) $(IMAGEMAGICK_LIBS) $(GSTREAMER_LIBS) $(FLACPP_LIBS) $(FLAC_LIBS) $(MAD_LIBS) $(DBUS_LIBS) $(XDGBASEDIR_LIBS)
+ 
+ bin_PROGRAMS = gejengel
+ 

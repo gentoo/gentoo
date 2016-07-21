@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Graph</remote-id>
+    <remote-id type="cpan-module">Graph</remote-id>
+    <remote-id type="cpan-module">Graph::AdjacencyMap</remote-id>
+    <remote-id type="cpan-module">Graph::AdjacencyMap::Heavy</remote-id>
+    <remote-id type="cpan-module">Graph::AdjacencyMap::Light</remote-id>
+    <remote-id type="cpan-module">Graph::AdjacencyMap::Vertex</remote-id>
+    <remote-id type="cpan-module">Graph::AdjacencyMatrix</remote-id>
+    <remote-id type="cpan-module">Graph::Attribute</remote-id>
+    <remote-id type="cpan-module">Graph::BitMatrix</remote-id>
+    <remote-id type="cpan-module">Graph::Directed</remote-id>
+    <remote-id type="cpan-module">Graph::MSTHeapElem</remote-id>
+    <remote-id type="cpan-module">Graph::Matrix</remote-id>
+    <remote-id type="cpan-module">Graph::SPTHeapElem</remote-id>
+    <remote-id type="cpan-module">Graph::TransitiveClosure</remote-id>
+    <remote-id type="cpan-module">Graph::TransitiveClosure::Matrix</remote-id>
+    <remote-id type="cpan-module">Graph::Traversal</remote-id>
+    <remote-id type="cpan-module">Graph::Traversal::BFS</remote-id>
+    <remote-id type="cpan-module">Graph::Traversal::DFS</remote-id>
+    <remote-id type="cpan-module">Graph::Undirected</remote-id>
+    <remote-id type="cpan-module">Graph::UnionFind</remote-id>
+    <remote-id type="cpan-module">Heap071::Elem</remote-id>
+    <remote-id type="cpan-module">Heap071::Fibonacci</remote-id>
+  </upstream>
+</pkgmetadata>

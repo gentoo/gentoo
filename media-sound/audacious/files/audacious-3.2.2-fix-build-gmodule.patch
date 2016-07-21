@@ -1,0 +1,51 @@
+commit 7b68fdab1dbd2ec3e8eeb37a7a0837d4d0e20851
+Author: John Lindgren <john.lindgren@aol.com>
+Date:   Mon Apr 2 16:50:39 2012 -0400
+
+    Use GMODULE_{CFLAGS,LIBS}.
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 6f6f293..5acb6b7 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -194,6 +194,7 @@ AC_PATH_PROG([WINDRES], [windres])
+ dnl Check for Gtk+/GLib and pals
+ dnl ============================
+ AUD_CHECK_MODULE([GLIB], [glib-2.0], [>= 2.16], [Glib2])
++AUD_CHECK_MODULE([GMODULE], [gmodule-2.0], [>= 2.16], [GModule])
+ AUD_CHECK_MODULE([GTHREAD], [gthread-2.0], [>= 2.16], [GThread])
+ AUD_CHECK_MODULE([PANGO], [pango], [>= 1.20], [Pango])
+ AUD_CHECK_MODULE([CAIRO], [cairo], [>= 1.6], [Cairo])
+diff --git a/extra.mk.in b/extra.mk.in
+index 464bbb0..1ff2a08 100644
+--- a/extra.mk.in
++++ b/extra.mk.in
+@@ -21,6 +21,8 @@ DBUS_CFLAGS ?= @DBUS_CFLAGS@
+ DBUS_LIBS ?= @DBUS_LIBS@
+ GLIB_CFLAGS ?= @GLIB_CFLAGS@
+ GLIB_LIBS ?= @GLIB_LIBS@
++GMODULE_CFLAGS ?= @GMODULE_CFLAGS@
++GMODULE_LIBS ?= @GMODULE_LIBS@
+ GTHREAD_CFLAGS ?= @GTHREAD_CFLAGS@
+ GTHREAD_LIBS ?= @GTHREAD_LIBS@
+ GTK_CFLAGS ?= @GTK_CFLAGS@
+diff --git a/src/audacious/Makefile b/src/audacious/Makefile
+index ea95c85..22dad64 100644
+--- a/src/audacious/Makefile
++++ b/src/audacious/Makefile
+@@ -99,6 +99,7 @@ pre-depend: ${DBUS_BINDINGS}
+ CPPFLAGS := -I.. -I../.. \
+             ${CPPFLAGS} \
+ 		${GLIB_CFLAGS}			\
++		${GMODULE_LIBS} \
+ 		${GTHREAD_CFLAGS} \
+ 		${GTK_CFLAGS}			\
+ 		${AUDACIOUS_DEFINES}	\
+@@ -119,6 +120,7 @@ LIBS := -L../libaudcore -laudcore \
+ 		${LIBINTL}						\
+ 		${EGGSM_LIBS}					\
+ 		${GLIB_LIBS}					\
++		${GMODULE_LIBS} \
+ 		${GTHREAD_LIBS} \
+ 		${GTK_LIBS}						\
+ 		${DBUS_LIBS}					\

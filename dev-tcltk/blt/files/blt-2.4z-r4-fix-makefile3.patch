@@ -1,0 +1,14 @@
+Source: mescalinum
+Upstream: N/A
+Reason: fix broken $DESTDIR support in library/Makefile
+--- library/Makefile.in.orig	2008-10-26 14:30:28.000000000 +0100
++++ library/Makefile.in	2008-10-26 14:31:40.000000000 +0100
+@@ -58,7 +58,7 @@ install: mkdirs pkgIndex
+ 	for i in $(miscFiles) ; do \
+ 	    $(INSTALL_DATA) $(srcdir)/$$i $(INSTALL_ROOT)$(scriptdir) ; \
+ 	done 
+-	$(INSTALL_DATA) pkgIndex.tcl $(scriptdir)
++	$(INSTALL_DATA) pkgIndex.tcl $(INSTALL_ROOT)$(scriptdir)
+ 
+ mkdirs:
+ 	@for i in $(instdirs) ; do \

@@ -1,0 +1,10 @@
+[Unit]
+Description=NFS Mount Daemon
+After=rpcbind.service nfsd.service
+Requires=rpcbind.service nfsd.service
+
+[Service]
+ExecStart=/usr/sbin/rpc.mountd -F
+
+[Install]
+WantedBy=multi-user.target

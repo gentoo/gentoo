@@ -1,0 +1,19 @@
+diff --git a/tools/libvirt-guests.sh.in b/tools/libvirt-guests.sh.in
+index 7f74b85..ea58119 100644
+--- a/tools/libvirt-guests.sh.in
++++ b/tools/libvirt-guests.sh.in
+@@ -41,11 +41,11 @@ CONNECT_RETRIES=10
+ RETRIES_SLEEP=1
+ SYNC_TIME=0
+ 
+-test -f "$sysconfdir"/sysconfig/libvirt-guests &&
+-    . "$sysconfdir"/sysconfig/libvirt-guests
++test -f "$sysconfdir"/libvirt/libvirt-guests.conf &&
++    . "$sysconfdir"/libvirt/libvirt-guests.conf
+ 
+ LISTFILE="$localstatedir"/lib/libvirt/libvirt-guests
+-VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/subsys/libvirt-guests
++VAR_SUBSYS_LIBVIRT_GUESTS="$localstatedir"/lock/libvirt-guests
+ 
+ RETVAL=0
+ 

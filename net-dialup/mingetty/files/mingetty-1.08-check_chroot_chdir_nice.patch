@@ -1,0 +1,36 @@
+Check chdir() on chroot() syscalls (and similar) as chroot without proper
+chdir() allows to escape from changed root.
+
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=597382
+http://sourceforge.net/tracker/?func=detail&aid=3095679&group_id=80387&atid=559616
+
+--- mingetty-1.08/mingetty.c
++++ mingetty-1.08/mingetty.c
+@@ -422,12 +422,21 @@
+ 		while ((logname = get_logname ()) == 0)
+ 			/* do nothing */ ;
+ 
+-	if (ch_root)
+-		chroot (ch_root);
+-	if (ch_dir)
+-		chdir (ch_dir);
+-	if (priority)
+-		nice (priority);
++	if (ch_root) {
++		if (chroot (ch_root))
++			error ("chroot(\"%s\") failed: %s", ch_root, strerror (errno));
++		if (chdir("/"))
++			error ("chdir(\"/\") failed: %s", strerror (errno));
++	}
++	if (ch_dir) {
++		if (chdir (ch_dir))
++			error ("chdir(\"%s\") failed: %s", ch_dir, strerror (errno));
++	}
++	if (priority) {
++		errno = 0; /* see the nice(2) NOTES for why we do this */
++		if ((nice (priority) == -1) && (errno != 0))
++			error ("nice(%d) failed: %s", priority, strerror (errno));
++	}
+ 
+ 	execl (loginprog, loginprog, autologin? "-f" : "--", logname, NULL);
+ 	error ("%s: can't exec %s: %s", tty, loginprog, strerror (errno));

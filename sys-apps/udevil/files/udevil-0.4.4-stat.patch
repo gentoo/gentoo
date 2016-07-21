@@ -1,0 +1,11 @@
+Fixes bug #552072. Thanks Helmut Jarausch.
+--- src/device-info.h
++++ src/device-info.h
+@@ -14,6 +14,7 @@
+ #include <libudev.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <sys/stat.h>
+ 
+ // intltool
+ #include <glib/gi18n.h>

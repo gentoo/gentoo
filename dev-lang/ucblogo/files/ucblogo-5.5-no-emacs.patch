@@ -1,0 +1,28 @@
+--- makefile.in~	2007-04-03 22:50:58.000000000 +0100
++++ makefile.in	2007-04-03 22:50:58.000000000 +0100
+@@ -57,12 +57,10 @@
+ 
+ clean:
+ 	rm -f *.o libloc.c
+-	cd emacs; $(MAKE) clean
+ 
+ ship:
+ 	rm -f config.h config.cache config.log config.status
+ 	rm -f makefile makehelp logo *.o libloc.c
+-	cd emacs; $(MAKE) ship
+ 	cd docs; $(MAKE) ship
+ 
+ install: all
+@@ -71,12 +69,10 @@
+ 	cp -f logolib/* $(DESTDIR)$(LIBLOC)/logolib/.
+ 	cp -f helpfiles/* $(DESTDIR)$(LIBLOC)/helpfiles/.
+ 	cp -f csls/* $(DESTDIR)$(LIBLOC)/csls/.
+-	(cd emacs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) DESTDIR=$(DESTDIR) $(MAKE) install)
+ 	(cd docs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) DESTDIR=$(DESTDIR) $(MAKE) install)
+ #	prefix=$(prefix); LIBLOC=$(LIBLOC); BINDIR=$(BINDIR); export prefix LIBLOC BINDIR; cd emacs; $(MAKE) install
+ 
+ logo-mode: 
+-	(cd emacs; prefix=$(prefix) LIBLOC=$(LIBLOC) BINDIR=$(BINDIR) $(MAKE))
+ #	@prefix=$(prefix); LIBLOC=$(LIBLOC); BINDIR=$(BINDIR); export prefix LIBLOC BINDIR; cd emacs; $(MAKE)
+ 
+ make-docs:

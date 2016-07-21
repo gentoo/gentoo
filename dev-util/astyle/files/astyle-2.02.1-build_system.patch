@@ -1,0 +1,54 @@
+--- a/build/gcc/Makefile
++++ b/build/gcc/Makefile
+@@ -34,25 +34,25 @@
+ ipath=$(prefix)/bin
+ CBASEFLAGS = -W -Wall -fno-rtti -fno-exceptions
+ JAVAINCS   = -I$(JAVA_HOME)/include
+-CXX = g++
++CXX ?= g++
+ INSTALL=install -o $(USER) -g $(USER)
+ 
+ ##################################################
+ 
+ # define compile options for each build
+-ifdef CFLAGS
+-    CFLAGSr   = -DNDEBUG $(CBASEFLAGS) $(CFLAGS)
+-    CFLAGSd   = -g $(CBASEFLAGS) $(CFLAGS)
++ifdef CXXFLAGS
++    CFLAGSr   = -DNDEBUG $(CBASEFLAGS) $(CXXFLAGS)
++    CFLAGSd   = -g $(CBASEFLAGS) $(CXXFLAGS)
+ else 
+     CFLAGSr   = -DNDEBUG -O3 $(CBASEFLAGS)
+     CFLAGSd   = -g $(CBASEFLAGS)
+ endif
+-CFLAGSs   = -DASTYLE_LIB -fpic $(CFLAGSr)
+-CFLAGSsd  = -DASTYLE_LIB -fpic $(CFLAGSd)
++CFLAGSs   = -DASTYLE_LIB -fPIC $(CFLAGSr)
++CFLAGSsd  = -DASTYLE_LIB -fPIC $(CFLAGSd)
+ CFLAGSa   = -DASTYLE_LIB $(CFLAGSr)
+ CFLAGSad  = -DASTYLE_LIB $(CFLAGSd)
+-CFLAGSsj  = -DASTYLE_JNI -fpic $(CFLAGSr) $(JAVAINCS)
+-CFLAGSsjd = -DASTYLE_JNI -fpic $(CFLAGSd) $(JAVAINCS)
++CFLAGSsj  = -DASTYLE_JNI -fPIC $(CFLAGSr) $(JAVAINCS)
++CFLAGSsjd = -DASTYLE_JNI -fPIC $(CFLAGSd) $(JAVAINCS)
+ 
+ # define link options
+ ifdef LDFLAGS
+@@ -134,7 +134,7 @@
+ shared:  libastyle.so
+ libastyle.so:  $(OBJs)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSr) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@.0 $(LDFLAGSr) -o $(bindir)/$@.0.0.0 $^
+ 	@ echo
+ 
+ shareddebug:  libastyled.so
+@@ -158,7 +158,7 @@
+ java:  libastylej.so
+ libastylej.so:  $(OBJsj)
+ 	@ mkdir -p $(bindir)
+-	$(CXX) -shared $(LDFLAGSr) -o $(bindir)/$@ $^
++	$(CXX) -shared -Wl,-soname,$@.0 $(LDFLAGSr) -o $(bindir)/$@.0.0.0 $^
+ 	@ echo
+ 
+ javadebug:  libastylejd.so

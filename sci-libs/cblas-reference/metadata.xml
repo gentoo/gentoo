@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+The BLAS (Basic Linear Algebra Subprograms) are high quality "building
+block" routines for performing basic vector and matrix operations. Level 1
+BLAS do vector-vector operations, Level 2 BLAS do matrix-vector operations,
+and Level 3 BLAS do matrix-matrix operations. Because the BLAS are
+efficient, portable, and widely available, they're commonly used in the
+development of high quality linear algebra software, LAPACK for
+example. This packages implements the reference C library as a wrapper
+to the FORTRAN 77 BLAS library.
+</longdescription>
+</pkgmetadata>

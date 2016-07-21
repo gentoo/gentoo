@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <longdescription>Parse and read BLASTs, Boulders, Stones</longdescription>
+  <upstream>
+    <remote-id type="cpan">Boulder</remote-id>
+    <remote-id type="cpan-module">Boulder::Blast</remote-id>
+    <remote-id type="cpan-module">Boulder::Blast::NCBI</remote-id>
+    <remote-id type="cpan-module">Boulder::Blast::WU</remote-id>
+    <remote-id type="cpan-module">Boulder::Genbank</remote-id>
+    <remote-id type="cpan-module">Boulder::Labbase</remote-id>
+    <remote-id type="cpan-module">Boulder::LocusLink</remote-id>
+    <remote-id type="cpan-module">Boulder::Medline</remote-id>
+    <remote-id type="cpan-module">Boulder::Omim</remote-id>
+    <remote-id type="cpan-module">Boulder::Store</remote-id>
+    <remote-id type="cpan-module">Boulder::Stream</remote-id>
+    <remote-id type="cpan-module">Boulder::String</remote-id>
+    <remote-id type="cpan-module">Boulder::Swissprot</remote-id>
+    <remote-id type="cpan-module">Boulder::Unigene</remote-id>
+    <remote-id type="cpan-module">Boulder::XML</remote-id>
+    <remote-id type="cpan-module">Entrez</remote-id>
+    <remote-id type="cpan-module">File</remote-id>
+    <remote-id type="cpan-module">GenbankAccessor</remote-id>
+    <remote-id type="cpan-module">LocusLinkAccessor</remote-id>
+    <remote-id type="cpan-module">MedlineAccessor</remote-id>
+    <remote-id type="cpan-module">OmimAccessor</remote-id>
+    <remote-id type="cpan-module">Stone</remote-id>
+    <remote-id type="cpan-module">Stone::Cursor</remote-id>
+    <remote-id type="cpan-module">Stone::GB_Sequence</remote-id>
+    <remote-id type="cpan-module">SwissprotAccessor</remote-id>
+    <remote-id type="cpan-module">UnigeneAccessor</remote-id>
+    <remote-id type="cpan-module">Yank</remote-id>
+  </upstream>
+</pkgmetadata>

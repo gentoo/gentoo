@@ -1,0 +1,46 @@
+fix from upstream
+
+From c82417650a1ea4446c19dd82bfab9d8e6cd5a969 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 15 Sep 2015 18:48:02 +0300
+Subject: [PATCH] build: Do not try to detect cross-compiler
+
+cross compilers are passed via path may not be a gcc based cross
+compiler in such cases this check fails and try's to force gcc based
+cross compiler detection, This code is a convenience that limits the
+build system
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ configure.ac | 14 --------------
+ 1 file changed, 14 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a482b3e..a14e52d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,20 +27,6 @@ AC_PREFIX_DEFAULT(/usr)
+ 
+ dnl Checks for programs.
+ 
+-dnl try to gues cross-compiler if not set
+-if test "x$host" != "x$build" -a -z "`echo $CC | grep -e '-gcc'`";
+-then
+-  AC_MSG_CHECKING(for cross-compiler)
+-
+-  which ${program_prefix}gcc >/dev/null 2>&1 && CC=${program_prefix}gcc
+-  which ${host_cpu}-${host_os}-gcc >/dev/null 2>&1 \
+-  && CC=${host_cpu}-${host_os}-gcc
+-  which ${host_cpu}-${host_vendor}-${host_os}-gcc >/dev/null 2>&1 \
+-  && CC=${host_cpu}-${host_vendor}-${host_os}-gcc
+-
+-  AC_MSG_RESULT($CC)
+-fi
+-	    
+ CFLAGS="$CFLAGS -D_GNU_SOURCE"
+ 
+ 
+-- 
+2.5.2
+

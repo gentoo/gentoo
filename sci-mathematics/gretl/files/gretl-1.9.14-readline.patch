@@ -1,0 +1,10 @@
+--- cli/complete.c.ORIG	2007-08-22 16:44:46.000000000 +0200
++++ cli/complete.c	2014-03-26 16:54:40.463070119 +0100
+@@ -126,6 +126,6 @@
+     rl_readline_name = "gretl";
+ 
+     /* Tell the completer that we want a crack first. */
+-    rl_attempted_completion_function = (CPPFunction *) gretl_completion;
++    rl_attempted_completion_function =  (rl_completion_func_t*) gretl_completion;
+ }
+ 

@@ -1,0 +1,11 @@
+# -*- mode: sh; -*-
+
+# The user which ircservices should be run as. Set to an empty value
+# to have ircservices run as the user the initscript is run as (which
+# is generally bad practice).
+IRCSERVICES_USER=ircservices
+
+# The location of the pidfile (as written in ircservices.conf). If the
+# directory containing the pidfile does not exist, and attempt will be
+# made to create that folder and set its owner to IRCSERVICES_USER.
+IRCSERVICES_PIDFILE=/var/run/ircservices/ircservices.pid

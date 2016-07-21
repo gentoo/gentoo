@@ -1,0 +1,14 @@
+Index: qt-recordmydesktop-0.3.8/configure.ac
+===================================================================
+--- qt-recordmydesktop-0.3.8.orig/configure.ac
++++ qt-recordmydesktop-0.3.8/configure.ac
+@@ -50,8 +50,7 @@ fi
+ b=$(echo "$PYQT4_VERSION" | awk 'BEGIN{ FS="." } { print $1 "\n" $2 "\n" $3 }')
+ c=($b)
+ 
+-
+-export PYQT4_MAJOR=${c[[0]]}
++export PYQT4_MAJOR=${c[[0]]/snapshot-/}
+ export PYQT4_MINOR=${c[[1]]}
+ 
+ if test $PYQT4_MAJOR != 4; then

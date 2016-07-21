@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/324649
+http://lists.gnu.org/archive/html/bug-autoconf/2009-12/msg00016.html
+
+From 83ee5bc460a1083ab29fd9d3a3044cbaefad6ac6 Mon Sep 17 00:00:00 2001
+From: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+Date: Wed, 9 Dec 2009 07:20:16 +0100
+Subject: [PATCH] Fix 2.64 AC_TYPE_INT*_T macro body text regression.
+
+* lib/autoconf/types.m4 (_AC_TYPE_INT_BODY): Move helper enum
+definition to prologue section, to avoid syntax error.
+* NEWS, THANKS: Update.
+Report by Pierre Ynard.
+
+Signed-off-by: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+---
+ ChangeLog             |    8 ++++++++
+ NEWS                  |    3 +++
+ THANKS                |    1 +
+ lib/autoconf/types.m4 |   12 ++++++------
+ 4 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/lib/autoconf/types.m4 b/lib/autoconf/types.m4
+index 7a73fc2..3829c4c 100644
+--- a/lib/autoconf/types.m4
++++ b/lib/autoconf/types.m4
+@@ -635,14 +635,14 @@ m4_define([_AC_TYPE_INT_BODY],
+ 	 'long long int' 'short int' 'signed char'; do
+        AC_COMPILE_IFELSE(
+ 	 [AC_LANG_BOOL_COMPILE_TRY(
+-	    [AC_INCLUDES_DEFAULT],
+-	    [enum { N = $[]2 / 2 - 1 };
+-	     0 < ($ac_type) ((((($ac_type) 1 << N) << N) - 1) * 2 + 1)])],
++	    [AC_INCLUDES_DEFAULT
++	     enum { N = $[]2 / 2 - 1 };],
++	    [0 < ($ac_type) ((((($ac_type) 1 << N) << N) - 1) * 2 + 1)])],
+ 	 [AC_COMPILE_IFELSE(
+ 	    [AC_LANG_BOOL_COMPILE_TRY(
+-	       [AC_INCLUDES_DEFAULT],
+-	       [enum { N = $[]2 / 2 - 1 };
+-		($ac_type) ((((($ac_type) 1 << N) << N) - 1) * 2 + 1)
++	       [AC_INCLUDES_DEFAULT
++	        enum { N = $[]2 / 2 - 1 };],
++	       [($ac_type) ((((($ac_type) 1 << N) << N) - 1) * 2 + 1)
+ 		 < ($ac_type) ((((($ac_type) 1 << N) << N) - 1) * 2 + 2)])],
+ 	    [],
+ 	    [AS_CASE([$ac_type], [int$[]2_t],
+-- 
+1.7.1
+

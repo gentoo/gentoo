@@ -1,0 +1,12 @@
+--- src/gtkglue.c	2005-04-16 15:12:07.000000000 +0200
++++ src/gtkglue.c.new	2009-06-24 00:26:46.000000000 +0200
+@@ -1476,8 +1476,7 @@
+ 	  || opt->type == SANE_TYPE_GROUP || !dialog->element[i].widget)
+ 	continue;
+ 
+-      if (!(opt->cap & SANE_CAP_ALWAYS_SETTABLE))
+-	gtk_widget_set_sensitive (dialog->element[i].widget, sensitive);
++      gtk_widget_set_sensitive (dialog->element[i].widget, sensitive);
+     }
+ }
+ 

@@ -1,0 +1,25 @@
+diff -Naur libsignon-glib-1.12.old/configure.ac libsignon-glib-1.12/configure.ac
+--- libsignon-glib-1.12.old/configure.ac	2014-12-09 11:52:37.000000000 +0300
++++ libsignon-glib-1.12/configure.ac	2015-08-27 13:00:54.501123031 +0300
+@@ -100,9 +100,6 @@
+ 	Makefile
+ 	libsignon-glib/Makefile
+ 	libsignon-glib.pc
+-	docs/Makefile
+-	docs/reference/Makefile
+-	docs/reference/version.xml
+ 	tests/Makefile
+ 	pygobject/Makefile
+ ])
+diff -Naur libsignon-glib-1.12.old/Makefile.am libsignon-glib-1.12/Makefile.am
+--- libsignon-glib-1.12.old/Makefile.am	2014-12-09 11:52:37.000000000 +0300
++++ libsignon-glib-1.12/Makefile.am	2015-08-27 13:00:42.101237854 +0300
+@@ -2,7 +2,7 @@
+ DISTCHECK_CONFIGURE_FLAGS = \
+ 	--enable-gtk-doc \
+ 	--enable-introspection=yes
+-SUBDIRS = libsignon-glib docs
++SUBDIRS = libsignon-glib
+ 
+ if ENABLE_PYTHON
+ SUBDIRS += pygobject

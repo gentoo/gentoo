@@ -1,0 +1,110 @@
+From 4b35ca1e6fff50f47eb5419b879b287f49dcf1d8 Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Mon, 24 Aug 2015 09:05:52 +0200
+Subject: [PATCH] "fix": process last line if it misses the terminating LF
+
+This problem occurs with the very last line of a rulebase (at EOF).
+If it is not properly terminated (LF missing), it is silently ignored.
+Previous versions did obviously process lines in this case. While
+technically this is invalid input, we can't outrule that such rulebases
+exist. For example, they do in the rsyslog testbench, which made
+us aware of the problem (see https://github.com/rsyslog/rsyslog/issues/489 ).
+
+I think the proper way of addressing this is to process such lines without
+termination, as many other tools do as well.
+
+closes https://github.com/rsyslog/liblognorm/issues/135
+---
+ src/samp.c                   |  5 ++++-
+ tests/Makefile.am            |  2 ++
+ tests/field_mac48.sh         |  1 -
+ tests/missing_line_ending.rb |  1 +
+ tests/missing_line_ending.sh | 25 +++++++++++++++++++++++++
+ 5 files changed, 32 insertions(+), 2 deletions(-)
+ create mode 100644 tests/missing_line_ending.rb
+ create mode 100755 tests/missing_line_ending.sh
+
+diff --git a/src/samp.c b/src/samp.c
+index ef57047..0a9ae0a 100644
+--- a/src/samp.c
++++ b/src/samp.c
+@@ -801,7 +801,10 @@ ln_sampRead(ln_ctx ctx, FILE *const __restrict__ repo, int *const __restrict__ i
+ 		int c = fgetc(repo);
+ 		if(c == EOF) {
+ 			*isEof = 1;
+-			goto done;
++			if(i == 0)
++				goto done;
++			else
++				done = 1; /* last line missing LF, still process it! */
+ 		} else if(c == '\n') {
+ 			++linenbr;
+ 			if(!inParser && i != 0)
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index a3a3842..cfcf010 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -13,6 +13,7 @@ user_test_LDFLAGS = -no-install
+ TESTS_SHELLSCRIPTS = \
+ 	parser_whitespace.sh \
+ 	parser_LF.sh \
++	missing_line_ending.sh \
+ 	field_hexnumber.sh \
+ 	field_mac48.sh \
+ 	field_name_value.sh \
+@@ -54,6 +55,7 @@ REGEXP_TESTS = \
+ 	field_regex_while_regex_support_is_disabled.sh
+ 
+ EXTRA_DIST = exec.sh \
++	missing_line_ending.rb \
+ 	$(TESTS_SHELLSCRIPTS) \
+ 	$(REGEXP_TESTS) \
+ 	$(json_eq_self_sources) \
+diff --git a/tests/field_mac48.sh b/tests/field_mac48.sh
+index bd2898e..0f17166 100755
+--- a/tests/field_mac48.sh
++++ b/tests/field_mac48.sh
+@@ -21,4 +21,3 @@ assert_output_json_eq '{ "originalmsg": "f0:f6:1c:xf:cc:a2", "unparsed-data": "f
+ 
+ 
+ cleanup_tmp_files
+-
+diff --git a/tests/missing_line_ending.rb b/tests/missing_line_ending.rb
+new file mode 100644
+index 0000000..b252483
+--- /dev/null
++++ b/tests/missing_line_ending.rb
+@@ -0,0 +1 @@
++rule=:%field:mac48%
+\ No newline at end of file
+diff --git a/tests/missing_line_ending.sh b/tests/missing_line_ending.sh
+new file mode 100755
+index 0000000..18f4d2c
+--- /dev/null
++++ b/tests/missing_line_ending.sh
+@@ -0,0 +1,25 @@
++# added 2015-05-05 by Rainer Gerhards
++# This file is part of the liblognorm project, released under ASL 2.0
++. $srcdir/exec.sh
++
++test_def $0 "dmac48 syntax"
++# we need to use a canned file, as we cannot easily reproduce the
++# malformed lines
++cp missing_line_ending.rb $(rulebase_file_name)
++
++execute 'f0:f6:1c:5f:cc:a2'
++assert_output_json_eq '{"field": "f0:f6:1c:5f:cc:a2"}'
++
++execute 'f0-f6-1c-5f-cc-a2'
++assert_output_json_eq '{"field": "f0-f6-1c-5f-cc-a2"}'
++
++# things that need to NOT match
++
++execute 'f0-f6:1c:5f:cc-a2'
++assert_output_json_eq '{ "originalmsg": "f0-f6:1c:5f:cc-a2", "unparsed-data": "f0-f6:1c:5f:cc-a2" }'
++
++execute 'f0:f6:1c:xf:cc:a2'
++assert_output_json_eq '{ "originalmsg": "f0:f6:1c:xf:cc:a2", "unparsed-data": "f0:f6:1c:xf:cc:a2" }'
++
++
++#cleanup_tmp_files

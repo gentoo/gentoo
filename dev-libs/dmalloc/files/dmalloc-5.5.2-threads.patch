@@ -1,0 +1,11 @@
+--- a/settings.dist
++++ b/settings.dist
+@@ -409,7 +409,7 @@
+  */
+ 
+ #ifndef LOCK_THREADS
+-#define LOCK_THREADS 0
++#define LOCK_THREADS 1
+ #endif
+ 
+ #if LOCK_THREADS

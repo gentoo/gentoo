@@ -1,0 +1,21 @@
+diff -Nur work.orig/rescue/rescue/Makefile work/rescue/rescue/Makefile
+--- work.orig/rescue/rescue/Makefile	2012-07-29 00:50:20.000000000 +0900
++++ work/rescue/rescue/Makefile	2012-07-29 00:56:01.000000000 +0900
+@@ -125,7 +125,7 @@
+ .if ${MK_ZFS} != "no"
+ CRUNCH_LIBS+= -lavl -lnvpair -lpthread -lzfs -luutil -lumem
+ .endif
+-CRUNCH_LIBS+= -lgeom -lexpat -ljail -lkiconv -lmd -lreadline -lsbuf -lufs -lz
++CRUNCH_LIBS+= -lgeom -lexpat -ljail -lkiconv -lreadline -lsbuf -lufs
+ 
+ .if ${MACHINE_CPUARCH} == "i386"
+ CRUNCH_PROGS_sbin+= bsdlabel sconfig fdisk
+@@ -216,7 +216,7 @@
+ CRUNCH_PROGS_usr.sbin+= chown
+ CRUNCH_ALIAS_chown= chgrp
+ ##################################################################
+-CRUNCH_LIBS+= -lm
++CRUNCH_LIBS+= -lmd -lz -lm
+ 
+ .include <bsd.crunchgen.mk>
+ .include <bsd.prog.mk>

@@ -1,0 +1,9 @@
+/var/log/privoxy/privoxy.log /var/log/privoxy/jarfile {
+	missingok
+	notifempty
+	create 0640 privoxy privoxy
+	sharedscripts
+	postrotate
+		killall -HUP privoxy 2>/dev/null || true
+	endscript
+}

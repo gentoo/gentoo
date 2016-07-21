@@ -1,0 +1,33 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+DIST_AUTHOR=ETHER
+DIST_VERSION=0.0014
+inherit perl-module
+
+DESCRIPTION="Make your classes pluggable"
+
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
+IUSE="test"
+
+RDEPEND="
+	virtual/perl-Carp
+	dev-perl/Module-Pluggable
+	dev-perl/Module-Runtime
+	dev-perl/Moose
+	virtual/perl-Scalar-List-Utils
+	dev-perl/Try-Tiny
+	dev-perl/namespace-autoclean
+"
+DEPEND="${RDEPEND}
+	>=dev-perl/Module-Build-Tiny-0.39.0
+	test? (
+		virtual/perl-ExtUtils-MakeMaker
+		virtual/perl-File-Spec
+		dev-perl/Test-Fatal
+		>=virtual/perl-Test-Simple-0.880.0
+	)"

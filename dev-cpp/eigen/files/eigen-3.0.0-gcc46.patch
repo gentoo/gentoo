@@ -1,0 +1,16 @@
+ Eigen/src/StlSupport/details.h |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/Eigen/src/StlSupport/details.h b/Eigen/src/StlSupport/details.h
+index 397c8ef..c1ac745 100644
+--- a/Eigen/src/StlSupport/details.h
++++ b/Eigen/src/StlSupport/details.h
+@@ -30,6 +30,8 @@
+   #define EIGEN_ALIGNED_ALLOCATOR Eigen::aligned_allocator
+ #endif
+ 
++#include <cstddef>
++
+ namespace Eigen {
+ 
+   // This one is needed to prevent reimplementing the whole std::vector.

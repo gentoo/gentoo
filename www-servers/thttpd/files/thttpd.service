@@ -1,0 +1,12 @@
+[Unit]
+Description=Fork of thttpd, a small, fast, multiplexing webserver.
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/thttpd.pid
+WorkingDirectory=/var/www/localhost
+ExecStart=/usr/sbin/thttpd -C /etc/thttpd/thttpd.conf
+
+[Install]
+WantedBy=multi-user.target

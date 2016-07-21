@@ -1,0 +1,11 @@
+diff -up mod_gnutls-0.5.10/include/mod_gnutls.h.in.no-extra mod_gnutls-0.5.10/include/mod_gnutls.h.in
+--- mod_gnutls-0.5.10/include/mod_gnutls.h.in.no-extra	2011-07-08 23:29:46.000000000 +0200
++++ mod_gnutls-0.5.10/include/mod_gnutls.h.in	2013-03-07 09:08:49.833348848 +0100
+@@ -28,7 +28,6 @@
+ #include "ap_release.h"
+ 
+ #include <gnutls/gnutls.h>
+-#include <gnutls/extra.h>
+ #include <gnutls/openpgp.h>
+ #include <gnutls/x509.h>
+ 

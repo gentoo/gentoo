@@ -1,0 +1,29 @@
+From 554b0255f9ee265f7d093ac875215207fac8fb1e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 15 Apr 2016 17:58:15 -0400
+Subject: [PATCH] Include sys/sysmacros.h when sys/types.h does not define
+ major
+
+glibc is planning to drop this from sys/types.h.
+---
+ src/linux.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/linux.c b/src/linux.c
+index 866455d..fde6947 100644
+--- a/src/linux.c
++++ b/src/linux.c
+@@ -36,6 +36,10 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
++#ifndef major
++#include <sys/sysmacros.h>
++#endif
++
+ #include <efivar.h>
+ #include <efiboot.h>
+ 
+-- 
+2.8.1
+

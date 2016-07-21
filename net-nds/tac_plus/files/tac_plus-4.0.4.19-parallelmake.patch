@@ -1,0 +1,13 @@
+Index: tacacs+-F4.0.4.19/Makefile.am
+===================================================================
+--- tacacs+-F4.0.4.19.orig/Makefile.am
++++ tacacs+-F4.0.4.19/Makefile.am
+@@ -16,7 +16,7 @@ if TACSKEY
+ tac_plus_SOURCES += skey_fn.c
+ endif
+ tac_plus_LDFLAGS = -L$(top_srcdir)
+-tac_plus_LDADD = $(WRAPLIBS) -ltacacs
++tac_plus_LDADD = $(WRAPLIBS) libtacacs.la
+ 
+ lib_LTLIBRARIES = libtacacs.la
+ libtacacs_la_SOURCES = md4.c md5.c packet.c

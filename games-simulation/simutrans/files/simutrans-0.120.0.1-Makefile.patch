@@ -1,0 +1,89 @@
+--- Makefile.orig
++++ Makefile
+@@ -81,8 +81,6 @@
+   ifeq ($(findstring $(OSTYPE), amiga haiku mac),)
+     CFLAGS += -minline-all-stringops
+   endif
+-else
+-  CFLAGS += -O
+ endif
+ 
+ ifdef DEBUG
+@@ -101,6 +99,7 @@
+   endif
+ else
+   CFLAGS += -DNDEBUG
++  CXXFLAGS += -DNDEBUG
+ endif
+ 
+ ifneq ($(PROFILE),)
+@@ -114,6 +113,7 @@
+ ifneq ($(MULTI_THREAD),)
+   ifeq ($(shell expr $(MULTI_THREAD) \>= 1), 1)
+     CFLAGS += -DMULTI_THREAD
++    CXXFLAGS += -DMULTI_THREAD
+     ifeq ($(OSTYPE),mingw)
+ #use lpthreadGC2d for debug alternatively
+       LDFLAGS += -lpthreadGC2
+@@ -132,11 +132,13 @@
+     endif
+     ifneq ($(REV),)
+       CFLAGS  += -DREVISION="$(REV)"
++      CXXFLAGS  += -DREVISION="$(REV)"
+     endif
+   endif
+ endif
+ 
+ CFLAGS   += -Wall -W -Wcast-qual -Wpointer-arith -Wcast-align $(FLAGS)
++CXXFLAGS += -Wall -W -Wcast-qual -Wpointer-arith -Wcast-align $(FLAGS)
+ CCFLAGS  += -Wstrict-prototypes
+ 
+ 
+@@ -492,6 +494,7 @@
+     SDL_LDFLAGS := $(shell $(SDL_CONFIG) --libs)
+   endif
+   CFLAGS += $(SDL_CFLAGS)
++  CXXFLAGS += $(SDL_CFLAGS)
+   LIBS   += $(SDL_LDFLAGS)
+ endif
+ 
+@@ -523,6 +526,7 @@
+     SDL_LDFLAGS := $(shell $(SDL2_CONFIG) --libs)
+   endif
+   CFLAGS += $(SDL_CFLAGS)
++  CXXFLAGS += $(SDL_CFLAGS)
+   LIBS   += $(SDL_LDFLAGS)
+ endif
+ 
+@@ -538,6 +542,7 @@
+     SDL_LDFLAGS := $(shell $(SDL_CONFIG) --libs)
+   endif
+   CFLAGS += $(SDL_CFLAGS)
++  CXXFLAGS += $(SDL_CFLAGS)
+   LIBS   += $(SDL_LDFLAGS) -lSDL_mixer
+ endif
+ 
+@@ -564,6 +569,7 @@
+     SDL_LDFLAGS := $(shell $(SDL_CONFIG) --libs)
+   endif
+   CFLAGS += $(SDL_CFLAGS)
++  CXXFLAGS += $(SDL_CFLAGS)
+   LIBS   += $(SDL_LDFLAGS) -lglew32
+   ifeq ($(OSTYPE),mingw)
+     LIBS += -lopengl32
+@@ -579,6 +585,7 @@
+ endif
+ 
+ CFLAGS += -DCOLOUR_DEPTH=$(COLOUR_DEPTH)
++CXXFLAGS += -DCOLOUR_DEPTH=$(COLOUR_DEPTH)
+ 
+ ifneq ($(findstring $(OSTYPE), cygwin mingw),)
+   SOURCES += simres.rc
+@@ -586,7 +593,6 @@
+ endif
+ 
+ CCFLAGS  += $(CFLAGS)
+-CXXFLAGS += $(CFLAGS)
+ 
+ BUILDDIR ?= build/$(CFG)
+ PROGDIR  ?= $(BUILDDIR)

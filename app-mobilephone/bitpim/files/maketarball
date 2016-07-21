@@ -1,0 +1,30 @@
+# For building the tarball. To be used only by ebuild maintainers
+DISTDIR=/usr/portage/distfiles
+PN=bitpim
+PV=$1
+P=$PN-$PV
+
+if [ -z "$PV" ]; then
+	echo "usage: $0 version"
+else
+	svnrev=$(svn log -q --limit 1 https://${PN}.svn.sourceforge.net/svnroot/${PN}/releases/${PV} | sed -r '/^[^r]/d;s/^r([0-9]+) .*$/\1/')
+	[ $? = 0 ] || return 1
+
+	#Fetch the source (only those directories that are needed)
+	cd "${DISTDIR}" && mkdir -p ${P} || return 1
+	for x in resources packaging src ; do
+		svn export https://${PN}.svn.sourceforge.net/svnroot/${PN}/releases/${PV}/${x} ${P}/${x} || return 1
+	done
+
+	#Remove unneeded stuff
+	rm ${P}/resources/*.chm ${P}/src/package.py
+
+	#Freeze version and set vendor name to Gentoo
+	sed -i -e 's/\(^__FROZEN__="[$]Id: \).*\( $"\)/\1'${svnrev}'\2/' \
+		-e 's/^vendor=".*"/vendor="Gentoo"/' \
+		${P}/src/version.py || return 1
+
+	#Make the tarball
+	tar -cjf ${P}.tar.bz2 ${P}
+	rm -r ${P}
+fi

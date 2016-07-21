@@ -1,0 +1,644 @@
+Make monotone work with botan 1.10.
+
+Patch generated using the following command:
+mtn diff -r 972ee5c3eab3fb5ba0b80684193293d18438a9d0 \
+         -r f4feb3fdc68e4f955909450b2dcb3ff9312dbc9e
+
+Authors: Martin von Gagern, Markus Wanner
+
+References:
+https://bugs.gentoo.org/380257
+https://code.monotone.ca/p/monotone/issues/182/
+https://code.monotone.ca/p/monotone/source/commit/f4feb3fd
+
+============================================================
+--- src/database.cc	4c259f963c440fc95564dfec99b2f832f0bad643
++++ src/database.cc	87efeeff2d3263ba98af684a4022f1897434ed2d
+@@ -3425,9 +3425,8 @@ database::encrypt_rsa(key_id const & pub
+   rsa_pub_key pub;
+   get_key(pub_id, pub);
+ 
+-  SecureVector<Botan::byte> pub_block;
+-  pub_block.set(reinterpret_cast<Botan::byte const *>(pub().data()),
+-                pub().size());
++  SecureVector<Botan::byte> pub_block
++    (reinterpret_cast<Botan::byte const *>(pub().data()), pub().size());
+ 
+   shared_ptr<X509_PublicKey> x509_key(Botan::X509::load_key(pub_block));
+   shared_ptr<RSA_PublicKey> pub_key
+@@ -3471,14 +3470,13 @@ database::check_signature(key_id const &
+   else
+     {
+       rsa_pub_key pub;
+-      SecureVector<Botan::byte> pub_block;
+ 
+       if (!public_key_exists(id))
+         return cert_unknown;
+ 
+       get_key(id, pub);
+-      pub_block.set(reinterpret_cast<Botan::byte const *>(pub().data()),
+-                    pub().size());
++      SecureVector<Botan::byte> pub_block
++        (reinterpret_cast<Botan::byte const *>(pub().data()), pub().size());
+ 
+       L(FL("building verifier for %d-byte pub key") % pub_block.size());
+       shared_ptr<X509_PublicKey> x509_key(Botan::X509::load_key(pub_block));
+============================================================
+--- src/gzip.cc	e7c19bee910e3d421fd073933810ec52092b1d9b
++++ src/gzip.cc	9da41f6820cdf39707b22c716e3682e0fa0fd745
+@@ -110,7 +110,7 @@ Gzip_Compression::Gzip_Compression(u32bi
+    if(deflateInit2(&(zlib->stream), level, Z_DEFLATED, -15, 8, Z_DEFAULT_STRATEGY) != Z_OK)
+       {
+       delete zlib; zlib = 0;
+-      throw Exception("Gzip_Compression: Memory allocation error");
++      throw Memory_Exhaustion();
+       }
+    }
+ 
+@@ -137,7 +137,7 @@ void Gzip_Compression::start_msg()
+ /*************************************************
+ * Compress Input with Gzip                       *
+ *************************************************/
+-void Gzip_Compression::write(const byte input[], u32bit length)
++void Gzip_Compression::write(const byte input[], filter_length_t length)
+    {
+ 
+    count += length;
+@@ -152,7 +152,7 @@ void Gzip_Compression::write(const byte 
+       zlib->stream.avail_out = buffer.size();
+       int rc = deflate(&(zlib->stream), Z_NO_FLUSH);
+       if (rc != Z_OK && rc != Z_STREAM_END)
+-         throw Exception("Internal error in Gzip_Compression deflate.");
++         throw Invalid_State("Internal error in Gzip_Compression deflate.");
+       send(buffer.begin(), buffer.size() - zlib->stream.avail_out);
+       }
+    }
+@@ -172,7 +172,7 @@ void Gzip_Compression::end_msg()
+       zlib->stream.avail_out = buffer.size();
+       rc = deflate(&(zlib->stream), Z_FINISH);
+       if (rc != Z_OK && rc != Z_STREAM_END)
+-         throw Exception("Internal error in Gzip_Compression finishing deflate.");
++         throw Invalid_State("Internal error in Gzip_Compression finishing deflate.");
+       send(buffer.begin(), buffer.size() - zlib->stream.avail_out);
+       }
+ 
+@@ -228,7 +228,7 @@ Gzip_Decompression::Gzip_Decompression()
+    no_writes(true), pipe(new Hash_Filter("CRC32")), footer(0)
+    {
+    if (DEFAULT_BUFFERSIZE < sizeof(GZIP::GZIP_HEADER))
+-      throw Exception("DEFAULT_BUFFERSIZE is too small");
++      throw Decoding_Error("DEFAULT_BUFFERSIZE is too small");
+ 
+    zlib = new Zlib_Stream;
+ 
+@@ -237,7 +237,7 @@ Gzip_Decompression::Gzip_Decompression()
+    if(inflateInit2(&(zlib->stream), -15) != Z_OK)
+       {
+       delete zlib; zlib = 0;
+-      throw Exception("Gzip_Decompression: Memory allocation error");
++      throw Memory_Exhaustion();
+       }
+    }
+ 
+@@ -256,7 +256,7 @@ void Gzip_Decompression::start_msg()
+ void Gzip_Decompression::start_msg()
+    {
+    if (!no_writes)
+-      throw Exception("Gzip_Decompression: start_msg after already writing");
++      throw Decoding_Error("Gzip_Decompression: start_msg after already writing");
+ 
+    pipe.start_msg();
+    datacount = 0;
+@@ -267,7 +267,7 @@ void Gzip_Decompression::start_msg()
+ /*************************************************
+ * Decompress Input with Gzip                     *
+ *************************************************/
+-void Gzip_Decompression::write(const byte input[], u32bit length)
++void Gzip_Decompression::write(const byte input[], filter_length_t length)
+    {
+    if(length) no_writes = false;
+ 
+@@ -277,15 +277,16 @@ void Gzip_Decompression::write(const byt
+          u32bit eat_len = eat_footer(input, length);
+          input += eat_len;
+          length -= eat_len;
+-         if (length == 0)
+-            return;
+       }
+ 
++   if (length == 0)
++     return;
++
+    // Check the gzip header
+    if (pos < sizeof(GZIP::GZIP_HEADER))
+       {
+-      u32bit len = std::min((u32bit)sizeof(GZIP::GZIP_HEADER)-pos, length);
+-      u32bit cmplen = len;
++      filter_length_t len = std::min((filter_length_t)sizeof(GZIP::GZIP_HEADER)-pos, length);
++      filter_length_t cmplen = len;
+       // The last byte is the OS flag - we don't care about that
+       if (pos + len - 1 >= GZIP::HEADER_POS_OS)
+          cmplen--;
+@@ -317,8 +318,8 @@ void Gzip_Decompression::write(const byt
+          if(rc == Z_NEED_DICT)
+             throw Decoding_Error("Gzip_Decompression: Need preset dictionary");
+          if(rc == Z_MEM_ERROR)
+-            throw Exception("Gzip_Decompression: Memory allocation error");
+-         throw Exception("Gzip_Decompression: Unknown decompress error");
++            throw Memory_Exhaustion();
++         throw Decoding_Error("Gzip_Decompression: Unknown decompress error");
+          }
+       send(buffer.begin(), buffer.size() - zlib->stream.avail_out);
+       pipe.write(buffer.begin(), buffer.size() - zlib->stream.avail_out);
+@@ -346,8 +347,14 @@ u32bit Gzip_Decompression::eat_footer(co
+       if (footer.size() >= GZIP::FOOTER_LENGTH)
+          throw Decoding_Error("Gzip_Decompression: Data integrity error in footer");
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++      size_t eat_len = std::min(GZIP::FOOTER_LENGTH-footer.size(),
++                                static_cast<size_t>(length));
++      footer += std::make_pair(input, eat_len);
++#else
+       u32bit eat_len = std::min(GZIP::FOOTER_LENGTH-footer.size(), length);
+       footer.append(input, eat_len);
++#endif
+ 
+       if (footer.size() == GZIP::FOOTER_LENGTH)
+          {
+@@ -364,7 +371,7 @@ void Gzip_Decompression::check_footer()
+ void Gzip_Decompression::check_footer()
+    {
+    if (footer.size() != GZIP::FOOTER_LENGTH)
+-      throw Exception("Gzip_Decompression: Error finalizing decompression");
++      throw Decoding_Error("Gzip_Decompression: Error finalizing decompression");
+ 
+    pipe.end_msg();
+ 
+@@ -377,7 +384,12 @@ void Gzip_Decompression::check_footer()
+   for (int i = 0; i < 4; i++)
+      buf[3-i] = tmpbuf[i];
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++  tmpbuf.resize(4);
++  tmpbuf.copy(footer.begin(), 4);
++#else
+   tmpbuf.set(footer.begin(), 4);
++#endif
+   if (buf != tmpbuf)
+       throw Decoding_Error("Gzip_Decompression: Data integrity error - CRC32 error");
+ 
+@@ -400,7 +412,7 @@ void Gzip_Decompression::end_msg()
+    // read, clear() will reset no_writes
+    if(no_writes) return;
+ 
+-   throw Exception("Gzip_Decompression: didn't find footer");
++   throw Decoding_Error("Gzip_Decompression: didn't find footer");
+ 
+    }
+ 
+@@ -412,7 +424,11 @@ void Gzip_Decompression::clear()
+    no_writes = true;
+    inflateReset(&(zlib->stream));
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++   footer.clear();
++#else
+    footer.destroy();
++#endif
+    pos = 0;
+    datacount = 0;
+    }
+============================================================
+--- src/gzip.hh	649dfc0b250954f39c0f73870f8bec3f32f7fa43
++++ src/gzip.hh	aff9da63bb22366bccf69c2d75ee7790406d2455
+@@ -7,11 +7,18 @@
+ #ifndef BOTAN_EXT_GZIP_H__
+ #define BOTAN_EXT_GZIP_H__
+ 
++#include <botan/version.h>
+ #include <botan/filter.h>
+ #include <botan/pipe.h>
+ 
+ namespace Botan {
+ 
++#if BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,9,4)
++// Only 1.9.4 and newer export the Memory_Exception. Give this gzip
++// implementation something compatible to work with.
++typedef std::bad_alloc Memory_Exhaustion;
++#endif
++
+ namespace GZIP {
+ 
+    /* A basic header - we only need to set the IDs and compression method */
+@@ -30,13 +37,19 @@ namespace GZIP {
+ 
+ }
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++typedef size_t filter_length_t;
++#else
++typedef u32bit filter_length_t;
++#endif
++
+ /*************************************************
+ * Gzip Compression Filter                        *
+ *************************************************/
+ class Gzip_Compression : public Filter
+    {
+    public:
+-      void write(const byte input[], u32bit length);
++      void write(const byte input[], filter_length_t length);
+       void start_msg();
+       void end_msg();
+       std::string name() const { return "Gzip_Compression"; }
+@@ -60,7 +73,7 @@ class Gzip_Decompression : public Filter
+ class Gzip_Decompression : public Filter
+    {
+    public:
+-      void write(const byte input[], u32bit length);
++      void write(const byte input[], filter_length_t length);
+       void start_msg();
+       void end_msg();
+       std::string name() const { return "Gzip_Decompression"; }
+============================================================
+--- src/key_packet.cc	d1306df89dd684badac02c03744cd446381c07d3
++++ src/key_packet.cc	c97262d161b23c9640972188979669b3e95afe7b
+@@ -106,8 +106,8 @@ namespace
+     void validate_public_key_data(string const & name, string const & keydata) const
+     {
+       string decoded = decode_base64_as<string>(keydata, origin::user);
+-      Botan::SecureVector<Botan::byte> key_block;
+-      key_block.set(reinterpret_cast<Botan::byte const *>(decoded.c_str()), decoded.size());
++      Botan::SecureVector<Botan::byte> key_block
++        (reinterpret_cast<Botan::byte const *>(decoded.c_str()), decoded.size());
+       try
+         {
+           Botan::X509::load_key(key_block);
+============================================================
+--- src/key_store.cc	64c4c4bed1fadc26b51207b9f61343f9dd7d3c6e
++++ src/key_store.cc	b7859345f7c665914d16357409bdff24a48b7996
+@@ -572,13 +572,21 @@ key_store_state::decrypt_private_key(key
+   try // with empty passphrase
+     {
+       Botan::DataSource_Memory ds(kp.priv());
+-#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,7,7)
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++      pkcs8_key.reset(Botan::PKCS8::load_key(ds, lazy_rng::get(), Dummy_UI()));
++#elif BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,7,7)
+       pkcs8_key.reset(Botan::PKCS8::load_key(ds, lazy_rng::get(), ""));
+ #else
+       pkcs8_key.reset(Botan::PKCS8::load_key(ds, ""));
+ #endif
+     }
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++  catch (Passphrase_Required & e)
++#elif BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,4)
++  catch (Botan::Invalid_Argument & e)
++#else
+   catch (Botan::Exception & e)
++#endif
+     {
+       L(FL("failed to load key with no passphrase: %s") % e.what());
+ 
+@@ -605,13 +613,18 @@ key_store_state::decrypt_private_key(key
+           {
+             Botan::DataSource_Memory ds(kp.priv());
+ #if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,7,7)
+-            pkcs8_key.reset(Botan::PKCS8::load_key(ds, lazy_rng::get(), phrase()));
++            pkcs8_key.reset(Botan::PKCS8::load_key(ds, lazy_rng::get(),
++                                                   phrase()));
+ #else
+             pkcs8_key.reset(Botan::PKCS8::load_key(ds, phrase()));
+ #endif
+             break;
+           }
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,4)
++        catch (Botan::Invalid_Argument)
++#else
+         catch (Botan::Exception & e)
++#endif
+           {
+             cycles++;
+             L(FL("decrypt_private_key: failure %d to load encrypted key: %s")
+@@ -822,10 +835,14 @@ key_store::decrypt_rsa(key_id const & id
+       plaintext = string(reinterpret_cast<char const*>(plain.begin()),
+                          plain.size());
+     }
+-  catch (Botan::Exception & ex)
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,4)
++  catch (std::exception & e)
++#else
++  catch (Botan::Exception & e)
++#endif
+     {
+       E(false, ciphertext.made_from,
+-        F("Botan error decrypting data: '%s'") % ex.what());
++        F("Botan error decrypting data: '%s'") % e.what());
+     }
+ }
+ 
+@@ -856,9 +873,9 @@ key_store::make_signature(database & db,
+     {
+       if (agent.connected()) {
+         //grab the monotone public key as an RSA_PublicKey
+-        SecureVector<Botan::byte> pub_block;
+-        pub_block.set(reinterpret_cast<Botan::byte const *>(key.pub().data()),
+-                      key.pub().size());
++        SecureVector<Botan::byte> pub_block
++          (reinterpret_cast<Botan::byte const *>(key.pub().data()),
++           key.pub().size());
+         L(FL("make_signature: building %d-byte pub key") % pub_block.size());
+         shared_ptr<X509_PublicKey> x509_key =
+           shared_ptr<X509_PublicKey>(Botan::X509::load_key(pub_block));
+@@ -1031,8 +1048,14 @@ key_store_state::migrate_old_key_pair
+   for (;;)
+     try
+       {
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++        arc4_key.resize(phrase().size());
++        arc4_key.copy(reinterpret_cast<Botan::byte const *>(phrase().data()),
++                      phrase().size());
++#else
+         arc4_key.set(reinterpret_cast<Botan::byte const *>(phrase().data()),
+                      phrase().size());
++#endif
+ 
+         Pipe arc4_decryptor(get_cipher("ARC4", arc4_key, Botan::DECRYPTION));
+ 
+@@ -1051,7 +1074,11 @@ key_store_state::migrate_old_key_pair
+ #endif
+         break;
+       }
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,4)
++    catch (Botan::Invalid_Argument & e)
++#else
+     catch (Botan::Exception & e)
++#endif
+       {
+         L(FL("migrate_old_key_pair: failure %d to load old private key: %s")
+           % cycles % e.what());
+============================================================
+--- src/monotone.cc	a25ecdd170a601db798b63a60add7681609a34c4
++++ src/monotone.cc	764bc9ca406b41d21efd552a0d810bc2849e0588
+@@ -156,27 +156,53 @@ cpp_main(int argc, char ** argv)
+       E(linked_botan_version != BOTAN_VERSION_CODE_FOR(1,7,14), origin::system,
+         F("monotone does not support Botan 1.7.14"));
+ 
+-#if BOTAN_VERSION_CODE <= BOTAN_VERSION_CODE_FOR(1,7,6)
++      // In Botan 1.9.9, the DataSink_Stream cannot be instantiated per
++      // se. As 1.10.1 is already out, let's simply disable support for
++      // that specific (testing) version of botan.
++      E(linked_botan_version != BOTAN_VERSION_CODE_FOR(1,9,9), origin::system,
++        F("monotone does not support Botan 1.9.9"));
++
++#if BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,7,7)
++      // motonote binary compiled against botan younger than 1.7.7
+       E(linked_botan_version >= BOTAN_VERSION_CODE_FOR(1,6,3), origin::system,
+         F("this monotone binary requires Botan 1.6.3 or newer"));
+-      E(linked_botan_version <= BOTAN_VERSION_CODE_FOR(1,7,6), origin::system,
+-        F("this monotone binary does not work with Botan newer than 1.7.6"));
+-#elif BOTAN_VERSION_CODE <= BOTAN_VERSION_CODE_FOR(1,7,22)
+-      E(linked_botan_version > BOTAN_VERSION_CODE_FOR(1,7,6), origin::system,
++      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,7,7), origin::system,
++        F("this monotone binary does not work with Botan 1.7.7 or newer"));
++
++#elif BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,7,22)
++      // motonote binary compiled against botan 1.7.7 - 1.7.21
++      E(linked_botan_version >= BOTAN_VERSION_CODE_FOR(1,7,7), origin::system,
+         F("this monotone binary requires Botan 1.7.7 or newer"));
+-      // While compiling against 1.7.22 or newer is recommended, because
+-      // it enables new features of Botan, the monotone binary compiled
+-      // against Botan 1.7.21 and before should still work with newer Botan
+-      // versions, including all of the stable branch 1.8.x.
+-      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,9,0), origin::system,
+-        F("this monotone binary does not work with Botan 1.9.x"));
+-#else
+-      E(linked_botan_version > BOTAN_VERSION_CODE_FOR(1,7,22), origin::system,
++      // While compiling against 1.7.22 or newer is recommended, because it
++      // enables new features of Botan, the monotone binary compiled against
++      // Botan 1.7.21 and before should still work with newer Botan version,
++      // including all of the stable branch 1.8.x, up to and including
++      // 1.9.3.
++      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,9,4), origin::system,
++        F("this monotone binary does not work with Botan 1.9.4 or newer"));
++
++#elif BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,9,4)
++      // motonote binary compiled against botan 1.7.22 - 1.9.3
++      E(linked_botan_version >= BOTAN_VERSION_CODE_FOR(1,7,22), origin::system,
+         F("this monotone binary requires Botan 1.7.22 or newer"));
+-      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,9,0), origin::system,
+-        F("this monotone binary does not work with Botan 1.9.x"));
++      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,9,4), origin::system,
++        F("this monotone binary does not work with Botan 1.9.4 or newer"));
++
++#elif BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,9,11)
++      // motonote binary compiled against botan 1.9.4 - 1.9.10
++#pragma message ( "The resulting monotone binary won't be able to run with any stable release of botan." )
++      E(linked_botan_version >= BOTAN_VERSION_CODE_FOR(1,9,4), origin::system,
++        F("this monotone binary requires Botan 1.9.4 or newer"));
++      E(linked_botan_version < BOTAN_VERSION_CODE_FOR(1,9,11), origin::system,
++        F("this monotone binary does not work with Botan 1.9.11 or newer"));
++
++#else
++      // motonote binary compiled against botan 1.9.11 and newer
++      E(linked_botan_version >= BOTAN_VERSION_CODE_FOR(1,9,11), origin::system,
++        F("this monotone binary requires Botan 1.9.11 or newer"));
+ #endif
+ 
++
+       app_state app;
+       try
+         {
+============================================================
+--- src/packet.cc	f61360ed2524fdf53411bd24d022a2a3c9e6e9c7
++++ src/packet.cc	571ff6eae1d269a146da74f2730b70376957d3bb
+@@ -156,8 +156,8 @@ namespace
+     void validate_public_key_data(string const & name, string const & keydata) const
+     {
+       string decoded = decode_base64_as<string>(keydata, origin::user);
+-      Botan::SecureVector<Botan::byte> key_block;
+-      key_block.set(reinterpret_cast<Botan::byte const *>(decoded.c_str()), decoded.size());
++      Botan::SecureVector<Botan::byte> key_block
++        (reinterpret_cast<Botan::byte const *>(decoded.c_str()), decoded.size());
+       try
+         {
+           Botan::X509::load_key(key_block);
+@@ -175,7 +175,9 @@ namespace
+       Botan::DataSource_Memory ds(decoded);
+       try
+         {
+-#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,7,7)
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++          Botan::PKCS8::load_key(ds, lazy_rng::get(), Dummy_UI());
++#elif BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,7,7)
+           Botan::PKCS8::load_key(ds, lazy_rng::get(), string());
+ #else
+           Botan::PKCS8::load_key(ds, string());
+@@ -189,7 +191,11 @@ namespace
+         }
+       // since we do not want to prompt for a password to decode it finally,
+       // we ignore all other exceptions
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++      catch (Passphrase_Required) {}
++#else
+       catch (Botan::Invalid_Argument) {}
++#endif
+     }
+     void validate_certname(string const & cn) const
+     {
+@@ -460,8 +466,16 @@ read_packets(istream & in, packet_consum
+   return count;
+ }
+ 
++// Dummy User_Interface implementation for Botan
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++std::string
++Dummy_UI::get_passphrase(const std::string &, const std::string &,
++                         Botan::User_Interface::UI_Result&) const
++{
++  throw Passphrase_Required("Passphrase required");
++}
++#endif
+ 
+-
+ // Local Variables:
+ // mode: C++
+ // fill-column: 76
+============================================================
+--- src/packet.hh	0a224e6e92f244e2c3e9a5cdb935eb8613d7e85b
++++ src/packet.hh	9c43d30145f0292d6ceda5e717e366fdead5a4d6
+@@ -10,6 +10,10 @@
+ #ifndef __PACKET_HH__
+ #define __PACKET_HH__
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++#include <botan/ui.h>
++#endif
++
+ #include "vocab.hh"
+ 
+ struct cert;
+@@ -84,8 +88,23 @@ size_t read_packets(std::istream & in, p
+ 
+ size_t read_packets(std::istream & in, packet_consumer & cons);
+ 
++#if BOTAN_VERSION_CODE >= BOTAN_VERSION_CODE_FOR(1,9,11)
++// A helper class implementing Botan::User_Interface - which doesn't really
++// interface with the user, but provides the necessary plumbing for Botan.
++//
++// See Botan commit 2d09d7d0cd4bd0e7155d001dd65a4f29103b158c
++typedef std::runtime_error Passphrase_Required;
++
++class Dummy_UI : public Botan::User_Interface
++{
++public:
++  virtual std::string get_passphrase(const std::string &, const std::string &,
++                                     Botan::User_Interface::UI_Result &) const;
++};
+ #endif
+ 
++#endif
++
+ // Local Variables:
+ // mode: C++
+ // fill-column: 76
+============================================================
+--- src/sha1.cc	5e1aa972d7c7d66e06320b039989652b830dcd75
++++ src/sha1.cc	42e48b22fd88b25e0d38d4f91e1f13f8a83c7120
+@@ -50,9 +50,12 @@ CMD_HIDDEN(benchmark_sha1, "benchmark_sh
+   Botan::Default_Benchmark_Timer timer;
+   std::map<std::string, double> results =
+     Botan::algorithm_benchmark("SHA-1",  milliseconds, timer, rng, af);
++#elif BOTAN_VERSION_CODE < BOTAN_VERSION_CODE_FOR(1,9,11)
++  std::map<std::string, double> results =
++    Botan::algorithm_benchmark("SHA-1",  milliseconds, rng, af);
+ #else
+   std::map<std::string, double> results =
+-    Botan::algorithm_benchmark("SHA-1",  milliseconds, rng, af);
++    Botan::algorithm_benchmark("SHA-1",  af, rng, milliseconds, 16);
+ #endif
+ 
+   for(std::map<std::string, double>::const_iterator i = results.begin();
+============================================================
+--- src/ssh_agent.cc	6d188e7012a0b82f782563b09bbd7adf3f70cf75
++++ src/ssh_agent.cc	4a0dcab873559e934e41c5f220b5434d35600d9b
+@@ -385,9 +385,9 @@ ssh_agent::has_key(const keypair & key)
+ ssh_agent::has_key(const keypair & key)
+ {
+   //grab the monotone public key as an RSA_PublicKey
+-  SecureVector<Botan::byte> pub_block;
+-  pub_block.set(reinterpret_cast<Botan::byte const *>((key.pub)().data()),
+-                (key.pub)().size());
++  SecureVector<Botan::byte> pub_block
++    (reinterpret_cast<Botan::byte const *>((key.pub)().data()),
++     (key.pub)().size());
+   L(FL("has_key: building %d-byte pub key") % pub_block.size());
+   shared_ptr<X509_PublicKey> x509_key =
+     shared_ptr<X509_PublicKey>(Botan::X509::load_key(pub_block));
+============================================================
+--- src/transforms.cc	cdfb6854ef4992faba21074145f3c8269b845b11
++++ src/transforms.cc	b99278ffe95c0081bf4986bc74d3699c37a52948
+@@ -53,15 +53,16 @@ using Botan::Hash_Filter;
+ // paradigm "must" be used. this program is intended for source code
+ // control and I make no bones about it.
+ 
+-NORETURN(static inline void error_in_transform(Botan::Exception & e));
++NORETURN(static inline void error_in_transform(std::exception & e));
+ 
+ static inline void
+-error_in_transform(Botan::Exception & e, origin::type caused_by)
++error_in_transform(std::exception & e, origin::type caused_by)
+ {
+   // these classes can all indicate data corruption
+   if (typeid(e) == typeid(Botan::Encoding_Error)
+       || typeid(e) == typeid(Botan::Decoding_Error)
+       || typeid(e) == typeid(Botan::Stream_IO_Error)
++      || typeid(e) == typeid(Botan::Invalid_Argument)
+       || typeid(e) == typeid(Botan::Integrity_Failure))
+     {
+       // clean up the what() string a little: throw away the
+@@ -107,7 +108,7 @@ error_in_transform(Botan::Exception & e,
+         pipe->process_msg(in);                                  \
+         out = pipe->read_all_as_string(Pipe::LAST_MESSAGE);     \
+       }                                                         \
+-    catch (Botan::Exception & e)                                \
++    catch (std::exception & e)                                   \
+       {                                                         \
+         pipe.reset(new Pipe(new T(carg)));                      \
+         error_in_transform(e, made_from);                       \
+@@ -173,7 +174,7 @@ template<> string xform<Botan::Hex_Decod
+             {
+               throw Botan::Decoding_Error(string("invalid hex character '") + (char)c + "'");
+             }
+-          catch(Botan::Exception & e)
++          catch(std::exception & e)
+             {
+               error_in_transform(e, made_from);
+             }
+@@ -219,7 +220,7 @@ void pack(T const & in, base64< gzip<T> 
+       tmp = pipe->read_all_as_string(Pipe::LAST_MESSAGE);
+       out = base64< gzip<T> >(tmp, in.made_from);
+     }
+-  catch (Botan::Exception & e)
++  catch (std::exception & e)
+     {
+       pipe.reset(new Pipe(new Gzip_Compression,
+                           new Base64_Encoder));
+@@ -237,7 +238,7 @@ void unpack(base64< gzip<T> > const & in
+       pipe->process_msg(in());
+       out = T(pipe->read_all_as_string(Pipe::LAST_MESSAGE), in.made_from);
+     }
+-  catch (Botan::Exception & e)
++  catch (std::exception & e)
+     {
+       pipe.reset(new Pipe(new Base64_Decoder,
+                           new Gzip_Decompression));
+@@ -264,7 +265,7 @@ calculate_ident(data const & dat,
+       p->process_msg(dat());
+       ident = id(p->read_all_as_string(Pipe::LAST_MESSAGE), dat.made_from);
+     }
+-  catch (Botan::Exception & e)
++  catch (std::exception & e)
+     {
+       p.reset(new Pipe(new Hash_Filter("SHA-160")));
+       error_in_transform(e, dat.made_from);

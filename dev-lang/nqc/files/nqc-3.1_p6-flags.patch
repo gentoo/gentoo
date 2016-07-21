@@ -1,0 +1,73 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Aug 21 18:14:15 UTC 2012
+Subject: build system
+
+respect flags
+
+--- Makefile
++++ Makefile
+@@ -67,7 +67,7 @@
+ 
+ # CFLAGS
+ #CFLAGS = -pipe -Iplatform -Ircxlib -Inqc -Icompiler -Wall -Wstrict-prototypes -Wmissing-prototypes
+-CFLAGS += -Iplatform -Ircxlib -Inqc -Icompiler -Wall
++CXXFLAGS += -Iplatform -Ircxlib -Inqc -Icompiler -Wall
+ 
+ USBOBJ = rcxlib/RCX_USBTowerPipe_none.o
+ 
+@@ -87,20 +87,20 @@
+   # Linux
+ # uncomment this next line if you have the USB tower library installed
+ #  USBOBJ = rcxlib/RCX_USBTowerPipe_linux.o
+-  CFLAGS += -I/usr/local/include/LegoUSB -Wno-deprecated
++  CXXFLAGS += -I/usr/include/LegoUSB -Wno-deprecated
+ else
+ ifneq (,$(findstring $(OSTYPE), SunOS))
+   # Solaris
+-  CFLAGS += -DSOLARIS
++  CXXFLAGS += -DSOLARIS
+ else
+ ifneq (,$(strip $(findstring $(OSTYPE), FreeBSD)))
+   # FreeBSD
+   USBOBJ = rcxlib/RCX_USBTowerPipe_fbsd.o
+   DEFAULT_SERIAL_NAME = "/dev/cuad0"
+-  CFLAGS += -Wno-deprecated
++  CXXFLAGS += -Wno-deprecated
+ else
+   # default Unix build without USB support
+-  CFLAGS += -O6
++  CXXFLAGS += -O6
+ endif
+ endif
+ endif
+@@ -113,7 +113,7 @@
+ ifndef DEFAULT_SERIAL_NAME
+   DEFAULT_SERIAL_NAME = "/dev/ttyS0"
+ endif
+-CFLAGS += -DDEFAULT_SERIAL_NAME='$(DEFAULT_SERIAL_NAME)'
++CXXFLAGS += -DDEFAULT_SERIAL_NAME='$(DEFAULT_SERIAL_NAME)'
+ 
+ #
+ # Object files
+@@ -164,10 +164,10 @@
+ 	$(MKDIR) bin
+ 
+ bin/nqc : compiler/parse.cpp $(OBJ)
+-	$(CXX) -o $@ $(OBJ) $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(LIBS)
+ 
+ bin/mkdata : mkdata/mkdata.cpp nqc/SRecord.cpp
+-	$(CXX) -o bin/mkdata -Inqc/ -Iplatform/ mkdata/mkdata.cpp nqc/SRecord.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o bin/mkdata -Inqc/ -Iplatform/ mkdata/mkdata.cpp nqc/SRecord.cpp
+ 
+ #
+ # clean up stuff
+@@ -227,7 +227,7 @@
+ # general rule for compiling
+ #
+ .cpp.o:
+-	$(CXX) -c $(CFLAGS) $< -o $*.o
++	$(CXX) -c $(CXXFLAGS) $< -o $*.o
+ 
+ 
+ #

@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/269240
+
+fix build failure when using gcc-4.4
+
+--- reiser4progs-1.0.7/plugin/node/node40/node40.c
++++ reiser4progs-1.0.7/plugin/node/node40/node40.c
+@@ -994,7 +994,7 @@
+ 	func = cb_comp_key3;
+ #elif defined(ENABLE_LARGE_KEYS)
+ 	func = cb_comp_key4;
+-#elif
++#else
+ 	func = NULL;
+ #endif
+ 	

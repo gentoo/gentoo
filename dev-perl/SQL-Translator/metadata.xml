@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SQL-Translator</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::SQL::Translator::Parser::DB2::Grammar</remote-id>
+    <remote-id type="cpan-module">SQL::Translator</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Diff</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Filter::DefaultExtra</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Filter::Globals</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Filter::Names</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::DDL::PostgreSQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::DDL::SQLServer</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::DDL::SQLite</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::Role::DDL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Generator::Role::Quote</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::Access</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DB2</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DB2::Grammar</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::DB2</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::MySQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::Oracle</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::PostgreSQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::SQLServer</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::SQLite</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::DBI::Sybase</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::Excel</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::MySQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::Oracle</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::PostgreSQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::SQLServer</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::SQLite</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::Storable</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::Sybase</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::XML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::XML::SQLFairy</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::YAML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Parser::xSV</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::ClassDBI</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::DB2</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::DiaUml</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Diagram</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Dumper</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::GraphViz</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::HTML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Latex</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::MySQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Oracle</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::POD</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::PostgreSQL</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::SQLServer</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::SQLite</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Storable</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::Sybase</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::TT::Base</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::TT::Table</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::TTSchema</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::XML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::XML::SQLFairy</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Producer::YAML</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Role::BuildArgs</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Role::Debug</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Role::Error</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Role::ListAttr</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Constants</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Constraint</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Field</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Index</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Object</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Procedure</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Role::Compare</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Role::Extra</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Table</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::Trigger</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Schema::View</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Types</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Utils</remote-id>
+    <remote-id type="cpan-module">SQL::Translator::Utils::Error</remote-id>
+    <remote-id type="cpan-module">Test::SQL::Translator</remote-id>
+  </upstream>
+</pkgmetadata>

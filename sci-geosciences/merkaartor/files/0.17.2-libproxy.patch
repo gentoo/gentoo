@@ -1,0 +1,12 @@
+diff -urN merkaartor-0.17.2.old//src/Preferences/MerkaartorPreferences.h merkaartor-0.17.2/src/Preferences/MerkaartorPreferences.h
+--- merkaartor-0.17.2.old//src/Preferences/MerkaartorPreferences.h	2011-06-10 17:26:49.000000000 +0200
++++ merkaartor-0.17.2/src/Preferences/MerkaartorPreferences.h	2011-06-10 17:29:46.000000000 +0200
+@@ -21,7 +21,7 @@
+ #include <QNetworkProxy>
+ 
+ #ifdef USE_LIBPROXY
+-#include <libproxy/proxy.h>
++#include <proxy.h>
+ #endif
+ 
+ #include "Maps/Coord.h"

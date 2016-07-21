@@ -1,0 +1,12 @@
+diff -ru bashmark-0.6.2-orig/makefile bashmark-0.6.2/makefile
+--- bashmark-0.6.2-orig/makefile	2007-10-08 23:01:06.000000000 +0300
++++ bashmark-0.6.2/makefile	2007-10-08 23:01:22.000000000 +0300
+@@ -10,7 +10,7 @@
+ BIN = bashmark
+ 
+ $(BIN):  $(OBJ)
+-	$(LD) $(LDFLAGS) $(CXXFLAGS) $(OBJ) -o $(BIN)
++	$(LD) $(CXXFLAGS) $(OBJ) $(LDFLAGS) -o $(BIN)
+ 
+ 
+ Benchmark.o:

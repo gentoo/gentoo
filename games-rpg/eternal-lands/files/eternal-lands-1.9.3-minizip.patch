@@ -1,0 +1,75 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Jun 24 16:33:08 UTC 2012
+Subject: unbundle minizip
+
+https://bugs.gentoo.org/show_bug.cgi?id=423327
+applied on top of eternal-lands-1.9.3-build.patch
+
+--- elc/new_update.c
++++ elc/new_update.c
+@@ -5,8 +5,8 @@
+ #include <string.h>
+ #include "md5.h"
+ #include "elc_private.h"
+-#include "io/zip.h"
+-#include "io/unzip.h"
++#include <zip.h>
++#include <unzip.h>
+ #include "io/ziputil.h"
+ #include "io/fileutil.h"
+ #include "io/elfilewrapper.h"
+--- elc/io/ziputil.h
++++ elc/io/ziputil.h
+@@ -8,8 +8,8 @@
+ 
+ #include <SDL.h>
+ #include "../md5.h"
+-#include "zip.h"
+-#include "unzip.h"
++#include <zip.h>
++#include <unzip.h>
+ 
+ #ifdef __cplusplus
+ extern "C"
+--- elc/io/elfilewrapper.c
++++ elc/io/elfilewrapper.c
+@@ -1,5 +1,5 @@
+ #include "elfilewrapper.h"
+-#include "unzip.h"
++#include <unzip.h>
+ #include "elpathwrapper.h"
+ #include "fileutil.h"
+ #include <sys/stat.h>
+--- elc/Makefile.linux
++++ elc/Makefile.linux
+@@ -25,11 +25,13 @@
+ 
+ CFLAGS += $(shell sdl-config --cflags) \
+ 	  $(shell xml2-config --cflags) \
++	  $(shell pkg-config --cflags minizip) \
+ 	  -fno-strict-aliasing \
+ 	  $(EXTRA_INCLUDES)
+ 
+ CXXFLAGS += $(shell sdl-config --cflags) \
+ 	    $(shell xml2-config --cflags) \
++	    $(shell pkg-config --cflags minizip) \
+ 	    -fno-strict-aliasing \
+ 	    $(EXTRA_INCLUDES)
+ 
+@@ -47,6 +49,7 @@
+ 	$(shell pkg-config --libs vorbis) \
+ 	$(shell pkg-config --libs vorbisfile) \
+ 	$(shell pkg-config --libs zlib) \
++	$(shell pkg-config --libs minizip) \
+ 	-lm \
+ 	$(EXTRA_LIBS) \
+ 	$(foreach FEATURE, $(EL_FEATURES), $($(FEATURE)_LIBS)) \
+@@ -80,7 +83,7 @@
+ 	gamewin.o gl_init.o hud.o help.o highlight.o	\
+ 	ignore.o init.o interface.o items.o io/fileutil.o	\
+ 	io/e3d_io.o io/elc_io.o	io/map_io.o io/elpathwrapper.o io/xmlcallbacks.o \
+-	io/half.o io/normal.o io/elfilewrapper.o io/unzip.o io/ioapi.o io/zip.o io/ziputil.o	\
++	io/half.o io/normal.o io/elfilewrapper.o io/ziputil.o	\
+ 	keys.o knowledge.o langselwin.o lights.o list.o load_gl_extensions.o loginwin.o loading_win.o	\
+ 	main.o manufacture.o map.o mapwin.o memory.o	\
+ 	md5.o mines.o minimap.o misc.o missiles.o multiplayer.o	\

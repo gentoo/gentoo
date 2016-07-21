@@ -1,0 +1,21 @@
+--- scripts/po/rebuild-translations.sh.orig	2011-09-29 21:23:48.122625252 +0200
++++ scripts/po/rebuild-translations.sh	2011-09-29 21:49:55.642929743 +0200
+@@ -10,7 +10,7 @@
+ PODIR="po"
+ LOCALEDIR="locale"
+ APPLICATION="davical"
+-AWL_LOCATION="../awl"
++AWL_LOCATION="/usr/share/php/awl/inc"
+ 
+ if [ ! -d "${AWL_LOCATION}" ]; then
+   AWL_LOCATION="`find .. -type d -name 'awl-*.*'`"
+@@ -25,7 +25,8 @@
+ 
+ egrep -l '(i18n|translate)' htdocs/*.php inc/*.php inc/ui/*.php > ${PODIR}/pofilelist.tmp1
+ sed "s:../awl:${AWL_LOCATION}:" ${PODIR}/pofilelist.txt >> ${PODIR}/pofilelist.tmp1
+-sort ${PODIR}/pofilelist.tmp1 | uniq > ${PODIR}/pofilelist.tmp
++sed "s:/awl/inc/:/awl/:" ${PODIR}/pofilelist.tmp1 >> ${PODIR}/pofilelist.tmp2
++sort ${PODIR}/pofilelist.tmp2 | uniq > ${PODIR}/pofilelist.tmp
+ xgettext --no-location --add-comments=Translators --keyword=translate --keyword=i18n --output=${PODIR}/messages.tmp -s -f ${PODIR}/pofilelist.tmp
+ sed 's.^"Content-Type: text/plain; charset=CHARSET\\n"."Content-Type: text/plain; charset=UTF-8\\n".' ${PODIR}/messages.tmp > ${PODIR}/messages.pot
+ rm ${PODIR}/messages.tmp ${PODIR}/pofilelist.tmp ${PODIR}/pofilelist.tmp1

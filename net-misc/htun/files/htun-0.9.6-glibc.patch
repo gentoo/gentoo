@@ -1,0 +1,14 @@
+get things building with glibc-2.8
+
+http://bugs.gentoo.org/248100
+
+--- include/common.h
++++ include/common.h
+@@ -23,6 +23,7 @@
+ #ifndef __COMMON_H
+ #define __COMMON_H
+ 
++#include <limits.h>
+ #include <netinet/in.h>
+ #include <time.h>
+ #include "queue.h"

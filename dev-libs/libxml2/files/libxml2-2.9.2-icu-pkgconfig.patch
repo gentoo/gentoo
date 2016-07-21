@@ -1,0 +1,26 @@
+diff --git a/configure.in b/configure.in
+index 7374564..13c8d4e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1444,19 +1444,11 @@ XML_LIBTOOLLIBS="libxml2.la"
+ AC_SUBST(WITH_ICONV)
+ 
+ WITH_ICU=0
+-ICU_LIBS=""
+ if test "$with_icu" != "yes" ; then
+     echo Disabling ICU support
+ else
+-    ICU_CONFIG=icu-config
+-    if ${ICU_CONFIG} --cflags >/dev/null 2>&1
+-    then
+-        ICU_LIBS=`${ICU_CONFIG} --ldflags`
+-        WITH_ICU=1
+-        echo Enabling ICU support
+-    else
+-        AC_MSG_ERROR([libicu config program icu-config not found])
+-    fi
++    PKG_CHECK_MODULES(ICU, icu-i18n)
++    WITH_ICU=1
+ fi
+ AC_SUBST(WITH_ICU)
+ AC_SUBST(ICU_LIBS)

@@ -1,0 +1,13 @@
+diff --git a/usr.bin/bmake/Makefile b/usr.bin/bmake/Makefile
+index 6c6d8c2..22fec7a 100644
+--- a/usr.bin/bmake/Makefile
++++ b/usr.bin/bmake/Makefile
+@@ -5,7 +5,7 @@
+ 
+ .sinclude "Makefile.inc"
+ 
+-SRCTOP?= ${.CURDIR:H:H}
++SRCTOP= ${.CURDIR:H:H}
+ 
+ # look here first for config.h
+ CFLAGS+= -I${.CURDIR}

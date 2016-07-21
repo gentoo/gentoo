@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-chemistry@gentoo.org</email>
+    <name>Gentoo Chemistry Project</name>
+  </maintainer>
+  <use>
+    <flag name="fetk">Include support for FeTK</flag>
+    <flag name="fast">APBS fast mode (experimental)</flag>
+    <flag name="iapbs">C/C++/Fortran interface</flag>
+    <flag name="tools">Install optional tools</flag>
+  </use>
+  <longdescription>
+APBS is a software package for modeling biomolecular solvation through solution 
+of the Poisson-Boltzmann equation (PBE), one of the most popular continuum 
+models for describing electrostatic interactions between molecular solutes in 
+salty, aqueous media. Continuum electrostatics plays an important role in 
+several areas of biomolecular simulation
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Electrostatics/apbs-pdb2pqr</remote-id>
+    <remote-id type="sourceforge">apbs</remote-id>
+  </upstream>
+</pkgmetadata>

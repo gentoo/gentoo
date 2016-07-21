@@ -1,0 +1,15 @@
+diff -uNr opentyrian-2.1.20130907.ORIG/Makefile opentyrian-2.1.20130907/Makefile
+--- opentyrian-2.1.20130907.ORIG/Makefile	2013-12-08 17:38:06.982842189 +0000
++++ opentyrian-2.1.20130907/Makefile	2013-12-08 17:38:26.843842798 +0000
+@@ -21,11 +21,6 @@
+ 
+ # FLAGS ####################################################
+ 
+-ifneq ($(MAKECMDGOALS), release)
+-    EXTRA_CFLAGS += -g3 -O0 -Werror
+-else
+-    EXTRA_CFLAGS += -g0 -O2 -DNDEBUG
+-endif
+ EXTRA_CFLAGS += -MMD -pedantic -Wall -Wextra -Wno-missing-field-initializers
+ ifeq ($(WITH_NETWORK), true)
+     EXTRA_CFLAGS += -DWITH_NETWORK

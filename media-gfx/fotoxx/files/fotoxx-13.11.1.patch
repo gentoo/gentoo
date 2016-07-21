@@ -1,0 +1,44 @@
+diff -r -U1 fotoxx-13.08.1.orig/Makefile fotoxx-13.08.1/Makefile
+--- fotoxx-13.08.1.orig/Makefile	2013-08-13 15:53:00.000000000 +0700
++++ fotoxx-13.08.1/Makefile	2013-08-16 04:37:03.009099149 +0700
+@@ -5,4 +5,4 @@
+ # defaults for parameters that may be pre-defined
+-CXXFLAGS ?= -O2 -Wall -ggdb
+-LDFLAGS ?= -rdynamic 
++CXXFLAGS += -Wall -Wno-deprecated-declarations
++LDFLAGS += -rdynamic
+ PREFIX ?= /usr
+@@ -15,3 +15,3 @@
+ LOCALESDIR = $(SHAREDIR)/locales
+-DOCDIR = $(PREFIX)/share/doc/fotoxx
++DOCDIR = $(PREFIX)/share/doc/$(PF)
+ MANDIR = $(PREFIX)/share/man/man1
+@@ -19,4 +19,4 @@
+ 
+-CFLAGS = $(CXXFLAGS) -c `pkg-config --cflags gtk+-3.0`
+-LIBS = `pkg-config --libs gtk+-3.0`
++CFLAGS = $(CXXFLAGS) -c -DPF=\"$(PF)\" `pkg-config --cflags gtk+-3.0`
++LIBS = `pkg-config --libs gtk+-3.0` -lpthread
+ 
+@@ -78,3 +78,2 @@
+ 	rm -f  $(DESTDIR)$(MANDIR)/fotoxx.1.gz
+-	xdg-desktop-menu uninstall $(DESTDIR)$(MENUFILE)
+ 	rm -f  $(DESTDIR)$(MENUFILE)
+@@ -97,5 +96,2 @@
+ 	rm -f fotoxx.1.gz
+-	# menu (desktop) file
+-	cp -f desktop $(DESTDIR)$(MENUFILE)
+-	xdg-desktop-menu install --novendor $(DESTDIR)$(MENUFILE)
+ 
+@@ -106,3 +102,2 @@
+ 	rm -f  $(DESTDIR)$(MANDIR)/fotoxx.1.gz
+-	xdg-desktop-menu uninstall $(DESTDIR)$(MENUFILE)
+ 	rm -f  $(DESTDIR)$(MENUFILE)
+diff -r -U1 fotoxx-13.08.1.orig/zfuncs.cc fotoxx-13.08.1/zfuncs.cc
+--- fotoxx-13.08.1.orig/zfuncs.cc	2013-08-13 15:53:00.000000000 +0700
++++ fotoxx-13.08.1/zfuncs.cc	2013-08-16 04:31:58.882119673 +0700
+@@ -3947,3 +3947,3 @@
+    strncatv(zlocalesdir,199,work,"/share/",zappname,"/locales",null);      //  /prefix/share/appname/locales
+-   strncatv(zdocdir,199,work,"/share/doc/",zappname,null);                 //  /prefix/share/doc/appname
++   strncatv(zdocdir,199,work,"/share/doc/",PF,null);                       //  /prefix/share/doc/$(PF)
+    

@@ -1,0 +1,19 @@
+--- DirectFB-1.2.7/configure
++++ DirectFB-1.2.7/configure
+@@ -22953,8 +22953,6 @@
+   CFLAGS=
+ fi
+ 
+-CFLAGS="-O3 -ffast-math -pipe $CFLAGS"
+-
+ DFB_INTERNAL_CFLAGS="-D_GNU_SOURCE $DFB_INTERNAL_CFLAGS"
+ 
+ # Check whether --enable-extra-warnings was given.
+@@ -23622,7 +23620,6 @@
+ fi
+ 
+ if test "$enable_debug" = "yes"; then
+-    CFLAGS="$CFLAGS -g3 -fno-inline -Wno-inline"
+     DIRECT_BUILD_DEBUG=1
+ else
+     DIRECT_BUILD_DEBUG=0

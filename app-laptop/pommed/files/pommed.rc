@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need dbus alsasound
+}
+
+start() {
+	ebegin "Running pommed daemon"
+	start-stop-daemon --start --quiet --exec /usr/bin/pommed
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pommed daemon"
+	start-stop-daemon --stop --pidfile /var/run/pommed.pid
+	eend $?
+}

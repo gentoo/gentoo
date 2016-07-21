@@ -1,0 +1,28 @@
+--- lrzsz-0.12.20/configure.in
++++ lrzsz-0.12.20/configure.in
+@@ -97,7 +97,6 @@
+ AC_ISC_POSIX
+ AC_USE_SYSTEM_EXTENSIONS
+ AM_GNU_GETTEXT
+-AM_C_PROTOTYPES
+ AC_C_CONST
+ AC_C_INLINE
+ 
+--- lrzsz-0.12.20/lib/Makefile.am
++++ lrzsz-0.12.20/lib/Makefile.am
+@@ -1,5 +1,4 @@
+ noinst_LIBRARIES=libzmodem.a
+-AUTOMAKE_OPTIONS=ansi2knr
+ 
+ EXTRA_DIST = alloca.c ansi2knr.1 ansi2knr.c \
+ 	getopt.c getopt1.c mkdir.c mktime.c \
+--- lrzsz-0.12.20/src/Makefile.am
++++ lrzsz-0.12.20/src/Makefile.am
+@@ -7,7 +7,6 @@
+ DISTCLEAN_FILES=lrzszbug
+ 
+ LDADD = ../lib/libzmodem.a @INTLLIBS@
+-AUTOMAKE_OPTIONS=ansi2knr
+ EXTRA_DIST = ansi2knr.1 ansi2knr.c lrzszbug.in
+ INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/src -I../intl -I$(top_srcdir)/lib
+ #DEFS = -DLOCALEDIR=\"$(localedir)\" -DOS=\"@host_os@\" -DCPU=\"@host_cpu@\"

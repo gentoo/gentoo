@@ -1,0 +1,139 @@
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcfg.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegcfg.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcfg.c
+@@ -171,13 +171,10 @@ gst_ffmpeg_idct_algo_get_type (void)
+       {FF_IDCT_INT, "JPEG reference Integer", "int"},
+       {FF_IDCT_SIMPLE, "Simple", "simple"},
+       {FF_IDCT_SIMPLEMMX, "Simple MMX", "simplemmx"},
+-      {FF_IDCT_LIBMPEG2MMX, "LIBMPEG2MMX", "libmpeg2mmx"},
+       {FF_IDCT_ARM, "ARM", "arm"},
+       {FF_IDCT_ALTIVEC, "ALTIVEC", "altivec"},
+       {FF_IDCT_SH4, "SH4", "sh4"},
+       {FF_IDCT_SIMPLEARM, "SIMPLEARM", "simplearm"},
+-      {FF_IDCT_H264, "H264", "h264"},
+-      {FF_IDCT_VP3, "VP3", "vp3"},
+       {FF_IDCT_IPP, "IPP", "ipp"},
+       {FF_IDCT_XVIDMMX, "XVIDMMX", "xvidmmx"},
+       {0, NULL, NULL},
+@@ -274,9 +271,6 @@ gst_ffmpeg_flags_get_type (void)
+           "global-headers"},
+       {CODEC_FLAG_AC_PRED, "H263 Advanced Intra Coding / MPEG4 AC prediction",
+           "aic"},
+-      {CODEC_FLAG_CBP_RD, "Rate Distoration Optimization for CBP", "cbp-rd"},
+-      {CODEC_FLAG_QP_RD, "Rate Distoration Optimization for QP selection",
+-          "qp-rd"},
+       {CODEC_FLAG_CLOSED_GOP, "Closed GOP", "closedgop"},
+       {0, NULL, NULL},
+     };
+@@ -580,18 +574,6 @@ gst_ffmpeg_cfg_init (void)
+       -100, G_MAXINT, 0, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+   gst_ffmpeg_add_pspec (pspec, max_key_interval, FALSE, mpeg, NULL);
+ 
+-  pspec = g_param_spec_int ("luma-elim-threshold",
+-      "Luma Elimination Threshold",
+-      "Luma Single Coefficient Elimination Threshold",
+-      -99, 99, 0, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+-  gst_ffmpeg_add_pspec (pspec, config.luma_elim_threshold, FALSE, mpeg, NULL);
+-
+-  pspec = g_param_spec_int ("chroma-elim-threshold",
+-      "Chroma Elimination Threshold",
+-      "Chroma Single Coefficient Elimination Threshold",
+-      -99, 99, 0, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+-  gst_ffmpeg_add_pspec (pspec, config.chroma_elim_threshold, FALSE, mpeg, NULL);
+-
+   pspec = g_param_spec_float ("lumi-masking", "Luminance Masking",
+       "Luminance Masking", -1.0f, 1.0f, 0.0f,
+       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegcodecmap.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegcodecmap.c
+@@ -572,13 +572,11 @@ gst_ffmpeg_codecid_to_caps (enum AVCodec
+           break;
+       }
+ 
+-      /* FIXME: context->sub_id must be filled in during decoding */
+       caps =
+           gst_ff_vid_caps_new (context, codec_id, encode,
+           "video/x-pn-realvideo", "systemstream", G_TYPE_BOOLEAN, FALSE,
+           "rmversion", G_TYPE_INT, version, NULL);
+       if (context) {
+-        gst_caps_set_simple (caps, "format", G_TYPE_INT, context->sub_id, NULL);
+         if (context->extradata_size >= 8) {
+           gst_caps_set_simple (caps,
+               "subformat", G_TYPE_INT, GST_READ_UINT32_BE (context->extradata),
+@@ -2559,18 +2557,6 @@ gst_ffmpeg_caps_with_codecid (enum AVCod
+     }
+       break;
+ 
+-    case AV_CODEC_ID_RV10:
+-    case AV_CODEC_ID_RV20:
+-    case AV_CODEC_ID_RV30:
+-    case AV_CODEC_ID_RV40:
+-    {
+-      gint format;
+-
+-      if (gst_structure_get_int (str, "format", &format))
+-        context->sub_id = format;
+-
+-      break;
+-    }
+     case AV_CODEC_ID_COOK:
+     case AV_CODEC_ID_RA_288:
+     case AV_CODEC_ID_RA_144:
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegenc.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegenc.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegenc.c
+@@ -572,7 +572,6 @@ gst_ffmpegenc_setcaps (GstPad * pad, Gst
+   ffmpegenc->context->coder_type = 0;
+   ffmpegenc->context->context_model = 0;
+   ffmpegenc->context->scenechange_threshold = 0;
+-  ffmpegenc->context->inter_threshold = 0;
+ 
+   /* and last but not least the pass; CBR, 2-pass, etc */
+   ffmpegenc->context->flags |= ffmpegenc->pass;
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegdec.c
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegdec.c
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegdec.c
+@@ -2082,7 +2082,7 @@ gst_ffmpegdec_audio_frame (GstFFMpegDec
+     const GstTSInfo * dec_info, GstBuffer ** outbuf, GstFlowReturn * ret)
+ {
+   gint len = -1, got_frame;
+-  gint have_data = AVCODEC_MAX_AUDIO_FRAME_SIZE;
++  gint have_data = 0;
+   GstClockTime out_timestamp, out_duration;
+   gint64 out_offset;
+   AVPacket packet;
+@@ -2101,21 +2101,22 @@ gst_ffmpegdec_audio_frame (GstFFMpegDec
+       goto beach;
+   }
+ 
+-  *outbuf =
+-      new_aligned_buffer (AVCODEC_MAX_AUDIO_FRAME_SIZE,
+-      GST_PAD_CAPS (ffmpegdec->srcpad));
+-
+   gst_avpacket_init (&packet, data, size);
+   len = avcodec_decode_audio4 (ffmpegdec->context, frame, &got_frame, &packet);
+   GST_DEBUG_OBJECT (ffmpegdec,
+       "Decode audio: ret=%d, got_frame=%d", len, got_frame);
+   if (!got_frame) {
+-      gst_buffer_unref (*outbuf);
+-      *outbuf = NULL;
+       len = -1;
+       goto beach;
+   }
+-  if (len >= 0) have_data = copy_samples(ffmpegdec->context, frame, GST_BUFFER_DATA (*outbuf), AVCODEC_MAX_AUDIO_FRAME_SIZE);
++
++  int obuf_size = av_samples_get_buffer_size(NULL, ffmpegdec->context->channels, frame->nb_samples, frame->format, 0);
++
++  *outbuf=
++      new_aligned_buffer (obuf_size,
++      GST_PAD_CAPS (ffmpegdec->srcpad));
++
++  if (len >= 0) have_data = copy_samples(ffmpegdec->context, frame, GST_BUFFER_DATA (*outbuf), obuf_size);
+ 
+   if (len >= 0 && have_data > 0) {
+     GST_DEBUG_OBJECT (ffmpegdec, "Creating output buffer");

@@ -1,0 +1,30 @@
+--- src/proto_map.cc        28 Jan 2004 19:14:10 -0000      1.4
++++ src/proto_map.cc        1 Feb 2007 06:21:03 -0000
+@@ -16,11 +16,11 @@
+   map_list   = map_l;
+   fragile    = 0; /* false */
+ 
+-  ftp_actv   = (int) actv;
++  ftp_actv   =  actv != NULL;
+   if (ftp_actv)
+     actv_ip = *actv;
+ 
+-  ftp_pasv   = (int) pasv;
++  ftp_pasv   =  pasv != NULL;
+   if (ftp_pasv)
+     pasv_ip = *pasv;
+ 
+--- src/proto_map.hpp       28 Jan 2004 19:14:10 -0000      1.3
++++ src/proto_map.hpp       1 Feb 2007 06:21:03 -0000
+@@ -16,8 +16,8 @@
+ private:
+   vector<int>       *port_list;
+   vector<host_map*> *map_list;
+-  int               ftp_actv;
+-  int               ftp_pasv;
++  bool              ftp_actv;
++  bool              ftp_pasv;
+   struct ip_addr    actv_ip;
+   struct ip_addr    pasv_ip;
+   int               uid;
+

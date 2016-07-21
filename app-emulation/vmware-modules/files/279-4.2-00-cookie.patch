@@ -1,0 +1,79 @@
+See https://bugs.gentoo.org/show_bug.cgi?id=559602
+Patch by Mike Auty <ikelos@gentoo.org>
+
+diff --git a/vmblock-only/linux/inode.c b/vmblock-only/linux/inode.c
+index 4811abd..2cbc1f6 100644
+--- a/vmblock-only/linux/inode.c
++++ b/vmblock-only/linux/inode.c
+@@ -38,7 +38,9 @@
+ static struct dentry *InodeOpLookup(struct inode *dir,
+                                     struct dentry *dentry, unsigned int flags);
+ static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie); 
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+ #else
+ static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+@@ -207,7 +209,12 @@ static void *
+ static int
+ #endif
+ InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+-                  struct nameidata *nd)   // OUT: stores result
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++		  void **cookie
++#else
++		  struct nameidata *nd
++#endif
++		  )   // OUT: stores result
+ {
+    int ret;
+    VMBlockInodeInfo *iinfo;
+diff --git a/vmblock-only/linux/inode.c b/vmblock-only/linux/inode.c
+index acb2803..4811abd 100644
+--- a/vmblock-only/linux/inode.c
++++ b/vmblock-only/linux/inode.c
+@@ -199,7 +199,9 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+  *----------------------------------------------------------------------------
+  */
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static const char *
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *
+ #else
+ static int
+@@ -222,8 +224,12 @@ InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++   return *cookie = (char *)(iinfo->name);
++#else
+    nd_set_link(nd, iinfo->name);
+    ret = 0;
++#endif
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+diff --git a/vmnet-only/vmnetInt.h b/vmnet-only/vmnetInt.h
+index 23b5d19..d129f7b 100644
+--- a/vmnet-only/vmnetInt.h
++++ b/vmnet-only/vmnetInt.h
+@@ -78,8 +78,13 @@
+ 
+ extern struct proto vmnet_proto;
+ #ifdef VMW_NETDEV_HAS_NET
++# if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)  
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+-                                                PF_NETLINK, _pri, &vmnet_proto)
++						PF_NETLINK, _pri, &vmnet_proto, 1)
++# else
++#   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
++						PF_NETLINK, _pri, &vmnet_proto)
++# endif
+ #else
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
+ #endif

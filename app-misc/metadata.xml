@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-misc category contains various miscellaneous application
+		packages which don't belong anywhere else.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-misc enthält verschiedenste Applikationen welche
+		keiner anderen Kategorie zugeordnet werden konnten.
+	</longdescription>
+	<longdescription lang="nl">
+		De app-misc categorie bevat applicaties die niet in een specifieke
+		categorie geplaatst konden worden.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-misc chứa các ứng dụng linh tinh, không thuộc
+		về nhóm nào cả.
+	</longdescription>
+	<longdescription lang="it">
+		La cateogria app-misc contiene varie applicazioni che non ricadono nelle altre categorie.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-misc contém vários pacotes de aplicações mistas
+		que não pertencem a outros lugares.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-misc zawiera wiele rozmaitych programów, które nie
+		pasowały do żadnej innej kategorii.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-misc contiene varios paquetes de aplicaciones
+		misceláneas que no pertenecen a ninguna otra categoría.
+	</longdescription>
+</catmetadata>
+

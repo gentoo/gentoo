@@ -1,0 +1,22 @@
+=== modified file 'lib/Widgets/ContractorView.vala'
+--- lib/Widgets/ContractorView.vala	2014-09-04 12:39:00 +0000
++++ lib/Widgets/ContractorView.vala	2015-03-23 05:21:46 +0000
+@@ -35,7 +35,7 @@
+     public delegate void ContractCallback ();
+     private Gee.HashMap<int, DelegateWrapper?> outsiders;
+     private int[] blacklisted_pos;
+-    private ListStore list;
++    private Gtk.ListStore list;
+ 
+     private struct DelegateWrapper { unowned ContractCallback method; }
+     
+@@ -73,7 +73,7 @@
+      */
+     public ContractorView (string filename, string mime, int icon_size = 32, bool show_contract_name = true) {
+         /* Setup the ListStore */
+-        list = new ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
++        list = new Gtk.ListStore (2, typeof (Gdk.Pixbuf), typeof (string));
+         outsiders = new Gee.HashMap<int, DelegateWrapper?> ();
+         this.model = list;
+         
+

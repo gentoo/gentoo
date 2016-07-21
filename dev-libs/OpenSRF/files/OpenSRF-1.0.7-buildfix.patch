@@ -1,0 +1,151 @@
+diff -Nuar OpenSRF-1.0.7.orig/bin/osrf_ctl.sh OpenSRF-1.0.7/bin/osrf_ctl.sh
+--- OpenSRF-1.0.7.orig/bin/osrf_ctl.sh	2009-06-11 13:12:13.000000000 +0000
++++ OpenSRF-1.0.7/bin/osrf_ctl.sh	2009-11-10 08:20:37.233637281 +0000
+@@ -87,8 +87,9 @@
+ 	esac;
+ done
+ 
+-OSRF_CONFIG=`which osrf_config`
+-[ -z "$OSRF_CONFIG" ] && OSRF_CONFIG=`find $BASEDIR -name osrf_config`
++#OSRF_CONFIG=`which osrf_config`
++#[ -z "$OSRF_CONFIG" ] && OSRF_CONFIG=`find $BASEDIR -name osrf_config`
++OSRF_CONFIG=/usr/bin/osrf_config
+ 
+ [ -z "$OPT_CONFIG" ] && OPT_CONFIG=`$OSRF_CONFIG --sysconfdir`/opensrf_core.xml;
+ if [ ! -r "$OPT_CONFIG" ]; then
+diff -Nuar OpenSRF-1.0.7.orig/Makefile.am OpenSRF-1.0.7/Makefile.am
+--- OpenSRF-1.0.7.orig/Makefile.am	2008-10-27 05:10:21.000000000 +0000
++++ OpenSRF-1.0.7/Makefile.am	2009-11-10 08:19:16.190311593 +0000
+@@ -115,14 +115,14 @@
+ SUBDIRS = src
+ 
+ jserver:
+-	make -s -C src jserver
++	$(MAKE) -s -C src jserver
+ 
+ jserver-install:
+-	make -s -C src jserver-install
++	$(MAKE) -s -C src jserver-install
+ 
+ javascript-install:
+-	make -s -C src javascript-install
++	$(MAKE) -s -C src javascript-install
+ 
+ install-data-hook:
+-	cp @srcdir@/src/gateway/apachetools.h @includedir@/opensrf/apachetools.h
++	cp @srcdir@/src/gateway/apachetools.h $(DESTDIR)@includedir@/opensrf/apachetools.h
+ 
+diff -Nuar OpenSRF-1.0.7.orig/src/gateway/Makefile.am OpenSRF-1.0.7/src/gateway/Makefile.am
+--- OpenSRF-1.0.7.orig/src/gateway/Makefile.am	2008-08-18 19:14:00.000000000 +0000
++++ OpenSRF-1.0.7/src/gateway/Makefile.am	2009-11-10 08:19:15.250311793 +0000
+@@ -16,16 +16,25 @@
+ 
+ AM_CFLAGS = -D_LARGEFILE64_SOURCE -Wall -I@abs_top_srcdir@/include/ -I$(LIBXML2_HEADERS) -I$(APACHE2_HEADERS) -I$(APR_HEADERS)
+ AM_LDFLAGS = -L$(LIBDIR) -L@top_builddir@/src/libopensrf
++APACHE_DEPS = apachetools.c apachetools.h
++LIBS=libopensrf.so
++TARGETS = osrf_json_gateway.la osrf_http_translator.la
+ 
+-install-exec-local: 
+-	if [ ! "$$(grep mod_placeholder `apxs2 -q SYSCONFDIR`/httpd.conf)" ]; \
+-		then echo -e "#\n#LoadModule mod_placeholder /usr/lib/apache2/modules/mod_placeholder.so" \
+-		>> `apxs2 -q SYSCONFDIR`/httpd.conf; \
+-	fi
+-	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) @srcdir@/osrf_json_gateway.c apachetools.c apachetools.h libopensrf.so
+-	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) @srcdir@/osrf_http_translator.c apachetools.c apachetools.h libopensrf.so
+-	$(APXS2) -i -a @srcdir@/osrf_json_gateway.la
+-	$(APXS2) -i -a @srcdir@/osrf_http_translator.la
++all: $(TARGETS)
++
++osrf_json_gateway.la: osrf_json_gateway.c $(APACHE_DEPS)
++	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) $^ $(LIBS)
++	
++osrf_http_translator.la: osrf_http_translator.c $(APACHE_DEPS)
++	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) $^ $(LIBS)
++
++#install-exec-local:  $(TARGETS)
++#	if [ ! "$$(grep mod_placeholder `apxs2 -q SYSCONFDIR`/httpd.conf)" ]; \
++#		then echo -e "#\n#LoadModule mod_placeholder /usr/lib/apache2/modules/mod_placeholder.so" \
++#		>> `apxs2 -q SYSCONFDIR`/httpd.conf; \
++#	fi
++#	$(APXS2) -i -a osrf_json_gateway.la
++#	$(APXS2) -i -a osrf_http_translator.la
+ 
+ clean-local:
+ 	rm -f @srcdir@/osrf_http_translator.la @srcdir@/osrf_http_translator.lo @srcdir@/osrf_http_translator.slo @srcdir@/osrf_json_gateway.la @srcdir@/osrf_json_gateway.lo @srcdir@/osrf_json_gateway.slo
+diff -Nuar OpenSRF-1.0.7.orig/src/java/Makefile.am OpenSRF-1.0.7/src/java/Makefile.am
+--- OpenSRF-1.0.7.orig/src/java/Makefile.am	2008-07-17 18:15:09.000000000 +0000
++++ OpenSRF-1.0.7/src/java/Makefile.am	2009-11-10 08:19:15.250311793 +0000
+@@ -48,8 +48,8 @@
+ 	rm files;
+ 
+ install-data-local:
+-	mkdir -p $(LIBDIR)/java
+-	cp opensrf.jar $(LIBDIR)/java
++	mkdir -p $(DESTDIR)$(LIBDIR)/java
++	cp opensrf.jar $(DESTDIR)$(LIBDIR)/java
+ 
+ dep_clean:
+ 	rm -rf deps
+diff -Nuar OpenSRF-1.0.7.orig/src/libopensrf/Makefile.am OpenSRF-1.0.7/src/libopensrf/Makefile.am
+--- OpenSRF-1.0.7.orig/src/libopensrf/Makefile.am	2008-08-07 16:54:56.000000000 +0000
++++ OpenSRF-1.0.7/src/libopensrf/Makefile.am	2009-11-10 08:19:16.190311593 +0000
+@@ -94,6 +94,7 @@
+ opensrf_c_SOURCES = opensrf.c
+ opensrf_c_DEPENDENCIES = libopensrf.la
+ 
++osrf_json_test_DEPENDENCIES = libopensrf.la libosrf_json.la
+ osrf_json_test_SOURCES = osrf_json_test.c $(JSON_TARGS) $(JSON_DEP) $(JSON_TARGS_HEADS) $(JSON_DEP_HEADS)
+ 
+ noinst_LTLIBRARIES = libosrf_json.la
+diff -Nuar OpenSRF-1.0.7.orig/src/Makefile.am OpenSRF-1.0.7/src/Makefile.am
+--- OpenSRF-1.0.7.orig/src/Makefile.am	2008-11-04 03:04:24.000000000 +0000
++++ OpenSRF-1.0.7/src/Makefile.am	2009-11-10 08:19:16.190311593 +0000
+@@ -17,7 +17,7 @@
+ export OPENSRF	= opensrf
+ export BINDIR	= @bindir@
+ export LIBDIR	= @libdir@
+-jsdir = $(LIBDIR)/javascript
++jsdir = $(datarootdir)/opensrf/javascript
+ export OSRF_JAVA_DEPSDIR = @OSRF_JAVA_DEPSDIR@
+ etcdir = $(ETCDIR)
+
+@@ -41,12 +41,12 @@
+ dist_sysconf_DATA = @top_srcdir@/examples/opensrf.xml.example @top_srcdir@/examples/opensrf_core.xml.example @top_srcdir@/examples/srfsh.xml.example 
+ 
+ install-exec-local:
+-	mkdir -p $(VAR)
+-	mkdir -p $(PID)
+-	mkdir -p $(LOG)
+-	mkdir -p $(SOCK)
+-	mkdir -p $(jsdir)
+-	make install-perl
++	mkdir -p $(DESTDIR)$(VAR)
++	mkdir -p $(DESTDIR)$(PID)
++	mkdir -p $(DESTDIR)$(LOG)
++	mkdir -p $(DESTDIR)$(SOCK)
++	mkdir -p $(DESTDIR)$(jsdir)
++#	$(MAKE) install-perl
+ 
+ install-exec-hook:
+ 	sed -i 's|LOCALSTATEDIR|$(VAR)|g' '$(DESTDIR)@sysconfdir@/opensrf.xml.example'
+@@ -55,14 +55,14 @@
+ 	sed -i 's|SYSCONFDIR|$(ETCDIR)|g' '$(DESTDIR)@sysconfdir@/opensrf_core.xml.example'
+ 	sed -i 's|LOCALSTATEDIR|$(VAR)|g' '$(DESTDIR)@sysconfdir@/srfsh.xml.example'
+ 	sed -i 's|SYSCONFDIR|$(ETCDIR)|g' '$(DESTDIR)@sysconfdir@/srfsh.xml.example'
+-	cp -r @srcdir@/javascript/* $(jsdir)/
++	cp -r @srcdir@/javascript/* $(DESTDIR)$(jsdir)/
+ 
+ 
+ install-perl:
+-	cd ./perl && perl Makefile.PL || make -s install-perl-fail
+-	make -C perl
+-	make -C perl test || make -s install-perl-fail
+-	make -C perl install
++#	cd ./perl && perl Makefile.PL || $(MAKE) -s install-perl-fail
++#	$(MAKE) -C perl
++#	$(MAKE) -C perl test || $(MAKE) -s install-perl-fail
++#	$(MAKE) -C perl install
+ 
+ install-perl-fail:
+ 	echo

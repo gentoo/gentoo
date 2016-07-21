@@ -1,0 +1,69 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+top_srcdir=@top_srcdir@
+top_builddir=@top_builddir@
+
+CC = @CC@
+CXX = @CXX@
+LIBTOOL = @LIBTOOL@
+
+CFLAGS = @CFLAGS@
+CXXFLAGS = @CXXFLAGS@
+LDFLAGS = @LDFLAGS@
+
+LTCC = $(LIBTOOL) --mode=compile --tag=CC $(CC)
+LTCXX = $(LIBTOOL) --mode=compile --tag=CXX $(CXX)
+LTLD = $(LIBTOOL) --mode=link --tag=CXX $(CXX)
+
+NS_S_PR_CFLAGS = $(shell pkg-config --cflags nss nspr)
+NS_S_PR_LIBS = $(shell pkg-config --libs nss nspr)
+
+SRCS = $(shell find "$(top_srcdir)" -name examples -prune -o -type f '(' -name '*.cpp' -o -name '*.c' -not -name '*Test*' ')')
+LTOBJS = $(subst .c,.lo,$(subst .cpp,.lo,$(SRCS)))
+
+HDRS = $(top_srcdir)/cshim/mq/xa.h $(shell find "$(top_srcdir)"/cshim -type f -name 'mq*.h')
+INSTHDRS = $(subst $(top_srcdir)/cshim,$(DESTDIR)$(includedir),$(HDRS))
+
+LTLIBRARY = libmqcrt.la
+INSTLTLIBRARY = $(DESTDIR)$(libdir)/$(LTLIBRARY)
+
+.SUFFIXES:
+.SUFFIXES: .cpp .c .lo
+
+default: all
+
+all: $(LTLIBRARY)
+
+Makefile: Makefile.in
+	$(top_builddir)/config.status $@
+
+.cpp.lo:
+	$(LTCXX) -o $@ $(NS_S_PR_CFLAGS) $(CXXFLAGS) -c $<
+
+.c.lo:
+	$(LTCC) -o $@ $(NS_S_PR_CFLAGS) $(CFLAGS) -c $<
+
+VERSIONNUMBER = $(shell { echo '#include "cshim/mqversion.h"'; echo '-version-number MQ_VMAJOR:MQ_VMINOR:MQ_VMICRO'; } | ${CC} -E - | grep version-number)
+
+$(LTLIBRARY): $(LTOBJS)
+	version=` \
+	 { echo '#include "cshim/mqversion.h"' \
+	 ; echo '-version-number MQ_VMAJOR:MQ_VMINOR:MQ_VMICRO' \
+	 ; } \
+	 | ${CC} -E - \
+	 | grep version-number \
+	` \
+	&& $(LTLD) -o $@ --no-undefined $${version} $(CXXFLAGS) $(NS_S_PR_LIBS) $(LDFLAGS) -rpath $(libdir) $?
+
+$(INSTLTLIBRARY): $(LTLIBRARY)
+	$(top_srcdir)/install-sh -d "$(dir $@)"
+	$(LIBTOOL) --mode=install cp $(LTLIBRARY) $@
+
+$(DESTDIR)$(includedir)/%: $(top_srcdir)/cshim/%
+	$(top_srcdir)/install-sh -d "$(dir $@)"
+	cp -f "$<" "$@"
+
+install: $(INSTLTLIBRARY) $(INSTHDRS)

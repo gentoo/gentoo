@@ -1,0 +1,19 @@
+commit e5aa6784a10717641bc5b6d9d77a5029f815654a
+Author: yac <yac@blesmrt.net>
+Date:   Wed May 8 04:59:17 2013 +0200
+
+    fix #3
+    
+    remove windows only function which is useless anyway
+
+diff --git a/svg2rlg.py b/svg2rlg.py
+index 1c5f80c..2b35c62 100644
+--- a/svg2rlg.py
++++ b/svg2rlg.py
+@@ -1574,5 +1574,3 @@ if __name__ == "__main__":
+         
+     drawing = svg2rlg(source)
+     drawing.save(formats=['pdf'],outDir='.',fnRoot=name)
+-    
+-    os.startfile(name + '.pdf')
+\ No newline at end of file

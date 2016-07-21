@@ -1,0 +1,19 @@
+python binary name is hardcoded, but
+we need to sed it in during installation
+
+https://bugs.gentoo.org/show_bug.cgi?id=487706
+
+--- a/lib/pychess/Players/engineNest.py
++++ b/lib/pychess/Players/engineNest.py
+@@ -70,9 +70,9 @@ backup = """
+ <engines version="%s">
+     <engine protocol="cecp" protover="2" binname="PyChess.py">
+         <meta><country>dk</country></meta>
+-        <vm binname="python"><args><arg name='0' value="-u"/></args></vm></engine>
++        <vm binname="@PYTHON@"><args><arg name='0' value="-u"/></args></vm></engine>
+     <engine protocol="cecp" protover="2" binname="shatranj.py">
+-        <vm binname="python"><args><arg name='0' value="-u"/></args></vm>
++        <vm binname="@PYTHON@"><args><arg name='0' value="-u"/></args></vm>
+         <args><arg name='0' value='-xboard'/></args></engine>
+     <engine protocol="cecp" protover="2" binname="gnuchess">
+         <meta><country>us</country></meta>

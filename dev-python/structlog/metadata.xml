@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>wizardedit@gentoo.org</email>
+    <name>Austin English</name>
+  </maintainer>
+  <longdescription lang="en">
+    Structured Logging for Python
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">structlog</remote-id>
+    <remote-id type="github">hynek/structlog</remote-id>
+  </upstream>
+</pkgmetadata>

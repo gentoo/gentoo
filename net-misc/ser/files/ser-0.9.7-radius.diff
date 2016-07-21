@@ -1,0 +1,13 @@
+--- modules/acc/Makefile.orig	2007-07-02 01:42:31.000000000 +0200
++++ modules/acc/Makefile	2005-09-07 18:23:00.000000000 +0200
+@@ -16,8 +16,8 @@
+ #DEFS+=-DSQL_ACC
+ 
+ # uncomment the next two lines if you wish to enable RADIUS accounting
+-#DEFS+=-DRAD_ACC
+-#include ../../Makefile.radius
++DEFS+=-DRAD_ACC
++include ../../Makefile.radius
+ 
+ # uncomment the next two lines if you wish to enable DIAMETER accounting
+ #DEFS+=-DDIAM_ACC

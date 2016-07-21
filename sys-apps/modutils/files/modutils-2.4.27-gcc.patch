@@ -1,0 +1,280 @@
+Fix building with newer gcc versions.
+
+Most changes taken from Debian.
+
+--- obj/obj_ia64.c
++++ obj/obj_ia64.c
+@@ -127,6 +127,7 @@
+ 	return (*(bundle + 1) >> 23) & 0x1ffffffffff;
+ 
+     default:
++	;
+     }
+     return (-1);
+ }
+--- depmod/depmod.c
++++ depmod/depmod.c
+@@ -1133,7 +1133,7 @@
+ 
+ 		for (ksym = ksyms; so_far < nksyms; ++so_far, ksym++) {
+ 			if (strncmp((char *)ksym->name, "GPLONLY_", 8) == 0)
+-				((char *)ksym->name) += 8;
++				ksym->name = ((char *)ksym->name) + 8;
+ 			assert(n_syms < MAX_MAP_SYM);
+ 			symtab[n_syms++] = addsym((char *)ksym->name, mod, SYM_DEFINED, 0);
+ 		}
+@@ -1265,7 +1265,7 @@
+ 				 * error.  Use the error() routine but do not count
+ 				 * any errors.  Remove in 2.5.
+ 				 */
+-				int save_errors = errors;
++				int save_errors = error_count;
+ 				if (!quiet && nberr == 0)
+ 					error("*** Unresolved symbols in %s",
+ 					      ptmod->name);
+@@ -1274,7 +1274,7 @@
+ 				nberr++;
+ 				if (flag_unresolved_error)
+ 					ret = 1;
+-				errors = save_errors;
++				error_count = save_errors;
+ 			}
+ 		}
+ 		verbose("%s\n", ptmod->name + skipchars);
+@@ -1675,6 +1675,6 @@
+ #else
+ int main(int argc, char **argv)
+ {
+-	return depmod_main(argc, argv) || errors;
++	return depmod_main(argc, argv) || error_count;
+ }
+ #endif	/* defined(COMMON_3264) && defined(ONLY_32) */
+--- genksyms/genksyms.c
++++ genksyms/genksyms.c
+@@ -45,7 +45,7 @@
+ int flag_debug, flag_dump_defs, flag_warnings;
+ int checksum_version = 1, kernel_version = version(2,0,0);
+ 
+-static int errors;
++static int num_errors;
+ static int nsyms;
+ 
+ static struct symbol *expansion_trail;
+@@ -458,7 +458,7 @@
+       va_end(args);
+       putc('\n', stderr);
+ 
+-      errors++;
++      num_errors++;
+     }
+ }
+ 
+@@ -476,7 +476,7 @@
+       va_end(args);
+       putc('\n', stderr);
+ 
+-      errors++;
++      num_errors++;
+     }
+ }
+ 
+@@ -597,5 +597,5 @@
+ 	      nsyms, HASH_BUCKETS, (double)nsyms / (double)HASH_BUCKETS);
+     }
+ 
+-  return errors != 0;
++  return num_errors != 0;
+ }
+--- include/util.h
++++ include/util.h
+@@ -39,8 +39,8 @@
+ extern int xftw(const char *directory, xftw_func_t);
+ 
+ /* Error logging */
+-extern int log;
+-extern int errors;
++extern int logging;
++extern int error_count;
+ extern const char *error_file;
+ 
+ extern int flag_verbose;
+--- insmod/insmod.c
++++ insmod/insmod.c
+@@ -275,7 +275,7 @@
+ 		if (strncmp((char *)s->name, "GPLONLY_", 8) == 0) {
+ 			gplonly_seen = 1;
+ 			if (gpl)
+-				((char *)s->name) += 8;
++				s->name = ((char *)s->name) + 8;
+ 			else
+ 				continue;
+ 		}
+@@ -1679,7 +1679,7 @@
+ 	error_file = "insmod";
+ 
+ 	/* To handle repeated calls from combined modprobe */
+-	errors = optind = 0;
++	error_count = optind = 0;
+ 
+ 	/* Process the command line.  */
+ 	while ((o = getopt_long(argc, argv, "fhkLmnpqrsSvVxXyYNe:o:O:P:R:",
+@@ -2064,7 +2064,7 @@
+ 		goto out;
+ 	/**** No symbols or sections to be changed after kallsyms above ***/
+ 
+-	if (errors)
++	if (error_count)
+ 		goto out;
+ 
+ 	/* If we were just checking, we made it.  */
+@@ -2123,10 +2123,10 @@
+ 		test_read.m.read_start = m_addr + sizeof(struct module);
+ 		test_read.m.read_end = test_read.m.read_start + sizeof(test_read.data);
+ 		if (sys_init_module(m_name, (struct module *) &test_read)) {
+-			int old_errors = errors;
++			int old_errors = error_count;
+ 			error("has persistent data but the kernel is too old to support it."
+ 				"  Expect errors during rmmod as well");
+-			errors = old_errors;
++			error_count = old_errors;
+ 		}
+ 	}
+ 
+@@ -2152,7 +2152,7 @@
+ #else
+ 	init_module(m_name, f, m_size, blob_name, noload, flag_load_map);
+ #endif
+-	if (errors) {
++	if (error_count) {
+ 		if (!noload)
+ 			delete_module(m_name);
+ 		goto out;
+--- insmod/kallsyms.c
++++ insmod/kallsyms.c
+@@ -80,7 +80,7 @@
+     error_file = "kallsyms";
+ 
+     /* To handle repeated calls from combined modprobe */
+-    errors = optind = 0;
++    error_count = optind = 0;
+ 
+     /* Process the command line.  */
+     while ((c = getopt_long(argc, argv, "Vh",
+--- insmod/modprobe.c
++++ insmod/modprobe.c
+@@ -1023,7 +1023,7 @@
+ 		if (quiet)
+ 			my_argv[my_argc++] = "-q";
+ 
+-		if (log)
++		if (logging)
+ 			my_argv[my_argc++] = "-s";
+ 
+ 		if (insmod_opt) {
+--- insmod/rmmod.c
++++ insmod/rmmod.c
+@@ -261,9 +261,9 @@
+ 	read_parm.m.read_start = mp->sym->value;
+ 	read_parm.m.read_end = read_parm.m.read_start + datasize;
+ 	if (sys_init_module(module, (struct module *) &read_parm)) {
+-		int old_errors = errors;
++		int old_errors = error_count;
+ 		error("has persistent data but the kernel is too old to support it.");
+-		errors = old_errors;
++		error_count = old_errors;
+ 		return(0);
+ 	}
+ 
+--- util/logger.c
++++ util/logger.c
+@@ -31,10 +31,10 @@
+ 
+ /*======================================================================*/
+ 
+-int log;
++int logging;
+ static int silent;
+ 
+-int errors;
++int error_count;
+ const char *error_file;
+ const char *program_name;
+ 
+@@ -75,7 +75,7 @@
+ 
+ 	if (silent)
+ 		;
+-	else if (log) {
++	else if (logging) {
+ 		char buf[2*PATH_MAX];
+ 		int n;
+ 
+@@ -100,7 +100,7 @@
+ 		putc('\n', stderr);
+ 	}
+ 
+-	errors++;
++	error_count++;
+ }
+ 
+ void lprintf(const char *fmt,...)
+@@ -108,7 +108,7 @@
+ 	va_list args;
+ 
+ 	if (silent);
+-	else if (log) {
++	else if (logging) {
+ 		char buf[2*PATH_MAX];
+ 		va_start(args, fmt);
+ 		vsnprintf(buf, sizeof(buf), fmt, args);
+@@ -132,5 +132,5 @@
+ #ifdef STOREMSG
+ 	atexit(dumpmsg);
+ #endif
+-	log = 1;
++	logging = 1;
+ }
+--- obj/obj_kallsyms.c
++++ obj/obj_kallsyms.c
+@@ -200,8 +200,8 @@
+ 
+     /* Initial contents, header + one entry per input section.  No strings. */
+     osec->header.sh_size = sizeof(*a_hdr) + loaded*sizeof(*a_sec);
+-    a_hdr = (struct kallsyms_header *) osec->contents =
+-    	xmalloc(osec->header.sh_size);
++    osec->contents = xmalloc(osec->header.sh_size);
++    a_hdr = (struct kallsyms_header *) osec->contents;
+     memset(osec->contents, 0, osec->header.sh_size);
+     a_hdr->size = sizeof(*a_hdr);
+     a_hdr->sections = loaded;
+@@ -275,8 +275,8 @@
+ 	a_hdr->symbol_off +
+ 	a_hdr->symbols*a_hdr->symbol_size +
+ 	strings_size - strings_left;
+-    a_hdr = (struct kallsyms_header *) osec->contents =
+-	xrealloc(a_hdr, a_hdr->total_size);
++    osec->contents = xrealloc(a_hdr, a_hdr->total_size);
++    a_hdr = (struct kallsyms_header *) osec->contents;
+     p = (char *)a_hdr + a_hdr->symbol_off;
+     memcpy(p, symbols, a_hdr->symbols*a_hdr->symbol_size);
+     free(symbols);
+--- obj/obj_ppc.c
++++ obj/obj_ppc.c
+@@ -25,6 +25,7 @@
+ #include <obj.h>
+ #include <util.h>
+ #include <assert.h>
++#include <stdlib.h>
+ 
+ 
+ /*======================================================================*/
+@@ -255,7 +256,8 @@
+   archdata_sec->header.sh_size = 0;
+   sec = obj_find_section(f, "__ftr_fixup");
+   if (sec) {
+-    ad = (struct archdata *) (archdata_sec->contents) = xmalloc(sizeof(*ad));
++    archdata_sec->contents = xmalloc(sizeof(*ad));
++    ad = (struct archdata *) (archdata_sec->contents);
+     memset(ad, 0, sizeof(*ad));
+     archdata_sec->header.sh_size = sizeof(*ad);
+     ad->__start___ftr_fixup = sec->header.sh_addr;

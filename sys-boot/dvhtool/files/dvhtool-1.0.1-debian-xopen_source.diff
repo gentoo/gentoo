@@ -1,0 +1,11 @@
+diff --git a/dvhlib.c b/dvhlib.c
+--- a/dvhlib.c
++++ b/dvhlib.c
+@@ -1,6 +1,7 @@
+ /*
+  * Disk Volume Header Library
+  */
++#define _XOPEN_SOURCE 500
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

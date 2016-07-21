@@ -1,0 +1,20 @@
+--- aide-0.14.orig/configure.in	2010-02-26 17:25:29.000000000 +0900
++++ aide-0.14/configure.in	2010-05-27 00:11:34.000000000 +0900
+@@ -42,7 +42,7 @@
+ AC_ARG_WITH(extra-libs,
+ 	AC_HELP_STRING([--with-extra-libs],
+ 		[Specify additional paths with -L to find libraries]),
+-	[LDFLAGS="$LDFLAGS $withval"]
++	[LIBS="$LIBS $withval"]
+ )
+ AC_ARG_WITH(extra-link-libs,
+ 	AC_HELP_STRING([--with-extra-link-libs],
+@@ -671,7 +671,7 @@
+   AC_CHECK_HEADERS(curl/curl.h,,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])])
+   CFLAGS="$CFLAGS $CURL_CFLAGS"
+-  LDFLAGS="$LDFLAGS $CURL_LIBS"
++  LIBS="$LIBS $CURL_LIBS"
+   AC_CHECK_LIB(curl,curl_easy_init,havecurl=yes,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])]
+ )

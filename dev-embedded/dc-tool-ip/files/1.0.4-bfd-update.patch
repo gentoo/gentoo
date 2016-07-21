@@ -1,0 +1,22 @@
+--- host-src/tool/dc-tool.c.orig	2004-11-13 19:38:50.007151024 -0500
++++ host-src/tool/dc-tool.c	2004-11-13 19:38:58.320887144 -0500
+@@ -431,13 +431,13 @@
+ 		if ((section->flags & SEC_HAS_CONTENTS) && (section->flags & SEC_LOAD)) {
+ 		    printf("Section %s, ",section->name);
+ 		    printf("lma 0x%x, ",section->lma);
+-		    printf("size %d\n",section->_raw_size);
+-		    if (section->_raw_size) {
+-			size += section->_raw_size;
+-			inbuf = malloc(section->_raw_size);
+-			bfd_get_section_contents(somebfd, section, inbuf, 0, section->_raw_size);
++		    printf("size %d\n",section->rawsize);
++		    if (section->rawsize) {
++			size += section->rawsize;
++			inbuf = malloc(section->rawsize);
++			bfd_get_section_contents(somebfd, section, inbuf, 0, section->rawsize);
+ 
+-			send_data(inbuf, section->lma, section->_raw_size);
++			send_data(inbuf, section->lma, section->rawsize);
+ 
+ 			free(inbuf);
+ 		    }

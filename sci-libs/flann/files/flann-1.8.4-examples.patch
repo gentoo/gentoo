@@ -1,0 +1,35 @@
+From 3922081fbd6710f4b72421069f6bf24dc37d35a8 Mon Sep 17 00:00:00 2001
+From: Casey Goodlett <casey.goodlett@kitware.com>
+Date: Thu, 8 Aug 2013 18:42:45 -0400
+Subject: [PATCH] Option to disable example building
+
+---
+ CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5b19367..410a8f9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,6 +53,7 @@ option(BUILD_C_BINDINGS "Build C bindings" ON)
+ option(BUILD_PYTHON_BINDINGS "Build Python bindings" ON)
+ option(BUILD_MATLAB_BINDINGS "Build Matlab bindings" ON)
+ option(BUILD_CUDA_LIB "Build CUDA library" OFF)
++option(BUILD_EXAMPLES "Build examples" ON)
+ option(USE_OPENMP "Use OpenMP multi-threading" ON)
+ option(USE_MPI "Use MPI" OFF)
+ 
+@@ -154,7 +155,9 @@ endif()
+ 
+ add_subdirectory( cmake )
+ add_subdirectory( src )
+-add_subdirectory( examples )
++if (BUILD_EXAMPLES)
++  add_subdirectory( examples )
++endif(BUILD_EXAMPLES)
+ add_subdirectory( test )
+ add_subdirectory( doc )
+ 
+-- 
+1.8.5.1
+

@@ -1,0 +1,28 @@
+--- src/Makefile.old	2012-07-15 15:34:54.000000000 +0200
++++ src/Makefile	2012-07-15 15:39:51.000000000 +0200
+@@ -92,9 +92,6 @@
+ ifeq ($(DISABLE_M2PS), no)
+ LIBGPAC_MEDIATOOLS+=media_tools/mpeg2_ps.o
+ endif
+-ifeq ($(DISABLE_OGG), no)
+-LIBGPAC_MEDIATOOLS+=media_tools/gpac_ogg.o
+-endif
+ ifeq ($(DISABLE_MCRYPT), no)
+ LIBGPAC_MEDIATOOLS+=media_tools/ismacryp.o
+ endif
+@@ -230,6 +227,15 @@
+ endif
+ endif
+ 
++#6 - OGG support
++ifeq ($(CONFIG_OGG), no)
++else
++LINKLIBS+= -logg
++ifeq ($(CONFIG_OGG), local)
++NEED_LOCAL_LIB="yes"
++MEDIATOOLS_CFLAGS+=-I"$(LOCAL_INC_PATH)/ogg"
++endif
++endif
+ 
+ ## libgpac compositor compilation options
+ COMPOSITOR_CFLAGS=

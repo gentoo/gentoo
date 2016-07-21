@@ -1,0 +1,35 @@
+From c3a112a89d3cbbfe0edc4fbac366a47986d6c118 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Aug 2015 19:10:27 +0200
+Subject: [PATCH 2/2] Adjust soname and make target non-phony
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 744405a..323e579 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,6 +14,7 @@ ARFLAGS = rcv
+ SHLD = ${CC} ${CFLAGS}
+ LDSHFLAGS = -shared -Wl,-Bsymbolic
+ LDFLAGS += -Wl,-rpath -Wl,/usr/lib -Wl,-rpath,/usr/lib
++SONAME_CURRENT = 1
+ 
+ # Set RANLIB to ranlib on systems that require it (Sun OS < 4, Mac OSX)
+ # RANLIB  = ranlib
+@@ -52,8 +53,8 @@ libiniparser.a:	$(OBJS)
+ 	$(QUIET_RANLIB)$(RANLIB) $@
+ 
+ libiniparser.so:	$(OBJS)
+-	$(QUIET_LINK)$(SHLD) $(LDSHFLAGS) $(LDFLAGS) -o $@.0 $(OBJS) \
+-		-Wl,-soname=`basename $@`.0
++	$(QUIET_LINK)$(SHLD) $(LDSHFLAGS) $(LDFLAGS) -o $@ $(OBJS) \
++		-Wl,-soname=libiniparser4.so.$(SONAME_CURRENT)
+ 
+ clean:
+ 	$(RM) $(OBJS)
+-- 
+2.5.0
+

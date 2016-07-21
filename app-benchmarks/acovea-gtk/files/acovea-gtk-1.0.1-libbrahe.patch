@@ -1,0 +1,8 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -22,4 +22,4 @@
+ AM_CXXFLAGS = @GTKMM_CFLAGS@	
+ 
+ acovea_gtk_LDFLAGS =  -pthread -L//usr/lib
+-acovea_gtk_LDADD = @LIBS@ @GTKMM_LIBS@ -lgthread-2.0 -lglib-2.0 -lcoyotl -levocosm -lacovea -lexpat 
++acovea_gtk_LDADD = @LIBS@ @GTKMM_LIBS@ -lgthread-2.0 -lglib-2.0 -lcoyotl -levocosm -lbrahe -lacovea -lexpat 

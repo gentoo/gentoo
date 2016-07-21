@@ -1,0 +1,30 @@
+diff -Naur tests/tc_check_consistent_version/Makefile tests/tc_check_consistent_version/Makefile
+--- tests/tc_check_consistent_version/Makefile	2013-12-10 21:52:36.773278926 +0100
++++ tests/tc_check_consistent_version/Makefile	2013-12-10 21:52:43.783278646 +0100
+@@ -2,8 +2,8 @@
+ 
+ all: 
+ 	manver=\
+-	`head -1 ../../man/fatsort.1 | sed -e "s/.* \([0-9.]*\)\"$$/\1/"`; \
+-	progver=`../../src/fatsort -v | head -1 | sed -e "s/^.* \([0-9.]\+\) .*$$/\1/"`; \
++	`head -2 ../../man/fatsort.1 | tail -1 | sed -e "s/^.*\"fatsort \([0-9.]\+\)\".*$$/\1/"`; \
++	progver=`../../src/fatsort --version | head -1 | sed -e "s/^fatsort \([0-9.]\+\).*$$/\1/"`; \
+ 	changesver=`head -1 ../../CHANGES | sed -e "s/^.*v\([0-9.]\+\)$$/\1/"`; \
+ 	echo "#$$manver#$$progver#$$changesver#"; \
+ 	[ "$$manver" = "$$progver" ]; \
+diff -Naur tests/tc_pos_sort_modification_time/Makefile tests/tc_pos_sort_modification_time/Makefile
+--- tests/tc_pos_sort_modification_time/Makefile	2013-12-10 21:52:36.772278926 +0100
++++ tests/tc_pos_sort_modification_time/Makefile	2013-12-10 21:57:06.433268173 +0100
+@@ -44,10 +44,11 @@
+ 	sudo mount -o loop,codepage=850,iocharset=iso8859-1,utf8,uid=${MOUNT_UID},gid=${MOUNT_GID} ${FS_IMG} ${MOUNT_POINT}
+ 	cat ${DIRECTORIES} | while read dir; do mkdir -p "${MOUNT_POINT}/$$dir"; done
+ 	cat ${FILES} | while read file; do touch "${MOUNT_POINT}/$$file"; done
+-	sleep 3
++	sleep 1
+ 	touch ${MOUNT_POINT}/last # alter modification time
++	sleep 1
+ 	touch ${MOUNT_POINT}/first -t 200001010101.01
+-
++	sleep 1
+ 	sudo umount -l ${MOUNT_POINT}
+ 	rmdir ${MOUNT_POINT}

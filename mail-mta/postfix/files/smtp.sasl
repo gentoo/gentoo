@@ -1,0 +1,3 @@
+# $Id$
+pwcheck_method:saslauthd
+mech_list: PLAIN

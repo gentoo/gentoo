@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+	 StarDict is an international dictionary Software. It has powerful features
+	 such as "Glob-style pattern matching", "Scan selection word," "Fuzzy
+	 query," etc. Stardict Version3.0 has developed a lot of new functions, such
+	 as Full-text translation, Net Dict. 
+	 </longdescription>
+	<use>
+		<flag name="espeak">Enable text to speech synthesizer using espeak
+			 engine</flag>
+		<flag name="pronounce">Install WyabdcRealPeopleTTS package (it is just
+			 many .wav files) to make StarDict pronounce English words</flag>
+		<flag name="qqwry">Enable QQWry plugin, which provides information (in
+			 Chinese language) about geographical positions, owner, etc. for IP
+			 addresses</flag>
+		<flag name="tools">Build and install the extra stardict tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">stardict-4</remote-id>
+	</upstream>
+</pkgmetadata>

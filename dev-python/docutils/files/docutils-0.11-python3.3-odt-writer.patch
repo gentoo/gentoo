@@ -1,0 +1,30 @@
+--- a/docutils/writers/odf_odt/__init__.py
++++ b/docutils/writers/odf_odt/__init__.py
+@@ -88,16 +88,20 @@
+ #   that support for the ability to get the parent of an element.
+ #
+ if WhichElementTree == 'elementtree':
+-    class _ElementInterfaceWrapper(etree._ElementInterface):
++    import weakref
++    _parents = weakref.WeakKeyDictionary()
++    if isinstance(etree.Element, type):
++        _ElementInterface = etree.Element
++    else:
++        _ElementInterface = etree._ElementInterface
++    class _ElementInterfaceWrapper(_ElementInterface):
+         def __init__(self, tag, attrib=None):
+-            etree._ElementInterface.__init__(self, tag, attrib)
+-            if attrib is None:
+-                attrib = {}
+-            self.parent = None
++            _ElementInterface.__init__(self, tag, attrib)
++            _parents[self] = None
+         def setparent(self, parent):
+-            self.parent = parent
++            _parents[self] = parent
+         def getparent(self):
+-            return self.parent
++            return _parents[self]
+ 
+ 
+ #

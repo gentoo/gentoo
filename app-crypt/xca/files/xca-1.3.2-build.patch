@@ -1,0 +1,180 @@
+From 476aa73644e6b3d353a1ed1cf3982e7114875088 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 3 Jun 2016 23:15:29 +0300
+Subject: [PATCH 1/2] build: add --with-qt-version to force specific qt linkage
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ configure.ac | 43 ++++++++++++++++++++++++++++---------------
+ 1 file changed, 28 insertions(+), 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 32ba42b..8490a88 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -90,18 +90,28 @@ if test -n "${_QTDIR}" && test -d "${_QTDIR}"; then
+   DYLD_LIBRARY_PATH="${_QTDIR}/lib:${DYLD_LIBRARY_PATH}"
+ fi
+ 
+-PKG_CHECK_MODULES(Qt5, [Qt5Core >= 5.0, Qt5Widgets >= 5.0], [
+-  _QT_HOST_BINS="`pkg-config --variable=host_bins Qt5Core`"
+-  QT_MOC="${_QT_HOST_BINS}/moc"
+-  QT_UIC="${_QT_HOST_BINS}/uic"
+-  if test -n "$DARWIN"; then
+-    FRAMEDIR=`pkg-config --variable=libdir Qt5Core`
+-    Qt5_CFLAGS="$Qt5_CFLAGS -F${FRAMEDIR} -I${FRAMEDIR}/QtCore.framework/Headers -I${FRAMEDIR}/QtGui.framework/Headers -I${FRAMEDIR}/QtWdgets.framework/Headers"
+-  fi
+-  QT_VERSION=5
+-  QT_CFLAGS="${Qt5_CFLAGS} -fPIC"
+-  QT_LIBS="${Qt5_LIBS}"
+-], [
++AC_ARG_WITH([qt-version],
++  AS_HELP_STRING([--with-qt-version], [Select the Qt version]),
++  [WANT_QT_VERSION="$withval"],
++  [WANT_QT_VERSION=detect])
++
++if test "${WANT_QT_VERSION}" = detect -o "${WANT_QT_VERSION}" = 5; then
++  PKG_CHECK_MODULES(Qt5, [Qt5Core >= 5.0, Qt5Widgets >= 5.0], [
++    _QT_HOST_BINS="`pkg-config --variable=host_bins Qt5Core`"
++    QT_MOC="${_QT_HOST_BINS}/moc"
++    QT_UIC="${_QT_HOST_BINS}/uic"
++    if test -n "$DARWIN"; then
++      FRAMEDIR=`pkg-config --variable=libdir Qt5Core`
++      Qt5_CFLAGS="$Qt5_CFLAGS -F${FRAMEDIR} -I${FRAMEDIR}/QtCore.framework/Headers -I${FRAMEDIR}/QtGui.framework/Headers -I${FRAMEDIR}/QtWdgets.framework/Headers"
++    fi
++    WANT_QT_VERSION=5
++    QT_VERSION=5
++    QT_CFLAGS="${Qt5_CFLAGS} -fPIC"
++    QT_LIBS="${Qt5_LIBS}"
++])
++fi
++
++if test "${WANT_QT_VERSION}" = detect -o "${WANT_QT_VERSION}" = 4; then
+   PKG_CHECK_MODULES(Qt4, [QtCore >= 4.6, QtCore < 5.0, QtGui >= 4.6, QtGui < 5.0], [
+     QT_MOC="`pkg-config --variable=moc_location QtCore`"
+     QT_UIC="`pkg-config --variable=uic_location QtCore`"
+@@ -112,18 +122,21 @@ PKG_CHECK_MODULES(Qt5, [Qt5Core >= 5.0, Qt5Widgets >= 5.0], [
+       FRAMEDIR=`pkg-config --variable=libdir QtCore`
+       Qt4_CFLAGS="$Qt4_CFLAGS -F${FRAMEDIR} -I${FRAMEDIR}/QtCore.framework/Headers -I${FRAMEDIR}/QtGui.framework/Headers"
+     fi
++    WANT_QT_VERSION=4
+     QT_VERSION=4
+     QT_CFLAGS="${Qt4_CFLAGS}"
+     QT_LIBS="${Qt4_LIBS}"
+-  ], [
++  ])
++fi
++
++if test -z "${QT_VERSION}"; then
+     if test -z "$DARWIN"; then
+       QT_LIBS=" -lQtCore -lQtGui "
+     else
+       QT_LIBS=" -framework QtGui -framework QtCore "
+     fi
+     AC_MSG_WARN([Qt pkg-config failed, using fallback defaults (${QT_LIBS})]);
+-  ])
+-])
++fi
+ 
+ AC_SUBST([QT_CFLAGS])
+ AC_SUBST([QT_LIBS])
+-- 
+2.7.3
+
+From 7112df9532f71cb3a150fef61b2d7e5d9899634c Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 3 Jun 2016 23:58:01 +0300
+Subject: [PATCH 2/2] build: add --disable-doc to disable doc installation
+
+---
+ Local.mak.in |  1 +
+ configure.ac | 37 +++++++++++++++++++++++--------------
+ doc/Makefile | 10 +++++-----
+ 3 files changed, 29 insertions(+), 19 deletions(-)
+
+diff --git a/Local.mak.in b/Local.mak.in
+index cd5ebfc..d993b8b 100644
+--- a/Local.mak.in
++++ b/Local.mak.in
+@@ -19,6 +19,7 @@ STRIP=@STRIP@
+ DOCTOOL=@DOCTOOL@
+ MACDEPLOYQT=@MACDEPLOYQT@
+ DARWIN=@DARWIN@
++ENABLE_DOC=@ENABLE_DOC@
+ 
+ PACKAGE_TARNAME=@PACKAGE_TARNAME@
+ HOST=linux
+diff --git a/configure.ac b/configure.ac
+index 8490a88..03d729e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -202,20 +202,29 @@ AX_CHECK_GNU_MAKE()
+ 
+ # linuxdoc application detection
+ ##################################
+-AC_CHECK_PROGS([DOCTOOL], [linuxdoc sgml2html], [":"])
+-AC_SUBST([DOCTOOL])
+-
+-case "$DOCTOOL" in
+- linuxdoc) DOCTOOL="linuxdoc -B html";;
+- sgml2html) DOCTOOL="sgml2html -s 1";;
+- :)
+-  if test "${srcdir}" != "."; then
+-    mkdir -p doc
+-    cp ${srcdir}/doc/xca-doc.tgz doc/
+-  fi
+-  AC_MSG_WARN(['linuxdoc' or 'sgml2html' not found, using pre-compiled documentation])
+-  ;;
+-esac
++AC_ARG_ENABLE([doc],
++  AS_HELP_STRING([--disable-doc], [Disable documentation installation]),
++  ,
++  [enable_doc=yes])
++test "${enable_doc}" = "yes" && ENABLE_DOC= || ENABLE_DOC='\#'
++AC_SUBST([ENABLE_DOC])
++
++if test "${enable_doc}"; then
++  AC_CHECK_PROGS([DOCTOOL], [linuxdoc sgml2html], [":"])
++  AC_SUBST([DOCTOOL])
++
++  case "$DOCTOOL" in
++   linuxdoc) DOCTOOL="linuxdoc -B html";;
++   sgml2html) DOCTOOL="sgml2html -s 1";;
++   :)
++    if test "${srcdir}" != "."; then
++      mkdir -p doc
++      cp ${srcdir}/doc/xca-doc.tgz doc/
++    fi
++    AC_MSG_WARN(['linuxdoc' or 'sgml2html' not found, using pre-compiled documentation])
++    ;;
++  esac
++fi
+ 
+ # Setup done. Write local.h and Local.mak
+ ############################################
+diff --git a/doc/Makefile b/doc/Makefile
+index fce4acf..7bf802f 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -17,13 +17,13 @@ xca.html: xca.sgml
+ 	echo 'The documentation for XCA can be viewed online at: <a href="http://xca.sourceforge.net/">http://xca.sourceforge.net/</a>.' > $@
+ 	test ! -f xca-doc.tgz || tar zxf xca-doc.tgz
+ 	@$(PRINT) "  DOC    [$(BASENAME)] $@"
+-	$(DOCTOOL) $< >/dev/null
++	$(ENABLE_DOC)$(DOCTOOL) $< >/dev/null
+ 
+ install: $(doc)
+-	install -m 755 -d $(destdir)$(htmldir) \
+-		$(destdir)$(mandir)/man1
+-	install -m 644 xca*.html $(destdir)$(htmldir)
+-	install *.1.gz $(destdir)/$(mandir)/man1
++	$(ENABLE_DOC)install -m 755 -d $(destdir)$(htmldir)
++	$(ENABLE_DOC)install -m 644 xca*.html $(destdir)$(htmldir)
++	install -m 755 -d $(destdir)$(mandir)/man1
++	install -m 644 *.1.gz $(destdir)/$(mandir)/man1
+ 
+ app: xca.html
+ 	mkdir -p $(APPDIR)/Resources
+-- 
+2.7.3
+

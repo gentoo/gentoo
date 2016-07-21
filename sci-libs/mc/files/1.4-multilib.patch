@@ -1,0 +1,16 @@
+diff --git a/src/aaa_lib/Makefile.am b/src/aaa_lib/Makefile.am
+index d5b8d47..132824b 100644
+--- a/src/aaa_lib/Makefile.am
++++ b/src/aaa_lib/Makefile.am
+@@ -47,10 +47,9 @@ NAM_LIBS  = ../nam/libnam.la
+ DYN_LIBS  = ../dyn/libdyn.la
+ PDE_LIBS  = ../pde/libpde.la
+ 
+-libdir = ${prefix}/lib
+ lib_LTLIBRARIES = libmc.la
+ 
+ libmc_la_SOURCES = 
+-libmc_la_LIBADD  = ${BASE_LIBS} ${BAM_LIBS} ${WHB_LIBS} ${APRX_LIBS} ${GEM_LIBS} ${MCSH_LIBS} ${NAM_LIBS} ${DYN_LIBS} ${PDE_LIBS}
++libmc_la_LIBADD  = ${BASE_LIBS} ${BAM_LIBS} ${WHB_LIBS} ${APRX_LIBS} ${GEM_LIBS} ${MCSH_LIBS} ${NAM_LIBS} ${DYN_LIBS} ${PDE_LIBS} -lmaloc -lpunc -lumfpack -lamd -lsuperlu
+ libmc_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 

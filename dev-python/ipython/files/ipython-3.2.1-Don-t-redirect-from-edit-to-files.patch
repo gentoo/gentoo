@@ -1,0 +1,55 @@
+Upstream patch to fix
+"Maliciously crafted text files in IPython/Jupyter editor".
+
+http://seclists.org/oss-sec/2015/q3/558
+https://bugs.gentoo.org/show_bug.cgi?id=560708
+
+
+From 2b835ca6daec2592d9127dc85bf2cdcfb718edf2 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Mon, 20 Jul 2015 12:11:23 -0700
+Subject: [PATCH 4/4] Don't redirect from /edit/ to /files/
+
+show failure to decode, instead
+---
+ IPython/html/static/edit/js/editor.js | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/IPython/html/static/edit/js/editor.js b/IPython/html/static/edit/js/editor.js
+index dd12ea4..75d65e0 100644
+--- a/IPython/html/static/edit/js/editor.js
++++ b/IPython/html/static/edit/js/editor.js
+@@ -90,19 +90,10 @@ function($,
+             }).catch(
+             function(error) {
+                 that.events.trigger("file_load_failed.Editor", error);
+-                if (((error.xhr||{}).responseJSON||{}).reason === 'bad format') {
+-                    window.location = utils.url_path_join(
+-                        that.base_url,
+-                        'files',
+-                        that.file_path
+-                    );
+-                } else {
+-                    console.warn('Error while loading: the error was:')
+-                    console.warn(error)
+-                }
++                console.warn('Error loading: ', error);
+                 cm.setValue("Error! " + error.message +
+                                 "\nSaving disabled.\nSee Console for more details.");
+-                cm.setOption('readOnly','nocursor')
++                cm.setOption('readOnly','nocursor');
+                 that.save_enabled = false;
+             }
+         );
+@@ -186,7 +177,7 @@ function($,
+     Editor.prototype._clean_state = function(){
+         var clean = this.codemirror.isClean(this.generation);
+         if (clean === this.clean){
+-            return
++            return;
+         } else {
+             this.clean = clean;
+         }
+-- 
+2.4.6
+

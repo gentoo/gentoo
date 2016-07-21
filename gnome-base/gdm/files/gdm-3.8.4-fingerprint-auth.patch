@@ -1,0 +1,29 @@
+From 75fe02c2b383b27b202940bdedd7d8d2c64169fb Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Tue, 30 Jul 2013 22:56:30 -0400
+Subject: [PATCH 3/4] Gentoo does not have a fingerprint-auth pam stack
+
+---
+ data/pam-exherbo/gdm-fingerprint.pam | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/data/pam-exherbo/gdm-fingerprint.pam b/data/pam-exherbo/gdm-fingerprint.pam
+index 41639ec..d9633fb 100644
+--- a/data/pam-exherbo/gdm-fingerprint.pam
++++ b/data/pam-exherbo/gdm-fingerprint.pam
+@@ -1,6 +1,11 @@
+ account  include  system-login
+ 
+-auth     substack fingerprint-auth
++auth     optional pam_env.so
++auth     required pam_tally2.so onerr=succeed
++auth     required pam_shells.so
++auth     required pam_nologin.so
++auth     required pam_fprintd.so
++auth     required pam_permit.so
+ auth     optional pam_gnome_keyring.so
+ 
+ password required pam_deny.so
+-- 
+1.8.5.1
+

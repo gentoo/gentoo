@@ -1,0 +1,11 @@
+http://bugs.gentoo.org/331317
+
+--- doc/kmuddy/index.docbook
++++ doc/kmuddy/index.docbook
+@@ -1,5 +1,5 @@
+ ﻿<?xml version="1.0" ?>
+-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
++<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+   <!ENTITY kmuddy '<application>KMuddy</application>'>
+   <!ENTITY kapp "&kmuddy;">
+   <!ENTITY % addindex "IGNORE">

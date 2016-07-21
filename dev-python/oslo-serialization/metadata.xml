@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">oslo.serialization</remote-id>
+		<remote-id type="launchpad">oslo</remote-id>
+	</upstream>
+</pkgmetadata>

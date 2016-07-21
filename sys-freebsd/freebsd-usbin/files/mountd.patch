@@ -1,0 +1,15 @@
+http://security.freebsd.org/advisories/FreeBSD-SA-11:01.mountd.asc
+
+Index: usr.sbin/mountd/mountd.c
+===================================================================
+--- usr.sbin/mountd/mountd.c	20 Dec 2010 09:28:28 -0000	1.107
++++ usr.sbin/mountd/mountd.c	1 Mar 2011 11:47:16 -0000	1.108
+@@ -2875,7 +2875,7 @@ makemask(struct sockaddr_storage *ssp, i
+ 
+ 	for (i = 0; i < len; i++) {
+ 		bits = (bitlen > CHAR_BIT) ? CHAR_BIT : bitlen;
+-		*p++ = (1 << bits) - 1;
++		*p++ = (u_char)~0 << (CHAR_BIT - bits);
+ 		bitlen -= bits;
+ 	}
+ 	return 0;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">File-HomeDir</remote-id>
+    <remote-id type="cpan-module">File::HomeDir</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Darwin</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Darwin::Carbon</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Darwin::Cocoa</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Driver</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::FreeDesktop</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::MacOS9</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::TIE</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Test</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Unix</remote-id>
+    <remote-id type="cpan-module">File::HomeDir::Windows</remote-id>
+  </upstream>
+  <use>
+  	<flag name="xdg">Ensure XDG Semantics for returned paths via x11-misc/xdg-user-dirs</flag>
+  </use>
+</pkgmetadata>

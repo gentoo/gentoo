@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Not Tetris 2 is the spiritual successor of the classic Tetris
+		mixed with physics. The result is a fun spinoff in which blocks
+		are no longer bound to the usual grid. Blocks can be rotated and
+		placed at any angle, resulting in a complete mess if not careful.
+		And with the newest cutting edge technology, Not tetris 2 allows
+		line clears when the lines are sufficiently filled. The old mode
+		is still available for play and is now called Stack.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,32 @@
+diff -ur xen-4.2.0.orig/tools/tests/x86_emulator/Makefile xen-4.2.0/tools/tests/x86_emulator/Makefile
+--- tools/tests/x86_emulator/Makefile	2012-09-17 18:21:19.000000000 +0800
++++ tools/tests/x86_emulator/Makefile	2012-11-24 05:06:24.355778737 +0800
+@@ -14,13 +14,13 @@
+ .PHONY: blowfish.h
+ blowfish.h:
+ 	rm -f blowfish.bin
+-	XEN_TARGET_ARCH=x86_32 make -f blowfish.mk all
++	XEN_TARGET_ARCH=x86_32 $(MAKE) -f blowfish.mk all
+ 	(echo "static unsigned int blowfish32_code[] = {"; \
+ 	od -v -t x blowfish.bin | sed 's/^[0-9]* /0x/' | sed 's/ /, 0x/g' | sed 's/$$/,/';\
+ 	echo "};") >$@
+ 	rm -f blowfish.bin
+ ifeq ($(XEN_COMPILE_ARCH),x86_64)
+-	XEN_TARGET_ARCH=x86_64 make -f blowfish.mk all
++	XEN_TARGET_ARCH=x86_64 $(MAKE) -f blowfish.mk all
+ 	(echo "static unsigned int blowfish64_code[] = {"; \
+ 	od -v -t x blowfish.bin | sed 's/^[0-9]* /0x/' | sed 's/ /, 0x/g' | sed 's/$$/,/';\
+ 	echo "};") >>$@
+
+diff -ur xen-4.2.0.orig/tools/firmware/vgabios/Makefile xen-4.2.0/tools/firmware/vgabios/Makefile
+--- tools/firmware/vgabios/Makefile	2013-02-04 13:56:50.973533544 +0800
++++ tools/firmware/vgabios/Makefile	2013-02-04 13:57:21.380535958 +0800
+@@ -27,7 +27,7 @@
+ 
+ .PHONY: release
+ release: 
+-	VGABIOS_VERS=\"-DVGABIOS_VERS=\\\"$(RELVERS)\\\"\" make bios cirrus-bios
++	VGABIOS_VERS=\"-DVGABIOS_VERS=\\\"$(RELVERS)\\\"\" $(MAKE) bios cirrus-bios
+ 	/bin/rm -f  *.o *.s *.ld86 \
+           temp.awk.* vgabios.*.orig _vgabios_.*.c core *.bak .#*
+ 	cp VGABIOS-lgpl-latest.bin ../$(RELEASE).bin

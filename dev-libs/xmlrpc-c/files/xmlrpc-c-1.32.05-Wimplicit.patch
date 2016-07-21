@@ -1,0 +1,20 @@
+--- a/common.mk
++++ b/common.mk
+@@ -17,7 +17,7 @@
+ # fully made.
+ .DELETE_ON_ERROR:
+ 
+-GCC_WARNINGS = -Wall -W -Wno-uninitialized -Wundef -Wimplicit \
++GCC_WARNINGS = -Wall -W -Wno-uninitialized -Wundef \
+   -Wno-unknown-pragmas
+   # We need -Wwrite-strings after we fix all the missing consts
+   #
+@@ -27,7 +27,7 @@
+   # on -Wuninitialized for all the others.
+ 
+ GCC_C_WARNINGS = $(GCC_WARNINGS) \
+-  -Wmissing-declarations -Wstrict-prototypes -Wmissing-prototypes
++  -Wmissing-declarations -Wstrict-prototypes -Wmissing-prototypes -Wimplicit
+ 
+ GCC_CXX_WARNINGS = $(GCC_WARNINGS)  -Wsynth
+ 

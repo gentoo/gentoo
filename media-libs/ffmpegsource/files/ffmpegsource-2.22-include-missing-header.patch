@@ -1,0 +1,22 @@
+commit 848f7656e1e912352345f84b9499ab4483902d3b
+Author: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+Date:   Sun Dec 27 18:37:28 2015 -0500
+
+    track: Include missing header
+    
+    This is requried for av_rescale.
+    
+    Signed-off-by: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+
+diff --git a/src/core/track.cpp b/src/core/track.cpp
+index 3300094..136bc21 100644
+--- a/src/core/track.cpp
++++ b/src/core/track.cpp
+@@ -27,6 +27,7 @@
+ 
+ #include <libavutil/avutil.h>
+ #include <libavutil/common.h>
++#include <libavutil/mathematics.h>
+ 
+ namespace {
+ FrameInfo ReadFrame(ZipFile &stream, FrameInfo const& prev, const FFMS_TrackType TT) {

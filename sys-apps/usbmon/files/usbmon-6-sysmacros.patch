@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/580360
+
+From 449f591d0220e57face02898a9ae2617baace814 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 18 Apr 2016 18:24:49 -0400
+Subject: [PATCH] usbmon: include sys/sysmacros.h for makedev func
+
+Since glibc has always placed these funcs in sys/sysmacros.h, and other
+C libs require this, include it directly.  Otherwise we fail to build:
+usbmon.c: In function 'make_device':
+usbmon.c:966:8: warning: implicit declaration of function 'makedev' [-Wimplicit-function-declaration]
+  dev = makedev(major, p->ifnum);
+        ^
+usbmon.c:966:2: warning: nested extern declaration of 'makedev' [-Wnested-externs]
+  dev = makedev(major, p->ifnum);
+  ^
+...
+usbmon.o: In function 'make_device':
+usbmon.c:966: undefined reference to 'makedev'
+---
+ usbmon.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/usbmon.c b/usbmon.c
+index 37929f2..8d2acfc 100644
+--- a/usbmon.c
++++ b/usbmon.c
+@@ -32,6 +32,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ #include <sys/mman.h>
++#include <sys/sysmacros.h>
+ #include <inttypes.h>
+ #include <stdarg.h>
+ 
+-- 
+2.7.4
+

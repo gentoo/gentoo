@@ -1,0 +1,20 @@
+--- wmacpi-2.1rc1/Makefile.orig	2005-01-25 09:55:01.637030220 +0100
++++ wmacpi-2.1rc1/Makefile	2005-01-25 09:55:19.265329634 +0100
+@@ -34,7 +34,7 @@
+ WMOBJ := $(patsubst %.c,%.o,$(filter %.c,$(WMSRC)))
+ 
+ # include per-file dependencies
+-include $(WMOBJ:.o=.d)
++#include $(WMOBJ:.o=.d)
+ 
+ wmacpi:	$(WMOBJ)
+ 	$(CC) $(LDFLAGS) -o $@ $^
+@@ -44,7 +44,7 @@
+ ifdef BUILD_CLI
+ CLSRC := acpi.c libacpi.c
+ CLOBJ := $(patsubst %.c,%.o,$(filter %.c,$(CLSRC)))
+-include $(CLOBJ:.o=.d)
++#include $(CLOBJ:.o=.d)
+ 
+ acpi: $(CLOBJ)
+ 	$(CC) $(LDFLAGS) -o $@ $^

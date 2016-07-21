@@ -1,0 +1,42 @@
+--- configure.in
++++ configure.in
+@@ -81,7 +81,7 @@
+ dnl Checks for programs.
+ dnl AC_PROG_CC
+ AC_LANG_CPLUSPLUS
+-CXXFLAGS=" "
++#CXXFLAGS=" "
+ dnl ^^^ set it to non-empty, so AC_PROG_CXX won't include `-g'
+ CCC="$CCC g++"
+ dnl ^^^ check g++ before c++ (see acspecific.m4, grep AC_PROG_CXX)
+@@ -215,7 +215,7 @@
+ 
+ dnl AC_PTS_RUN_OK([perl -x -S ./ccdep.pl $CXX], [], [AC_MSG_ERROR(cannot compute depends)])
+ rm -f Makedep
+-AC_PTS_RUN_OK([make Makedep], [], [AC_MSG_ERROR(cannot compute depends)])
++AC_PTS_RUN_OK([gmake Makedep], [], [AC_MSG_ERROR(cannot compute depends)])
+ AC_PTS_OK
+ echo "configure done. Now you should run: make; make install"
+ 
+--- Makefile
++++ Makefile
+@@ -17,7 +17,7 @@
+ export PERL_BADLANG
+ 
+ CXXX=$(CXD_assert)
+-LDALL=$(LDXX) -s $(LDFLAGS) $(LIBS)
++LDALL=$(LDXX) $(LDFLAGS) $(LIBS)
+ ifeq ($(ENABLE_DEBUG), no)
+ CXXX=$(CXD_no)
+ endif
+@@ -51,8 +51,8 @@
+ IDE_TARGETS_debug := $(patsubst %,%.yes, $(TARGETS))
+ IDE_TARGETS_release := $(TARGETS)
+ 
+-CXD_assert =$(CXX) -s -O2
+-CXD_no     =$(CXX) -s -DNDEBUG -O3
++CXD_assert =$(CXX)
++CXD_no     =$(CXX) -DNDEBUG
+ # CXD_yes    =$(CXX) $(GFLAG) -lefence
+ CXD_yes    =$(CXX) $(GFLAG)
+ CXD_checker=checkerg++ $(GFLAG)

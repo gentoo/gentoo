@@ -1,0 +1,14 @@
+https://github.com/mitsuhiko/flask/commit/f88cc2d2f9d14d97e33ddd2bbaa4b1885db06e1c.
+diff --git a/flask/testsuite/signals.py b/flask/testsuite/signals.py
+index e061932..45ca45d 100644
+--- a/flask/testsuite/signals.py
++++ b/flask/testsuite/signals.py
+@@ -102,7 +102,7 @@ def test_appcontext_signals(self):
+         def record_push(sender, **kwargs):
+             recorded.append('push')
+         def record_pop(sender, **kwargs):
+-            recorded.append('push')
++            recorded.append('pop')
+ 
+         @app.route('/')
+         def index():

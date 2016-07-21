@@ -1,0 +1,11 @@
+--- pam_ssh-1.92.orig/pam_get_pass.c	2004-02-19 19:59:05.000000000 +0100
++++ pam_ssh-1.92/pam_get_pass.c	2009-04-18 13:51:10.000000000 +0200
+@@ -63,6 +63,8 @@
+ 	retval = conv->conv(1, msgs, &resp, conv->appdata_ptr);
+ 	if (retval != PAM_SUCCESS)
+ 		return retval;
++	if (resp[0].resp == NULL)
++		return PAM_AUTHTOK_RECOVERY_ERR;
+ 	retval = pam_set_item(pamh, PAM_AUTHTOK, resp[0].resp);
+ 	if (retval != PAM_SUCCESS)
+ 		return retval;

@@ -1,0 +1,75 @@
+extracted just a few fixes we care about
+
+From 5fca3981f68115144566ddf91d2d188372603b7b Mon Sep 17 00:00:00 2001
+From: "ewout@google.com"
+ <ewout@google.com@93e54ea4-8218-11de-8aaf-8d8425684b44>
+Date: Tue, 10 Sep 2013 21:27:49 +0000
+Subject: [PATCH] New frequency test, fixed error accounting, added logging
+ timestamps, and miscellaneous smaller changes.
+
+* Added a CPU Frequency test for select X86 processors to verify a minimum frequency is maintained during non-pause periods.
+* Fixed the error accounting in WorkerThread::CheckRegion if more than 128 miscompares are found and when block errors are detected.
+* Updated the logger to include timestamps and the associated timezone.
+* Moved from apicid() to sched_getcpu() for determining the core ID.
+* Added the ability to reserve a specified amount of memory. This can override the requested memory allocation.
+* If not using POSIX shared memory or hugepages, explicitly mmap memory if the pagesize is 4kB otherwise use memalign.
+* Removed the OSLayer's unused PCI device handling.
+* Numerous refactoring changes.
+
+
+
+git-svn-id: http://stressapptest.googlecode.com/svn/trunk@38 93e54ea4-8218-11de-8aaf-8d8425684b44
+---
+ configure.ac       |   6 +-
+ src/Makefile.am    |   1 +
+ src/clock.h        |  29 ++++
+ src/disk_blocks.cc | 187 ++++++++---------------
+ src/disk_blocks.h  | 157 +++++++++++++------
+ src/findmask.c     |   6 +-
+ src/logger.cc      |  56 ++++---
+ src/logger.h       |  17 ++-
+ src/os.cc          | 218 +++++++++++----------------
+ src/os.h           | 132 ++++++++++++++--
+ src/sat.cc         | 144 +++++++++++++++---
+ src/sat.h          |  19 ++-
+ src/sattypes.h     |  58 ++++++-
+ src/worker.cc      | 435 +++++++++++++++++++++++++++++++++++++++++------------
+ src/worker.h       | 100 +++++++++++-
+ stressapptest.1    |   7 +-
+ 16 files changed, 1095 insertions(+), 477 deletions(-)
+ create mode 100644 src/clock.h
+
+diff --git a/src/os.cc b/src/os.cc
+index 7cae23b..6358398 100644
+--- a/src/os.cc
++++ b/src/os.cc
+@@ -130,7 +141,7 @@ int OsLayer::AddressMode() {
+ // Translates user virtual to physical address.
+ uint64 OsLayer::VirtualToPhysical(void *vaddr) {
+   uint64 frame, shift;
+-  off64_t off = ((uintptr_t)vaddr) / getpagesize() * 8;
++  off64_t off = ((uintptr_t)vaddr) / sysconf(_SC_PAGESIZE) * 8;
+   int fd = open(kPagemapPath, O_RDONLY);
+   // /proc/self/pagemap is available in kernel >= 2.6.25
+   if (fd < 0)
+@@ -507,7 +533,7 @@ bool OsLayer::AllocateTestMem(int64 length, uint64 paddr_base) {
+         break;
+       }
+ 
+-      shmaddr = shmat(shmid, NULL, NULL);
++      shmaddr = shmat(shmid, NULL, 0);
+       if (shmaddr == reinterpret_cast<void*>(-1)) {
+         int err = errno;
+         string errtxt = ErrorString(err);
+@@ -564,7 +590,7 @@ bool OsLayer::AllocateTestMem(int64 length, uint64 paddr_base) {
+         // Do a full mapping here otherwise.
+         shmaddr = mmap64(NULL, length, PROT_READ | PROT_WRITE,
+                          MAP_SHARED | MAP_NORESERVE | MAP_LOCKED | MAP_POPULATE,
+-                         shm_object, NULL);
++                         shm_object, 0);
+         if (shmaddr == reinterpret_cast<void*>(-1)) {
+           int err = errno;
+           string errtxt = ErrorString(err);
+-- 
+2.0.0
+

@@ -1,0 +1,10 @@
+--- a/services/sddm.pam	2015-08-17 18:06:19.000000000 +0200
++++ b/services/sddm.pam	2016-02-21 19:54:08.654091951 +0100
+@@ -4,3 +4,7 @@
+ account		include		system-login
+ password	include		system-login
+ session		include		system-login
++-auth		optional	pam_kwallet.so kdehome=.kde4
++-auth		optional	pam_kwallet5.so
++-session	optional	pam_kwallet.so
++-session	optional	pam_kwallet5.so auto_start

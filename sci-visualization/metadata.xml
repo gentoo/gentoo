@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-visualization category contains scientific visualization
+		applications.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-visualization contém aplicações de visualização
+		científicas.
+	</longdescription>
+	<longdescription lang="de">
+		Diese Kategorie beinhaltet wissendschaftliche
+		Visualisierungssoftware.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-visualization zawiera programy naukowe związane z
+		wizualizacją.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-visualization contiene aplicaciones científicas
+		de visualización.
+	</longdescription>
+</catmetadata>
+

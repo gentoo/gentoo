@@ -1,0 +1,33 @@
+--- configure.ac.ori	2012-06-14 21:55:13.756603416 +0200
++++ configure.ac	2012-06-14 23:12:01.425399836 +0200
+@@ -150,16 +150,23 @@
+ 
+ # POSIX capabilities
+ LIBCAP=""
+-AC_CHECK_HEADERS([sys/capability.h], [
+-	AC_CHECK_LIB(cap, cap_set_proc, [
+-		LIBCAP="-lcap"
+-		AC_DEFINE(HAVE_LIBCAP, 1,
+-			  [Define to 1 if you have the `cap' library (-lcap).])
+-	])
++AC_ARG_WITH(libcap,
++  AS_HELP_STRING([--with-libcap], [enable POSIX 1003.1e capabilities]),
++    with_libcap=$withval,
++    with_libcap=auto)
++AC_MSG_CHECKING([whether to enable POSIX 1003.1e capabilities])
++AC_MSG_RESULT($with_libcap)
++
++AS_IF([test "x$with_libcap" != "xno"], [
++  AC_CHECK_HEADERS([sys/capability.h])
++  AC_CHECK_LIB(cap, cap_set_proc, [
++    LIBCAP="-lcap"
++    AC_DEFINE(HAVE_LIBCAP, 1,
++      [Define to 1 if you have the cap library (-lcap).])
++  ])
+ ])
+ AC_SUBST(LIBCAP)
+ 
+-
+ # Judy
+ AC_ARG_WITH(Judy,
+ 	    [AS_HELP_STRING(--with-Judy,

@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -40,7 +40,7 @@
+ BUILT_SOURCES = rec_parse.h rec_lex.h rec_lex.c
+ AM_YFLAGS = -d
+ 
+-xstroke_LDADD = @XSTROKE_LIBS@ -lm -lpthread $(X_LIBS) -lXpm -lXtst
++xstroke_LDADD = @XSTROKE_LIBS@ -lm -lpthread $(X_LIBS) -lXpm -lXtst -lX11 -lXrender -lXext -ldl
+ AM_CFLAGS = @XSTROKE_CFLAGS@ -DXSTROKE_CONF_DIR='"$(sysconfdir)/xstroke"' $(X_CFLAGS)
+ 
+ EXTRA_DIST = xstroke_active.xpm xstroke_inactive.xpm etc/alphabet

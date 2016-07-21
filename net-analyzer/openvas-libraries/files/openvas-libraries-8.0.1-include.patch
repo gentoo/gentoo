@@ -1,0 +1,70 @@
+ base/CMakeLists.txt | 2 ++
+ nasl/CMakeLists.txt | 5 +++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/base/CMakeLists.txt b/base/CMakeLists.txt
+index c2dccf5..4f17892 100644
+--- a/base/CMakeLists.txt
++++ b/base/CMakeLists.txt
+@@ -56,6 +56,7 @@ endif (MINGW)
+ 
+ if (BUILD_STATIC)
+   add_library (openvas_base_static STATIC ${FILES})
++  set_target_properties (openvas_base_static PROPERTIES COMPILE_FLAGS "${GPGME_CFLAGS}")
+   set_target_properties (openvas_base_static PROPERTIES OUTPUT_NAME "openvas_base")
+   set_target_properties (openvas_base_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+   set_target_properties (openvas_base_static PROPERTIES PUBLIC_HEADER "${HEADERS}")
+@@ -63,6 +64,7 @@ endif (BUILD_STATIC)
+ 
+ if (BUILD_SHARED)
+   add_library (openvas_base_shared SHARED ${FILES})
++  set_target_properties (openvas_base_shared PROPERTIES COMPILE_FLAGS "${GPGME_CFLAGS}")
+   set_target_properties (openvas_base_shared PROPERTIES OUTPUT_NAME "openvas_base")
+   set_target_properties (openvas_base_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+   set_target_properties (openvas_base_shared PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
+diff --git a/nasl/CMakeLists.txt b/nasl/CMakeLists.txt
+index 52fa5c6..afd18c2 100644
+--- a/nasl/CMakeLists.txt
++++ b/nasl/CMakeLists.txt
+@@ -41,7 +41,7 @@ endif (SNMP)
+ # The "-D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1" is necessary for GPGME!
+ # The "-fno-strict-aliasing" silences warnings caused by macros defined in byteorder.h.
+ # Once the warnings have been addressed this flag should be removed.
+-set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1 -fno-strict-aliasing")
++set (CMAKE_C_FLAGS              "${CMAKE_C_FLAGS} ${HARDENING_FLAGS} -Wall -D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE=1 -fno-strict-aliasing ${GPGME_CFLAGS}")
+ 
+ ## Compile the parser - note that there are (better) CMake macros to achieve
+ ## that
+@@ -103,7 +103,7 @@ link_directories (${LIBDIR} ../base ../misc)
+ 
+ if (BUILD_STATIC)
+    add_library (openvas_nasl_static STATIC ${FILES})
+-
++   set_target_properties (openvas_nasl_static PROPERTIES COMPILE_FLAGS "${GPGME_CFLAGS}")
+    set_target_properties (openvas_nasl_static PROPERTIES OUTPUT_NAME "openvas_nasl")
+    set_target_properties (openvas_nasl_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+    set_target_properties (openvas_nasl_static PROPERTIES PUBLIC_HEADER "${HEADERS}")
+@@ -118,6 +118,7 @@ endif (BUILD_STATIC)
+ 
+ if (BUILD_SHARED)
+   add_library (openvas_nasl_shared SHARED ${FILES})
++  set_target_properties (openvas_nasl_shared PROPERTIES COMPILE_FLAGS "${GPGME_CFLAGS}")
+   set_target_properties (openvas_nasl_shared PROPERTIES OUTPUT_NAME "openvas_nasl")
+   set_target_properties (openvas_nasl_shared PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+   set_target_properties (openvas_nasl_shared PROPERTIES SOVERSION "${CPACK_PACKAGE_VERSION_MAJOR}")
+ base/gpgme_util.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/base/gpgme_util.h b/base/gpgme_util.h
+index 56e1b85..ab4e9fa 100644
+--- a/base/gpgme_util.h
++++ b/base/gpgme_util.h
+@@ -33,7 +33,7 @@
+ #ifndef _OPENVAS_LIBRARIES_GPGME_UTIL_H
+ #define _OPENVAS_LIBRARIES_GPGME_UTIL_H
+ 
+-#include <gpgme.h>
++#include <gpgme/gpgme.h>
+ 
+ gpgme_ctx_t openvas_init_gpgme_ctx (void);
+ gpgme_ctx_t openvas_init_gpgme_sysconf_ctx (void);

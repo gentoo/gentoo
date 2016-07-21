@@ -1,0 +1,30 @@
+--- configure~	2004-04-11 18:31:55.000000000 +0000
++++ configure	2004-04-11 18:40:42.068793280 +0000
+@@ -4343,12 +4343,6 @@
+    fi
+ fi
+ 
+-if test ! -d $HOME/.opendchub; then
+-   echo "creating config directory: $HOME/.opendchub"
+-   mkdir $HOME/.opendchub
+-   chmod 700 $HOME/.opendchub;
+-fi
+-
+ # Check whether --enable-perl or --disable-perl was given.
+ if test "${enable_perl+set}" = set; then
+   enableval="$enable_perl"
+@@ -4406,14 +4400,6 @@
+ 
+        perl_libs=`perl -MExtUtils::Embed -e ldopts`
+ 
+-                     if test ! -d $HOME/.opendchub/scripts; then
+-       	  echo "creating script directory: $HOME/.opendchub/scripts"
+-       	  mkdir $HOME/.opendchub/scripts
+-	  chmod 700 $HOME/.opendchub/scripts;
+-	  for i in Samplescripts/*; do
+-	      cp $i $HOME/.opendchub/scripts;
+-	  done
+-       fi
+    fi
+ else
+     echo "Perl script support is disabled."

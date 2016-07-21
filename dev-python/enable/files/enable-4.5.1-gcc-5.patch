@@ -1,0 +1,22 @@
+From 55a74ccfc33764499497022dd3649be4bb1091ed Mon Sep 17 00:00:00 2001
+From: Nathan Ringo <tikiking1@users.noreply.github.com>
+Date: Wed, 10 Jun 2015 22:06:57 -0500
+Subject: [PATCH] Fixes #200
+
+---
+ kiva/agg/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kiva/agg/setup.py b/kiva/agg/setup.py
+index 5b4d458..c6e290a 100644
+--- a/kiva/agg/setup.py
++++ b/kiva/agg/setup.py
+@@ -170,7 +170,7 @@ def get_ft2_sources((lib_name, build_info), build_dir):
+         f = os.popen("g++ --version")
+         line0 = f.readline()
+         f.close()
+-        m = re.match(r'.+?\s(3|4)\.\d+', line0)
++        m = re.match(r'.+?\s([3-5])\.\d+', line0)
+         if int(m.group(1)) < 4:
+             use_32bit_workaround = True
+ 

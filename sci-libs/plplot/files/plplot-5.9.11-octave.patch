@@ -1,0 +1,12 @@
+diff -up plplot-5.9.9/plplot_test/test_octave.sh.in.octave plplot-5.9.9/plplot_test/test_octave.sh.in
+--- plplot-5.9.9/plplot_test/test_octave.sh.in.octave	2011-10-12 18:43:01.000000000 -0600
++++ plplot-5.9.9/plplot_test/test_octave.sh.in	2012-01-16 08:29:46.551852247 -0700
+@@ -35,7 +35,7 @@ echo "$TOPDIR"
+ export LD_LIBRARY_PATH="$TOPDIR"/src:"$TOPDIR"/lib/csa:"$TOPDIR"/lib/nn
+ 
+ # Launch an Octave script that exercises all the demos
+-$octave -f -q -p "$octavedir" <<EOF 2> test.error
++$octave -f -q $octaveopts -p "$octavedir" <<EOF 2> test.error
+ 
+ # Check verbose_test variable
+ if (strcmp(getenv("verbose_test"),"on") == 1)

@@ -1,0 +1,25 @@
+diff --git a/configure.ac b/configure.ac
+index 4551fcf..a30c62e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,20 +19,6 @@ AC_INIT([glusterfs],[3.3.0],[gluster-users@gluster.org])
+ 
+ AM_INIT_AUTOMAKE
+ 
+-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES(yes)])
+-
+-if make --help 2>&1 | grep -q no-print-directory; then
+-   AM_MAKEFLAGS="$AM_MAKEFLAGS --no-print-directory";
+-fi
+-
+-if make --help 2>&1 | grep -q quiet; then
+-   AM_MAKEFLAGS="$AM_MAKEFLAGS --quiet"
+-fi
+-
+-if libtool --help 2>&1 | grep -q quiet; then
+-   AM_LIBTOOLFLAGS="--quiet";
+-fi
+-
+ AM_CONFIG_HEADER([config.h])
+ 
+ AC_CONFIG_FILES([Makefile

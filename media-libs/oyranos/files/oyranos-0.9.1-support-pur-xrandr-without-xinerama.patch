@@ -1,0 +1,44 @@
+From a4f157beb6c60855f64d011cb2ad2f93071da461 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Sat, 15 Dec 2012 16:10:22 +0100
+Subject: [PATCH] * [oyX1]: support pur XRandR without Xinerama
+
+... as was seen with Intel's driver.
+---
+ src/modules/devices/oyranos_monitor_x11.c |   12 +++++++-----
+ 1 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/src/modules/devices/oyranos_monitor_x11.c b/src/modules/devices/oyranos_monitor_x11.c
+index b79b2d6..f8546b3 100644
+--- a/src/modules/devices/oyranos_monitor_x11.c
++++ b/src/modules/devices/oyranos_monitor_x11.c
+@@ -1278,6 +1278,8 @@ oyX1Monitor_s* oyX1Monitor_newFrom_      ( const char        * display_name,
+       */
+     }
+ 
++    expensive = 1;
++
+     if((major_versionp*100 + minor_versionp) >= 102 && expensive)
+     {
+       Window w = RootWindow(display, oyX1Monitor_screen_(disp));
+@@ -1347,11 +1349,11 @@ oyX1Monitor_s* oyX1Monitor_newFrom_      ( const char        * display_name,
+           if(crtc_info)
+           {
+             /* compare with Xinerama geometry */
+-            if(
+-               geo[0] == crtc_info->x &&
+-               geo[1] == crtc_info->y &&
+-               geo[2] == crtc_info->width &&
+-               geo[3] == crtc_info->height )
++            if(!(geo[0] != -1 && geo[1] != -1 && geo[2] != -1 && geo[3] != -1)||
++               (geo[0] == crtc_info->x &&
++                geo[1] == crtc_info->y &&
++                geo[2] == crtc_info->width &&
++                geo[3] == crtc_info->height ) )
+             {
+               xrand_screen = monitors;
+               ++geo_monitors;
+-- 
+1.5.6.5
+
+

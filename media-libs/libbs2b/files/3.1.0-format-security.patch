@@ -1,0 +1,11 @@
+--- src/bs2bconvert.c.orig	2015-03-06 12:24:00.168451618 +0000
++++ src/bs2bconvert.c	2015-03-06 12:22:20.504446655 +0000
+@@ -153,7 +153,7 @@
+ 	if( ( infile = sf_open( infilename, SFM_READ, &sfinfo ) ) == NULL )
+ 	{
+ 		printf( "Not able to open input file %s.\n", infilename );
+-		printf( sf_strerror( NULL ) );
++		printf( "%s", sf_strerror( NULL ) );
+ 		return 1;
+ 	}
+ 

@@ -1,0 +1,10 @@
+--- setup.py	2014-03-02 14:56:56.090600468 -0500
++++ setup.py	2014-03-02 14:57:00.184465687 -0500
+@@ -141,7 +141,6 @@
+ 
+     files.extend(data_files)
+     files.extend([(os.path.join(base,'ui'), glob.glob(os.path.join('ui','*.ui')))])
+-    files.extend([(os.path.join('share','doc','gourmet'), ['FAQ', 'LICENSE'])])
+ 
+     return files
+ 

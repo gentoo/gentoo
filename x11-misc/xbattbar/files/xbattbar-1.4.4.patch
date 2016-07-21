@@ -1,0 +1,40 @@
+--- a/Makefile
++++ b/Makefile
+@@ -8,16 +8,16 @@
+ all: $(TARGET) $(APM_CHECK)
+ 
+ $(TARGET): obj/xbattbar.o
+-	gcc -o $@ $< -lX11
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $< -lX11
+ 
+ obj/xbattbar.o: xbattbar.c obj/stamp
+-	gcc -MMD -o $@ -c $<
++	$(CC) $(LDFLAGS) $(CFLAGS) -MMD -o $@ -c $<
+ 
+ $(APM_CHECK): obj/xbattbar-check-apm.o
+-	gcc -o $@ $<
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $<
+ 
+ obj/xbattbar-check-apm.o: xbattbar-check-apm.c obj/stamp
+-	gcc -MMD -D$(OS_TYPE) -o $@ -c $<
++	$(CC) $(LDFLAGS) $(CFLAGS) -MMD -D$(OS_TYPE) -o $@ -c $<
+ 
+ obj/stamp:
+ 	mkdir obj
+@@ -29,12 +29,12 @@
+ 
+ 
+ install: $(TARGET) $(APM_CHECK)
+-	install -d -m 0755 $(DESTDIR)/usr/lib/$(PROJECT)
++	install -d -m 0755 $(DESTDIR)/usr/$(LIBDIR)/$(PROJECT)
+ 	install -d -m 0755 $(DESTDIR)/usr/bin
+ 	install -d -m 0755 $(DESTDIR)/usr/share/man/man1
+-	install -m 0755 $(APM_CHECK) $(DESTDIR)/usr/lib/$(PROJECT)/
+-	install -m 0755 xbattbar-check-acpi $(DESTDIR)/usr/lib/$(PROJECT)/
+-	install -m 0755 xbattbar-check-sys  $(DESTDIR)/usr/lib/$(PROJECT)/
++	install -m 0755 $(APM_CHECK) $(DESTDIR)/usr/$(LIBDIR)/$(PROJECT)/
++	install -m 0755 xbattbar-check-acpi $(DESTDIR)/usr/$(LIBDIR)/$(PROJECT)/
++	install -m 0755 xbattbar-check-sys  $(DESTDIR)/usr/$(LIBDIR)/$(PROJECT)/
+ 	install -m 0755 $(TARGET) $(DESTDIR)/usr/bin/
+ 	install -m 0644 xbattbar.man $(DESTDIR)/usr/share/man/man1/$(PROJECT).1 
+ 

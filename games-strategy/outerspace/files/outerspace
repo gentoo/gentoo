@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p ~/.outerspace
+cd ~/.outerspace || exit 1
+
+ln -sf "@GENTOO_LIBDIR@"/{osc.py,lib,libsrvr} .
+ln -sf "@GENTOO_DATADIR@"/res .
+
+exec python osc.py "$@"

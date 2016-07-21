@@ -1,0 +1,52 @@
+--- poppler.override
++++ poppler.override
+@@ -266,6 +266,12 @@
+ import gobject.GObject as PyGObject_Type
+ import gtk.gdk.Pixbuf as PyGdkPixbuf_Type
+ %%
++ignore
++poppler_page_free_link_mapping
++poppler_page_free_image_mapping
++poppler_page_free_form_field_mapping
++poppler_page_free_annot_mapping
++%%
+ ignore-glob
+   *_get_type
+   _*
+@@ -359,7 +365,7 @@
+ 
+     item_list = poppler_page_get_link_mapping(POPPLER_PAGE(self->obj));
+     ret = _glist_to_pylist_boxed(item_list, POPPLER_TYPE_LINK_MAPPING);
+-    g_list_free(item_list);
++    poppler_page_free_link_mapping(item_list);
+     return ret;
+ }
+ %%
+@@ -372,7 +378,7 @@
+ 
+     item_list = poppler_page_get_image_mapping(POPPLER_PAGE(self->obj));
+     ret = _glist_to_pylist_boxed(item_list, POPPLER_TYPE_IMAGE_MAPPING);
+-    g_list_free(item_list);
++    poppler_page_free_image_mapping(item_list);
+     return ret;
+ }
+ %%
+@@ -385,7 +391,7 @@
+ 
+     item_list = poppler_page_get_form_field_mapping(POPPLER_PAGE(self->obj));
+     ret = _glist_to_pylist_boxed(item_list, POPPLER_TYPE_FORM_FIELD_MAPPING);
+-    g_list_free(item_list);
++    poppler_page_free_form_field_mapping(item_list);
+     return ret;
+ }
+ %%
+@@ -398,7 +404,7 @@
+ 
+     item_list = poppler_page_get_annot_mapping(POPPLER_PAGE(self->obj));
+     ret = _glist_to_pylist_boxed(item_list, POPPLER_TYPE_ANNOT_MAPPING);
+-    g_list_free(item_list);
++    poppler_page_free_annot_mapping(item_list);
+     return ret;
+ }
+ %%
+

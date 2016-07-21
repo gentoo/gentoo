@@ -1,0 +1,13 @@
+--- python-orig.c	2009-11-16 23:33:44.930351712 +0200
++++ python.c	2009-11-16 23:35:08.433328150 +0200
+@@ -264,8 +264,8 @@
+ 	while (*cp)
+ 	{
+ 		cp = skipEverything (cp);
+-		if (!strncmp(cp, "def", 3) || !strncmp(cp, "class", 5) ||
+-			!strncmp(cp, "cdef", 4) || !strncmp(cp, "cpdef", 5))
++		if (!strncmp(cp, "def ", 4) || !strncmp(cp, "class ", 6) ||
++			!strncmp(cp, "cdef ", 5) || !strncmp(cp, "cpdef ", 6))
+ 		{
+ 			return cp;
+ 		}

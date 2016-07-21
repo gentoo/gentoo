@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt	2015-06-15 17:32:21.000000000 +0200
++++ b/CMakeLists.txt	2015-10-04 14:37:05.319679836 +0200
+@@ -55,6 +55,7 @@
+ OPTION( EXIV2_ENABLE_WEBREADY      "Build webready support into library"                   OFF )
+ OPTION( EXIV2_ENABLE_CURL          "USE Libcurl for HttpIo"                                ON  )
+ OPTION( EXIV2_ENABLE_SSH           "USE Libssh for SshIo"                                  ON  )
++OPTION( EXIV2_ENABLE_TOOLS         "Build exiv2 executable"                                ON  )
+ 
+ IF( MINGW OR UNIX )
+     IF ( CMAKE_CXX_COMPILER STREQUAL "g++" OR CMAKE_C_COMPILER STREQUAL "gcc" )
+--- a/src/CMakeLists.txt	2015-06-14 11:12:19.000000000 +0200
++++ b/src/CMakeLists.txt	2015-10-04 14:33:27.784399402 +0200
+@@ -296,9 +296,11 @@
+ 
+ # ******************************************************************************
+ # exiv2 application
+-ADD_EXECUTABLE( exiv2 ${EXIV2_SRC} )
+-TARGET_LINK_LIBRARIES( exiv2 exiv2lib )
+-INSTALL( TARGETS exiv2 ${INSTALL_TARGET_STANDARD_ARGS} )
++IF( EXIV2_ENABLE_TOOLS )
++    ADD_EXECUTABLE( exiv2 ${EXIV2_SRC} )
++    TARGET_LINK_LIBRARIES( exiv2 exiv2lib )
++    INSTALL( TARGETS exiv2 ${INSTALL_TARGET_STANDARD_ARGS} )
++ENDIF( EXIV2_ENABLE_TOOLS )
+ 
+ # ******************************************************************************
+ # connection test application

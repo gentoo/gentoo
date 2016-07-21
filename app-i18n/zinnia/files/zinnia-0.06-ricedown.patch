@@ -1,0 +1,20 @@
+Index: zinnia-0.06/configure.in
+===================================================================
+--- zinnia-0.06.orig/configure.in
++++ zinnia-0.06/configure.in
+@@ -59,15 +59,6 @@ AC_ARG_WITH(pkgconfigdir,
+ AC_SUBST([pkgconfigdir])
+ AC_MSG_NOTICE([pkgconfig directory is ${pkgconfigdir}])
+ 
+-dnl
+-dnl check gcc
+-dnl
+-if test -n "$GCC"; then
+-   CFLAGS="-O3 -Wall"
+-   CXXFLAGS="-O3 -Wall"
+-   AC_MSG_RESULT($ac_cv_x86_sse)
+-fi
+-
+ AC_DEFUN(ADD_CC_FLAG, [
+   AC_MSG_CHECKING(whether ${CC-cc} accepts $1)
+   AC_LANG_SAVE

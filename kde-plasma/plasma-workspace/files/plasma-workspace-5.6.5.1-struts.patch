@@ -1,0 +1,29 @@
+From b866bbe75e04584f0a54980c2c21cba2eadc123b Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 13 Jun 2016 14:23:43 +0200
+Subject: [PATCH] use the whole geometry for the struts
+
+screen()->virtualSize() is the union of the sizes
+of all screens
+screen()->geometry().size() is the size of just the
+single screen
+---
+ shell/panelview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index fb965e8..b27c18b 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -856,7 +856,7 @@ void PanelView::updateStruts()
+     if (m_visibilityMode == NormalPanel) {
+         const QRect thisScreen = screen()->geometry();
+         // QScreen::virtualGeometry() is very unreliable (Qt 5.5)
+-        const QRect wholeScreen = QRect(QPoint(0, 0), screen()->geometry().size());
++        const QRect wholeScreen = QRect(QPoint(0, 0), screen()->virtualSize());
+ 
+         //Extended struts against a screen edge near to another screen are really harmful, so windows maximized under the panel is a lesser pain
+         //TODO: force "windows can cover" in those cases?
+-- 
+2.7.3
+

@@ -1,0 +1,38 @@
+--- src/SoundCore.cpp
++++ src/SoundCore.cpp
+@@ -352,32 +352,13 @@
+ 
+ 	PHYSFS_close(filehandle);
+ 
+-	ALenum format;
+-	ALvoid *data;
+-	ALsizei size,freq;
+-	ALboolean loop=AL_FALSE;
+ 	ALenum error;
+ 
+ 	alGetError();
+ 
+-	alGenBuffers(1,&newsample.alid);
+-	if((error=alGetError())!=AL_NO_ERROR){
+-		fprintf(stderr,"SoundCore::LoadSample: Error on alGenBuffers\n");
+-		PrintALError(error);
+-	}
+-	alutLoadWAVMemory((ALbyte*)filedata,&format,&data,&size,&freq,&loop);
+-	if((error=alGetError())!=AL_NO_ERROR){
+-		fprintf(stderr,"SoundCore::LoadSample: Error on alutLoadWAVMemory\n");
+-		PrintALError(error);
+-	}
+-	alBufferData(newsample.alid,format,data,size,freq);
+-	if((error=alGetError())!=AL_NO_ERROR){
+-		fprintf(stderr,"SoundCore::LoadSample: Error on alBufferData\n");
+-		PrintALError(error);
+-	}
+-	alutUnloadWAV(format,data,size,freq);
+-	if((error=alGetError())!=AL_NO_ERROR){
+-		fprintf(stderr,"SoundCore::LoadSample: Error on alutUnloadWAV\n");
++	newsample.alid=alutCreateBufferFromFileImage(filedata, filesize);
++	if(((error=alGetError())!=AL_NO_ERROR)||(newsample.alid==AL_NONE)){
++		fprintf(stderr,"SoundCore::LoadSample: Error on alutCreateBufferFromFileImage\n");
+ 		PrintALError(error);
+ 	}
+ 

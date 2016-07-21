@@ -1,0 +1,12 @@
+[Unit]
+Description=Client to connect to a tunnel broker using the TSP protocol (freenet6 for example)
+
+[Service]
+ExecStart=/usr/sbin/gogoc -y -f /etc/gogoc/gogoc.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+RestartSec=4
+
+[Install]
+WantedBy=multi-user.target

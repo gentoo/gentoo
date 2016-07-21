@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+Crystal Space is a free (LGPL) and portable 3D Game 
+Development Kit written in C++. It supports: true six degrees 
+of freedom, colored lighting, lightmapped and stencil based 
+lighting, shader support, mipmapping, portals, mirrors, alpha 
+transparency, reflective surfaces, 3D sprites (frame based or 
+with skeletal animation, also using cal3d animation library), 
+procedural textures, particle systems, halos, volumetric fog, 
+scripting (using Python, Perl, Java, or potentially other 
+languages), 16-bit and 32-bit display support, OpenGL, and 
+software renderer, font support, hierarchical 
+transformations, physics plugin based on ODE, ... See the 
+extensive list of features for more details.
+</longdescription>
+	<use>
+		<flag name="3ds">Enables support for .3DS files in CrystalSpace</flag>
+		<flag name="bullet">include support for Bullet library</flag>
+		<flag name="cal3d">include support for skeleton animation</flag>
+		<flag name="cegui">include support for Crazy Eddie GUI</flag>
+		<flag name="cg">NVIDIA toolkit plugin</flag>
+		<flag name="ode">include support for Open Dynamics Engine</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">crystal</remote-id>
+	</upstream>
+</pkgmetadata>

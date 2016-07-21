@@ -1,0 +1,134 @@
+diff -up gdl-0.9.5/CMakeLists.txt.plplot gdl-0.9.5/CMakeLists.txt
+--- gdl-0.9.5/CMakeLists.txt.plplot	2014-10-07 07:21:14.000000000 -0600
++++ gdl-0.9.5/CMakeLists.txt	2015-04-24 14:29:15.588067694 -0600
+@@ -386,7 +386,7 @@ if(PLPLOT_FOUND)
+ #}" HAVE_PLPLOT_WIDTH)
+ 
+ #give it a 2nd try...
+-	 check_library_exists("${PLPLOT_LIBRARIES}" c_plwidth "" HAVE_PLPLOT_WIDTH)
++	check_library_exists("${PLPLOT_LIBRARIES}" c_plwidth "" HAVE_PLPLOT_WIDTH)
+ 	if(HAVE_PLPLOT_WIDTH)
+ 	  set(HAVE_PLPLOT_WIDTH 1)
+ 	endif(HAVE_PLPLOT_WIDTH)
+@@ -402,6 +402,11 @@ if(PLPLOT_FOUND)
+ 	else(PLPLOT_HAS_LEGEND)
+ 	  message(STATUS "Your plplot lib is too old for some gdl functions, please upgrade.")
+ 	endif(PLPLOT_HAS_LEGEND)
++	check_cxx_source_compiles("#include <plplot/plstream.h>
++				   main(){PLINT n; PLFLT x,y;plcallback::fill(n,&x,&y);}" PLPLOT_HAS_PLCALLBACK)
++	if(PLPLOT_HAS_PLCALLBACK)
++	  set(PLPLOT_HAS_PLCALLBACK 1)
++	endif(PLPLOT_HAS_PLCALLBACK)
+ endif(PLPLOT_FOUND)
+ 	
+ # GRAPHICSMAGICK is an alternative to the classical ImageMagick Lib.
+diff -up gdl-0.9.5/CMakeModules/FindPlplot.cmake.plplot gdl-0.9.5/CMakeModules/FindPlplot.cmake
+--- gdl-0.9.5/CMakeModules/FindPlplot.cmake.plplot	2011-08-19 04:18:51.000000000 -0600
++++ gdl-0.9.5/CMakeModules/FindPlplot.cmake	2015-04-24 13:54:56.915632230 -0600
+@@ -9,8 +9,12 @@
+ #
+ 
+ 
+-find_library(PLPLOT_LIBRARY NAMES plplotd)
+-find_library(PLPLOTCXX_LIBRARY NAMES plplotcxxd)
++find_library(PLPLOT_LIBRARY NAMES plplot)
++find_library(PLPLOTCXX_LIBRARY NAMES plplotcxx)
++if(NOT PLPLOT_LIBRARY)
++    find_library(PLPLOT_LIBRARY NAMES plplotd)
++    find_library(PLPLOTCXX_LIBRARY NAMES plplotcxxd)
++endif(NOT PLPLOT_LIBRARY)
+ set(PLPLOT_LIBRARIES ${PLPLOT_LIBRARY} ${PLPLOTCXX_LIBRARY})
+ find_path(PLPLOT_INCLUDE_DIR NAMES plplot/plplot.h)
+ include(FindPackageHandleStandardArgs)
+diff -up gdl-0.9.5/config.h.cmake.plplot gdl-0.9.5/config.h.cmake
+--- gdl-0.9.5/config.h.cmake.plplot	2014-08-30 14:13:43.000000000 -0600
++++ gdl-0.9.5/config.h.cmake	2015-04-24 13:39:22.259704608 -0600
+@@ -31,6 +31,12 @@
+ #cmakedefine HAVE_PLPLOT_WIDTH 1
+ #cmakedefine PLPLOT_PRIVATE_NOT_HIDDEN 1
+ #cmakedefine PLPLOT_HAS_LEGEND
++#cmakedefine PLPLOT_HAS_PLCALLBACK
++#ifdef PLPLOT_HAS_PLCALLBACK
++#define PLCALLBACK plcallback
++#else
++#define PLCALLBACK plstream
++#endif
+ #ifndef HAVE_STDINT_H
+ #cmakedefine HAVE_STDINT_H 1
+ #endif
+diff -up gdl-0.9.5/src/plotting_contour.cpp.plplot gdl-0.9.5/src/plotting_contour.cpp
+--- gdl-0.9.5/src/plotting_contour.cpp.plplot	2014-09-29 11:03:12.000000000 -0600
++++ gdl-0.9.5/src/plotting_contour.cpp	2015-04-24 13:39:22.267705191 -0600
+@@ -789,8 +789,8 @@ namespace lib
+               1, value, 
+               static_cast<PLFLT>(( *thick )[i%thick->N_Elements()]),
+               0,0,0,0,
+-              (plstream::fill), (oneDim),
+-              (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++              (PLCALLBACK::fill), (oneDim),
++              (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+             }
+             actStream->psty(0);
+ //            if (docolors) gdlSetGraphicsForegroundColorFromKw( e, actStream );
+@@ -808,8 +808,8 @@ namespace lib
+               clevel[i], maxmax, 
+               1,value,
+               0,0,0,0,0,
+-                  plstream::fill, (oneDim), //Onedim is accelerator since rectangles are kept rectangles see plplot doc
+-                  (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++                  PLCALLBACK::fill, (oneDim), //Onedim is accelerator since rectangles are kept rectangles see plplot doc
++                  (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+                 }
+           } else {  //every other case of fill 
+             // note that plshades is not protected against 1 level (color formula is
+@@ -818,8 +818,8 @@ namespace lib
+             if (nlevel>2 && !(docolors)) { //acceleration with shades when no c_colors are given. use continuous table1, decomposed or not.
+               //acceleration is most sensible when a (x,y) transform (rotate, stretch) is in place since plplot does not recompute the map.
+               actStream->shades( map, xEl, yEl, isLog?doIt:NULL, xStart, xEnd, yStart, yEnd,
+-                                clevel, nlevel, 1, 0, 0, plstream::fill, (oneDim),
+-                                (oneDim)?(plstream::tr1):(plstream::tr2),
++                                clevel, nlevel, 1, 0, 0, PLCALLBACK::fill, (oneDim),
++                                (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2),
+                                 (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+             }
+             else { //fill with colors defined with c_colors or n<=2
+@@ -832,8 +832,8 @@ namespace lib
+                 clevel[i], maxmax,
+                 1,value,
+                 0,0,0,0,0,
+-                plstream::fill, (oneDim), //Onedim is accelerator since rectangles are kept rectangles see plplot doc
+-                (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++                PLCALLBACK::fill, (oneDim), //Onedim is accelerator since rectangles are kept rectangles see plplot doc
++                (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+               } else
+ 		        printf(" Problem, sorry! plplot doesn't like to FILL with a single level!");
+             }
+@@ -854,7 +854,7 @@ namespace lib
+             if (doT3d) { //no label in T3D , bug in plplot...
+               actStream->setcontlabelparam ( LABELOFFSET, (PLFLT) label_size, LABELSPACING, 0 );
+               actStream->cont ( map, xEl, yEl, 1, xEl, 1, yEl, &( clevel[i] ), 1,
+-                (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++                (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+             } else {
+               if (dolabels && i<labels->N_Elements()) 
+               {
+@@ -862,16 +862,16 @@ namespace lib
+                                                               //else (lables thicker than contours) impossible with plplot...
+                   actStream->setcontlabelparam ( LABELOFFSET, (PLFLT) label_size, LABELSPACING, 0 ); 
+                   actStream->cont ( map, xEl, yEl, 1, xEl, 1, yEl, &( clevel[i] ), 1,
+-                  (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2); //thick contours, no label
++                  (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2); //thick contours, no label
+                   actStream->Thick(label_thick);
+                 } 
+                 actStream->setcontlabelparam ( LABELOFFSET, (PLFLT) label_size, LABELSPACING*sqrt(label_size),(PLINT)(*labels)[i] ); 
+                 actStream->cont ( map, xEl, yEl, 1, xEl, 1, yEl, &( clevel[i] ), 1,
+-                (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++                (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+                 if (!dothick) gdlSetPenThickness(e, actStream);
+               } else {
+                 actStream->cont ( map, xEl, yEl, 1, xEl, 1, yEl, &( clevel[i] ), 1,
+-                (oneDim)?(plstream::tr1):(plstream::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
++                (oneDim)?(PLCALLBACK::tr1):(PLCALLBACK::tr2), (oneDim)?(void *)&cgrid1:(void *)&cgrid2);
+               }
+             }
+           }

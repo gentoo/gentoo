@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-DMARC</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Base</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::HTTP</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Policy</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::PurePerl</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Metadata</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Auth_Results</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Auth_Results::DKIM</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Auth_Results::SPF</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Identifiers</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Row</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Aggregate::Record::Row::Policy_Evaluated</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Receive</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Send</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Send::HTTP</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Send::SMTP</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Store</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::Store::SQL</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Report::URI</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Result</remote-id>
+    <remote-id type="cpan-module">Mail::DMARC::Result::Reason</remote-id>
+  </upstream>
+</pkgmetadata>

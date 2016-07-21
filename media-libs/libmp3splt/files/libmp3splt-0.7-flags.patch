@@ -1,0 +1,25 @@
+From aac2d1b2603c1f1b85759bc1af67f37fb740d9a6 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 3 Aug 2011 20:51:26 +0200
+Subject: [PATCH 1/2] Remove debugging flags
+
+---
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d9a70c3..1c564c5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,7 +43,7 @@ DEBUG_FLAGS="-g"
+ #OPTIMISE_FLAGS="-O2"
+ #WARNING_FLAGS="-Wall -Wextra -Wswitch-enum -Wswitch-default -Wfloat-equal -Wbad-function-cast -Wcast-qual -Wunreachable-code"
+ WARNING_FLAGS="-Wall"
+-CFLAGS="$DEBUG_FLAGS $WARNING_FLAGS $OPTIMISE_FLAGS $CFLAGS"
++CFLAGS="$WARNING_FLAGS $CFLAGS"
+ 
+ #################################################
+ # Check for programs
+-- 
+1.7.6
+

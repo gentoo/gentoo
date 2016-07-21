@@ -1,0 +1,29 @@
+--- main.c.org	2010-07-28 13:16:20.552161148 +0300
++++ main.c	2010-07-29 20:43:14.714543259 +0300
+@@ -22,7 +22,7 @@
+ 
+ SDL_Surface *bletters;
+ SDL_Surface *letters[100];
+-SDL_Surface *tiles[9];
++SDL_Surface *tiles[10];
+ SDL_Surface *btiles;
+ SDL_Surface *blob;
+ SDL_Surface *jblob;
+@@ -51,7 +51,7 @@
+ FILE *file_ptr;
+ 
+ 
+-int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[7],bloby[7],blobp[7],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
++int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[8],bloby[8],blobp[8],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
+ /* Keys */
+ int quit = 0;
+ int spacebar = 0;
+@@ -452,7 +452,7 @@
+ static void info(void)
+ {
+   int monkey=70,munk;
+-  char scoremonkey[10];
++  char scoremonkey[16];
+   if (lives>1) {
+     for (munk=1 ; munk<lives ; munk++ )
+     {

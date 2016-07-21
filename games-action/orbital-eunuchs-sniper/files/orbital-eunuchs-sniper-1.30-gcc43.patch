@@ -1,0 +1,10 @@
+--- src/snipe2d.h
++++ src/snipe2d.h
+@@ -39,6 +39,7 @@
+ #include <stdlib.h>
+ #include <math.h>
+ #include <string.h>
++#include <climits>
+ #include <libgen.h>
+ #include <SDL/SDL.h>
+ #include <SDL/SDL_image.h>

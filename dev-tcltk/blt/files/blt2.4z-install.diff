@@ -1,0 +1,26 @@
+--- blt2.4z/library/Makefile.in.jj	2003-07-09 20:18:32.000000000 +0100
++++ blt2.4z/library/Makefile.in	2003-07-09 20:19:06.000000000 +0100
+@@ -58,7 +58,7 @@
+ 	for i in $(miscFiles) ; do \
+ 	    $(INSTALL_DATA) $(srcdir)/$$i $(INSTALL_ROOT)$(scriptdir) ; \
+ 	done 
+-	$(INSTALL_DATA) pkgIndex.tcl $(scriptdir)
++	$(INSTALL_DATA) pkgIndex.tcl $(INSTALL_ROOT)$(scriptdir)
+ 
+ mkdirs:
+ 	@for i in $(instdirs) ; do \
+--- blt2.4z/Makefile.in.jj	2003-07-09 20:19:24.000000000 +0100
++++ blt2.4z/Makefile.in	2003-07-09 20:19:46.000000000 +0100
+@@ -47,9 +47,9 @@
+ 	(cd library; $(MAKE) install)
+ 	(cd man; $(MAKE) install)
+ 	(cd demos; $(MAKE) install)
+-	$(INSTALL_DATA) $(srcdir)/README $(INSTALL_DIR)$(scriptdir)
+-	$(INSTALL_DATA) $(srcdir)/PROBLEMS $(INSTALL_DIR)$(scriptdir)
+-	$(INSTALL_DATA) $(srcdir)/NEWS $(INSTALL_DIR)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/README $(INSTALL_ROOT)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/PROBLEMS $(INSTALL_ROOT)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/NEWS $(INSTALL_ROOT)$(scriptdir)
+ 
+ mkdirs:
+ 	@for i in $(instdirs) ; do \

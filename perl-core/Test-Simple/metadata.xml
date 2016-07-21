@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-Simple</remote-id>
+    <remote-id type="cpan-module">Test2</remote-id>
+    <remote-id type="cpan-module">Test2::API</remote-id>
+    <remote-id type="cpan-module">Test2::API::Breakage</remote-id>
+    <remote-id type="cpan-module">Test2::API::Context</remote-id>
+    <remote-id type="cpan-module">Test2::API::Instance</remote-id>
+    <remote-id type="cpan-module">Test2::API::Stack</remote-id>
+    <remote-id type="cpan-module">Test2::Event</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Bail</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Diag</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Exception</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Generic</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Info</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Note</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Ok</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Plan</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Skip</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Subtest</remote-id>
+    <remote-id type="cpan-module">Test2::Event::Waiting</remote-id>
+    <remote-id type="cpan-module">Test2::Formatter</remote-id>
+    <remote-id type="cpan-module">Test2::Formatter::TAP</remote-id>
+    <remote-id type="cpan-module">Test2::Hub</remote-id>
+    <remote-id type="cpan-module">Test2::Hub::Interceptor</remote-id>
+    <remote-id type="cpan-module">Test2::Hub::Interceptor::Terminator</remote-id>
+    <remote-id type="cpan-module">Test2::Hub::Subtest</remote-id>
+    <remote-id type="cpan-module">Test2::IPC</remote-id>
+    <remote-id type="cpan-module">Test2::IPC::Driver</remote-id>
+    <remote-id type="cpan-module">Test2::IPC::Driver::Files</remote-id>
+    <remote-id type="cpan-module">Test2::Util</remote-id>
+    <remote-id type="cpan-module">Test2::Util::ExternalMeta</remote-id>
+    <remote-id type="cpan-module">Test2::Util::HashBase</remote-id>
+    <remote-id type="cpan-module">Test2::Util::Trace</remote-id>
+    <remote-id type="cpan-module">Test::Builder</remote-id>
+    <remote-id type="cpan-module">Test::Builder::Formatter</remote-id>
+    <remote-id type="cpan-module">Test::Builder::IO::Scalar</remote-id>
+    <remote-id type="cpan-module">Test::Builder::Module</remote-id>
+    <remote-id type="cpan-module">Test::Builder::Tester</remote-id>
+    <remote-id type="cpan-module">Test::Builder::Tester::Color</remote-id>
+    <remote-id type="cpan-module">Test::Builder::Tester::Tie</remote-id>
+    <remote-id type="cpan-module">Test::Builder::TodoDiag</remote-id>
+    <remote-id type="cpan-module">Test::More</remote-id>
+    <remote-id type="cpan-module">Test::Simple</remote-id>
+    <remote-id type="cpan-module">Test::Tester</remote-id>
+    <remote-id type="cpan-module">Test::Tester::Capture</remote-id>
+    <remote-id type="cpan-module">Test::Tester::CaptureRunner</remote-id>
+    <remote-id type="cpan-module">Test::Tester::Delegate</remote-id>
+    <remote-id type="cpan-module">Test::use::ok</remote-id>
+    <remote-id type="cpan-module">ok</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,41 @@
+From: Julian Andres Klode <jak@debian.org>
+Date: Tue, 12 May 2015 17:11:11 +0200
+Subject: Support kernel 4.0
+
+---
+ driver/ndis.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/driver/ndis.c b/driver/ndis.c
+index 9ace34b..fafd2e7 100644
+--- a/driver/ndis.c
++++ b/driver/ndis.c
+@@ -25,6 +25,10 @@
+ #define MAX_ALLOCATED_NDIS_PACKETS TX_RING_SIZE
+ #define MAX_ALLOCATED_NDIS_BUFFERS TX_RING_SIZE
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,0,0)
++#define strncasecmp strnicmp
++#endif
++
+ static struct work_struct ndis_work;
+ static struct nt_list ndis_work_list;
+ static spinlock_t ndis_work_list_lock;
+@@ -438,7 +442,7 @@ static int read_setting(struct nt_list *setting_list, char *keyname, int length,
+ 	struct wrap_device_setting *setting;
+ 	mutex_lock(&loader_mutex);
+ 	nt_list_for_each_entry(setting, setting_list, list) {
+-		if (strnicmp(keyname, setting->name, length) == 0) {
++		if (strncasecmp(keyname, setting->name, length) == 0) {
+ 			TRACE2("setting %s='%s'", keyname, setting->value);
+ 			mutex_unlock(&loader_mutex);
+ 			*param = ndis_encode_setting(setting, type);
+@@ -502,7 +506,7 @@ wstdcall void WIN_FUNC(NdisWriteConfiguration,4)
+ 
+ 	mutex_lock(&loader_mutex);
+ 	nt_list_for_each_entry(setting, &nmb->wnd->wd->settings, list) {
+-		if (strnicmp(keyname, setting->name, ansi.length) == 0) {
++		if (strncasecmp(keyname, setting->name, ansi.length) == 0) {
+ 			mutex_unlock(&loader_mutex);
+ 			if (ndis_decode_setting(setting, param))
+ 				*status = NDIS_STATUS_FAILURE;

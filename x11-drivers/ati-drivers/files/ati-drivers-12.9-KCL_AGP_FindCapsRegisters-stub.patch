@@ -1,0 +1,27 @@
+From: Vasiliy Yeremeyev <vayerx@gmail.com>
+Date: Sun, 4 Nov 2012 23:59:36 +0400
+Subject: [PATCH] KCL_AGP_FindCapsRegisters stub for AGP-less systems
+
+---
+ common/lib/modules/fglrx/build_mod/kcl_agp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/common/lib/modules/fglrx/build_mod/kcl_agp.c b/common/lib/modules/fglrx/build_mod/kcl_agp.c
+index b9c0655..cb1902b 100644
+--- a/common/lib/modules/fglrx/build_mod/kcl_agp.c
++++ b/common/lib/modules/fglrx/build_mod/kcl_agp.c
+@@ -479,6 +479,11 @@ int ATI_API_CALL KCL_AGP_Enable(unsigned long mode)
+     return -EINVAL;
+ }
+ 
++int ATI_API_CALL KCL_AGP_FindCapsRegisters(KCL_PCI_DevHandle dev)
++{
++    return -EINVAL;
++}
++
+ int ATI_API_CALL KCL_AGP_ReadCapsRegisters(KCL_PCI_DevHandle dev, unsigned int *caps)
+ {
+     return -EINVAL;
+-- 
+1.7.12
+

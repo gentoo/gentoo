@@ -1,0 +1,48 @@
+--- ucommon-6.3.1/configure.ac
++++ ucommon-6.3.1/configure.ac
+@@ -38,8 +38,12 @@
+ OPENSSL_LINK=""
+ MODULE_FLAGS="-module -shared -avoid-version"
+ 
++AM_SILENT_RULES([yes])
++
+ CHECKFLAGS="$CHECKFLAGS"
+ 
++m4_include([m4/libgcrypt.m4])
++
+ case "$with_crypto" in
+ ssl|openssl)
+     ssl="openssl"
+@@ -598,7 +602,8 @@
+     ;;
+ gnutls|gnu)
+     if test ! -z "$GNUTLS_LIBS" ; then
+-        SECURE_LIBS="$GNUTLS_LIBS"
++        AM_PATH_LIBGCRYPT
++        SECURE_LIBS="$GNUTLS_LIBS $LIBGCRYPT_LIBS"
+         SECURE="gnutls"
+     fi
+     ;;
+--- ucommon-6.3.1/utils/Makefile.am
++++ ucommon-6.3.1/utils/Makefile.am
+@@ -10,9 +10,9 @@
+ # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ MAINTAINERCLEANFILES = Makefile.in Makefile
+-AM_CXXFLAGS = -I$(top_srcdir)/inc @UCOMMON_FLAGS@
++AM_CXXFLAGS = -I$(top_srcdir)/inc @UCOMMON_FLAGS@ @LIBGCRYPT_CFLAGS@
+ AM_CPPFLAGS = -I$(top_srcdir)/inc
+-LDADD = ../corelib/libucommon.la @UCOMMON_LIBS@
++LDADD = ../corelib/libucommon.la @UCOMMON_LIBS@ @LIBGCRYPT_LIBS@
+ EXTRA_DIST = *.1 CMakeLists.txt
+ 
+ man_MANS = args.1 scrub-files.1 mdsum.1 zerofill.1 car.1 sockaddr.1 \
+@@ -21,7 +21,7 @@
+ 
+ noinst_PROGRAMS = demoSSL
+ demoSSL_SOURCES = ssl.cpp
+-demoSSL_LDFLAGS = @SECURE_LOCAL@
++demoSSL_LDFLAGS = @SECURE_LOCAL@ @LIBGCRYPT_LIBS@
+ 
+ args_SOURCES = args.cpp
+ 

@@ -1,0 +1,18 @@
+diff -ru openvas-manager-5.0.1/CMakeLists.txt openvas-manager-5.0.1.gpg/CMakeLists.txt
+--- openvas-manager-5.0.1/CMakeLists.txt	2014-05-09 15:28:54.000000000 +0200
++++ openvas-manager-5.0.1.gpg/CMakeLists.txt	2014-05-26 23:24:14.830308478 +0200
+@@ -205,6 +205,13 @@
+   message (FATAL_ERROR "The gpgme library is required.")
+ endif (NOT GPGME)
+ 
++execute_process (COMMAND gpg-error-config --cflags
++  OUTPUT_VARIABLE GPGERROR_CFLAGS
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++execute_process (COMMAND gpg-error-config --libs
++  OUTPUT_VARIABLE GPGERROR_LDFLAGS
++  OUTPUT_STRIP_TRAILING_WHITESPACE)
++
+ execute_process (COMMAND pkg-config --cflags glib-2.0
+   OUTPUT_VARIABLE GLIB_CFLAGS
+   OUTPUT_STRIP_TRAILING_WHITESPACE)
+

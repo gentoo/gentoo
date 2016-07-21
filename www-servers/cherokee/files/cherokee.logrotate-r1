@@ -1,0 +1,11 @@
+# $Id$
+# lighttpd logrotate script for Gentoo
+
+/var/log/cherokee/cherokee.access /var/log/cherokee/cherokee.error {
+  missingok
+  notifempty
+  sharedscripts
+  postrotate
+  [ -f /var/run/cherokee.pid ] && /bin/kill -USR2 `cat /var/run/cherokee.pid`
+  endscript
+}

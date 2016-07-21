@@ -1,0 +1,46 @@
+diff --git a/Bustle/Noninteractive.hs b/Bustle/Noninteractive.hs
+index 56e5d74..48d9461 100644
+--- a/Bustle/Noninteractive.hs
++++ b/Bustle/Noninteractive.hs
+@@ -25,7 +25,7 @@ where
+ 
+ import Prelude hiding (log)
+ 
+-import System
++import System.Exit (exitFailure)
+ import System.IO (hPutStrLn, stderr)
+ import Data.Maybe (fromMaybe, mapMaybe)
+ import Data.List (nub)
+diff --git a/Bustle/Stats.hs b/Bustle/Stats.hs
+index 8a3e206..d822058 100644
+--- a/Bustle/Stats.hs
++++ b/Bustle/Stats.hs
+@@ -68,7 +68,7 @@ frequencies = reverse
+     where alt Nothing  = Just 1
+           alt (Just n) = Just (n + 1)
+ 
+-mean :: Fractional a => [a] -> a
++mean :: (Eq a, Fractional a) => [a] -> a
+ mean = acc 0 0
+    where acc 0 _ [] = error "mean of empty list"
+          acc n t [] = t / n
+diff --git a/bustle.cabal b/bustle.cabal
+index 93b16bd..cd47efa 100644
+--- a/bustle.cabal
++++ b/bustle.cabal
+@@ -94,7 +94,6 @@ Executable bustle
+                  , glade
+                  , glib
+                  , gtk > 0.11
+-                 , haskell98
+                  , mtl
+                  , pango
+                  , parsec
+@@ -114,7 +113,6 @@ Executable bustle
+                  , glade
+                  , glib
+                  , gtk > 0.10 && < 0.11
+-                 , haskell98
+                  , mtl
+                  , pango
+                  , parsec

@@ -1,0 +1,15 @@
+diff -Naurp htdig-3.2.0b6.orig/htsearch/Collection.h htdig-3.2.0b6/htsearch/Collection.h
+--- htdig-3.2.0b6.orig/htsearch/Collection.h	2004-05-28 06:15:24.000000000 -0700
++++ htdig-3.2.0b6/htsearch/Collection.h	2006-03-22 11:35:40.000000000 -0800
+@@ -36,9 +36,9 @@ public:
+                const char *docExcerpt);
+     ~Collection();
+ 
+-    void Collection::Open();
++    void Open();
+ 
+-    void Collection::Close(); 
++    void Close(); 
+ 
+     char *getWordFile() { return wordFile.get(); }
+     DocumentRef         *getDocumentRef(int id);

@@ -1,0 +1,21 @@
+diff -uw lsdvd-0.16.orig/lsdvd.c lsdvd-0.16/lsdvd.c
+--- lsdvd-0.16.orig/lsdvd.c	2006-03-02 14:48:11.000000000 +0100
++++ lsdvd-0.16/lsdvd.c	2008-05-18 13:58:15.000000000 +0200
+@@ -92,7 +92,7 @@
+ 	ms += (((dt->second & 0xf0) >> 3) * 5 + (dt->second & 0x0f)) * 1000;
+ 
+ 	if(fps > 0)
+-	ms += ((dt->frame_u & 0x30) >> 3) * 5 + (dt->frame_u & 0x0f) * 1000.0 / fps;
++	ms += (((dt->frame_u & 0x30) >> 3) * 5 + (dt->frame_u & 0x0f)) * 1000.0 / fps;
+ 
+ 	return ms;
+ }
+@@ -107,7 +107,7 @@
+ {
+ 	double fps = frames_per_s[(dt->frame_u & 0xc0) >> 6];
+ 
+-	pt->usec = pt->usec + ((dt->frame_u & 0x30) >> 3) * 5 + (dt->frame_u & 0x0f) * 1000.0 / fps;
++	pt->usec = pt->usec + (((dt->frame_u & 0x30) >> 3) * 5 + (dt->frame_u & 0x0f)) * 1000.0 / fps;
+ 	pt->second = pt->second + ((dt->second & 0xf0) >> 3) * 5 + (dt->second & 0x0f);
+ 	pt->minute = pt->minute + ((dt->minute & 0xf0) >> 3) * 5 + (dt->minute & 0x0f);
+ 	pt->hour = pt->hour + ((dt->hour &   0xf0) >> 3) * 5 + (dt->hour   & 0x0f);

@@ -1,0 +1,11 @@
+service skkserv
+{
+	disable         = yes
+        port            = 1178
+        socket_type     = stream
+        wait            = no
+        only_from       = 127.0.0.1
+        user            = nobody
+        server          = /usr/bin/mecab-skkserv
+        log_on_failure  += USERID
+}

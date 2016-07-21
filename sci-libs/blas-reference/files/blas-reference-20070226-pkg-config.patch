@@ -1,0 +1,11 @@
+diff --git a/BLAS/blas.pc.in b/BLAS/blas.pc.in
+index 367c87b..44b86db 100644
+--- a/BLAS/blas.pc.in
++++ b/BLAS/blas.pc.in
+@@ -7,5 +7,5 @@ Name: @PACKAGE_NAME@
+ Description: Basic Linear Algebra Subprograms F77 reference implementations
+ Version: @PACKAGE_VERSION@
+ URL: http://www.netlib.org/blas
+-Libs: -lblas
++Libs: -L@libdir@ -lblas
+ Libs.private: -lm

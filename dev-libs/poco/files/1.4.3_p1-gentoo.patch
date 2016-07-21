@@ -1,0 +1,85 @@
+diff -ur poco-1.3.6p2-all.orig//components poco-1.3.6p2-all/components
+--- poco-1.3.6p2-all.orig//components	2010-07-19 13:52:31.936802078 +0200
++++ poco-1.3.6p2-all/components	2010-07-19 13:59:37.351927395 +0200
+@@ -1,13 +1,7 @@
+-CppUnit
+ Foundation
+ XML
+ Util
+ Net
+-Crypto
+-NetSSL_OpenSSL
+ Data
+-Data/SQLite
+-Data/ODBC
+-Data/MySQL
+ Zip
+ PageCompiler
+diff -ur poco-1.3.6p2-all.orig//Data/ODBC/Makefile poco-1.3.6p2-all/Data/ODBC/Makefile
+--- poco-1.3.6p2-all.orig//Data/ODBC/Makefile	2010-07-19 13:52:31.932802424 +0200
++++ poco-1.3.6p2-all/Data/ODBC/Makefile	2010-07-19 13:55:24.976677962 +0200
+@@ -9,10 +9,10 @@
+ include $(POCO_BASE)/build/rules/global
+ 
+ # adjust for the target system (usually '/usr/lib' or '/usr/local/lib')
+-ODBCLIBDIR = /usr/lib
++ODBCLIBDIR = /usr/$(LIBDIR)
+ 
+ INCLUDE += -I/usr/local/include -I/usr/include -I/usr/include/odbc -I/usr/local/include/odbc
+-SYSLIBS += -L/usr/local/lib/odbc -L/usr/lib/odbc -L/usr/lib -L/usr/local/lib
++SYSLIBS += -L/usr/local/$(LIBDIR)/odbc -L/usr/$(LIBDIR)/odbc -L/usr/$(LIBDIR) -L/usr/local/$(LIBDIR)
+ 
+ ifeq ($(POCO_CONFIG),MinGW)
+ # Lack of unixODBC or iODBC is not an error for MinGW platform since it uses Windows odbc32.lib
+@@ -24,19 +24,19 @@
+ # CYGWIN platform has its own ODBC library in /lib/w32api 
+ SYSLIBS += -L/lib/w32api -lodbc32 -lodbccp32
+ else
+-ifeq (0, $(shell test -e $(ODBCLIBDIR)/libodbc$(SHAREDLIBLINKEXT); echo $$?))
++ifeq (unixodbc, $(GENTOO_ODBC))
+ SYSLIBS += -lodbc -lodbcinst
+ COMMONFLAGS += -DPOCO_UNIXODBC
+ else
+-ifeq (0, $(shell test -h $(ODBCLIBDIR)/libodbc$(SHAREDLIBLINKEXT); echo $$?))
++ifeq (unixodbc, $(GENTOO_ODBC))
+ SYSLIBS += -lodbc -lodbcinst
+ COMMONFLAGS += -DPOCO_UNIXODBC
+ else
+-ifeq (0, $(shell test -e $(ODBCLIBDIR)/libiodbc$(SHAREDLIBLINKEXT); echo $$?))
++ifeq (iodbc, $(GENTOO_ODBC))
+ SYSLIBS += -liodbc -liodbcinst
+ COMMONFLAGS += -DPOCO_IODBC
+ else
+-ifeq (0, $(shell test -h $(ODBCLIBDIR)/libiodbc$(SHAREDLIBLINKEXT); echo $$?))
++ifeq (iodbc, $(GENTOO_ODBC))
+ SYSLIBS += -liodbc -liodbcinst
+ COMMONFLAGS += -DPOCO_IODBC
+ else
+diff -ur poco-1.3.6p2-all.orig//Makefile poco-1.3.6p2-all/Makefile
+--- poco-1.3.6p2-all.orig//Makefile	2010-07-19 13:52:31.908802377 +0200
++++ poco-1.3.6p2-all/Makefile	2010-07-19 14:00:03.814676950 +0200
+@@ -31,7 +31,7 @@
+ 
+ install: libexecs
+ 	mkdir -p $(INSTALLDIR)/include/Poco
+-	mkdir -p $(INSTALLDIR)/lib
++	mkdir -p $(INSTALLDIR)/$(LIBDIR)
+ 	mkdir -p $(INSTALLDIR)/bin
+ 	for comp in $(COMPONENTS) ; do \
+ 		if [ -d "$(POCO_BASE)/$$comp/include" ] ; then \
+@@ -41,11 +41,11 @@
+ 			find $(POCO_BUILD)/$$comp/bin -perm -700 -type f -exec cp -f {} $(INSTALLDIR)/bin \; ; \
+ 		fi ; \
+ 	done
+-	find $(POCO_BUILD)/lib -name "libPoco*" -type f -exec cp -f {} $(INSTALLDIR)/lib \;
+-	find $(POCO_BUILD)/lib -name "libPoco*" -type l -exec cp -Rf {} $(INSTALLDIR)/lib \;
++	find $(POCO_BUILD)/$(LIBDIR) -name "libPoco*" -type f -exec cp -f {} $(INSTALLDIR)/$(LIBDIR) \;
++	find $(POCO_BUILD)/$(LIBDIR) -name "libPoco*" -type l -exec cp -Rf {} $(INSTALLDIR)/$(LIBDIR) \;
+ 
+-libexecs =  Foundation-libexec XML-libexec Util-libexec Net-libexec Crypto-libexec NetSSL_OpenSSL-libexec Data-libexec Data/SQLite-libexec Data/ODBC-libexec Data/MySQL-libexec Zip-libexec PageCompiler-libexec PageCompiler/File2Page-libexec
+-tests    =  Foundation-tests XML-tests Util-tests Net-tests Crypto-tests NetSSL_OpenSSL-tests Data-tests Data/SQLite-tests Data/ODBC-tests Data/MySQL-tests Zip-tests
++libexecs =  Foundation-libexec XML-libexec Util-libexec Net-libexec Data-libexec Zip-libexec PageCompiler-libexec
++tests    =  Foundation-tests XML-tests Util-tests Net-tests Data-tests Zip-tests
+ samples  =  Foundation-samples XML-samples Util-samples Net-samples Crypto-samples NetSSL_OpenSSL-samples Data-samples Zip-samples PageCompiler-samples
+ 
+ .PHONY: $(libexecs)

@@ -1,0 +1,60 @@
+diff --git a/configure.ac b/configure.ac
+index d2ff635..7200f06 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -71,11 +71,11 @@ GTK_SHARP_REQ_VERSION=2.10.1
+ PKG_CHECK_MODULES(GTK_SHARP, gtk-sharp-2.0 >= $GTK_SHARP_REQ_VERSION)
+ AC_SUBST(GTK_SHARP_LIBS)
+ 
+-NDESK_DBUS_REQ_VERSION=0.4
+-NDESK_DBUS_GLIB_REQ_VERSION=0.3
+-PKG_CHECK_MODULES(NDESK_DBUS, ndesk-dbus-1.0 >= $NDESK_DBUS_REQ_VERSION \
+-                              ndesk-dbus-glib-1.0 >= $NDESK_DBUS_GLIB_REQ_VERSION)
+-AC_SUBST(NDESK_DBUS_LIBS)
++DBUS_SHARP_REQ_VERSION=0.7
++DBUS_SHARP_GLIB_REQ_VERSION=0.5
++PKG_CHECK_MODULES(DBUS_SHARP, dbus-sharp-1.0 >= $DBUS_SHARP_REQ_VERSION \
++                              dbus-sharp-glib-1.0 >= $DBUS_SHARP_GLIB_REQ_VERSION)
++AC_SUBST(DBUS_SHARP_LIBS)
+ 
+ required_assemblies="Mono.Posix"
+ 
+diff --git a/src/Global.cs b/src/Global.cs
+index eedefbf..a0f80ed 100644
+--- a/src/Global.cs
++++ b/src/Global.cs
+@@ -24,7 +24,7 @@ using System;
+ using System.Reflection;
+ using System.Collections.Generic;
+ 
+-using NDesk.DBus;
++using DBus;
+ using org.freedesktop;
+ using org.freedesktop.DBus;
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 3b39c23..50bbb39 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,7 +7,7 @@ CSFLAGS = \
+ LIBFLAGS = \
+ 	-r:Mono.Posix \
+ 	$(GTK_SHARP_LIBS) \
+-	$(NDESK_DBUS_LIBS)
++	$(DBUS_SHARP_LIBS)
+ 
+ CSFILES = \
+ 	$(srcdir)/Global.cs \
+diff --git a/src/Notification.cs b/src/Notification.cs
+index 09ef83e..e2ab72f 100644
+--- a/src/Notification.cs
++++ b/src/Notification.cs
+@@ -28,7 +28,7 @@ using GLib;
+ using Gdk;
+ using Gtk;
+ 
+-using NDesk.DBus;
++using DBus;
+ using org.freedesktop;
+ using org.freedesktop.DBus;
+ 

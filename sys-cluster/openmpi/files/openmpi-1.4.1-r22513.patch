@@ -1,0 +1,72 @@
+From 9657a0fc671dd0987b6954932a08b680c35f480f Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Wed, 3 Feb 2010 17:13:13 -0500
+Subject: [PATCH] Backport r22513
+
+Per #2201, move the user arguments up to be the first set of argv
+after the compiler argv tokens.
+
+Not closing #2201 yet; there's still discussion on that ticket about
+whether we want to do more or not.
+
+Refs #2201
+cmr:v1.4.2
+cmr:v1.5
+
+Author: jsquyres
+---
+ ompi/tools/wrappers/ompi_wrapper_script.in |    4 +++-
+ opal/tools/wrappers/opal_wrapper.c         |    9 +++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/ompi/tools/wrappers/ompi_wrapper_script.in b/ompi/tools/wrappers/ompi_wrapper_script.in
+index 24726ad..87fd8a5 100644
+--- a/ompi/tools/wrappers/ompi_wrapper_script.in
++++ b/ompi/tools/wrappers/ompi_wrapper_script.in
+@@ -140,13 +140,15 @@ my @exec_argv = ();
+ 
+ # assemble command
+ push(@exec_argv, split(' ', $comp));
++# Per https://svn.open-mpi.org/trac/ompi/ticket/2201, add all the user
++# arguments before anything else.
++push(@exec_argv, @appargs);
+ if ($want_preproc == 1) {
+     push(@exec_argv, split(' ', $preproc_flags));
+ }
+ if ($want_compile == 1) {
+     push(@exec_argv, split(' ', $comp_flags));
+ }
+-push(@exec_argv, @appargs);
+ if ($want_link == 1) {
+     push(@exec_argv, split(' ', $linker_flags));
+     push(@exec_argv, split(' ', $libs));
+diff --git a/opal/tools/wrappers/opal_wrapper.c b/opal/tools/wrappers/opal_wrapper.c
+index 86ece5b..1b80f53 100644
+--- a/opal/tools/wrappers/opal_wrapper.c
++++ b/opal/tools/wrappers/opal_wrapper.c
+@@ -712,6 +712,11 @@ main(int argc, char *argv[])
+         exec_argc = 0;
+     }
+ 
++    /* Per https://svn.open-mpi.org/trac/ompi/ticket/2201, add all the
++       user arguments before anything else. */
++    opal_argv_insert(&exec_argv, exec_argc, user_argv);
++    exec_argc = opal_argv_count(exec_argv);
++
+     /* preproc flags */
+     if (flags & COMP_WANT_PREPROC) {
+         opal_argv_insert(&exec_argv, exec_argc, options_data[user_data_idx].preproc_flags);
+@@ -732,10 +737,6 @@ main(int argc, char *argv[])
+         exec_argc = opal_argv_count(exec_argv);
+     }
+ 
+-    /* add all the user arguments */
+-    opal_argv_insert(&exec_argv, exec_argc, user_argv);
+-    exec_argc = opal_argv_count(exec_argv);
+-
+     /* link flags and libs */
+     if (flags & COMP_WANT_LINK) {
+         opal_argv_insert(&exec_argv, exec_argc, options_data[user_data_idx].link_flags);
+-- 
+1.6.4.4
+

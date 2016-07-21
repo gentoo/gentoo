@@ -1,0 +1,30 @@
+commit d92cee4d9870fab08fdfadf9ab0bfb4658a09aa3
+Author: hasufell <hasufell@gentoo.org>
+Date:   Fri Nov 22 14:06:34 2013 +0100
+
+    add cmake options
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 34cd375..dbb4cb4 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,8 +129,17 @@
+ 
+ # JavaScript Engines:
+ SET(V8_DIR "" CACHE PATH "set to base V8 install path")
+-FIND_PACKAGE(V8)
+-FIND_PACKAGE(JavaScriptCore)
++OPTION(OSGEARTH_USE_V8 "Enable to use V8 JavaScript engine" ON)
++IF(OSGEARTH_USE_V8)
++	FIND_PACKAGE(V8)
++ENDIF(OSGEARTH_USE_V8)
++
++OPTION(OSGEARTH_USE_JAVASCRIPTCORE "Enable use of JavaScriptCore" ON)
++OPTION(OSGEARTH_USE_LIBNOISE "Enable use of LibNoise" ON)
++
++IF (OSGEARTH_USE_JAVASCRIPTCORE)
++	FIND_PACKAGE(JavaScriptCore)
++ENDIF (OSGEARTH_USE_JAVASCRIPTCORE)
+ 
+ SET (WITH_EXTERNAL_DUKTAPE FALSE CACHE BOOL "Use bundled or system wide version of Duktape")
+ IF (WITH_EXTERNAL_DUKTAPE)

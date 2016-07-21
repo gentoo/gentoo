@@ -1,0 +1,35 @@
+--- magic-7.5.231/Makefile
++++ magic-7.5.231/Makefile
+@@ -18,12 +18,10 @@
+ all:	$(ALL_TARGET)
+ 
+ standard:
+-	@echo --- errors and warnings logged in file make.log
+-	@${MAKE} mains 2>&1 | tee -a make.log | egrep -i "(.c:|Stop.|---)"
++	@${MAKE} mains
+ 
+ tcl:
+-	@echo --- errors and warnings logged in file make.log
+-	@${MAKE} tcllibrary 2>&1 | tee -a make.log | egrep -i "(.c:|Stop.|---)"
++	@${MAKE} tcllibrary
+ 
+ force: clean all
+ 
+@@ -67,7 +65,7 @@
+ install-magic:
+ 	@echo --- installing executable to $(DESTDIR)${BINDIR}
+ 	@echo --- installing runtime files to $(DESTDIR)${LIBDIR}
+-	@${MAKE} install-real 2>&1 >> install.log
++	@${MAKE} install-real
+ 
+ install-real: install-dirs
+ 	for dir in ${INSTALL_CAD_DIRS}; do \
+@@ -86,7 +84,7 @@
+ install-tcl:
+ 	@echo --- installing executable to $(DESTDIR)${BINDIR}
+ 	@echo --- installing runtime files to $(DESTDIR)${LIBDIR}
+-	@${MAKE} install-tcl-real 2>&1 >> install.log
++	@${MAKE} install-tcl-real
+ 
+ install-tcl-real: install-tcl-dirs
+ 	for dir in ${INSTALL_CAD_DIRS} ${PROGRAMS}; do \

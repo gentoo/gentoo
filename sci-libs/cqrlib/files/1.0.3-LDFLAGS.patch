@@ -1,0 +1,17 @@
+--- Makefile	2009-07-08 18:12:50.000000000 +0200
++++ Makefile.new	2009-07-25 13:18:36.000000000 +0200
+@@ -86,10 +86,10 @@
+ endif
+ 
+ COMPILE_COMMAND        =  $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c
+-LIBRARY_LINK_COMMAND   =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -release $(RELEASE) -rpath $(INSTALLDIR)/lib
+-BUILD_COMMAND_LOCAL    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INCLUDES)
+-BUILD_COMMAND_DYNAMIC  =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -dynamic -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
+-BUILD_COMMAND_STATIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) -static -I $(INSTALLDIR)/include -L$(INSTALLDIR)/lib
++LIBRARY_LINK_COMMAND   =  $(LIBTOOL) --mode=link  $(CC) -version-info $(VERSION) -release $(RELEASE) $(LDFLAGS)
++BUILD_COMMAND_LOCAL    =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) $(INCLUDES)
++BUILD_COMMAND_DYNAMIC  =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -dynamic
++BUILD_COMMAND_STATIC   =  $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -static
+ INSTALL_COMMAND        =  $(LIBTOOL) --mode=install cp
+ INSTALL_FINISH_COMMAND =  $(LIBTOOL) --mode=finish
+ 

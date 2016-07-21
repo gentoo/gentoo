@@ -1,0 +1,28 @@
+--- hddtemp-0.3-beta15/src/utf8.c~	2007-03-27 09:09:59.000000000 +0200
++++ hddtemp-0.3-beta15/src/utf8.c	2007-03-27 09:10:06.000000000 +0200
+@@ -23,7 +23,9 @@
+ 
+ // Standard includes
+ #include <stdlib.h>
++#ifdef HAVE_ICONV
+ #include <iconv.h>
++#endif
+ #include <langinfo.h>
+ #include <locale.h>
+ #include <string.h>
+@@ -34,6 +36,7 @@
+ 
+ static char *iconv_from_utf8_to_locale(const char *string, const char* fallback_string)
+ {
++#ifdef HAVE_ICONV
+   const size_t buffer_inc = 80;	// Increment buffer size in 80 bytes step
+   const char *charset;
+   iconv_t cd;
+@@ -93,6 +96,7 @@
+   if (dest_buffer != NULL)
+     free(dest_buffer);  		// free buffer
+   free(src_buffer);			// free string
++#endif // HAVE_ICONV
+   return strdup(fallback_string); 	// and return fallback string
+ }
+ 

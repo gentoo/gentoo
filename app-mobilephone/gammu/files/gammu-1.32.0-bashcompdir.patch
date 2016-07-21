@@ -1,0 +1,12 @@
+diff -ruN gammu-1.32.0/contrib/CMakeLists.txt gammu-1.32.0-patched/contrib/CMakeLists.txt
+--- gammu-1.32.0/contrib/CMakeLists.txt	2012-06-27 04:02:27.000000000 -0400
++++ gammu-1.32.0-patched/contrib/CMakeLists.txt	2013-09-17 16:46:22.852164906 -0400
+@@ -85,7 +85,7 @@
+ if (INSTALL_BASH_COMPLETION)
+     install (
+         FILES bash-completion/gammu
+-        DESTINATION "/etc/bash_completion.d"
++        DESTINATION "/usr/share/bash-completion/"
+         COMPONENT "bash"
+         )
+ endif (INSTALL_BASH_COMPLETION)

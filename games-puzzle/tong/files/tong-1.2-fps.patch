@@ -1,0 +1,25 @@
+--- tong.cpp.orig
++++ tong.cpp
+@@ -64,6 +64,8 @@
+ 
+ #define DEMO_TIME           8000
+ 
++#define MIN_TIME            45
++
+ #define GP2X_BUTTON_UP         0
+ #define GP2X_BUTTON_UPLEFT     1
+ #define GP2X_BUTTON_LEFT       2
+@@ -1854,6 +1856,13 @@
+ 		SDL_Flip(screen);
+ 		lastlastupdate=lastupdate;
+ 		lastupdate=SDL_GetTicks();
++
++		// limit to 1000/MIN_TIME fps
++		if (lastupdate-lastlastupdate < MIN_TIME) {
++			SDL_Delay(MIN_TIME - (lastupdate - lastlastupdate));
++		}
++		lastupdate = SDL_GetTicks();
++
+ 	}  //main game loop
+ 
+ 	Mix_FreeMusic(music);

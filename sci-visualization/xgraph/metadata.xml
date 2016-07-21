@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Accepts data files or stdin in a form similar to the unix program
+    graph and displays line graphs, scatter plots, or bar charts on an
+    X11 display. Fully annotated with title, axis numbering and
+    labels, and legend. Zooming with the mouse is supported. Can
+    generate hardcopy output to Postscript printers and HPGL
+    plotters. Output can be directly pasted into idraw (drawtool) for
+    further annotation. Particularly useful in shell scripts.
+  </longdescription>
+</pkgmetadata>

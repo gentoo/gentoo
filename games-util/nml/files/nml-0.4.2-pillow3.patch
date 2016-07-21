@@ -1,0 +1,31 @@
+--- nml-0.4.2/nml/lz77.py
++++ nml-0.4.2/nml/lz77.py
+@@ -25,7 +25,7 @@
+     @return: Compressed data.
+     @rtype:  C{bytearray}
+     """
+-    stream = data.tostring()
++    stream = data.tobytes()
+     position = 0
+     output = array.array('B')
+     literal_bytes = array.array('B')
+--- nml-0.4.2/nml/spriteencoder.py
++++ nml-0.4.2/nml/spriteencoder.py
+@@ -276,7 +276,7 @@
+                 pos = generic.build_position(sprite_info.poslist)
+                 raise generic.ScriptError("Read beyond bounds of image file '{}'".format(filename_32bpp.value), pos)
+             sprite = im.crop((x, y, x + size_x, y + size_y))
+-            rgb_sprite_data = sprite.tostring()
++            rgb_sprite_data = sprite.tobytes()
+ 
+             if (info_byte & INFO_ALPHA) != 0:
+                 # Check for half-transparent pixels (not valid for ground sprites)
+@@ -296,7 +296,7 @@
+                 raise generic.ScriptError("Read beyond bounds of image file '{}'".format(filename_8bpp.value), pos)
+             mask_sprite = mask_im.crop((mask_x, mask_y, mask_x + size_x, mask_y + size_y))
+ 
+-            mask_sprite_data = self.palconvert(mask_sprite.tostring(), im_mask_pal)
++            mask_sprite_data = self.palconvert(mask_sprite.tobytes(), im_mask_pal)
+ 
+             # Check for white pixels; those that cause "artefacts" when shading
+             pixel_stats['white'] = sum(p == 255 for p in mask_sprite_data)

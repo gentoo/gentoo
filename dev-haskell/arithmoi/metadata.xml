@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A library of basic functionality needed for
+		number-theoretic calculations. The aim of this library
+		is to provide efficient implementations of the functions.
+		Primes and related things (totients, factorisation),
+		powers (integer roots and tests, modular exponentiation),
+		integer logarithms.
+		Note: Requires GHC &gt;= 6.12 with the integer-gmp package
+		for efficiency. Portability is on the to-do list (with
+		low priority, however).
+	</longdescription>
+</pkgmetadata>

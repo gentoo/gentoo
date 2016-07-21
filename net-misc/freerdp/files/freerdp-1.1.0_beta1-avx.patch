@@ -1,0 +1,61 @@
+commit 81580f10d910a8e88bc09c1fc692a2e14161ffa1
+Author: Bernhard Miklautz <bernhard.miklautz@shacknet.at>
+Date:   Thu Mar 14 23:18:21 2013 +0100
+
+    winpr/sysinfo: fixed build and detection when build with AVX
+
+diff --git a/winpr/libwinpr/sysinfo/sysinfo.c b/winpr/libwinpr/sysinfo/sysinfo.c
+index 947dc24..59200cc 100644
+--- a/winpr/libwinpr/sysinfo/sysinfo.c
++++ b/winpr/libwinpr/sysinfo/sysinfo.c
+@@ -662,32 +662,29 @@ BOOL IsProcessorFeaturePresentEx(DWORD ProcessorFeature)
+ 		case PF_EX_AVX_AES:
+ 			{
+ 				if ((c & C_BITS_AVX) != C_BITS_AVX)
+-					ret = FALSE;
++					break;
+ 
+-					int e, f;
+-					xgetbv(0, e, f);
++				int e, f;
++				xgetbv(0, e, f);
+ 
+-					if ((e & E_BITS_AVX) == E_BITS_AVX)
++				if ((e & E_BITS_AVX) == E_BITS_AVX)
++				{
++					switch (ProcessorFeature)
+ 					{
+-						switch (ProcessorFeature)
+-						{
+-							case: PF_EX_AVX:
+-								ret = TRUE;
+-								break;
+-							case: PF_EX_FMA:
+-								if (c & C_BIT_FMA)
+-									ret = TRUE;
+-								break;
+-							case: PF_EX_AVX_AES:
+-								if (c & C_BIT_AVX_AES)
+-									ret = TRUE;
+-								break;
+-						{
++						case PF_EX_AVX:
+ 							ret = TRUE;
+ 							break;
+-						}
+-        }
+-			}
++						case PF_EX_FMA:
++							if (c & C_BIT_FMA)
++								ret = TRUE;
++							break;
++						case PF_EX_AVX_AES:
++							if (c & C_BIT_AVX_AES)
++								ret = TRUE;
++							break;
++					}
++				}
++      }
+ 			break;
+ #endif //__AVX__
+ 		default:

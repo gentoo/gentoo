@@ -1,0 +1,32 @@
+diff -ur carbon-0.9.14.orig/setup.py carbon-0.9.14/setup.py
+--- setup.py	2015-11-07 13:50:29.000000000 +0800
++++ setup.py	2015-12-27 08:43:46.575905408 +0800
+@@ -13,20 +13,6 @@
+   setup_kwargs = dict()
+ 
+ 
+-storage_dirs = [ ('storage/whisper',[]), ('storage/lists',[]),
+-                 ('storage/log',[]), ('storage/rrd',[]) ]
+-conf_files = [ ('conf', glob('conf/*.example')) ]
+-
+-install_files = storage_dirs + conf_files
+-
+-# Let's include redhat init scripts, despite build platform
+-# but won't put them in /etc/init.d/ automatically anymore
+-init_scripts = [ ('examples/init.d', ['distro/redhat/init.d/carbon-cache',
+-                                      'distro/redhat/init.d/carbon-relay',
+-                                      'distro/redhat/init.d/carbon-aggregator']) ]
+-install_files += init_scripts
+-
+-
+ setup(
+   name='carbon',
+   version='0.9.14',
+@@ -39,7 +25,6 @@
+   package_dir={'' : 'lib'},
+   scripts=glob('bin/*'),
+   package_data={ 'carbon' : ['*.xml'] },
+-  data_files=install_files,
+   install_requires=['twisted', 'txamqp'],
+   **setup_kwargs
+ )

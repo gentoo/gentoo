@@ -1,0 +1,22 @@
+--- triangle_mesh_viewer.h
++++ triangle_mesh_viewer.h
+@@ -24,6 +24,7 @@
+ #ifndef _triangle_mesh_viewer_h_
+ #define _triangle_mesh_viewer_h_
+ 
++#include <GL/glu.h>
+ #include "parameters_render.h"
+ #include "random.h"
+ #include "triangle_mesh.h"
+
+--- fracplanet.pro
++++ fracplanet.pro
+@@ -8,7 +8,7 @@
+ 
+ HEADERS += $$system(ls *.h)
+ SOURCES += $$system(ls *.cpp)
+-LIBS += -lboost_program_options
++LIBS += -lboost_program_options -lGLU
+ 
+ DEFINES += QT_DLL
+ 

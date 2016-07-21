@@ -1,0 +1,99 @@
+diff -upr ttcut-old/avstream/ttac3audiostream.cpp ttcut/avstream/ttac3audiostream.cpp
+--- ttcut-old/avstream/ttac3audiostream.cpp	2011-05-01 21:51:10.865817426 -0400
++++ ttcut/avstream/ttac3audiostream.cpp	2011-05-01 21:45:34.213440925 -0400
+@@ -256,6 +256,7 @@ void TTAC3AudioStream::cut( TTFileBuffer
+   float   audio_start_time;
+   float   audio_end_time;
+   float   local_audio_offset = 0.0;
++  float   fps = cut_list->videoStream()->frameRate();
+ 
+ #if defined(AC3STREAM_DEBUG)
+   log->debugMsg(c_name, "-----------------------------------------------");
+@@ -286,7 +287,7 @@ void TTAC3AudioStream::cut( TTFileBuffer
+ 
+     //qDebug( "%sstart / end  : %d / %d",c_name,start_pos,end_pos );
+     //search 
+-    video_frame_length = 1000.0 / 25.0; //TODO: replace with fps
++    video_frame_length = 1000.0 / fps;
+ 
+     //qDebug( "%slocal audio offset: %f",c_name,local_audio_offset );
+ 
+diff -upr ttcut-old/avstream/ttmpeg2videoheader.cpp ttcut/avstream/ttmpeg2videoheader.cpp
+--- ttcut-old/avstream/ttmpeg2videoheader.cpp	2011-05-01 21:20:42.675440912 -0400
++++ ttcut/avstream/ttmpeg2videoheader.cpp	2011-04-29 23:06:29.684768509 -0400
+@@ -193,6 +193,7 @@ QString TTSequenceHeader::frameRateText(
+ 
+   if ( frame_rate_code == 2 ) szTemp = "24 fps";
+   if ( frame_rate_code == 3 ) szTemp = "25 fps";
++  if ( frame_rate_code == 4 ) szTemp = "29.970 fps";
+   if ( frame_rate_code == 5 ) szTemp = "30 fps";
+ 
+   return szTemp;
+@@ -207,6 +208,7 @@ float TTSequenceHeader::frameRateValue()
+ 
+   if ( frame_rate_code == 2 ) value = 24.0;
+   if ( frame_rate_code == 3 ) value = 25.0;
++  if ( frame_rate_code == 4 ) value = 29.970;
+   if ( frame_rate_code == 5 ) value = 30.0;
+ 
+   if ( frame_rate_code < 2 || frame_rate_code > 5 )
+diff -upr ttcut-old/avstream/ttmpegaudiostream.cpp ttcut/avstream/ttmpegaudiostream.cpp
+--- ttcut-old/avstream/ttmpegaudiostream.cpp	2011-05-01 21:20:42.679440927 -0400
++++ ttcut/avstream/ttmpegaudiostream.cpp	2011-05-01 21:45:55.036441412 -0400
+@@ -308,6 +308,7 @@ void TTMPEGAudioStream::cut( TTFileBuffe
+   float   audio_start_time;
+   float   audio_end_time;
+   float   local_audio_offset = 0.0;
++  float   fps = cut_list->videoStream()->frameRate();
+ 
+ #if defined MPEGAUDIO_DEBUG
+   log->infoMsg(c_name, "-----------------------------------------------");
+@@ -338,7 +339,7 @@ void TTMPEGAudioStream::cut( TTFileBuffe
+ 
+     //qDebug( "%sstart / end  : %d / %d",c_name,start_pos,end_pos );
+     //search 
+-    video_frame_length = 1000.0 / 25.0; //TODO: replace with fps
++    video_frame_length = 1000.0 / fps;
+ 
+     //qDebug( "%slocal audio offset: %f",c_name,local_audio_offset );
+ 
+diff -upr ttcut-old/avstream/ttaviwriter.cpp ttcut/avstream/ttaviwriter.cpp
+--- ttcut-old/avstream/ttaviwriter.cpp	2011-05-01 22:05:47.307819446 -0400
++++ ttcut/avstream/ttaviwriter.cpp	2011-05-01 22:08:27.427839373 -0400
+@@ -49,6 +49,7 @@ TTAVIWriter::TTAVIWriter( TTProgressBar*
+ 
+    file_size    = 0;
+    file_offset  = 0;
++   fps          = 0.0;
+ }
+ 
+ 
+@@ -78,6 +79,7 @@ bool TTAVIWriter::initAVIWriter( TTVideo
+    index_list      = v_stream->indexList();
+    header_list     = v_stream->headerList();
+    file_size       = v_stream->streamLengthByte();
++   fps             = v_stream->frameRate();
+ 
+    //create the decoder object
+    decoder = new TTMpeg2Decoder( qPrintable(video_file_name), index_list, header_list );
+@@ -125,8 +127,7 @@ int TTAVIWriter::writeAVI( int start_fra
+ 
+   //qDebug( "%sAVI frame info: width: %d x height: %d",c_name,frameInfo->width,frameInfo->height );
+ 
+-  //TODO: avoid setting hard coded frame rate!
+-  AVI_set_video(avi_file, frameInfo->width, frameInfo->height, 25.0, (char*)"YV12");
++  AVI_set_video(avi_file, frameInfo->width, frameInfo->height, fps, (char*)"YV12");
+   
+   ref_data = new uint8_t [frameInfo->size+2*frameInfo->chroma_size];
+ 
+diff -upr ttcut-old/avstream/ttaviwriter.h ttcut/avstream/ttaviwriter.h
+--- ttcut-old/avstream/ttaviwriter.h	2011-05-01 22:05:47.308819943 -0400
++++ ttcut/avstream/ttaviwriter.h	2011-05-01 22:06:17.162739403 -0400
+@@ -72,6 +72,7 @@ class TTAVIWriter
+    off64_t            file_offset;
+    uint8_t*           ref_data;
+    avi_t*             avi_file;
++   float              fps;
+ };
+ 
+ #endif //TTAVIWRITER_H

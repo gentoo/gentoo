@@ -1,0 +1,147 @@
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index 2adcefb..cdee23b 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -23,7 +23,7 @@ EXTRA_DIST = \
+ 	apparmor/TEMPLATE.lxc \
+ 	apparmor/libvirt-qemu \
+ 	apparmor/libvirt-lxc \
+-	apparmor/usr.lib.libvirt.virt-aa-helper \
++	apparmor/usr.libexec.virt-aa-helper \
+ 	apparmor/usr.sbin.libvirtd \
+ 	lxcconvert/virt-lxc-convert \
+ 	polkit/libvirt-acl.rules \
+@@ -55,7 +55,7 @@ rename_rename_SOURCES = rename/rename.c
+ if WITH_APPARMOR_PROFILES
+ apparmordir = $(sysconfdir)/apparmor.d/
+ apparmor_DATA = \
+-	apparmor/usr.lib.libvirt.virt-aa-helper \
++	apparmor/usr.libexec.virt-aa-helper \
+ 	apparmor/usr.sbin.libvirtd \
+ 	$(NULL)
+ 
+diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
+deleted file mode 100644
+index b34fb35..0000000
+--- a/examples/apparmor/usr.lib.libvirt.virt-aa-helper
++++ /dev/null
+@@ -1,48 +0,0 @@
+-# Last Modified: Mon Apr  5 15:10:27 2010
+-#include <tunables/global>
+-
+-profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
+-  #include <abstractions/base>
+-
+-  # needed for searching directories
+-  capability dac_override,
+-  capability dac_read_search,
+-
+-  # needed for when disk is on a network filesystem
+-  network inet,
+-
+-  deny @{PROC}/[0-9]*/mounts r,
+-  @{PROC}/[0-9]*/net/psched r,
+-  owner @{PROC}/[0-9]*/status r,
+-  @{PROC}/filesystems r,
+-
+-  # for hostdev
+-  /sys/devices/ r,
+-  /sys/devices/** r,
+-
+-  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
+-  /sbin/apparmor_parser Ux,
+-
+-  /etc/apparmor.d/libvirt/* r,
+-  /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
+-
+-  # for backingstore -- allow access to non-hidden files in @{HOME} as well
+-  # as storage pools
+-  audit deny @{HOME}/.* mrwkl,
+-  audit deny @{HOME}/.*/ rw,
+-  audit deny @{HOME}/.*/** mrwkl,
+-  audit deny @{HOME}/bin/ rw,
+-  audit deny @{HOME}/bin/** mrwkl,
+-  @{HOME}/ r,
+-  @{HOME}/** r,
+-  /var/lib/libvirt/images/ r,
+-  /var/lib/libvirt/images/** r,
+-  /{media,mnt,opt,srv}/** r,
+-
+-  /**.img r,
+-  /**.qcow{,2} r,
+-  /**.qed r,
+-  /**.vmdk r,
+-  /**.[iI][sS][oO] r,
+-  /**/disk{,.*} r,
+-}
+diff --git a/examples/apparmor/usr.libexec.virt-aa-helper b/examples/apparmor/usr.libexec.virt-aa-helper
+new file mode 100644
+index 0000000..08b871a
+--- /dev/null
++++ b/examples/apparmor/usr.libexec.virt-aa-helper
+@@ -0,0 +1,48 @@
++# Last Modified: Mon Apr  5 15:10:27 2010
++#include <tunables/global>
++
++profile virt-aa-helper /usr/libexec/virt-aa-helper {
++  #include <abstractions/base>
++
++  # needed for searching directories
++  capability dac_override,
++  capability dac_read_search,
++
++  # needed for when disk is on a network filesystem
++  network inet,
++
++  deny @{PROC}/[0-9]*/mounts r,
++  @{PROC}/[0-9]*/net/psched r,
++  owner @{PROC}/[0-9]*/status r,
++  @{PROC}/filesystems r,
++
++  # for hostdev
++  /sys/devices/ r,
++  /sys/devices/** r,
++
++  /usr/libexec/virt-aa-helper mr,
++  /sbin/apparmor_parser Ux,
++
++  /etc/apparmor.d/libvirt/* r,
++  /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
++
++  # for backingstore -- allow access to non-hidden files in @{HOME} as well
++  # as storage pools
++  audit deny @{HOME}/.* mrwkl,
++  audit deny @{HOME}/.*/ rw,
++  audit deny @{HOME}/.*/** mrwkl,
++  audit deny @{HOME}/bin/ rw,
++  audit deny @{HOME}/bin/** mrwkl,
++  @{HOME}/ r,
++  @{HOME}/** r,
++  /var/lib/libvirt/images/ r,
++  /var/lib/libvirt/images/** r,
++  /{media,mnt,opt,srv}/** r,
++
++  /**.img r,
++  /**.qcow{,2} r,
++  /**.qed r,
++  /**.vmdk r,
++  /**.[iI][sS][oO] r,
++  /**/disk{,.*} r,
++}
+diff --git a/examples/apparmor/usr.sbin.libvirtd b/examples/apparmor/usr.sbin.libvirtd
+index 5d606e6..b2cd8c6 100644
+--- a/examples/apparmor/usr.sbin.libvirtd
++++ b/examples/apparmor/usr.sbin.libvirtd
+@@ -58,8 +58,10 @@
+   audit deny /sys/kernel/security/apparmor/.* rwxl,
+   /sys/kernel/security/apparmor/profiles r,
+   /usr/{lib,lib64}/libvirt/* PUxr,
+-  /usr/{lib,lib64}/libvirt/libvirt_parthelper ix,
+-  /usr/{lib,lib64}/libvirt/libvirt_iohelper ix,
++  /usr/libexec/virt-aa-helper PUxr,
++  /usr/libexec/libvirt_lxc PUxr,
++  /usr/libexec/libvirt_parthelper ix,
++  /usr/libexec/libvirt_iohelper ix,
+   /etc/libvirt/hooks/** rmix,
+   /etc/xen/scripts/** rmix,
+ 

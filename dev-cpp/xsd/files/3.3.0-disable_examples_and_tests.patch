@@ -1,0 +1,55 @@
+diff --git a/makefile b/makefile
+index 0c07b0d..32c2c93 100644
+--- a/makefile
++++ b/makefile
+@@ -14,8 +14,6 @@ clean    := $(out_base)/.clean
+ cleandoc := $(out_base)/.cleandoc
+ 
+ $(default): $(out_base)/xsd/      \
+-            $(out_base)/tests/    \
+-            $(out_base)/examples/ \
+             $(out_base)/documentation/
+ 
+ # Test.
+@@ -27,7 +25,6 @@ $(test): $(out_base)/tests/.test
+ #
+ $(install): $(out_base)/xsd/.install           \
+             $(out_base)/libxsd/.install        \
+-	    $(out_base)/examples/.install      \
+             $(out_base)/documentation/.install
+ 	$(call install-dir,$(src_base)/dist/examples/build,$(install_doc_dir)/xsd/examples/build)
+ 	$(call install-dir,$(src_base)/dist/examples/cxx,$(install_doc_dir)/xsd/examples/cxx,-name makefile)
+@@ -43,7 +40,6 @@ $(install): $(out_base)/xsd/.install           \
+ #
+ $(dist): $(out_base)/xsd/.dist           \
+          $(out_base)/libxsd/.dist        \
+-         $(out_base)/examples/.dist      \
+          $(out_base)/documentation/.dist
+ 	$(call install-dir,$(src_base)/dist/examples/build,$(dist_prefix)/examples/build)
+ 	$(call install-dir,$(src_base)/dist/examples/cxx,$(dist_prefix)/examples/cxx,-name makefile)
+@@ -57,7 +53,6 @@ $(dist): $(out_base)/xsd/.dist           \
+ 
+ $(dist-win): $(out_base)/xsd/.dist-win           \
+              $(out_base)/libxsd/.dist-win        \
+-             $(out_base)/examples/.dist-win      \
+              $(out_base)/documentation/.dist-win
+ 	$(call install-dir,$(src_base)/dist/etc,$(dist_prefix)/etc)
+ 	$(call install-dir,$(src_base)/dist/examples/build,$(dist_prefix)/examples/build)
+@@ -81,9 +76,7 @@ $(dist-win): $(out_base)/xsd/.dist-win           \
+ 
+ # Clean.
+ #
+-$(clean): $(out_base)/xsd/.clean      \
+-          $(out_base)/tests/.clean    \
+-          $(out_base)/examples/.clean
++$(clean): $(out_base)/xsd/.clean
+ 
+ $(cleandoc): $(out_base)/documentation/.cleandoc
+ 
+@@ -91,6 +84,4 @@ $(call include,$(bld_root)/install.make)
+ 
+ $(call import,$(src_base)/xsd/makefile)
+ $(call import,$(src_base)/libxsd/makefile)
+-$(call import,$(src_base)/tests/makefile)
+-$(call import,$(src_base)/examples/makefile)
+ $(call import,$(src_base)/documentation/makefile)

@@ -1,0 +1,83 @@
+Source: PDL Linux
+https://raw.githubusercontent.com/pld-linux/uudeview/master/uudeview-shared.patch
+https://github.com/pld-linux/uudeview
+
+
+diff -ruN uudeview-0.5.20.orig/uulib/Makefile.in uudeview-0.5.20/uulib/Makefile.in
+--- uudeview-0.5.20.orig/uulib/Makefile.in	2002-03-11 10:15:46.000000000 +0100
++++ uudeview-0.5.20/uulib/Makefile.in	2014-10-11 20:20:04.280175737 +0200
+@@ -40,9 +40,13 @@
+ VDEF	=	-DVERSION=\"$(VERSION)\" -DPATCH=\"$(PATCH)\"
+ #
+ 
++DESTDIR =
++libdir = @libdir@
++includedir = @prefix@/@includedir@
++
+ UULIB_SOURCE	=	uulib.c uucheck.c uunconc.c uuutil.c uuencode.c \
+ 			uuscan.c uustring.c fptools.c crc32.c
+-UULIB_OBJ	=	${UULIB_SOURCE:.c=.o}
++UULIB_OBJ	=	${UULIB_SOURCE:.c=.lo}
+ 
+ #
+ # make stuff
+@@ -51,11 +55,11 @@
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+ 
+-all:		libuu.a
++all:		libuu.la
+ 
+ clean:
+ 	rm -f [Xx]deview gif2gfp
+-	rm -f *.o *.a *.so core *~ TAGS
++	rm -f *.o *.a *.so core *~ TAGS *.lo *.la
+ 
+ distclean:	clean
+ 	rm -f config.status config.cache config.log Makefile config.h
+@@ -64,25 +68,28 @@
+ realclean:	distclean
+ 
+ new:		clean
+-	rm -f libuu.a
++	rm -f libuu.la
+ 	$(MAKE) all
+ 
+-libuu.a:	$(UULIB_OBJ)
+-	rm -f $@
+-	ar r $@ $(UULIB_OBJ)
+-	-$(RANLIB) $@
+-
+-.c.o:
+-	$(CC) -c $(CFLAGS) $(VDEF) $<
+-
+-uuencode.o:	uuencode.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uulib.o:	uulib.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uunconc.o:	uunconc.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uucheck.o:	uucheck.c uudeview.h uuint.h uustring.h fptools.h config.h
+-uuutil.o:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
+-uuscan.o:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
+-uustring.o:	uustring.c uudeview.h uuint.h uustring.h config.h
+-fptools.o:	fptools.c fptools.h config.h
++libuu.la:	$(UULIB_OBJ)
++	libtool --mode=link $(CC) -o libuu.la $(LDFLAGS) $(UULIB_OBJ) -rpath $(libdir)
++
++%.lo : %.c
++	libtool --mode=compile $(CC) -c $(CFLAGS) $(VDEF) $<
++
++install:	libuu.la
++	install -d $(DESTDIR)$(libdir) $(DESTDIR)$(includedir)
++	libtool --mode=install install libuu.la $(DESTDIR)$(libdir)
++	install uudeview.h fptools.h $(DESTDIR)$(includedir)
++
++uuencode.lo:	uuencode.c uudeview.h uuint.h uustring.h fptools.h config.h
++uulib.lo:	uulib.c uudeview.h uuint.h uustring.h fptools.h config.h
++uunconc.lo:	uunconc.c uudeview.h uuint.h uustring.h fptools.h config.h
++uucheck.lo:	uucheck.c uudeview.h uuint.h uustring.h fptools.h config.h
++uuutil.lo:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
++uuscan.lo:	uuutil.c  uudeview.h uuint.h uustring.h fptools.h config.h
++uustring.lo:	uustring.c uudeview.h uuint.h uustring.h config.h
++fptools.lo:	fptools.c fptools.h config.h
+ 
+ uustring.h:	uustring.c
+ 	awk -f uustring.awk < uustring.c > uustring.h

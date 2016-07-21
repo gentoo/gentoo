@@ -1,0 +1,11 @@
+--- a/data/winefish.desktop.in
++++ b/data/winefish.desktop.in
+@@ -7,7 +7,7 @@
+ Icon=ICONDIR/winefish-icon.png
+ Terminal=false
+ Type=Application
+-Categories=GTK;GNOME;Application;Editors;Office;Development;
++Categories=GTK;GNOME;TextEditor;Office;Development;
+ Encoding=UTF-8
+ StartupNotify=true
+ MimeType=text/x-tex;application/winefish-project;text/xml;

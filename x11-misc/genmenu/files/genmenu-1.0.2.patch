@@ -1,0 +1,27 @@
+--- genmenu-orig	2003-05-29 02:26:17.000000000 -0700
++++ genmenu	2003-05-29 02:35:21.000000000 -0700
+@@ -815,6 +815,7 @@
+ 	fi
+ 
+ 	echo -e "\nWriting $(ucfirst $1) menu\n"
++	mv $bb_menu $bb_menu.orig
+ 	bb_writemenu >$bb_menu
+ 	echo
+ 
+@@ -842,6 +843,7 @@
+ 	fi
+ 
+ 	echo -e "\nWriting Window Maker menu\n"
++	mv $menu $menu.orig
+ 	wm_writemenu >$menu
+  echo
+ }
+@@ -872,6 +874,8 @@
+ 
+ 	programs
+ 
++	mv $menu $menu.orig
++
+ 	( echo "\"User Menus\""
+ 
+ 	if [ -f "$ECONFDIR/genmenu.menu" ]; then

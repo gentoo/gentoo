@@ -1,0 +1,150 @@
+--- applets/maintained/awnterm/keybinder.h
++++ applets/maintained/awnterm/keybinder.h
+@@ -24,7 +24,7 @@
+ #ifndef __AWN_KEY_BINDER_H__
+ #define __AWN_KEY_BINDER_H__
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+--- applets/maintained/notification-daemon/daemon.h
++++ applets/maintained/notification-daemon/daemon.h
+@@ -31,8 +31,6 @@
+ 
+ #include <libawn/awn-applet.h>
+ #include <libawn/awn-applet-simple.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ 
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-cairo-utils.h>
+--- applets/maintained/notification-daemon/engines.c
++++ applets/maintained/notification-daemon/engines.c
+@@ -38,9 +38,6 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+-
+ #include <libawn/awn-dialog.h>
+ #include <libawn/awn-applet-simple.h>
+ #include <libawn/awn-cairo-utils.h>
+--- applets/unmaintained/awnsystemmonitor/awnsystemmonitor.h
++++ applets/unmaintained/awnsystemmonitor/awnsystemmonitor.h
+@@ -25,7 +25,7 @@
+ //#include <libawn/awn-title.h>
+ #include <libawn/awn-tooltip.h>
+ 
+-#include <glib/gtypes.h>
++#include <glib.h>
+ #include <glibtop/cpu.h>
+ #include <gconf/gconf-client.h>
+ 
+--- applets/unmaintained/awnsystemmonitor/awntop_cairo_component.c
++++ applets/unmaintained/awnsystemmonitor/awntop_cairo_component.c
+@@ -43,8 +43,6 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/cpu_component.c
++++ applets/unmaintained/awnsystemmonitor/cpu_component.c
+@@ -18,8 +18,6 @@
+  */
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/cpumetergconf.c
++++ applets/unmaintained/awnsystemmonitor/cpumetergconf.c
+@@ -20,13 +20,10 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ #include <string.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include "cairo-utils.h"
+--- applets/unmaintained/awnsystemmonitor/dashboard.h
++++ applets/unmaintained/awnsystemmonitor/dashboard.h
+@@ -23,8 +23,6 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/date_time_component.c
++++ applets/unmaintained/awnsystemmonitor/date_time_component.c
+@@ -19,8 +19,6 @@
+ 
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/loadavg_component.c
++++ applets/unmaintained/awnsystemmonitor/loadavg_component.c
+@@ -19,8 +19,6 @@
+ 
+ #include <glibtop/loadavg.h>
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/sysmem_component.c
++++ applets/unmaintained/awnsystemmonitor/sysmem_component.c
+@@ -19,8 +19,6 @@
+ 
+ #include <glibtop/mem.h>
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/awnsystemmonitor/uptime_component.c
++++ applets/unmaintained/awnsystemmonitor/uptime_component.c
+@@ -1,7 +1,5 @@
+ 
+ #include <libawn/awn-applet.h>
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
+ #include <gconf/gconf-value.h>
+ 
+ #include <libawn/awn-dialog.h>
+--- applets/unmaintained/main-menu/applet.c
++++ applets/unmaintained/main-menu/applet.c
+@@ -23,8 +23,7 @@
+ 
+ #include <string.h>
+ 
+-#include <glib/gmacros.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <libdesktop-agnostic/fdo.h>

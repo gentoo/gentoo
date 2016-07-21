@@ -1,0 +1,123 @@
+make static libs optional.  already sent upstream.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,8 @@ set(CPACK_COMPONENT_SHAREDLIBS_GROUP "Development")
+ "Static library, good if you want to embed libftdi1 in your application.")
+ set(CPACK_COMPONENT_HEADERS_DESCRIPTION
+ "C/C++ header files.")
++
++option ( STATICLIBS "Build static libraries" ON )
+ 
+ set(CPACK_COMPONENT_SHAREDLIBS_GROUP "Development")
+ set(CPACK_COMPONENT_STATICLIBS_GROUP "Development")
+--- a/ftdipp/CMakeLists.txt
++++ b/ftdipp/CMakeLists.txt
+@@ -30,12 +30,16 @@ if (FTDIPP)
+         set_target_properties(ftdipp1 PROPERTIES VERSION ${VERSION_FIXUP}.${MINOR_VERSION}.0 SOVERSION 2)
+ 
+         # Static library
+-        add_library(ftdipp1-static STATIC ${cpp_sources})
+-        set_target_properties(ftdipp1-static PROPERTIES OUTPUT_NAME "ftdipp1")
++        if (STATICLIBS)
++            add_library(ftdipp1-static STATIC ${cpp_sources})
++            set_target_properties(ftdipp1-static PROPERTIES OUTPUT_NAME "ftdipp1")
++        endif (STATICLIBS)
+ 
+         # Prevent clobbering each other during the build
+         set_target_properties(ftdipp1 PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+-        set_target_properties(ftdipp1-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++        if (STATICLIBS)
++            set_target_properties(ftdipp1-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++        endif (STATICLIBS)
+ 
+         # Dependencies
+         target_link_libraries(ftdipp1 ftdi1 ${LIBUSB_LIBRARIES} ${BOOST_LIBRARIES})
+@@ -46,10 +50,12 @@ if (FTDIPP)
+                         LIBRARY DESTINATION lib${LIB_SUFFIX}
+                         COMPONENT sharedlibs
+                         )
+-            install( TARGETS ftdipp1-static
+-                        ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-                        COMPONENT staticlibs
+-                        )
++            if (STATICLIBS)
++                install( TARGETS ftdipp1-static
++                            ARCHIVE DESTINATION lib${LIB_SUFFIX}
++                            COMPONENT staticlibs
++                            )
++            endif (STATICLIBS)
+             install( FILES ${cpp_headers}
+                         DESTINATION include/${PROJECT_NAME}
+                         COMPONENT headers
+@@ -61,10 +67,12 @@ if (FTDIPP)
+                         DESTINATION bin
+                         COMPONENT sharedlibs
+                         )
+-            install( TARGETS ftdipp1-static
+-                        DESTINATION bin
+-                        COMPONENT staticlibs
+-                        )
++            if (STATICLIBS)
++                install( TARGETS ftdipp1-static
++                            DESTINATION bin
++                            COMPONENT staticlibs
++                            )
++            endif (STATICLIBS)
+             install( FILES ${cpp_headers}
+                         DESTINATION include/${PROJECT_NAME}
+                         COMPONENT headers
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -28,11 +28,15 @@ set_target_properties(ftdi1 PROPERTIES VERSION ${VERSION_FIXUP}.${MINOR_VERSION}
+ 
+ # Static library
+ add_library(ftdi1-static STATIC ${c_sources})
+-set_target_properties(ftdi1-static PROPERTIES OUTPUT_NAME "ftdi1")
++if (STATICLIBS)
++    set_target_properties(ftdi1-static PROPERTIES OUTPUT_NAME "ftdi1")
++endif (STATICLIBS)
+ 
+ # Prevent clobbering each other during the build
+ set_target_properties(ftdi1 PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+-set_target_properties(ftdi1-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++if (STATICLIBS)
++    set_target_properties(ftdi1-static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++endif (STATICLIBS)
+ 
+ # Dependencies
+ target_link_libraries(ftdi1 ${LIBUSB_LIBRARIES})
+@@ -45,10 +49,12 @@ if(${UNIX})
+             COMPONENT sharedlibs
+             )
+ 
+-   install( TARGETS ftdi1-static
+-            ARCHIVE DESTINATION lib${LIB_SUFFIX}
+-            COMPONENT staticlibs
+-            )
++   if (STATICLIBS)
++       install( TARGETS ftdi1-static
++                ARCHIVE DESTINATION lib${LIB_SUFFIX}
++                COMPONENT staticlibs
++                )
++   endif (STATICLIBS)
+ 
+    install( FILES ${c_headers}
+             DESTINATION include/${PROJECT_NAME}
+@@ -64,10 +70,12 @@ if(${WIN32})
+             COMPONENT sharedlibs
+             )
+ 
+-   install( TARGETS ftdi1-static
+-            DESTINATION bin
+-            COMPONENT staticlibs
+-            )
++   if (STATICLIBS)
++       install( TARGETS ftdi1-static
++                DESTINATION bin
++                COMPONENT staticlibs
++                )
++   endif (STATICLIBS)
+ 
+    install( FILES ${c_headers}
+             DESTINATION include/${PROJECT_NAME}

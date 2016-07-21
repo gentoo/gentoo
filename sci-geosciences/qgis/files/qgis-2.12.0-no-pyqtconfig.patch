@@ -1,0 +1,23 @@
+diff -ur qgis-2.12.0.orig/python/console/console.py qgis-2.12.0/python/console/console.py
+--- qgis-2.12.0.orig/python/console/console.py
++++ qgis-2.12.0/python/console/console.py
+@@ -25,7 +25,6 @@
+     QSplitter, QTreeWidget, QAction, QFileDialog, QCheckBox, QSizePolicy, QMenu, QGridLayout, QApplication, \
+     QDesktopServices
+ from PyQt4.QtGui import QVBoxLayout
+-from PyQt4 import pyqtconfig
+ from qgis.utils import iface
+ from console_sci import ShellScintilla
+ from console_output import ShellOutputScintilla
+@@ -482,10 +481,7 @@
+         self.lineEditFind = QgsFilterLineEdit()
+         placeHolderTxt = QCoreApplication.translate("PythonConsole", "Enter text to find...")
+ 
+-        if pyqtconfig.Configuration().qt_version >= 0x40700:
+-            self.lineEditFind.setPlaceholderText(placeHolderTxt)
+-        else:
+-            self.lineEditFind.setToolTip(placeHolderTxt)
++        self.lineEditFind.setPlaceholderText(placeHolderTxt)
+         self.findNextButton = QToolButton()
+         self.findNextButton.setEnabled(False)
+         toolTipfindNext = QCoreApplication.translate("PythonConsole", "Find Next")

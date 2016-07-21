@@ -1,0 +1,25 @@
+Index: luasocket-2.0.2/makefile
+===================================================================
+--- luasocket-2.0.2.orig/makefile
++++ luasocket-2.0.2/makefile
+@@ -45,6 +47,7 @@ install: all
+ 	#cd src; $(INSTALL_DATA) $(TO_MIME_SHARE) $(INSTALL_MIME_SHARE)
+ 	cd src; mkdir -p $(INSTALL_MIME_LIB)
+ 	cd src; $(INSTALL_EXEC) $(MIME_SO) $(INSTALL_MIME_LIB)/core.$(EXT)
++	cd src; $(INSTALL_EXEC) $(UNIX_SO) $(INSTALL_SOCKET_LIB)/unix.$(EXT)
+ 
+ #------
+ # End of makefile
+Index: luasocket-2.0.2/src/makefile
+===================================================================
+--- luasocket-2.0.2.orig/src/makefile
++++ luasocket-2.0.2/src/makefile
+@@ -47,7 +47,7 @@ UNIX_OBJS:=\
+ 	usocket.o \
+ 	unix.o
+ 
+-all: $(SOCKET_SO) $(MIME_SO) 
++all: $(SOCKET_SO) $(MIME_SO) $(UNIX_SO)
+ 
+ $(SOCKET_SO): $(SOCKET_OBJS)
+ 	$(LD) $(LDFLAGS) -o $@ $(SOCKET_OBJS)

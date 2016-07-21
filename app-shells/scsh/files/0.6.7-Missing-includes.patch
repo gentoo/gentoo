@@ -1,0 +1,22 @@
+diff -r 3dd93fcbca44 c/unix/dynamo.c
+--- a/c/unix/dynamo.c	Wed Aug 11 17:02:46 2010 +0200
++++ b/c/unix/dynamo.c	Wed Aug 11 17:04:34 2010 +0200
+@@ -5,6 +5,7 @@
+ 
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #include "sysdep.h"
+ #include "scheme48.h"
+ 
+diff -r 3dd93fcbca44 c/unix/socket.c
+--- a/c/unix/socket.c	Wed Aug 11 17:02:46 2010 +0200
++++ b/c/unix/socket.c	Wed Aug 11 17:04:34 2010 +0200
+@@ -8,6 +8,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/param.h>
++#include <malloc.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <netdb.h>

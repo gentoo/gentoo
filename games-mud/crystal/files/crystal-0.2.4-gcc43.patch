@@ -1,0 +1,11 @@
+--- common.h
++++ common.h
+@@ -3,6 +3,8 @@
+ 
+ #include <string>
+ #include <stdio.h>
++#include <cstring>
++#include <cstdlib>
+ #include <curses.h>
+ #include <termios.h>
+ #include <sys/ioctl.h>

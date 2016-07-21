@@ -1,0 +1,20 @@
+Index: gwaei-3.0.2/src/waei/waei.c
+===================================================================
+--- gwaei-3.0.2.orig/src/waei/waei.c
++++ gwaei-3.0.2/src/waei/waei.c
+@@ -195,6 +195,7 @@ int w_start_console (int argc, char* arg
+ }
+ 
+ 
++#ifdef WITH_NCURSES
+ //!
+ //! @brief Equivalent to the main function for many programs.  This is what starts the program
+ //! @param argc Your argc from your main function
+@@ -219,6 +220,7 @@ int w_start_ncurses (int argc, char* arg
+ 
+     return TRUE;
+ }
++#endif
+ 
+ 
+ int main (int argc, char *argv[])

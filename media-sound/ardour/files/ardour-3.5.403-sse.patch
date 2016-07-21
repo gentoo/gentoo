@@ -1,0 +1,24 @@
+diff -rupN ardouroriginal/libs/ardour/wscript ardour-3.5.403/libs/ardour/wscript
+--- ardouroriginal/libs/ardour/wscript	2014-10-24 19:18:10.981000000 +0200
++++ ardour-3.5.403/libs/ardour/wscript	2014-10-24 19:19:36.115000000 +0200
+@@ -385,7 +385,7 @@ def build(bld):
+     if bld.is_defined('AUDIOUNIT_SUPPORT'):
+         obj.source += [ 'audio_unit.cc' ]
+ 
+-    if Options.options.fpu_optimization:
++    if bld.env['FPU_OPTIMIZATION']:
+         if (bld.env['build_target'] == 'i386' or bld.env['build_target'] == 'i686'):
+             obj.source += [ 'sse_functions_xmm.cc', 'sse_functions.s' ]
+         elif bld.env['build_target'] == 'x86_64':
+diff -rupN ardouroriginal/wscript ardour-3.5.403/wscript
+--- ardouroriginal/wscript	2014-10-24 19:18:10.989000000 +0200
++++ ardour-3.5.403/wscript	2014-10-24 19:20:20.160000000 +0200
+@@ -675,6 +675,8 @@ def configure(conf):
+         conf.env['PHONE_HOME'] = True
+     if opts.fpu_optimization:
+         conf.env['FPU_OPTIMIZATION'] = True
++    else:
++	conf.env['FPU_OPTIMIZATION'] = False
+     if opts.nls:
+         conf.define('ENABLE_NLS', 1)
+         conf.env['ENABLE_NLS'] = True

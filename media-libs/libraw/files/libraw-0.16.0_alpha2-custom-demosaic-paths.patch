@@ -1,0 +1,23 @@
+Use externally defined paths for demosaic packs and rawspeed before falling back to defaults.
+
+--- LibRaw-0.16.0-Alpha2/CMakeLists.txt
++++ LibRaw-0.16.0-Alpha2/CMakeLists.txt
+@@ -81,9 +81,15 @@
+ SET(RAWSPEED_RPATH           "RawSpeed"           CACHE STRING 
+     "Relavive path to extra RawSpeed codec     (default=RawSpeed)")
+ 
+-SET(DEMOSAIC_PACK_GPL2_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${DEMOSAIC_PACK_GPL2_RPATH}")
+-SET(DEMOSAIC_PACK_GPL3_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${DEMOSAIC_PACK_GPL3_RPATH}")
+-SET(RAWSPEED_PATH           "${CMAKE_CURRENT_SOURCE_DIR}/${RAWSPEED_RPATH}")
++IF(NOT DEMOSAIC_PACK_GPL2_PATH)
++    SET(DEMOSAIC_PACK_GPL2_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${DEMOSAIC_PACK_GPL2_RPATH}")
++ENDIF()
++IF(NOT DEMOSAIC_PACK_GPL3_PATH)
++    SET(DEMOSAIC_PACK_GPL3_PATH "${CMAKE_CURRENT_SOURCE_DIR}/${DEMOSAIC_PACK_GPL3_RPATH}")
++ENDIF()
++IF(NOT RAWSPEED_PATH)
++    SET(RAWSPEED_PATH           "${CMAKE_CURRENT_SOURCE_DIR}/${RAWSPEED_RPATH}")
++ENDIF()
+ 
+ # ==================================================================================================
+ # General definitions rules

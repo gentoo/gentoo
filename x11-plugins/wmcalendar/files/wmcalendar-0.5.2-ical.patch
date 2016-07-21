@@ -1,0 +1,19 @@
+--- a/Src/calendar.h
++++ b/Src/calendar.h
+@@ -1,4 +1,4 @@
+-#include <ical.h>
++#include <libical/ical.h>
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
+ #include <string.h>
+--- a/Src/calendarfunc.h
++++ b/Src/calendarfunc.h
+@@ -22,7 +22,7 @@
+ 
+ #include <unistd.h>
+ #include <stdlib.h>
+-#include <ical.h>
++#include <libical/ical.h>
+ #define TIMZ 3.0
+ #define MINAGE 13.5
+ #define SUNSET 19.5 /*approximate */

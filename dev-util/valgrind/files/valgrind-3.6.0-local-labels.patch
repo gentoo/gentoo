@@ -1,0 +1,24 @@
+--- coregrind/m_libcassert.c	2010-10-21 04:19:45.000000000 +0800
++++ coregrind/m_libcassert.c	2010-10-24 20:23:17.800001876 +0800
+@@ -81,8 +81,8 @@
+       { UInt cia, r1, lr;                                 \
+         __asm__ __volatile__(                             \
+            "mflr 0;"                   /* r0 = lr */      \
+-           "bl m_libcassert_get_ip;"   /* lr = pc */      \
+-           "m_libcassert_get_ip:\n"                       \
++           "bl 0f;"                    /* lr = pc */      \
++           "0:\n"                                         \
+            "mflr %0;"                  /* %0 = pc */      \
+            "mtlr 0;"                   /* restore lr */   \
+            "mr %1,1;"                  /* %1 = r1 */      \
+@@ -100,8 +100,8 @@
+       { ULong cia, r1, lr;                                \
+         __asm__ __volatile__(                             \
+            "mflr 0;"                   /* r0 = lr */      \
+-           "bl .m_libcassert_get_ip;"  /* lr = pc */      \
+-           ".m_libcassert_get_ip:\n"                      \
++           "bl 0f;"                    /* lr = pc */      \
++           "0:\n"                                         \
+            "mflr %0;"                  /* %0 = pc */      \
+            "mtlr 0;"                   /* restore lr */   \
+            "mr %1,1;"                  /* %1 = r1 */      \

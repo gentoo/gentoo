@@ -1,0 +1,52 @@
+diff --git a/Makefile b/Makefile
+index b67855a..a9d5cdc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,8 @@ all: snappy
+ 
+ SNAPPY_OUT:=$(TARGET)/$(snappy)-$(os_arch)
+ SNAPPY_ARCHIVE:=$(TARGET)/snappy-$(VERSION).tar.gz 
+-SNAPPY_CC:=snappy-sinksource.cc snappy-stubs-internal.cc snappy.cc
++#SNAPPY_CC:=snappy-sinksource.cc snappy-stubs-internal.cc snappy.cc
++SNAPPY_CC:=
+ SNAPPY_SRC_DIR:=$(TARGET)/snappy-$(VERSION)
+ SNAPPY_SRC:=$(addprefix $(SNAPPY_SRC_DIR)/,$(SNAPPY_CC))
+ SNAPPY_OBJ:=$(addprefix $(SNAPPY_OUT)/,$(patsubst %.cc,%.o,$(SNAPPY_CC)) SnappyNative.o)
+@@ -30,7 +31,8 @@ jni-header: $(SRC)/org/xerial/snappy/SnappyNative.h
+ $(SRC)/org/xerial/snappy/SnappyNative.h: $(SRC)/org/xerial/snappy/SnappyNative.java
+ 	$(JAVAH) -classpath $(TARGET)/classes -o $@ org.xerial.snappy.SnappyNative
+ 
+-$(SNAPPY_SRC): $(SNAPPY_UNPACKED)
++$(SNAPPY_SRC):
++# $(SNAPPY_UNPACKED)
+ 
+ $(SNAPPY_OUT)/%.o : $(SNAPPY_SRC_DIR)/%.cc
+ 	@mkdir -p $(@D)
+@@ -42,7 +44,7 @@ $(SNAPPY_OUT)/SnappyNative.o : $(SRC)/org/xerial/snappy/SnappyNative.cpp $(SRC)/
+ 
+ 
+ $(SNAPPY_OUT)/$(LIBNAME): $(SNAPPY_OBJ)
+-	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS) 
++	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS) -lsnappy
+ 	$(STRIP) $@
+ 
+ clean-native: 
+@@ -57,15 +59,15 @@ NATIVE_DLL:=$(NATIVE_DIR)/$(LIBNAME)
+ 
+ snappy-jar-version:=snappy-java-$(shell $(JAVA) -jar lib/silk-weaver.jar find 'project(artifactId, version)' pom.xml | grep snappy-java | awk '{ print $$2; }')
+ 
+-native: $(SNAPPY_UNPACKED) $(NATIVE_DLL) 
+-snappy: $(TARGET)/$(snappy-jar-version).jar
++native: $(NATIVE_DLL) 
++snappy: native
+ 
+ $(NATIVE_DLL): $(SNAPPY_OUT)/$(LIBNAME) 
+ 	@mkdir -p $(@D)
+ 	cp $< $@
+ 	@mkdir -p $(NATIVE_TARGET_DIR)
+ 	cp $< $(NATIVE_TARGET_DIR)/$(LIBNAME)
+-
++	cp $< $(TARGET)
+ 
+ $(TARGET)/$(snappy-jar-version).jar: native $(NATIVE_DLL)
+ 	$(MVN) package -Dmaven.test.skip=true

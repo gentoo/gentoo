@@ -1,0 +1,28 @@
+ HepMC/GenEvent.h  |    1 +
+ HepMC/GenVertex.h |    1 +
+ 2 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/HepMC/GenEvent.h b/HepMC/GenEvent.h
+index 72374cb..d10b9a0 100644
+--- a/HepMC/GenEvent.h
++++ b/HepMC/GenEvent.h
+@@ -137,6 +137,7 @@ namespace HepMC {
+ #include <vector>
+ #include <algorithm>
+ #include <iostream>
++#include <cstddef>
+ 
+ namespace HepMC {
+ 
+diff --git a/HepMC/GenVertex.h b/HepMC/GenVertex.h
+index 2f3d4de..fc3bf63 100644
+--- a/HepMC/GenVertex.h
++++ b/HepMC/GenVertex.h
+@@ -29,6 +29,7 @@
+ #include <vector>
+ #include <set>
+ #include <algorithm>
++#include <cstddef>
+ 
+ namespace HepMC {
+ 

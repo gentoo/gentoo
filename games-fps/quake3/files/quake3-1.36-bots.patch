@@ -1,0 +1,20 @@
+--- code/botlib/l_script.c.orig	2009-11-02 20:29:23.000000000 +0100
++++ code/botlib/l_script.c	2009-11-02 22:21:40.000000000 +0100
+@@ -1118,7 +1118,7 @@
+ {
+ 	if (*string == '\"')
+ 	{
+-		strcpy(string, string+1);
++		memmove(string, string+1, strlen(string));
+ 	} //end if
+ 	if (string[strlen(string)-1] == '\"')
+ 	{
+@@ -1135,7 +1135,7 @@
+ {
+ 	if (*string == '\'')
+ 	{
+-		strcpy(string, string+1);
++		memmove(string, string+1, strlen(string));
+ 	} //end if
+ 	if (string[strlen(string)-1] == '\'')
+ 	{

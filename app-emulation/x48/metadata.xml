@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nimiux@gentoo.org</email>
+    <name>Chema Alonso</name>
+  </maintainer>
+  <longdescription lang="en">
+    The x48 package is an emulator of the Saturn Processor and the I/O of an
+    HP48 calculator. 
+  </longdescription>
+  <longdescription lang="es">
+    El paquete x48 es un emulador del procesador Saturn y de la E/S de una
+    calculadora HP48.
+  </longdescription>
+  <use>
+    <flag name="readline">Enables support for libreadline</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">x48.berlios</remote-id>
+  </upstream>
+</pkgmetadata>

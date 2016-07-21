@@ -1,0 +1,22 @@
+diff -Naur ldns-1.6.12.orig/drill/configure.ac ldns-1.6.12/drill/configure.ac
+--- ldns-1.6.12.orig/drill/configure.ac	2011-11-17 00:48:16.000000000 +0900
++++ ldns-1.6.12/drill/configure.ac	2012-01-12 00:20:51.944503474 +0900
+@@ -33,7 +33,6 @@
+ ACX_CHECK_COMPILER_FLAG(xc99, [C99FLAG="-xc99"])
+ 
+ AC_TYPE_SIZE_T
+-ACX_CHECK_COMPILER_FLAG(O2, [CFLAGS="$CFLAGS -O2"])
+ 
+ ACX_CHECK_COMPILER_FLAG_NEEDED($C99FLAG -D__EXTENSIONS__ -D_BSD_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600,
+ [
+diff -Naur ldns-1.6.12.orig/examples/configure.ac ldns-1.6.12/examples/configure.ac
+--- ldns-1.6.12.orig/examples/configure.ac	2011-09-29 22:04:19.000000000 +0900
++++ ldns-1.6.12/examples/configure.ac	2012-01-12 00:21:03.191504702 +0900
+@@ -31,7 +31,6 @@
+ 
+ 
+ AC_TYPE_SIZE_T
+-ACX_CHECK_COMPILER_FLAG(O2, [CFLAGS="$CFLAGS -O2"])
+ 
+ ACX_CHECK_COMPILER_FLAG_NEEDED($C99FLAG -D__EXTENSIONS__ -D_BSD_SOURCE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600,
+ [

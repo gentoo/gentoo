@@ -1,0 +1,38 @@
+--- src/gui.c
++++ src/gui.c
+@@ -84,7 +84,7 @@
+     while ( *digit ) {
+         get_pm_location( *digit, &x, &y, &w );
+         gdk_draw_drawable( widget->window,
+-                           widget->style->fg_gc[ GTK_WIDGET_STATE
++                           widget->style->fg_gc[ gtk_widget_get_state
+                            (widget) ], theme, x, y + highLow,
+                            pos, 0, w, 30 );
+         pos += w;
+@@ -121,7 +121,7 @@
+ 
+             /* Display RPM */
+             gdk_draw_drawable( widget->window, 
+-                               widget->style->fg_gc[ GTK_WIDGET_STATE 
++                               widget->style->fg_gc[ gtk_widget_get_state 
+                                (widget) ], theme, 0, 120 + highLow, 
+                                90, 0, 57, 30 );
+             break;
+@@ -142,7 +142,7 @@
+             else
+                 x = 57;
+             gdk_draw_drawable( widget->window, 
+-                             widget->style->fg_gc[ GTK_WIDGET_STATE 
++                             widget->style->fg_gc[ gtk_widget_get_state 
+                              (widget) ], theme, x, 60 + highLow, 
+                              96, 0, 57, 30 );
+             
+@@ -158,7 +158,7 @@
+ 
+             /* Display V */
+             gdk_draw_drawable( widget->window, 
+-                             widget->style->fg_gc[ GTK_WIDGET_STATE 
++                             widget->style->fg_gc[ gtk_widget_get_state 
+                              (widget) ], theme, 114, 60 + highLow, 
+                              96, 0, 57, 30 );
+ 

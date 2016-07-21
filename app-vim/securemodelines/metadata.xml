@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Vim's internal modeline support allows all sorts of annoying and
+		potentially insecure options to be set. This script implements a much
+		more heavily restricted modeline parser that permits only user-specified
+		options to be set.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ciaranm/securemodelines</remote-id>
+	</upstream>
+</pkgmetadata>

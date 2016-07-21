@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenProj
+Comment=Project Management
+Comment[fr]=Gestion de projet
+Exec=openproj %F
+Icon=openproj
+Terminal=false
+Type=Application
+Categories=Office;ProjectManagement;
+MimeType=application/x-openproj;

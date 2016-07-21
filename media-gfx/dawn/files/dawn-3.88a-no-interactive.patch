@@ -1,0 +1,292 @@
+--- configure_min.orig	2008-04-02 22:58:34.504868912 +0100
++++ configure_min	2008-04-02 23:47:56.967829265 +0100
+@@ -13,22 +13,22 @@
+ #----- C++ compiler name
+ echo "Input C++ compiler name (e.g. g++, no default)."
+ echo -n " :"
+-set cpp_compiler=$<
++set cpp_compiler=
+ 
+ #----- Optimization option of the C++ compiler
+ echo     "Input optimization option (e.g. -O2, no default)"
+ echo -n  " :"
+-set optimize=$<
++set optimize=
+ 
+ #----- Input Tcl/Tk window shell name
+ echo    "Input Tcl/Tk window shell name"
+ echo -n "  (e.g. wish, no default): "
+-set wish=$<
++set wish=wish
+ 
+ #----- Input directory name to install dawn and DAWN_GUI
+ echo    "Input directory to install executable files"
+ echo -n "  (e.g. /usr/local/bin, no default ): "
+-set install_dir=$<
++set install_dir=
+ 
+ 
+ ##### DELETE #####
+@@ -57,14 +57,14 @@
+ 
+ echo "### C++ compiler"                                >> Makefile
+ #echo "ifndef CXX"                                     >> Makefile
+-echo "CC = $cpp_compiler"                              >> Makefile
++#echo "CC = $cpp_compiler"                              >> Makefile
+ #echo "else"                                           >> Makefile
+-#echo 'CC = $(CXX)'                                    >> Makefile
++echo 'CC = $(CXX)'                                    >> Makefile
+ #echo "endif"                                          >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Optimization"                                >> Makefile
+-echo "OPTIMIZE = $optimize"                            >> Makefile
++echo 'OPTIMIZE = $(CXXFLAGS)'                          >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Waring level"                                >> Makefile
+@@ -78,7 +78,7 @@
+ 
+ 
+ echo "### Directory where to install executable files" >> Makefile
+-echo "INSTALL_DIR = $install_dir"                      >> Makefile
++echo 'INSTALL_DIR = $(DESTDIR)/usr/bin'                >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo ""                                                >> Makefile
+--- configure.orig	2008-04-02 22:58:23.660250913 +0100
++++ configure	2008-04-03 00:06:20.081610809 +0100
+@@ -17,19 +17,19 @@
+ #----- C++ compiler name
+ echo "Input C++ compiler name (e.g. g++, no default)."
+ echo -n " : "
+-set cpp_compiler=$<
++set cpp_compiler=
+ echo ""
+ 
+ #----- Optimization option of the C++ compiler
+ echo     "Input optimization option (e.g. -O2, no default)"
+ echo -n  " : "
+-set optimize=$<
++set optimize=
+ echo ""
+ 
+ #----- Input Tcl/Tk window shell name
+ echo    "Input Tcl/Tk window shell name"
+ echo -n "  (e.g. wish, no default): "
+-set wish=$<
++set wish=wish
+ echo ""
+ 
+ #----- 
+@@ -37,7 +37,7 @@
+ echo    "  (e.g. -I/usr/X11R6/include) "
+ echo    "   Hit return key if path is already set properly.            )"
+ echo -n " : "
+-set xlib_inc=$<
++set xlib_inc=
+ echo ""
+ 
+ 
+@@ -46,7 +46,7 @@
+ echo    "  (e.g. -L/usr/X11R6/lib) "
+ echo    "   Hit return key if path is already set properly.)"
+ echo -n " : "
+-set xlib_lib=$<
++set xlib_lib=
+ echo ""
+ 
+ 
+@@ -55,7 +55,7 @@
+ echo    "  (e.g. -I/usr/X11R6/include) "
+ echo    "   Hit return key if path is already set properly.            )"
+ echo -n " : "
+-set openglinc=$<
++set openglinc=
+ echo ""
+ 
+ #----- 
+@@ -63,7 +63,7 @@
+ echo    "  (e.g. -I/usr/X11R6/include/GL "
+ echo    "   Hit return key if path is already set properly.            )"
+ echo -n " : "
+-set openglinc2=$<
++set openglinc2=
+ echo ""
+ 
+ 
+@@ -72,24 +72,24 @@
+ echo    "  (e.g. -L/usr/X11R6/lib "
+ echo    "   Hit return key if path is already set properly.)"
+ echo -n " : "
+-set opengllib=$<
++set opengllib=
+ echo ""
+ 
+ #----- 
+ echo -n  "Select OpenGL/Mesa or old Masa (0: OpenGL/Mesa , 1: Old Mesa (ver.3.0)): "
+-set opengl_type=$<
++set opengl_type=0
+ echo ""
+ 
+ 
+ #----- Input directory name to install dawn and DAWN_GUI
+ echo    "Input directory to install executable files"
+ echo -n "  (e.g. /usr/local/bin, no default ): "
+-set install_dir=$<
++set install_dir=
+ echo ""
+ 
+ #----- Input system name
+ echo -n  "Select a system (0: Defalut, 1: AIX, 2: IRIX, 3: Solaris, 4: RedHat/FedoraCore): "
+-set sysid=$<
++set sysid=0
+ switch ($sysid)
+    case "0":
+     set sysname = "Default"
+@@ -116,7 +116,7 @@
+ echo     "Do you use remote-visualization function? (y/n, no default)"
+ echo     " (Select n if your compilation fails for FRClientServer.cc)"
+ echo  -n " : "
+-set ynflag_socket=$<
++set ynflag_socket=n
+ switch ($ynflag_socket)
+    case "y":
+     set macro_socket = '#define USE_SOCKET'
+@@ -159,14 +159,14 @@
+ 
+ echo "### C++ compiler"                                >> Makefile
+ #echo "ifndef CXX"                                     >> Makefile
+-echo "CC = $cpp_compiler"                              >> Makefile
++#echo "CC = $cpp_compiler"                              >> Makefile
+ #echo "else"                                           >> Makefile
+-#echo 'CC = $(CXX)'                                    >> Makefile
++echo 'CC = $(CXX)'                                     >> Makefile
+ #echo "endif"                                          >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Optimization"                                >> Makefile
+-echo "OPTIMIZE = $optimize"                            >> Makefile
++echo 'OPTIMIZE = $(CXXFLAGS)'                          >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Waring level"                                >> Makefile
+@@ -224,7 +224,7 @@
+ echo ""                                                >> Makefile
+ 
+ echo "### Directory where to install executable files" >> Makefile
+-echo "INSTALL_DIR = $install_dir"                      >> Makefile
++echo 'INSTALL_DIR = $(DESTDIR)/usr/bin'                >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Socket libraries to be linked "              >> Makefile
+@@ -313,6 +313,6 @@
+ echo ""
+ echo 'After compilation, type  "make install" for installation.'
+ echo 'Then four executable files "dawn", "DAWN_GUI",' 
+-echo '"dawnunixd", and "dawninetd"  will be installed to '
++echo '"dawnunixd", and "dawninetd"  will be installed'
+ echo "$install_dir."
+ echo ""
+--- configure_xwin.orig	2008-04-02 22:58:44.973465484 +0100
++++ configure_xwin	2008-04-03 00:02:15.950190359 +0100
+@@ -16,17 +16,17 @@
+ #----- C++ compiler name
+ echo "Input C++ compiler name (e.g. g++, no default)."
+ echo -n " :"
+-set cpp_compiler=$<
++set cpp_compiler=
+ 
+ #----- Optimization option of the C++ compiler
+ echo     "Input optimization option (e.g. -O2, no default)"
+ echo -n  " :"
+-set optimize=$<
++set optimize=
+ 
+ #----- Input Tcl/Tk window shell name
+ echo    "Input Tcl/Tk window shell name"
+ echo -n "  (e.g. wish, no default): "
+-set wish=$<
++set wish=wish
+ 
+ 
+ #----- 
+@@ -34,7 +34,7 @@
+ echo    "  (e.g. -I/usr/X11R6/include) "
+ echo    "   Hit return key if path is already set properly.            )"
+ echo -n " : "
+-set xlib_inc=$<
++set xlib_inc=
+ echo ""
+ 
+ 
+@@ -43,17 +43,17 @@
+ echo    "  (e.g. -L/usr/X11R6/lib) "
+ echo    "   Hit return key if path is already set properly.)"
+ echo -n " : "
+-set xlib_lib=$<
++set xlib_lib=
+ echo ""
+ 
+ #----- Input directory name to install dawn and DAWN_GUI
+ echo    "Input directory to install executable files"
+ echo -n "  (e.g. /usr/local/bin, no default ): "
+-set install_dir=$<
++set install_dir=
+ 
+ #----- Input system name
+ echo -n  "Select a system (0: Defalut, 1: AIX, 2: IRIX, 3: Solaris, 4: RedHat/FedoraCore): "
+-set sysid=$<
++set sysid=0
+ switch ($sysid)
+    case "0":
+     set sysname = "Default"
+@@ -80,7 +80,7 @@
+ echo     "Do you use remote-visualization function? (y/n, no default)"
+ echo     " (Select n if your compilation fails for FRClientServer.cc)"
+ echo  -n " : "
+-set ynflag_socket=$<
++set ynflag_socket=n
+ switch ($ynflag_socket)
+    case "y":
+     set macro_socket = '#define USE_SOCKET'
+@@ -123,14 +123,14 @@
+ 
+ echo "### C++ compiler"                                >> Makefile
+ #echo "ifndef CXX"                                      >> Makefile
+-echo "CC = $cpp_compiler"                              >> Makefile
++#echo "CC = $cpp_compiler"                              >> Makefile
+ #echo "else"                                            >> Makefile
+-#echo 'CC = $(CXX)'                                     >> Makefile
++echo 'CC = $(CXX)'                                     >> Makefile
+ #echo "endif"                                           >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Optimization"                                >> Makefile
+-echo "OPTIMIZE = $optimize"                            >> Makefile
++echo 'OPTIMIZE = $(CXXFLAGS)'                            >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Waring level"                                >> Makefile
+@@ -152,7 +152,7 @@
+ echo ""                                                >> Makefile
+ 
+ echo "### Directory where to install executable files" >> Makefile
+-echo "INSTALL_DIR = $install_dir"                      >> Makefile
++echo 'INSTALL_DIR = $(DESTDIR)/usr/bin'                      >> Makefile
+ echo ""                                                >> Makefile
+ 
+ echo "### Socket libraries to be linked "              >> Makefile
+--- FRSocketMacro.h.orig	2008-04-02 23:58:51.126518123 +0100
++++ FRSocketMacro.h	2008-04-02 23:59:03.443220012 +0100
+@@ -14,8 +14,8 @@
+ #elif defined SOCKET_REDHAT61
+ 	#define         CLIENT_ADDR_LENGTH    socklen_t
+ #else 
+-	#define         CLIENT_ADDR_LENGTH    int
+-//	#define         CLIENT_ADDR_LENGTH    size_t
++//	#define         CLIENT_ADDR_LENGTH    int
++	#define         CLIENT_ADDR_LENGTH    size_t
+ #endif
+ 
+ 	//----- gethostname

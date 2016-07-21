@@ -1,0 +1,42 @@
+--- contrib.orig/nginx.te	2012-11-24 19:52:13.439337617 +0100
++++ contrib/nginx.te	2012-11-24 18:34:57.565327680 +0100
+@@ -124,33 +124,33 @@
+ sysnet_dns_name_resolve(nginx_t)
+ 
+ 
+-tunable_policy(`gentoo_nginx_enable_http_server',`
++tunable_policy(`nginx_enable_http_server',`
+ 	corenet_tcp_bind_http_port(nginx_t)
+ 	apache_read_all_content(nginx_t)
+ 	apache_manage_all_rw_content(nginx_t)
+ ')
+ 
+ # We enable both binding and connecting, since nginx acts here as a reverse proxy
+-tunable_policy(`gentoo_nginx_enable_imap_server',`
++tunable_policy(`nginx_enable_imap_server',`
+ 	corenet_tcp_bind_pop_port(nginx_t)
+ 	corenet_tcp_connect_pop_port(nginx_t)
+ ')
+ 
+-tunable_policy(`gentoo_nginx_enable_pop3_server',`
++tunable_policy(`nginx_enable_pop3_server',`
+ 	corenet_tcp_bind_pop_port(nginx_t)
+ 	corenet_tcp_connect_pop_port(nginx_t)
+ ')
+ 
+-tunable_policy(`gentoo_nginx_enable_smtp_server',`
++tunable_policy(`nginx_enable_smtp_server',`
+ 	corenet_tcp_bind_smtp_port(nginx_t)
+ 	corenet_tcp_connect_smtp_port(nginx_t)
+ ')
+ 
+-tunable_policy(`gentoo_nginx_can_network_connect_http',`
++tunable_policy(`nginx_can_network_connect_http',`
+ 	corenet_tcp_connect_http_port(nginx_t)
+ ')
+ 
+-tunable_policy(`gentoo_nginx_can_network_connect',`
++tunable_policy(`nginx_can_network_connect',`
+ 	corenet_tcp_connect_all_ports(nginx_t)
+ ')
+ 

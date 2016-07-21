@@ -1,0 +1,11 @@
+diff -ur a/lua.cxx b/lua.cxx
+--- a/lua.cxx	2012-12-28 21:35:42.000000000 +0100
++++ b/lua.cxx	2013-03-05 22:08:21.823141158 +0100
+@@ -20,6 +20,7 @@
+ #include "Routing.h"
+ #include "gk_const.h"
+ #include "snmp.h"
++#include "Toolkit.h"
+ 
+ #include <lua.hpp>
+ 

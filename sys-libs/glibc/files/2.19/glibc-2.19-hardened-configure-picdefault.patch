@@ -1,0 +1,30 @@
+Prevent default-fPIE from confusing configure into thinking
+PIC code is default.  This causes glibc to build both PIC and
+non-PIC code as normal, which on the hardened compiler generates
+PIC and PIE.
+
+Patch by Kevin F. Quinn <kevquinn@gentoo.org>
+Fixed for glibc 2.19 by Magnus Granberg <zorry@ume.nu>
+
+--- configure.ac
++++ configure.ac
+@@ -2145,7 +2145,7 @@
+ # error PIC is default.
+ #endif
+ EOF
+-if eval "${CC-cc} -S conftest.c 2>&AS_MESSAGE_LOG_FD 1>&AS_MESSAGE_LOG_FD"; then
++if eval "${CC-cc} -fno-PIE -S conftest.c 2>&AS_MESSAGE_LOG_FD 1>&AS_MESSAGE_LOG_FD"; then
+   libc_cv_pic_default=no
+ fi
+ rm -f conftest.*])
+--- configure
++++ configure
+@@ -7698,7 +7698,7 @@
+ # error PIC is default.
+ #endif
+ EOF
+-if eval "${CC-cc} -S conftest.c 2>&5 1>&5"; then
++if eval "${CC-cc} -fno-PIE -S conftest.c 2>&5 1>&5"; then
+   libc_cv_pic_default=no
+ fi
+ rm -f conftest.*

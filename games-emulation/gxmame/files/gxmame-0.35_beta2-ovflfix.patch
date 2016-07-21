@@ -1,0 +1,29 @@
+--- src/options.c.old	2010-12-01 10:48:45.000000000 +0100
++++ src/options.c	2010-12-01 10:53:55.000000000 +0100
+@@ -4245,7 +4245,7 @@
+ 		case XMAME_EXEC_SVGAFX:
+ 			target->fxgkeepaspect = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (fxgkeepaspect_checkbutton));
+ 			used_text = gtk_editable_get_chars (GTK_EDITABLE (fx_entry), 0, -1);
+-			strncpy (target->resolution, used_text, 20);
++			strncpy (target->resolution, used_text, sizeof(target->resolution));
+ 			g_free (used_text);
+ 			break;
+ 
+@@ -4330,7 +4330,7 @@
+ 	}
+ 
+ 	used_text = gtk_editable_get_chars (GTK_EDITABLE (soundfile_entry), 0, -1);
+-	strncpy (target->soundfile, used_text, 50);
++	strncpy (target->soundfile, used_text, sizeof(target->soundfile));
+ 	g_free (used_text);
+ 			
+ 	target->timer = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (timer_checkbutton));
+@@ -4465,7 +4465,7 @@
+ 	target->skip_disclaimer = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (disclaimer_checkbutton));
+ 	target->skip_gameinfo = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (gameinfo_checkbutton));
+ 	used_text = gtk_editable_get_chars (GTK_EDITABLE (debug_size_combo_entry), 0, -1);
+-	strncpy (target->debug_size, used_text, 20);
++	strncpy (target->debug_size, used_text, sizeof(target->debug_size));
+ 	g_free (used_text);
+ 	target->use_additional_options = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (additional_options_checkbutton));
+ 	/* here I'm using directly the additional option because I don't know its length */

@@ -1,0 +1,28 @@
+https://bugs.launchpad.net/ubuntu/+source/time/+bug/742248
+https://bugs.gentoo.org/332253
+
+diff -rupN time-1.7-original/ChangeLog time-1.7/ChangeLog
+--- time-1.7-original/ChangeLog	2011-11-11 09:17:47.507026731 +0100
++++ time-1.7/ChangeLog	2011-11-11 09:27:46.751002205 +0100
+@@ -1,3 +1,9 @@
++Fri Oct  1 00:00:00 2010	Bob Proulx	<bob@proulx.com>
++	The struct rusage reports ru_maxrss in kbytes not pages and 
++	should not be converted through pages-to-kbytes again. 
++	Reported by Sven Hartrumpf.
++	* time.c (summarize): Do not call ptok on ru_maxrss.
++
+ Thu Jul 11 12:37:17 1996  David J MacKenzie  <djm@catapult.va.pubnix.com>
+ 
+ 	* Version 1.7.
+diff -rupN time-1.7-original/time.c time-1.7/time.c
+--- time-1.7-original/time.c	2011-11-11 09:17:47.507026731 +0100
++++ time-1.7/time.c	2011-11-11 09:27:58.167001738 +0100
+@@ -398,7 +398,7 @@ summarize (fp, fmt, command, resp)
+ 		       ptok ((UL) resp->ru.ru_ixrss) / MSEC_TO_TICKS (v));
+ 	      break;
+ 	    case 'M':		/* Maximum resident set size.  */
+-	      fprintf (fp, "%lu", ptok ((UL) resp->ru.ru_maxrss));
++	      fprintf (fp, "%lu", (UL) resp->ru.ru_maxrss);
+ 	      break;
+ 	    case 'O':		/* Outputs.  */
+ 	      fprintf (fp, "%ld", resp->ru.ru_oublock);

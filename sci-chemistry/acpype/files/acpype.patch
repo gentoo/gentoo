@@ -1,0 +1,37 @@
+Index: acpype.py
+===================================================================
+--- acpype.py	(revision 366)
++++ acpype.py	(working copy)
+@@ -3020,32 +3020,6 @@
+         acMol2FileName = '%s_%s_%s.mol2' % (base, chargeType, atomType)
+         self.acMol2FileName = acMol2FileName
+         self.charmmBase = '%s_CHARMM' % base
+-        # check for which version of antechamber
+-        if 'amber10' in self.acExe:
+-            if qprog == 'sqm':
+-                self.printWarn("SQM is not implemented in AmberTools 1.2")
+-                self.printWarn("Setting mopac for antechamber")
+-                qprog = 'mopac'
+-            elif qprog == 'divcon':
+-                if not os.path.exists(os.path.join(os.path.dirname(self.acExe), qprog)):
+-                    self.printWarn("DIVCON is not installed")
+-                    self.printWarn("Setting mopac for antechamber")
+-                    qprog = 'mopac'
+-        elif 'amber11' in self.acExe:
+-            if qprog == 'divcon':
+-                self.printWarn("DIVCON is not implemented in AmberTools 1.3 anymore")
+-                self.printWarn("Setting sqm for antechamber")
+-                qprog = 'sqm'
+-            elif qprog == 'mopac':
+-                if not os.path.exists(os.path.join(os.path.dirname(self.acExe), qprog)):
+-                    self.printWarn("MOPAC is not installed")
+-                    self.printWarn("Setting sqm for antechamber")
+-                    return None
+-                    qprog = 'sqm'
+-        else:
+-            self.printWarn("Old version of antechamber. Strongly consider upgrading to AmberTools")
+-            self.printWarn("Setting mopac for antechamber")
+-            qprog = 'mopac'
+         self.qFlag = qDict[qprog]
+         self.outTopols = [outTopol]
+         if outTopol == 'all':

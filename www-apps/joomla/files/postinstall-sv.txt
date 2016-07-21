@@ -1,0 +1,26 @@
+Du är nästan klar!
+
+  0. Se till att du har installerat och startat en databasserver, 
+     och att du har en användare som får skapa databaser.
+
+  1. Surfa in på http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
+     för att slutföra installationen.
+
+     Om installationen hänger sig, kan det vara en idé att ändra php.ini så här:
+
+     max_execution_time = 3000 ;
+     memory_limit=128M ;
+
+  2. Ta bort installationsmappen:
+
+  # cd ${MY_INSTALLDIR}
+  # rm -rf installation
+
+  3. Surfa in på din nya Joomla sida: 
+
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR} -> Main Site
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/administrator -> Admin
+
+  Logga in till adminvyn med användarnamn 'admin' och det lösenord som du valt under installationsprocessen ovan.
+
+  

@@ -1,0 +1,11 @@
+gentoo bug #498794
+--- src/aclocal.m4	2014-01-16 00:44:15.000000000 +0000
++++ src/aclocal.m4	2014-03-26 10:20:54.000000000 +0000
+@@ -501,6 +501,7 @@
+   fi
+   if test "x$krb5_ac_warn_cflags_set" = xset ; then
+     AC_MSG_NOTICE(not adding extra gcc warning flags because WARN_CFLAGS was set)
++    WARN_CFLAGS=""
+   else
+     AC_MSG_NOTICE(adding extra warning flags for gcc)
+     WARN_CFLAGS="$WARN_CFLAGS $extra_gcc_warn_opts -Wmissing-prototypes"

@@ -1,0 +1,35 @@
+# /etc/conf.d/sobexsrv
+# Config file for sobexsrv daemon
+
+# owner of sobexsrv process (don't change, must be existing)
+USER="sobexsrv"
+GROUP="sobexsrv"
+
+# Incomming of pushed files
+INBOX="/var/spool/sobexsrv"
+
+# chroot to INBOX.
+# *NEEDS* the binary to be suid root (not installed by default).
+#CHROOT="yes"
+
+# Listen  on the specified RFCOMM channel. If this option is not specified the
+# first available channel will be used. Legal range for channel is 1-31 and  0
+# to  force  auto  selection of first available channel.
+CHANNEL="10"
+
+# Set Bluetooth security mode-2 level. Legal values are: 1  (insecure)  every-
+# body can connect, 2 authentication required and 3 authentication and encryp-
+# tion required.
+SECURITY_LEVEL="2"
+
+# Don't register OPUSH service at local ServiceDiscoveryProtocol Server.
+#DISABLE_OPUSH="yes"
+# Don't register OBEX-FTP service at local ServiceDiscoveryProtocol Server.
+DISABLE_OBEXFTP="yes"
+DISABLE_OBEXFTP_LISTING="yes"
+
+# Enable transfer log via syslog(8).
+USE_SYSLOG="yes"
+
+# Additional options. See sobexsrv(8)
+#SOBEXSRV_OPT="-l NPTD -m /etc/sobexsrv-mime"

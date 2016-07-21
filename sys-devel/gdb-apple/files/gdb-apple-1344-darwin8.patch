@@ -1,0 +1,131 @@
+--- src/gdb/symfile.c.orig	2009-09-25 09:00:15 +0200
++++ src/gdb/symfile.c	2009-09-25 09:00:18 +0200
+@@ -67,7 +67,6 @@
+ #include <ctype.h>
+ #include <time.h>
+ #include <sys/time.h>
+-#include <libgen.h>
+ 
+ #include <sys/mman.h>
+ 
+--- src/gdb/utils.c.orig	2009-09-25 09:06:29 +0200
++++ src/gdb/utils.c	2009-09-25 09:46:24 +0200
+@@ -27,7 +27,6 @@
+ #include "gdb_string.h"
+ #include "event-top.h"
+ #include "exceptions.h"
+-#include <execinfo.h>
+ 
+ #ifdef TUI
+ #include "tui/tui.h"		/* For tui_get_command_dimension.   */
+@@ -878,6 +877,7 @@
+   target_terminal_ours ();
+   begin_line ();
+ 
++#if 0
+   /* APPLE LOCAL: Do a stack crawl of how we got here so we're more likely
+      to get useful bug reports.  */
+   {
+@@ -886,6 +886,7 @@
+     fprintf (stderr, "gdb stack crawl at point of internal error:\n");
+     backtrace_symbols_fd (bt_buffer, count, STDERR_FILENO);
+   }
++#endif
+ 
+   /* Create a string containing the full error/warning message.  Need
+      to call query with this full string, as otherwize the reason
+--- src/gdb/remote.c.orig	2009-09-25 09:31:58 +0200
++++ src/gdb/remote.c	2009-09-25 09:48:18 +0200
+@@ -61,7 +61,6 @@
+ #ifdef MACOSX_DYLD
+ #include "macosx-nat-dyld.h"
+ #endif
+-#include <execinfo.h>
+ 
+ /* Prototypes for local functions.  */
+ static void cleanup_sigint_signal_handler (void *dummy);
+@@ -483,10 +482,12 @@
+ static void
+ remote_backtrace_self ()
+ {
++#if 0
+   void *bt_buffer[10];
+   int count = backtrace (bt_buffer, 10);
+   fprintf_filtered (gdb_stderr, "gdb stack crawl at point of invalid hex digit:\n");
+   backtrace_symbols_fd (bt_buffer, count, STDERR_FILENO);
++#endif
+ }
+ 
+ static void
+--- src/gdb/macosx/macosx-tdep.c.orig	2009-09-25 09:09:00 +0200
++++ src/gdb/macosx/macosx-tdep.c	2009-09-25 09:09:12 +0200
+@@ -61,7 +61,6 @@
+ #include "exceptions.h"
+ 
+ #include <dirent.h>
+-#include <libgen.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/param.h>
+--- src/gdb/macosx/macosx-nat-inferior.c.orig	2009-09-25 09:12:44 +0200
++++ src/gdb/macosx/macosx-nat-inferior.c	2009-09-25 09:13:24 +0200
+@@ -62,8 +62,10 @@
+ #include <semaphore.h>
+ 
+ #include <dlfcn.h>
++#if 0
+ #include <libproc.h>
+ #include <sys/proc_info.h>
++#endif
+ 
+ #include "macosx-nat-dyld.h"
+ #include "macosx-nat-inferior.h"
+@@ -3261,8 +3263,10 @@
+ 	int_flags |= RTLD_NOLOAD;
+       if (strstr (flags, "RTLD_NODELETE") != NULL)
+ 	int_flags |= RTLD_NODELETE;
++#ifdef RTLD_FIRST
+       if (strstr (flags, "RTLD_FIRST") != NULL)
+ 	int_flags |= RTLD_FIRST;
++#endif
+     }
+ 
+   /* If the user didn't pass in anything, set some sensible defaults.  */
+--- src/gdb/macosx/macosx-nat-infthread.c.orig	2009-09-25 09:14:01 +0200
++++ src/gdb/macosx/macosx-nat-infthread.c	2009-09-25 09:14:19 +0200
+@@ -36,8 +36,10 @@
+ #include <sys/dir.h>
+ #include <inttypes.h>
+ 
++#if 0
+ #include <libproc.h>
+ #include <sys/proc_info.h>
++#endif
+ 
+ #include "macosx-nat-inferior.h"
+ #include "macosx-nat-inferior-util.h"
+--- src/gdb/macosx/macosx-nat-info.c.orig	2009-09-25 09:16:50 +0200
++++ src/gdb/macosx/macosx-nat-info.c	2009-09-25 09:31:12 +0200
+@@ -45,6 +45,22 @@
+ #include "macosx-nat-inferior.h"
+ #include "macosx-nat-inferior-debug.h"
+ 
++#ifdef __ppc__
++#ifndef __darwin_ppc_thread_state
++#define __darwin_ppc_thread_state ppc_thread_state
++#define __r0       r0
++#define __srr0     srr0
++#define __srr1     srr1
++#define __cr       cr
++#define __xer      xer
++#define __lr       lr
++#define __ctr      ctr
++#endif
++#ifndef __darwin_ppc_exception_state
++#define __darwin_ppc_exception_state ppc_exception_state
++#endif
++#endif
++
+ extern macosx_inferior_status *macosx_status;
+ 
+ #define CHECK_ARGS(what, args) \

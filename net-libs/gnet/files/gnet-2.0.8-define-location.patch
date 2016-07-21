@@ -1,0 +1,20 @@
+--- a/tests/check/gnetcheck.h	2009-11-22 23:17:25.000000000 +0100
++++ b/tests/check/gnetcheck.h	2009-11-22 23:18:19.000000000 +0100
+@@ -310,6 +310,8 @@
+ 
+ gboolean _gnet_check_run_test_func (const gchar * func_name);
+ 
++#define _tcase_add_test  __gnet_tcase_add_test
++
+ static inline void
+ __gnet_tcase_add_test (TCase * tc, TFun tf, const gchar * func_name,
+ 	int sig_, int start_, int end_)
+@@ -319,8 +321,6 @@
+   }
+ }
+ 
+-#define _tcase_add_test  __gnet_tcase_add_test
+-
+ G_END_DECLS
+ 
+ #endif /* __GNET_CHECK_H__ */

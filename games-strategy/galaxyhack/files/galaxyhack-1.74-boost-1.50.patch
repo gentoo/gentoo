@@ -1,0 +1,77 @@
+--- ForceSelectWin.cpp.orig	2012-08-20 17:35:01.000000000 +0200
++++ ForceSelectWin.cpp	2012-08-20 17:47:19.000000000 +0200
+@@ -1596,15 +1596,15 @@
+ 	fs::directory_iterator directoryEnd; // default construction yields past-the-end
+ 	for (fs::directory_iterator iter(sourcePath); iter != directoryEnd; ++iter) {
+ 		if (is_directory(*iter)) {
+-			fs::create_directory(destPath.string() + "/" + iter->leaf());
+-			DoCopy(sourcePath.string() + "/" + iter->leaf(), destPath.string() + "/" + iter->leaf());
++			fs::create_directory(destPath.string() + "/" + iter->path().filename().string());
++			DoCopy(sourcePath.string() + "/" + iter->path().filename().string(), destPath.string() + "/" + iter->path().filename().string());
+ 			continue;
+ 		}
+ 		string destFile;
+-		if (iter->leaf() == sideName + ".dat")
++		if (iter->path().filename() == sideName + ".dat")
+ 			destFile = theInput + ".dat";
+ 		else	
+-			destFile = iter->leaf();
++			destFile = iter->path().filename().string();
+ 		
+ 		fs::copy_file(*iter, destPath.string() + "/" + destFile);
+ 	}
+--- Main.cpp.orig	2012-08-20 17:48:13.000000000 +0200
++++ Main.cpp	2012-08-20 17:50:51.000000000 +0200
+@@ -339,12 +339,6 @@
+ 
+ void GameInit(char* argv[]) {
+ 	namespace fs = boost::filesystem;
+-	//boost is really quite stupid
+-	#ifndef WIN32
+-		fs::path::default_name_check(fs::windows_name);
+-	#else
+-		fs::path::default_name_check(fs::native);
+-	#endif
+ 	
+ 	FindHomePath();
+ 	LoadSettings(argv);
+--- Menu_Base.cpp.orig	2012-08-20 17:51:05.000000000 +0200
++++ Menu_Base.cpp	2012-08-20 17:52:15.000000000 +0200
+@@ -206,7 +206,7 @@
+ 
+ 	fs::directory_iterator directoryEnd; // default construction yields past-the-end
+ 	for (fs::directory_iterator iter(directory); iter != directoryEnd; ++iter) {
+-		string filename = iter->leaf();
++		string filename = iter->path().filename().string();
+ 
+ 		if (filename.find('.') == filename.npos)
+ 			continue;
+@@ -237,7 +237,7 @@
+ 	fs::directory_iterator directoryEnd; // default construction yields past-the-end
+ 	for (fs::directory_iterator iter(globalSettings.bdp + "fleets/"); iter != directoryEnd; ++iter) {
+ 		if (fs::is_directory(*iter)) {
+-			string fleetName = iter->leaf();
++			string fleetName = iter->path().filename().string();
+ 
+ 			if (CheckFleetExists(fleetName)) {
+ 				tempItem.desc = fleetName;
+@@ -261,7 +261,7 @@
+ 	fs::path iterPath(GetFleetDir(whichSide));
+ 	fs::directory_iterator directoryEnd; // default construction yields past-the-end
+ 	for (fs::directory_iterator iter(iterPath); iter != directoryEnd; ++iter) {
+-		string filename = iter->leaf();
++		string filename = iter->path().filename().string();
+ 
+ 		if (filename.find('.') == filename.npos)
+ 			continue;
+--- Stuff.cpp.orig	2012-08-20 17:52:36.000000000 +0200
++++ Stuff.cpp	2012-08-20 17:53:11.000000000 +0200
+@@ -657,7 +657,7 @@
+ 	fs::directory_iterator directoryEnd; // default construction yields past-the-end
+ 	for (fs::directory_iterator iter(tempPath); iter != directoryEnd; ++iter) {
+ 		if (fs::is_directory(*iter) && !fs::is_empty(*iter))
+-			RemoveDirectory(iter->string());
++			RemoveDirectory(iter->path().string());
+ 		else
+ 			fs::remove(*iter);
+ 	}

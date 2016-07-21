@@ -1,0 +1,47 @@
+You will need to provide a database for your postfixadmin installation.
+
+This assumes you have some knowledge of MySQL, and already have it
+installed and configured. If not, please refer to the Gentoo MySQL
+guide at the following URL:
+
+http://www.gentoo.org/doc/en/mysql-howto.xml
+
+Log in to MySQL, and create a new database as well as a user with full
+access to this database. After that you will need to provide the details
+of this database and the associated user within the file
+
+${MY_INSTALLDIR}/config.inc.php
+
+Make sure you also set
+
+  $CONF['configured'] = true;
+
+in this file.
+
+Finally you should be able to complete the installation of postfixadmin
+by pointing your browser at
+
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/setup.php
+
+
+Updating from older version of Postfix Admin:
+  * When you are upgrading from an older Postfix Admin version, make sure you
+  * backup your database before you run the update script on your database.
+  *   mysqldump -a -u root -p > /tmp/postfixadmin-backup.sql
+
+  For update from 1.5.x version of Postfix Admin:
+    1. Please read the DOCUMENTS/UPGRADE.TXT
+	2. Run: http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/setup.php
+
+
+To use Virtual Vacation, please read VIRTUAL_VACATION_INSTALL.
+
+Check the config.inc.php file. There you can specify settings that are
+relevant to your setup.
+
+Postfix Admin contains 3 views of administration:
+  1. Site Admin view, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/admin/.
+  2. Domain Admin view, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/.
+  3. User Admin View, located at http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/users/.
+
+In order to do the initial configuration you have to go to the Site Admin view.

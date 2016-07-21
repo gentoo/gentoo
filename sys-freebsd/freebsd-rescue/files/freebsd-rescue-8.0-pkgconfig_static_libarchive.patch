@@ -1,0 +1,11 @@
+--- rescue/rescue/Makefile.old	2010-03-12 12:14:17 +0100
++++ rescue/rescue/Makefile	2010-03-12 12:14:47 +0100
+@@ -209,7 +209,7 @@
+ CRUNCH_LIBS+= -lbz2
+ 
+ CRUNCH_PROGS_usr.bin+= tar
+-CRUNCH_LIBS+= -larchive -lmd
++CRUNCH_LIBS+= `pkg-config --static --libs libarchive` -lmd
+ .if ${MK_OPENSSL} != "no"
+ CRUNCH_LIBS+= -lcrypto
+ .endif

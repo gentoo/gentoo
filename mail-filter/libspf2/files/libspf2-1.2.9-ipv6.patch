@@ -1,0 +1,61 @@
+$NetBSD: patch-aa,v 1.1 2009/09/08 10:36:27 tron Exp $
+
+Fix an abort() caused by miscalculating the size of an internal buffer.
+This can crash applications using "libspf2" (e.g. "milter-greylist")
+in an e-mail gets delivered via SMTP over IPv6 depending on the
+remote machine's IPv6 address.
+
+--- src/libspf2/spf_expand.c.orig	2008-11-03 21:29:00.000000000 +0000
++++ src/libspf2/spf_expand.c	2009-09-08 11:27:52.000000000 +0100
+@@ -245,7 +245,7 @@
+ 		case PARM_CLIENT_IP:		/* SMTP client IP				*/
+ #ifdef COMPUTE
+ 			if (compute_length) {
+-				len = sizeof(ip6_buf);
++				len = sizeof(ip6_rbuf);
+ 				if (d->dv.url_encode)
+ 					len *= 3;
+ 				buflen += len;
+
+http://www.gossamer-threads.com/lists/spf/devel/35098
+
+--- src/libspf2/spf_compile.c	2008-11-03 15:37:33.000000000 -0500
++++ src/libspf2/spf_compile.c	2009-09-07 23:46:02.000000000 -0400
+@@ -778,7 +778,7 @@
+ 	const char			*end;
+ 	const char			*p;
+ 
+-	char				 buf[ INET_ADDRSTRLEN ];
++	char				 buf[ INET6_ADDRSTRLEN ];
+ 	size_t				 len;
+ 	int					 err;
+ 
+--- src/libspf2/spf_interpret.c	2008-10-22 11:47:43.000000000 -0400
++++ src/libspf2/spf_interpret.c	2009-09-08 00:42:25.000000000 -0400
+@@ -505,7 +505,7 @@
+ 	char		dst_ip6_buf[ INET6_ADDRSTRLEN ];
+ 
+ 	struct in6_addr		src_ipv6;
+-	int				cidr, mask;
++	int				cidr, cidr_save, mask;
+ 	int				i;
+ 	int				match;
+ 
+@@ -517,6 +517,7 @@
+ 	cidr = SPF_i_mech_cidr(spf_request, mech);
+ 	if ( cidr == 0 )
+ 		cidr = 128;
++	cidr_save = cidr;
+ 
+ 	match = TRUE;
+ 	for( i = 0; i < array_elem( ipv6.s6_addr ) && match; i++ )
+@@ -538,7 +539,7 @@
+ 		INET_NTOP(AF_INET6, &ipv6.s6_addr,
+ 							dst_ip6_buf, sizeof(dst_ip6_buf));
+ 		SPF_debugf( "ip_match:  %s == %s  (/%d):  %d",
+-				src_ip6_buf, dst_ip6_buf, cidr, match );
++				src_ip6_buf, dst_ip6_buf, cidr_save, match );
+ 	}
+ 
+ 	return match;
+

@@ -1,0 +1,31 @@
+
+https://bugzilla.redhat.com/show_bug.cgi?id=867153
+
+Patch by: jkaluza
+
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c.longuser
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c
+@@ -80,6 +80,7 @@
+ 
+ #define MECH_NEGOTIATE "Negotiate"
+ #define SERVICE_NAME "HTTP"
++#define MAX_LOCAL_USERNAME 255
+ 
+ #include <httpd.h>
+ #include <http_config.h>
+@@ -1815,13 +1816,13 @@ do_krb5_an_to_ln(request_rec *r) {
+ 		    krb5_get_err_text(kcontext, code));
+ 	   goto end;
+   }
+-  MK_USER_LNAME = apr_pcalloc(r->pool, strlen(MK_USER)+1);
++  MK_USER_LNAME = apr_pcalloc(r->pool, MAX_LOCAL_USERNAME+1);
+   if (MK_USER_LNAME == NULL) {
+      log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
+ 	   	"ap_pcalloc() failed (not enough memory)");
+      goto end;
+   }
+-    code = krb5_aname_to_localname(kcontext, client, strlen(MK_USER), MK_USER_LNAME);
++    code = krb5_aname_to_localname(kcontext, client, MAX_LOCAL_USERNAME, MK_USER_LNAME);
+     if (code) {
+ 		  if (code != KRB5_LNAME_NOTRANS) {
+       			log_rerror(APLOG_MARK, APLOG_ERR, 0, r,

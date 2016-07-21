@@ -1,0 +1,11 @@
+--- LVM2/make.tmpl.in
++++ LVM2/make.tmpl.in
+@@ -395,7 +395,7 @@
+ 	( cat $(srcdir)/.exported_symbols; \
+ 	  if test x$(EXPORTED_HEADER) != x; then \
+ 		$(CC) -E -P $(INCLUDES) $(DEFS) $(EXPORTED_HEADER) | \
+-		$(SED) -ne "/^typedef|}/!s/.*[ *]\($(EXPORTED_FN_PREFIX)_[a-z0-9_]*\)(.*/\1/p"; \
++		LC_ALL=C $(SED) -ne "/^typedef|}/!s/.*[ *]\($(EXPORTED_FN_PREFIX)_[a-z0-9_]*\)(.*/\1/p"; \
+ 	  fi \
+ 	) > $@
+ 

@@ -1,0 +1,6 @@
+move x11-themes/qtcurve-qt4 x11-themes/qtcurve
+slotmove dev-haskell/cairo 2 0
+slotmove dev-haskell/gio 2 0
+slotmove dev-haskell/glib 2 0
+slotmove dev-haskell/gtk2hs-buildtools 2 0
+slotmove dev-haskell/pango 2 0

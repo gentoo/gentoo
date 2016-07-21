@@ -1,0 +1,21 @@
+diff --git a/source/shared_lib/sources/platform/posix/socket.cpp b/source/shared_lib/sources/platform/posix/socket.cpp
+index a5d4b92..cb8ceb4 100644
+--- a/source/shared_lib/sources/platform/posix/socket.cpp
++++ b/source/shared_lib/sources/platform/posix/socket.cpp
+@@ -2563,9 +2563,15 @@ int UPNP_Tools::upnp_init(void *param) {
+ 		const char *upnp_minissdpdsock = NULL;
+ 		int upnp_sameport = 0;
+ 		int upnp_ipv6 = 0;
++		unsigned char upnp_ttl = 2;
+ 		int upnp_error = 0;
+ 
+-#ifndef MINIUPNPC_VERSION_PRE1_6
++#if (MINIUPNPC_API_VERSION >= 14)
++		devlist = upnpDiscover(upnp_delay, upnp_multicastif, upnp_minissdpdsock, upnp_sameport, upnp_ipv6, upnp_ttl, &upnp_error);
++
++		if(SystemFlags::getSystemSettingType(SystemFlags::debugNetwork).enabled) SystemFlags::OutputDebug(SystemFlags::debugNetwork,"UPnP discover returned upnp_error = %d.\n",upnp_error);
++		if(SystemFlags::VERBOSE_MODE_ENABLED) printf("UPnP discover returned upnp_error = %d.\n",upnp_error);
++#elif (MINIUPNPC_API_VERSION >= 8)
+ 		devlist = upnpDiscover(upnp_delay, upnp_multicastif, upnp_minissdpdsock, upnp_sameport, upnp_ipv6, &upnp_error);
+ 
+ 		if(SystemFlags::getSystemSettingType(SystemFlags::debugNetwork).enabled) SystemFlags::OutputDebug(SystemFlags::debugNetwork,"UPnP discover returned upnp_error = %d.\n",upnp_error);

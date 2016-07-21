@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription lang="en">
+A exciting Brick Breaker with 50 levels of game and 11 special levels,
+distributed on the 2 modes of game to give the player a sophisticated system of
+attack weapons with an enormous power of fire that can be build by gaining
+bonuses. Numerous decors, musics and sounds complete this great game. This
+game was ported from the Commodore Amiga.
+</longdescription>
+</pkgmetadata>

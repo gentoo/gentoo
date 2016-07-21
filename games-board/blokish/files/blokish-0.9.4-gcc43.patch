@@ -1,0 +1,12 @@
+--- src/base.h
++++ src/base.h
+@@ -25,6 +25,9 @@
+ #include <vector>
+ #include <fstream>
+ #include <iostream>
++#include <algorithm>
++#include <cstdlib>
++#include <climits>
+ 
+ enum BlokishID
+ {

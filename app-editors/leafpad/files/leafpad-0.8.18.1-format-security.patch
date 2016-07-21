@@ -1,0 +1,30 @@
+- dialog.c:39:3: error: format not a string literal and no format arguments [-Werror=format-security]
+
+--- src/dialog.c
++++ src/dialog.c
+@@ -36,6 +36,7 @@
+ 		GTK_DIALOG_DESTROY_WITH_PARENT,
+ 		type,
+ 		GTK_BUTTONS_NONE,
++		"%s",
+ 		str);
+ 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+ 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+@@ -61,6 +62,7 @@
+ 		GTK_DIALOG_DESTROY_WITH_PARENT,
+ 		GTK_MESSAGE_QUESTION,
+ 		GTK_BUTTONS_NONE,
++		"%s",
+ 		str);
+ 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+ 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+--- src/gtkprint.c
++++ src/gtkprint.c
+@@ -165,6 +165,7 @@
+ 		GTK_DIALOG_DESTROY_WITH_PARENT,
+ 		GTK_MESSAGE_ERROR,
+ 		GTK_BUTTONS_NONE,
++		"%s",
+ 		message);
+ 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+ 	gtk_dialog_add_buttons(GTK_DIALOG(dialog),

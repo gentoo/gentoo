@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/168012
+
+--- AcidRip/acidrip.pm
++++ AcidRip/acidrip.pm
+@@ -680,7 +680,7 @@
+     message( "Running " . get_command("cropdetect") );
+     open( CROP, get_command("cropdetect") . " 2>&1 |" );
+     while (<CROP>) {
+-      if ( $_ =~ /crop area.*\s(crop=\d*:\d*:\d*:\d*)/ ) { $crop{$1}++ }
++      if ( $_ =~ /Crop area.*\s(crop=\d*:\d*:\d*:\d*)/ ) { $crop{$1}++ }
+       $crop_output .= $_;
+       gui_check($_);
+     }
+@@ -863,7 +863,7 @@
+     if ( $::settings->{'mencoder_pid'} = open( MENCODER, "$menc 2>&1 |" ) ) {
+       $/ = "\r";
+ 			while (<MENCODER>) {
+-        if (/^Pos:\s*(\d+).\ds\s+(\d+)f\s+\(\s*(\d+)%\)\s+(\d+fps)\sTrem:\s+(\d+min)\s+(\d+mb).+\[([\d:]+)\]/) {
++	 if (/^Pos:\s*(\d+).\ds\s+(\d+)f\s+\(\s*(\d+)%\)\s+(\d+.\d+fps)\sTrem:\s+(\d+min)\s+(\d+mb).+\[([\d:]+)\]/) {
+           if ( $1 ne $sec )  { $sec  = $1; $::widgets->{'menc_seconds'}->set_text( hhmmss($1) ) }
+           if ( $4 ne $fps )  { $fps  = $4; $::widgets->{'menc_fps'}->set_text($4) }
+           if ( $6 ne $size ) { $size = $6; $::widgets->{'menc_filesize'}->set_text($6) }

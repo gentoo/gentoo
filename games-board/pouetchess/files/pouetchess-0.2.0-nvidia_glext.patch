@@ -1,0 +1,12 @@
+--- src/sxmlgui/GenUtils.h	2006-05-27 03:22:57.000000000 +0200
++++ src/sxmlgui/GenUtils.h.new	2006-06-12 20:35:32.000000000 +0200
+@@ -5,6 +5,9 @@
+ #include <iostream>
+ #include <fstream>
+ #include <vector>
++#ifndef GL_GLEXT_PROTOTYPES
++#define GL_GLEXT_PROTOTYPES 1
++#endif
+ #include <SDL/SDL_opengl.h>
+ 
+ #define deleteObject(A){ if(A){ delete   A; A = NULL; } }

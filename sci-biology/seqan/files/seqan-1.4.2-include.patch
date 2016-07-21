@@ -1,0 +1,16 @@
+ core/include/seqan/index/index_qgram_openaddressing.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/core/include/seqan/index/index_qgram_openaddressing.h b/core/include/seqan/index/index_qgram_openaddressing.h
+index 4a6c2e6..8cc9a42 100644
+--- a/core/include/seqan/index/index_qgram_openaddressing.h
++++ b/core/include/seqan/index/index_qgram_openaddressing.h
+@@ -35,6 +35,8 @@
+ #ifndef SEQAN_HEADER_INDEX_QGRAM_OPENADRESSING_H
+ #define SEQAN_HEADER_INDEX_QGRAM_OPENADRESSING_H
+ 
++#include <smmintrin.h>
++
+ namespace SEQAN_NAMESPACE_MAIN
+ {
+ 

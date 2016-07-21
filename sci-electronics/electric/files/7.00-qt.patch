@@ -1,0 +1,35 @@
+--- Makefile.in.oric	2004-03-15 10:31:14.000000000 +1030
++++ Makefile.in	2004-03-15 10:39:14.000000000 +1030
+@@ -1,10 +1,10 @@
+ ########################################################## USING QT
+ ##### If using Qt, uncomment these five lines
+-# GRAPH_FLAGS = -DUSEQT -DQT_THREAD_SUPPORT -I$(QTDIR)/include $(QUI_CFLAGS)
+-# GRAPH_LIBS = -L$(QTDIR)/lib $(QUI_LIBS) $(QT_LIB_EXTRAS)
+-# GRAPH_OBJS = $(GRAPH_OBJS_QT)
+-# GRAPH_SRC = $(GRAPH_SRC_QT)
+-# CCOMPILER = @CXX@
++GRAPH_FLAGS = -DUSEQT -DQT_THREAD_SUPPORT -I$(QTDIR)/include $(QUI_CFLAGS)
++GRAPH_LIBS = -L$(QTDIR)/lib $(QUI_LIBS) $(QT_LIB_EXTRAS)
++GRAPH_OBJS = $(GRAPH_OBJS_QT)
++GRAPH_SRC = $(GRAPH_SRC_QT)
++CCOMPILER = @CXX@
+ 
+ ##### Qt on UNIX/Linux: uncomment the next two lines:
+ ELECTRIC_TARGET = electric-target-unix
+@@ -20,11 +20,11 @@
+ 
+ ########################################################### USING MOTIF
+ ##### If using Motif (or OpenMotif/Lesstif), uncomment these five lines
+-GRAPH_FLAGS = @X_CFLAGS@
+-GRAPH_LIBS = -lXm @XMULIB@ -lXt @XPLIB@ @XEXTLIB@ -lX11
+-GRAPH_OBJS = $(GRAPH_OBJS_XT)
+-GRAPH_SRC = $(GRAPH_SRC_XT)
+-CCOMPILER = @PTHREAD_CC@
++#GRAPH_FLAGS = @X_CFLAGS@
++#GRAPH_LIBS = -lXm @XMULIB@ -lXt @XPLIB@ @XEXTLIB@ -lX11
++#GRAPH_OBJS = $(GRAPH_OBJS_XT)
++#GRAPH_SRC = $(GRAPH_SRC_XT)
++#CCOMPILER = @PTHREAD_CC@
+ 
+ ##### For the general-purpose X facility, uncomment this line
+ XPOWER = -DANYDEPTH

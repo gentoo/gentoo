@@ -1,0 +1,28 @@
+From 4ba3a1a92a59658bc9f5f9d0745db8bb829778cb Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Wed, 13 Apr 2016 23:38:47 +0100
+Subject: [PATCH] filemanager/mountlist.c: add makedev() declaration
+
+On glibc-2.23 link fails as
+
+    $ mc-9999/src/filemanager/mountlist.c:750: undefined reference to `makedev'
+
+Reported-by: Thomas D.
+Bug: https://bugs.gentoo.org/579858
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+
+diff --git a/src/filemanager/mountlist.c b/src/filemanager/mountlist.c
+index 166b246..7d6e178 100644
+--- a/src/filemanager/mountlist.c
++++ b/src/filemanager/mountlist.c
+@@ -186,6 +186,7 @@
+ 
+ #include "lib/global.h"
+ #include "lib/strutil.h"        /* str_verscmp() */
++#include "lib/unixcompat.h"     /* makedev */
+ #include "mountlist.h"
+ 
+ /*** global variables ****************************************************************************/
+-- 
+2.8.1
+

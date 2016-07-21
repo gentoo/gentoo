@@ -1,0 +1,32 @@
+--- src/makefile.linux.orig	2005-12-16 22:03:24.000000000 -0500
++++ src/makefile.linux	2005-12-16 22:04:18.000000000 -0500
+@@ -34,13 +34,14 @@
+ nltime.o : nlinternal.h nltime.c
+ 
+ install:
++	mkdir -p $(LIBDIR) $(INCDIR) ; chmod 755 $(LIBDIR) $(INCDIR)
+ 	cp $(OUTPUT) $(LIBDIR)
+ 	cp $(STATIC) $(LIBDIR)
+ 	chmod 755 $(LIBDIR)/$(OUTPUT)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
+-	ln -s $(LIBDIR)/$(OUTPUT) $(LIBDIR)/$(LIBNAME).so
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION).$(MINOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so.$(MAJOR_VERSION)
++	ln -s $(OUTPUT) $(LIBDIR)/lib$(LIBNAME).so
++	ln -s $(OUTPUT) $(LIBDIR)/$(LIBNAME).so
+ 	cp ../include/nl.h $(INCDIR)/nl.h
+ 	chmod 644 $(INCDIR)/nl.h
+ 
+--- src/makefile.linux.old	2010-09-10 09:44:53.000000000 +0200
++++ src/makefile.linux	2010-09-10 09:45:09.000000000 +0200
+@@ -13,7 +13,7 @@
+ STATIC = libNL.a
+ OPTFLAGS = -funroll-all-loops -ffast-math -fomit-frame-pointer -O2 -D_GNU_SOURCE -D_REENTRANT
+ CFLAGS = -Wall -fPIC $(INCLUDE) $(OPTFLAGS)
+-LIBFLAGS = -shared -Wl,-soname,NL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
++LIBFLAGS = ${LDFLAGS} -shared -Wl,-soname,libNL.so.$(MAJOR_VERSION).$(MINOR_VERSION) -rdynamic -lpthread
+ OBJECTS = crc.o errorstr.o nl.o sock.o group.o loopback.o err.o thread.o mutex.o condition.o nltime.o
+ 
+ all: $(OBJECTS)

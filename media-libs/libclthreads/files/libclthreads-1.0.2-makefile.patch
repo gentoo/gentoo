@@ -1,0 +1,23 @@
+Index: clthreads-1.0.2/Makefile
+===================================================================
+--- clthreads-1.0.2.orig/Makefile
++++ clthreads-1.0.2/Makefile
+@@ -16,14 +16,13 @@ CLTHREADS_H = clthreads.h
+ 
+ 
+ $(CLTHREADS_MIN): $(CLTHREADS_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(CLTHREADS_MAJ) -o $(CLTHREADS_MIN) $(CLTHREADS_O) $(CLTHREADS_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(CLTHREADS_MAJ) -o $(CLTHREADS_MIN) $(CLTHREADS_O) $(CLTHREADS_DEP)
+ 
+ 
+ install:	$(CLTHREADS_MIN)
+-	cp -f $(CLTHREADS_H) $(CLTHREADS_INCDIR)
+-	cp -f $(CLTHREADS_MIN) $(CLTHREADS_LIBDIR)
+-	/sbin/ldconfig -n $(CLTHREADS_LIBDIR)
+-	ln -sf $(CLTHREADS_MIN) $(CLTHREADS_LIBDIR)/$(CLTHREADS_SO)
++	install -D $(CLTHREADS_H) $(DESTDIR)$(CLTHREADS_INCDIR)/$(CLTHREADS_H)
++	install -D $(CLTHREADS_MIN) $(DESTDIR)$(CLTHREADS_LIBDIR)/$(CLTHREADS_MIN)
++	ln -sf $(CLTHREADS_MIN) $(DESTDIR)$(CLTHREADS_LIBDIR)/$(CLTHREADS_SO)
+ 
+ 
+ clean:

@@ -1,0 +1,39 @@
+diff -burN sox-14.4.0.old//src/ffmpeg.c sox-14.4.0/src/ffmpeg.c
+--- sox-14.4.0.old//src/ffmpeg.c	2012-11-25 21:59:45.990825656 +0100
++++ sox-14.4.0/src/ffmpeg.c	2012-11-25 22:07:06.436809624 +0100
+@@ -98,7 +98,7 @@
+   ic->error_recognition = 1;
+ #endif
+ 
+-  if (!codec || avcodec_open(enc, codec) < 0)
++  if (!codec || avcodec_open2(enc, codec, NULL) < 0)
+     return -1;
+   if (enc->codec_type != AVMEDIA_TYPE_AUDIO) {
+     lsx_fail("ffmpeg CODEC %x is not an audio CODEC", enc->codec_type);
+@@ -180,7 +180,7 @@
+   }
+ 
+   /* Get CODEC parameters */
+-  if ((ret = av_find_stream_info(ffmpeg->ctxt)) < 0) {
++  if ((ret = avformat_find_stream_info(ffmpeg->ctxt, NULL)) < 0) {
+     lsx_fail("ffmpeg could not find CODEC parameters for %s", ft->filename);
+     return SOX_EOF;
+   }
+@@ -274,7 +274,7 @@
+   AVCodecContext *c;
+   AVStream *st;
+ 
+-  st = av_new_stream(oc, 1);
++  st = avformat_new_stream(oc, NULL);
+   if (!st) {
+     lsx_fail("ffmpeg could not alloc stream");
+     return NULL;
+@@ -308,7 +308,7 @@
+   }
+ 
+   /* open it */
+-  if (avcodec_open(c, codec) < 0) {
++  if (avcodec_open2(c, codec, NULL) < 0) {
+     lsx_fail("ffmpeg could not open CODEC");
+     return SOX_EOF;
+   }

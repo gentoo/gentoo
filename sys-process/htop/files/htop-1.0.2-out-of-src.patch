@@ -1,0 +1,30 @@
+ Makefile.am           | 2 +-
+ scripts/MakeHeader.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 05a72e7..dd28a87 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -43,7 +43,7 @@ debug:
+ 	$(MAKE) all CFLAGS="" AM_CPPFLAGS="-ggdb -DDEBUG"
+ 
+ .c.h:
+-	scripts/MakeHeader.py $<
++	$(top_srcdir)/scripts/MakeHeader.py $<
+ 
+ cppcheck:
+ 	cppcheck -q -v . --enable=all -DHAVE_CGROUP -DHAVE_OPENVZ -DHAVE_TASKSTATS
+diff --git a/scripts/MakeHeader.py b/scripts/MakeHeader.py
+index 55eeed4..46af921 100755
+--- a/scripts/MakeHeader.py
++++ b/scripts/MakeHeader.py
+@@ -11,7 +11,7 @@ state = ANY
+ static = 0
+ 
+ file = open(sys.argv[1])
+-name = sys.argv[1][:-2]
++name = os.path.basename(sys.argv[1][:-2])
+ 
+ out = open(name + ".h", "w")
+ class writer:

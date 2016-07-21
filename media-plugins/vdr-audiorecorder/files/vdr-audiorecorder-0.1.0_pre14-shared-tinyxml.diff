@@ -1,0 +1,132 @@
+unbundle source included tinyxml, use now shared libs from dev-libs/tinyxml
+bugs.gentoo.org #349507
+Joerg bornkessel <hd_brummy@g.o> 2010 Dec 28
+
+diff -Naur audiorecorder-0.1.0-pre14.orig/Makefile audiorecorder-0.1.0-pre14/Makefile
+--- audiorecorder-0.1.0-pre14.orig/Makefile	2010-12-28 16:10:30.000000000 +0100
++++ audiorecorder-0.1.0-pre14/Makefile	2010-12-28 16:25:52.000000000 +0100
+@@ -46,6 +46,8 @@
+ 
+ LIBS = $(shell taglib-config --libs)
+ 
++LIBS += -ltinyxml
++
+ DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -DTIXML_USE_STL
+ 
+ ifdef AUDIORECORDER_DEVEL
+@@ -68,7 +70,7 @@
+ 
+ ### The object files (add further files here):
+ 
+-OBJS = $(PLUGIN).o mainmenu.o browse.o browse-item.o column.o dispatcher.o audioreceiver.o postdata.o trackinfo.o postproc.o rds.o convert.o cache.o xml-cache.o xml-base.o setup.o mpa-frame.o tinyxml/tinyxml.o tinyxml/tinyxmlerror.o tinyxml/tinyxmlparser.o audiorecorder_i18n.o
++OBJS = $(PLUGIN).o mainmenu.o browse.o browse-item.o column.o dispatcher.o audioreceiver.o postdata.o trackinfo.o postproc.o rds.o convert.o cache.o xml-cache.o xml-base.o setup.o mpa-frame.o audiorecorder_i18n.o
+ 
+ ### Implicit rules:
+ 
+diff -Naur audiorecorder-0.1.0-pre14.orig/xml-base.c audiorecorder-0.1.0-pre14/xml-base.c
+--- audiorecorder-0.1.0-pre14.orig/xml-base.c	2010-12-28 16:10:30.000000000 +0100
++++ audiorecorder-0.1.0-pre14/xml-base.c	2010-12-28 16:38:29.000000000 +0100
+@@ -10,7 +10,7 @@
+ 
+ 
+ using namespace std;
+-using namespace a_land;
++/*using namespace a_land; */
+ 
+ /* --- cXmlBase ------------------------------------------------------------- */
+ 
+diff -Naur audiorecorder-0.1.0-pre14.orig/xml-base.h audiorecorder-0.1.0-pre14/xml-base.h
+--- audiorecorder-0.1.0-pre14.orig/xml-base.h	2010-12-28 16:10:30.000000000 +0100
++++ audiorecorder-0.1.0-pre14/xml-base.h	2010-12-28 16:39:35.000000000 +0100
+@@ -5,7 +5,7 @@
+ #ifndef __XML_BASE_H
+ #define __XML_BASE_H
+ 
+-#include "tinyxml/tinyxml.h"
++#include <tinyxml.h>
+ 
+ #include <string>
+ 
+@@ -13,8 +14,8 @@
+ private:
+         std::string path, root_element;
+ 
+-        a_land::TiXmlDocument *document;
+-        a_land::TiXmlElement *root;
++        TiXmlDocument *document;
++        TiXmlElement *root;
+ protected:
+ 	virtual ~cXmlBase();
+ 
+@@ -25,11 +26,11 @@
+         bool load(const std::string &_path);
+         void clear(void);
+ 
+-        void add_subelement(a_land::TiXmlElement &main_element,
++        void add_subelement(TiXmlElement &main_element,
+                 const char *name, const std::string &text);
+ 
+-        a_land::TiXmlDocument *get_document(void) { return document; }
+-        a_land::TiXmlElement *get_root(void) { return root; }
++        TiXmlDocument *get_document(void) { return document; }
++        TiXmlElement *get_root(void) { return root; }
+         void set_root(void);
+ };
+ 
+diff -Naur audiorecorder-0.1.0-pre14.orig/xml-cache.c audiorecorder-0.1.0-pre14/xml-cache.c
+--- audiorecorder-0.1.0-pre14.orig/xml-cache.c	2010-12-28 16:10:30.000000000 +0100
++++ audiorecorder-0.1.0-pre14/xml-cache.c	2010-12-28 16:41:27.000000000 +0100
+@@ -19,7 +19,7 @@
+ 
+ 
+ using namespace std;
+-using namespace a_land;
++/*using namespace a_land; */
+ 
+ /* --- cXmlCache ------------------------------------------------------------ */
+ 
+@@ -111,7 +111,7 @@
+             trackinfo.get_title().empty())
+                 return;
+ 
+-        a_land::TiXmlElement track("track");
++        TiXmlElement track("track");
+         track.SetAttribute("path", trackinfo.get_partial_path());
+         track.SetAttribute("date", trackinfo.get_date());
+         track.SetAttribute("time", trackinfo.get_time());
+@@ -146,7 +146,7 @@
+ 
+ void cXmlCache::copy_to_objects(void)
+ {
+-        a_land::TiXmlElement *xml_track = get_root()->FirstChildElement("track");
++        TiXmlElement *xml_track = get_root()->FirstChildElement("track");
+ 
+         while (xml_track) {
+                 cTrackInfo trackinfo;
+@@ -155,7 +155,7 @@
+ 
+                 if (path.empty()) {
+                         /* remove deleted files from the xml-cache */
+-                        a_land::TiXmlElement *tmp = xml_track;
++                        TiXmlElement *tmp = xml_track;
+                         xml_track = xml_track->NextSiblingElement("track");
+                         get_root()->RemoveChild(tmp);
+ 
+@@ -169,7 +169,7 @@
+                 if (access(path.c_str(), F_OK) == -1) {
+                         dsyslog("[audiorecorder]: copy %s : (%s, %s())", path.c_str(), __FILE__, __func__);
+                         /* remove deleted files from the xml-cache */
+-                        a_land::TiXmlElement *tmp = xml_track;
++                        TiXmlElement *tmp = xml_track;
+                         xml_track = xml_track->NextSiblingElement("track");
+                         get_root()->RemoveChild(tmp);
+ 
+@@ -181,7 +181,7 @@
+                 if (xml_track->Attribute("time"))
+                         trackinfo.set_time(xml_track->Attribute("time"));
+ 
+-                for (a_land::TiXmlElement *element = xml_track->FirstChildElement();
++                for (TiXmlElement *element = xml_track->FirstChildElement();
+                      element; element = element->NextSiblingElement()) {
+                         if (element->FirstChild() == NULL)
+                                 continue;

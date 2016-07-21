@@ -1,0 +1,10 @@
+--- src/sdb.h
++++ src/sdb.h
+@@ -35,6 +35,7 @@
+ #include <vector>
+ #include <fstream>
+ #include <iostream>
++#include <climits>
+ 
+ #ifndef __APPLE__
+ #include <SDL/SDL.h>

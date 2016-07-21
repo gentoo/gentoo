@@ -1,0 +1,20 @@
+--- unix.orig/ciftab.f	2006-10-12 11:44:46.000000000 -0700
++++ unix/ciftab.f	2006-10-12 11:38:22.000000000 -0700
+@@ -377,7 +377,7 @@
+ C systems.  It enables a 'read-only' file to be opened for reading.
+ C
+       OPEN(LR,FILE=CIFDIR(1:K)//'ciftab.'//IS(1:L),STATUS='OLD',
+-     +READONLY,ERR=5)
++     +ERR=5)
+       GOTO 6
+    4  WRITE(*,'(/A)')' ** Cannot open file **'
+       GOTO 108
+@@ -1332,7 +1332,7 @@
+    6  FORMAT(3X,4('h  k  l   Fo   Fc   s',5X),'h  k  l   Fo   Fc   s',
+      +A1/A1)
+    7  FORMAT(4(I4,2I3,2I5,I4,2X),I4,2I3,2I5,I4)
+-   8  FORMAT($,1X,A)
++   8  FORMAT(1X,A,$)
+ C
+       WRITE(LO,1)' '//ESC//AMP//'l0o5c1x'//ESC//'(0u'//
+      +ESC//'(s0p16.66h8.5v0s0b0T'//CR

@@ -1,0 +1,44 @@
+From ba98f5e531f915637c535e0a0f90e4cd87ac4f74 Mon Sep 17 00:00:00 2001
+From: Philipp Kern <pkern@debian.org>
+Date: Sun, 18 Mar 2012 19:01:44 +0100
+Subject: [PATCH 2/2] code/util/gtk-compat.hpp: fix render_icon with missing
+ icons and Gtk3
+
+2012-03-18  Philipp Kern  <phil@0x539.de>
+
+        * code/util/gtk-compat.hpp: Fix the call of
+        gtk-widget-render-icon-pixbuf, which is allowed to return NULL if
+        the stock icon does not exist.  Guard it with MISSING_IMAGE.
+---
+ ChangeLog                |    6 ++++++
+ code/util/gtk-compat.hpp |    7 ++++++-
+ 2 files changed, 12 insertions(+), 1 deletions(-)
+
+diff --git a/code/util/gtk-compat.hpp b/code/util/gtk-compat.hpp
+index 1de7383..73332ab 100644
+--- a/code/util/gtk-compat.hpp
++++ b/code/util/gtk-compat.hpp
+@@ -27,6 +27,7 @@
+ # define USE_GTKMM3
+ #endif
+ 
++#include <gtkmm/stock.h>
+ #include <gtkmm/combobox.h>
+ #include <gtkmm/notebook.h>
+ #ifndef USE_GTKMM3
+@@ -122,7 +123,11 @@ inline Glib::RefPtr<Gdk::Pixbuf> render_icon(Gtk::Widget& widget,
+                                              Gtk::IconSize size)
+ {
+ #ifdef USE_GTKMM3
+-	return widget.render_icon_pixbuf(stock_id, size);
++	Glib::RefPtr<Gdk::Pixbuf> pixbuf = widget.render_icon_pixbuf(stock_id, size);
++	if(!pixbuf) // icon not found
++		pixbuf = widget.render_icon_pixbuf(Gtk::Stock::MISSING_IMAGE, size);
++	g_assert(pixbuf);
++	return pixbuf;
+ #else
+ 	return widget.render_icon(stock_id, size);
+ #endif
+-- 
+1.7.9.1
+

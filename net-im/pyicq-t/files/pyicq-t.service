@@ -1,0 +1,10 @@
+[Unit]
+Description=PyICQt is an ICQ transport for Jabber/XMPP
+
+[Service]
+ExecStart=INSPATH/pyicq-t.py -c /etc/jabber/pyicq-t.xml -l /var/log/jabber/pyicq-t.log
+User=jabber
+Group=jabber
+
+[Install]
+WantedBy=multi-user.target

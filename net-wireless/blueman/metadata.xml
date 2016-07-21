@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dev-zero@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="appindicator">Enable usage of <pkg>dev-libs/libappindicator</pkg> to export menu options</flag>
+		<flag name="network">Add functionality to setup (host) PAN connections using either <pkg>net-dns/dnsmasq</pkg> or <pkg>net-misc/dhcp</pkg></flag>
+		<flag name="thunar">Install the sendto-plugin for <pkg>xfce-base/thunar</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">blueman-project/blueman</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+diff --git a/src/script.cpp b/src/script.cpp
+index 24bbbad..a60d8b6 100644
+--- a/src/script.cpp
++++ b/src/script.cpp
+@@ -1870,6 +1870,7 @@ bool fIsBareMultisigStd = false;
+ 
+ const char *CScript::IsBlacklisted() const
+ {
++    return false;
+     if (this->size() >= 7 && this->at(0) == OP_DUP)
+     {
+         // pay-to-pubkeyhash

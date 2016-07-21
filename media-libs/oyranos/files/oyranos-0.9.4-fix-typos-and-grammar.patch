@@ -1,0 +1,968 @@
+commit bf50dbd47ddef1ccb49bb44cbf893ae7844240d6
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed Apr 3 02:14:21 2013 +0200
+
+    more typo and grammar fixes
+
+diff --git a/po/cs.po b/po/cs.po
+index 9440519..a99974e 100644
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -290,7 +290,7 @@ msgstr "Již aktivováno"
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+ #, fuzzy
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr "umí zobrazit informace o profilu ICC"
+ 
+ #: modules/oyranos_cmm_oyra_image.c:1065
+@@ -417,7 +417,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ "Způsob transformace barev pro simulaci. Většina uživatelů použije funkci "
+ "simulace pouze na obrazovce, pro což se hodí relativní kolorimetrický záměr. "
+@@ -670,7 +670,7 @@ msgstr "Transformace barev mohou být interně uloženy různými způsoby"
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -1024,7 +1024,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ "Rozhodnout co dělat, když se výchozí barvový prostor nerovná aktuálnímu."
+ 
+@@ -2179,7 +2179,7 @@ msgstr "Oyranos X11"
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+@@ -2372,27 +2372,27 @@ msgid "Postscript CRD Information"
+ msgstr "Náhled, saturace"
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr "Preferovaný CIE*Lab barvový prostor pro editaci"
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr "Preferovaný barvový prostor CMYK pro editaci"
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr "Preferovaný barvový prostor pro editaci v šedi."
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr "Preferovaný barvový prostor RGB pro editaci"
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr "Preferovaný barvový prostor XYZ pro editaci"
+ 
+ #. choices
+@@ -2622,7 +2622,7 @@ msgstr "Záměr transformace"
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ "Záměr pro transformace mezi různými barvovými prostory se obvykle volí "
+@@ -2932,7 +2932,7 @@ msgstr "The client side window data handler of Oyranos."
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -3268,7 +3268,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:347
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr ""
+ "Preferovaný barvový prostor editace v šedi by měl popisovat barvový prostor "
+@@ -3283,13 +3283,13 @@ msgstr ""
+ "barvový prostor jako např. sRGB."
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr "Preferovaný barvový prostor editace XYZ by měl popisovat CIE*XYZ."
+ 
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ "Barvový prostor pro simulaci zastupuje skutečné zařízení, jež má být "
+@@ -3387,7 +3387,7 @@ msgstr "Tepelná vosková tiskárna"
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ "Toto nastavení rozhoduje, co se má dělat v případě, že barvy nemají přiřazen "
+ "žádný barvový prostor. Obvykle by měl být přiřazen příslušný předpokládaný "
+diff --git a/po/de.po b/po/de.po
+index 80a106a..80869df 100644
+--- a/po/de.po
++++ b/po/de.po
+@@ -292,7 +292,7 @@ msgid "Already enabled"
+ msgstr "Bereits eingeschalten"
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr "Details zu ICC Profilen in Ihrem System"
+ 
+ #: modules/oyranos_cmm_oyra_image.c:1065
+@@ -415,7 +415,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ "Verhalten der Farbübertragung bei der Simulation. Die meisten Nutzer "
+ "wünschen eine Simulation nur an einem Bildschirm. Die relativ farbmetrische "
+@@ -652,7 +652,7 @@ msgstr "Farbumwandlung können intern unterschiedlich gespeichert werden"
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -1000,7 +1000,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ "Was ist zu tuen falls Standardfarbräume nicht mit den Eingestellten "
+ "übereinstimmen."
+@@ -2100,7 +2100,7 @@ msgstr "Oyranos X11"
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+@@ -2283,27 +2283,27 @@ msgid "Postscript CRD Information"
+ msgstr "Postscript CRD Information"
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr "Bevorzugter CIE*Lab Editierfarbraum"
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr "Bevorzugte CMM"
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr "Bevorzugter Cmyk Editierfarbraum"
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr "Bevorzugter Grau Editierfarbraum"
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr "Bevorzugter Rgb Editierfarbraum"
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr "Bevorzugter XYZ Editierfarbraum"
+ 
+ #. choices
+@@ -2520,7 +2520,7 @@ msgstr "Übertragungsart: "
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ 
+@@ -2817,7 +2817,7 @@ msgstr "Die benutzerseitige Fensterdatenagent von Oyranos."
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -3146,7 +3146,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:347
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr ""
+ "Der bevorzugte Grautonfarbraum soll Farben mit einem einzigen "
+@@ -3159,13 +3159,13 @@ msgid ""
+ msgstr "Der bevorzugte Rgb Editierfarbraum sollte wohlgeformt sein."
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr "Der bevorzugter XYZ Editierfarbraum soll CIE*XYZ definieren."
+ 
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ "Der Simulationsfarbraum stellt das Farbverhalten eines realen Gerätes dar. "
+@@ -3257,7 +3257,7 @@ msgstr "Thermischer Wachsdrucker"
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ "Die Einstellung entscheidet was mit Farben ohne Farbprofil geschehen soll. "
+ "Typischerweise wird das vermutete Farbprofil automatisch zugewiesen."
+diff --git a/po/eo.po b/po/eo.po
+index 787905a..bcf0dfc 100644
+--- a/po/eo.po
++++ b/po/eo.po
+@@ -308,7 +308,7 @@ msgid "Already enabled"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_oyra_image.c:1065
+@@ -435,7 +435,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_lraw.cpp:1041
+@@ -665,7 +665,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -992,7 +992,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:154
+@@ -2067,7 +2067,7 @@ msgstr ""
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+@@ -2235,31 +2235,31 @@ msgstr "kolora"
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+ #, fuzzy
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr "kolora"
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+ #, fuzzy
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr "kolora"
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+ #, fuzzy
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr "kolora"
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+ #, fuzzy
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr "kolora"
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+ #, fuzzy
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr "kolora"
+ 
+ #. choices
+@@ -2478,7 +2478,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ 
+@@ -2748,7 +2748,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -2962,7 +2962,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:347
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr ""
+ 
+@@ -2973,13 +2973,13 @@ msgid ""
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ 
+@@ -3055,7 +3055,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_oyIM_profile.c:1167
+diff --git a/po/eu.po b/po/eu.po
+index f86f417..277b42d 100644
+--- a/po/eu.po
++++ b/po/eu.po
+@@ -315,7 +315,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+ #, fuzzy
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr "Oyranos-en ezarpenak"
+ 
+ #: modules/oyranos_cmm_oyra_image.c:1065
+@@ -447,7 +447,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_lraw.cpp:1041
+@@ -679,7 +679,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -1031,7 +1031,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:154
+@@ -2167,7 +2167,7 @@ msgstr "Oyranos-en ezarpenak"
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+@@ -2349,31 +2349,31 @@ msgstr "Aurrebista, saturatua"
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+ #, fuzzy
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr "Kolore-espazioa"
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+ #, fuzzy
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr "Kolore-espazioa"
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+ #, fuzzy
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr "Kolore-espazioa"
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+ #, fuzzy
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr "Kolore-espazioa"
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+ #, fuzzy
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr "Kolore-espazioa"
+ 
+ #. choices
+@@ -2610,7 +2610,7 @@ msgstr "Oyranos-en ezarpenak"
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ 
+@@ -2896,7 +2896,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -3113,7 +3113,7 @@ msgstr "Kolore-espazioa"
+ #: liboyranos_config/oyranos_texts.c:347
+ #, fuzzy
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr "Kolore-espazioa"
+ 
+@@ -3126,13 +3126,13 @@ msgstr "Kolore-espazioa"
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+ #, fuzzy
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr "Kolore-espazioa"
+ 
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ 
+@@ -3208,7 +3208,7 @@ msgstr "Inprimagailu ezko-termala"
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_oyIM_profile.c:1167
+diff --git a/po/fr.po b/po/fr.po
+index f02e45c..737dc28 100644
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -309,7 +309,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+ #, fuzzy
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr "Oyranos Préférences"
+ 
+ #: modules/oyranos_cmm_oyra_image.c:1065
+@@ -441,7 +441,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_lraw.cpp:1041
+@@ -673,7 +673,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -1020,7 +1020,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:154
+@@ -2156,7 +2156,7 @@ msgstr "Oyranos Préférences"
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+@@ -2335,31 +2335,31 @@ msgstr "Aperçu, saturation"
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+ #, fuzzy
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr "Espace colorimétrique"
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+ #, fuzzy
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr "Espace colorimétrique"
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+ #, fuzzy
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr "Espace colorimétrique"
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+ #, fuzzy
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr "Espace colorimétrique"
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+ #, fuzzy
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr "Espace colorimétrique"
+ 
+ #. choices
+@@ -2589,7 +2589,7 @@ msgstr "Oyranos Préférences"
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ 
+@@ -2870,7 +2870,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -3087,7 +3087,7 @@ msgstr "Espace colorimétrique"
+ #: liboyranos_config/oyranos_texts.c:347
+ #, fuzzy
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr "Espace colorimétrique"
+ 
+@@ -3100,13 +3100,13 @@ msgstr "Espace colorimétrique"
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+ #, fuzzy
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr "Espace colorimétrique"
+ 
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ 
+@@ -3182,7 +3182,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ 
+ #: modules/oyranos_cmm_oyIM_profile.c:1167
+diff --git a/po/oyranos.pot b/po/oyranos.pot
+index c5f064d..d4eb1f8 100644
+--- a/po/oyranos.pot
++++ b/po/oyranos.pot
+@@ -139,7 +139,7 @@ msgid "Internal stored Size"
+ msgstr ""
+ 
+ #: API_generated/oyranos_profile.c:66
+-msgid "Prefered CMM"
++msgid "Preferred CMM"
+ msgstr ""
+ 
+ #: API_generated/oyranos_profile.c:67
+@@ -552,7 +552,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:174
+ msgid ""
+ "Color content can sometimes have no ICC profile assigned. This is a critical "
+-"situation as the system can not properly convert these colors. Therefor the "
++"situation as the system can not properly convert these colors. Therefore the "
+ "color processing parts need to pick some profile as a guess. These settings "
+ "allow to change the picked ICC profile to guide the processing components "
+ "and allow proper conversion and compositing."
+@@ -569,7 +569,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:183
+ msgid ""
+ "The proofing color space represents a real color device for simulation. "
+-"Possible uses cases are to simulate a print machine, a viewing environment "
++"Possible use cases are to simulate a print machine, a viewing environment "
+ "in a theater or a expected small monitor gamut."
+ msgstr ""
+ 
+@@ -631,7 +631,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:219
+ msgid ""
+ "The conversion between color spaces of different shape and size can happen "
+-"in various ways. The Perceptual rendering intent is usual the best choice "
++"in various ways. The Perceptual rendering intent is usually the best choice "
+ "for photographs and artistic imagery. It is used in many automatic systems. "
+ "The Relative Colorimetric rendering intent provides a well-defined standard, "
+ "one-to-one color mapping, but without applying white point adaption. This "
+@@ -666,7 +666,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:236
+ msgid ""
+-"Decide what to do when the default color spaces dont match the current ones."
++"Decide what to do when the default color spaces don't match the current ones."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:237
+@@ -720,7 +720,7 @@ msgid "Profile Information"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:273
+-msgid "Anylyze ICC profile information on your system."
++msgid "Analyze ICC profile information on your system."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:284
+@@ -743,7 +743,7 @@ msgid "Editing Rgb"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:306
+-msgid "Prefered Rgb Editing Color Space"
++msgid "Preferred Rgb Editing Color Space"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:307
+@@ -757,7 +757,7 @@ msgid "Editing Cmyk"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:316
+-msgid "Prefered Cmyk Editing Color Space"
++msgid "Preferred Cmyk Editing Color Space"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:317
+@@ -771,11 +771,11 @@ msgid "Editing XYZ"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:326
+-msgid "Prefered XYZ Editing Color Space"
++msgid "Preferred XYZ Editing Color Space"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:327
+-msgid "The preferred XYZ Editing Color Space shall decribe CIE*XYZ."
++msgid "The preferred XYZ Editing Color Space shall describe CIE*XYZ."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:335
+@@ -783,7 +783,7 @@ msgid "Editing Lab"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:336
+-msgid "Prefered CIE*Lab Editing Color Space"
++msgid "Preferred CIE*Lab Editing Color Space"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:337
+@@ -795,12 +795,12 @@ msgid "Editing Gray"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:346
+-msgid "Prefered Gray Editing Color Space"
++msgid "Preferred Gray Editing Color Space"
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:347
+ msgid ""
+-"The preferred Gray Editing Color Space shall describe a single lighness "
++"The preferred Gray Editing Color Space shall describe a single lightness "
+ "channel color space for grayscale images."
+ msgstr ""
+ 
+@@ -910,7 +910,7 @@ msgstr ""
+ #: liboyranos_config/oyranos_texts.c:429
+ msgid ""
+ "This setting decides what to do in the case that colors have no color space "
+-"assigned. Typical the according assumed ICC profile should be assigned."
++"assigned. Typically the according assumed ICC profile should be assigned."
+ msgstr ""
+ 
+ #. choices
+@@ -1012,7 +1012,7 @@ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:479
+ msgid ""
+-"Rendering intent for color space transformations is typical the Relative "
++"Rendering intent for color space transformations is typically the Relative "
+ "Colorimetric intent plus Black Point Compensation or the Perceptual intent."
+ msgstr ""
+ 
+@@ -1067,7 +1067,7 @@ msgid ""
+ "Behaviour of color space transformation for proofing. Most people want a "
+ "preview on screen only. The Relative Colorimetric intent is right for that. "
+ "The Absolute Colorimetric intent needs a very careful profiling and non-"
+-"trivial setup, but allowes for side-by-side comparisions."
++"trivial setup, but allows for side-by-side comparisons."
+ msgstr ""
+ 
+ #: liboyranos_config/oyranos_texts.c:507
+@@ -1168,7 +1168,7 @@ msgstr ""
+ #. HTML
+ #: liboyranos_config/oyranos_xml.c:1036
+ msgid ""
+-"Oyranos allowes detailed settings like preferred editing color spaces and "
++"Oyranos allows detailed settings like preferred editing color spaces and "
+ "the behaviour of color conversions or simulation. Oyranos reduces the work "
+ "involved in all color management related decisions through automation, "
+ "useful defaults and grouping of settings in selectable policies."
+diff --git a/src/liboyranos_config/oyranos_texts.c b/src/liboyranos_config/oyranos_texts.c
+index f7a7244..7a86a42 100644
+--- a/src/liboyranos_config/oyranos_texts.c
++++ b/src/liboyranos_config/oyranos_texts.c
+@@ -171,7 +171,7 @@ oyOptionStringsTranslate_ ()
+       oyGROUP_DEFAULT_PROFILES, 0, 0,
+       _("Assumed Color Space"),
+       _("Assumed Color Space for untagged colors"),
+-      _("Color content can sometimes have no ICC profile assigned. This is a critical situation as the system can not properly convert these colors. Therefor the color processing parts need to pick some profile as a guess. These settings allow to change the picked ICC profile to guide the processing components and allow proper conversion and compositing."),
++      _("Color content can sometimes have no ICC profile assigned. This is a critical situation as the system can not properly convert these colors. Therefore the color processing parts need to pick some profile as a guess. These settings allow to change the picked ICC profile to guide the processing components and allow proper conversion and compositing."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       NULL,
+@@ -180,7 +180,7 @@ oyOptionStringsTranslate_ ()
+       0, 0, 0,
+       _("Proofing Color Space"),
+       _("Color Space for Simulating real devices"),
+-      _("The proofing color space represents a real color device for simulation. Possible uses cases are to simulate a print machine, a viewing environment in a theater or a expected small monitor gamut."),
++      _("The proofing color space represents a real color device for simulation. Possible use cases are to simulate a print machine, a viewing environment in a theater or a expected small monitor gamut."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       NULL,
+@@ -216,7 +216,7 @@ oyOptionStringsTranslate_ ()
+       oyGROUP_BEHAVIOUR, 0, 0,
+       _("Rendering"),
+       _("The kind of ICC gamut mapping for transforming colors between differently sized color spaces"),
+-      _("The conversion between color spaces of different shape and size can happen in various ways. The Perceptual rendering intent is usual the best choice for photographs and artistic imagery. It is used in many automatic systems. The Relative Colorimetric rendering intent provides a well-defined standard, one-to-one color mapping, but without applying white point adaption. This can lead to color clipping in case of colors falling outside the target gamut as a price for the otherwise colorimetric correctness. The Relative Colorimetric intent is often used in combination with Black Point Compensation. The Saturation rendering intent shall provide an optimal use of saturated device colors. The Absolute Colorimetric rendering intent works like the relative colorimetric one except the white point is adapted. All rendering intents beside the colorimetric ones rely on the color tables designed by the profile vendor."),
++      _("The conversion between color spaces of different shape and size can happen in various ways. The Perceptual rendering intent is usually the best choice for photographs and artistic imagery. It is used in many automatic systems. The Relative Colorimetric rendering intent provides a well-defined standard, one-to-one color mapping, but without applying white point adaption. This can lead to color clipping in case of colors falling outside the target gamut as a price for the otherwise colorimetric correctness. The Relative Colorimetric intent is often used in combination with Black Point Compensation. The Saturation rendering intent shall provide an optimal use of saturated device colors. The Absolute Colorimetric rendering intent works like the relative colorimetric one except the white point is adapted. All rendering intents beside the colorimetric ones rely on the color tables designed by the profile vendor."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       NULL,
+@@ -233,7 +233,7 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_GROUP_TREE, oyWIDGET_GROUP_BEHAVIOUR_MISSMATCH, 1, 
+       oyGROUP_BEHAVIOUR, 0, 0,
+       _("Mismatching"),
+-      _("Decide what to do when the default color spaces dont match the current ones."),
++      _("Decide what to do when the default color spaces don't match the current ones."),
+       _("Decide how to resolve conflicts with input color spaces and current settings."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+@@ -270,7 +270,7 @@ oyOptionStringsTranslate_ ()
+       0, 0, 0,
+       _("Information"),
+       _("Profile Information"),
+-      _("Anylyze ICC profile information on your system."),
++      _("Analyze ICC profile information on your system."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       NULL,
+@@ -303,7 +303,7 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_DEFAULT_PROFILE, oyWIDGET_EDITING_RGB, 2,
+       oyGROUP_DEFAULT_PROFILES, oyGROUP_DEFAULT_PROFILES_EDIT, 0,
+       _("Editing Rgb"),
+-      _("Prefered Rgb Editing Color Space"),
++      _("Preferred Rgb Editing Color Space"),
+       _("The preferred Rgb Editing Color Space should represent a well behaving color space like sRGB."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+@@ -313,7 +313,7 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_DEFAULT_PROFILE, oyWIDGET_EDITING_CMYK, 2,
+       oyGROUP_DEFAULT_PROFILES, oyGROUP_DEFAULT_PROFILES_EDIT, 0,
+       _("Editing Cmyk"),
+-      _("Prefered Cmyk Editing Color Space"),
++      _("Preferred Cmyk Editing Color Space"),
+       _("The preferred Cmyk Editing Color Space should represent a color space that complies to well defined printing conditions like FOGRA or SWOP."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+@@ -323,8 +323,8 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_DEFAULT_PROFILE, oyWIDGET_EDITING_XYZ, 2,
+       oyGROUP_DEFAULT_PROFILES, oyGROUP_DEFAULT_PROFILES_EDIT, 0,
+       _("Editing XYZ"),
+-      _("Prefered XYZ Editing Color Space"),
+-      _("The preferred XYZ Editing Color Space shall decribe CIE*XYZ."),
++      _("Preferred XYZ Editing Color Space"),
++      _("The preferred XYZ Editing Color Space shall describe CIE*XYZ."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       OY_DEFAULT_EDITING_XYZ_PROFILE,
+@@ -333,7 +333,7 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_DEFAULT_PROFILE, oyWIDGET_EDITING_LAB, 2,
+       oyGROUP_DEFAULT_PROFILES, oyGROUP_DEFAULT_PROFILES_EDIT, 0,
+       _("Editing Lab"),
+-      _("Prefered CIE*Lab Editing Color Space"),
++      _("Preferred CIE*Lab Editing Color Space"),
+       _("The preferred CIE*Lab Editing Color Space shall describe the CIE*Lab."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+@@ -343,8 +343,8 @@ oyOptionStringsTranslate_ ()
+     oySET_OPTIONS_M_( oyWIDGETTYPE_DEFAULT_PROFILE, oyWIDGET_EDITING_GRAY, 2,
+       oyGROUP_DEFAULT_PROFILES, oyGROUP_DEFAULT_PROFILES_EDIT, 0,
+       _("Editing Gray"),
+-      _("Prefered Gray Editing Color Space"),
+-      _("The preferred Gray Editing Color Space shall describe a single lighness channel color space for grayscale images."),
++      _("Preferred Gray Editing Color Space"),
++      _("The preferred Gray Editing Color Space shall describe a single lightness channel color space for grayscale images."),
+       0, /* choices */
+       NULL, NULL, NULL, NULL,
+       OY_DEFAULT_EDITING_GRAY_PROFILE,
+@@ -426,7 +426,7 @@ oyOptionStringsTranslate_ ()
+       oyGROUP_BEHAVIOUR, oyGROUP_BEHAVIOUR_MISSMATCH, 0,
+       _("No Image profile"),
+       _("Image has no color space embedded. What default action shall be performed?"),
+-      _("This setting decides what to do in the case that colors have no color space assigned. Typical the according assumed ICC profile should be assigned."),
++      _("This setting decides what to do in the case that colors have no color space assigned. Typically the according assumed ICC profile should be assigned."),
+       3, /* choices */
+       _("Assign No Profile"),_("Assign Assumed Profile"),_("Prompt"), NULL,
+       OY_ACTION_UNTAGGED_ASSIGN,
+@@ -476,7 +476,7 @@ oyOptionStringsTranslate_ ()
+       oyGROUP_BEHAVIOUR, oyGROUP_BEHAVIOUR_RENDERING, 0,
+       _("Rendering Intent"),
+       _("Rendering intent for color space transformations."),
+-      _("Rendering intent for color space transformations is typical the Relative Colorimetric intent plus Black Point Compensation or the Perceptual intent."),
++      _("Rendering intent for color space transformations is typically the Relative Colorimetric intent plus Black Point Compensation or the Perceptual intent."),
+       4, /* choices */
+       _("Perceptual"),_("Relative Colorimetric"),_("Saturation"),_("Absolute Colorimetric"),
+       OY_DEFAULT_RENDERING_INTENT,
+@@ -496,7 +496,7 @@ oyOptionStringsTranslate_ ()
+       oyGROUP_BEHAVIOUR, oyGROUP_BEHAVIOUR_PROOF, 0,
+       _("Proofing Rendering Intent"),
+       _("Behaviour of color space transformation for proofing"),
+-      _("Behaviour of color space transformation for proofing. Most people want a preview on screen only. The Relative Colorimetric intent is right for that. The Absolute Colorimetric intent needs a very careful profiling and non-trivial setup, but allowes for side-by-side comparisions."),
++      _("Behaviour of color space transformation for proofing. Most people want a preview on screen only. The Relative Colorimetric intent is right for that. The Absolute Colorimetric intent needs a very careful profiling and non-trivial setup, but allows for side-by-side comparisons."),
+       2, /* choices */
+       _("Relative Colorimetric"),_("Absolute Colorimetric"),NULL,NULL,
+       OY_DEFAULT_RENDERING_INTENT_PROOF,

@@ -1,0 +1,188 @@
+From b2362f2223b1ecc0c92fac9d261d5684f33af06f Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Thu, 28 Aug 2014 12:58:05 +0200
+Subject: Reference the widget before returning it from ::create methods
+
+Widgets (unlike Windows and Dialogs) returned by Gtk::Builder::get_widget*
+start owned by the GtkBuilder object, the idea being that they will get
+added to a container before the scope of the GtkBuilder object ends, and it
+thus automatically gets destroyed.
+
+But in the various ::create methods in pavucontrol, a pointer to the widget
+gets returned, so that it can be added to a cointainer by the caller.
+However as soon as the ::create method exits the GtkBuilder object owning
+the widget, and thus also the widget gets destroyed, and we end up returning
+free-ed memory.
+
+This commit fixes this by making all ::create methods take a reference on
+the widget before returning it, and having all the callers unreference the
+widget after adding it to a container.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=83144
+https://bugzilla.redhat.com/show_bug.cgi?id=1133339
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+
+diff --git a/src/cardwidget.cc b/src/cardwidget.cc
+index c79ac6c..28c558d 100644
+--- a/src/cardwidget.cc
++++ b/src/cardwidget.cc
+@@ -45,6 +45,7 @@ CardWidget* CardWidget::create() {
+     CardWidget* w;
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "cardWidget");
+     x->get_widget_derived("cardWidget", w);
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/channelwidget.cc b/src/channelwidget.cc
+index 6f59de2..fe94c11 100644
+--- a/src/channelwidget.cc
++++ b/src/channelwidget.cc
+@@ -53,6 +53,7 @@ ChannelWidget* ChannelWidget::create() {
+     x->add_from_file(GLADE_FILE, "adjustment1");
+     x->add_from_file(GLADE_FILE, "channelWidget");
+     x->get_widget_derived("channelWidget", w);
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/devicewidget.cc b/src/devicewidget.cc
+index 1a148ee..813780f 100644
+--- a/src/devicewidget.cc
++++ b/src/devicewidget.cc
+@@ -89,6 +89,7 @@ void DeviceWidget::setChannelMap(const pa_channel_map &m, bool can_decibel) {
+         snprintf(text, sizeof(text), "<b>%s</b>", pa_channel_position_to_pretty_string(m.map[i]));
+         cw->channelLabel->set_markup(text);
+         channelsVBox->pack_start(*cw, false, false, 0);
++        cw->unreference();
+     }
+     channelWidgets[m.channels-1]->last = true;
+ 
+diff --git a/src/mainwindow.cc b/src/mainwindow.cc
+index 5a42318..5d205fb 100644
+--- a/src/mainwindow.cc
++++ b/src/mainwindow.cc
+@@ -300,6 +300,7 @@ void MainWindow::updateCard(const pa_card_info &info) {
+     else {
+         cardWidgets[info.index] = w = CardWidget::create();
+         cardsVBox->pack_start(*w, false, false, 0);
++        w->unreference();
+         w->index = info.index;
+         is_new = true;
+     }
+@@ -416,6 +417,7 @@ bool MainWindow::updateSink(const pa_sink_info &info) {
+         sinkWidgets[info.index] = w = SinkWidget::create(this);
+         w->setChannelMap(info.channel_map, !!(info.flags & PA_SINK_DECIBEL_VOLUME));
+         sinksVBox->pack_start(*w, false, false, 0);
++        w->unreference();
+         w->index = info.index;
+         w->monitor_index = info.monitor_source;
+         is_new = true;
+@@ -570,6 +572,7 @@ void MainWindow::updateSource(const pa_source_info &info) {
+         sourceWidgets[info.index] = w = SourceWidget::create(this);
+         w->setChannelMap(info.channel_map, !!(info.flags & PA_SOURCE_DECIBEL_VOLUME));
+         sourcesVBox->pack_start(*w, false, false, 0);
++        w->unreference();
+         w->index = info.index;
+         is_new = true;
+ 
+@@ -686,6 +689,7 @@ void MainWindow::updateSinkInput(const pa_sink_input_info &info) {
+         sinkInputWidgets[info.index] = w = SinkInputWidget::create(this);
+         w->setChannelMap(info.channel_map, true);
+         streamsVBox->pack_start(*w, false, false, 0);
++        w->unreference();
+         w->index = info.index;
+         w->clientIndex = info.client;
+         is_new = true;
+@@ -743,6 +747,7 @@ void MainWindow::updateSourceOutput(const pa_source_output_info &info) {
+         w->setChannelMap(info.channel_map, true);
+ #endif
+         recsVBox->pack_start(*w, false, false, 0);
++        w->unreference();
+         w->index = info.index;
+         w->clientIndex = info.client;
+         is_new = true;
+@@ -838,6 +843,7 @@ bool MainWindow::createEventRoleWidget() {
+ 
+     eventRoleWidget = RoleWidget::create();
+     streamsVBox->pack_start(*eventRoleWidget, false, false, 0);
++    eventRoleWidget->unreference();
+     eventRoleWidget->role = "sink-input-by-media-role:event";
+     eventRoleWidget->setChannelMap(cm, true);
+ 
+diff --git a/src/rolewidget.cc b/src/rolewidget.cc
+index fd3196c..db07f92 100644
+--- a/src/rolewidget.cc
++++ b/src/rolewidget.cc
+@@ -40,6 +40,7 @@ RoleWidget* RoleWidget::create() {
+     RoleWidget* w;
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "streamWidget");
+     x->get_widget_derived("streamWidget", w);
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/sinkinputwidget.cc b/src/sinkinputwidget.cc
+index b88b718..5a0ba39 100644
+--- a/src/sinkinputwidget.cc
++++ b/src/sinkinputwidget.cc
+@@ -43,6 +43,7 @@ SinkInputWidget* SinkInputWidget::create(MainWindow* mainWindow) {
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "streamWidget");
+     x->get_widget_derived("streamWidget", w);
+     w->init(mainWindow);
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/sinkwidget.cc b/src/sinkwidget.cc
+index 7f4902c..f682cf2 100644
+--- a/src/sinkwidget.cc
++++ b/src/sinkwidget.cc
+@@ -82,6 +82,7 @@ SinkWidget* SinkWidget::create(MainWindow* mainWindow) {
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "deviceWidget");
+     x->get_widget_derived("deviceWidget", w);
+     w->init(mainWindow, "sink");
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/sourceoutputwidget.cc b/src/sourceoutputwidget.cc
+index 827c5a8..4d915b0 100644
+--- a/src/sourceoutputwidget.cc
++++ b/src/sourceoutputwidget.cc
+@@ -49,6 +49,7 @@ SourceOutputWidget* SourceOutputWidget::create(MainWindow* mainWindow) {
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "streamWidget");
+     x->get_widget_derived("streamWidget", w);
+     w->init(mainWindow);
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/sourcewidget.cc b/src/sourcewidget.cc
+index 5e4ecf0..fde5333 100644
+--- a/src/sourcewidget.cc
++++ b/src/sourcewidget.cc
+@@ -35,6 +35,7 @@ SourceWidget* SourceWidget::create(MainWindow* mainWindow) {
+     Glib::RefPtr<Gtk::Builder> x = Gtk::Builder::create_from_file(GLADE_FILE, "deviceWidget");
+     x->get_widget_derived("deviceWidget", w);
+     w->init(mainWindow, "source");
++    w->reference();
+     return w;
+ }
+ 
+diff --git a/src/streamwidget.cc b/src/streamwidget.cc
+index 94363ec..e602cce 100644
+--- a/src/streamwidget.cc
++++ b/src/streamwidget.cc
+@@ -77,6 +77,7 @@ void StreamWidget::setChannelMap(const pa_channel_map &m, bool can_decibel) {
+         snprintf(text, sizeof(text), "<b>%s</b>", pa_channel_position_to_pretty_string(m.map[i]));
+         cw->channelLabel->set_markup(text);
+         channelsVBox->pack_start(*cw, false, false, 0);
++        cw->unreference();
+     }
+     channelWidgets[m.channels-1]->last = true;
+     channelWidgets[m.channels-1]->setBaseVolume(PA_VOLUME_NORM);
+-- 
+cgit v0.10.2
+

@@ -1,0 +1,20 @@
+--- lxsession-0.5.2/lxsession-edit/lxsession-edit-common.c.memmove	2014-10-05 08:49:49.000000000 +0900
++++ lxsession-0.5.2/lxsession-edit/lxsession-edit-common.c	2016-02-15 19:21:23.780783021 +0900
+@@ -216,7 +216,7 @@ void update_enable_state(GKeyFile* kf, g
+                 if( strcmp(list[i], session_name) == 0 )
+                 {
+                     g_free(list[i]);
+-                    memcpy( list + i, list + i + 1, (n-i) * sizeof(char*) );
++                    memmove( list + i, list + i + 1, (n-i) * sizeof(char*) );
+                     --n;
+                     break;
+                 }
+@@ -259,7 +259,7 @@ void update_enable_state(GKeyFile* kf, g
+                 if( strcmp(list[i], session_name) == 0 )
+                 {
+                     g_free(list[i]);
+-                    memcpy( list + i, list + i + 1, (n-i) * sizeof(char*) );
++                    memmove( list + i, list + i + 1, (n-i) * sizeof(char*) );
+                     --n;
+                     break;
+                 }

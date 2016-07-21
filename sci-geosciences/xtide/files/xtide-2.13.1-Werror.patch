@@ -1,0 +1,21 @@
+commit 9cf2369051fa887bd5f13bf7df80c51bcf040306
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sat Jul 13 13:25:42 2013 +0200
+
+    BUILD: remove -Werror
+    
+    It's discouraged to add non-specific Werror flags.
+
+diff --git a/configure.ac b/configure.ac
+index b366337..86c7569 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -11,7 +11,7 @@ m4_if(2.65, AC_AUTOCONF_VERSION, [m4_fatal([autoconf version 2.65 is broken and
+ # FIXME: Update version info on each release
+ AC_INIT([XTide], [2.13.1], [dave@flaterco.com])
+ 
+-AM_INIT_AUTOMAKE([-Wall -Werror])
++AM_INIT_AUTOMAKE([-Wall])
+ 
+ AC_LANG([C++])
+ AC_PROG_CXX

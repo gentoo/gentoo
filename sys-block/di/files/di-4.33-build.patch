@@ -1,0 +1,40 @@
+These are the first errors occuring:
+
+di.h:82:4: error: unknown type name ‘error’
+di.h:82:19: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘/’ token
+di.h:143:5: error: unknown type name ‘_fs_size_t’
+
+Then there is a lot more errors after above.
+
+memcpy can't be detected normally due to:
+	http://gcc.gnu.org/PR55890
+
+--- C/di.h
++++ C/di.h
+@@ -9,6 +9,8 @@
+ 
+ #include "config.h"
+ 
++#include <string.h>
++
+ /*****************************************************/
+ 
+ #include <stdio.h>
+@@ -79,7 +81,7 @@
+ 
+ #if ! _lib_memcpy && ! _define_memcpy
+ # if ! _lib_bcopy && ! _define_bcopy
+-   #error No_memcpy/bcopy_available.
++   //#error No_memcpy/bcopy_available.
+ # else
+ #  define memcpy(dst, src, cnt)     (bcopy((src), (dst), (cnt)), dst)
+ # endif
+@@ -87,7 +89,7 @@
+ 
+ #if ! _lib_memset && ! _define_memset
+ # if ! _lib_bzero && ! _define_bzero
+-   #error No_memset/bzero_available.
++   //#error No_memset/bzero_available.
+ # else
+ #  define memset(s,c,n)    (bzero ((s), (n)), s)
+ # endif

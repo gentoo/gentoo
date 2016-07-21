@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Uniplate is library for writing simple and concise generic operations.
+		Uniplate has similar goals to the original Scrap Your Boilerplate work,
+		but is substantially simpler and faster. The Uniplate manual is available at
+		&lt;http://community.haskell.org/~ndm/darcs/uniplate/uniplate.htm&gt;.
+		
+		To get started with Uniplate you should import one of the three following
+		modules:
+		
+		* "Data.Generics.Uniplate.Data" - to quickly start writing generic functions.
+		Most users should start by importing this module.
+		
+		* "Data.Generics.Uniplate.Direct" - a replacement for "Data.Generics.Uniplate.Data"
+		with substantially higher performance (around 5 times), but requires writing
+		instance declarations.
+		
+		* "Data.Generics.Uniplate.Operations" - definitions of all the operations defined
+		by Uniplate. Both the above two modules re-export this module.
+		
+		In addition, some users may want to make use of the following modules:
+		
+		* "Data.Generics.Uniplate.Zipper" - a zipper built on top of Uniplate instances.
+		
+		* "Data.Generics.SYB" - users transitioning from the Scrap Your Boilerplate library.
+		
+		* "Data.Generics.Compos" - users transitioning from the Compos library.
+		
+		* "Data.Generics.Uniplate.DataOnly" - users making use of both @Data@ and @Direct@
+		to avoid getting instance conflicts.
+	</longdescription>
+</pkgmetadata>

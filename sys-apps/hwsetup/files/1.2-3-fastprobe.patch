@@ -1,0 +1,74 @@
+--- a/hwsetup.c
++++ b/hwsetup.c
+@@ -140,14 +140,15 @@
+ 
+ int syntax(char *option)
+ {
+- printf(VERSION);
++ puts(VERSION);
+  if(option) fprintf(stderr,"hwsetup: Unknown option '%s'\n\n",option);
+- printf("Usage: hwsetup\n"
+-         "               -v       be verbose\n"
+-         "               -p       print rotating prompt\n"
+-         "               -a       ignore audio devices\n"
+-         "               -s       ignore scsi controllers\n"
+-         "               -n       probe only, don't configure anything.\n");
++ puts("Usage: hwsetup\n"
++         "\t\t-v\tbe verbose\n"
++         "\t\t-p\tprint rotating prompt\n"
++         "\t\t-a\tignore audio devices\n"
++         "\t\t-s\tignore scsi controllers\n"
++         "\t\t-n\tprobe only, don't configure anything.\n"
++		 "\t\t-f\trun a fast probe.");
+  return option?1:0;
+ }
+ 
+@@ -425,7 +426,7 @@
+ {
+  signal(SIGALRM,SIG_IGN);
+  fprintf(stderr,"\nWARNING: Autodetection seems to hang,\n"
+-                "please check your computers BIOS settings.\n");
++                "please check your computer's BIOS settings.\n");
+  fflush(stderr);
+  if(wpid) { kill(wpid,SIGTERM); usleep(2500000); kill(wpid,SIGKILL); wpid=0; }
+  exit(1); /* exit program */
+@@ -591,12 +592,13 @@
+  return 0;
+ }
+ 
+-int hw_setup(enum deviceClass dc, int verbose, int probeonly, int skip)
++int hw_setup(enum deviceClass dc, int verbose, int probeonly, int skip, int fastprobe)
+ {
+  int i,mouse=0,cdrom=0,modem=0,scanner=0;
++ int probeopt=fastprobe?PROBE_SAFE:PROBE_ALL;
+  struct device **currentDevs, *d, *serialmouse=NULL, *usbmouse=NULL;
+  if(verbose&VERBOSE_PROMPT) wpid=startwheel();
+- currentDevs=probeDevices(dc,BUS_UNSPEC,PROBE_ALL);
++ currentDevs=probeDevices(dc,BUS_UNSPEC,probeopt);
+  if(verbose&VERBOSE_PROMPT&&wpid>0) { kill(wpid,SIGTERM); wpid=0; usleep(160000); write(2,"\033[0m Done.\n",11); }
+  if(currentDevs==NULL) return -1;
+  check_proc_modules(); /* Get currently loaded module list */
+@@ -650,7 +652,7 @@
+ 
+ int main(int argc, char **argv)
+ {
+- int i, verbose=0, probeonly=0, skip=0;
++ int i, verbose=0, probeonly=0, skip=0, fast=0;
+  enum deviceClass dc=CLASS_UNSPEC;
+  for(i=1;i<argc;i++)
+   {
+@@ -659,6 +661,7 @@
+    else if(!strcasecmp(argv[i],"-a")) skip|=SKIP_AUDIO;
+    else if(!strcasecmp(argv[i],"-s")) skip|=SKIP_SCSI;
+    else if(!strcasecmp(argv[i],"-n")) probeonly=1;
++   else if(!strcasecmp(argv[i],"-f")) fast=1;
+    else return syntax(argv[i]);
+   }
+  /* Allow SIGTERM, SIGINT: rmmod depends on this. */
+@@ -667,5 +670,5 @@
+ #ifdef BLACKLIST
+  gen_blacklist();
+ #endif
+- return hw_setup(dc,verbose,probeonly,skip);
++ return hw_setup(dc,verbose,probeonly,skip,fast);
+ }

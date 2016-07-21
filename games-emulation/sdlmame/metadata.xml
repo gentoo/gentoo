@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <longdescription>
+SDLMAME is a port of the popular MAME[tm]. There are a few principles that guide it's development:
+
+1) run on Linux/Unix, Mac OS X, and other SDL supported operating systems with as few changes as
+possible to the base Win32 code. This means we can track changes faster than larger more conventional
+ports such as MacMAME, and we also maintain what I call "Firefox compatibilty" where learning a major
+app only needs to be done once per application, and it then applies across many operating systems. If
+you can use the command-line Win32 MAME, you already know how to use SDLMAME on any platform you may
+encounter it on.
+
+2) MAME developers are important. By keeping quickly up to date, we make it easy for people on
+non-Windows platforms to make and submit changes to the core MAME code, and we offer native
+implementations of MAME's multi-window GUI debugger on both Linux/Unix and Mac OS X.
+  </longdescription>
+  <use>
+    <flag name="arcade">Enable the Multiple Arcade Machine Emulator for arcade games support</flag>
+    <flag name="tools">Build development tools shared between sdlmame and sdlmess</flag>
+    <flag name="mess">Enable the Multi Emulator Super System for game system support</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">mamedev/mame</remote-id>
+  </upstream>
+</pkgmetadata>

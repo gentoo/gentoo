@@ -1,0 +1,31 @@
+--- kBuild-0.1.5/src/ash/output.c
++++ kBuild-0.1.5/src/ash/output.c
+@@ -230,6 +230,7 @@
+ 	va_end(ap);
+ }
+ 
++#if 0
+ void
+ dprintf(const char *fmt, ...)
+ {
+@@ -240,6 +241,7 @@
+ 	va_end(ap);
+ 	flushout(out2);
+ }
++#endif
+ 
+ void
+ fmtstr(char *outbuf, size_t length, const char *fmt, ...)
+--- kBuild-0.1.5/src/ash/output.h
++++ kBuild-0.1.5/src/ash/output.h
+@@ -65,8 +65,10 @@
+     __attribute__((__format__(__printf__,2,3)));
+ void out1fmt(const char *, ...)
+     __attribute__((__format__(__printf__,1,2)));
++#if 0
+ void dprintf(const char *, ...)
+     __attribute__((__format__(__printf__,1,2)));
++#endif
+ void fmtstr(char *, size_t, const char *, ...)
+     __attribute__((__format__(__printf__,3,4)));
+ void doformat(struct output *, const char *, va_list);

@@ -1,0 +1,387 @@
+The patch set adds support for weak symbols to ghci.
+
+For gentoo it fixes nonworking ghci / template haskell
+for package base.
+
+Steps to reproduce:
+    1. CFLAGS=-Os emerge ghc
+    2. ghci -package base
+    Loading package base ... linking ... ghc: /usr/lib64/ghc-7.6.3/base-4.6.0.1/HSbase-4.6.0.1.o: unknown symbol `stat'
+
+When built with -O2 weak 'stat' resolved to '__xstat' and we don't see any errors.
+But on olwer optimization levels 'stat' remains.
+
+Patches-by: akio
+Gentoo-bug: http://bugs.gentoo.org/452442
+Upstream-bug: http://ghc.haskell.org/trac/ghc/ticket/3333
+
+From 500d57d3a18412c78cab5abc4d91f1564edc964d Mon Sep 17 00:00:00 2001
+From: Takano Akio <aljee@hyper.cx>
+Date: Sat, 29 Dec 2012 11:47:22 +0900
+Subject: [PATCH 1/3] Linker.c: remove stablehash, which is no longer used
+
+---
+ includes/rts/Linker.h |    3 ---
+ rts/Linker.c          |   31 ++-----------------------------
+ 2 files changed, 2 insertions(+), 32 deletions(-)
+
+diff --git a/includes/rts/Linker.h b/includes/rts/Linker.h
+index e900e85..d20ebc2 100644
+--- a/includes/rts/Linker.h
++++ b/includes/rts/Linker.h
+@@ -23,9 +23,6 @@ typedef char    pathchar;
+ /* initialize the object linker */
+ void initLinker( void );
+ 
+-/* insert a stable symbol in the hash table */
+-void insertStableSymbol(pathchar* obj_name, char* key, StgPtr data);
+-
+ /* insert a symbol in the hash table */
+ void insertSymbol(pathchar* obj_name, char* key, void* data);
+ 
+diff --git a/rts/Linker.c b/rts/Linker.c
+index fa1de89..513fe3f 100644
+--- a/rts/Linker.c
++++ b/rts/Linker.c
+@@ -30,1 +30,0 @@
+-#include "Stable.h"
+@@ -150,9 +149,6 @@ int dynamicByDefault = 0;
+ /* Hash table mapping symbol names to Symbol */
+ static /*Str*/HashTable *symhash;
+ 
+-/* Hash table mapping symbol names to StgStablePtr */
+-static /*Str*/HashTable *stablehash;
+-
+ /* List of currently loaded objects */
+ ObjectCode *objects = NULL;     /* initially empty */
+ 
+@@ -1126,1 +1126,0 @@ typedef struct _RtsSymbolVal {
+-      SymI_HasProto(insertStableSymbol)                 \
+@@ -1488,7 +1483,6 @@ initLinker( void )
+ #if defined(THREADED_RTS) && (defined(OBJFORMAT_ELF) || defined(OBJFORMAT_MACHO))
+     initMutex(&dl_mutex);
+ #endif
+-    stablehash = allocStrHashTable();
+     symhash = allocStrHashTable();
+ 
+     /* populate the symbol table with stuff from the RTS */
+@@ -1817,17 +1811,6 @@ error:
+ }
+ 
+ /* -----------------------------------------------------------------------------
+- * insert a stable symbol in the hash table
+- */
+-
+-void
+-insertStableSymbol(pathchar* obj_name, char* key, StgPtr p)
+-{
+-  ghciInsertStrHashTable(obj_name, stablehash, key, getStablePtr(p));
+-}
+-
+-
+-/* -----------------------------------------------------------------------------
+  * insert a symbol in the hash table
+  */
+ void
+@@ -4749,8 +4732,6 @@ do_Elf_Rel_relocations ( ObjectCode* oc, char* ehdrC,
+ #ifdef i386_HOST_ARCH
+       Elf_Addr  value;
+ #endif
+-      StgStablePtr stablePtr;
+-      StgPtr stableVal;
+ #ifdef arm_HOST_ARCH
+       int is_target_thm=0, T=0;
+ #endif
+@@ -4773,16 +4754,8 @@ do_Elf_Rel_relocations ( ObjectCode* oc, char* ehdrC,
+ 
+          } else {
+             symbol = strtab + sym.st_name;
+-            stablePtr = (StgStablePtr)lookupHashTable(stablehash, (StgWord)symbol);
+-            if (NULL == stablePtr) {
+-              /* No, so look up the name in our global table. */
+-              S_tmp = lookupSymbol( symbol );
+-              S = (Elf_Addr)S_tmp;
+-            } else {
+-              stableVal = deRefStablePtr( stablePtr );
+-              S_tmp = stableVal;
+-              S = (Elf_Addr)S_tmp;
+-            }
++            S_tmp = lookupSymbol( symbol );
++            S = (Elf_Addr)S_tmp;
+          }
+          if (!S) {
+             errorBelch("%s: unknown symbol `%s'", oc->fileName, symbol);
+-- 
+1.7.9.5
+
+From 2e5e0f7a90dd390adc5ae5fb2a3bc6e879aa42d6 Mon Sep 17 00:00:00 2001
+From: Takano Akio <aljee@hyper.cx>
+Date: Sat, 29 Dec 2012 11:59:34 +0900
+Subject: [PATCH 2/3] ghci: add support for ELF weak symbols
+
+---
+ rts/Linker.c |  102 ++++++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 78 insertions(+), 24 deletions(-)
+
+diff --git a/rts/Linker.c b/rts/Linker.c
+index 513fe3f..5105085 100644
+--- a/rts/Linker.c
++++ b/rts/Linker.c
+@@ -146,7 +146,13 @@ int dynamicByDefault = 1;
+ int dynamicByDefault = 0;
+ #endif
+ 
+-/* Hash table mapping symbol names to Symbol */
++typedef struct _RtsSymbolInfo {
++    void *value;
++    const ObjectCode *owner;
++    HsBool weak;
++} RtsSymbolInfo;
++
++/* Hash table mapping symbol names to RtsSymbolInfo */
+ static /*Str*/HashTable *symhash;
+ 
+ /* List of currently loaded objects */
+@@ -1415,15 +1421,31 @@ static RtsSymbolVal rtsSyms[] = {
+  * Insert symbols into hash tables, checking for duplicates.
+  */
+ 
+-static void ghciInsertStrHashTable ( pathchar* obj_name,
+-                                     HashTable *table,
+-                                     char* key,
+-                                     void *data
+-                                   )
++static void ghciInsertSymbolTable(
++   pathchar* obj_name,
++   HashTable *table,
++   char* key,
++   void *data,
++   HsBool weak,
++   ObjectCode *owner)
+ {
+-   if (lookupHashTable(table, (StgWord)key) == NULL)
++   RtsSymbolInfo *pinfo = lookupStrHashTable(table, key);
++   if (!pinfo) /* new entry */
++   {
++      pinfo = stgMallocBytes(sizeof (*pinfo), "ghciInsertToSymbolTable");
++      pinfo->value = data;
++      pinfo->owner = owner;
++      pinfo->weak = weak;
++      insertStrHashTable(table, key, pinfo);
++      return;
++   } else if ((!pinfo->weak || pinfo->value) && weak) {
++     return; /* duplicate weak symbol, throw it away */
++   } else if (pinfo->weak) /* weak symbol is in the table */
+    {
+-      insertStrHashTable(table, (StgWord)key, data);
++      /* override the weak definition with the non-weak one */
++      pinfo->value = data;
++      pinfo->owner = owner;
++      pinfo->weak = HS_BOOL_FALSE;
+       return;
+    }
+    debugBelch(
+@@ -1444,6 +1466,32 @@ static void ghciInsertStrHashTable ( pathchar* obj_name,
+    );
+    stg_exit(1);
+ }
++
++static HsBool ghciLookupSymbolTable(HashTable *table,
++    const char *key, void **result)
++{
++    RtsSymbolInfo *pinfo = lookupStrHashTable(table, key);
++    if (!pinfo) {
++        *result = NULL;
++        return HS_BOOL_FALSE;
++    }
++    if (pinfo->weak)
++        IF_DEBUG(linker, debugBelch("lookup: promoting %s\n", key));
++    /* Once it's looked up, it can no longer be overridden */
++    pinfo->weak = HS_BOOL_FALSE;
++
++    *result = pinfo->value;
++    return HS_BOOL_TRUE;
++}
++
++static void ghciRemoveSymbolTable(HashTable *table, const char *key,
++    ObjectCode *owner)
++{
++    RtsSymbolInfo *pinfo = lookupStrHashTable(table, key);
++    if (!pinfo || owner != pinfo->owner) return;
++    removeStrHashTable(table, key, NULL);
++    stgFree(pinfo);
++}
+ /* -----------------------------------------------------------------------------
+  * initialize the object linker
+  */
+@@ -1487,8 +1535,8 @@ initLinker( void )
+ 
+     /* populate the symbol table with stuff from the RTS */
+     for (sym = rtsSyms; sym->lbl != NULL; sym++) {
+-        ghciInsertStrHashTable(WSTR("(GHCi built-in symbols)"),
+-                               symhash, sym->lbl, sym->addr);
++        ghciInsertSymbolTable(WSTR("(GHCi built-in symbols)"),
++                               symhash, sym->lbl, sym->addr, HS_BOOL_FALSE, NULL);
+         IF_DEBUG(linker, debugBelch("initLinker: inserting rts symbol %s, %p\n", sym->lbl, sym->addr));
+     }
+ #   if defined(OBJFORMAT_MACHO) && defined(powerpc_HOST_ARCH)
+@@ -1816,7 +1864,7 @@ error:
+ void
+ insertSymbol(pathchar* obj_name, char* key, void* data)
+ {
+-  ghciInsertStrHashTable(obj_name, symhash, key, data);
++  ghciInsertSymbolTable(obj_name, symhash, key, data, HS_BOOL_FALSE, NULL);
+ }
+ 
+ /* -----------------------------------------------------------------------------
+@@ -1829,9 +1877,8 @@ lookupSymbol( char *lbl )
+     IF_DEBUG(linker, debugBelch("lookupSymbol: looking up %s\n", lbl));
+     initLinker() ;
+     ASSERT(symhash != NULL);
+-    val = lookupStrHashTable(symhash, lbl);
+ 
+-    if (val == NULL) {
++    if (!ghciLookupSymbolTable(symhash, lbl, &val)) {
+         IF_DEBUG(linker, debugBelch("lookupSymbol: symbol not found\n"));
+ #       if defined(OBJFORMAT_ELF)
+         return internal_dlsym(dl_prog_handle, lbl);
+@@ -1903,7 +1950,7 @@ void ghci_enquire ( char* addr )
+          if (sym == NULL) continue;
+          a = NULL;
+          if (a == NULL) {
+-            a = lookupStrHashTable(symhash, sym);
++            ghciLookupSymbolTable(symhash, sym, (void **)&a);
+          }
+          if (a == NULL) {
+              // debugBelch("ghci_enquire: can't find %s\n", sym);
+@@ -2715,7 +2762,7 @@ unloadObj( pathchar *path )
+                 int i;
+                 for (i = 0; i < oc->n_symbols; i++) {
+                    if (oc->symbols[i] != NULL) {
+-                       removeStrHashTable(symhash, oc->symbols[i], NULL);
++                       ghciRemoveSymbolTable(symhash, oc->symbols[i], oc);
+                    }
+                 }
+             }
+@@ -3802,7 +3849,8 @@ ocGetNames_PEi386 ( ObjectCode* oc )
+          ASSERT(i >= 0 && i < oc->n_symbols);
+          /* cstring_from_COFF_symbol_name always succeeds. */
+          oc->symbols[i] = (char*)sname;
+-         ghciInsertStrHashTable(oc->fileName, symhash, (char*)sname, addr);
++         ghciInsertSymbolTable(oc->fileName, symhash, (char*)sname, addr,
++            HS_BOOL_FALSE, oc);
+       } else {
+ #        if 0
+          debugBelch(
+@@ -4595,6 +4643,7 @@ ocGetNames_ELF ( ObjectCode* oc )
+       for (j = 0; j < nent; j++) {
+ 
+          char  isLocal = FALSE; /* avoids uninit-var warning */
++         HsBool isWeak = HS_BOOL_FALSE;
+          char* ad      = NULL;
+          char* nm      = strtab + stab[j].st_name;
+          int   secno   = stab[j].st_shndx;
+@@ -4615,6 +4664,7 @@ ocGetNames_ELF ( ObjectCode* oc )
+          else
+          if ( ( ELF_ST_BIND(stab[j].st_info)==STB_GLOBAL
+                 || ELF_ST_BIND(stab[j].st_info)==STB_LOCAL
++                || ELF_ST_BIND(stab[j].st_info)==STB_WEAK
+               )
+               /* and not an undefined symbol */
+               && stab[j].st_shndx != SHN_UNDEF
+@@ -4638,7 +4688,8 @@ ocGetNames_ELF ( ObjectCode* oc )
+             ad = ehdrC + shdr[ secno ].sh_offset + stab[j].st_value;
+             if (ELF_ST_BIND(stab[j].st_info)==STB_LOCAL) {
+                isLocal = TRUE;
+-            } else {
++               isWeak = FALSE;
++            } else { /* STB_GLOBAL or STB_WEAK */
+ #ifdef ELF_FUNCTION_DESC
+                /* dlsym() and the initialisation table both give us function
+                 * descriptors, so to be consistent we store function descriptors
+@@ -4649,6 +4700,7 @@ ocGetNames_ELF ( ObjectCode* oc )
+                IF_DEBUG(linker,debugBelch( "addOTabName(GLOB): %10p  %s %s\n",
+                                       ad, oc->fileName, nm ));
+                isLocal = FALSE;
++               isWeak = (ELF_ST_BIND(stab[j].st_info)==STB_WEAK);
+             }
+          }
+ 
+@@ -4661,7 +4713,7 @@ ocGetNames_ELF ( ObjectCode* oc )
+             if (isLocal) {
+                /* Ignore entirely. */
+             } else {
+-               ghciInsertStrHashTable(oc->fileName, symhash, nm, ad);
++               ghciInsertSymbolTable(oc->fileName, symhash, nm, ad, isWeak, oc);
+             }
+          } else {
+             /* Skip. */
+@@ -6306,11 +6358,13 @@ ocGetNames_MachO(ObjectCode* oc)
+                     else
+                     {
+                             IF_DEBUG(linker, debugBelch("ocGetNames_MachO: inserting %s\n", nm));
+-                            ghciInsertStrHashTable(oc->fileName, symhash, nm,
++                            ghciInsertSymbolTable(oc->fileName, symhash, nm,
+                                                     image
+                                                     + sections[nlist[i].n_sect-1].offset
+                                                     - sections[nlist[i].n_sect-1].addr
+-                                                    + nlist[i].n_value);
++                                                    + nlist[i].n_value,
++                                                    HS_BOOL_FALSE,
++                                                    oc);
+                             oc->symbols[curSymbol++] = nm;
+                     }
+                 }
+@@ -6341,8 +6395,8 @@ ocGetNames_MachO(ObjectCode* oc)
+                 nlist[i].n_value = commonCounter;
+ 
+                 IF_DEBUG(linker, debugBelch("ocGetNames_MachO: inserting common symbol: %s\n", nm));
+-                ghciInsertStrHashTable(oc->fileName, symhash, nm,
+-                                       (void*)commonCounter);
++                ghciInsertSymbolTable(oc->fileName, symhash, nm,
++                                       (void*)commonCounter, HS_BOOL_FALSE, oc);
+                 oc->symbols[curSymbol++] = nm;
+ 
+                 commonCounter += sz;
+@@ -6466,7 +6520,7 @@ machoInitSymbolsWithoutUnderscore(void)
+ 
+ #undef SymI_NeedsProto
+ #define SymI_NeedsProto(x)  \
+-    ghciInsertStrHashTable("(GHCi built-in symbols)", symhash, #x, *p++);
++    ghciInsertSymbolTable("(GHCi built-in symbols)", symhash, #x, *p++, HS_BOOL_FALSE, NULL);
+ 
+     RTS_MACHO_NOUNDERLINE_SYMBOLS
+ 
+-- 
+1.7.9.5
+
+From 916d7713b34b529ae7ec24eaa836a4eaca7724fc Mon Sep 17 00:00:00 2001
+From: Takano Akio <aljee@hyper.cx>
+Date: Sun, 6 Jan 2013 17:51:19 +0900
+Subject: [PATCH 3/3] Linker.c: add dso_handle to the symbol table
+
+---
+ rts/Linker.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/rts/Linker.c b/rts/Linker.c
+index 5105085..0b2bf63 100644
+--- a/rts/Linker.c
++++ b/rts/Linker.c
+@@ -1542,6 +1542,13 @@ initLinker( void )
+ #   if defined(OBJFORMAT_MACHO) && defined(powerpc_HOST_ARCH)
+     machoInitSymbolsWithoutUnderscore();
+ #   endif
++    /* GCC defines a special symbol __dso_handle which is resolved to NULL if
++       referenced from a statically linked module. We need to mimic this, but
++       we cannot use NULL because we use it to mean nonexistent symbols. So we
++       use an arbitrary (hopefully unique) address here.
++    */
++    ghciInsertSymbolTable(WSTR("(GHCi special symbols)"),
++        symhash, "__dso_handle", (void *)0x12345687, HS_BOOL_FALSE, NULL);
+ 
+ #   if defined(OBJFORMAT_ELF) || defined(OBJFORMAT_MACHO)
+ #   if defined(RTLD_DEFAULT)
+-- 
+1.7.9.5
+

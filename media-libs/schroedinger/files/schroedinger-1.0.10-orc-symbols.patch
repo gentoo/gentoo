@@ -1,0 +1,43 @@
+From: David Schleef <ds@schleef.org>
+Date: Fri, 8 Oct 2010 20:32:11 +0000 (-0700)
+Subject: Don't export orc_ symbols and fix related bugs
+X-Git-Url: http://diracvideo.schleef.org/git?p=schroedinger.git;a=commitdiff_plain;h=9c4e8a89af9f8ce408e50a0ffab79348e9703df2
+
+Don't export orc_ symbols and fix related bugs
+---
+
+diff --git a/schroedinger/Makefile.am b/schroedinger/Makefile.am
+index b9b10c6..aa5e41c 100644
+--- a/schroedinger/Makefile.am
++++ b/schroedinger/Makefile.am
+@@ -157,7 +157,7 @@ libschroedinger_@SCHRO_MAJORMINOR@_la_LIBADD = \
+ libschroedinger_@SCHRO_MAJORMINOR@_la_LDFLAGS = \
+ 	-no-undefined \
+ 	-version-info $(SCHRO_LIBVERSION) \
+-	-export-symbols-regex '^(schro|orc)_'
++	-export-symbols-regex '^schro_'
+ 
+ %.c.gcov: .libs/libschroedinger_@SCHRO_MAJORMINOR@_la-%.gcda %.c
+ 	$(GCOV) -b -f -o $^ > $@.out
+diff --git a/testsuite/Makefile.am b/testsuite/Makefile.am
+index fac2e21..92d74fd 100644
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -95,7 +95,7 @@ wavelet_gain_curve_SOURCES = wavelet_gain_curve.c
+ 
+ #wavelet_2d_CFLAGS = $(SCHRO_CFLAGS)
+ #wavelet_2d_LDADD = $(SCHRO_LIBS)
+-wavelet_2d_SOURCES = wavelet_2d.c
++wavelet_2d_SOURCES = wavelet_2d.c $(top_srcdir)/schroedinger/tmp-orc.c
+ 
+ wavelet_noise_2d_SOURCES = wavelet_noise_2d.c
+ 
+@@ -113,7 +113,7 @@ motion2_SOURCES = motion2.c
+ 
+ #quant_CFLAGS = 
+ #quant_LDADD = -lm
+-quant_SOURCES = quant.c
++quant_SOURCES = quant.c $(top_srcdir)/schroedinger/tmp-orc.c
+ 
+ #sort_CFLAGS = $(SCHRO_CFLAGS)
+ #sort_LDADD = $(SCHRO_LIBS)

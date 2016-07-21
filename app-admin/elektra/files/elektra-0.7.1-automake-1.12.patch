@@ -1,0 +1,24 @@
+http://bugs.gentoo.org/421589
+
+--- configure.ac
++++ configure.ac
+@@ -46,6 +46,8 @@
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_HEADER([src/include/config.h])
+ 
++AC_PROG_MKDIR_P
++
+ dnl select POSIX extensions, useful on solaris, for example
+ gl_USE_SYSTEM_EXTENSIONS
+ 
+--- doc/Makefile.am
++++ doc/Makefile.am
+@@ -223,7 +223,7 @@
+ 
+ install-man3: $(man3_MANS)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(man3dir)" || $(mkdir_p) "$(DESTDIR)$(man3dir)"
++	test -z "$(man3dir)" || $(MKDIR_P) "$(DESTDIR)$(man3dir)"
+ 	@if test -d elektra-api/man/; then man_d=elektra-api/man/; \
+ 	  else man_d=$(srcdir)/elektra-api/man/; \
+ 	fi; \

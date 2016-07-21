@@ -1,0 +1,13 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Fix some compiler warnings.
+--- a/imcat.c
++++ b/imcat.c
+@@ -1778,7 +1778,7 @@
+ 		if (refcat == UCAC2 || refcat == UCAC3 || refcat == UCAC4) {
+ 		    nim = gc[i] / 1000;
+ 		    nct = gc[i] % 1000;
+-		    sprintf (temp, "  ni  nc", nim, nct);
++		    sprintf (temp, "  ni%i  nc%i", nim, nct);
+ 		    strcat (headline, temp);
+ 		    }
+ 		else if (gcset)

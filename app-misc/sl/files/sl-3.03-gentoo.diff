@@ -1,0 +1,10 @@
+--- sl.c.orig	2003-09-07 14:20:29.000000000 +0900
++++ sl.c	2003-09-07 14:21:11.000000000 +0900
+@@ -164,6 +164,7 @@
+     signal(SIGINT, end_proc);
+ #else
++    signal(SIGTSTP, SIG_IGN);
+     signal(SIGINT, SIG_IGN);
+     PASSNUM = (int)(drand48() * 20.0) + 10;
+     if (drand48() > 0.5) {
+       ONEDIREC = 1;

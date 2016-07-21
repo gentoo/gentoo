@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-erlang category contains libraries, utilities or
+		bindings written in or for the Erlang programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-erlang enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Erlang.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-erlang contiene librerias y utilidades referentes al
+		lenguaje de programación Erlang.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-erlangカテゴリーにはErlangプログラミング言語で記述された/のために
+		記述されたライブラリーと>ユーティリティとバインディングが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-erlang categorie bevat bibliotheken en hulpmiddelen voor het
+		gebruik	van de programmeertaal Erlang.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-erlang chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Erlang.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-erlang contiene librerie ed utilità per il linguaggio
+		di programmazione Erlang.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-erlang contém bibliotecas, utilitários e
+		bindings escritos em ou para a linguagem de programação Erlang.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-erlang zawiera biblioteki, narzędzia i powiązania
+		(bindings) napisane w lub stworzone do pisania w języku programowania
+		Erlang.
+	</longdescription>
+</catmetadata>
+

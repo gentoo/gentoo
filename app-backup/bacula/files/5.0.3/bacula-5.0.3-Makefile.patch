@@ -1,0 +1,26 @@
+--- Makefile.in.orig	2010-07-20 16:53:44.000000000 +0000
++++ Makefile.in	2010-07-20 16:55:50.000000000 +0000
+@@ -44,9 +44,8 @@
+ 
+ all: Makefile
+ 	@for I in ${all_subdirs}; \
+-	  do (cd $$I; echo "==>Entering directory `pwd`"; \
+-	      $(MAKE) DESTDIR=$(DESTDIR) $@ || (echo ""; echo ""; echo "  ====== Error in `pwd` ======"; \
+-			    echo ""; echo ""; exit 1;)); \
++	  do \
++	      $(MAKE) DESTDIR=$(DESTDIR) -C $$I $@ || exit 1; \
+ 	done
+ 
+ depend:
+@@ -55,9 +54,8 @@
+ 	
+ bacula-fd: Makefile	   
+ 	@for I in ${fd_subdirs}; \
+-	  do (cd $$I; echo "==>Entering directory `pwd`"; \
+-	      $(MAKE) DESTDIR=$(DESTDIR) all || (echo ""; echo ""; echo "   ====== Error in `pwd` ======"; \
+-			    echo ""; echo ""; exit 1;)); \
++	  do \
++	        $(MAKE) DESTDIR=$(DESTDIR) -C $$I all ||  exit 1; \
+ 	done
+ 
+ #-------------------------------------------------------------------------

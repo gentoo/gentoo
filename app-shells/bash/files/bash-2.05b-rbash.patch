@@ -1,0 +1,27 @@
+Fix broken rbash functionality when used as a login shell via /etc/passwd
+
+http://bugs.gentoo.org/26854
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=170298
+
+Backported from bash-3.1
+
+--- bash-2.05b/shell.c
++++ bash-2.05b/shell.c
+@@ -1065,6 +1099,8 @@
+   if (restricted)
+     return 1;
+   temp = base_pathname (name);
++  if (*temp == '-')
++    temp++;
+   return (STREQ (temp, RESTRICTED_SHELL_NAME));
+ }
+ 
+@@ -1082,6 +1118,8 @@
+   char *temp;
+ 
+   temp = base_pathname (name);
++  if (*temp == '-')
++    temp++;
+   if (restricted || (STREQ (temp, RESTRICTED_SHELL_NAME)))
+     {
+       set_var_read_only ("PATH");

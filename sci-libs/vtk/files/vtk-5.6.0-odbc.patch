@@ -1,0 +1,12 @@
+diff -Naur CMake/FindODBC.cmake.orig CMake/FindODBC.cmake
+--- CMake/FindODBC.cmake.orig	2008-10-08 13:51:36.000000000 -0400
++++ CMake/FindODBC.cmake	2010-01-21 22:11:26.000000000 -0500
+@@ -30,7 +30,7 @@
+ )
+ 
+ FIND_LIBRARY( ODBC_LIBRARY 
+-  NAMES iodbc unixodbc
++  NAMES iodbc unixodbc odbc
+   PATHS
+   /usr/lib
+   /usr/lib/odbc

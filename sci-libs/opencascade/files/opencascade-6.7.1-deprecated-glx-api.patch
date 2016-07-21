@@ -1,0 +1,89 @@
+From ba7e14489e14f08aae3e0f48b419b2149290b163 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@kyomu.43-1.org>
+Date: Tue, 23 Dec 2014 21:15:59 +0100
+Subject: [PATCH] Define GLX_GLXEXT_LEGACY prior to inclusion of GL/glx.h
+
+---
+ inc/InterfaceGraphic_X11.hxx                  | 1 +
+ samples/qt/Common/src/View.cxx                | 1 +
+ src/InterfaceGraphic/InterfaceGraphic_X11.hxx | 1 +
+ src/OpenGl/OpenGl_Context.cxx                 | 1 +
+ src/OpenGl/OpenGl_Workspace_Raytrace.cxx      | 1 +
+ src/Xw/Xw_Window.cxx                          | 1 +
+ 6 files changed, 6 insertions(+)
+
+diff --git a/inc/InterfaceGraphic_X11.hxx b/inc/InterfaceGraphic_X11.hxx
+index 280bb9b..98d7415 100755
+--- a/inc/InterfaceGraphic_X11.hxx
++++ b/inc/InterfaceGraphic_X11.hxx
+@@ -21,6 +21,7 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xatom.h>
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ 
+ #if defined (sun) || defined (SUNOS) || defined (__alpha) || defined (DECOSF1) || defined (sgi) || defined (IRIX) || defined (__hpux)|| defined (HPUX)
+diff --git a/samples/qt/Common/src/View.cxx b/samples/qt/Common/src/View.cxx
+index 77f51b8..9b3f4e2 100755
+--- a/samples/qt/Common/src/View.cxx
++++ b/samples/qt/Common/src/View.cxx
+@@ -28,6 +28,7 @@
+ #include <Cocoa_Window.hxx>
+ #else
+ #include <QX11Info>
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xatom.h>
+diff --git a/src/InterfaceGraphic/InterfaceGraphic_X11.hxx b/src/InterfaceGraphic/InterfaceGraphic_X11.hxx
+index 280bb9b..98d7415 100755
+--- a/src/InterfaceGraphic/InterfaceGraphic_X11.hxx
++++ b/src/InterfaceGraphic/InterfaceGraphic_X11.hxx
+@@ -21,6 +21,7 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/Xatom.h>
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ 
+ #if defined (sun) || defined (SUNOS) || defined (__alpha) || defined (DECOSF1) || defined (sgi) || defined (IRIX) || defined (__hpux)|| defined (HPUX)
+diff --git a/src/OpenGl/OpenGl_Context.cxx b/src/OpenGl/OpenGl_Context.cxx
+index 9e2f074..1ddf6a4 100755
+--- a/src/OpenGl/OpenGl_Context.cxx
++++ b/src/OpenGl/OpenGl_Context.cxx
+@@ -39,6 +39,7 @@
+ #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+   #include <dlfcn.h>
+ #else
++  #define GLX_GLXEXT_LEGACY
+   #include <GL/glx.h> // glXGetProcAddress()
+ #endif
+ 
+diff --git a/src/OpenGl/OpenGl_Workspace_Raytrace.cxx b/src/OpenGl/OpenGl_Workspace_Raytrace.cxx
+index f1b5afe..870eb7d 100755
+--- a/src/OpenGl/OpenGl_Workspace_Raytrace.cxx
++++ b/src/OpenGl/OpenGl_Workspace_Raytrace.cxx
+@@ -32,6 +32,7 @@
+ #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
+   #include <OpenGL/CGLCurrent.h>
+ #else
++  #define GLX_GLXEXT_LEGACY
+   #include <GL/glx.h>
+ #endif
+ 
+diff --git a/src/Xw/Xw_Window.cxx b/src/Xw/Xw_Window.cxx
+index 5442365..0e80444 100755
+--- a/src/Xw/Xw_Window.cxx
++++ b/src/Xw/Xw_Window.cxx
+@@ -20,6 +20,7 @@
+ #include <Aspect_Convert.hxx>
+ #include <Aspect_WindowDefinitionError.hxx>
+ 
++#define GLX_GLXEXT_LEGACY
+ #include <GL/glx.h>
+ 
+ namespace
+-- 
+2.0.5
+

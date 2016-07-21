@@ -1,0 +1,151 @@
+From b86877fb2f24563d74cd3faf7eceffcc8fa59299 Mon Sep 17 00:00:00 2001
+From: Han Shen <shenhan@chromium.org>
+Date: Thu, 19 Apr 2012 12:14:08 -0400
+Subject: [PATCH] include unistd.h when necessary
+
+Older versions of gcc (pre-4.7) would implicitly include unistd.h in some
+of its internal headers.  With newer versions though, that is no longer
+the case, so building powertop breaks with files that use things from the
+unistd.h header but don't include it explicitly.
+
+Signed-off-by: Han Shen <shenhan@chromium.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ cpu/intel_cpus.cpp         |    1 +
+ devices/alsa.cpp           |    2 +-
+ devices/device.cpp         |    1 +
+ devices/i915-gpu.cpp       |    2 +-
+ devices/network.cpp        |    1 +
+ devices/rfkill.cpp         |    2 +-
+ devices/thinkpad-fan.cpp   |    1 +
+ devices/thinkpad-light.cpp |    1 +
+ html.cpp                   |    1 +
+ main.cpp                   |    1 +
+ 10 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/cpu/intel_cpus.cpp b/cpu/intel_cpus.cpp
+index f42f3b4..bbbd460 100644
+--- a/cpu/intel_cpus.cpp
++++ b/cpu/intel_cpus.cpp
+@@ -34,6 +34,7 @@
+ #include <sys/time.h>
+ #include <string.h>
+ #include <errno.h>
++#include <unistd.h>
+ 
+ #include "../lib.h"
+ #include "../parameters/parameters.h"
+diff --git a/devices/alsa.cpp b/devices/alsa.cpp
+index b0bcd3f..5100c36 100644
+--- a/devices/alsa.cpp
++++ b/devices/alsa.cpp
+@@ -39,7 +39,7 @@ using namespace std;
+ #include "../devlist.h"
+ 
+ #include <string.h>
+-
++#include <unistd.h>
+ 
+ alsa::alsa(char *_name, char *path): device()
+ {
+diff --git a/devices/device.cpp b/devices/device.cpp
+index c38b96c..9ce4509 100644
+--- a/devices/device.cpp
++++ b/devices/device.cpp
+@@ -29,6 +29,7 @@
+ #include <stdio.h>
+ #include <limits.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ using namespace std;
+ 
+diff --git a/devices/i915-gpu.cpp b/devices/i915-gpu.cpp
+index a9dc899..ca2dad1 100644
+--- a/devices/i915-gpu.cpp
++++ b/devices/i915-gpu.cpp
+@@ -28,7 +28,7 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <dirent.h>
+-
++#include <unistd.h>
+ 
+ using namespace std;
+ 
+diff --git a/devices/network.cpp b/devices/network.cpp
+index 5f3ddf2..72c766d 100644
+--- a/devices/network.cpp
++++ b/devices/network.cpp
+@@ -33,6 +33,7 @@
+ #include <dirent.h>
+ #include <libgen.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #include <linux/ethtool.h>
+ 
+diff --git a/devices/rfkill.cpp b/devices/rfkill.cpp
+index 5bf40c4..33a8fcd 100644
+--- a/devices/rfkill.cpp
++++ b/devices/rfkill.cpp
+@@ -29,7 +29,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ #include <libgen.h>
+-
++#include <unistd.h>
+ 
+ using namespace std;
+ 
+diff --git a/devices/thinkpad-fan.cpp b/devices/thinkpad-fan.cpp
+index 4ac3d11..8750c6e 100644
+--- a/devices/thinkpad-fan.cpp
++++ b/devices/thinkpad-fan.cpp
+@@ -29,6 +29,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ #include <math.h>
++#include <unistd.h>
+ 
+ #include "../lib.h"
+ 
+diff --git a/devices/thinkpad-light.cpp b/devices/thinkpad-light.cpp
+index ba4c553..7e91637 100644
+--- a/devices/thinkpad-light.cpp
++++ b/devices/thinkpad-light.cpp
+@@ -29,6 +29,7 @@
+ #include <sys/types.h>
+ #include <dirent.h>
+ #include <math.h>
++#include <unistd.h>
+ 
+ #include "../lib.h"
+ 
+diff --git a/html.cpp b/html.cpp
+index 0a4db2e..8260ed5 100644
+--- a/html.cpp
++++ b/html.cpp
+@@ -29,6 +29,7 @@
+ #include <utility>
+ #include <iostream>
+ #include <fstream>
++#include <unistd.h>
+ 
+ #include "css.h"
+ #include "lib.h"
+diff --git a/main.cpp b/main.cpp
+index 45a126e..0bbb4aa 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -33,6 +33,7 @@
+ #include <time.h>
+ #include <sys/stat.h>
+ #include <getopt.h>
++#include <unistd.h>
+ 
+ #include "cpu/cpu.h"
+ #include "process/process.h"
+-- 
+1.7.8.5
+

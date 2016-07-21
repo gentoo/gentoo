@@ -1,0 +1,13 @@
+--- a/usr/share/applications/odeskteam.desktop	2013-04-06 12:27:53.729344392 +0000
++++ b/usr/share/applications/odeskteam.desktop	2013-04-06 12:29:02.013266552 +0000
+@@ -9,8 +9,8 @@
+ Comment[en_GB]=oDesk Team for Linux
+ Comment[ru]=oDesk Team для Линукс
+ Exec=odeskteam-qt4
+-Icon=odeskteam.png
++Icon=odeskteam
+ Terminal=false
+ Type=Application
+-Categories=Application;Utility;
++Categories=Utility;
+ StartupNotify=true

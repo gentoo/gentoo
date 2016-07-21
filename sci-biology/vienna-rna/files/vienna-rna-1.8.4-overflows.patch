@@ -1,0 +1,26 @@
+Fix buffer overflows
+
+http://bugs.gentoo.org/show_bug.cgi?id=341089
+
+--- Readseq/ureadseq.c
++++ Readseq/ureadseq.c
+@@ -1579,7 +1579,7 @@
+ 
+   short linesout = 0, seqtype = kNucleic;
+   long  i, j, l, l1, ibase;
+-  char  idword[31], endstr[10];
++  char  idword[31], endstr[15];
+   char  seqnamestore[128], *seqname = seqnamestore;
+   char  s[kMaxseqwidth], *cp;
+   char  nameform[10], numform[10], nocountsymbols[10];
+--- lib/part_func_up.c
++++ lib/part_func_up.c
+@@ -1438,7 +1438,7 @@
+ PUBLIC int plot_free_pu_out(pu_out* res, interact *pint, char *ofile, char *head) {
+   int size,s,i,len;
+   double dG_u;
+-  char nan[4], *time, startl[2], dg[10];;
++  char nan[4], *time, startl[3], dg[10];;
+   FILE *wastl;
+ 
+   wastl = fopen(ofile,"a");

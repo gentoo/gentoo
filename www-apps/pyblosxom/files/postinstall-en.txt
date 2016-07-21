@@ -1,0 +1,12 @@
+PyBlosxom setup:
+
+1. Customize the config file 
+   ${VHOST_CGIBINDIR}/pyblosxom/config.py
+
+2. Add any pyblosxom plugins you would like to use to the 
+   /usr/share/${P}/plugins directory.
+
+3. Add blog entries as normal text files to 
+   ${MY_INSTALLDIR}/data
+
+-- Go to http://${VHOST_HOSTNAME}/cgi-bin/pyblosxom/pyblosxom.cgi

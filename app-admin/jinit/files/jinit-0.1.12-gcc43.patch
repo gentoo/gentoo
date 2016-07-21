@@ -1,0 +1,10 @@
+--- org/jinit-0.1.12/init_ipc/User.hh	2003-04-29 23:35:53.000000000 +0200
++++ jinit-0.1.12/init_ipc/User.hh	2009-01-04 11:19:16.000000000 +0100
+@@ -13,6 +13,7 @@
+ #include <errno.h>
+ #include <time.h>
+ #include <err.h>
++#include <cstdlib>
+ 
+ #include "init_ipc/sysvq.hh"
+ #include "need/error.hh"

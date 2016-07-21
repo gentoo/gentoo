@@ -1,0 +1,14 @@
+--- Documentation/Utilities/ReferenceDocs/Makefile.old	2014-09-12 20:06:52.970459560 +0200
++++ Documentation/Utilities/ReferenceDocs/Makefile	2014-09-12 20:08:17.387048685 +0200
+@@ -3,7 +3,10 @@
+ LIBS=clanCore
+ EXTRA_LIBS=-lpthread
+ 
+-include ../../../Examples/Makefile.conf
++CXXFLAGS += -pthread -std=c++0x -I.
++all: $(EXAMPLE_BIN)
++$(EXAMPLE_BIN): $(OBJF)
++	$(CXX) $(CXXFLAGS) $(OBJF) -o $(EXAMPLE_BIN) -Wl,-R../../Sources/Core/.libs -L../../../Sources/Core/.libs -lclan23Core $(EXTRA_LIBS)
+ 
+ # EOF #
+ 

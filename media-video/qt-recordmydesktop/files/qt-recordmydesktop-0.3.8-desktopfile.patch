@@ -1,0 +1,18 @@
+Fixes errors reported by desktop-file-validate.
+
+--- src/qt-recordmydesktop.desktop
++++ src/qt-recordmydesktop.desktop
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+ Version=1.0
+-Encoding=UTF-8
+ Name=qt-recordMyDesktop
+ Comment=Frontend for recordMyDesktop
+ Comment[fr]=Interface pour recordmydesktop
+ Exec=qt-recordMyDesktop
+ Terminal=false
+ Type=Application
+-Icon=qt-recordmydesktop.png
++Icon=qt-recordmydesktop
+ Categories=AudioVideo;Recorder;
+ StartupNotify=false

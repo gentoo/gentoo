@@ -1,0 +1,81 @@
+commit 3ac7ceb0c2dfd023e0e9e944da6825b6bd676568
+Author: Eric Blake <ebb9@byu.net>
+Date:   Thu Jun 5 15:18:11 2008 -0600
+
+    Fix regression in AT_KEYWORDS([Macro]), from 2007-10-18.
+    
+    * lib/autotest/general.m4 (AT_KEYWORDS): Expand argument prior to
+    converting it to lower case.
+    * tests/autotest.at (Keywords and ranges): Test this.
+    * NEWS: Document the fix.
+    * THANKS: Update.
+    Reported by Karsten Hopp.
+    
+    Signed-off-by: Eric Blake <ebb9@byu.net>
+
+diff --git a/NEWS b/NEWS
+index 183d4f1..8b866ad 100644
+--- a/NEWS
++++ b/NEWS
+@@ -9,6 +9,10 @@ GNU Autoconf NEWS - User visible changes.
+ ** Two new quadrigraphs have been introduced: @{:@ for (, and @:}@ for ),
+    allowing the output of unbalanced parantheses in more contexts.
+ 
++** AT_KEYWORDS once again performs expansion on its argument, such that
++   AT_KEYWORDS([m4_if([$1], [], [default])]) no longer complains about
++   the possibly unexpanded m4_if [regression introduced in 2.62].
++
+ 
+ * Major changes in Autoconf 2.62 (2008-04-05) [stable]
+   Released by Eric Blake, based on git versions 2.61a.*.
+diff --git a/THANKS b/THANKS
+index 5ec8921..224cdea 100644
+--- a/THANKS
++++ b/THANKS
+@@ -177,6 +177,7 @@ Justace Clutter             ?
+ Jörn Rennecke               amylaar@cygnus.co.uk
+ Karl Berry                  karl@cs.umb.edu
+ Karl Heuer                  kwzh@gnu.org
++Karsten Hopp                karsten@redhat.com
+ Kate Hedstrom               ?
+ Kathryn Hargreaves          kathryn@deas.harvard.edu
+ Kaveh R. Ghazi              ghazi@caip.rutgers.edu
+diff --git a/lib/autotest/general.m4 b/lib/autotest/general.m4
+index 88d10a3..993dd9f 100644
+--- a/lib/autotest/general.m4
++++ b/lib/autotest/general.m4
+@@ -1476,9 +1476,10 @@ m4_case([$1],
+ # AT_KEYWORDS(KEYWORDS)
+ # ---------------------
+ # Declare a list of keywords associated to the current test group.
+-# The list is stored in lower case, since the -k option is case-insensitive.
++# Since the -k option is case-insensitive, the list is stored in lower case
++# to avoid duplicates that differ only by case.
+ _AT_DEFINE_SETUP([AT_KEYWORDS],
+-[m4_append_uniq_w([AT_keywords], m4_tolower([[$1]]))])
++[m4_append_uniq_w([AT_keywords], m4_tolower(m4_dquote(m4_expand([$1]))))])
+ 
+ 
+ # AT_CAPTURE_FILE(FILE)
+diff --git a/tests/autotest.at b/tests/autotest.at
+index dc3cfd5..c4c0eda 100644
+--- a/tests/autotest.at
++++ b/tests/autotest.at
+@@ -690,7 +690,7 @@ AT_CHECK(:)
+ AT_CLEANUP
+ AT_SETUP(both) # 04
+ AT_KEYWORDS([key1 key2])
+-AT_KEYWORDS([key1])
++AT_KEYWORDS([m4@&t@_echo([Key1])])
+ AT_CHECK(:)
+ AT_CLEANUP
+ AT_SETUP(test5) # 05
+@@ -713,7 +713,7 @@ AT_CHECK(:)
+ AT_CLEANUP
+ ]])
+ dnl check that AT_KEYWORDS does not duplicate words
+-AT_CHECK([grep 'key1.*key1' k], [1])
++AT_CHECK([grep -i 'key1.*key1' k], [1])
+ dnl check that -k requires an argument
+ AT_CHECK([$CONFIG_SHELL ./k -k], [1], [], [ignore])
+ 

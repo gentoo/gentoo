@@ -1,0 +1,38 @@
+From 172a5a7c5824237537051247f203a39cc39e3aef Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 2 Dec 2013 00:24:01 -0500
+Subject: [PATCH 2/2] gznbd: fix warning with newer zlib
+
+When you build against newer zlib, you get a lot of warnings like so:
+
+gznbd.c: In function 'main':
+gznbd.c:87:5: warning: assignment from incompatible pointer type [enabled by default]
+gznbd.c:109:5: warning: passing argument 1 of 'gzread' from incompatible pointer type [enabled by default]
+In file included from gznbd.c:37:0:
+/usr/include/zlib.h:1313:21: note: expected 'gzFile' but argument is of type 'struct gzFile_s **'
+gznbd.c:118:9: warning: passing argument 1 of 'gzerror' from incompatible pointer type [enabled by default]
+
+This is because the zlib API uses just gzFile everywhere, not a pointer
+to a gzFile.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ gznbd/gznbd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gznbd/gznbd.c b/gznbd/gznbd.c
+index bb41156..803c1c1 100644
+--- a/gznbd/gznbd.c
++++ b/gznbd/gznbd.c
+@@ -68,7 +68,7 @@ int main(int argc, char **argv)
+   int pr[2];
+   int sk;
+   int nbd;
+-  gzFile *gz;
++  gzFile gz;
+   int gzerr;
+ 
+   char chunk[CHUNK];
+-- 
+1.8.4.3
+

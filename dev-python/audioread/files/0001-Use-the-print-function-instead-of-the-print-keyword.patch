@@ -1,0 +1,30 @@
+From 3f86133d37d5cc5c8712730de67c23b0d33ce082 Mon Sep 17 00:00:00 2001
+From: Simon Chopin <chopin.simon@gmail.com>
+Date: Tue, 14 May 2013 12:46:50 +0200
+Subject: [PATCH] Use the print() function instead of the print keyword
+
+Python3 doesn't have the `print foo` statement.
+---
+ audioread/gstdec.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/audioread/gstdec.py b/audioread/gstdec.py
+index 78285db..fa8078f 100644
+--- a/audioread/gstdec.py
++++ b/audioread/gstdec.py
+@@ -366,8 +366,8 @@ if __name__ == '__main__':
+     for path in sys.argv[1:]:
+         path = os.path.abspath(os.path.expanduser(path))
+         with GstAudioFile(path) as f:
+-            print f.channels
+-            print f.samplerate
+-            print f.duration
++            print(f.channels)
++            print(f.samplerate)
++            print(f.duration)
+             for s in f:
+-                print len(s), ord(s[0])
++                print(len(s), ord(s[0]))
+-- 
+1.8.1.5
+

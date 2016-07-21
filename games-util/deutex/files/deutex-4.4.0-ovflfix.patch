@@ -1,0 +1,11 @@
+--- src/sound.c.old	2010-10-27 12:32:28.000000000 +0200
++++ src/sound.c	2010-10-27 12:32:52.000000000 +0200
+@@ -309,7 +309,7 @@
+   if(fread(&headv,sizeof(struct VOCHEAD),1,fp)!=1) ProgError("VOC: can't read header");
+   if(strncmp(VocId,headv.ident,VOCIDLEN)!=0) ProgError("VOC: bad header");
+   if(fseek(fp,headv.block1,SEEK_SET)) ProgError("VOC: bad header");
+-  if(fread(&blockv,sizeof(struct VOCHEAD),1,fp)!=1) ProgError("VOC: can't read block");
++  if(fread(&blockv,sizeof(struct VOCBLOCK1),1,fp)!=1) ProgError("VOC: can't read block");
+   if(blockv.type!=1) ProgError("VOC: first block is not sound");
+   datasize= ((blockv.sizeU)<<16)&0xFF0000L;
+   datasize+=((blockv.sizeM)<<8)&0xFF00L;

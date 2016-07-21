@@ -1,0 +1,38 @@
+diff -ruN kvpnc-0.9.6a-kde4/src/kvpncconfig.cpp kvpnc-0.9.6a-kde4-patched/src/kvpncconfig.cpp
+--- kvpnc-0.9.6a-kde4/src/kvpncconfig.cpp	2010-03-08 05:26:33.000000000 -0500
++++ kvpnc-0.9.6a-kde4-patched/src/kvpncconfig.cpp	2013-05-23 10:36:35.536865224 -0400
+@@ -58,8 +58,8 @@
+     pathToPing = "";
+     pathToOpenvpn = "/usr/sbin/openvpn";
+     pathToIp = "/sbin/ip";
+-    pathToIfconfig = "/sbin/ifconfig";
+-    pathToRoute = "/sbin/route";
++    pathToIfconfig = "/bin/ifconfig";
++    pathToRoute = "/bin/route";
+     pathToNetstat = "/bin/netstat";
+     pathToL2tpd = "/usr/sbin/l2tpd";
+     pathToPkcs11Tool = "/usr/bin/pkcs11-tool";
+@@ -874,8 +874,8 @@
+     pathToOpenssl = configgroup.readEntry("Path to openssl", "/usr/bin/openssl");
+     pathToIpsec = configgroup.readEntry("Path to freeswan", "/usr/sbin/ipsec");
+     pathToIp = configgroup.readEntry("Path to iputility", "/sbin/ip");
+-    pathToIfconfig = configgroup.readEntry("Path to ifconfig", "/sbin/ifconfig");
+-    pathToRoute = configgroup.readEntry("Path to route", "/sbin/route");
++    pathToIfconfig = configgroup.readEntry("Path to ifconfig", "/bin/ifconfig");
++    pathToRoute = configgroup.readEntry("Path to route", "/bin/route");
+     pathToNetstat = configgroup.readEntry("Path to netstat", "/bin/netstat");
+     pathToPppd = configgroup.readEntry("Path to pppd", "/usr/sbin/pppd");
+     pathToPptp = configgroup.readEntry("Path to pptp", "/usr/sbin/pptp");
+@@ -1516,10 +1516,10 @@
+         pathToIp = "/sbin/ip";
+ 
+     if (pathToIfconfig.isEmpty())
+-        pathToIfconfig = "/sbin/ifconfig";
++        pathToIfconfig = "/bin/ifconfig";
+ 
+     if (pathToRoute.isEmpty())
+-        pathToRoute = "/sbin/route";
++        pathToRoute = "/bin/route";
+ 
+     if (pathToNetstat.isEmpty())
+         pathToNetstat = "/bin/netstat";

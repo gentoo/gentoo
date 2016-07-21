@@ -1,0 +1,42 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Feb 17 03:39:55 UTC 2013
+Subject: build system
+
+	make build log verbose
+
+--- advancemame-1.2/Makefile.in
++++ advancemame-1.2/Makefile.in
+@@ -77,21 +77,21 @@
+ srcdir=@srcdir@
+ # Don't add the prefix @. This command must be used also in a shell script
+ INSTALL=@INSTALL@
+-CC=@@CC@
+-CXX=@@CXX@
+-LD=@@CC@
+-LDXX=@@CXX@
+-AR=@@AR@
+-ASM=@@ASM@
+-RC=@@RC@
++CC=@CC@
++CXX=@CXX@
++LD=@CC@
++LDXX=@CXX@
++AR=@AR@
++ASM=@ASM@
++RC=@RC@
+ LN_S=@@LN_S@
+ MD=-@@MKDIR@ -p
+ RM=@@RM@ -f
+ ECHO=@@ECHO@
+-CC_FOR_BUILD=@@CC_FOR_BUILD@
+-LD_FOR_BUILD=@@CC_FOR_BUILD@
+-CXX_FOR_BUILD=@@CXX_FOR_BUILD@
+-LDXX_FOR_BUILD=@@CXX_FOR_BUILD@
++CC_FOR_BUILD=@CC_FOR_BUILD@
++LD_FOR_BUILD=@CC_FOR_BUILD@
++CXX_FOR_BUILD=@CXX_FOR_BUILD@
++LDXX_FOR_BUILD=@CXX_FOR_BUILD@
+ EXE=@EXE@
+ EXE_FOR_BUILD=@EXE_FOR_BUILD@
+ SDLCFLAGS=@SDLCFLAGS@
+

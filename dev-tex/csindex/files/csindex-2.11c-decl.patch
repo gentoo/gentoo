@@ -1,0 +1,25 @@
+Index: csindex-19980713/mkind.c
+===================================================================
+--- csindex-19980713.orig/mkind.c
++++ csindex-19980713/mkind.c
+@@ -32,6 +32,8 @@
+ #ifdef CS_INDEX
+ #include <string.h>
+ #endif
++#include <unistd.h>
++
+ 
+ int     letter_ordering = FALSE;
+ int     compress_blanks = FALSE;
+Index: csindex-19980713/mkind.h
+===================================================================
+--- csindex-19980713.orig/mkind.h
++++ csindex-19980713/mkind.h
+@@ -720,6 +720,7 @@ extern void scan_idx ARGS((void));
+ extern void scan_sty ARGS((void));
+ extern void sort_idx ARGS((void));
+ extern int strtoint ARGS((char *str));
++char *strlwr(char *a);
+ 
+ #if __STDC__
+ #include <stdlib.h>

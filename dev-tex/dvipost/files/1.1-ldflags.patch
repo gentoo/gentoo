@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index cd4758b..bb0af2a 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -74,7 +74,7 @@ clean::; rm -f main.o
+ 
+ OBJ=	main.o $(BASE:.c=.o) $(DVI:.c=.o)
+ 
+-$(NAME): $(OBJ); $(CC) $(CFLAGS) -o $@ $(OBJ)
++$(NAME): $(OBJ); $(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(OBJ)
+ 
+ clean::; rm -f $(NAME)
+ 

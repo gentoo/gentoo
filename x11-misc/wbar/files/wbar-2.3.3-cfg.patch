@@ -1,0 +1,15 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Sep 21 21:45:22 UTC 2012
+Subject: remove wbar-config for -gtk
+
+--- a/etc/wbar.cfg.in
++++ b/etc/wbar.cfg.in
+@@ -2,8 +2,3 @@
+ c: @PACKAGE_NAME@ @DEFAULT_ARGV@
+ t: none
+ 
+-i: @PIXMAPDIR@/@PACKAGE_NAME@/wbar.png
+-c: wbar-config
+-t: Config
+-
+-

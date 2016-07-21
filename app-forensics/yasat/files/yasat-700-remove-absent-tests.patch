@@ -1,0 +1,14 @@
+--- a/tests/test.test
++++ b/tests/test.test
+@@ -137,7 +137,7 @@
+ qa_test $? 3
+ 
+ #check_system_cron
+-echo "====== Check a private key ======"
+-check_private_key ./tests/test_rsa.pem 2
+-echo "====== Check a private key protected with password ======"
+-check_private_key ./tests/test_rsa_password.pem 2
++#echo "====== Check a private key ======"
++#check_private_key ./tests/test_rsa.pem 2
++#echo "====== Check a private key protected with password ======"
++#check_private_key ./tests/test_rsa_password.pem 2

@@ -1,0 +1,9 @@
+# MooseFS HTTP/CGI server configuration.
+
+# BIND_HOST: local address to listen on
+# default: any
+BIND_HOST="0.0.0.0"
+
+# BIND_PORT: port to listen on
+# default: 9425
+BIND_PORT=9425

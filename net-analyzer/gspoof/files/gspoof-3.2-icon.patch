@@ -1,0 +1,71 @@
+Fix icon path and name.
+
+--- gtk.c
++++ gtk.c
+@@ -24,9 +24,7 @@
+    gtk_set_locale ();
+    gtk_init (&_argc, &_argv);
+ 
+-   add_pixmap_directory ("pixmap");
+-   add_pixmap_directory ("/usr/local/share/gspoof/pixmap");
+-   add_pixmap_directory ("/usr/share/gspoof/pixmap");
++   add_pixmap_directory ("/usr/share/pixmaps");
+ 
+    MainWin = create_MainWin();
+ 
+--- interface.c
++++ interface.c
+@@ -102,7 +102,7 @@
+    gtk_widget_set_size_request (MainWin, 640, 480);
+    gtk_window_set_title (GTK_WINDOW (MainWin), BANNER);
+    gtk_window_set_position (GTK_WINDOW (MainWin), GTK_WIN_POS_CENTER);
+-   MainWin_icon_pixbuf = create_pixbuf ("icon.png");
++   MainWin_icon_pixbuf = create_pixbuf ("gspoof.png");
+    if (MainWin_icon_pixbuf)
+      {
+ 	gtk_window_set_icon (GTK_WINDOW (MainWin), MainWin_icon_pixbuf);
+@@ -663,7 +663,7 @@
+    gtk_widget_set_extension_events (DataWin, GDK_EXTENSION_EVENTS_CURSOR);
+    gtk_window_set_title (GTK_WINDOW (DataWin), _("Payload options"));
+    gtk_window_set_position (GTK_WINDOW (DataWin), GTK_WIN_POS_CENTER);
+-   DataWin_icon_pixbuf = create_pixbuf ("icon.png");
++   DataWin_icon_pixbuf = create_pixbuf ("gspoof.png");
+    if (DataWin_icon_pixbuf)
+      {
+ 	gtk_window_set_icon (GTK_WINDOW (DataWin), DataWin_icon_pixbuf);
+@@ -754,7 +754,7 @@
+    gtk_window_set_title (GTK_WINDOW (MultiPackets), _("Pseudo-flood options"));
+    gtk_window_set_position (GTK_WINDOW (MultiPackets), GTK_WIN_POS_CENTER);
+    gtk_window_set_resizable (GTK_WINDOW (MultiPackets), FALSE);
+-   MultiPackets_icon_pixbuf = create_pixbuf ("icon.png");
++   MultiPackets_icon_pixbuf = create_pixbuf ("gspoof.png");
+    if (MultiPackets_icon_pixbuf)
+      {
+ 	gtk_window_set_icon (GTK_WINDOW (MultiPackets), MultiPackets_icon_pixbuf);
+@@ -884,7 +884,7 @@
+    gtk_window_set_position (GTK_WINDOW (AboutWin), GTK_WIN_POS_CENTER);
+    gtk_window_set_default_size (GTK_WINDOW (AboutWin), 350, 200);
+    gtk_window_set_resizable (GTK_WINDOW (AboutWin), FALSE);
+-   AboutWin_icon_pixbuf = create_pixbuf ("icon.png");
++   AboutWin_icon_pixbuf = create_pixbuf ("gspoof.png");
+    if (AboutWin_icon_pixbuf)
+      {
+ 	gtk_window_set_icon (GTK_WINDOW (AboutWin), AboutWin_icon_pixbuf);
+@@ -896,7 +896,7 @@
+    gtk_container_add (GTK_CONTAINER (AboutWin), hbox1);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox1), 2);
+ 
+-   image16 = create_pixmap (AboutWin, "icon.png");
++   image16 = create_pixmap (AboutWin, "gspoof.png");
+    gtk_widget_show (image16);
+    gtk_box_pack_start (GTK_BOX (hbox1), image16, TRUE, TRUE, 0);
+ 
+@@ -936,7 +936,7 @@
+    gtk_widget_set_size_request (ECNWin, -1, 90);
+    gtk_window_set_title (GTK_WINDOW (ECNWin), _("ECN options"));
+    gtk_window_set_position (GTK_WINDOW (ECNWin), GTK_WIN_POS_CENTER);
+-   ECNWin_icon_pixbuf = create_pixbuf ("icon.png");
++   ECNWin_icon_pixbuf = create_pixbuf ("gspoof.png");
+    if (ECNWin_icon_pixbuf)
+      {
+ 	gtk_window_set_icon (GTK_WINDOW (ECNWin), ECNWin_icon_pixbuf);

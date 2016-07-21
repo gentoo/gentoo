@@ -1,0 +1,35 @@
+=== modified file 'terminatorlib/prefseditor.py'
+--- terminatorlib/prefseditor.py	2013-02-16 00:10:45 +0000
++++ terminatorlib/prefseditor.py	2013-05-11 22:03:46 +0000
+@@ -923,6 +923,8 @@
+ 
+     def on_inactive_color_offset_change_value(self, widget, scroll, value):
+         """Inactive color offset setting changed"""
++        if value > 1.0:
++          value = 1.0
+         self.config['inactive_color_offset'] = round(value, 2)
+         self.config.save()
+ 
+
+=== modified file 'terminatorlib/terminal.py'
+--- terminatorlib/terminal.py	2013-02-15 15:10:55 +0000
++++ terminatorlib/terminal.py	2013-05-11 22:03:46 +0000
+@@ -621,11 +621,17 @@
+ 
+         factor = self.config['inactive_color_offset']
+         self.fgcolor_inactive = self.fgcolor_active.copy()
++        dbg(("fgcolor_inactive set to: RGB(%s,%s,%s)", getattr(self.fgcolor_inactive, "red"),
++                                                      getattr(self.fgcolor_inactive, "green"),
++                                                      getattr(self.fgcolor_inactive, "blue")))
+ 
+         for bit in ['red', 'green', 'blue']:
+             setattr(self.fgcolor_inactive, bit,
+                     getattr(self.fgcolor_inactive, bit) * factor)
+ 
++        dbg(("fgcolor_inactive set to: RGB(%s,%s,%s)", getattr(self.fgcolor_inactive, "red"),
++                                                      getattr(self.fgcolor_inactive, "green"),
++                                                      getattr(self.fgcolor_inactive, "blue")))
+         colors = self.config['palette'].split(':')
+         self.palette_active = []
+         self.palette_inactive = []
+

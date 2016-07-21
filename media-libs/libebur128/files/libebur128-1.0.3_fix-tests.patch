@@ -1,0 +1,23 @@
+From d5a443afaf8bb16188d4069891c63ceab67bdb80 Mon Sep 17 00:00:00 2001
+From: Diogo Pereira <sir.suriv@gmail.com>
+Date: Mon, 7 Sep 2015 18:46:20 +0100
+Subject: [PATCH] Fix tests build
+
+---
+ test/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 28716f0..9bc67d4 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 2.8.9)
+ set(ENABLE_TESTS OFF CACHE BOOL "Build test binaries, needs libsndfile")
+ 
+ if(ENABLE_TESTS)
+-  find_pkg_config(SNDFILE sndfile REQUIRED)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(SNDFILE REQUIRED sndfile)
+ 
+   include_directories(${EBUR128_INCLUDE_DIR})
+   include_directories(SYSTEM ${SNDFILE_INCLUDE_DIRS})

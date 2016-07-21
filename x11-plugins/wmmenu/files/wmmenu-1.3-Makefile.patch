@@ -1,0 +1,19 @@
+--- Makefile.orig	2015-04-17 13:43:08.122972280 +0200
++++ Makefile	2015-04-17 13:43:11.569975854 +0200
+@@ -14,12 +14,12 @@
+ PIXBUF_LIB := -rdynamic -L$(shell $(PIXBUF_CFG) --variable=prefix)/lib -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0
+ endif
+ 
+-CC = gcc #-g
+-CFLAGS = -pipe -O2
+-CPPFLAGS = -MMD -ansi -pedantic -Wall
++CC ?= gcc #-g
++CFLAGS ?= -pipe -O2
++CPPFLAGS ?= -MMD -ansi -pedantic -Wall
+ INCDIRS = $(PIXBUF_INC)
+ DEFINES = -DETCDIR='"$(ETCDIR)"' $(PIXBUF_DEF)
+-LDFLAGS = -s
++LDFLAGS ?= -s
+ LIBDIRS = $(PIXBUF_LIB)
+ LDLIBS = -ldockapp -lXpm -lXext -lX11 -lm
+ 

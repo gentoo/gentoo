@@ -1,0 +1,110 @@
+https://bugs.gentoo.org/426870
+https://bugs.gentoo.org/459440
+
+ include/csplugincommon/rendermanager/render.h | 6 +++---
+ include/csutil/blockallocator.h               | 6 +++---
+ include/csutil/parray.h                       | 2 +-
+ include/csutil/redblacktree.h                 | 4 ++--
+ include/csutil/refarr.h                       | 2 +-
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+--- a/include/csplugincommon/rendermanager/render.h
++++ b/include/csplugincommon/rendermanager/render.h
+@@ -194,7 +194,7 @@ namespace RenderManager
+             || (mesh.preCopyNum != 0))
+         {
+           // Render the latest batch of meshes
+-          RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, m);
++          this->RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, m);
+           lastRenderedMesh = m;
+ 
+           lastShader = shader;
+@@ -208,7 +208,7 @@ namespace RenderManager
+         }
+       }
+ 
+-      RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, node->meshes.GetSize ());
++      this->RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, node->meshes.GetSize ());
+     }
+   };
+ 
+@@ -242,7 +242,7 @@ namespace RenderManager
+ 	  iShader* shader = context.shaderArray[mesh.contextLocalId+layerOffset];
+         
+ 	  size_t ticket = context.ticketArray[mesh.contextLocalId+layerOffset];
+-          RenderMeshes (context, node->meshes, shader, ticket, m, m+1);
++          this->RenderMeshes (context, node->meshes, shader, ticket, m, m+1);
+ 	}
+       }
+     }
+--- a/include/csutil/blockallocator.h
++++ b/include/csutil/blockallocator.h
+@@ -193,7 +193,7 @@ public:
+   ~csBlockAllocator()
+   {
+     ObjectDispose dispose (*this, false);
+-    DisposeAll (dispose);
++    this->DisposeAll (dispose);
+   }
+ 
+   /**
+@@ -204,7 +204,7 @@ public:
+   void Empty ()
+   {
+     ObjectDispose dispose (*this, true);
+-    FreeAll (dispose);
++    this->FreeAll (dispose);
+   }
+ 
+   /**
+@@ -215,7 +215,7 @@ public:
+   void DeleteAll ()
+   {
+     ObjectDispose dispose (*this, true);
+-    DisposeAll (dispose);
++    this->DisposeAll (dispose);
+   }
+ 
+   /**
+--- a/include/csutil/parray.h
++++ b/include/csutil/parray.h
+@@ -112,7 +112,7 @@ public:
+   {
+     CS_ASSERT (this->GetSize () > 0);
+     T* ret = GetAndClear (this->GetSize () - 1); // see *1*
+-    Truncate (this->GetSize () - 1);
++    this->Truncate (this->GetSize () - 1);
+     return ret;
+   }
+ 
+--- a/include/csutil/redblacktree.h
++++ b/include/csutil/redblacktree.h
+@@ -1155,7 +1155,7 @@ public:
+   T* Put (const K& key, const T &value)
+   {
+     csRedBlackTreePayload<K, T>* payload = (csRedBlackTreePayload<K, T>*)
+-      Insert (csRedBlackTreePayload<K, T>(key, value));
++      this->Insert (csRedBlackTreePayload<K, T>(key, value));
+     return (payload != 0) ? &payload->GetValue() :  0;
+   }
+   /**
+@@ -1194,7 +1194,7 @@ public:
+    */
+   const T& Get (const K& key, const T& fallback) const
+   {
+-    const csRedBlackTreePayload<K, T>* payload = Find (key);
++    const csRedBlackTreePayload<K, T>* payload = this->Find (key);
+     if (payload == 0) return fallback;
+     return payload->GetValue();
+   }
+--- a/include/csutil/refarr.h
++++ b/include/csutil/refarr.h
+@@ -111,7 +111,7 @@ public:
+   {
+     CS_ASSERT (this->GetSize () > 0);
+     csRef<T> ret = this->Get (this->GetSize () - 1); // see *1*
+-    SetSize (this->GetSize () - 1);
++    this->SetSize (this->GetSize () - 1);
+     return ret;
+   }
+ };

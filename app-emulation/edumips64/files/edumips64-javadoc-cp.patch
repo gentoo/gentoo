@@ -1,0 +1,11 @@
+--- edumips64-1.1.orig/build.xml
++++ edumips64-1.1/build.xml
+@@ -24,7 +24,7 @@
+ 
+         <!-- Access the environment -->
+         <property environment="env" />
+-        <property name="base.classpath" value="libs:libs/junit-4.10.jar:libs/hamcrest-core-1.3.jar:${env.CLASSPATH}" />
++        <property name="base.classpath" value="libs:libs/jhall.jar:libs/junit-4.10.jar:libs/hamcrest-core-1.3.jar:${env.CLASSPATH}" />
+ 
+         <!-- File names -->
+ 		<property name="standalone_jar_filename" value="edumips64-${version}.jar" />

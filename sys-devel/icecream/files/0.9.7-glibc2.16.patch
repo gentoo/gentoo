@@ -1,0 +1,16 @@
+Fix building with glibc-2.16
+
+https://bugs.gentoo.org/show_bug.cgi?id=425248
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/daemon/workit.cpp
++++ b/daemon/workit.cpp
+@@ -26,6 +26,7 @@
+ #include "exitcode.h"
+ #include "logging.h"
+ #include <sys/select.h>
++#include <sys/resource.h>
+ #include <algorithm>
+ 
+ #ifdef __FreeBSD__
+

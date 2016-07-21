@@ -1,0 +1,27 @@
+--- Makefile-orig	2010-03-28 00:42:45.759669796 +0300
++++ Makefile	2010-03-28 00:43:33.024936557 +0300
+@@ -1,15 +1,8 @@
+-CC = g++
+-
+ GIMPTOOL = gimptool-2.0
+ 
+ GIMP_LDFLAGS=`$(GIMPTOOL) --libs`
+ GIMP_CFLAGS=`$(GIMPTOOL) --cflags`
+ 
+-CFLAGS=$(GIMP_CFLAGS) -O3 -fno-common -ffast-math -frename-registers -fomit-frame-pointer
+-
+-LDFLAGS=$(GIMP_LDFLAGS) -lm
+-
+-
+ all: resynth
+ 	@echo
+ 	@echo 'Now type "make install" to install resynthesizer'
+@@ -30,7 +23,7 @@
+ 	@echo
+ 
+ resynth: resynth.cc
+-	$(CC) $(CFLAGS) -o $@ resynth.cc $(LDFLAGS)
++	$(CXX) $(CFLAGS) $(GIMP_CFLAGS) $(LDFLAGS) -o $@ resynth.cc $(GIMP_LDFLAGS) -lm
+ 
+ clean:
+ 	-rm -f *~ *.o core resynth

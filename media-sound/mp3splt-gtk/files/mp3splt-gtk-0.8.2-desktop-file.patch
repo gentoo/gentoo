@@ -1,0 +1,26 @@
+From 2db2b45c9b78561370b620a6a64d2d5e7c988a78 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 1 May 2013 22:27:25 +0200
+Subject: [PATCH] Remove deprecated category "Application" from .desktop file
+ template
+
+---
+ mp3splt-gtk.desktop.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mp3splt-gtk.desktop.in b/mp3splt-gtk.desktop.in
+index d7d0c98..67e4e1b 100644
+--- a/mp3splt-gtk.desktop.in
++++ b/mp3splt-gtk.desktop.in
+@@ -6,7 +6,7 @@ Comment=Split mp3 and ogg files without decoding
+ Icon=PREFIX/mp3splt-gtk_ico.svg
+ 
+ Type=Application
+-Categories=Application;AudioVideo;Audio;AudioVideoEditing;
++Categories=AudioVideo;Audio;AudioVideoEditing;
+ 
+ Exec=mp3splt-gtk
+ StartupNotify=false
+-- 
+1.8.1.5
+

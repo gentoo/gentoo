@@ -1,0 +1,23 @@
+diff -rupN icinga-1.7.0beta1-orig//base/Makefile.in icinga-1.7.0beta1//base/Makefile.in
+--- icinga-1.7.0beta1-orig//base/Makefile.in	2012-05-09 07:10:21.000000000 -0500
++++ icinga-1.7.0beta1//base/Makefile.in	2012-05-14 14:00:29.666346315 -0500
+@@ -41,7 +41,7 @@ HTMLDIR=@datarootdir@
+ INSTALL=@INSTALL@
+ INSTALL_OPTS=@INSTALL_OPTS@
+ COMMAND_OPTS=@COMMAND_OPTS@
+-STRIP=@STRIP@
++STRIP=/bin/true
+
+ CGIURL=@cgiurl@
+ HTMURL=@htmurl@
+diff -rupN icinga-1.7.0beta1-orig//cgi/Makefile.in icinga-1.7.0beta1//cgi/Makefile.in
+--- icinga-1.7.0beta1-orig//cgi/Makefile.in	2012-05-09 07:10:21.000000000 -0500
++++ icinga-1.7.0beta1//cgi/Makefile.in	2012-05-14 14:00:43.285346614 -0500
+@@ -21,7 +21,7 @@ INSTALL=@INSTALL@
+ INSTALL_OPTS=@INSTALL_OPTS@
+ INSTALL_OPTS_WEB=@INSTALL_OPTS_WEB@
+ COMMAND_OPTS=@COMMAND_OPTS@
+-STRIP=@STRIP@
++STRIP=/bin/true
+
+ CGIEXTRAS=@CGIEXTRAS@

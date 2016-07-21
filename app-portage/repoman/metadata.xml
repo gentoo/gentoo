@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>mailto:dev-portage@gentoo.org</bugs-to>
+    <changelog>https://gitweb.gentoo.org/proj/portage.git/plain/RELEASE-NOTES</changelog>
+    <doc>https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage</doc>
+  </upstream>
+  <maintainer type="project">
+    <email>dev-portage@gentoo.org</email>
+  </maintainer>
+</pkgmetadata>

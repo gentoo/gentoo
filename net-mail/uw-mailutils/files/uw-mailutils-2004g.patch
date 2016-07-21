@@ -1,0 +1,38 @@
+--- imap-2004g/Makefile	2005-04-30 22:50:20.000000000 +0200
++++ imap-2004g-mailutil/Makefile	2005-10-06 13:21:14.000000000 +0200
+@@ -504,12 +504,7 @@
+ 	$(TOOLS)/$@ "$(LN)" src/charset c-client
+ 	$(TOOLS)/$@ "$(LN)" src/osdep/$(SYSTEM) c-client
+ 	$(TOOLS)/$@ "$(LN)" src/mtest mtest
+-	$(TOOLS)/$@ "$(LN)" src/ipopd ipopd
+-	$(TOOLS)/$@ "$(LN)" src/imapd imapd
+ 	$(TOOLS)/$@ "$(LN)" src/mailutil mailutil
+-	$(TOOLS)/$@ "$(LN)" src/mlock mlock
+-	$(TOOLS)/$@ "$(LN)" src/dmail dmail
+-	$(TOOLS)/$@ "$(LN)" src/tmail tmail
+ 	$(LN) $(TOOLS)/$@ .
+ 
+ build:	OSTYPE rebuild rebuildclean bundled
+@@ -540,13 +535,8 @@
+ bundled:
+ 	@echo Building bundled tools...
+ 	$(CD) mtest;$(MAKE)
+-	$(CD) ipopd;$(MAKE)
+-	$(CD) imapd;$(MAKE)
+ 	$(CD) mailutil;$(MAKE)
+ 	@$(SH) -c '(test -f /usr/include/sysexits.h ) || make sysexitwarn'
+-	$(CD) mlock;$(MAKE) || true
+-	$(CD) dmail;$(MAKE) || true
+-	$(CD) tmail;$(MAKE) || true
+ 
+ 
+ sysexitwarn:
+@@ -559,7 +549,7 @@
+ 
+ clean:
+ 	@echo Removing old processed sources and binaries...
+-	$(SH) -c '$(RM) an ua OSTYPE SPECIALS c-client mtest imapd ipopd mailutil mlock dmail tmail || true'
++	$(SH) -c '$(RM) an ua OSTYPE SPECIALS c-client mtest mailutil || true'
+ 	$(CD) tools;$(MAKE) clean
+ 
+ 

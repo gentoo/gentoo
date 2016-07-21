@@ -1,0 +1,26 @@
+diff -uNr opentyrian-2.1.20130907.ORIG/Makefile opentyrian-2.1.20130907/Makefile
+--- opentyrian-2.1.20130907.ORIG/Makefile	2013-12-08 17:40:23.470846371 +0000
++++ opentyrian-2.1.20130907/Makefile	2013-12-08 17:40:49.355847165 +0000
+@@ -49,6 +49,10 @@
+ ALL_LDFLAGS += $(LDFLAGS)
+ LDLIBS += $(EXTRA_LDLIBS) $(SDL_LDLIBS)
+ 
++ifneq ($(DATA_PATH), )
++	CFLAGS += -DDATA_PATH=\"$(DATA_PATH)\"
++endif
++
+ # RULES ####################################################
+ 
+ .PHONY : all release clean
+diff -uNr opentyrian-2.1.20130907.ORIG/src/file.c opentyrian-2.1.20130907/src/file.c
+--- opentyrian-2.1.20130907.ORIG/src/file.c	2013-12-08 17:40:23.468846371 +0000
++++ opentyrian-2.1.20130907/src/file.c	2013-12-08 17:40:49.355847165 +0000
+@@ -34,7 +34,7 @@
+ #ifdef TARGET_MACOSX
+ 		tyrian_game_folder(),
+ #endif
+-		"/usr/share/opentyrian/data"
++		DATA_PATH
+ 	};
+ 	
+ 	static const char *dir = NULL;

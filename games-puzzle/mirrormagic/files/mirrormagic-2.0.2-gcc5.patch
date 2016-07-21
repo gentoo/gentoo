@@ -1,0 +1,483 @@
+gcc5 inline semantics changed and caused a build fauilure (bug #568618).
+
+--- mirrormagic-2.0.2.orig/src/libgame/misc.h
++++ mirrormagic-2.0.2/src/libgame/misc.h
+@@ -137,8 +137,8 @@
+ void sortLevelDirInfo(struct LevelDirInfo **,
+ 		      int (*compare_function)(const void *, const void *));
+ 
+-inline void swap_numbers(int *, int *);
+-inline void swap_number_pairs(int *, int *, int *, int *);
++extern inline void swap_numbers(int *, int *);
++extern inline void swap_number_pairs(int *, int *, int *, int *);
+ 
+ char *getUserDataDir(void);
+ char *getSetupDir(void);
+--- mirrormagic-2.0.2.orig/src/libgame/msdos.h
++++ mirrormagic-2.0.2/src/libgame/msdos.h
+@@ -711,7 +711,7 @@
+ Pixmap XCreatePixmap(Display *, Drawable, unsigned int, unsigned int,
+ 		     unsigned int);
+ void XSync(Display *, Bool);
+-inline void XCopyArea(Display *, Drawable, Drawable, GC, int, int,
++extern inline void XCopyArea(Display *, Drawable, Drawable, GC, int, int,
+ 		      unsigned int, unsigned int, int, int);
+ int Read_PCX_to_Pixmap(Display *, Window, GC, char *, Pixmap *, Pixmap *);
+ int XReadBitmapFile(Display *, Drawable, char *,
+--- mirrormagic-2.0.2.orig/src/libgame/sdl.h
++++ mirrormagic-2.0.2/src/libgame/sdl.h
+@@ -314,20 +314,20 @@
+ 
+ /* SDL function definitions */
+ 
+-inline void SDLInitVideoDisplay(void);
+-inline void SDLInitVideoBuffer(DrawBuffer **, DrawWindow **, boolean);
+-inline boolean SDLSetVideoMode(DrawBuffer **, boolean);
+-inline void SDLCopyArea(Bitmap *, Bitmap *, int, int, int, int, int, int, int);
+-inline void SDLFillRectangle(Bitmap *, int, int, int, int, unsigned int);
+-inline void SDLDrawSimpleLine(Bitmap *, int, int, int, int, unsigned int);
+-inline void SDLDrawLine(Bitmap *, int, int, int, int, Uint32);
+-inline Pixel SDLGetPixel(Bitmap *, int, int);
++extern inline void SDLInitVideoDisplay(void);
++extern inline void SDLInitVideoBuffer(DrawBuffer **, DrawWindow **, boolean);
++extern inline boolean SDLSetVideoMode(DrawBuffer **, boolean);
++extern inline void SDLCopyArea(Bitmap *, Bitmap *, int, int, int, int, int, int, int);
++extern inline void SDLFillRectangle(Bitmap *, int, int, int, int, unsigned int);
++extern inline void SDLDrawSimpleLine(Bitmap *, int, int, int, int, unsigned int);
++extern inline void SDLDrawLine(Bitmap *, int, int, int, int, Uint32);
++extern inline Pixel SDLGetPixel(Bitmap *, int, int);
+ 
+ Bitmap *SDLLoadImage(char *);
+ 
+-inline void SDLOpenAudio(void);
+-inline void SDLCloseAudio(void);
++extern inline void SDLOpenAudio(void);
++extern inline void SDLCloseAudio(void);
+ 
+-inline void SDLNextEvent(Event *);
++extern inline void SDLNextEvent(Event *);
+ 
+ #endif /* SDL_H */
+--- mirrormagic-2.0.2.orig/src/libgame/system.c
++++ mirrormagic-2.0.2/src/libgame/system.c
+@@ -172,12 +172,12 @@
+ /* video functions                                                           */
+ /* ========================================================================= */
+ 
+-inline static int GetRealDepth(int depth)
++static int GetRealDepth(int depth)
+ {
+   return (depth == DEFAULT_DEPTH ? video.default_depth : depth);
+ }
+ 
+-inline void InitVideoDisplay(void)
++void InitVideoDisplay(void)
+ {
+ #if defined(TARGET_SDL)
+   SDLInitVideoDisplay();
+@@ -186,7 +186,7 @@
+ #endif
+ }
+ 
+-inline void CloseVideoDisplay(void)
++void CloseVideoDisplay(void)
+ {
+   KeyboardAutoRepeatOn();
+ 
+@@ -198,7 +198,7 @@
+ #endif
+ }
+ 
+-inline void InitVideoBuffer(DrawBuffer **backbuffer, DrawWindow **window,
++void InitVideoBuffer(DrawBuffer **backbuffer, DrawWindow **window,
+ 			    int width, int height, int depth,
+ 			    boolean fullscreen)
+ {
+@@ -215,7 +215,7 @@
+ #endif
+ }
+ 
+-inline Bitmap *CreateBitmapStruct(void)
++Bitmap *CreateBitmapStruct(void)
+ {
+ #ifdef TARGET_SDL
+   return checked_calloc(sizeof(struct SDLSurfaceInfo));
+@@ -224,7 +224,7 @@
+ #endif
+ }
+ 
+-inline Bitmap *CreateBitmap(int width, int height, int depth)
++Bitmap *CreateBitmap(int width, int height, int depth)
+ {
+   Bitmap *new_bitmap = CreateBitmapStruct();
+   int real_depth = GetRealDepth(depth);
+@@ -265,7 +265,7 @@
+   return new_bitmap;
+ }
+ 
+-inline void FreeBitmap(Bitmap *bitmap)
++void FreeBitmap(Bitmap *bitmap)
+ {
+   if (bitmap == NULL)
+     return;
+@@ -287,7 +287,7 @@
+   free(bitmap);
+ }
+ 
+-inline void CloseWindow(DrawWindow *window)
++void CloseWindow(DrawWindow *window)
+ {
+ #ifdef TARGET_X11
+   if (window->drawable)
+@@ -300,7 +300,7 @@
+ #endif
+ }
+ 
+-inline void BlitBitmap(Bitmap *src_bitmap, Bitmap *dst_bitmap,
++void BlitBitmap(Bitmap *src_bitmap, Bitmap *dst_bitmap,
+ 		       int src_x, int src_y,
+ 		       int width, int height,
+ 		       int dst_x, int dst_y)
+@@ -314,7 +314,7 @@
+ #endif
+ }
+ 
+-inline void ClearRectangle(Bitmap *bitmap, int x, int y, int width, int height)
++void ClearRectangle(Bitmap *bitmap, int x, int y, int width, int height)
+ {
+ #ifdef TARGET_SDL
+   SDLFillRectangle(bitmap, x, y, width, height, 0x000000);
+@@ -329,7 +329,7 @@
+ #endif
+ #endif
+ 
+-inline void SetClipMask(Bitmap *bitmap, GC clip_gc, Pixmap clip_pixmap)
++void SetClipMask(Bitmap *bitmap, GC clip_gc, Pixmap clip_pixmap)
+ {
+ #ifdef TARGET_X11
+   if (clip_gc)
+@@ -343,7 +343,7 @@
+ #endif
+ }
+ 
+-inline void SetClipOrigin(Bitmap *bitmap, GC clip_gc, int clip_x, int clip_y)
++void SetClipOrigin(Bitmap *bitmap, GC clip_gc, int clip_x, int clip_y)
+ {
+ #ifdef TARGET_X11
+   if (clip_gc)
+@@ -357,7 +357,7 @@
+ #endif
+ }
+ 
+-inline void BlitBitmapMasked(Bitmap *src_bitmap, Bitmap *dst_bitmap,
++void BlitBitmapMasked(Bitmap *src_bitmap, Bitmap *dst_bitmap,
+ 			     int src_x, int src_y,
+ 			     int width, int height,
+ 			     int dst_x, int dst_y)
+@@ -371,7 +371,7 @@
+ #endif
+ }
+ 
+-inline void DrawSimpleWhiteLine(Bitmap *bitmap, int from_x, int from_y,
++void DrawSimpleWhiteLine(Bitmap *bitmap, int from_x, int from_y,
+ 				int to_x, int to_y)
+ {
+ #ifdef TARGET_SDL
+@@ -384,7 +384,7 @@
+ }
+ 
+ #if !defined(TARGET_X11_NATIVE)
+-inline void DrawLine(Bitmap *bitmap, int from_x, int from_y,
++void DrawLine(Bitmap *bitmap, int from_x, int from_y,
+ 		     int to_x, int to_y, Pixel pixel, int line_width)
+ {
+   int x, y;
+@@ -414,7 +414,7 @@
+ }
+ #endif
+ 
+-inline void DrawLines(Bitmap *bitmap, struct XY *points, int num_points,
++void DrawLines(Bitmap *bitmap, struct XY *points, int num_points,
+ 		      Pixel pixel)
+ {
+ #if !defined(TARGET_X11_NATIVE)
+@@ -438,7 +438,7 @@
+ #endif
+ }
+ 
+-inline Pixel GetPixel(Bitmap *bitmap, int x, int y)
++Pixel GetPixel(Bitmap *bitmap, int x, int y)
+ {
+ #if defined(TARGET_SDL)
+   return SDLGetPixel(bitmap, x, y);
+@@ -458,7 +458,7 @@
+ #endif
+ }
+ 
+-inline Pixel GetPixelFromRGB(Bitmap *bitmap, unsigned int color_r,
++Pixel GetPixelFromRGB(Bitmap *bitmap, unsigned int color_r,
+ 			     unsigned int color_g, unsigned int color_b)
+ {
+   Pixel pixel;
+@@ -481,7 +481,7 @@
+   return pixel;
+ }
+ 
+-inline Pixel GetPixelFromRGBcompact(Bitmap *bitmap, unsigned int color)
++Pixel GetPixelFromRGBcompact(Bitmap *bitmap, unsigned int color)
+ {
+   unsigned int color_r = (color >> 16) & 0xff;
+   unsigned int color_g = (color >>  8) & 0xff;
+@@ -491,7 +491,7 @@
+ }
+ 
+ /* execute all pending screen drawing operations */
+-inline void FlushDisplay(void)
++void FlushDisplay(void)
+ {
+ #ifndef TARGET_SDL
+   XFlush(display);
+@@ -499,14 +499,14 @@
+ }
+ 
+ /* execute and wait for all pending screen drawing operations */
+-inline void SyncDisplay(void)
++void SyncDisplay(void)
+ {
+ #ifndef TARGET_SDL
+   XSync(display, FALSE);
+ #endif
+ }
+ 
+-inline void KeyboardAutoRepeatOn(void)
++void KeyboardAutoRepeatOn(void)
+ {
+ #ifdef TARGET_SDL
+   SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY / 2,
+@@ -518,7 +518,7 @@
+ #endif
+ }
+ 
+-inline void KeyboardAutoRepeatOff(void)
++void KeyboardAutoRepeatOff(void)
+ {
+ #ifdef TARGET_SDL
+   SDL_EnableKeyRepeat(0, SDL_DEFAULT_REPEAT_INTERVAL);
+@@ -529,7 +529,7 @@
+ #endif
+ }
+ 
+-inline boolean PointerInWindow(DrawWindow *window)
++boolean PointerInWindow(DrawWindow *window)
+ {
+ #ifdef TARGET_SDL
+   return TRUE;
+@@ -546,7 +546,7 @@
+ #endif
+ }
+ 
+-inline boolean SetVideoMode(boolean fullscreen)
++boolean SetVideoMode(boolean fullscreen)
+ {
+ #ifdef TARGET_SDL
+   return SDLSetVideoMode(&backbuffer, fullscreen);
+@@ -567,7 +567,7 @@
+ #endif
+ }
+ 
+-inline boolean ChangeVideoModeIfNeeded(boolean fullscreen)
++boolean ChangeVideoModeIfNeeded(boolean fullscreen)
+ {
+ #ifdef TARGET_SDL
+   if ((fullscreen && !video.fullscreen_enabled && video.fullscreen_available)||
+@@ -600,7 +600,7 @@
+ /* audio functions                                                           */
+ /* ========================================================================= */
+ 
+-inline void OpenAudio(void)
++void OpenAudio(void)
+ {
+   /* always start with reliable default values */
+   audio.sound_available = FALSE;
+@@ -627,7 +627,7 @@
+ #endif
+ }
+ 
+-inline void CloseAudio(void)
++void CloseAudio(void)
+ {
+ #if defined(TARGET_SDL)
+   SDLCloseAudio();
+@@ -640,7 +640,7 @@
+   audio.sound_enabled = FALSE;
+ }
+ 
+-inline void SetAudioMode(boolean enabled)
++void SetAudioMode(boolean enabled)
+ {
+   if (!audio.sound_available)
+     return;
+@@ -653,7 +653,7 @@
+ /* event functions                                                           */
+ /* ========================================================================= */
+ 
+-inline void InitEventFilter(EventFilter filter_function)
++void InitEventFilter(EventFilter filter_function)
+ {
+ #ifdef TARGET_SDL
+   /* set event filter to filter out certain events */
+@@ -661,7 +661,7 @@
+ #endif
+ }
+ 
+-inline boolean PendingEvent(void)
++boolean PendingEvent(void)
+ {
+ #ifdef TARGET_SDL
+   return (SDL_PollEvent(NULL) ? TRUE : FALSE);
+@@ -670,7 +670,7 @@
+ #endif
+ }
+ 
+-inline void NextEvent(Event *event)
++void NextEvent(Event *event)
+ {
+ #ifdef TARGET_SDL
+   SDLNextEvent(event);
+@@ -679,7 +679,7 @@
+ #endif
+ }
+ 
+-inline Key GetEventKey(KeyEvent *event, boolean with_modifiers)
++Key GetEventKey(KeyEvent *event, boolean with_modifiers)
+ {
+ #ifdef TARGET_SDL
+ #if 0
+@@ -707,7 +707,7 @@
+ #endif
+ }
+ 
+-inline boolean CheckCloseWindowEvent(ClientMessageEvent *event)
++boolean CheckCloseWindowEvent(ClientMessageEvent *event)
+ {
+   if (event->type != EVENT_CLIENTMESSAGE)
+     return FALSE;
+@@ -724,7 +724,7 @@
+ }
+ 
+ 
+-inline void dummy(void)
++void dummy(void)
+ {
+ #ifdef TARGET_SDL
+ #else
+--- mirrormagic-2.0.2.orig/src/libgame/system.h
++++ mirrormagic-2.0.2/src/libgame/system.h
+@@ -278,41 +278,41 @@
+ void InitGfxDoor2Info(int, int, int, int);
+ void InitGfxScrollbufferInfo(int, int);
+ 
+-inline void InitVideoDisplay(void);
+-inline void CloseVideoDisplay(void);
+-inline void InitVideoBuffer(DrawBuffer **,DrawWindow **, int,int,int, boolean);
+-inline Bitmap *CreateBitmapStruct(void);
+-inline Bitmap *CreateBitmap(int, int, int);
+-inline void FreeBitmap(Bitmap *);
+-inline void BlitBitmap(Bitmap *, Bitmap *, int, int, int, int, int, int);
+-inline void ClearRectangle(Bitmap *, int, int, int, int);
+-inline void SetClipMask(Bitmap *, GC, Pixmap);
+-inline void SetClipOrigin(Bitmap *, GC, int, int);
+-inline void BlitBitmapMasked(Bitmap *, Bitmap *, int, int, int, int, int, int);
+-inline void DrawSimpleWhiteLine(Bitmap *, int, int, int, int);
+-inline void DrawLines(Bitmap *, struct XY *, int, Pixel);
+-inline Pixel GetPixel(Bitmap *, int, int);
+-inline Pixel GetPixelFromRGB(Bitmap *, unsigned int,unsigned int,unsigned int);
+-inline Pixel GetPixelFromRGBcompact(Bitmap *, unsigned int);
+-
+-inline void FlushDisplay(void);
+-inline void SyncDisplay(void);
+-inline void KeyboardAutoRepeatOn(void);
+-inline void KeyboardAutoRepeatOff(void);
+-inline boolean PointerInWindow(DrawWindow *);
+-inline boolean SetVideoMode(boolean);
+-inline boolean ChangeVideoModeIfNeeded(boolean);
++extern inline void InitVideoDisplay(void);
++extern inline void CloseVideoDisplay(void);
++extern inline void InitVideoBuffer(DrawBuffer **,DrawWindow **, int,int,int, boolean);
++extern inline Bitmap *CreateBitmapStruct(void);
++extern inline Bitmap *CreateBitmap(int, int, int);
++extern inline void FreeBitmap(Bitmap *);
++extern inline void BlitBitmap(Bitmap *, Bitmap *, int, int, int, int, int, int);
++extern inline void ClearRectangle(Bitmap *, int, int, int, int);
++extern inline void SetClipMask(Bitmap *, GC, Pixmap);
++extern inline void SetClipOrigin(Bitmap *, GC, int, int);
++extern inline void BlitBitmapMasked(Bitmap *, Bitmap *, int, int, int, int, int, int);
++extern inline void DrawSimpleWhiteLine(Bitmap *, int, int, int, int);
++extern inline void DrawLines(Bitmap *, struct XY *, int, Pixel);
++extern inline Pixel GetPixel(Bitmap *, int, int);
++extern inline Pixel GetPixelFromRGB(Bitmap *, unsigned int,unsigned int,unsigned int);
++extern inline Pixel GetPixelFromRGBcompact(Bitmap *, unsigned int);
++
++extern inline void FlushDisplay(void);
++extern inline void SyncDisplay(void);
++extern inline void KeyboardAutoRepeatOn(void);
++extern inline void KeyboardAutoRepeatOff(void);
++extern inline boolean PointerInWindow(DrawWindow *);
++extern inline boolean SetVideoMode(boolean);
++extern inline boolean ChangeVideoModeIfNeeded(boolean);
+ 
+ Bitmap *LoadImage(char *);
+ 
+-inline void OpenAudio(void);
+-inline void CloseAudio(void);
+-inline void SetAudioMode(boolean);
+-
+-inline void InitEventFilter(EventFilter);
+-inline boolean PendingEvent(void);
+-inline void NextEvent(Event *event);
+-inline Key GetEventKey(KeyEvent *, boolean);
+-inline boolean CheckCloseWindowEvent(ClientMessageEvent *);
++extern inline void OpenAudio(void);
++extern inline void CloseAudio(void);
++extern inline void SetAudioMode(boolean);
++
++extern inline void InitEventFilter(EventFilter);
++extern inline boolean PendingEvent(void);
++extern inline void NextEvent(Event *event);
++extern inline Key GetEventKey(KeyEvent *, boolean);
++extern inline boolean CheckCloseWindowEvent(ClientMessageEvent *);
+ 
+ #endif /* SYSTEM_H */
+--- mirrormagic-2.0.2.orig/src/libgame/x11.c
++++ mirrormagic-2.0.2/src/libgame/x11.c
+@@ -21,7 +21,7 @@
+ static void X11InitDisplay();
+ static DrawWindow *X11InitWindow();
+ 
+-inline void X11InitVideoDisplay(void)
++void X11InitVideoDisplay(void)
+ {
+   /* initialize X11 video */
+   X11InitDisplay();
+@@ -30,7 +30,7 @@
+   video.default_depth = XDefaultDepth(display, screen);
+ }
+ 
+-inline void X11InitVideoBuffer(DrawBuffer **backbuffer, DrawWindow **window)
++void X11InitVideoBuffer(DrawBuffer **backbuffer, DrawWindow **window)
+ {
+   *window = X11InitWindow();
+ 
+--- mirrormagic-2.0.2.orig/src/libgame/x11.h
++++ mirrormagic-2.0.2/src/libgame/x11.h
+@@ -286,8 +286,8 @@
+ 
+ /* X11 function definitions */
+ 
+-inline void X11InitVideoDisplay(void);
+-inline void X11InitVideoBuffer(DrawBuffer **, DrawWindow **);
++extern inline void X11InitVideoDisplay(void);
++extern inline void X11InitVideoBuffer(DrawBuffer **, DrawWindow **);
+ Bitmap *X11LoadImage(char *);
+ 
+ #endif /* X11_H */

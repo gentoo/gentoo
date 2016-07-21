@@ -1,0 +1,33 @@
+From 725970d993e44a2760b91bfdee7d6c2af61bffd2 Mon Sep 17 00:00:00 2001
+From: Jesse Adkins <jesserayadkins@gmail.com>
+Date: Tue, 28 Sep 2010 13:29:57 -0700
+Subject: Purge cvs tags.
+
+Signed-off-by: Jesse Adkins <jesserayadkins@gmail.com>
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+
+diff --git a/cyrillic/fonts.alias b/cyrillic/fonts.alias
+index f7d42df..be4c55d 100644
+--- a/cyrillic/fonts.alias
++++ b/cyrillic/fonts.alias
+@@ -7,8 +7,6 @@
+ ! responsible for the proper functioning of this software, nor does
+ ! the author assume any responsibility for damages incurred with its use.
+ !
+-! $XFree86$
+-!
+ fixed  -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-koi8-r
+ variable -*-helvetica-bold-r-normal-*-*-120-*-*-*-*-koi8-r
+ 5x8	-misc-fixed-medium-r-normal--8-80-75-75-c-50-koi8-r
+diff --git a/misc/fonts.alias b/misc/fonts.alias
+index 0398476..732933c 100644
+--- a/misc/fonts.alias
++++ b/misc/fonts.alias
+@@ -1,4 +1,3 @@
+-! $Xorg: fonts.alias,v 1.3 2000/08/21 16:42:31 coskrey Exp $
+ fixed        -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
+ variable     -*-helvetica-bold-r-normal-*-*-120-*-*-*-*-iso8859-1
+ 5x7          -misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-1
+-- 
+cgit v0.10.2
+

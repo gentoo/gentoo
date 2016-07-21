@@ -1,0 +1,67 @@
+diff -u a/drivers/lirc_atiusb/lirc_atiusb.c b/drivers/lirc_atiusb/lirc_atiusb.c
+--- a/drivers/lirc_atiusb/lirc_atiusb.c
++++ b/drivers/lirc_atiusb/lirc_atiusb.c
+@@ -48,7 +48,9 @@
+ #include <linux/slab.h>
+ #include <linux/module.h>
+ #include <linux/kmod.h>
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
+ #include <linux/smp_lock.h>
++#endif
+ #include <linux/completion.h>
+ #include <linux/uaccess.h>
+ #include <linux/usb.h>
+diff -u a/drivers/lirc_i2c/lirc_i2c.c b/drivers/lirc_i2c/lirc_i2c.c
+--- a/drivers/lirc_i2c/lirc_i2c.c
++++ b/drivers/lirc_i2c/lirc_i2c.c
+@@ -555,8 +555,8 @@ static int ir_probe(struct i2c_client *client, const struct i2c_device_id *id)
+ 		kfree(ir);
+ 		return -EINVAL;
+ 	}
+-	printk(KERN_INFO "lirc_i2c: chip 0x%x found @ 0x%02x (%s)\n",
+-	       adap->id, addr, ir->c.name);
++	printk(KERN_INFO "lirc_i2c: chip found @ 0x%02x (%s)\n",
++	       addr, ir->c.name);
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 31)
+ 	/* register device */
+diff -u a/drivers/lirc_wpc8769l/lirc_wpc8769l.c b/drivers/lirc_wpc8769l/lirc_wpc8769l.c
+--- a/drivers/lirc_wpc8769l/lirc_wpc8769l.c
++++ b/drivers/lirc_wpc8769l/lirc_wpc8769l.c
+@@ -361,14 +361,22 @@ static irqreturn_t irq_handler(int irqno, void *blah, struct pt_regs *regs)
+ 		size = count << 3;
+ 
+ 		ldata = (unsigned long *) data_buf;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
+ 		next_one = generic_find_next_le_bit(ldata, size, 0);
++#else
++		next_one = find_next_zero_bit_le(ldata, size, 0);
++#endif
+ 
+ 		if (next_one > 0)
+ 			put_pulse_bit(next_one
+ 				* WPC8769L_USECS_PER_BIT);
+ 
+ 		while (next_one < size) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
+ 			next_zero = generic_find_next_zero_le_bit(ldata,
++#else
++			next_zero = find_next_zero_bit_le(ldata,
++#endif
+ 				size, next_one + 1);
+ 
+ 			put_space_bit(
+@@ -376,7 +384,11 @@ static irqreturn_t irq_handler(int irqno, void *blah, struct pt_regs *regs)
+ 				* WPC8769L_USECS_PER_BIT);
+ 
+ 			if (next_zero < size) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39)
+ 				next_one = generic_find_next_le_bit(ldata,
++#else
++				next_one = find_next_bit_le(ldata,
++#endif
+ 					size, next_zero + 1);
+ 
+ 				put_pulse_bit(
+-- 
+1.7.5.4

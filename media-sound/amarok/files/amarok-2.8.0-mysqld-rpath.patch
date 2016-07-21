@@ -1,0 +1,12 @@
+--- src/core-impl/collections/db/sql/mysqlecollection/CMakeLists.txt.orig	2014-06-15 18:31:07.362415065 -0400
++++ src/core-impl/collections/db/sql/mysqlecollection/CMakeLists.txt	2014-06-15 18:33:19.612419882 -0400
+@@ -28,6 +28,9 @@
+     ${ZLIB_LIBRARIES}
+ )
+
++SET_TARGET_PROPERTIES(amarok_collection-mysqlecollection PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
++SET_TARGET_PROPERTIES(amarok_collection-mysqlecollection PROPERTIES INSTALL_RPATH "${MYSQLD_DIR}")
++
+ if(NOT WIN32 AND NOT APPLE)
+     target_link_libraries( amarok_collection-mysqlecollection crypt pthread )
+ endif(NOT WIN32 AND NOT APPLE)

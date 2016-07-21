@@ -1,0 +1,30 @@
+From 375912c466b28a6121d351b9ff5513133a1c7227 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@redhat.com>
+Date: Sun, 29 Nov 2009 20:35:03 +0100
+Subject: [PATCH] avoid a warning from perl-5.11
+
+* lib/Automake/Wrap.pm (_tab_length): Remove useless use of tr's
+"/d" modifier.
+
+Signed-off-by: Ralf Wildenhues <Ralf.Wildenhues@gmx.de>
+---
+ ChangeLog            | 6 ++++++
+ lib/Automake/Wrap.pm | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/lib/Automake/Wrap.pm b/lib/Automake/Wrap.pm
+index 09a135a..66213d1 100644
+--- a/lib/Automake/Wrap.pm
++++ b/lib/Automake/Wrap.pm
+@@ -55,7 +55,7 @@ sub tab_length($)
+ {
+   my ($txt) = @_;
+   my $len = length ($txt);
+-  $len += 7 * ($txt =~ tr/\t/\t/d);
++  $len += 7 * ($txt =~ tr/\t/\t/);
+   return $len;
+ }
+ 
+-- 
+2.1.3
+

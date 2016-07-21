@@ -1,0 +1,178 @@
+--- tdl-1.5.2.orig/main.c
++++ tdl-1.5.2/main.c
+@@ -80,7 +80,7 @@
+   return;
+ }
+ /*}}}*/
+-static volatile void unlock_and_exit(int code)/*{{{*/
++static void unlock_and_exit(int code)/*{{{*/
+ {
+   unlock_database();
+   exit(code);
+@@ -237,22 +237,91 @@
+ 
+ }
+ /*}}}*/
+-static void rename_database(char *path)/*{{{*/
++static mode_t get_mode(const char *path); /* prototype */
++/*}}}*/
++static int copy_file_contents(char *pathsrc, char *pathdest) {
++  int src, dest;
++  ssize_t rdsize = 1;
++  char buf[4096];
++
++  src = open(pathsrc, O_RDONLY);
++  if (src == -1) {
++    perror("warning, couldn't open database");
++    return 0;
++  }
++  dest = open(pathdest, O_WRONLY | O_CREAT, get_mode(pathsrc));
++  if (dest == -1) {
++    perror("warning, couldn't open/create backup database");
++    close(src);
++    return 0;
++  }
++  if (ftruncate(dest,0) != 0) {
++    perror("warning, couldn't truncate backup database");
++    close(src);
++    close(dest);
++    return 0;
++  }
++  lseek(src,0,SEEK_SET);
++  lseek(dest,0,SEEK_SET);
++  while (rdsize > 0) {
++    rdsize = read(src, buf, 4096);
++    if (rdsize == -1) {
++      perror("warning, error reading database");
++      close(src);
++      close(dest);
++      return 0;
++    }
++    if (rdsize > 0) {
++      if (write(dest, buf, rdsize) != rdsize) {
++	perror("warning, error writing to backup database");
++	close(src);
++	close(dest);
++	return 0;
++      }
++    }
++  }
++  close(src);
++  close(dest);
++  return 1;
++}
++/*}}}*/
++static int path_is_symlink(char *path) {
++  int i;
++  struct stat s;
++  i = lstat(path, &s);
++  if ((i == 0) && (S_ISLNK(s.st_mode))) {
++    return 1; /* is a symlink */
++  }
++  return 0; /* not a symlink */
++}
++/*}}}*/
++static int rename_database(char *path)/*{{{*/
+ {
+-  int len;
++  /* the rename_database function returns 1 if database or/and
++   * database backup file are symlinks; otherwise returns 0 */
++  int len, symlinks;
+   char *pathbak;
+-
++  
+   len = strlen(path);
+   pathbak = new_array(char, len + 5);
+   strcpy(pathbak, path);
+   strcat(pathbak, ".bak");
+-  if (rename(path, pathbak) < 0) {
+-    if (is_noisy) {
+-      perror("warning, couldn't save backup database:");
++
++  symlinks = path_is_symlink(path) | path_is_symlink(pathbak);
++
++  if (symlinks) {
++    if (access(path,F_OK) == 0) {
++      copy_file_contents(path, pathbak);
++    }
++  } else {
++    if (rename(path, pathbak) < 0) {
++      if (is_noisy) {
++	perror("warning, couldn't save backup database:");
++      }
+     }
+   }
+   free(pathbak);
+-  return;
++  return symlinks;
+ } 
+ /*}}}*/
+ static char *executable_name(char *argv0)/*{{{*/
+@@ -315,7 +384,7 @@
+ /*}}}*/
+ static void save_database(char *path)/*{{{*/
+ {
+-  FILE *out;
++  FILE *out = NULL;
+   int out_fd;
+   mode_t database_mode;
+   if (is_loaded && currently_dirty) {
+@@ -324,20 +393,34 @@
+     /* The next line only used to happen if the command wasn't 'create'.
+      * However, it should quietly fail for create, where the existing database
+      * doesn't exist */
+-    rename_database(path);
+-
+-    /* Open database this way so that the permissions from the existing
+-       database can be duplicated onto the new one in way free of race
+-       conditions. */
+-    out_fd = open(path, O_WRONLY | O_CREAT | O_EXCL, database_mode);
+-    if (out_fd < 0) {
+-      fprintf(stderr, "Could not open new database %s for writing : %s\n",
+-              path, strerror(errno));
+-      unlock_and_exit(1);
++    if (rename_database(path) == 0) {
++      /* database is a regular file */
++      /* Open database this way so that the permissions from the existing
++	 database can be duplicated onto the new one in way free of race
++	 conditions. */
++      out_fd = open(path, O_WRONLY | O_CREAT | O_EXCL, database_mode);
++      if (out_fd < 0) {
++	fprintf(stderr, "Could not open new database %s for writing : %s\n",
++		path, strerror(errno));
++	unlock_and_exit(1);
++      }
+     } else {
+-      /* Normal case */
+-      out = fdopen(out_fd, "wb");
++      /* database and/or backup database are symlinks */
++      /* we should truncate existing file and write its contents */
++      out_fd = open(path, O_WRONLY | O_CREAT, database_mode);
++      if (out_fd < 0) {
++	fprintf(stderr, "Could not open database %s for writing : %s\n",
++		path, strerror(errno));
++	unlock_and_exit(1);
++      } else {
++	/* Normal case */
++	if (ftruncate(out_fd, 0) != 0) {
++	  perror("warning, couldn't truncate database:");
++	  unlock_and_exit(1);
++	}
++      }
+     }
++    out = fdopen(out_fd, "wb");
+     if (!out) {
+       fprintf(stderr, "Cannot open database %s for writing\n", path);
+       unlock_and_exit(1);
+@@ -728,6 +811,11 @@
+ 
+     if (!is_loaded && cmds[index].load_db) {
+       load_database(current_database_path);
++      if (is_interactive && (!is_loaded)) {
++	fprintf(stderr, "error: could not open database. please create a "
++	        "database with 'tdl create' before using this tdl command\n");
++        unlock_and_exit(-1);
++      }
+     }
+ 
+     pp = is_tdl ? (p + 1) : p;

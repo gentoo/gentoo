@@ -1,0 +1,44 @@
+diff -Naur rts_pstor.a/ms.c rts_pstor.b/ms.c
+--- rts_pstor.a/ms.c	2011-01-11 04:11:07.000000000 -0500
++++ rts_pstor.b/ms.c	2015-09-17 01:28:41.816067799 -0400
+@@ -23,6 +23,7 @@
+ #include <linux/blkdev.h>
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
+diff -Naur rts_pstor.a/rtsx_chip.c rts_pstor.b/rtsx_chip.c
+--- rts_pstor.a/rtsx_chip.c	2011-01-11 04:11:07.000000000 -0500
++++ rts_pstor.b/rtsx_chip.c	2015-09-17 01:28:13.680536901 -0400
+@@ -24,6 +24,7 @@
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
+ #include <linux/workqueue.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
+diff -Naur rts_pstor.a/rtsx_scsi.c rts_pstor.b/rtsx_scsi.c
+--- rts_pstor.a/rtsx_scsi.c	2011-01-11 04:11:07.000000000 -0500
++++ rts_pstor.b/rtsx_scsi.c	2015-09-17 01:28:42.688053259 -0400
+@@ -23,6 +23,7 @@
+ #include <linux/blkdev.h>
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"
+diff -Naur rts_pstor.a/xd.c rts_pstor.b/xd.c
+--- rts_pstor.a/xd.c	2011-01-11 04:11:07.000000000 -0500
++++ rts_pstor.b/xd.c	2015-09-17 01:28:42.689053242 -0400
+@@ -23,6 +23,7 @@
+ #include <linux/blkdev.h>
+ #include <linux/kthread.h>
+ #include <linux/sched.h>
++#include <linux/vmalloc.h>
+ 
+ #include "rtsx.h"
+ #include "rtsx_transport.h"

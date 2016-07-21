@@ -1,0 +1,17 @@
+this is a useless check for package builders
+
+https://bugs.gentoo.org/364123
+
+--- a/configure
++++ b/configure
+@@ -440,9 +440,7 @@ fi
+ #QMAILQUEUE_BIN="${QMAILQUEUE_BIN:-$BINDIR/qmail-queue}"
+ 
+ #Sanity check that suid is allowed on the Qmail "/bin" partition
+-QMNT=`df $BINDIR|head -2|tail -1|awk '{print $1}'`
+-SUIDSTATUS=`mount|egrep "^$QMNT "|grep nosuid`
+-if [ "$SUIDSTATUS" != "" ]; then
++if false; then
+ 	cat<<EOF
+ 	
+             *** FATAL ERROR ***

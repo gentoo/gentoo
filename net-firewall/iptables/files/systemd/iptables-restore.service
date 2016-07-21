@@ -1,0 +1,14 @@
+[Unit]
+Description=Restore iptables firewall rules
+# if both are queued for some reason, don't store before restoring :)
+Before=iptables-store.service
+# sounds reasonable to have firewall up before any of the services go up
+Before=network.target
+Conflicts=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/iptables-restore /var/lib/iptables/rules-save
+
+[Install]
+WantedBy=basic.target

@@ -1,0 +1,39 @@
+From 00a8296688a04ff9414fcaa42429a8bb531cc85b Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sun, 12 Jun 2016 03:46:40 +0300
+Subject: [PATCH 1/2] build: minor fixups for recent scons and gcc
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ SCons/Config/gnu | 2 +-
+ Source/util.h    | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/SCons/Config/gnu b/SCons/Config/gnu
+index 051b425..462105e 100755
+--- a/SCons/Config/gnu
++++ b/SCons/Config/gnu
+@@ -31,7 +31,7 @@ defenv['ALIGN_FLAG'] = '-Wl,--file-alignment,512'
+ defenv['CPP_REQUIRES_STDLIB'] = 1
+ defenv['SUBSYS_CON'] = '-Wl,--subsystem,console'
+ defenv['MSVCRT_FLAG'] = ''
+-defenv['STDCALL'] = '__attribute__((__stdcall__))'
++defenv['STDCALL'] = '"__attribute__((__stdcall__))"'
+ 
+ ### defines
+ 
+diff --git a/Source/util.h b/Source/util.h
+index 8a55302..07de256 100755
+--- a/Source/util.h
++++ b/Source/util.h
+@@ -23,6 +23,7 @@
+ #include "ResourceEditor.h"
+ 
+ #ifndef _WIN32
++#  include <unistd.h>
+ #  include <iconv.h>
+ #  include <stdio.h>
+ #endif
+-- 
+2.7.3
+

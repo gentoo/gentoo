@@ -1,0 +1,323 @@
+From c9809ac05224ccf3a7fce1dda8c7eddedbbf3a56 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ch=C3=AD-Thanh=20Christopher=20Nguy=E1=BB=85n?=
+ <chithanh@gentoo.org>
+Date: Wed, 5 Feb 2014 03:21:37 +0100
+Subject: [PATCH] gsm-receiver: build against gnuradio-3.7
+
+This is the result of blindly following
+http://gnuradio.org/redmine/projects/gnuradio/wiki/Move_3-6_to_3-7
+The result builds, but it may or may not work.
+---
+ gsm-receiver/Makefile.common                       |  7 ++--
+ gsm-receiver/config/Makefile.am                    |  2 +-
+ .../config/gr_libgnuradio_core_extra_ldflags.m4    | 40 ----------------------
+ .../config/gr_libgnuradio_runtime_extra_ldflags.m4 | 40 ++++++++++++++++++++++
+ gsm-receiver/config/gr_standalone.m4               |  5 ++-
+ gsm-receiver/gsm-receiver.pc.in                    |  2 +-
+ gsm-receiver/src/lib/gsm.i                         | 15 ++++++--
+ gsm-receiver/src/lib/gsm_receiver_cf.cc            | 16 ++++-----
+ gsm-receiver/src/lib/gsm_receiver_cf.h             | 18 +++++-----
+ 9 files changed, 76 insertions(+), 69 deletions(-)
+ delete mode 100644 gsm-receiver/config/gr_libgnuradio_core_extra_ldflags.m4
+ create mode 100644 gsm-receiver/config/gr_libgnuradio_runtime_extra_ldflags.m4
+
+diff --git a/gsm-receiver/Makefile.common b/gsm-receiver/Makefile.common
+index b5dcb2e..0592f70 100644
+--- a/gsm-receiver/Makefile.common
++++ b/gsm-receiver/Makefile.common
+@@ -28,7 +28,7 @@ AM_CPPFLAGS = \
+ 	$(STD_DEFINES_AND_INCLUDES) \
+ 	$(PYTHON_CPPFLAGS) \
+ 	$(CPPUNIT_INCLUDES) \
+-	$(GNURADIO_CORE_CPPFLAGS)
++	$(GNURADIO_RUNTIME_CPPFLAGS)
+ 
+ #!! remove this
+ TCH_DECODER_INCLUDEDIR = $(top_srcdir)/src/lib/decoder/openbtsstuff
+@@ -36,9 +36,8 @@ TCH_DECODER_INCLUDEDIR = $(top_srcdir)/src/lib/decoder/openbtsstuff
+ STD_DEFINES_AND_INCLUDES = \
+ 	-I$(DECODER_INCLUDEDIR) \
+ 	-I$(MAIN_INCLUDEDIR) \
+-	-I$(GNURADIO_CORE_INCLUDEDIR) \
+-	-I$(GNURADIO_CORE_INCLUDEDIR)/swig \
+-	-I$(GRUEL_INCLUDEDIR)/gruel/swig \
++	-I$(GNURADIO_RUNTIME_INCLUDEDIR) \
++	-I$(GNURADIO_RUNTIME_INCLUDEDIR)/gnuradio/swig \
+ 	$(LIBOSMOCORE_CFLAGS)  \
+ 	-I$(TCH_DECODER_INCLUDEDIR)
+ 
+diff --git a/gsm-receiver/config/Makefile.am b/gsm-receiver/config/Makefile.am
+index 5858d22..1fdc0e5 100644
+--- a/gsm-receiver/config/Makefile.am
++++ b/gsm-receiver/config/Makefile.am
+@@ -51,7 +51,7 @@ m4macros = \
+ 	gr_fortran.m4 \
+ 	gr_gprof.m4 \
+ 	gr_lib64.m4 \
+-	gr_libgnuradio_core_extra_ldflags.m4 \
++	gr_libgnuradio_runtime_extra_ldflags.m4 \
+ 	gr_no_undefined.m4 \
+ 	gr_omnithread.m4 \
+ 	gr_pwin32.m4 \
+diff --git a/gsm-receiver/config/gr_libgnuradio_core_extra_ldflags.m4 b/gsm-receiver/config/gr_libgnuradio_core_extra_ldflags.m4
+deleted file mode 100644
+index 43f872c..0000000
+--- a/gsm-receiver/config/gr_libgnuradio_core_extra_ldflags.m4
++++ /dev/null
+@@ -1,40 +0,0 @@
+-# Check for (MinGW)win32 extra ld options.             -*- Autoconf -*-
+-
+-# Copyright 2003,2004,2005 Free Software Foundation, Inc.
+-#
+-# This file is part of GNU Radio
+-#
+-# GNU Radio is free software; you can redistribute it and/or modify
+-# it under the terms of the GNU General Public License as published by
+-# the Free Software Foundation; either version 3, or (at your option)
+-# any later version.
+-#
+-# GNU Radio is distributed in the hope that it will be useful,
+-# but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-# GNU General Public License for more details.
+-#
+-# You should have received a copy of the GNU General Public License
+-# along with GNU Radio; see the file COPYING.  If not, write to
+-# the Free Software Foundation, Inc., 51 Franklin Street,
+-# Boston, MA 02110-1301, USA.
+-
+-dnl
+-AC_DEFUN([GR_LIBGNURADIO_CORE_EXTRA_LDFLAGS], [
+-AC_REQUIRE([AC_PROG_LD])
+-# on Mingw32 extra LDFLAGS are required to ease global variable linking
+-LIBGNURADIO_CORE_EXTRA_LDFLAGS=""
+-
+-AC_MSG_CHECKING([whether $LD accepts --enable-runtime-pseudo-reloc])
+-if ${LD} --enable-runtime-pseudo-reloc --version >/dev/null 2>&1
+-then
+-        # libtool requires the quotes
+-        LIBGNURADIO_CORE_EXTRA_LDFLAGS="\"-Wl,--enable-runtime-pseudo-reloc\""
+-        AC_MSG_RESULT(yes)
+-else
+-        AC_MSG_RESULT(no)
+-fi
+-
+-AC_SUBST(LIBGNURADIO_CORE_EXTRA_LDFLAGS)
+-
+-])
+diff --git a/gsm-receiver/config/gr_libgnuradio_runtime_extra_ldflags.m4 b/gsm-receiver/config/gr_libgnuradio_runtime_extra_ldflags.m4
+new file mode 100644
+index 0000000..92e8c97
+--- /dev/null
++++ b/gsm-receiver/config/gr_libgnuradio_runtime_extra_ldflags.m4
+@@ -0,0 +1,40 @@
++# Check for (MinGW)win32 extra ld options.             -*- Autoconf -*-
++
++# Copyright 2003,2004,2005 Free Software Foundation, Inc.
++#
++# This file is part of GNU Radio
++#
++# GNU Radio is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3, or (at your option)
++# any later version.
++#
++# GNU Radio is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with GNU Radio; see the file COPYING.  If not, write to
++# the Free Software Foundation, Inc., 51 Franklin Street,
++# Boston, MA 02110-1301, USA.
++
++dnl
++AC_DEFUN([GR_LIBGNURADIO_RUNTIME_EXTRA_LDFLAGS], [
++AC_REQUIRE([AC_PROG_LD])
++# on Mingw32 extra LDFLAGS are required to ease global variable linking
++LIBGNURADIO_RUNTIME_EXTRA_LDFLAGS=""
++
++AC_MSG_CHECKING([whether $LD accepts --enable-runtime-pseudo-reloc])
++if ${LD} --enable-runtime-pseudo-reloc --version >/dev/null 2>&1
++then
++        # libtool requires the quotes
++        LIBGNURADIO_RUNTIME_EXTRA_LDFLAGS="\"-Wl,--enable-runtime-pseudo-reloc\""
++        AC_MSG_RESULT(yes)
++else
++        AC_MSG_RESULT(no)
++fi
++
++AC_SUBST(LIBGNURADIO_RUNTIME_EXTRA_LDFLAGS)
++
++])
+diff --git a/gsm-receiver/config/gr_standalone.m4 b/gsm-receiver/config/gr_standalone.m4
+index 4e097d2..14f286c 100644
+--- a/gsm-receiver/config/gr_standalone.m4
++++ b/gsm-receiver/config/gr_standalone.m4
+@@ -114,7 +114,6 @@ m4_define([GR_STANDALONE],
+   AC_CHECK_PROG([XMLTO],[xmlto],[yes],[])
+   AM_CONDITIONAL([HAS_XMLTO], [test x$XMLTO = xyes])
+ 
+-  PKG_CHECK_MODULES(GNURADIO_CORE, gnuradio-core >= 3)
+-  LIBS="$LIBS $GNURADIO_CORE_LIBS"
+-  PKG_CHECK_MODULES(GRUEL, gruel >= 3)
++  PKG_CHECK_MODULES(GNURADIO_RUNTIME, gnuradio-runtime >= 3)
++  LIBS="$LIBS $GNURADIO_RUNTIME_LIBS"
+ ])
+diff --git a/gsm-receiver/gsm-receiver.pc.in b/gsm-receiver/gsm-receiver.pc.in
+index 0a18d4b..9ceca56 100644
+--- a/gsm-receiver/gsm-receiver.pc.in
++++ b/gsm-receiver/gsm-receiver.pc.in
+@@ -5,7 +5,7 @@ includedir=@includedir@
+ 
+ Name: gsm-receiver
+ Description: The GSM receiver block which does FCCH burst search, sch decoding and normal burst demodulation
+-Requires: gnuradio-core
++Requires: gnuradio-runtime
+ Version: @VERSION@
+ Libs: -L${libdir} -lgsm-receiver
+ Cflags: -I${includedir}
+diff --git a/gsm-receiver/src/lib/gsm.i b/gsm-receiver/src/lib/gsm.i
+index b3c1d81..3f58e16 100644
+--- a/gsm-receiver/src/lib/gsm.i
++++ b/gsm-receiver/src/lib/gsm.i
+@@ -37,18 +37,27 @@
+ #include "gsm_receiver_cf.h"
+ #include <stdexcept>
+ /* #include "gsm_constants.h" */
++#include <gnuradio/block.h>
++#include <gnuradio/sync_block.h>
++#include <gnuradio/sync_decimator.h>
++#include <gnuradio/sync_interpolator.h>
++#include <gnuradio/tagged_stream_block.h>
++#include <gnuradio/block_gateway.h>
++#include <gnuradio/feval.h>
++#include <gnuradio/py_feval.h>
++#include <gnuradio/high_res_timer.h>
+ %}
+ 
+ // ----------------------------------------------------------------
+ 
+ GR_SWIG_BLOCK_MAGIC(gsm,receiver_cf);
+ 
+-gsm_receiver_cf_sptr gsm_make_receiver_cf ( gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration);
++gsm_receiver_cf_sptr gsm_make_receiver_cf ( gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration);
+ 
+-class gsm_receiver_cf : public gr_block
++class gsm_receiver_cf : public gr::block
+ {
+ private:
+-  gsm_receiver_cf ( gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr);
++  gsm_receiver_cf ( gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr);
+ };
+ 
+ // ----------------------------------------------------------------
+diff --git a/gsm-receiver/src/lib/gsm_receiver_cf.cc b/gsm-receiver/src/lib/gsm_receiver_cf.cc
+index b4e7a69..6bfdf5d 100644
+--- a/gsm-receiver/src/lib/gsm_receiver_cf.cc
++++ b/gsm-receiver/src/lib/gsm_receiver_cf.cc
+@@ -24,8 +24,8 @@
+ #include "config.h"
+ #endif
+ 
+-#include <gr_io_signature.h>
+-#include <gr_math.h>
++#include <gnuradio/io_signature.h>
++#include <gnuradio/math.h>
+ #include <math.h>
+ #include <Assert.h>
+ #include <boost/circular_buffer.hpp>
+@@ -289,7 +289,7 @@ typedef std::vector<float> vector_float;
+ typedef boost::circular_buffer<float> circular_buffer_float;
+ 
+ gsm_receiver_cf_sptr
+-gsm_make_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration)
++gsm_make_receiver_cf(gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration)
+ {
+   return gsm_receiver_cf_sptr(new gsm_receiver_cf(tuner, synchronizer, osr, key, configuration));
+ }
+@@ -302,10 +302,10 @@ static const int MAX_OUT = 1; // maximum number of output streams
+ /*
+  * The private constructor
+  */
+-gsm_receiver_cf::gsm_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration)
+-    : gr_block("gsm_receiver",
+-               gr_make_io_signature(MIN_IN, MAX_IN, sizeof(gr_complex)),
+-               gr_make_io_signature(MIN_OUT, MAX_OUT, 142 * sizeof(float))),
++gsm_receiver_cf::gsm_receiver_cf(gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration)
++    : gr::block("gsm_receiver",
++               gr::io_signature::make(MIN_IN, MAX_IN, sizeof(gr_complex)),
++               gr::io_signature::make(MIN_OUT, MAX_OUT, 142 * sizeof(float))),
+     d_OSR(osr),
+     d_chan_imp_length(CHAN_IMP_RESP_LENGTH),
+     d_tuner(tuner),
+@@ -751,7 +751,7 @@ void gsm_receiver_cf::set_frequency(double freq_offset)
+ inline float gsm_receiver_cf::compute_phase_diff(gr_complex val1, gr_complex val2)
+ {
+   gr_complex conjprod = val1 * conj(val2);
+-  return gr_fast_atan2f(imag(conjprod), real(conjprod));
++  return gr::fast_atan2f(imag(conjprod), real(conjprod));
+ }
+ 
+ bool gsm_receiver_cf::reach_sch_burst(const int nitems)
+diff --git a/gsm-receiver/src/lib/gsm_receiver_cf.h b/gsm-receiver/src/lib/gsm_receiver_cf.h
+index 039a774..3478585 100644
+--- a/gsm-receiver/src/lib/gsm_receiver_cf.h
++++ b/gsm-receiver/src/lib/gsm_receiver_cf.h
+@@ -24,9 +24,9 @@
+ 
+ #include <vector>
+ #include <list>
+-#include <gr_block.h>
+-#include <gr_complex.h>
+-#include <gr_feval.h>
++#include <gnuradio/block.h>
++#include <gnuradio/gr_complex.h>
++#include <gnuradio/feval.h>
+ #include <gsm_constants.h>
+ #include <gsm_receiver_config.h>
+ 
+@@ -42,7 +42,7 @@ class gsm_receiver_cf;
+ typedef boost::shared_ptr<gsm_receiver_cf> gsm_receiver_cf_sptr;
+ typedef std::vector<gr_complex> vector_complex;
+ 
+-gsm_receiver_cf_sptr gsm_make_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration);
++gsm_receiver_cf_sptr gsm_make_receiver_cf(gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration);
+ 
+ /** GSM Receiver GNU Radio block
+  *
+@@ -52,7 +52,7 @@ gsm_receiver_cf_sptr gsm_make_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synch
+  * \ingroup block
+  */
+ 
+-class gsm_receiver_cf : public gr_block
++class gsm_receiver_cf : public gr::block
+ {
+   private:
+     std::map<char,int> d_hex_to_int;
+@@ -76,8 +76,8 @@ class gsm_receiver_cf : public gr_block
+     gr_complex d_sch_training_seq[N_SYNC_BITS]; ///<encoded training sequence of a SCH burst
+     gr_complex d_norm_training_seq[TRAIN_SEQ_NUM][N_TRAIN_BITS]; ///<encoded training sequences of a normal bursts and dummy bursts
+ 
+-    gr_feval_dd *d_tuner; ///<callback to a python object which is used for frequency tunning
+-    gr_feval_dd *d_synchronizer; ///<callback to a python object which is used to correct offset of USRP's internal clock
++    gr::feval_dd *d_tuner; ///<callback to a python object which is used for frequency tunning
++    gr::feval_dd *d_synchronizer; ///<callback to a python object which is used to correct offset of USRP's internal clock
+ 
+     /** Countes samples consumed by the receiver
+      *
+@@ -120,8 +120,8 @@ class gsm_receiver_cf : public gr_block
+     // GSM Stack
+     GS_CTX d_gs_ctx;//TODO: remove it! it'a not right place for a decoder
+ 
+-    friend gsm_receiver_cf_sptr gsm_make_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration);
+-    gsm_receiver_cf(gr_feval_dd *tuner, gr_feval_dd *synchronizer, int osr, std::string key, std::string configuration);
++    friend gsm_receiver_cf_sptr gsm_make_receiver_cf(gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration);
++    gsm_receiver_cf(gr::feval_dd *tuner, gr::feval_dd *synchronizer, int osr, std::string key, std::string configuration);
+ 
+     /** Function whis is used to search a FCCH burst and to compute frequency offset before
+      * "synchronized" state of the receiver
+-- 
+1.8.3.2
+

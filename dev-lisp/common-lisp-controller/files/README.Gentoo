@@ -1,0 +1,27 @@
+                                                          -*-outline-*-
+
+* Common Lisp Controller 4.x and 5.x
+
+With version 4.x and 5.x of the Debian Common Lisp Controller, the
+design of the controller was simplified so that source was compiled
+into /var/cache/, per user, on demand (ie. when you evaluate (require
+:foo) at the REPL).
+
+* Common Lisp Controller 3.x 
+
+** IMPORTANT
+
+The Common Lisp Controller (CLC) in Gentoo GNU/Linux is a modified
+version of the original CLC sources from the Debian Project.  Do not
+send bug reports to the Debian Project -- always send bug reports to
+http://bugs.gentoo.org.
+
+** NOTES
+
+If you are used to the CLC in Debian, please note that the Gentoo CLC
+does not require an Internet super-server such as inetd or xinetd in
+order to function.  The original CLC implementation's clc-send-command
+has been replaced with a shell script which implements the same
+interface, but bypasses clc-build-daemon entirely.
+
+-- Matthew Kennedy <mkennedy@gentoo.org>

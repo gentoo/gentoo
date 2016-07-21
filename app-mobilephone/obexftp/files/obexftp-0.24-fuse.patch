@@ -1,0 +1,35 @@
+From 2cc82e0ab5a30eaab5461dcc4eed41b095edba3f Mon Sep 17 00:00:00 2001
+From: Hendrik Sattler <post@hendrik-sattler.de>
+Date: Sun, 11 Aug 2013 20:27:29 +0200
+Subject: [PATCH] Install fuse apps
+
+---
+ fuse/CMakeLists.txt |    7 ++++++-
+ 1 files changed, 6 insertions(+), 1 deletions(-)
+
+diff --git a/fuse/CMakeLists.txt b/fuse/CMakeLists.txt
+index c31a5fc..7d5f7ea 100644
+--- a/fuse/CMakeLists.txt
++++ b/fuse/CMakeLists.txt
+@@ -14,7 +14,6 @@ if ( Fuse_FOUND )
+     ${Fuse_LIBRARIES}
+   )
+ 
+-
+   add_executable ( obexautofs
+     obexautofs.c
+   )
+@@ -23,4 +22,10 @@ if ( Fuse_FOUND )
+     obexftp
+     ${Fuse_LIBRARIES}
+   )
++
++  install ( TARGETS obexfs obexautofs
++    RUNTIME
++      DESTINATION ${CMAKE_INSTALL_BINDIR}
++      COMPONENT applications
++  )
+ endif ( Fuse_FOUND )
+-- 
+1.7.1
+

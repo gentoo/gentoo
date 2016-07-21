@@ -1,0 +1,29 @@
+--- plugins/scripting/cunixsocket.cpp
++++ plugins/scripting/cunixsocket.cpp
+@@ -40,12 +40,21 @@
+   varlist = 0;
+   connected = false;
+   
+-  //first of all, we need a file name
+-  char *fname = tempnam ("/tmp", "km");
+-  if (fname != 0)  //only if it didn't fail
++  //22 = strlen(form) + strlen(/sock) + 1
++  char form[]="/tmp/kmuddyXXXXXX", *dirname, sockname[22];
++  dirname = mkdtemp(form);
++
++  if (dirname != NULL)  //only if it didn't fail
+   {
+-    name = fname;
+-    free (fname);
++
++    strcpy(sockname, dirname);
++    strcat(dirname, "/sock");
++
++    name = dirname;
++    free (form);
++    free (dirname);
++    free (sockname);
++
+     //now that we have the name, we create a socket and set some parameters
+     id = socket (PF_UNIX, SOCK_STREAM, 0);
+     sa.sun_family = AF_UNIX;

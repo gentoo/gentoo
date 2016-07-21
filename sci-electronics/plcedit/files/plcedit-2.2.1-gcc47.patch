@@ -1,0 +1,15 @@
+ https://bugs.gentoo.org/450856
+ 
+ src/singleapp/qtlocalpeer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/singleapp/qtlocalpeer.cpp
++++ b/src/singleapp/qtlocalpeer.cpp
+@@ -57,6 +57,7 @@ static PProcessIdToSessionId pProcessIdToSessionId = 0;
+ #endif
+ #if defined(Q_OS_UNIX)
+ #include <time.h>
++#include <unistd.h>
+ #endif
+ 
+ namespace QtLP_Private {

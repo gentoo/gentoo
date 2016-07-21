@@ -1,0 +1,35 @@
+--- work/monodevelop-5.7/src/addins/MonoDevelop.PackageManagement/MonoDevelop.PackageManagement.addin.xml	2015-01-12 22:19:13.000000000 +0300
++++ work.new/monodevelop-5.7/src/addins/MonoDevelop.PackageManagement/MonoDevelop.PackageManagement.addin.xml	2015-03-06 07:45:39.278552461 +0300
+@@ -2,8 +2,6 @@
+ 
+ 	<Runtime>
+ 		<Import assembly="MonoDevelop.PackageManagement.dll" />
+-		<Import assembly="Microsoft.Web.XmlTransform.dll" />
+-		<Import assembly="NuGet.Core.dll" />
+ 	</Runtime>
+ 
+ 	<Extension path = "/MonoDevelop/Ide/Commands">
+--- work/monodevelop-5.7/Main.sln	2015-01-12 22:19:13.000000000 +0300
++++ work.new/monodevelop-5.7/Main.sln	2015-03-06 08:00:52.860939203 +0300
+@@ -555,21 +555,13 @@
+ 		{252117CA-0ABB-4F36-BFC8-DE23A8089BB9}.ReleaseWin32|Any CPU.ActiveCfg = Release|Any CPU
+ 		{252117CA-0ABB-4F36-BFC8-DE23A8089BB9}.ReleaseWin32|Any CPU.Build.0 = Release|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugGnome|Any CPU.ActiveCfg = Debug|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugGnome|Any CPU.Build.0 = Debug|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugMac|Any CPU.ActiveCfg = Debug|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugMac|Any CPU.Build.0 = Debug|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugWin32|Any CPU.ActiveCfg = Debug|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.DebugWin32|Any CPU.Build.0 = Debug|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.Release|Any CPU.Build.0 = Release|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseGnome|Any CPU.ActiveCfg = Release|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseGnome|Any CPU.Build.0 = Release|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseMac|Any CPU.ActiveCfg = Release|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseMac|Any CPU.Build.0 = Release|Any CPU
+ 		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseWin32|Any CPU.ActiveCfg = Release|Any CPU
+-		{2645C9F3-9ED5-4806-AB09-DAD9BE90C67B}.ReleaseWin32|Any CPU.Build.0 = Release|Any CPU
+ 		{27096E7F-C91C-4AC6-B289-6897A701DF21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+ 		{27096E7F-C91C-4AC6-B289-6897A701DF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+ 		{27096E7F-C91C-4AC6-B289-6897A701DF21}.DebugGnome|Any CPU.ActiveCfg = Debug|Any CPU

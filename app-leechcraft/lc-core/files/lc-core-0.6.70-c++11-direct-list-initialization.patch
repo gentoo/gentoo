@@ -1,0 +1,35 @@
+GCC 5.1 and upwards are more strict with direct initialization:
+* /var/tmp/portage/app-leechcraft/lc-core-0.6.70/work/leechcraft-0.6.70/src/util/network/addresses.cpp:46:3: error: direct-list-* initialization of ‘auto’ requires exactly one element [-fpermissive]
+*    };
+See also:
+https://bugs.gentoo.org/show_bug.cgi?id=574030
+
+--- leechcraft-0.6.70/src/util/network/addresses.cpp
++++ leechcraft-0.6.70/src/util/network/addresses.cpp
+@@ -38,7 +38,7 @@
+ 	AddrList_t GetLocalAddresses (int defaultPort)
+ 	{
+ 		AddrList_t defaultAddrs;
+-		const auto locals
++		const auto locals =
+ 		{
+ 			QHostAddress::parseSubnet ("10.0.0.0/8"),
+ 			QHostAddress::parseSubnet ("172.16.0.0/12"),
+--- leechcraft-0.6.70/src/util/xdg/xdg.cpp
++++ leechcraft-0.6.70/src/util/xdg/xdg.cpp
+@@ -44,13 +44,13 @@
+ 
+ 	QPixmap GetAppPixmap (const QString& name)
+ 	{
+-		const auto prefixes
++		const auto prefixes =
+ 		{
+ 			"/usr/share/pixmaps/",
+ 			"/usr/local/share/pixmaps/"
+ 		};
+ 
+-		const auto sizes { "192", "128", "96", "72", "64", "48", "36", "32" };
++		const auto sizes = { "192", "128", "96", "72", "64", "48", "36", "32" };
+ 		const QStringList themes
+ 		{
+ 			"/usr/local/share/icons/hicolor/",

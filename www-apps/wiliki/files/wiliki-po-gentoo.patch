@@ -1,0 +1,11 @@
+--- po/Makefile.in.orig	2008-01-31 21:38:35.000000000 -0500
++++ po/Makefile.in	2009-01-09 14:34:08.000000000 -0500
+@@ -28,7 +28,7 @@
+ PO_FILES = $(addsuffix .po,$(ALL_LINGUAS))
+ MO_FILES = $(addsuffix .gmo,$(ALL_LINGUAS))
+ 
+-MSGDIR = $(datadir)/locale/$$lingua/LC_MESSAGES/
++MSGDIR = $(DESTDIR)/$(datadir)/locale/$$lingua/LC_MESSAGES/
+ 
+ POTFILES = $(top_srcdir)/src/wiliki.scm \
+            $(top_srcdir)/src/wiliki/db.scm \

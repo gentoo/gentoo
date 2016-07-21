@@ -1,0 +1,71 @@
+diff --git a/font/Makefile b/font/Makefile
+index e57a57d..04ed214 100644
+--- a/font/Makefile
++++ b/font/Makefile
+@@ -116,7 +116,7 @@ TTFSRC = ttfsrc
+ all: compiled
+ 
+ compiled: $(UNIFILES) $(COMBINING) $(UPPER_FILES) $(UPPER_COMBINING)
+-	make compiled-files
++	$(MAKE) compiled-files
+ 
+ compiled-files: pcf psf bmp ttf csurttf upperttf uppercsurttf bigpic coverage
+ 	install -p index.html $(COMPILED_DIR)/index.html
+@@ -277,7 +277,7 @@ ttf:
+ 		$(HEXDIR)/bmp-combining.txt \
+ 		$(TTFSRC)/combining.txt
+ 	cd $(TTFSRC) ; \
+-	   make FONTFILE="unifont" COMBINING="combining" \
++	   $(MAKE) FONTFILE="unifont" COMBINING="combining" \
+ 		FONTNAME="Unifont" PSNAME="Unifont"
+ 	mv $(TTFSRC)/unifont.sfd $(COMPILED_DIR)/unifont-$(VERSION).sfd 
+ 	mv $(TTFSRC)/unifont.ttf \
+@@ -287,7 +287,7 @@ ttf:
+ 		$(COMPILED_DIR)/unifont_sample-$(VERSION).bdf \
+ 		$(TTFSRC)/unifont_sample.bdf
+ 	cd $(TTFSRC) ; \
+-	   make sbit FONTFILE="unifont_sample" COMBINING="" \
++	   $(MAKE) sbit FONTFILE="unifont_sample" COMBINING="" \
+ 		FONTNAME="Unifont Sample" PSNAME="UnifontSample"
+ 	mv $(TTFSRC)/unifont_sample.ttf \
+ 		$(COMPILED_DIR)/unifont_sample-$(VERSION).ttf 
+@@ -303,7 +303,7 @@ csurttf:
+ 	sort -u plane00csur/csur-combining.txt $(HEXDIR)/bmp-combining.txt \
+ 		> $(TTFSRC)/combining_csur.txt
+ 	cd $(TTFSRC) ; \
+-	   make outline FONTFILE="unifont_csur" COMBINING="combining_csur" \
++	   $(MAKE) outline FONTFILE="unifont_csur" COMBINING="combining_csur" \
+ 		FONTNAME="Unifont CSUR" PSNAME="UnifontCSUR"
+ 	mv $(TTFSRC)/unifont_csur.sfd \
+ 		$(COMPILED_DIR)/unifont_csur-$(VERSION).sfd 
+@@ -320,7 +320,7 @@ upperttf:
+ 		$(TTFSRC)/unifont_upper.hex
+ 	sort -u $(UPPER_COMBINING) > $(TTFSRC)/combining_upper.txt
+ 	cd $(TTFSRC) ; \
+-	   make outline FONTFILE="unifont_upper" COMBINING="combining_upper" \
++	   $(MAKE) outline FONTFILE="unifont_upper" COMBINING="combining_upper" \
+ 		FONTNAME="Unifont Upper" PSNAME="UnifontUpper"
+ 	mv $(TTFSRC)/unifont_upper.sfd \
+ 		$(COMPILED_DIR)/unifont_upper-$(VERSION).sfd 
+@@ -339,7 +339,7 @@ uppercsurttf:
+ 	sort -u plane0[1-F]csur/*combining*.txt \
+ 		> $(TTFSRC)/combining_upper_csur.txt
+ 	cd $(TTFSRC) ; \
+-	   make outline FONTFILE="unifont_upper_csur" COMBINING="combining_upper_csur" \
++	   $(MAKE) outline FONTFILE="unifont_upper_csur" COMBINING="combining_upper_csur" \
+ 		FONTNAME="Unifont Upper CSUR" PSNAME="UnifontUpperCSUR"
+ 	mv $(TTFSRC)/unifont_upper_csur.sfd \
+ 		$(COMPILED_DIR)/unifont_upper_csur-$(VERSION).sfd 
+diff --git a/Makefile b/Makefile
+index 3240c2b..f933067 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,7 @@ bindir:
+ buildfont:
+ 	if [ x$(BUILDFONT) != x ] ; \
+         then \
+-           set -e ; make -C font ; \
++           set -e ; $(MAKE) -C font ; \
+         fi
+ 
+ #

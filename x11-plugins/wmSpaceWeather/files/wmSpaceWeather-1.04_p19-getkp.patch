@@ -1,0 +1,27 @@
+--- wmSpaceWeather/GetKp.orig	2008-01-28 14:20:43.000000000 +0100
++++ wmSpaceWeather/GetKp	2008-01-28 14:22:48.000000000 +0100
+@@ -17,10 +17,10 @@
+     unlink(CUR_INDEX);
+ 
+ 
+-#   $grabcmd = "cd /tmp; /usr/bin/wget -q ftp://www.sec.noaa.gov/pub/indices/DGD.txt";
++#   $grabcmd = "cd /tmp; /usr/bin/wget -q http://www.swpc.noaa.gov/ftpdir/indices/DGD.txt";
+ #   system "$grabcmd";
+ #
+-	$grabcmd = "/usr/bin/curl -f -s -o " . DGD_FILE . " http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
++	$grabcmd = "/usr/bin/curl -f -s -o " . DGD_FILE . " http://www.swpc.noaa.gov/ftpdir/indices/DGD.txt";
+ 	exit 1 if (system "$grabcmd");
+ 
+ 
+@@ -69,9 +69,9 @@
+     #
+     # Add in very latest stuff
+     #
+-#   $grabcmd = "cd /tmp; /usr/bin/wget -q ftp://www.sec.noaa.gov/pub/latest/curind.txt";
++#   $grabcmd = "cd /tmp; /usr/bin/wget -q http://www.swpc.noaa.gov/ftpdir/latest/curind.txt";
+ #   system "$grabcmd";
+-	$grabcmd = "/usr/bin/curl -f -s -o " . CUR_INDEX . " http://www.sec.noaa.gov/ftpdir/latest/curind.txt";
++	$grabcmd = "/usr/bin/curl -f -s -o " . CUR_INDEX . " http://www.swpc.noaa.gov/ftpdir/latest/curind.txt";
+ 	exit 1 if (system "$grabcmd");
+     %lmonstr = ( "Jan", 1, "Feb", 2, "Mar", 3, "Apr", 4, "May", 5, "Jun", 6, "Jul", 7, "Aug", 8, "Sep", 9, "Oct", 10, "Nov", 11, "Dec", 12);
+ 

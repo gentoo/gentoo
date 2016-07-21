@@ -1,0 +1,36 @@
+From dd26aa535b395735ca61ea2a3e618aded45eb05e Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Mon, 4 Feb 2013 16:35:54 -0800
+Subject: [PATCH] Cast 'zfs bad bloc' to ULL for x86
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Explicitly case this value to an unsigned long long for 32-bit
+systems to inform the compiler that a long type should not be
+used.  Otherwise we get the following compiler error:
+
+  dmu_send.c:376: error: integer constant is too large for
+  ‘long’ type
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+---
+ module/zfs/dmu_send.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/module/zfs/dmu_send.c b/module/zfs/dmu_send.c
+index 0cf3c4a..921c3d7 100644
+--- a/module/zfs/dmu_send.c
++++ b/module/zfs/dmu_send.c
+@@ -373,7 +373,7 @@
+ 				for (ptr = abuf->b_data;
+ 				    (char *)ptr < (char *)abuf->b_data + blksz;
+ 				    ptr++)
+-					*ptr = 0x2f5baddb10c;
++					*ptr = 0x2f5baddb10cULL;
+ 			} else {
+ 				return (EIO);
+ 			}
+-- 
+1.7.10
+

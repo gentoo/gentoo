@@ -1,0 +1,30 @@
+From e7f7217b9b9dbb3304116eae2b0ad90c84ede034 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20S=C5=82awi=C5=84ski?= <amade@asmblr.net>
+Date: Wed, 3 Sep 2014 11:01:31 +0200
+Subject: [PATCH] link libudev against SELINUX
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Amadeusz Sławiński <amade@asmblr.net>
+---
+ src/libudev/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/libudev/Makefile.am b/src/libudev/Makefile.am
+index 868a9fc..72e43bc 100644
+--- a/src/libudev/Makefile.am
++++ b/src/libudev/Makefile.am
+@@ -54,7 +54,8 @@ libudev_la_LDFLAGS = \
+ 	-Wl,--version-script=$(top_srcdir)/src/libudev/libudev.sym
+ 
+ libudev_la_LIBADD = \
+-	$(top_builddir)/src/shared/libudev_shared.la
++	$(top_builddir)/src/shared/libudev_shared.la \
++	$(SELINUX_LIBS)
+ 
+ libudev_private_la_SOURCES = \
+ 	$(libudev_la_SOURCES) \
+-- 
+2.1.0
+

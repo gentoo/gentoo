@@ -1,0 +1,48 @@
+Description: Only <glib.h> can be included directly.
+ Starting with glib 2.32 it is now mandatory to include glib.h
+ instead of individual headers, or the compiler will generate
+ an error.
+Origin: vendor: Debian
+Debian-Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=665506
+
+Index: ario-1.5.1/src/ario-profiles.h
+===================================================================
+--- ario-1.5.1.orig/src/ario-profiles.h	2011-05-17 19:54:49.000000000 +0200
++++ ario-1.5.1/src/ario-profiles.h	2012-03-30 07:10:46.285079675 +0200
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_PROFILES_H
+ #define __ARIO_PROFILES_H
+ 
+-#include <glib/gslist.h>
++#include <glib.h>
+ #include "servers/ario-server.h"
+ 
+ G_BEGIN_DECLS
+Index: ario-1.5.1/src/plugins/ario-plugin-info.c
+===================================================================
+--- ario-1.5.1.orig/src/plugins/ario-plugin-info.c	2011-02-27 16:07:28.000000000 +0100
++++ ario-1.5.1/src/plugins/ario-plugin-info.c	2012-03-30 07:10:48.289079604 +0200
+@@ -27,7 +27,7 @@
+ 
+ #include <string.h>
+ #include <glib/gi18n.h>
+-#include <glib/gkeyfile.h>
++#include <glib.h>
+ 
+ #include "plugins/ario-plugin-info-priv.h"
+ #include "ario-debug.h"
+Index: ario-1.5.1/src/ario-util.h
+===================================================================
+--- ario-1.5.1.orig/src/ario-util.h	2011-02-27 16:07:31.000000000 +0100
++++ ario-1.5.1/src/ario-util.h	2012-03-30 07:21:04.725057804 +0200
+@@ -18,8 +18,8 @@
+  */
+ 
+ #include "servers/ario-server.h"
+-#include "glib/gslist.h"
+-#include "gdk/gdkpixbuf.h"
++#include <glib.h>
++#include <gdk/gdkpixbuf.h>
+ 
+ /* Number of covers used to generate the drag & drop image */
+ #define MAX_COVERS_IN_DRAG 3

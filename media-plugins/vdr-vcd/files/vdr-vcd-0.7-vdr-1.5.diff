@@ -1,0 +1,33 @@
+diff -NaurwB vcd-0.7-1.4.5/menucontrol.c vcd-0.7-1.5.0/menucontrol.c
+--- vcd-0.7-1.4.5/menucontrol.c	2006-07-05 15:09:23.000000000 +0200
++++ vcd-0.7-1.5.0/menucontrol.c	2007-01-19 11:10:51.000000000 +0100
+@@ -63,7 +63,8 @@
+ {
+   if (visible) {
+      delete displayReplay;
+-     needsFastResponse = visible = false;
++     visible = false;
++     SetNeedsFastResponse(visible);
+      modeOnly = false;
+      }
+ }
+@@ -170,7 +171,8 @@
+ {
+   if (visible) {
+      delete displayReplay;
+-     needsFastResponse = visible = false;
++     visible = false;
++     SetNeedsFastResponse(visible);
+      modeOnly = false;
+      lastPlay = lastForward = false;
+      lastSpeed = -1;
+@@ -210,7 +212,8 @@
+   if (GetIndex(Current, Total) && Total > 0) {
+      if (!visible) {
+         displayReplay = Skins.Current()->DisplayReplay(modeOnly);
+-        needsFastResponse = visible = true;
++        visible = true;
++        SetNeedsFastResponse(visible);
+         }
+      if (Initial) {
+         lastCurrent = lastTotal = -1;

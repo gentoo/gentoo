@@ -1,0 +1,30 @@
+--- a/src/knocker_conf.c
++++ b/src/knocker_conf.c
+@@ -223,6 +223,8 @@
+ {
+   char *tmpp = malloc (strlen (line));
+   char *p = malloc (strlen (line));
++  char *tmpp_orig = tmpp;
++  char *p_orig = p;
+ 
+   /* Check if the option is present in the line */
+   tmpp = strstr (line, opt);
+@@ -234,7 +236,7 @@
+ 
+   if (!_isblank (*tmpp) || *tmpp != KNOCKER_OPTION_TOKEN)
+     {
+-      free (tmpp);
++      free (tmpp_orig);
+       return 0;
+     }
+ 
+@@ -247,8 +249,7 @@
+ 
+   strcpy (value, p);
+ 
+-  /* free(p); this cause knocker to segfault */
+-  /* well I have to know why... */
++  free(p_orig);
+ 
+   return 1;
+ }

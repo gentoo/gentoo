@@ -1,0 +1,33 @@
+Index: scim-pinyin-0.5.91/configure.ac
+===================================================================
+--- scim-pinyin-0.5.91.orig/configure.ac
++++ scim-pinyin-0.5.91/configure.ac
+@@ -73,11 +73,7 @@ AC_ARG_ENABLE(debug,
+ 	      enable_debug=no)
+ 
+ AC_ARG_ENABLE(skim-support,
+-              [  --disable-skim-support  Enable skim Setup UI],
+-              skim_support=no,
+-              skim_support=yes)
+-
+-AM_CONDITIONAL(SCIM_BUILD_SKIM_SETUP, [test "$skim_support" = "yes"])
++              [  --disable-skim-support  Enable skim Setup UI])
+ 
+ if test "$enable_debug" = "yes"; then
+   AC_DEFINE(ENABLE_DEBUG,1,[Define this to enable the debug facility in libscim])
+@@ -126,7 +122,7 @@ AC_CONFIG_FILES([Makefile
+                  po/Makefile.in
+                  scim-pinyin.spec])
+ 
+-if test "$skim_support" = "yes"; then
++if test "x$enable_skim_support" != "xno"; then
+ REQUIRED_SKIM_VERSION=1.2.1
+ dnl skim probably has been installed under prefix=$KDEDIR, so add it to search path of pkgconfig
+ kde_libsuffix=`kde-config --libsuffix`
+@@ -155,5 +151,6 @@ PKG_CHECK_MODULES(SCIM_KDEUTILS,[scim_kd
+ fi
+ 
+ AM_CONDITIONAL(SCIM_PINYIN_ENABLE_SKIM_SUPPORT, [test "$HAS_KDEUTILS" = "yes"])
++AM_CONDITIONAL(SCIM_BUILD_SKIM_SETUP, [test "$HAS_SKIM" = "yes"])
+ AC_SUBST(SCIM_PINYIN_ENABLE_SKIM_SUPPORT)
+ AC_OUTPUT

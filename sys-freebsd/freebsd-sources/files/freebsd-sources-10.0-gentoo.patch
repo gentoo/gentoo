@@ -1,0 +1,22 @@
+diff --git a/sys/conf/kern.mk b/sys/conf/kern.mk
+index 2939a59..124ef6f 100644
+--- a/sys/conf/kern.mk
++++ b/sys/conf/kern.mk
+@@ -5,7 +5,7 @@
+ #
+ CWARNFLAGS?=	-Wall -Wredundant-decls -Wnested-externs -Wstrict-prototypes \
+ 		-Wmissing-prototypes -Wpointer-arith -Winline -Wcast-qual \
+-		-Wundef -Wno-pointer-sign ${FORMAT_EXTENSIONS} \
++		-Wundef -Wno-pointer-sign \
+ 		-Wmissing-include-dirs -fdiagnostics-show-option \
+ 		${CWARNEXTRA}
+ #
+@@ -61,7 +61,7 @@ FORMAT_EXTENSIONS=	-fformat-extensions
+ #
+ .if ${MACHINE_CPUARCH} == "i386"
+ .if ${COMPILER_TYPE} != "clang"
+-CFLAGS+=	-mno-align-long-strings -mpreferred-stack-boundary=2
++CFLAGS+=	-mpreferred-stack-boundary=2
+ .else
+ CFLAGS+=	-mno-aes -mno-avx
+ .endif

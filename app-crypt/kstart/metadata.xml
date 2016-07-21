@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>kerberos@gentoo.org</email>
+    <name>Kerberos</name>
+  </maintainer>
+  <longdescription>Modified versions of kinit that can use srvtabs or
+  keytabs to authenticate, can run as daemons and wake up periodically
+  to refresh a ticket, and can run single commands with their own
+  authentication credentials and refresh those credentials until the
+  command exits.</longdescription>
+  <use>
+    <flag name="afs">
+      Enables afs support which means you can acquire an afs token and
+      set PAGs. It's recommended to set this USE if you need
+      authenticated access to an AFS cell for your daemon/app.
+    </flag>
+  </use>
+</pkgmetadata>

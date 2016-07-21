@@ -1,0 +1,70 @@
+From a1c889dd6fb04d70439074a9399c9ea8f29f2cdb Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Wed, 16 May 2012 18:16:02 -0400
+Subject: [PATCH] Revert Disable direct reclaim for z_wr_* threads
+
+This commit used PF_MEMALLOC to prevent a memory reclaim deadlock.
+However, commit 49be0ccf1fdc2ce852271d4d2f8b7a9c2c4be6db eliminated
+the invocation of __cv_init(), which was the cause of the deadlock.
+PF_MEMALLOC has the side effect of permitting pages from ZONE_DMA
+to be allocated.  The use of PF_MEMALLOC was found to cause stability
+problems when doing swap on zvols. Since this technique is known to
+cause problems and no longer fixes anything, we revert it.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #726
+---
+ include/sys/zfs_context.h |    1 -
+ module/zfs/spa.c          |    9 +++------
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/include/sys/zfs_context.h b/include/sys/zfs_context.h
+index e4af6fc..77dded3 100644
+--- a/include/sys/zfs_context.h
++++ b/include/sys/zfs_context.h
+@@ -382,7 +382,6 @@ extern kstat_t *kstat_create(char *, int,
+ #define	TASKQ_DYNAMIC		0x0004	/* Use dynamic thread scheduling */
+ #define	TASKQ_THREADS_CPU_PCT	0x0008	/* Scale # threads by # cpus */
+ #define	TASKQ_DC_BATCH		0x0010	/* Mark threads as batch */
+-#define	TASKQ_NORECLAIM		0x0020	/* Disable direct memory reclaim */
+ 
+ #define	TQ_SLEEP	KM_SLEEP	/* Can block for memory */
+ #define	TQ_NOSLEEP	KM_NOSLEEP	/* cannot block for memory; may fail */
+diff --git a/module/zfs/spa.c b/module/zfs/spa.c
+index c33a33a..436cd26 100644
+--- a/module/zfs/spa.c
++++ b/module/zfs/spa.c
+@@ -617,8 +617,9 @@ static inline int spa_load_impl(spa_t *spa, uint64_t, nvlist_t *config,
+ 
+ static taskq_t *
+ spa_taskq_create(spa_t *spa, const char *name, enum zti_modes mode,
+-    uint_t value, uint_t flags)
++    uint_t value)
+ {
++	uint_t flags = TASKQ_PREPOPULATE;
+ 	boolean_t batch = B_FALSE;
+ 
+ 	switch (mode) {
+@@ -668,17 +669,13 @@ static inline int spa_load_impl(spa_t *spa, uint64_t, nvlist_t *config,
+ 			const zio_taskq_info_t *ztip = &zio_taskqs[t][q];
+ 			enum zti_modes mode = ztip->zti_mode;
+ 			uint_t value = ztip->zti_value;
+-			uint_t flags = 0;
+ 			char name[32];
+ 
+-			if (t == ZIO_TYPE_WRITE)
+-				flags |= TASKQ_NORECLAIM;
+-
+ 			(void) snprintf(name, sizeof (name),
+ 			    "%s_%s", zio_type_name[t], zio_taskq_types[q]);
+ 
+ 			spa->spa_zio_taskq[t][q] =
+-			    spa_taskq_create(spa, name, mode, value, flags);
++			    spa_taskq_create(spa, name, mode, value);
+ 		}
+ 	}
+ }
+-- 
+1.7.10
+

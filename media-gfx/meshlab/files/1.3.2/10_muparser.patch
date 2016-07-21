@@ -1,0 +1,30 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Use Debian muparser.
+Git-Branch: p/muparser
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..5e9cfcdae805ddac6f550b2a9f7011
+
+ meshlab/src/meshlabplugins/filter_func/filter_func.pro |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/meshlab/src/meshlabplugins/filter_func/filter_func.pro b/meshlab/src/meshlabplugins/filter_func/filter_func.pro
+index 3bcce2a..9a147b2 100644
+--- a/meshlab/src/meshlabplugins/filter_func/filter_func.pro
++++ b/meshlab/src/meshlabplugins/filter_func/filter_func.pro
+@@ -6,7 +6,7 @@ SOURCES       += filter_func.cpp
+ 
+ TARGET        = filter_func
+ 
+-INCLUDEPATH += ../../external/muparser_v132/include
++INCLUDEPATH += /usr/include/muParser
+ 
+ # Note: we need static libs so when building muparser lib use 
+ # ./configure --enable-shared=no
+@@ -14,7 +14,5 @@ INCLUDEPATH += ../../external/muparser_v132/include
+ win32-msvc2005:LIBS += ../../external/lib/win32-msvc2005/muparser.lib
+ win32-msvc2008:LIBS += ../../external/lib/win32-msvc2008/muparser.lib
+ macx:LIBS            += $$MACLIBDIR/libmuparser.a
+-linux-g++:LIBS       += ../../external/lib/linux-g++/libmuparser.a
+-linux-g++-32:LIBS       += ../../external/lib/linux-g++-32/libmuparser.a
+-linux-g++-64:LIBS       += ../../external/lib/linux-g++-64/libmuparser.a
++linux-g++:LIBS       += -lmuparser
+ win32-g++:LIBS		 += ../../external/lib/win32-gcc/libmuparser.a

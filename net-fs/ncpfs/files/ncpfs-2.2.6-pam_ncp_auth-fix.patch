@@ -1,0 +1,12 @@
+diff -Naurp ncpfs-2.2.6.orig/contrib/pam/pam_ncp_auth.c ncpfs-2.2.6/contrib/pam/pam_ncp_auth.c
+--- ncpfs-2.2.6.orig/contrib/pam/pam_ncp_auth.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/pam/pam_ncp_auth.c	2014-08-12 21:02:33.229192251 -0400
+@@ -2534,7 +2534,7 @@ nw_retrieve_nds_user_info(struct nw_user
+ bailoutctx:;
+ 	NWDSFreeContext(ctx);
+ bailout:;
+-	if (!err & (ui->qflag & QF_DEBUG))
++	if ((!err) && (ui->qflag & QF_DEBUG))
+ 		syslog(LOG_NOTICE, "%u %u %s %s %s\n", ui->uid, ui->gid, ui->dir, ui->gecos, ui->shell);
+ 	return err;
+ }

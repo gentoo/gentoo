@@ -1,0 +1,222 @@
+Author: Jürgen Salk <jsa@debian.org>
+Description: The original maintainer Jürgen Salk applied
+ a set of patches to the original code.  The part which fixes
+ the path to the perl executable is collected in this patch set.
+
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/changepw.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/changepw.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/checkvr.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/checkvr.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/isocode.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/isocode.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/layout.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/layout.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/lock.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/lock.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/log.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/log.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/main.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/main.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/password.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/password.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/patidel.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/patidel.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/patiedit.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/patiedit.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/patient.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/patient.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/prefs.ph	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/prefs.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/procdel.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/procdel.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/procedit.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/procedit.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/procedur.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/procedur.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/procstep.pl	2010-10-14 15:02:01.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/procstep.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/prstdel.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/prstdel.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/prstedit.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/prstedit.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/statdel.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/statdel.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/statedit.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/statedit.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/station.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/station.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/urldecod.ph	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/urldecod.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # Copyright & Disclaimer.
+ #	This set of routines may be freely distributed, modified and
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/workdel.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/workdel.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/workedit.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/workedit.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/worklist.pl	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/worklist.pl	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+--- dcmtk-3.5.5_20101130/dcmwlm/perl/write.ph	2010-10-14 15:02:02.000000000 +0200
++++ dcmtk-3.5.5_20101130.new/dcmwlm/perl/write.ph	2010-12-09 11:50:35.000000000 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ #  Copyright (C) 1996-2010, OFFIS e.V.
+ #  All rights reserved.  See COPYRIGHT file for details.
+@@ -59,7 +59,7 @@
+   if (open(outfile, ">@_[0]"))
+   {
+     print outfile <<EOF;
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ #
+ # automatically generated by write.pl - do not modify!
+ #

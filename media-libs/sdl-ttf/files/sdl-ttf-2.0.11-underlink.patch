@@ -1,0 +1,10 @@
+--- Makefile.am.old	2011-05-17 17:17:18.972003301 +0200
++++ Makefile.am	2011-05-17 17:18:38.281983708 +0200
+@@ -33,6 +33,7 @@
+ 	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ endif
++libSDL_ttf_la_LIBADD = @MATHLIB@
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = SDL_ttf.pc

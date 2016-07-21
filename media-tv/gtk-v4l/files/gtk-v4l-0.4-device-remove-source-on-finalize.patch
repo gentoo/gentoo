@@ -1,0 +1,53 @@
+From e7730e2eb0e148e94f6bba13a70ddf61ae94b313 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Wed, 9 May 2012 13:00:07 +0200
+Subject: [PATCH] gtk-v4l-device: remove source on finalize
+
+This fixes us from getting events from it, with a user_data argument
+pointing to the finalized object, when the fd gets re-used if another device
+gets plugged in later, and that device then generates ctrl events.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ lib/gtk-v4l-device.c |   10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/lib/gtk-v4l-device.c b/lib/gtk-v4l-device.c
+index c4ce1e5..67e8ccc 100644
+--- a/lib/gtk-v4l-device.c
++++ b/lib/gtk-v4l-device.c
+@@ -43,6 +43,7 @@ enum
+ struct _Gtkv4lDevicePrivate {
+   GList *controls;
+   GIOChannel *channel;
++  guint channel_source_id;
+ };
+ 
+ /* will create gtk_v4l_device_get_type and set gtk_v4l_device_parent_class */
+@@ -166,8 +167,10 @@ gtk_v4l_device_finalize (GObject *object)
+   g_list_foreach (self->priv->controls, gtk_v4l_device_free_control, NULL);
+   g_list_free (self->priv->controls);
+ 
+-  if (self->priv->channel)
++  if (self->priv->channel) {
++    g_source_remove (self->priv->channel_source_id);
+     g_io_channel_unref (self->priv->channel);
++  }
+ 
+   if (self->fd != -1)
+     close (self->fd);
+@@ -303,8 +306,9 @@ gtk_v4l_device_new_control (Gtkv4lDevice *self, struct v4l2_queryctrl *query)
+   r = v4l2_ioctl(self->fd, VIDIOC_SUBSCRIBE_EVENT, &sub);
+   if (r >= 0 && !self->priv->channel) {
+     self->priv->channel = g_io_channel_unix_new (self->fd);
+-    g_io_add_watch (self->priv->channel, G_IO_PRI, gtk_v4l_device_ctrl_event,
+-                    self);
++    self->priv->channel_source_id =
++      g_io_add_watch (self->priv->channel, G_IO_PRI, gtk_v4l_device_ctrl_event,
++                      self);
+   }
+ }
+ 
+-- 
+1.7.10
+

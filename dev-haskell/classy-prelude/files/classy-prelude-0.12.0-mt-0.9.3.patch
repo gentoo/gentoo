@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/575244
+diff --git a/ClassyPrelude.hs b/ClassyPrelude.hs
+index a6c0db4..27173aa 100644
+--- a/ClassyPrelude.hs
++++ b/ClassyPrelude.hs
+@@ -193,3 +193,3 @@ import Data.ChunkedZip
+ import qualified Data.Char as Char
+-import Data.Sequences hiding (elem)
++import Data.Sequences hiding (elem, intercalate)
+ import Data.MonoTraversable

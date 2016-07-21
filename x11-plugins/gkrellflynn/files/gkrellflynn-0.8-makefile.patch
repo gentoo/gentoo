@@ -1,0 +1,37 @@
+--- Makefile	2002-05-07 10:04:49.000000000 +0200
++++ Makefile_new	2013-03-12 21:10:15.888656809 +0100
+@@ -3,11 +3,10 @@
+ #
+ # updated for gkrellm2.0
+ 
+-CC = gcc
+-CFLAGS = -c -O -Wall -fPIC `${EXTRACONF}`
++CC = $(CC)
++INCLUDE = -c -fPIC `${EXTRACONF}`
+ 
+-LD = $(CC)
+-LDFLAGS = -shared -Wl -o
++LDFLAGS = $(LDFLAGS)
+ INCPATH  = -I.
+ INCPATH += ${GKRELL_INC}
+ 
+@@ -25,10 +24,10 @@
+ 	(make GKRELL_INC=-DGKRELLM EXTRACONF="gtk-config --cflags;imlib-config --cflags-gdk" ${TARGET})
+ 
+ gkrellm2:
+-	(make GKRELL_INC=-DGKRELLM2 EXTRACONF="pkg-config --cflags gtk+-2.0 gthread-2.0" ${TARGET})
++	($(MAKE) GKRELL_INC=-DGKRELLM2 EXTRACONF="pkg-config --cflags gtk+-2.0 gthread-2.0" ${TARGET})
+ 
+ ${TARGET}:	${OBJS}
+-		${LD} ${DEBUG} ${LDFLAGS} ${TARGET} ${OBJS}
++		${CC} -shared ${LDFLAGS} ${CFLAGS} -o ${TARGET} ${OBJS} 
+ 
+ clean:
+ 	rm -f ${OBJS}
+@@ -47,5 +46,5 @@
+ 	./install-sub.sh	${TARGET} gkrellm2
+ 
+ %.o :	%.c
+-	${CC} ${CFLAGS} $(INCPATH) -o $@ $<
++	${CC} ${CFLAGS} $(INCLUDE) ${LDFLAGS} $(INCPATH) -o $@ $<
+ 

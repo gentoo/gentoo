@@ -1,0 +1,45 @@
+ base/CMakeLists.txt | 10 +++++-----
+ misc/CMakeLists.txt |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/base/CMakeLists.txt b/base/CMakeLists.txt
+index 07febee..40305b7 100644
+--- a/base/CMakeLists.txt
++++ b/base/CMakeLists.txt
+@@ -73,7 +73,7 @@ if (BUILD_SHARED)
+       assuan libgpg-error ole32 ws2_32 ffi z shlwapi dnsapi winmm)
+     target_link_libraries (openvas_base_shared openvas_omp_shared ${W32LIBS})
+   else (MINGW)
+-    target_link_libraries (openvas_base_shared openvas_omp_shared ${GLIB_LDFLAGS} ${GIO_LDFLAGS} ${GNUTLS_LDFLAGS} ${ZLIB_LDFLAGS} ${GPGME_LDFLAGS})
++    target_link_libraries (openvas_base_shared openvas_omp_shared ${LIBSSH_LDFLAGS} ${GLIB_LDFLAGS} ${GIO_LDFLAGS} ${GNUTLS_LDFLAGS} ${ZLIB_LDFLAGS} ${GPGME_LDFLAGS})
+   endif (MINGW)
+ endif (BUILD_SHARED)
+ 
+@@ -87,10 +87,10 @@ add_custom_indent_targets (${FILES})
+ 
+ # Link the test-hosts executable
+ # TODO: This is currently only built for BUILD_SHARED
+-if (BUILD_SHARED)
+-  add_executable (test-hosts test-hosts.c)
+-  target_link_libraries (test-hosts openvas_base_shared ${GNUTLS_LDFLAGS} openvas_misc_shared ${GLIB_LDFLAGS})
+-endif (BUILD_SHARED)
++#if (BUILD_SHARED)
++#  add_executable (test-hosts test-hosts.c)
++#  target_link_libraries (test-hosts openvas_base_shared ${GNUTLS_LDFLAGS} openvas_misc_shared openvas_omp_shared ${GLIB_LDFLAGS})
++#endif (BUILD_SHARED)
+ 
+ ## Install
+ if (BUILD_STATIC)
+diff --git a/misc/CMakeLists.txt b/misc/CMakeLists.txt
+index 7aaca2c..e7a0870 100644
+--- a/misc/CMakeLists.txt
++++ b/misc/CMakeLists.txt
+@@ -126,7 +126,7 @@ if (BUILD_SHARED)
+   else (MINGW)
+     target_link_libraries (openvas_misc_shared ${GNUTLS_LDFLAGS} openvas_base_shared ${UUID_LDFLAGS}
+                            ${PCAP_LDFLAGS} ${LIBSSH_LDFLAGS} ${LDAP_LDFLAGS}
+-                           ${REDIS_LDFLAGS} ${GCRYPT_LDFLAGS})
++                           ${GLIB_LDFLAGS} ${REDIS_LDFLAGS} ${GCRYPT_LDFLAGS})
+   endif (MINGW)
+ endif (BUILD_SHARED)
+ 

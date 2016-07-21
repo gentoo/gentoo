@@ -1,0 +1,158 @@
+diff --git a/configure.ac b/configure.ac
+index fcff075..f1262da 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -48,7 +48,8 @@ dnl 2. checks for programs
+ AC_LANG_C
+ AC_PROG_CC
+ AC_PROG_CPP
+-AC_DISABLE_SHARED
++AC_PROG_F77
++AC_F77_LIBRARY_LDFLAGS
+ AM_PROG_LIBTOOL
+ 
+ dnl 3. checks for libraries
+@@ -358,7 +359,7 @@ else
+     AC_CHECK_LIB(blas,dscal_,
+         [blas_use="yes";blas_lib="${blas_lib_path}-lblas"],
+         [blas_use="";blas_lib=""],
+-        [${blas_lib_path}-lblas -lvf2c])
++        [${blas_lib_path}-lblas])
+     if test -z "${blas_use}"; then
+         AC_MSG_RESULT([** BLAS library missing ...will BUILD **])
+         blas="blas";
+@@ -413,7 +414,7 @@ else
+     AC_CHECK_LIB(lapack,dsysv_,
+         [lapack_use="yes";lapack_lib="${lapack_lib_path}-llapack"],
+         [lapack_use="";lapack_lib=""],
+-        [${lapack_lib_path}-llapack ${blas_lib} -lvf2c])
++        [${lapack_lib_path}-llapack ${blas_lib}])
+     if test -z "${lapack_use}"; then
+         AC_MSG_RESULT([** LAPACK library missing ...will BUILD **])
+         lapack="lapack";
+@@ -465,10 +466,10 @@ else
+     LDFLAGS_SAVE=${LDFLAGS};
+     LDFLAGS=${amd_lib_path};
+     amd_use="";
+-    AC_CHECK_LIB(amd,AMD_order,
++    AC_CHECK_LIB(amd,amd_order,
+         [amd_use="yes";amd_lib="${amd_lib_path}-lamd"],
+         [amd_use="";amd_lib=""],
+-        [${amd_lib_path}-lamd ${blas_lib} -lvf2c])
++        [${amd_lib_path}-lamd ${blas_lib}])
+     if test -z "${amd_use}"; then
+         AC_MSG_RESULT([** AMD library missing ...will BUILD **])
+         amd="amd";
+@@ -520,10 +521,10 @@ else
+     LDFLAGS_SAVE=${LDFLAGS};
+     LDFLAGS=${umfpack_lib_path};
+     umfpack_use="";
+-    AC_CHECK_LIB(umfpack,UMFPACK_numeric,
++    AC_CHECK_LIB(umfpack,umfpack_di_numeric,
+         [umfpack_use="yes";umfpack_lib="${umfpack_lib_path}-lumfpack"],
+         [umfpack_use="";umfpack_lib=""],
+-        [${umfpack_lib_path}-lumfpack ${blas_lib} -lvf2c])
++        [${umfpack_lib_path}-lumfpack ${blas_lib}])
+     if test -z "${umfpack_use}"; then
+         AC_MSG_RESULT([** UMFPACK library missing ...will BUILD **])
+         umfpack="umfpack";
+@@ -578,7 +579,7 @@ else
+     AC_CHECK_LIB(superlu,Destroy_SuperMatrix_Store,
+         [superlu_use="yes";superlu_lib="${superlu_lib_path}-lsuperlu"],
+         [superlu_use="";superlu_lib=""],
+-        [${superlu_lib_path}-lsuperlu ${lapack_lib} ${blas_lib} -lvf2c])
++        [${superlu_lib_path}-lsuperlu ${lapack_lib} ${blas_lib}])
+     if test -z "${superlu_use}"; then
+         AC_MSG_RESULT([** SUPERLU library missing ...will BUILD **])
+         superlu="superlu";
+@@ -633,7 +634,7 @@ else
+     AC_CHECK_LIB(arpack,dsgets_,
+         [arpack_use="yes";arpack_lib="${arpack_lib_path}-larpack"],
+         [arpack_use="";arpack_lib=""],
+-        [${arpack_lib_path}-larpack ${blas_lib} -lvf2c])
++        [${arpack_lib_path}-larpack ${blas_lib}])
+     if test -z "${arpack_use}"; then
+         AC_MSG_RESULT([** ARPACK library missing ...will BUILD **])
+         arpack="arpack";
+@@ -688,7 +689,7 @@ else
+     AC_CHECK_LIB(cgcode,scgdrv_,
+         [cgcode_use="yes";cgcode_lib="${cgcode_lib_path}-lcgcode"],
+         [cgcode_use="";cgcode_lib=""],
+-        [${cgcode_lib_path}-lcgcode ${blas_lib} -lvf2c])
++        [${cgcode_lib_path}-lcgcode ${blas_lib}])
+     if test -z "${cgcode_use}"; then
+         AC_MSG_RESULT([** CGCODE library missing ...will BUILD **])
+         cgcode="cgcode";
+@@ -743,7 +744,7 @@ else
+     AC_CHECK_LIB(pmg,buildg_,
+         [pmg_use="yes";pmg_lib="${pmg_lib_path}-lpmg"],
+         [pmg_use="";pmg_lib=""],
+-        [${pmg_lib_path}-lpmg ${blas_lib} -lvf2c])
++        [${pmg_lib_path}-lpmg ${blas_lib}])
+     if test -z "${pmg_use}"; then
+         AC_MSG_RESULT([** PMG library missing ...will BUILD **])
+         pmg="pmg";
+@@ -982,13 +983,6 @@ AC_OUTPUT([
+     src/base/Makefile
+ 
+     src/vf2c/Makefile
+-    src/blas/Makefile
+-    src/lapack/Makefile
+-    src/amd/Makefile
+-    src/umfpack/Makefile
+-    src/superlu/Makefile
+-    src/arpack/Makefile
+-    src/cgcode/Makefile
+     src/pmg/Makefile
+ 
+     src/aaa_inc/Makefile
+diff --git a/src/aaa_lib/Makefile.am b/src/aaa_lib/Makefile.am
+index 2e17d41..3cbb9b5 100644
+--- a/src/aaa_lib/Makefile.am
++++ b/src/aaa_lib/Makefile.am
+@@ -102,15 +102,14 @@ else
+ LIBPMG    = 
+ endif
+ 
+-libdir = ${prefix}/lib
+ lib_LTLIBRARIES = libpunc.la ${LIBVF2C} ${LIBBLAS} ${LIBLAPACK} ${LIBAMD} ${LIBUMFPACK} ${LIBSUPERLU} ${LIBARPACK} ${LIBCGCODE} ${LIBPMG}
+ 
+ libpunc_la_SOURCES =
+-libpunc_la_LIBADD  = ${BASE_LIBS}
++libpunc_la_LIBADD  = ${BASE_LIBS} -lm
+ libpunc_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libvf2c_la_SOURCES =
+-libvf2c_la_LIBADD  = ${VF2C_LIBS}
++libvf2c_la_LIBADD  = ${VF2C_LIBS} -lgfortran -lf2c -lm
+ libvf2c_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libblas_la_SOURCES =
+@@ -142,6 +141,6 @@ libcgcode_la_LIBADD  = ${CGCODE_LIBS}
+ libcgcode_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+ libpmg_la_SOURCES =
+-libpmg_la_LIBADD  = ${PMG_LIBS}
++libpmg_la_LIBADD  = ${PMG_LIBS} ${BASE_LIBS} -lgfortran -lf2c -lmaloc -lm
+ libpmg_la_LDFLAGS = -version-info ${FETK_VERSION}
+ 
+diff --git a/src/pmg/Makefile.am b/src/pmg/Makefile.am
+index cae9324..8eb0ba0 100644
+--- a/src/pmg/Makefile.am
++++ b/src/pmg/Makefile.am
+@@ -38,13 +38,14 @@ always_built_SUBDIRS =
+ SUBDIRS = $(always_built_SUBDIRS) .
+ THISLIB = pmg
+ 
+-noinst_LTLIBRARIES = libpmg.la
++lib_LTLIBRARIES = libpmg.la
+ 
+ SRC = buildAd.c buildBd.c buildGd.c buildPd.c cgd.c cgmgd.c cgmgdrvd.c gsd.c matvecd.c mblasd.c mgcsd.c mgdrvd.c mgfasd.c mgsubd.c mikpckd.c mlinpckd.c ncgd.c ncgdrvd.c newdrvd.c newtond.c ngsd.c ngsdrvd.c ninterpd.c nrchd.c nrchdrvd.c nsmoothd.c nsord.c nsordrvd.c nwjd.c nwjdrvd.c powerd.c rchd.c smoothd.c sord.c wjd.c
+ 
+ libpmg_la_SOURCES = ${SRC}
+ INCLUDES  = @maloc_inc@
+ AM_CFLAGS = @profile@ @pedantic_ansi@
++libpmg_la_LIBADD = -lf2c
+ 
+ all-local:
+ #	-cp -p ${top_srcdir}/src/${THISLIB}/punc/*.h ../aaa_inc/punc/.

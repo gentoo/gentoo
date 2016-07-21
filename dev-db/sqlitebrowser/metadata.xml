@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <longdescription lang="en">
+SQLite Database Browser is a freeware, public domain, open source visual tool
+used to create, design and edit database files compatible with SQLite. It is
+meant to be used for users and developers that want to create databases, edit
+and search data using a familiar spreadsheet-like interface, without the need to
+learn complicated SQL commands.
+</longdescription>
+  <upstream>
+    <remote-id type="github">sqlitebrowser/sqlitebrowser</remote-id>
+  </upstream>
+</pkgmetadata>

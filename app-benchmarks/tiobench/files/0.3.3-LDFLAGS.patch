@@ -1,0 +1,12 @@
+diff -Nur tiobench-0.3.3.orig/Makefile tiobench-0.3.3/Makefile
+--- tiobench-0.3.3.orig/Makefile	2002-03-13 20:22:55.000000000 +0000
++++ tiobench-0.3.3/Makefile	2006-09-16 17:07:21.181644608 +0000
+@@ -34,7 +34,7 @@
+ 	$(CC) -c $(CFLAGS) $(DEFINES) tiotest.c -o tiotest.o
+ 
+ $(EXE): tiotest.o crc32.o
+-	$(LINK) -o $(EXE) tiotest.o crc32.o -lpthread
++	$(LINK) -o $(EXE) $(LDFLAGS) tiotest.o crc32.o -lpthread
+ 	@echo
+ 	@echo "./tiobench.pl --help for usage options"
+ 	@echo

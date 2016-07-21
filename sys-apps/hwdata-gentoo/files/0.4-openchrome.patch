@@ -1,0 +1,22 @@
+--- a/pcitable
++++ b/pcitable
+@@ -3688,7 +3688,7 @@
+ 0x1106	0x3336	"unknown"	"VIA Technologies, Inc.|K8M890CE Host Bridge"
+ 0x1106	0x3337	"unknown"	"VIA Technologies Inc.|VT8237A PCI to ISA Bridge"
+ 0x1106	0x3340	"unknown"	"VIA Technologies, Inc.|PT900 Host Bridge"
+-0x1106	0x3344	"unknown"	"VIA Technologies, Inc.|UniChrome Pro IGP"
++0x1106	0x3344	"Card:S3 UniChrome"	"VIA Technologies, Inc.|UniChrome Pro IGP"
+ 0x1106	0x3349	"ahci"	"VIA Technologies Inc.|VT8251 AHCI/SATA 4-Port Controller"
+ 0x1106	0x3351	"unknown"	"VIA Technologies, Inc.|VT3351 Host Bridge"
+ 0x1106	0x3364	"unknown"	"VIA Technologies, Inc.|P4M900 Host Bridge"
+--- a/Cards
++++ b/Cards
+@@ -429,7 +429,7 @@
+ DRIVER s3
+ 
+ NAME S3 UniChrome
+-DRIVER via
++DRIVER openchrome
+ 
+ NAME S3 ViRGE (generic)
+ DRIVER s3virge

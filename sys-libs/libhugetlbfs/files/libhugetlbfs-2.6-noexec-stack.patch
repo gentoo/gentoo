@@ -1,0 +1,44 @@
+diff -Nuar libhugetlbfs-2.6.orig/sys-elf32ppclinux.S libhugetlbfs-2.6/sys-elf32ppclinux.S
+--- libhugetlbfs-2.6.orig/sys-elf32ppclinux.S	2009-08-24 12:56:07.000000000 +0000
++++ libhugetlbfs-2.6/sys-elf32ppclinux.S	2009-10-31 06:43:49.040319417 +0000
+@@ -32,3 +32,7 @@
+ 	mr	8,9
+ 	sc
+ 	blr
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff -Nuar libhugetlbfs-2.6.orig/sys-elf64ppc.S libhugetlbfs-2.6/sys-elf64ppc.S
+--- libhugetlbfs-2.6.orig/sys-elf64ppc.S	2009-08-24 12:56:07.000000000 +0000
++++ libhugetlbfs-2.6/sys-elf64ppc.S	2009-10-31 06:43:54.303652251 +0000
+@@ -41,3 +41,7 @@
+ 	mr	8,9
+ 	sc
+ 	blr
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff -Nuar libhugetlbfs-2.6.orig/sys-elf_i386.S libhugetlbfs-2.6/sys-elf_i386.S
+--- libhugetlbfs-2.6.orig/sys-elf_i386.S	2009-08-24 12:56:07.000000000 +0000
++++ libhugetlbfs-2.6/sys-elf_i386.S	2009-10-31 06:43:57.536975670 +0000
+@@ -40,3 +40,7 @@
+ 	pop	%edi
+ 	pop	%ebp
+ 	ret
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif
+diff -Nuar libhugetlbfs-2.6.orig/sys-elf_x86_64.S libhugetlbfs-2.6/sys-elf_x86_64.S
+--- libhugetlbfs-2.6.orig/sys-elf_x86_64.S	2009-08-24 12:56:07.000000000 +0000
++++ libhugetlbfs-2.6/sys-elf_x86_64.S	2009-10-31 06:44:26.943648847 +0000
+@@ -32,3 +32,7 @@
+ 	mov	0x8(%rsp),%r9
+ 	syscall
+ 	retq
++
++#if defined(__linux__) && defined(__ELF__)
++	.section .note.GNU-stack,"",%progbits
++#endif

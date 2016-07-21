@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sparc@gentoo.org</email>
+  <name>Sparc Team</name>
+</maintainer>
+<longdescription>
+lssbus is a tool to list sbus devices in a manner similar to lspci.
+</longdescription>
+</pkgmetadata>

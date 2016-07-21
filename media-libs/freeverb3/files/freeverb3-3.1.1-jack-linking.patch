@@ -1,0 +1,27 @@
+From e10a2a4eb6985731881ad145eac5e8e8ec45a1fd Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 9 Jun 2015 00:06:51 +0200
+Subject: [PATCH] Fix linking of JACK effect module
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.4/../../../../x86_64-pc-linux-gnu/bin/ld: ./.libs/libjack_common.a(libjack_common_la-jack_main.o): undefined
+reference to symbol 'gdk_threads_init'
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.4/../../../../lib64/libgdk-3.so: error adding symbols: DSO missing from command line
+---
+ jack/Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/jack/Makefile.am b/jack/Makefile.am
+index 651a034..a18fe15 100644
+--- a/jack/Makefile.am
++++ b/jack/Makefile.am
+@@ -36,6 +36,7 @@ libbmp_int_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+ libbmp_int_la_SOURCES = configdb.h configdb_rcfile.c rcfile.c rcfile.h util.c util.h
+ libjack_common_la_CPPFLAGS = -DJACK $(AM_CPPFLAGS)
+ libjack_common_la_SOURCES = plugin.h jack_main.cpp ../samples/CArg.cpp ../samples/CArg.hpp ../audacious/so.c
++libjack_common_la_LIBADD = $(jack_LIBS) $(gtk3_LIBS)
+ 
+ I_LIBS += libbmp_int.la libjack_common.la
+ 
+-- 
+2.4.0
+

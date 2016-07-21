@@ -1,0 +1,25 @@
+diff -uNr mod_auth_radius-1.5.8.ORIG/mod_auth_radius-2.0.c mod_auth_radius-1.5.8/mod_auth_radius-2.0.c
+--- mod_auth_radius-1.5.8.ORIG/mod_auth_radius-2.0.c	2013-05-08 14:26:19.103330264 +0100
++++ mod_auth_radius-1.5.8/mod_auth_radius-2.0.c	2013-05-08 14:29:40.331333283 +0100
+@@ -287,15 +287,21 @@
+ 
+  */
+ 
++#include <arpa/inet.h>
+ #include <netdb.h>
+ #include <openssl/md5.h>
+ #include <sys/stat.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
+ 
+ #include "httpd.h"
+ #include "http_config.h"
+ #include "http_core.h"
+ #include "http_log.h"
+ #include "http_protocol.h"
++#include "http_request.h"
+ #include "util_md5.h"
+ #include "apr_general.h"
+ #include "apr_tables.h"

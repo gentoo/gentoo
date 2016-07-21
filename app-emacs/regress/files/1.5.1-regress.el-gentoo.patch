@@ -1,0 +1,11 @@
+--- regress-1.5.1.orig/regress.el	2005-06-29 12:53:39.000000000 -0500
++++ regress-1.5.1/regress.el	2005-06-30 10:11:38.000000000 -0500
+@@ -114,6 +114,8 @@
+ ;;  regression test fails and FAILURE-INDICATION is non-nil, it will
+ ;;  be printed along with the results.
+ 
++(eval-when-compile
++  (require 'cl))
+ 
+ ;; Here are some contrived, simple examples.  Much of regress.el
+ ;; itself contains regression tests.  Search for "eval-when-compile",

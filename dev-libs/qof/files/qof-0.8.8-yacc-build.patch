@@ -1,0 +1,69 @@
+From 118b7287f776b789a7c122f7c7e8a1cc1084e15e Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 2 Nov 2014 13:01:36 +0100
+Subject: [PATCH 4/5] Fix use of lex/yacc
+
+http://www.gnu.org/software/automake/manual/html_node/Yacc-and-Lex.html
+---
+ configure.ac           |  1 +
+ lib/libsql/Makefile.am | 17 +++++++----------
+ 2 files changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 30ea37a..23865ea 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -45,6 +45,7 @@ AC_PROG_CXX
+ AC_PROG_CC
+ AC_PROG_CPP
+ AC_HEADER_STDC
++AM_PROG_LEX
+ AC_PROG_YACC
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+diff --git a/lib/libsql/Makefile.am b/lib/libsql/Makefile.am
+index c9534fb..78f26cc 100644
+--- a/lib/libsql/Makefile.am
++++ b/lib/libsql/Makefile.am
+@@ -5,9 +5,8 @@ lib_LTLIBRARIES = libqofsql.la
+ libqofsql_la_LDFLAGS= -version-info $(LIBQOFSQL_LIBRARY_VERSION) 
+ 
+ libqofsql_la_SOURCES = \
+-	parser.c \
+-	parser.h \
+-	lexer.c \
++    parser.y \
++	lexer.l \
+ 	sql_parser.c \
+ 	sql_parser.h \
+ 	mem.c \
+@@ -24,9 +23,7 @@ qofsqlinclude_HEADERS = sql_parser.h
+ check_PROGRAMS = sql_parse_test
+ 
+ EXTRA_DIST =       \
+-	README          \
+-	lexer.l         \
+-	parser.y  
++	README
+ 
+ AM_CFLAGS = -g     \
+ 	${CFLAGS}        \
+@@ -35,11 +32,11 @@ AM_CFLAGS = -g     \
+ #INCLUDES = \
+ #	-I$(includedir) 
+ 
+-parser.c: parser.y
+-	$(YACC) -v -d -o parser.c -p sql parser.y
++AM_YFLAGS = -v -d -p sql
++AM_LFLAGS = -Psql -o$@
+ 
+-lexer.c: lexer.l parser.c
+-	$(LEX) -olexer.c -Psql lexer.l
++BUILT_SOURCES = parser.h
++CLEANFILES = $(BUILT_SOURCES)
+ 
+ sql_parse_test_SOURCES=sql_parse_test.c
+ # sql_parse_test_LDFLAGS = $(LIBGDA_LIBS)
+-- 
+2.1.2
+

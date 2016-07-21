@@ -1,0 +1,24 @@
+Index: gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp
+===================================================================
+--- gejengel-0.1.4.orig/src/AudioDecoder/ffmpegdecoder.cpp
++++ gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp
+@@ -28,6 +28,10 @@ extern "C"
+     #include <libavcodec/avcodec.h>
+ }
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#endif
++
+ using namespace std;
+ using namespace utils;
+ 
+@@ -71,7 +75,7 @@ void FFmpegDecoder::destroy()
+ 
+     if (m_pFormatContext)
+     {
+-        av_close_input_file(m_pFormatContext);
++        avformat_close_input(&m_pFormatContext);
+         m_pFormatContext = NULL;
+     }
+ 

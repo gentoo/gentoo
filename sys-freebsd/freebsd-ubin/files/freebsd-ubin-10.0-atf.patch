@@ -1,0 +1,15 @@
+diff --git a/usr.bin/atf/atf-sh/Makefile b/usr.bin/atf/atf-sh/Makefile
+index 4ebdc33..37ff8fa 100644
+--- a/usr.bin/atf/atf-sh/Makefile
++++ b/usr.bin/atf/atf-sh/Makefile
+@@ -33,8 +33,8 @@ PROG_CXX=	atf-sh
+ SRCS=		atf-sh.cpp
+ MAN=            atf-sh.1 atf-sh-api.3
+ 
+-CFLAGS+=	-DHAVE_CONFIG_H
+-CFLAGS+=	-I${ATF}
++CXXFLAGS+=	-DHAVE_CONFIG_H
++CXXFLAGS+=	-I${ATF}
+ 
+ DPADD+=		${LIBATF_C} ${LIBATF_CXX}
+ LDADD+=		-latf-c++ -latf-c

@@ -1,0 +1,46 @@
+--- a/tcp_smtp.c
++++ b/tcp_smtp.c
+@@ -149,13 +149,9 @@
+ 	struct smtp_state *state;
+ 	const char *s;
+ 	int addr_changed = 0;
+-FILE*log;
+ 
+ 	state = (struct smtp_state *)f->udata;
+ 
+-if ((log = fopen("/tmp/smtp.log", "a")))
+-   fprintf(log, "smpt_line [%s]\n", line);
+-
+ 	if (state->in_data) {
+ 	    if (strcmp(line, ".") == 0) {
+ 		state->in_data = 0;
+@@ -180,18 +176,15 @@
+ 	} else {
+ 	    /* Normalize the command line */
+ 	    normalize_line(line);
+-if (log)fprintf(log, "normalized to [%s]\n", line);
+ 	    if ((s = strip_prefix(line, "MAIL FROM:"))) {
+ 		snprintf(state->from_addr, sizeof state->from_addr, "%s", s);
+ 		normalize_addr(state->from_addr);
+ 		addr_changed = 1;
+-if (log)fprintf(log, "from_addr = [%s]\n", state->from_addr);
+ 	    }
+ 	    else if ((s = strip_prefix(line, "RCPT TO:"))) {
+ 		snprintf(state->to_addr, sizeof state->to_addr, "%s", s);
+ 		normalize_addr(state->to_addr);
+ 		addr_changed = 1;
+-if (log)fprintf(log, "to_addr = [%s]\n", state->to_addr);
+ 	    }
+ 	    else if (strcmp(line, "DATA") == 0) {
+ 		state->in_data = 1;
+@@ -213,10 +206,7 @@
+ 		if (strcmp(line, "QUIT") != 0)
+ 		    snprintf(f->desc, sizeof f->desc, "%s", line);
+ 	    }
+-if (log)fprintf(log, "set desc to: [%s]\n", f->desc);
+ 	}
+-
+-if (log)fclose(log);
+ }
+ 
+ /*

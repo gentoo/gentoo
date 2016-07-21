@@ -1,0 +1,15 @@
+Index: xmms2-0.8DrO_o/src/plugins/avcodec/avcodec.c
+===================================================================
+--- xmms2-0.8DrO_o.orig/src/plugins/avcodec/avcodec.c
++++ xmms2-0.8DrO_o/src/plugins/avcodec/avcodec.c
+@@ -29,6 +29,10 @@
+ 
+ #define AVCODEC_BUFFER_SIZE 16384
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#endif
++
+ typedef struct {
+ 	AVCodecContext *codecctx;
+ 

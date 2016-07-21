@@ -1,0 +1,27 @@
+--- build.xml.orig	2015-12-09 21:10:08.272361404 -0500
++++ build.xml	2015-12-09 21:11:26.189663216 -0500
+@@ -36,12 +36,11 @@
+ 
+     <path id="libraries.classpath">
+         <!-- MigLayout manager -->
+-        <pathelement location="${basedir}/${miglayout-swing.jar}"/>
+-        <pathelement location="${basedir}/${miglayout-core.jar}"/>
++        <pathelement location="${miglayout.jar}"/>
+         <!-- Command line processor -->
+-        <pathelement location="${basedir}/${cli.jar}"/>
++        <pathelement location="${cli.jar}"/>
+         <!-- Cortado Video Applet -->
+-        <pathelement location="${basedir}/${cortado.jar}"/>
++        <pathelement location="${cortado.jar}"/>
+         <!-- JOgg/JOrbis libraries -->
+         <pathelement location="${basedir}/jars/jogg-0.0.17.jar"/>
+         <pathelement location="${basedir}/jars/jorbis-0.0.17.jar"/>
+@@ -162,7 +161,7 @@
+ 
+     <target name="manifest" depends="git-revision"
+             description="Creates the Manifest file.">
+-        <manifestclasspath property="jar.classpath"
++        <manifestclasspath maxParentLevels="50" property="jar.classpath"
+                            jarfile="Freecol.jar">
+             <classpath refid="libraries.classpath" />
+         </manifestclasspath>

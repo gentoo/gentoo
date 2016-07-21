@@ -1,0 +1,26 @@
+From 843b9cc4121cdb518b8f1a65e0207e4cceb2d2ae Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Wed, 21 Nov 2012 08:15:21 +0100
+Subject: [PATCH] * [oyIM]: fix pseq crash
+
+---
+ modules/oyranos_cmm_oyIM_profile.c |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/modules/oyranos_cmm_oyIM_profile.c b/modules/oyranos_cmm_oyIM_profile.c
+index 265feea..8de0491 100644
+--- a/modules/oyranos_cmm_oyIM_profile.c
++++ b/modules/oyranos_cmm_oyIM_profile.c
+@@ -1958,7 +1958,8 @@ oyStructList_s * oyIMProfileTag_GetValues(
+                  memcpy( model_local, model, 4 );
+                  model = model_local;
+                  tech = oyICCTechnologyDescription( oyValueUInt32(desc->technology ));
+-               }
++               } else
++                 continue;
+ 
+                /* first mnf */
+                tmptag = oyProfileTag_New(0);
+-- 
+1.5.6.5
+

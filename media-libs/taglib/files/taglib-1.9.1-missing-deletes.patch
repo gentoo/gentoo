@@ -1,0 +1,48 @@
+From c14a3b5c3d0831f7c113d0cf95840c4671d9ebd4 Mon Sep 17 00:00:00 2001
+From: Tsuda Kageyu <tsuda.kageyu@gmail.com>
+Date: Tue, 13 May 2014 20:07:02 +0900
+Subject: [PATCH] Added some missing deletes to test_flac.cpp.
+
+---
+ tests/test_flac.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tests/test_flac.cpp b/tests/test_flac.cpp
+index caec715..364fb11 100644
+--- a/tests/test_flac.cpp
++++ b/tests/test_flac.cpp
+@@ -91,6 +91,7 @@ public:
+     newpic->setData("JPEG data");
+     f->addPicture(newpic);
+     f->save();
++    delete f;
+ 
+     f = new FLAC::File(newname.c_str());
+     lst = f->pictureList();
+@@ -138,6 +139,7 @@ public:
+     f->removePictures();
+     f->addPicture(newpic);
+     f->save();
++    delete f;
+ 
+     f = new FLAC::File(newname.c_str());
+     lst = f->pictureList();
+@@ -165,6 +167,7 @@ public:
+ 
+     f->removePictures();
+     f->save();
++    delete f;
+ 
+     f = new FLAC::File(newname.c_str());
+     lst = f->pictureList();
+@@ -185,6 +188,7 @@ public:
+     tag->setTitle("NEW TITLE 2");
+     f->save();
+     CPPUNIT_ASSERT_EQUAL(String("NEW TITLE 2"), tag->title());
++    delete f;
+ 
+     f = new FLAC::File(newname.c_str());
+     tag = f->tag();
+-- 
+1.9.0
+

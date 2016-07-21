@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>tharvik@gmail.com</email>
+	<name>Tharvik</name>
+	<description>Proxy-maintainer; add or CC them for bugs</description>
+</maintainer>
+<maintainer type="person">
+	<email>tomboy64@sina.cn</email>
+	<name>M.B.</name>
+	<description>Proxy-maintainer; add or CC them for bugs</description>
+</maintainer>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
+<use>
+	<flag name="ecdsa">Enables additional checks to make sure a setup is available that is capable of using I2Ps ECDSA provisions. I2P will work without it, but you will likely see warnings.</flag>
+	<flag name="nls">Adds Native Language Support using GNU gettext.</flag>
+</use>
+</pkgmetadata>

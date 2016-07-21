@@ -1,0 +1,45 @@
+do not let these targets depend on clean, otherwise it could run in
+parallel with the object compile which runs into races
+https://bugs.gentoo.org/461806
+
+While we're in here, fix up a few other things:
+ - append -pthread to LDFLAGS instead of replacing them
+ - do not bother with `rm` in the output since linking will clober it
+ - use CXXFLAGS when linking
+ - append LIBFLAGS to the individual targets instead of the final link
+
+--- a/makefile
++++ b/makefile
+@@ -7,7 +7,7 @@
+ LIBFLAGS=-fPIC
+ DEFINES=-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -DRAR_SMP
+ STRIP=strip
+-LDFLAGS=-pthread
++LDFLAGS+=-pthread
+ DESTDIR=/usr
+ 
+ # Linux using LCC
+@@ -119,8 +119,7 @@
+ 	@rm -f *.o *.bak *~
+ 
+ unrar:	clean $(OBJECTS) $(UNRAR_OBJ)
+-	@rm -f unrar
+-	$(LINK) -o unrar $(LDFLAGS) $(OBJECTS) $(UNRAR_OBJ) $(LIBS)	
++	$(LINK) -o unrar $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(UNRAR_OBJ) $(LIBS)	
+ 	$(STRIP) unrar
+ 
+ sfx:	WHAT=SFX_MODULE
+@@ -130,10 +129,9 @@
+ 	$(STRIP) default.sfx
+ 
+ lib:	WHAT=RARDLL
+-lib:	CXXFLAGS+=$(LIBFLAGS)
+-lib:	clean $(OBJECTS) $(LIB_OBJ)
+-	@rm -f libunrar.so
+-	$(LINK) -shared -o libunrar.so $(LDFLAGS) $(OBJECTS) $(LIB_OBJ)
++$(OBJECTS) $(LIB_OBJ):	CXXFLAGS+=$(LIBFLAGS)
++lib:	$(OBJECTS) $(LIB_OBJ)
++	$(LINK) -shared -o libunrar.so $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) $(LIB_OBJ)
+ 
+ install-unrar:
+ 			install -D unrar $(DESTDIR)/bin/unrar

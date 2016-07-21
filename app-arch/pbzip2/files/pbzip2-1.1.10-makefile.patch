@@ -1,0 +1,20 @@
+--- pbzip2-1.1.10/Makefile
++++ pbzip2-1.1.10/Makefile
+@@ -17,7 +17,7 @@
+ 
+ 
+ # Optimization flags
+-CXXFLAGS = -O2
++#CXXFLAGS = -O2
+ 
+ #CXXFLAGS += -g -Wall
+ #CXXFLAGS += -ansi
+@@ -50,7 +50,7 @@
+ 
+ 
+ # Linker flags
+-LDFLAGS =
++#LDFLAGS =
+ 
+ 
+ # External libraries

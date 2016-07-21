@@ -1,0 +1,24 @@
+Upstream patch: fix segfault while video device detection.
+Discovered here - https://bugs.gentoo.org/show_bug.cgi?id=458504
+
+--- src/sdl/video.c.orig	2013-02-21 11:48:57.000000000 -0400
++++ src/sdl/video.c	2013-02-21 11:49:35.000000000 -0400
+@@ -364,11 +364,17 @@
+ 	int n;
+ 	int w, h;
+ 	int flags = 0;
++        int status;
+ 
+ 	printf("CGA Screen Emulation\n");
+ 	printf("init screen: ");
+ 
+-	SDL_Init(SDL_INIT_VIDEO);
++	status = SDL_Init(SDL_INIT_VIDEO);
++        if (status == -1)
++        {
++          fprintf(stderr, "Unable to locate video device. Exiting.\n");
++          exit(1);
++        }
+
+ 	srand(time(NULL));
+ 	set_icon(symbol_plane[rand() % 2][rand() % 16]);

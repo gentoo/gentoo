@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -239,7 +239,7 @@
+ fi
+ CFLAGS="-I$MYSQL_INC_DIR $CFLAGS"
+ 
+-AC_CHECK_LIB(mysqlclient_r,mysql_init, LIBS="-lmysqlclient_r",
++AC_CHECK_LIB(mysqlclient_r,mysql_init, LIBS="$LIBS -lmysqlclient_r",
+   AC_MSG_ERROR([MySQL libraries not found])
+ )
+ 

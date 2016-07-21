@@ -1,0 +1,13 @@
+--- CMakeLists.txt	2013-10-15 12:02:13.463722050 -0400
++++ CMakeLists.txt.new	2013-10-17 09:41:41.602917345 -0400
+@@ -238,10 +238,6 @@
+ install(FILES slimlock.1 DESTINATION ${MANDIR}/man1/)
+ # configure
+ install(FILES slim.conf DESTINATION ${SYSCONFDIR})
+-# systemd service file
+-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+-	install(FILES slim.service DESTINATION ${LIBDIR}/systemd/system)
+-endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+ # themes directory
+ subdirs(themes)
+ 

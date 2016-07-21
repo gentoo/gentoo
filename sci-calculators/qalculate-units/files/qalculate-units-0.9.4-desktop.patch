@@ -1,0 +1,11 @@
+--- data/qalculate-units.desktop.in.orig	2014-07-04 08:38:13.960379573 -0700
++++ data/qalculate-units.desktop.in	2014-07-04 08:38:29.628489423 -0700
+@@ -4,7 +4,7 @@
+ _GenericName=Unit Converter
+ _Comment=Converts between many different units
+ Exec=qalculate-units
+-Icon=gnome-calc3.png
++Icon=gnome-calc3
+ Terminal=false
+ Type=Application
+ StartupNotify=true

@@ -1,0 +1,135 @@
+diff -Naur a/contrib/Makefile b/contrib/Makefile
+--- a/contrib/Makefile	2011-02-02 07:37:16.654175660 -0500
++++ b/contrib/Makefile	2011-02-08 05:54:00.145582001 -0500
+@@ -5,51 +5,10 @@
+ include $(top_builddir)/src/Makefile.global
+ 
+ SUBDIRS = \
+-		adminpack	\
+-		auto_explain	\
+-		btree_gin	\
+-		btree_gist	\
+-		chkpass		\
+-		citext		\
+-		cube		\
+-		dblink		\
+-		dict_int	\
+-		dict_xsyn	\
+-		earthdistance	\
+-		fuzzystrmatch	\
+-		hstore		\
+-		intagg		\
+-		intarray	\
+-		isn		\
+-		lo		\
+-		ltree		\
+ 		oid2name	\
+-		pageinspect	\
+-		passwordcheck	\
+-		pg_archivecleanup \
+-		pg_buffercache	\
+-		pg_freespacemap \
+-		pg_standby	\
+-		pg_stat_statements \
+-		pg_trgm		\
+-		pg_upgrade	\
+-		pg_upgrade_support \
+ 		pgbench		\
+-		pgcrypto	\
+-		pgrowlocks	\
+-		pgstattuple	\
+-		seg		\
+-		spi		\
+-		tablefunc	\
+-		test_parser	\
+-		tsearch2	\
+-		unaccent	\
+ 		vacuumlo
+ 
+-ifeq ($(with_openssl),yes)
+-SUBDIRS += sslinfo
+-endif
+-
+ ifeq ($(with_ossp_uuid),yes)
+ SUBDIRS += uuid-ossp
+ endif
+diff -Naur a/src/backend/Makefile b/src/backend/Makefile
+--- a/src/backend/Makefile	2011-02-02 07:37:56.403870592 -0500
++++ b/src/backend/Makefile	2011-02-08 05:57:26.078497002 -0500
+@@ -45,7 +45,7 @@
+ 
+ ##########################################################################
+ 
+-all: submake-libpgport submake-schemapg postgres $(POSTGRES_IMP)
++all: someheaders
+ 
+ ifneq ($(PORTNAME), cygwin)
+ ifneq ($(PORTNAME), win32)
+@@ -114,7 +114,7 @@
+ endif # aix
+ 
+ # Update the commonly used headers before building the subdirectories
+-$(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/probes.h
++someheaders $(SUBDIRS:%=%-recursive): $(top_builddir)/src/include/parser/gram.h $(top_builddir)/src/include/catalog/schemapg.h $(top_builddir)/src/include/utils/fmgroids.h $(top_builddir)/src/include/utils/probes.h
+ 
+ # run this unconditionally to avoid needing to know its dependencies here:
+ submake-schemapg:
+@@ -191,23 +191,7 @@
+ 
+ ##########################################################################
+ 
+-install: all installdirs install-bin
+-ifeq ($(PORTNAME), cygwin)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-ifeq ($(PORTNAME), win32)
+-ifeq ($(MAKE_DLL), true)
+-	$(INSTALL_DATA) libpostgres.a '$(DESTDIR)$(libdir)/libpostgres.a'
+-endif
+-endif
+-	$(MAKE) -C catalog install-data
+-	$(MAKE) -C tsearch install-data
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_hba.conf.sample '$(DESTDIR)$(datadir)/pg_hba.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/libpq/pg_ident.conf.sample '$(DESTDIR)$(datadir)/pg_ident.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/utils/misc/postgresql.conf.sample '$(DESTDIR)$(datadir)/postgresql.conf.sample'
+-	$(INSTALL_DATA) $(srcdir)/access/transam/recovery.conf.sample '$(DESTDIR)$(datadir)/recovery.conf.sample'
++install:
+ 
+ install-bin: postgres $(POSTGRES_IMP) installdirs
+ 	$(INSTALL_PROGRAM) postgres$(X) '$(DESTDIR)$(bindir)/postgres$(X)'
+diff -Naur a/src/bin/Makefile b/src/bin/Makefile
+--- a/src/bin/Makefile	2011-02-02 07:38:35.133570047 -0500
++++ b/src/bin/Makefile	2011-02-08 05:58:48.819847001 -0500
+@@ -13,8 +13,7 @@
+ top_builddir = ../..
+ include $(top_builddir)/src/Makefile.global
+ 
+-SUBDIRS = initdb pg_ctl pg_dump \
+-	psql scripts pg_config pg_controldata pg_resetxlog
++SUBDIRS = pg_dump psql scripts pg_config
+ ifeq ($(PORTNAME), win32)
+ SUBDIRS+=pgevent
+ endif
+diff -Naur a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2011-02-02 07:37:56.283870942 -0500
++++ b/src/Makefile	2011-02-08 06:00:51.591202002 -0500
+@@ -15,17 +15,11 @@
+ 
+ all install installdirs uninstall distprep:
+ 	$(MAKE) -C port $@
+-	$(MAKE) -C timezone $@
+ 	$(MAKE) -C backend $@
+-	$(MAKE) -C backend/utils/mb/conversion_procs $@
+-	$(MAKE) -C backend/snowball $@
+ 	$(MAKE) -C include $@
+ 	$(MAKE) -C interfaces $@
+-	$(MAKE) -C backend/replication/libpqwalreceiver $@
+ 	$(MAKE) -C bin $@
+-	$(MAKE) -C pl $@
+ 	$(MAKE) -C makefiles $@
+-	$(MAKE) -C test/regress $@
+ 
+ install: install-local
+ 

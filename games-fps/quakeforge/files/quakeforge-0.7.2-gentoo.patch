@@ -1,0 +1,33 @@
+--- nq/source/Makefile.am.old	2012-11-18 16:57:56.658388682 +0100
++++ nq/source/Makefile.am	2012-11-18 16:58:11.470268607 +0100
+@@ -138,7 +138,7 @@
+ nq_x11_SOURCES= 	sys_unix.c
+ nq_x11_LDADD=		$(nq_x11_libs) \
+ 			$(VIDMODE_LIBS) $(DGA_LIBS) $(X_LIBS) -lX11 \
+-			$(X_EXTRA_LIBS) $(X_SHM_LIB) $(NET_LIBS)
++			$(X_EXTRA_LIBS) $(X_SHM_LIB) $(NET_LIBS) -ldl
+ nq_x11_LDFLAGS= 	$(common_ldflags)
+ nq_x11_DEPENDENCIES=	$(nq_x11_libs)
+ 
+--- qw/source/Makefile.am.old	2012-11-18 17:10:59.148172332 +0100
++++ qw/source/Makefile.am	2012-11-18 17:11:55.866876762 +0100
+@@ -168,7 +168,7 @@
+ qw_client_x11_SOURCES=	cl_sys_unix.c
+ qw_client_x11_LDADD= $(qw_client_x11_libs) \
+ 			$(VIDMODE_LIBS) $(DGA_LIBS) $(X_LIBS) -lX11 \
+-			$(X_EXTRA_LIBS) $(X_SHM_LIB) $(NET_LIBS) $(LIBCURL_LIBS)
++			$(X_EXTRA_LIBS) $(X_SHM_LIB) $(NET_LIBS) $(LIBCURL_LIBS) -ldl
+ qw_client_x11_LDFLAGS=	$(common_ldflags)
+ qw_client_x11_DEPENDENCIES= $(qw_client_x11_libs)
+ 
+--- tools/qwaq/Makefile.am.old	2012-11-18 17:15:16.024714317 +0100
++++ tools/qwaq/Makefile.am	2012-11-18 17:15:41.955749660 +0100
+@@ -38,7 +38,7 @@
+ qwaq_x11_SOURCES=qwaq.c qwaq-bi.c
+ qwaq_x11_LDADD= $(qwaq_x11_libs) $(QWAQ_LIBS) \
+ 				$(VIDMODE_LIBS) $(DGA_LIBS) $(X_LIBS) -lX11 \
+-				$(X_EXTRA_LIBS) $(X_SHM_LIB)
++				$(X_EXTRA_LIBS) $(X_SHM_LIB) -ldl
+ qwaq_x11_LDFLAGS=
+ qwaq_x11_DEPENDENCIES= $(qwaq_x11_libs) $(QWAQ_DEPS)
+ 

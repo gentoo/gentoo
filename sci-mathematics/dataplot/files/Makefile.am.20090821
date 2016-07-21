@@ -1,0 +1,46 @@
+bin_PROGRAMS = dataplot
+dataplot_SOURCES = dp1_linux.f \
+	dp2.f dp3.f dp4.f dp5.f dp6.f dp7.f dp8.f dp9.f dp10.f dp11.f   \
+	dp12.f dp13.f dp14.f dp15.f dp16.f dp17.f dp18.f dp19.f dp20.f dp21.f \
+	dp22.f dp23.f dp24.f dp25.f dp26.f dp27.f dp28.f dp29.f dp30.f dp31.f \
+	dp32.f dp33.f dp34.f dp35.f dp36.f dp37.f dp38.f dp39.f dp40.f dp41.f \
+	dp42.f dp43.f dp44.f dp45.f dp46.f \
+	dpcalc.f dpdds2.f dpdds3.f dpdds.f edinit.f edmai2.f edsear.f edsub.f \
+	edwrst.f fit3b.f starpac.f tcdriv_nopc.f aqua_src.f cluster.f compgeom.f \
+	optimi.f libplot_src.c rldp.c main.f
+
+if ENABLE_GD
+dataplot_SOURCES += gd_src.c
+else
+dataplot_SOURCES += gd_src.f
+endif
+
+if ENABLE_GL
+dataplot_SOURCES += gl_src.c
+else
+dataplot_SOURCES += gl_src.f
+endif
+
+if ENABLE_X11
+dataplot_SOURCES += x11_src.c
+else
+dataplot_SOURCES += x11src.f
+endif
+
+dataplot_CFLAGS = @GL_CFLAGS@
+dataplot_LDADD = @GD_LIBS@ @GL_LIBS@ @X11_LIBS@ $(FLIBS) -lreadline
+
+# this is to remove ambiguity between the similar filenames
+# of the c and f77 version (shortcoming of automake)
+# the f77 versions are forced
+# the c versions objects are called dataplot-gd_src.o etc
+gd_src.o: gd_src.f
+	$(F77COMPILE) -c -o $@ $<
+gl_src.o: gl_src.f
+	$(F77COMPILE) -c -o $@ $<
+aqua_src.o: aqua_src.f
+	$(F77COMPILE) -c -o $@ $<
+libplot_src.o: libplot_src.f
+	$(F77COMPILE) -c -o $@ $<
+rldp.o: rldp.f
+	$(F77COMPILE) -c -o $@ $<

@@ -1,0 +1,53 @@
+>From 72c942ed694ef6249c0df84c0802e7378884e7c7 Mon Sep 17 00:00:00 2001
+From: John W. Linville <linville@tuxdriver.com>
+Date: Tue, 29 May 2007 14:21:23 -0400
+Subject: [PATCH] [PATCH] adm8211: fix build breakage from skb->mac.raw
+
+Use skb_mac_header and related functions instead.
+
+Signed-off-by: John W. Linville <linville@tuxdriver.com>
+---
+ drivers/net/wireless/adm8211/adm8211_hw.c |    7 ++++---
+ 1 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/adm8211/adm8211_hw.c b/adm8211/adm8211_hw.c
+index 2ec950d..49d79cb 100644
+--- a/adm8211/adm8211_hw.c
++++ b/adm8211/adm8211_hw.c
+@@ -499,7 +499,7 @@ static void adm8211_rx_skb(struct net_device *dev, struct sk_buff *skb)
+ 		ieee->stats.rx_packets++;
+ 
+ 		skb->pkt_type = PACKET_OTHERHOST;
+-		skb->mac.raw = skb->data;
++		skb_reset_mac_header(skb);
+ 
+ 		netif_rx(skb);
+ 		dev->last_rx = jiffies;
+@@ -717,7 +717,7 @@ static void adm8211_interrupt_rci(struct net_device *dev)
+ #endif
+ 			stat->rssi = rssi;
+ 			stat->rate = rate;
+-			skb->mac.raw = skb->data;
++			skb_reset_mac_header(skb);
+ 			skb->protocol = __constant_htons(ETH_P_802_2);
+ 			skb_queue_tail(&priv->rx_queue, skb);
+ 			tasklet_schedule(&priv->rx_tasklet);
+@@ -2376,7 +2376,8 @@ static int adm8211_hard_start_xmit(struct ieee80211_txb *txb,
+ 
+ int adm8211_80211_header_parse(struct sk_buff *skb, unsigned char *haddr)
+ {
+-	memcpy(haddr, skb->mac.raw + 10 + sizeof(struct avs_caphdr), ETH_ALEN); /* addr2 */
++	memcpy(haddr, skb_mac_header(skb) + 10 + sizeof(struct avs_caphdr),
++		ETH_ALEN); /* addr2 */
+ 	return ETH_ALEN;
+ }
+ 
+-- 
+1.5.2.1
+
+
+
+
+
+
+

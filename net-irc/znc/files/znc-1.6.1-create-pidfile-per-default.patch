@@ -1,0 +1,23 @@
+Add PidFile option to new configurations per default
+
+Our runscript requires that ZNC creates a pidfile. This patch will add
+the PidFile directive to ZNC's default configuration.
+---
+ src/znc.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/znc.cpp b/src/znc.cpp
+index b33e860..4a02568 100644
+--- a/src/znc.cpp
++++ b/src/znc.cpp
+@@ -575,6 +575,7 @@ bool CZNC::WriteNewConfig(const CString& sConfigFile) {
+ 	VCString vsLines;
+ 
+ 	vsLines.push_back(MakeConfigHeader());
++	vsLines.push_back("PidFile = /run/znc/znc.pid");
+ 	vsLines.push_back("Version = " + CString(VERSION_STR));
+ 
+ 	m_sConfigFile = ExpandConfigPath(sConfigFile);
+-- 
+2.5.0
+

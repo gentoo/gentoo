@@ -1,0 +1,16 @@
+nbconvert is not yet installed at time of doc generation.
+
+Patch by Marius Brehler
+--- docs/Makefile
++++ docs/Makefile
+@@ -61,8 +61,8 @@ source/config_options.rst:
+ 	@echo "Created docs for config options"
+ 
+ ipynb2rst:
+-	jupyter nbconvert --to rst source/customizing.ipynb --FilesWriter.build_directory=source
+-	jupyter nbconvert --to rst source/nbconvert_library.ipynb --FilesWriter.build_directory=source
++	../scripts/jupyter-nbconvert --to rst source/customizing.ipynb --FilesWriter.build_directory=source
++	../scripts/jupyter-nbconvert --to rst source/nbconvert_library.ipynb --FilesWriter.build_directory=source
+ 	@echo "Converted notebooks to rst"
+ 
+ dirhtml:

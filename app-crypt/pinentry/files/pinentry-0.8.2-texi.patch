@@ -1,0 +1,20 @@
+--- doc/gpl.texi	2013-06-09 10:50:53.990704797 +1200
++++ doc/gpl.texi	2013-06-09 10:51:25.310432565 +1200
+@@ -12,7 +12,7 @@
+ of this license document, but changing it is not allowed.
+ @end display
+ 
+-@appendixsubsec Preamble
++@appendixsec Preamble
+ 
+   The licenses for most software are designed to take away your
+ freedom to share and change it.  By contrast, the GNU General Public
+@@ -63,7 +63,7 @@
+ modification follow.
+ 
+ @iftex
+-@appendixsubsec TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
++@appendixsec TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+ @end iftex
+ @ifinfo
+ @center TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION

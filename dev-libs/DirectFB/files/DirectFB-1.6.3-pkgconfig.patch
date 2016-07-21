@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/200661
+
+--- DirectFB/directfb-config.in
++++ DirectFB/directfb-config.in
+@@ -300,7 +300,7 @@
+ 	 libs="$libs -ldirectfb -lfusion -ldirect @THREADLIB@"
+ 
+ 	 if test -n "$echo_static"; then
+-	    libs="$libs @DYNLIB@ @ZLIB_LIBS@"
++	    libs="$libs @DYNLIB@ @ZLIB_LIBS@ @SYSFS_LIBS@"
+ 	 fi
+       fi
+ 
+--- DirectFB/directfb.pc.in
++++ DirectFB/directfb.pc.in
+@@ -9,5 +9,5 @@
+ Version: @VERSION@
+ Requires: @DEP_VOODOO@ fusion direct
+ Libs: -L${libdir} -ldirectfb @THREADLIB@ @OSX_LIBS@
+-Libs.private: -L${libdir} @LIBM@ @DYNLIB@ @ZLIB_LIBS@
++Libs.private: -L${libdir} @LIBM@ @DYNLIB@ @ZLIB_LIBS@ @SYSFS_LIBS@
+ Cflags: @THREADFLAGS@ -I@INCLUDEDIR@

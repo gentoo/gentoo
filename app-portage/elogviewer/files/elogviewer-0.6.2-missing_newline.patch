@@ -1,0 +1,23 @@
+Add missing newline and remove debug print statement
+
+https://bugs.gentoo.org/349071
+
+--- elogviewer
++++ elogviewer
+@@ -154,7 +154,7 @@
+                     and self.filters[section] == True:
+                     self.insert_with_tags(
+                         self.get_end_iter(),
+-                        line,
++                        line + '\n',
+                         self.get_tag_table().lookup(header))
+         finally:
+             file_obj.close()
+@@ -385,7 +385,6 @@
+         if len(split_filename) is 3:
+             (self._category, self._package, t) = split_filename
+         elif len(split_filename) is 2:
+-            print split_filename
+             (self._category, self._package) = split_filename[0].split('/')
+             t = split_filename[1]
+         t = time.strptime(t, itime)

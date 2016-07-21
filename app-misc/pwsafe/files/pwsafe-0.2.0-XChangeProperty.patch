@@ -1,0 +1,22 @@
+This patch came from <https://bugzilla.redhat.com/show_bug.cgi?id=667541>.
+
+Index: pwsafe.cpp
+===================================================================
+RCS file: /cvsroot/pwsafe/pwsafe/pwsafe.cpp,v
+retrieving revision 1.57
+diff -u -r1.57 pwsafe.cpp
+--- pwsafe.cpp	12 Aug 2007 12:33:06 -0000	1.57
++++ pwsafe.cpp	5 Jan 2011 22:16:43 -0000
+@@ -1820,10 +1820,10 @@
+             if (xev.xselectionrequest.target == XA_TARGETS(xdisplay)) {
+               // tell them what we can supply
+               const Atom targets[] = { XA_TARGETS(xdisplay), XA_TIMESTAMP(xdisplay), XA_TEXT(xdisplay), XA_STRING };
+-              XChangeProperty(xdisplay, xev.xselectionrequest.requestor, prop, XA_TARGETS(xdisplay), 32, PropModeReplace, reinterpret_cast<const unsigned char*>(&targets), sizeof(targets)/sizeof(targets[0]));
++              XChangeProperty(xdisplay, xev.xselectionrequest.requestor, prop, XA_ATOM, 32, PropModeReplace, reinterpret_cast<const unsigned char*>(&targets), sizeof(targets)/sizeof(targets[0]));
+             }
+             else if (xev.xselectionrequest.target == XA_TIMESTAMP(xdisplay)) {
+-              XChangeProperty(xdisplay, xev.xselectionrequest.requestor, prop, XA_TIMESTAMP(xdisplay), 32, PropModeReplace, reinterpret_cast<const unsigned char*>(&timestamp), 1);
++              XChangeProperty(xdisplay, xev.xselectionrequest.requestor, prop, XA_INTEGER, 32, PropModeReplace, reinterpret_cast<const unsigned char*>(&timestamp), 1);
+             }
+             else if (xev.xselectionrequest.target == XA_TEXT(xdisplay) ||
+                 xev.xselectionrequest.target == XA_STRING) {

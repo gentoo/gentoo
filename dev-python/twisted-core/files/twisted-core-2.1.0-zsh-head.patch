@@ -1,0 +1,13 @@
+Index: twisted/python/_twisted_zsh_stub
+===================================================================
+--- twisted/python/_twisted_zsh_stub	(revision 14988)
++++ twisted/python/_twisted_zsh_stub	(working copy)
+@@ -30,7 +30,7 @@
+ 
+ function load_twisted_completions() {
+     [[ -z $commands[twistd] ]] && echo 'ERROR: test command "twistd" not found in path' && return 1
+-    shebang=$(head -1 $commands[twistd])
++    shebang=$(head -n1 $commands[twistd])
+     [[ $shebang != \#\!* ]] && echo 'ERROR: invalid shebang line for test script "twistd"' && return 1
+     PYTHON=$shebang[3,-1]
+ 

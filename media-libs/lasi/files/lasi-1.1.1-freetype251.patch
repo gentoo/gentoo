@@ -1,0 +1,63 @@
+Add compatibility for >=freetype-2.5.1
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+--- libLASi-1.1.1/include/LASi.h
++++ libLASi-1.1.1/include/LASi.h
+@@ -11,7 +11,8 @@
+ #include <sstream>
+ #include <map>
+ #include <pango/pango.h>
+-#include <freetype/ftglyph.h>
++#include <ft2build.h>
++#include FT_GLYPH_H
+ 
+ class FreetypeGlyphMgr;
+ class ContextMgr;
+--- libLASi-1.1.1/src/drawGlyph.cpp
++++ libLASi-1.1.1/src/drawGlyph.cpp
+@@ -6,7 +6,8 @@
+  */
+ 
+ #include <ostream>
+-#include <freetype/ftoutln.h>
++#include <ft2build.h>
++#include FT_OUTLINE_H
+ #include <algorithm>
+ #include <LASi.h>
+ #include <config.h>
+--- libLASi-1.1.1/src/glyphMgr.cpp
++++ libLASi-1.1.1/src/glyphMgr.cpp
+@@ -10,8 +10,7 @@
+ 
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
+-
+-#include <freetype/ftglyph.h>
++#include FT_GLYPH_H
+ 
+ #include <cassert>
+ #include "util.h"
+--- libLASi-1.1.1/src/glyphMgr.h
++++ libLASi-1.1.1/src/glyphMgr.h
+@@ -15,8 +15,8 @@
+ 
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
++#include FT_GLYPH_H
+ 
+-#include <freetype/ftglyph.h>
+ 
+ /** Manage FT_Glyph by insuring that FT_Glyph is handled correctly.
+  */
+--- libLASi-1.1.1/src/util.h
++++ libLASi-1.1.1/src/util.h
+@@ -18,7 +18,7 @@
+ 
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
+-#include <freetype/ftglyph.h>
++#include FT_GLYPH_H
+ 
+ std::ostream& operator<<(std::ostream&, const FT_Library);
+ std::ostream& operator<<(std::ostream&, const FT_Face);

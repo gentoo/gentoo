@@ -1,0 +1,15 @@
+Index: orpheus-1.6/configure.in
+===================================================================
+--- orpheus-1.6.orig/configure.in
++++ orpheus-1.6/configure.in
+@@ -30,8 +30,8 @@ AM_PATH_XML2(2.0.0, [
+ 
+ AC_CHECK_LIB(ncurses, main,, AC_CHECK_LIB(curses, main,, AC_MSG_ERROR(The ncurses terminal library is required in order to build the program)))
+ 
+-AC_CHECK_LIB(ghttp, ghttp_request_new,,
+-    [AC_MSG_WARN(libghttp not found - the support for CDDB is be disabled)])
++#AC_CHECK_LIB(ghttp, ghttp_request_new,,
++#    [AC_MSG_WARN(libghttp not found - the support for CDDB is be disabled)])
+ 
+ AC_CHECK_LIB(vorbis, vorbis_synthesis_headerin,,
+     AC_MSG_WARN(libvorbisfile not found - the support for OGG tags edit is disabled))

@@ -1,0 +1,51 @@
+From 6a17bb8523c4c7810bf7797371df22cfb259f7a7 Mon Sep 17 00:00:00 2001
+From: MATSUU Takuto <matsuu@gentoo.org>
+Date: Sat, 16 May 2009 07:01:53 +0900
+Subject: [PATCH] Use the standard autoconf $docdir variable.
+
+---
+ doc/examples/Makefile.am        |    1 -
+ extras/Makefile.am              |    3 +--
+ extras/benchmarking/Makefile.am |    4 +---
+ 3 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/doc/examples/Makefile.am b/doc/examples/Makefile.am
+index b4c93f4..5296d83 100644
+--- a/doc/examples/Makefile.am
++++ b/doc/examples/Makefile.am
+@@ -1,7 +1,6 @@
+ EXTRA = README unify.vol replicate.vol stripe.vol protocol-client.vol protocol-server.vol posix-locks.vol trash.vol write-behind.vol io-threads.vol io-cache.vol read-ahead.vol filter.vol trace.vol
+ EXTRA_DIST = $(EXTRA)
+ 
+-docdir = $(datadir)/doc/$(PACKAGE_NAME)
+ Examplesdir = $(docdir)/examples
+ Examples_DATA = $(EXTRA)
+ 
+diff --git a/extras/Makefile.am b/extras/Makefile.am
+index 9be3973..ea0b33d 100644
+--- a/extras/Makefile.am
++++ b/extras/Makefile.am
+@@ -1,6 +1,5 @@
+ 
+-docdir = $(datadir)/doc/glusterfs/
+-EditorModedir = $(docdir)/
++EditorModedir = $(docdir)
+ EditorMode_DATA = glusterfs-mode.el glusterfs.vim
+ 
+ SUBDIRS = init.d benchmarking
+diff --git a/extras/benchmarking/Makefile.am b/extras/benchmarking/Makefile.am
+index 04cc061..bfcc592 100644
+--- a/extras/benchmarking/Makefile.am
++++ b/extras/benchmarking/Makefile.am
+@@ -1,7 +1,5 @@
+ 
+-docdir = $(datadir)/doc/$(PACKAGE_NAME)/benchmarking
+-
+-benchmarkingdir = $(docdir)
++benchmarkingdir = $(docdir)/benchmarking
+ 
+ benchmarking_DATA = rdd.c glfs-bm.c README launch-script.sh local-script.sh
+ 
+-- 
+1.6.3
+

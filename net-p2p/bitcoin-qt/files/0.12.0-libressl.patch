@@ -1,0 +1,26 @@
+commit c5449b0bb7e6918773579fad6ea08c60e82cb73c
+Author: Luke Dashjr <luke-jr+git@utopios.org>
+Date:   Thu Mar 17 07:24:22 2016 +0000
+
+    Bugfix: Actually fix LibreSSL build
+
+diff --git a/src/qt/rpcconsole.cpp b/src/qt/rpcconsole.cpp
+index cf59357..e51a5e9 100644
+--- a/src/qt/rpcconsole.cpp
++++ b/src/qt/rpcconsole.cpp
+@@ -264,10 +264,12 @@ RPCConsole::RPCConsole(const PlatformStyle *platformStyle, QWidget *parent) :
+ 
+     // set library version labels
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
+-    ui->openSSLVersion->setText(OpenSSL_version(OPENSSL_VERSION));
+-#else
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L)
+     ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
++#elif defined OPENSSL_VERSION
++    ui->openSSLVersion->setText(OpenSSL_version(OPENSSL_VERSION));
++#elif defined LIBRESSL_VERSION_TEXT
++    ui->openSSLVersion->setText(LIBRESSL_VERSION_TEXT);
+ #endif
+ 
+ #ifdef ENABLE_WALLET

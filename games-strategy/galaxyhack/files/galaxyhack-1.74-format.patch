@@ -1,0 +1,64 @@
+--- JSDL.cpp.old	2016-01-04 10:42:56.404316856 +0100
++++ JSDL.cpp	2016-01-04 10:51:16.744255312 +0100
+@@ -47,14 +47,14 @@
+ 	if (!globalSettings.batch) {
+ 		if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO) == -1) {
+ 			char output[120];
+-			sprintf(output, SDL_GetError());
++			strcpy(output, SDL_GetError());
+ 			throw runtime_error(output);
+ 		}
+ 		
+ 		if (!globalSettings.disableSound) {
+ 			if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1) {
+ 				char error[120];
+-				sprintf(error, SDL_GetError());
++				strcpy(error, SDL_GetError());
+ 				string errorStr = error;
+ 				errorStr += ", continuing without initialising sound.";
+ 				WriteLog(errorStr);
+@@ -81,7 +81,7 @@
+ 		//4096 is rather a large chunksize, should be smaller if I add sound effects
+ 		if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096) == -1) {
+ 			char output[100];
+-			sprintf(output, Mix_GetError());
++			strcpy(output, Mix_GetError());
+ 			throw runtime_error(output);
+ 		}
+ 	}
+@@ -101,7 +101,7 @@
+ 	if (screen == NULL) {
+ 		SDL_Quit();
+ 		char output[120];
+-		sprintf(output, SDL_GetError());
++		strcpy(output, SDL_GetError());
+ 		throw runtime_error(output);
+ 	}
+ }
+@@ -114,7 +114,7 @@
+ 
+ 	if (loadingSurface == NULL) {
+ 		char output[100];
+-		sprintf(output, IMG_GetError());
++		strcpy(output, IMG_GetError());
+ 		throw runtime_error(output);
+ 	}
+ 
+@@ -308,7 +308,7 @@
+ 
+ 	if (!theMusic) {
+ 		char output[100];
+-		sprintf(output, Mix_GetError());
++		strcpy(output, Mix_GetError());
+ 		throw runtime_error(output);
+ 	}
+ }
+@@ -319,7 +319,7 @@
+ 
+ 	if (Mix_PlayMusic(theMusic, -1) == -1) {
+ 		char output[100];
+-		sprintf(output, Mix_GetError());
++		strcpy(output, Mix_GetError());
+ 		throw runtime_error(output);
+ 	}
+ }

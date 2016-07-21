@@ -1,0 +1,12 @@
+Backport the change from the upstream mob branch for bug #567570
+--- configure.ac
++++ configure.ac
+@@ -409,7 +409,7 @@
+ 				[AC_MSG_WARN([cross compiling: not checking])])
+ 			 ])
+ 
+-		 AC_COMPILE_IFELSE(
++		 AC_LINK_IFELSE(
+ 			[AC_LANG_PROGRAM([[
+ #include <media.h>
+ 				]]

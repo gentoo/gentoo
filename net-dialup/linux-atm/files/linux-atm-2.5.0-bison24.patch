@@ -1,0 +1,47 @@
+--- linux-atm-2.5.0.orig/src/qgen/ql_y.y	2009-02-28 08:22:09.000000000 +0000
++++ linux-atm-2.5.0/src/qgen/ql_y.y	2009-02-28 08:41:35.000000000 +0000
+@@ -61,8 +61,10 @@
+ 	    *walk = 0;
+ 	if (*start == ':') {
+ 	    if (!(searching = strcmp(start+1,name)))
++	    {
+ 		if (found) yyerror("multiple entries");
+ 		else found = 1;
++	    }
+ 	    continue;
+ 	}
+ 	if (searching) continue;
+@@ -308,9 +310,11 @@
+ 	    $$->pos = $2;
+ 	    $$->flush = !$3;
+ 	    if ($$->pos == -1)
++	    {
+ 		if ($$->size & 7)
+ 		    yyerror("position required for small fields");
+ 		else $$->pos = 0;
++	    }
+ 	    $$->value = $5;
+ 	    $$->structure = NULL;
+ 	    $$->next = NULL;
+@@ -432,8 +436,8 @@
+ 	}
+     | TOK_ID opt_id list block
+ 	{
+-	    $$ = alloc_t(TAG);
+-	    $$->abort_id = abort_id;
++	    $<tag>$ = alloc_t(TAG);
++	    $<tag>$->abort_id = abort_id;
+ 	}
+ 	  tags
+ 	{
+@@ -475,8 +479,8 @@
+ 	}
+     | TOK_ID opt_id list rep_block
+ 	{
+-	    $$ = alloc_t(TAG);
+-	    $$->abort_id = abort_id;
++	    $<tag>$ = alloc_t(TAG);
++	    $<tag>$->abort_id = abort_id;
+ 	}
+ 	    rep_tags
+ 	{

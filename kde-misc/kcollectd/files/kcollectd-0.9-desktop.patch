@@ -1,0 +1,11 @@
+--- kcollectd/kcollectd.desktop
++++ kcollectd/kcollectd.desktop
+@@ -5,7 +5,7 @@
+ Terminal=false
+ StartupNotify=true
+ Categories=Qt;KDE;Utility;
+-MimeType=application/x-kcollectd
++MimeType=application/x-kcollectd;
+ Name=KDE collectd database-viewer
+ Name[de]=KDE collectd Datenbankbetrachter
+ GenericName=Collectd viewer

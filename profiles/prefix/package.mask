@@ -1,0 +1,30 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+#
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked.  This file is for
+# Prefix profiles only!
+#
+# NOTE: Please add your entry at the top!
+#
+
+
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
+# New llvm version, masked for testing
+=sys-devel/llvm-3.8.0*
+=sys-devel/clang-3.8.0*
+
+# Fabian Groffen <grobian@gentoo.org> (11 Feb 2014)
+# Fails to compile, bug #493464
+=sys-devel/autogen-5.18.1
+=sys-devel/autogen-5.18.2
+
+# Elias Pipping <pipping@gentoo.org> (09 Oct 2007)
+# darwin-miscutils are only available on darwin
+sys-apps/darwin-miscutils
+
+# Fabian Groffen <grobian@gentoo.org> (04 Apr 2007)
+# Don't use this, it is only provided for experimentation and as tool to
+# recover from broken linker situations.
+sys-devel/native-cctools

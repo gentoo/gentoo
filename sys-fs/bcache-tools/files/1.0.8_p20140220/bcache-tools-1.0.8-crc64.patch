@@ -1,0 +1,55 @@
+diff -ruN bcache-tools-1.0.8.orig/bcache.c bcache-tools-1.0.8/bcache.c
+--- bcache-tools-1.0.8.orig/bcache.c	2014-12-04 23:51:24.000000000 +0100
++++ bcache-tools-1.0.8/bcache.c	2015-05-22 19:40:41.039355096 +0200
+@@ -26,7 +26,7 @@
+  * x^7 + x^4 + x + 1
+ */
+ 
+-static const uint64_t crc_table[256] = {
++const uint64_t crc_table[256] = {
+ 	0x0000000000000000ULL, 0x42F0E1EBA9EA3693ULL, 0x85E1C3D753D46D26ULL,
+ 	0xC711223CFA3E5BB5ULL, 0x493366450E42ECDFULL, 0x0BC387AEA7A8DA4CULL,
+ 	0xCCD2A5925D9681F9ULL, 0x8E224479F47CB76AULL, 0x9266CC8A1C85D9BEULL,
+@@ -114,16 +114,3 @@
+ 	0x5DEDC41A34BBEEB2ULL, 0x1F1D25F19D51D821ULL, 0xD80C07CD676F8394ULL,
+ 	0x9AFCE626CE85B507ULL
+ };
+-
+-inline uint64_t crc64(const void *_data, size_t len)
+-{
+-	uint64_t crc = 0xFFFFFFFFFFFFFFFFULL;
+-	const unsigned char *data = _data;
+-
+-	while (len--) {
+-		int i = ((int) (crc >> 56) ^ *data++) & 0xFF;
+-		crc = crc_table[i] ^ (crc << 8);
+-	}
+-
+-	return crc ^ 0xFFFFFFFFFFFFFFFFULL;
+-}
+diff -ruN bcache-tools-1.0.8.orig/bcache.h bcache-tools-1.0.8/bcache.h
+--- bcache-tools-1.0.8.orig/bcache.h	2014-12-04 23:51:24.000000000 +0100
++++ bcache-tools-1.0.8/bcache.h	2015-05-22 19:40:34.924320569 +0200
+@@ -115,7 +115,20 @@
+ #define BDEV_STATE_DIRTY	2U
+ #define BDEV_STATE_STALE	3U
+ 
+-uint64_t crc64(const void *_data, size_t len);
++extern const uint64_t crc_table[];
++
++inline uint64_t crc64(const void *_data, size_t len)
++{
++        uint64_t crc = 0xFFFFFFFFFFFFFFFFULL;
++        const unsigned char *data = _data;
++
++        while (len--) {
++                int i = ((int) (crc >> 56) ^ *data++) & 0xFF;
++                crc = crc_table[i] ^ (crc << 8);
++        }
++
++        return crc ^ 0xFFFFFFFFFFFFFFFFULL;
++}
+ 
+ #define node(i, j)		((void *) ((i)->d + (j)))
+ #define end(i)			node(i, (i)->keys)
+Binary files bcache-tools-1.0.8.orig/bcache-register and bcache-tools-1.0.8/bcache-register differ

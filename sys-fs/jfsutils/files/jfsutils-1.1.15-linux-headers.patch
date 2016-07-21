@@ -1,0 +1,13 @@
+https://sourceforge.net/p/jfs/bugs/286/
+https://bugs.gentoo.org/448844
+
+--- a/libfs/devices.h
++++ b/libfs/devices.h
+@@ -42,6 +42,7 @@
+ 
+ struct stat;
+ 
++#include <stdint.h>
+ int ujfs_get_dev_size(FILE *, int64_t * size);
+ int ujfs_rw_diskblocks(FILE *, int64_t, int32_t, void *, int32_t);
+ int ujfs_flush_dev(FILE *);

@@ -1,0 +1,12 @@
+#!/bin/bash
+FORMAT="Gentoo #O `cat /etc/gentoo-release | awk '{ print $5,$6 }'`\n#O #V, Compiled #C\n#N #X #T #M CPU#S, #R RAM, #B Bogomips\n#U\n#H / \l  \n"
+FORMATNET="Gentoo #O `cat /etc/gentoo-release | awk '{ print $5,$6 }'`\n#O #V, Compiled #C\n#N #X #T #M CPU#S, #R RAM, #B Bogomips\n#U\n#H\n"
+OPTIONS="-L 2 -f -u"
+OPTIONSNET="-L 2 -f -u -a "
+
+# FORMAT="Gentoo Linux `cat /etc/gentoo-release | awk '{ print $5,$6 }'`"
+# /usr/bin/linux_logo -L 2 -f -u
+
+/usr/bin/linux_logo ${LOGO} ${OPTIONS} -F "${FORMAT}" > /etc/issue
+/usr/bin/linux_logo ${LOGO} ${OPTIONSNET} -F "${FORMATNET}" >  /etc/issue.net
+

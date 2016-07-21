@@ -1,0 +1,13 @@
+diff --git a/src/pref.c b/src/pref.c
+index 9c5e07d..6c0e13d 100644
+--- a/src/pref.c
++++ b/src/pref.c
+@@ -271,7 +271,7 @@ static void up_dict(GtkWidget *button) {
+ 			gtk_list_store_swap(GTK_LIST_STORE(model), &iter, &tmpiter);
+ 		}
+ 	}
+-	g_free(treepath);
++	gtk_tree_path_free(treepath);
+ }
+ 
+ 

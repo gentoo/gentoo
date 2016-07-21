@@ -1,0 +1,15 @@
+ tests/memory_mgmt_test.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/memory_mgmt_test.py b/tests/memory_mgmt_test.py
+index 08636ae..a7b8a21 100644
+--- a/tests/memory_mgmt_test.py
++++ b/tests/memory_mgmt_test.py
+@@ -258,4 +258,6 @@ class MemoryMgmtTest(unittest.TestCase):
+         
+         gc.collect()
+         new_object_count = len(gc.get_objects())
+-        self.assertEqual(new_object_count, object_count)
++        # it seems that GC sometimes collects something that existed
++        # before this test ran, GH issues #273/#274
++        self.assertTrue(new_object_count in (object_count, object_count-1))

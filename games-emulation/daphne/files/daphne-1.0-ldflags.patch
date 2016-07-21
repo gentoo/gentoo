@@ -1,0 +1,22 @@
+--- Makefile.old	2010-10-05 08:48:46.000000000 +0200
++++ Makefile	2010-10-05 08:49:10.000000000 +0200
+@@ -43,7 +43,7 @@
+ .SUFFIXES:	.cpp
+ 
+ all:	${LOCAL_OBJS} sub
+-	${CXX} ${DFLAGS} ${OBJS} -o ${EXE} ${LIBS}
++	${CXX} $(LDFLAGS) ${DFLAGS} ${OBJS} -o ${EXE} ${LIBS}
+ 
+ sub:
+ 	cd ldp-out && $(MAKE)
+--- vldp2/Makefile.linux.old	2010-10-05 09:29:52.000000000 +0200
++++ vldp2/Makefile.linux	2010-10-05 09:30:13.000000000 +0200
+@@ -33,7 +33,7 @@
+ all:		vldp2
+ 
+ vldp2:		${OBJS}
+-		${CC} -shared -o ${LIBNAME} ${OBJS} ${LIBS}
++		${CC} $(LDFLAGS) -shared -o ${LIBNAME} ${OBJS} ${LIBS}
+ 		cp ${LIBNAME} ../../.
+ 
+ clean:

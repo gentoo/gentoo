@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gienah@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
+  This is a Graphical User Interface for Prover9 and Mace4.
+  Prover9 is an automated theorem prover for first-order and
+  equational logic, and Mace4 searches for finite models and
+  counterexamples. Prover9 is the successor of the Otter prover.
+</longdescription>
+</pkgmetadata>

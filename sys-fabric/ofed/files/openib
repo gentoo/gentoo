@@ -1,0 +1,243 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Based on openibd script from openfabrics.org,
+#  Copyright (c) 2006 Mellanox Technologies. All rights reserved.
+#  Distributed under the terms of the GNU General Public License v2
+
+depend() {
+    after hotplug
+    before net         # init openib before starting any ipoib interfaces
+}
+
+OPENIB_CONFDIR=${OPENIB_CONFDIR:-/etc/infiniband}
+
+if [[ -r ${OPENIB_CONFDIR}/openib.conf ]] ; then
+    . ${OPENIB_CONFDIR}/openib.conf
+fi
+
+# Setting OpenIB start parameters
+POST_LOAD_MODULES=""
+
+if [ "X${SDP_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_sdp"
+    IPOIB_LOAD="yes"
+fi
+
+IPOIB=0
+if [ "X${IPOIB_LOAD}" == "Xyes" ]; then
+    IPOIB=1
+fi
+
+if [ "X${SRP_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_srp"
+fi
+
+if [ "X${SRP_TARGET_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_srp_target"
+fi
+
+if [ "X${RDMA_CM_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES rdma_cm"
+fi
+
+if [ "X${UCM_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_ucm"
+fi
+
+if [ "X${RDS_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_rds"
+fi
+
+if [ "X${ISER_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES ib_iser"
+fi
+
+if [ "X${RDMA_UCM_LOAD}" == "Xyes" ]; then
+    POST_LOAD_MODULES="$POST_LOAD_MODULES rdma_ucm"
+fi
+
+PRE_UNLOAD_MODULES="ib_rds ib_ucm kdapl ib_srp_target scsi_target ib_srp ib_iser ib_sdp rdma_ucm rdma_cm ib_addr ib_cm ib_local_sa findex"
+
+# W/A for unloading modules
+POST_UNLOAD_MODULES="$PRE_UNLOAD_MODULES ib_ipoib ib_sa ib_uverbs ib_umad"
+# ib_mthca ib_ipath - don't unload unless they are in openib.conf
+[[ "${MTHCA_LOAD}" == "yes" ]] && \
+    POST_UNLOAD_MODULES="$POST_UNLOAD_MODULES ib_mthca"
+[[ "${IPATH_LOAD}" == "yes" ]] && \
+    POST_UNLOAD_MODULES="$POST_UNLOAD_MODULES ib_ipath ipath_core"
+
+[[ "${MTHCA_LOAD}" == "yes" || "${IPATH_LOAD}" == "yes" ]] && \
+    POST_UNLOAD_MODULES="$POST_UNLOAD_MODULES ib_mad ib_core"
+
+#STATUS_MODULES="rdma_ucm ib_rds ib_srp ib_sdp rdma_cm ib_addr ib_local_sa findex ib_ipoib ib_ipath ipath_core ib_mthca ib_uverbs ib_umad ib_ucm ib_sa ib_cm ib_mad ib_core"
+
+
+# If module $1 is loaded return - 0 else - 1
+is_module()
+{
+    local RC
+
+    /bin/lsmod | grep -w "$1" > /dev/null 2>&1
+    RC=$?
+
+    return $RC
+}
+
+unload()
+{
+    # Unload module $1
+    if is_module $mod; then
+        /sbin/modprobe -r $mod > /dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            # Try rmmod if modprobe failed: case that previous installation included more IB modules.
+            /sbin/rmmod $mod > /dev/null 2>&1
+            if [ $? -ne 0 ]; then
+                ewarn "Failed to unload $mod"
+                return 1
+            fi
+        fi
+    fi
+}
+
+start() {
+    local RC=0
+    ebegin "Initializing Infiniband"
+    eindent
+
+    # Load Mellanox HCA driver if explicitly requested
+    # (however, it should be loaded automatically by udev)
+
+    einfo "Loading HCA and Access Layer drivers"
+
+    if [[ "${MTHCA_LOAD}" == "yes" ]]; then
+        /sbin/modprobe ib_mthca > /dev/null 2>&1
+        RC=$[ $RC + $? ]
+    fi
+    if [[ "${IPATH_LOAD}" == "yes" ]]; then
+        /sbin/modprobe ib_ipath > /dev/null 2>&1
+        RC=$[ $RC + $? ]
+    fi
+
+    # Add node description to sysfs
+    IBSYSDIR="/sys/class/infiniband"
+    if [ -d ${IBSYSDIR} ]; then
+        declare -i hca_id=1
+        for hca in ${IBSYSDIR}/*; do
+            if [ -e ${hca}/node_desc ]; then
+                echo -n "$(hostname -s) HCA-${hca_id}" >> ${hca}/node_desc
+            fi
+            let hca_id++
+        done
+    fi
+    /sbin/modprobe ib_umad > /dev/null 2>&1
+    RC=$[ $RC + $? ]
+    /sbin/modprobe ib_uverbs > /dev/null 2>&1
+    RC=$[ $RC + $? ]
+
+    if [ $IPOIB -eq 1 ]; then
+        # this section is not necessary if all ib-over-ib devices are
+        # aliased properly in /etc/modules.d/openib
+        einfo "loading ib_ipoib module"
+        /sbin/modprobe ib_ipoib > /dev/null 2>&1
+        RC=$[ $RC + $? ]
+        if (( ! RC )); then
+            # start the ipoib devices automatically...
+            # this is probably a bad idea (the concept is taken from the
+            # original SUSE/Redhat-based initscript), and should be removed.
+            # But it works, and is not enabled by default.  So I leave it here
+            # for second opinions.
+            local ibdevs=`rc-status -u -nc |egrep 'net\.ib[0-9a-zA-Z]+.*stopped' | awk '{print $1}'`
+            if [ -n "$ibdevs" ] ; then
+                einfo "starting ipoib devices"
+                for ibdev in $ibdevs; do
+                    /etc/init.d/$ibdev start
+                done
+            fi
+        fi
+    fi
+
+    # Devices for ib_umad and ib_uverbs should now have been created.
+    if [ ! -d /dev/infiniband/ ]; then
+        eerror "udev failed to create '/dev/infiniband/' devices"
+        RC=1
+    fi
+
+    # Load configured modules
+    if [ "$POST_LOAD_MODULES" != "" ]; then
+        for mod in  $POST_LOAD_MODULES
+        do
+            case $mod in
+                ib_iser)
+                    # Voltaire requirement
+                    /sbin/modprobe --force-modversion $mod > /dev/null 2>&1
+                ;;
+                *)
+                    /sbin/modprobe $mod > /dev/null 2>&1
+                ;;
+            esac
+            RC=$?
+            [ $RC -ne 0 ] && eerror "Failed to load $mod"
+        done
+    fi
+
+    eoutdent
+    eend $RC
+}
+
+stop() {
+    ebegin "Stopping Infiniband"
+    local RC=0
+
+    # Check if applications which use infiniband are running
+    local apps="opensm osmtest ibbs ibns"
+    local pid
+
+    for app in $apps
+    do
+        if ( ps -ef | grep $app | grep -v grep > /dev/null 2>&1 ); then
+            eerror "Please stop $app and all applications running over InfiniBand"
+            eend 1
+            return
+        fi
+    done
+
+    if ! is_module ib_core; then
+        einfo "HCA driver is not loaded"
+        eend 0
+        return
+    fi
+
+    # Unload ULPs modules
+
+    if [ "$PRE_UNLOAD_MODULES" != "" ]; then
+        for mod in $PRE_UNLOAD_MODULES
+        do
+            unload $mod || { eend 1; return; }
+        done
+    fi
+
+    # Remove srp_presistant_bind.sh before removing ib_srp module
+    PID_SCRPT_TO_KILL=`ps -efww | grep srp_persistent | grep -v grep | awk '{print $2}'`
+    if ! [ "$PID_SCRPT_TO_KILL" == "" ]; then
+        PID_SLEEP_TO_KILL=`ps -efww | grep $PID_SCRPT_TO_KILL | grep sleep | awk '{print $2}'`
+        kill -9 $PID_SCRPT_TO_KILL
+    fi
+    if ! [ "$PID_SLEEP_TO_KILL" == "" ]; then
+        kill -9 $PID_SLEEP_TO_KILL
+    fi
+
+    # Unload OpenIB modules
+
+    if [ "$POST_UNLOAD_MODULES" != "" ]; then
+        for mod in  $POST_UNLOAD_MODULES
+        do
+            unload $mod || RC=1
+        done
+    fi
+
+    eend $RC
+}
+

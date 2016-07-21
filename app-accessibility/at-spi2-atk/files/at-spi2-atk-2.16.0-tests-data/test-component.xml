@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<accessible description="Root of the accessible tree" name="root_object" role="accelerator label">
+	<accessible_component description="second child" name="obj2" role="application">
+		<component x="350" y="200" width="0" height="0" layer="2" zorder="1" alpha="1.5"/>
+	</accessible_component>
+	<accessible_component description="third child" name="obj3" role="push button">
+		<component x="250" y="250" width="350" height="200" layer="3" zorder="2" alpha="2.5"/>
+		<accessible_component description="third child a" name="aobj3" role="push button">
+			<component x="250" y="250" width="350" height="200" layer="4" zorder="3" alpha="3.5"/>
+		</accessible_component>
+	</accessible_component>
+	<accessible description="second child" name="obj2" role="application" />
+</accessible>

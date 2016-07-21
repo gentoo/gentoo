@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-power category contains software which handles power management,
+		including CPU frequency scaling tools.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-power contiene programas que manejan el control del
+		rendimiento incluyendo herramientas para cambio de frecuencia de algunos
+		microprocesadores.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-power enthält Software für das Powermanagement, wie 
+		beispielsweise Programme zur Änderung der CPU-Frequenz.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-powerカテゴリには電源管理を管理する(例えば、CPU基準化)が含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-power categorie bevat programma's voor energiebeheer, bijvoorbeeld
+		voor het aanpassen van de CPU-kloksnelheid.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-power chứa các phần mềm quản lý năng lượng,
+		bao gồm các công cụ quản lý tần số CPU.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-power contiene programmi per la gestione del risparmio energetico,
+		incluso il software per la variazione della frequenza della CPU.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-power contém programas que lidam com
+		gerenciamento de energia, incluindo ferramentas de variação de
+		freqüência de microprocessadores.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-power zawiera oprogramowanie związane z zarządzaniem
+		energią, włączając w to programy służące do skalowania częstotliwości
+		procesora.
+	</longdescription>
+</catmetadata>
+

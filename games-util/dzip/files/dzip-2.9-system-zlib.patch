@@ -1,0 +1,52 @@
+--- dzip.h
++++ dzip.h
+@@ -2,7 +2,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include "zlib/zlib.h"
++#include <zlib.h>
+ 
+ typedef unsigned char uchar;
+ 
+@@ -177,4 +177,4 @@
+ #else
+ #define DIRCHAR '/'
+ #define WRONGCHAR '\\'
+-#endif
+\ No newline at end of file
++#endif
+--- Makefile.linux
++++ Makefile.linux
+@@ -1,18 +1,17 @@
+ # Makefile for linux
+ 
+-CC = gcc
+-CFLAGS = -Wall -O3
++CC ?= gcc
++CFLAGS ?= -O3
++CFLAGS += -Wall
+ TARGET = dzip
+ OBJECTS = main.o compress.o uncompress.o list.o crc32.o \
+-	  encode.o decode.o v1code.o conmain.o delete.o \
+-	  zlib/adler32.o zlib/deflate.o zlib/trees.o \
+-	  zlib/inflate.o zlib/infblock.o zlib/inftrees.o zlib/infcodes.o \
+-	  zlib/infutil.o zlib/inffast.o
++	  encode.o decode.o v1code.o conmain.o delete.o
++LIBS = -lz
+ 
+ TMPFILES = gmon.out frag*
+ 
+ $(TARGET): $(OBJECTS)
+-	$(CC) $(CFLAGS) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS)
+ 
+ clean:
+ 	rm -f $(TARGET) $(OBJECTS) $(TMPFILES)
+@@ -24,4 +23,4 @@
+ encode.o: encode.c dzip.h
+ list.o: list.c dzip.h dzipcon.h
+ decode.o: decode.c dzip.h dzipcon.h
+-v1code.o: v1code.c dzip.h dzipcon.h
+\ No newline at end of file
++v1code.o: v1code.c dzip.h dzipcon.h

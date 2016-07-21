@@ -1,0 +1,567 @@
+Fix build with ffmpeg-0.11 and later.
+
+From slackware:
+http://www.slackware.org.uk/slackbuilds.org/14.0/multimedia/k9copy/
+https://bugs.gentoo.org/show_bug.cgi?id=459980
+
+diff -Nru k9copy-2.3.8-Source.orig/CMakeLists.txt k9copy-2.3.8-Source/CMakeLists.txt
+--- k9copy-2.3.8-Source.orig/CMakeLists.txt	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/CMakeLists.txt	2012-11-23 10:12:56.000000000 +0100
+@@ -18,6 +18,7 @@
+ INCLUDE(FindXine)
+ INCLUDE(FindAvcodec)
+ INCLUDE(FindAvformat)
++INCLUDE(FindAvutil)
+ INCLUDE(FindFFmpegScale)
+ #INCLUDE(FindLibDvdread)
+ 
+@@ -68,6 +69,7 @@
+ 
+ FINDAVFORMAT("avformat")
+ FINDAVCODEC("avcodec")
++FINDAVUTIL("avutil")
+ 
+ add_definitions( -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS)
+ add_subdirectory( src/dvdnav)
+@@ -103,6 +105,7 @@
+ #${LIBDVDREAD_INCLUDE_DIR}/dvdread
+  ${AVCODEC_INCLUDE_DIR}
+  ${AVFORMAT_INCLUDE_DIR}
++ ${AVUTIL_INCLUDE_DIR}
+  ${FFMPEGSCALE_INCLUDE_DIR}
+  ${FFMPEG_INCLUDE_DIR}
+ )
+diff -Nru k9copy-2.3.8-Source.orig/cmake/FindAvutil.cmake k9copy-2.3.8-Source/cmake/FindAvutil.cmake
+--- k9copy-2.3.8-Source.orig/cmake/FindAvutil.cmake	1970-01-01 01:00:00.000000000 +0100
++++ k9copy-2.3.8-Source/cmake/FindAvutil.cmake	2012-11-23 10:12:56.000000000 +0100
+@@ -0,0 +1,35 @@
++MACRO (FINDAVUTIL _lib)
++
++FIND_PATH(AVUTIL_INCLUDE_DIR_FF "ffmpeg/avutil.h" PATHS)
++IF (AVUTIL_INCLUDE_DIR_FF)
++      SET (AVUTIL_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_FF}/ffmpeg")
++ELSE (AVUTIL_INCLUDE_DIR_FF)
++      FIND_PATH(AVUTIL_INCLUDE_DIR_LAVC "libavutil/avutil.h" PATHS)
++      IF (AVUTIL_INCLUDE_DIR_LAVC)
++          SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_LAVC}/libavutil")
++      ELSE (AVUTIL_INCLUDE_DIR_LAVC)
++	  FIND_PATH(AVUTIL_INCLUDE_DIR_FF_LAVF "ffmpeg/libavutil/avutil.h" PATHS)
++	  IF (AVUTIL_INCLUDE_DIR_FF_LAVF)
++	    SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_FF_LAVF}/ffmpeg/libavutil")
++	  ENDIF (AVUTIL_INCLUDE_DIR_FF_LAVF)
++      ENDIF (AVUTIL_INCLUDE_DIR_LAVC)
++ENDIF (AVUTIL_INCLUDE_DIR_FF)
++
++
++
++FIND_LIBRARY(AVUTIL_LIBRARY NAMES ${_lib} PATHS ) 
++
++IF (AVUTIL_INCLUDE_DIR AND AVUTIL_LIBRARY)
++   SET(INC_FOUND TRUE)
++ELSE (AVUTIL_INCLUDE_DIR AND AVUTIL_LIBRARY)
++      SET(INC_FOUND FALSE)
++ENDIF (AVUTIL_INCLUDE_DIR AND AVUTIL_LIBRARY)
++
++
++IF (INC_FOUND)
++      MESSAGE(STATUS "Found include avutil.h: ${AVUTIL_INCLUDE_DIR}")
++      MESSAGE(STATUS "Found library ${_lib}: ${AVUTIL_LIBRARY}")
++ELSE (INC_FOUND)
++      MESSAGE(FATAL_ERROR "Could not find ${_lib}")
++ENDIF (INC_FOUND)
++ENDMACRO (FINDAVUTIL _lib )
+\ No newline at end of file
+diff -Nru k9copy-2.3.8-Source.orig/src/backup/k9mp4enc.cpp k9copy-2.3.8-Source/src/backup/k9mp4enc.cpp
+--- k9copy-2.3.8-Source.orig/src/backup/k9mp4enc.cpp	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/src/backup/k9mp4enc.cpp	2012-12-11 09:37:02.558323776 +0100
+@@ -619,7 +619,7 @@
+         //      cmd << "-lavfopts" << "i_certify_that_my_video_stream_does_not_use_b_frames";
+     }
+     //synchronize audio
+-    cmd << "-async" << "1" ;
++    cmd << "-async" << "44100" ;
+     cmd << "-y"  << KShell::quoteArg(path);
+     cmd << slNewAudio;
+ //    if (m_extractMkv) {
+diff -Nru k9copy-2.3.8-Source.orig/src/core/k9audiocodecs.cpp k9copy-2.3.8-Source/src/core/k9audiocodecs.cpp
+--- k9copy-2.3.8-Source.orig/src/core/k9audiocodecs.cpp	2011-12-09 22:08:42.000000000 +0100
++++ k9copy-2.3.8-Source/src/core/k9audiocodecs.cpp	2012-12-11 09:37:02.584323452 +0100
+@@ -75,10 +75,10 @@
+     m_codecs[4]=_k9AudioCodec("sonic","-oac lavc -lavcopts acodec=sonic:abitrate=$AUDBR","mencoder");
+     m_codecs[5]=_k9AudioCodec("aac","-oac faac -faacopts br=$AUDBR","mencoder");
+     m_codecs[6]=_k9AudioCodec("mp3 (lame)","-oac mp3lame -lameopts abr:br=$AUDBR","mencoder");
+-    m_codecs[7]=_k9AudioCodec("copy","-acodec copy","ffmpeg","");
+-    m_codecs[8]=_k9AudioCodec("mp3","-acodec libmp3lame -ab $AUDBRk -ac 2","ffmpeg",".mp3");
+-    m_codecs[9]=_k9AudioCodec("vorbis","-acodec vorbis -ab $AUDBRk -ac 2","ffmpeg",".ogg");
+-    m_codecs[10]=_k9AudioCodec("aac","-acodec libfaac -ab $AUDBRk -ac 2","ffmpeg",".aac");
++    m_codecs[7]=_k9AudioCodec("copy","-codec:a copy","ffmpeg","");
++    m_codecs[8]=_k9AudioCodec("mp3","-codec:a libmp3lame -ab $AUDBRk -ac 2 -ar 44100","ffmpeg",".mp3");
++    m_codecs[9]=_k9AudioCodec("vorbis","-codec:a vorbis -ab $AUDBRk -ac 2 -ar 44100","ffmpeg",".ogg");
++    m_codecs[10]=_k9AudioCodec("aac","-codec:a libfaac -ab $AUDBRk -ac 2 -ar 44100","ffmpeg",".aac");
+ 
+     save();
+ }
+diff -Nru k9copy-2.3.8-Source.orig/src/core/k9videocodecs.cpp k9copy-2.3.8-Source/src/core/k9videocodecs.cpp
+--- k9copy-2.3.8-Source.orig/src/core/k9videocodecs.cpp	2011-12-09 22:08:42.000000000 +0100
++++ k9copy-2.3.8-Source/src/core/k9videocodecs.cpp	2012-12-11 09:37:02.607323163 +0100
+@@ -98,12 +98,12 @@
+       m_codecs[18]=_k9VideoCodec("ASUS v1","","-ovc lavc -lavcopts vcodec=asv1:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=asv1:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=asv1:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","mencoder");
+       m_codecs[19]=_k9VideoCodec("ASUS v2","","-ovc lavc -lavcopts vcodec=asv2:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=asv2:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=asv2:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","mencoder");
+       m_codecs[20]=_k9VideoCodec("flv","","-ovc lavc -lavcopts vcodec=flv:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=flv:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","-ovc lavc -lavcopts vcodec=flv:vhq:v4mv:vqmin=2:vbitrate=$VIDBR:aspect=$ASPECT:turbo:vpass=$PASS -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP,scale=$WIDTH:$HEIGHT,dsize=$ASPECT","mencoder");
+-      m_codecs[21]=_k9VideoCodec("copy","","-vcodec copy","-vcodec copy","-vcodec copy","ffmpeg");
+-      m_codecs[22]=_k9VideoCodec("x264","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -vcodec libx264 -level 30","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec libx264 -pass $PASS -passlogfile $PASSLOGFILE -level 30","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec libx264 -pass $PASS -passlogfile $PASSLOGFILE -level 30","ffmpeg");
+-      m_codecs[23]=_k9VideoCodec("x264 (high)","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -vcodec libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -flags2 +bpyramid+wpred+mixed_refs+dct8x8 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -flags2 +bpyramid+wpred+mixed_refs+dct8x8 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4 -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -flags2 +bpyramid+wpred+mixed_refs+dct8x8 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
+-      m_codecs[24]=_k9VideoCodec("MPEG-4 ","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -vcodec mpeg4 ","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec mpeg4  -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec mpeg4 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
+-      m_codecs[25]=_k9VideoCodec("Flash Video","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -vcodec flv ","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec flv -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec flv -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
+-      m_codecs[26]=_k9VideoCodec("Windows Media 8","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -vcodec wmv2","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec wmv2 -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -croptop $CROPTOP -cropbottom $CROPBOTTOM -cropleft $CROPLEFT -cropright $CROPRIGHT -aspect $ASPECT -vcodec wmv2 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
++      m_codecs[21]=_k9VideoCodec("copy","","-codec:v copy","-codec:v copy","-codec:v copy","ffmpeg");
++      m_codecs[22]=_k9VideoCodec("x264","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -level 30","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -pass $PASS -passlogfile $PASSLOGFILE -level 30","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -pass $PASS -passlogfile $PASSLOGFILE -level 30","ffmpeg");
++      m_codecs[23]=_k9VideoCodec("x264 (high)","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -b-pyramid normal -weightb 1 -mixed-refs 1 -8x8dct 1 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -b-pyramid normal -weightb 1 -mixed-refs 1 -8x8dct 1 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4 -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v libx264 -level 30 -flags +loop+mv4 -cmp 256 -partitions +parti4x4+parti8x8+partp4x4+partp8x8+partb8x8 -me_method hex -subq 7 -trellis 1 -refs 5 -bf 3 -b-pyramid normal -weightb 1 -mixed-refs 1 -8x8dct 1 -coder 1 -me_range 16 -g 250 -keyint_min 25 -sc_threshold 40 -i_qfactor 0.71 -qmin 10 -qmax 51 -qdiff 4 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
++      m_codecs[24]=_k9VideoCodec("MPEG-4 ","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v mpeg4 ","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v mpeg4  -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v mpeg4 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
++      m_codecs[25]=_k9VideoCodec("Flash Video","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v flv ","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v flv -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v flv -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
++      m_codecs[26]=_k9VideoCodec("Windows Media 8","","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$CROPWIDTH:$CROPHEIGHT:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v wmv2","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v wmv2 -pass $PASS -passlogfile $PASSLOGFILE","-b $VIDBRk -s $WIDTHx$HEIGHT -vf crop=$WIDTH-$CROPRIGHT-$CROPLEFT:$HEIGHT-$CROPTOP-$CROPBOTTOM:$CROPLEFT:$CROPTOP -aspect $ASPECT -codec:v wmv2 -pass $PASS -passlogfile $PASSLOGFILE","ffmpeg");
+ 
+       save();
+ 
+diff -Nru k9copy-2.3.8-Source.orig/src/import/k9avidecode.cpp k9copy-2.3.8-Source/src/import/k9avidecode.cpp
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.cpp	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/src/import/k9avidecode.cpp	2012-11-23 10:12:56.000000000 +0100
+@@ -37,11 +37,13 @@
+         : QObject(parent) {
+     CodecHandle=0;
+     FormatHandle=0;
++    UtilHandle=0;
+     SwscaleHandle=0;
+     glibref=0;
+     if (glibref==0) {
+         CodecHandle=dlopen("libavcodec.so",RTLD_LAZY ); //| RTLD_GLOBAL
+         FormatHandle=dlopen("libavformat.so",RTLD_LAZY);
++        UtilHandle=dlopen("libavutil.so",RTLD_LAZY);
+ #ifdef HAVE_SWSCALE
+         SwscaleHandle=dlopen("libswscale.so",RTLD_LAZY);
+         if (SwscaleHandle==0)
+@@ -56,6 +58,12 @@
+     if (!FormatHandle ) {
+         errs << i18n("Cannot open the library %1").arg("libavformat");
+     }
++#   if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51, 33, 0)
++    if (!UtilHandle) {
++        m_error =i18n("Cannot open then library %1").arg("libavutil");
++        return;
++    }
++#   endif
+ #ifdef HAVE_SWSCALE
+     if (!SwscaleHandle) {
+         errs << i18n("Cannot open the library %1").arg("libswscale");
+@@ -63,17 +71,32 @@
+ #endif
+ 
+     av_register_all = (av_register_all_t)dlsym(FormatHandle,"av_register_all");
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++    avformat_open_input = (avformat_open_input_t)dlsym(FormatHandle,"avformat_open_input");
++#   else
+     av_open_input_file = (av_open_input_file_t)dlsym(FormatHandle,"av_open_input_file");
++#   endif
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++    avformat_find_stream_info = (avformat_find_stream_info_t)dlsym(FormatHandle,"avformat_find_stream_info");
++#   else
+     av_find_stream_info = (av_find_stream_info_t)dlsym(FormatHandle,"av_find_stream_info");
++#   endif
+     avcodec_find_decoder =(avcodec_find_decoder_t) dlsym(CodecHandle,"avcodec_find_decoder");
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++    avcodec_open2 = (avcodec_open2_t)dlsym(CodecHandle,"avcodec_open2");
++#   else
+     avcodec_open = (avcodec_open_t)dlsym(CodecHandle,"avcodec_open");
++#   endif
+     avcodec_alloc_frame = (avcodec_alloc_frame_t)dlsym(CodecHandle,"avcodec_alloc_frame");
+     avpicture_get_size = (avpicture_get_size_t)dlsym(CodecHandle,"avpicture_get_size");
+     av_malloc = (av_malloc_t)dlsym(CodecHandle,"av_malloc");
+     avpicture_fill = (avpicture_fill_t)dlsym(CodecHandle,"avpicture_fill");
+     av_read_frame = (av_read_frame_t)dlsym(FormatHandle,"av_read_frame");
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++    avcodec_decode_video2 = (avcodec_decode_video2_t)dlsym(CodecHandle,"avcodec_decode_video2");
++#   else
+     avcodec_decode_video = (avcodec_decode_video_t)dlsym(CodecHandle,"avcodec_decode_video");
+-    if (avcodec_decode_video==0) avcodec_decode_video=(avcodec_decode_video_t)dlsym(CodecHandle,"avcodec_decode_video2");
++#   endif
+ #ifndef HAVE_SWSCALE
+     img_convert = (img_convert_t)dlsym(CodecHandle,"img_convert");
+ //if img_convert is null (deprecated in ffmpeg), we need libswscale
+@@ -85,7 +108,11 @@
+     if (av_free_packet==0)
+          av_free_packet=av_free_packet_internal;
+     avcodec_close = (avcodec_close_t)dlsym(FormatHandle,"avcodec_close");
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++    avformat_close_input = (avformat_close_input_t)dlsym(FormatHandle,"avformat_close_input");
++#   else
+     av_close_input_file = (av_close_input_file_t)dlsym(FormatHandle,"av_close_input_file");
++#   endif
+     av_seek_frame=(av_seek_frame_t)dlsym(FormatHandle,"av_seek_frame");
+     av_rescale_q=(av_rescale_q_t)dlsym(FormatHandle,"av_rescale_q");
+     avcodec_flush_buffers=(avcodec_flush_buffers_t)dlsym(CodecHandle,"avcodec_flush_buffers");
+@@ -94,7 +121,11 @@
+     sws_getContext=(sws_getContext_t)dlsym(SwscaleHandle,"sws_getContext");
+     sws_scale= (sws_scale_t)dlsym(SwscaleHandle,"sws_scale");
+ #endif
++#   if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51, 33, 0)
++    av_gettime=(av_gettime_t)dlsym(UtilHandle,"av_gettime");
++#   else
+     av_gettime=(av_gettime_t)dlsym(FormatHandle,"av_gettime");
++#   endif
+     
+     if (errs.count() >0) {
+         m_error=errs.join("\n");
+@@ -118,6 +149,8 @@
+         	dlclose(FormatHandle);
+ 	if (CodecHandle)
+         	dlclose(CodecHandle);
++    if(UtilHandle)
++            dlclose(UtilHandle);
+ #ifdef HAVE_SWSCALE
+ 	if (SwscaleHandle)
+         	dlclose(CodecHandle);
+@@ -134,12 +167,24 @@
+         close();
+ 
+     // Open video file
+-    if (av_open_input_file(&m_FormatCtx, _fileName.toUtf8(), NULL, 0, NULL)!=0) {
++    if (
++#       if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++        avformat_open_input(&m_FormatCtx, _fileName.toUtf8(), 0, 0)!=0
++#       else
++        av_open_input_file(&m_FormatCtx, _fileName.toUtf8(), NULL, 0, NULL)!=0
++#       endif
++       ) {
+         m_error=i18n("Couldn't open the file %1").arg(_fileName);
+         return false; // Couldn't open file}
+     }
+ // Retrieve stream information
+-    if (av_find_stream_info(m_FormatCtx)<0) {
++    if (
++#       if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++        avformat_find_stream_info(m_FormatCtx, NULL)<0
++#       else
++        av_find_stream_info(m_FormatCtx)<0
++#       endif
++       ) {
+         m_error =i18n("Couldn't find stream information");
+         return false; // Couldn't find stream information
+     }
+@@ -168,7 +213,13 @@
+         return false; // Codec not found
+     }
+ // Open codec
+-    if (avcodec_open(m_CodecCtx, m_Codec)<0) {
++    if (
++#       if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++        avcodec_open2(m_CodecCtx, m_Codec, NULL)<0
++#       else
++        avcodec_open(m_CodecCtx, m_Codec)<0
++#       endif
++       ) {
+         m_error =i18n("Could'nt open the codec");
+         return false; // Could not open codec
+     }
+@@ -245,15 +296,23 @@
+         // Is this a packet from the video stream?
+         if (packet.stream_index==m_videoStream) {
+             // Decode video frame
++#           if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++            avcodec_decode_video2(m_CodecCtx, m_Frame, &frameFinished, &packet);
++#           else
+             avcodec_decode_video(m_CodecCtx, m_Frame, &frameFinished,
+                                  packet.data, packet.size);
++#           endif
+ 
+             // Did we get a video frame?
+             if (frameFinished) {
+ //            if (m_Frame->pts >=fspos)
+ 		int64_t cur_dts=fspos;
+-		if (m_FormatCtx->cur_st)
+-		    cur_dts=	m_FormatCtx->cur_st->cur_dts;
++#               if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(54, 2, 0)
++		cur_dts=	packet.dts;
++#               else
++ 		if (m_FormatCtx->cur_st)
++ 		    cur_dts=	m_FormatCtx->cur_st->cur_dts;
++#               endif
+                 if (cur_dts >=fspos) {
+                     bFound=true;
+ #ifndef HAVE_SWSCALE
+@@ -309,7 +368,11 @@
+         avcodec_close(m_CodecCtx);
+ 
+         // Close the video file
++#       if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++        avformat_close_input(&m_FormatCtx);
++#       else
+         av_close_input_file(m_FormatCtx);
++#       endif
+         m_opened=false;
+     }
+ }
+diff -Nru k9copy-2.3.8-Source.orig/src/import/k9avidecode.h k9copy-2.3.8-Source/src/import/k9avidecode.h
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.h	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/src/import/k9avidecode.h	2012-11-23 10:12:56.000000000 +0100
+@@ -15,6 +15,7 @@
+ #include "k9common.h"
+ #include <qobject.h>
+ #include <avformat.h>
++#include <avutil.h>
+ #include <qimage.h>
+ #include <cstdlib>
+ #include <QObject>
+@@ -29,10 +30,22 @@
+ //typedef dvd_file_t * (*DVDOpenFile_t) ( dvd_reader_t *, int, dvd_read_domain_t );
+ typedef void (*av_register_all_t) (void);
+ typedef int64_t (*av_gettime_t) (void);
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++typedef int (*avformat_open_input_t)(AVFormatContext **, const char *, AVInputFormat *, AVDictionary **);
++#else
+ typedef int (*av_open_input_file_t)(AVFormatContext **, const char *,AVInputFormat *,int, AVFormatParameters *);
++#endif
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++typedef int (*avformat_find_stream_info_t)(AVFormatContext *, AVDictionary **);
++#else
+ typedef int (*av_find_stream_info_t)(AVFormatContext *);
++#endif
+ typedef AVCodec* (*avcodec_find_decoder_t)(enum CodecID);
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++typedef int (*avcodec_open2_t)(AVCodecContext *, AVCodec *, AVDictionary **);
++#else
+ typedef int (*avcodec_open_t)(AVCodecContext *, AVCodec *);
++#endif
+ typedef AVFrame * (*avcodec_alloc_frame_t)(void);
+ 
+ typedef int (*avpicture_get_size_t)(int , int , int );
+@@ -40,11 +53,19 @@
+ typedef int (*avpicture_fill_t)(AVPicture *, uint8_t *,int , int , int);
+ typedef int (*av_read_frame_t)(AVFormatContext *, AVPacket *);
+ 
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++typedef int (*avcodec_decode_video2_t)(AVCodecContext *, AVFrame *, int *, AVPacket *);
++#else
+ typedef int (*avcodec_decode_video_t)(AVCodecContext *, AVFrame *,int *, uint8_t *, int );
++#endif
+ typedef int (*img_convert_t)(AVPicture *, int , const AVPicture *, int ,int, int);
+ typedef void (*av_free_t)(void *);
+ typedef int (*avcodec_close_t)(AVCodecContext *);
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++typedef void (*avformat_close_input_t)(AVFormatContext **);
++#else
+ typedef void (*av_close_input_file_t)(AVFormatContext *);
++#endif
+ typedef int (*av_seek_frame_t)(AVFormatContext *,int,int64_t timestamp,int flags); 		typedef int64_t (*av_rescale_q_t)(int64_t , AVRational , AVRational )	;
+ typedef void (*avcodec_flush_buffers_t)(AVCodecContext *);
+ typedef void (*av_free_packet_t)(AVPacket *);
+@@ -77,21 +98,41 @@
+ 	
+ private:
+     av_register_all_t av_register_all;
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++    avformat_open_input_t avformat_open_input;
++#   else
+     av_open_input_file_t av_open_input_file;
++#   endif
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++    avformat_find_stream_info_t avformat_find_stream_info;
++#   else
+     av_find_stream_info_t av_find_stream_info;
++#   endif
+     avcodec_find_decoder_t avcodec_find_decoder;
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++    avcodec_open2_t avcodec_open2;
++#   else
+     avcodec_open_t avcodec_open;
++#   endif
+     avcodec_alloc_frame_t avcodec_alloc_frame;
+     av_seek_frame_t av_seek_frame;
+     avpicture_get_size_t avpicture_get_size;
+     av_malloc_t av_malloc;
+     avpicture_fill_t avpicture_fill;
+     av_read_frame_t av_read_frame;
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++    avcodec_decode_video2_t avcodec_decode_video2;
++#   else
+     avcodec_decode_video_t avcodec_decode_video;
++#   endif
+     img_convert_t img_convert;
+     av_free_t av_free;
+     avcodec_close_t avcodec_close;
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++    avformat_close_input_t avformat_close_input;
++#   else
+     av_close_input_file_t av_close_input_file;
++#   endif
+     av_rescale_q_t av_rescale_q;
+     av_gettime_t av_gettime;
+     avcodec_flush_buffers_t avcodec_flush_buffers;
+@@ -103,6 +144,7 @@
+ #endif
+     void *CodecHandle;
+     void *FormatHandle;
++    void *UtilHandle;
+     void *SwscaleHandle;
+     int glibref;
+ 
+diff -Nru k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.cpp k9copy-2.3.8-Source/src/vamps/k9ffmpeg.cpp
+--- k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.cpp	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/src/vamps/k9ffmpeg.cpp	2012-11-23 10:12:56.000000000 +0100
+@@ -50,20 +50,40 @@
+     avcodec_init =(avcodec_init_t)dlsym(CodecHandle,"avcodec_init");
+     av_register_all = (av_register_all_t)dlsym(FormatHandle,"av_register_all");
+     avcodec_alloc_context=(avcodec_alloc_context_t)dlsym(CodecHandle,"avcodec_alloc_context");
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++    avformat_open_input = (avformat_open_input_t)dlsym(FormatHandle,"avformat_open_input");
++#   else
+     av_open_input_file = (av_open_input_file_t)dlsym(FormatHandle,"av_open_input_file");
++#   endif
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++    avformat_find_stream_info = (avformat_find_stream_info_t)dlsym(FormatHandle,"avformat_find_stream_info");
++#   else
+     av_find_stream_info = (av_find_stream_info_t)dlsym(FormatHandle,"av_find_stream_info");
++#   endif
+     avcodec_find_decoder =(avcodec_find_decoder_t) dlsym(CodecHandle,"avcodec_find_decoder");
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++    avcodec_open2 = (avcodec_open2_t)dlsym(CodecHandle,"avcodec_open2");
++#   else
+     avcodec_open = (avcodec_open_t)dlsym(CodecHandle,"avcodec_open");
++#   endif
+     avcodec_alloc_frame = (avcodec_alloc_frame_t)dlsym(CodecHandle,"avcodec_alloc_frame");
+     avpicture_get_size = (avpicture_get_size_t)dlsym(CodecHandle,"avpicture_get_size");
+     av_malloc = (av_malloc_t)dlsym(CodecHandle,"av_malloc");
+     avpicture_fill = (avpicture_fill_t)dlsym(CodecHandle,"avpicture_fill");
+     av_read_frame = (av_read_frame_t)dlsym(FormatHandle,"av_read_frame");
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++    avcodec_decode_video2 = (avcodec_decode_video2_t)dlsym(CodecHandle,"avcodec_decode_video2");
++#   else
+     avcodec_decode_video = (avcodec_decode_video_t)dlsym(CodecHandle,"avcodec_decode_video");
++#   endif
+     img_convert = (img_convert_t)dlsym(CodecHandle,"img_convert");
+     av_free = (av_free_t)dlsym(CodecHandle,"av_free");
+     avcodec_close = (avcodec_close_t)dlsym(FormatHandle,"avcodec_close");
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++    avformat_close_input = (avformat_close_input_t)dlsym(FormatHandle,"avformat_close_input");
++#   else
+     av_close_input_file = (av_close_input_file_t)dlsym(FormatHandle,"av_close_input_file");
++#   endif
+     av_seek_frame=(av_seek_frame_t)dlsym(FormatHandle,"av_seek_frame");
+     av_rescale_q=(av_rescale_q_t)dlsym(FormatHandle,"av_rescale_q");
+     avcodec_flush_buffers=(avcodec_flush_buffers_t)dlsym(CodecHandle,"avcodec_flush_buffers");
+@@ -73,7 +93,11 @@
+     sws_scale= (sws_scale_t)dlsym(SwscaleHandle,"sws_scale");
+ #endif
+ 
++#   if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(51, 33, 0)
++    av_gettime=(av_gettime_t)dlsym(UtilHandle,"av_gettime");
++#   else
+     av_gettime=(av_gettime_t)dlsym(FormatHandle,"av_gettime");
++#   endif
+     url_fopen=(url_fopen_t)dlsym(FormatHandle,"url_fopen");
+ 
+     audio_resample_init=(audio_resample_init_t)dlsym(CodecHandle,"audio_resample_init");
+@@ -110,4 +134,4 @@
+ k9FFMpeg *k9FFMpeg::instance() {
+    return &_FFMpegInstance;
+ 
+-}
+\ No newline at end of file
++}
+diff -Nru k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.h k9copy-2.3.8-Source/src/vamps/k9ffmpeg.h
+--- k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.h	2011-12-09 22:08:41.000000000 +0100
++++ k9copy-2.3.8-Source/src/vamps/k9ffmpeg.h	2012-11-23 10:13:39.000000000 +0100
+@@ -15,6 +15,7 @@
+ #include <QString>
+ #include <avcodec.h>
+ #include <avformat.h>
++#include <avutil.h>
+ #include <avio.h>
+ #ifdef HAVE_SWSCALE
+ #include <swscale.h>
+@@ -28,10 +29,22 @@
+ typedef void (*av_register_all_t) (void);
+ typedef void (*avcodec_init_t)(void);
+ typedef int64_t (*av_gettime_t) (void);
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++typedef int (*avformat_open_input_t)(AVFormatContext **, const char *, AVInputFormat *, AVDictionary **);
++#else
+ typedef int (*av_open_input_file_t)(AVFormatContext **, const char *,AVInputFormat *,int, AVFormatParameters *);
++#endif
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++typedef int (*avformat_find_stream_info_t)(AVFormatContext *, AVDictionary **);
++#else
+ typedef int (*av_find_stream_info_t)(AVFormatContext *);
++#endif
+ typedef AVCodec* (*avcodec_find_decoder_t)(enum CodecID);
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++typedef int (*avcodec_open2_t)(AVCodecContext *, AVCodec *, AVDictionary **);
++#else
+ typedef int (*avcodec_open_t)(AVCodecContext *, AVCodec *);
++#endif
+ typedef AVFrame * (*avcodec_alloc_frame_t)(void);
+ typedef AVCodecContext * (*avcodec_alloc_context_t)(void);
+ 
+@@ -40,13 +53,21 @@
+ typedef int (*avpicture_fill_t)(AVPicture *, uint8_t *,int , int , int);
+ typedef int (*av_read_frame_t)(AVFormatContext *, AVPacket *);
+ 
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++typedef int (*avcodec_decode_video2_t)(AVCodecContext *, AVFrame *, int *, AVPacket *);
++#else
+ typedef int (*avcodec_decode_video_t)(AVCodecContext *, AVFrame *,int *, uint8_t *, int );
++#endif
+ typedef int (*avcodec_encode_audio_t)(AVCodecContext *avctx, uint8_t *buf, int buf_size, const short *samples);
+ 
+ typedef int (*img_convert_t)(AVPicture *, int , const AVPicture *, int ,int, int);
+ typedef void (*av_free_t)(void *);
+ typedef int (*avcodec_close_t)(AVCodecContext *);
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++typedef void (*avformat_close_input_t)(AVFormatContext **);
++#else
+ typedef void (*av_close_input_file_t)(AVFormatContext *);
++#endif
+ typedef int (*av_seek_frame_t)(AVFormatContext *,int,int64_t timestamp,int flags); 		
+ typedef int64_t (*av_rescale_q_t)(int64_t , AVRational , AVRational )	;
+ typedef void (*avcodec_flush_buffers_t)(AVCodecContext *);
+@@ -89,21 +110,41 @@
+     avcodec_init_t avcodec_init;
+     avcodec_alloc_context_t avcodec_alloc_context;
+     av_register_all_t av_register_all;
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 2, 0)
++    avformat_open_input_t avformat_open_input;
++#   else
+     av_open_input_file_t av_open_input_file;
++#   endif
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 6, 0)
++    avformat_find_stream_info_t avformat_find_stream_info;
++#   else
+     av_find_stream_info_t av_find_stream_info;
++#   endif
+     avcodec_find_decoder_t avcodec_find_decoder;
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
++    avcodec_open2_t avcodec_open2;
++#   else
+     avcodec_open_t avcodec_open;
++#   endif
+     avcodec_alloc_frame_t avcodec_alloc_frame;
+     av_seek_frame_t av_seek_frame;
+     avpicture_get_size_t avpicture_get_size;
+     av_malloc_t av_malloc;
+     avpicture_fill_t avpicture_fill;
+     av_read_frame_t av_read_frame;
++#   if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52, 23, 0)
++    avcodec_decode_video2_t avcodec_decode_video2;
++#   else
+     avcodec_decode_video_t avcodec_decode_video;
++#   endif
+     img_convert_t img_convert;
+     av_free_t av_free;
+     avcodec_close_t avcodec_close;
++#   if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53, 17, 0)
++    avformat_close_input_t avformat_close_input;
++#   else
+     av_close_input_file_t av_close_input_file;
++#   endif
+     av_rescale_q_t av_rescale_q;
+     av_gettime_t av_gettime;
+     avcodec_flush_buffers_t avcodec_flush_buffers;

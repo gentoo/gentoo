@@ -1,0 +1,26 @@
+diff --exclude='*~' -Naur -Naur jhead-2.90.orig/jhead.c jhead-2.90/jhead.c
+--- jhead-2.90.orig/jhead.c	2011-02-12 14:36:47.000000000 -0200
++++ jhead-2.90/jhead.c	2011-02-12 14:39:28.000000000 -0200
+@@ -358,7 +358,7 @@
+     // as mktemp - that is, that between getting the random name, and making the file
+     // some other program could snatch that exact same name!
+     // also, not all pltforms support mkstemp.
+-    mktemp(TempName);
++    mkstemp(TempName);
+ 
+ 
+     if(!TempName[0]) {
+diff --exclude='*~' -Naur -Naur jhead-2.90.orig/makefile jhead-2.90/makefile
+--- jhead-2.90.orig/makefile	2011-02-12 14:36:47.000000000 -0200
++++ jhead-2.90/makefile	2011-02-12 14:40:50.000000000 -0200
+@@ -13,8 +13,9 @@
+ $(OBJ)/%.o:$(SRC)/%.c
+ 	${CC} $(CFLAGS) -c $< -o $@
+ 
++
+ jhead: $(objs) jhead.h
+-	${CC} -o jhead $(objs) -lm
++	${CC} ${LDFLAGS} -o jhead $(objs) -lm
+ 
+ clean:
+ 	rm -f $(objs) jhead

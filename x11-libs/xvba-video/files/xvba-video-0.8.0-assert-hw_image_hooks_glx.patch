@@ -1,0 +1,12 @@
+diff -ur xvba-video-0.8.0/src/xvba_image.c xvba-video-0.8.0-patched/src/xvba_image.c
+--- xvba-video-0.8.0/src/xvba_image.c	2011-06-14 13:07:13.000000000 +0200
++++ xvba-video-0.8.0-patched/src/xvba_image.c	2012-07-22 14:55:14.186667413 +0200
+@@ -423,7 +423,7 @@
+ }
+ 
+ #if USE_GLX
+-const HWImageHooks hw_image_hooks_glx attribute_hidden;
++extern const HWImageHooks hw_image_hooks_glx attribute_hidden;
+ #endif
+ 
+ // Commit image to the HW

@@ -1,0 +1,30 @@
+From 29ade4d78b7609877659aa5938b3fba2954ce415 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Sun, 16 Dec 2012 20:02:48 +0100
+Subject: [PATCH 3/5] gentoo.conf: let udevdir= be handled by pkg-config and
+ use udevaltdirs
+
+To avoid need of rebuild after udev update/downgrade let udevdir= be set
+dynamically with pkg-config.  Use udevaltdirs to search for rules both
+in old and new locations.
+---
+ dracut.conf.d/gentoo.conf.example | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/dracut.conf.d/gentoo.conf.example b/dracut.conf.d/gentoo.conf.example
+index 26e7314..f9617f0 100644
+--- a/dracut.conf.d/gentoo.conf.example
++++ b/dracut.conf.d/gentoo.conf.example
+@@ -1,7 +1,8 @@
+ # /etc/dracut.conf.d/gentoo.conf
+ # dracut config file customized for Gentoo Base System release 2
+ 
+-udevdir=/lib/udev
++udevdir=
++udevaltdirs="/lib/udev /usr/lib/udev"
+ ro_mnt=yes
+ 
+ #
+-- 
+1.8.3.2
+

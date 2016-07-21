@@ -1,0 +1,34 @@
+From 6a9ec8e68191a3ff9ad21a34814e71f6baf6f5ce Mon Sep 17 00:00:00 2001
+Message-Id: <6a9ec8e68191a3ff9ad21a34814e71f6baf6f5ce.1323853619.git.jlec@gentoo.org>
+From: Justin Lecher <jlec@gentoo.org>
+Date: Wed, 14 Dec 2011 10:06:51 +0100
+Subject: [PATCH] 3.1.1-test.patch
+
+---
+ Makefile |   10 ----------
+ 1 files changed, 0 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8de706b..73ae0da 100644
+--- a/Makefile
++++ b/Makefile
+@@ -339,16 +339,6 @@ tests:		$(LIB) $(BIN) $(BIN)/CPPMain $(BIN)/CPPMain_Flip $(BIN)/CPPNearTreeTest
+ 			$(TIME) $(BIN)/CPPNearTreeTestInstNoFlip
+ 			$(TIME) $(BIN)/CNearTreeTest --debug
+ 			$(TIME) $(BIN)/CNearTreeTestInst --debug
+-ifneq ($(MSYSTEM),MINGW32)
+-			diff -b -c $(TESTDATA)/CPPMain_orig.lst $(TESTDATA)/CPPMain.lst
+-			diff -b -c $(TESTDATA)/CPPMain_orig.lst $(TESTDATA)/CPPMain_Flip.lst
+-			diff -b -c $(TESTDATA)/CMain_orig.lst $(TESTDATA)/CMain.lst
+-else
+-			diff -b -c $(TESTDATA)/CPPMain_MINGW_orig.lst $(TESTDATA)/CPPMain.lst
+-			diff -b -c $(TESTDATA)/CPPMain_MINGW_orig.lst $(TESTDATA)/CPPMain_Flip.lst
+-			diff -b -c $(TESTDATA)/CMain_MINGW_orig.lst $(TESTDATA)/CMain.lst
+-endif
+-			
+ #
+ # Remove all non-source files
+ #
+-- 
+1.7.8
+

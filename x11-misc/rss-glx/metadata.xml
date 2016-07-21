@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>desktop-misc@gentoo.org</email>
+		<name>Gentoo Desktop Miscellaneous Project</name>
+	</maintainer>
+	<use>
+		<flag name="quesoglc">Enable support for OpenGL Character Renderer</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">rss-glx</remote-id>
+	</upstream>
+</pkgmetadata>

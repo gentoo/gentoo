@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The www-client category contains world wide web clients.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie www-client enthält verschiedene Clientprogramme für
+		das WWW wie z.B. Browser, Download-Utilities und RSS-Aggregatoren.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría www-client contiene clientes del world wide web (WWW).
+	</longdescription>
+	<longdescription lang="ja">
+		www-clientカテゴリーには様々なワールド・ワイド・ウェブの
+		クライアントが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De www-client categorie bevat verschillende client voor het WWW zoals
+		browsers, download-hulpmiddelen en RSS-aggregators.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm www-client chứa các client duyệt web.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria www-client contiene client per il world wide web (WWW) come browsers, utilità per il download e RSS aggregators.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria www-client contém clientes de world wide web (WWW).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria www-client zawiera przeglądarki internetowe.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,40 @@
+
+Compiler warning fixes.
+
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c.fixes
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c
+@@ -677,7 +677,8 @@ end:
+ static krb5_error_code
+ verify_krb5_user(request_rec *r, krb5_context context, krb5_principal principal,
+       		 const char *password, krb5_principal server,
+-		 krb5_keytab keytab, int krb_verify_kdc, char *krb_service_name, krb5_ccache *ccache)
++		 krb5_keytab keytab, int krb_verify_kdc, 
++                 const char *krb_service_name, krb5_ccache *ccache)
+ {
+    krb5_creds creds;
+    krb5_get_init_creds_opt options;
+@@ -1280,6 +1281,7 @@ get_gss_creds(request_rec *r,
+    return 0;
+ }
+ 
++#ifndef GSSAPI_SUPPORTS_SPNEGO
+ static int
+ cmp_gss_type(gss_buffer_t token, gss_OID oid)
+ {
+@@ -1306,6 +1308,7 @@ cmp_gss_type(gss_buffer_t token, gss_OID
+ 
+    return memcmp(p, oid->elements, oid->length);
+ }
++#endif
+ 
+ static int
+ authenticate_user_gss(request_rec *r, kerb_auth_config *conf,
+@@ -1722,7 +1725,7 @@ kerb_authenticate_user(request_rec *r)
+    return ret;
+ }
+ 
+-int
++static int
+ have_rcache_type(const char *type)
+ {
+    krb5_error_code ret;

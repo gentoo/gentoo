@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+		Policycoreutils contains the policy core utilities that are required
+		for basic operation of a SELinux system.  These utilities include
+		load_policy to load policies, setfiles to label filesystems, newrole
+		to switch roles, and run_init to run /etc/init.d scripts in the proper
+		context.
+
+		Gentoo-specific tools include rlpkg for relabeling packages by name,
+		avc_toggle to toggle between enforcing and permissive modes, and
+		avc_enforcing to query the current mode of the system, enforcing or
+		permissive.
+	</longdescription>
+	<use>
+		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg> and use the audit_* functions (like audit_getuid instead of getuid())</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:redhat:policycoreutils</remote-id>
+		<remote-id type="github">SELinuxProject/selinux</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-Deep</remote-id>
+    <remote-id type="cpan-module">Test::Deep</remote-id>
+    <remote-id type="cpan-module">Test::Deep::All</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Any</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Array</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ArrayEach</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ArrayElementsOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ArrayLength</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ArrayLengthOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Blessed</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Boolean</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Cache</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Cache::Simple</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Class</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Cmp</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Code</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Hash</remote-id>
+    <remote-id type="cpan-module">Test::Deep::HashEach</remote-id>
+    <remote-id type="cpan-module">Test::Deep::HashElements</remote-id>
+    <remote-id type="cpan-module">Test::Deep::HashKeys</remote-id>
+    <remote-id type="cpan-module">Test::Deep::HashKeysOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Ignore</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Isa</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ListMethods</remote-id>
+    <remote-id type="cpan-module">Test::Deep::MM</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Methods</remote-id>
+    <remote-id type="cpan-module">Test::Deep::NoTest</remote-id>
+    <remote-id type="cpan-module">Test::Deep::None</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Number</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Obj</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Ref</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RefType</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Regexp</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpMatches</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpRef</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpRefOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpVersion</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ScalarRef</remote-id>
+    <remote-id type="cpan-module">Test::Deep::ScalarRefOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Set</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Shallow</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Stack</remote-id>
+    <remote-id type="cpan-module">Test::Deep::String</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SubHash</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SubHashElements</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SubHashKeys</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SubHashKeysOnly</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SuperHash</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SuperHashElements</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SuperHashKeys</remote-id>
+    <remote-id type="cpan-module">Test::Deep::SuperHashKeysOnly</remote-id>
+  </upstream>
+</pkgmetadata>

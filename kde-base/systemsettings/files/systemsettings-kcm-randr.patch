@@ -1,0 +1,20 @@
+Adds option to disable the randr KCM (to use KScreen instead) wrt bug #524266.
+
+Source: http://pkgs.fedoraproject.org/cgit/kde-workspace.git/plain/kde-workspace-4.10.2-BUILD_KCM_RANDR.patch
+
+diff -up kde-workspace-4.10.2/kcontrol/CMakeLists.txt.BUILD_KCM_RANDR kde-workspace-4.10.2/kcontrol/CMakeLists.txt
+--- kde-workspace-4.10.2/kcontrol/CMakeLists.txt.BUILD_KCM_RANDR	2013-03-01 00:32:25.040847159 -0600
++++ kde-workspace-4.10.2/kcontrol/CMakeLists.txt	2013-04-18 08:58:31.086753204 -0500
+@@ -6,9 +6,10 @@ macro_log_feature(FREETYPE_FOUND "FreeTy
+ set(libkxftconfig_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/fonts/kxftconfig.cpp )
+ 
+ 
+-if( X11_Xrandr_FOUND )
++OPTION(BUILD_KCM_RANDR "Build kcontrol/randr module" ON)
++if(BUILD_KCM_RANDR AND X11_Xrandr_FOUND)
+    add_subdirectory( randr )
+-endif(X11_Xrandr_FOUND )
++endif(BUILD_KCM_RANDR AND X11_Xrandr_FOUND)
+ 
+ if(X11_Xkb_FOUND)
+     add_subdirectory( keyboard )

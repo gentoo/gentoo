@@ -1,0 +1,49 @@
+diff -ru raspberrypi-mkimage-0_p20120201.orig/imagetool-uncompressed.py raspberrypi-mkimage-0_p20120201/imagetool-uncompressed.py
+--- raspberrypi-mkimage-0_p20120201.orig/imagetool-uncompressed.py	2013-07-19 15:11:23.373837900 +0200
++++ raspberrypi-mkimage-0_p20120201/imagetool-uncompressed.py	2013-07-19 15:31:56.495421758 +0200
+@@ -3,15 +3,23 @@
+ import os
+ import re
+ import sys
++import argparse
+ 
+-try:
+-   kernel_image = sys.argv[1]
+-except:
+-   kernel_image = ""
+-
+-if kernel_image == "":
+-  print("usage : imagetool-uncompressed.py <kernel image>");
+-  sys.exit(0)
++parser = argparse.ArgumentParser(description='Prepare kernel files for Raspberry Pi bootloader')
++parser.add_argument('--force', '-f', action='store_true', default=False,
++  help='overwrite target file')
++parser.add_argument('kernel',
++  help='kernel file from /usr/src/linux*/arch/arm/boot/Image')
++parser.add_argument('bootimage',
++  help='file to be placed in /boot/kernel.img')
++args = parser.parse_args()
++if os.path.exists(args.bootimage) and not args.force:
++  print('Target file exists, use --force to override')
++  sys.exit(1)
++
++f = open(args.kernel, 'rb')
++kernel_image = f.read()
++f.close()
+    
+ re_line = re.compile(r"0x(?P<value>[0-9a-f]{8})")
+ 
+@@ -35,11 +43,10 @@
+ load_to_mem("boot-uncompressed.txt", 0x00000000)
+ load_to_mem("args-uncompressed.txt", 0x00000100)
+ 
+-f = open("first32k.bin", "wb")
++f = open(args.bootimage, "wb")
+ 
+ for m in mem:
+    f.write(chr(m))
+ 
++f.write(kernel_image)
+ f.close()
+-
+-os.system("cat first32k.bin " + kernel_image + " > kernel.img")

@@ -1,0 +1,15 @@
+--- /root/configure	2015-03-09 16:39:03.921516152 +0800
++++ src/configure	2015-03-09 16:39:08.455516081 +0800
+@@ -2133,12 +2133,6 @@
+ 
+ ac_config_headers="$ac_config_headers config.h"
+ 
+-
+- if [ -f configure ]; then
+-	as_fn_error $? "Please run configure from the build directory (try ../AppRun --compile)" "$LINENO" 5
+-	exit 1
+-fi
+-
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'

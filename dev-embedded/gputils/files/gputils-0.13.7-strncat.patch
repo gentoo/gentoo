@@ -1,0 +1,94 @@
+https://sourceforge.net/tracker/?func=detail&aid=3081197&group_id=41924&atid=431665
+https://sourceforge.net/tracker/?func=detail&aid=3081206&group_id=41924&atid=431665
+
+--- a/gpasm/scan.c
++++ b/gpasm/scan.c
+@@ -461,9 +461,7 @@ search_pathes(struct source_context *new, char *name)
+   int i;
+ 
+   for(i = 0; i < state.path_num; i++) {
+-    strncpy(tryname, state.paths[i], sizeof(tryname));
+-    strncat(tryname, COPY_CHAR, sizeof(tryname));
+-    strncat(tryname, name, sizeof(tryname));
++    snprintf(tryname, sizeof(tryname), "%s%s%s", state.paths[i], COPY_CHAR, name);
+     new->f = fopen(tryname, "rt");
+     if(new->f) {
+       new->name = strdup(tryname);
+--- a/gplink/gplink.c
++++ b/gplink/gplink.c
+@@ -340,9 +340,7 @@ void gplink_open_coff(char *name)
+     int i;
+ 
+     for(i = 0; i < state.numpaths; i++) {
+-      strncpy(file_name, state.paths[i], sizeof(file_name));
+-      strncat(file_name, COPY_CHAR, sizeof(file_name));
+-      strncat(file_name, name, sizeof(file_name));
++      snprintf(file_name, sizeof(file_name), "%s%s%s", state.paths[i], COPY_CHAR, name);
+       coff = fopen(file_name, "rb");
+       if (coff != NULL) {
+         break;
+@@ -695,9 +693,7 @@ linker(void)
+       gp_error("linker script not specified and can't determine default script");
+       return EXIT_FAILURE; 
+     }
+-    strncpy(file_name, gp_lkr_path, sizeof(file_name));
+-    strncat(file_name, COPY_CHAR, sizeof(file_name));
+-    strncat(file_name, script_name, sizeof(file_name));
++    snprintf(file_name, sizeof(file_name), "%s%s%s", gp_lkr_path, COPY_CHAR, script_name);
+     gp_message("using default linker script \"%s\"", file_name);
+     open_src(file_name, 0);
+     yyparse();
+--- a/gplink/scan.c
++++ b/gplink/scan.c
+@@ -115,9 +115,7 @@ void open_src(char *name, int isinclude)
+     int i;
+ 
+     for(i = 0; i < state.numpaths; i++) {
+-      strncpy(tryname, state.paths[i], sizeof(tryname));
+-      strncat(tryname, COPY_CHAR, sizeof(tryname));
+-      strncat(tryname, name, sizeof(tryname));
++      snprintf(tryname, sizeof(tryname), "%s%s%s", state.paths[i], COPY_CHAR, name);
+       new->f = fopen(tryname, "rt");
+       if(new->f) {
+         new->name = strdup(tryname);
+--- a/gpasm/lst.c
++++ b/gpasm/lst.c
+@@ -149,22 +149,23 @@ void lst_memory_map(MemBlock *m)
+       }
+ 
+       if(row_used) {
+-        snprintf(buf, sizeof(buf), "%08x :", (i + base) << _16bit_core);
++        int len = sizeof(buf);
++        len -= snprintf(buf, len, "%08x :", (i + base) << _16bit_core);
+ 	for (j = 0; j < num_per_line; j++) {
+           if ((j % num_per_block) == 0) {
+-	    strncat(buf, " ", sizeof(buf));
++	    strncat(buf, " ", len--);
+           }
+           if (m->memory[i + j] & MEM_USED_MASK) {
+-	    strncat(buf, "X", sizeof(buf));
++	    strncat(buf, "X", len--);
+ 	    if (_16bit_core) {
+ 	      /* each word has two bytes */
+-	      strncat(buf, "X", sizeof(buf));
++	      strncat(buf, "X", len--);
+ 	    }
+           } else {
+-	    strncat(buf, "-", sizeof(buf));
++	    strncat(buf, "-", len--);
+ 	    if (_16bit_core) {
+ 	      /* each word has two bytes */
+-	      strncat(buf, "-", sizeof(buf));
++	      strncat(buf, "-", len--);
+ 	    }
+           }
+         }
+@@ -404,7 +405,7 @@ void lst_format_line(char *src_line, int value)
+   } else {		  
+     snprintf(buf, sizeof(buf), "    M ");
+   }
+-  strncat(m, buf, sizeof(m));
++  strncat(m, buf, sizeof(m) - strlen(m));
+ 
+   /* Now copy 'l' to 'e', expanding tabs as required */
+   {

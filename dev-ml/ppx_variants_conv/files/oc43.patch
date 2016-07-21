@@ -1,0 +1,87 @@
+diff -uNr ppx_variants_conv-113.33.00/_oasis ppx_variants_conv-113.33.00+4.03/_oasis
+--- ppx_variants_conv-113.33.00/_oasis	2016-03-09 16:44:55.000000000 +0100
++++ ppx_variants_conv-113.33.00+4.03/_oasis	2016-03-22 15:13:51.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_variants_conv
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         Generation of accessor and iteration functions for ocaml variant types
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_variants_conv-113.33.00/opam ppx_variants_conv-113.33.00+4.03/opam
+--- ppx_variants_conv-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_variants_conv-113.33.00+4.03/opam	2016-03-22 17:51:38.000000000 +0100
+@@ -18,4 +18,4 @@
+   "ppx_type_conv"
+   "variantslib"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_variants_conv-113.33.00/src/ppx_variants_conv.ml ppx_variants_conv-113.33.00+4.03/src/ppx_variants_conv.ml
+--- ppx_variants_conv-113.33.00/src/ppx_variants_conv.ml	2016-03-09 16:44:55.000000000 +0100
++++ ppx_variants_conv-113.33.00+4.03/src/ppx_variants_conv.ml	2016-03-22 15:13:51.000000000 +0100
+@@ -34,7 +34,7 @@
+ 
+   let lambda_sig loc arg_tys body_ty =
+     List.fold_right arg_tys ~init:body_ty ~f:(fun arg_ty acc ->
+-      ptyp_arrow ~loc "" arg_ty acc)
++      ptyp_arrow ~loc Nolabel arg_ty acc)
+   ;;
+ 
+   let lambda_sig' loc arg_tys body_ty =
+@@ -94,9 +94,14 @@
+   let constructor body_ty cd : Variant_definition.t =
+     if cd.pcd_res <> None then
+       Location.raise_errorf ~loc:cd.pcd_loc "GADTs are not supported by variantslib";
++    let pcd_args =
++      match cd.pcd_args with
++      | Pcstr_tuple pcd_args -> pcd_args
++      | Pcstr_record _ -> failwith "Pcstr_record not supported"
++    in
+     { name = cd.pcd_name.txt
+     ; body_ty
+-    ; arg_tys = cd.pcd_args
++    ; arg_tys = pcd_args
+     ; kind = `Normal
+     }
+ 
+@@ -120,7 +125,7 @@
+     ptyp_constr ~loc (Located.lident ~loc ty_name) tps
+ 
+   let label_arg _loc name ty =
+-    (String.lowercase name, ty)
++    (Asttypes.Labelled (String.lowercase name), ty)
+   ;;
+ 
+   let variant_arg loc f v =
+@@ -186,7 +191,7 @@
+     in
+     let types = List.map variants ~f in
+     let t = Create.lambda_sig' loc
+-      (("", variant_type) :: types) result_type in
++      ((Nolabel, variant_type) :: types) result_type in
+     psig_value ~loc (value_description ~loc ~name:(Located.mk ~loc "map") ~type_:t
+                        ~prim:[])
+   ;;
+@@ -316,7 +321,7 @@
+       | None    -> name
+       | Some n  -> n
+     in
+-    (l, pvar ~loc name)
++    (Asttypes.Labelled l, pvar ~loc name)
+   ;;
+ 
+   let label_arg_fun loc name =
+@@ -408,7 +413,7 @@
+       List.map variants ~f:(fun variant ->
+         label_arg_fun loc (variant_name_to_string variant.V.name))
+     in
+-    let lambda = Create.lambda loc (("", [%pat? t__]) :: patterns) body in
++    let lambda = Create.lambda loc ((Nolabel, [%pat? t__]) :: patterns) body in
+     [%stri let map = [%e lambda] ]
+   ;;
+ 

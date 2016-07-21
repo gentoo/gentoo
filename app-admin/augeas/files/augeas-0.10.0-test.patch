@@ -1,0 +1,56 @@
+From 075f8d35497fb36d9193e5364c055049c66fa5eb Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lubo.rintel@gooddata.com>
+Date: Mon, 9 Jan 2012 18:52:11 +0100
+Subject: [PATCH 1/2] Allow JSON number literals to be followed by whitespace
+
+Add a test case.
+
+Fixes https://fedorahosted.org/augeas/ticket/247
+---
+ AUTHORS                    |    1 +
+ lenses/json.aug            |    2 +-
+ lenses/tests/test_json.aug |    3 +++
+ 3 files changed, 5 insertions(+), 1 deletions(-)
+
+diff --git a/AUTHORS b/AUTHORS
+index df63f95..e7870f2 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -44,6 +44,7 @@ Contributions by:
+   Bill Pemberton              <wfp5p@virginia.edu>
+   Alan Pevec                  <apevec@redhat.com>
+   Robin Lee Powell            <rlpowell@digitalkingdom.org>
++  Lubomir Rintel              <lubo.rintel@gooddata.com>
+   Roman Rakus                 <rrakus@redhat.com>
+   Satoru SATOH                <satoru.satoh@gmail.com>
+   Nicolas Valcárcel Scerpella <nvalcarcel@ubuntu.com>
+diff --git a/lenses/json.aug b/lenses/json.aug
+index c22ad90..6ceab09 100644
+--- a/lenses/json.aug
++++ b/lenses/json.aug
+@@ -29,7 +29,7 @@ let str_store =
+   let q =  del "\"" "\"" in
+   q . store /[^"]*/ . q . ws             (* " Emacs, relax *)
+ 
+-let number = [ label "number" . store /-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/ ]
++let number = [ label "number" . store /-?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?/ . ws ]
+ let str = [ label "string" . str_store ]
+ 
+ let const (r:regexp) = [ label "const" . store r . ws ]
+diff --git a/lenses/tests/test_json.aug b/lenses/tests/test_json.aug
+index 0bcd25d..d8b7fa8 100644
+--- a/lenses/tests/test_json.aug
++++ b/lenses/tests/test_json.aug
+@@ -8,6 +8,9 @@ test lns get "true" = { "const" = "true" }
+ 
+ test lns get "3.141" = { "number" = "3.141" }
+ 
++test lns get "{ \"key\" : 666 }" =
++  { "dict" { "entry" = "key" { "number" = "666" } } }
++
+ test lns get "[true, 0, \"yo\"]" =
+   { "array" { "const" = "true" } { "number" = "0" } { "string" = "yo" } }
+ 
+-- 
+1.7.7.5
+

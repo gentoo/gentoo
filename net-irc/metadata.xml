@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-irc category contains IRC (Internet Relay Chat) clients and
+		servers.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-irc enthält Clients und Server für den Internet
+		Relay Chat (IRC).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-irc contiene clientes y servidores IRC.
+	</longdescription>
+	<longdescription lang="ja">
+		net-ircカテゴリーにはインターネット・リレー・チャットの
+		クライアントとサーバーが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-irc categorie bevat clients &amp; servers voor IRC (Internet Relay Chat).
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória net-irc obsahuje klientské a serverové programy pre IRC (Internet Relay Chat).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-irc chứa các client và server IRC (Internet Relay Chat).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-irc contiene client e server per IRC (Internet Relay Chat).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-irc contém clientes e servidores de IRC
+		(Internet Relay Chat).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-irc zawiera klienty i serwery sieci IRC (Internet Relay Chat).
+	</longdescription>
+</catmetadata>
+

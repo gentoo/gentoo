@@ -1,0 +1,83 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Use the system provided readline instead of the copy 
+ provided with the sources.
+--- a/install/unix/install1
++++ b/install/unix/install1
+@@ -576,7 +576,7 @@
+ then
+   echo "OK."
+   ed_moptions replace "EDITSWITCH=-DEdit_dummy" >/dev/null
+-  ed_moptions replace "EDITLIBS=-lzreadline -lncurses" >/dev/null
++  ed_moptions replace "EDITLIBS=-lreadline" >/dev/null
+ else
+   echo "Not found."
+   echo "*** WARNING: You'll not be able to edit Midas commands in the monitor."
+@@ -596,7 +596,7 @@
+ 
+   if [ $answ = "c" -o  $answ = "C" ]; then
+     ed_moptions replace "EDITSWITCH=-DNO_READLINE" >/dev/null
+-    ed_moptions replace "EDITLIBS=-lzreadline" >/dev/null
++    ed_moptions replace "EDITLIBS=-lreadline" >/dev/null
+   else
+     exit 1
+   fi
+--- a/install/unix/install1.sh
++++ b/install/unix/install1.sh
+@@ -575,7 +575,7 @@
+ then
+   echo "OK."
+   ed_moptions replace "EDITSWITCH=-DEdit_dummy" >/dev/null
+-  ed_moptions replace "EDITLIBS=-lzreadline -lncurses" >/dev/null
++  ed_moptions replace "EDITLIBS=-lreadline -lncurses" >/dev/null
+ else
+   echo "Not found."
+   echo "*** WARNING: You'll not be able to edit Midas commands in the monitor."
+@@ -595,7 +595,7 @@
+ 
+   if [ $answ = "c" -o  $answ = "C" ]; then
+     ed_moptions replace "EDITSWITCH=-DNO_READLINE" >/dev/null
+-    ed_moptions replace "EDITLIBS=-lzreadline" >/dev/null
++    ed_moptions replace "EDITLIBS=-lreadline" >/dev/null
+   else
+     exit 1
+   fi
+--- a/monit/prepa2.c
++++ b/monit/prepa2.c
+@@ -90,6 +90,9 @@
+ #include <osxdef.h>		/* MIDAS osx definitions */
+ #include <midback.h>		/* Context extructure */
+ 
++typedef int Function ();
++typedef char **CPPFunction ();
++
+ extern int  is_a_tty;		/* Is this a terminal, (yes=1) set in prepa.c */
+ 
+ void using_history();
+@@ -238,7 +241,7 @@
+   if (!xhelp_pid) {
+     if ( (fd = fopen(channame[1],"r")) == (FILE *)NULL) {
+       (void) printf("\n\rTry first: CREATE/GUI HELP \n\r");
+-      rl_refresh_line();
++      rl_refresh_line(0,0);
+       return 0;
+       }
+     fscanf(fd,(const char *) "%d\n",&xhelp_pid);
+@@ -247,7 +250,7 @@
+       xhelp_pid = 0;
+       unlink(channame[1]);
+       (void) printf("\n\rTry first: CREATE/GUI HELP \n\r");
+-      rl_refresh_line();
++      rl_refresh_line(0,0);
+       return 0;
+       }
+     }
+--- a/install/unix/core.cnf
++++ b/install/unix/core.cnf
+@@ -15,7 +15,6 @@
+ ./libsrc/st
+ ./libsrc/tbl
+ # ./libsrc/tw		FO's termwin library not used anymore...
+-./libsrc/readline
+ ./libsrc/agl
+ ./libsrc/plot
+ ./libsrc/display

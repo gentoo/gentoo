@@ -1,0 +1,14 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix uninitialized value for haspm in RASortStars()
+ This fixes a crash with 'imstar -s'.
+--- a/libwcs/sortstar.c
++++ b/libwcs/sortstar.c
+@@ -417,6 +417,8 @@
+ 	hasnum = 1;
+     if (spra != NULL && spdec != NULL)
+ 	haspm = 1;
++    else
++	haspm = 0;
+     if (sx != NULL && sy != NULL)
+ 	hasxy = 1;
+     else

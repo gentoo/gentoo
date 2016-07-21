@@ -1,0 +1,13 @@
+[Unit]
+Description=Postfix Mail Transport Agent
+After=network.target
+
+[Service]
+Type=forking
+ExecStartPre=-/usr/bin/newaliases
+ExecStart=/usr/sbin/postfix start
+ExecStop=/usr/sbin/postfix stop
+ExecReload=/usr/sbin/postfix reload
+
+[Install]
+WantedBy=multi-user.target

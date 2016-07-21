@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">MIME-tools</remote-id>
+		<remote-id type="cpan-module">MIME::Body</remote-id>
+		<remote-id type="cpan-module">MIME::Body::File</remote-id>
+		<remote-id type="cpan-module">MIME::Body::InCore</remote-id>
+		<remote-id type="cpan-module">MIME::Body::Scalar</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::Base64</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::BinHex</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::Binary</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::Gzip64</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::NBit</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::QuotedPrint</remote-id>
+		<remote-id type="cpan-module">MIME::Decoder::UU</remote-id>
+		<remote-id type="cpan-module">MIME::Entity</remote-id>
+		<remote-id type="cpan-module">MIME::Field::ConTraEnc</remote-id>
+		<remote-id type="cpan-module">MIME::Field::ContDisp</remote-id>
+		<remote-id type="cpan-module">MIME::Field::ContType</remote-id>
+		<remote-id type="cpan-module">MIME::Field::ParamVal</remote-id>
+		<remote-id type="cpan-module">MIME::Head</remote-id>
+		<remote-id type="cpan-module">MIME::Parser</remote-id>
+		<remote-id type="cpan-module">MIME::Parser::FileInto</remote-id>
+		<remote-id type="cpan-module">MIME::Parser::FileUnder</remote-id>
+		<remote-id type="cpan-module">MIME::Parser::Filer</remote-id>
+		<remote-id type="cpan-module">MIME::Parser::Reader</remote-id>
+		<remote-id type="cpan-module">MIME::Parser::Results</remote-id>
+		<remote-id type="cpan-module">MIME::Tools</remote-id>
+		<remote-id type="cpan-module">MIME::WordDecoder</remote-id>
+		<remote-id type="cpan-module">MIME::WordDecoder::ISO_8859</remote-id>
+		<remote-id type="cpan-module">MIME::WordDecoder::US_ASCII</remote-id>
+		<remote-id type="cpan-module">MIME::WordDecoder::UTF_8</remote-id>
+		<remote-id type="cpan-module">MIME::Words</remote-id>
+	</upstream>
+</pkgmetadata>

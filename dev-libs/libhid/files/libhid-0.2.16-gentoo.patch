@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -78,7 +78,6 @@
+ AC_C_BIGENDIAN
+ AC_C_STRINGIZE
+ 
+-MD_CONF_DEBUGGING
+ MD_CONF_COMPILER
+ AM_CONDITIONAL(OS_LINUX, test "$MD_OS" = "linux")
+ AM_CONDITIONAL(OS_BSD, test "$MD_OS" = "bsd")
+--- a/m4/md_check_gcc3.m4
++++ b/m4/md_check_gcc3.m4
+@@ -1,7 +1,7 @@
+ AC_DEFUN([MD_CHECK_GCC3],
+   [
+     if [[ "$GCC" = "yes" ]]; then
+-      ver=$(gcc -dD -E - < /dev/null | sed -ne 's,.*__GNUC__ ,,p')
++      ver=$(${CC} -dD -E - < /dev/null | sed -ne 's,.*__GNUC__ ,,p')
+       case $ver in
+         *[[^[:digit:]]]*)
+           AC_MSG_WARN([Could not determine compiler version. Trying our luck...])

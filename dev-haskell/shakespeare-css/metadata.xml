@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		
+		Shakespeare is a template family for type-safe, efficient templates with simple variable interpolation . Shakespeare templates can be used inline with a quasi-quoter or in an external file. Shakespeare interpolates variables according to the type being inserted.
+		In this case, the variable type needs a ToCss instance.
+		
+		This package contains 2 css template languages. The Cassius language uses whitespace to avoid the need for closing brackets and semi-colons. Lucius does not care about whitespace and is a strict superset of css. There are also some significant conveniences added for css.
+		
+		Please see http://docs.yesodweb.com/book/templates for a more thorough description and examples
+	</longdescription>
+</pkgmetadata>

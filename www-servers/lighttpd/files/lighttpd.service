@@ -1,0 +1,10 @@
+[Unit]
+Description=Lightning Fast Webserver With Light System Requirements
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

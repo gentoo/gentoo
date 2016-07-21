@@ -1,0 +1,10 @@
+--- coin3-3.1.3.orig/include/Inventor/SbBasic.h
++++ coin3-3.1.3/include/Inventor/SbBasic.h
+@@ -24,6 +24,7 @@
+  *
+ \**************************************************************************/
+ 
++#include <Inventor/C/errors/debugerror.h>
+ #include <Inventor/C/basic.h>
+ 
+ /* ********************************************************************** */

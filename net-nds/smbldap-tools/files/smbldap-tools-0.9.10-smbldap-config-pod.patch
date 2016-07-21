@@ -1,0 +1,37 @@
+From 4e3337697aa91f41ca970927233f96dbfa0b2d5d Mon Sep 17 00:00:00 2001
+From: Paul Howarth <paul@city-fan.org>
+Date: Mon, 3 Aug 2015 19:18:18 +0200
+Subject: [PATCH] Support podlators >=2.5.0
+
+http://gna.org/support/?3013
+---
+ smbldap-config.pl | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/smbldap-config.pl b/smbldap-config.pl
+index ecd9369..5660170 100644
+--- a/smbldap-config.pl
++++ b/smbldap-config.pl
+@@ -557,3 +557,19 @@ print "  $smbldap_bind_conf done.\n";
+ $mode=0600;
+ chmod $mode,"$smbldap_bind_conf","$smbldap_bind_conf.old";
+ 
++__END__
++
++=head1 NAME
++
++smbldap-config - Configure the smbldap-tools
++
++=head1 SYNOPSIS
++
++smbldap-config
++
++=head1 DESCRIPTION
++
++An interactive script to configure the smbldap-tools to work with your
++existing LDAP server(s). Before running it, you should ensure that your
++samba controller is up and running, and that the domain SID is defined
++(you can check it by running 'net getlocalsid').
+-- 
+2.4.6
+

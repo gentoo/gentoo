@@ -1,0 +1,16 @@
+diff -Naur llvm-3.7.0.src.orig/projects/compiler-rt/cmake/config-ix.cmake llvm-3.7.0.src/projects/compiler-rt/cmake/config-ix.cmake
+--- llvm-3.7.0.src.orig/projects/compiler-rt/cmake/config-ix.cmake	2015-07-30 06:28:50.000000000 +0200
++++ llvm-3.7.0.src/projects/compiler-rt/cmake/config-ix.cmake	2015-10-27 17:10:47.365847079 +0100
+@@ -209,12 +209,6 @@
+       test_target_arch(mips "" "-mips32r2" "--target=mips-linux-gnu")
+       test_target_arch(mips64 "" "-mips64r2" "-mabi=n64")
+     endif()
+-  elseif("${COMPILER_RT_TEST_TARGET_ARCH}" MATCHES "arm")
+-    test_target_arch(arm "" "-march=armv7-a")
+-  elseif("${COMPILER_RT_TEST_TARGET_ARCH}" MATCHES "aarch32")
+-    test_target_arch(aarch32 "" "-march=armv8-a")
+-  elseif("${COMPILER_RT_TEST_TARGET_ARCH}" MATCHES "aarch64")
+-    test_target_arch(aarch64 "" "-march=armv8-a")
+   endif()
+   set(COMPILER_RT_OS_SUFFIX "")
+ endif()

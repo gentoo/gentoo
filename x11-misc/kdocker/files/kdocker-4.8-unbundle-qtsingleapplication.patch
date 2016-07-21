@@ -1,0 +1,17 @@
+=== modified file 'kdocker.pro'
+--- kdocker.pro	2011-05-31 00:46:31 +0000
++++ kdocker.pro	2013-10-27 14:41:36 +0000
+@@ -2,7 +2,11 @@
+ CONFIG += qt
+ TARGET = kdocker
+ 
+-include(solutions/qtsingleapplication/qtsingleapplication.pri)
++isEmpty(SYSTEMQTSA) {
++	include(3rdparty/qtsingleapplication/qtsingleapplication.pri)
++} else {
++	CONFIG += qtsingleapplication
++}
+ 
+ DEPENDPATH += src
+ INCLUDEPATH += . src  /usr/include/X11
+

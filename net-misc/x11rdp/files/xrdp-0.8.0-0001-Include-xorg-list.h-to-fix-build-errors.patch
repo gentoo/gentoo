@@ -1,0 +1,25 @@
+From 13b7150aef9c61966d39d779c652f988232d7381 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 27 Oct 2014 09:52:56 +0100
+Subject: [PATCH 1/2] Include <xorg/list.h> to fix build errors
+
+---
+ xorg/X11R7.6/rdp/rdp.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/xorg/X11R7.6/rdp/rdp.h b/xorg/X11R7.6/rdp/rdp.h
+index 00725d1..a2f5bdc 100644
+--- a/xorg/X11R7.6/rdp/rdp.h
++++ b/xorg/X11R7.6/rdp/rdp.h
+@@ -46,6 +46,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+ //#include "cfb.h"
+ 
++#include <xorg/list.h>
++
+ #include "mibstore.h"
+ #include "colormapst.h"
+ #include "gcstruct.h"
+-- 
+2.1.2
+

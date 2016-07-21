@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		pasm is a portable assembler for processors of the PowerPC family,
+		written completely in ANSI-C. All PPC standard instructions, AltiVec
+		instructions, all 32-bit extended mnemonics and most of the 64-bit
+		extended mnemonics are supported. pasm knows about nearly 50 directives.
+		Among them are directives for macros, conditional assembly,
+		include files, base-relative addressing (small data), etc..
+	</longdescription>
+</pkgmetadata>

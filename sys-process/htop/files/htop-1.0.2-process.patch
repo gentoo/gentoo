@@ -1,0 +1,13 @@
+Index: Process.c
+===================================================================
+--- Process.c	(revision 302)
++++ Process.c	(working copy)
+@@ -371,7 +371,7 @@
+ }
+ 
+ static void Process_writeField(Process* this, RichString* str, ProcessField field) {
+-   char buffer[128]; buffer[127] = '\0';
++   char buffer[256]; buffer[255] = '\0';
+    int attr = CRT_colors[DEFAULT_COLOR];
+    int baseattr = CRT_colors[PROCESS_BASENAME];
+    int n = sizeof(buffer) - 1;

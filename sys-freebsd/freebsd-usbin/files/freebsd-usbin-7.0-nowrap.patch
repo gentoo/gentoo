@@ -1,0 +1,45 @@
+diff -ur usr.sbin.orig/rpcbind/Makefile usr.sbin/rpcbind/Makefile
+--- usr.sbin.orig/rpcbind/Makefile	2007-04-21 12:02:30 +0000
++++ usr.sbin/rpcbind/Makefile	2007-04-21 12:05:32 +0000
+@@ -8,13 +8,20 @@
+ SRCS=	check_bound.c rpcb_stat.c rpcb_svc_4.c rpcbind.c pmap_svc.c \
+ 	rpcb_svc.c rpcb_svc_com.c security.c warmstart.c util.c
+ 
+-CFLAGS+= -DPORTMAP -DLIBWRAP
++CFLAGS+= -DPORTMAP
+ 
+ .if ${MK_INET6_SUPPORT} != "no"
+ CFLAGS+= -DINET6
+ .endif
+ 
+-DPADD=	${LIBWRAP} ${LIBUTIL}
+-LDADD=	-lwrap -lutil
++DPADD=	${LIBUTIL}
++LDADD=	-lutil
++
++.if !defined(NO_WRAP)
++CFLAGS+= -DLIBWRAP
++DPADD+=         ${LIBWRAP}
++LDADD+=         -lwrap
++.endif
++
+ 
+ .include <bsd.prog.mk>
+diff -ur usr.sbin.orig/ypserv/Makefile usr.sbin/ypserv/Makefile
+--- usr.sbin.orig/ypserv/Makefile	2007-04-21 12:02:31 +0000
++++ usr.sbin/ypserv/Makefile	2007-04-21 12:06:53 +0000
+@@ -8,10 +8,13 @@
+ SRCS=	yp_svc.c yp_server.c yp_dblookup.c yp_dnslookup.c \
+ 	ypxfr_clnt.c yp.h yp_main.c yp_error.c yp_access.c yp_svc_udp.c
+ 
+-CFLAGS+= -DDB_CACHE -DTCP_WRAPPER -I.
++CFLAGS+= -DDB_CACHE -I.
+ 
++.if !defined(NO_WRAP)
++CFLAGS+= -DTCP_WRAPPER
+ DPADD=	${LIBWRAP}
+ LDADD=	-lwrap
++.endif
+ 
+ CLEANFILES= yp_svc.c ypxfr_clnt.c yp.h
+ 

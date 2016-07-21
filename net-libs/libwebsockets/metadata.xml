@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>yuchen.xie@live.com</email>
+		<name>Yuchen Xie</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		libwebsockets is a C library designed to make development of websockets clients and servers easier (possible).
+	</longdescription>
+	<use>
+		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
+		<flag name="http2">Support the HTTP/2 protocol</flag>
+		<flag name="libev">Support event loops via dev-libs/libev</flag>
+		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
+	</use>
+</pkgmetadata>

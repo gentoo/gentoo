@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<use>
+		<flag name="doc">Install user manual and API documentation</flag>
+	</use>
+	<longdescription lang="en">
+		Alot is a terminal interface for <pkg>net-mail/notmuch</pkg> mail
+		written in Python using the <pkg>dev-python/urwid</pkg> toolkit.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pazz/alot</remote-id>
+	</upstream>
+</pkgmetadata>

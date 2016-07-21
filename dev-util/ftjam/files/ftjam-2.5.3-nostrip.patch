@@ -1,0 +1,40 @@
+diff -Naur ftjam-2.5.3rc2-orig/Jamfile ftjam-2.5.3rc2/Jamfile
+--- ftjam-2.5.3rc2-orig/Jamfile	2007-06-05 08:30:52.000000000 -0600
++++ ftjam-2.5.3rc2/Jamfile	2007-06-10 12:55:03.000000000 -0600
+@@ -138,16 +138,6 @@
+ LinkLibraries 	jam : libjam.a ;
+ GenFile 	jambase.c : mkjambase Jambase ;
+ 
+-if $(UNIX) && ! $(DEBUG)
+-{
+-  actions Strip
+-  {
+-    strip $(1)
+-  }
+-
+-  Strip jam ;
+-}
+-
+ Library         libjam.a :
+ 		    builtins.c command.c compile.c $(code) expand.c
+ 		    glob.c hash.c headers.c lists.c make.c make1.c
+@@ -156,19 +146,6 @@
+ 		    hdrmacro.c rope.c
+ 		    ;
+ 
+-# Strip the Jam executable on Mingw
+-#
+-if $(JAM_TOOLSET) = MINGW
+-{
+-  actions  Strip
+-  {
+-    strip $(1)
+-  }
+-
+-  Strip  jam$(SUFEXE) ;
+-}
+-
+-
+ if $(BINDIR) 	{ InstallBin $(BINDIR) : jam ; }
+ 
+ #

@@ -1,0 +1,30 @@
+diff -Naurp memtest86+-4.10-orig/Makefile memtest86+-4.10/Makefile
+--- memtest86+-4.10-orig/Makefile	2010-06-24 00:27:22.864634431 +0200
++++ memtest86+-4.10/Makefile	2010-06-24 00:28:42.402478590 +0200
+@@ -8,10 +8,9 @@
+ #
+ FDISK=/dev/fd0
+ 
+-AS=as -32
+-CC=gcc
+-
+-CFLAGS= -Wall -march=i486 -m32 -O2 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC -fno-stack-protector
++CFLAGS=-Wall -march=i486 -m32 -O2 -fomit-frame-pointer -fno-builtin -ffreestanding -fPIC -fno-stack-protector
++CPPFLAGS=-m32
++ASFLAGS=-32
+ 
+ OBJS= head.o reloc.o main.o test.o init.o lib.o patn.o screen_buffer.o \
+       config.o linuxbios.o memsize.o pci.o controller.o random.o spd.o \
+@@ -47,10 +46,10 @@ memtest.bin: memtest_shared.bin bootsect
+ 	memtest_shared.bin -o memtest.bin
+ 
+ reloc.o: reloc.c
+-	$(CC) -c $(CFLAGS) -fno-strict-aliasing reloc.c
++	$(CC) -c $(CFLAGS) -fno-strict-aliasing -fno-stack-protector reloc.c
+ 
+ test.o: test.c
+-	$(CC) -c -Wall -march=i486 -m32 -Os -fomit-frame-pointer -fno-builtin -ffreestanding test.c
++	$(CC) -c -Wall -march=i486 -m32 -O1 -fomit-frame-pointer -fno-builtin -ffreestanding -fno-stack-protector -fno-pie test.c
+ 
+ clean:
+ 	rm -f *.o *.s *.iso memtest.bin memtest memtest_shared memtest_shared.bin

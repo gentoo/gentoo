@@ -1,0 +1,11 @@
+--- src/Makefile.modules.orig
++++ src/Makefile.modules
+@@ -11,7 +11,7 @@
+ # The network code
+ # It is not necessary for single players
+ # The network does use the 'GNet' library (http://www.gnetlibrary.org/)
+-USE_NETWORK	?= true
++USE_NETWORK	?= false
+ 
+ # whether to use thread support (experimental, use at your own risk)
+ #USE_THREADS     ?= true

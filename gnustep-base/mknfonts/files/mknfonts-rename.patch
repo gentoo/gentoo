@@ -1,0 +1,15 @@
+--- mknfonts.m.orig	2007-05-03 11:46:27.000000000 +0200
++++ mknfonts.m	2007-05-03 11:47:34.000000000 +0200
+@@ -310,12 +310,6 @@
+ 			{
+ 				fi=[faceinfos objectAtIndex: i];
+ 				[faces addObject: [fi faceInfoDictionary]];
+-				for (j=0;j<[fi->files count];j++)
+-				{
+-					[fm movePath: [fi->files objectAtIndex: j]
+-						toPath: [path stringByAppendingPathComponent: [[fi->files objectAtIndex: j] lastPathComponent]]
+-						handler: nil];
+-				}
+ 			}
+ 
+ 			[family_info

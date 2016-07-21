@@ -1,0 +1,30 @@
+diff --git a/arghdirector.c b/arghdirector.c
+index f01f11d..56d3fe0 100755
+--- a/arghdirector.c
++++ b/arghdirector.c
+@@ -85,7 +85,9 @@ bool cPluginDirector::ProcessArgs(int argc, char *argv[])
+ bool cPluginDirector::Start(void)
+ {
+   // Start any background activities the plugin shall perform.
++#if VDRVERSNUM < 10727
+   RegisterI18n(Phrases);
++#endif
+ 
+ #if VDRVERSNUM >= 10332
+   if(autoStart == 1)
+diff --git a/i18n.h b/i18n.h
+index 22cce61..1117745 100755
+--- a/i18n.h
++++ b/i18n.h
+@@ -9,8 +9,11 @@
+ #ifndef _I18N__H
+ #define _I18N__H
+ 
++#include <vdr/config.h>
+ #include <vdr/i18n.h>
+ 
++#if VDRVERSNUM < 10727
+ extern const tI18nPhrase Phrases[];
++#endif
+ 
+ #endif //_I18N__H

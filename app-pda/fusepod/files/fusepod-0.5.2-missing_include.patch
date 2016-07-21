@@ -1,0 +1,12 @@
+--- src/fusepod_util.h
++++ src/fusepod_util.h
+@@ -15,6 +15,9 @@
+ #ifndef _FUSEPOD_UTIL_H_
+ #define _FUSEPOD_UTIL_H_
+ 
++#include <stdio.h> /* sprintf */
++#include <string.h> /* strcasecmp */
++
+ #include <vector>
+ #include <string>
+ 

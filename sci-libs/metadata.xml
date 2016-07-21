@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-libs category contains various science-related libraries.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-libs enthält wissenschaftlich genutzte Bibliotheken.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-libs contiene librerías relacionadas con la ciencia.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-libsカテゴリーには様々な科学関連のライブラリが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-libs categorie bevat wetenschappelijke bibliotheken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-libs chứa các thư viện dùng trong khoa học.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-libs contiene librerie scientifiche.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-libs contém várias bibliotecas relacionadas com
+		ciência.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-libs zawiera biblioteki związane z programami naukowymi.
+	</longdescription>
+</catmetadata>
+

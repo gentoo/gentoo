@@ -1,0 +1,56 @@
+--- Makefile.old
++++ Makefile
+@@ -169,18 +169,18 @@
+ DEBUG_CFLAGS=$(BASE_CFLAGS) -g
+ 
+ ifeq ($(OSTYPE),FreeBSD)
+-LDFLAGS=-lm
++LDLIBS=-lm
+ endif
+ ifeq ($(OSTYPE),Linux)
+-LDFLAGS=-lm -ldl
++LDLIBS=-lm -ldl
+ endif
+ 
+ ifeq ($(strip $(BUILD_ARTS)),YES)
+-LDFLAGS+=$(shell artsc-config --libs)
++LDLIBS+=$(shell artsc-config --libs)
+ endif
+ 
+ ifeq ($(strip $(BUILD_ALSA)),YES)
+-LDFLAGS+=-lasound
++LDLIBS+=-lasound
+ endif
+ 
+ 
+@@ -226,7 +226,7 @@
+ SHLIBEXT=so
+ 
+ SHLIBCFLAGS=-fPIC
+-SHLIBLDFLAGS=-shared
++SHLIBLDFLAGS=$(LDFLAGS) -shared
+ 
+ DO_CC=$(CC) $(CFLAGS) -o $@ -c $<
+ DO_DED_CC=$(CC) $(CFLAGS) -DDEDICATED_ONLY -o $@ -c $<
+@@ -518,10 +518,10 @@
+ endif
+ 
+ $(BUILDDIR)/quake2 : $(QUAKE2_OBJS) $(QUAKE2_LNX_OBJS) $(QUAKE2_AS_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_LNX_OBJS) $(QUAKE2_AS_OBJS) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_LNX_OBJS) $(QUAKE2_AS_OBJS) $(LDLIBS)
+ 
+ $(BUILDDIR)/sdlquake2 : $(QUAKE2_OBJS) $(QUAKE2_SDL_OBJS) $(QUAKE2_AS_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_SDL_OBJS) $(QUAKE2_AS_OBJS) $(LDFLAGS) $(SDLLDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(QUAKE2_OBJS) $(QUAKE2_SDL_OBJS) $(QUAKE2_AS_OBJS) $(LDLIBS) $(SDLLDFLAGS)
+ 
+ $(BUILDDIR)/client/cl_cin.o :     $(CLIENT_DIR)/cl_cin.c
+ 	$(DO_CC)
+@@ -710,7 +710,7 @@
+        $(BUILDDIR)/ded/cd_null.o
+ 
+ $(BUILDDIR)/q2ded : $(Q2DED_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(Q2DED_OBJS) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(Q2DED_OBJS) $(LDLIBS)
+ 
+ $(BUILDDIR)/ded/cmd.o :        $(COMMON_DIR)/cmd.c
+ 	$(DO_DED_CC)

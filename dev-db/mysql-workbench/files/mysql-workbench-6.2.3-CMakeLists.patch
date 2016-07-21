@@ -1,0 +1,43 @@
+--- mysql-workbench-community-6.0.7-src/CMakeLists.txt	2013-08-30 18:05:12.000000000 +0200
++++ mysql-workbench-community-6.0.7-src/CMakeLists.txt	2013-09-08 11:41:18.723838826 +0200
+@@ -18,6 +18,9 @@
+ find_package(PkgConfig REQUIRED)
+ 
+ find_package(GTK2 2.20 REQUIRED gtk gtkmm)
++if (NOT GTK2_FOUND)
++	message( FATAL_ERROR "Not all GTK2 components were found!" )
++endif()
+ pkg_check_modules(GTHREAD REQUIRED gthread-2.0)
+ pkg_check_modules(GMODULE REQUIRED gmodule-2.0)
+ set(GTK2_INCLUDE_DIRS ${GTK2_INCLUDE_DIRS} ${GTHREAD_INCLUDE_DIRS} ${GMODULE_INCLUDE_DIRS})
+@@ -32,7 +35,8 @@
+ endif ()
+ 
+ # All known publicly available versions of Antlr3C are buggy
+-
++# see: https://bugzilla.redhat.com/show_bug.cgi?id=966973
++# patch seems to be only applied partially to antlr-3.4, bug is present in antlr-3.5, too
+ if (SKIP_BUNDLED_ANTLR)
+   find_package(Antlr3C)
+ endif ()
+@@ -89,7 +93,8 @@
+ pkg_check_modules(CAIRO REQUIRED cairo>=1.5.12)
+ pkg_check_modules(UUID REQUIRED uuid)
+ pkg_check_modules(LIBZIP REQUIRED libzip)
+-if (UNIX)
++
++if (UNIX AND USE_GNOME_KEYRING)
+ 	pkg_check_modules(GNOME_KEYRING gnome-keyring-1)
+ 	if (GNOME_KEYRING_FOUND)
+ 		set(KEYRING_DEFINITION     "HAVE_GNOME_KEYRING")
+@@ -99,7 +104,10 @@
+ 			set(KEYRING_DEFINITION     "HAVE_OLD_GNOME_KEYRING")
+ 		endif()
+ 	endif()
++	if (NOT GNOME_KEYRING_FOUND) 
++		message( FATAL_ERROR "Gnome keyring libraries could not be found" )
++	endif()
+ endif()
+ 
+ include (CheckFunctionExists)
+        

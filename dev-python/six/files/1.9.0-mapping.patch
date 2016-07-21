@@ -1,0 +1,12 @@
+Patch prevents downloading non essential .inv files during the doc build
+diff -ur six-1.5.2.orig/documentation/conf.py six-1.5.2/documentation/conf.py
+--- documentation/conf.py	2013-09-15 21:52:34.000000000 +0800
++++ documentation/conf.py	2014-01-07 18:19:24.958916446 +0800
+@@ -211,7 +211,3 @@
+      [u"Benjamin Peterson"], 1)
+ ]
+ 
+-# -- Intersphinx ---------------------------------------------------------------
+-
+-intersphinx_mapping = {"py2" : ("https://docs.python.org/2/", None),
+-                       "py3" : ("https://docs.python.org/3/", None)}

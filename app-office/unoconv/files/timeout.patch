@@ -1,0 +1,11 @@
+--- unoconv.old	2011-08-01 14:20:45.000000000 +0200
++++ unoconv	2011-08-01 14:21:01.000000000 +0200
+@@ -534,7 +534,7 @@
+                         unocontext = resolver.resolve("uno:%s" % op.connection)
+                         break
+                     except NoConnectException:
+-                        time.sleep(0.5)
++                        time.sleep(5)
+                         timeout += 0.5
+                     except:
+                         raise

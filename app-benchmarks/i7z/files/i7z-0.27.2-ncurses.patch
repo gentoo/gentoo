@@ -1,0 +1,22 @@
+Index: Makefile
+===================================================================
+--- Makefile	(revision 109)
++++ Makefile	(working copy)
+@@ -19,7 +19,7 @@
+ 
+ CC       ?= gcc
+ 
+-LIBS  += -lncurses -lpthread -lrt -lm
++LIBS  += `pkg-config --libs ncurses` -lpthread -lrt -lm
+ INCLUDEFLAGS = 
+ 
+ BIN	= i7z
+@@ -42,7 +42,7 @@
+ 
+ #http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=644728 for -ltinfo on debian
+ static-bin: message $(OBJ)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BIN) $(OBJ) -static-libgcc -DNCURSES_STATIC -static -lpthread -lncurses -lrt -lm -ltinfo
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BIN) $(OBJ) -static-libgcc -DNCURSES_STATIC -static -lpthread `pkg-config --static --libs ncurses` -lrt -lm
+ 
+ # perfmon-bin: message $(OBJ)
+ # 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(PERFMON-BIN) perfmon-i7z.c helper_functions.c $(LIBS)

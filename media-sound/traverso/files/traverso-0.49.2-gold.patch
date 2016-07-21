@@ -1,0 +1,10 @@
+--- src/engine/CMakeLists.txt
++++ src/engine/CMakeLists.txt
+@@ -68,3 +68,7 @@
+ IF(USE_PCH)
+     ADD_DEPENDENCIES(traversoaudiobackend precompiled_headers)
+ ENDIF(USE_PCH)
++
++TARGET_LINK_LIBRARIES(traversoaudiobackend
++	-ldl
++)

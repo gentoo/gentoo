@@ -1,0 +1,4 @@
+phpLDAPadmin is installed.  You will need to
+configure it by creating/editing the config file:
+
+${MY_INSTALLDIR}/config/config.php

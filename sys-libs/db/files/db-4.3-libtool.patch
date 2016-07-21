@@ -1,0 +1,47 @@
+--- dist/configure.orig	2005-02-02 11:22:49.596096072 +0100
++++ dist/configure	2005-02-02 11:23:46.749407448 +0100
+@@ -5684,7 +5684,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   # I'd rather use --version here, but apparently some GNU ld's only accept -v.
+-case `$LD -v 2>&1 </dev/null` in
++case `"$LD" -v 2>&1 </dev/null` in
+ *GNU* | *'with BFD'*)
+   lt_cv_prog_gnu_ld=yes
+   ;;
+@@ -8461,7 +8461,7 @@
+         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+ 	archive_cmds="$tmp_archive_cmds"
+       supports_anon_versioning=no
+-      case `$LD -v 2>/dev/null` in
++      case `"$LD" -v 2>/dev/null` in
+         *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
+         *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
+         *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
+@@ -11383,7 +11383,7 @@
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+   # I'd rather use --version here, but apparently some GNU ld's only accept -v.
+-case `$LD -v 2>&1 </dev/null` in
++case `"$LD" -v 2>&1 </dev/null` in
+ *GNU* | *'with BFD'*)
+   lt_cv_prog_gnu_ld=yes
+   ;;
+@@ -15353,7 +15353,7 @@
+         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+ 	archive_cmds_F77="$tmp_archive_cmds"
+       supports_anon_versioning=no
+-      case `$LD -v 2>/dev/null` in
++      case `"$LD" -v 2>/dev/null` in
+         *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
+         *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
+         *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...
+@@ -17695,7 +17695,7 @@
+         tmp_archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+ 	archive_cmds_GCJ="$tmp_archive_cmds"
+       supports_anon_versioning=no
+-      case `$LD -v 2>/dev/null` in
++      case `"$LD" -v 2>/dev/null` in
+         *\ 01.* | *\ 2.[0-9].* | *\ 2.10.*) ;; # catch versions < 2.11
+         *\ 2.11.93.0.2\ *) supports_anon_versioning=yes ;; # RH7.3 ...
+         *\ 2.11.92.0.12\ *) supports_anon_versioning=yes ;; # Mandrake 8.2 ...

@@ -1,0 +1,5 @@
+# Command-line options for running exim
+EXIM_OPTS="-bd -q15m"
+
+# Additional flags passed to exim_tidydb upon start (e.g. -t 7d)
+TIDY_OPTS=""

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		The XCB util modules provides a number of libraries which sit on top
+		of libxcb, the core X protocol library, and some of the extension
+		libraries. These experimental libraries provide convenience functions
+		and interfaces which make the raw X protocol more usable. Some of the
+		libraries also provide client-side code which is not strictly part of
+		the X protocol but which have traditionally been provided by Xlib.
+	</longdescription>
+	<maintainer type="person">
+		<email>xarthisius@gentoo.org</email>
+		<name>Kacper Kowalik</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Airblader/xcb-util-xrm</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,7 +30,10 @@
+ AC_CHECK_LIB([menu], [new_menu], [], [AC_ERROR("libmenu not found.")])
+ AC_CHECK_LIB([panel], [show_panel], [], [AC_ERROR("libpanel not found.")])
+ AC_CHECK_LIB([ncurses], [curses_version], [],
+-	     [AC_ERROR("libncurses not found.")])
++	AC_CHECK_LIB([tinfo], [curses_version], [],
++		[AC_ERROR("libncurses not found.")]))
++AC_CHECK_LIB([ncurses], [wnoutrefresh], [],
++	[AC_ERROR("libncurses not found.")])
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([fcntl.h libintl.h locale.h netinet/in.h nl_types.h \

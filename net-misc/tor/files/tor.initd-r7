@@ -1,0 +1,84 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+PIDFILE=/var/run/tor/tor.pid
+CONFFILE=/etc/tor/torrc
+GRACEFUL_TIMEOUT=${GRACEFUL_TIMEOUT:-60}
+
+# See bug #523552, and https://trac.torproject.org/projects/tor/ticket/5525
+# Graceful = wait 30 secs or so until all connections are properly closed.
+extra_commands="checkconfig"
+extra_started_commands="graceful gracefulstop reload"
+description="Anonymizing overlay network for TCP"
+description_checkconfig="Check for valid config file."
+description_reload="Reload the configuration."
+description_graceful="Gracefully restart."
+description_gracefulstop="Gracefully stop."
+
+depend() {
+        need net
+}
+
+checkconfig() {
+        # first check that it exists
+        if [ ! -f ${CONFFILE} ] ; then
+                eerror "You need to setup ${CONFFILE} first"
+                eerror "Example is in ${CONFFILE}.sample"
+                return 1
+	fi
+
+	# now verify whether the configuration is valid
+	/usr/bin/tor --verify-config -f ${CONFFILE} > /dev/null 2>&1
+	if [ $? -eq 0 ] ; then
+		einfo "Tor configuration (${CONFFILE}) is valid."
+		return 0
+	else
+		eerror "Tor configuration (${CONFFILE}) not valid."
+		/usr/bin/tor --verify-config -f ${CONFFILE}
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	checkpath -d -m 0755 -o tor:tor /var/run/tor
+        ebegin "Starting Tor"
+        HOME=/var/lib/tor
+	start-stop-daemon --start --pidfile "${PIDFILE}" --quiet --exec /usr/bin/tor  -- -f "${CONFFILE}" --runasdaemon 1 --PidFile "${PIDFILE}" > /dev/null 2>&1
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping Tor"
+	start-stop-daemon --stop --pidfile "${PIDFILE}" --exec /usr/bin/tor -- --PidFile "${PIDFILE}"
+        eend $?
+}
+
+graceful() {
+	gracefulstop
+	start
+	eend $?
+}
+
+gracefulstop() {
+	local rc=0
+        ebegin "Gracefully stopping Tor"
+	ebegin "This can take up to ${GRACEFUL_TIMEOUT} seconds"
+	start-stop-daemon -P --stop --signal INT -R ${GRACEFUL_TIMEOUT} --pidfile "${PIDFILE}" --exec /usr/bin/tor -- --PidFile "${PIDFILE}"
+	rc=$?
+	eend "done"
+	eend $rc
+}
+
+reload() {
+	if [ ! -f ${PIDFILE} ]; then
+		eerror "${SVCNAME} isn't running"
+		return 1
+	fi
+	checkconfig || return 1
+	ebegin "Reloading Tor configuration"
+	start-stop-daemon --signal HUP --pidfile ${PIDFILE}
+	eend $?
+}

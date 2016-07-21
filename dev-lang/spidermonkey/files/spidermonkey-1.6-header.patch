@@ -1,0 +1,13 @@
+Index: src/Makefile.ref
+===================================================================
+--- src.orig/Makefile.ref
++++ src/Makefile.ref
+@@ -185,6 +185,8 @@ JS_HFILES =		\
+ 	jsstr.h		\
+ 	jsxdrapi.h	\
+ 	jsxml.h		\
++	jsutil.h	\
++	jsprf.h		\
+ 	$(NULL)
+ 
+ API_HFILES =		\

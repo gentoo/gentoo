@@ -1,0 +1,63 @@
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Sun, 27 Dec 2015 23:25:59 +0000
+Subject: Open KDE's crash handler on crash (bump KF5 requirement to 5.15)
+X-Git-Url: http://quickgit.kde.org/?p=kdenlive.git&a=commitdiff&h=57cb1121da1d7106ebdb73a814c27e54b1711332
+---
+Open KDE's crash handler on crash (bump KF5 requirement to 5.15)
+---
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,9 +74,8 @@
+ 
+ find_package(Qt5 CONFIG REQUIRED Core DBus Test Widgets Script Svg)
+ 
+-find_package(KF5 REQUIRED Archive Bookmarks CoreAddons Config ConfigWidgets 
+-                            DBusAddons KIO WidgetsAddons Plotting NotifyConfig NewStuff XmlGui Notifications GuiAddons TextWidgets IconThemes DocTools)
+-
++find_package(KF5 5.15 REQUIRED COMPONENTS Archive Bookmarks CoreAddons Config ConfigWidgets 
++                            DBusAddons KIO WidgetsAddons Plotting NotifyConfig NewStuff XmlGui Notifications GuiAddons TextWidgets IconThemes DocTools Crash)
+ 
+ # Search MLT package.
+ find_package(MLT ${MLT_MIN_VERSION} REQUIRED)
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -261,6 +261,7 @@
+    KF5::Notifications
+    KF5::TextWidgets
+    KF5::IconThemes
++   KF5::Crash
+   ${Qt5_LIBRARIES}
+   Qt5::Svg
+   ${OPENGL_LIBRARIES}
+
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -22,6 +22,7 @@
+ #include "mainwindow.h"
+ 
+ #include <KAboutData>
++#include <KCrash>
+ #include <QDebug>
+ 
+ #include <QUrl> //new
+@@ -37,7 +38,7 @@
+ #if defined(Q_OS_UNIX) && !defined(Q_OS_MAC)
+     QCoreApplication::setAttribute(Qt::AA_X11InitThreads);
+ #endif
+-    
++
+     KLocalizedString::setApplicationDomain("kdenlive");
+ 
+     // Init application
+@@ -93,6 +94,7 @@
+ 
+     // Register DBus service
+     KDBusService programDBusService;
++    KCrash::initialize();
+ 
+     // see if we are starting with session management
+     if (qApp->isSessionRestored()){
+

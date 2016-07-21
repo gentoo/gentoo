@@ -1,0 +1,24 @@
+#PowerNow Daemon v0.97, (c) 2003-2005 John Clemens
+#Daemon to control the speed and voltage of cpus.
+#
+#This is a simple client to the CPUFreq driver, and uses
+#linux kernel v2.5 sysfs interface.  You need a supported
+#cpu, and a kernel that supports sysfs to run this daemon.
+#
+#Available Options:
+# 	-h	Print this help message
+#	-d	Don't detach from terminal (default is to
+#		detach and run in the background)
+#	-v	Increase output verbosity, can be used more than once.
+#	-q	Quiet mode, only emergency output.
+#	-n	Include 'nice'd processes in calculations
+#	-m #	Modes of operation, can be 0, 1, 2, or 3:
+#		0 = SINE, 1 = AGGRESSIVE (default),
+#		2 = PASSIVE, 3 = LEAPS
+#	-s #	Frequency step in kHz (default = 100000)
+#	-p #	Polling frequency in msecs (default = 1000)
+#	-c #	Specify number of threads per power-managed core
+#	-u #	CPU usage upper limit percentage [0 .. 100, default 80]
+#	-l #    CPU usage lower limit percentage [0 .. 100, default 20]
+
+POWERNOWD_OPTS=""

@@ -1,0 +1,12 @@
+diff -Nru milter-regex-1.8.orig/rules milter-regex-1.8/rules
+--- milter-regex-1.8.orig/rules	2007-01-11 16:49:52.000000000 +0100
++++ milter-regex-1.8/rules	2010-09-24 22:11:46.000000000 +0200
+@@ -21,7 +21,7 @@
+ header /From/ /ebay\.com/i
+ header /From/ /sabresfc11@aol\.com/i
+ header /From/ /ictp\.ch/i
+-header /From/ /(sgi.org.uk/ei
++header /From/ /(sgi.org.uk)/ei
+ header /From/ /tera-byte/i
+ header /From/ /google\.com/i
+ header /Subject/ /item/i

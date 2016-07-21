@@ -1,0 +1,32 @@
+*** Inline-0.44/lib/Inline/denter.pm-orig	2001-06-13 06:30:50.000000000 +0200
+--- Inline-0.44/lib/Inline/denter.pm	2002-11-13 15:43:41.000000000 +0100
+***************
+*** 177,182 ****
+--- 177,183 ----
+  }
+  
+  sub _next_line {
++     local ($_);
+      my $o = shift;
+      $o->{done}++, $o->{level} = -1, return unless @{$o->{lines}};
+      $_ = shift @{$o->{lines}};
+***************
+*** 188,193 ****
+--- 189,195 ----
+      $o->{done}++, $o->{level} = -1, return unless @{$o->{lines}};
+      my ($width, $tabwidth) = @{$o}{qw(width tabwidth)};
+      while (1) {
++         local ($_);
+  	$_ = $o->{lines}[0];
+  	# expand tabs in leading whitespace;
+  	$o->next_line, next if /^(\s*$|\#)/; # skip comments and blank lines
+***************
+*** 221,226 ****
+--- 223,229 ----
+  
+  sub indent_data {
+      my $o = shift;
++     local ($_);
+      $_ = shift;
+      return $o->indent_undef($_)
+        if not defined;

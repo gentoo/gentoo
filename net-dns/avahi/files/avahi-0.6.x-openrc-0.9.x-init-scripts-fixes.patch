@@ -1,0 +1,22 @@
+--- avahi-0.6.30/initscript/gentoo/avahi-daemon.in
++++ avahi-0.6.30/initscript/gentoo/avahi-daemon.in
+@@ -2,7 +2,7 @@
+ # Copyright 1999-2007 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+-opts="reload"
++extra_started_commands="reload"
+ 
+ depend() {
+ 	before netmount nfsmount
+--- avahi-0.6.30/initscript/gentoo/avahi-dnsconfd.in
++++ avahi-0.6.30/initscript/gentoo/avahi-dnsconfd.in
+@@ -2,7 +2,7 @@
+ # Copyright 1999-2007 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+-opts="reload"
++extra_started_commands="reload"
+ 
+ depend() {
+ 	need avahi-daemon

@@ -1,0 +1,12 @@
+=== modified file 'configure.in'
+--- configure.in	2009-01-13 09:30:52 +0000
++++ configure.in	2009-01-13 09:35:48 +0000
+@@ -186,6 +186,7 @@
+      with_fftw3=no
+     ])
+   IP_CFLAGS="$FFTW_INCLUDES $FFTW3_CFLAGS $IP_CFLAGS"
++  IP_LIBS="$FFTW3_LIBS $IP_LIBS"
+ fi
+ 
+ # optional ... we add some gsl funcs as builtins if available
+

@@ -1,0 +1,13 @@
+--- a/init-scripts/psad-init.gentoo
++++ b/init-scripts/psad-init.gentoo
+@@ -19,6 +19,10 @@
+ 
+ start() {
+ 	checkconfig || return 1
++	checkpath -q -d -m 755 -o root:root /run/psad
++	checkpath -q -d -m 755 -o root:root /var/lib/psad
++	checkpath -q -d -m 755 -o root:root /var/log/psad
++	[ -p /var/lib/psad/psadfifo ] || mknod -m 600 /var/lib/psad/psadfifo p
+ 
+ 	ebegin "Starting ${SVCNAME}"
+ 	start-stop-daemon \

@@ -1,0 +1,11 @@
+--- a/src/plugins/modplug/modplug.c       2011-10-20 20:26:08.000000000 +0000
++++ b/src/plugins/modplug/modplug.c       2015-01-08 19:52:43.889787624 +0000
+@@ -9,7 +9,7 @@
+ #include "xmms/xmms_sample.h"
+ #include "xmms/xmms_medialib.h"
+ #include "xmms/xmms_log.h"
+-#include <modplug.h>
++#include <libmodplug/modplug.h>
+ 
+ #include <glib.h>
+ #include <string.h>

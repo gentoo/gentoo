@@ -1,0 +1,17 @@
+Fix building with --disable-nls.
+--- src/cadaver.c.~1~	2007-08-22 14:17:27.000000000 +0200
++++ src/cadaver.c	2008-03-29 08:58:57.248793293 +0100
+@@ -838,11 +838,12 @@
+ 
+     progname = argv[0];
+ 
++#ifdef ENABLE_NLS
++
+ #ifdef HAVE_SETLOCALE
+     setlocale(LC_ALL, "");
+ #endif
+ 
+-#ifdef ENABLE_NLS
+     bindtextdomain(PACKAGE_NAME, LOCALEDIR);
+     textdomain(PACKAGE_NAME);
+ #endif /* ENABLE_NLS */

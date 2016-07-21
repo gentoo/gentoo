@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index a9d5cdc..8026741 100644
+--- a/Makefile
++++ b/Makefile
+@@ -44,8 +44,7 @@ $(SNAPPY_OUT)/SnappyNative.o : $(SRC)/org/xerial/snappy/SnappyNative.cpp $(SRC)/
+ 
+ 
+ $(SNAPPY_OUT)/$(LIBNAME): $(SNAPPY_OBJ)
+-	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS) -lsnappy
+-	$(STRIP) $@
++	$(CXX) $(CXXFLAGS) -o $@ $+ $(LINKFLAGS) -lsnappy $(LDFLAGS)
+ 
+ clean-native: 
+ 	rm -rf $(SNAPPY_OUT)

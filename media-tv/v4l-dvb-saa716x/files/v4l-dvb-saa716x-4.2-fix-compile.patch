@@ -1,0 +1,34 @@
+diff -urN powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_budget.c v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_budget.c
+--- powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_budget.c	2015-09-03 00:30:08.662553247 +0200
++++ v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_budget.c	2015-09-03 00:31:03.899206845 +0200
+@@ -306,7 +306,7 @@
+ #define SAA716x_MODEL_TWINHAN_VP1028	"Twinhan/Azurewave VP-1028"
+ #define SAA716x_DEV_TWINHAN_VP1028	"DVB-S"
+ 
+-static int vp1028_dvbs_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++static int vp1028_dvbs_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
+ {
+ 	struct saa716x_dev *saa716x = fe->dvb->priv;
+ 
+diff -urN powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_hybrid.c v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_hybrid.c
+--- powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_hybrid.c	2014-11-09 15:44:55.000000000 +0100
++++ v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_hybrid.c	2015-09-03 00:31:03.899206845 +0200
+@@ -321,7 +321,7 @@
+ 	.request_firmware	= tda1004x_vp6090_request_firmware,
+ };
+ 
+-static int vp6090_dvbs_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++static int vp6090_dvbs_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
+ {
+ 	struct saa716x_dev *saa716x = fe->dvb->priv;
+ 
+diff -urN powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_pci.c v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_pci.c
+--- powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_pci.c	2014-11-09 15:44:55.000000000 +0100
++++ v4l-dvb-saa716x-0.0.1_p20141109-r1/work/powARman-v4l-dvb-saa716x-d7e98fc59230/linux/drivers/media/common/saa716x/saa716x_pci.c	2015-09-03 00:31:03.900206839 +0200
+@@ -1,3 +1,5 @@
++#include <asm/atomic.h>
++#include <linux/spinlock_types.h>
+ #include <asm/io.h>
+ #include <asm/pgtable.h>
+ #include <asm/page.h>
+

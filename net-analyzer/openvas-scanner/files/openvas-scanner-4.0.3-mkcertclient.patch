@@ -1,0 +1,29 @@
+diff -ru openvas-scanner-4.0.1/CMakeLists.txt openvas-scanner-4.0.1.mkcert/CMakeLists.txt
+--- openvas-scanner-4.0.1/CMakeLists.txt	2014-04-23 16:00:47.000000000 +0200
++++ openvas-scanner-4.0.1.mkcert/CMakeLists.txt	2014-05-26 16:04:23.093548608 +0200
+@@ -258,7 +258,6 @@
+ #         DESTINATION ${OPENVAS_SYSCONF_DIR})
+ 
+ install (FILES ${CMAKE_BINARY_DIR}/tools/openvas-mkcert
+-               ${CMAKE_BINARY_DIR}/tools/openvas-mkcert-client
+                ${CMAKE_BINARY_DIR}/tools/openvas-nvt-sync
+          DESTINATION ${SBINDIR}
+          PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE
+@@ -269,7 +268,15 @@
+          PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE
+                      GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ 
+-install (FILES ${CMAKE_BINARY_DIR}/doc/openvassd.8
++install (FILES ${CMAKE_BINARY_DIR}/tools/openvas-mkcert-client
++         DESTINATION ${BINDIR}
++         PERMISSIONS OWNER_EXECUTE OWNER_READ OWNER_WRITE
++                     GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
++
++install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-mkcert-client.1
++          DESTINATION ${DATADIR}/man/man1 )
++
++install (FILES ${CMAKE_BINARY_DIR}/doc/openvassd.8
+          DESTINATION ${DATADIR}/man/man8 )
+ 
+ install (FILES ${CMAKE_SOURCE_DIR}/doc/openvas-mkcert.8
+Only in openvas-scanner-4.0.1.mkcert/: CMakeLists.txt~

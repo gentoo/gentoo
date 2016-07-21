@@ -1,0 +1,11 @@
+--- a/src/third_party/v8/SConscript	2014-05-26 11:00:37.725508098 +0200
++++ b/src/third_party/v8/SConscript	2014-05-26 11:01:13.265029083 +0200
+@@ -29,7 +29,7 @@
+ import sys
+ from os.path import join, dirname, abspath
+ root_dir = dirname(File('SConscript').rfile().abspath)
+-sys.path.append(join(root_dir, 'tools'))
++sys.path.insert(0, join(root_dir, 'tools'))
+ import js2c
+ 
+ Import("env windows linux darwin solaris freebsd debugBuild")

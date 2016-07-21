@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,14 +1,11 @@
+-CC = gcc
+ LD = $(CC)
+ RM = rm -f
+-CFLAGS = -Wall -O2 -fomit-frame-pointer
+-LDFLAGS = -s
+ 
+-PCAP_H = -I/usr/include/pcap
+-PCAP_L = -lpcap
++PCAP_H = $(shell pcap-config --cflags)
++PCAP_L = $(shell pcap-config --libs)
+ 
+-NIDS_H = -I/usr/local/include
+-NIDS_L = -L/usr/local/lib -lnids -lnet -lpcap
++NIDS_H = -I/usr/include
++NIDS_L = -lnids
+ 
+ PROJ = scanlogd
+ 

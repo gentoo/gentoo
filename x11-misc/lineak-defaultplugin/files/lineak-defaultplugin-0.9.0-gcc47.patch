@@ -1,0 +1,10 @@
+--- a/default_plugin/defaultplugin.cpp
++++ b/default_plugin/defaultplugin.cpp
+@@ -35,6 +35,7 @@
+ #include <iostream>
+ #include <sstream>
+ #include <stdlib.h>
++#include <unistd.h> /* fork() */
+ #include <cstring>
+ using namespace std;
+ using namespace lineak_core_functions;

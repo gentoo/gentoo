@@ -1,0 +1,47 @@
+--- src/ps_afm.c	2007-07-11 20:18:00.000000000 +0200
++++ src/ps_afm.c.fix	2009-07-11 14:51:05.000000000 +0200
+@@ -138,7 +138,7 @@
+ 	return (int)(acc>=0? floor(acc+0.5) : ceil(acc-0.5) ) ;
+ }
+ 
+-static int getline(FILE *afmin) {
++static int pslib_getline(FILE *afmin) {
+ 	char *p ;
+ 	int c ;
+ 
+@@ -616,7 +616,7 @@
+ 		return(-1);
+ 	}
+ 
+-	while (getline(fp)) {
++	while (pslib_getline(fp)) {
+ 		switch(interest(paramstring())) {
+ 			case N:
+ 				handleprotusion(psdoc, metrics) ;
+@@ -664,7 +664,7 @@
+ 	/*
+ 	 * Read file line by line.
+ 	 */
+-	while (getline(metric->afmin)) {
++	while (pslib_getline(metric->afmin)) {
+ 		switch(interest(paramstring())) {
+ case FontName:
+ 			metric->fontname = paramnewstring(psdoc) ;
+@@ -1039,7 +1039,7 @@
+ 
+ 	while (1) {
+ 		while (param == NULL || *param == '\0') {
+-			if (getline(metrics->afmin) == 0)
++			if (pslib_getline(metrics->afmin) == 0)
+ 				ps_error(psdoc, PS_RuntimeError, _("Premature end of encoding file."));
+ 			for (p=buffer; *p != '\0'; p++)
+ 				if (*p == '%') {
+@@ -1160,7 +1160,7 @@
+ 			psdoc->free(psdoc, e);
+ 			return -1;
+ 		}
+-		while (getline(metrics->afmin)) {
++		while (pslib_getline(metrics->afmin)) {
+ 			for (p=buffer; *p != '\0'; p++)
+ 				if (*p == '%') {
+ 					if (ignoreligkern == 0)

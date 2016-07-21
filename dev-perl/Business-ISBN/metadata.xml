@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">Business-ISBN</remote-id>
+		<remote-id type="cpan-module">Business::ISBN</remote-id>
+		<remote-id type="cpan-module">Business::ISBN10</remote-id>
+		<remote-id type="cpan-module">Business::ISBN13</remote-id>
+	</upstream>
+	<use>
+		<flag name="xisbn">Install <pkg>dev-perl/Mojolicious</pkg> for querying xisbn.worldcat.org</flag>
+		<flag name="barcode">Install <pkg>dev-perl/GD-Barcode</pkg> for rendering ISBN numbers as barcodes</flag>
+	</use>
+</pkgmetadata>

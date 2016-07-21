@@ -1,0 +1,25 @@
+--- apache2-httpd.include.conf.orig	2007-09-14 07:49:10.000000000 +0200
++++ apache2-httpd.include.conf	2007-09-14 07:49:50.000000000 +0200
+@@ -11,7 +11,7 @@
+ <IfModule mod_perl.c>
+ 
+     # load all otrs modules
+-    Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
++    #Perlrequire /opt/otrs/scripts/apache2-perl-startup.pl
+ 
+     # Apache::Reload - Reload Perl Modules when Changed on Disk
+     PerlModule Apache::Reload
+@@ -22,10 +22,10 @@
+ #        ErrorDocument 403 /otrs/customer.pl
+         AllowOverride None
+         ErrorDocument 403 /otrs/index.pl
+-        SetHandler  perl-script
+-        PerlHandler ModPerl::Registry
++        #SetHandler  perl-script
++        #PerlHandler ModPerl::Registry
+         Options +ExecCGI
+-        PerlOptions +ParseHeaders
++        #PerlOptions +ParseHeaders
+         Order allow,deny
+         Allow from all
+     </Location>

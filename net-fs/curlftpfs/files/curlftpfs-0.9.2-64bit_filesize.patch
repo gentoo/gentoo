@@ -1,0 +1,11 @@
+--- ftpfs.c.old	2009-11-28 14:28:05.000000000 +0300
++++ ftpfs.c	2009-11-28 14:28:19.000000000 +0300
+@@ -503,7 +503,7 @@
+   
+   curl_easy_setopt_or_die(fh->write_conn, CURLOPT_URL, fh->full_path);
+   curl_easy_setopt_or_die(fh->write_conn, CURLOPT_UPLOAD, 1);
+-  curl_easy_setopt_or_die(fh->write_conn, CURLOPT_INFILESIZE, -1);
++  curl_easy_setopt_or_die(fh->write_conn, CURLOPT_INFILESIZE, (curl_off_t)-1);
+   curl_easy_setopt_or_die(fh->write_conn, CURLOPT_READFUNCTION, write_data_bg);
+   curl_easy_setopt_or_die(fh->write_conn, CURLOPT_READDATA, fh);
+   curl_easy_setopt_or_die(fh->write_conn, CURLOPT_LOW_SPEED_LIMIT, 1);

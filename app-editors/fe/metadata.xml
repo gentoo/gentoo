@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  Fe is a small and easy to use folding editor.
+
+  Fe allows to fold arbitrary text regions; it is not bound to syntactic
+  units. Unlike Origami, folds are not attributed with a trailing comment,
+  instead you can put folds before or after any text in the line, as you like.
+
+  Fe has no configuration or extension language and requires no setup. Its
+  user interface is emacs-like and it has menues for the very most important
+  functions to help beginners. Further there is a reference card. It offers:
+
+   * Regions and Emacs-like kill ring
+   * Incremental search
+   * Keyboard macros
+   * Editing binary files
+   * Multiple windows and views
+   * Compose function for Latin 1 characters
+
+  In case you can't stand the emacs interface and want ultimate flexibility,
+  fe can easily be modified, because it is structured as an editor library
+  with a user interface frontend, all written in C.
+</longdescription>
+<use>
+  <flag name="sendmail">Send mail after editor abend</flag>
+</use>
+</pkgmetadata>

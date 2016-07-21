@@ -1,0 +1,16 @@
+Ensure that qcollectiongenerator is called from the correct directory.
+
+Even though QT_BINARY_DIR is specified, cmake will try PATH first.
+
+Gentoo-bug: 544108
+
+--- a/src/doc/CMakeLists.txt
++++ b/src/doc/CMakeLists.txt
+@@ -9,6 +9,7 @@
+ FIND_PROGRAM(QT_HELP_COLLECTION_GENERATOR
+   qcollectiongenerator
+   PATHS "${QT_BINARY_DIR}"
++  NO_DEFAULT_PATH
+   DOC "qcollectiongenerator used to compile Qt help collection project files")
+ 
+ ADD_CUSTOM_COMMAND(

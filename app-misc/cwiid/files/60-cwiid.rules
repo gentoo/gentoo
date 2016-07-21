@@ -1,0 +1,2 @@
+# make possible to use cwiid device as user
+KERNEL=="uinput", MODE="0660", GROUP="plugdev"

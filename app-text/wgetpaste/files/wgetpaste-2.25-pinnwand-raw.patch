@@ -1,0 +1,11 @@
+--- /usr/bin/wgetpaste	2014-09-25 22:20:39.097103971 +0300
++++ wgetpaste	2014-10-09 10:06:41.765195553 +0300
+@@ -200,7 +200,7 @@
+ xml+velocity xml xquery xslt xtend yaml"
+ EXPIRATIONS_pinnwand="1day 1week 1month never"
+ POST_pinnwand="submit=Paste! % % lexer expiry % code"
+-REGEX_RAW_pinnwand='s|^\(http://[^/]*/\)show\(/[[:alnum:]]*/\)$|\1raw\2|'
++REGEX_RAW_pinnwand='s|^\(https\?://[^/]*/\)show\(/[[:alnum:]]*/\?\)$|\1raw\2|'
+ 
+ ### errors
+ die() {

@@ -1,0 +1,14 @@
+diff -up pydot-1.0.28/dot_parser.py.pyparsing2fix pydot-1.0.28/dot_parser.py
+--- pydot-1.0.28/dot_parser.py.pyparsing2fix	2013-12-09 08:59:24.660145534 -0500
++++ pydot-1.0.28/dot_parser.py	2013-12-09 09:00:10.021222397 -0500
+@@ -25,8 +25,9 @@ from pyparsing import __version__ as pyp
+ from pyparsing import ( nestedExpr, Literal, CaselessLiteral, Word, Upcase, OneOrMore, ZeroOrMore,
+     Forward, NotAny, delimitedList, oneOf, Group, Optional, Combine, alphas, nums,
+     restOfLine, cStyleComment, nums, alphanums, printables, empty, quotedString,
+-    ParseException, ParseResults, CharsNotIn, _noncomma, dblQuotedString, QuotedString, ParserElement )
++    ParseException, ParseResults, CharsNotIn, dblQuotedString, QuotedString, ParserElement )
+ 
++_noncomma = "".join( [ c for c in printables if c != "," ] )
+ 
+ class P_AttrList:
+ 

@@ -1,0 +1,132 @@
+--- configure.ac	2013-01-29 16:39:56.000000000 +0100
++++ configure.ac	2013-02-17 10:40:53.680021913 +0100
+@@ -7,9 +7,9 @@
+ # (C) Copyright 2005-2007 Rémi Turboult <r3mi@users.sourceforge.net>
+ #
+ 
+-AC_PREREQ(2.60)
++AC_PREREQ([2.60])
+ 
+-AC_INIT([libupnp], [1.6.18], [mroberto@users.sourceforge.net])
++AC_INIT([libupnp],[1.6.18],[mroberto@users.sourceforge.net])
+ dnl ############################################################################
+ dnl # *Independently* of the above libupnp package version, the libtool version
+ dnl # of the 3 libraries need to be updated whenever there is a change released:
+@@ -366,7 +366,6 @@
+ #    installed libraries.
+ #
+ AC_CONFIG_HEADERS([autoconfig.h upnp/inc/upnpconfig.h])
+-#AC_SYS_LARGEFILE_SENSITIVE
+ 
+ AC_REVISION([$Revision: 1.1 $])
+ 
+@@ -506,9 +505,12 @@
+ #
+ # Checks for programs
+ #
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AM_PROG_CC_C_O
+-AC_PROG_LIBTOOL
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
++LT_INIT
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ AC_PROG_EGREP
+@@ -532,9 +534,7 @@
+ 		#:
+ 		# Use -O0 in debug so that variables do not get optimized out
+ 		AX_CFLAGS_GCC_OPTION([-O0, -g])
+-	else
+-		# add optimise for size
+-		AX_CFLAGS_GCC_OPTION([-Os])
++
+ 	fi
+ 	;;
+ esac
+@@ -548,8 +548,7 @@
+ #
+ AC_TYPE_SIZE_T
+ AC_TYPE_OFF_T
+-AC_DEFINE([_LARGE_FILE_SOURCE], [], [Large files support])
+-AC_DEFINE([_FILE_OFFSET_BITS], [64], [File Offset size])
++
+ 
+ 
+ #
+--- ixml/Makefile.am.orig
++++ ixml/Makefile.am
+@@ -7,7 +7,7 @@
+ 
+ SUBDIRS 		= doc
+ 
+-AM_CPPFLAGS		= -I$(srcdir)/inc -I$(srcdir)/src/inc
++AM_CPPFLAGS		= -include $(top_builddir)/autoconfig.h -I$(srcdir)/inc -I$(srcdir)/src/inc
+ AM_CFLAGS		= 
+ 
+ LDADD			= libixml.la
+--- threadutil/Makefile.am.orig
++++ threadutil/Makefile.am
+@@ -4,7 +4,7 @@
+ # (C) Copyright 2005 Remi Turboult <r3mi@users.sourceforge.net>
+ #
+ 
+-AM_CPPFLAGS		= -I$(srcdir)/inc -I$(srcdir)/src/inc
++AM_CPPFLAGS		= -include $(top_builddir)/autoconfig.h -I$(srcdir)/inc -I$(srcdir)/src/inc
+ 
+ if ENABLE_DEBUG
+     AM_CPPFLAGS		+= -DDEBUG -DSTATS
+--- upnp/src/api/UpnpString.c.orig
++++ upnp/src/api/UpnpString.c
+@@ -28,38 +28,6 @@
+ 	/* Other systems have strncasecmp */
+ #endif
+ 
+-#ifndef UPNP_USE_MSVCPP
+-	/* VC has strnlen which is already included but with (potentially) different linkage */
+-	/* strnlen() is a GNU extension. */
+-	#if HAVE_STRNLEN
+-		extern size_t strnlen(const char *s, size_t maxlen);
+-	#else /* HAVE_STRNLEN */
+-		static size_t strnlen(const char *s, size_t n)
+-		{
+-			const char *p = (const char *)memchr(s, 0, n);
+-			return p ? p - s : n;
+-		}
+-	#endif /* HAVE_STRNLEN */
+-#endif /* WIN32 */
+-
+-/* strndup() is a GNU extension. */
+-#if HAVE_STRNDUP && !defined(WIN32)
+-	extern char *strndup(__const char *__string, size_t __n);
+-#else /* HAVE_STRNDUP && !defined(WIN32) */
+-	static char *strndup(const char *__string, size_t __n)
+-	{
+-		size_t strsize = strnlen(__string, __n);
+-		char *newstr = (char *)malloc(strsize + 1);
+-		if (newstr == NULL)
+-			return NULL;
+-
+-		strncpy(newstr, __string, strsize);
+-		newstr[strsize] = 0;
+-
+-		return newstr;
+-	}
+-#endif /* HAVE_STRNDUP && !defined(WIN32) */
+-
+ /*!
+  * \brief Internal implementation of the class UpnpString.
+  *
+--- upnp/Makefile.am.orig
++++ upnp/Makefile.am
+@@ -6,7 +6,7 @@
+ 
+ SUBDIRS = doc . sample
+ 
+-AM_CPPFLAGS = \
++AM_CPPFLAGS = -include $(top_builddir)/autoconfig.h \
+ 	-I$(srcdir)/inc \
+ 	-I$(top_srcdir)/threadutil/inc \
+ 	-I$(top_srcdir)/ixml/inc

@@ -1,0 +1,111 @@
+From 3ddf2f38a47c7cc13dd6f480841b9b90f6304ed4 Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Mon, 3 Sep 2012 19:01:24 +0200
+Subject: [PATCH] abrt-gui: fall back to direct access if dbus access fails.
+ Closes #484
+
+It looks like this:
+
+root> abrt-gui
+Can't connect to system DBus: Error connecting: No such file or directory
+Error in DBus communication, falling back to direct access to '/var/spool/abrt'
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ src/gui-gtk/main.c    | 44 +++++++++++++++++++++++++++-----------------
+ src/lib/problem_api.c |  5 +++--
+ 2 files changed, 30 insertions(+), 19 deletions(-)
+
+diff --git a/src/gui-gtk/main.c b/src/gui-gtk/main.c
+index 2cc4bef..e6e8ef0 100644
+--- a/src/gui-gtk/main.c
++++ b/src/gui-gtk/main.c
+@@ -252,23 +252,6 @@ static void add_directory_to_dirlist(const char *problem_dir_path, gpointer data
+     VERB1 log("added: %s", problem_dir_path);
+ }
+ 
+-static void query_dbus_and_add_to_dirlist(void)
+-{
+-    GList *problem_dirs = get_problems_over_dbus(g_authorize);
+-
+-    if (problem_dirs)
+-    {
+-        g_list_foreach(problem_dirs, (GFunc)add_directory_to_dirlist, /*use_dbus:*/ (void*)true);
+-        list_free_with_free(problem_dirs);
+-    }
+-
+-    /* HACK ALERT! We "magically know" that dbus-reported problem dirs
+-     * live in g_settings_dump_location.
+-     * Notifications on changes should be implemented to go over dbus too.
+-     */
+-    watch_this_dir(g_settings_dump_location);
+-}
+-
+ static void scan_directory_and_add_to_dirlist(const char *path)
+ {
+     DIR *dp = opendir(path);
+@@ -296,6 +279,33 @@ static void scan_directory_and_add_to_dirlist(const char *path)
+     watch_this_dir(path);
+ }
+ 
++static void query_dbus_and_add_to_dirlist(void)
++{
++    GList *problem_dirs = get_problems_over_dbus(g_authorize);
++
++    if (problem_dirs == ERR_PTR)
++    {
++        /* One way to trigger this is to temporarily rename
++         * dbus socket (/var/run/dbus/system_bus_socket)
++         */
++        error_msg("Error in DBus communication, falling back to direct access to '%s'", g_settings_dump_location);
++        scan_directory_and_add_to_dirlist(g_settings_dump_location);
++        return;
++    }
++
++    if (problem_dirs)
++    {
++        g_list_foreach(problem_dirs, (GFunc)add_directory_to_dirlist, /*use_dbus:*/ (void*)true);
++        list_free_with_free(problem_dirs);
++    }
++
++    /* HACK ALERT! We "magically know" that dbus-reported problem dirs
++     * live in g_settings_dump_location.
++     * Notifications on changes should be implemented to go over dbus too.
++     */
++    watch_this_dir(g_settings_dump_location);
++}
++
+ static void scan_dirs_and_add_to_dirlist(void)
+ {
+     if (!(g_opts & OPT_D))
+diff --git a/src/lib/problem_api.c b/src/lib/problem_api.c
+index b9967e8..04f4069 100644
+--- a/src/lib/problem_api.c
++++ b/src/lib/problem_api.c
+@@ -144,7 +144,7 @@ GList *get_problems_over_dbus(bool authorize)
+ {
+     GDBusProxy *proxy = get_dbus_proxy();
+     if (!proxy)
+-        return NULL;
++        return ERR_PTR;
+ 
+     GError *error = NULL;
+     GVariant *result = g_dbus_proxy_call_sync(proxy,
+@@ -159,6 +159,7 @@ GList *get_problems_over_dbus(bool authorize)
+     {
+         error_msg(_("Can't get problem list from abrt-dbus: %s"), error->message);
+         g_error_free(error);
++        return ERR_PTR;
+     }
+ 
+     GList *list = NULL;
+@@ -172,4 +173,4 @@ GList *get_problems_over_dbus(bool authorize)
+     }
+ 
+     return list;
+-}
+\ No newline at end of file
++}
+-- 
+1.7.12
+

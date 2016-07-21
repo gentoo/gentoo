@@ -1,0 +1,80 @@
+Upstream commit to support glxCopySubBufferMESA.  Modified to fix compile error with egl.
+
+commit 4dc3f3bdc3611ca1b3dec402f9242a036db8c8e4
+Author: Carl Worth <cworth@cworth.org>
+Date:   Thu Oct 17 14:52:21 2013 -0700
+
+    retrace: Implement glxCopySubBufferMESA
+    
+    This enables replay of a trace captured on ChromeOS.
+    
+    Note: Replaying on EGL is not supported, (will trigger a warning),
+    since, as far as I know, EGL does not provide an equivalent function.
+
+--- apitrace/retrace/glretrace_glx.cpp
++++ apitrace/retrace/glretrace_glx.cpp
+@@ -111,6 +111,16 @@ static void retrace_glXDestroyContext(trace::Call &call) {
+     delete context;
+ }
+ 
++static void retrace_glXCopySubBufferMESA(trace::Call &call) {
++    glws::Drawable *drawable = getDrawable(call.arg(1).toUInt());
++    int x = call.arg(2).toSInt();
++    int y = call.arg(3).toSInt();
++    int width = call.arg(4).toSInt();
++    int height = call.arg(5).toSInt();
++
++    drawable->copySubBuffer(x, y, width, height);
++}
++
+ static void retrace_glXSwapBuffers(trace::Call &call) {
+     glws::Drawable *drawable = getDrawable(call.arg(1).toUInt());
+ 
+@@ -173,7 +183,7 @@ const retrace::Entry glretrace::glx_callbacks[] = {
+     {"glXChooseVisual", &retrace::ignore},
+     //{"glXCopyContext", &retrace_glXCopyContext},
+     //{"glXCopyImageSubDataNV", &retrace_glXCopyImageSubDataNV},
+-    //{"glXCopySubBufferMESA", &retrace_glXCopySubBufferMESA},
++    {"glXCopySubBufferMESA", &retrace_glXCopySubBufferMESA},
+     {"glXCreateContextAttribsARB", &retrace_glXCreateContextAttribsARB},
+     {"glXCreateContext", &retrace_glXCreateContext},
+     //{"glXCreateContextWithConfigSGIX", &retrace_glXCreateContextWithConfigSGIX},
+--- apitrace/retrace/glws.hpp
++++ apitrace/retrace/glws.hpp
+@@ -127,6 +127,8 @@ public:
+         visible = true;
+     }
+ 
++    virtual void copySubBuffer(int x, int y, int width, int height) = 0;
++
+     virtual void swapBuffers(void) = 0;
+ };
+ 
+--- apitrace/retrace/glws_egl_xlib.cpp
++++ apitrace/retrace/glws_egl_xlib.cpp
+@@ -244,6 +244,10 @@ public:
+         Drawable::show();
+     }
+ 
++    void copySubBuffer(int x, int y, int width, int height) {
++        std::cerr << "glws_egl_xlib: Warning: copySubBuffer Not yet implemented\n";
++    }
++
+     void swapBuffers(void) {
+         eglBindAPI(api);
+         eglSwapBuffers(eglDisplay, surface);
+--- apitrace/retrace/glws_glx.cpp
++++ apitrace/retrace/glws_glx.cpp
+@@ -213,6 +213,12 @@ public:
+         Drawable::show();
+     }
+ 
++    void copySubBuffer(int x, int y, int width, int height) {
++        glXCopySubBufferMESA(display, window, x, y, width, height);
++
++        processKeys();
++    }
++
+     void swapBuffers(void) {
+         glXSwapBuffers(display, window);
+ 

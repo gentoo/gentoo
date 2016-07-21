@@ -1,0 +1,11 @@
+--- a/src/squidsites.c
++++ b/src/squidsites.c
+@@ -286,7 +286,7 @@
+ static
+ void print_help()
+ {
+-   fprintf( stderr, help_message );
++   fprintf( stderr, "%s\n", help_message );
+ } /* print_help */
+ 
+ 

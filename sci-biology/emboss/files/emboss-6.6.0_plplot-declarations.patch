@@ -1,0 +1,61 @@
+--- EMBOSS-6.6.0/ajax/graphics/ajgraph.c
++++ EMBOSS-6.6.0/ajax/graphics/ajgraph.c
+@@ -49,7 +49,7 @@
+ 
+ #define GRAPH_DEBUG 1
+ 
+-#include "plplotP.h"
++#include <plplotP.h>
+ 
+ 
+ static void     GraphArray(ajuint numofpoints,
+@@ -964,10 +964,10 @@
+     if(!thys->ready)
+     {
+ #if GRAPH_DEBUG
+-        ajDebug("=g= plxsfnam ('%S', '%s')\n", txt, ext);
++        ajDebug("=g= plsfnam ('%S')\n", txt);
+ #endif
+ 
+-        plxsfnam(ajStrGetPtr(txt), ext);
++        plsfnam(ajStrGetPtr(txt));
+         ajStrAssignS(&graphBasename, txt);
+         ajStrAssignC(&graphExtension, ext);
+         if(ajStrGetCharFirst(graphExtension) == '.')
+@@ -1213,10 +1213,10 @@
+ void ajGraphicsSetPenwidth(float penwidth)
+ {
+ #if GRAPH_DEBUG
+-    ajDebug("=g= plwid(%.2f) [width]\n", penwidth);
++    ajDebug("=g= c_plwidth(%.2f) [width]\n", penwidth);
+ #endif
+ 
+-    plwid((PLINT)penwidth);
++    c_plwidth((PLINT)penwidth);
+ 
+     return;
+ }
+@@ -1538,10 +1538,10 @@
+ static void GraphSetPen(ajint colour)
+ {
+ #if GRAPH_DEBUG
+-    ajDebug("=g= plcol(%d '%s') [colour]\n", colour, graphColourName[colour]);
++    ajDebug("=g= plcol0(%d '%s') [colour]\n", colour, graphColourName[colour]);
+ #endif
+ 
+-    plcol((PLINT)colour);
++    plcol0((PLINT)colour);
+ 
+     return;
+ }
+--- EMBOSS-6.6.0/ajax/graphics/ajgraph.h
++++ EMBOSS-6.6.0/ajax/graphics/ajgraph.h
+@@ -32,7 +32,7 @@
+ /* ========================================================================= */
+ 
+ #include "ajdefine.h"
+-#include "plplot.h"
++#include <plplot.h>
+ #include "ajgraphstruct.h"
+ #include "ajdefine.h"
+ #include "ajstr.h"

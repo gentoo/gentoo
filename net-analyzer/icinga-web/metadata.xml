@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+	Icinga-web is a database backed web frontend to icinga.
+	</longdescription>
+	<use>
+		<flag name="pnp">Enables pnp4nagios integration</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">icinga</remote-id>
+		<remote-id type="github">icinga/icinga-web</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,145 @@
+https://bugs.gentoo.org/417129
+
+fix openssl build logic:
+* do not probe direct filesystem paths (including hardcoding things like /usr)
+* use pkg-config to locate proper openssl libraries
+* turn dsa check into a header one
+* turn ecdsa check into a link one
+* have gost/aes actually default to --with-xxx value when cross-compiling
+
+Patch by Mike Frysinger <vapier@chromium.org>
+
+--- a/configure.in
++++ b/configure.in
+@@ -1442,16 +1442,21 @@ case "$use_openssl" in
+ 		OPENSSLLINKOBJS=""
+ 		OPENSSLLINKSRCS=""
+ 		;;
+-	auto)
+-		DST_OPENSSL_INC=""
+-		CRYPTO=""
++	yes|auto)
++		CRYPTO=""
++		PKG_CHECK_MODULES([OPENSSL], [libcrypto], [CRYPTO='-DOPENSSL'], [
++			if test "$use_openssl" = "yes"; then
++				AC_MSG_ERROR(openssl not found)
++			fi
++			use_openssl="no"
++		])
++
++		DST_OPENSSL_INC=$OPENSSL_CFLAGS
++		DST_OPENSSL_LIBS=$OPENSSL_LIBS
+ 		OPENSSLGOSTLINKOBJS=""
+ 		OPENSSLGOSTLINKSRS=""
+ 		OPENSSLLINKOBJS=""
+ 		OPENSSLLINKSRCS=""
+-		AC_MSG_ERROR(
+-[OpenSSL was not found in any of $openssldirs; use --with-openssl=/path
+-If you don't want OpenSSL, use --without-openssl])
+ 		;;
+ 	*)
+ 		if test "$want_native_pkcs11" = "yes"
+@@ -1588,27 +1593,39 @@ no)
+ ;;
+ esac
+ 
++		CC="$saved_cc"
++		CFLAGS="$saved_cflags"
++		LIBS="$saved_libs"
++		OPENSSLLINKOBJS='${OPENSSLLINKOBJS}'
++		OPENSSLLINKSRCS='${OPENSSLLINKSRCS}'
++		;;
++esac
++
++if test "$use_openssl" = "yes"; then
++	saved_cc="$CC"
++	saved_cflags="$CFLAGS"
++	saved_libs="$LIBS"
++	CFLAGS="$CFLAGS $DST_OPENSSL_INC"
++	LIBS="$LIBS $DST_OPENSSL_LIBS"
++
+-	AC_MSG_CHECKING(for OpenSSL DSA support)
+-	if test -f $use_openssl/include/openssl/dsa.h
+-	then
++	AC_CHECK_HEADERS([openssl/dsa.h])
++	if test "$ac_cv_header_openssl_dsa_h" = yes; then
+ 		AC_DEFINE(HAVE_OPENSSL_DSA)
+-		AC_MSG_RESULT(yes)
+-	else
+-		AC_MSG_RESULT(no)
+ 	fi
+ 
+ 	AC_CHECK_FUNCS(EVP_sha256 EVP_sha384 EVP_sha512)
+ 
+ 	AC_MSG_CHECKING(for OpenSSL ECDSA support)
+ 	have_ecdsa=""
+-	AC_TRY_RUN([
++	AC_TRY_LINK([
+ #include <openssl/ecdsa.h>
+ #include <openssl/objects.h>
++],[
+ int main() {
+ 	EC_KEY *ec256, *ec384;
+ 
+ #if !defined(HAVE_EVP_SHA256) || !defined(HAVE_EVP_SHA384)
+-	return (1);
++#error choke
+ #endif
+ 	ec256 = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+ 	ec384 = EC_KEY_new_by_curve_name(NID_secp384r1);
+@@ -1637,24 +1654,7 @@ int main() {
+ 	[AC_MSG_RESULT(yes)
+ 	have_ecdsa="yes"],
+ 	[AC_MSG_RESULT(no)
+-	have_ecdsa="no"],
++	have_ecdsa="no"])
+-	[AC_MSG_RESULT(using --with-ecdsa)])
+-	case "$with_ecdsa" in
+-	yes)
+-	    case "$have_ecdsa" in
+-	    no)  AC_MSG_ERROR([ecdsa not supported]) ;;
+-	    *)  have_ecdsa=yes ;;
+-	    esac
+-	    ;;
+-	no)
+-	    have_ecdsa=no ;;
+-	*)
+-	    case "$have_ecdsa" in
+-	    yes|no) ;;
+-	    *) AC_MSG_ERROR([need --with-ecdsa=[[yes or no]]]) ;;
+-	    esac
+-	    ;;
+-	esac
+ 	case $have_ecdsa in
+ 	yes)
+ 		OPENSSL_ECDSA="yes"
+@@ -1702,7 +1702,8 @@ int main() {
+ 	have_gost="yes"],
+ 	[AC_MSG_RESULT(no)
+ 	have_gost="no"],
+-	[AC_MSG_RESULT(using --with-gost)])
++	[AC_MSG_RESULT(using --with-gost)
++	have_gost=$with_gost])
+ 	case "$with_gost" in
+ 	yes)
+ 	    case "$have_gost" in
+@@ -1752,7 +1753,8 @@ int main() {
+ 	[AC_MSG_RESULT(yes)
+ 	 have_aes="yes"],
+ 	[AC_MSG_RESULT(no)])],
+-	[AC_MSG_RESULT(using --with-aes)])
++	[AC_MSG_RESULT(using --with-aes)
++	 have_aes=$with_aes])
+ 
+ 	ISC_OPENSSL_INC=""
+ 	ISC_OPENSSL_LIBS=""
+@@ -1765,8 +1767,7 @@ int main() {
+ 	OPENSSLLINKOBJS='${OPENSSLLINKOBJS}'
+ 	OPENSSLLINKSRCS='${OPENSSLLINKSRCS}'
+ 
+-	;;
+-esac
++fi
+ 
+ #
+ # This would include the system openssl path (and linker options to use

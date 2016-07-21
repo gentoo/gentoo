@@ -1,0 +1,35 @@
+From f45b38c42e7e92a5d0215c44dcf306616536011e Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Mon, 2 Nov 2015 16:32:11 +0100
+Subject: [PATCH 3/4] makefile: fix SONAME symlink, it should not be a full
+ path
+
+The symlink destination being a full path doesn't give any benefit and
+may break a few use cases of copying these files to a different
+destination, while preserving the symlink.
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8c4a9d7..cbe93e8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -125,12 +125,12 @@ tags: http_parser.c http_parser.h test.c
+ install: library
+ 	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
+ 	$(INSTALL) -D $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
+-	ln -s $(LIBDIR)/$(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
++	ln -s $(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+ 
+ install-strip: library
+ 	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
+ 	$(INSTALL) -D -s $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
+-	ln -s $(LIBDIR)/$(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
++	ln -s $(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+ 
+ uninstall:
+ 	rm "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
+-- 
+2.6.1
+

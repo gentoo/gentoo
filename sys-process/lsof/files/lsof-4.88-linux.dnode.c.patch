@@ -1,0 +1,21 @@
+ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/patches/4.88/linux.dnode.c.patch
+
+*** dnode.c
+--- lsof_4.88_src/dialects/linux/dnode.c
+***************
+*** 580,586 ****
+  	    Lf->inp_ty = 1;
+  
+  #if	defined(HASEPTOPTS)
+! 	    if (Lf->ntype == N_FIFO) {
+  	    	(void) enter_pinfo();
+  		Lf->sf |= SELPINFO;
+  	    }
+--- 580,586 ----
+  	    Lf->inp_ty = 1;
+  
+  #if	defined(HASEPTOPTS)
+! 	    if ((Lf->ntype == N_FIFO) && FpipeE) {
+  	    	(void) enter_pinfo();
+  		Lf->sf |= SELPINFO;
+  	    }

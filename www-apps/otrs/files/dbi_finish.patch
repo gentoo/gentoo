@@ -1,0 +1,10 @@
+--- Kernel/System/DB.pm.old	Wed Jun 14 15:45:49 2006
++++ Kernel/System/DB.pm	Wed Jun 14 15:43:12 2006
+@@ -217,6 +217,7 @@
+         );
+     }
+     # do disconnect
++    $Self->{Curser}->finish() if (defined($Self->{Curser}));
+     $Self->{dbh}->disconnect() if ($Self->{dbh});
+     return 1;
+ }

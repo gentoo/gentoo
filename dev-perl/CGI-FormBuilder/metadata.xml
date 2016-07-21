@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">CGI-FormBuilder</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::button</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::checkbox</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::date</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::datetime</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::datetime_local</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::email</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::file</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::hidden</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::image</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::number</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::password</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::radio</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::select</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::static</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::submit</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::text</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::textarea</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::time</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Field::url</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Messages</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Messages::base</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Messages::default</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Messages::locale</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Multi</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Source</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Source::File</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::Builtin</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::CGI_SSI</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::Div</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::Fast</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::HTML</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::TT2</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Template::Text</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Test</remote-id>
+    <remote-id type="cpan-module">CGI::FormBuilder::Util</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- Makefile.in	2010-12-13 12:59:07.000000000 -0500
++++ Makefile.new	2010-12-13 13:00:22.000000000 -0500
+@@ -215,7 +215,8 @@
+ 
+ #   install the package
+ install: all-for-install
+-	@$(MAKE) $(MKFLAGS) install-dirs install-pth @INSTALL_PTHREAD@
++	@$(MAKE) $(MKFLAGS) install-dirs 
++	@$(MAKE) $(MKFLAGS) install-pth @INSTALL_PTHREAD@
+ 	@touch .done-install >/dev/null 2>&1 || $(TRUE)
+ 	@$(MAKE) $(MKFLAGS) what-next
+ install-dirs:

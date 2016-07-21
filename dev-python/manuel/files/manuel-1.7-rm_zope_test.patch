@@ -1,0 +1,92 @@
+diff -ur manuel-1.7.1.orig/src/manuel/tests.py manuel-1.7.1/src/manuel/tests.py
+--- src/manuel/tests.py	2012-04-17 03:08:54.000000000 +0800
++++ src/manuel/tests.py	2012-05-21 20:43:20.981722893 +0800
+@@ -9,16 +9,17 @@
+ import os.path
+ import re
+ import unittest
+-import zope.testing.renormalizing
+ 
+ doctest = manuel.absolute_import('doctest')
+ 
+ here = os.path.dirname(os.path.abspath(__file__))
+ 
+-checker = zope.testing.renormalizing.RENormalizing([
++try:
++    checker = zope.testing.renormalizing.RENormalizing([
+     (re.compile(r"<unittest\.result\.TestResult"), '<unittest.TestResult'),
+     ])
+-
++except:
++    pass
+ 
+ def turtle_on_the_bottom_test():
+     """We use manuel to test itself.
+@@ -52,7 +53,6 @@
+     optionflags = doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS
+ 
+     m = manuel.ignore.Manuel()
+-    m += manuel.doctest.Manuel(optionflags=optionflags, checker=checker)
+     m += manuel.codeblock.Manuel()
+     m += manuel.capture.Manuel()
+     m += manuel.testcase.SectionManuel()
+@@ -66,3 +66,6 @@
+         suite,
+         doctest.DocTestSuite(),
+         ))
++
++if __name__ == '__main__':
++    unittest.TextTestRunner().run(test_suite())
+diff -ur manuel-1.7.1.orig/setup.py manuel-1.7.1/setup.py
+--- setup.py    2013-02-14 10:07:38.000000000 +0800
++++ setup.py    2013-03-15 23:21:18.834849031 +0800
+@@ -21,8 +21,6 @@
+     + open('CHANGES.txt').read()
+     )
+
+-tests_require = ['zope.testing']
+-
+ setup(
+     name='manuel',
+     version='1.7.1',
+@@ -38,10 +36,6 @@
+         'Programming Language :: Python :: 3',
+         ],
+     license='ZPL',
+-    extras_require={
+-        'tests': tests_require,
+-        },
+-    tests_require = tests_require,
+     test_suite = 'manuel.tests.test_suite',
+     install_requires=[
+         'setuptools',
+diff -ur manuel-1.7.1.orig/src/manuel/index.txt manuel-1.7.1/src/manuel/index.txt
+--- src/manuel/index.txt        2012-04-17 03:08:54.000000000 +0800
++++ src/manuel/index.txt        2012-04-28 05:43:26.918993769 +0800
+@@ -166,16 +166,16 @@
+
+ .. code-block:: python
+
+-     import os.path
+-     import manuel.testing
++    import os.path
++    import manuel.testing
+
+-     class StripDirsTestCase(manuel.testing.TestCase):
+-         def shortDescription(self):
++    class StripDirsTestCase(manuel.testing.TestCase):
++        def shortDescription(self):
+              return os.path.basename(str(self))
+-     suite = manuel.testing.TestSuite(
+-         m, path_to_test, TestCase=StripDirsTestCase)
++    suite = manuel.testing.TestSuite(
++        m, path_to_test, TestCase=StripDirsTestCase)
+
+-    >>> list(suite)[0].shortDescription()
++    list(suite)[0].shortDescription()
+     'bugs.txt'
+
+
+
+
+

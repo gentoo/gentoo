@@ -1,0 +1,16 @@
+[Unit]
+Description=RIP routing daemon
+Documentation=man:ripd(8) man:zebra(8)
+BindTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/ripd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/ripd.pid
+ExecStart=/usr/sbin/ripd -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

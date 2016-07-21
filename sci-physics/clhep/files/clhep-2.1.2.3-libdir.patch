@@ -1,0 +1,93 @@
+diff -Nur 2.1.2.3/CLHEP.orig/cmake/Modules/ClhepBuildLibrary.cmake 2.1.2.3/CLHEP/cmake/Modules/ClhepBuildLibrary.cmake
+--- 2.1.2.3/CLHEP.orig/cmake/Modules/ClhepBuildLibrary.cmake	2012-06-27 20:47:44.000000000 +0100
++++ 2.1.2.3/CLHEP/cmake/Modules/ClhepBuildLibrary.cmake	2012-06-27 23:49:13.000000000 +0100
+@@ -47,8 +47,8 @@
+   # Install the libraries
+   INSTALL (TARGETS ${package} ${package}S
+       RUNTIME DESTINATION bin
+-      LIBRARY DESTINATION lib
+-      ARCHIVE DESTINATION lib
++      LIBRARY DESTINATION lib${LIB_SUFFIX}
++      ARCHIVE DESTINATION lib${LIB_SUFFIX}
+       ) 
+ endmacro(clhep_build_library)
+ 
+@@ -78,22 +78,22 @@
+   INSTALL(TARGETS CLHEP CLHEPS
+       EXPORT CLHEPLibraryDepends
+       RUNTIME DESTINATION bin
+-      LIBRARY DESTINATION lib
+-      ARCHIVE DESTINATION lib
++      LIBRARY DESTINATION lib${LIB_SUFFIX}
++      ARCHIVE DESTINATION lib${LIB_SUFFIX}
+       ) 
+ 
+   if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
+       # copy
+       file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/clhep_static_symlink 
+-        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir ${CMAKE_INSTALL_PREFIX}/lib; ${CMAKE_COMMAND} ARGS -E copy ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP${CMAKE_STATIC_LIBRARY_SUFFIX} )" )
++        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir $ENV{CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}; ${CMAKE_COMMAND} ARGS -E copy ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP${CMAKE_STATIC_LIBRARY_SUFFIX} )" )
+       file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/clhep_shared_symlink 
+-        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir ${CMAKE_INSTALL_PREFIX}/bin; ${CMAKE_COMMAND} ARGS -E copy ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_SHARED_LIBRARY_SUFFIX} ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP${CMAKE_SHARED_LIBRARY_SUFFIX} )" )
++        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin; ${CMAKE_COMMAND} ARGS -E copy ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_SHARED_LIBRARY_SUFFIX} ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP${CMAKE_SHARED_LIBRARY_SUFFIX} )" )
+   else()
+       # create the symbolic links
+       file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/clhep_static_symlink 
+-        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir ${CMAKE_INSTALL_PREFIX}/lib; ${CMAKE_COMMAND} ARGS -E create_symlink ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP${CMAKE_STATIC_LIBRARY_SUFFIX} )" )
++        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}; ${CMAKE_COMMAND} ARGS -E create_symlink ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP${CMAKE_STATIC_LIBRARY_SUFFIX} )" )
+       file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/clhep_shared_symlink 
+-        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir ${CMAKE_INSTALL_PREFIX}/lib; ${CMAKE_COMMAND} ARGS -E create_symlink ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_SHARED_LIBRARY_SUFFIX} ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP${CMAKE_SHARED_LIBRARY_SUFFIX} )" )
++        	 "exec_program(${CMAKE_COMMAND} ARGS -E chdir $ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}; ${CMAKE_COMMAND} ARGS -E create_symlink ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP-${VERSION}${CMAKE_SHARED_LIBRARY_SUFFIX} ${CMAKE_SHARED_LIBRARY_PREFIX}CLHEP${CMAKE_SHARED_LIBRARY_SUFFIX} )" )
+   endif()
+ 
+   INSTALL(SCRIPT ${CMAKE_CURRENT_BINARY_DIR}/clhep_static_symlink )
+diff -Nur 2.1.2.3/CLHEP.orig/cmake/Modules/ClhepToolchain.cmake 2.1.2.3/CLHEP/cmake/Modules/ClhepToolchain.cmake
+--- 2.1.2.3/CLHEP.orig/cmake/Modules/ClhepToolchain.cmake	2012-06-27 20:47:44.000000000 +0100
++++ 2.1.2.3/CLHEP/cmake/Modules/ClhepToolchain.cmake	2012-06-27 23:39:28.000000000 +0100
+@@ -63,7 +63,7 @@
+ #
+ set(CLHEP_PKGCONFIG_PREFIX ${PROJECT_BINARY_DIR})
+ set(CLHEP_PKGCONFIG_INCLUDEDIR ${CLHEP_INCLUDE_DIR})
+-set(CLHEP_PKGCONFIG_LIBDIR ${PROJECT_BINARY_DIR}/lib)
++set(CLHEP_PKGCONFIG_LIBDIR ${PROJECT_BINARY_DIR}/lib${LIB_SUFFIX})
+ 
+ configure_file(${PROJECT_SOURCE_DIR}/cmake/Templates/clhep.pc.in
+   ${PROJECT_BINARY_DIR}/clhep.pc
+@@ -84,7 +84,7 @@
+ # We use a relative path from the directory where the CLHEPConfig.cmake
+ # file is installed to the actual include dir. 
+ file(RELATIVE_PATH _relincpath 
+-  ${CMAKE_INSTALL_PREFIX}/lib/CLHEP-${VERSION}
++  ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/CLHEP-${VERSION}
+   ${CMAKE_INSTALL_PREFIX}/include
+   )
+ set(CLHEP_INCLUDE_DIR "\${_thisdir}/${_relincpath}")
+@@ -111,7 +111,7 @@
+ # If you later use GNUInstallDirs.cmake, this would need more work to
+ # ensure accurate calculation of the relative path.
+ set(CLHEP_PKGCONFIG_PREFIX "\${pcfiledir}/../..")
+-set(CLHEP_PKGCONFIG_LIBDIR "\${prefix}/lib")
++set(CLHEP_PKGCONFIG_LIBDIR "\${prefix}/lib${LIB_SUFFIX}")
+ set(CLHEP_PKGCONFIG_INCLUDEDIR "\${prefix}/include")
+ 
+ configure_file(${PROJECT_SOURCE_DIR}/cmake/Templates/clhep.pc.in
+@@ -129,16 +129,16 @@
+ install(FILES
+   ${PROJECT_BINARY_DIR}/InstallTreeFiles/CLHEPConfigVersion.cmake 
+   ${PROJECT_BINARY_DIR}/InstallTreeFiles/CLHEPConfig.cmake 
+-  DESTINATION lib/CLHEP-${VERSION}
++  DESTINATION lib${LIB_SUFFIX}/CLHEP-${VERSION}
+   )
+ 
+-install(EXPORT CLHEPLibraryDepends DESTINATION lib/CLHEP-${VERSION})
++install(EXPORT CLHEPLibraryDepends DESTINATION lib${LIB_SUFFIX}/CLHEP-${VERSION})
+ 
+ # Install the pkg-config file. The choice of 'lib/pkgconfig' for the 
+ # installation seems fairly standard.
+ install(FILES
+   ${PROJECT_BINARY_DIR}/InstallTreeFiles/clhep.pc
+-  DESTINATION lib/pkgconfig
++  DESTINATION lib${LIB_SUFFIX}/pkgconfig
+   )
+ 
+ # - And we should be done...

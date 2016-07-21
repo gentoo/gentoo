@@ -1,0 +1,56 @@
+--- doc/Makefile.am.orig
++++ doc/Makefile.am
+@@ -9,7 +9,7 @@ DOC_MODULE=gts
+ DOC_MAIN_SGML_FILE=gts-docs.sgml
+ 
+ # The directory containing the source code (if it contains documentation).
+-DOC_SOURCE_DIR=../src
++DOC_SOURCE_DIR=$(top_srcdir)/src
+ 
+ TARGET_DIR=html/$(DOC_MODULE)
+ 
+@@ -21,10 +21,10 @@ scan:
+ templates: scan
+ 	gtkdoc-mktmpl --module=$(DOC_MODULE)
+ 
+-sgml:
++sgml: scan
+ 	gtkdoc-mkdb --module=$(DOC_MODULE) --source-dir=$(DOC_SOURCE_DIR)
+ 
+-html:
++html: sgml
+ 	if ! test -d html ; then mkdir html ; fi
+ 	-cd html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+ 
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -66,10 +66,10 @@ predicates.o: predicates.c predicates_init.h predicates.h
+ 	$(COMPILE) -c $(srcdir)/predicates.c
+ 
+ predicates_init: predicates_init.c rounding.h
+-	$(COMPILE) $(srcdir)/predicates_init.c -o $(srcdir)/predicates_init
++	$(COMPILE) $(srcdir)/predicates_init.c -o $(top_builddir)/src/predicates_init
+ 
+ predicates_init.h: predicates_init
+-	./predicates_init >  $(srcdir)/predicates_init.h
++	$(top_builddir)/src/predicates_init >  $(srcdir)/predicates_init.h
+ 
+ CLEANFILES = $(BUILT_SOURCES)
+ 
+--- examples/Makefile.am.orig	2012-01-20 19:44:46.000000000 +0000
++++ examples/Makefile.am	2012-01-20 19:45:04.000000000 +0000
+@@ -13,12 +13,10 @@
+ NETPBM_EXTRA = happrox
+ endif
+ 
+-bin_PROGRAMS = \
++check_PROGRAMS = \
+ 	transform \
+ 	delaunay \
+-	$(NETPBM_EXTRA)
+-
+-noinst_PROGRAMS = \
++	$(NETPBM_EXTRA) \
+ 	set \
+ 	volume \
+ 	cleanup \

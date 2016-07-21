@@ -1,0 +1,11 @@
+--- fvwm-themes-0.7.0/configure.in
++++ fvwm-themes-0.7.0/configure.in
+@@ -195,7 +195,7 @@
+ 
+ # Hopefully this "sort" is portable (after many tries using awk and expr)
+ if (echo $REQUIRED_FVWM_VERSION; echo $FVWM_VERSION) \
+-| sed 's/\./ /g' | uniq | sort -n +0 -1 +1 -2 +2 -3 -c 2>/dev/null; then
++| sort -c -n -t . -k 1,1 -k 2,2 -k 3,3 2>/dev/null; then
+ 	:
+ 	# fvwm version is ok
+ else

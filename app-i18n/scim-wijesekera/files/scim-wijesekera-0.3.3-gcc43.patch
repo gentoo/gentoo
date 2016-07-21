@@ -1,0 +1,22 @@
+diff -Naur scim-wijesekera-0.3.3.orig/src/scim_wijesekera_imengine.cpp scim-wijesekera-0.3.3/src/scim_wijesekera_imengine.cpp
+--- scim-wijesekera-0.3.3.orig/src/scim_wijesekera_imengine.cpp	2008-04-26 17:45:15.000000000 +0900
++++ scim-wijesekera-0.3.3/src/scim_wijesekera_imengine.cpp	2008-12-29 01:07:23.000000000 +0900
+@@ -33,6 +33,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <cstring>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+diff -Naur scim-wijesekera-0.3.3.orig/src/scim_wijesekera_imengine_setup.cpp scim-wijesekera-0.3.3/src/scim_wijesekera_imengine_setup.cpp
+--- scim-wijesekera-0.3.3.orig/src/scim_wijesekera_imengine_setup.cpp	2008-04-26 17:45:15.000000000 +0900
++++ scim-wijesekera-0.3.3/src/scim_wijesekera_imengine_setup.cpp	2008-12-29 01:07:03.000000000 +0900
+@@ -30,6 +30,7 @@
+ #ifdef HAVE_CONFIG_H
+   #include <config.h>
+ #endif
++#include <cstring>
+ 
+ #include <scim.h>
+ #include <gtk/scimkeyselection.h>

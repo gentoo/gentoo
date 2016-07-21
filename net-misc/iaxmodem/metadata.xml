@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		IAXmodem is a software modem written in C that uses an IAX channel
+		(commonly provided by an Asterisk PBX system) instead of a traditional
+		phone line and uses a DSP library instead of DSP hardware chipsets.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">iaxmodem</remote-id>
+	</upstream>
+</pkgmetadata>

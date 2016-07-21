@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/472592
+
+From dd0aa192626f94d08e399fc2a743ee72c50853fb Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 24 Apr 2015 20:41:31 -0400
+Subject: [PATCH iputils] ping: fix -i number parsing in locales
+
+Always use #.# format for the -i flag even when the current locale uses
+a different separator.  Locale de_DE which uses #,# normally.
+
+Simple testcase:
+$ make USE_IDN=1
+$ LANG=de_DE.UTF8 ./ping -i 0.5 localhost
+
+Reported-by: Sergey Fionov <fionov@gmail.com>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ ping_common.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/ping_common.c b/ping_common.c
+index 62f53a6..0a37e09 100644
+--- a/ping_common.c
++++ b/ping_common.c
+@@ -269,9 +269,17 @@ void common_options(int ch)
+ 		double dbl;
+ 		char *ep;
+ 
++#ifdef USE_IDN
++		setlocale(LC_ALL, "C");
++#endif
++
+ 		errno = 0;
+ 		dbl = strtod(optarg, &ep);
+ 
++#ifdef USE_IDN
++		setlocale(LC_ALL, "");
++#endif
++
+ 		if (errno || *ep != '\0' ||
+ 		    !finite(dbl) || dbl < 0.0 || dbl >= (double)INT_MAX / 1000 - 1.0) {
+ 			fprintf(stderr, "ping: bad timing interval\n");
+-- 
+2.3.5
+

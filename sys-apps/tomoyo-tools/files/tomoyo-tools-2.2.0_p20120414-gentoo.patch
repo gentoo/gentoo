@@ -1,0 +1,14 @@
+diff -Naur tomoyo-tools.orig/tomoyo_init_policy.c tomoyo-tools/tomoyo_init_policy.c
+--- tomoyo-tools.orig/tomoyo_init_policy.c	2009-07-27 15:00:00.000000000 +0900
++++ tomoyo-tools/tomoyo_init_policy.c	2009-07-29 01:56:32.000000000 +0900
+@@ -1238,6 +1259,10 @@
+ 	echo("file_pattern /etc/gshadow.\\$");
+ 	echo("file_pattern /etc/passwd.\\$");
+ 	echo("file_pattern /etc/shadow.\\$");
++	echo("file_pattern /etc/group.edit");
++	echo("file_pattern /etc/gshadow.edit");
++	echo("file_pattern /etc/passwd.edit");
++	echo("file_pattern /etc/shadow.edit");
+ 	echo("file_pattern /var/cache/logwatch/logwatch.\\*/");
+ 	echo("file_pattern /var/cache/logwatch/logwatch.\\*/\\*");
+ 	echo("file_pattern /var/tmp/sqlite_\\*");

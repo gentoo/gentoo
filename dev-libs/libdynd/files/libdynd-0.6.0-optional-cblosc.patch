@@ -1,0 +1,27 @@
+--- CMakeLists.txt.orig	2014-02-10 14:26:48.299381259 -0800
++++ CMakeLists.txt	2014-02-10 14:51:16.401051546 -0800
+@@ -56,8 +56,22 @@
+ set(CMAKE_VERBOSE_MAKEFILE 1)
+ 
+ # Embedded libraries
+-add_subdirectory(thirdparty/blosc)
+-include_directories(thirdparty/blosc/blosc)
++option(DYND_INTERNAL_CBLOSC
++       "Build and use the bundled c-blosc library"
++       OFF)
++if(DYND_INTERNAL_CBLOSC)
++  add_subdirectory(thirdparty/blosc)
++  include_directories(thirdparty/blosc/blosc)
++else()
++  find_path(CBLOSC_INCLUDE_DIR blosc.h)
++  find_library(CBLOSC_LIBRARY NAMES blosc)
++  if (CBLOSC_INCLUDE_DIR AND CBLOSC_LIBRARY)
++    message(STATUS "Found c-blosc library: ${CBLOSC_LIBRARY}")
++  else ()
++    message(ERROR "No c-blosc found. Consider using internal sources.")
++  endif()
++endif(DYND_INTERNAL_CBLOSC)
++
+ add_subdirectory(thirdparty/datetime)
+ include_directories(thirdparty/datetime/include)
+ 

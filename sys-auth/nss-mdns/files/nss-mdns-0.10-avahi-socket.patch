@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/159341
+
+fix the full path to the socket run dir
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -20,7 +20,7 @@
+ AM_CFLAGS = \
+ 	-DMDNS_ALLOW_FILE=\"$(sysconfdir)/mdns.allow\" \
+ 	-DRESOLV_CONF_FILE=\"$(sysconfdir)/resolv.conf\" \
+-	-DAVAHI_SOCKET=\"$(localstatedir)/run/avahi-daemon/socket\"
++	-DAVAHI_SOCKET=\"/var/run/avahi-daemon/socket\"
+ 
+ #AM_CFLAGS += -DNDEBUG=1 -Os

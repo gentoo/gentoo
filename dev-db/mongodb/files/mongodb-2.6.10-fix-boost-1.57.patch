@@ -1,0 +1,13 @@
+diff -up mongodb-src-r2.6.7/src/mongo/shell/linenoise_utf8.h\~ mongodb-src-r2.6.7/src/mongo/shell/linenoise_utf8.h
+--- mongodb-src-r2.6.7/src/mongo/shell/linenoise_utf8.h~	2015-01-13 18:12:06.000000000 +0100
++++ mongodb-src-r2.6.7/src/mongo/shell/linenoise_utf8.h	2015-01-28 22:22:50.538934558 +0100
+@@ -17,6 +17,7 @@
+ 
+ #include <boost/smart_ptr/scoped_array.hpp>
+ #include <string.h>
++#include <algorithm>
+ 
+ namespace linenoise_utf8 {
+ 
+
+Diff finished.  Wed Jan 28 22:24:47 2015

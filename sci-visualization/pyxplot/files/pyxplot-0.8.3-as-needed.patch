@@ -1,0 +1,56 @@
+--- Makefile.skel.orig	2010-09-24 14:54:19.000000000 +0100
++++ Makefile.skel	2010-09-25 20:35:30.000000000 +0100
+@@ -120,17 +120,17 @@
+ 
+ $(LOCAL_BINDIR)/pyxplot:         $(PPL_OBJECTS)
+ 	mkdir -p $(LOCAL_BINDIR)
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPL_OBJECTS)         -o $(LOCAL_BINDIR)/pyxplot
++	$(LINK) $(LDFLAGS) $(PPL_OBJECTS) $(LIBS)        -o $(LOCAL_BINDIR)/pyxplot
+ 
+ $(LOCAL_BINDIR)/debug/pyxplot:   $(PPL_OBJECTS_DEBUG)
+ 	mkdir -p $(LOCAL_BINDIR)/debug
+ 	echo "The files in this directory are binaries with debugging options enabled: they produce activity logs called 'pyxplot.log'. It should be noted that these binaries can up to ten times slower than non-debugging versions." > $(LOCAL_BINDIR)/debug/README
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPL_OBJECTS_DEBUG)   -o $(LOCAL_BINDIR)/debug/pyxplot
++	$(LINK) $(LDFLAGS) $(PPL_OBJECTS_DEBUG) $(LIBS)   -o $(LOCAL_BINDIR)/debug/pyxplot
+ 
+ $(LOCAL_BINDIR)/install/pyxplot: $(PPL_OBJECTS_INSTALL)
+ 	mkdir -p $(LOCAL_BINDIR)/install
+ 	echo "The files in this directory are binaries intended to be installed with 'make install'. They should not be used in their present location, as they contain hard-coded links to files which are created by the 'make install' step." > $(LOCAL_BINDIR)/debug/README
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPL_OBJECTS_INSTALL) -o $(LOCAL_BINDIR)/install/pyxplot
++	$(LINK) $(LDFLAGS) $(PPL_OBJECTS_INSTALL) $(LIBS) -o $(LOCAL_BINDIR)/install/pyxplot
+ 
+ #
+ # Make the pyxplot_watch binaries
+@@ -138,15 +138,15 @@
+ 
+ $(LOCAL_BINDIR)/pyxplot_watch:         $(PPLW_OBJECTS)
+ 	mkdir -p $(LOCAL_BINDIR)
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPLW_OBJECTS)         -o $(LOCAL_BINDIR)/pyxplot_watch
++	$(LINK) $(LDFLAGS) $(PPLW_OBJECTS) $(LIBS)         -o $(LOCAL_BINDIR)/pyxplot_watch
+ 
+ $(LOCAL_BINDIR)/debug/pyxplot_watch:   $(PPLW_OBJECTS_DEBUG)
+ 	mkdir -p $(LOCAL_BINDIR)/debug
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPLW_OBJECTS_DEBUG)   -o $(LOCAL_BINDIR)/debug/pyxplot_watch
++	$(LINK) $(LDFLAGS) $(PPLW_OBJECTS_DEBUG) $(LIBS)   -o $(LOCAL_BINDIR)/debug/pyxplot_watch
+ 
+ $(LOCAL_BINDIR)/install/pyxplot_watch: $(PPLW_OBJECTS_INSTALL)
+ 	mkdir -p $(LOCAL_BINDIR)/install
+-	$(LINK) $(LDFLAGS) $(LIBS) $(PPLW_OBJECTS_INSTALL) -o $(LOCAL_BINDIR)/install/pyxplot_watch
++	$(LINK) $(LDFLAGS) $(PPLW_OBJECTS_INSTALL) $(LIBS) -o $(LOCAL_BINDIR)/install/pyxplot_watch
+ 
+ #
+ # Make fits helper binaries
+@@ -154,11 +154,11 @@
+ 
+ $(LOCAL_BINDIR)/pyxplot_fitshelper:         $(FITSHELP_OBJECTS)
+ 	mkdir -p $(LOCAL_BINDIR)
+-	$(LINK) $(LDFLAGS) $(LINK_FITSIO) $(LIBS) $(FITSHELP_OBJECTS)         -o $(LOCAL_BINDIR)/pyxplot_fitshelper
++	$(LINK) $(LDFLAGS) $(FITSHELP_OBJECTS) $(LIBS) $(LINK_FITSIO)        -o $(LOCAL_BINDIR)/pyxplot_fitshelper
+ 
+ $(LOCAL_BINDIR)/install/pyxplot_fitshelper: $(FITSHELP_OBJECTS_INSTALL)
+ 	mkdir -p $(LOCAL_BINDIR)/install
+-	$(LINK) $(LDFLAGS) $(LINK_FITSIO) $(LIBS) $(FITSHELP_OBJECTS_INSTALL) -o $(LOCAL_BINDIR)/install/pyxplot_fitshelper
++	$(LINK) $(LDFLAGS) $(FITSHELP_OBJECTS_INSTALL) $(LIBS) $(LINK_FITSIO) -o $(LOCAL_BINDIR)/install/pyxplot_fitshelper
+ 
+ #
+ # Make time helper

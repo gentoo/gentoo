@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>Marek.Szuba@cern.ch</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Elle Stone has developed LCMS-based ICC profile-making code which
+		makes a variety of RGB working space profiles, plus Gray profiles,
+		plus XYZ and LAB identity profiles. The code includes the most
+		commonly used RGB working space profiles (including ACES, ACEScg,
+		AdobeRGB1998, ProPhotoRGB, Rec.2020, and sRGB/Rec.709), plus
+		an assortment of less commonly used profiles. Each RGB working
+		space profile "family" is provided with the profile's standard Tone
+		Reproduction Curve ("TRC"), the linear gamma, gamma 1.8, and gamma
+		2.2 TRCs, and the sRGB, LAB "L", and Rec709 TRCs, in both V2 and V4
+		versions.
+		The profiles are carefully checked for accuracy and are guaranteed
+		to be well-behaved, making them suitable for colour-managed image
+		editing.
+	</longdescription>
+</pkgmetadata>

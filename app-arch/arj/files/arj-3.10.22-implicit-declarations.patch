@@ -1,0 +1,33 @@
+diff -up arj-3.10.22/environ.c~ arj-3.10.22/environ.c
+--- arj-3.10.22/environ.c~	2008-03-31 15:19:36.000000000 +0200
++++ arj-3.10.22/environ.c	2008-03-31 15:19:36.000000000 +0200
+@@ -12,6 +12,8 @@
+ #include <conio.h>
+ #include <io.h>
+ #include <process.h>
++#else
++#include <sys/wait.h>
+ #endif
+ 
+ #include <fcntl.h>
+diff -up arj-3.10.22/arjsfx.c~ arj-3.10.22/arjsfx.c
+--- arj-3.10.22/arjsfx.c~	2008-03-31 15:17:45.000000000 +0200
++++ arj-3.10.22/arjsfx.c	2008-03-31 15:17:45.000000000 +0200
+@@ -5,6 +5,7 @@
+  *
+  */
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <signal.h>
+ 
+diff -up arj-3.10.22/arj.c~ arj-3.10.22/arj.c
+--- arj-3.10.22/arj.c~	2008-03-31 15:17:14.000000000 +0200
++++ arj-3.10.22/arj.c	2008-03-31 15:17:14.000000000 +0200
+@@ -5,6 +5,7 @@
+  *
+  */
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <signal.h>

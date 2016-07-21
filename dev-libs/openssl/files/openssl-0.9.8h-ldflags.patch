@@ -1,0 +1,29 @@
+http://bugs.gentoo.org/181438
+http://bugs.gentoo.org/327421
+https://rt.openssl.org/Ticket/Display.html?id=3332&user=guest&pass=guest
+
+make sure we respect LDFLAGS
+
+also make sure we don't add useless -rpath flags to the system libdir
+
+--- openssl-0.9.8h/Makefile.org
++++ openssl-0.9.8h/Makefile.org
+@@ -180,6 +181,7 @@
+ 		MAKEDEPEND='$$$${TOP}/util/domd $$$${TOP} -MD ${MAKEDEPPROG}' \
+ 		DEPFLAG='-DOPENSSL_NO_DEPRECATED ${DEPFLAG}'	\
+ 		MAKEDEPPROG='${MAKEDEPPROG}'			\
++		LDFLAGS='${LDFLAGS}'		\
+ 		SHARED_LDFLAGS='${SHARED_LDFLAGS}'		\
+ 		KRB5_INCLUDES='${KRB5_INCLUDES}' LIBKRB5='${LIBKRB5}'	\
+ 		EXE_EXT='${EXE_EXT}' SHARED_LIBS='${SHARED_LIBS}'	\
+--- openssl-0.9.8h/Makefile.shared
++++ openssl-0.9.8h/Makefile.shared
+@@ -153,7 +153,7 @@
+ 	NOALLSYMSFLAGS='-Wl,--no-whole-archive'; \
+ 	SHAREDFLAGS="$(CFLAGS) $(SHARED_LDFLAGS) -shared -Wl,-Bsymbolic -Wl,-soname=$$SHLIB$$SHLIB_SOVER$$SHLIB_SUFFIX"
+ 
+-DO_GNU_APP=LDFLAGS="$(CFLAGS) -Wl,-rpath,$(LIBRPATH)"
++DO_GNU_APP=LDFLAGS="$(LDFLAGS) $(CFLAGS)"
+ 
+ #This is rather special.  It's a special target with which one can link
+ #applications without bothering with any features that have anything to

@@ -1,0 +1,51 @@
+From 0f9b06ade820ce165015526220569db81e00150b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 3 Jan 2015 18:59:48 +0100
+Subject: [PATCH] Support libsystemd, renamed from libsystemd-daemon
+
+---
+ lib/util/wscript_build | 2 +-
+ wscript                | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/lib/util/wscript_build b/lib/util/wscript_build
+index f161f96..6b6b511 100755
+--- a/lib/util/wscript_build
++++ b/lib/util/wscript_build
+@@ -10,7 +10,7 @@ bld.SAMBA_LIBRARY('samba-util',
+                     server_id.c dprintf.c parmlist.c bitmap.c pidfile.c
+                     tevent_debug.c util_process.c memcache.c''',
+                   deps='DYNCONFIG',
+-                  public_deps='talloc tevent execinfo uid_wrapper pthread LIBCRYPTO charset util_setid systemd-daemon',
++                  public_deps='talloc tevent execinfo uid_wrapper pthread LIBCRYPTO charset util_setid systemd systemd-daemon',
+                   public_headers='debug.h attr.h byteorder.h data_blob.h memory.h safe_string.h time.h talloc_stack.h xfile.h dlinklist.h samba_util.h string_wrappers.h',
+                   header_path= [ ('dlinklist.h samba_util.h', '.'), ('*', 'util') ],
+                   local_include=False,
+diff --git a/wscript b/wscript
+index f389f90..3c4fa21 100644
+--- a/wscript
++++ b/wscript
+@@ -183,9 +183,12 @@ def configure(conf):
+ 		conf.env['ENABLE_PIE'] = True
+ 
+     if Options.options.enable_systemd != False:
++        conf.check_cfg(package='libsystemd', args='--cflags --libs',
++                       msg='Checking for libsystemd', uselib_store="SYSTEMD")
+         conf.check_cfg(package='libsystemd-daemon', args='--cflags --libs',
+                        msg='Checking for libsystemd-daemon', uselib_store="SYSTEMD-DAEMON")
+         conf.CHECK_HEADERS('systemd/sd-daemon.h', lib='systemd-daemon')
++        conf.CHECK_LIB('systemd', shlib=True)
+         conf.CHECK_LIB('systemd-daemon', shlib=True)
+ 
+     if conf.CONFIG_SET('HAVE_SYSTEMD_SD_DAEMON_H'):
+@@ -193,6 +196,7 @@ def configure(conf):
+         conf.env['ENABLE_SYSTEMD'] = True
+     else:
+         conf.SET_TARGET_TYPE('systemd-daemon', 'EMPTY')
++        conf.SET_TARGET_TYPE('systemd', 'EMPTY')
+         conf.undefine('HAVE_SYSTEMD')
+ 
+     conf.SAMBA_CONFIG_H('include/config.h')
+-- 
+2.2.1
+

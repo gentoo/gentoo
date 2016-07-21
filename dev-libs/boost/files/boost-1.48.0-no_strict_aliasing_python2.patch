@@ -1,0 +1,23 @@
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
+@@ -85,6 +85,12 @@
+ rule lib_boost_python ( is-py3 ? )
+ {
+ 
++    local python_major_version = [ MATCH "^([^.]+)" : [ feature.values python ] ] ;
++    local python2 ;
++    if $(python_major_version) = 2
++    {
++        python2 = true ;
++    }
+     lib [ cond $(is-py3) : boost_python3 : boost_python ]
+         : # sources
+         numeric.cpp
+@@ -119,6 +125,7 @@
+         :   # requirements
+             <link>static:<define>BOOST_PYTHON_STATIC_LIB 
+             <define>BOOST_PYTHON_SOURCE
++            [ cond $(python2) : <cxxflags>-fno-strict-aliasing ]
+           
+             # On Windows, all code using Python has to link to the Python
+             # import library.

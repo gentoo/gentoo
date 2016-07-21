@@ -1,0 +1,9 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+
+# flag returns compile errors
+media-video/mplayer livecd cpudetection
+# libs mising
+media-video/mplayer gtk sdl libcaca dv nas musepack bidi enca cdparanoia samba xanim live openal

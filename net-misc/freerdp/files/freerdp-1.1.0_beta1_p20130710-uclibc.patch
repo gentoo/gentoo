@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/show_bug.cgi?id=497808
+https://github.com/FreeRDP/FreeRDP/pull/2024
+
+--- FreeRDP-780d451afad21a22d2af6bd030ee71311856f038/channels/drive/client/drive_file.c
++++ FreeRDP-780d451afad21a22d2af6bd030ee71311856f038-uclibc/channels/drive/client/drive_file.c
+@@ -436,7 +436,11 @@ BOOL drive_file_set_information(DRIVE_FI
+ 	int status;
+ 	char* fullpath;
+ 	struct STAT st;
++#if defined(__linux__) && !defined(ANDROID)
++	struct timespec tv[2];
++#else
+ 	struct timeval tv[2];
++#endif
+ 	UINT64 LastWriteTime;
+ 	UINT32 FileAttributes;
+ 	UINT32 FileNameLength;
+@@ -457,14 +461,21 @@ BOOL drive_file_set_information(DRIVE_FI
+ 				return FALSE;
+ 
+ 			tv[0].tv_sec = st.st_atime;
+-			tv[0].tv_usec = 0;
+-			tv[1].tv_sec = (LastWriteTime > 0 ? FILE_TIME_RDP_TO_SYSTEM(LastWriteTime) : st.st_mtime);
+-			tv[1].tv_usec = 0;
++			tv[1].tv_sec = (LastWriteTime > 0 ? FILE_TIME_RDP_TO_SYSTEM(LastWriteTime) : st.st_mtime);			
++			
+ #ifndef WIN32
+-/* TODO on win32 */                        
++/* TODO on win32 */
+ #ifdef ANDROID
++			tv[0].tv_usec = 0;
++			tv[1].tv_usec = 0;
+ 			utimes(file->fullpath, tv);
++#elif defined (__linux__)
++			tv[0].tv_nsec = 0;
++			tv[1].tv_nsec = 0;
++			futimens(file->fd, tv);
+ #else
++			tv[0].tv_usec = 0;
++			tv[1].tv_usec = 0;
+ 			futimes(file->fd, tv);
+ #endif
+ 
+--- FreeRDP-780d451afad21a22d2af6bd030ee71311856f038/winpr/libwinpr/synch/event.c
++++ FreeRDP-780d451afad21a22d2af6bd030ee71311856f038-uclibc/winpr/libwinpr/synch/event.c
+@@ -115,6 +115,20 @@ HANDLE OpenEventA(DWORD dwDesiredAccess,
+ 	return NULL;
+ }
+ 
++#ifdef HAVE_EVENTFD_H
++#if defined(__UCLIBC__)
++static int eventfd_read(int fd, eventfd_t* value)
++{
++	return (read(fd, value, sizeof(*value)) == sizeof(*value)) ? 0 : -1;
++}
++
++static int eventfd_write(int fd, eventfd_t value)
++{
++	return (write(fd, &value, sizeof(value)) == sizeof(value)) ? 0 : -1;
++}
++#endif
++#endif
++
+ BOOL SetEvent(HANDLE hEvent)
+ {
+ 	ULONG Type;

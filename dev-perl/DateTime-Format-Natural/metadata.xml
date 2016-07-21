@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DateTime-Format-Natural</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Calc</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Compat</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Duration</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Duration::Checks</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Expand</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Extract</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Formatted</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Helpers</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Lang::Base</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Lang::EN</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Rewrite</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Test</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Utils</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Natural::Wrappers</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+diff --git a/refind-install b/refind-install
+index 0f4accd..07f2b35 100755
+--- a/refind-install
++++ b/refind-install
+@@ -1168,7 +1168,13 @@ InstallOnLinux() {
+ # install under OS X or Linux, depending on the detected platform.
+ #
+ GetParams "$@"
+-ThisDir="$( cd -P "${BASH_SOURCE%/*}" && pwd )"
++ThisScript="${BASH_SOURCE[0]}"
++while [ -h "$ThisScript" ]; do
++   ThisDir="$( cd -P "$( dirname "$ThisScript" )" && pwd )"
++   ThisScript="$(readlink "$ThisScript")"
++   [[ $ThisScript != /* ]] && ThisScript="$ThisDir/$ThisScript"
++done
++ThisDir="$( cd -P "$( dirname "$ThisScript" )" && pwd )"
+ RefindDir="$ThisDir/refind"
+ if [[ $UID != 0 ]] ; then
+    echo "Not running as root; attempting to elevate privileges via sudo...."

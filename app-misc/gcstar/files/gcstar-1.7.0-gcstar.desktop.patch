@@ -1,0 +1,23 @@
+From e78617436de63141cd4ff6e42fc0391a9a00d80a Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 8 Sep 2012 18:14:40 -0400
+Subject: [PATCH] gcstar.desktop: MimeType list must be terminated with ';'
+
+Needed for gcstar.desktop to pass validation with desktop-file-utils-0.20
+---
+ gcstar/share/applications/gcstar.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gcstar/share/applications/gcstar.desktop b/gcstar/share/applications/gcstar.desktop
+index aa6a46d..c7a146e 100644
+--- a/gcstar/share/applications/gcstar.desktop
++++ b/gcstar/share/applications/gcstar.desktop
+@@ -15,4 +15,4 @@ Terminal=false
+ StartupNotify=true
+ Type=Application
+ Categories=Office;
+-MimeType=application/x-gcstar
++MimeType=application/x-gcstar;
+-- 
+1.7.12
+

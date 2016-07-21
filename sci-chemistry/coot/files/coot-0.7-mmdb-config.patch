@@ -1,0 +1,18 @@
+Index: macros/mmdb.m4
+===================================================================
+--- macros/mmdb.m4	(revision 3579)
++++ macros/mmdb.m4	(working copy)
+@@ -86,8 +86,12 @@
+  ac_MMDB_LDOPTS="-lmmdb -lm"
+ fi
+ 
+-AC_MSG_CHECKING([for MMDB])
++PKG_CHECK_MODULES([MMDB],[mmdb >= 1.2])
++ac_MMDB_LDOPTS="${MMDB_LIBS}"
++ac_MMDB_CXXFLAGS="${MMDB_CFLAGS}"
+ 
++AC_MSG_CHECKING([for CISPEP in MMDB])
++
+ 	LIBS="$save_LIBS $ac_MMDB_LDOPTS"
+ 	CXXFLAGS="$save_CXXFLAGS $ac_MMDB_CXXFLAGS"
+ 	#

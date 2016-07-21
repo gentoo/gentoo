@@ -1,0 +1,34 @@
+http://bugs.gentoo.org/show_bug.cgi?id=308753
+
+--- rice_video/liblinux/pngrw.c
++++ rice_video/liblinux/pngrw.c
+@@ -136,9 +136,9 @@
+         if (end_info != NULL)
+             png_destroy_read_struct((png_structp *) &png_ptr, (png_infop *) &info_ptr, (png_infop *) &end_info);
+         else if (info_ptr != NULL)
+-            png_destroy_read_struct((png_structp *) &png_ptr, (png_infop *) &info_ptr, png_infopp_NULL);
++            png_destroy_read_struct((png_structp *) &png_ptr, (png_infop *) &info_ptr, NULL);
+         else if (png_ptr != NULL)
+-            png_destroy_read_struct((png_structp *) &png_ptr, png_infopp_NULL, png_infopp_NULL);
++            png_destroy_read_struct((png_structp *) &png_ptr, NULL, NULL);
+         if (rows)
+         {
+             if (rows[0])
+@@ -162,7 +162,7 @@
+ 
+     /* check the signature */
+     fread( signature, 1, 8, file );
+-    if ( !png_check_sig( signature, 8 ) )
++    if ( png_sig_cmp( signature, 0, 8 ) )
+         longjmp( err_jmp, (int)errUnsupportedFileFormat );
+ 
+     /* create a pointer to the png read structure */
+@@ -199,7 +199,7 @@
+ 
+     /* extract the data we need to form the HBITMAP from the PNG header */
+     png_get_IHDR( png_ptr, info_ptr, &Width, &Height, &BitDepth, &ColorType,
+-        &InterlaceType, int_p_NULL, int_p_NULL);
++        &InterlaceType, (int *) NULL, (int *) NULL);
+ 
+     img->width = Width;
+     img->height = Height;

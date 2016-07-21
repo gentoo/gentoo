@@ -1,0 +1,40 @@
+Index: ui/accessibility/platform/atk_util_auralinux.cc
+diff --git a/ui/accessibility/platform/atk_util_auralinux.cc b/ui/accessibility/platform/atk_util_auralinux.cc
+index a15df08137d874609305f90a6bca6e5c15e5c213..7fcaf219351289fe7eba1f670d7a6743a8b40ddc 100644
+--- a/ui/accessibility/platform/atk_util_auralinux.cc
++++ b/ui/accessibility/platform/atk_util_auralinux.cc
+@@ -3,7 +3,9 @@
+ // found in the LICENSE file.
+ 
+ #include <atk/atk.h>
++#if defined(USE_GCONF)
+ #include <gconf/gconf-client.h>
++#endif
+ #include <glib-2.0/gmodule.h>
+ 
+ #include "base/files/file_path.h"
+@@ -14,6 +16,8 @@
+ 
+ namespace {
+ 
++#if defined(USE_GCONF)
++
+ const char kGnomeAccessibilityEnabledKey[] =
+     "/desktop/gnome/interface/accessibility";
+ 
+@@ -39,6 +43,15 @@ bool ShouldEnableAccessibility() {
+   return value;
+ }
+ 
++#else  // !defined(USE_GCONF)
++
++bool ShouldEnableAccessibility() {
++  // TODO(k.czech): implement this for non-GNOME desktops.
++  return false;
++}
++
++#endif  // defined(USE_GCONF)
++
+ }  // namespace
+ 
+ G_BEGIN_DECLS

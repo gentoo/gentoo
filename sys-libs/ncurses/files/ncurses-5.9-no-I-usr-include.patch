@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/522586
+
+delete the -I$includedir paths that get added to CPPFLAGS.  these are never
+needed when building natively or cross-compiling and really get in the way
+in both cases (upgrades/cross-compiling/etc...).
+
+extracted from the upstream change:
+http://ncurses.scripts.mit.edu/?p=ncurses.git;a=commitdiff;h=9ee3995474454b7d956885e0fe5c8cac2ae25d42#patch5
+
+--- a/configure
++++ b/configure
+@@ -18596,33 +18596,11 @@ CPPFLAGS="$CPPFLAGS -I. -I../include"
+ if test "$srcdir" != "."; then
+ 	CPPFLAGS="$CPPFLAGS -I\${srcdir}/../include"
+ fi
+-if test "$GCC" != yes; then
+-	CPPFLAGS="$CPPFLAGS -I\${includedir}"
+-elif test "$includedir" != "/usr/include"; then
+-	if test "$includedir" = '${prefix}/include' ; then
+-		if test $prefix != /usr ; then
+-			CPPFLAGS="$CPPFLAGS -I\${includedir}"
+-		fi
+-	else
+-		CPPFLAGS="$CPPFLAGS -I\${includedir}"
+-	fi
+-fi
+ 
+ ACPPFLAGS="-I. -I../include -I../../include $ACPPFLAGS"
+ if test "$srcdir" != "."; then
+ 	ACPPFLAGS="-I\${srcdir}/../../include $ACPPFLAGS"
+ fi
+-if test "$GCC" != yes; then
+-	ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
+-elif test "$includedir" != "/usr/include"; then
+-	if test "$includedir" = '${prefix}/include' ; then
+-		if test $prefix != /usr ; then
+-			ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
+-		fi
+-	else
+-		ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
+-	fi
+-fi
+ 
+ ### Build up pieces for makefile rules
+ echo "$as_me:18628: checking default library suffix" >&5

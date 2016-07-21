@@ -1,0 +1,88 @@
+--- dungeon.c.old	2016-02-07 20:12:39.258150130 +0100
++++ dungeon.c	2016-02-07 20:12:58.239805610 +0100
+@@ -1489,7 +1489,7 @@
+ 	{
+ 		char buf[20];
+ 
+-		sprintf(buf, get_day(bst(YEAR, turn) + START_YEAR));
++		sprintf(buf, "%s", get_day(bst(YEAR, turn) + START_YEAR));
+ 		cmsg_format(TERM_L_GREEN,
+ 		            "Today it is %s of the %s year of the third age.",
+ 		            get_month_name(bst(DAY, turn), wizard, FALSE), buf);
+--- files.c.old	2016-02-07 20:15:07.736451417 +0100
++++ files.c	2016-02-07 20:15:27.595089867 +0100
+@@ -4856,7 +4856,7 @@
+ 
+ 	/* Terminate */
+ 	tmp[k] = '\0';
+-	sprintf(player_base, tmp);
++	sprintf(player_base, "%s", tmp);
+ 
+ 	/* Require a "base" name */
+ 	if (!player_base[0]) strcpy(player_base, "PLAYER");
+--- lua_bind.c.old	2016-02-07 20:09:29.071592178 +0100
++++ lua_bind.c	2016-02-07 20:10:48.094164373 +0100
+@@ -490,7 +490,7 @@
+ /* Files */
+ void lua_print_hook(cptr str)
+ {
+-	fprintf(hook_file, str);
++	fprintf(hook_file, "%s", str);
+ }
+ 
+ 
+--- plots.c.old	2016-02-07 20:11:35.389308152 +0100
++++ plots.c	2016-02-07 20:12:19.247513152 +0100
+@@ -93,7 +93,7 @@
+ 	{
+ 		MAKE(new, hooks_chain);
+ 		new->hook = hook;
+-		sprintf(new->name, name);
++		sprintf(new->name, "%s", name);
+ #ifdef DEBUG_HOOK
+ 		if (wizard) cmsg_format(TERM_VIOLET, "HOOK ADD: %s", name);
+ 		if (take_notes) add_note(format("HOOK ADD: %s", name), 'D');
+--- spells1.c.old	2016-02-07 20:15:47.277731397 +0100
++++ spells1.c	2016-02-07 20:16:03.373438169 +0100
+@@ -7312,7 +7312,7 @@
+ 
+ 	if (who == -2)
+ 	{
+-		sprintf(killer, t_name + t_info[cave[p_ptr->py][p_ptr->px].t_idx].name);
++		sprintf(killer, "%s", t_name + t_info[cave[p_ptr->py][p_ptr->px].t_idx].name);
+ 	}
+ 
+ 	/* Analyze the damage */
+--- squeltch.c.old	2016-02-07 20:13:11.872558078 +0100
++++ squeltch.c	2016-02-07 20:13:42.707997918 +0100
+@@ -399,7 +399,7 @@
+ 
+ 				if (!max) continue;
+ 
+-				sprintf(name, string_exec_lua(format("return __rules[%d].table.args.name", sel)));
++				sprintf(name, "%s", string_exec_lua(format("return __rules[%d].table.args.name", sel)));
+ 				if (input_box("New name?", hgt / 2, wid / 2, name, 15))
+ 				{
+ 					exec_lua(format("auto_aux:rename_rule(%d, '%s')", sel, name));
+--- util.c.old	2016-02-07 20:14:22.786269296 +0100
++++ util.c	2016-02-07 20:16:44.227693551 +0100
+@@ -4468,7 +4468,7 @@
+ 		{
+ 			char buf2[20];
+ 
+-			sprintf(buf2, get_day(day + 1));
++			sprintf(buf2, "%s", get_day(day + 1));
+ 			if (full) sprintf(buf, "%s (%s day)", month_name[i], buf2);
+ 			else sprintf(buf, "%s", month_name[i]);
+ 			break;
+@@ -4479,8 +4479,8 @@
+ 			char buf2[20];
+ 			char buf3[20];
+ 
+-			sprintf(buf2, get_day(day + 1 - month_day[i]));
+-			sprintf(buf3, get_day(day + 1));
++			sprintf(buf2, "%s", get_day(day + 1 - month_day[i]));
++			sprintf(buf3, "%s", get_day(day + 1));
+ 
+ 			if (full) sprintf(buf, "%s day of %s (%s day)", buf2, month_name[i], buf3);
+ 			else if (compact) sprintf(buf, "%s day of %s", buf2, month_name[i]);

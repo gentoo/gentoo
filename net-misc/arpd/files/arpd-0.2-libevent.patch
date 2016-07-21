@@ -1,0 +1,28 @@
+--- arpd.orig/arpd.c	2010-02-03 20:03:07.098748175 +0100
++++ arpd/arpd.c	2010-02-03 20:06:24.469749941 +0100
+@@ -445,9 +445,6 @@
+ void
+ terminate_handler(int sig)
+ {
+-	extern int event_gotsig;
+-
+-	event_gotsig = 1;
+ 	arpd_sig = sig;
+ }
+ 
+@@ -464,7 +461,6 @@
+ main(int argc, char *argv[])
+ {
+ 	struct event recv_ev;
+-	extern int (*event_sigcb)(void);
+ 	char *dev;
+ 	int c, debug;
+ 	FILE *fp;
+@@ -524,7 +520,6 @@
+ 		perror("signal");
+ 		return (-1);
+ 	}
+-	event_sigcb = arpd_signal;
+ 	
+ 	event_dispatch();
+ 

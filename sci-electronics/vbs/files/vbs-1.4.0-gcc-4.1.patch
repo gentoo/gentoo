@@ -1,0 +1,111 @@
+diff -ur vbs-1.4.0.orig/src/common/bvector.h vbs-1.4.0/src/common/bvector.h
+--- vbs-1.4.0.orig/src/common/bvector.h	2003-01-12 05:40:59.000000000 +0100
++++ vbs-1.4.0/src/common/bvector.h	2007-03-09 22:40:02.000000000 +0100
+@@ -90,9 +90,9 @@
+ 		size_type _size; // Size of this sub-bit vector.
+ 
+ 		// Only bit_vector can create a sub_bit_vector object.
++	public:
+ 		sub_bit_vector(bit_vector &, const position_type, const position_type);
+ 		sub_bit_vector(const sub_bit_vector &);
+-	public:
+ 		sub_bit_vector &operator=(const sub_bit_vector &);
+ 		sub_bit_vector &operator=(const const_sub_bit_vector &);
+ 		sub_bit_vector &operator=(const bit_vector &);
+@@ -116,8 +116,8 @@
+ 
+ 		// Only bit_vector can create a sub_bit_vector object.
+ 		const_sub_bit_vector(const bit_vector &, const position_type, const position_type);
+-		const_sub_bit_vector(const const_sub_bit_vector &);
+ 	public:
++		const_sub_bit_vector(const const_sub_bit_vector &);
+ 		size_type size() const
+ 			{ return _size; }
+ 		ostream_type &info(ostream_type &) const;
+diff -ur vbs-1.4.0.orig/src/common/logic.h vbs-1.4.0/src/common/logic.h
+--- vbs-1.4.0.orig/src/common/logic.h	2002-10-21 11:01:02.000000000 +0200
++++ vbs-1.4.0/src/common/logic.h	2007-03-09 22:40:02.000000000 +0100
+@@ -44,6 +44,10 @@
+ 		{ return (_state == HI) ? true : false; }
+ 	operator int() const
+ 		{ return _state; }
++
++	operator long int() const
++		{ return _state; }
++
+ 	operator char() const
+ 		{
+ 		switch (_state)
+diff -ur vbs-1.4.0.orig/src/common/st_net.h vbs-1.4.0/src/common/st_net.h
+--- vbs-1.4.0.orig/src/common/st_net.h	2002-11-24 03:07:00.000000000 +0100
++++ vbs-1.4.0/src/common/st_net.h	2007-03-09 22:40:02.000000000 +0100
+@@ -133,4 +133,7 @@
+ 	const st_net &_net;
+ 	};
+ 
++void entry_iovars(st_net::io_list &, st_net::arg_list &);
++void exit_iovars(st_net::io_list &, st_net::arg_list &);
++
+ #endif // _ST_NET_H
+diff -ur vbs-1.4.0.orig/src/expr/erdwr.cc vbs-1.4.0/src/expr/erdwr.cc
+--- vbs-1.4.0.orig/src/expr/erdwr.cc	2002-05-28 08:22:46.000000000 +0200
++++ vbs-1.4.0/src/expr/erdwr.cc	2007-03-09 22:40:02.000000000 +0100
+@@ -25,8 +25,9 @@
+ expr_base *
+ read_expr::operator()() const
+ 	{
+-	VBSOBJ_EXPR_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_EXPR_TYPE type = VBSOBJ_EXPR_TYPE(type_num);
+ 	long ln;
+ 	_in >> ln;
+ 	expr_base *expr = 0;
+diff -ur vbs-1.4.0.orig/src/Makefile.in vbs-1.4.0/src/Makefile.in
+--- vbs-1.4.0.orig/src/Makefile.in	2003-06-08 00:38:24.000000000 +0200
++++ vbs-1.4.0/src/Makefile.in	2007-03-09 22:40:02.000000000 +0100
+@@ -329,13 +329,15 @@
+ 	rm -f *.o
+ 	rm -f *.a
+ 	rm -f *.so
++	rm -f vbs
+ 
+ clean-repo:
+ 	if test -d ptrepository; then rm -rf ptrepository; fi
+ 	rm -f *.rpo
+ 
+ install:
+-	$(INSTALL) vbs $(bindir)
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) vbs $(DESTDIR)$(bindir)
+ 
+ tarball:
+ 	@echo "===== Tar ball ======"
+diff -ur vbs-1.4.0.orig/src/misc/mrdwr.cc vbs-1.4.0/src/misc/mrdwr.cc
+--- vbs-1.4.0.orig/src/misc/mrdwr.cc	2002-05-28 11:42:00.000000000 +0200
++++ vbs-1.4.0/src/misc/mrdwr.cc	2007-03-09 22:40:02.000000000 +0100
+@@ -21,8 +21,9 @@
+ module *
+ read_module::operator()() const
+ 	{
+-	VBSOBJ_MISC_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_MISC_TYPE type = VBSOBJ_MISC_TYPE(type_num);
+ 	if (type != VBSOBJ_MISC_MODULE)
+ 		{
+ 		vbs_err.set_data(vbs_error::SE_VBSOBJ, -1);
+@@ -129,8 +130,9 @@
+ port *
+ read_port::operator()() const
+ 	{
+-	VBSOBJ_MISC_TYPE type;
+-	_in >> (int &) type;
++	int type_num = 0;
++	_in >> type_num;
++	VBSOBJ_MISC_TYPE type = VBSOBJ_MISC_TYPE(type_num);
+ 	if (type != VBSOBJ_MISC_PORT)
+ 		{
+ 		vbs_err.set_data(vbs_error::SE_VBSOBJ, -1);

@@ -1,0 +1,29 @@
+Index: libstroke-0.5.1/libgstroke/Makefile.am
+===================================================================
+--- libstroke-0.5.1.orig/libgstroke/Makefile.am
++++ libstroke-0.5.1/libgstroke/Makefile.am
+@@ -5,8 +5,6 @@
+ # level Makefile.
+ AUTOMAKE_OPTIONS = foreign
+ 
+-EXTRA_DIST = 
+-
+ #SEL_BIB = libgstroke.la
+ 
+ lib_LTLIBRARIES = libgstroke.la
+Index: libstroke-0.5.1/libstroke/Makefile.am
+===================================================================
+--- libstroke-0.5.1.orig/libstroke/Makefile.am
++++ libstroke-0.5.1/libstroke/Makefile.am
+@@ -5,11 +5,6 @@
+ # level Makefile.
+ AUTOMAKE_OPTIONS = foreign
+ 
+-EXTRA_DIST = 
+-
+-#tclpath::
+-	#echo ${ENABLE_TCL}
+-
+ #if ENABLE_TCL
+ #SEL_BIB = libstroke.la libstroke_tcl.la
+ #else

@@ -1,0 +1,183 @@
+Description: Fix compilation with gcc-4.8
+ This patch fixes the error flags made incompatible with gcc-4.8:
+ g++: error: -fsanitize=address is incompatible with -fsanitize=thread
+Author: Brian Aker
+Last-Update: 2013-06-14
+Bug: https://bugs.launchpad.net/libmemcached/+bug/1164442
+
+--- a/libtest/run.gdb	2012-03-26 01:08:09 +0000
++++ b/libtest/run.gdb	2013-04-10 05:25:24 +0000
+@@ -1,5 +1,6 @@
+ set logging on
+ set logging overwrite on
+ set environment LIBTEST_IN_GDB=1
++set ASAN_OPTIONS=abort_on_error=1
+ run
+ thread apply all bt
+
+--- a/m4/ax_harden_compiler_flags.m4	2013-02-12 05:44:21 +0000
++++ b/m4/ax_harden_compiler_flags.m4	2013-04-10 05:25:24 +0000
+@@ -53,7 +53,7 @@
+ # ?  _APPEND_COMPILE_FLAGS_ERROR([-Wlong-long]) -- Don't turn on for
+ # compatibility issues memcached_stat_st
+ 
+-#serial 8
++#serial 9
+ 
+ AC_DEFUN([_WARNINGS_AS_ERRORS],
+     [AC_CACHE_CHECK([if all warnings into errors],[ac_cv_warnings_as_errors],
+@@ -92,9 +92,12 @@
+            _APPEND_COMPILE_FLAGS_ERROR([-H])
+            _APPEND_COMPILE_FLAGS_ERROR([-ggdb])
+            _APPEND_COMPILE_FLAGS_ERROR([-g])
+-           _APPEND_COMPILE_FLAGS_ERROR([-O0])],
+-           [_APPEND_COMPILE_FLAGS_ERROR([-g])
+-           _APPEND_COMPILE_FLAGS_ERROR([-O2])])
++           _APPEND_COMPILE_FLAGS_ERROR([-O0]),
++           _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
++           ],[
++           _APPEND_COMPILE_FLAGS_ERROR([-g])
++           _APPEND_COMPILE_FLAGS_ERROR([-O2])
++           ])
+ 
+          AS_IF([test "x$ac_cv_vcs_checkout" = xyes],
+            [_APPEND_COMPILE_FLAGS_ERROR([-fstack-check])
+@@ -155,26 +158,31 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-Wundef])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunsafe-loop-optimizations])
+           _APPEND_COMPILE_FLAGS_ERROR([-funsafe-loop-optimizations])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=address])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=thread])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=memory])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=alignment])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bool])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bounds])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=enum])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-cast-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-divide-by-zero])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer-divide-by-zero])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=null])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=object-size])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=return])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=shift])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=signed-integer-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unreachable])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unsigned-integer-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vla-bound])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vptr])
++          AS_IF([test "x$ac_cv_vcs_checkout" = xyes],[
++            _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=address])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer])
++            AS_IF([test "x$enable_shared" = "xyes"],[
++                _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=thread])
++                ])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=memory])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=alignment])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bool])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bounds])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=enum])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-cast-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-divide-by-zero])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer-divide-by-zero])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=null])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=object-size])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=return])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=shift])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=signed-integer-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unreachable])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unsigned-integer-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vla-bound])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vptr])
++          ])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wclobbered])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunused])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunused-result])
+@@ -186,6 +194,7 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-fwrapv])
+           _APPEND_COMPILE_FLAGS_ERROR([-fmudflapt])
+           _APPEND_COMPILE_FLAGS_ERROR([-pipe])
++          _APPEND_COMPILE_FLAGS_ERROR([-Wsizeof-pointer-memaccess])
+ 
+           AS_IF([test "x$ax_enable_debug" = xno],
+             [AS_IF([test "x$ac_cv_vcs_checkout" = xyes],
+@@ -213,9 +222,12 @@
+            _APPEND_COMPILE_FLAGS_ERROR([-H])
+            _APPEND_COMPILE_FLAGS_ERROR([-ggdb])
+            _APPEND_COMPILE_FLAGS_ERROR([-g])
+-           _APPEND_COMPILE_FLAGS_ERROR([-O0])],
+-           [_APPEND_COMPILE_FLAGS_ERROR([-g])
+-           _APPEND_COMPILE_FLAGS_ERROR([-O2])])
++           _APPEND_COMPILE_FLAGS_ERROR([-O0]),
++           _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
++           ],[
++           _APPEND_COMPILE_FLAGS_ERROR([-g])
++           _APPEND_COMPILE_FLAGS_ERROR([-O2])
++           ])
+ 
+          AS_IF([test "x$ac_cv_vcs_checkout" = xyes],
+            [_APPEND_COMPILE_FLAGS_ERROR([-fstack-check])
+@@ -268,27 +280,32 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-funsafe-loop-optimizations])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wc++11-compat])
+ #         _APPEND_COMPILE_FLAGS_ERROR([-Weffc++])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=address])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=thread])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=memory])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=alignment])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bool])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bounds])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=enum])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-cast-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-divide-by-zero])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer-divide-by-zero])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=null])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=object-size])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=return])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=shift])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=signed-integer-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unreachable])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unsigned-integer-overflow])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vla-bound])
+-          _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vptr])
+-#          _APPEND_COMPILE_FLAGS_ERROR([-Wold-style-cast])
++          AS_IF([test "x$ac_cv_vcs_checkout" = xyes],[
++            _APPEND_COMPILE_FLAGS_ERROR([-fno-omit-frame-pointer])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=address])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer])
++            AS_IF([test "x$enable_shared" = "xyes"],[
++                _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=thread])
++                ])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=memory])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=alignment])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bool])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=bounds])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=enum])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-cast-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=float-divide-by-zero])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=integer-divide-by-zero])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=null])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=object-size])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=return])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=shift])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=signed-integer-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unreachable])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=unsigned-integer-overflow])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vla-bound])
++            _APPEND_COMPILE_FLAGS_ERROR([-fsanitize=vptr])
++          ])
++#         _APPEND_COMPILE_FLAGS_ERROR([-Wold-style-cast])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wclobbered])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunused])
+           _APPEND_COMPILE_FLAGS_ERROR([-Wunused-result])
+@@ -301,6 +318,7 @@
+           _APPEND_COMPILE_FLAGS_ERROR([-fwrapv])
+           _APPEND_COMPILE_FLAGS_ERROR([-fmudflapt])
+           _APPEND_COMPILE_FLAGS_ERROR([-pipe])
++          _APPEND_COMPILE_FLAGS_ERROR([-Wsizeof-pointer-memaccess])
+ 
+           AS_IF([test "x$ax_enable_debug" = xno],
+           [AS_IF([test "x$ac_cv_vcs_checkout" = xyes],
+

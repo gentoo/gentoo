@@ -1,0 +1,26 @@
+From c848d45b0697a6ac3661dbf3fbd356864e8b4e24 Mon Sep 17 00:00:00 2001
+From: Sobhan Mohammadpour <sobhanmohammadpour1@yahoo.fr>
+Date: Tue, 15 Jan 2013 17:23:12 +0330
+Subject: [PATCH] gentoo-cursor-themes
+
+---
+ gtweak/tweaks/tweak_interface.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gtweak/tweaks/tweak_group_interface.py b/gtweak/tweaks/tweak_group_interface.py
+index b20a41c..2125d59 100644
+--- a/gtweak/tweaks/tweak_group_interface.py
++++ b/gtweak/tweaks/tweak_group_interface.py
+@@ -69,7 +69,8 @@ class CursorThemeSwitcher(GSettingsComboTweak):
+             **options)
+ 
+     def _get_valid_cursor_themes(self):
+-        dirs = ( os.path.join(gtweak.DATA_DIR, "icons"),
++        dirs = ( os.path.join(gtweak.DATA_DIR, "cursors", "xorg-x11"),
++                 os.path.join(gtweak.DATA_DIR, "icons"),
+                  os.path.join(GLib.get_user_data_dir(), "icons"),
+                  os.path.join(os.path.expanduser("~"), ".icons"))
+         valid = walk_directories(dirs, lambda d:
+-- 
+1.8.1
+

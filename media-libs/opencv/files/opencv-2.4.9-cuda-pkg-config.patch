@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -528,6 +528,9 @@
+   if(HAVE_CUFFT)
+     set(OPENCV_LINKER_LIBS ${OPENCV_LINKER_LIBS} ${CUDA_cufft_LIBRARY})
+   endif()
++  foreach(p ${CUDA_LIBS_PATH})
++    set(OPENCV_LINKER_LIBS ${OPENCV_LINKER_LIBS} -L${p})
++  endforeach()
+ endif()
+ 
+ # ----------------------------------------------------------------------------

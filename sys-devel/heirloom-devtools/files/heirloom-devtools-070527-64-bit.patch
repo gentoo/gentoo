@@ -1,0 +1,39 @@
+--- a/make/vroot/lock.cc	2007/01/18 15:06:32	1.1
++++ b/make/vroot/lock.cc	2007/10/01 11:44:26	1.2
+@@ -31,7 +31,7 @@
+ /*
+  * Portions Copyright (c) 2007 Gunnar Ritter, Freiburg i. Br., Germany
+  *
+- * Sccsid @(#)lock.cc	1.4 (gritter) 01/13/07
++ * Sccsid @(#)lock.cc	1.5 (gritter) 10/1/07
+  */
+ 
+ #include <avo/intl.h>	/* for NOCATGETS */
+@@ -53,7 +53,7 @@
+ extern	int		sys_nerr;
+ #endif
+ 
+-static	void		file_lock_error(char *msg, char *file, char *str, int arg1, int arg2);
++static	void		file_lock_error(char *msg, char *file, char *str, const char *arg1, const char *arg2);
+ 
+ #define BLOCK_INTERUPTS sigfillset(&newset) ; \
+ 	sigprocmask(SIG_SETMASK, &newset, &oldset)
+@@ -123,7 +123,7 @@
+ 
+ 		if (errno != EEXIST) {
+ 			file_lock_error(msg, name, NOCATGETS("symlink(%s, %s)"),
+-			    (int) name, (int) lockname);
++			    name, lockname);
+ 			fprintf(stderr, "%s", msg);
+ 			return errno;
+ 		}
+@@ -171,7 +171,8 @@
+  * Format a message telling why the lock could not be created.
+  */
+ static	void
+-file_lock_error(char *msg, char *file, char *str, int arg1, int arg2)
++file_lock_error(char *msg, char *file, char *str,
++	const char *arg1, const char *arg2)
+ {
+ 	int		len;
+ 

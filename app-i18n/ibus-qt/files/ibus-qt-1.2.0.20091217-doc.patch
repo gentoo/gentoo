@@ -1,0 +1,21 @@
+--- ibus-qt-1.2.0.20091217-Source.orig/CMakeLists.txt	2009-12-17 14:50:00.000000000 +0900
++++ ibus-qt-1.2.0.20091217-Source/CMakeLists.txt	2010-01-03 09:11:53.000000000 +0900
+@@ -76,7 +76,7 @@
+ # pkg_check_modules(IBUS REQUIRED ibus-1.0>=1.2.0)
+ 
+ # check doxygen
+-find_package(Doxygen REQUIRED)
++find_package(Doxygen)
+ 
+ # =====
+ # Define variables
+@@ -100,8 +100,7 @@
+ # install
+ set(MAIN_DOCS
+     AUTHORS
+-    README
+-    INSTALL)
++    README)
+ install(FILES ${MAIN_DOCS}
+     DESTINATION ${DOCDIR})
+ 

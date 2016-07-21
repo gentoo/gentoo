@@ -1,0 +1,24 @@
+http://bugs.gentoo.org/504056
+
+--- configure.ac
++++ configure.ac
+@@ -38,6 +38,8 @@
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+ 
++PKG_CHECK_MODULES(X11, [x11])
++
+ # Check for imlib2
+ AC_CHECK_PROGS(imlib2config_cmd, imlib2-config)
+ if test x$imlib2config_cmd = "x"; then
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -1,7 +1,7 @@
+ bin_PROGRAMS = hsetroot
+ 
+ AM_CFLAGS = @CFLAGS@ @IMLIB2_CFLAGS@ -Wall
+-LIBS = @IMLIB2_LIBS@
++LIBS = @IMLIB2_LIBS@ $(X11_LIBS)
+ 
+ hsetroot_SOURCES = hsetroot.c
+ 

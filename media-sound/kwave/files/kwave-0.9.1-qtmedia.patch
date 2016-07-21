@@ -1,0 +1,25 @@
+commit 6fc0b2732f836e5511a5164dc3f78e79c2d3ee4d
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Tue Mar 8 22:55:40 2016 +0100
+
+    Make Qt Multimedia optional
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eeaa6c4..c8f23f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -180,13 +180,13 @@ SET(CMAKE_AUTOMOC_RELAXED_MODE FALSE)
+ FIND_PACKAGE(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Concurrent
+     Core
+-    Multimedia
+     Widgets
+ )
+ 
+ # Qt Multimedia support
+ OPTION(WITH_QT_AUDIO "enable playback via Qt Multimedia [default=on]" ON)
+ IF (WITH_QT_AUDIO)
++    FIND_PACKAGE(Qt5Multimedia ${QT_MIN_VERSION} CONFIG REQUIRED)
+     SET(HAVE_QT_AUDIO_SUPPORT on)
+ ENDIF (WITH_QT_AUDIO)
+ 

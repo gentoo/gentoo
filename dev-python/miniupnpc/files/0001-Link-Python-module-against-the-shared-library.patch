@@ -1,0 +1,24 @@
+From 34da047ae5b945a43430f59efe0efefdd8f1ba55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 3 Aug 2011 08:28:31 +0200
+Subject: [PATCH] Link Python module against the shared library.
+
+---
+ setup.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index ca31f96..f5aef19 100644
+--- a/setup.py
++++ b/setup.py
+@@ -10,6 +10,6 @@ from distutils.core import setup, Extension
+ setup(name="miniupnpc", version="1.5",
+       ext_modules=[
+ 	         Extension(name="miniupnpc", sources=["miniupnpcmodule.c"],
+-			           extra_objects=["libminiupnpc.a"])
++			           libraries=["miniupnpc"])
+ 			 ])
+ 
+-- 
+1.7.6
+

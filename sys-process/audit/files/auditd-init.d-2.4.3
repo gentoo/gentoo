@@ -1,0 +1,91 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands='reload reload_auditd reload_rules'
+description='Linux Auditing System'
+description_reload='Reload daemon configuration and rules'
+description_reload_rules='Reload daemon rules'
+description_reload_auditd='Reload daemon configuration'
+
+name='auditd'
+pidfile='/var/run/auditd.pid'
+command='/sbin/auditd'
+
+start_auditd() {
+	# Env handling taken from the upstream init script
+	if [ -z "$AUDITD_LANG" -o "$AUDITD_LANG" = "none" -o "$AUDITD_LANG" = "NONE" ]; then
+		unset LANG LC_TIME LC_ALL LC_MESSAGES LC_NUMERIC LC_MONETARY LC_COLLATE
+	else
+		LANG="$AUDITD_LANG"
+		LC_TIME="$AUDITD_LANG"
+		LC_ALL="$AUDITD_LANG"
+		LC_MESSAGES="$AUDITD_LANG"
+		LC_NUMERIC="$AUDITD_LANG"
+		LC_MONETARY="$AUDITD_LANG"
+		LC_COLLATE="$AUDITD_LANG"
+		export LANG LC_TIME LC_ALL LC_MESSAGES LC_NUMERIC LC_MONETARY LC_COLLATE
+	fi
+	unset HOME MAIL USER USERNAME
+
+	ebegin "Starting ${name}"
+	start-stop-daemon \
+		--start --quiet --pidfile ${pidfile} \
+		--exec ${command} -- ${EXTRAOPTIONS}
+	local ret=$?
+	eend $ret
+	return $ret
+}
+
+stop_auditd() {
+	ebegin "Stopping ${name}"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	local ret=$?
+	eend $ret
+	return $ret
+}
+
+loadfile() {
+	local rules="$1"
+	if [ -n "${rules}" -a -f "${rules}" ]; then
+		einfo "Loading audit rules from ${rules}"
+		/sbin/auditctl -R "${rules}" >/dev/null
+		return $?
+	else
+		return 0
+	fi
+}
+
+start() {
+	start_auditd
+	local ret=$?
+	if [ $ret -eq 0 -a "${RC_CMD}" != "restart" ]; then
+		loadfile "${RULEFILE_STARTUP}"
+	fi
+	return $ret
+}
+
+reload_rules() {
+	loadfile "${RULEFILE_STARTUP}"
+}
+
+reload_auditd() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP \
+	    --exec "${command}" --pidfile "${pidfile}"
+	eend $?
+}
+
+reload() {
+	reload_auditd
+	reload_rules
+}
+
+stop() {
+	[ "${RC_CMD}" != "restart" ] && loadfile "${RULEFILE_STOP_PRE}"
+	stop_auditd
+	local ret=$?
+	[ "${RC_CMD}" != "restart" ] && loadfile "${RULEFILE_STOP_POST}"
+	return $ret
+}

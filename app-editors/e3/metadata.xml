@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  e3 is a full-screen, user-friendly text editor with an interface similar to
+  that of either WordStar, Emacs, Pico, Nedit, or vi. It's heavily optimized
+  for size and independent of libc or any other libraries, making it useful
+  for mini-Linux distributions and rescue disks. The assembler version
+  supports Linux, FreeBSD, OpenBSD, NetBSD, Win9x, QNX, Atheos, BeOS, ELKS,
+  and DOS. There is also a separately distributed version written in C which
+  supports some other Unix versions and CygWin. It is also possible to use
+  regular expressions by using child processes like sed. e3 has a built in
+  arithmetic calculator.
+</longdescription>
+</pkgmetadata>

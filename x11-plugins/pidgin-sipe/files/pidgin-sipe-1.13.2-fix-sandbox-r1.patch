@@ -1,0 +1,29 @@
+# Fix possible sandbox violation when snippet tries to probe for plugins
+# Gentoo Bug 409559
+
+--- pidgin-sipe-1.13.2/configure.ac	2012-03-14 21:53:10.000000000 +0000
++++ pidgin-sipe-1.13.2.new2/configure.ac	2012-06-30 22:48:40.081115371 +0100
+@@ -309,23 +309,6 @@
+ 			 AC_MSG_CHECKING([for purple SSL support])
+ 			 ac_save_LIBS=$LIBS
+ 			 LIBS="$PURPLE_LIBS"
+-			 AC_RUN_IFELSE(
+-				[AC_LANG_PROGRAM([[
+-#include <glib.h>
+-#include <plugin.h>
+-#include <sslconn.h>
+-						]],
+-						[[
+-	purple_plugins_init();
+-	purple_plugins_probe(G_MODULE_SUFFIX);
+-	purple_ssl_init();
+-	return(purple_ssl_is_supported()?0:1);
+-						]])],
+-				[AC_MSG_RESULT(ok)],
+-				[AC_MSG_FAILURE([your purple hasn't been compiled with SSL support.
+-])
+-				],
+-				[AC_MSG_WARN([cross compiling: not checking])])
+ 		 ])
+ 
+ 		 dnl check whether enable voice and video support

@@ -1,0 +1,40 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Oct 12 21:30:07 UTC 2014
+Subject: 
+
+--- MapEdit/CMakeLists.txt
++++ MapEdit/CMakeLists.txt
+@@ -207,5 +207,5 @@
+   ENDIF()
+ 
+ ELSE()
+-  install(TARGETS MapEdit RUNTIME DESTINATION CorsixTH)
++  install(TARGETS MapEdit RUNTIME DESTINATION ${BINDIR})
+ ENDIF()
+--- CorsixTH/CMakeLists.txt
++++ CorsixTH/CMakeLists.txt
+@@ -223,10 +223,10 @@
+   ENDIF()
+   
+ ELSE()
+-  install(TARGETS CorsixTH RUNTIME DESTINATION CorsixTH)
++  install(TARGETS CorsixTH RUNTIME DESTINATION ${BINDIR})
+   install(DIRECTORY Lua Levels DESTINATION CorsixTH PATTERN "*.svn" EXCLUDE)
+   install(DIRECTORY Bitmap DESTINATION CorsixTH
+         FILES_MATCHING REGEX ".*\\.(tab|pal|dat|png)$"
+         PATTERN "*.svn" EXCLUDE)
+-  install(FILES CorsixTH.lua LICENSE.txt CorsixTH.ico DESTINATION CorsixTH )
++  install(FILES CorsixTH.lua CorsixTH.ico DESTINATION CorsixTH )
+ ENDIF()
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -25,6 +25,9 @@
+ 	SET(CMAKE_OSX_DEPLOYMENT_TARGET 10.5)
+ ENDIF()
+ 
++# paths
++set(BINDIR bin CACHE PATH "where to install binaries")
++
+ # Define our options
+ OPTION(WITH_OPENGL "Activate OpenGL Renderer" OFF)
+ OPTION(WITH_DIRECTX "Activate DirectX Renderer" OFF)

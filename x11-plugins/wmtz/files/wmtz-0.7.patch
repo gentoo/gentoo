@@ -1,0 +1,48 @@
+diff -ur wmtz-0.7.orig/wmtz/Makefile wmtz-0.7/wmtz/Makefile
+--- wmtz-0.7.orig/wmtz/Makefile	2001-03-11 15:57:59.000000000 +0200
++++ wmtz-0.7/wmtz/Makefile	2008-01-12 15:24:29.000000000 +0200
+@@ -1,5 +1,5 @@
+ CC = gcc
+-LIBDIR = -L/usr/X11R6/lib
++LIBDIR = -L/usr/lib
+ LIBS   = -lXpm -lXext -lX11 -lm
+ FLAGS = -O2
+ DESTDIR = /usr/local
+@@ -10,7 +10,7 @@
+ 
+ 
+ .c.o:
+-	$(CC) -I/usr/X11R6/include $(FLAGS) -c -Wall $< -o $*.o
++	$(CC) -I/usr/include $(FLAGS) -c -Wall $< -o $*.o
+ 
+ wmtz: $(OBJS)
+ 	$(CC) $(FLAGS) -o wmtz $^ -lXext $(LIBDIR) $(LIBS)
+diff -ur wmtz-0.7.orig/wmtz/wmtz.c wmtz-0.7/wmtz/wmtz.c
+--- wmtz-0.7.orig/wmtz/wmtz.c	2001-04-16 22:26:34.000000000 +0300
++++ wmtz-0.7/wmtz/wmtz.c	2008-01-12 15:17:37.000000000 +0200
+@@ -51,8 +51,7 @@
+ #define STRSIZE 10
+ #define LMST 1
+ #define GMST 0
+-#define ABOUT "xmessage -center -buttons \"Close\" \"WMTZ - Window Maker Time Zone dockapp v0.7
+-http://www.geocities.com/jl1n/wmtz/wmtz.html\""
++#define ABOUT "xmessage -center -buttons \"Close\" \"WMTZ - Window Maker Time Zone dockapp v0.7\nhttp://www.geocities.com/jl1n/wmtz/wmtz.html\""
+ 
+ 
+ /*
+@@ -479,6 +478,7 @@
+ 		   but_stat = -1;
+                    break;
+ 	    default:
++	    break;
+ 	  }
+         }  
+ 
+@@ -529,6 +529,7 @@
+ 	    exit(0);
+ 	    break;
+ 	default:
++	break;
+       }
+     return;
+ }

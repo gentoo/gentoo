@@ -1,0 +1,62 @@
+ src/gle/gle-interface/gle-base.h |    4 ++--
+ src/gle/tokens/RefCount.h        |    2 +-
+ src/gle/tokens/StringKeyHash.h   |    4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/gle/gle-interface/gle-base.h b/src/gle/gle-interface/gle-base.h
+index 26ce8f3..686c2df 100644
+--- a/src/gle/gle-interface/gle-base.h
++++ b/src/gle/gle-interface/gle-base.h
+@@ -130,7 +130,7 @@ inline GLERefCountObject* GLE_SET_RC(GLERefCountObject* rc, GLERefCountObject* v
+ 
+ template <class T> class GLERCVector : public vector< GLERC<T> > {
+ public:
+-	inline void add(T* elem) { push_back(GLERC<T>(elem)); }
++	inline void add(T* elem) { this->push_back(GLERC<T>(elem)); }
+ 	inline T* get(int i) { return (*this)[i].get(); }
+ };
+ 
+@@ -147,7 +147,7 @@ public:
+ 	}
+ 	void deleteAll() {
+ 		for (typename vector<T*>::size_type i = 0; i < vector<T*>::size(); i++) {
+-			T* elem = at(i);
++			T* elem = this->at(i);
+ 			if (elem != NULL) delete elem;
+ 		}
+ 	}
+diff --git a/src/gle/tokens/RefCount.h b/src/gle/tokens/RefCount.h
+index eef1824..d43540b 100644
+--- a/src/gle/tokens/RefCount.h
++++ b/src/gle/tokens/RefCount.h
+@@ -125,7 +125,7 @@ public:
+ template <class T> class MutableRefCountPtr : public RefCountPtr<T> {
+ public:
+ 	inline RefCountPtr<T>& operator =(RefCountPtr<T> src) {
+-		setPtr(src.get()); return *this;
++		this->setPtr(src.get()); return *this;
+ 	};
+ };
+ 
+diff --git a/src/gle/tokens/StringKeyHash.h b/src/gle/tokens/StringKeyHash.h
+index 7db46c3..0966676 100644
+--- a/src/gle/tokens/StringKeyHash.h
++++ b/src/gle/tokens/StringKeyHash.h
+@@ -254,7 +254,7 @@ public:
+ 			return i->second;
+ 		} else {
+ 			ElemType nelem(key);
+-			insert(StringKeyPair<ElemType>(key, nelem));
++			this->insert(StringKeyPair<ElemType>(key, nelem));
+ 			return nelem;
+ 		}
+ 	}
+@@ -309,7 +309,7 @@ public:
+ 	}
+ 
+ 	void add_item(int key, ElemType elem) {
+-		insert(IntKeyPair<ElemType>(key, elem));
++		this->insert(IntKeyPair<ElemType>(key, elem));
+ 	}
+ };
+ 

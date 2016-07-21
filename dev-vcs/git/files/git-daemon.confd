@@ -1,0 +1,19 @@
+# conf.d file for git-daemon
+#
+# Please check man 1 git-daemon for more information about the options
+# git-daemon accepts. You MUST edit this to include your repositories you wish
+# to serve.
+#
+# Some of the meaningful options are:
+#   --syslog      --- Enables syslog logging
+#   --verbose     --- Enables verbose logging
+#   --export-all  --- Exports all repositories
+#   --port=XXXX   --- Starts in port XXXX instead of 9418
+#
+GITDAEMON_OPTS="--syslog --base-path=/var/git"
+
+# To run an anonymous git safely, the following user should be able to only
+# read your Git repositories. It should not be able to write to anywhere on
+# your system, esp. not the repositories.
+GIT_USER="nobody"
+GIT_GROUP="nobody"

@@ -1,0 +1,28 @@
+If .biewrc does not exist, the setup dialog appears at program start. If you try
+to click a checkbox with the mouse, biew tries to dereference a null pointer
+(because the MainWindow is not yet set).
+
+This patch adds a workaround. Note that you actually cannot click a checkbox.
+But that is what users might expect. (Maybe the biew code should be changed to
+handle this properly.) Well, it is better not to crash, even if the checkboxes
+are not clickable.
+
+ –nico
+
+
+diff -Naur biew-610.orig/events.c biew-610/events.c
+--- biew-610.orig/events.c	2009-09-03 16:57:40.000000000 +0000
++++ biew-610/events.c	2011-09-06 09:41:01.000000000 +0000
+@@ -118,7 +118,11 @@
+                     }
+                     else
+                     {
+-                      X1 = 0; X2 = twGetClientWidth(MainWnd); Y1 = 1; Y2 = twGetClientHeight(MainWnd) - 1;
++                      TWindow *wnd =
++                              MainWnd ? MainWnd :  /*XXX:drop this line?*/
++                              twGetWinAtPos(mx, my);
++                      if(!wnd) return KE_MOUSE;
++                      X1 = 0; X2 = twGetClientWidth(wnd); Y1 = 1; Y2 = twGetClientHeight(wnd) - 1;
+                     }
+                     wdh = X2 - X1;
+                     hght = Y2 - Y1;

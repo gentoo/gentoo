@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
+  WHAT IS uEmacs/PK?
+
+  uEmacs/PK 4.0 is an enhanced version of MicroEMACS 3.9e. Enhancements have
+  been incorporated by Petri H. Kutvonen, University of Helsinki, Finland,
+  kutvonen@cs.Helsinki.FI.
+
+  WHY IS IT BASED ON AN OLD VERSION OF MicroEMACS?
+
+  In my opinion 3.9e was the best of all MicroEMACSes. Creeping featurism,
+  growing size, and reduced portability made versions 3.10 and 3.11 less
+  attractive. MicroEMACS 3.9e was one of the few editors that were truly
+  portable between different flavours of UNIX, PC/MS-DOS, and VAX/VMS. It was
+  pretty robust - although not flawless. uEmacs/PK 4.0 includes numerous bug
+  fixes, adds some new functionality and comfort but does not sacrifice the
+  best things (small size and portability).
+</longdescription>
+</pkgmetadata>

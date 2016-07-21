@@ -1,0 +1,47 @@
+Users that try to second-guess us and specify -DNDEBUG are just asking to cause
+problems. They cause breakage with the testapp and -debug versions.
+
+So let's ensure that testapp and -debug use per-object compile flags, and thus
+preventing flags leaking between stuff. The #undef at the top of testapp.c is
+redundant now, but not removed.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+X-Gentoo-Bug: 278780
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=278780
+
+diff -Nuar memcached-1.4.0/testapp.c memcached-1.4.0/testapp.c
+--- memcached-1.4.0/testapp.c	2009-07-09 09:43:42.000000000 -0700
++++ memcached-1.4.0/testapp.c	2009-07-27 16:41:14.468907751 -0700
+@@ -115,12 +115,16 @@
+     char old = *(p - 1);
+     *(p - 1) = 0;
+     cache_free(cache, p);
++#ifndef NDEBUG
+     assert(cache_error == -1);
++#endif
+     *(p - 1) = old;
+ 
+     p[sizeof(uint32_t)] = 0;
+     cache_free(cache, p);
++#ifndef NDEBUG
+     assert(cache_error == 1);
++#endif
+ 
+     /* restore signal handler */
+     sigaction(SIGABRT, &old_action, NULL);
+diff -Nuar memcached-1.4.0.orig/Makefile.am memcached-1.4.0/Makefile.am
+--- memcached-1.4.0.orig/Makefile.am	2009-07-09 09:43:42.000000000 -0700
++++ memcached-1.4.0/Makefile.am	2009-07-27 17:45:20.973106097 -0700
+@@ -27,8 +27,12 @@
+ 
+ memcached_debug_SOURCES = $(memcached_SOURCES)
+ memcached_CPPFLAGS = -DNDEBUG
++
+ memcached_debug_LDADD = @PROFILER_LDFLAGS@
+ memcached_debug_CFLAGS = @PROFILER_FLAGS@
++memcached_debug_CPPFLAGS = -UNDEBUG
++
++testapp_CPPFLAGS = -UNDEBUG
+ 
+ memcached_LDADD = 
+ memcached_DEPENDENCIES =

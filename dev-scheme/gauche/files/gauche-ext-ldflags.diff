@@ -1,0 +1,11 @@
+--- Gauche-0.9.1.orig/ext/Makefile.ext.in
++++ Gauche-0.9.1/ext/Makefile.ext.in
+@@ -22,7 +22,7 @@
+ LIBS         = $(XLIBS) @LIBS@ 
+ CFLAGS       = @CFLAGS@ @SHLIB_SO_CFLAGS@ $(XCFLAGS)
+ CPPFLAGS     = @CPPFLAGS@ $(XCPPFLAGS)
+-LDFLAGS      = $(LOCAL_LFLAGS) $(XLDFLAGS) @SHLIB_SO_LDFLAGS@
++LDFLAGS      = $(LOCAL_LFLAGS) $(XLDFLAGS) @LDFLAGS@ @SHLIB_SO_LDFLAGS@
+ 
+ # These are set by configure
+ DEFS     = @DEFS@

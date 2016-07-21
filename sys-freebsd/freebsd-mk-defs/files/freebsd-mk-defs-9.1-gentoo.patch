@@ -1,0 +1,326 @@
+diff -Nur share.orig/mk/bsd.doc.mk share/mk/bsd.doc.mk
+--- share.orig/mk/bsd.doc.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.doc.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -135,10 +135,12 @@
+ realinstall:
+ .for _dev in ${PRINTERDEVICE:Mhtml}
+ 	cd ${SRCDIR}; \
++	    ${INSTALL} -d ${DESTDIR}${BINDIR}/${VOLUME}; \
+ 	    ${INSTALL} -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} \
+ 	    ${DOC}*.html ${DESTDIR}${BINDIR}/${VOLUME}
+ .endfor
+ .for _dev in ${PRINTERDEVICE:Nhtml}
++	${INSTALL} -d ${DESTDIR}${BINDIR}/${VOLUME}; \
+ 	${INSTALL} -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} \
+ 	    ${DFILE.${_dev}} ${DESTDIR}${BINDIR}/${VOLUME}
+ .endfor
+diff -Nur share.orig/mk/bsd.files.mk share/mk/bsd.files.mk
+--- share.orig/mk/bsd.files.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.files.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -39,6 +39,7 @@
+ .endif
+ installfiles: _${group}INS_${file:T}
+ _${group}INS_${file:T}: ${file}
++	${INSTALL} -d ${DESTDIR}${${group}DIR_${.ALLSRC:T}}
+ 	${INSTALL} -o ${${group}OWN_${.ALLSRC:T}} \
+ 	    -g ${${group}GRP_${.ALLSRC:T}} -m ${${group}MODE_${.ALLSRC:T}} \
+ 	    ${.ALLSRC} \
+@@ -51,10 +52,12 @@
+ installfiles: _${group}INS
+ _${group}INS: ${_${group}FILES}
+ .if defined(${group}NAME)
++	${INSTALL} -d ${DESTDIR}${${group}DIR}/${${group}NAME}
+ 	${INSTALL} -o ${${group}OWN} -g ${${group}GRP} \
+ 	    -m ${${group}MODE} ${.ALLSRC} \
+ 	    ${DESTDIR}${${group}DIR}/${${group}NAME}
+ .else
++	${INSTALL} -d ${DESTDIR}${${group}DIR}
+ 	${INSTALL} -o ${${group}OWN} -g ${${group}GRP} \
+ 	    -m ${${group}MODE} ${.ALLSRC} ${DESTDIR}${${group}DIR}
+ .endif
+diff -Nur share.orig/mk/bsd.incs.mk share/mk/bsd.incs.mk
+--- share.orig/mk/bsd.incs.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.incs.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -41,6 +41,9 @@
+ .endif
+ installincludes: _${group}INS_${header:T}
+ _${group}INS_${header:T}: ${header}
++	${INSTALL} -d -o ${${group}OWN_${.ALLSRC:T}} \
++		 -g ${${group}GRP_${.ALLSRC:T}} \
++		 ${DESTDIR}${${group}DIR_${.ALLSRC:T}}
+ 	${INSTALL} -C -o ${${group}OWN_${.ALLSRC:T}} \
+ 	    -g ${${group}GRP_${.ALLSRC:T}} -m ${${group}MODE_${.ALLSRC:T}} \
+ 	    ${.ALLSRC} \
+@@ -53,9 +56,13 @@
+ installincludes: _${group}INS
+ _${group}INS: ${_${group}INCS}
+ .if defined(${group}NAME)
++	${INSTALL} -d -o ${${group}OWN} -g ${${group}GRP} \
++		${DESTDIR}${${group}DIR}
+ 	${INSTALL} -C -o ${${group}OWN} -g ${${group}GRP} -m ${${group}MODE} \
+ 	    ${.ALLSRC} ${DESTDIR}${${group}DIR}/${${group}NAME}
+ .else
++	${INSTALL} -d -o ${${group}OWN} -g ${${group}GRP} \
++		${DESTDIR}${${group}DIR}
+ 	${INSTALL} -C -o ${${group}OWN} -g ${${group}GRP} -m ${${group}MODE} \
+ 	    ${.ALLSRC} ${DESTDIR}${${group}DIR}
+ .endif
+diff -Nur share.orig/mk/bsd.info.mk share/mk/bsd.info.mk
+--- share.orig/mk/bsd.info.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.info.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -83,6 +83,7 @@
+ TEX?=		tex
+ DVIPS?=		dvips
+ DVIPS2ASCII?=	dvips2ascii
++INSTALL?=	install
+ 
+ .SUFFIXES: ${ICOMPRESS_EXT} .info .texi .texinfo .dvi .ps .latin1 .html
+ 
+@@ -144,15 +145,17 @@
+ INSTALLINFODIRS+= ${x:S/$/-install/}
+ ${x:S/$/-install/}:
+ .if !empty(.MAKEFLAGS:M-j)
++	${INSTALL} -d ${DESTDIR}${INFODIR}
+ 	lockf -k ${DESTDIR}${INFODIR}/${INFODIRFILE} \
+ 	${INSTALLINFO} ${INSTALLINFOFLAGS} \
+-	    --defsection=${INFOSECTION} \
+-	    --defentry=${INFOENTRY_${x}} \
++	    --section=${INFOSECTION} \
++	    --entry=${INFOENTRY_${x}} \
+ 	    ${x}.info ${DESTDIR}${INFODIR}/${INFODIRFILE}
+ .else
++	${INSTALL} -d ${DESTDIR}${INFODIR}
+ 	${INSTALLINFO} ${INSTALLINFOFLAGS} \
+-	    --defsection=${INFOSECTION} \
+-	    --defentry=${INFOENTRY_${x}} \
++	    --section=${INFOSECTION} \
++	    --entry=${INFOENTRY_${x}} \
+ 	    ${x}.info ${DESTDIR}${INFODIR}/${INFODIRFILE}
+ .endif
+ .endfor
+diff -Nur share.orig/mk/bsd.lib.mk share/mk/bsd.lib.mk
+--- share.orig/mk/bsd.lib.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.lib.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -46,10 +46,6 @@
+ .endif
+ .endif
+ 
+-.if !defined(DEBUG_FLAGS)
+-STRIP?=	-s
+-.endif
+-
+ .include <bsd.libnames.mk>
+ 
+ # prefer .s to a .c, add .po, remove stuff not used in the BSD libraries
+@@ -284,14 +280,17 @@
+ .ORDER: beforeinstall _libinstall
+ _libinstall:
+ .if defined(LIB) && !empty(LIB) && ${MK_INSTALLLIB} != "no"
++	${INSTALL} -d ${DESTDIR}${LIBDIR}
+ 	${INSTALL} -C -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+ 	    ${_INSTALLFLAGS} lib${LIB}.a ${DESTDIR}${LIBDIR}
+ .endif
+ .if ${MK_PROFILE} != "no" && defined(LIB) && !empty(LIB)
++	${INSTALL} -d ${DESTDIR}${LIBDIR}
+ 	${INSTALL} -C -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+ 	    ${_INSTALLFLAGS} lib${LIB}_p.a ${DESTDIR}${LIBDIR}
+ .endif
+ .if defined(SHLIB_NAME)
++	${INSTALL} -d ${DESTDIR}${SHLIBDIR}
+ 	${INSTALL} ${STRIP} -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+ 	    ${_INSTALLFLAGS} ${_SHLINSTALLFLAGS} \
+ 	    ${SHLIB_NAME} ${DESTDIR}${SHLIBDIR}
+@@ -329,10 +328,12 @@
+ .endif # SHLIB_LINK
+ .endif # SHIB_NAME
+ .if defined(INSTALL_PIC_ARCHIVE) && defined(LIB) && !empty(LIB) && ${MK_TOOLCHAIN} != "no"
++	${INSTALL} -d ${DESTDIR}${LIBDIR}
+ 	${INSTALL} -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+ 	    ${_INSTALLFLAGS} lib${LIB}_pic.a ${DESTDIR}${LIBDIR}
+ .endif
+ .if defined(WANT_LINT) && !defined(NO_LINT) && defined(LIB) && !empty(LIB)
++	${INSTALL} -d ${DESTDIR}${LINTLIBDIR}
+ 	${INSTALL} -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+ 	    ${_INSTALLFLAGS} ${LINTLIB} ${DESTDIR}${LINTLIBDIR}
+ .endif
+diff -Nur share.orig/mk/bsd.libnames.mk share/mk/bsd.libnames.mk
+--- share.orig/mk/bsd.libnames.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.libnames.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -48,7 +48,7 @@
+ LIBEDIT?=	${DESTDIR}${LIBDIR}/libedit.a
+ LIBELF?=	${DESTDIR}${LIBDIR}/libelf.a
+ LIBFETCH?=	${DESTDIR}${LIBDIR}/libfetch.a
+-LIBFL?=		"don't use LIBFL, use LIBL"
++LIBFL?=		${DESTDIR}${LIBDIR}/libfl.a
+ LIBFORM?=	${DESTDIR}${LIBDIR}/libform.a
+ LIBFTPIO?=	${DESTDIR}${LIBDIR}/libftpio.a
+ LIBG2C?=	${DESTDIR}${LIBDIR}/libg2c.a
+@@ -79,7 +79,7 @@
+ LIBKICONV?=	${DESTDIR}${LIBDIR}/libkiconv.a
+ LIBKRB5?=	${DESTDIR}${LIBDIR}/libkrb5.a
+ LIBKVM?=	${DESTDIR}${LIBDIR}/libkvm.a
+-LIBL?=		${DESTDIR}${LIBDIR}/libl.a
++LIBL?=		${DESTDIR}${LIBDIR}/libfl.a
+ LIBLN?=		"don't use LIBLN, use LIBL"
+ .if ${MK_BIND} != "no"
+ LIBLWRES?=	${DESTDIR}${LIBDIR}/liblwres.a
+diff -Nur share.orig/mk/bsd.links.mk share/mk/bsd.links.mk
+--- share.orig/mk/bsd.links.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.links.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -15,6 +15,8 @@
+ 		t=${DESTDIR}$$1; \
+ 		shift; \
+ 		${ECHO} $$t -\> $$l; \
++		d=`dirname $$t`; \
++		test -d $$d || mkdir $$d; \
+ 		ln -f $$l $$t; \
+ 	done; true
+ .endif
+@@ -26,6 +28,8 @@
+ 		t=${DESTDIR}$$1; \
+ 		shift; \
+ 		${ECHO} $$t -\> $$l; \
++		d=`dirname $$t`; \
++		test -d $$d || mkdir $$d; \
+ 		ln -fs $$l $$t; \
+ 	done; true
+ .endif
+diff -Nur share.orig/mk/bsd.man.mk share/mk/bsd.man.mk
+--- share.orig/mk/bsd.man.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.man.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -165,9 +165,11 @@
+ .if defined(NO_MANCOMPRESS)
+ .if defined(MANFILTER)
+ .for __page in ${MAN}
++	${INSTALL} -d ${DESTDIR}${MANDIR}${page:E}${MANSUBDIR}/${page}
+ 	${MINSTALL} ${__page:T:S/$/${FILTEXTENSION}/g} \
+ 		${DESTDIR}${MANDIR}${__page:E}${MANSUBDIR}/${__page}
+ .if defined(MANBUILDCAT) && !empty(MANBUILDCAT)
++	${INSTALL} -d ${DESTDIR}${CATDIR}${page:E}${MANSUBDIR}/${page}
+ 	${MINSTALL} ${__page:T:S/$/${CATEXT}${FILTEXTENSION}/g} \
+ 		${DESTDIR}${CATDIR}${__page:E}${MANSUBDIR}/${__page}
+ .endif
+@@ -181,11 +183,14 @@
+ 		esac; \
+ 		page=$$1; shift; sect=$$1; shift; \
+ 		d=${DESTDIR}${MANDIR}$${sect}${MANSUBDIR}; \
++		${ECHO} ${INSTALL} -d $${d}; \
++		${INSTALL} -d $${d}; \
+ 		${ECHO} ${MINSTALL} $${page} $${d}; \
+ 		${MINSTALL} $${page} $${d}; \
+ 	done
+ .if defined(MANBUILDCAT) && !empty(MANBUILDCAT)
+ .for __page in ${MAN}
++	${INSTALL} -d ${DESTDIR}${CATDIR}${page:E}${MANSUBDIR}/${page:T}
+ 	${MINSTALL} ${__page:T:S/$/${CATEXT}/} \
+ 		${DESTDIR}${CATDIR}${__page:E}${MANSUBDIR}/${__page:T}
+ .endfor
+@@ -193,9 +198,11 @@
+ .endif
+ .else
+ .for __page in ${MAN}
++	${INSTALL} -d ${DESTDIR}${MANDIR}${page:E}${MANSUBDIR}
+ 	${MINSTALL} ${__page:T:S/$/${MCOMPRESS_EXT}/g} \
+ 		${DESTDIR}${MANDIR}${__page:E}${MANSUBDIR}
+ .if defined(MANBUILDCAT) && !empty(MANBUILDCAT)
++	${INSTALL} -d ${DESTDIR}${CATDIR}${page:E}${MANSUBDIR}/${page:T:S/$/${MCOMPRESS_EXT}
+ 	${MINSTALL} ${__page:T:S/$/${CATEXT}${MCOMPRESS_EXT}/g} \
+ 		${DESTDIR}${CATDIR}${__page:E}${MANSUBDIR}/${__page:T:S/$/${MCOMPRESS_EXT}/}
+ .endif
+diff -Nur share.orig/mk/bsd.nls.mk share/mk/bsd.nls.mk
+--- share.orig/mk/bsd.nls.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.nls.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -62,7 +62,8 @@
+ # installation rules
+ #
+ .for file in ${NLS}
+-NLSNAME_${file:T}= ${file:T:R}/${NLSNAME}.cat
++NLSDIR_${file:T}= ${SHAREDIR}/nls/${file:T:R}/
++NLSNAME_${file:T}= ${NLSNAME}.cat
+ .if defined(NLSLINKS_${file:R}) && !empty(NLSLINKS_${file:R})
+ NLSLINKS+=	${file:R}
+ .endif
+diff -Nur share.orig/mk/bsd.own.mk share/mk/bsd.own.mk
+--- share.orig/mk/bsd.own.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.own.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -182,9 +182,6 @@
+ INCLUDEDIR?=	/usr/include
+ 
+ # Common variables
+-.if !defined(DEBUG_FLAGS)
+-STRIP?=		-s
+-.endif
+ 
+ COMPRESS_CMD?=	gzip -cn
+ COMPRESS_EXT?=	.gz
+diff -Nur share.orig/mk/bsd.prog.mk share/mk/bsd.prog.mk
+--- share.orig/mk/bsd.prog.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.prog.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -33,10 +33,6 @@
+ CFLAGS+=${CRUNCH_CFLAGS}
+ .endif
+ 
+-.if !defined(DEBUG_FLAGS)
+-STRIP?=	-s
+-.endif
+-
+ .if defined(NO_SHARED) && (${NO_SHARED} != "no" && ${NO_SHARED} != "NO")
+ LDFLAGS+= -static
+ .endif
+@@ -155,6 +151,7 @@
+ .ORDER: beforeinstall _proginstall
+ _proginstall:
+ .if defined(PROG)
++	${INSTALL} -d ${DESTDIR}${BINDIR}
+ .if defined(PROGNAME)
+ 	${INSTALL} ${STRIP} -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} \
+ 	    ${_INSTALLFLAGS} ${PROG} ${DESTDIR}${BINDIR}/${PROGNAME}
+@@ -186,6 +183,7 @@
+ SCRIPTSMODE_${script:T}?=	${SCRIPTSMODE}
+ _scriptsinstall: _SCRIPTSINS_${script:T}
+ _SCRIPTSINS_${script:T}: ${script}
++	${INSTALL} -d ${DESTDIR}${SCRIPTSDIR_${.ALLSRC:T}}
+ 	${INSTALL} -o ${SCRIPTSOWN_${.ALLSRC:T}} \
+ 	    -g ${SCRIPTSGRP_${.ALLSRC:T}} -m ${SCRIPTSMODE_${.ALLSRC:T}} \
+ 	    ${.ALLSRC} \
+diff -Nur share.orig/mk/bsd.sys.mk share/mk/bsd.sys.mk
+--- share.orig/mk/bsd.sys.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/bsd.sys.mk	2012-07-16 00:04:14.000000000 +0900
+@@ -28,10 +28,6 @@
+ .if defined(WARNS)
+ .if ${WARNS} >= 1
+ CWARNFLAGS+=	-Wsystem-headers
+-.if !defined(NO_WERROR) && ((${MK_CLANG_IS_CC} == "no" && \
+-    ${CC:T:Mclang} != "clang") || !defined(NO_WERROR.clang))
+-CWARNFLAGS+=	-Werror
+-.endif # !NO_WERROR && (!CLANG || !NO_WERROR.clang)
+ .endif # WARNS >= 1
+ .if ${WARNS} >= 2
+ CWARNFLAGS+=	-Wall -Wno-format-y2k
+@@ -95,10 +91,6 @@
+ CWARNFLAGS+=	-Wno-format-nonliteral
+ .endif # WARNS <= 3
+ .endif # CLANG
+-.if !defined(NO_WERROR) && ((${MK_CLANG_IS_CC} == "no" && \
+-    ${CC:T:Mclang} != "clang") || !defined(NO_WERROR.clang))
+-CWARNFLAGS+=	-Werror
+-.endif # !NO_WERROR && (!CLANG || !NO_WERROR.clang)
+ .endif # WFORMAT > 0
+ .endif # WFORMAT
+ .if defined(NO_WFORMAT) || ((${MK_CLANG_IS_CC} != "no" || \
+diff -Nur share.orig/mk/sys.mk share/mk/sys.mk
+--- share.orig/mk/sys.mk	2012-07-12 13:25:44.000000000 +0900
++++ share/mk/sys.mk	2012-07-16 00:01:55.000000000 +0900
+@@ -349,12 +349,6 @@
+ 		(${ECHO} ${CTFCONVERT} ${CTFFLAGS} ${.TARGET} && \
+ 		${CTFCONVERT} ${CTFFLAGS} ${.TARGET})
+ 
+-# FreeBSD build pollution.  Hide it in the non-POSIX part of the ifdef.
+-__MAKE_CONF?=/etc/make.conf
+-.if exists(${__MAKE_CONF})
+-.include "${__MAKE_CONF}"
+-.endif
+-
+ .if defined(__MAKE_SHELL) && !empty(__MAKE_SHELL)
+ SHELL=	${__MAKE_SHELL}
+ .SHELL: path=${__MAKE_SHELL}

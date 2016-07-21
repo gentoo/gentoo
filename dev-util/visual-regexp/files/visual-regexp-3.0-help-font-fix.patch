@@ -1,0 +1,26 @@
+diff -ur a/visual_regexp.tcl b/visual_regexp.tcl
+--- a/visual_regexp.tcl	2013-11-10 01:35:49.959609478 +0100
++++ b/visual_regexp.tcl	2013-11-10 01:34:10.491151352 +0100
+@@ -494,15 +494,18 @@
+ 	pack .help.l -side top -padx 10 -pady 10
+ 	# help text
+ 	if {$tcl_platform(platform) == "windows"} {
+-		text .help.t -bd 2 -relief groove -font {Courier 10}
++        set hfont {Courier 10}
++        set hbfont {Courier 10 bold}
+ 	} else {
+-		text .help.t -bd 2 -relief groove
++        set hfont {9x15}
++        set hbfont {9x15bold}
+ 	}
++    text .help.t -bd 2 -relief groove -font $hfont
+ 	pack .help.t -side top -padx 20
+-	.help.t tag configure bold -font "[.help.t cget -font] bold"
++	.help.t tag configure bold -font $hbfont
+ 	.help.t insert 1.0 "Version:" bold " $::version
+ 
+-" normal "Usage:" bold " tkregexp <sampleFile>
++" normal "Usage:" bold " [file tail $::argv0] <sampleFile>
+ 
+ " normal "Key bindings:" bold " Alt-q               exit
+               Alt-a               toggle 'all' flag

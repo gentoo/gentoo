@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="project">
+                <email>perl@gentoo.org</email>
+                <name>Gentoo Perl Project</name>
+        </maintainer>
+        <upstream>
+                <remote-id type="cpan">XML-Smart</remote-id>
+                <remote-id type="cpan-module">XML::Smart</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Base64</remote-id>
+                <remote-id type="cpan-module">XML::Smart::DTD</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Data</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Entity</remote-id>
+                <remote-id type="cpan-module">XML::Smart::HTMLParser</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Parser</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Shared</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Tie</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Tie::Array</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Tie::Hash</remote-id>
+                <remote-id type="cpan-module">XML::Smart::TieScalar</remote-id>
+                <remote-id type="cpan-module">XML::Smart::Tree</remote-id>
+                <remote-id type="cpan-module">XML::Smart::XPath</remote-id>
+        </upstream>
+</pkgmetadata>

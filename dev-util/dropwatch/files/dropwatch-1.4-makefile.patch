@@ -1,0 +1,21 @@
+--- src/Makefile.orig	2012-10-24 13:27:12.000000000 +0400
++++ src/Makefile	2012-10-24 13:27:47.000000000 +0400
+@@ -1,14 +1,14 @@
+ all: dropwatch
+-CFLAGS+=-c -g -D_GNU_SOURCE -Wall -Werror `pkg-config --cflags libnl-3.0`
+-LDFLAGS=-lbfd -lreadline -lnl-3 -lnl-genl-3
++CFLAGS+=-c -D_GNU_SOURCE -Wall `pkg-config --cflags libnl-3.0`
++LIBS=-lbfd -lreadline -lnl-3 -lnl-genl-3
+ OBJFILES := main.o lookup.o\
+ 	 lookup_bfd.o lookup_kas.o
+ 
+ dropwatch: $(OBJFILES) 
+-	gcc -g -o dropwatch $(OBJFILES) $(LDFLAGS) 
++	$(CC) -o dropwatch $(LDFLAGS) $(OBJFILES) $(LIBS)
+ 
+ %.o: %.c
+-	gcc $(CFLAGS) $<
++	$(CC) $(CFLAGS) $<
+ clean:
+ 	rm -f dropwatch *.o
+ 

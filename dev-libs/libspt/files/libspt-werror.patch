@@ -1,0 +1,11 @@
+--- Makefile.in	2003-12-07 06:42:15.000000000 +0000
++++ Makefile.in	2009-03-10 21:09:43.000000000 +0000
+@@ -29,7 +29,7 @@
+ INCLUDES = -I.
+ DEFS = @DEFS@
+ CC = @CC@
+-COMMONCFLAGS = -Wall -g -Werror -pipe
++COMMONCFLAGS = -Wall -g -pipe
+ CFLAGS = $(COMMONCFLAGS) @CFLAGS@
+ INSTALL = $(LIBTOOL) --mode=install @INSTALL@
+ INSTALL_DATA = $(LIBTOOL) --mode=install @INSTALL@ -m 644

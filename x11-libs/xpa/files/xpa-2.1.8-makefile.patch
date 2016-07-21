@@ -1,0 +1,84 @@
+--- Makefile.in.orig	2008-11-03 12:05:33.000000000 +0000
++++ Makefile.in	2008-11-03 12:07:48.000000000 +0000
+@@ -28,6 +28,11 @@
+ 
+ prefix =		@prefix@
+ exec_prefix =		@exec_prefix@
++bindir = 		@bindir@
++libdir = 		@libdir@
++datadir = 		@datadir@
++mandir = 		@mandir@
++includedir = 		@includedir@
+ 
+ # The following definition can be set to non-null for special systems
+ # like AFS with replication.  It allows the pathnames used for installation
+@@ -37,19 +42,19 @@
+ INSTALL_ROOT =
+ 
+ # Directory in which to install the .a or .so binary for the XPA library:
+-LIB_INSTALL_DIR =	$(INSTALL_ROOT)$(exec_prefix)/lib
++LIB_INSTALL_DIR =	$(INSTALL_ROOT)$(libdir)
+ 
+ # Directory in which to install the program wish:
+-BIN_INSTALL_DIR =	$(INSTALL_ROOT)$(exec_prefix)/bin
++BIN_INSTALL_DIR =	$(INSTALL_ROOT)$(bindir)
+ 
+ # Directory in which to install the include file xpa.h:
+-INCLUDE_INSTALL_DIR =	$(INSTALL_ROOT)$(prefix)/include
++INCLUDE_INSTALL_DIR =	$(INSTALL_ROOT)$(includedir)
+ 
+ # Top-level directory for manual entries:
+-MAN_INSTALL_DIR =	$(INSTALL_ROOT)$(prefix)/man
++MAN_INSTALL_DIR =	$(INSTALL_ROOT)$(mandir)
+ 
+ # Top-level directory for share entries:
+-MAN_SHARE_DIR =		$(INSTALL_ROOT)$(prefix)/share/xpa
++MAN_SHARE_DIR =		$(INSTALL_ROOT)$(datadir)/xpa
+ 
+ # Platform-specific X compiler flags (include file specifications)
+ X_CFLAGS = 		@X_CFLAGS@
+@@ -175,7 +180,7 @@
+ 		$(RANLIB) $(LIB)
+ 
+ shlib:		$(LIB)
+-		@(rm -rf lib$(PACKAGE).tmp; mkdir lib$(PACKAGE).tmp; \
++		@(rm -rf lib$(PACKAGE).tmp; mkdir -p lib$(PACKAGE).tmp; \
+ 		(cd lib$(PACKAGE).tmp && ar x ../lib$(PACKAGE).a); \
+ 		rm -f lib$(PACKAGE).tmp/xt*.o; \
+ 		rm -f lib$(PACKAGE).tmp/tcl*.o; \
+@@ -184,7 +189,7 @@
+ 		rm -rf lib$(PACKAGE).tmp)
+ 
+ tclxpa:		$(LIB)
+-		@(rm -rf libtclxpa.tmp; mkdir libtclxpa.tmp; \
++		@(rm -rf libtclxpa.tmp; mkdir -p libtclxpa.tmp; \
+ 		(cd libtclxpa.tmp && ar x ../lib$(PACKAGE).a); \
+ 		rm -f libtclxpa.tmp/xt*.o; \
+ 		CC='$(CC)' CXX=$(CXX) \
+@@ -259,7 +264,7 @@
+ 	    do \
+ 	    if [ ! -d $$i ] ; then \
+ 		echo "Making directory $$i"; \
+-		mkdir $$i; \
++		mkdir -p $$i; \
+ 		chmod 755 $$i; \
+ 		else true; \
+ 		fi; \
+@@ -281,7 +286,7 @@
+ install-man:
+ 	@if [ ! -d $(MAN_INSTALL_DIR) ] ; then \
+ 	    echo "Making directory $(MAN_INSTALL_DIR)"; \
+-	    mkdir $(MAN_INSTALL_DIR); \
++	    mkdir -p $(MAN_INSTALL_DIR); \
+ 	    chmod 755 $(MAN_INSTALL_DIR); \
+ 	    else true; \
+ 	fi;
+@@ -292,7 +297,7 @@
+ 		M="$(MAN_INSTALL_DIR)/man$$E"; \
+ 		if [ ! -d $$M ] ; then \
+ 		    echo "Making directory $$M"; \
+-		    mkdir $$M; \
++		    mkdir -p $$M; \
+ 		    chmod 755 $$M; \
+ 		    else true; \
+ 		fi; \

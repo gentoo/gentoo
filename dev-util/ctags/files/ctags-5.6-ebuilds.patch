@@ -1,0 +1,22 @@
+diff -ur ctags-5.6/sh.c ctags-5.6-ebuild/sh.c
+--- ctags-5.6/sh.c	2006-05-30 00:37:13.000000000 -0400
++++ ctags-5.6-ebuild/sh.c	2006-10-07 17:37:31.000000000 -0400
+@@ -7,7 +7,8 @@
+ *   GNU General Public License.
+ *
+ *   This module contains functions for generating tags for scripts for the
+-*   Bourne shell (and its derivatives, the Korn and Z shells).
++*   Bourne shell (and its derivatives, the Korn and Z shells), along with some
++*   specialised kinds of shell scripts (Gentoo ebuilds and eclasses).
+ */
+ 
+ /*
+@@ -102,7 +103,7 @@
+ extern parserDefinition* ShParser (void)
+ {
+ 	static const char *const extensions [] = {
+-		"sh", "SH", "bsh", "bash", "ksh", "zsh", NULL
++		"sh", "SH", "bsh", "bash", "ksh", "zsh", "ebuild", "eclass", NULL
+ 	};
+ 	parserDefinition* def = parserNew ("Sh");
+ 	def->kinds      = ShKinds;

@@ -1,0 +1,22 @@
+diff -ru wmacpiload-0.2.0/include/lib_acpi.h wmacpiload-0.2.0.new//include/lib_acpi.h
+--- wmacpiload-0.2.0/include/lib_acpi.h	2005-07-21 21:33:19.000000000 -0400
++++ wmacpiload-0.2.0.new//include/lib_acpi.h	2011-06-20 19:53:30.458953984 -0400
+@@ -32,7 +32,7 @@
+  * Macros
+  ************************************************************************/
+ 
+-#  define ACPIDEV "/proc/acpi/info"
++#  define ACPIDEV "/proc/acpi/battery"
+ 
+   /* use ? */
+ #  ifndef ACPI_32_BIT_SUPPORT
+diff -ru wmacpiload-0.2.0/src/dockapp.c wmacpiload-0.2.0.new//src/dockapp.c
+--- wmacpiload-0.2.0/src/dockapp.c	2005-08-16 18:38:36.000000000 -0400
++++ wmacpiload-0.2.0.new//src/dockapp.c	2011-06-20 19:44:20.022684448 -0400
+@@ -431,5 +431,6 @@
+ void
+ dockapp_cleanup(void)
+ {
++  if (display != NULL)
+     XCloseDisplay(display);
+ }

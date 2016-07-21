@@ -1,0 +1,15 @@
+--- src/Makefile.in.orig	2015-05-10 20:59:26.854079700 +0200
++++ src/Makefile.in	2015-05-10 21:00:01.870857369 +0200
+@@ -3401,12 +3401,6 @@
+ 	uninstall-pkgconfigDATA uninstall-sbinPROGRAMS
+ 
+ 
+-# Create storage and run-time directories
+-@HAVE_DAEMON_TRUE@install-data-hook:
+-@HAVE_DAEMON_TRUE@	$(INSTALL) -d $(DESTDIR)/@config_dir@
+-@HAVE_DAEMON_TRUE@	$(INSTALL) -d $(DESTDIR)/@run_dir@
+-@HAVE_DAEMON_TRUE@	$(INSTALL) -d $(DESTDIR)/@storage_dir@
+-
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

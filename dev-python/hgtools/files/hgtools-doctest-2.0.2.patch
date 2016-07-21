@@ -1,0 +1,11 @@
+--- hgtools-2.0.2/hgtools/versioning.py	2012-10-09 10:35:38.000000000 +0800
++++ hgtools-2.0.2.new/hgtools/versioning.py	2013-05-04 16:45:14.883913556 +0800
+@@ -60,7 +60,7 @@
+ 
+ 	def as_number(self):
+ 		"""
+-		>>> str(SummableVersion('1.9.3').as_number())
++		>>> str(round(SummableVersion('1.9.3').as_number(), 12))
+ 		'1.93'
+ 		"""
+ 		def combine(subver, ver):

@@ -1,0 +1,64 @@
+ common-v4.5/src/mapped_ptr_vector.C |   14 +++++++-------
+ 1 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/common-v4.5/src/mapped_ptr_vector.C b/common-v4.5/src/mapped_ptr_vector.C
+index 0ffff35..993d0b9 100644
+--- a/common-v4.5/src/mapped_ptr_vector.C
++++ b/common-v4.5/src/mapped_ptr_vector.C
+@@ -256,12 +256,12 @@ void mapped_ptr_vector<T, StringCompareT>::push_back(T* inP,
+     _vector.push_back(inP);
+ 
+     typename tIndex::value_type valuePair(inP->GetName(),
+-      make_pair(_vector.size() - 1, fileIndex));
++      std::make_pair(_vector.size() - 1, fileIndex));
+ 
+     _index.insert(valuePair);
+ 
+     _currentName = inP->GetName();
+-    _currentIndices = make_pair(_vector.size() - 1, fileIndex);
++    _currentIndices = std::make_pair(_vector.size() - 1, fileIndex);
+ 
+ }
+ 
+@@ -274,12 +274,12 @@ void mapped_ptr_vector<T, StringCompareT>::push_back(const string& name,
+     _vector.push_back(NULL);
+ 
+     typename tIndex::value_type valuePair(name,
+-      make_pair(_vector.size() - 1, fileIndex));
++      std::make_pair(_vector.size() - 1, fileIndex));
+ 
+     _index.insert(valuePair);
+ 
+     _currentName = name;
+-    _currentIndices = make_pair(_vector.size() - 1, fileIndex);
++    _currentIndices = std::make_pair(_vector.size() - 1, fileIndex);
+ }
+ 
+ 
+@@ -447,7 +447,7 @@ void mapped_ptr_vector<T, StringCompareT>::erase(const string& name)
+     if (is_equal(_currentName, name, keyComp))
+     {
+         _currentName.clear();
+-        _currentIndices = make_pair(_vector.size(), (unsigned int)0);
++        _currentIndices = std::make_pair(_vector.size(), (unsigned int)0);
+     }
+ 
+ }
+@@ -532,7 +532,7 @@ pair<unsigned int, unsigned int> mapped_ptr_vector<T, StringCompareT>::get_indic
+     if (_vector.empty())
+     {
+         // Empty container. Return invalid index.
+-        return(make_pair(_vector.size(), (unsigned int)0));
++        return(std::make_pair(_vector.size(), (unsigned int)0));
+     }
+ 
+     typename tIndex::key_compare keyComp = _index.key_comp();
+@@ -556,7 +556,7 @@ pair<unsigned int, unsigned int> mapped_ptr_vector<T, StringCompareT>::get_indic
+         else
+         {
+             // Not found. Return invalid index.
+-            return(make_pair(_vector.size(), (unsigned int)0));
++            return(std::make_pair(_vector.size(), (unsigned int)0));
+         } 
+     }
+     

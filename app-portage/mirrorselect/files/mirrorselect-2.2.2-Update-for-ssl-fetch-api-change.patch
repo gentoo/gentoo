@@ -1,0 +1,24 @@
+From 9ec1e9649c980d32d23aab40eff3cac5e8f6f555 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Mon, 26 Jan 2015 18:23:05 -0800
+Subject: [PATCH] Update for ssl-fetch api change
+
+---
+ mirrorselect/extractor.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mirrorselect/extractor.py b/mirrorselect/extractor.py
+index ec5f299..59efad1 100644
+--- a/mirrorselect/extractor.py
++++ b/mirrorselect/extractor.py
+@@ -109,6 +109,7 @@ class Extractor(object):
+ 			'info':self.output.write,
+ 			'error': self.output.print_err,
+ 			'kwargs-info': {'level': 2},
++			'kwargs-debug': {'level':2},
+ 			'kwargs-error': {'level':0},
+ 			}
+ 
+-- 
+2.2.2
+

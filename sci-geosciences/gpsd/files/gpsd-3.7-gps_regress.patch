@@ -1,0 +1,63 @@
+https://bugs.gentoo.org/441760
+
+From 52dedf2ca8b31a8d113a1d9b14977d5d9b782744 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 27 Mar 2013 16:13:30 -0400
+Subject: [PATCH] fix build error when socket_export is disabled
+
+If you try to build with socket_export disabled, you'll hit a build
+failure due to gps_regress being undefined:
+
+NameError: name 'gps_regress' is not defined:
+  File "SConstruct", line 1519:
+    gps_regress,
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ SConstruct | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 1c187f3..a2b7a4c 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1394,8 +1394,8 @@ else:
+ # using regress-drivers requires socket_export being enabled.
+ if env['socket_export']:
+     # Regression-test the daemon
+-    gps_regress = Utility("gps-regress", [gpsd, python_built_extensions],
+-            '$SRCDIR/regress-driver test/daemon/*.log')
++    gps_regress = [Utility("gps-regress", [gpsd, python_built_extensions],
++            '$SRCDIR/regress-driver test/daemon/*.log')]
+ 
+     # Test that super-raw mode works. Compare each logfile against itself
+     # dumped through the daemon running in R=2 mode.  (This test is not
+@@ -1410,6 +1410,8 @@ if env['socket_export']:
+     # offset from subframe data.
+     Utility('gps-makeregress', [gpsd, python_built_extensions],
+         '$SRCDIR/regress-driver -b test/daemon/*.log')
++else:
++    gps_regress = []
+ 
+ # To build an individual test for a load named foo.log, put it in
+ # test/daemon and do this:
+@@ -1550,7 +1552,6 @@ flocktest = Utility("flocktest", [], "cd devtools; ./flocktest " + gitrepo)
+ check = env.Alias('check', [
+     python_compilation_regress,
+     bits_regress,
+-    gps_regress,
+     rtcm_regress,
+     aivdm_regress,
+     packet_regress,
+@@ -1559,7 +1560,7 @@ check = env.Alias('check', [
+     time_regress,
+     unpack_regress,
+     json_regress,
+-    ])
++    ] + gps_regress)
+ 
+ env.Alias('testregress', check)
+ 
+-- 
+1.8.1.2
+

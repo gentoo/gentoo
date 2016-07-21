@@ -1,0 +1,47 @@
+http://bugs.gentoo.org/513942
+
+Fix building with `./configure --enable-ogg123 --without-flac --without-speex --without-kate` and `make`:
+
+libtool: link: gcc -Wall -ffast-math -fsigned-char -O2 -pipe -march=native -Wl,-O1 -Wl,--hash-style=gnu -o oggenc oggenc.o audio.o encode.o platform.o resample.o skeleton.o  -Wl,--as-needed ../share/libutf8.a ../share/libgetopt.a -lvorbisenc -lvorbis -logg
+resample.o:resample.c:function res_init: error: undefined reference to 'sin'
+collect2: error: ld returned 1 exit status
+
+libtool: link: gcc -Wall -ffast-math -fsigned-char -O2 -pipe -march=native -Wl,-O1 -Wl,--as-needed -Wl,--hash-style=gnu -o ogg123 audio.o buffer.o callbacks.o cfgfile_options.o cmdline_options.o file_transport.o format.o http_transport.o ogg123.o oggvorbis_format.o playlist.o status.o remote.o transport.o vorbis_comments.o vgfilter.o  ../share/libutf8.a ../share/libgetopt.a -lvorbisfile -lvorbis -logg -lao -lnsl -lcurl -lpthread
+vgfilter.o:vgfilter.c:function vg_init: error: undefined reference to '__pow_finite'
+vgfilter.o:vgfilter.c:function vg_init: error: undefined reference to '__pow_finite'
+vgfilter.o:vgfilter.c:function vg_filter: error: undefined reference to 'tanh'
+vgfilter.o:vgfilter.c:function vg_filter: error: undefined reference to 'tanh'
+collect2: error: ld returned 1 exit status
+
+This is using the new GNU gold linker:
+
+$ ld -v
+GNU gold (GNU Binutils 2.24) 1.11
+
+Happens because -lm gets appended to the libraries list only with, for example, --with-flac but vgfilter.c and resample.c are always
+using functions from the mathlib.
+
+Therefore, always link to mathlib:
+
+--- ogg123/Makefile.am
++++ ogg123/Makefile.am
+@@ -30,7 +30,7 @@
+ ogg123_LDADD = @SHARE_LIBS@ \
+ 	       @VORBISFILE_LIBS@ @VORBIS_LIBS@ @OGG_LIBS@ @AO_LIBS@ \
+                @SOCKET_LIBS@ @LIBICONV@ @CURL_LIBS@ @PTHREAD_CFLAGS@ \
+-               @PTHREAD_LIBS@ @I18N_LIBS@ @FLAC_LIBS@ @SPEEX_LIBS@
++               @PTHREAD_LIBS@ @I18N_LIBS@ @FLAC_LIBS@ @SPEEX_LIBS@ -lm
+ 
+ ogg123_DEPENDENCIES = @SHARE_LIBS@
+ ogg123_SOURCES = audio.c buffer.c callbacks.c \
+--- oggenc/Makefile.am
++++ oggenc/Makefile.am
+@@ -23,7 +23,7 @@
+ 
+ oggenc_LDADD = @SHARE_LIBS@ \
+ 	       @VORBISENC_LIBS@ @VORBIS_LIBS@ @KATE_LIBS@ @OGG_LIBS@ \
+-	       @LIBICONV@ @I18N_LIBS@ @FLAC_LIBS@
++	       @LIBICONV@ @I18N_LIBS@ @FLAC_LIBS@ -lm
+ 
+ oggenc_DEPENDENCIES = @SHARE_LIBS@
+ 

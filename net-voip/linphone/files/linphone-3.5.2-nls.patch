@@ -1,0 +1,15 @@
+diff -r 5c0dde6115a0 -r 082bb23f04a9 configure.ac
+--- a/configure.ac	Thu Mar 29 12:44:23 2012 +0400
++++ b/configure.ac	Thu Mar 29 12:48:40 2012 +0400
+@@ -80,7 +80,10 @@
+ AC_SUBST(GUI_FLAGS)
+ 
+ dnl localization tools
+-IT_PROG_INTLTOOL([0.40], [no-xml])
++AM_NLS
++if test "$USE_NLS" != "no"; then
++    IT_PROG_INTLTOOL([0.40], [no-xml])
++fi
+ 
+ AM_CONDITIONAL(BUILD_TESTS,test x$build_tests != xno)
+ dnl Initialize libtool

@@ -1,0 +1,102 @@
+--- libebml-release-1.3.0/make/linux/Makefile
++++ libebml-release-1.3.0/make/linux/Makefile
+@@ -50,6 +50,8 @@
+ LIBRARY=libebml.a
+ LIBRARY_SO=libebml.so
+ LIBRARY_SO_VER=libebml.so.4
++LIBRARY_DYLIB=libebml.dylib
++LIBRARY_DYLIB_VER=libebml.4.dylib
+ 
+ # source-files
+ sources:=$(wildcard ${SRC_DIR}*$(EXTENSION))
+@@ -66,7 +68,7 @@
+ DEPENDFLAGS  = $(CXXFLAGS) $(INCLUDE)
+ 
+ ifeq (Darwin,$(shell uname -s))
+-all: staticlib
++all: staticlib macholib
+ else
+ all: staticlib sharedlib
+ endif
+@@ -75,8 +77,10 @@
+ 
+ sharedlib: $(LIBRARY_SO)
+ 
++macholib: $(LIBRARY_DYLIB)
++
+ lib:
+-	@echo "Use the 'staticlib', 'sharedlib' or 'all' targets."
++	@echo "Use the 'staticlib', 'sharedlib', 'macholib' or 'all' targets."
+ 	@false
+ 
+ # Build rules
+@@ -91,15 +95,22 @@
+ 	$(RANLIB) $@
+ 
+ $(LIBRARY_SO): $(objects_so)
+-	$(CXX) -shared -Wl,-soname,$(LIBRARY_SO_VER) -o $(LIBRARY_SO_VER) $(objects_so)
++	$(CXX) $(LDFLAGS) -shared -Wl,-soname,$(LIBRARY_SO_VER) -o $(LIBRARY_SO_VER) $(objects_so)
+ 	rm -f $(LIBRARY_SO)
+ 	ln -s $(LIBRARY_SO_VER) $(LIBRARY_SO)
+ 
++$(LIBRARY_DYLIB): $(objects_so)
++	$(CXX) $(LDFLAGS) -dynamiclib -install_name $(libdir)/$(LIBRARY_DYLIB_VER) -o $(LIBRARY_DYLIB_VER) $(objects_so) $(LIBS)
++	rm -f $(LIBRARY_DYLIB)
++	ln -s $(LIBRARY_DYLIB_VER) $(LIBRARY_DYLIB)
++
+ clean:
+ 	rm -f $(objects) $(objects_so)
+ 	rm -f $(LIBRARY)
+ 	rm -f $(LIBRARY_SO)
+ 	rm -f $(LIBRARY_SO_VER)
++	rm -f $(LIBRARY_DYLIB)
++	rm -f $(LIBRARY_DYLIB_VER)
+ 	rm -f CORE
+ 
+ distclean dist-clean: clean
+@@ -116,30 +127,34 @@
+ 	done
+ 
+ ifeq (Darwin,$(shell uname -s))
+-install: install_staticlib install_headers
++install: install_staticlib install_macholib install_headers
+ else
+ install: install_staticlib install_sharedlib install_headers
+ endif
+ 
+ install_headers:
+-	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(includedir)
++	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(DESTDIR)$(includedir)
+ 	for i in $(INCLUDE_DIR)/*.h; do \
+-		$(INSTALL) $(INSTALL_OPTS) $$i $(includedir) ; \
++		$(INSTALL) $(INSTALL_OPTS) $$i $(DESTDIR)$(includedir) ; \
+ 	done
+-	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(includedir)/c
++	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(DESTDIR)$(includedir)/c
+ 	for i in $(INCLUDE_DIR)/c/*.h; do \
+-		$(INSTALL) $(INSTALL_OPTS) $$i $(includedir)/c ; \
++		$(INSTALL) $(INSTALL_OPTS) $$i $(DESTDIR)$(includedir)/c ; \
+ 	done
+ 
+ install_staticlib: $(LIBRARY)
+-	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(libdir)
+-	$(INSTALL) $(INSTALL_OPTS_LIB) $(LIBRARY) $(libdir)
++	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(DESTDIR)$(libdir)
++	$(INSTALL) $(INSTALL_OPTS_LIB) $(LIBRARY) $(DESTDIR)$(libdir)
+ 
+ install_sharedlib: $(LIBRARY_SO)
+-	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(libdir)
+-	$(INSTALL) $(INSTALL_OPTS_LIB) $(LIBRARY_SO_VER) $(libdir)
+-	ln -fs $(LIBRARY_SO_VER) $(libdir)/$(LIBRARY_SO)
+-
++	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(DESTDIR)$(libdir)
++	$(INSTALL) $(INSTALL_OPTS_LIB) $(LIBRARY_SO_VER) $(DESTDIR)$(libdir)
++	ln -fs $(LIBRARY_SO_VER) $(DESTDIR)$(libdir)/$(LIBRARY_SO)
++
++install_macholib: $(LIBRARY_DYLIB)
++	$(INSTALL) $(INSTALL_DIR_OPTS) -d $(DESTDIR)$(libdir)
++	$(INSTALL) $(INSTALL_OPTS_LIB) $(LIBRARY_DYLIB_VER) $(DESTDIR)$(libdir)
++	ln -fs $(LIBRARY_DYLIB_VER) $(DESTDIR)$(libdir)/$(LIBRARY_DYLIB)
+ 
+ ifneq ($(wildcard .depend),)
+ include .depend

@@ -1,0 +1,48 @@
+http://bugzilla.redhat.com/show_bug.cgi?id=440436
+
+diff -ur fuseiso-20070708.orig/src/isofs.c fuseiso-20070708/src/isofs.c
+--- fuseiso-20070708.orig/src/isofs.c	2007-07-08 15:22:59.000000000 +0300
++++ fuseiso-20070708/src/isofs.c	2009-10-25 12:02:16.000000000 +0200
+@@ -178,7 +178,7 @@
+                         context.data_size = isonum_723(context.pd.logical_block_size);
+                         
+                         if(!context.block_size) {
+-                            fprintf(stderr, "init: wrong block data size %d, using default 2048\n", context.data_size);
++                            fprintf(stderr, "init: wrong block data size %Lu, using default 2048\n", context.data_size);
+                             context.data_size = 2048;
+                         };
+                         
+@@ -324,7 +324,7 @@
+     
+     if(context.block_size != 2048) {
+         // report unusual data block size
+-        printf("Data block size: %d\n", context.block_size);
++        printf("Data block size: %Lu\n", context.block_size);
+     };
+     
+     char buf[129];
+@@ -479,7 +479,7 @@
+     };
+     size_t len = read(context.fd, buf, context.data_size);
+     if(len != context.data_size) {
+-        fprintf(stderr, "isofs_read_raw_block: can`t read full block, read only %d bytes from offset %d, %d required; errno %d, message %s\n", 
++        fprintf(stderr, "isofs_read_raw_block: can`t read full block, read only %d bytes from offset %d, %Lu required; errno %d, message %s\n", 
+             len, (int) off, context.data_size, errno, strerror(errno));
+         fprintf(stderr, "isofs_read_raw_block: huh? reading zeros beyond file end? someone want to save a penny?\n");
+         memset(buf + len, 0, context.data_size - len);
+diff -ur fuseiso-20070708.orig/src/isofs.h fuseiso-20070708/src/isofs.h
+--- fuseiso-20070708.orig/src/isofs.h	2006-10-17 04:50:39.000000000 +0300
++++ fuseiso-20070708/src/isofs.h	2009-10-25 12:02:16.000000000 +0200
+@@ -38,9 +38,9 @@
+     struct iso_directory_record *root;
+     int file_offset; // offset to begin of useful data (for .nrg files)
+     int id_offset; // offset to CD001 inside file
+-    size_t block_size; // raw block size
+-    size_t block_offset; // offset from block start to data
+-    size_t data_size; // data size inside block 
++    off_t block_size; // raw block size
++    off_t block_offset; // offset from block start to data
++    off_t data_size; // data size inside block 
+     int susp; // parse susp entries
+     int susp_skip; // skip bytes from susp SP entry
+     int joliet_level; // joliet extension level (1, 2 or 3)

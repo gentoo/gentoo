@@ -1,0 +1,15 @@
+Index: openh264-1.4.0/Makefile
+===================================================================
+--- openh264-1.4.0.orig/Makefile
++++ openh264-1.4.0/Makefile
+@@ -253,8 +253,8 @@ install-shared: $(LIBPREFIX)$(PROJECT_NA
+ 	if [ "$(SHAREDLIBSUFFIXVER)" != "$(SHAREDLIBSUFFIX)" ]; then \
+ 		cp -a $(LIBPREFIX)$(PROJECT_NAME).$(SHAREDLIBSUFFIX) $(DESTDIR)/$(SHAREDLIB_DIR); \
+ 	fi
+-	mkdir -p $(DESTDIR)/$(PREFIX)/lib/pkgconfig
+-	install -m 644 $(PROJECT_NAME).pc $(DESTDIR)/$(PREFIX)/lib/pkgconfig
++	mkdir -p $(DESTDIR)/$(SHAREDLIB_DIR)/pkgconfig
++	install -m 644 $(PROJECT_NAME).pc $(DESTDIR)/$(SHAREDLIB_DIR)/pkgconfig
+ ifneq ($(EXTRA_LIBRARY),)
+ 	install -m 644 $(EXTRA_LIBRARY) $(DESTDIR)/$(PREFIX)/lib
+ endif

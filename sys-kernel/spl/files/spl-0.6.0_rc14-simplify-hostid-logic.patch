@@ -1,0 +1,181 @@
+From f47f028ae6f039c13d3138e2ee1c0056a3a3f789 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Mon, 11 Mar 2013 21:16:36 -0400
+Subject: [PATCH] Simplify hostid logic
+
+There is plenty of compatibility code for a hw_hostid
+that isn't used by anything. At the same time, there are apparently
+issues with the current hostid logic. coredumb in #zfsonlinux on
+freenode reported that Fedora 17 changes its hostid on every boot, which
+required force importing his pool. A suggestion by wca was to adopt
+FreeBSD's behavior, where it treats hostid as zero if /etc/hostid does
+not exist
+
+Adopting FreeBSD's behavior permits us to eliminate plenty of code,
+including a userland helper that invokes the system's hostid as a
+fallback.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+---
+ include/sys/sysmacros.h  |  1 -
+ include/sys/systeminfo.h |  3 +--
+ module/spl/spl-generic.c | 55 ++++++------------------------------------------
+ module/spl/spl-proc.c    | 11 ----------
+ 4 files changed, 7 insertions(+), 63 deletions(-)
+
+diff --git a/include/sys/sysmacros.h b/include/sys/sysmacros.h
+index 7c4da67..4dd2685 100644
+--- a/include/sys/sysmacros.h
++++ b/include/sys/sysmacros.h
+@@ -138,7 +138,6 @@
+ /* Missing globals */
+ extern char spl_version[32];
+ extern unsigned long spl_hostid;
+-extern char hw_serial[11];
+ 
+ /* Missing misc functions */
+ extern int highbit(unsigned long i);
+diff --git a/include/sys/systeminfo.h b/include/sys/systeminfo.h
+index e22a085..a4c1984 100644
+--- a/include/sys/systeminfo.h
++++ b/include/sys/systeminfo.h
+@@ -25,6 +25,5 @@
+ #ifndef _SPL_SYSTEMINFO_H
+ #define _SPL_SYSTEMINFO_H
+ 
+-#define HW_INVALID_HOSTID	0xFFFFFFFF	/* an invalid hostid */
+ #define HW_HOSTID_LEN		11		/* minimum buffer size needed */
+ 						/* to hold a decimal or hex */
+diff --git a/module/spl/spl-generic.c b/module/spl/spl-generic.c
+index 3cef489..b8e2ed1 100644
+--- a/module/spl/spl-generic.c
++++ b/module/spl/spl-generic.c
+@@ -52,14 +52,11 @@
+ char spl_version[32] = "SPL v" SPL_META_VERSION "-" SPL_META_RELEASE;
+ EXPORT_SYMBOL(spl_version);
+ 
+-unsigned long spl_hostid = HW_INVALID_HOSTID;
++unsigned long spl_hostid = 0;
+ EXPORT_SYMBOL(spl_hostid);
+ module_param(spl_hostid, ulong, 0644);
+ MODULE_PARM_DESC(spl_hostid, "The system hostid.");
+ 
+-char hw_serial[HW_HOSTID_LEN] = "<none>";
+-EXPORT_SYMBOL(hw_serial);
+-
+ proc_t p0 = { 0 };
+ EXPORT_SYMBOL(p0);
+ 
+@@ -467,7 +464,7 @@ struct new_utsname *__utsname(void)
+ 	int result;
+ 	uint64_t size;
+ 	struct _buf *file;
+-	unsigned long hostid = 0;
++	uint32_t hostid = 0;
+ 
+ 	file = kobj_open_file(spl_hostid_path);
+ 
+@@ -511,45 +508,10 @@ struct new_utsname *__utsname(void)
+ 	return 0;
+ }
+ 
+-#define GET_HOSTID_CMD \
+-	"exec 0</dev/null " \
+-	"     1>/proc/sys/kernel/spl/hostid " \
+-	"     2>/dev/null; " \
+-	"hostid"
+-
+-static int
+-hostid_exec(void)
+-{
+-	char *argv[] = { "/bin/sh",
+-	                 "-c",
+-	                 GET_HOSTID_CMD,
+-	                 NULL };
+-	char *envp[] = { "HOME=/",
+-	                 "TERM=linux",
+-	                 "PATH=/sbin:/usr/sbin:/bin:/usr/bin",
+-	                 NULL };
+-	int rc;
+-
+-	/* Doing address resolution in the kernel is tricky and just
+-	 * not a good idea in general.  So to set the proper 'hw_serial'
+-	 * use the usermodehelper support to ask '/bin/sh' to run
+-	 * '/usr/bin/hostid' and redirect the result to /proc/sys/spl/hostid
+-	 * for us to use.  It's a horrific solution but it will do for now.
+-	 */
+-	rc = call_usermodehelper(argv[0], argv, envp, UMH_WAIT_PROC);
+-	if (rc)
+-		printk("SPL: Failed user helper '%s %s %s', rc = %d\n",
+-		       argv[0], argv[1], argv[2], rc);
+-
+-	return rc;
+-}
+-
+ uint32_t
+ zone_get_hostid(void *zone)
+ {
+ 	static int first = 1;
+-	unsigned long hostid;
+-	int rc;
+ 
+ 	/* Only the global zone is supported */
+ 	ASSERT(zone == NULL);
+@@ -559,21 +521,16 @@ struct new_utsname *__utsname(void)
+ 
+ 		/*
+ 		 * Get the hostid if it was not passed as a module parameter.
+-		 * Try reading the /etc/hostid file directly, and then fall
+-		 * back to calling the /usr/bin/hostid utility.
++		 * Try reading the /etc/hostid file directly.
+ 		 */
+-		if ((spl_hostid == HW_INVALID_HOSTID) &&
+-		    (rc = hostid_read()) && (rc = hostid_exec()))
+-			return HW_INVALID_HOSTID;
++		if (hostid_read())
++			spl_hostid = 0;
+ 
+ 		printk(KERN_NOTICE "SPL: using hostid 0x%08x\n",
+ 			(unsigned int) spl_hostid);
+ 	}
+ 
+-	if (ddi_strtoul(hw_serial, NULL, HW_HOSTID_LEN-1, &hostid) != 0)
+-		return HW_INVALID_HOSTID;
+-
+-	return (uint32_t)hostid;
++	return spl_hostid;
+ }
+ EXPORT_SYMBOL(zone_get_hostid);
+ 
+diff --git a/module/spl/spl-proc.c b/module/spl/spl-proc.c
+index cd4fa1b..1113cf2 100644
+--- a/module/spl/spl-proc.c
++++ b/module/spl/spl-proc.c
+@@ -506,9 +506,6 @@ enum {
+                 if (str == end)
+                         SRETURN(-EINVAL);
+ 
+-                (void) snprintf(hw_serial, HW_HOSTID_LEN, "%lu", spl_hostid);
+-                hw_serial[HW_HOSTID_LEN - 1] = '\0';
+-                *ppos += *lenp;
+         } else {
+                 len = snprintf(str, sizeof(str), "%lx", spl_hostid);
+                 if (*ppos >= len)
+@@ -1051,14 +1048,6 @@ enum {
+                 .mode     = 0644,
+                 .proc_handler = &proc_dohostid,
+         },
+-        {
+-                CTL_NAME    (CTL_HW_SERIAL)
+-                .procname = "hw_serial",
+-                .data     = hw_serial,
+-                .maxlen   = sizeof(hw_serial),
+-                .mode     = 0444,
+-                .proc_handler = &proc_dostring,
+-        },
+ #ifndef HAVE_KALLSYMS_LOOKUP_NAME
+         {
+                 CTL_NAME    (CTL_KALLSYMS)
+-- 
+1.8.1.5
+

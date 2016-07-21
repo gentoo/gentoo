@@ -1,0 +1,63 @@
+From 2971e857104f8d02fa9107a0e13f50170eb4f30d Mon Sep 17 00:00:00 2001
+From: Ben Darnell <ben@bendarnell.com>
+Date: Sat, 6 Jun 2015 15:40:21 -0400
+Subject: [PATCH] Get the tests passing under Python 3.5b2
+
+---
+ tornado/test/web_test.py |  7 +++++--
+ tornado/util.py          | 10 ++++++++--
+ 2 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/tornado/test/web_test.py b/tornado/test/web_test.py
+index 96edd6c..a93369c 100644
+--- a/tornado/test/web_test.py
++++ b/tornado/test/web_test.py
+@@ -1538,8 +1538,11 @@ def get(self):
+     def test_clear_all_cookies(self):
+         response = self.fetch('/', headers={'Cookie': 'foo=bar; baz=xyzzy'})
+         set_cookies = sorted(response.headers.get_list('Set-Cookie'))
+-        self.assertTrue(set_cookies[0].startswith('baz=;'))
+-        self.assertTrue(set_cookies[1].startswith('foo=;'))
++        # Python 3.5 sends 'baz="";'; older versions use 'baz=;'
++        self.assertTrue(set_cookies[0].startswith('baz=;') or
++                        set_cookies[0].startswith('baz="";'))
++        self.assertTrue(set_cookies[1].startswith('foo=;') or
++                        set_cookies[1].startswith('foo="";'))
+ 
+ 
+ class PermissionError(Exception):
+diff --git a/tornado/util.py b/tornado/util.py
+index 606ced1..ea4da87 100644
+--- a/tornado/util.py
++++ b/tornado/util.py
+@@ -13,7 +13,6 @@
+ from __future__ import absolute_import, division, print_function, with_statement
+ 
+ import array
+-import inspect
+ import os
+ import sys
+ import zlib
+@@ -24,6 +23,13 @@
+ except NameError:
+     xrange = range  # py3
+ 
++# inspect.getargspec() raises DeprecationWarnings in Python 3.5.
++# The two functions have compatible interfaces for the parts we need.
++try:
++    from inspect import getfullargspec as getargspec  # py3
++except ImportError:
++    from inspect import getargspec  # py2
++
+ 
+ class ObjectDict(dict):
+     """Makes a dictionary behave like an object, with attribute-style access.
+@@ -284,7 +290,7 @@ class ArgReplacer(object):
+     def __init__(self, func, name):
+         self.name = name
+         try:
+-            self.arg_pos = inspect.getargspec(func).args.index(self.name)
++            self.arg_pos = getargspec(func).args.index(self.name)
+         except ValueError:
+             # Not a positional parameter
+             self.arg_pos = None

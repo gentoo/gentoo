@@ -1,0 +1,65 @@
+commit 14bf458675a735975c6b9bf7394682e93398a8e0
+Author: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+Date:   Tue Jul 14 17:46:45 2015 -0700
+
+    Fix regression in exit via dbus message
+    
+    Terminate via dbus terminate message is broken. Fixed this.
+    Thanks to Yixun Lan <yixun.lan@gmail.com> for finding this.
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 2cf4864..d692cf3 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -50,7 +50,7 @@
+ #define TD_DIST_VERSION PACKAGE_VERSION
+ #endif
+ 
+-extern int thd_dbus_server_init();
++extern int thd_dbus_server_init(void (*exit_handler)(int));
+ 
+ // Default log level
+ static int thd_log_level = G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL
+@@ -263,7 +263,7 @@ int main(int argc, char *argv[]) {
+ 	}
+ 
+ 	if (dbus_enable)
+-		thd_dbus_server_init();
++		thd_dbus_server_init(sig_int_handler);
+ 
+ 	if (!no_daemon) {
+ 		printf("Ready to serve requests: Daemonizing.. %d\n", thd_daemonize);
+diff --git a/src/thd_dbus_interface.cpp b/src/thd_dbus_interface.cpp
+index 021bce2..7926101 100644
+--- a/src/thd_dbus_interface.cpp
++++ b/src/thd_dbus_interface.cpp
+@@ -187,8 +187,12 @@ gboolean thd_dbus_interface_get_current_preference(PrefObject *obj,
+ 	return TRUE;
+ }
+ 
++void (*thd_dbus_exit_callback)(int);
+ gboolean thd_dbus_interface_terminate(PrefObject *obj, GError **error) {
+ 	thd_engine->thd_engine_terminate();
++	if (thd_dbus_exit_callback)
++		thd_dbus_exit_callback(0);
++
+ 	return TRUE;
+ }
+ 
+@@ -561,13 +565,15 @@ gboolean thd_dbus_interface_get_sensor_temperature(PrefObject *obj, int index,
+ }
+ 
+ // Setup dbus server
+-int thd_dbus_server_init() {
++int thd_dbus_server_init(void (*exit_handler)(int)) {
+ 	DBusGConnection *bus;
+ 	DBusGProxy *bus_proxy;
+ 	GError *error = NULL;
+ 	guint result;
+ 	PrefObject *value_obj;
+ 
++	thd_dbus_exit_callback = exit_handler;
++
+ 	bus = dbus_g_bus_get(DBUS_BUS_SYSTEM, &error);
+ 	if (error != NULL) {
+ 		thd_log_error("Couldn't connect to session bus: %s:\n", error->message);

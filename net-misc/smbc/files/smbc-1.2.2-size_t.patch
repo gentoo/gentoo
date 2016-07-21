@@ -1,0 +1,16 @@
+Patch to enable running on amd64 (borrowed from http://bugs.debian.org/366580)
+
+--- a/src/convert.c
++++ b/src/convert.c
+@@ -98,8 +98,9 @@
+ 
+   char *inbuf  = (char*) src;
+   char *outbuf = param->dst;
+-  int  inbytesleft  = src_len - 1;
+-  int  outbytesleft = param->dst_len - 1;
++  /* iconv requires size_t and not int ! */
++  size_t  inbytesleft  = src_len - 1;
++  size_t  outbytesleft = param->dst_len - 1;
+   bzero(param->dst, param->dst_len);
+   // Need some error handling here
+   iconv(param->cd, &inbuf, &inbytesleft, &outbuf, &outbytesleft);

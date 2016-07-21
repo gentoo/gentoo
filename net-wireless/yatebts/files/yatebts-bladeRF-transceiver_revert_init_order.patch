@@ -1,0 +1,86 @@
+diff --git a/mbts/TransceiverRAD1/bladeRFDevice.cpp b/mbts/TransceiverRAD1/bladeRFDevice.cpp
+index a2a3346..cfdb977 100644
+--- a/mbts/TransceiverRAD1/bladeRFDevice.cpp
++++ b/mbts/TransceiverRAD1/bladeRFDevice.cpp
+@@ -35,7 +35,6 @@
+ 
+ #include <Logger.h>
+ 
+-
+ #define MIN_OVERSAMPLING 4
+ 
+ #define HEALTH_BAD 10
+@@ -128,7 +127,36 @@ bool bladeRFDevice::open(const std::string &args, bool)
+             << "." << ver.patch << " (" << ver.describe << ")";
+ 
+     uint32_t val = 0;
+-    bladerf_config_gpio_read(bdev, &val);
++
++       status = bladerf_sync_config(bdev,
++        BLADERF_MODULE_RX,
++        BLADERF_FORMAT_SC16_Q11,
++        DEFAULT_STREAM_RX_BUFFERS,
++        DEFAULT_STREAM_SAMPLES,
++        DEFAULT_STREAM_RX_XFERS,
++        DEFAULT_STREAM_TIMEOUT
++    );
++
++    if (status < 0) {
++        LOG(CRIT) << "Failed to intialize RX sync handle: " << bladerf_strerror(status);
++        checkHealth(mRxHealth, false);
++    }
++
++    status = bladerf_sync_config(bdev,
++        BLADERF_MODULE_TX,
++        BLADERF_FORMAT_SC16_Q11,
++        DEFAULT_STREAM_TX_BUFFERS,
++        DEFAULT_STREAM_SAMPLES,
++        DEFAULT_STREAM_TX_XFERS,
++        DEFAULT_STREAM_TIMEOUT
++    );
++
++    if (status < 0) {
++        LOG(CRIT) << "Failed to intialize TX sync handle: " << bladerf_strerror(status);
++        checkHealth(mTxHealth, false);
++    }
++
++       bladerf_config_gpio_read(bdev, &val);
+     val |= 0x10000; //enable timestamps, clears and resets everything on write
+     bladerf_config_gpio_write(bdev, val);
+     bladerf_config_gpio_read(bdev, &val);
+@@ -185,34 +213,6 @@ bool bladeRFDevice::open(const std::string &args, bool)
+     else
+         LOG(INFO) << "Actual bandwidth " << bw;
+ 
+-    status = bladerf_sync_config(bdev,
+-        BLADERF_MODULE_RX,
+-        BLADERF_FORMAT_SC16_Q11,
+-        DEFAULT_STREAM_RX_BUFFERS,
+-        DEFAULT_STREAM_SAMPLES,
+-        DEFAULT_STREAM_RX_XFERS,
+-        DEFAULT_STREAM_TIMEOUT
+-    );
+-
+-    if (status < 0) {
+-        LOG(CRIT) << "Failed to intialize RX sync handle: " << bladerf_strerror(status);
+-        checkHealth(mRxHealth, false);
+-    }
+-
+-    status = bladerf_sync_config(bdev,
+-        BLADERF_MODULE_TX,
+-        BLADERF_FORMAT_SC16_Q11,
+-        DEFAULT_STREAM_TX_BUFFERS,
+-        DEFAULT_STREAM_SAMPLES,
+-        DEFAULT_STREAM_TX_XFERS,
+-        DEFAULT_STREAM_TIMEOUT
+-    );
+-
+-    if (status < 0) {
+-        LOG(CRIT) << "Failed to intialize TX sync handle: " << bladerf_strerror(status);
+-        checkHealth(mTxHealth, false);
+-    }
+-
+     mRxGain1 = BLADERF_RXVGA1_GAIN_MAX;
+     mDcCorrect = true;
+     mRxMaxOffset = RX_OFFSET_ERROR * RX_AVERAGE_DAMPING;
+

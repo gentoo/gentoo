@@ -1,0 +1,14 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Change requires to install_requires
+--- a/setup.py
++++ b/setup.py
+@@ -94,8 +94,7 @@
+       version=VERSION,
+       description=DESCRIPTION,
+       scripts=scripts,
+-      requires=['astropy', 'numpy', 'matplotlib'],
+-      install_requires=['astropy'],
++      install_requires=['astropy', 'numpy', 'matplotlib'],
+       provides=[PACKAGENAME],
+       author=AUTHOR,
+       author_email=AUTHOR_EMAIL,

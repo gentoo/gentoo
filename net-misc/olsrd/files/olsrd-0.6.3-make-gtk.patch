@@ -1,0 +1,22 @@
+--- a/gui/linux-gtk/Makefile
++++ b/gui/linux-gtk/Makefile
+@@ -1,8 +1,8 @@
+ CC ?=	gcc
+ 
+-CFLAGS += -Wall `pkg-config --cflags gtk+-2.0`
++CFLAGS += -Wall $(shell pkg-config --cflags gdk-pixbuf-2.0 glib-2.0 gtk+-2.0)
+ LDFLAGS +=
+-LIBS := `pkg-config --libs gtk+-2.0` -lm
++LIBS := $(shell pkg-config --libs gdk-pixbuf-2.0 glib-2.0 gtk+-2.0) -lm
+ 
+ OBJS=	src/main.o src/interface.o src/callbacks.o src/ipc.o \
+ 	src/packet.o src/nodes.o src/routes.o
+@@ -10,7 +10,7 @@
+ all:	olsrd-gui
+ 
+ olsrd-gui:	$(OBJS)
+-	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f $(OBJS) olsrd-gui

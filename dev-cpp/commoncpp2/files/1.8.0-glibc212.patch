@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/334135
+
+--- src/applog.cpp
++++ src/applog.cpp
+@@ -44,6 +44,7 @@
+ #include <cstdio>
+ #include <stdarg.h>
+ #include <errno.h>
++#include <sys/stat.h>
+ 
+ // TODO sc: test if has to move up now that it is into commoncpp
+ // NOTE: the order of inclusion is important do not move following include line

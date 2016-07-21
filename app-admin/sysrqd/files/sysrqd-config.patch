@@ -1,0 +1,13 @@
+--- sysrqd.c.orig	2009-11-05 14:58:21.644471772 +0100
++++ sysrqd.c	2009-11-05 14:58:43.276472005 +0100
+@@ -40,8 +40,8 @@
+ #define BIND_MAX_LEN 16
+ #define PROMPT "sysrq> "
+ #define SYSRQ_TRIGGER_PATH "/proc/sysrq-trigger"
+-#define AUTH_FILE "/etc/sysrqd.secret"
+-#define BINDIP_FILE "/etc/sysrqd.bind"
++#define AUTH_FILE "/etc/sysrqd/sysrqd.secret"
++#define BINDIP_FILE "/etc/sysrqd/sysrqd.bind"
+ #define PID_FILE "/var/run/sysrqd.pid"
+ #define SYSRQD_PRIO -19
+ #define SYSRQD_LISTEN_PORT 4094

@@ -1,0 +1,14 @@
+# HAProxy config file(s), space separated
+#CONFIGS="/etc/haproxy/haproxy.cfg"
+
+# Additional HAProxy command line options
+HAPROXY_OPTS=""
+
+# If you want to make use ot the new seamless reload you can just write your own
+# reload_seamless function here. It will be called by the init script.
+# For more information on how to use that feature please have a look at the
+# "seamless_reload.txt" documentation file (requires net-proxy/haproxy[examples])
+#reload_seamless() {
+#	checkpath -d -m 0700 haproxy:haproxy "/var/run/haproxy/"
+#	socat /var/run/haproxy/socket - <<< "show servers state" > /var/run/haproxy/global.state
+#}

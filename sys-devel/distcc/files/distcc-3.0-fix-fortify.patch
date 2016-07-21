@@ -1,0 +1,11 @@
+diff -ru a/src/snprintf.h b/src/snprintf.h
+--- a/src/snprintf.h	2008-08-06 15:52:06.000000000 -0500
++++ b/src/snprintf.h	2009-01-04 15:19:22.000000000 -0600
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <stdarg.h>
++#include "config.h"
+ 
+ #ifdef __GNUC__
+ /** Use gcc attribute to check printf fns.  a1 is the 1-based index of

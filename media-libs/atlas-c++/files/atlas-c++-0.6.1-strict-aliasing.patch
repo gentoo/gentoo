@@ -1,0 +1,16 @@
+--- tests/Objects/Makefile.am.old	2008-02-29 07:43:45.000000000 +0100
++++ tests/Objects/Makefile.am	2008-02-29 07:44:21.000000000 +0100
+@@ -28,3 +28,5 @@
+ attributes_SOURCES = attributes.cpp
+ 
+ flags_SOURCES = flags.cpp
++
++AM_CPPFLAGS = -fno-strict-aliasing
+--- benchmark/Makefile.am.old	2008-02-29 07:57:10.000000000 +0100
++++ benchmark/Makefile.am	2008-02-29 07:57:33.000000000 +0100
+@@ -31,3 +31,5 @@
+ 
+ Objects_asMessage_SOURCES = Objects_asMessage.cpp timer.h
+ Objects_iterator_SOURCES = Objects_iterator.cpp timer.h
++
++AM_CPPFLAGS = -fno-strict-aliasing

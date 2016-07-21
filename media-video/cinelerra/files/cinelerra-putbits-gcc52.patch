@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/show_bug.cgi?id=562208
+
+Index: cinelerra-20140710/toolame-02l/bitstream.c
+===================================================================
+--- cinelerra-20140710.orig/toolame-02l/bitstream.c
++++ cinelerra-20140710/toolame-02l/bitstream.c
+@@ -198,9 +198,6 @@ void put1bit (Bit_stream_struc * bs, int
+ }
+ 
+ /*write N bits into the bit stream */
+-#if !defined(__clang__)
+-INLINE
+-#endif /* not __clang__ */
+ void putbits (Bit_stream_struc * bs, unsigned int val, int N)
+ {
+   register int j = N;
+Index: cinelerra-20140710/toolame-02l/bitstream.h
+===================================================================
+--- cinelerra-20140710.orig/toolame-02l/bitstream.h
++++ cinelerra-20140710/toolame-02l/bitstream.h
+@@ -9,7 +9,7 @@ unsigned int get1bit (Bit_stream_struc *
+ void put1bit (Bit_stream_struc *, int);
+ unsigned long look_ahead (Bit_stream_struc *, int);
+ unsigned long getbits (Bit_stream_struc *, int);
+-INLINE void putbits (Bit_stream_struc *, unsigned int, int);
++void putbits (Bit_stream_struc *, unsigned int, int);
+ void byte_ali_putbits (Bit_stream_struc *, unsigned int, int);
+ unsigned long byte_ali_getbits (Bit_stream_struc *, int);
+ unsigned long sstell (Bit_stream_struc *);

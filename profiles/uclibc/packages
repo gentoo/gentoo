@@ -1,0 +1,12 @@
+app-misc/pax-utils
+
+# remove stuff not needed on uclibc
+-*net-misc/iputils
+# man pages disabled (noman)
+-*sys-apps/man
+-*virtual/man
+-*sys-apps/man-pages
+# this will be added by nls
+-*sys-devel/gettext
+
+-*sys-apps/hdparm

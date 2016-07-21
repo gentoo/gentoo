@@ -1,0 +1,24 @@
+--- dnssec-tools-2.0/tools/scripts/dtinitconf
++++ dnssec-tools-2.0/tools/scripts/dtinitconf
+@@ -58,8 +58,8 @@
+ #
+ my @COMMON_BINDLOCS =
+ (
+-	"/usr/local/sbin",
+-	"/usr/sbin",
++	"/usr/local/bin",
++	"/usr/bin",
+ );
+ 
+ #
+@@ -424,8 +424,8 @@
+ 	$admin	    = $opts{'admin'}	  || dnssec_tools_default("admin");
+ 	$zoneparser = $opts{'zoneparser'} || dnssec_tools_default("zoneparser");
+ 
+-	$binddir   = $opts{'binddir'};
+-	$dtdir	   = $opts{'dtdir'};
++	$binddir   = $opts{'binddir'} || 'path';
++	$dtdir	   = $opts{'dtdir'} || 'path';
+ 
+ 	$outfile   = $opts{'outfile'}	|| getconffile();
+ 	$overwrite = $opts{'overwrite'};

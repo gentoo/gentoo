@@ -1,0 +1,49 @@
+--- OpenSceneGraph-3.2.1/src/osgPlugins/ogr/ReaderWriterOGR.cpp
++++ OpenSceneGraph-3.2.1/src/osgPlugins/ogr/ReaderWriterOGR.cpp
+@@ -134,11 +134,21 @@
+ 
+     virtual ReadResult readFile(const std::string& fileName, const osgDB::ReaderWriter::Options* options) const
+     {
++#if GDAL_VERSION_MAJOR < 2
+         if (OGRSFDriverRegistrar::GetRegistrar()->GetDriverCount() == 0)
+             OGRRegisterAll();
++#else
++        if (GDALGetDriverCount() == 0)
++            GDALAllRegister();
++#endif
+ 
+         // Try to open data source
++#if GDAL_VERSION_MAJOR < 2
+         OGRDataSource* file = OGRSFDriverRegistrar::Open(fileName.c_str());
++#else
++        GDALDataset       *file;
++        file = (GDALDataset*) GDALOpenEx( fileName.c_str(), GDAL_OF_VECTOR, NULL, NULL, NULL );
++#endif
+         if (!file)
+             return 0;
+ 
+@@ -156,6 +166,7 @@
+ 
+         osg::Group* group = new osg::Group;
+ 
++#if GDAL_VERSION_MAJOR < 2
+         for (int i = 0; i < file->GetLayerCount(); i++)
+         {
+             osg::Group* node = readLayer(file->GetLayer(i), file->GetName(), useRandomColorByFeature, addGroupPerFeature);
+@@ -163,6 +174,16 @@
+                 group->addChild( node );
+         }
+         OGRDataSource::DestroyDataSource( file );
++#else
++        for (int i = 0; i < file->GetLayerCount(); i++)
++        {
++            OGRLayer* layer = (OGRLayer *)GDALDatasetGetLayer(file, i); 
++            osg::Group* node = readLayer(layer, layer->GetName(), useRandomColorByFeature, addGroupPerFeature);
++            if (node)
++                group->addChild( node );
++        }
++        GDALClose( file );
++#endif
+         return group;
+     }
+ 

@@ -1,0 +1,33 @@
+commit 917b505c86a70dda2191d380861af05becc03858
+Author: Karim Belabas <Karim.Belabas@math.u-bordeaux1.fr>
+Date:   Mon Mar 12 23:54:11 2012 +0100
+
+    ispower(x < 0,, &n): n could have the wrong sign [#1302]
+
+diff --git a/src/basemath/arith1.c b/src/basemath/arith1.c
+index ded946b..5502ba5 100644
+--- a/src/basemath/arith1.c
++++ b/src/basemath/arith1.c
+@@ -1109,6 +1109,7 @@ Z_isanypower(GEN x, GEN *pty)
+       *pty = gerepileuptoint(av, y);
+       return k;
+     }
++    if (pty) togglesign_safe(pty);
+   }
+   if (pty) *pty = gerepilecopy(av, *pty); else avma = av;
+   return k;
+diff --git a/src/test/32/ispower b/src/test/32/ispower
+index bf4b6f0..84d8de7 100644
+--- a/src/test/32/ispower
++++ b/src/test/32/ispower
+@@ -1118,7 +1118,7 @@
+ [2, 999]
+ [6, 10]
+ [3, -4]
+-[3, 2]
+-[3, 21218]
++[3, -2]
++[3, -21218]
+ [3, -1/4]
+-Total time spent: 3236
++Total time spent: 3012

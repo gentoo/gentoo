@@ -1,0 +1,22 @@
+From ed8b6ce37c76f62585a5cc86ac99194bf7115a84 Mon Sep 17 00:00:00 2001
+From: selepo <po.lenhoff@gmail.com>
+Date: Wed, 18 Nov 2015 18:50:17 +0100
+Subject: [PATCH] bugfix for issue 466 with xonsh.bat installed in non-windows
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0fb407b..7c10805 100755
+--- a/setup.py
++++ b/setup.py
+@@ -77,7 +77,7 @@ def main():
+         platforms='Cross Platform',
+         classifiers=['Programming Language :: Python :: 3'],
+         packages=['xonsh'],
+-        scripts=['scripts/xonsh', 'scripts/xonsh.bat'],
++        scripts=['scripts/xonsh'] if 'win' not in sys.platform else ['scripts/xonsh.bat'],
+         cmdclass={'install': xinstall, 'sdist': xsdist},
+         )
+     if HAVE_SETUPTOOLS:

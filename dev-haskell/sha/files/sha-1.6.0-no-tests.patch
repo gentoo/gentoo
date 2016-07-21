@@ -1,0 +1,55 @@
+From 28704350d7b6148b2edbd5e8883c1c2dfba4f0ba Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Wed, 21 Nov 2012 23:44:33 +0300
+Subject: [PATCH] cabal: make depends on test libraries optional
+
+before the patch 'QuickCheck' and friends were required unconditionally:
+
+    $ runhaskell Setup.hs configure -v -ftest | grep QuickCheck
+    Dependency QuickCheck ==2.*: using QuickCheck-2.5.1.1
+    $ runhaskell Setup.hs configure -v -f-test | grep QuickCheck
+    Dependency QuickCheck ==2.*: using QuickCheck-2.5.1.1
+
+the patch fixes it by putting 'build-depends' under condition
+
+    $ runhaskell Setup.hs configure -v -f-test | grep -i quickcheck
+    $ runhaskell Setup.hs configure -v -ftest | grep -i quickcheck
+    Dependency QuickCheck ==2.*: using QuickCheck-2.5.1.1
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ SHA.cabal | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/SHA.cabal b/SHA.cabal
+index a146b52..1ec2624 100644
+--- a/SHA.cabal
++++ b/SHA.cabal
+@@ -37,9 +37,12 @@ Library
+     Ghc-Options: -fregs-graph
+ 
+ Executable test_sha
+-  build-depends: base >= 4 && < 6, bytestring, binary, array,
+-                 QuickCheck == 2.*, test-framework >= 0.3,
+-                 test-framework-quickcheck2 >= 0.2
++  if flag(test)
++      build-depends: base >= 4 && < 6, bytestring, binary, array,
++                     QuickCheck == 2.*, test-framework >= 0.3,
++                     test-framework-quickcheck2 >= 0.2
++  else
++    buildable: False
+   Main-Is: Test.hs
+   Other-Modules: Data.Digest.Pure.SHA
+ 
+@@ -51,8 +54,6 @@ Executable test_sha
+   if impl(ghc >= 6.12)
+     Ghc-Options: -fregs-graph
+ 
+-  if !flag(test)
+-    buildable: False
+ 
+ Executable sha1
+   build-depends: base >= 4 && < 6, bytestring, binary, array, directory
+-- 
+1.8.0
+

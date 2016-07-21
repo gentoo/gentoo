@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=vmware-user-suid-wrapper
+Name=VMware User Agent
+X-KDE-autostart-phase=1
+NoDisplay=true

@@ -1,0 +1,24 @@
+--- src/Makefile
++++ src/Makefile
+@@ -1,10 +1,10 @@
+ OBJ = board.o snake.o game.o menu.o snake3d.o global.o consts.o cube.o functions.o preferences.o rooms2.o network.o userInput.o server.o packets.o client.o classic2d.o
+-CXXFLAGS = -g -Wall -I/usr/X11R6/include/ `sdl-config --cflags`
++CXXFLAGS += -Wall $(shell sdl-config --cflags)
+ CXX = g++
+ CC = g++
+ #LDFLAGSMAC = -framework GLUT -framework OpenGL -framework Cocoa -bind_at_load -L/sw/lib/ -lSDL -lSDLmain
+ LDFLAGSMAC = `sdl-config --libs` -framework GLUT -framework OpenGL -lSDL_net
+-LDFLAGS = -L/usr/X11R6/lib/ -lGL -lglut -lGLU -lSDL -lSDL_net
++LIBS = -lGL -lglut -lGLU $(shell sdl-config --libs) -lSDL_net
+ 
+ all: snake3d
+ 
+@@ -18,7 +18,7 @@
+ 	g++ $(LDFLAGSMAC) $(OBJ) -o ../snake3d 
+ 
+ snake3d.linux: $(OBJ)
+-	g++ $(LDFLAGS) $(OBJ) -o ../snake3d 
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJ) $(LIBS) -o ../snake3d
+ 
+ 
+ clean:

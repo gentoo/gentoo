@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index a65bed0..713a7ab 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,9 +26,10 @@ LIBOBJECTS= \
+ 	stringptr.o
+ 
+ 
+-CC = gcc
++CC ?= gcc
+ #CFLAGS= -g -ansi-strict -W -Wall -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+-CFLAGS= -g -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
++OPT_CFLAGS = -g
++CFLAGS= $(OPT_CFLAGS) -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+ # -I$(HOME)/lib/include
+ # -DREPORT_MAX_ALLOC
+ 
+@@ -44,7 +45,7 @@ liblpo.a: $(LIBOBJECTS)
+ 
+ # NB: LIBRARY MUST FOLLOW OBJECTS OR LINK FAILS WITH UNRESOLVED REFERENCES!!
+ poa: $(OBJECTS) liblpo.a
+-	$(CC) -o $@ $(OBJECTS) -lm liblpo.a
++	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) -lm liblpo.a
+ 
+ what:
+ 	@echo poa: partial-order based sequence alignment program

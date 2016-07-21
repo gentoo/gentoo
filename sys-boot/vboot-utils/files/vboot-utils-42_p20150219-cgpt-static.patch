@@ -1,0 +1,36 @@
+From 9d437e9122019568df7fa2d602f911e6a873d78b Mon Sep 17 00:00:00 2001
+From: Anatol Pomazau <anatol@google.com>
+Date: Thu, 19 Feb 2015 05:11:51 -0800
+Subject: [PATCH] Remove duplicated linker flag
+
+We already set '-static' to LDFLAGS above no need to do it again here.
+
+TEST=build with 'make' and 'make STATIC=1'. Check that 'STATIC=1' adds '-static' linker flag.
+BUG=None
+
+Change-Id: I83e23984753094af203432eb4570930085788398
+Reviewed-on: https://chromium-review.googlesource.com/251151
+Reviewed-by: Mike Frysinger <vapier@chromium.org>
+Reviewed-by: Hung-Te Lin <hungte@chromium.org>
+Reviewed-by: Anatol Pomazau <anatol@google.com>
+Commit-Queue: Anatol Pomazau <anatol@google.com>
+Tested-by: Anatol Pomazau <anatol@google.com>
+---
+ Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index dfa971c..c0c5f50 100644
+--- a/Makefile
++++ b/Makefile
+@@ -960,7 +960,6 @@ ${CGPT_WRAPPER}: ${CGPT_WRAPPER_OBJS} ${UTILLIB}
+ .PHONY: cgpt
+ cgpt: ${CGPT} ${CGPT_WRAPPER}
+ 
+-${CGPT}: LDFLAGS += -static
+ ${CGPT}: LDLIBS += -luuid
+ 
+ ${CGPT}: ${CGPT_OBJS} ${UTILLIB}
+-- 
+2.3.1
+

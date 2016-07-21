@@ -1,0 +1,33 @@
+diff --git a/PySide/QtGui/CMakeLists.txt b/PySide/QtGui/CMakeLists.txt
+index 6e14706..bd60775 100644
+--- a/PySide/QtGui/CMakeLists.txt
++++ b/PySide/QtGui/CMakeLists.txt
+@@ -71,7 +71,6 @@ set(QtGui_OPTIONAL_SRC )
+ set(QtGui_DROPPED_ENTRIES )
+ check_qt_class(QtGui QAbstractPageSetupDialog   QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+ check_qt_class(QtGui QAbstractPrintDialog       QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+-check_qt_class(QtGui QGtkStyle                  QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+ check_qt_class(QtGui QPageSetupDialog           QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+ check_qt_class(QtGui QPrintDialog               QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+ check_qt_class(QtGui QPrintEngine               QtGui_OPTIONAL_SRC QtGui_DROPPED_ENTRIES)
+diff --git a/PySide/QtGui/typesystem_gui_common.xml b/PySide/QtGui/typesystem_gui_common.xml
+index 711d7cc..954aa54 100644
+--- a/PySide/QtGui/typesystem_gui_common.xml
++++ b/PySide/QtGui/typesystem_gui_common.xml
+@@ -6996,16 +6996,6 @@
+     <modify-function signature="exec()" rename="exec_" allow-thread="yes" />
+   </object-type>
+ 
+-  <object-type name="QGtkStyle">
+-    <modify-function signature="standardPixmap(QStyle::StandardPixmap,const QStyleOption*,const QWidget*)const">
+-      <modify-argument index="2">
+-        <replace-default-expression with="0"/>
+-      </modify-argument>
+-      <modify-argument index="3">
+-        <replace-default-expression with="0"/>
+-      </modify-argument>
+-    </modify-function>
+-  </object-type>
+ 
+   <object-type name="QPageSetupDialog">
+     <enum-type name="PageSetupDialogOption" flags="PageSetupDialogOptions"/>

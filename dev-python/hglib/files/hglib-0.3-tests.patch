@@ -1,0 +1,63 @@
+tests require a more generic method to open, close files to work with pypy
+https://bugs.pypy.org/issue1380
+diff -ur python-hglib-0.3.orig/tests/test-import.py python-hglib-0.3/tests/test-import.py
+--- tests/test-import.py	2012-07-01 17:11:01.000000000 +0800
++++ tests/test-import.py	2013-01-23 23:44:12.389473396 +0800
+@@ -22,7 +22,8 @@
+         self.assertEquals(self.client.cat(['a']), '1\n')
+ 
+     def test_basic_file(self):
+-        open('patch', 'wb').write(patch)
++        with open('patch', 'wb') as f:
++            f.write(patch)
+ 
+         # --no-commit
+         self.client.import_(['patch'], nocommit=True)
+diff -ur python-hglib-0.3.orig/tests/test-config.py python-hglib-0.3/tests/test-config.py
+--- tests/test-config.py	2012-07-01 17:11:01.000000000 +0800
++++ tests/test-config.py	2013-01-23 23:55:06.120502085 +0800
+@@ -3,7 +3,8 @@
+ class test_config(common.basetest):
+     def setUp(self):
+         common.basetest.setUp(self)
+-        open('.hg/hgrc', 'a').write('[section]\nkey=value\n')
++	with open('.hg/hgrc', 'a') as f:
++            f.write('[section]\nkey=value\n')
+         self.client = hglib.open()
+ 
+     def test_basic(self):
+diff -ur python-hglib-0.3.orig/tests/test-paths.py python-hglib-0.3/tests/test-paths.py
+--- tests/test-paths.py	2012-07-01 17:11:01.000000000 +0800
++++ tests/test-paths.py	2013-01-24 00:04:36.266527106 +0800
+@@ -3,8 +3,8 @@
+ 
+ class test_paths(common.basetest):
+     def test_basic(self):
+-        open('.hg/hgrc', 'a').write('[paths]\nfoo = bar\n')
+-
++        with open('.hg/hgrc', 'a') as f:
++            f.write('[paths]\nfoo = bar\n')
+         # hgrc isn't watched for changes yet, have to reopen
+         self.client = hglib.open()
+         paths = self.client.paths()
+diff -ur python-hglib-0.3.orig/tests/test-update.py python-hglib-0.3/tests/test-update.py
+--- tests/test-update.py	2012-11-09 18:56:31.000000000 +0800
++++ tests/test-update.py	2013-01-24 00:05:40.866529942 +0800
+@@ -33,7 +33,8 @@
+         self.client.commit('fourth')
+         self.client.update(rev2)
+         old = open('a').read()
+-        open('a', 'wb').write('a' + old)
++        with open('a', 'wb') as f:
++            f.write('a' + old)
+         u, m, r, ur = self.client.update()
+         self.assertEquals(u, 0)
+         self.assertEquals(m, 1)
+@@ -68,5 +69,6 @@
+         self.assertEquals(old, open('a').read())
+ 
+     def test_basic_plain(self):
+-        open('.hg/hgrc', 'a').write('[defaults]\nupdate=-v\n')
++        with open('.hg/hgrc', 'a') as f:
++            f.write('[defaults]\nupdate=-v\n')
+         self.test_basic()

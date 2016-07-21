@@ -1,0 +1,39 @@
+--- a/java/Makefile.am	2015-07-11 03:53:12.000000000 -0400
++++ b/java/Makefile.am	2016-01-20 22:20:37.505713349 -0500
+@@ -36,10 +36,9 @@
+ 	com/google/scrollview/ScrollView.class
+ 
+ SCROLLVIEW_LIBS = \
+-	$(srcdir)/piccolo2d-core-3.0.jar \
+-	$(srcdir)/piccolo2d-extras-3.0.jar
++	/usr/share/piccolo2d/lib/piccolo2d.jar
+ 
+-CLASSPATH = $(srcdir)/piccolo2d-core-3.0.jar:$(srcdir)/piccolo2d-extras-3.0.jar
++CLASSPATH = /usr/share/piccolo2d/lib/piccolo2d.jar
+ 
+ ScrollView.jar : $(SCROLLVIEW_CLASSES)
+ 	$(JAR) cf $@ com/google/scrollview/*.class \
+--- a/viewer/svutil.cpp	2015-07-11 03:53:12.000000000 -0400
++++ b/viewer/svutil.cpp	2016-01-21 01:46:30.203461826 -0500
+@@ -302,7 +302,7 @@
+ #else
+   const char* cmd_template = "-c \"trap 'kill %%1' 0 1 2 ; java "
+       "-Xms1024m -Xmx2048m -Djava.library.path=%s -cp %s/ScrollView.jar:"
+-      "%s/piccolo2d-core-3.0.jar:%s/piccolo2d-extras-3.0.jar"
++      "/usr/share/piccolo2d/lib/piccolo2d.jar"
+       " com.google.scrollview.ScrollView"
+       " & wait\"";
+ #endif
+--- a/viewer/Makefile.am	2015-07-11 03:53:12.000000000 -0400
++++ b/viewer/Makefile.am	2016-01-21 03:37:04.355789682 -0500
+@@ -5,6 +5,10 @@
+     -fvisibility=hidden -fvisibility-inlines-hidden
+ endif
+ 
++if !GRAPHICS_DISABLED
++AM_CPPFLAGS += -DSCROLLVIEW_PATH=/usr/share/tessdata/
++endif
++
+ noinst_HEADERS = \
+     scrollview.h svmnode.h svutil.h
+ 

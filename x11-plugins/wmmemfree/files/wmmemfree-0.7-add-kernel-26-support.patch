@@ -1,0 +1,83 @@
+diff -Naur wmmemfree-0.7/mem_linux.c wmmemfree-0.7.new/mem_linux.c
+--- wmmemfree-0.7/mem_linux.c	2003-03-17 14:23:05.000000000 +0100
++++ wmmemfree-0.7/mem_linux.c	2004-08-28 23:18:56.783772744 +0200
+@@ -20,24 +20,48 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++
++long int mem_total, mem_used, mem_free, mem_buffers, mem_cached;
++long int swp_total, swp_used, swp_free;
+ 
+-long long int mem_total, mem_used, mem_free, mem_shared, mem_buffers, mem_cached;
+-long long int swp_total, swp_used, swp_free;
+ 
+ void mem_getfree()
+ {
+- FILE *file;
++	FILE *memfp;
++
++	static char buf[1024];
++	static char *p_mem_tot=NULL, *p_mem_free, *p_mem_buffers, *p_mem_cache;
++	static char *p_swap_total, *p_swap_free; 
++
++	memfp = fopen("/proc/meminfo", "r");
++	if (!memfp)
++	{
++		perror("/proc/meminfo");
++		exit(1);
++	}
++
++ 	fread_unlocked (buf, 1024, 1, memfp);
++	fclose(memfp);
++
++	if (!p_mem_tot)
++	{
++		p_mem_tot     = strstr(buf, "MemTotal:" ) + 13;
++		p_mem_free    = strstr(buf, "MemFree:"  ) + 13;
++		p_mem_buffers = strstr(buf, "Buffers:"  ) + 13;
++		p_mem_cache   = strstr(buf, "Cached:"   ) + 13;
++		p_swap_total  = strstr(buf, "SwapTotal:") + 13;
++		p_swap_free   = strstr(buf, "SwapFree:" ) + 13;
++	}
++
++	sscanf(p_mem_tot,     "%ld", &mem_total  );
++	sscanf(p_mem_free,    "%ld", &mem_free   );
++	sscanf(p_mem_buffers, "%ld", &mem_buffers);
++	sscanf(p_mem_cache,   "%ld", &mem_cached );
++	sscanf(p_swap_total,  "%ld", &swp_total );
++	sscanf(p_swap_free,   "%ld", &swp_free  );
++
++	mem_used = mem_total - mem_free;
++	swp_used = swp_total - swp_free;
+ 
+- file = fopen("/proc/meminfo", "r");
+- if(!file)
+- {
+-  perror("/proc/meminfo");
+-  exit(1);
+- }
+- while(fgetc(file)!='\n'){}
+- fscanf(file, "%*s %Ld %Ld %Ld %Ld %Ld %Ld",
+-        &mem_total, &mem_used, &mem_free, &mem_shared, &mem_buffers, &mem_cached);
+- fscanf(file, "%*s %Ld %Ld %Ld",
+-        &swp_total, &swp_used, &swp_free);
+- fclose(file);
+ }
+diff -Naur wmmemfree-0.7/mem_linux.h wmmemfree-0.7.new/mem_linux.h
+--- wmmemfree-0.7/mem_linux.h	2003-03-22 19:51:35.000000000 +0100
++++ wmmemfree-0.7/mem_linux.h	2004-08-28 23:12:19.066235000 +0200
+@@ -21,9 +21,9 @@
+ #ifndef __MEM_LINUX_H__
+ #define __MEM_LINUX_H__
+ 
+-extern long long int mem_total, mem_used;
+-extern long long int mem_shared, mem_buffers, mem_cached;
+-extern long long int swp_total, swp_used;
++extern long int mem_total, mem_used;
++extern long int mem_buffers, mem_cached;
++extern long int swp_total, swp_used;
+ 
+ void mem_getfree();
+ 

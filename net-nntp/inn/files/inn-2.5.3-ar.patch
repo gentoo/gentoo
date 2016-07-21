@@ -1,0 +1,37 @@
+Use system AR.
+
+Gentoo bug #461254.
+
+--- lib/Makefile
++++ lib/Makefile
+@@ -53,7 +53,7 @@
+ 	    -rpath $(PATHLIB) -version-info 2:0:0
+ 
+ libinn.a: $(OBJECTS)
+-	ar r $@ $(OBJECTS)
++	$(AR) r $@ $(OBJECTS)
+ 	$(RANLIB) libinn.a
+ 
+ .c.o .c.lo:
+--- storage/Makefile
++++ storage/Makefile
+@@ -55,7 +55,7 @@
+ 	    -rpath $(PATHLIB) -version-info 2:0:0
+ 
+ libstorage.a: $(OBJECTS)
+-	ar r $@ $(OBJECTS)
++	$(AR) r $@ $(OBJECTS)
+ 	$(RANLIB) libstorage.a
+ 
+ # Make.methods is included in the distribution tarball since some non-GNU
+--- history/Makefile
++++ history/Makefile
+@@ -51,7 +51,7 @@
+ 	    -rpath $(PATHLIB) -version-info 2:0:0
+ 
+ libinnhist.a: $(OBJECTS)
+-	ar r $@ $(OBJECTS)
++	$(AR) r $@ $(OBJECTS)
+ 	$(RANLIB) libinnhist.a
+ 
+ # Try to set up these rules so that buildconfig is only run once.

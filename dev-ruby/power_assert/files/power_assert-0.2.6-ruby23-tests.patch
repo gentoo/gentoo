@@ -1,0 +1,53 @@
+From b1bf60605303a4d60fd398fb75e04e4ff1568b0d Mon Sep 17 00:00:00 2001
+From: Kazuki Tsujimoto <kazuki@callcc.net>
+Date: Sat, 26 Dec 2015 17:57:03 +0900
+Subject: [PATCH] Encoding::CompatibilityError is no longer raised as of ruby
+ 2.3.0
+
+---
+ test/test_power_assert.rb | 31 +++++++++++--------------------
+ 1 file changed, 11 insertions(+), 20 deletions(-)
+
+diff --git a/test/test_power_assert.rb b/test/test_power_assert.rb
+index 272b8d1..863f8cc 100644
+--- a/test/test_power_assert.rb
++++ b/test/test_power_assert.rb
+@@ -345,27 +345,18 @@ def test_inspection_failure
+       assertion_message { BasicObjectSubclass.new.foo }
+ 
+ 
+-    verbose = $VERBOSE
+-    default_external = Encoding.default_external
+-    default_internal = Encoding.default_internal
+-    begin
+-      $VERBOSE = nil
+-      Encoding.default_external = 'cp932'
+-      Encoding.default_internal = 'utf-8'
+-      ary = ["\u3042"]
+-      assert_match Regexp.new(<<END.chomp.gsub('|', "\\|")), assertion_message {
+-        ary.length
+-        |   |
+-        |   1
+-        InspectionFailure: Encoding::CompatibilityError: .*
+-END
+-        ary.length
+-      }
+-    ensure
+-      Encoding.default_internal = default_internal
+-      Encoding.default_external = default_external
+-      $VERBOSE = verbose
++    o = Object.new
++    def o.inspect
++      raise
+     end
++    assert_equal <<END.chomp.b, assertion_message {
++      o.class
++      | |
++      | Object
++      InspectionFailure: RuntimeError:
++END
++      o.class
++    }
+   end
+ 
+   def test_assertion_message_with_incompatible_encodings

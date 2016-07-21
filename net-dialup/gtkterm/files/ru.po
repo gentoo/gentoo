@@ -1,0 +1,678 @@
+# Russian translations for gtkterm package
+# Copyright (C) 2007 Alexander Shiyan
+# This file is distributed under the same license as the gtkterm package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gtkterm 0.99.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-10 07:44+0300\n"
+"PO-Revision-Date: 2007-01-10 07:47+0300\n"
+"Last-Translator: Alexander Shiyan <shc@users.sourceforge.net>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/buffer.c:92
+msgid "ERROR : Buffer is not initialized !\n"
+msgstr "ОШИБКА : Буфер не инициализирован!\n"
+
+#: src/cmdline.c:36
+#, c-format
+msgid ""
+"\n"
+"GTKTerm version %s\n"
+msgstr ""
+"\n"
+"GTKTerm версия %s\n"
+
+#: src/cmdline.c:37
+msgid "\t (c) Julien Schmitt - julien@jls-info.com\n"
+msgstr "\t (c) Julien Schmitt - julien@jls-info.com\n"
+
+#: src/cmdline.c:38
+msgid "\t http://www.jls-info.com/julien/linux\n"
+msgstr "\t http://www.jls-info.com/julien/linux/index_fr.html\n"
+
+#: src/cmdline.c:39
+msgid ""
+"\n"
+"This program is released under the terms of the GPL V.2\n"
+msgstr ""
+"\n"
+"Программа распространяется на условиях лицензии GPL V.2\n"
+
+#: src/cmdline.c:40
+msgid "\t ** Use at your own risks ! **\n"
+msgstr "\t ** Используйте на свой риск ! **\n"
+
+#: src/cmdline.c:41
+msgid ""
+"\n"
+"Command line options\n"
+msgstr ""
+"\n"
+"Опции командной строки\n"
+
+#: src/cmdline.c:42
+msgid "--help or -h : this help screen\n"
+msgstr "--help or -h : показать это окно помощи\n"
+
+#: src/cmdline.c:43
+msgid "--config <configuration> or -c : load configuration\n"
+msgstr "--config <configuration> или -c : загрузка конфигурации\n"
+
+#: src/cmdline.c:44
+msgid "--port <device> or -p : serial port device (default /dev/ttyS0)\n"
+msgstr "--port <device> или -p : последовательный порт (/dev/ttyS0 по умолчанию)\n"
+
+#: src/cmdline.c:45
+msgid "--speed <speed> or -s : serial port speed (default 9600)\n"
+msgstr "--speed <speed> или -s : скорость порта (9600 по умолчанию)\n"
+
+#: src/cmdline.c:46
+msgid "--bits <bits> or -b : number of bits (default 8)\n"
+msgstr "--bits <bits> или -b : число бит (8 по умолчанию)\n"
+
+#: src/cmdline.c:47
+msgid "--stopbits <stopbits> or -t : number of stopbits (default 1)\n"
+msgstr "--stopbits <stopbits> или -t : число стоповых бит (1 по умолчанию)\n"
+
+#: src/cmdline.c:48
+msgid "--parity <odd | even> or -a : partity (default none)\n"
+msgstr "--parity <odd | even> или -a : чётность (нет по умолчанию)\n"
+
+#: src/cmdline.c:49
+msgid "--flow <Xon | CTS> or -w : flow control (default none)\n"
+msgstr "--flow <Xon | CTS> или -w : контроль потока (нет по умолчанию)\n"
+
+#: src/cmdline.c:50
+msgid "--delay <ms> or -d : end of line delay in ms (default none)\n"
+msgstr "--delay <ms> или -d : задержка окончания строки в ms (нет по умолчанию)\n"
+
+#: src/cmdline.c:51
+msgid ""
+"--char <char> or -r : wait for a special char at end of line (default none)\n"
+msgstr ""
+"--char <char> или -r : ожидание специального символа для окончания строки (нет "
+"по умолчанию)\n"
+
+#: src/cmdline.c:52
+msgid "--file <filename> or -f : default file to send (default none)\n"
+msgstr ""
+"--file <filename> или -f : файл для отправки (нет по умолчанию)\n"
+
+#: src/cmdline.c:53
+msgid "--echo or -e : switch on local echo\n"
+msgstr "--echo или -e : локальное эхо\n"
+
+#: src/cmdline.c:144
+msgid "Misunderstood command line option\n"
+msgstr "Неизвестный параметр командной строки\n"
+
+#: src/config.c:173
+msgid ""
+"No valid serial device found in /dev, sorry !\n"
+"You should have at least one of these :\n"
+"/dev/ttyS*\n"
+"/dev/tts/*\n"
+"/dev/ttyUSB*\n"
+"/dev/usb/tts/*\n"
+msgstr ""
+"Нет доступных последовательных устройств в /dev, извините !\n"
+"Необходимо иметь хотя бы один порт:\n"
+"/dev/ttyS*\n"
+"/dev/tts/*\n"
+"/dev/ttyUSB*\n"
+"/dev/usb/tts/*\n"
+
+#: src/config.c:178
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: src/config.c:181
+msgid "Serial port"
+msgstr "Последовательный порт"
+
+#: src/config.c:187
+msgid "Port :"
+msgstr "Порт :"
+
+#: src/config.c:189
+msgid "Speed :"
+msgstr "Скорость :"
+
+#: src/config.c:191
+msgid "Parity :"
+msgstr "Чётность :"
+
+#: src/config.c:252
+msgid "Bits :"
+msgstr "Бит :"
+
+#: src/config.c:254
+msgid "Stopbits :"
+msgstr "Стоповых бит:"
+
+#: src/config.c:256
+msgid "Flow control :"
+msgstr "Контроль передачи :"
+
+#: src/config.c:317
+msgid "ASCII file transfer"
+msgstr "Передача файла ASCII"
+
+#: src/config.c:323
+msgid "End of line delay (milliseconds) :"
+msgstr "Задержка конца строки в милисекундах :"
+
+#: src/config.c:337
+msgid "Wait for this special character before passing to next line :"
+msgstr "Ожидание специального символа до начала следующей строки :"
+
+#: src/config.c:395 src/config.c:715
+msgid "No open port"
+msgstr "Нет открытых портов"
+
+#: src/config.c:421
+msgid "Font selection"
+msgstr "Выбор шрифта"
+
+#: src/config.c:464
+msgid "Load configuration"
+msgstr "Загрузить конфигурацию"
+
+#: src/config.c:470
+msgid "Delete configuration"
+msgstr "Удалить конфигурацию"
+
+#: src/config.c:501
+msgid "Cannot read configuration file !\n"
+msgstr "Не могу прочитать файл конфигурации !\n"
+
+#: src/config.c:507
+msgid "Configurations"
+msgstr "Конфигурация"
+
+#: src/config.c:572
+msgid "Save configuration"
+msgstr "Сохранить конфигурацию"
+
+#: src/config.c:581
+msgid "Configuration name : "
+msgstr "Имя конфигурации : "
+
+#: src/config.c:626
+msgid "Cannot overwrite section !"
+msgstr "Невозможно перезаписать секцию !"
+
+#: src/config.c:631
+msgid "Cannot read configuration file !"
+msgstr "Не могу прочитать файл конфигурации !"
+
+#: src/config.c:641
+#, c-format
+msgid "Configuration [%s] saved\n"
+msgstr "Конфигурация [%s] сохранена\n"
+
+#: src/config.c:667
+msgid "Warning !"
+msgstr "Внимание !"
+
+#: src/config.c:676
+#, c-format
+msgid ""
+"\n"
+"Section [%s] already exists\n"
+"Do you want to overwrite it ?\n"
+msgstr ""
+"\n"
+"Секция [%s] уже существует.\n"
+"Вы хотите её перезаписать ?\n"
+
+#: src/config.c:734
+msgid "Cannot delete section !"
+msgstr "Невозможно удалить секцию !"
+
+#: src/config.c:905
+#, c-format
+msgid "No section \"%s\" in configuration file\n"
+msgstr "Секция \"%s\" отсутствует в файле конфигурации\n"
+
+#: src/config.c:942
+#, c-format
+msgid ""
+"Unknown speed : %d bauds\n"
+"Falling back to default speed : %d bauds\n"
+msgstr ""
+"Неверная скорость : %d\n"
+"Используется значение по умолчанию : %d\n"
+
+#: src/config.c:950
+#, c-format
+msgid ""
+"Impossible stopbits number : %d\n"
+"Falling back to default stop bits number : %d\n"
+msgstr ""
+"Неверное число стоповых бит : %d\n"
+"Используется значение по умолчанию : %d\n"
+
+#: src/config.c:958
+#, c-format
+msgid ""
+"Impossible bits number : %d\n"
+"Falling back to default stop bits : %d\n"
+msgstr ""
+"Неверное число бит : %d\n"
+"Используется значение по умолчанию : %d\n"
+
+#: src/config.c:966
+#, c-format
+msgid ""
+"Impossible delay : %d ms\n"
+"Falling back to default delay : %d ms\n"
+msgstr ""
+"Неверная величина задержки : %d ms\n"
+"Используется значение по умолчанию : %d ms\n"
+
+#: src/config.c:996
+#, c-format
+msgid ""
+"Configuration file (%s) with\n"
+"[default] configuration has been created.\n"
+msgstr ""
+"Файл конфигурации %s по умолчанию\n"
+"[default] создан.\n"
+
+#: src/config.c:1228
+#, c-format
+msgid "Cannot find section %s\n"
+msgstr "Не могу найти секцию %s\n"
+
+#: src/config.c:1265
+msgid "Terminal configuration"
+msgstr "Конфигурация терминала"
+
+#: src/fichier.c:74
+msgid "File selection"
+msgstr "Выбор файла"
+
+#: src/fichier.c:104
+msgid "Error opening file\n"
+msgstr "Ошибка открытия файла\n"
+
+#: src/fichier.c:112
+#, c-format
+msgid "%s : transfer in progress..."
+msgstr "%s : передача..."
+
+#: src/fichier.c:129
+msgid "%v / %u Kb (%p %%)"
+msgstr "%v / %u Кб (%p %%)"
+
+#: src/fichier.c:135
+msgid "%v / %u bytes (%p %%)"
+msgstr "%v / %u байт (%p %%)"
+
+#: src/fichier.c:140
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/fichier.c:156
+#, c-format
+msgid "Cannot read file %s : %s\n"
+msgstr "Не могу прочитать файл %s : %s\n"
+
+#: src/fichier.c:205
+#, c-format
+msgid "Cannot write file %s\n"
+msgstr "Не могу записать файл %s\n"
+
+#: src/fichier.c:293
+msgid "File error\n"
+msgstr "Ошибка файла\n"
+
+#: src/fichier.c:301
+#, c-format
+msgid "Cannot open file %s : %s\n"
+msgstr "Не могу открыть файл %s : %s\n"
+
+#: src/macros.c:143
+#, c-format
+msgid "Macro \"%s\" sent !"
+msgstr "Макрос \"%s\" отправлен !"
+
+#: src/macros.c:274
+msgid "Shortcut"
+msgstr "Быстрая клавиша"
+
+#: src/macros.c:426
+msgid "Help on macros"
+msgstr "Справка по макросам"
+
+#: src/macros.c:433
+msgid ""
+"The \"action\" field of a macro is the data to be sent on the port. Text can "
+"be entered, but also special chars, like \\n, \\t, \\r, etc. You can also "
+"enter hexadecimal data preceded by a '\\'. The hexadecimal data should not "
+"begin with a letter (eg. use \\0FF and not \\FF)\n"
+"Examples :\n"
+"\t\"Hello\\n\" sends \"Hello\" followed by a Line Feed\n"
+"\t\"Hello\\0A\" does the same thing but the LF is entered in hexadecimal"
+msgstr ""
+"Поле \"action\" это данные для отправки в порт. Может содержать текст и "
+"специальные символы, такие как \\n, \\t, \\r, и.т.д. Также возможно "
+"использование двоичных данных с символом '\\'. Двоичные данные не должны "
+"начинаться с буквы, т.е. используйте \\0FF вместо \\FF\n"
+"Примеры :\n"
+"\t\"Привет\\n\" отправляет \"Привет\" завершая символом конца строки\n"
+"\t\"Привет\\0A\" тот же самы пример, но символ конца строки введен как "
+"двоичное число."
+
+#: src/macros.c:460
+msgid "Configure Macros"
+msgstr "Конфигурирование макросов"
+
+#: src/macros.c:496
+msgid "_Add"
+msgstr "_Добавить"
+
+#: src/macros.c:500
+msgid "_Delete"
+msgstr "_Удалить"
+
+#: src/macros.c:504
+msgid "_Capture Shortcut"
+msgstr "_Установить быструю клавишу"
+
+#: src/parsecfg.c:335
+#, c-format
+msgid "Cannot open configuration file `%s'.\n"
+msgstr "Не могу открыть файл конфигурации `%s'.\n"
+
+#: src/parsecfg.c:338
+#, c-format
+msgid "Cannot create configuration file `%s'.\n"
+msgstr "Не могу создать файл конфигурации `%s'.\n"
+
+#: src/parsecfg.c:341
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Syntax error\n"
+msgstr ""
+"%s(%d): %s\n"
+"Синтаксическая ошибка\n"
+
+#: src/parsecfg.c:344
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unrecognized parameter\n"
+msgstr ""
+"%s(%d): %s\n"
+"Неизвестный параметр\n"
+
+#: src/parsecfg.c:347
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Internal error\n"
+msgstr ""
+"%s(%d): %s\n"
+"Внутренняя ошибка\n"
+
+#: src/parsecfg.c:350
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Invalid number\n"
+msgstr ""
+"%s(%d): %s\n"
+"Неверный номер\n"
+
+#: src/parsecfg.c:353
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Out of range\n"
+msgstr ""
+"%s(%d): %s\n"
+"Выход за пределы\n"
+
+#: src/parsecfg.c:356
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Cannot allocate memory.\n"
+msgstr ""
+"%s(%d): %s\n"
+"Невозвожно выделить память.\n"
+
+#: src/parsecfg.c:359
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"It must be specified TRUE or FALSE.\n"
+msgstr ""
+"%s(%d): %s\n"
+"Должно быть указано TRUE или FALSE.\n"
+
+#: src/parsecfg.c:362
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"The section name is already used.\n"
+msgstr ""
+"%s(%d): %s\n"
+"Имя секции уже используется.\n"
+
+#: src/parsecfg.c:365
+#, c-format
+msgid ""
+"%s(%d)\n"
+"There is no closing brace.\n"
+msgstr ""
+"%s(%d)\n"
+"Не закрыты кавычки.\n"
+
+#: src/parsecfg.c:370
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unexplained error\n"
+msgstr ""
+"%s(%d): %s\n"
+"Неизвестная ошибка\n"
+
+#: src/serie.c:212
+#, c-format
+msgid "Cannot open %s : %s\n"
+msgstr "Не могу открыть %s : %s\n"
+
+#: src/serie.c:357 src/serie.c:392
+msgid "Control signals read"
+msgstr "Чтение сигналов управления"
+
+#: src/serie.c:369
+msgid "DTR write"
+msgstr "Установка DTR"
+
+#: src/serie.c:379
+msgid "RTS write"
+msgstr "Установка RTS"
+
+#: src/serie.c:470
+msgid "Lockfile is stale. Overriding it..\n"
+msgstr "Lockfile устарел. Перезапись...\n"
+
+#: src/serie.c:480
+#, c-format
+msgid "Device %s is locked.\n"
+msgstr "Устройство %s залочено.\n"
+
+#: src/serie.c:492
+msgid "Cannot create lockfile. Sorry.\n"
+msgstr "Не могу создать Lockfile, извините\n"
+
+#: src/widgets.c:122
+msgid "/_File"
+msgstr "_Файл"
+
+#: src/widgets.c:123
+msgid "/File/Clear screen"
+msgstr "/Файл/Очистить _экран"
+
+#: src/widgets.c:124
+msgid "/File/Send _raw file"
+msgstr "/Файл/_Отправить файл"
+
+#: src/widgets.c:125
+msgid "/File/_Save raw file"
+msgstr "/Файл/_Сохранить в файл"
+
+#: src/widgets.c:126
+msgid "/File/Separator"
+msgstr "/Файл/Separator"
+
+#: src/widgets.c:127
+msgid "/File/E_xit"
+msgstr "/Файл/_Выход"
+
+#: src/widgets.c:128
+msgid "/_Configuration"
+msgstr "/_Конфигурация"
+
+#: src/widgets.c:129
+msgid "/Configuration/_Port"
+msgstr "/Конфигурация/_Порт"
+
+#: src/widgets.c:131
+msgid "/Configuration/Local _echo"
+msgstr "/Конфигурация/_Локальное эхо"
+
+#: src/widgets.c:133
+msgid "/Configuration/_Macros"
+msgstr "/Конфигурация/_Макросы"
+
+#: src/widgets.c:134
+msgid "/Configuration/Separator"
+msgstr "/Конфигурация/Separator"
+
+#: src/widgets.c:135
+msgid "/Configuration/_Load configuration"
+msgstr "/Конфигурация/_Загрузить конфигурацию"
+
+#: src/widgets.c:136
+msgid "/Configuration/_Save configuration"
+msgstr "/Конфигурация/_Сохранить конфигурацию"
+
+#: src/widgets.c:137
+msgid "/Configuration/_Delete configuration"
+msgstr "/Конфигурация/_Удалить конфигурацию"
+
+#: src/widgets.c:138
+msgid "/Control _signals"
+msgstr "/_Сигналы управления"
+
+#: src/widgets.c:139
+msgid "/Control signals/Send break"
+msgstr "/Сигналы управления/Послать BREAK"
+
+#: src/widgets.c:140
+msgid "/Control signals/Toggle DTR"
+msgstr "/Сигналы управления/Переключить DTR"
+
+#: src/widgets.c:141
+msgid "/Control signals/Toggle RTS"
+msgstr "/Сигналы управления/Переключить RTS"
+
+#: src/widgets.c:142
+msgid "/_View"
+msgstr "/_Вид"
+
+#: src/widgets.c:143
+msgid "/View/_ASCII"
+msgstr "/Вид/_ASCII"
+
+#: src/widgets.c:144
+msgid "/View/_Hexadecimal"
+msgstr "/Вид/_Двоичное"
+
+#: src/widgets.c:145
+msgid "/View/Hexadecimal _chars"
+msgstr "/Вид/_Размер двоичных данных"
+
+#: src/widgets.c:146
+msgid "/View/Hexadecimal chars/_8"
+msgstr "/Вид/Размер двоичных данных/_8"
+
+#: src/widgets.c:147
+msgid "/View/Hexadecimal chars/1_0"
+msgstr "/Вид/Размер двоичных данных/1_0"
+
+#: src/widgets.c:148
+msgid "/View/Hexadecimal chars/_16"
+msgstr "/Вид/Размер двоичных данных/_16"
+
+#: src/widgets.c:149
+msgid "/View/Hexadecimal chars/_24"
+msgstr "/Вид/Размер двоичных данных/_24"
+
+#: src/widgets.c:150
+msgid "/View/Hexadecimal chars/_32"
+msgstr "/Вид/Размер двоичных данных/_32"
+
+#: src/widgets.c:151
+msgid "/View/Show _index"
+msgstr "/Вид/Показать _адрес"
+
+#: src/widgets.c:152
+msgid "/View/Separator"
+msgstr "/Вид/Separator"
+
+#: src/widgets.c:153
+msgid "/View/_Send hexadecimal data"
+msgstr "/Вид/Отправка _двоичных данных"
+
+#: src/widgets.c:154
+msgid "/_Help"
+msgstr "_Справка"
+
+#: src/widgets.c:155
+msgid "/Help/_About..."
+msgstr "/Справка/_О программе..."
+
+#: src/widgets.c:307
+msgid "Hexadecimal data to send (separator : ';' or space) : "
+msgstr "Отправка двоичных данных (разделитель : ';' или пробел) : "
+
+#: src/widgets.c:502
+msgid "About..."
+msgstr "О программе..."
+
+#: src/widgets.c:510
+#, c-format
+msgid ""
+"\n"
+" <big><i> GTKTerm V. %s </i></big> \n"
+"\n"
+"\t(c) Julien Schmitt : julien@jls-info.com \n"
+"\thttp://www.jls-info.com/julien/linux\n"
+msgstr ""
+"\n"
+" <big><i> GTKTerm V. %s </i></big> \n"
+"\n"
+"\t(c) Julien Schmitt : julien@jls-info.com \n"
+"\thttp://www.jls-info.com/julien/linux/index_fr.html\n"
+
+#: src/widgets.c:554
+msgid "Break signal sent !"
+msgstr "Отправлен сигнал BREAK !"
+
+#: src/widgets.c:636
+#, c-format
+msgid "\"%s\" : %d byte(s) sent !"
+msgstr "\"%s\" : %d байт отправлено !"

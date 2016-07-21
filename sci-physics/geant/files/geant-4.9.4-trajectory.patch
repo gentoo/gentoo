@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2011-04-28 01:19:54.232041312 +0200
++++ CMakeLists.txt	2011-04-28 01:15:11.434101391 +0200
+@@ -43,6 +43,8 @@
+ set(${PROJECT_NAME}_VERSION_MINOR "4")
+ set(${PROJECT_NAME}_VERSION_PATCH "1")
+ 
++add_definitions(-DG4_STORE_TRAJECTORY)
++
+ #------------------------------------------------------------------------------
+ # Set up path to internal set of CMake modules.
+ #

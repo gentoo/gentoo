@@ -1,0 +1,29 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -103,7 +103,7 @@
+ AC_SEARCH_LIBS(elf32_getphdr, elf)
+ # -lmld -lmach
+ AC_SEARCH_LIBS(vm_statistics, mach)
+-AC_SEARCH_LIBS(tgetent, termcap curses ncurses)
++AC_SEARCH_LIBS(tgetent, termcap tinfo curses ncurses)
+ AC_SEARCH_LIBS(exp, m)
+ 
+ AC_SEARCH_LIBS(dlerror, dl)
+@@ -111,6 +111,8 @@
+ AC_SEARCH_LIBS(inet_aton, resolv, AC_DEFINE(HAVE_INET_ATON, 1,
+         [inet_aton is already defined]))
+ 
++AC_SEARCH_LIBS(PQexec, pq)
++
+ # check for libraries required by extension
+ extlibs=""
+ if test -n "$with_ext" -a -f "${srcdir}/ext/$with_ext.libs"; then
+@@ -217,8 +219,6 @@
+ AC_SUBST(SRC)
+ AC_SUBST(OBJ)
+ 
+-CFLAGS="-Wall -g"
+-
+ AC_MSG_CHECKING(for installation settings)
+ # calculate appropriate settings
+ OWNER=""

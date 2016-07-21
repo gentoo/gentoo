@@ -1,0 +1,50 @@
+--- configure.ac	2015-09-03 14:49:42.000000000 +0200
++++ configure.ac.new	2016-01-27 12:50:07.812215547 +0100
+@@ -1301,46 +1301,7 @@
+      BUILTLIBS="$SINGULARLIBS $BUILTLIBS"
+ fi
+ 
+-# we need to do the fortran library testing last, in case AC_SEARCH_LIBS adds
+-# one of them to $LIBS, making it impossible to check for the presence of C or
+-# C++ libraries.  (I'm not sure why putting -llapack on the gcc command line
+-# needlessly causes the library to be linked against.)
+-FORTRANUSED=no
+-if test "$LAPACK" = yes
+-then AC_MSG_CHECKING([whether the Accelerate framework is available])
+-     SAVELIBS=$LIBS LIBS="-framework Accelerate $LIBS"
+-     AC_LANG(C)
+-     AC_LINK_IFELSE(
+-	 [AC_LANG_PROGRAM(,[sgemv_();dgetrf_();])],
+-	 [
+-	     AC_MSG_RESULT(yes)
+-	     ],
+-	 [
+-	     AC_MSG_RESULT(no)
+-	     LIBS=$SAVELIBS
+-	     FORTRANUSED=yes
+-	     if test $BUILD_lapack = no
+-	     then AC_LANG(Fortran)
+-	     	  if test "$FC" = ""
+-		  then AC_MSG_ERROR(no fortran compiler found)
+-		  else AC_MSG_NOTICE(using fortran compiler $FC)
+-		  fi
+-		  AC_SEARCH_LIBS(sgemv,blas f77blas,,BUILD_lapack=yes)
+-		  AC_SEARCH_LIBS(dgetrf,lapack,,BUILD_lapack=yes)
+-	     fi
+-	 ])
+-fi
+-test $BUILD_lapack = yes && BUILTLIBS="-llapack -lrefblas $BUILTLIBS"
+-
+-if test $BUILD_lapack = yes
+-then # test whether the fortran compiler can handle lapack, which, starting with
+-     # version 3.2, requires fortran 90, not fortran 77
+-    AC_LANG(Fortran)
+-    AC_MSG_CHECKING([whether the fortran compiler is modern enough for lapack])
+-    AC_COMPILE_IFELSE([instrinsic maxloc],
+-	AC_MSG_ERROR(the fortran compiler ($FC) does not support the Fortran 90 language required for compiling lapack),
+-	AC_MSG_RESULT(yes))
+-fi
++BUILTLIBS="$(${PKG_CONFIG} --libs lapack) $BUILTLIBS"
+ 
+ test "$USE_FCLIBS" = no && FCLIBS=
+ test "$FORTRANUSED" = no && FCLIBS=

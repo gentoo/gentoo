@@ -1,0 +1,12 @@
+diff -Nur crash-5.1.1/Makefile crash-5.1.1-fixes//Makefile
+--- crash-5.1.1/Makefile	2010-12-23 12:59:44.000000000 -0600
++++ crash-5.1.1-fixes//Makefile	2011-01-26 13:17:11.000000000 -0600
+@@ -322,7 +322,7 @@
+ 	cc -c ${CRASH_CFLAGS} build_data.c ${WARNING_OPTIONS} ${WARNING_ERROR}
+ 
+ install:
+-	/usr/bin/install ${PROGRAM} ${INSTALLDIR}
++	/usr/bin/install -D ${PROGRAM} ${INSTALLDIR}/${PROGRAM}
+ #	/usr/bin/install ${PROGRAM}d ${INSTALLDIR}
+ 
+ unconfig: make_configure

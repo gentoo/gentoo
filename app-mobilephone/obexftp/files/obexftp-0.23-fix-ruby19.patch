@@ -1,0 +1,37 @@
+Replace functions removed with ruby 1.9
+See also http://dev.zuckschwerdt.org/openobex/ticket/49
+
+
+diff --git a/swig/charmap.i b/swig/charmap.i
+index e1f1fc1..b8e17de 100644
+--- a/swig/charmap.i
++++ b/swig/charmap.i
+@@ -89,8 +89,8 @@
+ 	$2 = PyString_Size($input);
+ #elif defined SWIGRUBY
+ /* VALUE str = StringValue($input); // perhaps better? */
+-	$1 = STR2CSTR($input);
+-	$2 = (int) RSTRING($input)->len;
++	$1 = StringValuePtr($input);
++	$2 = (int) RSTRING_LEN($input);
+ #elif defined SWIGTCL
+ 	$1 = Tcl_GetStringFromObj($input,&$2);
+ #else
+diff --git a/swig/ruby/ruby_wrap.c b/swig/ruby/ruby_wrap.c
+index 57e40bf..31b1a9d 100644
+--- a/swig/ruby/ruby_wrap.c
++++ b/swig/ruby/ruby_wrap.c
+@@ -2579,8 +2579,8 @@ _wrap_Client_put_data(int argc, VALUE *argv, VALUE self) {
+     
+     
+     /* VALUE str = StringValue(argv[0]); // perhaps better? */
+-    arg2 = STR2CSTR(argv[0]);
+-    arg3 = (int) RSTRING(argv[0])->len;
++    arg2 = StringValuePtr(argv[0]);
++    arg3 = (int) RSTRING_LEN(argv[0]);
+     
+     
+     
+-- 
+1.8.4.2
+

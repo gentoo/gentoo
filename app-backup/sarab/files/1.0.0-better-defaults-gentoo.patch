@@ -1,0 +1,21 @@
+--- sarab-1.0.0.orig/etc/sarab.conf	2010-02-21 06:13:22.000000000 -0500
++++ sarab-1.0.0/etc/sarab.conf	2010-08-20 18:30:41.630323933 -0400
+@@ -76,10 +76,10 @@
+ 
+ # The location of the DAR executable file
+ # This line is only effective if not added by install.sh later in this file
+-DAR_BINARY="/usr/local/bin/dar"
++DAR_BINARY="/usr/bin/dar"
+ 
+ # The location of the statically-compiled DAR executable file
+-DAR_STATIC="/usr/local/bin/dar_static"
++DAR_STATIC="/usr/bin/dar_static"
+ 
+ # The temporary directory name that backups will be created in. This will be created underneath $DESTINATION.
+ WORK_DIR=".sarab_temp_workdir"
+@@ -88,4 +88,4 @@
+ DAR_CREATE="$DESTINATION/$WORK_DIR/$BASENAME"
+ 
+ # Location and name of temporary log file
+-TEMP_LOG="$SARAB_ETC/sarab_temp.log"
++TEMP_LOG="/var/log/sarab_temp.log"

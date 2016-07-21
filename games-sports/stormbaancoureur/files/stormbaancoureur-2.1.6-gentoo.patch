@@ -1,0 +1,110 @@
+--- stormbaancoureur-2.1.6.orig/src-stormbaancoureur/Makefile
++++ stormbaancoureur-2.1.6/src-stormbaancoureur/Makefile
+@@ -5,21 +5,21 @@
+ GLPREFIX=/usr
+ PLIBPREFIX=/usr
+ ODEPREFIX=/usr
+-CXX=g++
+ LIBDIRNAME=lib
+ 
+ # END OF CUSTOM SETTINGS
+ 
+-CXXFLAGS=\
++LCXXFLAGS:=\
+   -I$(GLPREFIX)/include \
+   -I$(ODEPREFIX)/include \
+   -I$(PLIBPREFIX)/include \
+   -I../src-common \
+   -I. \
+   -DGAMEVERSION=$(VERSION) \
+-  -O2 -g -Wall
++  $(shell ode-config --cflags) \
++  $(CXXFLAGS)
+ 
+-LFLAGS=\
++LFLAGS= $(LDFLAGS) \
+   -L$(PLIBPREFIX)/$(LIBDIRNAME) \
+   -L/usr/X11R6/$(LIBDIRNAME)
+ 
+@@ -39,7 +38,7 @@
+ 
+ 
+ LIBS=\
+-  $(ODEPREFIX)/$(LIBDIRNAME)/libode.a \
++  -lode \
+   -lplibssgaux -lplibssg -lplibsg -lplibpu -lplibfnt -lplibul \
+   -lglut -lGLU -lGL -lasound
+ 
+@@ -47,41 +46,41 @@
+ all: stormbaancoureur
+ 
+ 
+-stormbaancoureur: $(OBJS) $(ODEPREFIX)/$(LIBDIRNAME)/libode.a
++stormbaancoureur: $(OBJS)
+ 	$(CXX) -o stormbaancoureur $(OBJS) $(LFLAGS) $(LIBS)
+ 
+ staticworldobject.o: ../src-common/staticworldobject.cxx ../src-common/staticworldobject.h ../src-common/worldobject.h
+-	$(CXX) -c $(CXXFLAGS) ../src-common/staticworldobject.cxx
++	$(CXX) -c $(LCXXFLAGS) ../src-common/staticworldobject.cxx
+ 
+ dynamicobject.o: ../src-common/dynamicobject.cxx ../src-common/dynamicobject.h ../src-common/worldobject.h
+-	$(CXX) -c $(CXXFLAGS) ../src-common/dynamicobject.cxx
++	$(CXX) -c $(LCXXFLAGS) ../src-common/dynamicobject.cxx
+ 
+ carobject.o: carobject.cxx carobject.h
+-	$(CXX) -c $(CXXFLAGS) carobject.cxx
++	$(CXX) -c $(LCXXFLAGS) carobject.cxx
+ 
+ controllerpad.o: controllerpad.cxx controller.h ../src-common/joydb.h
+-	$(CXX) -c $(CXXFLAGS) controllerpad.cxx
++	$(CXX) -c $(LCXXFLAGS) controllerpad.cxx
+ 
+ controllerkey.o: controllerkey.cxx
+-	$(CXX) -c $(CXXFLAGS) controllerkey.cxx
++	$(CXX) -c $(LCXXFLAGS) controllerkey.cxx
+ 
+ intro.o: intro.cxx intro.h
+-	$(CXX) -c $(CXXFLAGS) intro.cxx
++	$(CXX) -c $(LCXXFLAGS) intro.cxx
+ 
+ vectortext.o: ../src-common/vectortext.cxx ../src-common/vectortext.h
+-	$(CXX) -c $(CXXFLAGS) ../src-common/vectortext.cxx
++	$(CXX) -c $(LCXXFLAGS) ../src-common/vectortext.cxx
+ 
+ postscore.o: postscore.cxx postscore.h
+-	$(CXX) -c $(CXXFLAGS) postscore.cxx
++	$(CXX) -c $(LCXXFLAGS) postscore.cxx
+ 
+ soundenginealsa.o: ../src-common/soundenginealsa.cxx ../src-common/soundenginealsa.h ../src-common/soundfeed.h ../src-common/soundclip.h
+-	$(CXX) -c $(CXXFLAGS) ../src-common/soundenginealsa.cxx
++	$(CXX) -c $(LCXXFLAGS) ../src-common/soundenginealsa.cxx
+ 
+ ogl.o: ../src-common/ogl.cxx 
+-	$(CXX) -c $(CXXFLAGS) ../src-common/ogl.cxx
++	$(CXX) -c $(LCXXFLAGS) ../src-common/ogl.cxx
+ 
+ main.o: main.cxx ../src-common/usercam.h ../src-common/trackingcam.h ../src-common/soundenginealsa.h cratewall.h controller.h intro.h plodegui.h doorstand.h carpettrack.h spikejump.h ferriswheel.h turntable.h sturmbahn.h ../src-common/modelmap.h starsky.h carobject.h respawnpoint.h
+-	$(CXX) -c $(CXXFLAGS) main.cxx
++	$(CXX) -c $(LCXXFLAGS) main.cxx
+ 
+ debugrun: stormbaancoureur
+ 	PLODE_DATADIR=`pwd` gdb ./stormbaancoureur
+--- stormbaancoureur-2.1.6.orig/src-stormbaancoureur/main.cxx
++++ stormbaancoureur-2.1.6/src-stormbaancoureur/main.cxx
+@@ -836,15 +836,7 @@
+   fprintf(stderr,"plib is (c) by Steve Baker\n");
+   fprintf(stderr,"OpenDE is (c) by Russel L. Smith\n");
+ 
+-  char *bindirname  = dirname(argv[0]);
+-  if (!strcmp(bindirname,"."))
+-    dirprefix="/usr/share/games/stormbaancoureur";
+-  else
+-  {
+-    dirprefix = dirname(bindirname) + std::string("/share/games/stormbaancoureur");
+-  }
+-  if (getenv("PLODE_DATADIR"))
+-    dirprefix = getenv("PLODE_DATADIR");
++  dirprefix="GENTOODIR";
+   if (getenv("PLODE_DISPLAYMODE"))
+     displaymode = getenv("PLODE_DISPLAYMODE");
+   assert(displaymode == "monoscopic" || displaymode == "quadbufferstereoscopic" || displaymode == "passivestereoscopic");

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Compiz
+Name[en_GB]=Compiz
+Exec=compiz ccp
+NoDisplay=true
+# name we put on the WM spec check window
+X-GNOME-WMName=Compiz
+X-GNOME-Autostart-Phase=WindowManager
+X-GNOME-Provides=windowmanager
+X-GNOME-Autostart-Notify=true

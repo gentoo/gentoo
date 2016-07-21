@@ -1,0 +1,11 @@
+--- libptp2-1.1.0.orig/configure	2006-01-07 19:38:52.000000000 -0200
++++ libptp2-1.1.0/configure	2006-01-07 19:47:30.000000000 -0200
+@@ -21773,7 +21773,7 @@
+ 		LDFLAGS="$LDFLAGS_save"
+ 	fi
+ 
+-	if test "$LIBUSB_VER" \< "0.1.08"; then
++	if test "$LIBUSB_VER" \< "0.1.08" && test "$LIBUSB_VER" != "0.1.10a"; then
+ 		{ { echo "$as_me:$LINENO: error:
+ *** You need at least version 0.1.8 of the libusb library to build ptpcam.
+ *** Download and istall it from http://sourceforge.net/projects/libusb/ or

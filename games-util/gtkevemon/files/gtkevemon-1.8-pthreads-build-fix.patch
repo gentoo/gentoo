@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/show_bug.cgi?id=423305
+https://bitbucket.org/BattleClinic/gtkevemon/changeset/4c365033418e
+
+# HG changeset patch
+# User ChickenMan <chickenman@exhale.de>
+# Date 1341445681 -7200
+# Node ID 4c365033418e2213caff57a0917851cc18c7f1a1
+# Parent  0b8a490b5f491bdd4a36d85918479595c861d3db
+Fix compilation on systems using pthreads and gcc 4.7.x
+
+This fixes issue 1.
+Thanks to l0ser140 for reporting and initial patch.
+
+--- src/thread.h
++++ src/thread.h
+@@ -13,7 +13,15 @@
+ #ifndef THREAD_HEADER
+ #define THREAD_HEADER
+ 
+-#if defined(_POSIX_THREADS) || defined(__SunOS)
++#if defined(__linux__) \
++    || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) \
++    || defined(__DragonFly__) \
++    || defined(__APPLE__) \
++    || defined(__SunOS)
++#  include <unistd.h> // for _POSIX_THREADS
++#endif
++
++#if defined(_POSIX_THREADS)
+ #  include "thread_posix.h"
+ #elif defined(WIN32)
+ #  include "thread_win32.h"

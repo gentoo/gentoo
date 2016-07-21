@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription lang="en">
+	Libdnsres provides a non-blocking thread-safe API for resolving DNS names.
+	It requires that your main application is built on top of libevent.
+	Libdnsres' API essentially mirrors the traditional gethostbyname and
+	getaddrinfo interfaces. All return values have been replaced by callbacks
+	instead. The code borrows heavily from the BSD resolver library. In fact, it
+	is an extremely ugly hack to make the BSD resolver library non-blocking and
+	thread-safe without changing the API too much.
+	</longdescription>
+</pkgmetadata>

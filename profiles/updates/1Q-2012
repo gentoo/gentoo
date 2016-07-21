@@ -1,0 +1,23 @@
+slotmove kde-misc/kcm-grub2 0 4
+slotmove kde-misc/kfilebox 0 4
+move x11-misc/synergy-plus x11-misc/synergy
+move media-sound/minitunes media-sound/musique
+move dev-perl/sdl-perl dev-perl/SDL
+move net-libs/telepathy-qt4 net-libs/telepathy-qt
+slotmove =dev-libs/libmowgli-2.0.0_alpha1 0 2
+move media-tv/linuxtv-dvb-headers virtual/linuxtv-dvb-headers
+move app-shells/prll sys-process/prll
+move net-wireless/wispy-tools net-wireless/spectools
+slotmove dev-ruby/syslogger 3 0
+move kde-misc/konq-plugins kde-base/konq-plugins
+slotmove <gnome-extra/nautilus-actions-3.2.2 0 2
+move dev-php/php-tokenstream dev-php/PHP_TokenStream
+move dev-php/phpunit-selenium dev-php/PHPUnit_Selenium
+move dev-php/phpunit-mockobject dev-php/PHPUnit_MockObject
+move dev-php/php-texttemplate dev-php/Text_Template
+move dev-php/file-iterator dev-php/File_Iterator
+move dev-php/php-timer dev-php/PHP_Timer
+move dev-php/php-codecoverage dev-php/PHP_CodeCoverage
+move dev-php/yaml dev-php/YAML
+move dev-php/dbunit dev-php/DBUnit
+slotmove media-sound/frescobaldi 4 0

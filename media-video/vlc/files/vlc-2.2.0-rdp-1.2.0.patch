@@ -1,0 +1,23 @@
+--- a/modules/access/rdp.c	2014-11-22 01:40:52.044973648 -0800
++++ b/modules/access/rdp.c	2014-11-22 01:36:44.291975380 -0800
+@@ -399,7 +404,9 @@
+     if ( p_sys->f_fps <= 0 ) p_sys->f_fps = 1.0;
+     p_sys->i_frame_interval = 1000000 / p_sys->f_fps;
+ 
++#if defined(FREERDP_VERSION_MAJOR) && defined(FREERDP_VERSION_MINOR) && !(FREERDP_VERSION_MAJOR > 1 || (FREERDP_VERSION_MAJOR == 1 && FREERDP_VERSION_MINOR >= 2))
+     freerdp_channels_global_init();
++#endif
+ 
+     p_sys->p_instance = freerdp_new();
+     if ( !p_sys->p_instance )
+@@ -475,7 +482,10 @@
+ 
+     freerdp_disconnect( p_sys->p_instance );
+     freerdp_free( p_sys->p_instance );
++
++#if defined(FREERDP_VERSION_MAJOR) && defined(FREERDP_VERSION_MINOR) && !(FREERDP_VERSION_MAJOR > 1 || (FREERDP_VERSION_MAJOR == 1 && FREERDP_VERSION_MINOR >= 2))
+     freerdp_channels_global_uninit();
++#endif
+ 
+     if ( p_sys->p_block )
+         block_Release( p_sys->p_block );

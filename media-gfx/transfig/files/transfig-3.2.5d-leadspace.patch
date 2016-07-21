@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 25_PIC_leadspace.dpatch by Roger Leigh <rleigh@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Avoid wrong leading spaces in PIC text (Closes: #611977).
+
+@DPATCH@
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/dev/genpic.c transfig/fig2dev/dev/genpic.c
+--- transfig~/fig2dev/dev/genpic.c
++++ transfig/fig2dev/dev/genpic.c
+@@ -443,7 +443,7 @@
+ 	size = PICFONTMAG(t);
+ 	if (!OptNoUnps) {
+ 	  unpsfont(t);
+-	  fprintf(tfp, "\"\\s%d\\f%s ", size, PICFONT(t->font));
++	  fprintf(tfp, "\"\\s%d\\f%s", size, PICFONT(t->font));
+ 	} else {
+ 	  fprintf(tfp, ".ps\n.ps %d\n", size );
+ 	  fprintf(tfp, ".ft\n.ft %s\n", PICPSFONT(t) );

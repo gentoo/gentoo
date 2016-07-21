@@ -1,0 +1,20 @@
+diff --git a/jxplorer/src/com/ca/directory/jxplorer/JXplorer.java b/jxplorer/src/com/ca/directory/jxplorer/JXplorer.java
+index a36110c..0b748f5 100644
+--- a/jxplorer/src/com/ca/directory/jxplorer/JXplorer.java
++++ b/jxplorer/src/com/ca/directory/jxplorer/JXplorer.java
+@@ -584,7 +584,7 @@ public class
+ 
+         setDefaultProperty(".level", "WARNING", "(java loggin variable) - allowable values are 'OFF', 'SEVERE', 'WARNING', 'INFO', 'FINE', 'FINER', 'FINEST' and 'ALL'");
+ 
+-        setDefaultProperty("com.ca.level", "UNUSED", " (java loggin variable) partial logging is also available.  Be warned that the Sun logging system is a very buggy partial reimplementation of log4j, and doesn't seem to do inheritance well.");
++        setDefaultProperty("com.ca.level", "WARNING", " (java loggin variable) partial logging is also available.  Be warned that the Sun logging system is a very buggy partial reimplementation of log4j, and doesn't seem to do inheritance well.");
+ 
+ 
+         //setDefaultProperty("logging", "console");
+@@ -1986,4 +1986,4 @@ public class
+     {
+         return buttonRegister;
+     }
+-}
+\ No newline at end of file
++}

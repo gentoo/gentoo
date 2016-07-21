@@ -1,0 +1,11 @@
+--- Makefile.in	2004-12-03 16:27:37.000000000 +0100
++++ Makefile.in.new	2004-12-03 16:38:28.203830495 +0100
+@@ -936,7 +936,7 @@
+ 	rm -f src/vhdl/*~ src/vhdl/"#"*"#"
+ 
+ install: all
+-	$(INSTALL) -d -m755 @bindir@ $(DESTDIR)@datadir@/electric/lib
++	$(INSTALL) -d -m755 ${DESTDIR}/@bindir@ $(DESTDIR)@datadir@/electric/lib
+ 	$(INSTALL) -m755 $(PROGNAME) $(DESTDIR)@bindir@/$(PROGNAME)
+ 	$(INSTALL) -m644 lib/.cadrc $(DESTDIR)@datadir@/electric/lib
+ 	@(cd lib ; \

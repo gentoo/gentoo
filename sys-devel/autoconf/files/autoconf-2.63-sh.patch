@@ -1,0 +1,32 @@
+http://bugs.gentoo.org/264303
+http://lists.gnu.org/archive/html/bug-autoconf/2008-10/msg00040.html
+
+From: Chikama Masaki <masaki.chikama@gmail.com>
+Date: Fri, 24 Oct 2008 01:41:06 +0000 (-0600)
+Subject: For gfortran on sh, ignore -little.
+X-Git-Tag: v2.63b~206
+X-Git-Url: http://git.savannah.gnu.org/gitweb/?p=autoconf.git;a=commitdiff_plain;h=3f38aad
+
+For gfortran on sh, ignore -little.
+
+* lib/autoconf/fortran.m4 (_AC_FC_LIBRARY_LDFLAGS): Add -little to
+list of ignored arguments.
+* THANKS: Update.
+
+Signed-off-by: Eric Blake <ebb9@byu.net>
+---
+
+diff --git a/lib/autoconf/fortran.m4 b/lib/autoconf/fortran.m4
+index 20d9e0c..ad0c2ee 100644
+--- a/lib/autoconf/fortran.m4
++++ b/lib/autoconf/fortran.m4
+@@ -686,7 +686,8 @@ while test $[@%:@] != 1; do
+              [_AC_LINKER_OPTION([$ac_arg], ac_cv_[]_AC_LANG_ABBREV[]_libs)])
+           ;;
+           # Ignore these flags.
+-        -lang* | -lcrt*.o | -lc | -lgcc* | -lSystem | -libmil | -LANG:=* | -LIST:* | -LNO:*)
++        -lang* | -lcrt*.o | -lc | -lgcc* | -lSystem | -libmil | -little \
++	  |-LANG:=* | -LIST:* | -LNO:*)
+           ;;
+         -lkernel32)
+           test x"$CYGWIN" != xyes && ac_cv_[]_AC_LANG_ABBREV[]_libs="$ac_cv_[]_AC_LANG_ABBREV[]_libs $ac_arg"

@@ -1,0 +1,26 @@
+From 4a1a90ee1b2b4d13302046f043adf1c2a1de758d Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Thu, 26 Nov 2015 15:36:26 +0100
+Subject: [PATCH] Explicitly include CheckIncludeFiles.
+
+This fixes the build with CMake 3.4.0. We were calling check_include_files()
+and implicitly relying on CheckIncludeFiles being included.
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9be8db..b74b44d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,6 +21,7 @@ if(STRICT_BUILD)
+                   -DQT_NO_URL_CAST_FROM_STRING -DQT_STRICT_ITERATORS)
+ endif(STRICT_BUILD)
+ 
++include(CheckIncludeFiles)
+ check_include_files(${CMAKE_CURRENT_SOURCE_DIR}/include/frontend.h HAVE_DVB)
+ 
+ if(NOT HAVE_DVB)
+-- 
+2.4.10
+

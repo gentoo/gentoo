@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+Globulation2 is an innovative high quality Real-Time Strategy [RTS], 
+which minimizes micro-management by automatically assigning tasks to 
+the units. The player has to choose the number of units he wants for 
+the different tasks, and the units will do their best to satisfy the 
+requests. This allows to manage more units and to focus on strategies.
+</longdescription>
+</pkgmetadata>

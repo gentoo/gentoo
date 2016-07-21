@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+Convert between raw partitions, logical volumes, and bcache devices without 
+moving data. blocks shuffles blocks and sprouts superblocks.
+</longdescription>
+  <upstream>
+    <remote-id type="github">g2p/blocks</remote-id>
+  </upstream>
+</pkgmetadata>

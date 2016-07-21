@@ -1,0 +1,20 @@
+Fix an error when using pipes and PGRP_PIPE is enabled.
+( exec 3>&1; : `echo >&3` )
+bash: 3: Bad file descriptor
+
+http://bugs.gentoo.org/92349
+
+Patch from upstream
+
+*** jobs.c  Wed Sep  8 11:08:16 2004
+--- jobs.c      Thu Jun 30 17:21:26 2005
+***************
+*** 3456,3459 ****
+--- 3901,3907 ----
+    stop_making_children ();
+    start_pipeline ();
++ #if defined (PGRP_PIPE)
++   pipe_close (pgrp_pipe);
++ #endif
+    delete_all_jobs (0);
+    set_job_control (0);

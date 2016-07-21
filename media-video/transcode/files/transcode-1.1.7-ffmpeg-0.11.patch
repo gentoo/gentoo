@@ -1,0 +1,303 @@
+Fix build with ffmpeg 0.11.
+https://bugs.gentoo.org/show_bug.cgi?id=419551
+Author: Brennan Shacklett
+
+diff -urN transcode-1.1.7-orig/encode/encode_lavc.c transcode-1.1.7/encode/encode_lavc.c
+--- transcode-1.1.7-orig/encode/encode_lavc.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/encode/encode_lavc.c	2012-07-03 10:47:03.528009149 -0700
+@@ -114,6 +114,7 @@
+ 
+     AVFrame ff_venc_frame;
+     AVCodecContext ff_vcontext;
++    AVDictionary ** ff_opts;
+ 
+     AVCodec *ff_vcodec;
+ 
+@@ -1036,14 +1037,10 @@
+     SET_FLAG(pd, mv0);
+     SET_FLAG(pd, cbp);
+     SET_FLAG(pd, qpel);
+-    SET_FLAG(pd, alt);
+-    SET_FLAG(pd, vdpart);
+     SET_FLAG(pd, naq);
+     SET_FLAG(pd, ilme);
+     SET_FLAG(pd, ildct);
+     SET_FLAG(pd, aic);
+-    SET_FLAG(pd, aiv);
+-    SET_FLAG(pd, umv);
+     SET_FLAG(pd, psnr);
+     SET_FLAG(pd, trell);
+     SET_FLAG(pd, gray);
+@@ -1064,6 +1061,18 @@
+         pd->ff_vcontext.flags |= CODEC_FLAG_INTERLACED_DCT;
+         pd->ff_vcontext.flags |= CODEC_FLAG_INTERLACED_ME;
+     }
++    if (pd->confdata.flags.alt) {
++        av_dict_set(pd->ff_opts, "alternate_scan", "1", 0);
++    }
++    if (pd->confdata.flags.vdpart) {
++        av_dict_set(pd->ff_opts, "data_partitioning", "1", 0);
++    }
++    if (pd->confdata.flags.umv) {
++        av_dict_set(pd->ff_opts, "umv", "1", 0);
++    }
++    if (pd->confdata.flags.aiv) {
++        av_dict_set(pd->ff_opts, "aiv", "1", 0);
++    }
+ }
+ 
+ #undef SET_FLAG
+@@ -1184,18 +1193,18 @@
+         { "mv0", PAUX(flags.mv0), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_MV0 },
+         { "cbp", PAUX(flags.cbp), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_CBP_RD },
+         { "qpel", PAUX(flags.qpel), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_QPEL },
+-        { "alt", PAUX(flags.alt), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_ALT_SCAN },
++        { "alt", PAUX(flags.alt), TCCONF_TYPE_FLAG, 0, 0, 1 },
+         { "ilme", PAUX(flags.ilme), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_INTERLACED_ME },
+         { "ildct", PAUX(flags.ildct), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_INTERLACED_DCT },
+         { "naq", PAUX(flags.naq), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_NORMALIZE_AQP },
+-        { "vdpart", PAUX(flags.vdpart), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_PART },
++        { "vdpart", PAUX(flags.vdpart), TCCONF_TYPE_FLAG, 0, 0, 1 },
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+         { "aic", PAUX(flags.aic), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_H263P_AIC },
+ #else        
+         { "aic", PAUX(flags.aic), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_AC_PRED },
+ #endif
+-        { "aiv", PAUX(flags.aiv), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_H263P_AIV },
+-        { "umv", PAUX(flags.umv), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_H263P_UMV },
++        { "aiv", PAUX(flags.aiv), TCCONF_TYPE_FLAG, 0, 0, 1 },
++        { "umv", PAUX(flags.umv), TCCONF_TYPE_FLAG, 0, 0, 1 },
+         { "psnr", PAUX(flags.psnr), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_PSNR },
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+         { "trell", PAUX(flags.trell), TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_TRELLIS_QUANT },
+@@ -1387,7 +1396,7 @@
+                     pd->confdata.thread_count,
+                     (pd->confdata.thread_count > 1) ?"s" :"");
+     }
+-    avcodec_thread_init(&pd->ff_vcontext, pd->confdata.thread_count);
++    pd->ff_vcontext.thread_count = pd->confdata.thread_count;
+ 
+     pd->ff_vcodec = avcodec_find_encoder(FF_VCODEC_ID(pd));
+     if (pd->ff_vcodec == NULL) {
+@@ -1397,11 +1406,11 @@
+     }
+ 
+     TC_LOCK_LIBAVCODEC;
+-    ret = avcodec_open(&pd->ff_vcontext, pd->ff_vcodec);
++    ret = avcodec_open2(&pd->ff_vcontext, pd->ff_vcodec, pd->ff_opts);
+     TC_UNLOCK_LIBAVCODEC;
+ 
+     if (ret < 0) {
+-        tc_log_error(MOD_NAME, "avcodec_open() failed");
++        tc_log_error(MOD_NAME, "avcodec_open2() failed");
+         goto failed;
+     }
+     /* finally, pass up the extradata, if any */
+diff -urN transcode-1.1.7-orig/export/export_ffmpeg.c transcode-1.1.7/export/export_ffmpeg.c
+--- transcode-1.1.7-orig/export/export_ffmpeg.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/export/export_ffmpeg.c	2012-07-03 13:15:23.918019415 -0700
+@@ -122,6 +122,7 @@
+ static AVFrame             *lavc_convert_frame = NULL;
+ 
+ static AVCodec             *lavc_venc_codec = NULL;
++static AVDictionary        **lavc_venc_opts = NULL;
+ static AVFrame             *lavc_venc_frame = NULL;
+ static AVCodecContext      *lavc_venc_context;
+ static avi_t               *avifile = NULL;
+@@ -180,7 +181,7 @@
+ 
+ 
+ /* START: COPIED FROM ffmpeg-0.5_p22846(ffmpeg.c, cmdutils.c) */
+-#include <libavcodec/opt.h>
++#include <libavutil/opt.h>
+ #include <libavutil/avstring.h>
+ #include <libswscale/swscale.h>
+ 
+@@ -470,7 +471,6 @@
+     }
+ 
+     TC_LOCK_LIBAVCODEC;
+-    avcodec_init();
+     avcodec_register_all();
+     TC_UNLOCK_LIBAVCODEC;
+ 
+@@ -634,7 +634,7 @@
+         lavc_param_rc_max_rate = 2516;
+         lavc_param_rc_buffer_size = 224 * 8;
+         lavc_param_rc_buffer_aggressivity = 99;
+-        lavc_param_scan_offset = CODEC_FLAG_SVCD_SCAN_OFFSET;
++        lavc_param_scan_offset = 1;
+ 
+         break;
+ 
+@@ -674,7 +674,7 @@
+ 
+         lavc_param_rc_buffer_size = 224 * 8;
+         lavc_param_rc_buffer_aggressivity = 99;
+-        lavc_param_scan_offset = CODEC_FLAG_SVCD_SCAN_OFFSET;
++        lavc_param_scan_offset = 1;
+ 
+         break;
+ 
+@@ -887,7 +887,7 @@
+ 		    lavc_venc_context->thread_count);
+     }
+ 
+-    avcodec_thread_init(lavc_venc_context, lavc_param_threads);
++    lavc_venc_context->thread_count = lavc_param_threads;
+ 
+     if (lavc_param_intra_matrix) {
+         char *tmp;
+@@ -1065,15 +1065,10 @@
+     lavc_venc_context->flags |= lavc_param_closedgop;
+     lavc_venc_context->flags |= lavc_param_trunc;
+     lavc_venc_context->flags |= lavc_param_aic;
+-    lavc_venc_context->flags |= lavc_param_umv;
+     lavc_venc_context->flags |= lavc_param_v4mv;
+-    lavc_venc_context->flags |= lavc_param_data_partitioning;
+     lavc_venc_context->flags |= lavc_param_cbp;
+     lavc_venc_context->flags |= lavc_param_mv0;
+     lavc_venc_context->flags |= lavc_param_qp_rd;
+-    lavc_venc_context->flags |= lavc_param_scan_offset;
+-    lavc_venc_context->flags |= lavc_param_ss;
+-    lavc_venc_context->flags |= lavc_param_alt;
+     lavc_venc_context->flags |= lavc_param_ilme;
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)   
+     lavc_venc_context->flags |= lavc_param_trell;
+@@ -1203,7 +1198,6 @@
+ 
+     lavc_venc_context->me_method = ME_ZERO + lavc_param_vme;
+ 
+-
+ 	/* FIXME: transcode itself contains "broken ffmpeg default settings", thus we need to override them! */
+ 	if (lavc_param_video_preset) {
+ 		avcodec_opts[AVMEDIA_TYPE_VIDEO] = lavc_venc_context;
+@@ -1241,20 +1235,39 @@
+ 		}
+ 	}
+ 
++    if (lavc_param_scan_offset) {
++      av_dict_set(lavc_venc_opts, "scan_offset", "1", 0);
++    }
++
++    if (lavc_param_ss) {
++      av_dict_set(lavc_venc_opts, "structured_slices", "1", 0);
++    }
++
++    if (lavc_param_alt) {
++      av_dict_set(lavc_venc_opts, "alternate_scan", "1", 0);
++    }
++
++    if (lavc_param_umv) {
++      av_dict_set(lavc_venc_opts, "umv", "1", 0);
++    }
++
++    if (lavc_param_data_partitioning) {
++      av_dict_set(lavc_venc_opts, "vdpart", "1", 0);
++    }
+ 
+     //-- open codec --
+     //----------------
+     TC_LOCK_LIBAVCODEC;
+-    ret = avcodec_open(lavc_venc_context, lavc_venc_codec);
++    ret = avcodec_open2(lavc_venc_context, lavc_venc_codec, lavc_venc_opts);
+     TC_UNLOCK_LIBAVCODEC;
+     if (ret < 0) {
+       tc_log_warn(MOD_NAME, "could not open FFMPEG codec");
+       return TC_EXPORT_ERROR;
+     }
+ 
+-    if (lavc_venc_context->codec->encode == NULL) {
++    if (av_codec_is_encoder(lavc_venc_context->codec) == 0) {
+       tc_log_warn(MOD_NAME, "could not open FFMPEG codec "
+-              "(lavc_venc_context->codec->encode == NULL)");
++              "(av_codec_is_encoder(lavc_venc_context->codec) == 0)");
+       return TC_EXPORT_ERROR;
+     }
+ 
+diff -urN transcode-1.1.7-orig/export/ffmpeg_cfg.c transcode-1.1.7/export/ffmpeg_cfg.c
+--- transcode-1.1.7-orig/export/ffmpeg_cfg.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/export/ffmpeg_cfg.c	2012-07-03 10:09:25.011003254 -0700
+@@ -160,9 +160,9 @@
+     {"vcelim", &lavc_param_chroma_elim_threshold, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -99, 99},
+     {"vpsize", &lavc_param_packet_size, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 0, 100000000},
+     {"vstrict", &lavc_param_strict, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -99, 99},
+-    {"vdpart", &lavc_param_data_partitioning, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_PART},
++    {"vdpart", &lavc_param_data_partitioning, TCCONF_TYPE_FLAG, 0, 0, 1},
+ //    {"keyint", &lavc_param_keyint, TCCONF_TYPE_INT, 0, 0, 0},
+-    {"gray", &lavc_param_gray, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_PART},
++    {"gray", &lavc_param_gray, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_GRAY},
+     {"mpeg_quant", &lavc_param_mpeg_quant, TCCONF_TYPE_FLAG, 0, 0, 1},
+     {"vi_qfactor", &lavc_param_vi_qfactor, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, -31.0, 31.0},
+     {"vi_qoffset", &lavc_param_vi_qoffset, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.0, 31.0},
+@@ -211,7 +211,7 @@
+ #else
+     {"aic", &lavc_param_aic, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_AC_PRED},
+ #endif    
+-    {"umv", &lavc_param_umv, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_H263P_UMV},
++    {"umv", &lavc_param_umv, TCCONF_TYPE_FLAG, 0, 0, 1},
+     {"ibias", &lavc_param_ibias, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -512, 512},
+     {"pbias", &lavc_param_pbias, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -512, 512},
+     {"coder", &lavc_param_coder, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 0, 10},
+@@ -223,9 +223,9 @@
+     {"nr", &lavc_param_noise_reduction, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 0, 1000000},
+     {"qprd", &lavc_param_qp_rd, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_QP_RD},
+     {"threads", &lavc_param_threads, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 16},
+-    {"ss", &lavc_param_ss, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_H263P_SLICE_STRUCT},
+-    {"svcd_sof", &lavc_param_scan_offset, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_SVCD_SCAN_OFFSET},
+-    {"alt", &lavc_param_alt, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_ALT_SCAN},
++    {"ss", &lavc_param_ss, TCCONF_TYPE_FLAG, 0, 0, 1},
++    {"svcd_sof", &lavc_param_scan_offset, TCCONF_TYPE_FLAG, 0, 0, 1},
++    {"alt", &lavc_param_alt, TCCONF_TYPE_FLAG, 0, 0, 1},
+     {"ilme", &lavc_param_ilme, TCCONF_TYPE_FLAG, 0, 0, CODEC_FLAG_INTERLACED_ME},
+     {"inter_threshold", &lavc_param_inter_threshold, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -1000000, 1000000},
+     {"sc_threshold", &lavc_param_sc_threshold, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, -1000000, 1000000},
+diff -urN transcode-1.1.7-orig/import/decode_lavc.c transcode-1.1.7/import/decode_lavc.c
+--- transcode-1.1.7-orig/import/decode_lavc.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/import/decode_lavc.c	2012-07-03 10:21:46.085005182 -0700
+@@ -181,7 +181,7 @@
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+   lavc_dec_context->error_resilience  = 2;
+ #else
+-  lavc_dec_context->error_recognition = 2;
++  lavc_dec_context->err_recognition = 2;
+ #endif
+   lavc_dec_context->error_concealment = 3;
+   lavc_dec_context->workaround_bugs = FF_BUG_AUTODETECT;
+diff -urN transcode-1.1.7-orig/import/import_ffmpeg.c transcode-1.1.7/import/import_ffmpeg.c
+--- transcode-1.1.7-orig/import/import_ffmpeg.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/import/import_ffmpeg.c	2012-07-03 10:19:36.936004841 -0700
+@@ -314,7 +314,7 @@
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+     lavc_dec_context->error_resilience  = 2;
+ #else
+-    lavc_dec_context->error_recognition = 2;
++    lavc_dec_context->err_recognition = 2;
+ #endif
+     lavc_dec_context->error_concealment = 3;
+     lavc_dec_context->workaround_bugs = FF_BUG_AUTODETECT;
+diff -urN transcode-1.1.7-orig/import/probe_ffmpeg.c transcode-1.1.7/import/probe_ffmpeg.c
+--- transcode-1.1.7-orig/import/probe_ffmpeg.c	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/import/probe_ffmpeg.c	2012-07-03 10:41:42.782008306 -0700
+@@ -99,8 +99,8 @@
+ 
+     TC_INIT_LIBAVCODEC;
+ 
+-    ret = av_open_input_file(&lavf_dmx_context, ipipe->name,
+-                             NULL, 0, NULL);
++    ret = avformat_open_input(&lavf_dmx_context, ipipe->name,
++                             NULL, NULL);
+     if (ret != 0) {
+         tc_log_error(__FILE__, "unable to open '%s'"
+                                " (libavformat failure)",
+diff -urN transcode-1.1.7-orig/libtc/tcavcodec.h transcode-1.1.7/libtc/tcavcodec.h
+--- transcode-1.1.7-orig/libtc/tcavcodec.h	2011-11-19 08:50:27.000000000 -0800
++++ transcode-1.1.7/libtc/tcavcodec.h	2012-07-03 10:34:43.648007213 -0700
+@@ -53,7 +53,6 @@
+ 
+ #define TC_INIT_LIBAVCODEC do { \
+     TC_LOCK_LIBAVCODEC; \
+-    avcodec_init(); \
+     avcodec_register_all(); \
+     TC_UNLOCK_LIBAVCODEC; \
+ } while (0)

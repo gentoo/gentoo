@@ -1,0 +1,15 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Feb 10 14:48:58 UTC 2013
+Subject: remove Werror compiler flag wrt #456654
+
+--- inc/My/Builder.pm
++++ inc/My/Builder.pm
+@@ -123,7 +123,7 @@
+             push @ofiles, $cbuilder->compile(
+                 source               => catfile($server_directory, $cfile),
+                 extra_compiler_flags => [
+-                    qw(-g -Wall -Werror -pipe), # verbatim from Makefile
++                    qw(-Wall), # verbatim from Makefile
+                     '-I' . $server_directory, # does not seem to be necessary
+                     $cbuilder->split_like_shell(`pkg-config glib-2.0 --cflags`),
+                     $cbuilder->split_like_shell(`pkg-config glib-2.0 --libs`),

@@ -1,0 +1,49 @@
+diff -upr cmd5checkpw-0.30.orig/main.c cmd5checkpw-0.30/main.c
+--- cmd5checkpw-0.30.orig/main.c	2003-09-18 16:34:01.000000000 +0300
++++ cmd5checkpw-0.30/main.c	2005-07-31 13:19:25.000000000 +0300
+@@ -5,6 +5,7 @@
+ #include <pwd.h>
+ #include <stdio.h>
+ #include <unistd.h>
++#include <sys/types.h>
+ 
+ #define LINE_MAX 256
+ #define SASLUSERFILE "/var/qmail/users/authuser"
+@@ -23,10 +24,26 @@ int doit(unsigned char *testlogin, unsig
+    unsigned char h;
+    FILE *fp;
+    int j;
+-
++   uid_t uid;
++   gid_t gid;
+    char *linepnt;
+ 
+    if ((fp = fopen(SASLUSERFILE, READONLY)) == NULL) _exit(2);
++
++   uid = getuid();
++   gid = getgid();
++
++   if (gid != getegid()) {
++       if (setegid(gid))
++       _exit(2);
++   }
++
++
++   if (uid && (uid != geteuid())) {
++       if (seteuid(uid))
++       _exit(2);
++   }
++
+    while (fgets(line, LINE_MAX, fp) != NULL) {
+          if ((linepnt = strchr(line, '\n')) != NULL) {
+ 	 *linepnt = 0;
+@@ -39,7 +56,8 @@ int doit(unsigned char *testlogin, unsig
+ 	 break;
+       }
+    }   
+-   fclose(fp);
++
++   if (EOF == fclose(fp)) _exit(2);
+ 
+    if (!found_user) return(1);
+ 

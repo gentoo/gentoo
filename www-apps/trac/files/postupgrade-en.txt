@@ -1,0 +1,19 @@
+Upgrade Instructions
+====================
+
+This is brief and generic information about Trac.
+
+See the releases notes at http://trac.edgewall.org/wiki/TracDev/ReleaseNotes
+for the Trac version you have installed to learn about software changes and
+possible caveats.
+
+If you are upgrading from a previous Trac version, please follow the
+instructions here:
+
+	http://trac.edgewall.org/wiki/TracUpgrade
+
+You will need to run trac-admin commands (upgrade, wiki upgrade...) for each
+Trac environment you have.
+
+You might also want to check for new configuration options by comparing trac.ini
+file with trac.ini.sample file in the conf/ directory in each Trac environment.

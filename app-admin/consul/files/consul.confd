@@ -1,0 +1,10 @@
+# you can change the init script behavior by setting those parameters
+# - group (default: consul)
+# - pidfile (default: /run/consul/consul.pid)
+# - user (default: consul)
+
+# extra arguments for the consul agent
+command_args="-config-dir=/etc/consul.d"
+
+# upstream strongly recommends > 1
+GOMAXPROCS=2

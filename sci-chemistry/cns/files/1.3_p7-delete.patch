@@ -1,0 +1,13 @@
+diff --git a/utils/cluster_struc.cpp b/utils/cluster_struc.cpp
+index b64467a..5f727db 100644
+--- a/utils/cluster_struc.cpp
++++ b/utils/cluster_struc.cpp
+@@ -173,7 +173,7 @@ int main(int argc, char *argv[]) {
+         for (int i = 0; i < nrstruc; i++) {
+           delete[] neighbor[i];
+         }
+-        delete[] neighbor, neighborcount;
++        delete[] neighbor, delete[] neighborcount;
+         return 5;
+       }
+       if (rmsd < cutoff) {

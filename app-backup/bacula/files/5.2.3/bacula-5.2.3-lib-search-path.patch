@@ -1,0 +1,12 @@
+# If upgrading the old libraries gets linked first. So fix order of lib search path.
+--- src/console/Makefile.in.orig	2010-03-29 11:35:00.000000000 +0000
++++ src/console/Makefile.in	2010-03-29 11:45:14.000000000 +0000
+@@ -47,7 +47,7 @@
+ 
+ 
+ bconsole: Makefile $(CONSOBJS) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+-	$(LIBTOOL_LINK) $(CXX) $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(CONSOBJS) \
++	$(LIBTOOL_LINK) $(CXX) -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(CONSOBJS) \
+ 	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+ 	      $(OPENSSL_LIBS)
+ 

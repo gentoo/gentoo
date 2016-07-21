@@ -1,0 +1,12 @@
+diff -Nur mpb-1.4.2.orig/mpb-ctl/field-smob.c mpb-1.4.2/mpb-ctl/field-smob.c
+--- mpb-1.4.2.orig/mpb-ctl/field-smob.c	2012-08-07 20:56:24.538452994 -0700
++++ mpb-1.4.2/mpb-ctl/field-smob.c	2012-08-07 20:56:43.713557380 -0700
+@@ -157,7 +157,7 @@
+ boolean cur_fieldp(SCM obj)
+ {
+      if (SCM_NIMP(obj) && SCM_SYMBOLP(obj)) {
+-	  char *s = gh_symbol2newstr(obj, NULL);
++	  char *s = gh_symbol2newstr(obj);
+ 	  int ret = !strcmp(s, "cur-field");
+ 	  free(s);
+ 	  return ret;

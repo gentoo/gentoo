@@ -1,0 +1,10 @@
+pyblosxom-1.3 changes nearly nothing in the config file.
+
+The only new variable you need to set is 'blog_rights'. It should
+contain your name and will be added to the atom feed.
+
+Anyway you only need to run etc-update on you config file as 
+suggested by webapp-config. Update the configuration following
+standard procedures and you should be all set.
+
+Enjoy pyblosxom!

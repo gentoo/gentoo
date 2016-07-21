@@ -1,0 +1,88 @@
+Remove suitesparse (camd,colamd) and zlib bundles
+bicatali - apr 2014
+Updated for 4.57 by soap (Jan 2016)
+
+--- glpk-4.57/configure.ac
++++ glpk-4.57/configure.ac
+@@ -59,6 +59,11 @@
+ dnl Check for math library
+ AC_CHECK_LIB([m], [exp])
+ 
++AC_CHECK_LIB([amd], [amd_1])
++AC_CHECK_LIB([colamd], [colamd])
++AC_CHECK_HEADER([amd.h])
++AC_CHECK_LIB([z], [gzopen])
++
+ dnl Check for <sys/time.h> header
+ AC_CHECK_HEADER([sys/time.h],
+    AC_DEFINE([HAVE_SYS_TIME_H], [1], [N/A]))
+--- glpk-4.57/src/Makefile.am
++++ glpk-4.57/src/Makefile.am
+@@ -6,16 +6,13 @@
+ 
+ libglpk_la_CPPFLAGS = \
+ -I$(srcdir) \
+--I$(srcdir)/amd \
+ -I$(srcdir)/bflib \
+ -I$(srcdir)/cglib \
+--I$(srcdir)/colamd \
+ -I$(srcdir)/env \
+ -I$(srcdir)/minisat \
+ -I$(srcdir)/misc \
+ -I$(srcdir)/proxy \
+--I$(srcdir)/simplex \
+--I$(srcdir)/zlib
++-I$(srcdir)/simplex
+ 
+ libglpk_la_LDFLAGS = \
+ -version-info 38:0:2 \
+@@ -90,18 +87,6 @@
+ glpssx01.c \
+ glpssx02.c \
+ lux.c \
+-amd/amd_1.c \
+-amd/amd_2.c \
+-amd/amd_aat.c \
+-amd/amd_control.c \
+-amd/amd_defaults.c \
+-amd/amd_dump.c \
+-amd/amd_info.c \
+-amd/amd_order.c \
+-amd/amd_post_tree.c \
+-amd/amd_postorder.c \
+-amd/amd_preprocess.c \
+-amd/amd_valid.c \
+ bflib/btf.c \
+ bflib/btfint.c \
+ bflib/fhv.c \
+@@ -115,7 +100,6 @@
+ bflib/sva.c \
+ cglib/cfg.c \
+ cglib/cfg1.c \
+-colamd/colamd.c \
+ env/alloc.c \
+ env/dlsup.c \
+ env/env.c \
+@@ -158,21 +142,6 @@
+ simplex/spxprob.c \
+ simplex/spychuzc.c \
+ simplex/spychuzr.c \
+-simplex/spydual.c \
+-zlib/adler32.c \
+-zlib/compress.c \
+-zlib/crc32.c \
+-zlib/deflate.c \
+-zlib/gzclose.c \
+-zlib/gzlib.c \
+-zlib/gzread.c \
+-zlib/gzwrite.c \
+-zlib/inffast.c \
+-zlib/inflate.c \
+-zlib/inftrees.c \
+-zlib/trees.c \
+-zlib/uncompr.c \
+-zlib/zio.c \
+-zlib/zutil.c
++simplex/spydual.c
+ 
+ ## eof ##

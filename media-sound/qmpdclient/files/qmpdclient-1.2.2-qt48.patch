@@ -1,0 +1,40 @@
+From 20edef54b109882632f58549d181123b9985d65b Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Fri, 1 Jun 2012 21:54:10 +1200
+Subject: [PATCH] First attempt at fixing lastfm scrobbling
+
+---
+ src/lastfmsubmitter.cpp |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/lastfmsubmitter.cpp b/src/lastfmsubmitter.cpp
+index cff94bc..a9b6ea9 100644
+--- a/src/lastfmsubmitter.cpp
++++ b/src/lastfmsubmitter.cpp
+@@ -112,7 +112,10 @@ void LastFmSubmitter::scrobbleNp(MPDSong & s) {
+ 	data += QString("l=%1&").arg(s.secs() >0 ? QString::number(s.secs()) : "100");
+ 	data += QString("n=%1").arg(QString(QUrl::toPercentEncoding(s.track())));
+ 	//qDebug() << data;
+-	m_netAccess->post(QNetworkRequest(QUrl(m_npUrl)), data.toAscii());
++	QUrl url(m_npUrl);
++	QNetworkRequest request(url);
++	request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
++	m_netAccess->post(request, data.toAscii());
+ }
+ 
+ void LastFmSubmitter::scrobbleCurrent() {
+@@ -152,7 +155,10 @@ void LastFmSubmitter::scrobbleQueued() {
+ 	if (i>0) {
+ 		//qDebug() << "sending scrobble to " << m_subUrl.toAscii();
+ 		//qDebug() << "data: " << data.toAscii();
+-		m_netAccess->post(QNetworkRequest(QUrl(m_subUrl)), data.toAscii());
++		QUrl url(m_subUrl);
++		QNetworkRequest request(url);
++		request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
++		m_netAccess->post(request, data.toAscii());
+ 		m_awaitingScrob = true;
+ 	}
+ }
+-- 
+1.7.9.4
+

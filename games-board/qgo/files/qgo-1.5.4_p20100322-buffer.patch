@@ -1,0 +1,11 @@
+--- src/network/tygemconnection.cpp.orig	2014-10-29 23:49:21.436929924 -0400
++++ src/network/tygemconnection.cpp	2014-10-29 23:50:43.481183852 -0400
+@@ -4768,7 +4768,7 @@
+ 	unsigned int i;
+ 	
+ 	QString encoded_name;
+-	name[15] = 0x00;
++	name[14] = 0x00;
+ 	int records = (msg[0] << 8) + msg[1];
+ 	if((records * 16) + 4 != (int)size)
+ 	{

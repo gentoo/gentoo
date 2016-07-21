@@ -1,0 +1,10 @@
+--- a/configure.ac	2014-01-24 19:04:05.633056872 +0100
++++ b/configure.ac	2014-01-24 19:04:34.685691757 +0100
+@@ -24,6 +24,7 @@
+ 
+ AC_INIT([libguestfs],libguestfs_major.libguestfs_minor.libguestfs_release)
+ AC_CONFIG_AUX_DIR([build-aux])
++AM_GNU_GETTEXT_VERSION(0.18.3)
+ 
+ dnl Initialize automake.  automake < 1.12 didn't have serial-tests and
+ dnl gives an error if it sees this, but for automake >= 1.13

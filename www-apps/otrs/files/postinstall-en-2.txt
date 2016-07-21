@@ -1,0 +1,18 @@
+
+Your installation is almost complete.
+1. You now need to edit ${VHOST_ROOT}/${PN}-${PVR}/Kernel/Config.pm
+and set some Kernel::Config options (FQDN, SystemID, TicketHook, Home, ...).
+
+2. Configure and restart your webserver.
+Read /usr/share/doc/${PN}-${PVR}/README.webserver.bz2.
+Sample config files are in ${VHOST_ROOT}/${PN}-${PVR}/scripts
+
+If you are using FastCGI, don't forget to add -D FASTCGI
+to your Apache options.
+
+3. Setup your database. Read /usr/share/doc/${PN}-${PVR}/README.database.bz2
+
+4. Read the INSTALL file in /usr/share/doc/${PN}-${PVR}/, pp. 9-12,
+to finish the installation.
+
+If you are upgrading, read /usr/share/doc/${PN}-${PVR}/UPGRADING.bz2

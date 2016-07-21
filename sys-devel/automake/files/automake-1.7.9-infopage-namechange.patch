@@ -1,0 +1,15 @@
+--- Makefile.in	2003-06-30 17:07:30.000000000 +0000
++++ Makefile.in	2003-06-30 17:09:28.000000000 +0000
+@@ -199,8 +199,9 @@
+ 
+ .texi.info:
+ 	@rm -f $@ $@-[0-9] $@-[0-9][0-9] $(@:.info=).i[0-9] $(@:.info=).i[0-9][0-9]
+-	$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
+-	 -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
++	cd $(srcdir) \
++		&& $(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) \
++			`echo $< | sed 's,.*/,,'`
+ 
+ .texi.dvi:
+ 	TEXINPUTS="$(am__TEXINFO_TEX_DIR)$(PATH_SEPARATOR)$$TEXINPUTS" \
+ 	MAKEINFO='$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir)' \

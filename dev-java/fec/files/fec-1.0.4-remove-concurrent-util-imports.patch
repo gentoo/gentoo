@@ -1,0 +1,101 @@
+--- src/com/onionnetworks/fec/io/FECFile.java.orig	2015-10-18 15:38:26.000000000 +0000
++++ src/com/onionnetworks/fec/io/FECFile.java	2015-10-18 16:06:51.159486000 +0000
+@@ -10,7 +10,9 @@
+ import com.onionnetworks.fec.FECCodeFactory;
+ import com.onionnetworks.io.RAF;
+ import com.onionnetworks.util.*;
+-import EDU.oswego.cs.dl.util.concurrent.*;
++
++import java.util.concurrent.locks.ReadWriteLock;
++import java.util.concurrent.locks.ReentrantReadWriteLock;
+ 
+ /**
+  * This class provides the necessary file IO routines to go along with the raw
+@@ -129,9 +131,9 @@
+         this.raf = new RAF(f,mode); // synched RandomAccessFile        
+ 
+         // Create the locks.
+-        locks = new ReadWriteLock[blockCount];
++        locks = new ReentrantReadWriteLock[blockCount];
+         for (int i=0;i<locks.length;i++) {
+-            locks[i] = new ReentrantWriterPreferenceReadWriteLock();
++            locks[i] = new ReentrantReadWriteLock();
+         }
+ 
+         // add the default exception handler.
+@@ -258,7 +260,7 @@
+         byte[] b = null;
+ 
+         try {
+-            locks[blockNum].readLock().acquire();
++            locks[blockNum].readLock().lock();
+ 	    try {
+ 
+                 // This raf check then pp access is safe because all
+@@ -296,9 +298,9 @@
+                     return;
+                 }
+ 	    } finally {
+-                locks[blockNum].readLock().release();
++                locks[blockNum].readLock().unlock();
+ 	    }
+-	} catch (InterruptedException e) { 
++	} catch (Exception e) { 
+ 	    throw new InterruptedIOException(e.toString());
+ 	}
+         
+@@ -342,13 +344,13 @@
+ 	
+         int result = -1;
+         try {
+-            locks[blockNum].writeLock().acquire();
++            locks[blockNum].writeLock().lock();
+ 	    try {
+                 result = write0(pkt,blockNum,stripeNum);
+ 	    } finally {
+-                locks[blockNum].writeLock().release();
++                locks[blockNum].writeLock().unlock();
+ 	    }
+-	} catch (InterruptedException e) { 
++	} catch (Exception e) { 
+ 	    throw new InterruptedIOException(e.toString());
+ 	}
+ 
+@@ -444,16 +446,16 @@
+ 	}
+ 
+ 	try {
+-	    locks[blockNum].writeLock().acquire();
++	    locks[blockNum].writeLock().lock();
+ 	    try {
+ 		// seek and write the decoded block.
+ 		raf.seekAndWrite(blockNum*blockSize,b,0,b.length);
+ 		// Update the placement to show decoded entries.
+ 		pp.setBlockDecoded(blockNum);
+ 	    } finally {
+-		locks[blockNum].writeLock().release();
++		locks[blockNum].writeLock().unlock();
+ 	    }
+-	} catch (InterruptedException e) { 
++	} catch (Exception e) { 
+ 	    throw new InterruptedIOException(e.toString());
+ 	}
+ 	 
+@@ -468,7 +470,7 @@
+      */
+     public void acquireAllWriteLocks() throws InterruptedException {
+         for (int i=0;i<locks.length;i++) {
+-            locks[i].writeLock().acquire();
++            locks[i].writeLock().lock();
+         }
+     }
+ 
+@@ -479,7 +481,7 @@
+      */
+     public void releaseAllWriteLocks() throws InterruptedException {
+         for (int i=0;i<locks.length;i++) {     
+-            locks[i].writeLock().release();
++            locks[i].writeLock().unlock();
+         }   
+     }
+ 

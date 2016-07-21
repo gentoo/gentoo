@@ -1,0 +1,15 @@
+ SConscript-install.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/SConscript-install.py b/SConscript-install.py
+index e2f9f09..1fdf1a8 100644
+--- a/SConscript-install.py
++++ b/SConscript-install.py
+@@ -41,6 +41,7 @@ def installFile(file_name, build_target='install'):
+ 		if GetOption("clean"):
+ 			env.Default(result)
+ 		Alias(build_target, env.Install(env['PREFIX']+dirname(file_name), result))
++		Alias(build_target, env.Install(env['PREFIX']+dirname(file_name), target))
+ 	else:
+ 		Alias(build_target, env.Install(env['PREFIX']+dirname(file_name), target))
+ 

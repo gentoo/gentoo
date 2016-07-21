@@ -1,0 +1,50 @@
+--- dxsamples-4.4.0/Makefile.am.nojava	2002-01-28 21:53:08.000000000 +0100
++++ dxsamples-4.4.0/Makefile.am	2006-09-03 01:40:26.000000000 +0200
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = callmodule data dxlink java macros \
++SUBDIRS = callmodule data dxlink macros \
+ 	  outboard program_guide programs scripts \
+ 	  supervise tutorial user util stereo
+ 
+--- dxsamples-4.4.0/configure.ac-orig	2009-05-03 14:30:59.000000000 +1200
++++ dxsamples-4.4.0/configure.ac	2009-05-03 14:31:44.000000000 +1200
+@@ -25,11 +25,6 @@ AC_SUBST(RTL_LIBS)
+ 
+ SHELL=/bin/sh
+ 
+-AC_ARG_WITH(javadx,
+-              [  --with-javadx           enable JAVADX (default is yes)],
+-              [with_javadx=$withval],
+-              [with_javadx='yes'])
+-
+ AC_PROG_INSTALL
+ if test -z "$LN_S" ; then
+     AC_PROG_LN_S
+@@ -40,25 +35,8 @@ DX_GET_PREFIX
+ DX_GET_ARCH
+ DX_ARCH_SPECIFIC
+ 
+-MAKE_JAVADX_SAMPLES=""
+-if test "with_javadx" != 'no' ; then
+-  failed=0;
+-  passed=0;
+-  DX_PROG_JAVAC(passed=`expr $passed + 1`,failed=`expr $failed + 1`)
+-  DX_PROG_JAR(passed=`expr $passed + 1`,failed=`expr $failed + 1`)
+-
+-  if test $failed -eq 0 ; then
+-     DX_JAVADX_SETUP(passed=`expr $passed + 1`,failed=`expr $failed + 1`)
+-     if test $failed -eq 0 ; then
+-       MAKE_JAVADX_SAMPLES=samples
+-     fi
+-  fi
+-fi
+-
+ AC_OUTPUT( Makefile callmodule/Makefile callmodule/localmk \
+ 	data/Makefile dxlink/Makefile dxlink/dxlink_make \
+-	java/samples/Makefile java/Makefile java/userdata/Makefile  \
+-	java/usermacros/Makefile  java/nets/Makefile  java/makes/Makefile  \
+ 	macros/Makefile outboard/Makefile \
+ 	program_guide/Makefile program_guide/localmk program_guide/guidemake \
+ 	programs/2D_DATA/Makefile programs/3D_DATA/Makefile \

@@ -1,0 +1,177 @@
+https://gitlab.kitware.com/ben.boeckel/paraview/commit/40a62e0bd20ceb73d7a545dab73e975fa07cddbb
+http://www.vtk.org/Bug/view.php?id=15442#c34997
+
+https://bugs.gentoo.org/show_bug.cgi?id=537988
+
+This updates the *.proto files to be compatible with version 2.6 and fixes
+a bug that prevented successful compilation with protobuf 2.6.
+
+--- a/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto
++++ b/ParaViewCore/ServerImplementation/Core/vtkPVMessage.proto
+@@ -21,7 +21,7 @@ message Variant {
+     MAP     = 7;
+     }
+ 
+-  required Type    type            = 1;
++  optional Type    type            = 1;
+   repeated sint64  idtype          = 3;
+   repeated sint32  integer         = 4;
+   repeated double  float64         = 5;
+@@ -47,8 +47,8 @@ message MessageCollection
+ 
+ message Message
+ {
+-  required uint64 global_id  = 1;
+-  required uint32 location   = 2;
++  optional uint64 global_id  = 1;
++  optional uint32 location   = 2;
+   optional bool   share_only = 3 [default = false];
+   optional bool   req_def    = 4 [default = false];
+   optional uint32 client_id  = 5 [default = 0];
+@@ -62,10 +62,10 @@ message DefinitionHeader
+ {
+   extend Message {
+     // The classname for the driver process i.e. the client, typically
+-    required string client_class = 10;
++    optional string client_class = 10;
+ 
+     // The classname for the process where the processing occurs
+-    required string server_class = 11;
++    optional string server_class = 11;
+   }
+ }
+ 
+@@ -76,32 +76,32 @@ message ProxyState
+ 
+   message SubProxy
+     {
+-    required string name      = 1;
+-    required uint32 global_id = 2;
++    optional string name      = 1;
++    optional uint32 global_id = 2;
+     }
+ 
+   message Annotation
+     {
+-    required string key   = 1;
+-    required string value = 2;
++    optional string key   = 1;
++    optional string value = 2;
+     }
+ 
+   message UserData
+     {
+-    required string key   = 1;
++    optional string key   = 1;
+     repeated Variant variant = 2;
+     }
+ 
+   message Property
+     {
+-    required string  name  = 1;
++    optional string  name  = 1;
+     optional Variant value = 2;
+     repeated UserData user_data = 3;
+     }
+ 
+   extend Message {
+-    required string     xml_group           = 20;
+-    required string     xml_name            = 21;
++    optional string     xml_group           = 20;
++    optional string     xml_name            = 21;
+     optional string     xml_sub_proxy_name  = 22;
+     repeated Property   property            = 23;
+     repeated SubProxy   subproxy            = 24;
+@@ -118,8 +118,8 @@ message PXMRegistrationState
+   message Entry
+     {
+     optional string group     = 1;
+-    required string name      = 2;
+-    required uint64 global_id = 3;
++    optional string name      = 2;
++    optional uint64 global_id = 3;
+     }
+ 
+   extend Message {
+@@ -135,9 +135,9 @@ message ProxyDefinitionState
+ {
+   message ProxyXMLDefinition
+     {
+-    required string group = 1;
+-    required string name  = 2;
+-    required string xml   = 3;
++    optional string group = 1;
++    optional string name  = 2;
++    optional string xml   = 3;
+     }
+ 
+   extend Message {
+@@ -181,9 +181,9 @@ message LinkState {
+       OUTPUT = 2;
+       }
+ 
+-    required uint32 proxy         = 1;
++    optional uint32 proxy         = 1;
+     optional string property_name = 2;
+-    required Direction direction  = 3;
++    optional Direction direction  = 3;
+     }
+ 
+   extend Message {
+@@ -206,7 +206,7 @@ message MousePointer {
+   }
+ 
+   extend Message {
+-    required uint32 view      = 70;
++    optional uint32 view      = 70;
+     optional double x         = 71 [default = 0];
+     optional double y         = 72 [default = 0];
+     optional bool   forceShow = 73 [default = false];
+@@ -219,7 +219,7 @@ message MousePointer {
+ message ChartViewBounds {
+ 
+   extend Message {
+-    required uint32 view  = 75;
++    optional uint32 view  = 75;
+     repeated double range = 76;
+   }
+ }
+@@ -229,7 +229,7 @@ message ChartViewBounds {
+ message ClientsInformation {
+ 
+   message ClientInfo {
+-    required uint32 user       = 1;
++    optional uint32 user       = 1;
+     optional string name       = 2;
+     optional bool   is_master  = 3 [default = false];
+     optional bool   follow_cam = 4 [default = false];
+@@ -242,8 +242,8 @@ message ClientsInformation {
+ 
+ message ChatMessage {
+   extend Message {
+-    required uint32 author = 84;
+-    required string txt    = 85;
++    optional uint32 author = 84;
++    optional string txt    = 85;
+   }
+ }
+ 
+@@ -256,7 +256,7 @@ message QtEvent {
+   }
+ 
+   extend Message {
+-    required QtEventType type  = 98;
++    optional QtEventType type  = 98;
+   }
+ }
+ 
+--- a/ParaViewCore/ServerManager/Rendering/vtkSMCameraLink.cxx
++++ b/ParaViewCore/ServerManager/Rendering/vtkSMCameraLink.cxx
+@@ -363,6 +363,6 @@ void vtkSMCameraLink::LoadState(const vtkSMMessage *msg, vtkSMProxyLocator *loca
+ void vtkSMCameraLink::UpdateState()
+ {
+   this->Superclass::UpdateState();
+-  this->State->GetExtension(LinkState::sync_interactive_renders,
++  this->State->SetExtension(LinkState::sync_interactive_renders,
+     this->GetSynchronizeInteractiveRenders());
+ }

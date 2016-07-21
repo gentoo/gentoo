@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>thev00d00@gentoo.org</email>
+    <name>Ian Whyman</name>
+  </maintainer>
+  <use>
+    <flag name="cubox">Enable support for enable support for the TDA995x</flag>
+    <flag name="exynos">Enable support for Exynos chipsets</flag>
+    <flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
+    <flag name="xrandr">Enable detection of active HDMI using xrandr extensions</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Pulse-Eight/libcec</remote-id>
+  </upstream>
+</pkgmetadata>

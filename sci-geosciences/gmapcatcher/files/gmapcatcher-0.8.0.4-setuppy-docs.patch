@@ -1,0 +1,14 @@
+Drop docs from setup.py, distutils-r1 takes care of it.
+
+--- setup.py.orig	2013-07-25 03:24:35.987668173 +0200
++++ setup.py	2013-07-25 03:24:51.770668448 +0200
+@@ -13,8 +13,7 @@
+         description = 'Offline Map Viewer',
+         version = VERSION,
+         url = WEB_ADDRESS,
+-        data_files = [('share/doc/mapcatcher', ['README', 'changelog']),
+-                    ('share/applications', ['gmapcatcher.desktop']),
++        data_files = [('share/applications', ['gmapcatcher.desktop']),
+                     ('share/man/man1',
+                         ['man/mapcatcher.1.gz', 'man/mapdownloader.1.gz']),
+                     ('share/pixmaps', ['images/mapcatcher.png']),

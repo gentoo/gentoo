@@ -1,0 +1,22 @@
+ test/everything/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/everything/Makefile.am b/test/everything/Makefile.am
+index 32beb36..1eef7ac 100644
+--- a/test/everything/Makefile.am
++++ b/test/everything/Makefile.am
+@@ -73,12 +73,12 @@ server_DEPENDENCIES=${EVERYTHING_BUILT} $(included_src)
+ 
+ IDL_FLAGS= --showcpperrors --add-imodule
+ IDL_FILES= everything.idl
+-include $(top_srcdir)/Makefile.shared
++include ../../Makefile.shared
+ 
+ BUILT_SOURCES = ${EVERYTHING_BUILT} everything-imodule.c
+ CLEANFILES = ${BUILT_SOURCES} iorfile
+ 
+-TESTS = $(srcdir)/test.sh
++TESTS = test.sh
+ 
+ EXTRA_DIST = $(IDL_FILES) test.sh $(included_src)
+ 

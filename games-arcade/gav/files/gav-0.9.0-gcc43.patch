@@ -1,0 +1,10 @@
+--- Configuration.cpp
++++ Configuration.cpp
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <string>
+ #include <iostream>
++#include <cstring>
+ #include "Configuration.h"
+ #include "ControlsArray.h"
+ 

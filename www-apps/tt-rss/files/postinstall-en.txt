@@ -1,0 +1,6 @@
+Please read http://tt-rss.org/redmine/projects/tt-rss/wiki/InstallationNotes
+
+With the update to 1.7.0 the 'magpie' RSS parser has been removed.
+That means TT-RSS will use the 'simplepie' parser. If you have been 
+using 'magpie' so far, the switch might cause lots of duplicate
+articles - it's a one-time thing for each instance.

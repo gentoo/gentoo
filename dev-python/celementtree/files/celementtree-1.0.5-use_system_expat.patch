@@ -1,0 +1,44 @@
+diff -u a/selftest.py b/selftest.py
+--- a/selftest.py	2005-12-16 23:57:47.000000000 +0200
++++ b/selftest.py	2007-07-03 08:07:45.000000000 +0300
+@@ -176,8 +176,6 @@
+     </ns0:root>
+ 
+     >>> parser = ElementTree.XMLParser()
+-    >>> parser.version
+-    'Expat 1.95.8'
+     >>> parser.feed(open("samples/simple.xml").read())
+     >>> print serialize(parser.close())
+     <root>
+diff -u a/setup.py b/setup.py
+--- a/setup.py	2005-12-16 23:57:47.000000000 +0200
++++ b/setup.py	2007-07-03 08:00:57.000000000 +0300
+@@ -23,16 +23,6 @@
+ # --------------------------------------------------------------------
+ # expat library
+ 
+-sources = [
+-    "expat/xmlparse.c",
+-    "expat/xmlrole.c",
+-    "expat/xmltok.c",
+-    ]
+-
+-includes = [
+-    "expat",
+-    ]
+-
+ defines = [
+     ("XML_STATIC", None),
+     ]
+@@ -63,9 +53,9 @@
+ 
+ ext_modules.append(
+     Extension(
+-        "cElementTree", ["cElementTree.c"] + sources,
++        "cElementTree", ["cElementTree.c"],
+         define_macros=defines,
+-        include_dirs=includes,
++        libraries=['expat'],
+         )
+     )
+ 

@@ -1,0 +1,11 @@
+--- Makefile.bak	2007-02-12 19:45:05.000000000 -0500
++++ Makefile	2007-02-12 19:44:37.000000000 -0500
+@@ -3,7 +3,7 @@
+ OBJS = Xorgautoconfig.o pci.o misc.o ddcprobe/minifind.o ddcprobe/common.o ddcprobe/vesamode.o ddcprobe/of.o
+ 
+ all: $(OBJS)
+-	${CC} -s -o Xorgautoconfig $(CFLAGS) $(OBJS) -lpci
++	${CC} -s -o Xorgautoconfig $(CFLAGS) $(OBJS) -lpci -lz
+ 
+ clean:
+ 	rm -f $(OBJS) Xorgautoconfig

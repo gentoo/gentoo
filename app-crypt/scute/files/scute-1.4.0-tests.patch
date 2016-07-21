@@ -1,0 +1,13 @@
+Index: scute-1.4.0/tests/Makefile.am
+===================================================================
+--- scute-1.4.0.orig/tests/Makefile.am
++++ scute-1.4.0/tests/Makefile.am
+@@ -35,7 +35,7 @@ TESTS = t-link t-getfunctionlist t-initi
+ 	t-opensession t-closeallsessions t-getsessioninfo \
+ 	t-findobjects t-getattribute t-auth
+ 
+-noinst_PROGRAMS = $(TESTS)
++check_PROGRAMS = $(TESTS)
+ 
+ INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/src
+ LDADD = ../src/libscute.la

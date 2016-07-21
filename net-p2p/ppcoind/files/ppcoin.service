@@ -1,0 +1,30 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades. If you want to customize, the
+# best way is to create file
+# "/etc/systemd/system/ppcoind.service.d/*.conf"
+# containing your changes
+
+# For example, if you want to change some daemon and/or unit options,
+# create a file named
+# "/etc/systemd/system/ppcoind.service.d/myopts.conf"
+# containing:
+#       [Service]
+#       Environment="PPCOIN_OPTS=-debug -logtimestamps"
+#       Nice=10
+# This will override the setting appearing below.
+
+# Note that almost all daemon options could be specified in
+# /etc/ppcoin/ppcoin.conf
+
+[Unit]
+Description=PPcoin Daemon
+After=network.target
+
+[Service]
+User=ppcoin
+Environment=PPCOIN_OPTS=
+ExecStart=/usr/bin/ppcoind -daemon=0 $PPCOIN_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

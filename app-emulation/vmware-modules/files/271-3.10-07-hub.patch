@@ -1,0 +1,26 @@
+fixes a bug where sizeof was being used on a pointer when they clearly
+meant to use the size of the array referred to. Fortunately, the amount is
+always smaller than the actual size of the buffer, so likely not a security issue
+(and was fixed in vmware-workstaiton 10
+
+diff -rupN vmnet-only/hub.c vmnet-only.new/hub.c
+--- vmnet-only/hub.c	2013-11-06 00:40:52.000000000 -0500
++++ vmnet-only.new/hub.c	2014-10-07 18:45:34.403918680 -0400
+@@ -129,7 +129,7 @@ VNetHubFindHubByID(uint8 idNum[VNET_PVN_
+ {
+    VNetHub *currHub = vnetHub;
+    while (currHub && (currHub->hubType != HUB_TYPE_PVN ||
+-		      memcmp(idNum, currHub->id.pvnID, sizeof idNum))) {
++		      memcmp(idNum, currHub->id.pvnID, VNET_PVN_ID_LEN))) {
+       currHub = currHub->next;
+    }
+    return currHub;
+@@ -312,7 +312,7 @@ VNetHubAlloc(Bool allocPvn, // IN: TRUE
+ 
+       if (allocPvn) {
+ 	 hub->hubType = HUB_TYPE_PVN;
+-	 memcpy(hub->id.pvnID, id, sizeof id);
++	 memcpy(hub->id.pvnID, id, VNET_PVN_ID_LEN);
+ 	 ++pvnInstance;
+       } else {
+ 	 hub->hubType = HUB_TYPE_VNET;

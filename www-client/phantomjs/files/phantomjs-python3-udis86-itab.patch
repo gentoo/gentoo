@@ -1,0 +1,12 @@
+--- a/phantomjs-2.0.0/src/qt/qtwebkit/Source/JavaScriptCore/disassembler/udis86/itab.py	2015-01-24 11:19:52.000000000 +0900
++++ b/phantomjs-2.0.0/src/qt/qtwebkit/Source/JavaScriptCore/disassembler/udis86/itab.py	2015-03-17 16:20:04.580191055 +0900
+@@ -314,8 +314,7 @@
+         self.ItabH.write( "\n" )
+ 
+         self.ItabH.write("\n/* itab entry operand definitions */\n");
+-        operands = self.OperandDict.keys()
+-        operands.sort()
++        operands = sorted(self.OperandDict)
+         for o in operands:
+             self.ItabH.write("#define O_%-7s { %-12s %-8s }\n" %
+                     (o, self.OperandDict[o][0] + ",", self.OperandDict[o][1]));

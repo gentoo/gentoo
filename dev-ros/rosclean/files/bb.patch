@@ -1,0 +1,26 @@
+commit bbf1f945c7e3a54efca912d38fe8b1b2f5b63988
+Author: Alexis Ballier <aballier@gentoo.org>
+Date:   Thu Jan 22 09:56:41 2015 +0100
+
+    rosclean: Use "du -sk * 1024" on Linux for getting disk usage since "du -b" is not supported by busybox du, while "du -k" is supported by both coreutils and busybox.
+
+diff --git a/tools/rosclean/src/rosclean/__init__.py b/tools/rosclean/src/rosclean/__init__.py
+index 5dafb05..6f051f1 100644
+--- a/tools/rosclean/src/rosclean/__init__.py
++++ b/tools/rosclean/src/rosclean/__init__.py
+@@ -121,13 +121,13 @@ def get_disk_usage(d):
+     """
+     Get disk usage in bytes for directory
+     :param d: directory path, ``str``
+-    :returns: disk usage in bytes (du -b) or (du -A) * 1024, ``int``
++    :returns: disk usage in bytes (du -k) * 1024 or (du -A) * 1024, ``int``
+     :raises: :exc:`CleanupException` If get_disk_usage() cannot be used on this platform
+     """
+     # only implemented on Linux and FreeBSD for now. Should work on OS X but need to verify first (du is not identical)
+     if platform.system() == 'Linux':
+         try:
+-            return int(subprocess.Popen(['du', '-sb', d], stdout=subprocess.PIPE).communicate()[0].split()[0])
++            return int(subprocess.Popen(['du', '-sk', d], stdout=subprocess.PIPE).communicate()[0].split()[0]) * 1024
+         except:
+             raise CleanupException("rosclean is not supported on this platform")
+     elif platform.system() == 'FreeBSD':

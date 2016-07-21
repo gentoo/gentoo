@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# $Id$
+
+NAME="mogautomount"
+BINARY="/usr/bin/mogautomount"
+
+depend() {
+	use net
+	before mogstored
+}
+
+start() {
+	ebegin "Mounting MogileFS disks"
+	${BINARY} --chmod-mountpoints
+	eend $?
+}
+
+stop() {
+	:
+}
+
+# vim: ft=gentoo-init-d:

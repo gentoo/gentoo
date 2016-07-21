@@ -1,0 +1,10 @@
+
+# Path to the build master's basedir.
+BASEDIR=/var/lib/buildmaster
+
+# User account for the buildmaster.
+# The basedir should be owned by this user.
+USERNAME=buildbot
+
+# Extra options to pass to twistd.
+TWISTD_OPTS=""

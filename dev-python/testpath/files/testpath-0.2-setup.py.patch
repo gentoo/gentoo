@@ -1,0 +1,28 @@
+Patch to bring back setup.py from
+https://github.com/jupyter/testpath/blob/086bd1bd1ec7da1b3dacfed1705c0c99fae231b3/setup.py
+--- /dev/null
++++ setup.py
+@@ -0,0 +1,22 @@
++from distutils.core import setup
++
++with open("README.rst", "r") as f:
++    readme = f.read()
++
++setup(name='testpath',
++      version='0.1',
++      description='Test utilities for code working with files and commands',
++      long_description = readme,
++      author='Thomas Kluyver',
++      author_email='thomas@kluyver.me.uk',
++      url='https://github.com/takluyver/testpath',
++      packages=['testpath'],
++      classifiers=[
++          'Intended Audience :: Developers',
++          'License :: OSI Approved :: MIT License',
++          'Programming Language :: Python',
++          'Programming Language :: Python :: 2',
++          'Programming Language :: Python :: 3',
++          'Topic :: Software Development :: Testing',
++      ]
++)
+\ No newline at end of file

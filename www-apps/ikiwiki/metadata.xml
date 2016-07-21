@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>alicef@gentoo.org</email>
+	<name>Alice Ferrazzi</name>
+	<description>Assign bugs to me.</description>
+</maintainer>
+<use>
+	<flag name="extras">Installs additional modules used by ikiwiki plugins</flag>
+</use>
+</pkgmetadata>

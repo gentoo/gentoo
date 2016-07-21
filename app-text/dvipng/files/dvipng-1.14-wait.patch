@@ -1,0 +1,18 @@
+Patch by MATSUI Tetsushi to fix compilation issue on OSX
+
+sys/wait.h seems to be the man-page include for waitpid on Linux,
+Solaris and OSX
+
+https://bugs.gentoo.org/show_bug.cgi?id=369363
+
+--- special.c
++++ special.c
+@@ -26,7 +26,7 @@
+ 
+ #ifndef MIKTEX
+ #ifndef WIN32
+-#include <wait.h>
++#include <sys/wait.h>
+ #else /* WIN32 */
+ #include <fcntl.h>
+ #include <io.h>

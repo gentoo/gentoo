@@ -1,0 +1,19 @@
+diff --git a/lib/libusb/Makefile b/lib/libusb/Makefile
+index 21016a9..26010e8 100644
+--- a/lib/libusb/Makefile
++++ b/lib/libusb/Makefile
+@@ -40,11 +40,11 @@ CFLAGS+=	-DCOMPAT_32BIT
+ 
+ beforeinstall:
+ 	${INSTALL} -C -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+-		${.CURDIR}/libusb-0.1.pc ${DESTDIR}${LIBDATADIR}/pkgconfig
++		${.CURDIR}/libusb-0.1.pc ${DESTDIR}${LIBDIR}/pkgconfig
+ 	${INSTALL} -C -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+-		${.CURDIR}/libusb-1.0.pc ${DESTDIR}${LIBDATADIR}/pkgconfig
++		${.CURDIR}/libusb-1.0.pc ${DESTDIR}${LIBDIR}/pkgconfig
+ 	${INSTALL} -C -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} \
+-		${.CURDIR}/libusb-2.0.pc ${DESTDIR}${LIBDATADIR}/pkgconfig
++		${.CURDIR}/libusb-2.0.pc ${DESTDIR}${LIBDIR}/pkgconfig
+ 
+ #
+ # Cross platform support

@@ -1,0 +1,16 @@
+--- magic-7.5.231/scripts/configure.in
++++ magic-7.5.231/scripts/configure.in
+@@ -1428,11 +1428,11 @@
+       ;;
+ 
+     *-linux*)
+-      LDDL_FLAGS='-shared -Wl,-soname,$@'
++      LDDL_FLAGS+=' -shared -Wl,-soname,$@'
+       if test "x${loader_run_path}" != "x" ; then
+         LD_RUN_PATH="${LD_RUN_PATH} -Wl,-rpath,${loader_run_path}"
+       fi
+-      LDFLAGS=""
++      LDFLAGS+=" "
+       EXTRA_LIB_SPECS="-ldl"
+       ;;
+ 

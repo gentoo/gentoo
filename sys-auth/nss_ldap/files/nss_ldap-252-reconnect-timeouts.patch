@@ -1,0 +1,65 @@
+This patch changes the default timeouts, so that they are much lower, and do
+not cause major delays when booting a system. This is a workaround until the
+core /etc/{passwd,group} contain all of the data needed for a system boot.
+
+Also add a note that 'ssl on' is broken and TLS should be used instead.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude '*~' nss_ldap-250.orig/ldap-nss.h nss_ldap-250/ldap-nss.h
+--- nss_ldap-250.orig/ldap-nss.h	2006-04-26 18:19:00.000000000 -0700
++++ nss_ldap-250/ldap-nss.h	2006-06-14 01:58:01.933005492 -0700
+@@ -96,9 +96,9 @@
+  * unacceptable, in which case you may wish to adjust
+  * the constants below.
+  */
+-#define LDAP_NSS_TRIES           5	/* number of sleeping reconnect attempts */
+-#define LDAP_NSS_SLEEPTIME       4	/* seconds to sleep; doubled until max */
+-#define LDAP_NSS_MAXSLEEPTIME    64	/* maximum seconds to sleep */
++#define LDAP_NSS_TRIES           4	/* number of sleeping reconnect attempts */
++#define LDAP_NSS_SLEEPTIME       1	/* seconds to sleep; doubled until max */
++#define LDAP_NSS_MAXSLEEPTIME    16	/* maximum seconds to sleep */
+ #define LDAP_NSS_MAXCONNTRIES    2	/* reconnect attempts before sleeping */
+ 
+ #if defined(HAVE_NSSWITCH_H) || defined(HAVE_IRS_H)
+diff -Nuar --exclude '*~' nss_ldap-250.orig/ldap.conf nss_ldap-250/ldap.conf
+--- nss_ldap-250.orig/ldap.conf	2006-04-26 18:19:00.000000000 -0700
++++ nss_ldap-250/ldap.conf	2006-06-14 02:12:02.008444745 -0700
+@@ -283,7 +283,8 @@
+ # OpenLDAP SSL mechanism
+ # start_tls mechanism uses the normal LDAP port, LDAPS typically 636
+ #ssl start_tls
+-#ssl on
++###ssl on
++# Gentoo note: Don't use 'ssl on' in 249/250. They are broken in some cases! Use start_tls instead.
+ 
+ # OpenLDAP SSL options
+ # Require and verify server certificate (yes/no)
+@@ -315,3 +316,27 @@
+ # Override the default Kerberos ticket cache location.
+ #krb5_ccname FILE:/etc/.ldapcache
+ 
++# Timeout behavior
++# Upstream nss_ldap hard-codes these values:
++#nss_reconnect_tries 5			# number of times to double the sleep time
++#nss_reconnect_sleeptime 4		# initial sleep value
++#nss_reconnect_maxsleeptime 64	# max sleep value to cap at
++#nss_reconnect_maxconntries 2	# how many tries before sleeping
++# This leads to a delay of 124 seconds (4+8+16+32+64=124) per lookup if the
++# server is not available.
++
++# For Gentoo's distribution of nss_ldap, as of 250-r1, we use these values
++# (The hardwired constants in the code are changed to them as well):
++nss_reconnect_tries 4			# number of times to double the sleep time
++nss_reconnect_sleeptime 1		# initial sleep value
++nss_reconnect_maxsleeptime 16	# max sleep value to cap at
++nss_reconnect_maxconntries 2	# how many tries before sleeping
++# This leads to a delay of 15 seconds (1+2+4+8=15)
++
++# If you are impatient, and know your LDAP server is reliable, fast or local,
++# you may wish to use these values instead:
++#nss_reconnect_tries 1			# number of times to double the sleep time
++#nss_reconnect_sleeptime 1		# initial sleep value
++#nss_reconnect_maxsleeptime 1	# max sleep value to cap at
++#nss_reconnect_maxconntries 3	# how many tries before sleeping
++# This leads to a delay of 1 second.

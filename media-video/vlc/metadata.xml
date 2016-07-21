@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sdnick484@gmail.com</email>
+		<name>Nick Andrade</name>
+		<description>Active Maintainer, Assign bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="atmo">Enables support for AtmoLight (homebrew Ambient Lighting Technology)</flag>
+		<flag name="audioqueue">Enables AudioQueue audio module for Mac OS X.</flag>
+		<flag name="avcodec">Enables libavcodec support for video/audio encoding/decoding. libavcodec is part of FFmpeg.</flag>
+		<flag name="avformat">Enables libformat support for reading and writing various media containers. libavformat is part of FFmpeg.</flag>
+		<flag name="bluray">Enables libbluray for Blu-ray disc support.</flag>
+		<flag name="chromaprint">Enables libchromaprint for Chromaprint based audio fingerprinter support.</flag>
+		<flag name="chromecast">Enable experimental support for Google Chromecast.</flag>
+		<flag name="dc1394">Enables IIDC cameras support.</flag>
+		<flag name="directx">Enable Win32 DirectX support.</flag>
+		<flag name="dvbpsi">Enables support for Mpeg-TS files (.ts, .m2ts, .mts) via <pkg>media-libs/libdvbpsi</pkg>.</flag>
+		<flag name="dxva2">Enables Win32 DxVA2 support.</flag>
+		<flag name="faad">Enable AAC audio decoding library support via media-libs/faad2.</flag>
+		<flag name="fdk">Enables the Fraunhofer AAC codec library.</flag>
+		<flag name="fluidsynth">Enables Fluidsynth MIDI software synthesis (with external sound fonts).</flag>
+		<flag name="gcrypt">Enables cryptography support via libgcrypt.</flag>
+		<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
+		<flag name="gnome">Adds support for GNOME's filesystem abstraction layer, <pkg>gnome-base/gnome-vfs</pkg>. This flag is not GUI-related.</flag>
+		<flag name="growl">Enables growl notification support (over UDP for remote access and native on OSX)</flag>
+		<flag name="gstreamer">Enables GStreamer based decoding support (currently supports only video decoding)</flag>
+		<flag name="httpd">Enables a web based interface for vlc.</flag>
+		<flag name="kate">Adds support for Ogg Kate subtitles via libkate.</flag>
+		<flag name="libtar">Uses libtar instead of the built-in tar reader for reading custom skins.</flag>
+		<flag name="libtiger">Enables Ogg Kate subtitles rendering using libtiger.</flag>
+		<flag name="linsys">Enables support for Linux Linear Systems Ltd. SDI and HD-SDI input cards.</flag>
+		<flag name="live">Enables live555 streaming media support (client support for rtsp).</flag>
+		<flag name="lua">Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things.</flag>
+		<flag name="macosx-dialog-provider">Enables Mac OS X dialog module.</flag>
+		<flag name="macosx-eyetv">Enables Mac OS X EyeTV (TNT Tuner) module.</flag>
+		<flag name="macosx-notifications">Enables Mac OS X notifications module (formerly growl).</flag>
+		<flag name="macosx-quartztext">Enables Mac OS X quartz text module.</flag>
+		<flag name="macosx-qtkit">Enables Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module.</flag>
+		<flag name="matroska">Enables matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
+		<flag name="media-library">Build the (sqlite based) media library.</flag>
+		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
+		<flag name="omxil">Enables OpenMAX Integration Layer codec module.</flag>
+		<flag name="optimisememory">Enable optimisation for memory rather than performance.</flag>
+		<flag name="opencv">Enabled OpenCV (computer vision) filter module.</flag>
+		<flag name="opus">Support opus decoding via libopus.</flag>
+		<flag name="postproc">Enables image post-processing via libpostproc (part of FFmpeg).</flag>
+		<flag name="projectm">Enables the projectM visualization plugin.</flag>
+		<flag name="qt4" restrict="&gt;=media-video/vlc-0.9">Builds a Qt4 based frontend, a graphical interface.</flag>
+		<flag name="qt5" restrict="&gt;=media-video/vlc-2.2">Builds a Qt5 based frontend, a graphical interface.</flag>
+		<flag name="rdp">Enables freerdp for RDP/Remote Desktop client support</flag>
+		<flag name="rtsp">Enables real audio and RTSP modules.</flag>
+		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
+		<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
+		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2.</flag>
+		<flag name="sdl-image">Enables sdl image video decoder (depends on sdl)</flag>
+		<flag name="sftp">Enables libssh2 to support SFTP file transfer.</flag>
+		<flag name="shout">Enables libshout output.</flag>
+		<flag name="skins">Enables support for the skins2 interface.</flag>
+		<flag name="swscale">Enables image scaling and conversion via libswscale (part of FFmpeg).</flag>
+		<flag name="tremor">Enables tremor, a fixed-point version of the Ogg Vorbis decoder.</flag>
+		<flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder).</flag>
+		<flag name="upnp">Enables support for the Intel SDK stack based UPnP discovery module instead of CyberLink.</flag>
+		<flag name="vcdx">Enables VCD with navigation via libvcdinfo (depends on cdio)</flag>
+		<flag name="vlm">New videolan (media) manager (vlm), a little manager designed to launch and manage multiple streams from within one instance of VLC.</flag>
+		<flag name="vpx">Enables the decoder(s) from the WebM VP8 / VP9 Codec SDK.</flag>
+		<flag name="wma-fixed">Enables fixed point WMA decoder.</flag>
+		<flag name="X">Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.</flag>
+		<flag name="xcb">Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.</flag>
+		<flag name="x265">Support X265 Encoder.</flag>
+		<flag name="zeroconf">Enables support for zero-configuration networking via avahi.</flag>
+		<flag name="zvbi">Enables support for teletext subtitles via the zvbi library.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,5 @@
+
+ACTION=="add", ATTRS{manufacturer}=="IguanaWorks", MODE="0660", RUN+="/etc/init.d/iguanaIR rescan"
+
+# DEBUGGING ADDITION:
+#RUN += "/bin/bash -c 'echo $major $minor r=$result i=$id n=$number k=$kernel p=$parent r=$root >> /tmp/udev.txt'"

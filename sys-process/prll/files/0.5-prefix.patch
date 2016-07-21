@@ -1,0 +1,30 @@
+diff --git a/prll.sh b/prll.sh
+index 45a4fa4..f3ec39f 100644
+--- a/prll.sh
++++ b/prll.sh
+@@ -41,7 +41,7 @@ function prll() {
+ 	EOF
+ 	[[ -z "$1" ]] && return 1 || return 0
+     fi
+-    /usr/bin/which prll_qer > /dev/null
++    @GENTOO_PORTAGE_EPREFIX@/usr/bin/which prll_qer > /dev/null
+     if [[ $? -ne 0 ]] ; then
+ 	echo "PRLL: Missing prll_qer." 1>&2
+ 	return 1
+@@ -51,14 +51,14 @@ function prll() {
+ 	local prll_unbuffer=yes
+ 	shift
+     else
+-	/usr/bin/which prll_bfr > /dev/null
++	@GENTOO_PORTAGE_EPREFIX@/usr/bin/which prll_bfr > /dev/null
+ 	if [[ $? -ne 0 ]] ; then
+ 	    echo "PRLL: Missing prll_bfr." 1>&2
+ 	    return 1
+ 	fi
+     fi
+     if [[ -z $PRLL_NR_CPUS ]] ; then
+-	/usr/bin/which grep > /dev/null
++	@GENTOO_PORTAGE_EPREFIX@/usr/bin/which grep > /dev/null
+ 	if [[ $? -ne 0 || ! -a /proc/cpuinfo ]] ; then
+ 	    echo "PRLL: Environment variable PRLL_NR_CPUS is not set" 1>&2
+ 	    echo "PRLL: and either the grep utility is missing or" 1>&2

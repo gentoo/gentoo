@@ -1,0 +1,21 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e2385d0..89cc4a5 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -44,6 +44,8 @@ qmidiarp_SOURCES = \
+ 	seqdriver.cpp seqdriver.h \
+ 	slider.cpp slider.h
+ 
++qmidiarp_LDADD = $(QT_LIBS)
++
+ translationsdir = $(pkgdatadir)/translations
+ translations = \
+ 	translations/qmidiarp_de.ts \
+@@ -54,7 +56,6 @@ translations_DATA = \
+ 	translations/qmidiarp_fr.qm
+ 
+ 
+-AM_LDFLAGS = @QT_LIBS@ @DEFS@
+ AM_CXXFLAGS = @QT_CXXFLAGS@
+ DEFS = -Wall -Wextra -D_REENTRANT -DTRANSLATIONSDIR=\"$(translationsdir)\" @DEFS@
+ 

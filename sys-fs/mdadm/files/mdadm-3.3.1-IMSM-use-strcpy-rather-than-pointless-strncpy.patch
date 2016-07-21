@@ -1,0 +1,32 @@
+From 6d8d290a2f09a3bfd9e44f382ae5daea128772f7 Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Thu, 3 Jul 2014 15:04:01 +1000
+Subject: [PATCH 03/14] IMSM: use strcpy rather than pointless strncpy.
+
+As strncpy doesn't guarantee to nul-terminate, some static
+analysers get upset that it is followed by a 'strncat'.
+So just use a 'strcpy' - strlen(disk_by_path) is constant
+and definitely less than PATH_MAX.
+
+Link: https://github.com/neilbrown/mdadm/issues/4
+Signed-off-by: NeilBrown <neilb@suse.de>
+---
+ super-intel.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/super-intel.c b/super-intel.c
+index 9dd807a..0106b4f 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -9357,7 +9357,7 @@ static const char *imsm_get_disk_controller_domain(const char *path)
+ 	char *drv=NULL;
+ 	struct stat st;
+ 
+-	strncpy(disk_path, disk_by_path, PATH_MAX - 1);
++	strcpy(disk_path, disk_by_path);
+ 	strncat(disk_path, path, PATH_MAX - strlen(disk_path) - 1);
+ 	if (stat(disk_path, &st) == 0) {
+ 		struct sys_dev* hba;
+-- 
+2.0.0
+

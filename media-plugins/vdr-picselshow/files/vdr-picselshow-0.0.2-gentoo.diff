@@ -1,0 +1,11 @@
+--- picselshow-0.0.2-orig/picselshow.c	2007-05-17 23:25:57.000000000 +0200
++++ picselshow-0.0.2/picselshow.c	2007-08-01 08:52:36.000000000 +0200
+@@ -58,7 +58,7 @@
+ 	return ImageSetup.SetupParse(szName,szValue);
+ }
+ 
+-const char *g_szConfigDirectory = NULL;
++const char *g_szConfigDirectory = "picselshow";
+ 
+ const char *cPluginImage::CommandLineHelp(void)
+ {

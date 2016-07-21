@@ -1,0 +1,58 @@
+Tests try to write to /tmp (sandbox).
+http://code.google.com/p/python-gflags/issues/detail?id=13
+
+From 4a430830e75bfe2228e9d953b12f74a20ec2cb8f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 16 Dec 2012 16:53:24 +0100
+Subject: [PATCH] Use tempfile.mkdtemp() to create temporary directory.
+
+This creates an unique directory, and respects TMPDIR.
+---
+ tests/gflags_unittest.py | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/tests/gflags_unittest.py b/tests/gflags_unittest.py
+index 8e948bf..fcddb7b 100755
+--- a/tests/gflags_unittest.py
++++ b/tests/gflags_unittest.py
+@@ -38,6 +38,7 @@ import cStringIO
+ import sys
+ import os
+ import shutil
++import tempfile
+ 
+ import gflags
+ from flags_modules_for_testing import module_foo
+@@ -907,17 +908,16 @@ class LoadFromFlagFileTest(googletest.TestCase):
+                       flag_values=self.flag_values)
+     self.files_to_delete = []
+ 
++    # Figure out where to create temporary files
++    self.tmp_path = tempfile.mkdtemp(prefix='gflags_unittest')
++
+   def tearDown(self):
+     self._RemoveTestFiles()
+ 
+   def _SetupTestFiles(self):
+     """ Creates and sets up some dummy flagfile files with bogus flags"""
+ 
+-    # Figure out where to create temporary files
+-    tmp_path = '/tmp/flags_unittest'
+-    if os.path.exists(tmp_path):
+-      shutil.rmtree(tmp_path)
+-    os.makedirs(tmp_path)
++    tmp_path = self.tmp_path
+ 
+     try:
+       tmp_flag_file_1 = open(tmp_path + '/UnitTestFile1.tst', 'w')
+@@ -973,6 +973,7 @@ class LoadFromFlagFileTest(googletest.TestCase):
+         os.remove(file_name)
+       except OSError, e_msg:
+         print '%s\n, Problem deleting test file' % e_msg
++    shutil.rmtree(self.tmp_path)
+   #end RemoveTestFiles def
+ 
+   def _ReadFlagsFromFiles(self, argv, force_gnu):
+-- 
+1.8.0.2
+

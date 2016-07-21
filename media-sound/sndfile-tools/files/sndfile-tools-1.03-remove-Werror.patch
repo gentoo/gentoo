@@ -1,0 +1,16 @@
+Remove -Werror from CFLAGS causing all sorts of havoc due to
+deprecated declarations in media-sound/jack-audio-connection-kit
+See also: https://bugs.gentoo.org/show_bug.cgi?id=542120
+
+--- sndfile-tools-1.03/configure
++++ sndfile-tools-1.03/configure
+@@ -11397,9 +11397,6 @@
+ 	CFLAGS="$CFLAGS -std=gnu99 -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes -Waggregate-return -Wcast-align -Wcast-qual -Wnested-externs -Wshadow -Wpointer-arith"
+ 	# -Wundef -Wbad-function-cast -Wmissing-declarations -Wconversion -Winline"
+ 
+-	if test x$ac_arg_gcc_werror = "xyes" ; then
+-		CFLAGS="-Werror $CFLAGS"
+-		fi
+ 
+ 
+ $as_echo "#define COMPILER_IS_GCC 1" >>confdefs.h

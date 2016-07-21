@@ -1,0 +1,211 @@
+--- a/distrib/PyAlaMode.desktop
++++ b/distrib/PyAlaMode.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyAlaMode
++Name=PyAlaMode (3.0)
+ Comment=GUI Python Shell with Filling and editor windows
+-Exec=pyalamode
+-Icon=PyCrust
++Exec=pyalamode-3.0
++Icon=PyCrust-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/distrib/PyCrust.desktop
++++ b/distrib/PyCrust.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyCrust
++Name=PyCrust (3.0)
+ Comment=GUI Python Shell with Filling
+-Exec=pycrust
+-Icon=PyCrust
++Exec=pycrust-3.0
++Icon=PyCrust-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/distrib/PyShell.desktop
++++ b/distrib/PyShell.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyShell
++Name=PyShell (3.0)
+ Comment=GUI Python Shell
+-Exec=pyshell
+-Icon=PyCrust
++Exec=pyshell-3.0
++Icon=PyCrust-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/distrib/PySlices.desktop
++++ b/distrib/PySlices.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PySlices
++Name=PySlices (3.0)
+ Comment=GUI Python Shell with Filling
+-Exec=pyslices
+-Icon=PySlices
++Exec=pyslices-3.0
++Icon=PySlices-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/distrib/PySlicesShell.desktop
++++ b/distrib/PySlicesShell.desktop
+@@ -1,9 +1,8 @@
+-
+ [Desktop Entry]
+-Name=PySlicesShell
++Name=PySlicesShell (3.0)
+ Comment=GUI Python Shell
+-Exec=pysliceshell
+-Icon=PySlices
++Exec=pysliceshell-3.0
++Icon=PySlices-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/distrib/XRCed.desktop
++++ b/distrib/XRCed.desktop
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=XRCed
++Name=XRCed (3.0)
+ Comment=wxPython XRC resource editor
+-Exec=xrced
+-Icon=XRCed
++Exec=xrced-3.0
++Icon=XRCed-3.0
+ Terminal=false
+ Type=Application
+ Categories=Development;
+--- a/scripts/genaxmodule
++++ b/scripts/genaxmodule
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.genaxmodule import main
+ main()
+--- a/scripts/helpviewer
++++ b/scripts/helpviewer
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.helpviewer import main
+ main()
+--- a/scripts/img2png
++++ b/scripts/img2png
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.img2png import main
+ main()
+--- a/scripts/img2py
++++ b/scripts/img2py
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.img2py import main
+ main()
+--- a/scripts/img2xpm
++++ b/scripts/img2xpm
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.img2xpm import main
+ main()
+--- a/scripts/pyalacarte
++++ b/scripts/pyalacarte
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PyAlaCarte import main
+ main()
+--- a/scripts/pyalamode
++++ b/scripts/pyalamode
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PyAlaMode import main
+ main()
+--- a/scripts/pycrust
++++ b/scripts/pycrust
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PyCrust import main
+ main()
+--- a/scripts/pyshell
++++ b/scripts/pyshell
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PyShell import main
+ main()
+--- a/scripts/pyslices
++++ b/scripts/pyslices
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PySlices import main
+ main()
+--- a/scripts/pysliceshell
++++ b/scripts/pysliceshell
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PySlicesShell import main
+ main()
+--- a/scripts/pywrap
++++ b/scripts/pywrap
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.py.PyWrap import main
+ main()
+--- a/scripts/pywxrc
++++ b/scripts/pywxrc
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.pywxrc import main
+ main()
+--- a/scripts/xrced
++++ b/scripts/xrced
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("3.0")
+ 
+ from wx.tools.XRCed.xrced import main
+ main()

@@ -1,0 +1,32 @@
+--- lynx2-8-6/src/UCdomap.h.old	2009-03-18 08:16:12.000000000 +0000
++++ lynx2-8-6/src/UCdomap.h	2009-03-18 08:15:12.000000000 +0000
+@@ -172,6 +172,18 @@
+        0, 128,UCT_ENC_UTF8,-4)
+ #endif
+ 
++#ifndef NO_CHARSET_windows_1250
++#define NO_CHARSET_windows_1250 !ALL_CHARSETS
++#endif
++
++#if NO_CHARSET_windows_1250
++#define UC_CHARSET_SETUP_windows_1250	/* nothing */
++#else
++/* Is this right ??? */
++#define UC_CHARSET_SETUP_x_transparent UC_Charset_NoUctb_Setup("windows-1250","windows-1250",\
++       0, 128,UCT_ENC_8BIT,0)
++#endif
++
+ #ifdef __cplusplus
+ }
+ #endif
+--- lynx2-8-6/WWW/Library/Implementation/www_tcp.h.old	2009-03-18 06:45:10.000000000 +0000
++++ lynx2-8-6/WWW/Library/Implementation/www_tcp.h	2009-03-18 06:45:22.000000000 +0000
+@@ -94,7 +94,7 @@
+ # endif
+ #endif /* HAVE_DIRENT_H */
+ 
+-#if !(defined(DOSPATH) || defined(__EMX__) || defined(__CYGWIN__))
++#if !(defined(DOSPATH) || defined(__EMX__) || defined(__CYGWIN__) || defined(__MINT__))
+ #define STRUCT_DIRENT__D_INO 1
+ #endif
+ 

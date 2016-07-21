@@ -1,0 +1,33 @@
+Index: doc/example/tests/Makefile.am
+===================================================================
+--- doc/example/tests/Makefile.am	(revision 747)
++++ doc/example/tests/Makefile.am	(working copy)
+@@ -3,5 +3,5 @@
+ TESTS = check_money
+ check_PROGRAMS = check_money
+ check_money_SOURCES = check_money.c $(top_builddir)/src/money.h
+-check_money_CFLAGS = @CHECK_CFLAGS@
+-check_money_LDADD = $(top_builddir)/src/libmoney.la @CHECK_LIBS@
++check_money_CFLAGS = $(CHECK_CFLAGS)
++check_money_LDADD = $(top_builddir)/src/libmoney.la $(CHECK_LIBS)
+Index: doc/example/configure.ac
+===================================================================
+--- doc/example/configure.ac	(revision 747)
++++ doc/example/configure.ac	(working copy)
+@@ -20,12 +20,10 @@
+ 
+ # Checks for libraries.
+ 
+-# This macro is defined in check.m4 and tests if check.h and
+-# libcheck.a are installed in your system. It sets CHECK_CFLAGS and
+-# CHECK_LIBS accordingly.  
+-#  AM_PATH_CHECK([MINIMUM-VERSION,
+-#                [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+-AM_PATH_CHECK()
++# Use pkg-config instead of upstream-provided and possibly-broken
++# AM_PATH_CHECK. This command sets CHECK_CFLAGS and CHECK_LIBS
++# appropriately.
++PKG_CHECK_MODULES([CHECK], [check])
+ 
+ # Checks for header files.
+ AC_HEADER_STDC

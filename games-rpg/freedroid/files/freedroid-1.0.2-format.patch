@@ -1,0 +1,29 @@
+--- src/init.c.old	2015-10-24 17:37:24.431514375 +0200
++++ src/init.c	2015-10-24 17:37:43.057157826 +0200
+@@ -554,13 +554,13 @@
+ 	   * following gnu-coding standards for command line interfaces */
+ 	case 'v':
+ 	  printf ("\n%s %s  \n", PACKAGE, VERSION); 
+-	  printf (copyright);
++	  printf ("%s", copyright);
+ 	  exit (0);
+ 	  break;
+ 
+ 	case 'h':
+ 	case '?':
+-	  printf (usage_string);
++	  printf ("%s", usage_string);
+ 	  exit (0);
+ 	  break;
+ 
+--- src/misc.c.old	2015-10-24 17:37:54.368941282 +0200
++++ src/misc.c	2015-10-24 17:38:10.202638172 +0200
+@@ -889,7 +889,7 @@
+   if (db_level <= debug_level)
+     {
+       vsnprintf (buffer, 5000, fmt, args);
+-      fprintf (stderr, buffer);
++      fprintf (stderr, "%s", buffer);
+       fflush (stderr);
+     }
+ 

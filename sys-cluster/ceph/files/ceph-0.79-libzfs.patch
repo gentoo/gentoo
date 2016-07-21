@@ -1,0 +1,13 @@
+diff --git a/src/os/Makefile.am b/src/os/Makefile.am
+index 252c678..c28ad0a 100644
+--- a/src/os/Makefile.am
++++ b/src/os/Makefile.am
+@@ -61,7 +61,7 @@ noinst_HEADERS += \
+ 
+ if WITH_LIBZFS
+ libos_zfs_a_SOURCES = os/ZFS.cc
+-libos_zfs_a_CXXFLAGS = ${AM_CXXFLAGS} ${LIBZFS_CFLAGS}
++libos_zfs_a_CXXFLAGS = ${AM_CXXFLAGS} ${LIBZFS_CFLAGS} -I/usr/include/libzfs -I/usr/include/libspl
+ noinst_LIBRARIES += libos_zfs.a
+ noinst_HEADERS += os/ZFS.h
+ endif

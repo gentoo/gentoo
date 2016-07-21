@@ -1,0 +1,29 @@
+fix from upstream to work with gcc-4.7
+
+Index: bin/geninfo
+===================================================================
+RCS file: /cvsroot/ltp/utils/analysis/lcov/bin/geninfo,v
+retrieving revision 1.95
+retrieving revision 1.96
+diff -u -p -r1.95 -r1.96
+--- bin/geninfo	20 Jan 2012 11:53:57 -0000	1.95
++++ bin/geninfo	10 Apr 2012 11:48:52 -0000	1.96
+@@ -61,6 +61,7 @@ if( $^O eq "msys" )
+ our $gcov_tool		= "gcov";
+ our $tool_name		= basename($0);
+ 
++our $GCOV_VERSION_4_7_0	= 0x40700;
+ our $GCOV_VERSION_3_4_0	= 0x30400;
+ our $GCOV_VERSION_3_3_0	= 0x30300;
+ our $GCNO_FUNCTION_TAG	= 0x01000000;
+@@ -3023,5 +3024,10 @@ sub read_gcno_function_record(*$$$$)
+ 	graph_expect("function record");
+ 	# Skip ident and checksum
+ 	graph_skip($handle, 8, "function ident and checksum") or return undef;
++	if ($gcov_version >= $GCOV_VERSION_4_7_0) {
++		# Skip extra checksum added by android 4.4.0 / gcc >= 4.7
++		# toolchains.
++		graph_skip($handle, 4, "function extra checksum");
++	}
+ 	# Read function name
+ 	graph_expect("function name");

@@ -1,0 +1,10 @@
+--- source/cmt_awk.cxx.orig	2011-03-23 19:03:17.000000000 +0000
++++ source/cmt_awk.cxx	2011-03-23 19:03:48.000000000 +0000
+@@ -12,6 +12,7 @@
+ #define PATH_MAX _MAX_PATH
+ #endif
+ 
++#include <climits>
+ #include "cmt_awk.h"
+ #include "cmt_system.h"
+ #include "cmt_log.h"

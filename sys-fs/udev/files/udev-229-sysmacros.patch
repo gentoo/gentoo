@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/580200
+https://github.com/systemd/systemd/commit/27d13af71c3af6b2f9b60556d2c046dbb6e36e23
+
+From 27d13af71c3af6b2f9b60556d2c046dbb6e36e23 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 14 Mar 2016 17:44:49 -0400
+Subject: [PATCH] include sys/sysmacros.h in more places
+
+Since glibc is moving away from implicitly including sys/sysmacros.h
+all the time via sys/types.h, include the header directly in more
+places.  This seems to cover most makedev/major/minor usage.
+---
+ src/basic/macro.h       | 1 +
+ src/basic/util.h        | 1 +
+ src/libudev/libudev.h   | 1 +
+ src/systemd/sd-device.h | 1 +
+ src/udev/udev.h         | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/src/basic/macro.h b/src/basic/macro.h
+index c34441d..b36a956 100644
+--- a/src/basic/macro.h
++++ b/src/basic/macro.h
+@@ -23,6 +23,7 @@
+ #include <inttypes.h>
+ #include <stdbool.h>
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #define _printf_(a,b) __attribute__ ((format (printf, a, b)))
+diff --git a/src/basic/util.h b/src/basic/util.h
+index e095254..286db05 100644
+--- a/src/basic/util.h
++++ b/src/basic/util.h
+@@ -36,6 +36,7 @@
+ #include <sys/socket.h>
+ #include <sys/stat.h>
+ #include <sys/statfs.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <time.h>
+ #include <unistd.h>
+diff --git a/src/libudev/libudev.h b/src/libudev/libudev.h
+index eb58740..3f6d0ed 100644
+--- a/src/libudev/libudev.h
++++ b/src/libudev/libudev.h
+@@ -21,6 +21,7 @@
+ #define _LIBUDEV_H_
+ 
+ #include <stdarg.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #ifdef __cplusplus
+diff --git a/src/systemd/sd-device.h b/src/systemd/sd-device.h
+index 5bfca6e..c1d0756 100644
+--- a/src/systemd/sd-device.h
++++ b/src/systemd/sd-device.h
+@@ -22,6 +22,7 @@
+ ***/
+ 
+ #include <inttypes.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #include "_sd-common.h"
+diff --git a/src/udev/udev.h b/src/udev/udev.h
+index 5659051..8433e8d 100644
+--- a/src/udev/udev.h
++++ b/src/udev/udev.h
+@@ -19,6 +19,7 @@
+  */
+ 
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #include "libudev.h"
+-- 
+2.7.4
+

@@ -1,0 +1,12 @@
+diff -Nur 3dfb-0.6.1.orig/src/gui.cpp 3dfb-0.6.1/src/gui.cpp
+--- 3dfb-0.6.1.orig/src/gui.cpp	2004-07-28 22:32:21.000000000 +0000
++++ 3dfb-0.6.1/src/gui.cpp	2006-09-18 21:35:01.271923722 +0000
+@@ -70,7 +70,7 @@
+ 
+ 
+ static fileMap fileMap;
+-static levelLocation levels[fileMap.maxLevels];
++static levelLocation levels[1024];
+ 
+ 
+ 

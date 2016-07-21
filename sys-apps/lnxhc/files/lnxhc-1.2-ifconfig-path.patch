@@ -1,0 +1,23 @@
+--- lnxhc-1.2/checks/net_hsi_outbound_errors/definitions
++++ lnxhc-1.2-patched/checks/net_hsi_outbound_errors/definitions
+@@ -9,7 +9,7 @@
+ default = "1"
+ 
+ [sysinfo ifconfig]
+-program = "/sbin/ifconfig"
++program = "/bin/ifconfig"
+ 
+ [exception slow_hsi_receivers]
+ severity = medium
+
+--- lnxhc-1.2/checks/net_inbound_errors/definitions     2013-02-06 04:08:55.000000000 -0500
++++ lnxhc-1.2-patched/checks/net_inbound_errors/definitions     2013-05-22 17:13:56.088787813 -0400
+@@ -11,7 +11,7 @@
+ # The above value in percentage
+ 
+ [sysinfo ifconfig]
+-program = "/sbin/ifconfig"
++program = "/bin/ifconfig"
+ 
+ [exception limits_exceeded]
+ severity = medium

@@ -1,0 +1,107 @@
+diff -Naur skycat-3.0.2/astrotcl/configure.in skycat-3.0.2.new/astrotcl/configure.in
+--- skycat-3.0.2/astrotcl/configure.in	2006-01-25 17:21:38.000000000 -0500
++++ skycat-3.0.2.new/astrotcl/configure.in	2009-09-24 20:48:27.000000000 -0400
+@@ -83,10 +83,10 @@
+ #-----------------------------------------------------------------------
+ 
+ changequote(<<, >>)
+-csources=`cd $srcdir; echo {generic,press,libwcs,cfitsio}/*.[Cc]`
++csources=`cd $srcdir; echo {generic,press}/*.[Cc]`
+ changequote([, ])
+-cheaders=`cd $srcdir; echo {generic,press,libwcs,cfitsio}/*.h`
+-cincludes="-I$srcdir/../tclutil/generic -I$srcdir/generic -I$srcdir/press -I$srcdir/libwcs -I$srcdir/cfitsio"
++cheaders=`cd $srcdir; echo {generic,press}/*.h`
++cincludes="-I$srcdir/../tclutil/generic -I$srcdir/generic -I$srcdir/press -I/usr/include/wcs -I/usr/include/"
+ tclsources=`cd $srcdir; echo library/*.tcl`
+ 
+ TEA_ADD_SOURCES([${csources}])
+diff -Naur skycat-3.0.2/cat/aclocal.m4 skycat-3.0.2.new/cat/aclocal.m4
+--- skycat-3.0.2/cat/aclocal.m4	2006-01-23 12:24:46.000000000 -0500
++++ skycat-3.0.2.new/cat/aclocal.m4	2009-09-24 20:31:00.000000000 -0400
+@@ -47,11 +47,11 @@
+ changequote([, ])
+ 
+ cat_headers=`cd $srcdir; echo generic/*.h`
+-astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press,libwcs,cfitsio}/*.h`
++astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press}/*.h`
+ tclutil_headers=`cd $srcdir; echo ../tclutil/generic/*.h`
+ 
+ cat_includes="-I$srcdir/generic -I$srcdir/bitmaps"
+-astrotcl_includes="-I$srcdir/../astrotcl/generic -I$srcdir/../astrotcl/cfitsio -I$srcdir/../astrotcl/libwcs"
++astrotcl_includes="-I$srcdir/../astrotcl/generic -I/usr/include -I/usr/include/wcs"
+ tclutil_includes="-I$srcdir/../tclutil/generic"
+ cincludes="${cat_includes} ${astrotcl_includes} ${tclutil_includes}"
+ 
+diff -Naur skycat-3.0.2/cat/configure.in skycat-3.0.2.new/cat/configure.in
+--- skycat-3.0.2/cat/configure.in	2006-02-03 05:29:48.000000000 -0500
++++ skycat-3.0.2.new/cat/configure.in	2009-09-24 20:51:56.000000000 -0400
+@@ -181,6 +181,9 @@
+ # and TEA_LOAD_TCLCONFIG macros above.
+ #--------------------------------------------------------------------
+ 
++# we need wcstools and cfitsio
++PKG_LIBS="${PKG_LIBS} -lwcstools -lcfitsio"
++
+ TEA_MAKE_LIB
+ 
+ #--------------------------------------------------------------------
+diff -Naur skycat-3.0.2/rtd/aclocal.m4 skycat-3.0.2.new/rtd/aclocal.m4
+--- skycat-3.0.2/rtd/aclocal.m4	2006-02-01 17:10:36.000000000 -0500
++++ skycat-3.0.2.new/rtd/aclocal.m4	2009-09-24 20:27:46.000000000 -0400
+@@ -50,11 +50,11 @@
+ changequote([, ])
+ 
+ rtd_headers=`cd $srcdir; echo generic/*.h rtdevt/rtdImageEvent.h rtdevt/rtdSem.h`
+-astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press,libwcs,cfitsio}/*.h`
++astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press}/*.h`
+ tclutil_headers=`cd $srcdir; echo ../tclutil/generic/*.h`
+ 
+ rtd_includes="-I$srcdir/generic -I$srcdir/rtdevt -I$srcdir/bitmaps"
+-astrotcl_includes="-I$srcdir/../astrotcl/generic -I$srcdir/../astrotcl/cfitsio -I$srcdir/../astrotcl/libwcs"
++astrotcl_includes="-I$srcdir/../astrotcl/generic -I/usr/include -I/usr/include/wcs"
+ tclutil_includes="-I$srcdir/../tclutil/generic"
+ cincludes="${rtd_includes} ${astrotcl_includes} ${tclutil_includes}"
+ 
+diff -Naur skycat-3.0.2/rtd/configure.in skycat-3.0.2.new/rtd/configure.in
+--- skycat-3.0.2/rtd/configure.in	2006-02-01 17:10:36.000000000 -0500
++++ skycat-3.0.2.new/rtd/configure.in	2009-09-24 20:49:11.000000000 -0400
+@@ -192,7 +192,7 @@
+ #--------------------------------------------------------------------
+ 
+ # rtd needs -lXext
+-PKG_LIBS="${PKG_LIBS} -lXext"
++PKG_LIBS="${PKG_LIBS} -lXext -lwcstools -lcfitsio"
+ 
+ TEA_MAKE_LIB
+ 
+diff -Naur skycat-3.0.2/skycat/aclocal.m4 skycat-3.0.2.new/skycat/aclocal.m4
+--- skycat-3.0.2/skycat/aclocal.m4	2006-01-26 17:47:20.000000000 -0500
++++ skycat-3.0.2.new/skycat/aclocal.m4	2009-09-24 20:33:31.000000000 -0400
+@@ -79,13 +79,13 @@
+ skycat_headers=`cd $srcdir; echo generic/*.h`
+ cat_headers=`cd $srcdir; echo ../cat/generic/*.h`
+ rtd_headers=`cd $srcdir; echo ../rtd/generic/*.h ../rtd/rtdevt/rtdImageEvent.h ../rtd/rtdevt/rtdSem.h`
+-astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press,libwcs,cfitsio}/*.h`
++astrotcl_headers=`cd $srcdir; echo ../astrotcl/{generic,press}/*.h`
+ tclutil_headers=`cd $srcdir; echo ../tclutil/generic/*.h`
+ 
+ skycat_includes="-I$srcdir/generic -I$srcdir/bitmaps"
+ cat_includes="-I$srcdir/../cat/generic"
+ rtd_includes="-I$srcdir/../rtd/generic -I$srcdir/../rtd/rtdevt"
+-astrotcl_includes="-I$srcdir/../astrotcl/generic -I$srcdir/../astrotcl/cfitsio -I$srcdir/../astrotcl/libwcs"
++astrotcl_includes="-I$srcdir/../astrotcl/generic -I/usr/include -I/usr/include/wcs"
+ tclutil_includes="-I$srcdir/../tclutil/generic"
+ cincludes="${skycat_includes} ${cat_includes} ${rtd_includes} ${astrotcl_includes} ${tclutil_includes}"
+ 
+diff -Naur skycat-3.0.2/skycat/configure.in skycat-3.0.2.new/skycat/configure.in
+--- skycat-3.0.2/skycat/configure.in	2008-06-11 11:04:25.000000000 -0400
++++ skycat-3.0.2.new/skycat/configure.in	2009-09-24 20:52:26.000000000 -0400
+@@ -182,7 +182,7 @@
+ #--------------------------------------------------------------------
+ 
+ # skycat needs -lXext
+-PKG_LIBS="${PKG_LIBS} -lXext"
++PKG_LIBS="${PKG_LIBS} -lXext -lwcstools -lcfitsio"
+ 
+ TEA_MAKE_LIB
+ 

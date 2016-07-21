@@ -1,0 +1,46 @@
+From 4d8f78bc95f8dd36693f74365dbc3c442fbbf8a9 Mon Sep 17 00:00:00 2001
+From: Chris Wilson <chris@chris-wilson.co.uk>
+Date: Thu, 02 Jan 2014 15:01:38 +0000
+Subject: sna/gen7+: Emit invalidate between operations if rendering to source/mask
+
+Fixes regression from
+commit c79cb18407273dc7798618390bd0b7d69b0f80d6 [2.99.907]
+Author: Chris Wilson <chris@chris-wilson.co.uk>
+Date:   Wed Nov 20 11:17:20 2013 +0000
+
+    sna/gen7: Try to reduce flushes between primitive continuations
+
+Reported-by: Simon Munton <simon.j.munton@gmail.com>
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=73208
+Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
+---
+diff --git a/src/sna/gen7_render.c b/src/sna/gen7_render.c
+index 572e3e3..e45555b 100644
+--- a/src/sna/gen7_render.c
++++ b/src/sna/gen7_render.c
+@@ -1114,8 +1114,7 @@ gen7_emit_state(struct sna *sna,
+ 
+ 	need_stall = sna->render_state.gen7.surface_table != wm_binding_table;
+ 
+-	need_invalidate = need_stall &&
+-		(kgem_bo_is_dirty(op->src.bo) || kgem_bo_is_dirty(op->mask.bo));
++	need_invalidate = kgem_bo_is_dirty(op->src.bo) || kgem_bo_is_dirty(op->mask.bo);
+ 	if (ALWAYS_INVALIDATE)
+ 		need_invalidate = true;
+ 
+diff --git a/src/sna/gen8_render.c b/src/sna/gen8_render.c
+index a8b4ea8..309398d 100644
+--- a/src/sna/gen8_render.c
++++ b/src/sna/gen8_render.c
+@@ -1130,8 +1130,7 @@ gen8_emit_state(struct sna *sna,
+ 
+ 	need_stall = sna->render_state.gen8.surface_table != wm_binding_table;
+ 
+-	need_invalidate = need_stall &&
+-		(kgem_bo_is_dirty(op->src.bo) || kgem_bo_is_dirty(op->mask.bo));
++	need_invalidate = kgem_bo_is_dirty(op->src.bo) || kgem_bo_is_dirty(op->mask.bo);
+ 	if (ALWAYS_INVALIDATE)
+ 		need_invalidate = true;
+ 
+--
+cgit v0.9.0.2-2-gbebe

@@ -1,0 +1,28 @@
+Fix using bash with post-20040808 glibc ebuilds (from fedora)
+
+--- bash-2.05b/jobs.c
++++ bash-2.05b/jobs.c
+@@ -2423,6 +2423,7 @@
+   PROCESS *child;
+   pid_t pid;
+   int call_set_current, last_stopped_job, job, children_exited, waitpid_flags;
++  static int wcontinued_not_supported = 0;
+ 
+   call_set_current = children_exited = 0;
+   last_stopped_job = NO_JOB;
+@@ -2436,7 +2437,15 @@
+ 			: 0;
+       if (sigchld || block == 0)
+ 	waitpid_flags |= WNOHANG;
++    retry:
++      if (wcontinued_not_supported)
++	waitpid_flags &= ~WCONTINUED;
+       pid = WAITPID (-1, &status, waitpid_flags);
++      if (pid == -1 && errno == EINVAL)
++	{
++	  wcontinued_not_supported = 1;
++	  goto retry;
++	}
+ 
+       /* The check for WNOHANG is to make sure we decrement sigchld only
+ 	 if it was non-zero before we called waitpid. */

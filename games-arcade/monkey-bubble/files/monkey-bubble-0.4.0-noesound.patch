@@ -1,0 +1,19 @@
+monkey-bubble-0.4.0: don't require the esd header.
+
+2010-07-12 Sven Herzberg
+2012-01-07 Martin von Gagern
+
+References:
+https://github.com/mquinson/monkey-bubble/commit/299623f8e6b0b6090e98
+https://bugs.gentoo.org/397997
+
+--- monkey-bubble-0.4.0.orig/src/ui/main.c
++++ monkey-bubble-0.4.0/src/ui/main.c
+@@ -11,7 +11,6 @@
+ #include "ui-main.h"
+ #include "input-manager.h"
+ 
+-#include <esd.h>
+ #include <gtk/gtk.h>
+ #include <gst/gst.h>
+ #include <bonobo/bonobo-i18n.h>

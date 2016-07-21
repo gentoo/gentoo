@@ -1,0 +1,10 @@
+--- a/src/checkpid.c
++++ b/src/checkpid.c
+@@ -20,6 +20,7 @@
+ 
+ #include "rrdcollect.h"
+ #include <fcntl.h>
++#include <sys/file.h> /* flock() */
+ 
+ /* lockfile in rrdcollect.pid */
+ /* five digits+"\n\0" */

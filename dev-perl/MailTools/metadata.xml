@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MailTools</remote-id>
+    <remote-id type="cpan-module">Mail::Address</remote-id>
+    <remote-id type="cpan-module">Mail::Cap</remote-id>
+    <remote-id type="cpan-module">Mail::Field</remote-id>
+    <remote-id type="cpan-module">Mail::Field::AddrList</remote-id>
+    <remote-id type="cpan-module">Mail::Field::Date</remote-id>
+    <remote-id type="cpan-module">Mail::Field::Generic</remote-id>
+    <remote-id type="cpan-module">Mail::Filter</remote-id>
+    <remote-id type="cpan-module">Mail::Header</remote-id>
+    <remote-id type="cpan-module">Mail::Internet</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::qmail</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::rfc822</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::sendmail</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::smtp</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::smtp::pipe</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::smtps</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::smtps::pipe</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::testfile</remote-id>
+    <remote-id type="cpan-module">Mail::Mailer::testfile::pipe</remote-id>
+    <remote-id type="cpan-module">Mail::Send</remote-id>
+    <remote-id type="cpan-module">Mail::Util</remote-id>
+  </upstream>
+</pkgmetadata>

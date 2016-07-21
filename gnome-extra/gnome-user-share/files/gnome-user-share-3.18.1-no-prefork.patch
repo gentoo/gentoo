@@ -1,0 +1,10 @@
+--- gnome-user-share-3.14.2/data/dav_user_2.4.conf.orig 2015-06-03 20:21:27.512774376 -0600
++++ gnome-user-share-3.14.2/data/dav_user_2.4.conf      2015-06-03 20:21:33.588774303 -0600
+@@ -9,7 +9,6 @@
+ LimitXMLRequestBody 100000
+ 
+ LoadModule unixd_module ${HTTP_MODULES_PATH}/mod_unixd.so
+-LoadModule mpm_prefork_module ${HTTP_MODULES_PATH}/mod_mpm_prefork.so
+ LoadModule dav_module ${HTTP_MODULES_PATH}/mod_dav.so
+ LoadModule dav_fs_module ${HTTP_MODULES_PATH}/mod_dav_fs.so
+ LoadModule authn_core_module ${HTTP_MODULES_PATH}/mod_authn_core.so

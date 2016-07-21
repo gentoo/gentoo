@@ -1,0 +1,19 @@
+--- librep_0.92.5/Makefile.in.old	2011-07-25 14:08:18.000000000 +0200
++++ librep_0.92.5/Makefile.in	2011-07-25 14:09:05.000000000 +0200
+@@ -53,15 +53,13 @@
+ 	$(INSTALL_SCRIPT) libtool $(DESTDIR)$(repcommonexecdir)
+ 	$(INSTALL_DATA) rules.mk $(DESTDIR)$(repcommonexecdir)
+ 	$(INSTALL_SCRIPT) install-aliases $(DESTDIR)$(repcommonexecdir)
+-	$(INSTALL_DATA) rep-debugger.el $(DESTDIR)$(emacssitelispdir)
+ 	mkdir -p $(DESTDIR)$(libdir)/pkgconfig
+ 	$(INSTALL_DATA) $(top_srcdir)/librep.pc $(DESTDIR)$(libdir)/pkgconfig/
+ 
+ installdirs : mkinstalldirs
+ 	$(SHELL) $< $(DESTDIR)$(repdir) \
+ 	  $(DESTDIR)$(bindir) $(DESTDIR)$(aclocaldir) \
+-	  $(DESTDIR)$(repcommonexecdir) $(DESTDIR)$(repexecdir) \
+-	  $(DESTDIR)$(emacssitelispdir)
++	  $(DESTDIR)$(repcommonexecdir) $(DESTDIR)$(repexecdir)
+ 
+ uninstall :
+ 	-for dir in $(INSTALL_SUBDIRS); do \

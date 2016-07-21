@@ -1,0 +1,11 @@
+--- a/tenshi.gentoo-init
++++ b/tenshi.gentoo-init
+@@ -13,7 +13,7 @@
+ 
+ start() {
+ 	ebegin "Starting tenshi"
+-	start-stop-daemon --start --quiet --exec /usr/sbin/tenshi -- -c /etc/tenshi/tenshi.conf -P /var/lib/tenshi/tenshi.pid
++	start-stop-daemon --start --quiet --pidfile /var/lib/tenshi/tenshi.pid --exec /usr/sbin/tenshi -- -c /etc/tenshi/tenshi.conf -P /var/lib/tenshi/tenshi.pid
+ 	eend $?
+ }
+ 

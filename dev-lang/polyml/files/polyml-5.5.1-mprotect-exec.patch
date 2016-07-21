@@ -1,0 +1,29 @@
+--- polyml.5.5.1-orig/libpolyml/memmgr.cpp	2013-07-10 22:56:07.000000000 +1000
++++ polyml.5.5.1/libpolyml/memmgr.cpp	2014-02-10 14:08:51.866219101 +1100
+@@ -80,7 +80,7 @@
+     // Allocate the heap itself.
+     size_t iSpace = size*sizeof(PolyWord);
+     bottom  =
+-        (PolyWord*)osMemoryManager->Allocate(iSpace, PERMISSION_READ|PERMISSION_WRITE|PERMISSION_EXEC);
++        (PolyWord*)osMemoryManager->Allocate(iSpace, PERMISSION_READ|PERMISSION_EXEC);
+ 
+     if (bottom == 0)
+         return false;
+@@ -359,7 +359,7 @@
+         // Allocate the memory itself.
+         size_t iSpace = size*sizeof(PolyWord);
+         space->bottom  =
+-            (PolyWord*)osMemoryManager->Allocate(iSpace, PERMISSION_READ|PERMISSION_WRITE|PERMISSION_EXEC);
++            (PolyWord*)osMemoryManager->Allocate(iSpace, PERMISSION_READ|PERMISSION_EXEC);
+ 
+         if (space->bottom == 0)
+         {
+@@ -728,7 +728,7 @@
+             LocalMemSpace *space = lSpaces[i];
+             if (! space->isMutable)
+                 osMemoryManager->SetPermissions(space->bottom, (char*)space->top - (char*)space->bottom,
+-                    on ? PERMISSION_READ|PERMISSION_EXEC : PERMISSION_READ|PERMISSION_EXEC|PERMISSION_WRITE);
++                    on ? PERMISSION_READ|PERMISSION_EXEC : PERMISSION_READ|PERMISSION_WRITE);
+         }
+     }
+ }

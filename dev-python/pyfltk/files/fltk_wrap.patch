@@ -1,0 +1,14 @@
+--- a/python/fltk_wrap.cpp
++++ b/python/fltk_wrap.cpp
+@@ -144,7 +144,9 @@
+ # define _SCL_SECURE_NO_DEPRECATE
+ #endif
+ 
+-
++int _fl_filename_isdir_quick(const char *n)  {
++    return 0;
++}
+ 
+ /* Python.h has to appear first */
+ #include <Python.h>
+

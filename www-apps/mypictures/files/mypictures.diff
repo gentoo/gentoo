@@ -1,0 +1,14 @@
+diff -u --recursive mypictures.orig/index.php mypictures/index.php
+--- mypictures.orig/index.php	2004-05-03 01:45:58.523174520 +0100
++++ mypictures/index.php	2004-05-03 01:47:16.713287816 +0100
+@@ -471,8 +471,8 @@
+   }
+   
+   $cmd  = $config['convert'];
+-  $cmd .= ' -geometry 120x120 ';
+-  $cmd .= '"'.$img.'" "'.$thumb.'"';
++  $cmd .= ' -size 120x120 ';
++  $cmd .= '"'.$img.'" -resize 120x120 +profile "*" "'.$thumb.'"';
+   system($cmd);
+   
+   header("Content-type: image/png");

@@ -1,0 +1,17 @@
+From: Julian Ospald <julian.ospald@googlemail.com>
+Date: Fri Mar  2 17:29:14 CET 2012
+
+gimp-2.6.11 fails on FEATURES="test"
+correctly add "contactsheet.scm" and "test-sphere.scm" to POTFILES.skip
+
+--- po-script-fu/POTFILES.skip
++++ po-script-fu/POTFILES.skip
+@@ -37,6 +37,8 @@
+ plug-ins/pagecurl
+ plug-ins/print
+ plug-ins/pygimp
++plug-ins/script-fu/scripts/contactsheet.scm
++plug-ins/script-fu/scripts/test-sphere.scm
+ plug-ins/selection-to-path
+ plug-ins/twain
+ plug-ins/win-snap

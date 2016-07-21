@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		The RNAView program generates 2-dimensional displays of RNA/DNA
+		secondary structures with tertiary interactions. RNAView
+		automatically identifies and classifies the types of base pairs that
+		are formed in nucleic acid structures, fully implementing Leontis and
+		Westhof's (RNA (2001) 7, 499-512), convention for edge-to-edge
+		hydrogen bonding interactions.
+	</longdescription>
+</pkgmetadata>

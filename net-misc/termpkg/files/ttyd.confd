@@ -1,0 +1,63 @@
+# Configfile for /etc/init.d/ttyd
+
+# HINT: if you only need one virtual TTY, then you can use this config.
+# Otherwise you should use it as a template for specific configurations.
+# Just copy /etc/conf.d/ttyd to /etc/conf.d/ttyd.<foo> and symlink
+# /etc/init.d/ttyd to /etc/init.d/ttyd.<foo>
+
+
+# Master pseudo tty device to open and wait for a connection on.
+# For reference, in Linux the master pseudo tty devices are the
+# devices /dev/pty[a-ep-z][0-9a-f] and the slave devices are
+# /dev/tty[a-ep-z][0-9a-f].
+#
+PTY="/dev/ptyp0"
+
+# The host and port parameters specify the host and IP port to
+# connect to when the slave pseudo device is opened.
+#
+HOST="host.example.com"
+PORT=3000
+
+# The optional mode and user options specify the filesystem
+# permissions of the slave pseudo device. We set them right
+# after the ttyd daemon has started. After stopping, we reset
+# them to the permissions of the master pseudo device.
+#
+#MODE=660
+#USER="root:uucp"
+
+# Sets the initial baud-rate of the device (optional).
+#
+#BAUDRATE=115200
+
+# Optional port settings. Specified by a string of one of
+# more of the following concatenated together with no
+# intervening spaces:
+#
+# 8: 8 bits/character
+# 7: 7 bits/character
+# 6: 6 bits/character
+# 5: 5 bits/character
+# N: No parity
+# E: Even parity
+# O: Odd parity
+# C0: No hardware flow control
+# C1: Hardware flow control
+# S0: No software flow control
+# S1: Software flow control
+#
+#PORT_SETTINGS="8NC0"
+
+# You can create symlinks to the slave pseudo device, so you
+# have an easy to remember name for your virtual device. You
+# can add as many links as you want, if you blank-seperate the
+# names. All links *must* be relative and beneath to /dev.
+#
+#SYMLINK="ttyd/modem ttyNET0"
+
+# Some odd programs just don't work with symlinks, so you
+# can also create hardlinks (even in addition to symlinks).
+# Same rules apply as for symlinks.
+#
+#HARDLINK="ttyS5"

@@ -1,0 +1,113 @@
+From 8a51e9673859eb3fb819f0d1dad5e2a60d1a3c0a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 2 Dec 2015 16:04:56 +0100
+Subject: [PATCH] llvm-config: Clean up exported values, update for shared
+ linking
+
+Gentoo-specific fixup for llvm-config, including:
+- wiping build-specific CFLAGS, CXXFLAGS,
+- updating library suffixes for shared libs,
+- wiping --system-libs for shared linking,
+- banning --obj-root and --src-root due to no sources installed.
+
+Thanks to Steven Newbury for the initial patch.
+
+Bug: https://bugs.gentoo.org/565358
+Bug: https://bugs.gentoo.org/501684
+---
+ tools/llvm-config/CMakeLists.txt    |  11 ++++++++---
+ tools/llvm-config/llvm-config.cpp   |  22 ++++++++++++++++------
+ utils/llvm-build/llvmbuild/main.py  |   4 +++-
+ 4 files changed, 27 insertions(+), 10 deletions(-)
+
+diff --git a/tools/llvm-config/CMakeLists.txt b/tools/llvm-config/CMakeLists.txt
+index edbd8c9..9a801bd 100644
+--- a/tools/llvm-config/CMakeLists.txt
++++ b/tools/llvm-config/CMakeLists.txt
+@@ -22,12 +22,17 @@ get_property(COMPILE_FLAGS TARGET llvm-config PROPERTY COMPILE_FLAGS)
+ set(LLVM_SRC_ROOT ${LLVM_MAIN_SRC_DIR})
+ set(LLVM_OBJ_ROOT ${LLVM_BINARY_DIR})
+ set(LLVM_CPPFLAGS "${CMAKE_CPP_FLAGS} ${CMAKE_CPP_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+-set(LLVM_CFLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+-set(LLVM_CXXFLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${COMPILE_FLAGS} ${LLVM_DEFINITIONS}")
++# Just use CMAKE_CPP_FLAGS for CFLAGS and CXXFLAGS, otherwise compiler
++# specific flags will be set when we don't know what compiler will be used
++# with external project utilising llvm-config.  C++ Standard is required.
++# TODO: figure out if we can remove -std=c++11 and move it to revdeps.
++set(LLVM_CFLAGS "${CMAKE_CPP_FLAGS} ${CMAKE_C_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
++set(LLVM_CXXFLAGS "${CMAKE_CPP_FLAGS} -std=c++11 ${CMAKE_CXX_FLAGS_${uppercase_CMAKE_BUILD_TYPE}} ${LLVM_DEFINITIONS}")
+ # Use the C++ link flags, since they should be a superset of C link flags.
+ set(LLVM_LDFLAGS "${CMAKE_CXX_LINK_FLAGS}")
+ set(LLVM_BUILDMODE ${CMAKE_BUILD_TYPE})
+-set(LLVM_SYSTEM_LIBS ${SYSTEM_LIBS})
++# We don't do static libs, so we don't need to supply any system-libs
++set(LLVM_SYSTEM_LIBS "")
+ string(REPLACE ";" " " LLVM_TARGETS_BUILT "${LLVM_TARGETS_TO_BUILD}")
+ configure_file(${BUILDVARIABLES_SRCPATH} ${BUILDVARIABLES_OBJPATH} @ONLY)
+ 
+diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
+index 879b9ab..d2c43fa 100644
+--- a/tools/llvm-config/llvm-config.cpp
++++ b/tools/llvm-config/llvm-config.cpp
+@@ -323,10 +323,19 @@ int main(int argc, char **argv) {
+ #else
+         OS << "ON\n";
+ #endif
+-      } else if (Arg == "--obj-root") {
+-        OS << ActivePrefix << '\n';
+-      } else if (Arg == "--src-root") {
+-        OS << LLVM_SRC_ROOT << '\n';
++      } else if (Arg == "--obj-root" || Arg == "--src-root") {
++        if (IsInDevelopmentTree) {
++          if (Arg == "--obj-root") {
++            OS << ActivePrefix << '\n';
++          } else {
++            OS << LLVM_SRC_ROOT << '\n';
++          }
++        } else {
++          // sources are not installed
++          llvm::errs() << "llvm-config: sources not installed, "
++                       << Arg << " not available\n";
++          exit(1);
++        }
+       } else {
+         usage();
+       }
+@@ -360,8 +369,9 @@ int main(int argc, char **argv) {
+           OS << ActiveLibDir << '/' << Lib;
+         } else if (PrintLibs) {
+           // If this is a typical library name, include it using -l.
+-          if (Lib.startswith("lib") && Lib.endswith(".a")) {
+-            OS << "-l" << Lib.slice(3, Lib.size()-2);
++          if (Lib.startswith("lib") && Lib.endswith(LTDL_SHLIB_EXT)) {
++            // sizeof counts trailing NUL
++            OS << "-l" << Lib.slice(3, Lib.size()-sizeof(LTDL_SHLIB_EXT)+1);
+             continue;
+           }
+ 
+diff --git a/utils/llvm-build/llvmbuild/main.py b/utils/llvm-build/llvmbuild/main.py
+index 353741f..4ba5e91 100644
+--- a/utils/llvm-build/llvmbuild/main.py
++++ b/utils/llvm-build/llvmbuild/main.py
+@@ -393,6 +393,8 @@ subdirectories = %s
+ //
+ //===----------------------------------------------------------------------===//
+ 
++#include "llvm/Config/config.h"
++
+ """)
+         f.write('struct AvailableComponent {\n')
+         f.write('  /// The name of the component.\n')
+@@ -413,7 +415,7 @@ subdirectories = %s
+             if library_name is None:
+                 library_name_as_cstr = '0'
+             else:
+-                library_name_as_cstr = '"lib%s.a"' % library_name
++                library_name_as_cstr = '"lib%s" LTDL_SHLIB_EXT' % library_name
+             f.write('  { "%s", %s, %d, { %s } },\n' % (
+                 name, library_name_as_cstr, is_installed,
+                 ', '.join('"%s"' % dep
+
+-- 
+2.6.3
+

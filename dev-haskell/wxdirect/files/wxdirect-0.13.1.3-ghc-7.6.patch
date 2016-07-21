@@ -1,0 +1,54 @@
+--- wxdirect-0.13.1.3-orig/src/ParseEiffel.hs	2012-09-30 20:02:15.000000000 +1000
++++ wxdirect-0.13.1.3/src/ParseEiffel.hs	2014-03-23 14:15:23.118131281 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE ScopedTypeVariables #-}
+ -----------------------------------------------------------------------------------------
+ {-| Module      :  ParseEiffel
+     Copyright   :  (c) Daan Leijen 2003
+@@ -12,6 +13,8 @@
+ -----------------------------------------------------------------------------------------
+ module ParseEiffel( parseEiffel ) where
+ 
++import Prelude hiding ( catch )
++import Control.Exception ( catch, IOException )
+ import Data.Char( digitToInt )
+ import Text.ParserCombinators.Parsec
+ import qualified Text.ParserCombinators.Parsec.Token as P
+--- wxdirect-0.13.1.3-orig/src/Classes.hs	2012-09-30 20:02:15.000000000 +1000
++++ wxdirect-0.13.1.3/src/Classes.hs	2014-03-23 14:15:23.118131281 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE CPP #-}
+ -----------------------------------------------------------------------------------------
+ {-| Module      :  Classes
+     Copyright   :  (c) Daan Leijen 2003
+@@ -28,7 +29,9 @@
+ import Data.List( sort, sortBy )
+ import qualified Data.Set as Set
+ import qualified Data.Map as Map
++#if !MIN_VERSION_base(4,6,0)
+ import Prelude hiding ( catch )
++#endif
+ import HaskellNames( haskellTypeName, isBuiltin )
+ import Types
+ 
+--- wxdirect-0.13.1.3-orig/src/CompileClasses.hs	2012-09-30 20:02:15.000000000 +1000
++++ wxdirect-0.13.1.3/src/CompileClasses.hs	2014-03-23 14:15:23.119131301 +1100
+@@ -89,7 +89,7 @@
+            (exportsStatic,exportsClassClasses,classCount) = exportDefs decls exportsClass []
+ 
+            methodCount  = length decls
+-           ghcoptions   = [ "{-# LANGUAGE ForeignFunctionInterface #-}"]
++           ghcoptions   = [ "{-# LANGUAGE CPP, ForeignFunctionInterface #-}"]
+ 
+            export   = concat  [ ["module " ++ moduleRoot ++ moduleName
+                                 , "    ( -- * Global" ]
+@@ -104,6 +104,9 @@
+                                 , "import System.IO.Unsafe( unsafePerformIO )"
+                                 , "import " ++ moduleRoot ++ "WxcTypes"
+                                 , "import " ++ moduleRoot ++ moduleClassTypesName
++                                , "#if (__GLASGOW_HASKELL__>=705)"
++                                , "import Foreign.C.Types(CDouble(..), CInt(..), CWchar(..))"
++                                , "#endif"
+                                 , ""
+                                 ]
+                               ]

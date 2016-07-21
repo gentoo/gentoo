@@ -1,0 +1,11 @@
+--- setup.py.orig+	2007-12-27 23:40:59.000000000 +0100
++++ setup.py	2007-12-27 23:41:40.000000000 +0100
+@@ -255,7 +255,7 @@ def configure_tkinter(configs, flags):
+     # possible version suffixes.  Some systems use dots in the suffixes
+     # (e.g. debian), some don't (e.g. OpenBSD) so we try both.
+     versions = []
+-    for version in ["8.4", "8.3", "8.2", "8.1", "8.0"]:
++    for version in ["8.5", "8.4", "8.3", "8.2", "8.1", "8.0"]:
+         versions.append(version)
+         versions.append(version[0] + version[-1])
+ 

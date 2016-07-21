@@ -1,0 +1,61 @@
+--- Makefile
++++ Makefile
+@@ -2,17 +2,17 @@
+ #               Copyright (c) 1999-2002 Georg Huettenegger
+ #
+ 
+-CC=gcc
+-INCLUDES=-Icommon/
++CC?=gcc
++CPPFLAGS+=-Icommon/
+ 
+ # defines to be set for release
+ 
+-DEFINES=-DUSE_GNOME
+-SCFLAGS=-Wall $(DEFINES) $(INCLUDES)
+-CFLAGS=`gnome-config --cflags applets` $(SCFLAGS)
+-LFLAGS=`gnome-config --libs applets`
++CPPFLAGS += -DUSE_GNOME
++CFLAGS += -Wall
++CFLAGS +=
++LFLAGS=$(LDFLAGS)
+ # the following line worked on RedHat 7.0/1/2
+-SLFLAGS=-L/usr/lib -L/usr/X11R6/lib -lpanel_applet -lgnorba -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lnsl -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXi -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
++#SLFLAGS=-L/usr/lib -L/usr/X11R6/lib -lpanel_applet -lgnorba -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lnsl -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXi -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
+ # the following line worked on RedHat 6.1
+ #SLFLAGS=-L/usr/lib -L/usr/X11R6/lib -lpanel_applet -lgnorba -lORBitCosNaming -lORBit -lIIOP -lORBitutil -lnsl -lgnomeui -lart_lgpl -lgdk_imlib -lSM -lICE -lgtk -lgdk -lgmodule -lXext -lX11 -lgnome -lgnomesupport -lesd -laudiofile -lm -ldb1 -lglib -ldl
+ 
+@@ -53,18 +53,16 @@
+ RM=rm
+ STRIP=strip
+ 
+-all:	plextor-tool pt-static plextor-tool-applet pta-static plextor-tool.8.gz strip
++all:	plextor-tool pt-static plextor-tool-applet pta-static plextor-tool.8
+ 
+-plextor-tool.8.gz:	../doc/plextor-tool.groff
++plextor-tool.8:	../doc/plextor-tool.groff
+ 	$(MANCC) $(MANCCFLAGS) ../doc/plextor-tool.groff > plextor-tool.8
+-	$(RM) -f plextor-tool.8.gz
+-	gzip plextor-tool.8
+ 
+ plextor-tool:	$(COBJS)
+-	$(CC) -o $@ $(COBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ pt-static:	$(COBJS)
+-	$(CC) -static -o $@ $(COBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -static -o $@ $^
+ 
+ ls_mode_pages:	$(LSMPOBJS)
+ 	$(CC) -o $@ $(LSMPOBJS)
+@@ -110,10 +108,8 @@
+ 
+ .SUFFIXES: .o .cpp
+ .cpp.o:
+-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+ 
+ .SUFFEXES: .o .c
+ .c.o:
+-	$(CC) -c $(CFLAGS) -o $@ $<
+ 
+ include .depend

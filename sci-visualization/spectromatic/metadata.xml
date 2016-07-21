@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Spectromatic is a program for generating spectrograms from audio
+  files. Spectrograms are a form of simple time-frequency analysis which
+  lets you see how the distribution of energy at different frequencies
+  in an audio stream change over time. For example, if you play a scale
+  on a musical instrument, you will see a climbing and/or descending
+  pattern of blobs as you move from left to right.  
+  Spectromatic reads its input as mono or stereo 16-bit wave files, and
+  writes the output image to an elongated PNG image (colour for stereo,
+  grayscale for mono audio). 
+</longdescription>
+</pkgmetadata>

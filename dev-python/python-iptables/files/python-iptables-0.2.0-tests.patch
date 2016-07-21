@@ -1,0 +1,21 @@
+diff --git a/test.py b/test.py
+index f426612..f598585 100755
+--- a/test.py
++++ b/test.py
+@@ -3,16 +3,6 @@
+ 
+ import sys
+ 
+-print "WARNING: this test will manipulate iptables rules."
+-print "Don't do this on a production machine."
+-while True:
+-    print "Would you like to continue? y/n",
+-    answer = raw_input()
+-    if answer in "yYnN" and len(answer) == 1:
+-        break
+-if answer in "nN":
+-    sys.exit(0)
+-
+ from iptc.test import test_iptc, test_matches, test_targets
+ 
+ results = [rv for rv in [test_iptc.run_tests(), test_matches.run_tests(),

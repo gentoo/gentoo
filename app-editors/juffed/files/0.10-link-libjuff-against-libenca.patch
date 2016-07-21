@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ccad5d1..304c0aa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -190,6 +190,9 @@ add_library ( ${JUFFLIB} SHARED
+ target_link_libraries ( ${JUFFLIB}
+ 	${QT_LIBRARIES}
+ )
++if (ENCA_FOUND)
++	target_link_libraries( ${JUFFLIB} ${ENCA_LIBRARIES} )
++endif (ENCA_FOUND)
+ 
+ add_library ( ${QSCI_ENGINE} SHARED
+ 	${juffed_qsci_SRCS}
+@@ -277,9 +280,6 @@ target_link_libraries ( ${JUFFED}
+ 	${QT_LIBRARIES}
+ 	${QT_QTNETWORK_LIBRARY}
+ )
+-if (ENCA_FOUND)
+-	target_link_libraries( ${JUFFED} ${ENCA_LIBRARIES} )
+-endif (ENCA_FOUND)
+ 
+ if ( UNIX )
+ 	set(CMAKE_CXX_FLAGS "-Wall -Werror -Wextra")

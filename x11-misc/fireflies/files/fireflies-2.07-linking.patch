@@ -1,0 +1,28 @@
+From da7c37ae638ac9e2989a3d65f529997c6d2111e1 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 6 Jun 2015 20:38:27 +0200
+Subject: [PATCH] Fix linking of src/canvas_glx.o
+
+Otherwise:
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.4/../../../../x86_64-pc-linux-gnu/bin/ld: canvas_glx.o: undefined reference to symbol 'XPending'
+/usr/lib64/libX11.so.6: error adding symbols: DSO missing from command line
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index cd7fa54..1fa000b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,7 +50,7 @@ CYGWIN*|cygwin*|MINGW*|mingw*)
+ 	    test -f $try && RCFILE=$try
+     done
+ 
+-    OPT_LIBS=""
++    OPT_LIBS="-lX11"
+     OPT_OBJS="main.o canvas_base.o"
+     PROGRAM="fireflies"
+ 
+-- 
+2.4.0
+

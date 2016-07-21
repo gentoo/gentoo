@@ -1,0 +1,14 @@
+Index: mcdp-0.4a/Makefile
+===================================================================
+--- mcdp-0.4a.orig/Makefile
++++ mcdp-0.4a/Makefile
+@@ -29,9 +29,7 @@ PRGS	= mcdp
+ all: $(PRGS)
+ 
+ mcdp: $(OBJS)
+-	strip -x $(S_FLAGS) $(OBJS)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS)
+-	strip $(S_FLAGS) mcdp
+ 
+ dep:	clean
+ 	cc -MM $(SRC) > .depend

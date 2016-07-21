@@ -1,0 +1,13 @@
+diff -Nuar x86info-1.29.orig/Makefile x86info-1.29/Makefile
+--- x86info-1.29.orig/Makefile	2011-04-05 22:54:04.000000000 +0000
++++ x86info-1.29/Makefile	2011-05-15 18:19:42.204228978 +0000
+@@ -12,7 +12,8 @@
+ LSMSR_TMP_HEADERS=AMD/k8.h AMD/fam10h.h AMD/fam11h.h generic_msr.h
+ 
+ %.h: %.regs scripts/createheader.py
+-	python scripts/createheader.py $< `basename $< .regs` >$@
++	python scripts/createheader.py $< `basename $< .regs` >$@.tmp ; \
++	mv $@.tmp $@
+ 
+ LSMSR_SRC = \
+ 	lsmsr.c \

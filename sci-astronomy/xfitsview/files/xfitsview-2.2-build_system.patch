@@ -1,0 +1,54 @@
+* Fix parallel build
+* Respect LDFLAGS
+* Fix build with gmake 3.82
+
+http://bugs.gentoo.org/show_bug.cgi?id=337479
+
+--- Makefile.in
++++ Makefile.in
+@@ -61,26 +61,26 @@
+ LIBDIR = lib/$(ARCH)/
+ CFLAGS = -Iinclude -Ifitssubs @MOTIF_CPPFLAGS@ @X_CFLAGS@ \
+ 	$(DEBUG) $(OSFLAGS) @CFLAGS@ 
+-LIBS = @MOTIF_LIBS@ -lfitsLib
+-LDFLAGS = @MOTIF_LDFLAGS@ @X_LIBS@ -L$(LIBDIR)
++LIBS = @MOTIF_LIBS@ @X_LIBS@ -L$(LIBDIR) -lfitsLib
++LDFLAGS = @LDFLAGS@ @MOTIF_LDFLAGS@
+ 
+ all:  $(TARGETS)
+ 
+ # update source/object directory
+ srcupdate: 
+-	cd src; $(MAKE)
++	$(MAKE) -C src
+ 
+ # update fitssubs source/object directory
+ fitsupdate: 
+-	cd fitssubs; $(MAKE)
++	$(MAKE) -C fitssubs
+ 
+ # update fitssubs library directory
+-libupdate: 
+-	cd lib; $(MAKE) RANLIB="$(RANLIB)"
++libupdate: fitsupdate srcupdate
++	$(MAKE) RANLIB="$(RANLIB)" -C lib
+ 
+ # Link Obitview
+-XFITSview: lib/$(ARCH)/libfitsLib.a  src/*.c XFITSview.c
+-	$(CC) XFITSview.c -o XFITSview  $(CFLAGS) src/*.o $(LDFLAGS) $(LIBS)
++XFITSview: XFITSview.c libupdate
++	$(CC) $(LDFLAGS) XFITSview.c -o XFITSview  $(CFLAGS) src/*.o $(LIBS)
+ 
+ # make gzipped tar backup of directory
+ backup:	
+--- fitssubs/Makefile.in
++++ fitssubs/Makefile.in
+@@ -69,7 +69,7 @@
+ 
+ 
+ # create library directory if needed
+-../lib/$(ARCH): ../lib
++$(LIBDIR): ../lib
+ 	mkdir ../lib/$(ARCH)
+ 
+ clean:

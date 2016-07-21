@@ -1,0 +1,69 @@
+From 82900c7b96b2a6fb42fe3841df7685b820edd588 Mon Sep 17 00:00:00 2001
+From: Kai Koehne <kai.koehne@theqtcompany.com>
+Date: Thu, 24 Mar 2016 13:55:28 +0100
+Subject: [PATCH] Use system NSS only for certificate handling
+
+Compiling against NSS 3.23 fails with current Chromium. Also, with NSS
+3.21 there are failures connecting to e.g. google.com.
+
+Fix this by adapting the setup endorsed by upstream Chromium: BoringSSL
+is always used for cryptography, and NSS only for certificate handlng.
+
+Patches included in 3rdparty update:
+
+0a385bb [backport] Call EnsureNSSHttpIOInit in the chimera build.
+0472123 Fix build against newer NSS
+90c62c4 <third_party/libpng> [Backport] update to libpng 1.2.56
+34857b8 <third_party/libpng> [Backport] Stop large iCCP chunks causing delays and "Aw Snap!"
+
+Task-number: QTBUG-52193
+Task-number: QTBUG-51890
+Task-number: QTBUG-52068
+Change-Id: If8aaed9b9a09475c5ed0dfec64d31f45ce9670f5
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@theqtcompany.com>
+---
+ src/core/config/linux.pri                  | 9 ++++++---
+ tools/qmake/mkspecs/features/configure.prf | 4 ++--
+ 3 files changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/config/linux.pri b/src/core/config/linux.pri
+index 88c1a41..39eeb2a 100644
+--- a/src/core/config/linux.pri
++++ b/src/core/config/linux.pri
+@@ -18,11 +18,14 @@ GYP_CONFIG += \
+     use_gio=0 \
+     use_gnome_keyring=0 \
+     use_kerberos=0 \
+-    use_pango=0
++    use_pango=0 \
++    use_openssl=1
+ 
+-!use?(nss) {
++use?(nss) {
++    GYP_CONFIG += use_nss_certs=1 \
++        use_openssl_certs=0
++} else {
+     GYP_CONFIG += use_nss_certs=0 \
+-        use_openssl=1 \
+         use_openssl_certs=1
+ }
+ 
+diff --git a/tools/qmake/mkspecs/features/configure.prf b/tools/qmake/mkspecs/features/configure.prf
+index 4cb4600..953572d 100644
+--- a/tools/qmake/mkspecs/features/configure.prf
++++ b/tools/qmake/mkspecs/features/configure.prf
+@@ -72,9 +72,9 @@ defineTest(runConfigure) {
+ defineTest(finalizeConfigure) {
+     linux {
+         use?(nss) {
+-            log("SSL............................... Using system NSS$${EOL}")
++            log("Certificate handling.............. Using system NSS$${EOL}")
+         } else {
+-            log("SSL............................... Using bundled BoringSSL$${EOL}")
++            log("Certificate handling.............. Using bundled BoringSSL$${EOL}")
+         }
+         use?(system_icu) {
+             packagesExist("icu-uc icu-i18n") {
+-- 
+2.7.4
+

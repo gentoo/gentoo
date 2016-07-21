@@ -1,0 +1,19 @@
+commit a3f40e5601c0c522f2bda418374fb415bdcbd75c
+Author: Quanah Gibson-Mount <quanah@openldap.org>
+Date:   Thu Mar 24 02:25:49 2011 +0000
+
+    sl_busy is used as a boolean so just set it, don't increment it
+
+diff --git a/servers/slapd/daemon.c b/servers/slapd/daemon.c
+index 2a7a48e..df6d096 100644
+--- a/servers/slapd/daemon.c
++++ b/servers/slapd/daemon.c
+@@ -2098,7 +2098,7 @@ slap_listener_activate(
+ 	Debug( LDAP_DEBUG_TRACE, "slap_listener_activate(%d): %s\n",
+ 		sl->sl_sd, sl->sl_busy ? "busy" : "", 0 );
+ 
+-	sl->sl_busy++;
++	sl->sl_busy = 1;
+ 
+ 	rc = ldap_pvt_thread_pool_submit( &connection_pool,
+ 		slap_listener_thread, (void *) sl );

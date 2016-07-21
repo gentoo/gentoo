@@ -1,0 +1,13 @@
+# Enable user suspend support with Consolekit2.
+#
+# Author: Eric Hameleers <alien@slackware.com>
+#
+# KDE bug #344456
+# Gentoo bug #529186
+#
+[Allow all users to suspend with Conesolekit2]
+Identity=unix-group:users
+Action=org.freedesktop.consolekit.system.suspend-multiple-users;org.freedesktop.consolekit.system.suspend
+ResultAny=yes
+ResultInactive=no
+ResultActive=yes

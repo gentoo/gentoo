@@ -1,0 +1,63 @@
+Some notes on the 'bootstrap with or without libc headers' debate:
+http://linuxfromscratch.org/pipermail/lfs-dev/2005-July/052409.html
+http://gcc.gnu.org/ml/gcc/2005-07/msg01195.html
+
+--- gcc/config/sh/linux.h
++++ gcc/config/sh/linux.h
+@@ -145,6 +145,7 @@
+ /* Do code reading to identify a signal frame, and set the frame
+    state data appropriately.  See unwind-dw2.c for the structs.  */
+ 
++#ifndef inhibit_libc
+ #ifdef IN_LIBGCC2
+ #include <signal.h>
+ #include <sys/ucontext.h>
+@@ -295,6 +296,7 @@
+ 
+ #endif /* defined (__SH5__) */
+ #endif /* IN_LIBGCC2 */
++#endif /* inhibit_libc */
+ 
+ /* For SH3 and SH4, we use a slot of the unwind frame which correspond
+    to a fake register number 16 as a placeholder for the return address
+--- gcc/config/i386/linux.h
++++ gcc/config/i386/linux.h
+@@ -208,6 +208,7 @@
+ /* Do code reading to identify a signal frame, and set the frame
+    state data appropriately.  See unwind-dw2.c for the structs.  */
+ 
++#ifndef inhibit_libc
+ #ifdef IN_LIBGCC2
+ /* There's no sys/ucontext.h for some (all?) libc1, so no
+    signal-turned-exceptions for them.  There's also no configure-run for
+@@ -272,3 +273,4 @@
+   } while (0)
+ #endif /* not USE_GNULIBC_1 */
+ #endif /* IN_LIBGCC2 */
++#endif /* inhibit_libc */
+--- gcc/config/alpha/linux.h
++++ gcc/config/alpha/linux.h
+@@ -73,6 +73,7 @@
+ /* Do code reading to identify a signal frame, and set the frame
+    state data appropriately.  See unwind-dw2.c for the structs.  */
+ 
++#ifndef inhibit_libc
+ #ifdef IN_LIBGCC2
+ #include <signal.h>
+ #include <sys/ucontext.h>
+@@ -122,3 +123,4 @@
+     (FS)->retaddr_column = 64;						\
+     goto SUCCESS;							\
+   } while (0)
++#endif /* inhibit_libc */
+--- gcc/config.gcc
++++ gcc/config.gcc
+@@ -321,7 +321,7 @@
+ 	need_64bit_hwint=yes
+ 	;;
+ # Note the 'l'; we need to be able to match e.g. "shle" or "shl".
+-sh[123456789l]*-*-*)
++sh[123456789lbe]*-*-*)
+ 	cpu_type=sh
+ 	need_64bit_hwint=yes
+ 	;;

@@ -1,0 +1,63 @@
+--- a/Makefile	2002-01-28 09:15:59.000000000 +0100
++++ b/Makefile	2010-10-12 21:07:53.000000000 +0200
+@@ -4,12 +4,12 @@
+ GZIP=gzip
+ 
+ #CC=cc -xarch=v9 -O
+-CC=cc -O
++#CC=cc -O
+ 
+ all: piozone
+ 
+ piozone: piozone.o version.o
+-	$(CC) -o piozone piozone.o version.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o piozone piozone.o version.o
+ 
+ clean distclean:
+ 	-rm -f core *.o piozone *~ \#*
+@@ -19,3 +19,6 @@
+ 
+ dist:	version distclean
+ 	(PACKNAME=`basename \`pwd\`` ; cd .. ; $(TAR) cf - $$PACKNAME | $(GZIP) -9 >$$PACKNAME.tar.gz)
++
++install:
++	install -D piozone /usr/bin/piozone
+--- a/piozone.c	2002-01-28 09:14:54.000000000 +0100
++++ b/piozone.c	2010-10-12 21:08:45.000000000 +0200
+@@ -20,7 +20,9 @@
+ #include <fcntl.h>
+ #include <time.h>
+ #include <signal.h>
++#include <stdlib.h> /* exit(), rand(), atoi() */
+ 
++#define uint64_t u_int64_t
+ #define KiB ((uint64_t) 1024)
+ #define MiB ((uint64_t) 1024*KiB)
+ #define GiB ((uint64_t) 1024*MiB)
+@@ -73,7 +75,7 @@
+     int count = 0;
+     int nr = 0;
+     
+-    llseek(fd, off, SEEK_SET);
++    lseek64(fd, off, SEEK_SET);
+     signal(SIGALRM, sigalrm_handler);
+     stopf = 0;
+     printf("Testing... ");
+@@ -121,7 +123,7 @@
+     printf("Testing... ");
+     alarm(ts);
+     while (!stopf &&
+-	   llseek(fd, off+((rand()&area)*MiB), SEEK_SET) != -1 &&
++	   lseek64(fd, off+((rand()&area)*MiB), SEEK_SET) != -1 &&
+ 	   (nr = read(fd, iobuf, len)) == len)
+     {
+ 	print_dial();
+@@ -159,7 +161,7 @@
+     off = 0;
+     del = 64*GiB;
+ 
+-    while (del > 8*KiB && llseek(fd, off+del, SEEK_SET) != -1)
++    while (del > 8*KiB && lseek64(fd, off+del, SEEK_SET) != -1)
+     {
+ 	if (read(fd, buf, 8*KiB) < 0)
+ 	    del >>= 1;

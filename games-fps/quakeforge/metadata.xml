@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+QuakeForge is a 3D graphics game engine based on id Software's legendary 
+Quake and QuakeWorld game engine. Our purpose? To improve the state of 
+the game by improving the engine and making it accessable to the largest 
+number of players we can.
+
+Arguably the single most important issue on the minds of players today 
+is the rampant cheating which is currently happening on many of the 
+larger servers. It's a serious problem and it really makes a good game 
+hard to find. We're working hard to fix these problems at the engine 
+level.
+
+But what good is that if you have to have a copy of our client and the 
+server has to run our server? There are other projects out there and 
+some of them have very unique qualities. QuakeForge is cooperating with 
+QSG, a group comprised of representatives from nearly every known Quake 
+source project to ensure that our clients and servers run with other 
+clients and servers just fine. We have all agreed to implement any 
+effective cheat prevention methods.
+
+Other things we're doing include merging the two code trees, adding 
+features, and improving the OpenGL renderer. And QuakeForge is still the 
+most portable source tree based on the id Software code.
+</longdescription>
+	<use>
+		<flag name="wildmidi">enable libWildMidi support</flag>
+		<flag name="xdg">enable XDG support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">quake</remote-id>
+	</upstream>
+</pkgmetadata>

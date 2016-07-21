@@ -1,0 +1,33 @@
+--- DirectFB-1.6.3/interfaces/IDirectFBImageProvider/Makefile.am
++++ DirectFB-1.6.3/interfaces/IDirectFBImageProvider/Makefile.am
+@@ -59,15 +59,15 @@
+ MPEG2_PROVIDER =
+ endif
+ 
+-INCLUDES = \
++AM_CPPFLAGS =
++AM_CPPFLAGS =  \
+ 	-I$(top_builddir)/include	\
+ 	-I$(top_builddir)/lib	\
+ 	-I$(top_builddir)/src	\
+ 	-I$(top_srcdir)/include	\
+ 	-I$(top_srcdir)/lib	\
+-	-I$(top_srcdir)/src
+-
+-AM_CPPFLAGS = -DDATADIR=\"${RUNTIME_SYSROOT}@DATADIR@\" $(LIBJPEG_CFLAGS) $(LIBPNG_CFLAGS)
++	-I$(top_srcdir)/src 	\
++	-DDATADIR=\"${RUNTIME_SYSROOT}@DATADIR@\" $(LIBJPEG_CFLAGS) $(LIBPNG_CFLAGS) $(SVG_CFLAGS)
+ 
+ idirectfbimageprovider_LTLIBRARIES = \
+ 	libidirectfbimageprovider_dfiff.la	\
+--- DirectFB-1.6.3/configure.in
++++ DirectFB-1.6.3/configure.in
+@@ -980,7 +980,7 @@
+ dnl Test for libmng
+ MNG=no
+ 
+-AC_ARG_ENABLE(mngg,
++AC_ARG_ENABLE(mng,
+               AC_HELP_STRING([--enable-mng],
+                              [build MNG image provider @<:@default=yes@:>@]),
+               [], [enable_mng=yes])

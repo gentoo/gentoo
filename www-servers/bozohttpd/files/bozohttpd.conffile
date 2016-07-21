@@ -1,0 +1,11 @@
+# Config file for /etc/init.d/bozohttpd
+
+# necessary stuff
+DATADIR=/var/www/localhost/htdocs
+BIND_ADDRESS=localhost
+LISTEN_PORT=80
+
+# optional stuff
+#USER=daemon
+#INDEX_DEFAULT=index.php
+#APPEND="-C .php /usr/bin/php"

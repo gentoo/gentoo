@@ -1,0 +1,12 @@
+diff -up openexr_ctl-1.0.1/OpenEXR_CTL.pc.in.pkgconfig openexr_ctl-1.0.1/OpenEXR_CTL.pc.in
+--- openexr_ctl-1.0.1/OpenEXR_CTL.pc.in.pkgconfig	2008-01-09 15:17:58.000000000 +0100
++++ openexr_ctl-1.0.1/OpenEXR_CTL.pc.in	2008-01-09 15:24:52.000000000 +0100
+@@ -7,5 +7,6 @@ OpenEXR_includedir=@includedir@/OpenEXR
+ Name: OpenEXR_CTL
+ Description: Simplified OpenEXR interface to CTL
+ Version: @OPENEXR_CTL_VERSION@
+-Libs: -L${libdir} -lIlmImfCtl @OPENEXR_LDFLAGS@ @CTL_LDFLAGS@
+-Cflags: @CTL_CXXFLAGS_PC@ @OPENEXR_CXXFLAGS@ -I${OpenEXR_includedir}
++Requires: CTL , OpenEXR
++Libs: -L${libdir} -lIlmImfCtl
++Cflags: -I${OpenEXR_includedir}

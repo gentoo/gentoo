@@ -1,0 +1,21 @@
+diff -Nur tiobench-0.3.3.orig/tiotest.c tiobench-0.3.3/tiotest.c
+--- tiobench-0.3.3.orig/tiotest.c	2001-03-05 02:34:00.000000000 +0000
++++ tiobench-0.3.3/tiotest.c	2012-11-04 22:44:41.695677071 +0000
+@@ -31,7 +31,7 @@
+ */
+ ArgumentOptions args;
+ 
+-static void * aligned_alloc(ssize_t size)
++static void * tio_aligned_alloc(ssize_t size)
+ {
+ 	caddr_t a;
+ 	a = mmap((caddr_t )0, size, 
+@@ -281,7 +281,7 @@
+ 		pthread_attr_setscope(&(d->threads[i].thread_attr),
+ 				      PTHREAD_SCOPE_SYSTEM);
+ 
+-		d->threads[i].buffer = aligned_alloc( d->threads[i].blockSize );
++		d->threads[i].buffer = tio_aligned_alloc( d->threads[i].blockSize );
+ 		if( d->threads[i].buffer == NULL )
+ 		{
+ 			perror("Error allocating memory");

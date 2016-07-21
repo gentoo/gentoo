@@ -1,0 +1,14 @@
+--- lxdm-0.3.0-old/src/lxdm.c
++++ lxdm-0.3.0/src/lxdm.c
+@@ -1332,4 +1332,5 @@
+ 	if(option)
+ 		s->option=g_strdup(option);
++#if HAVE_LIBCK_CONNECTOR
+ 	if(s->ckc)
+ 	{
+@@ -1337,4 +1338,5 @@
+ 		s->ckc=NULL;
+ 	}
++#endif
+ #if HAVE_LIBPAM
+ 	setup_pam_session(s,pw,session_name);

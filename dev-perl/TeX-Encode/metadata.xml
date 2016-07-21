@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">TeX-Encode</remote-id>
+		<remote-id type="cpan-module">TeX::Encode</remote-id>
+		<remote-id type="cpan-module">TeX::Encode::BibTeX</remote-id>
+		<remote-id type="cpan-module">TeX::Encode::charmap</remote-id>
+	</upstream>
+</pkgmetadata>

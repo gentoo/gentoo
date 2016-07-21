@@ -1,0 +1,6 @@
+GRP_STAGE23_USE="ncurses readline zlib uclibc hardened pic"
+USE="ncurses readline zlib uclibc hardened pic"
+
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
+BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened pic"

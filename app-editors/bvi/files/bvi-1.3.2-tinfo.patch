@@ -1,0 +1,35 @@
+diff --git a/configure.in b/configure.in
+index 68076d8..81da696 100644
+--- a/configure.in
++++ b/configure.in
+@@ -58,17 +58,19 @@ AC_ARG_WITH(ncurses,
+   fi
+ ])
+ 
+-AC_CHECK_HEADER(ncurses.h,
+-    AC_CHECK_LIB(ncurses, initscr,
+-        AC_DEFINE(HAVE_NCURSES_H) LIBS="${LIBS} -lncurses",
+-        AC_CHECK_LIB(curses, initscr,
+-        AC_DEFINE(HAVE_CURSES_H) LIBS="${LIBS} -lcurses",
+-        AC_MSG_ERROR([bvi requires the curses library]))),
+-    AC_CHECK_HEADER(curses.h,
+-        AC_CHECK_LIB(curses, initscr,
+-		AC_DEFINE(HAVE_CURSES_H) LIBS="${LIBS} -lcurses",
+-		AC_MSG_ERROR([bvi requires the curses library])),
+-		AC_MSG_ERROR([bvi requires the curses library])))
++AC_CHECK_HEADER([ncurses.h],[
++    AC_SEARCH_LIBS([initscr], [ncurses],[
++            AC_DEFINE(HAVE_NCURSES_H)
++	    AC_SEARCH_LIBS([tputs], [tinfo])], [
++        AC_SEARCH_LIBS([initscr], [curses],[
++                AC_DEFINE(HAVE_CURSES_H)
++                AC_SEARCH_LIBS([tputs], [tinfo])],[
++	    AC_MSG_ERROR([bvi requires the curses library])])])],[
++    AC_CHECK_HEADER([curses.h],[
++    	AC_SEARCH_LIBS([initscr], [curses], [
++		AC_DEFINE(HAVE_CURSES_H)],[
++		AC_MSG_ERROR([bvi requires the curses library])])],[
++		AC_MSG_ERROR([bvi requires the curses library])])])
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ dnl AC_TYPE_SIZE_T

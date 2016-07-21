@@ -1,0 +1,12 @@
+diff -ru freecell-0.0.2-orig/cards.c freecell-0.0.2/cards.c
+--- freecell-0.0.2-orig/cards.c	2005-11-20 21:19:31.000000000 +0100
++++ freecell-0.0.2/cards.c	2005-11-20 21:19:15.000000000 +0100
+@@ -52,7 +52,7 @@
+ 	mX = X;
+ 	mY = Y;
+ 	mStacked = Stacked;
+-	mSeed = time_ms();
++	mSeed = cTimeMs::Now();
+ }
+ 
+ cCardStack::~cCardStack() {

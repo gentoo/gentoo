@@ -1,0 +1,27 @@
+Build with gcc 4.7
+https://bugs.gentoo.org/show_bug.cgi?id=421913
+
+Index: hydrogen-0.9.5/gui/src/MainForm.cpp
+===================================================================
+--- hydrogen-0.9.5.orig/gui/src/MainForm.cpp
++++ hydrogen-0.9.5/gui/src/MainForm.cpp
+@@ -70,6 +70,7 @@ using namespace H2Core;
+ 
+ #include <memory>
+ #include <cassert>
++#include <unistd.h>
+ 
+ using namespace std;
+ using namespace H2Core;
+Index: hydrogen-0.9.5/gui/src/SongEditor/SongEditor.cpp
+===================================================================
+--- hydrogen-0.9.5.orig/gui/src/SongEditor/SongEditor.cpp
++++ hydrogen-0.9.5/gui/src/SongEditor/SongEditor.cpp
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <assert.h>
++#include <unistd.h>
+ #include <algorithm>
+ #include <memory>
+ 

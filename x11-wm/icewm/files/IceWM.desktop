@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IceWM
+Comment=This session logs you into IceWM
+Exec=icewm-session
+TryExec=icewm-session
+# no icon yet, only the top three are currently used
+Icon=
+Type=Application

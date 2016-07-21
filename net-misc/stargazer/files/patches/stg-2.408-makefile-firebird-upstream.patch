@@ -1,0 +1,13 @@
+--- projects/stargazer/plugins/store/firebird/Makefile.org	2013-01-04 22:50:13.000000000 +0200
++++ projects/stargazer/plugins/store/firebird/Makefile	2013-01-04 22:50:56.000000000 +0200
+@@ -22,5 +22,11 @@
+ 	  locker \
+ 	  crypto
+ 
++FB_CFLAGS = $(shell fb_config --cflags)
++FB_LDFLAGS = $(shell fb_config --libs)
++
++CXXFLAGS +=  $(FB_CFLAGS)
++LDFLAGS += $(FB_LDFLAGS)
++
+ include ../../Makefile.in

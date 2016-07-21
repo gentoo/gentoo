@@ -1,0 +1,18 @@
+fix from upstream cvs
+
+http://bugs.gentoo.org/159776
+
+--- jwhois-3.2.3/example/jwhois.conf
++++ jwhois-3.2.3/example/jwhois.conf
+@@ -180,7 +180,10 @@
+ 	"\\.cx$" = "whois.nic.cx";
+ 	"\\.cy$" = "whois.ripe.net";
+ 	"\\.cz$" = "whois.nic.cz";
+-	"\\.de$" = "www.denic.de";
++	"\\.de$" {
++		whois-server = "whois.denic.de";
++		query-format = "-C UTF-8 -T dn,ace $*";
++	}
+ 	"\\.dk$" = "whois.dk-hostmaster.dk";
+ 	"\\.do$" = "whois.nic.do";
+ 	"\\.dz$" = "whois.ripe.net";

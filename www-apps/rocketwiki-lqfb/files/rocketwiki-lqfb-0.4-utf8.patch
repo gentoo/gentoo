@@ -1,0 +1,44 @@
+--- rocketwiki-lqfb.hs.old	2013-04-25 21:41:34.044588280 +0200
++++ rocketwiki-lqfb.hs	2013-04-25 21:42:33.108020316 +0200
+@@ -2,6 +2,7 @@
+ import Text.ParserCombinators.Parsec
+ import Control.Applicative ((<$>), (<*>))
+ import Data.List (intercalate)
++import System.IO (hSetEncoding, stdin, stdout, utf8)
+ 
+ 
+ -----------------------------------------------------
+@@ -405,7 +406,10 @@
+       return htmlEntity
+ 
+ 
+-main = interact wikiParse
++main = do
++	hSetEncoding stdin utf8
++	hSetEncoding stdout utf8
++	interact wikiParse
+ 
+ wikiParse str
+   | success parseResult = html
+--- rocketwiki-lqfb-compat.hs.old	2013-04-25 21:41:41.340518231 +0200
++++ rocketwiki-lqfb-compat.hs	2013-04-25 21:43:21.299557312 +0200
+@@ -2,6 +2,7 @@
+ import Text.ParserCombinators.Parsec
+ import Control.Applicative ((<$>), (<*>))
+ import Data.List (intercalate)
++import System.IO (hSetEncoding, stdin, stdout, utf8)
+ 
+ 
+ -----------------------------------------------------
+@@ -412,7 +413,10 @@
+       return htmlEntity
+ 
+ 
+-main = interact wikiParse
++main = do
++	hSetEncoding stdin utf8
++	hSetEncoding stdout utf8
++	interact wikiParse
+ 
+ wikiParse str
+   | success parseResult = html

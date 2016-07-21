@@ -1,0 +1,13 @@
+--- src/win_event.cc.old	2011-04-18 08:24:16.000000000 +0200
++++ src/win_event.cc	2011-04-18 08:25:18.000000000 +0200
+@@ -34,8 +34,9 @@
+ 	
+ 	    case DESTROY:
+ 	    {
++		Functor0wRet<bool> func0ret;
+ 	        set_callback_destroy (
+-	        makeFunctor (&Functor0wRet<bool>(), *callback, &py_callback::callback_func0ret));
++	        makeFunctor (&func0ret, *callback, &py_callback::callback_func0ret));
+ 	        break;
+ 	    }
+ 	

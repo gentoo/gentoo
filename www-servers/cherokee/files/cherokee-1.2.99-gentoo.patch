@@ -1,0 +1,38 @@
+diff -Naur cherokee-1.2.99.orig/admin/configured.py.pre cherokee-1.2.99/admin/configured.py.pre
+--- cherokee-1.2.99.orig/admin/configured.py.pre	2011-03-31 17:30:04.000000000 +0900
++++ cherokee-1.2.99/admin/configured.py.pre	2011-09-16 19:37:15.893487362 +0900
+@@ -22,7 +22,7 @@
+ CHEROKEE_DATADIR      = join (DATADIR, "cherokee")
+ CHEROKEE_DEPSDIR      = join (DATADIR, "cherokee/deps")
+ CHEROKEE_CONFDIR      = join (SYSCONFDIR, "cherokee")
+-CHEROKEE_VAR_LOG      = join (LOCALSTATE, "log")
++CHEROKEE_VAR_LOG      = join (LOCALSTATE, "log/cherokee")
+ CHEROKEE_VAR_RUN      = join (LOCALSTATE, "run")
+ CHEROKEE_VAR_LIB      = join (LOCALSTATE, "lib/cherokee")
+ CHEROKEE_RRD_DIR      = join (LOCALSTATE, "lib/cherokee/graphs")
+diff -Naur cherokee-1.2.99.orig/cherokee.conf.sample.pre cherokee-1.2.99/cherokee.conf.sample.pre
+--- cherokee-1.2.99.orig/cherokee.conf.sample.pre	2011-05-03 18:01:42.000000000 +0900
++++ cherokee-1.2.99/cherokee.conf.sample.pre	2011-09-16 19:37:15.894487368 +0900
+@@ -18,6 +18,8 @@
+ server!server_tokens = full
+ server!panic_action = %prefix%/bin/cherokee-panic
+ server!pid_file = %localstatedir%/run/cherokee.pid
++server!user = cherokee
++server!group = cherokee
+ 
+ # Default virtual server
+ #
+@@ -27,11 +29,11 @@
+ 
+ vserver!1!logger = combined
+ vserver!1!logger!access!type = file
+-vserver!1!logger!access!filename = %localstatedir%/log/cherokee.access
++vserver!1!logger!access!filename = %localstatedir%/log/cherokee/cherokee.access
+ vserver!1!logger!access!buffsize = 16384
+ 
+ vserver!1!error_writer!type = file
+-vserver!1!error_writer!filename = %localstatedir%/log/cherokee.error
++vserver!1!error_writer!filename = %localstatedir%/log/cherokee/cherokee.error
+ 
+ vserver!1!rule!1!match = default
+ vserver!1!rule!1!handler = common

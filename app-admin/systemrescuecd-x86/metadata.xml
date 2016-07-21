@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <use>
+    <flag name="isohybrid">
+      Pass downloaded images through isohybrid in order to make it
+      possible to copy them directly to USB media and boot (requires
+      <pkg>sys-boot/syslinux</pkg> at build time).
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">systemrescuecd</remote-id>
+  </upstream>
+</pkgmetadata>

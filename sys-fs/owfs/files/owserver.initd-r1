@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+INSTANCE=${SVCNAME#*.}
+PROGRAM=${SVCNAME%%.*}
+PIDFILE=${PIDFILE:-/run/owfs/${PROGRAM}.pid}
+OWUID=${OWUID:-owfs}
+OWGID=${OWGID:-owfs}
+
+depend() {
+	use logger
+}
+
+start_pre() {
+	checkpath -d -m 0750 -o ${OWUID}:${OWGID} "$(dirname ${PIDFILE})"
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/${PROGRAM} \
+		--pidfile ${PIDFILE} --user ${OWUID}:${OWGID} -- \
+		--pid-file ${PIDFILE} \
+		--background --error_print 1 \
+		${OWSERVER_OPTS:---nozero -p 127.0.0.1:4304 -d /dev/ttyS0}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec /usr/bin/${PROGRAM} \
+		--pidfile ${PIDFILE} -u ${OWUID}
+	eend $?
+}

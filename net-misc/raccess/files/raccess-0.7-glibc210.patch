@@ -1,0 +1,585 @@
+diff -NrU5 raccess-0.7.original/exploits/wu2.5.0a.c raccess-0.7/exploits/wu2.5.0a.c
+--- raccess-0.7.original/exploits/wu2.5.0a.c	2009-07-08 17:55:35.000000000 +0000
++++ raccess-0.7/exploits/wu2.5.0a.c	2009-07-08 18:09:23.000000000 +0000
+@@ -104,11 +104,11 @@
+ int     xconnect (int  sockfd,  struct sockaddr *serv_addr, int addrlen);
+ void    sighandler (int signal);
+ struct hostent  *xgethostbyname (const char *name);
+ struct hostent  *xgethostbyaddr (const char *addr, int len, int type);
+ void    putserv (const char *fmt, ...);
+-char    *getline (void);
++char    *get_line (void);
+ char    *getmsg (const char *msg);
+ int     wuftpd_250_sploitit (void);
+ dirptr  newdir (char *name);
+ char    *getdir (char *stat);
+ char    *int2char (int addr);
+@@ -759,16 +759,16 @@
+ }
+ 
+ #define LINEBUFLEN 8192
+ char    linebuf[LINEBUFLEN];  /* saves us free()ing trouble. */
+ 
+-/* getline
++/* get_line
+  *
+  * get next line from server or local buffer
+  */
+ char *
+-getline (void)
++get_line (void)
+ {
+   char    y[2];
+   int     i = 0;
+ 
+   memset (linebuf, '\0', sizeof (linebuf));
+@@ -776,11 +776,11 @@
+ 
+   while (strncmp (y, "\n", 1) != 0)
+     {
+       if (i > (sizeof (linebuf) + 2))
+         {
+-          err (0, "getline() buffer full");
++          err (0, "get_line() buffer full");
+         }
+       i += xread (fd, y, 1);
+       strcat (linebuf, y);
+     }
+ 
+@@ -835,11 +835,11 @@
+   char    *line;
+   int     i = strlen (msg);
+ 
+   do
+     {
+-      line = getline ();
++      line = get_line ();
+     }
+   while (strncmp (line, msg, i) != 0 && strncmp (line, "5", 1) != 0);
+ 
+   return (line);
+ }
+@@ -919,11 +919,11 @@
+   nostat = 0;
+   putserv ("STAT .\n");
+ 
+   while (strncmp (line, "213 ", 4) != 0)
+     {
+-      line = getline ();
++      line = get_line ();
+       tmp = getdir (line);
+ 
+       if (tmp == NULL)
+         continue;
+       if (dirroot == NULL)
+@@ -1279,14 +1279,14 @@
+           break;
+         }
+ 
+       string[tesopt.dirlen] = 0;
+       putserv ("MKD %s\n", string);
+-      getline ();
++      get_line ();
+ 
+       putserv ("CWD %s\n", string);
+-      getline ();
++      get_line ();
+     }
+ 
+   getpwd ();
+   disp = 1;
+ 
+@@ -1318,11 +1318,11 @@
+ 
+   if (strlen (string) < 20)
+     err (0, "cwd string too short.. check for 0x0's.\n");
+ 
+   putserv ("CWD %s\n", string);
+-  getline ();
++  get_line ();
+ 
+   /************ jmpbuf ***********/
+ 
+   if (debug > 0)
+     printf ("Sending jmpbuf\n");
+@@ -1334,11 +1334,11 @@
+   if (strlen (string) != 32)
+     err (0, "jmpbuf string too short.. check for 0x0's.\n");
+ 
+   putserv ("%s\n", string);
+ 
+-  getline ();
++  get_line ();
+ 
+   return (1);
+ }
+ 
+ /* shell
+diff -NrU5 raccess-0.7.original/exploits/wu2.5.0b.c raccess-0.7/exploits/wu2.5.0b.c
+--- raccess-0.7.original/exploits/wu2.5.0b.c	2009-07-08 17:55:35.000000000 +0000
++++ raccess-0.7/exploits/wu2.5.0b.c	2009-07-08 18:12:44.000000000 +0000
+@@ -104,11 +104,11 @@
+ int     xconnect (int  sockfd,  struct sockaddr *serv_addr, int addrlen);
+ void    sighandler (int signal);
+ struct hostent  *xgethostbyname (const char *name);
+ struct hostent  *xgethostbyaddr (const char *addr, int len, int type);
+ void    putserv (const char *fmt, ...);
+-char    *getline (void);
++char    *get_line (void);
+ char    *getmsg (const char *msg);
+ int     wuftpd_250_sploitit (void);
+ dirptr  newdir (char *name);
+ char    *getdir (char *stat);
+ char    *int2char (int addr);
+@@ -759,16 +759,16 @@
+ }
+ 
+ #define LINEBUFLEN 8192
+ char    linebuf[LINEBUFLEN];  /* saves us free()ing trouble. */
+ 
+-/* getline
++/* get_line
+  *
+  * get next line from server or local buffer
+  */
+ char *
+-getline (void)
++get_line (void)
+ {
+   char    y[2];
+   int     i = 0;
+ 
+   memset (linebuf, '\0', sizeof (linebuf));
+@@ -776,11 +776,11 @@
+ 
+   while (strncmp (y, "\n", 1) != 0)
+     {
+       if (i > (sizeof (linebuf) + 2))
+         {
+-          err (0, "getline() buffer full");
++          err (0, "get_line() buffer full");
+         }
+       i += xread (fd, y, 1);
+       strcat (linebuf, y);
+     }
+ 
+@@ -835,11 +835,11 @@
+   char    *line;
+   int     i = strlen (msg);
+ 
+   do
+     {
+-      line = getline ();
++      line = get_line ();
+     }
+   while (strncmp (line, msg, i) != 0 && strncmp (line, "5", 1) != 0);
+ 
+   return (line);
+ }
+@@ -919,11 +919,11 @@
+   nostat = 0;
+   putserv ("STAT .\n");
+ 
+   while (strncmp (line, "213 ", 4) != 0)
+     {
+-      line = getline ();
++      line = get_line ();
+       tmp = getdir (line);
+ 
+       if (tmp == NULL)
+         continue;
+       if (dirroot == NULL)
+@@ -1279,14 +1279,14 @@
+           break;
+         }
+ 
+       string[tesopt.dirlen] = 0;
+       putserv ("MKD %s\n", string);
+-      getline ();
++      get_line ();
+ 
+       putserv ("CWD %s\n", string);
+-      getline ();
++      get_line ();
+     }
+ 
+   getpwd ();
+   disp = 1;
+ 
+@@ -1318,11 +1318,11 @@
+ 
+   if (strlen (string) < 20)
+     err (0, "cwd string too short.. check for 0x0's.\n");
+ 
+   putserv ("CWD %s\n", string);
+-  getline ();
++  get_line ();
+ 
+   /************ jmpbuf ***********/
+ 
+   if (debug > 0)
+     printf ("Sending jmpbuf\n");
+@@ -1334,11 +1334,11 @@
+   if (strlen (string) != 32)
+     err (0, "jmpbuf string too short.. check for 0x0's.\n");
+ 
+   putserv ("%s\n", string);
+ 
+-  getline ();
++  get_line ();
+ 
+   return (1);
+ }
+ 
+ /* shell
+diff -NrU5 raccess-0.7.original/exploits/wu2.5.0c.c raccess-0.7/exploits/wu2.5.0c.c
+--- raccess-0.7.original/exploits/wu2.5.0c.c	2009-07-08 17:55:35.000000000 +0000
++++ raccess-0.7/exploits/wu2.5.0c.c	2009-07-08 18:14:14.000000000 +0000
+@@ -104,11 +104,11 @@
+ int     xconnect (int  sockfd,  struct sockaddr *serv_addr, int addrlen);
+ void    sighandler (int signal);
+ struct hostent  *xgethostbyname (const char *name);
+ struct hostent  *xgethostbyaddr (const char *addr, int len, int type);
+ void    putserv (const char *fmt, ...);
+-char    *getline (void);
++char    *get_line (void);
+ char    *getmsg (const char *msg);
+ int     wuftpd_250_sploitit (void);
+ dirptr  newdir (char *name);
+ char    *getdir (char *stat);
+ char    *int2char (int addr);
+@@ -759,16 +759,16 @@
+ }
+ 
+ #define LINEBUFLEN 8192
+ char    linebuf[LINEBUFLEN];  /* saves us free()ing trouble. */
+ 
+-/* getline
++/* get_line
+  *
+  * get next line from server or local buffer
+  */
+ char *
+-getline (void)
++get_line (void)
+ {
+   char    y[2];
+   int     i = 0;
+ 
+   memset (linebuf, '\0', sizeof (linebuf));
+@@ -776,11 +776,11 @@
+ 
+   while (strncmp (y, "\n", 1) != 0)
+     {
+       if (i > (sizeof (linebuf) + 2))
+         {
+-          err (0, "getline() buffer full");
++          err (0, "get_line() buffer full");
+         }
+       i += xread (fd, y, 1);
+       strcat (linebuf, y);
+     }
+ 
+@@ -835,11 +835,11 @@
+   char    *line;
+   int     i = strlen (msg);
+ 
+   do
+     {
+-      line = getline ();
++      line = get_line ();
+     }
+   while (strncmp (line, msg, i) != 0 && strncmp (line, "5", 1) != 0);
+ 
+   return (line);
+ }
+@@ -919,11 +919,11 @@
+   nostat = 0;
+   putserv ("STAT .\n");
+ 
+   while (strncmp (line, "213 ", 4) != 0)
+     {
+-      line = getline ();
++      line = get_line ();
+       tmp = getdir (line);
+ 
+       if (tmp == NULL)
+         continue;
+       if (dirroot == NULL)
+@@ -1279,14 +1279,14 @@
+           break;
+         }
+ 
+       string[tesopt.dirlen] = 0;
+       putserv ("MKD %s\n", string);
+-      getline ();
++      get_line ();
+ 
+       putserv ("CWD %s\n", string);
+-      getline ();
++      get_line ();
+     }
+ 
+   getpwd ();
+   disp = 1;
+ 
+@@ -1318,11 +1318,11 @@
+ 
+   if (strlen (string) < 20)
+     err (0, "cwd string too short.. check for 0x0's.\n");
+ 
+   putserv ("CWD %s\n", string);
+-  getline ();
++  get_line ();
+ 
+   /************ jmpbuf ***********/
+ 
+   if (debug > 0)
+     printf ("Sending jmpbuf\n");
+@@ -1334,11 +1334,11 @@
+   if (strlen (string) != 32)
+     err (0, "jmpbuf string too short.. check for 0x0's.\n");
+ 
+   putserv ("%s\n", string);
+ 
+-  getline ();
++  get_line ();
+ 
+   return (1);
+ }
+ 
+ /* shell
+diff -NrU5 raccess-0.7.original/exploits/wu2.5.0d.c raccess-0.7/exploits/wu2.5.0d.c
+--- raccess-0.7.original/exploits/wu2.5.0d.c	2009-07-08 17:55:35.000000000 +0000
++++ raccess-0.7/exploits/wu2.5.0d.c	2009-07-08 18:06:24.000000000 +0000
+@@ -104,11 +104,11 @@
+ int     xconnect (int  sockfd,  struct sockaddr *serv_addr, int addrlen);
+ void    sighandler (int signal);
+ struct hostent  *xgethostbyname (const char *name);
+ struct hostent  *xgethostbyaddr (const char *addr, int len, int type);
+ void    putserv (const char *fmt, ...);
+-char    *getline (void);
++char    *get_line (void);
+ char    *getmsg (const char *msg);
+ int     wuftpd_250_sploitit (void);
+ dirptr  newdir (char *name);
+ char    *getdir (char *stat);
+ char    *int2char (int addr);
+@@ -759,16 +759,16 @@
+ }
+ 
+ #define LINEBUFLEN 8192
+ char    linebuf[LINEBUFLEN];  /* saves us free()ing trouble. */
+ 
+-/* getline
++/* get_line
+  *
+  * get next line from server or local buffer
+  */
+ char *
+-getline (void)
++get_line (void)
+ {
+   char    y[2];
+   int     i = 0;
+ 
+   memset (linebuf, '\0', sizeof (linebuf));
+@@ -776,11 +776,11 @@
+ 
+   while (strncmp (y, "\n", 1) != 0)
+     {
+       if (i > (sizeof (linebuf) + 2))
+         {
+-          err (0, "getline() buffer full");
++          err (0, "get_line() buffer full");
+         }
+       i += xread (fd, y, 1);
+       strcat (linebuf, y);
+     }
+ 
+@@ -835,11 +835,11 @@
+   char    *line;
+   int     i = strlen (msg);
+ 
+   do
+     {
+-      line = getline ();
++      line = get_line ();
+     }
+   while (strncmp (line, msg, i) != 0 && strncmp (line, "5", 1) != 0);
+ 
+   return (line);
+ }
+@@ -919,11 +919,11 @@
+   nostat = 0;
+   putserv ("STAT .\n");
+ 
+   while (strncmp (line, "213 ", 4) != 0)
+     {
+-      line = getline ();
++      line = get_line ();
+       tmp = getdir (line);
+ 
+       if (tmp == NULL)
+         continue;
+       if (dirroot == NULL)
+@@ -1279,14 +1279,14 @@
+           break;
+         }
+ 
+       string[tesopt.dirlen] = 0;
+       putserv ("MKD %s\n", string);
+-      getline ();
++      get_line ();
+ 
+       putserv ("CWD %s\n", string);
+-      getline ();
++      get_line ();
+     }
+ 
+   getpwd ();
+   disp = 1;
+ 
+@@ -1318,11 +1318,11 @@
+ 
+   if (strlen (string) < 20)
+     err (0, "cwd string too short.. check for 0x0's.\n");
+ 
+   putserv ("CWD %s\n", string);
+-  getline ();
++  get_line ();
+ 
+   /************ jmpbuf ***********/
+ 
+   if (debug > 0)
+     printf ("Sending jmpbuf\n");
+@@ -1334,11 +1334,11 @@
+   if (strlen (string) != 32)
+     err (0, "jmpbuf string too short.. check for 0x0's.\n");
+ 
+   putserv ("%s\n", string);
+ 
+-  getline ();
++  get_line ();
+ 
+   return (1);
+ }
+ 
+ /* shell
+diff -NrU5 raccess-0.7.original/exploits/wu2.5.0e.c raccess-0.7/exploits/wu2.5.0e.c
+--- raccess-0.7.original/exploits/wu2.5.0e.c	2009-07-08 17:55:35.000000000 +0000
++++ raccess-0.7/exploits/wu2.5.0e.c	2009-07-08 18:07:19.000000000 +0000
+@@ -104,11 +104,11 @@
+ int     xconnect (int  sockfd,  struct sockaddr *serv_addr, int addrlen);
+ void    sighandler (int signal);
+ struct hostent  *xgethostbyname (const char *name);
+ struct hostent  *xgethostbyaddr (const char *addr, int len, int type);
+ void    putserv (const char *fmt, ...);
+-char    *getline (void);
++char    *get_line (void);
+ char    *getmsg (const char *msg);
+ int     wuftpd_250_sploitit (void);
+ dirptr  newdir (char *name);
+ char    *getdir (char *stat);
+ char    *int2char (int addr);
+@@ -759,16 +759,16 @@
+ }
+ 
+ #define LINEBUFLEN 8192
+ char    linebuf[LINEBUFLEN];  /* saves us free()ing trouble. */
+ 
+-/* getline
++/* get_line
+  *
+  * get next line from server or local buffer
+  */
+ char *
+-getline (void)
++get_line (void)
+ {
+   char    y[2];
+   int     i = 0;
+ 
+   memset (linebuf, '\0', sizeof (linebuf));
+@@ -776,11 +776,11 @@
+ 
+   while (strncmp (y, "\n", 1) != 0)
+     {
+       if (i > (sizeof (linebuf) + 2))
+         {
+-          err (0, "getline() buffer full");
++          err (0, "get_line() buffer full");
+         }
+       i += xread (fd, y, 1);
+       strcat (linebuf, y);
+     }
+ 
+@@ -835,11 +835,11 @@
+   char    *line;
+   int     i = strlen (msg);
+ 
+   do
+     {
+-      line = getline ();
++      line = get_line ();
+     }
+   while (strncmp (line, msg, i) != 0 && strncmp (line, "5", 1) != 0);
+ 
+   return (line);
+ }
+@@ -919,11 +919,11 @@
+   nostat = 0;
+   putserv ("STAT .\n");
+ 
+   while (strncmp (line, "213 ", 4) != 0)
+     {
+-      line = getline ();
++      line = get_line ();
+       tmp = getdir (line);
+ 
+       if (tmp == NULL)
+         continue;
+       if (dirroot == NULL)
+@@ -1279,14 +1279,14 @@
+           break;
+         }
+ 
+       string[tesopt.dirlen] = 0;
+       putserv ("MKD %s\n", string);
+-      getline ();
++      get_line ();
+ 
+       putserv ("CWD %s\n", string);
+-      getline ();
++      get_line ();
+     }
+ 
+   getpwd ();
+   disp = 1;
+ 
+@@ -1318,11 +1318,11 @@
+ 
+   if (strlen (string) < 20)
+     err (0, "cwd string too short.. check for 0x0's.\n");
+ 
+   putserv ("CWD %s\n", string);
+-  getline ();
++  get_line ();
+ 
+   /************ jmpbuf ***********/
+ 
+   if (debug > 0)
+     printf ("Sending jmpbuf\n");
+@@ -1334,11 +1334,11 @@
+   if (strlen (string) != 32)
+     err (0, "jmpbuf string too short.. check for 0x0's.\n");
+ 
+   putserv ("%s\n", string);
+ 
+-  getline ();
++  get_line ();
+ 
+   return (1);
+ }
+ 
+ /* shell

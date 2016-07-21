@@ -1,0 +1,206 @@
+Index: Makefile
+===================================================================
+--- Makefile	(revision 5456)
++++ Makefile	(working copy)
+@@ -78,6 +78,9 @@
+ ifeq ($(DISABLE_ISOFF), no)
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/MP4Box "$(DESTDIR)$(prefix)/bin"
+ endif
++ifeq ($(DISABLE_M2TS), no)
++	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/mp42ts "$(DESTDIR)$(prefix)/bin"
++endif
+ ifeq ($(DISABLE_PLAYER), no)
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/MP4Client "$(DESTDIR)$(prefix)/bin"
+ endif
+@@ -142,9 +145,6 @@
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME)
+ 	ln -sf libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.so.$(VERSION_MAJOR)
+ 	ln -sf libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.so
+-ifeq ($(DESTDIR)$(prefix),$(prefix))
+-	ldconfig || true
+-endif
+ endif
+ endif
+ 
+@@ -161,7 +161,9 @@
+ 	$(INSTALL) $(INSTFLAGS) -m 644 $(SRC_PATH)/include/gpac/enst/*.h "$(DESTDIR)$(prefix)/include/gpac/enst"
+ endif
+ 	mkdir -p "$(DESTDIR)$(prefix)/$(libdir)"
++ifeq ($(STATICLIBS),yes)
+ 	$(INSTALL) $(INSTFLAGS) -m 644 "./bin/gcc/libgpac_static.a" "$(DESTDIR)$(prefix)/$(libdir)"
++endif
+ 	$(MAKE) installdylib
+ 
+ uninstall-lib:
+Index: applications/mp4box/main.c
+===================================================================
+--- applications/mp4box/main.c	(revision 5456)
++++ applications/mp4box/main.c	(working copy)
+@@ -1508,10 +1508,10 @@
+ 				(*descs)[(*nb_descs)-1][len] = 0;
+ 			}
+ 			else if (!strnicmp(opts, "xlink=", 6)) {
+-				if (strlen(opts+6) > 199) {
++				if (strlen(opts+6) > 99) {
+ 					GF_LOG(GF_LOG_ERROR, GF_LOG_DASH, ("[DASH] XLink cannot exceed 99 characters in MP4Box, truncating ...\n"));
+ 				}
+-				strncpy(di->xlink, opts+6, 199);
++				strncpy(di->xlink, opts+6, 99);
+ 			}
+ 
+ 			if (!sep) break;
+Index: configure
+===================================================================
+--- configure	(revision 5456)
++++ configure	(working copy)
+@@ -101,6 +101,7 @@
+ has_openjpeg="no"
+ gprof_build="no"
+ static_build="no"
++static_libs="no"
+ want_pic="no"
+ has_joystick="no"
+ has_xul="no"
+@@ -230,6 +231,7 @@
+   --disable-platinum       disable Platinum UPnP support
+   --disable-alsa           disable Alsa audio
+   --disable-oss-audio      disable OSS audio
++  --disable-sdl            disable SDL support
+   --enable-jack            enable  Jack audio
+   --disable-jack           disable Jack audio
+   --enable-pulseaudio      enable  Pulse audio
+@@ -245,6 +247,7 @@
+   --enable-amr-wb          enable AMR WB library
+   --enable-amr             enable both AMR NB and WB libraries
+   --enable-static-bin      GPAC static build
++  --enable-static-lib      GPAC static libraries build
+   --static-mp4box          configure for static linking of MP4Box.
+   --enable-depth           enables depth handling in the compositor
+ 
+@@ -1761,6 +1764,8 @@
+             ;;
+         --enable-static-bin) static_build="yes";
+             ;;
++        --enable-static-lib) static_libs="yes";
++            ;;
+         --disable-ipv6) has_ipv6="no"
+             ;;
+         --disable-wx) has_wx="no"
+@@ -1769,6 +1774,8 @@
+             ;;
+         --disable-oss-audio) has_oss_audio="no"
+             ;;
++        --disable-sdl) has_sdl="no"
++            ;;
+         --disable-x11-shm) has_x11_shm="no"
+             ;;
+         --disable-x11-xv) has_x11_xv="no"
+@@ -2422,6 +2429,7 @@
+ echo "debug version: $debuginfo"
+ echo "GProf enabled: $gprof_build"
+ echo "Static build enabled: $static_build"
++echo "Static libs build enabled: $static_libs"
+ echo "Memory tracking enabled: $use_memory_tracking"
+ echo "Use standard memory allocator: $use_std_alloc"
+ echo "Fixed-Point Version: $use_fixed_point"
+@@ -3039,6 +3047,7 @@
+ echo "DEBUGBUILD=$debuginfo" >> config.mak
+ echo "GPROFBUILD=$gprof_build" >> config.mak
+ echo "STATICBUILD=$static_build" >> config.mak
++echo "STATICLIBS=$static_libs" >> config.mak
+ 
+ echo "CONFIG_IPV6=$has_ipv6" >> config.mak
+ if test "$has_ipv6" = "yes" ; then
+@@ -3237,12 +3246,6 @@
+ fi
+ 
+ 
+-echo '%.opic : %.c' >> config.mak
+-if test "$verbose" = "no" ; then
+-echo '	@echo "  CC $<"' >> config.mak
+-fi
+-echo '	$(CC) $(CFLAGS) $(PIC_CFLAGS) -c $< -o $@' >> config.mak
+-
+ echo '%.o : %.c' >> config.mak
+ if test "$verbose" = "no" ; then
+ echo '	@echo "  CC $<"' >> config.mak
+Index: modules/jack/Makefile
+===================================================================
+--- modules/jack/Makefile	(revision 5456)
++++ modules/jack/Makefile	(working copy)
+@@ -25,7 +25,7 @@
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib  -ljack
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib  -ljack
+ 
+ clean: 
+ 	rm -f $(OBJS) ../../bin/gcc/$(LIB)
+Index: modules/oss_audio/Makefile
+===================================================================
+--- modules/oss_audio/Makefile	(revision 5456)
++++ modules/oss_audio/Makefile	(working copy)
+@@ -35,7 +35,7 @@
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac $(OSS_LDFLAGS)
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac $(OSS_LDFLAGS)
+ ifeq ($(STATICBUILD),yes)
+ 	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/gm_oss_audio-static.$(DYN_LIB_SUFFIX) $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac_static $(OSS_LDFLAGS)
+ endif
+Index: modules/pulseaudio/Makefile
+===================================================================
+--- modules/pulseaudio/Makefile	(revision 5456)
++++ modules/pulseaudio/Makefile	(working copy)
+@@ -25,7 +25,7 @@
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib -lpulse-simple
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib -lpulse-simple -lpulse
+ 
+ clean: 
+ 	rm -f $(OBJS) ../../bin/gcc/$(LIB)
+Index: modules/vtt_in/vtt_dec.c
+===================================================================
+--- modules/vtt_in/vtt_dec.c	(revision 5456)
++++ modules/vtt_in/vtt_dec.c	(working copy)
+@@ -128,6 +128,7 @@
+ 
+ 	case GPAC_OTI_SCENE_VTT_MP4:
+ 	{
++#ifdef GPAC_HAS_SPIDERMONKEY
+ 		char start[100], end[100];
+ 		GF_List *cues;
+ 		cues = gf_webvtt_parse_cues_from_data(inBuffer, inBufferLength, 0);
+@@ -142,6 +143,7 @@
+ 			}
+ 		}
+ 		gf_list_del(cues);
++#endif
+ 	}
+ 	break;
+ 
+Index: src/Makefile
+===================================================================
+--- src/Makefile	(revision 5456)
++++ src/Makefile	(working copy)
+@@ -607,12 +607,16 @@
+ 	@echo "OBJS $(OBJS)"
+ 	@echo "LIBS $(EXTRALIBS)"
+ ifeq ($(CONFIG_DARWIN),yes)
++ifeq ($(STATICLIBS),yes)
+ 	$(LIBTOOL) -s -o ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o $@ $(OBJS) $(EXTRALIBS) 
+ else
++ifeq ($(STATICLIBS),yes)
+ 	$(AR) cr ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o $@ $(OBJS) $(EXTRALIBS)
+ ifeq (,$(findstring yes, $(CONFIG_WIN32)))
+ 	mv $@ $@.$(VERSION_SONAME)

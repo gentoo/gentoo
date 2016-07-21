@@ -1,0 +1,184 @@
+diff -aruw pgpool-II-3.5.0.orig/src/include/pool.h pgpool-II-3.5.0/src/include/pool.h
+--- pgpool-II-3.5.0.orig/src/include/pool.h	2016-02-10 03:53:31.000000000 -0500
++++ pgpool-II-3.5.0/src/include/pool.h	2016-03-12 06:47:15.297966248 -0500
+@@ -72,16 +72,16 @@
+ #define HBA_CONF_FILE_NAME "pool_hba.conf"
+ 
+ /* pid file directory */
+-#define DEFAULT_LOGDIR "/tmp"
++#define DEFAULT_LOGDIR "@PGPOOL_SOCKETDIR@"
+ 
+ /* Unix domain socket directory */
+-#define DEFAULT_SOCKET_DIR "/tmp"
++#define DEFAULT_SOCKET_DIR "@PGPOOL_SOCKETDIR@"
+ 
+ /* Unix domain socket directory for watchdog IPC */
+-#define DEFAULT_WD_IPC_SOCKET_DIR "/tmp"
++#define DEFAULT_WD_IPC_SOCKET_DIR "@PGPOOL_SOCKETDIR@"
+ 
+ /* pid file name */
+-#define DEFAULT_PID_FILE_NAME "/var/run/pgpool/pgpool.pid"
++#define DEFAULT_PID_FILE_NAME "@PGPOOL_SOCKETDIR@/pgpool.pid"
+ 
+ /* status file name */
+ #define STATUS_FILE_NAME "pgpool_status"
+diff -aruw pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample pgpool-II-3.5.0/src/sample/pgpool.conf.sample
+--- pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample	2016-02-10 03:53:31.000000000 -0500
++++ pgpool-II-3.5.0/src/sample/pgpool.conf.sample	2016-03-12 08:55:22.318087007 -0500
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -214,10 +210,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/var/log/pgpool'
++logdir = '/var/lib/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -aruw pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-master-slave pgpool-II-3.5.0/src/sample/pgpool.conf.sample-master-slave
+--- pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-master-slave	2016-02-10 03:53:31.000000000 -0500
++++ pgpool-II-3.5.0/src/sample/pgpool.conf.sample-master-slave	2016-03-12 08:55:45.284665542 -0500
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -214,10 +210,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/var/lib/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -aruw pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-replication pgpool-II-3.5.0/src/sample/pgpool.conf.sample-replication
+--- pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-replication	2016-02-10 03:53:31.000000000 -0500
++++ pgpool-II-3.5.0/src/sample/pgpool.conf.sample-replication	2016-03-12 08:56:55.004397999 -0500
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -214,10 +210,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/var/lib/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+diff -aruw pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-stream pgpool-II-3.5.0/src/sample/pgpool.conf.sample-stream
+--- pgpool-II-3.5.0.orig/src/sample/pgpool.conf.sample-stream	2016-02-10 03:53:31.000000000 -0500
++++ pgpool-II-3.5.0/src/sample/pgpool.conf.sample-stream	2016-03-12 08:58:23.820723842 -0500
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -47,10 +45,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '@PGSQL_SOCKETDIR@'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -215,10 +211,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '@PGPOOL_SOCKETDIR@/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/var/lib/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 

@@ -1,0 +1,33 @@
+From 037906c55374cbf045f197b43c22314617dbfc21 Mon Sep 17 00:00:00 2001
+From: Daniel Leung <daniel.leung@linux.intel.com>
+Date: Wed, 25 Feb 2015 16:36:45 -0800
+Subject: [PATCH] Baytrail does not have core C7 MSR to read
+
+So do not acquire core C7 from MSR, or else it fails
+and stops the program.
+
+Reported-by: Eoff, Ullysses A <ullysses.a.eoff@intel.com>
+Signed-off-by: Daniel Leung <daniel.leung@linux.intel.com>
+---
+ src/cpu/intel_cpus.cpp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/cpu/intel_cpus.cpp b/src/cpu/intel_cpus.cpp
+index 04275e5..72ecd50 100644
+--- a/src/cpu/intel_cpus.cpp
++++ b/src/cpu/intel_cpus.cpp
+@@ -135,11 +135,6 @@ nhm_core::nhm_core(int model)
+ 	if (model == 0x37) {
+ 		has_c3_res = 0;
+ 		has_c1_res = 1;
+-		this->byt_has_ahci();
+-                if ((this->get_byt_ahci_support()) == 0)
+-                        has_c7_res = 1;/*BYT-T PC7 <- S0iX*/
+-                else
+-                        has_c7_res = 0;
+ 	} else {
+ 		has_c3_res = 1;
+ 		has_c1_res = 0;
+-- 
+2.3.1
+

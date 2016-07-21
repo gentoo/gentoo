@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/440618
+
+--- Eterm/src/mmx_cmod.S	(revision 78909)
++++ Eterm/src/mmx_cmod.S	(working copy)
+@@ -485,4 +485,8 @@ shade_ximage_32_mmx:
+ 3:
+         LEAVE
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+ #endif /* HAVE_MMX */

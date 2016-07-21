@@ -1,0 +1,57 @@
+diff -r -U1 ecl-13.5.1.orig/src/aclocal.m4 ecl-13.5.1/src/aclocal.m4
+--- ecl-13.5.1.orig/src/aclocal.m4	2013-05-28 03:37:36.000000000 +0700
++++ ecl-13.5.1/src/aclocal.m4	2014-01-12 00:34:36.663129950 +0700
+@@ -942,2 +942,6 @@
+  fi
++ if test "${system_boehm}" = "yes"; then
++   AC_CHECK_LIB( [gc], [GC_set_start_callback],
++                 [AC_DEFINE(HAVE_GC_SET_START_CALLBACK)], [] )
++ fi
+  AC_MSG_CHECKING( [whether we can use the existing Boehm-Weiser library] )
+diff -r -U1 ecl-13.5.1.orig/src/c/alloc_2.d ecl-13.5.1/src/c/alloc_2.d
+--- ecl-13.5.1.orig/src/c/alloc_2.d	2013-05-28 03:37:36.000000000 +0700
++++ ecl-13.5.1/src/c/alloc_2.d	2014-01-12 00:43:44.177106924 +0700
+@@ -33,2 +33,9 @@
+ 
++static void (*GC_old_start_callback)(void) = NULL;
++#ifdef HAVE_GC_START_CALLBACK
++extern void GC_set_start_callback(void *);
++extern void *GC_get_start_callback(void *);
++#else
++extern void *GC_start_call_back(void);
++#endif
+ static void gather_statistics();
+@@ -752,3 +759,2 @@
+ extern void (*GC_push_other_roots)();
+-extern void (*GC_start_call_back)();
+ static void (*old_GC_push_other_roots)();
+@@ -1092,3 +1098,9 @@
+ 	GC_push_other_roots = stacks_scanner;
++#ifdef HAVE_GC_SET_START_CALLBACK
++	GC_old_start_callback = GC_get_start_callback();
++	GC_set_start_callback(gather_statistics);
++#else
++	GC_old_start_callback = GC_start_call_back;
+ 	GC_start_call_back = (void (*)())gather_statistics;
++#endif
+ 	GC_java_finalization = 1;
+@@ -1200,3 +1212,3 @@
+  */
+-#if 1 /*GBC_BOEHM == 0*/
++#if GBC_BOEHM == 0
+ extern int GC_print_stats;
+@@ -1279,2 +1291,4 @@
+ 	}
++	if (GC_old_start_callback)
++		GC_old_start_callback();
+ }
+Только в ecl-13.5.1/src/c: alloc_2.d.orig
+diff -r -U1 ecl-13.5.1.orig/src/h/config.h.in ecl-13.5.1/src/h/config.h.in
+--- ecl-13.5.1.orig/src/h/config.h.in	2013-05-28 03:37:36.000000000 +0700
++++ ecl-13.5.1/src/h/config.h.in	2014-01-12 00:34:36.663129950 +0700
+@@ -310,2 +310,5 @@
+ 
++/* GC_set_start_callback						*/
++#define HAVE_GC_SET_START_CALLBACK
++
+ /*

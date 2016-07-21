@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
+  <use>
+    <flag name="geonames">Install geonames.org provider</flag>
+    <flag name="gsmloc">Install GSM location provider</flag>
+    <flag name="gtk">Install gtk-based geoclue-test-gui</flag>
+    <flag name="hostip">Install hostip.info provder</flag>
+    <flag name="manual">Install manual provider</flag>
+    <flag name="modemmanager">Enable geolocation through 3G or GPS enabled hardware through <pkg>net-misc/modemmanager</pkg>.</flag>
+    <flag name="nominatim">Install openstreetmap.org provider</flag>
+    <flag name="plazes">Install plazes.com provider</flag>
+    <flag name="skyhook">Install skyhookwireless.com provider</flag>
+    <flag name="yahoo-geo">Install Yahoo geolocation provider</flag>
+    <flag name="zeroconf">Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare</flag>
+  </use>
+</pkgmetadata>

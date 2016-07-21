@@ -1,0 +1,30 @@
+diff -Nur Ultimate3.0.0.rc2.orig/include/config.h Ultimate3.0.0.rc2/include/config.h
+--- Ultimate3.0.0.rc2.orig/include/config.h	2005-01-30 15:01:45.677952244 +0100
++++ Ultimate3.0.0.rc2/include/config.h	2005-01-30 15:02:43.353895511 +0100
+@@ -127,13 +127,13 @@
+ #endif
+ 
+ /* dirs */
+-#define DPATH		IRCD_PREFIX                                                     
++#define DPATH		IRCD_PREFIX
+ #define BINPATH		IRCD_PREFIX "/bin/"
+-#define ETCPATH		IRCD_PREFIX "/etc"
+-#define LOGPATH		IRCD_PREFIX "/logs"
++#define ETCPATH		"@GENTOO_PORTAGE_EPREFIX@/etc/ultimateircd"
++#define LOGPATH		"@GENTOO_PORTAGE_EPREFIX@/var/log/ultimateircd"
+ 
+ /* files */
+-#define SPATH		BINPATH "/ircd"			/* ircd executable */
++#define SPATH		BINPATH "/ultimateircd"			/* ircd executable */
+ 
+ #define CPATH		ETCPATH "/ircd.conf"		/* ircd.conf file */
+ #define DCONF		ETCPATH "/ircd.ini"		/* Dynamic Configuration File */
+@@ -144,7 +144,7 @@
+ #define	SMPATH		ETCPATH "/ircd.smotd"		/* Short Message Of The Day */
+ #define OMPATH		ETCPATH "/ircd.opermotd"	/* Operator Message Of The Day */
+ #define RPATH		ETCPATH "/ircd.rules"		/* Rules File */
+-#define	PPATH		ETCPATH "/ircd.pid"		/* IRCd PID */
++#define	PPATH		"@GENTOO_PORTAGE_EPREFIX@/var/run/ultimateircd/ircd.pid"		/* IRCd PID */
+ #define IRCDSSL_CPATH 	ETCPATH "/ircd.crt"		/* Client SSL */
+ #define IRCDSSL_KPATH 	ETCPATH "/ircd.key"		/* Client SSL */
+ 

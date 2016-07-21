@@ -1,0 +1,39 @@
+--- src/third_party/zlib/zlib.gyp
++++ src/third_party/zlib/zlib.gyp
+@@ -81,14 +81,6 @@
+           'defines': [
+             'USE_SYSTEM_ZLIB',
+           ],
+-          'sources': [
+-            'contrib/minizip/ioapi.c',
+-            'contrib/minizip/ioapi.h',
+-            'contrib/minizip/unzip.c',
+-            'contrib/minizip/unzip.h',
+-            'contrib/minizip/zip.c',
+-            'contrib/minizip/zip.h',
+-          ],
+           'conditions': [
+             ['OS=="android"', {
+               'toolsets': ['target', 'host'],
+@@ -97,6 +89,7 @@
+           'link_settings': {
+             'libraries': [
+               '-lz',
++              '-lminizip',
+             ],
+           },
+         }],
+
+https://code.google.com/p/mod-spdy/issues/detail?id=71
+
+--- src/build/common.gypi
++++ src/build/common.gypi
+@@ -25,7 +25,7 @@
+     # (Chromium already has transitive dependencies on these libraries
+     # via gtk). We want to link these libraries into our binaries so
+     # we change the default behavior.
+-    'use_system_zlib': 0,
++    'use_system_zlib%': 0,
+     'use_system_apache_dev%': 0,
+ 
+     # Putting a variables dict inside another variables dict looks kind of

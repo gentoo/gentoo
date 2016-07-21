@@ -1,0 +1,52 @@
+ Makefile.in |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a44371a..dfd44b0 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -217,7 +217,7 @@ install_inc: $(INCDIR)
+ 
+ install_man: $(MANDIR) libr_man func_man prog_man misc_man file_man
+ 
+-libr_man:
++libr_man: $(MANDIR)
+ 	if test "@MAKE_MAN_PAGES@"_ = "yes"_; then \
+ 	  for template in man/libr/*.in; do \
+ 	    page=`basename "$$template" .in`; \
+@@ -225,7 +225,7 @@ libr_man:
+ 	  done ; \
+ 	fi
+ 
+-func_man:
++func_man: $(MANDIR) 
+ 	if test "@MAKE_MAN_PAGES@"_ = "yes"_; then \
+ 	  for template in man/func/*.in; do \
+ 	    page=`basename "$$template" .in`; \
+@@ -233,7 +233,7 @@ func_man:
+ 	  done ; \
+ 	fi
+ 
+-prog_man:
++prog_man: $(MANDIR)
+ 	if test "@MAKE_MAN_PAGES@"_ = "yes"_; then \
+ 	  for template in man/prog/*.in; do \
+ 	    page=`basename "$$template" .in`; \
+@@ -241,7 +241,7 @@ prog_man:
+ 	  done ; \
+ 	fi
+ 
+-misc_man:
++misc_man: $(MANDIR)
+ 	if test "@MAKE_MAN_PAGES@"_ = "yes"_; then \
+ 	  for template in man/misc/*.in; do \
+ 	    page=`basename "$$template" .in`; \
+@@ -249,7 +249,7 @@ misc_man:
+ 	  done ; \
+ 	fi
+ 
+-file_man:
++file_man: $(MANDIR)
+ 	if test "@MAKE_MAN_PAGES@"_ = "yes"_; then \
+ 	  for template in man/file/*.in; do \
+ 	    page=`basename "$$template" .in`; \

@@ -1,0 +1,24 @@
+uses __getname/__putname instead of getname. getname was deprecated
+the new code calls __getname (which really is a specific type of 
+memory allocator, then copies the string safely from user space
+into the allocated buffer
+
+--- vmblock-only/linux/control.c	2014-03-15 15:28:40.871076076 +0100
++++ vmblock-only/linux/control.c.new	2014-03-15 15:29:15.079074439 +0100
+@@ -279,11 +279,17 @@
+    int i;
+    int retval;
+ 
+-   name = getname(buf);
++   name = __getname();
+    if (IS_ERR(name)) {
+       return PTR_ERR(name);
+    }
+ 
++   i = strncpy_from_user(name, buf, PATH_MAX);
++   if (i < 0 || i == PATH_MAX) {
++      __putname(name);
++      return -EINVAL;
++   }
++
+    for (i = strlen(name) - 1; i >= 0 && name[i] == '/'; i--) {

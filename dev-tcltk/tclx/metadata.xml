@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>tcltk@gentoo.org</email>
+		<description>TCL / TK herd</description>
+	</maintainer>
+	<longdescription>Extended TCL</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tclx</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,142 @@
+--- darcs-2.8.5-orig/src/Darcs/Repository/Internal.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/Repository/Internal.hs	2015-01-03 12:18:03.576529408 +1100
+@@ -71,8 +71,8 @@
+                                  writeProblem, readProblem, readfromAndWritetoProblem )
+ import System.Directory ( doesDirectoryExist, setCurrentDirectory,
+                           createDirectoryIfMissing, doesFileExist )
+-import Control.Monad ( when, unless, filterM )
+-import Control.Applicative ( (<$>) )
++import Control.Monad ( when, unless, filterM, ap )
++import Control.Applicative ( Applicative(..), (<$>) )
+ import Control.Exception ( catch, IOException )
+ 
+ import Workaround ( getCurrentDirectory, renameFile, setExecutable )
+@@ -184,6 +184,10 @@
+ instance Functor (RIO p C(r u t t)) where
+     fmap f m = RIO $ \r -> fmap f (unsafeUnRIO m r)
+ 
++instance Applicative (RIO p C(r u t t)) where
++    pure  = return
++    (<*>) = ap
++
+ -- | We have an instance of Monad so that IO actions that do not
+ -- change the tentative recorded state are convenient in the IO monad.
+ instance Monad (RIO p C(r u t t)) where
+--- darcs-2.8.5-orig/src/Darcs/Patch/Prim/V1/Commute.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/Patch/Prim/V1/Commute.hs	2015-01-03 12:11:31.281425244 +1100
+@@ -6,7 +6,8 @@
+     where
+ 
+ import Prelude hiding ( pi )
+-import Control.Monad ( MonadPlus, msum, mzero, mplus )
++import Control.Applicative ( Applicative(..), Alternative(..) )
++import Control.Monad ( MonadPlus, msum, mzero, mplus, liftM, ap )
+ 
+ import qualified Data.ByteString as B (ByteString, concat)
+ import qualified Data.ByteString.Char8 as BC (pack)
+@@ -35,6 +36,17 @@
+ 
+ data Perhaps a = Unknown | Failed | Succeeded a
+ 
++instance Functor Perhaps where
++    fmap = liftM
++
++instance Applicative Perhaps where
++    pure  = return
++    (<*>) = ap
++
++instance Alternative Perhaps where
++    (<|>) = mplus
++    empty = mzero
++
+ instance  Monad Perhaps where
+     (Succeeded x) >>= k =  k x
+     Failed   >>= _      =  Failed
+--- darcs-2.8.5-orig/src/Darcs/IO.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/IO.hs	2015-01-03 12:06:40.423103022 +1100
+@@ -23,6 +23,7 @@
+ import Data.Char ( toLower )
+ import Data.List ( isSuffixOf )
+ import System.IO.Error ( isDoesNotExistError, isPermissionError )
++import Control.Applicative ( Applicative(..) )
+ import Control.Exception.Extensible ( catch, SomeException, IOException )
+ import Control.Monad.Error
+ import System.Directory ( createDirectory,
+@@ -97,6 +98,10 @@
+ instance Functor TolerantIO where
+     fmap f m = m >>= return . f
+ 
++instance Applicative TolerantIO where
++    pure  = return
++    (<*>) = ap
++
+ instance Monad TolerantIO where
+     f >>= g = runTM $ runIO f >>= runIO . g
+     f >> g = runTM $ runIO f >> runIO g
+@@ -106,6 +111,10 @@
+ instance Functor SilentIO where
+     fmap f m = m >>= return . f
+ 
++instance Applicative SilentIO where
++    pure  = return
++    (<*>) = ap
++
+ instance Monad SilentIO where
+     f >>= g = runTM $ runIO f >>= runIO . g
+     f >> g = runTM $ runIO f >> runIO g
+--- darcs-2.8.5-orig/src/Darcs/Patch/V2/Real.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/Patch/V2/Real.hs	2015-01-03 11:14:40.109221505 +1100
+@@ -29,6 +29,9 @@
+     , mergeUnravelled
+     ) where
+ 
++#if MIN_VERSION_base(4,8,0)
++import Prelude hiding ( (*>) )
++#endif
+ import Control.Monad ( mplus, liftM )
+ import qualified Data.ByteString.Char8 as BC ( ByteString, pack )
+ import Data.Maybe ( fromMaybe )
+--- darcs-2.8.5-orig/src/Darcs/Patch/V2/Non.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/Patch/V2/Non.hs	2015-01-03 11:14:08.073788136 +1100
+@@ -40,7 +40,11 @@
+     , (>>*)
+     ) where
+ 
++#if MIN_VERSION_base(4,8,0)
++import Prelude hiding ( rem, (*>) )
++#else
+ import Prelude hiding ( rem )
++#endif
+ import Data.List ( delete )
+ import Control.Monad ( liftM, mzero )
+ import Darcs.Patch.Commute ( commuteFL )
+--- darcs-2.8.5-orig/src/Darcs/Patch/V1/Commute.hs	2014-08-26 06:27:34.000000000 +1000
++++ darcs-2.8.5/src/Darcs/Patch/V1/Commute.hs	2015-01-03 12:11:47.084707544 +1100
+@@ -28,7 +28,8 @@
+     )
+        where
+ 
+-import Control.Monad ( MonadPlus, mplus, msum, mzero, guard )
++import Control.Applicative ( Applicative(..), Alternative(..) )
++import Control.Monad ( MonadPlus, mplus, msum, mzero, guard, liftM, ap )
+ 
+ import Darcs.Patch.Commute ( toFwdCommute )
+ import Darcs.Patch.ConflictMarking ( mangleUnravelled )
+@@ -69,6 +70,17 @@
+ 
+ data Perhaps a = Unknown | Failed | Succeeded a
+ 
++instance Functor Perhaps where
++    fmap = liftM
++
++instance Applicative Perhaps where
++    pure  = return
++    (<*>) = ap
++
++instance Alternative Perhaps where
++    (<|>) = mplus
++    empty = mzero
++
+ instance  Monad Perhaps where
+     (Succeeded x) >>= k =  k x
+     Failed   >>= _      =  Failed

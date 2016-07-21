@@ -1,0 +1,11 @@
+--- src/locale_dialog.cpp.old	2014-05-20 22:30:07.399795787 +0200
++++ src/locale_dialog.cpp	2014-05-20 22:31:12.079600999 +0200
+@@ -85,7 +85,7 @@
+ 	if (paths.isEmpty()) {
+ 		QString appdir = QCoreApplication::applicationDirPath();
+ 		paths.append(appdir);
+-		paths.append(appdir + "/../share/" + QCoreApplication::applicationName().toLower());
++		paths.append("@GENTOO_DATADIR@");
+ 		paths.append(appdir + "/../Resources");
+ 	}
+ 	foreach (const QString& path, paths) {

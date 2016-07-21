@@ -1,0 +1,27 @@
+https://bitbucket.org/ianb/webob/issue/11
+https://bitbucket.org/ianb/webob/changeset/145b64e724eb
+
+--- tests/test_misc.py
++++ tests/test_misc.py
+@@ -130,7 +130,8 @@
+ 
+ 
+ def test_multidict_cgi():
+-    fs = cgi.FieldStorage()
++    env = {'QUERY_STRING': ''}
++    fs = cgi.FieldStorage(environ=env)
+     fs.filename = '\xc3\xb8'
+     plain = MultiDict(key='\xc3\xb8', fs=fs)
+     ua = UnicodeMultiDict(multi=plain, encoding='utf-8')
+--- tests/test_multidict.py
++++ tests/test_multidict.py
+@@ -187,7 +187,8 @@
+         d = self._get_instance()
+         d.decode_keys = True
+ 
+-        fs = cgi.FieldStorage()
++        env = {'QUERY_STRING': ''}
++        fs = cgi.FieldStorage(environ=env)
+         fs.name = 'a'
+         self.assertEqual(d._decode_value(fs).name, 'a')
+ 

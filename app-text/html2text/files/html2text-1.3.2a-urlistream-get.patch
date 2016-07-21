@@ -1,0 +1,11 @@
+--- a/urlistream.C
++++ b/urlistream.C
+@@ -362,7 +362,7 @@
+ int
+ urlistream::get()
+ {
+-  char ch;
++  unsigned char ch;
+   int ret = ::read(fd_, &ch, 1);
+   return (ret > 0 ? ch : -1);
+ }

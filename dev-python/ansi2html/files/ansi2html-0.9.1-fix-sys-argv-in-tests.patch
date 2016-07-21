@@ -1,0 +1,27 @@
+From d70863b135d959a6e79cf3019700cac302336abe Mon Sep 17 00:00:00 2001
+From: Corentin Chary <corentin.chary@gmail.com>
+Date: Sun, 22 Jul 2012 09:24:52 +0200
+Subject: [PATCH 2/3] Always patch sys.argv when calling main()
+
+---
+ tests/test_ansi2html.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_ansi2html.py b/tests/test_ansi2html.py
+index 00b794f..c961859 100644
+--- a/tests/test_ansi2html.py
++++ b/tests/test_ansi2html.py
+@@ -45,8 +45,9 @@ class TestAnsi2HTML(unittest.TestCase):
+             actual = html[idx].strip()
+             self.assertEqual(expected, actual)
+ 
++    @patch("sys.argv", new_callable=lambda: ["ansi2html"])
+     @patch("sys.stdout", new_callable=six.StringIO)
+-    def test_conversion_as_command(self, mock_stdout):
++    def test_conversion_as_command(self, mock_stdout, mock_argv):
+         with open(join(_here, "ansicolor.txt"), "rb") as input:
+             test_data = "".join(read_to_unicode(input))
+ 
+-- 
+1.7.9.5
+

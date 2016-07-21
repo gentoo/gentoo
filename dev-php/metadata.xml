@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-php category contains libraries and utilities relevant to the
+		PHP programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-php enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache PHP.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-php contiene librerías y utilidades referentes al
+		lenguaje de programación PHP.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-php カテゴリーにはPHPプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-php categorie bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal PHP.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-php chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình PHP.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-php contiene librerie ed utilità per il linguaggio di programmazione  PHP.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-php contém bibliotecas e utilitários referentes
+		à linguagem de programação PHP.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-php zawiera biblioteki i narzędzia związane z językiem
+		programowania PHP.
+	</longdescription>
+</catmetadata>
+

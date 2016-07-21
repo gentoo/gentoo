@@ -1,0 +1,15 @@
+Fix build failure with GCC 4.7.
+https://bugs.gentoo.org/441800
+
+
+--- a/src/items/DatatypeFactoryTemplate.hpp
++++ b/src/items/DatatypeFactoryTemplate.hpp
+@@ -79,7 +79,7 @@ public:
+   AnyAtomicType::Ptr createInstance(const XMLCh* value,
+                                     const DynamicContext* context) const
+   {
+-    return createInstanceNoCheck(DatatypeFactoryTemplate<TYPE>::getPrimitiveTypeURI(),
++    return this->createInstanceNoCheck(DatatypeFactoryTemplate<TYPE>::getPrimitiveTypeURI(),
+                                  DatatypeFactoryTemplate<TYPE>::getPrimitiveTypeName(), value, context);
+   }
+ 

@@ -1,0 +1,50 @@
+diff --git a/src/common/RWLock.h b/src/common/RWLock.h
+index 1a70ef1..2676ede 100644
+--- a/src/common/RWLock.h
++++ b/src/common/RWLock.h
+@@ -18,6 +18,7 @@
+ #define CEPH_RWLock_Posix__H
+ 
+ #include <pthread.h>
++#include "include/assert.h"
+ #include "lockdep.h"
+ #include "include/atomic.h"
+ 
+diff --git a/src/osd/ECBackend.cc b/src/osd/ECBackend.cc
+index 39e3429..64cd74f 100644
+--- a/src/osd/ECBackend.cc
++++ b/src/osd/ECBackend.cc
+@@ -13,7 +13,7 @@
+  */
+ 
+ #include <boost/variant.hpp>
+-#include <boost/optional.hpp>
++#include <boost/optional/optional_io.hpp>
+ #include <iostream>
+ #include <sstream>
+ 
+@@ -81,7 +81,7 @@ ostream &operator<<(ostream &lhs, const ECBackend::read_result_t &rhs)
+   lhs << "read_result_t(r=" << rhs.r
+       << ", errors=" << rhs.errors;
+   if (rhs.attrs) {
+-    lhs << ", attrs=" << rhs.attrs;
++    lhs << ", attrs=" << rhs.attrs.get();
+   } else {
+     lhs << ", noattrs";
+   }
+diff --git a/src/osd/ReplicatedPG.cc b/src/osd/ReplicatedPG.cc
+index c8fb01e..b04f8f4 100644
+--- a/src/osd/ReplicatedPG.cc
++++ b/src/osd/ReplicatedPG.cc
+@@ -5065,7 +5065,10 @@ void ReplicatedPG::do_osd_op_effects(OpContext *ctx)
+   for (list<OpContext::NotifyAck>::iterator p = ctx->notify_acks.begin();
+        p != ctx->notify_acks.end();
+        ++p) {
+-    dout(10) << "notify_ack " << make_pair(p->watch_cookie, p->notify_id) << dendl;
++    if (p->watch_cookie)
++      dout(10) << "notify_ack " << make_pair(p->watch_cookie.get(), p->notify_id) << dendl;
++    else
++      dout(10) << "notify_ack " << make_pair("NULL", p->notify_id) << dendl;
+     for (map<pair<uint64_t, entity_name_t>, WatchRef>::iterator i =
+ 	   ctx->obc->watchers.begin();
+ 	 i != ctx->obc->watchers.end();

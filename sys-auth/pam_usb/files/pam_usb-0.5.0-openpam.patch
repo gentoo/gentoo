@@ -1,0 +1,16 @@
+--- src/pam.c
++++ src/pam.c
+@@ -16,8 +16,12 @@
+  */
+ 
+ #define PAM_SM_AUTH
++
++#include <stdlib.h>
++#include <string.h>
++
+ #include <security/pam_modules.h>
+-#include <security/_pam_macros.h>
++#include <security/pam_appl.h>
+ 
+ #include "version.h"
+ #include "conf.h"

@@ -1,0 +1,7 @@
+# >=glibc-2.20 requires >=linux-2.6.32.
+>=sys-libs/glibc-2.20
+
+# >=python-3.4 assumes F_DUPFD_CLOEXEC of fcntl,
+# which requires >=linux-2.6.24.
+# python-3.3 seems to be unconditionally using utimensat.
+>=dev-lang/python-3

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Bio-SamTools</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::AlignWrapper</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::Alignment</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::FetchIterator</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::Pileup</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::PileupWrapper</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::Query</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::ReadIterator</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::SplitAlignmentPart</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Bam::Target</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam::Constants</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam::Fai</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam::SamToGBrowse</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam::Segment</remote-id>
+    <remote-id type="cpan-module">Bio::DB::Sam::Segment::Iterator</remote-id>
+    <remote-id type="cpan-module">Bio::SeqFeature::Coverage</remote-id>
+  </upstream>
+</pkgmetadata>

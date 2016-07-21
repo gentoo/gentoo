@@ -1,0 +1,21 @@
+diff -urN motion-3.2.12.old/ffmpeg.c motion-3.2.12/ffmpeg.c
+--- motion-3.2.12.old/ffmpeg.c	2013-06-17 20:36:45.355529743 +0200
++++ motion-3.2.12/ffmpeg.c	2013-06-17 20:35:41.868532001 +0200
+@@ -409,7 +409,7 @@
+     ffmpeg->video_st = NULL;
+ 
+     if (ffmpeg->oc->oformat->video_codec != CODEC_ID_NONE) {
+-        ffmpeg->video_st = av_new_stream(ffmpeg->oc, 0);
++        ffmpeg->video_st = avformat_new_stream(ffmpeg->oc, 0);
+         if (!ffmpeg->video_st) {
+             motion_log(LOG_ERR, 1, "av_new_stream - could not alloc stream");
+             ffmpeg_cleanups(ffmpeg);
+@@ -487,7 +487,7 @@
+     pthread_mutex_lock(&global_lock);
+ 
+     /* open the codec */
+-    if (avcodec_open(c, codec) < 0) {
++    if (avcodec_open2(c, codec, NULL) < 0) {
+         /* Release the lock. */
+         pthread_mutex_unlock(&global_lock);
+         motion_log(LOG_ERR, 1, "avcodec_open - could not open codec");

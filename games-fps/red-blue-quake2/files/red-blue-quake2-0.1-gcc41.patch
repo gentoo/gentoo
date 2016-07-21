@@ -1,0 +1,39 @@
+--- ../game/g_local.h.old	2006-05-07 00:27:45.000000000 +0200
++++ ../game/g_local.h	2006-05-07 00:28:06.000000000 +0200
+@@ -458,11 +458,6 @@
+ extern	int	sm_meat_index;
+ extern	int	snd_fry;
+ 
+-extern	int	jacket_armor_index;
+-extern	int	combat_armor_index;
+-extern	int	body_armor_index;
+-
+-
+ // means of death
+ #define MOD_UNKNOWN			0
+ #define MOD_BLASTER			1
+--- ../ctf/g_local.h.old	2006-05-07 00:36:21.000000000 +0200
++++ ../ctf/g_local.h	2006-05-07 00:36:38.000000000 +0200
+@@ -466,11 +466,6 @@
+ extern	int	sm_meat_index;
+ extern	int	snd_fry;
+ 
+-extern	int	jacket_armor_index;
+-extern	int	combat_armor_index;
+-extern	int	body_armor_index;
+-
+-
+ // means of death
+ #define MOD_UNKNOWN			0
+ #define MOD_BLASTER			1
+@@ -556,10 +556,6 @@
+ 
+ extern	cvar_t	*sv_maplist;
+ 
+-//ZOID
+-extern	qboolean	is_quad;
+-//ZOID
+-
+ #define world	(&g_edicts[0])
+ 
+ // item spawnflags

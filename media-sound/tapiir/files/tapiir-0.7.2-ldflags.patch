@@ -1,0 +1,15 @@
+Index: tapiir-0.7.2/configure
+===================================================================
+--- tapiir-0.7.2.orig/configure
++++ tapiir-0.7.2/configure
+@@ -3667,8 +3667,8 @@ See \`config.log' for more details." >&2
+    { (exit 1); exit 1; }; }
+ fi
+ 
+-CXXFLAGS=`fltk-config --cxxflags`
+-LDFLAGS=`fltk-config --ldflags`
++CXXFLAGS="$CXXFLAGS `fltk-config --cxxflags`"
++LIBS="$LIBS `fltk-config --ldflags`"
+ 
+ 
+ ac_ext=c

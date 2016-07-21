@@ -1,0 +1,102 @@
+--- empty/Makefile.am
++++ empty/Makefile.am
+@@ -9,7 +9,7 @@
+            ContactsDB-PAdd.pdb \
+            ToDoDB.pdb \
+            TasksDB-PTod.pdb \
+-           MañanaDB.pdb \
++           MananaDB.pdb \
+            MemoDB.pdb \
+            MemosDB-PMem.pdb \
+            Memo32DB.pdb \
+--- sync.c
++++ sync.c
+@@ -1146,7 +1146,7 @@
+       "ToDoDB",
+       "MemoDB",
+ #ifdef ENABLE_MANANA
+-      "MañanaDB",
++      "MananaDB",
+ #endif
+       "Saved Preferences",
+       ""
+@@ -2899,7 +2899,7 @@
+ 	"ToDoDB",
+ 	"MemoDB",
+ #ifdef ENABLE_MANANA
+-	"MañanaDB",
++	"MananaDB",
+ #endif
+ 	""
+    };
+--- todo.c
++++ todo.c
+@@ -77,7 +77,7 @@
+ #ifdef ENABLE_MANANA
+    get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+    if (ivalue) {
+-      strcpy(DBname, "MañanaDB");
++      strcpy(DBname, "MananaDB");
+    } else {
+       strcpy(DBname, "ToDoDB");
+    }
+@@ -163,7 +163,7 @@
+ #ifdef ENABLE_MANANA
+    get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+    if (ivalue) {
+-      num = jp_read_DB_files("MañanaDB", &records);
++      num = jp_read_DB_files("MananaDB", &records);
+       if (-1 == num)
+         return 0;
+    } else {
+@@ -315,7 +315,7 @@
+ #ifdef ENABLE_MANANA
+    get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+    if (ivalue) {
+-      jp_pc_write("MañanaDB", &br);
++      jp_pc_write("MananaDB", &br);
+    } else {
+       jp_pc_write("ToDoDB", &br);
+    }
+--- todo_gui.c
++++ todo_gui.c
+@@ -1029,8 +1029,8 @@
+ #ifdef ENABLE_MANANA
+    get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+    if (ivalue) {
+-      strcpy(pdb_name, "MañanaDB.pdb");
+-      strcpy(db_name, "MañanaDB");
++      strcpy(pdb_name, "MananaDB.pdb");
++      strcpy(db_name, "MananaDB");
+    } else {
+       strcpy(pdb_name, "ToDoDB.pdb");
+       strcpy(db_name, "ToDoDB");
+--- utils.c
++++ utils.c
+@@ -550,7 +550,7 @@
+       "ContactsDB-PAdd.pdb",
+       "ToDoDB.pdb",
+       "TasksDB-PTod.pdb",
+-      "MañanaDB.pdb",
++      "MananaDB.pdb",
+       "MemoDB.pdb",
+       "MemosDB-PMem.pdb",
+       "Memo32DB.pdb",
+@@ -983,7 +983,7 @@
+ #ifdef ENABLE_MANANA
+       get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+       if (ivalue) {
+-	 strcpy(filename, "MañanaDB.pc3");
++	 strcpy(filename, "MananaDB.pc3");
+       } else {
+ 	 strcpy(filename, "ToDoDB.pc3");
+       }
+@@ -3478,7 +3478,7 @@
+ #ifdef ENABLE_MANANA
+       get_pref(PREF_MANANA_MODE, &ivalue, NULL);
+       if (ivalue) {
+-	 strcpy(filename, "MañanaDB.pc3");
++	 strcpy(filename, "MananaDB.pc3");
+       } else {
+ 	 strcpy(filename, dbname[2]);
+       }

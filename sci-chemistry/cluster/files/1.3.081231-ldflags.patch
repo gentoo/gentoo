@@ -1,0 +1,41 @@
+ Makefile |   12 ++++++------
+ 1 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7892054..929564b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,27 +3,27 @@ PROG_FLGS   = -D BOOLPREDEFINED
+ 
+ SRCS = cluster.cpp DisjointSets.cpp utility.cpp
+ 
+-CFLAGS = $(OPT) $(DEBUG) $(PROG_FLGS)
++CXXFLAGS += $(OPT) $(DEBUG) $(PROG_FLGS)
+ 
+ LFLAGS = 
+ 
+ OBJLIST = cluster.o DisjointSets.o utility.o
+ 
+-CXX		= g++
++CXX		?= g++
+ 
+ .cpp.o:
+-	$(CXX) -c $*.cpp $(CFLAGS)
++	$(CXX) $(CXXFLAGS) -c $*.cpp
+ 
+-OPT             = -O3
++OPT             = 
+ DEBUG           = $(CXXDEBUGFLAGS)
+ 
+ all:    cluster
+ 
+ cluster:    $(OBJLIST)
+-	$(CXX) -o $@ $(OBJLIST) $(LFLAGS)
++	$(CXX) $(LDFLAGS) -o $@ $(OBJLIST)
+ 
+ depend:
+-	makedepend -- $(CFLAGS) -- $(SRCS)
++	makedepend -- $(CXXFLAGS) -- $(SRCS)
+ 
+ clean:
+ 	@rm -rf *.o *.ckp ii_files

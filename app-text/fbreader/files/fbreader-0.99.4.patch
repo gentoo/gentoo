@@ -1,0 +1,8 @@
+diff -r -U2 fbreader-0.99.4.orig/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp fbreader-0.99.4/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp
+--- fbreader-0.99.4.orig/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/zlibrary/ui/src/qt4/filesystem/ZLQtFSManager.cpp	2013-02-21 13:30:31.000000000 +0700
+@@ -49,3 +49,4 @@
+ 	  path = replacement + path.substr(1);
+ 	}
++	ZLUnixFSManager::normalizeRealPath(path);
+ }

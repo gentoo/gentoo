@@ -1,0 +1,9 @@
+--- fr0stlib/gui/canvas.py~	2011-05-14 19:58:25.000000000 +0200
++++ fr0stlib/gui/canvas.py	2016-02-20 17:47:25.853322560 +0100
+@@ -79,7 +79,7 @@
+ 
+     def SetBrush(self, FillColor, FillStyle):
+         r,g,b = FillColor
+-        c = wx.Color(r,g,b, self.Opacity)
++        c = wx.Colour(r,g,b, self.Opacity)
+         self.Brush = wx.Brush(c)

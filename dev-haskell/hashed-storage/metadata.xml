@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Support code for reading and manipulating hashed file storage
+		(where each file and directory is associated with a
+		cryptographic hash, for corruption-resistant storage and fast
+		comparisons).
+		
+		The supported storage formats include darcs hashed pristine, a
+		plain filesystem tree and an indexed plain tree (where the index
+		maintains hashes of the plain files and directories).
+	</longdescription>
+	<use>
+		<flag name="diff">Provide the Storage.Hashed.Diff module.</flag>
+		<flag name="hpc">Compile with the profiling ghc flag -fhpc.</flag>
+	</use>
+</pkgmetadata>

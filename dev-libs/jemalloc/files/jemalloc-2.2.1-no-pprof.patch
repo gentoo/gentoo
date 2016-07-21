@@ -1,0 +1,24 @@
+--- a/Makefile.in	2011-04-11 10:42:32.084403330 -0500
++++ b/Makefile.in	2011-04-11 10:43:23.490760665 -0500
+@@ -42,7 +42,6 @@
+ endif
+ 
+ # Lists of files.
+-BINS := @srcroot@bin/pprof
+ CHDRS := @objroot@include/jemalloc/jemalloc@install_suffix@.h \
+ 	@objroot@include/jemalloc/jemalloc_defs@install_suffix@.h
+ CSRCS := @srcroot@src/jemalloc.c @srcroot@src/arena.c @srcroot@src/atomic.c \
+@@ -141,13 +140,6 @@
+ 	$(CC) -o $@ $< -L@objroot@lib -ljemalloc@install_suffix@
+ endif
+ 
+-install_bin:
+-	install -d $(BINDIR)
+-	@for b in $(BINS); do \
+-	echo "install -m 755 $$b $(BINDIR)"; \
+-	install -m 755 $$b $(BINDIR); \
+-done
+-
+ install_include:
+ 	install -d $(INCLUDEDIR)/jemalloc
+ 	@for h in $(CHDRS); do \

@@ -1,0 +1,20 @@
+diff -Nur CHOLMOD.orig/Partition/cholmod_metis.c CHOLMOD/Partition/cholmod_metis.c
+--- CHOLMOD.orig/Partition/cholmod_metis.c	2012-03-13 03:57:37.000000000 +0000
++++ CHOLMOD/Partition/cholmod_metis.c	2012-03-13 04:02:22.000000000 +0000
+@@ -216,6 +216,7 @@
+     int Opt [8], nn, csp ;
+     size_t n1 ;
+     DEBUG (Int nsep) ;
++    float ubfactor = 1.05;
+ 
+     /* ---------------------------------------------------------------------- */
+     /* check inputs */
+@@ -370,7 +371,7 @@
+ #endif
+ 
+     nn = n ;
+-    METIS_NodeComputeSeparator (&nn, Mp, Mi, Mnw, Mew, Opt, &csp, Mpart) ;
++    METIS_NodeComputeSeparator (&nn, Mp, Mi, Mnw, Mew, &ubfactor, Opt, &csp, Mpart) ;
+     n = nn ;
+     csep = csp ;
+ 

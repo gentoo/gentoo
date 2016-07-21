@@ -1,0 +1,11 @@
+--- configure.old	2012-01-17 12:41:09.000000000 +0000
++++ configure	2012-01-17 12:41:42.000000000 +0000
+@@ -4759,7 +4759,7 @@
+     *linux*)
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }
+-        LDFLAGS="$LDFLAGS -z defs"
++        LDFLAGS="$LDFLAGS -Wl,-z,defs"
+         ;;
+     *)
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5

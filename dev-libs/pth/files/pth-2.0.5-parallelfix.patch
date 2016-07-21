@@ -1,0 +1,15 @@
+--- Makefile.in.orig	2005-11-08 05:58:55.000000000 +1100
++++ Makefile.in	2005-11-08 06:29:02.000000000 +1100
+@@ -148,10 +148,9 @@
+ 
+ #   be aware of libtool when building the objects
+ .SUFFIXES:
+-.SUFFIXES: .c .o .lo
+-.c.o:
++%.o: %.c $(TARGET_PREQ)
+ 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+-.c.lo:
++%.lo: %.c $(TARGET_PREQ)
+ 	$(LIBTOOL) --mode=compile --quiet $(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+ 
+ #   the default target

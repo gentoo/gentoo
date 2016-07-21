@@ -1,0 +1,121 @@
+From 35cc224240ec4fc8159fc689fe3e093a81f97dc9 Mon Sep 17 00:00:00 2001
+From: Martin Szulecki <martin.szulecki@libimobiledevice.org>
+Date: Tue, 17 May 2016 15:00:04 +0200
+Subject: [PATCH] st: Init framebuffer early to fix gnome-shell crash on NVIDIA
+ drivers
+
+Checking offscreen for COGL_INVALID_HANDLE is not sufficient,
+as cogl_offscreen_new_with_texture doesn't initialize framebuffer
+objects but lets Cogl solve this the lazy way.
+cogl_offscreen_new_with_texture will never return COGL_INVALID_HANDLE
+anyways.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=764898
+---
+ src/st/st-theme-node-drawing.c    | 18 ++++++++++++------
+ src/st/st-theme-node-transition.c | 25 ++++++++++++++++++++-----
+ 2 files changed, 32 insertions(+), 11 deletions(-)
+
+diff --git a/src/st/st-theme-node-drawing.c b/src/st/st-theme-node-drawing.c
+index 85feb20..8942966 100644
+--- a/src/st/st-theme-node-drawing.c
++++ b/src/st/st-theme-node-drawing.c
+@@ -2224,6 +2224,7 @@ st_theme_node_prerender_shadow (StThemeNodePaintState *state)
+   int max_borders[4];
+   int center_radius, corner_id;
+   CoglHandle buffer, offscreen = COGL_INVALID_HANDLE;
++  CoglError *error = NULL;
+ 
+   /* Get infos from the node */
+   if (state->alloc_width < node->box_shadow_min_width ||
+@@ -2264,10 +2265,12 @@ st_theme_node_prerender_shadow (StThemeNodePaintState *state)
+                                        state->box_shadow_height,
+                                        COGL_TEXTURE_NO_SLICING,
+                                        COGL_PIXEL_FORMAT_ANY);
+-  if (buffer != COGL_INVALID_HANDLE)
+-    offscreen = cogl_offscreen_new_with_texture (buffer);
++  if (buffer == NULL)
++    return;
+ 
+-  if (offscreen != COGL_INVALID_HANDLE)
++  offscreen = cogl_offscreen_new_with_texture (buffer);
++
++  if (cogl_framebuffer_allocate (COGL_FRAMEBUFFER (offscreen), &error))
+     {
+       ClutterActorBox box = { 0, 0, state->box_shadow_width, state->box_shadow_height};
+ 
+@@ -2277,14 +2280,17 @@ st_theme_node_prerender_shadow (StThemeNodePaintState *state)
+       cogl_framebuffer_clear4f (offscreen, COGL_BUFFER_BIT_COLOR, 0, 0, 0, 0);
+ 
+       st_theme_node_paint_borders (state, offscreen, &box, 0xFF);
+-      cogl_handle_unref (offscreen);
+ 
+       state->box_shadow_pipeline = _st_create_shadow_pipeline (st_theme_node_get_box_shadow (node),
+                                                                buffer);
+     }
++  else
++    {
++      cogl_error_free (error);
++    }
+ 
+-  if (buffer != COGL_INVALID_HANDLE)
+-    cogl_handle_unref (buffer);
++  cogl_handle_unref (offscreen);
++  cogl_handle_unref (buffer);
+ }
+ 
+ static void
+diff --git a/src/st/st-theme-node-transition.c b/src/st/st-theme-node-transition.c
+index 1eef17b..afde977 100644
+--- a/src/st/st-theme-node-transition.c
++++ b/src/st/st-theme-node-transition.c
+@@ -241,6 +241,7 @@ setup_framebuffers (StThemeNodeTransition *transition,
+ {
+   StThemeNodeTransitionPrivate *priv = transition->priv;
+   guint width, height;
++  CoglError *catch_error = NULL;
+ 
+   /* template material to avoid unnecessary shader compilation */
+   static CoglHandle material_template = COGL_INVALID_HANDLE;
+@@ -263,19 +264,33 @@ setup_framebuffers (StThemeNodeTransition *transition,
+                                                   COGL_TEXTURE_NO_SLICING,
+                                                   COGL_PIXEL_FORMAT_ANY);
+ 
+-  g_return_val_if_fail (priv->old_texture != COGL_INVALID_HANDLE, FALSE);
+-  g_return_val_if_fail (priv->new_texture != COGL_INVALID_HANDLE, FALSE);
++  if (priv->old_texture == COGL_INVALID_HANDLE)
++    return FALSE;
++
++  if (priv->new_texture == COGL_INVALID_HANDLE)
++    return FALSE;
+ 
+   if (priv->old_offscreen)
+     cogl_handle_unref (priv->old_offscreen);
+   priv->old_offscreen = cogl_offscreen_new_with_texture (priv->old_texture);
++  if (!cogl_framebuffer_allocate (COGL_FRAMEBUFFER (priv->old_offscreen), &catch_error))
++    {
++      cogl_object_unref (priv->old_offscreen);
++      cogl_error_free (catch_error);
++      priv->old_offscreen = COGL_INVALID_HANDLE;
++      return FALSE;
++    }
+ 
+   if (priv->new_offscreen)
+     cogl_handle_unref (priv->new_offscreen);
+   priv->new_offscreen = cogl_offscreen_new_with_texture (priv->new_texture);
+-
+-  g_return_val_if_fail (priv->old_offscreen != COGL_INVALID_HANDLE, FALSE);
+-  g_return_val_if_fail (priv->new_offscreen != COGL_INVALID_HANDLE, FALSE);
++  if (!cogl_framebuffer_allocate (COGL_FRAMEBUFFER (priv->new_offscreen), &catch_error))
++    {
++      cogl_object_unref (priv->new_offscreen);
++      cogl_error_free (catch_error);
++      priv->new_offscreen = COGL_INVALID_HANDLE;
++      return FALSE;
++    }
+ 
+   if (priv->material == NULL)
+     {
+-- 
+2.9.0
+

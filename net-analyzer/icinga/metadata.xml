@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">A rebuild of nagios from the ground up</longdescription>
+	<use>
+		<flag name="contrib">additional scripts</flag>
+		<flag name="idoutils">Adds DB support</flag>
+		<flag name="lighttpd">Adds Lighttpd support</flag>
+		<flag name="plugins">Adds support for nagios plugins</flag>
+		<flag name="web">Adds generic web interface support</flag>
+		<flag name="eventhandler">Adds support for running custom scripts whenever a host or service state change occurs</flag>
+	</use>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">icinga/icinga-core</remote-id>
+		<remote-id type="sourceforge">icinga</remote-id>
+	</upstream>
+</pkgmetadata>

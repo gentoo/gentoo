@@ -1,0 +1,14 @@
+usage of errno requires errno.h
+
+Fabian Groffen <grobian@gentoo.org>
+
+--- get/getx11/x11_stuff.c
++++ get/getx11/x11_stuff.c
+@@ -42,6 +42,7 @@
+ #ifdef X_SHARED_MEMORY
+ #include <sys/errno.h>
+ #endif
++#include <errno.h>
+ 
+ #include "circle.bitmap"
+ #include "circle_mask.bitmap"

@@ -1,0 +1,36 @@
+diff -C 2 -r -N /tmp/automake-1.5/automake.in automake-1.5/automake.in
+*** /tmp/automake-1.5/automake.in	Thu Aug 23 07:26:53 2001
+--- automake-1.5/automake.in	Tue Feb  5 20:38:55 2002
+***************
+*** 1941,1945 ****
+  
+  	# Let the language do some special magic if required.
+! 	$lang->target_hook ($aggregate, $object, $full);
+  
+  	if ($derived_source)
+--- 1941,1947 ----
+  
+  	# Let the language do some special magic if required.
+! 	if (defined $lang) {
+! 		$lang->target_hook ($aggregate, $object, $full);
+! 	}
+  
+  	if ($derived_source)
+diff -C 2 -r -N /tmp/automake-1.5/m4/depout.m4 automake-1.5/m4/depout.m4
+*** /tmp/automake-1.5/m4/depout.m4	Mon May 14 02:01:09 2001
+--- automake-1.5/m4/depout.m4	Wed Jan 30 22:03:33 2002
+***************
+*** 13,18 ****
+  for mf in $CONFIG_FILES; do
+    case "$mf" in
+!   Makefile) dirpart=.;;
+!   */Makefile) dirpart=`echo "$mf" | sed -e 's|/[^/]*$||'`;;
+    *) continue;;
+    esac
+--- 13,18 ----
+  for mf in $CONFIG_FILES; do
+    case "$mf" in
+!   Makefile|GNUmakefile) dirpart=.;;
+!   */Makefile|*/GNUmakefile) dirpart=`echo "$mf" | sed -e 's|/[^/]*$||'`;;
+    *) continue;;
+    esac

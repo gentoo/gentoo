@@ -1,0 +1,81 @@
+ modules/clock/iso8601.test           | 2 +-
+ modules/multiplexer/multiplexer.test | 2 +-
+ modules/snit/snit.test               | 4 ++--
+ modules/struct/sets.testsuite        | 2 +-
+ modules/uev/uevent.test              | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/modules/clock/iso8601.test b/modules/clock/iso8601.test
+index 6fce938..a9db5b0 100644
+--- a/modules/clock/iso8601.test
++++ b/modules/clock/iso8601.test
+@@ -26,7 +26,7 @@ test clock-iso8601-1.0.1 {parse_date wrong\#args} -constraints {tcl8.6plus} -bod
+ 
+ test clock-iso8601-1.1 {parse_date, bad option} -body {
+     clock::iso8601 parse_date 1994-11-05 -foo x
+-} -returnCodes error -result {bad switch "-foo", must be -base, -format, -gmt, -locale or -timezone}
++} -returnCodes error -result {bad option "-foo", must be -base, -format, -gmt, -locale or -timezone}
+ 
+ # NOTE: While listed as legal, -format is NOT. This is because the
+ # command simply hands off to clock scan, and we are seeing its error
+diff --git a/modules/multiplexer/multiplexer.test b/modules/multiplexer/multiplexer.test
+index d778253..e5dfeff 100644
+--- a/modules/multiplexer/multiplexer.test
++++ b/modules/multiplexer/multiplexer.test
+@@ -189,7 +189,7 @@ proc DenyAccessFilter {chan clientaddress clientport} {
+     return -1
+ }
+ 
+-test multiplexer-5.2 {add access filter which denies access} {
++test multiplexer-5.2 {add access filter which denies access} {broken without network} {
+     set ::forever {}
+     set mp [multiplexer::create]
+     ${mp}::Init 37465
+diff --git a/modules/snit/snit.test b/modules/snit/snit.test
+index 66d7bd1..00c0769 100644
+--- a/modules/snit/snit.test
++++ b/modules/snit/snit.test
+@@ -783,7 +783,7 @@ test dtypemethod-1.6a {delegating unknown typemethod to existing typecomponent w
+     snit2
+ } -returnCodes {
+     error
+-} -result {unknown or ambiguous subcommand "foo": must be bytelength, compare, equal, first, index, is, last, length, map, match, range, repeat, replace, reverse, tolower, totitle, toupper, trim, trimleft, trimright, wordend, or wordstart}
++} -result {unknown or ambiguous subcommand "foo": must be bytelength, cat, compare, equal, first, index, is, last, length, map, match, range, repeat, replace, reverse, tolower, totitle, toupper, trim, trimleft, trimright, wordend, or wordstart}
+ 
+ test dtypemethod-1.7 {can't delegate local typemethod: order 1} -body {
+     type dog {
+@@ -3339,7 +3339,7 @@ test dmethod-1.6a {delegating unknown method to existing component with error} -
+     error
+ } -cleanup {
+     dog destroy
+-} -result {unknown or ambiguous subcommand "foo": must be bytelength, compare, equal, first, index, is, last, length, map, match, range, repeat, replace, reverse, tolower, totitle, toupper, trim, trimleft, trimright, wordend, or wordstart}
++} -result {unknown or ambiguous subcommand "foo": must be bytelength, cat, compare, equal, first, index, is, last, length, map, match, range, repeat, replace, reverse, tolower, totitle, toupper, trim, trimleft, trimright, wordend, or wordstart}
+ 
+ test dmethod-1.7 {can't delegate local method: order 1} -body {
+     type cat {
+diff --git a/modules/struct/sets.testsuite b/modules/struct/sets.testsuite
+index 29fd3ef..28a9dd6 100644
+--- a/modules/struct/sets.testsuite
++++ b/modules/struct/sets.testsuite
+@@ -13,7 +13,7 @@
+ test set-${impl}-1.0 {nothing} {
+     catch {setop} msg
+     set msg
+-} [Nothing]
++} {wrong # args: should be "::struct::set cmd ?arg ...?"}
+ 
+ test set-${impl}-1.1 {bogus} {
+     catch {setop foo} msg
+diff --git a/modules/uev/uevent.test b/modules/uev/uevent.test
+index 91754a7..6544112 100644
+--- a/modules/uev/uevent.test
++++ b/modules/uev/uevent.test
+@@ -453,7 +453,7 @@ test uevent-10.3 {watch events, watch after bind, glob} {
+     ::uevent::unbind $t4
+     ::uevent::watch::event::remove $tw
+     set res
+-} {bound TAG EX bound TAGX EX bound TAG E bound TAGX E unbound TAGX E unbound TAG E unbound TAGX EX unbound TAG EX}
++} {bound TAGX E bound TAGX EX bound TAG E bound TAG EX unbound TAGX E unbound TAG E unbound TAGX EX unbound TAG EX}
+ 
+ # -------------------------------------------------------------------------
+ rename EVENT  {}

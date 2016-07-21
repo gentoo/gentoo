@@ -1,0 +1,11 @@
+--- ext/augeas/extconf.rb.~1~	2012-10-26 10:39:01.240720232 +0200
++++ ext/augeas/extconf.rb	2012-10-26 10:53:12.413324140 +0200
+@@ -27,4 +27,8 @@
+     raise "augeas-devel not installed"
+ end
+ 
++unless pkg_config("libxml-2.0")
++    raise "libxml2-devel not installed"
++end
++
+ create_makefile(extension_name)

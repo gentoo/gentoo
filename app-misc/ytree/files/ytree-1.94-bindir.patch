@@ -1,0 +1,11 @@
+--- ./Makefile.orig	2010-04-11 17:44:57.511131862 +0200
++++ ./Makefile	2010-04-11 17:44:14.143178887 +0200
+@@ -225,6 +225,8 @@
+ 		$(CC) $(LFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+ 
+ install:	$(MAIN)
++		if [ ! -d $(BINDIR) ]; then mkdir -p $(BINDIR); fi
++		if [ ! -d $(MANDIR) ]; then mkdir -p $(MANDIR); fi
+ 		install $(MAIN) $(BINDIR)
+ 		gzip -9c ytree.1 > ytree.1.gz
+ 		if [ -d $(MANDIR) ]; then install -m 0644 ytree.1.gz  $(MANDIR)/; fi

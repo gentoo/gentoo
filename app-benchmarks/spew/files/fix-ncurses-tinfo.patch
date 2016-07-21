@@ -1,0 +1,29 @@
+diff -Naur spew-1.0.8.orig/configure.ac spew-1.0.8/configure.ac
+--- spew-1.0.8.orig/configure.ac	2014-11-19 08:15:31.284273029 -0500
++++ spew-1.0.8/configure.ac	2014-11-19 08:16:07.063274657 -0500
+@@ -21,6 +21,7 @@
+ # Checks for libraries.
+ AC_CHECK_LIB(popt, poptGetContext, ,AC_MSG_ERROR([PACKAGE] requires popt))
+ AC_CHECK_LIB(ncurses, wresize, ,AC_MSG_ERROR([PACKAGE] requires ncurses))
++PKG_CHECK_MODULES(NCURSES, [ncurses])
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+diff -Naur spew-1.0.8.orig/src/Makefile.am spew-1.0.8/src/Makefile.am
+--- spew-1.0.8.orig/src/Makefile.am	2014-11-19 08:15:31.311273030 -0500
++++ spew-1.0.8/src/Makefile.am	2014-11-19 08:16:57.034276932 -0500
+@@ -24,7 +24,7 @@
+ libtui_a_SOURCES = \
+         Tui.cpp Tui.h
+ 
+-LDADD = libcommon.a libtui.a
++LDADD = libcommon.a libtui.a $(NCURSES_LIBS)
+ 
+ bin_PROGRAMS = spew
+ spew_SOURCES = spew.cpp \
+@@ -37,4 +37,5 @@
+                SpewTuiStatisticsWindow.cpp SpewTuiStatisticsWindow.h \
+                SpewTuiStatusWindow.cpp SpewTuiStatusWindow.h
+ 
++spew_CFLAGS = $(NCURSES_CFLAGS)
+ spew_LDFLAGS = $(STATIC_LINK)

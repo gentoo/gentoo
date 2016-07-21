@@ -1,0 +1,14 @@
+Index: /branches/2.0/gdal/apps/gdalserver.c
+===================================================================
+--- /branches/2.0/gdal/apps/gdalserver.c	(revision 29667)
++++ /branches/2.0/gdal/apps/gdalserver.c	(revision 29668)
+@@ -28,7 +28,6 @@
+  ****************************************************************************/
+ 
+-#if defined(__STDC_VERSION__)
+-#define _XOPEN_SOURCE
+-#endif
++// So that __USE_XOPEN2K is defined to have getaddrinfo
++#define _XOPEN_SOURCE 600
+ 
+ #include "cpl_port.h"

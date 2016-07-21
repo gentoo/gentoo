@@ -1,0 +1,11 @@
+--- stable/origMakefile	2014-03-27 18:17:28.000000000 -0400
++++ stable/Makefile	2014-05-30 18:07:28.164255039 -0400
+@@ -19,7 +19,7 @@
+ PPC32_ARCH_INC_FILE=\"ppc32_$(DYNAMIPS_ARCH)_trans.h\"
+ OSNAME=unknown
+ 
+-CFLAGS+= $(INCLUDE) -Wall -O2 -fomit-frame-pointer \
++CFLAGS+= $(INCLUDE) -Wall \
+ 	-DJIT_ARCH=\"$(DYNAMIPS_ARCH)\" -DJIT_CPU=CPU_$(DYNAMIPS_ARCH) \
+ 	-DMIPS64_ARCH_INC_FILE=$(MIPS64_ARCH_INC_FILE) \
+ 	-DPPC32_ARCH_INC_FILE=$(PPC32_ARCH_INC_FILE) \

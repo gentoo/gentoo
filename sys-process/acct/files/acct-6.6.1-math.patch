@@ -1,0 +1,27 @@
+https://savannah.gnu.org/bugs/?42973
+https://bugs.gentoo.org/519552
+
+these files use frexp/ldexp which is in -lm
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -26,6 +26,7 @@ accton_SOURCES = accton.c common.c
+ 
+ dump_acct_SOURCES = dump-acct.c common.c file_rd.c \
+   pacct_rd.c
++dump_acct_LDADD = $(LDADD) -lm
+ 
+ dump_utmp_SOURCES = dump-utmp.c common.c file_rd.c \
+   utmp_rd.c
+@@ -37,9 +38,11 @@ last_SOURCES = last.c common.c file_rd.c hashtab.c \
+ 
+ lastcomm_SOURCES = lastcomm.c common.c dev_hash.c file_rd.c \
+   hashtab.c pacct_rd.c uid_hash.c
++lastcomm_LDADD = $(LDADD) -lm
+ 
+ sa_SOURCES = sa.c common.c file_rd.c hashtab.c \
+   pacct_rd.c uid_hash.c
++sa_LDADD = $(LDADD) -lm
+ 
+ noinst_HEADERS = common.h config.h dev_hash.h file_rd.h hashtab.h \
+   pacct_rd.h uid_hash.h utmp_rd.h al_share.cpp linux-acct.h

@@ -1,0 +1,35 @@
+--- astroscrappy/astroscrappy/utils/setup_package.py.orig	2016-03-09 22:50:34.304043122 +0000
++++ astroscrappy/astroscrappy/utils/setup_package.py	2016-03-09 22:54:53.560783823 +0000
+@@ -43,30 +43,11 @@
+                     sources=med_sources,
+                     include_dirs=include_dirs,
+                     libraries=libraries,
+-                    language="c",
+-                    extra_compile_args=['-g', '-O3', '-funroll-loops',
+-                                        '-ffast-math'])
++                    language="c")
+     ext_im = Extension(name=str("astroscrappy.utils.image_utils"),
+                     sources=im_sources,
+                     include_dirs=include_dirs,
+                     libraries=libraries,
+-                    language="c",
+-                    extra_compile_args=['-g', '-O3', '-funroll-loops',
+-                                        '-ffast-math'])
+-
+-    has_openmp, outputs = check_openmp()
+-    if has_openmp:
+-        ext_med.extra_compile_args.append('-fopenmp')
+-        ext_im.extra_compile_args.append('-fopenmp')
+-        ext_med.extra_link_args = ['-g', '-fopenmp']
+-        ext_im.extra_link_args = ['-g', '-fopenmp']
+-    else:
+-        log.warn('OpenMP was not found. '
+-                 'astroscrappy will be compiled without OpenMP. '
+-                 '(Use the "-v" option of setup.py for more details.)')
+-        log.debug(('(Start of OpenMP info)\n'
+-                   'compiler stdout:\n{0}\n'
+-                   'compiler stderr:\n{1}\n'
+-                   '(End of OpenMP info)').format(*outputs))
++                    language="c")
+ 
+     return [ext_med, ext_im]

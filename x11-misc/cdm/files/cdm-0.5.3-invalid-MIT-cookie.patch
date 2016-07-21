@@ -1,0 +1,19 @@
+commit c4b831f919e695d1c6882fbd76900dfa0f64cab5
+Author: ShadowKyogre <shadowkyogre@aim.com>
+Date:   Sat Feb 11 17:44:23 2012 -0800
+
+    Add case for handling the Invalid MIT cookie or something.
+
+diff --git a/src/cdm b/src/cdm
+index d5aead5..59094cc 100755
+--- a/src/cdm
++++ b/src/cdm
+@@ -128,6 +128,8 @@ else
+		elif [[ $dpyinfo = No\ protocol\ specified* ]]; then
+			# Display is in use by another user
+			let display=display+1
++		elif [[ $dpyinfo = Invalid\ MIT* ]];then
++			let display=display+1
+		else
+			break
+		fi

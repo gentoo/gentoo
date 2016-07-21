@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -65,6 +65,7 @@
+ 
+ # check for ncurses, fall back to curses
+ AC_CHECK_LIB([ncurses], [initscr],,AC_CHECK_LIB([curses], [initscr]))
++AC_SEARCH_LIBS([stdscr], [tinfo])
+ 
+ if test "x$GCC" = "xyes"; then
+         GCC_WARNINGS="-Wall -fno-strict-aliasing"

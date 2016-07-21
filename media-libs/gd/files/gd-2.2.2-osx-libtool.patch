@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/583584
+https://github.com/libgd/libgd/issues/241
+
+From dd6615fd138e53656a7883015d4a6b2d02292b26 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 21 May 2016 15:00:53 -0400
+Subject: [PATCH] libtool: rework revision to fix OS X breakage
+
+It seems the OS X linker restricts the revision field to 8 bits.
+Rework how we calculate that value and pack it in closer to fit.
+It might produce some collisions if we get to like 2.2.8, but oh
+well ... this field doesn't need to be super exact.
+
+Fixes #214 and fixes #241.
+---
+ configure.ac | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+--- a/configure
++++ b/configure
+@@ -2460,7 +2460,12 @@ AC_SUBST(GDLIB_VERSION)
+ # See http://www.gnu.org/software/libtool/manual/libtool.html#Updating-version-info
+ 
+ GDLIB_LT_CURRENT=3
++# This is the version where the soname (current above) changes.  We use it
++# to reset the revision base back to zero.  It's a bit of a pain, but some
++# systems restrict the revision range below to [0..255] (like OS X).
++GDLIB_PREV_MAJOR=2
++GDLIB_PREV_MINOR=2
+-GDLIB_LT_REVISION=$(printf '%i%02i%02i' $GDLIB_MAJOR $GDLIB_MINOR $GDLIB_REVISION)
++GDLIB_LT_REVISION=$(( ((GDLIB_MAJOR - GDLIB_PREV_MAJOR) << 6) | ((GDLIB_MINOR - GDLIB_PREV_MINOR) << 3) | GDLIB_REVISION ))
+ GDLIB_LT_AGE=0
+ 
+ 
+-- 
+2.8.2
+

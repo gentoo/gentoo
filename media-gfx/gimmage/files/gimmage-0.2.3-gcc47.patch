@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/422453
+
+error: 'get_current_dir_name' was not declared in this scope
+
+
+ src/FileManager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/FileManager.cpp
++++ b/src/FileManager.cpp
+@@ -30,7 +30,7 @@ Copyright 2006 Bartek Kostrzewa
+ 
+ extern "C" {
+ #include <libintl.h>
+-// #include <unistd.h>
++#include <unistd.h>
+ #include <sys/stat.h>
+ }
+ 

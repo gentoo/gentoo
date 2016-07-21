@@ -1,0 +1,253 @@
+diff -Nur dvibook-orig/Dvibook/Imakefile dvibook/Dvibook/Imakefile
+--- dvibook-orig/Dvibook/Imakefile	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/Dvibook/Imakefile	2004-07-08 09:24:05.038918792 +0200
+@@ -1,24 +1,15 @@
+-OBJS	=dvibook.o
+-SRCS	=dvibook.c
++#include "../Imake.Config"
+ 
+-      LIBTEXROOT= ../
+-      LIBTEXSRC	= ../libtex
+-         LIBTEX	= $(LIBTEXSRC)/libtex.a
+-      DEPLIBTEX	= $(LIBTEX)
+-        DEPLIBS = $(DEPLIBTEX) XawClientDepLibs
+-LOCAL_LIBRARIES = $(LIBTEX)
+-
+-        DEFINES = -I$(LIBTEXROOT)
++         BINDIR = $(TEX_BINDIR)
++         MANDIR = $(TEX_MANDIR)
+ 
+-FILES	=Imakefile dvibook.man Makefile.raw $(SRCS)
++          FILES = Imakefile dvibook.man $(SRCS)
+ 
+-all: dvibook
++       INCLUDES = -I$(LIBTEXROOT)
++LOCAL_LIBRARIES = $(LIBTEX)
++        DEPLIBS = $(DEPLIBTEX)
+ 
+-NormalProgramTarget(dvibook,$(OBJS),$(DEPLIBS),$(LOCAL_LIBRARIES),$(SYSLIBS))
+-InstallProgram(dvibook, $(BINDIR))
+-InstallManPage(dvibook,$(MANDIR))
+-DependTarget()
+-TagsTarget()
++SimpleProgramTarget(dvibook)
+ 
+ tar:
+ 	cd ../..;\
+diff -Nur dvibook-orig/Dvitodvi/Imakefile dvibook/Dvitodvi/Imakefile
+--- dvibook-orig/Dvitodvi/Imakefile	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/Dvitodvi/Imakefile	2004-07-08 09:24:05.039918647 +0200
+@@ -1,24 +1,15 @@
+-OBJS	=dvitodvi.o
+-SRCS	=dvitodvi.c
++#include "../Imake.Config"
+ 
+-      LIBTEXROOT= ../
+-      LIBTEXSRC	= ../libtex
+-         LIBTEX	= $(LIBTEXSRC)/libtex.a
+-      DEPLIBTEX	= $(LIBTEX)
+-        DEPLIBS = $(DEPLIBTEX) XawClientDepLibs
+-LOCAL_LIBRARIES = $(LIBTEX)
+-
+-        DEFINES = -I$(LIBTEXROOT)
++         BINDIR = $(TEX_BINDIR)
++         MANDIR = $(TEX_MANDIR)
+ 
+-FILES	=Imakefile dvitodvi.man Makefile.raw $(SRCS)
++          FILES = Imakefile dvitodvi.man $(SRCS)
+ 
+-all: dvitodvi
++       INCLUDES = -I$(LIBTEXROOT)
++LOCAL_LIBRARIES = $(LIBTEX)
++        DEPLIBS = $(DEPLIBTEX)
+ 
+-NormalProgramTarget(dvitodvi,$(OBJS),$(DEPLIBS),$(LOCAL_LIBRARIES),$(SYSLIBS))
+-InstallProgram(dvitodvi, $(BINDIR))
+-InstallManPage(dvitodvi,$(MANDIR))
+-DependTarget()
+-TagsTarget()
++SimpleProgramTarget(dvitodvi)
+ 
+ tar:
+ 	cd ../..;\
+diff -Nur dvibook-orig/Imake.Config dvibook/Imake.Config
+--- dvibook-orig/Imake.Config	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/Imake.Config	2004-07-08 09:24:05.039918647 +0200
+@@ -1,8 +1,8 @@
+ /* * Install directories for programs not related to X */
+ 
+-TEX_BINDIR = /srl/TeX/bin
+-TEX_MANDIR = /srl/TeX/man/man1
+-TEX_INPUTS = /srl/TeX/lib/tex/inputs
++TEX_BINDIR = /usr/bin
++TEX_MANDIR = /usr/share/man/man1
++MANSUFFIX = 1
+ 
+ /*
+  *	Set `FONTDESC' to the location of your fontdesc file, unquoted.
+@@ -189,7 +189,7 @@
+ /*
+  * 	 Undefine GETOP if your loader complains about multiple ref's.
+  */
+-#if 1
++#if 0
+   GETOPT=getopt.o
+ #else
+   GETOPT=
+diff -Nur dvibook-orig/libtex/error.c dvibook/libtex/error.c
+--- dvibook-orig/libtex/error.c	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/libtex/error.c	2004-07-08 09:24:05.054916460 +0200
+@@ -21,7 +21,7 @@
+ #include "types.h"		/* for HAVE_VPRINTF */
+ #include "error.h"
+ #include <stdio.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ #if defined(lint) && !defined(LINT_ANYWAY)
+ 
+@@ -34,12 +34,9 @@
+ /* VARARGS1 ARGSUSED */
+ void panic(fmt) char *fmt; { exit(1); /* NOTREACHED */ }
+ 
+-#else lint
++#else /* lint */
+ 
+ extern char *ProgName;		/* program name from argv[0] */
+-extern int errno;		/* Unix system-call error */
+-extern char *sys_errlist[];	/* table of error number => string */
+-extern int sys_nerr;		/* size of table */
+ 
+ static FILE *trap_file;		/* error diversion file, if any */
+ static void (*trap_fn)();	/* trap function */
+@@ -143,10 +140,7 @@
+ 	(void) _doprnt(fmt, l, fp);
+ #endif
+ 	if (e) {
+-		if (e < sys_nerr)
+-			(void) fprintf(fp, ": %s", sys_errlist[e]);
+-		else
+-			(void) fprintf(fp, ": Unknown error code %d", e);
++		(void) fprintf(fp, ": %s", strerror(e));
+ 	}
+ 	(void) putc('\n', fp);
+ 	(void) fflush(fp);
+@@ -160,18 +154,11 @@
+  * Print an error message and optionally quit.
+  */
+ void
+-error(va_alist)
+-	va_dcl
++error(int quit, int e, const char *fmt, ...)
+ {
+ 	va_list l;
+-	int quit, e;
+-	char *fmt;
+ 
+-	va_start(l);
+-	quit = va_arg(l, int);
+-	if ((e = va_arg(l, int)) < 0)
+-		e = errno;
+-	fmt = va_arg(l, char *);
++	va_start(l, fmt);
+ 	verror(quit, (char *)NULL, fmt, l, e);
+ 	va_end(l);
+ }
+@@ -180,15 +167,12 @@
+  * Panic (print to stderr and abort).
+  */
+ void
+-panic(va_alist)
+-	va_dcl
++panic(const char *fmt, ...)
+ {
+ 	va_list l;
+-	char *fmt;
+ 
+ 	SetErrorTrap((void (*)())NULL);	/* shut down any trap */
+-	va_start(l);
+-	fmt = va_arg(l, char *);
++	va_start(l, fmt);
+ 	verror(0, "panic: ", fmt, l, 0);
+ 	va_end(l);
+ 	abort();
+diff -Nur dvibook-orig/libtex/error.h dvibook/libtex/error.h
+--- dvibook-orig/libtex/error.h	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/libtex/error.h	2004-07-08 09:24:05.054916460 +0200
+@@ -8,7 +8,7 @@
+ /*
+  * Errors.
+  */
+-void	error(/* int quit, int e, char *fmt, ... */);
+-void	panic(/* char *fmt, ... */);
++void	error(int quit, int e, const char *fmt, ...);
++void	panic(const char *fmt, ...);
+ 
+ void	SetErrorTrap(/* void (*fn)(int quit, char *text) */);
+diff -Nur dvibook-orig/libtex/gripes0.c dvibook/libtex/gripes0.c
+--- dvibook-orig/libtex/gripes0.c	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/libtex/gripes0.c	2004-07-08 09:24:05.054916460 +0200
+@@ -14,12 +14,11 @@
+  */
+ 
+ #include <stdio.h>
++#include <errno.h>
+ #include "types.h"
+ #include "error.h"
+ #include "gripes.h"
+ 
+-extern	errno;
+-
+ /*
+  * Cannot allocate memory.
+  */
+diff -Nur dvibook-orig/libtex/sdecode.c dvibook/libtex/sdecode.c
+--- dvibook-orig/libtex/sdecode.c	1994-03-19 01:00:00.000000000 +0100
++++ dvibook/libtex/sdecode.c	2004-07-08 09:24:05.055916315 +0200
+@@ -10,7 +10,7 @@
+ #endif
+ 
+ #include <stdio.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ #include "types.h"
+ #include "sdecode.h"
+ 
+@@ -21,7 +21,7 @@
+ static int sdset;		/* flag says whether cclass[] set up */
+ 
+ static void args(), badarg();
+-static int scan(), scan_i(), scan_d();
++static int scan_i(), scan_d();
+ 
+ extern char *strsave();
+ 
+@@ -80,6 +80,8 @@
+ 	int	di_bkw;		/* true iff keyword is in static buffer */
+ };
+ 
++static int scan(register struct decode_info *di, ...);
++
+ /*
+  * `Edit' the text in the buffer in-place.
+  * Return the count of characters resulting from the edit (e.g.,
+@@ -553,17 +555,14 @@
+ }
+ 
+ static int
+-scan(va_alist)
+-	va_dcl
++scan(register struct decode_info *di, ...)
+ {
+-	register struct decode_info *di;
+ 	register char *fmt;
+ 	register int c;
+ 	char **fmtp;
+ 	va_list ap;
+ 
+-	va_start(ap);
+-	di = va_arg(ap, struct decode_info *);
++	va_start(ap, di);
+ 	fmtp = va_arg(ap, char **);
+ 	fmt = *fmtp;
+ 	while ((c = *fmt++) != 0) {

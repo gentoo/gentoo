@@ -1,0 +1,16 @@
+ src/libqhull/io.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libqhull/io.c b/src/libqhull/io.c
+index 09a0079..2bd066e 100644
+--- a/src/libqhull/io.c
++++ b/src/libqhull/io.c
+@@ -2238,7 +2238,7 @@ void qh_printfacet3math(FILE *fp, facetT *facet, qh_PRINT format, int notfirst)
+     qh_memfree(point, qh normal_size);
+   qh_settempfree(&points);
+   qh_settempfree(&vertices);
+-  qh_fprintf(fp, 9110, endfmt);
++  fprintf(fp, "%s", endfmt);
+ } /* printfacet3math */
+ 
+ 

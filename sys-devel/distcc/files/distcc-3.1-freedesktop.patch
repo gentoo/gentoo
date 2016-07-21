@@ -1,0 +1,76 @@
+diff -Naur distcc-3.1.orig/Makefile.in distcc-3.1/Makefile.in
+--- distcc-3.1.orig/Makefile.in	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/Makefile.in	2009-02-02 00:40:20.000000000 +0900
+@@ -49,13 +49,14 @@
+ includedir = @includedir@
+ oldincludedir = /usr/include
+ docdir = @docdir@
+-pkgdatadir = $(datadir)/@PACKAGE_NAME@
++icondir = $(datadir)/pixmaps
++desktopdir = $(datadir)/applications
+ 
+ include_server_builddir = $(builddir)/_include_server
+ 
+ # These must be done from here, not from autoconf, because they can 
+ # contain variable expansions written in Make syntax.  Ew.
+-DIR_DEFS = -DSYSCONFDIR="\"${sysconfdir}\"" -DPKGDATADIR="\"${pkgdatadir}\""
++DIR_DEFS = -DSYSCONFDIR="\"${sysconfdir}\"" -DICONDIR="\"${icondir}\""
+ 
+ # arguments to pkgconfig
+ GNOME_PACKAGES = @GNOME_PACKAGES@
+@@ -1003,7 +1004,8 @@
+ 	@echo "  documents            $(DESTDIR)$(docdir)"
+ 	@echo "  programs             $(DESTDIR)$(bindir)"
+ 	@echo "  system configuration $(DESTDIR)$(sysconfdir)"
+-	@echo "  shared data files    $(DESTDIR)$(pkgdatadir)"
++	@echo "  icons                $(DESTDIR)$(icondir)"
++	@echo "  .desktop file        $(DESTDIR)$(desktopdir)"
+ 
+ 
+ # install-sh can't handle multiple arguments, but we don't need any
+@@ -1086,10 +1088,10 @@
+ 	done
+ 
+ install-gnome-data: $(gnome_data)
+-	$(mkinstalldirs) "$(DESTDIR)$(pkgdatadir)"
+-	for p in $(gnome_data); do				\
+-	$(INSTALL_DATA) "$$p" "$(DESTDIR)$(pkgdatadir)" || exit 1; \
+-	done
++	$(mkinstalldirs) $(DESTDIR)$(icondir)
++	$(mkinstalldirs) $(DESTDIR)$(desktopdir)
++	$(INSTALL_DATA) gnome/distccmon-gnome-icon.png $(DESTDIR)$(icondir)
++	$(INSTALL_DATA) gnome/distccmon-gnome.desktop $(DESTDIR)$(desktopdir)
+ 
+ install-conf: $(conf_files) $(default_files)
+ 	$(mkinstalldirs) "$(DESTDIR)$(sysconfdir)/distcc"
+diff -Naur distcc-3.1.orig/gnome/distccmon-gnome.desktop distcc-3.1/gnome/distccmon-gnome.desktop
+--- distcc-3.1.orig/gnome/distccmon-gnome.desktop	2008-12-03 06:50:27.000000000 +0900
++++ distcc-3.1/gnome/distccmon-gnome.desktop	2009-02-02 00:40:55.000000000 +0900
+@@ -1,13 +1,11 @@
+ [Desktop Entry]
+-Version=0.9.4
+-Encoding=UTF-8
+ Exec=distccmon-gnome
+ Name=distcc monitor
+ GenericName=Distributed Compile Monitor
+ Comment=Graphical view of distributed compile tasks
+-Icon=distccmon-gnome-icon.png
++Icon=distccmon-gnome-icon
+ TryExec=distccmon-gnome
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Development;
++Categories=GNOME;Development;
+ StartupNotify=true
+diff -Naur distcc-3.1.orig/src/mon-gnome.c distcc-3.1/src/mon-gnome.c
+--- distcc-3.1.orig/src/mon-gnome.c	2008-12-03 06:50:25.000000000 +0900
++++ distcc-3.1/src/mon-gnome.c	2009-02-02 00:41:18.000000000 +0900
+@@ -599,7 +599,7 @@
+ 
+ #if GTK_CHECK_VERSION(2,2,0)
+   gtk_window_set_icon_from_file (GTK_WINDOW (mainwin),
+-                                 PKGDATADIR "/distccmon-gnome-icon.png",
++                                 ICONDIR "/distccmon-gnome-icon.png",
+                                  NULL);
+ #endif
+ 

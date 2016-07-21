@@ -1,0 +1,105 @@
+--- blktrace-1.1.0/btreplay/Makefile
++++ blktrace-1.1.0/btreplay/Makefile
+@@ -32,10 +32,10 @@
+ 	$(CC) $(CFLAGS) -c -o $*.o $<
+ 
+ btrecord: btrecord.o
+-	$(CC) $(CFLAGS) -o $@ $(filter %.o,$^)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^)
+ 
+ btreplay: btreplay.o
+-	$(CC) $(CFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
+ 
+ depend:
+ 	@$(CC) -MM $(CFLAGS) *.c 1> .depend
+--- blktrace-1.1.0/btt/Makefile
++++ blktrace-1.1.0/btt/Makefile
+@@ -38,7 +38,7 @@
+ 	$(CC) $(CFLAGS) -c -o $*.o $<
+ 
+ btt: $(OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
+ 
+ ifneq ($(wildcard .depend),)
+ include .depend
+--- blktrace-1.1.0/iowatcher/Makefile
++++ blktrace-1.1.0/iowatcher/Makefile
+@@ -19,7 +19,7 @@
+ 	$(CC) -o $*.o -c $(ALL_CFLAGS) $<
+ 
+ iowatcher: blkparse.o plot.o main.o tracers.o mpstat.o fio.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^) -lm
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^) -lm
+ 
+ depend:
+ 	@$(CC) -MM $(ALL_CFLAGS) *.c 1> .depend
+--- blktrace-1.1.0/Makefile
++++ blktrace-1.1.0/Makefile
+@@ -4,41 +4,35 @@
+ PROGS	= blkparse blktrace verify_blkparse blkrawverify blkiomon
+ LIBS	= -lpthread
+ SCRIPTS	= btrace
++SUBDIRS = btreplay btt iowatcher
+ 
+-ALL = $(PROGS) $(SCRIPTS) btt/btt btreplay/btrecord btreplay/btreplay \
++ALL = $(PROGS) $(SCRIPTS) 
++INSTALL_ALL = $(ALL) btt/btt btreplay/btrecord btreplay/btreplay \
+       btt/bno_plot.py iowatcher/iowatcher
+ 
+-all: $(ALL)
++all: $(ALL) $(SUBDIRS)
++.PHONY: $(SUBDIRS)
+ 
+-btt/btt:
+-	$(MAKE) -C btt
+-
+-iowatcher/iowatcher:
+-	$(MAKE) -C iowatcher
+-
+-btreplay/btrecord:
+-	$(MAKE) -C btreplay
+-
+-btreplay/btreplay:
+-	$(MAKE) -C btreplay
++$(SUBDIRS): $(PROGS)
++	$(MAKE) -C $@
+ 
+ %.o: %.c
+ 	$(CC) -o $*.o -c $(ALL_CFLAGS) $<
+ 
+ blkparse: blkparse.o blkparse_fmt.o rbtree.o act_mask.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^)
+ 
+ blktrace: blktrace.o act_mask.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^) $(LIBS)
+ 
+ verify_blkparse: verify_blkparse.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^)
+ 
+ blkrawverify: blkrawverify.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^)
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^)
+ 
+ blkiomon: blkiomon.o rbtree.o
+-	$(CC) $(ALL_CFLAGS) -o $@ $(filter %.o,$^) $(LIBS) -lrt
++	$(CC) $(ALL_CFLAGS) $(LDFLAGS) -o $@ $(filter %.o,$^) $(LIBS) -lrt
+ 
+ $(PROGS): | depend
+ 
+@@ -84,9 +78,10 @@
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(mandir)/man8
+-	$(INSTALL) -m 755 $(ALL) $(DESTDIR)$(bindir)
++	$(INSTALL) -m 755 $(INSTALL_ALL) $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 644 doc/*.1 $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 644 doc/*.8 $(DESTDIR)$(mandir)/man8
++	$(INSTALL) -m 644 iowatcher/*.1 $(DESTDIR)$(mandir)/man1
+ 
+ ifneq ($(wildcard .depend),)
+ include .depend

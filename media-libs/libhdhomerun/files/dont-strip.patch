@@ -1,0 +1,13 @@
+diff -Nur libhdhomerun/Makefile libhdhomerun.fix/Makefile
+--- libhdhomerun/Makefile	2012-08-30 15:46:27.000000000 -0500
++++ libhdhomerun.fix/Makefile	2013-03-24 14:47:08.740937164 -0500
+@@ -42,7 +42,6 @@
+ 
+ hdhomerun_config$(BINEXT) : hdhomerun_config.c $(LIBSRCS)
+ 	$(CC) $(CFLAGS) $+ $(LDFLAGS) -o $@
+-	$(STRIP) $@
+ 
+ libhdhomerun$(LIBEXT) : $(LIBSRCS)
+ 	$(CC) $(CFLAGS) -fPIC -DDLL_EXPORT $(SHARED) $+ $(LDFLAGS) -o $@
+Binary files libhdhomerun/hdhomerun_config and libhdhomerun.fix/hdhomerun_config differ
+Binary files libhdhomerun/libhdhomerun.so and libhdhomerun.fix/libhdhomerun.so differ

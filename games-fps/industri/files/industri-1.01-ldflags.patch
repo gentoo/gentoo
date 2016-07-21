@@ -1,0 +1,20 @@
+--- linux/Makefile.old	2010-10-13 11:37:27.000000000 +0200
++++ linux/Makefile	2010-10-13 11:38:20.000000000 +0200
+@@ -42,7 +42,7 @@
+ RELEASE_CFLAGS = $(BASE_CFLAGS) -O2 -march=pentium4 -pipe -msse -mfpmath=sse \
+ 	-fomit-frame-pointer -fexpensive-optimizations
+ DEBUG_CFLAGS  = $(BASE_CFLAGS) -g 
+-LDFLAGS       = -lm -ldl $(X11_LIBS) $(OPENGL_LIBS) $(PNG_LIBS) $(OPENAL_LIBS) 
++LDLIBS        = -lm -ldl $(X11_LIBS) $(OPENGL_LIBS) $(PNG_LIBS) $(OPENAL_LIBS) 
+ 
+ DO_GL_CC      = $(CC) $(CFLAGS) -o $@ -c $<
+ DO_GL_AS      = $(CC) $(CFLAGS) -DELF -x assembler-with-cpp -o $@ -c $<
+@@ -156,7 +156,7 @@
+ 
+ 
+ $(BUILDDIR)/bin/industri.run : $(GLQUAKE_OBJS)
+-	$(CC) $(CFLAGS) -o $@ $(GLQUAKE_OBJS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(GLQUAKE_OBJS) $(LDLIBS)
+ 
+ $(BUILDDIR)/glquake/cl_demo.o :      $(MOUNT_DIR)/cl_demo.c
+ 	$(DO_GL_CC)

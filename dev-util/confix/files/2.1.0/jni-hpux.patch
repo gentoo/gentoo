@@ -1,0 +1,10 @@
+--- Confix-2.0.0pre20/share/confix/autoconf-archive/m4src/ac_jni_include_dir.m4.orig	2007-02-07 21:16:20.000000000 +0100
++++ Confix-2.0.0pre20/share/confix/autoconf-archive/m4src/ac_jni_include_dir.m4	2007-02-07 21:16:34.000000000 +0100
+@@ -67,6 +67,7 @@
+ mingw*)			_JNI_INC_SUBDIRS="win32";;
+ cygwin*)		_JNI_INC_SUBDIRS="win32";;
+ interix*)		_JNI_INC_SUBDIRS="win32";;
++hpux*)			_JNI_INC_SUBDIRS="hp-ux";;
+ *)              _JNI_INC_SUBDIRS="genunix";;
+ esac
+ 

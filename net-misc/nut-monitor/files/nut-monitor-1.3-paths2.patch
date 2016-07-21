@@ -1,0 +1,11 @@
+--- NUT-Monitor~	2012-04-03 12:04:09.000000000 +0200
++++ NUT-Monitor	2012-04-03 12:05:32.949730947 +0200
+@@ -888,7 +888,7 @@
+ 
+     # Init the localisation
+     APP = "NUT-Monitor"
+-    DIR = "locale"
++    DIR = "/usr/share/locale"
+ 
+     gettext.bindtextdomain( APP, DIR )
+     gettext.textdomain( APP )

@@ -1,0 +1,97 @@
+Index: libaften/ppc/ppc_cpu_caps.h
+===================================================================
+--- aften-0.0.8/libaften/ppc/ppc_cpu_caps.h
++++ aften-0.0.8/libaften/ppc/ppc_cpu_caps.h
+@@ -20,6 +20,7 @@
+ #ifndef PPC_CPU_CAPS_H
+ #define PPC_CPU_CAPS_H
+ 
++#include "aften-types.h"
+ #include "common.h"
+ #include "cpu_caps.h"
+ 
+Index: libaften/ppc/mdct_altivec.c
+===================================================================
+--- aften-0.0.8/libaften/ppc/mdct_altivec.c	(revision 659)
++++ aften-0.0.8/libaften/ppc/mdct_altivec.c	(revision 660)
+@@ -47,11 +47,11 @@
+ #include "mem.h"
+ 
+ // sign change constants
+-static const vec_u32_t vPNNP = (vec_u32_t)
++static const vec_u32_t vPNNP = VEC_U32
+     (0x00000000, 0x80000000, 0x80000000, 0x00000000);
+-static const vec_u32_t vPNPN = (vec_u32_t)
++static const vec_u32_t vPNPN = VEC_U32
+     (0x00000000, 0x80000000, 0x00000000, 0x80000000);
+-static const vec_u32_t vNNNN = (vec_u32_t)
++static const vec_u32_t vNNNN = VEC_U32
+     (0x80000000, 0x80000000, 0x80000000, 0x80000000);
+ 
+ 
+@@ -92,7 +92,7 @@
+     vec_u8_t perm1036 = VPERMUTE4(1, 0, 3, 6);
+     vec_u8_t perm5472 = VPERMUTE4(5, 4, 7, 2);
+     vector float zero = (vector float) vec_splat_u32(0);
+-    vector float pi2_8 = (vector float)(AFT_PI2_8, AFT_PI2_8, AFT_PI2_8, AFT_PI2_8);
++    vector float pi2_8 = VEC_FLOAT(AFT_PI2_8, AFT_PI2_8, AFT_PI2_8, AFT_PI2_8);
+     vector float x0to3, x4to7, x8to11, x12to15;
+     vector float v1, v2, v3, v4, v5;
+ 
+@@ -143,7 +143,7 @@
+     vec_u8_t perm0022 = VPERMUTE4(0, 0, 2, 2);
+     vec_u8_t perm1405 = VPERMUTE4(1, 4, 0, 5);
+     vector float zero = (vector float) vec_splat_u32(0);
+-    vector float cpi = (vector float) (AFT_PI2_8, AFT_PI2_8, AFT_PI1_8, AFT_PI3_8);
++    vector float cpi = VEC_FLOAT(AFT_PI2_8, AFT_PI2_8, AFT_PI1_8, AFT_PI3_8);
+     vec_u32_t vNPNP = vec_sld(vPNPN, vPNPN, 4);
+     vector float x0to3, x4to7, x8to11, x12to15, x16to19, x20to23, x24to27, x28to31;
+     vector float pi3122, pi1322, pi1313, pi3131;
+@@ -395,7 +395,7 @@
+     vec_u8_t perm3636 = vec_add(perm1414, vec_splat_u8(8));
+     vec_u8_t perm2266, perm3377;
+ 
+-    vector float point5 = (vector float) (0.5f, 0.5f, 0.5f, 0.5f);
++    vector float point5 = VEC_FLOAT(0.5f, 0.5f, 0.5f, 0.5f);
+     vector float zero = (vector float) vec_splat_u32(0);
+     vec_u32_t vNPNP = vec_sld(vPNPN, vPNPN, 4);
+ 
+Index: libaften/ppc/altivec_common.h
+===================================================================
+--- aften-0.0.8/libaften/ppc/altivec_common.h	(revision 659)
++++ aften-0.0.8/libaften/ppc/altivec_common.h	(revision 660)
+@@ -28,11 +28,23 @@
+ typedef vector unsigned int   vec_u32_t;
+ typedef vector signed int     vec_s32_t;
+ 
++#if defined( __APPLE_CC__ ) && defined( __APPLE_ALTIVEC__ ) /* apple */
++#define VEC_U32(a,b,c,d) (vec_u32_t) (a, b, c, d)
++#define VEC_FLOAT(a,b,c,d) (vector float) (a, b, c, d)
+ #define VPERMUTE4(a,b,c,d) (vec_u8_t) \
+                              ( (a*4)+0, (a*4)+1, (a*4)+2, (a*4)+3, \
+                                (b*4)+0, (b*4)+1, (b*4)+2, (b*4)+3, \
+                                (c*4)+0, (c*4)+1, (c*4)+2, (c*4)+3, \
+                                (d*4)+0, (d*4)+1, (d*4)+2, (d*4)+3 )
++#else                   /* gnu */
++#define VEC_U32(a,b,c,d) {a, b, c, d}
++#define VEC_FLOAT(a,b,c,d) {a, b, c, d}
++#define VPERMUTE4(a,b,c,d) \
++                             { (a*4)+0, (a*4)+1, (a*4)+2, (a*4)+3, \
++                               (b*4)+0, (b*4)+1, (b*4)+2, (b*4)+3, \
++                               (c*4)+0, (c*4)+1, (c*4)+2, (c*4)+3, \
++                               (d*4)+0, (d*4)+1, (d*4)+2, (d*4)+3 }
++#endif
+ 
+ static inline vector float vec_ld_float(const float *a)
+ {
+--- aften-0.0.8/ppc_cpu_caps.bak	2007-12-23 17:13:33.000000000 +0000
++++ aften-0.0.8/libaften/ppc/ppc_cpu_caps.c	2007-12-23 17:13:43.000000000 +0000
+@@ -81,7 +81,7 @@
+         //Attempt to use AltiVec
+         if(!sigsetjmp(g_env, 0))
+         {
+-            asm volatile ( "vor v0, v0, v0" );
++            asm volatile ( "vor 0, 0, 0" );
+         }
+ 
+         //Restore the old signal handler

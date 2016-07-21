@@ -1,0 +1,16 @@
+diff --git a/src/kbdd.c b/src/kbdd.c
+index 45968be..9402725 100644
+--- a/src/kbdd.c
++++ b/src/kbdd.c
+@@ -31,9 +31,10 @@
+ #include "config.h"
+ #endif
+ 
++#include <glib.h>
++
+ #ifdef ENABLE_DBUS
+ #include <pthread.h>
+-#include <glib.h>
+ #include "dbus/m-kbdd-service.h"
+ #include "dbus/kbdd-service-glue.h"
+ #endif

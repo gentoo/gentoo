@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/show_bug.cgi?id=515160
+
+Index: backlite-1.0.3/src/import/k9avidecode.h
+===================================================================
+--- backlite-1.0.3.orig/src/import/k9avidecode.h
++++ backlite-1.0.3/src/import/k9avidecode.h
+@@ -40,7 +40,11 @@ typedef int (*avformat_find_stream_info_
+ #else
+ typedef int (*av_find_stream_info_t)(AVFormatContext *);
+ #endif
++#if LIBAVCODEC_VERSION_MAJOR < 55
+ typedef AVCodec* (*avcodec_find_decoder_t)(enum CodecID);
++#else
++typedef AVCodec* (*avcodec_find_decoder_t)(enum AVCodecID);
++#endif
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(53, 8, 0)
+ typedef int (*avcodec_open2_t)(AVCodecContext *, AVCodec *, AVDictionary **);
+ #else

@@ -1,0 +1,7 @@
+(add-to-list 'load-path "@SITELISP@")
+(autoload 'sawfish-mode "sawfish" nil t)
+(autoload 'sawfish-interaction "sawfish" nil t)
+(autoload 'sawfish-console "sawfish" nil t)
+(add-to-list 'auto-mode-alist '("\\.sawfishrc\\'" . sawfish-mode))
+(add-to-list 'auto-mode-alist '("\\.jl\\'" . sawfish-mode))
+(add-to-list 'auto-mode-alist '("\\.sawfish/rc\\'" . sawfish-mode))

@@ -1,0 +1,34 @@
+--- src/tools/texmapper/maintexmapper.cpp.old	2015-12-23 20:55:24.874102363 +0100
++++ src/tools/texmapper/maintexmapper.cpp	2015-12-23 20:55:55.071553325 +0100
+@@ -103,7 +103,7 @@
+ {
+     int		i, j;
+ 
+-    printf(title);
++    printf("%s", title);
+     for (j = 0; j < 4; j ++){
+ 	for (i = 0; i < 4; i ++) {
+ 	    printf("%.6f  ", m[i][j]);
+--- src/tools/trackgen/objects.cpp.old	2015-12-23 20:59:49.671287196 +0100
++++ src/tools/trackgen/objects.cpp	2015-12-23 21:02:21.639523189 +0100
+@@ -234,9 +234,9 @@
+ 
+ 	ssgLeaf *vt = (ssgLeaf *)ent;
+ 	if (vt->getCullFace() == TRUE) {
+-		surf = "SURF 0x10\n";
++		surf = "0x10";
+ 	} else {
+-		surf = "SURF 0x30\n";
++		surf = "0x30";
+ 	}
+ 
+ 	int num_verts = vt->getNumVertices();
+@@ -304,7 +304,7 @@
+ 	fprintf (save_fd, "numsurf %d\n", num_tris);
+ 
+ 	for (i = 0; i < num_tris; i++) {
+-		fprintf (save_fd, surf);
++		fprintf (save_fd, "SURF %s\n", surf);
+ 		fprintf (save_fd, "mat 0\n");
+ 		fprintf (save_fd, "refs 3\n");
+ 		fprintf (save_fd, "%d %g %g\n",

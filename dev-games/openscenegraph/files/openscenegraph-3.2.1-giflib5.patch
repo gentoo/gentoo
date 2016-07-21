@@ -1,0 +1,24 @@
+From: Alberto Luaces <aluaces@udc.es>
+Date: Sat, 19 Dec 2015 04:52:52 +0100
+Subject: Compatibility with giflib5.
+
+---
+ OpenSceneGraph/src/osgPlugins/gif/ReaderWriterGIF.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: git2/OpenSceneGraph/src/osgPlugins/gif/ReaderWriterGIF.cpp
+===================================================================
+--- git2.orig/OpenSceneGraph/src/osgPlugins/gif/ReaderWriterGIF.cpp
++++ git2/OpenSceneGraph/src/osgPlugins/gif/ReaderWriterGIF.cpp
+@@ -561,7 +561,11 @@ GifImageStream** obj)
+     *width_ret = giffile->SWidth;
+     *height_ret = giffile->SHeight;
+     *numComponents_ret = 4;
++#if (GIFLIB_MAJOR >= 5&& !(GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0))
++    DGifCloseFile(giffile, &Error);
++#else
+     DGifCloseFile(giffile);
++#endif
+     return buffer;
+ }
+ 

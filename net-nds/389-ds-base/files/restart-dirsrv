@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Script that restarts the ns-slapd server.
+# Exit status can be:
+#       0: Server restarted successfully
+#       1: Server could not be started
+#       2: Server started successfully (was not running)
+#       3: Server could not be stopped
+
+sleep_time=8
+/etc/init.d/389-ds status &> /dev/null
+running="${?}"
+
+rc-config stop 389-ds
+if [ "${?}" = "1" ]; then
+	sleep ${sleep_time}
+	exit 3
+fi
+rc-config start 389-ds
+if [ "${?}" = "1" ]; then
+	sleep ${sleep_time}
+	exit 1
+fi
+if [ "${running}" = "0" ]; then
+	sleep ${sleep_time}
+	exit 0
+else
+	sleep ${sleep_time}
+	exit 2
+fi

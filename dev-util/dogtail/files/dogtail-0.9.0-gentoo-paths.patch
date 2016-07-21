@@ -1,0 +1,43 @@
+diff --git a/sniff/sniff b/sniff/sniff
+index 86771f9..05f4c6a 100755
+--- a/sniff/sniff
++++ b/sniff/sniff
+@@ -45,23 +45,14 @@ class SniffApp(object):
+         if os.path.exists('sniff.ui'):
+             self.builder.add_from_file('sniff.ui')
+         else:
+-            import os
+-            path = os.path.abspath(
+-                os.path.join(__file__, os.path.pardir, os.path.pardir))
+-            if path is '/': # in case the path is /bin/sniff
+-                path = '/usr'
+-            self.builder.add_from_file(path +
++            self.builder.add_from_file(@EPREFIX_USR@ +
+                                        '/share/dogtail/glade/sniff.ui')
+         self.app = self.builder.get_object(self.appName)
+         try:
+             self.app.set_icon_from_file('../icons/dogtail-head.svg')
+         except Exception:
+             import os
+-            path = os.path.abspath(
+-                os.path.join(__file__, os.path.pardir, os.path.pardir))
+-            if path is '/':
+-                path = '/usr'
+-            self.app.set_icon_from_file(os.path.join(path,
++            self.app.set_icon_from_file(os.path.join(@EPREFIX_USR@,
+                                                      'share/icons/hicolor/scalable/apps/dogtail-head.svg'))
+         self.setUpWidgets()
+         self.connectSignals()
+@@ -666,11 +657,7 @@ def loadIcon(iconName):
+         pixbuf = GdkPixbuf.Pixbuf.new_from_file('icons/' + iconName)
+     except GObject.GError:
+         import os
+-        path = os.path.abspath(
+-            os.path.join(__file__, os.path.pardir, os.path.pardir))
+-        if path is '/':
+-                path = '/usr'
+-        iconName = os.path.join(path, 'share/dogtail/icons/', iconName)
++        iconName = os.path.join(@EPREFIX_USR@, 'share/dogtail/icons/', iconName)
+         pixbuf = GdkPixbuf.Pixbuf.new_from_file(iconName)
+     return pixbuf
+ 

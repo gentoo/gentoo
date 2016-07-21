@@ -1,0 +1,38 @@
+ xwin.c |   10 ++++++----
+ 1 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/xwin.c b/xwin.c
+index f395909..092edff 100644
+--- a/xwin.c
++++ b/xwin.c
+@@ -13552,7 +13552,7 @@ void NewActiveStruct()
+ #ifdef CRAY
+     _fcd ztr;
+ #else
+-    char ztr;
++    char ztr[4];
+ #endif
+ #endif
+ 
+@@ -13650,8 +13650,10 @@ void NewActiveStruct()
+ */
+ 	clfpstr->ihashz = 0;
+ #else
+-	strncpy(&ztr,HetAtm[j],3);
+-	parhet_(&j1,&ztr);
++	if (HetAtm[j] != NULL) {
++	   strncpy(ztr,HetAtm[j],3);
++	   parhet_(&j1,ztr);
++	}
+ #endif
+ #endif
+     }
+@@ -27353,7 +27355,7 @@ char *errstr;
+ 	UpdateZME();
+ 	RedrawScroll(&zscroll);
+     }
+-    strcpy(ZMEerr,errstr);
++    strncpy(ZMEerr,errstr,MAXZMEERR);
+     RedrawStatus();
+ }
+ 

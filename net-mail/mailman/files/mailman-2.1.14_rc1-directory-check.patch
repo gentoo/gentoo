@@ -1,0 +1,19 @@
+--- mailman-2.1.14rc1/bin/update	2010-09-09 18:51:09.000000000 +0200
++++ mailman-2.1.14rc1-1/bin/update	2010-09-14 01:02:09.000000000 +0200
+@@ -35,6 +35,7 @@
+ """
+ 
+ import os
++import stat
+ import sys
+ import time
+ import errno
+@@ -428,7 +429,7 @@
+     # Now update for the Mailman 2.1.5 qfile format.  For every filebase in
+     # the qfiles/* directories that has both a .pck and a .db file, pull the
+     # data out and re-queue them.
+-    for dirname in os.listdir(mm_cfg.QUEUE_DIR):
++    for dirname in [x for x in os.listdir(mm_cfg.QUEUE_DIR) if stat.S_ISDIR(os.stat(os.path.join(mm_cfg.QUEUE_DIR,x)).st_mode)]:
+         dirpath = os.path.join(mm_cfg.QUEUE_DIR, dirname)
+         if dirpath == mm_cfg.BADQUEUE_DIR:
+             # The files in qfiles/bad can't possibly be pickles

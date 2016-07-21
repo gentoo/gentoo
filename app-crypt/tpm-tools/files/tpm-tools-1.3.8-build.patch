@@ -1,0 +1,10 @@
+--- a/src/tpm_mgmt/tpm_nvread.c	2015-06-07 13:00:30.250314575 +0000
++++ b/src/tpm_mgmt/tpm_nvread.c	2015-06-07 12:54:45.590302275 +0000
+@@ -23,6 +23,7 @@
+ #include <ctype.h>
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <sys/stat.h>
+ 
+ #include "tpm_nvcommon.h"
+ #include "tpm_tspi.h"

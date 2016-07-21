@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/556690
+--- mtpfs.c.old	2015-08-04 21:56:13.080712801 +0200
++++ mtpfs.c	2015-08-04 21:20:54.822965092 +0200
+@@ -1324,7 +1324,7 @@ main (int argc, char *argv[])
+     LIBMTP_raw_device_t * rawdevices;
+     int numrawdevices;
+     LIBMTP_error_number_t err;
+-    int i;
++    int i = 0;
+ 
+     int opt;
+     extern int optind;

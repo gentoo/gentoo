@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Theano is a numerical computation library for the Python. In Theano,
+  computations are expressed using a NumPy-like syntax and compiled to
+  run efficiently on either CPU or GPU architectures.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">Theano</remote-id>
+    <remote-id type="github">Theano/Theano</remote-id>
+  </upstream>
+</pkgmetadata>

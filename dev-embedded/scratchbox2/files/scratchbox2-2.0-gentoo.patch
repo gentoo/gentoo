@@ -1,0 +1,88 @@
+diff --git a/Makefile b/Makefile
+index 23a13b3..c5b26cc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -59,7 +59,6 @@ subdirs = luaif preload utils
+ 
+ -include config.mak
+ 
+-CFLAGS += -O2 -g -Wall -W
+ CFLAGS += -I$(OBJDIR)/include -I$(SRCDIR)/include
+ CFLAGS += -I$(SRCDIR)/luaif/lua-5.1.4/src
+ CFLAGS += -D_GNU_SOURCE=1 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1
+@@ -145,6 +144,9 @@ install-noarch: regular
+ 	else install -d -m 755 $(prefix)/share/man/man1 ; \
+ 	fi
+ 	$(Q)echo "$(PACKAGE_VERSION)" > $(prefix)/share/scratchbox2/version
++	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-show $(prefix)/bin/sb2-show
++	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-monitor $(prefix)/bin/sb2-monitor
++	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-interp-wrapper $(prefix)/bin/sb2-interp-wrapper
+ 	$(Q)install -c -m 755 $(SRCDIR)/utils/sb2 $(prefix)/bin/sb2
+ 	$(Q)install -c -m 755 $(SRCDIR)/utils/sb2-init $(prefix)/bin/sb2-init
+ 	$(Q)install -c -m 755 $(SRCDIR)/utils/sb2-config $(prefix)/bin/sb2-config
+@@ -210,10 +212,10 @@ install-noarch: regular
+ ifeq ($(MACH),x86_64)
+ install: install-multilib
+ else
+-install: do-install
++install: install-singlelib
+ endif
+ 
+-do-install: install-noarch
++install-singlelib: install-noarch
+ 	$(P)INSTALL
+ 	@if [ -d $(prefix)/lib ] ; \
+ 	then echo "$(prefix)/lib present" ; \
+@@ -221,9 +223,6 @@ do-install: install-noarch
+ 	fi
+ 	$(Q)install -d -m 755 $(prefix)/lib/libsb2
+ 	$(Q)install -c -m 755 $(OBJDIR)/preload/libsb2.$(SHLIBEXT) $(prefix)/lib/libsb2/libsb2.so.$(PACKAGE_VERSION)
+-	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-show $(prefix)/bin/sb2-show
+-	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-monitor $(prefix)/bin/sb2-monitor
+-	$(Q)install -c -m 755 $(OBJDIR)/utils/sb2-interp-wrapper $(prefix)/bin/sb2-interp-wrapper
+ ifeq ($(OS),Linux)
+ 	$(Q)/sbin/ldconfig -n $(prefix)/lib/libsb2
+ endif
+@@ -232,9 +231,9 @@ multilib_prefix=$(prefix)
+ 
+ install-multilib: multilib
+ 	@$(MAKE) -C obj-32 --include-dir=.. -f ../Makefile SRCDIR=.. do-install-multilib bitness=32
+-	@$(MAKE) -C obj-64 --include-dir=.. -f ../Makefile SRCDIR=.. do-install
++	@$(MAKE) -C obj-64 --include-dir=.. -f ../Makefile SRCDIR=.. do-install-multilib bitness=64
+ 
+-do-install-multilib:
++do-install-multilib: install-noarch
+ 	$(P)INSTALL
+ 	@if [ -d $(multilib_prefix)/lib$(bitness) ] ; \
+ 	then echo "$(prefix)/lib$(bitness) present" ; \
+diff --git a/utils/Makefile b/utils/Makefile
+index cf9b6c4..79304fc 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -1,7 +1,7 @@
+ # beware of namespace collisions, all subdir makefiles are included
+ # into the top-level Makefile
+ 
+-$(D)/sb2-show: CFLAGS := $(CFLAGS) -Wall -W -Werror \
++$(D)/sb2-show: CFLAGS := $(CFLAGS) -Wall -W \
+ 		-I$(SRCDIR)/preload -Ipreload/ $(PROTOTYPEWARNINGS) \
+ 		-I$(SRCDIR)/include
+ 
+@@ -12,7 +12,7 @@ $(D)/sb2-show: preload/libsb2.$(SHLIBEXT) $(D)/sb2-show.o
+ 	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ 
+-$(D)/sb2-monitor: CFLAGS := $(CFLAGS) -Wall -W -Werror \
++$(D)/sb2-monitor: CFLAGS := $(CFLAGS) -Wall -W \
+ 		-I$(SRCDIR)/preload -Ipreload/ $(PROTOTYPEWARNINGS) \
+ 		-I$(SRCDIR)/include
+ 
+@@ -21,7 +21,7 @@ $(D)/sb2-monitor: $(D)/sb2-monitor.o
+ 	$(P)LD
+ 	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+-$(D)/sb2-interp-wrapper: CFLAGS := $(CFLAGS) -Wall -W -Werror \
++$(D)/sb2-interp-wrapper: CFLAGS := $(CFLAGS) -Wall -W \
+ 		-I$(SRCDIR)/preload -Ipreload/ $(PROTOTYPEWARNINGS) \
+ 		-I$(SRCDIR)/include
+ 

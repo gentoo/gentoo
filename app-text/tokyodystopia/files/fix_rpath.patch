@@ -1,0 +1,61 @@
+diff -ur tokyodystopia-0.9.13/Makefile.in tokyodystopia-0.9.13-new/Makefile.in
+--- tokyodystopia-0.9.13/Makefile.in	2009-07-05 04:06:06.000000000 +0200
++++ tokyodystopia-0.9.13-new/Makefile.in	2009-10-20 22:39:18.000000000 +0200
+@@ -55,8 +55,8 @@
+ LDFLAGS = @MYLDFLAGS@
+ CMDLDFLAGS = @MYCMDLDFLAGS@
+ LIBS = @LIBS@
+-LDENV = LD_RUN_PATH=/lib:/usr/lib:$(LIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@:.
+-RUNENV = @MYLDLIBPATHENV@=.:/lib:/usr/lib:$(LIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@
++LDENV = 
++RUNENV = @MYLDLIBPATHENV@=.:$(LIBDIR)
+ POSTCMD = @MYPOSTCMD@
+ 
+ 
+diff -ur tokyodystopia-0.9.13/configure.in tokyodystopia-0.9.13-new/configure.in
+--- tokyodystopia-0.9.13/configure.in	2009-06-14 05:44:54.000000000 +0200
++++ tokyodystopia-0.9.13-new/configure.in	2009-10-20 22:40:00.000000000 +0200
+@@ -26,31 +26,14 @@
+ MYPCFILES="tokyodystopia.pc"
+ 
+ # Building flags
+-MYCFLAGS="-std=c99 -Wall -fPIC -fsigned-char -O2"
++MYCFLAGS="-std=c99 -Wall -fPIC -fsigned-char"
+ MYCPPFLAGS="-I. -I\$(INCLUDEDIR) -I$HOME/include -I/usr/local/include -DNDEBUG -D_GNU_SOURCE=1"
+-MYLDFLAGS="-L. -L\$(LIBDIR) -L$HOME/lib -L/usr/local/lib"
++MYLDFLAGS="-L. -L\$(LIBDIR)"
+ MYCMDLDFLAGS=""
+ MYRUNPATH="\$(LIBDIR)"
+ MYLDLIBPATHENV="LD_LIBRARY_PATH"
+ MYPOSTCMD="true"
+ 
+-# Building paths
+-PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+-PATH="$PATH:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/xpg4/bin:/usr/xpg6/bin:/usr/ucb"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-PKG_CONFIG_PATH="$HOME/lib/pkgconfig:/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+-export PATH CPATH LIBRARY_PATH LD_LIBRARY_PATH PKG_CONFIG_PATH
+-if type pkg-config > /dev/null 2>&1
+-then
+-  PATH="$PATH:`pkg-config --variable=bindir tokyocabinet`"
+-  CPATH="$CPATH:`pkg-config --variable=includedir tokyocabinet`"
+-  LIBRARY_PATH="$LIBRARY_PATH:`pkg-config --variable=libdir tokyocabinet`"
+-  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:`pkg-config --variable=libdir tokyocabinet`"
+-fi
+-
+-
+ 
+ #================================================================
+ # Options
+diff -ur tokyodystopia-0.9.13/tokyodystopia.pc.in tokyodystopia-0.9.13-new/tokyodystopia.pc.in
+--- tokyodystopia-0.9.13/tokyodystopia.pc.in	2008-02-21 10:45:01.000000000 +0100
++++ tokyodystopia-0.9.13-new/tokyodystopia.pc.in	2009-10-20 22:40:17.000000000 +0200
+@@ -10,5 +10,5 @@
+ Name: Tokyo Dystopia
+ Description: a full-text search system
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -ltokyodystopia @LIBS@
++Libs: -L${libdir} -ltokyodystopia
+ Cflags: -I${includedir}

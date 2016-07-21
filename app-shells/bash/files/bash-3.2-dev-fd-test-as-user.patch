@@ -1,0 +1,26 @@
+diff -ur bash-3.2.orig/aclocal.m4 bash-3.2/aclocal.m4
+--- bash-3.2.orig/aclocal.m4    2006-12-30 20:00:31 +0000
++++ bash-3.2/aclocal.m4 2006-12-30 20:02:02 +0000
+@@ -1544,7 +1544,8 @@
+ if test -d /dev/fd  && test -r /dev/fd/0 < /dev/null; then
+ # check for systems like FreeBSD 5 that only provide /dev/fd/[012]
+    exec 3</dev/null
+-   if test -r /dev/fd/3; then
++   # bash test builtin always works here, so we use the test binary
++   if `which test || echo test` -e /dev/fd/3; then
+      bash_cv_dev_fd=standard
+    else
+      bash_cv_dev_fd=absent
+diff -ur bash-3.2.orig/configure bash-3.2/configure
+--- bash-3.2.orig/configure     2006-12-30 20:03:24 +0000
++++ bash-3.2/configure  2006-12-30 20:01:50 +0000
+@@ -27179,7 +27179,8 @@
+ if test -d /dev/fd  && test -r /dev/fd/0 < /dev/null; then
+ # check for systems like FreeBSD 5 that only provide /dev/fd/[012]
+    exec 3</dev/null
+-   if test -r /dev/fd/3; then
++   # bash test builtin always works here, so we use the test binary
++   if `which test || echo test` -e /dev/fd/3; then
+      bash_cv_dev_fd=standard
+    else
+      bash_cv_dev_fd=absent

@@ -1,0 +1,16 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,11 +52,13 @@
+ #
+ # some code is only included if bluetooth is available
+ #
++if ( ENABLE_BLUETOOTH )
+ find_package ( Bluetooth )
+ if ( Bluetooth_FOUND )
+   include_directories ( ${Bluetooth_INCLUDE_DIRS} )
+   add_definitions ( -DHAVE_BLUETOOTH -DHAVE_SDP )
+ endif ( Bluetooth_FOUND )
++endif ( ENABLE_BLUETOOTH )
+ 
+ add_subdirectory ( bfb )
+ add_subdirectory ( multicobex )

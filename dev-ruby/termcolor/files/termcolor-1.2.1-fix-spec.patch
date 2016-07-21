@@ -1,0 +1,19 @@
+commit c455099b273c514c0ae8e5aad485be207a4e933c
+Author: jugyo <jugyo.org@gmail.com>
+Date:   Mon Aug 30 23:59:04 2010 +0900
+
+    fixed spec
+
+diff --git a/spec/termcolor_spec.rb b/spec/termcolor_spec.rb
+index 888a13d..50d403c 100644
+--- a/spec/termcolor_spec.rb
++++ b/spec/termcolor_spec.rb
+@@ -27,7 +27,7 @@ module TermColor
+     it 'should parse 3' do
+       text = TermColor.parse('aa<30>bbbbbbb<32>cccc<90>ddd</90>c</32>b</30>aaa')
+       puts text
+-      text.should == "aa\e[30mbbbbbbb\e[32mcccc\e[90mddd\e[0m\e[32mc\e[0m\e[30mb\e[0maaa"
++      text.should == "aa\e[30mbbbbbbb\e[32mcccc\e[90mddd\e[0m\e[30m\e[32mc\e[0m\e[30mb\e[0maaa"
+     end
+ 
+     it 'should parse 4' do

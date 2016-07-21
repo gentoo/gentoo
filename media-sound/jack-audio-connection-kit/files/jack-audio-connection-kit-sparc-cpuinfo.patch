@@ -1,0 +1,17 @@
+On Linux/SPARC, /proc/cpuinfo doesn't include "Cpu0Bogo" anymore,
+use "Cpu0ClkTck" instead to determine the processor speed.
+
+linux upstream commit 8b99cfb8cc51adae7f5294c8962a026c63100959
+
+--- old/config/os/gnu-linux/time.c
++++ new/config/os/gnu-linux/time.c
+@@ -152,7 +152,8 @@
+       defined(__x86_64__)
+ 		ret = sscanf(buf, "cpu MHz         : %" SCNu64, &mhz);
+ #elif defined( __sparc__ )
+-		ret = sscanf(buf, "Cpu0Bogo        : %" SCNu64, &mhz);
++		ret = sscanf(buf, "Cpu0ClkTck	: %" PRIx16, &mhz);
++		mhz = mhz / 1000 / 1000; // hz -> mhz
+ #elif defined( __mc68000__ )
+ 		ret = sscanf(buf, "Clocking:       %" SCNu64, &mhz);
+ #elif defined( __s390__  )

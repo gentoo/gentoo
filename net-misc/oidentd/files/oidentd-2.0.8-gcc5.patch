@@ -1,0 +1,25 @@
+Description: Fix a failure to build with gcc5.
+Bug: http://bugs.debian.org/778035
+
+--- a/src/oidentd_util.c	2015-07-03 05:56:24.000000000 -0400
++++ b/src/oidentd_util.c	2015-07-03 05:56:47.671378000 -0400
+@@ -75,7 +75,7 @@
+ ** PRNG functions on systems whose libraries provide them.)
+ */
+ 
+-inline int randval(int i) {
++extern __attribute__ ((gnu_inline)) int randval(int i) {
+ 	/* Per _Numerical Recipes in C_: */
+ 	return ((double) i * rand() / (RAND_MAX+1.0));
+ }
+--- a/src/oidentd_util.h	2015-07-03 05:56:32.000000000 -0400
++++ b/src/oidentd_util.h	2015-07-03 05:56:53.835378000 -0400
+@@ -58,7 +58,7 @@
+ int find_group(const char *temp_group, gid_t *gid);
+ 
+ int random_seed(void);
+-inline int randval(int i);
++extern __attribute__ ((gnu_inline)) int randval(int i);
+ 
+ #ifndef HAVE_SNPRINTF
+ 	int snprintf(char *str, size_t n, char const *fmt, ...);

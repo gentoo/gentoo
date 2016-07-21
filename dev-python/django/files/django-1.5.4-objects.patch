@@ -1,0 +1,31 @@
+Remove un-needed objects.inv files from d'loading during doc build
+diff -ur Django-1.5.1.orig/docs/conf.py Django-1.5.1/docs/conf.py
+--- docs/conf.py	2013-03-29 04:10:14.000000000 +0800
++++ docs/conf.py	2013-05-28 01:54:49.695008477 +0800
+@@ -91,12 +91,6 @@
+ 
+ # Links to Python's docs should reference the most recent version of the 2.x
+ # branch, which is located at this URL.
+-intersphinx_mapping = {
+-    'python': ('http://docs.python.org/2.7', None),
+-    'sphinx': ('http://sphinx.pocoo.org/', None),
+-    'six': ('http://pythonhosted.org/six/', None),
+-    'simplejson': ('http://simplejson.readthedocs.org/en/latest/', None),
+-}
+ 
+ # Python's docs don't change every week.
+ intersphinx_cache_limit = 90 # days
+# Fix creation of html docs on python 3
+# https://github.com/django/django/commit/a5733fcd7be7adb8b236825beff4ccda19900f9e
+diff -ur Django-1.5.1.orig/docs/_ext/djangodocs.py Django-1.5.1/docs/_ext/djangodocs.py
+--- docs/_ext/djangodocs.py	2013-03-29 04:07:21.000000000 +0800
++++ docs/_ext/djangodocs.py	2013-05-28 02:34:59.057009144 +0800
+@@ -204,7 +204,7 @@
+                         if t == "templatefilter" and l == "ref/templates/builtins"],
+         }
+         outfilename = os.path.join(self.outdir, "templatebuiltins.js")
+-        with open(outfilename, 'wb') as fp:
++        with open(outfilename, 'w') as fp:
+             fp.write('var django_template_builtins = ')
+             json.dump(templatebuiltins, fp)
+             fp.write(';\n')

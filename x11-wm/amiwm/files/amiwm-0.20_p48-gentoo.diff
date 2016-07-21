@@ -1,0 +1,188 @@
+Fix parallel build, don't strip binaries, respect CC LDFLAGS, fix install dirs
+Fix incompatible implicit declaration of built-in function {strlen,memset,strcpy}
+
+http://bugs.gentoo.org/show_bug.cgi?id=248680
+http://bugs.gentoo.org/show_bug.cgi?id=299918
+
+--- Makefile.in
++++ Makefile.in
+@@ -1,7 +1,6 @@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ SHELL = /bin/sh
+-CC = @CC@
+ LEX = @LEX@
+ YACC = @YACC@
+ CFLAGS = @CFLAGS@
+@@ -14,7 +13,7 @@
+ exec_prefix = @exec_prefix@
+ bindir = $(exec_prefix)/bin
+ libdir = $(exec_prefix)/lib
+-mandir = $(prefix)/man
++mandir = $(prefix)/share/man
+ INSTALL = @INSTALL@
+ LN_S = @LN_S@
+ RM = -rm -f
+@@ -44,8 +43,14 @@
+ 
+ AMIWM_HOME = $(libdir)/amiwm
+ 
++.PHONY: yaccs all clean lib lexs
++
++.SUFFIXES: .c
++
+ all : $(PROGS) $(MODULES)
+ 
++$(OBJS): lexs
++
+ lib :
+ 	@( cd libami; $(MAKE) libami.a )
+ 
+@@ -64,71 +69,63 @@
+ ppmtoinfo.o : ppmtoinfo.c
+ 	$(CC) -c $(CPPFLAGS) $(ALL_CFLAGS) -DAMIWM_HOME=\"$(AMIWM_HOME)\" $<
+ 
+-gram.h gram.c: gram.y
+-	$(YACC) $(YFLAGS) gram.y
+-	mv y.tab.c gram.c
+-	mv y.tab.h gram.h
++yaccs: gram.c kbdmodule.c
++lexs: yaccs lex.c kbdlexer.c
++
++%.c: %.y
++	$(YACC) $(YFLAGS) $< -o $@
+ 
+ lex.c : lex.l
+ 	$(LEX) -t lex.l > lex.c
+ 
+-kbdmodule.h kbdmodule.c: kbdmodule.y
+-	$(YACC) $(YFLAGS) kbdmodule.y
+-	mv y.tab.c kbdmodule.c
+-	mv y.tab.h kbdmodule.h
+-
+ kbdlexer.c : kbdlexer.l
+ 	$(LEX) -t kbdlexer.l > kbdlexer.c
+ 
+-install : $(PROGS) $(MODULES) Xsession Xsession2 Xinitrc amiwm-init
+-	-mkdir -p $(AMIWM_HOME)
+-	$(INSTALL) -s requestchoice $(AMIWM_HOME)/requestchoice
+-	$(INSTALL) -s executecmd $(AMIWM_HOME)/executecmd
++install : Xsession Xsession2 Xinitrc amiwm-init
++	$(INSTALL) -D requestchoice $(DESTDIR)$(AMIWM_HOME)/requestchoice
++	$(INSTALL) executecmd $(DESTDIR)$(AMIWM_HOME)/executecmd
+ 	for module in $(MODULES); do \
+ 	  if [ "$$module" = "Background" ]; then \
+-	    $(INSTALL) $$module $(AMIWM_HOME)/$$module; \
++	    $(INSTALL) $$module $(DESTDIR)$(AMIWM_HOME)/$$module; \
+ 	  else \
+-	    $(INSTALL) -s $$module $(AMIWM_HOME)/$$module; \
++	    $(INSTALL) $$module $(DESTDIR)$(AMIWM_HOME)/$$module; \
+ 	  fi \
+ 	done
+-	$(INSTALL) -m 644 system.amiwmrc $(AMIWM_HOME)/system.amiwmrc
+-	$(INSTALL) -m 644 def_tool.info $(AMIWM_HOME)/def_tool.info
+-	$(INSTALL) -m 644 system.map $(AMIWM_HOME)/system.map
+-	$(INSTALL) -m 644 magicwb.map $(AMIWM_HOME)/magicwb.map
+-	$(INSTALL) -m 644 schwartz.map $(AMIWM_HOME)/schwartz.map
+-	$(INSTALL) -m 755 Xsession $(AMIWM_HOME)/Xsession
+-	$(INSTALL) -m 755 Xsession2 $(AMIWM_HOME)/Xsession2
+-	$(INSTALL) -m 755 Xinitrc $(AMIWM_HOME)/Xinitrc
+-	$(INSTALL) -m 755 amiwm-init $(AMIWM_HOME)/amiwm-init
+-	$(INSTALL) -s amiwm $(bindir)/amiwm
+-	$(INSTALL) -s ppmtoinfo $(bindir)/ppmtoinfo
+-	$(RM) $(bindir)/requestchoice
+-	$(LN_S) $(AMIWM_HOME)/requestchoice $(bindir)/requestchoice
+-	-mkdir -p $(mandir)/man1
+-	$(INSTALL) -m 644 amiwm.1 $(mandir)/man1/amiwm.1
++	$(INSTALL) -m 644 system.amiwmrc $(DESTDIR)$(AMIWM_HOME)/system.amiwmrc
++	$(INSTALL) -m 644 def_tool.info $(DESTDIR)$(AMIWM_HOME)/def_tool.info
++	$(INSTALL) -m 644 system.map $(DESTDIR)$(AMIWM_HOME)/system.map
++	$(INSTALL) -m 644 magicwb.map $(DESTDIR)$(AMIWM_HOME)/magicwb.map
++	$(INSTALL) -m 644 schwartz.map $(DESTDIR)$(AMIWM_HOME)/schwartz.map
++	$(INSTALL) -m 755 Xsession $(DESTDIR)$(AMIWM_HOME)/Xsession
++	$(INSTALL) -m 755 Xsession2 $(DESTDIR)$(AMIWM_HOME)/Xsession2
++	$(INSTALL) -m 755 Xinitrc $(DESTDIR)$(AMIWM_HOME)/Xinitrc
++	$(INSTALL) -m 755 amiwm-init $(DESTDIR)$(AMIWM_HOME)/amiwm-init
++	$(INSTALL) -D amiwm $(DESTDIR)$(bindir)/amiwm
++	$(INSTALL) ppmtoinfo $(DESTDIR)$(bindir)/ppmtoinfo
++	$(RM) $(DESTDIR)$(bindir)/requestchoice
++	$(LN_S) $(DESTDIR)$(AMIWM_HOME)/requestchoice $(DESTDIR)$(bindir)/requestchoice
++	$(INSTALL) -D -m 644 amiwm.1 $(DESTDIR)$(mandir)/man1/amiwm.1
+ 
+ cde-install : Xresources.amiwm Amilogo.bm Amilogo.pm
+-	-mkdir -p $(DT_DIR)/config/C/Xresources.d
+-	$(INSTALL) -m 644 Xresources.amiwm $(DT_DIR)/config/C/Xresources.d/Xresources.amiwm
+-	-mkdir -p $(DT_DIR)/appconfig/icons/C
+-	$(INSTALL) -m 644 Amilogo.bm $(DT_DIR)/appconfig/icons/C/Amilogo.bm
+-	$(INSTALL) -m 644 Amilogo.pm $(DT_DIR)/appconfig/icons/C/Amilogo.pm
++	$(INSTALL) -D -m 644 Xresources.amiwm $(DESTDIR)$(DT_DIR)/config/C/Xresources.d/Xresources.amiwm
++	$(INSTALL) -D -m 644 Amilogo.bm $(DESTDIR)$(DT_DIR)/appconfig/icons/C/Amilogo.bm
++	$(INSTALL) -m 644 Amilogo.pm $(DESTDIR)$(DT_DIR)/appconfig/icons/C/Amilogo.pm
+ 
+ 
+ amiwm : $(OBJS) lib
+-	$(CC) -o amiwm $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o amiwm $(OBJS) $(LIBS)
+ 
+ requestchoice : requestchoice.o lib
+-	$(CC) -o requestchoice requestchoice.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o requestchoice requestchoice.o $(LIBS)
+ 
+ executecmd : executecmd.o lib
+-	$(CC) -o executecmd executecmd.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o executecmd executecmd.o $(LIBS)
+ 
+ Keyboard : kbdmodule.o kbdlexer.o lib
+-	$(CC) -o Keyboard kbdmodule.o kbdlexer.o $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o Keyboard kbdmodule.o kbdlexer.o $(LIBS)
+ 
+ ppmtoinfo : ppmtoinfo.o
+-	$(CC) -o ppmtoinfo ppmtoinfo.o -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o ppmtoinfo ppmtoinfo.o -lm
+ 
+ clean :
+ 	$(RM) core $(PROGS) $(LIBAMI) *.o libami/*.o
+--- icc.c
++++ icc.c
+@@ -1,3 +1,4 @@
++#include <string.h>
+ #include "drawinfo.h"
+ #include "screen.h"
+ #include "icc.h"
+--- rc.c
++++ rc.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <X11/Xmu/CharSet.h>
+-
++#include <string.h>
+ #include "alloc.h"
+ #include "prefs.h"
+ #include "drawinfo.h"
+--- libami/drawinfo.c
++++ libami/drawinfo.c
+@@ -1,7 +1,7 @@
+ #include <X11/Xlib.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-
++#include <string.h>
+ #include "alloc.h"
+ #include "drawinfo.h"
+ 
+--- libami/mdscreen.c
++++ libami/mdscreen.c
+@@ -1,3 +1,4 @@
++#include <string.h>
+ #include "libami.h"
+ #include "module.h"
+ 
+--- libami/error.c
++++ libami/error.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <string.h>
+ #include "libami.h"
+ 
+ #ifndef AMIGAOS

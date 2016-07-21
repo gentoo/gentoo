@@ -1,0 +1,32 @@
+--- /Makefile	2010-09-09 13:44:07.000000000 +0200
++++ /Makefile.new	2010-09-09 13:47:40.000000000 +0200
+@@ -1,14 +1,17 @@
+-
++LIBDIR = -L/usr/X11R6/lib
++LIBS   = -lXpm -lXext -lX11 
++OBJS   = main.o init.o event.o draw.o battery.o cpu.o autoscript.o pixmap.o
++EXE    = wmlaptop
+ 
+ 
+ .c.o:
+-	$(CC) -c  $< -o $*.o $(CFLAGS)
++	$(CC) $(CFLAGS) -c $< -o $*.o
+ 
+ all: $(EXE)
+ 
+ $(EXE): $(OBJS)
+ 	./buildCounter
+-	$(CC) -o $(EXE) $^ $(LIBDIR) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(EXE) $^ $(LIBDIR) $(LIBS)
+ 	
+ 
+ clean:
+@@ -20,7 +23,7 @@
+ reall: clean all
+ 
+ install:
+-	/usr/bin/install -c -o 0 -g 0 -s -m 755 $(EXE) $(INSTALLDIR)/$(EXE)
++	/usr/bin/install -c -o 0 -g 0 -m 755 $(EXE) $(INSTALLDIR)/$(EXE)
+ 	chmod +s $(INSTALLDIR)/$(EXE)
+ 	
+ uninstall:

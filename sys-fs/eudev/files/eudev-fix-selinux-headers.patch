@@ -1,0 +1,32 @@
+From 361aa273d6fedda161c14b24302f009a58331693 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20S=C5=82awi=C5=84ski?= <amade@asmblr.net>
+Date: Tue, 2 Sep 2014 21:20:24 +0200
+Subject: [PATCH] fix SELINUX build
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Amadeusz Sławiński <amade@asmblr.net>
+---
+ src/shared/label.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/shared/label.c b/src/shared/label.c
+index 3c6277a..e674241 100644
+--- a/src/shared/label.c
++++ b/src/shared/label.c
+@@ -23,6 +23,11 @@
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ 
++#ifdef HAVE_SELINUX
++#include <selinux/selinux.h>
++#include <selinux/label.h>
++#endif
++
+ #include "label.h"
+ #include "util.h"
+ #include "path-util.h"
+-- 
+2.1.0
+

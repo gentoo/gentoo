@@ -1,0 +1,82 @@
+diff -urN rxvt-2.7.10.ORIG/src/screen.c rxvt-2.7.10/src/screen.c
+--- rxvt-2.7.10.ORIG/src/screen.c	2003-03-24 01:56:06.000000000 +0900
++++ rxvt-2.7.10/src/screen.c	2003-06-30 02:11:27.000000000 +0900
+@@ -828,10 +828,18 @@
+ 	    if (h->chstat == WBYTE) {
+ 		h->rstyle |= RS_multi2;	/* multibyte 2nd byte */
+ 		h->chstat = SBYTE;
+-		if ((r->encoding_method == EUCJ) || (r->encoding_method == GB))
++		if ((r->encoding_method == EUCJ) && ((char)stp[r->screen.cur.col - 1] == (char)0x8e))
++		    h->rstyle &= ~RS_multiMask, r->screen.cur.col--;
++		else if ((r->encoding_method == EUCJ) || (r->encoding_method == GB))
+ 		    c |= 0x80;	/* maybe overkill, but makes it selectable */
+ 	    } else if (h->chstat == SBYTE) {
+-		if (h->multi_byte || (c & 0x80)) {	/* multibyte 1st byte */
++		if (r->encoding_method == SJIS) {
++		    if ((h->multi_byte || ((c >= (char)0x81 && c <= (char)0x9f) || 
++(c >= (char)0xe0 && c <= (char)0xfc)))) {
++			h->rstyle |= RS_multi1;
++			h->chstat = WBYTE;
++		    }
++		} else if (h->multi_byte || (c & 0x80)) {	/* multibyte 1st byte */
+ 		    h->rstyle |= RS_multi1;
+ 		    h->chstat = WBYTE;
+ 		    if ((r->encoding_method == EUCJ)
+@@ -2932,6 +2940,9 @@
+     unsigned char  *new_selection_text;
+     char           *str;
+     text_t         *t;
++#ifdef MULTICHAR_SET
++    rend_t         *tr;
++#endif
+ 
+     D_SELECT((stderr, "rxvt_selection_make(): r->selection.op=%d, r->selection.clicks=%d", r->selection.op, r->selection.clicks));
+     switch (r->selection.op) {
+@@ -2966,10 +2977,22 @@
+  */
+     for (; row < end_row; row++, col = 0) {
+ 	t = &(r->screen.text[row][col]);
++#ifdef MULTICHAR_SET
++	tr = &(r->screen.rend[row][col]);
++#endif
+ 	if ((end_col = r->screen.tlen[row]) == -1)
+ 	    end_col = r->TermWin.ncol;
++#ifdef MULTICHAR_SET
++	for (; col < end_col; col++, str++, t++, tr++) {
++	    if ( (r->encoding_method == EUCJ)
++		&& (*t & 0x80) && !(*tr & RS_multiMask) )
++		*str++ = 0x8E; 
++	    *str = *t;
++	}
++#else
+ 	for (; col < end_col; col++)
+ 	    *str++ = *t++;
++#endif
+ 	if (r->screen.tlen[row] != -1)
+ 	    *str++ = '\n';
+     }
+@@ -2977,12 +3000,24 @@
+  * B: end row
+  */
+     t = &(r->screen.text[row][col]);
++#ifdef MULTICHAR_SET
++    tr = &(r->screen.rend[row][col]);
++#endif
+     end_col = r->screen.tlen[row];
+     if (end_col == -1 || r->selection.end.col <= end_col)
+ 	end_col = r->selection.end.col;
+     MIN_IT(end_col, r->TermWin.ncol);	/* CHANGE */
++#ifdef MULTICHAR_SET
++    for (; col < end_col; col++, str++, t++, tr++) {
++	if ( (r->encoding_method == EUCJ)
++	    && (*t & 0x80) && !(*tr & RS_multiMask) )
++	    *str++ = 0x8E; 
++	*str = *t;
++    }
++#else
+     for (; col < end_col; col++)
+ 	*str++ = *t++;
++#endif
+ #ifndef NO_OLD_SELECTION
+     if (r->selection_style == OLD_SELECT)
+ 	if (end_col == r->TermWin.ncol)

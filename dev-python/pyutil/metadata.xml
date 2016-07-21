@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		pyutil -- a library of useful Python functions and classes
+		==========================================================
+
+		Many of these utilities (or their ancestors) were developed for
+		the Mojo
+		Nation, Mnet, Allmydata.com "Mountain View", Tahoe-LAFS, or
+		SimpleGeo's
+		products.  (In the case where the code was developed for a
+		for-profit
+		company, the copyright holder donated the pyutil code to the
+		public under
+		these open source licences.)
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">pyutil</remote-id>
+	</upstream>
+</pkgmetadata>

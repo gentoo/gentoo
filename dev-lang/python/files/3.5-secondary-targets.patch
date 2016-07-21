@@ -1,0 +1,19 @@
+Mark all targets as "secondary"
+
+This allows make to avoid rebuilding unnecessary intermediate files, which
+is useful when cross-compiling.
+
+See Parser/pgen and Programs/_freeze_importlib in Makefile.pre.in.
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -1672,6 +1672,8 @@
+ .PHONY: smelly funny patchcheck touch altmaninstall commoninstall
+ .PHONY: gdbhooks
+ 
++.SECONDARY:
++
+ # IF YOU PUT ANYTHING HERE IT WILL GO AWAY
+ # Local Variables:
+ # mode: makefile

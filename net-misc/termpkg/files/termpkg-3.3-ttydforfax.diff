@@ -1,0 +1,28 @@
+--- termpkg-3.3/termnet/ttyd.c.orig	2005-09-29 08:59:05.000000000 -1000
++++ termpkg-3.3/termnet/ttyd.c	2005-09-29 08:51:33.000000000 -1000
+@@ -340,7 +340,10 @@
+                      char *cp;
+                      int x;
+                      for (cp = commbuf, x = 0; x < cnt; x++, cp++)
++if (isprint(*cp))
+                         syslog(LOG_DEBUG, "ttyd: Have net char 0x%x, |%c|", *cp, *cp);
++else
++syslog(LOG_DEBUG, "ttyd: Have net char 0x%x", *cp);
+                   }
+                   write(fd, commbuf, cnt);
+                }
+@@ -366,9 +369,13 @@
+                      char *cp;
+                      int x;
+                      for (cp = commbuf, x = 0; x < cnt; x++, cp++)
++if (isprint(*cp))
+                         syslog(LOG_DEBUG, "ttyd: Have key char 0x%x, |%c|", *cp, *cp);
++else
++syslog(LOG_DEBUG, "ttyd: Have key char 0x%x", *cp);
+                   }
+-                  inputTerminal(commbuf, cnt);
++//                  inputTerminal(commbuf, cnt);
++write(fileno(tnlout), commbuf, cnt);
+                }
+                else
+                   break;

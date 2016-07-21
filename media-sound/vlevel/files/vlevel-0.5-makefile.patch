@@ -1,0 +1,26 @@
+--- vlevel-0.5/Makefile.orig
++++ vlevel-0.5/Makefile
+@@ -30,6 +30,7 @@
+ all: vlevel-bin vlevel-ladspa.so
+ 
+ install: all
++	mkdir -p $(PREFIX)
+ 	cp -f vlevel-bin $(PREFIX)
+ 	mkdir -p $(LADSPA_PREFIX)
+ 	cp -f vlevel-ladspa.so $(LADSPA_PREFIX)
+@@ -38,13 +39,13 @@
+ 	rm -f *.o vlevel-bin vlevel-ladspa.so
+ 
+ vlevel-ladspa.so: vlevel-ladspa.o volumeleveler.o
+-	$(CXX) $(CXXFLAGS) -shared -o vlevel-ladspa.so vlevel-ladspa.o volumeleveler.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o vlevel-ladspa.so vlevel-ladspa.o volumeleveler.o
+ 
+ vlevel-ladspa.o: vlevel-ladspa.cpp volumeleveler.h vlevel-ladspa.h vlevel.h ladspa.h
+ 	$(CXX) $(CXXFLAGS) -c vlevel-ladspa.cpp
+ 
+ vlevel-bin: volumeleveler.o commandline.o vlevel-bin.o vlevel.h
+-	$(CXX) $(CXXFLAGS) -o vlevel-bin vlevel-bin.o volumeleveler.o commandline.o
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o vlevel-bin vlevel-bin.o volumeleveler.o commandline.o
+ 
+ volumeleveler.o: volumeleveler.cpp volumeleveler.h vlevel.h
+ 	$(CXX) $(CXXFLAGS) -c volumeleveler.cpp

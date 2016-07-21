@@ -1,0 +1,18 @@
+Fix strict aliasing warnings: reeverb/Components/allpass.h:36:2: warning:
+dereferencing type-punned pointer will break strict-aliasing rules
+
+https://bugs.gentoo.org/show_bug.cgi?id=307563
+
+Index: cmt/src/freeverb/Components/denormals.h
+===================================================================
+--- cmt.orig/src/freeverb/Components/denormals.h
++++ cmt/src/freeverb/Components/denormals.h
+@@ -8,7 +8,7 @@
+ #ifndef _denormals_
+ #define _denormals_
+ 
+-#define undenormalise(sample) if(((*(unsigned int*)&sample)&0x7f800000)==0) sample=0.0f
++#define undenormalise(sample) if((((unsigned int)sample)&0x7f800000)==0) sample=0.0f
+ 
+ #endif//_denormals_
+ 

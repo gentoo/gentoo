@@ -1,0 +1,54 @@
+https://github.com/mitsuhiko/flask/commit/a2bc61b5ab19e899735f8945f68123b4cea570d5
+diff --git a/flask/testsuite/helpers.py b/flask/testsuite/helpers.py
+index 636f67f..7de70c0 100644
+--- a/flask/testsuite/helpers.py
++++ b/flask/testsuite/helpers.py
+@@ -173,7 +173,33 @@ def index():
+         c = app.test_client()
+         rv = c.get('/')
+         lines = [x.strip() for x in rv.data.strip().decode('utf-8').splitlines()]
+-        self.assert_equal(lines, [
++        sorted_by_str = [
++            '{',
++            '"values": {',
++            '"0": "foo",',
++            '"1": "foo",',
++            '"10": "foo",',
++            '"11": "foo",',
++            '"12": "foo",',
++            '"13": "foo",',
++            '"14": "foo",',
++            '"15": "foo",',
++            '"16": "foo",',
++            '"17": "foo",',
++            '"18": "foo",',
++            '"19": "foo",',
++            '"2": "foo",',
++            '"3": "foo",',
++            '"4": "foo",',
++            '"5": "foo",',
++            '"6": "foo",',
++            '"7": "foo",',
++            '"8": "foo",',
++            '"9": "foo"',
++            '}',
++            '}'
++        ]
++        sorted_by_int = [
+             '{',
+             '"values": {',
+             '"0": "foo",',
+@@ -198,8 +224,12 @@ def index():
+             '"19": "foo"',
+             '}',
+             '}'
+-        ])
++        ]
+ 
++        try:
++            self.assert_equal(lines, sorted_by_int)
++        except AssertionError:
++            self.assert_equal(lines, sorted_by_str)
+ 
+ class SendfileTestCase(FlaskTestCase):
+

@@ -1,0 +1,21 @@
+From 3ef62c439027acc0a166101419fff4bc0c69013d Mon Sep 17 00:00:00 2001
+From: Christoph Feck <christoph@maxiom.de>
+Date: Fri, 19 Oct 2012 10:56:22 +0200
+Subject: [PATCH] SVN_SILENT link
+
+---
+ plugins/ipfilter/tests/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/ipfilter/tests/CMakeLists.txt b/plugins/ipfilter/tests/CMakeLists.txt
+index 3b40887..90d6d42 100644
+--- a/plugins/ipfilter/tests/CMakeLists.txt
++++ b/plugins/ipfilter/tests/CMakeLists.txt
+@@ -1,3 +1,3 @@
+ set(ipblocklisttest_SRCS ipblocklisttest.cpp ../ipblocklist.cpp)
+ kde4_add_unit_test(ipblocklisttest TESTNAME ipblocklisttest ${ipblocklisttest_SRCS})
+-target_link_libraries(ipblocklisttest ${QT_QTTEST_LIBRARY} ktorrent)
++target_link_libraries(ipblocklisttest ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTTEST_LIBRARY} ${LIBKTORRENT_LIBRARIES})
+-- 
+1.8.1.2
+

@@ -1,0 +1,16 @@
+ plplot_test/test_octave.sh.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plplot_test/test_octave.sh.in b/plplot_test/test_octave.sh.in
+index 8a50d8b..8eb35fc 100755
+--- a/plplot_test/test_octave.sh.in
++++ b/plplot_test/test_octave.sh.in
+@@ -35,7 +35,7 @@ echo "$TOPDIR"
+ export LD_LIBRARY_PATH="$TOPDIR"/src:"$TOPDIR"/lib/csa:"$TOPDIR"/lib/nn
+ 
+ # Launch an Octave script that exercises all the demos
+-$octave -f -q  <<EOF 2> test.error
++$octave -f -q $octaveopts -p "$octavedir" <<EOF 2> test.error
+ 
+ # Disable warnings about shadowed functions - PLplot is _supposed_ to shadow the core functions
+ warning("off","Octave:shadowed-function");

@@ -1,0 +1,62 @@
+Fix underlinking issues, caused by missing -lpython27 and -lpthread
+
+--- nlopt-2.4.2/configure.ac
++++ nlopt-2.4.2/configure.ac
+@@ -161,33 +161,17 @@
+ dnl Python:
+ AM_PATH_PYTHON([],[have_python=yes],[have_python=no])
+ if test $have_python = yes; then
+-  AC_ARG_VAR([PYTHON_CONFIG], [python-config program])
+-  AC_PATH_PROGS([PYTHON_CONFIG], [python$PYTHON_VERSION-config python-config],
+-                [unknown], [`dirname $PYTHON`:$PATH])
+-  AC_MSG_CHECKING([for Python include flags])
+-  if test "x$PYTHON_CONFIG" = "xunknown"; then
+-      pinc=-I`echo "import distutils.sysconfig; print (distutils.sysconfig.get_python_inc())" | $PYTHON - 2>/dev/null`
+-      test "x$pinc" = "x-I" && pinc=""
+-  else
+-      pinc=`$PYTHON_CONFIG --includes 2>/dev/null`
+-  fi
+-  AC_MSG_RESULT([${pinc:-unknown}])
+-  PYTHON_INCLUDES="$pinc"
+-  save_CPPFLAGS=$CPPFLAGS
+-  CPPFLAGS="$CPPFLAGS $PYTHON_INCLUDES"
+-  AC_CHECK_HEADER([Python.h], [], [AC_MSG_WARN([disabling Python wrappers]) 
+-                                   have_python=no])
+-  if test $have_python = yes; then
++  PKG_CHECK_MODULES([PYTHON], [python-2.7])
++  CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
++  
+     AC_MSG_CHECKING([for Numpy include directory])
+     pinc=`echo "import numpy; print (numpy.get_include())" | $PYTHON - 2>/dev/null`
+     AC_MSG_RESULT([${pinc:-unknown}])
+-    test -n "$pinc" && PYTHON_INCLUDES="$PYTHON_INCLUDES -I$pinc"
++    test -n "$pinc" && PYTHON_INCLUDES="$PYTHON_CFLAGS -I$pinc"
+     CPPFLAGS="$save_CPPFLAGS $PYTHON_INCLUDES"
+     AC_CHECK_HEADER([numpy/arrayobject.h],[],[
+       AC_MSG_WARN([disabling Python wrappers])
+       have_python=no],[#include <Python.h>])
+-  fi
+-  CPPFLAGS=$save_CPPFLAGS
+ fi
+ 
+ fi # with_python
+--- nlopt-2.4.2/swig/Makefile.am
++++ nlopt-2.4.2/swig/Makefile.am
+@@ -9,7 +9,7 @@
+ # Guile wrapper
+ 
+ libnlopt@NLOPT_SUFFIX@_guile_la_SOURCES = nlopt-guile.cpp
+-libnlopt@NLOPT_SUFFIX@_guile_la_LIBADD = ../libnlopt@NLOPT_SUFFIX@.la @GUILE_LIBS@
++libnlopt@NLOPT_SUFFIX@_guile_la_LIBADD = -lpthread ../libnlopt@NLOPT_SUFFIX@.la @GUILE_LIBS@
+ libnlopt@NLOPT_SUFFIX@_guile_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
+ libnlopt@NLOPT_SUFFIX@_guile_la_CPPFLAGS = $(GUILE_CPPFLAGS) -I$(top_srcdir)/api
+ 
+@@ -23,7 +23,7 @@
+ # Python wrapper
+ 
+ _nlopt_la_SOURCES = nlopt-python.cpp
+-_nlopt_la_LIBADD = ../libnlopt@NLOPT_SUFFIX@.la
++_nlopt_la_LIBADD = ../libnlopt@NLOPT_SUFFIX@.la @PYTHON_LIBS@
+ _nlopt_la_LDFLAGS = -module -version-info @SHARED_VERSION_INFO@
+ _nlopt_la_CPPFLAGS = $(PYTHON_INCLUDES) -I$(top_srcdir)/api
+ 

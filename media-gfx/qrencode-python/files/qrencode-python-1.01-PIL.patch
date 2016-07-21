@@ -1,0 +1,14 @@
+ qrencode/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qrencode/__init__.py b/qrencode/__init__.py
+index 4ca5396..ba0c15e 100644
+--- a/qrencode/__init__.py
++++ b/qrencode/__init__.py
+@@ -1,5 +1,5 @@
+ from qr_encode import encode as _encode
+-import Image
++from PIL import Image
+ 
+ 
+ QR_ECLEVEL_L = 0

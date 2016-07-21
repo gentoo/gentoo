@@ -1,0 +1,48 @@
+--- build/packaging.rb.~1~	2013-07-09 10:10:02.000000000 +0200
++++ build/packaging.rb	2013-07-17 10:25:33.287663252 +0200
+@@ -184,7 +184,7 @@
+ 	require 'rbconfig'
+ 	require 'fileutils'
+ 	include RbConfig
+-	fakeroot = "pkg/fakeroot"
++	fakeroot = ENV['DISTDIR']
+ 	
+ 	# We don't use CONFIG['archdir'] and the like because we want
+ 	# the files to be installed to /usr, and the Ruby interpreter
+--- build/packaging.rb.~1~	2013-07-17 13:06:40.199882060 +0200
++++ build/packaging.rb	2013-07-17 13:18:31.444209611 +0200
+@@ -189,9 +189,9 @@
+ 	# We don't use CONFIG['archdir'] and the like because we want
+ 	# the files to be installed to /usr, and the Ruby interpreter
+ 	# on the packaging machine might be in /usr/local.
+-	fake_rubylibdir = "#{fakeroot}/usr/lib/ruby/vendor_ruby"
++	fake_rubylibdir = "#{fakeroot}#{CONFIG['vendordir']}"
+ 	fake_libdir = "#{fakeroot}/usr/lib/passenger"
+-	fake_native_support_dir = "#{fakeroot}/usr/lib/ruby/#{CONFIG['ruby_version']}/#{CONFIG['arch']}"
++	fake_native_support_dir = "#{fakeroot}#{CONFIG['archdir']}"
+ 	fake_agents_dir = "#{fakeroot}/usr/lib/#{GLOBAL_NAMESPACE_DIRNAME}/agents"
+ 	fake_helper_scripts_dir = "#{fakeroot}/usr/share/#{GLOBAL_NAMESPACE_DIRNAME}/helper-scripts"
+ 	fake_resources_dir = "#{fakeroot}/usr/share/passenger"
+--- build/packaging.rb.~1~	2013-07-17 13:19:21.434826846 +0200
++++ build/packaging.rb	2013-07-17 13:21:42.954912287 +0200
+@@ -276,10 +276,6 @@
+ 		sh "cp bin/#{exe} #{fake_sbindir}/"
+ 	end
+ 	
+-	# Apache 2 module
+-	sh "mkdir -p #{fake_apache2_module_dir}"
+-	sh "cp #{APACHE2_MODULE} #{fake_apache2_module_dir}/"
+-
+ 	# Ruby extension sources
+ 	sh "mkdir -p #{fake_ruby_extension_source_dir}"
+ 	sh "cp -R #{PhusionPassenger.ruby_extension_source_dir}/* #{fake_ruby_extension_source_dir}"
+--- build/packaging.rb.~1~	2013-07-17 13:25:51.440038844 +0200
++++ build/packaging.rb	2013-07-17 13:33:30.151365870 +0200
+@@ -203,7 +203,6 @@
+ 	fake_apache2_module = "#{fake_apache2_module_dir}/mod_passenger.so"
+ 	fake_ruby_extension_source_dir = "#{fakeroot}/usr/share/passenger/ruby_extension_source"
+ 	
+-	sh "rm -rf #{fakeroot}"
+ 	sh "mkdir -p #{fakeroot}"
+ 	
+ 	# Ruby sources

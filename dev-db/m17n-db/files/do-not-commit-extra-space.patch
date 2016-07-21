@@ -1,0 +1,16 @@
+Index: MIM/zh-util.mim
+===================================================================
+RCS file: /cvs/m17n/m17n-db/MIM/zh-util.mim,v
+retrieving revision 1.3
+diff -u -r1.3 zh-util.mim
+--- MIM/zh-util.mim	11 Jul 2008 01:28:53 -0000	1.3
++++ MIM/zh-util.mim	5 Nov 2010 07:07:48 -0000
+@@ -65,7 +65,7 @@
+   ((BackSpace)))
+ 
+  (commit-preedit
+-  ((S-\ ))))
++  ((\ ))))
+ 
+ (state
+  (check-undo

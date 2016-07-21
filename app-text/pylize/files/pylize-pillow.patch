@@ -1,0 +1,13 @@
+Change PIL imports for Pillow compat
+https://bugs.gentoo.org/show_bug.cgi?id=471502
+--- a/pylize.in
++++ b/pylize.in
+@@ -113,7 +113,7 @@
+ def mkLogoLink(meta):
+     if meta.has_key('logo'):
+         try:
+-            import Image
++            from PIL import Image
+             if os.path.exists(meta['logo']):
+                 i = Image.open(meta['logo'])
+             else:

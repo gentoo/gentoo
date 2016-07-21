@@ -1,0 +1,30 @@
+--- wmacpiload-0.2.0/src/battery.c	2012-10-18 15:42:04.000000000 +0200
++++ wmacpiload-0.2.0.new/src/battery.c	2012-10-18 15:43:33.000000000 +0200
+@@ -42,7 +42,8 @@
+  ************************************************************************/
+ 
+ /* used to parse the battery state file */
+-#define CAPACITY_UNIT " mAh"
++#define CAPACITY_UNIT1 " mAh"
++#define CAPACITY_UNIT2 " mWh"
+ 
+ /************************************************************************
+  * Global constants definitions
+@@ -164,7 +165,7 @@
+             char *endptr;
+ 
+             capacity = strtoul(buf, &endptr, 10);
+-            if (strcmp(endptr, CAPACITY_UNIT) != 0) {
++            if (strcmp(endptr, CAPACITY_UNIT1) != 0 && strcmp(endptr, CAPACITY_UNIT2) != 0) {
+                 fprintf(stderr,
+                         "%s : Battery %s unplugged or unconsistent data\n",
+                         PACKAGE, bat->name);
+@@ -238,7 +239,7 @@
+             char *endptr;
+ 
+             remain = strtol(buf, &endptr, 10);
+-            if (strcmp(endptr, CAPACITY_UNIT) == 0)
++            if (strcmp(endptr, CAPACITY_UNIT1) == 0 || strcmp(endptr, CAPACITY_UNIT2) == 0)
+                 bat->percentage = (int) ((remain * 100.0) / bat->capacity);
+             else
+                 bat->percentage = -1;

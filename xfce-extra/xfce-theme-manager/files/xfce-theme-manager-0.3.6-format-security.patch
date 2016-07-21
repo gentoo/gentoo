@@ -1,0 +1,13 @@
+diff --git a/Xfce-Theme-Manager/src/database.cpp b/Xfce-Theme-Manager/src/database.cpp
+index f333dee..3de189b 100644
+--- a/Xfce-Theme-Manager/src/database.cpp
++++ b/Xfce-Theme-Manager/src/database.cpp
+@@ -516,7 +516,7 @@ gpointer rebuildDB(gpointer data)
+ 											if(g_key_file_load_from_file(keyfile,indexfile,G_KEY_FILE_NONE,NULL))
+ 												displayname=g_key_file_get_string(keyfile,"Icon Theme","Name",NULL);
+ 											else
+-												asprintf(&displayname,entry);
++												asprintf(&displayname,"%s",entry);
+ 
+ 											asprintf(&thumbfile,"%s/%s.png",cursorsFolder,entry);
+ 											makecursor((char*)entry,thumbfile);

@@ -1,0 +1,16 @@
+diff -ru baselayout-1.12.5.orig/etc/profile baselayout-1.12.5/etc/profile
+--- baselayout-1.12.5.orig/etc/profile	2009-07-14 09:48:59 +0200
++++ baselayout-1.12.5/etc/profile	2009-07-14 09:50:48 +0200
+@@ -30,8 +30,11 @@
+ if [[ -n "${_ro_root}" ]]; then
+ 	_ro_chained_path_vars="PATH MANPATH"
+ 
+-	[[ ${_ro_deps} == *RDEPEND* ]] && 
++	if [[ ${_ro_deps} == *RDEPEND* ]]; then
+ 		_ro_chained_path_vars="${_ro_chained_path_vars} PKG_CONFIG_PATH"
++	else
++		unset PKG_CONFIG_PATH
++	fi
+ 
+ 	for var in ${_ro_chained_path_vars}; do
+ 		eval "_ro_backupenv_paths_${var}=\${${var}}"

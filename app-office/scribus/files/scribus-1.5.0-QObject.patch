@@ -1,0 +1,15 @@
+ scribus/sclayer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scribus/sclayer.cpp b/scribus/sclayer.cpp
+index 502112b..4da7bd5 100644
+--- a/scribus/sclayer.cpp
++++ b/scribus/sclayer.cpp
+@@ -9,6 +9,7 @@ for which a new license (GPL+exception) is in place.
+ 
+ #include <QHash>   //necessary to avoid msvc warnings induced by SCRIBUS_API on ScLayers + early instanciation of templates
+ #include <QVector> //necessary to avoid msvc warnings induced by SCRIBUS_API on ScLayers + early instanciation of templates
++#include <QObject>
+ #include <QtAlgorithms>
+ 
+ ScLayer::ScLayer(void)

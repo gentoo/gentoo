@@ -1,0 +1,1045 @@
+diff -ur a/alias_1407.c b/alias_1407.c
+--- a/alias_1407.c	2004-10-26 17:35:36.000000000 +0400
++++ b/alias_1407.c	2009-06-13 14:35:24.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/allpass_1895.c b/allpass_1895.c
+--- a/allpass_1895.c	2004-10-26 17:35:42.000000000 +0400
++++ b/allpass_1895.c	2009-06-13 14:38:16.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/am_pitchshift_1433.c b/am_pitchshift_1433.c
+--- a/am_pitchshift_1433.c	2004-10-26 17:35:40.000000000 +0400
++++ b/am_pitchshift_1433.c	2009-06-13 14:38:25.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/amp_1181.c b/amp_1181.c
+--- a/amp_1181.c	2004-10-26 17:35:32.000000000 +0400
++++ b/amp_1181.c	2009-06-12 17:13:46.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/analogue_osc_1416.c b/analogue_osc_1416.c
+--- a/analogue_osc_1416.c	2004-10-26 17:35:38.000000000 +0400
++++ b/analogue_osc_1416.c	2009-06-13 14:38:36.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/bandpass_a_iir_1893.c b/bandpass_a_iir_1893.c
+--- a/bandpass_a_iir_1893.c	2004-10-26 17:35:41.000000000 +0400
++++ b/bandpass_a_iir_1893.c	2009-06-13 14:38:42.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/bandpass_iir_1892.c b/bandpass_iir_1892.c
+--- a/bandpass_iir_1892.c	2004-10-26 17:35:41.000000000 +0400
++++ b/bandpass_iir_1892.c	2009-06-13 14:38:48.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/bode_shifter_1431.c b/bode_shifter_1431.c
+--- a/bode_shifter_1431.c	2004-10-26 17:35:40.000000000 +0400
++++ b/bode_shifter_1431.c	2009-06-13 14:38:54.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/bode_shifter_cv_1432.c b/bode_shifter_cv_1432.c
+--- a/bode_shifter_cv_1432.c	2004-10-26 17:35:40.000000000 +0400
++++ b/bode_shifter_cv_1432.c	2009-06-13 14:39:00.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/butterworth_1902.c b/butterworth_1902.c
+--- a/butterworth_1902.c	2004-10-26 17:35:42.000000000 +0400
++++ b/butterworth_1902.c	2009-06-13 14:39:07.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/chebstortion_1430.c b/chebstortion_1430.c
+--- a/chebstortion_1430.c	2004-10-26 17:35:40.000000000 +0400
++++ b/chebstortion_1430.c	2009-06-13 14:39:13.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/comb_1190.c b/comb_1190.c
+--- a/comb_1190.c	2004-10-26 17:35:32.000000000 +0400
++++ b/comb_1190.c	2009-06-12 17:26:17.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/comb_1887.c b/comb_1887.c
+--- a/comb_1887.c	2004-10-26 17:35:42.000000000 +0400
++++ b/comb_1887.c	2009-06-13 14:45:46.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/comb_splitter_1411.c b/comb_splitter_1411.c
+--- a/comb_splitter_1411.c	2004-10-26 17:35:37.000000000 +0400
++++ b/comb_splitter_1411.c	2009-06-13 14:36:12.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/const_1909.c b/const_1909.c
+--- a/const_1909.c	2004-10-26 17:35:43.000000000 +0400
++++ b/const_1909.c	2009-06-13 14:49:01.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/crossover_dist_1404.c b/crossover_dist_1404.c
+--- a/crossover_dist_1404.c	2005-07-20 15:36:59.000000000 +0400
++++ b/crossover_dist_1404.c	2009-06-13 14:31:57.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/dc_remove_1207.c b/dc_remove_1207.c
+--- a/dc_remove_1207.c	2004-10-26 17:35:34.000000000 +0400
++++ b/dc_remove_1207.c	2009-06-12 17:31:35.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/decay_1886.c b/decay_1886.c
+--- a/decay_1886.c	2004-10-26 17:35:43.000000000 +0400
++++ b/decay_1886.c	2009-06-13 14:46:06.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/decimator_1202.c b/decimator_1202.c
+--- a/decimator_1202.c	2004-10-26 17:35:33.000000000 +0400
++++ b/decimator_1202.c	2009-06-12 17:29:58.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/declip_1195.c b/declip_1195.c
+--- a/declip_1195.c	2004-10-26 17:35:32.000000000 +0400
++++ b/declip_1195.c	2009-06-12 17:27:08.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/delay_1898.c b/delay_1898.c
+--- a/delay_1898.c	2004-10-26 17:35:43.000000000 +0400
++++ b/delay_1898.c	2009-06-13 14:46:20.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/delayorama_1402.c b/delayorama_1402.c
+--- a/delayorama_1402.c	2004-10-26 17:35:36.000000000 +0400
++++ b/delayorama_1402.c	2009-06-13 14:31:08.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/diode_1185.c b/diode_1185.c
+--- a/diode_1185.c	2004-10-26 17:35:32.000000000 +0400
++++ b/diode_1185.c	2009-06-12 17:16:36.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/divider_1186.c b/divider_1186.c
+--- a/divider_1186.c	2004-10-26 17:35:32.000000000 +0400
++++ b/divider_1186.c	2009-06-12 17:19:08.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/dj_eq_1901.c b/dj_eq_1901.c
+--- a/dj_eq_1901.c	2004-10-26 17:35:42.000000000 +0400
++++ b/dj_eq_1901.c	2009-06-13 14:44:52.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/dj_flanger_1438.c b/dj_flanger_1438.c
+--- a/dj_flanger_1438.c	2004-10-26 17:35:40.000000000 +0400
++++ b/dj_flanger_1438.c	2009-06-13 14:44:55.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/dyson_compress_1403.c b/dyson_compress_1403.c
+--- a/dyson_compress_1403.c	2004-10-26 17:35:36.000000000 +0400
++++ b/dyson_compress_1403.c	2009-06-13 14:31:22.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/fad_delay_1192.c b/fad_delay_1192.c
+--- a/fad_delay_1192.c	2005-07-20 15:36:51.000000000 +0400
++++ b/fad_delay_1192.c	2009-06-12 17:31:17.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/fast_lookahead_limiter_1913.c b/fast_lookahead_limiter_1913.c
+--- a/fast_lookahead_limiter_1913.c	2006-08-08 19:49:13.000000000 +0400
++++ b/fast_lookahead_limiter_1913.c	2009-06-13 14:46:45.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/flanger_1191.c b/flanger_1191.c
+--- a/flanger_1191.c	2004-10-26 17:35:33.000000000 +0400
++++ b/flanger_1191.c	2009-06-12 17:29:41.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/fm_osc_1415.c b/fm_osc_1415.c
+--- a/fm_osc_1415.c	2004-10-26 17:35:38.000000000 +0400
++++ b/fm_osc_1415.c	2009-06-13 14:41:09.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/foldover_1213.c b/foldover_1213.c
+--- a/foldover_1213.c	2004-10-26 17:35:35.000000000 +0400
++++ b/foldover_1213.c	2009-06-13 14:20:25.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/foverdrive_1196.c b/foverdrive_1196.c
+--- a/foverdrive_1196.c	2004-10-26 17:35:33.000000000 +0400
++++ b/foverdrive_1196.c	2009-06-12 17:28:24.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/freq_tracker_1418.c b/freq_tracker_1418.c
+--- a/freq_tracker_1418.c	2004-10-26 17:35:38.000000000 +0400
++++ b/freq_tracker_1418.c	2009-06-13 14:42:12.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/gate_1410.c b/gate_1410.c
+--- a/gate_1410.c	2004-10-26 17:35:37.000000000 +0400
++++ b/gate_1410.c	2009-06-13 14:35:59.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/giant_flange_1437.c b/giant_flange_1437.c
+--- a/giant_flange_1437.c	2004-10-26 17:35:41.000000000 +0400
++++ b/giant_flange_1437.c	2009-06-13 14:41:24.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/gong_1424.c b/gong_1424.c
+--- a/gong_1424.c	2004-10-26 17:35:39.000000000 +0400
++++ b/gong_1424.c	2009-06-13 14:41:17.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/gong_beater_1439.c b/gong_beater_1439.c
+--- a/gong_beater_1439.c	2004-10-26 17:35:41.000000000 +0400
++++ b/gong_beater_1439.c	2009-06-13 14:45:27.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/gsm_1215.c b/gsm_1215.c
+--- a/gsm_1215.c	2004-10-26 17:35:35.000000000 +0400
++++ b/gsm_1215.c	2009-06-13 14:28:45.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/gverb_1216.c b/gverb_1216.c
+--- a/gverb_1216.c	2004-10-26 17:35:35.000000000 +0400
++++ b/gverb_1216.c	2009-06-13 14:29:13.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/hard_limiter_1413.c b/hard_limiter_1413.c
+--- a/hard_limiter_1413.c	2004-10-26 17:35:37.000000000 +0400
++++ b/hard_limiter_1413.c	2009-06-13 14:30:04.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/harmonic_gen_1220.c b/harmonic_gen_1220.c
+--- a/harmonic_gen_1220.c	2004-10-26 17:35:36.000000000 +0400
++++ b/harmonic_gen_1220.c	2009-06-13 14:30:44.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/hermes_filter_1200.c b/hermes_filter_1200.c
+--- a/hermes_filter_1200.c	2004-10-26 17:35:33.000000000 +0400
++++ b/hermes_filter_1200.c	2009-06-12 17:29:01.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/highpass_iir_1890.c b/highpass_iir_1890.c
+--- a/highpass_iir_1890.c	2004-10-26 17:35:41.000000000 +0400
++++ b/highpass_iir_1890.c	2009-06-13 14:43:51.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/hilbert_1440.c b/hilbert_1440.c
+--- a/hilbert_1440.c	2004-10-26 17:35:41.000000000 +0400
++++ b/hilbert_1440.c	2009-06-13 14:43:48.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/imp_1199.c b/imp_1199.c
+--- a/imp_1199.c	2006-08-08 19:49:15.000000000 +0400
++++ b/imp_1199.c	2009-06-13 14:43:43.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/impulse_1885.c b/impulse_1885.c
+--- a/impulse_1885.c	2004-10-26 17:35:43.000000000 +0400
++++ b/impulse_1885.c	2009-06-13 14:43:40.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/inv_1429.c b/inv_1429.c
+--- a/inv_1429.c	2004-10-26 17:35:40.000000000 +0400
++++ b/inv_1429.c	2009-06-13 14:43:34.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/karaoke_1409.c b/karaoke_1409.c
+--- a/karaoke_1409.c	2004-10-26 17:35:37.000000000 +0400
++++ b/karaoke_1409.c	2009-06-13 14:35:45.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/latency_1914.c b/latency_1914.c
+--- a/latency_1914.c	2004-10-26 17:35:44.000000000 +0400
++++ b/latency_1914.c	2009-06-13 14:46:57.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/lcr_delay_1436.c b/lcr_delay_1436.c
+--- a/lcr_delay_1436.c	2004-10-26 17:35:40.000000000 +0400
++++ b/lcr_delay_1436.c	2009-06-13 14:44:08.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/lowpass_iir_1891.c b/lowpass_iir_1891.c
+--- a/lowpass_iir_1891.c	2004-10-26 17:35:42.000000000 +0400
++++ b/lowpass_iir_1891.c	2009-06-13 14:44:23.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/ls_filter_1908.c b/ls_filter_1908.c
+--- a/ls_filter_1908.c	2004-10-26 17:35:43.000000000 +0400
++++ b/ls_filter_1908.c	2009-06-13 14:44:27.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/matrix_ms_st_1421.c b/matrix_ms_st_1421.c
+--- a/matrix_ms_st_1421.c	2004-10-26 17:35:38.000000000 +0400
++++ b/matrix_ms_st_1421.c	2009-06-13 14:42:39.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/matrix_spatialiser_1422.c b/matrix_spatialiser_1422.c
+--- a/matrix_spatialiser_1422.c	2004-10-26 17:35:38.000000000 +0400
++++ b/matrix_spatialiser_1422.c	2009-06-13 14:42:44.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/matrix_st_ms_1420.c b/matrix_st_ms_1420.c
+--- a/matrix_st_ms_1420.c	2004-10-26 17:35:38.000000000 +0400
++++ b/matrix_st_ms_1420.c	2009-06-13 14:42:48.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/mbeq_1197.c b/mbeq_1197.c
+--- a/mbeq_1197.c	2006-08-08 19:49:15.000000000 +0400
++++ b/mbeq_1197.c	2009-06-13 14:42:52.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/mod_delay_1419.c b/mod_delay_1419.c
+--- a/mod_delay_1419.c	2004-10-26 17:35:38.000000000 +0400
++++ b/mod_delay_1419.c	2009-06-13 14:42:21.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/multivoice_chorus_1201.c b/multivoice_chorus_1201.c
+--- a/multivoice_chorus_1201.c	2004-10-26 17:35:33.000000000 +0400
++++ b/multivoice_chorus_1201.c	2009-06-12 17:29:23.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/notch_iir_1894.c b/notch_iir_1894.c
+--- a/notch_iir_1894.c	2004-10-26 17:35:42.000000000 +0400
++++ b/notch_iir_1894.c	2009-06-13 14:42:30.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/phasers_1217.c b/phasers_1217.c
+--- a/phasers_1217.c	2004-10-26 17:35:35.000000000 +0400
++++ b/phasers_1217.c	2009-06-13 14:30:24.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/pitch_scale_1193.c b/pitch_scale_1193.c
+--- a/pitch_scale_1193.c	2004-10-26 17:35:44.000000000 +0400
++++ b/pitch_scale_1193.c	2009-06-13 14:42:03.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/pitch_scale_1194.c b/pitch_scale_1194.c
+--- a/pitch_scale_1194.c	2004-10-26 17:35:44.000000000 +0400
++++ b/pitch_scale_1194.c	2009-06-13 14:41:59.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/plate_1423.c b/plate_1423.c
+--- a/plate_1423.c	2004-10-26 17:35:39.000000000 +0400
++++ b/plate_1423.c	2009-06-13 14:41:55.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/pointer_cast_1910.c b/pointer_cast_1910.c
+--- a/pointer_cast_1910.c	2004-10-26 17:35:43.000000000 +0400
++++ b/pointer_cast_1910.c	2009-06-13 14:41:50.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/rate_shifter_1417.c b/rate_shifter_1417.c
+--- a/rate_shifter_1417.c	2004-10-26 17:35:38.000000000 +0400
++++ b/rate_shifter_1417.c	2009-06-13 14:41:44.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/retro_flange_1208.c b/retro_flange_1208.c
+--- a/retro_flange_1208.c	2004-10-26 17:35:34.000000000 +0400
++++ b/retro_flange_1208.c	2009-06-12 17:42:45.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/revdelay_1605.c b/revdelay_1605.c
+--- a/revdelay_1605.c	2004-10-26 17:35:43.000000000 +0400
++++ b/revdelay_1605.c	2009-06-13 14:46:32.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/ringmod_1188.c b/ringmod_1188.c
+--- a/ringmod_1188.c	2004-10-26 17:35:32.000000000 +0400
++++ b/ringmod_1188.c	2009-06-12 17:24:55.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/satan_maximiser_1408.c b/satan_maximiser_1408.c
+--- a/satan_maximiser_1408.c	2004-10-26 17:35:37.000000000 +0400
++++ b/satan_maximiser_1408.c	2009-06-13 14:35:36.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sc1_1425.c b/sc1_1425.c
+--- a/sc1_1425.c	2004-10-26 17:35:39.000000000 +0400
++++ b/sc1_1425.c	2009-06-13 14:43:09.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sc2_1426.c b/sc2_1426.c
+--- a/sc2_1426.c	2004-10-26 17:35:39.000000000 +0400
++++ b/sc2_1426.c	2009-06-13 14:37:55.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sc3_1427.c b/sc3_1427.c
+--- a/sc3_1427.c	2004-10-26 17:35:39.000000000 +0400
++++ b/sc3_1427.c	2009-06-13 14:37:48.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sc4_1882.c b/sc4_1882.c
+--- a/sc4_1882.c	2005-07-20 15:37:15.000000000 +0400
++++ b/sc4_1882.c	2009-06-13 14:37:41.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sc4m_1916.c b/sc4m_1916.c
+--- a/sc4m_1916.c	2006-08-08 19:49:14.000000000 +0400
++++ b/sc4m_1916.c	2009-06-13 14:37:27.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/se4_1883.c b/se4_1883.c
+--- a/se4_1883.c	2004-10-26 17:35:41.000000000 +0400
++++ b/se4_1883.c	2009-06-13 14:37:22.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/shaper_1187.c b/shaper_1187.c
+--- a/shaper_1187.c	2004-10-26 17:35:32.000000000 +0400
++++ b/shaper_1187.c	2009-06-12 17:20:04.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sifter_1210.c b/sifter_1210.c
+--- a/sifter_1210.c	2004-10-26 17:35:34.000000000 +0400
++++ b/sifter_1210.c	2009-06-12 17:43:33.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sin_cos_1881.c b/sin_cos_1881.c
+--- a/sin_cos_1881.c	2004-10-26 17:35:41.000000000 +0400
++++ b/sin_cos_1881.c	2009-06-13 14:40:51.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/single_para_1203.c b/single_para_1203.c
+--- a/single_para_1203.c	2004-10-26 17:35:34.000000000 +0400
++++ b/single_para_1203.c	2009-06-12 17:30:27.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/sinus_wavewrapper_1198.c b/sinus_wavewrapper_1198.c
+--- a/sinus_wavewrapper_1198.c	2004-10-26 17:35:33.000000000 +0400
++++ b/sinus_wavewrapper_1198.c	2009-06-12 17:28:42.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/smooth_decimate_1414.c b/smooth_decimate_1414.c
+--- a/smooth_decimate_1414.c	2004-10-26 17:35:38.000000000 +0400
++++ b/smooth_decimate_1414.c	2009-06-13 14:40:12.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/split_1406.c b/split_1406.c
+--- a/split_1406.c	2004-10-26 17:35:37.000000000 +0400
++++ b/split_1406.c	2009-06-13 14:35:10.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/step_muxer_1212.c b/step_muxer_1212.c
+--- a/step_muxer_1212.c	2004-10-26 17:35:35.000000000 +0400
++++ b/step_muxer_1212.c	2009-06-13 14:19:49.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/surround_encoder_1401.c b/surround_encoder_1401.c
+--- a/surround_encoder_1401.c	2004-10-26 17:35:36.000000000 +0400
++++ b/surround_encoder_1401.c	2009-06-13 14:30:56.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/svf_1214.c b/svf_1214.c
+--- a/svf_1214.c	2006-08-08 19:48:36.000000000 +0400
++++ b/svf_1214.c	2009-06-13 14:21:03.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/tape_delay_1211.c b/tape_delay_1211.c
+--- a/tape_delay_1211.c	2005-07-20 15:36:53.000000000 +0400
++++ b/tape_delay_1211.c	2009-06-12 17:43:51.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/transient_1206.c b/transient_1206.c
+--- a/transient_1206.c	2004-10-26 17:35:34.000000000 +0400
++++ b/transient_1206.c	2009-06-12 17:31:00.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/triple_para_1204.c b/triple_para_1204.c
+--- a/triple_para_1204.c	2004-10-26 17:35:34.000000000 +0400
++++ b/triple_para_1204.c	2009-06-12 17:30:40.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/valve_1209.c b/valve_1209.c
+--- a/valve_1209.c	2006-08-08 19:48:34.000000000 +0400
++++ b/valve_1209.c	2009-06-12 17:43:08.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/valve_rect_1405.c b/valve_rect_1405.c
+--- a/valve_rect_1405.c	2004-10-26 17:35:36.000000000 +0400
++++ b/valve_rect_1405.c	2009-06-13 14:32:11.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/vynil_1905.c b/vynil_1905.c
+--- a/vynil_1905.c	2004-10-26 17:35:43.000000000 +0400
++++ b/vynil_1905.c	2009-06-13 14:37:13.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/wave_terrain_1412.c b/wave_terrain_1412.c
+--- a/wave_terrain_1412.c	2004-10-26 17:35:37.000000000 +0400
++++ b/wave_terrain_1412.c	2009-06-13 14:36:28.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/xfade_1915.c b/xfade_1915.c
+--- a/xfade_1915.c	2005-07-20 15:37:32.000000000 +0400
++++ b/xfade_1915.c	2009-06-13 14:40:40.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1
+diff -ur a/zm1_1428.c b/zm1_1428.c
+--- a/zm1_1428.c	2004-10-26 17:35:39.000000000 +0400
++++ b/zm1_1428.c	2009-06-13 14:40:45.000000000 +0400
+@@ -6,6 +6,7 @@
+ 
+ #ifdef ENABLE_NLS
+ #include <libintl.h>
++#include <locale.h>
+ #endif
+ 
+ #define         _ISOC9X_SOURCE  1

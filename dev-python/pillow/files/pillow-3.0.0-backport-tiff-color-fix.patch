@@ -1,0 +1,39 @@
+From e0cb8f945e22d4f714f1c1de3aa04b3db39c5679 Mon Sep 17 00:00:00 2001
+From: wiredfool <eric-github@soroos.net>
+Date: Sat, 3 Oct 2015 22:46:01 +0100
+Subject: [PATCH] Flatten sampleformat to initial value, fixes #1466
+
+---
+ PIL/TiffImagePlugin.py     |   9 +++++++--
+ Tests/images/copyleft.tiff | Bin 0 -> 7926 bytes
+ Tests/test_file_tiff.py    |   5 +++++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+ create mode 100644 Tests/images/copyleft.tiff
+
+diff --git a/PIL/TiffImagePlugin.py b/PIL/TiffImagePlugin.py
+index 1f97422..a84d017 100644
+--- a/PIL/TiffImagePlugin.py
++++ b/PIL/TiffImagePlugin.py
+@@ -180,8 +180,6 @@
+     (MM, 2, (1,), 1, (8, 8, 8, 8), (2,)): ("RGBA", "RGBA"),
+     (II, 2, (1,), 1, (8, 8, 8, 8), (999,)): ("RGBA", "RGBA"),  # Corel Draw 10
+     (MM, 2, (1,), 1, (8, 8, 8, 8), (999,)): ("RGBA", "RGBA"),  # Corel Draw 10
+-    (II, 2, (1, 1, 1, 1), 1, (8, 8, 8, 8), (1,)): ("RGBA", "RGBA"),  # OSX Grab
+-    (MM, 2, (1, 1, 1, 1), 1, (8, 8, 8, 8), (1,)): ("RGBA", "RGBA"),  # OSX Grab
+     (II, 3, (1,), 1, (1,), ()): ("P", "P;1"),
+     (MM, 3, (1,), 1, (1,), ()): ("P", "P;1"),
+     (II, 3, (1,), 2, (1,), ()): ("P", "P;1R"),
+@@ -967,6 +965,13 @@ def _setup(self):
+             print("- size:", self.size)
+ 
+         format = self.tag_v2.get(SAMPLEFORMAT, (1,))
++        if len(format) > 1 and max(format) == min(format) == 1:
++            # SAMPLEFORMAT is properly per band, so an RGB image will
++            # be (1,1,1).  But, we don't support per band pixel types,
++            # and anything more than one band is a uint8. So, just
++            # take the first element. Revisit this if adding support
++            # for more exotic images.
++            format = (1,)
+ 
+         # mode: check photometric interpretation and bits per pixel
+         key = (

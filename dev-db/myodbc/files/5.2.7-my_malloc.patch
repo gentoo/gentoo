@@ -1,0 +1,18 @@
+diff -Brau a/util/odbcinstw.c b/util/odbcinstw.c
+--- a/util/odbcinstw.c	2014-04-23 21:54:40.000000000 +0200
++++ b/util/odbcinstw.c	2015-05-08 15:29:09.400568356 +0200
+@@ -68,13 +68,7 @@
+ 
+   if (lpszRetBuffer && cbRetBuffer)
+   {
+-    ret= malloc(cbRetBuffer + 1);
+-    /*
+-      We cannot rely on getting correct results from the next call of
+-      SQLGetPrivateProfileString. So, taking precautions against unititialized
+-      values in the allocated buffer.
+-    */
+-    memset(ret, 0, cbRetBuffer + 1);
++    ret= my_malloc(cbRetBuffer + 1, MYF(MY_ZEROFILL));
+   }
+   else
+     ret= NULL;

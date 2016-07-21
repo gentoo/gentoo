@@ -1,0 +1,20 @@
+--- CMakeLists-orig.txt	2014-11-28 14:51:14.375913296 +0900
++++ CMakeLists.txt	2014-11-28 14:52:09.579369288 +0900
+@@ -37,16 +37,6 @@
+ add_subdirectory ( stable )
+ add_subdirectory ( unstable )
+ 
+-install_docs (
+-   "ChangeLog"
+-   "COPYING"
+-   "MAINTAINERS"
+-   "README"
+-   "README.hypervisor"
+-   "RELEASE-NOTES"
+-   "TODO"
+-   )
+-
+ # uninstall target - leaves behind any directory created during install
+ set ( _templatefile "${CMAKE_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in" )
+ set ( _scriptfile "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake" )
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gienah@gentoo.org</email>
+  <name>Mark Wright</name>
+</maintainer>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
+CVC3 is an automatic theorem prover for Satisfiability Modulo Theories
+(SMT) problems. It can be used to prove the validity (or, dually, the
+satisfiability) of first-order formulas in a large number of built-in
+logical theories and their combination.
+
+CVC3 is the last offspring of a series of popular SMT provers, which
+originated at Stanford University with the SVC system. In particular,
+it builds on the code base of CVC Lite, its most recent
+predecessor. Its high level design follows that of the Sammy prover.
+
+CVC3 works with a version of first-order logic with polymorphic types
+and has a wide variety of features including:
+
+    several built-in base theories: rational and integer linear
+        arithmetic, arrays, tuples, records, inductive data types, bit
+        vectors, and equality over uninterpreted function symbols;
+    support for quantifiers;
+    an interactive text-based interface;
+    a rich C and C++ API for embedding in other systems;
+    proof and model generation abilities;
+    predicate subtyping;
+    essentially no limit on its use for research or commercial
+        purposes (see license).
+</longdescription>
+<use>
+  <flag name="isabelle">Add integration support for the Isabelle/HOL
+  theorem prover.</flag>
+  <flag name="zchaff">Use the SAT solver zchaff whose copyright is
+  owned by Princeton University and is more restrictive (see zchaff
+  license).
+  </flag>
+</use>
+</pkgmetadata>

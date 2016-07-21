@@ -1,0 +1,2 @@
+KERNEL=="sd*", SUBSYSTEM=="block", ENV{ID_BUS}=="scsi", PROGRAM="/etc/nova/scsi-openscsi-link.sh %b $id", SYMLINK+="disk/by-path/%c"
+

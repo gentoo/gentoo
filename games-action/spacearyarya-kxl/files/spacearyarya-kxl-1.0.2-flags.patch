@@ -1,0 +1,11 @@
+respect CFLAGS
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -5,5 +5,5 @@ spacearyarya_SOURCES = extern.h \
+                your.c your.h ranking.c ranking.h \
+                boss.c boss.h
+
+-CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
++AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
+ LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL

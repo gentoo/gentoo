@@ -1,0 +1,47 @@
+--- a/lib/fterr.c
++++ b/lib/fterr.c
+@@ -112,7 +112,7 @@
+     fprintf(((fterr_file) ? fterr_file : stderr), "%s\n", buf2);
+ 
+   if (fterr_flags & FTERR_SYSLOG)
+-    syslog(LOG_INFO, buf);
++    syslog(LOG_INFO, "%s", buf);
+ 
+ } /* fterr_info */
+ 
+@@ -134,7 +134,7 @@
+ 
+   if (fterr_flags & FTERR_SYSLOG) {
+     snprintf(buf2, 1024, "%s: %s", buf, strerror(errno));
+-    syslog(LOG_INFO, buf2);
++    syslog(LOG_INFO, "%s", buf2);
+   }
+ 
+   if (fterr_exit)
+@@ -159,7 +159,7 @@
+   }
+ 
+   if (fterr_flags & FTERR_SYSLOG)
+-    syslog(LOG_INFO, buf);
++    syslog(LOG_INFO, "%s", buf);
+ 
+   if (fterr_exit)
+     fterr_exit(code);
+@@ -183,7 +183,7 @@
+   }
+ 
+   if (fterr_flags & FTERR_SYSLOG)
+-    syslog(LOG_INFO, buf);
++    syslog(LOG_INFO, "%s", buf);
+ 
+ } /* fterr_warnx */
+ 
+@@ -205,7 +205,7 @@
+ 
+   if (fterr_flags & FTERR_SYSLOG) {
+     snprintf(buf2, 1024, "%s: %s", buf, strerror(errno));
+-    syslog(LOG_INFO, buf2);
++    syslog(LOG_INFO, "%s", buf2);
+   }
+ 
+ } /* fterr_warn */

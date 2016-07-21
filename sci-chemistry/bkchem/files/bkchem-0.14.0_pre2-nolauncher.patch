@@ -1,0 +1,106 @@
+ bkchem/bkchem.py | 24 +++++++++++++-----------
+ setup.py         | 23 -----------------------
+ 2 files changed, 13 insertions(+), 34 deletions(-)
+
+diff --git a/bkchem/bkchem.py b/bkchem/bkchem.py
+index b336b9c..bcb68b0 100644
+--- a/bkchem/bkchem.py
++++ b/bkchem/bkchem.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python2
+ #--------------------------------------------------------------------------
+ #     This file is part of BKChem - a chemical drawing program
+ #     Copyright (C) 2002-2009 Beda Kosata <beda@zirael.org>
+@@ -18,18 +19,19 @@
+ #--------------------------------------------------------------------------
+ 
+ 
+-"""this is just a starter of the application"""
++#"""this is just a starter of the application"""
+ 
+ ## support for loading from outside of bkchem dir
+ 
+-import os_support, sys
++from bkchem import os_support
++import sys
+ sys.path.insert( 1, os_support.get_module_path())
+ 
+ 
+ ### now starting for real
+ 
+-from singleton_store import Store
+-import pref_manager
++from bkchem.singleton_store import Store
++from bkchem import pref_manager
+ 
+ # at first preference manager
+ Store.pm = pref_manager.pref_manager(
+@@ -78,13 +80,13 @@ else:
+ 
+ 
+ 
+-import config
++from bkchem import config
+ 
+ if not config.debug:
+   # checking of important modules availability
+   # import modules
+-  import import_checker
+-  import messages
++  from bkchem import import_checker
++  from bkchem import messages
+ 
+   # we need sets from the 2.3 version
+   if not import_checker.python_version_ok:
+@@ -103,16 +105,16 @@ if not config.debug:
+ 
+   
+ #import Tkinter
+-from main import BKChem
+-from splash import Splash
+-from singleton_store import Store
++from bkchem.main import BKChem
++from bkchem.splash import Splash
++from bkchem.singleton_store import Store
+ 
+ myapp = BKChem()
+ myapp.withdraw()
+ 
+ if __name__ == '__main__':
+ 
+-  import messages
++  from bkchem import messages
+   enc = sys.getfilesystemencoding()
+   if not enc:
+     enc = sys.getdefaultencoding()
+diff --git a/setup.py b/setup.py
+index d4b2a21..2319216 100755
+--- a/setup.py
++++ b/setup.py
+@@ -91,26 +91,3 @@ if len( sys.argv) > 1 and sys.argv[1] == 'install' and '--help' not in sys.argv:
+   print "file %s created" % config_name
+ 
+ 
+-  # the executable
+-  if not os.path.isdir( bin_dir):
+-    try:
+-      os.mkdir( bin_dir)
+-    except:
+-      print "ERROR: could not create directory %s" % bin_dir
+-      sys.exit( 201)      
+-  exec_name = os.path.join( bin_dir, 'bkchem')
+-  try:
+-    file = open( exec_name, 'w')
+-  except:
+-    print "ERROR: couldn't open the file %s for write" %  exec_name
+-    sys.exit( 201)
+-  file.write( "#!/bin/sh\n")
+-  file.write( 'python %s "$@"\n' % strip_path( os.path.join( py_dir, "bkchem", "bkchem.py")))
+-  file.close()
+-  print "file %s created" % exec_name
+-  try:
+-    os.chmod( os.path.join( bin_dir, 'bkchem'), 5+5*8+7*8*8)
+-  except:
+-    print "ERROR: failed to make %s executable" % exec_name
+-    sys.exit( 201)
+-  print "file %s made executable" % exec_name

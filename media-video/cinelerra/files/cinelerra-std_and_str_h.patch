@@ -1,0 +1,81 @@
+Include required headers for free(), memcpy(), strcpy(), bcopy(), and more
+Thanks to Martin von Gagern for reporting and initial patch
+See, http://bugs.gentoo.org/show_bug.cgi?id=465478
+
+--- cinelerra/vdevicebuz.C
++++ cinelerra/vdevicebuz.C
+@@ -49,6 +49,8 @@
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ #include <unistd.h>
++#include <string.h>
++#include <strings.h>
+ 
+ #define BASE_VIDIOCPRIVATE	192	
+ 
+--- cinelerra/videodevice.C
++++ cinelerra/videodevice.C
+@@ -53,6 +53,7 @@
+ 
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <string.h>
+ 
+ KeepaliveThread::KeepaliveThread(VideoDevice *device)
+  : Thread()
+--- libmpeg3/audio/ac3.c
++++ libmpeg3/audio/ac3.c
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <stdint.h>
+ #include <stdio.h>
+ 
+--- libmpeg3/audio/layer3.c
++++ libmpeg3/audio/layer3.c
+@@ -4,6 +4,7 @@
+ #include "tables.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ struct gr_info_s 
+--- mplexlo/mplex.c
++++ mplexlo/mplex.c
+@@ -1,6 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+-
++#include <string.h>
+ 
+ #include "libmpeg3.h"
+ #include "mpeg3protos.h"
+--- quicktime/graphics.c
++++ quicktime/graphics.c
+@@ -1,5 +1,6 @@
+ #include "graphics.h"
+ 
++#include <stdlib.h>
+ #include <string.h>
+ 
+ /* Graphics acceleration routines */
+--- quicktime/libmjpeg.c
++++ quicktime/libmjpeg.c
+@@ -17,6 +17,7 @@
+  
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "colormodels.h"
+ #include "libmjpeg.h"
+ 
+--- quicktime/qtpng.c
++++ quicktime/qtpng.c
+@@ -1,6 +1,7 @@
+ #include "colormodels.h"
+ #include "funcprotos.h"
+ #include <png.h>
++#include <string.h>
+ #include "quicktime.h"
+ #include "qtpng.h"
+ 

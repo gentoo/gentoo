@@ -1,0 +1,32 @@
+From 2d85c8d0a3ad81268718344e0e72ebeeea851422 Mon Sep 17 00:00:00 2001
+From: Enrico Tagliavini <enrico.tagliavini@gmail.com>
+Date: Wed, 29 Jan 2014 14:18:22 +0000
+Subject: populate-initrd: install binaries to their configured location
+
+If plymouth is configured --with-system-root-install=no then the
+systemd unitd files will write the paths of plymouth and plymouthd
+relative to /usr .  The script currently hardcodes installing them
+to the initrd's /
+
+This commit makes sure they get placed on the same part of the of
+the initrd filesystem as systemd expects to find them.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=74174
+---
+diff --git a/scripts/plymouth-populate-initrd.in b/scripts/plymouth-populate-initrd.in
+index d25ab07..43c7f22 100755
+--- a/scripts/plymouth-populate-initrd.in
++++ b/scripts/plymouth-populate-initrd.in
+@@ -373,8 +373,8 @@ done
+ [ -z "$INITRDDIR" ] && usage error
+ 
+ mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
+-inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR /sbin/plymouthd
+-inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR /bin/plymouth
++inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR
++inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR
+ inst ${PLYMOUTH_DATADIR}/plymouth/themes/text/text.plymouth $INITRDDIR
+ inst ${PLYMOUTH_PLUGIN_PATH}/text.so $INITRDDIR
+ inst ${PLYMOUTH_DATADIR}/plymouth/themes/details/details.plymouth $INITRDDIR
+--
+cgit v0.9.0.2-2-gbebe

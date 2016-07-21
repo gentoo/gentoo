@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Dataplot is a software system for scientific visualization,
+  statistical analysis, and non-linear modeling. The target Dataplot
+  user is the researcher and analyst engaged in the characterization,
+  modeling, visualization, analysis, monitoring, and optimization of
+  scientific and engineering processes (original version:1978).
+  Gentoo version adds autotools to facilitate building and robustness.
+</longdescription>
+</pkgmetadata>

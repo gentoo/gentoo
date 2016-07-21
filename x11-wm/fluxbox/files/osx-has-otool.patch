@@ -1,0 +1,12 @@
+--- util/fbsetbg
++++ util/fbsetbg
+@@ -356,7 +356,8 @@
+             if [ ! "$wpsetter" = Esetroot ]; then
+                 WPSETTER=$wpsetter
+                 break
+-            elif ldd `which Esetroot`|grep libImlib 2>&1 > /dev/null; then
++            elif ldd `which Esetroot`|grep libImlib 2>&1 > /dev/null || \
++                otool -L `which Esetroot`|grep libImlib 2>&1 > /dev/null; then
+                 WPSETTER=$wpsetter
+                 break
+             else

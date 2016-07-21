@@ -1,0 +1,12 @@
+[Unit]
+Description=Link Layer Discovery Protocol daemon
+After=syslog.target
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/lldpd
+
+[Install]
+WantedBy=multi-user.target

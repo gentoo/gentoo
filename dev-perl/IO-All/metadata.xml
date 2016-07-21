@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">IO-All</remote-id>
+    <remote-id type="cpan-module">IO::All</remote-id>
+    <remote-id type="cpan-module">IO::All::Base</remote-id>
+    <remote-id type="cpan-module">IO::All::DBM</remote-id>
+    <remote-id type="cpan-module">IO::All::Dir</remote-id>
+    <remote-id type="cpan-module">IO::All::File</remote-id>
+    <remote-id type="cpan-module">IO::All::Filesys</remote-id>
+    <remote-id type="cpan-module">IO::All::Link</remote-id>
+    <remote-id type="cpan-module">IO::All::MLDBM</remote-id>
+    <remote-id type="cpan-module">IO::All::Pipe</remote-id>
+    <remote-id type="cpan-module">IO::All::STDIO</remote-id>
+    <remote-id type="cpan-module">IO::All::Socket</remote-id>
+    <remote-id type="cpan-module">IO::All::String</remote-id>
+    <remote-id type="cpan-module">IO::All::Temp</remote-id>
+  </upstream>
+</pkgmetadata>

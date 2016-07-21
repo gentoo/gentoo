@@ -1,0 +1,19 @@
+Patch by Heiko Przybyl
+
+--- Source/cmComputeLinkInformation.cxx
++++ Source/cmComputeLinkInformation.cxx
+@@ -1686,6 +1686,14 @@ std::string cmComputeLinkInformation::Ge
+   for(std::vector<std::string>::const_iterator ri = runtimeDirs.begin();
+       ri != runtimeDirs.end(); ++ri)
+     {
++      // Do not add duplicates.
++      // I'd like to have that check already in the list generation code
++      // but that would need lots of more changes, even in ExpandListArgument().
++      if(*sep != '\0' && (rpath + sep).find(*ri + sep) != std::string::npos)
++        {
++          //std::cerr << "ignoring duplicate: '" << *ri << "' in '" << rpath << "'" << std::endl;
++          continue;
++        }
+     // Separate from previous path.
+     rpath += sep;
+     sep = this->GetRuntimeSep().c_str();

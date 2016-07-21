@@ -1,0 +1,40 @@
+patch by proxy maintainer, P. Healy, April 2015
+# Bug 509960
+--- pdumpfs.in_orig	2004-12-21 02:43:12.000000000 +0000
++++ pdumpfs.in	2015-04-01 10:58:22.671131947 +0100
+@@ -48,7 +48,7 @@
+ #
+ 
+ require 'find'
+-require 'ftools'
++require 'fileutils'
+ require 'getoptlong'
+ require 'date'
+ 
+@@ -868,7 +868,7 @@
+       today  = File.join(dest, datedir(start_time), base)
+ 
+       File.umask(0077)
+-      File.mkpath(today) unless @dry_run
++      FileUtils.mkpath(today) unless @dry_run
+       if latest
+         update_snapshot(src, latest, today)
+       else
+@@ -1018,7 +1018,7 @@
+ 
+       case type
+       when "directory"
+-        File.mkpath(today)
++        FileUtils.mkpath(today)
+       when "unchanged"
+         File.force_link(latest, today)
+       when "updated"
+@@ -1089,7 +1089,7 @@
+ 
+           case type
+           when "directory"
+-            File.mkpath(t)
++            FileUtils.mkpath(t)
+           when "new_file"
+             copy(s, t)
+           when "symlink"

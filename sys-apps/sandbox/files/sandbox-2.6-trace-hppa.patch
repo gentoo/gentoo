@@ -1,0 +1,27 @@
+From 7b01f6103a9baddaf0252e7f850a4cef91a48b67 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 6 Jul 2012 14:58:16 -0400
+Subject: [PATCH] libsandbox: fix hppa trace code
+
+URL: https://bugs.gentoo.org/425062
+Reported-by: Jeroen Roovers <jer@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/trace/linux/hppa.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libsandbox/trace/linux/hppa.c b/libsandbox/trace/linux/hppa.c
+index d23b0d1..5414354 100644
+--- a/libsandbox/trace/linux/hppa.c
++++ b/libsandbox/trace/linux/hppa.c
+@@ -1,5 +1,5 @@
+-#define trace_reg_sysnum (20 * 4)	/* PT_GR20 */
+-#define trace_reg_ret (28 * 4)	/* PT_GR28 */
++#define trace_reg_sysnum gr[20]
++#define trace_reg_ret gr[28]
+ 
+ static unsigned long trace_arg(void *vregs, int num)
+ {
+-- 
+1.7.9.7
+

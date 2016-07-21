@@ -1,0 +1,114 @@
+3 year old upstream proposal https://www.opensc-project.org/opensc/ticket/350
+
+The fixed buffers allocated in pkcs11_init_cert are too small to hold the
+output data for some certificates. It causes a "Buffer too small" error
+to be returned from pkcs11_getattr_var.
+
+Fix from Chromium OS:
+Use heap instead of stack for variable length data when reading
+certificate attributes.
+
+Patch by Paul Stewart <pstew@chromium.org>
+
+--- a/src/libp11-int.h
++++ b/src/libp11-int.h
+@@ -136,6 +136,8 @@
+ 			      unsigned int, void *, size_t *);
+ extern int pkcs11_getattr_bn(PKCS11_TOKEN *, CK_OBJECT_HANDLE,
+ 			     unsigned int, BIGNUM **);
++extern void *pkcs11_getattr_alloc(PKCS11_TOKEN *, CK_OBJECT_HANDLE,
++				  unsigned int, size_t *);
+ 
+ #define key_getattr(key, t, p, s) \
+ 	pkcs11_getattr(KEY2TOKEN((key)), PRIVKEY((key))->object, (t), (p), (s))
+--- a/src/p11_attr.c
++++ b/src/p11_attr.c
+@@ -98,6 +98,32 @@
+ 	return *bn ? 0 : -1;
+ }
+ 
++void *
++pkcs11_getattr_alloc(PKCS11_TOKEN * token, CK_OBJECT_HANDLE object,
++		     unsigned int type, size_t *size_out)
++{
++	size_t size = 0;
++	void *data = NULL;
++
++	if (pkcs11_getattr_var(token, object, type, NULL, &size))
++		return NULL;
++
++	data = malloc(size);
++	if (data == NULL)
++		return NULL;
++
++	memset(data, 0, size);
++	if (pkcs11_getattr_var(token, object, type, data, &size)) {
++		free(data);
++		return NULL;
++	}
++
++	if (size_out != NULL)
++		*size_out = size;
++
++	return data;
++}
++
+ /*
+  * Add attributes to template
+  */
+--- a/src/p11_cert.c
++++ b/src/p11_cert.c
+@@ -136,10 +136,9 @@
+ 	PKCS11_TOKEN_private *tpriv;
+ 	PKCS11_CERT_private *kpriv;
+ 	PKCS11_CERT *cert, *tmp;
+-	char label[256], data[2048];
+-	unsigned char id[256];
+ 	CK_CERTIFICATE_TYPE cert_type;
+ 	size_t size;
++	void *data;
+ 
+ 	size = sizeof(cert_type);
+ 	if (pkcs11_getattr_var(token, obj, CKA_CERTIFICATE_TYPE, &cert_type, &size))
+@@ -165,18 +164,32 @@
+ 	kpriv->object = obj;
+ 	kpriv->parent = token;
+ 
+-	if (!pkcs11_getattr_s(token, obj, CKA_LABEL, label, sizeof(label)))
+-		cert->label = BUF_strdup(label);
+-	size = sizeof(data);
+-	if (!pkcs11_getattr_var(token, obj, CKA_VALUE, data, &size)) {
+-		const unsigned char *p = (unsigned char *) data;
++	data = pkcs11_getattr_alloc(token, obj, CKA_LABEL, &size);
++	if (data != NULL) {
++		char *label = data;
++		/* Fix any null-termination issues with the label */
++		if (label[size - 1] != '\0') {
++			label = realloc(label, size + 1);
++			if (label == NULL) {
++				free(data);
++				return -1;
++			}
++			label[size] = '\0';
++		}
++		cert->label = label;
++	}
+ 
++	data = pkcs11_getattr_alloc(token, obj, CKA_VALUE, &size);
++	if (data != NULL) {
++		const unsigned char *p = data;
+ 		cert->x509 = d2i_X509(NULL, &p, size);
++		free(data);
+ 	}
+-	cert->id_len = sizeof(id);
+-	if (!pkcs11_getattr_var(token, obj, CKA_ID, id, &cert->id_len)) {
+-		cert->id = (unsigned char *) malloc(cert->id_len);
+-		memcpy(cert->id, id, cert->id_len);
++	data = pkcs11_getattr_alloc(token, obj, CKA_ID, &cert->id_len);
++	if (data != NULL) {
++		cert->id = data;
++	} else {
++		cert->id_len = 0;
+ 	}
+ 
+ 	/* Initialize internal information */

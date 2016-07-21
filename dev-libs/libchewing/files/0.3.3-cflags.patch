@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -153,7 +122,6 @@
+ if test x$LIBDEBUG = x"true"; then
+ 	AC_DEFINE(ENABLE_DEBUG, 1,
+ 		[Define to 1 if you want native library runtime debugging code enabled])
+-	CFLAGS="$CFLAGS -g"
+ fi
+ AC_SUBST(LIBDEBUG)
+ 

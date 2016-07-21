@@ -1,0 +1,13 @@
+--- mixxx-1.10.0/build/depends.py
++++ mixxx-1.10.0/build/depends.py
+@@ -623,10 +555,8 @@
+         if build.toolchain_is_gnu:
+             # Default GNU Options
+             # TODO(XXX) always generate debugging info?
+-            build.env.Append(CCFLAGS = '-pipe')
+             build.env.Append(CCFLAGS = '-Wall')
+             build.env.Append(CCFLAGS = '-Wextra')
+-            build.env.Append(CCFLAGS = '-g')
+ 
+             # Check that g++ is present (yeah, SCONS is a bit dumb here)
+             if os.system("which g++ > /dev/null"): #Checks for non-zero return code

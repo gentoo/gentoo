@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/500674
+
+random fixes:
+ - make sure PCRE_CFLAGS get used
+ - use PCRE_LIBS via pkg-config
+ - move LDFLAGS to before objects, not after
+ - do not hardcode -L$(LIBDIR) (let the toolchain handle it)
+ - do not hardcode -I$(INCLUDEDIR) (let the toolchain handle it)
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -75,7 +75,7 @@ CFLAGS ?= -O -Wall -W -Wundef -Wformat-y2k -Wformat-security -Winit-self -Wmissi
+           -fipa-pure-const -Wno-suggest-attribute=pure -Wno-suggest-attribute=const \
+           -Werror -Wno-aggregate-return -Wno-redundant-decls
+ 
+-override CFLAGS += -I../include -I$(INCLUDEDIR) -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 $(EMFLAGS)
++override CFLAGS += -I../include $(PCRE_CFLAGS) -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 $(EMFLAGS)
+ 
+ SWIG_CFLAGS += -Wno-error -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter \
+ 		-Wno-shadow -Wno-uninitialized -Wno-missing-prototypes -Wno-missing-declarations
+@@ -104,17 +104,17 @@ $(SWIGRUBYLOBJ): $(SWIGRUBYCOUT)
+ 	$(CC) $(CFLAGS) $(SWIG_CFLAGS) $(RUBYINC) -fPIC -DSHARED -c -o $@ $<
+ 
+ $(SWIGSO): $(SWIGLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $< -L. -lselinux $(LDFLAGS) -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $< -L. -lselinux
+ 
+ $(SWIGRUBYSO): $(SWIGRUBYLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ -L. -lselinux $(LDFLAGS) -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lselinux
+ 
+ $(LIBA): $(OBJS)
+ 	$(AR) rcs $@ $^
+ 	$(RANLIB) $@
+ 
+ $(LIBSO): $(LOBJS)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ -lpcre -ldl $(LDFLAGS) -L$(LIBDIR) -Wl,-soname,$(LIBSO),-z,defs,-z,relro
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -ldl $(PCRE_LIBS) -Wl,-soname,$(LIBSO),-z,defs,-z,relro
+ 	ln -sf $@ $(TARGET) 
+ 
+ $(LIBPC): $(LIBPC).in ../VERSION
+@@ -127,7 +127,7 @@ $(AUDIT2WHYLOBJ): audit2why.c
+ 	$(CC) $(filter-out -Werror, $(CFLAGS)) $(PYINC) -fPIC -DSHARED -c -o $@ $<
+ 
+ $(AUDIT2WHYSO): $(AUDIT2WHYLOBJ)
+-	$(CC) $(CFLAGS) -shared -o $@ $^ -L. $(LDFLAGS) -lselinux $(LIBDIR)/libsepol.a -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lselinux $(LIBDIR)/libsepol.a
+ 
+ %.o:  %.c policy.h
+ 	$(CC) $(CFLAGS) $(TLSFLAGS) -c -o $@ $<
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -24,11 +24,12 @@ CFLAGS ?= -O -Wall -W -Wundef -Wformat-y2k -Wformat-security -Winit-self -Wmissi
+           -fipa-pure-const -Wno-suggest-attribute=pure -Wno-suggest-attribute=const \
+           -Werror -Wno-aggregate-return -Wno-redundant-decls
+ override CFLAGS += -I../include -D_GNU_SOURCE $(EMFLAGS)
+-LDLIBS += -L../src -lselinux -L$(LIBDIR)
++LDLIBS += -L../src -lselinux
+ 
+ TARGETS=$(patsubst %.c,%,$(wildcard *.c))
+ 
+-sefcontext_compile: LDLIBS += -lpcre
++sefcontext_compile: CFLAGS += $(PCRE_CFLAGS)
++sefcontext_compile: LDLIBS += $(PCRE_LIBS)
+ 
+ ifeq ($(DISABLE_AVC),y)
+ 	UNUSED_TARGETS+=compute_av compute_create compute_member compute_relabel

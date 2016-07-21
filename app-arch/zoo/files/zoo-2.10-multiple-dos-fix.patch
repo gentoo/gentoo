@@ -1,0 +1,71 @@
+diff -ur zoo-2.10-r2/zooext.c zoo-2.10-r3/zooext.c
+--- zoo-2.10-r2/zooext.c	2007-05-23 23:39:14.000000000 +0200
++++ zoo-2.10-r3/zooext.c	2007-05-23 23:36:37.000000000 +0200
+@@ -89,6 +89,7 @@
+ #endif
+ struct direntry direntry;                 /* directory entry */
+ int first_dir = 1;								/* first dir entry seen? */
++ unsigned long zoo_pointer = 0;           /* Track our position in the file */
+ 
+ static char extract_ver[] = "Zoo %d.%d is needed to extract %s.\n";
+ static char no_space[] = "Insufficient disk space to extract %s.\n";
+@@ -169,6 +170,9 @@
+ 		exit_status = 1;
+    }
+    zooseek (zoo_file, zoo_header.zoo_start, 0); /* seek to where data begins */
++
++   /* Begin tracking our position in the file */ 
++   zoo_pointer = zoo_header.zoo_start; 
+ }
+ 
+ #ifndef PORTABLE
+@@ -597,6 +601,11 @@
+    } /* end if */
+ 
+ loop_again:
++   /* Make sure we are not seeking to already processed data */ 
++   if (next_ptr <= zoo_pointer)
++     prterror ('f', "ZOO chain structure is corrupted\n");
++   zoo_pointer = next_ptr; 
++
+    zooseek (zoo_file, next_ptr, 0); /* ..seek to next dir entry */
+ } /* end while */
+ 
+Nur in zoo-2.10-r3: zooext.c~.
+Nur in zoo-2.10-r3: zooext.c.orig.
+diff -ur zoo-2.10-r2/zoolist.c zoo-2.10-r3/zoolist.c
+--- zoo-2.10-r2/zoolist.c	1991-07-20 00:57:27.000000000 +0200
++++ zoo-2.10-r3/zoolist.c	2007-05-23 23:38:19.000000000 +0200
+@@ -92,7 +92,7 @@
+ int show_mode = 0;				/* show file protection */
+ #endif
+ int first_dir = 1;				/* if first direntry -- to adjust dat_ofs */
+-
++unsigned long zoo_pointer = 0; /* Track our position in the file */
+ while (*option) {
+    switch (*option) {
+       case 'a': show_name++; break;
+@@ -211,6 +211,9 @@
+ 		show_acmt (&zoo_header, zoo_file, 0);		/* show archive comment */
+ 	}
+ 
++	/* Begin tracking our position in the file */
++	zoo_pointer = zoo_header.zoo_start;
++
+    /* Seek to the beginning of the first directory entry */
+    if (zooseek (zoo_file, zoo_header.zoo_start, 0) != 0) {
+       ercount++;
+@@ -437,6 +440,11 @@
+          if (verb_list && !fast)
+             show_comment (&direntry, zoo_file, 0, (char *) NULL);
+       } /* end if (lots of conditions) */
++
++      /* Make sure we are not seeking to already processed data */
++      if (direntry.next <= zoo_pointer)
++        prterror ('f', "ZOO chain structure is corrupted\n");
++      zoo_pointer = direntry.next;
+    
+ 		/* ..seek to next dir entry */
+       zooseek (zoo_file, direntry.next, 0);
+Nur in zoo-2.10-r3: zoolist.c~.
+Nur in zoo-2.10-r3: zoolist.c.orig.

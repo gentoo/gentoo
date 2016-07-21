@@ -1,0 +1,11 @@
+--- ansi2knr.c.orig	2005-01-30 06:54:09.702046352 -0500
++++ ansi2knr.c	2005-01-30 06:54:17.719827464 -0500
+@@ -132,7 +132,7 @@
+ 
+ #endif /* not HAVE_CONFIG_H */
+ 
+-#if STDC_HEADERS
++#if STDC_HEADERS || HAVE_STDLIB_H
+ # include <stdlib.h>
+ #else
+ /*

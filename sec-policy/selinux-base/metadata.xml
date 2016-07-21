@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>selinux@gentoo.org</email>
+		<name>SELinux Team</name>
+	</maintainer>
+	<longdescription>
+		Gentoo SELinux base policy.  This contains policy for a system at the end of system installation.
+		There is no extra policy in this package.
+	</longdescription>
+	<use>
+		<flag name="peer_perms">Enable the labeled networking peer permissions (SELinux policy capability).</flag>
+		<flag name="open_perms">Enable the open permissions for file object classes (SELinux policy capability).</flag>
+		<flag name="ubac">Enable User Based Access Control (UBAC) in the SELinux policy</flag>
+		<flag name="unconfined">Enable support for the unconfined SELinux module</flag>
+	</use>
+</pkgmetadata>

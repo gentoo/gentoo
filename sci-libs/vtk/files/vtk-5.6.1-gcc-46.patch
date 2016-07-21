@@ -1,0 +1,29 @@
+ Common/vtkPythonUtil.cxx          |    2 ++
+ Utilities/vtkmetaio/metaUtils.cxx |    1 +
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/Common/vtkPythonUtil.cxx b/Common/vtkPythonUtil.cxx
+index 7bc7660..d218e0d 100644
+--- a/Common/vtkPythonUtil.cxx
++++ b/Common/vtkPythonUtil.cxx
+@@ -31,6 +31,8 @@
+ #include <vtkstd/map>
+ #include <vtkstd/string>
+ 
++#include <cstddef>
++
+ // Silent warning like
+ // "dereferencing type-punned pointer will break strict-aliasing rules"
+ // it happens because this kind of expression: (long *)&ptr
+diff --git a/Utilities/vtkmetaio/metaUtils.cxx b/Utilities/vtkmetaio/metaUtils.cxx
+index 08d3e8d..bbcc9ec 100644
+--- a/Utilities/vtkmetaio/metaUtils.cxx
++++ b/Utilities/vtkmetaio/metaUtils.cxx
+@@ -37,6 +37,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <string>
++#include <cstddef>
+ 
+ #if defined (__BORLANDC__) && (__BORLANDC__ >= 0x0580)
+ #include <mem.h>

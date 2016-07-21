@@ -1,0 +1,18 @@
+http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2678
+
+diff -Naur jflex-1.6.1.orig/src/main/java/jflex/Emitter.java jflex-1.6.1/src/main/java/jflex/Emitter.java
+--- jflex-1.6.1.orig/src/main/java/jflex/Emitter.java	2015-03-16 17:27:31.000000000 +0000
++++ jflex-1.6.1/src/main/java/jflex/Emitter.java	2015-10-25 23:33:35.784487747 +0000
+@@ -1304,8 +1304,10 @@
+     
+     for (int i = 0; i < dfa.numStates;  i++) {
+       char j = 0;
+-      while ( !isTransition[i] && j < dfa.numInput )
+-        isTransition[i] = dfa.table[i][j++] != DFA.NO_TARGET;
++      while ( !isTransition[i] && j < dfa.numInput ) {
++        isTransition[i] = dfa.table[i][j] != DFA.NO_TARGET;
++        j++;
++      }
+     }
+   }
+   

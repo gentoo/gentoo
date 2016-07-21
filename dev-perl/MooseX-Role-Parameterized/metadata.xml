@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>perl@gentoo.org</email>
+        <name>Gentoo Perl Project</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="cpan">MooseX-Role-Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Role::Parameterizable</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Role::Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized::Meta::Trait::Parameterized</remote-id>
+        <remote-id type="cpan-module">MooseX::Role::Parameterized::Parameters</remote-id>
+    </upstream>
+</pkgmetadata>

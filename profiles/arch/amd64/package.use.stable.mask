@@ -1,0 +1,51 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Mikle Kolyada <zlogene@gentoo.org> (14 Jun 2015)
+# app-emulation/lxc has no stable versions
+app-emulation/docker lxc
+
+# Yixun Lan <dlan@gentoo.org> (02 Apr 2015)
+# sys-fs/zfs is not stable.
+sys-cluster/ceph zfs
+
+# Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
+# mayavi is broken, bug #500104
+dev-python/apptools test
+
+# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
+# Masked since skype isn't stable
+net-im/bitlbee skype
+
+# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# Don't apply stable masks to python-exec since we're forcing every
+# impl there anyway. Please keep this in sync with use.stable.mask.
+dev-lang/python-exec -python_targets_pypy
+dev-lang/python-exec -python_single_target_pypy
+dev-lang/python-exec -python_targets_pypy3
+dev-lang/python-exec -python_single_target_pypy3
+
+# Mike Gilbert <floppym@gentoo.org> (22 Mar 2014)
+# sys-fs/zfs is not stable.
+sys-boot/grub libzfs
+
+# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
+# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
+www-apps/cgit jit

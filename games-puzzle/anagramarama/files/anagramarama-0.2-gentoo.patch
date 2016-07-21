@@ -1,0 +1,34 @@
+--- makefile.old	2009-02-08 18:24:33.000000000 +0100
++++ makefile	2009-02-08 18:29:12.000000000 +0100
+@@ -1,5 +1,4 @@
+-LFLAGS=-Wall -funroll-loops -fomit-frame-pointer -pipe -O9
+-CFLAGS=-Wall `sdl-config --cflags --libs` -funroll-loops -fomit-frame-pointer -pipe -O9 -lSDL_mixer
++LDLIBS=`sdl-config --cflags --libs` -lSDL_mixer
+ CC=gcc
+ 
+ C_FILES=src/dlb.c src/linked.c src/sprite.c src/ag.c
+@@ -9,19 +8,19 @@
+ all:ag
+ 
+ ag: $(OBJ_FILES)
+-	$(CC) $(CFLAGS) -o $(OUT_FILE) $(OBJ_FILES)
++	$(CC) $(LDFLAGS) -o $(OUT_FILE) $(OBJ_FILES) $(LDLIBS)
+ 
+ src/dlb.o: src/dlb.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
++	$(CC) $(CFLAGS) -c -o $@ $^
+ 
+ src/linked.o: src/linked.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
++	$(CC) $(CFLAGS) -c -o $@ $^
+ 	
+ src/sprite.o: src/sprite.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
++	$(CC) $(CFLAGS) -c -o $@ $^
+ 
+ src/ag.o: src/ag.c
+-	$(CC) $(LFLAGS) -c -o $@ $^
++	$(CC) $(CFLAGS) -c -o $@ $^
+ 
+ clean:
+ 	rm -f src/*.o

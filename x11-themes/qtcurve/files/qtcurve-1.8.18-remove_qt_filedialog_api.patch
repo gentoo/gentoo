@@ -1,0 +1,58 @@
+From 323402d8b99502300f65e909c61153cbd5d5d997 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Mon, 19 May 2014 10:37:37 +0200
+Subject: [PATCH] remove qt_filedialog_* api
+
+it has been removed and doesn't build anymore with recent Qt5 stable
+branch
+---
+ qt5/style/qtcurve_api.cpp | 26 --------------------------
+ 1 file changed, 26 deletions(-)
+
+diff --git a/qt5/style/qtcurve_api.cpp b/qt5/style/qtcurve_api.cpp
+index a5ded22..2c794b7 100644
+--- a/qt5/style/qtcurve_api.cpp
++++ b/qt5/style/qtcurve_api.cpp
+@@ -67,25 +67,6 @@
+ 
+ #include <QDebug>
+ 
+-extern QString (*qt_filedialog_existing_directory_hook)(
+-    QWidget *parent, const QString &caption, const QString &dir,
+-    QFileDialog::Options options);
+-
+-extern QString (*qt_filedialog_open_filename_hook)(
+-    QWidget *parent, const QString &caption, const QString &dir,
+-    const QString &filter, QString *selectedFilter,
+-    QFileDialog::Options options);
+-
+-extern QStringList (*qt_filedialog_open_filenames_hook)(
+-    QWidget * parent, const QString &caption, const QString &dir,
+-    const QString &filter, QString *selectedFilter,
+-    QFileDialog::Options options);
+-
+-extern QString (*qt_filedialog_save_filename_hook)(
+-    QWidget *parent, const QString &caption, const QString &dir,
+-    const QString &filter, QString *selectedFilter,
+-    QFileDialog::Options options);
+-
+ namespace QtCurve {
+ 
+ void
+@@ -163,13 +144,6 @@ Style::polish(QApplication *app)
+         opts.menuBgndAppearance = APPEARANCE_FLAT;
+     }
+ 
+-    if (opts.useQtFileDialogApps.contains(appName)) {
+-        qt_filedialog_existing_directory_hook = 0L;
+-        qt_filedialog_open_filename_hook = 0L;
+-        qt_filedialog_open_filenames_hook = 0L;
+-        qt_filedialog_save_filename_hook = 0L;
+-    }
+-
+     QCommonStyle::polish(app);
+     if (opts.hideShortcutUnderline) {
+         app->installEventFilter(m_shortcutHandler);
+-- 
+1.9.3
+

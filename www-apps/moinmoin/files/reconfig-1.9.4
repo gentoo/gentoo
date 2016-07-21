@@ -1,0 +1,17 @@
+#!/bin/bash
+
+die() {
+	echo "#####"
+	echo $1
+	echo "#####"
+	exit 1
+}
+
+if [ $1 = "install" ]; then
+	sed -e "s|^#\(.*\)/path/to/wikiconfigdir|\1${VHOST_ROOT}/${PN}-${PVR}|g" -i ${MY_INSTALLDIR}/moin.cgi || die "sed failed"
+	sed -e "s|#url_prefix_static|url_prefix_static|" -i ${VHOST_ROOT}/${PN}-${PVR}/wikiconfig.py || die "sed failed"
+	sed -e "s|//|/|" -i ${VHOST_ROOT}/${PN}-${PVR}/wikiconfig.py || die "sed failed"
+
+elif [ $1 = "clean" ]; then
+	echo $1
+fi

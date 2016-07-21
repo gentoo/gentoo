@@ -1,0 +1,18 @@
+--- a/src/mkisofs.c.old	2005-05-28 02:37:14.000000000 +0200
++++ b/src/mkisofs.c	2005-07-11 02:10:44.000000000 +0200
+@@ -91,13 +91,13 @@
+       }
+     }
+ 
+-    Lextra = g_strdup_printf("%s %s -iso-level %s %s%s %s%s", Lrockridge == TRUE ? "-r" : "", Ljoliet ? "-J" : "", Lisolevel,
++    Lextra = g_strdup_printf("%s %s -iso-level %s %s%s %s%s", Lrockridge == TRUE ? "-r" : "", Ljoliet ? "-J -joliet-long" : "", Lisolevel,
+         Lmediainfo ? "-C " : "", Lmediainfo ? Lmediainfo : "", Lmediainfo && Ldevchar ? "-M " : "",
+         Lmediainfo && Ldevchar ? Ldevchar : "");
+     g_free(Lmediainfo);
+     g_free(Lisolevel);
+   } else {  /* data dvd */
+-    Lextra = g_strdup("-r -J");
++    Lextra = g_strdup("-r -J -joliet-long");
+   }
+ 
+   /* charsets a utiliser pour la creation de l'image iso */

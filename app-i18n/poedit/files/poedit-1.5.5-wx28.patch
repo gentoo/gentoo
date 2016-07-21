@@ -1,0 +1,22 @@
+catalog.cpp:1155:20: error: 'class wxCharBuffer' has no member named 'length'
+
+http://www.poedit.net/trac/ticket/513
+
+
+--- a/src/catalog.cpp
++++ b/src/catalog.cpp
+@@ -1151,8 +1151,13 @@ inline bool CanEncodeStringToCharset(const wxString& s, wxMBConv& conv)
+ {
+     if (s.empty())
+         return true;
+-    wxCharBuffer converted(s.mb_str(conv));
++    const wxCharBuffer converted(s.mb_str(conv));
++#if wxCHECK_VERSION(2,9,0)
+     if ( converted.length() == 0 )
++#else
++    const char *cs = (const char*)converted;
++    if ( cs == NULL || strlen(cs) == 0 )
++#endif
+         return false;
+     return true;
+ }

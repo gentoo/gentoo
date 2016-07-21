@@ -1,0 +1,29 @@
+--- Makefile
++++ Makefile
+@@ -6,11 +6,10 @@
+ # This Makefile does not work for MSDOS. Make your 
+ # own one, or compile by hand.
+ #
+-CC = gcc
++CC ?= gcc
+ 
+-CFLAGS = -Wall -O2
++CFLAGS += -Wall
+ # CFLAGS = -Wall -O2 -fomit-frame-pointer
+-LDFLAGS = -s
+ 
+ prefix = ${DESTDIR}/usr
+ mandir = $(prefix)/share/man/man1
+@@ -20,10 +19,10 @@
+ all:	dvi2tty disdvi
+ 
+ dvi2tty:dvi2tty.o dvistuff.o
+-	$(CC) $(LFLAGS) -o dvi2tty dvi2tty.o dvistuff.o
++	$(CC) $(LDFLAGS) -o dvi2tty dvi2tty.o dvistuff.o
+ 
+ disdvi:disdvi.o
+-	$(CC) $(LFLAGS) -o disdvi disdvi.o
++	$(CC) $(LDFLAGS) -o disdvi disdvi.o
+ 
+ dvi2tty.o: dvi2tty.c dvi2tty.h
+ 

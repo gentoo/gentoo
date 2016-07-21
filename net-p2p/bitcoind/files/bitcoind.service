@@ -1,0 +1,30 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades. If you want to customize, the
+# best way is to create file
+# "/etc/systemd/system/bitcoind.service.d/*.conf"
+# containing your changes
+
+# For example, if you want to change some daemon and/or unit options,
+# create a file named
+# "/etc/systemd/system/bitcoind.service.d/myopts.conf"
+# containing:
+#       [Service]
+#       Environment="BITCOIN_OPTS=-debug -logtimestamps"
+#       Nice=10
+# This will override the setting appearing below.
+
+# Note that almost all daemon options could be specified in
+# /etc/bitcoin/bitcoin.conf
+
+[Unit]
+Description=Bitcoin Daemon
+After=network.target
+
+[Service]
+User=bitcoin
+Environment=BITCOIN_OPTS=
+ExecStart=/usr/bin/bitcoind -daemon=0 $BITCOIN_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+From 79259f536ba8fd8c500b4506b1a89b06c5264d06 Mon Sep 17 00:00:00 2001
+From: John W. Linville <linville@tuxdriver.com>
+Date: Tue, 27 Mar 2007 13:03:46 -0400
+Subject: [PATCH] [PATCH] adm8211: fix set essid for WE-21
+
+Signed-off-by: John W. Linville <linville@tuxdriver.com>
+---
+ adm8211/adm8211_ioctl.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/adm8211/adm8211_ioctl.c b/adm8211/adm8211_ioctl.c
+index 22850cc..7c0f6b6 100644
+--- a/adm8211/adm8211_ioctl.c
++++ b/adm8211_ioctl.c
+@@ -294,7 +294,7 @@ static int adm8211_ioctl_siwessid(struct net_device *dev,
+ 	if (dwrq->flags == 0 || dwrq->length < 1)
+ 		len = 0;
+ 	else
+-		len = min(dwrq->length - 1, IW_ESSID_MAX_SIZE);
++		len = min(dwrq->length, IW_ESSID_MAX_SIZE);
+ 
+ 	memcpy(priv->ieee80211.ssid, essid, len);
+ 	priv->ieee80211.ssid_len = len;
+-- 
+1.5.2.1
+

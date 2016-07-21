@@ -1,0 +1,80 @@
+diff --git a/ical4j-1.0.5/build.xml b/ical4j-1.0.5/build.xml
+index 512738c..be5aac9 100644
+--- a/ical4j-1.0.5/build.xml
++++ b/ical4j-1.0.5/build.xml
+@@ -14,7 +14,7 @@
+ 	<property file="build.properties" />
+ 
+ 	<!-- Project paths -->
+-	<property name="source.dir" location="source" />
++	<property name="source.dir" location="src" />
+ 	<property name="test.source.dir" location="test" />
+ 	<property name="output.dir" location="bin" />
+ 	<property name="package.dir" location="build" />
+@@ -99,7 +99,7 @@
+ 		<echo message="Compiling source from classpath: ${project.classpath}" />
+ 		<mkdir dir="${output.dir}" />
+ 
+-		<copy file="${source.dir}/net/fortuna/ical4j/model/tz.alias" todir="${output.dir}/net/fortuna/ical4j/model" />
++		<copy file="src/main/resources/net/fortuna/ical4j/model/tz.alias" todir="${output.dir}/net/fortuna/ical4j/model" />
+ 
+ 		<javac source="1.4" target="1.4" srcdir="${source.dir}" destdir="${output.dir}" debug="true" debuglevel="lines,source,vars" deprecation="true" classpathref="project.classpath" />
+ 	</target>
+@@ -123,7 +123,7 @@
+ 			<attribute name="Class-Path" value="commons-logging.jar,commons-codec.jar,commons-lang.jar" />
+ 		</manifest>
+ 		<jar basedir="${output.dir}" compress="true" jarfile="${package.dir}/${package.file}" manifest="etc/manifest.mf">
+-			<zipfileset dir="etc/zoneinfo" prefix="zoneinfo" excludes="zones.h,zones.tab" />
++			<zipfileset dir="/usr/share/zoneinfo" prefix="zoneinfo" excludes="zones.h,zones.tab" />
+ 		</jar>
+ 	</target>
+ 
+@@ -187,10 +187,8 @@
+ 			<instr instrpathref="coverage.classpath" destdir="${out.instr.dir}" metadatafile="${coverage.dir}/metadata.emma" merge="true" />
+ 		</emma>
+ 
+-		<junit printsummary="withOutAndErr" showoutput="yes" fork="yes">
+-			<!--
+-            <classpath path="${project.classpath}"/>
+-            -->
++    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
++
+ 			<classpath>
+ 				<pathelement location="${out.instr.dir}" />
+ 				<path refid="coverage.classpath" />
+@@ -198,22 +196,19 @@
+ 			</classpath>
+ 			<jvmarg value="-Demma.coverage.out.file=${coverage.dir}/coverage.emma" />
+ 			<jvmarg value="-Demma.coverage.out.merge=false" />
+-			<test name="net.fortuna.ical4j.AllTests" />
+-			<!--
+-            <batchtest>
+-                <fileset dir="${test.source.dir}">
+-                    <include name="**/*Test.java"/>
+-                </fileset>
+-            </batchtest>
+-            -->
+-
+-			<!--
+-            <test name="net.fortuna.ical4j.data.CalendarOutputterTest"/>
+-            <test name="net.fortuna.ical4j.model.component.VTimeZoneTest"/>
+-            <test name="net.fortuna.ical4j.model.component.VEventTest"/>
+-            <test name="net.fortuna.ical4j.data.CalendarBuilderTest"/>
+-            -->
+-		</junit>
++
++
++      <sysproperty key="basedir" value="."/>
++      <formatter type="xml"/>
++      <formatter type="plain" usefile="false"/>
++
++      <batchtest>
++        <fileset dir="${test.source.dir}">
++          <include name="**/*Test.java"/>
++          <exclude name="**/*Abstract*Test.java"/>
++        </fileset>
++      </batchtest>
++    </junit>
+ 
+ 		<emma enabled="${emma.enabled}">
+ 			<report sourcepath="${src.dir}">

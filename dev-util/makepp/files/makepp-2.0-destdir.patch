@@ -1,0 +1,13 @@
+don't break install paths when DESTDIR is set
+
+--- a/install.pl
++++ b/install.pl
+@@ -131,7 +131,7 @@
+ 
+ if( $destdir ) {
+   for( $bindir, $datadir, $mandir, $htmldir_val ) {
+-    s/$prefix/$destdir/o if defined;
++    s/^/$destdir/o if defined;
+   }
+ }
+ 

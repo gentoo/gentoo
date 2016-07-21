@@ -1,0 +1,11 @@
+--- a/lex.c
++++ b/lex.c
+@@ -107,7 +107,7 @@
+ yylex()
+ {
+     char *p = line + linelim;
+-    int ret;
++    int ret = 0;
+     static int isfunc = 0;
+     static bool isgoto = 0;
+     static bool colstate = 0;

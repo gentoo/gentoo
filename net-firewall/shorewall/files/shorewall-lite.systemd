@@ -1,0 +1,20 @@
+#
+#	The Shoreline Firewall Lite (Shorewall-Lite) Packet Filtering Firewall - V5.0
+#
+[Unit]
+Description=Shorewall IPv4 firewall lite
+Documentation=man:shorewall-lite(8) http://www.shorewall.net/Documentation_Index.html
+Wants=network-online.target
+After=network-online.target
+Conflicts=iptables.service firewalld.service iptables-restore.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/shorewall-lite
+StandardOutput=syslog
+ExecStart=/sbin/shorewall-lite $OPTIONS start $STARTOPTIONS
+ExecStop=/sbin/shorewall-lite $OPTIONS stop $STOPOPTIONS
+
+[Install]
+WantedBy=basic.target

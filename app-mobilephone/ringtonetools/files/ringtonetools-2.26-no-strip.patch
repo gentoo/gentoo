@@ -1,0 +1,11 @@
+diff -Nru ringtonetools-2.26.orig/Makefile ringtonetools-2.26/Makefile
+--- ringtonetools-2.26.orig/Makefile	2005-08-01 20:42:00.000000000 +0300
++++ ringtonetools-2.26/Makefile	2006-09-24 13:01:32.252022000 +0300
+@@ -3,7 +3,6 @@
+ 	@cd src && make
+ 	@if [ -e src/ringtonetools.exe ]; then mv src/ringtonetools.exe ringtonetools.exe; fi
+ 	@if [ -e src/ringtonetools ]; then mv src/ringtonetools .; fi
+-	@strip ringtonetools*
+ 
+ 
+ clean:

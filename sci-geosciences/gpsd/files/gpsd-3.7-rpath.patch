@@ -1,0 +1,17 @@
+don't set the -rpath/-L flags to the install dir as this breaks DESTDIR
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -268,11 +268,7 @@
+     return wrapped
+ 
+ # Honor the specified installation prefix in link paths.
+-if not env["sysroot"]:
+-    env.Prepend(LIBPATH=[installdir('libdir')])
+-else:
+-    env.Prepend(LIBPATH=[env["sysroot"] + installdir('libdir')])
+-if env["shared"]:
++if env["shared"] and env["chrpath"]:
+     env.Prepend(RPATH=[installdir('libdir')])
+ 
+ # Give deheader a way to set compiler flags

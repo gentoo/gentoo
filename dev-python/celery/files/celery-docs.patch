@@ -1,0 +1,19 @@
+# Prevent un-needed objects.inv files
+diff -ur celery-3.0.19.orig/docs/conf.py celery-3.0.19/docs/conf.py
+--- docs/conf.py	2013-04-15 22:51:46.000000000 +0800
++++ docs/conf.py	2013-04-27 21:46:25.070423582 +0800
+@@ -74,14 +74,6 @@
+ # If true, '()' will be appended to :func: etc. cross-reference text.
+ add_function_parentheses = True
+ 
+-intersphinx_mapping = {
+-    'python': ('http://docs.python.org/dev', None),
+-    'kombu': ('http://kombu.readthedocs.org/en/latest/', None),
+-    'djcelery': ('http://django-celery.readthedocs.org/en/latest', None),
+-    'cyme': ('http://cyme.readthedocs.org/en/latest', None),
+-    'amqp': ('http://amqp.readthedocs.org/en/latest', None),
+-}
+-
+ # The name of the Pygments (syntax highlighting) style to use.
+ pygments_style = 'colorful'
+ 

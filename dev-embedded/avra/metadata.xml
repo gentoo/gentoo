@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>raxas@pavouk-v-rohu.net</email>
+		<name>Petr Kocmid</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Assembler for Atmel AVR microprocessors
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">avra</remote-id>
+	</upstream>
+</pkgmetadata>

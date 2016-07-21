@@ -1,0 +1,22 @@
+From 7389dc990c67d4269f3a79c924c054e87f2e4ac5 Mon Sep 17 00:00:00 2001
+From: Alexandr Akulich <akulichalexander@gmail.com>
+Date: Fri, 15 Jan 2016 18:54:09 +0500
+Subject: [PATCH] CMakeLists: Added missing service dependence.
+
+telepathy-qt-service depends on generated stable and future types and consts.
+---
+ TelepathyQt/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/TelepathyQt/CMakeLists.txt b/TelepathyQt/CMakeLists.txt
+index 58668cd..1b32d32 100644
+--- a/TelepathyQt/CMakeLists.txt
++++ b/TelepathyQt/CMakeLists.txt
+@@ -953,6 +953,7 @@ if(ENABLE_SERVICE_SUPPORT)
+     #endif (ENABLE_COMPILER_COVERAGE)
+     # lets build a static only library until we have a stable API/ABI
+     add_library(telepathy-qt${QT_VERSION_MAJOR}-service STATIC ${telepathy_qt_service_SRCS})
++    add_dependencies(telepathy-qt${QT_VERSION_MAJOR}-service stable-typesgen future-typesgen)
+ 
+     # generate service moc files
+     foreach(moc_src ${telepathy_qt_service_MOC_SRCS})

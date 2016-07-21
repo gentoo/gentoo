@@ -1,0 +1,34 @@
+--- c2hs-0.16.4-orig/src/C2HS/Config.hs	2012-11-01 08:02:48.000000000 +1100
++++ c2hs-0.16.4/src/C2HS/Config.hs	2012-11-03 12:12:15.754353409 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE CPP #-}
+ --                                                                -*-haskell-*-
+ --  ** @configure_input@ **
+ --  ===========================================================================
+--- c2hs-0.16.4-orig/src/Control/StateTrans.hs	2012-11-01 08:02:48.000000000 +1100
++++ c2hs-0.16.4/src/Control/StateTrans.hs	2012-11-03 12:12:15.755353436 +1100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE CPP, ScopedTypeVariables #-}
+ --  The HiPar Toolkit: state transformer routines
+ --
+ --  Author : Manuel M. T. Chakravarty
+@@ -80,6 +81,10 @@
+ -- Launchbury/Peyton-Jones' texts before entering. Otherwise,
+ -- your mental health my be in danger.  You have been warned!
+ 
++#if !MIN_VERSION_base(4,6,0)
++import Prelude hiding (catch)
++#endif
++import Control.Exception (catch, IOException)
+ 
+ -- state transformer base and its monad operations
+ -- -----------------------------------------------
+@@ -298,7 +303,7 @@
+                                   ioError err
+               Right _a         -> return state
+             )
+-            `catch` (\err -> let
++            `catch` (\(err :: IOException) -> let
+                                STB handler' = handler err
+                              in
+                              handler' bs gs)

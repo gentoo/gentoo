@@ -1,0 +1,23 @@
+# HG changeset patch
+# User Laurent Bachelier <laurent@bachelier.name>
+# Date 1388257625 -3600
+# Node ID d89bc5823b639a13d299c7485fd81be89ef036a1
+# Parent  aa1a71e0adf7129f99c087afa9416a37b527012b
+Remove support for broken operating systems
+
+diff -r aa1a71e0adf7 -r d89bc5823b63 setup.py
+--- a/setup.py	Tue Jan 31 11:48:23 2012 +0000
++++ b/setup.py	Sat Dec 28 20:07:05 2013 +0100
+@@ -9,12 +9,6 @@
+ 
+ __version__ = "0.8"
+ 
+-# Disable hard links, otherwise building distributions fails on OS X
+-try:
+-    del os.link
+-except:
+-    pass
+-
+ # On Windows, we need ws2_32 and iphlpapi
+ if getattr(sys, 'getwindowsversion', None):
+     libraries = ['ws2_32', 'iphlpapi']

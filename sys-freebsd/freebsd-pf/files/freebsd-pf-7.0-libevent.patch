@@ -1,0 +1,12 @@
+--- usr.sbin/ftp-proxy/ftp-proxy/Makefile.orig	2008-06-14 00:01:52 -0300
++++ usr.sbin/ftp-proxy/ftp-proxy/Makefile	2008-06-14 00:03:19 -0300
+@@ -10,8 +10,7 @@
+ CFLAGS+= -I${.CURDIR}/../../../contrib/pf/libevent
+ CFLAGS+= -I${.CURDIR}/../../../sys/contrib/pf
+ 
+-DPADD=	${LIBEVENT}
+-LDADD=	${LIBEVENT}
++LDADD=	-levent
+ 
+ WARNS?=	2
+ 

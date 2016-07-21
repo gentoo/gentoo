@@ -1,0 +1,39 @@
+ config/bash/Makefile.am | 8 ++++----
+ config/bash/lxc.in      | 2 --
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/config/bash/Makefile.am b/config/bash/Makefile.am
+index b1768c9..3fbbe8e 100644
+--- a/config/bash/Makefile.am
++++ b/config/bash/Makefile.am
+@@ -2,12 +2,12 @@ EXTRA_DIST = lxc
+ 
+ if ENABLE_BASH
+ install-bash:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/bash_completion.d/
+-	$(INSTALL_DATA) lxc $(DESTDIR)$(sysconfdir)/bash_completion.d/
++	$(MKDIR_P) $(DESTDIR)$(datarootdir)/bash-completion/completions/
++	$(INSTALL_DATA) lxc $(DESTDIR)$(datarootdir)/bash-completion/completions/
+ 
+ uninstall-bash:
+-	rm -f $(DESTDIR)$(sysconfdir)/bash_completion.d/lxc
+-	rmdir $(DESTDIR)$(sysconfdir)/bash_completion.d/ || :
++	rm -f $(DESTDIR)$(datarootdir)/bash-completion/completions/lxc
++	rmdir $(DESTDIR)$(datarootdir)/bash-completion/ || :
+ 
+ install-data-local: install-bash
+ uninstall-local: uninstall-bash
+diff --git a/config/bash/lxc.in b/config/bash/lxc.in
+index 18fd48f..8fff725 100644
+--- a/config/bash/lxc.in
++++ b/config/bash/lxc.in
+@@ -1,4 +1,3 @@
+-have lxc-start && {
+     _lxc_names() {
+         COMPREPLY=( $( compgen -W "$( lxc-ls )" "$cur" ) )
+     }
+@@ -100,4 +99,3 @@ have lxc-start && {
+ 
+     complete -o default -F _lxc-generic-o lxc-clone
+     complete -o default -F _lxc-generic-o lxc-start-ephemeral
+-}

@@ -1,0 +1,25 @@
+diff -ur testfixtures-3.0.0.orig/docs/conf.py testfixtures-3.0.0/docs/conf.py
+--- docs/conf.py	2011-09-23 16:55:53.000000000 +0800
++++ docs/conf.py	2014-06-30 15:36:43.591451878 +0800
+@@ -4,8 +4,7 @@
+ pkg_info = pkginfo.Develop(os.path.join(os.path.dirname(__file__),'..'))
+ 
+ extensions = [
+-    'sphinx.ext.autodoc',
+-    'sphinx.ext.intersphinx'
++    'sphinx.ext.autodoc'
+     ]
+ 
+ intersphinx_mapping = {'http://docs.python.org': None}
+diff -ur testfixtures-3.0.0.orig/docs/Makefile testfixtures-3.0.0/docs/Makefile
+--- docs/Makefile	2011-07-19 00:43:59.000000000 +0800
++++ docs/Makefile	2014-06-30 15:36:31.703450934 +0800
+@@ -3,7 +3,7 @@
+ 
+ # You can set these variables from the command line.
+ SPHINXOPTS    =
+-SPHINXBUILD   = ../bin/sphinx-build
++SPHINXBUILD   = /usr/bin/sphinx-build
+ PAPER         =
+ 
+ # Internal variables.

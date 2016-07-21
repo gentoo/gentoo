@@ -1,0 +1,37 @@
+diff -urN a/js/src/Makefile.in b/js/src/Makefile.in
+--- a/js/src/Makefile.in	2013-03-25 15:34:20.000000000 -0500
++++ b/js/src/Makefile.in	2014-03-08 08:26:36.726979744 -0600
+@@ -788,7 +788,7 @@
+ 	$(PYTHON) $(topsrcdir)/config/Preprocessor.py $(JS_CONFIG_SUBSTITUTIONS) $< > $@
+ 
+ install:: $(LIBRARY_NAME).pc
+-		$(SYSINSTALL) $^ $(DESTDIR)$(libdir)/pkgconfig
++		$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(libdir)/pkgconfig
+ 
+ ######################################################
+ # BEGIN SpiderMonkey header installation
+@@ -836,19 +836,19 @@
+ #
+ 
+ install:: $(INSTALLED_HEADERS)
+-	$(SYSINSTALL) $^ $(DESTDIR)$(includedir)/$(MODULE)
++	$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(includedir)/$(MODULE)
+ 
+ install:: $(EXPORTS_ds)
+-	$(SYSINSTALL) $^ $(DESTDIR)$(includedir)/$(MODULE)/ds
++	$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(includedir)/$(MODULE)/ds
+ 
+ install:: $(EXPORTS_gc)
+-	$(SYSINSTALL) $^ $(DESTDIR)$(includedir)/$(MODULE)/gc
++	$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(includedir)/$(MODULE)/gc
+ 
+ install:: $(EXPORTS_js)
+-	$(SYSINSTALL) $^ $(DESTDIR)$(includedir)/$(MODULE)/js
++	$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(includedir)/$(MODULE)/js
+ 
+ install:: $(EXPORTS_mozilla)
+-	$(SYSINSTALL) $^ $(DESTDIR)$(includedir)/$(MODULE)/mozilla
++	$(SYSINSTALL) -m 0644 $^ $(DESTDIR)$(includedir)/$(MODULE)/mozilla
+ 
+ #
+ # END SpiderMonkey header installation

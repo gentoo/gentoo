@@ -1,0 +1,99 @@
+--- moreutils/errno.docbook
++++ moreutils/errno.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/ifdata.docbook
++++ moreutils/ifdata.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/ifne.docbook
++++ moreutils/ifne.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/isutf8.docbook
++++ moreutils/isutf8.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/lckdo.docbook
++++ moreutils/lckdo.docbook
+@@ -8,7 +8,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/mispipe.docbook
++++ moreutils/mispipe.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/parallel.docbook
++++ moreutils/parallel.docbook
+@@ -7,7 +7,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/pee.docbook
++++ moreutils/pee.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>
+--- moreutils/sponge.docbook
++++ moreutils/sponge.docbook
+@@ -21,7 +21,7 @@
+ -->
+ 
+ <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook V4.4//EN"
+-"file:///usr/share/xml/docbook/schema/dtd/4.4/docbookx.dtd"
++"file://@GENTOO_PORTAGE_EPREFIX@/usr/share/sgml/docbook/xml-dtd-4.4/docbookx.dtd"
+ []>
+ 
+ <refentry>

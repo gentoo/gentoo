@@ -1,0 +1,75 @@
+From: Christophe Giboudeaux <cgiboudeaux@gmx.com>
+Date: Thu, 04 Jul 2013 13:59:57 +0000
+Subject: Drop cmake_uninstall.cmake.in
+X-Git-Url: http://quickgit.kde.org/?p=kdesvn.git&a=commitdiff&h=267bda11388934cf126334269f15611e96729983
+---
+Drop cmake_uninstall.cmake.in
+
+FindKDE4Internal.cmake already creates an cmake_uninstall file.
+---
+Backported to 1.6.0 (toUppercase, cmake path)
+
+--- a/CMakeLists.txt	2010-03-20 17:08:10.000000000 +0100
++++ b/CMakeLists.txt	2015-12-29 18:40:33.550299882 +0100
+@@ -165,14 +165,6 @@
+     IMMEDIATE
+     @ONLY)
+ 
+-CONFIGURE_FILE(
+-    "${CMAKE_CURRENT_SOURCE_DIR}/cmakemodules/cmake_uninstall.cmake.in"
+-    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+-    IMMEDIATE @ONLY)
+-
+-ADD_CUSTOM_TARGET(uninstall
+-    "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+-
+ ADD_CUSTOM_TARGET(dist
+     "${CMAKE_BINARY_DIR}/makedist.sh"
+     DEPENDS doc
+--- a/cmakemodules/cmake_uninstall.cmake.in
++++ /dev/null
+@@ -1,43 +1 @@
+-####
+- #   Copyright (C) 2005-2009 by Rajko Albrecht  ral@alwins-world.de        #
+- #   http://kdesvn.alwins-world.de/                                        #
+- #                                                                         #
+- #   This program is free software; you can redistribute it and/or modify  #
+- #   it under the terms of the GNU General Public License as published by  #
+- #   the Free Software Foundation; either version 2 of the License, or     #
+- #   (at your option) any later version.                                   #
+- #                                                                         #
+- #   This program is distributed in the hope that it will be useful,       #
+- #   but WITHOUT ANY WARRANTY; without even the implied warranty of        #
+- #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
+- #   GNU General Public License for more details.                          #
+- #                                                                         #
+- #   You should have received a copy of the GNU General Public License     #
+- #   along with this program; if not, write to the                         #
+- #   Free Software Foundation, Inc.,                                       #
+- #   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         #
+- ####
+ 
+-IF(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+-  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
+-ENDIF(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+-
+-FILE(READ "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" files)
+-STRING(REGEX REPLACE "\n" ";" files "${files}")
+-FOREACH(file ${files})
+-  MESSAGE(STATUS "Uninstalling \"${file}\"")
+-  IF(NOT EXISTS "${file}")
+-#not a failure - missing links are marked as missed too, so when lib is removed the links are
+-#there but invalid!
+-    MESSAGE(STATUS "File \"${file}\" does not exists.")
+-  ENDIF(NOT EXISTS "${file}")
+-  EXEC_PROGRAM("@CMAKE_COMMAND@" ARGS "-E remove \"${file}\""
+-    OUTPUT_VARIABLE rm_out
+-    RETURN_VARIABLE rm_retval)
+-  IF("${rm_retval}" GREATER 0)
+-    MESSAGE(FATAL_ERROR "Problem when removing \"${file}\"")
+-  ENDIF("${rm_retval}" GREATER 0)
+-ENDFOREACH(file)
+-
+-
+-
+

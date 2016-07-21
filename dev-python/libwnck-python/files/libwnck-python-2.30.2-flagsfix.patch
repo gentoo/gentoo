@@ -1,0 +1,30 @@
+diff -up gnome-python-desktop-2.30.0/wnck/wnck.defs.flagsfix gnome-python-desktop-2.30.0/wnck/wnck.defs
+--- gnome-python-desktop-2.30.0/wnck/wnck.defs.flagsfix	2010-04-20 11:27:20.119491538 -0400
++++ gnome-python-desktop-2.30.0/wnck/wnck.defs	2010-04-20 11:28:34.715491536 -0400
+@@ -100,7 +100,7 @@
+   )
+ )
+ 
+-(define-enum WindowState
++(define-flags WindowState
+   (in-module "Wnck")
+   (c-name "WnckWindowState")
+   (gtype-id "WNCK_TYPE_WINDOW_STATE")
+@@ -121,7 +121,7 @@
+   )
+ )
+ 
+-(define-enum WindowActions
++(define-flags WindowActions
+   (in-module "Wnck")
+   (c-name "WnckWindowActions")
+   (gtype-id "WNCK_TYPE_WINDOW_ACTIONS")
+@@ -184,7 +184,7 @@
+   )
+ )
+ 
+-(define-enum WindowMoveResizeMask
++(define-flags WindowMoveResizeMask
+   (in-module "Wnck")
+   (c-name "WnckWindowMoveResizeMask")
+   (gtype-id "WNCK_TYPE_WINDOW_MOVE_RESIZE_MASK")

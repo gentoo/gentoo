@@ -1,0 +1,30 @@
+http://bugs.gentoo.org/show_bug.cgi?id=302773
+
+--- tailor.h.old	2010-01-29 11:13:02.000000000 +0000
++++ tailor.h	2010-01-29 13:18:15.000000000 +0000
+@@ -69,9 +69,6 @@
+ #  include <io.h>
+ #  define OS_CODE  0x00
+ #  define SET_BINARY_MODE(fd) setmode(fd, O_BINARY)
+-#  if !defined(NO_ASM) && !defined(ASMV)
+-#    define ASMV
+-#  endif
+ #else
+ #  define near
+ #endif
+@@ -182,7 +179,6 @@
+ #  define PATH_SEP2 ':'
+ #  define STDC_HEADERS
+ #  define OS_CODE  0x01
+-#  define ASMV
+ #  ifdef __GNUC__
+ #    define HAVE_DIRENT_H
+ #    define HAVE_FCNTL_H
+@@ -201,7 +197,6 @@
+ #endif
+ 
+ #if defined(ATARI) || defined(atarist)
+-#  define ASMV
+ #  define OS_CODE  0x05
+ #  ifdef TOSFS
+ #    define PATH_SEP2 '\\'

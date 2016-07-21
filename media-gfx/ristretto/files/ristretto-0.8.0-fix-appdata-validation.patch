@@ -1,0 +1,25 @@
+From 3ae341ba0bbf5c0fefcdb02a3674061a6b73f7db Mon Sep 17 00:00:00 2001
+From: Kevin Fenzi <kevin@scrye.com>
+Date: Mon, 2 Mar 2015 15:41:11 +0300
+Subject: appdata fails validation (Bug #11622)
+
+appstream-util fails with "cannot contain a hyperlink".
+
+Signed-off-by: Eric Koegel <eric.koegel@gmail.com>
+
+diff --git a/ristretto.appdata.xml.in b/ristretto.appdata.xml.in
+index 0ff8b22..ea7a96f 100644
+--- a/ristretto.appdata.xml.in
++++ b/ristretto.appdata.xml.in
+@@ -66,7 +66,7 @@
+     <release version="0.6.0" timestamp="1335662454">
+       <description>
+         <_p>This version comes with several changes such as online documentation on
+-           http://docs.xfce.org, the option to limit the maximum image-quality to
++           docs.xfce.org, the option to limit the maximum image-quality to
+            the screen dimensions to improve memory-usage and performance - now ristretto
+            renders at full quality with this option disabled, only one toolbar - instead 
+            of two, a quick-launch button on the toolbar to execute an editor, the option
+-- 
+cgit v0.10.1
+

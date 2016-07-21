@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<maintainer type="person">
+  <email>pchrist@gentoo.org</email>
+</maintainer>
+<longdescription>
+  An implementation of the language INTERCAL, legendary for its perversity
+  and horribleness (this version adds COME FROM for extra flavor). Comes with
+  language manual and examples including possibly the entire extant body of
+  INTERCAL code. Now supports i18n and l14n (to Ancient Roman locale only).
+  Now with fix patch by Donald Knuth.
+</longdescription>
+</pkgmetadata>

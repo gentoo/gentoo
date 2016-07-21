@@ -1,0 +1,31 @@
+Index: clxclient-1.0.1/clxclient.h
+===================================================================
+--- clxclient-1.0.1.orig/clxclient.h
++++ clxclient-1.0.1/clxclient.h
+@@ -75,7 +75,7 @@ class X_hints
+ {
+ public:
+ 
+-    X_hints::X_hints (void) { _sh.flags = 0; _mh.flags = 0; _ch.res_name = 0; _ch.res_class = 0; }
++    X_hints (void) { _sh.flags = 0; _mh.flags = 0; _ch.res_name = 0; _ch.res_class = 0; }
+ 
+     void position (int x, int y);
+     void minsize  (int x, int y);
+@@ -187,7 +187,7 @@ public:
+     X_resman (const X_resman&);
+     X_resman& operator=(const X_resman&);
+ 
+-    void X_resman::init (int *argc, char *argv [], char *name,
++    void init (int *argc, char *argv [], char *name,
+ 			 XrmOptionDescRec *opt, int nopt);
+ 
+     const char *get (const char *res, const char *def) const;
+@@ -205,7 +205,7 @@ private:
+     char        *_home;  
+     XrmDatabase  _xrmdata;
+ 
+-    static XrmOptionDescRec X_resman::defopt [X_resman::NDEFOPT];
++    static XrmOptionDescRec defopt [X_resman::NDEFOPT];
+ };
+ 
+ 

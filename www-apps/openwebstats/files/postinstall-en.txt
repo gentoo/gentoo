@@ -1,0 +1,36 @@
+------------------------------------------------------------------------
+INSTALLATION
+
+The ebuild installs most parts of openwebstats automatically, but 
+you will have to create a database for the apache log records.
+
+You can do this using the following commands as the mysql root user:
+
+> mysql -u root -p -e "CREATE DATABASE ows;
+                       GRANT CREATE, SELECT, INSERT, UPDATE, DELETE ON ows.* TO 'ows'@'localhost' 
+		       IDENTIFIED BY 'pass';
+                       FLUSH PRIVILEGES;"
+
+Please do not forget to choose a password that is more sensible than 
+'pass' ;)
+
+Now as user "ows":
+
+> mysql -u ows -ppass ows < ${MY_SQLSCRIPTSDIR}/mysql/${PV}_create.sql
+
+You also need to set the MySQL passwords for the ows user in 
+the ${MY_INSTALLDIR}/config.php file 
+so that openwebstats can access the database. 
+
+If you use a special logfile format for your web server you should 
+also modify the log format in the config.php file.
+
+Make sure your access_log is readable if you want to use the update
+function of the web frontend.
+
+> chmod 644 /var/log/apache2/access_log 
+
+Now you can go to http://${VHOST_HOSTNAME}/${VHOST_APPDIR} and use the
+application.
+
+------------------------------------------------------------------------

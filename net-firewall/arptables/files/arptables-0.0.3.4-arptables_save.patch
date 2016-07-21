@@ -1,0 +1,24 @@
+# Don't resolve host names and don't convert '*' interface names to any.
+# Remove '*' interface names.
+
+diff -urNad arptables-0.0.3.3~/arptables-save arptables-0.0.3.3/arptables-save
+--- arptables-0.0.3.3~/arptables-save	2009-08-19 14:17:17.000000000 +0200
++++ arptables-0.0.3.3/arptables-save	2009-08-19 14:19:58.000000000 +0200
+@@ -35,6 +35,8 @@
+ 	# Due to arptables "issues" with displaying device names
+         # we need to use -v and then do some processing
+ 	$line =~ s/\s,\s.*//;
++	$line =~ s/-i\s\*//;
++	$line =~ s/-o\s\*//;
+         $rules = $rules . "-A $chain $line\n";
+     }
+ 
+@@ -47,7 +49,7 @@
+ # ========================================================
+ 
+ unless (-x "$tool") { print "ERROR: Tool $tool isn't executable"; exit -1; };
+-$table =`$tool -t filter -L -v`;
++$table =`$tool -t filter -L -v -n`;
+ unless ($? == 0) { print $table; exit -1 };
+ &process_table($table);
+ 

@@ -1,0 +1,10 @@
+--- contrib/pf/pflogd/pflogd.c.old	2011-11-02 21:12:57.000000000 +0000
++++ contrib/pf/pflogd/pflogd.c	2011-11-02 21:13:11.000000000 +0000
+@@ -39,6 +39,7 @@
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+ #include <net/if.h>
++#include <net/bpf.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

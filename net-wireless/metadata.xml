@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-wireless category contains wireless networking software and
+		utilities.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-wireless enthält Treiber und Programme für Wireless-Netzwerke.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-wireless contiene utilidades y programas relacionados
+		con las redes inalámbricas.
+	</longdescription>
+	<longdescription lang="ja">
+		net-wirelessカテゴリーにはワイヤレスネットワーキング・ソフトウェアと
+		ユーティリティが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-wireless categorie bevat applicaties en stuurprogramma's voor draadloze netwerken.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-wireless chứa các phần mềm mạng không dây.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-wireless contiene utilità e programmi per le reti wireless.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-wireless contém programas e utilitários para
+		redes sem fio (wireless).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-wireless zawiera narzędzia do pracy w sieciach bezprzewodowych.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,41 @@
+diff -ru ensemblist-040126.orig/Makefile ensemblist-040126/Makefile
+--- ensemblist-040126.orig/Makefile	2004-01-26 10:37:05.000000000 -0500
++++ ensemblist-040126/Makefile	2009-01-23 03:24:05.000000000 -0500
+@@ -1,17 +1,8 @@
+ NAME=ensemblist
+-CC=gcc
+-ifdef DEBUG
+-DATADIR=/home/rixed/src/ensemblist/datas
+-COMPILE_FLAGS=-Wall -fno-builtin -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wredundant-decls -O0 -g `libmikmod-config --cflags` -DDATADIR=$(DATADIR)
+-LINK_FLAGS=-g -lm -L /usr/X11R6/lib -lXmu -lGL -lglut -lGLU -lpng `libmikmod-config --libs` -lefence -lpthread
+-else
+ DATADIR=$(DESTDIR)/usr/share/$(NAME)
+-COMPILE_FLAGS=-Wall -O3 -fomit-frame-pointer `libmikmod-config --cflags` -DNDEBUG -DDATADIR=$(DATADIR)
+-LINK_FLAGS=-lm -L /usr/X11R6/lib -lXmu -lGL -lglut -lGLU -lpng `libmikmod-config --libs` -lpthread
+-endif
++COMPILE_FLAGS=`libmikmod-config --cflags` -DDATADIR=$(DATADIR)
++LINK_FLAGS=-L/usr/X11R6/lib -lXmu -lGL -lglut -lGLU -lpng `libmikmod-config --libs` -lpthread -lm
+ APPLE_FRAMEWORKS=-framework GLUT -framework Cocoa -framework OpenGL
+-#uncomment the following if you want to compile on MacOS/X
+-#LINK_FLAGS=$(LINK_FLAGS) $(APPLE_FRAMEWORKS)
+ CFILES=$(wildcard *.c)
+ OFILES=$(patsubst %.c,%.o,$(CFILES))
+ 
+@@ -22,15 +13,10 @@
+ all: $(NAME)
+ 
+ $(NAME): $(OFILES)
+-	@echo '$(COL)$@$(NORM)'
+-	$(CC) $(COMPILE_FLAGS) $(LINK_FLAGS) $^ -o $@
+-ifndef DEBUG
+-	strip $(NAME)
+-endif
++	$(CC) $(CFLAGSLD) $(COMPILE_FLAGS) $^ -o $@ $(LINK_FLAGS) 
+ 
+ .c.o:
+-	@echo '$(COL)$@$(NORM)'
+-	$(CC) $(COMPILE_FLAGS) -c $<
++	$(CC) $(CFLAGS) $(COMPILE_FLAGS) -c $<
+ 
+ clean:
+ 	@echo '$(COL)$@$(NORM)'

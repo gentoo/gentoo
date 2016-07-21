@@ -1,0 +1,90 @@
+From 3f8a5394be4cddfb5bec584170678aac0f28b763 Mon Sep 17 00:00:00 2001
+From: Endolf <endolf@java.net>
+Date: Fri, 22 Aug 2014 14:38:30 +0100
+Subject: [PATCH] Remove usage_bits call as it doesn't work on v3 kernels.
+
+---
+ .../net/java/games/input/LinuxEventDevice.java     | 32 ----------------------
+ .../native/net_java_games_input_LinuxEventDevice.c | 14 ----------
+ 2 files changed, 46 deletions(-)
+
+diff --git a/plugins/linux/src/java/net/java/games/input/LinuxEventDevice.java b/plugins/linux/src/java/net/java/games/input/LinuxEventDevice.java
+index a28c4c7..41a4fee 100644
+--- a/plugins/linux/src/java/net/java/games/input/LinuxEventDevice.java
++++ b/plugins/linux/src/java/net/java/games/input/LinuxEventDevice.java
+@@ -94,34 +94,11 @@ private final static int countComponents(List components, Class id_type, boolean
+ 	}
+ 
+ 	private final Controller.Type guessType() throws IOException {
+-		Controller.Type type_from_usages = guessTypeFromUsages();
+-		if (type_from_usages == Controller.Type.UNKNOWN)
+-			return guessTypeFromComponents();
+-		else
+-			return type_from_usages;
+-	}
+-	
+-	private final Controller.Type guessTypeFromUsages() throws IOException {
+-		byte[] usage_bits = getDeviceUsageBits();
+-		if (isBitSet(usage_bits, NativeDefinitions.USAGE_MOUSE))
+-			return Controller.Type.MOUSE;
+-		else if (isBitSet(usage_bits, NativeDefinitions.USAGE_KEYBOARD))
+-			return Controller.Type.KEYBOARD;
+-		else if (isBitSet(usage_bits, NativeDefinitions.USAGE_GAMEPAD))
+-			return Controller.Type.GAMEPAD;
+-		else if (isBitSet(usage_bits, NativeDefinitions.USAGE_JOYSTICK))
+-			return Controller.Type.STICK;
+-		else
+-			return Controller.Type.UNKNOWN;
+-	}
+-
+-	private final Controller.Type guessTypeFromComponents() throws IOException {
+ 		List components = getComponents();
+ 		if (components.size() == 0)
+ 			return Controller.Type.UNKNOWN;
+ 		int num_rel_axes = countComponents(components, Component.Identifier.Axis.class, true);
+ 		int num_abs_axes = countComponents(components, Component.Identifier.Axis.class, false);
+-		int num_keys = countComponents(components, Component.Identifier.Key.class, false);
+ 		int mouse_traits = 0;
+ 		int keyboard_traits = 0;
+ 		int joystick_traits = 0;
+@@ -342,15 +319,6 @@ private final List getDeviceComponents() throws IOException {
+ 	}
+ 	private final static native void nGetBits(long fd, int ev_type, byte[] evtype_bits) throws IOException;
+ 
+-	private final byte[] getDeviceUsageBits() throws IOException {
+-		byte[] bits = new byte[NativeDefinitions.USAGE_MAX/8 + 1];
+-		if (getVersion() >= 0x010001) {
+-			nGetDeviceUsageBits(fd, bits);
+-		}
+-		return bits;
+-	}
+-	private final static native void nGetDeviceUsageBits(long fd, byte[] type_bits) throws IOException;
+-
+ 	public final synchronized void pollKeyStates() throws IOException {
+ 		nGetKeyStates(fd, key_states);
+ 	}
+diff --git a/plugins/linux/src/native/net_java_games_input_LinuxEventDevice.c b/plugins/linux/src/native/net_java_games_input_LinuxEventDevice.c
+index 90eff09..18913c2 100644
+--- a/plugins/linux/src/native/net_java_games_input_LinuxEventDevice.c
++++ b/plugins/linux/src/native/net_java_games_input_LinuxEventDevice.c
+@@ -112,20 +112,6 @@ JNIEXPORT jint JNICALL Java_net_java_games_input_LinuxEventDevice_nGetNumEffects
+ 	return num_effects;
+ }
+ 
+-JNIEXPORT void JNICALL Java_net_java_games_input_LinuxEventDevice_nGetDeviceUsageBits(JNIEnv *env, jclass unused, jlong fd_address, jbyteArray usages_array) {
+-#if EV_VERSION >= 0x010001
+-	int fd = (int)fd_address;
+-	jsize len = (*env)->GetArrayLength(env, usages_array);
+-	jbyte *usages = (*env)->GetByteArrayElements(env, usages_array, NULL);
+-	if (usages == NULL)
+-		return;
+-	int res = ioctl(fd, EVIOCGUSAGE(len), usages);
+-	(*env)->ReleaseByteArrayElements(env, usages_array, usages, 0);
+-	if (res == -1)
+-		throwIOException(env, "Failed to get device usages (%d)\n", errno);
+-#endif
+-}
+-
+ JNIEXPORT void JNICALL Java_net_java_games_input_LinuxEventDevice_nGetBits(JNIEnv *env, jclass unused, jlong fd_address, jint evtype, jbyteArray bits_array) {
+ 	int fd = (int)fd_address;
+ 	jsize len = (*env)->GetArrayLength(env, bits_array);

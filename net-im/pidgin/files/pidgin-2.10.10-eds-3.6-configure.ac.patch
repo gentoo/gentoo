@@ -1,0 +1,23 @@
+diff -urN pidgin-2.10.10.orig/configure.ac pidgin-2.10.10/configure.ac
+--- pidgin-2.10.10.orig/configure.ac	2014-10-17 04:19:33.000000000 +0400
++++ pidgin-2.10.10/configure.ac	2014-10-28 15:56:27.853702740 +0300
+@@ -569,18 +569,10 @@
+ 	dnl # Check for stuff needed by the Evolution integration plugin.
+ 	dnl #######################################################################
+ 	if test "x$enable_gevolution" = "xyes"; then
+-		evo_deps="libebook-1.2 libedata-book-1.2 evolution-data-server-1.2 < 3.6"
++		evo_deps="libebook-1.2 libedata-book-1.2 evolution-data-server-1.2 >= 3.6"
+ 		PKG_CHECK_MODULES(EVOLUTION_ADDRESSBOOK, $evo_deps, , [
+ 			enable_gevolution="no"
+ 		])
+-		if test "x$enable_gevolution" = "xno"; then
+-			evo_deps="libebook-1.0 libedata-book-1.0"
+-			PKG_CHECK_MODULES(EVOLUTION_ADDRESSBOOK, $evo_deps, [
+-				enable_gevolution="yes"
+-			], [
+-				enable_gevolution="no"
+-			])
+-		fi
+ 		if test "x$enable_gevolution" = "xyes"; then
+ 			AC_DEFINE(HAVE_EVOLUTION_ADDRESSBOOK, 1, [Define if we're using evolution addressbook.])
+ 			AC_SUBST(EVOLUTION_ADDRESSBOOK_CFLAGS)

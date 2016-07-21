@@ -1,0 +1,94 @@
+--- audiofile-0.3.5/test/Makefile.am
++++ audiofile-0.3.5/test/Makefile.am
+@@ -53,70 +53,68 @@
+ 
+ DEPENDENCIES = $(LIBAUDIOFILE)
+ 
+-LIBGTEST = ../gtest/libgtest.la
+-
+ ADPCM_SOURCES = ADPCM.cpp TestUtilities.cpp TestUtilities.h
+-ADPCM_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++ADPCM_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ AES_SOURCES = AES.cpp TestUtilities.cpp TestUtilities.h
+-AES_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++AES_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ ChannelMatrix_SOURCES = ChannelMatrix.cpp TestUtilities.cpp TestUtilities.h
+-ChannelMatrix_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++ChannelMatrix_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Error_SOURCES = Error.cpp TestUtilities.cpp TestUtilities.h
+-Error_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Error_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ FloatToInt_SOURCES = FloatToInt.cpp TestUtilities.cpp TestUtilities.h
+-FloatToInt_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++FloatToInt_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ IntToFloat_SOURCES = IntToFloat.cpp TestUtilities.cpp TestUtilities.h
+-IntToFloat_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++IntToFloat_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ InvalidCompressionFormat_SOURCES = InvalidCompressionFormat.cpp TestUtilities.cpp TestUtilities.h
+-InvalidCompressionFormat_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++InvalidCompressionFormat_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ InvalidSampleFormat_SOURCES = InvalidSampleFormat.cpp TestUtilities.cpp TestUtilities.h
+-InvalidSampleFormat_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++InvalidSampleFormat_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Large_SOURCES = Large.cpp TestUtilities.cpp TestUtilities.h
+-Large_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Large_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Loop_SOURCES = Loop.cpp TestUtilities.cpp TestUtilities.h
+-Loop_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Loop_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Marker_SOURCES = Marker.cpp TestUtilities.cpp TestUtilities.h
+-Marker_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Marker_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Miscellaneous_SOURCES = Miscellaneous.cpp TestUtilities.cpp TestUtilities.h
+-Miscellaneous_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Miscellaneous_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ NeXT_SOURCES = NeXT.cpp TestUtilities.cpp TestUtilities.h
+-NeXT_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++NeXT_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ PCMData_SOURCES = PCMData.cpp TestUtilities.cpp TestUtilities.h
+-PCMData_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++PCMData_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ PCMMapping_SOURCES = PCMMapping.cpp TestUtilities.cpp TestUtilities.h
+-PCMMapping_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++PCMMapping_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Pipe_SOURCES = Pipe.cpp TestUtilities.cpp TestUtilities.h
+-Pipe_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Pipe_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Query_SOURCES = Query.cpp TestUtilities.cpp TestUtilities.h
+-Query_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Query_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ SampleFormat_SOURCES = SampleFormat.cpp TestUtilities.cpp TestUtilities.h
+-SampleFormat_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++SampleFormat_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Seek_SOURCES = Seek.cpp TestUtilities.cpp TestUtilities.h
+-Seek_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Seek_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ Sign_SOURCES = Sign.cpp TestUtilities.cpp TestUtilities.h
+-Sign_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++Sign_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ VirtualFile_SOURCES = VirtualFile.cpp TestUtilities.cpp TestUtilities.h
+-VirtualFile_LDADD = $(LIBGTEST) $(LIBAUDIOFILE)
++VirtualFile_LDADD = -lgtest $(LIBAUDIOFILE)
+ 
+ floatto24_SOURCES = floatto24.c TestUtilities.cpp TestUtilities.h
+ 

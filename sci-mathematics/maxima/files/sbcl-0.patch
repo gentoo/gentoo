@@ -1,0 +1,26 @@
+diff -r -U1 maxima-5.30.0.orig/src/Makefile.am maxima-5.30.0/src/Makefile.am
+--- maxima-5.30.0.orig/src/Makefile.am	2013-03-23 08:32:07.000000000 +0700
++++ maxima-5.30.0/src/Makefile.am	2013-04-13 14:36:39.977014432 +0700
+@@ -199,3 +199,3 @@
+ if SBCL
+-EXECUTESBCL = "$(SBCL_NAME)" --noinform --noprint --eval
++EXECUTESBCL = "$(SBCL_NAME)" --noinform --noprint --no-sysinit --no-userinit --eval
+ all-local: sharefiles.mk $(SBCL_MAXIMA)
+diff -r -U1 maxima-5.30.0.orig/src/maxima.in maxima-5.30.0/src/maxima.in
+--- maxima-5.30.0.orig/src/maxima.in	2012-12-04 12:54:50.000000000 +0700
++++ maxima-5.30.0/src/maxima.in	2013-04-13 14:36:39.977014432 +0700
+@@ -196,5 +196,5 @@
+   if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++    exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+   else
+-    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --eval '(cl-user::run)' --end-toplevel-options "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++    exec "@SBCL_NAME@" --core "$maxima_image_base.core" --noinform $MAXIMA_LISP_OPTIONS --end-runtime-options --no-sysinit --no-userinit --eval '(cl-user::run)' --end-toplevel-options "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+   fi
+diff -r -U1 maxima-5.30.0.orig/src/server.lisp maxima-5.30.0/src/server.lisp
+--- maxima-5.30.0.orig/src/server.lisp	2012-11-19 04:40:51.000000000 +0700
++++ maxima-5.30.0/src/server.lisp	2013-04-13 14:37:19.937051659 +0700
+@@ -10,3 +10,2 @@
+ (eval-when (:compile-toplevel :load-toplevel :execute)
+-  #+sbcl (require 'asdf)		    ;not needed here for a recent SBCL
+   #+sbcl (require 'sb-posix)

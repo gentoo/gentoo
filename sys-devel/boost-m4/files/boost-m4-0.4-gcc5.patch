@@ -1,0 +1,91 @@
+https://bugs.gentoo.org/549618
+Note: I dropped the last hunk from the upstream patch. It doesn't apply and
+is unnecessary since we build boost with --layout=system.
+
+From 32553aaf4d5090da19aa0ec33b936982c685009f Mon Sep 17 00:00:00 2001
+From: Akim Demaille <akim@lrde.epita.fr>
+Date: Wed, 26 Nov 2014 16:56:28 +0100
+Subject: [PATCH] boost.m4: cope with GCC 5
+
+Serial 24.
+
+There are two needed adjustments.
+
+One due to the output format which has changed:
+
+  $ cat conftest.cc
+  #include <boost/version.hpp>
+  boost-lib-version = BOOST_LIB_VERSION
+  $ g++-mp-4.9 -E conftest.cc            $ g++-mp-5 -E conftest.cc
+  # 1 "conftest.cc"                      # 1 "conftest.cc"
+  # 1 "<built-in>"                       # 1 "<built-in>"
+  # 1 "<command-line>"                   # 1 "<command-line>"
+  # 1 "conftest.cc"                      # 1 "conftest.cc"
+  # 1 "/include/boost/version.hpp" 1 3   # 1 "/include/boost/version.hpp" 1 3
+  # 2 "conftest.cc" 2                    # 2 "conftest.cc" 2
+  boost-lib-version = "1_56"           ! boost-lib-version =
+                                       ! # 2 "conftest.cc" 3
+                                       !                    "1_56"
+
+Since I fear that -P is not portable, let's play with tr and grep to
+get rid of all the # lines and glue the remaining lines together.
+
+The other one is that, finally, gcc 4.10 will actually be named gcc 5,
+so recognize this name.
+
+* build-aux/m4/boost.m4 (_BOOST_SED_CPP): Clean the preprocessor output
+before handing it to the sed command.
+(_BOOST_FIND_COMPILER_TAG): Support GCC 5.
+Improve accuracy of error messages by adding delimiters to bad strings.
+
+Signed-off-by: Benoit Sigoure <tsunanet@gmail.com>
+---
+ build-aux/boost.m4 | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
+
+--- a/build-aux/boost.m4
++++ b/build-aux/boost.m4
+@@ -72,8 +72,25 @@ dnl strip `\n' with backquotes, not the `\r'.  This results in
+ dnl boost_cv_lib_version='1_37\r' for instance, which breaks
+ dnl everything else.
+ dnl Cannot use 'dnl' after [$4] because a trailing dnl may break AC_CACHE_CHECK
++dnl
++dnl Beware that GCC 5, when expanding macros, may embed # line directives
++dnl a within single line:
++dnl
++dnl # 1 "conftest.cc"
++dnl # 1 "<built-in>"
++dnl # 1 "<command-line>"
++dnl # 1 "conftest.cc"
++dnl # 1 "/opt/local/include/boost/version.hpp" 1 3
++dnl # 2 "conftest.cc" 2
++dnl boost-lib-version =
++dnl # 2 "conftest.cc" 3
++dnl                    "1_56"
++dnl
++dnl So get rid of the # lines, and glue the remaining ones together.
+ (eval "$ac_cpp conftest.$ac_ext") 2>&AS_MESSAGE_LOG_FD |
++  grep -v '#' |
+   tr -d '\r' |
++  tr -s '\n' ' ' |
+   $SED -n -e "$1" >conftest.i 2>&1],
+   [$3],
+   [$4])
+@@ -208,7 +225,7 @@ AC_LANG_POP([C++])dnl
+   AC_CACHE_CHECK([for Boost's header version],
+     [boost_cv_lib_version],
+     [m4_pattern_allow([^BOOST_LIB_VERSION$])dnl
+-     _BOOST_SED_CPP([/^boost-lib-version = /{s///;s/\"//g;p;q;}],
++     _BOOST_SED_CPP([[/^boost-lib-version = /{s///;s/[\" ]//g;p;q;}]],
+                     [#include <boost/version.hpp>
+ boost-lib-version = BOOST_LIB_VERSION],
+     [boost_cv_lib_version=`cat conftest.i`])])
+@@ -216,7 +233,7 @@ boost-lib-version = BOOST_LIB_VERSION],
+     boost_major_version=`echo "$boost_cv_lib_version" | sed 's/_//;s/_.*//'`
+     case $boost_major_version in #(
+       '' | *[[!0-9]]*)
+-        AC_MSG_ERROR([invalid value: boost_major_version=$boost_major_version])
++        AC_MSG_ERROR([invalid value: boost_major_version='$boost_major_version'])
+         ;;
+     esac
+ fi

@@ -1,0 +1,193 @@
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/Ag.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Ag.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/Ag.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Ag.hs	2015-05-05 09:05:06.300665157 +0100
+@@ -1,9 +1,10 @@
+ module Main where
+ 
+-import System                        (getArgs, getProgName, exitFailure)
++import System.Environment            (getArgs, getProgName)
++import System.Exit                   (exitFailure)
+ import System.Console.GetOpt         (usageInfo)
+-import List                          (isSuffixOf)
+-import Monad                         (zipWithM_)
++import Data.List                     (isSuffixOf)
++import Control.Monad                 (zipWithM_)
+ import Data.Maybe
+ 
+ import qualified Data.Set as Set
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/DepTypes.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/DepTypes.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/DepTypes.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/DepTypes.hs	2015-05-05 09:07:11.471671524 +0100
+@@ -1,3 +1,4 @@
++{-# LANGUAGE FlexibleInstances #-}
+ module DepTypes where
+ 
+ import CommonTypes
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/HsTokenScanner.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/HsTokenScanner.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/HsTokenScanner.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/HsTokenScanner.hs	2015-05-05 09:05:06.300665157 +0100
+@@ -2,11 +2,11 @@
+ module HsTokenScanner where
+ import HsToken
+ import UU.Scanner.Position
+-import List(sort)
++import Data.List(sort)
+ import UU.Util.BinaryTrees
+ import CommonTypes
+-import Maybe
+-import Char
++import Data.Maybe
++import Data.Char
+ isAGesc c = c == '@'
+ 
+ lexTokens :: Pos -> String -> [HsToken]
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/Parser.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Parser.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/Parser.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Parser.hs	2015-05-05 09:05:06.300665157 +0100
+@@ -8,10 +8,10 @@
+ import Patterns
+ import UU.Pretty(text,PP_Doc,empty,(>-<))
+ import TokenDef
+-import List (intersperse)
+-import Char
++import Data.List (intersperse)
++import Data.Char
+ import Scanner (Input(..),scanLit,input)
+-import List
++import Data.List
+ import Expression
+ import UU.Scanner.Token
+ import UU.Scanner.TokenParser
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/Scanner.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Scanner.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/Scanner.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/Scanner.hs	2015-05-05 09:05:06.301665157 +0100
+@@ -6,9 +6,9 @@
+ import UU.Scanner.Position
+ import UU.Scanner.Token
+ import UU.Parsing(InputState(..),Either'(..))
+-import Maybe
+-import List
+-import Char
++import Data.Maybe
++import Data.List
++import Data.Char
+ import UU.Scanner.GenToken
+ import Options
+ 
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src/TokenDef.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src/TokenDef.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src/TokenDef.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src/TokenDef.hs	2015-05-05 09:05:06.301665157 +0100
+@@ -7,7 +7,7 @@
+ import UU.Scanner.GenTokenOrd
+ import UU.Scanner.Position
+ import UU.Parsing.MachineInterface(Symbol(..))
+-import Char(isPrint,ord)
++import Data.Char(isPrint,ord)
+ import HsToken
+ import CommonTypes
+ 
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/DefaultRules.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/DefaultRules.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/DefaultRules.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/DefaultRules.hs	2015-05-05 09:05:06.294665157 +0100
+@@ -4,7 +4,7 @@
+ module DefaultRules where
+ {-# LINE 10 "DefaultRules.ag" #-}
+ 
+-import qualified List (delete,intersperse)
++import qualified Data.List as List (delete,intersperse)
+ 
+ import qualified Data.Set as Set
+ import qualified Data.Map as Map
+@@ -13,7 +13,7 @@
+ import Data.Sequence(Seq,(><))
+ import UU.Scanner.Position(noPos)
+ import Pretty
+-import Maybe
++import Data.Maybe
+ import HsToken
+ import HsTokenScanner
+ import Data.List(intersperse)
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Desugar.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Desugar.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Desugar.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Desugar.hs	2015-05-05 09:05:06.295665157 +0100
+@@ -10,7 +10,7 @@
+ import qualified Data.Sequence as Seq
+ import Data.Sequence(Seq,(><))
+ import UU.Scanner.Position(Pos(..))
+-import Maybe
++import Data.Maybe
+ import Data.List(intersperse)
+ 
+ import AbstractSyntax
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/GenerateCode.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/GenerateCode.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/GenerateCode.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/GenerateCode.hs	2015-05-05 09:05:06.296665157 +0100
+@@ -26,7 +26,7 @@
+ import HsTokenScanner
+ 
+ import Data.List(partition,intersperse,intersect,(\\))
+-import Maybe(fromJust,isJust)
++import Data.Maybe(fromJust,isJust)
+ {-# LINE 31 "../src-derived/GenerateCode.hs" #-}
+ 
+ {-# LINE 2 "./CodeSyntax.ag" #-}
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Order.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Order.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Order.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Order.hs	2015-05-05 09:05:06.297665157 +0100
+@@ -37,7 +37,7 @@
+ import Data.Array((!),bounds,inRange)
+ import Data.List(elemIndex,partition,sort,mapAccumL,find,nubBy,intersperse,groupBy,transpose)
+ import qualified Data.Tree as Tree
+-import Maybe
++import Data.Maybe
+ {-# LINE 42 "../src-derived/Order.hs" #-}
+ 
+ {-# LINE 2 "./Patterns.ag" #-}
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/PrintCode.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/PrintCode.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/PrintCode.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/PrintCode.hs	2015-05-05 09:05:06.298665157 +0100
+@@ -4,7 +4,7 @@
+ module PrintCode where
+ {-# LINE 10 "PrintCode.ag" #-}
+ 
+-import Char (isAlphaNum)
++import Data.Char (isAlphaNum)
+ import Pretty
+ import Code
+ import Patterns
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/PrintVisitCode.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/PrintVisitCode.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/PrintVisitCode.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/PrintVisitCode.hs	2015-05-05 09:05:06.299665157 +0100
+@@ -22,7 +22,7 @@
+ import UU.Scanner.Position
+ 
+ import Data.List(partition,intersperse,intersect,(\\))
+-import Maybe(fromJust,isJust)
++import Data.Maybe(fromJust,isJust)
+ {-# LINE 27 "../src-derived/PrintVisitCode.hs" #-}
+ 
+ {-# LINE 2 "./CodeSyntax.ag" #-}
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Transform.hs uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Transform.hs
+--- uuagc-0.9.24/work/uuagc-0.9.24/src-derived/Transform.hs	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/src-derived/Transform.hs	2015-05-05 09:05:06.300665157 +0100
+@@ -5,7 +5,7 @@
+ {-# LINE 8 "Transform.ag" #-}
+ 
+ import Control.Monad(mplus,mzero)
+-import List (partition, elem, nub,intersperse)
++import Data.List as List (partition, elem, nub,intersperse)
+ import Data.Maybe
+ import qualified Data.Map as Map
+ import Data.Map (Map)
+diff -uraN -U0 uuagc-0.9.24/work/uuagc-0.9.24/uuagc.cabal uuagc-0.9.24-r0/work/uuagc-0.9.24/uuagc.cabal
+--- uuagc-0.9.24/work/uuagc-0.9.24/uuagc.cabal	2010-06-04 14:03:54.000000000 +0100
++++ uuagc-0.9.24-r0/work/uuagc-0.9.24/uuagc.cabal	2015-05-05 09:05:06.301665157 +0100
+@@ -28,7 +28,7 @@
+   else
+     build-depends: base < 3
+ 
+-  build-depends: haskell98, uulib>=0.9.12
++  build-depends: uulib>=0.9.12
+   main-is: Ag.hs
+   other-modules: Ag
+     , CommonTypes

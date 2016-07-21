@@ -1,0 +1,30 @@
+From 0a36965808ab9095dd68541f589fd71b66c99ca7 Mon Sep 17 00:00:00 2001
+From: Robert Swain <robert.swain@gmail.com>
+Date: Tue, 20 Oct 2009 20:00:44 +0100
+Subject: [PATCH 01/16] x264enc: Adapt to slightly modified x264 API
+
+Fixes #599095.
+---
+ ext/x264/gstx264enc.c |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/ext/x264/gstx264enc.c b/ext/x264/gstx264enc.c
+index ed20154..ff0f0fa 100644
+--- a/ext/x264/gstx264enc.c
++++ b/ext/x264/gstx264enc.c
+@@ -582,7 +582,12 @@ gst_x264_enc_init_encoder (GstX264Enc * encoder)
+   encoder->x264param.analyse.i_noise_reduction = encoder->noise_reduction;
+   encoder->x264param.i_frame_reference = encoder->ref;
+   encoder->x264param.i_bframe = encoder->bframes;
++#if X264_BUILD < 78
+   encoder->x264param.b_bframe_pyramid = encoder->b_pyramid;
++#else
++  encoder->x264param.i_bframe_pyramid =
++      encoder->b_pyramid ? X264_B_PYRAMID_NORMAL : X264_B_PYRAMID_NONE;
++#endif
+ #if X264_BUILD < 63
+   encoder->x264param.b_bframe_adaptive = encoder->b_adapt;
+ #else
+-- 
+1.6.4.4
+

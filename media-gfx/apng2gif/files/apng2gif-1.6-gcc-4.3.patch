@@ -1,0 +1,10 @@
+--- apng2gif-1.6-src/apng2gif.cpp
++++ apng2gif-1.6-src/apng2gif.cpp
+@@ -30,6 +30,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <cstring>
+ #include <vector>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+ #include "zlib.h"

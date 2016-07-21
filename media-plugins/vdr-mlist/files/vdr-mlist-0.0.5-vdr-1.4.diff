@@ -1,0 +1,26 @@
+diff -ru mlist-0.0.5-orig/i18n.h mlist-0.0.5/i18n.h
+--- mlist-0.0.5-orig/i18n.h	2008-04-28 10:46:28.131558650 +0200
++++ mlist-0.0.5/i18n.h	2008-04-28 10:46:46.251551253 +0200
+@@ -12,4 +12,8 @@
+ 
+ extern const tI18nPhrase Phrases[];
+ 
++#ifndef trNOOP
++#define trNOOP(s) (s)
++#endif
++
+ #endif //_I18N__H
+Nur in mlist-0.0.5: libvdr-mlist.so.
+Nur in mlist-0.0.5: libvdr-mlist.so.1.4.5.
+diff -ru mlist-0.0.5-orig/mlist.c mlist-0.0.5/mlist.c
+--- mlist-0.0.5-orig/mlist.c	2008-04-28 10:46:28.131558650 +0200
++++ mlist-0.0.5/mlist.c	2008-04-28 10:47:00.091552984 +0200
+@@ -10,6 +10,7 @@
+ #include <vdr/status.h>
+ #include <vdr/osdbase.h>
+ #include <time.h>
++#include "i18n.h"
+ 
+ static const char *VERSION        = "0.0.5";
+ static const char *DESCRIPTION    = trNOOP("Displays the message history");
+Nur in mlist-0.0.5: mlist.o.

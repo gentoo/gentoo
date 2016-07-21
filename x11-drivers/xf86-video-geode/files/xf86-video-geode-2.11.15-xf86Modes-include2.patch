@@ -1,0 +1,22 @@
+From 70b131d09b7d21df1d1ffcf6a4e50d3086924228 Mon Sep 17 00:00:00 2001
+From: Martin-Éric Racine <martin-eric.racine@iki.fi>
+Date: Sat, 08 Feb 2014 12:58:26 +0000
+Subject: No need to conditionalize the xf86Modes.h include.
+
+---
+diff --git a/src/geode_dcon.c b/src/geode_dcon.c
+index c2b9c53..5efd79e 100644
+--- a/src/geode_dcon.c
++++ b/src/geode_dcon.c
+@@ -29,9 +29,7 @@
+ 
+ /* Includes that are used by all drivers */
+ #include <xf86.h>
+-#if XORG_VERSION_CURRENT >= XORG_VERSION_NUMERIC(1,15,0,0,0)
+ #include <xf86Modes.h>
+-#endif
+ #include <xf86_OSproc.h>
+ #include <compiler.h>
+ 
+--
+cgit v0.9.0.2-2-gbebe

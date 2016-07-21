@@ -1,0 +1,59 @@
+From 51c1e48d3f55da25adff306b891ad258eca35a8d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 14 Jun 2014 23:35:42 +0200
+Subject: [PATCH] Respect libdir.
+
+---
+ Makefile | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 036a29e..10a1649 100644
+--- a/Makefile
++++ b/Makefile
+@@ -60,6 +60,8 @@ ifdef CONFIG_SAMPLES
+ 	$(MAKE) -C samples
+ endif
+ 
++LIBDIR = $(PREFIX)/lib
++
+ $(STAGE) : ssl/version.h
+ 	@mkdir -p $(STAGE)
+ 
+@@ -67,8 +69,10 @@ $(STAGE) : ssl/version.h
+ ssl/version.h:
+ 	@echo "#define AXTLS_VERSION    \"(no version)\"" > ssl/version.h
+ 
++$(LIBDIR) : $(PREFIX)
++	@mkdir -p $(LIBDIR)
++
+ $(PREFIX) :
+-	@mkdir -p $(PREFIX)/lib
+ 	@mkdir -p $(PREFIX)/bin
+ 
+ release:
+@@ -88,9 +92,9 @@ win32_demo:
+ 	@echo "#define AXTLS_VERSION    \"$(VERSION)\"" > ssl/version.h
+ 	$(MAKE) win32releaseconf
+ 
+-install: $(PREFIX) all
+-	cp --no-dereference $(STAGE)/libax* $(PREFIX)/lib
+-	chmod 755 $(PREFIX)/lib/libax* 
++install: $(LIBDIR) $(PREFIX) all
++	cp --no-dereference $(STAGE)/libax* $(LIBDIR)
++	chmod 755 $(LIBDIR)/libax* 
+ ifdef CONFIG_SAMPLES
+ 	install -m 755 $(STAGE)/ax* $(PREFIX)/bin 
+ endif
+@@ -112,7 +116,7 @@ endif
+ 	install -m 644 config/config.h $(PREFIX)/include/axTLS
+ 
+ installclean:
+-	-@rm $(PREFIX)/lib/libax* > /dev/null 2>&1
++	-@rm $(LIBDIR)/libax* > /dev/null 2>&1
+ 	-@rm $(PREFIX)/bin/ax* > /dev/null 2>&1
+ 	-@rm $(PREFIX)/bin/axhttpd* > /dev/null 2>&1
+ 	-@rm `perl -e 'use Config; print $$Config{installarchlib};'`/axtlsp.pm > /dev/null 2>&1
+-- 
+2.0.0
+

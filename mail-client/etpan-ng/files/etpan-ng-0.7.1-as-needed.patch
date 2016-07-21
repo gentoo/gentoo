@@ -1,0 +1,58 @@
+--- etpan-ng-0.7.1.orig/configure.in	2006-01-09 11:44:20.000000000 +0100
++++ etpan-ng-0.7.1/configure.in	2010-01-10 14:51:40.788046570 +0100
+@@ -11,18 +11,25 @@
+ libetpan_major_required=0
+ libetpan_minor_required=42
+ 
+-debug=no
++AC_MSG_CHECKING(whether debug flag was used)
+ AC_ARG_ENABLE(debug,   [  --enable-debug          setup flags (gcc) for debugging (default=no)],
+-debug=yes
+-CFLAGS="$CFLAGS -O2 -W -Wall -g"
+-LDFLAGS="$LDFLAGS",)
++	[enable_debug=$enableval],[enable_debug="no"])
++AC_MSG_RESULT($enable_debug)
++if test "$enable_debug" = "yes"; then
++	CFLAGS="$CFLAGS -O2 -W -Wall -g"
++	LDFLAGS="$LDFLAGS"
++fi
++
+ AC_ARG_ENABLE(optim,   [  --enable-optim          setup flags (gcc) for optimizations (default=no)],
+-if test "x$enable_debug" != "xyes" ; then
+-  CFLAGS="$CFLAGS -O3 -g0"
+-  LDFLAGS="$LDFLAGS -s"
++	[enable_optim=$enableval],[enable_debug="no"])
++if test "$enable_debug" != "yes"; then 
++  if test "$enable_optim" = "yes"; then
++    CFLAGS="$CFLAGS -O3 -g0"
++    LDFLAGS="$LDFLAGS -s"
++  fi
+ else
+   AC_MSG_WARN([enable-optim and enable-debug are incompatible -- disabling optimizations])
+-fi,)
++fi
+ 
+ AC_CONFIG_HEADER(config.h)
+ 
+@@ -67,10 +74,10 @@
+   if test "x$checkpthread" = "xyes"; then
+     AC_MSG_CHECKING([for pthread_create with -$flag])
+     OLDFLAGS="$LDFLAGS"
+-    LDFLAGS="-$flag $LDFLAGS"
++    LDFLAGS="$LDFLAGS -$flag"
+     AC_TRY_LINK([], [pthread_create();], 
+                     [pthflag=yes; checkpthread=no], 
+-                    [pthflag=no; LDFLAGS="$OLDCFLAGS"])
++                    [pthflag=no; LDFLAGS="$OLDFLAGS"])
+     AC_MSG_RESULT($pthflag)
+   fi
+ done
+@@ -127,7 +134,7 @@
+   AC_CHECK_HEADER(libetpan/libetpan.h, [libetpan=yes])
+   if test "x$libetpan" = "xyes"; then
+     AC_MSG_CHECKING([whether libetpan-config hints compiles and links fine])
+-    LDFLAGS="$LDFLAGS `$libetpanconfig --libs 2>/dev/null`"
++    LIBS="$LIBS `$libetpanconfig --libs 2>/dev/null`"
+     AC_TRY_LINK([], [db_mailstorage_init();], [libetpan=yes], [libetpan=no])
+     AC_MSG_RESULT([$libetpan])
+   fi

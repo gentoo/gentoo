@@ -1,0 +1,45 @@
+--- lightyears
++++ lightyears
+@@ -1,7 +1,6 @@
+ #!/usr/bin/python
+ 
+ # Set the location of the LightYears files here:
+-LIGHTYEARS_DIR = "."
+ # LIGHTYEARS_DIR = "/usr/share/games/lightyears" # (for Debian)
+ 
+ # Save games and configuration files are stored in the user's
+@@ -10,31 +9,6 @@
+ import sys, os
+ 
+ if __name__ == "__main__":
+-    # Path to data/code dir can be overridden by environment variable
+-    LIGHTYEARS_DIR = os.environ.get("LIGHTYEARS_DIR", LIGHTYEARS_DIR)
+-
+-    # Path does not exist? Try current directory.
+-    if ((LIGHTYEARS_DIR == None)
+-    or (not os.path.isdir(LIGHTYEARS_DIR))
+-    or (not os.path.isfile(os.path.join(LIGHTYEARS_DIR, 
+-                            'code', 'startup.py')))):
+-        LIGHTYEARS_DIR = os.getcwd()
+-
+-    # Paths obtained
+-    sys.path.insert(0, os.path.join(LIGHTYEARS_DIR, 'code'))
+-    data_dir = os.path.join(LIGHTYEARS_DIR, 'data')
+-
+-    # Go
+-    try:
+-        import startup
+-        assert os.path.isdir(data_dir)
+-    except:
+-        print "Unable to find LightYears code & data in:"
+-        for p in sys.path:
+-            print '  ', p
+-
+-        sys.exit(1)
+-
+-    startup.Main(data_dir)
+-    
+-
++    sys.path.insert(0, "@GENTOO_LIBDIR@")
++    import startup
++    startup.Main("@GENTOO_DATADIR@/data")

@@ -1,0 +1,15 @@
+diff --git a/omxplayer.cpp b/omxplayer.cpp
+index 0626e2e..8450bf2 100644
+--- a/omxplayer.cpp
++++ b/omxplayer.cpp
+@@ -83,8 +83,8 @@ bool              m_osd                 = true;
+ bool              m_no_keys             = false;
+ std::string       m_external_subtitles_path;
+ bool              m_has_external_subtitles = false;
+-std::string       m_font_path           = "/usr/share/fonts/truetype/freefont/FreeSans.ttf";
+-std::string       m_italic_font_path    = "/usr/share/fonts/truetype/freefont/FreeSansOblique.ttf";
++std::string       m_font_path           = "/usr/share/fonts/freefont/FreeSans.ttf";
++std::string       m_italic_font_path    = "/usr/share/fonts/freefont/FreeSansOblique.ttf";
+ std::string       m_dbus_name           = "org.mpris.MediaPlayer2.omxplayer";
+ bool              m_asked_for_font      = false;
+ bool              m_asked_for_italic_font = false;

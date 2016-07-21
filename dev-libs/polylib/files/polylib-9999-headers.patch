@@ -1,0 +1,10 @@
+--- a/applications/ehrhart_union.c
++++ b/applications/ehrhart_union.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #include <polylib/polylib.h>
+ 

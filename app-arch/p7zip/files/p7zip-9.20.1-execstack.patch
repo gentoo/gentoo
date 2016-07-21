@@ -1,0 +1,24 @@
+diff -Naupr p7zip_9.20.1.orig/Asm/x64/7zCrcT8U.asm p7zip_9.20.1/Asm/x64/7zCrcT8U.asm
+--- p7zip_9.20.1.orig/Asm/x64/7zCrcT8U.asm	2008-08-14 11:18:07.000000000 +0200
++++ p7zip_9.20.1/Asm/x64/7zCrcT8U.asm	2011-07-26 17:43:57.727910278 +0200
+@@ -101,3 +101,8 @@ _CrcUpdateT8:
+     ret
+ 
+ end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++
+diff -Naupr p7zip_9.20.1.orig/Asm/x86/7zCrcT8U.asm p7zip_9.20.1/Asm/x86/7zCrcT8U.asm
+--- p7zip_9.20.1.orig/Asm/x86/7zCrcT8U.asm	2009-07-14 12:44:15.000000000 +0200
++++ p7zip_9.20.1/Asm/x86/7zCrcT8U.asm	2011-07-26 17:44:23.938864508 +0200
+@@ -99,3 +99,8 @@ _CrcUpdateT8:
+ 
+ 
+ ; end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++

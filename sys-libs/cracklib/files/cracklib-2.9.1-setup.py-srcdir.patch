@@ -1,0 +1,35 @@
+From 70909dd3d30a13bb0406ca76feea49f05b8b978d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 29 May 2014 23:57:32 +0200
+Subject: [PATCH] Fix paths in setup.py to support out-of-source builds.
+
+---
+ python/setup.py.in | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/python/setup.py.in b/python/setup.py.in
+index 4a258a0..4c70de4 100644
+--- a/python/setup.py.in
++++ b/python/setup.py.in
+@@ -23,8 +23,8 @@ from setuptools import setup, Extension, find_packages
+ 
+ extensions = [
+     Extension("_cracklib",
+-        ["_cracklib.c"],
+-        include_dirs = ["@top_builddir@/lib"],
++        ["@srcdir@/_cracklib.c"],
++        include_dirs = ["@top_srcdir@/lib"],
+         libraries = ["crack"],
+         library_dirs = ["@top_builddir@/lib/.libs"]),
+ ]
+@@ -43,6 +43,7 @@ convenience functions.
+     url="http://cracklib.sourceforge.net/",
+     license="GPLv2+",
+     py_modules=['cracklib', 'test_cracklib'],
++    package_dir={'': '@srcdir@'},
+     ext_modules=extensions,
+     zip_safe=False,
+     classifiers=[
+-- 
+2.0.0
+

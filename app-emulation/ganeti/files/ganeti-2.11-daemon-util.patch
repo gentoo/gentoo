@@ -1,0 +1,38 @@
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index 01f2cbb..de4e396 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -22,18 +22,25 @@ set -e
+ 
+ @SHELL_ENV_INIT@
+ 
+-readonly defaults_file="$SYSCONFDIR/default/ganeti"
++readonly defaults_file="$SYSCONFDIR/conf.d/ganeti"
+ 
+ # This is a list of all daemons and the order in which they're started. The
+ # order is important as there are dependencies between them. On shutdown,
+ # they're stopped in reverse order.
+-DAEMONS=(
+-  ganeti-noded
+-  ganeti-masterd
+-  ganeti-rapi
+-  ganeti-luxid
+-  ganeti-kvmd
+-  )
++
++DAEMONS=( ganeti-noded  ) 
++
++_is_master() {
++        [ -z "${ganeti_master}" ] && ganeti_master="$(gnt-cluster getmaster)"
++        [ -z "${local_hostname}" ] && local_hostname="$(hostname -f)"
++        [ "${ganeti_master}" = "${local_hostname}" ]
++}
++
++if _is_master; then
++  DAEMONS+=( ganeti-masterd ganeti-rapi ganeti-luxid )
++fi
++
++DAEMONS+=( ganeti-kvmd )
+ 
+ _confd_enabled() {
+   [[ "@CUSTOM_ENABLE_CONFD@" == True ]]

@@ -1,0 +1,20 @@
+--- Makefile.orig	2010-09-14 17:24:31.267313414 +0200
++++ Makefile	2010-09-14 17:24:36.395250687 +0200
+@@ -62,7 +62,7 @@
+ 
+ # Main build rule (we don't buid the docs as we don't know if debiandocs can be
+ # there) so the docs target has to be called manually by vendors.
+-build: manpages 
++build: manpages po
+ 
+ # The backup-manager package
+ install: build install_lib install_bin install_contrib install_man install_po
+@@ -84,6 +84,8 @@
+ 	install --owner=root --group=root --mode=0644 $(DOCHTMLFILES) $(DOCHTMLDIR)
+ 
+ # The translation stuff
++po:
++	$(MAKE) -C po
+ install_po:
+ 	$(MAKE) -C po install
+ 

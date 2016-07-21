@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTTP-DAV</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Comms</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Headers</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Lock</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Resource</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::ResourceList</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Response</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::UserAgent</remote-id>
+    <remote-id type="cpan-module">HTTP::DAV::Utils</remote-id>
+  </upstream>
+</pkgmetadata>

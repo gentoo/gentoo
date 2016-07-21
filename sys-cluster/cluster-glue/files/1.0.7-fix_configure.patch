@@ -1,0 +1,13 @@
+Fix enable/disable of libnet
+
+--- a/configure.ac	2010-12-06 18:17:03.000000000 +0100
++++ b/configure.ac	2011-01-11 13:22:16.271977100 +0100
+@@ -928,7 +928,7 @@
+ 
+ AC_ARG_ENABLE([libnet],
+  [  --enable-libnet 	Use libnet for ARP based funcationality, [default=try]], 
+- [enable_libnet=$withval], [enable_libnet=try])
++ [], [enable_libnet=try])
+ 
+ libnet=""
+ libnet_version="none"

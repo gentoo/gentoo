@@ -1,0 +1,109 @@
+From 18dfe046c769900b3ed27087b652b05d6fd6cb55 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 14 Apr 2012 18:34:41 +0200
+Subject: [PATCH] Fix build issues in documentation
+
+---
+ doc/de/de.po     |    2 +-
+ doc/fr/fr.po     |    8 ++++----
+ doc/sl/sl.po     |   10 +++++-----
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/doc/de/de.po b/doc/de/de.po
+index d62f188..0739ea0 100644
+--- a/doc/de/de.po
++++ b/doc/de/de.po
+@@ -183,7 +183,7 @@ msgstr "Alle weiteren Warenzeichen gehören den jeweiligen Eigentümern."
+ 
+ #: C/balsa.xml:100(releaseinfo)
+ msgid "This is version 2.721 of the Balsa manual."
+-msgstr "Dies ist Version 2.721 des <application>Balsa</application>-Handbuchs."
++msgstr "Dies ist Version 2.721 des Balsa-Handbuchs."
+ 
+ #: C/balsa.xml:106(revnumber)
+ msgid "2.721"
+diff --git a/doc/fr/fr.po b/doc/fr/fr.po
+index 7f8966a..8484ac6 100644
+--- a/doc/fr/fr.po
++++ b/doc/fr/fr.po
+@@ -5159,8 +5159,8 @@ msgid ""
+ msgstr ""
+ "L'onglet affiche alors le nom du filtre et les conditions qui décrivent "
+ "comment le filtre sélectionne les messages. La liste affiche le type des "
+-"conditions (les conditions sont décrites ensuite) : <placeholder-1/> <para></"
+-"para>Les trois boutons sous la liste permettent de modifier la condition "
++"conditions (les conditions sont décrites ensuite) : <placeholder-1/> "
++"Les trois boutons sous la liste permettent de modifier la condition "
+ "sélectionnée, d'en ajouter une nouvelle ou d'en supprimer une. La modification ou "
+ "la création d'une condition se fait dans la fenêtre <link linkend=\"win-"
+ "condition\">Éditer les conditions ...</link> qui s'ouvre quand vous cliquez "
+@@ -6078,7 +6078,7 @@ msgid ""
+ msgstr ""
+ "Par le passé, de nombreuses personnes ont contribué à <application>Balsa</"
+ "application>, tout particulièrement (par ordre alphabétique) : <placeholder-"
+-"1/> <para></para>Pour plus d'informations à ce sujet, consultez le <ulink "
++"1/> Pour plus d'informations à ce sujet, consultez le <ulink "
+ "url=\"http://balsa.gnome.org/\" type=\"http\">site Web de "
+ "<application>Balsa</application></ulink>. Veuillez envoyer tous "
+ "commentaires, suggestions et rapports d'anomalies à <ulink url=\"http://bugs."
+@@ -6117,7 +6117,7 @@ msgid ""
+ "Documentation Status Table</ulink>."
+ msgstr ""
+ "Les personnes ci-après ont apporté leurs contributions à ce manuel : "
+-"<placeholder-1/> <para></para>Adressez vos commentaires et suggestions au "
++"<placeholder-1/> Adressez vos commentaires et suggestions au "
+ "sujet du manuel au projet de documentation de <acronym>GNOME</acronym> "
+ "<email>docs@gnome.org</email> et à la liste de diffusion de "
+ "<application>Balsa</application> <email>balsa-list@gnome.org</email>. Vous "
+diff --git a/doc/sl/sl.po b/doc/sl/sl.po
+index aa24436..796a351 100644
+--- a/doc/sl/sl.po
++++ b/doc/sl/sl.po
+@@ -924,7 +924,7 @@ msgstr "<menuchoice><guimenu>Možnosti</guimenu><guimenuitem>Zahtevaj obvestilo
+ 
+ #: C/balsa.xml:1730(para)
+ msgid "<menuchoice><guimenu>Options</guimenu><guimenuitem>Format = Flowed</guimenuitem></menuchoice> -- The <quote>Flowed</quote> format (RFC 3676) breaks the message text into paragraphs, which you type continuously using the <keysym>Enter</keysym> key only to mark the end of a paragraph, and <quote>fixed</quote> lines which you mark individually using the <keysym>Enter</keysym> key. This allows other mailers that recognize the format to display the text appropriately for the width of the recipient's screen, and to quote the text correctly when constructing a reply. The text is also displayed intelligibly by a non-flowed-aware mailer."
+-msgstr "<menuchoice><guimenu>Možnosti</guimenu><guimenuitem>Oblika = Povezano</guimenuitem></menuchoice> -- Oblika <quote>Povezano</quote> (RFC 3676) prelomi sporočilo v odstavke, ki jih zvezno vnašate z <keysem>Vnosno tipko</keysym> le za oznako konca odstavka in <quote>nespremenljive</quote>vrstice, ki jih posamezno označite z uporabo <keysym>Vnosne tipke</keysym>. To ostalim poštnim odjemalcem, ki prepoznajo obliko, omogoča prikaz primeren širini zaslona prejemnika in pravilno samodejno citiranje pri sestavljanju odgovora. Besedilo pametno prikažejo tudi poštni odjemalci, ki ne prepoznajo oblike.  "
++msgstr "<menuchoice><guimenu>Možnosti</guimenu><guimenuitem>Oblika = Povezano</guimenuitem></menuchoice> -- Oblika <quote>Povezano</quote> (RFC 3676) prelomi sporočilo v odstavke, ki jih zvezno vnašate z <keysym>Vnosno tipko</keysym> le za oznako konca odstavka in <quote>nespremenljive</quote>vrstice, ki jih posamezno označite z uporabo <keysym>Vnosne tipke</keysym>. To ostalim poštnim odjemalcem, ki prepoznajo obliko, omogoča prikaz primeren širini zaslona prejemnika in pravilno samodejno citiranje pri sestavljanju odgovora. Besedilo pametno prikažejo tudi poštni odjemalci, ki ne prepoznajo oblike.  "
+ 
+ #: C/balsa.xml:1747(para)
+ msgid "Using <quote>Format=Flowed</quote> is strongly recommended. It helps to avert the <quote>embarrassing line wrap</quote> that you see when quoted text is broken across lines and shown with the wrong level of quoting."
+@@ -2635,7 +2635,7 @@ msgstr "Vrsta <guimenuitem>Enostavno</guimenuitem>: vnos besedila vam omogoča v
+ 
+ #: C/balsa.xml:4370(para)
+ msgid "<guimenuitem>Regular expression</guimenuitem>: you can input a list of regular expressions. You type your regular expression in the text entry, then you click on the <guibutton>Add</guibutton> button to put it into the list. Of course the <guibutton>Remove</guibutton> button destroys the selected regular expression in the list. The last button <guibutton>One matches/None matches</guibutton> lets you specify when a message matches the condition: when one of the regular expression matches or when none matches. The sentence above te list will be updated accordingly."
+-msgstr "<guimenuiutem>Logični izraz</guimenuitem>: vnesete lahko seznam logičnih izrazov. Logične izraze lahko vpišete v vnos besedila ter za dodajanje na seznam kliknite gumb <guibutton>Dodaj</guibutton>. Gumb <guibutton>Odstrani</guibutton> uniči izbran logični izraz s seznama. Zadnji gumb <guibutton>Eno skladanje/Brez skladanja</guibutton> vam omogoča navedbo kdaj se sporočilo sklada s pogojem: ko se sklada en logičen izraz ali ko se ne sklada noben logični izraz. Stavek nad seznamom bo ustrezno posodobljen."
++msgstr "<guimenuitem>Logični izraz</guimenuitem>: vnesete lahko seznam logičnih izrazov. Logične izraze lahko vpišete v vnos besedila ter za dodajanje na seznam kliknite gumb <guibutton>Dodaj</guibutton>. Gumb <guibutton>Odstrani</guibutton> uniči izbran logični izraz s seznama. Zadnji gumb <guibutton>Eno skladanje/Brez skladanja</guibutton> vam omogoča navedbo kdaj se sporočilo sklada s pogojem: ko se sklada en logičen izraz ali ko se ne sklada noben logični izraz. Stavek nad seznamom bo ustrezno posodobljen."
+ 
+ #: C/balsa.xml:4386(para)
+ msgid "<guimenuitem>Date</guimenuitem> interval: you can input the interval by the mean of the two text entries. A blank entry means no bound. The button tells to match when the message date is within the bounds or not. The sentence above the text entries will be updated accordingly."
+@@ -2788,7 +2788,7 @@ msgstr "Za ustvarjanje novega poštnega predala <glossterm linkend=\"glossary-po
+ 
+ #: C/balsa.xml:4623(para)
+ msgid "Under <application>Sawfish</application>, this dialog has been known to become obscured, causing the appearance that <application>Balsa</application> has locked up. Move the configuration dialog and see if the new dialog was hidden."
+-msgstr "V <applicartion>Sawfist</application> je to pogovorno okno postalo zakrito in daje vtis da se je <application>Balsa</application> zaklenil. Premaknite pogovorno okno nastavitev in poglejte, če je bilo pogovorno okno skrito."
++msgstr "V <application>Sawfist</application> je to pogovorno okno postalo zakrito in daje vtis da se je <application>Balsa</application> zaklenil. Premaknite pogovorno okno nastavitev in poglejte, če je bilo pogovorno okno skrito."
+ 
+ #: C/balsa.xml:4634(title)
+ msgid "Moving Messages"
+@@ -2825,7 +2825,7 @@ msgstr "<application>Balsa</application> lahko razširi imena vaših stikov, ki
+ 
+ #: C/balsa.xml:4680(para)
+ msgid "As you type a username in any of the To:, Cc:, or Bcc: entry boxes in the <link linkend=\"win-composer\">Compose window</link>, it will do a case insensitive search in the addressbook for a matching username, and pop up a list of matching complete addresses. Press <keysym>Cursor-Down</keysym> to highlight one of the addresses, and <keysym>Enter</keysym> to select it."
+-msgstr "Ko vtipkate uporabniško ime v katero od vnosnih polj Za:, Kp: ali Skp: v <link linkend=\"win-composer\">Sestavljalnemu oknu</link>, se bo izvedlo na velikost črk neobčutljivo iskanje za skladajoče uporabniško ime in pojavil se bo seznam skladajočih celotnih naslovov. Pritisnite <keysem>Navzdol</keysym> za poudarjanje enega naslovov in <keysym>Enter</keysym> za izbiro."
++msgstr "Ko vtipkate uporabniško ime v katero od vnosnih polj Za:, Kp: ali Skp: v <link linkend=\"win-composer\">Sestavljalnemu oknu</link>, se bo izvedlo na velikost črk neobčutljivo iskanje za skladajoče uporabniško ime in pojavil se bo seznam skladajočih celotnih naslovov. Pritisnite <keysym>Navzdol</keysym> za poudarjanje enega naslovov in <keysym>Enter</keysym> za izbiro."
+ 
+ #. This is best demonstrated
+ #.   with the following picture:</para>
+@@ -2984,7 +2984,7 @@ msgstr "Peter Williams (<email>peter@newton.cx</email>)"
+ 
+ #: C/balsa.xml:4856(para)
+ msgid "In the past, numerous people contributed to balsa, including (in alphabetical order): <placeholder-1/> To find more information about it, please visit the <application>Balsa</application><ulink url=\"http://balsa.gnome.org/\" type=\"http\">Web page</ulink>. Please send all comments, suggestions, and bug reports to the <ulink url=\"http://bugs.gnome.org/\" type=\"http\"><acronym>GNOME</acronym> bug tracking database</ulink>. Instructions for submitting bug reports can be found on-line at <ulink url=\"http://balsa.gnome.org/bugs.html\" type=\"http\"> http://balsa.gnome.org/bugs.html</ulink>. If you are using <acronym>GNOME</acronym> 1.1 or later, you can also use command <command>bug-buddy</command> for submitting bug reports."
+-msgstr "V preteklosti je k programu prispevalo več ljudi, vključno z (v abecednem redu:) <placeholder-1/> Za več podrobnosti obiščite <applicaiton>Balsa</application> <ulink url=\"http://balsa.gnome.org/\" type=\"http\">Spletno stran</ulink>. Vse opombe, predloge in poročila o hroščih pošljite na <ulink url=\"http://bugs.gnome.org/\" type=\"http\"><acronym>GNOME</acronym> zbirko podatkov hroščev</ulink>. Navodila za pošiljanje poročil o hroščih je mogoče najti na <ulink url=\"http://balsa.gnome.org/bugs.html\" type=\"http\"> http://balsa.gnome.org/bugs.html</ulink>. V primeru da uporabljate <acronym>GNOME</acronym> 1.1 ali kasnejši lahko za pošiljanje poročil o hroščih uporabite tudi ukaz <command>bug-buddy</command>."
++msgstr "V preteklosti je k programu prispevalo več ljudi, vključno z (v abecednem redu:) <placeholder-1/> Za več podrobnosti obiščite <application>Balsa</application> <ulink url=\"http://balsa.gnome.org/\" type=\"http\">Spletno stran</ulink>. Vse opombe, predloge in poročila o hroščih pošljite na <ulink url=\"http://bugs.gnome.org/\" type=\"http\"><acronym>GNOME</acronym> zbirko podatkov hroščev</ulink>. Navodila za pošiljanje poročil o hroščih je mogoče najti na <ulink url=\"http://balsa.gnome.org/bugs.html\" type=\"http\"> http://balsa.gnome.org/bugs.html</ulink>. V primeru da uporabljate <acronym>GNOME</acronym> 1.1 ali kasnejši lahko za pošiljanje poročil o hroščih uporabite tudi ukaz <command>bug-buddy</command>."
+ 
+ #: C/balsa.xml:4905(para)
+ msgid "Peter Bloomfield (<email>peterbloomfield@bellsouth.net</email>)"
+-- 
+1.7.8.5
+

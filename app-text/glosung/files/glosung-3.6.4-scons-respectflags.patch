@@ -1,0 +1,61 @@
+diff -ruN glosung-3.6.4-original/SConstruct glosung-3.6.4/SConstruct
+--- glosung-3.6.4-original/SConstruct	2016-01-22 22:11:00.785053522 -0500
++++ glosung-3.6.4/SConstruct	2016-01-22 22:14:04.434058592 -0500
+@@ -17,6 +17,7 @@
+ 
+ 
+ import os
++import SCons.Util
+ 
+ version = '3.6.4'
+ 
+@@ -32,14 +33,23 @@
+                               (this option is only for packaging)''')
+ 
+ env = Environment (
+-  LINK      = 'gcc',
+-  CC        = 'gcc',
+   CPPPATH   = '',
+   LINKFLAGS = '',
+   CCFLAGS   = '',
+   ENV       = os.environ,
+   TARFLAGS  = '-c -j')
+ 
++if os.environ.has_key('CC'):
++	env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++	env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++
+ if env['PLATFORM'] == 'win32':
+ 	prefix      = ARGUMENTS.get ('PREFIX', '')
+ 	install_dir = ARGUMENTS.get ('DESTDIR', '')
+@@ -57,21 +67,18 @@
+ VariantDir('build', 'src')
+ 
+ cpppath = ['#', '#build']
+-ccflags   = ['-O2', '-std=c99', '-Wall', '-g',
++ccflags   = ['-std=c99',
+ #		'-DLIBXML_STATIC',
+ 		'-DVERSION=\\"' + version + '\\"',
+ 		'-DGLOSUNG_DATA_DIR=\\"' + data_dir + '\\"',
+ 		'-DPACKAGE_PIXMAPS_DIR=\\"' + pixmap_dir + '\\"']
+ 
+-linkflags = ['-L.']             
++linkflags = []             
+ 
+ if ARGUMENTS.get ('profile'):
+     ccflags.append   ('-pg', '-fprofile-arcs')
+     linkflags.append ('-pg', '-fprofile-arcs', '-Wl,--export-dynamic')
+ 
+-if env['PLATFORM'] != 'win32':
+-        linkflags.append ('-Wl,--as-needed')
+-
+ #if not (ARGUMENTS.get ('dev')):
+ if (ARGUMENTS.get ('dev')):
+     ccflags   += [

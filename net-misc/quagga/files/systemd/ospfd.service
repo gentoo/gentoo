@@ -1,0 +1,16 @@
+[Unit]
+Description=OSPF routing daemon
+Documentation=man:ospfd(8) man:zebra(8)
+BindTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/ospfd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/ospfd.pid
+ExecStart=/usr/sbin/ospfd -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

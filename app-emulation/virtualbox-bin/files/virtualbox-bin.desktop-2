@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Oracle xVM VirtualBox
+Type=Application
+Comment=Run several virtual systems on a single host computer
+Exec=VirtualBox
+TryExec=VirtualBox
+Icon=virtualbox-bin
+Categories=System;Emulator;

@@ -1,0 +1,21 @@
+the linux target parses /etc/ld.so.conf to see what paths are
+searched at runtime, and hardcodes /lib /usr/lib as a fallback.
+this works poorly when cross-compiling, so tweak the behavior:
+ - search $SYSROOT/etc/ld.so.conf
+ - default to Gentoo's notion of the active multilib
+
+--- a/configure
++++ b/configure
+@@ -10405,9 +10405,9 @@
+   hardcode_into_libs=yes
+ 
+   # Append ld.so.conf contents to the search path
+-  if test -f /etc/ld.so.conf; then
+-    lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \$2)); skip = 1; } { if (!skip) print \$0; skip = 0; }' < /etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
+-    sys_lib_dlsearch_path_spec="/lib /usr/lib $lt_ld_extra"
++  if test -f "$SYSROOT"/etc/ld.so.conf; then
++    lt_ld_extra=`awk '/^include / { system(sprintf("cd /etc; cat %s 2>/dev/null", \$2)); skip = 1; } { if (!skip) print \$0; skip = 0; }' < "$SYSROOT"/etc/ld.so.conf | $SED -e 's/#.*//;/^[	 ]*hwcap[	 ]/d;s/[:,	]/ /g;s/=[^=]*$//;s/=[^= ]* / /g;s/"//g;/^$/d' | tr '\n' ' '`
++    sys_lib_dlsearch_path_spec="/@GENTOO_LIBDIR@ /usr/@GENTOO_LIBDIR@ $lt_ld_extra"
+   fi
+ 
+   # We used to test for /lib/ld.so.1 and disable shared libraries on

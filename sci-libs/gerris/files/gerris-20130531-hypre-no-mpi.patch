@@ -1,0 +1,22 @@
+patch to allow gerris to use hypre without mpi
+
+--- configure.ac	2013-05-30 23:57:18.000000000 -0700
++++ configure.ac.new	2013-07-22 13:52:36.083974663 -0700
+@@ -336,7 +336,7 @@
+ 
+ # Build hypre module if HYPRE is installed
+ hypre=no
+-if test "x$use_mpicc" = "xyes" ; then # HYPRE needs MPI
++# hypre does not need mpi
+    AC_CHECK_LIB(HYPRE, HYPRE_IJMatrixCreate, hypre="yes", hypre="no", [-lm])
+    if test x$hypre = xyes; then
+       AC_CHECK_HEADERS(HYPRE.h, hypre="yes", hypre="no")
+@@ -344,7 +344,7 @@
+    if test x$hypre = xno; then
+       AC_MSG_WARN([HYPRE not found. hypre Module won't be available.])
+    fi
+-fi
++
+ AM_CONDITIONAL(BUILD_HYPRE, test x$hypre = xyes)
+ 
+ # Build lis module if lis is installed

@@ -1,0 +1,42 @@
+diff -Nuar --exclude '*.orig' --exclude '*.rej' pmtools-20071116.orig/acpixtract/acpixtract.c pmtools-20071116/acpixtract/acpixtract.c
+--- pmtools-20071116.orig/acpixtract/acpixtract.c	2007-11-16 10:45:44.000000000 -0800
++++ pmtools-20071116/acpixtract/acpixtract.c	2008-06-06 18:28:34.203106692 -0700
+@@ -199,7 +199,7 @@
+     void)
+ {
+ 
+-    printf ("Usage: acpixtract [option] <InputFile>\n");
++    printf ("Usage: acpixtract-pmtools [option] <InputFile>\n");
+     printf ("\nExtract binary ACPI tables from text acpidump output\n");
+     printf ("Default invocation extracts all DSDTs and SSDTs\n");
+     printf ("Version %8.8X\n\n", VERSION);
+diff -Nuar --exclude '*.orig' --exclude '*.rej' pmtools-20071116.orig/madt/README pmtools-20071116/madt/README
+--- pmtools-20071116.orig/madt/README	2007-11-16 10:39:50.000000000 -0800
++++ pmtools-20071116/madt/README	2008-06-06 18:30:18.101885794 -0700
+@@ -2,7 +2,7 @@
+ Hacked out of Linux kernel code to do the same.
+ 
+ # ./acpidmp > acpidump.txt
+-$ acpixtract -a acpidump.txt
++$ acpixtract-pmtools -a acpidump.txt
+ $ madt < APIC.dat
+ 
+ ACPI: APIC (v001 INTEL  D845EBT2 0x20021021 MSFT 0x00000097) @ 0x(nil)
+diff -Nuar --exclude '*.orig' --exclude '*.rej' pmtools-20071116.orig/README pmtools-20071116/README
+--- pmtools-20071116.orig/README	2007-11-16 10:54:27.000000000 -0800
++++ pmtools-20071116/README	2008-06-06 18:29:53.513505961 -0700
+@@ -24,11 +24,11 @@
+ and it is why the output doesn't change when different
+ kernels are booted.
+ 
+-./acpidump/acpixtract
+---------------------
++./acpidump/acpixtract-pmtools
++-----------------------------
+ Convert ASCII acpidump output to raw binary tables:
+ 
+-	$ acpixtract/acpixtract -a acpidump.txt
++	$ acpixtract/acpixtract-pmtools -a acpidump.txt
+ 	Acpi table [DSDT] -  15974 bytes written to DSDT.dat
+ 	Acpi table [FACS] -     64 bytes written to FACS.dat
+ 	Acpi table [FACP] -    116 bytes written to FACP.dat

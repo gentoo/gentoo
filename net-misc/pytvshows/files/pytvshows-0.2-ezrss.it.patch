@@ -1,0 +1,30 @@
+This patch simply alters the feed site since txrss.net was closed/shut down.
+Luckily, ezrss.it expects the same arguments and should generally work. You can
+find similar details at:
+http://sourceforge.net/projects/pytvshows/forums/forum/726961/topic/3309243?message=7544190
+
+Yes, this could have been accomplished via the --feed paramater, but this is
+more user friendly.
+
+--- pytvshows.orig	2009-09-15 22:36:34.575002779 -0500
++++ pytvshows	2009-09-15 22:43:18.283754081 -0500
+@@ -59,7 +59,7 @@
+   -cFILE, --config FILE
+                   Path to config file. Default: ~/.pytvshows.cfg
+   -fFEED, --feed=FEED
+-                    Override the tvrss.net feed. %%s is replaced with the 
++                    Override the ezrss.it feed. %%s is replaced with the 
+                     exact show name.
+   -h, --help        This help message
+   -oDIR, --output_dir=DIR  
+@@ -77,8 +77,8 @@
+ commands = ['update', 'subscribe', 'unsubscribe', 'run']
+ config = {
+     'config_file': os.path.expanduser("~/.pytvshows.cfg"),
+-    'feed': "http://tvrss.net/search/index.php?show_name=%s&show_name_exact" \
+-            "=true&mode=rss",
++	'feed': "http://www.ezrss.it/search/index.php?show_name=%s" \
++            "&show_name_exact=true&mode=rss",
+     'output_dir': os.path.expanduser("~/"),
+     'output_dir2': None,
+     'quality_matches': {

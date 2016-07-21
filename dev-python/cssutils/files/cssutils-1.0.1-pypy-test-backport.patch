@@ -1,0 +1,32 @@
+# HG changeset patch
+# User Daniel <kingdread@gmx.de>
+# Date 1448482419 -3600
+# Node ID 01a19d494b6f31e91c54ae39c5a6f43f6292a85d
+# Parent  3a01bd18118a6466ad93aa23caaa4164528b59ac
+Fix tests on PyPy 2
+
+Tests fail because of the extra "u" prefix in the error message
+
+diff --git a/src/cssutils/tests/test_profiles.py b/src/cssutils/tests/test_profiles.py
+--- a/src/cssutils/tests/test_profiles.py
++++ b/src/cssutils/tests/test_profiles.py
+@@ -2,6 +2,7 @@
+ __version__ = '$Id: test_cssvalue.py 1443 2008-08-31 13:54:39Z cthedot $'
+ 
+ import sys
++import platform
+ import basetest
+ import cssutils
+ 
+@@ -124,6 +125,11 @@
+             expmsg = u"invalid literal for int(): x" 
+         elif sys.platform.startswith('java'):
+             expmsg = u"invalid literal for int() with base 10: x"
++        # PyPy adds the u prefix, but only in versions lower than Python 3
++        elif (platform.python_implementation() == "PyPy" and
++              sys.version_info < (3, 0)):
++            expmsg = u"invalid literal for int() with base 10: u'x'"
++
+             
+         self.assertRaisesMsg(Exception, expmsg, 
+                              cssutils.profile.validate, u'-test-funcval', u'x')

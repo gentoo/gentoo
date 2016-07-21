@@ -1,0 +1,19 @@
+At least for autoconf-2.69 AS_INIT is called by AC_INIT.
+
+When using /bin/dash calling AS_INIT directly leads to infinite
+reexec loop.
+
+Gentoo-bug: http://bugs.gentoo.org/475248
+diff --git a/configure.ac b/configure.ac
+index eb0002f..6c77ef9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,7 @@ AC_PREREQ(2.62)
+ AC_INIT([GARDEN], 
+ 	[1.0.8], 
+ 	[bubla@users.sourceforge.net])
+-AS_INIT
++
+ AC_CONFIG_AUX_DIR([build-aux])
+ AM_INIT_AUTOMAKE([-Wall])
+ AC_CONFIG_SRCDIR([src/input.h])

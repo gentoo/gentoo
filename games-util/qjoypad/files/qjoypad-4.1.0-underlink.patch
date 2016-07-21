@@ -1,0 +1,11 @@
+--- qjoypad.pro.old	2011-06-22 06:54:06.001667461 +0200
++++ qjoypad.pro	2011-06-22 06:56:17.580044446 +0200
+@@ -32,7 +32,7 @@
+ 
+ TEMPLATE = app
+ INCLUDEPATH += .
+-QMAKE_LIBS += -lXtst
++QMAKE_LIBS += -lXtst -lm -lX11
+ 
+ # Input
+ HEADERS += axis.h \

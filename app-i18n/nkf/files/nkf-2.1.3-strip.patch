@@ -1,0 +1,9 @@
+--- a/NKF.python/setup.py
++++ b/NKF.python/setup.py
+@@ -8,5 +8,4 @@
+        author="Matsumoto Tadashi",
+        author_email="ma2@city.plala.jp",
+        ext_modules = [
+-               Extension("nkf", ["NKF_python.c"],
+-                         extra_link_args = ['-s'])])
++               Extension("nkf", ["NKF_python.c"])])

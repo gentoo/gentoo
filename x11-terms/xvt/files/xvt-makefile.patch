@@ -1,0 +1,20 @@
+--- xvt-1.0/Makefile.orig	2009-09-04 15:45:08.000000000 +0200
++++ xvt-1.0/Makefile	2009-09-04 15:46:00.000000000 +0200
+@@ -27,7 +27,7 @@
+ #ARCH=AIX3
+ #ARCH=ULTRIX
+ #ARCH=HPUX
+-#ARCH=LINUX
++ARCH=LINUX
+ #
+ #
+ # If this line is uncommented then `Make config' will unclude several options
+@@ -107,7 +107,7 @@
+ OBJ=xvt.o xsetup.o command.o screen.o sbar.o ttyinit.o
+ SRC=xvt.c xsetup.c command.c screen.c sbar.c ttyinit.c
+ #
+-CFLAGS=-O $(INCLUDE) $(OPTIONS) $(DEFS) -D$(ARCH)
++CFLAGS+= $(INCLUDE) $(OPTIONS) $(DEFS) -D$(ARCH)
+ #
+ xvt: $(OBJ)
+ 	$(CC) $(LDFLAGS) -o xvt $(OBJ) $(LIB) -lX11

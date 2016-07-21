@@ -1,0 +1,557 @@
+Index: plugins/radios/ario-radio.h
+===================================================================
+--- plugins/radios/ario-radio.h	(revision 772)
++++ plugins/radios/ario-radio.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_RADIO_H
+ #define __ARIO_RADIO_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "widgets/ario-playlist.h"
+ #include "sources/ario-source.h"
+Index: plugins/filesystem/ario-filesystem.h
+===================================================================
+--- plugins/filesystem/ario-filesystem.h	(revision 772)
++++ plugins/filesystem/ario-filesystem.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_FILESYSTEM_H
+ #define __ARIO_FILESYSTEM_H
+ 
+-#include <gtk/gtkhpaned.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "widgets/ario-playlist.h"
+ #include "sources/ario-source.h"
+Index: plugins/information/ario-information.h
+===================================================================
+--- plugins/information/ario-information.h	(revision 772)
++++ plugins/information/ario-information.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_INFORMATION_H
+ #define __ARIO_INFORMATION_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "sources/ario-source.h"
+ 
+Index: src/plugins/ario-plugin-info.c
+===================================================================
+--- src/plugins/ario-plugin-info.c	(revision 772)
++++ src/plugins/ario-plugin-info.c	(revision 774)
+@@ -27,7 +27,7 @@
+ 
+ #include <string.h>
+ #include <glib/gi18n.h>
+-#include <glib/gkeyfile.h>
++#include <glib.h>
+ 
+ #include "plugins/ario-plugin-info-priv.h"
+ #include "ario-debug.h"
+Index: src/sources/ario-search.h
+===================================================================
+--- src/sources/ario-search.h	(revision 772)
++++ src/sources/ario-search.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_SEARCH_H
+ #define __ARIO_SEARCH_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "sources/ario-source.h"
+ 
+Index: src/sources/ario-storedplaylists.h
+===================================================================
+--- src/sources/ario-storedplaylists.h	(revision 772)
++++ src/sources/ario-storedplaylists.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_STOREDPLAYLISTS_H
+ #define __ARIO_STOREDPLAYLISTS_H
+ 
+-#include <gtk/gtkhpaned.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ #include "sources/ario-source.h"
+ 
+Index: src/sources/ario-source-manager.h
+===================================================================
+--- src/sources/ario-source-manager.h	(revision 772)
++++ src/sources/ario-source-manager.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_SOURCE_MANAGER_H
+ #define __ARIO_SOURCE_MANAGER_H
+ 
+-#include <gtk/gtknotebook.h>
++#include <gtk/gtk.h>
+ #include "sources/ario-source.h"
+ 
+ G_BEGIN_DECLS
+Index: src/sources/ario-browser.h
+===================================================================
+--- src/sources/ario-browser.h	(revision 772)
++++ src/sources/ario-browser.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_BROWSER_H
+ #define __ARIO_BROWSER_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ #include "sources/ario-source.h"
+ 
+ #define MAX_TREE_NB 5
+Index: src/sources/ario-tree.h
+===================================================================
+--- src/sources/ario-tree.h	(revision 772)
++++ src/sources/ario-tree.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_TREE_H
+ #define __ARIO_TREE_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ #include "servers/ario-server.h"
+ #include "sources/ario-source.h"
+ #include "shell/ario-shell-coverdownloader.h"
+Index: src/ario-util.h
+===================================================================
+--- src/ario-util.h	(revision 772)
++++ src/ario-util.h	(revision 774)
+@@ -18,8 +18,8 @@
+  */
+ 
+ #include "servers/ario-server.h"
+-#include "glib/gslist.h"
+-#include "gdk/gdkpixbuf.h"
++#include <glib.h>
++#include <gdk/gdk.h>
+ 
+ /* Number of covers used to generate the drag & drop image */
+ #define MAX_COVERS_IN_DRAG 3
+Index: src/ario-main.c
+===================================================================
+--- src/ario-main.c	(revision 772)
++++ src/ario-main.c	(revision 774)
+@@ -21,7 +21,7 @@
+ #include <locale.h>
+ #include <libintl.h>
+ #include <gtk/gtk.h>
+-#include <gdk/gdkkeysyms.h>
++#include <gdk/gdk.h>
+ #include <curl/curl.h>
+ #include <libxml/parser.h>
+ #include <glib/gi18n.h>
+Index: src/ario-profiles.h
+===================================================================
+--- src/ario-profiles.h	(revision 772)
++++ src/ario-profiles.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_PROFILES_H
+ #define __ARIO_PROFILES_H
+ 
+-#include <glib/gslist.h>
++#include <glib.h>
+ #include "servers/ario-server.h"
+ 
+ G_BEGIN_DECLS
+Index: src/covers/ario-cover-handler.h
+===================================================================
+--- src/covers/ario-cover-handler.h	(revision 772)
++++ src/covers/ario-cover-handler.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_COVER_HANDLER_H
+ #define __ARIO_COVER_HANDLER_H
+Index: src/covers/ario-cover.c
+===================================================================
+--- src/covers/ario-cover.c	(revision 772)
++++ src/covers/ario-cover.c	(revision 774)
+@@ -19,8 +19,7 @@
+ 
+ #include "covers/ario-cover.h"
+ #include <glib.h>
+-#include <gtk/gtkdialog.h>
+-#include <gtk/gtkmessagedialog.h>
++#include <gtk/gtk.h>
+ #include <string.h>
+ #include <glib/gi18n.h>
+ #include "ario-util.h"
+Index: src/preferences/ario-others-preferences.h
+===================================================================
+--- src/preferences/ario-others-preferences.h	(revision 772)
++++ src/preferences/ario-others-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_OTHERS_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-lyrics-preferences.h
+===================================================================
+--- src/preferences/ario-lyrics-preferences.h	(revision 772)
++++ src/preferences/ario-lyrics-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_LYRICS_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-server-preferences.h
+===================================================================
+--- src/preferences/ario-server-preferences.h	(revision 772)
++++ src/preferences/ario-server-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_SERVER_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-cover-preferences.h
+===================================================================
+--- src/preferences/ario-cover-preferences.h	(revision 772)
++++ src/preferences/ario-cover-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_COVER_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-browser-preferences.h
+===================================================================
+--- src/preferences/ario-browser-preferences.h	(revision 772)
++++ src/preferences/ario-browser-preferences.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_BROWSER_PREFERENCES_H
+ #define __ARIO_BROWSER_PREFERENCES_H
+Index: src/preferences/ario-taskbar-preferences.h
+===================================================================
+--- src/preferences/ario-taskbar-preferences.h	(revision 772)
++++ src/preferences/ario-taskbar-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_TASKBAR_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-stats-preferences.h
+===================================================================
+--- src/preferences/ario-stats-preferences.h	(revision 772)
++++ src/preferences/ario-stats-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_STATS_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-connection-preferences.h
+===================================================================
+--- src/preferences/ario-connection-preferences.h	(revision 772)
++++ src/preferences/ario-connection-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_CONNECTION_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/preferences/ario-playlist-preferences.h
+===================================================================
+--- src/preferences/ario-playlist-preferences.h	(revision 772)
++++ src/preferences/ario-playlist-preferences.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_PLAYLIST_PREFERENCES_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/lib/gtk-builder-helpers.h
+===================================================================
+--- src/lib/gtk-builder-helpers.h	(revision 772)
++++ src/lib/gtk-builder-helpers.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkbuilder.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __GTK_BUILDER_HELPERS_H
+ #define __GTK_BUILDER_HELPERS_H
+Index: src/widgets/ario-dnd-tree.h
+===================================================================
+--- src/widgets/ario-dnd-tree.h	(revision 772)
++++ src/widgets/ario-dnd-tree.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_DND_TREE_H
+ #define __ARIO_DND_TREE_H
+ 
+-#include <gtk/gtktreeview.h>
++#include <gtk/gtk.h>
+ #include <config.h>
+ 
+ G_BEGIN_DECLS
+Index: src/widgets/ario-songlist.h
+===================================================================
+--- src/widgets/ario-songlist.h	(revision 772)
++++ src/widgets/ario-songlist.h	(revision 774)
+@@ -21,10 +21,7 @@
+ #define __ARIO_SONGLIST_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkscrolledwindow.h>
+-#include <gtk/gtkliststore.h>
+-#include <gtk/gtktreeview.h>
+-#include <gtk/gtkuimanager.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/widgets/ario-tray-icon.h
+===================================================================
+--- src/widgets/ario-tray-icon.h	(revision 772)
++++ src/widgets/ario-tray-icon.h	(revision 774)
+@@ -26,8 +26,7 @@
+ 
+ #include <config.h>
+ #include "shell/ario-shell.h"
+-#include <gtk/gtkuimanager.h>
+-#include <gtk/gtkstatusicon.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/widgets/ario-volume.h
+===================================================================
+--- src/widgets/ario-volume.h	(revision 772)
++++ src/widgets/ario-volume.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_VOLUME_H
+ #define __ARIO_VOLUME_H
+ 
+-#include <gtk/gtkeventbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/widgets/ario-connection-widget.h
+===================================================================
+--- src/widgets/ario-connection-widget.h	(revision 772)
++++ src/widgets/ario-connection-widget.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_CONNECTION_WIDGET_H
+ #define __ARIO_CONNECTION_WIDGET_H
+ 
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ 
+ #define ARIO_DEFAULT_TIMEOUT 5000
+ 
+Index: src/widgets/ario-firstlaunch.h
+===================================================================
+--- src/widgets/ario-firstlaunch.h	(revision 772)
++++ src/widgets/ario-firstlaunch.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_FIRSTLAUNCH_H
+ #define __ARIO_FIRSTLAUNCH_H
+ 
+-#include <gtk/gtkassistant.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/widgets/ario-header.h
+===================================================================
+--- src/widgets/ario-header.h	(revision 772)
++++ src/widgets/ario-header.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_HEADER_H
+ #define __ARIO_HEADER_H
+ 
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/widgets/ario-lyrics-editor.h
+===================================================================
+--- src/widgets/ario-lyrics-editor.h	(revision 772)
++++ src/widgets/ario-lyrics-editor.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkvbox.h>
++#include <gtk/gtk.h>
+ #include "lyrics/ario-lyrics-provider.h"
+ 
+ #ifndef __ARIO_LYRICS_EDITOR_H
+Index: src/widgets/ario-tooltip.h
+===================================================================
+--- src/widgets/ario-tooltip.h	(revision 772)
++++ src/widgets/ario-tooltip.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_TOOLTIP_H
+ 
+ #include <config.h>
+-#include <gtk/gtkhbox.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/shell/ario-shell-coverdownloader.h
+===================================================================
+--- src/shell/ario-shell-coverdownloader.h	(revision 772)
++++ src/shell/ario-shell-coverdownloader.h	(revision 774)
+@@ -21,7 +21,7 @@
+ #define __ARIO_SHELL_COVERDOWNLOADER_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkwindow.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/shell/ario-shell-preferences.h
+===================================================================
+--- src/shell/ario-shell-preferences.h	(revision 772)
++++ src/shell/ario-shell-preferences.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_SHELL_PREFERENCES_H
+ #define __ARIO_SHELL_PREFERENCES_H
+Index: src/shell/ario-shell.h
+===================================================================
+--- src/shell/ario-shell.h	(revision 772)
++++ src/shell/ario-shell.h	(revision 774)
+@@ -20,7 +20,7 @@
+ #ifndef __ARIO_SHELL_H
+ #define __ARIO_SHELL_H
+ 
+-#include <gtk/gtkwindow.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+Index: src/shell/ario-shell-lyrics.h
+===================================================================
+--- src/shell/ario-shell-lyrics.h	(revision 772)
++++ src/shell/ario-shell-lyrics.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkwindow.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_SHELL_LYRICS_H
+ #define __ARIO_SHELL_LYRICS_H
+Index: src/shell/ario-shell-lyricsselect.h
+===================================================================
+--- src/shell/ario-shell-lyricsselect.h	(revision 772)
++++ src/shell/ario-shell-lyricsselect.h	(revision 774)
+@@ -22,7 +22,7 @@
+ #define __ARIO_SHELL_LYRICSSELECT_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ #include "lyrics/ario-lyrics.h"
+ 
+ G_BEGIN_DECLS
+Index: src/shell/ario-shell-songinfos.h
+===================================================================
+--- src/shell/ario-shell-songinfos.h	(revision 772)
++++ src/shell/ario-shell-songinfos.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_SHELL_SONGINFOS_H
+ #define __ARIO_SHELL_SONGINFOS_H
+Index: src/shell/ario-shell-similarartists.h
+===================================================================
+--- src/shell/ario-shell-similarartists.h	(revision 772)
++++ src/shell/ario-shell-similarartists.h	(revision 774)
+@@ -17,7 +17,7 @@
+  *
+  */
+ 
+-#include <gtk/gtkwindow.h>
++#include <gtk/gtk.h>
+ 
+ #ifndef __ARIO_SHELL_SIMILARARTISTS_H
+ #define __ARIO_SHELL_SIMILARARTISTS_H
+Index: src/shell/ario-shell-coverselect.h
+===================================================================
+--- src/shell/ario-shell-coverselect.h	(revision 772)
++++ src/shell/ario-shell-coverselect.h	(revision 774)
+@@ -22,7 +22,7 @@
+ #define __ARIO_SHELL_COVERSELECT_H
+ 
+ #include <glib.h>
+-#include <gtk/gtkdialog.h>
++#include <gtk/gtk.h>
+ #include "servers/ario-server.h"
+ 
+ G_BEGIN_DECLS
+Index: configure.ac
+===================================================================
+--- configure.ac	(revision 772)
++++ configure.ac	(revision 774)
+@@ -298,9 +298,11 @@
+ if test x"$enable_deprecations" = xyes; then
+         WARNINGS="$WARNINGS -DG_DISABLE_DEPRECATED \
+ -DGDK_DISABLE_DEPRECATED \
++-DGTK_DISABLE_SINGLE_INCLUDES \
+ -DGDK_PIXBUF_DISABLE_DEPRECATED \
+ -DGTK_DISABLE_DEPRECATED \
+--DGSEAL_ENABLE"
++-DGSEAL_ENABLE \
++-DG_DISABLE_SINGLE_INCLUDES"
+ fi
+ AC_SUBST(WARNINGS)
+ 

@@ -1,0 +1,18 @@
+Description: add missing include to avoid FTBFS with gcc 4.7
+Origin: vendor
+Bug-Debian: http://bugs.debian.org/672010
+Forwarded: no
+Author: Paul Tagliamonte <tag@pault.ag>
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2012-05-15
+
+--- a/src/lsof.cpp	2012-05-09 21:27:01.138367215 -0400
++++ b/src/lsof.cpp	2012-05-09 21:26:52.398367682 -0400
+@@ -21,6 +21,7 @@
+ #include <vector>
+ #include <assert.h>
+ #include <cstring>
++#include <unistd.h>
+ #include "lsof.h"
+ 
+ fsuser::fsuser(const char *pid, const char *name)

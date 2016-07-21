@@ -1,0 +1,25 @@
+messager.c: fix memory overlap (fixes artefacts in scrolling text)
+
+==363== Source and destination overlap in memcpy(0xa066240, 0xa0662b8, 240)
+==363==    at 0x4C2B220: memcpy@@GLIBC_2.14 (mc_replace_strmem.c:838)
+==363==    by 0x407D97: newline (messager.c:43)
+==363==    by 0x407EE6: put (messager.c:54)
+==363==    by 0x40806E: messager (messager.c:77)
+==363==    by 0x403009: bb (bb.c:258)
+==363==    by 0x407C06: main (main.c:202)
+
+diff --git a/messager.c b/messager.c
+index 95cc410..964080b 100644
+--- a/messager.c
++++ b/messager.c
+@@ -40,8 +40,8 @@ static void newline()
+ 	start = 0;
+     cursor_y++, cursor_x = 0;
+     if (cursor_y >= aa_scrheight(context)) {
+-	memcpy(context->textbuffer + start * aa_scrwidth(context), context->textbuffer + (start + 1) * aa_scrwidth(context), aa_scrwidth(context) * (aa_scrheight(context) - start - 1));
+-	memcpy(context->attrbuffer + start * aa_scrwidth(context), context->attrbuffer + (start + 1) * aa_scrwidth(context), aa_scrwidth(context) * (aa_scrheight(context) - start - 1));
++	memmove(context->textbuffer + start * aa_scrwidth(context), context->textbuffer + (start + 1) * aa_scrwidth(context), aa_scrwidth(context) * (aa_scrheight(context) - start - 1));
++	memmove(context->attrbuffer + start * aa_scrwidth(context), context->attrbuffer + (start + 1) * aa_scrwidth(context), aa_scrwidth(context) * (aa_scrheight(context) - start - 1));
+ 	memset(context->textbuffer + aa_scrwidth(context) * (aa_scrheight(context) - 1), ' ', aa_scrwidth(context));
+ 	memset(context->attrbuffer + aa_scrwidth(context) * (aa_scrheight(context) - 1), 0, aa_scrwidth(context));
+ 	cursor_y--;

@@ -1,0 +1,32 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Set LC_NUMERIC to "C"
+Git-Branch: p/ply_numeric
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..2aeac7daa4785a9cf0b2480f663780
+
+Fixes reading of ascii float values in locales which use the comma as a
+float separator.
+
+ meshlab/src/meshlab/main.cpp |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/meshlab/src/meshlab/main.cpp b/meshlab/src/meshlab/main.cpp
+index 7058e31..e452e87 100644
+--- a/meshlab/src/meshlab/main.cpp
++++ b/meshlab/src/meshlab/main.cpp
+@@ -25,12 +25,16 @@
+ #include <QMessageBox>
+ #include "mainwindow.h"
+ 
++using namespace std;
++
+ int main(int argc, char *argv[])
+ {	 
+   MeshLabApplication app(argc, argv);
+   QLocale::setDefault(QLocale::C);
+   QCoreApplication::setOrganizationName("VCG");
+   QCoreApplication::setApplicationName("MeshLab");
++
++  std::setlocale(LC_NUMERIC, "C");
+ 	
+ 		if(argc>1)	
+ 		{

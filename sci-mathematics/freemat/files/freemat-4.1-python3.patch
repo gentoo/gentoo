@@ -1,0 +1,24 @@
+diff -Nur tools.orig/jitgen.py tools/jitgen.py
+--- tools.orig/jitgen.py	2012-04-13 00:25:18.000000000 +0100
++++ tools/jitgen.py	2012-04-13 00:25:40.000000000 +0100
+@@ -39,7 +39,7 @@
+ f.write("// \n\n// Here, each function gets prototyped.\n");
+ f.close()
+ 
+-os.path.walk(sys.argv[1], visit, '')
++os.walk(sys.argv[1], visit, '')
+ 
+ f = open(sys.argv[2],'a')
+ f.write("static const char* jit_scalar_list[] = {");
+diff -Nur tools.orig/siggen.py tools/siggen.py
+--- tools.orig/siggen.py	2012-04-13 00:25:18.000000000 +0100
++++ tools/siggen.py	2012-04-13 00:25:53.000000000 +0100
+@@ -81,7 +81,7 @@
+                 function_name = fsplit[1]
+                 function_internal_name = fsplit[2];
+                 if (function_name == '') or (function_internal_name == ''):
+-                    print 'MISSING Function Name: <%s> <%s> <%s>'%(fline,function_name,function_internal_name)
++                    print('MISSING Function Name: <%s> <%s> <%s>'%(fline,function_name,function_internal_name))
+                 inputs = iline.split()
+                 inputs = inputs[1:]
+                 outputs = oline.split()

@@ -1,0 +1,67 @@
+* Fix parallel build
+* Respect CC, CFLAGS, LDFLAGS #333969
+* don't strip binaries
+* fix install paths
+
+--- Makefile
++++ Makefile
+@@ -1,11 +1,8 @@
+ 
+ include Makefile.inc
+ 
+-all:
+-	(cd src && $(MAKE) $@)
+-
+-install:
+-	(cd src && $(MAKE) $@)
++all install:
++	$(MAKE) -C src $@
+ 
+ clean:
+ 	(cd src && $(MAKE) $@)
+--- src/Makefile
++++ src/Makefile
+@@ -5,8 +5,8 @@
+ CFLAGS=-g -Wall -Werror `pkg-config --cflags gtk+-2.0 gthread-2.0` -DGTK_DISABLE_DEPRECATED -DAPWAL_DEBUG
+ LDFLAGS=`pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
+ else
+-CFLAGS=-O2 `pkg-config --cflags gtk+-2.0 gthread-2.0`
+-LDFLAGS=-O2 `pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
++CPPFLAGS=`pkg-config --cflags gtk+-2.0 gthread-2.0`
++LIBS=`pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
+ endif
+ 
+ OBJS=main.o app.o launcher.o editor.o property.o \
+@@ -24,25 +24,24 @@
+ ifdef APWAL_DEBUG
+ all: checktraceformat apwal tags
+ apwal: $(OBJS)
+-	gcc -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ else
+ all: apwal
+ apwal: $(OBJS)
+-	gcc -o $@ $^ $(LDFLAGS)
+-	strip $@
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ endif
+ 
+ install: all
+-	cp apwal /usr/local/bin/
+-	ln -sf /usr/local/bin/apwal /usr/local/bin/apwal-editor
++	install -D -m 755 apwal $(DESTDIR)/usr/bin/apwal
++	ln -sf apwal $(DESTDIR)/usr/bin/apwal-editor
+ 
+ .c.o: $(INCS)
+-	gcc -c $< -o $*.o $(CFLAGS)
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $*.o
+ 
+ xmlrc.o: xmlrc.c $(INCS)
+-	gcc -c $< -o $*.o $(CFLAGS) `xml2-config --cflags`
++	$(CC) $(CPPFLAGS) $(CFLAGS) `xml2-config --cflags` -c $< -o $*.o
+ about.o: about.c $(INCS) ../Makefile.inc
+-	gcc -c $< -o $*.o $(CFLAGS) -DAPWAL_VERSION=\"$(VERS)\"
++	$(CC) $(CPPFLAGS) -DAPWAL_VERSION=\"$(VERS)\" $(CFLAGS) -c $< -o $*.o
+ 
+ gtkstuff.o: pixbufinline.inc
+ xmlrc.o: xmlrcinline.inc

@@ -1,0 +1,91 @@
+diff --git a/vmblock-only/linux/file.c b/vmblock-only/linux/file.c
+index d7ac1f6..5499169 100644
+--- a/vmblock-only/linux/file.c
++++ b/vmblock-only/linux/file.c
+@@ -38,46 +38,6 @@ typedef u64 inode_num_t;
+ typedef ino_t inode_num_t;
+ #endif
+ 
+-/* Specifically for our filldir_t callback */
+-typedef struct FilldirInfo {
+-   filldir_t filldir;
+-   void *dirent;
+-} FilldirInfo;
+-
+-
+-/*
+- *----------------------------------------------------------------------------
+- *
+- * Filldir --
+- *
+- *    Callback function for readdir that we use in place of the one provided.
+- *    This allows us to specify that each dentry is a symlink, but pass through
+- *    everything else to the original filldir function.
+- *
+- * Results:
+- *    Original filldir's return value.
+- *
+- * Side effects:
+- *    Directory information gets copied to user's buffer.
+- *
+- *----------------------------------------------------------------------------
+- */
+-
+-static int
+-Filldir(void *buf,              // IN: Dirent buffer passed from FileOpReaddir
+-        const char *name,       // IN: Dirent name
+-        int namelen,            // IN: len of dirent's name
+-        loff_t offset,          // IN: Offset
+-        inode_num_t ino,        // IN: Inode number of dirent
+-        unsigned int d_type)    // IN: Type of file
+-{
+-   FilldirInfo *info = buf;
+-
+-   /* Specify DT_LNK regardless */
+-   return info->filldir(info->dirent, name, namelen, offset, ino, DT_LNK);
+-}
+-
+-
+ /* File operations */
+ 
+ /*
+@@ -166,11 +126,10 @@ FileOpOpen(struct inode *inode,  // IN
+ 
+ static int
+ FileOpReaddir(struct file *file,  // IN
+-              void *dirent,       // IN
+-              filldir_t filldir)  // IN
++              struct dir_context *ctx)  // IN
+ {
+    int ret;
+-   FilldirInfo info;
++
+    struct file *actualFile;
+ 
+    if (!file) {
+@@ -184,12 +143,10 @@ FileOpReaddir(struct file *file,  // IN
+       return -EINVAL;
+    }
+ 
+-   info.filldir = filldir;
+-   info.dirent = dirent;
+-
+-   actualFile->f_pos = file->f_pos;
+-   ret = vfs_readdir(actualFile, Filldir, &info);
+-   file->f_pos = actualFile->f_pos;
++   /* Ricky Wong Yung Fei:
++    * Manipulation of pos is now handled internally by iterate_dir().
++    */
++   ret = iterate_dir(actualFile, ctx);
+ 
+    return ret;
+ }
+@@ -237,7 +194,7 @@ FileOpRelease(struct inode *inode, // IN
+ 
+ 
+ struct file_operations RootFileOps = {
+-   .readdir = FileOpReaddir,
++   .iterate = FileOpReaddir,
+    .open    = FileOpOpen,
+    .release = FileOpRelease,
+ };

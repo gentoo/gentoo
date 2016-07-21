@@ -1,0 +1,94 @@
+Fix build with recent ffmpeg releases.
+https://bugs.gentoo.org/show_bug.cgi?id=419453
+
+Index: mediastreamer-2.7.3/src/videoenc.c
+===================================================================
+--- mediastreamer-2.7.3.orig/src/videoenc.c
++++ mediastreamer-2.7.3/src/videoenc.c
+@@ -53,7 +53,6 @@ void ms_ffmpeg_log_callback(void* ptr, i
+ 
+ void ms_ffmpeg_check_init(){
+ 	if(!avcodec_initialized){
+-		avcodec_init();
+ 		avcodec_register_all();
+ 		avcodec_initialized=TRUE;
+ #ifdef ENABLE_LOG_FFMPEG
+@@ -107,6 +106,7 @@ typedef struct EncState{
+ 	uint32_t framenum;
+ 	VideoStarter starter;
+ 	bool_t req_vfu;
++	AVDictionary * ff_opts;
+ }EncState;
+ 
+ static int enc_set_fps(MSFilter *f, void *arg){
+@@ -214,6 +214,7 @@ static void enc_init(MSFilter *f, enum C
+ 	s->req_vfu=FALSE;
+ 	s->framenum=0;
+ 	s->av_context.codec=NULL;
++	s->ff_opts = NULL;
+ }
+ 
+ static void enc_h263_init(MSFilter *f){
+@@ -300,9 +301,9 @@ static void prepare_h263(EncState *s){
+ 	if (s->profile==0){
+ 		s->codec=CODEC_ID_H263;
+ 	}else{
+-		c->flags|=CODEC_FLAG_H263P_UMV;
++		av_dict_set(&(s->ff_opts), "umv", "1", 0);
+ 		c->flags|=CODEC_FLAG_AC_PRED;
+-		c->flags|=CODEC_FLAG_H263P_SLICE_STRUCT;
++		av_dict_set(&(s->ff_opts), "structured_slices", "1", 0);
+ 		/*
+ 		c->flags|=CODEC_FLAG_OBMC;
+ 		c->flags|=CODEC_FLAG_AC_PRED;
+@@ -342,9 +343,9 @@ static void enc_preprocess(MSFilter *f){
+ 		ms_error("could not find encoder for codec id %i",s->codec);
+ 		return;
+ 	}
+-	error=avcodec_open(&s->av_context, s->av_codec);
++	error=avcodec_open2(&s->av_context, s->av_codec, &(s->ff_opts));
+ 	if (error!=0) {
+-		ms_error("avcodec_open() failed: %i",error);
++		ms_error("avcodec_open2() failed: %i",error);
+ 		return;
+ 	}
+ 	video_starter_init(&s->starter);
+@@ -372,7 +373,7 @@ static void add_rfc2190_header(mblk_t **
+ 	// assume video size is CIF or QCIF
+ 	if (context->width == 352 && context->height == 288) header->b_wptr[1] = 0x60;
+ 	else header->b_wptr[1] = 0x40;
+-	if (context->coded_frame->pict_type != FF_I_TYPE) header->b_wptr[1] |= 0x10;
++	if (context->coded_frame->pict_type != AV_PICTURE_TYPE_I) header->b_wptr[1] |= 0x10;
+ 	header->b_wptr += 4;
+ 	header->b_cont = *packet;
+ 	*packet = header;
+@@ -779,7 +780,7 @@ static void process_frame(MSFilter *f, m
+ 		s->req_vfu=TRUE;
+ 	}
+ 	if (s->req_vfu){
+-		pict.pict_type=FF_I_TYPE;
++		pict.pict_type=AV_PICTURE_TYPE_I;
+ 		s->req_vfu=FALSE;
+ 	}
+ 	comp_buf->b_rptr=comp_buf->b_wptr=comp_buf->b_datap->db_base;
+@@ -799,7 +800,7 @@ static void process_frame(MSFilter *f, m
+ 		if (s->framenum==1){
+ 			video_starter_first_frame (&s->starter,f->ticker->time);
+ 		}
+-		if (c->coded_frame->pict_type==FF_I_TYPE){
++		if (c->coded_frame->pict_type==AV_PICTURE_TYPE_I){
+ 			ms_message("Emitting I-frame");
+ 		}
+ 		comp_buf->b_wptr+=error;
+Index: mediastreamer-2.7.3/src/h264dec.c
+===================================================================
+--- mediastreamer-2.7.3.orig/src/h264dec.c
++++ mediastreamer-2.7.3/src/h264dec.c
+@@ -46,7 +46,6 @@ typedef struct _DecData{
+ static void ffmpeg_init(){
+ 	static bool_t done=FALSE;
+ 	if (!done){
+-		avcodec_init();
+ 		avcodec_register_all();
+ 		done=TRUE;
+ 	}

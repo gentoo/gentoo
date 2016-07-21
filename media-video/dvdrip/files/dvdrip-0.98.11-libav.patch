@@ -1,0 +1,29 @@
+Description: Port from ffmpeg to avconv.
+Author: Dmitrijs Ledkovs <xnox@ubuntu.com>
+
+--- dvdrip-0.98.11.orig/lib/Video/DVDRip/Depend.pm
++++ dvdrip-0.98.11/lib/Video/DVDRip/Depend.pm
+@@ -114,10 +114,10 @@ my %TOOLS = (
+     },
+     ffmpeg => {
+         order       => ++$ORDER,
+-        command     => "ffmpeg",
++        command     => "avconv",
+         comment     => __ "FFmpeg video converter command line program",
+         optional    => 1,
+-        version_cmd => "ffmpeg -version",
++        version_cmd => "avconv -version",
+         get_version => sub {
+             my ($cmd) = @_;
+             qx[$cmd 2>&1] =~ /version ([^\s]+)/i;
+--- dvdrip-0.98.11.orig/lib/Video/DVDRip/Title.pm
++++ dvdrip-0.98.11/lib/Video/DVDRip/Title.pm
+@@ -3184,7 +3184,7 @@ sub get_take_snapshot_command {
+         . "tcdemux -s 0x80 -x mpeg2 -S $grab_options->{S} "
+         . "-M 0 -d 0 -P /dev/null | "
+         . "tcextract -t vob -a 0 -x mpeg2 -d 0 | "
+-        . "ffmpeg -r $frame_rate -i - -an -r 1 -ss '$start' -vframes 1 snapshot%03d.png ";
++        . "avconv -r $frame_rate -i - -an -r 1 -ss '$start' -vframes 1 snapshot%03d.png ";
+ 
+     $command .= " && "
+         . "execflow convert"

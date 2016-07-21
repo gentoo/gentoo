@@ -1,0 +1,53 @@
+From 5a52ee4b5cd152fa4ccd1c1f938ce2eba652af52 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 14 Dec 2015 23:59:17 +0000
+Subject: [PATCH] Add %esp to list of clobbered registers
+
+GCC assumes that it can combine stacks from
+outer
+    grub_stage2()
+and inner
+    trampoline doit()
+functions (optimisation -fcombine-stack-adjustments).
+
+But doit() function clobbers %esp in inline
+assebly statement as:
+
+  asm volatile ("movl %%esp, %0\n\tmovl %1, %%esp\n"
+               : "=&r" (realstack) : "r" (simstack));
+
+which tricks gcc into computing invalid local variable
+offsets from current %esp value.
+
+Fix by hinting gcc about %esp change in clobber list.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ grub/asmstub.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/grub/asmstub.c b/grub/asmstub.c
+index 6354806..44b056f 100644
+--- a/grub/asmstub.c
++++ b/grub/asmstub.c
+@@ -174,7 +174,7 @@ grub_stage2 (void)
+     {
+       /* Make sure our stack lives in the simulated memory area. */
+       asm volatile ("movl %%esp, %0\n\tmovl %1, %%esp\n"
+-		    : "=&r" (realstack) : "r" (simstack));
++		    : "=&r" (realstack) : "r" (simstack) : "%esp");
+       
+       /* Do a setjmp here for the stop command.  */
+       if (! setjmp (env_for_exit))
+@@ -191,7 +191,7 @@ grub_stage2 (void)
+ 	}
+       
+       /* Replace our stack before we use any local variables. */
+-      asm volatile ("movl %0, %%esp\n" : : "r" (realstack));
++      asm volatile ("movl %0, %%esp\n" : : "r" (realstack) : "%esp");
+     }
+ 
+   assert (grub_scratch_mem == 0);
+-- 
+2.6.3
+

@@ -1,0 +1,10 @@
+# If not adding the device, go away
+ACTION!="add", GOTO="pcscd_scl011-bin_rules_end"
+SUBSYSTEM!="usb", GOTO="pcscd_scl011-bin_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="pcscd_scl011-bin_rules_end"
+
+# Tested on scl011
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="5292", ENV{PCSCD}="1"
+
+# All done
+LABEL="pcscd_scl011-bin_rules_end"

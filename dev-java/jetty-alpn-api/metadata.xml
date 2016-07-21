@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">eclipse/jetty.alpn.api</remote-id>
+	</upstream>
+    <longdescription>The Jetty project provides an implementation of the TLS extension for ALPN for OpenJDK 7 and OpenJDK 8. ALPN allows the application layer to negotiate which protocol to use over the secure connection.
+
+Any protocol can be negotiated by ALPN within a TLS connection. The protocols that are most commonly negotiated are HTTP/2 (for browsers that support it) and, historically, SPDY. The ALPN implementation is therefore not HTTP/2 or SPDY specific in any way. Jetty's ALPN implementation, although hosted under the umbrella of the Jetty project, is independent of Jetty (the Servlet Container); you can use the ALPN implementation in any other Java network server.</longdescription>
+</pkgmetadata>

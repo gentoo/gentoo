@@ -1,0 +1,28 @@
+--- jython-2.7-b1-sources/build.xml
++++ jython-2.7-b1-sources/build.xml
+@@ -508,6 +509,7 @@
+         </javac>
+ 
+         <!-- java files used by tests -->
++<!--
+         <javac srcdir="${test.source.dir}"
+                destdir="${compile.dir}"
+                target="${jdk.target.version}"
+@@ -529,6 +531,7 @@
+             <compilerarg line="${javac.Xlint}"/>
+             <classpath refid="test.classpath" />
+         </javac>
++-->
+         <copy file="${source.dir}/org/python/modules/ucnhash.dat"
+               todir="${compile.dir}/org/python/modules"
+               preservelastmodified="true" />
+@@ -826,9 +829,6 @@
+ 
+     <target name="copy-javalib" unless="full-build">
+         <copy todir="${dist.dir}/javalib">
+-            <fileset dir="${jython.base.dir}/extlibs">
+-                <exclude name="profile.properties"/>
+-            </fileset>
+             <fileset dir="${work.dir}/build">
+                 <include name="*.jar"/>
+                 <include name="*.properties"/>

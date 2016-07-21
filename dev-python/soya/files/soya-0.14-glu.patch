@@ -1,0 +1,13 @@
+Index: setup.py
+===================================================================
+--- setup.py	(revision 550)
++++ setup.py	(working copy)
+@@ -130,7 +130,7 @@
+ if sys.platform[:3] == "win":
+ 	LIBS = ["m", "glew32", "SDL", "SDL_mixer", "freetype", "cal3d", "stdc++", "ode"]
+ else:
+-	LIBS = ["m", "GLEW", "SDL", "freetype", "cal3d", "stdc++","ode"]
++	LIBS = ["m", "GLEW", "GLU" , "SDL", "freetype", "cal3d", "stdc++","ode"]
+ 	FRAMEWORKS=[]
+ 
+ SOYA_PYREX_SOURCES  = ["_soya.pyx", "matrix.c", "chunk.c"]

@@ -1,0 +1,8 @@
+You can define parameters through shell variables OR use config files
+Examples of config files installed in /usr/share/ansible/examples
+You have to create ansible hosts file!
+More info on http://docs.ansible.com/intro_getting_started.html
+
+Some optional dependencies, you might want to install:
+dev-python/keyczar - needed to support accelerated mode
+dev-python/paramiko - alternative SSH backend"

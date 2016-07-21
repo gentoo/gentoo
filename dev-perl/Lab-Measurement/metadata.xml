@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
+        <maintainer type="project">
+                <email>sci@gentoo.org</email>
+                <name>Gentoo Science Project</name>
+        </maintainer>
+        <use>
+                <flag name="xpression">Install the Xpression measurement framework</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpan">Lab-Measurement</remote-id>
+		<remote-id type="cpan-module">Lab::Bus</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::DEBUG</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::IsoBus</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::LinuxGPIB</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::MODBUS_RS232</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::RS232</remote-id>
+		<remote-id type="cpan-module">Lab::Bus::VISA</remote-id>
+		<remote-id type="cpan-module">Lab::Connection</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::DEBUG</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::GPIB</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::IsoBus</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::LinuxGPIB</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::MODBUS_RS232</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::VISA</remote-id>
+		<remote-id type="cpan-module">Lab::Connection::VISA_GPIB</remote-id>
+		<remote-id type="cpan-module">Lab::Data::Meta</remote-id>
+		<remote-id type="cpan-module">Lab::Data::PDL</remote-id>
+		<remote-id type="cpan-module">Lab::Data::Plotter</remote-id>
+		<remote-id type="cpan-module">Lab::Data::Writer</remote-id>
+		<remote-id type="cpan-module">Lab::Data::XMLtree</remote-id>
+		<remote-id type="cpan-module">Lab::Exception</remote-id>
+		<remote-id type="cpan-module">Lab::Exception::Base</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::DummySource</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::HP34401A</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::HP3458A</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::HP83732A</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::ILM</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::IPS12010</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::ITC503</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::MagnetSupply</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::Multimeter</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::SR830</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::Source</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::TRMC2</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::TemperatureControl::TLK43</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::Yokogawa7651</remote-id>
+		<remote-id type="cpan-module">Lab::Instrument::YokogawaGS200</remote-id>
+		<remote-id type="cpan-module">Lab::Measurement</remote-id>
+		<remote-id type="cpan-module">Lab::Measurement::Ladediagramm</remote-id>
+	</upstream>
+</pkgmetadata>

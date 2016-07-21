@@ -1,0 +1,28 @@
+--- VDrift.orig/SConstruct
++++ VDrift/SConstruct
+@@ -44,6 +44,7 @@
+         LIBPATH = ['.', '#lib', LOCALBASE + '/lib'],
+         LINKFLAGS = ['-pthread','-lintl'],
+         options = opts)
++    env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+     check_headers = ['GL/gl.h', 'GL/glu.h', 'SDL/SDL.h', 'SDL/SDL_image.h', 'SDL/SDL_rotozoom.h', 'vorbis/vorbisfile.h', 'GL/glew.h', 'bullet/btBulletCollisionCommon.h']
+     check_libs = []
+     if 'CC' in os.environ:
+@@ -380,7 +381,7 @@
+ if env['release']:
+     # release build, debugging off, optimizations on
+     if (sys.platform != 'freebsd6') and (sys.platform != 'freebsd7') and (sys.platform != 'freebsd8') and (sys.platform != 'freebsd9') and (sys.platform != 'win32') and (sys.platform != 'cygwin'):
+-        env.Append(CCFLAGS = ['-O1', '-pipe'])
++        env.Append(CCFLAGS = ['-pipe'])
+ else:
+     # debug build, lots of debugging, no optimizations
+     env.Append(CCFLAGS = ['-g3'])
+@@ -399,7 +400,6 @@
+     env.Append(CCFLAGS = ['-pg'])
+     env.Append(LINKFLAGS = ['-pg'])
+     env.Append(CCFLAGS = ['-g3'])
+-    env.Append(CCFLAGS = ['-O1'])
+ 
+ #------------------------------------#
+ # compile-time efficiency assessment #
+

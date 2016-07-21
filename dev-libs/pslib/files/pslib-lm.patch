@@ -1,0 +1,11 @@
+--- a/configure.in	2007-10-30 02:38:30.000000000 -0500
++++ b/configure.in	2009-01-21 18:55:37.000000000 -0600
+@@ -92,6 +92,8 @@
+ AC_SUBST(LIBHNJ_CFLAGS)
+ AC_SUBST(LIBHNJ_LIBS)
+ 
++AC_CHECK_LIB([m], [pow])
++
+ PNG_PREFIX=no
+ AC_ARG_WITH(png, [  --with-png=DIR          Path to png library (/usr)])
+ case "${withval}" in

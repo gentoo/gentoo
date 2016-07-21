@@ -1,0 +1,35 @@
+From 6f3a168d985d37af42e747412b5d6d427b4d1ab8 Mon Sep 17 00:00:00 2001
+From: Will Thompson <will.thompson@collabora.co.uk>
+Date: Wed, 5 Nov 2008 23:19:42 +0100
+Subject: [PATCH] Don't append the 'id'-tag in opening stream headers. [#30]
+
+According to RFC 3920 (section 4.4) the id attribute SHOULD NOT be added
+by the initiating party.
+
+[#30 responsible:Hallski state:resolved milestone:Loudmouth 1.4.4 tagged:committed]
+---
+ loudmouth/lm-message.c |    8 +++++---
+ 1 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/loudmouth/lm-message.c b/loudmouth/lm-message.c
+index a7d1b46..e2fdcc2 100644
+--- a/loudmouth/lm-message.c
++++ b/loudmouth/lm-message.c
+@@ -223,9 +223,11 @@ lm_message_new (const gchar *to, LmMessageType type)
+ 	
+ 	m->node = _lm_message_node_new (_lm_message_type_to_string (type));
+ 
+-	id = _lm_utils_generate_id ();
+-	lm_message_node_set_attribute (m->node, "id", id);
+-	g_free (id);
++	if (type != LM_MESSAGE_TYPE_STREAM) {
++		id = _lm_utils_generate_id ();
++		lm_message_node_set_attribute (m->node, "id", id);
++		g_free (id);
++	}
+ 	
+ 	if (to) {
+ 		lm_message_node_set_attribute (m->node, "to", to);
+-- 
+1.7.7.1
+

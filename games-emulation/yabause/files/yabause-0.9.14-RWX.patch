@@ -1,0 +1,24 @@
+--- yabause-0.9.13.orig/src/sh2_dynarec/linkage_x64.s
++++ yabause-0.9.13/src/sh2_dynarec/linkage_x64.s
+@@ -747,3 +747,11 @@
+ 	ret
+ 	/* Set breakpoint here for debugging */
+ 	.size	breakpoint, .-breakpoint
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+--- yabause-0.9.13.orig/src/sh2_dynarec/linkage_x86.s
++++ yabause-0.9.13/src/sh2_dynarec/linkage_x86.s
+@@ -743,3 +743,7 @@
+ 	ret
+ 	/* Set breakpoint here for debugging */
+ 	.size	breakpoint, .-breakpoint
++
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

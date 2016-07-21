@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">HTML-Tree</remote-id>
+    <remote-id type="cpan-module">HTML::AsSubs</remote-id>
+    <remote-id type="cpan-module">HTML::Element</remote-id>
+    <remote-id type="cpan-module">HTML::Element::traverse</remote-id>
+    <remote-id type="cpan-module">HTML::Parse</remote-id>
+    <remote-id type="cpan-module">HTML::Tree</remote-id>
+    <remote-id type="cpan-module">HTML::TreeBuilder</remote-id>
+  </upstream>
+</pkgmetadata>

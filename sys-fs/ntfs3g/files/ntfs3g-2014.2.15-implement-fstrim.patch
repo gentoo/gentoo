@@ -1,0 +1,648 @@
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/configure.ac ntfs-3g_ntfsprogs-2014.2.15/configure.ac
+--- ntfs-3g_ntfsprogs-2014.2.15.old/configure.ac	2014-02-15 14:07:52.000000000 +0000
++++ ntfs-3g_ntfsprogs-2014.2.15/configure.ac	2014-07-31 13:51:24.425065808 +0100
+@@ -463,7 +463,8 @@
+ 	regex.h endian.h byteswap.h sys/byteorder.h sys/disk.h sys/endian.h \
+ 	sys/param.h sys/ioctl.h sys/mkdev.h sys/mount.h sys/stat.h sys/types.h \
+ 	sys/vfs.h sys/statvfs.h sys/sysmacros.h linux/major.h linux/fd.h \
+-	linux/hdreg.h machine/endian.h windows.h syslog.h pwd.h malloc.h])
++	linux/fs.h inttypes.h linux/hdreg.h \
++	machine/endian.h windows.h syslog.h pwd.h malloc.h])
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_HEADER_STDBOOL
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/include/ntfs-3g/ioctl.h ntfs-3g_ntfsprogs-2014.2.15/include/ntfs-3g/ioctl.h
+--- ntfs-3g_ntfsprogs-2014.2.15.old/include/ntfs-3g/ioctl.h	1970-01-01 01:00:00.000000000 +0100
++++ ntfs-3g_ntfsprogs-2014.2.15/include/ntfs-3g/ioctl.h	2014-07-31 13:51:24.426065810 +0100
+@@ -0,0 +1,30 @@
++/*
++ *
++ * Copyright (c) 2014 Jean-Pierre Andre
++ *
++ */
++
++/*
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program (in the main directory of the NTFS-3G
++ * distribution in the file COPYING); if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#ifndef IOCTL_H
++#define IOCTL_H
++
++int ntfs_ioctl(ntfs_inode *ni, int cmd, void *arg,
++                        unsigned int flags, void *data);
++
++#endif /* IOCTL_H */
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/include/ntfs-3g/volume.h ntfs-3g_ntfsprogs-2014.2.15/include/ntfs-3g/volume.h
+--- ntfs-3g_ntfsprogs-2014.2.15.old/include/ntfs-3g/volume.h	2014-02-15 14:07:52.000000000 +0000
++++ ntfs-3g_ntfsprogs-2014.2.15/include/ntfs-3g/volume.h	2014-07-31 13:51:24.426065810 +0100
+@@ -36,9 +36,7 @@
+ #ifdef HAVE_SYS_PARAM_H
+ #include <sys/param.h>
+ #endif
+-#ifdef HAVE_SYS_MOUNT_H
+-#include <sys/mount.h>
+-#endif
++	/* Do not #include <sys/mount.h> here : conflicts with <linux/fs.h> */
+ #ifdef HAVE_MNTENT_H
+ #include <mntent.h>
+ #endif
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/libntfs-3g/ioctl.c ntfs-3g_ntfsprogs-2014.2.15/libntfs-3g/ioctl.c
+--- ntfs-3g_ntfsprogs-2014.2.15.old/libntfs-3g/ioctl.c	1970-01-01 01:00:00.000000000 +0100
++++ ntfs-3g_ntfsprogs-2014.2.15/libntfs-3g/ioctl.c	2014-07-31 13:51:24.427065813 +0100
+@@ -0,0 +1,382 @@
++/**
++ * ioctl.c - Processing of ioctls
++ *
++ *      This module is part of ntfs-3g library
++ *
++ * Copyright (c) 2014 Jean-Pierre Andre
++ * Copyright (c) 2014 Red Hat, Inc.
++ *
++ * This program/include file is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as published
++ * by the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program/include file is distributed in the hope that it will be
++ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty
++ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program (in the main directory of the NTFS-3G
++ * distribution in the file COPYING); if not, write to the Free Software
++ * Foundation,Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#include "config.h"
++
++#ifdef HAVE_STDIO_H
++#include <stdio.h>
++#endif
++#ifdef HAVE_INTTYPES_H
++#include <inttypes.h>
++#endif
++#ifdef HAVE_STRING_H
++#include <string.h>
++#endif
++#ifdef HAVE_ERRNO_H
++#include <errno.h>
++#endif
++#ifdef HAVE_FCNTL_H
++#include <fcntl.h>
++#endif
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++#ifdef HAVE_STDLIB_H
++#include <stdlib.h>
++#endif
++#ifdef HAVE_LIMITS_H
++#include <limits.h>
++#endif
++#include <syslog.h>
++
++#ifdef HAVE_SETXATTR
++#include <sys/xattr.h>
++#endif
++
++#ifdef HAVE_SYS_TYPES_H
++#include <sys/types.h>
++#endif
++
++#ifdef HAVE_SYS_STAT_H
++#include <sys/stat.h>
++#endif
++
++#ifdef HAVE_LINUX_FS_H
++#include <linux/fs.h>
++#endif
++
++#include <dirent.h>
++
++#include "compat.h"
++#include "debug.h"
++#include "bitmap.h"
++#include "attrib.h"
++#include "inode.h"
++#include "layout.h"
++#include "volume.h"
++#include "index.h"
++#include "logging.h"
++#include "ntfstime.h"
++#include "unistr.h"
++#include "dir.h"
++#include "security.h"
++#include "ioctl.h"
++#include "misc.h"
++
++#if defined(FITRIM) && defined(BLKDISCARD)
++
++/* Issue a TRIM request to the underlying device for the given clusters. */
++static int fstrim_clusters(ntfs_volume *vol, LCN lcn, s64 length)
++{
++	struct ntfs_device *dev = vol->dev;
++	uint64_t range[2];
++
++	ntfs_log_debug("fstrim_clusters: %lld length %lld\n",
++		(long long) lcn, (long long) length);
++
++	range[0] = lcn << vol->cluster_size_bits;
++	range[1] = length << vol->cluster_size_bits;
++
++	if (dev->d_ops->ioctl(dev, BLKDISCARD, range) == -1) {
++		ntfs_log_debug("fstrim_one_cluster: ioctl failed: %m\n");
++		return -errno;
++	}
++	return 0;
++}
++
++static int read_line(const char *path, char *line, size_t max_bytes)
++{
++	FILE *fp;
++
++	fp = fopen(path, "r");
++	if (fp == NULL)
++		return -errno;
++	if (fgets(line, max_bytes, fp) == NULL) {
++		int ret = -EIO; /* fgets doesn't set errno */
++		fclose(fp);
++		return ret;
++	}
++	fclose (fp);
++	return 0;
++}
++
++static int read_u64(const char *path, u64 *n)
++{
++	char line[64];
++	int ret;
++
++	ret = read_line(path, line, sizeof line);
++	if (ret)
++		return ret;
++	if (sscanf(line, "%" SCNu64, n) != 1)
++		return -EINVAL;
++	return 0;
++}
++
++/* Find discard limits for current backing device.
++ * XXX Kernel makes this a pain in the neck.
++ */
++static int fstrim_limits(ntfs_volume *vol, u64 *discard_granularity,
++			u64 *discard_max_bytes)
++{
++	struct stat statbuf;
++	DIR *dir;
++	struct dirent *d;
++	char path[80];
++	char line[64];
++	char dev[64];
++	int ret;
++
++	/* Stat the backing device.  Caller has ensured it is a block device. */
++	if (stat(vol->dev->d_name, &statbuf) == -1) {
++		ntfs_log_debug("fstrim_limits: could not stat %s\n",
++			vol->dev->d_name);
++		return -errno;
++	}
++
++	/* Now look for a /sys/block/<dev>/dev file which contains
++	 * "major:minor\n".
++	 */
++	snprintf(dev, sizeof dev, "%d:%d\n",
++		major(statbuf.st_rdev), minor(statbuf.st_rdev));
++
++	dir = opendir("/sys/block");
++	if (dir == NULL) {
++		ntfs_log_debug("fstrim_limits: could not open /sys/block\n");
++		return -errno;
++	}
++	for (;;) {
++		errno = 0;
++		d = readdir(dir);
++		if (!d) break;
++
++		snprintf(path, sizeof path, "/sys/block/%s/dev", d->d_name);
++		ret = read_line(path, line, sizeof line);
++		if (ret)
++			continue;
++		if (strcmp(line, dev) == 0)
++			goto found;
++	}
++
++	/* Check readdir didn't fail. */
++	if (errno != 0) {
++		ret = -errno;
++		ntfs_log_debug("fstrim_limits: readdir failed\n");
++		goto out;
++	}
++
++	/* If we reach here then we didn't find the device.  This is
++	 * not an error, but set discard_max_bytes = 0 to indicate
++	 * that discard is not available.
++	 */
++	*discard_granularity = 0;
++	*discard_max_bytes = 0;
++	ntfs_log_debug("fstrim_limits: /sys/block entry corresponding to device %s not found\n",
++		vol->dev->d_name);
++	ret = 0;
++	goto out;
++
++found:
++	/* Found the device at /sys/block/ + d->d_name */
++	snprintf (path, sizeof path,
++		"/sys/block/%s/queue/discard_granularity",
++		d->d_name);
++	ret = read_u64(path, discard_granularity);
++	if (ret) {
++		ntfs_log_debug("fstrim_limits: could not read %s\n", path);
++		goto out;
++	}
++
++	snprintf (path, sizeof path,
++		"/sys/block/%s/queue/discard_max_bytes",
++		d->d_name);
++	ret = read_u64(path, discard_max_bytes);
++	if (ret) {
++		ntfs_log_debug("fstrim_limits: could not read %s\n", path);
++		goto out;
++	}
++
++	ntfs_log_debug("fstrim_limits: device %s discard granularity = %llu max_bytes = %llu\n",
++		d->d_name,
++		(unsigned long long) *discard_granularity,
++		(unsigned long long) *discard_max_bytes);
++
++	ret = 0;
++out:
++	if (closedir (dir) == -1) {
++		ret = -errno;
++		ntfs_log_debug("fstrim_limits: closedir failed\n");
++		return ret;
++	}
++
++	return ret;
++}
++
++#define FSTRIM_BUFSIZ 4096
++
++/* Trim the filesystem.
++ *
++ * Free blocks between 'start' and 'start+len-1' (both byte offsets)
++ * are found and TRIM requests are sent to the block device.  'minlen'
++ * is the minimum continguous free range to discard.
++ */
++static int fstrim(ntfs_volume *vol, void *data)
++{
++	struct fstrim_range *range = data;
++	u64 start = range->start;
++	u64 len = range->len;
++	u64 minlen = range->minlen;
++	u64 discard_granularity, discard_max_bytes;
++	u8 *buf = NULL;
++	LCN start_buf;
++	int ret;
++
++	ntfs_log_debug("fstrim: start=%llu len=%llu minlen=%llu\n",
++		(unsigned long long) start,
++		(unsigned long long) len,
++		(unsigned long long) minlen);
++
++	/* Fail if user tries to use the fstrim -o/-l/-m options.
++	 * XXX We could fix these limitations in future.
++	 */
++	if (start != 0 || len != (uint64_t)-1) {
++		ntfs_log_debug("fstrim: setting start or length is not supported\n");
++		return -EINVAL;
++	}
++	if (minlen > vol->cluster_size) {
++		ntfs_log_debug("fstrim: minlen > cluster size is not supported\n");
++		return -EINVAL;
++	}
++
++	/* Only block devices are supported.  It would be possible to
++	 * support backing files (ie. without using loop) but the
++	 * ioctls used to punch holes in files are completely
++	 * different.
++	 */
++	if (!NDevBlock(vol->dev)) {
++		ntfs_log_debug("fstrim: not supported for non-block-device\n");
++		return -EOPNOTSUPP;
++	}
++
++	ret = fstrim_limits(vol, &discard_granularity, &discard_max_bytes);
++	if (ret)
++		return ret;
++	if (discard_granularity > vol->cluster_size) {
++		ntfs_log_debug("fstrim: discard granularity of backing device is larger than cluster size\n");
++		return -EOPNOTSUPP;
++	}
++	if (discard_max_bytes == 0) {
++		ntfs_log_debug("fstrim: backing device does not support discard (discard_max_bytes == 0)\n");
++		return -EOPNOTSUPP;
++	}
++
++	/* Sync the device before doing anything. */
++	ret = ntfs_device_sync(vol->dev);
++	if (ret)
++		return ret;
++
++	/* Read through the bitmap. */
++	buf = ntfs_malloc(FSTRIM_BUFSIZ);
++	if (buf == NULL)
++		return -errno;
++	for (start_buf = 0; start_buf < vol->nr_clusters;
++	     start_buf += FSTRIM_BUFSIZ * 8) {
++		s64 count;
++		s64 br;
++		LCN end_buf, start_lcn;
++
++		/* start_buf is LCN of first cluster in the current buffer.
++		 * end_buf is LCN of last cluster + 1 in the current buffer.
++		 */
++		end_buf = start_buf + FSTRIM_BUFSIZ*8;
++		if (end_buf > vol->nr_clusters)
++			end_buf = vol->nr_clusters;
++		count = (end_buf - start_buf) / 8;
++
++		br = ntfs_attr_pread(vol->lcnbmp_na, start_buf/8, count, buf);
++		if (br != count) {
++			if (br >= 0)
++				ret = -EIO;
++			else
++				ret = -errno;
++			goto free_out;
++		}
++
++		/* Trim the clusters in large as possible blocks, but
++		 * not larger than discard_max_bytes.
++		 */
++		for (start_lcn = start_buf; start_lcn < end_buf; ++start_lcn) {
++			if (!ntfs_bit_get(buf, start_lcn-start_buf)) {
++				LCN end_lcn;
++
++				/* Cluster 'start_lcn' is not in use,
++				 * find end of this run.
++				 */
++				end_lcn = start_lcn+1;
++				while (end_lcn < end_buf &&
++					(u64) (end_lcn-start_lcn) << vol->cluster_size_bits
++					  < discard_max_bytes &&
++					!ntfs_bit_get(buf, end_lcn-start_buf))
++					end_lcn++;
++
++				ret = fstrim_clusters(vol,
++						start_lcn, end_lcn-start_lcn);
++				if (ret)
++					goto free_out;
++
++				start_lcn = end_lcn-1;
++			}
++		}
++	}
++
++	ret = 0;
++free_out:
++	free(buf);
++	return ret;
++}
++
++#endif /* FITRIM && BLKDISCARD */
++
++int ntfs_ioctl(ntfs_inode *ni, int cmd, void *arg __attribute__((unused)),
++			unsigned int flags __attribute__((unused)), void *data)
++{
++	int ret = 0;
++
++	switch (cmd) {
++#if defined(FITRIM) && defined(BLKDISCARD)
++	case FITRIM:
++		if (!ni || !data)
++			ret = -EINVAL;
++		else
++			ret = fstrim(ni->vol, data);
++		break;
++#else
++#warning FITRIM or BLKDISCARD not defined
++#endif
++	default :
++		ret = -EINVAL;
++		break;
++	}
++	return (ret);
++}
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/libntfs-3g/Makefile.am ntfs-3g_ntfsprogs-2014.2.15/libntfs-3g/Makefile.am
+--- ntfs-3g_ntfsprogs-2014.2.15.old/libntfs-3g/Makefile.am	2014-02-15 14:07:52.000000000 +0000
++++ ntfs-3g_ntfsprogs-2014.2.15/libntfs-3g/Makefile.am	2014-07-31 13:51:24.426065810 +0100
+@@ -30,6 +30,7 @@
+ 	efs.c 		\
+ 	index.c 	\
+ 	inode.c 	\
++	ioctl.c 	\
+ 	lcnalloc.c 	\
+ 	logfile.c 	\
+ 	logging.c 	\
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/src/lowntfs-3g.c ntfs-3g_ntfsprogs-2014.2.15/src/lowntfs-3g.c
+--- ntfs-3g_ntfsprogs-2014.2.15.old/src/lowntfs-3g.c	2014-02-15 14:07:52.000000000 +0000
++++ ntfs-3g_ntfsprogs-2014.2.15/src/lowntfs-3g.c	2014-07-31 13:51:24.429065815 +0100
+@@ -81,7 +81,12 @@
+ #include <sys/dirent.h>
+ #endif /* defined(__APPLE__) || defined(__DARWIN__) */
+ 
++#ifdef HAVE_LINUX_FS_H
++#include <linux/fs.h>
++#endif
++
+ #include "compat.h"
++#include "bitmap.h"
+ #include "attrib.h"
+ #include "inode.h"
+ #include "volume.h"
+@@ -97,6 +102,7 @@
+ #include "logging.h"
+ #include "xattrs.h"
+ #include "misc.h"
++#include "ioctl.h"
+ 
+ #include "ntfs-3g_common.h"
+ 
+@@ -564,8 +570,6 @@
+ }
+ #endif /* defined(__APPLE__) || defined(__DARWIN__) */
+ 
+-#if defined(FUSE_CAP_DONT_MASK) || defined(FUSE_CAP_BIG_WRITES) \
+-		|| (defined(__APPLE__) || defined(__DARWIN__))
+ static void ntfs_init(void *userdata __attribute__((unused)),
+ 			struct fuse_conn_info *conn)
+ {
+@@ -582,8 +586,8 @@
+ 			>= SAFE_CAPACITY_FOR_BIG_WRITES))
+ 		conn->want |= FUSE_CAP_BIG_WRITES;
+ #endif
++	conn->want |= FUSE_CAP_IOCTL_DIR;
+ }
+-#endif /* defined(FUSE_CAP_DONT_MASK) || (defined(__APPLE__) || defined(__DARWIN__)) */
+ 
+ static int ntfs_fuse_getstat(struct SECURITY_CONTEXT *scx,
+ 				ntfs_inode *ni, struct stat *stbuf)
+@@ -2573,6 +2577,48 @@
+ 		fuse_reply_err(req, 0);
+ }
+ 
++static void ntfs_fuse_ioctl(fuse_req_t req __attribute__((unused)),
++			fuse_ino_t ino __attribute__((unused)),
++			int cmd, void *arg,
++			struct fuse_file_info *fi __attribute__((unused)),
++			unsigned flags, const void *data,
++			size_t in_bufsz, size_t out_bufsz)
++{
++	ntfs_inode *ni;
++	char *buf = (char*)NULL;
++	int bufsz;
++	int ret = 0;
++
++	if (flags & FUSE_IOCTL_COMPAT) {
++		ret = -ENOSYS;
++	} else {
++		ni = ntfs_inode_open(ctx->vol, INODE(ino));
++		if (!ni) {
++			ret = -errno;
++			goto fail;
++		}
++		bufsz = (in_bufsz > out_bufsz ? in_bufsz : out_bufsz);
++		if (bufsz) {
++			buf = ntfs_malloc(bufsz);
++			if (!buf) {
++				ret = ENOMEM;
++				goto fail;
++			}
++			memcpy(buf, data, in_bufsz);
++		}
++		ret = ntfs_ioctl(ni, cmd, arg, flags, buf);
++		if (ntfs_inode_close (ni))
++			set_fuse_error(&ret);
++	}
++	if (ret)
++fail :
++		fuse_reply_err(req, -ret);
++	else
++		fuse_reply_ioctl(req, 0, buf, out_bufsz);
++	if (buf)
++		free(buf);
++}
++
+ static void ntfs_fuse_bmap(fuse_req_t req, fuse_ino_t ino, size_t blocksize,
+ 		      uint64_t vidx)
+ {
+@@ -3496,6 +3542,7 @@
+ 	.fsyncdir	= ntfs_fuse_fsync,
+ 	.bmap		= ntfs_fuse_bmap,
+ 	.destroy	= ntfs_fuse_destroy2,
++	.ioctl		= ntfs_fuse_ioctl,
+ #if !KERNELPERMS | (POSIXACLS & !KERNELACLS)
+ 	.access 	= ntfs_fuse_access,
+ #endif
+@@ -3512,10 +3559,7 @@
+ 	.setbkuptime	= ntfs_macfuse_setbkuptime,
+ 	.setchgtime	= ntfs_macfuse_setchgtime,
+ #endif /* defined(__APPLE__) || defined(__DARWIN__) */
+-#if defined(FUSE_CAP_DONT_MASK) || defined(FUSE_CAP_BIG_WRITES) \
+-		|| (defined(__APPLE__) || defined(__DARWIN__))
+ 	.init		= ntfs_init
+-#endif
+ };
+ 
+ static int ntfs_fuse_init(void)
+diff -urN ntfs-3g_ntfsprogs-2014.2.15.old/src/ntfs-3g.c ntfs-3g_ntfsprogs-2014.2.15/src/ntfs-3g.c
+--- ntfs-3g_ntfsprogs-2014.2.15.old/src/ntfs-3g.c	2014-02-15 14:07:52.000000000 +0000
++++ ntfs-3g_ntfsprogs-2014.2.15/src/ntfs-3g.c	2014-07-31 13:51:24.430065816 +0100
+@@ -96,6 +96,7 @@
+ #include "logging.h"
+ #include "xattrs.h"
+ #include "misc.h"
++#include "ioctl.h"
+ 
+ #include "ntfs-3g_common.h"
+ 
+@@ -636,8 +637,6 @@
+ }
+ #endif /* defined(__APPLE__) || defined(__DARWIN__) */
+ 
+-#if defined(FUSE_CAP_DONT_MASK) || defined(FUSE_CAP_BIG_WRITES) \
+-		|| (defined(__APPLE__) || defined(__DARWIN__))
+ static void *ntfs_init(struct fuse_conn_info *conn)
+ {
+ #if defined(__APPLE__) || defined(__DARWIN__)
+@@ -653,9 +652,9 @@
+ 			>= SAFE_CAPACITY_FOR_BIG_WRITES))
+ 		conn->want |= FUSE_CAP_BIG_WRITES;
+ #endif
++	conn->want |= FUSE_CAP_IOCTL_DIR;
+ 	return NULL;
+ }
+-#endif /* defined(FUSE_CAP_DONT_MASK) || (defined(__APPLE__) || defined(__DARWIN__)) */
+ 
+ static int ntfs_fuse_getattr(const char *org_path, struct stat *stbuf)
+ {
+@@ -2412,6 +2411,28 @@
+ 	return (ret);
+ }
+ 
++static int ntfs_fuse_ioctl(const char *path,
++			int cmd, void *arg,
++			struct fuse_file_info *fi __attribute__((unused)),
++			unsigned int flags, void *data)
++{
++	ntfs_inode *ni;
++	int ret;
++
++	if (flags & FUSE_IOCTL_COMPAT)
++		return -ENOSYS;
++
++	ni = ntfs_pathname_to_inode(ctx->vol, NULL, path);
++	if (!ni)
++		return -errno;
++
++	ret = ntfs_ioctl(ni, cmd, arg, flags, data);
++
++	if (ntfs_inode_close (ni))
++		set_fuse_error(&ret);
++	return ret;
++}
++
+ static int ntfs_fuse_bmap(const char *path, size_t blocksize, uint64_t *idx)
+ {
+ 	ntfs_inode *ni;
+@@ -3335,6 +3356,7 @@
+ 	.fsyncdir	= ntfs_fuse_fsync,
+ 	.bmap		= ntfs_fuse_bmap,
+ 	.destroy        = ntfs_fuse_destroy2,
++        .ioctl		= ntfs_fuse_ioctl,
+ #if !KERNELPERMS | (POSIXACLS & !KERNELACLS)
+ 	.access		= ntfs_fuse_access,
+ 	.opendir	= ntfs_fuse_opendir,
+@@ -3352,10 +3374,7 @@
+ 	.setbkuptime	= ntfs_macfuse_setbkuptime,
+ 	.setchgtime	= ntfs_macfuse_setchgtime,
+ #endif /* defined(__APPLE__) || defined(__DARWIN__) */
+-#if defined(FUSE_CAP_DONT_MASK) || defined(FUSE_CAP_BIG_WRITES) \
+-		|| (defined(__APPLE__) || defined(__DARWIN__))
+ 	.init		= ntfs_init
+-#endif
+ };
+ 
+ static int ntfs_fuse_init(void)

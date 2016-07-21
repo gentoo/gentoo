@@ -1,0 +1,20 @@
+--- server/c_chat.c.old	2015-12-15 21:35:30.024866220 +0100
++++ server/c_chat.c	2015-12-15 21:36:58.479266312 +0100
+@@ -483,7 +483,7 @@
+     { "You spit over your left shoulder.", "%s spits over his left shoulder." },
+     { "Strut your stuff.", "%s struts proudly." },
+     { NULL, NULL },
+-    { "%s patiently twiddles his thumbs.", "You patiently twiddle your thumbs." },
++    { "You patiently twiddle your thumbs.", "%s patiently twiddles his thumbs." },
+     { "You wave.", "%s waves happily." },
+     { "You whistle appreciatively.", "%s whistles appreciatively." },
+     { "Have you got something in your eye?", "%s winks suggestively." },
+@@ -645,7 +645,7 @@
+ 
+     if (*params == '\0') {
+         if (emotion > EMOTE_FIRST && emotion < EMOTE_LAST && single_emotes[emotion - 1][0] != NULL) {
+-            snprintf(buf, sizeof(buf), single_emotes[emotion - 1][0]);
++            snprintf(buf, sizeof(buf), "%s", single_emotes[emotion - 1][0]);
+             snprintf(buf2, sizeof(buf2), single_emotes[emotion - 1][1], op->name);
+         } else {
+             snprintf(buf, sizeof(buf), "You are a nut.");

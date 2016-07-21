@@ -1,0 +1,65 @@
+Fix linking issues:
+ * underlinking GLUT (bug #372123, #387609)
+ * as-needed (bug #281258)
+ * theora with glut (bug #399237)
+
+--- a/src/celestia/Makefile.am
++++ b/src/celestia/Makefile.am
+@@ -7,14 +7,15 @@
+ 
+ if ENABLE_KDE
+ SUBDIRS += kde
+-celestiaKDELIBS = $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KFILE) \
+-                  $(LIBSOCKET) -lDCOP kde/libkdegui.a
++celestiaKDELIBS = kde/libkdegui.a
+ celestia_LDFLAGS = $(all_libraries) $(KDE_RPATH)
++LIBS += $(LIB_QT) $(LIB_KDECORE) $(LIB_KDEUI) $(LIB_KFILE) $(LIBSOCKET) -lDCOP
+ endif
+ 
+ if ENABLE_GTK
+ SUBDIRS += gtk
+-celestiaGTKLIBS = $(GTK_LIBS) gtk/libgtkgui.a
++celestiaGTKLIBS = gtk/libgtkgui.a
++LIBS += $(GTK_LIBS)
+ endif
+ 
+ COMMONSOURCES = \
+@@ -62,6 +63,7 @@
+ 
+ if ENABLE_GLUT
+ GLUTSOURCES = glutmain.cpp
++GLUTLIBS = -lGL
+ endif
+ 
+ if ENABLE_THEORA
+@@ -80,15 +82,16 @@
+ celestia_LDADD = \
+ 	$(celestiaKDELIBS) \
+ 	$(celestiaGTKLIBS) \
+-	$(DL_LIBS) \
+-	$(LUA_LIBS) \
+-	$(THEORA_LIBS) \
+ 	../celengine/libcelengine.a \
+ 	../celtxf/libceltxf.a \
+ 	../cel3ds/libcel3ds.a \
+ 	../celmath/libcelmath.a \
+ 	../celutil/libcelutil.a \
+-	$(SPICE_LIBS)
++	$(LUA_LIBS) \
++	$(THEORA_LIBS) \
++	$(GLUTLIBS) \
++	$(SPICE_LIBS) \
++	$(DL_LIBS)
+ 
+ noinst_HEADERS = $(wildcard *.h)
+ noinst_DATA = ../../celestia
+--- a/configure.in
++++ b/configure.in
+@@ -252,6 +252,7 @@
+ 	dnl Check for GLUT.
+ 	AC_CHECK_LIB(glut, glutKeyboardUpFunc, ,
+ 	             [AC_MSG_ERROR([GLUT library version >= 3.7 not found])])
++	check_theora="yes"
+ fi
+ AM_CONDITIONAL(ENABLE_GLUT, test "$ui_glut" = "yes")
+ 

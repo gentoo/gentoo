@@ -1,0 +1,13 @@
+[Unit]
+Description=Deluge BitTorrent client
+After=network.target local-fs.target
+Wants=local-fs.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/deluged
+User=deluge
+Group=deluge
+ExecStart=/usr/bin/deluged -d -p $DELUGED_PORT $DELUGED_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

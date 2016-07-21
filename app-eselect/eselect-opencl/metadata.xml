@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Utility to switch OpenCL implementations between various providers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">anyc/opencl-headers</remote-id>
+	</upstream>
+</pkgmetadata>

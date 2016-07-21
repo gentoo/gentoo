@@ -1,0 +1,38 @@
+ aufs3-mmap.patch | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/aufs3-mmap.patch b/aufs3-mmap.patch
+index 398253b..d9b413c 100644
+--- a/aufs3-mmap.patch
++++ b/aufs3-mmap.patch
+@@ -215,24 +215,19 @@ index 7905fe7..94cc777 100644
+  	if (page->mapping != inode->i_mapping) {
+  		unlock_page(page);
+ diff --git a/mm/fremap.c b/mm/fremap.c
+-index 87da359..92bb6f2 100644
++index bbc4d66..7deee2c 100644
+ --- a/mm/fremap.c
+ +++ b/mm/fremap.c
+-@@ -202,11 +202,12 @@ get_write_lock:
+- 		 */
+- 		if (mapping_cap_account_dirty(mapping)) {
+- 			unsigned long addr;
+--			struct file *file = get_file(vma->vm_file);
+-+			struct file *file = vma->vm_file;
++@@ -211,7 +211,9 @@ get_write_lock:
++ 			/* mmap_region may free vma; grab the info now */
++ 			vm_flags = vma->vm_flags;
+  
+ +			vma_get_file(vma);
+- 			addr = mmap_region(file, start, size,
+- 					vma->vm_flags, pgoff);
+--			fput(file);
++ 			addr = mmap_region(file, start, size, vm_flags, pgoff);
+ +			vma_fput(vma);
++ 			fput(file);
+  			if (IS_ERR_VALUE(addr)) {
+  				err = addr;
+- 			} else {
+ diff --git a/mm/madvise.c b/mm/madvise.c
+ index 7055883..e6b768d 100644
+ --- a/mm/madvise.c

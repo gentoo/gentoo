@@ -1,0 +1,11 @@
+--- glib-0.13.0.7-orig/SetupWrapper.hs	2014-12-24 20:57:16.000000000 +1100
++++ glib-0.13.0.7/SetupWrapper.hs	2015-01-03 17:39:42.464000600 +1100
+@@ -18,7 +18,7 @@
+ 
+ import System.Environment
+ import System.Process
+-import System.Exit
++import System.Exit (exitWith, ExitCode(..))
+ import System.FilePath
+ import System.Directory
+ import qualified Control.Exception as Exception

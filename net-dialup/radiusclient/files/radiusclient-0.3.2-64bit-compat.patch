@@ -1,0 +1,19 @@
+Gentoo bug report - https://bugs.gentoo.org/show_bug.cgi?id=399433
+Patch from http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=321229
+
+--- include/radiusclient.h.orig	2005-08-04 10:50:19.636354682 +0200
++++ include/radiusclient.h	2005-08-04 10:48:47.955569910 +0200
+@@ -38,8 +38,13 @@
+ # define __P(protos) ()
+ #endif
+ 
++#if !(defined(__x86_64__))
+ typedef unsigned long UINT4;
+ typedef long 	      INT4;
++#else
++typedef unsigned int UINT4;
++typedef int 	     INT4;
++#endif
+ 
+ #define AUTH_VECTOR_LEN		16
+ #define AUTH_PASS_LEN		(3 * 16) /* multiple of 16 */

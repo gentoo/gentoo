@@ -1,0 +1,42 @@
+# Config file for /etc/init.d/syslog-ng
+
+# If you are not using network logging, this entire section should be
+# commented out. Otherwise, choose one of the settings below based on
+# how you are configuring your network.
+#
+# If you are using the net.* scripts to configure your network, you should
+# set rc_need to match the interface through which your logging server
+# can be reached.
+#rc_need="net.eth0"
+#
+# If you are using an interface manager like wicd, dhcpcd in standalone
+# mode, networkmanager, etc to control your interfaces, set rc_need to
+# the name of that service.
+# rc_need="dhcpcd"
+#rc_need="networkmanager"
+#
+# If you are using newnet and configuring your interface statically with
+# the network script, you should use this setting.
+#rc_need="network"
+#
+# You can use this setting, but I do not recommend relying on it.
+#rc_need="net"
+#
+# You may also want to uncomment the following if you are using network
+# logging.
+#rc_use="stunnel"
+
+# For very customized setups these variables can be adjusted as needed
+# but for most situations they should remain commented:
+# SYSLOG_NG_CONFIGFILE=/etc/syslog-ng/syslog-ng.conf
+# SYSLOG_NG_STATEFILE_DIR=/var/lib/syslog-ng
+# SYSLOG_NG_STATEFILE=${SYSLOG_NG_STATEFILE_DIR}/syslog-ng.persist
+# SYSLOG_NG_PIDFILE_DIR=/var/run
+# SYSLOG_NG_PIDFILE=${SYSLOG_NG_PIDFILE_DIR}/syslog-ng.pid
+# SYSLOG_NG_GROUP=root
+# SYSLOG_NG_USER=root
+
+# Put any additional options for syslog-ng here.
+# See syslog-ng(8) for more information.
+
+SYSLOG_NG_OPTS=""

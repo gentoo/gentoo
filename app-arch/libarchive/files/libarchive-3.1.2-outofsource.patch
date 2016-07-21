@@ -1,0 +1,29 @@
+--- a/Makefile.am	2013-02-09 12:23:03.000000000 -0500
++++ b/Makefile.am	2016-01-08 16:43:00.868186895 -0500
+@@ -508,7 +508,7 @@
+ # Building it automatically provides a sanity-check on libarchive_test_SOURCES
+ # above.
+ libarchive/test/list.h: Makefile
+-	cat $(top_srcdir)/libarchive/test/test_*.c | grep DEFINE_TEST > libarchive/test/list.h
++	mkdir -p libarchive/test && cat $(top_srcdir)/libarchive/test/test_*.c | grep DEFINE_TEST > libarchive/test/list.h
+ 
+ libarchive_TESTS_ENVIRONMENT= LIBARCHIVE_TEST_FILES=`cd $(top_srcdir);/bin/pwd`/libarchive/test LRZIP=NOCONFIG
+ 
+@@ -835,7 +835,7 @@
+ 	$(PLATFORMCPPFLAGS)
+ 
+ tar/test/list.h: Makefile
+-	cat $(top_srcdir)/tar/test/test_*.c | grep DEFINE_TEST > tar/test/list.h
++	mkdir -p tar/test && cat $(top_srcdir)/tar/test/test_*.c | grep DEFINE_TEST > tar/test/list.h
+ 
+ if BUILD_BSDTAR
+ bsdtar_test_programs= bsdtar_test
+@@ -975,7 +975,7 @@
+ bsdcpio_test_LDADD=libarchive_fe.la
+ 
+ cpio/test/list.h: Makefile
+-	cat $(top_srcdir)/cpio/test/test_*.c | grep DEFINE_TEST > cpio/test/list.h
++	mkdir -p cpio/test && cat $(top_srcdir)/cpio/test/test_*.c | grep DEFINE_TEST > cpio/test/list.h
+ 
+ if BUILD_BSDCPIO
+ bsdcpio_test_programs= bsdcpio_test

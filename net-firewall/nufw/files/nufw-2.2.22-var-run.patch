@@ -1,0 +1,45 @@
+--- a/src/nuauth/auth_srv.h
++++ b/src/nuauth/auth_srv.h
+@@ -162,7 +162,7 @@
+ #ifdef S_SPLINT_S
+ #  define NUAUTH_PID_FILE  "/usr/local/var/run/nuauth/nuauth.pid"
+ #else
+-#  define NUAUTH_PID_FILE  LOCAL_STATE_DIR "/run/nuauth/nuauth.pid"
++#  define NUAUTH_PID_FILE  "/run/nuauth/nuauth.pid"
+ #endif
+ 
+ /* define the number of threads that will do user check */
+--- a/src/nuauth/command.c
++++ b/src/nuauth/command.c
+@@ -26,7 +26,7 @@
+ #include <sys/un.h>		/* unix socket */
+ #include <sys/stat.h>		/* fchmod() */
+ 
+-#define SOCKET_FILENAME LOCAL_STATE_DIR "/run/nuauth/nuauth-command.socket"
++#define SOCKET_FILENAME "/run/nuauth/nuauth-command.socket"
+ 
+ const char* COMMAND_HELP =
+ "version: display nuauth version\n"
+--- a/src/nufw/main.c
++++ b/src/nufw/main.c
+@@ -54,7 +54,7 @@
+ 
+ /*! Name of pid file prefixed by LOCAL_STATE_DIR (variable defined
+  * during compilation/installation) */
+-#define NUFW_PID_FILE  LOCAL_STATE_DIR "/run/nufw.pid"
++#define NUFW_PID_FILE   "/run/nufw.pid"
+ 
+ /**
+  * Stop threads and then wait until threads exit.
+--- a/src/nuauth/Makefile.am
++++ b/src/nuauth/Makefile.am
+@@ -26,9 +26,6 @@
+ 
+ nuauth_LDADD = $(GLIB_LIBS) -lm  -lgnutls -lsasl2 -lnufw -L$(top_builddir)/src/include/
+ 
+-install-exec-local:
+-	install -d "$(DESTDIR)$(localstatedir)/run/nuauth/"
+-
+ nuauth$(EXEEXT): $(nuauth_OBJECTS) $(nuauth_DEPENDENCIES)
+ 	@rm -f nuauth$(EXEEXT)
+ 	$(LINK) $(nuauth_LDFLAGS) $(nuauth_OBJECTS) $(nuauth_LDADD)

@@ -1,0 +1,10 @@
+--- src/readpng.c.orig
++++ src/readpng.c
+@@ -23,6 +23,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <glib.h>
+ 
+ #include <png.h>

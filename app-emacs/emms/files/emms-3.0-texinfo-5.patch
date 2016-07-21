@@ -1,0 +1,17 @@
+--- emms-3.0-orig/gpl.texi
++++ emms-3.0/gpl.texi
+@@ -659,6 +659,8 @@
+ Program, unless a warranty or assumption of liability accompanies a
+ copy of the Program in return for a fee.
+ 
++@end enumerate
++
+ @iftex
+ @heading END OF TERMS AND CONDITIONS
+ @end iftex
+@@ -721,5 +723,3 @@
+ applications with the library.  If this is what you want to do, use
+ the GNU Lesser General Public License instead of this License.  But
+ first, please read @url{http://www.gnu.org/philosophy/why-not-lgpl.html}.
+-
+-@end enumerate

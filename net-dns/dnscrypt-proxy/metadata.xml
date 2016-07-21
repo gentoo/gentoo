@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>amesists@gmail.com</email>
+		<name>Jiajun Wang</name>
+		<description>Proxied maintainer, CC on bugs</description>
+	</maintainer>
+	<longdescription lang="en">
+		dnscrypt-proxy provides local service which can be used directly as your
+		local resolver or as a DNS forwarder, encrypting and authenticating
+		requests using the DNSCrypt protocol and passing them to an upstream
+		server.
+	</longdescription>
+	<use>
+		<flag name="ldns">Use <pkg>net-libs/ldns</pkg> for DNSSEC/SSHFP
+			validation</flag>
+		<flag name="plugins">Enable plugin support to inspect and modify
+			queries and responses</flag>
+		<flag name="systemd">Use systemd's socket activation instead of
+			creating the sockets itself</flag>
+	</use>
+</pkgmetadata>

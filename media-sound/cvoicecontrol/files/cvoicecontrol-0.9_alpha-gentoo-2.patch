@@ -1,0 +1,35 @@
+diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/cvoicecontrol.c cvoicecontrol-0.9alpha/cvoicecontrol/cvoicecontrol.c
+--- cvoicecontrol-0.9alpha.orig/cvoicecontrol/cvoicecontrol.c	2002-09-05 19:09:06.000000000 +0300
++++ cvoicecontrol-0.9alpha/cvoicecontrol/cvoicecontrol.c	2007-07-29 23:35:33.000000000 +0300
+@@ -38,6 +38,8 @@
+ #include<sys/select.h>
+ #endif
+ 
++#include <values.h>
++
+ #include "cvoicecontrol.h"
+ 
+ #include "model.h"
+diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/microphone_config.c cvoicecontrol-0.9alpha/cvoicecontrol/microphone_config.c
+--- cvoicecontrol-0.9alpha.orig/cvoicecontrol/microphone_config.c	2000-02-19 14:08:47.000000000 +0200
++++ cvoicecontrol-0.9alpha/cvoicecontrol/microphone_config.c	2007-07-29 23:36:08.000000000 +0300
+@@ -1099,8 +1099,6 @@
+       free(command);
+     }
+     fclose(f);
+-
+-    free(home);
+   }
+   else /***** couldn't retrieve home directory -> store results in /tmp/ */
+   {
+diff -ur cvoicecontrol-0.9alpha.orig/cvoicecontrol/semaphore.c cvoicecontrol-0.9alpha/cvoicecontrol/semaphore.c
+--- cvoicecontrol-0.9alpha.orig/cvoicecontrol/semaphore.c	2000-02-12 18:05:24.000000000 +0200
++++ cvoicecontrol-0.9alpha/cvoicecontrol/semaphore.c	2007-07-29 23:34:38.000000000 +0300
+@@ -26,6 +26,7 @@
+ ****************************************************************************/
+ 
+ #include "semaphore.h"
++#include <stdlib.h>
+ 
+ /********************************************************************************
+  * function must be called prior to semaphore use.

@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 8c62a03..3ecb0f0 100644
+--- a/makefile
++++ b/makefile
+@@ -17,7 +17,7 @@ include $(TOPDIR)/config/common.mak
+ #
+ # Sub-directories that need to be built
+ #
+-subdirs	= external vpflib ogdi contrib
++subdirs	= vpflib ogdi contrib
+ 
+ ifneq ($(PROJ_SETTING),external)
+ subdirs := proj $(subdirs) 

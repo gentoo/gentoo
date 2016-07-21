@@ -1,0 +1,13 @@
+[Unit]
+Description=GNU Mailing List Manager
+After=network.target
+
+[Service]
+User=mailman
+ExecStart=/usr/lib/mailman/bin/mailmanctl -s start
+ExecReload=/usr/lib/mailman/bin/mailmanctl restart
+ExecStop=/usr/lib/mailman/bin/mailmanctl stop
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

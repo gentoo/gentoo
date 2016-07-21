@@ -1,0 +1,49 @@
+diff -Naur fann-2.0.0/benchmarks/Makefile fann-2.0.0-new/benchmarks/Makefile
+--- fann-2.0.0/benchmarks/Makefile	2005-11-29 16:33:12.000000000 -0500
++++ fann-2.0.0-new/benchmarks/Makefile	2006-10-28 09:08:00.000000000 -0400
+@@ -16,7 +16,7 @@
+ all: $(TARGETS)
+ 
+ quality: quality.cc
+-	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -llwneuralnet -ljneural -lfl
++	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -lfl
+ 
+ quality_fixed: quality_fixed.c
+ 	$(GCC) $(CFLAGS) $(LFLAGS) $< -o $@ -lfixedfann
+@@ -25,7 +25,7 @@
+ 	$(GCC) -ggdb -lm -DDEBUG -Wall -ansi -I../src/ -I../src/include/ ../src/fixedfann.c $< -o $@
+ 
+ performance: performance.cc
+-	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -llwneuralnet -ljneural -lfl
++	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -lfl
+ 
+ performance_fixed: performance.cc
+ 	$(G++) $(CFLAGS) $(LFLAGS) -DFIXEDFANN $< -o $@ -lfixedfann
+diff -Naur fann-2.0.0/benchmarks/performance.cc fann-2.0.0-new/benchmarks/performance.cc
+--- fann-2.0.0/benchmarks/performance.cc	2005-10-24 16:48:47.000000000 -0400
++++ fann-2.0.0-new/benchmarks/performance.cc	2006-10-28 09:08:28.000000000 -0400
+@@ -19,8 +19,8 @@
+ 
+ //uncomment lines below to benchmark the libraries
+ 
+-#define JNEURAL
+-#define LWNN
++/*#define JNEURAL
++#define LWNN */
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+diff -Naur fann-2.0.0/benchmarks/quality.cc fann-2.0.0-new/benchmarks/quality.cc
+--- fann-2.0.0/benchmarks/quality.cc	2005-11-29 16:33:12.000000000 -0500
++++ fann-2.0.0-new/benchmarks/quality.cc	2006-10-28 09:08:19.000000000 -0400
+@@ -19,8 +19,8 @@
+ 
+ //uncomment lines below to benchmark the libraries
+ 
+-#define JNEURAL
+-#define LWNN
++/*#define JNEURAL
++#define LWNN */
+ 
+ #include <stdio.h>
+ #include <stdlib.h>

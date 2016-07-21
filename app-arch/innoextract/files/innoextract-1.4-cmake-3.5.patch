@@ -1,0 +1,31 @@
+From 01705758dd04d937160c99c8b87c6fa2057db894 Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Tue, 23 Feb 2016 05:45:50 +0100
+Subject: [PATCH] CMake: Disable variable expansion for quoted strings in if()
+
+This makes the build system more rubust against stray variables
+coming from included CMake scripts provided by the system.
+
+Fixes build with CMake 3.5 (tested with 3.5.0-rc3).
+
+Fixes: issue #50
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 02e0308..8653b93 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,11 @@ project(innoextract)
+ 
+ cmake_minimum_required(VERSION 2.8)
+ 
++if(POLICY CMP0054)
++	# CMake 3.1+: Only interpret if() arguments as variables or keywords when unquoted.
++	cmake_policy(SET CMP0054 NEW)
++endif()
++
+ 
+ # Define configuration options
+ 

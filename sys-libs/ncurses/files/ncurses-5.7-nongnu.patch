@@ -1,0 +1,11 @@
+--- ncurses-5.7/ncurses/curses.priv.h
++++ ncurses-5.7/ncurses/curses.priv.h
+@@ -1452,6 +1452,8 @@ extern NCURSES_EXPORT(void) _nc_expanded
+ 
+ /* charable.c */
+ #if USE_WIDEC_SUPPORT
++#include <wchar.h>
++
+ extern NCURSES_EXPORT(bool) _nc_is_charable(wchar_t);
+ extern NCURSES_EXPORT(int) _nc_to_char(wint_t);
+ extern NCURSES_EXPORT(wint_t) _nc_to_widechar(int);

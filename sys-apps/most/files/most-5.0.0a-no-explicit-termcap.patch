@@ -1,0 +1,216 @@
+Author: Benda Xu <heroxbd@gentoo.org>
+Date: 2014-12-08
+Forwarded: John E. Davis <jed@jedsoft.org>
+
+"most" completely replies on slang to access terminfo/termcap, by
+SLtt_get_terminfo() and friends.
+
+Nothing should be considered by most but to find slang. Therefore it
+should not link against libtermcap in any case.
+
+	* configure.ac: remove JD_TERMCAP
+	* configure: regenerate with autoconf-2.61
+	* src/Makefile.in: remove libtermcap linking
+
+Index: most-5.0.0a/autoconf/configure.ac
+===================================================================
+--- most-5.0.0a.orig/autoconf/configure.ac
++++ most-5.0.0a/autoconf/configure.ac
+@@ -62,7 +62,6 @@ getpgrp tcgetpgrp \
+ )
+ 
+ JD_SET_OBJ_SRC_DIR
+-JD_TERMCAP
+ JD_WITH_LIBRARY(slang)
+ JD_GCC_WARNINGS
+ JD_GET_MODULES(src/modules.lis)
+Index: most-5.0.0a/configure
+===================================================================
+--- most-5.0.0a.orig/configure
++++ most-5.0.0a/configure
+@@ -700,8 +700,6 @@ X_EXTRA_LIBS
+ SRCDIR
+ OBJDIR
+ ELFDIR
+-TERMCAP
+-MISC_TERMINFO_DIRS
+ SLANG_LIB
+ SLANG_INC
+ PROGRAM_OFILES
+@@ -9064,13 +9062,11 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <sys/types.h> /* for off_t */
+-     #include <stdio.h>
++#include <stdio.h>
+ int
+ main ()
+ {
+-int (*fp) (FILE *, off_t, int) = fseeko;
+-     return fseeko (stdin, 0, 0) && fp (stdin, 0, 0);
++return fseeko (stdin, 0, 0) && (fseeko) (stdin, 0, 0);
+   ;
+   return 0;
+ }
+@@ -9110,13 +9106,11 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ #define _LARGEFILE_SOURCE 1
+-#include <sys/types.h> /* for off_t */
+-     #include <stdio.h>
++#include <stdio.h>
+ int
+ main ()
+ {
+-int (*fp) (FILE *, off_t, int) = fseeko;
+-     return fseeko (stdin, 0, 0) && fp (stdin, 0, 0);
++return fseeko (stdin, 0, 0) && (fseeko) (stdin, 0, 0);
+   ;
+   return 0;
+ }
+@@ -9777,42 +9771,6 @@ OBJDIR=$SRCDIR/"$ARCH"objs
+ ELFDIR=$SRCDIR/elf"$ARCH"objs
+ 
+ 
+-{ echo "$as_me:$LINENO: checking for Terminfo" >&5
+-echo $ECHO_N "checking for Terminfo... $ECHO_C" >&6; }
+-MISC_TERMINFO_DIRS="$FINKPREFIX/share/terminfo"
+-if test ! -d $MISC_TERMINFO_DIRS
+-then
+-   MISC_TERMINFO_DIRS=""
+-fi
+-
+-JD_Terminfo_Dirs="/usr/lib/terminfo \
+-                 /usr/share/terminfo \
+-                 /usr/share/lib/terminfo \
+-		 /usr/local/lib/terminfo \
+-		 $MISC_TERMINFO_DIRS"
+-
+-TERMCAP=-ltermcap
+-
+-for terminfo_dir in $JD_Terminfo_Dirs
+-do
+-   if test -d $terminfo_dir
+-   then
+-      { echo "$as_me:$LINENO: result: yes" >&5
+-echo "${ECHO_T}yes" >&6; }
+-      TERMCAP=""
+-      break
+-   fi
+-done
+-if test "$TERMCAP"; then
+-  { echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6; }
+-  cat >>confdefs.h <<\_ACEOF
+-#define USE_TERMCAP 1
+-_ACEOF
+-
+-fi
+-
+-
+   if test "X$jd_prefix" = "X"
+   then
+     jd_prefix=$ac_default_prefix
+@@ -10858,8 +10816,6 @@ X_EXTRA_LIBS!$X_EXTRA_LIBS$ac_delim
+ SRCDIR!$SRCDIR$ac_delim
+ OBJDIR!$OBJDIR$ac_delim
+ ELFDIR!$ELFDIR$ac_delim
+-TERMCAP!$TERMCAP$ac_delim
+-MISC_TERMINFO_DIRS!$MISC_TERMINFO_DIRS$ac_delim
+ SLANG_LIB!$SLANG_LIB$ac_delim
+ SLANG_INC!$SLANG_INC$ac_delim
+ PROGRAM_OFILES!$PROGRAM_OFILES$ac_delim
+@@ -10868,9 +10824,10 @@ PROGRAM_HFILES!$PROGRAM_HFILES$ac_delim
+ PROGRAM_OBJECTS!$PROGRAM_OBJECTS$ac_delim
+ PROGRAM_ELFOBJECTS!$PROGRAM_ELFOBJECTS$ac_delim
+ LIBOBJS!$LIBOBJS$ac_delim
++LTLIBOBJS!$LTLIBOBJS$ac_delim
+ _ACEOF
+ 
+-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 97; then
++  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 96; then
+     break
+   elif $ac_last_try; then
+     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5
+@@ -10906,50 +10863,6 @@ CEOF$ac_eof
+ _ACEOF
+ 
+ 
+-ac_delim='%!_!# '
+-for ac_last_try in false false false false false :; do
+-  cat >conf$$subs.sed <<_ACEOF
+-LTLIBOBJS!$LTLIBOBJS$ac_delim
+-_ACEOF
+-
+-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 1; then
+-    break
+-  elif $ac_last_try; then
+-    { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5
+-echo "$as_me: error: could not make $CONFIG_STATUS" >&2;}
+-   { (exit 1); exit 1; }; }
+-  else
+-    ac_delim="$ac_delim!$ac_delim _$ac_delim!! "
+-  fi
+-done
+-
+-ac_eof=`sed -n '/^CEOF[0-9]*$/s/CEOF/0/p' conf$$subs.sed`
+-if test -n "$ac_eof"; then
+-  ac_eof=`echo "$ac_eof" | sort -nru | sed 1q`
+-  ac_eof=`expr $ac_eof + 1`
+-fi
+-
+-cat >>$CONFIG_STATUS <<_ACEOF
+-cat >"\$tmp/subs-2.sed" <<\CEOF$ac_eof
+-/@[a-zA-Z_][a-zA-Z_0-9]*@/!b end
+-_ACEOF
+-sed '
+-s/[,\\&]/\\&/g; s/@/@|#_!!_#|/g
+-s/^/s,@/; s/!/@,|#_!!_#|/
+-:n
+-t n
+-s/'"$ac_delim"'$/,g/; t
+-s/$/\\/; p
+-N; s/^.*\n//; s/[,\\&]/\\&/g; s/@/@|#_!!_#|/g; b n
+-' >>$CONFIG_STATUS <conf$$subs.sed
+-rm -f conf$$subs.sed
+-cat >>$CONFIG_STATUS <<_ACEOF
+-:end
+-s/|#_!!_#|//g
+-CEOF$ac_eof
+-_ACEOF
+-
+-
+ # VPATH may cause trouble with some makes, so we remove $(srcdir),
+ # ${srcdir} and @srcdir@ from VPATH if srcdir is ".", strip leading and
+ # trailing colons and then remove the whole line if VPATH becomes empty
+@@ -11193,7 +11106,7 @@ s&@abs_builddir@&$ac_abs_builddir&;t t
+ s&@abs_top_builddir@&$ac_abs_top_builddir&;t t
+ s&@INSTALL@&$ac_INSTALL&;t t
+ $ac_datarootdir_hack
+-" $ac_file_inputs | sed -f "$tmp/subs-1.sed" | sed -f "$tmp/subs-2.sed" >$tmp/out
++" $ac_file_inputs | sed -f "$tmp/subs-1.sed" | sed 's/|#_!!_#|//g' >$tmp/out
+ 
+ test -z "$ac_datarootdir_hack$ac_datarootdir_seen" &&
+   { ac_out=`sed -n '/\${datarootdir}/p' "$tmp/out"`; test -n "$ac_out"; } &&
+Index: most-5.0.0a/src/Makefile.in
+===================================================================
+--- most-5.0.0a.orig/src/Makefile.in
++++ most-5.0.0a/src/Makefile.in
+@@ -3,7 +3,6 @@ CFLAGS		= @CFLAGS@ @SLANG_DLL_CFLAGS@
+ LDFLAGS		= @LDFLAGS@
+ SLANG_INC	= @SLANG_INC@
+ SLANG_LIB	= @SLANG_LIB@ -lslang
+-MISCLIBS	= @TERMCAP@
+ RPATH		= @RPATH@
+ 
+ #-----------------------------------------------------------------------------
+@@ -44,7 +43,7 @@ EXEC = most
+ CONFIG_H = config.h
+ INCS = $(SLANG_INC)
+ ALL_CFLAGS = $(CFLAGS) -Dunix $(INCS)
+-EXECLIBS = $(RPATH) $(SLANG_LIB) $(MISCLIBS) -lm
++EXECLIBS = $(RPATH) $(SLANG_LIB) -lm
+ #
+ most_O_DEP = $(SRCDIR)/version.h
+ UPDATE_VERSION_SCRIPT = $(HOME)/bin/update_changes_version

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Template-Toolkit</remote-id>
+    <remote-id type="cpan-module">Template</remote-id>
+    <remote-id type="cpan-module">Template::Base</remote-id>
+    <remote-id type="cpan-module">Template::Config</remote-id>
+    <remote-id type="cpan-module">Template::Constants</remote-id>
+    <remote-id type="cpan-module">Template::Context</remote-id>
+    <remote-id type="cpan-module">Template::Directive</remote-id>
+    <remote-id type="cpan-module">Template::Document</remote-id>
+    <remote-id type="cpan-module">Template::Exception</remote-id>
+    <remote-id type="cpan-module">Template::Filters</remote-id>
+    <remote-id type="cpan-module">Template::Grammar</remote-id>
+    <remote-id type="cpan-module">Template::Iterator</remote-id>
+    <remote-id type="cpan-module">Template::Monad::Assert</remote-id>
+    <remote-id type="cpan-module">Template::Monad::Scalar</remote-id>
+    <remote-id type="cpan-module">Template::Namespace::Constants</remote-id>
+    <remote-id type="cpan-module">Template::Parser</remote-id>
+    <remote-id type="cpan-module">Template::Perl</remote-id>
+    <remote-id type="cpan-module">Template::Plugin</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Assert</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::CGI</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Datafile</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Date</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Date::Calc</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Date::Manip</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Directory</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Dumper</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::File</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Filter</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Format</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::HTML</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Image</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Iterator</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Math</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Pod</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Procedural</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Scalar</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::String</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Table</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::URL</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::View</remote-id>
+    <remote-id type="cpan-module">Template::Plugin::Wrap</remote-id>
+    <remote-id type="cpan-module">Template::Plugins</remote-id>
+    <remote-id type="cpan-module">Template::Provider</remote-id>
+    <remote-id type="cpan-module">Template::Service</remote-id>
+    <remote-id type="cpan-module">Template::Stash</remote-id>
+    <remote-id type="cpan-module">Template::Stash::Context</remote-id>
+    <remote-id type="cpan-module">Template::Stash::XS</remote-id>
+    <remote-id type="cpan-module">Template::Test</remote-id>
+    <remote-id type="cpan-module">Template::TieString</remote-id>
+    <remote-id type="cpan-module">Template::VMethods</remote-id>
+    <remote-id type="cpan-module">Template::View</remote-id>
+    <remote-id type="cpan-module">bytes</remote-id>
+  </upstream>
+</pkgmetadata>

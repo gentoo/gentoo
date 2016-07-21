@@ -1,0 +1,33 @@
+--- src/osdep/unix/Makefile~	2011-06-07 16:04:29.000000000 +0300
++++ src/osdep/unix/Makefile	2011-06-07 15:55:31.000000000 +0300
+@@ -954,23 +954,24 @@
+ 
+ # Once-only environment setup
+ 
+-once:	onceenv ckp$(PASSWDTYPE) ssl$(SSLTYPE) osdep.c
++once:	ssl$(SSLTYPE) onceenv ckp$(PASSWDTYPE) osdep.c
+ 
+ onceenv:
+ 	@echo Once-only environment setup...
+ 	echo $(CC) > CCTYPE
+-	echo $(BASECFLAGS) '$(EXTRACFLAGS)' -DCHUNKSIZE=$(CHUNKSIZE) > CFLAGS
+-	echo -DCREATEPROTO=$(CREATEPROTO) -DEMPTYPROTO=$(EMPTYPROTO) \
++	echo `$(CAT) CFLAGS` $(BASECFLAGS) '$(EXTRACFLAGS)' -DCHUNKSIZE=$(CHUNKSIZE) > CFLAGS
++	echo `$(CAT) OSCFLAGS` -DCREATEPROTO=$(CREATEPROTO) -DEMPTYPROTO=$(EMPTYPROTO) \
+ 	 -DMD5ENABLE=\"$(MD5PWD)\" -DMAILSPOOL=\"$(MAILSPOOL)\" \
+ 	 -DANONYMOUSHOME=\"$(MAILSPOOL)/anonymous\" \
+ 	 -DACTIVEFILE=\"$(ACTIVEFILE)\" -DNEWSSPOOL=\"$(NEWSSPOOL)\" \
+ 	 -DRSHPATH=\"$(RSHPATH)\" -DLOCKPGM=\"$(LOCKPGM)\" \
+ 	 -DLOCKPGM1=\"$(LOCKPGM1)\" -DLOCKPGM2=\"$(LOCKPGM2)\" \
+ 	 -DLOCKPGM3=\"$(LOCKPGM3)\" > OSCFLAGS
+-	echo $(BASELDFLAGS) $(EXTRALDFLAGS) > LDFLAGS
++	echo $(EXTRALIBS) `$(CAT) LDFLAGS` > LIBS
++	echo $(EXTRALDFLAGS) `$(CAT) LDFLAGS` -lcrypt $(BASELDFLAGS) > LDFLAGS
+ 	echo "$(ARRC) $(ARCHIVE) $(BINARIES);$(RANLIB) $(ARCHIVE)" > ARCHIVE
+-	echo "`$(CAT) CCTYPE` `$(CAT) CFLAGS` `$(CAT) OSFLAGS` -shared \
+-	 -Wl,-soname,libc-client.so.1 -o libc-client.so.1.0.0 $(BINARIES)" \
++	echo "`$(CAT) CCTYPE` `$(CAT) CFLAGS` $(EXTRALDFLAGS) `$(CAT) OSFLAGS` -shared \
++	 -Wl,-soname,libc-client.so.1 -o libc-client.so.1.0.0 $(BINARIES)" `$(CAT) LIBS` $(BASELDFLAGS) \
+ 	 >> ARCHIVE
+ 	echo $(OS) > OSTYPE
+ 	./drivers $(EXTRADRIVERS) $(DEFAULTDRIVERS) dummy

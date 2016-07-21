@@ -1,0 +1,66 @@
+Index: sys/kern/kern_exec.c
+===================================================================
+--- sys/kern/kern_exec.c	(revision 266979)
++++ sys/kern/kern_exec.c	(working copy)
+@@ -280,6 +280,7 @@ kern_execve(td, args, mac_p)
+ 	struct mac *mac_p;
+ {
+ 	struct proc *p = td->td_proc;
++	struct vmspace *oldvmspace;
+ 	int error;
+ 
+ 	AUDIT_ARG_ARGV(args->begin_argv, args->argc,
+@@ -296,6 +297,8 @@ kern_execve(td, args, mac_p)
+ 		PROC_UNLOCK(p);
+ 	}
+ 
++	KASSERT((td->td_pflags & TDP_EXECVMSPC) == 0, ("nested execve"));
++	oldvmspace = td->td_proc->p_vmspace;
+ 	error = do_execve(td, args, mac_p);
+ 
+ 	if (p->p_flag & P_HADTHREADS) {
+@@ -310,6 +313,12 @@ kern_execve(td, args, mac_p)
+ 			thread_single_end();
+ 		PROC_UNLOCK(p);
+ 	}
++	if ((td->td_pflags & TDP_EXECVMSPC) != 0) {
++		KASSERT(td->td_proc->p_vmspace != oldvmspace,
++		    ("oldvmspace still used"));
++		vmspace_free(oldvmspace);
++		td->td_pflags &= ~TDP_EXECVMSPC;
++	}
+ 
+ 	return (error);
+ }
+Index: sys/sys/proc.h
+===================================================================
+--- sys/sys/proc.h	(revision 266979)
++++ sys/sys/proc.h	(working copy)
+@@ -968,4 +968,5 @@ curthread_pflags_restore(int save)
+ 
+ #endif	/* _KERNEL */
+ 
++#define	TDP_EXECVMSPC	0x40000000 /* Execve destroyed old vmspace */
+ #endif	/* !_SYS_PROC_H_ */
+Index: sys/vm/vm_map.c
+===================================================================
+--- sys/vm/vm_map.c	(revision 266979)
++++ sys/vm/vm_map.c	(working copy)
+@@ -3631,6 +3631,8 @@ vmspace_exec(struct proc *p, vm_offset_t minuser,
+ 	struct vmspace *oldvmspace = p->p_vmspace;
+ 	struct vmspace *newvmspace;
+ 
++	KASSERT((curthread->td_pflags & TDP_EXECVMSPC) == 0,
++	    ("vmspace_exec recursed"));
+ 	newvmspace = vmspace_alloc(minuser, maxuser);
+ 	if (newvmspace == NULL)
+ 		return (ENOMEM);
+@@ -3647,7 +3649,7 @@ vmspace_exec(struct proc *p, vm_offset_t minuser,
+ 	PROC_VMSPACE_UNLOCK(p);
+ 	if (p == curthread->td_proc)
+ 		pmap_activate(curthread);
+-	vmspace_free(oldvmspace);
++	curthread->td_pflags |= TDP_EXECVMSPC;
+ 	return (0);
+ }
+ 

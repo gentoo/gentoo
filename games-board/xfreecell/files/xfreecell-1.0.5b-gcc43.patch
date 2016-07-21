@@ -1,0 +1,59 @@
+--- card.cpp
++++ card.cpp
+@@ -1,5 +1,6 @@
++#include <cstdlib>
+ #include <cstdio>
+-#include <math.h>
++#include <cmath>
+ #ifdef SHAPE
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+--- freecell.cpp
++++ freecell.cpp
+@@ -1,6 +1,7 @@
+ #include <dirent.h>
+ #include <fcntl.h>
+-#include <stdlib.h>
++#include <cstdlib>
++#include <cstring>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+--- option.cpp
++++ option.cpp
+@@ -3,7 +3,9 @@
+ #include <fcntl.h>
+ #include <dirent.h>
+ #include <unistd.h>
+-#include <stdio.h>
++#include <cstdlib>
++#include <cstdio>
++#include <cstring>
+ 
+ #include "general.h"
+ #include "option.h"
+--- subwindows.cpp
++++ subwindows.cpp
+@@ -3,7 +3,8 @@
+ #include <fcntl.h>
+ #include <dirent.h>
+ #include <unistd.h>
+-#include <stdio.h>
++#include <cstdlib>
++#include <cstdio>
+ 
+ #include "general.h"
+ #include "subwindows.h"
+--- widget/widget.h
++++ widget/widget.h
+@@ -4,7 +4,9 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+ #include <X11/keysym.h>
+-#include <stdio.h>
++#include <cstdlib>
++#include <cstdio>
++#include <cstring>
+ #include <vector>
+ #include <string>
+ 

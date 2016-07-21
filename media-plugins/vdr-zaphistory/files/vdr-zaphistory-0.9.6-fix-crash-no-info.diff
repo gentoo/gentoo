@@ -1,0 +1,15 @@
+diff -Naur zaphistory-0.9.6.orig/zaphistoryosd.c zaphistory-0.9.6/zaphistoryosd.c
+--- zaphistory-0.9.6.orig/zaphistoryosd.c	2013-09-15 15:22:41.000000000 +0200
++++ zaphistory-0.9.6/zaphistoryosd.c	2013-09-15 15:24:42.000000000 +0200
+@@ -217,6 +217,11 @@
+ 
+     return AddSubMenu( new cMenuEvent(schedule->GetEventAround(time(NULL)) ) );
+ 
++    const cEvent *event = schedule->GetEventAround(time(NULL));
++    if (event)
++    return AddSubMenu( new cMenuEvent(event) );
++    else
++    return osUnknown;
+ }
+ 
+ eOSState cMenuZappedChannels::ProcessKey(eKeys Key)

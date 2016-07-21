@@ -1,0 +1,13 @@
+diff --git a/terminatorlib/terminator.py b/terminatorlib/terminator.py
+index 34726cb..5adb7e7 100755
+--- a/terminatorlib/terminator.py
++++ b/terminatorlib/terminator.py
+@@ -60,8 +60,6 @@ class Terminator(Borg):
+             self.doing_layout = False
+         if not self.pid_cwd:
+             self.pid_cwd = get_pid_cwd()
+-        if self.gnome_client is None:
+-            self.attempt_gnome_client()
+ 
+     def attempt_gnome_client(self):
+         """Attempt to find a GNOME Session to register with"""

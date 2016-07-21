@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="canvas">Enable support for <pkg>x11-libs/goocanvas</pkg></flag>
+    <flag name="http">Enable embedded <pkg>net-libs/libsoup</pkg> based server</flag>
+    <flag name="json">Enable support for JSON format</flag>
+    <flag name="mdb">Enable support for Microsoft Access database using 
+		<pkg>app-office/mdbtools</pkg></flag>
+    <flag name="reports">Install tools for generating graphical reports</flag>
+    <flag name="sourceview">Enable support for <pkg>x11-libs/gtksourceview</pkg></flag>
+  </use>
+</pkgmetadata>

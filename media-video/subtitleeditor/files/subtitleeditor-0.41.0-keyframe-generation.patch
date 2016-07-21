@@ -1,0 +1,30 @@
+Author: Philip Rinn <rinni@inventati.org>
+Description: Prevent crash when generating keyframes with gstreamermm 0.10.11
+--- a/plugins/actions/keyframesmanagement/keyframesgenerator.cc
++++ b/plugins/actions/keyframesmanagement/keyframesgenerator.cc
+@@ -87,12 +87,20 @@
+ 			if(structure_name.find("video") == Glib::ustring::npos)
+ 				return Glib::RefPtr<Gst::Element>(NULL);
+ 
+-			Glib::RefPtr<Gst::Bin> videobin = Glib::RefPtr<Gst::Bin>::cast_dynamic(
+-					Gst::Parse::create_bin(
+-						"ffmpegcolorspace ! fakesink name=vsink", true));
++			// ffmpegcolorspace
++			Glib::RefPtr<Gst::Element> conv = Gst::ElementFactory::create_element("ffmpegcolorspace", "conv");
++			// fakesink
++			Glib::RefPtr<Gst::FakeSink> vsink = Gst::FakeSink::create("vsink");
++			// videobin
++			Glib::RefPtr<Gst::Bin> videobin = Gst::Bin::create("videobin");
+ 
+-			Glib::RefPtr<Gst::FakeSink> vsink = Glib::RefPtr<Gst::FakeSink>::cast_dynamic(
+-					videobin->get_element("vsink"));
++			// Add and link
++			videobin->add(conv)->add(vsink);
++			conv->link_pads("src", vsink, "sink");
++
++			// Add sink pad to bin element
++			Glib::RefPtr<Gst::Pad> pad = conv->get_static_pad("sink");
++			videobin->add_pad(Gst::GhostPad::create(pad, "sink"));
+ 
+ 			vsink->set_sync(false);
+ 			vsink->property_silent() = true;

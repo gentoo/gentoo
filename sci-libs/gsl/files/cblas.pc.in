@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/@LIBDIR@
+includedir=${prefix}/include
+
+Name: cblas
+Description: GSL C Implementation of the Basic Linear Algebra Subprograms
+Version: @PV@
+URL: http://www.gnu.org/software/gsl
+Libs: -L${libdir} -lcblas
+Libs.private: -lm
+Cflags: -I${includedir}

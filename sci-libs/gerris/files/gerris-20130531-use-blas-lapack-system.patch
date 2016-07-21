@@ -1,0 +1,33 @@
+--- modules/Makefile.am.orig	2013-07-22 14:13:10.339130133 -0700
++++ modules/Makefile.am	2013-07-22 14:15:10.770813929 -0700
+@@ -105,7 +105,7 @@
+ libstokes2D_la_LIBADD = $(GFS2D_LIBS)
+ 
+ libwavewatch2D_la_SOURCES = wavewatch.c
+-libwavewatch2D_la_LIBADD = $(GFS2D_LIBS) -Lwavewatch -lwavewatch -L/usr/lib/gcc/i486-linux-gnu/4.2 -lgfortran
++libwavewatch2D_la_LIBADD = $(GFS2D_LIBS) -Lwavewatch -lwavewatch
+ libwavewatch2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1 \
+   -DW3SRCE=`nm wavewatch/libwavewatch.a | grep w3srce | awk '{ if ($$2 == "T") print $$3; }'` \
+   -DGFSW3INIT=`nm wavewatch/libwavewatch.a | grep gfsw3_init | awk '{ if ($$2 == "T") print $$3; }'`
+@@ -164,17 +164,17 @@
+ 
+ liblis3D_la_SOURCES = lis.c
+ liblis3D_la_CFLAGS = $(AM_CFLAGS)
+-liblis3D_la_LIBADD = $(GFS3D_LIBS) -llis -lgfortran -lm
++liblis3D_la_LIBADD = $(GFS3D_LIBS) -llis -lm
+ liblis2D_la_SOURCES = lis.c
+ liblis2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1
+-liblis2D_la_LIBADD = $(GFS2D_LIBS) -llis -lgfortran -lm
++liblis2D_la_LIBADD = $(GFS2D_LIBS) -llis -lm
+ 
+ libagmg3D_la_SOURCES = agmg.c dagmg.f90
+ libagmg3D_la_CFLAGS = $(AM_CFLAGS)
+-libagmg3D_la_LIBADD = $(GFS3D_LIBS) -llapack -lblas -lgfortran -lm
++libagmg3D_la_LIBADD = $(GFS3D_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) -lm
+ libagmg2D_la_SOURCES = agmg.c dagmg.f90
+ libagmg2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1
+-libagmg2D_la_LIBADD = $(GFS2D_LIBS) -llapack -lblas -lgfortran -lm
++libagmg2D_la_LIBADD = $(GFS2D_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) -lm
+ 
+ libokada3D_la_SOURCES = okada.c
+ libokada3D_la_CFLAGS = $(AM_CFLAGS)

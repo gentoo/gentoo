@@ -1,0 +1,30 @@
+--- build/packaging.rb.~1~	2014-01-09 07:02:51.715076000 +0100
++++ build/packaging.rb	2014-01-09 07:25:14.182743725 +0100
+@@ -361,7 +361,7 @@
+ 	psg_ruby_extension_source_dir = "#{fs_datadir}/#{GLOBAL_NAMESPACE_DIRNAME}/ruby_extension_source"
+ 	psg_nginx_module_source_dir   = "#{fs_datadir}/#{GLOBAL_NAMESPACE_DIRNAME}/ngx_http_passenger_module"
+ 	
+-	fakeroot = "pkg/fakeroot"
++	fakeroot = ENV['DISTDIR']
+ 	fake_rubylibdir = "#{fakeroot}#{psg_rubylibdir}"
+ 	fake_nodelibdir = "#{fakeroot}#{psg_nodelibdir}"
+ 	fake_libdir     = "#{fakeroot}#{psg_libdir}"
+@@ -379,7 +379,6 @@
+ 
+ 	native_packaging_method = ENV['NATIVE_PACKAGING_METHOD'] || "deb"
+ 	
+-	sh "rm -rf #{fakeroot}"
+ 	sh "mkdir -p #{fakeroot}"
+ 	
+ 	# Ruby sources
+@@ -464,10 +463,6 @@
+ 		end
+ 	end
+ 	
+-	# Apache 2 module
+-	sh "mkdir -p #{File.dirname(fake_apache2_module_path)}"
+-	sh "cp #{APACHE2_MODULE} #{fake_apache2_module_path}"
+-
+ 	# Ruby extension sources
+ 	sh "mkdir -p #{fake_ruby_extension_source_dir}"
+ 	sh "cp -R #{PhusionPassenger.ruby_extension_source_dir}/* #{fake_ruby_extension_source_dir}"

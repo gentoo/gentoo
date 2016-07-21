@@ -1,0 +1,40 @@
+diff -ruN QtMPC-0-vanilla/CMakeLists.txt QtMPC/CMakeLists.txt
+--- QtMPC-0-vanilla/CMakeLists.txt	2010-11-02 17:00:58.000000000 +0100
++++ QtMPC/CMakeLists.txt	2011-11-20 23:27:18.000000000 +0100
+@@ -81,6 +81,11 @@
+ 
+ # this command finds Qt4 libraries and sets all required variables
+ FIND_PACKAGE( Qt4 REQUIRED )
++
++# add some useful macros and variables
++# (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
++INCLUDE( ${QT_USE_FILE} )
++
+ FIND_PACKAGE( KDE4 )
+ 
+ IF( NOT DEFINED WANT_KDE_SUPPORT )
+@@ -134,12 +139,6 @@
+ 	ADD_DEFINITIONS( -DQT_NO_STL -DQT_NO_CAST_TO_ASCII -Wall -Wextra )
+ ENDIF( NOT ENABLE_KDE_SUPPORT )
+ 
+-# add some useful macros and variables
+-# (QT_USE_FILE is a variable defined by FIND_PACKAGE( Qt4 ) that contains a path to CMake script)
+-IF( NOT ENABLE_KDE_SUPPORT )
+-	INCLUDE( ${QT_USE_FILE} )
+-ENDIF( NOT ENABLE_KDE_SUPPORT )
+-
+ ADD_SUBDIRECTORY( external/libmaia )
+ 
+ # Compile the resource files
+@@ -169,9 +168,9 @@
+ 
+ # Last but not least, link everything. Based on whether we are using KDE or not.
+ IF( ENABLE_KDE_SUPPORT )
+-	TARGET_LINK_LIBRARIES( QtMPC ${QT_LIBRARIES} ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} Maia )
++	TARGET_LINK_LIBRARIES( QtMPC Maia ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${QT_LIBRARIES} )
+ ELSE( ENABLE_KDE_SUPPORT )
+-	TARGET_LINK_LIBRARIES( QtMPC ${QT_LIBRARIES} Maia )
++	TARGET_LINK_LIBRARIES( QtMPC Maia ${QT_LIBRARIES} )
+ ENDIF( ENABLE_KDE_SUPPORT )
+ 
+ IF( ENABLE_KDE_SUPPORT )

@@ -1,0 +1,4 @@
+#Specifies xfractint directory
+
+FRACTDIR=/usr/share/xfractint
+

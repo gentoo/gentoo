@@ -1,0 +1,26 @@
+diff -Naur gpointing-device-settings-1.5.1.orig/configure.ac gpointing-device-settings-1.5.1/configure.ac
+--- gpointing-device-settings-1.5.1.orig/configure.ac	2010-02-05 00:38:20.000000000 +0100
++++ gpointing-device-settings-1.5.1/configure.ac	2013-12-17 15:00:08.394574115 +0100
+@@ -3,10 +3,9 @@
+ 
+ AC_INIT(gpointing-device-settings, 1.5.1,
+         [http://bugzilla.gnome.org/enter_bug.cgi?product=GPointingDeviceSettings])
+-AM_INIT_AUTOMAKE([1.9 tar-pax])
+-AM_INIT_AUTOMAKE([foreign])
++AM_INIT_AUTOMAKE([1.9 tar-pax foreign])
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ 
+ AM_PROG_LIBTOOL
+@@ -146,9 +145,6 @@
+ 
+ GPDS_CFLAGS="$XINPUT_CFLAGS $GTK_CFLAGS"
+ GPDS_CFLAGS="$GPDS_CFLAGS $GCONF2_CFLAGS"
+-GPDS_CFLAGS="$GPDS_CFLAGS -DGTK_DISABLE_DEPRECATED"
+-GPDS_CFLAGS="$GPDS_CFLAGS -DGDK_DISABLE_DEPRECATED"
+-GPDS_CFLAGS="$GPDS_CFLAGS -DG_DISABLE_DEPRECATED"
+ GPDS_CFLAGS="$GPDS_CFLAGS -DGPDS_MODULEDIR=\\\"\"\$(gpds_moduledir)\"\\\""
+ GPDS_CFLAGS="$GPDS_CFLAGS -DGPDS_DATADIR=\\\"\"\$(gpds_datadir)\"\\\""
+ GPDS_CFLAGS="$GPDS_CFLAGS -DGPDS_UIDIR=\\\"\"\$(gpds_uidir)\"\\\""

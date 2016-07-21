@@ -1,0 +1,28 @@
+From 51dc916e4466d0033728dd14f318203f995b3ad0 Mon Sep 17 00:00:00 2001
+From: Jeremy Olexa <darkside@gentoo.org>
+Date: Tue, 5 Apr 2011 14:19:49 +0000
+Subject: [PATCH] Move syslog call to ifdef _DEBUG
+
+In order to prevent logfile spamming (once every 7 seconds), move the
+syslog call only be used if compiled with -D_DEBUG
+---
+ main.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/main.c b/main.c
+index 13b95dd..781b321 100644
+--- a/main.c
++++ b/main.c
+@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
+ 
+ 				kernel_rng_add_entropy(bytes, sizeof(bytes), cur_n_bits);
+ 
+-				syslog(LOG_DEBUG, "added %d bits of entropy data", cur_n_bits);
+ #ifdef _DEBUG
++				syslog(LOG_DEBUG, "added %d bits of entropy data", cur_n_bits);
+ 				printf("added %d bits of entropy data\n", cur_n_bits);
+ #endif
+ 
+-- 
+1.7.3.4
+

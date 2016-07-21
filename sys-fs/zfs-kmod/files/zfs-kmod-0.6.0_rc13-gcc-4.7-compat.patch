@@ -1,0 +1,51 @@
+From 37f000c5aa76613e644cf3e5b1ec7bd2df6f7451 Mon Sep 17 00:00:00 2001
+From: Ned Bass <bass6@llnl.gov>
+Date: Wed, 26 Dec 2012 14:56:41 -0800
+Subject: [PATCH] Fix gcc array subscript above bounds warning
+
+In a debug build, certain GCC versions flag an array bounds warning in
+the below code from dnode_sync.c
+
+    } else {
+            int i;
+            ASSERT(dn->dn_next_nblkptr[txgoff] < dnp->dn_nblkptr);
+            /* the blkptrs we are losing better be unallocated */
+            for (i = dn->dn_next_nblkptr[txgoff];
+                i < dnp->dn_nblkptr; i++)
+                    ASSERT(BP_IS_HOLE(&dnp->dn_blkptr[i]));
+
+This usage is in fact safe, since the ASSERT ensures the index does
+not exceed to maximum possible number of block pointers. However gcc
+can't determine that the assignment 'i = dn->dn_next_nblkptr[txgoff];'
+falls within the array bounds so it issues a warning.  To avoid this,
+initialize i to zero to make gcc happy but skip the elements before
+dn->dn_next_nblkptr[txgoff] in the loop body.  Since a dnode contains
+at most 3 block pointers this overhead should be negligible.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #950
+---
+ module/zfs/dnode_sync.c |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/module/zfs/dnode_sync.c b/module/zfs/dnode_sync.c
+index af636dc..f2dda86 100644
+--- a/module/zfs/dnode_sync.c
++++ b/module/zfs/dnode_sync.c
+@@ -666,9 +666,10 @@
+ 			int i;
+ 			ASSERT(dn->dn_next_nblkptr[txgoff] < dnp->dn_nblkptr);
+ 			/* the blkptrs we are losing better be unallocated */
+-			for (i = dn->dn_next_nblkptr[txgoff];
+-			    i < dnp->dn_nblkptr; i++)
+-				ASSERT(BP_IS_HOLE(&dnp->dn_blkptr[i]));
++			for (i = 0; i < dnp->dn_nblkptr; i++) {
++				if (i >= dn->dn_next_nblkptr[txgoff])
++					ASSERT(BP_IS_HOLE(&dnp->dn_blkptr[i]));
++			}
+ #endif
+ 		}
+ 		mutex_enter(&dn->dn_mtx);
+-- 
+1.7.10
+

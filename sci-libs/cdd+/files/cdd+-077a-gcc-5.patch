@@ -1,0 +1,14 @@
+Fix check for GCC version beyond major version 4.
+Gentoo bug #569222
+
+--- cdd+-077a/gmp_init.cc
++++ cdd+-077a/gmp_init.cc
+@@ -31,7 +31,7 @@
+ # define pm_gmp_reallocate std::__alloc::reallocate
+ #endif // gcc 3.3
+ 
+-#if __GNUC__==3 && __GNUC_MINOR__==4 || __GNUC__==4
++#if __GNUC__==3 && __GNUC_MINOR__==4 || __GNUC__>=4
+ # include <ext/pool_allocator.h>
+ 
+ namespace {

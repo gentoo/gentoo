@@ -1,0 +1,53 @@
+Fix PIL imports for Pillow compat
+https://bugs.gentoo.org/show_bug.cgi?id=471506
+--- HTMLgen/ImageH.py	1999-04-20 22:40:28.000000000 -0400
++++ HTMLgen/ImageH.py	2013-06-08 14:00:49.261734532 -0400
+@@ -576,7 +576,7 @@
+         "Display image (for debug purposes only)"
+ 
+ 	try:
+-	    import ImageTk
++	    from PIL import ImageTk
+ 	    ImageTk._show(self, title)
+ 	    # note: caller must enter mainloop
+ 	except:
+--- HTMLgen/ImagePaletteH.py	2013-06-08 13:56:03.476318926 -0400
++++ HTMLgen/ImagePaletteH.py	2013-06-08 14:01:26.564871622 -0400
+@@ -87,7 +87,7 @@
+ 
+     if not lut:
+         try:
+-            import GimpPaletteFile
++            from PIL import GimpPaletteFile
+             fp.seek(0)
+             p = GimpPaletteFile.GimpPaletteFile(fp)
+             lut = p.getpalette()
+@@ -96,7 +96,7 @@
+ 
+     if not lut:
+         try:
+-            import GimpGradientFile
++            from PIL import GimpGradientFile
+             fp.seek(0)
+             p = GimpGradientFile.GimpGradientFile(fp)
+             lut = p.getpalette()
+@@ -105,7 +105,7 @@
+ 
+     if not lut:
+         try:
+-            import PaletteFile
++            from PIL import PaletteFile
+             fp.seek(0)
+             p = PaletteFile.PaletteFile(fp)
+             lut = p.getpalette()
+--- HTMLgen/imgsize.py	1998-05-25 13:56:37.000000000 -0400
++++ HTMLgen/imgsize.py	2013-06-08 14:01:48.731358969 -0400
+@@ -15,7 +15,7 @@
+ 
+ try: #Following switcheroo ensures that if PIL is installed it's used instead
+     # of the HTMLgen-bundled copies.
+-    import Image
++    from PIL import Image
+ except ImportError:
+     import ImageH
+     Image = ImageH

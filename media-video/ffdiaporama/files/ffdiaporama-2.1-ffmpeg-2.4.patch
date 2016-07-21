@@ -1,0 +1,16 @@
+--- src/ffDiaporama/engine/cDeviceModelDef.h	2015-02-14 10:02:12.592365100 +0100
++++ src/ffDiaporama/engine/cDeviceModelDef.h	2015-02-14 10:01:59.202463800 +0100
+@@ -84,7 +84,12 @@
+ #elif (LIBAVUTIL_VERSION_MICRO>=100)&&(LIBAVCODEC_VERSION_MICRO>=100)&&(LIBAVFORMAT_VERSION_MICRO>=100)&&(LIBAVDEVICE_VERSION_MICRO>=100)&&(LIBAVFILTER_VERSION_MICRO>=100)&&(LIBSWSCALE_VERSION_MICRO>=100)
+     #define FFMPEG
+     #include "libswresample/swresample.h"
+-    #define RESAMPLE_MAX_CHANNELS SWR_CH_MAX
++    #ifdef SWR_CH_MAX
++      #define RESAMPLE_MAX_CHANNELS SWR_CH_MAX
++    #else
++      #define RESAMPLE_MAX_CHANNELS 32
++    #endif
++    
+     #include "libavfilter/avcodec.h"
+     #include "libavfilter/buffersink.h"
+     #include "libavfilter/buffersrc.h"

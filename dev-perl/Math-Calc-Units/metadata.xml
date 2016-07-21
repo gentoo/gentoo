@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Math-Calc-Units</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Compute</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Base</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Base2Metric</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Byte</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Combo</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Date</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Distance</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Metric</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Multi</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Convert::Time</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Grammar</remote-id>
+    <remote-id type="cpan-module">Math::Calc::Units::Rank</remote-id>
+    <remote-id type="cpan-module">Parse::Yapp::Driver</remote-id>
+  </upstream>
+</pkgmetadata>

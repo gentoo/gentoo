@@ -1,0 +1,76 @@
+--- MIME-tool/Makefile	2012-10-14 09:36:08.547372628 +0000
++++ MIME-tool/Makefile	2012-10-14 09:37:30.786356453 +0000
+@@ -1,10 +1,13 @@
+ .PHONY:	all clean realclean distrib
+ 
++CC=gcc
++CFLAGS=-Wall -O2
++LDFLAGS=
++
+ all:	mime-tool
+ 
+ mime-tool:	mime.c
+-	gcc -Wall -O2 -o mime-tool mime.c
+-	-strip mime-tool
++	$(CC) $(CFLAGS) $(LDFLAGS) -o mime-tool mime.c
+ 
+ realclean:	clean
+ 	-rm mime-tool
+--- Makefile	2012-10-14 10:01:35.211485438 +0000
++++ Makefile	2012-10-14 10:08:26.682400711 +0000
+@@ -15,6 +15,10 @@
+ 
+ .PHONY:	all binary doc clean realclean distclean package install distrib all2 FORCE
+ 
++CC=gcc
++CFLAGS=-Wall -O2
++LDFLAGS=
++
+ RELEASECODE=$(shell grep '^<dt>' Changelog.html | tail -1 | sed 's/.* release //; sx</a>.*$$xx')
+ BUILDDATE=$(shell date '+%Y-%m-%dT%H%M%S%Z')
+ 
+@@ -44,20 +48,19 @@
+ all2:	package distrib
+ 
+ ada-readline-c.o:	ada-readline-c.c
+-	gcc -c -Wall -O2 $(TOPALDEBUG) ada-readline-c.c
++	$(CC) -c $(CFLAGS) $(TOPALDEBUG) ada-readline-c.c
+ 
+ ada-echo-c.o:	ada-echo-c.c
+-	gcc -c -Wall -O2 $(TOPALDEBUG) ada-echo-c.c
++	$(CC) -c $(CFLAGS) $(TOPALDEBUG) ada-echo-c.c
+ 
+ externals-c.o:	externals-c.c
+-	gcc -c -Wall -O2 $(TOPALDEBUG) externals-c.c
++	$(CC) -c $(CFLAGS) $(TOPALDEBUG) externals-c.c
+ 
+ mime-tool:	
+-	make -C MIME-tool
++	$(MAKE) -C MIME-tool
+ 
+ topal:	$(TOPALDEPS)
+-	gnatmake -gnat05 -gnatwa -gnato -O2 $(TOPALDEBUG) topal
+-	-strip topal
++	gnatmake -gnat05 -gnatwa -gnato -O2 $(TOPALDEBUG) topal -largs $(LDFLAGS)
+ 
+ # FORCE, because BUILDDATE changes each time....
+ version_id.adb:	mkversionid FORCE
+@@ -74,13 +77,13 @@
+ topal.pdf:	topal.tex versionid.tex
+ 	pdflatex topal.tex && pdflatex topal.tex
+ 
+-install:	all
++install:
+ 	install -d $(INSTALLPATHBIN) $(INSTALLPATHDOC) $(INSTALLPATHMAN)/man1 $(INSTALLPATHPATCHES)
+-	install -m 755 -s topal $(INSTALLPATHBIN)
+-	install -m 644 Features.html Changelog.html topal.pdf COPYING $(INSTALLPATHDOC)
++	install -m 755 topal $(INSTALLPATHBIN)
++	install -m 644 screens/*.png $(INSTALLPATHDOC)
+ 	install -m 644 topal.man $(INSTALLPATHMAN)/man1/topal.1
+-	install -m 644 pine-*.patch alpine-*.patch alpine-*.patch-* $(INSTALLPATHPATCHES)
+-	install -m 755 -s MIME-tool/mime-tool $(INSTALLPATHBIN)
++	install -m 644 alpine-*.patch alpine-*.patch-* $(INSTALLPATHPATCHES)
++	install -m 755 MIME-tool/mime-tool $(INSTALLPATHBIN)
+ 	install -m 644 MIME-tool/mime-tool.man $(INSTALLPATHMAN)/man1/mime-tool.1
+ 
+ clean:

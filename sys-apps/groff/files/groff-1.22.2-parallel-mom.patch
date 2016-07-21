@@ -1,0 +1,96 @@
+From 9f3af719383ab525c86ee0f514e268ef8494330a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 6 Dec 2013 20:40:10 -0500
+Subject: [PATCH] fix parallel build w/gropdf and mom examples
+
+The contrib/mom/examples/ directory uses the helper script from
+src/devices/gropdf/.  Currently though, parallel builds might fail
+like so:
+
+...
+make[2]: Entering directory `.../groff-1.22.2/contrib/mom'
+GROFF_COMMAND_PREFIX= GROFF_BIN_PATH="`echo .../groff-1.22.2/src/roff/groff .../groff-1.22.2/src/roff/troff .../groff-1.22.2/src/devices/grops .../groff-1.22.2/src/devices/gropdf | sed -e 's|  *|:|g'`" PDFMOM_BIN_PATH=".../groff-1.22.2/src/devices/gropdf" .../groff-1.22.2/src/devices/gropdf/pdfmom -F.../groff-1.22.2/font -F.../groff-1.22.2/font -M.../groff-1.22.2/tmac -M.../groff-1.22.2/tmac -M. examples/letter.mom >examples/letter.pdf
+GROFF_COMMAND_PREFIX= GROFF_BIN_PATH="`echo .../groff-1.22.2/src/roff/groff .../groff-1.22.2/src/roff/troff .../groff-1.22.2/src/devices/grops .../groff-1.22.2/src/devices/gropdf | sed -e 's|  *|:|g'`" PDFMOM_BIN_PATH=".../groff-1.22.2/src/devices/gropdf" .../groff-1.22.2/src/devices/gropdf/pdfmom -F.../groff-1.22.2/font -F.../groff-1.22.2/font -M.../groff-1.22.2/tmac -M.../groff-1.22.2/tmac -M. examples/mom-pdf.mom >examples/mom-pdf.pdf
+/bin/sh: .../groff-1.22.2/src/devices/gropdf/pdfmom: No such file or directory
+make[2]: *** [examples/letter.pdf] Error 127
+/bin/sh: .../groff-1.22.2/src/devices/gropdf/pdfmom: No such file or directory
+make[2]: *** [examples/mom-pdf.pdf] Error 127
+make[2]: Leaving directory `.../groff-1.22.2/contrib/mom'
+make[1]: *** [contrib/mom] Error 2
+...
+make[2]: Entering directory `.../groff-1.22.2/src/devices/gropdf'
+sed -f .../groff-1.22.2/arch/misc/shdeps.sed \
+	-e "s|@VERSION@|1.22.2|" \
+	-e "s|@PERLPATH@|/usr/bin/perl|" ./pdfmom.pl >pdfmom
+
+The top level makefile tries to account for this in general with OTHERDIRS,
+but looks like src/devices/gropdf/ was added to this variable (which holds
+contrib/mom/ too) because gropdf installs a shell script, and the other
+prog vars require it to be a dir of things to compile.
+
+Declare a new prog var for holding shell scripts.
+
+URL: http://crbug.com/324116
+URL: https://bugs.gentoo.org/487276
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+
+2013-12-06  Mike Frysinger  <vapier@gentoo.org>
+
+	* Makefile.in (SHPROGDIRS): Declare.
+	(PROGDIRS): Add $(SHPROGDIRS).
+	(OTHERDIRS): Delete src/devices/gropdf.
+	($(SHPROGDIRS):): Add to existing rule.
+	($(OTHERDIRS):): Depend on $(SHPROGDIRS).
+---
+ Makefile.in | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index a794de7..8e478af 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -602,12 +602,15 @@ CCPROGDIRS=\
+   src/utils/addftinfo
+ CPROGDIRS=\
+   src/utils/pfbtops
++SHPROGDIRS=\
++  src/devices/gropdf
+ PROGDEPDIRS=\
+   arch/misc
+ PROGDIRS=\
+   $(PROGDEPDIRS) \
+   $(CCPROGDIRS) \
+   $(CPROGDIRS) \
++  $(SHPROGDIRS) \
+   $(XPROGDIRS)
+ DEVDIRS=\
+   font/devps \
+@@ -637,7 +640,6 @@ OTHERDIRS=\
+   contrib/glilypond \
+   contrib/hdtbl \
+   contrib/pdfmark \
+-  src/devices/gropdf \
+   font/devpdf \
+   contrib/mom \
+   contrib/gdiffmk
+@@ -778,7 +780,7 @@ $(CCPROGDIRS): FORCE $(LIBDIRS)
+ 	  -f $(top_srcdir)/Makefile.ccpg \
+ 	  -f Makefile.dep $(do)
+ 
+-$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS): FORCE $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
++$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS) $(SHPROGDIRS): FORCE $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
+ 	@$(ENVSETUP); \
+ 	if test $(srcdir) = .; then \
+ 	  srcdir=.; \
+@@ -809,7 +811,7 @@ $(GNULIBDIRS): FORCE
+ 	  $(MAKE) ACLOCAL=: AUTOCONF=: AUTOHEADER=: AUTOMAKE=: $(do) ;; \
+ 	esac
+ 
+-$(OTHERDIRS): $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
++$(OTHERDIRS): $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS) $(SHPROGDIRS)
+ 
+ $(INCDIRS) $(PROGDEPDIRS) $(OTHERDIRS): FORCE
+ 	@$(ENVSETUP); \
+-- 
+1.8.4.3
+

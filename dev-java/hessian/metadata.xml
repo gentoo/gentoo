@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
+<longdescription>
+The Hessian binary web service protocol makes web services usable without
+requiring a large framework, and without learning yet another alphabet soup
+of protocols. Because it is a binary protocol, it is well-suited to sending
+binary data without any need to extend the protocol with attachments.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,38 @@
+--- kde/window-decorator-kde4/window.cpp	2010-05-21 11:18:14.000000000 +0000
++++ kde/window-decorator-kde4/window.cpp	2012-09-12 18:05:00.000000000 +0000
+@@ -59,6 +59,9 @@
+ 
+ #include "paintredirector.h"
+ 
++// header for gcc-4.7 compatibility
++#include "unistd.h"
++
+ KWD::Window::Window (WId  parentId,
+ 		     WId  clientId,
+ 		     WId  frame,
+--- configure.ac.orig	2012-09-12 23:39:54.093812000 +0400
++++ configure.ac	2012-09-12 23:40:37.253686000 +0400
+@@ -72,11 +72,6 @@
+   *) CFLAGS="$CFLAGS -Wnested-externs" ;;
+   esac
+ 
+-  case " $CFLAGS " in
+-  *[[\ \	]]-D_FORTIFY_SOURCE=2[[\ \	]]*) ;;
+-  *) CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=2" ;;
+-  esac
+-
+   if test "x$enable_ansi" = "xyes"; then
+     case " $CFLAGS " in
+     *[[\ \	]]-ansi[[\ \	]]*) ;;
+@@ -95,11 +90,6 @@
+   *[[\ \	]]-Wall[[\ \	]]*) ;;
+   *) CXXFLAGS="$CXXFLAGS -Wall" ;;
+   esac
+-
+-  case " $CXXFLAGS " in
+-  *[[\ \	]]-D_FORTIFY_SOURCE=2[[\ \	]]*) ;;
+-  *) CXXFLAGS="$CXXFLAGS -D_FORTIFY_SOURCE=2" ;;
+-  esac
+ fi
+ 
+ AC_C_BIGENDIAN

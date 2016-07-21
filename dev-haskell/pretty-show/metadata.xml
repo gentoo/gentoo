@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		We provide a library and an executable for working with derived 'Show'
+		instances. By using the library, we can parse derived 'Show' instances into a
+		generic data structure. The @ppsh@ tool uses the library to produce
+		human-readable versions of 'Show' instances, which can be quite handy for
+		debugging Haskell programs.
+	</longdescription>
+</pkgmetadata>

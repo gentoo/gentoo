@@ -1,0 +1,20 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 93_freecell-0.0.2-1.5.4.dpatch by Thomas Günther <tom@toms-cafe.de>
+## http://toms-cafe.de/vdr/download/freecell-0.0.2-1.5.4.diff
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Changes for VDR >= 1.5.4.
+
+@DPATCH@
+--- freecell-0.0.2/tools/list.h
++++ freecell-0.0.2/tools/list.h
+@@ -523,7 +523,7 @@
+ 	return neu;
+ }
+ 
+-typedef class cTBList<cTBString> cStringList;
++//typedef class cTBList<cTBString> cStringList;
+ typedef class cTBList<void*> cPtrList;
+ 
+ // Special Overrides for String lists
+

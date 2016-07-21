@@ -1,0 +1,3 @@
+# Naohiro Aota <naota@gentoo.org> (08 Nov 2011)
+# Always enable hardened not to depend glibc
+app-emulation/wine hardened

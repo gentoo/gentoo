@@ -1,0 +1,29 @@
+From edda65b8fb32c2eee6b0652074981c31aa68b0eb Mon Sep 17 00:00:00 2001
+From: Naohisa Goto <ng@bioruby.org>
+Date: Fri, 23 Aug 2013 23:51:59 +0900
+Subject: [PATCH] Test bug fix: Read test file with binary mode to avoid
+ encoding error
+
+ * Test bug fix: Read test file with binary mode to avoid string encoding
+   error. Thanks to nieder (github.com/nieder) who reports the bug.
+   (https://github.com/bioruby/bioruby/issues/84)
+---
+ test/unit/bio/db/test_phyloxml.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/unit/bio/db/test_phyloxml.rb b/test/unit/bio/db/test_phyloxml.rb
+index 0744c64..c24278d 100644
+--- a/test/unit/bio/db/test_phyloxml.rb
++++ b/test/unit/bio/db/test_phyloxml.rb
+@@ -100,7 +100,7 @@ def test_open_with_block
+     end
+ 
+     def test_new
+-      str = File.read(TestPhyloXMLData.example_xml)
++      str = File.open(TestPhyloXMLData.example_xml, "rb") { |f| f.read }
+       assert_instance_of(Bio::PhyloXML::Parser,
+                          phyloxml = Bio::PhyloXML::Parser.new(str))
+       common_test_next_tree(phyloxml)
+-- 
+1.8.4
+

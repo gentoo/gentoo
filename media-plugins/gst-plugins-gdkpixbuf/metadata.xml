@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	GStreamer plugin for GdkPixbuf-based image decoder, overlay and sink
+
+	Includes the following elements:
+	* gdkpixbufsink - Output images as GdkPixbuf objects in bus messages
+	* gdkpixbufoverlay - Overlay an image onto a video stream
+	* gdkpixbufdec - Decodes images in a video stream using GdkPixbuf
+</longdescription>
+</pkgmetadata>

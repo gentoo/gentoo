@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -116,7 +116,7 @@
+ 
+ 
+ dnl Add the languages which your application supports here.
+-ALL_LINGUAS="it uk de fr ru"
++ALL_LINGUAS="de fr hu it ru uk"
+ AM_GLIB_GNU_GETTEXT
+ 
+ 

@@ -1,0 +1,11 @@
+--- lib/BackupPC/CGI/View.pm.orig	2009-09-30 19:08:34.353577546 +0300
++++ lib/BackupPC/CGI/View.pm	2009-09-30 19:16:01.982412712 +0300
+@@ -86,7 +86,7 @@
+         $file = $bpc->ConfDir() . "/hosts";
+         $linkHosts = 1;
+     } elsif ( $type eq "docs" ) {
+-        $file = $bpc->InstallDir() . "/doc/BackupPC.html";
++        $file = "__DOCDIR__/BackupPC.html";
+     } elsif ( $host ne "" ) {
+         if ( !defined($In{num}) ) {
+             # get the latest LOG file

@@ -1,0 +1,26 @@
+commit e594df5c73ab550fb76895f75f71109eb3640c41
+Author: Sergei Trofimovich <slyfox@gentoo.org>
+Date:   Thu Feb 23 22:28:28 2012 +0300
+
+    seekwatcher: fix failure when /bin/sh points to dash
+    
+    Before the patch:
+    $ ./seekwatcher -t test.trace -o test.png -p 'sleep 5' -d /dev/sda2
+    > using tracefile ./test.trace
+    > sh: Syntax error: Bad fd number
+    > Empty blktrace run found, exiting
+
+Upstream status: sent, not applied yet
+diff --git a/cmd/seekwatcher b/cmd/seekwatcher
+index 7e96bd2..23cba1c 100755
+--- a/cmd/seekwatcher
++++ b/cmd/seekwatcher
+@@ -610,7 +610,7 @@ def run_blkparse(trace):
+         print "using tracefile %s" % os.path.join(trace_dir, x)
+         fh = tempfile.NamedTemporaryFile(dir=".")
+         os.system('blkparse -q -D ' + trace_dir + ' -i ' + x +
+-                ' -d ' + fh.name + ' -O >& /dev/null')
++                ' -d ' + fh.name + ' -O > /dev/null 2>&1')
+         loaddata(fh, rd)
+     return rd
+ 

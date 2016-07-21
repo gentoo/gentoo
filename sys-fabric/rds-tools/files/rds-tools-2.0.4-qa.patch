@@ -1,0 +1,59 @@
+Respect CC,CFLAGS, fix install paths, don't strip binaries
+
+https://bugs.gentoo.org/show_bug.cgi?id=374805
+--- Makefile.in
++++ Makefile.in
+@@ -1,12 +1,15 @@
+-prefix		= $(DESTDIR)@prefix@
+-exec_prefix	= $(DESTDIR)@exec_prefix@
+-bindir		= $(DESTDIR)@bindir@
+-mandir		= $(DESTDIR)@mandir@
+-incdir		= $(DESTDIR)@includedir@
++bindir = @bindir@
++exec_prefix = @exec_prefix@
++includedir = @includedir@
++libdir = @libdir@
++mandir = @mandir@
++mkdir_p = @mkdir_p@
++prefix = @prefix@
++INSTALL = /usr/bin/install
+ 
+ all: all-programs
+ 
+-CFLAGS = -O2 -Wall -Iinclude
++CFLAGS += -Wall -Iinclude
+ CPPFLAGS = -DDEBUG_EXE -DRDS_VERSION=\"@VERSION@\" -MD -MP -MF $(@D)/.$(basename $(@F)).d
+ 
+ HEADERS = kernel-list.h pfhack.h include/rds.h
+@@ -29,14 +32,14 @@
+ all-programs: $(PROGRAMS)
+ 
+ install: $(PROGRAMS)
+-	install -d $(bindir)
+-	install -m 555 -s $(PROGRAMS) $(bindir)
+-	install -d $(mandir)/man1
+-	install -d $(mandir)/man7
+-	install -m 644 *.1 $(mandir)/man1
+-	install -m 644 *.7 $(mandir)/man7
+-	install -d $(incdir)/net
+-	install -m 444 include/rds.h $(incdir)/net
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) -m 555 $(PROGRAMS) $(DESTDIR)$(bindir)
++	$(INSTALL) -d $(DESTDIR)$(mandir)/man1
++	$(INSTALL) -d $(DESTDIR)$(mandir)/man7
++	$(INSTALL) -m 644 *.1 $(DESTDIR)$(mandir)/man1
++	$(INSTALL) -m 644 *.7 $(DESTDIR)$(mandir)/man7
++	$(INSTALL) -d $(DESTDIR)$(includedir)/net
++	$(INSTALL) -m 444 include/rds.h $(DESTDIR)$(includedir)/net
+ 
+ clean:
+ 	rm -f $(PROGRAMS) $(CLEAN_OBJECTS)
+@@ -47,7 +50,7 @@
+ 
+ 
+ $(PROGRAMS) : % : %.o $(COMMON_OBJECTS)
+-	gcc $(CFLAGS) $(LDFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ LOCAL_DFILES := $(wildcard .*.d)
+ ifneq ($(LOCAL_DFILES),)

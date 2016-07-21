@@ -1,0 +1,53 @@
+respect user LINGUAS
+
++++ b/Makefile.in
+@@ -16,7 +16,12 @@
+ export VPATH = .:$(srcdir)
+ 
+ DESTDIR =
+-LINGUAS = $(basename $(notdir $(wildcard $(srcdir)/po/*.po)))
++ALL_LINGUAS = $(basename $(notdir $(wildcard $(srcdir)/po/*.po)))
++ifeq ($(LINGUAS),)
++INSTALL_LINGUAS = $(ALL_LINGUAS)
++else
++INSTALL_LINGUAS = $(filter $(LINGUAS),$(ALL_LINGUAS))
++endif
+ 
+ CC = @CC@
+ PERL = @PERL@
+@@ -56,7 +62,7 @@
+ 	$(INSTALL_PROGRAM) $(preload).so $(DESTDIR)$(pkglibdir)
+ 
+ install_l10n: install_dirs msg_l10n man_l10n
+-	for lang in $(LINGUAS); \
++	for lang in $(INSTALL_LINGUAS); \
+ 	do \
+ 	    $(MKINSTALLDIRS) $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES; \
+ 	    $(INSTALL_DATA) $(call vpath_file,po/$$lang.gmo) \
+@@ -124,7 +130,7 @@
+ 	$(MAKE) $(target).h2m
+ 	./$(target) --include=$(target).h2m --output=$@ ./$(target)
+ 
+-msg_l10n: $(addprefix po/,$(addsuffix .gmo,$(LINGUAS)))
++msg_l10n: $(addprefix po/,$(addsuffix .gmo,$(ALL_LINGUAS)))
+ po/%.gmo: $(srcdir)/po/%.po
+ 	test -d po || mkdir po
+ 	$(MSGFMT) -o $@ $?
+@@ -134,7 +140,7 @@
+ 	$(MKINSTALLDIRS) localetmp/$$lang/LC_MESSAGES && \
+ 	$(INSTALL_DATA) po/$$lang.gmo localetmp/$$lang/LC_MESSAGES/$(target).mo
+ 
+-man_l10n: $(addprefix $(target).,$(addsuffix .1,$(LINGUAS)))
++man_l10n: $(addprefix $(target).,$(addsuffix .1,$(ALL_LINGUAS)))
+ $(target).%.1: $(srcdir)/$(target).PL $(srcdir)/$(target).h2m.PL \
+     $(srcdir)/po/%.po
+ 	lang=$(patsubst $(target).%.1,%,$@); \
+@@ -164,7 +170,7 @@
+ 	./config.status
+ 
+ update-po: $(srcdir)/po/$(target).pot
+-	for lang in $(LINGUAS); \
++	for lang in $(ALL_LINGUAS); \
+ 	do \
+ 	    echo -n "Updating $$lang "; \
+ 	    msgmerge -U $(srcdir)/po/$$lang.po $(srcdir)/po/$(target).pot; \

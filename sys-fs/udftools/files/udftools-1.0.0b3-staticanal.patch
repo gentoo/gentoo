@@ -1,0 +1,164 @@
+taken from Fedora
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-staticanal.patch?h=f22
+
+Error: CONSTANT_EXPRESSION_RESULT:
+/builddir/build/BUILD/udftools-1.0.0b3/cdrwtool/cdrwtool.c:626: result_independent_of_operands: (ret == ioctl(fd, 21289, 1)) < 0 is always false regardless of the values of its operands. This occurs as the logical operand of if.
+
+Possible buffer overflow of static allocated variable "device".
+
+diff -up udftools-1.0.0b3/cdrwtool/cdrwtool.c.staticanal udftools-1.0.0b3/cdrwtool/cdrwtool.c
+--- udftools-1.0.0b3/cdrwtool/cdrwtool.c.staticanal	2012-01-26 16:20:44.518234366 +0100
++++ udftools-1.0.0b3/cdrwtool/cdrwtool.c	2012-01-26 16:20:44.537234366 +0100
+@@ -623,7 +623,7 @@ int cdrom_open_check(int fd)
+ 	if ((ret = ioctl(fd, CDROM_CLEAR_OPTIONS, CDO_LOCK)) < 0)
+ 		return ret;
+ 
+-	if ((ret == ioctl(fd, CDROM_LOCKDOOR, 1)) < 0) {
++	if ((ret = ioctl(fd, CDROM_LOCKDOOR, 1)) < 0) {
+ 		fprintf(stderr, "CD-ROM appears to already be opened\n");
+ 		return 1;
+ 	}
+diff -up udftools-1.0.0b3/cdrwtool/options.c.staticanal udftools-1.0.0b3/cdrwtool/options.c
+--- udftools-1.0.0b3/cdrwtool/options.c.staticanal	2012-01-26 16:26:11.288212023 +0100
++++ udftools-1.0.0b3/cdrwtool/options.c	2012-01-26 16:27:24.125207040 +0100
+@@ -135,7 +135,8 @@ void parse_args(int argc, char *argv[],
+ 			}
+ 			case 'd':
+ 			{
+-				strcpy(device, optarg);
++				strncpy(device, optarg, NAME_MAX-1);
++				device[NAME_MAX-1] = '\0';
+ 				printf("using device %s\n", device);
+ 				break;
+ 			}
+
+
+==========================================================================
+Error: NEGATIVE_RETURNS:
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:161: negative_return_fn: Function "open64(filename, 66, 432)" returns a negative number.
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:161: var_assign: Assigning: signed variable "fd" = "open64".
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:165: negative_returns: "fd" is passed to a parameter that cannot be negative.
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:85: neg_sink_parm_call: Passing "fd" to "valid_offset", which cannot accept a negative.
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:55: neg_sink_parm_call: Passing "fd" to "udf_lseek64", which cannot accept a negative.
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/main.c:43: neg_sink_parm_call: Passing "fd" to "lseek64", which cannot accept a negative.
+
+diff -up udftools-1.0.0b3/mkudffs/main.c.staticanal udftools-1.0.0b3/mkudffs/main.c
+--- udftools-1.0.0b3/mkudffs/main.c.staticanal	2004-02-23 04:33:11.000000000 +0100
++++ udftools-1.0.0b3/mkudffs/main.c	2012-01-26 16:29:17.605199282 +0100
+@@ -162,6 +162,10 @@ int main(int argc, char *argv[])
+ #else
+ 	fd = open(filename, O_RDWR | O_CREAT | O_LARGEFILE, 0660);
+ #endif
++	if (fd == NULL) {
++		fprintf(stderr, "mkudffs: cannot open '%s' for writing\n", filename);
++		exit(1);
++	}
+ 	disc.head->blocks = get_blocks(fd, disc.blocksize, disc.head->blocks);
+ 	disc.write = write_func;
+ 	disc.write_data = &fd;
+
+
+==========================================================================
+Error: BAD_SIZEOF:
+/builddir/build/BUILD/udftools-1.0.0b3/mkudffs/mkudffs.c:45: bad_sizeof: Taking the size of pointer parameter "disc" is suspicious.
+
+Possible buffer overflow of static allocated variable "device".
+
+diff -up udftools-1.0.0b3/mkudffs/mkudffs.c.staticanal udftools-1.0.0b3/mkudffs/mkudffs.c
+--- udftools-1.0.0b3/mkudffs/mkudffs.c.staticanal	2012-01-26 16:20:44.526234367 +0100
++++ udftools-1.0.0b3/mkudffs/mkudffs.c	2012-01-26 16:20:44.539234366 +0100
+@@ -42,7 +42,7 @@ void udf_init_disc(struct udf_disc *disc
+ 	struct tm 	*tm;
+ 	int		altzone;
+ 
+-	memset(disc, 0x00, sizeof(disc));
++	memset(disc, 0x00, sizeof(*disc));
+ 
+ 	disc->blocksize = 2048;
+ 	disc->blocksize_bits = 11;
+diff -up udftools-1.0.0b3/mkudffs/options.c.staticanal udftools-1.0.0b3/mkudffs/options.c
+--- udftools-1.0.0b3/mkudffs/options.c.staticanal	2012-01-26 16:24:14.082220036 +0100
++++ udftools-1.0.0b3/mkudffs/options.c	2012-01-26 16:27:29.086206703 +0100
+@@ -320,7 +320,8 @@ void parse_args(int argc, char *argv[],
+ 	}
+ 	if (optind == argc)
+ 		usage();
+-	strcpy(device, argv[optind]);
++	strncpy(device, argv[optind], NAME_MAX-1);
++	device[NAME_MAX-1] = '\0';
+ 	optind ++;
+ 	if (optind < argc)
+ 		disc->head->blocks = strtoul(argv[optind++], NULL, 0);
+ 		
+ 		
+==========================================================================
+Error: OVERRUN_STATIC:
+/builddir/build/BUILD/udftools-1.0.0b3/wrudf/wrudf-cdrw.c:378: overrun-local: Overrunning static array "spm->locSparingTable", with 4 elements, at position 4 with index variable "i".
+
+Error: NEGATIVE_RETURNS:
+/builddir/build/BUILD/udftools-1.0.0b3/wrudf/wrudf-cdrw.c:769: negative_return_fn: Function "open(filename, 2)" returns a negative number.
+/builddir/build/BUILD/udftools-1.0.0b3/wrudf/wrudf-cdrw.c:769: var_assign: Assigning: signed variable "device" = "open".
+/builddir/build/BUILD/udftools-1.0.0b3/wrudf/wrudf-cdrw.c:773: negative_returns: "device" is passed to a parameter that cannot be negative.
+ 		
+diff -up udftools-1.0.0b3/wrudf/wrudf-cdrw.c.staticanal udftools-1.0.0b3/wrudf/wrudf-cdrw.c
+--- udftools-1.0.0b3/wrudf/wrudf-cdrw.c.staticanal	2012-01-26 16:20:44.529234367 +0100
++++ udftools-1.0.0b3/wrudf/wrudf-cdrw.c	2012-01-26 16:35:29.729173836 +0100
+@@ -374,7 +374,7 @@ void updateSparingTable() {
+     struct packetbuf	*pb;
+     struct sparablePartitionMap *spm = (struct sparablePartitionMap*)lvd->partitionMaps;
+ 
+-    for( i = 0; i <= 4; i++ ) {
++    for( i = 0; i < sizeof(spm->locSparingTable); i++ ) {
+ 	pbn = spm->locSparingTable[i];
+ 	if( pbn == 0 )
+ 	    return;
+@@ -682,6 +682,8 @@ readExtents(char* dest, int usesShort, v
+ 	dest += 2048;
+ 	if( len < 2048 )
+ 	    break;
++        /* dead code, len couldn't be 0 at this point 
++           (break was called in this case) */
+ 	if( len == 0 ) {
+ 	    if( usesShort ) {
+ 		sh++;
+@@ -766,8 +768,10 @@ initIO(char *filename)
+ 
+     if( S_ISREG(filestat.st_mode) ) {		/* disk image of a UDF volume */
+ 	devicetype = DISK_IMAGE;
+-	if( !(device = open(filename, O_RDWR)) )
++	if( !(device = open(filename, O_RDWR)) ) {
+ 	    fail("initIO: open %s failed\n", filename);
++	    return 0;
++	}
+ 
+ 	/* heuristically determine medium imitated on disk image based on VAT FileEntry in block 512 */
+ 	rv = lseek(device, 2048 * 512, SEEK_SET);
+
+==========================================================================
+Error: CONSTANT_EXPRESSION_RESULT:
+/builddir/build/BUILD/udftools-1.0.0b3/wrudf/wrudf-cmnd.c:699: missing_parentheses: !(*fid)->fileCharacteristics & 2 is always 0 regardless of the values of its operands. This occurs as the logical operand of if. Did you intend to apply '&' to (*fid)->fileCharacteristics and 2? If so, parentheses would be required to force this interpretation.
+
+diff -up udftools-1.0.0b3/wrudf/wrudf-cmnd.c.staticanal udftools-1.0.0b3/wrudf/wrudf-cmnd.c
+--- udftools-1.0.0b3/wrudf/wrudf-cmnd.c.staticanal	2012-01-26 16:20:44.530234366 +0100
++++ udftools-1.0.0b3/wrudf/wrudf-cmnd.c	2012-01-26 16:20:44.543234366 +0100
+@@ -696,7 +696,7 @@ analyzeDest(char* arg, struct fileIdentD
+ 	*fid = findFileIdentDesc(curDir, comp);
+ 	if( *fid == NULL )
+ 	    return DIR_INVALID;
+-	if( ! (*fid)->fileCharacteristics & FID_FILE_CHAR_DIRECTORY )
++	if( ! ((*fid)->fileCharacteristics & FID_FILE_CHAR_DIRECTORY ))
+ 	    return DIR_INVALID;
+ 	if( (*fid)->fileCharacteristics & FID_FILE_CHAR_DELETED )
+ 	    return DIR_INVALID;
+diff -up udftools-1.0.0b3/wrudf/wrudf.c.staticanal udftools-1.0.0b3/wrudf/wrudf.c
+--- udftools-1.0.0b3/wrudf/wrudf.c.staticanal	2012-01-26 16:20:44.528234367 +0100
++++ udftools-1.0.0b3/wrudf/wrudf.c	2012-01-26 16:20:44.545234365 +0100
+@@ -158,6 +158,7 @@ initialise(char *devicename)
+ 
+ 	if( (p = readTaggedBlock(blkno, ABSOLUTE)) == NULL ) {
+ 	    if( !inMainSeq ) 
++		/* dead code - the condition "inMainSeq" cannot be false */
+ 		fail("Volume Descriptor Sequences read failure\n");
+ 	    blkno = extentRsrvVolDescSeq.extLocation;
+ 	    len = extentRsrvVolDescSeq.extLength;

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">PatchReader</remote-id>
+    <remote-id type="cpan-module">PatchReader</remote-id>
+    <remote-id type="cpan-module">PatchReader::AddCVSContext</remote-id>
+    <remote-id type="cpan-module">PatchReader::Base</remote-id>
+    <remote-id type="cpan-module">PatchReader::CVSClient</remote-id>
+    <remote-id type="cpan-module">PatchReader::DiffPrinter::raw</remote-id>
+    <remote-id type="cpan-module">PatchReader::DiffPrinter::template</remote-id>
+    <remote-id type="cpan-module">PatchReader::FilterPatch</remote-id>
+    <remote-id type="cpan-module">PatchReader::FixPatchRoot</remote-id>
+    <remote-id type="cpan-module">PatchReader::NarrowPatch</remote-id>
+    <remote-id type="cpan-module">PatchReader::PatchInfoGrabber</remote-id>
+    <remote-id type="cpan-module">PatchReader::Raw</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+do not statically link libjq since we install it
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -53,7 +53,6 @@
+ 
+ bin_PROGRAMS = jq
+ jq_SOURCES = main.c
+-jq_LDFLAGS = -static-libtool-libs
+ jq_LDADD = libjq.la -lm
+ 
+ ### Tests (make check)

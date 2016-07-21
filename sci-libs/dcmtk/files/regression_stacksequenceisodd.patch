@@ -1,0 +1,98 @@
+From: Joerg Riesmeier <dicom@offis.de>
+Date: Tue, 1 Mar 2011 10:04:16 +0000 (+0000)
+Subject: Fixed some private tags copied from Philips MR Achieva conformance statement.
+X-Git-Url: http://git.dcmtk.org/web?p=dcmtk.git;a=commitdiff_plain;h=0d3d794e71a3b9035c154a266834f93383083819;hp=0025bc0f762e96afec42dfff505386b3d591f6f7
+
+Fixed some private tags copied from Philips MR Achieva conformance statement.
+Also added a couple of new private tags from the same conformance statement.
+---
+
+Index: dcmtk-3.6.0/dcmdata/data/private.dic
+===================================================================
+--- dcmtk-3.6.0.orig/dcmdata/data/private.dic	2010-11-22 11:39:26.000000000 +0100
++++ dcmtk-3.6.0/dcmdata/data/private.dic	2011-06-17 14:40:20.000000000 +0200
+@@ -35,6 +35,7 @@
+ #   - Philips Digital Diagnost 1.3 conformance statement
+ #   - Philips Integris H, catheterization laboratory, RIS-interface
+ #   - Philips Intera Achieva Conformance Statement
++#   - Philips MR Achieva Conformance Statement
+ #   - Siemens Somatom syngo VA40B conformance statement
+ #   - Siemens AXIOM Artis VB30 conformance statement
+ #   - SonoWand Invite 2.1.1 conformance statement
+@@ -1159,7 +1160,7 @@
+ (2001,"Philips Imaging DD 001",35)	SS	StackSliceNumber	1
+ (2001,"Philips Imaging DD 001",36)	CS	StackType	1
+ (2001,"Philips Imaging DD 001",3f)	CS	ZoomMode	1
+-(2001,"Philips Imaging DD 001",5f)	SQ	StackSequence	1-n
++(2001,"Philips Imaging DD 001",5f)	SQ	StackSequence	1
+ (2001,"Philips Imaging DD 001",60)	SL	NumberOfStacks	1
+ (2001,"Philips Imaging DD 001",61)	CS	SeriesTransmitted	1
+ (2001,"Philips Imaging DD 001",62)	CS	SeriesCommitted	1
+@@ -1204,7 +1205,7 @@
+ (2001,"PHILIPS IMAGING DD 001",35)	SS	StackSliceNumber	1
+ (2001,"PHILIPS IMAGING DD 001",36)	CS	StackType	1
+ (2001,"PHILIPS IMAGING DD 001",3f)	CS	ZoomMode	1
+-(2001,"PHILIPS IMAGING DD 001",5f)	SQ	StackSequence	1-n
++(2001,"PHILIPS IMAGING DD 001",5f)	SQ	StackSequence	1
+ (2001,"PHILIPS IMAGING DD 001",60)	SL	NumberOfStacks	1
+ (2001,"PHILIPS IMAGING DD 001",61)	CS	SeriesTransmitted	1
+ (2001,"PHILIPS IMAGING DD 001",62)	CS	SeriesCommitted	1
+@@ -1221,12 +1222,6 @@
+ (2005,"Philips MR Imaging DD 001",1f)	SH	MPRProtocol	1
+ (2005,"Philips MR Imaging DD 001",20)	SL	NumberOfChemicalShifts	1
+ (2005,"Philips MR Imaging DD 001",2d)	SS	NumberOfStackSlices	1
+-(2005,"Philips MR Imaging DD 001",32)	FL	StackRadialAngle	1
+-(2005,"Philips MR Imaging DD 001",33)	CS	StackRadialAxis	1
+-(2005,"Philips MR Imaging DD 001",35)	SS	StackSliceNumber	1
+-(2005,"Philips MR Imaging DD 001",36)	CS	StackType	1
+-(2005,"Philips MR Imaging DD 001",a1)	CS	SyncraScanType	1
+-(2005,"Philips MR Imaging DD 001",5f)	SQ	StackSequence	1
+ (2005,"Philips MR Imaging DD 001",83)	SQ	Unknown	1
+ 
+ (2005,"Philips MR Imaging DD 005",02)	SQ	Unknown	1
+@@ -1240,12 +1235,6 @@
+ (2005,"PHILIPS MR IMAGING DD 001",1f)	SH	MPRProtocol	1
+ (2005,"PHILIPS MR IMAGING DD 001",20)	SL	NumberOfChemicalShifts	1
+ (2005,"PHILIPS MR IMAGING DD 001",2d)	SS	NumberOfStackSlices	1
+-(2005,"PHILIPS MR IMAGING DD 001",32)	FL	StackRadialAngle	1
+-(2005,"PHILIPS MR IMAGING DD 001",33)	CS	StackRadialAxis	1
+-(2005,"PHILIPS MR IMAGING DD 001",35)	SS	StackSliceNumber	1
+-(2005,"PHILIPS MR IMAGING DD 001",36)	CS	StackType	1
+-(2005,"PHILIPS MR IMAGING DD 001",a1)	CS	SyncraScanType	1
+-(2005,"PHILIPS MR IMAGING DD 001",5f)	SQ	StackSequence	1
+ (2005,"PHILIPS MR IMAGING DD 001",83)	SQ	Unknown	1
+ 
+ (0019,"PHILIPS MR R5.5/PART",1000)	DS	FieldOfView	1
+Index: dcmtk-3.6.0/dcmdata/libsrc/dcdictzz.cc
+===================================================================
+--- dcmtk-3.6.0.orig/dcmdata/libsrc/dcdictzz.cc	2010-11-22 11:48:17.000000000 +0100
++++ dcmtk-3.6.0/dcmdata/libsrc/dcdictzz.cc	2011-06-17 14:41:07.000000000 +0200
+@@ -20753,11 +20817,11 @@
+       DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+       "PHILIPS IMAGING DD 001" }
+   , { 0x2001, 0x005f, 0x2001, 0x005f,
+-      EVR_SQ, "StackSequence", 1, -1, "DICOM",
++      EVR_SQ, "StackSequence", 1, 1, "DICOM",
+       DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+       "Philips Imaging DD 001" }
+   , { 0x2001, 0x005f, 0x2001, 0x005f,
+-      EVR_SQ, "StackSequence", 1, -1, "DICOM",
++      EVR_SQ, "StackSequence", 1, 1, "DICOM",
+       DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+       "PHILIPS IMAGING DD 001" }
+   , { 0x2001, 0x0060, 0x2001, 0x0060,
+@@ -20884,14 +20996,6 @@
+       EVR_CS, "StackType", 1, 1, "DICOM",
+       DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+       "PHILIPS MR IMAGING DD 001" }
+-  , { 0x2005, 0x005f, 0x2005, 0x005f,
+-      EVR_SQ, "StackSequence", 1, 1, "DICOM",
+-      DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+-      "Philips MR Imaging DD 001" }
+-  , { 0x2005, 0x005f, 0x2005, 0x005f,
+-      EVR_SQ, "StackSequence", 1, 1, "DICOM",
+-      DcmDictRange_Unspecified, DcmDictRange_Unspecified,
+-      "PHILIPS MR IMAGING DD 001" }
+   , { 0x2005, 0x0083, 0x2005, 0x0083,
+       EVR_SQ, "Unknown", 1, 1, "DICOM",
+       DcmDictRange_Unspecified, DcmDictRange_Unspecified,

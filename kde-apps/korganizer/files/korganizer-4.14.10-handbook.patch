@@ -1,0 +1,16 @@
+--- a/doc/CMakeLists.txt	2015-06-25 19:47:38.000000000 +0200
++++ b/doc/CMakeLists.txt	2015-07-05 11:50:37.584637940 +0200
+@@ -28,9 +28,10 @@
+ 
+ if(BUILD_kmail)
+   add_subdirectory(kmail)
+-  if(BUILD_korganizer)
+-    add_subdirectory(korganizer)
+-  endif()
++endif()
++
++if(BUILD_korganizer)
++  add_subdirectory(korganizer)
+ endif()
+ 
+ if(BUILD_knode)

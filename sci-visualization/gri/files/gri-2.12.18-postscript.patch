@@ -1,0 +1,97 @@
+diff -Naur gri-2.12.18/src/extern.hh gri-2.12.18.new/src/extern.hh
+--- gri-2.12.18/src/extern.hh	2003-06-07 13:37:55.000000000 -0400
++++ gri-2.12.18.new/src/extern.hh	2008-11-01 10:46:40.000000000 -0400
+@@ -137,6 +137,7 @@
+ 
+ extern int      _arrow_type;
+ extern bool     _warn_offpage;
++extern bool	_export_postscript;
+ 
+ extern std::vector<double> _dash;
+ 
+diff -Naur gri-2.12.18/src/gr.cc gri-2.12.18.new/src/gr.cc
+--- gri-2.12.18/src/gr.cc	2008-09-04 13:32:21.000000000 -0400
++++ gri-2.12.18.new/src/gr.cc	2008-11-01 10:52:24.000000000 -0400
+@@ -397,7 +397,16 @@
+ 		/*
+ 		 * write conforming postscript prolog
+ 		 */
+-		fprintf(fp, "%%!PS-Adobe-2.0 EPSF-1.2\n");
++		//fprintf(fp, "%%!PS-Adobe-2.0 EPSF-1.2\n");
++                extern bool _export_postscript;
++                if (_export_postscript)
++                {
++                  fprintf(fp, "%%!PS-Adobe-2.0\n");
++                }
++                else
++                {
++                  fprintf(fp, "%%!PS-Adobe-2.0 EPSF-1.2\n");
++                }
+ 		if (privacy)
+ 			fprintf(fp, "%%%%Creator: %s\n", "");
+ 		else
+diff -Naur gri-2.12.18/src/gri.cc gri-2.12.18.new/src/gri.cc
+--- gri-2.12.18/src/gri.cc	2006-06-16 19:18:40.000000000 -0400
++++ gri-2.12.18.new/src/gri.cc	2008-11-01 10:46:40.000000000 -0400
+@@ -35,6 +35,7 @@
+ // Globals used elsewhere (variables begin with _).
+ int             _arrow_type;
+ bool            _warn_offpage;
++bool		_export_postscript;
+ std::vector<double>       _dash;
+ std::vector<DataFile>     _dataFILE;
+ std::vector<CmdFile>      _cmdFILE;
+diff -Naur gri-2.12.18/src/startup.cc gri-2.12.18.new/src/startup.cc
+--- gri-2.12.18/src/startup.cc	2008-06-12 08:57:26.000000000 -0400
++++ gri-2.12.18.new/src/startup.cc	2008-11-01 10:57:26.000000000 -0400
+@@ -188,6 +188,7 @@
+ 	_axes_offset = 0.0;
+ 	_use_default_for_query = false;
+ 	_warn_offpage = true;
++	_export_postscript = false;
+ 	PUT_VAR("..use_default_for_query..", 0.0);
+ 	PUT_VAR("..words_in_dataline..", 0.0); // just in case tested
+ 	PUT_VAR("..batch..", 0.0);
+@@ -681,6 +682,7 @@
+ #define FLAG_PUBLICATION	1009
+ #define FLAG_SUPERUSER		1010
+ #define FLAG_WARN_OFFPAGE	1011
++#define FLAG_POSTSCRIPT		1012
+ 	// I use the 'FLAG_...' numbers for options that lack single-character abbreviations.
+ 	static struct poptOption optionsTable[] = {
+ 		{ "batch",             'b',  POPT_ARG_NONE   | POPT_ARGFLAG_ONEDASH, NULL, 'b'                   },
+@@ -703,6 +705,7 @@
+ 		{ "version",           'v',  POPT_ARG_NONE   | POPT_ARGFLAG_ONEDASH, NULL, 'v'                   },
+ 		{ "warn_offpage",      '\0', POPT_ARG_NONE   | POPT_ARGFLAG_ONEDASH, NULL, FLAG_WARN_OFFPAGE     },
+ 		{ "yes",               'y',  POPT_ARG_NONE   | POPT_ARGFLAG_ONEDASH, NULL, 'y'                   },
++		{ "postscript",        '\0', POPT_ARG_NONE   | POPT_ARGFLAG_ONEDASH, NULL, FLAG_POSTSCRIPT       },
+ 		{  0,                   0,                                       0,     0, 0                     }
+ 	};
+ 	const poptContext optCon =
+@@ -872,6 +875,8 @@
+ 				printf("Gri cannot read in '%s'\n",optArg);
+ 			}
+ 			break;
++		case FLAG_POSTSCRIPT
++			_export_postscript = true;
+ 		default:
+ 			printf("Unknown option\n");
+ 			break;
+@@ -1058,6 +1063,8 @@
+ 				} else if (!strcmp(argv[i], "-y") || !strcmp(argv[i], "-yes")) {
+ 					_use_default_for_query = true;
+ 					PUT_VAR("..use_default_for_query..", 1.0);
++				} else if (!strcmp(argv[i], "-postscript")){
++					_export_postscript = true;
+ #if 0
+ 				} else if (!strcmp(argv[i], "-e")) {
+ 					// User wants to do cmd in argv[i+1]
+@@ -1190,6 +1197,8 @@
+         gr_textput("             Makes Gri print out command lines as they are executed.\n");
+         gr_textput("     -true or -y\n");
+         gr_textput("             Makes Gri think the answer to all `query's is RETURN.\n");
++	gr_textput("     -postscript\n");
++	gr_textput("             Export a PostScript file instead of an EPS file.\n");
+ #if 0
+         gr_textput("     -e cmd\n");
+         gr_textput("             BUG: NOT IMPLEMENTED YET!\n");

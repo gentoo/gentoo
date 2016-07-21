@@ -1,0 +1,82 @@
+diff --git a/src/com/sun/Makefile.common b/src/com/sun/Makefile.common
+index a5e49e8..ceea3ca 100644
+--- a/src/com/sun/Makefile.common
++++ b/src/com/sun/Makefile.common
+@@ -35,7 +35,14 @@
+ # nuclear facility.
+ #
+ 
+-include $(CODEMGR_WS)/src/com/sun/Makefile.defs
++CDIR=		$(CODEMGR_WS)/classes
++JAVADIR=	/usr/java
++CLASSPATH=	$(CDIR):$(JAVADIR)/lib/classes.zip
++JCFLAGS=	-classpath $(CLASSPATH)
++JC=		$(JAVADIR)/bin/javac
++TFILE=		$(CDIR)/$(PKGDIR)/.tfile
++M4=		/usr/bin/m4
++
+ 
+ # XXX
+ #SWINGDIR, BEANCLASSPATH, JCBFLAGS need to be removed once JDK1.2 is FCS.
+diff --git a/src/com/sun/Makefile.defs b/src/com/sun/Makefile.defs
+index 2fa61c9..b4692cc 100644
+--- a/src/com/sun/Makefile.defs
++++ b/src/com/sun/Makefile.defs
+@@ -36,9 +36,9 @@
+ #
+ 
+ CDIR=		$(CODEMGR_WS)/classes
+-JAVADIR=	/usr/java
++JAVADIR=	/usr
+ CLASSPATH=	$(CDIR):$(JAVADIR)/lib/classes.zip
+ JCFLAGS=	-classpath $(CLASSPATH)
+ JC=		$(JAVADIR)/bin/javac
+ TFILE=		$(CDIR)/$(PKGDIR)/.tfile
+-M4=		/usr/ccs/bin/m4
++M4=		/usr/bin/m4
+diff --git a/src/com/sun/gssapi/Makefile b/src/com/sun/gssapi/Makefile
+index 49d5933..fc16dfe 100644
+--- a/src/com/sun/gssapi/Makefile
++++ b/src/com/sun/gssapi/Makefile
+@@ -81,7 +81,7 @@ classes:	$(CDIR)/$(PKGDIR) \
+ 		$(SUBDIRS)
+ 
+ $(PFILES):
+-	$(RM) $@; install -s -m 644 -f $(@D) $(PROP_FILES)
++	$(RM) $@; install -m 644 $(PROP_FILES) $(@D)
+ 
+ clean:
+ 	$(RM) $(CDIR)/$(PKGDIR)/*.class $(TFILE) $(PFILES)
+diff --git a/src/com/sun/gssapi/mechs/dummy/Makefile b/src/com/sun/gssapi/mechs/dummy/Makefile
+index 88fc12d..cd3e0a7 100644
+--- a/src/com/sun/gssapi/mechs/dummy/Makefile
++++ b/src/com/sun/gssapi/mechs/dummy/Makefile
+@@ -59,7 +59,7 @@ M4DEF_PROP += -D CONTEXT=_K1000A49
+ M4DEF_PROP += -D CRED=_K2102CC5
+ 
+ Dummy.java: Dummy.m4
+-	/usr/ccs/bin/m4 $(M4DEF_PROP) Dummy.m4 > Dummy.java 
++	$(M4) $(M4DEF_PROP) Dummy.m4 > Dummy.java 
+ 
+ # Service Provider Interface Context Class and its methods/interface
+ M4DEF_CTXTSPI = -D GSSCtxtSpi=C018FE95
+@@ -86,5 +86,5 @@ M4DEF_CTXTSPI += -D _importSecCtxt=_S0AC8F9E
+ M4DEF_CTXTSPI += -D _dispose=_S020B957
+ 
+ DummyCtxt.java: DummyCtxt.m4
+-	/usr/ccs/bin/m4 $(M4DEF_CTXTSPI) DummyCtxt.m4 > DummyCtxt.java
++	$(M4) $(M4DEF_CTXTSPI) DummyCtxt.m4 > DummyCtxt.java
+ 
+diff --git a/src/com/sun/nfs/XFileAccessor.java b/src/com/sun/nfs/XFileAccessor.java
+index 50281d1..348ee3a 100644
+--- a/src/com/sun/nfs/XFileAccessor.java
++++ b/src/com/sun/nfs/XFileAccessor.java
+@@ -71,7 +71,7 @@ class XFileAccessor implements com.sun.xfile.XFileAccessor {
+             return true;
+         } catch (IOException e) {
+             return false;
+-        };
++        }
+     }
+ 
+     public XFile getXFile() {

@@ -1,0 +1,30 @@
+ source/STRUCTURE/assignBondOrderProcessor.C | 2 +-
+ source/TEST/AssignBondOrderProcessor_test.C | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/source/STRUCTURE/assignBondOrderProcessor.C b/source/STRUCTURE/assignBondOrderProcessor.C
+index f8acc4f..035fffc 100644
+--- a/source/STRUCTURE/assignBondOrderProcessor.C
++++ b/source/STRUCTURE/assignBondOrderProcessor.C
+@@ -100,7 +100,7 @@ namespace BALL
+ 	const bool  AssignBondOrderProcessor::Default::KEKULIZE_RINGS = true;
+ 
+ 	const char* AssignBondOrderProcessor::Option::INIFile = "iniFile";
+-	const String  AssignBondOrderProcessor::Default::INIFile = "/bond_lengths/BondOrder.xml";
++	const String  AssignBondOrderProcessor::Default::INIFile = "bond_lengths/BondOrder.xml";
+ 
+ 	const char* AssignBondOrderProcessor::Option::MAX_BOND_ORDER = "max_bond_order";
+ 	const int  AssignBondOrderProcessor::Default::MAX_BOND_ORDER = 3;
+diff --git a/source/TEST/AssignBondOrderProcessor_test.C b/source/TEST/AssignBondOrderProcessor_test.C
+index 6dfafcc..3405ef5 100644
+--- a/source/TEST/AssignBondOrderProcessor_test.C
++++ b/source/TEST/AssignBondOrderProcessor_test.C
+@@ -1834,7 +1834,7 @@ CHECK(Option::INIFile)
+ 	// There is really not much we can test here, so we just execute the processor
+ 	// to have a chance of catching bugs with valgrind if they sneak in
+ 	AssignBondOrderProcessor abop;
+-	abop.options.set(AssignBondOrderProcessor::Option::INIFile, "/bond_lengths/BondOrderGAFF.xml");
++	abop.options.set(AssignBondOrderProcessor::Option::INIFile, "bond_lengths/BondOrderGAFF.xml");
+ 
+ 	System sys40;
+ 	MOL2File mol40(BALL_TEST_DATA_PATH(AssignBondOrderProcessor_test_C4_input.mol2), std::ios::in);

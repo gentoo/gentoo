@@ -1,0 +1,18 @@
+# HG changeset patch
+# User Rafael G. Martins <rafaelmartins@gentoo.org>
+# Date 1294947033 7200
+# Node ID 43c5177150a58f1e5e778319ec055b767971d0b0
+# Parent  022d2e6bcdde0599465cb7193b836f93154b4c78
+add missing configuration step (hginit) to doc/manual.docbook
+
+diff --git a/doc/manual.docbook b/doc/manual.docbook
+--- a/doc/manual.docbook
++++ b/doc/manual.docbook
+@@ -51,6 +51,7 @@
+ <computeroutput>jay@jeeves:~$ </computeroutput><userinput>ssh-add -L > my-key</userinput>
+ <computeroutput>jay@jeeves:~$ </computeroutput><userinput>sudo mkdir -p /etc/mercurial-server/keys/root/jay</userinput>
+ <computeroutput>jay@jeeves:~$ </computeroutput><userinput>sudo cp my-key /etc/mercurial-server/keys/root/jay/spoon</userinput>
++<computeroutput>jay@jeeves:~$ </computeroutput><userinput>sudo -u hg /usr/share/mercurial-server/init/hginit /usr/share/mercurial-server</userinput>
+ <computeroutput>jay@jeeves:~$ </computeroutput><userinput>sudo -u hg /usr/share/mercurial-server/refresh-auth</userinput>
+ <computeroutput>jay@jeeves:~$ </computeroutput><userinput>exit</userinput>
+ <computeroutput>Connection to jeeves closed.

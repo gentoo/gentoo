@@ -1,0 +1,43 @@
+commit 75e84ab906ef8935cff3df3d8929f1bafea81599
+Author: Lukas Wunner <lukas@wunner.de>
+Date:   Thu Jun 18 13:00:32 2015 +0200
+
+    perf tools: Fix build breakage if prefix= is specified
+    
+    Invoking Makefile.perf with prefix= breaks the build since Makefile.perf
+    hands that variable down to Makefile.build where it overrides
+    
+        prefix       := $(subst ./,,$(OUTPUT)$(dir)/)
+    
+    leading to errors like this:
+    
+        No rule to make target '/usrabspath.o', needed by '/usrlibperf-in.o'
+    
+    Signed-off-by: Lukas Wunner <lukas@wunner.de>
+    Acked-by: Jiri Olsa <jolsa@kernel.org>
+    Cc: David Ahern <dsahern@gmail.com>
+    Fixes: c819e2cf2eb6f65d3208d195d7a0edef6108d5
+    Link: http://lkml.kernel.org/r/5582c48a.84a22b0a.a918.5285SMTPIN_ADDED_MISSING@mx.google.com
+    Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+
+diff --git a/tools/build/Makefile.build b/tools/build/Makefile.build
+index 10df572..98cfc38 100644
+--- a/tools/build/Makefile.build
++++ b/tools/build/Makefile.build
+@@ -94,12 +94,12 @@ obj-y        := $(patsubst %/, %/$(obj)-in.o, $(obj-y))
+ subdir-obj-y := $(filter %/$(obj)-in.o, $(obj-y))
+ 
+ # '$(OUTPUT)/dir' prefix to all objects
+-prefix       := $(subst ./,,$(OUTPUT)$(dir)/)
+-obj-y        := $(addprefix $(prefix),$(obj-y))
+-subdir-obj-y := $(addprefix $(prefix),$(subdir-obj-y))
++objprefix    := $(subst ./,,$(OUTPUT)$(dir)/)
++obj-y        := $(addprefix $(objprefix),$(obj-y))
++subdir-obj-y := $(addprefix $(objprefix),$(subdir-obj-y))
+ 
+ # Final '$(obj)-in.o' object
+-in-target := $(prefix)$(obj)-in.o
++in-target := $(objprefix)$(obj)-in.o
+ 
+ PHONY += $(subdir-y)
+ 

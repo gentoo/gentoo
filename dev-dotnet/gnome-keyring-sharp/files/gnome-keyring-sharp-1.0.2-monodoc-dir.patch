@@ -1,0 +1,10 @@
+diff -uNr gnome-keyring-sharp-1.0.1.old/docs/Makefile.am gnome-keyring-sharp-1.0.1/docs/Makefile.am
+--- gnome-keyring-sharp-1.0.1.old/docs/Makefile.am	2009-05-07 17:32:19.000000000 +0200
++++ gnome-keyring-sharp-1.0.1/docs/Makefile.am	2011-10-31 17:03:46.648191581 +0100
+@@ -1,5 +1,5 @@
+ if ENABLE_MONODOC
+-SOURCESDIR=$(libdir)/monodoc/sources
++SOURCESDIR=$(prefix)/lib/monodoc/sources
+ TARGETS=Gnome.Keyring.tree Gnome.Keyring.zip Gnome.Keyring.source
+ UPDATER = $(MONODOCER) -path:Gnome.Keyring $(UPDATE_ASSEMBLIES)
+ else

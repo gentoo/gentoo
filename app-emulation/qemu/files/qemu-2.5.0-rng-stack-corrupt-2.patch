@@ -1,0 +1,155 @@
+From 9f14b0add1dcdbfa2ee61051d068211fb0a1fcc9 Mon Sep 17 00:00:00 2001
+From: Ladi Prosek <lprosek@redhat.com>
+Date: Thu, 3 Mar 2016 09:37:17 +0100
+Subject: [PATCH] rng: move request queue cleanup from RngEgd to RngBackend
+
+RngBackend is now in charge of cleaning up the linked list on
+instance finalization. It also exposes a function to finalize
+individual RngRequest instances, called by its child classes.
+
+Signed-off-by: Ladi Prosek <lprosek@redhat.com>
+Reviewed-by: Amit Shah <amit.shah@redhat.com>
+Message-Id: <1456994238-9585-4-git-send-email-lprosek@redhat.com>
+Signed-off-by: Amit Shah <amit.shah@redhat.com>
+---
+ backends/rng-egd.c   | 25 +------------------------
+ backends/rng.c       | 32 ++++++++++++++++++++++++++++++++
+ include/sysemu/rng.h | 12 ++++++++++++
+ 3 files changed, 45 insertions(+), 24 deletions(-)
+
+diff --git a/backends/rng-egd.c b/backends/rng-egd.c
+index b061362..8f2bd16 100644
+--- a/backends/rng-egd.c
++++ b/backends/rng-egd.c
+@@ -58,12 +58,6 @@ static void rng_egd_request_entropy(RngBackend *b, size_t size,
+     s->parent.requests = g_slist_append(s->parent.requests, req);
+ }
+ 
+-static void rng_egd_free_request(RngRequest *req)
+-{
+-    g_free(req->data);
+-    g_free(req);
+-}
+-
+ static int rng_egd_chr_can_read(void *opaque)
+ {
+     RngEgd *s = RNG_EGD(opaque);
+@@ -93,28 +87,13 @@ static void rng_egd_chr_read(void *opaque, const uint8_t *buf, int size)
+         size -= len;
+ 
+         if (req->offset == req->size) {
+-            s->parent.requests = g_slist_remove_link(s->parent.requests,
+-                                                     s->parent.requests);
+-
+             req->receive_entropy(req->opaque, req->data, req->size);
+ 
+-            rng_egd_free_request(req);
++            rng_backend_finalize_request(&s->parent, req);
+         }
+     }
+ }
+ 
+-static void rng_egd_free_requests(RngEgd *s)
+-{
+-    GSList *i;
+-
+-    for (i = s->parent.requests; i; i = i->next) {
+-        rng_egd_free_request(i->data);
+-    }
+-
+-    g_slist_free(s->parent.requests);
+-    s->parent.requests = NULL;
+-}
+-
+ static void rng_egd_opened(RngBackend *b, Error **errp)
+ {
+     RngEgd *s = RNG_EGD(b);
+@@ -183,8 +162,6 @@ static void rng_egd_finalize(Object *obj)
+     }
+ 
+     g_free(s->chr_name);
+-
+-    rng_egd_free_requests(s);
+ }
+ 
+ static void rng_egd_class_init(ObjectClass *klass, void *data)
+diff --git a/backends/rng.c b/backends/rng.c
+index 2f2f3ee..014cb9d 100644
+--- a/backends/rng.c
++++ b/backends/rng.c
+@@ -64,6 +64,30 @@ static void rng_backend_prop_set_opened(Object *obj, bool value, Error **errp)
+     s->opened = true;
+ }
+ 
++static void rng_backend_free_request(RngRequest *req)
++{
++    g_free(req->data);
++    g_free(req);
++}
++
++static void rng_backend_free_requests(RngBackend *s)
++{
++    GSList *i;
++
++    for (i = s->requests; i; i = i->next) {
++        rng_backend_free_request(i->data);
++    }
++
++    g_slist_free(s->requests);
++    s->requests = NULL;
++}
++
++void rng_backend_finalize_request(RngBackend *s, RngRequest *req)
++{
++    s->requests = g_slist_remove(s->requests, req);
++    rng_backend_free_request(req);
++}
++
+ static void rng_backend_init(Object *obj)
+ {
+     object_property_add_bool(obj, "opened",
+@@ -72,6 +96,13 @@ static void rng_backend_init(Object *obj)
+                              NULL);
+ }
+ 
++static void rng_backend_finalize(Object *obj)
++{
++    RngBackend *s = RNG_BACKEND(obj);
++
++    rng_backend_free_requests(s);
++}
++
+ static void rng_backend_class_init(ObjectClass *oc, void *data)
+ {
+     UserCreatableClass *ucc = USER_CREATABLE_CLASS(oc);
+@@ -84,6 +115,7 @@ static const TypeInfo rng_backend_info = {
+     .parent = TYPE_OBJECT,
+     .instance_size = sizeof(RngBackend),
+     .instance_init = rng_backend_init,
++    .instance_finalize = rng_backend_finalize,
+     .class_size = sizeof(RngBackendClass),
+     .class_init = rng_backend_class_init,
+     .abstract = true,
+diff --git a/include/sysemu/rng.h b/include/sysemu/rng.h
+index c744d82..08a2eda 100644
+--- a/include/sysemu/rng.h
++++ b/include/sysemu/rng.h
+@@ -78,4 +79,15 @@ struct RngBackend
+ void rng_backend_request_entropy(RngBackend *s, size_t size,
+                                  EntropyReceiveFunc *receive_entropy,
+                                  void *opaque);
++
++/**
++ * rng_backend_free_request:
++ * @s: the backend that created the request
++ * @req: the request to finalize
++ *
++ * Used by child rng backend classes to finalize requests once they've been
++ * processed. The request is removed from the list of active requests and
++ * deleted.
++ */
++void rng_backend_finalize_request(RngBackend *s, RngRequest *req);
+ #endif
+-- 
+2.7.4
+

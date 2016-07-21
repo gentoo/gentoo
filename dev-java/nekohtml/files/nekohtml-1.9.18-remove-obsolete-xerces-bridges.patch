@@ -1,0 +1,12 @@
+diff -Nru /tmp/nekohtml-1.9.16.orig/build.xml ./build.xml
+--- /tmp/nekohtml-1.9.16.orig/build.xml	2012-07-31 18:12:48.559950104 +0300
++++ ./build.xml	2012-07-31 18:12:53.887883123 +0300
+@@ -103,8 +103,6 @@
+ 		unless="compile.skip">
+ 	<mkdir dir="${build.classes.dir}"/>
+ 	
+-	<compileWith xercesVersion="2.0.2" bridge="2_0"/>
+-	<compileWith xercesVersion="2.1.0" bridge="2_1"/>
+ 	<compileWith xercesVersion="2.2.1" bridge="2_2"/>
+ 	<compileWith xercesVersion="2.3.0" bridge="2_3"/>
+ 	<compileWith xercesVersion="2.8.1" bridge="2_3"/>

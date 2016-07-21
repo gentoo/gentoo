@@ -1,0 +1,28 @@
+From bf4da5524d50e1068f851bcbe50c8f8ae1948d73 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 18 Jun 2014 09:44:51 +0200
+Subject: [PATCH] build: Fix building .vapi out-of-source.
+
+Rsvg-2.0-custom.vala file resides in $(srcdir), and therefore full path
+needs to be given to vapigen. Otherwise, the build fails when build is
+performed out-of-source.
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index e881100..dc6b0c9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -257,7 +257,7 @@ VAPIGEN_VAPIS = librsvg-$(RSVG_API_VERSION).vapi
+ 
+ librsvg_@RSVG_API_VERSION_U@_vapi_DEPS = gio-2.0 cairo
+ librsvg_@RSVG_API_VERSION_U@_vapi_METADATADIRS = $(srcdir)
+-librsvg_@RSVG_API_VERSION_U@_vapi_FILES = Rsvg-$(RSVG_API_VERSION).gir Rsvg-$(RSVG_API_VERSION)-custom.vala
++librsvg_@RSVG_API_VERSION_U@_vapi_FILES = Rsvg-$(RSVG_API_VERSION).gir $(srcdir)/Rsvg-$(RSVG_API_VERSION)-custom.vala
+ 
+ vapidir = $(datadir)/vala/vapi
+ vapi_DATA = $(VAPIGEN_VAPIS)
+-- 
+2.0.0
+

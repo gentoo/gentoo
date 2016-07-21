@@ -1,0 +1,34 @@
+From 4b3a4f2d458ca5a7c6c16ac36a8d9ac22cc253d6 Mon Sep 17 00:00:00 2001
+From: Greg Kurz <gkurz@linux.vnet.ibm.com>
+Date: Wed, 23 Dec 2015 10:56:58 +0100
+Subject: [PATCH] virtio-9p: use accessor to get thread_pool
+
+The aio_context_new() function does not allocate a thread pool. This is
+deferred to the first call to the aio_get_thread_pool() accessor. It is
+hence forbidden to access the thread_pool field directly, as it may be
+NULL. The accessor *must* be used always.
+
+Fixes: ebac1202c95a4f1b76b6ef3f0f63926fa76e753e
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Tested-by: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Greg Kurz <gkurz@linux.vnet.ibm.com>
+---
+ hw/9pfs/virtio-9p-coth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/9pfs/virtio-9p-coth.c b/hw/9pfs/virtio-9p-coth.c
+index fb6e8f8..ab9425c 100644
+--- a/hw/9pfs/virtio-9p-coth.c
++++ b/hw/9pfs/virtio-9p-coth.c
+@@ -36,6 +36,6 @@ static int coroutine_enter_func(void *arg)
+ void co_run_in_worker_bh(void *opaque)
+ {
+     Coroutine *co = opaque;
+-    thread_pool_submit_aio(qemu_get_aio_context()->thread_pool,
++    thread_pool_submit_aio(aio_get_thread_pool(qemu_get_aio_context()),
+                            coroutine_enter_func, co, coroutine_enter_cb, co);
+ }
+-- 
+2.7.4
+

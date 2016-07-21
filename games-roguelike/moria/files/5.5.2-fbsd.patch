@@ -1,0 +1,268 @@
+Index: umoria/source/main.c
+===================================================================
+--- umoria.orig/source/main.c
++++ umoria/source/main.c
+@@ -88,6 +88,7 @@
+ #include <time.h>
+ #endif
+ 
++#ifndef __FreeBSD__
+ #ifndef VMS
+ #ifndef MAC
+ #ifndef GEMDOS
+@@ -98,6 +99,9 @@ long time();
+ char *getenv();
+ #endif
+ #endif
++#else
++#include <stdlib.h>
++#endif
+ 
+ #ifndef MAC
+ #ifndef AMIGA
+@@ -360,7 +364,7 @@ char *argv[];
+   else
+     {	  /* Create character	   */
+       create_character();
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+       birth_date = time ((time_t *)0);
+ #else
+       birth_date = time ((long *)0);
+Index: umoria/source/death.c
+===================================================================
+--- umoria.orig/source/death.c
++++ umoria/source/death.c
+@@ -123,6 +123,7 @@ static void kingly(void);
+ #include <stdlib.h>
+ #endif
+ 
++#ifndef __FreeBSD__
+ #ifndef VMS
+ #ifndef MAC
+ #if !defined(ATARIST_MWC) && !defined(AMIGA)
+@@ -130,18 +131,19 @@ long time();
+ #endif
+ #endif
+ #endif
++#endif
+ 
+ static void date(day)
+ char *day;
+ {
+   register char *tmp;
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+   time_t clockvar;
+ #else
+   long clockvar;
+ #endif
+ 
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+   clockvar = time((time_t *) 0);
+ #else
+   clockvar = time((long *) 0);
+Index: umoria/source/io.c
+===================================================================
+--- umoria.orig/source/io.c
++++ umoria/source/io.c
+@@ -13,6 +13,11 @@
+ 
+ #include "config.h"
+ 
++#ifdef __FreeBSD__
++#include <sys/ioctl_compat.h>
++#include <time.h>
++#endif
++
+ #ifdef HPUX
+ #include <sys/bsdtty.h>
+ #endif
+@@ -245,7 +250,9 @@ int suspend()
+   struct ltchars lcbuf;
+   struct tchars cbuf;
+   int lbuf;
++#ifndef __FreeBSD__
+   long time();
++#endif
+ 
+   py.misc.male |= 2;
+   (void) ioctl(0, TIOCGETP, (char *)&tbuf);
+@@ -313,7 +320,7 @@ void init_curses()
+ #endif
+ 
+   /* PC curses returns ERR */
+-#if defined(USG) && !defined(PC_CURSES) && !defined(AMIGA)
++#if (defined(USG) && !defined(PC_CURSES) && !defined(AMIGA)) || defined(__FreeBSD__)
+   if (initscr() == NULL)
+ #else
+   if (initscr() == ERR)
+@@ -331,7 +338,7 @@ void init_curses()
+ #if defined(atarist) && defined(__GNUC__)
+   (void) signal (SIGTSTP, (__Sigfunc)suspend);
+ #else
+-#ifdef  __386BSD__
++#if defined(__386BSD__) || defined(__FreeBSD__)
+   (void) signal (SIGTSTP, (sig_t)suspend);
+ #else
+   (void) signal (SIGTSTP, suspend);
+@@ -757,7 +764,7 @@ void shell_out()
+       msg_print("Fork failed. Try again.");
+       return;
+     }
+-#if defined(USG) || defined(__386BSD__)
++#if defined(USG) || defined(__386BSD__) || defined(__FreeBSD__)
+   (void) wait((int *) 0);
+ #else
+   (void) wait((union wait *) 0);
+Index: umoria/source/misc1.c
+===================================================================
+--- umoria.orig/source/misc1.c
++++ umoria/source/misc1.c
+@@ -28,7 +28,7 @@
+ #endif
+ #endif
+ 
+-#if !defined(ATARIST_MWC) && !defined(MAC) && !defined(VMS) && !defined(AMIGA)
++#if !defined(ATARIST_MWC) && !defined(MAC) && !defined(VMS) && !defined(AMIGA) && !defined(__FreeBSD__)
+ long time();
+ #endif
+ struct tm *localtime();
+@@ -45,7 +45,7 @@ int32u seed;
+   register int32u clock_var;
+ 
+   if (seed == 0)
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+     clock_var = time((time_t *)0);
+ #else
+     clock_var = time((long *)0);
+@@ -89,10 +89,14 @@ void reset_seed()
+ int check_time()
+ {
+ #ifdef MORIA_HOU
++#if defined(MAC) || defined(__FreeBSD__)
++  time_t clock_var;
++#else
+   long clock_var;
++#endif
+   register struct tm *tp;
+ 
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+   clock_var = time((time_t *)0);
+ #else
+   clock_var = time((long *)0);
+Index: umoria/source/save.c
+===================================================================
+--- umoria.orig/source/save.c
++++ umoria/source/save.c
+@@ -102,7 +102,7 @@ static void rd_monster();
+ #endif
+ 
+ #if !defined(ATARIST_MWC)
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+ #include <time.h>
+ #else
+ long time();
+@@ -331,7 +331,7 @@ static int sv_write()
+     }
+ 
+   /* save the current time in the savefile */
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+   l = time((time_t *)0);
+ #else
+   l = time((long *)0);
+@@ -1029,7 +1029,7 @@ int *generate;
+ 	      || (version_min == 2 && patch_level >= 2))
+ 	    rd_long ((int32u *)&birth_date);
+ 	  else
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+ 	    birth_date = time((time_t *)0);
+ #else
+ 	    birth_date = time((long *)0);
+@@ -1253,7 +1253,7 @@ scoreboard; it will not be scored again.
+ 	      /* rotate store inventory, depending on how old the save file */
+ 	      /* is foreach day old (rounded up), call store_maint */
+ 	      /* calculate age in seconds */
+-#ifdef MAC
++#if defined(MAC) || defined(__FreeBSD__)
+ 	      start_time = time((time_t *)0);
+ #else
+ 	      start_time = time((long *)0);
+Index: umoria/source/signals.c
+===================================================================
+--- umoria.orig/source/signals.c
++++ umoria/source/signals.c
+@@ -89,7 +89,7 @@ static int signal_count = 0;
+ 
+ /*ARGSUSED*/
+ #ifndef USG
+-#ifdef __386BSD__
++#if defined(__386BSD__) || defined(__FreeBSD__)
+ static void signal_handler(sig, code, scp)
+ #else
+ static int signal_handler(sig, code, scp)
+@@ -217,7 +217,7 @@ void signals()
+ #if defined(atarist) && defined(__GNUC__)
+   (void) signal(SIGTSTP, (__Sigfunc)suspend);
+ #else
+-#ifdef  __386BSD__
++#if defined(__386BSD__) || defined(__FreeBSD__)
+   (void) signal(SIGTSTP, (sig_t)suspend);
+ #else
+   (void) signal(SIGTSTP, suspend);
+Index: umoria/source/types.h
+===================================================================
+--- umoria.orig/source/types.h
++++ umoria/source/types.h
+@@ -6,11 +6,20 @@
+    not for profit purposes provided that this copyright and statement are
+    included in all such copies. */
+ 
++#ifdef __FreeBSD__
++#include <sys/types.h>
++typedef u_int32_t int32u;
++typedef int32_t   int32;
++typedef u_int16_t int16u;
++typedef int16_t   int16;
++typedef u_int8_t  int8u;
++#else
+ typedef unsigned long  int32u;
+ typedef long	       int32;
+ typedef unsigned short int16u;
+ typedef short	       int16;
+ typedef unsigned char  int8u;
++#endif
+ /* some machines will not accept 'signed char' as a type, and some accept it
+    but still treat it like an unsigned character, let's just avoid it,
+    any variable which can ever hold a negative value must be 16 or 32 bits */
+Index: umoria/unix/unix.c
+===================================================================
+--- umoria.orig/unix/unix.c
++++ umoria/unix/unix.c
+@@ -14,6 +14,10 @@
+ /* defines TRUE and FALSE */
+ #include <curses.h>
+ 
++#ifdef __FreeBSD__
++#include <unistd.h>
++#endif
++
+ #include "config.h"
+ #include "constant.h"
+ #include "types.h"
+@@ -276,7 +280,9 @@ int getuid();
+ void user_name(buf)
+ char *buf;
+ {
++#ifndef __FreeBSD__
+   extern char *getlogin();
++#endif
+   struct passwd *pwline;
+   register char *p;
+ 

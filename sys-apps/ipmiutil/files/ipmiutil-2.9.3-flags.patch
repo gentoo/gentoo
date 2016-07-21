@@ -1,0 +1,20 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,7 +145,7 @@
+ 	LANPLUS_CRYPTO=""
+ 	LANPLUS_SAM="no"
+ 	LD_SAMX=""
+-	CFLAGS="-O2"
++#	CFLAGS="-O2"
+         SUBDIR_S="doc scripts util"
+ 	if test "x$cross_compiling" = "xyes"; then
+ 	   # cross-compiling, so link with -static (e.g. Android ARM)
+@@ -270,7 +270,7 @@
+ 	fi
+         rm -f $tmpc $tmpo >/dev/null 2>&1
+ 	echo $ECHO_N "checking compile fortify flags ... $ECHO_C"
+-	cfhard="-fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
++#	cfhard="-fstack-protector --param=ssp-buffer-size=4 -D_FORTIFY_SOURCE=2"
+ 	echo "int main() { return(1); }" >$tmpc
+ 	gcc -o $tmpo -c $cfhard $tmpc  >/dev/null 2>&1
+ 	if test $? -ne 0 ; then

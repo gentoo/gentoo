@@ -1,0 +1,20 @@
+Make sure the right version of the code is loaded. Without this the
+rdoc version bundled with ruby is always loaded instead. Reported
+upstream but won't be fixed because rubygems has slightly different
+behavior.
+
+http://rubyforge.org/tracker/index.php?func=detail&aid=28758&group_id=627&atid=2472
+
+
+Index: trunk/bin/rdoc
+===================================================================
+--- trunk/bin/rdoc	(revision 650)
++++ trunk/bin/rdoc	(working copy)
+@@ -8,6 +8,7 @@
+ #
+ #  $Revision: 1.1 $
+ 
++$:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
+ require 'rdoc/rdoc'
+ 
+ begin

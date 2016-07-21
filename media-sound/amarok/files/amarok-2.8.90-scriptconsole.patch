@@ -1,0 +1,33 @@
+From 2900fe47adde10999a6c0f907d73b00a1c1bd5b1 Mon Sep 17 00:00:00 2001
+From: Myriam Schweingruber <myriam@kde.org>
+Date: Wed, 18 May 2016 21:59:17 +0200
+Subject: [PATCH] Fix a crash in amarok when opening the Script Console
+
+The script console tries to write to a system folder instead of a user
+ folder. Note to devs: always make sure to test a system installation,
+ not just a local build.
+
+Thanks to Johannes Huber for the quick fix suggestion.
+
+BUG: 363176
+FIXED-IN: 2.9
+---
+ src/scripting/scriptconsole/ScriptConsole.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/scripting/scriptconsole/ScriptConsole.cpp b/src/scripting/scriptconsole/ScriptConsole.cpp
+index 6edd9a2..e4e0fab 100644
+--- a/src/scripting/scriptconsole/ScriptConsole.cpp
++++ b/src/scripting/scriptconsole/ScriptConsole.cpp
+@@ -161,7 +161,7 @@ ScriptConsole::ScriptConsole( QWidget *parent )
+     settings.endGroup();
+ 
+     if( m_savePath.isEmpty() )
+-        m_savePath = KUrl( KStandardDirs::locate( "data", "amarok/scriptconsole/" ) ).path();
++        m_savePath = KUrl( KStandardDirs::locateLocal( "data", "amarok/scriptconsole/" ) ).path();
+ 
+     slotNewScript();
+     connect( m_debugger, SIGNAL(evaluationSuspended()), SLOT(slotEvaluationSuspended()) );
+-- 
+2.8.2
+

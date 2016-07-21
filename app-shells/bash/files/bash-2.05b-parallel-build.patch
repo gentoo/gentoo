@@ -1,0 +1,15 @@
+Fix parallel make
+
+http://bugs.gentoo.org/41002
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -604,7 +604,7 @@
+ 
+ config.h:	stamp-h 
+ 
+-stamp-h:	config.status $(srcdir)/config.h.in $(srcdir)/config-top.h $(srcdir)/config-bot.h
++stamp-h:	version.h config.status $(srcdir)/config.h.in $(srcdir)/config-top.h $(srcdir)/config-bot.h
+ 	CONFIG_FILES= CONFIG_HEADERS=config.h $(SHELL) ./config.status
+ 
+ config.status:	$(srcdir)/configure

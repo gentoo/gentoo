@@ -1,0 +1,78 @@
+diff -ur mp3ng-0.9.13-MKIV-pre3.orig/data.c mp3ng-0.9.13-MKIV-pre3/data.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/data.c	2005-08-28 19:18:06.000000000 +0300
++++ mp3ng-0.9.13-MKIV-pre3/data.c	2009-08-09 22:25:33.000000000 +0300
+@@ -408,7 +408,7 @@
+   description=strdup(Description);
+   if(Include) {
+     do {
+-      char *s=index(Include,'/');
++      char *s=const_cast<char*> (index(Include,'/'));
+       int l=s ? s-Include : strlen(Include);
+       if(l) {
+         char **s=(char **)realloc(include,(incCount+2)*sizeof(char *));
+diff -ur mp3ng-0.9.13-MKIV-pre3.orig/decoder.c mp3ng-0.9.13-MKIV-pre3/decoder.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/decoder.c	2005-08-28 19:18:06.000000000 +0300
++++ mp3ng-0.9.13-MKIV-pre3/decoder.c	2009-08-09 22:28:03.000000000 +0300
+@@ -101,7 +101,7 @@
+ {
+   // if no title, try to build a reasonable from the filename
+   if(!Title && filename)  {
+-    char *s=rindex(filename,'/');
++    char *s=const_cast<char*> (rindex(filename,'/'));
+     if(s && *s=='/') {
+       s++;
+       Title=strdup(s);
+diff -ur mp3ng-0.9.13-MKIV-pre3.orig/decoder-ogg.c mp3ng-0.9.13-MKIV-pre3/decoder-ogg.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/decoder-ogg.c	2005-05-31 19:56:24.000000000 +0300
++++ mp3ng-0.9.13-MKIV-pre3/decoder-ogg.c	2009-08-09 22:31:17.000000000 +0300
+@@ -161,7 +161,7 @@
+     for(int i=0 ; i<vc->comments ; i++) {
+       const char *cc=vc->user_comments[i];
+       d(printf("ogg: comment%d='%s'\n",i,cc))
+-      char *p=strchr(cc,'=');
++      const char *p=strchr(cc,'=');
+       if(p) {
+         const int len=p-cc;
+         p++;
+diff -ur mp3ng-0.9.13-MKIV-pre3.orig/decoder-snd.c mp3ng-0.9.13-MKIV-pre3/decoder-snd.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/decoder-snd.c	2005-05-31 19:56:11.000000000 +0300
++++ mp3ng-0.9.13-MKIV-pre3/decoder-snd.c	2009-08-09 22:30:38.000000000 +0300
+@@ -577,7 +577,7 @@
+ bool cCDDBDisc::Split(const char *source, char div, char * &first, char * &second, bool only3)
+ {
+   int pos=-1, n=0;
+-  char *p, l[4]={ ' ',div,' ',0 };
++  const char *p, l[4]={ ' ',div,' ',0 };
+   if ((p=strstr(source,l))) { pos=p-source; n=3; }
+   else if(!only3 && (p=strchr(source,div)))  { pos=p-source; n=1; }
+   if(pos>=0) {
+@@ -857,7 +857,7 @@
+ {
+   if(id->Get()) {
+     int tr;
+-    char *s=strstr(filename,CDFS_TRACK);
++    char *s=const_cast<char*> (strstr(filename,CDFS_TRACK));
+     if(s && sscanf(s+strlen(CDFS_TRACK),"%d",&tr)==1) {
+       d(printf("snd: looking up disc id %08x track %d\n",id->discid,tr))
+       return cddb.Lookup(id,tr-1,this);
+diff -ur mp3ng-0.9.13-MKIV-pre3.orig/stream.c mp3ng-0.9.13-MKIV-pre3/stream.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/stream.c	2005-02-06 13:14:43.000000000 +0200
++++ mp3ng-0.9.13-MKIV-pre3/stream.c	2009-08-09 22:27:20.000000000 +0300
+@@ -386,7 +386,7 @@
+ 
+ bool cNetStream::ParseHeader(const char *buff, const char *name, char **value)
+ {
+-  char *s=index(buff,':');
++  char *s=const_cast<char*> (index(buff,':'));
+   if(s && !strncasecmp(buff,name,s-buff)) {
+     s=skipspace(s+1);
+     d(printf("netstream: found header '%s' contents '%s'\n",name,s))
+@@ -510,7 +510,7 @@
+ 
+ char *cNetStream::ParseMetaString(const char *buff, const char *name, char **value)
+ {
+-  char *s=index(buff,'=');
++  char *s=const_cast<char*> (index(buff,'='));
+   if(s && !strncasecmp(buff,name,s-buff)) {
+     char *end=index(s+2,'\'');
+     if(s[1]=='\'' && end) {

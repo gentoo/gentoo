@@ -1,0 +1,33 @@
+--- libetonyek-0.1.6/configure.ac
++++ libetonyek-0.1.6/configure.ac
+@@ -24,8 +24,8 @@ AC_LANG([C++])
+ # Configure options
+ # =================
+ AC_ARG_WITH([mdds],
+-            AS_HELP_STRING([--with-mdds=1.0|0.x], [Specify which version of mdds to use (1.0 is the default)]),
+-            [], [with_mdds="1.0"])
++            AS_HELP_STRING([--with-mdds=1.2|0.x], [Specify which version of mdds to use (1.2 is the default)]),
++            [], [with_mdds="1.2"])
+ 
+ # ===========================
+ # Find required base packages
+@@ -47,7 +47,7 @@ AC_PROG_SED
+ 
+ AM_MISSING_PROG([GPERF], [gperf])
+ 
+-AS_IF([test "$with_mdds" = "1.0"], [AX_CXX_COMPILE_STDCXX_11([noext])])
++AS_IF([test "$with_mdds" = "1.2"], [AX_CXX_COMPILE_STDCXX_11([noext])])
+ 
+ # ===============
+ # Find librevenge
+@@ -138,8 +138,8 @@ AC_SUBST([GLM_CFLAGS])
+ # =========
+ # Find mdds
+ # =========
+-AS_IF([test "$with_mdds" = "1.0"], [
+-    PKG_CHECK_MODULES([MDDS], [mdds-1.0])
++AS_IF([test "$with_mdds" = "1.2"], [
++    PKG_CHECK_MODULES([MDDS], [mdds-1.2])
+ ], [
+     PKG_CHECK_MODULES([MDDS], [mdds])
+     AC_MSG_CHECKING([checking if mdds::flat_segment_tree can store values of any type])

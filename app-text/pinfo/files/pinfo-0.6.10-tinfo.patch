@@ -1,0 +1,40 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -118,7 +118,24 @@
+ 					
+ 
+ # curses
++PKG_CHECK_MODULES(ncursesw,ncursesw,[
++	curses_includes="$ncursesw_CFLAGS"
++	curses_libs="$ncursesw_LIBS"
++	curses_h=ncurses.h
++	stop_searching=true
++	found_curses_h=true
++	USE_CURSES=true],[
++	PKG_CHECK_MODULES(ncurses,ncurses,[
++		curses_includes="$ncurses_CFLAGS"
++		curses_libs="$ncurses_LIBS"
++		curses_h=ncurses.h
++		stop_searching=true
++		found_curses_h=true
++		USE_CURSES=true],
++		[])])
++
+ AC_CHECK_CURSES
++
+ if ! test "x$USE_CURSES" = "xtrue"; then
+ 	AC_MSG_ERROR([Curses not found. You need curses to compile pinfo])
+ fi
+--- a/macros/curses.m4
++++ b/macros/curses.m4
+@@ -175,8 +175,8 @@
+ AC_DEFUN([AC_SEARCH_CURSES_H], [
+ 	AC_MSG_CHECKING([location of curses.h file])
+ 
+-	stop_searching=false
+-	found_curses_h=false
++#	stop_searching=false
++#	found_curses_h=false
+ 
+ 	dnl  if a particular location was specified
+ 	if test "x$curses_location" != "xfalse"

@@ -1,0 +1,27 @@
+https://github.com/jflex-de/jflex/commit/f312d563777d907bbb12d1e2ac79835ba83ca53c
+
+--- a/src/grammar/skeleton.inner	2012-11-04 16:16:30.000000000 +0000
++++ b/src/grammar/skeleton.inner	2015-11-02 20:57:37.566057363 +0000
+@@ -407,15 +407,15 @@
+       zzMarkedPos = zzMarkedPosL;
+ --- char count update
+ 
+---- actions
+-        default: 
+-          if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
+-            zzAtEOF = true;
++      if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
++        zzAtEOF = true;
+ --- eofvalue
+-          } 
+-          else {
++      } 
++      else {
++--- actions
++          default: 
+ --- no match
+-          }
++        }
+       }
+     }
+   }

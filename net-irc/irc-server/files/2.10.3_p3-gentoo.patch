@@ -1,0 +1,11 @@
+diff -ur irc2.10.3p3.orig/contrib/tkserv/tkserv.c irc2.10.3p3/contrib/tkserv/tkserv.c
+--- irc2.10.3p3.orig/contrib/tkserv/tkserv.c	2001-03-09 07:55:38.000000000 -0600
++++ irc2.10.3p3/contrib/tkserv/tkserv.c	2004-06-08 00:14:33.648900488 -0500
+@@ -549,6 +549,7 @@
+         case -1:
+             sendto_user("You are not allowed to tkline \"%s\".", host); break;
+         default:
++	  break;
+     }
+ 
+     retv = retv < 0 ? 0 : retv;    /* errors do not allow authorization */

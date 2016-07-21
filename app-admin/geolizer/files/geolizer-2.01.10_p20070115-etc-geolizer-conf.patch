@@ -1,0 +1,81 @@
+From 64325c4fed853418f75357e0bb78668f999478ab Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 10 Mar 2010 16:55:28 +0100
+Subject: [PATCH] etc-eolizer-conf
+
+---
+ sample.conf |    4 ++--
+ webalizer.1 |    6 +++---
+ webalizer.c |    8 ++++----
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/sample.conf b/sample.conf
+index 9eaef68..1d0b048 100644
+--- a/sample.conf
++++ b/sample.conf
+@@ -16,8 +16,8 @@
+ # at least one space or tab between the keyword and its value.
+ #
+ # As of version 0.98, The Webalizer will look for a 'default' configuration
+-# file named "webalizer.conf" in the current directory, and if not found
+-# there, will look for "/etc/webalizer.conf".
++# file named "geolizer.conf" in the current directory, and if not found
++# there, will look for "/etc/geolizer.conf".
+ 
+ 
+ # LogFile defines the web server log file to use.  If not specified
+diff --git a/webalizer.1 b/webalizer.1
+index b810c1f..fe0a589 100644
+--- a/webalizer.1
++++ b/webalizer.1
+@@ -43,9 +43,9 @@ as a \fBcrond(8)\fP job. Once executed, the general flow of the program is:
+ .TP 8
+ .B o
+ A default configuration file is scanned for.  A file named
+-\fIwebalizer.conf\fP is searched for in the current directory, and if
++\fIgeolizer.conf\fP is searched for in the current directory, and if
+ found, it's configuration data is parsed.  If the file is not
+-present in the current directory,  the file \fI/etc/webalizer.conf\fP
++present in the current directory,  the file \fI/etc/geolizer.conf\fP
+ is searched for and, if found, is used instead.
+ .TP 8
+ .B o
+@@ -688,7 +688,7 @@ Specifies GeoIP database file. Defaults to libGeoIP precompiled one
+ (normally \fI/usr/local/share/GeoIP/GeoIP.dat\fP).
+ .SH FILES
+ .TP 20
+-.I webalizer.conf
++.I geolizer.conf
+ Default configuration file.  Is searched for in the current directory
+ and if not found, in the \fI/etc/\fP directory.
+ .TP 20
+diff --git a/webalizer.c b/webalizer.c
+index 2daad89..db7adb2 100644
+--- a/webalizer.c
++++ b/webalizer.c
+@@ -278,9 +278,9 @@ int main(int argc, char *argv[])
+    len = GetModuleFileName(GetModuleHandle(NULL), tmp_buf, sizeof(tmp_buf) - 1);
+    for (p = tmp_buf + len; (p > tmp_buf) && (*p != '\\'); p--);
+    *p = '\0';
+-   strncat(tmp_buf, "\\webalizer.conf", sizeof(tmp_buf) - 1);
++   strncat(tmp_buf, "\\geolizer.conf", sizeof(tmp_buf) - 1);
+ #else
+-   sprintf(tmp_buf,"%s/webalizer.conf",ETCDIR);
++   sprintf(tmp_buf,"%s/geolizer.conf",ETCDIR);
+ #endif	/* WIN32 */
+ 
+    /* initalize epoch */
+@@ -290,8 +290,8 @@ int main(int argc, char *argv[])
+    add_nlist("index.",&index_alias);
+ 
+    /* check for default config file */
+-   if (!access("webalizer.conf",F_OK))
+-      get_config("webalizer.conf");
++   if (!access("geolizer.conf",F_OK))
++      get_config("geolizer.conf");
+    else if (!access(tmp_buf,F_OK))
+       get_config(tmp_buf);
+ 
+-- 
+1.7.0.1.61.gdc05d.dirty
+

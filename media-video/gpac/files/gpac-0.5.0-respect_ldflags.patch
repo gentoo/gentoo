@@ -1,0 +1,45 @@
+http://bugs.gentoo.org/258331
+http://bugs.gentoo.org/310257
+http://bugs.gentoo.org/331067
+
+Also fix underlinkage of the pulse module.
+
+Index: gpac/modules/jack/Makefile
+===================================================================
+--- gpac.orig/modules/jack/Makefile
++++ gpac/modules/jack/Makefile
+@@ -25,7 +25,7 @@ LIB=gm_jack.$(DYN_LIB_SUFFIX)
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib  -ljack
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib  -ljack
+ 
+ 
+ %.o: %.c
+Index: gpac/modules/oss_audio/Makefile
+===================================================================
+--- gpac.orig/modules/oss_audio/Makefile
++++ gpac/modules/oss_audio/Makefile
+@@ -35,7 +35,7 @@ LIB=gm_oss_audio.$(DYN_LIB_SUFFIX)
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac $(OSS_LDFLAGS)
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac $(OSS_LDFLAGS)
+ ifeq ($(STATICBUILD),yes)
+ 	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/gm_oss_audio-static.$(DYN_LIB_SUFFIX) $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac_static $(OSS_LDFLAGS)
+ endif
+Index: gpac/modules/pulseaudio/Makefile
+===================================================================
+--- gpac.orig/modules/pulseaudio/Makefile
++++ gpac/modules/pulseaudio/Makefile
+@@ -25,7 +25,7 @@ LIB=gm_pulseaudio.$(DYN_LIB_SUFFIX)
+ all: $(LIB)
+ 
+ $(LIB): $(OBJS)
+-	$(CC) $(SHFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib -lpulse-simple
++	$(CC) $(SHFLAGS) $(LDFLAGS) -o ../../bin/gcc/$@ $(OBJS) $(EXTRALIBS) -L../../bin/gcc -lgpac -L/usr/lib -lpulse-simple -lpulse
+ 
+ 
+ %.o: %.c

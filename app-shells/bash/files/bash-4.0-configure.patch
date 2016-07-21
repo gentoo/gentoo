@@ -1,0 +1,25 @@
+http://bugs.gentoo.org/304901
+
+newer patches touch configure ... we don't want autotool deps, so update
+the files ourselves
+
+--- bash-4.0/configure
++++ bash-4.0/configure
+@@ -5806,7 +5806,7 @@
+ 		# static version specified as -llibname to override the
+ 		# dynamic version
+ 		case "${host_os}" in
+-		darwin[89]*)	READLINE_LIB='${READLINE_LIBRARY}' ;;
++ 		darwin[89]*|darwin10*) READLINE_LIB='${READLINE_LIBRARY}' ;;
+ 		*)		READLINE_LIB=-lreadline ;;
+ 		esac
+ 	fi
+@@ -5847,7 +5847,7 @@
+ 		# static version specified as -llibname to override the
+ 		# dynamic version
+ 		case "${host_os}" in
+-		darwin[89]*)	HISTORY_LIB='${HISTORY_LIBRARY}' ;;
++ 		darwin[89]*|darwin10*) HISTORY_LIB='${HISTORY_LIBRARY}' ;;
+ 		*)		HISTORY_LIB=-lhistory ;;
+ 		esac
+ 	fi

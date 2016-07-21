@@ -1,0 +1,31 @@
+From 8dd23b1ed5f1ce065839f15a21ca28766835f1fd Mon Sep 17 00:00:00 2001
+From: Justin Lecher <jlec@gentoo.org>
+Date: Sat, 5 Dec 2015 17:34:48 +0100
+Subject: [PATCH] Fix underlinking (-lm) of libgegl.so
+
+When linking with ld.gold the builds fails due to underlinking of libgegl.so
+./.libs/libgegl-0.3.so: error: undefined reference to 'tanhf'
+
+Gnome-Bugs: https://bugzilla.gnome.org/show_bug.cgi?id=759065
+
+Signed-off-by: Justin Lecher <jlec@gentoo.org>
+---
+ gegl/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index e26099c..e53777d 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -39,7 +39,7 @@ AM_LDFLAGS = \
+ 	$(no_undefined) -export-dynamic -version-info $(GEGL_LIBRARY_VERSION)
+ 
+ LIBS = \
+-	$(DEP_LIBS) $(BABL_LIBS)
++	$(DEP_LIBS) $(BABL_LIBS) -lm
+ 
+ GEGL_publicdir = $(includedir)/gegl-$(GEGL_API_VERSION)
+ 
+-- 
+2.6.3
+

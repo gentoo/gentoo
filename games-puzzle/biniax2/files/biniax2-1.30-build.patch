@@ -1,0 +1,18 @@
+--- makefile
++++ makefile
+@@ -4,7 +4,7 @@
+ # To execute the game you need the runtimes of SDL, SDL_mixer and SDL_image.
+ 
+ FLAGS=-W -WALL
+-CC=gcc
++CC?=gcc
+ FILES=biniax.c hof.c desktop/cfg.c desktop/gfx.c desktop/snd.c desktop/inp.c desktop/sys.c
+ INCLUDES=-I . -I desktop
+ LINKTO=-lSDL -lSDL_mixer -lSDL_image
+@@ -12,4 +12,4 @@
+ TARGET=biniax2
+ 
+ biniax:
+-	$(CC) $(AUTO) $(FILES) $(INCLUDES) -o $(TARGET) $(LINKTO)
+\ No newline at end of file
++	$(CC) $(CFLAGS) $(LDFLAGS) $(AUTO) $(FILES) $(INCLUDES) -o $(TARGET) $(LINKTO)

@@ -1,0 +1,33 @@
+Disallow users to install into the shared plugin directory,
+which they won't have write access to.  This doesn't disable
+shared plugins, just removes the installation UI.
+
+
+--- a/org/gudy/azureus2/ui/swt/pluginsinstaller/IPWListPanel.java
++++ b/org/gudy/azureus2/ui/swt/pluginsinstaller/IPWListPanel.java
+@@ -234,13 +234,13 @@ public class IPWListPanel extends AbstractWizardPanel<InstallPluginWizard> {
+   	}
+   
+ 	public boolean 
+-	isNextEnabled() 
++	isFinishEnabled()
+ 	{
+ 		return(((InstallPluginWizard)wizard).getPluginList().size() > 0 );
+ 	}
+ 	
+-  public IWizardPanel<InstallPluginWizard> getNextPanel() {
+-    return new IPWInstallModePanel(wizard,this);
++  public IWizardPanel<InstallPluginWizard> getFinishPanel() {
++    return new IPWFinishPanel(wizard,this);
+   }
+ 	
+   public void updateList() {
+@@ -252,7 +252,7 @@ public class IPWListPanel extends AbstractWizardPanel<InstallPluginWizard> {
+       }
+     }
+     wizard.setPluginList( list );
+-    wizard.setNextEnabled( isNextEnabled() );
++    wizard.setFinishEnabled( isFinishEnabled() );
+     
+   }
+ }

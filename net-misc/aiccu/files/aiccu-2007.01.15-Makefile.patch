@@ -1,0 +1,79 @@
+--- unix-console/Makefile.old	2010-06-28 21:56:32.287782600 +0200
++++ unix-console/Makefile	2010-06-28 22:15:56.232637681 +0200
+@@ -25,14 +25,11 @@ CWARNS += -W -Wall -Wshadow -Wpointer-ar
+ # CWARNS += -Wpacked
+ 
+ #CFLAGS	+= $(CWARNS) -D_GNU_SOURCE -D_DEBUG -g3 -O0
+-CFLAGS	+= $(CWARNS) -D_GNU_SOURCE
++CFLAGS ?= $(CWARNS) -O3
++CFLAGS	+= -D_GNU_SOURCE
+ CC      = @gcc
+ RM      = rm
+-
+-# Add -O3 when nothing is specified yet
+-ifeq ($(shell echo $(CFLAGS) | grep -c "\-O"),0)
+-CFLAGS	+= -O3
+-endif
++STRIP   = strip
+ 
+ # This is a console client
+ CFLAGS	+= -D AICCU_CONSOLE
+@@ -42,7 +39,7 @@ CFLAGS	+= -D AICCU_CONSOLE
+ # Currently defaultly builds only on Linux, but other platforms might easily also support it
+ ifeq ($(shell uname | grep -c "Linux"),1)
+ CFLAGS	+= -D AICCU_GNUTLS
+-LDFLAGS += -lgnutls
++LIBS += -lgnutls
+ endif
+ 
+ # Linux
+@@ -50,7 +47,7 @@ ifeq ($(shell uname | grep -c "Linux"),1
+ CFLAGS  += -D_LINUX -D HAS_IFHEAD -D AICCU_TYPE="\"linux\""
+ SRCS	+= ../common/aiccu_linux.c
+ OBJS	+= ../common/aiccu_linux.o
+-LDFLAGS	+= -lpthread -lresolv
++LIBS	+= -lpthread -lresolv
+ endif
+ 
+ # FreeBSD
+@@ -118,7 +115,7 @@ ifeq ($(shell uname | grep -c "Darwin"),
+ CFLAGS	+= -D_DARWIN -D NEED_IFHEAD -D AICCU_TYPE="\"darwin\""
+ SRCS	+= ../common/aiccu_darwin.c
+ OBJS	+= ../common/aiccu_darwin.o
+-LDFLAGS	+= -lresolv
++LIBS	+= -lresolv
+ endif
+ 
+ # SunOS / Solaris
+@@ -126,7 +123,7 @@ ifeq ($(shell uname | grep -c "SunOS"),1
+ CFLAGS	+= -D_SUNOS -D AICCU_TYPE="\"sunos\""
+ SRCS	+= ../common/aiccu_sunos.c
+ OBJS	+= ../common/aiccu_sunos.o
+-LDFLAGS	+= -lsocket -lnsl -lresolv
++LIBS	+= -lsocket -lnsl -lresolv
+ endif
+ 
+ # AIX
+@@ -137,17 +134,19 @@ CFLAGS	+= -D AICCU_CONSOLE
+ CFLAGS	+= -D_AIX -D AICCU_TYPE="\"aix\""
+ SRCS	+= ../common/aiccu_aix.c
+ OBJS	+= ../common/aiccu_aix.o
+-LDFLAGS	+= -lpthread
++LIBS	+= -lpthread
+ endif
+ 
+ 
+ all: aiccu
+ 
+ aiccu:	$(OBJS) ${SRCS} ${INCS}
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ ifeq ($(shell echo $(CFLAGS) | grep -c "DEBUG"),0)
+ ifeq ($(shell echo "$(RPM_OPT_FLAGS)" | wc -c),1)
+-	strip $@
++ifdef STRIP
++	$(STRIP) $@
++endif
+ endif
+ endif
+ 

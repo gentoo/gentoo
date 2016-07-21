@@ -1,0 +1,12 @@
+diff -up gkrellm-2.3.5/server/main.c~ gkrellm-2.3.5/server/main.c
+--- gkrellm-2.3.5/server/main.c~	2010-10-02 19:13:29.000000000 +0300
++++ gkrellm-2.3.5/server/main.c	2013-12-06 22:56:38.690534043 +0200
+@@ -187,7 +187,7 @@ static void gkrellmd_syslog_log(GLogLeve
+ 	if (log_level & G_LOG_LEVEL_CRITICAL)
+ 		facility_priority = LOG_MAKEPRI(LOG_DAEMON, LOG_CRIT);
+ 
+-	syslog(facility_priority, message);
++	syslog(facility_priority, "%s", message);
+ #endif // defined(WIN32)
+ 	} // gkrellmd_syslog_log()
+ 

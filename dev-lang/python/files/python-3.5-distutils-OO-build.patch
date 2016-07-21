@@ -1,0 +1,80 @@
+From 90507018442f9adabb586fd3d0a0206b9c2f2f50 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 5 Jun 2016 08:18:01 +0200
+Subject: [PATCH] distutils: make -OO enable both opt-1 and opt-2 optimization
+
+Bug: http://bugs.python.org/issue27226
+Bug: https://bugs.gentoo.org/585060
+---
+ Lib/distutils/command/build_py.py    |  8 ++++----
+ Lib/distutils/command/install_lib.py | 12 ++++++------
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Lib/distutils/command/build_py.py b/Lib/distutils/command/build_py.py
+index cf0ca57..838d4e4 100644
+--- a/Lib/distutils/command/build_py.py
++++ b/Lib/distutils/command/build_py.py
+@@ -315,9 +315,9 @@ class build_py (Command):
+                 if self.compile:
+                     outputs.append(importlib.util.cache_from_source(
+                         filename, optimization=''))
+-                if self.optimize > 0:
++                for opt in range(1, self.optimize + 1):
+                     outputs.append(importlib.util.cache_from_source(
+-                        filename, optimization=self.optimize))
++                        filename, optimization=opt))
+ 
+         outputs += [
+             os.path.join(build_dir, filename)
+@@ -387,8 +387,8 @@ class build_py (Command):
+         if self.compile:
+             byte_compile(files, optimize=0,
+                          force=self.force, prefix=prefix, dry_run=self.dry_run)
+-        if self.optimize > 0:
+-            byte_compile(files, optimize=self.optimize,
++        for opt in range(1, self.optimize + 1):
++            byte_compile(files, optimize=opt,
+                          force=self.force, prefix=prefix, dry_run=self.dry_run)
+ 
+ class build_py_2to3(build_py, Mixin2to3):
+diff --git a/Lib/distutils/command/install_lib.py b/Lib/distutils/command/install_lib.py
+index 6154cf0..049b662 100644
+--- a/Lib/distutils/command/install_lib.py
++++ b/Lib/distutils/command/install_lib.py
+@@ -24,8 +24,8 @@ class install_lib(Command):
+     #   2) compile .pyc only (--compile --no-optimize; default)
+     #   3) compile .pyc and "opt-1" .pyc (--compile --optimize)
+     #   4) compile "opt-1" .pyc only (--no-compile --optimize)
+-    #   5) compile .pyc and "opt-2" .pyc (--compile --optimize-more)
+-    #   6) compile "opt-2" .pyc only (--no-compile --optimize-more)
++    #   5) compile .pyc, "opt-1" and "opt-2" .pyc (--compile --optimize-more)
++    #   6) compile "opt-1" and "opt-2" .pyc (--no-compile --optimize-more)
+     #
+     # The UI for this is two options, 'compile' and 'optimize'.
+     # 'compile' is strictly boolean, and only decides whether to
+@@ -132,8 +132,8 @@ class install_lib(Command):
+             byte_compile(files, optimize=0,
+                          force=self.force, prefix=install_root,
+                          dry_run=self.dry_run)
+-        if self.optimize > 0:
+-            byte_compile(files, optimize=self.optimize,
++        for opt in range(1, self.optimize + 1):
++            byte_compile(files, optimize=opt,
+                          force=self.force, prefix=install_root,
+                          verbose=self.verbose, dry_run=self.dry_run)
+ 
+@@ -167,9 +167,9 @@ class install_lib(Command):
+             if self.compile:
+                 bytecode_files.append(importlib.util.cache_from_source(
+                     py_file, optimization=''))
+-            if self.optimize > 0:
++            for opt in range(1, self.optimize + 1):
+                 bytecode_files.append(importlib.util.cache_from_source(
+-                    py_file, optimization=self.optimize))
++                    py_file, optimization=opt))
+ 
+         return bytecode_files
+ 
+-- 
+2.8.3
+

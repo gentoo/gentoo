@@ -1,0 +1,11 @@
+--- src/gui_manualdialog.c.orig	2008-11-21 16:19:15.000000000 +0100
++++ src/gui_manualdialog.c	2008-11-21 16:19:45.000000000 +0100
+@@ -59,7 +59,7 @@
+ 	helpfile = g_strdup_printf ("%s%s%s", PACKAGE_DATA_DIR, G_DIR_SEPARATOR_S, _("MANUAL"));
+ 
+ 	g_signal_connect(G_OBJECT(manualdialog), "response",
+-		GTK_SIGNAL_FUNC(gtk_widget_destroy), NULL);
++		G_CALLBACK (gtk_widget_destroy), NULL);
+ 
+ 
+ 	in = fopen (helpfile, "r");

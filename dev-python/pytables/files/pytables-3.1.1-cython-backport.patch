@@ -1,0 +1,65 @@
+ setup.py               | 13 +++++++------
+ tables/req_versions.py |  2 +-
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 0f2f3f7..52cda49 100755
+--- a/setup.py
++++ b/setup.py
+@@ -25,6 +25,7 @@ from distutils.core import Extension
+ from distutils.dep_util import newer
+ from distutils.util import convert_path
+ from distutils.ccompiler import new_compiler
++from distutils.version import LooseVersion
+ 
+ cmdclass = {}
+ setuptools_kwargs = {}
+@@ -106,7 +107,7 @@ def check_import(pkgname, pkgver):
+             "You need %(pkgname)s %(pkgver)s or greater to run PyTables!"
+             % {'pkgname': pkgname, 'pkgver': pkgver})
+     else:
+-        if mod.__version__ < pkgver:
++        if mod.__version__ < LooseVersion(pkgver):
+             exit_with_error(
+                 "You need %(pkgname)s %(pkgver)s or greater to run PyTables!"
+                 % {'pkgname': pkgname, 'pkgver': pkgver})
+@@ -122,21 +123,21 @@ if not has_setuptools:
+ 
+ # Check if Cython is installed or not (requisite)
+ try:
++    from Cython import __version__ as cython_version
+     from Cython.Distutils import build_ext
+-    from Cython.Compiler.Main import Version
+     cmdclass['build_ext'] = build_ext
+ except ImportError:
+     exit_with_error(
+         "You need %(pkgname)s %(pkgver)s or greater to compile PyTables!"
+         % {'pkgname': 'Cython', 'pkgver': min_cython_version})
+ 
+-if Version.version < min_cython_version:
++if LooseVersion(cython_version) < min_cython_version:
+     exit_with_error(
+-        "At least Cython %s is needed so as to generate extensions!"
+-        % (min_cython_version))
++        "You need %(pkgname)s %(pkgver)s or greater to run PyTables!"
++        % {'pkgname': 'Cython', 'pkgver': min_cython_version})
+ else:
+     print("* Found %(pkgname)s %(pkgver)s package installed."
+-          % {'pkgname': 'Cython', 'pkgver': Version.version})
++          % {'pkgname': 'Cython', 'pkgver': cython_version})
+ 
+ VERSION = open('VERSION').read().strip()
+ 
+diff --git a/tables/req_versions.py b/tables/req_versions.py
+index 2c9ca01..bd498c3 100644
+--- a/tables/req_versions.py
++++ b/tables/req_versions.py
+@@ -17,7 +17,7 @@
+ # Minimum recommended versions for mandatory packages
+ min_numpy_version = '1.4.1'
+ min_numexpr_version = '2.0.0'
+-min_cython_version = '0.13'
++min_cython_version = '0.14'
+ 
+ # The THG team has decided to fix an API inconsistency in the definition
+ # of the H5Z_class_t structure in version 1.8.3

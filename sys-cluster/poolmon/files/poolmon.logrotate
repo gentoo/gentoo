@@ -1,0 +1,6 @@
+/var/log/poolmon.log {
+	missingok
+	postrotate
+		/bin/kill -HUP `cat /run/poolmon.pid 2> /dev/null` 2>/dev/null || true
+	endscript
+}

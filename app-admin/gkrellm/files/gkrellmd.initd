@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="gkrell system monitor daemon"
+pidfile="/var/run/gkrellmd.pid"
+command="/usr/bin/gkrellmd"
+command_args="${GKRELLMD_OPTS}"
+command_background="true"
+
+depend() {
+	need net
+	after lm_sensors
+	after hddtemp
+}

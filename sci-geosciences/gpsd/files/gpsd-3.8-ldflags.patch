@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/391299
+
+split up linking flags into multiple arguments
+
+--- gpsd-3.8/SConstruct
++++ gpsd-3.8/SConstruct
+@@ -214,7 +214,7 @@
+             env.Replace(**{j: os.getenv(i)})
+ for flag in ["LDFLAGS", "LINKFLAGS", "SHLINKFLAGS", "CPPFLAGS"]:
+     if os.environ.has_key(flag):
+-        env.MergeFlags({flag : [os.getenv(flag)]})
++        env.MergeFlags({flag : Split(os.getenv(flag))})
+ 
+ 
+ # Placeholder so we can kluge together something like VPATH builds.

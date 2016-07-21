@@ -1,0 +1,29 @@
+ Makefile.gcc |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.gcc b/Makefile.gcc
+index 716b6c6..f0c1de2 100644
+--- a/Makefile.gcc
++++ b/Makefile.gcc
+@@ -1,10 +1,10 @@
+ # Makefile August 2006 by Alexandros Stamatakis
+ # Makefile cleanup October 2006, Courtesy of Peter Cordes <peter@cordes.ca>
+ 
+-CC = gcc 
++CC ?= gcc 
+ 
+ 
+-CFLAGS = -D_GNU_SOURCE  -fomit-frame-pointer -funroll-loops -O2 -msse
++CFLAGS += -D_GNU_SOURCE
+ 
+ 
+ 
+@@ -19,7 +19,7 @@ all : raxmlHPC
+ GLOBAL_DEPS = axml.h globalVariables.h
+ 
+ raxmlHPC : $(objs)
+-	$(CC) -o raxmlHPC $(objs) $(LIBRARIES) 
++	$(CC) $(LDFLAGS) -o raxmlHPC $(objs) $(LIBRARIES) 
+ 
+ classify.o : classify.c $(GLOBAL_DEPS)
+ evaluatePartialSpecialGeneric.o : evaluatePartialSpecialGeneric.c $(GLOBAL_DEPS)

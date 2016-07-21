@@ -1,0 +1,11 @@
+--- platform.h.orig	2011-06-18 13:55:09.704489907 -0400
++++ platform.h	2011-06-18 13:55:41.675544567 -0400
+@@ -79,7 +79,7 @@
+  #define GL_GLEXT_LEGACY
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+- #include "glext.h"
++ #include <GL/glext.h>
+ #else // BSD
+  #include <GL/gl.h>
+  #include <GL/glu.h>

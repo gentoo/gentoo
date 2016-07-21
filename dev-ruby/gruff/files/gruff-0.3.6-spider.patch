@@ -1,0 +1,13 @@
+--- lib/gruff/spider.rb.orig	2007-03-08 10:22:36.000000000 +0100
++++ lib/gruff/spider.rb	2007-03-08 10:38:50.000000000 +0100
+@@ -34,8 +34,8 @@
+     return unless @has_data
+ 
+     # Setup basic positioning
+-    diameter = @graph_height
+-    radius = @graph_height / 2.0
++    diameter = @graph_height - 50
++    radius = diameter / 2.0
+     top_x = @graph_left + (@graph_width - diameter) / 2.0
+     center_x = @graph_left + (@graph_width / 2.0)
+     center_y = @graph_top + (@graph_height / 2.0) - 25 # Move graph up a bit

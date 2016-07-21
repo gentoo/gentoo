@@ -1,0 +1,28 @@
+diff -Nur share.orig/dict/Makefile share/dict/Makefile
+--- share.orig/dict/Makefile	2012-12-31 18:00:00.000000000 +0900
++++ share/dict/Makefile	2012-12-31 18:03:15.000000000 +0900
+@@ -4,8 +4,7 @@
+ NO_OBJ=
+ 
+ # XXX MISSING:	connectives words
+-FILES=		README propernames web2 web2a freebsd
++FILES=		README freebsd
+ FILESDIR=	${BINDIR}/dict
+-SYMLINKS=	web2 ${FILESDIR}/words
+ 
+ .include <bsd.prog.mk>
+diff -Nur share.orig/misc/Makefile share/misc/Makefile
+--- share.orig/misc/Makefile	2012-12-31 18:00:00.000000000 +0900
++++ share/misc/Makefile	2012-12-31 18:04:22.000000000 +0900
+@@ -3,9 +3,9 @@
+ 
+ .PATH:	${.CURDIR}/../../sys/dev/usb
+ 
+-FILES=	ascii birthtoken bsd-family-tree committers-doc.dot committers-ports.dot \
++FILES=	bsd-family-tree committers-doc.dot committers-ports.dot \
+ 	committers-src.dot eqnchar flowers init.ee \
+-	iso3166 iso639 latin1 man.template mdoc.template operator pci_vendors \
++	iso3166 iso639 man.template mdoc.template pci_vendors \
+ 	scsi_modes usb_hid_usages usbdevs \
+ 	organization.dot
+ 

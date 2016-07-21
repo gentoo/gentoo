@@ -1,0 +1,10 @@
+[Unit]
+Description=IR Exec
+After=lirc.service
+Wants=lirc.service
+
+[Service]
+ExecStart=/usr/bin/irexec
+
+[Install]
+WantedBy=multi-user.target

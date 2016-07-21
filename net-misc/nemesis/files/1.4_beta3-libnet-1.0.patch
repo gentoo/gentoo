@@ -1,0 +1,123 @@
+diff -r -U 0 nemesis-1.4beta3.orig/configure nemesis-1.4beta3/configure
+--- nemesis-1.4beta3.orig/configure	2003-08-19 15:45:45.674664840 -0400
++++ nemesis-1.4beta3/configure	2003-08-19 15:47:50.916625168 -0400
+@@ -2704 +2704 @@
+-CPPFLAGS="${CPPFLAGS} `libnet-config --defines`"
++CPPFLAGS="${CPPFLAGS} `libnet-1.0-config --defines`"
+@@ -2707 +2707 @@
+-if test `libnet-config --cflags | wc -c` = "1"; then
++if test `libnet-1.0-config --cflags | wc -c` = "1"; then
+@@ -2711 +2711 @@
+-    CPPFLAGS="${CPPFLAGS} `libnet-config --cflags`"
++    CPPFLAGS="${CPPFLAGS} `libnet-1.0-config --cflags`"
+@@ -2714,3 +2714,3 @@
+-if test `libnet-config --libs | wc -c` = "1"; then
+-    { echo "$as_me:2715: WARNING: libnet-config --libs is broken on your system.  If you" >&5
+-echo "$as_me: WARNING: libnet-config --libs is broken on your system.  If you" >&2;}
++if test `libnet-1.0-config --libs | wc -c` = "1"; then
++    { echo "$as_me:2715: WARNING: libnet-1.0-config --libs is broken on your system.  If you" >&5
++echo "$as_me: WARNING: libnet-1.0-config --libs is broken on your system.  If you" >&2;}
+@@ -2721 +2721 @@
+-    LIBS="${LIBS} `libnet-config --libs | sed s/\-lnet//`"
++    LIBS="${LIBS} `libnet-1.0-config --libs | sed s/\-lnet-1.0//`"
+@@ -3553 +3553 @@
+-for ac_header in libnet.h
++for ac_header in libnet-1.0.h
+@@ -3621 +3621 @@
+-  libnet_dir=`libnet-config --cflags | cut -dI -f2`
++  libnet_dir=`libnet-1.0-config --cflags | cut -dI -f2`
+@@ -3626 +3626 @@
+-  if test -r $i/libnet.h; then
++  if test -r $i/libnet-1.0.h; then
+@@ -3632 +3632 @@
+-  if eval "grep LIBNET_VERSION $LIBNET_INC_DIR/libnet.h | grep -v 1.0.2a >/dev/null"; then
++  if eval "grep LIBNET_VERSION $LIBNET_INC_DIR/libnet-1.0.h | grep -v 1.0.2a >/dev/null"; then
+@@ -3643 +3643 @@
+-   echo "  ERROR: unable to find" "libnet 1.0.2a (libnet.h)"
++   echo "  ERROR: unable to find" "libnet 1.0.2a (libnet-1.0.h)"
+@@ -3662 +3662 @@
+-   echo "  ERROR: unable to find" "libnet 1.0.2a (libnet.h)"
++   echo "  ERROR: unable to find" "libnet 1.0.2a (libnet-1.0.h)"
+@@ -3699,2 +3699,2 @@
+-echo "$as_me:3699: checking for libnet_build_ip in -lnet" >&5
+-echo $ECHO_N "checking for libnet_build_ip in -lnet... $ECHO_C" >&6
++echo "$as_me:3699: checking for libnet_build_ip in -lnet-1.0" >&5
++echo $ECHO_N "checking for libnet_build_ip in -lnet-1.0... $ECHO_C" >&6
+@@ -3705 +3705 @@
+-LIBS="-lnet  $LIBS"
++LIBS="-lnet-1.0  $LIBS"
+@@ -3753 +3753 @@
+-  LIBS="-lnet $LIBS"
++  LIBS="-lnet-1.0 $LIBS"
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-arp.h nemesis-1.4beta3/src/nemesis-arp.h
+--- nemesis-1.4beta3.orig/src/nemesis-arp.h	2003-08-19 15:45:45.675664688 -0400
++++ nemesis-1.4beta3/src/nemesis-arp.h	2003-08-19 15:47:07.631205552 -0400
+@@ -30 +30 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-dns.h nemesis-1.4beta3/src/nemesis-dns.h
+--- nemesis-1.4beta3.orig/src/nemesis-dns.h	2003-08-19 15:45:45.675664688 -0400
++++ nemesis-1.4beta3/src/nemesis-dns.h	2003-08-19 15:47:07.638204488 -0400
+@@ -30 +30 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-ethernet.h nemesis-1.4beta3/src/nemesis-ethernet.h
+--- nemesis-1.4beta3.orig/src/nemesis-ethernet.h	2003-08-19 15:45:45.676664536 -0400
++++ nemesis-1.4beta3/src/nemesis-ethernet.h	2003-08-19 15:47:07.641204032 -0400
+@@ -29 +29 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-functions.c nemesis-1.4beta3/src/nemesis-functions.c
+--- nemesis-1.4beta3.orig/src/nemesis-functions.c	2003-08-19 15:45:45.676664536 -0400
++++ nemesis-1.4beta3/src/nemesis-functions.c	2003-08-19 15:47:07.656201752 -0400
+@@ -37 +37 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-icmp.h nemesis-1.4beta3/src/nemesis-icmp.h
+--- nemesis-1.4beta3.orig/src/nemesis-icmp.h	2003-08-19 15:45:45.676664536 -0400
++++ nemesis-1.4beta3/src/nemesis-icmp.h	2003-08-19 15:47:07.665200384 -0400
+@@ -31 +31 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-igmp.h nemesis-1.4beta3/src/nemesis-igmp.h
+--- nemesis-1.4beta3.orig/src/nemesis-igmp.h	2003-08-19 15:45:45.676664536 -0400
++++ nemesis-1.4beta3/src/nemesis-igmp.h	2003-08-19 15:47:07.670199624 -0400
+@@ -30 +30 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-ip.h nemesis-1.4beta3/src/nemesis-ip.h
+--- nemesis-1.4beta3.orig/src/nemesis-ip.h	2003-08-19 15:45:45.676664536 -0400
++++ nemesis-1.4beta3/src/nemesis-ip.h	2003-08-19 15:47:07.677198560 -0400
+@@ -26 +26 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-ospf.h nemesis-1.4beta3/src/nemesis-ospf.h
+--- nemesis-1.4beta3.orig/src/nemesis-ospf.h	2003-08-19 15:45:45.677664384 -0400
++++ nemesis-1.4beta3/src/nemesis-ospf.h	2003-08-19 15:47:07.684197496 -0400
+@@ -33 +33 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-rip.h nemesis-1.4beta3/src/nemesis-rip.h
+--- nemesis-1.4beta3.orig/src/nemesis-rip.h	2003-08-19 15:45:45.678664232 -0400
++++ nemesis-1.4beta3/src/nemesis-rip.h	2003-08-19 15:47:07.717192480 -0400
+@@ -33 +33 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-tcp.h nemesis-1.4beta3/src/nemesis-tcp.h
+--- nemesis-1.4beta3.orig/src/nemesis-tcp.h	2003-08-19 15:45:45.678664232 -0400
++++ nemesis-1.4beta3/src/nemesis-tcp.h	2003-08-19 15:47:07.723191568 -0400
+@@ -30 +30 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis-udp.h nemesis-1.4beta3/src/nemesis-udp.h
+--- nemesis-1.4beta3.orig/src/nemesis-udp.h	2003-08-19 15:45:45.678664232 -0400
++++ nemesis-1.4beta3/src/nemesis-udp.h	2003-08-19 15:47:07.728190808 -0400
+@@ -30 +30 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -r -U 0 nemesis-1.4beta3.orig/src/nemesis.h nemesis-1.4beta3/src/nemesis.h
+--- nemesis-1.4beta3.orig/src/nemesis.h	2003-08-19 15:45:45.678664232 -0400
++++ nemesis-1.4beta3/src/nemesis.h	2003-08-19 15:47:07.731190352 -0400
+@@ -15 +15 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>

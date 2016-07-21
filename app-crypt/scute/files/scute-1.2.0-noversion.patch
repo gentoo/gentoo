@@ -1,0 +1,14 @@
+Index: scute-1.2.0/src/Makefile.am
+===================================================================
+--- scute-1.2.0.orig/src/Makefile.am
++++ scute-1.2.0/src/Makefile.am
+@@ -109,8 +109,7 @@ scute_deps =
+ endif
+ 
+ libscute_la_LDFLAGS = $(scute_res_ldflag) $(no_undefined) $(export_symbols) \
+-	$(scute_version_script_cmd) -version-info \
+-	@LIBSCUTE_LT_CURRENT@:@LIBSCUTE_LT_REVISION@:@LIBSCUTE_LT_AGE@
++	$(scute_version_script_cmd) -avoid-version
+ libscute_la_DEPENDENCIES = @LTLIBOBJS@ $(srcdir)/libscute.vers $(scute_deps)
+ libscute_la_LIBADD = @LTLIBOBJS@ @LIBASSUAN_LIBS@ @GPG_ERROR_LIBS@
+ 

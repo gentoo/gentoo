@@ -1,0 +1,22 @@
+diff -bur disspam-orig/disspam.pl disspam/disspam.pl
+--- disspam-orig/disspam.pl	2003-05-07 00:46:14.000000000 +0200
++++ disspam/disspam.pl	2004-12-31 18:31:49.006478280 +0100
+@@ -144,7 +144,8 @@
+ 				if ($HEADERHASHES{$hash} =~ /S/) {
+ 
+ 					# It's old spam
+-					$reason = "Message previously detected as spam";
++					#$reason = "Message previously detected as spam";
++					undef $reason
+ 				}
+ 				else {
+ 
+@@ -766,7 +767,7 @@
+ 
+ 			#give email SpamAssassin headers
+ 			$status->rewrite_mail();
+-			$$messageref = $status->get_full_message_as_text();
++			$$messageref = $status->get_message();
+ 		}
+ 	}
+ 	else {

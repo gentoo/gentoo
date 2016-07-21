@@ -1,0 +1,19 @@
+--- a/makefile.in
++++ b/makefile.in
+@@ -11,13 +11,13 @@
+ 
+ TARGETS=pathload_snd pathload_rcv
+ 
+-all:${TARGETS} clean
++all:${TARGETS}
+ 
+ pathload_snd: $(SOBJS)
+-	 $(CC) $(SOBJS) -o pathload_snd $(LIBS) $(LDFLAGS) $(CFLAGS)
++	 $(CC) $(LDFLAGS) $(CFLAGS) $(SOBJS) -o pathload_snd $(LIBS)
+ 
+ pathload_rcv: $(ROBJS)
+-	 $(CC) $(ROBJS) -o pathload_rcv $(LIBS) $(LDFLAGS) $(CFLAGS)
++	 $(CC) $(LDFLAGS) $(CFLAGS) $(ROBJS) -o pathload_rcv $(LIBS)
+ 
+ pathload_rcv.o pathload_rcv_func.o: pathload_gbls.h pathload_rcv.h
+ 

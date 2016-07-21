@@ -1,0 +1,20 @@
+# /etc/conf.d/quota: config file for /etc/init.d/quota
+
+# Note: if your console is hooked up to a serial terminal,
+# you prob want to drop the '-v' from the OPTS vars below.
+
+
+# Run quotacheck ?
+RUN_QUOTACHECK="yes"
+
+
+# Options for quotacheck
+QUOTACHECK_OPTS="-avug"
+
+
+# Options for quotaon
+QUOTAON_OPTS="-avug"
+
+
+# Options for quotaoff
+QUOTAOFF_OPTS="-avug"

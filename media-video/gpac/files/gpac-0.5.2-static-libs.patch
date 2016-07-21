@@ -1,0 +1,80 @@
+Index: gpac-0.5.2/configure
+===================================================================
+--- gpac-0.5.2.orig/configure
++++ gpac-0.5.2/configure
+@@ -101,6 +101,7 @@ has_xmlrpc="no"
+ has_openjpeg="no"
+ gprof_build="no"
+ static_build="no"
++static_libs="no"
+ want_pic="no"
+ want_gcov="no"
+ has_joystick="no"
+@@ -248,6 +249,7 @@ GPAC configuration options:
+   --enable-amr-wb          enable AMR WB library
+   --enable-amr             enable both AMR NB and WB libraries
+   --enable-static-bin      GPAC static build
++  --enable-static-lib      GPAC static libraries build
+   --static-mp4box          configure for static linking of MP4Box.
+   --enable-depth           enables depth handling in the compositor
+ 
+@@ -1775,6 +1777,8 @@ for opt do
+             ;;
+         --enable-static-bin) static_build="yes";
+             ;;
++	--enable-static-lib) static_libs="yes";
++	   ;;
+         --disable-ipv6) has_ipv6="no"
+             ;;
+         --disable-wx) has_wx="no"
+@@ -2452,6 +2456,7 @@ echo "** GPAC $version rev$revision Core
+ echo "debug version: $debuginfo"
+ echo "GProf enabled: $gprof_build"
+ echo "Static build enabled: $static_build"
++echo "Static libs build enabled: $static_libs"
+ echo "Memory tracking enabled: $use_memory_tracking"
+ echo "Use standard memory allocator: $use_std_alloc"
+ echo "Fixed-Point Version: $use_fixed_point"
+@@ -3064,6 +3069,7 @@ echo "CONFIG_AMR_WB_FT=$has_amr_wb" >> c
+ echo "DEBUGBUILD=$debuginfo" >> config.mak
+ echo "GPROFBUILD=$gprof_build" >> config.mak
+ echo "STATICBUILD=$static_build" >> config.mak
++echo "STATICLIBS=$static_libs" >> config.mak
+ 
+ echo "CONFIG_IPV6=$has_ipv6" >> config.mak
+ if test "$has_ipv6" = "yes" ; then
+Index: gpac-0.5.2/Makefile
+===================================================================
+--- gpac-0.5.2.orig/Makefile
++++ gpac-0.5.2/Makefile
+@@ -203,7 +203,9 @@ ifeq ($(GPAC_ENST), yes)
+ 	$(INSTALL) $(INSTFLAGS) -m 644 $(SRC_PATH)/include/gpac/enst/*.h "$(DESTDIR)$(prefix)/include/gpac/enst"
+ endif
+ 	mkdir -p "$(DESTDIR)$(prefix)/$(libdir)"
++ifeq ($(STATICLIBS),yes)
+ 	$(INSTALL) $(INSTFLAGS) -m 644 "./bin/gcc/libgpac_static.a" "$(DESTDIR)$(prefix)/$(libdir)"
++endif
+ 	$(MAKE) installdylib
+ 
+ uninstall-lib:
+Index: gpac-0.5.2/src/Makefile
+===================================================================
+--- gpac-0.5.2.orig/src/Makefile
++++ gpac-0.5.2/src/Makefile
+@@ -606,12 +606,16 @@ compositor: $(LIBGPAC_COMPOSITOR)
+ 	@echo "OBJS $(OBJS)"
+ 	@echo "LIBS $(EXTRALIBS)"
+ ifeq ($(CONFIG_DARWIN),yes)
++ifeq ($(STATICLIBS),yes)
+ 	$(LIBTOOL) -s -o ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o $@ $(OBJS) $(EXTRALIBS) 
+ else
++ifeq ($(STATICLIBS),yes)
+ 	$(AR) cr ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o $@ $(OBJS) $(EXTRALIBS)
+ ifeq (,$(findstring yes, $(CONFIG_WIN32)))
+ 	mv $@ $@.$(VERSION_SONAME)

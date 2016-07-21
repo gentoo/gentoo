@@ -1,0 +1,29 @@
+Fix build failure against ghc-7.4
+
+[ 4 of 84] Compiling Graphics.Rendering.OpenGL.GL.GLboolean ( Graphics/Rendering/OpenGL/GL/GLboolean.hs, dist/build/Graphics/Rendering/OpenGL/GL/GLboolean.o )
+
+Graphics/Rendering/OpenGL/GL/GLboolean.hs:27:23:
+    Could not deduce (Eq a) arising from a use of `/='
+    from the context (Num a)
+      bound by the type signature for
+                 unmarshalGLboolean :: Num a => a -> Bool
+      at Graphics/Rendering/OpenGL/GL/GLboolean.hs:27:1-27
+    Possible fix:
+      add (Eq a) to the context of
+        the type signature for unmarshalGLboolean :: Num a => a -> Bool
+    In the expression: (/= 0)
+    In an equation for `unmarshalGLboolean':
+        unmarshalGLboolean = (/= 0)
+
+Reported-by: Christian Lask
+diff --git a/Graphics/Rendering/OpenGL/GL/GLboolean.hs b/Graphics/Rendering/OpenGL/GL/GLboolean.hs
+index cab7356..cc4faa8 100644
+--- a/Graphics/Rendering/OpenGL/GL/GLboolean.hs
++++ b/Graphics/Rendering/OpenGL/GL/GLboolean.hs
+@@ -23,5 +23,5 @@ marshalGLboolean :: Num a => Bool -> a
+ marshalGLboolean False = 0
+ marshalGLboolean True  = 1
+ 
+-unmarshalGLboolean :: Num a => a -> Bool
++unmarshalGLboolean :: (Eq a, Num a) => a -> Bool
+ unmarshalGLboolean = (/= 0)

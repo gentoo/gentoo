@@ -1,0 +1,28 @@
+Do not force using a preset. Do not try to open non-existant preset by default.
+
+Index: transcode-1.1.7/export/export_ffmpeg.c
+===================================================================
+--- transcode-1.1.7.orig/export/export_ffmpeg.c
++++ transcode-1.1.7/export/export_ffmpeg.c
+@@ -1206,7 +1206,7 @@ MOD_init
+     lavc_venc_context->me_method = ME_ZERO + lavc_param_vme;
+ 
+ 	/* FIXME: transcode itself contains "broken ffmpeg default settings", thus we need to override them! */
+-	if (lavc_param_video_preset) {
++	if (lavc_param_video_preset && strcmp(lavc_param_video_preset, "none")) {
+ 		avcodec_opts[AVMEDIA_TYPE_VIDEO] = lavc_venc_context;
+ 		video_codec_name = av_strdup(ffmpeg_codec_name(codec->name));
+ 
+Index: transcode-1.1.7/export/ffmpeg_cfg.c
+===================================================================
+--- transcode-1.1.7.orig/export/ffmpeg_cfg.c
++++ transcode-1.1.7/export/ffmpeg_cfg.c
+@@ -124,7 +124,7 @@ int lavc_param_gmc = 0;
+ //int lavc_param_atag = 0;
+ //int lavc_param_abitrate = 224;
+ 
+-char *lavc_param_video_preset = "medium";
++char *lavc_param_video_preset = "none";
+ char *lavc_param_ffmpeg_datadir = "/usr/share/ffmpeg";
+ 
+ TCConfigEntry lavcopts_conf[]={

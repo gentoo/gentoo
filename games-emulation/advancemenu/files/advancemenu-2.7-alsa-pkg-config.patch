@@ -1,0 +1,20 @@
+--- advancemenu-2.6.orig/configure.ac
++++ advancemenu-2.6/configure.ac
+@@ -512,7 +512,7 @@
+ 		[snd_pcm_open],
+ 		[ac_lib_alsa=yes],
+ 		[ac_lib_alsa=no],
+-		[-lm]
++		[`pkg-config alsa --libs`]
+ 	)
+ 	if test $ac_lib_alsa = yes; then
+ 		AC_MSG_CHECKING([for ALSA])
+@@ -531,7 +531,7 @@
+ 		[snd_pcm_open],
+ 		[],
+ 		[AC_MSG_ERROR([the ALSA library is missing])],
+-		[-lm]
++		[`pkg-config alsa --libs`]
+ 	)
+ 	AC_MSG_CHECKING([for ALSA version])
+ 	AC_TRY_COMPILE([

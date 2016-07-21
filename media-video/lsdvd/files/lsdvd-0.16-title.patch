@@ -1,0 +1,27 @@
+See, http://bugs.gentoo.org/show_bug.cgi?id=233113
+
+lsdvd always reads the infos for all titles (even if only a single title was
+selected with "-t") and bails out if there is an error.
+
+Now, if for example title 5 is unreadable but you're interested in title 1, you
+should be able to get the info by using "-t 1", but that doesn't work, as lsdvd
+errors out before even starting the output because it can't read title 5.
+
+To solve this my patch makes lsdvd ignore read errors in titles it wouldn't
+display anyway.
+
+Patch by Martin Thierer
+
+diff -uw lsdvd-0.16.orig/lsdvd.c lsdvd-0.16/lsdvd.c
+--- lsdvd-0.16.orig/lsdvd.c	2006-03-02 14:48:11.000000000 +0100
++++ lsdvd-0.16/lsdvd.c	2008-07-27 20:11:55.000000000 +0200
+@@ -292,7 +292,7 @@
+ 
+ 	for (i=1; i <= ifo_zero->vts_atrt->nr_of_vtss; i++) {
+ 		ifo[i] = ifoOpen(dvd, i);
+-		if ( !ifo[i] ) {
++		if ( !ifo[i] && opt_t == i ) {
+ 			fprintf( stderr, "Can't open ifo %d!\n", i);
+ 			return 4;
+ 		}
+

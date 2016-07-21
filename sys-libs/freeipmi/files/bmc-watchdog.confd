@@ -1,0 +1,44 @@
+# 
+# This configuration file controls the behaviour of the bmc-watchdog daemon
+# from FreeIPMI.
+#
+#       -u INT, --timer-use=INT
+#              Set timer use.  The timer use value can be set  to  one  of  the
+#              following:  1  =  BIOS FRB2, 2 = BIOS POST, 3 = OS_LOAD, 4 = SMS
+#              OS, 5 = OEM.
+#
+#       -p INT, --pre-timeout-interrupt=INT
+#              Set pre-timeout interrupt.  The pre timeout interrupt can be set
+#              to one of the following: 0 = None, 1 = SMI, 2 = NMI, 3 = Messag-
+#              ing Interrupt.
+#
+#       -a INT, --timeout-action=INT
+#              Set timeout action.  The timeout action can be set to one of the
+#              following: 0 = No action, 1 = Hard Reset, 2 = Power  Down,  3  =
+#              Power Cycle.
+#
+#       -F, --clear-bios-frb2
+#              Clear  BIOS FRB2 Timer Use Flag.
+#
+#       -P, --clear-bios-post
+#              Clear BIOS POST Timer Use Flag.
+#
+#       -L, --clear-os-load
+#              Clear OS Load Timer Use Flag.
+#
+#       -S, --clear-sms-os
+#              Clear SMS/OS Timer Use Flag.
+#
+#       -O, --clear-oem
+#              Clear OEM Timer Use Flag.
+#
+#       -i SECS, --initial-countdown=SECS
+#              Set initial countdown in seconds.
+#
+#       -e, --reset-period
+#              Time interval to wait before resetting timer.  The default is 60
+#              seconds.
+#
+# For the remaining options, consult man bmc-watchdog
+#
+OPTIONS="-d -u 4 -p 0 -a 1 -F -P -L -S -O -i 900 -e 60"

@@ -1,0 +1,33 @@
+ Makefile.am |    6 +++---
+ zrio.c      |    2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index dad515a..9617eb7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,8 +1,8 @@
+ bin_PROGRAMS = zrio maqindex maqview maqindex_socks
+-zlib_src = adler32.c compress.c crc32.c deflate.c gzio.c inffast.c inflate.c \
+-		   infback.c inftrees.c trees.c uncompr.c zutil.c
+-generic_src = btree.c maqmap_index.c zrio.c stdhashc.h stdhashc.cc cns_cache.c const.c $(zlib_src)
++generic_src = btree.c maqmap_index.c zrio.c stdhashc.h stdhashc.cc cns_cache.c const.c
++LIBS = -lz
+ zrio_SOURCES = zrio_main.c $(generic_src)
++zrio_LDADD = -lz
+ maqindex_SOURCES = maqmap_index_main.c $(generic_src)
+ maqview_SOURCES = read_cache.c view_goto.c view_panel.c gl_gui.c MainFrame.c \
+ 				  $(generic_src)				  
+diff --git a/zrio.c b/zrio.c
+index ffed00a..fe744df 100644
+--- a/zrio.c
++++ b/zrio.c
+@@ -506,7 +506,7 @@ int build_index(int in, int64_t span, struct access **built, void (*notify)(void
+             totin += strm.avail_in;
+             totout += strm.avail_out;
+ 			tmp = strm.avail_out;
+-            ret = inflate_zr(&strm, Z_BLOCK);      /* return at end of block */
++            ret = inflate(&strm, Z_BLOCK);      /* return at end of block */
+             totin -= strm.avail_in;
+             totout -= strm.avail_out;
+ 			if(notify) notify(obj, window + WINSIZE - tmp, tmp - strm.avail_out, totout);

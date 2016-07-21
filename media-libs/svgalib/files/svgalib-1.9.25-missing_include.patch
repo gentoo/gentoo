@@ -1,0 +1,33 @@
+diff -Naur svgalib-1.9.25.orig/demos/bg_test.c svgalib-1.9.25/demos/bg_test.c
+--- svgalib-1.9.25.orig/demos/bg_test.c	2005-07-16 23:59:22.000000000 +0400
++++ svgalib-1.9.25/demos/bg_test.c	2012-06-09 20:28:24.698448313 +0400
+@@ -9,6 +9,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <string.h>
+ #include <strings.h>
+ #include <vga.h>
+ #include <vgagl.h>
+diff -Naur svgalib-1.9.25.orig/demos/eventtest.c svgalib-1.9.25/demos/eventtest.c
+--- svgalib-1.9.25.orig/demos/eventtest.c	2012-06-09 20:26:47.000000000 +0400
++++ svgalib-1.9.25/demos/eventtest.c	2012-06-09 20:26:53.464932538 +0400
+@@ -5,6 +5,7 @@
+ #include <unistd.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
++#include <time.h>
+ #include <vga.h>
+ #include <vgagl.h>
+ #include <vgamouse.h>
+diff -Naur svgalib-1.9.25.orig/demos/vgatweak.c svgalib-1.9.25/demos/vgatweak.c
+--- svgalib-1.9.25.orig/demos/vgatweak.c	2000-08-06 14:20:02.000000000 +0400
++++ svgalib-1.9.25/demos/vgatweak.c	2012-06-09 20:29:51.108801463 +0400
+@@ -4,6 +4,7 @@
+ 
+ #include <stdio.h>
+ #include <unistd.h>		/* for usleep( long ) */
++#include <stdlib.h>
+ #include <string.h>
+ #include "vga.h"
+ 

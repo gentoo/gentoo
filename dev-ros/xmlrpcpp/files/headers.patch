@@ -1,0 +1,15 @@
+Index: ros_comm-1.11.15/utilities/xmlrpcpp/CMakeLists.txt
+===================================================================
+--- ros_comm-1.11.15.orig/utilities/xmlrpcpp/CMakeLists.txt
++++ ros_comm-1.11.15/utilities/xmlrpcpp/CMakeLists.txt
+@@ -30,9 +30,8 @@ if(WIN32)
+   target_link_libraries(xmlrpcpp ws2_32)
+ endif()
+ 
+-# FIXME the headers should be in a package-specific subfolder but can not be for backward compatibility
+ install(DIRECTORY include/
+-  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
++  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h")
+ 
+ install(TARGETS xmlrpcpp

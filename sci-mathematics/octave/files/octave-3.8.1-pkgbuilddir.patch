@@ -1,0 +1,41 @@
+--- scripts/pkg/private/install.m.orig	2014-04-15 08:45:55.487258887 -0700
++++ scripts/pkg/private/install.m	2014-04-15 12:12:40.985606248 -0700
+@@ -62,7 +62,14 @@
+     for i = 1:length (files)
+       tgz = files{i};
+ 
+-      if (exist (tgz, "file"))
++      ## The filename pointed to an uncompressed package to begin with.
++      if (exist (tgz, "dir"))
++        if (tgz(1) == '/')
++          packdir = tgz;
++        else
++          packdir = fullfile (pwd(), tgz);
++        endif
++      elseif (exist (tgz, "file"))
+         ## Create a temporary directory.
+         tmpdir = tmpnam ();
+         tmpdirs{end+1} = tmpdir;
+@@ -89,20 +96,12 @@
+         if (length (dirlist) > 3)
+           error ("bundles of packages are not allowed");
+         endif
+-      endif
+ 
+-      ## The filename pointed to an uncompressed package to begin with.
+-      if (exist (tgz, "dir"))
+-        dirlist = {".", "..", tgz};
++        ## The two first entries of dirlist are "." and "..".
++        packdir = fullfile (tmpdir, dirlist{3});
+       endif
+ 
+       if (exist (tgz, "file") || exist (tgz, "dir"))
+-        ## The two first entries of dirlist are "." and "..".
+-        if (exist (tgz, "file"))
+-          packdir = fullfile (tmpdir, dirlist{3});
+-        else
+-          packdir = fullfile (pwd (), dirlist{3});
+-        endif
+         packdirs{end+1} = packdir;
+ 
+         ## Make sure the package contains necessary files.

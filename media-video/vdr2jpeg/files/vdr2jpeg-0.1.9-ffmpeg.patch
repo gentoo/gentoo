@@ -1,0 +1,326 @@
+diff -urN vdr2jpeg-0.1.9.old/ffm.cpp vdr2jpeg-0.1.9/ffm.cpp
+--- vdr2jpeg-0.1.9.old/ffm.cpp	2012-04-21 09:53:26.727892390 +0200
++++ vdr2jpeg-0.1.9/ffm.cpp	2012-04-21 09:57:25.555890271 +0200
+@@ -21,6 +21,7 @@
+ 
+ extern "C" {
+ #include <libavutil/avutil.h>
++#include <libavutil/mathematics.h>
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
+ #include <libswscale/swscale.h>
+@@ -185,7 +186,7 @@
+     }else
+         ost->sync_opts= lrintf(get_sync_ipts(ost) / av_q2d(enc->time_base));
+ 
+-    nb_frames= FFMIN(nb_frames, max_frames[CODEC_TYPE_VIDEO] - ost->frame_number);
++    nb_frames= FFMIN(nb_frames, max_frames[AVMEDIA_TYPE_VIDEO] - ost->frame_number);
+     if (nb_frames <= 0)
+         return true;
+ 
+@@ -221,7 +222,7 @@
+             if(dec->coded_frame && enc->coded_frame->pts != AV_NOPTS_VALUE)
+                 pkt.pts= av_rescale_q(enc->coded_frame->pts, enc->time_base, ost->st->time_base);
+             if(dec->coded_frame && dec->coded_frame->key_frame)
+-                pkt.flags |= PKT_FLAG_KEY;
++                pkt.flags |= AV_PKT_FLAG_KEY;
+ 
+             av_interleaved_write_frame(s, &pkt);
+             enc->coded_frame = old_frame;
+@@ -245,7 +246,7 @@
+                 big_picture.quality = (int)ist->st->quality;
+             }else
+                 big_picture.quality = (int)ost->st->quality;
+-                big_picture.pict_type = 0;
++                big_picture.pict_type = (AVPictureType) 0;
+ //            big_picture.pts = AV_NOPTS_VALUE;
+             big_picture.pts= ost->sync_opts;
+ //            big_picture.pts= av_rescale(ost->sync_opts, AV_TIME_BASE*(int64_t)enc->time_base.num, enc->time_base.den);
+@@ -268,7 +269,7 @@
+    pkt.dts != AV_NOPTS_VALUE ? av_rescale(pkt.dts, enc->time_base.den, AV_TIME_BASE*(int64_t)enc->time_base.num) : -1);*/
+ 
+                 if(enc->coded_frame && enc->coded_frame->key_frame)
+-                    pkt.flags |= PKT_FLAG_KEY;
++                    pkt.flags |= AV_PKT_FLAG_KEY;
+                 av_interleaved_write_frame(s, &pkt);
+                 *frame_size = ret;
+             }
+@@ -316,13 +317,17 @@
+         data_size = 0;
+         if (ist->decoding_needed) {
+             switch(ist->st->codec->codec_type) {
+-            case CODEC_TYPE_VIDEO:
++            case AVMEDIA_TYPE_VIDEO:
+                     data_size = (ist->st->codec->width * ist->st->codec->height * 3) / 2;
+                     /* XXX: allocate picture correctly */
+                     avcodec_get_frame_defaults(&picture);
++		    AVPacket pkt;
++		    av_init_packet( &pkt );
++		    pkt.data = ptr;
++		    pkt.size = len;
+ 
+-                    ret = avcodec_decode_video(ist->st->codec,
+-                                               &picture, &got_picture, ptr, len);
++                    ret = avcodec_decode_video2(ist->st->codec,
++                                               &picture, &got_picture, &pkt);
+                     ist->st->quality= picture.quality;
+                     if (ret < 0)
+                         goto fail_decode;
+@@ -341,7 +346,7 @@
+                 goto fail_decode;
+             }
+         } else {
+-            if(ist->st->codec->codec_type == CODEC_TYPE_VIDEO) {
++            if(ist->st->codec->codec_type == AVMEDIA_TYPE_VIDEO) {
+                 if (ist->st->codec->time_base.num != 0) {
+                     ist->next_pts += ((int64_t)AV_TIME_BASE *
+                                       ist->st->codec->time_base.num) /
+@@ -354,16 +359,6 @@
+             len = 0;
+         }
+ 
+-        /* frame rate emulation */
+-        if (ist->st->codec->rate_emu) {
+-            int64_t pts = av_rescale((int64_t) ist->frame * ist->st->codec->time_base.num, 1000000, ist->st->codec->time_base.den);
+-            int64_t now = av_gettime() - ist->start;
+-            if (pts > now)
+-                usleep(pts - now);
+-
+-            ist->frame++;
+-        }
+-
+ #if 0
+         /* mpeg PTS deordering : if it is a P or I frame, the PTS
+            is the one of the next displayed one */
+@@ -398,7 +393,7 @@
+ 
+                     if (ost->encoding_needed) {
+                         switch(ost->st->codec->codec_type) {
+-                        case CODEC_TYPE_VIDEO:
++                        case AVMEDIA_TYPE_VIDEO:
+                             if(!do_video_out(os, ost, ist, &picture, &frame_size))
+                                return -1;
+                             break;
+@@ -415,9 +410,9 @@
+ 
+                         avcodec_get_frame_defaults(&avframe);
+                         ost->st->codec->coded_frame= &avframe;
+-                        avframe.key_frame = pkt->flags & PKT_FLAG_KEY;
++                        avframe.key_frame = pkt->flags & AV_PKT_FLAG_KEY;
+ 
+-                        if (ost->st->codec->codec_type == CODEC_TYPE_VIDEO) {
++                        if (ost->st->codec->codec_type == AVMEDIA_TYPE_VIDEO) {
+                             ost->sync_opts++;
+                         }
+ 
+@@ -438,7 +433,7 @@
+                         opkt.flags= pkt->flags;
+ 
+                         //FIXME remove the following 2 lines they shall be replaced by the bitstream filters
+-                        if(av_parser_change(ist->st->parser, ost->st->codec, &opkt.data, &opkt.size, data_buf, data_size, pkt->flags & PKT_FLAG_KEY))
++                        if(av_parser_change(ist->st->parser, ost->st->codec, &opkt.data, &opkt.size, data_buf, data_size, pkt->flags & AV_PKT_FLAG_KEY))
+                             opkt.destruct= av_destruct_packet;
+ 
+                         av_interleaved_write_frame(os, &opkt);
+@@ -459,7 +454,7 @@
+                 AVCodecContext *enc= ost->st->codec;
+                 os = output_files[ost->file_index];
+ 
+-                if(ost->st->codec->codec_type == CODEC_TYPE_VIDEO && (os->oformat->flags & AVFMT_RAWPICTURE))
++                if(ost->st->codec->codec_type == AVMEDIA_TYPE_VIDEO && (os->oformat->flags & AVFMT_RAWPICTURE))
+                     continue;
+ 
+                 if (ost->encoding_needed) {
+@@ -469,10 +464,10 @@
+                         pkt.stream_index= ost->index;
+ 
+                         switch(ost->st->codec->codec_type) {
+-                        case CODEC_TYPE_VIDEO:
++                        case AVMEDIA_TYPE_VIDEO:
+                             ret = avcodec_encode_video(enc, bit_buffer, bit_buffer_size, NULL);
+                             if(enc->coded_frame && enc->coded_frame->key_frame)
+-                                pkt.flags |= PKT_FLAG_KEY;
++                                pkt.flags |= AV_PKT_FLAG_KEY;
+                             break;
+                         default:
+                             ret=-1;
+@@ -547,11 +542,6 @@
+             ist->index = k;
+             ist->discard = 1; /* the stream is discarded by default
+                                  (changed later) */
+-
+-            if (ist->st->codec->rate_emu) {
+-                ist->start = av_gettime();
+-                ist->frame = 0;
+-            }
+         }
+     }
+ 
+@@ -641,20 +631,20 @@
+             else
+                 codec->time_base = ist->st->time_base;
+             switch(codec->codec_type) {
+-            case CODEC_TYPE_VIDEO:
++            case AVMEDIA_TYPE_VIDEO:
+                 codec->pix_fmt = icodec->pix_fmt;
+                 codec->width = icodec->width;
+                 codec->height = icodec->height;
+                 codec->has_b_frames = icodec->has_b_frames;
+                 break;
+-            case CODEC_TYPE_SUBTITLE:
++            case AVMEDIA_TYPE_SUBTITLE:
+                 break;
+             default:
+                 return false;
+             }
+         } else {
+             switch(codec->codec_type) {
+-            case CODEC_TYPE_VIDEO:
++            case AVMEDIA_TYPE_VIDEO:
+                 ost->video_resample = ((codec->width != icodec->width) ||
+                         (codec->height != icodec->height) ||
+                         (codec->pix_fmt != icodec->pix_fmt));
+@@ -686,7 +676,7 @@
+                 return false;
+             }
+         }
+-        if(codec->codec_type == CODEC_TYPE_VIDEO){
++        if(codec->codec_type == AVMEDIA_TYPE_VIDEO){
+             int size= codec->width * codec->height;
+             bit_buffer_size= FFMAX(bit_buffer_size, 4*size);
+         }
+@@ -738,7 +728,7 @@
+                         ist->file_index, ist->index);
+                 return false;
+             }
+-            //if (ist->st->codec->codec_type == CODEC_TYPE_VIDEO)
++            //if (ist->st->codec->codec_type == AVMEDIA_TYPE_VIDEO)
+             //    ist->st->codec->flags |= CODEC_FLAG_REPEAT_FIELD;
+         }
+     }
+@@ -786,7 +776,7 @@
+             ost = ost_table[i];
+             os = output_files[ost->file_index];
+             ist = ist_table[ost->source_index];
+-            if(ost->st->codec->codec_type == CODEC_TYPE_VIDEO)
++            if(ost->st->codec->codec_type == AVMEDIA_TYPE_VIDEO)
+                 opts = ost->sync_opts * av_q2d(ost->st->codec->time_base);
+             else
+                 opts = ost->st->pts.val * av_q2d(ost->st->time_base);
+@@ -924,22 +914,22 @@
+ void print_error(const char *filename, int err)
+ {
+     switch(err) {
+-    case AVERROR_NUMEXPECTED:
++    case AVERROR(EINVAL):
+         fprintf(stderr, "%s: Incorrect image filename syntax.\n", 
+                 filename);
+         break;
+     case AVERROR_INVALIDDATA:
+         fprintf(stderr, "%s: Error while parsing header\n", filename);
+         break;
+-    case AVERROR_NOFMT:
++    case AVERROR(EILSEQ):
+         fprintf(stderr, "%s: Unknown format\n", filename);
+         break;
+-    case AVERROR_IO:
++    case AVERROR(EIO):
+         fprintf(stderr, "%s: I/O error occured\n"
+ 	        "Usually that means that input file is truncated and/or corrupted.\n",
+ 		filename);
+         break;
+-    case AVERROR_NOMEM:
++    case AVERROR(ENOMEM):
+         fprintf(stderr, "%s: memory allocation error occured\n", filename);
+         break;
+     default:
+@@ -968,9 +958,9 @@
+     ap->pix_fmt = frame_pix_fmt;
+     ap->channel = 0;
+     ap->standard = 0;
+-    ap->video_codec_id = CODEC_ID_NONE;
++    ic->video_codec_id = CODEC_ID_NONE;
+     if(pgmyuv_compatibility_hack)
+-        ap->video_codec_id= CODEC_ID_PGMYUV;
++        ic->video_codec_id= CODEC_ID_PGMYUV;
+ 
+     /* open the input file with generic libav function */
+     err = av_open_input_file(&ic, filename, file_iformat, 0, ap);
+@@ -999,7 +989,7 @@
+         AVCodecContext *enc = ic->streams[i]->codec;
+         enc->thread_count= 1;
+         switch(enc->codec_type) {
+-        case CODEC_TYPE_VIDEO:
++        case AVMEDIA_TYPE_VIDEO:
+             frame_height = enc->height;
+             frame_width = enc->width;
+             frame_aspect_ratio = av_q2d(enc->sample_aspect_ratio) * enc->width / enc->height;
+@@ -1020,13 +1010,12 @@
+             frame_rate      = rfps;
+             frame_rate_base = rfps_base;
+ 
+-            enc->rate_emu = 0;
+             break;
+-        case CODEC_TYPE_DATA:
++        case AVMEDIA_TYPE_DATA:
+             break;
+-        case CODEC_TYPE_SUBTITLE:
++        case AVMEDIA_TYPE_SUBTITLE:
+             break;
+-        case CODEC_TYPE_UNKNOWN:
++        case AVMEDIA_TYPE_UNKNOWN:
+             break;
+         default:
+             //av_abort();
+@@ -1058,12 +1047,12 @@
+         for(i=0;i<ic->nb_streams;i++) {
+             AVCodecContext *enc = ic->streams[i]->codec;
+             switch(enc->codec_type) {
+-            case CODEC_TYPE_VIDEO:
++            case AVMEDIA_TYPE_VIDEO:
+                 has_video = 1;
+                 break;
+-            case CODEC_TYPE_DATA:
+-            case CODEC_TYPE_UNKNOWN:
+-            case CODEC_TYPE_SUBTITLE:
++            case AVMEDIA_TYPE_DATA:
++            case AVMEDIA_TYPE_UNKNOWN:
++            case AVMEDIA_TYPE_SUBTITLE:
+                 break;
+             default:
+                 //av_abort();
+@@ -1086,14 +1075,14 @@
+         fprintf(stderr, "Could not alloc stream\n");
+         return false;
+     }
+-    avcodec_get_context_defaults2(st->codec, CODEC_TYPE_VIDEO);
++    avcodec_get_context_defaults2(st->codec, AVMEDIA_TYPE_VIDEO);
+ 
+     video_enc = st->codec;
+ 
+     {
+         AVCodec *codec;
+ 
+-        codec_id = av_guess_codec(oc->oformat, NULL, oc->filename, NULL, CODEC_TYPE_VIDEO);
++        codec_id = av_guess_codec(oc->oformat, NULL, oc->filename, NULL, AVMEDIA_TYPE_VIDEO);
+ 
+         video_enc->codec_id = codec_id;
+         codec = avcodec_find_encoder(codec_id);
+@@ -1203,7 +1192,7 @@
+     oc = avformat_alloc_context();
+ 
+     if (!file_oformat) {
+-        file_oformat = guess_format(NULL, filename, NULL);
++        file_oformat = av_guess_format(NULL, filename, NULL);
+         if (!file_oformat) {
+             fprintf(stderr, "Unable for find a suitable output format for '%s'\n",
+                     filename);
+@@ -1239,7 +1228,7 @@
+     /* check filename in case of an image number is expected */
+     if (oc->oformat->flags & AVFMT_NEEDNUMBER) {
+         if (!av_filename_number_test(oc->filename)) {
+-            print_error(oc->filename, AVERROR_NUMEXPECTED);
++            print_error(oc->filename, AVERROR(EINVAL));
+             return false;
+         }
+     }

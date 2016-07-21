@@ -1,0 +1,12 @@
+--- src/Makefile.rules.orig
++++ src/Makefile.rules
+@@ -5,8 +5,7 @@
+ 		  $(DEPTH)/Makefile.os
+ # Gentoo users do want to see the real compile line.
+ # So remove the next line and remove the '@' in the line after.
+-	@echo $(CXX) -c $<
+-	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDE) $(DEPGEN_FLAGS) -o $@ -c $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDE) $(DEPGEN_FLAGS) -o $@ -c $<
+ 
+ -include $(OBJECTS:.o=.d)
+ 

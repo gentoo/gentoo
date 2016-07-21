@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <use>
+    <flag name="httpd">Enables axhttpd web server component</flag>
+    <flag name="static">Statically build axhttpd server</flag>
+    <flag name="cgi-lua">Enables lua backed cgi for axhttpd server</flag>
+    <flag name="cgi-php">Enables php backed cgi for axhttpd server</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">axtls</remote-id>
+  </upstream>
+</pkgmetadata>

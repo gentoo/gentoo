@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/lib/w3af
+./w3af_gui $*

@@ -1,0 +1,15 @@
+From: Ludovic Rousseau <rousseau at debian dot org>
+Subject: A patch for fixing wrong memory intialization
+
+diff -u sitecopy-0.16.3-orig/src/rcfile.c sitecopy-0.16.3/src/rcfile.c
+--- sitecopy-0.16.3-orig/src/rcfile.c	2006-02-04 17:46:36.000000000 +0530
++++ sitecopy-0.16.3/src/rcfile.c	2006-11-08 22:24:51.000000000 +0530
+@@ -260,7 +260,7 @@
+ 		if (this_site != &default_site)
+ 		    last_site = this_site;
+ 		/* Allocate new item */
+-		this_site = ne_malloc(sizeof(struct site));
++		this_site = ne_calloc(sizeof(struct site));
+ 		/* Copy over the defaults */
+ 		memcpy(this_site, &default_site, sizeof(struct site));
+ 		/* Deep-copy the string lists */

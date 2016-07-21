@@ -1,0 +1,136 @@
+diff -Nuar OpenSRF-1.2.0.orig/Makefile.am OpenSRF-1.2.0/Makefile.am
+--- OpenSRF-1.2.0.orig/Makefile.am	2008-10-27 05:07:06.000000000 +0000
++++ OpenSRF-1.2.0/Makefile.am	2012-11-12 20:53:22.079732392 +0000
+@@ -115,14 +115,14 @@
+ SUBDIRS = src
+ 
+ jserver:
+-	make -s -C src jserver
++	$(MAKE) -s -C src jserver
+ 
+ jserver-install:
+-	make -s -C src jserver-install
++	$(MAKE) -s -C src jserver-install
+ 
+ javascript-install:
+-	make -s -C src javascript-install
++	$(MAKE) -s -C src javascript-install
+ 
+ install-data-hook:
+-	cp @srcdir@/src/gateway/apachetools.h @includedir@/opensrf/apachetools.h
++	cp @srcdir@/src/gateway/apachetools.h $(DESTDIR)@includedir@/opensrf/apachetools.h
+ 
+diff -Nuar OpenSRF-1.2.0.orig/src/gateway/Makefile.am OpenSRF-1.2.0/src/gateway/Makefile.am
+--- OpenSRF-1.2.0.orig/src/gateway/Makefile.am	2008-08-18 19:14:00.000000000 +0000
++++ OpenSRF-1.2.0/src/gateway/Makefile.am	2012-11-12 20:53:22.079732392 +0000
+@@ -16,16 +16,25 @@
+ 
+ AM_CFLAGS = -D_LARGEFILE64_SOURCE -Wall -I@abs_top_srcdir@/include/ -I$(LIBXML2_HEADERS) -I$(APACHE2_HEADERS) -I$(APR_HEADERS)
+ AM_LDFLAGS = -L$(LIBDIR) -L@top_builddir@/src/libopensrf
++APACHE_DEPS = apachetools.c apachetools.h
++LIBS=libopensrf.so
++TARGETS = osrf_json_gateway.la osrf_http_translator.la
+ 
+-install-exec-local: 
+-	if [ ! "$$(grep mod_placeholder `apxs2 -q SYSCONFDIR`/httpd.conf)" ]; \
+-		then echo -e "#\n#LoadModule mod_placeholder /usr/lib/apache2/modules/mod_placeholder.so" \
+-		>> `apxs2 -q SYSCONFDIR`/httpd.conf; \
+-	fi
+-	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) @srcdir@/osrf_json_gateway.c apachetools.c apachetools.h libopensrf.so
+-	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) @srcdir@/osrf_http_translator.c apachetools.c apachetools.h libopensrf.so
+-	$(APXS2) -i -a @srcdir@/osrf_json_gateway.la
+-	$(APXS2) -i -a @srcdir@/osrf_http_translator.la
++all: $(TARGETS)
++
++osrf_json_gateway.la: osrf_json_gateway.c $(APACHE_DEPS)
++	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) $^ $(LIBS)
++	
++osrf_http_translator.la: osrf_http_translator.c $(APACHE_DEPS)
++	$(APXS2) -c $(DEF_LDLIBS) $(AM_CFLAGS) $(AM_LDFLAGS) $^ $(LIBS)
++
++#install-exec-local:  $(TARGETS)
++#	if [ ! "$$(grep mod_placeholder `apxs2 -q SYSCONFDIR`/httpd.conf)" ]; \
++#		then echo -e "#\n#LoadModule mod_placeholder /usr/lib/apache2/modules/mod_placeholder.so" \
++#		>> `apxs2 -q SYSCONFDIR`/httpd.conf; \
++#	fi
++#	$(APXS2) -i -a osrf_json_gateway.la
++#	$(APXS2) -i -a osrf_http_translator.la
+ 
+ clean-local:
+ 	rm -f @srcdir@/osrf_http_translator.la @srcdir@/osrf_http_translator.lo @srcdir@/osrf_http_translator.slo @srcdir@/osrf_json_gateway.la @srcdir@/osrf_json_gateway.lo @srcdir@/osrf_json_gateway.slo
+diff -Nuar OpenSRF-1.2.0.orig/src/java/Makefile.am OpenSRF-1.2.0/src/java/Makefile.am
+--- OpenSRF-1.2.0.orig/src/java/Makefile.am	2008-07-17 18:15:09.000000000 +0000
++++ OpenSRF-1.2.0/src/java/Makefile.am	2012-11-12 20:53:22.079732392 +0000
+@@ -48,8 +48,8 @@
+ 	rm files;
+ 
+ install-data-local:
+-	mkdir -p $(LIBDIR)/java
+-	cp opensrf.jar $(LIBDIR)/java
++	mkdir -p $(DESTDIR)$(LIBDIR)/java
++	cp opensrf.jar $(DESTDIR)$(LIBDIR)/java
+ 
+ dep_clean:
+ 	rm -rf deps
+diff -Nuar OpenSRF-1.2.0.orig/src/libopensrf/Makefile.am OpenSRF-1.2.0/src/libopensrf/Makefile.am
+--- OpenSRF-1.2.0.orig/src/libopensrf/Makefile.am	2009-04-08 02:48:02.000000000 +0000
++++ OpenSRF-1.2.0/src/libopensrf/Makefile.am	2012-11-12 20:53:22.079732392 +0000
+@@ -99,6 +99,7 @@
+ opensrf_c_SOURCES = opensrf.c
+ opensrf_c_DEPENDENCIES = libopensrf.la
+ 
++osrf_json_test_DEPENDENCIES = libopensrf.la libosrf_json.la
+ osrf_json_test_SOURCES = osrf_json_test.c $(JSON_TARGS) $(JSON_DEP) $(JSON_TARGS_HEADS) $(JSON_DEP_HEADS)
+ 
+ noinst_LTLIBRARIES = libosrf_json.la
+diff -Nuar OpenSRF-1.2.0.orig/src/Makefile.am OpenSRF-1.2.0/src/Makefile.am
+--- OpenSRF-1.2.0.orig/src/Makefile.am	2009-05-31 19:49:00.000000000 +0000
++++ OpenSRF-1.2.0/src/Makefile.am	2012-11-12 20:53:52.475676800 +0000
+@@ -17,7 +17,7 @@
+ export OPENSRF	= opensrf
+ export BINDIR	= @bindir@
+ export LIBDIR	= @libdir@
+-jsdir = $(LIBDIR)/javascript
++jsdir = $(datarootdir)/opensrf/javascript
+ export OSRF_JAVA_DEPSDIR = @OSRF_JAVA_DEPSDIR@
+ etcdir = $(ETCDIR)
+ 
+@@ -33,7 +33,7 @@
+ MAYBE_JA = java
+ endif
+ 
+-SUBDIRS = libopensrf c-apps router srfsh jserver gateway perl $(MAYBE_PY) $(MAYBE_JA)
++SUBDIRS = libopensrf c-apps router srfsh jserver gateway $(MAYBE_PY) $(MAYBE_JA) # perl is now seperate
+ 
+ dist_bin_SCRIPTS = @top_srcdir@/bin/opensrf-perl.pl
+ bin_SCRIPTS = @top_srcdir@/bin/osrf_config @top_srcdir@/bin/osrf_ctl.sh 
+@@ -41,11 +41,11 @@
+ dist_sysconf_DATA = @top_srcdir@/examples/opensrf.xml.example @top_srcdir@/examples/opensrf_core.xml.example @top_srcdir@/examples/srfsh.xml.example 
+ 
+ install-exec-local:
+-	mkdir -p $(VAR)
+-	mkdir -p $(PID)
+-	mkdir -p $(LOG)
+-	mkdir -p $(SOCK)
+-	mkdir -p $(jsdir)
++	mkdir -p $(DESTDIR)$(VAR)
++	mkdir -p $(DESTDIR)$(PID)
++	mkdir -p $(DESTDIR)$(LOG)
++	mkdir -p $(DESTDIR)$(SOCK)
++	mkdir -p $(DESTDIR)$(jsdir)
+ 
+ install-exec-hook:
+ 	sed -i 's|LOCALSTATEDIR|$(VAR)|g' '$(DESTDIR)@sysconfdir@/opensrf.xml.example'
+@@ -54,9 +54,9 @@
+ 	sed -i 's|SYSCONFDIR|$(ETCDIR)|g' '$(DESTDIR)@sysconfdir@/opensrf_core.xml.example'
+ 	sed -i 's|LOCALSTATEDIR|$(VAR)|g' '$(DESTDIR)@sysconfdir@/srfsh.xml.example'
+ 	sed -i 's|SYSCONFDIR|$(ETCDIR)|g' '$(DESTDIR)@sysconfdir@/srfsh.xml.example'
+-	cp -r @srcdir@/javascript/* $(jsdir)/
++	cp -r @srcdir@/javascript/* $(DESTDIR)$(jsdir)/
+ 
+ uninstall-hook:
+-	rm @includedir@/opensrf/apachetools.h
+-	rm -R $(jsdir)
++	rm $(DESTDIR)@includedir@/opensrf/apachetools.h
++	rm -R $(DESTDIR)$(jsdir)
+ 

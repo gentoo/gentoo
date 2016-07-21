@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>xmw@gentoo.org</email>
+	<name>Michael Weber</name>
+</maintainer>
+<upstream>
+	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
+</upstream>
+<use>
+	<flag name="client">Build client-side code</flag>
+	<flag name="clipboard">Enable clipboard support</flag>
+	<flag name="csc">Enable csc softscaler support</flag>
+	<flag name="dec_av">Enable dec_avcodec support</flag>
+	<flag name="dec_av2">Enable dec_avcodec2 support</flag>
+	<flag name="lz4">Enable support for lz4 compression</flag>
+	<flag name="rencode">Enable rencode support</flag>
+	<flag name="server">Build server-side code</flag>
+	<flag name="vpx">Enable vpx image format support</flag>
+	<flag name="webp">Enable webp image format support</flag>
+	<flag name="x265">Enable x265 support</flag>
+</use>
+</pkgmetadata>

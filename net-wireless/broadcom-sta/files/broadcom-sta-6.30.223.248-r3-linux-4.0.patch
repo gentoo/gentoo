@@ -1,0 +1,26 @@
+--- src/wl/sys/wl_cfg80211_hybrid.c.orig	2015-04-27 11:08:10.252439465 +0000
++++ src/wl/sys/wl_cfg80211_hybrid.c	2015-04-27 11:10:52.454433122 +0000
+@@ -1441,7 +1441,11 @@ wl_cfg80211_get_station(struct wiphy *wi
+ 		WL_DBG(("Could not get rate (%d)\n", err));
+ 	} else {
+ 		rate = dtoh32(rate);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 0)
+ 		sinfo->filled |= STATION_INFO_TX_BITRATE;
++#else
++        sinfo->filled |= BIT(NL80211_STA_INFO_TX_BITRATE);
++#endif
+ 		sinfo->txrate.legacy = rate * 5;
+ 		WL_DBG(("Rate %d Mbps\n", (rate / 2)));
+ 	}
+@@ -1454,7 +1458,11 @@ wl_cfg80211_get_station(struct wiphy *wi
+ 			return err;
+ 		}
+ 		rssi = dtoh32(scb_val.val);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 0, 0)
+ 		sinfo->filled |= STATION_INFO_SIGNAL;
++#else
++        sinfo->filled |= BIT(NL80211_STA_INFO_SIGNAL);
++#endif
+ 		sinfo->signal = rssi;
+ 		WL_DBG(("RSSI %d dBm\n", rssi));
+ 	}

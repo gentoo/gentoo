@@ -1,0 +1,12 @@
+--- Isabelle2012-orig/etc/settings	2012-05-23 03:07:38.000000000 +1000
++++ Isabelle2012/etc/settings	2012-05-27 12:43:36.209715015 +1000
+@@ -62,8 +62,8 @@
+ ###
+ 
+ ISABELLE_LINE_EDITOR=""
+-[ -z "$ISABELLE_LINE_EDITOR" ] && ISABELLE_LINE_EDITOR="$(type -p rlwrap)"
+ [ -z "$ISABELLE_LINE_EDITOR" ] && ISABELLE_LINE_EDITOR="$(type -p ledit)"
++[ -z "$ISABELLE_LINE_EDITOR" ] && ISABELLE_LINE_EDITOR="$(type -p rlwrap)"
+ 
+ 
+ ###

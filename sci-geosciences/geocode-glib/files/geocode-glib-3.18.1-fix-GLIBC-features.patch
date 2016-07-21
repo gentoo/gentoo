@@ -1,0 +1,54 @@
+From 3ce317a218c255b8a8025f8f2a6010ce500dc0ee Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Tue, 22 Mar 2016 09:48:00 +0000
+Subject: [PATCH] Use __UCLIBC__ when checking for GLIBC features
+
+Commit f0f85d8d introduces __GLIBC__ to check for glibc only features.
+However this is not sufficient for uClibc because it shares code with
+glibc.  To select for features in glibc but not uClibc, we need
+defined(__GLIBC__) && !defined(__UCLIBC__).
+
+https://bugzilla.gnome.org/show_bug.cgi?id=764021
+---
+ geocode-glib/geocode-glib.c | 4 ++--
+ geocode-glib/test-gcglib.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/geocode-glib/geocode-glib.c b/geocode-glib/geocode-glib.c
+index 4e3b3fd..6215fd1 100644
+--- a/geocode-glib/geocode-glib.c
++++ b/geocode-glib/geocode-glib.c
+@@ -213,7 +213,7 @@ _geocode_object_get_lang (void)
+ 	return geocode_object_get_lang_for_locale (setlocale (LC_MESSAGES, NULL));
+ }
+ 
+-#ifdef __GLIBC__
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
+ static gpointer
+ is_number_after_street (gpointer data)
+ {
+@@ -246,7 +246,7 @@ is_number_after_street (gpointer data)
+ gboolean
+ _geocode_object_is_number_after_street (void)
+ {
+-#ifndef __GLIBC__
++#if !defined(__GLIBC__) || defined(__UCLIBC__)
+ 	return FALSE;
+ #else
+ 	static GOnce once = G_ONCE_INIT;
+diff --git a/geocode-glib/test-gcglib.c b/geocode-glib/test-gcglib.c
+index a23a3c3..9d7194d 100644
+--- a/geocode-glib/test-gcglib.c
++++ b/geocode-glib/test-gcglib.c
+@@ -395,7 +395,7 @@ test_distance (void)
+ static void
+ test_locale_format (void)
+ {
+-#ifdef __GLIBC__
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
+ 	GeocodeForward *object;
+ 	GError *error = NULL;
+ 	GList *res;
+-- 
+2.7.3
+

@@ -1,0 +1,12 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# We mask this since we're not really a multilib profile
+multilib
+
+# Unmask the flag which corresponds to ARCH.
+-ppc
+
+# Mask the flag which corresponds to the 64-bit ARCH.
+ppc64

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  WeightWatcher is a program that combines weight-maps, flag-maps and
+  polygon data in order to produce control maps which can directly be
+  used in astronomical image-processing packages like Drizzle,
+  <pkg>sci-astronomy/sextractor</pkg> or <pkg>sci-astronomy/swarp</pkg>.
+</longdescription>
+</pkgmetadata>

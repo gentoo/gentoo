@@ -1,0 +1,13 @@
+--- libwsmake/wsUtil.cpp.orig	Sat Sep  1 22:09:13 2001
++++ libwsmake/wsUtil.cpp	Tue Sep  3 20:19:04 2002
+@@ -714,7 +714,8 @@
+   if(__wsmake_quiet) return;
+ 
+   vfprintf(out,output,*ap);
+-  va_end((void*&)*ap);
++  //BV: this does not compile:  va_end((void*&)*ap);
++  va_end((char*&)*ap);
+ }
+ 
+ #ifdef DEBUG
+

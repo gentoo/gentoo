@@ -1,0 +1,73 @@
+
+Remove the Krb5 1.3.x-specific hack which mucks about with
+libkrb5 internals, and shouldn't.
+
+--- mod_auth_kerb-5.4/src/mod_auth_kerb.c.rcopshack
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c
+@@ -285,34 +285,6 @@ mkstemp(char *template)
+ }
+ #endif
+ 
+-#if defined(KRB5) && !defined(HEIMDAL)
+-/* Needed to work around problems with replay caches */
+-#include "mit-internals.h"
+-
+-/* This is our replacement krb5_rc_store function */
+-static krb5_error_code KRB5_LIB_FUNCTION
+-mod_auth_kerb_rc_store(krb5_context context, krb5_rcache rcache,
+-                       krb5_donot_replay_internal *donot_replay)
+-{
+-   return 0;
+-}
+-
+-/* And this is the operations vector for our replay cache */
+-const krb5_rc_ops_internal mod_auth_kerb_rc_ops = {
+-  0,
+-  "dfl",
+-  krb5_rc_dfl_init,
+-  krb5_rc_dfl_recover,
+-  krb5_rc_dfl_destroy,
+-  krb5_rc_dfl_close,
+-  mod_auth_kerb_rc_store,
+-  krb5_rc_dfl_expunge,
+-  krb5_rc_dfl_get_span,
+-  krb5_rc_dfl_get_name,
+-  krb5_rc_dfl_resolve
+-};
+-#endif
+-
+ /*************************************************************************** 
+  Auth Configuration Initialization
+  ***************************************************************************/
+@@ -1252,31 +1224,6 @@ get_gss_creds(request_rec *r,
+       return HTTP_INTERNAL_SERVER_ERROR;
+    }
+ 
+-#ifndef HEIMDAL
+-   /*
+-    * With MIT Kerberos 5 1.3.x the gss_cred_id_t is the same as
+-    * krb5_gss_cred_id_t and krb5_gss_cred_id_rec contains a pointer to
+-    * the replay cache.
+-    * This allows us to override the replay cache function vector with
+-    * our own one.
+-    * Note that this is a dirty hack to get things working and there may
+-    * well be unknown side-effects.
+-    */
+-   {
+-      krb5_gss_cred_id_t gss_creds = (krb5_gss_cred_id_t) *server_creds;
+-
+-      /* First we try to verify we are linked with 1.3.x to prevent from
+-         crashing when linked with 1.4.x */
+-      if (gss_creds && (gss_creds->usage == GSS_C_ACCEPT)) {
+-	 if (gss_creds->rcache && gss_creds->rcache->ops &&
+-	     gss_creds->rcache->ops->type &&  
+-	     memcmp(gss_creds->rcache->ops->type, "dfl", 3) == 0)
+-          /* Override the rcache operations */
+-	 gss_creds->rcache->ops = &mod_auth_kerb_rc_ops;
+-      }
+-   }
+-#endif
+-   
+    return 0;
+ }
+ 

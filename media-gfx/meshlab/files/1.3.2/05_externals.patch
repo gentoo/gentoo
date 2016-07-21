@@ -1,0 +1,25 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Only build necessary external sources.
+Git-Branch: p/externals
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..ca572df8704909a1bbe18b1ce25d76
+
+ meshlab/src/external/external.pro |    7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/meshlab/src/external/external.pro b/meshlab/src/external/external.pro
+index c103d88..324eb91 100644
+--- a/meshlab/src/external/external.pro
++++ b/meshlab/src/external/external.pro
+@@ -2,11 +2,6 @@ config += debug_and_release
+ 
+ TEMPLATE      = subdirs
+ 
+-SUBDIRS       = lib3ds-1.3.0/lib3ds \
+-                bzip2-1.0.5/bzip2-1.0.5.pro \
+-                muparser_v132/src \
+-                levmar-2.3/levmar-2.3.pro \
++SUBDIRS       = levmar-2.3/levmar-2.3.pro \
+                 structuresynth/structuresynth.pro \
+-                                OpenCTM-1.0.3/openctm.pro \
+                 jhead-2.95/jhead-2.95.pro
+-#                openkinect/openkinect.pro

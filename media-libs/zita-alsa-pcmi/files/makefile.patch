@@ -1,0 +1,65 @@
+Index: zita-alsa-pcmi-0.2.0/libs/Makefile
+===================================================================
+--- zita-alsa-pcmi-0.2.0.orig/libs/Makefile
++++ zita-alsa-pcmi-0.2.0/libs/Makefile
+@@ -31,7 +31,7 @@ VERSION = $(MAJVERS).$(MINVERS)
+ 
+ 
+ CPPFLAGS += -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+-CXXFLAGS += -O2 -Wall -I. -fPIC
++CXXFLAGS += -Wall -I. -fPIC
+ LDLFAGS +=
+ LDLIBS +=
+ 
+@@ -45,14 +45,14 @@ ZITA-ALSA-PCMI_H = zita-alsa-pcmi.h
+ 
+ 
+ $(ZITA-ALSA-PCMI_MIN): $(ZITA-ALSA-PCMI_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(ZITA-ALSA-PCMI_MAJ) -o $(ZITA-ALSA-PCMI_MIN) $(ZITA-ALSA-PCMI_O) $(ZITA-ALSA-PCMI_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-ALSA-PCMI_MAJ) -o $(ZITA-ALSA-PCMI_MIN) $(ZITA-ALSA-PCMI_O) $(ZITA-ALSA-PCMI_DEP)
+ 
+ 
+ install:	$(ZITA-ALSA-PCMI_MIN)
+ 	install -Dm 644 $(ZITA-ALSA-PCMI_H)   $(DESTDIR)$(PREFIX)/include/$(ZITA-ALSA-PCMI_H)
+ 	install -Dm 644 $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-ALSA-PCMI_MIN)
+ 	ln -sf $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-ALSA-PCMI_SO)
+-	ldconfig
++	ln -sf $(ZITA-ALSA-PCMI_MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/$(ZITA-ALSA-PCMI_MAJ)
+ 
+ uninstall:
+ 	rm -rf $(DESTDIR)$(PREFIX)/include/zita-alsa-pcmi.h
+Index: zita-alsa-pcmi-0.2.0/apps/Makefile
+===================================================================
+--- zita-alsa-pcmi-0.2.0.orig/apps/Makefile
++++ zita-alsa-pcmi-0.2.0/apps/Makefile
+@@ -23,9 +23,9 @@ PREFIX = /usr/local
+ SUFFIX := $(shell uname -m | sed -e 's/^unknown/$//' -e 's/^i.86/$//' -e 's/^x86_64/$/64/')
+ LIBDIR = lib$(SUFFIX)
+ VERSION = "0.1.0"
+-LDFLAGS += -L$(PREFIX)/$(LIBDIR)
+-CPPFLAGS += -DVERSION=\"$(VERSION)\"
+-CXXFLAGS += -O2 -Wall -MMD -MP
++LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L../libs/
++CPPFLAGS += -DVERSION=\"$(VERSION)\" -I../libs/
++CXXFLAGS += -Wall -MMD -MP
+ 
+ 
+ all:	alsa_loopback alsa_delay
+@@ -34,7 +34,7 @@ all:	alsa_loopback alsa_delay
+ ALSA_LOOPBACK_O =	alsa_loopback.o pxthread.o
+ alsa_loopback:	LDLIBS += -lzita-alsa-pcmi -lasound -lpthread -lrt
+ alsa_loopback:	$(ALSA_LOOPBACK_O)
+-	g++ $(LDFLAGS) -o $@ $(ALSA_LOOPBACK_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(ALSA_LOOPBACK_O) $(LDLIBS)
+ $(ALSA_LOOPBACK_O):
+ -include $(_ALSA_LOOPBACK_O:%.o=%.d)
+ 
+@@ -42,7 +42,7 @@ $(ALSA_LOOPBACK_O):
+ ALSA_DELAY_O =	alsa_delay.o mtdm.o pxthread.o
+ alsa_delay:	LDLIBS += -lzita-alsa-pcmi -lasound -lpthread -lrt
+ alsa_delay:	$(ALSA_DELAY_O)
+-	g++ $(LDFLAGS) -o $@ $(ALSA_DELAY_O) $(LDLIBS)
++	$(CXX) $(LDFLAGS) -o $@ $(ALSA_DELAY_O) $(LDLIBS)
+ $(ALSA_DELAY_O):
+ -include $(ALSA_DELAY_O:%.o=%.d)
+ 

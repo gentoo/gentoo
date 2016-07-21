@@ -1,0 +1,25 @@
+From a668a644889bd58405b92c72a91c308c2bad8022 Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@thincast.com>
+Date: Tue, 11 Nov 2014 14:40:31 +0100
+Subject: [PATCH] Don't include CMakeDetermineSystem
+
+According to [1] this is an cmake "internal" module and shouldn't be
+included directly.
+
+[1]  http://public.kitware.com/Bug/view.php?id=13796#c31892
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 79f17bd..5f6859c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,6 @@ include(CheckCmakeCompat)
+ include(CheckIncludeFiles)
+ include(CheckLibraryExists)
+ include(CheckStructHasMember)
+-include(CMakeDetermineSystem)
+ include(FindPkgConfig)
+ include(TestBigEndian)
+ 

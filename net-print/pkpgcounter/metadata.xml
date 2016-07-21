@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+		pkpgcounter is a python generic PDL (Page Description Language) parser
+		which main feature is to count the number of pages in printable files.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,51 @@
+--- csvfix-build.orig/csvfix/tests/run1
++++ csvfix-build/csvfix/tests/run1
+@@ -1,4 +1,4 @@
+-#!bash
++#!/bin/bash
+ # run1
+ # run single test
+ # copyright (C) 2008 Neil Butterworth
+@@ -49,7 +49,7 @@
+ fi
+ 
+ # exe to be tested - used in tests
+-CSVED=../bin/csvfix.exe
++CSVED=../bin/csvfix
+ export CSVED
+ 
+ if [ ! -f "$CSVED" ]
+@@ -64,7 +64,7 @@
+ fi
+ 
+ # where to find diff & where to put output
+-DIFF=/bin/diff
++DIFF=/usr/bin/diff
+ DIFFOUT=tmp/_diffout
+ WINDIFF="C:/Program Files/Microsoft Visual Studio/Common/Tools/WINDIFF.EXE"
+ TEST=`basename $TEST`
+@@ -133,5 +133,7 @@
+ 	fi
+ else
+ 	echo "Execution problem with $TEST - please correct"
++	color_red "FAILED $TEST"
++	exit 1
+ fi
+ 
+--- csvfix-build.orig/csvfix/tests/runtests
++++ csvfix-build/csvfix/tests/runtests
+@@ -1,4 +1,4 @@
+-#!bash
++#!/bin/bash
+ # runall.bash
+ # run all tests and report
+ 
+@@ -22,3 +22,8 @@
+ echo $FAILS failed, $PASSES passed
+ echo ""
+ 
++if [[ $FAILS -gt 0 ]]; then
++	exit 1
++else
++	exit 0
++fi

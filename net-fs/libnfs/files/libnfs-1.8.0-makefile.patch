@@ -1,0 +1,38 @@
+This enables out of source build
+
+--- lib/Makefile.am	2013-10-31 05:17:49.000000000 +0400
++++ lib/Makefile.am	2014-01-07 21:23:07.281715242 +0400
+@@ -2,11 +2,11 @@
+ 
+ libnfs_la_CPPFLAGS = -I$(abs_top_srcdir)/include \
+ 		     -I$(abs_top_srcdir)/include/nfsc \
+-		     -I../mount \
+-		     -I../nfs \
+-		     -I../nlm \
+-		     -I../portmap \
+-		     -I../rquota \
++		     -I$(abs_top_srcdir)/mount \
++		     -I$(abs_top_srcdir)/nfs \
++		     -I$(abs_top_srcdir)/nlm \
++		     -I$(abs_top_srcdir)/portmap \
++		     -I$(abs_top_srcdir)/rquota \
+ 		     "-D_U_=__attribute__((unused))"
+ 
+ libnfs_la_SOURCES = \
+--- examples/Makefile.am	2013-10-31 05:17:49.000000000 +0400
++++ examples/Makefile.am	2014-01-07 21:30:34.776726611 +0400
+@@ -3,10 +3,10 @@
+ AM_CPPFLAGS = \
+ 	-I$(abs_top_srcdir)/include \
+ 	-I$(abs_top_srcdir)/include/nfsc \
+-	-I../mount \
+-	-I../nfs \
+-	-I../rquota \
+-	-I../portmap \
++	-I$(abs_top_srcdir)/mount \
++	-I$(abs_top_srcdir)/nfs \
++	-I$(abs_top_srcdir)/rquota \
++	-I$(abs_top_srcdir)/portmap \
+ 	"-D_U_=__attribute__((unused))"
+ 
+ AM_LDFLAGS = ../lib/.libs/libnfs.la -lpopt

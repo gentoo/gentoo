@@ -1,0 +1,30 @@
+we don't actually install the generated html output, so no point in building
+them.  this also helps cross-compiling because the tool to create the html
+uses $CC and has no logic for $BUILD_CC.  simpler to disable than fix.
+
+--- a/man/Makefile
++++ b/man/Makefile
+@@ -73,7 +73,7 @@ MAN8	=	cupsaccept.$(MAN8EXT) \
+ # Make everything...
+ #
+ 
+-all:	$(MAN1) $(MAN5) $(MAN7) $(MAN8) html
++all:	$(MAN1) $(MAN5) $(MAN7) $(MAN8)
+ 
+ 
+ #
+
+similarly, the genstrings tool is used to gather all the translatable strings
+in the code base for passing to gettext.  in our builds, those strings already
+exist, so no point in running this tool.
+
+--- a/ppdc/Makefile
++++ b/ppdc/Makefile
+@@ -70,7 +70,6 @@ EXECTARGETS =	\
+ TARGETS	=	\
+ 		$(LIBTARGETS) \
+ 		$(EXECTARGETS) \
+-		genstrings
+ 
+ 
+ #

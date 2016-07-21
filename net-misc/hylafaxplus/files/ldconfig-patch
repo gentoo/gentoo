@@ -1,0 +1,10 @@
+--- faxd/Makefile.LINUXdso.original	2011-12-30 18:17:59.000000000 +0100
++++ faxd/Makefile.LINUXdso	2011-12-30 18:18:51.000000000 +0100
+@@ -37,7 +37,6 @@
+ 
+ installDSO: libfaxserver.${DSO}
+ 	${PUTSERV} -root ${INSTALLROOT} -F ${LIBDIR} -m 755 -O libfaxserver.${DSO}
+-	[ `id -u` -eq 0 ] && ( PATH=${PATH}:/sbin ldconfig ${LIBDIR} ) || ( echo "ldconfig is required to be run as user root at install time" )
+ 
+ uninstallDSO::
+ 	${RM} -f ${LIBDIR}/libfaxserver.${DSO}

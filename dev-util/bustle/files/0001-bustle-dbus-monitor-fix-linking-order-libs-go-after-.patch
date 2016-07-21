@@ -1,0 +1,44 @@
+From b1d7a9b492a8fbe38f60585f6d5a25908e79c973 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <st@anti-virus.by>
+Date: Mon, 7 Feb 2011 15:58:56 +0200
+Subject: [PATCH] bustle-dbus-monitor: fix linking order (libs go after object/source files)
+
+Fixes the following failure:
+
+    cc -O2 -pipe  -Wl,--hash-style=gnu -Wl,-O1 -Wl,--as-needed \
+            -g -O2 `pkg-config --cflags --libs dbus-1` \
+            -Wall -Wunused \
+            -o bustle-dbus-monitor bustle-dbus-monitor.c
+    bustle-0.2.3/temp/ccodU65H.o: In function `main':
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:347: undefined reference to `dbus_error_init'
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:348: undefined reference to `dbus_bus_get'
+    bustle-0.2.3/temp/ccodU65H.o: In function `get_well_known_names':
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:241: undefined reference to `dbus_message_new_method_call'
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:249: undefined reference to `dbus_error_init'
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:250: undefined reference to `dbus_connection_send_with_reply_and_block'
+    bustle-0.2.3/work/bustle-0.2.3/bustle-dbus-monitor.c:252: undefined reference to `dbus_error_is_set'
+
+Signed-off-by: Sergei Trofimovich <st@anti-virus.by>
+---
+ Makefile |    5 +++--
+ 1 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 707790e..3f50370 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,9 @@
+ bustle-dbus-monitor: bustle-dbus-monitor.c
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+-	-g -O2 `pkg-config --cflags --libs dbus-1` \
++	-g -O2 \
+ 	-Wall -Wunused \
+-	-o bustle-dbus-monitor bustle-dbus-monitor.c
++	-o bustle-dbus-monitor bustle-dbus-monitor.c \
++	`pkg-config --cflags --libs dbus-1`
+ 
+ clean:
+ 	rm -f bustle-dbus-monitor
+-- 
+1.7.3.4
+

@@ -1,0 +1,12 @@
+diff -ru kvdrmon-0.6-orig/kvdrmon.c kvdrmon-0.6/kvdrmon.c
+--- kvdrmon-0.6-orig/kvdrmon.c	2006-06-29 17:50:57.969031072 +0200
++++ kvdrmon-0.6/kvdrmon.c	2006-06-29 17:51:07.577953160 +0200
+@@ -46,7 +46,7 @@
+   virtual bool Start(void);
+   virtual void Stop(void);
+   virtual void Housekeeping(void);
+-  virtual const char *MainMenuEntry(void) { return MAINMENUENTRY; }
++  virtual const char *MainMenuEntry(void) { return NULL; }
+   virtual cOsdObject *MainMenuAction(void);
+   virtual cMenuSetupPage *SetupMenu(void);
+   virtual bool ProcessArgs(int argc, char *argv[]);

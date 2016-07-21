@@ -1,0 +1,42 @@
+From 38fe74765a4cbf1003cc2011559bf83b05b10e46 Mon Sep 17 00:00:00 2001
+From: David Mitchell <davem@iabyn.com>
+Date: Tue, 3 May 2016 22:25:48 +0100
+Subject: [PATCH 3/5] Coro: handle argarray removal in 5.23.8
+
+---
+ Coro/State.xs | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/Coro/State.xs b/Coro/State.xs
+index 93c2c5b..28264c5 100644
+--- a/Coro/State.xs
++++ b/Coro/State.xs
+@@ -1415,6 +1415,7 @@ runops_trace (pTHX)
+                       if (CxTYPE (cx) == CXt_SUB && oldcxix < cxstack_ix)
+                         {
+                           dSP;
++                          AV *argarray;
+                           GV *gv = CvGV (cx->blk_sub.cv);
+                           SV *fullname = sv_2mortal (newSV (0));
+ 
+@@ -1428,7 +1429,16 @@ runops_trace (pTHX)
+                           PUSHMARK (SP);
+                           PUSHs (&PL_sv_yes);
+                           PUSHs (fullname);
+-                          PUSHs (CxHASARGS (cx) ? sv_2mortal (newRV_inc ((SV *)cx->blk_sub.argarray)) : &PL_sv_undef);
++                          argarray =
++# if PERL_VERSION_ATLEAST(5,23,8)
++                            ((AV*)(AvARRAY(MUTABLE_AV(
++                              PadlistARRAY(CvPADLIST(cx->blk_sub.cv))[
++                              CvDEPTH(cx->blk_sub.cv)]))[0]));
++#else
++                            cx->blk_sub.argarray;
++#endif
++
++                          PUSHs (CxHASARGS (cx) ? sv_2mortal (newRV_inc ((SV *)argarray)) : &PL_sv_undef);
+                           PUTBACK;
+                           cb = hv_fetch ((HV *)SvRV (coro_current), "_trace_sub_cb", sizeof ("_trace_sub_cb") - 1, 0);
+                           if (cb) call_sv (*cb, G_KEEPERR | G_EVAL | G_VOID | G_DISCARD);
+-- 
+2.4.11
+

@@ -1,0 +1,33 @@
+--- nemesis-1.4-orig/source/src/nemesis-proto_tcp.c	Fri Oct 31 16:29:38 2003
++++ nemesis-1.4/source/src/nemesis-proto_tcp.c	Fri May 19 17:31:13 2006
+@@ -16,7 +16,7 @@
+         FileData *ipod, FileData *tcpod, char *device)
+ {
+    int n;
+-   u_int32_t tcp_packetlen = 0, tcp_meta_packetlen = 0;
++   u_int32_t tcp_packetlen = 0, tcp_meta_packetlen = 0, tcp_headerlen = 0, ip_headerlen = 0;
+    static u_int8_t *pkt;
+    static int sockfd = -1;
+    struct libnet_link_int *l2 = NULL;
+@@ -58,13 +58,20 @@
+ #endif
+     }
+ 
++    ip_headerlen = LIBNET_IP_H + ipod->file_s;
++    tcp_headerlen = LIBNET_TCP_H + tcpod->file_s;
++
+     tcp_packetlen = link_offset + LIBNET_IP_H + LIBNET_TCP_H + pd->file_s + 
+             ipod->file_s + tcpod->file_s;
+ 
+-    tcp_meta_packetlen = tcp_packetlen - (link_offset + LIBNET_IP_H);
++    tcp_meta_packetlen = LIBNET_TCP_H + pd->file_s;
+ 
+ #ifdef DEBUG
++    printf("DEBUG: link offsetlength %u.\n", link_offset);
++    printf("DEBUG: IP header  length %u.\n", ip_headerlen);
++    printf("DEBUG: TCP header length %u.\n", tcp_headerlen);
+     printf("DEBUG: TCP packet length %u.\n", tcp_packetlen);
++    printf("DEBUG: TCP meta   length %u.\n", tcp_meta_packetlen);
+     printf("DEBUG: IP  options size  %u.\n", ipod->file_s);
+     printf("DEBUG: TCP options size  %u.\n", tcpod->file_s);
+     printf("DEBUG: TCP payload size  %u.\n", pd->file_s);

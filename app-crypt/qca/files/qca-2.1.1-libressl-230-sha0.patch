@@ -1,0 +1,48 @@
+commit 0dbed8eb38afd1561907a52283091c37e7b85156
+Author: Heiko Becker <heirecka@exherbo.org>
+Date:   Thu Sep 24 23:05:21 2015 +0200
+
+    qca-ossl: Fix build without support for SHA-0
+    
+    LibreSSL >= 2.3.0 removed support for SHA-0, so there's no EVP_sha
+    anymore.
+    Wikipedia says about SHA-0: "160-bit hash function published in 1993
+    under the name SHA. It was withdrawn shortly after publication due to
+    an undisclosed "significant flaw" and replaced by the slightly revised
+    version SHA-1.'
+    
+    REVIEW: 125387
+
+diff --git a/plugins/qca-ossl/CMakeLists.txt b/plugins/qca-ossl/CMakeLists.txt
+index 3124f02..cdeaeca 100644
+--- a/plugins/qca-ossl/CMakeLists.txt
++++ b/plugins/qca-ossl/CMakeLists.txt
+@@ -25,6 +25,13 @@ if(OPENSSL_FOUND)
+     message(WARNING "qca-ossl will be compiled without AES CTR mode encryption support")
+   endif(HAVE_OPENSSL_AES_CTR)
+ 
++  check_function_exists(EVP_sha HAVE_OPENSSL_SHA0)
++  if(HAVE_OPENSSL_SHA0)
++    add_definitions(-DHAVE_OPENSSL_SHA0)
++  else(HAVE_OPENSSL_SHA0)
++    message(WARNING "qca-ossl will be compiled without SHA-0 digest algorithm support")
++  endif(HAVE_OPENSSL_SHA0)
++
+   set(QCA_OSSL_SOURCES qca-ossl.cpp)
+ 
+   my_automoc( QCA_OSSL_SOURCES )
+diff --git a/plugins/qca-ossl/qca-ossl.cpp b/plugins/qca-ossl/qca-ossl.cpp
+index b34ecc1..61d9e43 100644
+--- a/plugins/qca-ossl/qca-ossl.cpp
++++ b/plugins/qca-ossl/qca-ossl.cpp
+@@ -7135,8 +7135,10 @@ public:
+ 			return new opensslInfoContext(this);
+ 		else if ( type == "sha1" )
+ 			return new opensslHashContext( EVP_sha1(), this, type);
++#ifdef HAVE_OPENSSL_SHA0
+ 		else if ( type == "sha0" )
+ 			return new opensslHashContext( EVP_sha(), this, type);
++#endif
+ 		else if ( type == "ripemd160" )
+ 			return new opensslHashContext( EVP_ripemd160(), this, type);
+ #ifdef HAVE_OPENSSL_MD2

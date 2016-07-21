@@ -1,0 +1,28 @@
+--- configure.in
++++ configure.in
+@@ -31,7 +31,9 @@
+ AC_PROG_CXX
+ AC_CHECK_FUNCS(select socket strerror strstr)
+ 
+-AC_CHECK_LIB(curses, main, [LIBS=" -lcurses "], AC_CHECK_LIB(ncurses, main, [LIBS=" -lncurses "], AC_MSG_ERROR([No curses])))
++PKG_CHECK_MODULES([NCURSES], [ncurses])
++AC_SUBST([NCURSES_CFLAGS])
++AC_SUBST([NCURSES_LIBS])
+ 
+ AC_CHECK_LIB(z, main, [LIBS=$LIBS" -lz "; AC_DEFINE(HAVE_ZLIB)], AC_MSG_WARN([No zlib - MCCP support will not be built]))
+ 
+--- Makefile.am
++++ Makefile.am
+@@ -5,7 +5,11 @@
+ 		common.h crystal.h grid.h io.h telnet.h wcwidth.c \
+ 	scripting.cc scripting.h
+ 
+-man_MANS = crystal.6
++crystal_CPPFLAGS = $(NCURSES_CFLAGS)
++
++crystal_LDADD = $(NCURSES_LIBS)
++
++man_MANS = crystal-mud.6
+ 
+ DEBDIST = README.Debian debian/changelog.real debian/compat debian/control debian/copyright debian/crystal-default.ex debian/crystal.substvars debian/docs debian/rules debian/watch.ex
+ 

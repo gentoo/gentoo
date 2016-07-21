@@ -1,0 +1,28 @@
+From 60427a259ba76b8238198e1f17a0c3b06491be3c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 18 Dec 2009 10:48:39 -0500
+Subject: [PATCH] fsync: fix implicit decl
+
+fsync.c: In function 'fsync_display':
+fsync.c:330: warning: implicit declaration of function 'gettimeofday'
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/fsync.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/fsync.c b/src/fsync.c
+index 1706571..3bec719 100644
+--- a/src/fsync.c
++++ b/src/fsync.c
+@@ -30,6 +30,7 @@
+ #include <string.h>
+ #include <ncurses.h>
+ #include <time.h>
++#include <sys/time.h>
+ #include <wchar.h>
+ #include <ctype.h>
+ 
+-- 
+1.6.5.4
+

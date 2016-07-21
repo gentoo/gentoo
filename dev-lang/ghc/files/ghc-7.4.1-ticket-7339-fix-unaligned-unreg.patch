@@ -1,0 +1,28 @@
+From 26f8466507bd9383e0a7d1e62e397eca4a13822a Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Tue, 13 Nov 2012 01:39:14 +0300
+Subject: [PATCH] Fix unaligned access on alpha and friends (ticket #7339)
+
+Assume unknown arch (alpha and mips) an alignment sensitive target.
+Otherwise on alpha it causes ghc-7.4.1 to generate invalud lexers.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ compiler/cmm/PprC.hs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/compiler/cmm/PprC.hs b/compiler/cmm/PprC.hs
+index 21826f8..8cdcde6 100644
+--- a/compiler/cmm/PprC.hs
++++ b/compiler/cmm/PprC.hs
+@@ -963,6 +963,7 @@ cLoad platform expr rep
+  | otherwise
+     = char '*' <> parens (cCast platform (machRepPtrCType rep) expr)
+     where -- On these platforms, unaligned loads are known to cause problems
++          bewareLoadStoreAlignment ArchUnknown  = True -- like alpha or mips
+           bewareLoadStoreAlignment (ArchARM {}) = True
+           bewareLoadStoreAlignment _            = False
+ 
+-- 
+1.8.0
+

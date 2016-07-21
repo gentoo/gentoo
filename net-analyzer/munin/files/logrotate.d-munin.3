@@ -1,0 +1,31 @@
+/var/log/munin/munin-node.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	copytruncate
+	notifempty
+	create 640 root root
+	postrotate
+		test -e /run/openrc/softlevel && /etc/init.d/munin-node restart 1>/dev/null || true
+		test -e /run/systemd/system && systemctl restart munin-node 1>/dev/null || true
+	endscript
+}
+
+/var/log/munin/munin-update.log /var/log/munin/munin-graph.log /var/log/munin/munin-html.log /var/log/munin/munin-limits.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	nocreate
+}
+
+/var/log/munin/munin-cgi-graph.log /var/log/munin/munin-cgi-html.log {
+	daily
+	missingok
+	rotate 7
+	compress
+	notifempty
+	create 640 @CGIUSER@
+}

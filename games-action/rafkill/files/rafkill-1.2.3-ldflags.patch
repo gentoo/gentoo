@@ -1,0 +1,17 @@
+--- SConstruct.old	2010-10-07 10:37:26.000000000 +0200
++++ SConstruct	2010-10-07 10:39:33.000000000 +0200
+@@ -1,5 +1,6 @@
+ import os
+ import sys
++import SCons.Util
+ 
+ env = Environment( ENV = os.environ );
+ config = env.Configure();
+@@ -36,6 +37,7 @@
+ 
+ env.BuildDir( 'build/', 'src/' )
+ env.Append( LIBS = [ 'aldmb', 'dumb' ] );
++env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+ if sys.platform == 'win32':
+ 	env.Append( CCFLAGS = [ '-DWINDOWS' ] )
+ 	env.Append( LIBS = [ 'alleg', 'pthreadGC2' ] )

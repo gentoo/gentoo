@@ -1,0 +1,22 @@
+Index: mpage-2.5.6/mpage.1.in
+===================================================================
+--- mpage-2.5.6.orig/mpage.1.in	2008-08-12 19:40:49.390230323 +0200
++++ mpage-2.5.6/mpage.1.in	2008-08-12 19:41:08.143299000 +0200
+@@ -157,7 +157,7 @@
+ .TP
+ .BR -C [\fIencodingfile\fR]
+ Specify the character encoding file.
+-The file should be in the mpage library directory (\fIPREFIX/share/mpage\fR).
++The file should be in the mpage library directory (\fIPREFIX/lib/mpage\fR).
+ .I Mpage
+ has an internal default encoding based on Latin-1 or IBM codepage 850.
+ Depending on compile time option this encoding definition is on or not.
+@@ -581,7 +581,7 @@
+ .SH FILES
+ /tmp/mpageXXXXXX
+ .br
+-PREFIX/share/mpage
++PREFIX/lib/mpage
+ 
+ .SH BUGS
+ .PP

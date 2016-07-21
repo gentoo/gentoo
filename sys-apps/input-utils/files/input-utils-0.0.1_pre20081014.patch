@@ -1,0 +1,116 @@
+This patch is derived from input-utils_0.0.20051128-4.diff.gz
+
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/GNUmakefile input-utils-0.0.20081014/GNUmakefile
+--- input-utils-0.0.20081014.orig/GNUmakefile	2008-10-14 10:27:01.000000000 +0000
++++ input-utils-0.0.20081014/GNUmakefile	2011-07-03 07:49:07.000000000 +0000
+@@ -7,7 +7,7 @@
+ LDLIBS	+= -lm
+ 
+ # build
+-TARGETS	:= lsinput input-events input-kbd input-send input-recv lircd.conf
++TARGETS	:= lsinput input-events input-kbd lircd.conf
+ HEADERS	:= EV.h REL.h ABS.h MSC.h LED.h SND.h REP.h KEY.h BTN.h BUS.h SW.h
+ 
+ # default target
+@@ -45,7 +45,7 @@
+ 
+ install: build
+ 	$(INSTALL_DIR) $(bindir) $(mandir)/man8
+-	$(INSTALL_BINARY) lsinput input-events input-kbd input-send input-recv $(bindir)
++	$(INSTALL_BINARY) lsinput input-events input-kbd $(bindir)
+ 	$(INSTALL_DATA) lsinput.man $(mandir)/man8/lsinput.8
+ 	$(INSTALL_DATA) input-kbd.man $(mandir)/man8/input-kbd.8
+ 	$(INSTALL_DATA) input-events.man $(mandir)/man8/input-events.8
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/input-events.man input-utils-0.0.20081014/input-events.man
+--- input-utils-0.0.20081014.orig/input-events.man	2005-07-27 14:17:04.000000000 +0000
++++ input-utils-0.0.20081014/input-events.man	2011-07-03 07:48:16.000000000 +0000
+@@ -1,7 +1,7 @@
+ .TH INPUT-EVENTS 8 "July 2005" "" ""
+ .SH NAME
+ 
+-input-events \- list input devices
++input-events \- print input events
+ 
+ .SH SYNOPSIS
+ \fBinput\-events \fR [\fB\-t\fR\ \fIsec\fR] [\fB\-g\fR]\ \fIdevnr\fR
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/input.h input-utils-0.0.20081014/input.h
+--- input-utils-0.0.20081014.orig/input.h	2008-10-14 10:27:01.000000000 +0000
++++ input-utils-0.0.20081014/input.h	2011-07-03 07:48:16.000000000 +0000
+@@ -1,7 +1,7 @@
+ #include <inttypes.h>
+ 
+ #include <sys/ioctl.h>
+-#include "linux-input.h"
++#include <linux/input.h>
+ 
+ #define ev_name(code)  ((code) < EV_MAX  && EV_NAME[code]  ? EV_NAME[code]  : "???")
+ #define ev_type_name(type, code) ((code) < EV_TYPE_MAX[type] && EV_TYPE_NAME[type][code] ? EV_TYPE_NAME[type][code] : "???")
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/input-kbd.c input-utils-0.0.20081014/input-kbd.c
+--- input-utils-0.0.20081014.orig/input-kbd.c	2008-10-14 10:27:01.000000000 +0000
++++ input-utils-0.0.20081014/input-kbd.c	2011-07-03 07:48:16.000000000 +0000
+@@ -36,7 +36,6 @@
+ 		entry.keycode  = KEY_RESERVED;
+ 		rc = ioctl(fd, EVIOCGKEYCODE, &entry);
+ 		if (rc < 0) {
+-			map->size--;
+ 			break;
+ 		}
+ 		if (map->size >= map->alloc) {
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/lirc.sh input-utils-0.0.20081014/lirc.sh
+--- input-utils-0.0.20081014.orig/lirc.sh	2005-11-28 14:07:00.000000000 +0000
++++ input-utils-0.0.20081014/lirc.sh	2011-07-03 07:48:16.000000000 +0000
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-INPUT="linux-input.h"
++INPUT="/usr/include/linux/input.h"
+ cat <<EOF
+ begin remote
+ 	name linux-input-layer
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/lsinput.c input-utils-0.0.20081014/lsinput.c
+--- input-utils-0.0.20081014.orig/lsinput.c	2004-04-21 11:55:44.000000000 +0000
++++ input-utils-0.0.20081014/lsinput.c	2011-07-03 07:48:16.000000000 +0000
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <sys/stat.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ 
+@@ -10,14 +11,19 @@
+ static void list_devices(void)
+ {
+ 	int i,fd;
++        char filename[32];
++        struct stat statbuf;
+ 
+ 	for (i = 0; i < 32; i++) {
+-		/* try to open */
+-		fd = device_open(i,1);
+-		if (-1 == fd)
+-			return;
+-		device_info(fd);
+-		close(fd);
++                snprintf(filename,sizeof(filename), "/dev/input/event%d",i);
++                if (stat(filename, &statbuf) == 0) {
++                        /* try to open */
++                        fd = device_open(i,1);
++                        if (-1 == fd)
++                                return;
++                        device_info(fd);
++                        close(fd);
++                }
+ 	}
+ 	return;
+ }
+diff -Nuar --exclude '*.rej' --exclude '*.orig' input-utils-0.0.20081014.orig/name.sh input-utils-0.0.20081014/name.sh
+--- input-utils-0.0.20081014.orig/name.sh	2004-04-21 11:55:44.000000000 +0000
++++ input-utils-0.0.20081014/name.sh	2011-07-03 07:48:16.000000000 +0000
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ TYPE="$1"
+-INPUT="linux-input.h"
++INPUT="/usr/include/linux/input.h"
+ 
+ awk "
+ 	/EV_VERSION/	{ next };

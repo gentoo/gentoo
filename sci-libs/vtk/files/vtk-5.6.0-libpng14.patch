@@ -1,0 +1,22 @@
+diff --git a/IO/vtkPNGReader.cxx b/IO/vtkPNGReader.cxx
+index d1f5c2f..0bf00e4 100644
+--- a/IO/vtkPNGReader.cxx
++++ b/IO/vtkPNGReader.cxx
+@@ -116,7 +116,7 @@ void vtkPNGReader::ExecuteInformation()
+   // minimum of a byte per pixel
+   if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) 
+     {
+-    png_set_gray_1_2_4_to_8(png_ptr);
++    png_set_expand_gray_1_2_4_to_8(png_ptr);
+     }
+ 
+   // add alpha if any alpha found
+@@ -225,7 +225,7 @@ void vtkPNGReaderUpdate2(vtkPNGReader *self, OT *outPtr,
+   // minimum of a byte per pixel
+   if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) 
+     {
+-    png_set_gray_1_2_4_to_8(png_ptr);
++    png_set_expand_gray_1_2_4_to_8(png_ptr);
+     }
+ 
+   // add alpha if any alpha found

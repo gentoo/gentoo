@@ -1,0 +1,14 @@
+--- basqet.desktop
++++ basqet.desktop
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+-Version=0.2.0
++Version=1.0
+ Terminal=false
+ TryExec=basqet
+ Exec=basqet
+-Icon=basqet.png
++Icon=basqet
+ Type=Application
+ Categories=Office;WordProcessor;
+ StartupNotify=false

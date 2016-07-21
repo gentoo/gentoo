@@ -1,0 +1,56 @@
+diff -r -U1 clisp-2.49.orig/src/socket.d clisp-2.49/src/socket.d
+--- clisp-2.49.orig/src/socket.d	2009-10-08 21:45:13.000000000 +0700
++++ clisp-2.49/src/socket.d	2013-04-20 16:24:11.133895050 +0700
+@@ -59,5 +59,5 @@
+  Fetches the machine's host name.
+- get_hostname(host =);
+- The name is allocated on the stack, with dynamic extent.
+- < const char* host: The host name.
++ get_hostname(hostname);
++ where hostname is an array of MAXHOTNAMELEN+1 characters.
++ < const char host[]: The host name.
+  (Note: In some cases we could get away with less system calls by simply
+@@ -69,10 +69,8 @@
+ /* present on all supported unix systems and on woe32 */
+-  #define get_hostname(host_assignment)                                 \
+-    do {  var char hostname[MAXHOSTNAMELEN+1];                          \
+-      begin_system_call();                                              \
+-      if ( gethostname(&hostname[0],MAXHOSTNAMELEN) <0) { SOCK_error(); } \
+-      end_system_call();                                                \
+-      hostname[MAXHOSTNAMELEN] = '\0';                                  \
+-      host_assignment &hostname[0];                                     \
+-    } while(0)
++static void get_hostname (char *hostname) {
++  begin_system_call();
++  if (gethostname(hostname,MAXHOSTNAMELEN) < 0) { ANSIC_error(); }
++  end_system_call();
++  hostname[MAXHOSTNAMELEN] = '\0';
++}
+ #else
+@@ -209,4 +207,4 @@
+            (apply #'string-concat hostname " [" (inet-ntop address) "]"))) */
+-    var const char* host;
+-    get_hostname(host =);
++    var char host[MAXHOSTNAMELEN+1];
++    get_hostname(host);
+     result = asciz_to_string(host,O(misc_encoding)); /* hostname as result */
+@@ -391,4 +389,4 @@
+   if (eq(arg,S(Kdefault))) {
+-    var char* host;
+-    get_hostname(host =);
++    var char host[MAXHOSTNAMELEN+1];
++    get_hostname(host);
+     begin_system_call();
+@@ -726,3 +724,4 @@
+       if (host[0] == '\0') {
+-        get_hostname(host =);
++        var char host[MAXHOSTNAMELEN+1];
++        get_hostname(host);
+         fd = with_host_port(host,port,&connect_to_x_via_ip,NULL);
+@@ -800,4 +799,4 @@
+   if (resolve_p) { /* Fill in hd->truename. */
+-    var const char* host;
+-    get_hostname(host =); /* was: host = "localhost"; */
++    var char host[MAXHOSTNAMELEN+1];
++    get_hostname(host);
+     ASSERT(strlen(host) <= MAXHOSTNAMELEN);

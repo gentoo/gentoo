@@ -1,0 +1,16 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Jun 29 08:15:12 UTC 2012
+Subject: fix compilation on gcc 4.7
+
+https://bugs.gentoo.org/show_bug.cgi?id=423965
+
+--- src/nvcore/nvcore.h
++++ src/nvcore/nvcore.h
+@@ -158,6 +158,7 @@
+ #elif NV_CC_GNUC
+ #	if NV_OS_LINUX
+ #		include "DefsGnucLinux.h"
++#		include <unistd.h> // gcc 4.7
+ #	elif NV_OS_DARWIN
+ #		include "DefsGnucDarwin.h"
+ #	elif NV_OS_MINGW

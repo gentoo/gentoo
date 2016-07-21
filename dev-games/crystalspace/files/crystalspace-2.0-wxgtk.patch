@@ -1,0 +1,48 @@
+Description: Fix to build with wxwidgets3.0
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-06-14
+
+--- crystalspace-2.0+dfsg.orig/plugins/video/canvas/wxgl/GLWXDriver2D.cpp
++++ crystalspace-2.0+dfsg/plugins/video/canvas/wxgl/GLWXDriver2D.cpp
+@@ -292,7 +292,7 @@ bool csGraphics2DWX::Open()
+   {
+     Display* dpy = (Display*) wxGetDisplay ();
+     GLXContext active_GLContext = glXGetCurrentContext();
+-    XVisualInfo *xvis = (XVisualInfo*)theCanvas->m_vi;
++    XVisualInfo *xvis = theCanvas->GetXVisualInfo();
+ 
+     Report (CS_REPORTER_SEVERITY_NOTIFY, "Video driver GL/X version %s",
+       glXIsDirect (dpy, active_GLContext) ? "(direct renderer)" :
+@@ -705,8 +705,8 @@ static bool wxCodeToCSCode(int wxkey, ut
+     MAP (MENU,            CONTEXT,      CONTEXT)
+     MAP (PAUSE,           PAUSE,        PAUSE)
+     MAP (CAPITAL,         CAPSLOCK,     CAPSLOCK)
+-    MAP (PRIOR,           PGUP,         PGUP)
+-    MAP (NEXT,            PGDN,         PGDN)
++    MAP (PAGEUP,          PGUP,         PGUP)
++    MAP (PAGEDOWN,        PGDN,         PGDN)
+     MAP (END,             END,          END)
+     MAP (HOME,            HOME,         HOME)
+     MAP (LEFT,            LEFT,         LEFT)
+@@ -722,10 +722,7 @@ static bool wxCodeToCSCode(int wxkey, ut
+     MAPC (NUMPAD2,        PAD2,         '2')
+     MAP (NUMPAD_DOWN,     PAD2,         DOWN)
+     MAPC (NUMPAD3,        PAD3,         '3')
+-    MAP (NUMPAD_NEXT,     PAD3,         PGDN)
+-#if wxVERSION_NUMBER < 2700
+     MAP (NUMPAD_PAGEDOWN, PAD3,         PGDN)
+-#endif
+     MAPC (NUMPAD4,        PAD4,         '4')
+     MAP (NUMPAD_LEFT,     PAD4,         LEFT)
+     MAPC (NUMPAD5,        PAD5,         '5')
+@@ -736,10 +733,7 @@ static bool wxCodeToCSCode(int wxkey, ut
+     MAPC (NUMPAD8,        PAD8,         '8')
+     MAP (NUMPAD_UP,       PAD8,         UP)
+     MAPC (NUMPAD9,        PAD9,         '9')
+-    MAP (NUMPAD_PRIOR,    PAD9,         PGUP)
+-#if wxVERSION_NUMBER < 2700
+     MAP (NUMPAD_PAGEUP,   PAD9,         PGUP)
+-#endif
+     MAPC (MULTIPLY,       PADMULT,      '*')
+     MAPC (NUMPAD_MULTIPLY,PADMULT,      '*')
+     MAPC (ADD,            PADPLUS,      '+')

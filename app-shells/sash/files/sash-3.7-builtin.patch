@@ -1,0 +1,14 @@
+diff -Nrup sash-3.7.orig/sash.c sash-3.7/sash.c
+--- sash-3.7.orig/sash.c	2004-01-14 00:08:03.000000000 -0500
++++ sash-3.7/sash.c	2004-10-31 00:05:59.000000000 -0400
+@@ -739,6 +739,10 @@ tryBuiltIn(const char * cmd)
+ 	while (*endCmd && !isBlank(*endCmd))
+ 		endCmd++;
+ 
++	/* FIXME: command line will segv with -c 12000bytes -solar */
++	if ((endCmd - cmd) >= sizeof(cmdName))
++		return FALSE;
++
+ 	memcpy(cmdName, cmd, endCmd - cmd);
+ 
+ 	cmdName[endCmd - cmd] = '\0';

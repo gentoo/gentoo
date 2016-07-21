@@ -1,0 +1,279 @@
+Fixes build with >=net-libs/gnutls-2.7.1
+
+http://bugs.gentoo.org/show_bug.cgi?id=274213
+
+--- conn.c
++++ conn.c
+@@ -32,7 +32,7 @@
+ 
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+ #  include <gnutls/gnutls.h>
+-#  include <gnutls/openssl.h>
++#  include <gnutls/x509.h>
+ #endif
+ 
+ int conn_fd_in  = -1;
+@@ -42,9 +42,8 @@
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+ int csync_conn_usessl = 0;
+ 
+-SSL_METHOD *conn_ssl_meth;
+-SSL_CTX *conn_ssl_ctx;
+-SSL *conn_ssl;
++static gnutls_session_t conn_tls_session;
++static gnutls_certificate_credentials_t conn_x509_cred;
+ #endif
+ 
+ int conn_open(const char *peername)
+@@ -112,41 +111,104 @@
+ 
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+ 
+-char *ssl_keyfile = ETCDIR "/csync2_ssl_key.pem";
+-char *ssl_certfile = ETCDIR "/csync2_ssl_cert.pem";
++static void ssl_log(int level, const char* msg)
++{ csync_debug(level, "%s", msg); }
++
++static const char *ssl_keyfile = ETCDIR "/csync2_ssl_key.pem";
++static const char *ssl_certfile = ETCDIR "/csync2_ssl_cert.pem";
+ 
+ int conn_activate_ssl(int server_role)
+ {
+-	static int sslinit = 0;
++	gnutls_alert_description_t alrt;
++	int err;
+ 
+ 	if (csync_conn_usessl)
+ 		return 0;
+ 
+-	if (!sslinit) {
+-		SSL_load_error_strings();
+-		SSL_library_init();
+-		sslinit=1;
++	gnutls_global_init();
++	gnutls_global_set_log_function(ssl_log);
++	gnutls_global_set_log_level(10);
++
++	gnutls_certificate_allocate_credentials(&conn_x509_cred);
++
++	err = gnutls_certificate_set_x509_key_file(conn_x509_cred, ssl_certfile, ssl_keyfile, GNUTLS_X509_FMT_PEM);
++	if(err != GNUTLS_E_SUCCESS) {
++		gnutls_certificate_free_credentials(conn_x509_cred);
++		gnutls_global_deinit();
++
++		csync_fatal(
++			"SSL: failed to use key file %s and/or certificate file %s: %s (%s)\n",
++			ssl_keyfile,
++			ssl_certfile,
++			gnutls_strerror(err),
++			gnutls_strerror_name(err)
++		);
+ 	}
+ 
+-	conn_ssl_meth = (server_role ? SSLv23_server_method : SSLv23_client_method)();
+-	conn_ssl_ctx = SSL_CTX_new(conn_ssl_meth);
+-
+-	if (SSL_CTX_use_PrivateKey_file(conn_ssl_ctx, ssl_keyfile, SSL_FILETYPE_PEM) <= 0)
+-		csync_fatal("SSL: failed to use key file %s.\n", ssl_keyfile);
+-
+-	if (SSL_CTX_use_certificate_file(conn_ssl_ctx, ssl_certfile, SSL_FILETYPE_PEM) <= 0)
+-		csync_fatal("SSL: failed to use certificate file %s.\n", ssl_certfile);
++	if(server_role) {
++		gnutls_certificate_free_cas(conn_x509_cred);
+ 
+-	if (! (conn_ssl = SSL_new(conn_ssl_ctx)) )
+-		csync_fatal("Creating a new SSL handle failed.\n");
+-
+-	gnutls_certificate_server_set_request(conn_ssl->gnutls_state, GNUTLS_CERT_REQUIRE);
++		if(gnutls_certificate_set_x509_trust_file(conn_x509_cred, ssl_certfile, GNUTLS_X509_FMT_PEM) < 1) {
++			gnutls_certificate_free_credentials(conn_x509_cred);
++			gnutls_global_deinit();
++
++			csync_fatal(
++				"SSL: failed to use certificate file %s as CA.\n",
++				ssl_certfile
++			);
++		}
++	} else
++		gnutls_certificate_free_ca_names(conn_x509_cred);
+ 
+-	SSL_set_rfd(conn_ssl, conn_fd_in);
+-	SSL_set_wfd(conn_ssl, conn_fd_out);
++	gnutls_init(&conn_tls_session, (server_role ? GNUTLS_SERVER : GNUTLS_CLIENT));
++	gnutls_priority_set_direct(conn_tls_session, "PERFORMANCE", NULL);
++	gnutls_credentials_set(conn_tls_session, GNUTLS_CRD_CERTIFICATE, conn_x509_cred);
++
++	if(server_role) {
++		gnutls_certificate_send_x509_rdn_sequence(conn_tls_session, 0);
++		gnutls_certificate_server_set_request(conn_tls_session, GNUTLS_CERT_REQUIRE);
++	}
+ 
+-	if ( (server_role ? SSL_accept : SSL_connect)(conn_ssl) < 1 )
+-		csync_fatal("Establishing SSL connection failed.\n");
++	gnutls_transport_set_ptr2(
++		conn_tls_session,
++		(gnutls_transport_ptr_t)conn_fd_in,
++		(gnutls_transport_ptr_t)conn_fd_out
++	);
++
++	err = gnutls_handshake(conn_tls_session);
++	switch(err) {
++	case GNUTLS_E_SUCCESS:
++		break;
++
++	case GNUTLS_E_WARNING_ALERT_RECEIVED:
++		alrt = gnutls_alert_get(conn_tls_session);
++		fprintf(
++			csync_debug_out,
++			"SSL: warning alert received from peer: %d (%s).\n",
++			alrt, gnutls_alert_get_name(alrt)
++		);
++		break;
++
++	case GNUTLS_E_FATAL_ALERT_RECEIVED:
++		alrt = gnutls_alert_get(conn_tls_session);
++		fprintf(
++			csync_debug_out,
++			"SSL: fatal alert received from peer: %d (%s).\n",
++			alrt, gnutls_alert_get_name(alrt)
++		);
++
++	default:
++		gnutls_bye(conn_tls_session, GNUTLS_SHUT_RDWR);
++		gnutls_deinit(conn_tls_session);
++		gnutls_certificate_free_credentials(conn_x509_cred);
++		gnutls_global_deinit();
++
++		csync_fatal(
++			"SSL: handshake failed: %s (%s)\n",
++			gnutls_strerror(err),
++			gnutls_strerror_name(err)
++		);
++	}
+ 
+ 	csync_conn_usessl = 1;
+ 
+@@ -155,15 +217,15 @@
+ 
+ int conn_check_peer_cert(const char *peername, int callfatal)
+ {
+-	const X509 *peercert;
++	const gnutls_datum_t *peercerts;
++	unsigned npeercerts;
+ 	int i, cert_is_ok = -1;
+ 
+ 	if (!csync_conn_usessl)
+ 		return 1;
+ 
+-	peercert = SSL_get_peer_certificate(conn_ssl);
+-
+-	if (!peercert || peercert->size <= 0) {
++	peercerts = gnutls_certificate_get_peers(conn_tls_session, &npeercerts);
++	if(peercerts == NULL || npeercerts == 0) {
+ 		if (callfatal)
+ 			csync_fatal("Peer did not provide an SSL X509 cetrificate.\n");
+ 		csync_debug(1, "Peer did not provide an SSL X509 cetrificate.\n");
+@@ -171,11 +233,11 @@
+ 	}
+ 
+ 	{
+-		char certdata[peercert->size*2 + 1];
++		char certdata[2*peercerts[0].size + 1];
+ 
+-		for (i=0; i<peercert->size; i++)
+-			sprintf(certdata+i*2, "%02X", peercert->data[i]);
+-		certdata[peercert->size*2] = 0;
++		for (i=0; i<peercerts[0].size; i++)
++			sprintf(&certdata[2*i], "%02X", peercerts[0].data[i]);
++		certdata[2*i] = 0;
+ 
+ 		SQL_BEGIN("Checking peer x509 certificate.",
+ 			"SELECT certdata FROM x509_cert WHERE peername = '%s'",
+@@ -222,7 +284,12 @@
+ 	if ( !conn_clisok ) return -1;
+ 
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+-	if ( csync_conn_usessl ) SSL_free(conn_ssl);
++	if ( csync_conn_usessl ) {
++		gnutls_bye(conn_tls_session, GNUTLS_SHUT_RDWR);
++		gnutls_deinit(conn_tls_session);
++		gnutls_certificate_free_credentials(conn_x509_cred);
++		gnutls_global_deinit();
++	}
+ #endif
+ 
+ 	if ( conn_fd_in != conn_fd_out) close(conn_fd_in);
+@@ -239,7 +306,7 @@
+ {
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+ 	if (csync_conn_usessl)
+-		return SSL_read(conn_ssl, buf, count);
++		return gnutls_record_recv(conn_tls_session, buf, count);
+ 	else
+ #endif
+ 		return read(conn_fd_in, buf, count);
+@@ -251,7 +318,7 @@
+ 
+ #ifdef HAVE_LIBGNUTLS_OPENSSL
+ 	if (csync_conn_usessl)
+-		return SSL_write(conn_ssl, buf, count);
++		return gnutls_record_send(conn_tls_session, buf, count);
+ 	else
+ #endif
+ 	{
+--- configure.ac
++++ configure.ac
+@@ -17,11 +17,10 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ # Process this file with autoconf to produce a configure script.
+-AC_INIT(csync2, 1.34, clifford@clifford.at)
++AC_INIT([csync2], [1.34], clifford@clifford.at)
+ AM_INIT_AUTOMAKE
+ 
+ AC_CONFIG_SRCDIR(csync2.c)
+-AM_CONFIG_HEADER(config.h)
+ 
+ # Use /etc and /var instead of $prefix/...
+ test "$localstatedir" = '${prefix}/var' && localstatedir=/var
+@@ -32,6 +31,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_YACC
+ AM_PROG_LEX
++PKG_PROG_PKG_CONFIG
+ 
+ # Check for librsync.
+ AC_ARG_WITH([librsync-source],
+@@ -58,19 +58,10 @@
+ 
+ if test "$enable_gnutls" != no
+ then
+-
+-	# Check for gnuTLS.
+-	AM_PATH_LIBGNUTLS(1.0.0, , [ AC_MSG_ERROR([[gnutls not found; install gnutls, gnutls-openssl and libtasn1 packages for your system or run configure with --disable-gnutls]]) ])
+-
+-	# This is a bloody hack for fedora core
+-	CFLAGS="$CFLAGS $LIBGNUTLS_CFLAGS"
+-	LIBS="$LIBS $LIBGNUTLS_LIBS -ltasn1"
+-
+-	# Check gnuTLS SSL compatibility lib.
+-	AC_CHECK_LIB([gnutls-openssl], [SSL_new], , [AC_MSG_ERROR([[gnutls-openssl not found; install gnutls, gnutls-openssl and libtasn1 packages for your system or run configure with --disable-gnutls]])])
+-
++  PKG_CHECK_MODULES([LIBGNUTLS], [gnutls] , [AC_DEFINE(HAVE_LIBGNUTLS_OPENSSL, 1, [Define to 1 if GnuTLS is available])])
+ fi
+ 
++AM_CONFIG_HEADER([config.h])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+ 
+--- Makefile.am
++++ Makefile.am
+@@ -24,6 +24,8 @@
+ csync2_SOURCES = action.c cfgfile_parser.y cfgfile_scanner.l check.c	\
+                  checktxt.c csync2.c daemon.c db.c error.c getrealfn.c	\
+                  groups.c rsync.c update.c urlencode.c conn.c prefixsubst.c
++csync2_LDADD = @LIBGNUTLS_LIBS@
++csync2_CFLAGS = @LIBGNUTLS_CFLAGS@
+ 
+ AM_YFLAGS = -d
+ BUILT_SOURCES = cfgfile_parser.h

@@ -1,0 +1,10 @@
+--- polyml.5.5-orig/libpolyml/x86asm.asm	2012-05-03 21:07:59.000000000 +1000
++++ polyml.5.5/libpolyml/x86asm.asm	2012-09-19 17:41:51.767737295 +1000
+@@ -3003,4 +3003,7 @@
+     dd  Mask_assign_byte         ;# 254
+     dd  Mask_assign_word         ;# 255
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+ END

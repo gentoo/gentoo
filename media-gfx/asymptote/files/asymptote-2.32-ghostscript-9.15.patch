@@ -1,0 +1,24 @@
+diff -r -U2 asymptote-2.32.orig/runlabel.in asymptote-2.32/runlabel.in
+--- asymptote-2.32.orig/runlabel.in	2014-05-22 23:11:47.000000000 +0700
++++ asymptote-2.32/runlabel.in	2015-01-11 21:41:30.268889133 +0600
+@@ -112,5 +112,5 @@
+   const string null="/dev/null";
+ #endif
+-  cmd.push_back("-sDEVICE=epswrite");
++  cmd.push_back("-sDEVICE=eps2write");
+   cmd.push_back("-sOutputFile="+null);
+   cmd.push_back(stripDir(psname));
+@@ -310,5 +310,5 @@
+       cmd.push_back("-dBATCH");
+       if(safe) cmd.push_back("-dSAFER");
+-      cmd.push_back("-sDEVICE=epswrite");
++      cmd.push_back("-sDEVICE=eps2write");
+       cmd.push_back("-sOutputFile=-");
+       cmd.push_back(pdfname);
+@@ -399,5 +399,5 @@
+   cmd2.push_back("-P");
+   if(safe) cmd2.push_back("-dSAFER");
+-  cmd2.push_back("-sDEVICE=epswrite");
++  cmd2.push_back("-sDEVICE=eps2write");
+   cmd2.push_back("-sOutputFile=-");
+   cmd2.push_back("-");

@@ -1,0 +1,11 @@
+--- a/cdb.c
++++ b/cdb.c
+@@ -21,6 +21,8 @@
+ #include <stdarg.h>
+ #include <fcntl.h>
+ #include <errno.h>
++#include <sys/types.h> /* umask() */
++#include <sys/stat.h>  /* umask() */
+ #include "cdb.h"
+ 
+ #ifndef EPROTO

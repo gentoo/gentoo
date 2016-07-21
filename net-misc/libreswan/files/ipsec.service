@@ -1,0 +1,19 @@
+[Unit]
+Description=Internet Key Exchange (IKE) Protocol Daemon for IPsec
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/libexec/ipsec/addconn --config /etc/ipsec.conf --checkconfig
+ExecStartPre=/usr/libexec/ipsec/_stackmanager start
+ExecStart=/usr/libexec/ipsec/pluto --config /etc/ipsec.conf --nofork
+ExecStop=/usr/libexec/ipsec/whack --shutdown
+ExecStopPost=/bin/ip xfrm policy flush
+ExecStopPost=/bin/ip xfrm state flush
+ExecReload=/usr/libexec/ipsec/whack --listen
+
+[Install]
+WantedBy=multi-user.target
+Alias=libreswan.service
+Alias=pluto.service

@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+pidfile="/var/run/git-daemon.pid"
+command="/usr/bin/git"
+command_args="daemon ${GITDAEMON_OPTS}"
+start_stop_daemon_args="-e HOME= -e XDG_CONFIG_HOME= -b -m -p ${pidfile} -u ${GIT_USER:-nobody}:${GIT_GROUP:-nobody}"
+
+depend() {
+	use logger
+}

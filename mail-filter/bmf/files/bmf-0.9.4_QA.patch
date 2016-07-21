@@ -1,0 +1,19 @@
+--- dbh.c	2002-10-14 07:09:51.000000000 +0000
++++ dbh.c	2012-02-24 10:52:07.000000000 +0000
+@@ -60,12 +60,16 @@
+     case db_text:
+         pdb = (dbh_t*)dbtext_db_open( dbhost, dbname, dbuser, dbpass );
+         break;
++#ifdef HAVE_LIBDB
+     case db_db:
+         pdb = (dbh_t*)dbdb_db_open( dbhost, dbname, dbuser, dbpass );
+         break;
++#endif
++#ifdef HAVE_MYSQL
+     case db_mysql:
+         pdb = (dbh_t*) dbmysql_db_open( dbhost, dbname, dbuser, dbpass );
+         break;
++#endif
+     default:
+         assert(false);
+     }

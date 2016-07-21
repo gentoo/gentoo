@@ -1,0 +1,72 @@
+--- config.input.dist	2003-04-11 14:03:36.000000000 -0700
++++ config.input	2003-04-11 14:05:47.000000000 -0700
+@@ -20,7 +20,7 @@
+ # See the QuickPage documentation for complete details about
+ # the syntax of the configuration file.
+ #
+-QPAGE_CONFIG="/etc/qpage.cf"
++QPAGE_CONFIG="/etc/qpage/qpage.cf"
+ 
+ 
+ #
+@@ -41,7 +41,7 @@
+ # copies of the configuration file.  Only one filename
+ # may be specified.
+ #
+-SNPP_SERVER_FILE="/etc/qpage.servers"
++SNPP_SERVER_FILE="/etc/qpage/qpage.servers"
+ 
+ 
+ #
+--- qpage.man.dist	2003-04-18 14:43:45.000000000 -0700
++++ qpage.man	2003-04-18 14:43:55.000000000 -0700
+@@ -867,7 +867,7 @@
+ must be able to detect when it's safe to send dial commands to the modem.
+ .LP
+ .SH FILES
+-/etc/qpage.cf
++/etc/qpage/qpage.cf
+ .SH SEE ALSO
+ .B RFC-1861
+ .SH KNOWN BUGS
+--- example.cf.dist	2003-04-25 09:55:47.000000000 -0700
++++ example.cf	2003-04-25 10:55:11.000000000 -0700
+@@ -21,7 +21,7 @@
+ #
+ #	modem=<modem name>
+ #		text=<optional text, no whitespace allowed>
+-#		device=<modem device e.g. /dev/ttya>
++#		device=<modem device e.g. /dev/tts/0>
+ #		initcmd=<modem initialization command>
+ #		dialcmd=<modem dial command not including phone number>
+ #
+@@ -64,14 +64,15 @@
+ 
+ queuedir=/var/spool/qpage
+ 
++lockdir=/var/lock/subsys/qpage
++
+ identtimeout=5
+ snpptimeout=60
+ 
+-modem=ttya device=/dev/cua/a
+-modem=ttyb device=/dev/cua/b
++modem=ttyS0 device=/dev/tts/0
+ 
+ service=default
+-	device=ttya,ttyb
++	device=ttyS0
+ 	baudrate=1200
+ 	parity=even
+ 	allowpid=yes
+--- ixo.c.dist	2003-04-25 11:36:30.000000000 -0700
++++ ixo.c	2003-04-25 11:37:37.000000000 -0700
+@@ -192,7 +192,7 @@
+ 		if ((i = read_modem(fd, seconds)) < 0)
+ 			return(NULL);
+ 
+-		if (i == '\r') {
++		if (i == '\r' || i == '\n') {
+ 			*ptr = '\0';
+ 			got_full_packet++;
+ 		}

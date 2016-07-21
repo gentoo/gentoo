@@ -1,0 +1,46 @@
+Make dependency on pulseaudio optional.
+
+It's unfortunately not upstreamable. See:
+
+https://github.com/i3/i3status/pull/43
+https://bugs.gentoo.org/show_bug.cgi?id=570786
+
+--- a/Makefile
++++ b/Makefile
+@@ -49,6 +49,10 @@ ifeq ($(OS),NetBSD)
+ LIBS+=-lprop
+ endif
+ 
++ifeq ($(OS),OpenBSD)
++LIBS+=-lpthread
++endif
++
+ # This probably applies for any pkgsrc based system
+ ifneq (, $(filter $(OS), NetBSD DragonFly))
+ CFLAGS+=-I/usr/pkg/include/
+@@ -70,9 +74,12 @@ CFLAGS += -idirafter yajl-fallback
+ OBJS:=$(wildcard src/*.c *.c)
+ OBJS:=$(OBJS:.c=.o)
+ 
+-ifeq ($(OS),OpenBSD)
++PULSE ?= 1
++ifeq ($(PULSE),0)
+ OBJS:=$(filter-out src/pulse.o, $(OBJS))
+-LIBS:=$(filter-out -lpulse, $(LIBS)) -lpthread
++LIBS:=$(filter-out -lpulse, $(LIBS))
++else
++CPPFLAGS+=-DPULSE
+ endif
+ 
+ src/%.o: src/%.c include/i3status.h
+--- a/src/print_volume.c
++++ b/src/print_volume.c
+@@ -60,7 +60,7 @@ void print_volume(yajl_gen json_gen, char *buffer, const char *fmt, const char *
+         free(instance);
+     }
+ 
+-#ifndef __OpenBSD__
++#if !defined(__OpenBSD__) && defined(PULSE)
+     /* Try PulseAudio first */
+ 
+     /* If the device name has the format "pulse[:N]" where N is the

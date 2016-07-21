@@ -1,0 +1,29 @@
+diff --git a/configure.ac b/configure.ac
+index a72019e..e366e1c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -556,23 +556,6 @@ if test "x$enable_debug" = "x1" ; then
+ fi
+ AC_SUBST([enable_debug])
+ 
+-dnl Only optimize if not debugging.
+-if test "x$enable_debug" = "x0" -a "x$no_CFLAGS" = "xyes" ; then
+-  dnl Make sure that an optimization flag was not specified in EXTRA_CFLAGS.
+-  optimize="no"
+-  echo "$EXTRA_CFLAGS" | grep "\-O" >/dev/null || optimize="yes"
+-  if test "x${optimize}" = "xyes" ; then
+-    if test "x$GCC" = "xyes" ; then
+-      JE_CFLAGS_APPEND([-O3])
+-      JE_CFLAGS_APPEND([-funroll-loops])
+-    elif test "x$je_cv_msvc" = "xyes" ; then
+-      JE_CFLAGS_APPEND([-O2])
+-    else
+-      JE_CFLAGS_APPEND([-O])
+-    fi
+-  fi
+-fi
+-
+ dnl Enable statistics calculation by default.
+ AC_ARG_ENABLE([stats],
+   [AS_HELP_STRING([--disable-stats],
+

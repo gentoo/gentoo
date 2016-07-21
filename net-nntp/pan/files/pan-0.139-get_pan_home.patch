@@ -1,0 +1,41 @@
+From cef1d28d4a27fe383a74f4e5d0286aca3a28ff99 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 7 Sep 2015 13:21:22 -0400
+Subject: [PATCH] file::get_pan_home() : fix for g++-5 non-CoW std::string
+ semantics
+
+https://bugzilla.gnome.org/show_bug.cgi?id=754698
+---
+ pan/general/file-util.cc | 2 +-
+ pan/general/file-util.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pan/general/file-util.cc b/pan/general/file-util.cc
+index 4ea2e77..473e426 100644
+--- a/pan/general/file-util.cc
++++ b/pan/general/file-util.cc
+@@ -77,7 +77,7 @@ file :: print_file_info (std::ostream& os, const char* file)
+ ****
+ ***/
+ 
+-std::string
++const std::string &
+ file :: get_pan_home ()
+ {
+   static std::string pan_home;
+diff --git a/pan/general/file-util.h b/pan/general/file-util.h
+index 7c211a8..4b6d04f 100644
+--- a/pan/general/file-util.h
++++ b/pan/general/file-util.h
+@@ -59,7 +59,7 @@ namespace pan
+      * Returns the home pan directory, which falls back to $HOME/.pan2
+      * if the PAN_HOME environmental variable isn't set.
+      */
+-    std::string get_pan_home ();
++    const std::string & get_pan_home ();
+ 
+     /**
+ 	 * Returns an absolute filename of a file
+-- 
+2.5.1
+

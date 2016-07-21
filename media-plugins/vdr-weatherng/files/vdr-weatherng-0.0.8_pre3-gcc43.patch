@@ -1,0 +1,15 @@
+fix compile problems with gcc-4.3.x
+bug 227133
+diff -ruN weatherng-0.0.8-pre3_orig/imagecache.h weatherng-0.0.8-pre3/imagecache.h
+--- weatherng-0.0.8-pre3_orig/imagecache.h	2006-03-11 19:14:49.000000000 +0100
++++ weatherng-0.0.8-pre3/imagecache.h	2008-06-15 12:54:10.000000000 +0200
+@@ -5,6 +5,8 @@
+ #ifndef VDR_IMAGECACHE_HPP
+ #define VDR_IMAGECACHE_HPP
+ 
++#include <sys/types.h>
++
+ #include <map>
+ #include <vector>
+ #include <string>
+

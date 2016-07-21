@@ -1,0 +1,11 @@
+--- a/configure.ac	2012-08-08 19:23:14.026623125 +0200
++++ b/configure.ac	2012-08-08 19:23:20.766623326 +0200
+@@ -545,7 +545,7 @@
+ dnl - Check for GL
+ dnl ---------------------------------------------------------------------------
+ 
+-AC_ARG_WITH(gl, [  --with-libgl	  build with GL support])
++AC_ARG_WITH(libgl, [  --with-libgl	build with GL support])
+ have_libgl=no
+ GL_LIBS=""
+ 

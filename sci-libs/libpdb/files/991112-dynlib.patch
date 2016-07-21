@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 760a427..da2f62d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,6 +29,7 @@ install:	$(LIBARCH)
+ 
+ $(LIBARCH):     $(OBJS)
+ 		@echo "Loading $(LIBARCH) ... "
++		$(CC) $(LDFLAGS) -shared -Wl,--soname,libpdb.so.0 -o libpdb.so.0.1 $(OBJS)
+ 		@ar cru $(LIBARCH) $(OBJS)
+ 		@$(RANLIB) $(LIBARCH)
+ 		@echo "done"

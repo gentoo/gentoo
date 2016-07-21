@@ -1,0 +1,20 @@
+diff -Naur syslinux-6.02/mk/efi.mk syslinux-6.02-hardened/mk/efi.mk
+--- syslinux-6.02/mk/efi.mk	2013-10-13 13:59:03.000000000 -0400
++++ syslinux-6.02-hardened/mk/efi.mk	2014-02-09 12:56:47.036409135 -0500
+@@ -23,6 +23,7 @@
+ 	EFI_SUBARCH = $(ARCH)
+ endif
+ 
++GCCOPT := $(call gcc_ok,-fno-stack-protector,)
+ EFIINC = $(shell $(topdir)/efi//find-gnu-efi.sh include $(EFI_SUBARCH))
+ $(if $(EFIINC),, \
+ 	$(error Missing $(EFI_SUBARCH) gnu-efi header files))
+@@ -42,7 +43,7 @@
+ 		-DELF_DEBUG -DSYSLINUX_EFI -I$(objdir) \
+ 		$(GCCWARN) -D__COM32__ -mno-red-zone \
+ 		-DLDLINUX=\"$(LDLINUX)\" -fvisibility=hidden \
+-		-Wno-unused-parameter
++		-Wno-unused-parameter $(GCCOPT)
+ 
+ # gnuefi sometimes installs these under a gnuefi/ directory, and sometimes not
+ CRT0 := $(shell find $(LIBDIR) -name crt0-efi-$(EFI_SUBARCH).o 2>/dev/null | tail -n1)

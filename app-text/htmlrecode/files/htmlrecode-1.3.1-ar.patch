@@ -1,0 +1,11 @@
+--- a/argh/Makefile
++++ b/argh/Makefile
+@@ -21,7 +21,7 @@
+ 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -fpic -o $@ -c $<
+ 
+ libargh.a: argh.o
+-	ar -rc $@ $^
++	$(AR) -rc $@ $^
+ 
+ include depfun.mak
+ 

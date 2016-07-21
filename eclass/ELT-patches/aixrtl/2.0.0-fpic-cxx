@@ -1,0 +1,12 @@
+--- configure
++++ configure
+@@ -1,6 +1,9 @@
+       if test "$host_cpu" = ia64; then
+ 	# AIX 5 now supports IA64 processor
+ 	lt_prog_compiler_static_CXX='-Bstatic'
++	lt_prog_compiler_pic_CXX='-fPIC'
++      else
++	lt_prog_compiler_pic_CXX='-fPIC'
+       fi
+       ;;
+ 

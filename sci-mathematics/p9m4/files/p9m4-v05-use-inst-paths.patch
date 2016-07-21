@@ -1,0 +1,42 @@
+diff -Nur p9m4-0.5/files.py p9m4-0.5.new/files.py
+--- p9m4-0.5/files.py	2008-01-14 23:31:00.000000000 +0000
++++ p9m4-0.5.new/files.py	2008-01-14 23:39:51.000000000 +0000
+@@ -51,6 +51,9 @@
+         return sys.path[0]
+         # return os.path.dirname(os.path.abspath(sys.argv[0]))
+ 
++def data_dir():
++    return '/usr/share/p9m4'
++
+ def bin():
+     if Win32():
+         return 'bin-win32'
+@@ -63,13 +66,13 @@
+         return 'bin'
+ 
+ def bin_dir():
+-    return os.path.join(program_dir(), bin())
++    return '/usr/bin'
+ 
+ def image_dir():
+-    return os.path.join(program_dir(), 'Images')
++    return os.path.join(data_dir(), 'Images')
+ 
+ def sample_dir():
+-    return os.path.join(program_dir(), 'Samples')
++    return os.path.join(data_dir(), 'Samples')
+ 
+ def binary_ok(fullpath):
+     if not fullpath:
+diff -Nur p9m4-0.5/prover9-mace4.py p9m4-0.5.new/prover9-mace4.py
+--- p9m4-0.5/prover9-mace4.py	2007-12-07 16:27:13.000000000 +0000
++++ p9m4-0.5.new/prover9-mace4.py	2008-02-10 22:45:45.000000000 +0000
+@@ -27,6 +27,8 @@
+ 
+ # local imports
+ 
++sys.path.append('/usr/share/p9m4/lib')
++
+ import partition_input
+ import utilities
+ from files import *

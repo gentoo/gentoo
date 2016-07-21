@@ -1,0 +1,20 @@
+Description:
+When using 'read -u 3' or the like, and the pipe-buf already contains
+more than one line, the first line is returned, and bytes up to the next
+multiple of 128 are skipped.
+
+http://lists.gnu.org/archive/html/bug-bash/2005-03/msg00168.html
+http://lists.gnu.org/archive/html/bug-bash/2005-03/msg00173.html
+http://bugs.gentoo.org/show_bug.cgi?id=87093
+
+--- builtins/read.def
++++ builtins/read.def
+@@ -276,7 +276,7 @@
+   input_is_tty = isatty (fd);
+   if (input_is_tty == 0)
+ #ifndef __CYGWIN__
+-    input_is_pipe = (lseek (0, 0L, SEEK_CUR) < 0) && (errno == ESPIPE);
++    input_is_pipe = (lseek (fd, 0L, SEEK_CUR) < 0) && (errno == ESPIPE);
+ #else
+     input_is_pipe = 1;
+ #endif

@@ -1,0 +1,14 @@
+Hushes a warning
+--- a/vmmon-only/linux/driver.c	2015-02-07 03:54:16.000000000 +0300
++++ c/vmmon-only/linux/driver.c	2015-02-24 03:58:06.042605293 +0300
+@@ -1328,7 +1328,9 @@
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++#include <linux/compiler-gcc.h>
++
++__always_inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;

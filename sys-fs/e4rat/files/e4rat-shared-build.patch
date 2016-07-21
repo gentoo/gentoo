@@ -1,0 +1,96 @@
+From d9114b018b79afdcedb59621dfc13a0423c65fae Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 10 Dec 2011 23:00:35 +0100
+Subject: [PATCH] Link with and install shared libraries.
+
+---
+ e4rat-0.2.1/CMakeLists.txt              |    1 -
+ e4rat-0.2.1/src/CMakeLists.txt          |   13 +------------
+ e4rat-0.2.1/src/cmake/Findaudit.cmake   |    2 +-
+ e4rat-0.2.1/src/cmake/Findauparse.cmake |    2 +-
+ 4 files changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/e4rat-0.2.1/CMakeLists.txt b/e4rat-0.2.1/CMakeLists.txt
+index 72b0681..e5e64cf 100644
+--- a/e4rat-0.2.1/CMakeLists.txt
++++ b/e4rat-0.2.1/CMakeLists.txt
+@@ -14,7 +14,6 @@ IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+     set(CMAKE_INSTALL_PREFIX "/" CACHE PATH "e4rat install prefix" FORCE)
+ ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+ 
+-set(Boost_USE_STATIC_LIBS   ON)
+ set(Boost_USE_MULTITHREADED OFF)
+ add_definitions(-DBOOST_FILESYSTEM_VERSION=2)
+ find_package(Boost 1.41 COMPONENTS system filesystem regex REQUIRED)
+diff --git a/e4rat-0.2.1/src/CMakeLists.txt b/e4rat-0.2.1/src/CMakeLists.txt
+index d379ec6..4f8c12e 100644
+--- a/e4rat-0.2.1/src/CMakeLists.txt
++++ b/e4rat-0.2.1/src/CMakeLists.txt
+@@ -113,21 +113,12 @@ IF(CMAKE_BUILD_TYPE STREQUAL "debug")
+     )
+ ENDIF(CMAKE_BUILD_TYPE STREQUAL "debug")
+ 
+-# On 64 bit architecture you cannot link a static to a shared library
+-# Therefore -static-libstdc++ will fail.
+-if(HAVE_64_BIT)
+-    add_library(${PROJECT_NAME}-core STATIC
+-        ${${PROJECT_NAME}-core_SRC}
+-    )
+-else(HAVE_64_BIT)
+     add_library(${PROJECT_NAME}-core SHARED
+         ${${PROJECT_NAME}-core_SRC}
+     )
+     set_target_properties(${PROJECT_NAME}-core  PROPERTIES
+         SOVERSION   0
+-        LINK_FLAGS  "-static-libgcc -static-libstdc++"
+     )
+-endif(HAVE_64_BIT)
+ 
+ target_link_libraries(${PROJECT_NAME}-core
+         ${${PROJECT_NAME}_LIBRARIES}
+@@ -140,15 +131,13 @@ foreach( EXE     ${PROJECT_NAME}-collect
+     TARGET_LINK_LIBRARIES(${EXE}
+         ${PROJECT_NAME}-core
+     )
+-    set_target_properties(${EXE}  PROPERTIES
+-        LINK_FLAGS  "-static-libgcc -static-libstdc++"
+-    )
+ endforeach( EXE )
+ 
+ ###
+ # install project targets
+ ###
+ set(${PROJECT_NAME}_TARGETS 
++    ${PROJECT_NAME}-core
+     ${PROJECT_NAME}-collect
+     ${PROJECT_NAME}-preload
+     ${PROJECT_NAME}-realloc
+diff --git a/e4rat-0.2.1/src/cmake/Findaudit.cmake b/e4rat-0.2.1/src/cmake/Findaudit.cmake
+index 32ac636..d8de45a 100644
+--- a/e4rat-0.2.1/src/cmake/Findaudit.cmake
++++ b/e4rat-0.2.1/src/cmake/Findaudit.cmake
+@@ -1,7 +1,7 @@
+ FIND_PATH(AUDIT_INCLUDE_DIR libaudit.h /usr/include
+     /usr/local/include)
+ 
+-FIND_LIBRARY(AUDIT_LIBRARY NAMES libaudit.a PATH /usr/lib /usr/local/lib) 
++FIND_LIBRARY(AUDIT_LIBRARY NAMES audit PATH /usr/lib /usr/local/lib) 
+ 
+ IF (AUDIT_INCLUDE_DIR AND AUDIT_LIBRARY)
+    SET(AUDIT_FOUND TRUE)
+diff --git a/e4rat-0.2.1/src/cmake/Findauparse.cmake b/e4rat-0.2.1/src/cmake/Findauparse.cmake
+index 7db0511..3771cd5 100644
+--- a/e4rat-0.2.1/src/cmake/Findauparse.cmake
++++ b/e4rat-0.2.1/src/cmake/Findauparse.cmake
+@@ -1,7 +1,7 @@
+ FIND_PATH(AUPARSE_INCLUDE_DIR auparse.h /usr/include
+     /usr/local/include)
+ 
+-FIND_LIBRARY(AUPARSE_LIBRARY NAMES libauparse.a PATH /usr/lib /usr/local/lib) 
++FIND_LIBRARY(AUPARSE_LIBRARY NAMES auparse PATH /usr/lib /usr/local/lib) 
+ 
+ IF (AUPARSE_INCLUDE_DIR AND AUPARSE_LIBRARY)
+    SET(AUPARSE_FOUND TRUE)
+-- 
+1.7.8.110.g4cb5d1.dirty
+

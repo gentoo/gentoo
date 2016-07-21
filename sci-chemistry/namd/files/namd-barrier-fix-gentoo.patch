@@ -1,0 +1,61 @@
+# patch to fix compile error on gcc-3.x
+
+diff -Naur NAMD_2.6b1_Source/src/BackEnd.C NAMD_2.6b1_Source_patched/src/BackEnd.C
+--- NAMD_2.6b1_Source/src/BackEnd.C	2003-12-31 06:37:15.000000000 +0000
++++ NAMD_2.6b1_Source_patched/src/BackEnd.C	2005-08-22 18:59:59.000000000 +0000
+@@ -162,7 +162,7 @@
+ }
+ 
+ // start QD and scheduler
+-void BackEnd::barrier(void) {
++void BackEnd::namd_barrier(void) {
+   awaken();
+   suspend();
+ }
+diff -Naur NAMD_2.6b1_Source/src/BackEnd.h NAMD_2.6b1_Source_patched/src/BackEnd.h
+--- NAMD_2.6b1_Source/src/BackEnd.h	2000-01-29 00:20:05.000000000 +0000
++++ NAMD_2.6b1_Source_patched/src/BackEnd.h	2005-08-22 18:59:47.000000000 +0000
+@@ -17,7 +17,7 @@
+ 
+   static void suspend(void);  // Let message code run...
+   static void awaken(void);  // ...then return
+-  static void barrier(void);  // Let message code run, then return
++  static void namd_barrier(void);  // Let message code run, then return
+   static void ExitSchedOn(int pe); // Tell a remote processor to stop
+                                    // his scheduler
+ 
+diff -Naur NAMD_2.6b1_Source/src/ScriptTcl.C NAMD_2.6b1_Source_patched/src/ScriptTcl.C
+--- NAMD_2.6b1_Source/src/ScriptTcl.C	2005-06-23 18:47:00.000000000 +0000
++++ NAMD_2.6b1_Source_patched/src/ScriptTcl.C	2005-08-22 19:00:21.000000000 +0000
+@@ -56,7 +56,7 @@
+ }
+ 
+ void ScriptTcl::barrier() {
+-  BackEnd::barrier();
++  BackEnd::namd_barrier();
+ }
+ 
+ void ScriptTcl::initcheck() {
+diff -Naur NAMD_2.6b1_Source/src/main.C NAMD_2.6b1_Source_patched/src/main.C
+--- NAMD_2.6b1_Source/src/main.C	2005-05-27 22:56:49.000000000 +0000
++++ NAMD_2.6b1_Source_patched/src/main.C	2005-08-22 19:17:34.000000000 +0000
+@@ -67,7 +67,9 @@
+ 
+ #ifndef NOHOSTNAME
+   iout << iINFO <<
+-     "Sending usage information to NAMD developers via UDP.  Sent data is:\n"
++     "Markus says: I don't want to send usage information \n" 
++     << endi;
++  iout << iINFO << "to NAMD developers :) Data not sent is:\n"
+      << endi;
+ 
+   char sendbuf[TBSOFT_TRACK_MAXLEN];
+@@ -88,7 +90,7 @@
+   sprintf(sendbuf, "1 %s  %s  %s  %s  %s  %s  %s", 
+     program, versionnum, platform, numcpus, miscinfo, host, user);
+   iout << iINFO << sendbuf << "\n" << endi;
+-  send_dgram(TBSOFT_TRACK_HOST, TBSOFT_TRACK_PORT, sendbuf, strlen(sendbuf));
++  //send_dgram(TBSOFT_TRACK_HOST, TBSOFT_TRACK_PORT, sendbuf, strlen(sendbuf));
+ 
+ #endif
+   return 0;

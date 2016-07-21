@@ -1,0 +1,25 @@
+From 2a460afdbd0cb39d8dcecaf6cea5ce9ce7d3216b Mon Sep 17 00:00:00 2001
+From: Niels Ole Salscheider <niels_ole@salscheider-online.de>
+Date: Fri, 5 Jun 2015 12:47:13 +0200
+Subject: CMake: Fixed deprecated _BSD_SOURCE.
+
+Since glibc-2.20 _DEFAULT_SOURCE definition is also required.
+
+Reviewed-by: Alexandr Akulich
+
+diff --git a/cmake/modules/TelepathyDefaults.cmake b/cmake/modules/TelepathyDefaults.cmake
+index d34b24d..dc98697 100644
+--- a/cmake/modules/TelepathyDefaults.cmake
++++ b/cmake/modules/TelepathyDefaults.cmake
+@@ -108,7 +108,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+     endif(${NOT_RELEASE} EQUAL 1)
+ 
+     if(CMAKE_SYSTEM_NAME MATCHES Linux)
+-        add_definitions(-D_BSD_SOURCE)
++        add_definitions(-D_BSD_SOURCE -D_DEFAULT_SOURCE)
+     endif(CMAKE_SYSTEM_NAME MATCHES Linux)
+ 
+     # Compiler coverage
+-- 
+cgit v0.10.2
+

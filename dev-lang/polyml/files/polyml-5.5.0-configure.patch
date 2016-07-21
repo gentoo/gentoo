@@ -1,0 +1,138 @@
+Index: polyml/configure
+===================================================================
+--- polyml/configure	(revision 1599)
++++ polyml/configure	(revision 1600)
+@@ -20870,10 +20870,8 @@
+ # Check whether --with-portable was given.
+ if test "${with_portable+set}" = set; then :
+   withval=$with_portable;
+-    ac_cv_with_portable=yes
+ else
+-
+-    ac_cv_with_portable=no
++  with_portable=check
+ fi
+ 
+ 
+@@ -20894,36 +20892,46 @@
+ 
+ $as_echo "#define HOSTARCHITECTURE_SPARC 1" >>confdefs.h
+ 
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       power* | ppc*)
+ 
+ $as_echo "#define HOSTARCHITECTURE_PPC 1" >>confdefs.h
+ 
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       arm*)
+ 
+ $as_echo "#define HOSTARCHITECTURE_ARM 1" >>confdefs.h
+ 
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       ia64*)
+ 
+ $as_echo "#define HOSTARCHITECTURE_IA64 1" >>confdefs.h
+ 
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+         ;;
+       *) as_fn_error $? "Poly/ML is not supported for this architecture" "$LINENO" 5 ;;
+ esac
+ 
+-# If we have explicitly set --with-portable or we are on a machine without
+-# a code-generator set to use the interpreter.
+-if test "$ac_cv_with_portable" = "yes"; then
++# If we explicitly asked to use the interpreter set the architecture to interpreted.
++if test "x$with_portable" = "xyes" ; then
++    polyarch=interpret
++fi
+ 
++# If we asked not to use the interpreter check we have native code support.
++if test "x$with_portable" = "xno" ; then
++    if test "x$polyarch" = "xinterpret" ; then
++        as_fn_error $? "--without-portable was given but native code is not supported on this platform" "$LINENO" 5
++    fi
++fi
++
++# Set the define if this is the interpreter.  This is no longer actually used.
++if test "x$polyarch" = "xinterpret" ; then
++
+ $as_echo "#define INTERPRETED 1" >>confdefs.h
+ 
+-       polyarch=interpret
+ fi
+ 
+ # Put this test at the end where it's less likely to be missed.
+Index: polyml/configure.ac
+===================================================================
+--- polyml/configure.ac	(revision 1599)
++++ polyml/configure.ac	(revision 1600)
+@@ -368,10 +368,10 @@
+ # Test the --with-portable option to build the interpreter even if
+ # we have a code-generator.
+ AC_ARG_WITH([portable],
+-    [AS_HELP_STRING([--with-portable],
+-              [Build the portable interpreter version of Poly/ML instead of native @<:@default=no@:>@])], [
+-    ac_cv_with_portable=yes], [
+-    ac_cv_with_portable=no])
++            [AS_HELP_STRING([--with-portable],
++              [Build the portable interpreter version of Poly/ML instead of native @<:@default=no@:>@])],
++            [],
++            [with_portable=check])
+ 
+ case "${host_cpu}" in
+       i[[3456]]86*)
+@@ -384,28 +384,39 @@
+             ;;
+       sparc*)
+             AC_DEFINE([HOSTARCHITECTURE_SPARC], [1], [Define if the host is a Sparc (32 bit)])
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       power* | ppc*)
+             AC_DEFINE([HOSTARCHITECTURE_PPC], [1], [Define if the host is a Power PC (32 bit)])
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       arm*)
+             AC_DEFINE([HOSTARCHITECTURE_ARM], [1], [Define if the host is an ARM (32 bit)])
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+             ;;
+       ia64*)
+             AC_DEFINE([HOSTARCHITECTURE_IA64], [1], [Define if the host is Itanium])
+-            ac_cv_with_portable=yes
++            polyarch=interpret
+         ;;
+       *) AC_MSG_ERROR([Poly/ML is not supported for this architecture]) ;;
+ esac
+ 
+-# If we have explicitly set --with-portable or we are on a machine without
+-# a code-generator set to use the interpreter.
+-if test "$ac_cv_with_portable" = "yes"; then
++# If we explicitly asked to use the interpreter set the architecture to interpreted.
++if test "x$with_portable" = "xyes" ; then
++    polyarch=interpret
++fi
++
++# If we asked not to use the interpreter check we have native code support.
++if test "x$with_portable" = "xno" ; then
++    if test "x$polyarch" = "xinterpret" ; then
++        AC_MSG_ERROR(
++            [--without-portable was given but native code is not supported on this platform])
++    fi
++fi
++
++# Set the define if this is the interpreter.  This is no longer actually used.
++if test "x$polyarch" = "xinterpret" ; then
+        AC_DEFINE([INTERPRETED], [1], [Define if using the interpreter] )
+-       polyarch=interpret
+ fi
+ 
+ # Put this test at the end where it's less likely to be missed.

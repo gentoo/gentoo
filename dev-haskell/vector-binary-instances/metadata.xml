@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Instances for Binary for the types defined in the vector package,
+		making it easy to serialize vectors to and from disk. We use the
+		generic interface to vectors, so all vector types are supported.
+		Specific instances are provided for unboxed, boxed and storable
+		vectors.
+		
+		To serialize a vector:
+		
+		&gt; *Data.Vector.Binary&gt; let v = Data.Vector.fromList [1..10]
+		&gt; *Data.Vector.Binary&gt; v
+		&gt; fromList [1,2,3,4,5,6,7,8,9,10] :: Data.Vector.Vector
+		&gt; *Data.Vector.Binary&gt; encode v
+		&gt; Chunk "\NUL\NUL\NUL\NUL\NUL...\NUL\NUL\NUL\t\NUL\NUL\NUL\NUL\n" Empty
+		
+		Which you can in turn compress before writing to disk:
+		
+		&gt; compress . encode $ v
+		&gt; Chunk "\US\139\b\NUL\NUL\N...\229\240,\254:\NUL\NUL\NUL" Empty
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bos/vector-binary-instances</remote-id>
+	</upstream>
+</pkgmetadata>

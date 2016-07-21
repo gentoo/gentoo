@@ -1,0 +1,145 @@
+From 435d8a03ed28bb5ad63aff12cbc6ab91531b6bc8 Mon Sep 17 00:00:00 2001
+From: Quincey Koziol <quincey@koziol.cc>
+Date: Wed, 7 May 2014 08:45:15 -0500
+Subject: [PATCH] Account for the HDF5 library not having the MPI-POSIX VFD
+ configured in.
+
+---
+ RELEASE_NOTES.md         |  2 ++
+ libsrc4/nc4file.c        | 40 ++++++++++++++++++++++++++++++++++++++++
+ nc_test4/tst_nc4perf.c   |  5 +++++
+ nc_test4/tst_parallel3.c |  5 +++++
+ 4 files changed, 52 insertions(+)
+
+diff --git a/RELEASE_NOTES.md b/RELEASE_NOTES.md
+index 27f228c..1a69d17 100644
+--- a/RELEASE_NOTES.md
++++ b/RELEASE_NOTES.md
+@@ -9,6 +9,8 @@ This file contains a high-level description of this package's evolution. Release
+ 
+ ### 4.3.3-rc1 Released TBD
+ 
++* When the NC_MPIPOSIX flag is given for parallel I/O access and the HDF5 library does not have the MPI-POSIX VFD configured in, the NC_MPIPOSIX flag is transparently aliased to the NC_MPIIO flag within the netCDF-4 library.
++
+ ## 4.3.2 Released 2014-04-23
+ 
+ * As part of an ongoing project, the Doxygen-generated netcdf documentation has been reorganized.  The goal is to make the documentation easier to parse, and to eliminate redundant material.  This project is ongoing.
+diff --git a/libsrc4/nc4file.c b/libsrc4/nc4file.c
+index ec3bb0c..5c957be 100644
+--- a/libsrc4/nc4file.c
++++ b/libsrc4/nc4file.c
+@@ -308,12 +308,21 @@ nc4_create_file(const char *path, int cmode, MPI_Comm comm, MPI_Info info,
+ 	 if (H5Pset_fapl_mpio(fapl_id, comm, info) < 0)
+ 	    BAIL(NC_EPARINIT);
+       }
++#ifdef USE_PARALLEL_POSIX
+       else /* MPI/POSIX */
+       {
+ 	 LOG((4, "creating parallel file with MPI/posix"));
+ 	 if (H5Pset_fapl_mpiposix(fapl_id, comm, 0) < 0)
+ 	    BAIL(NC_EPARINIT);
+       }
++#else /* USE_PARALLEL_POSIX */
++      /* Should not happen! Code in NC4_create/NC4_open should alias the
++       *        NC_MPIPOSIX flag to NC_MPIIO, if the MPI-POSIX VFD is not
++       *        available in HDF5. -QAK
++       */
++      else /* MPI/POSIX */
++         BAIL(NC_EPARINIT);
++#endif /* USE_PARALLEL_POSIX */
+ 
+       /* Keep copies of the MPI Comm & Info objects */
+       if (MPI_SUCCESS != MPI_Comm_dup(comm, &nc4_info->comm))
+@@ -465,6 +474,17 @@ NC4_create(const char* path, int cmode, size_t initialsz, int basepe,
+       )
+       return NC_EINVAL;
+ 
++#ifndef USE_PARALLEL_POSIX
++/* If the HDF5 library has been compiled without the MPI-POSIX VFD, alias
++ *      the NC_MPIPOSIX flag to NC_MPIIO. -QAK
++ */
++   if(cmode & NC_MPIPOSIX)
++   {
++      cmode &= ~NC_MPIPOSIX;
++      cmode |= NC_MPIIO;
++   }
++#endif /* USE_PARALLEL_POSIX */
++
+    cmode |= NC_NETCDF4;
+ 
+    /* Apply default create format. */
+@@ -2168,12 +2188,21 @@ nc4_open_file(const char *path, int mode, MPI_Comm comm,
+ 	 if (H5Pset_fapl_mpio(fapl_id, comm, info) < 0)
+ 	    BAIL(NC_EPARINIT);
+       }
++#ifdef USE_PARALLEL_POSIX
+       else /* MPI/POSIX */
+       {
+ 	 LOG((4, "opening parallel file with MPI/posix"));
+ 	 if (H5Pset_fapl_mpiposix(fapl_id, comm, 0) < 0)
+ 	    BAIL(NC_EPARINIT);
+       }
++#else /* USE_PARALLEL_POSIX */
++      /* Should not happen! Code in NC4_create/NC4_open should alias the
++       *        NC_MPIPOSIX flag to NC_MPIIO, if the MPI-POSIX VFD is not
++       *        available in HDF5. -QAK
++       */
++      else /* MPI/POSIX */
++         BAIL(NC_EPARINIT);
++#endif /* USE_PARALLEL_POSIX */
+ 
+       /* Keep copies of the MPI Comm & Info objects */
+       if (MPI_SUCCESS != MPI_Comm_dup(comm, &nc4_info->comm))
+@@ -2640,6 +2669,17 @@ NC4_open(const char *path, int mode, int basepe, size_t *chunksizehintp,
+        (mode & NC_MPIIO && mode & NC_MPIPOSIX))
+       return NC_EINVAL;
+ 
++#ifndef USE_PARALLEL_POSIX
++/* If the HDF5 library has been compiled without the MPI-POSIX VFD, alias
++ *      the NC_MPIPOSIX flag to NC_MPIIO. -QAK
++ */
++   if(mode & NC_MPIPOSIX)
++   {
++      mode &= ~NC_MPIPOSIX;
++      mode |= NC_MPIIO;
++   }
++#endif /* USE_PARALLEL_POSIX */
++
+ 
+    /* Depending on the type of file, open it. */
+ 
+diff --git a/nc_test4/tst_nc4perf.c b/nc_test4/tst_nc4perf.c
+index 47af70e..3528b82 100644
+--- a/nc_test4/tst_nc4perf.c
++++ b/nc_test4/tst_nc4perf.c
+@@ -244,6 +244,11 @@ int test_pio_4d(size_t cache_size, int facc_type, int access_flag, MPI_Comm comm
+    return 0;
+ }
+ 
++/* Note: When the MPI-POSIX VFD is not compiled in to HDF5, the NC_MPIPOSIX
++ *      flag will be aliased to the NC_MPIIO flag within the library, and
++ *      therefore this test will exercise the aliasing, with the MPI-IO VFD,
++ *      under that configuration. -QAK
++ */
+ #define NUM_MODES 2
+ #define NUM_FACC 2
+ #define NUM_CHUNK_COMBOS_2D 3
+diff --git a/nc_test4/tst_parallel3.c b/nc_test4/tst_parallel3.c
+index 27f9c98..9fa534f 100644
+--- a/nc_test4/tst_parallel3.c
++++ b/nc_test4/tst_parallel3.c
+@@ -129,6 +129,11 @@ int main(int argc, char **argv)
+    if (mpi_rank == 0)
+       SUMMARIZE_ERR;
+ 
++/* Note: When the MPI-POSIX VFD is not compiled in to HDF5, the NC_MPIPOSIX
++ *      flag will be aliased to the NC_MPIIO flag within the library, and
++ *      therefore this test will exercise the aliasing, with the MPI-IO VFD,
++ *      under that configuration. -QAK
++ */
+    if (mpi_rank == 0)
+       printf("*** Testing parallel IO for raw-data with MPIPOSIX-IO (driver)...");
+    facc_type = NC_NETCDF4|NC_MPIPOSIX;
+-- 
+2.0.3
+

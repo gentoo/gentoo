@@ -1,0 +1,179 @@
+--- loki_patch/configure.in
++++ loki_patch/configure.in
+@@ -1,4 +1,4 @@
+-AC_INIT(README)
++AC_INIT(loki_patch, 1.0.2)
+ 
+ dnl Define the release numbers here
+ 
+@@ -10,13 +10,14 @@
+ AC_CANONICAL_HOST
+ AC_CANONICAL_TARGET
+ 
++AM_INIT_AUTOMAKE(foreign no-dependencies)
+ AC_PROG_CC
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+ 
+ AC_CHECK_HEADERS(unistd.h)
+ 
+-CFLAGS="-fsigned-char -funroll-loops -Wall -g -O2"
++CFLAGS="$CFLAGS -fsigned-char -Wall"
+ 
+ case "$target" in
+     *i?86*)
+@@ -32,17 +33,12 @@
+ OS=`uname -s`
+ 
+ dnl Look for the XML libraries
++PKG_CHECK_MODULES(XML, libxml-2.0)
++AC_SUBST(XML_LIBS)
+ 
+-AC_PATH_PROG(HAVEXML, xml-config, $PATH)
+-if test ! -z "$HAVEXML"; then
+-    XML_CFLAGS=`$HAVEXML --cflags`
+-    XML_PREFIX=`$HAVEXML --prefix`
+-
+-    CFLAGS="$CFLAGS $XML_CFLAGS"
+-    LIBS="$LIBS $XML_PREFIX/lib/libxml.a"
+-else
+-    AC_MSG_ERROR([*** xml-config not found. You need a working libxml installation.])
+-fi
++PKG_CHECK_MODULES(XDELTA, xdelta)
++AC_SUBST(XDELTA_CFLAGS)
++AC_SUBST(XDELTA_LIBS)
+ 
+ SETUPDB_VERSION=1.0.0
+ SETUPDB="`pwd`/../loki_setupdb-$SETUPDB_VERSION"
+@@ -57,14 +53,6 @@
+         SETUPDB=$with_setupdb
+ fi
+ 
+-dnl Check for correct setupdb installation
+-
+-if test -f $SETUPDB/$ARCH/libsetupdb.a; then
+-    AC_MSG_RESULT([SetupDB library found in $SETUPDB/$ARCH])
+-else
+-    AC_MSG_ERROR([*** Please compile setupdb first!])
+-fi
+-
+ CFLAGS="$CFLAGS -I$SETUPDB"
+ 
+ AC_SUBST(SETUPDB)
+--- loki_patch/loki_xdelta.c
++++ loki_patch/loki_xdelta.c
+@@ -49,7 +49,7 @@
+ 
+ #define LOKI_PATCH
+ 
+-#include "xdelta_inc/xdelta.h"
++#include <xdelta.h>
+ 
+ static HandleFuncTable xd_handle_table;
+ 
+--- loki_patch/Makefile.am
++++ loki_patch/Makefile.am
+@@ -0,0 +1,12 @@
++COMMONSRC = load_patch.c size_patch.c print_patch.c \
++	loki_xdelta.c mkdirhier.c log_output.c
++
++bin_PROGRAMS = make_patch loki_patch
++
++make_patch_SOURCES = $(COMMONSRC) make_patch.c tree_patch.c save_patch.c
++
++loki_patch_SOURCES = $(COMMONSRC) loki_patch.c apply_patch.c registry.c
++
++AM_CPPFLAGS = $(XDELTA_CFLAGS)
++
++LDADD = $(top_builddir)/../loki_setupdb/libsetupdb.a $(XDELTA_LIBS) $(XML_LIBS) -lz
+--- loki_setupdb/configure.in
++++ loki_setupdb/configure.in
+@@ -1,4 +1,4 @@
+-AC_INIT
++AC_INIT(setupdb, 1.6.5)
+ AC_CONFIG_HEADER(config.h)
+ 
+ dnl Define the release numbers here
+@@ -12,8 +12,7 @@
+ PACKAGE_VERSION="$SETUPDB_VERSION_MAJOR.$SETUPDB_VERSION_MINOR.$SETUPDB_VERSION_RELEASE"
+ PACKAGE_STRING="$PACKAGE_NAME v$PACKAGE_VERSION"
+ 
+-test "x$CFLAGS" = x && CFLAGS="-O2"
+-CFLAGS="$CFLAGS -fsigned-char -Wall -g -I."
++CFLAGS="$CFLAGS -fsigned-char -Wall"
+ REENTRANT="-D_REENTRANT"
+ 
+ if test -d /usr/codehost/lib; then
+@@ -33,9 +32,11 @@
+ AC_CANONICAL_HOST
+ AC_CANONICAL_TARGET
+ 
++AM_INIT_AUTOMAKE(foreign no-dependencies)
+ AC_PROG_CC
+ AC_PROG_MAKE_SET
+ AC_PATH_PROGS(AR, [ar gar])
++AC_PROG_RANLIB
+ 
+ AC_CHECK_HEADERS(unistd.h)
+ AC_CHECK_HEADERS(strings.h)
+@@ -128,7 +129,7 @@
+ 
+ AC_CHECK_FUNCS(getopt, , GETOPT_C="getopt.c")
+ AC_CHECK_FUNCS(getopt_long, , GETOPT_C="getopt.c")
+-AC_CHECK_LIB(gnugetopt, getopt_long, LIBS="$LIBS $BSTATIC -lgnugetopt"; GETOPT_C="")
++AC_CHECK_LIB(gnugetopt, getopt_long, LIBS="$LIBS -lgnugetopt"; GETOPT_C="")
+ 
+ AC_SUBST(ARCH)
+ AC_SUBST(STATIC)
+@@ -139,37 +140,8 @@
+ 
+ dnl Look for the XML libraries
+ 
+-XMLVER=""
+-AC_ARG_WITH(libxml2,
+-[  --with-libxml2          use libxml2 [default=libxml1]],
+-	,	with_libxml2=no)
+-if test x$with_libxml2 != xno; then
+-	XMLVER="2"
+-fi
+-
+-AC_PATH_PROG(HAVEXML, xml${XMLVER}-config, $PATH)
+-if test ! -z "$HAVEXML"; then
+-    XML_CFLAGS=`$HAVEXML --cflags`
+-    XML_PREFIX=`$HAVEXML --prefix`
+-
+-	if "$HAVEXML" --help|grep libtool-libs > /dev/null; then
+-		XML_LIBTOOL=`$HAVEXML --libtool-libs`
+-		if test -f "$XML_LIBTOOL"; then
+-			. "$XML_LIBTOOL"
+-			XML_LIBS="$dependency_libs"
+-		else
+-			XML_LIBS="-lm"
+-		fi
+-	elif "$HAVEXML" --libs | grep thread > /dev/null; then
+-		XML_LIBS="$PTHREAD -lm"
+-	fi
+-	EXTRA_LIBS="$EXTRA_LIBS $XML_LIBS"
+-
+-    CFLAGS="$CFLAGS $XML_CFLAGS"
+-    LIBS="$LIBS $XML_PREFIX/lib$LIBSUFFIX/libxml${XMLVER}.a $BSTATIC $ZLIB $BDYNAMIC $EXTRA_LIBS"
+-else
+-    AC_MSG_ERROR([*** xml-config not found. You need a working libxml installation.])
+-fi
++PKG_CHECK_MODULES(XML, libxml-2.0)
++AC_SUBST(XML_CFLAGS)
+ 
+ AC_ARG_WITH(vendor,
+ [  --with-vendor           with specified vendor prefix  [default=loki]], 
+--- loki_setupdb/Makefile.am
++++ loki_setupdb/Makefile.am
+@@ -0,0 +1,9 @@
++noinst_LIBRARIES = libsetupdb.a
++
++libsetupdb_a_SOURCES = \
++	arch.c brandelf.c convert.c md5.c register.c setupdb.c
++
++libsetupdb_a_CPPFLAGS = \
++	-DSETUPDB_VERSION_MAJOR=$(SETUPDB_VERSION_MAJOR) \
++	-DSETUPDB_VERSION_MINOR=$(SETUPDB_VERSION_MINOR) \
++	$(XML_CFLAGS)

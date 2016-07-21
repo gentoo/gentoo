@@ -1,0 +1,47 @@
+--- a/configure.in
++++ b/configure.in
+@@ -22,7 +22,6 @@
+ esac
+ AC_SUBST(SYSTEM_DEFS)
+ 
+-AC_DEFINE_DIR([sysconfdir], [sysconfdir], [sysconfdir])
+ AC_DEFINE_UNQUOTED(SYSTEM_YTALKRC, ["${sysconfdir}/ytalkrc"], ["Location of default ytalkrc file"])
+ 
+ dnl Checks for programs.
+@@ -35,30 +34,12 @@
+ AC_CHECK_SIZEOF(long)
+ AC_CHECK_SIZEOF(u_int)
+ 
+-ytalk_cv_curses=/usr
+-AC_ARG_WITH(curses, AC_HELP_STRING([--with-curses=DIR], [Where curses is installed]),
+-	[if test $withval != yes; then
+-		ytalk_cv_curses=$withval
+-	fi
+-	if test x$ytalk_cv_curses != x/usr; then
+-		LDFLAGS="-L${ytalk_cv_curses}/lib $LDFLAGS"
+-		CPPFLAGS="$CPPFLAGS -I${ytalk_cv_curses}/include"
+-	fi])
+-
+-AC_CHECK_LIB(ncurses, initscr,
+-	[LIBS="$LIBS -lncurses"
+-	if test x$ytalk_cv_curses = x/usr -a -d /usr/include/ncurses; then
+-		CPPFLAGS="$CPPFLAGS -I/usr/include/ncurses"
+-	fi
+-	AC_CHECK_HEADERS(ncurses.h)],
+-	[CF_CURSES_LIBS])
+-
+-dnl Check for keypad()
+-AC_CHECK_LIB(ncurses, keypad,
+-	[AC_DEFINE(HAVE_KEYPAD, 1, [Define to 1 if you have keypad()])],
+-[AC_CHECK_LIB(curses, keypad,
+-	[AC_DEFINE(HAVE_KEYPAD, 1, [Define to 1 if you have keypad()])],
+-[])])
++PKG_CHECK_MODULES(ncurses, ncurses,
++  LIBS="$LIBS $ncurses_LIBS"
++  CFLAGS="$CFLAGS $ncurses_CFLAGS"
++  AC_DEFINE(HAVE_KEYPAD, 1, [Define to 1 if you have keypad()]),
++  AC_MSG_ERROR([Could not find ncurses])
++)
+ 
+ dnl Look for termios, and if that fails, try sgtty.
+ AC_CHECK_FUNC(tcgetattr, [\

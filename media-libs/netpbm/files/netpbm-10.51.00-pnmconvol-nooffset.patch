@@ -1,0 +1,83 @@
+taken from upstream
+
+http://bugs.gentoo.org/338230
+
+Index: editor/pnmconvol.c
+===================================================================
+--- editor/pnmconvol.c	(revision 1297)
++++ editor/pnmconvol.c	(revision 1298)
+@@ -455,13 +455,13 @@ static void
+ convKernelCreatePnm(struct pam *         const cpamP,
+                     tuple * const *      const ctuples, 
+                     unsigned int         const depth,
+-                    bool                 const offsetPgm,
++                    bool                 const offsetPnm,
+                     struct convKernel ** const convKernelPP) {
+ /*----------------------------------------------------------------------------
+-   Compute the convolution matrix in normalized form from the PGM
+-   form.  Each element of the output matrix is the actual weight we give an
+-   input pixel -- i.e. the thing by which we multiple a value from the
+-   input image.
++   Compute the convolution matrix in normalized form from the PGM form
++   'ctuples'/'cpamP'.  Each element of the output matrix is the actual weight
++   we give an input pixel -- i.e. the thing by which we multiple a value from
++   the input image.
+ 
+    'depth' is the required number of planes in the kernel.  If 'ctuples' has
+    fewer planes than that, we duplicate as necessary.  E.g. if 'ctuples' is
+@@ -470,13 +470,13 @@ convKernelCreatePnm(struct pam *
+    'ctuples' has more planes than specified, we ignore the higher numbered
+    ones.
+ 
+-   'offsetPgm' means the PGM convolution matrix is defined in offset form so
++   'offsetPnm' means the PNM convolution matrix is defined in offset form so
+    that it can represent negative values.  E.g. with maxval 100, 50 means
+    0, 100 means 50, and 0 means -50.  If 'offsetPgm' is false, 0 means 0
+    and there are no negative weights.
+ -----------------------------------------------------------------------------*/
+-    double const scale = (offsetPgm ? 2.0 : 1.0) / cpamP->maxval;
+-    double const offset = offsetPgm ? - 1.0 : 0.0;
++    double const scale = (offsetPnm ? 2.0 : 1.0) / cpamP->maxval;
++    double const offset = offsetPnm ? - 1.0 : 0.0;
+     unsigned int const planes = MIN(3, depth);
+ 
+     struct convKernel * convKernelP;
+@@ -579,9 +579,19 @@ normalizeKernel(struct convKernel * cons
+ static void
+ getKernelPnm(const char *         const fileName,
+              unsigned int         const depth,
+-             bool                 const nooffset,
++             bool                 const offset,
+              struct convKernel ** const convKernelPP) {
++/*----------------------------------------------------------------------------
++   Get the convolution kernel from the PNM file named 'fileName'.
++   'offset' means the PNM convolution matrix is defined in offset form so
++   that it can represent negative values.  E.g. with maxval 100, 50 means
++   0, 100 means 50, and 0 means -50.  If 'offsetPgm' is false, 0 means 0
++   and there are no negative weights.
++
++   Make the kernel suitable for convolving an image of depth 'depth'.
+ 
++   Return the kernel as *convKernelPP.
++-----------------------------------------------------------------------------*/
+     struct pam cpam;
+     FILE * cifP;
+     tuple ** ctuples;
+@@ -594,7 +604,7 @@ getKernelPnm(const char *         const
+     
+     validateKernelDimensions(cpam.width, cpam.height);
+ 
+-    convKernelCreatePnm(&cpam, ctuples, depth, nooffset, convKernelPP);
++    convKernelCreatePnm(&cpam, ctuples, depth, offset, convKernelPP);
+ }
+ 
+ 
+@@ -893,7 +903,7 @@ getKernel(struct cmdlineInfo   const cmd
+     struct convKernel * convKernelP;
+ 
+     if (cmdline.pnmMatrixFileName)
+-        getKernelPnm(cmdline.pnmMatrixFileName, depth, cmdline.nooffset,
++        getKernelPnm(cmdline.pnmMatrixFileName, depth, !cmdline.nooffset,
+                      &convKernelP);
+     else if (cmdline.matrixfile)
+         convKernelCreateSimpleFile(cmdline.matrixfile, cmdline.normalize,

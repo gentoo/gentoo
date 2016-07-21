@@ -1,0 +1,11 @@
+diff -uNr policycoreutils-2.4-rc2.orig/mcstrans/src/mcscolor.c policycoreutils-2.4-rc2/mcstrans/src/mcscolor.c
+--- policycoreutils-2.4-rc2.orig/mcstrans/src/mcscolor.c	2014-08-28 21:26:25.125795076 +0200
++++ policycoreutils-2.4-rc2/mcstrans/src/mcscolor.c	2014-08-28 21:27:03.509796589 +0200
+@@ -11,6 +11,7 @@
+ #include <syslog.h>
+ #include <selinux/selinux.h>
+ #include <selinux/context.h>
++#include <selinux/av_permissions.h>
+ #include "mcstrans.h"
+ 
+ /* Define data structures */

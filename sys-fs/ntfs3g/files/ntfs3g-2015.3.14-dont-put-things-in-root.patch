@@ -1,0 +1,30 @@
+install all files into the sbindir since there's no need to split between /sbin and /usr/sbin
+
+--- a/ntfsprogs/Makefile.in
++++ b/ntfsprogs/Makefile.in
+@@ -1348,8 +1348,8 @@ uninstall-man: uninstall-man8
+ # mkfs.ntfs[.8] hard link
+ 
+ @ENABLE_NTFSPROGS_TRUE@install-exec-hook:
+-@ENABLE_NTFSPROGS_TRUE@	$(INSTALL) -d $(DESTDIR)/sbin
+-@ENABLE_NTFSPROGS_TRUE@	$(LN_S) -f $(sbindir)/mkntfs $(DESTDIR)/sbin/mkfs.ntfs
++@ENABLE_NTFSPROGS_TRUE@	$(INSTALL) -d $(DESTDIR)/$(sbindir)
++@ENABLE_NTFSPROGS_TRUE@	$(LN_S) -f mkntfs $(DESTDIR)/$(sbindir)/mkfs.ntfs
+ 
+ @ENABLE_NTFSPROGS_TRUE@install-data-hook:
+ @ENABLE_NTFSPROGS_TRUE@	$(INSTALL) -d $(DESTDIR)$(man8dir)
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -1040,9 +1040,9 @@ uninstall-man: uninstall-man8
+ @ENABLE_NTFS_3G_TRUE@@RUN_LDCONFIG_TRUE@	$(LDCONFIG)
+ 
+ @ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@install-exec-local:	install-rootbinPROGRAMS
+-@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(MKDIR_P) "$(DESTDIR)/sbin"
+-@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(LN_S) -f "$(rootbindir)/ntfs-3g" "$(DESTDIR)/sbin/mount.ntfs-3g"
+-@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(LN_S) -f "$(rootbindir)/lowntfs-3g" "$(DESTDIR)/sbin/mount.lowntfs-3g"
++@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(MKDIR_P) "$(DESTDIR)/$(sbindir)"
++@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(LN_S) -f "../bin/ntfs-3g" "$(DESTDIR)/$(sbindir)/mount.ntfs-3g"
++@ENABLE_MOUNT_HELPER_TRUE@@ENABLE_NTFS_3G_TRUE@	$(LN_S) -f "../bin/lowntfs-3g" "$(DESTDIR)/$(sbindir)/mount.lowntfs-3g"
+ 
+ @ENABLE_NTFS_3G_TRUE@install-data-local:	install-man8
+ @ENABLE_NTFS_3G_TRUE@	$(LN_S) -f ntfs-3g.8 "$(DESTDIR)$(man8dir)/mount.ntfs-3g.8"

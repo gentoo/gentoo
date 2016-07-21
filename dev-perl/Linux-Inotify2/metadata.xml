@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>hd_brummy@gentoo.org</email>
+    <name>Joerg Bornkessel</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Linux-Inotify2</remote-id>
+    <remote-id type="cpan-module">Linux::Inotify2</remote-id>
+    <remote-id type="cpan-module">Linux::Inotify2::Event</remote-id>
+    <remote-id type="cpan-module">Linux::Inotify2::Watch</remote-id>
+  </upstream>
+</pkgmetadata>

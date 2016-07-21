@@ -1,0 +1,23 @@
+From b3bdd301debb2eb859473a25b23d068fa66f6cb1 Mon Sep 17 00:00:00 2001
+From: Zero_Chaos <sidhayn@gmail.com>
+Date: Fri, 20 Feb 2015 15:54:00 -0500
+Subject: [PATCH] Update FindQwt.cmake to support qwt6-qt4
+
+allow finding qwt6-qt4 library.  Some distros have added support for both qt4 and qt5 in qwt6, the common name the library uses appears to be qwt6-qt4.  The pre-existance of the qwt-qt4 entry suggests this naming convention is reasonably standard (or at least this isn't a unique hack)
+---
+ cmake/Modules/FindQwt.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Modules/FindQwt.cmake b/cmake/Modules/FindQwt.cmake
+index 68f55bf..3ce49aa 100644
+--- a/cmake/Modules/FindQwt.cmake
++++ b/cmake/Modules/FindQwt.cmake
+@@ -22,7 +22,7 @@ find_path(QWT_INCLUDE_DIRS
+ )
+ 
+ find_library (QWT_LIBRARIES
+-  NAMES qwt6 qwt qwt-qt4
++  NAMES qwt6 qwt6-qt4 qwt qwt-qt4
+   HINTS
+   ${CMAKE_INSTALL_PREFIX}/lib
+   ${CMAKE_INSTALL_PREFIX}/lib64

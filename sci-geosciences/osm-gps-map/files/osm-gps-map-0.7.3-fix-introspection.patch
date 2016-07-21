@@ -1,0 +1,10 @@
+--- src/Makefile.am	2011-03-19 10:08:23.000000000 +0300
++++ src/Makefile.am	2013-04-02 23:13:01.408952029 +0400
+@@ -86,6 +86,7 @@
+ OsmGpsMap_1_0_gir_CFLAGS = $(OSMGPSMAP_CFLAGS)
+ OsmGpsMap_1_0_gir_LIBS = libosmgpsmap.la
+ OsmGpsMap_1_0_gir_FILES = $(introspection_sources)
++OsmGpsMap_1_0_gir_SCANNERFLAGS = --identifier-prefix=OsmGps
+ INTROSPECTION_GIRS += OsmGpsMap-1.0.gir
+ 
+ girdir = $(datadir)/gir-1.0

@@ -1,0 +1,15 @@
+--- skype.desktop
++++ skype.desktop
+@@ -2,10 +2,10 @@
+ Name=Skype
+ Comment=Skype Internet Telephony
+ Exec=skype %U
+-Icon=skype.png
++Icon=skype
+ Terminal=false
+ Type=Application
+ Encoding=UTF-8
+-Categories=Network;Application;
++Categories=Network;InstantMessaging;Telephony;
+ MimeType=x-scheme-handler/skype;
+ X-KDE-Protocols=skype

@@ -1,0 +1,86 @@
+diff -Nru werken.xpath.orig/src/com/werken/xpath/function/StringFunction.java werken.xpath/src/com/werken/xpath/function/StringFunction.java
+--- werken.xpath.orig/src/com/werken/xpath/function/StringFunction.java	2000-10-24 06:30:00.000000000 +0300
++++ werken.xpath/src/com/werken/xpath/function/StringFunction.java	2003-03-02 01:56:03.000000000 +0200
+@@ -71,7 +71,7 @@
+ 
+   public static String evaluate(Element elem)
+   {
+-    List content = elem.getMixedContent();
++    List content = elem.getContent();
+ 
+     Iterator contentIter = content.iterator();
+     Object each = null;
+diff -Nru werken.xpath.orig/src/com/werken/xpath/impl/NodeTypeStep.java werken.xpath/src/com/werken/xpath/impl/NodeTypeStep.java
+--- werken.xpath.orig/src/com/werken/xpath/impl/NodeTypeStep.java	2000-10-26 04:09:41.000000000 +0300
++++ werken.xpath/src/com/werken/xpath/impl/NodeTypeStep.java	2003-03-02 01:56:03.000000000 +0200
+@@ -84,16 +84,16 @@
+     {
+       if ( isAbsolute() )
+       {
+-        results.addAll(  applyToNodes( ((Element)node).getDocument().getMixedContent() ) );
++        results.addAll(  applyToNodes( ((Element)node).getDocument().getContent() ) );
+       }
+       else
+       {
+-        results.addAll( applyToNodes( ((Element)node).getMixedContent() ) );
++        results.addAll( applyToNodes( ((Element)node).getContent() ) );
+       }
+     }
+     else if ( node instanceof Document )
+     {
+-      results.addAll( applyToNodes( ((Document)node).getMixedContent() ) );
++      results.addAll( applyToNodes( ((Document)node).getContent() ) );
+     }
+ 
+     return results;
+diff -Nru werken.xpath.orig/src/com/werken/xpath/impl/UnAbbrStep.java werken.xpath/src/com/werken/xpath/impl/UnAbbrStep.java
+--- werken.xpath.orig/src/com/werken/xpath/impl/UnAbbrStep.java	2000-10-31 22:20:56.000000000 +0200
++++ werken.xpath/src/com/werken/xpath/impl/UnAbbrStep.java	2003-03-02 01:56:03.000000000 +0200
+@@ -227,7 +227,7 @@
+ 
+     if ( node instanceof Element )
+     {
+-      List children = ((Element)node).getMixedContent();
++      List children = ((Element)node).getContent();
+       
+       results.addAll( applyTo( children,
+                                support,
+@@ -235,7 +235,7 @@
+     }
+     else if ( node instanceof Document )
+     {
+-      List children = ((Document)node).getMixedContent();
++      List children = ((Document)node).getContent();
+       
+       results.addAll( applyTo( children,
+                                support,
+@@ -256,7 +256,7 @@
+ 
+     if ( node instanceof Element )
+     {
+-      List children = ((Element)node).getMixedContent();
++      List children = ((Element)node).getContent();
+       
+       results.addAll( applyTo( children,
+                                support,
+@@ -264,7 +264,7 @@
+     }
+     else if ( node instanceof Document )
+     {
+-      List children = ((Document)node).getMixedContent();
++      List children = ((Document)node).getContent();
+ 
+       results.addAll( applyTo( children,
+                                support,
+diff -Nru werken.xpath.orig/test/src/com/werken/xpath/test/Driver.java werken.xpath/test/src/com/werken/xpath/test/Driver.java
+--- werken.xpath.orig/test/src/com/werken/xpath/test/Driver.java	2000-11-09 19:43:30.000000000 +0200
++++ werken.xpath/test/src/com/werken/xpath/test/Driver.java	2003-03-02 01:56:55.000000000 +0200
+@@ -412,7 +412,7 @@
+                     elemID = "";
+                 }
+ 
+-                resultNode.addAttribute("id", elemID);
++                resultNode.setAttribute("id", elemID);
+                 node.addContent( resultNode );
+                 results.addContent( node );
+             }

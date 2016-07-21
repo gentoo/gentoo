@@ -1,0 +1,201 @@
+diff --git a/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c b/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
+index 8a2d98f..ac0bcf1 100644
+--- a/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
++++ b/modules/gnome-settings-daemon-plugins/gsd-pointing-device-plugin.c
+@@ -124,7 +124,9 @@ add_device_presence_filter (GsdPointingDevicePlugin *plugin)
+ 
+     gint op_code, event, error;
+ 
+-    if (!XQueryExtension(GDK_DISPLAY(),
++    display = gdk_x11_get_default_xdisplay();
++
++    if (!XQueryExtension(display,
+                          "XInputExtension",
+                          &op_code,
+                          &event,
+@@ -132,8 +134,6 @@ add_device_presence_filter (GsdPointingDevicePlugin *plugin)
+         return;
+     }
+ 
+-    display = gdk_x11_get_default_xdisplay();
+-
+     gdk_error_trap_push();
+     DevicePresence(display, xi_presence, class_presence);
+     XSelectExtensionEvent(display,
+diff --git a/modules/gnome-settings-daemon-plugins/gsd-touchpad-manager.c b/modules/gnome-settings-daemon-plugins/gsd-touchpad-manager.c
+index 2038d53..f47e0a4 100644
+--- a/modules/gnome-settings-daemon-plugins/gsd-touchpad-manager.c
++++ b/modules/gnome-settings-daemon-plugins/gsd-touchpad-manager.c
+@@ -348,7 +348,9 @@ add_device_presence_filter (GsdPointingDeviceManager *manager)
+ 
+     gint op_code, event, error;
+ 
+-    if (!XQueryExtension(GDK_DISPLAY(),
++    display = gdk_x11_get_default_xdisplay();
++
++    if (!XQueryExtension(display,
+                          "XInputExtension",
+                          &op_code,
+                          &event,
+@@ -356,8 +358,6 @@ add_device_presence_filter (GsdPointingDeviceManager *manager)
+         return;
+     }
+ 
+-    display = gdk_x11_get_default_xdisplay();
+-
+     gdk_error_trap_push();
+     DevicePresence(display, xi_presence, class_presence);
+     XSelectExtensionEvent(display,
+diff --git a/src/gpds-xinput-pointer-info.c b/src/gpds-xinput-pointer-info.c
+index d38afad..ce9a952 100644
+--- a/src/gpds-xinput-pointer-info.c
++++ b/src/gpds-xinput-pointer-info.c
+@@ -55,7 +55,8 @@ gpds_xinput_utils_collect_pointer_infos (void)
+     XDeviceInfo *device_infos;
+     gint i, n_device_infos;
+ 
+-    device_infos = XListInputDevices(GDK_DISPLAY(), &n_device_infos);
++    device_infos = XListInputDevices(gdk_x11_get_default_xdisplay(),
++                                     &n_device_infos);
+ 
+     for (i = 0; i < n_device_infos; i++) {
+         GpdsXInputPointerInfo *info;
+diff --git a/src/gpds-xinput-utils.c b/src/gpds-xinput-utils.c
+index 0f7ceea..5a3e3a2 100644
+--- a/src/gpds-xinput-utils.c
++++ b/src/gpds-xinput-utils.c
+@@ -41,7 +41,8 @@ gpds_xinput_utils_get_device_info (const gchar *device_name, GError **error)
+     XDeviceInfo *device_infos;
+     gint i, n_device_infos;
+ 
+-    device_infos = XListInputDevices(GDK_DISPLAY(), &n_device_infos);
++    device_infos = XListInputDevices(gdk_x11_get_default_xdisplay(),
++                                     &n_device_infos);
+ 
+     for (i = 0; i < n_device_infos; i++) {
+         if (device_infos[i].use != IsXExtensionPointer)
+@@ -68,7 +69,7 @@ gpds_xinput_utils_get_device_info_from_id  (XID id, GError **error)
+     XDeviceInfo *device_infos;
+     gint i, n_device_infos;
+ 
+-    device_infos = XListInputDevices(GDK_DISPLAY(), &n_device_infos);
++    device_infos = XListInputDevices(gdk_x11_get_default_xdisplay(), &n_device_infos);
+ 
+     for (i = 0; i < n_device_infos; i++) {
+         if (device_infos[i].use != IsXExtensionPointer)
+@@ -125,7 +126,7 @@ gpds_xinput_utils_open_device (const gchar *device_name, GError **error)
+         return NULL;
+ 
+     gdk_error_trap_push();
+-    device = XOpenDevice(GDK_DISPLAY(), device_info->id);
++    device = XOpenDevice(gdk_x11_get_default_xdisplay(), device_info->id);
+     gdk_error_trap_pop();
+     if (!device) {
+         g_set_error(error,
+diff --git a/src/gpds-xinput.c b/src/gpds-xinput.c
+index d8bd1a2..66634b3 100644
+--- a/src/gpds-xinput.c
++++ b/src/gpds-xinput.c
+@@ -100,7 +100,7 @@ dispose (GObject *object)
+     g_free(priv->device_name);
+ 
+     if (priv->device) {
+-        XCloseDevice(GDK_DISPLAY(), priv->device);
++        XCloseDevice(gdk_x11_get_default_xdisplay(), priv->device);
+         priv->device = NULL;
+     }
+ 
+@@ -199,7 +199,8 @@ get_x_error_text (int x_error_code)
+ {
+     gchar buf[64];
+ 
+-    XGetErrorText(GDK_DISPLAY(), x_error_code, buf, sizeof(buf) - 1);
++    XGetErrorText(gdk_x11_get_default_xdisplay(), x_error_code,
++                  buf, sizeof(buf) - 1);
+ 
+     return g_strdup(buf);
+ }
+@@ -273,7 +274,7 @@ gpds_xinput_set_int_properties_by_name_with_format_type
+     }
+ 
+     gdk_error_trap_push();
+-    XChangeDeviceProperty(GDK_DISPLAY(),
++    XChangeDeviceProperty(gdk_x11_get_default_xdisplay(),
+                           device, property_atom,
+                           XA_INTEGER, format_type, PropModeReplace,
+                           (unsigned char*)property_data, n_properties);
+@@ -383,7 +384,8 @@ get_atom (GpdsXInput *xinput, const gchar *property_name, GError **error)
+     if (!device)
+         return -1;
+ 
+-    properties = XListDeviceProperties(GDK_DISPLAY(), device, &n_properties);
++    properties = XListDeviceProperties(gdk_x11_get_default_xdisplay(),
++                                       device, &n_properties);
+     for (i = 0; i < n_properties; i++) {
+         const gchar *name;
+ 
+@@ -427,9 +429,9 @@ gpds_xinput_get_int_properties_by_name (GpdsXInput *xinput,
+         return FALSE;
+ 
+     gdk_error_trap_push();
+-    status =  XGetDeviceProperty(GDK_DISPLAY(), device, atom, 0, 1000, False,
+-                                 XA_INTEGER, &actual_type, &actual_format,
+-                                 n_values, &bytes_after, &data);
++    status =  XGetDeviceProperty(gdk_x11_get_default_xdisplay(), device, atom,
++                                 0, 1000, False, XA_INTEGER, &actual_type,
++                                 &actual_format, n_values, &bytes_after, &data);
+     gdk_flush();
+     x_error_code = gdk_error_trap_pop();
+     if (status != Success || x_error_code != 0) {
+@@ -523,7 +525,7 @@ gpds_xinput_set_float_properties_by_name (GpdsXInput *xinput,
+         *(property_data + i) = (gfloat)properties[i];
+ 
+     gdk_error_trap_push();
+-    XChangeDeviceProperty(GDK_DISPLAY(),
++    XChangeDeviceProperty(gdk_x11_get_default_xdisplay(),
+                           device, property_atom,
+                           float_atom, 32, PropModeReplace,
+                           (unsigned char*)property_data, n_properties);
+@@ -594,7 +596,8 @@ gpds_xinput_get_float_properties_by_name (GpdsXInput *xinput,
+         return FALSE;
+ 
+     gdk_error_trap_push();
+-    status =  XGetDeviceProperty(GDK_DISPLAY(), device, property_atom, 0, 1000, False,
++    status =  XGetDeviceProperty(gdk_x11_get_default_xdisplay(), device,
++                                 property_atom, 0, 1000, False,
+                                  float_atom, &actual_type, &actual_format,
+                                  n_properties, &bytes_after, &data);
+     gdk_flush();
+@@ -676,7 +679,8 @@ gpds_xinput_get_button_map (GpdsXInput *xinput,
+     *map = g_new0(guchar, *n_buttons);
+ 
+     gdk_error_trap_push();
+-    status =  XGetDeviceButtonMapping(GDK_DISPLAY(), device, *map, *n_buttons);
++    status =  XGetDeviceButtonMapping(gdk_x11_get_default_xdisplay(),
++                                      device, *map, *n_buttons);
+     gdk_flush();
+ 
+     x_error_code = gdk_error_trap_pop();
+@@ -705,7 +709,8 @@ gpds_xinput_set_button_map (GpdsXInput *xinput,
+         return FALSE;
+ 
+     gdk_error_trap_push();
+-    status =  XSetDeviceButtonMapping(GDK_DISPLAY(), device, map, n_buttons);
++    status =  XSetDeviceButtonMapping(gdk_x11_get_default_xdisplay(),
++                                      device, map, n_buttons);
+     gdk_flush();
+ 
+     x_error_code = gdk_error_trap_pop();
+diff --git a/test/test-xinput-utils.c b/test/test-xinput-utils.c
+index a06dcbc..f97f9d4 100644
+--- a/test/test-xinput-utils.c
++++ b/test/test-xinput-utils.c
+@@ -29,7 +29,7 @@ void
+ teardown (void)
+ {
+     if (device)
+-        XCloseDevice(GDK_DISPLAY(), device);
++        XCloseDevice(gdk_x11_get_default_xdisplay(), device);
+     g_clear_error(&error);
+     g_clear_error(&expected_error);
+ }

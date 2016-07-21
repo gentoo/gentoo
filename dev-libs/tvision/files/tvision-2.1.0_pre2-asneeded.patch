@@ -1,0 +1,45 @@
+--- tvision/config.pl
++++ tvision/config.pl
+@@ -206,6 +206,7 @@
+   }
+ # Flags to link as a dynamic lib
+ $MakeDefsRHIDE[6]='RHIDE_LDFLAGS=';
++$MakeDefsRHIDE[7]='RHIDE_LIBS=';
+ if ($OS eq 'UNIX')
+   {
+    if ($OSf ne 'Darwin')
+@@ -229,15 +230,15 @@
+      }
+    $libs=$conf{'X11Lib'};
+    $libs=~s/(\S+)/-l$1/g;
+-   $MakeDefsRHIDE[6].=" -L".$conf{'X11LibPath'}." $libs" if @conf{'HAVE_X11'} eq 'yes';
++   $MakeDefsRHIDE[7].=" -L".$conf{'X11LibPath'}." $libs" if @conf{'HAVE_X11'} eq 'yes';
+-   $MakeDefsRHIDE[6].=' -lgpm' if @conf{'HAVE_GPM'} eq 'yes';
++   $MakeDefsRHIDE[7].=' -lgpm' if @conf{'HAVE_GPM'} eq 'yes';
+-   $MakeDefsRHIDE[6].=(($OSf eq 'QNXRtP') ? ' -lncursesS' : ' -lncurses') unless $conf{'ncurses'} eq 'no';
++   $MakeDefsRHIDE[7].=(($OSf eq 'QNXRtP') ? ' -lncursesS' : ' -lncurses') unless $conf{'ncurses'} eq 'no';
+-   $MakeDefsRHIDE[6].=" $stdcxx -lm -lc";
++   $MakeDefsRHIDE[7].=" $stdcxx -lm -lc";
+-   $MakeDefsRHIDE[6].=' -lpthread' if $conf{'HAVE_LINUX_PTHREAD'} eq 'yes';
++   $MakeDefsRHIDE[7].=' -lpthread' if $conf{'HAVE_LINUX_PTHREAD'} eq 'yes';
+-   $MakeDefsRHIDE[6].=' libtvfintl.a' if ($OSf eq 'Darwin') && $UseDummyIntl;
++   $MakeDefsRHIDE[7].=' libtvfintl.a' if ($OSf eq 'Darwin') && $UseDummyIntl;
+   }
+-$MakeDefsRHIDE[7]="LIB_VER=$Version";
++$MakeDefsRHIDE[8]="LIB_VER=$Version";
+-$MakeDefsRHIDE[8]="LIB_VER_MAJOR=$VersionMajor";
++$MakeDefsRHIDE[9]="LIB_VER_MAJOR=$VersionMajor";
+ 
+ ModifyMakefiles('intl/dummy/Makefile');
+ CreateRHIDEenvs('examples/rhide.env','makes/rhide.env','compat/rhide.env');
+--- tvision/makes/common.imk
++++ tvision/makes/common.imk
+@@ -54,7 +54,7 @@
+ C_EXTRA_FLAGS=$(SHARED_CODE_OPTION)
+ RHIDE_COMPILE_ARCHIVE=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(LDFLAGS) \
+ 	$(RHIDE_LDFLAGS) $(C_EXTRA_FLAGS) -o $(OUTFILE)  \
+-	$(OBJFILES)
++	$(OBJFILES) $(addprefix -l,$(RHIDE_OS_LIBS))
+ else
+ RHIDE_COMPILE_ARCHIVE=$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE)\
+ 	$(ALL_PREREQ)

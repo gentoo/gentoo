@@ -1,0 +1,24 @@
+From 1e1f53e9d91684918c34ec50392f86287e001a1e Mon Sep 17 00:00:00 2001
+From: Alexandr Akulich <akulichalexander@gmail.com>
+Date: Fri, 15 Jan 2016 18:52:59 +0500
+Subject: [PATCH] BaseChannel: Reduced includes (doesn't depend on client stuff
+ anymore).
+
+---
+ TelepathyQt/base-channel.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/TelepathyQt/base-channel.cpp b/TelepathyQt/base-channel.cpp
+index eb41463..720d58e 100644
+--- a/TelepathyQt/base-channel.cpp
++++ b/TelepathyQt/base-channel.cpp
+@@ -26,7 +26,8 @@
+ 
+ #include "TelepathyQt/_gen/base-channel.moc.hpp"
+ #include "TelepathyQt/_gen/base-channel-internal.moc.hpp"
+-#include "TelepathyQt/future-internal.h"
++#include "TelepathyQt/_gen/future-constants.h"
++#include "TelepathyQt/_gen/future-types.h"
+ 
+ #include "TelepathyQt/debug-internal.h"
+ 

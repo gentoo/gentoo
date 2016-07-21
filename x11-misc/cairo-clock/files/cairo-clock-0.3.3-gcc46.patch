@@ -1,0 +1,12 @@
+diff -uNr cairo-clock-0.3.3.ORIG/src/Makefile.am cairo-clock-0.3.3/src/Makefile.am
+--- cairo-clock-0.3.3.ORIG/src/Makefile.am	2011-09-24 12:42:48.862380207 +0100
++++ cairo-clock-0.3.3/src/Makefile.am	2011-09-24 12:43:29.135381441 +0100
+@@ -1,7 +1,7 @@
+ bin_PROGRAMS = cairo_clock
+ transform = s/_/-/g
+ 
+-cairo_clock_LDFLAGS = -Wl, --export-dynamic
++cairo_clock_LDFLAGS = -rdynamic
+ 
+ cairo_clock_LDADD =	\
+ 	$(GLIB_LIBS)	\

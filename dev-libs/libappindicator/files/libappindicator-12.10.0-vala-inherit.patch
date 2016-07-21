@@ -1,0 +1,14 @@
+# http://bazaar.launchpad.net/~indicator-applet-developers/libappindicator/trunk.12.10/revision/244
+=== modified file 'bindings/vala/appindicator-0.1-custom.vala'
+--- a/bindings/vala/appindicator-0.1-custom.vala	2011-09-23 15:46:27 +0000
++++ b/bindings/vala/appindicator-0.1-custom.vala	2012-10-10 23:33:35 +0000
+@@ -23,7 +23,7 @@
+ */
+ 
+ namespace AppIndicator {
+-  [CCode (type_check_function = "IS_APP_INDICATOR")]
++  [CCode (type_check_function = "IS_APP_INDICATOR", type_id = "app_indicator_get_type ()")]
+   public class Indicator : GLib.Object {
+   }
+ }
+

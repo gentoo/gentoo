@@ -1,0 +1,23 @@
+--- configure.ac
++++ configure.ac
+@@ -333,6 +333,20 @@
+ AC_SUBST(THREAD_LIBS)
+ 
+ dnl ---------------------------------------------
++dnl Check for libdl/libdld for dlopen()
++dnl ---------------------------------------------
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [
++	AC_MSG_ERROR([unable to find the dlopen() function])
++])
++
++dnl ---------------------------------------------
++dnl Check for libm for log10()
++dnl ---------------------------------------------
++AC_SEARCH_LIBS([log10], [m], [], [
++	AC_MSG_ERROR([unable to find the log10() function])
++])
++
++dnl ---------------------------------------------
+ dnl Check for xine-lib
+ dnl ---------------------------------------------
+ AM_PATH_XINE([$XINE_LIB_MIN_VER],, AC_MSG_ERROR([*** Please install xine-lib (devel) first ***]))

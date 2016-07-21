@@ -1,0 +1,9 @@
+--- a/libgnomeprint/modules/cups/gnome-print-cups-transport.c
++++ b/libgnomeprint/modules/cups/gnome-print-cups-transport.c
+@@ -34,6 +34,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <stdio.h>
+ #include <unistd.h>
+ #include <locale.h>

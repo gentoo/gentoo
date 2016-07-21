@@ -1,0 +1,13 @@
+diff --git a/kimera.pro b/kimera.pro
+index 0d4f0be..a2b63da 100644
+--- a/kimera.pro
++++ b/kimera.pro
+@@ -90,7 +90,7 @@ SOURCES         = \
+ isEmpty( no_anthy ) {
+   HEADERS      += src/anthyengine.h
+   SOURCES      += src/anthyengine.cpp
+-#  LIBS         += -ldl
++  LIBS         += $$QMAKE_LIBS_DYNLOAD
+   isEmpty( default_kanjiengine ) {
+     default_kanjiengine = Anthy
+   }

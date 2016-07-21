@@ -1,0 +1,256 @@
+commit 3cb750b249717b43cbfcde78b44b0e38a2a61dc2
+Author: James Lee <jlee@thestaticvoid.com>
+Date:   Sat Sep 19 22:00:36 2015 -0400
+
+    zfs-import: Perform verbatim import using cache file
+    
+    This change modifies the import service to use the default cache file
+    to perform a verbatim import of pools at boot.  This fixes code that
+    searches all devices and imported all visible pools.
+    
+    Using the cache file is in keeping with the way ZFS has always worked,
+    how Solaris, Illumos, FreeBSD, and systemd performs imports, and is how
+    it is written in the man page (zpool(1M,8)):
+    
+        All pools  in  this  cache  are  automatically imported when the
+        system boots.
+    
+    Importantly, the cache contains important information for importing
+    multipath devices, and helps control which pools get imported in more
+    dynamic environments like SANs, which may have thousands of visible
+    and constantly changing pools, which the ZFS_POOL_EXCEPTIONS variable
+    is not equipped to handle.  Verbatim imports prevent rogue pools from
+    being automatically imported and mounted where they shouldn't be.
+    
+    The change also stops the service from exporting pools at shutdown.
+    Exporting pools is only meant to be performed explicitly by the
+    administrator of the system.
+    
+    The old behavior of searching and importing all visible pools is
+    preserved and can be switched on by heeding the warning and toggling
+    the ZPOOL_IMPORT_ALL_VISIBLE variable in /etc/default/zfs.
+    
+    Closes #3777
+    Closes #3526
+
+diff --git a/etc/init.d/zfs-import.in b/etc/init.d/zfs-import.in
+index 5e21929..2258638 100755
+--- a/etc/init.d/zfs-import.in
++++ b/etc/init.d/zfs-import.in
+@@ -1,11 +1,10 @@
+ #!@SHELL@
+ #
+-# zfs-import    This script will import/export zfs pools.
++# zfs-import    This script will import ZFS pools
+ #
+ # chkconfig:    2345 01 99
+-# description:  This script will import/export zfs pools during system
+-#               boot/shutdown.
+-#               It is also responsible for all userspace zfs services.
++# description:  This script will perform a verbatim import of ZFS pools
++#               during system boot.
+ # probe: true
+ #
+ ### BEGIN INIT INFO
+@@ -17,7 +16,7 @@
+ # X-Start-Before:    checkfs
+ # X-Stop-After:      zfs-mount
+ # Short-Description: Import ZFS pools
+-# Description: Run the `zpool import` or `zpool export` commands.
++# Description: Run the `zpool import` command.
+ ### END INIT INFO
+ #
+ # NOTE: Not having '$local_fs' on Required-Start but only on Required-Stop
+@@ -43,6 +42,16 @@ do_depend()
+ 	keyword -lxc -openvz -prefix -vserver
+ }
+ 
++# Use the zpool cache file to import pools
++do_verbatim_import()
++{
++	if [ -f "$ZPOOL_CACHE" ]
++	then
++		zfs_action "Importing ZFS pool(s)" \
++			"$ZPOOL" import -c "$ZPOOL_CACHE" -N -a
++	fi
++}
++
+ # Support function to get a list of all pools, separated with ';'
+ find_pools()
+ {
+@@ -60,8 +69,8 @@ find_pools()
+ 	echo "${pools%%;}" # Return without the last ';'.
+ }
+ 
+-# Import all pools
+-do_import()
++# Find and import all visible pools, even exported ones
++do_import_all_visible()
+ {
+ 	local already_imported available_pools pool npools
+ 	local exception dir ZPOOL_IMPORT_PATH RET=0 r=1
+@@ -109,7 +118,7 @@ do_import()
+ 		fi
+ 	fi
+ 
+-        # Filter out any exceptions...
++	# Filter out any exceptions...
+ 	if [ -n "$ZFS_POOL_EXCEPTIONS" ]
+ 	then
+ 		local found=""
+@@ -249,41 +258,15 @@ do_import()
+ 	return "$RET"
+ }
+ 
+-# Export all pools
+-do_export()
++do_import()
+ {
+-	local already_imported pool root_pool RET r
+-	RET=0
+-
+-	root_pool=$(get_root_pool)
+-
+-	[ -n "$init" ] && zfs_log_begin_msg "Exporting ZFS pool(s)"
+-
+-	# Find list of already imported pools.
+-	already_imported=$(find_pools "$ZPOOL" list -H -oname)
+-
+-	OLD_IFS="$IFS" ; IFS=";"
+-	for pool in $already_imported; do
+-		[ "$pool" = "$root_pool" ] && continue
+-
+-		if [ -z "$init" ]
+-		then
+-			# Interactive - one 'Importing ...' line per pool
+-			zfs_log_begin_msg "Exporting ZFS pool $pool"
+-		else
+-			# Not interactive - a dot for each pool.
+-			zfs_log_progress_msg "."
+-		fi
+-
+-		"$ZPOOL" export "$pool"
+-		r="$?" ; RET=$((RET + r))
+-		[ -z "$init" ] && zfs_log_end_msg "$r"
+-	done
+-	IFS="$OLD_IFS"
+-
+-	[ -n "$init" ] && zfs_log_end_msg "$RET"
+-
+-	return "$RET"
++	if check_boolean "$ZPOOL_IMPORT_ALL_VISIBLE"
++	then
++		do_import_all_visible
++	else
++		# This is the default option
++		do_verbatim_import
++	fi
+ }
+ 
+ # Output the status and list of pools
+@@ -323,14 +306,6 @@ do_start()
+ 	fi
+ }
+ 
+-do_stop()
+-{
+-	# Check to see if the module is even loaded.
+-	check_module_loaded "zfs" || exit 0
+-
+-	do_export
+-}
+-
+ # ----------------------------------------------------
+ 
+ if [ ! -e /etc/gentoo-release ]
+@@ -340,7 +315,7 @@ then
+ 			do_start
+ 			;;
+ 		stop)
+-			do_stop
++			# no-op
+ 			;;
+ 		status)
+ 			do_status
+@@ -350,7 +325,7 @@ then
+ 			;;
+ 		*)
+ 			[ -n "$1" ] && echo "Error: Unknown command $1."
+-			echo "Usage: $0 {start|stop|status}"
++			echo "Usage: $0 {start|status}"
+ 			exit 3
+ 			;;
+ 	esac
+@@ -360,6 +335,5 @@ else
+ 	# Create wrapper functions since Gentoo don't use the case part.
+ 	depend() { do_depend; }
+ 	start() { do_start; }
+-	stop() { do_stop; }
+ 	status() { do_status; }
+ fi
+diff --git a/etc/init.d/zfs.in b/etc/init.d/zfs.in
+index eabb7e4..d81ef22 100644
+--- a/etc/init.d/zfs.in
++++ b/etc/init.d/zfs.in
+@@ -16,6 +16,24 @@ ZFS_SHARE='yes'
+ # Run `zfs unshare -a` during system stop?
+ ZFS_UNSHARE='yes'
+ 
++# By default, a verbatim import of all pools is performed at boot based on the
++# contents of the default zpool cache file.  The contents of the cache are
++# managed automatically by the 'zpool import' and 'zpool export' commands.
++#
++# By setting this to 'yes', the system will instead search all devices for
++# pools and attempt to import them all at boot, even those that have been
++# exported.  Under this mode, the search path can be controlled by the
++# ZPOOL_IMPORT_PATH variable and a list of pools that should not be imported
++# can be listed in the ZFS_POOL_EXCEPTIONS variable.
++#
++# Note that importing all visible pools may include pools that you don't
++# expect, such as those on removable devices and SANs, and those pools may
++# proceed to mount themselves in places you do not want them to.  The results
++# can be unpredictable and possibly dangerous.  Only enable this option if you
++# understand this risk and have complete physical control over your system and
++# SAN to prevent the insertion of malicious pools.
++ZPOOL_IMPORT_ALL_VISIBLE='no'
++
+ # Specify specific path(s) to look for device nodes and/or links for the
+ # pool import(s). See zpool(8) for more information about this variable.
+ # It supersedes the old USE_DISK_BY_ID which indicated that it would only
+@@ -23,6 +41,18 @@ ZFS_UNSHARE='yes'
+ # The old variable will still work in the code, but is deprecated.
+ #ZPOOL_IMPORT_PATH="/dev/disk/by-vdev:/dev/disk/by-id"
+ 
++# List of pools that should NOT be imported at boot
++# when ZPOOL_IMPORT_ALL_VISIBLE is 'yes'.
++# This is a space separated list.
++#ZFS_POOL_EXCEPTIONS="test2"
++
++# List of pools that SHOULD be imported at boot by the initramfs
++# instead of trying to import all available pools.  If this is set
++# then ZFS_POOL_EXCEPTIONS is ignored.
++# Only applicable for Debian GNU/Linux {dkms,initramfs}.
++# This is a semi-colon separated list.
++#ZFS_POOL_IMPORT="pool1;pool2"
++
+ # Should the datasets be mounted verbosely?
+ # A mount counter will be used when mounting if set to 'yes'.
+ VERBOSE_MOUNT='no'
+@@ -97,17 +127,6 @@ ZFS_INITRD_POST_MODPROBE_SLEEP='0'
+ # Example: If root FS is 'rpool/ROOT/rootfs', this would make sense.
+ #ZFS_INITRD_ADDITIONAL_DATASETS="rpool/ROOT/usr rpool/ROOT/var"
+ 
+-# List of pools that should NOT be imported at boot?
+-# This is a space separated list.
+-#ZFS_POOL_EXCEPTIONS="test2"
+-
+-# List of pools to import?
+-# If this variable is set, there will be NO auto-import of ANY other
+-# pool. In essence, there will be no auto detection of availible pools.
+-# This is a semi-colon separated list.
+-# Makes the variable ZFS_POOL_EXCEPTIONS above redundant (won't be checked).
+-#ZFS_POOL_IMPORT="pool1;pool2"
+-
+ # Optional arguments for the ZFS Event Daemon (ZED).
+ # See zed(8) for more information on available options.
+ #ZED_ARGS="-M"

@@ -1,0 +1,31 @@
+From 90904fffd50fa95cd9c0f4f9210a2e800b08a50d Mon Sep 17 00:00:00 2001
+From: "David M. Carr" <david@carrclan.us>
+Date: Thu, 22 Nov 2012 18:44:09 -0500
+Subject: [PATCH] git_handler: add bookmark compatibility with new bmstore
+ (issue #60)
+
+Prior to this fix, tests against the latest hg codebase would fail with:
+creating bookmarks failed, do you have bookmarks enabled?
+---
+ hggit/git_handler.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/hggit/git_handler.py b/hggit/git_handler.py
+index 2563e1b..a14c770 100644
+--- a/hggit/git_handler.py
++++ b/hggit/git_handler.py
+@@ -1044,7 +1044,10 @@ def update_hg_bookmarks(self, refs):
+                     bookmarks.write(self.repo, bms)
+                 else:
+                     self.repo._bookmarks = bms
+-                    bookmarks.write(self.repo)
++                    if getattr(bms, 'write', None): # hg >= 2.5
++                        bms.write()
++                    else: # hg < 2.5
++                        bookmarks.write(self.repo)
+ 
+         except AttributeError:
+             self.ui.warn(_('creating bookmarks failed, do you have'
+-- 
+1.8.1.5
+

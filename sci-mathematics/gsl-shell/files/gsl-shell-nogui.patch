@@ -1,0 +1,25 @@
+diff -r -U1 gsl-shell.orig/Makefile gsl-shell/Makefile
+--- gsl-shell.orig/Makefile	2012-09-21 19:54:05.000000000 +0700
++++ gsl-shell/Makefile	2012-09-21 19:53:37.000000000 +0700
+@@ -29,3 +29,2 @@
+ GSL_SHELL = gsl-shell$(EXE_EXT)
+-GSL_SHELL_GUI = gsl-shell-gui$(EXE_EXT)
+ LUA_CFLAGS = -I$(LUADIR)/src
+@@ -73,4 +72,3 @@
+ INCLUDES += $(PTHREADS_CFLAGS) -Iagg-plot
+-GUI_SUBDIR = fox-gui
+-SUBDIRS += agg-plot $(GUI_SUBDIR)
++SUBDIRS += agg-plot
+ LUAGSL_LIBS += agg-plot/libaggplot.a
+@@ -105,6 +103,5 @@
+ 
+-install: $(GSL_SHELL) $(GUI_SUBDIR)
++install: $(GSL_SHELL)
+ 	mkdir -p $(INSTALL_BIN_DIR)
+ 	cp $(GSL_SHELL) $(INSTALL_BIN_DIR)
+-	cp fox-gui/$(GSL_SHELL_GUI) $(INSTALL_BIN_DIR)
+ 	mkdir -p $(INSTALL_LIB_DIR)
+@@ -122,3 +119,2 @@
+ 	$(MAKE) -C $(LUADIR) clean
+-	$(MAKE) -C fox-gui clean
+ 	$(HOST_RM) *.o $(TARGETS)

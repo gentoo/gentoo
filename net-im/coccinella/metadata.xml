@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <longdescription>
+Coccinella is a Jabber client with a whiteboard. The whiteboard is a shared
+desktop which supports text, drawings, images, and multimedia in a number of
+formats, such as MP3 and video. It runs in two main modes, a peer-to-peer
+configuration and a mode compatible with the Jabber Instant Messaging system. A
+flexible plugin architecture may be used to support additional formats. It
+should run on any machine that runs Tcl/Tk.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">coccinella</remote-id>
+  </upstream>
+</pkgmetadata>

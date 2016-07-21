@@ -1,0 +1,87 @@
+Fixes for parallel compile.
+
+- Redirection straight to an output target that is later used for dependancies
+  is not safe. The output file must be come into existence atomically.
+- libtool-2.x writes to .o AND .lo, regardless of the -o parameter. Because of
+  this, if you get a run order of compile then libcompile and makelib
+  simultaneously, there is a chance that the .o file from the original compile
+  can vanish and cause the makelib to fail. To deal with this, we split the
+  libraries target into shared and non-shared, and deliberately call the build
+  process as 3 phases: libs-shared, libs-static, all
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- bglibs-1.104/Makefile.orig	2008-04-09 08:24:31.000000000 -0700
++++ bglibs-1.104/Makefile	2008-11-05 19:05:16.304710791 -0800
+@@ -254,7 +254,8 @@
+ 	./compile crc-gentab.c
+ 
+ crc/crc16_arc_table.c: crc-gentab
+-	./crc-gentab crc16_arc 16 0x8005 reflected >$@
++	./crc-gentab crc16_arc 16 0x8005 reflected >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc16_arc_table.lo: libcompile crc/crc16_arc_table.c
+ 	./libcompile crc/crc16_arc_table.c
+@@ -263,7 +264,8 @@
+ 	./compile crc/crc16_arc_table.c
+ 
+ crc/crc16_ccitt_table.c: crc-gentab
+-	./crc-gentab crc16_ccitt 16 0x1021 normal >$@
++	./crc-gentab crc16_ccitt 16 0x1021 normal >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc16_ccitt_table.lo: libcompile crc/crc16_ccitt_table.c
+ 	./libcompile crc/crc16_ccitt_table.c
+@@ -272,7 +274,8 @@
+ 	./compile crc/crc16_ccitt_table.c
+ 
+ crc/crc16_xmodem_table.c: crc-gentab
+-	./crc-gentab crc16_xmodem 16 0x8408 reflected >$@
++	./crc-gentab crc16_xmodem 16 0x8408 reflected >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc16_xmodem_table.lo: libcompile crc/crc16_xmodem_table.c
+ 	./libcompile crc/crc16_xmodem_table.c
+@@ -281,7 +284,8 @@
+ 	./compile crc/crc16_xmodem_table.c
+ 
+ crc/crc32_table.c: crc-gentab
+-	./crc-gentab crc32 32 0x04C11DB7 reflected >$@
++	./crc-gentab crc32 32 0x04C11DB7 reflected >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc32_table.lo: libcompile crc/crc32_table.c
+ 	./libcompile crc/crc32_table.c
+@@ -290,7 +294,8 @@
+ 	./compile crc/crc32_table.c
+ 
+ crc/crc32c_table.c: crc-gentab
+-	./crc-gentab crc32c 32 0x1EDC6F41 reflected >$@
++	./crc-gentab crc32c 32 0x1EDC6F41 reflected >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc32c_table.lo: libcompile crc/crc32c_table.c
+ 	./libcompile crc/crc32c_table.c
+@@ -299,7 +304,8 @@
+ 	./compile crc/crc32c_table.c
+ 
+ crc/crc64_table.c: crc-gentab
+-	./crc-gentab crc64 64 0x42F0E1EBA9EA3693 normal >$@
++	./crc-gentab crc64 64 0x42F0E1EBA9EA3693 normal >$@.tmp
++	mv $@.tmp $@
+ 
+ crc/crc64_table.lo: libcompile crc/crc64_table.c
+ 	./libcompile crc/crc64_table.c
+@@ -1025,7 +1025,10 @@
+ libpwcmp.a: makelib pwcmp/client.o pwcmp/hex_encode.o
+ 	./makelib libpwcmp.a pwcmp/client.o pwcmp/hex_encode.o
+ 
+-libraries: libbg.la libbg-sysdeps.la libbg-crc.a libpwcmp.a libbg-path.a libbg-instcheck.a libbg-base64.a libbg-adt.a libbg-installer.a libvmailmgr.a libbg-sysdeps.a libbg-str.a libbg-fmt.a libpwcmp-module.a libbg-misc.a libbg-instshow.a libbg-dict.a libbg-crypto.a libbg-cli.a libbg-cdb.a libbg-msg.a libbg-iobuf.a libbg-net.a libbg-unix.a
++LIBS = libbg.la libbg-sysdeps.la libbg-crc.a libpwcmp.a libbg-path.a libbg-instcheck.a libbg-base64.a libbg-adt.a libbg-installer.a libvmailmgr.a libbg-sysdeps.a libbg-str.a libbg-fmt.a libpwcmp-module.a libbg-misc.a libbg-instshow.a libbg-dict.a libbg-crypto.a libbg-cli.a libbg-cdb.a libbg-msg.a libbg-iobuf.a libbg-net.a libbg-unix.a
++libs-shared: $(filter %.la,$(LIBS))
++libs-static: $(filter %.a,$(LIBS))
++libraries: libs-shared libs-static
+ 
+ libvmailmgr.a: makelib vmailmgr/req_arg.o vmailmgr/req_init.o vmailmgr/req_write.o vmailmgr/resp_read.o vmailmgr/vpwentry_export.o vmailmgr/vpwentry_free.o vmailmgr/vpwentry_import.o
+ 	./makelib libvmailmgr.a vmailmgr/req_arg.o vmailmgr/req_init.o vmailmgr/req_write.o vmailmgr/resp_read.o vmailmgr/vpwentry_export.o vmailmgr/vpwentry_free.o vmailmgr/vpwentry_import.o

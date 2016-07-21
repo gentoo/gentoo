@@ -1,0 +1,26 @@
+Part of upstream fix:
+http://code.google.com/p/sphinxsearch/source/detail?r=2423
+
+--- api/libsphinxclient/sphinxclient.c.~1~	2010-07-15 13:05:40.000000000 +0200
++++ api/libsphinxclient/sphinxclient.c	2010-11-09 19:55:28.964939046 +0100
+@@ -1268,7 +1268,11 @@
+ static sphinx_bool net_write ( int fd, const char * bytes, int len, sphinx_client * client )
+ {
+ 	int res;
++#if defined(_WIN32) || defined(SO_NOSIGPIPE)
+ 	res = send ( fd, bytes, len, 0 );
++#else
++	res = send ( fd, bytes, len, MSG_NOSIGNAL );
++#endif
+ 
+ 	if ( res<0 )
+ 	{
+@@ -1354,7 +1358,7 @@
+ 	}
+ 
+ 	optval = 1;
+-#ifndef _WIN32
++#if defined(SO_NOSIGPIPE)
+ 	if ( setsockopt ( sock, SOL_SOCKET, SO_NOSIGPIPE, (void *)&optval, (socklen_t)sizeof(optval) ) < 0 )
+ 	{
+ 		set_error ( client, "setsockopt() failed: %s", sock_error() );

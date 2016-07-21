@@ -1,0 +1,73 @@
+diff -u -r work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml
+--- work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml	2015-03-07 11:16:24.869736145 +0300
++++ work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml	2015-03-07 11:17:12.990734446 +0300
+@@ -27,6 +27,7 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+diff -u -r work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml
+--- work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml	2015-03-07 11:16:24.869736145 +0300
++++ work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml	2015-03-07 11:18:08.101732500 +0300
+@@ -29,6 +29,7 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+diff -u -r work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProjectWithUnitTest.xpt.xml work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProjectWithUnitTest.xpt.xml
+--- work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProjectWithUnitTest.xpt.xml	2015-03-07 11:16:24.869736145 +0300
++++ work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcProjectWithUnitTest.xpt.xml	2015-03-07 11:18:31.693731667 +0300
+@@ -29,6 +29,7 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+@@ -93,6 +93,8 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
++				<Reference type="Package" refto="NUnit.Framework" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+diff -u -r work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProject.xpt.xml work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProject.xpt.xml
+--- work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProject.xpt.xml	2015-03-07 11:16:24.869736145 +0300
++++ work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProject.xpt.xml	2015-03-07 11:18:48.517731073 +0300
+@@ -29,6 +29,7 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+diff -u -r work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProjectWithUnitTest.xpt.xml work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProjectWithUnitTest.xpt.xml
+--- work.unpacked/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProjectWithUnitTest.xpt.xml	2015-03-07 11:16:24.869736145 +0300
++++ work/monodevelop-5.7/src/addins/AspNet/Templates/Projects/MvcRazorProjectWithUnitTest.xpt.xml	2015-03-07 11:19:12.373730231 +0300
+@@ -29,6 +29,7 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+@@ -71,6 +71,8 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
++				<Reference type="Package" refto="NUnit.Framework" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+ 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

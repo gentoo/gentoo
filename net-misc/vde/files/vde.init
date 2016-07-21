@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	after net.${VDE_TAP}
+}
+
+
+start() {
+	ebegin "Starting vde"
+	[ "${VDE_MODPROBE_TUN}" = "yes" ] && modprobe tun
+	start-stop-daemon --start --quiet \
+		--exec /usr/bin/vde_switch -- ${VDE_OPTS}
+	eend $? "Failed to start vde"
+	chmod -R ${VDE_SOCK_CHMOD} /var/run/vde.ctl
+	chown -R ${VDE_SOCK_CHOWN} /var/run/vde.ctl
+}
+
+stop() {
+	ebegin "Stopping vde"
+	start-stop-daemon --stop --quiet --exec /usr/bin/vde_switch
+	[ "${VDE_MODPROBE_TUN}" = "yes" ] && modprobe -r tun
+	eend $? "Failed to stop vde"
+}

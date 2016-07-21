@@ -1,0 +1,37 @@
+From 0377189b884fab7db02a95088e05712c7cf336f7 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 8 May 2013 09:20:04 -0700
+Subject: [PATCH] Only check directory xattr on ENOENT
+
+When SA xattrs are enabled only fallback to checking the directory
+xattrs when the name is not found as a SA xattr.  Otherwise, the SA
+error which should be returned to the caller is overwritten by the
+directory xattr errors.  Positive return values indicating success
+will also be immediately returned.
+
+In the case of #1437 the ERANGE error was being correctly returned
+by zpl_xattr_get_sa() only to be overridden with ENOENT which was
+returned by the subsequent unnessisary call to zpl_xattr_get_dir().
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1437
+---
+ module/zfs/zpl_xattr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/module/zfs/zpl_xattr.c b/module/zfs/zpl_xattr.c
+index a7e38e6..eb2c00d 100644
+--- a/module/zfs/zpl_xattr.c
++++ b/module/zfs/zpl_xattr.c
+@@ -288,7 +288,7 @@
+ 
+ 	if (zsb->z_use_sa && zp->z_is_sa) {
+ 		error = zpl_xattr_get_sa(ip, name, value, size);
+-		if (error >= 0)
++		if (error != -ENOENT)
+ 			goto out;
+ 	}
+ 
+-- 
+1.8.1.6
+

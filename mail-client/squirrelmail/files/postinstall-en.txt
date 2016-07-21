@@ -1,0 +1,18 @@
+ * You must edit the following configuration files to setup your server.
+ * Note that not all of them may be present depending on USE flags.
+ * 
+ * config/config.php
+ * plugins/retrieveuserdata/config.php
+ * plugins/virus_scan/config.php
+ * plugins/gpg/gpg_local_prefs.txt
+ * plugins/ldapuserdata/config.php
+ * plugins/show_ssl_link/config.php
+ * plugins/secure_login/config.php
+ * 
+ * You should also create the file 'config/admins'
+ * containing the users who should have access to administrative options.
+ * Put each login on its own line, and be sure to leave a newline at the
+ * end of the file.
+ * 
+ * You can use the console based configuration tool by executing:
+ * cd config; perl conf.pl

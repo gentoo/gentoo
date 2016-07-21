@@ -1,0 +1,12 @@
+diff -Nru jss-3.4-src/mozilla/security/jss/build_java.pl jss-3.4-src.patched/mozilla/security/jss/build_java.pl
+--- jss-3.4-src/mozilla/security/jss/build_java.pl	2002-10-17 02:33:29.000000000 +0200
++++ jss-3.4-src.patched/mozilla/security/jss/build_java.pl	2006-08-15 00:53:05.000000000 +0200
+@@ -190,7 +190,7 @@
+     #
+     if( scalar(@source_list) > 0 ) {
+         ensure_dir_exists($class_dir);
+-        print_do("$javac $javac_opt_flag -sourcepath . -d $class_dir " .
++        print_do("$javac $ENV{JAVA_GENTOO_OPTS} $javac_opt_flag -sourcepath . -d $class_dir " .
+             "$classpath " . join(" ",@source_list));
+     }
+ 

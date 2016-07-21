@@ -1,0 +1,28 @@
+Index: bindings/Makefile.am
+# fix tcl install path
+===================================================================
+--- bindings/Makefile.am	(revision 2854)
++++ bindings/Makefile.am	(working copy)
+@@ -62,7 +62,7 @@
+ 
+ tcl_ltlib = hamlibtcl.la
+ 
+-tcldir = $(prefix)/lib/tcl
++tcldir = @tclpackagedir@/hamlib
+ 
+ PKG_VER=1.0
+ DLL=hamlibtcl-$(PKG_VER)@TCL_SHLIB_SUFFIX@
+Index: configure.ac
+# add macro to determine path to tcl packages
+===================================================================
+--- configure.ac	(revision 2854)
++++ configure.ac	(working copy)
+@@ -316,6 +316,8 @@
+ AC_SUBST(TCL_LIB_SPEC)
+ AC_SUBST(TCL_INCLUDE_SPEC)
+ AC_SUBST(TCL_SHLIB_SUFFIX)
++tclpackagedir=`echo $TCL_PACKAGE_PATH | cut -d ' ' -f 1 | sed "s,$TCL_PREFIX,\\${prefix},"`
++AC_SUBST(tclpackagedir)
+ 
+ # TODO: require "${ac_cv_header_sys_socket_h}" = "no"
+ 

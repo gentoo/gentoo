@@ -1,0 +1,26 @@
+diff --git a/Makefile.in b/Makefile.in
+index d995328..5c17e11 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -108,7 +108,7 @@ CFLAGS_DEFAULT	= @CFLAGS_DEFAULT@
+ CFLAGS_WARNING	= @CFLAGS_WARNING@
+ CLEANFILES	= @CLEANFILES@
+ EXEEXT		= @EXEEXT@
+-LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@
++LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@ -Wl,-soname,libdom$(PACKAGE_VERSION).so
+ MAKE_LIB	= @MAKE_LIB@
+ MAKE_SHARED_LIB	= @MAKE_SHARED_LIB@
+ MAKE_STATIC_LIB	= @MAKE_STATIC_LIB@
+diff --git a/extensions/tnc/Makefile.in b/extensions/tnc/Makefile.in
+index f8a332c..01e0ef0 100644
+--- a/extensions/tnc/Makefile.in
++++ b/extensions/tnc/Makefile.in
+@@ -98,7 +98,7 @@ CFLAGS_DEFAULT	= @CFLAGS_DEFAULT@
+ CFLAGS_WARNING	= @CFLAGS_WARNING@
+ CLEANFILES	= @CLEANFILES@
+ EXEEXT		= @EXEEXT@
+-LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@
++LDFLAGS_DEFAULT	= @LDFLAGS_DEFAULT@ -Wl,-soname,libtnc$(PACKAGE_VERSION).so
+ MAKE_LIB	= @MAKE_LIB@
+ MAKE_SHARED_LIB	= @MAKE_SHARED_LIB@
+ MAKE_STATIC_LIB	= @MAKE_STATIC_LIB@

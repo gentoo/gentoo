@@ -1,0 +1,95 @@
+--- rename/rename.c
++++ rename/rename.c
+@@ -594,7 +594,7 @@
+     } else {
+ 	rs = rename(oldp, new);
+ 	if (rs < 0) 
+-	    perror("rename");
++	    perror("renamexm");
+ 	else if (attr & MOD_VERBO)
+ 	    printf("ok\n");
+ 	
+@@ -628,8 +628,8 @@
+ {
+ 
+     char *help = "\
+-Usage: rename SOURCE DEST\n\
+-   or: rename [OPTION] file ...\n\
++Usage: renamexm SOURCE DEST\n\
++   or: renamexm [OPTION] file ...\n\
+ Rename SOURCE to DEST, or substitute characters match the specified pattern\n\
+ in the filename.\n\
+ \n\
+--- rename/rename.1
++++ rename/rename.1
+@@ -1,16 +1,16 @@
+ .TH NAME SECTION
+ .SH Name
+-rename \- file rename tool
++renamexm \- file rename tool
+ 
+ .SH SYNOPSIS
+-.B rename 
++.B renamexm 
+ .I OldName NewName
+ .P
+-.B rename
++.B renamexm
+ .I [options]  files ...
+ 
+ .SH DESCRIPTION
+ This
+-.I rename 
++.I renamexm 
+ is a quick and powerful tool for 
+ .I upcasing, 
+@@ -276,5 +276,5 @@
+ .SH EXAMPLES
+ .TP 
+-.I rename foo food
++.I renamexm foo food
+ Change file 'foo' to 'food', just like 
+ .I mv(1)
+@@ -282,23 +282,23 @@
+ 
+ .TP
+-.I rename -lR *
++.I renamexm -lR *
+ To lowcase all filenames, directories and filenames and directories under 
+ subdirectories.
+ 
+ .TP
+-.I rename -s/abc/xyz/gi *.c
++.I renamexm -s/abc/xyz/gi *.c
+ Substitute all 'abc' substrings appeared in C sources files with 'xyz',
+ ignoring case.
+ 
+ .TP
+-.I rename -vs/.c/.cpp/s *.c
++.I renamexm -vs/.c/.cpp/s *.c
+ Change C sources suffix to C++ sources suffix, with verbose information.
+ 
+ .TP
+-.I rename -s/abc/12345/bi *
++.I renamexm -s/abc/12345/bi *
+ Find the last occurrence of 'abc' and replace it with '12345', ignoring case.
+ 
+ .TP
+-.I rename -o guest -R /home/custom
++.I renamexm -o guest -R /home/custom
+ change the owner of the file '/home/custom' to 'guest'. The 'guest' should 
+ be an effective user in the current system. If '/home/custom' is a directory, 
+@@ -306,5 +306,5 @@
+ 
+ .TP
+-.I rename -s/^[A-Z].*file/nofile/r *
++.I renamexm -s/^[A-Z].*file/nofile/r *
+ The target substring starts with a capital letter, and ends with string 'file'.
+ There are 0 or any numbers of characters between the capital letter and 'file'.
+@@ -312,5 +312,5 @@
+ 
+ .TP
+-.I rename -s/^[A-Z].+file/nofile/eg *
++.I renamexm -s/^[A-Z].+file/nofile/eg *
+ Similar to last example, except it uses extended regular expression, such as 
+ the '+' metacharacter, and replaces all matching strings with 'nofile'.

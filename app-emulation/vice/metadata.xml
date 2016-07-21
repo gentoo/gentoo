@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="ethernet">Enable ethernet emulation</flag>
+		<flag name="fullscreen">Enable the ability to run fullscreen</flag>
+		<flag name="sdlsound">Use <pkg>media-libs/libsdl</pkg> for sound support</flag>
+		<flag name="vte">Enable support for <pkg>x11-libs/vte</pkg> in the GTK+ interface</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">vice-emu</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+From 259bebe65f0f108726d5a0504b23c85525199b15 Mon Sep 17 00:00:00 2001
+From: Luis de Bethencourt <luis.bg@samsung.com>
+Date: Tue, 2 Jun 2015 16:47:31 +0100
+Subject: configure: update GStreamer version
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b628f33..430647f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,7 +33,7 @@ AC_LIBTOOL_WIN32_DLL
+ AC_CANONICAL_HOST
+ 
+ # keep one single GST_REQ, core/base should be same versions anyway
+-GST_REQ=1.0.0
++GST_REQ=1.4.0
+ CLUTTER_REQS=1.12.0
+ CLUTTER_GST_REQS=2.0.0
+ CLUTTER_GTK_REQS=1.0.2
+-- 
+cgit v0.11.2
+

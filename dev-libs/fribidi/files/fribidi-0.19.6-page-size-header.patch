@@ -1,0 +1,20 @@
+diff -ur fribidi-0.19.6.old/lib/common.h fribidi-0.19.6/lib/common.h
+--- fribidi-0.19.6.old/lib/common.h	2012-12-30 00:12:59.000000000 +0000
++++ fribidi-0.19.6/lib/common.h	2014-05-03 11:04:19.969727962 +0100
+@@ -130,14 +130,8 @@
+ /* FRIBIDI_CHUNK_SIZE is the number of bytes in each chunk of memory being
+  * allocated for data structure pools. */
+ #ifndef FRIBIDI_CHUNK_SIZE
+-# if HAVE_ASM_PAGE_H
+-#  ifndef __FRIBIDI_DOC
+-#   include <asm/page.h>
+-#  endif /* __FRIBIDI_DOC */
+-#  define FRIBIDI_CHUNK_SIZE (PAGE_SIZE - 16)
+-# else /* !HAVE_ASM_PAGE_H */
+-#  define FRIBIDI_CHUNK_SIZE (4096 - 16)
+-# endif	/* !HAVE_ASM_PAGE_H */
++# include <unistd.h>
++# define FRIBIDI_CHUNK_SIZE (sysconf(_SC_PAGESIZE) - 16)
+ #else /* FRIBIDI_CHUNK_SIZE */
+ # if FRIBIDI_CHUNK_SIZE < 256
+ #  error FRIBIDI_CHUNK_SIZE now should define the size of a chunk in bytes.

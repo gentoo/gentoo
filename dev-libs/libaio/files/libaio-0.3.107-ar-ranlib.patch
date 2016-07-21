@@ -1,0 +1,17 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -42,10 +42,12 @@
+ 	$(CC) $(L_CFLAGS) -c -o $@ $<
+ 
+ 
++AR ?= ar
++RANLIB ?= ranlib
+ libaio.a: $(libaio_objs)
+ 	rm -f libaio.a
+-	ar r libaio.a $^
+-	ranlib libaio.a
++	$(AR) r libaio.a $^
++	$(RANLIB) libaio.a
+ 
+ $(libname): $(libaio_sobjs) libaio.map
+ 	$(CC) $(SO_CFLAGS) -Wl,--version-script=libaio.map -Wl,-soname,$(soname) -o $@ $(libaio_sobjs) $(LINK_FLAGS)

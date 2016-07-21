@@ -1,0 +1,41 @@
+commit 68d18a5a7dd7fad8638409d46d144d33a30b54ce
+Author: Mihai Bişog <mihai.bisog@gmail.com>
+Date:   Sat Aug 1 15:18:35 2015 +0300
+
+    Fixed compilation errors when compiling against boost 1.58
+
+diff --git a/libs/asiotap/include/asiotap/types/endpoint.hpp b/libs/asiotap/include/asiotap/types/endpoint.hpp
+index 125e1b4..318b7e6 100644
+--- a/libs/asiotap/include/asiotap/types/endpoint.hpp
++++ b/libs/asiotap/include/asiotap/types/endpoint.hpp
+@@ -350,6 +350,9 @@ namespace asiotap
+ 	 */
+ 	std::istream& operator>>(std::istream& is, endpoint& value);
+ 
++// Note: this operator is defined in boost variant as of version 1.58. Keeping it around will
++// introduce overload resolution ambiguity.
++#if BOOST_VERSION < 105800
+ 	/**
+ 	 * \brief Compare two endpoints.
+ 	 * \param lhs The left argument.
+@@ -360,6 +363,7 @@ namespace asiotap
+ 	{
+ 		return !(lhs == rhs);
+ 	}
++#endif
+ 
+ 	/**
+ 	 * \brief Get an endpoint with a default port.
+diff --git a/libs/freelan/src/curl.cpp b/libs/freelan/src/curl.cpp
+index 342bb79..392d734 100644
+--- a/libs/freelan/src/curl.cpp
++++ b/libs/freelan/src/curl.cpp
+@@ -146,7 +146,7 @@ namespace freelan
+ 
+ 	void curl::set_proxy(const asiotap::endpoint& proxy)
+ 	{
+-		if (proxy != asiotap::hostname_endpoint::null())
++		if (proxy != asiotap::endpoint(asiotap::hostname_endpoint::null()))
+ 		{
+ 			set_option(CURLOPT_PROXY, static_cast<const void*>(boost::lexical_cast<std::string>(proxy).c_str()));
+ 		}

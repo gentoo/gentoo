@@ -1,0 +1,10 @@
+--- contrib/moo/moo.override
++++ contrib/moo/moo.override
+@@ -6,6 +6,7 @@
+ #include <pygobject.h>
+ #include <pygtk/pygtk.h>
+ #include "moobigpaned.h"
++#include "moopython-utils.h"
+ %%
+ modulename moo_stub
+ %%

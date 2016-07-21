@@ -1,0 +1,170 @@
+diff -ur a/libdevice/vaapi/VaapiImage.cpp b/libdevice/vaapi/VaapiImage.cpp
+--- a/libdevice/vaapi/VaapiImage.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/vaapi/VaapiImage.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -35,7 +35,7 @@
+     : _format(format)
+     , _image_data(NULL)
+ {
+-    log_debug(_("VaapiImage::VaapiImage(): format '%s'\n", string_of_FOURCC(format)));
++    log_debug("VaapiImage::VaapiImage(): format '%s'\n", string_of_FOURCC(format));
+ 
+     memset(&_image, 0, sizeof(_image));
+     _image.image_id = VA_INVALID_ID;
+@@ -79,7 +79,7 @@
+     if (!vaapi_check_status(status, "vaCreateImage()"))
+         return false;
+ 
+-    log_debug(_("  image 0x%08x, format '%s'\n", get(), string_of_FOURCC(_format)));
++    log_debug("  image 0x%08x, format '%s'\n", get(), string_of_FOURCC(_format));
+ 
+     return true;
+ }
+diff -ur a/libdevice/vaapi/VaapiSubpicture.cpp b/libdevice/vaapi/VaapiSubpicture.cpp
+--- a/libdevice/vaapi/VaapiSubpicture.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/vaapi/VaapiSubpicture.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -32,7 +32,7 @@
+     : _image(image)
+     , _subpicture(VA_INVALID_ID)
+ {
+-    log_debug(_("VaapiSubpicture::VaapiSubpicture(): format '%s'\n", string_of_FOURCC(image->format())));
++    log_debug("VaapiSubpicture::VaapiSubpicture(): format '%s'\n", string_of_FOURCC(image->format()));
+ 
+     if (!create()) {
+         boost::format msg;
+diff -ur a/libdevice/vaapi/VaapiSurface.cpp b/libdevice/vaapi/VaapiSurface.cpp
+--- a/libdevice/vaapi/VaapiSurface.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/vaapi/VaapiSurface.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -74,7 +74,7 @@
+ 
+ VaapiSurfaceImpl::~VaapiSurfaceImpl()
+ {
+-    log_debug(_("VaapiSurface::~VaapiSurface(): surface 0x%08x\n", surface()));
++    log_debug("VaapiSurface::~VaapiSurface(): surface 0x%08x\n", surface());
+ 
+     if (surface() == VA_INVALID_SURFACE) {
+         return;
+diff -ur a/libdevice/vaapi/VaapiSurfaceGLX.cpp b/libdevice/vaapi/VaapiSurfaceGLX.cpp
+--- a/libdevice/vaapi/VaapiSurfaceGLX.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/vaapi/VaapiSurfaceGLX.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -202,14 +202,14 @@
+ 
+     reset(reinterpret_cast<uintptr_t>(surface));
+ 
+-    log_debug(_("  -> surface %p\n", this->surface()));
++    log_debug("  -> surface %p\n", this->surface());
+ }
+ 
+ VaapiSurfaceGLXImpl::~VaapiSurfaceGLXImpl()
+ {
+     // GNASH_REPORT_FUNCTION;
+ 
+-    log_debug(_("VaapiSurface::~VaapiSurface(): surface %p\n", surface()));
++    log_debug("VaapiSurface::~VaapiSurface(): surface %p\n", surface());
+ 
+     if (!surface()) {
+         return;
+@@ -263,7 +263,7 @@
+ 
+ bool VaapiSurfaceGLX::update(boost::shared_ptr<VaapiSurface> surface)
+ {
+-    log_debug(_("VaapiSurfaceGLX::update(): from surface 0x%08x\n", surface->get()));
++    log_debug("VaapiSurfaceGLX::update(): from surface 0x%08x\n", surface->get());
+ 
+     return dynamic_cast<VaapiSurfaceGLXImpl *>(_impl.get())->update(surface);
+ }
+diff -ur a/libdevice/vaapi/VaapiSurfaceProxy.cpp b/libdevice/vaapi/VaapiSurfaceProxy.cpp
+--- a/libdevice/vaapi/VaapiSurfaceProxy.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/vaapi/VaapiSurfaceProxy.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -28,12 +28,12 @@
+                                      boost::shared_ptr<VaapiContext> context)
+     : _context(context), _surface(surface)
+ {
+-    log_debug(_("VaapiSurfaceProxy::VaapiSurfaceProxy(): surface 0x%08x\n", _surface->get()));
++    log_debug("VaapiSurfaceProxy::VaapiSurfaceProxy(): surface 0x%08x\n", _surface->get());
+ }
+     
+ VaapiSurfaceProxy::~VaapiSurfaceProxy()
+ {
+-    log_debug(_("VaapiSurfaceProxy::~VaapiSurfaceProxy(): surface 0x%08x\n", _surface->get()));
++    log_debug("VaapiSurfaceProxy::~VaapiSurfaceProxy(): surface 0x%08x\n", _surface->get());
+ 
+     _context->releaseSurface(_surface);
+ }
+diff -ur a/libdevice/x11/X11Device.cpp b/libdevice/x11/X11Device.cpp
+--- a/libdevice/x11/X11Device.cpp	2012-01-19 20:17:48.000000000 +0100
++++ b/libdevice/x11/X11Device.cpp	2012-02-23 19:05:13.000000000 +0100
+@@ -85,7 +85,7 @@
+     GNASH_REPORT_FUNCTION;
+ 
+     if (!initDevice(0, 0)) {
+-        log_error(_("Couldn't initialize X11 device!"));
++        log_error("Couldn't initialize X11 device!");
+     }
+ }
+ 
+@@ -103,7 +103,7 @@
+     GNASH_REPORT_FUNCTION;
+     
+     if (!initDevice(argc, argv)) {
+-        log_error(_("Couldn't initialize X11 device!"));
++        log_error("Couldn't initialize X11 device!");
+     }
+ }
+ 
+@@ -139,7 +139,7 @@
+ 
+     _display = XOpenDisplay(dpyName);
+     if (!_display) {
+-        log_error(_("couldn't open X11 display!"));
++        log_error("couldn't open X11 display!");
+         return false;
+     }
+ 
+@@ -159,7 +159,7 @@
+     _vinfo = XGetVisualInfo(_display, VisualIDMask, &visTemplate, &num_visuals);
+     std::cerr << "Num Visuals: " << num_visuals << std::endl;
+     if (!_vinfo) {
+-        log_error(_("Error: couldn't get X visual\n"));
++         log_error("Error: couldn't get X visual\n");
+          exit(1);
+     }
+     std::cerr << "X11 visual is: " << _vinfo->visual << std::endl;
+@@ -196,7 +196,7 @@
+     if (_display) {
+         XGetErrorText(_display, error, msg, 80);
+     } else {
+-        log_error(_("The default Display is not set!"));
++        log_error("The default Display is not set!");
+     }
+ 
+     return msg;
+@@ -209,12 +209,12 @@
+     GNASH_REPORT_FUNCTION;
+ 
+     if (!_display) {
+-        log_error(_("No Display device set!"));
++        log_error("No Display device set!");
+         return;
+     }
+     
+     if (!_root) {
+-        log_error(_("No drawable window set!"));
++        log_error("No drawable window set!");
+         return;
+     }
+ 
+@@ -279,11 +279,11 @@
+           case KeyPress:
+           {
+               char buffer[10];
+-              int code;
++              int r, code;
+               code = XLookupKeysym(&event.xkey, 0);
+               if (!keyPress || !keyPress(code)) {
+-                  // int r = XLookupString(&event.xkey, buffer, sizeof(buffer),
+-                  //                   NULL, NULL);
++                  r = XLookupString(&event.xkey, buffer, sizeof(buffer),
++                                    NULL, NULL);
+                   if (buffer[0] == 27) {
+                       // escape
+                       return;

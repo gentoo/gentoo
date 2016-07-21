@@ -1,0 +1,11 @@
+diff -urb cronolog-1.6.2/src/cronoutils.c cronolog-1.6.2-patched/src/cronoutils.c
+--- cronolog-1.6.2/src/cronoutils.c	2001-05-03 09:43:21.000000000 -0700
++++ cronolog-1.6.2/src/cronoutils.c	2008-01-05 22:08:42.000000000 -0800
+@@ -69,6 +69,8 @@
+  *
+  */
+ 
++#define _GNU_SOURCE
++
+ #include "cronoutils.h"
+ extern char *tzname[2];

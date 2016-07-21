@@ -1,0 +1,32 @@
+Description: Fix FTBFS with new texinfo.
+Author: Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>
+
+--- acct-6.5.5.orig/accounting.texi
++++ acct-6.5.5/accounting.texi
+@@ -66,7 +66,7 @@ approved by the Foundation.
+ @end titlepage
+ 
+ @c ----------------------------------------------------------------------
+-@ifinfo
++@ifnottex
+ @node Top, Preface, (dir), (dir)
+ 
+ Welcome to the GNU Accounting Utilities!  If you don't have a clue about
+@@ -77,7 +77,7 @@ program's name.
+ This is Edition @value{EDITION} of the documentation, updated
+ @value{UPDATED} for version @value{VERSION} of the GNU Accounting
+ Utilities.
+-@end ifinfo
++@end ifnottex
+ 
+ @menu
+ * Preface::                     general information about the accounting utilities
+@@ -468,7 +468,7 @@ overhead, it is forseeable that the entr
+ wrong order.  GNU @code{ac} automatically compensates for this, but some
+ other @code{ac}s may not...  beware.
+ 
+-@unnumberedsubsubsec The FTP Problem
++@unnumberedsubsec The FTP Problem
+ 
+ I've tested the standard @code{ac} in Ultrix 4.2 (DECstation/DECsystem),
+ SunOS 4.1.1 (Sun3, Sun4, Sparc), Mach 2.5 (Omron/Luna), and DomainOS

@@ -1,0 +1,26 @@
+diff --git a/usr.bin/kdump/Makefile b/usr.bin/kdump/Makefile
+index 38e9df6..5e831c6 100644
+--- a/usr.bin/kdump/Makefile
++++ b/usr.bin/kdump/Makefile
+@@ -22,7 +22,7 @@ CLEANFILES=	ioctl.c kdump_subr.c kdump_subr.h linux_syscalls.c
+ 
+ ioctl.c: mkioctls
+ 	env MACHINE=${MACHINE} CPP="${CPP}" \
+-	    sh ${.CURDIR}/mkioctls print ${DESTDIR}/usr/include > ${.TARGET}
++	    sh ${.CURDIR}/mkioctls print ${.CURDIR}/../../include > ${.TARGET}
+ 
+ kdump_subr.h: mksubr
+ 	sh ${.CURDIR}/mksubr ${DESTDIR}/usr/include | \
+diff --git a/usr.bin/truss/Makefile b/usr.bin/truss/Makefile
+index 7a49497..bc8b61f 100644
+--- a/usr.bin/truss/Makefile
++++ b/usr.bin/truss/Makefile
+@@ -24,7 +24,7 @@ syscalls.h:	syscalls.master
+ 
+ ioctl.c: ${.CURDIR}/../kdump/mkioctls
+ 	env MACHINE=${MACHINE} CPP="${CPP}" \
+-		/bin/sh ${.CURDIR}/../kdump/mkioctls return ${DESTDIR}/usr/include > ${.TARGET}
++		/bin/sh ${.CURDIR}/../kdump/mkioctls return ${.CURDIR}/../../include > ${.TARGET}
+ 
+ .if ${MACHINE_CPUARCH} == "i386"
+ SRCS+=	i386-linux.c linux_syscalls.h

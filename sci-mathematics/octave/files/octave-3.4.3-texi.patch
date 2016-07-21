@@ -1,0 +1,11 @@
+--- doc/interpreter/Makefile.am.orig	2012-01-31 17:47:52.000000000 +0000
++++ doc/interpreter/Makefile.am	2012-01-31 17:49:37.000000000 +0000
+@@ -202,6 +202,8 @@
+ 	$(AWK) -f $(srcdir)/mkcontrib.awk $(srcdir)/contributors.in > $@-t
+ 	mv $@-t $@
+ 
++preface.texi: contributors.texi
++
+ ../../AUTHORS: preface.texi contributors.texi
+ 	rm -f AUTHORS
+ 	-$(MAKEINFO) -D AUTHORSONLY \

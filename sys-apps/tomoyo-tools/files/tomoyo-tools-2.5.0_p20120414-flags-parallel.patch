@@ -1,0 +1,87 @@
+diff --git a/Include.make b/Include.make
+index 3f85e61..c34ba28 100644
+--- a/Include.make
++++ b/Include.make
+@@ -1,7 +1,5 @@
+-CC              := gcc
+ INSTALL         := install
+ SBINDIR         := /sbin
+ USRSBINDIR      := /usr/sbin
+ USRLIBDIR       := /usr/lib
+ MAN8            := /usr/share/man/man8
+-CFLAGS          := -Wall -O2
+diff --git a/kernel_test/Makefile b/kernel_test/Makefile
+index 2559b4b..ef599a2 100644
+--- a/kernel_test/Makefile
++++ b/kernel_test/Makefile
+@@ -10,16 +10,14 @@ all: $(ALL_FILES)
+ 
+ $(ALL_FILES): include.h
+ 
+-CC=gcc
+-
+-CFLAGS=-Wall -O2
++CFLAGS += -Wall -O2
+ 
+ #
+ # Tools for kernel testing.
+ #
+ 
+ .c:
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ #
+ # Delete all test programs.
+diff --git a/sbin/Makefile b/sbin/Makefile
+index 0f53bc6..0e8e42e 100644
+--- a/sbin/Makefile
++++ b/sbin/Makefile
+@@ -9,7 +9,7 @@ install: all
+ 	$(INSTALL) -m 0700 $(BUILD_FILES) $(INSTALLDIR)$(SBINDIR)
+ 
+ .c:
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ clean:
+ 	rm -f -- $(BUILD_FILES)
+diff --git a/usr_lib_tomoyo/Makefile b/usr_lib_tomoyo/Makefile
+index 94020ee..f20ae40 100644
+--- a/usr_lib_tomoyo/Makefile
++++ b/usr_lib_tomoyo/Makefile
+@@ -11,7 +11,7 @@ install: all
+ 	$(INSTALL) -m 0644 ../README.tomoyo ../COPYING.tomoyo $(INSTALLDIR)/$(USRLIBDIR)/tomoyo/
+ 
+ .c:
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ clean:
+ 	rm -f -- $(BUILD_FILES)
+diff --git a/usr_sbin/Makefile b/usr_sbin/Makefile
+index fa715b0..5b991db 100644
+--- a/usr_sbin/Makefile
++++ b/usr_sbin/Makefile
+@@ -15,17 +15,17 @@ $(BUILD_FILES): libtomoyotools.so
+ 	sleep 10
+ 
+ libtomoyotools.so: tomoyotools.c tomoyotools.h
+-	$(CC) $(CFLAGS) -fPIC tomoyotools.c -shared -Wl,-soname,libtomoyotools.so.3 -o libtomoyotools.so.3.0.1
++	$(CC) $(CFLAGS) $(LDFLAGS) -fPIC tomoyotools.c -shared -Wl,-soname,libtomoyotools.so.3 -o libtomoyotools.so.3.0.1
+ 	ln -sf libtomoyotools.so.3.0.1 libtomoyotools.so
+ 
+ .c:
+-	$(CC) $(CFLAGS) -o $@ $< -ltomoyotools -L. 
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -ltomoyotools -L. 
+ 
+ tomoyo-editpolicy: tomoyotools.h editpolicy*.c readline.h /usr/include/curses.h libtomoyotools.so
+-	$(CC) $(CFLAGS) -o tomoyo-editpolicy editpolicy*.c -lncurses -ltomoyotools -L. -DCOLOR_ON
++	$(CC) $(CFLAGS) $(LDFLAGS) -o tomoyo-editpolicy editpolicy*.c -lncurses -ltomoyotools -L. -DCOLOR_ON
+ 
+ tomoyo-queryd: tomoyotools.h tomoyo-queryd.c readline.h /usr/include/curses.h libtomoyotools.so
+-	$(CC) $(CFLAGS) -o tomoyo-queryd tomoyo-queryd.c -lncurses -ltomoyotools -L.
++	$(CC) $(CFLAGS) $(LDFLAGS) -o tomoyo-queryd tomoyo-queryd.c -lncurses -ltomoyotools -L.
+ 
+ install: all
+ 	mkdir -p -m 0755 $(INSTALLDIR)$(USRLIBDIR)

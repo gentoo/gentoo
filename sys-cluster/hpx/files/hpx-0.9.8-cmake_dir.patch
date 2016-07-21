@@ -1,0 +1,27 @@
+From e565c2cce934f2d6fa6e80061c416a2e7df0f311 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Tue, 20 May 2014 11:18:21 -0600
+Subject: [PATCH] make cmake_dir configure-able
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ad79cb..e6f392a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1981,7 +1981,9 @@ endforeach()
+ # Make list unique
+ list(REMOVE_DUPLICATES external_definitions)
+ 
+-set(cmake_dir cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
++if (NOT DEFINED cmake_dir)
++  set(cmake_dir cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
++endif(NOT DEFINED cmake_dir)
+ 
+ if(MSVC)
+   set(output_dir "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
+-- 
+1.8.5.5
+

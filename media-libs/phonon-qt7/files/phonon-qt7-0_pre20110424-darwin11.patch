@@ -1,0 +1,29 @@
+disable AUGraphAddNode, it needs an AudioComponent iso Component
+need a definition for gnuOrtho2D
+
+--- phonon-qt7/qt7/audionode.mm
++++ phonon-qt7/qt7/audionode.mm
+@@ -69,9 +69,9 @@
+ 
+     OSStatus err = noErr;
+ #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
+-    if (QSysInfo::MacintoshVersion >= QSysInfo::MV_10_5)
+-        err = AUGraphAddNode(m_audioGraph->audioGraphRef(), &description, &m_auNode);
+-    else
++//    if (QSysInfo::MacintoshVersion >= QSysInfo::MV_10_5)
++//        err = AUGraphAddNode(m_audioGraph->audioGraphRef(), &description, &m_auNode);
++//    else
+ #endif
+         err = AUGraphNewNode(m_audioGraph->audioGraphRef(), &description, 0, 0, &m_auNode);
+         
+--- phonon-qt7/qt7/videowidget.mm
++++ phonon-qt7/qt7/videowidget.mm
+@@ -35,6 +35,8 @@
+ #import <AppKit/NSImage.h>
+ #import <QTKit/QTMovieView.h>
+ 
++#import <OpenGL/glu.h>
++
+ /////////////////////////////////////////////////////////////////////////////////////////
+ 
+ #ifdef QT_MAC_USE_COCOA // Rendering to a QTMovieView can only be done in Cocoa

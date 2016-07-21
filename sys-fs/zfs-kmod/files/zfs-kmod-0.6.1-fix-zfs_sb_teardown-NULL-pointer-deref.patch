@@ -1,0 +1,58 @@
+From ab68b6e5db29abcd20c0c7b12a8c2fa570031c8b Mon Sep 17 00:00:00 2001
+From: Tim Chase <tim@chase2k.com>
+Date: Mon, 24 Jun 2013 22:03:56 -0500
+Subject: [PATCH] Fix zfs_sb_teardown/zfs_resume_fs NULL dereference
+
+Fix a pair of conditions in which a concurrent umount can cause
+NULL pointer dereferences:
+
+* zfs_sb_teardown - prevent a NULL dereference by not calling
+                    dmu_objset_pool with a null z_os.
+
+* zfs_resume_fs - don't try to unmount with a null z_os.  This
+                  change makes the ZoL code more consistent
+                  with both Illumos and FreeBSD.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1543
+---
+ module/zfs/zfs_vfsops.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/module/zfs/zfs_vfsops.c b/module/zfs/zfs_vfsops.c
+index e618f2b..602c332 100644
+--- a/module/zfs/zfs_vfsops.c
++++ b/module/zfs/zfs_vfsops.c
+@@ -1056,10 +1056,12 @@
+ 	}
+ 
+ 	/*
+-	 * Drain the iput_taskq to ensure all active references to the
++	 * If someone has not already unmounted this file system,
++	 * drain the iput_taskq to ensure all active references to the
+ 	 * zfs_sb_t have been handled only then can it be safely destroyed.
+ 	 */
+-	taskq_wait(dsl_pool_iput_taskq(dmu_objset_pool(zsb->z_os)));
++	if (zsb->z_os)
++		taskq_wait(dsl_pool_iput_taskq(dmu_objset_pool(zsb->z_os)));
+ 
+ 	/*
+ 	 * Close the zil. NB: Can't close the zil while zfs_inactive
+@@ -1480,10 +1482,11 @@
+ 
+ 	if (err) {
+ 		/*
+-		 * Since we couldn't reopen zfs_sb_t, force
+-		 * unmount this file system.
++		 * Since we couldn't reopen zfs_sb_t or, setup the
++		 * sa framework, force unmount this file system.
+ 		 */
+-		(void) zfs_umount(zsb->z_sb);
++		if (zsb->z_os)
++			(void) zfs_umount(zsb->z_sb);
+ 	}
+ 	return (err);
+ }
+-- 
+1.8.1.6
+

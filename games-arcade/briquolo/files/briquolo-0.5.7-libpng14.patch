@@ -1,0 +1,31 @@
+http://bugs.gentoo.org/show_bug.cgi?id=308667
+
+--- src/MOGL/MOGL_Image.cpp
++++ src/MOGL/MOGL_Image.cpp
+@@ -183,7 +183,7 @@ bool MOGL_Image::ChargerPNG(const char *
+   info_ptr = png_create_info_struct(png_ptr);
+   if (info_ptr == NULL)
+   {
+-    png_destroy_read_struct(&png_ptr, png_infopp_NULL, png_infopp_NULL);
++    png_destroy_read_struct(&png_ptr, NULL, NULL);
+     return false;
+   }
+ 
+@@ -191,7 +191,7 @@ bool MOGL_Image::ChargerPNG(const char *
+   if (setjmp(png_jmpbuf(png_ptr)))
+   {
+     // On libère la mémoire
+-    png_destroy_read_struct(&png_ptr, &info_ptr, png_infopp_NULL);
++    png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+     return false;
+   }
+         
+@@ -235,7 +235,7 @@ bool MOGL_Image::ChargerPNG(const char *
+   /* Expand grayscale images to the full 8 bits from 1, 2, or 4 bits/pixel */
+   if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8)
+   {
+-    png_set_gray_1_2_4_to_8(png_ptr);
++    png_set_expand_gray_1_2_4_to_8(png_ptr);
+   }
+   
+   /* Expand paletted or RGB images with transparency to full alpha channels

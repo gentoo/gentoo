@@ -1,0 +1,16 @@
+--- subversion/libsvn_ra/ra_loader.c.orig	2009-07-20 14:46:02 +0200
++++ subversion/libsvn_ra/ra_loader.c	2009-07-20 14:50:02 +0200
+@@ -154,8 +154,13 @@
+     const char *compat_funcname;
+     apr_status_t status;
+ 
++#if defined(__hpux) && defined(__hppa)
++    libname = apr_psprintf(pool, "libsvn_ra_%s-%d.sl.0",
++                           ra_name, SVN_VER_MAJOR);
++#else
+     libname = apr_psprintf(pool, "libsvn_ra_%s-%d.so.0",
+                            ra_name, SVN_VER_MAJOR);
++#endif
+     funcname = apr_psprintf(pool, "svn_ra_%s__init", ra_name);
+     compat_funcname = apr_psprintf(pool, "svn_ra_%s_init", ra_name);
+ 

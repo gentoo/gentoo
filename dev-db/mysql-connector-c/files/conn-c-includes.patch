@@ -1,0 +1,15 @@
+diff -aurN a/include/CMakeLists.txt b/include/CMakeLists.txt
+--- a/include/CMakeLists.txt	2015-07-14 13:06:04.424091000 -0400
++++ b/include/CMakeLists.txt	2015-07-14 13:24:43.434091000 -0400
+@@ -55,6 +55,11 @@
+   byte_order_generic_x86.h
+   little_endian.h
+   big_endian.h
++  my_thread_local.h
++  thr_cond.h
++  thr_lock.h
++  thr_mutex.h
++  thr_rwlock.h
+   ${HEADERS_GEN_CONFIGURE}
+ )
+ 

@@ -1,0 +1,49 @@
+diff -rupN work/vboxdrv/r0drv/linux/alloc-r0drv-linux.c work.new/vboxdrv/r0drv/linux/alloc-r0drv-linux.c
+--- work/vboxdrv/r0drv/linux/alloc-r0drv-linux.c	2014-01-14 04:27:06.000000000 -0600
++++ work.new/vboxdrv/r0drv/linux/alloc-r0drv-linux.c	2014-09-03 11:12:28.247795756 -0500
+@@ -191,7 +191,7 @@ static PRTMEMHDR rtR0MemAllocExecVmArea(
+         struct page **papPagesIterator = papPages;
+         pVmArea->nr_pages = cPages;
+         pVmArea->pages    = papPages;
+-        if (!map_vm_area(pVmArea, PAGE_KERNEL_EXEC, &papPagesIterator))
++        if (!map_vm_area(pVmArea, PAGE_KERNEL_EXEC, papPagesIterator))
+         {
+             PRTMEMLNXHDREX pHdrEx = (PRTMEMLNXHDREX)pVmArea->addr;
+             pHdrEx->pVmArea     = pVmArea;
+diff -rupN work/vboxnetadp/linux/VBoxNetAdp-linux.c work.new/vboxnetadp/linux/VBoxNetAdp-linux.c
+--- work/vboxnetadp/linux/VBoxNetAdp-linux.c	2013-10-09 06:02:09.000000000 -0500
++++ work.new/vboxnetadp/linux/VBoxNetAdp-linux.c	2014-09-03 11:13:55.999687819 -0500
+@@ -52,6 +52,25 @@
+ 
+ #define VBOXNETADP_FROM_IFACE(iface) ((PVBOXNETADP) ifnet_softc(iface))
+ 
++/*******************************
++source for the 4th parameter alloc_netdev fix for kernel 3.17-rc1 is:
++https://github.com/proski/madwifi/commit/c5246021b7b8580c2aeb0a145903acc07d246ac1
++*/
++#ifndef NET_NAME_UNKNOWN
++#undef alloc_netdev
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,23)
++#define alloc_netdev(sizeof_priv, name, name_assign_type, setup) \
++  alloc_netdev(sizeof_priv, name, setup)
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2,6,38)
++#define alloc_netdev(sizeof_priv, name, name_assign_type, setup) \
++  alloc_netdev_mq(sizeof_priv, name, setup, 1)
++#else
++#define alloc_netdev(sizeof_priv, name, name_assign_type, setup) \
++  alloc_netdev_mqs(sizeof_priv, name, setup, 1, 1)
++#endif
++#endif
++/*******************************/
++
+ /*******************************************************************************
+ *   Internal Functions                                                         *
+ *******************************************************************************/
+@@ -183,6 +202,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis
+     /* No need for private data. */
+     pNetDev = alloc_netdev(sizeof(VBOXNETADPPRIV),
+                            pThis->szName[0] ? pThis->szName : VBOXNETADP_LINUX_NAME,
++			   NET_NAME_UNKNOWN,
+                            vboxNetAdpNetDevInit);
+     if (pNetDev)
+     {

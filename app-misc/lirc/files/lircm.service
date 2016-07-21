@@ -1,0 +1,11 @@
+[Unit]
+Description=LIRC Mouse
+Requires=lirc.service
+After=network.target lirc.service
+
+[Service]
+ExecStart=/usr/sbin/lircmd --nodaemon
+
+[Install]
+WantedBy=multi-user.target
+

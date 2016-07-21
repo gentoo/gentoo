@@ -1,0 +1,42 @@
+diff -burN mediatomb-0.12.1.old//src/metadata/ffmpeg_handler.cc mediatomb-0.12.1/src/metadata/ffmpeg_handler.cc
+--- mediatomb-0.12.1.old//src/metadata/ffmpeg_handler.cc	2012-11-25 14:55:05.335753129 +0100
++++ mediatomb-0.12.1/src/metadata/ffmpeg_handler.cc	2012-11-25 15:29:42.840677486 +0100
+@@ -110,8 +110,8 @@
+ 		return;
+ 	for (const mapping_t *m = mapping; m->avname != NULL; m++)
+ 	{
+-		AVMetadataTag *tag = NULL;
+-		tag = av_metadata_get(pFormatCtx->metadata, m->avname, NULL, 0);
++		AVDictionaryEntry *tag = NULL;
++		tag = av_dict_get(pFormatCtx->metadata, m->avname, NULL, 0);
+ 		if (tag && tag->value && tag->value[0])
+ 		{
+ 			log_debug("Added metadata %s: %s\n", m->avname, tag->value);
+@@ -290,14 +290,14 @@
+     av_register_all();
+ 
+     // Open video file
+-    if (av_open_input_file(&pFormatCtx, 
+-                          item->getLocation().c_str(), NULL, 0, NULL) != 0)
++    if (avformat_open_input(&pFormatCtx,
++                          item->getLocation().c_str(), NULL, NULL) != 0)
+         return; // Couldn't open file
+ 
+     // Retrieve stream information
+-    if (av_find_stream_info(pFormatCtx) < 0)
++    if (avformat_find_stream_info(pFormatCtx, NULL) < 0)
+     {
+-        av_close_input_file(pFormatCtx);
++        avformat_close_input(&pFormatCtx);
+         return; // Couldn't find stream information
+     }   
+ 	// Add metadata using ffmpeg library calls
+@@ -306,7 +306,7 @@
+ 	addFfmpegResourceFields(item, pFormatCtx, &x, &y);
+ 	
+     // Close the video file
+-    av_close_input_file(pFormatCtx);
++    avformat_close_input(&pFormatCtx);
+ }
+ 
+ static bool _mkdir(const char *path)

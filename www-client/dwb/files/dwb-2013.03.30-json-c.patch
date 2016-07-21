@@ -1,0 +1,33 @@
+--- dwb-2013.03.30/config.mk
++++ dwb-2013.03.30/config.mk
+@@ -105,8 +105,18 @@
+ $(error Cannot find $(GNUTLS))
+ endif
+ 
++# >=json-c-0.11 renamed its library, pc file, and include dir
++# first check for >=0.11, if it doesn't exist check for <0.11
++ifeq ($(shell pkg-config --exists json-c && echo 1), 1)
++JSONC=json-c
++else
+ ifeq ($(shell pkg-config --exists json && echo 1), 1)
+-LIBS+=$(GNUTLS)
++JSONC=json
++endif
++endif
++
++ifdef JSONC
++LIBS+=$(JSONC)
+ else
+ $(error Cannot find json-c)
+ endif
+--- dwb-2013.03.30/src/util/Makefile
++++ dwb-2013.03.30/src/util/Makefile
+@@ -13,7 +13,7 @@
+ TRANSPORT_SECURITY_JSON=transport_security_state_static.json
+ TRANSPORT_SECURITY_CERTS=transport_security_state_static.certs
+ 
+-LIBS=glib-2.0 gnutls json
++LIBS=glib-2.0 gnutls $(JSONC)
+ CFLAGS+=$(shell pkg-config --cflags $(LIBS))
+ LDFLAGS=$(shell pkg-config --libs $(LIBS))
+ 

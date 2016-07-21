@@ -1,0 +1,23 @@
+ Makefile.am |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 745824d..0da0ddd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,12 +1,12 @@
+ # -*- mode: Makefile; mode: font-lock -*-
+ AUTOMAKE_OPTIONS = foreign
+-SUBDIRS = config clipper examples dox
+-DIST_SUBDIRS = config clipper examples dox
++SUBDIRS = config clipper  dox
++DIST_SUBDIRS = config clipper  dox
+ EXTRA_DIST = AUTHORS COPYING ChangeLog INSTALL NEWS README
+ bin_SCRIPTS = clipper-config
+ # pkgconfigdir = $(libdir)/pkgconfig
+ # pkgconfig_DATA = clipper.pc
+ if DEBUG
+-AM_CXXFLAGS = -g -DDEBUG
++AM_CXXFLAGS = -DDEBUG
+ endif
+ ACLOCAL_AMFLAGS = -I config

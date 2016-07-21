@@ -1,0 +1,33 @@
+--- configure.in
++++ configure.in
+@@ -115,8 +115,6 @@ fi
+ AC_CHECK_LIB(m, sin,, 
+     AC_MSG_ERROR(libm is needed))
+ 
+-AC_CONFIG_SUBDIRS(curl)
+-
+ AC_OUTPUT(Makefile utils/Makefile utilssdl/Makefile utilsgl/Makefile game/Makefile tools/Makefile data/Makefile data/music/Makefile tinyxml/Makefile)
+ 
+ echo "Configuration:
+--- game/Makefile.am
++++ game/Makefile.am
+@@ -41,7 +41,7 @@ critter_SOURCES = \
+         main.cpp
+ 
+ LDADD = \
+-	../curl/lib/libcurl.a \
++	-lcurl \
+ 	../utils/libutils.a \
+ 	../utilssdl/libutilssdl.a \
+ 	../utilsgl/libutilsgl.a \
+--- Makefile.am
++++ Makefile.am
+@@ -4,7 +4,7 @@
+ AUTOMAKE_OPTIONS = 1.4
+ 
+ ## Any directories that you want built and installed should go here.
+-SUBDIRS = curl tinyxml utils utilssdl utilsgl tools data game
++SUBDIRS = tinyxml utils utilssdl utilsgl tools data game
+ 
+ ## Any directories you want a part of the distribution should be listed
+ ## here, as well as have a Makefile generated at the end of configure.in

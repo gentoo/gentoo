@@ -1,0 +1,11 @@
+--- celestia.cfg.orig	2009-07-20 12:52:17.000000000 +0200
++++ celestia.cfg	2009-07-20 12:52:43.000000000 +0200
+@@ -195,7 +195,7 @@
+ # or
+ #   ExtrasDirectories  [ "D:\\celestia-extras" ]
+ #------------------------------------------------------------------------
+-  ExtrasDirectories  [ "extras-standard" "extras" ]
++  ExtrasDirectories  [ "extras-standard" "extras" "~/.celestia" ]
+ 
+ 
+ #------------------------------------------------------------------------

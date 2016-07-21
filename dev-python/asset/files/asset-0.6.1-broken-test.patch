@@ -1,0 +1,24 @@
+ asset/test.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/asset/test.py b/asset/test.py
+index 992e5fc..c8aab32 100644
+--- a/asset/test.py
++++ b/asset/test.py
+@@ -24,6 +24,8 @@ import pxml
+ import xml.etree.ElementTree as ET
+ import six
+ 
++from nose.plugins.skip import SkipTest
++
+ import asset
+ 
+ #------------------------------------------------------------------------------
+@@ -107,6 +109,7 @@ line-2</node>
+       ])
+ 
+   #----------------------------------------------------------------------------
++  @SkipTest
+   def test_filename(self):
+     # NOTE: this requires that `pxml` was installed as a zipped egg, and
+     # `globre` as an UNzipped egg, i.e.:

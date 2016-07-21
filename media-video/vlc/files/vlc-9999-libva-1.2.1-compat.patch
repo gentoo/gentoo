@@ -1,0 +1,12 @@
+--- a/modules/codec/avcodec/vaapi.c
++++ b/modules/codec/avcodec/vaapi.c
+@@ -34,6 +34,9 @@
+ #ifdef VLC_VA_BACKEND_XLIB
+ # include <vlc_xlib.h>
+ # include <va/va_x11.h>
++#if VA_MINOR_VERSION >= 34
++# include <va/va_compat.h>
++#endif
+ #endif
+ #ifdef VLC_VA_BACKEND_DRM
+ # include <sys/types.h>

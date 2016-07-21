@@ -1,0 +1,11 @@
+[Unit]
+Description=YP Bind
+Requires=rpcbind.service domainname.service
+After=rpcbind.service domainname.service network.target
+Before=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/sbin/ypbind -foreground
+
+[Install]
+WantedBy=multi-user.target

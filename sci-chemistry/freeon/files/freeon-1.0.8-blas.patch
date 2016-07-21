@@ -1,0 +1,165 @@
+ FreeON/Makefile.am |  2 +-
+ HiCu/Makefile.am   |  2 +-
+ ONX/Makefile.am    |  1 +
+ OneE/Makefile.am   |  2 +-
+ QCTC/Makefile.am   |  2 +-
+ SCFeqs/Makefile.am |  2 +-
+ configure.ac       | 12 ++++++++----
+ make.inc           |  2 +-
+ tests/Makefile.am  |  8 ++++----
+ tools/Makefile.am  |  2 +-
+ 10 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/FreeON/Makefile.am b/FreeON/Makefile.am
+index 18e0283..12db056 100644
+--- a/FreeON/Makefile.am
++++ b/FreeON/Makefile.am
+@@ -50,7 +50,7 @@ FreeON_DEPENDENCIES = $(LIBRARY_DEPENDENCY_FILES)
+ 
+ SOURCES_DEPCHECK = $(FreeON_SOURCES)
+ 
+-FreeON_LDADD = $(LDADD_MODULES)
++FreeON_LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ AM_CPPFLAGS += \
+   -DFREEON_BASISSETS=\"$(datadir)/$(PACKAGE)/BasisSets\" \
+diff --git a/HiCu/Makefile.am b/HiCu/Makefile.am
+index 1847354..cc4ebef 100644
+--- a/HiCu/Makefile.am
++++ b/HiCu/Makefile.am
+@@ -27,7 +27,7 @@ EXTRA_DIST = \
+   MMA/CubeRules/RuleD.Inc \
+   MMA/CubeRules/RuleE.Inc
+ 
+-LDADD = $(LDADD_MODULES)
++LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ EXTRA_INCLUDES = -I$(top_srcdir)/Modules/MMA/Functionals
+ AM_CPPFLAGS += -DRULE7 -DEXPLICIT_SOURCE
+diff --git a/ONX/Makefile.am b/ONX/Makefile.am
+index 4d25029..b27b149 100644
+--- a/ONX/Makefile.am
++++ b/ONX/Makefile.am
+@@ -61,6 +61,7 @@ EXTRA_INCLUDES = \
+ 
+ LDADD = \
+   $(LDADD_MODULES) \
++  $(LAPACK_LIBS) \
+   $(builddir)/../TwoE/libfreeonTwoE.la
+ 
+ # In case we have ctags installed, make the necessary tags files.
+diff --git a/OneE/Makefile.am b/OneE/Makefile.am
+index 784bede..ea86ae7 100644
+--- a/OneE/Makefile.am
++++ b/OneE/Makefile.am
+@@ -46,7 +46,7 @@ EXTRA_DIST = \
+   MMA/QQuad32.Inc \
+   MMA/QQuad64.Inc
+ 
+-LDADD = $(LDADD_MODULES)
++LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ EXTRA_INCLUDES = -I$(srcdir)/MMA
+ 
+diff --git a/QCTC/Makefile.am b/QCTC/Makefile.am
+index 3ec39f0..53c358c 100644
+--- a/QCTC/Makefile.am
++++ b/QCTC/Makefile.am
+@@ -105,7 +105,7 @@ EXTRA_DIST = \
+   PBCTensor/Majik_Kubic_WS2.Inc
+ 
+ EXTRA_INCLUDES = -I$(top_builddir)/OneE -I$(top_srcdir)/Modules/MMA/LookUpTables_800_6x
+-LDADD = $(LDADD_MODULES) libktrax.la
++LDADD = $(LDADD_MODULES) libktrax.la $(LAPACK_LIBS)
+ 
+ # In case we have ctags installed, make the necessary tags files.
+ .PHONY : tags
+diff --git a/SCFeqs/Makefile.am b/SCFeqs/Makefile.am
+index 2ee640f..709f220 100644
+--- a/SCFeqs/Makefile.am
++++ b/SCFeqs/Makefile.am
+@@ -57,7 +57,7 @@ SOURCES_DEPCHECK = \
+   $(P2Use_SOURCES) \
+   $(DIIS_SOURCES)
+ 
+-LDADD = $(LDADD_MODULES)
++LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ # In case we have ctags installed, make the necessary tags files.
+ .PHONY : tags
+diff --git a/configure.ac b/configure.ac
+index e0c6a77..726c880 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -784,12 +784,16 @@ END PROGRAM test_compiler
+                   you use a version >= 4.2.0])])
+ 
+ # Check for BLAS.
+-AC_SEARCH_LIBS([dgemm], [blas], [],
+-  [AC_MSG_FAILURE([specify the location of dgemm()])])
++PKG_CHECK_MODULES([BLAS],[blas],[],
++  AC_SEARCH_LIBS([dgemm], [blas], [],
++    [AC_MSG_FAILURE([specify the location of dgemm()])])
++  )
+ 
+ # Check for LAPACK.
+-AC_SEARCH_LIBS([dsyev], [lapack], [],
+-  [AC_MSG_FAILURE([specify the library that contains dsyev()])])
++PKG_CHECK_MODULES([LAPACK],[lapack],[],
++  AC_SEARCH_LIBS([dsyev], [lapack], [],
++    [AC_MSG_FAILURE([specify the library that contains dsyev()])])
++  )
+ 
+ AC_ARG_VAR([H5CC], [h5cc compiler wrapper command])
+ 
+diff --git a/make.inc b/make.inc
+index cf35e40..5766ff9 100644
+--- a/make.inc
++++ b/make.inc
+@@ -9,7 +9,7 @@ AM_CPPFLAGS = @AM_CPPFLAGS@
+ # Fix for bug in autoconf-2.59
+ builddir = .
+ 
+-LDADD_MODULES = $(top_builddir)/Modules/libfreeonmodules.la
++LDADD_MODULES = $(top_builddir)/Modules/libfreeonmodules.la $(LAPACK_MODULES)
+ 
+ # On filesystems which are case-insensitive (which really means HFS+ on OS X)
+ # we can not preprocess into a filename that differs by the case only, i.e. .C
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 6bd89f2..ae9da60 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -7,16 +7,16 @@ noinst_PROGRAMS = \
+   sendReceive_HGRho
+ 
+ sleeper_SOURCES = sleeper.F90
+-sleeper_LDADD = $(LDADD_MODULES)
++sleeper_LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ lock_SOURCES = lock.F90
+-lock_LDADD = $(LDADD_MODULES)
++lock_LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ sendReceive_DBL_RNK2_SOURCES = sendReceive_DBL_RNK2.F90
+-sendReceive_DBL_RNK2_LDADD = $(LDADD_MODULES)
++sendReceive_DBL_RNK2_LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ sendReceive_HGRho_SOURCES = sendReceive_HGRho.F90
+-sendReceive_HGRho_LDADD = $(LDADD_MODULES)
++sendReceive_HGRho_LDADD = $(LDADD_MODULES) $(LAPACK_LIBS)
+ 
+ if HAVE_MPIRUN
+ MPI_TESTS = locktest
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index e0baaff..a6b18b2 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -19,7 +19,7 @@ python_PYTHON = \
+ bin_PROGRAMS = printBCSR convertBCSR
+ 
+ printBCSR_SOURCES = printBCSR.F90
+-printBCSR_LDADD = $(top_builddir)/Modules/libfreeonmodules.la
++printBCSR_LDADD = $(top_builddir)/Modules/libfreeonmodules.la $(LAPACK_LIBS)
+ 
+ convertBCSR_SOURCES = \
+   convertBCSR.cc \

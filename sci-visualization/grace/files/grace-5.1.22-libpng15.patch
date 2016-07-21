@@ -1,0 +1,19 @@
+--- src/rstdrv.c
++++ src/rstdrv.c
+@@ -53,6 +53,7 @@
+ #endif
+ 
+ #ifdef HAVE_LIBPNG
++#  include <zlib.h>
+ #  include <png.h>
+ #endif
+ 
+@@ -885,7 +886,7 @@
+         return;
+     }
+ 
+-    if (setjmp(png_ptr->jmpbuf)) {
++    if (setjmp(png_jmpbuf(png_ptr))) {
+         png_destroy_write_struct(&png_ptr, &info_ptr);
+         return;
+     }

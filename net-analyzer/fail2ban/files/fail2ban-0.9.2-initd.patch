@@ -1,0 +1,25 @@
+--- a/files/gentoo-initd
++++ b/files/gentoo-initd
+@@ -38,19 +38,19 @@
+ 		# bug 347477
+ 		rm -rf /run/fail2ban/fail2ban.sock || return 1
+ 	fi
+-	${FAIL2BAN} start &> /dev/null
++	${FAIL2BAN} start
+ 	eend $? "Failed to start fail2ban"
+ }
+ 
+ stop() {
+ 	ebegin "Stopping fail2ban"
+-	${FAIL2BAN} stop &> /dev/null
++	${FAIL2BAN} stop
+ 	eend $? "Failed to stop fail2ban"
+ }
+ 
+ reload() {
+ 	ebegin "Reloading fail2ban"
+-	${FAIL2BAN} reload > /dev/null
++	${FAIL2BAN} reload
+ 	eend $? "Failed to reload fail2ban"
+ }
+ 

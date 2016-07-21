@@ -1,0 +1,10 @@
+--- Makefile.bak	2009-11-30 14:31:07.000000000 -0500
++++ Makefile	2009-11-30 14:31:34.000000000 -0500
+@@ -1,6 +1,2 @@
+-
+-
+ lsadb:	lsadb.c lsadb.h
+-	gcc -Wall -O2 -o $@ $< && strip $@
+-
+-    
++	${CC} -Wall ${CFLAGS} -o $@ $<

@@ -1,0 +1,16 @@
+fix building when USE=-curl is specified (bug #572074)
+
+--- ./code/client/cl_main.c.orig
++++ ./code/client/cl_main.c
+@@ -1872,7 +1872,11 @@
+ }
+ 
+ qboolean CL_IsDownloading(void) {
++#if USE_CURL
+ 	return clc.cURLUsed;
++#else
++	return qfalse;
++#endif
+ }
+ 
+ /*

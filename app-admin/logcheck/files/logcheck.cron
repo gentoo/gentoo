@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+if [ ! -d /var/lock/logcheck ]; then
+	mkdir -p /var/lock/logcheck
+fi
+chown -R logcheck:logcheck /var/lock/logcheck
+
+su -s /bin/bash -c /usr/sbin/logcheck logcheck

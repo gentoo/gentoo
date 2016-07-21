@@ -1,0 +1,24 @@
+diff -ur pth-2.0.7.orig/aclocal.m4 pth-2.0.7/aclocal.m4
+--- pth-2.0.7.orig/aclocal.m4	2012-08-08 16:25:05.289931224 +0200
++++ pth-2.0.7/aclocal.m4	2012-08-08 16:26:45.164932424 +0200
+@@ -1074,7 +1074,7 @@
+         braindead=no
+         case "x`uname -r`" in
+ changequote(, )dnl
+-            x2.[23456789]* ) ;;
++            x2.[23456789]* | x3.[0-9]* ) ;;
+ changequote([, ])
+             * ) braindead=yes ;;
+         esac
+diff -ur pth-2.0.7.orig/configure pth-2.0.7/configure
+--- pth-2.0.7.orig/configure	2012-08-08 16:25:05.289931224 +0200
++++ pth-2.0.7/configure	2012-08-08 16:27:00.391494004 +0200
+@@ -22512,7 +22512,7 @@
+     *-*-linux* )
+         braindead=no
+         case "x`uname -r`" in
+-            x2.[23456789]* ) ;;
++            x2.[23456789]* | x3.[0-9]* ) ;;
+ 
+             * ) braindead=yes ;;
+         esac

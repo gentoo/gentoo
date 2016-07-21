@@ -1,0 +1,52 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# bash command-line completion for figlet
+# author: Aaron Walker <ka0ttic@gentoo.org>
+
+_figlet() {
+    local cur prev opts x
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-f -d -c -l -r -x -t -w -p -n -D -E -C -N -s -S -k -W -o \
+	        -m -v -I -L -R -X"
+
+    if [[ "${cur}" == -* || ${COMP_CWORD} -eq 1 ]] ; then
+	    COMPREPLY=( $(compgen -W "${opts}" -- $cur) )
+    	return 0
+    fi
+
+    case "${prev}" in
+	-f)
+	    COMPREPLY=( $(compgen -f -- $cur) \
+		    $(compgen -W "$(\
+		    for x in /usr/share/figlet/*.flf ; do \
+		        [[ -f ${x} ]] && { local y=${x##*/} ; echo ${y%.*} ; } \
+		    done)" -- $cur) )
+	    ;;
+	-d)
+	    COMPREPLY=( $(compgen -d -S '/' -- $cur) )
+	    ;;
+	-C)
+	    COMPREPLY=( $(compgen -f -- $cur) \
+            $(compgen -W "$(\
+            for x in /usr/share/figlet/*.flc ; do \
+                [[ -f ${x} ]] && { local y=${x##*/} ; echo ${y%.*} ; } \
+            done)" -- $cur) )
+	    ;;
+	-m)
+	    COMPREPLY=( $(compgen -W "$(\
+		    for ((x = 1 ; x < 64 ; x++)) ; do \
+		        echo ${x} ; \
+		    done)" ) )
+	    ;;
+	-I)
+	    COMPREPLY=( $(compgen -W "-1 0 1 2 3 4" -- $cur) )
+	    ;;
+    esac
+}
+complete -o filenames -F _figlet figlet
+
+# vim: set ft=sh tw=80 sw=4 et :

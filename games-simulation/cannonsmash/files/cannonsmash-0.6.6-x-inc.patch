@@ -1,0 +1,18 @@
+Patch by Jason Bucata.
+http://bugs.gentoo.org/84187
+
+--- configure
++++ configure
+@@ -5515,7 +5515,11 @@
+ fi
+ 
+ 
+-CFLAGS="-I $x_includes"
++if test "x$x_includes" != "x"; then
++  CFLAGS="-I $x_includes"
++else
++  CFLAGS=""
++fi
+ LDFLAGS="-L/usr/local/lib -L$x_libraries -L$libdir"
+ CXXFLAGS="$CFLAGS -Wall"
+ 

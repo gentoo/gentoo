@@ -1,0 +1,15 @@
+"Submitted" upstream: https://github.com/xelerance/xl2tpd/pull/4
+
+=== modified file 'Makefile'
+--- Makefile	2011-09-20 04:44:23 +0000
++++ Makefile	2011-09-20 04:44:35 +0000
+@@ -114,7 +114,7 @@
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+ 
+ $(CONTROL_EXEC): $(CONTROL_SRCS)
+-	$(CC) $(CONTROL_SRCS) -o $@
++	$(CC) $(LDFLAGS) $(CONTROL_SRCS) -o $@
+ 
+ pfc:
+ 	$(CC) $(CFLAGS) -c contrib/pfc.c
+

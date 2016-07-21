@@ -1,0 +1,11 @@
+--- valkyrie-2.0.0/vk_config.pri
++++ valkyrie-2.0.0/vk_config.pri
+@@ -14,7 +14,7 @@
+ # Set a default value for PREFIX (etc) in the generated makefiles
+ # Note: ignore INSTALL_ROOT: it's a qt special, can't be set from here
+ isEmpty(PREFIX) {
+-  PREFIX = /usr/local
++  PREFIX = /usr
+ }
+ isEmpty(BINDIR) {
+   BINDIR = $$PREFIX/bin

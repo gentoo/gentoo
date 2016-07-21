@@ -1,0 +1,111 @@
+diff --git a/spec/base.rb b/spec/base.rb
+index 965a6e2..60fb86f 100644
+--- a/spec/base.rb
++++ b/spec/base.rb
+@@ -2,8 +2,6 @@ def is_ruby_19?
+   RUBY_VERSION == '1.9.1' or RUBY_VERSION == '1.9.2'
+ end
+ 
+-Encoding.default_internal = Encoding.default_external = "ASCII-8BIT" if is_ruby_19?
+-
+ require 'rubygems'
+ require 'spec'
+ 
+@@ -14,3 +12,4 @@ rescue LoadError
+ end
+ 
+ require File.dirname(__FILE__) + '/../lib/restclient'
++require File.join(File.dirname(__FILE__), 'helpers', 'file_content_helper')
+diff --git a/spec/helpers/file_content_helper.rb b/spec/helpers/file_content_helper.rb
+new file mode 100644
+index 0000000..86dd263
+--- /dev/null
++++ b/spec/helpers/file_content_helper.rb
+@@ -0,0 +1,3 @@
++def file_content_helper(path)
++  IO.respond_to?(:binread) ? IO.binread(path) : IO.read(path)
++end
+diff --git a/spec/payload_spec.rb b/spec/payload_spec.rb
+index 89ded79..c57b300 100644
+--- a/spec/payload_spec.rb
++++ b/spec/payload_spec.rb
+@@ -102,26 +102,28 @@ baz\r
+ 
+     it "should form properly separated multipart data" do
+       f = File.new(File.dirname(__FILE__) + "/master_shake.jpg")
++      file_contents = file_content_helper(f.path)
+       m = RestClient::Payload::Multipart.new({:foo => f})
+       m.to_s.should == <<-EOS
+ --#{m.boundary}\r
+ Content-Disposition: form-data; name="foo"; filename="master_shake.jpg"\r
+ Content-Type: image/jpeg\r
+ \r
+-#{IO.read(f.path)}\r
++#{file_contents}\r
+ --#{m.boundary}--\r
+       EOS
+     end
+ 
+     it "should ignore the name attribute when it's not set" do
+       f = File.new(File.dirname(__FILE__) + "/master_shake.jpg")
++      file_contents = file_content_helper(f.path)
+       m = RestClient::Payload::Multipart.new({nil => f})
+       m.to_s.should == <<-EOS
+ --#{m.boundary}\r
+ Content-Disposition: form-data; filename="master_shake.jpg"\r
+ Content-Type: image/jpeg\r
+ \r
+-#{IO.read(f.path)}\r
++#{file_contents}\r
+ --#{m.boundary}--\r
+       EOS
+     end
+@@ -130,13 +132,14 @@ Content-Type: image/jpeg\r
+       f = File.new(File.dirname(__FILE__) + "/master_shake.jpg")
+       f.instance_eval "def content_type; 'text/plain'; end"
+       f.instance_eval "def original_filename; 'foo.txt'; end"
++      file_contents = file_content_helper(f.path)
+       m = RestClient::Payload::Multipart.new({:foo => f})
+       m.to_s.should == <<-EOS
+ --#{m.boundary}\r
+ Content-Disposition: form-data; name="foo"; filename="foo.txt"\r
+ Content-Type: text/plain\r
+ \r
+-#{IO.read(f.path)}\r
++#{file_contents}\r
+ --#{m.boundary}--\r
+       EOS
+     end
+@@ -154,13 +157,14 @@ foo\r
+       f = File.new(File.dirname(__FILE__) + "/master_shake.jpg")
+       f.instance_eval "def content_type; 'text/plain'; end"
+       f.instance_eval "def original_filename; 'foo.txt'; end"
++      file_contents = file_content_helper(f.path)
+       m = RestClient::Payload::Multipart.new({:foo => {:bar => f}})
+       m.to_s.should == <<-EOS
+ --#{m.boundary}\r
+ Content-Disposition: form-data; name="foo[bar]"; filename="foo.txt"\r
+ Content-Type: text/plain\r
+ \r
+-#{IO.read(f.path)}\r
++#{file_contents}\r
+ --#{m.boundary}--\r
+       EOS
+     end
+diff --git a/spec/response_spec.rb b/spec/response_spec.rb
+index 840698e..d3964a8 100644
+--- a/spec/response_spec.rb
++++ b/spec/response_spec.rb
+@@ -90,12 +90,6 @@ describe RestClient::Response do
+       RestClient::Request.execute(:url => 'http://some/resource', :method => :get, :user => 'foo', :password => 'bar', :headers => {:accept => :json}).body.should == 'Foo'
+     end
+ 
+-    it "follows a redirection and keep the cookies" do
+-      stub_request(:get, 'http://some/resource').to_return(:body => '', :status => 301, :headers => {'Set-Cookie' => CGI::Cookie.new('Foo', 'Bar'), 'Location' => 'http://new/resource', })
+-      stub_request(:get, 'http://new/resource').with(:headers => {'Cookie' => 'Foo=Bar'}).to_return(:body => 'Qux')
+-      RestClient::Request.execute(:url => 'http://some/resource', :method => :get).body.should == 'Qux'
+-    end
+-
+     it "doesn't follow a 301 when the request is a post" do
+       net_http_res = mock('net http response', :code => 301)
+       response = RestClient::Response.create('abc', net_http_res, {:method => :post})

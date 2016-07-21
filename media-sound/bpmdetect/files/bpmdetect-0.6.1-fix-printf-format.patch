@@ -1,0 +1,37 @@
+Fix broken printf statements:
+* src/main.cpp:49:62: warning: too many arguments for format [-Wformat-extra-args]
+*    printf("Usage:\n bpmdetect [switches] [files]\n\n", version);
+*
+* src/track.cpp:111:57: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘double’ [-Wformat=]
+*      snprintf(buffer, BPM_LEN, "%05d", (int) dBPM * 100. );
+
+--- bpmdetect/src/main.cpp
++++ bpmdetect/src/main.cpp
+@@ -34,6 +34,7 @@
+ #endif
+ 
+ #include <getopt.h>
++#include <stdio.h>
+ 
+ #include "track.h"
+ #include "trackfmod.h"  // for FMOD system
+@@ -46,7 +47,7 @@
+ 
+ void display_help() {
+   printf("BPMDetect version %s\n\n", version);
+-  printf("Usage:\n bpmdetect [switches] [files]\n\n", version);
++  fputs("Usage:\n bpmdetect [switches] [files]\n\n", stdout);
+   printf("Switches:\n");
+ #ifndef NO_GUI
+   printf("-c --console         - run in console mode\n");
+--- bpmdetect/src/track.cpp
++++ bpmdetect/src/track.cpp
+@@ -108,7 +108,7 @@
+   } else if( format == "000" ) {
+     snprintf(buffer, BPM_LEN, "%03d", (int) dBPM );
+   } else if( format == "00000" ) {
+-    snprintf(buffer, BPM_LEN, "%05d", (int) dBPM * 100. );
++    snprintf(buffer, BPM_LEN, "%05d", static_cast<int>(dBPM * 100.) );
+   } else { // all other formats are converted to "0.00"
+     snprintf(buffer, BPM_LEN, "%.2f", dBPM );
+   }

@@ -1,0 +1,26 @@
+From 7207e6285e932044cd66d49d0dc484666cfb0092 Mon Sep 17 00:00:00 2001
+From: Hrvoje Senjan <hrvoje.senjan@gmail.com>
+Date: Sat, 17 Jan 2015 20:12:18 +0100
+Subject: [PATCH] Add missing QIODevice include
+
+Fixes build with Qt 5.5
+---
+ include/QtCrypto/qca_basic.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/QtCrypto/qca_basic.h b/include/QtCrypto/qca_basic.h
+index 42808c5..e0c6cbb 100644
+--- a/include/QtCrypto/qca_basic.h
++++ b/include/QtCrypto/qca_basic.h
+@@ -35,6 +35,8 @@
+ 
+ #include "qca_core.h"
+ 
++#include <QIODevice>
++
+ // Qt5 comes with QStringLiteral for wrapping string literals, which Qt4 does
+ // not have. It is needed if the headers are built with QT_NO_CAST_FROM_ASCII.
+ // Defining it here as QString::fromUtf8 for convenience.
+-- 
+2.0.5
+

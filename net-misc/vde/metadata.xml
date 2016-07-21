@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nvinson234@gmail.com</email>
+    <name>Nicholas Vinson</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>mlspamcb@noci.xs4all.nl</email>
+  </maintainer>
+  <maintainer type="person">
+    <email>jmbsvicetto@gentoo.org</email>
+    <name>Jorge Manuel B. S. Vicetto</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="pcap">
+    Enable the pcap-based plugin that allows creating a switch against
+    a real interface.
+  </flag>
+    <flag name="ssl">
+    Enable the cryptcab plugin that allows creating an encrypted
+    virtual cable.
+  </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">vde</remote-id>
+  </upstream>
+</pkgmetadata>

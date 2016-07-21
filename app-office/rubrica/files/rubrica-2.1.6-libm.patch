@@ -1,0 +1,24 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -110,7 +110,7 @@
+ 
+ 
+ 
+-rubrica2_LDADD = $(top_builddir)/libral/libral.la $(RUBRICA_LIBS) $(LIBRAL_LIBS)
++rubrica2_LDADD = $(top_builddir)/libral/libral.la $(RUBRICA_LIBS) $(LIBRAL_LIBS) $(LIBM)
+ 
+ 
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -102,6 +102,10 @@
+ AC_DEFINE_UNQUOTED(RUBRICA_CAP_NAME, "$RUBRICA_CAP_NAME", The program name with capital initial letter)
+ AC_DEFINE_UNQUOTED(RUBRICA_VERSION, "$RUBRICA_VERSION", The program version)
+ 
++dnl
++dnl libm
++LT_LIB_M
++dnl
+ 
+ dnl
+ dnl Start of pkg-config checks

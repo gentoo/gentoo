@@ -1,0 +1,25 @@
+From b7dabab33e00bdbd8b566ca058a1bce7dec2b77d Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 2 Oct 2010 01:45:21 +0200
+Subject: [PATCH 8/9] Do not build tests unless required
+
+---
+ test/Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 5b0992e..a1aefa0 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -14,7 +14,7 @@ else
+ platform_only_programs = test-dns-sd test-symlinks test-parse-ls-lga
+ endif
+ 
+-noinst_PROGRAMS =				\
++check_PROGRAMS =				\
+ 	test-acl				\
+ 	test-address				\
+ 	test-async				\
+-- 
+1.7.3
+

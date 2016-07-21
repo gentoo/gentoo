@@ -1,0 +1,16 @@
+diff -ru aacgain-1.9-orig/aacgain/linux/prepare.sh aacgain-1.9/aacgain/linux/prepare.sh
+--- aacgain-1.9-orig/aacgain/linux/prepare.sh	2013-02-19 07:00:54.313006065 +0100
++++ aacgain-1.9/aacgain/linux/prepare.sh	2013-02-19 07:01:42.849006331 +0100
+@@ -51,7 +51,11 @@
+ #remove obsolete config.h; a correct one will be created by automake's configure
+ rm -f ../../mp3gain/mpglibDBL/config.h
+ #correct header include paths
+-patch -p0 -N <mp3gain.patch
++sed -i 's:../../::' mp3gain.patch
++old="$(pwd)"
++cd ../..
++patch -p0 -N <"${old}/mp3gain.patch"
++cd "$old"
+ 
+ echo Creating the configure script
+ cp -p configure.ac ../..

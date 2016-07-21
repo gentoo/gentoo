@@ -1,0 +1,26 @@
+Rename mlable to mlabel, accounting for corresponding change in maxima-5.29.
+https://bugs.gentoo.org/show_bug.cgi?id=448242
+
+Patch taken from maxima git repo:
+http://maxima.git.sourceforge.net/git/gitweb.cgi?p=maxima/maxima;a=commit;h=620f23e27328a58bfa81fe101734b7488a2b93f5
+
+--- a/imaxima.lisp
++++ b/imaxima.lisp
+@@ -498,7 +498,7 @@
+ 
+ (defun tex-mtext (x l r) (tex-list (cdr x) l r ""))
+ 
+-(defun tex-mlable (x l r)
++(defun tex-mlabel (x l r)
+   (tex (caddr x)
+     (append l
+       (if (cadr x)
+@@ -517,7 +517,7 @@
+ (defun latex (x)
+ ;  (princ x)  ;; uncomment to debug.
+   (if (and (listp x) (car x) (listp (car x)) (caar x)
+-	   (equal (caar x) 'mlable)
++	   (equal (caar x) 'mlabel)
+ 	   (cdr x)
+ 	   (cadr x)
+ 	   (input-label-p (cadr x)))

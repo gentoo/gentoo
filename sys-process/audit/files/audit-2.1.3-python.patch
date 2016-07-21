@@ -1,0 +1,24 @@
+diff -Nuar --exclude '*.orig' audit-2.1.3.orig/bindings/python/Makefile.am audit-2.1.3/bindings/python/Makefile.am
+--- audit-2.1.3.orig/bindings/python/Makefile.am	2011-08-15 17:31:01.000000000 +0000
++++ audit-2.1.3/bindings/python/Makefile.am	2011-09-10 19:01:36.974983756 +0000
+@@ -27,5 +27,6 @@
+ 
+ auparse_la_SOURCES = auparse_python.c
+ auparse_la_CPPFLAGS = -I$(top_srcdir)/auparse $(AM_CPPFLAGS) -I/usr/include/python$(PYTHON_VERSION) -fno-strict-aliasing
+-auparse_la_LDFLAGS = -module -avoid-version -Wl,-z,relro
++auparse_la_CFLAGS = -shared
++auparse_la_LDFLAGS = -module -avoid-version -shared -Wl,-z,relro
+ auparse_la_LIBADD = ../../auparse/libauparse.la ../../lib/libaudit.la
+diff -Nuar --exclude '*.orig' audit-2.1.3.orig/swig/Makefile.am audit-2.1.3/swig/Makefile.am
+--- audit-2.1.3.orig/swig/Makefile.am	2011-08-15 17:31:03.000000000 +0000
++++ audit-2.1.3/swig/Makefile.am	2011-09-10 19:02:14.095067690 +0000
+@@ -28,7 +28,8 @@
+ pyexec_PYTHON = audit.py
+ pyexec_LTLIBRARIES = _audit.la
+ pyexec_SOLIBRARIES = _audit.so
+-_audit_la_LDFLAGS = -module -avoid-version -Wl,-z,relro
++_audit_la_CFLAGS = -shared
++_audit_la_LDFLAGS = -module -avoid-version -shared -Wl,-z,relro
+ _audit_la_HEADERS: $(top_builddir)/config.h 
+ _audit_la_DEPENDENCIES =${top_srcdir}/lib/libaudit.h ${top_builddir}/lib/libaudit.la
+ nodist__audit_la_SOURCES  = audit_wrap.c

@@ -1,0 +1,431 @@
+diff --git a/rpc/rpc-transport/rdma/src/Makefile.am b/rpc/rpc-transport/rdma/src/Makefile.am
+index b4b940b..80f7a22 100644
+--- a/rpc/rpc-transport/rdma/src/Makefile.am
++++ b/rpc/rpc-transport/rdma/src/Makefile.am
+@@ -3,7 +3,7 @@
+ transport_LTLIBRARIES = rdma.la
+ transportdir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/rpc-transport
+ 
+-rdma_la_LDFLAGS = -module -avoidversion
++rdma_la_LDFLAGS = -module -avoid-version -shared
+ 
+ rdma_la_SOURCES = rdma.c name.c
+ rdma_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la     \
+diff --git a/rpc/rpc-transport/socket/src/Makefile.am b/rpc/rpc-transport/socket/src/Makefile.am
+index 2c918c7..b07db72 100644
+--- a/rpc/rpc-transport/socket/src/Makefile.am
++++ b/rpc/rpc-transport/socket/src/Makefile.am
+@@ -3,7 +3,7 @@ noinst_HEADERS = socket.h name.h
+ rpctransport_LTLIBRARIES = socket.la
+ rpctransportdir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/rpc-transport
+ 
+-socket_la_LDFLAGS = -module -avoidversion
++socket_la_LDFLAGS = -module -avoid-version -shared
+ 
+ socket_la_SOURCES = socket.c name.c
+ socket_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/cluster/afr/src/Makefile.am b/xlators/cluster/afr/src/Makefile.am
+index 95db5dd..cdecea1 100644
+--- a/xlators/cluster/afr/src/Makefile.am
++++ b/xlators/cluster/afr/src/Makefile.am
+@@ -7,11 +7,11 @@ afr_common_source = afr-dir-read.c afr-dir-write.c afr-inode-read.c \
+ 	afr-self-heal-algorithm.c afr-lk-common.c afr-self-heald.c \
+ 	$(top_builddir)/xlators/lib/src/libxlator.c
+ 
+-afr_la_LDFLAGS = -module -avoidversion
++afr_la_LDFLAGS = -module -avoid-version -shared
+ afr_la_SOURCES = $(afr_common_source) afr.c
+ afr_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 
+-pump_la_LDFLAGS = -module -avoidversion
++pump_la_LDFLAGS = -module -avoid-version -shared
+ pump_la_SOURCES =  $(afr_common_source) pump.c
+ pump_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 
+diff --git a/xlators/cluster/dht/src/Makefile.am b/xlators/cluster/dht/src/Makefile.am
+index e35058d..127a023 100644
+--- a/xlators/cluster/dht/src/Makefile.am
++++ b/xlators/cluster/dht/src/Makefile.am
+@@ -12,13 +12,13 @@ dht_la_SOURCES = $(dht_common_source) dht.c
+ nufa_la_SOURCES = $(dht_common_source) nufa.c
+ switch_la_SOURCES = $(dht_common_source) switch.c
+ 
+-dht_la_LDFLAGS = -module -avoidversion
++dht_la_LDFLAGS = -module -avoid-version -shared
+ dht_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 
+-nufa_la_LDFLAGS = -module -avoidversion
++nufa_la_LDFLAGS = -module -avoid-version -shared
+ nufa_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 
+-switch_la_LDFLAGS = -module -avoidversion
++switch_la_LDFLAGS = -module -avoid-version -shared
+ switch_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 
+ noinst_HEADERS = dht-common.h dht-mem-types.h \
+diff --git a/xlators/cluster/stripe/src/Makefile.am b/xlators/cluster/stripe/src/Makefile.am
+index 8c48d34..18aba97 100644
+--- a/xlators/cluster/stripe/src/Makefile.am
++++ b/xlators/cluster/stripe/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = stripe.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/cluster
+ 
+-stripe_la_LDFLAGS = -module -avoidversion
++stripe_la_LDFLAGS = -module -avoid-version -shared
+ 
+ stripe_la_SOURCES = stripe.c stripe-helpers.c \
+ 	$(top_builddir)/xlators/lib/src/libxlator.c
+diff --git a/xlators/debug/error-gen/src/Makefile.am b/xlators/debug/error-gen/src/Makefile.am
+index df90803..cce10c0 100644
+--- a/xlators/debug/error-gen/src/Makefile.am
++++ b/xlators/debug/error-gen/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = error-gen.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/debug
+ 
+-error_gen_la_LDFLAGS = -module -avoidversion
++error_gen_la_LDFLAGS = -module -avoid-version -shared
+ 
+ error_gen_la_SOURCES = error-gen.c
+ error_gen_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/debug/io-stats/src/Makefile.am b/xlators/debug/io-stats/src/Makefile.am
+index b894e79..cff914a 100644
+--- a/xlators/debug/io-stats/src/Makefile.am
++++ b/xlators/debug/io-stats/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = io-stats.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/debug
+ 
+-io_stats_la_LDFLAGS = -module -avoidversion
++io_stats_la_LDFLAGS = -module -avoid-version -shared
+ 
+ io_stats_la_SOURCES = io-stats.c
+ io_stats_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/debug/trace/src/Makefile.am b/xlators/debug/trace/src/Makefile.am
+index 0f1679a..a0eb5a6 100644
+--- a/xlators/debug/trace/src/Makefile.am
++++ b/xlators/debug/trace/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = trace.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/debug
+ 
+-trace_la_LDFLAGS = -module -avoidversion
++trace_la_LDFLAGS = -module -avoid-version -shared
+ 
+ trace_la_SOURCES = trace.c
+ trace_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/encryption/rot-13/src/Makefile.am b/xlators/encryption/rot-13/src/Makefile.am
+index ba5e623..45573aa 100644
+--- a/xlators/encryption/rot-13/src/Makefile.am
++++ b/xlators/encryption/rot-13/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = rot-13.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/encryption
+ 
+-rot_13_la_LDFLAGS = -module -avoidversion
++rot_13_la_LDFLAGS = -module -avoid-version -shared
+ 
+ rot_13_la_SOURCES = rot-13.c
+ rot_13_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la 
+diff --git a/xlators/features/index/src/Makefile.am b/xlators/features/index/src/Makefile.am
+index 5d037c7..c43c936 100644
+--- a/xlators/features/index/src/Makefile.am
++++ b/xlators/features/index/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = index.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-index_la_LDFLAGS = -module -avoidversion
++index_la_LDFLAGS = -module -avoid-version -shared
+ 
+ index_la_SOURCES = index.c
+ index_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/features/locks/src/Makefile.am b/xlators/features/locks/src/Makefile.am
+index e396768..5181e28 100644
+--- a/xlators/features/locks/src/Makefile.am
++++ b/xlators/features/locks/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = locks.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-locks_la_LDFLAGS = -module -avoidversion
++locks_la_LDFLAGS = -module -avoid-version -shared
+ 
+ locks_la_SOURCES = common.c posix.c entrylk.c inodelk.c reservelk.c \
+ 		   clear.c
+diff --git a/xlators/features/mac-compat/src/Makefile.am b/xlators/features/mac-compat/src/Makefile.am
+index 915c13e..698b990 100644
+--- a/xlators/features/mac-compat/src/Makefile.am
++++ b/xlators/features/mac-compat/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = mac-compat.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-mac_compat_la_LDFLAGS = -module -avoidversion
++mac_compat_la_LDFLAGS = -module -avoid-version -shared
+ 
+ mac_compat_la_SOURCES = mac-compat.c
+ mac_compat_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/features/marker/src/Makefile.am b/xlators/features/marker/src/Makefile.am
+index 501586a..630ae96 100644
+--- a/xlators/features/marker/src/Makefile.am
++++ b/xlators/features/marker/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = marker.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-marker_la_LDFLAGS = -module -avoidversion
++marker_la_LDFLAGS = -module -avoid-version -shared
+ 
+ marker_la_SOURCES = marker.c marker-quota.c marker-quota-helper.c marker-common.c
+ marker_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/features/quiesce/src/Makefile.am b/xlators/features/quiesce/src/Makefile.am
+index e8ab4cb..4234269 100644
+--- a/xlators/features/quiesce/src/Makefile.am
++++ b/xlators/features/quiesce/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = quiesce.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-quiesce_la_LDFLAGS = -module -avoidversion
++quiesce_la_LDFLAGS = -module -avoid-version -shared
+ 
+ quiesce_la_SOURCES = quiesce.c
+ quiesce_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/features/quota/src/Makefile.am b/xlators/features/quota/src/Makefile.am
+index 4baa5f0..cd687bc 100644
+--- a/xlators/features/quota/src/Makefile.am
++++ b/xlators/features/quota/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = quota.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+-quota_la_LDFLAGS = -module -avoidversion
++quota_la_LDFLAGS = -module -avoid-version -shared
+ 
+ quota_la_SOURCES = quota.c
+ quota_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/features/read-only/src/Makefile.am b/xlators/features/read-only/src/Makefile.am
+index 31ae4f3..45dcef5 100644
+--- a/xlators/features/read-only/src/Makefile.am
++++ b/xlators/features/read-only/src/Makefile.am
+@@ -4,12 +4,12 @@ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/features
+ 
+ noinst_HEADERS = read-only-common.h
+ 
+-read_only_la_LDFLAGS = -module -avoidversion
++read_only_la_LDFLAGS = -module -avoid-version -shared
+ 
+ read_only_la_SOURCES = read-only.c read-only-common.c
+ read_only_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la 
+ 
+-worm_la_LDFLAGS = -module -avoidversion
++worm_la_LDFLAGS = -module -avoid-version -shared
+ 
+ worm_la_SOURCES = read-only-common.c worm.c
+ worm_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/mgmt/glusterd/src/Makefile.am b/xlators/mgmt/glusterd/src/Makefile.am
+index 485350b..7facc66 100644
+--- a/xlators/mgmt/glusterd/src/Makefile.am
++++ b/xlators/mgmt/glusterd/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = glusterd.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/mgmt
+ glusterd_la_CPPFLAGS = "-DFILTERDIR=\"$(libdir)/glusterfs/$(PACKAGE_VERSION)/filter\""
+-glusterd_la_LDFLAGS = -module -avoidversion $(LIBXML2_LIBS) -lcrypto
++glusterd_la_LDFLAGS = -module -avoid-version -shared
+ glusterd_la_SOURCES = glusterd.c glusterd-handler.c glusterd-sm.c \
+ 	glusterd-op-sm.c glusterd-utils.c glusterd-rpc-ops.c \
+ 	glusterd-store.c glusterd-handshake.c glusterd-pmap.c \
+@@ -12,7 +12,8 @@ glusterd_la_SOURCES = glusterd.c glusterd-handler.c glusterd-sm.c \
+ 
+ glusterd_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la \
+ 		     $(top_builddir)/rpc/xdr/src/libgfxdr.la \
+-		     $(top_builddir)/rpc/rpc-lib/src/libgfrpc.la
++		     $(top_builddir)/rpc/rpc-lib/src/libgfrpc.la \
++			  $(LIBXML2_LIBS) -lcrypto
+ 
+ noinst_HEADERS = glusterd.h glusterd-utils.h glusterd-op-sm.h \
+ 	glusterd-sm.h glusterd-store.h glusterd-mem-types.h \
+diff --git a/xlators/nfs/server/src/Makefile.am b/xlators/nfs/server/src/Makefile.am
+index ef3b672..48cca34 100644
+--- a/xlators/nfs/server/src/Makefile.am
++++ b/xlators/nfs/server/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = server.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/nfs
+ nfsrpclibdir = $(top_srcdir)/rpc/rpc-lib/src
+-server_la_LDFLAGS = -module -avoidversion
++server_la_LDFLAGS = -module -avoid-version -shared
+ server_la_SOURCES = nfs.c nfs-common.c nfs-fops.c nfs-inodes.c \
+ 	nfs-generics.c mount3.c nfs3-fh.c nfs3.c nfs3-helpers.c nlm4.c \
+ 	nlmcbk_svc.c mount3udp_svc.c
+diff --git a/xlators/performance/io-cache/src/Makefile.am b/xlators/performance/io-cache/src/Makefile.am
+index 6dd270e..f066519 100644
+--- a/xlators/performance/io-cache/src/Makefile.am
++++ b/xlators/performance/io-cache/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = io-cache.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-io_cache_la_LDFLAGS = -module -avoidversion 
++io_cache_la_LDFLAGS = -module -avoid-version -shared 
+ 
+ io_cache_la_SOURCES = io-cache.c page.c ioc-inode.c
+ io_cache_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/io-threads/src/Makefile.am b/xlators/performance/io-threads/src/Makefile.am
+index 72f9a80..2de6cbb 100644
+--- a/xlators/performance/io-threads/src/Makefile.am
++++ b/xlators/performance/io-threads/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = io-threads.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-io_threads_la_LDFLAGS = -module -avoidversion 
++io_threads_la_LDFLAGS = -module -avoid-version -shared 
+ 
+ io_threads_la_SOURCES = io-threads.c
+ io_threads_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/md-cache/src/Makefile.am b/xlators/performance/md-cache/src/Makefile.am
+index 150e724..dc6fb54 100644
+--- a/xlators/performance/md-cache/src/Makefile.am
++++ b/xlators/performance/md-cache/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = md-cache.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-md_cache_la_LDFLAGS = -module -avoidversion
++md_cache_la_LDFLAGS = -module -avoid-version -shared
+ 
+ md_cache_la_SOURCES = md-cache.c
+ md_cache_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/quick-read/src/Makefile.am b/xlators/performance/quick-read/src/Makefile.am
+index db917f8..1da51b2 100644
+--- a/xlators/performance/quick-read/src/Makefile.am
++++ b/xlators/performance/quick-read/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = quick-read.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-quick_read_la_LDFLAGS = -module -avoidversion 
++quick_read_la_LDFLAGS = -module -avoid-version -shared 
+ 
+ quick_read_la_SOURCES = quick-read.c
+ quick_read_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/read-ahead/src/Makefile.am b/xlators/performance/read-ahead/src/Makefile.am
+index b46020a..1e17a3a 100644
+--- a/xlators/performance/read-ahead/src/Makefile.am
++++ b/xlators/performance/read-ahead/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = read-ahead.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-read_ahead_la_LDFLAGS = -module -avoidversion
++read_ahead_la_LDFLAGS = -module -avoid-version -shared
+ 
+ read_ahead_la_SOURCES = read-ahead.c page.c
+ read_ahead_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/symlink-cache/src/Makefile.am b/xlators/performance/symlink-cache/src/Makefile.am
+index 06e85fc..2f893ce 100644
+--- a/xlators/performance/symlink-cache/src/Makefile.am
++++ b/xlators/performance/symlink-cache/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = symlink-cache.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/testing/performance
+ 
+-symlink_cache_la_LDFLAGS = -module -avoidversion 
++symlink_cache_la_LDFLAGS = -module -avoid-version -shared 
+ 
+ symlink_cache_la_SOURCES = symlink-cache.c
+ symlink_cache_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/performance/write-behind/src/Makefile.am b/xlators/performance/write-behind/src/Makefile.am
+index a5ebc90..838d6da 100644
+--- a/xlators/performance/write-behind/src/Makefile.am
++++ b/xlators/performance/write-behind/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = write-behind.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/performance
+ 
+-write_behind_la_LDFLAGS = -module -avoidversion 
++write_behind_la_LDFLAGS = -module -avoid-version -shared 
+ 
+ write_behind_la_SOURCES = write-behind.c
+ write_behind_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/protocol/auth/addr/src/Makefile.am b/xlators/protocol/auth/addr/src/Makefile.am
+index f09d1c5..c77fce3 100644
+--- a/xlators/protocol/auth/addr/src/Makefile.am
++++ b/xlators/protocol/auth/addr/src/Makefile.am
+@@ -1,7 +1,7 @@
+ auth_LTLIBRARIES = addr.la
+ authdir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/auth
+ 
+-addr_la_LDFLAGS = -module -avoidversion
++addr_la_LDFLAGS = -module -avoid-version -shared
+ 
+ addr_la_SOURCES = addr.c
+ addr_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/protocol/auth/login/src/Makefile.am b/xlators/protocol/auth/login/src/Makefile.am
+index b4719d1..5a5db4d 100644
+--- a/xlators/protocol/auth/login/src/Makefile.am
++++ b/xlators/protocol/auth/login/src/Makefile.am
+@@ -1,7 +1,7 @@
+ auth_LTLIBRARIES = login.la
+ authdir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/auth
+ 
+-login_la_LDFLAGS = -module -avoidversion
++login_la_LDFLAGS = -module -avoid-version -shared
+ 
+ login_la_SOURCES = login.c
+ login_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/protocol/client/src/Makefile.am b/xlators/protocol/client/src/Makefile.am
+index 29c6e9d..19d2ed5 100644
+--- a/xlators/protocol/client/src/Makefile.am
++++ b/xlators/protocol/client/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = client.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/protocol
+ 
+-client_la_LDFLAGS = -module -avoidversion
++client_la_LDFLAGS = -module -avoid-version -shared
+ 
+ client_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la \
+ 	$(top_builddir)/rpc/rpc-lib/src/libgfrpc.la \
+diff --git a/xlators/protocol/server/src/Makefile.am b/xlators/protocol/server/src/Makefile.am
+index 0df5894..6eae10d 100644
+--- a/xlators/protocol/server/src/Makefile.am
++++ b/xlators/protocol/server/src/Makefile.am
+@@ -1,7 +1,7 @@
+ xlator_LTLIBRARIES = server.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/protocol
+ 
+-server_la_LDFLAGS = -module -avoidversion
++server_la_LDFLAGS = -module -avoid-version -shared
+ 
+ server_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la \
+ 	$(top_builddir)/rpc/rpc-lib/src/libgfrpc.la \
+diff --git a/xlators/storage/posix/src/Makefile.am b/xlators/storage/posix/src/Makefile.am
+index 408dcb8..3f6a4b6 100644
+--- a/xlators/storage/posix/src/Makefile.am
++++ b/xlators/storage/posix/src/Makefile.am
+@@ -2,7 +2,7 @@
+ xlator_LTLIBRARIES = posix.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/storage
+ 
+-posix_la_LDFLAGS = -module -avoidversion
++posix_la_LDFLAGS = -module -avoid-version -shared
+ 
+ posix_la_SOURCES = posix.c posix-helpers.c posix-handle.c
+ posix_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+diff --git a/xlators/system/posix-acl/src/Makefile.am b/xlators/system/posix-acl/src/Makefile.am
+index c095569..b799eb9 100644
+--- a/xlators/system/posix-acl/src/Makefile.am
++++ b/xlators/system/posix-acl/src/Makefile.am
+@@ -1,6 +1,6 @@
+ xlator_LTLIBRARIES = posix-acl.la
+ xlatordir = $(libdir)/glusterfs/$(PACKAGE_VERSION)/xlator/system
+-posix_acl_la_LDFLAGS = -module -avoidversion
++posix_acl_la_LDFLAGS = -module -avoid-version -shared
+ posix_acl_la_SOURCES = posix-acl.c posix-acl-xattr.c
+ posix_acl_la_LIBADD = $(top_builddir)/libglusterfs/src/libglusterfs.la
+ 

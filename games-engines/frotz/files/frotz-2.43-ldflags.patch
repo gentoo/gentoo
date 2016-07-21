@@ -1,0 +1,20 @@
+--- Makefile.old	2010-10-04 14:13:37.000000000 +0200
++++ Makefile	2010-10-04 14:14:06.000000000 +0200
+@@ -162,7 +162,7 @@
+ $(NAME): $(NAME)-curses
+ 
+ $(NAME)-curses:		soundcard.h  $(COMMON_TARGET) $(CURSES_TARGET)
+-	$(CC) -o $(BINNAME)$(EXTENSION) $(TARGETS) $(LIB) $(CURSES) \
++	$(CC) $(LDFLAGS) -o $(BINNAME)$(EXTENSION) $(TARGETS) $(LIB) $(CURSES) \
+ 		$(SOUND_LIB)
+ 
+ all:	$(NAME) d$(NAME)
+@@ -170,7 +170,7 @@
+ dumb:		$(NAME)-dumb
+ d$(NAME):	$(NAME)-dumb
+ $(NAME)-dumb:		$(COMMON_TARGET) $(DUMB_TARGET)
+-	$(CC) -o d$(BINNAME)$(EXTENSION) $(COMMON_TARGET) \
++	$(CC) $(LDFLAGS) -o d$(BINNAME)$(EXTENSION) $(COMMON_TARGET) \
+ 		$(DUMB_TARGET) $(LIB)
+ 
+ .SUFFIXES:

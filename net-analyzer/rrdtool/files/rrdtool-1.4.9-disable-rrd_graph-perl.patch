@@ -1,0 +1,53 @@
+--- a/bindings/perl-shared/RRDs.xs
++++ b/bindings/perl-shared/RRDs.xs
+@@ -189,6 +189,7 @@
+ 	OUTPUT:
+ 		RETVAL
+ 
++#ifdef HAVE_RRD_GRAPH
+ SV *
+ rrd_graph(...)
+ 	PROTOTYPE: @	
+@@ -235,6 +236,8 @@
+ 		PUSHs(sv_2mortal(newSViv(xsize)));
+ 		PUSHs(sv_2mortal(newSViv(ysize)));
+ 
++#endif /* HAVE_RRD_GRAPH */
++
+ SV *
+ rrd_fetch(...)
+ 	PROTOTYPE: @	
+@@ -313,6 +316,7 @@
+ 		PUSHs(sv_2mortal(newSVuv(start_tmp)));
+ 		PUSHs(sv_2mortal(newSVuv(end_tmp)));
+ 
++#ifdef HAVE_RRD_GRAPH
+ int
+ rrd_xport(...)
+ 	PROTOTYPE: @	
+@@ -371,6 +375,8 @@
+ 		PUSHs(sv_2mortal(newRV_noinc((SV*)names)));
+ 		PUSHs(sv_2mortal(newRV_noinc((SV*)retar)));
+ 
++#endif /* HAVE_RRD_GRAPH */
++
+ SV*
+ rrd_info(...)
+ 	PROTOTYPE: @	
+@@ -397,6 +403,7 @@
+     OUTPUT:
+ 	   RETVAL
+ 
++#ifdef HAVE_RRD_GRAPH
+ SV*
+ rrd_graphv(...)
+ 	PROTOTYPE: @	
+@@ -410,6 +417,8 @@
+     OUTPUT:
+ 	   RETVAL
+ 
++#endif /* HAVE_RRD_GRAPH */
++
+ int
+ rrd_dump(...)
+        PROTOTYPE: @

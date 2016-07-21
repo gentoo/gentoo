@@ -1,0 +1,74 @@
+From 25f4800d62f339f81b09c894275a3af4b284fb62 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@canonical.com>
+Date: Wed, 19 Aug 2015 03:06:09 +0100
+Subject: [PATCH] Port twisted.deferredruntest to Twisted >= 15.1.0
+
+Twisted 15.1.0 removes the compatibility import of _LogObserver in
+twisted.trial.unittest.  This is unfortunate for us, but it's what we
+get for using an internal interface.  It at least still exists in
+twisted.trial._synctest, so we can get it from there.
+
+Twisted 15.2.0 adds the new twisted.logger framework, which requires a
+slight adjustment to run_with_log_observers.  There's no longer a
+supported interface to get hold of all log observers, but since we're
+already using an internal interface (see above), what's one more?
+
+This passes "make check" with the current release, Twisted 15.3.0.
+---
+ testtools/deferredruntest.py | 27 +++++++++++++++++++++++----
+ 1 file changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/testtools/deferredruntest.py b/testtools/deferredruntest.py
+index c33e14a..04cdb0f 100644
+--- a/testtools/deferredruntest.py
++++ b/testtools/deferredruntest.py
+@@ -27,8 +27,15 @@
+     )
+ 
+ from twisted.internet import defer
++try:
++    from twisted.logger import globalLogPublisher
++except ImportError:
++    globalLogPublisher = None
+ from twisted.python import log
+-from twisted.trial.unittest import _LogObserver
++try:
++    from twisted.trial.unittest import _LogObserver
++except ImportError:
++    from twisted.trial._synctest import _LogObserver
+ 
+ 
+ class _DeferredRunTest(RunTest):
+@@ -53,9 +60,21 @@ def _run_user(self, function, *args):
+ 
+ def run_with_log_observers(observers, function, *args, **kwargs):
+     """Run 'function' with the given Twisted log observers."""
+-    real_observers = list(log.theLogPublisher.observers)
++    if globalLogPublisher is not None:
++        # Twisted >= 15.2.0, with the new twisted.logger framework.
++        # log.theLogPublisher.observers will only contain legacy observers;
++        # we need to look at globalLogPublisher._observers, which contains
++        # both legacy and modern observers, and add and remove them via
++        # globalLogPublisher.  However, we must still add and remove the
++        # observers we want to run with via log.theLogPublisher, because
++        # _LogObserver may consider old keys and require them to be mapped.
++        publisher = globalLogPublisher
++        real_observers = list(publisher._observers)
++    else:
++        publisher = log.theLogPublisher
++        real_observers = list(publisher.observers)
+     for observer in real_observers:
+-        log.theLogPublisher.removeObserver(observer)
++        publisher.removeObserver(observer)
+     for observer in observers:
+         log.theLogPublisher.addObserver(observer)
+     try:
+@@ -64,7 +83,7 @@ def run_with_log_observers(observers, function, *args, **kwargs):
+         for observer in observers:
+             log.theLogPublisher.removeObserver(observer)
+         for observer in real_observers:
+-            log.theLogPublisher.addObserver(observer)
++            publisher.addObserver(observer)
+ 
+ 
+ # Observer of the Twisted log that we install during tests.

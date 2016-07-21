@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<longdescription>
+		A bi-directional ping utility
+	</longdescription>
+	<use>
+		<flag name="server">Install the server init scripts.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+diff -U 3 -dHrN wicd-1.7.2.4.orig/other/wicd.desktop wicd-1.7.2.4/other/wicd.desktop
+--- wicd-1.7.2.4.orig/other/wicd.desktop	2013-06-24 22:18:00.715578998 +0200
++++ wicd-1.7.2.4/other/wicd.desktop	2013-06-24 22:18:57.672595363 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Application;Network;
++Categories=Network;Settings;Utility;
+ Exec=wicd-gtk --no-tray
+ GenericName=Network Manager
+ Icon=wicd-gtk
+diff -U 3 -dHrN wicd-1.7.2.4.orig/other/wicd-tray.desktop wicd-1.7.2.4/other/wicd-tray.desktop
+--- wicd-1.7.2.4.orig/other/wicd-tray.desktop	2013-06-24 22:18:00.715578998 +0200
++++ wicd-1.7.2.4/other/wicd-tray.desktop	2013-06-24 22:18:59.864595996 +0200
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Categories=Application;Network;
++Categories=Network;Settings;Utility;
+ Exec=wicd-gtk --tray
+ GenericName=Network Manager
+ Icon=wicd-gtk

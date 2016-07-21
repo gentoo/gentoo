@@ -1,0 +1,58 @@
+--- GNUmakefile	2010-09-16 16:39:16.656504861 +0200
++++ GNUmakefile	2010-09-16 16:47:13.451721307 +0200
+@@ -16,7 +16,7 @@
+ CC= gcc
+ 
+ INCDIRS= -I$(PREFIX)/include
+-LDFLAGS= -L$(PREFIX)/lib
++LDFLAGS+= -L$(PREFIX)/lib
+ 
+ ifeq ($(shell uname),SunOS)
+ YACC= yacc
+@@ -72,7 +72,7 @@
+ endif
+ 
+ OBJS= $(patsubst %.c,%.o,$(SRCS))
+-CPPFLAGS+= $(DEFS) -I. -I- $(INCDIRS)
++CPPFLAGS+= $(DEFS) -I. -iquote $(INCDIRS)
+ ifdef DEBUG
+ CFLAGS+= -g -ggdb -DDEBUG
+ LDFLAGS+= -rdynamic
+@@ -89,7 +89,7 @@
+ 
+ ifdef COURIER
+ CFLAGS+= -DLOOKUP_COURIER
+-LIBS+= -lcourierauth
++LIBS+= -L/usr/lib/courier-authlib -lcourierauth
+ endif
+ 
+ ifdef PCRE
+@@ -104,7 +104,7 @@
+ all: fdm
+ 
+ $(PROG): $(OBJS)
+-	$(CC) $(LDFLAGS) $(LIBS) -o $@ $+
++	$(CC) $(LDFLAGS) -o $@ $+ $(LIBS)
+ 
+ depend: $(SRCS)
+ 	$(CC) $(CPPFLAGS) -MM $(SRCS) > .depend
+@@ -112,13 +112,15 @@
+ y.tab.c y.tab.h: parse.y
+ 	$(YACC) $(YFLAGS) $<
+ 
++lex.o: y.tab.h
++
+ install:
+ 	$(INSTALLDIR) $(DESTDIR)$(PREFIX)/bin
+ 	$(INSTALLBIN) $(PROG) $(DESTDIR)$(PREFIX)/bin/$(PROG)
+-	$(INSTALLDIR) $(DESTDIR)$(PREFIX)/man/man1
+-	$(INSTALLMAN) $(PROG).1 $(DESTDIR)$(PREFIX)/man/man1/$(PROG).1
+-	$(INSTALLDIR) $(DESTDIR)$(PREFIX)/man/man5
+-	$(INSTALLMAN) $(PROG).conf.5 $(DESTDIR)$(PREFIX)/man/man5/$(PROG).conf.5
++	$(INSTALLDIR) $(DESTDIR)$(PREFIX)/share/man/man1
++	$(INSTALLMAN) $(PROG).1 $(DESTDIR)$(PREFIX)/share/man/man1/$(PROG).1
++	$(INSTALLDIR) $(DESTDIR)$(PREFIX)/share/man/man5
++	$(INSTALLMAN) $(PROG).conf.5 $(DESTDIR)$(PREFIX)/share/man/man5/$(PROG).conf.5
+ 
+ clean:
+ 	rm -f $(CLEANFILES)

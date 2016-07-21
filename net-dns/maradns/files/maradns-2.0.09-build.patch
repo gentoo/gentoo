@@ -1,0 +1,43 @@
+Index: maradns-2.0.09/build/Makefile.linux
+===================================================================
+--- maradns-2.0.09.orig/build/Makefile.linux
++++ maradns-2.0.09/build/Makefile.linux
+@@ -10,7 +10,7 @@ POBJECTS=parse/ParseMaraRc.o parse/Parse
+ DOBJECTS=dns/Queries.o dns/Compress.o dns/bobbit.o
+ # Secure random number generator objects
+ ROBJECTS=rng/rng-api-fst.o rng/rng-alg-fst.o
+-OBJECTS=$(JOBJS) $(MHOBJS) $(SOBJECTS) $(DOBJECTS) $(POBJECTS) $(DOBJECTS) $(ROBJECTS)
++OBJECTS=$(JOBJS) $(MHOBJS) $(SOBJECTS) $(DOBJECTS) $(POBJECTS) $(DOBJECTS) $(ROBJECTS) -lrt
+ EXECS=server/maradns
+ 
+ # Uncomment the following three lines to get this to compile on Solaris
+@@ -28,19 +28,21 @@ Q="DEFINES=-DSELECT_PROBLEM"
+ 
+ # Debug
+ 
+-FLAGS = -O2 -Wall -DSELECT_PROBLEM
++FLAGS=$(CFLAGS) $(LDFLAGS) -Wall -DSELECT_PROBLEM
+ M="CC=$(CC) $(FLAGS)"
+ D="CC=$(CC) $(FLAGS) -DDEBUG -DTHREADS"
+ #FLAGS = -g
+ 
+ all: 
+-	cd libs ; make $(M) ; cd ../dns ; make $(M) ; \
+-	cd ../rng ; make $(M) ; cd ../parse ; make $(M) ; \
+-	cd ../qual ; make $(M) ; cd ../server ; \
+-	make $(M) $(V) COMPILED=\"$(COMPILED)\" ; \
+-	cd ../tools ; make $(M) ; \
+-	cd ../deadwood-*/src/ ; make FLAGS=-O2 ; \
+-	cd ../../tcp ; make $(M) $(V) ; cat ../00README.FIRST
++	$(MAKE) -C libs $(M)
++	$(MAKE) -C dns $(M)
++	$(MAKE) -C rng $(M)
++	$(MAKE) -C parse $(M)
++	$(MAKE_ -C qual $(M)
++	$(MAKE) -C server $(M) $(V) COMPILED=\"$(COMPILED)\"
++	$(MAKE) -C tools $(M)
++	$(MAKE) -C deadwood-*/src $(M)
++	$(MAKE) -C tcp $(M) $(V)
+ 
+ debug: 
+ 	cd libs ; make $(D) DEBUG="-DDEBUG -DTHREADS" ; \

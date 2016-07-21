@@ -1,0 +1,31 @@
+From 0930fcd65ec8f135c90f673eab2a7a196103537d Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 17 Sep 2015 14:18:16 -0400
+Subject: [PATCH e2fsprogs] subst: use 0644 perms
+
+When running on NFS, opening files with 0444 perms for writing can
+sometimes fail.  Since there's no real reason for these files to be
+read-only, give the owner write permission.
+
+URL: https://bugs.gentoo.org/550986
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ util/subst.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/subst.c b/util/subst.c
+index f36adb4..e4004c9 100644
+--- a/util/subst.c
++++ b/util/subst.c
+@@ -370,7 +370,7 @@ int main(int argc, char **argv)
+ 		}
+ 		strcpy(newfn, outfn);
+ 		strcat(newfn, ".new");
+-		fd = open(newfn, O_CREAT|O_TRUNC|O_RDWR, 0444);
++		fd = open(newfn, O_CREAT|O_TRUNC|O_RDWR, 0644);
+ 		if (fd < 0) {
+ 			perror(newfn);
+ 			exit(1);
+-- 
+2.5.1
+

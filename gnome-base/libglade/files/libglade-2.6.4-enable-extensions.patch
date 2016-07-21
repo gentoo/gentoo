@@ -1,0 +1,14 @@
+AC_USE_SYSTEM_EXTENSIONS needed for Solaris
+
+https://bugs.gentoo.org/show_bug.cgi?id=430090
+
+--- a/configure.in
++++ b/configure.in
+@@ -22,6 +22,7 @@
+ fi
+ 
+ AC_PROG_CC
++AC_USE_SYSTEM_EXTENSIONS
+ AC_ISC_POSIX
+ AC_HEADER_STDC
+ 

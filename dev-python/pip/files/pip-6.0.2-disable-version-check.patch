@@ -1,0 +1,14 @@
+Don't check PyPI for new versions of pip by default, updates will occur when
+new releases are added to the tree.
+
+--- pip-6.0.2/pip/cmdoptions.py
++++ pip-6.0.2/pip/cmdoptions.py
+@@ -404,7 +404,7 @@
+     "--disable-pip-version-check",
+     dest="disable_pip_version_check",
+     action="store_true",
+-    default=False,
++    default=True,
+     help="Don't periodically check PyPI to determine whether a new version "
+          "of pip is available for download.")
+ 

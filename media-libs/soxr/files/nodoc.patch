@@ -1,0 +1,19 @@
+Index: soxr-0.1.0-Source/CMakeLists.txt
+===================================================================
+--- soxr-0.1.0-Source.orig/CMakeLists.txt
++++ soxr-0.1.0-Source/CMakeLists.txt
+@@ -217,14 +217,6 @@ if (BUILD_TESTS OR BUILD_LSR_TESTS)
+   enable_testing ()
+ endif ()
+ 
+-install (FILES
+-  ${CMAKE_CURRENT_SOURCE_DIR}/README
+-  ${CMAKE_CURRENT_SOURCE_DIR}/LICENCE
+-  ${CMAKE_CURRENT_SOURCE_DIR}/NEWS
+-  DESTINATION ${DOC_INSTALL_DIR})
+-
+-
+-
+ # Subdirectories:
+ 
+ include_directories (${PROJECT_SOURCE_DIR}/src)

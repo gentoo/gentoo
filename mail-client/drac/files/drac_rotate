@@ -1,0 +1,99 @@
+#!/bin/bash
+
+usage="[/path/to/real_file.db [/path/to/link_file.db]] [--debug] [--verbose]"
+help="
+A DRAC-enabled MTA performs better by using a seldomly, instead of
+constantly changing, access database.  This script creates a link
+to a snapshotted database which the MTA can use.  It is designed
+to run every minute from cron.  Here is an example cron configuration:
+
+  *  *  *  *  *   $(basename "$0")
+"
+
+for i in $* ; do
+	case "${i}" in
+	  --verbose | -verbose | -v | --debug | -debug | -d)
+		debug=1
+		;;
+	  --usage | -usage | -u )
+		echo "usage: $(basename "$0") ${usage}"
+		exit 1
+		;;
+	  --help | -help | -h)
+		echo "${help}"
+		echo "usage: $(basename "$0") ${usage}"
+		echo
+		exit 1
+		;;
+	  *)
+		args[${#args}]="${i}"
+		;;
+	esac
+done
+			
+debug_print() {
+	if [ -n "${debug}" ] ; then
+		if [ -n "$2" ] ; then
+			echo -n "$1 ... "
+		else
+			echo "$1"
+		fi
+	fi
+}
+
+check_result() {
+	if [ "$?" -ne 0 ] ; then
+		debug_print
+		if [ -n "$1" ] ; then
+			echo "$(basename "$0"): $1, exiting ..."
+		else
+			echo "$(basename "$0"): exiting ..."
+		fi
+		exit 1
+	fi
+}
+
+debug_print "finding current minute" "1"
+min="$(date '+%-M')" && \
+[ -n "${min}" ]
+check_result "can't determine current minute"
+debug_print "success! (${min})"
+
+debug_print "finding drac database file" "1"
+real="${args[0]:-/var/lib/drac/drac.db}" && \
+[ -n "${real}" -a -f "${real}" ]
+check_result "can't find drac database file"
+debug_print "success! (${real})"
+
+debug_print "setting drac link file" "1"
+link="${args[1]:-/var/lib/drac/drac_link.db}" && \
+[ -n "${link}" -a -d "$(dirname "${link}")" ]
+check_result "can't set drac link file"
+debug_print "success! (${link})"
+
+debug_print "finding new drac database" "1"
+new="${real}$(( ${min} % 3 ))" && \
+[ "${new}" != "${real}" ]
+check_result "can't set new drac database"
+debug_print "success! (${new})"
+
+debug_print "finding old drac database" "1"
+old="${real}$(( (${min} + 1) % 3 ))" && \
+[ "${old}" != "${real}" -a "${old}" != "${new}" ]
+check_result "can't set old drac database"
+debug_print "success! (${old})"
+
+debug_print "creating new drac database" "1"
+cp "${real}" "${new}"
+check_result "can't create new drac database"
+debug_print "success! ($(basename "${real}") -> $(basename "${new}"))"
+
+debug_print "linking new drac database" "1"
+ln -sf "${new}" "${link}"
+check_result "can't link new drac database"
+debug_print "success! ($(basename "${new}") -> $(basename "${link}"))"
+
+debug_print "removing old drac database" "1"
+rm -f "${old}"
+check_result "can't remove old drac database"
+debug_print "success! (${old})"

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		java-config is used to configure the Java subsystem on your Gentoo
+		installation. In particular, it can be used to configure system-wide and
+		per-user default JVMs, construct classpath env vars from installed java
+		packages and be used to query for the path to various JDK tools.
+	</longdescription>
+</pkgmetadata>

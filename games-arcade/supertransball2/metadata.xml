@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription lang="en">
+"Super Transbal 2" is the sequel of "Transball" and "Transball 2", Inspired in
+THRUST type of games (and concretely in ZARA THRUSTA for the Amiga 500). In each
+level of Transball, the goal is to find the SPHERE, capture it and carry it to
+the upper part of the level. The main obstacle is the gravity, that impulses you
+towards the ground. But many other obstacles, canons, tanks, doors, etc. will
+try to make difficult your journey...
+</longdescription>
+</pkgmetadata>

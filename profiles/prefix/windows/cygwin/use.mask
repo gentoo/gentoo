@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Re-add Cygwin's libc
+-elibc_Cygwin
+
+# python-3.5 is not cygwin ready yet
+python_targets_python3_5

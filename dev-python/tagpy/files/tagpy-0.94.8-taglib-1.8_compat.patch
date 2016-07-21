@@ -1,0 +1,29 @@
+https://github.com/inducer/tagpy/commit/d0759c0ec7d24ae8d1af395a1032521eb00b4d1f
+https://github.com/inducer/tagpy/commit/813ec4f03bb4411c7ffd15dcb3974da04a3f109c
+
+--- tagpy-0.94.8/src/wrapper/id3.cpp
++++ tagpy-0.94.8/src/wrapper/id3.cpp
+@@ -79,6 +79,10 @@
+   MF_OL(setVolumeAdjustment, 1, 2);
+   MF_OL(setPeakVolume, 1, 2);
+ 
++  #if (TAGPY_TAGLIB_HEX_VERSION >= 0x10800)
++    MF_OL(render, 0, 1)
++  #endif
++
+   // -------------------------------------------------------------
+   // MPEG
+   // -------------------------------------------------------------
+@@ -212,7 +216,11 @@
+       .DEF_SIMPLE_METHOD(removeFrame)
+       .DEF_SIMPLE_METHOD(removeFrames)
+       
+-      .DEF_SIMPLE_METHOD(render)
++      #if (TAGPY_TAGLIB_HEX_VERSION >= 0x10800)
++        .DEF_OVERLOADED_METHOD(render, ByteVector (cl::*)(int) const)
++      #else
++        .DEF_SIMPLE_METHOD(render)
++      #endif
+       ;
+   }
+ 

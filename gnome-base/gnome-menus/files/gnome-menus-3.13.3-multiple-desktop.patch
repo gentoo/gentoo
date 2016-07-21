@@ -1,0 +1,171 @@
+From b4546ab43c2c7ef6fb6cb7e5db83dc3975b56e8e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Mon, 27 Oct 2014 18:41:34 +0200
+Subject: desktop-entries: support multiple desktops in XDG_CURRENT_DESKTOP
+
+This is based on glib commit:
+5a5e16e93c4f11e635918ecdb41681f63fd05a39
+---
+ libmenu/desktop-entries.c | 110 ++++++++++++++++++++++------------------------
+ 1 file changed, 52 insertions(+), 58 deletions(-)
+
+diff --git a/libmenu/desktop-entries.c b/libmenu/desktop-entries.c
+index 326f311..bd4f886 100644
+--- a/libmenu/desktop-entries.c
++++ b/libmenu/desktop-entries.c
+@@ -85,32 +85,27 @@ unix_basename_from_path (const char *path)
+     return path;
+ }
+ 
+-static const char *
+-get_current_desktop (void)
++static const gchar * const *
++get_current_desktops (void)
+ {
+-  static char *current_desktop = NULL;
++  static gchar **result;
+ 
+-  /* Support XDG_CURRENT_DESKTOP environment variable; this can be used
+-   * to abuse gnome-menus in non-GNOME desktops. */
+-  if (!current_desktop)
++  if (g_once_init_enter (&result))
+     {
+-      const char *desktop;
++      const gchar *desktops;
++      gchar **tmp;
+ 
+-      desktop = g_getenv ("XDG_CURRENT_DESKTOP");
++      desktops = g_getenv ("XDG_CURRENT_DESKTOP");
+ 
+-      /* Note: if XDG_CURRENT_DESKTOP is set but empty, do as if it
+-       * was not set */
+-      if (!desktop || desktop[0] == '\0')
+-        current_desktop = g_strdup ("GNOME");
+-      else
+-        current_desktop = g_strdup (desktop);
+-    }
++      if (desktops)
++        desktops = "";
+ 
+-  /* Using "*" means skipping desktop-related checks */
+-  if (g_strcmp0 (current_desktop, "*") == 0)
+-    return NULL;
++      tmp = g_strsplit (desktops, ":", 0);
++
++      g_once_init_leave (&result, tmp);
++    }
+ 
+-  return current_desktop;
++  return  (const gchar **) result;
+ }
+ 
+ static GIcon *
+@@ -151,52 +146,58 @@ key_file_get_icon (GKeyFile *key_file)
+ static gboolean
+ key_file_get_show_in (GKeyFile *key_file)
+ {
+-  const gchar *current_desktop;
+-  gchar **strv;
++  const gchar * const *current_desktops;
++  gchar **only_show_in;
++  gchar **not_show_in;
+   gboolean show_in = TRUE;
+-  int i;
+-
+-  current_desktop = get_current_desktop ();
+-  if (!current_desktop)
+-    return TRUE;
+-
+-  strv = g_key_file_get_string_list (key_file,
+-                                     DESKTOP_ENTRY_GROUP,
+-                                     "OnlyShowIn",
+-                                     NULL,
+-                                     NULL);
+-  if (strv)
++  gint i;
++
++  current_desktops = get_current_desktops ();
++  only_show_in = g_key_file_get_string_list (key_file,
++                                             DESKTOP_ENTRY_GROUP,
++                                             "OnlyShowIn",
++                                             NULL,
++                                             NULL);
++  not_show_in = g_key_file_get_string_list (key_file,
++                                            DESKTOP_ENTRY_GROUP,
++                                            "NotShowIn",
++                                            NULL,
++                                            NULL);
++
++  for (i = 0; current_desktops[i]; i++)
+     {
+-      show_in = FALSE;
+-      for (i = 0; strv[i]; i++)
++      gint j;
++
++      if (only_show_in)
+         {
+-          if (!strcmp (strv[i], current_desktop))
++          show_in = FALSE;
++          for (j = 0; only_show_in[j]; j++)
+             {
+-              show_in = TRUE;
+-              break;
++              if (g_str_equal (only_show_in[j], current_desktops[i]))
++                {
++                  show_in = TRUE;
++                  goto out;
++                }
+             }
+         }
+-    }
+-  else
+-    {
+-      strv = g_key_file_get_string_list (key_file,
+-                                         DESKTOP_ENTRY_GROUP,
+-                                         "NotShowIn",
+-                                         NULL,
+-                                         NULL);
+-      if (strv)
++
++      if (not_show_in)
+         {
+           show_in = TRUE;
+-          for (i = 0; strv[i]; i++)
++          for (j = 0; not_show_in[j]; j++)
+             {
+-              if (!strcmp (strv[i], current_desktop))
++              if (g_str_equal (not_show_in[j], current_desktops[i]))
+                 {
+                   show_in = FALSE;
++                  goto out;
+                 }
+             }
+         }
+     }
+-  g_strfreev (strv);
++
++out:
++  g_strfreev (only_show_in);
++  g_strfreev (not_show_in);
+ 
+   return show_in;
+ }
+@@ -579,14 +580,7 @@ gboolean
+ desktop_entry_get_show_in (DesktopEntry *entry)
+ {
+   if (entry->type == DESKTOP_ENTRY_DESKTOP)
+-    {
+-      const char *current_desktop = get_current_desktop ();
+-
+-      if (current_desktop == NULL)
+-        return TRUE;
+-      else
+-        return g_desktop_app_info_get_show_in (((DesktopEntryDesktop*)entry)->appinfo, current_desktop);
+-    }
++    return g_desktop_app_info_get_show_in (((DesktopEntryDesktop*)entry)->appinfo, NULL);
+   return ((DesktopEntryDirectory*)entry)->showin;
+ }
+ 
+-- 
+cgit v0.11.2
+

@@ -1,0 +1,17 @@
+diff -r 9cf95971dd10 monkeysign/documentation.py
+--- a/monkeysign/documentation.py	Sun Oct 19 12:34:21 2014 -0400
++++ b/monkeysign/documentation.py	Sun Oct 19 12:35:30 2014 -0400
+@@ -161,11 +161,11 @@
+     def run(self):
+         html = os.path.join(os.path.dirname(self.file), os.path.splitext(os.path.basename(self.file))[0] + '.html')
+         self.announce('processing slides from %s to %s' % (self.file, html), 2)
+-        os.system('rst2s5 --theme default "%s" "%s"' % (self.file, html))
++        os.system('rst2s5.py --theme default "%s" "%s"' % (self.file, html))
+ 
+ def has_rst2s5(build):
+     """predicate for this class: do not fail if rst2s5 is missing"""
+-    return (os.system('rst2s5 < /dev/null > /dev/null') == 0)
++    return (os.system('rst2s5.py < /dev/null > /dev/null') == 0)
+ 
+ # (function, predicate), see http://docs.python.org/2/distutils/apiref.html#distutils.cmd.Command.sub_commands
+ build.sub_commands.append(('build_manpage', None))

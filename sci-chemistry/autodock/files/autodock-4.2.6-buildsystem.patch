@@ -1,0 +1,44 @@
+ src/autodock/Makefile.am | 6 +++---
+ src/autogrid/Makefile.am | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/autodock/Makefile.am b/src/autodock/Makefile.am
+index 799a3c4..911897b 100644
+--- a/src/autodock/Makefile.am
++++ b/src/autodock/Makefile.am
+@@ -459,7 +459,8 @@ endif
+ 
+ BUILT_SOURCES = $(autodock4_SOURCES) default_parameters.h
+ 
+-AM_CXXFLAGS = -O3 # Agressive optimization
++AM_CXXFLAGS =
++#AM_CXXFLAGS = -O3 # Agressive optimization
+ #AM_CXXFLAGS = -g # debug
+ 
+     # if gnu c++ compiler
+@@ -488,8 +489,7 @@ endif
+ AM_CPPFLAGS = -DNOSQRT \
+ 	      -DUSE_DOUBLE \
+               -DUSE_8A_NBCUTOFF \
+-	      -DUSE_INT_AS_FOURBYTELONG \
+-	      -O3
++	      -DUSE_INT_AS_FOURBYTELONG
+ # AM_LDFLAGS = -g # -g is MP debug
+ 
+ 
+diff --git a/src/autogrid/Makefile.am b/src/autogrid/Makefile.am
+index b531099..b78b380 100644
+--- a/src/autogrid/Makefile.am
++++ b/src/autogrid/Makefile.am
+@@ -94,9 +94,9 @@ autogrid4_SOURCES = main.cpp \
+ BUILT_SOURCES = default_parameters.h
+ 
+ 
+-AM_CFLAGS = -Wall -O3 # All warnings, Agressive optimization
++AM_CFLAGS = -Wall # All warnings, Agressive optimization
+ 
+-AM_CPPFLAGS = -Wall -O3 -I $(srcdir) -I$(srcdir)/../autodock # All warnings, Agressive optimization
++AM_CPPFLAGS = -Wall -I $(srcdir) -I$(srcdir)/../autodock # All warnings, Agressive optimization
+ AM_CPPFLAGS += -Wno-write-strings # increase compatibility with pre 4.x compilers for string handling
+ #  M Pique - add USE_8A_NBCUTOFF
+ AM_CPPFLAGS += -DUSE_8A_NBCUTOFF

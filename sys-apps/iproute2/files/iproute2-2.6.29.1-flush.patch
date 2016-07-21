@@ -1,0 +1,224 @@
+https://bugs.gentoo.org/274973
+
+If the routing table that I wanna flush has 60 entries or more, "ip route flush
+table foo" fails with the following error:
+  Failed to send flush request: Success
+  Flush terminated
+
+Patch by Alin Năstac <mrness@gentoo.org>
+
+--- iproute2-2.6.29-1/ip/ipaddress.c
++++ iproute2-2.6.29-1/ip/ipaddress.c
+@@ -37,6 +37,8 @@
+ 
+ #define MAX_ROUNDS 10
+ 
++static struct rtnl_handle rth_flush = { .fd = -1 };
++
+ static struct
+ {
+ 	int ifindex;
+@@ -339,7 +341,7 @@
+ 
+ static int flush_update(void)
+ {
+-	if (rtnl_send_check(&rth, filter.flushb, filter.flushp) < 0) {
++	if (rtnl_send_check(&rth_flush, filter.flushb, filter.flushp) < 0) {
+ 		perror("Failed to send flush request");
+ 		return -1;
+ 	}
+@@ -697,6 +699,9 @@
+ 		filter.flushp = 0;
+ 		filter.flushe = sizeof(flushb);
+ 
++		if (rtnl_open(&rth_flush, 0) < 0)
++			return 1;
++
+ 		while (round < MAX_ROUNDS) {
+ 			if (rtnl_wilddump_request(&rth, filter.family, RTM_GETADDR) < 0) {
+ 				perror("Cannot send dump request");
+@@ -715,18 +720,20 @@
+ 						printf("*** Flush is complete after %d round%s ***\n", round, round>1?"s":"");
+ 				}
+ 				fflush(stdout);
++				rtnl_close(&rth_flush);
+ 				return 0;
+ 			}
+ 			round++;
+ 			if (flush_update() < 0)
+-				return 1;
++				break;
+ 
+ 			if (show_stats) {
+ 				printf("\n*** Round %d, deleting %d addresses ***\n", round, filter.flushed);
+ 				fflush(stdout);
+ 			}
+ 		}
+-		fprintf(stderr, "*** Flush remains incomplete after %d rounds. ***\n", MAX_ROUNDS); fflush(stderr);
++		fprintf(stderr, "*** Flush remains incomplete after %d rounds. ***\n", round); fflush(stderr);
++		rtnl_close(&rth_flush);
+ 		return 1;
+ 	}
+ 
+--- iproute2-2.6.29-1/ip/ipneigh.c
++++ iproute2-2.6.29-1/ip/ipneigh.c
+@@ -32,6 +32,8 @@
+ #define NUD_VALID	(NUD_PERMANENT|NUD_NOARP|NUD_REACHABLE|NUD_PROBE|NUD_STALE|NUD_DELAY)
+ #define MAX_ROUNDS	10
+ 
++static struct rtnl_handle rth_flush = { .fd = -1 };
++
+ static struct
+ {
+ 	int family;
+@@ -87,7 +89,7 @@
+ 
+ static int flush_update(void)
+ {
+-	if (rtnl_send_check(&rth, filter.flushb, filter.flushp) < 0) {
++	if (rtnl_send_check(&rth_flush, filter.flushb, filter.flushp) < 0) {
+ 		perror("Failed to send flush request");
+ 		return -1;
+ 	}
+@@ -391,6 +393,9 @@
+ 		filter.flushe = sizeof(flushb);
+ 		filter.state &= ~NUD_FAILED;
+ 
++		if (rtnl_open(&rth_flush, 0) < 0)
++			return 1;
++
+ 		while (round < MAX_ROUNDS) {
+ 			if (rtnl_wilddump_request(&rth, filter.family, RTM_GETNEIGH) < 0) {
+ 				perror("Cannot send dump request");
+@@ -409,18 +414,20 @@
+ 						printf("*** Flush is complete after %d round%s ***\n", round, round>1?"s":"");
+ 				}
+ 				fflush(stdout);
++				rtnl_close(&rth_flush);
+ 				return 0;
+ 			}
+ 			round++;
+ 			if (flush_update() < 0)
+-				exit(1);
++				break;
++
+ 			if (show_stats) {
+ 				printf("\n*** Round %d, deleting %d entries ***\n", round, filter.flushed);
+ 				fflush(stdout);
+ 			}
+ 		}
+-		printf("*** Flush not complete bailing out after %d rounds\n",
+-			MAX_ROUNDS);
++		fprintf(stderr, "*** Flush remains incomplete after %d rounds. ***\n", round); fflush(stderr);
++		rtnl_close(&rth_flush);
+ 		return 1;
+ 	}
+ 
+--- iproute2-2.6.29-1/ip/iproute.c
++++ iproute2-2.6.29-1/ip/iproute.c
+@@ -37,6 +37,7 @@
+ #define RTAX_RTTVAR RTAX_HOPS
+ #endif
+ 
++static struct rtnl_handle rth_flush = { .fd = -1 };
+ 
+ static const char *mx_names[RTAX_MAX+1] = {
+ 	[RTAX_MTU]	= "mtu",
+@@ -112,7 +113,7 @@
+ 
+ static int flush_update(void)
+ {
+-	if (rtnl_send_check(&rth, filter.flushb, filter.flushp) < 0) {
++	if (rtnl_send_check(&rth_flush, filter.flushb, filter.flushp) < 0) {
+ 		perror("Failed to send flush request");
+ 		return -1;
+ 	}
+@@ -1210,6 +1211,9 @@
+ 		filter.flushp = 0;
+ 		filter.flushe = sizeof(flushb);
+ 
++		if (rtnl_open(&rth_flush, 0) < 0)
++			return 1;
++
+ 		for (;;) {
+ 			if (rtnl_wilddump_request(&rth, do_ipv6, RTM_GETROUTE) < 0) {
+ 				perror("Cannot send dump request");
+@@ -1228,6 +1232,7 @@
+ 						printf("*** Flush is complete after %d round%s ***\n", round, round>1?"s":"");
+ 				}
+ 				fflush(stdout);
++				rtnl_close(&rth_flush);
+ 				return 0;
+ 			}
+ 			round++;
+--- iproute2-2.6.29-1/ip/xfrm_policy.c
++++ iproute2-2.6.29-1/ip/xfrm_policy.c
+@@ -756,11 +756,15 @@
+ 		struct xfrm_buffer xb;
+ 		char buf[NLMSG_DELETEALL_BUF_SIZE];
+ 		int i;
++		struct rtnl_handle rth2;
+ 
+ 		xb.buf = buf;
+ 		xb.size = sizeof(buf);
+ 		xb.rth = &rth;
+ 
++		if (rtnl_open(&rth2, 0) < 0)
++			exit(1);
++
+ 		for (i = 0; ; i++) {
+ 			xb.offset = 0;
+ 			xb.nlmsg_count = 0;
+@@ -783,7 +787,7 @@
+ 				break;
+ 			}
+ 
+-			if (rtnl_send_check(&rth, xb.buf, xb.offset) < 0) {
++			if (rtnl_send_check(&rth2, xb.buf, xb.offset) < 0) {
+ 				perror("Failed to send delete-all request");
+ 				exit(1);
+ 			}
+@@ -793,6 +797,8 @@
+ 			xb.offset = 0;
+ 			xb.nlmsg_count = 0;
+ 		}
++
++		rtnl_close(&rth2);
+ 	} else {
+ 		if (rtnl_wilddump_request(&rth, preferred_family, XFRM_MSG_GETPOLICY) < 0) {
+ 			perror("Cannot send dump request");
+--- iproute2-2.6.29-1/ip/xfrm_state.c
++++ iproute2-2.6.29-1/ip/xfrm_state.c
+@@ -924,11 +924,15 @@
+ 		struct xfrm_buffer xb;
+ 		char buf[NLMSG_DELETEALL_BUF_SIZE];
+ 		int i;
++		struct rtnl_handle rth2;
+ 
+ 		xb.buf = buf;
+ 		xb.size = sizeof(buf);
+ 		xb.rth = &rth;
+ 
++		if (rtnl_open(&rth2, 0) < 0)
++			exit(1);
++
+ 		for (i = 0; ; i++) {
+ 			xb.offset = 0;
+ 			xb.nlmsg_count = 0;
+@@ -951,7 +955,7 @@
+ 				break;
+ 			}
+ 
+-			if (rtnl_send_check(&rth, xb.buf, xb.offset) < 0) {
++			if (rtnl_send_check(&rth2, xb.buf, xb.offset) < 0) {
+ 				perror("Failed to send delete-all request\n");
+ 				exit(1);
+ 			}
+@@ -962,6 +966,7 @@
+ 			xb.nlmsg_count = 0;
+ 		}
+ 
++		rtnl_close(&rth2);
+ 	} else {
+ 		if (rtnl_wilddump_request(&rth, preferred_family, XFRM_MSG_GETSA) < 0) {
+ 			perror("Cannot send dump request");

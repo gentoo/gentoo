@@ -1,0 +1,47 @@
+From 568e41db929a34106c8c2ff7c48716ab5c13ef49 Mon Sep 17 00:00:00 2001
+From: Andrew Beekhof <andrew@beekhof.net>
+Date: Mon, 13 Oct 2014 13:30:58 +1100
+Subject: [PATCH] Fix: lrmd: Prevent glib assert triggered by timers being
+ removed from mainloop more than once
+
+---
+ lib/services/services.c       | 3 +++
+ lib/services/services_linux.c | 1 +
+ 2 files changed, 4 insertions(+)
+
+--- a/lib/services/services.c
++++ b/lib/services/services.c
+@@ -313,6 +313,7 @@ services_action_free(svc_action_t * op)
+ 
+     if (op->opaque->repeat_timer) {
+         g_source_remove(op->opaque->repeat_timer);
++        op->opaque->repeat_timer = 0;
+     }
+     if (op->opaque->stderr_gsource) {
+         mainloop_del_fd(op->opaque->stderr_gsource);
+@@ -425,6 +426,7 @@ services_action_kick(const char *name, c
+     } else {
+         if (op->opaque->repeat_timer) {
+             g_source_remove(op->opaque->repeat_timer);
++            op->opaque->repeat_timer = 0;
+         }
+         recurring_action_timer(op);
+         return TRUE;
+@@ -459,6 +461,7 @@ handle_duplicate_recurring(svc_action_t
+         if (dup->pid != 0) {
+             if (op->opaque->repeat_timer) {
+                 g_source_remove(op->opaque->repeat_timer);
++                op->opaque->repeat_timer = 0;
+             }
+             recurring_action_timer(dup);
+         }
+--- a/lib/services/services_linux.c
++++ b/lib/services/services_linux.c
+@@ -226,6 +226,7 @@ recurring_action_timer(gpointer data)
+     op->stdout_data = NULL;
+     free(op->stderr_data);
+     op->stderr_data = NULL;
++    op->opaque->repeat_timer = 0;
+ 
+     services_action_async(op, NULL);
+     return FALSE;

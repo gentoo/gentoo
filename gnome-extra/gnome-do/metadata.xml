@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>giuse88@gmail.com</email>
+		<name>Giuseppe Pes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	GNOME Do allows you to quickly search for many items present in your GNOME
+	desktop environment (applications, Evolution contacts, Firefox bookmarks,
+	files, artists and albums in Rhythmbox, Pidgin buddies, etc.) and perform
+	commonly used actions on those items (Run, Open, Email, Chat, Play, etc.).
+	GNOME Do is inspired by Quicksilver and GNOME Launch Box.
+	</longdescription>
+	<upstream>
+		<remote-id type="launchpad">do</remote-id>
+	</upstream>
+</pkgmetadata>

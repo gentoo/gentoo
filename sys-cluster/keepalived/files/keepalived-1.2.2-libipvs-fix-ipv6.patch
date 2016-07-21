@@ -1,0 +1,33 @@
+From cf8ff745812b7fe00d509fb50592348b6f60b433 Mon Sep 17 00:00:00 2001
+From: Alexander Holler <alexander.holler@1und1.de>
+Date: Mon, 9 Jan 2012 12:58:12 +0100
+Subject: [PATCH] libipvs: Fix initialization of netlink (needed for IPv6)
+ when the module ip_vs wasn't loaded.
+
+The following happened when keepalived was started before the module for IPVS was loaded:
+
+ipvs_init() failed => netlink got disabled.
+modprobe_ipvs()
+ipvs_init() => netlink was not tested again => no netlink => no IPv6
+
+Fixed through testing netlink always in ipvs_init().
+---
+ keepalived/libipvs-2.6/libipvs.c |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/keepalived/libipvs-2.6/libipvs.c b/keepalived/libipvs-2.6/libipvs.c
+index 2c75118..ea5e851 100644
+--- a/keepalived/libipvs-2.6/libipvs.c
++++ b/keepalived/libipvs-2.6/libipvs.c
+@@ -114,6 +114,8 @@ int ipvs_init(void)
+ 	ipvs_func = ipvs_init;
+ 
+ #ifdef LIBIPVS_USE_NL
++	try_nl = 1;
++
+ 	if (ipvs_nl_send_message(NULL, NULL, NULL) == 0) {
+ 		return ipvs_getinfo();
+ 	}
+-- 
+1.7.6.5
+

@@ -1,0 +1,65 @@
+--- libs/base/trunk/Tools/gdomap.c	2014/03/19 08:07:41	37755
++++ libs/base/trunk/Tools/gdomap.c	2014/03/19 08:18:09	37756
+@@ -296,7 +296,7 @@
+ #    define syslog(prio, msg,...) slogf(_SLOG_SETCODE(_SLOG_SYSLOG, 0), prio, msg, __VA_ARGS__)
+ #  endif
+ 
+-static int	log_priority;
++static int	log_priority = 0;
+ 
+ static void
+ gdomap_log (int prio)
+@@ -4481,16 +4481,7 @@
+   const char	*machine = 0;
+   const char	*lookupf = 0;
+   int		donamesf = 0;
+-
+-#if	defined(HAVE_SYSLOG)
+-  /* Initially, gdomap_log errors to stderr as well as to syslogd. */
+-#if	defined(SYSLOG_4_2)
+-  openlog ("gdomap", LOG_NDELAY);
+-  log_priority = LOG_DAEMON;
+-#elif !defined(HAVE_SLOGF)
+-  openlog ("gdomap", LOG_NDELAY, LOG_DAEMON);
+-#endif
+-#endif
++  int           forked = 0;
+ 
+ #if	defined(__MINGW__)
+   WORD wVersionRequested;
+@@ -4851,7 +4842,6 @@
+ #else
+   if (nofork == 0)
+     {
+-      is_daemon = 1;
+       /*
+        *	Now fork off child process to run in background.
+        */
+@@ -4865,6 +4855,7 @@
+ 	    /*
+ 	     *	Try to run in background.
+ 	     */
++          forked = 1;
+ #if	defined(NeXT)
+ 	    setpgrp(0, getpid());
+ #else
+@@ -4924,6 +4915,19 @@
+ 
+ #endif /* !__MINGW__ */
+ 
++  if (forked)
++    {
++      is_daemon = 1;
++#if	defined(HAVE_SYSLOG)
++#if	defined(SYSLOG_4_2)
++      openlog ("gdomap", LOG_NDELAY);
++      log_priority = LOG_DAEMON;
++#elif !defined(HAVE_SLOGF)
++      openlog ("gdomap", LOG_NDELAY, LOG_DAEMON);
++#endif
++#endif
++    }
++
+   init_my_port();	/* Determine port to listen on.		*/
+   init_ports();		/* Create ports to handle requests.	*/
+ 

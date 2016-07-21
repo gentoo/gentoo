@@ -1,0 +1,35 @@
+--- configure.ac.old	2012-09-03 18:34:15.358122626 +0200
++++ configure.ac	2012-09-03 18:35:30.279156534 +0200
+@@ -1,8 +1,9 @@
+ #for autoconf 2.1x start configure script with next three lines
+ 
+ AC_PREREQ(2.13)
+-AC_INIT(src/cgoban.c)
+-AM_INIT_AUTOMAKE(cgoban, 1.9.14)
++AC_INIT([cgoban], [1.9.14])
++AC_CONFIG_SRCDIR([src/cgoban.c])
++AM_INIT_AUTOMAKE([no-define])
+ 
+ #for autoconf 2.5x start configure script with next four lines
+ # AC_PREREQ(2.50)
+--- configure.ac.old	2012-09-03 20:17:48.037549487 +0200
++++ configure.ac	2012-09-03 20:18:00.267371203 +0200
+@@ -146,7 +146,7 @@
+ ######################################################################
+ 
+ export VERSION
+-AC_DEFINE_UNQUOTED(VERSION,$VERSION)
++AC_DEFINE_UNQUOTED(VERSION,["$VERSION"])
+ AC_PREFIX_DEFAULT(/usr/games)
+ 
+ dayNum=`echo $date | awk '{ print $1 }'`
+--- configure.ac.old	2012-09-03 20:23:29.174470309 +0200
++++ configure.ac	2012-09-03 20:23:51.895996955 +0200
+@@ -169,7 +169,6 @@
+ AC_MINIX
+ AC_PROG_CPP
+ AC_EXEEXT
+-WMS_GET_CFLAGS
+ 
+ AM_CONFIG_HEADER(configure.h)
+ AC_SUBST(LIBS)dnl

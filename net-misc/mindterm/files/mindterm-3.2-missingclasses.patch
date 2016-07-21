@@ -1,0 +1,19 @@
+diff -Nur mindterm_3.2/filesets.xml mindterm_3.2_patched/filesets.xml
+--- mindterm_3.2/filesets.xml	2007-10-02 16:09:12.000000000 +0300
++++ mindterm_3.2_patched/filesets.xml	2009-02-01 10:56:02.000000000 +0200
+@@ -145,6 +145,7 @@
+     com/mindbright/security/publickey/DSAPrivateKey.class
+     com/mindbright/security/publickey/DSAPublicKey.class
+     com/mindbright/security/publickey/DSAWithSHA1.class
++    com/mindbright/security/publickey/DSAWithSHA1$DSASIG.class
+     com/mindbright/security/publickey/DiffieHellman.class
+     com/mindbright/security/publickey/ModPGroups.class
+     com/mindbright/security/publickey/RawDSAWithSHA1.class
+@@ -565,6 +566,7 @@
+     com/mindbright/terminal/tandem6530/ProtectBlockMode.class
+     com/mindbright/terminal/tandem6530/ActionHandler.class
+     com/mindbright/terminal/tandem6530/Parser.class
++    com/mindbright/terminal/tandem6530/Parser*.class
+     com/mindbright/terminal/tandem6530/Parser$Collector.class
+     com/mindbright/terminal/tandem6530/ParseException.class
+     com/mindbright/terminal/tandem6530/BadColorException.class

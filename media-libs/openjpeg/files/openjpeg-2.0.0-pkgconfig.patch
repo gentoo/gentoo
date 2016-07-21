@@ -1,0 +1,37 @@
+Pkgconfig support http://code.google.com/p/openjpeg/source/detail?r=2250
+
+--- openjpeg-2.0.0/CMakeLists.txt
++++ openjpeg-2.0.0/CMakeLists.txt
+@@ -171,6 +171,16 @@
+ endif()
+ 
+ #-----------------------------------------------------------------------------
++# pkgconfig support
++if(UNIX)
++  # install in lib and not share (see multi-arch note above)
++  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/lib/openjp2/libopenjp2.pc.cmake.in
++    ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc @ONLY)
++  install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libopenjp2.pc DESTINATION
++    ${OPENJPEG_INSTALL_LIB_DIR}/pkgconfig )
++endif()
++
++#-----------------------------------------------------------------------------
+ # Compiler specific flags:
+ if(CMAKE_COMPILER_IS_GNUCC)
+   # For all builds, make sure openjpeg is std99 compliant:
+--- /dev/null
++++ openjpeg-2.0.0/src/lib/openjp2/libopenjp2.pc.cmake.in
+@@ -0,0 +1,13 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++bindir=${prefix}/@OPENJPEG_INSTALL_BIN_DIR@
++mandir=${prefix}/@OPENJPEG_INSTALL_MAN_DIR@
++docdir=${prefix}/@OPENJPEG_INSTALL_DOC_DIR@
++libdir=${prefix}/@OPENJPEG_INSTALL_LIB_DIR@
++includedir=${prefix}/@OPENJPEG_INSTALL_INCLUDE_DIR@
++
++Name: openjp2
++Description: JPEG2000 library (Part 1 and 2)
++URL: http://www.openjpeg.org/
++Version: @OPENJPEG_VERSION@
++Libs: -L${libdir} -lopenjp2
++Cflags: -I${includedir}

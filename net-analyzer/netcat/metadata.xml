@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vapier@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription>the network swiss army knife</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">nc110</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+--- interfaces/fftw2x_cdft/makefile.orig	2008-03-11 23:26:26.287984332 +0000
++++ interfaces/fftw2x_cdft/makefile	2008-03-13 10:56:44.755095617 +0000
+@@ -172,6 +172,15 @@
+ endif
+ 
+ 
++ifeq ($(mpi),openmpi)
++CS = mpicc
++ifdef mpidir
++_CS = $(mpidir)/bin/$(CS)
++else
++_CS = $(CS)
++endif
++endif
++
+ vpath %.c wrappers
+ 
+ $(WRP): %.o: %.c

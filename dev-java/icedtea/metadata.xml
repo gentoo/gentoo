@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>gnu_andrew@member.fsf.org</email>
+  <name>Andrew John Hughes</name>
+  <description>Proxy Maintainer</description>
+</maintainer>
+<maintainer type="person">
+  <email>chewi@gentoo.org</email>
+  <name>James Le Cuirot</name>
+  <description>Committer</description>
+</maintainer>
+<maintainer type="project">
+  <email>java@gentoo.org</email>
+  <name>Java</name>
+</maintainer>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>The IcedTea project provides a harness to build the source code from OpenJDK (http://openjdk.java.net) using Free Software build tools along with additional tools such as a browser plugin and Web Start support via NetX. </longdescription>
+<use>
+  <flag name="cacao">Use the CACAO virtual machine rather than HotSpot.</flag>
+  <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
+  <flag name="infinality">Enable better font rendering using fontconfig.</flag>
+  <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
+  <flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>
+  <flag name="nss">Enable NSS security provider support.</flag>
+  <flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
+  <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
+  <flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
+  <flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
+  <flag name="sunec">Build the SunEC provider against system NSS</flag>
+  <flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
+  <flag name="webstart">Enable Web Start support (via NetX).</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+diff -Naur _orig_CEGUI-0.6.2/include/elements/Makefile.am CEGUI-0.6.2/include/elements/Makefile.am
+--- _orig_CEGUI-0.6.2/include/elements/Makefile.am	2008-01-02 15:26:05.000000000 +0100
++++ CEGUI-0.6.2/include/elements/Makefile.am	2010-07-11 13:12:16.786338068 +0200
+@@ -21,8 +21,6 @@
+                      CEGUIItemListBaseProperties.h \
+                      CEGUIItemListbox.h \
+                      CEGUIItemListboxProperties.h \
+-                     CEGUIListHeader.h \
+-                     CEGUIListHeaderProperties.h \
+                      CEGUIListbox.h \
+                      CEGUIListboxItem.h \
+                      CEGUIListboxProperties.h \

@@ -1,0 +1,34 @@
+--- work.unpacked/nuget-Release-2.8.1-MonoDevelop/src/Core/Core.csproj	2015-03-06 18:32:27.255819553 +0300
++++ work/nuget-Release-2.8.1-MonoDevelop/src/Core/Core.csproj	2015-03-06 18:51:33.240779088 +0300
+@@ -221,9 +221,7 @@
+     <Compile Include="Utility\VersionSpec.cs" />
+     <Compile Include="Utility\WebRequestEventArgs.cs" />
+     <Compile Include="FileModifiers\XdtTransformer.cs" />
+-    <Reference Include="Microsoft.Web.XmlTransform">
+-      <HintPath>..\..\lib\Microsoft.Web.XmlTransform.dll</HintPath>
+-    </Reference>
++    <Reference Include="Microsoft.Web.XmlTransform, Version=2.8.1.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+     <Reference Include="System" />
+     <Reference Include="System.ComponentModel.DataAnnotations" />
+     <Reference Include="System.Core" />
+--- work.unpacked/nuget-Release-2.8.1-MonoDevelop/src/CommandLine/CommandLine.csproj	2015-03-06 18:32:27.265819553 +0300
++++ work/nuget-Release-2.8.1-MonoDevelop/src/CommandLine/CommandLine.csproj	2015-03-06 18:52:00.471778127 +0300
+@@ -30,10 +35,6 @@
+     <Reference Include="Microsoft.Build.Engine" />
+     <Reference Include="Microsoft.Build.Framework" />
+     <Reference Include="Microsoft.CSharp" />
+-    <Reference Include="Microsoft.Web.XmlTransform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+-      <SpecificVersion>False</SpecificVersion>
+-      <HintPath>..\..\lib\Microsoft.Web.XmlTransform.dll</HintPath>
+-    </Reference>
+     <Reference Include="System" />
+     <Reference Include="System.ComponentModel.Composition" />
+     <Reference Include="System.ComponentModel.DataAnnotations" />
+@@ -41,6 +42,7 @@
+     <Reference Include="System.Xml.Linq" />
+     <Reference Include="System.Xml" />
+     <Reference Include="WindowsBase" />
++    <Reference Include="Microsoft.Web.XmlTransform, Version=2.8.1.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+   </ItemGroup>
+   <ItemGroup>
+     <Compile Include="..\..\Common\MsBuildProjectUtility.cs">

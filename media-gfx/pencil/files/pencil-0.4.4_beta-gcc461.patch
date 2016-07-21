@@ -1,0 +1,14 @@
+--- src/graphics/vector/beziercurve.cpp	2007-07-14 21:41:33.000000000 +0200
++++ src/graphics/vector/beziercurve.cpp	2011-08-29 16:19:08.930675072 +0200
+@@ -700,9 +700,9 @@ 
+ 	R1.setTopLeft(P1); R1.setBottomRight(Q1);
+ 	R2.setTopLeft(P2); R2.setBottomRight(Q2);
+ 	
+-	//QPointF intersectionPoint = QPointF(50.0, 50.0); // bogus point
++	QPointF intersectionPoint = QPointF(50.0, 50.0); // bogus point
+ 	//QPointF* intersection = &intersectionPoint;
+-	QPointF* cubicIntersection = &QPointF(50.0, 50.0); // bogus point
++	QPointF* cubicIntersection = &intersectionPoint; // bogus point
+ 	if( R1.intersects(R2) || L2.intersect(L1, cubicIntersection) == QLineF::BoundedIntersection ) {
+ 	//if(L2.intersect(L1, intersection) == QLineF::BoundedIntersection) {
+ 		//qDebug() << "                   FOUND rectangle intersection ";

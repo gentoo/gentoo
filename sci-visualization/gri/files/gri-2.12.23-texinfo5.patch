@@ -1,0 +1,32 @@
+From 93a40c0b444fb5265b21a344b884b1c7bed49b5a Mon Sep 17 00:00:00 2001
+From: Dan Kelley <kelley.dan@gmail.com>
+Date: Mon, 5 Aug 2013 21:01:46 -0300
+Subject: [PATCH] Bug#718821 fixed
+
+Problem with a subsubsection following a section.
+---
+ doc/gri.texi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/gri.texi b/doc/gri.texi
+index 57c5e76..d16b6ff 100644
+--- a/doc/gri.texi
++++ b/doc/gri.texi
+@@ -18486,7 +18486,7 @@ Versions exist for MSDOS, windows, and Linux operating systems.
+ (Actually, the windows version is just the MSDOS version, which can be
+ run inside an msdos window within windows-95, windows-NT, etc.)
+ 
+-@subsubsection MSDOS Operating System
++@subsection MSDOS Operating System
+ @cindex compilation under MSDOS
+ @cindex MSDOS compilation
+ 
+@@ -18543,7 +18543,7 @@ To view the output, use a PostScript viewer such as GSview.
+ 
+ 
+ 
+-@subsubsection LINUX Operating System
++@subsection LINUX Operating System
+ @cindex compilation under Linux
+ @cindex linux compilation
+ @cindex LINUX compilation

@@ -1,0 +1,11 @@
+--- 1.0.0.rc16/make.tmpl.in	2010-08-16 10:22:32.000000000 -0400
++++ 1.0.0.rc16/make.tmpl.in	2010-08-16 10:42:49.000000000 -0400
+@@ -136,7 +136,7 @@
+ 
+ %.so: $(OBJECTS)
+ 	$(CC) -shared -Wl,-soname,$(notdir $@).$(DMRAID_LIB_VERSION) \
+-	-Wl,--version-script,.export.sym $(OBJECTS) -o $@ -ldevmapper-event
++	$(LDFLAGS) -Wl,--version-script,.export.sym $(OBJECTS) -o $@ -ldevmapper-event -ldl
+ 
+ $(LIB_STATIC): $(OBJECTS)
+ 	$(RM) $@

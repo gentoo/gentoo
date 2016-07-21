@@ -1,0 +1,59 @@
+From d2e186dbd58d274a0dea9b59357edc8498b5388d Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Tue, 26 Feb 2013 14:28:26 -0500
+Subject: [PATCH] src/thttpd.c: Fix world readable log, CVE-2013-0348.
+
+Make sure that the logfile is created or reopened as read/write
+by thttpd user only.
+
+X-gentoo-Bug: 458896
+X-gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=458896
+Reported-by:  Agostino Sarubbo <ago@gentoo.org>
+Signed-off-by: Anthony G. Basile <basile@opensource.dyc.edu>
+---
+ src/thttpd.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/thttpd.c b/src/thttpd.c
+index 019b8c0..f33a7a7 100644
+--- a/src/thttpd.c
++++ b/src/thttpd.c
+@@ -326,6 +326,7 @@ static void
+ re_open_logfile( void )
+     {
+     FILE* logfp;
++    int retchmod;
+ 
+     if ( no_log || hs == (httpd_server*) 0 )
+ 	return;
+@@ -335,7 +336,8 @@ re_open_logfile( void )
+ 	{
+ 	syslog( LOG_NOTICE, "re-opening logfile" );
+ 	logfp = fopen( logfile, "a" );
+-	if ( logfp == (FILE*) 0 )
++	retchmod = chmod( logfile, S_IRUSR|S_IWUSR );
++	if ( logfp == (FILE*) 0 || retchmod != 0 )
+ 	    {
+ 	    syslog( LOG_CRIT, "re-opening %.80s - %m", logfile );
+ 	    return;
+@@ -355,6 +357,7 @@ main( int argc, char** argv )
+     gid_t gid = 32767;
+     char cwd[MAXPATHLEN+1];
+     FILE* logfp;
++    int retchmod;
+     int num_ready;
+     int cnum;
+     connecttab* c;
+@@ -424,7 +427,8 @@ main( int argc, char** argv )
+ 	else
+ 	    {
+ 	    logfp = fopen( logfile, "a" );
+-	    if ( logfp == (FILE*) 0 )
++	    retchmod = chmod( logfile, S_IRUSR|S_IWUSR );
++	    if ( logfp == (FILE*) 0 || retchmod != 0 )
+ 		{
+ 		syslog( LOG_CRIT, "%.80s - %m", logfile );
+ 		perror( logfile );
+-- 
+1.7.12.4
+

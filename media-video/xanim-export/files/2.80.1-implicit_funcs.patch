@@ -1,0 +1,33 @@
+--- xa_g72x.c
++++ xa_g72x.c
+@@ -30,6 +30,7 @@
+  * Common routines for G.721 and G.723 conversions.
+  */
+ 
++#include <stdlib.h>
+ #include "xa_g72x.h"
+ 
+ static short power2[15] = {1, 2, 4, 8, 0x10, 0x20, 0x40, 0x80,
+--- xa_export.c
++++ xa_export.c
+@@ -7,7 +7,8 @@
+ 
+ 
+ 
+-
++#include <stdlib.h>
++#include <string.h>
+ #include <stdio.h>
+ #include <signal.h>
+ #include <jpeglib.h>
+--- xa_audio.c
++++ xa_audio.c
+@@ -227,7 +227,7 @@
+ */
+ 
+ /* TOP */
+-
++#include <sys/ioctl.h>
+ #include "xa_audio.h"
+ 
+ /* POD note:  For opening audio device non-blocking. Should probably set it

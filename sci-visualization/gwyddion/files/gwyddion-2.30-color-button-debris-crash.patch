@@ -1,0 +1,37 @@
+Index: modules/file/pixmap.c
+===================================================================
+--- modules/file/pixmap.c	(revision 13902)
++++ modules/file/pixmap.c	(revision 13903)
+@@ -2933,8 +2933,6 @@
+     gwy_rgba_to_gdk_color(&controls->args->inset_color, &gdkcolor);
+ 
+     dialog = gtk_color_selection_dialog_new(_("Change Inset Color"));
+-    if (gtk_major_version == 2 && gtk_minor_version < 10)
+-
+     selector = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
+     gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(selector),
+                                           &gdkcolor);
+Index: libgwydgets/gwygraphareadialog.c
+===================================================================
+--- libgwydgets/gwygraphareadialog.c	(revision 13902)
++++ libgwydgets/gwygraphareadialog.c	(revision 13903)
+@@ -383,7 +383,6 @@
+     dialog->color_dialog = selector;
+     dialog->old_color = cmodel->color;
+ 
+-    if (gtk_major_version == 2 && gtk_minor_version < 10)
+     colorsel = GTK_COLOR_SELECTION_DIALOG(selector)->colorsel;
+     g_signal_connect(selector, "response",
+                      G_CALLBACK(colorsel_response_cb), dialog);
+Index: libgwydgets/gwydgetutils.c
+===================================================================
+--- libgwydgets/gwydgetutils.c	(revision 13902)
++++ libgwydgets/gwydgetutils.c	(revision 13903)
+@@ -561,7 +561,6 @@
+     dialog = gtk_color_selection_dialog_new(dialog_title
+                                             ? dialog_title
+                                             : _("Change Mask Color"));
+-    if (gtk_major_version == 2 && gtk_minor_version < 10)
+     selector = GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel;
+     gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(selector),
+                                           &gdkcolor);

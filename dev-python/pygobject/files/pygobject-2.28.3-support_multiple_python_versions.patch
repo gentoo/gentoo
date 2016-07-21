@@ -1,0 +1,103 @@
+From 2f75378f3c56f245cabdcd2c52b561dbb878db2d Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Fri, 8 Apr 2011 15:43:39 +0200
+Subject: [PATCH 3/3] Enable support to build against multiple version of python
+
+---
+ codegen/pygobject-codegen-2.0.in |    2 +-
+ gi/Makefile.am                   |    2 +-
+ gio/Makefile.am                  |    2 +-
+ glib/Makefile.am                 |   10 +++++-----
+ gobject/Makefile.am              |    2 +-
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/codegen/pygobject-codegen-2.0.in b/codegen/pygobject-codegen-2.0.in
+index c04451b..194e5ba 100644
+--- a/codegen/pygobject-codegen-2.0.in
++++ b/codegen/pygobject-codegen-2.0.in
+@@ -4,7 +4,7 @@ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ datarootdir=@datarootdir@
+ datadir=@datadir@
+-codegendir=@pyexecdir@/gtk-2.0/codegen
++codegendir=$(@PYTHON@ -c "from distutils import sysconfig; print sysconfig.get_python_lib(1, 0, prefix='@exec_prefix@')")/gtk-2.0/codegen
+ 
+ PYTHONPATH=$codegendir
+ export PYTHONPATH
+diff --git a/gi/Makefile.am b/gi/Makefile.am
+index 31f6c79..8690522 100644
+--- a/gi/Makefile.am
++++ b/gi/Makefile.am
+@@ -25,7 +25,7 @@ _gi_la_LDFLAGS = \
+ 	-export-symbols-regex "init_gi|PyInit__gi"
+ _gi_la_LIBADD = \
+ 	$(GI_LIBS) \
+-	$(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@.la
++	$(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@@PYTHON_VERSION@.la
+ _gi_la_SOURCES = \
+ 	pygi-repository.c \
+ 	pygi-repository.h \
+diff --git a/gio/Makefile.am b/gio/Makefile.am
+index 6b3eb57..00e1c54 100644
+--- a/gio/Makefile.am
++++ b/gio/Makefile.am
+@@ -67,7 +67,7 @@ EXTRA_DIST += $(GIO_DEFS) $(GIO_OVERRIDES)
+ gio.c: $(GIO_DEFS) $(GIO_OVERRIDES)
+ _gio_la_CFLAGS = $(GIO_CFLAGS)
+ _gio_la_LDFLAGS = $(common_ldflags) -export-symbols-regex init_gio
+-_gio_la_LIBADD = $(GIO_LIBS) $(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@.la
++_gio_la_LIBADD = $(GIO_LIBS) $(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@@PYTHON_VERSION@.la
+ _gio_la_SOURCES = \
+ 	giomodule.c \
+ 	pygio-utils.c \
+diff --git a/glib/Makefile.am b/glib/Makefile.am
+index e210318..df39687 100644
+--- a/glib/Makefile.am
++++ b/glib/Makefile.am
+@@ -4,7 +4,7 @@ INCLUDES = $(PYTHON_INCLUDES) $(GLIB_CFLAGS) -DPY_SSIZE_T_CLEAN
+ pkgincludedir = $(includedir)/pygtk-2.0
+ pkginclude_HEADERS = pyglib.h
+ 
+-lib_LTLIBRARIES = libpyglib-2.0-@PYTHON_BASENAME@.la
++lib_LTLIBRARIES = libpyglib-2.0-@PYTHON_BASENAME@@PYTHON_VERSION@.la
+ 
+ pkgpyexecdir = $(pyexecdir)
+ 
+@@ -19,9 +19,9 @@ if PLATFORM_WIN32
+ common_ldflags += -no-undefined
+ endif
+ 
+-libpyglib_2_0_@PYTHON_BASENAME@_la_CFLAGS = $(GLIB_CFLAGS)
+-libpyglib_2_0_@PYTHON_BASENAME@_la_LIBADD = $(GLIB_LIBS) $(FFI_LIBS)
+-libpyglib_2_0_@PYTHON_BASENAME@_la_SOURCES = 	\
++libpyglib_2_0_@PYTHON_BASENAME@@PYTHON_VERSION@_la_CFLAGS = $(GLIB_CFLAGS)
++libpyglib_2_0_@PYTHON_BASENAME@@PYTHON_VERSION@_la_LIBADD = $(GLIB_LIBS) $(FFI_LIBS)
++libpyglib_2_0_@PYTHON_BASENAME@@PYTHON_VERSION@_la_SOURCES = 	\
+ 	pyglib.c		\
+ 	pyglib.h		\
+ 	pyglib-private.h 	\
+@@ -29,7 +29,7 @@ libpyglib_2_0_@PYTHON_BASENAME@_la_SOURCES = 	\
+ 
+ _glib_la_CFLAGS = $(GLIB_CFLAGS)
+ _glib_la_LDFLAGS = $(common_ldflags) -export-symbols-regex "_glib|PyInit__glib"
+-_glib_la_LIBADD = $(GLIB_LIBS) libpyglib-2.0-@PYTHON_BASENAME@.la
++_glib_la_LIBADD = $(GLIB_LIBS) libpyglib-2.0-@PYTHON_BASENAME@@PYTHON_VERSION@.la
+ _glib_la_SOURCES = 	 	\
+ 	glibmodule.c	 	\
+ 	pygiochannel.c 	 	\
+diff --git a/gobject/Makefile.am b/gobject/Makefile.am
+index 7208329..3f9ad8e 100644
+--- a/gobject/Makefile.am
++++ b/gobject/Makefile.am
+@@ -35,7 +35,7 @@ _gobject_la_LDFLAGS = $(common_ldflags) -export-symbols-regex "_gobject|PyInit__
+ _gobject_la_LIBADD = \
+ 	$(GLIB_LIBS) \
+ 	$(FFI_LIBS) \
+-	$(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@.la
++	$(top_builddir)/glib/libpyglib-2.0-@PYTHON_BASENAME@@PYTHON_VERSION@.la
+ _gobject_la_SOURCES =           \
+         gobjectmodule.c         \
+         pygboxed.c              \
+-- 
+1.7.4.1
+

@@ -1,0 +1,22 @@
+diff --git a/src/ibus-fbterm.c b/src/ibus-fbterm.c
+index ffb7401..b4ddb64 100644
+--- a/src/ibus-fbterm.c
++++ b/src/ibus-fbterm.c
+@@ -119,13 +119,17 @@ static void im_active()
+ 	debug("im active\n");
+ 	modifier_state = 0;
+ 	init_keycode_state();
++#if ! IBUS_CHECK_VERSION(1, 4, 99)
+ 	ibus_input_context_enable(ibus_ctx);
++#endif
+ }
+ 
+ static void im_deactive()
+ {
+ 	debug("im deactive\n");
++#if ! IBUS_CHECK_VERSION(1, 4, 99)
+ 	ibus_input_context_disable(ibus_ctx);
++#endif
+ 
+ 	auxiliary_text_win.w = 0;
+ 	lookup_table_win.w = 0;

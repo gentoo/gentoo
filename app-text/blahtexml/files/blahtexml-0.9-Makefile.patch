@@ -1,0 +1,55 @@
+Use pkg-config for xerces-c
+Respect CXX and CC
+Replace CFLAGS with CXXFLAGS where needed
+Add LDFLAGS
+
+--- a/makefile
++++ b/makefile
+@@ -93,35 +93,40 @@
+ 
+ $(BINDIR_XMLIN)/InputSymbolTranslation.o: InputSymbolTranslation.cpp InputSymbolTranslation.inc
+ 
+-CFLAGS = -O2
++PKG_CONFIG ?= pkg-config
++CFLAGS ?= -O2
+ 
+ VPATH = Source:Source/BlahtexCore:Source/BlahtexXMLin
+ 
+ INCLUDES=-I. -ISource -ISource/BlahtexCore -ISource/BlahtexXMLin
+ 
++CXXFLAGS += $(shell $(PKG_CONFIG) --cflags xerces-c)
++
++XERCES_LIB = $(shell $(PKG_CONFIG) --libs xerces-c)
++
+ $(BINDIR)/%.o:%.cpp
+-	$(CXX) $(INCLUDES) $(CFLAGS) -c $< -o $@
++	$(CXX) $(INCLUDES) $(CXXFLAGS) -c $< -o $@
+ 
+ $(BINDIR)/%.o:%.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+ 
+ $(BINDIR_XMLIN)/%.o:%.cpp
+-	$(CXX) $(INCLUDES) $(CFLAGS) -DBLAHTEXML_USING_XERCES -c $< -o $@
++	$(CXX) $(INCLUDES) $(CXXFLAGS) -DBLAHTEXML_USING_XERCES -c $< -o $@
+ 
+ $(BINDIR_XMLIN)/%.o:%.c
+ 	$(CC) $(INCLUDES) $(CFLAGS) -DBLAHTEXML_USING_XERCES -c $< -o $@
+ 
+ blahtex-linux:  $(BINDIR) $(OBJECTS)  $(HEADERS)
+-	$(CXX) $(CFLAGS) -o blahtex $(OBJECTS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o blahtex $(OBJECTS) $(LIBS)
+ 
+ blahtex-mac: $(BINDIR) $(OBJECTS)  $(HEADERS)
+-	$(CXX) $(CFLAGS) -o blahtex -liconv $(OBJECTS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o blahtex -liconv $(OBJECTS) $(LIBS)
+ 
+ blahtexml-linux:  $(BINDIR_XMLIN) $(OBJECTS_XMLIN)  $(HEADERS_XMLIN)
+-	$(CXX) $(CFLAGS) -o blahtexml $(OBJECTS_XMLIN) -lxerces-c
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o blahtexml $(OBJECTS_XMLIN) $(LIBS) $(XERCES_LIB)
+ 
+ blahtexml-mac: $(BINDIR_XMLIN) $(OBJECTS_XMLIN)  $(HEADERS_XMLIN)
+-	$(CXX) $(CFLAGS) -o blahtexml -liconv $(OBJECTS_XMLIN) -lxerces-c
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o blahtexml -liconv $(OBJECTS_XMLIN) $(LIBS) $(XERCES_LIB)
+ 
+ clean:
+ 	rm -f blahtex $(OBJECTS) blahtexml $(OBJECTS_XMLIN)

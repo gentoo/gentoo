@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    An application for finding a route between two points using the dataset
+    of topographical information collected by http://www.OpenStreetMap.org.
+    This router uses a routing algorithm that takes OSM format data as its input
+    and calculates either the shortest or quickest route between two points.
+    To optimise the routing a custom database format is used.
+    This allows the routing to be performed quickly after a modest one-off pre-processing stage. 
+  </longdescription>
+</pkgmetadata>

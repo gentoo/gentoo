@@ -1,0 +1,11 @@
+--- root.orig/net/auth/src/TAFS.cxx	2010-09-14 03:22:22.647915854 +0400
++++ root/net/auth/src/TAFS.cxx	2010-09-14 03:22:39.034599899 +0400
+@@ -11,6 +11,7 @@
+ 
+ #ifndef WIN32
+ #   include <unistd.h>
++#   include <sys/stat.h>
+ #else
+ #   define ssize_t int
+ #   include <io.h>
+

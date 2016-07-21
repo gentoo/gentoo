@@ -1,0 +1,17 @@
+--- expect-5.44.1.15/tclconfig/tcl.m4.orig	2010-04-08 22:49:51.568043292 -0700
++++ expect-5.44.1.15/tclconfig/tcl.m4	2010-04-08 22:50:28.207915301 -0700
+@@ -1579,12 +1579,12 @@
+ 	FreeBSD-*)
+ 	    # FreeBSD 3.* and greater have ELF.
+ 	    SHLIB_CFLAGS="-fPIC"
+-	    SHLIB_LD="ld -Bshareable -x"
++	    SHLIB_LD="${CC} -shared"
+ 	    SHLIB_LD_LIBS='${LIBS}'
+ 	    SHLIB_SUFFIX=".so"
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS=""
+-	    LDFLAGS="$LDFLAGS -export-dynamic"
++	    LDFLAGS="$LDFLAGS -Wl,-export-dynamic"
+ 	    CC_SEARCH_FLAGS='-Wl,-rpath,${LIB_RUNTIME_DIR}'
+ 	    LD_SEARCH_FLAGS='-rpath ${LIB_RUNTIME_DIR}'
+ 	    if test "${TCL_THREADS}" = "1" ; then

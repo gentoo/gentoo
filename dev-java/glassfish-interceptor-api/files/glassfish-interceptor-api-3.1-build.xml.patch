@@ -1,0 +1,10 @@
+--- a/maven-build.xml
++++ b/maven-build.xml
+@@ -166,7 +166,6 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/tmp/glassfish-interceptor-api-3.1/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html"/>
+   </target>

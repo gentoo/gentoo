@@ -1,0 +1,23 @@
+#!/bin/sh
+# Get game directory
+GAMEDIR="@GAMEDIR@"
+LIB=$GAMEDIR/lib
+BIN=$GAMEDIR/bin
+
+# Ensure the log directory exists
+LOGDIR=~/.capy/SwordAndSworcery
+[ -e ~/.capy ] || mkdir ~/.capy
+[ -e ~/.capy/SwordAndSworcery ] || mkdir ~/.capy/SwordAndSworcery
+
+# For multi-monitor displays, choose a screen to display on to avoid having
+# the game be displayed in the middle across both screens in fullscreen mode
+#export SDL_VIDEO_FULLSCREEN_DISPLAY=0
+
+# Modify library paths here
+export LD_LIBRARY_PATH="$LIB:$LD_LIBRARY_PATH"
+
+# Run the game and try to log any errors if any
+cd "$BIN"
+exec ./swordandsworcery $@ 2>&1 | tee -a $LOGDIR/log.txt
+
+exit

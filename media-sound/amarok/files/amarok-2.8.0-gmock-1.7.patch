@@ -1,0 +1,35 @@
+commit 5b3c84b29c16931e46bf7e1ddba16095245ce070
+Author: Mark Kretschmann <kretschmann@kde.org>
+Date:   Sat Dec 14 10:25:45 2013 +0100
+
+    Fix compilation with unit tests enabled.
+    
+    The problem was clashing symbols between KDE's kWarning macro and gmock.
+    Thanks go to Edward for help with fixing.
+    
+    CCMAIL: amarok-devel@kde.org
+
+diff --git a/tests/core/collections/MockCollectionLocationDelegate.h b/tests/core/collections/MockCollectionLocationDelegate.h
+index 019b096..a2f4504 100644
+--- a/tests/core/collections/MockCollectionLocationDelegate.h
++++ b/tests/core/collections/MockCollectionLocationDelegate.h
+@@ -23,6 +23,7 @@
+ 
+ #include "core/collections/CollectionLocationDelegate.h"
+ 
++#undef kWarning  // WORKAROUND: Prevent symbols clash with KDE's kWarning macro
+ #include <gmock/gmock.h>
+ 
+ namespace Collections {
+diff --git a/tests/mocks/MockTrack.h b/tests/mocks/MockTrack.h
+index 9f47956..fec6ef2 100644
+--- a/tests/mocks/MockTrack.h
++++ b/tests/mocks/MockTrack.h
+@@ -17,6 +17,7 @@
+ #ifndef META_MOCKTRACK_H
+ #define META_MOCKTRACK_H
+ 
++#undef kWarning  // WORKAROUND: Prevent symbols clash with KDE's kWarning macro
+ #include <gmock/gmock.h>
+ 
+ #include "core/meta/Meta.h"

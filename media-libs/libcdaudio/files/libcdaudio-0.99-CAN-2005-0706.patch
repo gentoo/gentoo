@@ -1,0 +1,12 @@
+--- libcdaudio-0.99.10/src/cddb.c.orig	2005-04-03 15:37:04.180240520 +0200
++++ libcdaudio-0.99.10/src/cddb.c	2005-04-03 15:38:07.389631232 +0200
+@@ -1034,7 +1034,7 @@
+     }
+ 	   
+     query->query_matches = 0;
+-    while(!cddb_read_line(sock, inbuffer, 256)) {
++    while(query->query_matches < MAX_INEXACT_MATCHES && !cddb_read_line(sock, inbuffer, 256)) {
+       slashed = 0;
+       if(strchr(inbuffer, '/') != NULL && parse_disc_artist) {
+ 	index = 0;
+

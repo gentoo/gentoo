@@ -1,0 +1,205 @@
+https://bz-attachments.freebsd.org/attachment.cgi?id=149027&action=diff&collapsed=&context=patch&format=raw&headers=1
+--- perl/Amanda/Application.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Application.c	2014-10-27 08:48:58.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Archive.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Archive.c	2014-10-27 08:49:05.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Cmdline.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Cmdline.c	2014-10-27 08:49:13.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Config.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Config.c	2014-10-27 08:49:19.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Debug.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Debug.c	2014-10-27 08:49:25.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Device.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Device.c	2014-10-27 08:49:30.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Disklist.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Disklist.c	2014-10-27 08:49:36.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Feature.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Feature.c	2014-10-27 08:49:41.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Header.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Header.c	2014-10-27 08:49:48.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Logfile.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Logfile.c	2014-10-27 08:49:53.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/MainLoop.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/MainLoop.c	2014-10-27 08:49:59.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/NDMP.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/NDMP.c	2014-10-27 08:50:19.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Tapelist.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Tapelist.c	2014-10-27 08:50:24.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Tests.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Tests.c	2014-10-27 09:01:12.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Util.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Util.c	2014-10-27 09:01:17.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/Xfer.c.orig	2012-07-25 17:59:54.000000000 +0200
++++ perl/Amanda/Xfer.c	2014-10-27 09:01:22.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif
+--- perl/Amanda/XferServer.c.orig	2012-07-25 17:59:55.000000000 +0200
++++ perl/Amanda/XferServer.c	2014-10-27 09:01:29.000000000 +0100
+@@ -1450,9 +1450,6 @@
+ #ifdef eof
+   #undef eof
+ #endif
+-#ifdef bool
+-  #undef bool
+-#endif
+ #ifdef close
+   #undef close
+ #endif

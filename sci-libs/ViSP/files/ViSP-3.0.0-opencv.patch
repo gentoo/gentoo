@@ -1,0 +1,13 @@
+Index: visp-3.0.0/modules/core/CMakeLists.txt
+===================================================================
+--- visp-3.0.0.orig/modules/core/CMakeLists.txt
++++ visp-3.0.0/modules/core/CMakeLists.txt
+@@ -172,7 +172,7 @@ if(USE_OPENCV)
+     list(APPEND opt_libs ${OpenCV_LIBS})
+   endif()
+   list(APPEND opt_incs ${OpenCV_INCLUDE_DIRS})
+-  #list(APPEND opt_libs ${OpenCV_LIBS})
++  list(APPEND opt_libs ${OpenCV_LIBS})
+   #MESSAGE("OpenCV_INCLUDE_DIRS = ${OpenCV_INCLUDE_DIRS}")
+   #MESSAGE("OpenCV_LIBS = ${OpenCV_LIBS}")
+   #MESSAGE("OpenCV_LIB_DIR = ${OpenCV_LIB_DIR}")

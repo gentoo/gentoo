@@ -1,0 +1,22 @@
+ util/cmake/SeqAnBuildSystem.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/util/cmake/SeqAnBuildSystem.cmake b/util/cmake/SeqAnBuildSystem.cmake
+index bcba2c0..d53cd01 100644
+--- a/util/cmake/SeqAnBuildSystem.cmake
++++ b/util/cmake/SeqAnBuildSystem.cmake
+@@ -144,10 +144,10 @@ macro (seqan_register_apps)
+     set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DSEQAN_ENABLE_DEBUG=1")
+ 
+     # enable static linkage for seqan apps
+-    if (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG AND NOT MINGW)
+-      set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+-      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+-    endif ()
++#    if (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANG AND NOT MINGW)
++#      set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
++#      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
++#    endif ()
+ 
+     # Get all direct entries of the current source directory into ENTRIES.
+     file (GLOB ENTRIES

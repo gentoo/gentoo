@@ -1,0 +1,56 @@
+diff --git a/tests/unit/modules/mount_test.py b/tests/unit/modules/mount_test.py
+index 282539d..c88a7a8 100644
+--- a/tests/unit/modules/mount_test.py
++++ b/tests/unit/modules/mount_test.py
+@@ -103,12 +103,6 @@ class MountTestCase(TestCase):
+             self.assertTrue(mount.rm_fstab('name', 'device'))
+ 
+         mock = MagicMock(return_value={'name': 'name'})
+-        with patch.object(mount, 'fstab', mock):
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                               mount.rm_fstab,
+-                                               config=None)
+ 
+     def test_set_fstab(self):
+         '''
+@@ -143,12 +137,6 @@ class MountTestCase(TestCase):
+             self.assertTrue(mount.rm_automaster('name', 'device'))
+ 
+         mock = MagicMock(return_value={'name': 'name'})
+-        with patch.object(mount, 'fstab', mock):
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                               mount.rm_automaster,
+-                                               'name', 'device')
+ 
+     def test_set_automaster(self):
+         '''
+diff --git a/tests/unit/modules/puppet_test.py b/tests/unit/modules/puppet_test.py
+index 6a43fd4..3be039c 100644
+--- a/tests/unit/modules/puppet_test.py
++++ b/tests/unit/modules/puppet_test.py
+@@ -91,10 +91,6 @@ class PuppetTestCase(TestCase):
+                     with patch('salt.utils.fopen', mock_open()):
+                         self.assertTrue(puppet.disable())
+ 
+-                    with patch('salt.utils.fopen', mock_open()) as m_open:
+-                        helper_open = m_open()
+-                        helper_open.write.assertRaises(CommandExecutionError,
+-                                                       puppet.disable)
+ 
+     def test_status(self):
+         '''
+@@ -154,10 +150,6 @@ class PuppetTestCase(TestCase):
+                            mock_open(read_data="resources: 1")):
+                     self.assertDictEqual(puppet.summary(), {'resources': 1})
+ 
+-                with patch('salt.utils.fopen', mock_open()) as m_open:
+-                    helper_open = m_open()
+-                    helper_open.write.assertRaises(CommandExecutionError,
+-                                                   puppet.summary)
+ 
+     def test_plugin_sync(self):
+         '''

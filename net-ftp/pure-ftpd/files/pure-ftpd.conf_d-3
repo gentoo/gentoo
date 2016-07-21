@@ -1,0 +1,90 @@
+# Config file for /etc/init.d/pure-ftpd
+##Comment variables out to disable its features, or change the values in it... ##
+
+## This variable must be uncommented in order for the server to start ##
+#IS_CONFIGURED="yes"
+
+## FTP Server,Port (separated by comma) ##
+## If you prefer host names over IP addresses, it's your choice:
+## SERVER="-S ftp.rtchat.com,21"
+## IPv6 addresses are supported.
+## !!! WARNING !!!
+## Using an invalid IP will result in the server not starting,
+## but reporting a correct start!
+## SERVER="-S 192.168.0.1,21"
+## By default binds to all available IPs.
+SERVER="-S 21"
+
+## Number of simultaneous connections in total, and per IP ##
+MAX_CONN="-c 30"
+MAX_CONN_IP="-C 10"
+
+## Don't allow uploads if the partition is more full then this var ##
+DISK_FULL="-k 90%"
+
+## If your FTP server is behind a NAT box, uncomment this ##
+#USE_NAT="-N"
+
+## Authentication mechanisms (others are 'pam', ...) ##
+## Further infos can be found in the README file.
+AUTH="-l unix"
+
+## Change the maximum idle time (in minutes) ##
+## If this variable is not defined, it will default to 15 minutes.
+#TIMEOUT="-I <timeout>'"
+
+## Facility used for syslog logging ##
+## If this variable is not defined, it will default to the 'ftp' facility.
+## Logging can be disabled with '-f none'.
+#LOG="-f <facility>"
+
+## Charset conversion support *experimental* ##
+## Only works if USE "charconv" is enabled (only Pure-FTPd >=1.0.21).
+## Set the charset of the filesystem.
+# CHARCONV="--fscharset <charset>"
+
+## If you want to process each file uploaded through Pure-FTPd, enter the name
+## of the script that should process the files below.
+## man pure-uploadscript to learn more about how to write this script.
+# UPLOADSCRIPT="/path/to/uploadscript"
+
+## Misc. Others ##
+MISC_OTHER="-A -x -j -R -Z"
+
+#
+# Use these inside $MISC_OTHER
+# More can be found on "http://download.pureftpd.org/pub/pure-ftpd/doc/README"
+#
+# -A [ chroot() everyone, but root ]
+# -e [ Only allow anonymous users ]
+# -E [ Only allow authenticated users. Anonymous logins are prohibited. ]
+# -i [ Disallow upload for anonymous users, whatever directory perms are ]
+# -j [ If the home directory of a user doesn't exist, auto-create it ]
+# -M [ Allow anonymous users to create directories. ]
+# -R [ Disallow users (even non-anonymous ones) usage of the CHMOD command ]
+# -x [ In  normal  operation mode, authenticated users can read/write
+#	files beginning with a dot ('.'). Anonymous users can't, for security reasons
+#	(like changing banners or a forgotten .rhosts). When '-x' is used, authenticated
+#	users can download dot-files, but not overwrite/create  them,  even  if they own
+#	them. ]
+# -X [ This  flag  is  identical  to  the  previous one (writing
+#       dot-files is prohibited), but in addition, users can't even *read* files and
+#       directories beginning with a dot (like "cd .ssh"). ]
+# -D [ List files beginning with a dot ('.') even when the client doesn't
+#      append the '-a' option to the list command. A workaround for badly
+#      configured FTP clients. ]
+# -G [ Disallow renaming. ]
+# -d [ Send various debugging messages to the syslog. ONLY for DEBUG ]
+# -F <fortune file> [ Display a fortune cookie on login. Check the README file ]
+# -H [ By default, fully-qualified host names are logged. The '-H' flag avoids host names resolution. ]
+
+
+# Some filesystems don't like accesses being memory mapped. This happens for
+# example with ftpwho on JFFS2 filesystems (bug #330563). If you happen to 
+# have such a filesystem on /var set TMPFS_MOUNT to "true".
+TMPFS_MOUNT="false"
+
+# Special mount options (like nosuid or nodev) for the tmpfs mount can be added 
+# here. Several options must be separated by comma: "nodev,nosuid"
+#TMPFS_OPTS=""
+

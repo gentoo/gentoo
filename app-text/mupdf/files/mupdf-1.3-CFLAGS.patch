@@ -1,0 +1,11 @@
+--- mupdf-1.3/Makerules
++++ mupdf-1.3/Makerules
+@@ -6,7 +6,7 @@
+ CFLAGS += -Wall
+ 
+ ifeq "$(build)" "debug"
+-CFLAGS += -pipe -g -DDEBUG
++CFLAGS += -DDEBUG
+ else ifeq "$(build)" "profile"
+ CFLAGS += -pipe -O2 -DNDEBUG -pg
+ LDFLAGS += -pg

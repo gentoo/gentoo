@@ -1,0 +1,20 @@
+diff --git a/src/mod_auth_kerb.c b/src/mod_auth_kerb.c
+index 2aab5ee..ca81878 100644
+--- a/src/mod_auth_kerb.c
++++ b/src/mod_auth_kerb.c
+@@ -1744,7 +1744,6 @@ authenticate_user_gss(request_rec *r, kerb_auth_config *conf,
+      goto end;
+   }
+ 
+-#if 0
+   /* This is a _Kerberos_ module so multiple authentication rounds aren't
+    * supported. If we wanted a generic GSS authentication we would have to do
+    * some magic with exporting context etc. */
+@@ -1752,7 +1751,6 @@ authenticate_user_gss(request_rec *r, kerb_auth_config *conf,
+      ret = HTTP_UNAUTHORIZED;
+      goto end;
+   }
+-#endif
+ 
+   major_status = gss_display_name(&minor_status, client_name, &output_token, NULL);
+   gss_release_name(&minor_status, &client_name); 

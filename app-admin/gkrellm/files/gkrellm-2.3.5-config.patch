@@ -1,0 +1,43 @@
+diff -up gkrellm-2.3.5/server/gkrellmd.conf.config gkrellm-2.3.5/server/gkrellmd.conf
+--- gkrellm-2.3.5/server/gkrellmd.conf.config	2010-09-14 17:26:19.000000000 +0300
++++ gkrellm-2.3.5/server/gkrellmd.conf	2011-06-19 19:17:56.398591498 +0300
+@@ -22,16 +22,17 @@
+ # List of hosts allowed to connect.  If no hosts are specified in a
+ # gkrellmd.conf file or on the command line, all hosts will be allowed.
+ #
+-#allow-host	localhost
+-#allow-host	127.0.0.1
++allow-host	localhost
++allow-host	127.0.0.1
++allow-host	::ffff:127.0.0.1
+ #allow-host	::1
+ #allow-host	192.168.0.*
+ 
+ # Drop privileges after startup (you must start gkrellmd as root to do it).
+ # NOTE: Option ignored on Windows
+ #
+-#user	nobody
+-#group	proc
++user	gkrellmd
++group	gkrellmd
+ 
+ # Create a PID file for the running gkrellmd.  Default is no PID file.
+ # NOTE: Option ignored on Windows
+@@ -76,7 +77,7 @@
+ # Minimum is 2 (less than 2 for no I/O disconnecting and is the default).
+ # Requires at least 2.1.8 versions of both gkrellmd and gkrellm.
+ #
+-#io-timeout 5
++io-timeout 5
+ 
+ # Configure gkrellm clients to attempt automatic reconnects to a
+ # gkrellmd server every reconnect-timeout seconds after a disconnected
+@@ -85,7 +86,7 @@
+ # Minimum is 2 (less than 2 for no automatic reconnecting and is the default).
+ # Requires at least 2.1.8 versions of both gkrellmd and gkrellm.
+ #
+-#reconnect-timeout 5
++reconnect-timeout 5
+ 
+ # Server side local mailbox counts can be sent to gkrellm clients.  List here
+ # paths to mbox, MH mail, or Maildir style mailboxes.

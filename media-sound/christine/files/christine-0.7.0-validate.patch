@@ -1,0 +1,33 @@
+error: value "0.7.0" for key "Version" in group "Desktop Entry" is not a known version
+warning: key "Encoding" in group "Desktop Entry" is deprecated
+error: value "GTK;Application;AudioVideo" for string list key "Categories" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+error: value "application/x-ogg;application/ogg;audio/x-mp3;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;application/x-flac;video/mpeg;video/x-avi;video/x-ms-wmv;video/quicktime;video/x-ms-asf;video/x-msvideo" for string list key "MimeType" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+
+--- christine.desktop.in
++++ christine.desktop.in
+@@ -6,10 +6,8 @@
+ TryExec=@programname@
+ Terminal=false
+ Type=Application
+-Version=@VERSION@
+-Encoding=UTF-8
+-Categories=GTK;Application;AudioVideo
+-MimeType=application/x-ogg;application/ogg;audio/x-mp3;audio/x-scpls;audio/x-mp3;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;application/x-flac;video/mpeg;video/x-avi;video/x-ms-wmv;video/quicktime;video/x-ms-asf;video/x-msvideo
++Categories=GTK;AudioVideo;
++MimeType=application/x-ogg;application/ogg;audio/x-mp3;audio/x-scpls;audio/x-mpeg;audio/mpeg;audio/x-mpegurl;application/x-flac;video/mpeg;video/x-avi;video/x-ms-wmv;video/quicktime;video/x-ms-asf;video/x-msvideo;
+ StartupNotify=true
+ Name[es]=Reproductor Multimedia Christine
+-Comment[es]= Reproductor multimedia basado en gstreamer
++Comment[es]=Reproductor multimedia basado en gstreamer
+--- Makefile.am
++++ Makefile.am
+@@ -53,8 +53,7 @@
+ 	   -e 's,@datadir\@,$(pkgdatadir),g' \
+ 	   -e 's,@prefix\@,$(prefix),g' \
+ 	   -e 's,@sysconfdir\@,$(pkgsysconfdir),g' \
+-	   -e 's,@programname\@,$(PROGRAM_NAME),g' \
+-	   -e 's,@VERSION\@,$(VERSION),g'
++	   -e 's,@programname\@,$(PROGRAM_NAME),g'
+ 
+ clean-local:
+ 	rm -rf christine.desktop

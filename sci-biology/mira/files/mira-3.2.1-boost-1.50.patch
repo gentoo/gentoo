@@ -1,0 +1,52 @@
+ config/m4/ax_boost_regex.m4          | 4 ++--
+ src/examples_programming/Makefile.am | 2 +-
+ src/examples_programming/Makefile.in | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/config/m4/ax_boost_regex.m4 b/config/m4/ax_boost_regex.m4
+index 3c4a999..a3bb19b 100644
+--- a/config/m4/ax_boost_regex.m4
++++ b/config/m4/ax_boost_regex.m4
+@@ -78,14 +78,14 @@ AC_DEFUN([AX_BOOST_REGEX],
+                 for libextension in `ls $BOOSTLIBDIR/libboost_regex*.{so,a}* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_regex.*\)\.so.*$;\1;' -e 's;^lib\(boost_regex.*\)\.a*$;\1;'` ; do
+                      ax_lib=${libextension}
+ 				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_REGEX_LIB="-l$ax_lib"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
++                                 [BOOST_REGEX_LIB="-l$ax_lib -lboost_system"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
+                                  [link_regex="no"])
+   				done
+                 if test "x$link_regex" != "xyes"; then
+                 for libextension in `ls $BOOSTLIBDIR/boost_regex*.{dll,a}* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^\(boost_regex.*\)\.dll.*$;\1;' -e 's;^\(boost_regex.*\)\.a*$;\1;'` ; do
+                      ax_lib=${libextension}
+ 				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_REGEX_LIB="-l$ax_lib"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
++                                 [BOOST_REGEX_LIB="-l$ax_lib -lboost_system"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
+                                  [link_regex="no"])
+   				done
+                 fi
+diff --git a/src/examples_programming/Makefile.am b/src/examples_programming/Makefile.am
+index d77daaf..09c9965 100644
+--- a/src/examples_programming/Makefile.am
++++ b/src/examples_programming/Makefile.am
+@@ -11,7 +11,7 @@ AM_LDFLAGS= -L../io/ -L../util/ -L../errorhandling/ -L../mira -L../examine/ -L..
+ 
+ mira_101.C: 
+ mira_101_SOURCES= mira_101.C
+-mira_101_LDADD= -lmira  -lmiraEdIt -lmiraExamine -lmirasupport -lmiraestass -lmiraerrorhandling  -lmirautil -lmiradptools -lmirafio -lmiracaf -lmiraKNN_abi373 -lm -lexpat -lz $(BOOST_THREAD_LIB)  $(BOOST_REGEX_LIB) $(BLOODYDARWINHACK)
++mira_101_LDADD= -lmira  -lmiraEdIt -lmiraExamine -lmirasupport -lmiraestass -lmiraerrorhandling  -lmirautil -lmiradptools -lmirafio -lmiracaf -lmiraKNN_abi373 -lm -lexpat -lz $(BOOST_THREAD_LIB)  $(BOOST_REGEX_LIB) $(BLOODYDARWINHACK) -lboost_system
+ 
+ read_101.C: 
+ read_101_SOURCES= read_101.C
+diff --git a/src/examples_programming/Makefile.in b/src/examples_programming/Makefile.in
+index 27e6515..7dae4c4 100644
+--- a/src/examples_programming/Makefile.in
++++ b/src/examples_programming/Makefile.in
+@@ -222,7 +222,7 @@ AM_CXXFLAGS = $(BOOST_CPPFLAGS)
+ INCLUDES = -I$(top_srcdir)/src $(all_includes)
+ AM_LDFLAGS = -L../io/ -L../util/ -L../errorhandling/ -L../mira -L../examine/ -L../EdIt/ -L../caf/ -L../knn_abi373 -L../knn_alf $(BOOST_LDFLAGS)
+ mira_101_SOURCES = mira_101.C
+-mira_101_LDADD = -lmira  -lmiraEdIt -lmiraExamine -lmirasupport -lmiraestass -lmiraerrorhandling  -lmirautil -lmiradptools -lmirafio -lmiracaf -lmiraKNN_abi373 -lm -lexpat -lz $(BOOST_THREAD_LIB)  $(BOOST_REGEX_LIB) $(BLOODYDARWINHACK)
++mira_101_LDADD = -lmira  -lmiraEdIt -lmiraExamine -lmirasupport -lmiraestass -lmiraerrorhandling  -lmirautil -lmiradptools -lmirafio -lmiracaf -lmiraKNN_abi373 -lm -lexpat -lz $(BOOST_THREAD_LIB)  $(BOOST_REGEX_LIB) $(BLOODYDARWINHACK) -lboost_system
+ read_101_SOURCES = read_101.C
+ read_101_LDADD = -lmirasupport -lmiraerrorhandling  -lmirautil -lmiradptools -lmirafio -lm -lz
+ readpool_101_SOURCES = readpool_101.C

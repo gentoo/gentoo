@@ -1,0 +1,22 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,7 +21,7 @@
+ # Checks for library functions.
+ AC_FUNC_MKTIME
+ AC_FUNC_STAT
+-AC_CHECK_FUNCS([atexit memset strstr])
++AC_CHECK_FUNCS([atexit memset strstr strlen strcpy strcmp strcat memcpy])
+ 
+ AC_OUTPUT([Makefile src/Makefile vformat/Makefile test/Makefile doc/Makefile])
+ #AC_CONFIG_FILES([])
+--- a/src/vf_config.h
++++ b/src/vf_config.h
+@@ -31,6 +31,8 @@
+  * 
+  *******************************************************************************/
+ 
++#include <config.h>
++
+ #ifndef _VF_CONFIG_H_
+ #define _VF_CONFIG_H_
+ 

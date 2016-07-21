@@ -1,0 +1,17 @@
+this fixes virtualbox not compiling with distcc
+
+https://bugs.gentoo.org/show_bug.cgi?id=351979
+http://code.google.com/p/distcc/issues/detail?id=83
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=626926
+
+--- distcc-3.1.orig/source/src/arg.c
++++ distcc-3.1/source/src/arg.c
+@@ -515,6 +515,8 @@
+             }
+             free(argv);
+             *argv_ptr = argv = new_argv;
++            i += extra_args - 1;
++            argc += extra_args - 1;
+         }
+     }
+     return 0;

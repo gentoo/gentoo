@@ -1,0 +1,33 @@
+http://bugs.gentoo.org/show_bug.cgi?id=504208
+
+Fix building with readline >= 6.3 API (see network.c change)
+Fix another crash on exit (see main.c change)
+
+patches/debian-changes from xine-ui_0.99.8-2.debian.tar.xz at http://packages.debian.org/xine-ui
+
+--- src/xitk/main.c
++++ src/xitk/main.c
+@@ -1255,8 +1255,10 @@ static void event_listener(void *user_da
+       gGui->mixer.volume_level = (aevent->left + aevent->right) / 2;
+       if(gGui->mixer.method == SOUND_CARD_MIXER) {
+ 	gGui->mixer.mute = aevent->mute;
+-	xitk_slider_set_pos(panel->mixer.slider, gGui->mixer.volume_level);
+-	xitk_checkbox_set_state(panel->mixer.mute, gGui->mixer.mute);
++	if (panel) {
++	  xitk_slider_set_pos(panel->mixer.slider, gGui->mixer.volume_level);
++	  xitk_checkbox_set_state(panel->mixer.mute, gGui->mixer.mute);
++	}
+       }
+     }
+     break;
+--- src/xitk/network.c
++++ src/xitk/network.c
+@@ -1255,7 +1255,7 @@ int main(int argc, char **argv) {
+   rl_readline_name = PROGNAME;
+   rl_set_prompt(session.prompt);
+   rl_initialize();
+-  rl_attempted_completion_function = (CPPFunction *)completion_function;
++  rl_attempted_completion_function = completion_function;
+   
+   signal(SIGPIPE, SIG_IGN);
+   

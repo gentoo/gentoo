@@ -1,0 +1,56 @@
+--- org/main.c	2010-07-30 10:41:21.392783010 +0300
++++ main.c	2010-07-30 10:44:35.791690958 +0300
+@@ -52,6 +52,7 @@
+ 
+ 
+ int bpointx,bpointy,pointx,pointy,jug,death,goose,jump,jumpf,blibs,spr[1000][8],leveldone,level,lives,totallevels,blobx[8],bloby[8],blobp[8],score,bak,bok,buk,bik,start,blibo,blibs,die,jumpoo=12,speed=4,arse,highscore;
++int realspeed;
+ /* Keys */
+ int quit = 0;
+ int spacebar = 0;
+@@ -140,6 +141,7 @@
+   char path[256],jib[50];
+   int lvspx,lvspy;
+   bpointx=200;bpointy=400;pointx=200;pointy=400;jug=1;death=0;jump=0;jumpf=0;jug=0;blibs=0;blibo=0;die=0;speed=4;
++  realspeed=speed;
+   strcpy(path, DATA_PREFIX);
+   sprintf(jib,"levels/level%d",level);
+   strcat(path, jib);
+@@ -212,15 +214,16 @@
+     if (jumpf==jumpoo) { jump=0; }
+     if (jumpf==jumpoo*2) { jumpf=0; }
+   }
+-  score+=speed;
++  score+=realspeed;
+   /*crap*/
+ }
+ 
+ static void plotfloor(void)
+ {
++  if (bpointy==400) realspeed=speed;
+   int nob,nx,nobx=48,ek,ej,el;
+-  bpointx-=speed*2;
+-  bpointy+=speed;
++  bpointx-=realspeed*2;
++  bpointy+=realspeed;
+   pointx=bpointx;
+   pointy=bpointy;
+   imageplot(bb, blobx[6], bloby[6] );
+@@ -542,7 +545,7 @@
+   }
+   while ( jump_down==0 );
+   leveldone=3;
+-  speed=4;
++  speed=4; realspeed=speed;
+    blankscreen();
+ }
+ 
+@@ -563,7 +566,7 @@
+    if (quit>0) break;
+   }
+   while ( jump_down==0 );
+-  speed=4;
++  speed=4; realspeed=speed;
+   lives+=1;
+   level+=1;
+   getlevel();

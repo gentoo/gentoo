@@ -1,0 +1,11 @@
+--- src/Makefile.old	2010-09-22 08:44:57.000000000 +0200
++++ src/Makefile	2010-09-22 08:45:43.000000000 +0200
+@@ -26,7 +26,7 @@
+ 
+ 
+ $(SASTEROIDS): $(SASTEROIDS_O)
+-	g++ -Wall -o $(SASTEROIDS) $(SASTEROIDS_O) $(DEFINES) $(DEBUG) $(OPTS) $(CFLAGS) $(LIBS)
++	g++ $(LDFLAGS) -Wall -o $(SASTEROIDS) $(SASTEROIDS_O) $(DEFINES) $(DEBUG) $(OPTS) $(CFLAGS) $(LIBS)
+ 
+ 
+ .cpp.o:

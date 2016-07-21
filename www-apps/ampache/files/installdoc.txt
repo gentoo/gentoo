@@ -1,0 +1,6 @@
+Install and upgrade instructions can be found here:
+/usr/share/doc/ampache-<version>/INSTALL.gz
+/usr/share/doc/ampache-<version>/MIGRATION.gz
+
+For general information please read:
+/usr/share/doc/ampache-<version>/README.gz

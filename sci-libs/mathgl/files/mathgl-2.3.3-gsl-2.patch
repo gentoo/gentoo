@@ -1,0 +1,25 @@
+ src/fit.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/fit.cpp b/src/fit.cpp
+index 6a42a4b..d167022 100644
+--- a/src/fit.cpp
++++ b/src/fit.cpp
+@@ -179,6 +179,7 @@ mreal MGL_NO_EXPORT mgl_fit_base(mglFitData &fd, mreal *ini)
+ 	const gsl_multifit_fdfsolver_type *T = gsl_multifit_fdfsolver_lmsder;
+ 	gsl_multifit_fdfsolver *s = gsl_multifit_fdfsolver_alloc(T, n, m);
+ 	gsl_multifit_function_fdf f;
++	gsl_matrix *J;
+ 	f.f = mgl_fit__f;		f.df = mgl_fit__df;
+ 	f.fdf = mgl_fit__fdf;	f.n = n;	f.p = m;
+ 	f.params = &fd;
+@@ -193,7 +194,8 @@ mreal MGL_NO_EXPORT mgl_fit_base(mglFitData &fd, mreal *ini)
+ 	}
+ 	while ( status == GSL_CONTINUE && iter < 500 );
+ 	gsl_matrix *covar = gsl_matrix_alloc(m, m);
+-	gsl_multifit_covar (s->J, 0.0, covar );
++	gsl_multifit_fdfsolver_jac (s, J);
++	gsl_multifit_covar (J, 0.0, covar);
+ 	mglFitCovar.Set(covar);
+ 	mreal res = gsl_blas_dnrm2(s->f);
+ 	for(i=0;i<m;i++)	ini[i] = gsl_vector_get(s->x, i);

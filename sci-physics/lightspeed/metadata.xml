@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-physics@gentoo.org</email>
+    <name>Gentoo Physics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Light Speed! is an OpenGL-based program developed to illustrate the
+  effects of special relativity on the appearance of moving
+  objects. The moving object is, by default, a geometric lattice. 3D
+  Studio and LightWave 3D objects may be imported as well. Best of
+  all, the simulator is completely interactive, rendering the exotic
+  distortions in real-time.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">lightspeed</remote-id>
+  </upstream>
+</pkgmetadata>

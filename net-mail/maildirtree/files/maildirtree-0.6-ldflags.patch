@@ -1,0 +1,19 @@
+commit 631b3c687fe1558b88556a89838b9f264c2aed42
+Author: Eray Aslan <eras@gentoo.org>
+Date:   Mon Jun 6 22:09:23 2011 +0300
+
+    Respect LDFLAGS - bug #337243
+
+diff --git a/Makefile.in b/Makefile.in
+index 62f0673..b24a609 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -33,7 +33,7 @@ maildirtree.1: $(wildcard maildirtree.1.sgml)
+ 	$(DBM) $< > $@
+ 
+ maildirtree: $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@
+ 
+ maildirtree.o: maildirtree.c config.h maildirtree.h snprintf.h
+ snprintf.o: snprintf.c config.h snprintf.h

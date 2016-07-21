@@ -1,0 +1,11 @@
+diff -burN a/savers/popsquares.c b/savers/popsquares.c
+--- a/savers/popsquares.c	2012-03-07 22:28:11.000000000 +0100
++++ b/savers/popsquares.c	2012-07-17 19:54:44.062628969 +0200
+@@ -21,6 +21,7 @@
+ 
+ #include "config.h"
+ 
++#include <stdlib.h>
+ #include <string.h>
+ #include <gdk/gdk.h>
+ #include <gdk/gdkx.h>

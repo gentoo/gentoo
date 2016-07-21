@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MooseX-Getopt</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Basic</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Dashes</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::GLD</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Meta::Attribute</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Meta::Attribute::NoGetopt</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Meta::Attribute::Trait</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Meta::Attribute::Trait::NoGetopt</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::OptionTypeMap</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::ProcessedArgv</remote-id>
+    <remote-id type="cpan-module">MooseX::Getopt::Strict</remote-id>
+  </upstream>
+</pkgmetadata>

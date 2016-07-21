@@ -1,0 +1,19 @@
+--- bindings/Makefile.am.old	2008-02-24 22:47:19.000000000 +0100
++++ bindings/Makefile.am	2008-02-24 22:47:40.000000000 +0100
+@@ -25,16 +25,10 @@
+ 	-cd $(srcdir)/Python && $(PYTHON) setup.py clean 
+ 	-cd $(srcdir)/Python && rm -rf build
+ 
+-if WITH_PYTHON
+-PYTHON_ALL = python-build
+-PYTHON_INSTALL = python-install
+-PYTHON_CLEAN = python-clean
+-else
+ PYTHON_ALL = 
+ PYTHON_INSTALL = 
+ PYTHON_MCLEAN = 
+ PYTHON_CLEAN = 
+-endif
+ 
+ #
+ # Perl Building

@@ -1,0 +1,15 @@
+--- Makefile.old	2010-12-02 15:43:29.000000000 +0100
++++ Makefile	2010-12-02 15:47:18.000000000 +0100
+@@ -11,10 +11,10 @@
+ depend: *.hpp $(SOURCES)
+ 	$(CXX) -MM $(SOURCES) > depend
+ 
+-include depend
++-include depend
+ 
+ $(PROGNAME): $(SOURCES:.cpp=.o)
+-	$(CXX) -ggdb -o $(PROGNAME) $(SOURCES:.cpp=.o) $(LDFLAGS) -lboost_program_options
++	$(CXX) ${CXXFLAGS} -o $(PROGNAME) $(SOURCES:.cpp=.o) $(LDFLAGS) -lboost_program_options
+ 
+ clean:
+ 	rm -f $(SOURCES:.cpp=.o) $(PROGNAME)

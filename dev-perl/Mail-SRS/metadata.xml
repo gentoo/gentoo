@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-SRS</remote-id>
+    <remote-id type="cpan-module">Mail::SRS</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::DB</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::Daemon</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::Guarded</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::Reversable</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::Reversible</remote-id>
+    <remote-id type="cpan-module">Mail::SRS::Shortcut</remote-id>
+  </upstream>
+</pkgmetadata>

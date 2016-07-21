@@ -1,0 +1,13 @@
+diff -u lib/libgeom/Makefile lib.xml/libgeom/Makefile
+--- lib/libgeom/Makefile	2004-03-07 16:07:57 +0000
++++ lib.xml/libgeom/Makefile	2005-05-06 10:38:41 +0000
+@@ -8,7 +8,8 @@
+ SRCS+=	geom_ctl.c
+ INCS=	libgeom.h
+ 
+-CFLAGS += -I${.CURDIR}
++CFLAGS += -I${.CURDIR} -I${.CURDIR}/../libexpat
++LDFLAGS += -L${.CURDIR}/../libexpat
+ 
+ WARNS?=	3
+ 

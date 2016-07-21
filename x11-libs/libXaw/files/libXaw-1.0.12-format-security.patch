@@ -1,0 +1,26 @@
+From ec7d7c303385a6bdb0833a5aaae96be697cca7ab Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Thu, 21 Nov 2013 11:43:55 -0500
+Subject: Fix build with gcc -Werror=format-security
+
+DisplayList.c:290:4: error: format not a string literal and no format
+arguments [-Werror=format-security]
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+
+diff --git a/src/DisplayList.c b/src/DisplayList.c
+index 3e99df4..0581bf7 100644
+--- a/src/DisplayList.c
++++ b/src/DisplayList.c
+@@ -287,7 +287,7 @@ _XawDisplayList *XawCreateDisplayList(String string, Screen *screen,
+ 	}
+       if (fp)
+ 	{
+-	  snprintf(cname, fp - fname + 1, fname);
++	  snprintf(cname, fp - fname + 1, "%s", fname);
+ 	  memmove(fname, fp + 1, strlen(fp));
+ 	  lc = cname[0] ? XawGetDisplayListClass(cname) : xlibc;
+ 	  if (!lc)
+-- 
+cgit v0.10.2
+

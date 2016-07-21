@@ -1,0 +1,150 @@
+From 6912d8fc02b5ff4d6675656d6c00506c48fdd940 Mon Sep 17 00:00:00 2001
+From: Rafał Przemysław Malinowski <rafal.przemyslaw.malinowski@gmail.com>
+Date: Sat, 21 Mar 2015 01:32:11 +0100
+Subject: [PATCH] gui: ported open chat with from qml to quick 2.3
+
+Signed-off-by: Rafał Przemysław Malinowski <rafal.przemyslaw.malinowski@gmail.com>
+---
+ cmake/KaduMacros.cmake                                  |  2 +-
+ kadu-core/CMakeLists.txt                                |  2 +-
+ kadu-core/gui/windows/open-chat-with/open-chat-with.cpp | 11 ++++++-----
+ kadu-core/gui/windows/open-chat-with/open-chat-with.h   |  4 ++--
+ tests/CMakeLists.txt                                    |  2 +-
+ varia/qml/Contact.qml                                   |  2 +-
+ varia/qml/ContactsGridView.qml                          |  2 +-
+ varia/qml/openChatWith.qml                              |  2 +-
+ 8 files changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/cmake/KaduMacros.cmake b/cmake/KaduMacros.cmake
+index ac9e94e..0a7712a 100644
+--- a/cmake/KaduMacros.cmake
++++ b/cmake/KaduMacros.cmake
+@@ -183,7 +183,7 @@ function (kadu_plugin KADU_PLUGIN_NAME)
+ 		endforeach ()
+ 	endif ()
+ 
+-	qt5_use_modules (${KADU_PLUGIN_NAME} LINK_PRIVATE Core Gui Widgets Network Xml WebKit WebKitWidgets Declarative)
++	qt5_use_modules (${KADU_PLUGIN_NAME} LINK_PRIVATE Core Gui Network Qml Quick QuickWidgets WebKit WebKitWidgets Widgets Xml)
+ 	if (UNIX AND NOT APPLE)
+ 		qt5_use_modules (${KADU_PLUGIN_NAME} LINK_PRIVATE DBus)
+ 	endif ()
+diff --git a/kadu-core/CMakeLists.txt b/kadu-core/CMakeLists.txt
+index be52339..46317d1 100644
+--- a/kadu-core/CMakeLists.txt
++++ b/kadu-core/CMakeLists.txt
+@@ -205,7 +205,7 @@ if (FAST_LINKING)
+ 	endif ()
+ endif ()
+ 
+-qt5_use_modules (libkadu LINK_PRIVATE Core Gui Widgets Xml Network WebKit WebKitWidgets Declarative)
++qt5_use_modules (libkadu LINK_PRIVATE Core Gui Network Qml Quick QuickWidgets WebKit WebKitWidgets Widgets Xml)
+ if (UNIX AND NOT APPLE)
+ 	qt5_use_modules (libkadu LINK_PRIVATE DBus X11Extras)
+ endif ()
+diff --git a/kadu-core/gui/windows/open-chat-with/open-chat-with.cpp b/kadu-core/gui/windows/open-chat-with/open-chat-with.cpp
+index 2c14c3f..9ff00d1 100644
+--- a/kadu-core/gui/windows/open-chat-with/open-chat-with.cpp
++++ b/kadu-core/gui/windows/open-chat-with/open-chat-with.cpp
+@@ -21,8 +21,9 @@
+  * along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-#include <QtDeclarative/QDeclarativeContext>
+-#include <QtDeclarative/QDeclarativeView>
++#include <QtQml/QQmlContext>
++#include <QtQuick/QQuickItem>
++#include <QtQuickWidgets/QQuickWidget>
+ #include <QtGui/QKeyEvent>
+ #include <QtWidgets/QApplication>
+ #include <QtWidgets/QDesktopWidget>
+@@ -97,18 +98,18 @@ OpenChatWith::OpenChatWith() :
+ 
+ 	MainLayout->addWidget(idWidget);
+ 
+-	BuddiesView = new QDeclarativeView();
++	BuddiesView = new QQuickWidget();
+ 
+ 	Chain = new ModelChain(this);
+ 	ListModel = new BuddyListModel(Chain);
+ 	Chain->setBaseModel(ListModel);
+ 	Chain->addProxyModel(new TalkableProxyModel(Chain));
+ 
+-	QDeclarativeContext *declarativeContext = BuddiesView->rootContext();
++	QQmlContext *declarativeContext = BuddiesView->rootContext();
+ 	declarativeContext->setContextProperty("buddies", Chain->lastModel());
+ 
+ 	BuddiesView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+-	BuddiesView->setResizeMode(QDeclarativeView::SizeRootObjectToView);
++	BuddiesView->setResizeMode(QQuickWidget::SizeRootObjectToView);
+ 	BuddiesView->setSource(QUrl("file:///" + Application::instance()->pathsProvider()->dataPath() + "qml/openChatWith.qml"));
+ 
+ 	if (BuddiesView->rootObject())
+diff --git a/kadu-core/gui/windows/open-chat-with/open-chat-with.h b/kadu-core/gui/windows/open-chat-with/open-chat-with.h
+index b079b25..8268d8e 100644
+--- a/kadu-core/gui/windows/open-chat-with/open-chat-with.h
++++ b/kadu-core/gui/windows/open-chat-with/open-chat-with.h
+@@ -29,9 +29,9 @@
+ 
+ #include "open-chat-with-runner.h"
+ 
+-class QDeclarativeView;
+ class QLabel;
+ class QPushButton;
++class QQuickWidget;
+ class QVBoxLayout;
+ 
+ class BuddyListModel;
+@@ -46,7 +46,7 @@ class KADUAPI OpenChatWith : public QWidget, DesktopAwareObject
+ 
+ 	explicit OpenChatWith();
+ 
+-	QDeclarativeView *BuddiesView;
++	QQuickWidget *BuddiesView;
+ 	LineEditWithClearButton *ContactID;
+ 	QVBoxLayout *MainLayout;
+ 	OpenChatWithRunner *OpenChatRunner;
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 0dc1dcf..db7c42d 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -31,7 +31,7 @@ function (kadu_add_test name_)
+ 	endif ()
+ 	add_test ("${sourcePath}/${name_}" ${name_})
+ 
+-	qt5_use_modules (${name_} LINK_PRIVATE Core Gui Widgets Xml Network WebKit WebKitWidgets Declarative Test)
++	qt5_use_modules (${name_} LINK_PRIVATE Core Gui Network Qml Quick QuickWidgets Test WebKit WebKitWidgets Widgets Xml)
+ 
+ 	# Add libkadu after the plugin so that --as-needed won't drop anything
+ 	# needed by the plugin.
+diff --git a/varia/qml/Contact.qml b/varia/qml/Contact.qml
+index 54a551e..2257348 100644
+--- a/varia/qml/Contact.qml
++++ b/varia/qml/Contact.qml
+@@ -1,4 +1,4 @@
+-import QtQuick 1.1
++import QtQuick 2.3
+ 
+ Rectangle
+ {
+diff --git a/varia/qml/ContactsGridView.qml b/varia/qml/ContactsGridView.qml
+index 769a419..141931e 100644
+--- a/varia/qml/ContactsGridView.qml
++++ b/varia/qml/ContactsGridView.qml
+@@ -1,4 +1,4 @@
+-import QtQuick 1.1
++import QtQuick 2.3
+ 
+ Item
+ {
+diff --git a/varia/qml/openChatWith.qml b/varia/qml/openChatWith.qml
+index 317133e..cce65b5 100644
+--- a/varia/qml/openChatWith.qml
++++ b/varia/qml/openChatWith.qml
+@@ -1,4 +1,4 @@
+-import QtQuick 1.1
++import QtQuick 2.3
+ 
+ Item
+ {
+--
+libgit2 0.24.0

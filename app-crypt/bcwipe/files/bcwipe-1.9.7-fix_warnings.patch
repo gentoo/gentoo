@@ -1,0 +1,20 @@
+--- schemes.c
++++ schemes.c
+@@ -15,6 +15,7 @@
+  *
+  *******************************************************************/
+ #include "config.h"
++#include <ctype.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <errno.h>
+--- wipe.c
++++ wipe.c
+@@ -42,6 +42,7 @@
+ #include <sys/ioctl.h>
+ #include <signal.h>
+ #include <time.h>
++#include <sys/time.h>
+ #include <ctype.h>
+ 
+ #if HAVE_SYS_DISKIO_H /* HP-UX */

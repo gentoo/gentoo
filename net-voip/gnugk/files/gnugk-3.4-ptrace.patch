@@ -1,0 +1,414 @@
+diff -ur a/capctrl.cxx b/capctrl.cxx
+--- a/capctrl.cxx	2011-11-28 13:33:41.000000000 +0100
++++ b/capctrl.cxx	2013-10-01 13:20:47.712492425 +0200
+@@ -255,6 +255,7 @@
+ 	m_cliCallVolumes = cliCallVolumes;
+ 
+ 	PTRACE(5, "CAPCTRL\t" << ipRules << " IP rules loaded");
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "Per IP call volume rules:" << endl;
+@@ -264,8 +265,10 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	PTRACE(5, "CAPCTRL\t" << h323IdRules << " H.323 ID rules loaded");
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "Per H.323 ID call volume rules:" << endl;
+@@ -275,8 +278,10 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	PTRACE(5, "CAPCTRL\t" << cliRules << " CLI rules loaded");
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "Per CLI call volume rules:" << endl;
+@@ -286,6 +291,7 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ }
+ 
+ PString CapacityControl::PrintRules()
+diff -ur a/clirw.cxx b/clirw.cxx
+--- a/clirw.cxx	2013-09-02 21:57:18.000000000 +0200
++++ b/clirw.cxx	2013-10-01 13:20:47.713492425 +0200
+@@ -458,6 +458,7 @@
+ 	}
+ 	
+ 	PTRACE(5, "CLIRW\t" << inboundRules << " inbound rules loaded");
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "Inbound CLI rewrite rules:" << endl;
+@@ -468,8 +469,10 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	PTRACE(5, "CLIRW\t" << outboundRules << " outbound rules loaded");
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "Outbound CLI rewrite rules:" << endl;
+@@ -482,6 +485,7 @@
+ 			}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	m_processSourceAddress = Toolkit::AsBool(cfg->GetString(CLIRewriteSection, ProcessSourceAddress, "1"));
+ 	m_removeH323Id = Toolkit::AsBool(cfg->GetString(CLIRewriteSection, RemoveH323Id, "1"));
+diff -ur a/gkacct.cxx b/gkacct.cxx
+--- a/gkacct.cxx	2013-07-31 15:03:07.000000000 +0200
++++ b/gkacct.cxx	2013-10-01 13:20:47.714492425 +0200
+@@ -924,6 +924,7 @@
+ 		switch (status)
+ 		{
+ 		case GkAcctLogger::Ok:
++#if PTRACING
+ 			if (PTrace::CanTrace(3)) {
+ 				ostream& strm = PTrace::Begin(3,__FILE__,__LINE__);
+ 				strm << "GKACCT\t" << logger->GetName() << " logged event " << evt;
+@@ -931,9 +932,11 @@
+ 					strm << " for call no. " << call->GetCallNumber();
+ 				PTrace::End(strm);
+ 			}
++#endif
+ 			break;
+ 			
+ 		default:
++#if PTRACING
+ 			if (PTrace::CanTrace(3)) {
+ 				ostream& strm = PTrace::Begin(3, __FILE__, __LINE__);
+ 				strm << "GKACCT\t" << logger->GetName() << " failed to log event " << evt;
+@@ -942,6 +945,7 @@
+ 					strm << " for call no. " << call->GetCallNumber();
+ 				PTrace::End(strm);
+ 			}
++#endif
+ 			// required and sufficient rules always determine 
+ 			// status of the request
+ 			if (logger->GetControlFlag() == GkAcctLogger::Required
+@@ -959,7 +963,8 @@
+ 	// a last rule determine status of the the request
+ 	if (finalResult && status != GkAcctLogger::Ok)
+ 		finalResult = false;
+-		
++
++#if PTRACING		
+ 	if (PTrace::CanTrace(2)) {
+ 		ostream& strm = PTrace::Begin(2, __FILE__, __LINE__);
+ 		strm << "GKACCT\t" << (finalResult ? "Successfully logged event " 
+@@ -972,6 +977,7 @@
+ 			SNMP_TRAP(7, SNMPError, Accounting, "Failed to log event " + PString(PString::Unsigned, evt));
+ #endif
+ 	}
++#endif
+ 	return finalResult;
+ }
+ 
+@@ -994,6 +1000,7 @@
+ 		switch (status)
+ 		{
+ 		case GkAcctLogger::Ok:
++#if PTRACING
+ 			if (PTrace::CanTrace(3)) {
+ 				ostream& strm = PTrace::Begin(3,__FILE__,__LINE__);
+ 				strm << "GKACCT\t" << logger->GetName() << " logged event " << evt;
+@@ -1001,9 +1008,11 @@
+ 					strm << " for endpoint " << ep->GetEndpointIdentifier().GetValue();
+ 				PTrace::End(strm);
+ 			}
++#endif
+ 			break;
+ 			
+ 		default:
++#if PTRACING
+ 			if (PTrace::CanTrace(3)) {
+ 				ostream& strm = PTrace::Begin(3, __FILE__, __LINE__);
+ 				strm << "GKACCT\t" << logger->GetName() << " failed to log event " << evt;
+@@ -1012,6 +1021,7 @@
+ 				PTrace::End(strm);
+ 				SNMP_TRAP(7, SNMPError, Accounting, logger->GetName() + " failed to log event " + PString(evt));
+ 			}
++#endif
+ 			// required and sufficient rules always determine 
+ 			// status of the request
+ 			if (logger->GetControlFlag() == GkAcctLogger::Required
+@@ -1030,6 +1040,7 @@
+ 	if (finalResult && status != GkAcctLogger::Ok)
+ 		finalResult = false;
+ 		
++#if PTRACING
+ 	if (PTrace::CanTrace(2)) {
+ 		ostream& strm = PTrace::Begin(2, __FILE__, __LINE__);
+ 		strm << "GKACCT\t" << (finalResult ? "Successfully logged event " 
+@@ -1042,6 +1053,7 @@
+ 			SNMP_TRAP(7, SNMPError, Accounting, "Failed to log event " + PString(PString::Unsigned, evt));
+ #endif
+ 	}
++#endif
+ 	return finalResult;
+ }
+ 
+diff -ur a/gk.cxx b/gk.cxx
+--- a/gk.cxx	2013-09-19 15:27:22.000000000 +0200
++++ b/gk.cxx	2013-10-01 13:20:47.715492425 +0200
+@@ -1212,9 +1212,11 @@
+ bool Gatekeeper::InitLogging(const PArgList & args)
+ {
+ 	// Syslog is the default when compiled as service, but we don't want that
++#if PTRACING
+ 	PTrace::ClearOptions(PTrace::SystemLogStream);
+ 	PTrace::SetOptions(PTrace::DateAndTime | PTrace::TraceLevel | PTrace::FileAndLine);
+ 	PTrace::SetLevel(args.GetOptionCount('t'));
++#endif
+ 	if (args.HasOption('o')) {
+ 		if (!SetLogFilename(args.GetOptionString('o'))) {
+ 			cerr << "Warning: could not open the log file \""
+@@ -1717,7 +1719,9 @@
+ 		EnableLogFileRotation(false);
+ 	}
+ 
++#if PTRACING
+ 	PTrace::SetStream(&cerr);
++#endif
+ 
+ #ifndef hasDeletingSetStream
+ 	delete m_logFile;
+@@ -1732,7 +1736,9 @@
+ 		return false;
+ 	}
+ 	m_logFile->SetPosition(0, PFile::End);
++#if PTRACING
+ 	PTrace::SetStream(m_logFile);
++#endif
+ 	return true;
+ }
+ 
+@@ -1742,7 +1748,9 @@
+ 
+ 	if (m_logFile) {
+ 		PTRACEX(1, "GK\tLogging closed (log file rotation)");
++#if PTRACING
+ 		PTrace::SetStream(&cerr); // redirect to cerr
++#endif
+ #ifndef hasDeletingSetStream
+ 		delete m_logFile;
+ #endif
+@@ -1779,7 +1787,9 @@
+ 	}
+ 
+ 	m_logFile->SetPosition(0, PFile::End);
++#if PTRACING
+ 	PTrace::SetStream(m_logFile);
++#endif
+ 	PTRACEX(1, "GK\tLogging restarted\n" + Toolkit::GKVersion());
+ 	return true;
+ }
+@@ -1790,7 +1800,9 @@
+ 
+ 	if (m_logFile) {
+ 		PTRACEX(1, "GK\tLogging closed (reopen log file)");
++#if PTRACING
+ 		PTrace::SetStream(&cerr); // redirect to cerr
++#endif
+ #ifndef hasDeletingSetStream
+ 		delete m_logFile;
+ #endif
+@@ -1819,7 +1831,9 @@
+ 		}
+ 	}
+ 	m_logFile->SetPosition(0, PFile::End);
++#if PTRACING
+ 	PTrace::SetStream(m_logFile);
++#endif
+ 	PTRACEX(1, "GK\tLogging restarted\n" + Toolkit::GKVersion());
+ 	return true;
+ }
+@@ -1831,7 +1845,9 @@
+ 	if (m_logFile) {
+ 		PTRACEX(1, "GK\tLogging closed");
+ 	}
++#if PTRACING
+ 	PTrace::SetStream(&cerr);
++#endif
+ #ifndef hasDeletingSetStream
+ 	delete m_logFile;
+ #endif
+diff -ur a/GkStatus.cxx b/GkStatus.cxx
+--- a/GkStatus.cxx	2013-09-12 12:51:56.000000000 +0200
++++ b/GkStatus.cxx	2013-10-01 13:20:47.716492425 +0200
+@@ -1327,6 +1327,7 @@
+ 			);
+ 	} else {
+ 		if (args[1] *= "trc") {
++#if PTRACING
+ 			if(args.GetSize() >= 3) {
+ 				if((args[2] == "-") && (PTrace::GetLevel() > 0)) 
+ 					PTrace::SetLevel(PTrace::GetLevel()-1);
+@@ -1335,6 +1336,7 @@
+ 				else PTrace::SetLevel(args[2].AsInteger());
+ 			}
+ 			WriteString(PString(PString::Printf, "Trace Level is now %d\r\n", PTrace::GetLevel()));
++#endif
+ 		} else if (args[1] *= "cfg") {
+ 			if (args.GetSize()>=4)
+ 				WriteString(GkConfig()->GetString(args[2],args[3],"") + "\r\n;\r\n");
+diff -ur a/ipauth.cxx b/ipauth.cxx
+--- a/ipauth.cxx	2013-08-03 14:26:19.000000000 +0200
++++ b/ipauth.cxx	2013-10-01 13:20:47.716492425 +0200
+@@ -230,6 +230,7 @@
+ 	
+ 	PTRACE(5, GetName() << "\t" << m_authList.size() << " entries loaded");
+ 
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << GetName() << " entries:\n";
+@@ -242,6 +243,7 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	if (dynamicCfg) {
+ 		delete cfg;
+diff -ur a/ProxyChannel.cxx b/ProxyChannel.cxx
+--- a/ProxyChannel.cxx	2013-09-19 18:53:07.000000000 +0200
++++ b/ProxyChannel.cxx	2013-10-01 13:34:34.499541266 +0200
+@@ -1741,7 +1741,7 @@
+ 
+ 	m_result = Forwarding;
+ 
+-#ifdef HAS_H46017
++#if defined(HAS_H46017) && PTRACING
+ 	// only show full decode of H.460.26 RTP when level 7 trace is active
+ 	if (m_h46017Enabled && m_maintainConnection && (q931pdu->GetMessageType() == Q931::InformationMsg) && !PTrace::CanTrace(7)) {
+ 		// don't print Info message
+diff -ur a/RasSrv.cxx b/RasSrv.cxx
+--- a/RasSrv.cxx	2013-08-29 11:42:09.000000000 +0200
++++ b/RasSrv.cxx	2013-10-01 13:20:47.717492425 +0200
+@@ -245,6 +245,7 @@
+ 		delete msg;
+ 		return NULL;
+ 	}
++#if PTRACING
+ 	if ((msg->GetTag() != H225_RasMessage::e_serviceControlIndication && msg->GetTag() != H225_RasMessage::e_serviceControlResponse)
+ 		||  PTrace::CanTrace(5)) {
+ 	if (PTrace::CanTrace(3))
+@@ -252,17 +253,20 @@
+ 	else
+ 		PTRACE(2, "RAS\tReceived " << msg->GetTagName() << " from " << AsString(msg->m_peerAddr, msg->m_peerPort));
+ 	}
++#endif
+ 	msg->m_localAddr = GetLocalAddr(msg->m_peerAddr);
+ 	return msg;
+ }
+ 
+ bool RasListener::SendRas(const H225_RasMessage & rasobj, const Address & addr, WORD pt)
+ {
++#if PTRACING
+ 	if ( ((rasobj.GetTag() != H225_RasMessage::e_serviceControlIndication && rasobj.GetTag() != H225_RasMessage::e_serviceControlResponse) && PTrace::CanTrace(3))
+ 		|| PTrace::CanTrace(5))
+ 		PTRACE(3, "RAS\tSend to " << AsString(addr, pt) << '\n' << setprecision(2) << rasobj);
+ 	else
+ 		PTRACE(2, "RAS\tSend " << RasName[rasobj.GetTag()] << " to " << AsString(addr, pt));
++#endif
+ 
+ 	PPER_Stream wtstrm;
+ 	rasobj.Encode(wtstrm);
+diff -ur a/RasTbl.cxx b/RasTbl.cxx
+--- a/RasTbl.cxx	2013-09-12 12:51:57.000000000 +0200
++++ b/RasTbl.cxx	2013-10-01 13:20:47.719492425 +0200
+@@ -1950,6 +1950,7 @@
+ 		endpoints->push_back(routes.front().m_destEndpoint.operator->());
+ 	}
+ 
++#if PTRACING
+ 	if (PTrace::CanTrace(4)) {
+ 		ostream &strm = PTrace::Begin(4, __FILE__, __LINE__);
+ 		strm << "RASTBL\tPrefix match for gateways: ";
+@@ -1960,6 +1961,7 @@
+ 		}
+ 		PTrace::End(strm);
+ 	}
++#endif
+ 
+ 	return true;
+ }
+diff -ur a/Routing.cxx b/Routing.cxx
+--- a/Routing.cxx	2013-04-11 07:10:34.000000000 +0200
++++ b/Routing.cxx	2013-10-01 13:20:47.719492425 +0200
+@@ -1465,6 +1465,7 @@
+ 	PTRACE(5, "ROUTING\t" << m_name << " policy loaded with " << m_prefixes.size()
+ 		<< " prefix entries");
+ 
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		ostream &strm = PTrace::Begin(6, __FILE__, __LINE__);
+ 		strm << "ROUTING\t" << m_name << " policy prefixes:" << endl;
+@@ -1474,6 +1475,7 @@
+ 				<< m_prefixes[i].m_maxLength << endl;
+ 		PTrace::End(strm);
+ 	}
++#endif
+ }
+ 
+ bool NumberAnalysisPolicy::OnRequest(AdmissionRequest & request)
+diff -ur a/Toolkit.cxx b/Toolkit.cxx
+--- a/Toolkit.cxx	2013-09-10 17:49:47.000000000 +0200
++++ b/Toolkit.cxx	2013-10-01 13:20:47.720492425 +0200
+@@ -1025,6 +1025,7 @@
+ 		return;
+ 	}
+ 
++#if PTRACING
+ 	if (PTrace::CanTrace(3) && (m_GWRewrite.GetSize() < 100)) {
+ 		for (PINDEX i = 0; i < m_GWRewrite.GetSize(); ++i) {
+ 			// In
+@@ -1038,6 +1039,7 @@
+ 			}
+ 		}
+ 	}
++#endif
+ 	PTRACE(2, "GK\tLoaded " << m_GWRewrite.GetSize() << " GW entries with rewrite info");
+ }
+ 
+@@ -1727,7 +1729,9 @@
+ 	// read the gatekeeper name from the config file, because it might be used as a key into the SQL config
+ 	m_GKName = Config()->GetString("Name", "OpenH323GK");
+ 
++#if PTRACING
+ 	PTrace::SetLevel(GkConfig()->GetInteger("TraceLevel", PTrace::GetLevel()));
++#endif
+ 
+ 	// set the max size of an array in an ASN encoded message (eg. max length of alias list)
+ 	PINDEX maxArraySize = GkConfig()->GetInteger("MaxASNArraySize", 0);
+diff -ur a/yasocket.cxx b/yasocket.cxx
+--- a/yasocket.cxx	2013-09-04 18:11:57.000000000 +0200
++++ b/yasocket.cxx	2013-10-01 13:20:47.720492425 +0200
+@@ -1026,10 +1026,12 @@
+ 		return false;
+ 	}
+ 	ConfigReloadMutex.StartRead();
++#if PTRACING
+ 	if (PTrace::CanTrace(6)) {
+ 		PString msg(PString::Printf, "\t%u sockets selected from %u, total %u/%u", slist.GetSize(), ss, m_socksize, m_rmsize);
+ 		PTRACE(6, GetName() << msg);
+ 	}
++#endif
+ 	return true;
+ }
+ 

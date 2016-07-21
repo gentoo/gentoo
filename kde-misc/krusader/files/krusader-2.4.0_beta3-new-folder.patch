@@ -1,0 +1,11 @@
+--- a/krusader/Panel/panelfunc.cpp
++++ b/krusader/Panel/panelfunc.cpp
+@@ -100,7 +100,7 @@
+ {
+ public:
+     virtual State validate(QString &input, int &pos) const {
+-        return input.isEmpty() ? Invalid : Acceptable;
++            return input.isEmpty() ? Intermediate : Acceptable;
+     }
+ };
+ 

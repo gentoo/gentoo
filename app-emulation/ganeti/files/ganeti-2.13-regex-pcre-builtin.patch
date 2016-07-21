@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index e014d7a..024e584 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -672,7 +672,7 @@ AC_GHC_PKG_REQUIRE(hinotify)
+ AC_GHC_PKG_REQUIRE(Crypto)
+ AC_GHC_PKG_REQUIRE(lifted-base)
+ AC_GHC_PKG_REQUIRE(lens)
+-AC_GHC_PKG_REQUIRE(regex-pcre)
++AC_GHC_PKG_REQUIRE(regex-pcre-builtin)
+ 
+ #extra modules for monitoring daemon functionality; also needed for tests
+ MONITORING_PKG=

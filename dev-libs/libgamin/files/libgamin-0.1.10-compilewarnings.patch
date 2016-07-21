@@ -1,0 +1,22 @@
+--- gamin-0.1.9/lib/gam_error.h.1	2007-08-15 01:09:13.000000000 +0200
++++ gamin-0.1.9/lib/gam_error.h	2007-08-15 01:09:27.000000000 +0200
+@@ -47,6 +47,9 @@
+ 
+ int gam_errno(void);
+ 
++void	gam_error_init(void);
++void	gam_error_check(void);
++
+ #ifdef GAM_DEBUG_ENABLED
+ 
+ #ifdef GAMIN_DEBUG_API
+@@ -70,9 +73,6 @@
+                   const char* format, ...);
+ #define GAM_DEBUG if (gam_debug_active) gam_debug
+ 
+-void	gam_error_init(void);
+-void	gam_error_check(void);
+-
+ #else
+ /*
+  * no debug, redefine the macro empty content

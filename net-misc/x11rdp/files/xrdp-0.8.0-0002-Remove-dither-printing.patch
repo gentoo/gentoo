@@ -1,0 +1,40 @@
+From fef4e6d15aa42a7d3bb4b134cba9253323398cc6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 27 Oct 2014 09:55:49 +0100
+Subject: [PATCH 2/2] Remove dither printing
+
+---
+ xorg/X11R7.6/rdp/rdpComposite.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/xorg/X11R7.6/rdp/rdpComposite.c b/xorg/X11R7.6/rdp/rdpComposite.c
+index f763783..50ee6d7 100644
+--- a/xorg/X11R7.6/rdp/rdpComposite.c
++++ b/xorg/X11R7.6/rdp/rdpComposite.c
+@@ -240,9 +240,9 @@ compsoite_print(CARD8 op, PicturePtr pSrc, PicturePtr pMask, PicturePtr pDst,
+     if (pSrc != 0)
+     {
+         LLOGLN(0, ("  src depth %d width %d height %d repeat %d repeatType %d "
+-                   "dither %d filter %d alphaMap %p componentAlpha %d", pSrc->pDrawable->depth,
++                   "filter %d alphaMap %p componentAlpha %d", pSrc->pDrawable->depth,
+                    pSrc->pDrawable->width, pSrc->pDrawable->height,
+-                   pSrc->repeat, pSrc->repeatType, pSrc->dither, pSrc->filter,
++                   pSrc->repeat, pSrc->repeatType, pSrc->filter,
+                    pSrc->alphaMap, pSrc->componentAlpha));
+         LLOGLN(0, ("  transform %p", pSrc->transform));
+         LLOGLN(0, ("  detail format red %d red mask %d green %d green mask %d "
+@@ -277,9 +277,9 @@ compsoite_print(CARD8 op, PicturePtr pSrc, PicturePtr pMask, PicturePtr pDst,
+     if (pDst != 0)
+     {
+         LLOGLN(0, ("  dst depth %d width %d height %d repeat %d repeatType %d "
+-                   "dither %d filter %d alphaMap %p", pDst->pDrawable->depth,
++                   "filter %d alphaMap %p", pDst->pDrawable->depth,
+                    pDst->pDrawable->width, pDst->pDrawable->height,
+-                   pDst->repeat, pDst->repeatType, pDst->dither, pDst->filter,
++                   pDst->repeat, pDst->repeatType, pDst->filter,
+                    pDst->alphaMap));
+         LLOGLN(0, ("  transform %p", pDst->transform));
+         print_format(pDst->format);
+-- 
+2.1.2
+

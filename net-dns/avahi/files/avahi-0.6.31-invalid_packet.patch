@@ -1,0 +1,21 @@
+Fix "Invalid response packet from host".  Bug #559408.
+
+See http://pkgs.fedoraproject.org/cgit/avahi.git/plain/avahi-0.6.31-invalid_packet.patch
+
+diff -up avahi-0.6.31/avahi-core/server.c.invalid_packet avahi-0.6.31/avahi-core/server.c
+--- avahi-0.6.31/avahi-core/server.c.invalid_packet	2015-09-22 08:12:58.544588701 -0500
++++ avahi-0.6.31/avahi-core/server.c	2015-09-22 08:13:39.743862403 -0500
+@@ -972,11 +972,9 @@ static void dispatch_packet(AvahiServer
+             return;
+         }
+ 
+-        if (avahi_dns_packet_get_field(p, AVAHI_DNS_FIELD_QDCOUNT) != 0 ||
+-            avahi_dns_packet_get_field(p, AVAHI_DNS_FIELD_ANCOUNT) == 0 ||
+-            avahi_dns_packet_get_field(p, AVAHI_DNS_FIELD_NSCOUNT) != 0) {
++        if (avahi_dns_packet_get_field(p, AVAHI_DNS_FIELD_ANCOUNT) == 0) {
+ 
+-            avahi_log_warn("Invalid response packet from host %s.", avahi_address_snprint(t, sizeof(t), src_address));
++            avahi_log_debug("Invalid response packet from host %s.", avahi_address_snprint(t, sizeof(t), src_address));
+             return;
+         }
+ 

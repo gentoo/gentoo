@@ -1,0 +1,28 @@
+From b7864d1b8db75eda19a7601f3e2402a885bb251d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 11 Dec 2013 17:19:09 +0100
+Subject: [PATCH] Disable SDL2 check for Gentoo.
+
+The SDL2 support seems immature at the moment, so we'd prefer pcsxr
+using SDL1 even if SDL2 is installed.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f79cee0..0c79cff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,8 +26,7 @@ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["${GETTEXT_PACKAGE}"], [gettext domain])
+ PKG_CHECK_MODULES(GLIB2, glib-2.0 >= 2.20, [], AC_MSG_ERROR([*** glib2 >= 2.20 not found!]))
+ PKG_CHECK_MODULES(GTK3, gtk+-3.0 , [], AC_MSG_ERROR([*** libgtk3 >= 3.0 not found!]))
+ 
+-PKG_CHECK_MODULES([SDL2], [sdl2 >= 2.0.0],
+-   [AC_DEFINE([HAVE_SDL2], [1], [Use SDL2])],
++AS_IF([true],
+    [PKG_CHECK_MODULES([SDL], [sdl >= 1.2.12],
+        [AC_DEFINE([HAVE_SDL], [1], [Use SDL])
+     ], AC_MSG_ERROR([*** SDL >= 1.2.12 not found!]))
+-- 
+1.8.5.1
+

@@ -1,0 +1,22 @@
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -134,7 +134,7 @@
+ 
+ AM_CONDITIONAL(BUILD_NCURSES, test x$want_ncurses = xyes)
+ if test x$want_ncurses = xyes; then
+-      conky_LIBS="$conky_LIBS -lncurses"
++      PKG_CHECK_MODULES(ncurses,ncurses,conky_LIBS="$conky_LIBS $ncurses_LIBS",AC_MSG_ERROR([ncurses not found]))
+       AC_DEFINE(NCURSES, 1, [Define for ncurses support])
+ 	  AC_CHECK_HEADERS([ncurses.h], [], AC_MSG_ERROR([required header(s) not found]))
+ fi
+--- a/configure.ac
++++ b/configure.ac
+@@ -134,7 +134,7 @@
+ 
+ AM_CONDITIONAL(BUILD_NCURSES, test x$want_ncurses = xyes)
+ if test x$want_ncurses = xyes; then
+-      conky_LIBS="$conky_LIBS -lncurses"
++      PKG_CHECK_MODULES(ncurses,ncurses,conky_LIBS="$conky_LIBS $ncurses_LIBS",AC_MSG_ERROR([ncurses not found]))
+       AC_DEFINE(NCURSES, 1, [Define for ncurses support])
+ 	  AC_CHECK_HEADERS([ncurses.h], [], AC_MSG_ERROR([required header(s) not found]))
+ fi

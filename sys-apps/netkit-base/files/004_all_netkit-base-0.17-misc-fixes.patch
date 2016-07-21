@@ -1,0 +1,54 @@
+--- netkit-base-0.17/inetd/builtins.c
++++ netkit-base-0.17/inetd/builtins.c
+@@ -12,6 +12,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#include <time.h>
+ 
+ #include "servtab.h"
+ #include "builtins.h"
+--- netkit-base-0.17/inetd/inetd.c
++++ netkit-base-0.17/inetd/inetd.c
+@@ -869,8 +869,8 @@
+ 	int on = 1;
+ 
+ 	if ((sep->se_fd = socket(sep->se_family, sep->se_socktype, 0)) < 0) {
+-		syslog(LOG_ERR, "%s: socket: %m", service_name(sep),
+-		    sep->se_service, sep->se_proto);
++		syslog(LOG_ERR, "%s: socket: %m", service_name(sep));
++/*		    sep->se_service, sep->se_proto); */
+ 
+ 		if (errno == EMFILE) {
+ 			syslog(LOG_ALERT, 
+@@ -888,8 +888,8 @@
+ 		syslog(LOG_ERR, "setsockopt (SO_REUSEADDR): %m");
+ #undef turnon
+ 	if (bind(sep->se_fd, &sep->se_ctrladdr, sep->se_ctrladdr_size) < 0) {
+-		syslog(LOG_ERR, "%s: bind: %m", service_name(sep),
+-		    sep->se_service, sep->se_proto);
++		syslog(LOG_ERR, "%s: bind: %m", service_name(sep));
++/*		    sep->se_service, sep->se_proto); */
+ 		(void) close(sep->se_fd);
+ 		sep->se_fd = -1;
+ 		if (!timingout) {
+@@ -938,8 +938,8 @@
+ 	}
+ 	m = sizeof(sn);
+ 	if (getsockname(sep->se_fd, (struct sockaddr *)&sn, &m) < 0) {
+-		syslog(LOG_ERR, "%s: getsockname: %m", service_name(sep),
+-		    sep->se_service, sep->se_proto);
++		syslog(LOG_ERR, "%s: getsockname: %m", service_name(sep));
++/*		    sep->se_service, sep->se_proto); */
+ 		return;
+ 	}
+ 
+@@ -1026,7 +1026,7 @@
+ 	if (rl.rlim_cur <= rlim_ofile_cur) {
+ 		syslog(LOG_ERR,
+ 			"bump_nofile: cannot extend file limit, max = %d",
+-			rl.rlim_cur);
++			(int)rl.rlim_cur);
+ 		return -1;
+ 	}
+ 

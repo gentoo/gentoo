@@ -1,0 +1,17 @@
+Remove inappropriate check for a previous installation.
+
+Original patch for bokek 0.5.0 (0.5.0-setup.patch).
+Ported for bokeh 0.7.1 by Marius Brehler.
+
+http://bugs.gentoo.org/527336
+
+--- setup.py
++++ setup.py.new
+@@ -348,7 +348,6 @@ path = abspath(dirname(__file__))
+ 
+ print()
+ if 'develop' in sys.argv:
+-    check_remove_bokeh_install(site_packages)
+     with open(path_file, "w+") as f:
+         f.write(path)
+     print("Installing Bokeh for development:")

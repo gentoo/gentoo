@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>mgorny@gentoo.org</email>
+  <name>Michał Górny</name>
+  <description>Co-maintainer</description>
+</maintainer>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription>
+  The PathScale EKOPath Compiler Suite offers programmers a rich set of tools and 
+  one of the world's most sophisticated optimization infrastructures to maximize 
+  program performance on any Intel 64 or AMD64 platform supporting Intel MMX, 
+  SSE, SSE2, SSE3, SSSE3, SSE4.1, SSE4.2, AMD SSE4A and AVX.
+</longdescription>
+</pkgmetadata>

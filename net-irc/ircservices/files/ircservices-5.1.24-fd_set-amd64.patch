@@ -1,0 +1,236 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Fix compilation on amd64 platform by using a different method
+	of fixing the printf() + size_t problem.
+
+The method used is to test if the `z' printf integer modifier works or
+not. If that works, use it. Otherwise, search for a normal integer
+type of similar length to size_t. Defines PRIdSIZE and PRIuSIZE in
+reminiscence of inttypes.h
+
+diff -r b323b647fe91 -r e10ae0e7b778 Makefile
+--- a/Makefile	Tue Jun 21 00:42:59 2011 -0400
++++ b/Makefile	Tue Jun 21 00:44:38 2011 -0400
+@@ -116,17 +116,17 @@
+ 
+ ifneq ($(STATIC_MODULES),)
+ modules: langstrs.h
+-	@$(MAKE) -C modules all-static CFLAGS="$(CFLAGS)"
++	@$(MAKE) -C modules all-static CFLAGS='$(CFLAGS)'
+ else
+ modules: langstrs.h
+-	@$(MAKE) -C modules all-dynamic CFLAGS="$(CFLAGS)"
++	@$(MAKE) -C modules all-dynamic CFLAGS='$(CFLAGS)'
+ endif
+ 
+ languages:
+-	@$(MAKE) -C lang CFLAGS="$(CFLAGS)"
++	@$(MAKE) -C lang CFLAGS='$(CFLAGS)'
+ 
+ tools: langstrs.h services.h
+-	@$(MAKE) -C tools CFLAGS="$(CFLAGS)"
++	@$(MAKE) -C tools CFLAGS='$(CFLAGS)'
+ 
+ 
+ # Catch any changes in compilation options at the top of this file or the
+diff -r b323b647fe91 -r e10ae0e7b778 configure
+--- a/configure	Tue Jun 21 00:42:59 2011 -0400
++++ b/configure	Tue Jun 21 00:44:38 2011 -0400
+@@ -271,6 +271,7 @@
+ SIZEOF_INT=
+ SIZEOF_LONG=
+ SIZEOF_PTR=
++SIZEOF_SIZE_T=
+ SIZEOF_TIME_T=
+ MAX_TIME_T=
+ SIZEOF_GID_T=bonkle
+@@ -1997,6 +1998,39 @@
+     fi
+ fi
+ 
++MODE="check_size_t       "
++echo2 "Checking the size of size_t... "
++if [ "$SIZEOF_SIZE_T" ]; then
++    echo "(cached) `expr $SIZEOF_SIZE_T \* 8` bits"
++    log "cache supplied `expr $SIZEOF_SIZE_T \* 8` bits"
++else
++    cat >$CONFTMP/test.c <<EOT
++        #include <stdlib.h>
++        #include <stdio.h>
++        int main()
++        {
++            size_t a = 0;
++            printf("%d", sizeof(a));
++            return 0;
++        }
++EOT
++    if run $CC $CC_FLAGS $CONFTMP/test.c $CC_LIBS -o $CONFTMP/test; then
++        a="`$CONFTMP/test`"
++        log "test program output (sizeof(size_t)): $a"
++        if [ ! "$a" ]; then
++            echo "test program failed!  Assuming `expr $SIZEOF_PTR \* 8` bits."
++            log "assuming `expr $SIZEOF_PTR \* 8` bits"
++            SIZEOF_SIZE_T=$SIZEOF_PTR
++        else
++            SIZEOF_SIZE_T="$a"
++            echo `expr $SIZEOF_SIZE_T \* 8` bits
++            log "`expr $SIZEOF_SIZE_T \* 8` bits"
++        fi
++    else
++        whoa_there
++    fi
++fi
++
+ MODE="check_time_t       "
+ echo2 "Checking the size of time_t... "
+ if [ "$SIZEOF_TIME_T" -a "$MAX_TIME_T" ] ; then
+@@ -2135,6 +2169,53 @@
+     fi
+ fi
+ 
++MODE="check_PRIdSIZE    "
++echo2 "Checking how to use size_t with printf... "
++if [ "$SIZE_T_FORMAT" ]; then
++    echo "(cached) $SIZE_T_FORMAT"
++    log "cache $SIZE_T_FORMAT"
++else
++    cat >$CONFTMP/test.c <<EOT
++        #include <stdlib.h>
++        #include <stdio.h>
++        int main()
++        {
++            size_t a = 26;
++            printf("%zu", a);
++            return 0;
++        }
++EOT
++    if run $CC $CC_FLAGS $CONFTMP/test.c $CC_LIBS -o $CONFTMP/test; then
++        a="`$CONFTMP/test`"
++        log "test program output printf(\"%zu\", (size_t)26): $a"
++        if [ "x$a" = "x26" ]; then
++            echo "can use %zu to print size_t (I love standards-compliance :-))."
++            log "can use %zu to print size_t (I love standards-compliance :-))."
++            CDEFS="$CDEFS -DPRIdSIZE=\\\"zd\\\" -DPRIuSIZE=\\\"zu\\\""
++        else
++            echo "test program indicated that runtime does not accept %zu for size_t."
++            log "test program indicated that runtime does not accept %zu for size_t."
++            if [ "x$SIZEOF_SIZE_T" = "x$SIZEOF_INT" ]; then
++                SIZE_MOD=
++                MATCHED=int
++            else
++                if [ "x$SIZEOF_SIZE_T" = "x$SIZEOF_LONG" ]; then
++                    SIZE_MOD=l
++                    MATCHED=long
++                else
++                    SIZE_MOD=l
++                    MATCHED="no known types"
++                fi
++            fi
++            echo "size_t's size matched $MATCHED, using %$SIZE_MOD""d to print size_t."
++            log "size_t's size matched $MATCHED, using %$SIZE_MOD""d to print size_t."
++            CDEFS="$CDEFS -DPRIdSIZE=\\\"$SIZE_MOD""d\\\" -DPRIuSIZE=\\\"$SIZE_MOD""u\\\""
++        fi
++    else
++        whoa_there
++    fi
++fi
++
+ ###########################################################################
+ 
+ # AIX workaround.
+diff -r b323b647fe91 -r e10ae0e7b778 defs.h
+--- a/defs.h	Tue Jun 21 00:42:59 2011 -0400
++++ b/defs.h	Tue Jun 21 00:44:38 2011 -0400
+@@ -224,11 +224,6 @@
+ 
+ /* Various generally useful macros. */
+ 
+-
+-/* Make sizeof() return an int regardless of compiler (avoids printf
+- * argument type warnings). */
+-#define sizeof(v)       ((int)sizeof(v))
+-
+ /* Length of an array: */
+ #define lenof(a)        (sizeof(a) / sizeof(*(a)))
+ 
+diff -r b323b647fe91 -r e10ae0e7b778 modules/Makefile
+--- a/modules/Makefile	Tue Jun 21 00:42:59 2011 -0400
++++ b/modules/Makefile	Tue Jun 21 00:44:38 2011 -0400
+@@ -18,7 +18,7 @@
+ 
+ all-dynamic:
+ 	@set -e ; for i in $(SUBDIRS) ; do \
+-		$(MAKE) -C $$i $@ DIRNAME="$$i" CFLAGS="$(CFLAGS)" ; \
++		$(MAKE) -C $$i $@ DIRNAME="$$i" CFLAGS='$(CFLAGS)' ; \
+ 		if $(TEST_NT) ! -f .stamp -o "$$i/.stamp" -nt .stamp ; then \
+ 			echo "touch .stamp" ; \
+ 			touch .stamp ; \
+@@ -33,7 +33,7 @@
+ 	@echo '#include "modsyms.c"' >>modlist.c
+ 	@echo 'struct {const char *name; void *symlist;} modlist[] = {' >>modlist.c
+ 	@set -e ; for i in $(SUBDIRS) ; do \
+-		$(MAKE) -C $$i $@ DIRNAME="$$i" CFLAGS="$(CFLAGS)" ; \
++		$(MAKE) -C $$i $@ DIRNAME="$$i" CFLAGS='$(CFLAGS)' ; \
+ 		cat $$i/.modext-*.h >>modext.h ; \
+ 		cat $$i/.modsyms-*.c >>modsyms.c ; \
+ 		cat $$i/.modlist-*.c >>modlist.c ; \
+diff -r b323b647fe91 -r e10ae0e7b778 modules/Makerules
+--- a/modules/Makerules	Tue Jun 21 00:42:59 2011 -0400
++++ b/modules/Makerules	Tue Jun 21 00:44:38 2011 -0400
+@@ -153,13 +153,13 @@
+ $(TARGET).o $(TARGET)_static.o: MODULE_CFLAGS += -DMODULE_MAIN_FILE
+ $(TARGET)_static.o: MODULE_CFLAGS += -D_this_module_ptr=_this_module_ptr_$(MODULE_ID) -Dmodule_version=module_version_$(MODULE_ID) -Dmodule_config=module_config_$(MODULE_ID) -Dinit_module=init_module_$(MODULE_ID) -Dexit_module=exit_module_$(MODULE_ID)
+ $(TARGET)_static.o: FRC
+-	@$(MAKE) --no-print-directory $@ TARGET=$(@:_static.o=) INCLUDES2="$(INCLUDES-$(@:_static.o=.o))" CFLAGS="$(CFLAGS) $(MODULE_CFLAGS)" REALLY_COMPILE=2
++	@$(MAKE) --no-print-directory $@ TARGET=$(@:_static.o=) INCLUDES2="$(INCLUDES-$(@:_static.o=.o))" CFLAGS='$(CFLAGS) $(MODULE_CFLAGS)' REALLY_COMPILE=2
+ 	@if $(TEST_NT) ! -f .stamp -o "$@" -nt .stamp ; then \
+ 		echo "touch .stamp" ; \
+ 		touch .stamp ; \
+ 	fi
+ $(TARGET).o $(OBJECTS): FRC
+-	@$(MAKE) --no-print-directory $@ TARGET=$(@:.o=) INCLUDES2="$(INCLUDES-$@)" CFLAGS="$(CFLAGS) $(MODULE_CFLAGS)" REALLY_COMPILE=2
++	@$(MAKE) --no-print-directory $@ TARGET=$(@:.o=) INCLUDES2="$(INCLUDES-$@)" CFLAGS='$(CFLAGS) $(MODULE_CFLAGS)' REALLY_COMPILE=2
+ 	@if $(TEST_NT) ! -f .stamp -o "$@" -nt .stamp ; then \
+ 		echo "touch .stamp" ; \
+ 		touch .stamp ; \
+diff -r b323b647fe91 -r e10ae0e7b778 tools/convert-cygnus.c
+--- a/tools/convert-cygnus.c	Tue Jun 21 00:42:59 2011 -0400
++++ b/tools/convert-cygnus.c	Tue Jun 21 00:44:38 2011 -0400
+@@ -245,7 +245,7 @@
+                 break;
+             }
+             if (strlen(pass) > sizeof(ngi->pass)-1) {
+-                fprintf(stderr, "%s:%d: Password for `%s' truncated to %d"
++                fprintf(stderr, "%s:%d: Password for `%s' truncated to %" PRIdSIZE
+                         " characters\n", fname, line, ni->nick,
+                         sizeof(ngi->pass)-1);
+                 pass[sizeof(ngi->pass)-1] = 0;
+@@ -741,7 +741,7 @@
+             }
+             ci->founder = ni->nickgroup;
+             if (strlen(pass) > sizeof(ci->founderpass)-1) {
+-                fprintf(stderr, "%s:%d: Password for `%s' truncated to %d"
++                fprintf(stderr, "%s:%d: Password for `%s' truncated to %" PRIdSIZE
+                         " characters\n", fname, line, ci->name,
+                         sizeof(ci->founderpass)-1);
+                 pass[sizeof(ci->founderpass)-1] = 0;
+diff -r b323b647fe91 -r e10ae0e7b778 tools/convert-hybserv.c
+--- a/tools/convert-hybserv.c	Tue Jun 21 00:42:59 2011 -0400
++++ b/tools/convert-hybserv.c	Tue Jun 21 00:44:38 2011 -0400
+@@ -198,7 +198,7 @@
+                                 exit(1);
+                             } else {
+                                 fprintf(stderr, "%s:%d: Password for `%s'"
+-                                        " truncated to %d characters\n", fname,
++                                        " truncated to %" PRIdSIZE " characters\n", fname,
+                                         line, ni->nick,
+                                         sizeof(ngi->pass.password)-1);
+                             }
+@@ -564,7 +564,7 @@
+                             exit(1);
+                         } else {
+                             fprintf(stderr, "%s:%d: Password for `%s'"
+-                                    " truncated to %d characters\n", fname,
++                                    " truncated to %" PRIdSIZE " characters\n", fname,
+                                     line, ci->name,
+                                     sizeof(ci->founderpass.password)-1);
+                         }

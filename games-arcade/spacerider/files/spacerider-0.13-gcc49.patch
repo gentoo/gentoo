@@ -1,0 +1,22 @@
+--- effect.cpp.orig	2015-03-31 22:36:53.336131373 -0400
++++ effect.cpp	2015-03-31 22:37:04.359755281 -0400
+@@ -18,7 +18,7 @@
+ void Effect::add(const int x, const int y)
+ {
+ 	object_struct *effect;
+-	if((effect = add_object(x, y)) == NULL)
++	if((effect = add_object(x, y, 0, 0)) == NULL)
+ 	{
+ 		return;
+ 	}
+--- object.h.orig	2015-03-31 22:35:22.939214561 -0400
++++ object.h	2015-03-31 22:37:19.654233441 -0400
+@@ -172,7 +172,7 @@
+ 	return object->next;
+ }
+ 
+-template <class T>struct Object<T>::object_struct *Object<T>::add_object(const int x, const int y, const int speedx = 0, const int speedy = 0)
++template <class T>struct Object<T>::object_struct *Object<T>::add_object(const int x, const int y, const int speedx, const int speedy)
+ {
+ 	object_struct *object;
+ 

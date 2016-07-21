@@ -1,0 +1,28 @@
+diff --git a/wafadmin/Tools/perl.py b/wafadmin/Tools/perl.py
+index 9e3b12a..9005e6a 100644
+--- a/wafadmin/Tools/perl.py
++++ b/wafadmin/Tools/perl.py
+@@ -99,8 +99,8 @@ def check_perl_ext_devel(conf):
+ 	conf.env["CPPPATH_PERLEXT"] = read_out(" -MConfig -e'print \"$Config{archlib}/CORE\"'")
+ 	conf.env["CCFLAGS_PERLEXT"] = read_out(" -MConfig -e'print \"$Config{ccflags} $Config{cccdlflags}\"'")
+ 
+-	conf.env["XSUBPP"] = read_out(" -MConfig -e'print \"$Config{privlib}/ExtUtils/xsubpp$Config{exe_ext}\"'")
+-	conf.env["EXTUTILS_TYPEMAP"] = read_out(" -MConfig -e'print \"$Config{privlib}/ExtUtils/typemap\"'")
++	conf.env["XSUBPP"]           = read_out(" -MModule::Build -e'print Module::Build::ModuleInfo->find_module_by_name(\"ExtUtils::xsubpp\")'")
++	conf.env["EXTUTILS_TYPEMAP"] = read_out(" -MModule::Build -e'print Module::Build::ModuleInfo->find_module_by_name(\"ExtUtils::typemap\")'")
+ 
+ 	if not getattr(Options.options, 'perlarchdir', None):
+ 		conf.env["ARCHDIR_PERL"] = Utils.cmd_output(perl + " -MConfig -e'print $Config{sitearch}'")
+diff --git a/src/clients/lib/perl/typemap b/src/clients/lib/perl/typemap
+index 6cb033f..54e6c4d 100644
+--- a/src/clients/lib/perl/typemap
++++ b/src/clients/lib/perl/typemap
+@@ -3,6 +3,8 @@ xmmsc_connection_t*			XMMSC_CONNECTION_T
+ xmmsv_coll_t*				XMMSV_COLL_T
+ xmmsv_coll_type_t			XMMSV_COLL_TYPE_T
+ xmmsv_coll_namespace_t		T_PV
++const unsigned char*		T_PV
++xmmsv_t*			T_PV
+ xmmsc_result_t*				XMMSC_RESULT_T
+ xmmsc_result_propdict_t*	XMMSC_RESULT_PROPDICT_T
+ xmms_plugin_type_t			XMMS_PLUGIN_TYPE_T

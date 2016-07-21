@@ -1,0 +1,64 @@
+Index: ./plugin_kvv.c
+===================================================================
+--- ./plugin_kvv.c (revision 771)
++++ ./plugin_kvv.c (revision 797)
+@@ -414,5 +414,5 @@
+ 
+ 	if (count > 0) {
+-	    char *input, *cookie, *name, *value;
++	    char *input, *cookie, *name = NULL, *value = NULL;
+ 	    int input_len, cookie_len, name_len, value_len;
+ 
+Index: ./plugin_mpd.c
+===================================================================
+--- ./plugin_mpd.c (revision 786)
++++ ./plugin_mpd.c (revision 797)
+@@ -65,5 +65,10 @@
+     int iport;
+     char *test;
+-    struct Pointer mpd;
++
++    struct Pointer mpd = {
++	.conn = NULL,
++	.status = NULL,
++	.entity = NULL
++    };
+ 
+     if ((test = getenv("MPD_HOST"))) {
+@@ -229,5 +234,6 @@
+ #define _mpd_player_get_random			005
+ 
+-void error_callback(MpdObj * mi, int errorid, char *msg, void *userdata)
++void error_callback( __attribute__ ((unused)) MpdObj * mi, int errorid, char *msg, __attribute__ ((unused))
++		    void *userdata)
+ {
+     printf("Error %i: '%s'\n", errorid, msg);
+Index: ./drv_Image.c
+===================================================================
+--- ./drv_Image.c (revision 771)
++++ ./drv_Image.c (revision 797)
+@@ -115,5 +115,5 @@
+     if (bitbuf == NULL) {
+ 	if ((bitbuf = malloc(xsize * ysize * sizeof(*bitbuf))) == NULL) {
+-	    error("%s: malloc(%d) failed: %s", Name, (int) xsize * ysize * sizeof(*bitbuf), strerror(errno));
++	    error("%s: malloc() failed: %s", Name, strerror(errno));
+ 	    return -1;
+ 	}
+@@ -122,5 +122,5 @@
+     if (rowbuf == NULL) {
+ 	if ((rowbuf = malloc(3 * xsize * sizeof(*rowbuf))) == NULL) {
+-	    error("Raster: malloc(%d) failed: %s", (int) 3 * xsize * sizeof(*rowbuf), strerror(errno));
++	    error("Raster: malloc() failed: %s", strerror(errno));
+ 	    return -1;
+ 	}
+Index: ./plugin_i2c_sensors.c
+===================================================================
+--- ./plugin_i2c_sensors.c (revision 771)
++++ ./plugin_i2c_sensors.c (revision 797)
+@@ -297,5 +297,5 @@
+ 	    strcat(path_cfg, "/");
+ 	}
+-	debug("using i2c sensors at %s (from %s)", path, cfg_source());
++	debug("using i2c sensors at %s (from %s)", path_cfg, cfg_source());
+ 	path = realloc(path, strlen(path_cfg) + 1);
+ 	strcpy(path, path_cfg);

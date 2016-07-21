@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/show_bug.cgi?id=375253
+
+http://lipyrary.blogspot.com/2011/09/python-and-linux-kernel-30-sysplatform.html
+
+--- setup.py
++++ setup.py
+@@ -76,7 +76,7 @@
+     lib_dir_list = [fltk_lib_dir]
+     lib_list = ["fltk", "kernel32", "user32", "gdi32", "winspool", "comdlg32", "Comctl32", "advapi32", "shell32", "oleaut32", "odbc32", "odbccp32", "stdc++", "msvcr71"]
+     #link_arg_list=["-Wl,--enable-runtime-pseudo-reloc", "-Wl,--enable-auto-import"]
+-elif sys.platform == 'linux2':
++elif sys.platform.startswith('linux'):
+     print "Building for Linux"
+     # ugly hack to force distutils to use g++ instead of gcc for linking
+     from distutils import sysconfig

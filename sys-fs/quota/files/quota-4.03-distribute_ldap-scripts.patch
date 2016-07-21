@@ -1,0 +1,23 @@
+commit 861154efb90ed049e0473cc36935b8d03c78a869
+Author: Tomáš Chvátal <tchvatal@suse.com>
+Date:   Mon Jan 4 13:01:36 2016 +0100
+
+    Distribute ldap-scripts directory too
+    
+    Signed-off-by: Tomáš Chvátal <tchvatal@suse.com>
+    Signed-off-by: Jan Kara <jack@suse.cz>
+
+diff --git a/Makefile.am b/Makefile.am
+index eb62617..a880ebe 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -52,7 +52,8 @@ EXTRA_DIST = \
+ 	$(man_MANS) \
+ 	$(rpcsvc_DATA) \
+ 	autogen.sh \
+-	Changelog
++	Changelog \
++	ldap-scripts
+ 
+ noinst_LIBRARIES = \
+ 	libquota.a \

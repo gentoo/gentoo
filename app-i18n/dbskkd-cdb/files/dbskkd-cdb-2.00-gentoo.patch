@@ -1,0 +1,54 @@
+diff -Naur dbskkd-cdb-2.00.orig/Makefile dbskkd-cdb-2.00/Makefile
+--- dbskkd-cdb-2.00.orig/Makefile	2009-02-06 11:56:47.000000000 +0900
++++ dbskkd-cdb-2.00/Makefile	2009-02-13 15:39:03.000000000 +0900
+@@ -1,12 +1,14 @@
+ # dbskkd-cdb Makefile
+ 
+-CC = cc -Wall -O2 -g -I/usr/local/include
++CC = cc
++CFLAGS += -Wall -g -I/usr/include -I/usr/include/cdb
+ COMPAT =
+-CDBLIB = /usr/local/lib/libcdb.a
+-INSTALLDIR = /usr/local/libexec
++CDBLIB = /usr/lib/libcdb.a
++INSTALLDIR = /usr/libexec
++DESTDIR =
+ 
+ .c.o:
+-	$(CC) $(COMPAT) $(PRIVATE) -c $*.c
++	$(CC) $(CFLAGS) $(COMPAT) $(PRIVATE) -c $*.c
+ 
+ all: 	dbskkd-cdb 
+ 
+@@ -14,15 +17,16 @@
+ 	/bin/rm -f dbskkd-cdb *.o
+ 
+ dbskkd-cdb: dbskkd-cdb.o 
+-	$(CC) $(COMPAT) $(PRIVATE) -o dbskkd-cdb \
++	$(CC) $(LDFLAGS) $(COMPAT) $(PRIVATE) -o dbskkd-cdb \
+ 		dbskkd-cdb.o ${CDBLIB}
+ 
+ dbskkd-cdb.o: dbskkd-cdb.c 
+-	$(CC) $(COMPAT) $(PRIVATE) -c dbskkd-cdb.c
++	$(CC) $(CFLAGS) $(COMPAT) $(PRIVATE) -c dbskkd-cdb.c
+ 
+ error.o: error.c error.h
+ 
+ install: dbskkd-cdb 
+-	cp dbskkd-cdb $(INSTALLDIR); chmod 755 $(INSTALLDIR)/dbskkd-cdb
++	mkdir -p $(DESTDIR)$(INSTALLDIR)
++	cp dbskkd-cdb $(DESTDIR)$(INSTALLDIR); chmod 755 $(DESTDIR)$(INSTALLDIR)/dbskkd-cdb
+ 
+ # end of makefile
+diff -Naur dbskkd-cdb-2.00.orig/dbskkd-cdb.c dbskkd-cdb-2.00/dbskkd-cdb.c
+--- dbskkd-cdb-2.00.orig/dbskkd-cdb.c	2009-02-06 11:56:47.000000000 +0900
++++ dbskkd-cdb-2.00/dbskkd-cdb.c	2009-02-13 15:25:25.000000000 +0900
+@@ -27,7 +27,7 @@
+  *       spelling changed from JISHO to JISYO
+  */
+ #ifndef JISYO_FILE
+-#define JISYO_FILE	"/usr/local/share/skk/SKK-JISYO.L.cdb"
++#define JISYO_FILE	"/usr/share/skk/SKK-JISYO.L.cdb"
+ #endif /* JISYO_FILE */
+ 
+ #define	BUFSIZE		(1024)	/* max size of a request */

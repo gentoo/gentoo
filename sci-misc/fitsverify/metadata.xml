@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  fitsverify is a computer program that rigorously checks whether a
+  FITS format data file conforms to all the requirements defined in
+  the FITS (Flexible Image Transport System) standard document.
+</longdescription>
+</pkgmetadata>

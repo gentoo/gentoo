@@ -1,0 +1,11 @@
+--- lifted-base-0.1.0.1-orig/test.hs	2011-12-03 22:38:23.000000000 +1100
++++ lifted-base-0.1.0.1/test.hs	2011-12-11 22:33:38.889902803 +1100
+@@ -37,7 +37,7 @@
+ main :: IO ()
+ main = defaultMain
+     [ testSuite "IdentityT" runIdentityT
+-    , testSuite "ListT" $ fmap head . runListT
++--  , testSuite "ListT" $ fmap head . runListT
+     , testSuite "MaybeT" $ fmap fromJust . runMaybeT
+     , testSuite "ReaderT" $ flip runReaderT "reader state"
+     , testSuite "WriterT" runWriterT'

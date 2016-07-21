@@ -1,0 +1,23 @@
+--- src/equip.c.orig
++++ src/equip.c
+@@ -120,7 +120,7 @@
+ 	    return (i);
+ 
+     /* if we get this far, there are no equippable items before the current */
+-    for (i = 8; i > offset; i--)
++    for (i = 7; i > offset; i--)
+ 	if (pawn->item[i].usage & USAGE_EQUIPPABLE)
+ 	    return (i);
+     return (-1);
+--- src/shop.c.orig
++++ src/shop.c
+@@ -290,8 +290,7 @@
+ 
+ 		SDL_BlitSurface (name, NULL, area, &dest);
+ 
+-		snprintf (price, sizeof(char)*8, "%d", pawn->item[i].sellfor);
+-		price[9] = '\0';
++		snprintf (price, sizeof(price), "%d", pawn->item[i].sellfor);
+ 		profit = GwizRenderText (price);
+ 		dest.x = area->w - profit->w;
+ 		dest.w = profit->w;

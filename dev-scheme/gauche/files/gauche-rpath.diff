@@ -1,0 +1,10 @@
+--- Gauche-0.9.1.orig/configure.ac
++++ Gauche-0.9.1/configure.ac
+@@ -709,7 +709,6 @@
+   fi
+   if test "$RPATH_FLAG" != ""; then
+     RPATH_TMP=$RPATH_FLAG'`pwd`'
+-    RPATH_REAL=$RPATH_FLAG'$(LIB_INSTALL_DIR)'
+   fi
+ fi
+ AC_SUBST(RPATH_FLAG)

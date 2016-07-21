@@ -1,0 +1,10 @@
+#
+# A sample configuration file for swatch.
+#
+# See "man swatch" for details.
+
+# Mails root when invalid remote login attempted.
+watchfor /(.*) (.*) (.*) (.*) (.*):( [iI]nvalid [uU]ser )(.*)( from )(.*)$/
+	threshold track_by=$9,type=limit,count=3,seconds=30
+	mail root,subject="Invalid user"
+

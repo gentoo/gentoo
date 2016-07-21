@@ -1,0 +1,17 @@
+Description: fixed gamelogic bug with wheel-straight: check suit of ace if testing for straight-flush
+Origin: http://sourceforge.net/apps/trac/holdingnuts/changeset/741
+--- a/src/libpoker/GameLogic.cpp
++++ b/src/libpoker/GameLogic.cpp
+@@ -179,7 +179,11 @@
+ 	
+ 	// is an A2345-straight ("wheel")
+ 	if (count == 4 && (last_face == Card::Two && allcards->front().getFace() == Card::Ace))
+-		is_straight = true;
++	{
++		// check suit when testing for StraightFlush
++		if (suit == -1 || allcards->front().getSuit() == suit)
++			is_straight = true;
++	}
+ 	
+ 	if (is_straight)
+ 	{

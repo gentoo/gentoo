@@ -1,0 +1,48 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: fix nullification of fitswdm.c
+ Fitswdm.c uses toNULLLONG to set an integer to some minimal value
+ (funnily, not 0 but LONG_MIN!). However, this will lead to a wrong
+ result if long!=int, since the argument is an int. On LinuxAMD64, this
+ was fixed, but not generally. This patch make the special case for
+ LinuxAMD64 as the general one.
+--- a/prim/dio/libsrc/fitswdm.c
++++ b/prim/dio/libsrc/fitswdm.c
+@@ -237,12 +237,7 @@
+          {                      /* NULL fill if needed  */
+          pi = p.i + ns;
+          i = n - ns;
+-
+-#ifdef LinuxAMD64
+          while (i--) toNULLINT (*pi++);
+-#else
+-         while (i--) toNULLLONG (*pi++);
+-#endif
+          }
+       ioff += n;
+       np = 4 * ns;
+@@ -279,12 +274,7 @@
+          while (n--)
+          if (isNULLFLOAT (*pf))
+             {
+-
+-#ifdef LinuxAMD64
+             toNULLINT (*pi++);
+-#else
+-            toNULLLONG (*pi++);
+-#endif
+             *pf++;
+             }
+          else
+@@ -332,12 +322,7 @@
+          while (n--)
+          if (isNULLFLOAT (*pd))
+             {
+-
+-#ifdef LinuxAMD64
+             toNULLINT (*pi++);
+-#else
+-            toNULLLONG (*pi++);
+-#endif
+             *pd++;
+             }
+          else

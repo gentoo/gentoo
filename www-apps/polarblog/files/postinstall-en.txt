@@ -1,0 +1,13 @@
+
+Now execute:
+
+cp ${MY_INSTALLDIR}/css/<one_of_css_files>.css.dist ${MY_INSTALLDIR}/css/<one_of_css_files>.css
+cp ${MY_INSTALLDIR}/config/config.php.dist ${MY_INSTALLDIR}/config/config.php
+and edit them. As a minimum, set LIB_PATH, DB_PREFIX, DB_HOST, DB_NAME,
+DB_USER, DB_PASSWORD, CSS.
+
+Then go to http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/install.php to finish the installation.
+Don't forget to delete ${MY_INSTALLDIR}/install.php when you are done.
+
+Read the docs at http://polarblog.polarlava.com/docs/ , in particular the
+.htaccess section.

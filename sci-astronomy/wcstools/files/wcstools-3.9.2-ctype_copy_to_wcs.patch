@@ -1,0 +1,19 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix an off-by-one problem with strcpy
+ Sometimes a string is copied with the length of 8 into an char array with a
+ length of 8, as found in wcs.c, line 392: wcs->ptype is char[8], and ctype1
+ may be "DEC--TAN". This will cause an overwriting of the next entry, or if
+ this is protected (as in Debian) it will cause a crash.
+--- a/libwcs/wcs.c
++++ b/libwcs/wcs.c
+@@ -388,8 +388,8 @@
+     if (!strncmp (ctype1, "LONG",4))
+ 	strncpy (ctype1, "XLON",4);
+ 
+-    strcpy (wcs->ctype[0], ctype1);
+-    strcpy (wcs->ptype, ctype1);
++    strncpy (wcs->ctype[0], ctype1, 16);
++    strncpy (wcs->ptype, ctype1, 8);
+ 
+     /* Linear coordinates */
+     if (!strncmp (ctype1,"LINEAR",6)) {

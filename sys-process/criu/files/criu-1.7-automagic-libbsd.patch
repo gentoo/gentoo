@@ -1,0 +1,29 @@
+diff --git a/Makefile.config b/Makefile.config
+index ce4b8d8..2ef64d3 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -3,10 +3,12 @@ include scripts/feature-tests.mak
+ 
+ CONFIG		:= include/config.h
+ 
++ifeq ($(SETPROCTITLE),yes)
+ ifeq ($(call try-cc,$(LIBBSD_DEV_TEST),-lbsd),y)
+ 	LIBS += -lbsd
+ 	DEFINES += -DCONFIG_HAS_LIBBSD
+ endif
++endif
+ 
+ ifeq ($(call pkg-config-check,libselinux),y)
+ 	LIBS := -lselinux $(LIBS)
+@@ -38,9 +40,11 @@ endif
+ ifeq ($(VDSO),y)
+ 	$(Q) @echo '#define CONFIG_VDSO' >> $@
+ endif
++ifeq ($(SETPROCTITLE),yes)
+ ifeq ($(call try-cc,$(SETPROCTITLE_INIT_TEST),-lbsd),y)
+ 	$(Q) @echo '#define CONFIG_HAS_SETPROCTITLE_INIT' >> $@
+ endif
++endif
+ ifeq ($(piegen-y),y)
+ 	$(Q) @echo '#define CONFIG_PIEGEN' >> $@
+ endif

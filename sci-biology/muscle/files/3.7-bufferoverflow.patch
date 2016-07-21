@@ -1,0 +1,26 @@
+diff --git a/globalslinux.cpp b/globalslinux.cpp
+index 63baaa1..b1cfcb0 100644
+--- a/globalslinux.cpp
++++ b/globalslinux.cpp
+@@ -156,7 +156,7 @@ double GetRAMSizeMB()
+ 			}
+ 		return DEFAULT_RAM;
+ 		}
+-	int Bytes = atoi(pMem+9)*1000;
++	long Bytes = atol(pMem+9)*1000;
+ 	return ((double) Bytes)/1e6;
+ 	}
+ 
+diff --git a/progress.cpp b/progress.cpp
+index a0e91bb..f9b093e 100644
+--- a/progress.cpp
++++ b/progress.cpp
+@@ -41,7 +41,7 @@ const char *MemToStr(double MB)
+ 	if (MB < 0)
+ 		return "";
+ 
+-	static char Str[9];
++	static char Str[16];
+ 	static double MaxMB = 0;
+ 	static double RAMMB = 0;
+ 

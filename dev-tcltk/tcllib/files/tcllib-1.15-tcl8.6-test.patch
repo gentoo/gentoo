@@ -1,0 +1,411 @@
+ modules/clock/iso8601.test                |  5 ++---
+ modules/doctools/mpformats/_nroff.tcl     | 18 ++++++++++--------
+ modules/doctools/mpformats/fmt.nroff      |  4 ++--
+ modules/doctools/tests/nroff/00           |  8 ++++----
+ modules/doctools/tests/nroff/01           |  4 ++--
+ modules/doctools/tests/nroff/02           | 10 +++++-----
+ modules/doctools/tests/nroff/03           | 16 ++++++++--------
+ modules/doctools/tests/nroff/04           |  8 ++++----
+ modules/doctools/tests/nroff/05           |  8 ++++----
+ modules/doctools/tests/nroff/06           |  8 ++++----
+ modules/doctools/tests/nroff/07           |  8 ++++----
+ modules/doctools/tests/nroff/08           | 18 +++++++++---------
+ support/devel/sak/validate/syntax.tcl     |  4 +++-
+ support/devel/sak/validate/testsuites.tcl |  4 +++-
+ 14 files changed, 64 insertions(+), 59 deletions(-)
+
+diff --git a/modules/clock/iso8601.test b/modules/clock/iso8601.test
+index 85d6416..6fce938 100644
+--- a/modules/clock/iso8601.test
++++ b/modules/clock/iso8601.test
+@@ -40,9 +40,8 @@ test clock-iso8601-2.0 {parse_date, bad input} -body {
+ } -returnCodes error -result {not an iso8601 date string}
+ 
+ test clock-iso8601-2.1 {parse_date} -body {
+-    clock::iso8601 parse_date 1994-11-05
+-    # It is unclear if this is influenced by TZ.
+-} -result 784022400
++    clock format [clock::iso8601 parse_date 1994-11-05] -format %D
++} -result 11/05/1994
+ 
+ # -------------------------------------------------------------------------
+ 
+diff --git a/modules/doctools/mpformats/_nroff.tcl b/modules/doctools/mpformats/_nroff.tcl
+index be73a02..7669d07 100644
+--- a/modules/doctools/mpformats/_nroff.tcl
++++ b/modules/doctools/mpformats/_nroff.tcl
+@@ -15,7 +15,7 @@
+ 
+ 
+ proc nr_lp      {}          {return \n\1.LP}
+-proc nr_ta      {{text {}}} {return ".ta$text"}
++proc nr_ta      {{text {}}} {return "\1.ta$text"}
+ proc nr_bld     {}          {return \1\\fB}
+ proc nr_bldt    {t}         {return "\n\1.B $t\n"}
+ proc nr_ul      {}          {return \1\\fI}
+@@ -75,6 +75,7 @@ set      finalMap [list \
+ 	"\1\\" "\\" \
+ 	"\1'"  "'" \
+ 	"\1."  "." \
++        "."    "\\&." \
+ 	"\\"   "\\\\"]
+ global   textMap
+ set      textMap [list "\\" "\\\\"]
+@@ -103,8 +104,8 @@ proc nroff_postprocess {nroff} {
+     # - Exceptions to the above: Keep empty lines and leading
+     #   whitespace when in verbatim sections (no-fill-mode)
+ 
+-    set nfMode   [list .nf .CS]	; # commands which start no-fill mode
+-    set fiMode   [list .fi .CE]	; # commands which terminate no-fill mode
++    set nfMode   [list \1.nf \1.CS]	; # commands which start no-fill mode
++    set fiMode   [list \1.fi \1.CE]	; # commands which terminate no-fill mode
+     set lines    [list]         ; # Result buffer
+     set verbatim 0              ; # Automaton mode/state
+ 
+@@ -139,7 +140,7 @@ proc nroff_postprocess {nroff} {
+ 		    set lines [lreplace $lines end end]
+ 		    set line "$last $line"
+ 		}
+-	    } elseif {[string match {['.]*} $line]} {
++	    } elseif {[string match {[']*} $line]} {
+ 		# Apostrophes or periods at the beginning of a line have to
+ 		# quoted to prevent misinterpretation as comments or directives.
+ 		# The true comments and directive are quoted with \1
+@@ -166,10 +167,11 @@ proc nroff_postprocess {nroff} {
+     # Remove superfluous .IP commands (empty paragraph). The first
+     # identity mapping is there to avoid smashing a man macro
+     # definition.
+-    set lines [string map [list \
+-	       \n\1.IP\n\1..\n  \n\1.IP\n\1..\n \
+-	       \n\1.IP\n\1.     \n\1.] \
+-	   $lines]
++
++    lappend map	\n\1.IP\n\1.\1.\n  \n\1.IP\n\1.\1.\n
++    lappend map \n\1.IP\n\1.       \n\1.
++
++    set lines [string map $map $lines]
+ 
+     # Return the modified result buffer
+     return [string map $finalMap $lines]
+diff --git a/modules/doctools/mpformats/fmt.nroff b/modules/doctools/mpformats/fmt.nroff
+index e844dbf..5230688 100644
+--- a/modules/doctools/mpformats/fmt.nroff
++++ b/modules/doctools/mpformats/fmt.nroff
+@@ -269,11 +269,11 @@ proc fmt_image {text {label {}}} {
+ 
+     set img [dt_imgdata $text {pic}]
+     if {$img ne {}} {
+-	return \n.PS\n$img\n.PE\n
++	return \n\1.PS\n$img\n\1.PE\n
+     }
+     set img [dt_imgdata $text {txt}]
+     if {$img ne {}} {
+-	return \n.PS\n.nf\n$img\n.fi\n.PE\n
++	return \n\1.PS\n\1.nf\n$img\n\1.fi\n\1.PE\n
+     }
+     if {$label eq {}} {
+ 	return "IMAGE: $text"
+diff --git a/modules/doctools/tests/nroff/00 b/modules/doctools/tests/nroff/00
+index 8ac0ebf..8f68ee1 100644
+--- a/modules/doctools/tests/nroff/00
++++ b/modules/doctools/tests/nroff/00
+@@ -1,15 +1,15 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+ .SH DESCRIPTION
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/01 b/modules/doctools/tests/nroff/01
+index 3a4563f..588894a 100644
+--- a/modules/doctools/tests/nroff/01
++++ b/modules/doctools/tests/nroff/01
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
+ '\" Copyright (c) **Copyright**
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+diff --git a/modules/doctools/tests/nroff/02 b/modules/doctools/tests/nroff/02
+index 89d6cb7..49fbf18 100644
+--- a/modules/doctools/tests/nroff/02
++++ b/modules/doctools/tests/nroff/02
+@@ -1,12 +1,12 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. "..THE_MODULE.."
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. "\&.\&.THE_MODULE\&.\&."
+ .BS
+ .SH NAME
+-TEST \- ..THE_TITLE..
++TEST \- \&.\&.THE_TITLE\&.\&.
+ .SH SYNOPSIS
+ package require \fBAAA \fR
+ .sp
+@@ -20,6 +20,6 @@ ELSE, OTHER
+ KEYA, KEYZ
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/03 b/modules/doctools/tests/nroff/03
+index eb0bdd3..6393ecb 100644
+--- a/modules/doctools/tests/nroff/03
++++ b/modules/doctools/tests/nroff/03
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+@@ -12,18 +12,18 @@ TEST \-
+ 1
+ .SH BBB
+ 22
+-.SS BBB.CCC
++.SS BBB\&.CCC
+ 333
+-.SS BBB.DDD
++.SS BBB\&.DDD
+ 4444
+ .SH EEE
+ 5555
+ .PP
+-At \fBAaA\fR.
++At \fBAaA\fR\&.
+ .PP
+-At \fB__undefined__\fR.
++At \fB__undefined__\fR\&.
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/04 b/modules/doctools/tests/nroff/04
+index ee22d7a..27aa037 100644
+--- a/modules/doctools/tests/nroff/04
++++ b/modules/doctools/tests/nroff/04
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+@@ -27,6 +27,6 @@ Next Line
+ FERTIG
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/05 b/modules/doctools/tests/nroff/05
+index c25c179..3df0180 100644
+--- a/modules/doctools/tests/nroff/05
++++ b/modules/doctools/tests/nroff/05
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "BASIC" a 5 .MODULE. ""
++.TH "BASIC" a 5 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ BASIC \-
+@@ -91,6 +91,6 @@ caramel
+ KO
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/06 b/modules/doctools/tests/nroff/06
+index e7fee7c..10fed25 100644
+--- a/modules/doctools/tests/nroff/06
++++ b/modules/doctools/tests/nroff/06
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+@@ -50,6 +50,6 @@ c
+ .PP
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/07 b/modules/doctools/tests/nroff/07
+index 696a715..08ff9ee 100644
+--- a/modules/doctools/tests/nroff/07
++++ b/modules/doctools/tests/nroff/07
+@@ -1,9 +1,9 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
+-'\" Copyright (c) .COPYRIGHT.
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
++'\" Copyright (c) \&.COPYRIGHT\&.
+ '\"
+ .so man.macros
+-.TH "TEST" z 3.14.15.926 .MODULE. ""
++.TH "TEST" z 3\&.14\&.15\&.926 \&.MODULE\&. ""
+ .BS
+ .SH NAME
+ TEST \-
+@@ -40,6 +40,6 @@ a
+ .PP
+ .SH COPYRIGHT
+ .nf
+-Copyright (c) .COPYRIGHT.
++Copyright (c) \&.COPYRIGHT\&.
+ 
+ .fi
+\ No newline at end of file
+diff --git a/modules/doctools/tests/nroff/08 b/modules/doctools/tests/nroff/08
+index b1bc4ea..50cecb6 100644
+--- a/modules/doctools/tests/nroff/08
++++ b/modules/doctools/tests/nroff/08
+@@ -1,12 +1,12 @@
+ '\"
+-'\" Generated from file '.FILE.' by tcllib/doctools with format 'nroff'
++'\" Generated from file '\&.FILE\&.' by tcllib/doctools with format 'nroff'
+ '\" Copyright (c) **Copyright**
+ '\"
+ .so man.macros
+-.TH "ALL" a 5 .MODULE. "..THE_MODULE.."
++.TH "ALL" a 5 \&.MODULE\&. "\&.\&.THE_MODULE\&.\&."
+ .BS
+ .SH NAME
+-ALL \- ..THE_TITLE..
++ALL \- \&.\&.THE_TITLE\&.\&.
+ .SH SYNOPSIS
+ package require \fBAAA \fR
+ .sp
+@@ -14,11 +14,11 @@ package require \fBBBB  VVV\fR
+ .sp
+ package require \fBCCC  ?VVV?\fR
+ .sp
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ .sp
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ .sp
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ .sp
+ .BE
+ .SH DESCRIPTION
+@@ -75,7 +75,7 @@ DESCRIPTION ::\fBMethod\fR::
+ TERM
+ DESCRIPTION
+ .TP
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ DESCRIPTION ::\fBNamespace\fR::
+ .RS
+ .TP
+@@ -96,10 +96,10 @@ DESCRIPTION ::?Optional?::
+ .CE
+ .RE
+ .TP
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ DESCRIPTION ::\fBPackage\fR::
+ .TP
+-CMDNAME ...
++CMDNAME \&.\&.\&.
+ DESCRIPTION ::\fBSystemCommand\fR::
+ .RS
+ .TP
+diff --git a/support/devel/sak/validate/syntax.tcl b/support/devel/sak/validate/syntax.tcl
+index 20b7d33..24e06d2 100644
+--- a/support/devel/sak/validate/syntax.tcl
++++ b/support/devel/sak/validate/syntax.tcl
+@@ -194,7 +194,9 @@ proc ::sak::validate::syntax::Setup {} {
+ 	interp eval $ip [list ::rename $c {}]
+     }
+ 
+-    interp eval $ip [list ::namespace delete ::tcl]
++    if {![package vsatisfies [package present Tcl] 8.6]} {
++	interp eval $ip [list ::namespace delete ::tcl]
++    }
+     interp eval $ip [list ::rename namespace {}]
+     interp eval $ip [list ::rename rename    {}]
+ 
+diff --git a/support/devel/sak/validate/testsuites.tcl b/support/devel/sak/validate/testsuites.tcl
+index 7072662..71ea694 100644
+--- a/support/devel/sak/validate/testsuites.tcl
++++ b/support/devel/sak/validate/testsuites.tcl
+@@ -139,7 +139,9 @@ proc ::sak::validate::testsuites::Setup {} {
+ 	interp eval $ip [list ::rename $c {}]
+     }
+ 
+-    interp eval $ip [list ::namespace delete ::tcl]
++    if {![package vsatisfies [package present Tcl] 8.6]} {
++	interp eval $ip [list ::namespace delete ::tcl]
++    }
+     interp eval $ip [list ::rename namespace {}]
+     interp eval $ip [list ::rename rename    {}]
+ 

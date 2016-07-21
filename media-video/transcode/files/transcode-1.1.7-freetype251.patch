@@ -1,0 +1,12 @@
+--- transcode-1.1.7/filter/subtitler/load_font.c
++++ transcode-1.1.7/filter/subtitler/load_font.c
+@@ -47,8 +47,8 @@
+ // FreeType specific includes
+ #include <ft2build.h>
+ #include FT_FREETYPE_H
++#include FT_GLYPH_H
+ 
+-#include <freetype/ftglyph.h>
+ 
+ /**
+  * @file bswap.h

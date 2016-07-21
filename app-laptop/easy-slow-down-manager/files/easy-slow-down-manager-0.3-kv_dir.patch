@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 60a649c..fbdc332 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,8 @@
+ obj-m := easy_slow_down_manager.o samsung-backlight.o
+-KVERSION = $(shell uname -r)
++KERN_DIR=/usr/src/linux
+ 
+ all:
+-	$(MAKE) -C /lib/modules/$(KVERSION)/build M=$(PWD) modules
++	$(MAKE) -C /$(KERN_DIR) M=$(PWD) modules
+ 
+ clean:
+-	$(MAKE) -C /lib/modules/$(KVERSION)/build M=$(PWD) clean
++	$(MAKE) -C /$(KERN_DIR) M=$(PWD) clean

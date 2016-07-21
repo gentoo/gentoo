@@ -1,0 +1,30 @@
+From a6983649c997dffd71d365792fa665cc135e696a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ville=20Skytt=C3=A4?= <ville.skytta@iki.fi>
+Date: Fri, 10 Jan 2014 09:34:59 +0200
+Subject: [PATCH] Allow binding to a listen address that doesn't exist yet
+
+---
+ server/main.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/server/main.c b/server/main.c
+index a5a9e4e..b2f460b 100644
+--- a/server/main.c
++++ b/server/main.c
+@@ -1003,6 +1003,13 @@ socksetup(int af)
+ #endif
+ 				continue;
+ 				}
++
++#ifdef IP_FREEBIND
++			if (setsockopt(*s, SOL_IP, IP_FREEBIND, &on, sizeof(on)) < 0)
++				{
++				g_warning("gkrellmd: setsockopt (IP_FREEBIND) failed\n");
++				}
++#endif
+ 			}
+ 
+ #ifdef IPV6_V6ONLY
+-- 
+1.8.3.1
+

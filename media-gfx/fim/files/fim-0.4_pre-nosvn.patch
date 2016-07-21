@@ -1,0 +1,11 @@
+--- fim-0.4-trunk/configure.ac
++++ fim-0.4-trunk/configure.ac
+@@ -10,7 +10,7 @@
+ #AC_PROG_CC(cc gcc)
+ #AC_PROG_CXX(CC g++ gcc c++ cxx)
+ 
+-define([svnversion],esyscmd([sh -c "svnversion | tr  -c '[0-9]' ' ' | sed 's/ *//g;s/^$/-1/g' "]))dnl
++define([svnversion],esyscmd([sh -c "echo -n '-1'"]))dnl
+ # WARNING : here 0.0 denotes the package version, which will be corrected some lines after this.
+ AC_INIT([fim],[0.4],[dezperado_FOobAr_autistici_Baz_org, by replacing _FOobAr_ with a @ and _Baz_ with a .])
+ 

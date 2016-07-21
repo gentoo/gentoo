@@ -1,0 +1,70 @@
+From 8c9139249689570ff2f4d058ed1031f0cbb6c084 Mon Sep 17 00:00:00 2001
+From: Roger Leigh <rleigh@codelibre.net>
+Date: Sun, 26 Jul 2015 14:00:13 +0100
+Subject: [PATCH] cmake: Add additional regex tests and corresponding unit
+ tests
+
+---
+ cmake/regex-checks.cmake | 10 ++++++++++
+ test/sbuild-regex.cc     | 20 ++++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+
+diff --git a/cmake/regex-checks.cmake b/cmake/regex-checks.cmake
+index d0bb211..60507ec 100644
+--- a/cmake/regex-checks.cmake
++++ b/cmake/regex-checks.cmake
+@@ -30,6 +30,16 @@ int main() {
+   if (${namespace}_match(fail, bar)) return 11;
+   if (${namespace}_match(fail, chk)) return 12;
+ 
++  // Checks for broken support in GCC 4.9 and 5.1
++  ${namespace} range1(\"^[a-z0-9][a-z0-9-]*\$\", ${namespace}::extended);
++  ${namespace} range2(\"^[a-z0-9][-a-z0-9]*\$\", ${namespace}::extended);
++  if (!${namespace}_match(test, range1)) return 13;
++  if (!${namespace}_match(test, range2)) return 14;
++  if (!${namespace}_match(\"a-\", range1)) return 15;
++  if (!${namespace}_match(\"a-\", range2)) return 16;
++  if (${namespace}_match(\"-a\", range1)) return 17;
++  if (${namespace}_match(\"-a\", range2)) return 18;
++
+   return 0;
+ }"
+ ${outvar})
+diff --git a/test/sbuild-regex.cc b/test/sbuild-regex.cc
+index 915e915..a8520c5 100644
+--- a/test/sbuild-regex.cc
++++ b/test/sbuild-regex.cc
+@@ -33,6 +33,8 @@ class test_regex : public TestCase
+   CPPUNIT_TEST(test_output);
+   CPPUNIT_TEST(test_input);
+   CPPUNIT_TEST(test_match);
++  CPPUNIT_TEST(test_match_bracket1);
++  CPPUNIT_TEST(test_match_bracket2);
+   CPPUNIT_TEST_EXCEPTION(test_input_fail, std::regex_error);
+   CPPUNIT_TEST_SUITE_END();
+ 
+@@ -88,6 +90,24 @@ class test_regex : public TestCase
+   }
+ 
+   void
++  test_match_bracket1()
++  {
++    sbuild::regex r("^[a-z0-9][a-z0-9-]*$");
++    CPPUNIT_ASSERT(sbuild::regex_search("foobar", r));
++    CPPUNIT_ASSERT(sbuild::regex_search("a-", r));
++    CPPUNIT_ASSERT(!sbuild::regex_search("-a", r));
++  }
++
++  void
++  test_match_bracket2()
++  {
++    sbuild::regex r("^[a-z0-9][-a-z0-9]*$");
++    CPPUNIT_ASSERT(sbuild::regex_search("foobar", r));
++    CPPUNIT_ASSERT(sbuild::regex_search("a-", r));
++    CPPUNIT_ASSERT(!sbuild::regex_search("-a", r));
++  }
++
++  void
+   test_input_fail()
+   {
+     sbuild::regex r;

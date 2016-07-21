@@ -1,0 +1,34 @@
+Index: trunk/build.xml
+
+This is the fix for josm bug #7351, which affects Gentoo builds.
+===================================================================
+--- a/trunk/build.xml
++++ b/trunk/build.xml
+@@ -230,6 +230,8 @@
+             <compilerarg value="-Xlint:static"/>
+             <compilerarg value="-Xlint:try"/>
+             <compilerarg value="-Xlint:unchecked"/>
++                <!-- Undocumented argument to ignore "Sun internal proprietary API" warning, see http://stackoverflow.com/a/13862308/2257172 -->
++            <compilerarg value="-XDignore.symbol.file"/>
+         </javac>
+         <copy todir="build" failonerror="no" includeemptydirs="no">
+             <fileset dir="resources"/>
+@@ -419,7 +421,7 @@
+ 		-keep class JOSM
+ 	 	-keep class * extends org.openstreetmap.josm.io.FileImporter
+ 	 	-keep class * extends org.openstreetmap.josm.io.FileExporter
+-		-keep class org.openstreetmap.josm.data.imagery.types.Adapter1
++		-keep class org.w3._2001.xmlschema.Adapter1
+ 		-keep class org.openstreetmap.josm.actions.search.SearchCompiler$Never
+ 
+ 	 	-keepclassmembers enum  * {
+@@ -432,7 +434,8 @@
+ 	 	    public protected *;
+ 	 	}
+ 
+-		# Disable annoying [proguard] Note: the configuration keeps the entry point '...', but not the descriptor class '...'. This notes should not be a problem as we don't use obfuscation
++    # Disable annoying [proguard] Note: the configuration keeps the entry point '...', but not the descriptor class '...'.
++    # This note should not be a problem as we don't use obfuscation
+ 		-dontnote
+         </proguard>
+     </target>

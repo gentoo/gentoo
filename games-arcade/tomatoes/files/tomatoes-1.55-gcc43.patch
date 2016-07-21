@@ -1,0 +1,14 @@
+--- src/config.cpp
++++ src/config.cpp
+@@ -27,8 +27,9 @@
+ 
+ *************************************************************************/
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
++#include <cstring>
++#include <cstdio>
++#include <cstdlib>
+ #include "config.h"
+ #include "init.h"
+ 

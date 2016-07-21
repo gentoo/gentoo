@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>accessibility@gentoo.org</email>
+  <name>Gentoo Accessibility Project</name>
+ </maintainer>
+ <use>
+  <flag name="api">build brltty's application program interface</flag>
+  <flag name="beeper">support the console tone generator</flag>
+  <flag name="contracted-braille">support in-line contracted braille</flag>
+  <flag name="fm">support for the sound card synthesizer</flag>
+  <flag name="midi">support the musical instrument digital interface</flag>
+  <flag name="pcm">support for sound card digital audio</flag>
+  <flag name="speech">speech support</flag>
+</use>
+<longdescription lang="en">
+BRLTTY is a background process (daemon) which provides access to the Linux/Unix
+console (when in text mode) for a blind person using a refreshable braille
+display. It drives the braille display, and provides complete screen review
+functionality. Some speech capability has also been incorporated. 
+</longdescription>
+<longdescription lang="ja">
+BRLTTYは、盲人用ブライユ点字ディスプレイのためのLinux/Unixコンソールを制御するバ
+ックグラウンド・プロセス(デーモン)です。ブライユ点字ディスプレイを動かし、その多
+機能な完全なスクリーン・レビューを提供します。幾つかの台詞読み上げ機能も統合され
+ています。
+</longdescription>
+</pkgmetadata>

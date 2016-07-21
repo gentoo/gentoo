@@ -1,0 +1,6 @@
+solutions = [
+  { "name"        : "src",
+    "url"         : "https://src.chromium.org/svn/trunk/src",
+    "safesync_url": "https://chromium-status.appspot.com/lkgr",
+  },
+]

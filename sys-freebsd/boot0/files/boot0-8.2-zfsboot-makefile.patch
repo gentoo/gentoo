@@ -1,0 +1,13 @@
+diff --git a/sys/boot/i386/zfsboot/Makefile b/sys/boot/i386/zfsboot/Makefile
+index bb16ea3..7dedb49 100644
+--- a/sys/boot/i386/zfsboot/Makefile
++++ b/sys/boot/i386/zfsboot/Makefile
+@@ -83,6 +83,8 @@ zfsboot.bin: zfsboot.out
+ zfsboot.out: ${BTXCRT} zfsboot.o sio.o drv.o cons.o util.o
+ 	${LD} ${LDFLAGS} -Ttext ${ORG2} -o ${.TARGET} ${.ALLSRC} ${LIBSTAND}
+ 
++drv.o: drv.c xreadorg.h
++
+ zfsboot.o: zfsboot.s
+ 
+ SRCS=	zfsboot.c xreadorg.h

@@ -1,0 +1,24 @@
+From d2cea534819267e9e8b7348b7cf6fdbad72c7b11 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 21 Jan 2012 21:34:33 +0100
+Subject: [PATCH] Fix compilation against iniparser 3.0.0 (bug #399629)
+
+---
+ Makefile |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3f4b383..43187fc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -66,6 +66,7 @@ CPPFLAGS += -D_FILE_OFFSET_BITS=64
+ 
+ ifdef USE_SYSTEM_INIPARSER
+ CPPFLAGS += -DUSE_SYSTEM_INIPARSER=$(USE_SYSTEM_INIPARSER)
++CPPFLAGS += -Diniparser_setstr=iniparser_set  # Define went away with iniparser 3.0.0, Gentoo bug #399629
+ endif
+ 
+ OBJECTS = isomaster.o window.o browser.o fsbrowser.o isobrowser.o error.o about.o settings.o boot.o editfile.o
+-- 
+1.7.8.4
+

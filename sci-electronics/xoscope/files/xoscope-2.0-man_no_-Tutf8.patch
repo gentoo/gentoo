@@ -1,0 +1,11 @@
+--- xoscope-2.0/acconfig.h
++++ xoscope-2.0/acconfig.h
+@@ -61,7 +61,7 @@
+    interactive response time as the X server becomes too busy */
+ 
+ /* bourne shell command for X11 Help ("man -Tutf8 xoscope 2>&1") */
+-#define HELPCOMMAND	"man -Tutf8 xoscope 2>&1"
++#define HELPCOMMAND	"man xoscope 2>&1"
+ 
+ /* default file name ("oscope.dat") */
+ #define FILENAME	"oscope.dat"

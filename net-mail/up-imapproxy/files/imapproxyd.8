@@ -1,0 +1,64 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH IMAPPROXYD 8 "Mar 12, 2004" "Dave McMurtrie" "IMAP proxy daemon"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.SH NAME
+.B imapproxyd
+\- IMAP proxy daemon
+.SH SYNOPSIS
+.B imapproxyd
+.RI
+[
+.B -f
+.RI
+<config file name> ]
+.RI
+[
+.B -p
+.RI
+<pidfile name> ]
+.br
+.SH DESCRIPTION
+This manual page documents briefly the
+.B imapproxyd
+command.
+This manual page was written for the Debian distribution
+because the original program does not have a manual page.
+.PP
+UP-ImapProxy proxies IMAP transactions between an IMAP client and an IMAP 
+server. The general idea is that the client should never know that it is
+not talking to the real IMAP server, but ImapProxy caches server connections.
+.PP
+ImapProxy was written to compensate for webmail clients that are unable  to
+maintain persistent connections to an IMAP server. Most webmail clients
+need to log in to an IMAP server for nearly every single transaction; This
+behaviour can cause tragic performance problems on the IMAP server.
+ImapProxy tries to deal with this problem by leaving server connections
+open for a short time after a webmail client logs out. When the webmail
+client connects again, ImapProxy will determine if there is a cached 
+connection available and reuse it if possible.
+.BR
+.SH FILES
+By default, UP-ImapProxy reads /etc/imapproxy.conf on startup.
+This can be changed by using the 
+.I -f
+option
+.PP
+Unless foreground_mode has been enabled, UP-ImapProxy will write its PID to to
+a PID-file. It defaults to /var/run/imapproxy.pid, but can be overridden with
+the 
+.I -p
+option
+.SH SEE ALSO
+.BR pimpstat (8),
+.br
+.SH AUTHOR
+This manual page was written by Jose Luis Tallon
+.nh
+<jltallon@adv-solutions.net>,
+for the Debian GNU/Linux system (but may be used by others).
+
+ 

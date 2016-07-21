@@ -1,0 +1,60 @@
+diff -Naur freepv-0.3.0.orig/src/libfreepv/OpenGLRenderer.cpp freepv-0.3.0/src/libfreepv/OpenGLRenderer.cpp
+--- freepv-0.3.0.orig/src/libfreepv/OpenGLRenderer.cpp	2010-03-11 16:15:04.000000000 +0100
++++ freepv-0.3.0/src/libfreepv/OpenGLRenderer.cpp	2010-03-11 16:25:15.000000000 +0100
+@@ -26,7 +26,8 @@
+ #include <config.h>
+ 
+ #include <vector>
+-#include <math.h>
++#include <cmath>
++#include <cstdio>
+ 
+ #include "OpenGLRenderer.h"
+ #include "Scene.h"
+diff -Naur freepv-0.3.0.orig/src/libfreepv/QTVRDecoder.cpp freepv-0.3.0/src/libfreepv/QTVRDecoder.cpp
+--- freepv-0.3.0.orig/src/libfreepv/QTVRDecoder.cpp	2010-03-11 16:15:04.000000000 +0100
++++ freepv-0.3.0/src/libfreepv/QTVRDecoder.cpp	2010-03-11 16:25:15.000000000 +0100
+@@ -42,6 +42,7 @@
+ #include <errno.h>
+ #include <vector>
+ #include <cstring>
++#include <cstdio>
+ 
+ #include <zlib.h>
+ 
+diff -Naur freepv-0.3.0.orig/src/libfreepv/SPiVparser.cpp freepv-0.3.0/src/libfreepv/SPiVparser.cpp
+--- freepv-0.3.0.orig/src/libfreepv/SPiVparser.cpp	2010-03-11 16:15:04.000000000 +0100
++++ freepv-0.3.0/src/libfreepv/SPiVparser.cpp	2010-03-11 16:18:53.000000000 +0100
+@@ -488,8 +488,8 @@
+ //This method remplace the nodes that has src attributes
+ void SPiVparser::parseNodeURL(const char* _url)
+ {
+-    char * aux_url=NULL;
+-    char * url=(char*) _url;
++    const char * aux_url=NULL;
++    const char * url=(char*) _url;
+     if(aux_url = strrchr (_url,'/'))
+     {
+        url=aux_url;
+diff -Naur freepv-0.3.0.orig/src/libfreepv/Utils/signatures.cpp freepv-0.3.0/src/libfreepv/Utils/signatures.cpp
+--- freepv-0.3.0.orig/src/libfreepv/Utils/signatures.cpp	2010-03-11 16:15:04.000000000 +0100
++++ freepv-0.3.0/src/libfreepv/Utils/signatures.cpp	2010-03-11 16:25:15.000000000 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include "signatures.h"
+ #include <iostream>
++#include <cstdio>
+ 
+ namespace FPV{
+ namespace Utils{
+diff -Naur freepv-0.3.0.orig/src/libfreepv/utils.cpp freepv-0.3.0/src/libfreepv/utils.cpp
+--- freepv-0.3.0.orig/src/libfreepv/utils.cpp	2010-03-11 16:15:04.000000000 +0100
++++ freepv-0.3.0/src/libfreepv/utils.cpp	2010-03-11 16:25:15.000000000 +0100
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include <algorithm>
++#include <cstdio>
+ 
+ #include "utils.h"
+ 

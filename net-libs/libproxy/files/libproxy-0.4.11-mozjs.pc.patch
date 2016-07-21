@@ -1,0 +1,23 @@
+--- libproxy-0.4.11/libproxy/cmake/modules/pacrunner_mozjs.cmk.orig	2011-06-20 04:31:41.000000000 -0600
++++ libproxy-0.4.11/libproxy/cmake/modules/pacrunner_mozjs.cmk	2013-03-24 19:20:17.910765954 -0600
+@@ -9,12 +9,18 @@
+ elseif(NOT APPLE)
+   option(WITH_MOZJS "Search for MOZJS package" ON)
+   if (WITH_MOZJS)
+-    pkg_search_module(MOZJS mozjs185>=1.8.5)
++    pkg_search_module(MOZJS mozjs187)
+     if(MOZJS_FOUND)
+       include_directories(${MOZJS_INCLUDE_DIRS})
+       link_directories(${MOZJS_LIBRARY_DIRS})
+     else()
+-      set(MOZJS_FOUND 0)
++      pkg_search_module(MOZJS mozjs185)
++      if(MOZJS_FOUND)
++        include_directories(${MOZJS_INCLUDE_DIRS})
++        link_directories(${MOZJS_LIBRARY_DIRS})
++      else()
++        set(MOZJS_FOUND 0)
++      endif()
+     endif()
+   else()
+     set(MOZJS_FOUND 0)

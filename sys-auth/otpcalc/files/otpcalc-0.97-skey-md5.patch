@@ -1,0 +1,24 @@
+Change default s/key hash to MD5 (same as sys-auth/skey).
+
+--- otpCalc-0.97-orig/callbacks.c
++++ otpCalc-0.97/callbacks.c
+@@ -90,7 +90,7 @@
+ 	unsigned char results[9];
+ 
+ 
+-	hashes[SKEY] = md4lite;
++	hashes[SKEY] = md5lite;
+ 	hashes[MD4] = md4lite;
+ 	hashes[MD5] = md5lite;
+ 	hashes[RMD160] = rmd160lite;
+--- otpCalc-0.97-orig/otpCalc.man
++++ otpCalc-0.97/otpCalc.man
+@@ -30,7 +30,7 @@
+ cb l
+ cb l
+ cb l.
+-s/key#MD4
++s/key#MD5
+ otp-md4#MD4
+ otp-md5#MD5
+ otp-rmd160#RIPEMD-160

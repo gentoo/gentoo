@@ -1,0 +1,7 @@
+.include /usr/lib/systemd/system/clamd@.service
+
+[Unit]
+Description=Generic ClamAV scanner daemon
+
+[Install]
+WantedBy=multi-user.target

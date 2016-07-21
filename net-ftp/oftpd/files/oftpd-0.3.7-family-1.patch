@@ -1,0 +1,23 @@
+Submitted By: Mario Fetka (geos_one) (mario dot fetka at gmail dot com)
+Date: 2010-01-05
+Initial Package Version: 0.3.7
+Origin: http://gentoo.mirror.solnet.ch/net-ftp/oftpd/files/oftpd-0.3.7-family.patch
+Upstream Status: unkonwn
+Description: dont crash on wrong protocol family
+ 
+diff -Naur oftpd-0.3.7.orig/src/ftp_session.c oftpd-0.3.7/src/ftp_session.c
+--- oftpd-0.3.7.orig/src/ftp_session.c	2010-01-05 21:56:48.540303543 +0000
++++ oftpd-0.3.7/src/ftp_session.c	2010-01-05 21:57:29.995553119 +0000
+@@ -708,10 +708,12 @@
+     if ((((struct sockaddr *)host_port)->sa_family != AF_INET) && 
+         (((struct sockaddr *)host_port)->sa_family != AF_INET6)) {
+         reply(f, 521, "Only IPv4 and IPv6 supported, address families (4,6)");
++        return;
+     }
+ #else
+     if (((struct sockaddr *)host_port)->sa_family != AF_INET) {
+         reply(f, 521, "Only IPv4 supported, address family (4)");
++        return;
+     }
+ #endif
+ 

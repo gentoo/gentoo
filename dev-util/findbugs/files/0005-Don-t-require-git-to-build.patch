@@ -1,0 +1,25 @@
+From cbf9d81dba1ef0a42f79391c87845d7875a13993 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 18 May 2015 20:41:58 +0100
+Subject: [PATCH 5/5] Don't require git to build
+
+---
+ findbugs/build.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/findbugs/build.xml b/findbugs/build.xml
+index d0cbc04..42c6d09 100644
+--- a/findbugs/build.xml
++++ b/findbugs/build.xml
+@@ -636,7 +636,7 @@
+     </target>
+ 
+ 
+-    <target name="version" depends="classes,-get-git-revision" >
++    <target name="version" depends="classes" >
+         <echo>${gitrnum}</echo>
+         <java classpathref="tools.classpath"
+               output="${version.props.file}"
+-- 
+2.3.3
+

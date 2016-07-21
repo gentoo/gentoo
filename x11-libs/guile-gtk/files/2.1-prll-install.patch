@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 822a170..37f43b5 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -72,7 +72,7 @@ gdkdefs = gdk-2.0.defs
+ defsdir = $(datadir)/guile-gtk/
+ defs_DATA = $(gtkdefs) $(gdkdefs) 
+ 
+-install-exec-local:
++install-exec-hook:
+ 	rm -f $(DESTDIR)$(bindir)/build-guile-gtk
+ 	rm -f $(DESTDIR)$(bindir)/guile-gtk
+ 	ln $(DESTDIR)$(bindir)/build-guile-gtk-2.0 $(DESTDIR)$(bindir)/build-guile-gtk

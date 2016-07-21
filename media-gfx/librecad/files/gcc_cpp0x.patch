@@ -1,0 +1,13 @@
+--- LibreCAD-2.0.2/common.pri	2014-01-09 18:31:10.000000000 +0000
++++ LibreCAD-2.0.2/common.pri.gcc46	2014-01-24 09:27:48.886665241 +0000
+@@ -59,8 +59,8 @@
+ 
+ # c++11 is now obligatory for LibreCAD
+ message(We will be using CPP11 features)
+-QMAKE_CXXFLAGS_DEBUG += -std=c++11 -g
+-QMAKE_CXXFLAGS += -std=c++11 -g
++QMAKE_CXXFLAGS_DEBUG += -std=c++0x -g
++QMAKE_CXXFLAGS += -std=c++0x -g
+ 
+ # svg support
+ QT += svg

@@ -1,0 +1,33 @@
+diff -Nru gateway-1.4.3.orig/configure.in gateway-1.4.3/configure.in
+--- gateway-1.4.3.orig/configure.in	2009-01-12 16:47:01.000000000 +0000
++++ gateway-1.4.3/configure.in	2009-03-01 14:18:51.000000000 +0000
+@@ -95,8 +95,9 @@
+ AC_SUBST(PKGADD_VENDOR)
+ 
+ dnl Target installation directory for documentation
++PACKAGE=kannel
+ AC_SUBST(docdir)
+-docdir='${prefix}/share/doc/kannel'
++AC_SUBST(PACKAGE)
+ 
+ dnl Checks system type.
+ AC_CONFIG_SECTION([Running system checks])
+@@ -112,7 +112,6 @@
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+ AC_PROG_YACC
+-AC_PROG_LEX
+ AC_CHECK_TOOL(AR, ar)
+ AC_PATH_PROG(CONVERT, convert)
+ AC_PATH_PROG(PERL, perl)
+diff -Nru gateway-1.4.3.orig/Makefile.in gateway-1.4.3/Makefile.in
+--- gateway-1.4.3.orig/Makefile.in	2008-06-24 15:05:24.000000000 +0000
++++ gateway-1.4.3/Makefile.in	2009-03-01 14:18:14.000000000 +0000
+@@ -61,7 +61,6 @@
+ SHELL = @SHELL@
+ VERSION = @VERSION@
+ SUFFIX = @SUFFIX@
+-LEX = @LEX@
+ PERL = @PERL@
+ YACC = @YACC@
+ 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+	dubya is a module for fortune-mod, and contains many quotes from George W.
+	Bush.  The great majority, if not all, of these quotes were originally
+	gathered in the fantastic George W. Bush Desk Calendar.
+</longdescription>
+</pkgmetadata>

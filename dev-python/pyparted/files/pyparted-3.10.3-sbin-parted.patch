@@ -1,0 +1,11 @@
+--- a/tests/baseclass.py
++++ b/tests/baseclass.py
+@@ -127,7 +127,7 @@
+ class RequiresLabeledDevice(RequiresDevice):
+     def setUp(self):
+         RequiresDevice.setUp(self)
+-        os.system("/sbin/parted -s %s mklabel msdos" % (self.path,))
++        os.system("/usr/sbin/parted -s %s mklabel msdos" % (self.path,))
+ 
+ # Base class for any test case that requires a _ped.Disk or parted.Disk.
+ class RequiresDisk(RequiresDevice):

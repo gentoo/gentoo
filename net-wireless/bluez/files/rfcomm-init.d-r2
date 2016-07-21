@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need bluetooth
+}
+
+checkconfig() {
+	if [ -z "${ADDRESS}" ]; then
+		eerror "ADDRESS must be set"
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	local DEVICE=${RC_SVCNAME#*.}
+
+	checkconfig || return 1
+
+   	ebegin "Starting ${RC_SVCNAME}"
+	rfcomm bind "${DEVICE}" "${ADDRESS}" ${CHANNEL}
+	eend $?
+}
+
+stop() {
+	local DEVICE=${RC_SVCNAME#*.}
+
+	ebegin "Shutting down ${RC_SVCNAME}"
+	rfcomm release "${DEVICE}"
+	eend $?
+}

@@ -1,0 +1,33 @@
+http://sourceforge.net/p/polyml/code/1875/
+Required for sci-mathematics/isabelle-2013.2
+
+------------------------------------------------------------------------
+r1875 | dcjm | 2013-10-30 10:49:05 -0600 (Wed, 30 Oct 2013) | 1 line
+
+Backport commit 1874 from trunk.  This fixes TextIO.inputN and StreamIO.inputN so they return immediately if the request is for zero characters.
+Index: polyml/basis/BasicStreamIO.sml
+===================================================================
+--- polyml/basis/BasicStreamIO.sml	(revision 1851)
++++ polyml/basis/BasicStreamIO.sml	(working copy)
+@@ -213,6 +213,8 @@
+         fun inputN (f, n) =
+         if n < 0
+         then raise Size
++        else if n = 0 (* Defined to return the empty vector and f *)
++        then (emptyVec, f)
+         else
+         let
+             val (vecs, f') = inputNList (f, n)
+Index: polyml/basis/TextIO.sml
+===================================================================
+--- polyml/basis/TextIO.sml	(revision 1851)
++++ polyml/basis/TextIO.sml	(working copy)
+@@ -597,6 +597,8 @@
+         |   inputN' n (ref(Direct(strm as {buffer, bufp, buflimit, ...}))) =
+             if n < 0 orelse n > CharVector.maxLen
+             then raise Size
++            else if n = 0
++            then "" (* Return the empty string without blocking *)
+             else if !buflimit = 0
+             then (* Last read returned end-of-file.  Clear the EOF state once
+                     we return this empty string. *)

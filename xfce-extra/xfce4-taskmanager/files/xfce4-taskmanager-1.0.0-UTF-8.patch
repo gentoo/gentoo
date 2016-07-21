@@ -1,0 +1,24 @@
+http://bugs.gentoo.org/488626
+http://bugzilla.xfce.org/show_bug.cgi?id=10417
+
+--- src/task-manager-linux.c
++++ src/task-manager-linux.c
+@@ -128,7 +128,7 @@
+ 	FILE *file;
+ 	gchar filename[96];
+ 	gint i;
+-	gchar c;
++	gint c;
+ 
+ 	snprintf (filename, 96, "/proc/%i/cmdline", task->pid);
+ 	if ((file = fopen (filename, "r")) == NULL)
+@@ -136,7 +136,7 @@
+ 
+ 	/* Read full command byte per byte until EOF */
+ 	for (i = 0; (c = fgetc (file)) != EOF && i < (gint)sizeof (task->cmdline) - 1; i++)
+-		task->cmdline[i] = (c == '\0') ? ' ' : c;
++		task->cmdline[i] = (c == '\0') ? ' ' : (gchar)c;
+ 	task->cmdline[i] = '\0';
+ 	if (task->cmdline[i-1] == ' ')
+ 		task->cmdline[i-1] = '\0';
+

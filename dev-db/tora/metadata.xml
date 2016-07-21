@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ikonta@yandex.ru</email>
+		<name>Sergey Starikoff</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>haubi@gentoo.org</email>
+		<name>Michael Haubenwallner</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	TOra is a Toolkit for Oracle which aims to help the DBA or developer of
+	database application. Features PL/SQL debugger, SQL worksheet with syntax
+	highlighting, DB browser and a comprehensive set of DBA tools.  Also works
+	with mySQL and postgreSQL.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tora</remote-id>
+	</upstream>
+</pkgmetadata>

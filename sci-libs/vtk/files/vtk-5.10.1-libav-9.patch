@@ -1,0 +1,117 @@
+diff -burN VTK5.10.1.old/IO/vtkFFMPEGWriter.cxx VTK5.10.1/IO/vtkFFMPEGWriter.cxx
+--- VTK5.10.1.old/IO/vtkFFMPEGWriter.cxx	2013-05-25 01:26:52.768954436 +0200
++++ VTK5.10.1/IO/vtkFFMPEGWriter.cxx	2013-05-25 11:13:53.112672449 +0200
+@@ -60,9 +60,6 @@
+ 
+   AVStream *avStream;
+ 
+-  unsigned char *codecBuf;
+-  int codecBufSize;
+-
+   AVFrame *rgbInput;
+   AVFrame *yuvOutput;
+ 
+@@ -83,7 +80,6 @@
+ 
+   this->avStream = NULL;
+ 
+-  this->codecBuf = NULL;
+   this->rgbInput = NULL;
+   this->yuvOutput = NULL;
+ 
+@@ -140,7 +136,7 @@
+   strcpy(this->avFormatContext->filename, this->Writer->GetFileName());
+ 
+   //create a stream for that file
+-  this->avStream = av_new_stream(this->avFormatContext, 0);
++  this->avStream = avformat_new_stream(this->avFormatContext, NULL);
+   if (!this->avStream) 
+     {
+     vtkGenericWarningMacro (<< "Could not create video stream.");
+@@ -199,7 +195,7 @@
+     vtkGenericWarningMacro (<< "Codec not found." );
+     return 0;
+     }
+-  if (avcodec_open(c, codec) < 0) 
++  if (avcodec_open2(c, codec, NULL) < 0)
+     {
+     vtkGenericWarningMacro (<< "Could not open codec.");
+     return 0;
+@@ -207,15 +203,6 @@
+ 
+   //create buffers for the codec to work with.
+ 
+-  //working compression space
+-  this->codecBufSize = 2*c->width*c->height*4; //hopefully this is enough
+-  this->codecBuf = new unsigned char[this->codecBufSize];
+-  if (!this->codecBuf)
+-    {
+-    vtkGenericWarningMacro (<< "Could not make codec working space." );
+-    return 0;
+-    }
+-
+   //for the output of the writer's input...
+   this->rgbInput = avcodec_alloc_frame();
+   if (!this->rgbInput)
+@@ -316,38 +303,24 @@
+     return 0;
+     }
+ #endif
+-
++  AVPacket pkt = { 0 };
++  int got_frame;
+ 
+   //run the encoder
+-  int toAdd = avcodec_encode_video(cc, 
+-                                   this->codecBuf, 
+-                                   this->codecBufSize, 
+-                                   this->yuvOutput);
++  int ret = avcodec_encode_video2(cc,
++                                  &pkt,
++                                  this->yuvOutput,
++                                  &got_frame);
+ 
+   //dump the compressed result to file
+-  if (toAdd) 
++  if (got_frame)
+     {
+-    //create an avpacket to output the compressed result
+-    AVPacket pkt;
+-    av_init_packet(&pkt);
+-
+-   //to do playback at actual recorded rate, this will need more work    
+-    pkt.pts = cc->coded_frame->pts;
+-    //pkt.dts = ?; not dure what decompression time stamp should be
+-    pkt.data = this->codecBuf;
+-    pkt.size = toAdd;
+     pkt.stream_index = this->avStream->index;
+-    if (cc->coded_frame->key_frame) //treat keyframes well
+-      {
+-      pkt.flags |= AV_PKT_FLAG_KEY;
+-      }
+-    pkt.duration = 0; //presentation duration in time_base units or 0 if NA
+-    pkt.pos = -1; //byte position in stream or -1 if NA
+     
+-    toAdd = av_write_frame(this->avFormatContext, &pkt);
++    ret = av_write_frame(this->avFormatContext, &pkt);
+     } 
+   
+-  if (toAdd) //should not have anything left over
++  if (ret < 0) //should not have anything left over
+     {
+     vtkGenericWarningMacro (<< "Problem encoding frame." );
+     return 0;
+@@ -373,12 +346,6 @@
+     this->rgbInput = NULL;
+     }
+   
+-  if (this->codecBuf)
+-    {
+-    av_free(this->codecBuf);
+-    this->codecBuf = NULL;
+-    }
+-
+   if (this->avFormatContext)
+     {          
+     if (this->openedFile)
+Binary files VTK5.10.1.old/IO/.vtkFFMPEGWriter.cxx.swp and VTK5.10.1/IO/.vtkFFMPEGWriter.cxx.swp differ

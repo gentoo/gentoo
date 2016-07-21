@@ -1,0 +1,21 @@
+diff -urN ctdb-1.13.old/Makefile.in ctdb-1.13/Makefile.in
+--- ctdb-1.13.old/Makefile.in	2012-03-23 11:30:03.321735210 +0100
++++ ctdb-1.13/Makefile.in	2012-03-23 11:37:03.131704144 +0100
+@@ -151,7 +151,7 @@
+ 
+ bin/ltdbtool: tools/ltdbtool.o @TDB_OBJ@
+ 	@echo Linking $@
+-	@$(CC) $(CFLAGS) -o $@ $+
++	@$(CC) $(CFLAGS) -o $@ $+ $(LIB_FLAGS)
+ 
+ bin/smnotify: utils/smnotify/gen_xdr.o utils/smnotify/gen_smnotify.o utils/smnotify/smnotify.o $(POPT_OBJ)
+ 	@echo Linking $@
+@@ -173,7 +173,7 @@
+ 
+ bin/ping_pong: utils/ping_pong/ping_pong.o
+ 	@echo Linking $@
+-	@$(CC) $(CFLAGS) -o $@ utils/ping_pong/ping_pong.o
++	@$(CC) $(CFLAGS) -o $@ utils/ping_pong/ping_pong.o $(LIB_FLAGS)
+ 
+ bin/pmdactdb: $(CTDB_CLIENT_OBJ) utils/pmda/pmda_ctdb.o
+ 	@echo Linking $@

@@ -1,0 +1,42 @@
+From 3db3ff4a787acf068b122562fb5be5aecec2611f Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@gentoo.org>
+Date: Tue, 2 Jul 2013 00:07:15 -0400
+Subject: [PATCH] Use MAXPATHLEN instead of sizeof in snprintf
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This silences a GCC 4.8.0 warning by fixing a programming error
+caught by static analysis:
+
+../../cmd/ztest/ztest.c: In function ‘ztest_vdev_aux_add_remove’:
+../../cmd/ztest/ztest.c:2584:33: error: argument to ‘sizeof’
+  in ‘snprintf’ call is the same expression as the destination;
+  did you mean to provide an explicit length?
+  [-Werror=sizeof-pointer-memaccess]
+  (void) snprintf(path, sizeof (path), ztest_aux_template,
+                                 ^
+
+Signed-off-by: Richard Yao <ryao@gentoo.org>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1480
+---
+ cmd/ztest/ztest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/ztest/ztest.c b/cmd/ztest/ztest.c
+index b38d7b1..93a5f1e 100644
+--- a/cmd/ztest/ztest.c
++++ b/cmd/ztest/ztest.c
+@@ -2581,7 +2581,7 @@ enum ztest_object {
+ 		zs->zs_vdev_aux = 0;
+ 		for (;;) {
+ 			int c;
+-			(void) snprintf(path, sizeof (path), ztest_aux_template,
++			(void) snprintf(path, MAXPATHLEN, ztest_aux_template,
+ 			    ztest_opts.zo_dir, ztest_opts.zo_pool, aux,
+ 			    zs->zs_vdev_aux);
+ 			for (c = 0; c < sav->sav_count; c++)
+-- 
+1.8.1.6
+

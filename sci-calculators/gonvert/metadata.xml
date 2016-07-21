@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  gonvert is a conversion utility that allows conversion between many
+  units like CGS, Ancient, Imperial with many categories like length,
+  mass, numbers, etc. All units converted values shown at once as you
+  type. Easy to add/change your own units. Written in
+  Python,pygtk,libgade.
+</longdescription>
+</pkgmetadata>

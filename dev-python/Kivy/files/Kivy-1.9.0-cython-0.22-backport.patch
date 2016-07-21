@@ -1,0 +1,713 @@
+From 124fe6c7f08defb36305f6aa0bba203ab645ab8a Mon Sep 17 00:00:00 2001
+From: Alexander Taylor <alexanderjohntaylor@gmail.com>
+Date: Sat, 18 Apr 2015 17:03:03 +0100
+Subject: [PATCH] Changed 'except *' to 'except -1' for cython 0.22
+
+---
+ kivy/graphics/context_instructions.pxd     | 22 +++++++-------
+ kivy/graphics/context_instructions.pyx     |  8 ++---
+ kivy/graphics/fbo.pxd                      |  2 +-
+ kivy/graphics/fbo.pyx                      |  3 +-
+ kivy/graphics/gl_instructions.pyx          |  8 +++--
+ kivy/graphics/instructions.pxd             | 30 +++++++++---------
+ kivy/graphics/instructions.pyx             | 49 ++++++++++++++++++------------
+ kivy/graphics/shader.pxd                   | 12 ++++----
+ kivy/graphics/shader.pyx                   | 25 +++++++++------
+ kivy/graphics/stencil_instructions.pxd     |  8 ++---
+ kivy/graphics/stencil_instructions.pyx     | 14 ++++++---
+ kivy/graphics/vertex_instructions_line.pxi |  9 +++---
+ setup.py                                   |  8 ++---
+ 13 files changed, 110 insertions(+), 88 deletions(-)
+
+diff --git a/kivy/graphics/context_instructions.pxd b/kivy/graphics/context_instructions.pxd
+index f6562b1..f8027e2 100644
+--- a/kivy/graphics/context_instructions.pxd
++++ b/kivy/graphics/context_instructions.pxd
+@@ -16,39 +16,39 @@ cdef class PopState(ContextInstruction):
+     pass
+ 
+ cdef class LineWidth(ContextInstruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class Color(ContextInstruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class BindTexture(ContextInstruction):
+     cdef int _index
+     cdef object _source
+     cdef Texture _texture
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ 
+ cdef class LoadIdentity(ContextInstruction):
+     pass
+ 
+ cdef class PushMatrix(ContextInstruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class PopMatrix(ContextInstruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class ApplyContextMatrix(ContextInstruction):
+     cdef object _target_stack
+     cdef object _source_stack
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class UpdateNormalMatrix(ContextInstruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class MatrixInstruction(ContextInstruction):
+     cdef object _stack
+     cdef Matrix _matrix
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ cdef class Transform(MatrixInstruction):
+     cpdef transform(self, Matrix trans)
+@@ -61,17 +61,17 @@ cdef class Rotate(Transform):
+     cdef float _angle
+     cdef tuple _axis
+     cdef tuple _origin
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+     cdef void compute(self)
+ 
+ cdef class Scale(Transform):
+     cdef tuple _origin
+     cdef float _x, _y, _z
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+     cdef set_scale(self, double x, double y, double z)
+ 
+ cdef class Translate(Transform):
+     cdef double _x, _y, _z
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+     cdef set_translate(self, double x, double y, double z)
+ 
+diff --git a/kivy/graphics/context_instructions.pyx b/kivy/graphics/context_instructions.pyx
+index 2107a2c..189656a 100644
+--- a/kivy/graphics/context_instructions.pyx
++++ b/kivy/graphics/context_instructions.pyx
+@@ -344,7 +344,7 @@ cdef class BindTexture(ContextInstruction):
+ 
+         self.index = kwargs.get('index', 0)
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef RenderContext context = self.get_context()
+         context.set_texture(self._index, self._texture)
+ 
+@@ -458,7 +458,7 @@ cdef class ApplyContextMatrix(ContextInstruction):
+         self.target_stack = kwargs.get('target_stack', 'modelview_mat')
+         self.source_stack = kwargs.get('source_stack', 'modelview_mat')
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef RenderContext context = self.get_context()
+         m = context.get_state(self._target_stack)
+         m = m.multiply(context.get_state(self._source_stack))
+@@ -494,7 +494,7 @@ cdef class UpdateNormalMatrix(ContextInstruction):
+ 
+     .. versionadded:: 1.6.0
+     '''
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef RenderContext context = self.get_context()
+         mvm = context.get_state('modelview_mat')
+         context.set_state('normal_mat', mvm.normal_matrix())
+@@ -509,7 +509,7 @@ cdef class MatrixInstruction(ContextInstruction):
+         self.stack = kwargs.get('stack', 'modelview_mat')
+         self._matrix = None
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         '''Apply the matrix of this instance to the
+         context model view matrix.
+         '''
+diff --git a/kivy/graphics/fbo.pxd b/kivy/graphics/fbo.pxd
+index 31b281a..2c202dd 100644
+--- a/kivy/graphics/fbo.pxd
++++ b/kivy/graphics/fbo.pxd
+@@ -24,7 +24,7 @@ cdef class Fbo(RenderContext):
+ 
+     cdef void create_fbo(self)
+     cdef void delete_fbo(self)
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+     cdef void raise_exception(self, str message, int status=?)
+     cdef str resolve_status(self, int status)
+     cdef void reload(self)
+diff --git a/kivy/graphics/fbo.pyx b/kivy/graphics/fbo.pyx
+index 901d600..d7f6c09 100644
+--- a/kivy/graphics/fbo.pyx
++++ b/kivy/graphics/fbo.pyx
+@@ -323,12 +323,13 @@ cdef class Fbo(RenderContext):
+         else:
+             glClear(GL_COLOR_BUFFER_BIT)
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         if self.flags & GI_NEEDS_UPDATE:
+             self.bind()
+             RenderContext.apply(self)
+             self.release()
+             self.flag_update_done()
++        return 0
+ 
+     cdef void reload(self):
+         # recreate the framebuffer, without deleting it. the deletion is not
+diff --git a/kivy/graphics/gl_instructions.pyx b/kivy/graphics/gl_instructions.pyx
+index afe3404..78b0fe5 100644
+--- a/kivy/graphics/gl_instructions.pyx
++++ b/kivy/graphics/gl_instructions.pyx
+@@ -50,8 +50,9 @@ cdef class ClearColor(Instruction):
+         self.b = b
+         self.a = a
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         glClearColor(self.r, self.g, self.b, self.a)
++        return 0
+ 
+     property rgba:
+         '''RGBA color used for the clear color, a list of 4 values in the 0-1
+@@ -136,7 +137,7 @@ cdef class ClearBuffers(Instruction):
+         self.clear_stencil = int(kwargs.get('clear_stencil', 0))
+         self.clear_depth = int(kwargs.get('clear_depth', 0))
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef GLbitfield mask = 0
+         if self.clear_color:
+             mask |= GL_COLOR_BUFFER_BIT
+@@ -145,7 +146,8 @@ cdef class ClearBuffers(Instruction):
+         if self.clear_depth:
+             mask |= GL_DEPTH_BUFFER_BIT
+         glClear(mask)
+-
++        return 0
++        
+     property clear_color:
+         '''If True, the color buffer will be cleared.
+         '''
+diff --git a/kivy/graphics/instructions.pxd b/kivy/graphics/instructions.pxd
+index 9008aef..09b0fd6 100644
+--- a/kivy/graphics/instructions.pxd
++++ b/kivy/graphics/instructions.pxd
+@@ -26,7 +26,7 @@ cdef class Instruction(ObjectWithUid):
+     cdef object __weakref__
+     cdef object __proxy_ref
+ 
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+     IF DEBUG:
+         cdef int flag_update(self, int do_parent=?, list _instrs=?) except -1
+     ELSE:
+@@ -58,9 +58,9 @@ cdef class ContextInstruction(Instruction):
+     cdef list context_pop
+ 
+     cdef RenderContext get_context(self)
+-    cdef void set_state(self, str name, value) except *
+-    cdef void push_state(self, str name) except *
+-    cdef void pop_state(self, str name) except *
++    cdef int set_state(self, str name, value) except -1
++    cdef int push_state(self, str name) except -1
++    cdef int pop_state(self, str name) except -1
+ 
+ 
+ from context_instructions cimport BindTexture
+@@ -80,8 +80,8 @@ cdef class Callback(Instruction):
+     cdef Shader _shader
+     cdef object func
+     cdef int _reset_context
+-    cdef void apply(self)
+-    cdef void enter(self)
++    cdef int apply(self) except -1
++    cdef int enter(self) except -1
+ 
+ 
+ 
+@@ -99,7 +99,7 @@ cdef class Canvas(CanvasBase):
+     cpdef add(self, Instruction c)
+     cpdef remove(self, Instruction c)
+     cpdef draw(self)
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ 
+ 
+ cdef class RenderContext(Canvas):
+@@ -113,14 +113,14 @@ cdef class RenderContext(Canvas):
+     cdef void set_texture(self, int index, Texture texture)
+     cdef void set_state(self, str name, value, int apply_now=?)
+     cdef get_state(self, str name)
+-    cdef void set_states(self, dict states) except *
+-    cdef void push_state(self, str name) except *
+-    cdef void push_states(self, list names) except *
+-    cdef void pop_state(self, str name) except *
+-    cdef void pop_states(self, list names) except *
+-    cdef void enter(self) except *
+-    cdef void leave(self) except *
+-    cdef void apply(self) except *
++    cdef int set_states(self, dict states) except -1
++    cdef int push_state(self, str name) except -1
++    cdef int push_states(self, list names) except -1
++    cdef int pop_state(self, str name) except -1
++    cdef int pop_states(self, list names) except -1
++    cdef int enter(self) except -1
++    cdef int leave(self) except -1
++    cdef int apply(self) except -1
+     cpdef draw(self)
+     cdef void reload(self)
+ 
+diff --git a/kivy/graphics/instructions.pyx b/kivy/graphics/instructions.pyx
+index 2b5e081..5249556 100644
+--- a/kivy/graphics/instructions.pyx
++++ b/kivy/graphics/instructions.pyx
+@@ -57,8 +57,8 @@ cdef class Instruction(ObjectWithUid):
+         if self.parent:
+             self.parent.add(self)
+ 
+-    cdef void apply(self):
+-        pass
++    cdef int apply(self) except -1:
++        return 0
+ 
+     IF DEBUG:
+         cdef int flag_update(self, int do_parent=1, list _instrs=None) except -1:
+@@ -145,7 +145,7 @@ cdef class InstructionGroup(Instruction):
+         else:
+             self.compiler = GraphicsCompiler()
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef Instruction c
+         cdef list children
+         if self.compiler is not None:
+@@ -161,6 +161,7 @@ cdef class InstructionGroup(Instruction):
+         else:
+             for c in self.children:
+                 c.apply()
++        return 0
+ 
+     cdef void build(self):
+         self.compiled_children = self.compiler.compile(self)
+@@ -246,7 +247,7 @@ cdef class ContextInstruction(Instruction):
+         cdef RenderContext context = getActiveContext()
+         return context
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef RenderContext context = self.get_context()
+         if self.context_push:
+             context.push_states(self.context_push)
+@@ -254,20 +255,20 @@ cdef class ContextInstruction(Instruction):
+             context.set_states(self.context_state)
+         if self.context_pop:
+             context.pop_states(self.context_pop)
++        return 0
+ 
+-    cdef void set_state(self, str name, value):
++    cdef int set_state(self, str name, value) except -1:
+         self.context_state[name] = value
+         self.flag_update()
+ 
+-    cdef void push_state(self, str name):
++    cdef int push_state(self, str name) except -1:
+         self.context_push.append(name)
+         self.flag_update()
+ 
+-    cdef void pop_state(self, str name):
++    cdef int pop_state(self, str name) except -1:
+         self.context_pop.append(name)
+         self.flag_update()
+ 
+-
+ cdef class VertexInstruction(Instruction):
+     '''The VertexInstruction class is the base for all graphics instructions
+     that have a direct visual representation on the canvas, such as Rectangles,
+@@ -400,11 +401,12 @@ cdef class VertexInstruction(Instruction):
+     cdef void build(self):
+         pass
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         if self.flags & GI_NEEDS_UPDATE:
+             self.build()
+             self.flag_update_done()
+         self.batch.draw()
++        return 0
+ 
+ 
+ cdef class Callback(Instruction):
+@@ -466,7 +468,7 @@ cdef class Callback(Instruction):
+         '''
+         self.flag_update()
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef RenderContext rcx
+         cdef Context ctx
+         cdef Shader shader
+@@ -512,9 +514,11 @@ cdef class Callback(Instruction):
+                 rcx.set_texture(index, texture)
+ 
+             reset_gl_context()
++        return 0
+ 
+-    cdef void enter(self):
++    cdef int enter(self) except -1:
+         self._shader.use()
++        return 0
+ 
+     property reset_context:
+         '''Set this to True if you want to reset the OpenGL context for Kivy
+@@ -597,7 +601,7 @@ cdef class Canvas(CanvasBase):
+         '''
+         self.apply()
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef float opacity = self._opacity
+         cdef float rc_opacity
+         cdef RenderContext rc
+@@ -609,6 +613,7 @@ cdef class Canvas(CanvasBase):
+         InstructionGroup.apply(self)
+         if opacity != 1.0:
+             rc.pop_state('opacity')
++        return 0
+ 
+     cpdef add(self, Instruction c):
+         # the after group must remain the last one.
+@@ -786,29 +791,29 @@ cdef class RenderContext(Canvas):
+     cdef get_state(self, str name):
+         return self.state_stacks[name][-1]
+ 
+-    cdef void set_states(self, dict states):
++    cdef int set_states(self, dict states) except -1:
+         cdef str name
+         for name, value in states.iteritems():
+             self.set_state(name, value)
+ 
+-    cdef void push_state(self, str name):
++    cdef int push_state(self, str name) except -1:
+         stack = self.state_stacks[name]
+         stack.append(stack[-1])
+         self.flag_update()
+ 
+-    cdef void push_states(self, list names):
++    cdef int push_states(self, list names) except -1:
+         cdef str name
+         for name in names:
+             self.push_state(name)
+ 
+-    cdef void pop_state(self, str name):
++    cdef int pop_state(self, str name) except -1:
+         stack = self.state_stacks[name]
+         oldvalue = stack.pop()
+         if oldvalue != stack[-1]:
+             self.set_state(name, stack[-1])
+             self.flag_update()
+ 
+-    cdef void pop_states(self, list names):
++    cdef int pop_states(self, list names) except -1:
+         cdef str name
+         for name in names:
+             self.pop_state(name)
+@@ -828,13 +833,15 @@ cdef class RenderContext(Canvas):
+         texture.bind()
+         self.flag_update()
+ 
+-    cdef void enter(self):
++    cdef int enter(self) except -1:
+         self._shader.use()
++        return 0
+ 
+-    cdef void leave(self):
++    cdef int leave(self) except -1:
+         self._shader.stop()
++        return 0
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         cdef list keys
+         if PY2:
+             keys = self.state_stacks.keys()
+@@ -857,6 +864,8 @@ cdef class RenderContext(Canvas):
+         popActiveContext()
+         self.flag_update_done()
+ 
++        return 0
++
+     cdef void reload(self):
+         pushActiveContext(self)
+         reset_gl_context()
+diff --git a/kivy/graphics/shader.pxd b/kivy/graphics/shader.pxd
+index c418207..1058ff4 100644
+--- a/kivy/graphics/shader.pxd
++++ b/kivy/graphics/shader.pxd
+@@ -26,14 +26,14 @@ cdef class Shader:
+ 
+     cdef void use(self)
+     cdef void stop(self)
+-    cdef void set_uniform(self, str name, value) except *
+-    cdef void upload_uniform(self, str name, value) except *
++    cdef int set_uniform(self, str name, value) except -1
++    cdef int upload_uniform(self, str name, value) except -1
+     cdef void upload_uniform_matrix(self, int loc, Matrix value)
+     cdef int get_uniform_loc(self, str name) except *
+-    cdef void build(self) except *
+-    cdef void build_vertex(self, int link=*) except *
+-    cdef void build_fragment(self, int link=*) except *
+-    cdef void link_program(self) except *
++    cdef int build(self) except -1
++    cdef int build_vertex(self, int link=*) except -1
++    cdef int build_fragment(self, int link=*) except -1
++    cdef int link_program(self) except -1
+     cdef int is_linked(self)
+     cdef ShaderSource compile_shader(self, str source, int shadertype)
+     cdef get_program_log(self, shader)
+diff --git a/kivy/graphics/shader.pyx b/kivy/graphics/shader.pyx
+index acda2bf..edb1c5a 100644
+--- a/kivy/graphics/shader.pyx
++++ b/kivy/graphics/shader.pyx
+@@ -230,13 +230,14 @@ cdef class Shader:
+         '''
+         glUseProgram(0)
+ 
+-    cdef void set_uniform(self, str name, value):
++    cdef int set_uniform(self, str name, value) except -1:
+         if name in self.uniform_values and self.uniform_values[name] == value:
+-            return
++            return 0
+         self.uniform_values[name] = value
+         self.upload_uniform(name, value)
++        return 0
+ 
+-    cdef void upload_uniform(self, str name, value):
++    cdef int upload_uniform(self, str name, value) except -1:
+         '''Pass a uniform variable to the shader.
+         '''
+         cdef long vec_size, index, x, y
+@@ -255,7 +256,7 @@ cdef class Shader:
+         #Logger.debug('Shader: uploading uniform %s (loc=%d, value=%r)' % (name, loc, value))
+         if loc == -1:
+             #Logger.debug('Shader: -> ignored')
+-            return
++            return 0
+         #Logger.debug('Shader: -> (gl:%d) %s' % (glGetError(), str(value)))
+ 
+         if val_type is Matrix:
+@@ -414,6 +415,7 @@ cdef class Shader:
+                     free(int_list)
+         else:
+             raise Exception('for <%s>, type not handled <%s>' % (name, val_type))
++        return 0
+ 
+     cdef void upload_uniform_matrix(self, int loc, Matrix value):
+         cdef GLfloat mat[16]
+@@ -421,7 +423,7 @@ cdef class Shader:
+             mat[x] = <GLfloat>value.mat[x]
+         glUniformMatrix4fv(loc, 1, False, mat)
+ 
+-    cdef int get_uniform_loc(self, str name):
++    cdef int get_uniform_loc(self, str name) except *:
+         cdef bytes c_name = name.encode('utf-8')
+         cdef int loc = glGetUniformLocation(self.program, c_name)
+         self.uniform_locations[name] = loc
+@@ -462,11 +464,12 @@ cdef class Shader:
+         # save for the next run.
+         self._current_vertex_format = vertex_format
+ 
+-    cdef void build(self):
++    cdef int build(self) except -1:
+         self.build_vertex()
+         self.build_fragment()
++        return 0
+ 
+-    cdef void build_vertex(self, int link=1):
++    cdef int build_vertex(self, int link=1) except -1:
+         if self.vertex_shader is not None:
+             glDetachShader(self.program, self.vertex_shader.shader)
+             self.vertex_shader = None
+@@ -475,8 +478,9 @@ cdef class Shader:
+             glAttachShader(self.program, self.vertex_shader.shader)
+         if link:
+             self.link_program()
++        return 0
+ 
+-    cdef void build_fragment(self, int link=1):
++    cdef int build_fragment(self, int link=1) except -1:
+         if self.fragment_shader is not None:
+             glDetachShader(self.program, self.fragment_shader.shader)
+             self.fragment_shader = None
+@@ -486,9 +490,9 @@ cdef class Shader:
+         if link:
+             self.link_program()
+ 
+-    cdef void link_program(self):
++    cdef int link_program(self) except -1:
+         if self.vertex_shader is None or self.fragment_shader is None:
+-            return
++            return 0
+ 
+         # XXX to ensure that shader is ok, read error state right now.
+         glGetError()
+@@ -503,6 +507,7 @@ cdef class Shader:
+             self._success = 0
+             raise Exception('Shader didnt link, check info log.')
+         self._success = 1
++        return 0
+ 
+     cdef int is_linked(self):
+         cdef GLint result = 0
+diff --git a/kivy/graphics/stencil_instructions.pxd b/kivy/graphics/stencil_instructions.pxd
+index 1cf556e..4d33c44 100644
+--- a/kivy/graphics/stencil_instructions.pxd
++++ b/kivy/graphics/stencil_instructions.pxd
+@@ -1,11 +1,11 @@
+ from kivy.graphics.instructions cimport Instruction
+ 
+ cdef class StencilPush(Instruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1 
+ cdef class StencilPop(Instruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ cdef class StencilUse(Instruction):
+     cdef unsigned int _op
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+ cdef class StencilUnUse(Instruction):
+-    cdef void apply(self)
++    cdef int apply(self) except -1
+diff --git a/kivy/graphics/stencil_instructions.pyx b/kivy/graphics/stencil_instructions.pyx
+index 469a239..67cc709 100644
+--- a/kivy/graphics/stencil_instructions.pyx
++++ b/kivy/graphics/stencil_instructions.pyx
+@@ -126,7 +126,7 @@ cdef class StencilPush(Instruction):
+     '''Push the stencil stack. See the module documentation for more
+     information.
+     '''
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         global _stencil_level, _stencil_in_push
+         if _stencil_in_push:
+             raise Exception('Cannot use StencilPush inside another '
+@@ -146,11 +146,12 @@ cdef class StencilPush(Instruction):
+         glStencilFunc(GL_ALWAYS, 0, 0)
+         glStencilOp(GL_INCR, GL_INCR, GL_INCR)
+         glColorMask(0, 0, 0, 0)
++        return 0
+ 
+ cdef class StencilPop(Instruction):
+     '''Pop the stencil stack. See the module documentation for more information.
+     '''
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         global _stencil_level, _stencil_in_push
+         if _stencil_level == 0:
+             raise Exception('Too much StencilPop (stack underflow)')
+@@ -159,10 +160,11 @@ cdef class StencilPop(Instruction):
+         glColorMask(1, 1, 1, 1)
+         if _stencil_level == 0:
+             glDisable(GL_STENCIL_TEST)
+-            return
++            return 0
+         # reset for previous
+         glStencilFunc(GL_EQUAL, _stencil_level, 0xff)
+         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
++        return 0
+ 
+ 
+ cdef class StencilUse(Instruction):
+@@ -176,12 +178,13 @@ cdef class StencilUse(Instruction):
+         else:
+             self._op = GL_EQUAL
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         global _stencil_in_push
+         _stencil_in_push = 0
+         glColorMask(1, 1, 1, 1)
+         glStencilFunc(self._op, _stencil_level, 0xff)
+         glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
++        return 0
+ 
+     property func_op:
+         '''Determine the stencil operation to use for glStencilFunc(). Can be
+@@ -207,7 +210,8 @@ cdef class StencilUse(Instruction):
+ cdef class StencilUnUse(Instruction):
+     '''Use current stencil buffer to unset the mask.
+     '''
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         glStencilFunc(GL_ALWAYS, 0, 0)
+         glStencilOp(GL_DECR, GL_DECR, GL_DECR)
+         glColorMask(0, 0, 0, 0)
++        return 0
+diff --git a/kivy/graphics/vertex_instructions_line.pxi b/kivy/graphics/vertex_instructions_line.pxi
+index b074a22..0c13132 100644
+--- a/kivy/graphics/vertex_instructions_line.pxi
++++ b/kivy/graphics/vertex_instructions_line.pxi
+@@ -174,10 +174,10 @@ cdef class Line(VertexInstruction):
+             self._stencil_use = StencilUse(op='lequal')
+             self._stencil_unuse = StencilUnUse()
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         if self._width == 1.:
+             VertexInstruction.apply(self)
+-            return
++            return 0
+ 
+         cdef double alpha = getActiveContext()['color'][-1]
+         self._use_stencil = alpha < 1
+@@ -195,6 +195,7 @@ cdef class Line(VertexInstruction):
+             self._stencil_pop.apply()
+         else:
+             VertexInstruction.apply(self)
++        return 0
+ 
+     cdef void build_legacy(self):
+         cdef int i
+@@ -1238,9 +1239,9 @@ cdef class SmoothLine(Line):
+ 
+         self.build_smooth()
+ 
+-    cdef void apply(self):
++    cdef int apply(self) except -1:
+         VertexInstruction.apply(self)
+-        return
++        return 0
+ 
+     cdef void build_smooth(self):
+         cdef:
+diff --git a/setup.py b/setup.py
+index 76d7c82..30cc091 100644
+--- a/setup.py
++++ b/setup.py
+@@ -31,12 +31,12 @@ def ver_equal(self, other):
+ 
+ MIN_CYTHON_STRING = '0.20'
+ MIN_CYTHON_VERSION = LooseVersion(MIN_CYTHON_STRING)
+-MAX_CYTHON_STRING = '0.21.2'
++MAX_CYTHON_STRING = '0.22'
+ MAX_CYTHON_VERSION = LooseVersion(MAX_CYTHON_STRING)
+ CYTHON_UNSUPPORTED = (
+-    LooseVersion('0.22'),
+-    LooseVersion('0.22.beta0'),
+-    LooseVersion('0.22.alpha0'),
++    # LooseVersion('0.22'),
++    # LooseVersion('0.22.beta0'),
++    # LooseVersion('0.22.alpha0'),
+ )
+ 
+ 

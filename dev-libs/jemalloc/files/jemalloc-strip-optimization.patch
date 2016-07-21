@@ -1,0 +1,25 @@
+--- a/configure.ac	2010-02-22 12:07:05.000000000 +0100
++++ b/configure.ac	2010-02-22 12:08:29.000000000 +0100
+@@ -296,21 +296,6 @@
+ fi
+ AC_SUBST([enable_debug])
+ 
+-dnl Only optimize if not debugging.
+-if test "x$enable_debug" = "x0" -a "x$no_CFLAGS" = "xyes" ; then
+-  dnl Make sure that an optimization flag was not specified in EXTRA_CFLAGS.
+-  optimize="no"
+-  echo "$EXTRA_CFLAGS" | grep "\-O" >/dev/null || optimize="yes"
+-  if test "x${optimize}" = "xyes" ; then
+-    if test "x$GCC" = "xyes" ; then
+-      JE_CFLAGS_APPEND([-O3])
+-      JE_CFLAGS_APPEND([-funroll-loops])
+-    else
+-      JE_CFLAGS_APPEND([-O])
+-    fi
+-  fi
+-fi
+-
+ dnl Do not enable statistics calculation by default.
+ AC_ARG_ENABLE([stats],
+   [AS_HELP_STRING([--enable-stats], [Enable statistics calculation/reporting])],
+

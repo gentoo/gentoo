@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>billie@gentoo.org</email>
+		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<longdescription><pkg>sys-fs/fatsort</pkg> is a utility that sorts FAT16 and FAT32 partitions. It even can
+	handle long file name entries. It reads the boot sector and sorts the
+	directory structure recursively. The main use case is to sort files on an
+	Audio player that does not implement the sorting function itself but plays
+	the files in the same order as they were copied to the disk.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">fatsort</remote-id>
+	</upstream>
+</pkgmetadata>

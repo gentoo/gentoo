@@ -1,0 +1,42 @@
+ CMake/vtkFFMPEGTestAvAlloc.cxx   |    2 +-
+ CMake/vtkFFMPEGTestURLFClose.cxx |    2 +-
+ IO/vtkFFMPEGWriter.cxx           |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMake/vtkFFMPEGTestAvAlloc.cxx b/CMake/vtkFFMPEGTestAvAlloc.cxx
+index ad691e3..1025c22 100644
+--- a/CMake/vtkFFMPEGTestAvAlloc.cxx
++++ b/CMake/vtkFFMPEGTestAvAlloc.cxx
+@@ -1,6 +1,6 @@
+ extern "C" {
+ #ifdef HAS_OLD_HEADER
+-# include <ffmpeg/avformat.h>
++# include <libavformat/avformat.h>
+ #else
+ # include <libavformat/avformat.h>
+ #endif
+diff --git a/CMake/vtkFFMPEGTestURLFClose.cxx b/CMake/vtkFFMPEGTestURLFClose.cxx
+index 0bf4314..8c1df58 100644
+--- a/CMake/vtkFFMPEGTestURLFClose.cxx
++++ b/CMake/vtkFFMPEGTestURLFClose.cxx
+@@ -1,6 +1,6 @@
+ extern "C" {
+ #ifdef HAS_OLD_HEADER
+-# include <ffmpeg/avformat.h>
++# include <libavformat/avformat.h>
+ #else
+ # include <libavformat/avformat.h>
+ #endif
+diff --git a/IO/vtkFFMPEGWriter.cxx b/IO/vtkFFMPEGWriter.cxx
+index b109c08..e056418 100644
+--- a/IO/vtkFFMPEGWriter.cxx
++++ b/IO/vtkFFMPEGWriter.cxx
+@@ -22,7 +22,7 @@
+ 
+ extern "C" {
+ #ifdef VTK_FFMPEG_HAS_OLD_HEADER
+-# include <ffmpeg/avformat.h>
++# include <libavformat/avformat.h>
+ #else
+ # include <libavformat/avformat.h>
+ #endif

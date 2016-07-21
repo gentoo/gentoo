@@ -1,0 +1,72 @@
+diff -durr GBrowse-2.39-orig/install_util/GBrowseInstall.pm GBrowse-2.39/install_util/GBrowseInstall.pm
+--- GBrowse-2.39-orig/install_util/GBrowseInstall.pm	2011-07-19 20:14:52.434608020 +0000
++++ GBrowse-2.39/install_util/GBrowseInstall.pm	2011-07-19 21:02:13.685107753 +0000
+@@ -454,33 +454,33 @@
+     $gid =~ /^(\d+)$/;
+     $gid = $1;
+     
+-    unless (chown $uid,$gid,$tmp) {
+-	$self->ownership_warning($tmp,$user);
+-    }
++#    unless (chown $uid,$gid,$tmp) {
++#	$self->ownership_warning($tmp,$user);
++#    }
+ 
+     my $htdocs_i = File::Spec->catfile($self->install_path->{htdocs},'i');
+     my $images   = File::Spec->catfile($tmp,'images');
+     my $htdocs = $self->install_path->{htdocs};
+-    chown $uid,-1,$htdocs;
++#    chown $uid,-1,$htdocs;
+     {
+ 	local $> = $uid;
+-	symlink($images,$htdocs_i);  # so symlinkifowner match works!
++#	symlink($images,$htdocs_i);  # so symlinkifowner match works!
+     }
+-    chown $>,-1,$self->install_path->{htdocs};
++#    chown $>,-1,$self->install_path->{htdocs};
+ 
+     my $persistent = $self->install_path->{'persistent'};
+     my $sessions   = File::Spec->catfile($persistent,'sessions');
+     my $userdata   = File::Spec->catfile($persistent,'userdata');
+-    mkpath([$sessions,$userdata],0711);
++#    mkpath([$sessions,$userdata],0711);
+ 
+     my $databases = $self->install_path->{'databases'};
+     
+-    unless (chown $uid,$gid,glob(File::Spec->catfile($databases,'').'*')) {
+-	$self->ownership_warning($databases,$user);
+-    }
++#    unless (chown $uid,$gid,glob(File::Spec->catfile($databases,'').'*')) {
++#	$self->ownership_warning($databases,$user);
++#    }
+ 
+-    chmod 0755,File::Spec->catfile($self->install_path->{'etc'},'init.d','gbrowse-slave');
+-    $self->fix_selinux;
++    # chmod 0755,File::Spec->catfile($self->install_path->{'etc'},'init.d','gbrowse-slave');
++    # $self->fix_selinux;
+ 
+     my $base = basename($self->install_path->{htdocs});
+ 
+@@ -489,14 +489,14 @@
+     my $metadb_script = File::Spec->catfile("bin", "gbrowse_metadb_config.pl");
+     my $perl          = $self->perl;
+     my @inc           = map{"-I$_"} split ':',$self->added_to_INC;
+-    system $perl,@inc,$metadb_script;
+-    system 'sudo','chown','-R',"$uid.$gid",$sessions,$userdata;
++#    system $perl,@inc,$metadb_script;
++#    system 'sudo','chown','-R',"$uid.$gid",$sessions,$userdata;
+ 
+-    if (Module::Build->y_n(
+-	    "It is recommended that you restart Apache. Shall I try this for you?",'y'
+-	)) {
+-	system "sudo /etc/init.d/apache2 restart";
+-    }
++#    if (Module::Build->y_n(
++#	    "It is recommended that you restart Apache. Shall I try this for you?",'y'
++#	)) {
++#	system "sudo /etc/init.d/apache2 restart";
++#    }
+     
+     print STDERR "\n***INSTALLATION COMPLETE***\n";
+     print STDERR "Load http://localhost/$base for demo and documentation.\n";
+Only in GBrowse-2.39/install_util: GBrowseInstall.pm~

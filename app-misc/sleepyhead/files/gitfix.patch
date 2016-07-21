@@ -1,0 +1,15 @@
+--- a/SleepyHeadQT.pro
++++ b/SleepyHeadQT.pro
+@@ -31,10 +31,10 @@ TEMPLATE = app
+ 
+ #exists(.git):DEFINES += GIT_BRANCH=\\\"$$system(git rev-parse --symbolic-full-name --abbrev-ref HEAD)\\\"
+ exists(.git):DEFINES += GIT_BRANCH=\\\"$$system(git rev-parse --abbrev-ref HEAD)\\\"
+-else:DEFINES += GIT_BRANCH=\\\"NOT BUILT FROM GIT SOURCE\\\"
++else:DEFINES += GIT_BRANCH=\\\"UNKNOWN\\\"
+ 
+ exists(.git):DEFINES += GIT_REVISION=\\\"$$system(git rev-parse HEAD)\\\"
+-else:DEFINES += GIT_BRANCH=\\\"UNKNOWN\\\"
++else:DEFINES += GIT_REVISION=\\\"UNKNOWN\\\"
+ 
+ SOURCES += main.cpp\
+     SleepLib/machine.cpp \

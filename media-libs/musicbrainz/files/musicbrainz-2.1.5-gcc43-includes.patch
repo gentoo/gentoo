@@ -1,0 +1,57 @@
+diff -Naur libmusicbrainz-2.1.4-orig/lib/c_wrapper.cpp libmusicbrainz-2.1.4/lib/c_wrapper.cpp
+--- libmusicbrainz-2.1.4-orig/lib/c_wrapper.cpp	2003-10-16 16:21:10.000000000 -0600
++++ libmusicbrainz-2.1.4/lib/c_wrapper.cpp	2007-12-16 09:45:21.000000000 -0600
+@@ -24,6 +24,7 @@
+ #include "musicbrainz.h"
+ #include "trm.h"
+ #include "mb_c.h"
++#include <cstring>
+ 
+ extern "C"
+ {
+diff -Naur libmusicbrainz-2.1.4-orig/lib/comhttpsocket.cpp libmusicbrainz-2.1.4/lib/comhttpsocket.cpp
+--- libmusicbrainz-2.1.4-orig/lib/comhttpsocket.cpp	2006-05-11 12:46:54.000000000 -0600
++++ libmusicbrainz-2.1.4/lib/comhttpsocket.cpp	2007-12-16 09:46:28.000000000 -0600
+@@ -20,6 +20,7 @@
+ #endif
+ #include <stdlib.h>
+ #include <assert.h>
++#include <cstring>
+ 
+ const char* g_strCOMVer = "libmusicbrainz/"VERSION;
+ 
+diff -Naur libmusicbrainz-2.1.4-orig/lib/comsocket.cpp libmusicbrainz-2.1.4/lib/comsocket.cpp
+--- libmusicbrainz-2.1.4-orig/lib/comsocket.cpp	2006-05-11 12:46:54.000000000 -0600
++++ libmusicbrainz-2.1.4/lib/comsocket.cpp	2007-12-16 09:46:08.000000000 -0600
+@@ -37,6 +37,7 @@
+ #include <netinet/tcp.h>
+ #include <errno.h>
+ #include <stdio.h>
++#include <cstring>
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+diff -Naur libmusicbrainz-2.1.4-orig/lib/http.cpp libmusicbrainz-2.1.4/lib/http.cpp
+--- libmusicbrainz-2.1.4-orig/lib/http.cpp	2007-12-16 09:52:48.000000000 -0600
++++ libmusicbrainz-2.1.4/lib/http.cpp	2007-12-16 09:52:36.000000000 -0600
+@@ -31,6 +31,8 @@
+ #endif
+ #include <fcntl.h>    
+ #include <errno.h>    
++#include <cstring>
++#include <cstdlib>
+ 
+ #ifdef WIN32
+ #include <winsock.h>
+diff -Naur libmusicbrainz-2.1.4-orig/lib/sigclient.cpp libmusicbrainz-2.1.4/lib/sigclient.cpp
+--- libmusicbrainz-2.1.4-orig/lib/sigclient.cpp	2006-05-11 12:46:54.000000000 -0600
++++ libmusicbrainz-2.1.4/lib/sigclient.cpp	2007-12-16 09:54:48.000000000 -0600
+@@ -33,6 +33,8 @@
+ #pragma warning(disable:4786)
+ #endif
+ 
++#include <cstring>
++
+ #include "sigclient.h"
+ #include "comhttpsocket.h"
+ 

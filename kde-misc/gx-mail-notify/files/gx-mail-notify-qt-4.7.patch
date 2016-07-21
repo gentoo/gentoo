@@ -1,0 +1,10 @@
+--- a/mail_checker.cpp  2010-10-02 17:02:29.833334239 +0200
++++ b/mail_checker.cpp  2010-05-05 22:54:26.000000000 +0200
+@@ -19,7 +19,7 @@
+ #include <KDebug>
+ 
+ MailChecker::MailChecker(Account * account) : QObject(),
+-	actual_action(CLOSE_CONNECTION), certificate_details_dialog(0), time_to_check(0), check_messages(-1), check_error(false)
++	actual_action(CLOSE_CONNECTION), certificate_details_dialog(0), time_to_check(0), check_messages(-1)
+ {
+ 	this->account = account;

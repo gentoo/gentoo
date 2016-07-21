@@ -1,0 +1,19 @@
+Description: Fix FTBFS errors with newer zlib.
+Author: Moritz Muehlenhoff <muehlenhoff@univention.de>
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=663053
+Forwarded: no
+---
+ src/tX_midiin.cc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/tX_midiin.cc
++++ b/src/tX_midiin.cc
+@@ -447,7 +447,7 @@ gboolean tX_midiin::midi_learn_destroy(G
+ 
+ void tX_midiin::store_connections(FILE *rc, char *indent) 
+ {
+-	gzFile *rz=NULL;
++	gzFile rz=NULL;
+ 	
+ 	tX_store("%s<midi_connections>\n", indent);
+ 

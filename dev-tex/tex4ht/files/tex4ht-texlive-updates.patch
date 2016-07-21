@@ -1,0 +1,428 @@
+diff -ur texmf/tex/generic/tex4ht/biblatex.4ht texmf-dist/tex/generic/tex4ht/biblatex.4ht
+--- texmf/tex/generic/tex4ht/biblatex.4ht	2009-06-11 11:20:16.000000000 -0300
++++ texmf-dist/tex/generic/tex4ht/biblatex.4ht	2011-09-18 20:09:39.000000000 -0300
+@@ -1,6 +1,7 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-% biblatex.4ht                          2009-05-21-09:32 %
++% biblatex.4ht                          2011-09-18-16:07 %
+ % Copyright (C) 2007--2009       Eitan M. Gurari         %
++%               2009--2011       TeX Users Group         %
+ %                                                        %
+ % This work may be distributed and/or modified under the %
+ % conditions of the LaTeX Project Public License, either %
+@@ -14,24 +15,39 @@
+ % This work has the LPPL maintenance status "maintained".%
+ %                                                        %
+ % This Current Maintainer of this work                   %
+-% is Eitan M. Gurari.                                    %
++% is the TeX4ht Project <tex4ht@tug.org>.                %
+ %                                                        %
+ % If you modify this program your changing its signature %
+ % with a directive of the following form will be         %
+ % appreciated.                                           %
+ %            \message{signature}                         %
+ %                                                        %
+-%                             gurari@cse.ohio-state.edu  %
+-%                 http://www.cse.ohio-state.edu/~gurari  %
++%                                        tex4ht@tug.org  %
++%                             http://www.tug.org/tex4ht  %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-\immediate\write-1{version 2009-05-21-09:32}
+-
++\immediate\write-1{version 2011-09-18-16:07}
++%
++% This work may be distributed and/or modified under the
++% conditions of the LaTeX Project Public License, either
++% version 1.3c of this license or (at your option) any
++% later version. The latest version of this license is in
++%   http://www.latex-project.org/lppl.txt
++% and version 1.3c or later is part of all distributions
++% of LaTeX version 2005/12/01 or later.
++%
++% This work has the LPPL maintenance status "maintained".
++%
++% The Current Maintainer of this work
++% is the TeX4ht Project <http://tug.org/tex4ht>.
++%
++% If you modify this program, changing the
++% version identification would be appreciated.
+    \ifx \blx@startbib\:UnDef
+       \pend:def\blx@shorthands{%
+    \pend:def\blx@bibinit{%
+        \HAssign\shorthands:cnt=0
+        \NewConfigure{printfield-shorthand}{2}%
+-       \Configure{printfield-shorthand}
++       \Configure{printfield-shorthand}%
+          {\gHAdvance\shorthands:cnt by 1\relax
+           \ifnum \shorthands:cnt=1 \a:printshorthands
+           \else                    \c:printshorthands \fi
+@@ -50,10 +66,10 @@
+   \@nameuse {blx@rerun}}
+ \pend:def\blx@bibliography{%
+   \pend:def\blx@bibinit{%
+-     \ConfigureList{thebibliography}
+-        {\a:thebibliography}
+-        {\b:thebibliography}
+-        {\c:thebibliography}
++     \ConfigureList{thebibliography}%
++        {\a:thebibliography}%
++        {\b:thebibliography}%
++        {\c:thebibliography}%
+         {\d:thebibliography}%
+      \csname onthebibliography:list\endcsname
+   }%
+@@ -75,8 +91,8 @@
+       \NewConfigure{printfield-#2}{2}%
+       \a:printfield{printfield-#2}%
+    \fi
+-   \Configure{blx@unit}
+-       {\csname a:printfield-#2\endcsname}
++   \Configure{blx@unit}%
++       {\csname a:printfield-#2\endcsname}%
+        {\csname b:printfield-#2\endcsname}%
+    \csname o:\string\blx@printfield:\endcsname[#1]{#2}%
+ }
+@@ -92,8 +108,8 @@
+       \NewConfigure{bibstring-#2}{2}%
+       \a:printfield{bibstring-#2}%
+    \fi
+-   \Configure{blx@unit}
+-       {\csname a:bibstring-#2\endcsname}
++   \Configure{blx@unit}%
++       {\csname a:bibstring-#2\endcsname}%
+        {\csname b:bibstring-#2\endcsname}%
+    \csname o:\string\blx@bibstring:\endcsname[#1]{#2}%
+ }
+@@ -103,8 +119,8 @@
+       \NewConfigure{bibcpstring-#2}{2}%
+       \a:printfield{bibcpstring-#2}%
+    \fi
+-   \Configure{blx@unit}
+-       {\csname a:bibcpstring-#2\endcsname}
++   \Configure{blx@unit}%
++       {\csname a:bibcpstring-#2\endcsname}%
+        {\csname b:bibcpstring-#2\endcsname}%
+    \csname o:\string\blx@bibcpstring:\endcsname[#1]{#2}%
+ }
+@@ -114,8 +130,8 @@
+       \NewConfigure{biblcstring-#2}{2}%
+       \a:printfield{biblcstring-#2}%
+    \fi
+-   \Configure{blx@unit}
+-       {\csname a:biblcstring-#2\endcsname}
++   \Configure{blx@unit}%
++       {\csname a:biblcstring-#2\endcsname}%
+        {\csname b:biblcstring-#2\endcsname}%
+    \csname o:\string\blx@biblcstring:\endcsname[#1]{#2}%
+ }
+@@ -125,13 +141,13 @@
+       \NewConfigure{bibucstring-#2}{2}%
+       \a:printfield{bibucstring-#2}%
+    \fi
+-   \Configure{blx@unit}
+-       {\csname a:bibucstring-#2\endcsname}
++   \Configure{blx@unit}%
++       {\csname a:bibucstring-#2\endcsname}%
+        {\csname b:bibucstring-#2\endcsname}%
+    \csname o:\string\blx@bibucstring:\endcsname[#1]{#2}%
+ }
+ \expandafter\HLet\csname\string\blx@bibucstring\endcsname\:tempc
+-\NewConfigure{biblatex-style}[2]{
++\NewConfigure{biblatex-style}[2]{%
+    \def\:temp{#1}%
+    \ifx \:temp\blx@cbxfile
+       #2%
+@@ -149,10 +165,19 @@
+   \blx:item[#1]%
+   \ifhmode \spacefactor\blx@sf@par\fi
+ }
++\newskip\blx@unitmark
++\blx@unitmark=10pt plus 1pt minus 1pt
++\let\abx@aux@page\@gobbletwo
++\AtEndDocument{%
++  \def\abx@aux@page#1#2{\blx@addpagesum{#1}{#2}}%
++  \def\abx@aux@fnpage#1#2{\blx@addpagesum{#1}{#2}}}
++%
++\let\blx@resetpuncthook\@empty
++\let\blx@csq@ifkernmark\@empty
+ \def\blx@begunit{%
+   \toggletrue{blx@tempa}%
+-  \iftoggle{blx@insert}
+-    {\iftoggle{blx@unit}
++  \iftoggle{blx@insert}%
++    {\iftoggle{blx@unit}%
+        {\begingroup
+           \let\blx@begunit\@empty
+           \let\blx@endunit\@empty
+@@ -161,25 +186,25 @@
+         \global\togglefalse{blx@unit}%
+         \togglefalse{blx@tempa}}
+        {\blx@postpunct}%
+-     \iftoggle{blx@block}
++     \iftoggle{blx@block}%
+        {\begingroup
+           \let\blx@begunit\@empty
+           \let\blx@endunit\@empty
+           \newblockpunct
+         \endgroup
+         \global\togglefalse{blx@block}%
+-        \togglefalse{blx@tempa}}
+-       {}}
++        \togglefalse{blx@tempa}}%
++       {}}%
+     {}%
+   \blx@postpunct
+   \blx@resetpuncthook
+-  \iftoggle{blx@tempa}
+-    {}
++  \iftoggle{blx@tempa}%
++    {}%
+     {\global\togglefalse{blx@insert}}%
+   \csname a:blx@unit\endcsname
+   \blx@leavevmode
+   \blx@csq@ifkernmark
+-    {}
++    {}%
+     {\penalty\@M
+      \hskip-\blx@unitmark\relax
+      \hskip\blx@unitmark\relax}%
+@@ -204,14 +229,15 @@
+       
+    \fi
+    \NewConfigure{thebibliography}{4}
+-\append:def\blx@bibinit{\a:bibinit}
+-\NewConfigure{bibinit}{1}
++\append:def\blx@bibinit{\a:bibinit}%
++\NewConfigure{bibinit}{1}%
+ 
+    \let\blx@anchors\@empty
++\let\bib@field@entrykey\@empty
+ \protected\def\blx@anchor{%
+   \xifinlist{X\the\c@refsection -%@
+-\bib@field@entrykey}{\blx@anchors}
+-    {}
++\bib@field@entrykey}{\blx@anchors}%
++    {}%
+     {\listxadd\blx@anchors{X\the\c@refsection -%@
+ \bib@field@entrykey}%
+      \hyper:natanchorstart{X\the\c@refsection -%@
+@@ -219,22 +245,22 @@
+      \hyper:natanchorend}}
+ \protected\def\blx@bibhyperref{%
+    \@ifnextchar[%]
+-     {\blx@bibhyperref@i}
++     {\blx@bibhyperref@i}%
+      {\blx@bibhyperref@i[\bib@field@entrykey]}}%
+ \long\def\blx@bibhyperref@i[#1]#2{%
+    \hyper:natlinkstart{X\the\c@refsection -%@
+ #1}%
+-   #2\hyper:natlinkend}
++   #2\hyper:natlinkend}%
+ \protected\long\def\blx@bibhyperlink#1#2{%
+    \hyper:natlinkstart{X\the\c@refsection --%:
+ #1}%
+-   #2\hyper:natlinkend}
++   #2\hyper:natlinkend}%
+ \protected\long\def\blx@bibhypertarget#1#2{%
+    \@bsphack
+    \hyper:natanchorstart{X\the\c@refsection --%:
+ #1}%
+    \@esphack
+-   #2\hyper:natanchorend}
++   #2\hyper:natanchorend}%
+ \let\blx@ifhyperref\@firstoftwo
+ \def\hyper:natanchorstart#1{\Link{}{#1}\EndLink}
+ \def\hyper:natanchorend{}
+@@ -244,9 +270,9 @@
+    \let\:temp\do
+   \def\do#1{%
+     \patchcmd#1%
+-      {\color@begingroup}
+-      {\color@begingroup\toggletrue{blx@footnote}}
+-      {\togglefalse{blx@tempa}\listbreak}
++      {\color@begingroup}%
++      {\color@begingroup\toggletrue{blx@footnote}}%
++      {\togglefalse{blx@tempa}\listbreak}%
+       {}}%
+   \docsvlist{%
+     \@footnotetext,%          latex
+diff -ur texmf/tex/generic/tex4ht/hyperref.4ht texmf-dist/tex/generic/tex4ht/hyperref.4ht
+--- texmf/tex/generic/tex4ht/hyperref.4ht	2009-06-11 11:20:21.000000000 -0300
++++ texmf-dist/tex/generic/tex4ht/hyperref.4ht	2011-02-02 13:45:16.000000000 -0200
+@@ -1,6 +1,7 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-% hyperref.4ht                          2009-05-21-09:32 %
++% hyperref.4ht                          2011-01-30-16:01 %
+ % Copyright (C) 1999--2009       Eitan M. Gurari         %
++%               2009--2011       TeX Users Group         %
+ %                                                        %
+ % This work may be distributed and/or modified under the %
+ % conditions of the LaTeX Project Public License, either %
+@@ -14,17 +15,17 @@
+ % This work has the LPPL maintenance status "maintained".%
+ %                                                        %
+ % This Current Maintainer of this work                   %
+-% is Eitan M. Gurari.                                    %
++% is the TeX4ht Project <tex4ht@tug.org>.                %
+ %                                                        %
+ % If you modify this program your changing its signature %
+ % with a directive of the following form will be         %
+ % appreciated.                                           %
+ %            \message{signature}                         %
+ %                                                        %
+-%                             gurari@cse.ohio-state.edu  %
+-%                 http://www.cse.ohio-state.edu/~gurari  %
++%                                        tex4ht@tug.org  %
++%                             http://www.tug.org/tex4ht  %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-\immediate\write-1{version 2009-05-21-09:32}
++\immediate\write-1{version 2011-01-30-16:01}
+ 
+ \csname end:hyperref\endcsname
+ \@ifpackageloaded{nameref}{}
+@@ -297,6 +298,26 @@
+        \expandafter\:tempa
+    \fi}
+ 
++\def\Hy@MakeCurrentHref#1{%
++  \edef\HyperLocalCurrentHref{#1}%
++  \@onelevel@sanitize\HyperLocalCurrentHref
++  \global\let\HyperGlobalCurrentHref\HyperLocalCurrentHref
++  \let\HyperLocalCurrentHref\HyperGlobalCurrentHref
++  \ifHy@localanchorname
++    \let\@currentHref\HyperLocalCurrentHref
++  \else
++    \global\let\@currentHref\HyperGlobalCurrentHref
++  \fi
++}
++
++\let\Hy@SectionAnchorHref\@gobble
++\newlength\Hy@SectionHShift
++
++\def\Hy@MakeCurrentHrefAuto#1{%
++  \Hy@GlobalStepCount\Hy@linkcounter
++  \Hy@MakeCurrentHref{#1.\the\Hy@linkcounter}%
++}
++
+ \def\hyper@makecurrent#1{%
+   \begingroup
+     \edef\Hy@param{#1}%
+diff -ur texmf/tex/generic/tex4ht/nameref.4ht texmf-dist/tex/generic/tex4ht/nameref.4ht
+--- texmf/tex/generic/tex4ht/nameref.4ht	2009-06-11 11:20:24.000000000 -0300
++++ texmf-dist/tex/generic/tex4ht/nameref.4ht	2010-09-26 19:41:25.000000000 -0300
+@@ -1,6 +1,6 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-% nameref.4ht                           2009-05-21-09:32 %
+-% Copyright (C) 2005--2009       Eitan M. Gurari         %
++% nameref.4ht                           2010-09-04-21:02 %
++% Copyright (C) 2005--2010       Eitan M. Gurari         %
+ %                                                        %
+ % This work may be distributed and/or modified under the %
+ % conditions of the LaTeX Project Public License, either %
+@@ -14,24 +14,27 @@
+ % This work has the LPPL maintenance status "maintained".%
+ %                                                        %
+ % This Current Maintainer of this work                   %
+-% is Eitan M. Gurari.                                    %
++% is the TeX4ht Project <tex4ht@tug.org>.                %
+ %                                                        %
+ % If you modify this program your changing its signature %
+ % with a directive of the following form will be         %
+ % appreciated.                                           %
+ %            \message{signature}                         %
+ %                                                        %
+-%                             gurari@cse.ohio-state.edu  %
+-%                 http://www.cse.ohio-state.edu/~gurari  %
++%                                        tex4ht@tug.org  %
++%                             http://www.tug.org/tex4ht  %
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-\immediate\write-1{version 2009-05-21-09:32}
++\immediate\write-1{version 2010-09-04-21:02}
+ 
+    \let\ltx@label\label
+ \def\prf:label{{\ifx \NR:Title\:UnDef \else \NR:Title\fi}%
+                {\ifx \NR:Type\:UnDef \else \NR:Type .1\fi}{}}%
+ \let\NR:StartSec\:StartSec
++\let\NR:no@sect\no@sect
++\def\no@sect#1#2#3#4#5#6[#7]#8{\gdef\NR:Title{\a:newlabel{#7}}%
++     \NR:no@sect{#1}{#2}{#3}{#4}{#5}{#6}[#7]{#8}}
+ \def\:StartSec#1#2#3{%
+-   \gdef\NR:Title{\a:newlabel{#3}}%
++%   \gdef\NR:Title{\a:newlabel{#3}}%
+    \gdef\NR:Type{#1}%
+    \NR:StartSec{#1}{#2}{#3}%
+    \gdef\@currentlabelname{#1}%
+diff -ur texmf/tex/generic/tex4ht/unicode.4ht texmf-dist/tex/generic/tex4ht/unicode.4ht
+--- texmf/tex/generic/tex4ht/unicode.4ht	2009-06-11 11:20:28.000000000 -0300
++++ texmf-dist/tex/generic/tex4ht/unicode.4ht	2011-09-18 20:09:39.000000000 -0300
+@@ -1,30 +1,22 @@
+-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-% unicode.4ht                           2009-02-23-20:45 %
+-% Copyright (C) 1998--2009       Eitan M. Gurari         %
+-%                                                        %
+-% This work may be distributed and/or modified under the %
+-% conditions of the LaTeX Project Public License, either %
+-% version 1.3 of this license or (at your option) any    %
+-% later version. The latest version of this license is   %
+-% in                                                     %
+-%   http://www.latex-project.org/lppl.txt                %
+-% and version 1.3 or later is part of all distributions  %
+-% of LaTeX version 2003/12/01 or later.                  %
+-%                                                        %
+-% This work has the LPPL maintenance status "maintained".%
+-%                                                        %
+-% This Current Maintainer of this work                   %
+-% is Eitan M. Gurari.                                    %
+-%                                                        %
+-% If you modify this program your changing its signature %
+-% with a directive of the following form will be         %
+-% appreciated.                                           %
+-%            \message{signature}                         %
+-%                                                        %
+-%                             gurari@cse.ohio-state.edu  %
+-%                 http://www.cse.ohio-state.edu/~gurari  %
+-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-\immediate\write-1{version 2009-02-23-20:45}
++% unicode.4ht (2010-12-18-17:40), generated from tex4ht-unicode.tex
++% Copyright (C) 1998-2009 Eitan M. Gurari
++%
++% This work may be distributed and/or modified under the
++% conditions of the LaTeX Project Public License, either
++% version 1.3c of this license or (at your option) any
++% later version. The latest version of this license is in
++%   http://www.latex-project.org/lppl.txt
++% and version 1.3c or later is part of all distributions
++% of LaTeX version 2005/12/01 or later.
++%
++% This work has the LPPL maintenance status "maintained".
++%
++% The Current Maintainer of this work
++% is the TeX4ht Project <http://tug.org/tex4ht>.
++%
++% If you modify this program, changing the
++% version identification would be appreciated.
++\immediate\write-1{version 2010-12-18-17:40}
+ 
+ \exit:ifnot{8859-6,% 
+ SIunits,% 
+@@ -1282,6 +1274,11 @@
+ 
+ 
+ 
++
++
++
++
++
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 \ConfigureHinput{eurosym}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@@ -1678,7 +1675,7 @@
+    {\a:accents{}{#1}}     {\b:accents{udot}{#1}{#2}}
+ \expand:after{\expand:after{\Configure{accent}}%
+    \csname OT1\string\H\endcsname}%
+-   \csname OT1\string\H\endcsname{o{0151}O{0151}U{0170}u{0171}%
++   \csname OT1\string\H\endcsname{o{0151}O{0150}U{0170}u{0171}%
+ {}{}}
+    {\a:accents{}{#1}}  {\b:accents{Huml}{#1}{#2}}
+ \Configure{accent}\dot\dot{C{010A}c{010B}E{0116}e{0117}G{0120}g{0121}%

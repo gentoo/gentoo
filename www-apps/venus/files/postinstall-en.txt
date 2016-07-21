@@ -1,0 +1,10 @@
+INSTALLATION
+
+Installation instructions can be found at:
+
+http://intertwingly.net/code/venus/docs/
+/usr/share/doc/\${PF}/html
+
+Example configuration files can be found at:
+
+${VHOST_ROOT}/conf

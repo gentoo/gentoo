@@ -1,0 +1,13 @@
+Index: traverso-0.49.1/CMakeLists.txt
+===================================================================
+--- traverso-0.49.1.orig/CMakeLists.txt
++++ traverso-0.49.1/CMakeLists.txt
+@@ -198,7 +198,7 @@ IF(WANT_LV2)
+ # 			MESSAGE(FATAL_ERROR "lv2 support requested, but slv2 development headers could not be found!\nPlease install the slv2 development package (Usually called libslv2-dev), remove CMakeCache.txt and run cmake again")
+ # 		ENDIF(NOT HAVE_SLV2_H)
+ 		
+-		PKG_CHECK_MODULES(SLV2  libslv2>=${MINIMAL_SLV2_VERSION})
++		PKG_CHECK_MODULES(SLV2  slv2>=${MINIMAL_SLV2_VERSION})
+ 		IF (SLV2_FOUND)
+ 			MESSAGE("-- slv2 Library Found OK")
+ 			SET(HAVE_SYSTEM_SLV2 TRUE)

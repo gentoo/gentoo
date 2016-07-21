@@ -1,0 +1,12 @@
+diff -ur undelete-0.0.6.orig/undelete.c undelete-0.0.6/undelete.c
+--- undelete-0.0.6.orig/undelete.c	2006-03-15 23:12:06.000000000 +0200
++++ undelete-0.0.6/undelete.c	2009-08-09 22:08:26.000000000 +0300
+@@ -934,7 +934,7 @@
+             if (verbose.u)
+               isyslog("%s: undelete recording (%s)", plugin_name, recording->FileName());
+             cString NewName = recording->FileName();
+-            char *ext = strrchr(NewName, '.');
++            char *ext = const_cast<char*> (strrchr(NewName, '.'));
+             if (!strcmp(ext, DELEXT))
+             {
+               strncpy(ext, RECEXT, strlen(ext));

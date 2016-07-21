@@ -1,0 +1,37 @@
+From 6e9a8c5ae2883ca21d117ac672dd8a55b3429dc1 Mon Sep 17 00:00:00 2001
+From: Chris Wilson <chris@chris-wilson.co.uk>
+Date: Thu, 14 Nov 2013 16:14:09 +0000
+Subject: sna: Add the missing braces around the conditional block
+
+Fixes regression from
+commit f3225fcb38686f3b9701725bf3a11ecf1c100c3f
+Author: Chris Wilson <chris@chris-wilson.co.uk>
+Date:   Tue Nov 5 08:38:22 2013 +0000
+
+    sna: Be move conservative with tiling sizes for older fenced gen
+
+Reported-by: Jay Little <jaylittle@jaylittle.com>
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=71605
+Signed-off-by: Chris Wilson <chris@chris-wilson.co.uk>
+---
+diff --git a/src/sna/sna_blt.c b/src/sna/sna_blt.c
+index 693fedc..63153b7 100644
+--- a/src/sna/sna_blt.c
++++ b/src/sna/sna_blt.c
+@@ -3285,12 +3285,13 @@ bool sna_blt_copy_boxes(struct sna *sna, uint8_t alu,
+ 	    !kgem_check_reloc(kgem, 2) ||
+ 	    !kgem_check_many_bo_fenced(kgem, dst_bo, src_bo, NULL)) {
+ 		kgem_submit(kgem);
+-		if (!kgem_check_many_bo_fenced(kgem, dst_bo, src_bo, NULL))
++		if (!kgem_check_many_bo_fenced(kgem, dst_bo, src_bo, NULL)) {
+ 			DBG(("%s: not enough room in aperture, fallback to tiling copy\n", __FUNCTION__));
+ 			return sna_tiling_blt_copy_boxes(sna, alu,
+ 							 src_bo, src_dx, src_dy,
+ 							 dst_bo, dst_dx, dst_dy,
+ 							 bpp, box, nbox);
++		}
+ 		_kgem_set_mode(kgem, KGEM_BLT);
+ 	}
+ 
+--
+cgit v0.9.0.2-2-gbebe

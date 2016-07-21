@@ -1,0 +1,33 @@
+commit 509c48f9040172e555e2243234bc2f8a853d80c7
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu Dec 31 20:39:40 2015 +0100
+
+    Remove unused dependency
+    
+    REVIEW: 126586
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f7f7b76..9c1f6c1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core Widgets)
+ 
+ find_package (KF5 5.15 REQUIRED COMPONENTS
+-    XmlGui WidgetsAddons CoreAddons ConfigWidgets I18n ItemViews IconThemes Service Crash DocTools
++    XmlGui WidgetsAddons CoreAddons ConfigWidgets I18n ItemViews IconThemes Crash DocTools
+ )
+ 
+ include(KDEInstallDirs)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8307954..a07ba4e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -42,7 +42,6 @@ target_link_libraries(kgeography KF5::XmlGui
+                                  KF5::I18n
+                                  KF5::ItemViews
+                                  KF5::IconThemes
+-                                 KF5::Service
+ )
+ install(TARGETS kgeography EXPORT KGeography ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+ 

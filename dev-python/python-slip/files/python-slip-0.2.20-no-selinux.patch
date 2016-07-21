@@ -1,0 +1,93 @@
+From 13474db085f5ae550248d93ccf0f92b987f2244b Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 18 Jul 2012 20:07:01 -0400
+Subject: [PATCH] Disable selinux
+
+---
+ setup.py.in        |    2 +-
+ slip/util/files.py |   28 ++++++++++++++--------------
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/setup.py.in b/setup.py.in
+index 554dc40..f3d9d55 100644
+--- a/setup.py.in
++++ b/setup.py.in
+@@ -6,7 +6,7 @@ from distutils.core import setup
+ setup(name="slip", version="@VERSION@",
+         py_modules=["slip.__init__", "slip.util.__init__",
+             "slip.util.hookable", "slip.util.files"],
+-        requires=["selinux"])
++        requires=[ ])
+ 
+ setup(name="slip.dbus", version="@VERSION@",
+         py_modules=["slip.dbus.__init__", "slip.dbus.bus",
+diff --git a/slip/util/files.py b/slip/util/files.py
+index 4e98238..141aa86 100644
+--- a/slip/util/files.py
++++ b/slip/util/files.py
+@@ -24,7 +24,7 @@ __all__ = ["issamefile", "linkfile", "copyfile", "linkorcopyfile",
+            "overwrite_safely"]
+ 
+ import os
+-import selinux
++# import selinux
+ import shutil
+ import tempfile
+ import errno
+@@ -135,8 +135,8 @@ def copyfile(srcpath, dstpath, copy_mode_from_dst=True, run_restorecon=True):
+ 
+     os.rename(dsttmpfile.name, dstpath)
+ 
+-    if run_restorecon and selinux.is_selinux_enabled() > 0:
+-        selinux.restorecon(dstpath)
++#    if run_restorecon and selinux.is_selinux_enabled() > 0:
++#        selinux.restorecon(dstpath)
+ 
+ 
+ def linkorcopyfile(srcpath, dstpath, copy_mode_from_dst=True,
+@@ -176,8 +176,8 @@ def overwrite_safely(path, content, preserve_mode=True, preserve_context=True):
+ 
+     exists = os.path.exists(path)
+ 
+-    if preserve_context and selinux.is_selinux_enabled() <= 0:
+-        preserve_context = False
++#    if preserve_context and selinux.is_selinux_enabled() <= 0:
++#        preserve_context = False
+ 
+     try:
+         fd, tmpname = tempfile.mkstemp(prefix=base + os.path.extsep,
+@@ -186,10 +186,10 @@ def overwrite_safely(path, content, preserve_mode=True, preserve_context=True):
+         if exists and preserve_mode:
+             shutil.copymode(path, tmpname)
+ 
+-        if exists and preserve_context:
+-            ret, ctx = selinux.getfilecon(path)
+-            if ret < 0:
+-                raise RuntimeError("getfilecon(%r) failed" % path)
++#        if exists and preserve_context:
++#            ret, ctx = selinux.getfilecon(path)
++#            if ret < 0:
++#                raise RuntimeError("getfilecon(%r) failed" % path)
+ 
+         f = os.fdopen(fd, "w")
+         fd = None
+@@ -201,11 +201,11 @@ def overwrite_safely(path, content, preserve_mode=True, preserve_context=True):
+ 
+         os.rename(tmpname, path)
+ 
+-        if preserve_context:
+-            if exists:
+-                selinux.setfilecon(path, ctx)
+-            else:
+-                selinux.restorecon(path)
++#        if preserve_context:
++#            if exists:
++#                selinux.setfilecon(path, ctx)
++#            else:
++#                selinux.restorecon(path)
+ 
+     finally:
+         if f:
+-- 
+1.7.8.6
+

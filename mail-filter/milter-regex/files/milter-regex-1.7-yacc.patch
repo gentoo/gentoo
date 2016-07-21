@@ -1,0 +1,12 @@
+diff -Nru milter-regex-1.7.orig/Makefile.linux milter-regex-1.7/Makefile.linux
+--- milter-regex-1.7.orig/Makefile.linux	2008-12-11 20:54:05.000000000 +0000
++++ milter-regex-1.7/Makefile.linux	2008-12-11 20:54:22.000000000 +0000
+@@ -26,7 +26,7 @@
+ 	gcc $(CFLAGS) -c y.tab.c
+ 
+ y.tab.c: parse.y
+-	yacc -d -y parse.y
++	yacc -d parse.y
+ 
+ milter-regex.cat8: milter-regex.8
+ 	nroff -Tascii -mandoc milter-regex.8 > milter-regex.cat8

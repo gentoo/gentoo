@@ -1,0 +1,10 @@
+# /etc/conf.d/ircd: configuration for /etc/init.d/ircd
+
+# User account to run ircd as.
+
+#IRCD_USER="ircd"
+
+# Put any additional options for ircd here.
+# See ircd(8) for more information.
+
+#IRCD_OPTS=""

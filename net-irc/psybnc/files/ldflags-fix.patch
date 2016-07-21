@@ -1,0 +1,12 @@
+diff -aurp a/tools/autoconf.c b/tools/autoconf.c
+--- a/tools/autoconf.c	2010-10-10 20:25:29.295001235 +0000
++++ b/tools/autoconf.c	2010-10-10 20:26:02.738999569 +0000
+@@ -449,7 +449,7 @@ int main()
+     fprintf(makefile,"TARGET	= psybnc\n");
+     fprintf(makefile,"\n");
+     fprintf(makefile,"all:	$(OBJS)\n");
+-    fprintf(makefile,"	$(CC) -o $(TARGET) $(CFLAGS) $(OBJS) $(LIBS)\n");
++    fprintf(makefile,"	$(CC) -o $(TARGET) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS)\n");
+     fprintf(makefile,"	@strip $(TARGET)\n");
+     if(ssl==0)
+     {

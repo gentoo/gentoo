@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>angelos@gentoo.org</email>
+    <name>Christoph Mende</name>
+  </maintainer>
+  <use>
+    <flag name="masquerade">Enable support for masqueraded/NAT connections</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">ojnk</remote-id>
+  </upstream>
+</pkgmetadata>

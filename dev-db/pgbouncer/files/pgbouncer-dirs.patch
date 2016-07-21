@@ -1,0 +1,26 @@
+diff -Naruw a/etc/pgbouncer.ini b/etc/pgbouncer.ini
+--- a/etc/pgbouncer.ini	2012-06-10 19:57:01.000000000 +0000
++++ b/etc/pgbouncer.ini	2013-07-17 02:25:59.598888628 +0000
+@@ -29,7 +29,7 @@
+ ;;;
+ 
+ logfile = /var/log/pgbouncer/pgbouncer.log
+-pidfile = /var/run/pgbouncer/pgbouncer.pid
++pidfile = /run/pgbouncer/pgbouncer.pid
+ 
+ ;;;
+ ;;; Where to wait for clients
+@@ -40,10 +40,9 @@
+ listen_port = 6432
+ 
+ ; unix socket is also used for -R.
+-; On debian it should be /var/run/postgresql
+-;unix_socket_dir = /tmp
+-;unix_socket_mode = 0777
+-;unix_socket_group =
++unix_socket_dir = /run/postgresql
++unix_socket_mode = 0777
++unix_socket_group = postgres
+ 
+ ;;;
+ ;;; Authentication settings

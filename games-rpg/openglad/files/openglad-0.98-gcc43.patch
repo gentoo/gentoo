@@ -1,0 +1,11 @@
+--- src/parser.cpp
++++ src/parser.cpp
+@@ -23,6 +23,8 @@
+ #include <iostream>
+ #include <fstream>
+ #include <string>
++#include <cstring>
++#include <cstdlib>
+ #include "parser.h"
+ 
+ using namespace std;

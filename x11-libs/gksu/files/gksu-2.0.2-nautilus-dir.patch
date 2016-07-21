@@ -1,0 +1,58 @@
+From d7ee2b46dad2070982b035a3136ccbb5787e9ed4 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 7 Apr 2012 19:39:03 -0400
+Subject: [PATCH] Fix nautilus extensions directory for nautilus-3
+
+The gksu nautilus extension works with both nautilus-2 and nautilus-3,
+so we should not assume that the extension is always installed in
+/usr/lib/nautilus/extensions-2.0
+
+https://savannah.nongnu.org/bugs/index.php?36129
+---
+ configure.ac              |   14 +++++++++++++-
+ nautilus-gksu/Makefile.am |    2 +-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 21d33bb..d65c586 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -64,9 +64,21 @@ AM_CONDITIONAL(GTK_DOC_USE_LIBTOOL, test x$use_libtool = xyes)
+ 
+ AC_ARG_ENABLE(nautilus-extension, [  --enable-nautilus-extension  Build the nautilus extensions module [default=yes]], enable_nautilus_extension="$enableval", enable_nautilus_extension=yes)
+ AM_CONDITIONAL(ENABLE_NAUTILUS_EXTENSION, test x$enable_nautilus_extension = xyes)
++AC_ARG_WITH(nautilus-extensions-dir,
++  AS_HELP_STRING([--with-nautilus-extension-dir=DIR],
++    [Directory where nautilus extensions have to be installed (usually /usr/lib/nautilus/extensions-2.0 or -3.0)]))
+ 
+ if test x$enable_nautilus_extension = xyes; then
+-   PKG_CHECK_MODULES(NAUTILUS, [libgksu2 >= 2.0.0, libnautilus-extension])
++  PKG_CHECK_MODULES(NAUTILUS, [libgksu2 >= 2.0.0, libnautilus-extension])
++  if test "x$with_nautilus_extension_dir" = x; then
++    AC_MSG_CHECKING([for Nautilus extensions directory])
++    with_nautilus_extension_dir=`pkg-config --variable=extensiondir libnautilus-extension`
++    if test "x$with_nautilus_extension_dir" = x; then
++      AC_MSG_ERROR([not found. You can specify the extensions directory manually using --with-nautilus-extension-dir=DIR])
++    fi
++    AC_MSG_RESULT($with_nautilus_extension_dir)
++  fi
++  AC_SUBST(NAUTILUS_EXTENSION_DIR, [$with_nautilus_extensios_dir])
+ fi
+ 
+ AC_CONFIG_FILES([
+diff --git a/nautilus-gksu/Makefile.am b/nautilus-gksu/Makefile.am
+index 3a70c78..cbe4d00 100644
+--- a/nautilus-gksu/Makefile.am
++++ b/nautilus-gksu/Makefile.am
+@@ -2,7 +2,7 @@ AM_CFLAGS = -g -O2 -Wall
+ INCLUDES = ${NAUTILUS_CFLAGS}
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\" -DDATA_DIR=\"$(datadir)\" -DPREFIX=\"$(prefix)\"
+ 
+-nautilus_extensiondir=$(libdir)/nautilus/extensions-2.0
++nautilus_extensiondir=$(NAUTILUS_EXTENSION_DIR)
+ nautilus_extension_LTLIBRARIES = libnautilus-gksu.la
+ libnautilus_gksu_la_SOURCES = libnautilus-gksu.c
+ libnautilus_gksu_la_LDFLAGS = LDFLAGS = -module -avoid-version -no-undefined
+-- 
+1.7.8.5
+

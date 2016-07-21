@@ -1,0 +1,10 @@
+--- src/game/game.h.old	2006-04-23 22:13:36.000000000 +0200
++++ src/game/game.h	2006-04-23 22:13:50.000000000 +0200
+@@ -2,7 +2,6 @@
+ #include "includes.h"
+ 
+ extern Uint32 average_loop_time;
+-extern Uint32 game_start_time;
+ extern Uint32 total_play_time, total_frames_drawn;
+ extern float average_session_fps, current_fps;
+ 

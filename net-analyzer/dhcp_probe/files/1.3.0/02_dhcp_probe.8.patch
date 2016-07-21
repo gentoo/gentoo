@@ -1,0 +1,35 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_dhcp_probe.8.dpatch by Laurent Guignard <lguignard.debian@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Change a syntax problem in groff file for hyphenation problem
+## Note:
+##   Submitted to upstream programmer Irwin Tillman<irwin@princeton.edu>.
+##       This patch will be applied in the next version of the upstream code.
+
+
+@DPATCH@
+diff -urNad trunk~/doc/dhcp_probe.8 trunk/doc/dhcp_probe.8
+--- trunk~/doc/dhcp_probe.8	2009-03-30 14:53:40.000000000 +0200
++++ trunk/doc/dhcp_probe.8	2009-03-30 15:18:09.000000000 +0200
+@@ -380,15 +380,15 @@
+ file,
+ that program is executed, with the following required options:
+ .nf
+-   -p the name of the calling program (e.g. dhcp_probe)
+-   -I the name of the interface on which the unexpected response packet was received
+-   -i the IP source address of the packet
+-   -m and the Ethernet source address of the packet
++   \-p the name of the calling program (e.g. dhcp_probe)
++   \-I the name of the interface on which the unexpected response packet was received
++   \-i the IP source address of the packet
++   \-m and the Ethernet source address of the packet
+ .fi
+ If the response packet's yiaddr is non-zero and falls within a "Lease Networks of Concern",
+ the following optional options are also passed:
+ .nf
+-   -y the non-zero yiaddr value
++   \-y the non-zero yiaddr value
+ .fi
+ (We do not wait for the
+ .I alert_program_name2

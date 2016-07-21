@@ -1,0 +1,81 @@
+ test/test_win.py | 48 +++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 37 insertions(+), 11 deletions(-)
+
+diff --git a/test/test_win.py b/test/test_win.py
+index 6da5c1f..7127e56 100644
+--- a/test/test_win.py
++++ b/test/test_win.py
+@@ -1,6 +1,30 @@
+ import sys
+ from mpi4py import MPI
+ import mpiunittest as unittest
++try:
++    from sys import getrefcount
++except ImportError:
++    class getrefcount(object):
++        def __init__(self, arg):
++            pass
++        def __eq__(self, other):
++            return True
++        def __add__(self, other):
++            return self
++        def __sub__(self, other):
++            return self
++
++def memzero(m):
++    n = len(m)
++    if n == 0: return
++    try:
++        zero = '\0'.encode('ascii')
++        m[0] = zero
++    except TypeError:
++        zero = 0
++        m[0] = zero
++    for i in range(n):
++        m[i] = zero
+ 
+ class BaseTestWin(object):
+ 
+@@ -11,29 +35,31 @@ class BaseTestWin(object):
+         try:
+             self.mpi_memory = MPI.Alloc_mem(10)
+             self.memory = self.mpi_memory
+-            try:
+-                zero = bytearray([0])
+-            except NameError:
+-                zero = str('\0')
+-            self.memory[:] = zero * len(self.memory)
++            memzero(self.memory)
+         except MPI.Exception:
+             from array import array
+             self.mpi_memory = None
+             self.memory = array('B',[0]*10)
+-        refcnt = sys.getrefcount(self.memory)
++        refcnt = getrefcount(self.memory)
+         self.WIN = MPI.Win.Create(self.memory, 1, self.INFO, self.COMM)
+         if type(self.memory).__name__ == 'buffer':
+-            self.assertEqual(sys.getrefcount(self.memory), refcnt+1)
++            self.assertEqual(getrefcount(self.memory), refcnt+1)
+         else:
+-            self.assertEqual(sys.getrefcount(self.memory), refcnt)
++            if sys.version_info[:3] < (3, 3):
++                self.assertEqual(getrefcount(self.memory), refcnt)
++            else:
++                self.assertEqual(getrefcount(self.memory), refcnt+1)
+ 
+     def tearDown(self):
+-        refcnt = sys.getrefcount(self.memory)
++        refcnt = getrefcount(self.memory)
+         self.WIN.Free()
+         if type(self.memory).__name__ == 'buffer':
+-            self.assertEqual(sys.getrefcount(self.memory), refcnt-1)
++            self.assertEqual(getrefcount(self.memory), refcnt-1)
+         else:
+-            self.assertEqual(sys.getrefcount(self.memory), refcnt)
++            if sys.version_info[:3] < (3, 3):
++                self.assertEqual(getrefcount(self.memory), refcnt)
++            else:
++                self.assertEqual(getrefcount(self.memory), refcnt-1)
+         if self.mpi_memory:
+             MPI.Free_mem(self.mpi_memory)
+ 

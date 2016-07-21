@@ -1,0 +1,12 @@
+diff -ruN a/src/shared/linux_osl.c b/src/shared/linux_osl.c
+--- a/src/shared/linux_osl.c	2015-11-26 12:16:23.343091098 -0800
++++ b/src/shared/linux_osl.c	2015-11-26 12:17:08.657092739 -0800
+@@ -932,7 +932,7 @@
+ 	uint cycles;
+ 
+ #if defined(__i386__)
+-	rdtscl(cycles);
++	cycles = (u32)native_read_tsc();
+ #else
+ 	cycles = 0;
+ #endif 

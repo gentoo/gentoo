@@ -1,0 +1,24 @@
+# LDFLAGS is for linker flags, not libraries
+# Fixes issue with forced --as-needed
+#
+# https://bugs.gentoo.org/show_bug.cgi?id=248655
+--- a/Makefile	2009-02-26 00:43:54.000000000 +0100
++++ b/Makefile	2009-02-26 00:43:32.000000000 +0100
+@@ -2,7 +2,7 @@
+ 
+ CFLAGS := $(if $(RPM_OPT_FLAGS), $(RPM_OPT_FLAGS), $(CFLAGS))
+ 
+-LDFLAGS = $(shell pkg-config --libs gtk+-2.0)
++LIBS = $(shell pkg-config --libs gtk+-2.0)
+ CFLAGS += -Wall
+ CFLAGS += $(shell pkg-config --cflags gtk+-2.0) -DGTK_DISABLE_BROKEN
+ CFLAGS += -DPROJNAME='"$(PROJNAME)"' -DVERSION='"$(VERSION)"'
+@@ -17,7 +17,7 @@
+ all: $(EXENAME) $(EXENAME).1
+ 
+ $(EXENAME): $(addsuffix .o, $(SRC))
+-	$(CC) $(LDFLAGS) $^ -o $@
++	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ $(EXENAME).1: $(EXENAME).pod
+ 	pod2man $< | sed 's/^\.TH .*/.TH $(EXENAME) 1/' > $@

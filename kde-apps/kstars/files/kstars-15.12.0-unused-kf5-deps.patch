@@ -1,0 +1,79 @@
+From: Akarsh Simha <akarsh@kde.org>
+Date: Thu, 31 Dec 2015 10:40:37 +0000
+Subject: [NEEDS TESTING] Remove "fake" KF5 dependencies from CMakeLists.txt
+X-Git-Url: http://quickgit.kde.org/?p=kstars.git&a=commitdiff&h=14ca537e2676267bed73a40f0b8efd94d7cbc761
+---
+[NEEDS TESTING] Remove "fake" KF5 dependencies from CMakeLists.txt
+
+Removed the following KF5 frameworks: JobWidgets, DBusAddons, TextEditor
+
+Moved the Notifications KF5 framework as required only if INDI is
+present.
+
+Builds both with and without INDI (but not in a completely thorough
+test) on my setup (ArchLinux)
+
+Jasem: please double check that it builds correctly for you too
+with/without INDI.
+
+CCMAIL: mutlaqja@ikarustech.com
+---
+
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,16 +32,13 @@
+   GuiAddons
+   WidgetsAddons
+   NewStuff
+-  DBusAddons
++#  DBusAddons
+   I18n
+   Init
+-  JobWidgets
+   KIO
+   XmlGui
+   Plotting
+-  TextEditor
+   IconThemes
+-  Notifications
+ )
+ 
+ find_package(Eigen3 REQUIRED)
+@@ -61,6 +58,8 @@
+ find_package(INDI 1.2.0)
+ #FIXME is there a better way to do this?
+ if (INDI_FOUND)
++#FIXME is the following the right way of doing this?
++find_package(KF5 REQUIRED COMPONENTS Notifications)
+ SET(HAVE_INDI 1)
+ else(INDI_FOUND)
+ SET(HAVE_INDI 0)
+
+--- a/kstars/CMakeLists.txt
++++ b/kstars/CMakeLists.txt
+@@ -541,10 +541,9 @@
+         KF5::KIOFileWidgets
+         KF5::WidgetsAddons
+         KF5::Plotting
+-        KF5::TextEditor
+-        KF5::DBusAddons
++#        KF5::TextEditor
++#        KF5::DBusAddons
+         KF5::IconThemes
+-        KF5::Notifications
+         Qt5::Gui
+         Qt5::PrintSupport
+         Qt5::Sql
+@@ -561,7 +560,9 @@
+   target_link_libraries(KStarsLib ${CFITSIO_LIBRARIES})
+ endif (CFITSIO_FOUND)
+ if (INDI_FOUND)
+-  target_link_libraries(KStarsLib ${CMAKE_THREAD_LIBS_INIT} ${INDI_LIBRARIES} ${INDI_CLIENT_LIBRARIES} z)
++  target_link_libraries(KStarsLib ${CMAKE_THREAD_LIBS_INIT}
++  ${INDI_LIBRARIES} ${INDI_CLIENT_LIBRARIES}
++  KF5::Notifications z)
+ endif (INDI_FOUND)
+ if (WCSLIB_FOUND)
+     target_link_libraries(KStarsLib ${WCSLIB_LIBRARIES})
+

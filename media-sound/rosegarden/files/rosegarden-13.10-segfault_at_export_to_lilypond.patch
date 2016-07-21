@@ -1,0 +1,28 @@
+Index: src/document/io/LilyPondExporter.cpp
+===================================================================
+--- src/document/io/LilyPondExporter.cpp	(revision 13602)
++++ src/document/io/LilyPondExporter.cpp	(revision 13603)
+@@ -706,13 +706,18 @@
+                 std::string header = protectIllegalChars(metadata.get<String>(property));
+                 if (property == headerCopyright) {
+                     // replace a (c) or (C) with a real Copyright symbol
+-                    int posCpy = header.find("c");
+-                    if (!posCpy) posCpy = header.find("C");
+-                    if (posCpy) {
+-                        std::string leftOfCpy = header.substr(0, posCpy - 1);
+-                        std::string rightOfCpy = header.substr(posCpy + 2);
++                    size_t posCpy = header.find("(c)");
++                    if (posCpy == std::string::npos) posCpy = header.find("(C)");
++                    if (posCpy != std::string::npos) {
++                        std::string leftOfCpy = header.substr(0, posCpy);
++                        std::string rightOfCpy = header.substr(posCpy + 3);
+                         str << indent(col) << property << " =  \\markup { \"" << leftOfCpy << "\""
+                             << "\\char ##x00A9" << "\"" << rightOfCpy << "\" }" << std::endl;
++                    } else {
++                        if (header != "") {
++                            str << indent(col) << property << " = \""
++                                << header << "\"" << std::endl;
++                        }
+                     }
+                 } else if (header != "") {
+                     str << indent(col) << property << " = \"" << header << "\"" << std::endl;

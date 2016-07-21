@@ -1,0 +1,91 @@
+X-Git-Url: http://anonscm.debian.org/gitweb/?p=collab-maint%2Fw3m.git;a=blobdiff_plain;f=url.c;h=6dbd5d3a43c51d96adca5ce5076b72a58c9d65fe;hp=ed6062ef3cb9e60a7e712ec054bcd46b49fd504d;hb=c155b93830b353a68468fb063df67987ed284142;hpb=dbd52ac2ca59d404bdcc29c5c90bda822f2c9334
+
+diff --git a/url.c b/url.c
+index ed6062e..6dbd5d3 100644
+--- a/url.c
++++ b/url.c
+@@ -121,6 +121,7 @@ static struct table2 DefaultGuess[] = {
+ };
+ 
+ static void add_index_file(ParsedURL *pu, URLFile *uf);
++static char * schemeNumToName(int scheme);
+ 
+ /* #define HTTP_DEFAULT_FILE    "/index.html" */
+ 
+@@ -1280,6 +1281,18 @@ getURLScheme(char **url)
+ }
+ 
+ static char *
++schemeNumToName(int scheme)
++{
++    int i;
++
++    for (i = 0; schemetable[i].cmdname != NULL; i++) {
++	if (schemetable[i].cmd == scheme)
++	    return schemetable[i].cmdname;
++    }
++    return NULL;
++}
++
++static char *
+ otherinfo(ParsedURL *target, ParsedURL *current, char *referer)
+ {
+     Str s = Strnew();
+@@ -1603,7 +1616,7 @@ openURL(char *url, ParsedURL *pu, ParsedURL *current,
+ 	    pu->host != NULL && !check_no_proxy(pu->host)) {
+ 	    hr->flag |= HR_FLAG_PROXY;
+ 	    sock = openSocket(FTP_proxy_parsed.host,
+-			      schemetable[FTP_proxy_parsed.scheme].cmdname,
++			      schemeNumToName(FTP_proxy_parsed.scheme),
+ 			      FTP_proxy_parsed.port);
+ 	    if (sock < 0)
+ 		return uf;
+@@ -1645,15 +1658,15 @@ openURL(char *url, ParsedURL *pu, ParsedURL *current,
+ 	    }
+ 	    else if (pu->scheme == SCM_HTTPS) {
+ 		sock = openSocket(HTTPS_proxy_parsed.host,
+-				  schemetable[HTTPS_proxy_parsed.scheme].
+-				  cmdname, HTTPS_proxy_parsed.port);
++				  schemeNumToName(HTTPS_proxy_parsed.scheme),
++				  HTTPS_proxy_parsed.port);
+ 		sslh = NULL;
+ 	    }
+ 	    else {
+ #endif				/* USE_SSL */
+ 		sock = openSocket(HTTP_proxy_parsed.host,
+-				  schemetable[HTTP_proxy_parsed.scheme].
+-				  cmdname, HTTP_proxy_parsed.port);
++				  schemeNumToName(HTTP_proxy_parsed.scheme),
++				  HTTP_proxy_parsed.port);
+ #ifdef USE_SSL
+ 		sslh = NULL;
+ 	    }
+@@ -1685,8 +1698,7 @@ openURL(char *url, ParsedURL *pu, ParsedURL *current,
+ 	    }
+ 	}
+ 	else {
+-	    sock = openSocket(pu->host,
+-			      schemetable[pu->scheme].cmdname, pu->port);
++	    sock = openSocket(pu->host, schemeNumToName(pu->scheme), pu->port);
+ 	    if (sock < 0) {
+ 		*status = HTST_MISSING;
+ 		return uf;
+@@ -1750,7 +1762,7 @@ openURL(char *url, ParsedURL *pu, ParsedURL *current,
+ 	    pu->host != NULL && !check_no_proxy(pu->host)) {
+ 	    hr->flag |= HR_FLAG_PROXY;
+ 	    sock = openSocket(GOPHER_proxy_parsed.host,
+-			      schemetable[GOPHER_proxy_parsed.scheme].cmdname,
++			      schemeNumToName(GOPHER_proxy_parsed.scheme),
+ 			      GOPHER_proxy_parsed.port);
+ 	    if (sock < 0)
+ 		return uf;
+@@ -1758,8 +1770,7 @@ openURL(char *url, ParsedURL *pu, ParsedURL *current,
+ 	    tmp = HTTPrequest(pu, current, hr, extra_header);
+ 	}
+ 	else {
+-	    sock = openSocket(pu->host,
+-			      schemetable[pu->scheme].cmdname, pu->port);
++	    sock = openSocket(pu->host, schemeNumToName(pu->scheme), pu->port);
+ 	    if (sock < 0)
+ 		return uf;
+ 	    if (pu->file == NULL)

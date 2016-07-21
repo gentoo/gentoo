@@ -1,0 +1,10 @@
+diff --git a/Text/JSON.hs b/Text/JSON.hs
+index 900e0f8..5b90a2a 100644
+--- a/Text/JSON.hs
++++ b/Text/JSON.hs
+@@ -1,4 +1,4 @@
+-{-# OPTIONS_GHC -XCPP -XMultiParamTypeClasses -XTypeSynonymInstances #-}
++{-# OPTIONS_GHC -XCPP -XMultiParamTypeClasses -XTypeSynonymInstances -XFlexibleInstances #-}
+ --------------------------------------------------------------------
+ -- |
+ -- Module    : Text.JSON

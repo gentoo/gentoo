@@ -1,0 +1,18 @@
+--- Makefile.old	2011-06-20 21:19:49.578922392 +0200
++++ Makefile	2011-06-20 21:20:28.535421648 +0200
+@@ -39,14 +39,13 @@
+ CFLAGS?=-O3 -pipe
+ CFLAGS+=-Wall `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \
+ 	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
+-LDFLAGS=
+ # Use these instead for debugging and/or profiling (mainly intended for GNU Robbo developers)
+ #CFLAGS?=-O0 -pipe -g -pg
+ #CFLAGS+=-Wall `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" \
+ #	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
+ #LDFLAGS=-pg
+ LINK=$(CC)
+-LIBS=`$(SDL_CONFIG) --libs` -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF)
++LIBS=`$(SDL_CONFIG) --libs` -lSDL_image -lSDL_mixer $(FONT_USE_SDL_TTF) -lm
+ 
+ # You won't need to alter anything below
+ all: $(SOURCES) $(TARGET)

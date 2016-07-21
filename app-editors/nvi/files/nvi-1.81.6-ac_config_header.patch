@@ -1,0 +1,12 @@
+diff -uNr nvi-1.81.6.orig/dist/configure.in nvi-1.81.6/dist/configure.in
+--- nvi-1.81.6.orig/dist/configure.in	2013-07-09 16:54:56.000000000 -0400
++++ nvi-1.81.6/dist/configure.in	2013-07-09 16:59:35.000000000 -0400
+@@ -4,7 +4,7 @@
+ AC_INIT(../common/main.c)
+ AC_CONFIG_AUX_DIR(.)
+ AM_INIT_AUTOMAKE(vi, 1.81.6)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADER(config.h)
+ 
+ dnl Configure setup.
+ AC_PROG_INSTALL()

@@ -1,0 +1,39 @@
+# Fedora's cmake file for rply
+# http://pkgs.fedoraproject.org/gitweb/?p=rply.git;a=blob;f=rply_CMakeLists.txt
+PROJECT(rply)
+cmake_minimum_required(VERSION 2.6)
+
+SET(RPLY_LIB_MAJOR_VERSION 1)
+SET(RPLY_LIB_MINOR_VERSION 01)
+
+SET(RPLY_CMAKE_DIR ${CMAKE_SOURCE_DIR}/CMake/ )
+SET(RPLY_LIBRARY librply.so )
+
+add_library(rply SHARED rply.c )
+set_target_properties( rply PROPERTIES
+                              VERSION ${RPLY_LIB_MAJOR_VERSION}.${RPLY_LIB_MINOR_VERSION}
+                              SOVERSION ${RPLY_LIB_MAJOR_VERSION}
+                              ) 
+
+include_directories( ${CMAKE_SOURCE_DIR} )
+add_executable(rply_convert etc/convert.c )
+add_executable(rply_dump etc/dump.c )
+add_executable(rply_sconvert etc/sconvert.c )
+target_link_libraries (rply_convert rply)
+target_link_libraries (rply_dump rply)
+target_link_libraries (rply_sconvert rply)
+
+# Installs the header files
+install(FILES rply.h DESTINATION include/rply)
+
+# Installs the target file
+install(TARGETS rply LIBRARY DESTINATION lib${LIB_SUFFIX})
+install(TARGETS rply_convert RUNTIME DESTINATION bin)
+install(TARGETS rply_dump RUNTIME DESTINATION bin)
+install(TARGETS rply_sconvert RUNTIME DESTINATION bin)
+
+#This should be the last line of the project
+SUBDIRS( CMake/export )
+
+
+

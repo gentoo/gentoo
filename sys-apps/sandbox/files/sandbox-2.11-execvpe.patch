@@ -1,0 +1,30 @@
+From 31a135d261a9bc1d65b1fa484345a858bab84db8 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 30 Mar 2016 01:17:21 -0400
+Subject: [PATCH] libsandbox: whitelist execvpe
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+URL: https://bugs.gentoo.org/578516
+Reported-by: Toralf Förster <toralf.foerster@gmx.de>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/libsandbox.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libsandbox/libsandbox.c b/libsandbox/libsandbox.c
+index cbe1aa1..e809308 100644
+--- a/libsandbox/libsandbox.c
++++ b/libsandbox/libsandbox.c
+@@ -710,6 +710,7 @@ static int check_access(sbcontext_t *sbcontext, int sb_nr, const char *func,
+ 	     sb_nr == SB_NR_EXECV     ||
+ 	     sb_nr == SB_NR_EXECVP    ||
+ 	     sb_nr == SB_NR_EXECVE    ||
++	     sb_nr == SB_NR_EXECVPE   ||
+ 	     sb_nr == SB_NR_FEXECVE))
+ 	{
+ 		retval = check_prefixes(sbcontext->read_prefixes,
+-- 
+2.7.4
+

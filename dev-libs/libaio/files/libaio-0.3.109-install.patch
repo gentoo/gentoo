@@ -1,0 +1,45 @@
+From 2e34caef82a2367a85de4f06daf5e5a92f61e845 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 17 Jan 2010 17:10:14 -0500
+Subject: [PATCH] fix up install paths
+
+This is similar to the Fedora patch, but this uses more common conventions
+like "DESTDIR" instead of "destdir".
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/Makefile |   11 ++++++-----
+ 1 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 687c7be..ee431a1 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,6 +1,7 @@
+ prefix=/usr
+ includedir=$(prefix)/include
+ libdir=$(prefix)/lib
++usrlibdir=$(libdir)
+ 
+ CFLAGS ?= -g -fomit-frame-pointer -O2
+ CFLAGS += -nostdlib -nostartfiles -Wall -I. -fPIC
+@@ -53,11 +54,11 @@ $(libname): $(libaio_sobjs) libaio.map
+ 	$(CC) $(SO_CFLAGS) -Wl,--version-script=libaio.map -Wl,-soname,$(soname) -o $@ $(libaio_sobjs) $(LINK_FLAGS)
+ 
+ install: $(all_targets)
+-	install -D -m 644 libaio.h $(includedir)/libaio.h
+-	install -D -m 644 libaio.a $(libdir)/libaio.a
+-	install -D -m 755 $(libname) $(libdir)/$(libname)
+-	ln -sf $(libname) $(libdir)/$(soname)
+-	ln -sf $(libname) $(libdir)/libaio.so
++	install -D -m 644 libaio.h $(DESTDIR)$(includedir)/libaio.h
++	install -D -m 644 libaio.a $(DESTDIR)$(usrlibdir)/libaio.a
++	install -D -m 755 $(libname) $(DESTDIR)$(libdir)/$(libname)
++	ln -sf $(libname) $(DESTDIR)$(usrlibdir)/$(soname)
++	ln -sf $(libname) $(DESTDIR)$(usrlibdir)/libaio.so
+ 
+ $(libaio_objs): libaio.h
+ 
+-- 
+1.7.3.1
+

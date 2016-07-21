@@ -1,0 +1,35 @@
+--- CMakeLists.txt.orig	2011-01-17 06:25:14.536078940 +0000
++++ CMakeLists.txt	2011-01-21 23:50:53.406082074 +0000
+@@ -195,7 +195,7 @@
+ set(GEANT4_PREFIX ${CMAKE_INSTALL_PREFIX})
+ set(GEANT4_EXEC_PREFIX ${GEANT4_PREFIX})
+ set(GEANT4_BINDIR ${GEANT4_EXEC_PREFIX}/bin)
+-set(GEANT4_LIBDIR ${GEANT4_PREFIX}/lib)
++set(GEANT4_LIBDIR ${GEANT4_PREFIX}/lib${LIB_SUFFIX})
+ set(GEANT4_DATAROOTDIR ${GEANT4_PREFIX}/share)
+ set(GEANT4_DATADIR ${GEANT4_DATAROOTDIR})
+ set(GEANT4_INCLUDEDIR ${GEANT4_PREFIX}/include)
+--- cmake/Modules/Geant4MacroLibraryTargets.cmake.orig	2011-01-21 23:36:09.356079013 +0000
++++ cmake/Modules/Geant4MacroLibraryTargets.cmake	2011-01-21 23:49:49.826082339 +0000
+@@ -35,8 +35,8 @@
+         # NEEDS WORK TO REMOVE HARDCODED LIB/BIN DIR
+         install(TARGETS ${G4LIBTARGET_NAME}
+             RUNTIME DESTINATION bin
+-            LIBRARY DESTINATION lib
+-            ARCHIVE DESTINATION lib)
++            LIBRARY DESTINATION lib${LIB_SUFFIX}
++            ARCHIVE DESTINATION lib${LIB_SUFFIX})
+     endif()
+ 
+     #
+@@ -59,8 +59,8 @@
+ 
+         install(TARGETS ${G4LIBTARGET_NAME}-static
+         	RUNTIME DESTINATION bin
+-	        LIBRARY DESTINATION lib
+-        	ARCHIVE DESTINATION lib)
++	        LIBRARY DESTINATION lib${LIB_SUFFIX}
++        	ARCHIVE DESTINATION lib${LIB_SUFFIX})
+     endif()
+ ENDMACRO()
+ 

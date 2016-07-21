@@ -1,0 +1,11 @@
+--- SAX/PurePerl/EncodingDetect.pm.orig	2006-05-08 12:08:40.000000000 -0400
++++ SAX/PurePerl/EncodingDetect.pm	2006-05-08 12:14:23.000000000 -0400
+@@ -93,7 +93,7 @@ sub encoding_detect {
+         return;
+     }
+     
+-    warn("Unable to recognise encoding of this document");
++    #warn("Unable to recognise encoding of this document");
+     return;
+ }
+ 

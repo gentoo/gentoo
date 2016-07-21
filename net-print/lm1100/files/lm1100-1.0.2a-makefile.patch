@@ -1,0 +1,35 @@
+--- lm1100.1.0.2a~/Makefile	2001-02-26 01:40:16.000000000 +0100
++++ lm1100.1.0.2a/Makefile	2006-10-23 19:01:57.000000000 +0200
+@@ -7,17 +7,19 @@
+ VERSION=lm1100.1.0.2a
+ TARFILES = $(FILES:%=$(VERSION)/%)
+ 
+-CC = g++ -O2
++CXX?=g++
++CXXFLAGS?= -O2
++#CC = g++ -O2
+ #CC = g++ -g
+ 
+ lm1100: $(OBJS)
+-	$(CC) -o lm1100 $(OBJS) $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o lm1100 $(OBJS) $(LIBS)
+ 
+ bufcat: SpongeWriter.o ThreadSafeCircleBuffer.o bufcat.o
+-	$(CC) -o bufcat SpongeWriter.o ThreadSafeCircleBuffer.o bufcat.o -lpthread
++	$(CXX) $(CXXFLAGS) -o bufcat SpongeWriter.o ThreadSafeCircleBuffer.o bufcat.o -lpthread
+ 
+ leak: $(OBJS)
+-	$(CC) -o lm1100 $(OBJS) $(LIBS) /usr/local/LeakTracer/LeakTracer.o
++	$(CXX) $(CXXFLAGS) -o lm1100 $(OBJS) $(LIBS) /usr/local/LeakTracer/LeakTracer.o
+ 
+ tarball: $(FILES)
+ 	rm $(VERSION);ln -s . $(VERSION);tar -cf - $(TARFILES) | gzip > $(VERSION).tar.gz
+@@ -27,7 +29,7 @@
+ 	rm *.o
+ 
+ %.o:	%.cc
+-	$(CC) $(DEFINES) -c $<
++	$(CXX) $(CXXFLAGS) $(DEFINES) -c $<
+ 
+ TAGS: $(SRCS)
+ 	etag $(SRCS)

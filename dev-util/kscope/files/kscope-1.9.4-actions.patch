@@ -1,0 +1,90 @@
+--- trunk/app/actions.cpp	2009/08/26 13:17:03	203
++++ trunk/app/actions.cpp	2009/09/07 19:58:30	204
+@@ -264,69 +264,58 @@
+ 	QActionGroup* queryGroup = new QActionGroup(this);
+ 	connect(queryGroup, SIGNAL(triggered(QAction*)), this,
+ 	        SLOT(query(QAction*)));
++	connect(ProjectManager::signalProxy(), SIGNAL(hasProject(bool)),
++			queryGroup, SLOT(setEnabled(bool)));
++	queryGroup->setEnabled(false);
+ 
+ 	// Query references.
+-	action = new QAction(tr("&References"), this);
++	action = new QAction(tr("&References"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+0"));
+ 	action->setStatusTip(tr("Find all symbol references"));
+ 	action->setData(Core::Query::References);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Query definition.
+-	action = new QAction(tr("&Definition"), this);
++	action = new QAction(tr("&Definition"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+1"));
+ 	action->setStatusTip(tr("Find symbol definition"));
+ 	action->setData(Core::Query::Definition);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Query called functions.
+-	action = new QAction(tr("&Called Functions"), this);
++	action = new QAction(tr("&Called Functions"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+2"));
+ 	action->setStatusTip(tr("Show functions called from function"));
+ 	action->setData(Core::Query::CalledFunctions);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Query calling functions.
+-	action = new QAction(tr("C&alling Functions"), this);
++	action = new QAction(tr("C&alling Functions"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+3"));
+ 	action->setStatusTip(tr("Find functions calling function"));
+ 	action->setData(Core::Query::CallingFunctions);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Query text.
+-	action = new QAction(tr("&Text"), this);
++	action = new QAction(tr("&Text"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+4"));
+ 	action->setStatusTip(tr("Find text in files"));
+ 	action->setData(Core::Query::Text);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Find file.
+-	action = new QAction(tr("&File"), this);
++	action = new QAction(tr("&File"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+7"));
+ 	action->setStatusTip(tr("Find a file"));
+ 	action->setData(Core::Query::FindFile);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Find including files.
+-	action = new QAction(tr("&Including Files"), this);
++	action = new QAction(tr("&Including Files"), queryGroup);
+ 	action->setShortcut(tr("Ctrl+8"));
+ 	action->setStatusTip(tr("Find files #including a given file"));
+ 	action->setData(Core::Query::IncludingFiles);
+ 	menu->addAction(action);
+-	projectGroup->addAction(action);
+-	queryGroup->addAction(action);
+ 
+ 	// Show local tags.
+ 	action = new QAction(tr("Local &Tags"), this);
+@@ -348,6 +337,7 @@
+ 	action->setStatusTip(tr("Create a call tree"));
+ 	connect(action, SIGNAL(triggered()), mainWnd(), SLOT(promptCallTree()));
+ 	menu->addAction(action);
++	projectGroup->addAction(action);
+ 
+ 	// Settings menu.
+ 	menu = mainWnd()->menuBar()->addMenu(tr("&Settings"));

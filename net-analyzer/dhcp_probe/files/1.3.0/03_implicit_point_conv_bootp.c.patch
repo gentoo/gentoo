@@ -1,0 +1,21 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_implicit_point_conv_bootp.c.dpatch by Laurent Guignard <lguignard.debian@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix implicit Pointer Converstion in bootp.c file.
+##     Fix bug #529635 discovered by Dann Frazier <dannf@debian.org>
+##
+
+@DPATCH@
+diff -urNad trunk~/src/bootp.c trunk/src/bootp.c
+--- trunk~/src/bootp.c	2009-03-31 14:19:06.000000000 +0200
++++ trunk/src/bootp.c	2009-05-21 09:51:26.000000000 +0200
+@@ -11,7 +11,7 @@
+ #include "bootp.h"
+ #include "configfile.h"
+ #include "report.h"
+-
++#include "utils.h"
+ 
+ 
+ 

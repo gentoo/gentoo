@@ -1,0 +1,16 @@
+# This is a sample grub.conf for use with Genkernel, per the Gentoo handbook
+# http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=1&chap=10#doc_chap2
+# If you are not using Genkernel and you need help creating this file, you
+# should consult the handbook. Alternatively, consult the grub.conf.sample that
+# is included with the Grub documentation.
+
+default 0
+timeout 30
+#splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+
+#title Gentoo Linux 3.8.13
+#root (hd0,0)
+#kernel /boot/kernel-genkernel-x86-3.8.13-gentoo root=/dev/sda3
+#initrd /boot/initramfs-genkernel-x86-3.8.13
+
+# vim:ft=conf:

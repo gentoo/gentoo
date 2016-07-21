@@ -1,0 +1,18 @@
+--- a/suse/sysconfig.icecream
++++ b/suse/sysconfig.icecream
+@@ -39,6 +39,15 @@
+ #
+ ## Type: string
+ ## Path: Applications/icecream
++## Default: -v
++#
++# icecream's level of verbosity ([-v[v[v]]])
++#
++ICECREAM_VERBOSITY="-v"
++
++#
++## Type: string
++## Path: Applications/icecream
+ ## Defaut: ""
+ #
+ # Identification for the network the scheduler and daemon run on. 

@@ -1,0 +1,26 @@
+Fix undefined reference to `register_task_migration_notifier'
+
+-ck
+
+---
+ kernel/sched/bfs.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+Index: linux-4.0.2-ck1/kernel/sched/bfs.c
+===================================================================
+--- linux-4.0.2-ck1.orig/kernel/sched/bfs.c	2015-05-08 09:03:55.730280539 +1000
++++ linux-4.0.2-ck1/kernel/sched/bfs.c	2015-05-08 09:18:42.266015120 +1000
+@@ -976,6 +976,13 @@ static inline void deactivate_task(struc
+ 	clear_sticky(p);
+ }
+ 
++static ATOMIC_NOTIFIER_HEAD(task_migration_notifier);
++
++void register_task_migration_notifier(struct notifier_block *n)
++{
++	atomic_notifier_chain_register(&task_migration_notifier, n);
++}
++
+ #ifdef CONFIG_SMP
+ void set_task_cpu(struct task_struct *p, unsigned int cpu)
+ {

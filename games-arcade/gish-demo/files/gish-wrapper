@@ -1,0 +1,4 @@
+#!/bin/sh
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:."
+export LD_PRELOAD=/usr/lib/libalut.so.0
+exec ./gish "$@"

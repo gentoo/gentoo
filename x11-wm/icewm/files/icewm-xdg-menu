@@ -1,0 +1,128 @@
+#!/usr/bin/python2
+"""
+This script generates FreeDesktop application menu for IceWM window manager.
+
+Written by Konstantin Korikov <lostclus@ua.fm>, put in the public domain
+
+Requires pyxdg http://cvs.freedesktop.org/cgi-bin/viewcvs.cgi/pyxdg/
+
+USAGE EXAMPLE
+
+Add to $HOME/.icewm/menu this line:
+
+	menuprog Applications - icewm-xdg-menu
+
+and restart IceWM.
+"""
+
+import sys
+import locale
+import getopt
+import re
+import xdg.Menu
+import xdg.DesktopEntry
+import xdg.IconTheme
+import xdg.Config
+
+version = "0.3"
+
+def print_usage(exit_code = 1):
+  print """Usage: %s [options]
+Options:
+  --locale=locale               set output languege and encoding
+  --root-folder folder          folder to generate (for example: /Games)
+  --terminal command            set terminal emulator command (default: xterm -e %%s)
+  --default-folder-icon icon    icon for folders that not provide Icon option
+  --default-entry-icon icon     icon for entries that not provide Icon option
+  --with-theme-paths            convert icon base names to icon absolute paths
+                                using icon theme
+  --entire-menu                 print entire menu
+  --icon-size                   set default icon size
+  --theme theme                 set icon theme
+  --help                        print this help and exit
+  --version                     print version and exit
+""" % sys.argv[0]
+  sys.exit(exit_code)
+  
+def print_version():
+  print "%s version %s" % (
+    os.path.basename(sys.argv[0]), version)
+  sys.exit(0)
+
+root_folder = ""
+terminal = "xterm -e %s"
+default_folder_icon = "folder"
+default_entry_icon = "-"
+entire_menu = False
+with_theme_paths = False
+icon_size = 16
+
+exec_clean1_re = re.compile(r'%[a-zA-Z]')
+exec_clean2_re = re.compile(r'%%')
+encoding = None
+locale_str = None
+
+def find_icon(entry):
+  icon = entry.getIcon()
+  if icon and with_theme_paths:
+    icon = xdg.IconTheme.getIconPath(icon, icon_size) or icon
+  return icon
+
+def process_menu(menu):
+  for entry in menu.getEntries():
+    if isinstance(entry, xdg.Menu.Menu):
+      name = entry.getName() or entry.DesktopFileID
+      icon = find_icon(entry) or default_folder_icon
+
+      if entire_menu:
+        print ("menu \"%s\" \"%s\" {" % (name, icon)).encode(encoding)
+        process_menu(entry)
+        print "}".encode(encoding)
+      else:
+        print (("menuprog \"%s\" \"%s\" %s" % (name, icon, sys.argv[0])) +
+            (" --root-folder \"%s\"" % entry.getPath(org=True)) +
+            (" --terminal \"%s\"" % terminal) +
+            (" --default-folder-icon \"%s\"" % default_folder_icon) +
+            (" --default-entry-icon \"%s\"" % default_entry_icon) +
+            (" --theme \"%s\"" % xdg.Config.icon_theme) +
+            (" --icon-size \"%d\"" % icon_size) +
+            (with_theme_paths and " --with-theme-paths" or "")).encode(encoding),
+        if locale_str:
+          print (" --locale \"%s\"" % locale_str).encode(encoding),
+        print
+    elif isinstance(entry, xdg.Menu.MenuEntry):
+      de = entry.DesktopEntry
+      name = de.getName() or entry.DesktopFileID
+      icon = find_icon(de) or default_entry_icon
+      execute = exec_clean2_re.sub('%', exec_clean1_re.sub('', de.getExec()))
+      if de.getTerminal(): execute = terminal % execute      
+      print ("prog \"%s\" \"%s\" %s" % (name, icon, execute)).encode(encoding)
+
+try: opts, args = getopt.getopt(sys.argv[1:], "", 
+  ("help", "version", "locale=",
+   "root-folder=", "terminal=", "default-folder-icon=", 
+   "default-entry-icon=", "entire-menu", "theme=", "with-theme-paths",
+   "icon-size="))
+except getopt.GetoptError: print_usage()
+
+locale.setlocale(locale.LC_ALL, "")
+
+for o, v in opts:
+  if o == "--locale":
+    locale_str = v
+    locale.setlocale(locale.LC_ALL, locale_str)
+  if o == "--root-folder": root_folder = v
+  elif o == "--terminal": terminal = v
+  elif o == "--default-folder-icon": default_folder_icon = v
+  elif o == "--default-entry-icon": default_entry_icon = v
+  elif o == "--entire-menu" : entire_menu = True
+  elif o == "--with-theme-paths" : with_theme_paths = True
+  elif o == "--icon-size": icon_size = int(v)
+  elif o == "--theme" : xdg.Config.setIconTheme(v)
+  elif o in ("-h", "-?", "--help"): print_usage(0)
+  elif o in ("-v", "--version"): print_version()
+
+encoding = locale.getlocale()[1] or 'UTF-8'
+menu = xdg.Menu.parse()
+if root_folder: menu = menu.getMenu(root_folder)
+process_menu(menu)

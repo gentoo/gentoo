@@ -1,0 +1,25 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,6 +59,8 @@
+ MD_CHECK_OS
+ 
+ MD_CHECK_LIBUSB018B
++LIBS="$LIBS $LIBUSB_LIBS"
++INCLUDES="$INCLUDES $LIBUSB_CFLAGS"
+ 
+ AC_PROG_CC
+ MD_CHECK_GCC3
+@@ -97,13 +99,6 @@
+ 
+ MD_CHECK_DOXYGEN
+ 
+-MD_CONF_FLAGS(
+-  [],
+-  [$OS_CFLAGS $LIBUSB_CFLAGS],
+-  [],
+-  [$OS_LDFLAGS $LIBUSB_LIBS]
+-)
+-
+ MD_CONF_DB2MAN
+ 
+ ##### OUTPUT #################################################################

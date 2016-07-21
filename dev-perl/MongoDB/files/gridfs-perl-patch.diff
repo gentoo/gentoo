@@ -1,0 +1,39 @@
+diff --git a/lib/MongoDB/GridFS.pm b/lib/MongoDB/GridFS.pm
+index f9a2421..8a9c4a7 100644
+--- a/lib/MongoDB/GridFS.pm
++++ b/lib/MongoDB/GridFS.pm
+@@ -119,13 +119,19 @@ sub BUILD {
+     my ($self) = @_;
+    
+     # check for the required indexs in the system.indexes colleciton
+-    my $count = $self->_database->get_collection('system.indexes')->count({filename => 1});
+-    $count   += $self->_database->get_collection('system.indexes')->count({files_id => 1, n => 1});
+-    
+-    # if we dont have the required indexes, create them now.
+-    if ($count < 2){
+-       $self->_ensure_indexes();
++    my @files_idx = $self->files->get_indexes;
++    my @matches = grep { $_->{key}->{filename} } @files_idx;
++    if (scalar @matches == 0) {
++        $self->files->ensure_index(Tie::IxHash->new(filename => 1), {"safe" => 1});
++    }
++
++    my @chunks_idx = $self->chunks->get_indexes;
++    @matches = grep { (defined $_->{key}->{files_id} && defined $_->{key}->{i} && 
++        $_->{key}->{files_id} == 1 && $_->{key}->{i} == 1)} @chunks_idx;
++    if (scalar @matches == 0) {
++        $self->chunks->ensure_index(Tie::IxHash->new(files_id => 1, n => 1), {"safe" => 1});
+     }
++
+ }
+ 
+ 
+@@ -134,7 +140,7 @@ sub _ensure_indexes {
+ 
+     # ensure the necessary index is present (this may be first usage)
+     $self->files->ensure_index(Tie::IxHash->new(filename => 1), {"safe" => 1});
+-    $self->chunks->ensure_index(Tie::IxHash->new(files_id => 1, n => 1), {"safe" => 1, "unique" => 1});
++    $self->chunks->ensure_index(Tie::IxHash->new(files_id => 1, n => 1), {"safe" => 1});
+ }
+ 
+ =head1 METHODS

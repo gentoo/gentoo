@@ -1,0 +1,52 @@
+commit d964ffcea9daf08095beecf558db8ddc7cc9da7e
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed Mar 16 22:43:54 2016 +0100
+
+    Unbreak startup
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0eb2417..13afcd0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,6 +56,7 @@ add_executable(kjumpingcube ${kjumpingcube_SRCS})
+ target_link_libraries(kjumpingcube
+     KF5KDEGames
+     KF5::XmlGui
++    KF5::DBusAddons
+     KF5::KDELibs4Support
+     Qt5::Svg
+ )
+diff --git a/main.cpp b/main.cpp
+index d287626..039dd7f 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -26,6 +26,7 @@
+ #include <KAboutData>
+ #include <QApplication>
+ #include <KLocalizedString>
++#include <KDBusService>
+ #include <QCommandLineParser>
+ #include <kdelibs4configmigrator.h>
+ 
+@@ -47,6 +48,7 @@ int main(int argc, char *argv[])
+     KAboutData aboutData( "kjumpingcube", i18n("KJumpingCube"),
+                           KJC_VERSION, i18n(description), KAboutLicense::GPL,
+                           i18n("(c) 1998-2000, Matthias Kiefer"));
++    aboutData.setOrganizationDomain(QByteArray("kde.org"));
+     aboutData.addAuthor(i18n("Matthias Kiefer"),QString(), "matthias.kiefer@gmx.de");
+     aboutData.addAuthor(i18n("Benjamin Meyer"),i18n("Various improvements"), "ben+kjumpingcube@meyerhome.net");
+     aboutData.addCredit(i18n("Ian Wadham"),
+@@ -72,8 +74,9 @@ int main(int argc, char *argv[])
+         RESTORE(KJumpingCube)
+     }
+     else {
+-		KJumpingCube *kjumpingcube = new KJumpingCube;
+-		kjumpingcube->show();
+-	}
+-   return app.exec();
++        KJumpingCube *kjumpingcube = new KJumpingCube;
++        kjumpingcube->show();
++    }
++    const KDBusService dbusService(KDBusService::Multiple);
++    return app.exec();
+ }

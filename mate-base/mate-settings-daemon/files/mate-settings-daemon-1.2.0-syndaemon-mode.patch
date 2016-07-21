@@ -1,0 +1,22 @@
+diff -burN a/plugins/mouse/msd-mouse-manager.c b/plugins/mouse/msd-mouse-manager.c
+--- a/plugins/mouse/msd-mouse-manager.c	2012-02-28 23:45:55.000000000 +0100
++++ b/plugins/mouse/msd-mouse-manager.c	2012-08-03 20:22:19.204115652 +0200
+@@ -548,7 +548,7 @@
+ 
+         if (state) {
+                 GError *error = NULL;
+-                char *args[5];
++                char *args[6];
+ 
+                 if (manager->priv->syndaemon_spawned)
+                         return 0;
+@@ -557,7 +557,8 @@
+                 args[1] = "-i";
+                 args[2] = "0.5";
+                 args[3] = "-k";
+-                args[4] = NULL;
++                args[4] = "-R";
++                args[5] = NULL;
+ 
+                 if (!g_find_program_in_path (args[0]))
+                         return 0;

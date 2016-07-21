@@ -1,0 +1,132 @@
+ easel/devkit/autodoc               |    4 ++--
+ easel/devkit/esl-dependencies      |    4 ++--
+ easel/devkit/sqc                   |    7 +++----
+ easel/testsuite/coverage_report.pl |    4 ++--
+ easel/testsuite/driver_report.pl   |    4 ++--
+ easel/testsuite/valgrind_report.pl |    4 ++--
+ profmark/rocplot.pl                |    4 ++--
+ 7 files changed, 15 insertions(+), 16 deletions(-)
+
+diff --git a/easel/devkit/autodoc b/easel/devkit/autodoc
+index 16bda4d..f5c5efc 100755
+--- a/easel/devkit/autodoc
++++ b/easel/devkit/autodoc
+@@ -49,8 +49,8 @@
+ #
+ # SRE, Tue Nov 30 19:43:47 2004
+ 
+-require  "getopts.pl";
+-&Getopts('n:t');
++use Getopt::Std;
++getopts('n:t');
+ $cfile = shift;
+ 
+ if ($opt_t) { $show_api_table = 1; }
+diff --git a/easel/devkit/esl-dependencies b/easel/devkit/esl-dependencies
+index a4dc126..b61fa7a 100755
+--- a/easel/devkit/esl-dependencies
++++ b/easel/devkit/esl-dependencies
+@@ -13,8 +13,8 @@
+ # SRE, Mon Jun 11 11:15:31 2007
+ # SVN $Id$
+ 
+-require "getopts.pl"
+-&Getopts('1afr');
++use Getopt::Std;
++getopts('1afr');
+ 
+ if ($opt_1) { $show_summary_table = 1; }
+ if ($opt_a) { $list_augfiles      = 1; }
+diff --git a/easel/devkit/sqc b/easel/devkit/sqc
+index af3adf6..0cdb458 100755
+--- a/easel/devkit/sqc
++++ b/easel/devkit/sqc
+@@ -205,12 +205,11 @@
+ # SRE, Tue Aug  6 11:16:39 2002
+ # SVN $Id: sqc 1796 2007-01-03 22:36:44Z eddys $
+ 
+-require "getopts.pl";
+-require "importenv.pl";
++use Getopt::Std;
+ 
+ # Parse our command line
+ #
+-&Getopts('v');
++getopts('v');
+ if ($opt_v) { $verbose = 1;           }
+ 
+ 
+@@ -609,7 +608,7 @@ sub check_valgrind_status
+ #
+ sub tempname {
+     my ($dir, $name, $suffix);
+-    if ($TMPDIR) { $dir = $TMPDIR."/"; } else {$dir = "";}
++    if ($ENV{TMPDIR}) { $dir = $ENV{TMPDIR}."/"; } else {$dir = "";}
+ 
+     foreach $suffix ("aa".."zz") {
+         $name = "$dir"."esltmp".$suffix.$$;
+diff --git a/easel/testsuite/coverage_report.pl b/easel/testsuite/coverage_report.pl
+old mode 100755
+new mode 100644
+index 9c77791..024ed34
+--- a/easel/testsuite/coverage_report.pl
++++ b/easel/testsuite/coverage_report.pl
+@@ -16,9 +16,9 @@
+ #
+ # SRE, Thu Mar  1 19:22:57 2007 (Janelia)
+ # SVN $Id: coverage_report.pl 231 2008-03-25 14:43:57Z eddys $
+-require  "getopts.pl";
++use Getopt::Std;
+ $have_sloccount = 1;
+-&Getopts('cs');
++getopts('cs');
+ if ($opt_c) { $do_recompile     = 1; }
+ if ($opt_s) { $have_sloccount   = 0; }
+ 
+diff --git a/easel/testsuite/driver_report.pl b/easel/testsuite/driver_report.pl
+index 757854d..a9a8902 100755
+--- a/easel/testsuite/driver_report.pl
++++ b/easel/testsuite/driver_report.pl
+@@ -25,8 +25,8 @@
+ # SRE, Fri Mar  2 10:01:44 2007 (Janelia)
+ # SVN $Id: driver_report.pl 326 2009-02-28 15:49:07Z eddys $
+ 
+-require  "getopts.pl";
+-&Getopts('c');
++use Getopt::Std;
++getopts('c');
+ if ($opt_c) { $do_recompile = 1; }
+ 
+ if ($ENV{'CC'}       ne "") { $CC       = $ENV{'CC'};       } else { $CC        = "gcc"; } 
+diff --git a/easel/testsuite/valgrind_report.pl b/easel/testsuite/valgrind_report.pl
+old mode 100755
+new mode 100644
+index 186a392..07026a0
+--- a/easel/testsuite/valgrind_report.pl
++++ b/easel/testsuite/valgrind_report.pl
+@@ -10,8 +10,8 @@
+ #
+ # SRE, Fri Mar  2 08:37:48 2007 [Janelia]
+ # SVN $Id: valgrind_report.pl 231 2008-03-25 14:43:57Z eddys $
+-require  "getopts.pl";
+-&Getopts('c');
++use Getopt::Std;
++getopts('c');
+ if ($opt_c) { $do_recompile = 1; }
+ 
+ if ($ENV{'CC'}     ne "") { $CC     = $ENV{'CC'};     } else { $CC       = "gcc"; } 
+diff --git a/profmark/rocplot.pl b/profmark/rocplot.pl
+index d4c0f67..4e8175a 100755
+--- a/profmark/rocplot.pl
++++ b/profmark/rocplot.pl
+@@ -2,8 +2,8 @@
+ 
+ $nsearches = 1567;
+ 
+-require "getopts.pl";
+-&Getopts('n:X:x:');
++use Getopt::Std
++getopts('n:X:x:');
+ 
+ if ($opt_n) { $nsearches = $opt_n; }
+ if ($opt_X) { 

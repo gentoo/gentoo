@@ -1,0 +1,26 @@
+Index: navigation-1.13.0/navfn/src/navtest.cpp
+===================================================================
+--- navigation-1.13.0.orig/navfn/src/navtest.cpp
++++ navigation-1.13.0/navfn/src/navtest.cpp
+@@ -21,7 +21,7 @@ using namespace navfn;
+ extern "C" {
+ #include <stdio.h>
+ // pgm.h is not very friendly with system headers... need to undef max() and min() afterwards
+-#include <pgm.h>
++#include <netpbm/pgm.h>
+ #undef max
+ #undef min
+ }
+Index: navigation-1.13.0/navfn/src/read_pgm_costmap.cpp
+===================================================================
+--- navigation-1.13.0.orig/navfn/src/read_pgm_costmap.cpp
++++ navigation-1.13.0/navfn/src/read_pgm_costmap.cpp
+@@ -37,7 +37,7 @@
+ extern "C" {
+ #include <stdio.h>
+ // pgm.h is not very friendly with system headers... need to undef max() and min() afterwards
+-#include <pgm.h>
++#include <netpbm/pgm.h>
+ #undef max
+ #undef min
+ }

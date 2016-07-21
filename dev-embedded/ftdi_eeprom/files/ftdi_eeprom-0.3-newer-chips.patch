@@ -1,0 +1,23 @@
+latest upstream vcs tree supports this stuff in a diff way
+
+https://bugs.gentoo.org/376117
+
+patch by Robert Pearce
+
+--- ftdi_eeprom-0.2/src/main.c
++++ ftdi_eeprom-0.2/src/main.c
+@@ -131,9 +131,13 @@
+ 	
+ 	if (i != 0) {
+ 	    printf("Unable to find FTDI devices under given vendor/product id: 0x%X/0x%X\n", eeprom.vendor_id, eeprom.product_id);
+-	    printf("Retrying with default FTDI id.\n");
++	    printf("Retrying with default FTDI ids.\n");
+ 
+     	    i = ftdi_usb_open(&ftdi, 0x0403, 0x6001);
++	    if (i != 0)
++    	    	i = ftdi_usb_open(&ftdi, 0x0403, 0x6010);
++	    if (i != 0)
++    	    	i = ftdi_usb_open(&ftdi, 0x0403, 0x6011);
+ 	    if (i != 0) {
+ 		printf("Sorry, unable to find FTDI USB chip\n");
+ 		exit (-1);

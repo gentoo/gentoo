@@ -1,0 +1,15 @@
+Description: Exception: fromstring() has been removed. Now frombytes() is called instead.
+Author: Josue Ortega <josueortega@debian.org.gt>
+Last-Update: 2015-12-20
+
+--- a/pyavm/tests/test_main.py
++++ b/pyavm/tests/test_main.py
+@@ -46,7 +46,7 @@
+ @pytest.mark.parametrize('filename', XML_FILES_WCS)
+ def test_to_wcs_target_image(filename, tmpdir):
+     from PIL import Image
+-    image = Image.fromstring(data=b"1111", size=(2,2), mode="L")
++    image = Image.frombytes(data=b"1111", size=(2,2), mode="L")
+     image_file = tmpdir.join('test.png').strpath
+     image.save(image_file)
+     image.close()

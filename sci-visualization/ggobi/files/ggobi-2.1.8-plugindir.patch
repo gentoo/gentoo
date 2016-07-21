@@ -1,0 +1,11 @@
+--- plugins/Makefile.plugin.orig	2009-12-14 22:15:01.000000000 +0000
++++ plugins/Makefile.plugin	2009-12-14 22:15:16.000000000 +0000
+@@ -2,7 +2,7 @@
+ 
+ # Every plugin provides a single library to GGobi, define it here.
+ # Its name should start with 'lib' and end with '.la'.
+-plugindir = $(datadir)/ggobi/plugins/$(PACKAGE_NAME)
++plugindir = $(libdir)/ggobi/plugins/$(PACKAGE_NAME)
+ plugin_LTLIBRARIES        = plugin.la
+ 
+ # Most plugins will only require GGobi and its dependencies (gtk, libxml2)

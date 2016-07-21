@@ -1,0 +1,16 @@
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -21,11 +21,9 @@
+ noinst_PROGRAMS = yahoo autoresponder
+ 
+ yahoo_SOURCES = sample_client.c
+-yahoo_LDADD = libyahoo2.la
+-yahoo_LDFLAGS = -lssl
++yahoo_LDADD = libyahoo2.la -lssl
+ 
+ autoresponder_SOURCES = autoresponder.c
+-autoresponder_LDADD = libyahoo2.la
+-autoresponder_LDFLAGS = -lssl
++autoresponder_LDADD = libyahoo2.la -lssl
+ 
+ endif

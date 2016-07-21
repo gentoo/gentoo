@@ -1,0 +1,128 @@
+https://bugs.gentoo.org/424453
+
+From 6bf58a59a1f3803e57e3f0378aa9344686707b75 Mon Sep 17 00:00:00 2001
+From: Stefano Lattarini <stefano.lattarini@gmail.com>
+Date: Mon, 28 May 2012 13:32:03 +0200
+Subject: [PATCH] aclocal: declare function prototypes, do not use '&' in
+ function calls
+
+This change will also fix automake bug#11543 (from a report by Matt
+Burgess).
+
+* aclocal.in: Declare prototypes for almost all functions early, before
+any actual function definition (but omit the prototype for the dynamically
+generated '&search' function).  Add prototypes to any function definition.
+Remove '&' from function invocations (i.e., simply use "func(ARGS..)"
+instead of "&func(ARGS...)").
+* THANKS, NEWS: Update.
+
+Signed-off-by: Stefano Lattarini <stefano.lattarini@gmail.com>
+---
+ NEWS       |  4 ++++
+ THANKS     |  1 +
+ aclocal.in | 42 ++++++++++++++++++++++++++++++++++--------
+ 3 files changed, 39 insertions(+), 8 deletions(-)
+
+diff --git a/aclocal.in b/aclocal.in
+index dfb851b..e8855d5 100644
+--- a/aclocal.in
++++ b/aclocal.in
+@@ -152,8 +152,34 @@ my $erase_me;
+ 
+ ################################################################
+ 
++# Prototypes for all subroutines.
++
++sub unlink_tmp (;$);
++sub xmkdir_p ($);
++sub check_acinclude ();
++sub reset_maps ();
++sub install_file ($$);
++sub list_compare (\@\@);
++sub scan_m4_dirs ($@);
++sub scan_m4_files ();
++sub add_macro ($);
++sub scan_configure_dep ($);
++sub add_file ($);
++sub scan_file ($$$);
++sub strip_redundant_includes (%);
++sub trace_used_macros ();
++sub scan_configure ();
++sub write_aclocal ($@);
++sub usage ($);
++sub version ();
++sub handle_acdir_option ($$);
++sub parse_arguments ();
++sub parse_ACLOCAL_PATH ();
++
++################################################################
++
+ # Erase temporary file ERASE_ME.  Handle signals.
+-sub unlink_tmp
++sub unlink_tmp (;$)
+ {
+   my ($sig) = @_;
+ 
+@@ -350,7 +376,7 @@ sub scan_m4_dirs ($@)
+ 	  next if $file eq 'aclocal.m4';
+ 
+ 	  my $fullfile = File::Spec->canonpath ("$m4dir/$file");
+-	    &scan_file ($type, $fullfile, 'aclocal');
++	  scan_file ($type, $fullfile, 'aclocal');
+ 	}
+       closedir (DIR);
+     }
+@@ -361,12 +387,12 @@ sub scan_m4_files ()
+ {
+   # First, scan configure.ac.  It may contain macro definitions,
+   # or may include other files that define macros.
+-  &scan_file (FT_USER, $configure_ac, 'aclocal');
++  scan_file (FT_USER, $configure_ac, 'aclocal');
+ 
+   # Then, scan acinclude.m4 if it exists.
+   if (-f 'acinclude.m4')
+     {
+-      &scan_file (FT_USER, 'acinclude.m4', 'aclocal');
++      scan_file (FT_USER, 'acinclude.m4', 'aclocal');
+     }
+ 
+   # Finally, scan all files in our search paths.
+@@ -380,7 +406,7 @@ sub scan_m4_files ()
+   my $search = "sub search {\nmy \$found = 0;\n";
+   foreach my $key (reverse sort keys %map)
+     {
+-      $search .= ('if (/\b\Q' . $key . '\E(?!\w)/) { & add_macro ("' . $key
++      $search .= ('if (/\b\Q' . $key . '\E(?!\w)/) { add_macro ("' . $key
+ 		  . '"); $found = 1; }' . "\n");
+     }
+   $search .= "return \$found;\n};\n";
+@@ -403,7 +429,7 @@ sub add_macro ($)
+ 
+   verb "saw macro $macro";
+   $macro_seen{$macro} = 1;
+-  &add_file ($map{$macro});
++  add_file ($map{$macro});
+ }
+ 
+ # scan_configure_dep ($file)
+@@ -465,7 +491,7 @@ sub scan_configure_dep ($)
+     }
+ 
+   add_macro ($_) foreach (@rlist);
+-  &scan_configure_dep ($_) foreach @ilist;
++  scan_configure_dep ($_) foreach @ilist;
+ }
+ 
+ # add_file ($FILE)
+@@ -931,7 +957,7 @@ EOF
+ }
+ 
+ # Print version and exit.
+-sub version()
++sub version ()
+ {
+   print <<EOF;
+ aclocal (GNU $PACKAGE) $VERSION
+-- 
+2.1.3
+

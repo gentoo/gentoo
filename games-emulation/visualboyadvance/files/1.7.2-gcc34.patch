@@ -1,0 +1,41 @@
+diff -ur VisualBoyAdvance-1.7.2.orig/src/gtk/joypadconfig.h VisualBoyAdvance-1.7.2/src/gtk/joypadconfig.h
+--- VisualBoyAdvance-1.7.2.orig/src/gtk/joypadconfig.h	2004-05-10 16:43:21.000000000 +0200
++++ VisualBoyAdvance-1.7.2/src/gtk/joypadconfig.h	2004-08-12 22:30:20.838039064 +0200
+@@ -22,8 +22,8 @@
+ 
+ #include <vector>
+ 
+-#include <libglademm.h>
+ #include <gtkmm.h>
++#include <libglademm.h>
+ 
+ #ifndef GTKMM20
+ # include "sigccompat.h"
+diff -ur VisualBoyAdvance-1.7.2.orig/src/gtk/main.cpp VisualBoyAdvance-1.7.2/src/gtk/main.cpp
+--- VisualBoyAdvance-1.7.2.orig/src/gtk/main.cpp	2004-05-21 18:02:35.000000000 +0200
++++ VisualBoyAdvance-1.7.2/src/gtk/main.cpp	2004-08-12 22:39:08.633801912 +0200
+@@ -22,10 +22,10 @@
+ 
+ #include <list>
+ 
+-#include <libglademm.h>
+ #include <gtkmm/main.h>
+ #include <gtkmm/window.h>
+ #include <gtkmm/messagedialog.h>
++#include <libglademm.h>
+ 
+ #include "images/vba-wm-pixbufs.h"
+ 
+diff -ur VisualBoyAdvance-1.7.2.orig/src/gtk/window.h VisualBoyAdvance-1.7.2/src/gtk/window.h
+--- VisualBoyAdvance-1.7.2.orig/src/gtk/window.h	2004-05-21 15:25:41.000000000 +0200
++++ VisualBoyAdvance-1.7.2/src/gtk/window.h	2004-08-12 22:30:58.650290728 +0200
+@@ -23,8 +23,8 @@
+ #include <sys/types.h>
+ #include <stdarg.h>
+ 
+-#include <libglademm.h>
+ #include <gtkmm.h>
++#include <libglademm.h>
+ 
+ #ifndef GTKMM20
+ # include "sigccompat.h"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+    <description>Primary Maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Perlbal</remote-id>
+    <remote-id type="cpan-module">PalImg</remote-id>
+    <remote-id type="cpan-module">PaletteModify</remote-id>
+    <remote-id type="cpan-module">Perlbal</remote-id>
+    <remote-id type="cpan-module">Perlbal::AIO</remote-id>
+    <remote-id type="cpan-module">Perlbal::BackendHTTP</remote-id>
+    <remote-id type="cpan-module">Perlbal::Cache</remote-id>
+    <remote-id type="cpan-module">Perlbal::ChunkedUploadState</remote-id>
+    <remote-id type="cpan-module">Perlbal::ClientHTTP</remote-id>
+    <remote-id type="cpan-module">Perlbal::ClientHTTPBase</remote-id>
+    <remote-id type="cpan-module">Perlbal::ClientManage</remote-id>
+    <remote-id type="cpan-module">Perlbal::ClientProxy</remote-id>
+    <remote-id type="cpan-module">Perlbal::CommandContext</remote-id>
+    <remote-id type="cpan-module">Perlbal::Fields</remote-id>
+    <remote-id type="cpan-module">Perlbal::HTTPHeaders</remote-id>
+    <remote-id type="cpan-module">Perlbal::ManageCommand</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::AccessControl</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::AutoRemoveLeadingDir</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Cgilike</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Cgilike::Request</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::EchoService</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::EchoService::Client</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::FlvStreaming</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Highpri</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Include</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::LazyCDN</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::MaxContentLength</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::NotModified</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Palimg</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Queues</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Redirect</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Stats</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Stats::Storage</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Throttle</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Throttle::Store</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Throttle::Store::Memcached</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Throttle::Store::Memory</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Vhosts</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::Vpaths</remote-id>
+    <remote-id type="cpan-module">Perlbal::Plugin::XFFExtras</remote-id>
+    <remote-id type="cpan-module">Perlbal::Pool</remote-id>
+    <remote-id type="cpan-module">Perlbal::ReproxyManager</remote-id>
+    <remote-id type="cpan-module">Perlbal::Service</remote-id>
+    <remote-id type="cpan-module">Perlbal::Socket</remote-id>
+    <remote-id type="cpan-module">Perlbal::SocketSSL</remote-id>
+    <remote-id type="cpan-module">Perlbal::SocketSSL2</remote-id>
+    <remote-id type="cpan-module">Perlbal::TCPListener</remote-id>
+    <remote-id type="cpan-module">Perlbal::Test</remote-id>
+    <remote-id type="cpan-module">Perlbal::Test::WebClient</remote-id>
+    <remote-id type="cpan-module">Perlbal::Test::WebServer</remote-id>
+    <remote-id type="cpan-module">Perlbal::UploadListener</remote-id>
+    <remote-id type="cpan-module">Perlbal::Util</remote-id>
+  </upstream>
+</pkgmetadata>

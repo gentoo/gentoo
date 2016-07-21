@@ -1,0 +1,9 @@
+diff -ru nstx-1.1-beta6.orig/Makefile nstx-1.1-beta6/Makefile
+--- nstx-1.1-beta6.orig/Makefile	2009-03-17 03:29:43.000000000 +0000
++++ nstx-1.1-beta6/Makefile	2009-03-17 03:29:53.000000000 +0000
+@@ -1,4 +1,4 @@
+-CFLAGS += -ggdb -Wall -Werror -Wsign-compare 
++CFLAGS += -ggdb -Wall -Wsign-compare 
+ 
+ NSTXD_SRCS = nstxd.c nstx_encode.c nstx_pstack.c nstx_dns.c nstx_tuntap.c nstx_queue.c nstx_util.c
+ NSTXD_OBJS = ${NSTXD_SRCS:.c=.o}

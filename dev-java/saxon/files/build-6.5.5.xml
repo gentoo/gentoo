@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---
+   @author: Saleem Abdulrasool <compnerd@gentoo.org>
+   @date: 5/9/2005
+   @revision: 1.0_alpha
+
+   @notes: Call using the following: ant -f build.xml -Dproject.name=${project name} -Dpackage.name=${package name}
+-->
+
+<project name="Gentoo_Builder" default="jar" basedir=".">
+   <property name="src" value="src"/>
+   <property name="build" value="build"/>
+   <property name="dist" value="dist"/>
+
+   <property name="project.name" value="saxon6.5"/>
+   <property name="pkg" value="${package.name}"/>
+   <property name="all.jar" value="${project.name}.jar"/>
+
+   <!-- Override any defined properties -->
+   <property file="build.properties"/>
+	<path id="lib.classpath">
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+
+   <target name="init">
+      <tstamp/>
+      <mkdir dir="${build}"/>
+      <mkdir dir="${dist}"/>
+      <mkdir dir="${dist}/doc"/>
+   </target>
+
+   <target name="compile" depends="init">
+      <javac srcdir="${src}" destdir="${build}" classpath="${classpath}" classpathref="lib.classpath"/>
+   </target>
+
+   <target name="manifest" depends="init">
+      <move file="${src}/META-INF" tofile="${build}/META-INF"/>
+      <manifest file="${build}/META-INF/MANIFEST.MF" mode="update">
+         <attribute name="Built-By" value="Gentoo Portage"/>
+      </manifest>
+   </target>
+  
+   <target name="jar-saxon6.5" depends="compile,manifest">
+      <jar jarfile="${dist}/${all.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+         <fileset dir="${build}">
+			<include name="com/**"/>
+			<include name="javax/**"/>
+			<include name="org/**"/>
+			<include name="META-INF/services/javax.xml.transform.TransformerFactory"/>
+         </fileset>
+      </jar>
+   </target>
+
+   <target name="jar" depends="jar-saxon6.5"/>
+
+   <target name="javadoc" depends="compile">
+      <javadoc destdir="${dist}/doc/api" classpathref="lib.classpath">
+      	<fileset dir="${src}"/>
+      </javadoc>
+   </target>
+
+   <target name="clean">
+      <delete dir="${build}"/>
+      <delete dir="${dist}"/>
+   </target>
+</project>

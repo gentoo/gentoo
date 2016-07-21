@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# $Id$
+
+NAME="perlbal"
+BINARY="/usr/bin/perlbal"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting $NAME"
+	# Add --pidfile when upstream supports PIDFILES
+	start-stop-daemon --start \
+		--exec ${BINARY} -- ${PERLBAL_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping $NAME"
+	start-stop-daemon --stop --exec "${BINARY}"
+	eend $?
+}
+
+# vim: ft=gentoo-init-d:

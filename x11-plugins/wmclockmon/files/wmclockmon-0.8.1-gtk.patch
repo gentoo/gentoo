@@ -1,0 +1,303 @@
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in wmclockmon-0.8.1/wmclockmon-cal/Makefile.in
+--- wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in	2005-06-15 16:55:27.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-cal/Makefile.in	2008-01-13 13:23:11.000000000 +0200
+@@ -96,17 +96,17 @@
+ 
+ 
+ DEFS = @DEFS@ -I. -I$(srcdir) -I..
+-LDFLAGS = @LDFLAGS@ `gtk-config --libs`
++LIBS = @LIBS@ `pkg-config gtk+-2.0 --libs`
+ X_CFLAGS = @X_CFLAGS@
+ X_LIBS = @X_LIBS@
+ X_PRE_LIBS = @X_PRE_LIBS@
+ wmclockmon_OBJECTS = main.o mainwindow.o tools.o
+ wmclockmon_DEPENDENCIES = 
+ wmclockmon_LDFLAGS = 
+-CFLAGS = @CFLAGS@ `gtk-config --cflags`
++CFLAGS = @CFLAGS@ `pkg-config gtk+-2.0 --cflags`
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
++LINK = $(CCLD) $(LDFLAGS) $(AM_CFLAGS) $(CFLAGS) $(LIBS) -o $@
+ DIST_COMMON =  Makefile.am Makefile.in
+ 
+ 
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.c wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c
+--- wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.c	2005-06-15 17:03:21.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c	2008-01-13 13:04:53.000000000 +0200
+@@ -51,7 +51,6 @@
+     gtk_widget_hide(calendar);
+     gtk_widget_hide(closewindow);
+     gtk_widget_grab_default(GTK_WIDGET(cancel));
+-    gtk_widget_draw_default(GTK_WIDGET(cancel));
+     gtk_widget_grab_focus(GTK_WIDGET(edit));
+     gtk_widget_show(text_buttons);
+     gtk_widget_show(edit);
+@@ -69,7 +68,6 @@
+     gtk_widget_hide(cancel);
+     gtk_widget_show(calendar);
+     gtk_widget_grab_default(GTK_WIDGET(closewindow));
+-    gtk_widget_draw_default(GTK_WIDGET(closewindow));
+     gtk_widget_grab_focus(GTK_WIDGET(closewindow));
+     gtk_widget_show(closewindow);
+ }
+@@ -93,13 +91,20 @@
+     FILE *file;
+     char *filename = get_file(datestr);
+ 
++    GtkTextIter iter;
++    GtkTextBuffer *buf;
++
++    buf = GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit)));
++    gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &iter);
++    gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &iter);
++
+     if ((file = fopen(filename, "r")) != NULL) {
+         while (! feof(file)) {
+             char line[MAXSTRLEN + 1];
+             bzero(line, MAXSTRLEN + 1);
+             fgets(line, MAXSTRLEN, file);
+             if (line[0] != 0)
+-                gtk_text_insert(GTK_TEXT(edit), NULL, NULL, NULL, line, -1);
++	      gtk_text_buffer_insert(buf, &iter, line, -1);
+         }
+         fclose(file);
+     }
+@@ -154,21 +159,14 @@
+ 
+ 
+ static void editor_flush() {
+-    int cont = TRUE;
+-
+-    while (cont) {
+-       cont = gtk_text_backward_delete(GTK_TEXT(edit), 1);
+-    }
+-    cont = TRUE;
+-    while (cont) {
+-       cont = gtk_text_forward_delete(GTK_TEXT(edit), 1);
+-    }
++  gtk_text_buffer_set_text(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), "", 0);
+ }
+ 
+ 
+ static void editor_fill(int which) {
+     char *dstr;
+     GtkWidget *label = NULL;
++    GtkTextIter iter;
+ 
+     switch (which) {
+         case UNIQUE: label = label_u; break;
+@@ -179,11 +177,10 @@
+     gtk_label_get(GTK_LABEL(label), &dstr);
+     strcpy(daystr, dstr);
+     to_button(which);
+-    gtk_text_freeze(GTK_TEXT(edit));
+     editor_flush();
+     load_file(daystr);
+-    gtk_text_set_point(GTK_TEXT(edit), gtk_text_get_length(GTK_TEXT(edit)));
+-    gtk_text_thaw(GTK_TEXT(edit));
++    gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &iter);
++    gtk_text_buffer_place_cursor(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &iter);
+ }
+ 
+ 
+@@ -225,8 +222,15 @@
+     char *dirname  = xmalloc(len + 2);
+     struct stat stat_buf;
+ 
++    GtkTextIter ts, te;
++    gchar *tbuf;
++    int tlen;
++
++    tlen = gtk_text_buffer_get_char_count(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))));
++    gtk_text_buffer_get_bounds(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &ts, &te);
++
+     sprintf(dirname, "%s/%s", robust_home(), DEFAULT_CONFIGDIR);
+-    if (gtk_text_get_length(GTK_TEXT(edit)) > 0) {
++    if (tlen > 0) {
+         if (! ((stat(dirname, &stat_buf) == 0) && S_ISDIR(stat_buf.st_mode)))
+             mkdir(dirname, 0755);
+ 
+@@ -235,13 +239,11 @@
+             unsigned int year, month, day;
+ 
+             if (file) {
+-                int i;
+-                for (i = 0 ; i < gtk_text_get_length(GTK_TEXT(edit)) ; i++) {
+-                    char t = GTK_TEXT_INDEX(GTK_TEXT(edit), i);
+-                    fprintf(file, "%c", t);
+-                }
+-                fflush(file);
+-                fclose(file);
++	      tbuf = gtk_text_buffer_get_text(GTK_TEXT_BUFFER(gtk_text_view_get_buffer(GTK_TEXT_VIEW(edit))), &ts, &te, TRUE);
++	      fprintf(file, "%s", tbuf);
++	      g_free(tbuf);
++	      fflush(file);
++	      fclose(file);
+             }
+             gtk_calendar_get_date(GTK_CALENDAR(calendar), &year, &month, &day);
+             gtk_calendar_mark_day(GTK_CALENDAR(calendar), day);
+@@ -259,9 +261,7 @@
+     gtk_calendar_get_date(GTK_CALENDAR(calendar), &year, &month, &day);
+     gtk_calendar_unmark_day(GTK_CALENDAR(calendar), day);
+     FREE(filename);
+-    gtk_text_freeze(GTK_TEXT(edit));
+     editor_flush();
+-    gtk_text_thaw(GTK_TEXT(edit));
+ }
+ 
+ 
+@@ -357,10 +357,10 @@
+             GTK_SIGNAL_FUNC(mark_days), NULL);
+     gtk_widget_show(calendar);
+ 
+-    edit = gtk_text_new(NULL, NULL);
+-    gtk_text_set_editable(GTK_TEXT(edit), TRUE);
+-    gtk_text_set_word_wrap(GTK_TEXT(edit), TRUE);
+-    gtk_text_set_line_wrap(GTK_TEXT(edit), TRUE);
++    edit = gtk_text_view_new();
++    gtk_text_view_set_editable(GTK_TEXT_VIEW(edit), TRUE);
++    gtk_text_view_set_wrap_mode(GTK_TEXT_VIEW(edit), GTK_WRAP_WORD_CHAR);
++
+     gtk_box_pack_start(GTK_BOX(main_vbox), edit, TRUE, TRUE, 1);
+ 
+ 
+@@ -413,7 +413,6 @@
+     gtk_box_pack_start(GTK_BOX(buttons_hbox), closewindow, TRUE, TRUE, 0);
+     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(closewindow), GTK_CAN_DEFAULT);
+     gtk_widget_grab_default(GTK_WIDGET(closewindow));
+-    gtk_widget_draw_default(GTK_WIDGET(closewindow));
+     gtk_widget_show(closewindow);
+ 
+ 
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in wmclockmon-0.8.1/wmclockmon-config/Makefile.in
+--- wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in	2005-06-15 16:55:27.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-config/Makefile.in	2008-01-13 13:23:44.000000000 +0200
+@@ -96,17 +96,17 @@
+ 
+ 
+ DEFS = @DEFS@ -I. -I$(srcdir) -I..
+-LDFLAGS = @LDFLAGS@ `gtk-config --libs`
++LIBS = @LIBS@ `pkg-config gtk+-2.0 --libs`
+ X_CFLAGS = @X_CFLAGS@
+ X_LIBS = @X_LIBS@
+ X_PRE_LIBS = @X_PRE_LIBS@
+ wmclockmon_OBJECTS = actions.o dialogs.o edit.o main.o mainwindow.o tools.o
+ wmclockmon_DEPENDENCIES = 
+ wmclockmon_LDFLAGS = 
+-CFLAGS = @CFLAGS@ `gtk-config --cflags`
++CFLAGS = @CFLAGS@ `pkg-config gtk+-2.0 --cflags`
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
++LINK = $(CCLD) $(LDFLAGS) $(AM_CFLAGS) $(CFLAGS) $(LIBS) -o $@
+ DIST_COMMON =  Makefile.am Makefile.in
+ 
+ 
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/dialogs.c wmclockmon-0.8.1/wmclockmon-config/dialogs.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/dialogs.c	2005-06-15 16:55:27.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-config/dialogs.c	2008-01-13 13:04:53.000000000 +0200
+@@ -38,7 +38,6 @@
+                        bouton, TRUE, TRUE, 0);
+     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+     gtk_widget_grab_default(GTK_WIDGET(bouton));
+-    gtk_widget_draw_default(GTK_WIDGET(bouton));
+     gtk_widget_show(bouton);
+ 
+     bouton = gtk_button_new_with_label("No");
+@@ -96,7 +95,6 @@
+                        bouton, TRUE, TRUE, 0);
+     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+     gtk_widget_grab_default(GTK_WIDGET(bouton));
+-    gtk_widget_draw_default(GTK_WIDGET(bouton));
+     gtk_widget_show(bouton);
+ 
+     gtk_container_set_border_width(GTK_CONTAINER
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/edit.c wmclockmon-0.8.1/wmclockmon-config/edit.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/edit.c	2005-06-15 16:55:27.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-config/edit.c	2008-01-13 13:04:53.000000000 +0200
+@@ -76,7 +76,6 @@
+                        bouton, TRUE, TRUE, 0);
+     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+     gtk_widget_grab_default(GTK_WIDGET(bouton));
+-    gtk_widget_draw_default(GTK_WIDGET(bouton));
+     gtk_widget_show(bouton);
+ 
+     bouton = gtk_button_new_with_label("Cancel");
+diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.c wmclockmon-0.8.1/wmclockmon-config/mainwindow.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.c	2005-06-15 16:55:27.000000000 +0300
++++ wmclockmon-0.8.1/wmclockmon-config/mainwindow.c	2008-01-13 13:04:53.000000000 +0200
+@@ -10,9 +10,9 @@
+ #include "actions.h"
+ 
+ 
+-static GtkWidget *edit;
+-static GtkWidget *set;
+-static GtkWidget *remove;
++static GtkWidget *b_edit;
++static GtkWidget *b_set;
++static GtkWidget *b_remove;
+ 
+ static gint list_sel_cb (GtkCList *clist,
+                          gint row,
+@@ -20,9 +20,9 @@
+                          GdkEventButton *event,
+                          void *data) {
+     selected_row = row;
+-    gtk_widget_set_sensitive(edit,   TRUE);
+-    gtk_widget_set_sensitive(set,    TRUE);
+-    gtk_widget_set_sensitive(remove, TRUE);
++    gtk_widget_set_sensitive(b_edit,   TRUE);
++    gtk_widget_set_sensitive(b_set,    TRUE);
++    gtk_widget_set_sensitive(b_remove, TRUE);
+     return TRUE;
+ }
+ 
+@@ -33,9 +33,9 @@
+                            GdkEventButton *event,
+                            void *data) {
+     selected_row = -1;
+-    gtk_widget_set_sensitive(edit,   FALSE);
+-    gtk_widget_set_sensitive(set,    FALSE);
+-    gtk_widget_set_sensitive(remove, FALSE);
++    gtk_widget_set_sensitive(b_edit,   FALSE);
++    gtk_widget_set_sensitive(b_set,    FALSE);
++    gtk_widget_set_sensitive(b_remove, FALSE);
+     return TRUE;
+ }
+ 
+@@ -267,7 +267,7 @@
+     gtk_table_attach_defaults(GTK_TABLE(table), bouton, 0, 1, 1, 2);
+     gtk_widget_set_sensitive(bouton, FALSE);
+     gtk_widget_show(bouton);
+-    edit = bouton;
++    b_edit = bouton;
+ 
+     bouton = gtk_button_new_with_label(" Switch On/Off ");
+     gtk_signal_connect(GTK_OBJECT(bouton), "clicked",
+@@ -275,7 +275,7 @@
+     gtk_table_attach_defaults(GTK_TABLE(table), bouton, 1, 2, 1, 2);
+     gtk_widget_set_sensitive(bouton, FALSE);
+     gtk_widget_show(bouton);
+-    set = bouton;
++    b_set = bouton;
+ 
+     bouton = gtk_button_new_with_label(" Remove alarm ");
+     gtk_signal_connect(GTK_OBJECT(bouton), "clicked",
+@@ -283,7 +283,7 @@
+     gtk_table_attach_defaults(GTK_TABLE(table), bouton, 1, 2, 0, 1);
+     gtk_widget_set_sensitive(bouton, FALSE);
+     gtk_widget_show(bouton);
+-    remove = bouton;
++    b_remove = bouton;
+ 
+ 
+     label = gtk_label_new(" Alarms ");
+@@ -312,7 +312,6 @@
+     gtk_box_pack_start(GTK_BOX(buttons_hbox), bouton, TRUE, TRUE, 0);
+     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
+     gtk_widget_grab_default(GTK_WIDGET(bouton));
+-    gtk_widget_draw_default(GTK_WIDGET(bouton));
+     gtk_widget_show(bouton);
+ 
+     bouton = gtk_button_new_with_label(" Cancel ");

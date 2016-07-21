@@ -1,0 +1,64 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -17,6 +17,7 @@
+ 
+ 
+ import os
++import SCons.Util
+ 
+ version = '3.6.2'
+ 
+@@ -32,14 +33,23 @@
+                               (this option is only for packaging)''')
+ 
+ env = Environment (
+-  LINK      = 'gcc',
+-  CC        = 'gcc',
++  CC        = '',
+   CPPPATH   = '',
+   LINKFLAGS = '',
+   CCFLAGS   = '',
+   ENV       = os.environ,
+   TARFLAGS  = '-c -j')
+ 
++if os.environ.has_key('CC'):
++	env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++	env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++	env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++	env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++	env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
+ 
+ if env['PLATFORM'] == 'win32':
+ 	prefix      = ARGUMENTS.get ('PREFIX', '')
+@@ -58,7 +68,7 @@
+ BuildDir ('build', 'src')
+ 
+ cpppath = ['#', '#build']
+-ccflags   = ['-O2', '-std=c99', '-Wall', '-g', '-Wl,--export-dynamic',
++ccflags   = ['-std=c99',
+ #		'-DLIBXML_STATIC',
+ 		'-DVERSION=\\"' + version + '\\"',
+ 		'-DGLOSUNG_DATA_DIR=\\"' + data_dir + '\\"',
+@@ -74,7 +74,7 @@
+ 		'-DGLOSUNG_DATA_DIR=\\"' + data_dir + '\\"',
+ 		'-DPACKAGE_PIXMAPS_DIR=\\"' + pixmap_dir + '\\"']
+ 
+-linkflags = ['-Wl,--export-dynamic', '-L.']
++linkflags = []
+ #  -L/usr/lib'
+ #             `pkg-config --libs gtk+-2.0 libxml-2.0 gconf-2.0 libcurl`
+
+@@ -83,9 +83,6 @@
+     ccflags.append   ('-pg', '-fprofile-arcs')
+     linkflags.append ('-pg', '-fprofile-arcs')
+ 
+-if env['PLATFORM'] != 'win32':
+-        linkflags.append ('-Wl,--as-needed')
+-
+ #if not (ARGUMENTS.get ('dev')):
+ if (ARGUMENTS.get ('dev')):
+     ccflags   += [

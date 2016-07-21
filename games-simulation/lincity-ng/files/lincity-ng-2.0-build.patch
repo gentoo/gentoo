@@ -1,0 +1,35 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Jul 30 07:06:54 UTC 2012
+Subject: build system
+
+arguments to AR would be overwritten if we export AR
+
+--- lincity-ng-2.0.orig/lincity-ng.desktop
++++ lincity-ng-2.0/lincity-ng.desktop
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+ Type=Application
+ Version=1.0
+-Encoding=UTF-8
+ Name=Lincity-NG
+ GenericName=City Simulation Game
+ GenericName[de]=Stadtsimulationsspiel
+ Comment=Plan and Build a city and take care of transport, economics, electricityand others.
+-Icon=lincity-ng.png
++Icon=lincity-ng
+ Exec=lincity-ng
+ Terminal=false
+ StartupNotify=false
+--- lincity-ng-2.0.orig/mk/jam/unix.jam
++++ lincity-ng-2.0/mk/jam/unix.jam
+@@ -45,4 +45,10 @@
+     $(LINK) -o $(<) $(>) $(EXTRAOBJECTS) $(NEEDLIBS) $(LIBS)
+ }
+ 
++# jam Archive action seems to include the arguments which will break our AR export
++actions Archive
++{
++  $(AR) ru $(<) $(>)
++}
++
+ 

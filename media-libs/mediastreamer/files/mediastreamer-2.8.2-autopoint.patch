@@ -1,0 +1,17 @@
+--- mediastreamer-2.8.2/configure.ac.orig	2012-06-01 16:31:34.000000000 +0400
++++ mediastreamer-2.8.2/configure.ac	2012-06-01 16:36:08.586809086 +0400
+@@ -191,13 +191,13 @@
+ if test "$mingw_found" != "yes" ; then
+ 	dnl gettext macro does not work properly under mingw. And we want to use the one provided by GTK.
+ 	AM_GNU_GETTEXT([external])
+-	AM_GNU_GETTEXT_VERSION([0.18])
+ 	LIBS="$LIBS $LIBINTL"
+ else
+ 	AC_DEFINE(ENABLE_NLS,1,[Tells whether localisation is possible])
+ 	AC_DEFINE(HAVE_GETTEXT,1,[Tells wheter localisation is possible])
+ 	LIBS="$LIBS -lintl"
+ fi
++AM_GNU_GETTEXT_VERSION([0.18])
+ 
+ AM_CONDITIONAL(BUILD_MACOSX, test x$macosx_found = xyes)
+ AM_CONDITIONAL(BUILD_IOS, test x$ios_found = xyes)

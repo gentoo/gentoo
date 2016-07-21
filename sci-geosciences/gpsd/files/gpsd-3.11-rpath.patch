@@ -1,0 +1,12 @@
+don't set the -rpath flag to the install dir as this breaks DESTDIR
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -287,7 +287,7 @@
+ 
+ # Don't hack RPATH unless libdir points somewhere that is not on the
+ # minimum default load path.
+-if env["shared"]:
++if env["shared"] and env["chrpath"]:
+     if env["libdir"] not in ["/usr/lib", "/lib"]:
+         env.Prepend(RPATH=[installdir('libdir')])

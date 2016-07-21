@@ -1,0 +1,75 @@
+diff -ur xen-4.3.0.orig/stubdom/Makefile xen-4.3.0/stubdom/Makefile
+--- stubdom/Makefile	2013-07-09 18:46:56.000000000 +0800
++++ stubdom/Makefile	2013-07-21 16:07:08.094663570 +0800
+@@ -68,12 +68,12 @@
+ ##############
+ 
+ newlib-$(NEWLIB_VERSION).tar.gz:
+-	$(FETCHER) $@ $(NEWLIB_URL)/$@
+ 
+ newlib-$(NEWLIB_VERSION): newlib-$(NEWLIB_VERSION).tar.gz
+ 	tar xzf $<
+ 	patch -d $@ -p0 < newlib.patch
+ 	patch -d $@ -p0 < newlib-chk.patch
++	patch -d $@ -p0 < newlib-implicits.patch
+ 	patch -d $@ -p1 < newlib-stdint-size_max-fix-from-1.17.0.patch
+ 	find $@ -type f | xargs perl -i.bak \
+ 		-pe 's/\b_(tzname|daylight|timezone)\b/$$1/g'
+@@ -85,7 +85,7 @@
+ $(NEWLIB_STAMPFILE): mk-headers-$(XEN_TARGET_ARCH) newlib-$(NEWLIB_VERSION)
+ 	mkdir -p newlib-$(XEN_TARGET_ARCH)
+ 	( cd newlib-$(XEN_TARGET_ARCH) && \
+-	  CC_FOR_TARGET="$(CC) $(TARGET_CPPFLAGS) $(TARGET_CFLAGS) $(NEWLIB_CFLAGS)" AR_FOR_TARGET=$(AR) LD_FOR_TARGET=$(LD) RANLIB_FOR_TARGET=$(RANLIB) ../newlib-$(NEWLIB_VERSION)/configure --prefix=$(CROSS_PREFIX) --verbose --target=$(GNU_TARGET_ARCH)-xen-elf --enable-newlib-io-long-long --disable-multilib && \
++	CC_FOR_TARGET="$(CC) $(TARGET_CPPFLAGS) $(TARGET_CFLAGS) $(NEWLIB_CFLAGS)" AR_FOR_TARGET=$(AR) LD_FOR_TARGET=$(LD) LDFLAGS= RANLIB_FOR_TARGET=$(RANLIB) ../newlib-$(NEWLIB_VERSION)/configure --prefix=$(CROSS_PREFIX) --verbose --target=$(GNU_TARGET_ARCH)-xen-elf --enable-newlib-io-long-long --disable-multilib && \
+ 	  $(MAKE) DESTDIR= && \
+ 	  $(MAKE) DESTDIR= install )
+ 
+@@ -94,7 +94,6 @@
+ ############
+ 
+ zlib-$(ZLIB_VERSION).tar.gz:
+-	$(FETCHER) $@ $(ZLIB_URL)/$@
+ 
+ zlib-$(XEN_TARGET_ARCH): zlib-$(ZLIB_VERSION).tar.gz 
+ 	tar xzf $<
+@@ -105,7 +104,7 @@
+ cross-zlib: $(ZLIB_STAMPFILE)
+ $(ZLIB_STAMPFILE): zlib-$(XEN_TARGET_ARCH) $(NEWLIB_STAMPFILE)
+ 	( cd $< && \
+-	  CFLAGS="$(TARGET_CPPFLAGS) $(TARGET_CFLAGS)" CC=$(CC) ./configure --prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf && \
++	  CFLAGS="$(TARGET_CPPFLAGS) $(TARGET_CFLAGS)" CC="$(CC)" ./configure --prefix=$(CROSS_PREFIX)/$(GNU_TARGET_ARCH)-xen-elf && \
+ 	  $(MAKE) DESTDIR= libz.a && \
+ 	  $(MAKE) DESTDIR= install )
+ 
+@@ -114,7 +113,6 @@
+ ##############
+ 
+ pciutils-$(LIBPCI_VERSION).tar.bz2:
+-	$(FETCHER) $@ $(LIBPCI_URL)/$@
+ 
+ pciutils-$(XEN_TARGET_ARCH): pciutils-$(LIBPCI_VERSION).tar.bz2
+ 	tar xjf $<
+@@ -142,7 +140,6 @@
+ ######
+ 
+ lwip-$(LWIP_VERSION).tar.gz:
+-	$(FETCHER) $@ $(LWIP_URL)/$@
+ 
+ lwip-$(XEN_TARGET_ARCH): lwip-$(LWIP_VERSION).tar.gz
+ 	tar xzf $<
+@@ -180,7 +177,6 @@
+ # cross-polarssl
+ #############
+ polarssl-$(POLARSSL_VERSION)-gpl.tgz:
+-	$(FETCHER) $@ $(POLARSSL_URL)/$@
+ 
+ polarssl-$(XEN_TARGET_ARCH): polarssl-$(POLARSSL_VERSION)-gpl.tgz
+ 	tar xzf $<
+@@ -385,7 +382,6 @@
+ ######
+ 
+ grub-$(GRUB_VERSION).tar.gz:
+-	$(FETCHER) $@ $(GRUB_URL)/$@
+ 
+ grub-upstream: grub-$(GRUB_VERSION).tar.gz
+ 	tar xzf $<

@@ -1,0 +1,229 @@
+ kmer/Make.rules   |  4 ++--
+ kmer/configure.sh | 20 +++++++++----------
+ src/c_make.as     | 58 +++++++++++++++++++++++++++----------------------------
+ src/c_make.gen    |  4 ++--
+ 4 files changed, 43 insertions(+), 43 deletions(-)
+
+diff --git a/kmer/Make.rules b/kmer/Make.rules
+index f904b13..5c2d477 100644
+--- a/kmer/Make.rules
++++ b/kmer/Make.rules
+@@ -139,12 +139,12 @@ ${ALL_CXX_DEPS}:%.d:%
+ ## EXE targets
+ ALL_C_EXES   :=$(strip $(foreach x,${//},${${x:.=.C_EXES}}))
+ ${ALL_C_EXES}:
+-	${-CC} ${CLD} ${CLDFLAGS} -o $@ $+ ${CLIBS}
++	${-CC} ${CLD} ${CLDFLAGS} ${LDFLAGS} -o $@ $+ ${CLIBS}
+ __SUBGOALS__+=$${${1:.=.C_EXES}}
+ 
+ ALL_CXX_EXES :=$(strip $(foreach x,${//},${${x:.=.CXX_EXES}}))
+ ${ALL_CXX_EXES}:
+-	${-CXX} ${CXXLD} ${CXXLDFLAGS} -o $@ $+ ${CXXLIBS}
++	${-CXX} ${CXXLD} ${CXXLDFLAGS} ${LDFLAGS} -o $@ $+ ${CXXLIBS}
+ __SUBGOALS__+=$${${1:.=.CXX_EXES}}
+ 
+ define .RULE-install-copy-C-CXX-EXES
+diff --git a/kmer/configure.sh b/kmer/configure.sh
+index 2f0d5ea..9daf89f 100755
+--- a/kmer/configure.sh
++++ b/kmer/configure.sh
+@@ -254,13 +254,13 @@ EOF
+ # -*- makefile -*-
+ #  Linux, optimized
+ CC                := $CC
+-SHLIB_FLAGS       := -shared
+-CFLAGS_COMPILE    := -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -O3 -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts -funroll-loops -fexpensive-optimizations -finline-functions -fomit-frame-pointer
+-CLDFLAGS          := -L/usr/local/lib
++SHLIB_FLAGS       := -shared ${LDFLAGS}
++CFLAGS_COMPILE    := -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts
++CLDFLAGS          := 
+ CLIBS             := -pthread -ldl
+ CXX               := $CXX
+-CXXFLAGS_COMPILE  := -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -O3 -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts -funroll-loops -fexpensive-optimizations -finline-functions -fomit-frame-pointer
+-CXXLDFLAGS        := -L/usr/local/lib
++CXXFLAGS_COMPILE  := -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_REENTRANT -O3 -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts
++CXXLDFLAGS        := 
+ CXXLIBS           := -pthread -ldl
+ ARFLAGS           := ruvs
+ INSTALL/          := $target/
+@@ -272,13 +272,13 @@ EOF
+ # -*- makefile -*-
+ #  Linux64, optimized
+ CC                := $CC
+-SHLIB_FLAGS       := -shared
+-CFLAGS_COMPILE    := -m64 -fPIC -D_REENTRANT -O3 -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts -funroll-loops -fexpensive-optimizations -finline-functions -fomit-frame-pointer
+-CLDFLAGS          := -L/usr/local/lib
++SHLIB_FLAGS       := -shared ${LDFLAGS}
++CFLAGS_COMPILE    := -fPIC -D_REENTRANT -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts
++CLDFLAGS          := 
+ CLIBS             := -pthread -ldl
+ CXX               := $CXX
+-CXXFLAGS_COMPILE  := -m64 -fPIC -D_REENTRANT -O3 -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts -funroll-loops -fexpensive-optimizations -finline-functions -fomit-frame-pointer
+-CXXLDFLAGS        := -L/usr/local/lib
++CXXFLAGS_COMPILE  := -fPIC -D_REENTRANT -D_THREAD_SAFE -pthread -fmessage-length=0 -Wall -Wno-char-subscripts
++CXXLDFLAGS        := 
+ CXXLIBS           := -pthread -ldl
+ ARFLAGS           := ruvs
+ INSTALL/          := $target/
+diff --git a/src/c_make.as b/src/c_make.as
+index 0172807..4304589 100644
+--- a/src/c_make.as
++++ b/src/c_make.as
+@@ -64,27 +64,27 @@ include $(LOCAL_WORK)/src/c_make.gen
+ 
+ ifeq ($(OSTYPE), Linux)
+   ifeq ($(MACHINETYPE), i686)
+-    ARCH_LDFLAGS  += -pthread -lm
+-    ARCH_CFLAGS   += -pthread -Wall -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DX86_GCC_LINUX
++    LINK_LIBS  += -pthread -lm
++    ARCH_CFLAGS   += -pthread -Wall  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DX86_GCC_LINUX
+     ARCH_LIB       = /usr/X11R6/lib
+   endif
+   ifeq ($(MACHINETYPE), amd64)
+-    ARCH_LDFLAGS  += -pthread -lm
+-    ARCH_CFLAGS   += -pthread -Wall -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DX86_GCC_LINUX
++    LINK_LIBS  += -pthread -lm
++    ARCH_CFLAGS   += -pthread -Wall  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DX86_GCC_LINUX
+     ARCH_LIB       = /usr/lib64 /usr/X11R6/lib64
+   endif
+   ifeq ($(MACHINETYPE), ia64)
+-    ARCH_LDFLAGS  += -pthread -lm
+-    ARCH_CFLAGS   += -pthread -Wall -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
++    LINK_LIBS  += -pthread -lm
++    ARCH_CFLAGS   += -pthread -Wall  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
+     ARCH_LIB       = /usr/X11R6/lib
+   endif
+ 
+   ifeq ($(BUILDDEBUG), 1)
+-    ARCH_CFLAGS  += -g 
+-    ARCH_LDFLAGS +=
++    ARCH_CFLAGS  +=  
++    LINK_LIBS +=
+   else
+-    ARCH_CFLAGS  += -O2
+-    ARCH_LDFLAGS += -Wl,-O1
++    ARCH_CFLAGS  += 
++    LINK_LIBS += 
+   endif
+ endif
+ 
+@@ -94,19 +94,19 @@ endif
+ 
+ ifeq ($(OSTYPE), FreeBSD)
+   ifeq ($(MACHINETYPE), i386)
+-    ARCH_LDFLAGS    += -pthread -lthr -lm
+-    ARCH_CFLAGS      = -pthread -Wall -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare
+-    ARCH_CFLAGS      = -pthread       -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare
++    LINK_LIBS    += -pthread -lthr -lm
++    ARCH_CFLAGS      = -pthread -Wall  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare
++    ARCH_CFLAGS      = -pthread        -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare
+   endif
+   ifeq ($(MACHINETYPE), amd64)
+-    ARCH_LDFLAGS    += -pthread -lthr -lm
+-    ARCH_CFLAGS      =  -pthread               -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -Wformat
+-    ARCH_CFLAGS      =  -pthread -Wall -Wextra -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -Wformat
++    LINK_LIBS    += -pthread -lthr -lm
++    ARCH_CFLAGS      =  -pthread                -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -Wformat
++    ARCH_CFLAGS      =  -pthread -Wall -Wextra  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -Wformat
+   endif
+ 
+   ifeq ($(BUILDCOVERAGE), 1)
+     ARCH_CFLAGS   += -g -fprofile-arcs -ftest-coverage
+-    ARCH_LDFLAGS  += -lgcov
++    LINK_LIBS  += -lgcov
+   else
+     ifeq ($(BUILDDEBUG), 1)
+       ARCH_CFLAGS   += -g
+@@ -140,14 +140,14 @@ ifeq ($(OSTYPE), Darwin)
+ 
+   ifeq ($(MACHINETYPE), i386)
+     ifeq ($(BUILDDEBUG), 1)
+-      ARCH_CFLAGS   += -fPIC -m64 -fmessage-length=0 -D_THREAD_SAFE -Wall -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -g
+-      ARCH_LDFLAGS  += -m64 -lm
++      ARCH_CFLAGS   += -fPIC -m64 -fmessage-length=0 -D_THREAD_SAFE -Wall  -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -g
++      LINK_LIBS  += -m64 -lm
+     else
+ #  Wow, -Wshorten-64-to-32  is tough
+-      ARCH_CFLAGS   += -fPIC -m64 -fmessage-length=0 -D_THREAD_SAFE       -Wimplicit -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -fast
++      ARCH_CFLAGS   += -fPIC -m64 -fmessage-length=0 -D_THREAD_SAFE        -Wno-write-strings -Wno-unused -Wno-char-subscripts -Wno-sign-compare -fast
+ #     ARCH_CFLAGS   += -Wextra
+ #     ARCH_CFLAGS   += -pedantic  (see above about pedantic)
+-      ARCH_LDFLAGS  += -m64 -lm
++      LINK_LIBS  += -m64 -lm
+     endif
+   endif
+ 
+@@ -161,23 +161,23 @@ endif
+ ifeq ($(OSTYPE), SunOS)
+   ifeq ($(MACHINETYPE), i86pc)
+     ARCH_CFLAGS    = -DBYTE_ORDER=LITTLE_ENDIAN -DANSI_C -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -pthreads
+-    ARCH_LDFLAGS  += -lm
++    LINK_LIBS  += -lm
+   endif
+ 
+   ifeq ($(MACHINETYPE), sparc32)
+     ARCH_CFLAGS    = -DANSI_C -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -pthreads
+-    ARCH_LDFLAGS  += -lm -lnsl -lsocket
++    LINK_LIBS  += -lm -lnsl -lsocket
+   endif
+ 
+   ifeq ($(MACHINETYPE), sparc64)
+     ARCH_CFLAGS    = -m64 -DANSI_C -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -pthreads
+-    ARCH_LDFLAGS  += -m64 -lm -lnsl -lsocket
++    LINK_LIBS  += -lm -lnsl -lsocket
+   endif
+ 
+   ifeq ($(BUILDDEBUG), 1)
+-    ARCH_CFLAGS   += -g
++    ARCH_CFLAGS   +=
+   else
+-    ARCH_CFLAGS   += -O
++    ARCH_CFLAGS   +=
+   endif
+ endif
+ 
+@@ -186,14 +186,14 @@ endif
+ 
+ ifeq ($(BUILDPROFILE), 1)
+   ARCH_CFLAGS  += -pg
+-  ARCH_LDFLAGS += -pg
++  LINK_LIBS += -pg
+ endif
+ 
+ # One can argue that CXXFLAGS should be separate.  For now, we only
+ # add to the flags.
+ 
+ CFLAGS          += $(ARCH_CFLAGS)
+-CXXFLAGS        += $(ARCH_CFLAGS) $(ARCH_CXXFLAGS)
++CXXFLAGS        += $(ARCH_CXXFLAGS)
+ LDFLAGS         += $(ARCH_LDFLAGS)
+ 
+ INC_IMPORT_DIRS += $(LOCAL_WORK)/src $(patsubst %, $(LOCAL_WORK)/src/%, $(strip $(SUBDIRS)))
+@@ -205,7 +205,7 @@ LIB_IMPORT_DIRS += $(ARCH_LIB)
+ OBJ_SEARCH_PATH  = $(LOCAL_OBJ)
+ 
+ ifeq ($(SITE_NAME), JCVI)
+-  LDFLAGS += -lcurl
++  LINK_LIBS += -lcurl
+ endif
+ 
+ #  The order of compilation here is very carefully chosen to be the
+diff --git a/src/c_make.gen b/src/c_make.gen
+index 7b5227c..c27b777 100644
+--- a/src/c_make.gen
++++ b/src/c_make.gen
+@@ -396,12 +396,12 @@ $(LIBRARIES):
+ $(C_PROGS):
+ 	@ echo "++++++++++++++++++++ " $@ "++++++++++++++++++++++";
+ 	cd $(LOCAL_OBJ); \
+-	  $(CC) -o $(LOCAL_BIN)/$(notdir $@) $(filter-out lib%.a, $+) $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LD_DIRS) $(LDFLAGS)
++	  $(CC) $(LDFLAGS) -o $(LOCAL_BIN)/$(notdir $@) $(filter-out lib%.a, $+) $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LD_DIRS) $(LINK_LIBS)
+ 
+ $(CXX_PROGS):
+ 	@ echo "++++++++++++++++++++ " $@ "++++++++++++++++++++++";
+ 	cd $(LOCAL_OBJ); \
+-          $(CXX) -o $(LOCAL_BIN)/$(notdir $@) $(filter-out lib%.a, $+) $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LD_DIRS) $(LDFLAGS)
++          $(CXX) $(LDFLAGS) -o $(LOCAL_BIN)/$(notdir $@) $(filter-out lib%.a, $+) $(patsubst lib%.a, -l%, $(filter lib%.a, $+)) $(LD_DIRS) $(LINK_LIBS)
+ 
+ $(SCRIPT_PROGS): %.sh:
+ 	@echo "++++++++++++++++++++ " $@ "++++++++++++++++++++++";

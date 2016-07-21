@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -17,12 +17,11 @@
+ ### ADVANCED USERS AND PACKAGERS MIGHT WANT TO CHANGE THIS
+ 
+ CXX?= g++
+-CXXFLAGS?= -g -Wall -O2
++CXXFLAGS+= -Wall
+ CXXFILES?= iptstate.cc
+ 
+ # THIS IS FOR NORMAL COMPILATION
+-LIBS?= -lncurses -lnetfilter_conntrack
+-CPPFLAGS=
++LIBS= $(shell $(PKG_CONFIG) --libs ncurses libnetfilter_conntrack)
+ 
+ ### YOU SHOULDN'T NEED TO CHANGE ANYTHING BELOW THIS
+ 
+@@ -45,7 +44,7 @@
+ 	echo "+------------------------------------------------------------+" ;\
+ 	echo "";
+ 
+-	$(CXX) $(CXXFLAGS) $(CXXFILES) -o iptstate $(LIBS) $(CPPFLAGS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CXXFILES) -o iptstate $(LIBS)
+ 	@touch iptstate
+ 
+ 	@\

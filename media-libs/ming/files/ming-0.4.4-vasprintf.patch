@@ -1,0 +1,266 @@
+From 815f18295602dfabfad53b754fbcaad91e2198bc Mon Sep 17 00:00:00 2001
+Message-Id: <815f18295602dfabfad53b754fbcaad91e2198bc.1338912967.git.jlec@gentoo.org>
+From: Sandro Santilli <strk@keybit.net>
+Date: Sat, 29 Oct 2011 08:41:17 +0200
+Subject: [PATCH] Put vasprintf own implementation in its own file
+
+---
+ test/actionscript/ActionScriptTest.c |    1 +
+ test/actionscript/Makefile.am        |    2 +-
+ util/Makefile.am                     |    6 +++-
+ util/decompile.c                     |   44 +++------------------------------
+ util/makeswf.c                       |   39 ------------------------------
+ util/makeswf_utils.c                 |    1 +
+ util/vasprintf.c                     |   43 +++++++++++++++++++++++++++++++++
+ util/vasprintf.h                     |    7 +++++
+ 8 files changed, 61 insertions(+), 82 deletions(-)
+
+diff --git a/test/actionscript/ActionScriptTest.c b/test/actionscript/ActionScriptTest.c
+index b351711..5af64c4 100644
+--- a/test/actionscript/ActionScriptTest.c
++++ b/test/actionscript/ActionScriptTest.c
+@@ -40,6 +40,7 @@
+ #include <sys/stat.h>
+ #include <limits.h>
+ #include <makeswf.h>
++#include <vasprintf.h>
+ 
+ static SWFMovie
+ compile(const char* filename, const char* ppfile, int version)
+diff --git a/test/actionscript/Makefile.am b/test/actionscript/Makefile.am
+index ae415ab..40e64e2 100644
+--- a/test/actionscript/Makefile.am
++++ b/test/actionscript/Makefile.am
+@@ -83,7 +83,7 @@ CLEANFILES = *.pp *.swf
+ check_PROGRAMS = \
+ 	ActionScriptTest
+ 
+-ActionScriptTest_SOURCES = ActionScriptTest.c ../run_test.c ../../util/makeswf_utils.c
++ActionScriptTest_SOURCES = ActionScriptTest.c ../run_test.c ../../util/makeswf_utils.c ../../util/vasprintf.c
+ ActionScriptTest_LDADD = $(top_builddir)/src/libming.la
+ ActionScriptTest_CFLAGS = -DTOP_BUILDDIR='"$(top_builddir)"' -DTOP_SOURCEDIR='"$(srcdir)"' -I$(top_srcdir)/util/ -DAS_TESTS='"$(AS_TESTS)"'
+ 
+diff --git a/util/Makefile.am b/util/Makefile.am
+index 0668f4f..3a7c9c4 100644
+--- a/util/Makefile.am
++++ b/util/Makefile.am
+@@ -45,7 +45,8 @@ libutil_la_SOURCES =	\
+ 	blocktypes.c	\
+ 	decompile.c	\
+ 	parser.c	\
+-	read.c 
++	read.c 		\
++	vasprintf.c
+ 
+ libutil_la_LIBADD = $(MATHLIB) $(ZLIB)
+ 
+@@ -60,7 +61,8 @@ noinst_HEADERS = \
+ 	parser.h	\
+ 	read.h		\
+ 	swfoutput.h	\
+-	swftypes.h
++	swftypes.h	\
++	vasprintf.c
+ 
+ listswf_SOURCES = outputtxt.c main.c	
+ listswf_LDADD = libutil.la $(top_builddir)/src/libming.la
+diff --git a/util/decompile.c b/util/decompile.c
+index 1af7a9f..c844fa4 100644
+--- a/util/decompile.c
++++ b/util/decompile.c
+@@ -18,7 +18,7 @@
+  *
+  ****************************************************************************/
+ 
+-#define _GNU_SOURCE
++#define _GNU_SOURCE 1
+ 
+ #define DEBUGSTACK
+ #define DECOMP_SWITCH
+@@ -42,45 +42,8 @@
+ #include "action.h"
+ #include "swftypes.h"
+ #include "../src/blocks/error.h"
++#include "vasprintf.h"
+ 
+-#ifndef HAVE_VASPRINTF
+-/* Workaround for the lack of vasprintf()
+- * As found on: http://unixpapa.com/incnote/stdio.html
+- * Seems to be Public Domain
+- */
+-int
+-vasprintf(char **ret, const char *format, va_list ap)
+-{
+-	va_list ap2;
+-	int len = 100;        /* First guess at the size */
+-	if ((*ret = (char *) malloc(len)) == NULL)
+-	{
+-		return -1;
+-	}
+-	while (1)
+-	{
+-		int nchar;
+-		va_copy(ap2, ap);
+-		nchar= vsnprintf(*ret, len, format, ap2);
+-		if (nchar > -1 && nchar < len)
+-		{
+-			return nchar;
+-		}
+-		if (nchar > len)
+-		{
+-			len= nchar+1;
+-		} else
+-		{
+-			len*= 2;
+-		}
+-		if ((*ret = (char *) realloc(*ret, len)) == NULL)
+-		{
+-			free(*ret);
+-			return -1;
+-		}
+-	}
+-}
+-#endif
+ 
+ static char **pool;
+ struct SWF_ACTIONPUSHPARAM *regs[256];
+@@ -247,10 +210,11 @@ static void
+ println(const char* fmt, ...)
+ {
+ 	char *tmp;
++	int written;
+ 
+ 	va_list ap;
+ 	va_start (ap, fmt);
+-	vasprintf (&tmp, fmt, ap);
++	written = vasprintf (&tmp, fmt, ap);
+ 
+ 	dcprintf("%s%s", tmp, newlinestring);
+ 
+diff --git a/util/makeswf.c b/util/makeswf.c
+index 0b80728..4fdc826 100644
+--- a/util/makeswf.c
++++ b/util/makeswf.c
+@@ -76,45 +76,6 @@
+ #include <getopt.h>
+ #endif
+ 
+-#ifndef HAVE_VASPRINTF
+-/* Workaround for the lack of vasprintf()
+- * As found on: http://unixpapa.com/incnote/stdio.html
+- * Seems to be Public Domain
+- */
+-int
+-vasprintf(char **ret, const char *format, va_list ap)
+-{
+-	va_list ap2;
+-	int len = 100;        /* First guess at the size */
+-	if ((*ret = (char *) malloc(len)) == NULL)
+-	{
+-		return -1;
+-	}
+-	while (1)
+-	{
+-		int nchar;
+-		va_copy(ap2, ap);
+-		nchar= vsnprintf(*ret, len, format, ap2);
+-		if (nchar > -1 && nchar < len)
+-		{
+-			return nchar;
+-		}
+-		if (nchar > len)
+-		{
+-			len= nchar+1;
+-		} else
+-		{
+-			len*= 2;
+-		}
+-		if ((*ret = (char *) realloc(*ret, len)) == NULL)
+-		{
+-			free(*ret);
+-			return -1;
+-		}
+-	}
+-}
+-#endif
+-
+ #define DEFSWFVERSION 6
+ #define DEFSWFCOMPRESSION 9
+ 
+diff --git a/util/makeswf_utils.c b/util/makeswf_utils.c
+index f9f53bd..6a65d87 100644
+--- a/util/makeswf_utils.c
++++ b/util/makeswf_utils.c
+@@ -41,6 +41,7 @@
+ #ifdef HAVE_GETOPT_H
+ #include <getopt.h>
+ #endif
++#include "vasprintf.h"
+ 
+ // Cheating, but it works (not sure why the above ifdef for getopt isn't)
+ #ifdef _WIN32
+diff --git a/util/vasprintf.c b/util/vasprintf.c
+new file mode 100644
+index 0000000..1127664
+--- /dev/null
++++ b/util/vasprintf.c
+@@ -0,0 +1,43 @@
++#include <stdio.h>
++#include <stdlib.h>
++#include <stdarg.h>
++
++#ifndef HAVE_VASPRINTF
++/* Workaround for the lack of vasprintf()
++ * As found on: http://unixpapa.com/incnote/stdio.html
++ * Seems to be Public Domain
++ */
++int
++vasprintf(char **ret, const char *format, va_list ap)
++{
++	va_list ap2;
++	int len = 100;        /* First guess at the size */
++	if ((*ret = (char *) malloc(len)) == NULL)
++	{
++		return -1;
++	}
++	while (1)
++	{
++		int nchar;
++		va_copy(ap2, ap);
++		nchar= vsnprintf(*ret, len, format, ap2);
++		if (nchar > -1 && nchar < len)
++		{
++			return nchar;
++		}
++		if (nchar > len)
++		{
++			len= nchar+1;
++		} else
++		{
++			len*= 2;
++		}
++		if ((*ret = (char *) realloc(*ret, len)) == NULL)
++		{
++			free(*ret);
++			return -1;
++		}
++	}
++}
++#endif
++
+diff --git a/util/vasprintf.h b/util/vasprintf.h
+new file mode 100644
+index 0000000..9391c23
+--- /dev/null
++++ b/util/vasprintf.h
+@@ -0,0 +1,7 @@
++#include <stdio.h>
++#include "ming_config.h"
++
++#ifndef HAVE_VASPRINTF
++int vasprintf(char **ret, const char *format, va_list ap);
++#endif
++
+-- 
+1.7.8.6
+

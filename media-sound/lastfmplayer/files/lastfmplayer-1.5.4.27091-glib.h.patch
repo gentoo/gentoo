@@ -1,0 +1,16 @@
+ src/mediadevices/ipod/IpodDevice.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/mediadevices/ipod/IpodDevice.cpp b/src/mediadevices/ipod/IpodDevice.cpp
+index 3e40672..f3bad0e 100644
+--- a/src/mediadevices/ipod/IpodDevice.cpp
++++ b/src/mediadevices/ipod/IpodDevice.cpp
+@@ -35,7 +35,7 @@
+ extern "C"
+ {
+     #include <gpod/itdb.h>
+-    #include <glib/glist.h>
++    #include <glib.h>
+ }
+ 
+ #define TABLE_NAME "IpodDeviceTracks"

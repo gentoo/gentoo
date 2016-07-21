@@ -1,0 +1,16 @@
+--- CMakeLists.txt.old	2014-10-10 21:14:47.139654992 +0200
++++ CMakeLists.txt	2014-10-10 21:16:17.114656451 +0200
+@@ -90,8 +90,12 @@
+     )
+ 
+ add_subdirectory(src)
++
++option(BUILD_TESTS "Build tests for qt4" ON)
+ if (NOT USE_QT5) # TODO port tests to Qt5
+-add_subdirectory(tests)
++	if(BUILD_TESTS)
++		add_subdirectory(tests)
++	endif(BUILD_TESTS)
+ endif()
+ add_subdirectory(tools)
+ 

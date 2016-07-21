@@ -1,0 +1,48 @@
+--- src/parsegen.cpp
++++ src/parsegen.cpp
+@@ -31,6 +31,7 @@
+ #include <sstream>
+ #include <set>
+ #include <stack>
++#include <cstring>
+ using namespace std;
+ 
+ #include <errno.h>
+@@ -1828,7 +1829,7 @@
+   }
+ }
+ 
+-int main(size_t argc, const char **argv)
++int main(int argc, const char **argv)
+ {
+   const char *cheader_file = 0;
+   bool compile = false;
+--- src/tools/depbuild.cpp
++++ src/tools/depbuild.cpp
+@@ -24,6 +24,7 @@
+ #include <iostream>
+ #include <string>
+ #include <cstdio>
++#include <cstdlib>
+ using namespace std;
+ 
+ #include "fileutil.h"
+@@ -183,7 +184,7 @@
+   }
+ }
+ 
+-int main(size_t argc, const char *const *const argv)
++int main(int argc, const char *const *const argv)
+ {
+   if (argc < 5)
+   {
+--- src/tools/strutil.h
++++ src/tools/strutil.h
+@@ -25,6 +25,7 @@
+ #include <string>
+ #include <vector>
+ #include <cctype>
++#include <cstring>
+ 
+ struct ci_char_traits : public std::char_traits<char>
+ {

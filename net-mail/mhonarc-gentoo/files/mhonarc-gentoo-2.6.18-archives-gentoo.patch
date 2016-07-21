@@ -1,0 +1,197 @@
+diff -Nuar a/lib/mhamain.pl b/lib/mhamain.pl
+--- a/lib/mhamain.pl	2006-06-10 02:42:58.000000000 +0000
++++ b/lib/mhamain.pl	2008-01-27 14:12:48.000000000 +0000
+@@ -73,6 +73,8 @@
+     TERM TRAP USR1 USR2 VTALRM XCPU XFSZ
+ );
+ 
++use Carp;
++
+ ###############################################################################
+ ##	Public routines
+ ###############################################################################
+@@ -934,6 +936,16 @@
+     } else {
+ 	$ctype = 'text/plain';
+     }
++    
++    ##-----------------------------##
++    ## Get Custom Archives headers ##
++    ##-----------------------------##
++    if (defined($fields->{'x-archives-hash'})) {
++	$msghash = $fields->{'x-archives-hash'}[0];
++    }
++    if(!defined($msghash)) {
++	confess("No X-Archives-Hash header in $handle");
++    }
+ 
+     ## Insure uniqueness of index
+     $index .= $X . sprintf('%d',(defined($msgnum)?$msgnum:($LastMsgNum+1)));
+@@ -955,6 +967,7 @@
+     $Subject{$index} = $sub;
+     $MsgHead{$index} = htmlize_header($fields);
+     $ContentType{$index} = $ctype;
++    $MsgHash{$index} = $msghash;
+     if ($msgid) {
+ 	$MsgId{$msgid} = $index;
+ 	$NewMsgId{$msgid} = $index;	# Track new message-ids
+@@ -966,6 +979,7 @@
+     } else {
+ 	$IndexNum{$index} = getNewMsgNum();
+     }
++    #$MsgHash{$IndexNum{$index}} = $msghash;
+ 
+     $Refs{$index} = [ @refs ]  if (@refs);
+ 
+@@ -1102,7 +1116,7 @@
+ 
+     my $adding	     = ($ADD && !$force && !$SINGLE);
+     my $i_p0 	     = fmt_msgnum($msgnum);
+-    my $filename     = msgnum_filename($msgnum);
++    my $filename     = msgnum_filename($index);
+     my $filepathname = join($DIRSEP, $OUTDIR, $filename);
+     my $tmppathname;
+ 
+@@ -1160,7 +1174,9 @@
+ 		"<!--X-Message-Id: ",
+ 		    commentize($Index2MsgId{$index}), " -->\n",
+ 		"<!--X-Content-Type: ",
+-		    commentize($ContentType{$index}), " -->\n";
++		    commentize($ContentType{$index}), " -->\n",
++		"<!--X-Archives-Hash: ",
++		    commentize($MsgHash{$index}), " -->\n";
+ 
+ 	    if (defined($Refs{$index})) {
+ 		foreach (@{$Refs{$index}}) {
+@@ -1456,8 +1472,9 @@
+     #&defineIndex2MsgId();
+     my $msgnum = $IndexNum{$key};
+     return (undef, undef)  if ($msgnum eq '');
+-    my $filename = join($DIRSEP, $OUTDIR, &msgnum_filename($msgnum));
++    my $filename = join($DIRSEP, $OUTDIR, &msgnum_filename($key));
+ 
++    delete $MsgHash{$key};
+     delete $ContentType{$key};
+     delete $Date{$key};
+     delete $From{$key};
+diff -Nuar a/lib/mhdb.pl b/lib/mhdb.pl
+--- a/lib/mhdb.pl	2005-12-20 21:28:15.000000000 +0000
++++ b/lib/mhdb.pl	2008-01-27 13:25:52.000000000 +0000
+@@ -61,6 +61,7 @@
+ 
+ ## Meta-data
+ print_var($db,'ContentType', \%ContentType);
++print_var($db,'MsgHash',     \%MsgHash);
+ print_var($db,'Date',        \%Date);
+ print_var($db,'Derived',     \%Derived);
+ print_var($db,'FollowOld',   \%Follow);
+diff -Nuar a/lib/mhinit.pl b/lib/mhinit.pl
+--- a/lib/mhinit.pl	2005-07-08 06:34:03.000000000 +0000
++++ b/lib/mhinit.pl	2008-01-27 13:25:52.000000000 +0000
+@@ -247,6 +247,7 @@
+ %Follow  	= ();	# Index key to follow-ups
+ %FolCnt   	= ();	# Index key to number of follow-ups
+ %ContentType	= ();	# Index key to base content-type of message
++%MsgHash	= ();	# Custom hash from header in mail
+ %Icons    	= ();	# Index key to icon URL for content-type
+ %AddIndex 	= ();	# Flags for messages that must be written
+ 
+diff -Nuar a/lib/mhmsgfile.pl b/lib/mhmsgfile.pl
+--- a/lib/mhmsgfile.pl	2001-09-17 16:10:28.000000000 +0000
++++ b/lib/mhmsgfile.pl	2008-01-27 14:12:16.000000000 +0000
+@@ -123,6 +123,10 @@
+     if (defined($href->{'derived'})) {
+ 	$Derived{$index} = $href->{'derived'};
+     }
++    
++    if (defined($href->{'archives-hash'})) {
++	$MsgHash{$index} = $href->{'archives-hash'};
++    }
+ 
+     $IndexNum{$index} = int($msgnum);
+ 
+diff -Nuar a/lib/mhopt.pl b/lib/mhopt.pl
+--- a/lib/mhopt.pl	2005-07-08 06:34:03.000000000 +0000
++++ b/lib/mhopt.pl	2008-01-27 13:25:52.000000000 +0000
+@@ -764,6 +764,7 @@
+     delete($MsgId{''});
+     delete($FollowOld{''});
+     delete($ContentType{''});
++    delete($MsgHash{''});
+     delete($Refs{''});
+ 
+     # update DOCURL if default old value
+diff -Nuar a/lib/mhrcvars.pl b/lib/mhrcvars.pl
+--- a/lib/mhrcvars.pl	2005-07-08 05:27:52.000000000 +0000
++++ b/lib/mhrcvars.pl	2008-01-27 14:11:19.000000000 +0000
+@@ -195,7 +195,7 @@
+ 	}
+     	if ($var eq 'MSG') {		## Filename of message page
+ 	    ($lref, $key, $pos) = compute_msg_pos($index, $var, $arg);
+-	    $tmp = defined($key) ? &msgnum_filename($IndexNum{$key}) : "";
++	    $tmp = defined($key) ? &msgnum_filename($key) : "";
+ 	    last REPLACESW;
+ 	}
+ 	if ($var eq 'MSGHFIELD') {	## Message header field
+@@ -417,7 +417,7 @@
+ 	    if (!defined($key)) { $tmp = ""; last REPLACESW; }
+ 	    $tmp = qq/name="/ . &fmt_msgnum($IndexNum{$key}) .
+ 		   qq/" href="/ .
+-		   &msgnum_filename($IndexNum{$key}) .
++		   &msgnum_filename($key) .
+ 		   qq/"/;
+ 	    last REPLACESW;
+ 	}
+@@ -432,7 +432,7 @@
+ 	    $isurl = 0;
+ 	    ($lref, $key, $pos) = compute_msg_pos($index, $var, $arg);
+ 	    if (!defined($key)) { $tmp = ""; last REPLACESW; }
+-	    $tmp = qq/href="/ . &msgnum_filename($IndexNum{$key}) . qq/"/;
++	    $tmp = qq/href="/ . &msgnum_filename($key) . qq/"/;
+ 	    last REPLACESW;
+ 	}
+     	if ($var eq 'IDXFNAME') {	## Filename of index page
+@@ -730,7 +730,7 @@
+     $ret = qq|<a name="| .
+ 	   &fmt_msgnum($IndexNum{$index}) .
+ 	   qq|" href="| .
+-	   &msgnum_filename($IndexNum{$index}) .
++	   &msgnum_filename($index) .
+ 	   qq|">$ret</a>|
+ 	if $var eq 'SUBJECT' && $arg eq "" && !$mailto;
+ 
+diff -Nuar a/lib/mhutil.pl b/lib/mhutil.pl
+--- a/lib/mhutil.pl	2005-07-08 05:27:53.000000000 +0000
++++ b/lib/mhutil.pl	2008-01-27 14:11:50.000000000 +0000
+@@ -28,6 +28,7 @@
+ package mhonarc;
+ 
+ use MHonArc::RFC822;
++use Carp;
+ 
+ ## RFC 2369 header fields to check for URLs
+ %HFieldsList = (
+@@ -304,16 +305,20 @@
+ ##	Routine to get filename of a message number.
+ ##
+ sub msgnum_filename {
+-    my($fmtstr) = "$MsgPrefix%05d.$HtmlExt";
++    my $msgnum = $_[0];
++    my($fmtstr) = "$MsgPrefix%s.$HtmlExt";
+     $fmtstr .= ".gz"  if $GzipLinks;
+-    sprintf($fmtstr, $_[0]);
++    if(!defined($MsgHash{$msgnum})) {
++	confess("Could not find X-Archives-Hash for msgnum=$msgnum");
++    }
++    sprintf($fmtstr, $MsgHash{$msgnum});
+ }
+ 
+ ##---------------------------------------------------------------------------
+ ##	Routine to get filename of an index
+ ##
+ sub get_filename_from_index {
+-    &msgnum_filename($IndexNum{$_[0]});
++    &msgnum_filename($_[0]);
+ }
+ 
+ ##---------------------------------------------------------------------------

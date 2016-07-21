@@ -1,0 +1,32 @@
+--- procps-ng-3.3.11-orig/sysctl.8
++++ procps-ng-3.3.11/sysctl.8
+@@ -123,21 +123,21 @@
+ \fB\-V\fR, \fB\-\-version\fR
+ Display version information and exit.
+ .SH EXAMPLES
+-/sbin/sysctl \-a
++/usr/sbin/sysctl \-a
+ .br
+-/sbin/sysctl \-n kernel.hostname
++/usr/sbin/sysctl \-n kernel.hostname
+ .br
+-/sbin/sysctl \-w kernel.domainname="example.com"
++/usr/sbin/sysctl \-w kernel.domainname="example.com"
+ .br
+-/sbin/sysctl \-p/etc/sysctl.conf
++/usr/sbin/sysctl \-p/etc/sysctl.conf
+ .br
+-/sbin/sysctl \-a \-\-pattern forward
++/usr/sbin/sysctl \-a \-\-pattern forward
+ .br
+-/sbin/sysctl \-a \-\-pattern forward$
++/usr/sbin/sysctl \-a \-\-pattern forward$
+ .br
+-/sbin/sysctl \-a \-\-pattern 'net.ipv4.conf.(eth|wlan)0.arp'
++/usr/sbin/sysctl \-a \-\-pattern 'net.ipv4.conf.(eth|wlan)0.arp'
+ .br
+-/sbin/sysctl \-\-system \-\-pattern '^net.ipv6'
++/usr/sbin/sysctl \-\-system \-\-pattern '^net.ipv6'
+ .SH DEPRECATED PARAMETERS
+ The
+ .B base_reachable_time

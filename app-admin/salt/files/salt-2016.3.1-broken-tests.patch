@@ -1,0 +1,221 @@
+diff --git a/tests/unit/auth_test.py b/tests/unit/auth_test.py
+index 84e8699..5acd6c9 100644
+--- a/tests/unit/auth_test.py
++++ b/tests/unit/auth_test.py
+@@ -50,22 +50,6 @@ class LoadAuthTestCase(TestCase):
+             ret = self.lauth.load_name(valid_eauth_load)
+             format_call_mock.assert_has_calls((expected_ret,), any_order=True)
+ 
+-    def test_get_groups(self):
+-        valid_eauth_load = {'username': 'test_user',
+-                            'show_timeout': False,
+-                            'test_password': '',
+-                            'eauth': 'pam'}
+-        with patch('salt.utils.format_call') as format_call_mock:
+-            expected_ret = call('fake_groups_function_str', {
+-                'username': 'test_user',
+-                'test_password': '',
+-                'show_timeout': False,
+-                'eauth': 'pam'
+-                }, expected_extra_kws=auth.AUTH_INTERNAL_KEYWORDS)
+-            self.lauth.get_groups(valid_eauth_load)
+-            format_call_mock.assert_has_calls((expected_ret,), any_order=True)
+-
+-
+ @patch('zmq.Context', MagicMock())
+ @patch('salt.payload.Serial.dumps', MagicMock())
+ @patch('salt.master.tagify', MagicMock())
+diff --git a/tests/unit/modules/boto_secgroup_test.py b/tests/unit/modules/boto_secgroup_test.py
+index cc88568..07fd8ec 100644
+--- a/tests/unit/modules/boto_secgroup_test.py
++++ b/tests/unit/modules/boto_secgroup_test.py
+@@ -192,30 +192,6 @@ class BotoSecgroupTestCase(TestCase):
+                                                         **conn_parameters)
+         self.assertEqual(group_vpc.id, retrieved_group_id)
+ 
+-    @mock_ec2
+-    def test_get_config_single_rule_group_name(self):
+-        '''
+-        tests return of 'config' when given group name. get_config returns an OrderedDict.
+-        '''
+-        group_name = _random_group_name()
+-        ip_protocol = u'tcp'
+-        from_port = 22
+-        to_port = 22
+-        cidr_ip = u'0.0.0.0/0'
+-        rules_egress = [{'to_port': -1, 'from_port': -1, 'ip_protocol': u'-1', 'cidr_ip': u'0.0.0.0/0'}]
+-
+-        conn = boto.ec2.connect_to_region(region, **boto_conn_parameters)
+-        group = conn.create_security_group(name=group_name, description=group_name)
+-        group.authorize(ip_protocol=ip_protocol, from_port=from_port, to_port=to_port, cidr_ip=cidr_ip)
+-        # setup the expected get_config result
+-        expected_get_config_result = OrderedDict([('name', group.name), ('group_id', group.id), ('owner_id', u'111122223333'),
+-                                                 ('description', group.description), ('tags', {}),
+-                                                 ('rules', [{'to_port': to_port, 'from_port': from_port,
+-                                                  'ip_protocol': ip_protocol, 'cidr_ip': cidr_ip}]),
+-                                                 ('rules_egress', rules_egress)])
+-        secgroup_get_config_result = boto_secgroup.get_config(group_id=group.id, **conn_parameters)
+-        self.assertEqual(expected_get_config_result, secgroup_get_config_result)
+-
+     @skipIf(True, 'test skipped due to error in moto return - fixed in '
+                   'https://github.com/spulec/moto/commit/cc0166964371f7b5247a49d45637a8f936ccbe6f')
+     @mock_ec2
+diff --git a/tests/unit/modules/cron_test.py b/tests/unit/modules/cron_test.py
+index fd9b62d..8445471 100644
+--- a/tests/unit/modules/cron_test.py
++++ b/tests/unit/modules/cron_test.py
+@@ -630,16 +630,6 @@ class PsTestCase(TestCase):
+     def test_list_tab(self):
+         self.assertDictEqual(STUB_SIMPLE_CRON_DICT, cron.list_tab('DUMMY_USER'))
+ 
+-    @patch('salt.modules.cron._write_cron_lines')
+-    @patch('salt.modules.cron.list_tab', new=MagicMock(return_value=STUB_SIMPLE_CRON_DICT))
+-    def test_set_special(self, write_cron_lines_mock):
+-        expected_write_call = call('DUMMY_USER',
+-                                   ['5 0 * * * /tmp/no_script.sh\n',
+-                                    '# Lines below here are managed by Salt, do not edit\n',
+-                                    '@hourly echo Hi!\n'])
+-        ret = cron.set_special('DUMMY_USER', '@hourly', 'echo Hi!')
+-        write_cron_lines_mock.assert_has_calls((expected_write_call,), any_order=True)
+-
+     def test__get_cron_date_time(self):
+         ret = cron._get_cron_date_time(minute=STUB_CRON_TIMESTAMP['minute'],
+                                     hour=STUB_CRON_TIMESTAMP['hour'],
+diff --git a/tests/unit/modules/linux_sysctl_test.py b/tests/unit/modules/linux_sysctl_test.py
+index 89bea83..49851cb 100644
+--- a/tests/unit/modules/linux_sysctl_test.py
++++ b/tests/unit/modules/linux_sysctl_test.py
+@@ -85,18 +85,6 @@ class LinuxSysctlTestCase(TestCase):
+                 'net.ipv4.ip_forward', 1), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           linux_sysctl.persist,
+-                                           'net.ipv4.ip_forward',
+-                                           1, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     @patch('os.path.exists', MagicMock(return_value=True))
+     def test_persist_no_conf_success(self):
+         '''
+diff --git a/tests/unit/modules/mac_sysctl_test.py b/tests/unit/modules/mac_sysctl_test.py
+index e90ec64..b2ea691 100644
+--- a/tests/unit/modules/mac_sysctl_test.py
++++ b/tests/unit/modules/mac_sysctl_test.py
+@@ -67,18 +67,6 @@ class DarwinSysctlTestCase(TestCase):
+                 'net.inet.icmp.icmplim', 50), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           mac_sysctl.persist,
+-                                           'net.inet.icmp.icmplim',
+-                                           50, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     def test_persist_no_conf_success(self):
+         '''
+         Tests successful add of config file when previously not one
+diff --git a/tests/unit/modules/mount_test.py b/tests/unit/modules/mount_test.py
+index 9c4ad6f..bf00c8e 100644
+--- a/tests/unit/modules/mount_test.py
++++ b/tests/unit/modules/mount_test.py
+@@ -102,23 +102,6 @@ class MountTestCase(TestCase):
+                                                        'opts': ['D', 'E', 'F'],
+                                                        'pass': 'H'}})
+ 
+-    def test_rm_fstab(self):
+-        '''
+-        Remove the mount point from the fstab
+-        '''
+-        mock_fstab = MagicMock(return_value={})
+-        with patch.object(mount, 'fstab', mock_fstab):
+-            with patch('salt.utils.fopen', mock_open()):
+-                self.assertTrue(mount.rm_fstab('name', 'device'))
+-
+-        mock_fstab = MagicMock(return_value={'name': 'name'})
+-        with patch.object(mount, 'fstab', mock_fstab):
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                               mount.rm_fstab,
+-                                               config=None)
+-
+     def test_set_fstab(self):
+         '''
+         Tests to verify that this mount is represented in the fstab,
+@@ -143,22 +126,6 @@ class MountTestCase(TestCase):
+                        mock_open(read_data=MOCK_SHELL_FILE)):
+                 self.assertEqual(mount.set_fstab('A', 'B', 'C'), 'new')
+ 
+-    def test_rm_automaster(self):
+-        '''
+-        Remove the mount point from the auto_master
+-        '''
+-        mock = MagicMock(return_value={})
+-        with patch.object(mount, 'automaster', mock):
+-            self.assertTrue(mount.rm_automaster('name', 'device'))
+-
+-        mock = MagicMock(return_value={'name': 'name'})
+-        with patch.object(mount, 'fstab', mock):
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                               mount.rm_automaster,
+-                                               'name', 'device')
+-
+     def test_set_automaster(self):
+         '''
+         Verify that this mount is represented in the auto_salt, change the mount
+diff --git a/tests/unit/modules/puppet_test.py b/tests/unit/modules/puppet_test.py
+index 02bc2e1..249efcb 100644
+--- a/tests/unit/modules/puppet_test.py
++++ b/tests/unit/modules/puppet_test.py
+@@ -72,24 +72,6 @@ class PuppetTestCase(TestCase):
+ 
+             self.assertFalse(puppet.enable())
+ 
+-    def test_disable(self):
+-        '''
+-            Test to disable the puppet agent
+-        '''
+-        mock_lst = MagicMock(return_value=[])
+-        with patch.dict(puppet.__salt__, {'cmd.run': mock_lst}):
+-            mock = MagicMock(side_effect=[True, False])
+-            with patch.object(os.path, 'isfile', mock):
+-                self.assertFalse(puppet.disable())
+-
+-                with patch('salt.utils.fopen', mock_open()):
+-                    self.assertTrue(puppet.disable())
+-
+-                with patch('salt.utils.fopen', mock_open()) as m_open:
+-                    helper_open = m_open()
+-                    helper_open.write.assertRaises(CommandExecutionError,
+-                                                    puppet.disable)
+-
+     def test_status(self):
+         '''
+             Test to display puppet agent status
+@@ -144,11 +126,6 @@ class PuppetTestCase(TestCase):
+                         mock_open(read_data="resources: 1")):
+                 self.assertDictEqual(puppet.summary(), {'resources': 1})
+ 
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                                puppet.summary)
+-
+     def test_plugin_sync(self):
+         '''
+             Test to runs a plugin synch between the puppet master and agent

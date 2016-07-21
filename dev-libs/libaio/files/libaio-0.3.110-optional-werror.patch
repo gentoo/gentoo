@@ -1,0 +1,30 @@
+From 0cc7dc108d0b2288b40d82bb2fd1fd8bdc08f764 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 26 Mar 2014 23:07:58 -0400
+Subject: [PATCH] make -Werror into an optional flag
+
+This lets distros disable the flag as random errors might come up with
+different compiler flags and older/newer toolchain versions.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ harness/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/harness/Makefile b/harness/Makefile
+index 2a88e71..cf8c90d 100644
+--- a/harness/Makefile
++++ b/harness/Makefile
+@@ -6,7 +6,8 @@ PROGS:=$(PARTPROGS) $(EXTRAPROGS)
+ HARNESS_SRCS:=main.c
+ # io_queue.c
+ 
+-CFLAGS+=-Wall -Werror -I../src -g -O
++CFLAGS_WERROR?=-Werror
++CFLAGS+=-Wall $(CFLAGS_WERROR) -I../src -g -O
+ #-lpthread -lrt
+ 
+ all: $(PROGS)
+-- 
+1.9.1
+

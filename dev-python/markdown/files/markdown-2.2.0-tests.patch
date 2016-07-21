@@ -1,0 +1,80 @@
+https://github.com/waylan/Python-Markdown/issues/112
+https://github.com/waylan/Python-Markdown/commit/5b3e724fb78da73ab87fb34e4ac9d9299773cfed
+
+--- markdown/__init__.py
++++ markdown/__init__.py
+@@ -37,6 +37,7 @@
+ import codecs
+ import sys
+ import logging
++import warnings
+ import util
+ from preprocessors import build_preprocessors
+ from blockprocessors import build_block_parser
+@@ -163,10 +164,10 @@
+             if isinstance(ext, basestring):
+                 ext = self.build_extension(ext, configs.get(ext, []))
+             if isinstance(ext, Extension):
+-                # might raise NotImplementedError, but that's the extension author's problem
+                 ext.extendMarkdown(self, globals())
+             elif ext is not None:
+-                raise ValueError('Extension "%s.%s" must be of type: "markdown.Extension".' \
++                raise TypeError(
++                    'Extension "%s.%s" must be of type: "markdown.Extension"'
+                     % (ext.__class__.__module__, ext.__class__.__name__))
+ 
+         return self
+@@ -200,19 +201,22 @@
+             module_name_old_style = '_'.join(['mdx', ext_name])
+             try: # Old style (mdx_<extension>)
+                 module = __import__(module_name_old_style)
+-            except ImportError:
+-                logger.warn("Failed loading extension '%s' from '%s' or '%s'"
+-                    % (ext_name, module_name, module_name_old_style))
+-                # Return None so we don't try to initiate none-existant extension
+-                return None
++            except ImportError, e:
++                message = "Failed loading extension '%s' from '%s' or '%s'" \
++                    % (ext_name, module_name, module_name_old_style)
++                e.args = (message,) + e.args[1:]
++                raise
+ 
+         # If the module is loaded successfully, we expect it to define a
+         # function called makeExtension()
+         try:
+             return module.makeExtension(configs.items())
+         except AttributeError, e:
+-            logger.warn("Failed to initiate extension '%s': %s" % (ext_name, e))
+-            return None
++            message = e.args[0]
++            message = "Failed to initiate extension " \
++                      "'%s': %s" % (ext_name, message)
++            e.args = (message,) + e.args[1:]
++            raise
+ 
+     def registerExtension(self, extension):
+         """ This gets called by the extension """
+--- tests/test_apis.py
++++ tests/test_apis.py
+@@ -245,18 +245,18 @@
+ 
+     def testLoadExtensionFailure(self):
+         """ Test failure of an extension to load. """
+-        self.assertRaises(ValueError, 
++        self.assertRaises(ImportError, 
+                         markdown.Markdown, extensions=['non_existant_ext']) 
+ 
+     def testLoadBadExtension(self):
+         """ Test loading of an Extension with no makeExtension function. """
+         _create_fake_extension(name='fake', has_factory_func=False)
+-        self.assertRaises(ValueError, markdown.Markdown, extensions=['fake'])
++        self.assertRaises(AttributeError, markdown.Markdown, extensions=['fake'])
+ 
+     def testNonExtension(self):
+         """ Test loading a non Extension object as an extension. """
+         _create_fake_extension(name='fake', is_wrong_type=True)
+-        self.assertRaises(ValueError, markdown.Markdown, extensions=['fake'])
++        self.assertRaises(TypeError, markdown.Markdown, extensions=['fake'])
+ 
+     def testBaseExtention(self):
+         """ Test that the base Extension class will raise NotImplemented. """

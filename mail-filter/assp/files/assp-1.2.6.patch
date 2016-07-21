@@ -1,0 +1,364 @@
+diff -Naur assporg/ASSP/assp.pl asspmod/ASSP/assp.pl
+--- assporg/ASSP/assp.pl	2007-01-18 23:12:20.000000000 +0100
++++ asspmod/ASSP/assp.pl	2007-01-20 21:17:07.000000000 +0100
+@@ -52,13 +52,10 @@
+ if($ARGV[0]) {
+  $base=$ARGV[0];
+ } else {
+- # the last one is the one used if all else fails
+- foreach ('.','assp','/usr/local/assp','/home/assp','/usr/assp','/applications/assp','/assp','.') {
+-  $base=$_;
+-  last if -e "$base/assp.cfg";
++  $base='/etc/assp/';
+  }
+-}
+-if ( !-e "$base/images/noIcon.png")
++
++if ( !-e "/usr/share/assp/images/noIcon.png")
+ { die "Abort: folder 'images' not correctly installed";}
+ 
+ loadConfig();
+@@ -86,7 +83,7 @@
+   'The address:port of your message handling system\'s smtp server. If only the port is entered, or the keyword <b>__INBOUND__</b>:<i>port</i> is used, then the connection will be established to the same IP where the connection was received. This is usefull when you have several IPs with different domains/profiles in your MTA.<br /> Examples: "127.0.0.1:125","127.0.0.1:125|127.0.0.5:125", "10.0.1.3", "10.0.1.3:1025", "__INBOUND__:125", "125", etc.'],
+ [AsAService,'As a Service',0,checkbox,0,'(.*)',undef,
+   'In Windows 2000 / NT you can run it as a service; requires <a href="http://www.roth.net/perl/Daemon/" rel="external">win32::daemon</a>. Requires start from the service control panel.'],
+-[AsADaemon,'As a Daemon',0,checkbox,0,'(.*)',undef,
++[AsADaemon,'As a Daemon',0,checkbox,1,'(.*)',undef,
+  'In Linux/BSD/Unix/OSX fork and close file handles, kinda like "perl assp.pl &amp;" but better. Requires restart.'],
+ [myName,'My Name',40,textinput,'ASSP.nospam','(\S+)',undef,
+   'What the program calls itself in the email "received by" header. Usually ASSP.nospam.'],
+@@ -912,10 +909,10 @@
+   'This user must have CREATE privilege on database to create tables
+ automatically'],
+ [mypassword,'MySQL password',40,textinput,'','(\S*)',undef,''],
+-[logfile,'ASSP Logfile',40,textinput,'maillog.txt','(\S*)',ConfigChangeLogfile,
++[logfile,'ASSP Logfile',40,textinput,'/var/log/assp/maillog.txt','(\S*)',ConfigChangeLogfile,
+   'Blank if you don\'t want a log file. Change it to maillog.log if you don\'t want auto rollover.
+   NOTE: Changing this field requires restarting ASSP before changes take effect.'],
+-[pidfile,'PID File',40,textinput,'pid','(\S*)',undef,'Blank to skip writing a pid file. *nix users need pid files.
++[pidfile,'PID File',40,textinput,'asspd.pid','(\S*)',undef,'Blank to skip writing a pid file. *nix users need pid files.
+   Leave it blank in Windows.<br /> You have to restart the service before you get a pid file in the new location.<br /><hr />
+   <div class=\"menuLevel1\">Notes On File Path</div>
+   <input type="button" value="Notes" onClick="javascript:popFileEditor(\'notes/filepath.txt\',3);">
+@@ -979,9 +976,9 @@
+   '],
+ 
+ [0,0,0,'heading','Security'],
+-[runAsUser,'Run as UID',20,textinput,'nobody','(\S*)',undef,
++[runAsUser,'Run as UID',20,textinput,'assp','(\S*)',undef,
+   'The *nix user name to assume after startup: assp or nobody -- requires ASSP restart.'],
+-[runAsGroup,'Run as GID',20,textinput,'nobody','(\S*)',undef,
++[runAsGroup,'Run as GID',20,textinput,'assp','(\S*)',undef,
+   'The *nix group to assume after startup: assp or nogroup -- requires ASSP restart.'],
+ [ChangeRoot,'Change Root',40,textinput,'','(.*)',undef,
+   'Non-blank means to run in chroot jail in *nix. You need an etc/protocols file to make this work<br />
+@@ -1106,7 +1103,7 @@
+   }
+  }
+  # load configuration file
+- open(F,"<$base/assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
++ open(F,"</etc/assp/assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
+  # set nonexistent settings to default values
+  foreach $c (@Config) {
+   if ($c->[0] && !(exists $Config{$c->[0]})) {
+@@ -1446,19 +1443,19 @@
+  $silent=1;
+ }
+ 
+-if($pidfile) {open(F,">$base/$pidfile"); print F $$; close F;}
++if($pidfile) {open(F,">/var/run/assp/$pidfile"); print F $$; close F;}
+ 
+ sub RemovePid {
+  if ($pidfile) {
+   d('RemovePid');
+-  unlink("$base/$pidfile");
++  unlink("/var/run/assp/$pidfile");
+  }
+ }
+ 
+ if($DEBUG) {open(DEBUG, ">$base/".time.".dbg"); binmode(DEBUG); my $oldfh = select(DEBUG); $| = 1; select($oldfh);}
+  my $logdir = $1 if $logfile=~/(.*)\/.*/;
+- mkdir "$base/$logdir",0777 if $logdir;
+-if($logfile && open(LOG,">>$base/$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
++ mkdir "$logdir",0777 if $logdir;
++if($logfile && open(LOG,">>$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
+ 
+ if($AsAService) {
+  eval(<<'EOT');
+@@ -1652,16 +1649,16 @@
+   -d "$base/$correctednotspam" or mkdir "$base/$correctednotspam",0700;
+   my $pbdir = $1 if $pbdb=~/(.*)\/.*/;
+   mkdir "$base/$pbdir",0700 if $pbdir;
+-  -d "$base/notes" or mkdir "$base/notes",0700;
+-  if ( !-e "$base/reports/whitereport.txt") {
+-    -d "$base/reports" or mkdir "$base/reports",0700;
+-    copy("whitereport.txt", "reports/whitereport.txt");
+-    copy("whiteremovereport.txt", "reports/whiteremovereport.txt");
+-    copy("redreport.txt", "reports/redreport.txt");
+-    copy("redremovereport.txt", "reports/redremovereport.txt");
+-    copy("helpreport.txt", "reports/helpreport.txt");
+-    copy("notspamreport.txt", "reports/notspamreport.txt");
+-    copy("spamreport.txt", "reports/spamreport.txt");
++  -d "/etc/assp/notes" or mkdir "/etc/assp/notes",0700;
++  if ( !-e "/etc/assp/reports/whitereport.txt") {
++    -d "/etc/assp/reports" or mkdir "/etc/assp/reports",0700;
++    copy("/usr/share/assp/whitereport.txt", "/etc/assp/reports/whitereport.txt");
++    copy("/usr/share/assp/whiteremovereport.txt", "/etc/assp/reports/whiteremovereport.txt");
++    copy("/usr/share/assp/redreport.txt", "/etc/assp/reports/redreport.txt");
++    copy("/usr/share/assp/redremovereport.txt", "/etc/assp/reports/redremovereport.txt");
++    copy("/usr/share/assp/helpreport.txt", "/etc/assp/reports/helpreport.txt");
++    copy("/usr/share/assp/notspamreport.txt", "/etc/assp/reports/notspamreport.txt");
++    copy("/usr/share/assp/spamreport.txt", "/etc/assp/reports/spamreport.txt");
+   }
+ 
+ 
+@@ -2073,7 +2070,7 @@
+ # roll log every $LogRollDays days, at midnight
+     my $t=int((time()+Time::Local::timelocal(localtime())-Time::Local::timelocal(gmtime()))/($LogRollDays*24*3600)); 
+ 
+-    if($logfile && $mlogLastT && $t != $mlogLastT && $logfile ne "maillog.log" && $asspLog) {
++    if($logfile && $mlogLastT && $t != $mlogLastT && $logfile ne "/var/log/assp/maillog.log" && $asspLog) {
+ # roll the log
+ 
+       my ($sec,$min,$hour,$mday,$mon,$year) = localtime(time);
+@@ -2084,7 +2081,7 @@
+       if (!$logdir)  {
+         $archivelogfile = "$mm.$logfile";
+       } else {
+-        mkdir "$base/$logdir",0777;
++        mkdir "$logdir",0777;
+         $archivelogfile = "$logdir/$mm.$logdirfile";
+       } 
+       my $msg="$m: Rolling log file -- archive saved as '$archivelogfile'\n";
+@@ -2092,8 +2089,8 @@
+       print $msg unless $silent;
+ 
+       close LOG;
+-      rename("$base/$logfile", "$base/$archivelogfile");
+-      if(open(LOG,">>$base/$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
++      rename("$logfile", "$archivelogfile");
++      if(open(LOG,">>$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
+       print LOG "$m new log file -- old log file renamed to '$archivelogfile'\n";
+       SaveConfig();
+     }
+@@ -3683,7 +3680,7 @@
+ 	return 1;
+   }
+   my ($per_result, $smtp_comment, $header_comment, $spf_fail);
+-  foreach my $recip (split(' ', $this->{rcpt})) {
++  foreach my $recip (split('/var/lib/assp/', $this->{rcpt})) {
+     ($per_result, $smtp_comment, $header_comment, $spf_fail) = 
+                                                   $query->result2($recip);
+ # Keep processing SPF records until all recipients are checked 
+@@ -5243,8 +5240,8 @@
+   
+  
+ 
+-  ReturnMail($this->{mailfrom},"$base/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n") if ($EmailErrorsReply==1 || $EmailErrorsReply==3);
+-  ReturnMail($EmailErrorsTo,"$base/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ($EmailErrorsTo && ($EmailErrorsReply==2 || $EmailErrorsReply==3));
++  ReturnMail($this->{mailfrom},"/etc/assp/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n") if ($EmailErrorsReply==1 || $EmailErrorsReply==3);
++  ReturnMail($EmailErrorsTo,"/etc/assp/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ($EmailErrorsTo && ($EmailErrorsReply==2 || $EmailErrorsReply==3));
+ 
+   stateReset($fh);
+   $this->{getline}=\&getline;
+@@ -5377,13 +5374,13 @@
+ 
+   if (($this->{reporttype}==2) || ($this->{reporttype}==3)) {
+   
+-ReturnMail($this->{mailfrom},"$base/$file",'',"$this->{rcpt}\n\n$this->{report}\n") if ($EmailWhitelistReply==1 || $EmailWhitelistReply==3);
++ReturnMail($this->{mailfrom},"/etc/assp/$file",'',"$this->{rcpt}\n\n$this->{report}\n") if ($EmailWhitelistReply==1 || $EmailWhitelistReply==3);
+  
+-ReturnMail($EmailWhitelistTo,"$base/$file",'',"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ( $EmailWhitelistTo && ($EmailWhitelistReply==2 || $EmailWhitelistReply==3));
++ReturnMail($EmailWhitelistTo,"/etc/assp/$file",'',"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ( $EmailWhitelistTo && ($EmailWhitelistReply==2 || $EmailWhitelistReply==3));
+   } else {
+- ReturnMail($this->{mailfrom},"$base/$file",'',"$this->{rcpt}\n\n$this->{report}\n") if ($EmailRedlistReply==1 || $EmailRedlistReply==3);
++ ReturnMail($this->{mailfrom},"/etc/assp/$file",'',"$this->{rcpt}\n\n$this->{report}\n") if ($EmailRedlistReply==1 || $EmailRedlistReply==3);
+  
+-ReturnMail($EmailRedlistTo,"$base/$file",'',"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ( $EmailRedlistTo && ($EmailRedlistReply==2 || $EmailRedlistReply==3));
++ReturnMail($EmailRedlistTo,"/etc/assp//$file",'',"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ( $EmailRedlistTo && ($EmailRedlistReply==2 || $EmailRedlistReply==3));
+   } 
+   delete $this->{report};
+   stateReset($fh);
+@@ -5531,8 +5528,8 @@
+  my $file=($this->{reporttype}==0) ? "reports/spamreport.txt" : "reports/notspamreport.txt";
+ 
+ 
+-  ReturnMail($this->{mailfrom},"$base/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n") if ($EmailErrorsReply==1 || $EmailErrorsReply==3);
+-  ReturnMail($EmailErrorsTo,"$base/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ($EmailErrorsTo && ($EmailErrorsReply==2 || $EmailErrorsReply==3));
++  ReturnMail($this->{mailfrom},"/etc/assp/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n") if ($EmailErrorsReply==1 || $EmailErrorsReply==3);
++  ReturnMail($EmailErrorsTo,"/etc/assp/$file",$sub,"$this->{rcpt}\n\n$this->{report}\n",$this->{mailfrom}) if ($EmailErrorsTo && ($EmailErrorsReply==2 || $EmailErrorsReply==3));
+ 
+   delete $this->{report};
+   stateReset($fh);
+@@ -6010,7 +6007,7 @@
+     $a{lc $1}=1;
+    }
+   }
+-  foreach $a (split(' ',lc $this->{rcpt})) {
++  foreach $a (split('/var/lib/assp/',lc $this->{rcpt})) {
+    $a{$a}=1;
+   }
+   foreach $a (keys %a) {
+@@ -6470,10 +6467,10 @@
+  if($UseSubjectsAsMaillogNames || $isspam==2 || $isspam==3) {
+ 
+   $sub.="--".(++$Counter);
+-  return "$base/$maillog/$sub$maillogExt";
++  return "/var/lib/assp/$maillog/$sub$maillogExt";
+  } else {
+   my $fn=(time + $Counter++ ) % $MaxFiles;
+-  "$base/$maillog/$fn$maillogExt";
++  "/var/lib/assp/$maillog/$fn$maillogExt";
+  }
+ }
+ 
+@@ -7759,7 +7756,7 @@
+  $m=~s/^... (...) +(\d+) (\S+) ..(..)/$1-$2-$4 $3 /;
+  my $indent=" " x length($m);
+  if(!$pat) {
+-  open(F,"<$base/$logfile");
++  open(F,"<$logfile");
+   seek(F,-$MaillogTailBytes,2) || seek(F,0,0);
+   local $/;
+   $s=<F>;
+@@ -7779,7 +7776,7 @@
+   my $lines=0;
+   my $files=0;
+   my ($logdir, $logdirfile) = $logfile=~/^(.*[\/\\])?(.*?)$/;
+-  my @logfiles=reverse sort glob("$base/$logdir*$logdirfile");
++  my @logfiles=reverse sort glob("$logdir*$logdirfile");
+   my $logf=File::ReadBackwards->new(shift(@logfiles),'(?:\r?\n|\r)',1); # line terminator regex
+   if ($logf) {
+    $files++;
+@@ -7821,7 +7818,7 @@
+    my %replace;
+    my $j=0;
+    my $highlightExpr='=~s/(';
+-   foreach (map/^([^-].*)/, split(' ',$pat)) {
++   foreach (map/^([^-].*)/, split('/var/lib/assp/',$pat)) {
+     $replace{lc $_}=$highlights[$j % @highlights]; # pick highlight style
+     $highlightExpr.=quotemeta($_).'|';
+     if ($MaillogTailWrapColumn>0) {
+@@ -7982,7 +7979,7 @@
+  
+  else {
+   #$fil="$base/$fil" if $fil!~/^(([a-z]:)?[\/\\]|\Q$base\E)/;
+-  $fil="$base/$fil" if $fil!~/^\Q$base\E/i;
++  $fil="/etc/assp/$fil" if $fil!~/^\Q\/etc\/assp\/\E/i;
+   if ($qs{B1}=~/delete/i) {
+    unlink($fil);
+   }
+@@ -8206,7 +8203,7 @@
+  }
+ 
+  if ($fil !~ /^\Q$base\E/i) { 
+-  $fil="$base/$fil";
++  $fil="/usr/share/assp/$fil";
+  }
+  if (-e $fil) {
+    my $mtime;
+@@ -8541,9 +8538,9 @@
+ }
+ 
+ sub SaveConfig {
+- rename("$base/assp.cfg.bak","$base/assp.cfg.bak.bak");
+- rename("$base/assp.cfg","$base/assp.cfg.bak");
+- open(F,">$base/assp.cfg");
++ rename("/etc/assp/assp.cfg.bak","/etc/assp/assp.cfg.bak.bak");
++ rename("/etc/assp/assp.cfg","/etc/assp/assp.cfg.bak");
++ open(F,">/etc/assp/assp.cfg");
+  foreach (sort keys %Config) {print F "$_:=$Config{$_}\n";}
+  close F;
+ }
+@@ -8724,8 +8721,8 @@
+   # the option list is actually saved in a file.
+   $fromfile = 1;
+   my $fil = $1;
+-  if ($fil !~ /^(([a-z]:)?[\/\\]|\Q$base\E)/){
+-   $fil = "$base/$fil";
++  if ($fil !~ /^(([a-z]:)?[\/\\]|\Q\/etc\/assp\/\E)/){
++   $fil = "/etc/assp/$fil";
+   };
+   local $/;
+   my @s = stat($fil);
+@@ -8789,7 +8786,7 @@
+ sub fileUpdated {
+  my $fil=shift;
+ 
+- $fil="$base/$fil" if $fil!~/^(([a-z]:)?[\/\\]|\Q$base\E)/;
++ $fil="/etc/assp/$fil" if $fil!~/^(([a-z]:)?[\/\\]|\Q\/etc\/assp\/\E)/;
+  #$fil="$base/$fil" if $fil!~/^\Q$base\E/i;
+  return 1 unless $FileUpdate{$fil};
+  my @s=stat($fil);
+@@ -8891,7 +8888,7 @@
+ sub ConfigChangeLogfile {my ($name, $old, $new)=@_;
+  close LOG if $logfile;
+  $logfile=$new;
+- if($logfile && open(LOG,">>$base/$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
++ if($logfile && open(LOG,">>$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
+  mlog(0,"log file changed to '$new' from '$old' per admin request");
+  '';
+ }
+@@ -9242,7 +9239,7 @@
+  # called on SIG HUP
+  my %newConfig;
+  mlog(0,"sig HUP -- reloading config");
+- open(F,"<$base/assp.cfg"); local $/; (%newConfig)=split(/:=|\n/,<F>); close F;
++ open(F,"</etc/assp/assp.cfg"); local $/; (%newConfig)=split(/:=|\n/,<F>); close F;
+  foreach $c (@Config) {
+   my ($name,$nicename,$size,$func,$default,$valid,$onchange,$description)=@$c;
+   if($Config{$name} ne $newConfig{$name}) {
+@@ -9270,7 +9267,7 @@
+   }
+  # reopen log file, just for fun.
+   close LOG;
+-  if(open(LOG,">>$base/$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
++  if(open(LOG,">>$logfile")) {my $oldfh = select(LOG); $| = 1; select($oldfh);}
+   print LOG "Logfile reopened on HUP\n";
+ }
+ 
+diff -Naur assporg/ASSP/move2num.pl asspmod/ASSP/move2num.pl
+--- assporg/ASSP/move2num.pl	2007-01-18 23:12:20.000000000 +0100
++++ asspmod/ASSP/move2num.pl	2007-01-18 23:14:09.000000000 +0100
+@@ -3,7 +3,7 @@
+ # renames files to numbers
+ # (c) John Hanna, John Calvi 2003 under the terms of the GPL
+ 
+-open(F,"<assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
++open(F,"</etc/assp/assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
+ $spamlog=$Config{spamlog} && "$Config{base}/$Config{spamlog}" || 'spam';
+ $notspamlog=$Config{notspamlog} && "$Config{base}/$Config{notspamlog}" || 'notspam';
+ $MaxFiles=$Config{MaxFiles} || 14003;
+diff -Naur assporg/ASSP/rebuildspamdb.pl asspmod/ASSP/rebuildspamdb.pl
+--- assporg/ASSP/rebuildspamdb.pl	2007-01-18 23:12:20.000000000 +0100
++++ asspmod/ASSP/rebuildspamdb.pl	2007-01-18 23:14:09.000000000 +0100
+@@ -4,7 +4,7 @@
+ # (c) John Hanna 2003 under the terms of the GPL
+  # Updated July 2004 for simple proxy support.
+ 
+-open(F,"<assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
++open(F,"</etc/assp/assp.cfg"); local $/; (%Config)=split(/:=|\n/,<F>); close F;
+ $spamlog=$Config{spamlog} && "$Config{base}/$Config{spamlog}" || 'spam';
+ $notspamlog=$Config{notspamlog} && "$Config{base}/$Config{notspamlog}" || 'notspam';
+ $correctedspam=$Config{correctedspam} && "$Config{base}/$Config{correctedspam}" || 'errors/spam';
+@@ -13,7 +13,7 @@
+ $whitelistdb=$Config{whitelistdb} && "$Config{base}/$Config{whitelistdb}" || 'whitelist';
+ $MaxWhitelistDays=$Config{MaxWhitelistDays} || 90;
+ $OrderedTieHashSize=$Config{OrderedTieHashSize} || 5000;
+-$Log=$Config{logfile} && "$Config{base}/$Config{logfile}" || 'maillog.txt';
++$Log=$Config{logfile};
+ $whiteRE=$Config{whiteRE};
+ $KeepWhitelistedSpam=$Config{KeepWhitelistedSpam};
+ $proxyserver=$Config{proxyserver};
+diff -Naur assporg/ASSP/stats.sh asspmod/ASSP/stats.sh
+--- assporg/ASSP/stats.sh	2007-01-18 23:12:23.000000000 +0100
++++ asspmod/ASSP/stats.sh	2007-01-18 23:14:09.000000000 +0100
+@@ -52,7 +52,7 @@
+ #  your system's 'newsyslog' functionality. You can send a SIGHUP to
+ #  ASSP when you roll the log so it starts afresh..KRL
+ 
+-tail -300 -f /usr/local/assp/maillog.log | \
++tail -n 300 -f /var/log/assp/maillog.txt | \
+  awk  ' \
+   /whitelisted/ { \
+   printf("%s %s \033[1;32m%-15s L\033[0mW  %s \033[1;32m->\033[0m %s\n", \

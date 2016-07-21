@@ -1,0 +1,10 @@
+diff --git a/l7-filter-userspace/trunk/l7-classify.cpp b/l7-filter-userspace/trunk/l7-classify.cpp
+index 8b5b77e..1c80d4d 100644
+--- a/l7-filter-userspace/trunk/l7-classify.cpp
++++ b/l7-filter-userspace/trunk/l7-classify.cpp
+@@ -59,6 +59,7 @@ l7_pattern::l7_pattern(string name, string pattern_string, int eflags,
+     cerr << "error compiling " << name << " -- " << pattern_string << endl;
+     exit(1);
+   }
++  free(preprocessed);
+ }

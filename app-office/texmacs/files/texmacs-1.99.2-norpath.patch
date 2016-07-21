@@ -1,0 +1,16 @@
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index d79d4b2..8a558af 100644
+--- a/configure.in
++++ b/configure.in
+@@ -691,7 +691,7 @@ CONFIG_CXXOPTIMIZE="-O2"
+ CONFIG_BSTATIC="-lXdmcp -lXau -lXrender"
+ CONFIG_BSHARED="-Wl,-Bdynamic"
+ CONFIG_BFLAGS=""
+-CONFIG_BPATH="-Wl,-rpath,"
++CONFIG_BPATH=""
+ CONFIG_LDRT=""
+ CONFIG_WORD_LENGTH="4"
+ CONFIG_WORD_LENGTH_INC="3"

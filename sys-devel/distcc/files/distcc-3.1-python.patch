@@ -1,0 +1,258 @@
+diff -Naur distcc-3.1.orig/bench/statistics.py distcc-3.1/bench/statistics.py
+--- distcc-3.1.orig/bench/statistics.py	2008-12-03 06:50:21.000000000 +0900
++++ distcc-3.1/bench/statistics.py	2009-03-17 01:29:26.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python2.2
++#! /usr/bin/env python
+ 
+ # benchmark -- automated system for testing distcc correctness
+ # and performance on various source trees.
+diff -Naur distcc-3.1.orig/configure distcc-3.1/configure
+--- distcc-3.1.orig/configure	2008-12-03 06:50:34.000000000 +0900
++++ distcc-3.1/configure	2009-03-17 01:31:09.000000000 +0900
+@@ -3629,7 +3629,7 @@
+ #
+ # NB: Cannot use AC_CONFIG_LIBOBJ_DIR here, because it's not present
+ # in autoconf 2.53.
+-for ac_prog in python2.5 python-2.5 python2.4 python-2.4 python
++for ac_prog in python
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+diff -Naur distcc-3.1.orig/configure.ac distcc-3.1/configure.ac
+--- distcc-3.1.orig/configure.ac	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/configure.ac	2009-03-17 01:29:04.000000000 +0900
+@@ -243,7 +243,7 @@
+ #
+ # NB: Cannot use AC_CONFIG_LIBOBJ_DIR here, because it's not present
+ # in autoconf 2.53.
+-AC_PATH_PROGS(PYTHON, [python2.5 python-2.5 python2.4 python-2.4 python])
++AC_PATH_PROGS(PYTHON, [python])
+ AC_ARG_VAR(PYTHON, [Python interpreter])
+ # Python 1 doesn't even support -V
+ if ! "$PYTHON" -V 2>&1 | grep "^Python" >/dev/null; then
+diff -Naur distcc-3.1.orig/include_server/basics.py distcc-3.1/include_server/basics.py
+--- distcc-3.1.orig/include_server/basics.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/basics.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ #
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/basics_test.py distcc-3.1/include_server/basics_test.py
+--- distcc-3.1.orig/include_server/basics_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/basics_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/c_extensions_test.py distcc-3.1/include_server/c_extensions_test.py
+--- distcc-3.1.orig/include_server/c_extensions_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/c_extensions_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/cache_basics.py distcc-3.1/include_server/cache_basics.py
+--- distcc-3.1.orig/include_server/cache_basics.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/cache_basics.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/compiler_defaults.py distcc-3.1/include_server/compiler_defaults.py
+--- distcc-3.1.orig/include_server/compiler_defaults.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/compiler_defaults.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/compress_files.py distcc-3.1/include_server/compress_files.py
+--- distcc-3.1.orig/include_server/compress_files.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/compress_files.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_analyzer.py distcc-3.1/include_server/include_analyzer.py
+--- distcc-3.1.orig/include_server/include_analyzer.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_analyzer.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_analyzer_memoizing_node.py distcc-3.1/include_server/include_analyzer_memoizing_node.py
+--- distcc-3.1.orig/include_server/include_analyzer_memoizing_node.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_analyzer_memoizing_node.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_analyzer_memoizing_node_test.py distcc-3.1/include_server/include_analyzer_memoizing_node_test.py
+--- distcc-3.1.orig/include_server/include_analyzer_memoizing_node_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_analyzer_memoizing_node_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4 
++#! /usr/bin/python 
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_analyzer_test.py distcc-3.1/include_server/include_analyzer_test.py
+--- distcc-3.1.orig/include_server/include_analyzer_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_analyzer_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_server.py distcc-3.1/include_server/include_server.py
+--- distcc-3.1.orig/include_server/include_server.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_server.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/include_server_test.py distcc-3.1/include_server/include_server_test.py
+--- distcc-3.1.orig/include_server/include_server_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/include_server_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/macro_eval.py distcc-3.1/include_server/macro_eval.py
+--- distcc-3.1.orig/include_server/macro_eval.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/macro_eval.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/macro_eval_test.py distcc-3.1/include_server/macro_eval_test.py
+--- distcc-3.1.orig/include_server/macro_eval_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/macro_eval_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/mirror_path.py distcc-3.1/include_server/mirror_path.py
+--- distcc-3.1.orig/include_server/mirror_path.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/mirror_path.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/mirror_path_test.py distcc-3.1/include_server/mirror_path_test.py
+--- distcc-3.1.orig/include_server/mirror_path_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/mirror_path_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/parse_command.py distcc-3.1/include_server/parse_command.py
+--- distcc-3.1.orig/include_server/parse_command.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/parse_command.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4 
++#! /usr/bin/python 
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/parse_command_test.py distcc-3.1/include_server/parse_command_test.py
+--- distcc-3.1.orig/include_server/parse_command_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/parse_command_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/parse_file.py distcc-3.1/include_server/parse_file.py
+--- distcc-3.1.orig/include_server/parse_file.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/parse_file.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/parse_file_test.py distcc-3.1/include_server/parse_file_test.py
+--- distcc-3.1.orig/include_server/parse_file_test.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/parse_file_test.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4
++#! /usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/run.py distcc-3.1/include_server/run.py
+--- distcc-3.1.orig/include_server/run.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/run.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4 
++#! /usr/bin/python 
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/setup.py distcc-3.1/include_server/setup.py
+--- distcc-3.1.orig/include_server/setup.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/setup.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ 
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/include_server/statistics.py distcc-3.1/include_server/statistics.py
+--- distcc-3.1.orig/include_server/statistics.py	2008-12-03 06:50:31.000000000 +0900
++++ distcc-3.1/include_server/statistics.py	2009-03-17 01:30:46.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/python2.4 
++#! /usr/bin/python 
+ #
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/test/onetest.py distcc-3.1/test/onetest.py
+--- distcc-3.1.orig/test/onetest.py	2008-12-03 06:50:22.000000000 +0900
++++ distcc-3.1/test/onetest.py	2009-03-17 01:29:44.000000000 +0900
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.4
++#!/usr/bin/python
+ #
+ # Copyright 2007 Google Inc.
+ #
+diff -Naur distcc-3.1.orig/test/testdistcc.py distcc-3.1/test/testdistcc.py
+--- distcc-3.1.orig/test/testdistcc.py	2008-12-03 06:50:22.000000000 +0900
++++ distcc-3.1/test/testdistcc.py	2009-03-17 01:29:36.000000000 +0900
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python2.2
++#! /usr/bin/env python
+ 
+ # Copyright (C) 2002, 2003, 2004 by Martin Pool <mbp@samba.org>
+ # Copyright 2007 Google Inc.

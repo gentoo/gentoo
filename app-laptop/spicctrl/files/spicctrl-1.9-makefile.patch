@@ -1,0 +1,11 @@
+--- Makefile.orig	2012-11-20 12:38:41.528871594 +0400
++++ Makefile	2012-11-20 12:39:42.630871103 +0400
+@@ -14,7 +14,7 @@
+ all: spicctrl
+ 
+ spicctrl: $(OBJ)
+-	$(CC) -o spicctrl $(OBJ) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o spicctrl $(OBJ) $(LIBS)
+ 
+ clean:
+ 	rm -f $(OBJ) spicctrl *~

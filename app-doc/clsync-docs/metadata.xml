@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <longdescription>
+  Install documentation common for <pkg>app-admin/clsync</pkg> and
+  <pkg>dev-libs/libclsync</pkg> packages.
+</longdescription>
+  <use>
+    <flag name="api">Install doxygen generated API docs.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">xaionaro/clsync</remote-id>
+  </upstream>
+</pkgmetadata>

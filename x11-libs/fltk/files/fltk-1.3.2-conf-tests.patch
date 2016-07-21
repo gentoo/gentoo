@@ -1,0 +1,55 @@
+--- a/Makefile
++++ b/Makefile
+@@ -100,9 +103,6 @@
+ 	touch config.h
+ 	chmod +x fltk-config
+ 
+-configure: configure.in
+-	autoconf
+-
+ config.guess config.sub:
+ 	-automake --add-missing 2> /dev/null
+ 	if [ ! -e config.sub   ]; then echo NOTE: Using frozen copy of config.sub;   cp misc/config.sub   . ; fi
+--- a/documentation/Makefile
++++ b/documentation/Makefile
+@@ -84,11 +84,6 @@
+ 	  $(INSTALL_DATA) fltk.pdf $(DESTDIR)$(docdir); \
+ 	fi
+ 	echo "Installing man pages in $(DESTDIR)$(mandir) ..."
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat3
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.$(CAT3EXT) $(DESTDIR)$(mandir)/cat3
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.man $(DESTDIR)$(mandir)/man1/fluid.1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.man $(DESTDIR)$(mandir)/man1/fltk-config.1
+@@ -96,10 +91,6 @@
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.man $(DESTDIR)$(mandir)/man3/fltk.3
+ 
+ install-linux install-osx:
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/sudoku.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.man $(DESTDIR)$(mandir)/man6/blocks.6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.man $(DESTDIR)$(mandir)/man6/checkers.6
+@@ -108,17 +99,11 @@
+ 
+ uninstall:
+ 	$(RMDIR) $(DESTDIR)$(docdir)
+-	$(RM) $(DESTDIR)$(mandir)/cat1/fluid.$(CAT1EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man1/fluid.1
+-	$(RM) $(DESTDIR)$(mandir)/cat1/fltk-config.$(CAT1EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man1/fltk-config.1
+-	$(RM) $(DESTDIR)$(mandir)/cat3/fltk.$(CAT3EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man3/fltk.3
+ 
+ uninstall-linux uninstall-osx:
+-	$(RM) $(DESTDIR)$(mandir)/cat6/blocks.$(CAT6EXT)
+-	$(RM) $(DESTDIR)$(mandir)/cat6/checkers.$(CAT6EXT)
+-	$(RM) $(DESTDIR)$(mandir)/cat6/sudoku.$(CAT6EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man6/blocks.6
+ 	$(RM) $(DESTDIR)$(mandir)/man6/checkers.6
+ 	$(RM) $(DESTDIR)$(mandir)/man6/sudoku.6

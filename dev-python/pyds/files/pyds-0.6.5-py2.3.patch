@@ -1,0 +1,19 @@
+--- PyDS/DownstreamTool.py
++++ PyDS/DownstreamTool.py
+@@ -36,6 +36,7 @@
+ import urllib
+ import gzip
+ import mimetypes
++import urlparse
+ 
+ import PyDS.Tool
+ 
+@@ -74,6 +75,8 @@
+ 				for h in self.cache._getUrlHeaders(theurl):
+ 					apply(self.addheader, h)
+ 					self.message += _('<br>adding Header "%s: %s"') % h
++			urlpieces = urlparse.urlparse(url[1])
++			url = (urlpieces[1], url[1])
+ 			res = urllib.URLopener.open_http(self, url, data)
+ 			self.message = self.message.replace('%', '%%')
+ 			if self.verbose:

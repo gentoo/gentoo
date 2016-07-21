@@ -1,0 +1,54 @@
+diff --git a/configure b/configure
+index 07796b1..afdda94 100755
+--- a/configure
++++ b/configure
+@@ -556,11 +556,6 @@ case $host_cpu in
+             if [[ "$asm" == auto && "$CFLAGS" != *-march* ]]; then
+                 CFLAGS="$CFLAGS -march=i686"
+             fi
+-            if [[ "$asm" == auto && "$CFLAGS" != *-mfpmath* ]]; then
+-                CFLAGS="$CFLAGS -mfpmath=sse -msse"
+-            fi
+-            CFLAGS="-m32 $CFLAGS"
+-            LDFLAGS="-m32 $LDFLAGS"
+         else
+             # icc on linux has various degrees of mod16 stack support
+             if [ $SYS = LINUX ]; then
+@@ -591,13 +586,8 @@ case $host_cpu in
+     x86_64)
+         ARCH="X86_64"
+         AS="yasm"
+-        [ $compiler = GNU ] && CFLAGS="-m64 $CFLAGS" && LDFLAGS="-m64 $LDFLAGS"
+         if [ "$SYS" = MACOSX ]; then
+             ASFLAGS="$ASFLAGS -f macho64 -m amd64 -DPIC -DPREFIX"
+-            if cc_check '' "-arch x86_64"; then
+-                CFLAGS="$CFLAGS -arch x86_64"
+-                LDFLAGS="$LDFLAGS -arch x86_64"
+-            fi
+         elif [ "$SYS" = WINDOWS -o "$SYS" = CYGWIN ]; then
+             ASFLAGS="$ASFLAGS -f win32 -m amd64"
+             # only the GNU toolchain is inconsistent in prefixing function names with _
+@@ -605,7 +595,11 @@ case $host_cpu in
+             [ $compiler = GNU ] && LDFLAGS="$LDFLAGS -Wl,--nxcompat -Wl,--dynamicbase"
+             [ $compiler = GNU ] && RCFLAGS="--target=pe-x86-64 $RCFLAGS"
+         else
+-            ASFLAGS="$ASFLAGS -f elf -m amd64"
++            if cpp_check "" "" "__ILP32__" ; then
++                ASFLAGS="$ASFLAGS -f elf -m x32"
++            else
++                ASFLAGS="$ASFLAGS -f elf -m amd64"
++            fi
+         fi
+         ;;
+     powerpc|powerpc64)
+@@ -971,10 +965,6 @@ if [ "$pic" = "yes" ] ; then
+     [ $SYS = SunOS -a "$ARCH" = "X86" ] && SOFLAGS="$SOFLAGS -mimpure-text"
+ fi
+ 
+-if [ "$debug" != "yes" -a "$gprof" != "yes" ]; then
+-    CFLAGS="$CFLAGS -fomit-frame-pointer"
+-fi
+-
+ if [ "$strip" = "yes" ]; then
+     CFLAGS="$CFLAGS -s"
+     LDFLAGS="$LDFLAGS -s"

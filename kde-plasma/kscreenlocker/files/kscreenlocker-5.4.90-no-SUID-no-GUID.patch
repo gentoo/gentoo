@@ -1,0 +1,16 @@
+diff --git a/kcheckpass/CMakeLists.txt b/kcheckpass/CMakeLists.txt
+index a63fa1403e897e70989dc2e1ba7eed4bc69cbb51..12d1bfb3c690eca1acf344045a92eb942669da83 100644
+--- a/kcheckpass/CMakeLists.txt
++++ b/kcheckpass/CMakeLists.txt
+@@ -22,10 +22,6 @@ endif ()
+ 
+ set_property(TARGET kcheckpass APPEND_STRING PROPERTY COMPILE_FLAGS " -U_REENTRANT")
+ target_link_libraries(kcheckpass ${UNIXAUTH_LIBRARIES} ${SOCKET_LIBRARIES})
+-install(TARGETS kcheckpass DESTINATION ${KDE_INSTALL_LIBEXECDIR})
+-install(CODE "
+-    set(KCP_PATH \"\$ENV{DESTDIR}${KDE_INSTALL_LIBEXECDIR}/kcheckpass\")
+-    execute_process(COMMAND sh -c \"chown root '\${KCP_PATH}' && chmod +s '\${KCP_PATH}'\")
+-")
++install(TARGETS kcheckpass DESTINATION ${LIBEXEC_INSTALL_DIR})
+ 
+ #EXTRA_DIST = README

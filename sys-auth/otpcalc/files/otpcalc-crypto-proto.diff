@@ -1,0 +1,13 @@
+Correct crypto prototypes, bug 123993.
+
+--- otpCalc-0.97.orig/crypto.h
++++ otpCalc-0.97/crypto.h
+@@ -1,4 +1,4 @@
+-void md4lite(char *, size_t);
+-void md5lite(char *, size_t);
+-void rmd160lite(char *, size_t);
+-void sha1lite(char *, size_t);
++void md4lite(char *message, unsigned int len);
++void md5lite(char *message, unsigned int len);
++void rmd160lite(char *message, unsigned int len);
++void sha1lite(char *message, unsigned int len);

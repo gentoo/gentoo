@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>haubi@gentoo.org</email>
+		<name>Michael Haubenwallner</name>
+	</maintainer>
+	<longdescription lang="en">
+		MICO is a mature, secure, robust, fully standards-compliant
+		implementation of the CORBA standard. It is available as GNU open source
+		software and is widely used for robust application integration. MICO is
+		renowned for its market-leading security features, its great
+		user-friendliness, and its full standard-compliance.
+	</longdescription>
+</pkgmetadata>

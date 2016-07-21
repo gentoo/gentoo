@@ -1,0 +1,15 @@
+--- usr.sbin/ftp-proxy/ftp-proxy/Makefile.old	2011-11-02 20:57:03.000000000 +0000
++++ usr.sbin/ftp-proxy/ftp-proxy/Makefile	2011-11-02 20:57:21.000000000 +0000
+@@ -7,11 +7,9 @@
+ 
+ SRCS=	ftp-proxy.c filter.c
+ 
+-CFLAGS+= -I${.CURDIR}/../../../contrib/pf/libevent
+ CFLAGS+= -I${.CURDIR}/../../../sys/contrib/pf
+ 
+-LDADD+= ${LIBEVENT}
+-DPADD+= ${LIBEVENT}
++LDADD+= -levent
+ 
+ WARNS?=	3
+ 

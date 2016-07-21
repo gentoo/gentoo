@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data-ObjectDriver</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::BaseObject</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::BaseView</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::BaseCache</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Cache::Apache</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Cache::Cache</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Cache::Memcached</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Cache::RAM</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD::Oracle</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD::Oracle::db</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD::Pg</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD::SQLite</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBD::mysql</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::DBI</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::GearmanDBI</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::MultiPartition</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Multiplexer</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::Partition</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Driver::SimplePartition</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Errors</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Iterator</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::Profiler</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::ResultSet</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::SQL</remote-id>
+    <remote-id type="cpan-module">Data::ObjectDriver::SQL::Oracle</remote-id>
+  </upstream>
+</pkgmetadata>

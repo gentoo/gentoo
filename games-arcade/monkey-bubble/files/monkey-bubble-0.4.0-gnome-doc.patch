@@ -1,0 +1,38 @@
+--- help/C/monkey-bubble.xml
++++ help/C/monkey-bubble.xml
+@@ -23,7 +23,7 @@
+       <publishername>GNOME Documentation Project</publishername> 
+     </publisher> 
+     <authorgroup> 
+-      <author> 
++      <author role="maintainer">
+ 	<firstname>Thomas</firstname> 
+ 	<surname>Cataldo</surname> 
+ 	<affiliation> 
+@@ -55,6 +55,7 @@
+ 	manual, follow the directions in the 
+ 	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+     </legalnotice> 
++	<abstract role="description"><para>Monkey Bubble manual</para></abstract>
+   </articleinfo> 
+ 
+   <indexterm> 
+--- help/fr/monkey-bubble.xml
++++ help/fr/monkey-bubble.xml
+@@ -22,7 +22,7 @@
+       <publishername>Projet de documentation GNOME</publishername> 
+     </publisher> 
+     <authorgroup> 
+-      <author> 
++      <author role="maintainer">
+ 	<firstname>Thomas</firstname> 
+ 	<surname>Cataldo</surname> 
+ 	<affiliation> 
+@@ -47,6 +47,7 @@
+       <title>Votre avis</title> 
+       <para>Pour signaler un probl&egrave;me ou faire une suggestion concernant l'application Monkey Bubble ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute;&agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.</para>
+     </legalnotice> 
++	<abstract role="description"><para>Monkey Bubble manual</para></abstract>
+   </articleinfo> 
+ 
+   <indexterm> 

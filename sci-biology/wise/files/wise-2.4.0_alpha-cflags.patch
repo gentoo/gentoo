@@ -1,0 +1,407 @@
+diff --git a/src/base/makefile b/src/base/makefile
+index 4620f19..a84e2c7 100644
+--- a/src/base/makefile
++++ b/src/base/makefile
+@@ -20,8 +20,8 @@ NBASEOBJ = wiseconfig.o \
+ 
+ 
+ #CFLAGS = -c  -g -DUNIX -DWISE_MEMORY_WATCH
+-CFLAGS = -c  -O2 -DUNIX -pthread
+-LFLAGS =  -g  -lm 
++CFLAGS += -c -DUNIX -pthread
++LFLAGS =  -lm 
+ DFLAGS = -n Wise2_ -a _api.h -b _api.t -l -D
+ AR_OPTIONS = ru
+ 
+diff --git a/src/corba/makefile b/src/corba/makefile
+index df3dd78..237a1ba 100644
+--- a/src/corba/makefile
++++ b/src/corba/makefile
+@@ -1,10 +1,10 @@
+ 
+ 
+-CC = cc
++CC += gcc
+ INCFLAGS = -I../base/ -I../dynlibsrc
+ #gCFLAGS = -Wall -g -pedantic -c  -DUNIX -I../base/
+-#CFLAGS =  -O2 -c  -DUNIX  -I../base/ `glib-config --cflags` -I/usr/local/include/orbit-1.0/
+-CFLAGS =  -pthread -c  -DUNIX  -I../base/ -I../dynlibsrc `orbit-config --cflags client`
++#CFLAGS =  -O2 -c  -DUNIX  -I../base/ `pkg-config glib-2.0 --cflags` -I/usr/local/include/orbit-1.0/
++CFLAGS +=  -pthread -c  -DUNIX  -I../base/ -I../dynlibsrc `pkg-config ORBit-2.0 --cflags`
+ LFLAGS =   -L../base/ -lm -lpthread
+ AR_OPTIONS = ru
+ 
+@@ -14,18 +14,18 @@ hspscan_corba.c : hspscan_corba.idl
+ 	orbit-idl hspscan_corba.idl
+ 
+ test_server : test_server.o hspscan_server_impl.o hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o corba_singleton.o 
+-	cc -g -o test_server  test_server.o hspscan_server_impl.o  hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o  corba_singleton.o ../dynlibsrc/libdyna.a ../base/libwisebase.a ../dynlibsrc/hsp.o ../dynlibsrc/subseqhash.o ../dynlibsrc/linkedlist_lookpos.o   ../dynlibsrc/libdyna_glib.a `glib-config --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o test_server  test_server.o hspscan_server_impl.o  hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o  corba_singleton.o ../dynlibsrc/libdyna.a ../base/libwisebase.a ../dynlibsrc/hsp.o ../dynlibsrc/subseqhash.o ../dynlibsrc/linkedlist_lookpos.o   ../dynlibsrc/libdyna_glib.a `pkg-config glib-2.0 --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
+ 
+ scanwise_protein_index : scanwise_protein_index.o hspscan_server_impl.o hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o corba_singleton.o 
+-	cc -o scanwise_protein_index  scanwise_protein_index.o hspscan_server_impl.o  hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o  corba_singleton.o  ../dynlibsrc/libdyna_glib.a ../dynlibsrc/libdyna.a ../base/libwisebase.a `glib-config --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o scanwise_protein_index  scanwise_protein_index.o hspscan_server_impl.o  hspscan_corba-common.o hspscan_corba-skels.o hspscan_corba-stubs.o  corba_singleton.o  ../dynlibsrc/libdyna_glib.a ../dynlibsrc/libdyna.a ../base/libwisebase.a `pkg-config glib-2.0 --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
+ 
+ 
+ test_client : test_client.o hspscan_corba-common.o hspscan_corba-stubs.o 
+-	cc -g -o test_client  test_client.o  hspscan_corba-common.o hspscan_corba-stubs.o ../dynlibsrc/libdyna.a ../base/libwisebase.a `glib-config --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o test_client  test_client.o  hspscan_corba-common.o hspscan_corba-stubs.o ../dynlibsrc/libdyna.a ../base/libwisebase.a `pkg-config glib-2.0 --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
+ 
+ 
+ test_wrapper : test_wrapper.o hspscan_corba-common.o hspscan_corba-stubs.o hspscan_corba_wrapper.o corba_singleton.o 
+-	cc -g -o test_wrapper test_wrapper.o  hspscan_corba-common.o hspscan_corba-stubs.o   corba_singleton.o hspscan_corba_wrapper.o ../dynlibsrc/hsp.o ../dynlibsrc/libdyna.a ../base/libwisebase.a  `glib-config --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o test_wrapper test_wrapper.o  hspscan_corba-common.o hspscan_corba-stubs.o   corba_singleton.o hspscan_corba_wrapper.o ../dynlibsrc/hsp.o ../dynlibsrc/libdyna.a ../base/libwisebase.a  `pkg-config glib-2.0 --libs` -lm -lORBit -lIIOP -lORBitutil -lpthread
+ 
+ .c.o :
+ 	$(CC) $(CFLAGS) $(INCFLAGS) $?
+diff --git a/src/dnaindex/assembly/makefile b/src/dnaindex/assembly/makefile
+index ef3334a..3a0bc2a 100644
+--- a/src/dnaindex/assembly/makefile
++++ b/src/dnaindex/assembly/makefile
+@@ -26,10 +26,10 @@ arraymatcher : arraymatcher.o assemblygraph.o assemblystats.o basegraph.o
+ 
+ 
+ CC = cc
+-CFLAGS = -Wall -pthread -c  -DHAS_PTHREAD_SETSCOPE -g -DUNIX -I../../base/ -I../../dynlibsrc/ -I../ -I../../models/ `glib-config --cflags`
++CFLAGS = -Wall -pthread -c  -DHAS_PTHREAD_SETSCOPE -g -DUNIX -I../../base/ -I../../dynlibsrc/ -I../ -I../../models/ `pkg-config glib-2.0 --cflags`
+ 
+ 
+-LFLAGS =  -g -L../../base/ -L../../dynlibsrc/ -lpthread `glib-config --libs` -lm
++LFLAGS =  -g -L../../base/ -L../../dynlibsrc/ -lpthread `pkg-config glib-2.0 --libs` -lm
+ 
+ 
+ .c.o :
+diff --git a/src/dnaindex/makefile b/src/dnaindex/makefile
+index 285e6a0..8c6a0dc 100644
+--- a/src/dnaindex/makefile
++++ b/src/dnaindex/makefile
+@@ -27,14 +27,14 @@ all: $(ASSEMBLY_OBJ)
+ 
+ 
+ kwise : kwise.o $(ASSEMBLY_OBJ)
+-	$(CC) -o kwise kwise.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `glib-config --libs`
++	$(CC) -o kwise kwise.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `pkg-config glib-2.0 --libs`
+ 
+ arraymatcher : arraymatcher.o $(ASSEMBLY_OBJ) 
+-	$(CC) -o arraymatcher arraymatcher.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `glib-config --libs`
++	$(CC) -o arraymatcher arraymatcher.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `pkg-config glib-2.0 --libs`
+ 
+ 
+ findbad_kmer : findbad_kmer.o $(ASSEMBLY_OBJ)
+-	$(CC) -o findbad_kmer findbad_kmer.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `glib-config --libs`
++	$(CC) -o findbad_kmer findbad_kmer.o $(ASSEMBLY_OBJ)  -ldyna -lwisebase $(LFLAGS) `pkg-config glib-2.0 --libs`
+ 
+ make_shotgun : make_shotgun.o shotgun.o
+ 	$(CC) -o make_shotgun make_shotgun.o shotgun.o -ldyna -lwisebase $(LFLAGS)
+@@ -70,10 +70,10 @@ show_euler : show_euler.o eulerindex.o singleseqspace.o
+ 	$(CC) -o show_euler show_euler.o eulerindex.o singleseqspace.o -ldyna -lwisebase $(LFLAGS)
+ 
+ CC = cc
+-CFLAGS = -pthread -c  -DHAS_PTHREAD_SETSCOPE -g -DUNIX -I../base/ -I../dynlibsrc/ `glib-config --cflags`
++CFLAGS = -pthread -c  -DHAS_PTHREAD_SETSCOPE -g -DUNIX -I../base/ -I../dynlibsrc/ `pkg-config glib-2.0 --cflags`
+ 
+ 
+-LFLAGS =  -g -L../base/ -L../dynlibsrc/ -lpthread `glib-config --libs` -lm
++LFLAGS =  -g -L../base/ -L../dynlibsrc/ -lpthread `pkg-config glib-2.0 --libs` -lm
+ 
+ 
+ .c.o :
+diff --git a/src/dynlibsrc/makefile b/src/dynlibsrc/makefile
+index d1d77af..cad8900 100644
+--- a/src/dynlibsrc/makefile
++++ b/src/dynlibsrc/makefile
+@@ -78,11 +78,11 @@ DYNHELPEROBJ = packaln.o \
+ 
+ 
+ 
+-CC = cc
++CC ?= gcc
+ INCFLAGS = -I../base/
+ #CFLAGS = -Wall -g -pedantic -c  -DUNIX -I../base/
+-CFLAGS =  -Wall -g3 -DPTHREAD -O2 -c  -DUNIX -I../base/ `glib-config --cflags`
+-#CFLAGS =   -O2 -c -pthread  -DUNIX  -I../base/ `glib-config --cflags`
++CFLAGS +=  -DPTHREAD -c  -DUNIX -I../base/ `pkg-config glib-2.0 --cflags`
++#CFLAGS =   -O2 -c -pthread  -DUNIX  -I../base/ `pkg-config glib-2.0 --cflags`
+ #CFLAGS =   -O -c -DUNIX -DNOERROR -I../base/
+ LFLAGS =  -g -L../base/ -lm 
+ AR_OPTIONS = ru
+@@ -144,13 +144,13 @@ test_shadowindex : test_shadowindex.o shadowseqindex.o shadowseq.o libdyna.a
+ 	$(CC) -g -o test_shadowindex test_shadowindex.o shadowseqindex.o shadowseq.o ./libdyna.a ../base/libwisebase.a -lm
+ 
+ test_seqhash : test_seqhash.o subseqhash.o hsp.o hitlist.o hspscaninterface.o hsplookupscan.o libdyna.a
+-	$(CC) -g -o test_seqhash `glib-config --libs` test_seqhash.o subseqhash.o hsp.o  hitlist.o hspscaninterface.o hsplookupscan.o libdyna.a ../base/libwisebase.a -lm  
++	$(CC) -g -o test_seqhash `pkg-config glib-2.0 --libs` test_seqhash.o subseqhash.o hsp.o  hitlist.o hspscaninterface.o hsplookupscan.o libdyna.a ../base/libwisebase.a -lm  
+ 
+ test_hsp : test_hsp.o codon.o sequence.o hsp.o compmat.o probability.o 
+-	$(CC) -g -o test_hsp test_hsp.o codon.o sequence.o hsp.o compmat.o probability.o  ../base/libwisebase.a -lm `glib-config --libs`
++	$(CC) -g -o test_hsp test_hsp.o codon.o sequence.o hsp.o compmat.o probability.o  ../base/libwisebase.a -lm `pkg-config glib-2.0 --libs`
+ 
+ test_topscore : test_topscore.o codon.o sequence.o hsp.o compmat.o probability.o 
+-	$(CC) -g -o test_topscore test_topscore.o codon.o sequence.o hsp.o compmat.o probability.o  ../base/libwisebase.a -lm `glib-config --libs`
++	$(CC) -g -o test_topscore test_topscore.o codon.o sequence.o hsp.o compmat.o probability.o  ../base/libwisebase.a -lm `pkg-config glib-2.0 --libs`
+ 
+ 
+ testgendb : probability.o genomicdb.o genomic.o testgendb.o sequence.o codon.o sequencedb.o complexsequence.o complexevalset.o
+diff --git a/src/external/mott/makefile b/src/external/mott/makefile
+index 8d7c1d4..940c438 100644
+--- a/src/external/mott/makefile
++++ b/src/external/mott/makefile
+@@ -14,10 +14,10 @@ libmott.a : mott_api.o gaplib.o wise2_mott_bridge.o
+ wise2_mott_bridge.o : wise2_mott_bridge.c
+ 	$(CC) $(CFLAGS) -I../../dynlibsrc -I../../base wise2_mott_bridge.c
+ 
+-CC = cc
++CC ?= gcc
+ 
+-CFLAGS =  -Wall -g3 -DPTHREAD -O2 -c 
+-LFLAGS =  -g -L../base/ -lm 
++CFLAGS += -DPTHREAD -c 
++LFLAGS = -L../base/ -lm 
+ AR_OPTIONS = ru
+ 
+ 
+diff --git a/src/makefile b/src/makefile
+index bdff4ff..0d7c871 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -26,12 +26,12 @@
+ 
+ # Change the cc line to gcc if you get compiler errors
+ # Most likely you have a non ANSI C compiler
+-CC ?= cc
++CC ?= gcc
+ 
+ # These are the CFLAGS to use. These days Wise2 is inherently
+ # pthreaded, and everything is compiled with threads. More 
+ # info on running threads can be found in the documentation
+-CFLAGS = -c -pthread -O2 `glib-config --cflags`
++CFLAGS += -c -pthread `pkg-config glib-2.0 --cflags`
+ 
+ 
+ 
+diff --git a/src/models/makefile b/src/models/makefile
+index f518d0c..a297eff 100644
+--- a/src/models/makefile
++++ b/src/models/makefile
+@@ -50,6 +50,8 @@ NEWG = geneparser21.o \
+ 	proteinsw.o \
+ 	estquick3.o 
+ 
++EXTRALIBS += `pkg-config glib-2.0 --libs`
++
+ all : dnal psw pswdb dba estwise genewise genewisedb estwisedb genomewise sywise pseudowise promoterwise scanwisep scanwisep_wiseserver libmodel.a
+ 
+ libmodel.a : $(NEWG) 
+@@ -180,7 +182,7 @@ fivestarscan.o : fivestarscan.c
+ 	$(CC) $(CFLAGS) fivestarscan.c -I../base/ -I../dynlibsrc/ -I../HMMer2/ -I.
+ 
+ oldpostwise : oldpostwise.o $(NEWG) 
+-	$(CC) -g -o oldpostwise oldpostwise.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm 
++	$(CC) $(LDFLAGS) -o oldpostwise oldpostwise.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm 
+ 
+ testdna : testdna.o dnaalign.o seqaligndisplay.o 
+ 	$(CC) -o testdna testdna.o dnaalign.o seqaligndisplay.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+@@ -192,10 +194,10 @@ psw : psw.o seqaligndisplay.o proteinsw.o sw_wrap.o abc.o pba.o
+ 	$(CC) -o psw psw.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o   $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ scanwisep.o : scanwisep.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) -I../external/mott `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) -I../external/mott `pkg-config glib-2.0 --cflags` $?
+ 
+ hsp2aln_sw.o : hsp2aln_sw.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ scanwisep_mysql.o : scanwisep.c
+ 	$(CC)  $(CFLAGS) -DSCAN_MYSQL -I../corba -I../external/mott -I../mysql/protein_index/ -I/usr/local/mysql/include scanwisep.c 
+@@ -212,10 +214,10 @@ scanwisep_corba : scanwisep_corba.o seqaligndisplay.o proteinsw.o sw_wrap.o abc.
+ 
+ 
+ scanwisep_wiseserver.o : scanwisep.c
+-	$(CC)  $(CFLAGS) $(INCFLAGS)  -o scanwisep_wiseserver.o -DSCAN_WISESERVER -I../network -I../socket -I../external/mott scanwisep.c 
++	$(CC)  $(LDFLAGS) $(CFLAGS) $(INCFLAGS)  -o scanwisep_wiseserver.o -DSCAN_WISESERVER -I../network -I../socket -I../external/mott scanwisep.c `pkg-config glib-2.0 --libs`
+ 
+ scanwisep_wiseserver : scanwisep_wiseserver.o seqaligndisplay.o proteinsw.o sw_wrap.o abc.o pba.o hsp2aln_sw.o
+-	$(CC) -o scanwisep_wiseserver scanwisep_wiseserver.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   ../network/net_hspscan.o $(LFLAGS) -L../external/mott -L../socket -lmott -ldyna_glib -ldyna -lwisesocket -lwisebase -lm $(EXTRALIBS) -lpthread 
++	$(CC) -o scanwisep_wiseserver scanwisep_wiseserver.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   ../network/net_hspscan.o $(LFLAGS) -L../external/mott -L../socket -lmott -ldyna_glib -ldyna -lwisesocket -lwisebase -lm $(EXTRALIBS) -lpthread `pkg-config glib-2.0 --libs`
+ 
+ scanwisep_compress.o : scanwisep.c
+ 	$(CC)  $(CFLAGS) -DSCAN_COMPRESS -I../dnaindex -I../network -I../socket -I../external/mott scanwisep.c 
+@@ -226,25 +228,25 @@ scanwisep_compress : scanwisep_compress.o seqaligndisplay.o proteinsw.o sw_wrap.
+ 
+ 
+ scanwisep : scanwisep.o seqaligndisplay.o proteinsw.o sw_wrap.o abc.o pba.o hsp2aln_sw.o
+-	$(CC) -o scanwisep scanwisep.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   $(LFLAGS)  -L../external/mott -lmott -ldyna_glib -ldyna  -lwisebase -lm $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o scanwisep scanwisep.o sw_wrap.o seqaligndisplay.o proteinsw.o abc.o pba.o hsp2aln_sw.o   $(LFLAGS)  -L../external/mott -lmott -ldyna_glib -ldyna  -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs` -lpthread
+ 
+ test_gwhsp : test_gwhsp.o genewisehsp.o
+-	$(CC) -o test_gwhsp test_gwhsp.o genewisehsp.o $(LFLAGS) -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o test_gwhsp test_gwhsp.o genewisehsp.o $(LFLAGS) -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs` -lpthread
+ 
+ localcishit.o : localcishit.c
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ promoterwise.o : promoterwise.c  
+-	$(CC) $(CFLAGS) $(INCFLAGS) `glib-config --cflags` $?
++	$(CC) $(CFLAGS) $(INCFLAGS) `pkg-config glib-2.0 --cflags` $?
+ 
+ promoterwise : promoterwise.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o
+-	$(CC) -g -o promoterwise promoterwise.o localdba.o  localcishit.o localcispara.o dbadisplay.o  motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o  pairwiseshortdna.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) $(LDFLAGS) -o promoterwise promoterwise.o localdba.o  localcishit.o localcispara.o dbadisplay.o  motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o  pairwiseshortdna.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs` -lpthread
+ 
+ test_deng : test_deng.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o
+-	$(CC) -o test_deng test_deng.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o test_deng test_deng.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs` -lpthread
+ 
+ promotercluster : promotercluster.o localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o
+-	$(CC) -o promotercluster promotercluster.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `glib-config --libs` -lpthread
++	$(CC) -o promotercluster promotercluster.o  localdba.o localcishit.o localcispara.o dbadisplay.o motifmatrix.o motifmatrixdp.o transfactor.o pwmdna.o pairwiseshortdna.o dnaprofile.o dnaprofiledp.o dnaprofileengine.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs` -lpthread
+ 
+ dnawise : dnawise.o dnahmm.o dnahmmdp.o seqaligndisplay.o 
+ 	$(CC) -o dnawise dnawise.o dnahmm.o dnahmmdp.o  seqaligndisplay.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm -lpthread
+@@ -275,66 +277,66 @@ makerandomdb : makerandomdb.o
+ 	$(CC) -o makerandomdb makerandomdb.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ genewise : genewise.o $(NEWG) 
+-	$(CC) -g -o genewise genewise.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o genewise genewise.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna_glib -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs`
+ 
+ cdnawise : cdnawise.o $(NEWG) cdnawise10.o 
+-	$(CC) -g -o cdnawise cdnawise.o cdnawise10.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o cdnawise cdnawise.o cdnawise10.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ fivestar : fivestar.o fivestatemodel.o fivestate.o threestatemodel.o threestatedb.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o threestatedp.o
+-	$(CC) -g -o fivestar fivestar.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o fivestar fivestar.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ 
+ fivestarsearch : fivestarsearch.o fivestatemodel.o fivestate.o threestatemodel.o threestatedb.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o threestatedp.o
+-	$(CC) -g -o fivestarsearch fivestarsearch.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o fivestarsearch fivestarsearch.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ fivestarscan : fivestarscan.o fivestatemodel.o fivestate.o threestatemodel.o threestatedb.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o threestatedp.o
+-	$(CC) -g -o fivestarscan fivestarscan.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o fivestarscan fivestarscan.o fivestatemodel.o fivestate.o threestatedb.o threestatemodel.o pfamhmmer1db.o wise2xhmmer2.o seqaligndisplay.o standardout.o  threestatedp.o $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ 
+ editdist : editdist.o editdistdp.o standardout.o seqaligndisplay.o 
+-	$(CC) -g -o editdist editdist.o editdistdp.o standardout.o seqaligndisplay.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm
++	$(CC) $(LDFLAGS) -o editdist editdist.o editdistdp.o standardout.o seqaligndisplay.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm
+ 
+ 
+ efgw   : genewise.o $(NEWG) 
+-	$(CC) -g -o genewise genewise.o  $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) -lefence
++	$(CC) $(LDFLAGS) -o genewise genewise.o  $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) -lefence
+ 
+ 
+ genewisedb : genewisedb.o $(NEWG) 
+-	$(CC) -g -o genewisedb genewisedb.o  $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) 
++	$(CC) $(LDFLAGS) -o genewisedb genewisedb.o  $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs`
+ 
+ estwisedb : estwisedb.o $(NEWG) 
+-	$(CC) -g -o estwisedb estwisedb.o $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o estwisedb estwisedb.o $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs`
+ 
+ edb : estwisedb.o $(NEWG) 
+-	$(CC) -g -o estwisedb estwisedb.o $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) -lefence
++	$(CC) $(LDFLAGS) -o estwisedb estwisedb.o $(NEWG)  $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) -lefence
+ 
+ estwise : estwise.o $(NEWG) 
+-	$(CC) -g -o estwise estwise.o  $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o estwise estwise.o  $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs`
+ 
+ 
+ amplimer_resolver : amplimer_resolver.o dnaalign.o dnamatcher.o 
+-	$(CC) -g -o amplimer_resolver amplimer_resolver.o dnamatcher.o dnaalign.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o amplimer_resolver amplimer_resolver.o dnamatcher.o dnaalign.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ genomewise : genomewise.o genomewise9.o genome_evidence.o est_evidence.o geneutil.o geneoutput.o
+-	$(CC) -g -o genomewise genomewise.o genomewise9.o genome_evidence.o est_evidence.o geneoutput.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o genomewise genomewise.o genomewise9.o genome_evidence.o est_evidence.o geneoutput.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ sywise : sywise.o sywise20.o syexonmodel.o genestats.o pwmdna.o geneutil.o standardout.o
+-	$(CC) -g -o sywise sywise.o sywise20.o syexonmodel.o genestats.o pwmdna.o  standardout.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o sywise sywise.o sywise20.o syexonmodel.o genestats.o pwmdna.o  standardout.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ alignwise : alignwise.o alignwisedp.o aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o geneoutput.o
+-	$(CC) -g -o alignwise alignwise.o alignwisedp.o aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o geneoutput.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o alignwise alignwise.o alignwisedp.o aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o geneoutput.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ test_splice : test_splice.o  aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o
+-	$(CC) -g -o test_splice test_splice.o aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o test_splice test_splice.o aligngenemodel.o genestats.o pwmdna.o geneutil.o standardout.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ statwise : statwise.o statwise10.o syexonmodel.o genestats.o pwmdna.o geneutil.o
+-	$(CC) -g -o statwise statwise.o statwise10.o syexonmodel.o genestats.o pwmdna.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o statwise statwise.o statwise10.o syexonmodel.o genestats.o pwmdna.o geneutil.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ pseudowise : pseudowise.o pseudowise7.o $(NEWG) 
+-	$(CC) -g -o pseudowise pseudowise.o pseudowise7.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o pseudowise pseudowise.o pseudowise7.o $(NEWG) $(LFLAGS) -lhmmer -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS) `pkg-config glib-2.0 --libs`
+ 
+ clonewise : clonewise.o clonewisedp.o localclonewisedp.o mapstruct.o
+-	$(CC) -g -o clonewise clonewise.o clonewisedp.o localclonewisedp.o mapstruct.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
++	$(CC) $(LDFLAGS) -o clonewise clonewise.o clonewisedp.o localclonewisedp.o mapstruct.o $(LFLAGS) -ldyna_glib -ldyna -lwisebase -lm $(EXTRALIBS)
+ 
+ 
+ HMMER_LIBS = ../HMMer2/
+@@ -345,11 +347,11 @@ HMMER_DEFINE =
+ CC = cc
+ #CFLAGS = -c -O2  -pg -I../base/ -I../dynlibsrc/
+ #CFLAGS = -c -O2 -DPTHREAD -DHAS_PTHREAD_SETSCOPE  -DUNIX  -I../base/ -I../dynlibsrc/ -I.
+-CFLAGS = -c -g3 -O2  -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `glib-config --cflags`
+-#CFLAGS = -c  -g -DHAS_PTHREAD_SETSCOPE -DUNIX -I../base/ -I../dynlibsrc/ `glib-config --cflags`
++CFLAGS = -c -g3 -O2  -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `pkg-config glib-2.0 --cflags`
++#CFLAGS = -c  -g -DHAS_PTHREAD_SETSCOPE -DUNIX -I../base/ -I../dynlibsrc/ `pkg-config glib-2.0 --cflags`
+ #LFLAGS =  -L../base/ -L../dynlibsrc/ -L../HMMer2/  
+ 
+-LFLAGS =  -g -L../base/ -L../dynlibsrc/ -L$(HMMER_LIBS) -lpthread `glib-config --libs`
++LFLAGS =  -g -L../base/ -L../dynlibsrc/ -L$(HMMER_LIBS) -lpthread `pkg-config glib-2.0 --libs`
+ AR_OPTIONS = ru
+ 
+ RANLIB_NEEDED = 0
+diff --git a/src/network/makefile b/src/network/makefile
+index 303c2da..e607310 100644
+--- a/src/network/makefile
++++ b/src/network/makefile
+@@ -3,8 +3,8 @@
+ 
+ CC = cc
+ INCFLAGS = -I../base/  -I../socket -I../dynlibsrc -I../dnaindex
+-CFLAGS =   -O2 -g3 -c -pthread  -DUNIX  -I../base/ -I../socket -I../dynlibsrc -I../dnaindex `glib-config --cflags`
+-LFLAGS =  -g -L../base/ -L../socket -L../dynlibsrc -L../dnaindex -lm `glib-config --libs`
++CFLAGS =   -O2 -g3 -c -pthread  -DUNIX  -I../base/ -I../socket -I../dynlibsrc -I../dnaindex `pkg-config glib-2.0 --cflags`
++LFLAGS =  -g -L../base/ -L../socket -L../dynlibsrc -L../dnaindex -lm `pkg-config glib-2.0 --libs`
+ AR_OPTIONS = ru
+ 
+ RANLIB_NEEDED = 0
+diff --git a/src/snp/makefile b/src/snp/makefile
+index ccf750a..2b83c43 100644
+--- a/src/snp/makefile
++++ b/src/snp/makefile
+@@ -2,12 +2,12 @@
+ .SUFFIXES :  .dy
+ 
+ 
+-CC = cc
++CC ?= gcc
+ #CFLAGS = -c -O2  -pg -I../base/ -I../dynlibsrc/
+ #CFLAGS = -c -O2 -DPTHREAD -DHAS_PTHREAD_SETSCOPE  -DUNIX  -I../base/ -I../dynlibsrc/ -I.
+-CFLAGS = -c -g3 -O2  -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `glib-config --cflags`
++CFLAGS += -c -DUNIX  -I../base/ -I../dynlibsrc/ -I. -pthread `pkg-config glib-2.0  --cflags`
+ 
+-LFLAGS =  -g -L../base/ -L../dynlibsrc/ -lpthread `glib-config --libs` -lpthread -lm
++LFLAGS =  -L../base/ -L../dynlibsrc/ -lpthread `pkg-config glib-2.0 --libs` -lpthread -lm
+ AR_OPTIONS = ru
+ 
+ RANLIB_NEEDED = 0
+@@ -16,7 +16,7 @@ RANLIB_NEEDED = 0
+ 	$(CC) $(CFLAGS) $(INCFLAGS) $?
+ 
+ test_est : test_est.o genotype.o person.o locus_framework.o locus_model_estimators.o frequency_count.o 
+-	$(CC) -o test_est test_est.o genotype.o person.o locus_framework.o locus_model_estimators.o frequency_count.o ../dynlibsrc/libdyna.a ../base/libwisebase.a $(LFLAGS)
++	$(CC) $(LDFLAGS) -o test_est test_est.o genotype.o person.o locus_framework.o locus_model_estimators.o frequency_count.o ../dynlibsrc/libdyna.a ../base/libwisebase.a $(LFLAGS)
+ 
+ INCFLAGS = -I../base/ -I../dynlibsrc/
+ DFLAGS = -l -D -n Wise2_ -a _api.h -b _api.t -pthreads -dbtrace 5 -nocwarn

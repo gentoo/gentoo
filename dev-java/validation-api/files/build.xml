@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<project basedir="." default="jar">
+	<target name="compile">
+		<mkdir dir="bin"/>
+		<javac srcdir="src" destdir="bin">
+			<include name="**/*.java"/>
+		</javac>
+	</target>
+	<target name="jar" depends="compile">
+		<jar destfile="validation-api.jar" manifest="src/META-INF/MANIFEST.MF">
+			<zipfileset dir="bin"/>
+		</jar>
+	</target>
+	<target name="doc">
+		<mkdir dir="api"/>
+		<javadoc packagenames="javax.*" destdir="api">
+			<fileset dir="src/" includes="**/*.java"/>
+		</javadoc>
+	</target>
+</project>

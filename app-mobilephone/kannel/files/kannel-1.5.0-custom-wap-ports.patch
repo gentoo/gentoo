@@ -1,0 +1,346 @@
+diff -Nru gateway-1.4.3.orig/gw/bb_udp.c gateway-1.4.3/gw/bb_udp.c
+--- gateway-1.4.3.orig/gw/bb_udp.c	2009-01-12 16:46:56.000000000 +0000
++++ gateway-1.4.3/gw/bb_udp.c	2009-03-01 14:20:38.000000000 +0000
+@@ -78,7 +78,7 @@
+ #include "gwlib/gwlib.h"
+ #include "msg.h"
+ #include "bearerbox.h"
+-
++#include "custports.h"
+ /* passed from bearerbox core */
+ 
+ extern volatile sig_atomic_t bb_status;
+@@ -352,13 +352,13 @@
+     while (gwlist_len(ifs) > 0) {
+         iface = gwlist_extract_first(ifs);
+ 	info(0, "Adding interface %s", octstr_get_cstr(iface));
+-        add_service(9200, octstr_get_cstr(iface));   /* wsp 	*/
+-        add_service(9201, octstr_get_cstr(iface));   /* wsp/wtp	*/
++        add_service(port_wsp, octstr_get_cstr(iface));   /* wsp 	*/
++        add_service(port_wtp, octstr_get_cstr(iface));   /* wsp/wtp	*/
+     
+ #ifdef HAVE_WTLS_OPENSSL
+         if (allow_wtls) {
+-             add_service(9202, octstr_get_cstr(iface));   /* wsp/wtls	*/
+-             add_service(9203, octstr_get_cstr(iface));   /* wsp/wtp/wtls */
++             add_service(port_wsps, octstr_get_cstr(iface));   /* wsp/wtls	*/
++             add_service(port_wtps, octstr_get_cstr(iface));   /* wsp/wtp/wtls */
+         }
+ #else
+         if (allow_wtls)
+diff -Nru gateway-1.4.3.orig/gw/bearerbox.c gateway-1.4.3/gw/bearerbox.c
+--- gateway-1.4.3.orig/gw/bearerbox.c	2009-01-12 16:46:56.000000000 +0000
++++ gateway-1.4.3/gw/bearerbox.c	2009-03-01 14:23:05.000000000 +0000
+@@ -78,6 +78,7 @@
+ #include "shared.h"
+ #include "dlr.h"
+ #include "load.h"
++#include "custports.h"
+ 
+ /* global variables; included to other modules as needed */
+ 
+@@ -365,6 +366,7 @@
+     int ssl_enabled = 0;
+ #endif /* HAVE_LIBSSL */
+ 
++    ReadCustomPorts(cfg);
+     /* defaults: use localtime and markers for access-log */
+     lf = m = 1;
+ 	
+diff -Nru gateway-1.4.3.orig/gw/custports.c gateway-1.4.3/gw/custports.c
+--- gateway-1.4.3.orig/gw/custports.c	1970-01-01 00:00:00.000000000 +0000
++++ gateway-1.4.3/gw/custports.c	2009-03-01 14:20:38.000000000 +0000
+@@ -0,0 +1,88 @@
++/* ==================================================================== 
++ * The Kannel Software License, Version 1.0 
++ * 
++ * Copyright (c) 2001-2004 Kannel Group  
++ * Copyright (c) 1998-2001 WapIT Ltd.   
++ * All rights reserved. 
++ * 
++ * Redistribution and use in source and binary forms, with or without 
++ * modification, are permitted provided that the following conditions 
++ * are met: 
++ * 
++ * 1. Redistributions of source code must retain the above copyright 
++ *    notice, this list of conditions and the following disclaimer. 
++ * 
++ * 2. Redistributions in binary form must reproduce the above copyright 
++ *    notice, this list of conditions and the following disclaimer in 
++ *    the documentation and/or other materials provided with the 
++ *    distribution. 
++ * 
++ * 3. The end-user documentation included with the redistribution, 
++ *    if any, must include the following acknowledgment: 
++ *       "This product includes software developed by the 
++ *        Kannel Group (http://www.kannel.org/)." 
++ *    Alternately, this acknowledgment may appear in the software itself, 
++ *    if and wherever such third-party acknowledgments normally appear. 
++ * 
++ * 4. The names "Kannel" and "Kannel Group" must not be used to 
++ *    endorse or promote products derived from this software without 
++ *    prior written permission. For written permission, please  
++ *    contact org@kannel.org. 
++ * 
++ * 5. Products derived from this software may not be called "Kannel", 
++ *    nor may "Kannel" appear in their name, without prior written 
++ *    permission of the Kannel Group. 
++ * 
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED 
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
++ * DISCLAIMED.  IN NO EVENT SHALL THE KANNEL GROUP OR ITS CONTRIBUTORS 
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,  
++ * OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT  
++ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR  
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,  
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE  
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  
++ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
++ * ==================================================================== 
++ * 
++ * This software consists of voluntary contributions made by many 
++ * individuals on behalf of the Kannel Group.  For more information on  
++ * the Kannel Group, please see <http://www.kannel.org/>. 
++ * 
++ * Portions of this software are based upon software originally written at  
++ * WapIT Ltd., Helsinki, Finland for the Kannel project.  
++ */ 
++
++/*
++ * gw/custports.c
++ *
++ * Implementation of reading custom UDP ports used by wapbox
++ *
++ * Lubor Kolar <kolar@porcus.cz>, 14.03.2006
++ */
++ 
++#include <custports.h>
++
++long port_wsp = 9200; // connectionless default
++long port_wtp = 9201; // connection-oriented default
++long port_wsps = 9202; // connectionless secure default
++long port_wtps = 9203; // connection-oriented secure
++
++
++void ReadCustomPorts(Cfg *config)
++{
++    CfgGroup *grp;
++    grp = cfg_get_single_group(config, octstr_imm("wapbox"));
++    if(grp == NULL)
++        return;
++	         
++    if(cfg_get_integer(&port_wsp, grp, octstr_imm("wsp-port")) != -1)
++        info(0, "Using custom WSP port %ld", port_wsp);
++    if(cfg_get_integer(&port_wtp, grp, octstr_imm("wtp-port")) != -1)
++        info(0, "Using custom WSP/WTP port %ld", port_wtp);
++    if(cfg_get_integer(&port_wsps, grp, octstr_imm("wsps-port")) != -1)
++        info(0, "Using custom WSP/WTLS port %ld", port_wsps);
++    if(cfg_get_integer(&port_wtps, grp, octstr_imm("wtps-port")) != -1)
++        info(0, "Using custom WSP/WTP/WTLS port %ld", port_wtps);
++}
+diff -Nru gateway-1.4.3.orig/gw/custports.h gateway-1.4.3/gw/custports.h
+--- gateway-1.4.3.orig/gw/custports.h	1970-01-01 00:00:00.000000000 +0000
++++ gateway-1.4.3/gw/custports.h	2009-03-01 14:20:38.000000000 +0000
+@@ -0,0 +1,77 @@
++/* ==================================================================== 
++ * The Kannel Software License, Version 1.0 
++ * 
++ * Copyright (c) 2001-2004 Kannel Group  
++ * Copyright (c) 1998-2001 WapIT Ltd.   
++ * All rights reserved. 
++ * 
++ * Redistribution and use in source and binary forms, with or without 
++ * modification, are permitted provided that the following conditions 
++ * are met: 
++ * 
++ * 1. Redistributions of source code must retain the above copyright 
++ *    notice, this list of conditions and the following disclaimer. 
++ * 
++ * 2. Redistributions in binary form must reproduce the above copyright 
++ *    notice, this list of conditions and the following disclaimer in 
++ *    the documentation and/or other materials provided with the 
++ *    distribution. 
++ * 
++ * 3. The end-user documentation included with the redistribution, 
++ *    if any, must include the following acknowledgment: 
++ *       "This product includes software developed by the 
++ *        Kannel Group (http://www.kannel.org/)." 
++ *    Alternately, this acknowledgment may appear in the software itself, 
++ *    if and wherever such third-party acknowledgments normally appear. 
++ * 
++ * 4. The names "Kannel" and "Kannel Group" must not be used to 
++ *    endorse or promote products derived from this software without 
++ *    prior written permission. For written permission, please  
++ *    contact org@kannel.org. 
++ * 
++ * 5. Products derived from this software may not be called "Kannel", 
++ *    nor may "Kannel" appear in their name, without prior written 
++ *    permission of the Kannel Group. 
++ * 
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED 
++ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
++ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
++ * DISCLAIMED.  IN NO EVENT SHALL THE KANNEL GROUP OR ITS CONTRIBUTORS 
++ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,  
++ * OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT  
++ * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR  
++ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,  
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE  
++ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  
++ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
++ * ==================================================================== 
++ * 
++ * This software consists of voluntary contributions made by many 
++ * individuals on behalf of the Kannel Group.  For more information on  
++ * the Kannel Group, please see <http://www.kannel.org/>. 
++ * 
++ * Portions of this software are based upon software originally written at  
++ * WapIT Ltd., Helsinki, Finland for the Kannel project.  
++ */ 
++
++/*
++ * gw/custports.h
++ *
++ * Implementation of wapbox custom UDP ports)
++ *
++ * Lubor Kolar <kolar@porcus.cz>, 14.03.2006
++ */
++
++#ifndef	CUSTPORTS_H
++#define	CUSTPORTS_H
++
++#include "gwlib/gwlib.h"
++
++extern long port_wsp; // connectionless 
++extern long port_wtp; // connection-oriented
++extern long port_wsps; // connectionless secure
++extern long port_wtps; // connection-oriented secure
++
++void ReadCustomPorts(Cfg *config);
++#endif /* CUSTPORTS_H */
++
+diff -Nru gateway-1.4.3.orig/gw/wapbox.c gateway-1.4.3/gw/wapbox.c
+--- gateway-1.4.3.orig/gw/wapbox.c	2009-01-12 16:46:57.000000000 +0000
++++ gateway-1.4.3/gw/wapbox.c	2009-03-01 14:20:38.000000000 +0000
+@@ -84,17 +84,11 @@
+ #include "gwlib/pki.h"
+ #endif
+ #include "radius/radius_acct.h"
++#include "custports.h"
+ 
+ static void config_reload(int reload);
+ static long logfilelevel=-1;
+ 
+-enum {
+-    CONNECTIONLESS_PORT = 9200,
+-    CONNECTION_ORIENTED_PORT = 9201,
+-    WTLS_CONNECTIONLESS_PORT = 9202,
+-    WTLS_CONNECTION_ORIENTED_PORT = 9203
+-};
+-
+ enum { DEFAULT_TIMER_FREQ = 1};
+ 
+ static Octstr *bearerbox_host;
+@@ -131,6 +125,8 @@
+ 
+     cfg_dump(cfg);
+     
++    ReadCustomPorts(cfg);
++    
+     /*
+      * Extract info from the core group.
+      */
+@@ -776,9 +772,9 @@
+ 	     * XXXX here should be suspend/resume, add RSN
+ 	     */
+ 	} else if (msg_type(msg) == wdp_datagram) {
+-        switch (msg->wdp_datagram.destination_port) {
+-        case CONNECTIONLESS_PORT:
+-        case CONNECTION_ORIENTED_PORT:
++	if(msg->wdp_datagram.destination_port == port_wsp 
++	   || msg->wdp_datagram.destination_port == port_wtp)
++	{
+ 	    	dgram = wap_event_create(T_DUnitdata_Ind);
+ 	    	dgram->u.T_DUnitdata_Ind.addr_tuple = wap_addr_tuple_create(
+ 				msg->wdp_datagram.source_address,
+@@ -789,19 +785,22 @@
+ 	    	msg->wdp_datagram.user_data = NULL;
+ 
+           	wap_dispatch_datagram(dgram); 
+-			break;
+-        case WTLS_CONNECTIONLESS_PORT:
+-        case WTLS_CONNECTION_ORIENTED_PORT:
++	}
++	else
++	if(msg->wdp_datagram.destination_port == port_wsps 
++	   || msg->wdp_datagram.destination_port == port_wtps)
++	{
+ #if (HAVE_WTLS_OPENSSL)
+             dgram = wtls_unpack_wdp_datagram(msg);
+             if (dgram != NULL)
+                 wtls_dispatch_event(dgram);
+ #endif
+-			break;
+-        default:
++	}
++        else
++	{
+                 panic(0,"Bad packet received! This shouldn't happen!");
+                 break;
+-        } 
++        } 	
+ 	} else {
+ 	    warning(0, "Received other message than wdp/admin, ignoring!");
+ 	}
+diff -Nru gateway-1.4.3.orig/gw/wap_push_ppg.c gateway-1.4.3/gw/wap_push_ppg.c
+--- gateway-1.4.3.orig/gw/wap_push_ppg.c	2009-01-12 16:46:56.000000000 +0000
++++ gateway-1.4.3/gw/wap_push_ppg.c	2009-03-01 14:20:38.000000000 +0000
+@@ -88,6 +88,7 @@
+ #include "wap_push_pap_compiler.h"
+ #include "wap_push_pap_mime.h"
+ #include "wap_push_ppg_pushuser.h"
++#include "custports.h"
+ 
+ enum {
+     TIME_EXPIRED = 0,
+@@ -1779,10 +1780,10 @@
+ 
+     if (!cless_accepted) {
+         cliport = CONNECTED_CLIPORT;
+-        servport = CONNECTED_SERVPORT;
++        servport = port_wtp;
+     } else {
+         cliport = CONNECTIONLESS_PUSH_CLIPORT;
+-        servport = CONNECTIONLESS_SERVPORT;
++        servport = port_wsp;
+     }
+     
+     address_type = (**e).u.Push_Message.address_type;
+diff -Nru gateway-1.4.3.orig/gw/wap_push_ppg.h gateway-1.4.3/gw/wap_push_ppg.h
+--- gateway-1.4.3.orig/gw/wap_push_ppg.h	2009-01-12 16:46:57.000000000 +0000
++++ gateway-1.4.3/gw/wap_push_ppg.h	2009-03-01 14:20:38.000000000 +0000
+@@ -167,9 +167,7 @@
+  */
+ enum {
+     CONNECTIONLESS_PUSH_CLIPORT = 2948,
+-    CONNECTIONLESS_SERVPORT = 9200,
+     CONNECTED_CLIPORT = 9209,
+-    CONNECTED_SERVPORT = 9201
+ };
+ 
+ struct PPGSessionMachine {
+diff -ruN gateway-1.5.0/gwlib/cfg.def gateway-1.5.0-patched/gwlib/cfg.def
+--- gateway-1.5.0.orig/gwlib/cfg.def 2010-10-07 10:03:35.000000000 -0400
++++ gateway-1.5.0/gwlib/cfg.def 2013-08-25 15:07:47.544662379 -0400
+@@ -160,6 +160,10 @@
+     OCTSTR(concatenation)
+     OCTSTR(max-messages)
+     OCTSTR(wml-strict)
++    OCTSTR(wsp-port)
++    OCTSTR(wtp-port)
++    OCTSTR(wsps-port)
++    OCTSTR(wtps-port)
+     OCTSTR(http-timeout)
+ )
+

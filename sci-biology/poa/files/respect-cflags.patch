@@ -1,0 +1,13 @@
+diff -urN poaV2.orig/Makefile poaV2/Makefile
+--- poaV2.orig/Makefile	2004-03-11 21:33:30.000000000 -0800
++++ poaV2/Makefile	2006-03-09 20:09:27.000000000 -0800
+@@ -28,7 +28,8 @@
+ 
+ CC = gcc
+ #CFLAGS= -g -ansi-strict -W -Wall -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+-CFLAGS= -g -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
++OPT_CFLAGS = -g
++CFLAGS= $(OPT_CFLAGS) -DUSE_WEIGHTED_LINKS -DUSE_PROJECT_HEADER -I.
+ # -I$(HOME)/lib/include
+ # -DREPORT_MAX_ALLOC
+ 

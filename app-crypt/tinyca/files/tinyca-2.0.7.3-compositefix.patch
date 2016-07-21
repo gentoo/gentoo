@@ -1,0 +1,12 @@
+--- tinyca2-0.7.2/./tinyca2.orig	2006-05-28 21:45:03.000000000 +1000
++++ tinyca2-0.7.2/tinyca2	2006-05-28 21:46:38.000000000 +1000
+@@ -87,6 +87,9 @@
+ 
+ umask(0077);
+ 
++# https://bugs.gentoo.org/show_bug.cgi?id=78576
++$ENV{XLIB_SKIP_ARGB_VISUALS}= '1';
++
+ # create main object and initialize CA
+ my $gui = GUI->new($init);
+ 

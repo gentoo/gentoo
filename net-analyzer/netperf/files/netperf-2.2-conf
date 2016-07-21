@@ -1,0 +1,4 @@
+# Config file for /etc/init.d/netperf
+
+# Add your preferred netserver args here
+#NETSERVER_ARGS="-n 4"

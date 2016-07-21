@@ -1,0 +1,160 @@
+.TH sgconf 1 "December 31, 2012" "" "sgconf"
+
+.SH NAME
+sgconf \- a command-line utility for configuring Stargazer
+
+.SH SYNOPSIS
+.B sgconf
+(
+.I get
+|
+.I set
+)
+.BI \-s " server"
+.BI \-p " port"
+.BI \-a " admin"
+.BI \-w " admin-pass"
+.BI \-u " user"
+.I special-options
+.br
+
+.SH DESCRIPTION
+.B sgconf
+allows 
+.B Stargazer
+system administrators to configure users.
+.PP
+.B sgconf
+support two subset of commands - 
+.I get
+and
+.IR set .
+.I get
+commands are for reading actual values from 
+.B Stargazer
+and
+.I set
+commands are for writing new values to
+.BR Stargazer .
+
+.SH OPTIONS
+.TP
+.BI \-s " server"
+IP or hostname where 
+.B Stargazer 
+server run.
+.TP
+.BI \-p " port"
+Port, which 
+.B Stargazer 
+listen for configuration connections (typically 5555).
+.TP
+.BI \-a " admin"
+Administrator login.
+.TP
+.BI \-w " admin-pass"
+Administrator password.
+.TP
+.TP
+.IR special-options " are following:"
+(Use without argument for
+.IR get ")"
+.TP
+.BI \-c " add_cash[:log message]"
+Get user's balance or add money to user's balance with optional log message.
+.TP
+.BI \-v " set_cash[:log message]"
+Set user's balance with optional log message.
+.TP
+.BI \-t " tariff:now|delayed"
+Get/set user's tariff. If 
+.I now 
+specified, the change is immediate. If
+.I delayed
+specified, the change will happen at end of the month.
+.TP
+.BI \-r " credit"
+Get/set user's maximum credit.
+.TP
+.BI \-o " password"
+Get/set user's password.
+.TP
+.BI \-e " prepaid"
+Get/set amount of user's prepaid traffic.
+.TP
+.BI \-I " *|ip_addr[,ip_addr...]"
+Get/set user's allowed IP addresses. Asterisk mark means "any address".
+.TP
+.BI \-A " name"
+Get/set user's name.
+.TP
+.BI \-N " note"
+Get/set user's note.
+.TP
+.BI \-D " address"
+Get/set user's street address.
+.TP
+.BI \-L " email"
+Get/set user's email.
+.TP
+.BI \-P " phone"
+Get/set user's phone.
+.TP
+.BI \-G " group"
+Get/set group, user belongs to.
+.TP
+.BI \-d " 0|1"
+Get/set user's "down" ("disabled") flag.
+.TP
+.BI \-i " 0|1"
+Get/set user's "passive" ("frozen") flag.
+.TP
+.BI \-\-disable\-stat " 0|1"
+Get/set user's "disableDetailStat" flag.
+.TP
+.BI \-\-always\-online " 0|1"
+Get/set user's "alwaysOnline" flag.
+.TP
+.BI \-\-u "X traffic"
+Get/set user's upload traffic for
+.I X
+service (direction).
+.TP
+.BI \-\-d "X traffic"
+Get/set user's download traffic for
+.I X
+service (direction).
+.TP
+.BI \-\-ud "X userdata"
+Get/set user's
+.I X
+custom data.
+.TP
+.BI \-m " message"
+Send
+.I message
+to user.
+.TP
+.B \-n
+Create new user.
+.TP
+.B \-l
+Delete user.
+
+.SH FILES
+.B
+/usr/bin/sgconf
+
+.SH SEE ALSO
+.BR sgauth (8),
+.BR sgconf_xml (1),
+.BR sgconv (1),
+.BR stargazer (8),
+.BR rscriptd (8).
+
+.SH AUTHOR
+sgconf was initially written by Boris Mikhailenko <stg34@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

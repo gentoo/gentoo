@@ -1,0 +1,11 @@
+--- octave-3.8.0-orig/libinterp/corefcn/jit-typeinfo.cc	2013-12-28 08:57:41.000000000 +1100
++++ octave-3.8.0/libinterp/corefcn/jit-typeinfo.cc	2014-02-14 15:45:47.388031654 +1100
+@@ -872,7 +872,7 @@
+ jit_operation::to_idx (const std::vector<jit_type*>& types) const
+ {
+   octave_idx_type numel = types.size ();
+-  numel = std::max (2, numel);
++  numel = std::max (static_cast<octave_idx_type>(2), numel);
+ 
+   Array<octave_idx_type> idx (dim_vector (1, numel));
+   for (octave_idx_type i = 0; i < static_cast<octave_idx_type> (types.size ());

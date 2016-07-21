@@ -1,0 +1,10 @@
+--- apngdis-2.6-src/apngdis.cpp
++++ apngdis-2.6-src/apngdis.cpp
+@@ -29,6 +29,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <cstring>
+ #include <vector>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+ #include "zlib.h"

@@ -1,0 +1,13 @@
+diff --git a/unix/fbiterm/src/Makefile.am b/unix/fbiterm/src/Makefile.am
+index 4ffe3da..53f12f4 100644
+--- a/unix/fbiterm/src/Makefile.am
++++ b/unix/fbiterm/src/Makefile.am
+@@ -17,7 +17,7 @@ fbiterm_SOURCES = \
+ fbiterm_LDADD = \
+ 	-L$(libdir) @X_LIBS@ -lm -lXfont -literm -lfreetype
+ 
+-CFLAGS = -I$(includedir) @X_CFLAGS@ -I$(top_srcdir)/include -I/usr/local/include $(EXTRA_CFLAGS)
++CFLAGS += -I$(includedir) @X_CFLAGS@ -I$(top_srcdir)/include -I/usr/local/include $(EXTRA_CFLAGS)
+ 
+ install-exec-hook:
+ 	chmod u+s $(DESTDIR)$(bindir)/fbiterm

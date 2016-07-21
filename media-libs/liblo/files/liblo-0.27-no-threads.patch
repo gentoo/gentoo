@@ -1,0 +1,15 @@
+--- liblo-0.27/examples/Makefile.am
++++ liblo-0.27/examples/Makefile.am
+@@ -3,10 +3,9 @@
+ # Example server depends on server threads, so skip it if threads are
+ # disabled.
+ 
+-noinst_PROGRAMS = example_client nonblocking_server_example \
+-                  example_tcp_echo_server
++noinst_PROGRAMS = example_client nonblocking_server_example
+ if ENABLE_THREADS
+-noinst_PROGRAMS += example_server
++noinst_PROGRAMS += example_server example_tcp_echo_server
+ endif
+ 
+ AM_CFLAGS = -Wall -I@top_srcdir@

@@ -1,0 +1,30 @@
+Description: During the build process, a Context instance is pickled, or at
+ least attempted to be.  This fails because self.node_class is assigned to a
+ class which is nested inside the __init__() method.  Because Python cannot
+ find this class at unpickling time (i.e. it cannot be imported), Python
+ refuses to pickle the Context instance, leading to a FTBFS.  Since there's no
+ obvious reason why the class has to be so nested, moving it to a module
+ global solves the build failure.
+Author: Barry Warsaw <barry@debian.org>
+Bug: https://bugs.freedesktop.org/show_bug.cgi?id=91561
+
+--- a/waflib/Context.py
++++ b/waflib/Context.py
+@@ -51,6 +51,8 @@
+ 		global classes
+ 		classes.insert(0,cls)
+ ctx=store_context('ctx',(object,),{})
++class node_class(waflib.Node.Node):
++    pass
+ class Context(ctx):
+ 	errors=Errors
+ 	tools={}
+@@ -60,8 +62,6 @@
+ 		except KeyError:
+ 			global run_dir
+ 			rd=run_dir
+-		class node_class(waflib.Node.Node):
+-			pass
+ 		self.node_class=node_class
+ 		self.node_class.__module__="waflib.Node"
+ 		self.node_class.__name__="Nod3"

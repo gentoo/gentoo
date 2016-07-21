@@ -1,0 +1,17 @@
+http://git.xiph.org/?p=users/oggk/tiger.git;a=commitdiff;h=3233686e501163f38cc28425827b901e258bfcc3
+fixes tests on eg arm.
+
+Index: libtiger-0.3.3/Makefile.in
+===================================================================
+--- libtiger-0.3.3.orig/Makefile.in
++++ libtiger-0.3.3/Makefile.in
+@@ -991,8 +991,7 @@ check-local:
+ 	@echo " Checking Tiger namespace"
+ 	@! @NM@ -B lib/.libs/*.a lib/.libs/*.so \
+ 	 | $(GREP) "^[0-9a-z]\{8\} [A-MO-Z] [^\.]" \
+-	 | $(GREP) -vE " (_DYNAMIC|_init|_fini|_edata|_end|__bss_start)$$" \
+-	 | $(GREP) -vE " _(rest|save)[fg]pr_[0-9]*(|_x)$$" \
++	 | $(GREP) -v "^.\{11\}_" \
+ 	 | $(GREP) -v "^.\{11\}tiger_"
+ 	@echo " Checking memory allocation routines"
+ 	@! $(GREP) -EHn '[^_](malloc|realloc|free|calloc|memalign)\(' \

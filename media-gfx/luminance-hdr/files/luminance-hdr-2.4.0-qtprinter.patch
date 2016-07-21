@@ -1,0 +1,99 @@
+From 07e36ef892343b01bf13545866823e6a55044382 Mon Sep 17 00:00:00 2001
+From: Davide Anastasia <davide.anastasia@gmail.com>
+Date: Mon, 29 Sep 2014 08:06:15 +0100
+Subject: [PATCH] Fix QPrinter support
+
+---
+ CMakeLists.txt                  | 25 +++++++++++++------------
+ src/HelpBrowser/CMakeLists.txt  |  3 +--
+ src/HelpBrowser/helpbrowser.cpp |  8 +++++---
+ 3 files changed, 19 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b07692..8a60ad4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,19 +18,20 @@ include(cmake/Internationalization.cmake)
+   # to always look for includes there:
+   #set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ 
+-find_package(Qt5Core)
+-find_package(Qt5Concurrent)
+-find_package(Qt5Widgets)
+-find_package(Qt5Gui)
+-find_package(Qt5Declarative)
+-find_package(Qt5WebKit)
+-find_package(Qt5WebKitWidgets)
+-find_package(Qt5Xml)
+-find_package(Qt5Sql)
+-find_package(Qt5Network)
+-find_package(Qt5LinguistTools)
++find_package(Qt5Core REQUIRED)
++find_package(Qt5Concurrent REQUIRED)
++find_package(Qt5Widgets REQUIRED)
++find_package(Qt5Gui REQUIRED)
++find_package(Qt5Declarative REQUIRED)
++find_package(Qt5WebKit REQUIRED)
++find_package(Qt5WebKitWidgets REQUIRED)
++find_package(Qt5Xml REQUIRED)
++find_package(Qt5Sql REQUIRED)
++find_package(Qt5Network REQUIRED)
++find_package(Qt5LinguistTools REQUIRED)
++find_package(Qt5PrintSupport REQUIRED)
+ IF(WIN32)
+-	find_package(Qt5WinExtras)
++    find_package(Qt5WinExtras)
+ ENDIF()
+ 
+ # Include the qtmain lib if we are on the windows platform
+diff --git a/src/HelpBrowser/CMakeLists.txt b/src/HelpBrowser/CMakeLists.txt
+index 04319a8..2f4916a 100644
+--- a/src/HelpBrowser/CMakeLists.txt
++++ b/src/HelpBrowser/CMakeLists.txt
+@@ -27,9 +27,8 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ QT5_WRAP_CPP(FILES_MOC ${FILES_H})
+ QT5_WRAP_UI(FILES_UI_H ${FILES_UI})
+ 
+-
+ ADD_LIBRARY(helpbrowser ${FILES_H} ${FILES_CPP} ${FILES_MOC} ${FILES_UI_H} ${FILES_HXX})
+-qt5_use_modules(helpbrowser Core Concurrent Gui Widgets Xml WebKit WebKitWidgets)
++qt5_use_modules(helpbrowser Core Concurrent Gui Widgets Xml WebKit WebKitWidgets PrintSupport)
+ 
+ SET(FILES_TO_TRANSLATE ${FILES_TO_TRANSLATE} ${FILES_CPP} ${FILES_H} ${FILES_UI} ${FILES_HXX} PARENT_SCOPE)
+ SET(LUMINANCE_MODULES_GUI ${LUMINANCE_MODULES_GUI} helpbrowser PARENT_SCOPE)
+diff --git a/src/HelpBrowser/helpbrowser.cpp b/src/HelpBrowser/helpbrowser.cpp
+index bfd2820..ce7f984 100644
+--- a/src/HelpBrowser/helpbrowser.cpp
++++ b/src/HelpBrowser/helpbrowser.cpp
+@@ -30,6 +30,7 @@ for which a new license (GPL+exception) is in place.
+ #include "ui_HelpBrowser.h"
+ #include "ui_HelpSideBar.h"
+ 
++#include <QDebug>
+ #include <QAction>
+ #include <QBuffer>
+ #include <QDir>
+@@ -45,8 +46,6 @@ for which a new license (GPL+exception) is in place.
+ #include <QModelIndex>
+ #include <QModelIndexList>
+ #include <QPainter>
+-#include <QPrinter>
+-#include <QPrintDialog>
+ #include <QProcess>
+ #include <QPushButton>
+ #include <QString>
+@@ -56,7 +55,10 @@ for which a new license (GPL+exception) is in place.
+ #include <QXmlDefaultHandler>
+ #include <QDesktopServices>
+ 
+-#include <QDebug>
++#include <QtPrintSupport/QPrinter>
++#include <QtPrintSupport/QPrintDialog>
++
++
+ 
+ #include "Common/global.h"
+ #include "HelpBrowser/schelptreemodel.h"
+-- 
+2.2.2
+

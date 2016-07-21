@@ -1,0 +1,85 @@
+--- netsurf-3.3/desktop/font_haru.c
++++ netsurf-3.3/desktop/font_haru.c
+@@ -40,7 +40,7 @@
+ #include "css/utils.h"
+ 
+ #include "utils/nsoption.h"
+-#include "desktop/save_pdf/font_haru.h"
++#include "desktop/font_haru.h"
+ #include "desktop/font.h"
+ #include "utils/log.h"
+ 
+--- netsurf-3.3/desktop/save_pdf.c
++++ netsurf-3.3/desktop/save_pdf.c
+@@ -57,6 +57,8 @@
+ 
+ #include "content/hlcache.h"
+ #include "utils/nsoption.h"
++#include "desktop/gui_misc.h"
++#include "desktop/gui_internal.h"
+ #include "desktop/plotters.h"
+ #include "desktop/print.h"
+ #include "desktop/printer.h"
+@@ -450,11 +452,11 @@
+ 
+ 		switch(content_get_type(content)){
+ 		/*Handle "embeddable" types of images*/
+-		case CONTENT_JPEG:
+- 			image = HPDF_LoadJpegImageFromMem(pdf_doc,
+- 					(const HPDF_BYTE *) source_data,
+- 					source_size);
+- 			break;
++		//case CONTENT_JPEG:
++ 		//	image = HPDF_LoadJpegImageFromMem(pdf_doc,
++ 		//			(const HPDF_BYTE *) source_data,
++ 		//			source_size);
++ 		//	break;
+ 
+ 		/*Disabled until HARU PNG support will be more stable.
+ 
+@@ -700,7 +702,7 @@
+ 
+ 
+ #ifndef PDF_DEBUG
+-	if (option_enable_PDF_compression)
++	if (nsoption_bool(enable_PDF_compression))
+ 		HPDF_SetCompressionMode(pdf_doc, HPDF_COMP_ALL); /*Compression on*/
+ #endif
+ 	HPDF_SetInfoAttr(pdf_doc, HPDF_INFO_CREATOR, user_agent_string());
+@@ -774,7 +776,7 @@
+ 	assert(settings->output != NULL);
+ 
+ 	/*Encryption on*/
+-	if (option_enable_PDF_password)
++	if (nsoption_bool(enable_PDF_password))
+ 		guit->browser->pdf_password(&owner_pass, &user_pass,
+ 				(void *)settings->output);
+ 	else
+@@ -789,7 +791,7 @@
+ {
+ 	bool success = false;
+ 
+-	if (option_enable_PDF_password && owner_pass != NULL ) {
++	if (nsoption_bool(enable_PDF_password) && owner_pass != NULL ) {
+ 		HPDF_SetPassword(pdf_doc, owner_pass, user_pass);
+ 		HPDF_SetEncryptionMode(pdf_doc, HPDF_ENCRYPT_R3, 16);
+ 		free(owner_pass);
+--- netsurf-3.3/gtk/scaffolding.c
++++ netsurf-3.3/gtk/scaffolding.c
+@@ -709,14 +709,14 @@
+ 
+ 	free(url_name);
+ 
+-	strncpy(dirname, option_downloads_directory, PATH_MAX);
++	strncpy(dirname, nsoption_charp(downloads_directory), PATH_MAX);
+ 	strncat(dirname, "/", PATH_MAX - strlen(dirname));
+ 	dirname[PATH_MAX - 1] = '\0';
+ 
+ 	/* this way the scale used by PDF functions is synchronized with that
+ 	 * used by the all-purpose print interface
+ 	 */
+-	haru_nsfont_set_scale((float)option_export_scale / 100);
++	haru_nsfont_set_scale((float)nsoption_int(export_scale) / 100);
+ 
+ 	save_dialog = gtk_file_chooser_dialog_new("Export to PDF", g->window,
+ 		GTK_FILE_CHOOSER_ACTION_SAVE,

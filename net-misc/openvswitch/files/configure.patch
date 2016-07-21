@@ -1,0 +1,15 @@
+--- configure.orig	2014-01-27 21:55:14.116272645 +0200
++++ configure	2014-01-27 21:55:40.687273108 +0200
+@@ -7949,10 +7949,10 @@
+ $as_echo "$kversion" >&6; }
+ 
+     if test "$version" -ge 3; then
+-       if test "$version" = 3 && test "$patchlevel" -le 10; then
++       if test "$version" = 3 && test "$patchlevel" -le 12; then
+           : # Linux 3.x
+        else
+-         as_fn_error $? "Linux kernel in $KBUILD is version $kversion, but version newer than 3.10.x is not supported" "$LINENO" 5
++         as_fn_error $? "Linux kernel in $KBUILD is version $kversion, but version newer than 3.12.x is not supported" "$LINENO" 5
+        fi
+     else
+        if test "$version" -le 1 || test "$patchlevel" -le 5 || test "$sublevel" -le 31; then

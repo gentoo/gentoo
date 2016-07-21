@@ -1,0 +1,28 @@
+Revert commit:
+
+commit b22b86f6940d2605e78398eca4ae05c3ea44a92c
+Author: Ritt Konstantin <ritt.ks@gmail.com>
+Date:   Thu Jun 10 07:38:14 2010 +0400
+
+    fix build with -fno-rtti
+    
+    m_renderDrawWidget object inherits QWidget and can be safely static_cast-ed
+
+as it yields in:
+
+error: invalid static_cast from type ‘Phonon::QT7::IVideoRenderDrawWidget*’ to type ‘QWidget*’
+
+
+diff --git a/qt7/videowidget.mm b/qt7/videowidget.mm
+index 736dcdf..e471140 100644
+--- a/qt7/videowidget.mm
++++ b/qt7/videowidget.mm
+@@ -578,7 +578,7 @@ public:
+                 PhononAutoReleasePool pool;
+                 updateDrawFrameRect();
+                 if (m_renderDrawWidget)
+-                    static_cast<QWidget *>(m_renderDrawWidget)->resize(size());
++                    dynamic_cast<QWidget *>(m_renderDrawWidget)->resize(size());
+                 break; }
+             case QEvent::Paint:{
+                 PhononAutoReleasePool pool;

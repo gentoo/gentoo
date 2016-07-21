@@ -1,0 +1,93 @@
+From a3ff1534945c3898332b2481c9fd355dfbd56e1f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 23 Jun 2012 11:52:51 -0700
+Subject: [PATCH] libsandbox: clean up open file handles in parent tracing
+ process
+
+Currently, if a non-static app sets up a pipe (with cloexec enabled) and
+executes a static app, the handle to that pipe is left open in the parent
+process.  This causes trouble when the parent is waiting for that to be
+closed immediately.
+
+Since none of the fds in the forked parent process matter to us, we can
+just go ahead and clean up all fds before we start tracing the child.
+
+URL: http://bugs.gentoo.org/364877
+Reported-by: Victor Stinner <victor.stinner@haypocalc.com>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/trace.c           |  3 +-
+ libsbutil/sb_close.c         | 26 +++++++++++-
+ libsbutil/sbutil.h           |  1 +
+ tests/Makefile.am            |  2 +
+ tests/pipe-fork_static_tst.c | 18 +++++++++
+ tests/pipe-fork_tst.c        | 95 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/script-9.sh            |  5 +++
+ tests/script.at              |  1 +
+ 8 files changed, 149 insertions(+), 2 deletions(-)
+ create mode 100644 tests/pipe-fork_static_tst.c
+ create mode 100644 tests/pipe-fork_tst.c
+ create mode 100755 tests/script-9.sh
+
+diff --git a/libsandbox/trace.c b/libsandbox/trace.c
+index 32ad2d6..dfbab18 100644
+--- a/libsandbox/trace.c
++++ b/libsandbox/trace.c
+@@ -504,8 +504,9 @@ void trace_main(const char *filename, char *const argv[])
+ 		/* Not all kernel versions support this, so ignore return */
+ 		ptrace(PTRACE_SETOPTIONS, trace_pid, NULL, (void *)PTRACE_O_TRACESYSGOOD);
+ #endif
++		sb_close_all_fds();
+ 		trace_loop();
+-		return;
++		sb_ebort("ISE: child should have quit, as should we\n");
+ 	}
+ 
+ 	sb_debug("child setting up ...");
+diff --git a/libsbutil/sb_close.c b/libsbutil/sb_close.c
+index 17a4560..5379197 100644
+--- a/libsbutil/sb_close.c
++++ b/libsbutil/sb_close.c
+@@ -29,3 +29,27 @@ int sb_close(int fd)
+ 
+ 	return res;
+ }
++
++/* Quickly close all the open fds (good for daemonization) */
++void sb_close_all_fds(void)
++{
++	DIR *dirp;
++	struct dirent *de;
++	int dfd, fd;
++	const char *fd_dir = sb_get_fd_dir();
++
++	dirp = opendir(fd_dir);
++	if (!dirp)
++		sb_ebort("could not process %s\n", fd_dir);
++	dfd = dirfd(dirp);
++
++	while ((de = readdir(dirp)) != NULL) {
++		if (de->d_name[0] == '.')
++			continue;
++		fd = atoi(de->d_name);
++		if (fd != dfd)
++			close(fd);
++	}
++
++	closedir(dirp);
++}
+diff --git a/libsbutil/sbutil.h b/libsbutil/sbutil.h
+index 02b88cb..479734b 100644
+--- a/libsbutil/sbutil.h
++++ b/libsbutil/sbutil.h
+@@ -97,6 +97,7 @@ int sb_open(const char *path, int flags, mode_t mode);
+ size_t sb_read(int fd, void *buf, size_t count);
+ size_t sb_write(int fd, const void *buf, size_t count);
+ int sb_close(int fd);
++void sb_close_all_fds(void);
+ int sb_copy_file_to_fd(const char *file, int ofd);
+ 
+ /* Reliable output */
+-- 
+1.8.1.2
+

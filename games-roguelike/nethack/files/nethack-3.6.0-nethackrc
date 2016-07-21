@@ -1,0 +1,103 @@
+## This is an example nethackrc file (courtesy of nethack.alt.org).
+##
+## You should edit it to suit your needs.
+## Please read the Guidebook in /usr/share/doc/nethack or at www.nethack.org.
+##
+## Options which are enabled by default (like autoopen) can be disabled
+## by prefixing them with a !
+
+## If USE=X is enabled, this can be changed to x11
+#OPTIONS=windowtype:tty
+
+## Custom fruit and pet names
+#OPTIONS=fruit:mango
+#OPTIONS=dogname:Izchak
+#OPTIONS=catname:Chun-Li
+#OPTIONS=horsename:Marlon
+
+## Colored output
+#OPTIONS=color
+
+## Automatically dig if you are wielding a digging tool and moving
+## into a place that can be dug
+#OPTIONS=autodig
+
+## Walking into a door attempts to open it
+#OPTIONS=autoopen
+
+## Automatically pick up stuff
+#OPTIONS=autopickup
+
+## Only use autopickup for these item types
+#OPTIONS=pickup_types:$!?/"=
+
+## Allow saving and loading bones files.
+#OPTIONS=bones
+
+## Show out-of-sight areas of lit rooms
+#OPTIONS=dark_room
+
+## Use inverse for pets
+#OPTIONS=hilite_pet
+
+## Use inverse for piles of items
+#OPTIONS=hilite_pile
+
+## Show experience
+#OPTIONS=showexp
+
+## Show elapsed game time (in turns)
+#OPTIONS=time
+
+## How recalled messages (ctrl-p) are displayed.
+#OPTIONS=msg_window:reversed
+
+## use IBMgraphics or DECgraphics
+#OPTIONS=symset:DECgraphics
+#OPTIONS=symset:IBMgraphics
+
+## If you don't like some default glyphs, these can be changed
+#SYMBOLS=S_boulder:0
+#SYMBOLS=S_lava:~
+#SYMBOLS=S_pool:~
+#SYMBOLS=S_water:~
+#SYMBOLS=S_ghost:8
+#SYMBOLS=S_golem:7
+
+## Sort items by name. One of "none", "loot", or "full"
+#OPTIONS=sortloot:full
+
+## Require explicit yes for some prompts
+#OPTIONS=paranoid_confirmation:Confirm quit attack pray wand Remove
+
+## Conducts
+#OPTIONS=nudist
+#OPTIONS=blind
+
+
+## Colored menus. Regular expressions allowed.
+#OPTIONS=menucolors
+#MENUCOLOR=" blessed "=green
+#MENUCOLOR=" holy "=green
+#MENUCOLOR=" cursed "=red
+#MENUCOLOR=" unholy "=red
+#MENUCOLOR=" cursed .* (being worn)"=orange&underline
+
+
+## Messagetypes
+
+## displacing pets. hide the message.
+#MSGTYPE=hide "You swap places with your .*"
+
+## items on floor. don't repeat the message.
+#MSGTYPE=norep "You see here a .*"
+#MSGTYPE=norep "You see here an .*"
+
+## delayed instadeaths. always prompt for -more-
+#MSGTYPE=stop "You are slowing down."
+#MSGTYPE=stop "You find it hard to breathe."
+#MSGTYPE=stop "You are turning a little .*"
+
+## moving up or down stairs
+#MSGTYPE=hide "You descend .*"
+#MSGTYPE=hide "You (climb|fly) (up|down) .*"

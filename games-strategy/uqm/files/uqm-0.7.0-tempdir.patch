@@ -1,0 +1,14 @@
+# leaves files lying around bug #576098
+
+diff -ru uqm-0.7.0.orig/build/unix/config_functions uqm-0.7.0/build/unix/config_functions
+--- uqm-0.7.0.orig/build/unix/config_functions	2011-05-20 15:25:22.000000000 -0400
++++ uqm-0.7.0/build/unix/config_functions	2016-03-09 02:46:41.512465876 -0500
+@@ -16,7 +16,7 @@
+ #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+ BUILDLOG=/dev/null
+-TEMPFILE="/tmp/build.$$.tmp"
++TEMPFILE="${T:-/tmp}/build.$$.tmp"
+ #KEEPTEMPFILES=keeptempfiles
+ 
+ 

@@ -1,0 +1,26 @@
+diff --git a/lib/libmt/Makefile b/lib/libmt/Makefile
+index cb1da71..43de5a5 100644
+--- a/lib/libmt/Makefile
++++ b/lib/libmt/Makefile
+@@ -5,6 +5,7 @@ SHLIBDIR?=	/lib
+ SRCS=		mtlib.c
+ INCS=		mtlib.h
+ 
++CFLAGS+=	-I${.CURDIR}
+ DPADD=		${LIBSBUF}
+ LDADD=		-lsbuf
+ 
+diff --git a/lib/libdpv/Makefile b/lib/libdpv/Makefile
+index e9384b7..085ef62 100644
+--- a/lib/libdpv/Makefile
++++ b/lib/libdpv/Makefile
+@@ -11,7 +11,8 @@ LDADD=		-ldialog -lfigpar -lncursesw -lutil
+ 
+ SRCS=		dialog_util.c dialogrc.c dprompt.c dpv.c status.c util.c
+ 
+-CFLAGS+=	-I${.CURDIR}
++CFLAGS+=	-I${.CURDIR} -I${.CURDIR}/../libfigpar
++LDFLAGS+=	-L${.OBJDIR}/../libfigpar
+ 
+ WARNS?=		6
+ 

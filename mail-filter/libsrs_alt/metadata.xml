@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>net-mail@gentoo.org</email>
+	<name>Net-Mail</name>
+</maintainer>
+<longdescription>
+This is a complete standalone C implementation of the SRS (Sender Rewriting
+Scheme) and includes a command line utility and daemon, test utility and static
+and dynamic libraries. SRS is a stop-gap for users of SPF (Sender Policy
+Framework).
+</longdescription>
+</pkgmetadata>

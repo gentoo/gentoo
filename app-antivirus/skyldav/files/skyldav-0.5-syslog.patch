@@ -1,0 +1,22 @@
+diff -urN skyldav-0.5.orig/src/skyldav/Messaging.cc skyldav-0.5/src/skyldav/Messaging.cc
+--- skyldav-0.5.orig/src/skyldav/Messaging.cc	2015-02-15 20:32:57.000000000 +0100
++++ skyldav-0.5/src/skyldav/Messaging.cc	2016-01-21 14:17:12.492010594 +0100
+@@ -118,15 +118,17 @@
+             break;
+         case INFORMATION:
+             type = "I";
+-            syslog(LOG_NOTICE, "%s", message.c_str());
++            syslog(LOG_INFO, "%s", message.c_str());
+             std::cout << message << std::endl;
+             break;
+         case DEBUG:
+             type = "D";
++            syslog(LOG_DEBUG, "%s", message.c_str());
+             std::cout << message << std::endl;
+             return;
+         default:
+             type = " ";
++            syslog(LOG_NOTICE, "%s", message.c_str());
+             std::cout << message << std::endl;
+             break;
+     }

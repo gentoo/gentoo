@@ -1,0 +1,21 @@
+diff -ruN bibletime-2.10.1-orig/CMakeLists.txt bibletime-2.10.1/CMakeLists.txt
+--- bibletime-2.10.1-orig/CMakeLists.txt	2014-10-14 21:20:59.068697225 -0400
++++ bibletime-2.10.1/CMakeLists.txt	2014-10-14 21:23:20.045693427 -0400
+@@ -172,12 +172,14 @@
+   )
+ 
+   IF(${BIBLETIME_FRONTEND} STREQUAL "MOBILE")
+-    qt5_use_modules("bibletime" Widgets Qml Quick Network)
++      qt5_use_modules("bibletime" Widgets Qml Quick Network PrintSupport)
+   ELSE()
+     IF(BT_Use_DBus)
+-      qt5_use_modules("bibletime" DBus Widgets WebKit WebKitWidgets Xml Network)
++      qt5_use_modules("bibletime" DBus Widgets WebKit WebKitWidgets Xml
++	      Network PrintSupport)
+     ELSE()
+-      qt5_use_modules("bibletime" Widgets WebKit WebKitWidgets Xml Network)
++      qt5_use_modules("bibletime" Widgets WebKit WebKitWidgets Xml Network
++	      PrintSupport)
+     ENDIF()
+   ENDIF()
+ ELSE()

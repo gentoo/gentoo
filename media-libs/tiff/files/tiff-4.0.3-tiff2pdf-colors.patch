@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/145055
+
+http://build.opensuse.org/package/view_file?file=tiff-4.0.2-tiff2pdf-colors.patch&package=tiff&project=openSUSE%3AFactory
+
+--- tools/tiff2pdf.c
++++ tools/tiff2pdf.c
+@@ -4991,7 +4991,7 @@
+ 
+ 			if(t2p->tiff_photometric != PHOTOMETRIC_YCBCR) {
+ 				written += t2pWriteFile(output, (tdata_t) "/DecodeParms ", 13);
+-				written += t2pWriteFile(output, (tdata_t) "<< /ColorTransform 0 >>\n", 24);
++				written += t2pWriteFile(output, (tdata_t) "<< /ColorTransform 1 >>\n", 24);
+ 			}
+ 			break;
+ #endif

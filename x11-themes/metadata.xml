@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-themes category contains various theme and style packages for
+		X11 applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-themes enthält Themes und Styles für verschiedene 
+		X11-Applikationen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-themes contiene varios temas y paquetes de estilo
+		para aplicaciones X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-themesカテゴリーにはX11アプリケーションで使う様々な
+		テーマとスタイルのパッケージが含まれて>います。
+	</longdescription>
+	<longdescription lang="nl">
+		De x11-themes categorie bevat thema's en stijlen voor verschillende
+		X11-applicaties. 
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-themes chứa các sắc thái (theme) khác nhau cho các ứng dụng X11.
+	</longdescription>
+	<longdescription lang="it">
+		La categoría x11-themes contiene vari temi e pacchetti di stile per applicazioni X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-themes contém vários pacotes de tema e estilo
+		para aplicações de X11.
+	</longdescription>
+	<longdescription lang="pl">
+        Kategoria x11-themes zawiera tematy graficzne i style dla aplikacji X11.
+    </longdescription>
+</catmetadata>
+

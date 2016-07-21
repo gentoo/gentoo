@@ -1,0 +1,47 @@
+--- a/kcc.c
++++ b/kcc.c
+@@ -134,7 +134,11 @@
+ extern unsigned short hiragana[];
+ unsigned short *kanatbl = katakana;
+ 
++#ifdef __STDC__
++void error(char *format, ...);
++#else
+ void error();
++#endif
+ 
+ /**********************************************************************
+  *                                                                    *
+@@ -364,14 +368,30 @@
+     NAME
+ 	error - print formatted error message on stderr and die
+  ---------------------------------------------------------------------*/
++#ifdef __STDC__
++#include <stdarg.h>
++#else
+ #include <varargs.h>
++#endif
+ 
+-void error(va_alist)
+-    va_dcl
++void
++#ifdef __STDC__
++error(char *format, ...)
++#else
++error(va_alist) va_dcl
++#endif
+ {
+     va_list args;
+ 
++#ifdef __STDC__
++    va_start(args, format);
++#else
++    char *format;
++
+     va_start(args);
++    /* extract the fixed argument */
++    format = va_arg(args, char *);
++#endif
+     fprintf(stderr, "%s: ", progname);
+     vfprintf(stderr, va_arg(args, char *), args);
+     putc('\n', stderr);

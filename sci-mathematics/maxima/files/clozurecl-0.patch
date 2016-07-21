@@ -1,0 +1,27 @@
+diff -r -U1 maxima-5.30.0.orig/configure.in maxima-5.30.0/configure.in
+--- maxima-5.30.0.orig/configure.in	2013-04-03 02:13:30.000000000 +0700
++++ maxima-5.30.0/configure.in	2013-04-13 12:42:16.645751903 +0700
+@@ -351,3 +351,3 @@
+ dnl n.b. openmcl_default_name is hardcoded in "with" message
+-openmcl_default_name=openmcl
++openmcl_default_name=ccl
+ AC_ARG_ENABLE(openmcl,
+diff -r -U1 maxima-5.30.0.orig/src/Makefile.am maxima-5.30.0/src/Makefile.am
+--- maxima-5.30.0.orig/src/Makefile.am	2013-03-23 08:32:07.000000000 +0700
++++ maxima-5.30.0/src/Makefile.am	2013-04-13 12:49:34.911159093 +0700
+@@ -304,3 +304,3 @@
+ if OPENMCL
+-EXECUTEOPENMCL = $(OPENMCL_NAME) -e
++EXECUTEOPENMCL = $(OPENMCL_NAME) --no-init -e
+ all-local: sharefiles.mk  $(OPENMCL_MAXIMA)
+diff -r -U1 maxima-5.30.0.orig/src/maxima.in maxima-5.30.0/src/maxima.in
+--- maxima-5.30.0.orig/src/maxima.in	2012-12-04 12:54:50.000000000 +0700
++++ maxima-5.30.0/src/maxima.in	2013-04-13 12:46:59.247013957 +0700
+@@ -185,5 +185,5 @@
+     if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-      exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -e '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++      exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS --no-init -e '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+     else
+-      exec "@OPENMCL_NAME@" -I "$maxima_image_base.image" $MAXIMA_LISP_OPTIONS -e '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++      exec "@OPENMCL_NAME@" -I "$maxima_image_base.image" $MAXIMA_LISP_OPTIONS --no-init -e '(cl-user::run)' -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+    fi

@@ -1,0 +1,40 @@
+commit d3435a6a83dc656379de9e6523ecf8d565da6ca6
+Author: Jan Gerber <j@xiph.org>
+Date:   Sun May 26 15:25:42 2013 +0200
+
+    don't use deprecated AVCODEC_MAX_AUDIO_FRAME_SIZE
+
+diff --git a/src/ffmpeg2theora.c b/src/ffmpeg2theora.c
+index cde63b9..8bebf28 100644
+--- a/src/ffmpeg2theora.c
++++ b/src/ffmpeg2theora.c
+@@ -47,6 +47,9 @@
+ #include "ffmpeg2theora.h"
+ #include "avinfo.h"
+ 
++#define MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++
++
+ #define LENGTH(x) (sizeof(x) / sizeof(*x))
+ 
+ enum {
+@@ -1069,8 +1072,8 @@ void ff2theora_output(ff2theora this) {
+         int first = 1;
+         int audio_eos = 0, video_eos = 0, audio_done = 0, video_done = 0;
+         int ret;
+-        int16_t *audio_buf=av_malloc(4*AVCODEC_MAX_AUDIO_FRAME_SIZE);
+-        int16_t *resampled=av_malloc(4*AVCODEC_MAX_AUDIO_FRAME_SIZE);
++        int16_t *audio_buf=av_malloc(4*MAX_AUDIO_FRAME_SIZE);
++        int16_t *resampled=av_malloc(4*MAX_AUDIO_FRAME_SIZE);
+         int16_t *audio_p=NULL;
+         int no_frames;
+         int no_samples;
+@@ -1531,7 +1534,7 @@ void ff2theora_output(ff2theora this) {
+                 while((audio_eos && !audio_done) || avpkt.size > 0 ) {
+                     int samples=0;
+                     int samples_out=0;
+-                    int data_size = 4*AVCODEC_MAX_AUDIO_FRAME_SIZE;
++                    int data_size = 4*MAX_AUDIO_FRAME_SIZE;
+                     int bytes_per_sample = av_get_bytes_per_sample(aenc->sample_fmt);
+ 
+                     if (avpkt.size > 0) {

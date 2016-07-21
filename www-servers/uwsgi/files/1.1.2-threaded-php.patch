@@ -1,0 +1,40 @@
+diff -r a6dd30e36bc0 plugins/php/php_plugin.c
+--- a/plugins/php/php_plugin.c	Fri Apr 20 16:27:00 2012 +0200
++++ b/plugins/php/php_plugin.c	Sun Apr 22 11:54:49 2012 +0200
+@@ -116,7 +116,7 @@
+ }
+ 
+ 
+-static int sapi_uwsgi_send_headers(sapi_headers_struct *sapi_headers)
++static int sapi_uwsgi_send_headers(sapi_headers_struct *sapi_headers TSRMLS_DC)
+ {
+ 	sapi_header_struct *h;
+ 	zend_llist_position pos;
+@@ -237,7 +237,7 @@
+ }
+ 
+ 
+-static char *sapi_uwsgi_read_cookies(void)
++static char *sapi_uwsgi_read_cookies(TSRMLS_D)
+ {
+ 	uint16_t len = 0;
+ 	struct wsgi_request *wsgi_req = (struct wsgi_request *) SG(server_context);
+@@ -624,6 +624,10 @@
+ 	struct uwsgi_string_list *pset = uphp.set;
+ 	struct uwsgi_string_list *append_config = uphp.append_config;
+ 
++#ifdef ZTS
++	tsrm_startup(1, 1, 0, NULL);
++#endif
++
+ 	sapi_startup(&uwsgi_sapi_module);
+ 
+ 	// applying custom options
+@@ -721,6 +725,7 @@
+ 
+ 	zend_file_handle file_handle;
+ 
++   	TSRMLS_FETCH(); // fetch the threading state in case PHP is built with threading
+ 	SG(server_context) = (void *) wsgi_req;
+ 
+ 	if (uwsgi_parse_vars(wsgi_req)) {

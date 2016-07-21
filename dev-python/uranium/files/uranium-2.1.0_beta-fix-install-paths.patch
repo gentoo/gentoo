@@ -1,0 +1,27 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-04-12 16:28:06.000000000 +0200
++++ b/CMakeLists.txt	2016-04-16 12:34:29.241397806 +0200
+@@ -67,12 +67,18 @@
+     install(DIRECTORY ${CMAKE_BINARY_DIR}/resources DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium/)
+ endif()
+ 
+-if(APPLE OR WIN32)
+-    install(DIRECTORY UM DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
+-else()
+-    install(DIRECTORY UM DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages)
++if(NOT PYTHON_SITE_PACKAGES_DIR) 
++    if(APPLE OR WIN32)
++        set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages CACHE
++            STRING "Directory to install Python bindings to")
++    else()
++        set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages CACHE
++            STRING "Directory to install Python bindings to")
++    endif()
+ endif()
++
++install(DIRECTORY UM DESTINATION ${PYTHON_SITE_PACKAGES_DIR})
+ install(DIRECTORY resources DESTINATION ${CMAKE_INSTALL_DATADIR}/uranium)
+-install(DIRECTORY plugins DESTINATION lib/uranium)
++install(DIRECTORY plugins DESTINATION ${CMAKE_INSTALL_LIBDIR}/uranium)
+ 
+ include(CPackConfig.cmake)

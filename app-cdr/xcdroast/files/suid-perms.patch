@@ -1,0 +1,36 @@
+diff -Naurd xcdroast-0.98alpha16.orig/doc/README.nonroot xcdroast-0.98alpha16/doc/README.nonroot
+--- xcdroast-0.98alpha16.orig/doc/README.nonroot	2003-10-27 23:37:40.000000000 +0300
++++ xcdroast-0.98alpha16/doc/README.nonroot	2016-07-07 21:32:35.006587826 +0300
+@@ -72,7 +72,7 @@
+ Please change now to the corresponding directory and enter:
+ 
+ 	chown root xcdrwrap
+-	chmod 4755 xcdrwrap
++	chmod 4711 xcdrwrap
+ 
+ 
+ Usage of the non-root-mode
+diff -Naurd xcdroast-0.98alpha16.orig/src/init.c xcdroast-0.98alpha16/src/init.c
+--- xcdroast-0.98alpha16.orig/src/init.c	2008-08-20 20:20:23.000000000 +0400
++++ xcdroast-0.98alpha16/src/init.c	2016-07-07 21:32:35.006587826 +0300
+@@ -670,7 +670,7 @@
+ 
+ 	/* check file mode of wrapper */
+ 	if (stat(tmp,&buf) == 0) {
+-		if (buf.st_mode != 0104755) {
++		if (buf.st_mode != 0104711) {
+ 			dodebug(3,"Note: %s wrong modes set (0%o)\n", tmp, buf.st_mode);
+ 			nofail = 0;
+ 		}
+diff -Naurd xcdroast-0.98alpha16.orig/src/io.c xcdroast-0.98alpha16/src/io.c
+--- xcdroast-0.98alpha16.orig/src/io.c	2008-08-21 17:11:40.000000000 +0400
++++ xcdroast-0.98alpha16/src/io.c	2016-07-07 21:32:35.003587931 +0300
+@@ -10380,7 +10380,7 @@
+ 	 strcat(ret,tmp);
+ #endif
+ 	 /* old nonroot mode - 2755 */
+-	 g_snprintf(tmp,MAXLINE,"%s 4755 %s\n", cmd_chmod, bin);
++	 g_snprintf(tmp,MAXLINE,"%s 4711 %s\n", cmd_chmod, bin);
+ 	 strcat(ret,tmp);
+ 
+ 

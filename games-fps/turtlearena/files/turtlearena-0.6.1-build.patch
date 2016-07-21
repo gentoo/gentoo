@@ -1,0 +1,201 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat Apr 27 20:53:37 UTC 2013
+
+* use PKG_CONFIG var (used in cross compiling scripts, does
+  cross compiling even work?)
+* consistently use pkg-config where possible, define proper fallbacks
+* unbundle the unzip.c properly and fix headers
+* make -m* flags depend on CROSS_COMPILING var
+
+--- engine/Makefile
++++ engine/Makefile
+@@ -346,27 +346,31 @@
+ 
+ bin_path=$(shell which $(1) 2> /dev/null)
+ 
++PKG_CONFIG ?= pkg-config
++SDL_CONFIG ?= sdl-config
++
+ # We won't need this if we only build the server
+ ifneq ($(BUILD_CLIENT),0)
+-  # set PKG_CONFIG_PATH to influence this, e.g.
+-  # PKG_CONFIG_PATH=/opt/cross/i386-mingw32msvc/lib/pkgconfig
+-  ifneq ($(call bin_path, pkg-config),)
+-    CURL_CFLAGS=$(shell pkg-config --silence-errors --cflags libcurl)
+-    CURL_LIBS=$(shell pkg-config --silence-errors --libs libcurl)
+-    OPENAL_CFLAGS=$(shell pkg-config --silence-errors --cflags openal)
+-    OPENAL_LIBS=$(shell pkg-config --silence-errors --libs openal)
+-    SDL_CFLAGS=$(shell pkg-config --silence-errors --cflags sdl|sed 's/-Dmain=SDL_main//')
+-    SDL_LIBS=$(shell pkg-config --silence-errors --libs sdl)
+-    FREETYPE_CFLAGS=$(shell pkg-config --silence-errors --cflags freetype2)
+-  endif
+-  # Use sdl-config if all else fails
+-  ifeq ($(SDL_CFLAGS),)
+-    ifneq ($(call bin_path, sdl-config),)
+-      SDL_CFLAGS=$(shell sdl-config --cflags)
+-      SDL_LIBS=$(shell sdl-config --libs)
+-    endif
+-  endif
+-endif
++    CURL_CFLAGS=$(shell $(PKG_CONFIG) --cflags libcurl 2>/dev/null)
++    CURL_LIBS=$(shell $(PKG_CONFIG) --libs libcurl 2>/dev/null || echo "-lcurl")
++    OPENAL_CFLAGS=$(shell $(PKG_CONFIG) --cflags openal 2>/dev/null || echo "-I/usr/include/AL")
++    OPENAL_LIBS=$(shell $(PKG_CONFIG) --libs openal 2>/dev/null || echo "-lopenal")
++    SDL_CFLAGS=$(shell $(PKG_CONFIG) --cflags sdl 2>/dev/null || $(SDL_CONFIG) --cflags 2>/dev/null || echo "-I/usr/include/SDL")
++    SDL_LIBS=$(shell $(PKG_CONFIG) --libs sdl 2>/dev/null || $(SDL_CONFIG) --libs 2>/dev/null || echo "-lsdl")
++    FREETYPE_CFLAGS=$(shell $(PKG_CONFIG) --cflags freetype2 2>/dev/null || echo "-I/usr/include/freetype2")
++    FREETYPE_LIBS=$(shell $(PKG_CONFIG) --libs freetype2 2>/dev/null || echo "-lfreetype")
++    OPENGL_LIBS=$(shell $(PKG_CONFIG) --libs gl 2>/dev/null || echo "-lGL")
++    VORIBS_CFLAGS=$(shell $(PKG_CONFIG) --cflags vorbis vorbisfile 2>/dev/null)
++    VORBIS_LIBS=$(shell $(PKG_CONFIG) --libs vorbis vorbisfile 2>/dev/null || echo "-lvorbis -lvorbisfile -logg")
++    THEORA_CFLAGS=$(shell $(PKG_CONFIG) --cflags theora 2>/dev/null)
++    THEORA_LIBS=$(shell $(PKG_CONFIG) --libs theora 2>/dev/null || echo "-ltheora")
++    SPEEX_CFLAGS=$(shell $(PKG_CONFIG) --cflags speex speexdsp 2>/dev/null)
++    SPEEX_LIBS=$(shell $(PKG_CONFIG) --libs speex speexdsp 2>/dev/null || echo "-lspeex")
++endif
++
++# common deps
++ZLIB_CFLAGS=$(shell $(PKG_CONFIG) --cflags zlib minizip 2>/dev/null || echo "-I/usr/include/minizip")
++ZLIB_LIBS=$(shell $(PKG_CONFIG) --libs zlib minizip 2>/dev/null || echo "-lz -lminizip")
+ 
+ ifneq ($(BUILD_FINAL),1)
+ 	# Add svn version info
+@@ -421,7 +425,7 @@
+   endif
+ 
+   BASE_CFLAGS = -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes \
+-    -pipe -DUSE_ICON
++    -DUSE_ICON
+   CLIENT_CFLAGS += $(SDL_CFLAGS)
+ 
+   OPTIMIZEVM = -O3 -funroll-loops -fomit-frame-pointer
+@@ -470,25 +474,29 @@
+   LIBS=-ldl -lm
+ 
+   CLIENT_LIBS=$(SDL_LIBS)
+-  RENDERER_LIBS = $(SDL_LIBS) -lGL
++  RENDERER_LIBS = $(SDL_LIBS) $(OPENGL_LIBS)
+ 
+   ifeq ($(USE_OPENAL),1)
+     ifneq ($(USE_OPENAL_DLOPEN),1)
+-      CLIENT_LIBS += -lopenal
+-    endif
++      CLIENT_CFLAGS += $(OPENAL_CFLAGS)
++      CLIENT_LIBS += $(OPENAL_LIBS)
++  endif
+   endif
+ 
+   ifeq ($(USE_CURL),1)
+     ifneq ($(USE_CURL_DLOPEN),1)
+-      CLIENT_LIBS += -lcurl
++      CLIENT_CFLAGS += $(CURL_CFLAGS)
++      CLIENT_LIBS += $(CURL_LIBS)
+     endif
+   endif
+ 
+   ifeq ($(USE_CODEC_VORBIS),1)
+-    CLIENT_LIBS += -lvorbisfile -lvorbis -logg
++    CLIENT_CFLAGS += $(VORBIS_CFLAGS)
++    CLIENT_LIBS += $(VORBIS_LIBS)
+   endif
+   ifeq ($(USE_CODEC_THEORA),1)
+-    CLIENT_LIBS += -ltheora
++    CLIENT_CFLAGS += $(THEORA_CFLAGS)
++    CLIENT_LIBS += $(THEORA_LIBS)
+   endif
+ 
+   ifeq ($(USE_MUMBLE),1)
+@@ -503,14 +511,18 @@
+     BASE_CFLAGS += $(FREETYPE_CFLAGS)
+   endif
+ 
++  # cross-compiling tweaks
+   ifeq ($(ARCH),i386)
+-    # linux32 make ...
+-    BASE_CFLAGS += -m32
+-  else
+-  ifeq ($(ARCH),ppc64)
+-    BASE_CFLAGS += -m64
++    ifeq ($(CROSS_COMPILING),1)
++      BASE_CFLAGS += -m32
++    endif
+   endif
++  ifeq ($(ARCH),amd64)
++    ifeq ($(CROSS_COMPILING),1)
++      BASE_CFLAGS += -m64
++    endif
+   endif
++
+ else # ifeq Linux
+ 
+ #############################################################################
+@@ -1155,7 +1167,8 @@
+   ifeq ($(USE_INTERNAL_SPEEX),1)
+     CLIENT_CFLAGS += -DFLOATING_POINT -DUSE_ALLOCA -I$(SPEEXDIR)/include
+   else
+-    CLIENT_LIBS += -lspeex -lspeexdsp
++    CLIENT_CFLAGS += $(SPEEX_CFLAGS)
++    CLIENT_LIBS += $(SPEEX_LIBS)
+   endif
+ endif
+ 
+@@ -1163,7 +1176,8 @@
+   BASE_CFLAGS += -DNO_GZIP
+   BASE_CFLAGS += -I$(ZDIR)
+ else
+-  LIBS += -lz
++  BASE_CFLAGS += $(ZLIB_CFLAGS)
++  LIBS += $(ZLIB_LIBS)
+ endif
+ 
+ ifeq ($(USE_INTERNAL_JPEG),1)
+@@ -1177,7 +1191,8 @@
+   BASE_CFLAGS += -I$(FTDIR)/include \
+ 					-DFT2_BUILD_LIBRARY
+ else
+-  RENDERER_LIBS += -lfreetype
++  BASE_CFLAGS += $(FREETYPE_CFLAGS)
++  RENDERER_LIBS += $(FREETYPE_LIBS)
+ endif
+ 
+ ifeq ("$(CC)", $(findstring "$(CC)", "clang" "clang++"))
+@@ -1650,8 +1665,6 @@
+   $(B)/client/q_math.o \
+   $(B)/client/q_shared.o \
+   \
+-  $(B)/client/unzip.o \
+-  $(B)/client/ioapi.o \
+   $(B)/client/puff.o \
+   $(B)/client/vm.o \
+   $(B)/client/vm_interpreted.o \
+@@ -2076,8 +2089,6 @@
+   $(B)/ded/q_math.o \
+   $(B)/ded/q_shared.o \
+   \
+-  $(B)/ded/unzip.o \
+-  $(B)/ded/ioapi.o \
+   $(B)/ded/vm.o \
+   $(B)/ded/vm_interpreted.o \
+   \
+--- engine/code/qcommon/files.c
++++ engine/code/qcommon/files.c
+@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth
+ 
+ #include "q_shared.h"
+ #include "qcommon.h"
+-#include "unzip.h"
++#include <minizip/unzip.h>
+ 
+ /*
+ =============================================================================
+--- engine/code/renderer/tr_public.h
++++ engine/code/renderer/tr_public.h
+@@ -25,7 +25,7 @@
+ #include "tr_types.h"
+ 
+ #ifdef IOQ3ZTM // PNG_SCREENSHOTS
+-#include "../zlib/zlib.h"
++#include <zlib.h>
+ #endif
+ 
+ #define	REF_API_VERSION		8

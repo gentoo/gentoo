@@ -1,0 +1,39 @@
+commit ff707a3f2ba2d5c555434ba50547453833a7570f
+Author: Karim Belabas <Karim.Belabas@math.u-bordeaux1.fr>
+Date:   Sun Mar 18 23:54:02 2012 +0100
+
+    71- issquarefree(0) => error [#1304]
+
+diff --git a/src/basemath/ifactor1.c b/src/basemath/ifactor1.c
+index 046491f..8f9fbaa 100644
+--- a/src/basemath/ifactor1.c
++++ b/src/basemath/ifactor1.c
+@@ -3493,7 +3493,11 @@ moebius(GEN n)
+ GEN
+ gissquarefree(GEN x) { return map_proto_lG(issquarefree,x); }
+ long
+-Z_issquarefree(GEN n) { return moebius(n)? 1: 0; }
++Z_issquarefree(GEN n)
++{
++  if (!signe(n)) return 0;
++  return moebius(n)? 1: 0;
++}
+ long
+ issquarefree(GEN x)
+ {
+diff --git a/src/test/32/arith b/src/test/32/arith
+new file mode 100644
+index 0000000..3c5981a
+--- /dev/null
++++ b/src/test/32/arith
+@@ -0,0 +1,2 @@
++0
++Total time spent: 8
+diff --git a/src/test/in/arith b/src/test/in/arith
+new file mode 100644
+index 0000000..fb92bed
+--- /dev/null
++++ b/src/test/in/arith
+@@ -0,0 +1,2 @@
++\\#1304
++issquarefree(0)

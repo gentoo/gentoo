@@ -1,0 +1,18 @@
+http://bugs.gentoo.org/165248
+
+Index: eject.1
+===================================================================
+RCS file: /cvsroot/eject/eject/eject/eject.1,v
+retrieving revision 1.5
+diff -u -p -r1.5 eject.1
+--- eject.1	11 Dec 2005 00:21:06 -0000	1.5
++++ eject.1	4 Feb 2007 23:11:15 -0000
+@@ -145,7 +145,7 @@ also passes the \-n option to umount(1).
+ .TP 0.5i
+ .B \-m
+ This option allows eject to work with device drivers which automatically
+-mount removable media and therefore must be always mount()ed.
++mount removable media and therefore must be always mount(1)ed.
+ The option tells eject to not try to unmount the given device,
+ even if it is mounted according to /etc/mtab or /proc/mounts.
+ 

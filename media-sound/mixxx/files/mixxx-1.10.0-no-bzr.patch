@@ -1,0 +1,37 @@
+--- mixxx-1.10.0/src/SConscript.env
++++ mixxx-1.10.0/src/SConscript.env
+@@ -19,21 +19,6 @@
+     print "Deleting deprecated build file: %s" % defs
+     os.remove(defs)
+ 
+-#env.Append(CPPDEFINES=[('BUILD_REV', '"%s"' % getBZRRevision())]) #doing this forces a rebuild of everything whenever a commit happens -- not much fun
+-## instead, embed BZR version into build
+-## Put version info into a file, so it doesn't force a rebuild of everything :)
+-f = open("build.h","w")
+-try:
+-    branch_name = util.get_bzr_branch_name()
+-    modified = util.get_bzr_modified() > 0
+-    # Do not emit BUILD_BRANCH on release branches.
+-    if not branch_name.startswith('release'):
+-        f.write('#define BUILD_BRANCH "%s"\n' % branch_name)
+-    f.write('#define BUILD_REV "%s%s"\n' % (util.get_bzr_revision(),
+-                                            '+' if modified else ''))
+-finally:
+-    f.close()
+-
+ #Check for dependencies if we're not doing a clean...
+ #if not env.GetOption('clean') and not SCons.Util.containsAny(os.sys.argv, ['-h', '--help']):
+ conf = Configure(env, custom_tests = { 'CheckForPKGConfig' : util.CheckForPKGConfig,
+--- mixxx-1.10.0/src/SConscript
++++ mixxx-1.10.0/src/SConscript
+@@ -12,8 +12,8 @@
+ from build import util
+ 
+ mixxx_version = util.get_mixxx_version()
+-branch_name = util.get_bzr_branch_name()
+-bazaar_revision = util.get_bzr_revision()
++#branch_name = util.get_bzr_branch_name()
++#bazaar_revision = util.get_bzr_revision()
+ print "WE ARE IN:", os.getcwd()
+ 
+ plugins = []

@@ -1,0 +1,125 @@
+commit 520fa3601c36dd0a3c84e310bd2a1189259000bd
+Author: Cédric VINCENT <cedric.vincent@st.com>
+Date:   Thu Aug 7 14:29:37 2014 +0200
+
+    Don't dereference argv[0] when launching a script through a symlink.
+    
+    Reported-by: Joakim Tjernlund <Joakim.Tjernlund@transmode.se>
+    Ref: https://bugs.gentoo.org/show_bug.cgi?id=517496
+    
+    Also, don't complain about non-regular or non-executable files that
+    are not explicitely candidates.
+
+diff --git a/src/path/path.c b/src/path/path.c
+index 4225876..ecdef70 100644
+--- a/src/path/path.c
++++ b/src/path/path.c
+@@ -219,17 +219,21 @@ int which(Tracee *tracee, const char *paths, char host_path[PATH_MAX], char *con
+ 	/* Is the command available without any $PATH look-up?  */
+ 	status = realpath2(tracee, host_path, command, true);
+ 	if (status == 0 && stat(host_path, &statr) == 0) {
+-		if (!S_ISREG(statr.st_mode)) {
++		if (is_explicit && !S_ISREG(statr.st_mode)) {
+ 			notice(tracee, ERROR, USER, "'%s' is not a regular file", command);
+ 			return -EACCES;
+ 		}
+ 
+-		if ((statr.st_mode & S_IXUSR) == 0) {
++		if (is_explicit && (statr.st_mode & S_IXUSR) == 0) {
+ 			notice(tracee, ERROR, USER, "'%s' is not executable", command);
+ 			return -EACCES;
+ 		}
+ 
+ 		found = true;
++
++		/* Don't dereference the final component to preserve
++		 * argv0 in case it is a symlink to script.  */
++		(void) realpath2(tracee, host_path, command, false);
+ 	}
+ 	else
+ 		found = false;
+@@ -274,8 +278,12 @@ int which(Tracee *tracee, const char *paths, char host_path[PATH_MAX], char *con
+ 		if (status == 0
+ 		    && stat(host_path, &statr) == 0
+ 		    && S_ISREG(statr.st_mode)
+-		    && (statr.st_mode & S_IXUSR) != 0)
+-				return 0;
++		    && (statr.st_mode & S_IXUSR) != 0) {
++			/* Don't dereference the final component to preserve
++			 * argv0 in case it is a symlink to script.  */
++			(void) realpath2(tracee, host_path, path, false);
++			return 0;
++		}
+ 	} while (*(cursor - 1) != '\0');
+ 
+ not_found:
+diff --git a/src/tracee/event.c b/src/tracee/event.c
+index 70668d6..5905c43 100644
+--- a/src/tracee/event.c
++++ b/src/tracee/event.c
+@@ -92,7 +92,7 @@ int launch_process(Tracee *tracee)
+ 		 * guest rootfs.  Note: Valgrind can't handle execve(2) on
+ 		 * "foreign" binaries (ENOEXEC) but can handle execvp(3) on such
+ 		 * binaries.  */
+-		execvp(tracee->exe, tracee->cmdline);
++		execv(tracee->exe, tracee->cmdline);
+ 		return -errno;
+ 
+ 	default: /* parent */
+diff --git a/tests/test-713b6910.sh b/tests/test-713b6910.sh
+new file mode 100644
+index 0000000..82e01fd
+--- /dev/null
++++ b/tests/test-713b6910.sh
+@@ -0,0 +1,51 @@
++if [ -z `which mcookie` ] || [ -z `which rm` ] || [ -z `which cat` ] || [ -z `which chmod` ] || [ -z `which ln` ] || [ -z `which grep` ] || [ -z `which mkdir` ] || [ ! -x  ${ROOTFS}/bin/readlink ]; then
++    exit 125;
++fi
++
++######################################################################
++
++TMP1=/tmp/$(mcookie)
++TMP2=/tmp/$(mcookie)
++TMP3=/tmp/$(mcookie)
++TMP4=/tmp/$(mcookie)
++
++rm -fr ${TMP1} ${TMP2} ${TMP3} ${TMP4}
++
++######################################################################
++
++cat > ${TMP1} <<'EOF'
++#!/bin/sh
++echo $0
++EOF
++
++chmod +x ${TMP1}
++ln -s ${TMP1} ${TMP2}
++
++${PROOT} ${TMP2} | grep -v ${TMP1}
++${PROOT} ${TMP2} | grep ${TMP2}
++
++######################################################################
++
++mkdir -p ${TMP3}
++cd ${TMP3}
++
++ln -s $(which true) false
++! ${PROOT} false
++
++echo "#!$(which false)" > true
++chmod a-x true
++${PROOT} true
++
++######################################################################
++
++ln -s ${ROOTFS}/bin/readlink ${TMP4}
++
++TEST1=$(${PROOT} ${ROOTFS}/bin/readlink /proc/self/exe)
++TEST2=$(${PROOT} ${TMP4} /proc/self/exe)
++
++test "${TEST1}" = "${TEST2}"
++
++######################################################################
++
++cd /
++rm -fr ${TMP1} ${TMP2} ${TMP3} ${TMP4}

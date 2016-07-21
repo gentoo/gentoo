@@ -1,0 +1,40 @@
+diff -Nru diald-1.0.orig/configure.in diald-1.0/configure.in
+--- diald-1.0.orig/configure.in	2001-06-16 19:01:25.000000000 +0300
++++ diald-1.0/configure.in	2007-07-12 09:56:35.000000000 +0300
+@@ -10,7 +10,6 @@
+ dnl Checks for libraries.
+ AC_CHECK_LIB(dl, dlsym)
+ AC_CHECK_LIB(nsl, nis_add)
+-AC_CHECK_LIB(pam, pam_start)
+ AC_CHECK_LIB(wrap, request_init)
+ AC_CHECK_LIB(util, openpty)
+ 
+diff -Nru diald-1.0.orig/doc/diald-control.man diald-1.0/doc/diald-control.man
+--- diald-1.0.orig/doc/diald-control.man	2001-06-15 18:38:20.000000000 +0300
++++ diald-1.0/doc/diald-control.man	2007-07-12 09:55:59.000000000 +0300
+@@ -65,10 +65,6 @@
+ TCP connections.
+ If \fI<method>\fR is "simple" then a single following
+ string specifies the name of the privileges to request.
+-If \fI<method>\fR is "pam" then the two following strings specify
+-the UNIX username and password to be authenticated using PAM
+-(Pluggable Authentication Modules). Privileges are then given
+-according to group membership.
+ .TP
+ .B block
+ Block diald from making outgoing calls until a unblock command is issued.
+diff -Nru diald-1.0.orig/doc/diald.man diald-1.0/doc/diald.man
+--- diald-1.0.orig/doc/diald.man	2001-06-15 18:38:20.000000000 +0300
++++ diald-1.0/doc/diald.man	2007-07-12 09:54:37.000000000 +0300
+@@ -184,11 +184,6 @@
+ (very simple...) for TCP monitor connections.
+ 
+ .TP
+-.B authpam \fI<file>\fR
+-Specifies the name of a file to be used for PAM authentication
+-(not so simple...) for TCP monitor connections.
+-
+-.TP
+ .B scheduler \fI<class>\fR
+ Set diald's scheduling class. Valid choices for systems that
+ support POSIX scheduling classes are:

@@ -1,0 +1,4 @@
+# /etc/init.d/apmd:
+# $Id$
+
+APMD_OPTS="-P /etc/apm/apmd_proxy"

@@ -1,0 +1,16 @@
+new alloc_netdev requires a new parameter. All examples in the kernel i've seen just
+use the constant NET_NAME_UNKNOWN.
+origionally from: https://communities.vmware.com/message/2425189
+
+diff -rupN vmnet-only/netif.c vmnet-only.new/netif.c
+--- vmnet-only/netif.c	2013-11-06 00:40:52.000000000 -0500
++++ vmnet-only.new/netif.c	2014-10-09 17:29:12.361307961 -0400
+@@ -149,7 +149,7 @@ VNetNetIf_Create(char *devName,  // IN:
+    memcpy(deviceName, devName, sizeof deviceName);
+    NULL_TERMINATE_STRING(deviceName);
+ 
+-   dev = alloc_netdev(sizeof *netIf, deviceName, VNetNetIfSetup);
++   dev = alloc_netdev(sizeof *netIf, deviceName, NET_NAME_USER, VNetNetIfSetup);
+    if (!dev) {
+       retval = -ENOMEM;
+       goto out;

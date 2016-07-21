@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">SDL</remote-id>
+    <remote-id type="cpan-module">Module::Build::SDL</remote-id>
+    <remote-id type="cpan-module">SDL</remote-id>
+    <remote-id type="cpan-module">SDL::Audio</remote-id>
+    <remote-id type="cpan-module">SDL::AudioCVT</remote-id>
+    <remote-id type="cpan-module">SDL::AudioSpec</remote-id>
+    <remote-id type="cpan-module">SDL::CD</remote-id>
+    <remote-id type="cpan-module">SDL::CDROM</remote-id>
+    <remote-id type="cpan-module">SDL::CDTrack</remote-id>
+    <remote-id type="cpan-module">SDL::Color</remote-id>
+    <remote-id type="cpan-module">SDL::Config</remote-id>
+    <remote-id type="cpan-module">SDL::Constants</remote-id>
+    <remote-id type="cpan-module">SDL::Cursor</remote-id>
+    <remote-id type="cpan-module">SDL::Event</remote-id>
+    <remote-id type="cpan-module">SDL::Events</remote-id>
+    <remote-id type="cpan-module">SDL::GFX</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::BlitFunc</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::FPSManager</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::Framerate</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::ImageFilter</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::Primitives</remote-id>
+    <remote-id type="cpan-module">SDL::GFX::Rotozoom</remote-id>
+    <remote-id type="cpan-module">SDL::Image</remote-id>
+    <remote-id type="cpan-module">SDL::Internal::Loader</remote-id>
+    <remote-id type="cpan-module">SDL::Joystick</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::Channels</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::Effects</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::Groups</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::MixChunk</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::MixMusic</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::Music</remote-id>
+    <remote-id type="cpan-module">SDL::Mixer::Samples</remote-id>
+    <remote-id type="cpan-module">SDL::Mouse</remote-id>
+    <remote-id type="cpan-module">SDL::MultiThread</remote-id>
+    <remote-id type="cpan-module">SDL::Net</remote-id>
+    <remote-id type="cpan-module">SDL::Net::IPaddress</remote-id>
+    <remote-id type="cpan-module">SDL::Net::TCP</remote-id>
+    <remote-id type="cpan-module">SDL::Net::UDP</remote-id>
+    <remote-id type="cpan-module">SDL::Overlay</remote-id>
+    <remote-id type="cpan-module">SDL::Palette</remote-id>
+    <remote-id type="cpan-module">SDL::Pango</remote-id>
+    <remote-id type="cpan-module">SDL::Pango::Context</remote-id>
+    <remote-id type="cpan-module">SDL::PixelFormat</remote-id>
+    <remote-id type="cpan-module">SDL::RWOps</remote-id>
+    <remote-id type="cpan-module">SDL::Rect</remote-id>
+    <remote-id type="cpan-module">SDL::SMPEG</remote-id>
+    <remote-id type="cpan-module">SDL::SMPEG::Info</remote-id>
+    <remote-id type="cpan-module">SDL::Surface</remote-id>
+    <remote-id type="cpan-module">SDL::TTF</remote-id>
+    <remote-id type="cpan-module">SDL::TTF::Font</remote-id>
+    <remote-id type="cpan-module">SDL::TTFont</remote-id>
+    <remote-id type="cpan-module">SDL::Time</remote-id>
+    <remote-id type="cpan-module">SDL::Tutorial</remote-id>
+    <remote-id type="cpan-module">SDL::Tutorial::Animation</remote-id>
+    <remote-id type="cpan-module">SDL::Tutorial::LunarLander</remote-id>
+    <remote-id type="cpan-module">SDL::Version</remote-id>
+    <remote-id type="cpan-module">SDL::Video</remote-id>
+    <remote-id type="cpan-module">SDL::VideoInfo</remote-id>
+    <remote-id type="cpan-module">SDL_perl</remote-id>
+    <remote-id type="cpan-module">SDLx::App</remote-id>
+    <remote-id type="cpan-module">SDLx::Controller</remote-id>
+    <remote-id type="cpan-module">SDLx::Controller::Interface</remote-id>
+    <remote-id type="cpan-module">SDLx::Controller::State</remote-id>
+    <remote-id type="cpan-module">SDLx::Controller::Timer</remote-id>
+    <remote-id type="cpan-module">SDLx::FPS</remote-id>
+    <remote-id type="cpan-module">SDLx::Layer</remote-id>
+    <remote-id type="cpan-module">SDLx::LayerManager</remote-id>
+    <remote-id type="cpan-module">SDLx::Music</remote-id>
+    <remote-id type="cpan-module">SDLx::Music::Data</remote-id>
+    <remote-id type="cpan-module">SDLx::Music::Default</remote-id>
+    <remote-id type="cpan-module">SDLx::Rect</remote-id>
+    <remote-id type="cpan-module">SDLx::SFont</remote-id>
+    <remote-id type="cpan-module">SDLx::Sound</remote-id>
+    <remote-id type="cpan-module">SDLx::Sprite</remote-id>
+    <remote-id type="cpan-module">SDLx::Sprite::Animated</remote-id>
+    <remote-id type="cpan-module">SDLx::Surface</remote-id>
+    <remote-id type="cpan-module">SDLx::Surface::TiedMatrix</remote-id>
+    <remote-id type="cpan-module">SDLx::Surface::TiedMatrixRow</remote-id>
+    <remote-id type="cpan-module">SDLx::TTF</remote-id>
+    <remote-id type="cpan-module">SDLx::Text</remote-id>
+    <remote-id type="cpan-module">SDLx::Validate</remote-id>
+    <remote-id type="github">PerlGameDev/SDL</remote-id>
+  </upstream>
+</pkgmetadata>

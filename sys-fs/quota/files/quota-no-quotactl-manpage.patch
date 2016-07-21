@@ -1,0 +1,19 @@
+diff -urN quota-tools.orig/Makefile.in quota-tools/Makefile.in
+--- quota-tools.orig/Makefile.in	2003-04-08 06:04:25.000000000 -0700
++++ quota-tools/Makefile.in	2003-12-10 02:07:40.000000000 -0800
+@@ -88,7 +88,6 @@
+ 	-$(INSTALL) -m $(DEF_CONF_MODE) quotatab $(ROOTDIR)$(sysconfdir)
+ 	-$(INSTALL) -m $(DEF_CONF_MODE) quotagrpadmins $(ROOTDIR)$(sysconfdir)
+ 	-mkdir -p $(ROOTDIR)$(mandir)/man1
+-	-mkdir -p $(ROOTDIR)$(mandir)/man2
+ 	-mkdir -p $(ROOTDIR)$(mandir)/man3
+ 	-mkdir -p $(ROOTDIR)$(mandir)/man8
+ 	-$(INSTALL) -m 755 -d $(ROOTDIR)$(includedir)/rpcsvc
+@@ -96,7 +95,6 @@
+ 	-$(INSTALL) -s -m $(DEF_SBIN_MODE) quota $(ROOTDIR)$(bindir)
+ 	-$(INSTALL) -s -m $(DEF_SBIN_MODE) rpc.rquotad $(ROOTDIR)$(sbindir)
+ 	-$(INSTALL) -m $(DEF_MAN_MODE) *.1 $(ROOTDIR)$(mandir)/man1
+-	-$(INSTALL) -m $(DEF_MAN_MODE) *.2 $(ROOTDIR)$(mandir)/man2
+ 	-$(INSTALL) -m $(DEF_MAN_MODE) *.3 $(ROOTDIR)$(mandir)/man3
+ 	-$(INSTALL) -m $(DEF_MAN_MODE) *.8 $(ROOTDIR)$(mandir)/man8
+ 

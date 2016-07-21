@@ -1,0 +1,11 @@
+--- Lib/FFTW/Makefile.PL.orig	2012-08-28 17:10:15.000000000 +0100
++++ Lib/FFTW/Makefile.PL	2012-08-28 17:19:35.000000000 +0100
+@@ -152,7 +152,7 @@
+ 		# make a list of libs from the libstring
+ 		my @libs = split ' ',$double_lib;
+ 		grep s/\-l//g, @libs;
+-		grep $_ = "lib$_.a", @libs;
++		grep $_ = "lib$_.$Config{so}", @libs;
+ 		my %libs;
+ 		my $lib;
+ 		foreach $libdir(@libdirs){

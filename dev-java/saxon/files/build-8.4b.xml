@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---
+   @author: Saleem Abdulrasool <compnerd@gentoo.org>
+   @date: 5/9/2005
+   @revision: 1.0_alpha
+
+   @notes: Call using the following: ant -f build.xml -Dproject.name=${project name} -Dpackage.name=${package name}
+-->
+
+<project name="Gentoo_Builder" default="jar" basedir=".">
+   <property name="src" value="src"/>
+   <property name="build" value="build"/>
+   <property name="dist" value="dist"/>
+
+   <property name="project.name" value="saxon8"/>
+   <property name="pkg" value="${package.name}"/>
+   <property name="all.jar" value="${project.name}.jar"/>
+   <property name="dom.jar" value="${project.name}-dom.jar"/>
+   <property name="jdom.jar" value="${project.name}-jdom.jar"/>
+   <property name="sql.jar" value="${project.name}-sql.jar"/>
+   <property name="xom.jar" value="${project.name}-xom.jar"/>
+   <property name="xpath.jar" value="${project.name}-xpath.jar"/>
+
+   <!-- Override any defined properties -->
+   <property file="build.properties"/>
+	<path id="lib.classpath">
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+
+   <target name="init">
+      <tstamp/>
+      <mkdir dir="${build}"/>
+	  <mkdir dir="${build}/META-INF/services"/>
+      <mkdir dir="${dist}"/>
+      <mkdir dir="${dist}/doc"/>
+   </target>
+
+   <target name="compile" depends="init">
+      <javac srcdir="${src}" destdir="${build}" classpath="${classpath}" classpathref="lib.classpath"/>
+   </target>
+
+   <target name="manifest" depends="init">
+	   <manifest file="${build}/META-INF/MANIFEST.MF" mode="update">
+         <attribute name="Built-By" value="Gentoo Portage"/>
+      </manifest>
+	  <echo file="${build}/META-INF/services/javax.xml.xpath.XPathFactory" message="net.sf.saxon.xpath.XPathFactory"/>
+	  <echo file="${build}/META-INF/services/javax.xml.transform.TransformerFactory" message="net.sf.saxon.transform.TransformerFactoryImpl"/>
+   </target>
+   
+   <target name="jar-saxon8" depends="compile,manifest">
+      <jar jarfile="${dist}/${all.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+         <fileset dir="${build}">
+			 <include name="net/sf/saxon/**"/>
+			 <include name="META-INF/services/javax.xml.transform.TransformFactory"/>
+			 <exclude name="**/dom/**"/>
+			 <exclude name="**/jdom/**"/>
+			 <exclude name="**/sql/**"/>
+			 <exclude name="**/xom/**"/>
+			 <exclude name="**/xpath/**"/>
+		 </fileset>
+		 <manifest>
+			 <attribute name="Main-Class" value="net.sf.saxon.Transform" />
+		 </manifest>
+	  </jar>
+   </target>
+
+   <target name="jar-saxon8-dom" depends="compile,manifest">
+		<jar jarfile="${dist}/${dom.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+		   <fileset dir="${build}">
+				<include name="net/sf/saxon/dom/**"/>
+			</fileset>
+		</jar>
+   </target>
+
+	<target name="jar-saxon8-jdom" depends="compile,manifest">
+		<jar jarfile="${dist}/${jdom.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+			<fileset dir="${build}">
+				<include name="net/sf/saxon/jdom/**"/>
+			</fileset>
+		</jar>
+	</target>
+
+   <target name="jar-saxon8-sql" depends="compile,manifest">
+	   <jar jarfile="${dist}/${sql.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+			<fileset dir="${build}">
+				<include name="net/sf/saxon/jdom/**"/>
+			</fileset>
+		</jar>
+   </target>
+
+	<target name="jar-saxon8-xom" depends="compile,manifest">
+		<jar jarfile="${dist}/${xom.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+			<fileset dir="${build}">
+				<include name="net/sf/saxon/xom/**"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="jar-saxon8-xpath" depends="compile,manifest">
+		<jar jarfile="${dist}/${xpath.jar}" manifest="${build}/META-INF/MANIFEST.MF">
+			<fileset dir="${build}">
+				<include name="net/sf/saxon/xpath/**"/>
+				<include name="META-INF/services/javax.xml.xpath.XPathFactory"/>
+			</fileset>
+		</jar>
+	</target>
+
+   <target name="jar" depends="jar-saxon8,jar-saxon8-dom,jar-saxon8-jdom,jar-saxon8-sql,jar-saxon8-xom,jar-saxon8-xpath"/>
+
+   <target name="javadoc" depends="compile">
+      <javadoc destdir="${dist}/doc/api" classpathref="lib.classpath">
+      	<fileset dir="${src}"/>
+      </javadoc>
+   </target>
+
+   <target name="clean">
+      <delete dir="${build}"/>
+      <delete dir="${dist}"/>
+   </target>
+</project>

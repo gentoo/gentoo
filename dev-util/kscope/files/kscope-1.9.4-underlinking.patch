@@ -1,0 +1,13 @@
+diff -ruN kscope-1.9.4.orig/app/app.pro kscope-1.9.4/app/app.pro
+--- kscope-1.9.4.orig/app/app.pro	2009-03-14 12:45:48.000000000 +0100
++++ kscope-1.9.4/app/app.pro	2011-08-07 20:33:04.540575855 +0200
+@@ -58,7 +58,8 @@
+     -L../cscope \
+     -lkscope_cscope \
+     -L../editor \
+-    -lkscope_editor
++    -lkscope_editor \
++    -lqscintilla2
+ RESOURCES = app.qrc
+ target.path = $${INSTALL_PATH}/bin
+ INSTALLS += target

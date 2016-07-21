@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/450530
+
+we disable fiascotopnm all the time, so delete the test too
+
+--- a/test/all-in-place.test
++++ b/test/all-in-place.test
+@@ -387,10 +387,6 @@ for i in $ordinary_testprogs
+ 
+ 
+ 
+-# Test fiascotopnm, which has a unique -v flag.
+-
+-${PBM_TESTPREFIX}fiascotopnm -v 2> /dev/null
+-    testExitStatus fiascotopnm 2 $?
+ 
+ 
+ 

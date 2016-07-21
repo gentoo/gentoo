@@ -1,0 +1,72 @@
+Index: base/BUILD.gn
+diff --git a/base/BUILD.gn b/base/BUILD.gn
+index 9e4270d26009f853e37dc7af883bed4cb43705c8..7d67f62a688b0214bd3eb95a3cd4612bdd273b6d 100644
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1562,11 +1562,18 @@ test("base_unittests") {
+   if (is_linux) {
+     sources -= [ "file_version_info_unittest.cc" ]
+     sources += [ "nix/xdg_util_unittest.cc" ]
++
+     deps += [ "//base/test:malloc_wrapper" ]
+ 
+     if (use_glib) {
+       configs += [ "//build/config/linux:glib" ]
+     }
++
++    if (!is_component_build) {
++      # Set rpath so that we find libmalloc_wrapper.so
++      # even in a non-component build.
++      configs += [ "//build/config/gcc:rpath_link" ]
++    }
+   }
+ 
+   if (!is_linux || use_ozone) {
+Index: build/config/gcc/BUILD.gn
+diff --git a/build/config/gcc/BUILD.gn b/build/config/gcc/BUILD.gn
+index b6ab1d4b96ba7ba9a39409006f949569551f92d2..9bc16d9e0d918096cec7124ccf20f145643824b8 100644
+--- a/build/config/gcc/BUILD.gn
++++ b/build/config/gcc/BUILD.gn
+@@ -20,14 +20,8 @@ config("symbol_visibility_hidden") {
+   cflags = [ "-fvisibility=hidden" ]
+ }
+ 
+-# Settings for executables and shared libraries.
+-config("executable_ldconfig") {
+-  if (is_android) {
+-    ldflags = [
+-      "-Bdynamic",
+-      "-Wl,-z,nocopyreloc",
+-    ]
+-  } else {
++config("rpath_link") {
++  if (!is_android) {
+     # Note: Android doesn't support rpath.
+     rpath_link = ""
+     if (shlib_subdir != ".") {
+@@ -37,7 +31,25 @@ config("executable_ldconfig") {
+       # Want to pass "\$". GN will re-escape as required for ninja.
+       "-Wl,-rpath=\$ORIGIN/${rpath_link}",
+       "-Wl,-rpath-link=${rpath_link}",
++    ]
++  }
++}
+ 
++# Settings for executables and shared libraries.
++config("executable_ldconfig") {
++  if (is_android) {
++    ldflags = [
++      "-Bdynamic",
++      "-Wl,-z,nocopyreloc",
++    ]
++  } else {
++    if (is_component_build) {
++      configs += [ ":rpath_link" ]
++    }
++
++    ldflags = [
++      # TODO(GYP): Do we need a check on the binutils version here?
++      #
+       # Newer binutils don't set DT_RPATH unless you disable "new" dtags
+       # and the new DT_RUNPATH doesn't work without --no-as-needed flag.
+       "-Wl,--disable-new-dtags",

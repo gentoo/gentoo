@@ -1,0 +1,11 @@
+--- gio-0.13.0.4-orig/SetupWrapper.hs	2014-12-24 21:02:08.000000000 +1100
++++ gio-0.13.0.4/SetupWrapper.hs	2015-01-03 19:14:53.721416960 +1100
+@@ -18,7 +18,7 @@
+ 
+ import System.Environment
+ import System.Process
+-import System.Exit
++import System.Exit (exitWith, ExitCode(..))
+ import System.FilePath
+ import System.Directory
+ import qualified Control.Exception as Exception

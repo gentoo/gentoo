@@ -1,0 +1,47 @@
+From 7dc941862819398db2ac4ae4239c8ed05431f928 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 8 May 2016 11:54:00 -0400
+Subject: [PATCH] Substitute includedir and libdir in re2.pc
+
+---
+ Makefile            | 5 ++++-
+ re2.pc => re2.pc.in | 5 ++---
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+ rename re2.pc => re2.pc.in (71%)
+
+diff --git a/Makefile b/Makefile
+index d0e2090..4a8d8a6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -273,7 +273,10 @@ install: obj/libre2.a obj/so/libre2.$(SOEXT)
+ 	$(INSTALL) obj/so/libre2.$(SOEXT) $(DESTDIR)$(libdir)/libre2.$(SOEXTVER00)
+ 	ln -sf libre2.$(SOEXTVER00) $(DESTDIR)$(libdir)/libre2.$(SOEXTVER)
+ 	ln -sf libre2.$(SOEXTVER00) $(DESTDIR)$(libdir)/libre2.$(SOEXT)
+-	sed -e "s#@prefix@#${prefix}#" re2.pc >$(DESTDIR)$(libdir)/pkgconfig/re2.pc
++	sed -e "s#@prefix@#$(prefix)#" \
++		-e "s#@includedir@#$(includedir)#" \
++		-e "s#@libdir@#$(libdir)#" \
++		re2.pc.in >$(DESTDIR)$(libdir)/pkgconfig/re2.pc
+ 
+ testinstall: static-testinstall shared-testinstall
+ 	@echo
+diff --git a/re2.pc b/re2.pc.in
+similarity index 71%
+rename from re2.pc
+rename to re2.pc.in
+index 91ba181..a04a70a 100644
+--- a/re2.pc
++++ b/re2.pc.in
+@@ -1,7 +1,6 @@
+ prefix=@prefix@
+-exec_prefix=${prefix}
+-includedir=${prefix}/include
+-libdir=${exec_prefix}/lib
++includedir=@includedir@
++libdir=@libdir@
+ 
+ Name: re2
+ Description: RE2 is a fast, safe, thread-friendly regular expression engine.
+-- 
+2.8.2
+

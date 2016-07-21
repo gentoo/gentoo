@@ -1,0 +1,12 @@
+# make f2py verbose
+--- Makefile.in.orig	2013-02-07 12:22:41.000000000 +0000
++++ Makefile.in	2013-02-07 12:23:11.000000000 +0000
+@@ -74,7 +74,7 @@
+ OBJS2C  = ${SRCS2C:.c=.o}
+ 
+ WsprMod/w.so:	${OBJS2C} $(SRCS2F90) $(SRCS2F77) acom1.f90
+-	${F2PY} -c --quiet --noopt --debug -m w \
++	${F2PY} -c --noopt --debug -m w \
+ 	--f77flags="${FFLAGS}" --f90flags="${FFLAGS}" \
+ 	--fcompiler=${FCV} --f77exec=${FC} --f90exec=${FC} \
+ 	--opt="-fbounds-check ${FFLAGS}" \

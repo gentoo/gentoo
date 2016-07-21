@@ -1,0 +1,144 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Sep 25 13:18:57 UTC 2012
+Subject: build system
+
+fix gold linker compilation
+https://bugs.gentoo.org/show_bug.cgi?id=435826
+
+--- configure.in
++++ configure.in
+@@ -44,6 +44,9 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
++AC_PATH_PROG([PKGCONFIG], [pkg-config])
++AS_IF([test "x$PKGCONFIG" = "x"],
++    [AC_MSG_ERROR([pkg-config not found!])])
+ 
+ AC_CHECK_PROGS(BUILD_CC,gcc cc ${CC},gcc)
+ AC_CHECK_PROG(AR,${AR:-ar},${AR:-ar},ar)
+@@ -55,6 +58,10 @@
+ dnl doesn't work if gd isn't where the compiler can find it
+ dnl AC_CHECK_LIB(gd, gdImageCreateFromGif)
+ 
++PKG_CHECK_MODULES([X], [x11])
++PKG_CHECK_MODULES([Z], [zlib])
++PKG_CHECK_MODULES([PNG], [libpng])
++
+ dnl Checks for header files.
+ 
+ AC_PATH_XTRA
+@@ -69,57 +76,6 @@
+ AC_FUNC_UTIME_NULL
+ AC_CHECK_FUNCS(gettimeofday mkdir strdup strstr)
+ 
+-opt_gd=
+-AC_ARG_WITH(z,[  --with-z=DIR           location of the ZLIB library],opt_z=$withval)
+-AC_ARG_WITH(png,[  --with-png=DIR          location of the PNG library],opt_png=$withval)
+-
+-case "$with_z" in
+-  yes|no) AC_MSG_ERROR([
+-*** Directory must be specified for --with-z])
+-    ;;
+-  "")
+-    Z_CFLAGS=
+-    Z_LIBS=-lz
+-    ;;
+-  *)
+-    if test -f $with_z/include/z.h
+-    then
+-      Z_CFLAGS=-I$with_z/include
+-    else
+-      Z_CFLAGS=-I$with_z
+-    fi
+-    if test -f $with_z/lib/libz.a
+-    then
+-      Z_LIBS=$with_z/lib/libz.a
+-    else
+-      Z_LIBS=$with_z/libz.a
+-    fi
+-    ;;
+-esac
+-
+-case "$with_png" in
+-  yes|no) AC_MSG_ERROR([
+-*** Directory must be specified for --with-png])
+-    ;;
+-  "")
+-    PNG_CFLAGS=
+-    PNG_LIBS=
+-    ;;
+-  *)
+-    if test -f $with_png/lib/png.h
+-    then
+-      PNG_CFLAGS=-I$with_png/lib
+-    else
+-      PNG_CFLAGS=-I$with_png/include/X11
+-    fi
+-    if test -f $with_png/lib/libPng.a
+-    then
+-      PNG_LIBS="-L$with_png/lib"
+-    else
+-      PNG_LIBS="-L$with_png"
+-    fi
+-    ;;
+-esac
+ 
+ AC_SUBST(Z_CFLAGS)
+ AC_SUBST(Z_LIBS)
+@@ -127,6 +83,9 @@
+ AC_SUBST(PNG_CFLAGS)
+ AC_SUBST(PNG_LIBS)
+ 
++AC_SUBST(X_LIBS)
++AC_SUBST(X_CFLAGS)
++
+ AC_SUBST(PDA)
+ 
+ AC_OUTPUT(Makefile lib/Makefile games/Makefile tests/Makefile)
+--- lib/Makefile.am
++++ lib/Makefile.am
+@@ -5,18 +5,19 @@
+ 
+ CLEANFILES = images.c images.d
+ 
+-INCLUDES = $(X_CFLAGS) @PDA@
+-AM_LDFLAGS = $(X_LIBS)
++INCLUDES = $(X_CFLAGS) $(PNG_CFLAGS) $(Z_CFLAGS) @PDA@
+ 
+ BUILD_CC = @BUILD_CC@
+ AR = @AR@
+ STRIP = @STRIP@
+ 
+-libcards_la_LDFLAGS = -version-info 1:0:0 $(AM_LDFLAGS)
++libcards_la_LDFLAGS = -version-info 1:0:0
+ 
+ libcards_la_SOURCES = table.c help.c stack.c imagelib.c xwin.c \
+ 	images.c table_rn.c funcs.c
+ 
++libcards_la_LIBADD = $(X_LIBS) $(PNG_LIBS) $(Z_LIBS)
++
+ # table_ai.c table_ck.c table_dc.c table_dg.c \
+ #table_dp.c table_in.c table_ky.c table_rd.c table_rs.c
+ 
+--- games/Makefile.am
++++ games/Makefile.am
+@@ -30,8 +30,7 @@
+ 
+ STRIP = @STRIP@
+ 
+-INCLUDES = -I$(srcdir)/../lib $(X_CFLAGS) @PDA@
+-AM_LDFLAGS = $(X_LIBS)
++INCLUDES = -I$(srcdir)/../lib @PDA@
+ 
+ canfield_SOURCES = canfield.c canfield-img.c
+ freecell_SOURCES = freecell.c freecell-help.c freecell-img.c
+@@ -52,7 +51,7 @@
+ 	solitaire-help.c solitaire-img.c spider-help.c spider-img.c \
+ 	taipedit-help.c taipedit-img.c taipei-help.c taipei-img.c
+ 
+-LDADD = ../lib/libcards.la -lpng -lz -lX11 -lm
++LDADD = ../lib/libcards.la -lm
+ 
+ EXTRA_DIST = $(wildcard *.png) $(wildcard *.tp)
+ 

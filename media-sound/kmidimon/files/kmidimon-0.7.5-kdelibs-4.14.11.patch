@@ -1,0 +1,17 @@
+The uninstall target is created automatically by FindKDE4Internal. Due to
+cmake policy changes in kdelibs-4.14.11, this target name collision causes
+a build failure.
+
+https://bugs.gentoo.org/show_bug.cgi?id=559180
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -132,8 +132,6 @@
+     "${CMAKE_SOURCE_DIR}/cmake_admin/cmake_uninstall.cmake.in"
+     "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+     IMMEDIATE @ONLY)
+-ADD_CUSTOM_TARGET(uninstall
+-    "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+ 
+ ADD_CUSTOM_TARGET ( tarball
+     COMMAND mkdir -p kmidimon-${VERSION}

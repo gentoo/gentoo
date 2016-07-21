@@ -1,0 +1,43 @@
+# /etc/conf.d/vdr.remote:
+
+# Config-file for vdr plugin remote
+
+#
+# Read keypresses from linux-kernel input-devices
+# for example IR-Input on DVB-cards
+#   allowed values: no, autodetect or list of devices /dev/input/eventX (X=0,1,...)
+#   default: autodetect
+#
+#REMOTE_PLUGIN_INPUT_DEVICE="no"
+#
+
+#
+# Connect to lirc-daemon on this socket
+#   allowed values: list of sockets, example: /dev/lircd
+#   default: do not use any lirc-daemon from inside this plugin
+#
+#REMOTE_PLUGIN_LIRC=""
+
+#
+# Listen on these tcp-ports for connections which get OSD and
+# can send keypresses to vdr
+#   allowed values: List of portnumbers (>1024)
+#   default: do not open any tcp-port
+#
+#REMOTE_PLUGIN_TCP_PORTS=""
+
+#
+# Listen on these tty-device for keypresses, do not show osd there
+#   allowed values: List of tty-device names (/dev/ttyX)
+#   default: do not open any tty-devices
+#
+#REMOTE_PLUGIN_TTY_ONLY_INPUT=""
+
+#
+# Listen on these tty-device for keypresses and show the
+# osd there
+#   allowed values: List of tty-device names (/dev/ttyX)
+#   default: do not open any tty-devices
+#
+#REMOTE_PLUGIN_TTY_WITH_OSD=""
+

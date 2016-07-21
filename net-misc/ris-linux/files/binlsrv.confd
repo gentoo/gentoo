@@ -1,0 +1,2 @@
+#Specify here path to directory with 'devlist.cache' file
+INFILE_PATH="/var/lib/ris/binl"

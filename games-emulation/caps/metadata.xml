@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		C.A.P.S., the Classic Amiga Preservation Society, as the name implies,
+		dedicates itself to the preservation of classic Amiga software for the
+		future, namely classic Amiga games. This is the C.A.P.S. support
+		library that allows third party applications access to and use of 
+		C.A.P.S. images.
+	</longdescription>
+</pkgmetadata>

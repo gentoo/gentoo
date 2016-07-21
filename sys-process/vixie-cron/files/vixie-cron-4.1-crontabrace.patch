@@ -1,0 +1,29 @@
+--- vixie-cron-4.1/crontab.c
++++ vixie-cron-4.1/crontab.c
+@@ -314,8 +314,6 @@
+ 		perror("fstat");
+ 		goto fatal;
+ 	}
+-	utimebuf.actime = statbuf.st_atime;
+-	utimebuf.modtime = statbuf.st_mtime;
+ 
+ 	/* Turn off signals. */
+ 	(void)signal(SIGHUP, SIG_IGN);
+@@ -374,6 +372,17 @@
+ 		perror(Filename);
+ 		exit(ERROR_EXIT);
+ 	}
++	if (swap_uids() < OK) {
++		perror("swapping uids");
++		exit(ERROR_EXIT);
++	}
++	utimebuf.actime = statbuf.st_atime;
++	utimebuf.modtime = statbuf.st_mtime;
++	utime(Filename, &utimebuf);
++	if (swap_uids_back() < OK) {
++		perror("swapping uids back");
++		exit(ERROR_EXIT);
++	}
+ 	utime(Filename, &utimebuf);
+  again:
+ 	rewind(NewCrontab);

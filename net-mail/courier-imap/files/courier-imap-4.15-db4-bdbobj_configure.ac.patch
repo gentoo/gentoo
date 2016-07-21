@@ -1,0 +1,33 @@
+--- libs/bdbobj/configure.ac.orig	2013-08-25 20:52:10.000000000 +0200
++++ libs/bdbobj/configure.ac	2013-11-22 10:39:25.787861774 +0100
+@@ -23,15 +23,22 @@
+ dnl Checks for libraries.
+ 
+ saveLIBS="$LIBS"
+-AC_CHECK_LIB(db, dbopen, [ LIBDB=-ldb ; LIBS="-ldb $LIBS" ],
+-	AC_CHECK_LIB(db, db_open, [ LIBDB=-ldb ; LIBS="-ldb $LIBS"],
+-	AC_CHECK_LIB(db, db_env_create, [ LIBDB=-ldb; LIBS="-ldb $LIBS"])
+-	))
+-
++for dbname in db-4.4 db4.4 db44 db-4.3 db4.3 db43 db-4.2 db4.2 db42 db-4.1 db4.1 db41 db-4.0 db4.0 db-4 db40 db4 db
++	do
++		AC_CHECK_LIB($dbname, db_create_4004, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4003, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4002, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4001, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4000, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ]))))))
++	done
+ FOUND_DB=0
+-AC_CHECK_FUNC(dbopen, FOUND_DB=1)
+-AC_CHECK_FUNC(db_open, FOUND_DB=1)
+-AC_CHECK_FUNC(db_env_create, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4004, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4003, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4002, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4001, FOUND_DB=1)
++AC_CHECK_FUNC(db_create_4000, FOUND_DB=1)
++AC_CHECK_FUNC(db_create, FOUND_DB=1)
+ 
+ LIBS="$saveLIBS"
+ 

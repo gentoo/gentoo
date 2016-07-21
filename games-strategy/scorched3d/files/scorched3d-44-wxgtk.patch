@@ -1,0 +1,161 @@
+Description: Fix to build with wxWidgets 3.0
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-05-01
+
+--- src/launcher/wxdialogs/Display.cpp
++++ src/launcher/wxdialogs/Display.cpp
+@@ -26,7 +26,7 @@
+ 	// Display settings
+ 	wxStaticBox *displayBox = new wxStaticBox(parent, -1, wxT("&Display"));
+ 	wxStaticBoxSizer *displaySizer = new wxStaticBoxSizer(displayBox, wxVERTICAL);
+-	wxFlexGridSizer *displaySizer2 = new wxFlexGridSizer(2, 3, 5, 5);
++	wxFlexGridSizer *displaySizer2 = new wxFlexGridSizer(0, 3, 5, 5);
+ 	wxStaticText *resText = new wxStaticText(parent, -1, wxT("&Resolution :"));
+ 	IDC_DISPLAY_CTRL = 
+ 		new wxComboBox(parent, -1,
+@@ -88,7 +88,7 @@
+ 	// Sound settings
+ 	wxStaticBox *soundBox = new wxStaticBox(parent, -1, wxT("&Sound"));
+ 	wxStaticBoxSizer *soundSizerMain = new wxStaticBoxSizer(soundBox, wxVERTICAL);
+-	wxFlexGridSizer *soundSizer1 = new wxFlexGridSizer(4, 2);
++	wxFlexGridSizer *soundSizer1 = new wxFlexGridSizer(0, 4, 2, 0);
+ 	wxStaticText *volumeText = new wxStaticText(parent, -1, wxT("Sound Volume :"));
+ 	wxStaticText *musicVolumeText = new wxStaticText(parent, -1, wxT("Music Volume :"));
+ 	wxStaticText *ambientVolumeText = new wxStaticText(parent, -1, wxT("Ambient Volume :"));
+@@ -137,7 +137,7 @@
+ 		wxT("Game Detail Options"));
+ 	wxStaticBoxSizer *speedSizer = new wxStaticBoxSizer(speedBox, wxHORIZONTAL);
+ 
+-	wxGridSizer *loadSizer = new wxFlexGridSizer(2, 2);
++	wxGridSizer *loadSizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	IDC_LOADULTRA_CTRL = new wxButton(parent,  ID_LOADULTRA, wxT("&Ultra Detail"), wxDefaultPosition, wxSize(120,-1));
+ 	IDC_LOADDEFAULTS_CTRL = new wxButton(parent, ID_LOADDEFAULTS, wxT("&Normal Detail"), wxDefaultPosition, wxSize(120,-1));
+ 	IDC_LOADMEDIUM_CTRL = new wxButton(parent, ID_LOADMEDIUM, wxT("Faster Detail"), wxDefaultPosition, wxSize(120,-1));
+@@ -256,7 +256,7 @@
+ 		wxStaticBox *waterDetailBox = new wxStaticBox(parent, -1, 
+ 													  wxT("Graphics Detail"));
+ 		wxStaticBoxSizer *waterDetailSizer = new wxStaticBoxSizer(waterDetailBox, wxHORIZONTAL);
+-		wxGridSizer *waterDetailSizer2 = new wxGridSizer(3, 1, 10, 10);
++		wxGridSizer *waterDetailSizer2 = new wxGridSizer(0, 1, 10, 10);
+ 		
+ 		IDC_NOWATERREF_CTRL = 
+ 		new wxCheckBox(parent, -1, wxT("Don't draw water reflections - Large Framerate Improvement"));
+@@ -471,7 +471,7 @@
+ {
+ 	wxScrolledWindow *scrolledWindow = new wxScrolledWindow(parent, -1, 
+ 		wxDefaultPosition, wxSize(480, 250));
+-	wxSizer *sizer = new wxFlexGridSizer(5, 1);
++	wxSizer *sizer = new wxFlexGridSizer(0, 5, 1, 0);
+ 	
+ 	keyboardKeyList.clear();
+ 	if (!Keyboard::instance()->loadKeyFile())
+--- src/launcher/wxdialogs/SettingsDialog.cpp
++++ src/launcher/wxdialogs/SettingsDialog.cpp
+@@ -105,7 +105,7 @@
+ 	mainPanel_ = new wxPanel(book_, -1);
+ 	book_->AddPage(mainPanel_, wxT("Main"));
+ 	wxSizer *mainPanelSizer = new wxBoxSizer(wxVERTICAL);
+-	wxSizer *sizer = new wxFlexGridSizer(2, 2);
++	wxSizer *sizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	mainPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	setters_.push_back(
+@@ -166,7 +166,7 @@
+ {
+ 	moneyPanel_ = new wxPanel(book_, -1);
+ 	wxSizer *ecoPanelSizer = new wxBoxSizer(wxVERTICAL);
+-	wxSizer *sizer = new wxFlexGridSizer(2, 2);
++	wxSizer *sizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	ecoPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	setters_.push_back(
+@@ -215,7 +215,7 @@
+ {
+ 	scorePanel_ = new wxPanel(book_, -1);
+ 	wxSizer *ecoPanelSizer = new wxBoxSizer(wxVERTICAL);
+-	wxSizer *sizer = new wxFlexGridSizer(2, 2);
++	wxSizer *sizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	ecoPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	setters_.push_back(
+@@ -249,7 +249,7 @@
+ {
+ 	weaponsPanel_ = new wxPanel(book_, -1);
+ 	wxSizer *ecoPanelSizer = new wxBoxSizer(wxVERTICAL);
+-	wxSizer *sizer = new wxFlexGridSizer(2, 2);
++	wxSizer *sizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	ecoPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	setters_.push_back(
+@@ -286,7 +286,7 @@
+ {
+ 	envPanel_ = new wxPanel(book_, -1);
+ 	wxSizer *envPanelSizer = new wxBoxSizer(wxVERTICAL);
+-	wxSizer *sizer = new wxFlexGridSizer(2, 2);
++	wxSizer *sizer = new wxFlexGridSizer(0, 2, 2, 0);
+ 	envPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	setters_.push_back(
+@@ -337,7 +337,7 @@
+ 	wxScrolledWindow *scrolledWindow = new wxScrolledWindow(landPanel_, -1, 
+ 		wxDefaultPosition, wxSize(225, 200));
+ 
+-	wxSizer *sizer = new wxFlexGridSizer(3, 3);
++	wxSizer *sizer = new wxFlexGridSizer(0, 3, 3, 0);
+ 	int i = 0;
+ 	std::list<LandscapeDefinitionsEntry> &defns =
+ 		landscapeDefinitions.getAllLandscapes();
+@@ -438,7 +438,7 @@
+ 		wxT("Players are persistent for game"));
+ 	playersPanelSizer->Add(IDC_SERVER_RESIDUAL_CTRL, 0, wxALIGN_CENTER | wxTOP, 10);
+ 		
+-	wxSizer *sizer = new wxGridSizer(3, 3);
++	wxSizer *sizer = new wxGridSizer(0, 3, 3, 0);
+ 	playersPanelSizer->Add(sizer, 0, wxALL | wxALIGN_CENTER, 10);
+ 
+ 	for (int i=0; i<24; i++)
+--- src/launcher/wxdialogs/DisplayDialog.cpp
++++ src/launcher/wxdialogs/DisplayDialog.cpp
+@@ -449,15 +449,15 @@
+ 	IDC_SLIDER1_CTRL->SetValue(OptionsDisplay::instance()->getBrightness());
+ 	IDC_SLIDER1_CTRL->SetToolTip(wxString(OptionsDisplay::instance()->getBrightnessEntry().getDescription(), wxConvUTF8));
+ 	IDC_VOLUME_CTRL->SetRange(0, 128);
+-	IDC_VOLUME_CTRL->SetTickFreq(4, 0);
++	IDC_VOLUME_CTRL->SetTickFreq(4);
+ 	IDC_VOLUME_CTRL->SetValue(OptionsDisplay::instance()->getSoundVolume());
+ 	IDC_VOLUME_CTRL->SetToolTip(wxString(OptionsDisplay::instance()->getSoundVolumeEntry().getDescription(), wxConvUTF8));
+ 	IDC_MUSICVOLUME_CTRL->SetRange(0, 128);
+-	IDC_MUSICVOLUME_CTRL->SetTickFreq(4, 0);
++	IDC_MUSICVOLUME_CTRL->SetTickFreq(4);
+ 	IDC_MUSICVOLUME_CTRL->SetValue(OptionsDisplay::instance()->getMusicVolume());
+ 	IDC_MUSICVOLUME_CTRL->SetToolTip(wxString(OptionsDisplay::instance()->getMusicVolumeEntry().getDescription(), wxConvUTF8));
+ 	IDC_AMBIENTVOLUME_CTRL->SetRange(0, 128);
+-	IDC_AMBIENTVOLUME_CTRL->SetTickFreq(4, 0);
++	IDC_AMBIENTVOLUME_CTRL->SetTickFreq(4);
+ 	IDC_AMBIENTVOLUME_CTRL->SetValue(OptionsDisplay::instance()->getAmbientSoundVolume());
+ 	IDC_AMBIENTVOLUME_CTRL->SetToolTip(wxString(OptionsDisplay::instance()->getAmbientSoundVolumeEntry().getDescription(), wxConvUTF8));
+ 	IDC_USERNAME_CTRL->SetValue(wxString(OptionsDisplay::instance()->getOnlineUserName(), wxConvUTF8));
+@@ -733,11 +733,7 @@
+ 		convertString(S3D::formatStringBuffer("%s.s3m", (const char *) (selection.mb_str(wxConvUTF8)))), // default filename
+ 		wxT(""), // default extension
+ 		wxT("*.s3m"),
+-#if wxCHECK_VERSION(2, 8, 0)
+ 		wxFD_SAVE);
+-#else
+-		wxSAVE);
+-#endif
+ 	if (file.empty()) return;
+ 	ModFiles files;
+ 	if (!files.loadModFiles(std::string(selection.mb_str(wxConvUTF8)), false))
+@@ -761,11 +757,7 @@
+ 		wxT(""), // default filename
+ 		wxT(""), // default extension
+ 		wxT("*.s3m"),
+-#if wxCHECK_VERSION(2, 8, 0)
+ 		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+-#else
+-		wxOPEN | wxFILE_MUST_EXIST);
+-#endif
+ 	if (file.empty()) return;
+ 	ModFiles files;
+ 	std::string mod;

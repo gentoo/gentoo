@@ -1,0 +1,10 @@
+--- pypa-virtualenv-350c45d/setup.py
++++ pypa-virtualenv-350c45d/setup.py
+@@ -9,7 +9,6 @@
+         'entry_points': {
+             'console_scripts': [
+                 'virtualenv=virtualenv:main',
+-                'virtualenv-%s.%s=virtualenv:main' % sys.version_info[:2]
+             ],
+         },
+         'zip_safe': False,

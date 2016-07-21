@@ -1,0 +1,33 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 04_linux_32_or_64bits.dpatch by Laurent Guignard <lguignard.debian@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: A solution to solve the bug #535361
+##     May be this will be a solution with the right method ???
+
+@DPATCH@
+diff -urNad trunk~/src/get_myipaddr.c trunk/src/get_myipaddr.c
+--- trunk~/src/get_myipaddr.c	2009-09-03 13:10:32.000000000 +0200
++++ trunk/src/get_myipaddr.c	2009-09-03 13:15:39.671451172 +0200
+@@ -118,7 +118,21 @@
+ #endif /* not STRUCT_SOCKADDR_HAS_SA_LEN */
+ 
+ 		/* increment ptr to next interface for next time through the loop */
++#ifdef __ARCH__	/* Debian GNU/Linux behavior for packaging goal */
++		switch(__ARCH__) {
++			case 32:	/* 32 bits architectures */
++				ptr += sizeof(ifr->ifr_name) + len;
++				break;
++			case 64:	/* 64 bits architectures */
++				ptr += sizeof(struct ifreq);
++				break;
++			default:	/* Default dhcp_probe behavior */
++				ptr += sizeof(ifr->ifr_name) + len;
++				break;
++		}
++#else	/* Default dhcp_probe behavior */
+ 		ptr += sizeof(ifr->ifr_name) + len;
++#endif
+ 
+ 		if (strcmp(ifname, ifr->ifr_name) != 0 )  /* is this the interface we're looking for? */
+ 			continue;

@@ -1,0 +1,24 @@
+diff -Naur vmoconv-1.0.orig/src/gsm2vmo.c vmoconv-1.0/src/gsm2vmo.c
+--- vmoconv-1.0.orig/src/gsm2vmo.c	2008-06-15 12:57:07.000000000 -0400
++++ vmoconv-1.0/src/gsm2vmo.c	2008-06-15 12:57:36.000000000 -0400
+@@ -27,7 +27,7 @@
+  * 12 bit header and 260 bits standard GSM frame, as described
+  * in GSM 06.10 and GSM 06.12. The header is 0x2010 always.
+  */
+-
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff -Naur vmoconv-1.0.orig/src/vmo2gsm.c vmoconv-1.0/src/vmo2gsm.c
+--- vmoconv-1.0.orig/src/vmo2gsm.c	2008-06-15 12:57:07.000000000 -0400
++++ vmoconv-1.0/src/vmo2gsm.c	2008-06-15 12:57:36.000000000 -0400
+@@ -27,7 +27,7 @@
+  * 12 bit header and 260 bits standard GSM frame, as described
+  * in GSM 06.10 and GSM 06.12. The header is 0x2010 always.
+  */
+-
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

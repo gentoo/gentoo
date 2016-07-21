@@ -1,0 +1,57 @@
+From 84ca11706f804d6c808d932700a90cc8eaab2f15 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Sun, 21 Dec 2014 10:37:00 -0500
+Subject: [PATCH 1/2] scripts/paxmark.sh: source make.conf and properly set
+ PAX_MARKINGS
+
+---
+ ChangeLog          | 6 ++++++
+ scripts/paxmark.sh | 6 +++---
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index f64e57a..d9993b1 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,9 @@
++2014-12-22
++
++	* scripts/paxmark.sh: remove erroneous elog functions
++	* scripts/paxmark.sh: source /etc/portage/make.conf for PAX_MARKINGS
++	and correct logic to default to PT only if no PAX_MARKINGS are set.
++	Reported by Karl-Johan Karlsson <creideiki+gentoo-hardened@ferretporn.se>
+ 
+ 2014-10-03
+ 
+diff --git a/scripts/paxmark.sh b/scripts/paxmark.sh
+index 9ec077a..408e6aa 100755
+--- a/scripts/paxmark.sh
++++ b/scripts/paxmark.sh
+@@ -53,7 +53,6 @@ paxmarksh() {
+ 				scanelf -Xxz ${flags} "$f" >/dev/null 2>&1
+ 			#We failed to set PT_PAX flags
+ 			elif [[ ${PAX_MARKINGS} != "none" ]]; then
+-				elog "Failed to set PT_PAX markings -${flags} ${f}."
+ 				ret=1
+ 			fi
+ 		done
+@@ -79,7 +78,6 @@ paxmarksh() {
+ 
+ 			#We failed to set XATTR_PAX flags
+ 			if [[ ${PAX_MARKINGS} != "none" ]]; then
+-				elog "Failed to set XATTR_PAX markings -${flags} ${f}."
+ 				ret=1
+ 			fi
+ 		done
+@@ -88,5 +86,7 @@ paxmarksh() {
+ 	return ${ret}
+ }
+ 
+-PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
++MAKE_CONF="/etc/portage/make.conf"
++[[ -e $MAKE_CONF ]] && source $MAKE_CONF
++PAX_MARKINGS=${PAX_MARKINGS:="PT"}
+ paxmarksh "$@"
+-- 
+2.0.5
+

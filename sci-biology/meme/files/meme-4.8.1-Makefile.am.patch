@@ -1,0 +1,134 @@
+ Makefile.am                                        |  6 +++---
+ doc/Makefile.am                                    |  2 +-
+ doc/examples/Makefile.am                           | 24 +++++++++++-----------
+ .../Makefile.am                                    |  2 +-
+ doc/examples/sample_opal_scripts/Makefile.am       |  2 +-
+ doc/images/Makefile.am                             |  2 +-
+ scripts/Makefile.am                                |  2 +-
+ 7 files changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 4a69e34..842e33f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -18,11 +18,11 @@ ARCHIVE_REVISION:
+ install-data-hook: dbdir
+ 
+ dbdir:
+-	mkdir -p $(MEME_DB)
++	mkdir -p $(DESTDIR)$(MEME_DB)
+ 
+ install-data-local:
+-	mkdir -p $(MEME_LOGS)
+-	chmod a+w $(MEME_LOGS)
++	mkdir -p $(DESTDIR)$(MEME_LOGS)
++	chmod a+w $(DESTDIR)$(MEME_LOGS)
+ 
+ distdir = $(PACKAGE)_$(VERSION)
+ 
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index e0d6af9..e7bcb4f 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -202,7 +202,7 @@ COMMON_DOC = \
+ if WEBSITE
+ MEME_DOC_DIR = $(WEBDIR)/doc
+ else
+-MEME_DOC_DIR = $(prefix)/doc
++MEME_DOC_DIR = $(docdir)/html
+ endif
+ 
+ memedocdir = $(MEME_DOC_DIR)
+diff --git a/doc/examples/Makefile.am b/doc/examples/Makefile.am
+index 12970b5..633492c 100644
+--- a/doc/examples/Makefile.am
++++ b/doc/examples/Makefile.am
+@@ -51,24 +51,24 @@ if WEBSITE
+ exdir = $(WEBDIR)/examples
+ other_exdir = $(WEBDIR)/doc/examples
+ else
+-exdir = $(prefix)/doc/examples
++exdir = $(prefix)/share/meme/examples
+ other_exdir = $(exdir)
+ endif
+ 
+ ex_DATA = $(EXAMPLES)
+ 
+ install-data-hook:
+-	tar xzvf centrimo_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf dreme_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf fimo_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf glam2_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf glam2scan_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf mast_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf mcast_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf meme_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf memechip_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf spamo_example_output_files.tgz -C $(other_exdir)
+-	tar xzvf tomtom_example_output_files.tgz -C $(other_exdir)
++	tar xzvf centrimo_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf dreme_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf fimo_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf glam2_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf glam2scan_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf mast_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf mcast_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf meme_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf memechip_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf spamo_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
++	tar xzvf tomtom_example_output_files.tgz -C $(DESTDIR)/$(other_exdir)
+ 
+ # If .svnignore file doesn't exist
+ # create an empty one
+diff --git a/doc/examples/compute_prior_dist_example_output_files/Makefile.am b/doc/examples/compute_prior_dist_example_output_files/Makefile.am
+index 747028d..a358f58 100644
+--- a/doc/examples/compute_prior_dist_example_output_files/Makefile.am
++++ b/doc/examples/compute_prior_dist_example_output_files/Makefile.am
+@@ -22,7 +22,7 @@ EXAMPLES = \
+ if WEBSITE
+ exdir = $(WEBDIR)/doc/examples/compute_prior_dist_example_output_files
+ else
+-exdir = $(prefix)/doc/examples/compute_prior_dist_example_output_files
++exdir = $(prefix)/share/meme/examples/compute_prior_dist_example_output_files
+ endif
+ 
+ ex_DATA = $(EXAMPLES)
+diff --git a/doc/examples/sample_opal_scripts/Makefile.am b/doc/examples/sample_opal_scripts/Makefile.am
+index 3a638b3..30925bb 100644
+--- a/doc/examples/sample_opal_scripts/Makefile.am
++++ b/doc/examples/sample_opal_scripts/Makefile.am
+@@ -18,7 +18,7 @@ EXAMPLES = \
+ if WEBSITE
+ exdir = $(WEBDIR)/doc/examples/sample_opal_scripts
+ else
+-exdir = $(prefix)/doc/examples/sample_opal_scripts
++exdir = $(prefix)/share/meme/examples/sample_opal_scripts
+ endif
+ 
+ ex_DATA = $(EXAMPLES)
+diff --git a/doc/images/Makefile.am b/doc/images/Makefile.am
+index c879621..a4696cd 100644
+--- a/doc/images/Makefile.am
++++ b/doc/images/Makefile.am
+@@ -28,7 +28,7 @@ MEME_IMAGES = \
+ if WEBSITE
+ memeimgdir = $(WEBDIR)/doc/images
+ else
+-memeimgdir = $(prefix)/doc/images
++memeimgdir = $(docdir)/html/images
+ endif
+ 
+ memeimg_DATA = $(MEME_IMAGES)
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index 4143e46..8a5c021 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -8,7 +8,7 @@
+ if WEBSITE
+ MEME_DOC_DIR = $(WEBDIR)/doc
+ else
+-MEME_DOC_DIR = $(prefix)/doc
++MEME_DOC_DIR = $(docdir)
+ endif
+ 
+ ARCHIVE_REVISION = $(shell cat ../ARCHIVE_REVISION)

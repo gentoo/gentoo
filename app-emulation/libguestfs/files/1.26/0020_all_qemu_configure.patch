@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/528386
+
+From 101d728e80cce73b882aac7af457013491d03311 Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Tue, 22 Apr 2014 22:21:57 -0400
+Subject: [PATCH] configure: Make sure grep matches qemu 2.x version string.
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 34e4ddb..bb1a361 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -777,7 +777,7 @@ working.
+         fi
+ 
+         AC_MSG_CHECKING([for $QEMU version >= 1])
+-        if $QEMU -version | grep -sq 'version @<:@1-@:>@'; then
++        if $QEMU -version | grep -sq 'version @<:@1-9@:>@'; then
+             AC_MSG_RESULT([yes])
+         else
+             AC_MSG_RESULT([no])
+-- 
+2.1.3
+

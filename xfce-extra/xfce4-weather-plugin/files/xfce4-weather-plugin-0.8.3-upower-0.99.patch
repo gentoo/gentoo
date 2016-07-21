@@ -1,0 +1,64 @@
+http://bugzilla.xfce.org/show_bug.cgi?id=10922
+
+From 79887843c58ef21233a0de571474ac656f977d7c Mon Sep 17 00:00:00 2001
+From: Eric Koegel <eric.koegel@gmail.com>
+Date: Fri, 30 May 2014 19:01:08 +0300
+Subject: [PATCH] Update for Upower 0.99
+
+Upower changed a singal handler.
+---
+ panel-plugin/weather.c | 22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/panel-plugin/weather.c b/panel-plugin/weather.c
+index efa8559..30eddb3 100644
+--- a/panel-plugin/weather.c
++++ b/panel-plugin/weather.c
+@@ -1553,8 +1553,14 @@ proxy_auth(SoupSession *session,
+ 
+ #ifdef HAVE_UPOWER_GLIB
+ static void
++#if UP_CHECK_VERSION(0, 99, 0)
+ upower_changed_cb(UpClient *client,
++                  GParamSpec *pspec,
+                   plugin_data *data)
++#else /* UP_CHECK_VERSION < 0.99 */
++upower_changed_cb(UpClient *client,
++                  plugin_data *data)
++#endif /* UP_CHECK_VERSION */
+ {
+     gboolean on_battery;
+ 
+@@ -1576,7 +1582,7 @@ upower_changed_cb(UpClient *client,
+         schedule_next_wakeup(data);
+     }
+ }
+-#endif
++#endif /* HAVE_UPOWER_GLIB */
+ 
+ 
+ static void
+@@ -2171,10 +2177,16 @@ weather_construct(XfcePanelPlugin *plugin)
+                      G_CALLBACK(xfceweather_show_about), data);
+ 
+ #ifdef HAVE_UPOWER_GLIB
+-    if (data->upower)
+-        g_signal_connect(data->upower, "changed",
+-                         G_CALLBACK(upower_changed_cb), data);
+-#endif
++    if (data->upower) {
++#if UP_CHECK_VERSION(0, 99, 0)
++        g_signal_connect (data->upower, "notify",
++                          G_CALLBACK(upower_changed_cb), data);
++#else /* UP_CHECK_VERSION < 0.99 */
++        g_signal_connect (data->upower, "changed",
++                          G_CALLBACK(upower_changed_cb), data);
++#endif /* UP_CHECK_VERSION */
++    }
++#endif /* HAVE_UPOWER_GLIB */
+ 
+     weather_dump(weather_dump_plugindata, data);
+ }
+-- 
+1.9.3
+

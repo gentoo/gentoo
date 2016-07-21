@@ -1,0 +1,56 @@
+From 43a4a28cdc60ac7347bb89f84cf049cb3401621d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Cardona?= <remi@gentoo.org>
+Date: Sun, 26 Oct 2014 01:59:33 +0400
+Subject: [PATCH] gtk/Makefile.am: Remove bashisms
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- improve portability of ECHO
+- remove use of shopt
+
+https://bugzilla.gnome.org/show_bug.cgi?id=738835
+
+From: Alexander Tsoy <alexander@tsoy.me>
+Signed-off-by: Rémi Cardona <remi@gentoo.org>
+---
+ gtk/Makefile.am | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 96c651a..b1478ce 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -19,11 +19,7 @@ GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %
+ endif
+ 
+ SUBDIRS = inspector native .
+-if OS_DARWIN
+-  ECHO="echo"
+-else
+-  ECHO=echo -e
+-endif
++ECHO=printf '%b\n'
+ 
+ if HAVE_CLOUDPRINT
+ if HAVE_PAPI_CUPS
+@@ -1405,12 +1401,13 @@ gtk.gresource.xml: Makefile.am
+ 	  n=`basename $$f`; \
+ 	  $(ECHO) "    <file compressed=\"true\">ui/$$n</file>" >> $@; \
+ 	done; \
+-	shopt -s nullglob; \
+ 	for s in 16x16 22x22 24x24 32x32 48x48; do \
+ 	  for c in actions status; do \
+ 	    for f in $(srcdir)/resources/icons/$$s/$$c/*.png; do \
+-	      n=`basename $$f`; \
+-	      $(ECHO) "    <file>icons/$$s/$$c/$$n</file>" >> $@; \
++	      if [ -e "$$f" ] ; then \
++	        n=`basename $$f`; \
++	        $(ECHO) "    <file>icons/$$s/$$c/$$n</file>" >> $@; \
++	      fi; \
+ 	    done; \
+ 	  done; \
+ 	done; \
+-- 
+2.3.0
+

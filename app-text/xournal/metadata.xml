@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Xournal is an application for notetaking, sketching, keeping
+		a journal using a stylus. It is free software (GNU GPL)
+		and runs on Linux (recent distributions) and other GTK+/Gnome
+		platforms. It is similar to Microsoft Windows Journal or to
+		other alternatives such as Jarnal, Gournal, and NoteLab.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">xournal</remote-id>
+	</upstream>
+</pkgmetadata>

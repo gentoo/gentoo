@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="person">
+                <email>patrick@gentoo.org</email>
+                <name>Patrick Lauer</name>
+        </maintainer>
+  <longdescription>
+    LibTomMath is a free open source portable number theoretic multiple-precision 
+    integer library written entirely in C. (phew!). The library is designed to 
+    provide a simple to work with API that provides fairly efficient routines that 
+    build out of the box without configuration.
+
+    The library builds out of the box with GCC 2.95 [and up] as well as Visual C++ 
+    v6.00 [with SP5] without configuration. The source code is arranged to make it 
+    easy to dive into a particular area very quickly. The code is also littered with 
+    comments [This is one of the on going goals] that help explain the algorithms and 
+    their implementations. Ideally the code will serve as an educational tool in the 
+    future for CS students studying number theory.
+
+    The library provides a vast array of highly optimized routines from various 
+    branches of number theory.
+
+      * Simple Algebraic
+            o Addition
+            o Subtraction
+            o Multiplication
+            o Squaring
+            o Division 
+      * Digit Manipulation
+            o Shift left/right whole digits (mult by 2b by moving digits)
+            o Fast multiplication/division by 2 and 2k for k&gt;1
+            o Binary AND, OR and XOR gates 
+      * Modular Reductions
+            o Barrett Reduction (fast for any p)
+            o Montgomery Reduction (faster for any odd p)
+            o DR Reduction (faster for any restricted p see manual)
+            o 2k Reduction (fast reduction modulo 2p - k)
+            o The exptmod logic can use any of the four reduction algorithms when 
+              appropriate with a single function call. 
+      * Number Theoretic
+            o Greatest Common Divisor
+            o Least Common Multiple
+            o Jacobi Symbol Computation (falls back to Legendre for prime moduli)
+            o Multiplicative Inverse
+            o Extended Euclidean Algorithm
+            o Modular Exponentiation
+            o Fermat and Miller-Rabin Primality Tests, utility function such as 
+              is_prime and next_prime 
+      * Miscellaneous
+            o Root finding over Z
+            o Pseudo-random integers
+            o Signed and Unsigned comparisons 
+      * Optimizations
+            o Fast Comba based Multiplier, Squaring and Montgomery routines.
+            o Montgomery, Diminished Radix and Barrett based modular 
+              exponentiation.
+            o Karatsuba and Toom-Cook multiplication algorithms.
+            o Many pointer aliasing optimiztions throughout the entire library. 
+  </longdescription>
+  <upstream>
+    <remote-id type="github">libtom/libtommath</remote-id>
+  </upstream>
+</pkgmetadata>

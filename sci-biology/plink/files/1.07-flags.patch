@@ -1,0 +1,44 @@
+diff --git a/Makefile b/Makefile
+index 172c795..466f09f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,25 +26,25 @@ WITH_R_PLUGINS = 1
+ WITH_WEBCHECK = 1
+ FORCE_32BIT = 
+ WITH_ZLIB = 1
+-WITH_LAPACK = 
+-FORCE_DYNAMIC = 
++WITH_LAPACK = 1
++FORCE_DYNAMIC = 1
+ 
+ # Put C++ compiler here; Windows has it's own specific version
+ CXX_UNIX = g++
+ CXX_WIN = c:\bin\mingw\bin\mingw32-g++.exe
+ 
+ # Any other compiler flags here ( -Wall, -g, etc)
+-CXXFLAGS = 
++CXXFLAGS ?= -O2
+ 
+ # Misc
+-LIB_LAPACK = /usr/lib/liblapack.so.3
++LIB_LAPACK = `$(PKG_CONFIG) --libs lapack`
+ 
+ 
+ # --------------------------------------------------------------------
+ # Do not edit below this line
+ # --------------------------------------------------------------------
+ 
+-CXXFLAGS += -O3 -I.
++CXXFLAGS += -I.
+ OUTPUT = plink
+ 
+ # Some system specific flags
+@@ -151,7 +151,7 @@ OBJ = $(SRC:.cpp=.o)
+ all : $(OUTPUT) 
+ 
+ $(OUTPUT) :
+-	$(CXX) $(CXXFLAGS) -o $(OUTPUT) $(OBJ) $(LIB) 
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $(OUTPUT) $(OBJ) $(LIB) 
+ 
+ $(OBJ) : $(HDR)
+ 

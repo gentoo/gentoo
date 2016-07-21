@@ -1,0 +1,52 @@
+--- jni/GNUmakefile
++++ jni/GNUmakefile
+@@ -41,6 +41,7 @@
+ JFFI_BUILD_DIR = $(BUILD_DIR)/jffi
+ 
+ ifeq ($(USE_SYSTEM_LIBFFI),1)
++  LIBFFI =
+   LIBFFI_LIBS ?= $(shell pkg-config --libs libffi)
+   LIBFFI_CFLAGS ?= $(shell pkg-config --cflags libffi)
+ else
+@@ -64,9 +65,8 @@
+ OFLAGS = -O2 $(JFLAGS)
+ 
+ # MacOS headers aren't completely warning free, so turn them off
+-WERROR = -Werror
+ ifneq ($(OS),darwin)
+-  WFLAGS += -Wundef $(WERROR)
++  WFLAGS += -Wundef
+ endif
+ WFLAGS += -W -Wall -Wno-unused -Wno-parentheses -Wno-unused-parameter
+ PICFLAGS = -fPIC
+@@ -279,7 +279,7 @@
+ 	@echo "JFFI_BUILD_DIR=$(JFFI_BUILD_DIR)"
+ 	@echo "OBJS=$(OBJS)"
+ 
+-$(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
++$(LIBJFFI):  $(OBJS) $(LIBFFI)
+ 	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI_LIBS) $(LIBS)
+ 	$(STRIP) $@
+ 
+@@ -291,7 +291,7 @@
+ 	@mkdir -p $(@D)
+ 	@$(CC) $(CFLAGS) -o $@ -c $<
+ 
+-$(OBJS) : $(LIBFFI_LIBS)
++$(OBJS) : $(LIBFFI)
+ 
+ ifeq ($(OS), darwin)
+ build_ffi = \
+--- libtest/GNUmakefile
++++ libtest/GNUmakefile
+@@ -44,8 +44,8 @@
+ # Compiler/linker flags from:
+ #   http://weblogs.java.net/blog/kellyohair/archive/2006/01/compilation_of_1.html
+ JFLAGS = -fno-omit-frame-pointer -fno-strict-aliasing
+-OFLAGS = -O2 $(JFLAGS)
+-WFLAGS = -W -Werror -Wall -Wno-unused -Wno-unused-parameter -Wno-parentheses
++OFLAGS = $(JFLAGS)
++WFLAGS = -W -Wall -Wno-unused -Wno-unused-parameter -Wno-parentheses
+ PICFLAGS = -fPIC
+ SOFLAGS = -shared -Wl,-O1
+ LDFLAGS += $(SOFLAGS)

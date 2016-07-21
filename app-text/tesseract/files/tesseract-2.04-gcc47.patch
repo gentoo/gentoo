@@ -1,0 +1,10 @@
+--- ./viewer/svutil.cpp.ori	2012-04-28 01:59:58.441072997 +0200
++++ ./viewer/svutil.cpp	2012-04-28 02:00:35.085467955 +0200
+@@ -37,6 +37,7 @@
+ #include <signal.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <netdb.h>
+ #include <sys/socket.h>
+ #ifdef __linux__

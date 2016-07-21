@@ -1,0 +1,47 @@
+From 6d6d7a7ee38c8e3f57242f2510e06a03f4e7e249 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 5 Aug 2013 22:29:46 +0300
+Subject: [PATCH] unbreak xmms2 building on cython-0.19.1
+
+Error compiling Cython file:
+------------------------------------------------------------
+...
+        def medialib_path_import(self, path, cb = None, encoded=False):
+                """
+                @deprecated
+                Use medialib_import_path(path, ...) instead
+                """
+                return self.medialib_import_path(self, path, cb=cb, encoded=encoded)
+                                                ^
+
+Reported-by: ChunFeng
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/clients/lib/python/xmmsapi.pyx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/clients/lib/python/xmmsapi.pyx b/src/clients/lib/python/xmmsapi.pyx
+index 501a068..863db88 100644
+--- a/src/clients/lib/python/xmmsapi.pyx
++++ b/src/clients/lib/python/xmmsapi.pyx
+@@ -1364,7 +1364,7 @@ cdef class XmmsApi(XmmsCore):
+ 		@deprecated
+ 		Use medialib_import_path(path, ...) instead
+ 		"""
+-		return self.medialib_import_path(self, path, cb=cb, encoded=encoded)
++		return self.medialib_import_path(path, cb=cb, encoded=encoded)
+ 
+ 	@deprecated
+ 	def medialib_path_import_encoded(self, path, cb = None):
+@@ -1372,7 +1372,7 @@ cdef class XmmsApi(XmmsCore):
+ 		@deprecated
+ 		Use medialib_import_path(path, ..., encoded=True) instead
+ 		"""
+-		return self.medialib_import_path(self, path, cb=cb, encoded=True)
++		return self.medialib_import_path(path, cb=cb, encoded=True)
+ 
+ 	cpdef XmmsResult medialib_property_set(self, int id, key, value, source=None, cb=None):
+ 		"""
+-- 
+1.8.3.2
+

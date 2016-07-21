@@ -1,0 +1,40 @@
+https://github.com/scrapy/scrapy/commit/480cfa199475d867cb51cb04ce76ed54809514f6
+https://github.com/scrapy/scrapy/commit/3b64b2449ed2afd3bd4a2173c186fd44c6efac86
+diff --git a/setup.py b/setup.py
+index 6efe640..252068c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -124,7 +124,7 @@ def is_not_module(filename):
+ else:
+     setup_args['install_requires'] = [
+         'Twisted>=10.0.0',
+-        'w3lib>=1.2',
++        'w3lib>=1.8.0',
+         'queuelib',
+         'lxml',
+         'pyOpenSSL',
+diff --git a/requirements.txt b/requirements.txt
+index 0df9a55..005b8f4 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,6 +2,6 @@ Twisted>=10.0.0
+ lxml
+ pyOpenSSL
+ cssselect>=0.9
+-w3lib>=1.2
++w3lib>=1.8.0
+ queuelib
+ six>=1.5.2
+diff --git a/tox.ini b/tox.ini
+index 20d54b6..38ef6c4 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -48,7 +48,7 @@ deps = (re-based)
+     pyOpenSSL>=0.13.1
+     cssselect>=0.9
+     queuelib>=1.1.1
+-    w3lib>=1.5
++    w3lib>=1.8.0
+     # tests requirements
+     mock
+     :HPK:pytest>2.5.2

@@ -1,0 +1,46 @@
+ Makefile | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 760a427..de7e724 100644
+--- a/Makefile
++++ b/Makefile
+@@ -8,16 +8,16 @@
+ #	RANLIB should be ':'
+ #
+ SHELL		= /bin/sh
+-RANLIB		= :
++#RANLIB		= :
+ NOTHING		=
+ LINTOPT		= -o $(NOTHING)
+ 
+ OPT		= -O -g
+ DEBUG		=
+-CFLAGS		= $(OPT) $(DEBUG)
++CFLAGS		+= -fPIC
+ LIBRARY		= pdb
+ 
+-LIBARCH		= lib$(LIBRARY).a
++LIBARCH		= lib$(LIBRARY)
+ LINTLIB		= llib-l$(LIBRARY).ln
+ OBJS		= pdb_read.o pdb_sprntf.o pdb_sscanf.o pdb_write.o pdbrun.o ms.o
+ SRCS		= pdb_read.c pdb_sprntf.c pdb_sscanf.c pdb_write.c pdbrun.c ms.c
+@@ -27,10 +27,15 @@ all:		$(LIBARCH) $(LINTLIB)
+ install:	$(LIBARCH)
+ 		install -F /usr/local/lib $(LIBARCH)
+ 
+-$(LIBARCH):     $(OBJS)
++$(LIBARCH).so:     $(OBJS)
++		$(CC) $(LDFLAGS) -shared -Wl,--soname,libpdb.so.0 -o libpdb.so.0.1 $(OBJS)
++		ln -sf libpdb.so.0.1 libpdb.so.0
++		ln -sf libpdb.so.0.1 libpdb.so
++
++$(LIBARCH).a:     $(OBJS)
+ 		@echo "Loading $(LIBARCH) ... "
+-		@ar cru $(LIBARCH) $(OBJS)
+-		@$(RANLIB) $(LIBARCH)
++		$(AR) cru $@ $(OBJS)
++		$(RANLIB) $@
+ 		@echo "done"
+ 
+ $(LINTLIB):	$(SRCS) $(HDRS)

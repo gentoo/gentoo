@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<longdescription lang="en">
+	Dynamic DNS implementation, that relies on DNSimple.com.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>rafaelmartins@gentoo.org</email>
+			<name>Rafael G. Martins</name>
+		</maintainer>
+		<remote-id type="pypi">dnsimple-dyndns</remote-id>
+		<remote-id type="github">rafaelmartins/dnsimple-dyndns</remote-id>
+	</upstream>
+</pkgmetadata>

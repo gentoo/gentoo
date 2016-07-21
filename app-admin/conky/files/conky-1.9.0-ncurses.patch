@@ -1,0 +1,31 @@
+From fd9462da5ed12369fc6a72e42ebc45c6707403fb Mon Sep 17 00:00:00 2001
+From: Pavel Labath <pavelo@centrum.sk>
+Date: Fri, 13 Jul 2012 13:41:09 +0200
+Subject: [PATCH] Fix "conky failes to build with --disable-ncurses" (sf.net #3541329)
+
+---
+ src/conky.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/conky.c b/src/conky.c
+index c5b4bed..17fe1a7 100644
+--- a/src/conky.c
++++ b/src/conky.c
+@@ -885,12 +885,12 @@ void generate_text_internal(char *p, int p_max_size,
+ 			OBJ(cpu) {
+ 				if (cur->cpu_usage) {
+ 					if (obj->data.i > info.cpu_count) {
+-						static bool warned = false;
++						static int warned = 0;
+ 						if(!warned) {
+ 							NORM_ERR("obj->data.i %i info.cpu_count %i",
+ 									obj->data.i, info.cpu_count);
+ 							NORM_ERR("attempting to use more CPUs than you have!");
+-							warned = true;
++							warned = 1;
+ 						}
+ 					} else  {
+ 						percent_print(p, p_max_size,
+-- 
+1.7.0.4
+

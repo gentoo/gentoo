@@ -1,0 +1,12 @@
+diff --git a/src/Text/Pandoc/Shared.hs b/src/Text/Pandoc/Shared.hs
+index ef9f66a..50b0ec4 100644
+--- a/src/Text/Pandoc/Shared.hs
++++ b/src/Text/Pandoc/Shared.hs
+@@ -143,2 +143,3 @@ import Paths_pandoc (getDataFileName)
+ #endif
++import Codec.Archive.Zip
+ #ifdef HTTP_CLIENT
+@@ -152,3 +153,2 @@ import Network.HTTP.Types.Header ( hContentType)
+ import Network (withSocketsDo)
+-import Codec.Archive.Zip
+ #else

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<longdescription>This is a library for OpenGL to load PNG graphics files as an OpenGL texture as easily as possible. It also has a number of options for generating the alpha channel and mipmaps.</longdescription>
+</pkgmetadata>

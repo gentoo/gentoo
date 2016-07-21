@@ -1,0 +1,24 @@
+--- GetIfInfo.h.old	2005-02-12 21:32:18.000000000 +0100
++++ GetIfInfo.h	2006-09-22 11:08:44.000000000 +0200
+@@ -17,7 +17,7 @@
+   bool	IsValid(void);
+ 
+   const char *	GetDescription(void) const;
+-  const char *	GetIfInfo::GetName(void) const;
++  const char *	GetName(void) const;
+   const char *	GetContact(void) const;
+   const char *	GetLocation(void) const;
+   const char *	GetIfDescription(void) const;
+--- configure.in.old	2005-02-12 21:32:18.000000000 +0100
++++ configure.in	2006-10-24 23:08:38.000000000 +0200
+@@ -128,8 +128,8 @@
+ 	LDFLAGS="-L$with_snmp/lib $LDFLAGS"
+ 	CPPFLAGS="-I$with_snmp/include $CPPFLAGS"
+     fi
+-    AC_CHECK_LIB(crypto, des_cbc_encrypt)
+-    AC_CHECK_LIB(snmp, snmp_sess_init,,,-lcrypto)
++    AC_CHECK_LIB(crypto, DES_cbc_encrypt)
++    AC_CHECK_LIB(snmp, snmp_sess_init)
+ fi
+ 
+ dnl pcap support if desired.  If the user enabled --with-pcap,

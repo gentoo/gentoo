@@ -1,0 +1,11 @@
+diff -uNr policycoreutils-2.2.1.orig/load_policy/Makefile policycoreutils-2.2.1/load_policy/Makefile
+--- policycoreutils-2.2.1.orig/load_policy/Makefile	2013-11-04 21:41:28.289018546 +0100
++++ policycoreutils-2.2.1/load_policy/Makefile	2013-11-04 21:43:31.118018808 +0100
+@@ -19,7 +19,6 @@
+ 	test -d $(MANDIR)/man8 || install -m 755 -d $(MANDIR)/man8
+ 	install -m 644 load_policy.8 $(MANDIR)/man8/
+ 	-mkdir -p $(USRSBINDIR)
+-	-ln -sf $(SBINDIR)/load_policy $(USRSBINDIR)/load_policy 
+ 
+ clean:
+ 	-rm -f $(TARGETS) *.o 

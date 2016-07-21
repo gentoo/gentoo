@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Id$
+
+# Enable all ABIs by default so we can protect any non-native binaries that
+# might be executed.
+sys-apps/sandbox abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_o32 abi_mips_n32 abi_mips_n64 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64

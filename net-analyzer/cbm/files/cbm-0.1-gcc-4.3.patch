@@ -1,0 +1,10 @@
+--- a/src/statistics.hpp
++++ b/src/statistics.hpp
+@@ -3,6 +3,7 @@
+ 
+ #include <list>
+ #include <string>
++#include <sys/time.h>
+ 
+ namespace statistics {
+     

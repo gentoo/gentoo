@@ -1,0 +1,15 @@
+[Unit]
+Description=ISATAP Client for Linux
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/sbin/isatapd ${DAEMON_OPTS} \
+	--interval ${ISATAP_INTERVAL} \
+	--name ${ISATAP_NAME} \
+	--link ${ISATAP_LINK} \
+	--mtu ${ISATAP_MTU} \
+	--check-dns ${ISATAP_CHECK_DNS} \
+	${ISATAP_ROUTERS}
+
+[Install]
+WantedBy=multi-user.target

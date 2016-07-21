@@ -1,0 +1,11 @@
+ quazip.pro | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/quazip.pro b/quazip.pro
+index 28aa9ab..62a22bd 100644
+--- a/quazip.pro
++++ b/quazip.pro
+@@ -1,2 +1,3 @@
+ TEMPLATE=subdirs
+ SUBDIRS=quazip qztest
++qztest.depends=quazip

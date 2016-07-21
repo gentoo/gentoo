@@ -1,0 +1,128 @@
+Index: radlib-2.12.0/debug/Makefile.am
+===================================================================
+--- radlib-2.12.0.orig/debug/Makefile.am
++++ radlib-2.12.0/debug/Makefile.am
+@@ -13,32 +13,4 @@ raddebug_SOURCES  = \
+ 		$(top_srcdir)/debug/raddebug.c
+ 
+ # define libraries
+-raddebug_LDADD   = -lrad -lpthread 
+-
+-if MYSQL
+-raddebug_LDADD   += -lmysqlclient
+-else
+-if PGRESQL
+-raddebug_LDADD   += -lpq
+-endif
+-endif
+-if SQLITE
+-raddebug_LDADD   += -lsqlite3
+-endif
+-
+-# define library directories
+-raddebug_LDFLAGS = -L../src/.libs -L$(prefix)/lib -L/usr/lib
+-INCLUDES         += -I$(prefix)/include -I/usr/include
+-
+-if MYSQL
+-raddebug_LDFLAGS += -L$(prefix)/lib64/mysql -L$(prefix)/lib/mysql -L/usr/lib64/mysql -L/usr/lib/mysql
+-else
+-if PGRESQL
+-raddebug_LDFLAGS += -L$(prefix)/pgsql/lib
+-INCLUDES         += -I$(prefix)/pgsql/include
+-endif
+-endif
+-
+-if CROSSCOMPILE
+-raddebug_LDFLAGS += $(prefix)/lib/crt1.o $(prefix)/lib/crti.o $(prefix)/lib/crtn.o
+-endif
++raddebug_LDADD   = ../src/librad.la
+Index: radlib-2.12.0/msgRouter/Makefile.am
+===================================================================
+--- radlib-2.12.0.orig/msgRouter/Makefile.am
++++ radlib-2.12.0/msgRouter/Makefile.am
+@@ -13,32 +13,4 @@ radmrouted_SOURCES  = \
+ 		$(top_srcdir)/msgRouter/msgRouter.c
+ 
+ # define libraries
+-radmrouted_LDADD   = -lrad -lpthread
+-
+-if MYSQL
+-radmrouted_LDADD   += -lmysqlclient
+-else
+-if PGRESQL
+-radmrouted_LDADD   += -lpq
+-endif
+-endif
+-if SQLITE
+-radmrouted_LDADD   += -lsqlite3
+-endif
+-
+-# define library directories
+-radmrouted_LDFLAGS = -L../src/.libs -L$(prefix)/lib -L/usr/lib
+-INCLUDES           += -I$(prefix)/include -I/usr/include
+-
+-if MYSQL
+-radmrouted_LDFLAGS += -L$(prefix)/lib64/mysql -L$(prefix)/lib/mysql -L/usr/lib64/mysql -L/usr/lib/mysql
+-else
+-if PGRESQL
+-radmrouted_LDFLAGS += -L$(prefix)/lib -L$(prefix)/pgsql/lib
+-INCLUDES           += -I$(prefix)/pgsql/include
+-endif
+-endif
+-
+-if CROSSCOMPILE
+-radmrouted_LDFLAGS += $(prefix)/lib/crt1.o $(prefix)/lib/crti.o $(prefix)/lib/crtn.o
+-endif
++radmrouted_LDADD   = ../src/librad.la
+Index: radlib-2.12.0/src/Makefile.am
+===================================================================
+--- radlib-2.12.0.orig/src/Makefile.am
++++ radlib-2.12.0/src/Makefile.am
+@@ -12,6 +12,9 @@ SUBDIRS =
+ #define the library to be built
+ lib_LTLIBRARIES = librad.la
+ 
++librad_la_LDFLAGS =
++librad_la_LIBADD = -lpthread
++
+ if MYSQL
+ MY_INCLUDES 	= \
+ 		-I$(prefix)/include/mysql \
+@@ -21,32 +24,30 @@ MY_SOURCES  	= \
+ 		$(top_srcdir)/src/raddatabase.c
+ MYSQL_HDRS	= \
+ 		$(top_srcdir)/h/raddatabase.h
++librad_la_LDFLAGS += -L$(prefix)/lib64/mysql -L$(prefix)/lib/mysql -L/usr/lib64/mysql -L/usr/lib/mysql
++librad_la_LIBADD += -lmysqlclient
+ endif
+ if PGRESQL
+-PG_INCLUDES 	= \
+-		-I$(prefix)/include \
+-		-I/usr/include
+ PG_SOURCES	= \
+ 		$(top_srcdir)/database/postgresql/pg_database.c \
+ 		$(top_srcdir)/src/raddatabase.c
+ PGSQL_HDRS	= \
+ 		$(top_srcdir)/h/raddatabase.h \
+ 		$(top_srcdir)/database/postgresql/_pg-types.h
++librad_la_LDFLAGS += -L$(prefix)/lib -L$(prefix)/pgsql/lib
++librad_la_LIBADD += -lpq
+ endif
+ if SQLITE
+-SQ_INCLUDES 	= \
+-		-I$(prefix)/include \
+-		-I/usr/include
+ SQ_SOURCES	= \
+ 		$(top_srcdir)/src/radsqlite.c
+ SQLITE_HDRS	= \
+ 		$(top_srcdir)/h/radsqlite.h
++librad_la_LIBADD += -lsqlite3
+ endif
+ 
+ # define include directories
+ INCLUDES = \
+ 		-I$(top_srcdir)/h \
+-		-I$(prefix)/include \
+ 		-D_GNU_SOURCE \
+ 		$(MY_INCLUDES) \
+ 		$(PG_INCLUDES) \

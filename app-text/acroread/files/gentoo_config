@@ -1,0 +1,10 @@
+# Enable this if you want Adobe Reader to cache Font-config fonts
+ACRO_ENABLE_FONT_CONFIG=1
+export ACRO_ENABLE_FONT_CONFIG
+
+# Enable this if you want to set the MOZILLA_COMP_PATH globally (for all the users)
+if [ -f "$ACRO_INSTALL_DIR/GlobalPrefs/mozilla_config" ]; then
+    . "$ACRO_INSTALL_DIR/GlobalPrefs/mozilla_config"
+   export MOZILLA_COMP_PATH
+fi
+

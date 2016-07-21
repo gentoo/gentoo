@@ -1,0 +1,226 @@
+From 7d1eaee59d311523757fb93ec59d8985ea15b54d Mon Sep 17 00:00:00 2001
+From: "nick.j.sanders" <nick.j.sanders@93e54ea4-8218-11de-8aaf-8d8425684b44>
+Date: Thu, 10 Jan 2013 23:42:36 +0000
+Subject: [PATCH] Replace interleave_size with channel_hash
+
+This patch replaces the previously introduced interleave_size memory
+channel decoding mechanism with a more powerful channel_hash. Decoding
+can now be based upon an arbitrary mask of address bits, which will be
+XORed together to determine the target channel. Note that this drops
+support for more than two channels, but TripleChannel controllers will
+probably use much more complicated decoding mechanisms anyway.
+
+It also includes the findmask program, which offers a crude method to
+guess the decoding mask from an unknown memory controller for enterprising
+users. Use at your own risk.
+
+Signed-off-by: Julius Werner <jwerner@chromium.org>
+
+
+git-svn-id: http://stressapptest.googlecode.com/svn/trunk@37 93e54ea4-8218-11de-8aaf-8d8425684b44
+---
+ src/Makefile.am  |   2 +
+ src/Makefile.in  |  68 +++++++++++++++++++--------
+ src/findmask.c   | 138 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/findmask.inc |   4 ++
+ src/os.cc        |  17 +++----
+ src/os.h         |  12 ++---
+ src/sat.cc       |  55 +++++++++++-----------
+ src/sat.h        |   5 +-
+ 8 files changed, 238 insertions(+), 63 deletions(-)
+ create mode 100644 src/findmask.c
+ create mode 100644 src/findmask.inc
+
+--- a/src/os.cc
++++ b/src/os.cc
+@@ -261,21 +261,22 @@ bool OsLayer::AdlerMemcpyWarm(uint64 *dstmem, uint64 *srcmem,
+ }
+ 
+ 
+-// Translate physical address to memory module name.
+-// Assumes simple round-robin interleaving between memory channels of
+-// 'interleave_size_' sized chunks, with repeated 'channel_width_'
++// Translate physical address to memory module/chip name.
++// Assumes interleaving between two memory channels based on the XOR of
++// all address bits in the 'channel_hash' mask, with repeated 'channel_width_'
+ // blocks with bits distributed from each chip in that channel.
+ int OsLayer::FindDimm(uint64 addr, char *buf, int len) {
+   static const string unknown = "DIMM Unknown";
+-  if (!modules_) {
++  if (!channels_) {
+     snprintf(buf, len, "%s", unknown.c_str());
+     return 0;
+   }
+ 
+-  // Find channel by counting interleave units (typically cachelines),
+-  // and mod by number of channels.
+-  vector<string>& channel = (*modules_)[
+-      (addr / interleave_size_) % modules_->size()];
++  // Find channel by XORing address bits in channel_hash mask.
++  uint32 low = (uint32)(addr & channel_hash_);
++  uint32 high = (uint32)((addr & channel_hash_) >> 32);
++  vector<string>& channel = (*channels_)[
++      __builtin_parity(high) ^ __builtin_parity(low)];
+ 
+   // Find dram chip by finding which byte within the channel
+   // by address mod channel width, then divide the channel
+--- a/src/os.h
++++ b/src/os.h
+@@ -58,11 +58,11 @@ class OsLayer {
+   }
+ 
+   // Set parameters needed to translate physical address to memory module.
+-  void SetDramMappingParams(int interleave_size, int channel_width,
+-                            vector< vector<string> > *modules) {
+-    interleave_size_ = interleave_size;
++  void SetDramMappingParams(uintptr_t channel_hash, int channel_width,
++                            vector< vector<string> > *channels) {
++    channel_hash_ = channel_hash;
+     channel_width_ = channel_width;
+-    modules_ = modules;
++    channels_ = channels;
+   }
+ 
+   // Initializes data strctures and open files.
+@@ -269,8 +269,8 @@ class OsLayer {
+   bool  use_posix_shm_;          // Use 4k page shmem?
+   bool  dynamic_mapped_shmem_;   // Conserve virtual address space.
+   int   shmid_;                  // Handle to shmem
+-  vector< vector<string> > *modules_;  // Memory module names per channel.
+-  int interleave_size_;          // Channel interleaving chunk size.
++  vector< vector<string> > *channels_;  // Memory module names per channel.
++  uint64 channel_hash_;          // Mask of address bits XORed for channel.
+   int channel_width_;            // Channel width in bits.
+ 
+   int64 regionsize_;             // Size of memory "regions"
+--- a/src/sat.cc
++++ b/src/sat.cc
+@@ -572,12 +572,12 @@ bool Sat::Initialize() {
+ 
+   if (min_hugepages_mbytes_ > 0)
+     os_->SetMinimumHugepagesSize(min_hugepages_mbytes_ * kMegabyte);
+-  if (modules_.size() > 0) {
++  if (channels_.size() > 0) {
+     logprintf(6, "Log: Decoding memory: %dx%d bit channels,"
+-        " %d byte burst size, %d modules per channel (x%d)\n",
+-        modules_.size(), channel_width_, interleave_size_, modules_[0].size(),
+-        channel_width_/modules_[0].size());
+-    os_->SetDramMappingParams(interleave_size_, channel_width_, &modules_);
++        "%d modules per channel (x%d), decoding hash 0x%x\n",
++        channels_.size(), channel_width_, channels_[0].size(),
++        channel_width_/channels_[0].size(), channel_hash_);
++    os_->SetDramMappingParams(channel_hash_, channel_width_, &channels_);
+   }
+ 
+   if (!os_->Initialize()) {
+@@ -650,7 +650,7 @@ Sat::Sat() {
+   min_hugepages_mbytes_ = 0;
+   freepages_ = 0;
+   paddr_base_ = 0;
+-  interleave_size_ = kCacheLineSize;
++  channel_hash_ = kCacheLineSize;
+   channel_width_ = 64;
+ 
+   user_break_ = false;
+@@ -927,19 +927,19 @@ bool Sat::ParseArgs(int argc, char **argv) {
+       continue;
+     }
+ 
+-    ARG_IVALUE("--interleave_size", interleave_size_);
++    ARG_IVALUE("--channel_hash", channel_hash_);
+     ARG_IVALUE("--channel_width", channel_width_);
+ 
+     if (!strcmp(argv[i], "--memory_channel")) {
+       i++;
+       if (i < argc) {
+-        char *module = argv[i];
+-        modules_.push_back(vector<string>());
+-        while (char* next = strchr(module, ',')) {
+-          modules_.back().push_back(string(module, next - module));
+-          module = next + 1;
++        char *channel = argv[i];
++        channels_.push_back(vector<string>());
++        while (char* next = strchr(channel, ',')) {
++          channels_.back().push_back(string(channel, next - channel));
++          channel = next + 1;
+         }
+-        modules_.back().push_back(string(module));
++        channels_.back().push_back(string(channel));
+       }
+       continue;
+     }
+@@ -990,22 +990,25 @@ bool Sat::ParseArgs(int argc, char **argv) {
+   }
+ 
+   // Validate memory channel parameters if supplied
+-  if (modules_.size()) {
+-    if (interleave_size_ <= 0 ||
+-        interleave_size_ & (interleave_size_ - 1)) {
++  if (channels_.size()) {
++    if (channels_.size() == 1) {
++      channel_hash_ = 0;
++      logprintf(7, "Log: "
++          "Only one memory channel...deactivating interleave decoding.\n");
++    } else if (channels_.size() > 2) {
+       logprintf(6, "Process Error: "
+-          "Interleave size %d is not a power of 2.\n", interleave_size_);
++          "Triple-channel mode not yet supported... sorry.\n");
+       bad_status();
+       return false;
+     }
+-    for (uint i = 0; i < modules_.size(); i++)
+-      if (modules_[i].size() != modules_[0].size()) {
++    for (uint i = 0; i < channels_.size(); i++)
++      if (channels_[i].size() != channels_[0].size()) {
+         logprintf(6, "Process Error: "
+-            "Channels 0 and %d have a different amount of modules.\n",i);
++            "Channels 0 and %d have a different count of dram modules.\n",i);
+         bad_status();
+         return false;
+       }
+-    if (modules_[0].size() & (modules_[0].size() - 1)) {
++    if (channels_[0].size() & (channels_[0].size() - 1)) {
+       logprintf(6, "Process Error: "
+           "Amount of modules per memory channel is not a power of 2.\n");
+       bad_status();
+@@ -1018,9 +1021,9 @@ bool Sat::ParseArgs(int argc, char **argv) {
+       bad_status();
+       return false;
+     }
+-    if (channel_width_ / modules_[0].size() < 8) {
+-      logprintf(6, "Process Error: "
+-          "Chip width x%d must be x8 or greater.\n", channel_width_ / modules_[0].size());
++    if (channel_width_ / channels_[0].size() < 8) {
++      logprintf(6, "Process Error: Chip width x%d must be x8 or greater.\n",
++          channel_width_ / channels_[0].size());
+       bad_status();
+       return false;
+     }
+@@ -1095,8 +1098,8 @@ void Sat::PrintHelp() {
+          "each CPU to be tested by that CPU\n"
+          " --remote_numa    choose memory regions not associated with "
+          "each CPU to be tested by that CPU\n"
+-         " --interleave_size bytes  size in bytes of each channel's data as interleaved "
+-         "between memory channels\n"
++         " --channel_hash   mask of address bits XORed to determine channel.\n"
++         "                  Mask 0x40 interleaves cachelines between channels\n"
+          " --channel_width bits     width in bits of each memory channel\n"
+          " --memory_channel u1,u2   defines a comma-separated list of names\n"
+          "                          for dram packages in a memory channel.\n"
+--- a/src/sat.h
++++ b/src/sat.h
+@@ -151,9 +151,8 @@ class Sat {
+   int64 freepages_;                   // How many invalid pages we need.
+   int disk_pages_;                    // Number of pages per temp file.
+   uint64 paddr_base_;                 // Physical address base.
+-  vector< vector<string> > modules_;  // Memory module names per channel.
+-  int interleave_size_;               // Channel interleaving   chunk size in bytes.
+-                                      // Usually cacheline sized.
++  vector< vector<string> > channels_; // Memory module names per channel.
++  uint64 channel_hash_;               // Mask of address bits XORed for channel.
+   int channel_width_;                 // Channel width in bits.
+ 
+   // Control flags.
+-- 
+2.0.0
+

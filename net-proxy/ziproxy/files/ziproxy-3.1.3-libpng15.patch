@@ -1,0 +1,20 @@
+--- src/image.c
++++ src/image.c
+@@ -17,6 +17,8 @@
+ #include <stdlib.h>
+ #include <assert.h>
+ 
++#include <zlib.h>
++
+ #include <gif_lib.h>
+ 
+ #include <jpeglib.h>
+@@ -515,7 +517,7 @@
+ 	bmp = new_raw_bitmap();
+ 	*out = bmp;
+ 
+-	png_set_read_fn (png_ptr, (voidp) &desc, mem_to_png);
++	png_set_read_fn (png_ptr, (png_voidp) &desc, mem_to_png);
+ 	
+ 	png_read_info (png_ptr,info_ptr);
+ 	png_get_IHDR (png_ptr, info_ptr, &width_png_uint_32, &height_png_uint_32,

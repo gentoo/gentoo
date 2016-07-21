@@ -1,0 +1,31 @@
+--- Gauche-0.9.1.orig/lib/gauche/interactive/info.scm
++++ Gauche-0.9.1/lib/gauche/interactive/info.scm
+@@ -84,7 +84,8 @@
+                             :pred (lambda (p)
+                                     (or (file-is-readable? p)
+                                         (file-is-readable? #`",|p|.gz")
+-                                        (file-is-readable? #`",|p|.bz2"))))
++                                        (file-is-readable? #`",|p|.bz2")
++                                        (file-is-readable? #`",|p|.xz"))))
+         (errorf "couldn't find info file ~s in paths: ~s" *info-file* paths))
+     ))
+ 
+--- Gauche-0.9.1.orig/lib/text/info.scm
++++ Gauche-0.9.1/lib/text/info.scm
+@@ -63,6 +63,7 @@
+ ;; Find gunzip location
+ (define gunzip (find-file-in-paths "gunzip"))
+ (define bzip2  (find-file-in-paths "bzip2"))
++(define xz     (find-file-in-paths "xz"))
+ 
+ ;; Read an info file FILE, and returns a list of strings splitted by ^_ (#\x1f)
+ ;; If FILE is not found, look for compressed one.
+@@ -74,6 +75,8 @@
+            (with-input-from-process #`",gunzip -c ,file" thunk)]
+           [(and bzip2 (file-exists? #`",|file|.bz2"))
+            (with-input-from-process #`",bzip2 -c -d ,|file|.bz2" thunk)]
++          [(and xz (file-exists? #`",|file|.xz"))
++           (with-input-from-process #`",xz -c -d ,|file|.xz" thunk)]
+           [else (error "can't find info file" file)]))
+   (with-input-from-info
+    (lambda ()

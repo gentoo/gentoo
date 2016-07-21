@@ -1,0 +1,11 @@
+--- nmbscan.orig	2005-09-21 22:10:05.223491664 +0200
++++ nmbscan	2005-09-21 22:11:59.215162296 +0200
+@@ -402,7 +402,7 @@
+ 
+ function get_server_and_os_by_ip
+ {
+-    V=$(smbclient -L ${2:-$1} -I $1 -U % 2>&1 | grep '^Domain'| sed 's#.*OS=\[\(.*\)\].*Server=\[\(.*\)\].*#\2/\1#' | head -1)
++    V=$(smbclient -L ${2:-$1} -I $1 -U % 2>&1 | grep '^Domain'| sed 's#.*OS=\[\(.*\)\].*Server=\[\(.*\)\].*#\2/\1#' | head -n 1)
+     echo ${V:--/-}
+ }
+ 

@@ -1,0 +1,16 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Jun 30 19:10:57 UTC 2013
+Subject: remove LDFLAGS from Libs field
+
+https://github.com/libspatialindex/libspatialindex/issues/23
+
+--- spatialindex-src-1.8.1/src/libspatialindex.pc.in
++++ spatialindex-src-1.8.1/src/libspatialindex.pc.in
+@@ -7,6 +7,6 @@
+ Description: Generic C/C++ library for spatial indexing
+ Requires: 
+ Version: @PACKAGE_VERSION@
+-Libs: -L@libdir@ @LDFLAGS@
++Libs: -L@libdir@
+ Cflags: -I${includedir}/spatialindex @CFLAGS@ @CPPFLAGS@
+ 

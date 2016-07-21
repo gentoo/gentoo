@@ -1,0 +1,26 @@
+--- code2color
++++ code2color
+@@ -163,11 +163,11 @@
+       # building up the database
+       # newer entries overwrite old ones
+       my @CONFIG_FILES;
+-      push @CONFIG_FILES, "/etc/code2html.config";
++      push @CONFIG_FILES, "/etc/code2color";
+       push @CONFIG_FILES, 
+-        $ENV{'HOME'}."/.code2html.config"   if $ENV{'HOME'};
++        $ENV{'HOME'}."/.code2color"   if $ENV{'HOME'};
+       push @CONFIG_FILES, 
+-        split(/:/,$ENV{'CODE2HTML_CONFIG'}) if $ENV{'CODE2HTML_CONFIG'};
++        split(/:/,$ENV{'CODE2COLOR_CONFIG'}) if $ENV{'CODE2COLOR_CONFIG'};
+       push @CONFIG_FILES, 
+         split(/:/,$params{'langfile'})      if $params{'langfile'};
+       
+@@ -3192,7 +3192,7 @@
+ #
+ 
+ $LANGUAGE{'shellscript'} = {
+-	'filename' => '\\.(sh|shell)$',
++	'filename' => '\\.(ebuild|eclass|sh|shell)$',
+ 	'regex' => '^\\s*#\\s*![^\\s]*(sh|bash|ash|zsh|ksh)',
+ 	'patterns' => [ {
+ 		'name' => 'comment',

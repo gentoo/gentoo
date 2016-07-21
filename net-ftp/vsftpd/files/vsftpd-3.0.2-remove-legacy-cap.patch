@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/show_bug.cgi?id=450536
+Patch by: Joakim Tjernlund <Joakim.Tjernlund@transmode.se>
+
+Probe the preferred version
+--- vsftpd-3.0.2/sysdeputil.c.org       2013-01-05 18:32:13.241288839 +0100
++++ vsftpd-3.0.2/sysdeputil.c   2013-01-05 19:41:53.038148078 +0100
+@@ -561,11 +561,17 @@
+ }
+
+   #ifndef VSF_SYSDEP_HAVE_LIBCAP
++static struct __user_cap_header_struct sys_cap_head;
+ static int
+ do_checkcap(void)
+ {
++  int retval;
++
++  /* Store preferred version in sys_cap_head */
++  vsf_sysutil_memclr(&sys_cap_head, sizeof(sys_cap_head));
+   /* EFAULT (EINVAL if page 0 mapped) vs. ENOSYS */
+-  int retval = capset(0, 0);
++  retval = capset(&sys_cap_head, 0);
++
+   if (!vsf_sysutil_retval_is_error(retval) ||
+       vsf_sysutil_get_error() != kVSFSysUtilErrNOSYS)
+   {
+@@ -579,17 +585,13 @@
+ {
+   /* n.b. yes I know I should be using libcap!! */
+   int retval;
+-  struct __user_cap_header_struct cap_head;
+-  struct __user_cap_data_struct cap_data;
++  struct __user_cap_data_struct cap_data[2];
+   __u32 cap_mask = 0;
+   if (!caps)
+   {
+     bug("asked to adopt no capabilities");
+   }
+-  vsf_sysutil_memclr(&cap_head, sizeof(cap_head));
+   vsf_sysutil_memclr(&cap_data, sizeof(cap_data));
+-  cap_head.version = _LINUX_CAPABILITY_VERSION;
+-  cap_head.pid = 0;
+   if (caps & kCapabilityCAP_CHOWN)
+   {
+     cap_mask |= (1 << CAP_CHOWN);
+@@ -598,9 +600,9 @@
+   {
+     cap_mask |= (1 << CAP_NET_BIND_SERVICE);
+   }
+-  cap_data.effective = cap_data.permitted = cap_mask;
+-  cap_data.inheritable = 0;
+-  retval = capset(&cap_head, &cap_data);
++  cap_data[0].effective = cap_data[0].permitted = cap_mask;
++  cap_data[0].inheritable = 0;
++  retval = capset(&sys_cap_head, &cap_data[0]);
+   if (retval != 0)
+   {
+     die("capset");

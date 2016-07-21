@@ -1,0 +1,40 @@
+--- src/plugins/shoutcast/shoutcast.c.orig	2004-12-19 15:21:00.000000000 +0000
++++ src/plugins/shoutcast/shoutcast.c	2008-03-16 10:39:24.000000000 +0000
+@@ -94,6 +94,8 @@
+ 
+   GNode			*parent_node;
+   SHOUTcastStream	*stream;
++  
++  int parse_genres;
+ } ReloadInfo;
+ 
+ /*** variable declarations ***************************************************/
+@@ -518,6 +520,7 @@
+       info.npages = 0;
+       info.parent_node = NULL;
+       info.stream = NULL;
++      info.parse_genres = 0;
+ 
+       status = st_transfer_session_get_by_line(session,
+ 					       url,
+@@ -565,10 +568,16 @@
+       info->stream = stream_new_cb(NULL);
+       info->stream->url_postfix = st_sgml_ref_expand_len(s1, s2 - s1);
+     }
+-  else if (info->page < 2
+-	   && (((s1 = st_str_has_prefix_span(line, "\t<OPTION VALUE=\""))
+-		|| (s1 = st_str_has_prefix_span(line, "\t\t<OPTION VALUE=\"")))
+-	       && (s2 = strstr(s1, "\">"))))
++  else if (info->page < 2 && (s1 = st_strstr_span(line, "<OPTION VALUE=\"TopTen\">")))
++  {
++  	info->parse_genres = 1;
++  }
++  else if (info->page < 2 && info->parse_genres == 1 && (s1 = st_strstr_span(line, "</SELECT>")))
++  {
++  	info->parse_genres = 0;
++  }
++  else if (info->page < 2 && info->parse_genres == 1
++	   && ((s1 = st_strstr_span(line, "<OPTION VALUE=\""))  && (s2 = strstr(s1, "\">"))))
+     {
+       STCategory *category;
+       GNode *node;

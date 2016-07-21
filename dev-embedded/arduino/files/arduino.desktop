@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=arduino
+Comment=Open-source electronics prototyping platform
+Exec=arduino
+Icon=arduino
+Terminal=false
+Type=Application
+Categories=Development;
+StartupNotify=false

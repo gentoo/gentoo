@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>bsd@gentoo.org</email>
+	<name>BSD Project</name>
+</maintainer>
+<longdescription>
+GNU Readline is cool, but BSD Readline is cooler :)
+Thus here is libedit by the NetBSD folks!
+The glibc/bsdlibc stuff comes from the debian tarball, thanks to them too :)
+The patch is handcrafted with a few ideas from libedit.sf.net and a few ideas
+from the debian package.  This patch aims to be as small as possible (so as
+to make future cvs snapshots cake).
+</longdescription>
+</pkgmetadata>

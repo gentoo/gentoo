@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/miniupnpd"
+: "${config_file:=/etc/miniupnpd/miniupnpd.conf}"
+command_args="-f ${config_file:-/etc/miniupnpd/miniupnpd.conf} ${extra_args}"
+: "${pidfile:=/var/run/miniupnpd.pid}"
+
+depend() {
+	need net iptables
+	use minissdpd
+}
+
+start_pre() {
+	local retval=0
+
+	if [[ -z ${no_iptables_scripts} ]]; then
+		/etc/miniupnpd/iptables_init.sh || retval=${?}
+	fi
+	
+	return ${retval}
+}
+
+stop_post() {
+	local retval=0
+
+	if [[ -z ${no_iptables_scripts} ]]; then
+		/etc/miniupnpd/iptables_removeall.sh
+	fi
+
+	return ${retval}
+}

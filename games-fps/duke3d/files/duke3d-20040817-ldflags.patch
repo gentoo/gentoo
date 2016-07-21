@@ -1,0 +1,66 @@
+--- source/buildengine/Makefile.old	2010-10-08 14:32:05.000000000 +0200
++++ source/buildengine/Makefile	2010-10-08 14:35:10.000000000 +0200
+@@ -73,7 +73,7 @@
+ endif
+ 
+ ifeq ($(strip $(solaris)),true)
+-  LDFLAGS += -lsocket -lnsl
++  LIBS += -lsocket -lnsl
+   CFLAGS += -DPLATFORM_SOLARIS
+ endif
+ 
+@@ -129,7 +129,7 @@
+ 
+ ifeq ($(strip $(macosx)),true)
+   CFLAGS += -DPLATFORM_MACOSX=1 -faltivec -falign-loops=32 -falign-functions=32
+-  LDFLAGS += -framework AppKit -lSDL -lSDLmain
++  LIBS += -framework AppKit -lSDL -lSDLmain
+ endif
+ 
+ ifeq ($(strip $(useopengl)),true)
+@@ -146,7 +146,7 @@
+ 
+ ifeq ($(strip $(usephysfs)),true)
+   CFLAGS += -DUSE_PHYSICSFS
+-  LDFLAGS += -lphysfs
++  LIBS += -lphysfs
+ endif
+ 
+ ifeq ($(strip $(usedlls)),true)
+@@ -236,17 +236,17 @@
+ 
+ ifeq ($(strip $(usedlls)),true)
+ $(ENGINEDLL) : $(ENGINEOBJS)
+-	$(LINKER) -shared -o $(ENGINEDLL) $(LDFLAGS) $(ENGINEOBJS) $(LDLIBS)
++	$(LINKER) -shared -o $(ENGINEDLL) $(LIBS) $(ENGINEOBJS) $(LDLIBS)
+ 
+ $(NETDLL) : $(NETOBJS)
+-	$(LINKER) -shared -o $(NETDLL) $(LDFLAGS) $(NETOBJS) $(LDLIBS)
++	$(LINKER) -shared -o $(NETDLL) $(LIBS) $(NETOBJS) $(LDLIBS)
+ endif
+ 
+ $(GAMEEXE) : $(ENGINEDLL) $(NETDLL) $(GAMEOBJS) $(PERLOBJS)
+-	$(LINKER) -o $(GAMEEXE) $(LDFLAGS) $(PERLOBJS) $(GAMEOBJS) $(LDPERL) $(LDLIBS) $(ENGINEDLL) $(NETDLL)
++	$(LINKER) $(LDFLAGS) -o $(GAMEEXE) $(LIBS) $(PERLOBJS) $(GAMEOBJS) $(LDPERL) $(LDLIBS) $(ENGINEDLL) $(NETDLL)
+ 
+ $(BUILDEXE) : $(ENGINEDLL) $(BUILDOBJS)
+-	$(LINKER) -o $(BUILDEXE) $(LDFLAGS) $(BUILDOBJS) $(LDLIBS) $(ENGINEDLL)
++	$(LINKER) $(LDFLAGS) -o $(BUILDEXE) $(LIBS) $(BUILDOBJS) $(LDLIBS) $(ENGINEDLL)
+ 
+ listclean:
+ 	@echo "A 'make clean' would remove" $(CLEANUP)
+--- source/Makefile.old	2010-10-08 14:35:54.000000000 +0200
++++ source/Makefile	2010-10-08 14:37:34.000000000 +0200
+@@ -152,10 +152,10 @@
+ 	sounds.o \
+ 	dukemusc.o \
+ 	audiolib/audiolib.a
+-	$(CC) $^ $(BUILDOBJS) $(LDLIBS) -o $@
++	$(CC) $(LDFLAGS) $^ $(BUILDOBJS) $(LDLIBS) -o $@
+ 
+ build: astub.o
+-	$(CC) $^ $(BUILDOBJS) buildengine/build.o $(LDLIBS) -o $@
++	$(CC) $(LDFLAGS) $^ $(BUILDOBJS) buildengine/build.o $(LDLIBS) -o $@
+ 
+ clean:
+ 	$(MAKE) -C audiolib clean

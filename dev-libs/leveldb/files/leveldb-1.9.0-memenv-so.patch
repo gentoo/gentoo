@@ -1,0 +1,60 @@
+--- leveldb-1.9.0.orig/Makefile	2013-01-07 21:07:29.000000000 +0000
++++ leveldb-1.9.0/Makefile	2014-03-28 22:11:05.000000000 +0000
+@@ -61,37 +61,45 @@
+ # Should we build shared libraries?
+ ifneq ($(PLATFORM_SHARED_EXT),)
+ 
++SHARED1 = $(PLATFORM_SHARED_EXT)
++
+ ifneq ($(PLATFORM_SHARED_VERSIONED),true)
+-SHARED1 = libleveldb.$(PLATFORM_SHARED_EXT)
+ SHARED2 = $(SHARED1)
+ SHARED3 = $(SHARED1)
+-SHARED = $(SHARED1)
++SHARED=%.$(SHARED1)
+ else
+ # Update db.h if you change these.
+ SHARED_MAJOR = 1
+ SHARED_MINOR = 9
+-SHARED1 = libleveldb.$(PLATFORM_SHARED_EXT)
+ SHARED2 = $(SHARED1).$(SHARED_MAJOR)
+ SHARED3 = $(SHARED1).$(SHARED_MAJOR).$(SHARED_MINOR)
+-SHARED = $(SHARED1) $(SHARED2) $(SHARED3)
+-$(SHARED1): $(SHARED3)
+-	ln -fs $(SHARED3) $(SHARED1)
+-$(SHARED2): $(SHARED3)
+-	ln -fs $(SHARED3) $(SHARED2)
++SHARED=%.$(SHARED1) %.$(SHARED2) %.$(SHARED3)
++%.$(SHARED1): %.$(SHARED3)
++	ln -fs $< $@
++%.$(SHARED2): %.$(SHARED3)
++	ln -fs $< $@
+ endif
+ 
+-$(SHARED3):
+-	$(CXX) $(LDFLAGS) $(PLATFORM_SHARED_LDFLAGS)$(SHARED2) $(CXXFLAGS) $(PLATFORM_SHARED_CFLAGS) $(SOURCES) -o $(SHARED3) $(LIBS)
++%.SHARED: $(SHARED)
++	@true
++
++%.$(SHARED3):
++	$(CXX) $(LDFLAGS) $(PLATFORM_SHARED_LDFLAGS)$*.$(SHARED2) $(CXXFLAGS) $(PLATFORM_SHARED_CFLAGS) $^ -o $@ $(LIBS)
++
++libleveldb.$(SHARED3): $(SOURCES)
++libmemenv.$(SHARED3): $(MEMENV_SOURCES)
++
++.SECONDARY: $(subst %,libleveldb,$(SHARED)) $(subst %,libmemenv,$(SHARED))
+ 
+ endif  # PLATFORM_SHARED_EXT
+ 
+-all: $(SHARED) $(LIBRARY)
++all: libleveldb.SHARED $(LIBRARY)
+ 
+ check: all $(PROGRAMS) $(TESTS)
+ 	for t in $(TESTS); do echo "***** Running $$t"; ./$$t || exit 1; done
+ 
+ clean:
+-	-rm -f $(PROGRAMS) $(BENCHMARKS) $(LIBRARY) $(SHARED) $(MEMENVLIBRARY) */*.o */*/*.o ios-x86/*/*.o ios-arm/*/*.o build_config.mk
++	-rm -f $(PROGRAMS) $(BENCHMARKS) $(LIBRARY) $(subst %,libleveldb,$(SHARED)) $(MEMENVLIBRARY) */*.o */*/*.o ios-x86/*/*.o ios-arm/*/*.o build_config.mk
+ 	-rm -rf ios-x86/* ios-arm/*
+ 
+ $(LIBRARY): $(LIBOBJECTS)

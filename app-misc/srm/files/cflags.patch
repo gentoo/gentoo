@@ -1,0 +1,21 @@
+diff -Naur srm-1.2.11.orig/configure.in srm-1.2.11/configure.in
+--- srm-1.2.11.orig/configure.in	2010-06-06 13:22:08.000000000 -0400
++++ srm-1.2.11/configure.in	2011-09-28 21:23:24.562682859 -0400
+@@ -6,8 +6,6 @@
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
+-dnl reset CFLAGS
+-CFLAGS=
+ 
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+@@ -42,7 +40,7 @@
+   CFLAGS="$CFLAGS -g"
+   AC_MSG_RESULT(yes)
+ else
+-  CFLAGS="$CFLAGS -O2 -DNDEBUG"
++  CFLAGS="$CFLAGS -DNDEBUG"
+   AC_MSG_RESULT(no)
+ fi
+ 

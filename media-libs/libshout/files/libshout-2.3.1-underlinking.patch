@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/499458
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -26,7 +26,7 @@
+ AM_CFLAGS = @XIPH_CFLAGS@
+ 
+ libshout_la_LIBADD = net/libicenet.la timing/libicetiming.la avl/libiceavl.la\
+-		httpp/libicehttpp.la $(MAYBE_THREAD_LIB) $(THEORA_LIBS) $(VORBIS_LIBS) $(SPEEX_LIBS)
++		httpp/libicehttpp.la $(MAYBE_THREAD_LIB) $(OGG_LIBS) $(VORBIS_LIBS) $(THEORA_LIBS) $(SPEEX_LIBS)
+ 
+ INCLUDES = -I$(top_builddir)/include
+ 

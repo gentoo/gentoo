@@ -1,0 +1,28 @@
+ setup.py | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 36c2536..99fdf08 100644
+--- a/setup.py
++++ b/setup.py
+@@ -898,9 +898,6 @@ o a command line, GUI and web interface
+         'py2app': MyPy2app,
+         'register': MyRegister,
+     },
+-    package_dir = {
+-        'linkcheck_dns.dns': 'third_party/dnspython/dns',
+-    },
+     packages = [
+         'linkcheck',
+         'linkcheck.bookmarks',
+@@ -913,10 +910,6 @@ o a command line, GUI and web interface
+         'linkcheck.HtmlParser',
+         'linkcheck.logger',
+         'linkcheck.network',
+-        'linkcheck_dns.dns',
+-        'linkcheck_dns.dns.rdtypes',
+-        'linkcheck_dns.dns.rdtypes.ANY',
+-        'linkcheck_dns.dns.rdtypes.IN',
+     ],
+     ext_modules = [
+         Extension('linkcheck.HtmlParser.htmlsax',

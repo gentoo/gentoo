@@ -1,0 +1,19 @@
+# configuraton file for /etc/init.d/capi4hylafax
+
+# Activate Logging (Filename have to be specified in the config file).
+#ACTIVATE_LOGGING="yes"
+
+# Specify the output format. Allowed types are:
+# HYLAFAX (default), TIFF, SFF, G3
+#OUTPUT_FORMAT="HYLAFAX"
+
+# Virtual device name only needed for Hylafax.
+#VIRTUAL_DEVICE="faxCAPI"
+
+# Name and path of the config file
+#CONFIG_FILE="/var/spool/fax/etc/config.faxCAPI"
+
+# Directory where received faxes are to be stored.
+# Do not set it in Hylafax mode (see OUTPUT_FORMAT)!
+#RECEIVE_DIR="/var/spool/fax/recvq"
+

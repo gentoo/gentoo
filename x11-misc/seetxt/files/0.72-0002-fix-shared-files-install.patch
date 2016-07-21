@@ -1,0 +1,32 @@
+From a1137a02237df31e063af622be0dc76c2ab3e45a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Tue, 9 Apr 2013 07:24:45 +0200
+Subject: [PATCH 2/2] Fix shared files install
+
+---
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 691c0f1..404d743 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,13 +1,13 @@
+ SUBDIRS = src
+ buildextra = @builddir@/extra
+-pkgdatadir = $(DESTDIR)$(datadir)/seetxt-runtime
++pkgdatadir = $(datadir)/seetxt-runtime
+ 
+ install-data-am:
+ 	-install --mode=644 $(buildextra)/seetxt.1 $(DESTDIR)$(mandir)/man1/
+ 	@echo " "
+ 	@echo "Installing some additional files in $(DESTDIR)$(pkgdatadir)..."
+ 	@echo " "
+-	-mkdir $(pkgdatadir)
++	-mkdir -p $(DESTDIR)$(pkgdatadir)
+ 	-install --mode=644 $(buildextra)/seeon.png $(buildextra)/seeoff.png $(buildextra)/.seeconfig $(buildextra)/COPYING.images $(DESTDIR)$(pkgdatadir)
+ 	-install --mode=666 $(buildextra)/filelist $(DESTDIR)$(pkgdatadir)
+ 	-cd $(DESTDIR)$(mandir)/man1; ln -s seetxt.1 seeman.1
+-- 
+1.8.1.5
+

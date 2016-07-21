@@ -1,0 +1,11 @@
+--- a/lib/h2s/parse.scm
++++ b/lib/h2s/parse.scm
+@@ -329,6 +329,8 @@
+       (#/^\}\s*([\w_]+)/ (#f name) (make-enum name (reverse enums))) ; ----->
+       ;; empty line:
+       (#/^\s*$/ () (loop (read-line) enums))
++      ;; preprocessor directive:
++      (#/^\s*#\s*\w+/ () (loop (read-line) enums))
+       ;; 
+       (test has-comment? (skip-comment line (cut loop <> enums) err-eof)) ;  what if?:      new_value,  /* boring comment*/
+       (#/\s+([\w_]+),?/ (#f enum)

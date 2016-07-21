@@ -1,0 +1,271 @@
+https://bugs.gentoo.org/show_bug.cgi?id=414247
+fixed missing xgettext
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 2012/11/02 )
+diff -Naur vcd-0.9.old/Makefile vcd-0.9/Makefile
+--- vcd-0.9.old/Makefile	2008-01-16 16:29:39.000000000 +0100
++++ vcd-0.9/Makefile	2012-10-30 14:06:02.163762996 +0100
+@@ -53,7 +53,7 @@
+ 
+ ### The object files (add further files here):
+ 
+-OBJS = $(PLUGIN).o functions.o i18n.o menu.o player.o viewer.o setup.o menucontrol.o psd.o psdcontrol.o
++OBJS = $(PLUGIN).o functions.o menu.o player.o viewer.o setup.o menucontrol.o psd.o psdcontrol.o
+ 
+ ### Implicit rules:
+ 
+@@ -69,9 +69,34 @@
+ 
+ -include $(DEPFILE)
+ 
++### Internationalization (I18N):
++
++PODIR     = po
++LOCALEDIR = $(VDRDIR)/locale
++I18Npo    = $(wildcard $(PODIR)/*.po)
++I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
++I18Npot   = $(PODIR)/$(PLUGIN).pot
++
++%.mo: %.po
++	msgfmt -c -o $@ $<
++
++$(I18Npot): $(wildcard *.c)
++	xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --msgid-bugs-address='<dev@erichseifert.de>' -o $@ $^
++
++%.po: $(I18Npot)
++	msgmerge -U --no-wrap --no-location --backup=none -q $@ $<
++	@touch $@
++
++$(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
++	@mkdir -p $(dir $@)
++	cp $< $@
++
++.PHONY: i18n
++i18n: $(I18Nmsgs)
++
+ ### Targets:
+ 
+-all: libvdr-$(PLUGIN).so
++all: libvdr-$(PLUGIN).so i18n
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+@@ -86,4 +111,5 @@
+ 	@echo Distribution package created as $(PACKAGE).tgz
+ 
+ clean:
++	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
+ 	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
+diff -Naur vcd-0.9.old/menu.c vcd-0.9/menu.c
+--- vcd-0.9.old/menu.c	2008-01-20 17:59:46.000000000 +0100
++++ vcd-0.9/menu.c	2012-10-30 14:04:10.837681821 +0100
+@@ -26,7 +26,7 @@
+ 
+ #include <vdr/interface.h>
+ #include <vdr/status.h>
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "menu.h"
+ #include "functions.h"
+ #include "setup.h"
+diff -Naur vcd-0.9.old/menucontrol.c vcd-0.9/menucontrol.c
+--- vcd-0.9.old/menucontrol.c	2008-01-16 13:43:39.000000000 +0100
++++ vcd-0.9/menucontrol.c	2012-10-30 14:03:43.051660837 +0100
+@@ -26,7 +26,7 @@
+ 
+ #include <vdr/interface.h>
+ #include <vdr/status.h>
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "menu.h"
+ #include "functions.h"
+ #include "setup.h"
+diff -Naur vcd-0.9.old/po/de_DE.po vcd-0.9/po/de_DE.po
+--- vcd-0.9.old/po/de_DE.po	1970-01-01 01:00:00.000000000 +0100
++++ vcd-0.9/po/de_DE.po	2012-10-30 14:08:28.409871746 +0100
+@@ -0,0 +1,62 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@tvdr.de>
++# This file is distributed under the same license as the VDR package.
++# Klaus Schmidinger <kls@tvdr.de>, 2000
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: <dev@erichseifert.de>\n"
++"POT-Creation-Date: 2012-10-30 14:10+0200\n"
++"PO-Revision-Date: 2012-10-30 14:10+0200\n"
++"Last-Translator: Klaus Schmidinger <kls@tvdr.de>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "VideoCD"
++msgstr "VideoCD"
++
++msgid "No VideoCD detected"
++msgstr "Keine VideoCD erkannt"
++
++msgid "Eject"
++msgstr "Auswerfen"
++
++msgid "Key$Play"
++msgstr ""
++
++msgid "Tracks"
++msgstr "Tracks"
++
++msgid "SPI"
++msgstr "SPI"
++
++msgid "Jump: "
++msgstr ""
++
++msgid "VCD"
++msgstr "VCD"
++
++msgid "Setup.VCD$Drive speed"
++msgstr "Laufwerkgeschwindigkeit"
++
++msgid "Setup.VCD$Broken mode"
++msgstr "Nicht standardkonform"
++
++msgid "Setup.VCD$Hide main menu entry"
++msgstr "Hauptmenüeintrag ausblenden"
++
++msgid "Setup.VCD$Play tracks continuously"
++msgstr "Tracks nacheinander abspielen"
++
++msgid "Setup.VCD$Autostart replay"
++msgstr "Wiedergabe automatisch starten"
++
++msgid "Setup.VCD$Play sequence replay"
++msgstr "Wiedergabe nach Sequenz"
++
++msgid "No disc inserted"
++msgstr "Keine CD eingelegt"
+diff -Naur vcd-0.9.old/po/it_IT.po vcd-0.9/po/it_IT.po
+--- vcd-0.9.old/po/it_IT.po	1970-01-01 01:00:00.000000000 +0100
++++ vcd-0.9/po/it_IT.po	2012-10-30 14:08:28.414871756 +0100
+@@ -0,0 +1,64 @@
++# VDR plugin language source file.
++# Copyright (C) 2007 Klaus Schmidinger <kls@tvdr.de>
++# This file is distributed under the same license as the VDR package.
++# Alberto Carraro <bertocar@tin.it>, 2001
++# Antonio Ospite <ospite@studenti.unina.it>, 2003
++# Sean Carlos <seanc@libero.it>, 2005
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: VDR 1.7.27\n"
++"Report-Msgid-Bugs-To: <dev@erichseifert.de>\n"
++"POT-Creation-Date: 2012-10-30 14:10+0200\n"
++"PO-Revision-Date: 2012-10-30 14:10+0200\n"
++"Last-Translator: Sean Carlos <seanc@libero.it>\n"
++"Language-Team: <vdr@linuxtv.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=ISO-8859-15\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++msgid "VideoCD"
++msgstr "VideoCD"
++
++msgid "No VideoCD detected"
++msgstr "Nessun VideoCD trovato"
++
++msgid "Eject"
++msgstr "Eject"
++
++msgid "Key$Play"
++msgstr ""
++
++msgid "Tracks"
++msgstr "Tracce"
++
++msgid "SPI"
++msgstr "SPI"
++
++msgid "Jump: "
++msgstr ""
++
++msgid "VCD"
++msgstr "VCD"
++
++msgid "Setup.VCD$Drive speed"
++msgstr "Velocità lettore"
++
++msgid "Setup.VCD$Broken mode"
++msgstr "Mod. non standard"
++
++msgid "Setup.VCD$Hide main menu entry"
++msgstr "Nascondi voce nel menu principale"
++
++msgid "Setup.VCD$Play tracks continuously"
++msgstr "Riproduci tracce in modo continuo"
++
++msgid "Setup.VCD$Autostart replay"
++msgstr "Riproduzione automatica all'avvio"
++
++msgid "Setup.VCD$Play sequence replay"
++msgstr "Riproduci in sequenza"
++
++msgid "No disc inserted"
++msgstr "Nessun disco inserito"
+diff -Naur vcd-0.9.old/psd.c vcd-0.9/psd.c
+--- vcd-0.9.old/psd.c	2008-01-20 17:59:59.000000000 +0100
++++ vcd-0.9/psd.c	2012-10-30 14:02:55.840626223 +0100
+@@ -21,7 +21,7 @@
+  */
+ 
+ 
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "psd.h"
+ #include "psdcontrol.h"
+ 
+diff -Naur vcd-0.9.old/psdcontrol.c vcd-0.9/psdcontrol.c
+--- vcd-0.9.old/psdcontrol.c	2008-01-16 13:30:53.000000000 +0100
++++ vcd-0.9/psdcontrol.c	2012-10-30 14:02:42.015616358 +0100
+@@ -27,7 +27,7 @@
+ 
+ #include <vdr/interface.h>
+ #include <vdr/status.h>
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "functions.h"
+ #include "setup.h"
+ #include "psdcontrol.h"
+diff -Naur vcd-0.9.old/setup.c vcd-0.9/setup.c
+--- vcd-0.9.old/setup.c	2008-01-15 16:27:44.000000000 +0100
++++ vcd-0.9/setup.c	2012-10-30 14:02:26.782605650 +0100
+@@ -22,7 +22,7 @@
+ 
+ #include <vdr/menuitems.h>
+ #include "setup.h"
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ 
+ cVcdSetupData VcdSetupData;
+ 
+diff -Naur vcd-0.9.old/vcd.c vcd-0.9/vcd.c
+--- vcd-0.9.old/vcd.c	2008-01-16 13:33:17.000000000 +0100
++++ vcd-0.9/vcd.c	2012-10-30 14:01:52.628580657 +0100
+@@ -25,7 +25,7 @@
+ #include <vdr/interface.h>
+ #include <vdr/plugin.h>
+ #include "functions.h"
+-#include "i18n.h"
++#include <vdr/i18n.h>
+ #include "menu.h"
+ #include "menucontrol.h"
+ #include "psdcontrol.h"
+@@ -100,7 +100,6 @@
+ 
+ bool cPluginVcd::Start(void)
+ {
+-  RegisterI18n(Phrases);
+   if (option_vcd)
+      vcd = new cVcd(option_vcd);
+   else

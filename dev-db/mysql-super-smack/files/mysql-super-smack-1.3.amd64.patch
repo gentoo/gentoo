@@ -1,0 +1,20 @@
+--- supesmack-1.3/src/query.cc.orig	2005-04-30 14:51:29.000000000 +0100
++++ supesmack-1.3/src/query.cc	2006-08-15 22:06:06.000000000 +0100
+@@ -197,7 +197,7 @@
+     {
+       string s((*i).first);
+       int str_len = (*i).first.length();
+-      if((unsigned)p + str_len + 3 *sizeof(int)  < (unsigned)p_end )
++      if((unsigned long)p + str_len + 3 *sizeof(int)  < (unsigned long)p_end )
+       {
+         *p++ = (char) str_len;
+ 	const char* q_type_name = s.c_str();
+@@ -216,7 +216,7 @@
+ 	die(0, "report buffer overflow -- too many query types");
+     }
+   
+-  len = (unsigned)p - (unsigned)buf;
++  len = (unsigned long)p - (unsigned long)buf;
+   *(buf) = num_recs;
+ 
+   if(write(fd, buf, len) != len)

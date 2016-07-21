@@ -1,0 +1,11 @@
+--- setup.py.bak	2015-09-19 14:03:27.000000000 +0200
++++ setup.py	2015-09-19 14:03:43.000000000 +0200
+@@ -45,7 +45,7 @@
+         "Natural Language :: English",
+         "License :: OSI Approved :: MIT License"
+       ],
+-      packages = find_packages(),
++      packages = find_packages(exclude=['tests']),
+       install_requires = ['httplib2'],
+       license = "MIT License",
+       keywords="oauth",

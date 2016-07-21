@@ -1,0 +1,25 @@
+From 984d4af9568de9c54a44e4cf96cca76e0cea256a Mon Sep 17 00:00:00 2001
+From: Ruslan Nigmatullin <euroelessar@yandex.ru>
+Date: Mon, 24 Feb 2014 18:09:20 +0300
+Subject: [PATCH 2/2] Fixed compilation with the newest cmake
+
+---
+ plugins/kdeintegration/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/kdeintegration/CMakeLists.txt b/plugins/kdeintegration/CMakeLists.txt
+index 6f1a9f8..805ad80 100644
+--- a/plugins/kdeintegration/CMakeLists.txt
++++ b/plugins/kdeintegration/CMakeLists.txt
+@@ -8,6 +8,8 @@ endif()
+ 
+ include(KDE4Defaults)
+ 
++set(CMAKE_AUTOMOC true)
++
+ add_definitions( ${KDE4_DEFINITIONS} )
+ 
+ qutim_add_plugin(kdeintegration
+-- 
+2.0.4
+

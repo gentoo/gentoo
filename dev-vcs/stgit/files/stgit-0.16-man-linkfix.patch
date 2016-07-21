@@ -1,0 +1,11 @@
+--- Documentation/Makefile.old	2012-07-08 23:55:38.958779174 +0200
++++ Documentation/Makefile	2012-07-08 23:56:42.638010483 +0200
+@@ -72,7 +72,7 @@
+ 	$(ASCIIDOC) -b xhtml11 -d manpage -f asciidoc.conf $(ASCIIDOC_EXTRA) $<
+ 
+ %.1 : %.xml
+-	xmlto -m callouts.xsl man $<
++	xmlto -m callouts.xsl --stringparam man.base.url.for.relative.links=$(htmldir) man $<
+ 
+ %.xml : %.txt
+ 	$(ASCIIDOC) -b docbook -d manpage -f asciidoc.conf $<

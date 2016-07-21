@@ -1,0 +1,107 @@
+#!/bin/bash
+# Initial version by Bioware
+# Modified to match the gentoo setup
+# 03/27/2003 phoen][x <phoenix@gentoo.org>
+
+cd GENTOO_DIR/nwn || exit 1
+
+aRequiredDirs=(ambient data music override miles nwm)
+aRequiredFiles=(chitin.key dialog.tlk nwmain)
+aLCDirs=(ambient data dmvault hak localvault music override portraits)
+aProblemFiles=()
+aWritables=(nwn.ini nwnplayer.ini nwncdkey.ini saves localvault tempclient currentgame dmvault)
+
+printf "Checking for required files\n\n"
+
+for d in ${aRequiredDirs[@]} ; do
+	if [[ -d $d ]] ; then
+		printf "PASSED: $d directory exists\n"
+	else
+		printf "FAILED: $d directory missing\n"
+		exit 1
+	fi
+done
+
+for f in ${aRequiredFiles[@]} ; do
+	if [[ -f $f ]] ; then
+		printf "PASSED: $f exists\n"
+	else
+		printf "FAILED: $f missing\n"
+		exit 1
+	fi
+done
+
+printf "\nFixing case\n\n"
+
+if [[ -f dialog.TLK ]] ; then
+	mv dialog.TLK dialog.tlk
+fi
+
+if [[ -f dialogF.TLK ]] ; then
+	mv dialogF.TLK dialogf.tlk
+fi
+
+for d in ${aLCDirs[@]} ; do
+	if [[ -d $d ]] ; then
+		printf "$d\n"
+		cd $d
+
+		for f in $(find . -name '*.*') ; do
+			lcf=$(echo $f | tr [:upper:] [:lower:])
+			if [[ $f != $lcf ]] && [[ -f $f ]] ; then
+				mv $f $(echo $f | tr [:upper:] [:lower:]) 
+			fi
+			printf .
+		done
+
+		cd ..
+		printf "\n"
+	fi
+done
+
+defIFS=$IFS
+IFS='|'
+
+if [[ -d saves ]] ; then
+	cd saves
+	for d in $(find . -name '* - *' -type d -printf "%f|") ; do
+		printf "saves/$d\n"
+		cd "$d"
+
+		[[ -f Portrait.tga ]] && mv Portrait.tga portrait.tga
+		[[ -f Screen.tga ]] && mv Screen.tga screen.tga
+
+		cd ..
+	done
+	cd ..
+fi
+
+IFS=$defIFS
+
+printf "\nChecking for problem files\n\n"
+
+for f in ${aProblemFiles[@]} ; do
+	if [[ -e $f ]] ; then
+		printf "WARNING: $f exists, deleting this file is recommended\n"
+	fi
+done
+
+printf "\nFixing permissions\n\n"
+
+chown GENTOO_USER:GENTOO_GROUP GENTOO_DIR/nwn/ -R
+chmod g+rwX GENTOO_DIR/nwn/ -R
+
+# 1.65-specific fixes to permissions
+[ -e GENTOO_DIR/nwn/data/patch.bif ] && \
+	chmod a-x GENTOO_DIR/nwn/data/patch.bif 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter1.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter1E.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter2.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter2E.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter3.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Chapter4.nwm 2>&1 > /dev/null
+chmod a-x GENTOO_DIR/nwn/nwm/Prelude.nwm 2>&1 > /dev/null
+[ -e GENTOO_DIR/nwn/patch.key ] && \
+	chmod a-x GENTOO_DIR/nwn/patch.key 2>&1 > /dev/null
+
+printf "\nYou are ready to run Neverwinter Nights.\n\n"

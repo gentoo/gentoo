@@ -1,0 +1,31 @@
+Index: FusionSound-1.1.1/interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c
+===================================================================
+--- FusionSound-1.1.1.orig/interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c
++++ FusionSound-1.1.1/interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c
+@@ -65,7 +65,6 @@ typedef struct {
+ 
+      DirectStream                 *stream;
+ 
+-     AVIOContext                   pb;
+      AVFormatContext              *ctx;
+      AVStream                     *st;
+      void                         *iobuf;
+@@ -1191,16 +1190,8 @@ Construct( IFusionSoundMusicProvider *th
+           return D_OOM();
+      }
+      
+-     if (init_put_byte( &data->pb, data->iobuf, 4096, 0, 
+-                        (void*)data, av_read_callback, NULL,
+-                        direct_stream_seekable( stream ) ? av_seek_callback : NULL ) < 0) {
+-          D_ERROR( "IFusionSoundMusicProvider_FFmpeg: init_put_byte() failed!\n" );
+-          IFusionSoundMusicProvider_FFmpeg_Destruct( thiz );
+-          return DFB_INIT;
+-     }
+-     
+-     if (av_open_input_stream( &data->ctx, &data->pb, filename, fmt, NULL ) < 0) {
+-          D_ERROR( "IFusionSoundMusicProvider_FFmpeg: av_open_input_stream() failed!\n" );
++     if (avformat_open_input( &data->ctx, filename, fmt, NULL ) < 0) {
++          D_ERROR( "IFusionSoundMusicProvider_FFmpeg: avformat_open_input() failed!\n" );
+           IFusionSoundMusicProvider_FFmpeg_Destruct( thiz );
+           return DFB_FAILURE;
+      }

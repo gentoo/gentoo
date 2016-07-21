@@ -1,0 +1,11 @@
+diff -ur wmfortune-0.241.orig/wmfortune.c wmfortune-0.241/wmfortune.c
+--- wmfortune-0.241.orig/wmfortune.c	2001-09-01 03:25:39.000000000 +0300
++++ wmfortune-0.241/wmfortune.c	2008-01-15 10:21:17.000000000 +0200
+@@ -25,6 +25,7 @@
+ 
+ #include <unistd.h>
+ #include <stdio.h>
++#include <string.h>
+ #include "dockapp.h"
+ #include "XPM/panel.xpm"
+ #include "XPM/panel_button_pressed.xpm"

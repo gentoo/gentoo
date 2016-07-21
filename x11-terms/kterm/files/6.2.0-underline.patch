@@ -1,0 +1,22 @@
+--- charproc.c.orig	2005-08-28 17:55:50.000000000 +0900
++++ charproc.c	2005-08-28 18:30:14.000000000 +0900
+@@ -1897,6 +1897,19 @@
+ 				 case 7:
+ 					term->flags |= INVERSE;
+ 					break;
++				 case 22:	/* Reset bold.		*/
++						/* ECMA-ly incorrect	*/
++					term->flags &= ~BOLD;
++					break;
++				 case 24:
++					term->flags &= ~UNDERLINE;
++					break;
++				 case 25:	/* Blink, really.	*/
++					term->flags &= ~BOLD;
++					break;
++				 case 27:
++					term->flags &= ~INVERSE;
++					break;
+ #ifdef KTERM_COLOR
+ 				 case 30:
+ 				 case 31:

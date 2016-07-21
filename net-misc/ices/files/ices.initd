@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting IceS 2"
+	start-stop-daemon --background --start --pidfile /var/run/ices.pid --make-pidfile --exec /usr/bin/ices /etc/ices2/ices.xml
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping IceS 2"
+	start-stop-daemon --stop --pidfile /var/run/ices.pid --name ices
+	eend $?
+}

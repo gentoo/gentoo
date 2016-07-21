@@ -1,0 +1,50 @@
+--- a/configure.in
++++ b/configure.in
+@@ -114,47 +114,6 @@
+   AC_MSG_RESULT(yes) ]
+ )
+ 
+-dnl Now let's checck the version of libnet (1.1.x requirerd)
+-AC_MSG_CHECKING(for version 1.1.x of libnet)
+-AC_TRY_RUN([
+-#include "$NETINC/libnet.h"
+-#include <string.h>
+-int main()
+-{
+-   return (strncmp(LIBNET_VERSION, "1.1.", 4));
+-}
+-],
+-[ AC_MSG_RESULT(yes)],
+-[  AC_MSG_RESULT(no)
+-   AC_MSG_ERROR(Bad libnet version found in $NETINC/libnet.h:
+-download libnet-1.1.x from http://www.packetfactory.net/projects/libnet/. 
+-If you think this version of libnet is already installed on your system
+-tell arp-sk where it is using --with-libnet=DIR)
+-]
+-dnl ,
+-dnl [  v=(`sed -n /LIBNET_VERSION/p /usr/local/include/libnet.h  | sed s/\"//g |awk '{print $3}'`)
+-dnl   echo "v=$v"
+-dnl   save_IFS="${IFS}"
+-dnl   IFS=.
+-dnl   vatb=(${v[0]})
+-dnl   IFS=$save_IFS
+-dnl   LIBNET_MAJOR=${vtab[0]}
+-dnl   LIBNET_MINOR=${vtab[1]}
+-
+-dnl   if [ $LIBNET_MAJOR==1 -a $LIBNET_MINOR==1 ]; then 
+-dnl     AC_MSG_RESULT(yes);
+-dnl   else
+-dnl    AC_MSG_RESULT(no)
+-dnl    AC_MSG_ERROR(Bad libnet version:
+-
+-dnl $NETINC/libnet.h
+-
+-dnl download libnet-1.1.x from http://www.packetfactory.net/projects/libnet/. 
+-dnl If you think this version of libnet id already installed on your system, 
+-dnl tell arp-sk where it is using --with-libnet=DIR)
+-dnl   fi
+-dnl ]
+-)
+ 
+ 
+ NETINC="-I$NETINC"

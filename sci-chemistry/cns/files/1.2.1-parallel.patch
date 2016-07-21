@@ -1,0 +1,17 @@
+diff --git a/instlib/source/Makefile.proto b/instlib/source/Makefile.proto
+index 0d0dd3e..ae9e422 100644
+--- a/instlib/source/Makefile.proto
++++ b/instlib/source/Makefile.proto
+@@ -19,9 +19,9 @@ DEPENDS = $(OBJS) dmemory.o machine_c.o
+ 
+ # the default is to make the cns executable
+ cns_solve:
+-	@ make -k printflags       F77BUG="$(debug)" DEBUG="$(debug)"
+-	@ make -k ../bin/cns_solve F77BUG="$(debug)" DEBUG="$(debug)"
+-	@ make -k exepurge
++	@ make printflags       F77BUG="$(debug)" DEBUG="$(debug)"
++	@ make ${MAKEOPTS} ../bin/cns_solve F77BUG="$(debug)" DEBUG="$(debug)"
++	@ make exepurge
+ 
+ # rule for the fortran routines
+ $(OBJS): 

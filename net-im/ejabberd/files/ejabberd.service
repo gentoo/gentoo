@@ -1,0 +1,17 @@
+[Unit]
+Description=A distributed, fault-tolerant Jabber/XMPP server
+After=network.target
+
+[Service]
+Type=oneshot
+User=jabber
+LimitNOFILE=16000
+RestartSec=5
+ExecStart=/usr/sbin/ejabberdctl \
+	--config /etc/jabber/ejabberd.cfg --ctl-config /etc/jabber/ejabberdctl.cfg \
+	--logs "/var/log/jabber" --spool "/var/spool/jabber" start
+ExecStop=/usr/sbin/ejabberdctl stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

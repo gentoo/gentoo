@@ -1,0 +1,23 @@
+* Use double underline as header-protectors to avoid collision with icu's platform.h 
+* (pulled in via libxml2 when built with icu support) resulting in int64_t defined twice 
+* (once in icu's ptypes.h and once in stdint.h)
+* patch by Tiziano Mueller <dev-zero@gentoo.org>
+--- a/rgmanager/include/platform.h	2011-03-07 19:58:22.000000000 +0100
++++ b/rgmanager/include/platform.h	2011-03-08 15:59:36.773871936 +0100
+@@ -1,8 +1,8 @@
+ /** @file
+  * Defines for byte-swapping
+  */
+-#ifndef _PLATFORM_H
+-#define _PLATFORM_H
++#ifndef __PLATFORM_H
++#define __PLATFORM_H
+ 
+ #include <endian.h>
+ #include <sys/param.h>
+@@ -56,4 +56,4 @@
+ #define PACKED __attribute__((packed))
+ #endif
+ 
+-#endif /* _PLATFORM_H */
++#endif /* __PLATFORM_H */

@@ -1,0 +1,77 @@
+From: Mehdi Dogguy <mehdi@debian.org>
+Date: Mon, 14 Sep 2015 23:11:00 +0200
+Subject: Port to Dose3 4.0.1
+
+---
+ src/core/opamCompiler.ml   | 2 +-
+ src/core/opamFilter.ml     | 2 +-
+ src/core/opamPackage.ml    | 2 +-
+ src/core/opamVersion.ml.in | 2 +-
+ src/solver/opamCudf.ml     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/core/opamCompiler.ml b/src/core/opamCompiler.ml
+index 4178311..c7beb93 100644
+--- a/src/core/opamCompiler.ml
++++ b/src/core/opamCompiler.ml
+@@ -30,7 +30,7 @@ module Version = struct
+ 
+   type constr = (OpamFormula.relop * t) OpamFormula.formula
+ 
+-  let compare v1 v2 = Debian.Version.compare (to_string v1) (to_string v2)
++  let compare v1 v2 = Versioning.Debian.compare (to_string v1) (to_string v2)
+ 
+   let eval_relop relop v1 v2 = OpamFormula.check_relop relop (compare v1 v2)
+ 
+diff --git a/src/core/opamFilter.ml b/src/core/opamFilter.ml
+index 0e919e7..ebce090 100644
+--- a/src/core/opamFilter.ml
++++ b/src/core/opamFilter.ml
+@@ -203,7 +203,7 @@ let rec reduce_aux env = function
+      | FUndef, _ | _, FUndef -> FUndef
+      | e,f ->
+        FBool (OpamFormula.check_relop relop
+-                (Debian.Version.compare (value_string e) (value_string f))))
++                (Versioning.Debian.compare (value_string e) (value_string f))))
+   | FAnd (e,f) -> logop2 (&&) false (reduce env e) (reduce env f)
+   | FOr (e,f) -> logop2 (||) true (reduce env e) (reduce env f)
+   | FNot e -> logop1 not (reduce env e)
+diff --git a/src/core/opamPackage.ml b/src/core/opamPackage.ml
+index 56605bb..8390896 100644
+--- a/src/core/opamPackage.ml
++++ b/src/core/opamPackage.ml
+@@ -29,7 +29,7 @@ module Version = struct
+ 
+   let of_string x = x
+ 
+-  let compare = Debian.Version.compare
++  let compare = Versioning.Debian.compare
+ 
+   let to_json x =
+     `String (to_string x)
+diff --git a/src/core/opamVersion.ml.in b/src/core/opamVersion.ml.in
+index 3c9fc92..ead47b8 100644
+--- a/src/core/opamVersion.ml.in
++++ b/src/core/opamVersion.ml.in
+@@ -27,7 +27,7 @@ let compare v w =
+   let cut s = match OpamMisc.cut_at s '-' with
+     | Some (s,_) -> s
+     | None -> s in
+-  Debian.Version.compare (cut v) (cut w)
++  Versioning.Debian.compare (cut v) (cut w)
+ 
+ module O = struct
+   type t = string
+diff --git a/src/solver/opamCudf.ml b/src/solver/opamCudf.ml
+index 62ea551..f790352 100644
+--- a/src/solver/opamCudf.ml
++++ b/src/solver/opamCudf.ml
+@@ -611,7 +611,7 @@ let check_cudf_version =
+           `Compat
+         | s::_ ->
+           match OpamMisc.split s ' ' with
+-          | "aspcud"::_::v::_ when Debian.Version.compare v "1.9" >= 0 ->
++          | "aspcud"::_::v::_ when Versioning.Debian.compare v "1.9" >= 0 ->
+             log "Solver is aspcud > 1.9: using latest version criteria";
+             `Latest
+           | _ ->

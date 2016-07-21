@@ -1,0 +1,12 @@
+# Generate skk-autoloads.el with coding cookie.
+--- a/SKK-MK
++++ b/SKK-MK
+@@ -884,7 +884,7 @@ SKK tutorials:
+       (set-buffer buf)
+       (erase-buffer)
+       (insert "\
+-;;; skk-autoloads.el --- autoload settings for SKK.
++;;; skk-autoloads.el --- autoload settings for SKK. -*- coding: iso-2022-jp -*-
+ 
+ ;; This file was generated automatically by SKK-MK at "
+ 	      (current-time-string)

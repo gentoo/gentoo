@@ -1,0 +1,11 @@
+--- Makefile.orig	2009-01-03 18:36:24.349399478 +0100
++++ Makefile	2009-01-03 18:36:37.218398964 +0100
+@@ -65,7 +65,7 @@
+ OBJ = ${SRCS:%.c=%.o}
+ 
+ pure-sfv: $(OBJ)
+-	$(CC) -lm -DVERSION=\"$(VERSION)\" $(CFLAGS) -o $(PROG) $(OBJ)
++	$(CC) -DVERSION=\"$(VERSION)\" $(CFLAGS) $(LDFLAGS) -o $(PROG) $(OBJ) -lm
+ 
+ PURIFY_OPTIONS=-follow-child-processes=yes -always-use-cache-dir=yes
+ PURIFY=purify

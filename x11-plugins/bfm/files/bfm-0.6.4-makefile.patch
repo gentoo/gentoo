@@ -1,0 +1,66 @@
+--- Makefile.orig	2015-01-20 10:56:34.791157688 +0100
++++ Makefile	2015-01-20 10:56:48.135154215 +0100
+@@ -26,21 +26,21 @@
+ EXTRA += $(WMAN)
+ 
+ # gtk cflags and gtk lib flags
+-GTK_CFLAGS = $(shell gtk-config --cflags)
++GTK_CFLAGS += $(shell gtk-config --cflags)
+ GTK_LIBS = $(shell gtk-config --libs)
+ 
+-GTK2_CFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
++GTK2_CFLAGS += $(shell pkg-config gtk+-2.0 --cflags)
+ GTK2_LIBS = $(shell pkg-config gtk+-2.0 --libs)
+ 
+ 
+ # optimization cflags
+-#CFLAGS = -O3 -Wall ${EXTRA}
+-CFLAGS = ${EXTRA}
++#CFLAGS += -O3 -Wall ${EXTRA}
++CFLAGS += ${EXTRA}
+ 
+ # profiling cflags
+-# CFLAGS = -ansi -Wall -pg -O3 ${EXTRA} -DPRO
++# CFLAGS += -ansi -Wall -pg -O3 ${EXTRA} -DPRO
+ # test coverage cflags
+-# CFLAGS = -fprofile-arcs -ftest-coverage -Wall -ansi -g ${EXTRA} -DPRO
++# CFLAGS += -fprofile-arcs -ftest-coverage -Wall -ansi -g ${EXTRA} -DPRO
+ 
+ 
+ SHELL = sh
+@@ -53,9 +53,9 @@
+ GKRELLM_SRCS = gkrellm-bfm.c
+ GKRELLM_OBJS = gkrellm-bfm.o
+ GKRELLM_BFM = gkrellm-bfm.so
+-LDFLAGS = -shared -Wl
++LDFLAGS += -shared -Wl
+ 
+-STRIP = strip
++STRIP = true
+ 
+ CC = gcc
+ 
+@@ -70,6 +70,7 @@
+ else
+ 	CFLAGS+=-DNET_DEVICE=\"$(NET_DEVICE)\"
+ endif
++	LIBS = -lm -lX11
+ 	SRCS += sys_linux.c
+ 	OBJS += sys_linux.o
+ 	INSTALL = -m 755
+@@ -129,12 +130,12 @@
+ 	$(STRIP) $(GKRELLM_BFM)
+ 
+ bubblefishymon: clean_obj
+-	$(CC) $(GTK2_CFLAGS) $(CFLAGS) -o $(BUBBLEFISHYMON) \
+-		$(LIBS) $(GTK2_LIBS) $(SRCS)
++	$(CC) $(GTK2_CFLAGS) $(CFLAGS) $(SRCS) $(GENTOO_LDFLAGS) -o $(BUBBLEFISHYMON) \
++		$(LIBS) $(GTK2_LIBS)
+ 	$(STRIP) $(BUBBLEFISHYMON)
+ 
+ bubblefishymon1: clean_obj
+-	$(CC) $(GTK_CFLAGS) $(CFLAGS) -o $(BUBBLEFISHYMON) \
++	$(CC) $(GTK_CFLAGS) $(CFLAGS) $(SRCS) $(GENTOO_LDFLAGS) -o $(BUBBLEFISHYMON) \
+ 		$(LIBS) $(GTK_LIBS) $(SRCS)
+ 	$(STRIP) $(BUBBLEFISHYMON)
+ 

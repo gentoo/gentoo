@@ -1,0 +1,15 @@
+diff -urN ufoai-2.4-source.old//src/client/cl_main.c ufoai-2.4-source/src/client/cl_main.c
+--- ufoai-2.4-source.old//src/client/cl_main.c	2012-05-01 10:59:51.720868619 +0200
++++ ufoai-2.4-source/src/client/cl_main.c	2012-05-01 11:00:57.235869759 +0200
+@@ -1180,7 +1180,11 @@
+ 	if (fs_i18ndir->string[0] != '\0')
+ 		Q_strncpyz(languagePath, fs_i18ndir->string, sizeof(languagePath));
+ 	else
++#ifdef LOCALEDIR
++		Q_strncpyz(languagePath, LOCALEDIR, sizeof(languagePath));
++#else
+ 		Com_sprintf(languagePath, sizeof(languagePath), "%s/"BASEDIRNAME"/i18n/", FS_GetCwd());
++#endif
+ 	Com_DPrintf(DEBUG_CLIENT, "...using mo files from %s\n", languagePath);
+ 	bindtextdomain(TEXT_DOMAIN, languagePath);
+ 	bind_textdomain_codeset(TEXT_DOMAIN, "UTF-8");

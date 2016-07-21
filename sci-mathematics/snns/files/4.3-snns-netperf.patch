@@ -1,0 +1,164 @@
+--- a/examples/nettalk.README	2008-04-21 03:55:43.000000000 -0400
++++ b/examples/nettalk.README	2015-04-14 09:38:23.836014999 -0400
+@@ -60,7 +60,7 @@
+ Hints:
+ ======
+ 
+-We usually call nettalk.net from the tool 'netperf', a benchmarking
++We usually call nettalk.net from the tool 'snns-netperf', a benchmarking
+ version of SNNS without graphical user interface but with the full and
+ current SNNS kernel. It is supplied with SNNS in the tools directory.
+ We usually train and test nettalk for 10 cycles. Since convergence is
+--- a/man/man1/snns.1	2008-04-21 03:56:05.000000000 -0400
++++ b/man/man1/snns.1	2015-04-14 09:36:27.406012874 -0400
+@@ -111,7 +111,7 @@
+ .BR netlearn (1)
+ backpropagation test program
+ 
+-.BR netperf (1)
++.BR snns-netperf (1)
+ benchmark program
+ 
+ .BR pat_sel (1)
+@@ -132,4 +132,4 @@
+ yet. 
+ 
+ .SH AUTHOR
+-Guenter W. Mamier 
+\ No newline at end of file
++Guenter W. Mamier 
+--- a/tools/doc/netperf.doc	2008-04-21 03:56:06.000000000 -0400
++++ b/tools/doc/netperf.doc	1969-12-31 19:00:00.000000000 -0500
+@@ -1,49 +0,0 @@
+-                  ===============================
+-                  Description of the tool NETPERF
+-                  ===============================
+-
+-This is a benchmark program for SNNS. Propagtion and
+-backpropagation tests are performed.
+-
+-synopsis: netperf
+-
+-
+-example:
+-
+-unix >netperf
+-
+-produces
+-
+-  SNNS 3D-Kernel V3.1000
+-  -----  Benchmark Test  -----
+-
+-  Filename of the network file: ../../../examples/nettalk.net
+-  Loading the network ...
+-
+-  Network name: nettalk1
+-  No. of units       : 349
+-  No. of input units : 203
+-  No. of output units: 26
+-  No. of sites: 0
+-  No. of links: 27480
+-
+-  Learning function: Std_Backpropagation
+-  Update function  : Topological_Order
+-
+-  Do you want to benchmark
+-  Propagation [1] or
+-  Backpropagation [2] ?
+-  Input: 1
+-
+-  Choose no. of cycles: 100
+-
+-  Begin propagation ...
+-
+-
+-  No. of units updated: 34900
+-  No. of sites updated: 0
+-  No. of links updated: 2748000
+-  CPU Time used: 3.05 seconds
+-
+-  No. of connection per second (CPS): 9.0098e+05
+-
+--- a/tools/doc/snns-netperf.doc	1969-12-31 19:00:00.000000000 -0500
++++ b/tools/doc/snns-netperf.doc	2015-04-14 09:37:21.126013855 -0400
+@@ -0,0 +1,49 @@
++                ====================================
++                Description of the tool SNNS-NETPERF
++                ====================================
++
++This is a benchmark program for SNNS. Propagtion and
++backpropagation tests are performed.
++
++synopsis: snns-netperf
++
++
++example:
++
++unix >snns-netperf
++
++produces
++
++  SNNS 3D-Kernel V3.1000
++  -----  Benchmark Test  -----
++
++  Filename of the network file: ../../../examples/nettalk.net
++  Loading the network ...
++
++  Network name: nettalk1
++  No. of units       : 349
++  No. of input units : 203
++  No. of output units: 26
++  No. of sites: 0
++  No. of links: 27480
++
++  Learning function: Std_Backpropagation
++  Update function  : Topological_Order
++
++  Do you want to benchmark
++  Propagation [1] or
++  Backpropagation [2] ?
++  Input: 1
++
++  Choose no. of cycles: 100
++
++  Begin propagation ...
++
++
++  No. of units updated: 34900
++  No. of sites updated: 0
++  No. of links updated: 2748000
++  CPU Time used: 3.05 seconds
++
++  No. of connection per second (CPS): 9.0098e+05
++
+--- a/tools/sources/Makefile	2015-04-14 09:34:31.386010756 -0400
++++ b/tools/sources/Makefile	2015-04-14 09:35:50.526012201 -0400
+@@ -89,7 +89,7 @@
+ 
+ TOOLS_PRG          = $(TOOLS_SOURCES_C:.c=)
+ KRTOOLS_PRG        = snns2c pat_sel netlearn td_bignet ff_bignet \
+-                     netperf snnsbat feedback-gennet convert2snns \
++                     snns-netperf snnsbat feedback-gennet convert2snns \
+                      isnns linknets
+ BATCH_PRG          = batchman
+ 
+@@ -110,7 +110,7 @@
+ tools:       $(TOOLS_PRG) $(KRTOOLS_PRG) $(BATCH_PRG)
+ 
+ $(TOOLSBINDIR):
+-	-mkdir $(TOOLSBINDIR)
++	-mkdir -p $(TOOLSBINDIR)
+ 
+ install: tools $(TOOLSBINDIR)
+ 	for tooltarget in $(TOOLS_PRG) $(KRTOOLS_PRG) $(BATCH_PRG) ; do \
+@@ -191,8 +191,8 @@
+ ff_bignet: ff_bignet.o $(KERNELLIBS)
+ 	$(CC) $(LDFLAGS) ff_bignet.o $(KERNELALLLIBS) -o ff_bignet
+ 
+-netperf: netperf.o $(KERNELLIBS)
+-	$(CC) $(LDFLAGS) netperf.o $(KERNELALLLIBS) -o netperf
++snns-netperf: netperf.o $(KERNELLIBS)
++	$(CC) $(LDFLAGS) netperf.o $(KERNELALLLIBS) -o snns-netperf
+ 
+ snnsbat: snnsbat.o $(KERNELLIBS)
+ 	$(CC) $(LDFLAGS) snnsbat.o $(KERNELALLLIBS) -o snnsbat

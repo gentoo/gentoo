@@ -1,0 +1,367 @@
+Index: librime-1.1git20140306/include/rime/algo/calculus.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/algo/calculus.h
++++ librime-1.1git20140306/include/rime/algo/calculus.h
+@@ -22,11 +22,12 @@ class Calculation {
+   using Factory = Calculation* (const std::vector<std::string>& args);
+ 
+   Calculation() = default;
+-  virtual ~Calculation() = default;
++  virtual ~Calculation();
+   virtual bool Apply(Spelling* spelling) = 0;
+   virtual bool addition() { return true; }
+   virtual bool deletion() { return true; }
+ };
++inline Calculation::~Calculation() = default;
+ 
+ class Calculus {
+  public:
+Index: librime-1.1git20140306/include/rime/dict/db.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/dict/db.h
++++ librime-1.1git20140306/include/rime/dict/db.h
+@@ -18,7 +18,7 @@ class DbAccessor {
+   DbAccessor() = default;
+   explicit DbAccessor(const std::string& prefix)
+       : prefix_(prefix) {}
+-  virtual ~DbAccessor() = default;
++  virtual ~DbAccessor();
+ 
+   virtual bool Reset() = 0;
+   virtual bool Jump(const std::string &key) = 0;
+@@ -30,11 +30,12 @@ class DbAccessor {
+ 
+   std::string prefix_;
+ };
++inline DbAccessor::~DbAccessor() = default;
+ 
+ class Db : public Class<Db, const std::string&> {
+  public:
+   explicit Db(const std::string& name);
+-  virtual ~Db() = default;
++  virtual ~Db();
+ 
+   bool Exists() const;
+   bool Remove();
+@@ -72,11 +73,12 @@ class Db : public Class<Db, const std::s
+   bool readonly_ = false;
+   bool disabled_ = false;
+ };
++inline Db::~Db() = default;
+ 
+ class Transactional {
+  public:
+   Transactional() = default;
+-  virtual ~Transactional() = default;
++  virtual ~Transactional();
+   virtual bool BeginTransaction() { return false; }
+   virtual bool AbortTransaction() { return false; }
+   virtual bool CommitTransaction() { return false; }
+@@ -84,12 +86,14 @@ class Transactional {
+  protected:
+   bool in_transaction_ = false;
+ };
++inline Transactional::~Transactional() = default;
+ 
+ class Recoverable {
+  public:
+-  virtual ~Recoverable() = default;
++  virtual ~Recoverable();
+   virtual bool Recover() = 0;
+ };
++inline Recoverable::~Recoverable() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/algo/encoder.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/algo/encoder.h
++++ librime-1.1git20140306/include/rime/algo/encoder.h
+@@ -24,7 +24,7 @@ class RawCode : public std::vector<std::
+ class PhraseCollector {
+  public:
+   PhraseCollector() = default;
+-  virtual ~PhraseCollector() = default;
++  virtual ~PhraseCollector();
+ 
+   virtual void CreateEntry(const std::string& phrase,
+                            const std::string& code_str,
+@@ -33,13 +33,14 @@ class PhraseCollector {
+   virtual bool TranslateWord(const std::string& word,
+                              std::vector<std::string>* code) = 0;
+ };
++inline PhraseCollector::~PhraseCollector() = default;
+ 
+ class Config;
+ 
+ class Encoder {
+  public:
+   Encoder(PhraseCollector* collector) : collector_(collector) {}
+-  virtual ~Encoder() = default;
++  virtual ~Encoder();
+ 
+   virtual bool LoadSettings(Config* config) {
+     return false;
+@@ -53,7 +54,7 @@ class Encoder {
+  protected:
+   PhraseCollector* collector_;
+ };
+-
++inline Encoder::~Encoder() = default;
+ // Aa : code at index 0 for character at index 0
+ // Az : code at index -1 for character at index 0
+ // Za : code at index 0 for character at index -1
+Index: librime-1.1git20140306/include/rime/candidate.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/candidate.h
++++ librime-1.1git20140306/include/rime/candidate.h
+@@ -21,7 +21,7 @@ class Candidate {
+             size_t end,
+             double quality = 0.)
+       : type_(type), start_(start), end_(end), quality_(quality) {}
+-  virtual ~Candidate() = default;
++  virtual ~Candidate();
+ 
+   static shared_ptr<Candidate>
+   GetGenuineCandidate(const shared_ptr<Candidate>& cand);
+@@ -53,6 +53,7 @@ class Candidate {
+   size_t end_ = 0;
+   double quality_ = 0.;
+ };
++inline Candidate::~Candidate() = default;
+ 
+ using CandidateList = std::vector<shared_ptr<Candidate>>;
+ 
+Index: librime-1.1git20140306/include/rime/component.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/component.h
++++ librime-1.1git20140306/include/rime/component.h
+@@ -16,8 +16,9 @@ namespace rime {
+ class ComponentBase {
+  public:
+   ComponentBase() = default;
+-  virtual ~ComponentBase() = default;
++  virtual ~ComponentBase();
+ };
++inline ComponentBase::~ComponentBase() = default;
+ 
+ template <class T, class Arg>
+ struct Class {
+Index: librime-1.1git20140306/include/rime/config.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/config.h
++++ librime-1.1git20140306/include/rime/config.h
+@@ -22,7 +22,7 @@ class ConfigItem {
+   enum ValueType { kNull, kScalar, kList, kMap };
+ 
+   ConfigItem() = default;  // null
+-  virtual ~ConfigItem() = default;
++  virtual ~ConfigItem();
+ 
+   ValueType type() const { return type_; }
+ 
+@@ -31,6 +31,7 @@ class ConfigItem {
+ 
+   ValueType type_ = kNull;
+ };
++inline ConfigItem::~ConfigItem() = default;
+ 
+ using ConfigItemPtr = shared_ptr<ConfigItem>;
+ 
+Index: librime-1.1git20140306/include/rime/deployer.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/deployer.h
++++ librime-1.1git20140306/include/rime/deployer.h
+@@ -25,10 +25,11 @@ using TaskInitializer = boost::any;
+ class DeploymentTask : public Class<DeploymentTask, TaskInitializer> {
+  public:
+   DeploymentTask() = default;
+-  virtual ~DeploymentTask() = default;
++  virtual ~DeploymentTask();
+ 
+   virtual bool Run(Deployer* deployer) = 0;
+ };
++inline DeploymentTask::~DeploymentTask() = default;
+ 
+ class Deployer : public Messenger {
+  public:
+Index: librime-1.1git20140306/include/rime/filter.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/filter.h
++++ librime-1.1git20140306/include/rime/filter.h
+@@ -22,7 +22,7 @@ class Filter : public Class<Filter, cons
+  public:
+   explicit Filter(const Ticket& ticket)
+       : engine_(ticket.engine), name_space_(ticket.name_space) {}
+-  virtual ~Filter() = default;
++  virtual ~Filter();
+ 
+   virtual void Apply(CandidateList* recruited,
+                      CandidateList* candidates) = 0;
+@@ -35,6 +35,7 @@ class Filter : public Class<Filter, cons
+   Engine* engine_;
+   std::string name_space_;
+ };
++inline Filter::~Filter() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/formatter.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/formatter.h
++++ librime-1.1git20140306/include/rime/formatter.h
+@@ -20,7 +20,7 @@ class Formatter : public Class<Formatter
+  public:
+   Formatter(const Ticket& ticket)
+       : engine_(ticket.engine), name_space_(ticket.name_space) {}
+-  virtual ~Formatter() = default;
++  virtual ~Formatter();
+ 
+   virtual void Format(std::string* text) = 0;
+ 
+@@ -28,6 +28,7 @@ class Formatter : public Class<Formatter
+   Engine* engine_;
+   std::string name_space_;
+ };
++inline Formatter::~Formatter() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/lever/custom_settings.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/lever/custom_settings.h
++++ librime-1.1git20140306/include/rime/lever/custom_settings.h
+@@ -19,7 +19,7 @@ class CustomSettings {
+   CustomSettings(Deployer* deployer,
+                  const std::string& config_id,
+                  const std::string& generator_id);
+-  virtual ~CustomSettings() = default;
++  virtual ~CustomSettings();
+ 
+   virtual bool Load();
+   virtual bool Save();
+@@ -39,6 +39,7 @@ class CustomSettings {
+   Config config_;
+   Config custom_config_;
+ };
++inline CustomSettings::~CustomSettings() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/processor.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/processor.h
++++ librime-1.1git20140306/include/rime/processor.h
+@@ -25,7 +25,7 @@ class Processor : public Class<Processor
+  public:
+   explicit Processor(const Ticket& ticket)
+       : engine_(ticket.engine), name_space_(ticket.name_space) {}
+-  virtual ~Processor() = default;
++  virtual ~Processor();
+ 
+   virtual ProcessResult ProcessKeyEvent(const KeyEvent& key_event) {
+     return kNoop;
+@@ -35,6 +35,7 @@ class Processor : public Class<Processor
+   Engine* engine_;
+   std::string name_space_;
+ };
++inline Processor::~Processor() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/segmentor.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/segmentor.h
++++ librime-1.1git20140306/include/rime/segmentor.h
+@@ -19,7 +19,7 @@ class Segmentor : public Class<Segmentor
+  public:
+   explicit Segmentor(const Ticket& ticket)
+       : engine_(ticket.engine), name_space_(ticket.name_space) {}
+-  virtual ~Segmentor() = default;
++  virtual ~Segmentor();
+ 
+   virtual bool Proceed(Segmentation* segmentation) = 0;
+ 
+@@ -27,6 +27,7 @@ class Segmentor : public Class<Segmentor
+   Engine* engine_;
+   std::string name_space_;
+ };
++inline Segmentor::~Segmentor() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/translation.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/translation.h
++++ librime-1.1git20140306/include/rime/translation.h
+@@ -19,7 +19,7 @@ namespace rime {
+ class Translation {
+  public:
+   Translation() = default;
+-  virtual ~Translation() = default;
++  virtual ~Translation();
+ 
+   // A translation may contain multiple results, looks
+   // something like a generator of candidates.
+@@ -40,6 +40,7 @@ class Translation {
+  private:
+   bool exhausted_ = false;
+ };
++inline Translation::~Translation() = default;
+ 
+ class UniqueTranslation : public Translation {
+  public:
+Index: librime-1.1git20140306/include/rime/translator.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/translator.h
++++ librime-1.1git20140306/include/rime/translator.h
+@@ -23,7 +23,7 @@ class Translator : public Class<Translat
+  public:
+   explicit Translator(const Ticket& ticket)
+       : engine_(ticket.engine), name_space_(ticket.name_space) {}
+-  virtual ~Translator() = default;
++  virtual ~Translator();
+ 
+   virtual shared_ptr<Translation> Query(const std::string& input,
+                                         const Segment& segment,
+@@ -33,6 +33,7 @@ class Translator : public Class<Translat
+   Engine* engine_;
+   std::string name_space_;
+ };
++inline Translator::~Translator() = default;
+ 
+ }  // namespace rime
+ 
+Index: librime-1.1git20140306/include/rime/dict/db_utils.h
+===================================================================
+--- librime-1.1git20140306.orig/include/rime/dict/db_utils.h
++++ librime-1.1git20140306/include/rime/dict/db_utils.h
+@@ -14,17 +14,18 @@ namespace rime {
+ 
+ class Sink {
+  public:
+-  virtual ~Sink() = default;
++  virtual ~Sink();
+   virtual bool MetaPut(const std::string& key, const std::string& value) = 0;
+   virtual bool Put(const std::string& key, const std::string& value) = 0;
+ 
+   template <class SourceType>
+   int operator<< (SourceType& source);
+ };
++inline Sink::~Sink() = default;
+ 
+ class Source {
+  public:
+-  virtual ~Source() = default;
++  virtual ~Source();
+   virtual bool MetaGet(std::string* key, std::string* value) = 0;
+   virtual bool Get(std::string* key, std::string* value) = 0;
+ 
+@@ -33,6 +34,7 @@ class Source {
+ 
+   int Dump(Sink* sink);
+ };
++inline Source::~Source() = default;
+ 
+ template <class SourceType>
+ int Sink::operator<< (SourceType& source) {

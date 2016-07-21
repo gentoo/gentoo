@@ -1,0 +1,39 @@
+From: hasufell <hasufell@gentoo.org>
+Date: Thu May  3 20:06:31 UTC 2012
+
+fix compilation for cg useflag
+
+--- cmake/FindCg.cmake
++++ cmake/FindCg.cmake
+@@ -86,6 +86,7 @@
+     FIND_PROGRAM( CG_COMPILER cgc
+       /usr/bin
+       /usr/local/bin
++      /opt/nvidia-cg-toolkit/bin
+       DOC "The Cg Compiler"
+       )
+     GET_FILENAME_COMPONENT(CG_COMPILER_DIR "${CG_COMPILER}" PATH)
+@@ -93,6 +94,7 @@
+     FIND_PATH( CG_INCLUDE_PATH Cg/cg.h
+       /usr/include
+       /usr/local/include
++      /opt/nvidia-cg-toolkit/include
+       ${CG_COMPILER_SUPER_DIR}/include
+       DOC "The directory where Cg/cg.h resides"
+       )
+@@ -102,6 +104,7 @@
+       /usr/lib
+       /usr/local/lib64
+       /usr/local/lib
++      /opt/nvidia-cg-toolkit/lib
+       ${CG_COMPILER_SUPER_DIR}/lib64
+       ${CG_COMPILER_SUPER_DIR}/lib
+       DOC "The Cg runtime library"
+@@ -113,6 +116,7 @@
+       /usr/lib
+       /usr/local/lib64
+       /usr/local/lib
++      /opt/nvidia-cg-toolkit/lib
+       ${CG_COMPILER_SUPER_DIR}/lib64
+       ${CG_COMPILER_SUPER_DIR}/lib
+       DOC "The Cg runtime library"

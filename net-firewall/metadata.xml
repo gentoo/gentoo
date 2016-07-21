@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-firewall category contains network firewall software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-firewall enthült Firewall-Software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-firewall contiene programas relacionados con
+		cortafuegos de redes.
+	</longdescription>
+	<longdescription lang="ja">
+		net-firewall カテゴリーにはネットワーク・ファイアウォールの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-firewall categorie bevat firewall-software.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-firewall chứa các phần mềm firewall.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-firewall contiene software per firewall.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-firewall contém programas de firewall para
+		redes.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-firewall zawiera ściany ogniowe (firewalle).
+	</longdescription>
+</catmetadata>
+

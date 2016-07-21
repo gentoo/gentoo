@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">CursesWidgets</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::ButtonSet</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::Calendar</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::ComboBox</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::Label</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::ListBox</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::ListBox::MultiColumn</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::Menu</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::ProgressBar</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::TextField</remote-id>
+    <remote-id type="cpan-module">Curses::Widgets::TextMemo</remote-id>
+  </upstream>
+</pkgmetadata>

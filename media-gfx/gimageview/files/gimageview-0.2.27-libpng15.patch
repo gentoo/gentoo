@@ -1,0 +1,24 @@
+http://bugs.gentoo.org/361941
+
+--- plugins/image_loader/png_loader.c
++++ plugins/image_loader/png_loader.c
+@@ -255,7 +255,7 @@
+       return NULL;
+    }
+ 
+-   if (setjmp (png_ptr->jmpbuf)) goto ERROR;
++   if (setjmp (png_jmpbuf(png_ptr))) goto ERROR;
+ 
+    context.gio = gio;
+    context.bytes_read = 0;
+--- plugins/image_saver/png_saver.c
++++ plugins/image_saver/png_saver.c
+@@ -130,7 +130,7 @@
+       return FALSE;
+    }
+ 
+-   if (setjmp (png_ptr->jmpbuf)) {
++   if (setjmp (png_jmpbuf(png_ptr))) {
+       png_destroy_write_struct (&png_ptr, &info_ptr);
+       fclose (handle);
+       return FALSE;

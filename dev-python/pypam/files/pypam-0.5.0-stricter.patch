@@ -1,0 +1,15 @@
+=== modified file 'PAMmodule.c'
+--- PAMmodule.c	2007-05-28 17:50:59 +0000
++++ PAMmodule.c	2007-05-28 18:13:33 +0000
+@@ -9,8 +9,9 @@
+ 
++#include <Python.h>
+ #include <security/pam_appl.h>
+ #include <security/pam_misc.h>
+-#include <Python.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <dlfcn.h>
+ 
+ static PyObject *PyPAM_Error;
+

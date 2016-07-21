@@ -1,0 +1,37 @@
+diff --git a/features/exit_statuses.feature b/features/exit_statuses.feature
+index 5c5dffe..b971152 100644
+--- a/features/exit_statuses.feature
++++ b/features/exit_statuses.feature
+@@ -30,13 +30,3 @@ Feature: exit statuses
+   Scenario: Unsuccessfully run something
+     When I do aruba I successfully run `ruby -e 'exit 10'`
+     Then aruba should fail with "Exit status was 10"
+-
+-  @posix
+-  Scenario: Try to run something that doesn't exist
+-    When I run `does_not_exist`
+-    Then the exit status should be 1
+-
+-  @posix
+-  Scenario: Try to run something that doesn't exist with `
+-    When I run `does_not_exist`
+-    Then the exit status should be 1
+diff --git a/features/output.feature b/features/output.feature
+index 8af06ca..7eea5a5 100644
+--- a/features/output.feature
++++ b/features/output.feature
+@@ -5,14 +5,6 @@ Feature: Output
+   I want to use the "the output should contain" step
+ 
+   @posix
+-  Scenario: Run unknown command
+-    When I run `neverever gonna work`
+-    Then the output should contain:
+-      """
+-      No such file or directory - neverever
+-      """
+-
+-  @posix
+   Scenario: Detect subset of one-line output
+     When I run `ruby -e 'puts \"hello world\"'`
+     Then the output should contain "hello world"

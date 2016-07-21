@@ -1,0 +1,32 @@
+Index: stk-4.4.4/Makefile.in
+===================================================================
+--- stk-4.4.4.orig/Makefile.in
++++ stk-4.4.4/Makefile.in
+@@ -4,27 +4,12 @@ RM = /bin/rm
+ 
+ all :
+ 	cd src && $(MAKE)
+-	cd projects/demo && $(MAKE) libdemo
+-	cd projects/effects && $(MAKE) libeffects
+-	cd projects/ragamatic && $(MAKE) libragamat
+-	cd projects/eguitar && $(MAKE) libeguitar
+-	cd projects/examples && $(MAKE) -f libMakefile
+ 
+ clean : 
+ 	$(RM) -f *~
+ 	cd src && $(MAKE) clean
+-	cd projects/demo && $(MAKE) clean
+-	cd projects/effects && $(MAKE) clean
+-	cd projects/ragamatic && $(MAKE) clean
+-	cd projects/eguitar && $(MAKE) clean
+-	cd projects/examples && $(MAKE) clean
+ 
+ distclean: clean
+ 	$(RM) -rf config.log config.status autom4te.cache Makefile
+ 	cd src && $(MAKE) distclean
+-	cd projects/demo && $(MAKE) distclean
+-	cd projects/effects && $(MAKE) distclean
+-	cd projects/ragamatic && $(MAKE) distclean
+-	cd projects/eguitar && $(MAKE) distclean
+-	cd projects/examples && $(MAKE) distclean
+ 

@@ -1,0 +1,10 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Id$
+
+*>=sys-apps/baselayout-2.0.0
+*>=sys-apps/openrc-0.2.5
+
+# Not necessary dev-libs/libiconv and freebsd-contrib in 10.0 and later.
+-*dev-libs/libiconv
+-*sys-freebsd/freebsd-contrib

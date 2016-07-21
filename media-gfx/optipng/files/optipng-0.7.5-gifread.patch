@@ -1,0 +1,12 @@
+diff --git a/src/gifread/gifread.c b/src/gifread/gifread.c
+index b24aa6e..2896493 100644
+--- a/src/gifread/gifread.c
++++ b/src/gifread/gifread.c
+@@ -357,6 +357,7 @@ static int LZWGetCode(int code_size, int init_flag, FILE *stream)
+     {
+         curbit = 0;
+         lastbit = 0;
++        last_byte = 2;
+         done = LZW_FALSE;
+         return 0;
+     }

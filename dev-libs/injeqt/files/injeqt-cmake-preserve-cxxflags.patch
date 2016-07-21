@@ -1,0 +1,12 @@
+diff -ruN injeqt-1.0.0/CMakeLists.txt injeqt-my/CMakeLists.txt
+--- injeqt-1.0.0/CMakeLists.txt	2015-01-25 00:09:26.000000000 +0100
++++ injeqt-my/CMakeLists.txt	2016-01-09 04:01:39.162295444 +0100
+@@ -39,7 +39,7 @@
+ 
+ set (WARNINGS "-Werror -W -Wall -Wextra -Wundef -Wunused -Wuninitialized -Wcast-align -Wpointer-arith -Woverloaded-virtual -Wnon-virtual-dtor -fno-common")
+ set (VISIBILITY "-fvisibility=hidden -fvisibility-inlines-hidden")
+-set (CMAKE_CXX_FLAGS "-std=c++11 ${WARNINGS} ${VISIBILITY}")
++set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ${WARNINGS} ${VISIBILITY}")
+ 
+ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+ 	set (CMAKE_CXX_FLAGS "-O0 ${CMAKE_CXX_FLAGS}")

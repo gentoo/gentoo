@@ -1,0 +1,4 @@
+#!/bin/sh
+export TROMMLER_DRUM_DIR="/usr/share/trommler/Drums"
+cd /usr/share/trommler/Songs
+exec /usr/libexec/trommler "$@"

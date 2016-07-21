@@ -1,0 +1,52 @@
+<project name="kouchat" default="jar">
+	<property name="dest.jar" value="kouchat.jar"/>
+	<property name="build.app" value="build/app"/>
+	<property name="build.test" value="build/test"/>
+	<target name="compile">
+		<mkdir dir="${build.app}"/>
+		<javac srcdir="src" destdir="${build.app}"/>
+		<copy todir="${build.app}/icons">
+			<fileset dir="resources/icons"/>
+		</copy>
+		<copy todir="${build.app}/sounds">
+			<fileset dir="resources/sounds"/>
+		</copy>
+		<copy file="kou_shortcut.ico" todir="${build.app}"/>
+		<copy file="kou_shortcut.png" todir="${build.app}"/>
+		<copy file="CHANGES" todir="${build.app}"/>
+		<copy file="COPYING" todir="${build.app}"/>
+		<copy file="FAQ" todir="${build.app}"/>
+		<copy file="README" todir="${build.app}"/>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${dest.jar}">
+			<fileset dir="${build.app}"/>
+		</jar>
+	</target>
+	
+	<target name="test">
+		<mkdir dir="${build.test}"/>
+		<javac srcdir="test" destdir="${build.test}">
+			<classpath>
+				<pathelement location="${dest.jar}"/>
+				<pathelement path="${junit4.jar}"/>
+			</classpath>		
+		</javac>
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<pathelement path="${build.test}"/>
+				<pathelement path="${build.app}"/>
+			</classpath>
+			<test name="net.usikkert.kouchat.net.MessageParserTest"/>
+			<test name="net.usikkert.kouchat.net.UDPReceiverTest"/>
+			<test name="net.usikkert.kouchat.net.UDPSenderTest"/>
+		</junit>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="docs"/>
+		<javadoc sourcepath="src" destdir="docs"/>
+	</target>
+
+</project>

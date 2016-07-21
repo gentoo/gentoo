@@ -1,0 +1,24 @@
+From 07329b72687ccc7a9015de4a48fae297d6d5ff96 Mon Sep 17 00:00:00 2001
+From: Brett Witherspoon <spoonb@cdspooner.com>
+Date: Tue, 12 Oct 2010 03:23:47 +0000
+Subject: image: replace deprecated libpng function
+
+The png_set_gray_1_2_4_to_8 function is deprecated and has been removed
+from libpng14. Now png_set_expand_gray_1_2_4_to_8 is used instead which
+is compatible with libpng-1.2.9 and greater.
+---
+diff --git a/src/libply-splash-graphics/ply-image.c b/src/libply-splash-graphics/ply-image.c
+index 9369242..4b16783 100644
+--- a/src/libply-splash-graphics/ply-image.c
++++ b/src/libply-splash-graphics/ply-image.c
+@@ -151,7 +151,7 @@ ply_image_load (ply_image_t *image)
+     png_set_palette_to_rgb (png);
+ 
+   if ((color_type == PNG_COLOR_TYPE_GRAY) && (bits_per_pixel < 8))
+-    png_set_gray_1_2_4_to_8 (png);
++    png_set_expand_gray_1_2_4_to_8 (png);
+ 
+   if (png_get_valid (png, info, PNG_INFO_tRNS))
+     png_set_tRNS_to_alpha (png);
+--
+cgit v0.8.3-6-g21f6

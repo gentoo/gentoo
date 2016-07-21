@@ -1,0 +1,16 @@
+ spellerutility.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spellerutility.h b/spellerutility.h
+index 7e1b980..b0bc8b8 100644
+--- a/spellerutility.h
++++ b/spellerutility.h
+@@ -13,7 +13,7 @@
+ 
+ #include "mostQtHeaders.h"
+ 
+-#include "hunspell/hunspell.hxx"
++#include <hunspell.hxx>
+ class SpellerUtility: public QObject {
+ 	Q_OBJECT
+ public:

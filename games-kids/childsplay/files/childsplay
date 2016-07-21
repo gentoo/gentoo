@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -z "${LANGUAGE}" ] && LANGUAGE=en
+export LANGUAGE
+python GENTOO_DIR/childsplay.py "$@"

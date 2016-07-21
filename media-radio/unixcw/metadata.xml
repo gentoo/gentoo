@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tomjbe@gentoo.org</email>
+		<name>Thomas Beierlein</name>
+	</maintainer>
+	<longdescription>unixcw is package of libraries and programs that fit
+		together to form a morse code tutor program. It provides the general
+		purpose 'libcw' library with functions to generate Morse code
+		characters and a frontend program 'cw' to convert text strings to 
+		morse code output via soundcard or console speaker. It further provides
+		a set of Morse Code tutor programs (see USE flag description).
+	</longdescription>
+	<use>
+		<flag name="ncurses">Enables building the curses based morse code tutor
+			program 'cwcp'.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">unixcw</remote-id>
+	</upstream>
+</pkgmetadata>

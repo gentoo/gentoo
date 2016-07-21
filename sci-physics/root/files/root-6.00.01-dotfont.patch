@@ -1,0 +1,58 @@
+--- root/html/src/TClassDocOutput.cxx.orig	2012-06-08 02:13:51.000000000 +0400
++++ root/html/src/TClassDocOutput.cxx	2012-06-08 02:34:45.705436577 +0400
+@@ -625,7 +625,7 @@
+       << "size=\"8,10\";" << std::endl
+       << "ratio=auto;" << std::endl
+       << "margin=0;" << std::endl
+-      << "node [shape=plaintext,fontsize=40,width=4,height=0.75];" << std::endl
++      << "node [shape=plaintext,fontsize=40,width=4,height=0.75,fontname=\"DejaVu Serif\"];" << std::endl
+       << "\"" << fCurrentClass->GetName() << "\" [shape=ellipse];" << std::endl;
+ 
+    std::stringstream ssDep;
+@@ -704,7 +704,7 @@
+             outdot << ";" << std::endl;
+          } else if (writeAndMoreFor) {
+                outdot << "  \"...andmore" << writeAndMoreFor->GetName()
+-                      << "\" [label=\"...and more\",fontname=\"Times-Italic\",fillcolor=lightgrey,style=filled];" << std::endl;
++                      << "\" [label=\"...and more\",fontname=\"DejaVu Serif Italic\",fillcolor=lightgrey,style=filled];" << std::endl;
+          }
+       }
+       if (!levelExists) break;
+@@ -733,7 +733,7 @@
+       << "ranksep=0.1;" << std::endl
+       << "nodesep=0;" << std::endl
+       << "margin=0;" << std::endl;
+-   outdot << "  node [style=filled,width=0.7,height=0.15,fixedsize=true,shape=plaintext,fontsize=10];" << std::endl;
++   outdot << "  node [style=filled,width=0.7,height=0.15,fixedsize=true,shape=plaintext,fontsize=10,fontname=\"DejaVu Serif\"];" << std::endl;
+ 
+    std::stringstream ssDep;
+    const int numColumns = 3;
+@@ -939,7 +939,7 @@
+       << "ranksep=0;" << std::endl
+       << "nodesep=0;" << std::endl
+       << "size=\"8,10\";" << std::endl
+-      << "node [fontsize=20,shape=plaintext];" << std::endl;
++      << "node [fontsize=20,shape=plaintext,fontname=\"DejaVu Serif\"];" << std::endl;
+ 
+    for (std::list<std::string>::iterator iFile = listFilesToParse.begin();
+       iFile != listFilesToParse.end(); ++iFile) {
+@@ -999,7 +999,8 @@
+       << "ranksep=0.7;" << std::endl
+       << "nodesep=0.3;" << std::endl
+       << "size=\"8,8\";" << std::endl
+-      << "ratio=compress;" << std::endl;
++      << "ratio=compress;" << std::endl
++      << "node [fontname=\"DejaVu Serif\"];" << std::endl;
+ 
+    TString libs(fCurrentClass->GetSharedLibs());
+    outdot << "\"All Libraries\" [URL=\"LibraryDependencies.html\",shape=box,rank=max,fillcolor=lightgray,style=filled];" << std::endl;
+@@ -1109,7 +1110,8 @@
+ 
+    dotout << "digraph G {" << std::endl
+           << "ratio=auto;" << std::endl
+-          << "rankdir=RL;" << std::endl;
++          << "rankdir=RL;" << std::endl
++          << "node [fontname=\"DejaVu Serif\"];" << std::endl;
+ 
+    // loop on all classes
+    TClassDocInfo* cdi = 0;

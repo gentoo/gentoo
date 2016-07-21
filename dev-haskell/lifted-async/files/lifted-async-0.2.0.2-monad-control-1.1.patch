@@ -1,0 +1,69 @@
+commit 448176aa98e03a31121501af004d8159e92b2f66
+Author: Roman Cheplyaka <roma@ro-che.info>
+Date:   Tue Dec 16 12:09:52 2014 +0200
+
+    Make lifted-async build with monad-control-1.0
+
+diff --git a/src/Control/Concurrent/Async/Lifted.hs b/src/Control/Concurrent/Async/Lifted.hs
+index fa5a158..e5034c1 100644
+--- a/src/Control/Concurrent/Async/Lifted.hs
++++ b/src/Control/Concurrent/Async/Lifted.hs
+@@ -2,6 +2,7 @@
+ {-# LANGUAGE KindSignatures #-}
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE TypeFamilies #-}
++{-# LANGUAGE ScopedTypeVariables #-}
+ 
+ {- |
+ Module      : Control.Concurrent.Async.Lifted
+@@ -47,7 +48,7 @@ module Control.Concurrent.Async.Lifted
+ 
+ import Control.Applicative
+ import Control.Concurrent (threadDelay)
+-import Control.Monad ((>=>), forever, liftM, void)
++import Control.Monad ((>=>), forever, liftM)
+ import Data.Traversable (Traversable(..))
+ import GHC.IO (unsafeUnmask)
+ import Prelude hiding (mapM)
+@@ -180,11 +181,11 @@ waitCatch
+ waitCatch a = liftBase (A.waitCatch a) >>= sequenceEither
+ 
+ -- | Generalized version of 'A.cancel'.
+-cancel :: MonadBase IO m => Async (StM m a) -> m ()
++cancel :: MonadBase IO m => Async a -> m ()
+ cancel = liftBase . A.cancel
+ 
+ -- | Generalized version of 'A.cancelWith'.
+-cancelWith :: (MonadBase IO m, Exception e) => Async (StM m a) -> e -> m ()
++cancelWith :: (MonadBase IO m, Exception e) => Async a -> e -> m ()
+ cancelWith = (liftBase .) . A.cancelWith
+ 
+ -- | Generalized version of 'A.waitAny'.
+@@ -261,10 +262,10 @@ waitEitherCatchCancel a b =
+ -- | Generalized version of 'A.waitEither_'.
+ waitEither_
+   :: MonadBaseControl IO m
+-  => Async (StM m a)
+-  -> Async (StM m b)
++  => Async a
++  -> Async b
+   -> m ()
+-waitEither_ = (void .) . waitEither
++waitEither_ a b = liftBase (A.waitEither_ a b)
+ 
+ -- | Generalized version of 'A.waitBoth'.
+ waitBoth
+@@ -280,11 +281,11 @@ waitBoth a b = do
+ {-# INLINABLE waitBoth #-}
+ 
+ -- | Generalized version of 'A.link'.
+-link :: MonadBase IO m => Async (StM m a) -> m ()
++link :: MonadBase IO m => Async a -> m ()
+ link = liftBase . A.link
+ 
+ -- | Generalized version of 'A.link2'.
+-link2 :: MonadBase IO m => Async (StM m a) -> Async (StM m b) -> m ()
++link2 :: MonadBase IO m => Async a -> Async a -> m ()
+ link2 = (liftBase .) . A.link2
+ 
+ -- | Generalized version of 'A.race'.

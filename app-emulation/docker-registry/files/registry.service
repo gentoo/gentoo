@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker Registry 2.0
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=registry
+PrivateDevices=Yes
+Environment="DOCKER_REGISTRY_ARGS=serve /etc/docker/registry/config.yml"
+ExecStart=/usr/libexec/docker-registry/registry $DOCKER_REGISTRY_ARGS
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,58 @@
+--- Makefile.in	2006-03-30 18:22:39.000000000 +0200
++++ Makefile.in	2010-03-12 21:34:34.000000000 +0100
+@@ -22,7 +22,7 @@
+ all: hesinfo
+ 
+ hesinfo: hesinfo.o
+-	${CC} ${LDFLAGS} -o $@ hesinfo.o -lhesiod ${LIBS}
++	${CC} ${LDFLAGS} -o $@ hesinfo.o -lhesiod ${LIBS} ${LDFLAGS}
+ 
+ .c.o:
+ 	${CC} -c ${ALL_CFLAGS} $<
+--- configure.in	2006-03-30 18:22:39.000000000 +0200
++++ configure.in	2010-03-12 21:42:05.000000000 +0100
+@@ -7,6 +7,43 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-ATHENA_HESIOD_REQUIRED
++dnl This file provides local macros for packages which use specific
++dnl external libraries.  The public macros are:
++dnl
++dnl	ATHENA_HESIOD_REQUIRED
++dnl		Generates error if Hesiod not found.
++dnl Specify desired AFS libraries as a parameter.
++dnl ----- Hesiod -----
++
++AC_DEFUN(ATHENA_HESIOD_CHECK,
++[AC_CHECK_FUNC(res_send, :, AC_CHECK_LIB(resolv, res_send))
++if test "$hesiod" != yes; then
++	CPPFLAGS="$CPPFLAGS -I$hesiod/include"
++	LDFLAGS="$LDFLAGS -L$hesiod/lib"
++fi
++AC_CHECK_LIB(hesiod, hes_resolve, :,
++	     [AC_MSG_ERROR(Hesiod library not found)])])
++
++AC_DEFUN(ATHENA_HESIOD,
++[AC_ARG_WITH(hesiod,
++	[  --with-hesiod=PREFIX    Use Hesiod],
++	[hesiod="$withval"], [hesiod=no])
++if test "$hesiod" != no; then
++	ATHENA_HESIOD_CHECK
++	HESIOD_LIBS="-lhesiod"
++	AC_DEFINE(HAVE_HESIOD)
++fi
++AC_SUBST(HESIOD_LIBS)])
+ 
++AC_DEFUN(ATHENA_HESIOD_REQUIRED,
++[AC_ARG_WITH(hesiod,
++	[  --with-hesiod=PREFIX    Specify location of Hesiod],
++	[hesiod="$withval"], [hesiod=yes])
++if test "$hesiod" != no; then
++	ATHENA_HESIOD_CHECK
++else
++	AC_MSG_ERROR(This package requires Hesiod.)
++fi])
++
++ATHENA_HESIOD_REQUIRED
+ AC_OUTPUT(Makefile)

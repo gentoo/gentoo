@@ -1,0 +1,47 @@
+Solves automagic selection of Qt version.
+
+https://bugs.gentoo.org/show_bug.cgi?id=523122
+https://bugzilla.gnome.org/show_bug.cgi?id=737174
+
+diff --git a/configure.ac b/configure.ac
+index e9ead09..3ee710a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -206,6 +206,10 @@ AC_ARG_ENABLE(qt,
+               AS_HELP_STRING([--enable-qt],
+                              [enable Qt support, (MP3 album art) [[default=auto]]]),,
+               [enable_qt=auto])
++AC_ARG_WITH(qt-version,
++            AS_HELP_STRING([--with-qt-version=major],
++                           [Force specific Qt version [[default=auto]]]),,
++            [with_qt_version=auto])
+ 
+ selected_for_media_art="no  (disabled)"
+ 
+@@ -218,14 +222,18 @@ if test "x$enable_qt" == "xyes" && test "x$enable_gdkpixbuf" == "xyes"; then
+ fi
+ 
+ if test "x$enable_qt" != "xno" && test "x$enable_gdkpixbuf" != "xyes"; then
+-   PKG_CHECK_MODULES(QT5,
+-                     [Qt5Gui >= $QT5_REQUIRED],
+-                     [have_qt5=yes],
+-                     [have_qt5=no])
+-   PKG_CHECK_MODULES(QT4,
+-                     [QtGui >= $QT4_REQUIRED],
+-                     [have_qt4=yes],
+-                     [have_qt4=no])
++   if test "x$with_qt_version" == "xauto" || test "x$with_qt_version" == "x5"; then
++       PKG_CHECK_MODULES(QT5,
++                         [Qt5Gui >= $QT5_REQUIRED],
++                         [have_qt5=yes],
++                         [have_qt5=no])
++   fi
++   if test "x$with_qt_version" == "xauto" || test "x$with_qt_version" == "x4"; then
++       PKG_CHECK_MODULES(QT4,
++                         [QtGui >= $QT4_REQUIRED],
++                         [have_qt4=yes],
++                         [have_qt4=no])
++   fi
+ 
+    if test "x$have_qt5" = "xyes"; then
+       BACKEND_CFLAGS="$QT5_CFLAGS -fPIC"

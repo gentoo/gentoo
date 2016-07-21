@@ -1,0 +1,15 @@
+* g_initialize.c:275:5: warning: implicit declaration of function 'getuid' [-Wimplicit-function-declaration]
+* g_initialize.c:275:5: warning: implicit declaration of function 'geteuid' [-Wimplicit-function-declaration]
+
+--- src/g_initialize.c
++++ src/g_initialize.c
+@@ -29,6 +29,9 @@
+ #include "mglueP.h"
+ #include <stdlib.h>
+ 
++#include <unistd.h> /* getuid, geteuid */
++#include <sys/types.h> /* ditto */
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>

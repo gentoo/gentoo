@@ -1,0 +1,39 @@
+From 0f68f8920573cdce1729a285a92ac8582df32841 Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@theqtcompany.com>
+Date: Tue, 27 Oct 2015 15:25:42 +0100
+Subject: QtWidgets: Do hide/show via WA_OutsideWSRange for native widgets
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If a native widget has a width or height of 0 we don't have to
+invalidate its backing store as that is done by the window
+system. Certain applications rely on ... interesting ... behavior
+of certain window systems in this case.
+
+Task-number: QTBUG-48321
+Change-Id: I78ef29975181ee22429c9bd4b11d96d9e68b7a9c
+Reviewed-by: Dmitry Shachnev <mitya57@gmail.com>
+Reviewed-by: Alexander Volkov <a.volkov@rusbitech.ru>
+Reviewed-by: Lisandro Damián Nicanor Pérez Meyer <perezmeyer@gmail.com>
+Reviewed-by: Paul Olav Tvete <paul.tvete@theqtcompany.com>
+---
+ src/widgets/kernel/qwidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/widgets/kernel/qwidget.cpp b/src/widgets/kernel/qwidget.cpp
+index 7734715..4286130 100644
+--- a/src/widgets/kernel/qwidget.cpp
++++ b/src/widgets/kernel/qwidget.cpp
+@@ -7169,7 +7169,7 @@ void QWidgetPrivate::setGeometry_sys(int x, int y, int w, int h, bool isMove)
+ 
+     bool needsShow = false;
+ 
+-    if (q->isWindow()) {
++    if (q->isWindow() || q->windowHandle()) {
+         if (!(data.window_state & Qt::WindowFullScreen) && (w == 0 || h == 0)) {
+             q->setAttribute(Qt::WA_OutsideWSRange, true);
+             if (q->isVisible() && q->testAttribute(Qt::WA_Mapped))
+-- 
+2.6.3
+

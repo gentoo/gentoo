@@ -1,0 +1,29 @@
+--- src/linux.mak.old	2010-10-14 11:07:22.000000000 +0200
++++ src/linux.mak	2010-10-14 11:08:00.000000000 +0200
+@@ -19,7 +19,7 @@
+ # common compiler/linker flags
+ #
+ CFLAGS=-I./include -I./lib -std=c89 `sdl-config --cflags`
+-LDFLAGS=-lm `sdl-config --libs`
++LDLIBS=-lm `sdl-config --libs`
+ 
+ 
+ SRC=\
+@@ -40,7 +40,7 @@
+ #
+ .PHONY: release
+ release: CFLAGS += -pipe -O2 -fomit-frame-pointer -march=i686
+-release: LDFLAGS += -Wl,-O1
++release: LDLIBS += -Wl,-O1
+ release: STRIP_BINARY = yes
+ release: build
+ 
+@@ -94,7 +94,7 @@
+ 	@$(CC) $(CFLAGS) -o $@ -c $<
+ 
+ $(EXE): $(OBJ)
+-	@$(CC) $(OBJ) $(LDFLAGS) -o $@
++	$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
+ 
+ 
+ 

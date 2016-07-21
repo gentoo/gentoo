@@ -1,0 +1,12 @@
+diff -ru kfax-3.3.6-kde4.4.0.orig/kfax.cpp kfax-3.3.6-kde4.4.0/kfax.cpp
+--- kfax-3.3.6-kde4.4.0.orig/kfax.cpp	2010-02-11 21:52:12.000000000 +0100
++++ kfax-3.3.6-kde4.4.0/kfax.cpp	2010-11-14 00:13:21.386377691 +0100
+@@ -829,7 +829,7 @@
+     statusbar->showMessage( i18n( "Saving..." ) );
+ 
+     KUrl source(thispage->pathname);
+-    KIO::FileCopyJob *job = KIO::file_copy(source, dest,KIO::Overwrite | KIO::HideProgressInfo);
++    KIO::FileCopyJob *job = KIO::file_copy(source, dest, -1, KIO::Overwrite | KIO::HideProgressInfo);
+     bool ok = job->exec();
+     statusbar->clearMessage();
+ 

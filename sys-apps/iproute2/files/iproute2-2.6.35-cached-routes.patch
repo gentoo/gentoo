@@ -1,0 +1,34 @@
+http://bugs.gentoo.org/331447
+
+From c73f3e02f8ae25e5daad0367690a3069895dd8a3 Mon Sep 17 00:00:00 2001
+From: Ulrich Weber <uweber@astaro.com>
+Date: Thu, 12 Aug 2010 11:05:19 +0200
+Subject: [PATCH] iproute2: dont filter cached routes on iproute_get
+
+iproute_get will return cloned routes for IPv4
+and cloned as well non-cloned routes for IPv6.
+
+Therefore RTM_F_CLONED flag should not be checked
+for iproute_get routes. Check in print_route will
+always fail because valid values are 0 and 1.
+
+Signed-off-by: Ulrich Weber <uweber@astaro.com>
+---
+ ip/iproute.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/ip/iproute.c b/ip/iproute.c
+index 711576e..b43933c 100644
+--- a/ip/iproute.c
++++ b/ip/iproute.c
+@@ -1286,6 +1286,7 @@ int iproute_get(int argc, char **argv)
+ 	memset(&req, 0, sizeof(req));
+ 
+ 	iproute_reset_filter();
++	filter.cloned = 2;
+ 
+ 	req.n.nlmsg_len = NLMSG_LENGTH(sizeof(struct rtmsg));
+ 	req.n.nlmsg_flags = NLM_F_REQUEST;
+-- 
+1.7.2
+

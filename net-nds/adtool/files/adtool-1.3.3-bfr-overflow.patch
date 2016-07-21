@@ -1,0 +1,18 @@
+ src/lib/active_directory.c |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/active_directory.c b/src/lib/active_directory.c
+index 1eacf5f..d4e1ca6 100644
+--- a/src/lib/active_directory.c
++++ b/src/lib/active_directory.c
+@@ -172,8 +172,8 @@ char *dn2domain(char *dn) {
+ 	exp_dn=ldap_explode_dn(dn, 0);
+ 	for(i=0; exp_dn[i]!=NULL; i++) {
+ 		if(!strncasecmp("dc=", exp_dn[i], 3)) {
+-			strncat(dc, exp_dn[i]+3, 1024);
+-			strncat(dc, ".", 1024);
++			strncat(dc, exp_dn[i]+3, 1024 - 1);
++			strncat(dc, ".", 1024 - 1);
+ 		}
+ 	}
+ 	ldap_value_free(exp_dn);

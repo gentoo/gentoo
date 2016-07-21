@@ -1,0 +1,22 @@
+diff --git a/utils/Makefile b/utils/Makefile
+index cf9b6c4..6f715d3 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -6,7 +6,7 @@ $(D)/sb2-show: CFLAGS := $(CFLAGS) -Wall -W -Werror \
+ 		-I$(SRCDIR)/include
+ 
+ $(D)/sb2-show.o: preload/exported.h
+-$(D)/sb2-show: preload/libsb2.$(SHLIBEXT) $(D)/sb2-show.o
++$(D)/sb2-show: $(D)/sb2-show.o preload/libsb2.$(SHLIBEXT)
+ 	$(MKOUTPUTDIR)
+ 	$(P)LD
+ 	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+@@ -25,7 +25,7 @@ $(D)/sb2-interp-wrapper: CFLAGS := $(CFLAGS) -Wall -W -Werror \
+ 		-I$(SRCDIR)/preload -Ipreload/ $(PROTOTYPEWARNINGS) \
+ 		-I$(SRCDIR)/include
+ 
+-$(D)/sb2-interp-wrapper: preload/libsb2.$(SHLIBEXT) $(D)/sb2-interp-wrapper.o
++$(D)/sb2-interp-wrapper: $(D)/sb2-interp-wrapper.o preload/libsb2.$(SHLIBEXT)
+ 	$(MKOUTPUTDIR)
+ 	$(P)LD
+ 	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -ldl

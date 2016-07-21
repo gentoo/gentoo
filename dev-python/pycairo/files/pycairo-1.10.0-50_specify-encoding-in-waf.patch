@@ -1,0 +1,32 @@
+Description: specify encoding in waf
+ This patch specifies utf-8 as the encoding in waf library, because python 3.3
+ doesn't fallback to utf-8 on default.
+Author: Matthias Klose <doko@ubuntu.com>
+Origin: http://launchpadlibrarian.net/120606963/py3cairo_1.10.0%2Bdfsg-3~exp2_1.10.0%2Bdfsg-3~exp2ubuntu1.diff.gz
+Bug-Debian: http://bugs.debian.org/691241
+Last-Update: 2012-10-28
+
+--- py3cairo-1.10.0+dfsg.orig/waflib/Utils.py
++++ py3cairo-1.10.0+dfsg/waflib/Utils.py
+@@ -77,8 +77,8 @@ except ImportError:
+ 				return value
+ is_win32=sys.platform=='win32'
+ indicator=is_win32 and'\x1b[A\x1b[K%s%s%s\r'or'\x1b[K%s%s%s\r'
+-def readf(fname,m='r'):
+-	f=open(fname,m)
++def readf(fname,m='r',enc=None):
++	f=open(fname,m,encoding=enc)
+ 	try:
+ 		txt=f.read()
+ 	finally:
+--- py3cairo-1.10.0+dfsg.orig/waflib/Tools/c_preproc.py
++++ py3cairo-1.10.0+dfsg/waflib/Tools/c_preproc.py
+@@ -44,7 +44,7 @@ def repl(m):
+ 		return' '
+ 	return m.group(3)or''
+ def filter_comments(filename):
+-	code=Utils.readf(filename)
++	code=Utils.readf(filename, enc='utf-8')
+ 	if use_trigraphs:
+ 		for(a,b)in trig_def:code=code.split(a).join(b)
+ 	code=re_nl.sub('',code)

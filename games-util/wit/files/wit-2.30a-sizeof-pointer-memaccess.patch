@@ -1,0 +1,31 @@
+--- wit-2.30a/src/lib-file.c
++++ wit-2.30a/src/lib-file.c
+@@ -3510,7 +3510,7 @@
+     DASSERT(fmap);
+     DASSERT(n_elem>0);
+ 
+-    memset(fmap,0,sizeof(fmap));
++    memset(fmap,0,sizeof(*fmap));
+ 
+     u64 last_off = 0;
+     while ( last_off < file->st.st_size )
+--- wit-2.30a/src/wfuse.c
++++ wit-2.30a/src/wfuse.c
+@@ -340,7 +340,7 @@
+ 	    }
+ 	    ResetWBFS(df->wbfs);
+ 	    FREE(df->wbfs);
+-	    memset(df,0,sizeof(df));
++	    memset(df,0,sizeof(*df));
+ 	    n_dfile--;
+ 	}
+ 
+@@ -352,7 +352,7 @@
+ 
+     if (found_df)
+     {
+-	memset(found_df,0,sizeof(found_df));
++	memset(found_df,0,sizeof(*found_df));
+ 	WBFS_t * wbfs = MALLOC(sizeof(*wbfs));
+ 	InitializeWBFS(wbfs);
+ 	enumError err = OpenWBFS(wbfs,source_file,false,true,0);

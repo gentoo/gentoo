@@ -1,0 +1,36 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu May 17 23:34:20 UTC 2012
+Subject: flags, arch
+
+--- openarena-engine-source-0.8.8/Makefile
++++ openarena-engine-source-0.8.8/Makefile
+@@ -73,6 +73,10 @@
+ 
+ ifndef ARCH
+ ARCH=$(COMPILE_ARCH)
++else
++  ifeq ($(ARCH),amd64)
++    ARCH=x86_64
++  endif
+ endif
+ export ARCH
+ 
+@@ -263,8 +267,7 @@
+   endif
+   endif
+ 
+-  BASE_CFLAGS = -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes \
+-    -pipe -DUSE_ICON
++  BASE_CFLAGS = -fno-strict-aliasing -DUSE_ICON -I.
+   CLIENT_CFLAGS = $(SDL_CFLAGS)
+   SERVER_CFLAGS =
+ 
+@@ -335,7 +338,7 @@
+   THREAD_LIBS=-lpthread
+   LIBS=-ldl -lm
+ 
+-  CLIENT_LIBS=$(SDL_LIBS) -lGL
++  CLIENT_LIBS=$(SDL_LIBS) -lGL -ljpeg
+ 
+   ifeq ($(USE_OPENAL),1)
+     ifneq ($(USE_OPENAL_DLOPEN),1)

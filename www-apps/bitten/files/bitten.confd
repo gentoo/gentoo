@@ -1,0 +1,19 @@
+# The commented variables in this file are the defaults that are used
+# in the init-script.  You don't need to uncomment them except to
+# customize them to different values.
+
+# Server running bitten
+#BITTEN_SERVER="http://localhost/trac/builds"
+
+# Temporary dir wher builds take place
+#BITTEN_TMPDIR="/var/tmp/bitten"
+
+# Log file
+#BITTEN_LOG="/var/log/bitten.log"
+
+# Additional options for bitten
+#BITTEN_OPTS=""
+
+# User and group as which to run bitten
+#BITTEN_USER="bitten"
+#BITTEN_GROUP="tracd"

@@ -1,0 +1,16 @@
+diff -uNr epos-2.5.37.org/src/tests/Makefile.am epos-2.5.37/src/tests/Makefile.am
+--- epos-2.5.37.org/src/tests/Makefile.am	2012-04-14 00:38:56.000000000 -0400
++++ epos-2.5.37/src/tests/Makefile.am	2012-04-14 00:39:10.000000000 -0400
+@@ -1,11 +1,9 @@
+ ##	Process this file with automake run in the top directory to yield Makefile.in
+ 
+ TESTS=hard_zero_data_test				\
+-	intr_test					\
+-	legal_data_test long_data_test long_strm_test	\
++	legal_data_test long_data_test 	\
+ 	random_data_test				\
+ 	soft_zero_data_test				\
+-	syn2_test 					\
+ 	vogon_test 					\
+ 	shutdown_test
+ 

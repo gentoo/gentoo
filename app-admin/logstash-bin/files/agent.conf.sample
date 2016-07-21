@@ -1,0 +1,20 @@
+input {
+    stdin {
+        type => "stdin"
+    }
+
+    file {
+        type => "syslog"
+        path => [ "/var/log/*.log", "/var/log/debug", "/var/log/messages", "/var/log/syslog" ]
+    }
+}
+
+output {
+    stdout {
+        codec => rubydebug
+    }
+  
+    elasticsearch {
+        hosts => localhost
+    }
+}

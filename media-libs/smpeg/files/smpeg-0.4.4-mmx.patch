@@ -1,0 +1,12 @@
+Index: smpeg-0.4.4/configure.in
+===================================================================
+--- smpeg-0.4.4.orig/configure.in
++++ smpeg-0.4.4/configure.in
+@@ -148,6 +148,7 @@ if test x$enable_mmx = xyes; then
+ 
+     if test x$use_mmx = xyes; then
+         EXTRA_CFLAGS="$EXTRA_CFLAGS -DUSE_MMX"
++	CCASFLAGS="$CCASFLAGS -DUSE_MMX"
+     fi
+ fi
+ 

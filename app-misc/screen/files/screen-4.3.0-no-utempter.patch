@@ -1,0 +1,14 @@
+--- screen-4.3.0/configure.ac
++++ screen-4.3.0/configure.ac
+@@ -878,11 +878,6 @@
+ #include <utmp.h>
+ #endif
+ ],[struct utmp u; u.ut_host[0] = 0;], AC_DEFINE(UTHOST))
+-AC_CHECK_HEADER(utempter.h, have_utempter=yes, have_utempter=no)
+-if test "$have_utempter" = yes; then
+-  AC_DEFINE(HAVE_UTEMPTER)
+-  LIBS="$LIBS -lutempter"
+-fi
+ 
+ dnl
+ dnl    ****  loadav  ****

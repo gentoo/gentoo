@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index e36a991..2a40671 100644
+--- a/Makefile
++++ b/Makefile
+@@ -142,7 +142,7 @@ npplayer_CFLAGS  += $(GTK_CFLAGS) $(GLIB_CFLAGS) $(MOZILLA_CFLAGS) $(CURL_CFLAGS
+ npplayer_LDFLAGS  = $(LDFLAGS)
+ npplayer_LDFLAGS += $(libpthread_LDFLAGS)
+ npplayer_LIBS     = $(GTK_LIBS) $(GLIB_LIBS) $(CURL_LIBS) $(X_LIBS)
+-npplayer_LIBS    += $(libpthread_LIBS) $(libsocket_LIBS)
++npplayer_LIBS    += $(libdl_LIBS) $(libpthread_LIBS) $(libsocket_LIBS)
+ 
+ libnoxshm_LIBRARY = libnoxshm.so
+ libnoxshm_RAWSRCS = libnoxshm.c

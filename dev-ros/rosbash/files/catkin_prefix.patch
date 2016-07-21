@@ -1,0 +1,13 @@
+Index: rosbash/scripts/rosrun
+===================================================================
+--- rosbash.orig/scripts/rosrun
++++ rosbash/scripts/rosrun
+@@ -47,7 +47,7 @@ case $2 in
+     ;;
+ esac
+ 
+-if [[ -n $CMAKE_PREFIX_PATH ]]; then
++if [[ -n $CMAKE_PREFIX_PATH || -n $CATKIN_PREFIX_PATH ]]; then
+   catkin_package_libexec_dir=`catkin_find --without-underlays --libexec --share $1 2> /dev/null`
+   debug "Looking in catkin libexec dir: $catkin_package_libexec_dir"
+ fi

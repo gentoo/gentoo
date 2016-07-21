@@ -1,0 +1,26 @@
+--- CommonHeader.old	2010-10-12 13:08:23.000000000 +0200
++++ CommonHeader	2010-10-12 13:08:48.000000000 +0200
+@@ -31,9 +31,9 @@
+ endif
+ 
+ ifdef NET
+-LDFLAGS= `sdl-config --libs` -lSDL_image -lSDL_net -lm
++LDLIBS= `sdl-config --libs` -lSDL_image -lSDL_net -lm
+ else
+-LDFLAGS= `sdl-config --libs` -lSDL_image -lm
++LDLIBS= `sdl-config --libs` -lSDL_image -lm
+ endif
+ 
+ SRCS	= 	$(wildcard *.cpp)
+--- Makefile.Linux.old	2010-10-12 14:36:47.000000000 +0200
++++ Makefile.Linux	2010-10-12 14:37:02.000000000 +0200
+@@ -38,8 +38,7 @@
+ 	$(MAKE) -C $(@D:%_module.o=%)
+ 
+ gav:	$(ALL_OBJ) $(OFILES)
+-	$(CXX) -o gav $(OFILES) $(ALL_OBJ) $(LDFLAGS)
+-	strip gav
++	$(CXX) $(LDFLAGS) -o gav $(OFILES) $(ALL_OBJ) $(LDLIBS)
+ 
+ clean:
+ 	for i in $(SUBDIRS) ; do \

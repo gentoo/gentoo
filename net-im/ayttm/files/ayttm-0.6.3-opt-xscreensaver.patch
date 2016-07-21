@@ -1,0 +1,16 @@
+Add --enable-xscreensaver to configure for USE flag support
+
+Patch by Kevin McCarthy <signals@gentoo.org>
+
+--- configure.ac
++++ configure.ac
+@@ -316,6 +316,9 @@
+ 	 #endif
+ 	])
+ 
++AC_ARG_ENABLE(xscreensaver, AC_HELP_STRING([--enable-xscreensaver],
++        [compile with X Screensaver]), [have_xss=$enableval], [have_xss=no] )
++
+ if test "$have_xss" = yes; then
+ 	# Let's figure out what library it's in...
+ 	

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>pms-bugs@gentoo.org</email>
+  <name>Package Manager Specification</name>
+</maintainer>
+<use>
+  <flag name="binary">Download pre-built files instead of building
+    from sources</flag>
+  <flag name="html">Generate PMS as .html as well</flag>
+</use>
+</pkgmetadata>

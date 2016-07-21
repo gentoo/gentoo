@@ -1,0 +1,11 @@
+--- configure.in
++++ configure.in
+@@ -257,7 +257,7 @@
+ dnl Checks for libraries
+ AC_SEARCH_LIBS(crypt, crypt)
+ AC_SEARCH_LIBS(getspnam, sec)
+-AC_SEARCH_LIBS(tgetent, termlib termcap curses ncurses)
++AC_SEARCH_LIBS(tgetent, ncurses)
+ AC_SEARCH_LIBS(gethostbyname, nsl)
+ AC_SEARCH_LIBS(connect, socket)
+ AC_SEARCH_LIBS([iconv], [iconv], [AC_DEFINE([HAVE_ICONV], [1],

@@ -1,0 +1,2 @@
+# Unmask armv5 specific USE flags
+-armv5te

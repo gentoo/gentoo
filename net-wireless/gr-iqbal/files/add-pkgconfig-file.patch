@@ -1,0 +1,52 @@
+From 077397e65a8867fe3e93de0930d9556d39f10126 Mon Sep 17 00:00:00 2001
+From: Sylvain Munaut <tnt@246tNt.com>
+Date: Sun, 07 Jul 2013 19:54:23 +0000
+Subject: misc: Add a .pc file
+
+Signed-off-by: Sylvain Munaut <tnt@246tNt.com>
+---
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a251954..10dc8c8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -158,3 +158,21 @@ add_subdirectory(python)
+ add_subdirectory(grc)
+ add_subdirectory(apps)
+ add_subdirectory(docs)
++
++########################################################################
++# Create Pkg Config File
++########################################################################
++file(TO_NATIVE_PATH "${CMAKE_INSTALL_PREFIX}"           prefix)
++file(TO_NATIVE_PATH "\${prefix}"                        exec_prefix)
++file(TO_NATIVE_PATH "\${exec_prefix}/${GR_LIBRARY_DIR}" libdir)
++file(TO_NATIVE_PATH "\${prefix}/${GR_INCLUDE_DIR}"      includedir)
++
++configure_file(
++    ${CMAKE_CURRENT_SOURCE_DIR}/gnuradio-iqbalance.pc.in
++    ${CMAKE_CURRENT_BINARY_DIR}/gnuradio-iqbalance.pc
++@ONLY)
++
++install(
++    FILES ${CMAKE_CURRENT_BINARY_DIR}/gnuradio-iqbalance.pc
++    DESTINATION ${GR_LIBRARY_DIR}/pkgconfig
++)
+diff --git a/gnuradio-iqbalance.pc.in b/gnuradio-iqbalance.pc.in
+new file mode 100644
+index 0000000..edde90d
+--- /dev/null
++++ b/gnuradio-iqbalance.pc.in
+@@ -0,0 +1,11 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: gnuradio-iqbalance
++Description: gnuradio I/Q balancing
++URL: http://git.osmocom.org/gr-iqbal/
++Requires: gnuradio-runtime
++Libs: -L${libdir} -lgnuradio-iqbalance
++Cflags: -I${includedir}
+--
+cgit v0.9.1

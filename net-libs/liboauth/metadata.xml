@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="nss">
+      Use Mozilla NSS (<pkg>dev-libs/nss</pkg>) as hash library; if
+      this is disabled, <pkg>dev-libs/openssl</pkg> is used instead.
+    </flag>
+    <flag name="bindist">
+      Alias for the nss USE flag, since there are license compliancy
+      trouble when using OpenSSL.
+    </flag>
+    <flag name="curl">
+      If enabled, <pkg>net-misc/curl</pkg> is used thorugh the libcurl
+      library; if it's not, the curl command is used instead. Some
+      features are only available when using the library, but using it
+      as library requires matching SSL implementations.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">liboauth</remote-id>
+  </upstream>
+</pkgmetadata>

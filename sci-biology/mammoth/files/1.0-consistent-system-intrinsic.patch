@@ -1,0 +1,21 @@
+http://gcc.gnu.org/onlinedocs/gcc-4.2.2/gfortran/SYSTEM.html#SYSTEM
+
+This intrinsic is provided in both subroutine and function forms; 
+however, only one form can be used in any given program unit.
+
+--- src/6apply_rot_tras.f.orig	2007-12-10 00:51:35.000000000 -0800
++++ src/6apply_rot_tras.f	2007-12-10 00:55:07.000000000 -0800
+@@ -47,11 +47,11 @@
+       endif
+ 
+ 
+-      call system ('echo $PWD > junk1')
++      i = system ('echo $PWD > junk1')
+       open(unit=21,file='junk1')
+       read(21,'(a340)', end=7) path
+  7    close(21)
+-      call system ('rm -f junk1')
++      i = system ('rm -f junk1')
+ 
+ c      write(6,*)'my path is ', path
+ c      write(6,*)tras1,tras2,tras3,

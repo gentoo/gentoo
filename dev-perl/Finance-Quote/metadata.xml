@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Finance-Quote</remote-id>
+    <remote-id type="cpan-module">Finance::Quote</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::AEX</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::AIAHK</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::ASEGR</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::ASX</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::BMONesbittBurns</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::BSERO</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Bourso</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Cdnfundlibrary</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Cominvest</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Currencies</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::DWS</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Deka</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::FTPortfolios</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Fidelity</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::FinanceCanada</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Finanzpartner</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Fool</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::GoldMoney</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::HEX</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::HU</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::IndiaMutual</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::LeRevenu</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::ManInvestments</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Morningstar</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::NZX</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Platinum</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::SEB</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::SIXfunds</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::SIXshares</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::StockHouseCanada</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::TSP</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::TSX</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Tdefunds</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Tdwaterhouse</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Tiaacref</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Troweprice</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Trustnet</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::USFedBonds</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Union</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::UserAgent</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::VWD</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::Asia</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::Australia</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::Base</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::Brasil</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::Europe</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::NZ</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::Yahoo::USA</remote-id>
+    <remote-id type="cpan-module">Finance::Quote::ZA</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,25 @@
+diff --git a/src/HaskellNames.hs b/src/HaskellNames.hs
+index 6e1910e..bd61137 100644
+--- a/src/HaskellNames.hs
++++ b/src/HaskellNames.hs
+@@ -147,6 +147,7 @@ isBuiltin name
+ {-----------------------------------------------------------------------------------------
+  Haddock prologue
+ -----------------------------------------------------------------------------------------}
++getPrologue :: [Char] -> [Char] -> [Char] -> [String] -> IO [String]
+ getPrologue moduleName content contains inputFiles
+   = do time <- getCurrentTime
+        return (prologue time)
+diff --git a/wxdirect.cabal b/wxdirect.cabal
+index 83be4af..02b56af 100644
+--- a/wxdirect.cabal
++++ b/wxdirect.cabal
+@@ -61,7 +61,7 @@ executable wxdirect-2.8
+ 
+   build-depends:
+     parsec     >= 2.1.0 && < 4,
+-    time       >= 1.0   && < 1.5,
++    time       >= 1.0,
+     strict     >= 0.3   && < 1.0,
+     directory  >= 1.0   && < 2.0
+ 

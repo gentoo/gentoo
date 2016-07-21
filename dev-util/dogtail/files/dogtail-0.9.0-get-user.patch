@@ -1,0 +1,28 @@
+Do not use USER as it can be unset.
+
+Use LOGNAME first as recommended by python documentation, then try alternatives.
+
+Also, use tempfile to respect environment variables changing tmpdir.
+
+Upstream: https://fedorahosted.org/dogtail/ticket/46
+Debian: http://bugs.debian.org/743500
+
+--- a/dogtail/config.py	2015-06-08 22:59:08.664107350 +0200
++++ b/dogtail/config.py	2015-06-08 22:57:54.433669729 +0200
+@@ -6,11 +6,15 @@ __author__ = "Zack Cerza <zcerza@redhat.com>, David Malcolm <dmalcolm@redhat.com
+ import os
+ import sys
+ import locale
++import tempfile
+ 
+ 
+ def _userTmpDir(baseName):
+     # i.e. /tmp/dogtail-foo
+-    return '-'.join(('/'.join(('/tmp', baseName)), os.environ['USER']))
++    return '-'.join((
++        '/'.join((tempfile.gettempdir(), baseName)),
++        os.getenv('LOGNAME', os.getenv('USER', os.getlogin()))
++    ))
+ 
+ 
+ class _Config(object):

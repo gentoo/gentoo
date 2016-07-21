@@ -1,0 +1,20 @@
+--- serialmail-0.75/error.h	2003-09-10 20:08:05.000000000 +1200
++++ serialmail-0.75-gentoo/error.h	2003-09-10 20:30:50.000000000 +1200
+@@ -1,7 +1,7 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;
+--- serialmail-0.75/leapsecs_read.c	2003-09-10 20:08:06.000000000 +1200
++++ serialmail-0.75-gentoo/leapsecs_read.c	2003-09-10 20:15:57.000000000 +1200
+@@ -2,7 +2,6 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
+-extern int errno;
+ #include "tai.h"
+ #include "leapsecs.h"

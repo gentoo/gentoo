@@ -1,0 +1,27 @@
+http://mx.gw.com/pipermail/file/2016/001961.html
+
+From fe1b14d68fe47a0641606c142222d6b0fb9e05d9 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Mon, 18 Apr 2016 18:16:45 +0000
+Subject: [PATCH] exit on error.
+
+---
+ tests/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index c2cb5ee..e55cdf4 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -13,7 +13,7 @@ issue311docx.testfile
+ T = $(top_srcdir)/tests
+ check-local:
+ 	MAGIC=$(top_builddir)/magic/magic ./test
+-	for i in $T/*.testfile; do echo Running test: $$i; MAGIC=$(top_builddir)/magic/magic ./test $$i $${i%%.testfile}.result; done
++	set -e; for i in $T/*.testfile; do echo Running test: $$i; MAGIC=$(top_builddir)/magic/magic ./test $$i $${i%%.testfile}.result; done
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+-- 
+2.7.4
+

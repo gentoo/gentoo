@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 8846c38..29ac11e 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -117,8 +117,6 @@ install :
+ 	cp -Rf $(COMMANDFILES) $(DESTDIR)$(BINDIR)
+ 	mkdir -p $(DESTDIR)$(LIBEXECDIR)
+ 	cp -Rf $(CGIFILES) $(DESTDIR)$(LIBEXECDIR)
+-	mkdir -p $(DESTDIR)$(DATADIR)
+-	cp -Rf $(DOCUMENTFILES) $(DESTDIR)$(DATADIR)
+ 	mkdir -p $(DESTDIR)$(MAN1DIR)
+ 	cd man && cp -Rf $(MAN1FILES) $(DESTDIR)$(MAN1DIR)
+ 	mkdir -p $(DESTDIR)$(MAN3DIR)

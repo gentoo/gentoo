@@ -1,0 +1,29 @@
+From 8f6005fcfb9d2012bba428863f89b6b9168c8226 Mon Sep 17 00:00:00 2001
+From: Devan Franchini <twitch153@gentoo.org>
+Date: Thu, 22 May 2014 22:57:08 -0400
+Subject: [PATCH] updater.py: Fixes incorrect import for make.conf class
+
+X-Gentoo-Bug: 521724
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/521724
+---
+ layman/updater.py  |  4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/layman/updater.py b/layman/updater.py
+index 26aeed2..b2187e3 100644
+--- a/layman/updater.py
++++ b/layman/updater.py
+@@ -155,8 +155,8 @@ class Main(object):
+         self.output.info("  Creating layman's make.conf file")
+         # create layman's %(storage)s/make.conf
+         # so portage won't error
+-        from layman.makeconf import MakeConf
+-        maker = MakeConf(self.config, None)
++        from layman.makeconf import ConfigHandler
++        maker = ConfigHandler(self.config, None)
+         maker.write()
+ 
+ 
+-- 
+1.8.5.5
+

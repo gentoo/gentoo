@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>perl@gentoo.org</email>
+  <name>Gentoo Perl Project</name>
+</maintainer>
+<longdescription lang="en">
+  This the only function of this module and it is exported by
+  default. It takes a scalar, array or hash left-value as first
+  argument, and a list of one or more values depending on the type of
+  the first argument as the value for the variable. It will set the
+  variable to that value and subsequently make it read-only. Arrays
+  and hashes will be made deeply read-only.
+</longdescription>
+<upstream>
+  <remote-id type="cpan">Const-Fast</remote-id>
+  <remote-id type="cpan-module">Const::Fast</remote-id>
+</upstream>
+</pkgmetadata>

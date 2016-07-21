@@ -1,0 +1,146 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Use Debian GLEW.
+Git-Branch: p/glew
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..7023f74389baab6b9032c08ae2e2b2
+
+ meshlab/src/common/common.pro                            |    5 ++---
+ meshlab/src/meshlab/meshlab.pro                          |    4 +---
+ meshlab/src/meshlabplugins/filter_plymc/plymc.pro        |    2 +-
+ meshlab/src/meshlabserver/meshlabserver.pro              |    6 ++----
+ meshlab/src/shared.pri                                   |    7 ++++---
+ vcglib/apps/sample/trimesh_QT/trimesh_qt.pro             |    5 +++--
+ vcglib/apps/sample/trimesh_pos_demo/trimesh_pos_demo.pro |    4 ++--
+ 7 files changed, 15 insertions(+), 18 deletions(-)
+
+diff --git a/meshlab/src/common/common.pro b/meshlab/src/common/common.pro
+index eec1863..58bda06 100644
+--- a/meshlab/src/common/common.pro
++++ b/meshlab/src/common/common.pro
+@@ -1,9 +1,9 @@
+ include (../general.pri)
+ EXIF_DIR = ../external/jhead-2.95
++GLEWDIR = /usr
++LIBS += -lGLEW
+ 
+ 
+-GLEWCODE = $$GLEWDIR/src/glew.c
+-
+ win32-msvc2005:DESTDIR = ../distrib
+ win32-msvc2008:DESTDIR = ../distrib
+ win32-msvc2010:DESTDIR = ../distrib
+@@ -106,7 +106,6 @@ SOURCES += filterparameter.cpp \
+ 	mlapplication.cpp \
+ 	scriptsyntax.cpp \
+ 	searcher.cpp \
+-    $$GLEWCODE \
+     meshlabdocumentxml.cpp \
+     meshlabdocumentbundler.cpp
+ 
+diff --git a/meshlab/src/meshlab/meshlab.pro b/meshlab/src/meshlab/meshlab.pro
+index 4a7d0fd..ecd9ed6 100644
+--- a/meshlab/src/meshlab/meshlab.pro
++++ b/meshlab/src/meshlab/meshlab.pro
+@@ -129,11 +129,9 @@ win32-g++:LIBS        	+= -L../external/lib/win32-gcc -L../distrib -lcommon
+ #	win32-g++:release:LIBS 			+= -L../common/release -lcommon
+ #}
+ 
+-linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
++linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLEW -lGLU
+ linux-g++:QMAKE_RPATHDIR += ../distrib
+-linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -L../distrib -lcommon -lGLU
+ linux-g++-32:QMAKE_RPATHDIR += ../distrib
+-linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -L../distrib -lcommon -lGLU
+ linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ 
+ # uncomment in your local copy only in emergency cases.
+diff --git a/meshlab/src/meshlabplugins/filter_plymc/plymc.pro b/meshlab/src/meshlabplugins/filter_plymc/plymc.pro
+index b609419..a89e8c6 100755
+--- a/meshlab/src/meshlabplugins/filter_plymc/plymc.pro
++++ b/meshlab/src/meshlabplugins/filter_plymc/plymc.pro
+@@ -1,7 +1,7 @@
+ TARGET = plymc
+ DEPENDPATH += .
+ INCLUDEPATH += ../../../../vcglib \
+-    ../../code/lib/glew/include
++    /usr/include
+ CONFIG += console \
+     stl \
+     debug_and_release
+diff --git a/meshlab/src/meshlabserver/meshlabserver.pro b/meshlab/src/meshlabserver/meshlabserver.pro
+index cca5560..9b070c7 100644
+--- a/meshlab/src/meshlabserver/meshlabserver.pro
++++ b/meshlab/src/meshlabserver/meshlabserver.pro
+@@ -1,4 +1,4 @@
+-GLEWDIR = ../external/glew-1.5.1
++GLEWDIR = /usr
+ 
+ HEADERS        = 
+ 
+@@ -25,11 +25,9 @@ win32-msvc2005:  LIBS += -L../distrib -lcommon
+ win32-msvc2008:  LIBS += -L../distrib -lcommon
+ win32-msvc2010:  LIBS += -L../distrib -lcommon
+ win32-g++:  LIBS += -L../distrib -lcommon
+-linux-g++:  LIBS += -L../distrib -lcommon
++linux-g++:  LIBS += -L../distrib -lcommon -lGLEW
+ linux-g++:QMAKE_RPATHDIR += ../distrib
+-linux-g++-32:  LIBS += -L../distrib -lcommon
+ linux-g++-32:QMAKE_RPATHDIR += ../distrib
+-linux-g++-64:  LIBS += -L../distrib -lcommon
+ linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ #CONFIG (release,debug | release) {
+ #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
+diff --git a/meshlab/src/shared.pri b/meshlab/src/shared.pri
+index 93ed32f..0ba3e67 100644
+--- a/meshlab/src/shared.pri
++++ b/meshlab/src/shared.pri
+@@ -17,9 +17,10 @@ win32-msvc2005:  LIBS += ../../distrib/common.lib
+ win32-msvc2008:  LIBS += ../../distrib/common.lib
+ win32-msvc2010:  LIBS += ../../distrib/common.lib
+ win32-g++:LIBS += -L../../distrib -lcommon
+-linux-g++:LIBS += -L../../distrib -lcommon
+-linux-g++-32:LIBS += -L../../distrib -lcommon
+-linux-g++-64:LIBS += -L../../distrib -lcommon
++linux-g++:LIBS += -L../../distrib -lcommon -lGLEW
++#linux-g++-32:LIBS += -L../../distrib -lcommon
++#linux-g++-64:LIBS += -L../../distrib -lcommon
++
+ 
+ #CONFIG(debug, debug|release) {
+ #	win32-msvc2005:  LIBS += ../../common/debug/common.lib
+diff --git a/vcglib/apps/sample/trimesh_QT/trimesh_qt.pro b/vcglib/apps/sample/trimesh_QT/trimesh_qt.pro
+index 8a3c7fc..986116e 100644
+--- a/vcglib/apps/sample/trimesh_QT/trimesh_qt.pro
++++ b/vcglib/apps/sample/trimesh_QT/trimesh_qt.pro
+@@ -26,8 +26,9 @@ SOURCES += ../../../wrap/gui/trackmode.cpp
+ 
+ # Compile glew
+ DEFINES += GLEW_STATIC
+-INCLUDEPATH += ../../../../code/lib/glew/include
+-SOURCES += ../../../../code/lib/glew/src/glew.c
++INCLUDEPATH += /usr/include
++#SOURCES += ../../../../code/lib/glew/src/glew.c
++LIBS += -lGLEW
+ 
+ # Awful problem with windows..
+ win32{
+diff --git a/vcglib/apps/sample/trimesh_pos_demo/trimesh_pos_demo.pro b/vcglib/apps/sample/trimesh_pos_demo/trimesh_pos_demo.pro
+index e8ae178..4a69fef 100644
+--- a/vcglib/apps/sample/trimesh_pos_demo/trimesh_pos_demo.pro
++++ b/vcglib/apps/sample/trimesh_pos_demo/trimesh_pos_demo.pro
+@@ -1,14 +1,14 @@
+-INCLUDEPATH += . ../../.. ../../../../code/lib ../../../../code/lib/glew/include
++INCLUDEPATH += . ../../.. ../../../../code/lib /usr/include
+ HEADERS       = glwidget.h \
+                 window.h \
+ 		mesh_type.h	
+ SOURCES       = glwidget.cpp \
+                 main.cpp \
+                 window.cpp\
+-		 ../../../../code/lib/glew/src/glew.c \
+ 		../../../wrap/ply/plylib.cpp\
+ 		../../../wrap/gui/trackmode.cpp\
+ 		../../../wrap/gui/trackball.cpp
++LIBS += -lGLEW
+ QT           += opengl
+ 
+ # install

@@ -1,0 +1,83 @@
+--- docutils/nodes.py
++++ docutils/nodes.py
+@@ -27,6 +27,7 @@
+ import warnings
+ import types
+ import unicodedata
++import locale
+ 
+ # ==============================
+ #  Functional Node Base Classes
+@@ -328,6 +329,9 @@
+     else:
+         def __new__(cls, data, rawsource=None):
+             """Prevent the rawsource argument from propagating to str."""
++            encoding = locale.getdefaultlocale()[1]
++            if isinstance(data, str) and encoding is not None:
++                data = data.decode(encoding)
+             return reprunicode.__new__(cls, data)
+ 
+     def __init__(self, data, rawsource=''):
+--- docutils/parsers/rst/directives/misc.py
++++ docutils/parsers/rst/directives/misc.py
+@@ -10,6 +10,7 @@
+ import os.path
+ import re
+ import time
++import locale
+ from docutils import io, nodes, statemachine, utils
+ from docutils.parsers.rst import Directive, convert_directive_function
+ from docutils.parsers.rst import directives, roles, states
+@@ -66,8 +67,16 @@
+                                input_encoding_error_handler),
+                 handle_io_errors=None)
+         except IOError, error:
+-            raise self.severe('Problems with "%s" directive path:\n%s: %s.' %
+-                        (self.name, error.__class__.__name__, str(error)))
++            if sys.version_info < (3,):
++                error_string = str(error)
++                encoding = locale.getdefaultlocale()[1]
++                if encoding is not None:
++                    error_string = error_string.decode(encoding)
++                raise self.severe(u'Problems with "%s" directive path:\n%s: %s.' %
++                            (self.name, error.__class__.__name__, error_string))
++            else:
++                raise self.severe('Problems with "%s" directive path:\n%s: %s.' %
++                            (self.name, error.__class__.__name__, str(error)))
+             # Hack: Since Python 2.6, the string interpolation returns a
+             # unicode object if one of the supplied %s replacements is a
+             # unicode object. IOError has no `__unicode__` method and the
+--- tools/buildhtml.py
++++ tools/buildhtml.py
+@@ -15,8 +15,8 @@
+ __docformat__ = 'reStructuredText'
+ 
+ 
++import locale
+ try:
+-    import locale
+     locale.setlocale(locale.LC_ALL, '')
+ except:
+     pass
+@@ -236,8 +236,19 @@
+                               writer_name=pub_struct.writer_name,
+                               settings=settings)
+         except ApplicationError, error:
+-            print >>sys.stderr, ('        Error (%s): %s'
+-                                 % (error.__class__.__name__, error))
++            if sys.version_info < (3,):
++                encoding = locale.getdefaultlocale()[1]
++                if isinstance(error.message, unicode) and encoding is not None:
++                    error_message = (u'        Error (%s): %s'
++                                     % (error.__class__.__name__, error))
++                    error_message = error_message.encode(encoding)
++                else:
++                    error_message = ('        Error (%s): %s'
++                                     % (error.__class__.__name__, error))
++                print >>sys.stderr, error_message
++            else:
++                print >>sys.stderr, ('        Error (%s): %s'
++                                     % (error.__class__.__name__, error))
+ 
+ 
+ if __name__ == "__main__":

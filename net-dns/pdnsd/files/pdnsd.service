@@ -1,0 +1,11 @@
+[Unit]
+Description=pdnsd private name-server cache daemon
+After=syslog.target network.target auditd.service
+ConditionPathExists=/etc/pdnsd/pdnsd.conf
+
+[Service]
+ExecStart=/usr/sbin/pdnsd -s -t
+ExecReload=/usr/sbin/pdnsd-ctl config
+
+[Install]
+WantedBy=multi-user.target

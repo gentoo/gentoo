@@ -1,0 +1,15 @@
+Fix compile with gcc47
+Bug #419635
+https://bugs.gentoo.org/show_bug.cgi?id=419635
+Submitted by Nikos Chantziaras
+
+--- a/src/tools/depbuild.cpp
++++ b/src/tools/depbuild.cpp
+@@ -25,6 +25,7 @@
+ #include <string>
+ #include <cstdio>
+ #include <cstdlib>
++#include <unistd.h>
+ using namespace std;
+ 
+ #include "fileutil.h"

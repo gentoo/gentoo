@@ -1,0 +1,78 @@
+diff -r 16f0dcf220bc CMakeLists.txt
+--- a/CMakeLists.txt	Fri Jan 22 18:13:03 2010 -0300
++++ b/CMakeLists.txt	Tue Oct 14 10:47:20 2014 +0200
+@@ -1,8 +1,19 @@
+ project(OpenDocumentThumbnail)
+ 
+-find_package(KDE4 REQUIRED)
+-include (KDE4Defaults)
++cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++set(QT_MIN_VERSION "5.2.0")
+ 
+-include_directories( ${KDE4_INCLUDES} ${QT_INCLUDES} )
++find_package(ECM 1.0.0 REQUIRED NO_MODULE)
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-add_subdirectory( src )
++include(FeatureSummary)
++include(WriteBasicConfigVersionFile)
++include(KDEInstallDirs)
++include(KDECMakeSettings)
++include(KDECompilerSettings)
++
++find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Gui)
++find_package(KF5 REQUIRED COMPONENTS KIO)
++find_package(KF5Archive)
++
++add_subdirectory(src)
+diff -r 16f0dcf220bc src/CMakeLists.txt
+--- a/src/CMakeLists.txt	Fri Jan 22 18:13:03 2010 -0300
++++ b/src/CMakeLists.txt	Tue Oct 14 10:47:20 2014 +0200
+@@ -1,12 +1,9 @@
+ 
+ set(OpenOfficeorgThumbnail_SRCS openofficeorgcreator.cpp)
+ 
+-qt4_add_resources(OpenOfficeorgThumbnail_SRCS openofficeorgthumbnail.qrc)
++qt5_add_resources(OpenOfficeorgThumbnail_SRCS openofficeorgthumbnail.qrc)
+ 
+-kde4_add_plugin(openofficeorgthumbnail ${OpenOfficeorgThumbnail_SRCS})
+-
+-target_link_libraries(openofficeorgthumbnail ${KDE4_KIO_LIBS} )
+-
+-install(TARGETS openofficeorgthumbnail DESTINATION ${PLUGIN_INSTALL_DIR} )
+-
++add_library(openofficeorgthumbnail MODULE ${OpenOfficeorgThumbnail_SRCS})
++target_link_libraries(openofficeorgthumbnail KF5::KIOWidgets KF5::Archive)
++install(TARGETS openofficeorgthumbnail DESTINATION ${PLUGIN_INSTALL_DIR})
+ install(FILES  openofficeorgthumbnail.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+diff -r 16f0dcf220bc src/opendocumentcreator.cpp
+--- a/src/openofficeorgcreator.cpp	Fri Jan 22 18:13:03 2010 -0300
++++ b/src/openofficeorgcreator.cpp	Tue Oct 14 10:47:20 2014 +0200
+@@ -28,7 +28,7 @@
+ 
+ extern "C"
+ {
+-    KDE_EXPORT ThumbCreator *new_creator()
++    Q_DECL_EXPORT ThumbCreator *new_creator()
+     {
+         return new OOoCreator;
+     }
+@@ -95,7 +95,7 @@
+ 
+ ThumbCreator::Flags OOoCreator::flags() const
+ {
+-    return (Flags)(DrawFrame | BlendIcon);
++    return (Flags)(DrawFrame);
+ }
+ 
+ 
+diff -r 16f0dcf220bc src/opendocumentthumbnail.desktop
+--- a/src/openofficeorgthumbnail.desktop	Fri Jan 22 18:13:03 2010 -0300
++++ b/src/openofficeorgthumbnail.desktop	Tue Oct 14 10:47:20 2014 +0200
+@@ -5,5 +5,6 @@
+ X-KDE-ServiceTypes=ThumbCreator
+ MimeType=application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-template;application/vnd.oasis.opendocument.text-master;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.graphics-template;application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-template;application/vnd.oasis.opendocument.formula;application/vnd.oasis.opendocument.formula-template;application/vnd.oasis.opendocument.chart;application/vnd.oasis.opendocument.chart-template;
+ X-KDE-Library=openofficeorgthumbnail
++ServiceTypes=ThumbCreator
+ CacheThumbnail=true
+ IgnoreMaximumSize=true

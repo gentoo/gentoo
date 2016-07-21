@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 155672e2245a..a4b6dc0c7eda 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -176,7 +176,6 @@ set_target_properties( tint2 PROPERTIES LINK_FLAGS "-pthread -fno-strict-aliasin
+ install( TARGETS tint2 DESTINATION bin )
+ install( FILES tint2.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/apps )
+ install( FILES tint2.desktop DESTINATION ${DATADIR}/applications )
+-install( CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${DATADIR}/icons/hicolor WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})" )
+ install( FILES sample/tint2rc DESTINATION ${SYSCONFDIR}/xdg/tint2 )
+ install( FILES default_icon.png DESTINATION ${DATADIR}/tint2 )
+ install( FILES AUTHORS ChangeLog README.md DESTINATION ${DOCDIR} )
+diff --git a/src/tint2conf/CMakeLists.txt b/src/tint2conf/CMakeLists.txt
+index e8c6db38fe20..f844c24371e7 100644
+--- a/src/tint2conf/CMakeLists.txt
++++ b/src/tint2conf/CMakeLists.txt
+@@ -71,4 +71,3 @@ add_subdirectory(po)
+ install( TARGETS tint2conf DESTINATION bin )
+ install( FILES tint2conf.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/apps )
+ install( FILES tint2conf.desktop DESTINATION ${DATADIR}/applications )
+-install( CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${DATADIR}/icons/hicolor WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX})" )

@@ -1,0 +1,26 @@
+Do not install the empty storage dirs and config files to the wrong
+location (the ebuild installs them to the right location by hand).
+
+See Gentoo bug #417221.
+
+--- setup.py
++++ setup.py
+@@ -12,9 +12,6 @@
+   setup_kwargs = dict()
+ 
+ 
+-storage_dirs = [ ('storage/whisper',[]), ('storage/lists',[]),
+-                 ('storage/log',[]), ('storage/rrd',[]) ]
+-conf_files = [ ('conf', glob('conf/*.example')) ]
+ #XXX Need a way to have these work for bdist_rpm but be left alone for everything else
+ #init_scripts = [ ('/etc/init.d', ['distro/redhat/init.d/carbon-cache',
+ #                                  'distro/redhat/init.d/carbon-relay',
+@@ -32,7 +29,6 @@
+   package_dir={'' : 'lib'},
+   scripts=glob('bin/*'),
+   package_data={ 'carbon' : ['*.xml'] },
+-  data_files=storage_dirs + conf_files, # + init_scripts,
+   install_requires=['twisted', 'txamqp'],
+   **setup_kwargs
+ )
+

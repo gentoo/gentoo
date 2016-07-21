@@ -1,0 +1,21 @@
+diff --git a/Makefile.am b/Makefile.am
+index 46f308c..df8ea69 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,6 @@ MAINTAINERCLEANFILES    = configure aclocal.m4 Makefile.in config.h.in
+ 			  stamp-h.in
+ include_HEADERS = capi20.h capiutils.h capicmd.h capi_mod.h capi_debug.h
+ lib_LTLIBRARIES = libcapi20.la
+-lib_LIBRARIES   = libcapi20dyn.a
+ 
+ libcapi20_la_SOURCES = capi20.c capifunc.c convert.c capi_defs.h compat/byteswap.h
+ libcapi20_la_LDFLAGS = -version-info ${LIBCAPI_VERSION}:${LIBCAPI_VERSION_RELEASE}:${LIBCAPI_VERSION_AGE} -lc -rdynamic
+@@ -35,8 +34,6 @@ lib_capi_mod_rcapi_la_CFLAGS = -fno-strict-aliasing
+ lib_capi_mod_rcapi_la_LDFLAGS = -shared -version-info @CAPI_MODULE_LOADER_VERSION@:0:0 -no-undefined
+ lib_capi_mod_rcapi_la_LIBADD = libcapi20.la
+ 
+-libcapi20dyn_a_SOURCES = capidyn.c
+-libcapi20dyn_a_CFLAGS = -fPIC
+ libcapi20_la_LIBADD = $(LIBADD_DL)
+ 
+ if WIN32

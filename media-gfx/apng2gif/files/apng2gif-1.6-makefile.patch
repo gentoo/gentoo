@@ -1,0 +1,17 @@
+--- apng2gif-1.6-src/Makefile
++++ apng2gif-1.6-src/Makefile
+@@ -1,11 +1,10 @@
+ PACKAGE    = apng2gif
+-CC         = gcc
+-CFLAGS     = -Wall -pedantic
+-CFLAGS_OPT = -O2
++CXX       ?= g++
++CFLAGS    += -Wall -pedantic
+ LIBS       = -lstdc++ -lm -lpng -lz
+ 
+ all :
+-	$(CC) $(CFLAGS) $(CFLAGS_OPT) -o apng2gif apng2gif.cpp -s $(LIBS)
++	$(CXX) $(CFLAGS) $(LDFLAGS) -o apng2gif apng2gif.cpp $(LIBS)
+ 
+ .PHONY : clean
+ 

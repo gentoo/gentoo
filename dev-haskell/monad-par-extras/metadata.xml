@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		The modules below provide additional
+		data structures, and other added capabilities
+		layered on top of the 'Par' monad.
+		* Finish These
+		* Module Descriptions
+	</longdescription>
+	<upstream>
+		<remote-id type="github">simonmar/monad-par</remote-id>
+	</upstream>
+</pkgmetadata>

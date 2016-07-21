@@ -1,0 +1,21 @@
+diff -ru a/modules/bindings/glibc/linux.lisp b/modules/bindings/glibc/linux.lisp
+--- a/modules/bindings/glibc/linux.lisp	2008-10-08 19:36:19.000000000 +0300
++++ b/modules/bindings/glibc/linux.lisp	2013-04-08 00:05:06.028305248 +0300
+@@ -67,7 +67,7 @@
+ (def-c-type __daddr_t)          ; int
+ (def-c-type __caddr_t)          ; c-pointer
+ (def-c-type __time_t)           ; long
+-(def-c-type __swblk_t)          ; long
++;(def-c-type __swblk_t)          ; long
+ 
+ (def-c-type __fd_mask ulong)
+ (eval-when (load compile eval)
+@@ -86,7 +86,7 @@
+ 
+ (def-c-type __key_t)            ; int
+ 
+-(c-lines "#include <bits/ipctypes.h>~%")
++(c-lines "#include <sys/ipc.h>~%")
+ (def-c-type __ipc_pid_t)        ; ushort
+ 
+ ; --------------------------- <sys/types.h> -----------------------------------

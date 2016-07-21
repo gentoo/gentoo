@@ -1,0 +1,12 @@
+diff --git a/plug-ins/file-uri/uri-backend-libcurl.c b/plug-ins/file-uri/uri-backend-libcurl.c
+index a566966..747dca7 100644
+--- a/plug-ins/file-uri/uri-backend-libcurl.c
++++ b/plug-ins/file-uri/uri-backend-libcurl.c
+@@ -24,7 +24,6 @@
+ #include <errno.h>
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include <glib/gstdio.h>

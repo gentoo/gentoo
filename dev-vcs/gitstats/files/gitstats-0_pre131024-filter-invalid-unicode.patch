@@ -1,0 +1,11 @@
+--- gitstats	2016-03-24 10:57:18.000000000 -0300
++++ gitstats.mod	2016-03-24 10:57:11.355016439 -0300
+@@ -321,7 +321,7 @@
+ 
+ 		# Collect revision statistics
+ 		# Outputs "<stamp> <date> <time> <timezone> <author> '<' <mail> '>'"
+-		lines = getpipeoutput(['git rev-list --pretty=format:"%%at %%ai %%aN <%%aE>" %s' % getcommitrange('HEAD'), 'grep -v ^commit']).split('\n')
++		lines = getpipeoutput(['git rev-list --pretty=format:"%%at %%ai %%aN <%%aE>" %s' % getcommitrange('HEAD'), 'grep -av ^commit | grep -ax \'.*\'']).split('\n')
+ 		for line in lines:
+ 			parts = line.split(' ', 4)
+ 			author = ''

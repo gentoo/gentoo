@@ -1,0 +1,23 @@
+diff -u -r iODBC-3.52.8.orig/iodbcadm/Makefile.am iODBC-3.52.8/iodbcadm/Makefile.am
+--- iODBC-3.52.8.orig/iodbcadm/Makefile.am	2012-03-27 05:15:02.000000000 -0500
++++ iODBC-3.52.8/iodbcadm/Makefile.am	2013-01-08 08:12:58.639414826 -0600
+@@ -96,7 +96,7 @@
+ 
+ if GTK
+ libiodbcadm_la_LIBADD	= \
+-	../iodbcadm/gtk/libiodbcadm-gtk.la \
++	gtk/libiodbcadm-gtk.la \
+ 	$(LIBADD_DL) \
+ 	@GTK_LIBS@ \
+ 	../iodbcinst/libiodbc_common.la \
+@@ -117,8 +117,8 @@
+ 
+ iodbcadm_gtk_SOURCES	=
+ iodbcadm_gtk_LDADD	= \
+-	../iodbcadm/gtk/main.lo \
+-	../iodbcadm/libiodbcadm.la \
++	gtk/main.lo \
++	libiodbcadm.la \
+ 	../iodbcinst/libiodbcinst.la \
+ 	../iodbc/libiodbc.la \
+ 	@GTK_LIBS@

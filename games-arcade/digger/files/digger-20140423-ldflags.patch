@@ -1,0 +1,21 @@
+diff -ru digger-digger.orig/Makefile digger-digger/Makefile
+--- digger-digger.orig/Makefile	2013-10-11 04:56:41.000000000 -0400
++++ digger-digger/Makefile	2014-04-24 13:11:58.749211920 -0400
+@@ -26,7 +26,7 @@
+ ifeq ($(ARCH),"LINUX")
+ OBJS	+= fbsd_sup.o	# strup()
+ RCFLAGS	+= -DLINUX $(shell sdl-config --cflags)
+-LIBS	+= $(shell sdl-config --libs) -lz
++LIBS	+= $(shell sdl-config --libs) -lX11 -lz
+ ESUFFIX	=
+ endif
+ 
+@@ -40,7 +40,7 @@
+ all: digger$(ESUFFIX)
+ 
+ digger$(ESUFFIX): $(OBJS)
+-	$(CC) -o digger$(ESUFFIX) $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o digger$(ESUFFIX) $(OBJS) $(LIBS)
+ 
+ $(OBJS): %.o: %.c
+ 	$(CC) -c $(RCFLAGS) $(CFLAGS) $< -o $@

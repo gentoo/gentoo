@@ -1,0 +1,33 @@
+diff --git a/wrapper/ibus/SConstruct b/wrapper/ibus/SConstruct
+index 92b1094..3e1166f 100644
+--- a/wrapper/ibus/SConstruct
++++ b/wrapper/ibus/SConstruct
+@@ -14,7 +14,7 @@ sources = ['src/debug.cpp',
+ 
+ locales = ['zh_CN']
+ 
+-cflags = '-O2 -g -pipe'
++cflags = '-O2 -g -pipe '
+ version = '2.0.3'
+ 
+ AddOption('--prefix', dest='prefix', metavar='DIR',
+@@ -62,9 +62,6 @@ if GetOption('datadir') is not None:
+ 
+ opts.Save('configure.conf', env)
+ 
+-if GetOption('rpath') is not None:
+-    env.Append(LINKFLAGS='-Wl,-R -Wl,%s' % GetOption('rpath'))
+-
+ envvar = [('CC', 'CC'),
+           ('CXX', 'CXX'),
+           ('CFLAGS', 'CFLAGS'),
+@@ -85,6 +82,9 @@ extra_cflags += ' -DGETTEXT_PACKAGE=\'"%s"\'' % gettext_package
+ env.Append(CFLAGS=extra_cflags)
+ env.Append(CXXFLAGS=extra_cflags)
+ 
++if GetOption('rpath') is not None:
++    env.Append(LINKFLAGS=' -Wl,-R -Wl,%s' % GetOption('rpath'))
++
+ #
+ #==============================configure================================
+ #

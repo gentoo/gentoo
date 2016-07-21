@@ -1,0 +1,10 @@
+--- nss-3.15/nss/coreconf/Linux.mk
++++ nss-3.15/nss/coreconf/Linux.mk
+@@ -116,6 +116,7 @@
+ 		OPTIMIZER += -gdwarf-2
+ 	endif
+ endif
++OPTIMIZER += -fno-strict-aliasing
+ endif
+ 
+ 

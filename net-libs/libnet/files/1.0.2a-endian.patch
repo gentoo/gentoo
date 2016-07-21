@@ -1,0 +1,20 @@
+--- a/include/libnet.h
++++ b/include/libnet.h
+@@ -32,6 +32,17 @@
+ #ifndef __LIBNET_H
+ #define __LIBNET_H
+ 
++#include <endian.h>
++#if __BYTE_ORDER == __LITTLE_ENDIAN
++# define LIBNET_LIL_ENDIAN 1
++#else
++# if __BYTE_ORDER == __BIG_ENDIAN
++#  define LIBNET_BIG_ENDIAN 1
++# else
++#  error unrecognized __BYTE_ORDER
++# endif
++#endif
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>

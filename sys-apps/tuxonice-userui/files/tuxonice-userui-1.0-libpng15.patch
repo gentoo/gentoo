@@ -1,0 +1,88 @@
+--- fbsplash/image.c	
++++ fbsplash/image.c	
+@@ -112,29 +112,29 @@ 
+ 	png_init_io(png_ptr, fp);
+ 	png_read_info(png_ptr, info_ptr);
+ 
+-	if (cmap && info_ptr->color_type != PNG_COLOR_TYPE_PALETTE) {
++	if (cmap && png_get_color_type(png_ptr, info_ptr) != PNG_COLOR_TYPE_PALETTE) {
+ 		printerr("Could not read file %s. Not a palette-based image.\n", filename);
+ 		goto failed;
+ 	}
+ 
+-	if (info_ptr->color_type == PNG_COLOR_TYPE_GRAY ||
+-	    info_ptr->color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
++	if (png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_GRAY ||
++	    png_get_color_type(png_ptr, info_ptr) == PNG_COLOR_TYPE_GRAY_ALPHA)
+ 		png_set_gray_to_rgb(png_ptr);
+ 
+-	if (info_ptr->bit_depth == 16)
++	if (png_get_bit_depth(png_ptr, info_ptr) == 16)
+ 		png_set_strip_16(png_ptr);
+ 
+-	if (!want_alpha && info_ptr->color_type & PNG_COLOR_MASK_ALPHA)
++	if (!want_alpha && png_get_color_type(png_ptr, info_ptr) & PNG_COLOR_MASK_ALPHA)
+ 		png_set_strip_alpha(png_ptr);
+ 
+ #ifndef TARGET_KERNEL	
+-	if (!(info_ptr->color_type & PNG_COLOR_MASK_ALPHA) & want_alpha) {
++	if (!(png_get_color_type(png_ptr, info_ptr) & PNG_COLOR_MASK_ALPHA) & want_alpha) {
+ 		png_set_add_alpha(png_ptr, 0xff, PNG_FILLER_AFTER);
+ 	}
+ #endif
+ 	png_read_update_info(png_ptr, info_ptr);
+ 
+-	if (!cmap && info_ptr->color_type != PNG_COLOR_TYPE_RGB && info_ptr->color_type != PNG_COLOR_TYPE_RGBA) {
++	if (!cmap && png_get_color_type(png_ptr, info_ptr) != PNG_COLOR_TYPE_RGB && png_get_color_type(png_ptr, info_ptr) != PNG_COLOR_TYPE_RGBA) {
+ 		printerr("Could not read file %s. Not an RGB image.\n", filename);
+ 		goto failed;
+ 	}
+@@ -150,12 +150,12 @@ 
+ 
+ 	rowbytes = png_get_rowbytes(png_ptr, info_ptr);	
+ 
+-	if ((width && *width && info_ptr->width != *width) || (height && *height && info_ptr->height != *height)) {
++	if ((width && *width && png_get_image_width(png_ptr, info_ptr) != *width) || (height && *height && png_get_image_height(png_ptr, info_ptr) != *height)) {
+ 		printerr("Image size mismatch: %s.\n", filename);
+ 		goto failed;
+ 	} else {
+-		*width = info_ptr->width;
+-		*height = info_ptr->height;
++		*width = png_get_image_width(png_ptr, info_ptr);
++		*height = png_get_image_height(png_ptr, info_ptr);
+ 	}
+ 
+ 	*data = malloc(fb_var.xres * fb_var.yres * bytespp);
+@@ -171,11 +171,11 @@ 
+ 		goto failed;
+ 	}
+ 	
+-	for (i = 0; i < info_ptr->height; i++) {
++	for (i = 0; i < png_get_image_height(png_ptr, info_ptr); i++) {
+ 		if (cmap) {
+-			row_pointer = *data + info_ptr->width * i;
++			row_pointer = *data + png_get_image_width(png_ptr, info_ptr) * i;
+ 		} else if (want_alpha) {
+-			row_pointer = *data + info_ptr->width * i * 4;
++			row_pointer = *data + png_get_image_width(png_ptr, info_ptr) * i * 4;
+ 		} else {
+ 			row_pointer = buf;
+ 		}
+@@ -184,7 +184,7 @@ 
+ 		
+ 		if (cmap) {
+ 			int h = 256 - cmap->len;
+-			t = *data + info_ptr->width * i;
++			t = *data + png_get_image_width(png_ptr, info_ptr) * i;
+ 
+ 			if (h) {
+ 				/* Move the colors up by 'h' offset. This is used because fbcon
+@@ -196,7 +196,7 @@ 
+ 		
+ 		/* We only need to convert the image if we the alpha channel is not required */	
+ 		} else if (!want_alpha) {
+-			truecolor2fb((truecolor*)buf, *data + info_ptr->width * bytespp * i, info_ptr->width, i, 0);
++			truecolor2fb((truecolor*)buf, *data + png_get_image_width(png_ptr, info_ptr) * bytespp * i, png_get_image_width(png_ptr, info_ptr), i, 0);
+ 		}
+ 	}
+ 

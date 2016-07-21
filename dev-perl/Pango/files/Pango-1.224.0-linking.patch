@@ -1,0 +1,10 @@
+--- Makefile.PL
++++ Makefile.PL
+@@ -161,6 +161,7 @@
+ if ($have_cairo) {
+ 	push @deps, qw/Cairo/;
+ 	$inc .= $pangocairo_pkgcfg{cflags};
++	$libs .= ' ';
+ 	$libs .= $pangocairo_pkgcfg{libs};
+ }
+ 

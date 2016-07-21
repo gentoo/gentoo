@@ -1,0 +1,11 @@
+--- a/src/profiles.c
++++ b/src/profiles.c
+@@ -287,7 +287,7 @@
+     return NULL;
+   }
+ 
+-  if (av_find_stream_info (ctx) < 0)
++  if (avformat_find_stream_info (ctx, NULL) < 0)
+   {
+     if (dlna->verbosity)
+       fprintf (stderr, "can't find stream info\n");

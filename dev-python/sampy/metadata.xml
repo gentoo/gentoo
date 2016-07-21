@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  SAMPy is a Python implementation of the Internation Virtual
+  Astronomy Organiztion of the Simple Application
+  Messaging Protocol (with Web Profile support).
+</longdescription>
+<upstream>
+  <remote-id type="pypi">sampy</remote-id>
+</upstream>
+</pkgmetadata>

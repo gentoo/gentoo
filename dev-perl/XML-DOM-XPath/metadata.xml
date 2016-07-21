@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-DOM-XPath</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Attr</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Comment</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Document</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Element</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Node</remote-id>
+    <remote-id type="cpan-module">XML::DOM::ProcessingInstruction</remote-id>
+    <remote-id type="cpan-module">XML::DOM::Text</remote-id>
+    <remote-id type="cpan-module">XML::DOM::XPath</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+diff -ur waitress-0.8.9.orig/docs/conf.py waitress-0.8.9/docs/conf.py
+--- docs/conf.py	2014-05-17 05:39:35.000000000 +0800
++++ docs/conf.py	2014-05-21 13:28:12.921485962 +0800
+@@ -21,24 +21,7 @@
+ import pkg_resources
+ 
+ # Add and use Pylons theme
+-if 'sphinx-build' in ' '.join(sys.argv): # protect against dumb importers
+-    from subprocess import call, Popen, PIPE
+-
+-    p = Popen('which git', shell=True, stdout=PIPE)
+-    git = p.stdout.read().strip()
+-    cwd = os.getcwd()
+-    _themes = os.path.join(cwd, '_themes')
+-
+-    if not os.path.isdir(_themes):
+-        call([git, 'clone', 'git://github.com/Pylons/pylons_sphinx_theme.git',
+-                '_themes'])
+-    else:
+-        os.chdir(_themes)
+-        call([git, 'checkout', 'master'])
+-        call([git, 'pull'])
+-        os.chdir(cwd)
+-
+-    sys.path.append(os.path.abspath('_themes'))
++sys.path.append(os.path.abspath('_themes'))
+ 
+ # General configuration
+ # ---------------------

@@ -1,0 +1,39 @@
+--- a/Makefile
++++ b/Makefile
+@@ -14,15 +14,12 @@
+ OBJS = $(SRCS:.c=.o)
+ SHELL = /bin/sh
+ 
+-CC = gcc
+-LDFLAGS = 
+-
+ ########## CHOOSE YOUR ARCHITECTURE:    (NOTE: also see bplaysrc/Makefile!)
+ 
+ # For Linux (and maybe others), use these:
+-CFLAGS = -Wall -O2 -funroll-loops -DTURBO_MEDIAN -DTURBO_BUFFER
++CFLAGS += -Wall -DTURBO_MEDIAN -DTURBO_BUFFER
+ DEPS = $(OBJS) makebplay
+-LIBS = -lncurses -lrfftw -lfftw -lm
++LIBS = $(shell ${PKG_CONFIG} --libs ncurses) -lrfftw -lfftw -lm
+ COPY_A = -a
+ 
+ # For FreeBSD (and maybe others), use these:
+--- a/bplaysrc/Makefile
++++ b/bplaysrc/Makefile
+@@ -6,14 +6,11 @@
+         ../clrscr.o ../secshms.o
+ #SRCS = bplay.c sndfunc.o shmbuf.c
+ 
+-CC = gcc
+-LDFLAGS = 
+-
+ ########## CHOOSE YOUR ARCHITECTURE:    (NOTE: also see ../Makefile!)
+ 
+ # For Linux (and maybe others), use these:
+-CFLAGS = -Wall -O2 -DUSEBUFFLOCK -DLP2CD -DVUMETER # -DDEBUG
+-LIBS = -lncurses
++CFLAGS += -Wall -DUSEBUFFLOCK -DLP2CD -DVUMETER # -DDEBUG
++LIBS = $(shell ${PKG_CONFIG} --libs ncurses)
+ 
+ # For FreeBSD (and maybe others), use these:
+ #CFLAGS = -Wall -O2 -DLP2CD -DVUMETER # -DDEBUG

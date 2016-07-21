@@ -1,0 +1,160 @@
+--- ./utils/System.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./utils/System.h	2011-04-12 18:33:41.000000000 -0700
+@@ -25,7 +25,7 @@
+ #include <fpu_control.h>
+ #endif
+ 
+-#include "mtl/IntTypes.h"
++#include <mtl/IntTypes.h>
+ 
+ //-------------------------------------------------------------------------------------------------
+ 
+--- ./utils/Options.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./utils/Options.h	2011-04-12 18:34:38.000000000 -0700
+@@ -25,9 +25,9 @@
+ #include <math.h>
+ #include <string.h>
+ 
+-#include "mtl/IntTypes.h"
+-#include "mtl/Vec.h"
+-#include "utils/ParseUtils.h"
++#include <mtl/IntTypes.h>
++#include <mtl/Vec.h>
++#include "ParseUtils.h"
+ 
+ namespace Minisat {
+ 
+--- ./core/SolverTypes.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./core/SolverTypes.h	2011-04-12 18:27:58.000000000 -0700
+@@ -24,11 +24,11 @@
+ 
+ #include <assert.h>
+ 
+-#include "mtl/IntTypes.h"
+-#include "mtl/Alg.h"
+-#include "mtl/Vec.h"
+-#include "mtl/Map.h"
+-#include "mtl/Alloc.h"
++#include <mtl/IntTypes.h>
++#include <mtl/Alg.h>
++#include <mtl/Vec.h>
++#include <mtl/Map.h>
++#include <mtl/Alloc.h>
+ 
+ namespace Minisat {
+ 
+--- ./core/Solver.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./core/Solver.h	2011-04-12 18:26:56.000000000 -0700
+@@ -21,11 +21,11 @@
+ #ifndef Minisat_Solver_h
+ #define Minisat_Solver_h
+ 
+-#include "mtl/Vec.h"
+-#include "mtl/Heap.h"
+-#include "mtl/Alg.h"
+-#include "utils/Options.h"
+-#include "core/SolverTypes.h"
++#include <mtl/Vec.h>
++#include <mtl/Heap.h>
++#include <mtl/Alg.h>
++#include <utils/Options.h>
++#include "SolverTypes.h"
+ 
+ 
+ namespace Minisat {
+--- ./mtl/Vec.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Vec.h	2011-04-12 18:30:50.000000000 -0700
+@@ -24,8 +24,8 @@
+ #include <assert.h>
+ #include <new>
+ 
+-#include "mtl/IntTypes.h"
+-#include "mtl/XAlloc.h"
++#include "IntTypes.h"
++#include "XAlloc.h"
+ 
+ namespace Minisat {
+ 
+--- ./mtl/Sort.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Sort.h	2011-04-12 18:31:05.000000000 -0700
+@@ -21,7 +21,7 @@
+ #ifndef Minisat_Sort_h
+ #define Minisat_Sort_h
+ 
+-#include "mtl/Vec.h"
++#include "Vec.h"
+ 
+ //=================================================================================================
+ // Some sorting algorithms for vec's
+--- ./mtl/Alg.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Alg.h	2011-04-12 18:32:26.000000000 -0700
+@@ -21,7 +21,7 @@
+ #ifndef Minisat_Alg_h
+ #define Minisat_Alg_h
+ 
+-#include "mtl/Vec.h"
++#include "Vec.h"
+ 
+ namespace Minisat {
+ 
+--- ./mtl/Alloc.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Alloc.h	2011-04-12 18:32:18.000000000 -0700
+@@ -21,8 +21,8 @@
+ #ifndef Minisat_Alloc_h
+ #define Minisat_Alloc_h
+ 
+-#include "mtl/XAlloc.h"
+-#include "mtl/Vec.h"
++#include "XAlloc.h"
++#include "Vec.h"
+ 
+ namespace Minisat {
+ 
+--- ./mtl/Heap.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Heap.h	2011-04-12 18:32:05.000000000 -0700
+@@ -21,7 +21,7 @@
+ #ifndef Minisat_Heap_h
+ #define Minisat_Heap_h
+ 
+-#include "mtl/Vec.h"
++#include "Vec.h"
+ 
+ namespace Minisat {
+ 
+--- ./mtl/Map.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Map.h	2011-04-12 18:31:36.000000000 -0700
+@@ -20,8 +20,8 @@
+ #ifndef Minisat_Map_h
+ #define Minisat_Map_h
+ 
+-#include "mtl/IntTypes.h"
+-#include "mtl/Vec.h"
++#include "IntTypes.h"
++#include "Vec.h"
+ 
+ namespace Minisat {
+ 
+--- ./mtl/Queue.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./mtl/Queue.h	2011-04-12 18:31:18.000000000 -0700
+@@ -21,7 +21,7 @@
+ #ifndef Minisat_Queue_h
+ #define Minisat_Queue_h
+ 
+-#include "mtl/Vec.h"
++#include "Vec.h"
+ 
+ namespace Minisat {
+ 
+--- ./simp/SimpSolver.h.orig	2010-07-10 09:07:36.000000000 -0700
++++ ./simp/SimpSolver.h	2011-04-12 18:35:20.000000000 -0700
+@@ -21,8 +21,8 @@
+ #ifndef Minisat_SimpSolver_h
+ #define Minisat_SimpSolver_h
+ 
+-#include "mtl/Queue.h"
+-#include "core/Solver.h"
++#include <mtl/Queue.h>
++#include <core/Solver.h>
+ 
+ 
+ namespace Minisat {

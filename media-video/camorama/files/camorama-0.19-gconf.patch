@@ -1,0 +1,40 @@
+# Make camorama respect --disable-schemas-install configure switch
+# https://bugs.gentoo.org/show_bug.cgi?id=243274
+#
+# Makefile.am |    4 ++++
+# Makefile.in |    7 ++++---
+#  2 files changed, 8 insertions(+), 3 deletions(-)
+#
+#
+--- a/data/Makefile.am	2008-11-30 12:39:56.000000000 +0100
++++ b/data/Makefile.am	2008-11-30 12:41:33.000000000 +0100
+@@ -24,9 +24,13 @@
+ 	cp $(app_DATA) ~/.gnome/application-registry
+ 	cp $(keys_DATA) ~/.gnome/mime-info/
+ 
++if GCONF_SCHEMAS_INSTALL
+ install-data-local:
+ 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA) 
+ 	$(GCONFTOOL) --shutdown
++else
++install-data-local:
++endif
+ 
+ EXTRA_DIST = $(glade_DATA) $(schema_in_files) $(stuff_DATA)
+ 
+--- a/data/Makefile.in	2008-11-30 12:41:10.000000000 +0100
++++ b/data/Makefile.in	2008-11-30 12:42:24.000000000 +0100
+@@ -448,9 +437,10 @@
+ 	cp $(app_DATA) ~/.gnome/application-registry
+ 	cp $(keys_DATA) ~/.gnome/mime-info/
+ 
+-install-data-local:
+-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA) 
+-	$(GCONFTOOL) --shutdown
++@GCONF_SCHEMAS_INSTALL_TRUE@install-data-local:
++@GCONF_SCHEMAS_INSTALL_TRUE@	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schema_DATA) 
++@GCONF_SCHEMAS_INSTALL_TRUE@	$(GCONFTOOL) --shutdown
++@GCONF_SCHEMAS_INSTALL_FALSE@install-data-local:
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

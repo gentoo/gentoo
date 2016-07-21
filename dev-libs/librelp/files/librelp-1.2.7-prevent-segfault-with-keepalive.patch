@@ -1,0 +1,32 @@
+From 0ca7f807958e8365b2fd2f3fd833814c83594bdc Mon Sep 17 00:00:00 2001
+From: Tomas Heinrich <theinric@redhat.com>
+Date: Sun, 1 Jun 2014 16:44:59 +0200
+Subject: [PATCH] Reorder code, prevent access of uninitialized data
+
+---
+ src/tcp.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/tcp.c b/src/tcp.c
+index 1e0fd11..e21db51 100644
+--- a/src/tcp.c
++++ b/src/tcp.c
+@@ -713,12 +713,12 @@ relpTcpAcceptConnReq(relpTcp_t **ppThis, int sock, relpSrv_t *pSrv)
+ 		ABORT_FINALIZE(RELP_RET_ACCEPT_ERR);
+ 	}
+ 
+-	if(pSrv->bKeepAlive)
+-		EnableKeepAlive(pThis, pSrv, iNewSock);
+-
+ 	/* construct our object so that we can use it... */
+ 	CHKRet(relpTcpConstruct(&pThis, pEngine, RELP_SRV_CONN, pSrv));
+ 
++	if(pSrv->bKeepAlive)
++		EnableKeepAlive(pThis, pSrv, iNewSock);
++
+ 	/* TODO: obtain hostname, normalize (callback?), save it */
+ 	CHKRet(relpTcpSetRemHost(pThis, (struct sockaddr*) &addr));
+ 	pThis->pEngine->dbgprint("remote host is '%s', ip '%s'\n", pThis->pRemHostName, pThis->pRemHostIP);
+-- 
+1.9.3
+

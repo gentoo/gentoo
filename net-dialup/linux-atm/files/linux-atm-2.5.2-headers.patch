@@ -1,0 +1,30 @@
+--- linux-atm/src/maint/hediag.c.orig
++++ linux-atm/src/maint/hediag.c
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+--- linux-atm/src/qgen/ql_y.y
++++ linux-atm/src/qgen/ql_y.y
+@@ -17,6 +17,8 @@
+ static STRUCTURE *structures = NULL;
+ static const char *abort_id; /* indicates abort flag */
+ 
++void yyerror(const char *s);
++int yylex ( void );
+ 
+ static NAME_LIST *get_name_list(const char *name)
+ {
+--- linux-atm/src/test/ispl_y.y
++++ linux-atm/src/test/ispl_y.y
+@@ -16,6 +16,7 @@
+ 
+ static struct atmsvc_msg msg;
+ 
++int yylex ( void );
+ 
+ %}
+ 

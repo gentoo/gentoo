@@ -1,0 +1,58 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,10 +20,11 @@
+ BINMODE = 755
+ CONFDIR = /etc
+ CONFMODE = 644
+-SHARED_LIBDIR = /lib
++LIBDIR = lib
++SHARED_LIBDIR = /$(LIBDIR)
+ SHARED_LIBDIR_SUN = /usr/lib
+ SHARED_LIBDIR_REL = ../..$(SHARED_LIBDIR)
+-DEVEL_LIBDIR = /usr/lib
++DEVEL_LIBDIR = /usr/$(LIBDIR)
+-SECUREDIR = /lib/security
++SECUREDIR = /$(LIBDIR)/security
+ SECUREDIR_SUN = /usr/lib/security
+ SECUREDIR_DARWIN = /usr/lib/pam
+@@ -48,7 +49,7 @@
+ INSTALL_SUN = /usr/ucb/install -c
+ CFLAGS = -Wall -W -O2
+ CFLAGS_lib = $(CFLAGS) -fPIC
+-CFLAGS_bin = $(CFLAGS) -fomit-frame-pointer
++CFLAGS_bin = $(CFLAGS)
+ 
+ LDFLAGS =
+ LDFLAGS_shared = --shared
+@@ -93,7 +94,7 @@
+ 
+ default: all
+ 
+-all pam utils install install_lib install_pam install_utils uninstall remove remove_lib remove_pam remove_utils:
++all lib pam utils install install_lib install_pam install_utils uninstall remove remove_lib remove_pam remove_utils:
+ 	case "`uname -s`" in \
+ 	Linux)	$(MAKE) CFLAGS_lib="$(CFLAGS_lib) -DHAVE_SHADOW" \
+ 			LDFLAGS_lib="$(LDFLAGS_lib_LINUX)" \
+@@ -126,18 +127,20 @@
+ 
+ all_wrapped: pam_wrapped utils_wrapped
+ 
++lib_wrapped: $(SHARED_LIB) $(DEVEL_LIB)
++
+ pam_wrapped: $(SHARED_PAM)
+ 
+ utils_wrapped: $(BINS)
+ 
+ $(SHARED_LIB): $(OBJS_LIB) $(MAP_LIB)
+-	$(LD_lib) $(LDFLAGS_lib) $(OBJS_LIB) $(LDLIBS_lib) -o $(SHARED_LIB)
++	$(LD_lib) $(LDFLAGS) $(LDFLAGS_lib) $(OBJS_LIB) $(LDLIBS_lib) -o $(SHARED_LIB)
+ 
+ $(DEVEL_LIB): $(SHARED_LIB)
+ 	$(LN_s) $(SHARED_LIB) $(DEVEL_LIB)
+ 
+ $(SHARED_PAM): $(OBJS_PAM) $(MAP_PAM) $(DEVEL_LIB)
+-	$(LD_lib) $(LDFLAGS_pam) $(OBJS_PAM) $(LDLIBS_pam) -L. -lpasswdqc -o $(SHARED_PAM)
++	$(LD_lib) $(LDFLAGS) $(LDFLAGS_pam) $(OBJS_PAM) $(LDLIBS_pam) -L. -lpasswdqc -o $(SHARED_PAM)
+ 
+ pwqgen: $(OBJS_GEN) $(DEVEL_LIB)
+ 	$(LD) $(LDFLAGS) $(OBJS_GEN) -L. -lpasswdqc -o $@

@@ -1,0 +1,68 @@
+rebased from https://github.com/jamielennox/HTTPretty/commit/3a7d5a04b2ed5cebc8e1fc14f706f5da7fc5162f
+diff -ur httpretty-0.7.0.orig/requirements.pip httpretty-0.7.0/requirements.pip
+--- requirements.pip	2013-10-02 12:44:47.000000000 +0800
++++ requirements.pip	2013-12-02 15:37:00.611977792 +0800
+@@ -1,12 +1,9 @@
+-argparse==1.2.1
+-coverage==3.5.3
+-httplib2==0.7.6
+-misaka==1.0.2
+-mock==1.0.1
+-nose==1.2.1
+-requests==1.1.0
+-steadymark==0.4.5
++coverage>=3.5
++httplib2
++mock>=1.0
++nose>=1.2
++requests>=1.1
+ sure>=1.2.1
+-tornado==2.4
+-tox==1.4.2
+-urllib3
+\ No newline at end of file
++tornado>=2.2
++tox>=1.4.2
++urllib3
+diff -ur httpretty-0.7.0.orig/setup.cfg httpretty-0.7.0/setup.cfg
+--- setup.cfg	2013-10-08 05:42:31.000000000 +0800
++++ setup.cfg	2013-12-02 15:40:34.331985437 +0800
+@@ -2,4 +2,9 @@
+ tag_build = 
+ tag_date = 0
+ tag_svn_revision = 0
+-
++[nosetests]
++verbosity=2
++with-coverage=1
++cover-erase=1
++cover-package=httpretty
++cover-inclusive=1
+diff -ur httpretty-0.7.0.orig/setup.py httpretty-0.7.0/setup.py
+--- setup.py	2013-10-08 05:42:31.000000000 +0800
++++ setup.py	2013-12-02 15:42:26.467989448 +0800
+@@ -50,10 +50,11 @@
+     author_email='gabriel@nacaolivre.org',
+     url='http://github.com/gabrielfalcao/httpretty',
+     zip_safe=False,
+-    packages=find_packages(HTTPRETTY_PATH, ('tests')),
++    packages=find_packages(),
+     tests_require=test_packages(),
+     install_requires=['urllib3'],
+     license='MIT',
++    test_suite='nose.collector',
+     classifiers=["Intended Audience :: Developers",
+                  "License :: OSI Approved :: MIT License",
+                  "Topic :: Software Development :: Testing"],
+diff -ur httpretty-0.7.0.orig/tests/functional/test_requests.py httpretty-0.7.0/tests/functional/test_requests.py
+--- tests/functional/test_requests.py	2013-10-08 05:42:31.000000000 +0800
++++ tests/functional/test_requests.py	2013-12-02 15:43:48.763992391 +0800
+@@ -698,7 +698,7 @@
+     response['response'].should.have.key("status").being.equal(200)
+     response['response'].should.have.key("body").being.an(unicode)
+     response['response'].should.have.key("headers").being.a(dict)
+-    response['response']["headers"].should.have.key("server").being.equal("TornadoServer/2.4")
++    response['response']["headers"].should.have.key("server").being.equal("TornadoServer")
+ 
+ 
+ def test_playing_calls():

@@ -1,0 +1,124 @@
+From ca758f29c89d87581b244c652f7a14c8306cc994 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Wed, 7 Jan 2015 14:43:37 +0200
+Subject: [PATCH] Add more EC conditionals
+
+Upstream bug:
+https://sourceforge.net/p/xca/patches/16/
+
+---
+ lib/pki_scard.cpp   | 12 ++++++++++++
+ widgets/MW_help.cpp |  2 +-
+ widgets/NewKey.cpp  |  2 +-
+ 3 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/lib/pki_scard.cpp b/lib/pki_scard.cpp
+index 444c81d..547c932 100644
+--- a/lib/pki_scard.cpp
++++ b/lib/pki_scard.cpp
+@@ -237,7 +237,9 @@ pk11_attlist pki_scard::objectAttributesNoId(EVP_PKEY *pk, bool priv) const
+ 	QByteArray ba;
+ 	RSA *rsa = pk->pkey.rsa;
+ 	DSA *dsa = pk->pkey.dsa;
++#ifndef OPENSSL_NO_EC
+ 	EC_KEY *ec = pk->pkey.ec;
++#endif
+ 
+ 	pk11_attlist attrs(pk11_attr_ulong(CKA_CLASS,
+ 			priv ? CKO_PRIVATE_KEY : CKO_PUBLIC_KEY));
+@@ -254,6 +256,7 @@ pk11_attlist pki_scard::objectAttributesNoId(EVP_PKEY *pk, bool priv) const
+ 			pk11_attr_data(CKA_SUBPRIME, dsa->q, false) <<
+ 			pk11_attr_data(CKA_BASE, dsa->g, false);
+ 		break;
++#ifndef OPENSSL_NO_EC
+ 	case EVP_PKEY_EC:
+ 		ba = i2d_bytearray(I2D_VOID(i2d_ECPKParameters),
+ 				EC_KEY_get0_group(ec));
+@@ -261,6 +264,7 @@ pk11_attlist pki_scard::objectAttributesNoId(EVP_PKEY *pk, bool priv) const
+ 		attrs << pk11_attr_ulong(CKA_KEY_TYPE, CKK_EC) <<
+ 			pk11_attr_data(CKA_EC_PARAMS, ba);
+ 		break;
++#endif
+ 	default:
+ 		throw errorEx(QString("Unkown Keytype %d").arg(pk->type));
+ 
+@@ -330,7 +334,9 @@ void pki_scard::store_token(slotid slot, EVP_PKEY *pkey)
+ 	QByteArray ba;
+ 	RSA *rsa = pkey->pkey.rsa;
+ 	DSA *dsa = pkey->pkey.dsa;
++#ifndef OPENSSL_NO_EC
+ 	EC_KEY *ec = pkey->pkey.ec;
++#endif
+ 	pk11_attlist pub_atts;
+ 	pk11_attlist priv_atts;
+ 	QList<CK_OBJECT_HANDLE> objects;
+@@ -381,6 +387,7 @@ void pki_scard::store_token(slotid slot, EVP_PKEY *pkey)
+ 		priv_atts << pk11_attr_data(CKA_VALUE, dsa->priv_key, false);
+ 		pub_atts << pk11_attr_data(CKA_VALUE, dsa->pub_key, false);
+ 		break;
++#ifndef OPENSSL_NO_EC
+ 	case EVP_PKEY_EC: {
+ 		/* Public Key */
+ 		BIGNUM *point;
+@@ -410,6 +417,7 @@ void pki_scard::store_token(slotid slot, EVP_PKEY *pkey)
+ 					EC_KEY_get0_private_key(ec));
+ 		break;
+ 	}
++#endif
+ 	default:
+ 		throw errorEx(QString("Unkown Keytype %d").arg(pkey->type));
+ 
+@@ -459,11 +467,13 @@ QList<int> pki_scard::possibleHashNids()
+ 			case CKM_DSA_SHA1:        nids << NID_sha1; break;
+ 			}
+ 			break;
++#ifndef OPENSSL_NO_EC
+ 		case EVP_PKEY_EC:
+ 			switch (mechanism) {
+ 			case CKM_ECDSA_SHA1:      nids << NID_sha1; break;
+ 			}
+ 			break;
++#endif
+ 		}
+ 	}
+ 	if (nids.count() == 0) {
+@@ -473,7 +483,9 @@ QList<int> pki_scard::possibleHashNids()
+ 				NID_sha384 << NID_sha512 << NID_ripemd160;
+ 			break;
+ 		case EVP_PKEY_DSA:
++#ifndef OPENSSL_NO_EC
+ 		case EVP_PKEY_EC:
++#endif
+ 			nids << NID_sha1;
+ 			break;
+ 		}
+diff --git a/widgets/MW_help.cpp b/widgets/MW_help.cpp
+index 67faa2a..c13c309 100644
+--- a/widgets/MW_help.cpp
++++ b/widgets/MW_help.cpp
+@@ -65,7 +65,7 @@ void MainWindow::about()
+ 	}
+ #endif
+ #else
+-	brainpool = "(Elliptic Curve Cryptography support disabled)"
++	brainpool = "(Elliptic Curve Cryptography support disabled)";
+ #endif
+ 	openssl = SSLeay_version(SSLEAY_VERSION);
+ 	qt = qVersion();
+diff --git a/widgets/NewKey.cpp b/widgets/NewKey.cpp
+index 824456d..0dba2c2 100644
+--- a/widgets/NewKey.cpp
++++ b/widgets/NewKey.cpp
+@@ -79,8 +79,8 @@ class keyListItem
+ 				 */
+ 				ec_flags = CKF_EC_F_P | CKF_EC_F_2M;
+ 			}
+-		}
+ #endif
++		}
+ 		printname = QString("%1 #%2 (%3 Key of %4 - %5 bits)").
+ 			arg(ti.label()).arg(ti.serial()).
+ 			arg(tl->name).
+-- 
+2.0.5
+

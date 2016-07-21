@@ -1,0 +1,144 @@
+Namespace qualify bind, in order to avoid clashes with boost::placeholder
+Patches taken from FreeBSD:
+https://svnweb.freebsd.org/ports?view=revision&revision=408592
+
+--- scantailor-0.9.11.1/filters/deskew/Filter.cpp
++++ scantailor-0.9.11.1/filters/deskew/Filter.cpp
+@@ -85,9 +85,9 @@
+ 	
+ 	QDomElement filter_el(doc.createElement("deskew"));
+ 	writer.enumPages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writePageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/filters/fix_orientation/Filter.cpp
++++ scantailor-0.9.11.1/filters/fix_orientation/Filter.cpp
+@@ -100,9 +100,9 @@
+ 	
+ 	QDomElement filter_el(doc.createElement("fix-orientation"));
+ 	writer.enumImages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writeImageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/filters/output/Filter.cpp
++++ scantailor-0.9.11.1/filters/output/Filter.cpp
+@@ -93,9 +93,9 @@
+ 	
+ 	QDomElement filter_el(doc.createElement("output"));
+ 	writer.enumPages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writePageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/filters/page_layout/Filter.cpp
++++ scantailor-0.9.11.1/filters/page_layout/Filter.cpp
+@@ -136,9 +136,9 @@
+ 	
+ 	QDomElement filter_el(doc.createElement("page-layout"));
+ 	writer.enumPages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writePageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/filters/page_split/Filter.cpp
++++ scantailor-0.9.11.1/filters/page_split/Filter.cpp
+@@ -110,9 +110,9 @@
+ 	);
+ 	
+ 	writer.enumImages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writeImageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/filters/select_content/Filter.cpp
++++ scantailor-0.9.11.1/filters/select_content/Filter.cpp
+@@ -119,9 +119,9 @@
+ 	
+ 	QDomElement filter_el(doc.createElement("select-content"));
+ 	writer.enumPages(
+-		bind(
++		boost::lambda::bind(
+ 			&Filter::writePageSettings,
+-			this, boost::ref(doc), var(filter_el), _1, _2
++			this, boost::ref(doc), var(filter_el), boost::lambda::_1, boost::lambda::_2
+ 		)
+ 	);
+ 	
+--- scantailor-0.9.11.1/MainWindow.cpp
++++ scantailor-0.9.11.1/MainWindow.cpp
+@@ -1898,8 +1898,8 @@
+ 		ImageFileInfo image_file_info(file_info, std::vector<ImageMetadata>());
+ 
+ 		ImageMetadataLoader::Status const status = ImageMetadataLoader::load(
+-			files.at(i), bind(&std::vector<ImageMetadata>::push_back,
+-			boost::ref(image_file_info.imageInfo()), _1)
++			files.at(i), boost::lambda::bind(&std::vector<ImageMetadata>::push_back,
++			boost::ref(image_file_info.imageInfo()), boost::lambda::_1)
+ 		);
+ 
+ 		if (status == ImageMetadataLoader::LOADED) {
+@@ -1921,7 +1921,7 @@
+ 	}
+ 
+ 	// Check if there is at least one DPI that's not OK.
+-	if (std::find_if(new_files.begin(), new_files.end(), !bind(&ImageFileInfo::isDpiOK, _1)) != new_files.end()) {
++	if (std::find_if(new_files.begin(), new_files.end(), !boost::lambda::bind(&ImageFileInfo::isDpiOK, boost::lambda::_1)) != new_files.end()) {
+ 
+ 		std::auto_ptr<FixDpiDialog> dpi_dialog(new FixDpiDialog(new_files, this));
+ 		dpi_dialog->setWindowModality(Qt::WindowModal);
+--- scantailor-0.9.11.1/ThumbnailSequence.cpp
++++ scantailor-0.9.11.1/ThumbnailSequence.cpp
+@@ -491,7 +491,7 @@
+ 	m_pSelectionLeader(0)
+ {
+ 	m_graphicsScene.setContextMenuEventCallback(
+-		bind(&Impl::sceneContextMenuEvent, this, _1)
++		boost::lambda::bind(&Impl::sceneContextMenuEvent, this, boost::lambda::_1)
+ 	);
+ }
+ 
+@@ -605,7 +605,7 @@
+ {
+ 	ItemsById::iterator const id_it(m_itemsById.find(page_info.id()));
+ 	if (id_it != m_itemsById.end()) {
+-		m_itemsById.modify(id_it, bind(&Item::pageInfo, _1) = page_info);
++		m_itemsById.modify(id_it, boost::lambda::bind(&Item::pageInfo, boost::lambda::_1) = page_info);
+ 		invalidateThumbnailImpl(id_it);
+ 	}
+ }
+@@ -725,10 +725,10 @@
+ 	// Sort pages in m_itemsInOrder using m_ptrOrderProvider.
+ 	if (m_ptrOrderProvider.get()) {
+ 		m_itemsInOrder.sort(
+-			bind(
++			boost::lambda::bind(
+ 				&PageOrderProvider::precedes, m_ptrOrderProvider.get(),
+-				bind(&Item::pageId, _1), bind(&Item::incompleteThumbnail, _1),
+-				bind(&Item::pageId, _2), bind(&Item::incompleteThumbnail, _2) 
++				boost::lambda::bind(&Item::pageId, boost::lambda::_1), bind(&Item::incompleteThumbnail, boost::lambda::_1),
++				boost::lambda::bind(&Item::pageId, boost::lambda::_2), bind(&Item::incompleteThumbnail, boost::lambda::_2) 
+ 			)
+ 		);
+ 	}

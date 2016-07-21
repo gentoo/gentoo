@@ -1,0 +1,65 @@
+--- a/configure.in
++++ b/configure.in
+@@ -18,6 +18,7 @@
+ 
+ AC_PROG_CXX
+ AC_PROG_LIBTOOL
++PKG_PROG_PKG_CONFIG
+ 
+ AC_LANG(C++)
+ ACX_PTHREAD
+@@ -25,6 +26,12 @@
+ AC_CHECK_HEADER([zlib.h], , AC_MSG_ERROR([zlib not found]))
+ AC_CHECK_HEADER([cxxtools/net/tcpsocket.h], , AC_MSG_ERROR([cxxtools headers not found]))
+ 
++PKG_CHECK_MODULES([MINIZIP], [minizip],
++  [HAVE_MINIZIP=true], [HAVE_MINIZIP=false])
++AC_SUBST([MINIZIP_CFLAGS])
++AC_SUBST([MINIZIP_LIBS])
++AM_CONDITIONAL([HAVE_MINIZIP], [test $HAVE_MINIZIP = true])
++
+ AC_ARG_WITH([epoll],
+   AS_HELP_STRING([--with-epoll=yes|no|probe], [use epoll]),
+   [epoll_option=$withval],
+--- a/framework/common/Makefile.am
++++ b/framework/common/Makefile.am
+@@ -23,7 +23,6 @@ libtntnet_la_SOURCES = \
+ 	httpparser.cpp \
+ 	httprequest.cpp \
+ 	httpreply.cpp \
+-	ioapi.c \
+ 	job.cpp \
+ 	langlib.cpp \
+ 	listener.cpp \
+@@ -41,16 +40,13 @@ libtntnet_la_SOURCES = \
+ 	stringlessignorecase.cpp \
+ 	tntconfig.cpp \
+ 	tntnet.cpp \
+-	unzip.c \
+ 	unzipfile.cpp \
+ 	urlescostream.cpp \
+ 	urlmapper.cpp \
+ 	util.cpp \
+ 	worker.cpp \
+ 	zdata.cpp \
+-	crypt.h \
+-	ioapi.h \
+-	unzip.h
++	crypt.h
+ 
+ nobase_include_HEADERS = \
+ 	tnt/applicationunlocker.h \
+@@ -145,3 +141,13 @@ noinst_HEADERS += \
+ 	tnt/stressjob.h
+ endif
+ 
++if HAVE_MINIZIP
++libtntnet_la_CXXFLAGS += $(MINIZIP_CFLAGS)
++libtntnet_la_LDFLAGS += $(MINIZIP_LIBS)
++else
++libtntnet_la_SOURCES += \
++	ioapi.c \
++	ioapi.h \
++	unzip.c \
++	unzip.h
++endif

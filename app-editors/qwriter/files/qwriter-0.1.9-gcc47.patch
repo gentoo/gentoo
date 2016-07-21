@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/show_bug.cgi?id=425252
+Index: qwriter-0.1.9-src/qtsingleapplication-2.6-opensource/linux/src/qtlocalpeer.cpp
+===================================================================
+--- qwriter-0.1.9-src.orig/qtsingleapplication-2.6-opensource/linux/src/qtlocalpeer.cpp
++++ qwriter-0.1.9-src/qtsingleapplication-2.6-opensource/linux/src/qtlocalpeer.cpp
+@@ -56,6 +56,7 @@ typedef BOOL(WINAPI*PProcessIdToSessionI
+ static PProcessIdToSessionId pProcessIdToSessionId = 0;
+ #endif
+ #if defined(Q_OS_UNIX)
++#include <unistd.h>
+ #include <time.h>
+ #endif
+ 

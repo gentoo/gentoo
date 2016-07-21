@@ -1,0 +1,8 @@
+--- ./Imakefile.org	Wed Nov 28 01:18:02 2001
++++ ./Imakefile	Wed Nov 28 01:19:28 2001
+@@ -7,4 +7,4 @@
+ SRCS = wmcdplay.cc
+ OBJS = wmcdplay.o
+ 
+-ComplexProgramTarget(wmcdplay)
++ComplexProgramTargetNoMan(wmcdplay)

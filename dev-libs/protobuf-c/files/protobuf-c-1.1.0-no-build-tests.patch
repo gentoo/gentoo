@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/518440
+
+avoid compiling tests when we aren't actually testing, especially since it
+requires a compiler to execute which fails when cross-compiling
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -135,7 +135,7 @@ t_generated_code2_test_generated_code2_SOURCES = \
+ t_generated_code2_test_generated_code2_LDADD = \
+ 	protobuf-c/libprotobuf-c.la
+ 
+-noinst_PROGRAMS += \
++check_PROGRAMS += \
+ 	t/generated-code2/cxx-generate-packed-data
+ 
+ t_generated_code2_cxx_generate_packed_data_SOURCES = \
+@@ -160,12 +160,6 @@ t/test-full.pb.cc t/test-full.pb.h: @PROTOC@ $(top_srcdir)/t/test-full.proto
+ t/generated-code2/test-full-cxx-output.inc: t/generated-code2/cxx-generate-packed-data$(EXEEXT)
+ 	$(AM_V_GEN)$(top_builddir)/t/generated-code2/cxx-generate-packed-data$(EXEEXT) > $(top_builddir)/t/generated-code2/test-full-cxx-output.inc
+ 
+-BUILT_SOURCES += \
+-	t/test.pb-c.c t/test.pb-c.h \
+-	t/test-full.pb-c.c t/test-full.pb-c.h \
+-	t/test-full.pb.cc t/test-full.pb.h \
+-	t/generated-code2/test-full-cxx-output.inc
+-
+ t_version_version_SOURCES = \
+ 	t/version/version.c
+ t_version_version_LDADD = \

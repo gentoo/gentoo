@@ -1,0 +1,11 @@
+diff -ruN Quarter-1.0.0/src/Quarter/Quarter.cpp my/src/Quarter/Quarter.cpp
+--- Quarter-1.0.0/src/Quarter/Quarter.cpp	2009-01-26 22:47:07.000000000 +0100
++++ my/src/Quarter/Quarter.cpp	2014-08-14 01:48:45.019728780 +0200
+@@ -123,6 +123,7 @@
+   \subpage examiner
+ */
+ 
++#include <stdio.h>
+ 
+ #include <Inventor/SoDB.h>
+ #include <Inventor/nodekits/SoNodeKit.h>

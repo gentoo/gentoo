@@ -1,0 +1,35 @@
+diff -rupN ardour-3.0/libs/ardour/wscript newardour-3.0/libs/ardour/wscript
+--- ardour-3.0/libs/ardour/wscript      2013-03-10 22:13:52.000000000 +0100
++++ newardour-3.0/libs/ardour/wscript   2013-03-15 08:04:07.428001597 +0100
+@@ -287,7 +287,8 @@ def configure(conf):
+ 
+     # we don't try to detect this, since its part of our source tree
+ 
+-    conf.define('HAVE_RUBBERBAND', 1) # controls whether we think we have it
++    autowaf.check_pkg(conf, 'taglib', uselib_store='TAGLIB', atleast_version='1.7')
++    autowaf.check_pkg(conf, 'rubberband', uselib_store='RUBBERBAND', atleast_version='1.4')
+     conf.define('USE_RUBBERBAND', 1)  # controls whether we actually use it
+ 
+     conf.define('CURRENT_SESSION_FILE_VERSION', CURRENT_SESSION_FILE_VERSION)
+@@ -378,7 +379,7 @@ def build(bld):
+     obj.target       = 'ardour'
+     obj.uselib       = ['GLIBMM','GTHREAD','AUBIO','SIGCPP','XML','UUID',
+                         'JACK','SNDFILE','SAMPLERATE','LRDF','AUDIOUNITS',
+-                        'OSX','BOOST','CURL','DL']
++                        'OSX','BOOST','CURL','DL','RUBBERBAND','TAGLIB']
+     obj.use          = ['libpbd','libmidipp','libevoral','libvamphost',
+                         'libvampplugin','libtaglib','librubberband',
+                         'libaudiographer','libltc']
+diff -rupN ardour-3.0/wscript newardour-3.0/wscript
+--- ardour-3.0/wscript  2013-03-10 22:13:59.000000000 +0100
++++ newardour-3.0/wscript       2013-03-15 08:03:00.639999789 +0100
+@@ -31,9 +31,7 @@ children = [
+         'libs/vamp-sdk',
+         'libs/qm-dsp',
+         'libs/vamp-plugins',
+-        'libs/taglib',
+         'libs/libltc',
+-        'libs/rubberband',
+         'libs/surfaces',
+         'libs/panners',
+         'libs/timecode',

@@ -1,0 +1,32 @@
+reverted:
+--- b/meshlab/src/meshlab/meshlab.pro
++++ a/meshlab/src/meshlab/meshlab.pro
+@@ -129,9 +129,11 @@
+ #	win32-g++:release:LIBS 			+= -L../common/release -lcommon
+ #}
+ 
++linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
+-linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLEW -lGLU
+ linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -L../distrib -lcommon -lGLU
+ linux-g++-32:QMAKE_RPATHDIR += ../distrib
++linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -L../distrib -lcommon -lGLU
+ linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ 
+ # uncomment in your local copy only in emergency cases.
+reverted:
+--- b/meshlab/src/meshlabserver/meshlabserver.pro
++++ a/meshlab/src/meshlabserver/meshlabserver.pro
+@@ -25,9 +25,11 @@
+ win32-msvc2008:  LIBS += -L../distrib -lcommon
+ win32-msvc2010:  LIBS += -L../distrib -lcommon
+ win32-g++:  LIBS += -L../distrib -lcommon
++linux-g++:  LIBS += -L../distrib -lcommon
+-linux-g++:  LIBS += -L../distrib -lcommon -lGLEW
+ linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++-32:  LIBS += -L../distrib -lcommon
+ linux-g++-32:QMAKE_RPATHDIR += ../distrib
++linux-g++-64:  LIBS += -L../distrib -lcommon
+ linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ #CONFIG (release,debug | release) {
+ #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon

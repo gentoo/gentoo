@@ -1,0 +1,1 @@
+KERNEL=="knem", MODE="0666"

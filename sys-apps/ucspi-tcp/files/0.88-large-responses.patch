@@ -1,0 +1,26 @@
+12 Aug 2003; Robin H. Johnson <robbat2@gentoo.org>:
+
+allow larger responses
+
+--- a/rblsmtpd.c
++++ b/rblsmtpd.c
+@@ -163,7 +163,7 @@ void rblsmtpd(void)
+   else
+     if (!stralloc_copys(&message,"553 ")) nomem();
+ 
+-  if (text.len > 200) text.len = 200;
++  if (text.len > 500) text.len = 500;
+   if (!stralloc_cat(&message,&text)) nomem();
+   for (i = 0;i < message.len;++i)
+     if ((message.s[i] < 32) || (message.s[i] > 126))
+--- a/rblspp.c
++++ b/rblspp.c
+@@ -142,7 +142,7 @@ void rblspp(void)
+   else
+     if (!stralloc_copys(&message,"E553 ")) nomem();
+ 
+-  if (text.len > 200) text.len = 200;
++  if (text.len > 500) text.len = 500;
+   if (!stralloc_cat(&message,&text)) nomem();
+   for (i = 0;i < message.len;++i)
+     if ((message.s[i] < 32) || (message.s[i] > 126))

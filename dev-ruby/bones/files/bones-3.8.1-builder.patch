@@ -1,0 +1,15 @@
+--- a/lib/bones/gem_package_task.rb	2013-12-03 19:04:22.577553656 +0000
++++ b/lib/bones/gem_package_task.rb	2013-12-03 19:04:36.576377667 +0000
+@@ -2,11 +2,7 @@
+ require 'find'
+ require 'rake/packagetask'
+ require 'rubygems/user_interaction'
+-if RUBY_VERSION >= "2"
+-  require 'rubygems/package'
+-else
+-  require 'rubygems/builder'
+-end
++require 'builder'
+ 
+ class Bones::GemPackageTask < Rake::PackageTask
+ 

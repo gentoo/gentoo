@@ -1,0 +1,48 @@
+diff --git a/Makefile b/Makefile
+index 0c9ec8a..6bc0bb5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,6 @@
+ ### The project name
+ PROJECT=raid-check
+ 
+-### Dependencies
+-DEP_BINS=grep cat sleep awk ps renice ionice logger
+-
+ ### Destination Paths
+ D_BIN=/usr/local/sbin
+ D_CNF=/etc
+@@ -15,16 +12,11 @@ F_CONF=raid-check.conf raid-check.cron
+ 
+ all: install
+ 
+-install: test bin config
++bin install: $(PROJECT).sh config
+ 	# install the actual script
+-	install -D --owner root --group root -m 0755 $(PROJECT).sh $(DESTDIR)$(D_BIN)/$(PROJECT)
++	install -D $(PROJECT).sh $(DESTDIR)$(D_BIN)/$(PROJECT)
+ 
+ test:
+-	@echo "==> Checking for required external dependencies"
+-	for bindep in $(DEP_BINS) ; do \
+-		which $$bindep > /dev/null || { echo "$$bindep not found"; exit 1;} ; \
+-	done
+-
+ 	@echo "==> Checking for valid script syntax"
+ 	bash -n raid-check.sh
+ 
+@@ -32,12 +24,8 @@ bin: $(PROJECT).sh test
+ 
+ config: $(F_CONF)
+ 	# Install (without overwriting) configuration files
+-	if [ ! -e $(DESTDIR)$(D_CNF)/raid-check.conf ] ; then \
+-		install -D -m 0644 raid-check.conf $(DESTDIR)$(D_CNF)/raid-check.conf ; \
+-	fi
+-	if [ ! -e $(DESTDIR)$(D_CNF)/cron.d/raid-check ] ; then \
+-		install -D -m 0644 raid-check.cron $(DESTDIR)$(D_CNF)/cron.d/raid-check ; \
+-	fi
++	install -D raid-check.conf $(DESTDIR)$(D_CNF)/raid-check.conf
++	install -D -m 0644 raid-check.cron $(DESTDIR)$(D_CNF)/cron.d/raid-check
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(D_BIN)/$(PROJECT)

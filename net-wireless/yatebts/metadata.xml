@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="rad1">Build RAD1 transceiver</flag>
+		<flag name="usrp1">Build USRP1 transceiver</flag>
+		<flag name="uhd">Build UHD transceiver</flag>
+		<flag name="bladerf">Build bladeRF transceiver</flag>
+	</use>
+</pkgmetadata>

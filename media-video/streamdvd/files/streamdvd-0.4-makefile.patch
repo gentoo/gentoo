@@ -1,0 +1,27 @@
+Index: StreamDVD-0.4/Makefile
+===================================================================
+--- StreamDVD-0.4.orig/Makefile
++++ StreamDVD-0.4/Makefile
+@@ -1,16 +1,16 @@
+ INSTALLDIR = /usr/local/bin/
+ 
+ all:
+-	g++ -g -Wall -ldvdread -lm -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp -ldvdread -lm
+ 
+ addon:
+-	gcc -g -Wall -ldvdread -o streamanalyze contrib/StreamAnalyze/streamanalyze.c
+-	gcc -g -Wall -ldvdread -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o streamanalyze contrib/StreamAnalyze/streamanalyze.c -ldvdread
++	$(CC) $(CFLAGS) $(LDFLAGS) -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c -ldvdread
+ 
+ gui:
+-	g++ -g -Wall -ldvdread -lm -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp
+-	gcc -g -Wall -ldvdread -o streamanalyze contrib/StreamAnalyze/streamanalyze.c
+-	gcc -g -Wall -ldvdread -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp -ldvdread -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o streamanalyze contrib/StreamAnalyze/streamanalyze.c -ldvdread
++	$(CC) $(CFLAGS) $(LDFLAGS) -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c -ldvdread
+ 
+ clean: 
+ 	rm -f streamdvd streamanalyze lsdvd

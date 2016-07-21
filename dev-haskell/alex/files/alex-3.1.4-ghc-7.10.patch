@@ -1,0 +1,24 @@
+diff --git a/templates/wrappers.hs b/templates/wrappers.hs
+index a1a1a6d..c020cc7 100644
+--- a/templates/wrappers.hs
++++ b/templates/wrappers.hs
+@@ -284,6 +284,19 @@ runAlex input (Alex f)
+ 
+ newtype Alex a = Alex { unAlex :: AlexState -> Either String (AlexState, a) }
+ 
++instance Functor Alex where
++  fmap f a = Alex $ \s -> case unAlex a s of
++                            Left msg -> Left msg
++                            Right (s', a') -> Right (s', f a')
++
++instance Applicative Alex where
++  pure a   = Alex $ \s -> Right (s, a)
++  fa <*> a = Alex $ \s -> case unAlex fa s of
++                            Left msg -> Left msg
++                            Right (s', f) -> case unAlex a s' of
++                                               Left msg -> Left msg
++                                               Right (s'', b) -> Right (s'', f b)
++
+ instance Monad Alex where
+   m >>= k  = Alex $ \s -> case unAlex m s of 
+                                 Left msg -> Left msg

@@ -1,0 +1,24 @@
+--- libcli-1.9.7/Makefile
++++ libcli-1.9.7/Makefile
+@@ -1,6 +1,7 @@
+ UNAME = $(shell sh -c 'uname -s 2>/dev/null || echo not')
+ DESTDIR =
+ PREFIX = /usr/local
++libdir = $(PREFIX)/lib
+ 
+ MAJOR = 1
+ MINOR = 9
+@@ -50,10 +51,10 @@
+ 	rm -f *.o $(LIB)* $(LIB_STATIC) clitest
+ 
+ install: $(LIB)
+-	install -d $(DESTDIR)$(PREFIX)/include $(DESTDIR)$(PREFIX)/lib
++	install -d $(DESTDIR)$(PREFIX)/include $(DESTDIR)$(libdir)
+ 	install -m 0644 libcli.h $(DESTDIR)$(PREFIX)/include
+-	install -m 0755 $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(DESTDIR)$(PREFIX)/lib
+-	cd $(DESTDIR)$(PREFIX)/lib && \
++	install -m 0755 $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(DESTDIR)$(libdir)
++	cd $(DESTDIR)$(libdir) && \
+ 	    ln -fs $(LIB).$(MAJOR).$(MINOR).$(REVISION) $(LIB).$(MAJOR).$(MINOR) && \
+ 	    ln -fs $(LIB).$(MAJOR).$(MINOR) $(LIB)
+ 

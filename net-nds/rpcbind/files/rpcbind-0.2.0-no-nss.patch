@@ -1,0 +1,34 @@
+From 112d0028cd2f4e0a3fafc83a4b2f1cb38bdbd6d4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 18 Feb 2013 17:00:13 -0500
+Subject: [PATCH] fix building one systems w/out nss.h
+
+The nss.h header is glibc-specific, so use the existing HAVE_NSS_H define
+to avoid including/using it when it is not available.
+
+URL: http://bugs.gentoo.org/458024
+Reported-by: Mark Reiche <porphyr@gmx.de>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/rpcbind.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/rpcbind.c b/src/rpcbind.c
+index 9a0504d..83dbe93 100644
+--- a/src/rpcbind.c
++++ b/src/rpcbind.c
+@@ -67,7 +67,11 @@
+ #include <pwd.h>
+ #include <string.h>
+ #include <errno.h>
++#ifdef HAVE_NSS_H
+ #include <nss.h>
++#else
++static inline void __nss_configure_lookup(const char *db, const char *s) {}
++#endif
+ #include "config.h"
+ #include "rpcbind.h"
+ 
+-- 
+1.8.1.2
+

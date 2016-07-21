@@ -1,0 +1,25 @@
+diff -burN smc-1.9.orig/configure.ac smc-1.9/configure.ac
+--- smc-1.9.orig/configure.ac	2013-10-23 19:11:08.635054067 +0200
++++ smc-1.9/configure.ac	2013-10-23 19:42:29.820272295 +0200
+@@ -12,6 +12,10 @@
+ ### Check for libraries ###
+ 
+ # Check for the Boost Filesystem library
++AC_CHECK_LIB(boost_system, main, ,
++	AC_MSG_ERROR([Unable to find Boost System library]))
++
++# Check for the Boost Filesystem library
+ AC_CHECK_LIB(boost_filesystem, main, ,
+ 	AC_MSG_ERROR([Unable to find Boost Filesystem library]))
+ 
+@@ -36,6 +40,10 @@
+ CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+ LIBS="$LIBS $SDL_LIBS"
+ 
++# Check for the X11 library
++AC_CHECK_LIB(X11, XOpenDisplay, ,
++	AC_MSG_ERROR([X11 library not found]))
++
+ # Check for the libpng library
+ AC_CHECK_LIB(png, png_init_io, ,
+ 	AC_MSG_ERROR([libpng library not found]))

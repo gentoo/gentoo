@@ -1,0 +1,19 @@
+diff -r -U1 maxima-5.30.0.orig/src/maxima.in maxima-5.30.0/src/maxima.in
+--- maxima-5.30.0.orig/src/maxima.in	2012-12-04 12:54:50.000000000 +0700
++++ maxima-5.30.0/src/maxima.in	2013-04-13 13:07:03.094128196 +0700
+@@ -138,5 +138,5 @@
+       if [ -x "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" ]; then
+-        exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -q "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++        exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/maxima" $MAXIMA_LISP_OPTIONS -q -norc "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+       else
+-	exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CLISP_RUNTIME@" $MAXIMA_LISP_OPTIONS -q -M "$maxima_image_base.mem" "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	exec "$MAXIMA_IMAGESDIR/binary-$MAXIMA_LISP/@CLISP_RUNTIME@" $MAXIMA_LISP_OPTIONS -q -norc -M "$maxima_image_base.mem" "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+       fi
+@@ -144,5 +144,5 @@
+       if [ -x "$maxima_image_base" ]; then
+-        exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -q  "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++        exec "$maxima_image_base"  $MAXIMA_LISP_OPTIONS -q -norc  "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+       else
+-	exec "@CLISP_NAME@" $MAXIMA_LISP_OPTIONS -q -M "$maxima_image_base.mem" "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
++	exec "@CLISP_NAME@" $MAXIMA_LISP_OPTIONS -q -norc -M "$maxima_image_base.mem" "" -- "$arg1" "$arg2" "$arg3" "$arg4" "$arg5" "$arg6" "$arg7" "$arg8" "$arg9"
+       fi

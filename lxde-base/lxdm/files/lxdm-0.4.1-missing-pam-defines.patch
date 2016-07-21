@@ -1,0 +1,29 @@
+From 0f9e8e53a8d30f5c8ccfb03edc282148f58bfd30 Mon Sep 17 00:00:00 2001
+From: dgod <dgod.osa@gmail.com>
+Date: Sun, 1 Jan 2012 17:05:22 +0800
+Subject: [PATCH] fix bug introduced from pam detect
+
+---
+ src/lxdm.c |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/src/lxdm.c b/src/lxdm.c
+index b5a90be..07be1e0 100644
+--- a/src/lxdm.c
++++ b/src/lxdm.c
+@@ -25,8 +25,12 @@
+ #include <config.h>
+ #endif
+ #ifndef HAVE_LIBPAM
++#ifdef USE_PAM
++#define HAVE_LIBPAM 1
++#else
+ #define HAVE_LIBPAM 0
+ #endif
++#endif
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+-- 
+1.7.4.1
+

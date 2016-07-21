@@ -1,0 +1,11 @@
+--- Makefile.in
++++ Makefile.in
+@@ -413,7 +413,7 @@
+ expect-shared-lib-file :: $(EXP_SHARED_LIB_FILE)
+ $(EXP_SHARED_LIB_FILE): $(OFILES)
+ 	-rm -f $(EXP_SHARED_LIB_FILE)
+-	@TCL_SHLIB_LD@ -o $(EXP_SHARED_LIB_FILE) $(SHARED_OFILES) @EXP_LD_SEARCH_FLAGS@ @EXP_SHLIB_LD_LIBS@
++	@TCL_SHLIB_LD@ -o $(EXP_SHARED_LIB_FILE) $(SHARED_OFILES) @EXP_LD_SEARCH_FLAGS@ @EXP_SHLIB_LD_LIBS@ -install_name $(tcl_libdir)/$(EXP_SHARED_LIB_FILE)
+ 
+ .PHONY: install-info install info
+ install-info:

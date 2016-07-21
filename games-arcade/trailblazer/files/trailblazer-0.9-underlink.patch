@@ -1,0 +1,11 @@
+--- Makefile.old	2011-06-20 20:49:09.928013768 +0200
++++ Makefile	2011-06-20 20:49:18.725566328 +0200
+@@ -3,7 +3,7 @@
+ #
+ 
+ sources = game.c main.c road.c map.c gfx.c
+-libs = `sdl-config --libs`
++libs = `sdl-config --libs` -lm
+ cflags = -O2 -Wall `sdl-config --cflags`
+ version = 0.9
+ bdir = /tmp/trailblazer-$(version)

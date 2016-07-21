@@ -1,0 +1,11 @@
+[Unit]
+Description=Guacamole proxy daemon
+Documentation=man:guacd(8)
+
+[Service]
+ExecStart=/usr/sbin/guacd -f
+StandardOutput=null
+User=guacd
+
+[Install]
+WantedBy=multi-user.target

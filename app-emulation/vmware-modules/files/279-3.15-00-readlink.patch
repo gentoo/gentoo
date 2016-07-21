@@ -1,0 +1,15 @@
+replacing usage of vfs_readlink with new readlink_copy API
+see: http://permalink.gmane.org/gmane.linux.kernel.commits.head/445090
+
+diff -rupN vmblock-only/linux/inode.c vmblock-only/linux/inode.c
+--- vmblock-only/linux/inode.c	2014-10-05 23:20:14.545218357 -0400
++++ vmblock-only/linux/inode.c	2014-10-05 23:33:01.549259933 -0400
+@@ -178,7 +178,7 @@ InodeOpReadlink(struct dentry *dentry,
+       return -EINVAL;
+    }
+ 
+-   return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++   return readlink_copy(buffer, buflen, iinfo->name);
+ }
+ 
+ 

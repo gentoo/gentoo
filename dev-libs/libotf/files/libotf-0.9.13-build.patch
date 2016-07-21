@@ -1,0 +1,22 @@
+--- example/Makefile.am
++++ example/Makefile.am
+@@ -37,8 +37,7 @@
+ otfdump_LDADD = ${CommonLDADD}
+ 
+ otfview_SOURCE = otfview.c
+-otfview_LDADD = ${CommonLDADD}
+-otfview_LDFLAGS = ${X_LIBS} ${X_PRE_LIBS} @X11_XT_XAW_XMU@ ${X_EXTRA_LIBS}
++otfview_LDADD = ${CommonLDADD} ${X_LIBS} ${X_PRE_LIBS} @X11_XT_XAW_XMU@ ${X_EXTRA_LIBS}
+ 
+ otftobdf_SOURCE = otftobdf.c
+ otftobdf_LDADD = ${CommonLDADD}
+--- libotf.pc.in
++++ libotf.pc.in
+@@ -7,5 +7,6 @@
+ Description: OpenType font library
+ Version: @PACKAGE_VERSION@
+ Requires: freetype2
+-Libs: @FREETYPE_LD_FLAGS@ -L${libdir} -lotf
++Libs: -L${libdir} -lotf
++Libs.private: @FREETYPE_LD_FLAGS@
+ Cflags: @FREETYPE_INC@ -I${includedir}

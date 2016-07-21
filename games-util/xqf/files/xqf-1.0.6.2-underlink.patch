@@ -1,0 +1,10 @@
+--- xqf-xqf-1.0.6.2/src/Makefile.am
++++ xqf-xqf-1.0.6.2/src/Makefile.am
+@@ -41,6 +41,7 @@
+ 	    $(GEOIP_LIB) \
+ 	    $(PACKAGE_LIBS) \
+ 	    $(GDK_PIXBUF_LIBS) \
++	    -lX11 \
+ 	    -lz -ldl
+ 
+ xqf_LDFLAGS = -Wl,-rpath,$(pkglibdir) -Wl,--export-dynamic -Wl,--version-script=$(top_srcdir)/src/xqf.map

@@ -1,0 +1,36 @@
+From: Jef Spaleta <jspaleta@gmail.com>
+Subject: Try to get the xid on realization of the videowidget
+Origin: upstream
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=604938
+Bug-Debian: http://bugs.debian.org/554568
+
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2010-07-08 10:38:56.609390459 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2010-07-08 10:38:53.153107943 +0200
+@@ -35,8 +35,13 @@
+     def __init__(self):
+         gtk.DrawingArea.__init__(self)
+         self.imagesink = None
++        self._xid = None
+         self.unset_flags(gtk.DOUBLE_BUFFERED)
+ 
++    def do_realize(self):
++        gtk.DrawingArea.do_realize(self)
++        self._xid = self.window.xid
++
+     def do_expose_event(self, event):
+         if self.imagesink:
+             self.imagesink.expose()
+@@ -45,9 +50,9 @@
+             return True
+ 
+     def set_sink(self, sink):
+-        assert self.window.xid
++        assert self._xid is not None
+         self.imagesink = sink
+-        self.imagesink.set_xwindow_id(self.window.xid)
++        self.imagesink.set_xwindow_id(self._xid)
+ 
+ class SaveWindow(gtk.Window):
+     UPDATE_INTERVAL = 500

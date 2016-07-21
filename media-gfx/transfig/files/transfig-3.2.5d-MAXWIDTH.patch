@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 23_MAXWIDTH.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Increasese MAXWIDTH of embedded images from 8K to 16K (Closes: #610466)
+
+@DPATCH@
+diff -urNad '--exclude=CVS' '--exclude=.svn' transfig~/fig2dev/dev/psencode.c transfig/fig2dev/dev/psencode.c
+--- transfig~/fig2dev/dev/psencode.c
++++ transfig/fig2dev/dev/psencode.c
+@@ -18,7 +18,7 @@
+ 
+ #include "fig2dev.h"
+ 
+-#define MAXWIDTH       8192
++#define MAXWIDTH       16384
+ 
+ #define put_string nc=strlen(s); for(i=0;i<nc;i++) (putc((s[i]),tfp)); Nbyte += nc
+ 

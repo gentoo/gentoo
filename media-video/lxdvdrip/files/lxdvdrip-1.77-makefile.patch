@@ -1,0 +1,43 @@
+--- Makefile.orig	2014-03-17 15:40:30.886570544 -0600
++++ Makefile	2014-03-17 15:41:22.729159468 -0600
+@@ -3,31 +3,15 @@
+ HINWEIS1 = 'Check the configuration file in /etc with the Changelog'
+ HINWEIS2 = 'Comparez le fichier de config. en /etc avec le Changelog'
+ 
+-all:
+-	if test -f badsect.o; then rm *.o; fi
+-	gcc -g -c badsect.c
+-	gcc -g -c cputest.c
+-	gcc -g -c dvdbackup.c
+-	gcc -g -c dvdcell.c
+-	gcc -g -c dvdcopy.c
+-	gcc -g -c dvdformat.c
+-	gcc -g -c dvdinfo.c
+-	gcc -g -c dvdtools.c
+-	gcc -g -c ifo.c
+-	gcc -g -c lxdvdrip.c
+-	gcc -g -c mpeg2dec.c
+-	gcc -g -c requant.c
+-	gcc -g -c streamanalyze.c
+-	gcc -g -c systools.c
+-	gcc -g -c tcmemcpy.c
+-	gcc -g -c vaporize.c
+-	gcc -pthread  -g -o lxdvdrip *o -ldvdread -lm
+-	if test -f badsect.o; then rm *.o; fi
+-	gcc -g -lm -o lxac3scan lxac3scan.c
+-	cd vamps && make && cd ..
+-	cd dvdbackup && make && cd ..
+-	cd requant && make && cd ..
+-	cd mbuffer && make && cd ..
++LXDVDRIP_SOURCES = lxdvdrip.o streamanalyze.o ifo.o dvdinfo.o dvdbackup.o dvdcell.o systools.o vaporize.o dvdtools.o dvdcopy.o requant.o cputest.o tcmemcpy.o dvdformat.o badsect.o mpeg2dec.o
++
++all: lxdvdrip lxac3scan
++
++lxdvdrip: $(LXDVDRIP_SOURCES)
++	$(CC) $(LDFLAGS) -o $@ $(LXDVDRIP_SOURCES) -lm -ldvdread -lpthread
++
++lxac3scan: lxac3scan.o
++	$(CC) $(LDFLAGS) -o $@ $< -lm
+ 
+ clean: 
+ 	rm -f lxdvdrip lxac3scan *.o

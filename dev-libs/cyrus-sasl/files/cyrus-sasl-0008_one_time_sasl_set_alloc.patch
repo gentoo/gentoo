@@ -1,0 +1,67 @@
+Author: Fabian Fagerholm <fabbe@debian.org>
+Description: Make sasl_set_alloc a one-time function.
+This patch will divert all allocations to whomever called
+sasl_set_alloc first, hopefully that will be the application. If
+not, we sure *hope* the library doing stupid things has sane
+sasl_set_alloc semantics...
+It will also deny any futher tries to sasl_set_alloc after one
+of the _init functions are called.
+This patch was introduced and works fine in SASL 1.5, and no
+applications started behaving in insane ways, so chances are it
+will also work with SASL 2.1
+Reference: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=139568
+Reference: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=274087
+Reference: https://bugzilla.andrew.cmu.edu/show_bug.cgi?id=2525
+--- trunk.orig/lib/client.c
++++ trunk/lib/client.c
+@@ -202,6 +202,9 @@
+       { NULL, NULL }
+   };
+ 
++  /* lock allocation type */
++  _sasl_allocation_locked++;
++  
+   if(_sasl_client_active) {
+       /* We're already active, just increase our refcount */
+       /* xxx do something with the callback structure? */
+--- trunk.orig/lib/common.c
++++ trunk/lib/common.c
+@@ -107,6 +107,7 @@
+   (sasl_realloc_t *) &realloc,
+   (sasl_free_t *) &free
+ };
++int _sasl_allocation_locked = 0;
+ 
+ #define SASL_ENCODEV_EXTRA  4096
+ 
+@@ -637,6 +638,8 @@
+ 	       sasl_realloc_t *r,
+ 	       sasl_free_t *f)
+ {
++  if (_sasl_allocation_locked++)  return;
++
+   _sasl_allocation_utils.malloc=m;
+   _sasl_allocation_utils.calloc=c;
+   _sasl_allocation_utils.realloc=r;
+--- trunk.orig/lib/saslint.h
++++ trunk/lib/saslint.h
+@@ -300,6 +300,7 @@
+ 
+ extern sasl_allocation_utils_t _sasl_allocation_utils;
+ extern sasl_mutex_utils_t _sasl_mutex_utils;
++extern int _sasl_allocation_locked;
+ 
+ /*
+  * checkpw.c
+--- trunk.orig/lib/server.c
++++ trunk/lib/server.c
+@@ -698,6 +698,9 @@
+ 	{ NULL, NULL }
+     };
+ 
++    /* lock allocation type */
++    _sasl_allocation_locked++;
++
+     /* we require the appname (if present) to be short enough to be a path */
+     if (appname != NULL && strlen(appname) >= PATH_MAX)
+ 	return SASL_BADPARAM;

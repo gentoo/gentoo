@@ -1,0 +1,10 @@
+--- libs/thirdparty/portaudio/CMakeLists.txt.orig 2012-01-29 02:08:08.422664514 +0100
++++ libs/thirdparty/portaudio/CMakeLists.txt      2012-01-29 02:04:26.826460722 +0100
+@@ -73,6 +73,7 @@ IF (NOT WIN32 AND NOT APPLE)
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/common/pa_stream.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/common/pa_trace.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/hostapi/oss/pa_unix_oss.c
++   ${CMAKE_CURRENT_SOURCE_DIR}/src/hostapi/skeleton/pa_hostapi_skeleton.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/os/unix/pa_unix_hostapis.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/os/unix/pa_unix_util.c )
+ ENDIF (NOT WIN32 AND NOT APPLE)

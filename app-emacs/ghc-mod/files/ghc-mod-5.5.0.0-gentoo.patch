@@ -1,0 +1,11 @@
+--- ghc-mod.cabal.orig	2015-04-18 13:14:37.566613645 +0200
++++ ghc-mod.cabal	2015-04-18 13:14:53.420241209 +0200
+@@ -26,8 +26,6 @@
+ Category:               GHC, Development
+ Cabal-Version:          >= 1.14
+ Build-Type:             Custom
+-Data-Files:             elisp/Makefile
+-                        elisp/*.el
+ Data-Files:             LICENSE COPYING.BSD3 COPYING.AGPL3
+ Extra-Source-Files:     ChangeLog
+                         SetupCompat.hs

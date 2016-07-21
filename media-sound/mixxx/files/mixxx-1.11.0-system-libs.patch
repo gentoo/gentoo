@@ -1,0 +1,223 @@
+--- mixxx-1.11.0/build/depends.py
++++ mixxx-1.11.0/build/depends.py
+@@ -179,8 +179,8 @@
+         # times.
+ 
+         qt_modules = [
+-            'QtCore', 'QtGui', 'QtOpenGL', 'QtXml', 'QtSvg',
+-            'QtSql', 'QtScript', 'QtXmlPatterns', 'QtNetwork'
++            'QtCore', 'QtGui', 'QtOpenGL', 'QtXml',
++            'QtSql', 'QtScript', 'QtNetwork'
+             #'QtUiTools', #'QtDesigner',
+         ]
+ 
+@@ -298,25 +298,10 @@
+ 
+ class FidLib(Dependence):
+ 
+-    def sources(self, build):
+-        symbol = None
+-        if build.platform_is_windows:
+-            if build.toolchain_is_msvs:
+-                symbol = 'T_MSVC'
+-            elif build.crosscompile:
+-                # Not sure why, but fidlib won't build with mingw32msvc and
+-                # T_MINGW
+-                symbol = 'T_LINUX'
+-            elif build.toolchain_is_gnu:
+-                symbol = 'T_MINGW'
+-        else:
+-            symbol = 'T_LINUX'
+-
+-        return [build.env.StaticObject('#lib/fidlib-0.9.10/fidlib.c',
+-                                       CPPDEFINES=symbol)]
+-
+     def configure(self, build, conf):
+-        build.env.Append(CPPPATH='#lib/fidlib-0.9.10/')
++        if not conf.CheckLib('fidlib'):
++            raise Exception('Did not find fidlib library, exiting!')
++        build.env.Append(CPPPATH=[SCons.ARGUMENTS.get('prefix') + '/include/fidlib'])
+ 
+ class ReplayGain(Dependence):
+ 
+@@ -327,7 +312,6 @@
+         build.env.Append(CPPPATH="#lib/replaygain")
+ 
+ class SoundTouch(Dependence):
+-    SOUNDTOUCH_PATH = 'soundtouch-1.6.0'
+ 
+     def sse_enabled(self, build):
+         optimize = int(util.get_flags(build.env, 'optimize', 1))
+@@ -336,30 +320,7 @@
+                 (build.toolchain_is_gnu and optimize > 1))
+ 
+     def sources(self, build):
+-        sources = ['engine/enginebufferscalest.cpp',
+-                   '#lib/%s/SoundTouch.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/TDStretch.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/RateTransposer.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/AAFilter.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/FIFOSampleBuffer.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/FIRFilter.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/PeakFinder.cpp' % self.SOUNDTOUCH_PATH,
+-                   '#lib/%s/BPMDetect.cpp' % self.SOUNDTOUCH_PATH]
+-
+-        # SoundTouch CPU optimizations are only for x86
+-        # architectures. SoundTouch automatically ignores these files when it is
+-        # not being built for an architecture that supports them.
+-        cpu_detection = '#lib/%s/cpu_detect_x86_win.cpp' if build.toolchain_is_msvs else \
+-            '#lib/%s/cpu_detect_x86_gcc.cpp'
+-        sources.append(cpu_detection % self.SOUNDTOUCH_PATH)
+-
+-        # Check if the compiler has SSE extention enabled
+-        # Allways the case on x64 (core instructions)
+-        if self.sse_enabled(build):
+-            sources.extend(
+-                ['#lib/%s/mmx_optimized.cpp' % self.SOUNDTOUCH_PATH,
+-                 '#lib/%s/sse_optimized.cpp' % self.SOUNDTOUCH_PATH,])
+-        return sources
++        return ['engine/enginebufferscalest.cpp']
+ 
+     def configure(self, build, conf, env=None):
+         if env is None:
+@@ -367,13 +328,10 @@
+         if build.platform_is_windows:
+             # Regardless of the bitwidth, ST checks for WIN32
+             env.Append(CPPDEFINES = 'WIN32')
+-        env.Append(CPPPATH=['#lib/%s' % self.SOUNDTOUCH_PATH])
+-
+-        # Check if the compiler has SSE extention enabled
+-        # Allways the case on x64 (core instructions)
+-        optimize = int(util.get_flags(env, 'optimize', 1))
+-        if self.sse_enabled(build):
+-            env.Append(CPPDEFINES='SOUNDTOUCH_ALLOW_X86_OPTIMIZATIONS')
++        if not conf.CheckLib(['SoundTouch','libSoundTouch']):
++            raise Exception('Did not find SoundTouch library, exiting!')
++        build.env.Append(CPPPATH=[SCons.ARGUMENTS.get('prefix') + '/include/soundtouch'])
++        build.env.Append(LIBS='SoundTouch')
+ 
+ class TagLib(Dependence):
+     def configure(self, build, conf):
+--- mixxx-1.11.0/build/features.py
++++ mixxx-1.11.0/build/features.py
+@@ -48,7 +48,6 @@
+                 'controllers/midi/hss1394enumerator.cpp']
+ 
+ class HID(Feature):
+-    HIDAPI_INTERNAL_PATH = '#lib/hidapi-0.8.0-pre'
+     def description(self):
+         return "HID controller support"
+ 
+@@ -64,9 +63,6 @@
+     def configure(self, build, conf):
+         if not self.enabled(build):
+             return
+-        # TODO(XXX) allow external hidapi install, but for now we just use our
+-        # internal one.
+-        build.env.Append(CPPPATH=[os.path.join(self.HIDAPI_INTERNAL_PATH, 'hidapi')])
+ 
+         if build.platform_is_linux:
+             build.env.ParseConfig('pkg-config libusb-1.0 --silence-errors --cflags --libs')
+@@ -86,19 +82,17 @@
+ 
+         build.env.Append(CPPDEFINES = '__HID__')
+ 
++        if not conf.CheckLib('hidapi-libusb'):
++            raise Exception('Did not find HID API library, exiting!')
++        build.env.Append(CPPPATH=[SCons.ARGUMENTS.get('prefix') + '/include/hidapi'])
++        build.env.Append(LIBS='hidapi-libusb')
++
++
+     def sources(self, build):
+         sources = ['controllers/hid/hidcontroller.cpp',
+                    'controllers/hid/hidenumerator.cpp',
+                    'controllers/hid/hidcontrollerpresetfilehandler.cpp']
+ 
+-        if build.platform_is_windows:
+-            # Requires setupapi.lib which is included by the above check for
+-            # setupapi.
+-            sources.append(os.path.join(self.HIDAPI_INTERNAL_PATH, "windows/hid.c"))
+-        elif build.platform_is_linux:
+-            sources.append(os.path.join(self.HIDAPI_INTERNAL_PATH, 'linux/hid-libusb.c'))
+-        elif build.platform_is_osx:
+-            sources.append(os.path.join(self.HIDAPI_INTERNAL_PATH, 'mac/hid.c'))
+         return sources
+ 
+ class Bulk(Feature):
+@@ -455,19 +449,6 @@
+ 
+         build.env.Append(CPPDEFINES = '__VAMP__')
+ 
+-        # Needed on Linux at least. Maybe needed elsewhere?
+-        if build.platform_is_linux:
+-            # Optionally link libdl and libX11. Required for some distros.
+-            conf.CheckLib(['dl', 'libdl'])
+-            conf.CheckLib(['X11', 'libX11'])
+-
+-        # FFTW3 support
+-        have_fftw3_h = conf.CheckHeader('fftw3.h')
+-        have_fftw3 = conf.CheckLib('fftw3', autoadd=False)
+-        if(have_fftw3_h and have_fftw3 and build.platform_is_linux):
+-             build.env.Append(CPPDEFINES = 'HAVE_FFTW3')
+-             build.env.ParseConfig('pkg-config fftw3 --silence-errors --cflags --libs')
+-
+     def sources(self, build):
+         sources = ['vamp/vampanalyser.cpp',
+                    'vamp/vamppluginloader.cpp',
+@@ -725,25 +706,15 @@
+         test_env.Append(CCFLAGS = '-pthread')
+         test_env.Append(LINKFLAGS = '-pthread')
+ 
+-        test_env.Append(CPPPATH="#lib/gtest-1.5.0/include")
+-        gtest_dir = test_env.Dir("#lib/gtest-1.5.0")
+-        #gtest_dir.addRepository(build.env.Dir('#lib/gtest-1.5.0'))
+-        #build.env['EXE_OUTPUT'] = '#/lib/gtest-1.3.0/bin'  # example, optional
+-        test_env['LIB_OUTPUT'] = '#/lib/gtest-1.5.0/lib'
+-
+-        env = test_env
+-        SCons.Export('env')
+-        env.SConscript(env.File('SConscript', gtest_dir))
+-
+-        # build and configure gmock
+-        test_env.Append(CPPPATH="#lib/gmock-1.5.0/include")
+-        gmock_dir = test_env.Dir("#lib/gmock-1.5.0")
+-        #gmock_dir.addRepository(build.env.Dir('#lib/gmock-1.5.0'))
+-        test_env['LIB_OUTPUT'] = '#/lib/gmock-1.5.0/lib'
+-
+-        env.SConscript(env.File('SConscript', gmock_dir))
+-
+-        return []
++        if not conf.CheckLib('gtest'):
++            raise Exception('Did not find gtest library, exiting!')
++        test_env.Append(CPPPATH=[SCons.ARGUMENTS.get('prefix') + '/include/gtest'])
++        test_env.Append(LIBS='gtest')
++
++        if not conf.CheckLib('gmock'):
++            raise Exception('Did not find gmock library, exiting!')
++        test_env.Append(CPPPATH=[SCons.ARGUMENTS.get('prefix') + '/include/gmock'])
++        test_env.Append(LIBS='gmock')
+ 
+ class Shoutcast(Feature):
+     def description(self):
+--- mixxx-1.11.0/src/engine/enginefilterbutterworth8.cpp
++++ mixxx-1.11.0/src/engine/enginefilterbutterworth8.cpp
+@@ -20,7 +20,7 @@
+ #include "engine/enginefilterbutterworth8.h"
+ #include "engine/enginefilter.h"
+ #include "engine/engineobject.h"
+-#include "../lib/fidlib-0.9.10/fidlib.h"
++#include <fidlib.h>
+ 
+ /* Local Prototypes */
+ inline double _processLowpass(double *coef, double *buf, register double val);
+--- mixxx-1.11.0/src/engine/enginefilter.h
++++ mixxx-1.11.0/src/engine/enginefilter.h
+@@ -20,7 +20,7 @@
+ 
+ #define MIXXX
+ #include "engine/engineobject.h"
+-#include "../lib/fidlib-0.9.10/fidlib.h"
++#include <fidlib.h>
+ #include "defs.h"
+ 
+ enum filterType{

@@ -1,0 +1,42 @@
+.TH sgconv 1 "December 31, 2012" "" "sgconv"
+
+.SH NAME
+sgconv \- an utility to convert Stargazer data between storage backends
+
+.SH SYNOPSIS
+.B sgconv
+.RI [ config-file ]
+
+.SH DESCRIPTION
+.B sgconv
+allows system administrators to copy and merge
+.B Stargazer
+data from one storage backend to another.
+
+.SH OPTIONS
+.TP
+.I config-file
+A path to config file containing convertion parameters. Default is
+.B sgconv.conf 
+in current directory.
+
+.SH FILES
+.B
+/usr/bin/sgconv
+.br
+.B
+/etc/stargazer/sgconv.conf
+
+.SH SEE ALSO
+.BR sgauth (8),
+.BR sgconf (1),
+.BR sgconf_xml (1),
+.BR stargazer (8),
+.BR rscriptd (8).
+
+.SH AUTHOR
+sgconv was initially written by Maxim Mamontov <faust@stargazer.dp.ua>.
+.PP
+This manual page was written by Alexey Osipov <simba@lerlan.ru>,
+for the Debian project (and may be used by others), and was modified by
+Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua> for Gentoo Linux

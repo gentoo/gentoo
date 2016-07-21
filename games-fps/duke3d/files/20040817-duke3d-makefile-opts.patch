@@ -1,0 +1,33 @@
+--- Makefile.orig	2003-08-17 17:45:35.948650760 -0400
++++ Makefile	2003-08-17 17:46:36.894385600 -0400
+@@ -4,6 +4,8 @@
+ beos := false
+ macosx := false
+ #use_asm := true
++use_opengl := true
++use_physfs := false
+ 
+ #-----------------------------------------------------------------------------#
+ # If this makefile fails to detect Cygwin correctly, or you want to force
+@@ -80,6 +81,10 @@
+ 	buildengine/pragmas.o \
+ 	buildengine/unix_compat.o
+ 
++ifeq ($(strip $(use_opengl)),true)
++	BUILDOBJS += buildengine/buildgl.o
++endif
++
+ ifeq ($(strip $(use_asm)),true)
+ 	BUILDOBJS += buildengine/a_gnu.o buildengine/a_nasm.o
+ else
+@@ -106,6 +106,10 @@
+ 
+ LDLIBS = $(SDL_LDFLAGS) -lSDL -lSDL_mixer $(EXTRALDFLAGS)
+ 
++ifeq ($(strip $(use_physfs)),true)
++	LDLIBS += -lphysfs
++endif
++
+ # !!! FIXME: Do we even need this? It doesn't fly on MacOS X.  --ryan.
+ #LDLIBS += -Wl,-E
+ 

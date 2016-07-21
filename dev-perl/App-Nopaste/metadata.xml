@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="pastebin">pastebin.com support</flag>
+    <flag name="clipboard">copying of URLs with -x/--copy</flag>
+    <flag name="github">Github authentication</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">App-Nopaste</remote-id>
+    <remote-id type="cpan-module">App::Nopaste</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Command</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Codepeek</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Debian</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Gist</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::PastebinCom</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Pastie</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Shadowcat</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Snitch</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::Ubuntu</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::ssh</remote-id>
+  </upstream>
+</pkgmetadata>

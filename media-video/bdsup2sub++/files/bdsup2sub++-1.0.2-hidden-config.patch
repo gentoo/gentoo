@@ -1,0 +1,53 @@
+From 2e27e6a49cc0be24b9a8efbf6a2ab2ec84fd1f92 Mon Sep 17 00:00:00 2001
+From: darealshinji <djcj@gmx.de>
+Date: Thu, 23 Oct 2014 18:20:38 +0200
+Subject: [PATCH] save ini file in hidden directory on Unix systems
+
+---
+ src/bdsup2sub.cpp | 6 ++++--
+ src/types.h       | 8 ++++++--
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/bdsup2sub.cpp b/bdsup2sub.cpp
+index 823e365..a9ccc15 100644
+--- a/bdsup2sub.cpp
++++ b/bdsup2sub.cpp
+@@ -386,15 +386,17 @@ void BDSup2Sub::init()
+ 
+ void BDSup2Sub::loadSettings()
+ {
+-    QString iniPath;
++    QString iniPath, configPath;
+ #ifdef Q_OS_WIN
+     iniPath = QString(getenv("APPDATA"));
++    configPath = QString("bdsup2sub++");
+ #endif
+ #ifndef Q_OS_WIN
+     iniPath = QString(getenv("HOME"));
++    configPath = QString(".config/bdsup2sub++");
+ #endif
+     QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, iniPath);
+-    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, "bdsup2sub++", "bdsup2sub++");
++    settings = new QSettings(QSettings::IniFormat, QSettings::UserScope, configPath, iniName);
+ 
+     if (!fromCLI)
+     {
+diff --git a/types.h b/types.h
+index d760eca..784a81b 100644
+--- a/types.h
++++ b/types.h
+@@ -28,8 +28,12 @@
+ const QString progName = "BDSup2Sub++";
+ const QString progNameVer = progName + " 1.0.2";
+ const QString authorDate = "0xdeadbeef, mjuhasz, Adam T.";
+-const QString oldIniName = "bdsup2sub.ini";
+-const QString iniName = "bdsup2sub++.ini";
++#ifdef Q_OS_WIN
++    const QString iniName = "bdsup2sub++";
++#endif
++#ifndef Q_OS_WIN
++    const QString iniName = "config";
++#endif
+ 
+ const QStringList scalingFilters = {
+     "Bilinear", "Triangle", "Bicubic", "Bell", "B-Spline", "Hermite", "Lanczos3", "Mitchell"

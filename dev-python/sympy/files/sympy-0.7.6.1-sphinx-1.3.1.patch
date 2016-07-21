@@ -1,0 +1,65 @@
+commit d3d3bd01bc5f625055bfa7247efc1e8cdeef0b33
+Author: Aaditya M Nair <aadityanair6494@gmail.com>
+Date:   Tue Apr 14 16:30:01 2015 +0530
+
+    Doc creation now compatible with sphinx 1.3.1. Closes sympy/sympy#9273.
+    
+    New version of sphinx renamed the `default` theme to `classic` theme.
+    Corrected by defining all variables inside the .css file.
+
+diff --git a/doc/src/_static/default.css_t b/doc/src/_static/default.css_t
+index 6165d8b..c2d8489 100644
+--- a/doc/src/_static/default.css_t
++++ b/doc/src/_static/default.css_t
+@@ -13,6 +13,23 @@
+ 
+ /* -- page layout ----------------------------------------------------------- */
+ 
++{%  set theme_collapsiblesidebar = True %}
++{%  set theme_relbarbgcolor = '#2f441e'  %}
++{%  set theme_sidebarbgcolor = '#3b5526'  %}
++{%  set theme_sidebarbtncolor = '#4F663C'  %}
++{%  set theme_sidebarlinkcolor = '#81B953'  %}
++{%  set theme_linkcolor = '#29A329'  %}
++{%  set theme_visitedlinkcolor = '#307748'  %}
++{%  set theme_headtextcolor = '#2f441e'  %}
++{%  set theme_footerbgcolor = '#293b1b'  %}
++{%  set theme_headlinkcolor = '#AAAAAA'  %}
++{%  set theme_sidebartextcolor = '#DDDDDD'  %}
++{%  set theme_footertextcolor = '#DDDDDD'  %}
++{%  set theme_relbartextcolor = '#DDDDDD'  %}
++{%  set theme_relbarlinkcolor = '#81B953'  %}
++{%  set theme_bgcolor = '#FFFFFF'  %}
++
++
+ body {
+     font-family: {{ theme_bodyfont }};
+     font-size: 100%;
+diff --git a/doc/src/conf.py b/doc/src/conf.py
+index 2c1d302..97837e3 100644
+--- a/doc/src/conf.py
++++ b/doc/src/conf.py
+@@ -96,22 +96,7 @@
+ html_logo = '_static/sympylogo.png'
+ html_favicon = '../_build/logo/sympy-notailtext-favicon.ico'
+ # See http://sphinx-doc.org/theming.html#builtin-themes.
+-html_theme_options = {
+-    'collapsiblesidebar': True,
+-    'relbarbgcolor': '#2f441e',
+-    'sidebarbgcolor': '#3b5526',
+-    'sidebarbtncolor': '#4F663C',
+-    'sidebarlinkcolor': '#81B953',
+-    'linkcolor': '#29A329',
+-    'visitedlinkcolor': '#307748',
+-    'headtextcolor': '#2f441e',
+-    'footerbgcolor': '#293b1b',
+-    'headlinkcolor': '#AAAAAA',
+-    'sidebartextcolor': '#DDDDDD',
+-    'footertextcolor': '#DDDDDD',
+-    'relbartextcolor': '#DDDDDD',
+-    'relbarlinkcolor': '#81B953',
+-}
++
+ 
+ # If true, SmartyPants will be used to convert quotes and dashes to
+ # typographically correct entities.

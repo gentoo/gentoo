@@ -1,0 +1,23 @@
+From: Jef Spaleta <jspaleta@gmail.com>
+Subject: Additional patch to fix preview video widget in save_window.py
+Origin: upstream
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=604938
+Bug-Debian: http://bugs.debian.org/554568
+
+Index: istanbul-0.2.2/istanbul/main/save_window.py
+===================================================================
+--- istanbul-0.2.2.orig/istanbul/main/save_window.py	2010-07-08 10:39:51.433390429 +0200
++++ istanbul-0.2.2/istanbul/main/save_window.py	2010-07-08 10:39:49.184894943 +0200
+@@ -143,8 +143,11 @@
+             yoptions=0)
+         table.set_row_spacing(0,6)
+         table.set_row_spacing(1,6)
++        def init_videowidget( widget):
++            widget._xid = widget.window.xid
++            self.player.pause()
+         self.videowidget.connect_after('realize',
+-                                       lambda *x: self.player.pause() )
++            init_videowidget )
+         self.videowidget.set_size_request(width, height)
+ 
+         # create save, edit, cancel buttons

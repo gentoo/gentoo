@@ -1,0 +1,34 @@
+diff -rupN vmci-only/linux/driver.c vmci-only.new/linux/driver.c
+--- vmci-only/linux/driver.c	2016-03-16 21:59:30.229062702 -0400
++++ vmci-only.new/linux/driver.c	2016-03-16 21:58:35.452061974 -0400
+@@ -2469,7 +2469,9 @@ vmci_init(void)
+ static void __exit
+ vmci_exit(void)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0)
+    int retval;
++#endif
+ 
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
+
+diff -rupN vmci-only/linux/driver.c vmci-only.new/linux/driver.c
+--- vmci-only/linux/driver.c	2016-03-16 21:53:24.184057841 -0400
++++ vmci-only.new/linux/driver.c	2016-03-16 21:54:37.558058816 -0400
+@@ -2482,12 +2482,16 @@ vmci_exit(void)
+ 
+       VMCI_HostCleanup();
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++      misc_deregister(&linuxState.misc);
++#else
+       retval = misc_deregister(&linuxState.misc);
+       if (retval) {
+          Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
+       } else {
+          Log(LGPFX"Module %s: unloaded\n", VMCI_MODULE_NAME);
+       }
++#endif
+ 
+       hostDeviceInit = FALSE;
+    }

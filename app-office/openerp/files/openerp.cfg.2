@@ -1,0 +1,65 @@
+[options]
+
+# General options:
+admin_passwd = admin
+
+pidfile = /run/openerp/openerp-server.pid
+interface =
+port = 8069
+netinterface =
+netport = 8070
+netrpc = True
+xmlrpc = True
+init =
+without_demo = False
+demo = {}
+update =
+cache_timeout = 100000
+stop_after_init = False
+debug_mode = False
+assert_exit_level = warn
+price_accuracy = 2
+
+# SSL Configuration:
+secure = False
+secure_cert_file = server.cert
+secure_pkey_file = server.pkey
+
+# Logging Configuration:
+logfile = /var/log/openerp/openerp-server.log
+syslog = False
+log_level = debug
+
+# SMTP Configuration:
+email_from = False
+smtp = localhost
+smtp_port = 25
+smtp_ssl = False
+smtp_user = False
+smtp_password = False
+
+# pg_path points at local pg instance - please change as needed
+# Database related options:
+db_user = openerp
+db_password = change_this
+pg_path = /run/postgresql/.s.PGSQL.5432
+db_name = False
+db_host = False
+db_port = False
+db_maxconn = 64
+import_partial =
+
+# Internationalisation options:
+language =
+translate_out =
+translate_in =
+translate_modules = ['all']
+
+# Security-related options:
+list_db = True
+server_actions_allow_code = False
+
+addons_path = /usr/openerp/addons
+
+
+

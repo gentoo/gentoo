@@ -1,0 +1,30 @@
+From f36016ae8352ecc7aba800fe3f2057c016d644df Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Wed, 25 Nov 2015 10:07:15 +0100
+Subject: [PATCH 1/2] Fix X11 support configure switch
+
+---
+ configure.ac | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 64a5e21..a28eb04 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -147,9 +147,11 @@ fi
+ AC_SUBST(DBUS_SERVICE_DIR)
+ 
+ AC_ARG_WITH(x11_support, [  --with-x11-support      Compile with X11 support.],
+-            [with_x11_support=yes;AC_DEFINE(HAVE_X11_SUPPORT, [1], [Define to 1 to include X11 support.])],
++            [],
+             [with_x11_support=no])
+-AM_CONDITIONAL(HAVE_X11_SUPPORT, test "x$with_x11_support" != "x")
++AS_IF([test "$with_x11_support" = "yes"],
++      [AC_DEFINE(HAVE_X11_SUPPORT, [1], [Define to 1 to include X11 support.])])
++AM_CONDITIONAL(HAVE_X11_SUPPORT, test "x$with_x11_support" = "xyes")
+ 
+ 
+ IT_PROG_INTLTOOL([0.35.0])
+-- 
+2.6.3
+

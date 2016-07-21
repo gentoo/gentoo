@@ -1,0 +1,165 @@
+Habak - "Ha" Background
+=========
+
+Compilation:
+	We need a compiler, X server and Imlib2. Just run make, that's all.
+
+Installation:
+	Well, place a ready binary where you want.
+
+A short review:
+
+
+Habak is using layers. The lowest layer is just a black screen.
+On this you can place other objects, called habaks. There are
+three kinds of habaks: graphic files (images),  fonts and "internal objects"
+(internals). Wallaper is created by putting on a black screen
+one or more habaks. An order of habaks in command line is an order
+of putting them on desktop, so the last habak will be drawed above
+previous habaks.
+
+Kinds of habaks:
+
+
+Files (images) are included by -i option, ie:
+
+./habak -i ~/graphics/wallpaper.jpg
+
+will include to desktop wallpaper.jpg file. If you typed after -i not a file,
+but a directory, habak would create a list of files contained within, randomly
+select any one of them, and then try to load it. In other words,
+if you have a lot of pictures in ~/gfx/nice_wallpapers/ then habak
+can choose random image. You only need to run './habak -i ~/gfx/nice_wallpapers/'
+
+Aside from files, you can use fonts (TrueType). Option -f will be useful in this
+case. By means of -f option you have to point a file with TrueType font, ie.
+
+./habak -f ~/.fonts/nice_font.ttf
+
+You can set a size of font, by typing it following slash after font name, ie
+'./habak -f ~/.fonts/nice_font.ttf/50'
+
+Third (and last) type of habaks are internal habaks. You can enable them
+by the -I option. They are not adopting any external data, but
+themself generate some patterns. At this moment only two patterns
+are available, "int" and "INT", which do an interlacing. For example:
+
+./habak -I int
+
+Internal habak "int" do an interlacing, by turning out even lines
+of image. Very nice effect, especially if wallpaper is gaudy.
+"INT" habak works identical as "int", but turns out odd lines
+(by putting together "int" and "INT" you can turn out all lines of screen).
+
+By default lines aren't turned out in fact, but darked (in my opinion
+it generates a better effect), but you can control it by
+-c color modifier (i will tell about it later).
+
+
+USAGE PHILOSOPHY
+You can (and you should to) put habaks together, ie.
+
+./habak -i ~/gfx/cool.jpg -I int -i ~/gfx/small_logo.png -f ~/.fonts/deltafont.ttf -f ~/.fonts/deltafont.ttf/10
+
+that syntax means, that habak will firstly draw coll.jpg file,
+then put on internal habak "interlace", and then will draw small_logo.png
+image, then deltafont.ttf font, and eventually one more time deltafont.ttf
+file, but this time with size of 10 pixels. Simple.
+
+MODIFIERS
+Obviously, alone habaks wouldn't be so elastic, so there are available a lot
+of modifiers that affect on them look. Some modifiers are even
+necessary. Modifiers are options, that are given following
+a definition of any habak - they affect only just followed habak.
+
+Modifier -C
+-C is a centering modifier. Habak that is followed by this modifier will be 
+centered on the screen.
+
+Modifier -S
+-S is a scaling modifier. Habak treated by this modifier will be scaled
+to fill whole screen (but with proportions saved). Using it have a sense
+only for file habaks (images).
+
+Modifier -p
+-p is a position modifier. It precisely determines position of habak
+on desktop. This modifier requires also additional parameter, in the
+form of 'x,y', ie.
+
+./habak -i ~/gfx/meggy.jpg -p 10,50
+
+will render meggy.jpg file with upper-left corner in point 10,50 on desktop.
+Coortinates can be negative, so position will be calculated from the
+opposite side of screen, ie.
+
+./habak -i ~/gfx/meggy.jpg -p -10,50
+
+will calculate "the beggining" position of habak to a ten pixels from
+right and 50 pixels from upper side of screen. To place habak for example
+in upper-right corner, you should use '-p -0,0'
+
+Modifier -c
+-c is a color modifier. Some habaks supports choosing a color
+(at this time only font habaks and internal habaks). -C option
+require parameter, that describe color in form of R,G,B,A, ie.
+
+./habak -I int -c 50,60,70,190
+
+means using "int" habak with color:
+- red component set to 50
+- green component set to 60
+- blue component set to 70
+- alpha channel set to 190
+
+All numbers accepts numbers from 0 (minimal saturation) to 255
+(maximal saturation).
+
+For example '-c 0,0,0,255' means black, fully not transparent color,
+'-c 255,255,255,0' means white, fully transparent color (so just
+not visible), and '-c 200,0,0,128' is a strong red and transparent
+in 50% color.
+
+Modifier -t
+This modifier is a text modifier, works only with font habak.
+As parameter accepts only one line of text, that is rendered
+by the font habak. Any text is accepted, you can write kernel
+version, date, your name, name of favourite distribution or
+image of cat that have a lie-in on your printer. Select something,
+i like a date, text will be nicely antialiased, if you want to use
+not ASCII characters, you have to use utf-8 encoding.
+
+For example.
+
+./habak -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 0,-0 -c 240,240,240,200
+
+will render on a black screen for example text "User gregory on day
+2003-12-21", using deltafont.ttf font in size of 15 pixels. Text
+will be placed in lower-left corner of screen, gray color and will
+be transparent a little.
+
+Obviously it is a so simple example, you can complicate it:
+
+./habak -i /usr/local/share/backgrounds/lens -C -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 0,-0 -c 240,240,240,200
+
+Now on the background firstly will be placed centered image
+from /usr/local/share/backgrounds/lens directory, and that
+text will be rendered on it. You can complicate it yet:
+
+./habak -i /usr/local/share/backgrounds/lens -C -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 5,-0 -c 240,240,240,100 -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 0,-5 -c 240,240,240,255
+
+This situation is simpilar, but i complicated text a little -
+i generats *two* font habaks with the same content, but
+one of it is displacemented a little, and have smaller
+transparency. It gives so nice effect of shadow under text. By
+putting together *several* such shadows differenced in size of font
+and intensivity of transparency you can achieve fantastic effects.
+
+Finally, fire up:
+
+./habak -i /usr/local/share/backgrounds/lens -C -I int -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 5,-0 -c 240,240,240,100 -f ~/.fonts/deltafont.ttf/15 -t "User $USER on day `date +%Y-%m-%d`" -p 0,-5 -c 240,240,240,255
+
+Here i added an internal habak "interlace", between picture
+from /usr/local/share/backgrounds/lens and font habaks, so
+image is faced by small grid of interlacing, but text is not
+(because it is placed above interlacing).
+

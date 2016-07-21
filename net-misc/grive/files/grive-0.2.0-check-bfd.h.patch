@@ -1,0 +1,36 @@
+https://github.com/Grive/grive/pull/144
+
+From e2950364da813a5b27eab90c51cbea69fb3fd1f9 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Fri, 2 Nov 2012 21:56:41 -0600
+Subject: [PATCH] Check if bfd.h can be included (fixes #72)
+
+---
+ cmake/Modules/FindBFD.cmake | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/Modules/FindBFD.cmake b/cmake/Modules/FindBFD.cmake
+index 785e29b..5fe43c1 100644
+--- a/cmake/Modules/FindBFD.cmake
++++ b/cmake/Modules/FindBFD.cmake
+@@ -1,9 +1,15 @@
+ find_library( DL_LIBRARY 	NAMES dl	PATH /usr/lib /usr/lib64 )
+ find_library( BFD_LIBRARY	NAMES bfd	PATH /usr/lib /usr/lib64 )
+ 
+-if ( DL_LIBRARY AND BFD_LIBRARY )
++include(CheckCSourceCompiles)
++check_c_source_compiles(
++  "#include <bfd.h>
++  int main(void) {
++  return 0;
++  }" BFD_WORKS)
++if ( DL_LIBRARY AND BFD_LIBRARY AND BFD_WORKS)
+ 	set( BFD_FOUND TRUE )
+-endif (DL_LIBRARY AND BFD_LIBRARY)
++endif (DL_LIBRARY AND BFD_LIBRARY AND BFD_WORKS)
+ 
+ if ( BFD_FOUND )
+ 
+-- 
+1.7.12
+

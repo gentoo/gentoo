@@ -1,0 +1,12 @@
+diff -Naur anthy-9100h.orig/anthy/input.h anthy-9100h/anthy/input.h
+--- anthy-9100h.orig/anthy/input.h	2006-05-13 18:28:35.000000000 +0900
++++ anthy-9100h/anthy/input.h	2011-01-12 23:36:39.629749518 +0900
+@@ -10,6 +10,8 @@
+ #ifndef INPUT_H_INCLUDE
+ #define INPUT_H_INCLUDE
+ 
++#include "anthy.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

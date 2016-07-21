@@ -1,0 +1,8 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,5 @@
+ DRIVERS  = nvidia
++DRIVERS += nouveau
+ DRIVERS += s3g	# native VA-API driver is too old, so use VDPAU based one
+ 
+ INCLUDES = \

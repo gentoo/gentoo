@@ -1,0 +1,61 @@
+--- ./src/various/Makefile.orig	2009-12-04 18:16:57.000000000 +0000
++++ ./src/various/Makefile	2009-12-04 18:17:13.000000000 +0000
+@@ -1,6 +1,6 @@
+ include ../../RULES
+ 
+-all :; make clair clairc3d create_c3d obscur obscurc3d tradavoir translation txt2avoir
++all : clair clairc3d create_c3d obscur obscurc3d tradavoir translation txt2avoir
+ 
+ clair : clair.f $(LIBRAIRIE) ;\
+ $(LINK) $(BINDIR)/clair $(INCF) clair.f $(LIBRAIRIE) $(LINKOPTX)
+--- ./src/X/Makefile.orig	2009-12-04 18:16:06.000000000 +0000
++++ ./src/X/Makefile	2009-12-04 18:16:36.000000000 +0000
+@@ -118,7 +118,7 @@
+ lib : $(LIBMARC)
+ $(LIBMARC) : $(OBJETS) $(OBJETSMARC) ; $(AR) $@ $(OBJETS) $(OBJETSMARC) ; $(RANLIB) $@
+ 
+-all :; make ; make lib
++all : lib
+ 
+ clean : ; /bin/rm -f $(OBJETS) $(LIB) $(LIBMARC)
+ 
+--- ./Makefile.orig	2009-12-04 18:12:08.000000000 +0000
++++ ./Makefile	2009-12-04 19:06:37.000000000 +0000
+@@ -13,22 +13,24 @@
+ $(BINDIR)/xd3d$(SUFF) \
+ $(BINDIR)/xgraphic$(SUFF)
+ 
+-all :; make libs ; make utils ; make xgraphic ; make xd3d
++all : libs utils xgraphic xd3d
+ 
+ install :; /bin/cp -pidvu $(EXE) ./infps $(INSTALL_DIR)
+ 
+ libs :; \
+-cd $(SRCDIR)/qlib   ; echo "---- Building utility lib ----" ; make ;\
+-cd $(SRCDIR)/interp ; echo "---- Building parsing lib ----" ; make ;\
+-cd $(SRCDIR)/X      ; echo "---- Building X interface lib ----" ; make
+-
+-xd3d :; cd $(SRCDIR)/d3d ; echo "---- Building xd3d ----" ; make
+-
+-xgraphic :; cd $(SRCDIR)/graphic ; echo "---- Building xgraphic ----" ; make
+-
+-utils :; \
+-echo " ---- Building various utils ----" ;\
+-cd $(SRCDIR)/trad_nopo ; make ;\
+-cd $(SRCDIR)/various  ; make
++cd $(SRCDIR)/qlib   ; echo "---- Building utility lib ----" ; $(MAKE) ;\
++cd $(SRCDIR)/interp ; echo "---- Building parsing lib ----" ;$(MAKE) ;\
++cd $(SRCDIR)/X      ; echo "---- Building X interface lib ----" ; $(MAKE)
++
++xd3d : libs
++	cd $(SRCDIR)/d3d ; echo "---- Building xd3d ----" ; $(MAKE)
++
++xgraphic : libs 
++	cd $(SRCDIR)/graphic ; echo "---- Building xgraphic ----" ; $(MAKE)
++
++utils : libs 
++	echo " ---- Building various utils ----" ;\
++	cd $(SRCDIR)/trad_nopo ; $(MAKE) ;\
++	cd $(SRCDIR)/various  ; $(MAKE)
+ 
+ clean :; /bin/rm -f $(SRCDIR)/*/*.o $(LIBRAIRIE) $(MYXLIB) $(INTERP) $(EXE)

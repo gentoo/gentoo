@@ -1,0 +1,32 @@
+Backport upstream patch to fix automake-1.12 issues
+
+https://bugs.gentoo.org/show_bug.cgi?id=397715
+https://bugs.gentoo.org/show_bug.cgi?id=399259
+--- client/Makefile.am
++++ client/Makefile.am
+@@ -1,10 +1,11 @@
+ INCLUDES = -I$(srcdir)/../services
+ 
+ bin_PROGRAMS = icecc
+-pkglib_SCRIPTS = icecc-create-env
++pkglibexec_SCRIPTS = icecc-create-env
+ icecc_SOURCES = main.cpp arg.cpp cpp.cpp local.cpp remote.cpp util.cpp md5.c safeguard.cpp
+ icecc_LDADD = ../services/libicecc.la $(LIBRSYNC)
+ noinst_HEADERS = client.h md5.h util.h
++AM_CPPFLAGS = -DPLIBDIR=\"$(pkglibexecdir)\"
+ 
+ EXTRA_DIST = icecc-create-env
+ 
+--- configure.in
++++ configure.in
+@@ -246,10 +246,6 @@
+ KDE_EXPAND_MAKEVAR(mybindir, bindir)
+ AC_DEFINE_UNQUOTED(BINDIR, "$mybindir", [Where to look for icecc])
+ 
+-myopkglibdir='${libdir}/'"$PACKAGE"
+-KDE_EXPAND_MAKEVAR(mypkglibdir, myopkglibdir)
+-AC_DEFINE_UNQUOTED(PLIBDIR, "$mypkglibdir", [Where to look for icecc-create-env])
+-
+ myorundir='${localstatedir}/run'
+ KDE_EXPAND_MAKEVAR(myrundir, myorundir)
+ AC_DEFINE_UNQUOTED(RUNDIR, "$myrundir", [Where to place pid files])

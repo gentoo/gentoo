@@ -1,0 +1,64 @@
+https://github.com/cyberdelia/django-pipeline/commit/ba7b8d0d1cb621521a2025fed3e60786a010836d
+diff --git a/docs/configuration.rst b/docs/configuration.rst
+index 4385e23..e200bc3 100644
+--- a/docs/configuration.rst
++++ b/docs/configuration.rst
+@@ -185,7 +185,7 @@ Other settings
+     (
+       (b'text/coffeescript', '.coffee'),
+       (b'text/less', '.less'),
+-      (b'application/javascript', '.js'),
++      (b'text/javascript', '.js'),
+       (b'text/x-sass', '.sass'),
+       (b'text/x-scss', '.scss')
+     )
+diff --git a/tests/tests/test_template.py b/tests/tests/test_template.py
+index 84b6957..a303d03 100644
+--- a/tests/tests/test_template.py
++++ b/tests/tests/test_template.py
+@@ -35,19 +35,19 @@ def test_package_css_disabled(self):
+ 
+     def test_package_js(self):
+         template = self.env.from_string(u"""{% compressed_js "scripts" %}""")
+-        self.assertEqual(u'<script type="application/javascript" src="/static/scripts.js" charset="utf-8"></script>', template.render())
++        self.assertEqual(u'<script type="text/javascript" src="/static/scripts.js" charset="utf-8"></script>', template.render())
+ 
+     def test_package_js_async(self):
+         template = self.env.from_string(u"""{% compressed_js "scripts_async" %}""")
+-        self.assertEqual(u'<script async type="application/javascript" src="/static/scripts_async.js" charset="utf-8"></script>', template.render())
++        self.assertEqual(u'<script async type="text/javascript" src="/static/scripts_async.js" charset="utf-8"></script>', template.render())
+ 
+     def test_package_js_defer(self):
+         template = self.env.from_string(u"""{% compressed_js "scripts_defer" %}""")
+-        self.assertEqual(u'<script defer type="application/javascript" src="/static/scripts_defer.js" charset="utf-8"></script>', template.render())
++        self.assertEqual(u'<script defer type="text/javascript" src="/static/scripts_defer.js" charset="utf-8"></script>', template.render())
+ 
+     def test_package_js_async_defer(self):
+         template = self.env.from_string(u"""{% compressed_js "scripts_async_defer" %}""")
+-        self.assertEqual(u'<script async defer type="application/javascript" src="/static/scripts_async_defer.js" charset="utf-8"></script>', template.render())
++        self.assertEqual(u'<script async defer type="text/javascript" src="/static/scripts_async_defer.js" charset="utf-8"></script>', template.render())
+ 
+ 
+ class DjangoTest(TestCase):
+@@ -64,16 +64,16 @@ def test_compressed_css(self):
+ 
+     def test_compressed_js(self):
+         rendered = self.render_template(u"""{% load compressed %}{% compressed_js "scripts" %}""")
+-        self.assertEqual(u'<script type="application/javascript" src="/static/scripts.js" charset="utf-8"></script>', rendered)
++        self.assertEqual(u'<script type="text/javascript" src="/static/scripts.js" charset="utf-8"></script>', rendered)
+ 
+     def test_compressed_js_async(self):
+         rendered = self.render_template(u"""{% load compressed %}{% compressed_js "scripts_async" %}""")
+-        self.assertEqual(u'<script async type="application/javascript" src="/static/scripts_async.js" charset="utf-8"></script>', rendered)
++        self.assertEqual(u'<script async type="text/javascript" src="/static/scripts_async.js" charset="utf-8"></script>', rendered)
+ 
+     def test_compressed_js_defer(self):
+         rendered = self.render_template(u"""{% load compressed %}{% compressed_js "scripts_defer" %}""")
+-        self.assertEqual(u'<script defer type="application/javascript" src="/static/scripts_defer.js" charset="utf-8"></script>', rendered)
++        self.assertEqual(u'<script defer type="text/javascript" src="/static/scripts_defer.js" charset="utf-8"></script>', rendered)
+ 
+     def test_compressed_js_async_defer(self):
+         rendered = self.render_template(u"""{% load compressed %}{% compressed_js "scripts_async_defer" %}""")
+-        self.assertEqual(u'<script async defer type="application/javascript" src="/static/scripts_async_defer.js" charset="utf-8"></script>', rendered)
++        self.assertEqual(u'<script async defer type="text/javascript" src="/static/scripts_async_defer.js" charset="utf-8"></script>', rendered)
+

@@ -1,0 +1,10 @@
+--- build.sh.orig	2015-02-17 16:55:47.000000000 +0000
++++ build.sh	2015-02-18 09:22:30.671123198 +0000
+@@ -19,5 +19,5 @@
+ for i in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongooplog; do
+ 	echo "Building ${i}..."
+   	# Build the tool, using -ldflags to link in the current gitspec
+-	go build -o "bin/$i" -ldflags "-X github.com/mongodb/mongo-tools/common/options.Gitspec `git rev-parse HEAD`" -tags "$tags" "$i/main/$i.go"
++	go build -o "bin/$i" -tags "$tags" "$i/main/$i.go"
+ done
+

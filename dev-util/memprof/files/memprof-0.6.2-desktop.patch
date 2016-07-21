@@ -1,0 +1,24 @@
+--- memprof.desktop
++++ memprof.desktop
+@@ -11,17 +11,13 @@
+ Name[uk]=MemProf
+ Comment=Check a program for leaks and analyze its memory usage
+ Comment[sl]=Orodje za profiliranje pomnilnika
+-Comment[da]=Vζrktψj til hukommelsesprofilering
+-Comment[el]=Εργαλείο Κατατόμησης Μνήμης
+ Comment[fr]=Outil de profilage de memoire
+ Comment[it]=Strumento di profilo della memoria
+ Comment[nl]=Gereedschap voor geheugen profilering
+-Comment[no]=Verktψy for minneprofilering
+ Comment[pt_BR]=Ferramenta de 
+ Comment[sv]=Minnesprofileringsverktyg
+-Comment[uk]=ϊΑΣ¦Β ΠÒΟΖ¦ΜΐΧΑΞΞΡ ΠΑΝ'ΡΤ¦
+ Exec=memprof
+-Terminal=0
++Terminal=false
+ Type=Application
+-Icon=memprof.png
+-Categories=Application;Development;
+\ No newline at end of file
++Icon=memprof
++Categories=Development;

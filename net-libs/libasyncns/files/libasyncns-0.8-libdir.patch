@@ -1,0 +1,10 @@
+--- libasyncns-0.8/libasyncns.pc.in.orig	2011-03-27 03:45:59.804339219 +0100
++++ libasyncns-0.8/libasyncns.pc.in	2011-03-27 03:46:12.368119660 +0100
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=@libdir@
+ includedir=${prefix}/include
+ 
+ Name: libasyncns

@@ -1,0 +1,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 21a1cb7..6cd9d08 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -49,7 +49,7 @@ all-local:
+ 	@[ -f icp ] || (echo $(LN_S) icmd icp ; $(LN_S) icmd icp)
+ 
+ install-exec-local:
+-	$(mkdir_p) $(DESTDIR)($bindir)
++	$(mkdir_p) $(DESTDIR)$(bindir)
+ 	@[ -f $(DESTDIR)$(bindir)/qmv ] || (echo $(LN_S) qcmd $(DESTDIR)$(bindir)/qmv ; $(LN_S) qcmd $(DESTDIR)$(bindir)/qmv)
+ 	@[ -f $(DESTDIR)$(bindir)/qcp ] || (echo $(LN_S) qcmd $(DESTDIR)$(bindir)/qcp ; $(LN_S) qcmd $(DESTDIR)$(bindir)/qcp)
+ 	@[ -f $(DESTDIR)$(bindir)/imv ] || (echo $(LN_S) icmd $(DESTDIR)$(bindir)/imv ; $(LN_S) icmd $(DESTDIR)$(bindir)/imv)

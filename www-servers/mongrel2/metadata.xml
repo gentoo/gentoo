@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>proxy-mintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>Aidenn0@geocities.com</email>
+    <name>Jason Miller</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
+  <upstream>
+      <remote-id type="github">mongrel2/mongrel2</remote-id>
+  </upstream>
+</pkgmetadata>

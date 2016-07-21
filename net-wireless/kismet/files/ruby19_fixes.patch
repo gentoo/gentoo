@@ -1,0 +1,85 @@
+commit 09b5076e4cd8338d3b45a760662fc7347f8d93bf
+Author: Mike Kershaw / Dragorn <dragorn@kismetwireless.net>
+Date:   Tue Apr 23 10:33:07 2013 -0400
+
+    Ruby 1.9 removed '.' from search path, use require_relative; also remove
+     spurious 'break' in tx code
+
+diff --git a/ruby/kismet.rb b/ruby/kismet.rb
+index 5b18b23..7eab708 100755
+--- a/ruby/kismet.rb
++++ b/ruby/kismet.rb
+@@ -61,8 +61,6 @@ class Kismet
+ 		rescue Exception => e
+ 			pp e
+ 
+-			break if @die
+-
+ 			puts "write error: #{$!}"
+ 		end
+ 	end
+diff --git a/ruby/kismet_addsource.rb b/ruby/kismet_addsource.rb
+index 057a514..d3ae968 100755
+--- a/ruby/kismet_addsource.rb
++++ b/ruby/kismet_addsource.rb
+@@ -20,7 +20,7 @@
+ 
+ require 'socket'
+ require 'time'
+-require 'kismet'
++require_relative 'kismet'
+ require 'pp'
+ require 'optparse'
+ 
+diff --git a/ruby/kismet_alert_syslog.rb b/ruby/kismet_alert_syslog.rb
+index 6969247..27373a9 100755
+--- a/ruby/kismet_alert_syslog.rb
++++ b/ruby/kismet_alert_syslog.rb
+@@ -20,7 +20,7 @@
+ 
+ require 'socket'
+ require 'time'
+-require 'kismet'
++require_relative 'kismet'
+ require 'pp'
+ require "getopt/long"
+ require 'syslog'
+diff --git a/ruby/kismet_list.rb b/ruby/kismet_list.rb
+index ec8f0f9..7adffe6 100755
+--- a/ruby/kismet_list.rb
++++ b/ruby/kismet_list.rb
+@@ -20,7 +20,7 @@
+ 
+ require 'socket'
+ require 'time'
+-require 'kismet'
++require_relative 'kismet'
+ 
+ def bssidcb(proto, fields)
+ 	puts "Kismet saw network #{fields['bssid']} manuf #{fields['manuf']} on channel #{fields['channel']}"
+diff --git a/ruby/kismet_shootout.rb b/ruby/kismet_shootout.rb
+index accda7e..931360f 100755
+--- a/ruby/kismet_shootout.rb
++++ b/ruby/kismet_shootout.rb
+@@ -21,7 +21,7 @@
+ 
+ require 'socket'
+ require 'time'
+-require 'kismet'
++require_relative 'kismet'
+ require 'pp'
+ require 'optparse'
+ 
+diff --git a/ruby/kismet_sql.rb b/ruby/kismet_sql.rb
+index 9fe581d..b878979 100755
+--- a/ruby/kismet_sql.rb
++++ b/ruby/kismet_sql.rb
+@@ -22,7 +22,7 @@
+ 
+ require 'socket'
+ require 'time'
+-require 'kismet'
++require_relative 'kismet'
+ require 'pp'
+ require "getopt/long"
+ require "sqlite3"

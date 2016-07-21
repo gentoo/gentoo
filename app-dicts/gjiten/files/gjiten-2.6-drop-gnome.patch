@@ -1,0 +1,20 @@
+diff --git a/configure.in b/configure.in
+index aec96d4..733eee6 100644
+--- a/configure.in
++++ b/configure.in
+@@ -18,7 +18,6 @@ AC_PROG_MAKE_SET
+ AC_PROG_INTLTOOL([0.22])
+ AC_PATH_PROG([GCONFTOOL], [gconftool-2])
+ 
+-GNOME_COMMON_INIT
+ dnl GNOME_PLATFORM_GNOME_2(yes, force)
+ PKG_CHECK_MODULES(GJITEN, libgnome-2.0 >= 2.2.0 libgnomeui-2.0 >= 2.2.0 libglade-2.0 gconf-2.0)
+ AM_GCONF_SOURCE_2
+@@ -36,7 +35,6 @@ AC_FUNC_MMAP
+ AC_FUNC_STAT
+ AC_CHECK_FUNCS([getcwd putenv setlocale strerror strrchr strstr munmap])
+ 
+-GNOME_COMPILE_WARNINGS(maximum)
+ 
+ # Gettext stuff
+ GETTEXT_PACKAGE=gjiten

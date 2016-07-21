@@ -1,0 +1,22 @@
+diff --git a/edit.c b/edit.c
+index 328a0cd..3cf6572 100644
+--- a/edit.c
++++ b/edit.c
+@@ -42,7 +42,7 @@ char contru[][4] = {"NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL",
+ 					"CAN", " EM", "SUB", "ESC", " FS", " GS", " RS", " US",
+ 					"DEL" };
+ char tmpbuf[10];
+-char linbuf[256];
++char linbuf[16384];
+ 
+ static  char    getcbuff[BUFFER];
+ static  char    *getcnext = NULL;
+@@ -492,7 +492,7 @@ printline(mempos, scpos)
+ 			*(string + print_pos) = '.';
+ 	}
+ 	*(string + Anzahl) = '\0';
+-	strcat(linbuf, string);
++	strncat(linbuf, string, sizeof(linbuf) - strlen(linbuf) - 1);
+ 	mvaddstr(scpos, 0, linbuf);
+ }
+ 

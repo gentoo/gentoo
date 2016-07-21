@@ -1,0 +1,59 @@
+From fd2d422f16ca1134f3be8d693290e6b1c536bf71 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 7 Jun 2012 10:10:28 +0300
+Subject: [squirrel: PATCH] fix build breakage on gcc-4.7 and clang++
+
+gcc 4.7 got proper support for argument dependent lookup
+for builtin types:
+    http://gcc.gnu.org/bugzilla/show_bug.cgi?id=46075
+
+It exposed old problem:
+> gcc -O2 -fno-exceptions -fno-rtti -Wall -fno-strict-aliasing -c sqapi.cpp sqbaselib.cpp sqfuncstate.cpp sqdebug.cpp \
+  sqlexer.cpp sqobject.cpp sqcompiler.cpp sqstate.cpp sqtable.cpp sqmem.cpp sqvm.cpp sqclass.cpp -I../include -I. -Iinclude
+  In file included from sqobject.h:5:0,
+                 from sqpcheader.h:16,
+                 from sqapi.cpp:4:
+  squtils.h: In instantiation of 'sqvector<T>::~sqvector() [with T = long long int]':
+  sqclosure.h:142:52:   required from here
+  squtils.h:46:4: error: 'sq_vm_free' was not declared in this scope, and no declarations were found by argument-dependent
+  lookup at the point of instantiation [-fpermissive]
+  In file included from sqpcheader.h:17:0,
+                 from sqapi.cpp:4:
+  sqstate.h:143:6: note: 'void sq_vm_free(void*, SQUnsignedInteger)' declared here, later in the translation unit
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ squirrel/sqstate.h |    3 ---
+ squirrel/squtils.h |    4 ++++
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/squirrel/sqstate.h b/squirrel/sqstate.h
+index 3ed3307..e931404 100755
+--- a/squirrel/sqstate.h
++++ b/squirrel/sqstate.h
+@@ -138,7 +138,4 @@ private:
+ 
+ bool CompileTypemask(SQIntVec &res,const SQChar *typemask);
+ 
+-void *sq_vm_malloc(SQUnsignedInteger size);
+-void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
+-void sq_vm_free(void *p,SQUnsignedInteger size);
+ #endif //_SQSTATE_H_
+diff --git a/squirrel/squtils.h b/squirrel/squtils.h
+index bff7d24..ac3aef9 100755
+--- a/squirrel/squtils.h
++++ b/squirrel/squtils.h
+@@ -10,6 +10,10 @@
+ 
+ #define sq_aligning(v) (((size_t)(v) + (SQ_ALIGNMENT-1)) & (~(SQ_ALIGNMENT-1)))
+ 
++
++void *sq_vm_malloc(SQUnsignedInteger size);
++void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
++void sq_vm_free(void *p,SQUnsignedInteger size);
+ //sqvector mini vector class, supports objects by value
+ template<typename T> class sqvector
+ {
+-- 
+1.7.8.6
+

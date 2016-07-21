@@ -1,0 +1,11 @@
+diff -ru libofa-0.9.3.orig//examples/protocol.cpp libofa-0.9.3//examples/protocol.cpp
+--- libofa-0.9.3.orig//examples/protocol.cpp	2006-05-10 20:05:42.000000000 +0200
++++ libofa-0.9.3//examples/protocol.cpp	2011-07-22 19:02:30.687109297 +0200
+@@ -12,7 +12,6 @@
+ #include <map>
+ #include <expat.h>
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ using namespace std;

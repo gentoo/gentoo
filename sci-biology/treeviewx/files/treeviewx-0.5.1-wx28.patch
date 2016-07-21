@@ -1,0 +1,14 @@
+Fix build w/ wxGTK-2.8
+http://bugs.debian.org/567238
+
+--- a/tview.cpp
++++ b/tview.cpp
+@@ -994,7 +994,7 @@ END_EVENT_TABLE()
+ MyCanvas::MyCanvas(wxView *v, wxMDIChildFrame *frame, const wxPoint& pos, const wxSize& size, long style):
+  wxScrolledWindow(frame, -1, pos, size, style)
+ {
+-	SetBackgroundColour(wxColour("WHITE"));
++	SetBackgroundColour(wxColour(wxT("WHITE")));
+ 	view = v;
+ 	magnification = 1;
+ }

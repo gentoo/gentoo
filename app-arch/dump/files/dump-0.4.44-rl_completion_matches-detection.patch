@@ -1,0 +1,24 @@
+https://sourceforge.net/tracker/?func=detail&aid=3322906&group_id=1306&atid=301306
+
+=== modified file 'configure.in'
+--- configure.in	2011-06-20 07:22:40 +0000
++++ configure.in	2011-06-20 07:56:19 +0000
+@@ -516,7 +516,7 @@
+ dnl
+ dnl Check for rl_completion_matches
+ dnl
+-AC_CHECK_LIB(readline, rl_completion_matches, [rlcm=yes], [rlcm=no], "-ltermcap")
++AC_CHECK_LIB(readline, rl_completion_matches, [rlcm=yes], [rlcm=no], [$rdllib])
+ if test "$rlcm" = yes; then
+ 	AC_DEFINE([HAVE_READLINE_RLCM],1,[Define this if your readline libs have the rl_completion_matches library.])
+ fi
+@@ -524,7 +524,7 @@
+ dnl
+ dnl Check for rl_completion_append_character
+ dnl
+-AC_CHECK_LIB(readline, rl_completion_append_character, [rcac=yes], [rcac=no], "-ltermcap")
++AC_CHECK_LIB(readline, rl_completion_append_character, [rcac=yes], [rcac=no], [$rdllib])
+ if test "$rcac" = yes; then
+ 	AC_DEFINE([HAVE_READLINE_CAC],1,[Define this if your readline libs have the rl_completion_append_character variable.])
+ fi
+

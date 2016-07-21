@@ -1,0 +1,11 @@
+--- tar-0.3.1.0-orig/Codec/Archive/Tar/Write.hs	2009-06-06 23:51:00.000000000 +1000
++++ tar-0.3.1.0/Codec/Archive/Tar/Write.hs	2011-12-24 09:36:10.928384175 +1100
+@@ -119,7 +119,7 @@
+ putString n s = take n s ++ fill (n - length s) '\NUL'
+ 
+ --TODO: check integer widths, eg for large file sizes
+-putOct :: Integral a => FieldWidth -> a -> String
++putOct :: (Integral a, Show a) => FieldWidth -> a -> String
+ putOct n x =
+   let octStr = take (n-1) $ showOct x ""
+    in fill (n - length octStr - 1) '0'

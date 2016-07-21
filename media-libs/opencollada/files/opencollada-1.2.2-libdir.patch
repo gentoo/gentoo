@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96ccb32..c2673f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,6 +146,9 @@ set(OPENCOLLADA_VERSION_MINOR 1)
+ set(OPENCOLLADA_VERSION_PATCH 0)
+ set(OPENCOLLADA_VERSION ${OPENCOLLADA_VERSION_MAJOR}.${OPENCOLLADA_VERSION_MINOR}.${OPENCOLLADA_VERSION_PATCH})
+ 
++#-----------------------------------------------------------------------------
++# Generic install paths
++include(GNUInstallDirs)
+ 
+ #-----------------------------------------------------------------------------
+ # Compiler warnings.
+@@ -178,9 +181,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_WARNINGS}")
+ #-----------------------------------------------------------------------------
+ # Install vars
+ 
+-set(OPENCOLLADA_INST_INCLUDE ${CMAKE_INSTALL_PREFIX}/include/opencollada)
+-set(OPENCOLLADA_INST_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib/opencollada)
+-set(OPENCOLLADA_INST_CMAKECONFIG ${OPENCOLLADA_INST_LIBRARY}/cmake)
++set(OPENCOLLADA_INST_INCLUDE ${CMAKE_INSTALL_FULL_INCLUDEDIR}/opencollada)
++set(OPENCOLLADA_INST_LIBRARY ${CMAKE_INSTALL_FULL_LIBDIR}/opencollada)
++set(OPENCOLLADA_INST_CMAKECONFIG ${CMAKE_INSTALL_FULL_LIBDIR}/opencollada/cmake)
+ 
+ 
+ #-----------------------------------------------------------------------------

@@ -1,0 +1,27 @@
+--- Makefile.old	2009-02-09 16:04:47.000000000 +0100
++++ Makefile	2009-02-09 16:14:41.000000000 +0100
+@@ -1,22 +1,9 @@
+ # Makefile for braincurses game
+ # written by Brian Derr
+ 
+-CC=g++
+-CFLAGS=-Wall
+-CURSES_LIBS=-lncurses
++LDLIBS=-lncurses
+ 
+-ncurses: curses/windows.o braincurses.o 
+-	${CC} ${CURSES_LIBS} ${CFLAGS} -o braincurses curses/windows.o \
+-	braincurses.o
+-
+-windows.o: windows.cpp
+-	${CC} ${CFLAGS} -c curses/windows.cpp
+-
+-braincurses.o: braincurses.cpp
+-	${CC} ${CFLAGS} -c braincurses.cpp
+-
+-#top_scores.o: top_scores.cpp
+-#	${CC} ${CFLAGS} -c top_scores.cpp
++braincurses: curses/windows.cpp braincurses.cpp 
+ 
+ install:
+ 	install -o root -g root braincurses /usr/local/bin/

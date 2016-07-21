@@ -1,0 +1,19 @@
+Respect CC, CFLAGS, & LDFLAGS.
+Drop DEPRECATED flags for bug #387833.
+Fix underlinking for bug #369453.
+--- a/Makefile
++++ b/Makefile
+@@ -1,10 +1,10 @@
+ all: gromit
+ 
+ proptest: proptest.c
+-	gcc -o proptest proptest.c `gtk-config --libs --cflags`
++	$(CC) -o proptest proptest.c `gtk-config --libs --cflags`
+ 
+ propertywatch: propertywatch.c
+-	gcc -o propertywatch propertywatch.c `gtk-config --libs --cflags`
++	$(CC) -o propertywatch propertywatch.c `gtk-config --libs --cflags`
+ 
+ gromit: gromit.c Makefile
+-	gcc -DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DPANGO_DISABLE_DEPRECATED -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall `pkg-config --libs --cflags gtk+-2.0`
++	$(CC) -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall $(CFLAGS) $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -lX11 -lm

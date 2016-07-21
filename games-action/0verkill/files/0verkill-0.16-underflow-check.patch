@@ -1,0 +1,17 @@
+The vulnerability is cause due to an integer underflow error in "recv_packet()"
+within the handling of a received UDP packet. This can be exploited to cause
+out-of-bounds memory access which crashes the server process via a UDP packet
+that is smaller than 12 bytes in size.
+
+http://bugs.gentoo.org/136222
+
+--- 0verkill-0.16/net.c
++++ 0verkill-0.16/net.c
+@@ -84,6 +84,7 @@
+ 	p=mem_alloc(max_len+12);
+ 	if (!p)return -1;  /* not enough memory */
+ 	retval=recvfrom(fd,p,max_len+12,0,addr,addr_len);
++	if (retval<12)return -1; /* not enough data from network */
+ 	memcpy(packet,p+12,max_len);
+ 	crc=p[0]+(p[1]<<8)+(p[2]<<16)+(p[3]<<24);
+ 	s=p[4]+(p[5]<<8)+(p[6]<<16)+(p[7]<<24);

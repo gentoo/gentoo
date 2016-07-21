@@ -1,0 +1,36 @@
+diff -ruN LibRaw-0.16.0.orig/cmake/data/libraw.pc.cmake LibRaw-0.16.0/cmake/data/libraw.pc.cmake
+--- LibRaw-0.16.0.orig/cmake/data/libraw.pc.cmake	2014-01-17 14:38:31.000000000 +0100
++++ LibRaw-0.16.0/cmake/data/libraw.pc.cmake	2014-11-29 19:20:50.550486840 +0100
+@@ -9,4 +9,4 @@
+ Requires:
+ Version: @RAW_LIB_VERSION_STRING@
+ Libs: -L${libdir} -lraw
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}
+diff -ruN LibRaw-0.16.0.orig/cmake/data/libraw_r.pc.cmake LibRaw-0.16.0/cmake/data/libraw_r.pc.cmake
+--- LibRaw-0.16.0.orig/cmake/data/libraw_r.pc.cmake	2014-01-17 14:38:31.000000000 +0100
++++ LibRaw-0.16.0/cmake/data/libraw_r.pc.cmake	2014-11-29 19:21:00.456487394 +0100
+@@ -9,4 +9,4 @@
+ Requires:
+ Version: @RAW_LIB_VERSION_STRING@
+ Libs: -L${libdir} -lraw_r
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}
+diff -ruN LibRaw-0.16.0.orig/libraw.pc.in LibRaw-0.16.0/libraw.pc.in
+--- LibRaw-0.16.0.orig/libraw.pc.in	2014-01-17 14:38:31.000000000 +0100
++++ LibRaw-0.16.0/libraw.pc.in	2014-11-29 19:20:24.301485373 +0100
+@@ -8,4 +8,4 @@
+ Requires: @PACKAGE_REQUIRES@
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lraw -lstdc++@PC_OPENMP@
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}
+diff -ruN LibRaw-0.16.0.orig/libraw_r.pc.in LibRaw-0.16.0/libraw_r.pc.in
+--- LibRaw-0.16.0.orig/libraw_r.pc.in	2014-01-17 14:38:31.000000000 +0100
++++ LibRaw-0.16.0/libraw_r.pc.in	2014-11-29 19:20:32.439485828 +0100
+@@ -8,4 +8,4 @@
+ Requires: @PACKAGE_REQUIRES@
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lraw_r -lstdc++@PC_OPENMP@
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}

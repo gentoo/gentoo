@@ -1,0 +1,35 @@
+diff --git a/Gemfile b/Gemfile
+index 7ae9d6a..5858f12 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -5,4 +5,4 @@ gemspec
+ 
+ gem 'sqlite3'
+ gem 'jquery-rails'
+-gem 'rdiscount'
++gem 'kramdown'
+diff --git a/test_app/Gemfile b/test_app/Gemfile
+index 6d53037..32676b2 100644
+--- a/test_app/Gemfile
++++ b/test_app/Gemfile
+@@ -7,7 +7,7 @@ gem 'best_in_place', :path => ".."
+ 
+ gem 'jquery-rails'
+ 
+-gem 'rdiscount'
++gem 'kramdown'
+ 
+ group :assets do
+   gem 'sass-rails',   '~> 3.2.3'
+diff --git a/test_app/app/models/user.rb b/test_app/app/models/user.rb
+index 604f5ba..7cc9248 100644
+--- a/test_app/app/models/user.rb
++++ b/test_app/app/models/user.rb
+@@ -19,6 +19,6 @@ class User < ActiveRecord::Base
+   end
+ 
+   def markdown_desc
+-    RDiscount.new(description).to_html.html_safe
++    Kramdown::Document.new(description).to_html.html_safe
+   end
+ end

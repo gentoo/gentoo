@@ -1,0 +1,86 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Propagate CFLAGS, CPPFLAGS, and FFLAGS
+ This is done to enable hardening of the code. Also, use -fPIC only
+ for shared library code.
+--- a/install/unix/install1
++++ b/install/unix/install1
+@@ -303,7 +303,7 @@
+ ed_moptions delete C_OPT >/dev/null
+ ed_moptions delete INSTALL_FLAG >/dev/null
+ 
+-ed_moptions add "C_OPT=-O $X_OPT"  >/dev/null
++ed_moptions add "C_OPT=$X_OPT"  >/dev/null
+ ed_moptions add "K_OPT= $X_OPT"  >/dev/null
+ ed_moptions add "INSTALL_FLAG=auto" >/dev/null
+ 
+@@ -331,12 +331,13 @@
+ # 64 bit compiler
+ else
+    echo installing Midas on a 64 bit system
+-   MACH="-m64"
++   MACH=" "
+    EO="-Z"
+ fi
+  
+ ed_moptions add "F77=gfortran $MACH" >/dev/null
+-ed_moptions add "LD77_CMD=gfortran $MACH"  >/dev/null
++ed_moptions add "LD77_CMD=gfortran $MACH $LDFLAGS"  >/dev/null
++ed_moptions add "LDCC=gcc $LDFLAGS"  >/dev/null
+ ed_moptions add "E_OPT= $EO"  >/dev/null
+ 
+ 
+--- a/install/unix/default_mk
++++ b/install/unix/default_mk
+@@ -49,10 +49,10 @@
+ E_OPT =
+ SYS =
+ SH_CMD = echo
+-SH_OPT =
++SH_OPT = -fPIC
+ SH_EXT = so.8.1
+ CFLAGS += $(C_OPT) $(DEBUG) $(SYS) $(VARARGS) -I$(INC)
+-FFLAGS = $(F_OPT) $(DEBUG) -c
++FFLAGS += $(F_OPT) $(DEBUG) -c
+ EFLAGS = $(E_OPT) -I$(INC) -I$(LINC) -f
+ EXFLAGS = -f
+ SLIB =
+--- a/libsrc/ftoc-new/makefile
++++ b/libsrc/ftoc-new/makefile
+@@ -21,6 +21,7 @@
+ C_OPT =  $(K_OPT)
+ 
+ CFLAGS += $(C_OPT) $(DEBUG) $(SH_OPT) $(SYS) -I$(INC)
++FFLAGS += $(SH_OPT)
+ 
+ LIB = $(LIBDIR)/libftoc.a
+ 
+--- a/libsrc/tbl/makefile
++++ b/libsrc/tbl/makefile
+@@ -22,6 +22,7 @@
+ include ../../local/default.mk
+ 
+ CFLAGS += $(C_OPT) $(SH_OPT) $(DEBUG) $(SYS) -I$(INC)
++FFLAGS += $(SH_OPT)
+ 
+ HEADT = $(INC)/tblsys.h $(INC)/tbldef.h $(INC)/tblerr.h
+ 
+--- a/libsrc/agl/makefile
++++ b/libsrc/agl/makefile
+@@ -28,6 +28,7 @@
+ include ../../local/default.mk
+ 
+ CFLAGS += $(C_OPT) $(DEBUG) $(SH_OPT) $(OSSYS) $(SYS) -I$(INC) $(X11INC) -DMIDAS
++FFLAGS += $(SH_OPT)
+ 
+ LIB = $(LIBDIR)/libagl3.a
+ M = ../../system/exec
+--- a/libsrc/plot/makefile
++++ b/libsrc/plot/makefile
+@@ -15,6 +15,7 @@
+ include ../../local/default.mk
+ 
+ CFLAGS += $(C_OPT) $(SH_OPT) $(DEBUG) $(SYS) -I$(INC)
++FFLAGS += $(SH_OPT)
+ 
+ LIB =	$(LIBDIR)/libplot.a
+ 

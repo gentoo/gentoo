@@ -1,0 +1,14 @@
+diff --git a/configure b/configure
+index 2f29879..50136fb 100755
+--- a/configure
++++ b/configure
+@@ -3569,7 +3569,7 @@ fi
+ 
+ 
+ 
+-  list="-Wall -Werror"
++  list="-Wall"
+   flags_supported=""
+   flags_unsupported=""
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for supported compiler flags" >&5
+

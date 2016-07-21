@@ -1,0 +1,84 @@
+--- a/config.mk
++++ b/config.mk
+@@ -4,27 +4,27 @@
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
++PREFIX = /usr
+ MANPREFIX = ${PREFIX}/share/man
+ 
+-X11INC = /usr/X11R6/include
+-X11LIB = /usr/X11R6/lib
++X11INC = $(shell $(PKG_CONFIG) --cflags x11)
++X11LIB = $(shell $(PKG_CONFIG) --libs x11)
+ 
+-GTKINC = `pkg-config --cflags gtk+-2.0 webkit-1.0`
+-GTKLIB = `pkg-config --libs gtk+-2.0 webkit-1.0`
++GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-2.0 gthread-2.0 webkit-1.0)
++GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-2.0 gthread-2.0 webkit-1.0)
+ 
+ # includes and libs
+-INCS = -I. -I/usr/include -I${X11INC} ${GTKINC}
+-LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 ${GTKLIB} -lgthread-2.0
++INCS = -I. -I/usr/include ${X11INC} ${GTKINC}
++LIBS = ${X11LIB} ${GTKLIB}
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE
+-CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS = -g ${LIBS}
++CFLAGS = -std=c99 -pedantic -Wall ${INCS} ${CPPFLAGS}
++LDFLAGS = ${LIBS}
+ 
+ # Solaris
+ #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
+ #LDFLAGS = ${LIBS}
+ 
+ # compiler and linker
+-CC = cc
++CC ?= cc
+--- a/Makefile
++++ b/Makefile
+@@ -15,18 +15,16 @@
+ 	@echo "CC       = ${CC}"
+ 
+ .c.o:
+-	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.h config.mk
+ 
+ config.h:
+ 	@echo creating $@ from config.def.h
+-	@cp config.def.h $@
++	cp config.def.h $@
+ 
+ surf: ${OBJ}
+-	@echo CC -o $@
+-	@${CC} -o $@ surf.o ${LDFLAGS}
++	${CC} -o $@ surf.o ${LDFLAGS}
+ 
+ clean:
+ 	@echo cleaning
+@@ -44,13 +42,13 @@
+ 
+ install: all
+ 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
+-	@mkdir -p ${DESTDIR}${PREFIX}/bin
+-	@cp -f surf ${DESTDIR}${PREFIX}/bin
+-	@chmod 755 ${DESTDIR}${PREFIX}/bin/surf
++	mkdir -p ${DESTDIR}${PREFIX}/bin
++	cp -f surf ${DESTDIR}${PREFIX}/bin
++	chmod 755 ${DESTDIR}${PREFIX}/bin/surf
+ 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+-	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+-	@sed "s/VERSION/${VERSION}/g" < surf.1 > ${DESTDIR}${MANPREFIX}/man1/surf.1
+-	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/surf.1
++	mkdir -p ${DESTDIR}${MANPREFIX}/man1
++	sed "s/VERSION/${VERSION}/g" < surf.1 > ${DESTDIR}${MANPREFIX}/man1/surf.1
++	chmod 644 ${DESTDIR}${MANPREFIX}/man1/surf.1
+ 
+ uninstall:
+ 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin

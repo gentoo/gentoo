@@ -1,0 +1,33 @@
+fix from upstream git repo
+
+From e3d7f8b3f35442ae71dc95d776c900d2c29b215c Mon Sep 17 00:00:00 2001
+From: Yufeng Shen <miletus@chromium.org>
+Date: Tue, 15 Nov 2011 17:29:49 -0500
+Subject: [PATCH] Initialize msocks[2] to -1
+
+When SOCKET_EXPORT_ENABLE is not defined, msocks[2] can reach the
+point where it is used (put into all_fds to be monitored by select()),
+without initilization.
+
+Signed-off-by: Eric S. Raymond <esr@thyrsus.com>
+---
+ gpsd.c |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/gpsd.c b/gpsd.c
+index 2d4090f..d342f5a 100644
+--- a/gpsd.c
++++ b/gpsd.c
+@@ -1762,7 +1762,8 @@ int main(int argc, char *argv[])
+     static char *pid_file = NULL;
+     struct gps_device_t *device;
+     fd_set rfds;
+-    int i, option, msocks[2], dfd;
++    int i, option, dfd;
++    int msocks[2] = {-1, -1};
+     bool go_background = true;
+     struct timeval tv;
+     const struct gps_type_t **dp;
+-- 
+1.7.6.1
+

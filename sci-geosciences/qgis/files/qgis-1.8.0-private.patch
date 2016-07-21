@@ -1,0 +1,10 @@
+--- a/src/core/qgsmaplayerregistry.h	2015-12-30 15:06:17.199889612 +0100
++++ b/src/core/qgsmaplayerregistry.h	2015-12-30 15:05:50.159890061 +0100
+@@ -173,6 +173,7 @@
+     /** debugging member
+         invoked when a connect() is made to this object
+     */
++  public:
+     void connectNotify( const char * signal );
+ 
+ 

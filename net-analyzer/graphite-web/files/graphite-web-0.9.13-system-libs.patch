@@ -1,0 +1,100 @@
+From 1ca73dd4ec442d6ada765e5375efee84bbc7522b Mon Sep 17 00:00:00 2001
+From: Jamie Nguyen &lt;j@jamielinux.com&gt;
+Date: Mon, 29 Sep 2014 09:53:22 +0100
+Subject: [PATCH] Force use of system libraries
+
+---
+ setup.py                          | 2 --
+ webapp/graphite/cli/parser.py     | 2 +-
+ webapp/graphite/render/attime.py  | 5 +----
+ webapp/graphite/render/glyph.py   | 5 +----
+ webapp/graphite/render/grammar.py | 2 +-
+ webapp/graphite/render/views.py   | 5 +----
+ 6 files changed, 5 insertions(+), 16 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 4dc0ce0..1b910d1 100644
+--- a/setup.py
++++ b/setup.py
+@@ -54,8 +54,6 @@ setup(
+     'graphite.graphlot',
+     'graphite.events',
+     'graphite.version',
+-    'graphite.thirdparty',
+-    'graphite.thirdparty.pytz',
+   ],
+   package_data={'graphite' :
+     ['templates/*', 'local_settings.py.example']},
+diff --git a/webapp/graphite/cli/parser.py b/webapp/graphite/cli/parser.py
+index ec1a435..7d7d48d 100644
+--- a/webapp/graphite/cli/parser.py
++++ b/webapp/graphite/cli/parser.py
+@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License."""
+ 
+-from graphite.thirdparty.pyparsing import *
++from pyparsing import *
+ 
+ grammar = Forward()
+ 
+diff --git a/webapp/graphite/render/attime.py b/webapp/graphite/render/attime.py
+index 55a644c..8adde3f 100644
+--- a/webapp/graphite/render/attime.py
++++ b/webapp/graphite/render/attime.py
+@@ -16,10 +16,7 @@ from datetime import datetime,timedelta
+ from time import daylight
+ from django.conf import settings
+ 
+-try: # See if there is a system installation of pytz first
+-  import pytz
+-except ImportError: # Otherwise we fall back to Graphite's bundled version
+-  from graphite.thirdparty import pytz
++import pytz
+ 
+ 
+ months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
+diff --git a/webapp/graphite/render/glyph.py b/webapp/graphite/render/glyph.py
+index a2cc893..c6f31f1 100644
+--- a/webapp/graphite/render/glyph.py
++++ b/webapp/graphite/render/glyph.py
+@@ -22,10 +22,7 @@ from graphite.render.datalib import TimeSeries
+ from graphite.util import json
+ 
+ 
+-try: # See if there is a system installation of pytz first
+-  import pytz
+-except ImportError: # Otherwise we fall back to Graphite's bundled version
+-  from graphite.thirdparty import pytz
++import pytz
+ 
+ INFINITY = float('inf')
+ 
+diff --git a/webapp/graphite/render/grammar.py b/webapp/graphite/render/grammar.py
+index 07e3e4b..2b0ba41 100644
+--- a/webapp/graphite/render/grammar.py
++++ b/webapp/graphite/render/grammar.py
+@@ -1,4 +1,4 @@
+-from graphite.thirdparty.pyparsing import *
++from pyparsing import *
+ 
+ ParserElement.enablePackrat()
+ grammar = Forward()
+diff --git a/webapp/graphite/render/views.py b/webapp/graphite/render/views.py
+index 186232e..cd747a7 100644
+--- a/webapp/graphite/render/views.py
++++ b/webapp/graphite/render/views.py
+@@ -25,10 +25,7 @@ try:
+ except ImportError:
+   import pickle
+ 
+-try:  # See if there is a system installation of pytz first
+-  import pytz
+-except ImportError:  # Otherwise we fall back to Graphite's bundled version
+-  from graphite.thirdparty import pytz
++import pytz
+ 
+ from graphite.util import getProfileByUsername, json, unpickle
+ from graphite.remote_storage import HTTPConnectionWithTimeout
+-- 
+1.9.3

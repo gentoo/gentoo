@@ -1,0 +1,44 @@
+diff -ruN cmake-2.8.7.orig/Modules/FindLAPACK.cmake cmake-2.8.7/Modules/FindLAPACK.cmake
+--- cmake-2.8.7.orig/Modules/FindLAPACK.cmake	2011-12-30 17:49:56.000000000 +0100
++++ cmake-2.8.7/Modules/FindLAPACK.cmake	2012-03-09 02:15:46.000000000 +0100
+@@ -1,3 +1,9 @@
++#
++# Version modified for Gentoo Linux
++# If a valid PkgConfig configuration is found, this overrides and cancels
++# all further checks.
++#
++
+ # - Find LAPACK library
+ # This module finds an installed fortran library that implements the LAPACK
+ # linear-algebra interface (see http://www.netlib.org/lapack/).
+@@ -36,6 +42,24 @@
+ # (To distribute this file outside of CMake, substitute the full
+ #  License text for the above reference.)
+ 
++#
++# first, try PkgConfig
++#
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(PC_LAPACK lapack)
++if(PC_LAPACK_FOUND)
++  foreach(PC_LIB ${PC_LAPACK_LIBRARIES})
++    find_library(${PC_LIB}_LIBRARY NAMES ${PC_LIB} HINTS ${PC_LAPACK_LIBRARY_DIRS} )
++    if (NOT ${PC_LIB}_LIBRARY)
++      message(FATAL_ERROR "Something is wrong in your pkg-config file - lib ${PC_LIB} not found in ${PC_LAPACK_LIBRARY_DIRS}")
++    endif (NOT ${PC_LIB}_LIBRARY)
++    list(APPEND LAPACK_LIBRARIES ${${PC_LIB}_LIBRARY}) 
++  endforeach(PC_LIB)
++  find_package_handle_standard_args(LAPACK DEFAULT_MSG LAPACK_LIBRARIES)
++  mark_as_advanced(LAPACK_LIBRARIES)
++else(PC_LAPACK_FOUND)
++message(STATUS "No PkgConfig configuration for LAPACK found; starting more extensive search.")
++
+ set(_lapack_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_FIND_LIBRARY_SUFFIXES})
+ 
+ get_property(_LANGUAGES_ GLOBAL PROPERTY ENABLED_LANGUAGES)
+@@ -305,3 +329,5 @@
+ endif(BLA_F95)
+ 
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ${_lapack_ORIG_CMAKE_FIND_LIBRARY_SUFFIXES})
++
++endif(PC_LAPACK_FOUND)

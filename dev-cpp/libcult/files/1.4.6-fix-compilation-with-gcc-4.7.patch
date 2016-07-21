@@ -1,0 +1,57 @@
+From 2ef8e0426baad35a3438f9497005c3e3391e23f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tiziano=20M=C3=BCller?= <tm@dev-zero.ch>
+Date: Fri, 1 Jun 2012 10:12:33 +0200
+Subject: [PATCH 2/2] fix compilation with gcc-4.7
+
+---
+ cult/mm/evptr.hxx |    4 ++--
+ cult/mm/shptr.hxx |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cult/mm/evptr.hxx b/cult/mm/evptr.hxx
+index 18f232c..ed0bd93 100644
+--- a/cult/mm/evptr.hxx
++++ b/cult/mm/evptr.hxx
+@@ -70,7 +70,7 @@ namespace Cult
+       Evptr&
+       operator= (Evptr const& ep)
+       {
+-        assign (ep.cp_ ? ep.cp_ : ep.p_, ep.c_);
++        this->assign (ep.cp_ ? ep.cp_ : ep.p_, ep.c_);
+ 
+         return *this;
+       }
+@@ -79,7 +79,7 @@ namespace Cult
+       Evptr&
+       operator= (Evptr<Y> const& ep)
+       {
+-        assign (ep.cp_ ? ep.cp_ : ep.p_, ep.c_);
++        this->assign (ep.cp_ ? ep.cp_ : ep.p_, ep.c_);
+ 
+         return *this;
+       }
+diff --git a/cult/mm/shptr.hxx b/cult/mm/shptr.hxx
+index a5e1257..6630b1c 100644
+--- a/cult/mm/shptr.hxx
++++ b/cult/mm/shptr.hxx
+@@ -45,7 +45,7 @@ namespace Cult
+       Shptr&
+       operator= (Shptr const& ap)
+       {
+-        assign (ap);
++        this->assign (ap);
+         return *this;
+       }
+ 
+@@ -53,7 +53,7 @@ namespace Cult
+       Shptr&
+       operator= (Shptr<Y> const& ap)
+       {
+-        assign (ap);
++        this->assign (ap);
+         return *this;
+       }
+ 
+-- 
+1.7.8.5
+

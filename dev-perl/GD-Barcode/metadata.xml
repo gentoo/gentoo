@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GD-Barcode</remote-id>
+    <remote-id type="cpan-module">GD::Barcode</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::COOP2of5</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::Code39</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::EAN13</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::EAN8</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::IATA2of5</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::ITF</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::Industrial2of5</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::Matrix2of5</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::NW7</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::QRcode</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::UPCA</remote-id>
+    <remote-id type="cpan-module">GD::Barcode::UPCE</remote-id>
+  </upstream>
+</pkgmetadata>

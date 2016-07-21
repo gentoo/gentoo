@@ -1,0 +1,47 @@
+http://bugs.gentoo.org/310197
+http://lists.gnu.org/archive/html/bug-bash/2010-03/msg00063.html
+
+fix heredocs handling in `set` output
+
+*** ../bash-4.1-patched/print_cmd.c	2009-09-16 15:32:26.000000000 -0400
+--- print_cmd.c	2010-03-22 21:15:30.000000000 -0400
+***************
+*** 114,117 ****
+--- 114,123 ----
+  #define CHECK_XTRACE_FP	xtrace_fp = (xtrace_fp ? xtrace_fp : stderr)
+  
++ #define PRINT_DEFERRED_HEREDOCS(x) \
++   do { \
++     if (deferred_heredocs) \
++       print_deferred_heredocs (x); \
++   } while (0)
++ 
+  /* Non-zero means the stuff being printed is inside of a function def. */
+  static int inside_function_def;
+***************
+*** 561,571 ****
+  {
+    print_for_command_head (for_command);
+- 
+    cprintf (";");
+    newline ("do\n");
+    indentation += indentation_amount;
+    make_command_string_internal (for_command->action);
+    semicolon ();
+    indentation -= indentation_amount;
+    newline ("done");
+  }
+--- 566,578 ----
+  {
+    print_for_command_head (for_command);
+    cprintf (";");
+    newline ("do\n");
++ 
+    indentation += indentation_amount;
+    make_command_string_internal (for_command->action);
++   PRINT_DEFERRED_HEREDOCS ("");
+    semicolon ();
+    indentation -= indentation_amount;
++ 
+    newline ("done");
+  }

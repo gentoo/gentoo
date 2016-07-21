@@ -1,0 +1,45 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 17d38b4..ca2c1df 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,6 +22,8 @@ version_numbers (
+     PACKAGE_VERSION_PATCH
+ )
+ 
++set (PACKAGE_SOVERSION "${PACKAGE_VERSION_MAJOR}")
++
+ # ----------------------------------------------------------------------------
+ # options
+ set (GFLAGS_NAMESPACE   "${PACKAGE_NAME}" CACHE STRING "C++ namespace identifier of gflags library.")
+@@ -256,7 +258,9 @@ foreach (TYPE IN ITEMS STATIC SHARED)
+         endif ()
+         set_target_properties (
+           gflags${opts}-${type} PROPERTIES COMPILE_DEFINITIONS "${defines}"
+-                                           OUTPUT_NAME "gflags${opts}"
++                                           OUTPUT_NAME         "gflags${opts}"
++                                           VERSION             "${PACKAGE_VERSION}"
++                                           SOVERSION           "${PACKAGE_SOVERSION}"
+         )
+         if (HAVE_SHLWAPI_H)
+           target_link_libraries (gflags${opts}-${type} shlwapi.lib)
+@@ -280,9 +284,18 @@ if (OS_WINDOWS)
+   set (CONFIG_INSTALL_DIR  CMake)
+ else ()
+   set (RUNTIME_INSTALL_DIR bin)
+-  set (LIBRARY_INSTALL_DIR lib)
++  # The LIB_INSTALL_DIR and LIB_SUFFIX variables are used by the Fedora
++  # package maintainers. Also package maintainers of other distribution
++  # packages need to be able to specify the name of the library directory.
++  if (NOT LIB_INSTALL_DIR)
++    set (LIB_INSTALL_DIR "lib${LIB_SUFFIX}")
++  endif ()
++  set (LIBRARY_INSTALL_DIR "${LIB_INSTALL_DIR}"
++    CACHE PATH "Directory of installed libraries, e.g., \"lib64\""
++  )
++  mark_as_advanced (LIBRARY_INSTALL_DIR)
+   set (INCLUDE_INSTALL_DIR include)
+-  set (CONFIG_INSTALL_DIR  lib/cmake/${PACKAGE_NAME})
++  set (CONFIG_INSTALL_DIR  ${LIBRARY_INSTALL_DIR}/cmake/${PACKAGE_NAME})
+ endif ()
+ 
+ file (RELATIVE_PATH INSTALL_PREFIX_REL2CONFIG_DIR "${CMAKE_INSTALL_PREFIX}/${CONFIG_INSTALL_DIR}" "${CMAKE_INSTALL_PREFIX}")

@@ -1,0 +1,500 @@
+Fix errors caused by -Wformat -Werror=format-security
+https://bugs.gentoo.org/show_bug.cgi?id=542132
+
+--- tgif-QPL-4.2.5/arc.c
++++ tgif-QPL-4.2.5/arc.c
+@@ -2041,7 +2041,7 @@
+    }
+ 
+    if (dir == ARC_CCW && angle2 < 0) {
+-      sprintf(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
+       if (PRTGIF) {
+          fprintf(stderr, "%s\n", gszMsgBox);
+       } else {
+@@ -2050,7 +2050,7 @@
+       SetFileModified(TRUE);
+       dir = ARC_CW;
+    } else if (dir == ARC_CW && angle2 > 0) {
+-      sprintf(gszMsgBox, TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WARN_INCONSIST_ARC_DIR));
+       if (PRTGIF) {
+          fprintf(stderr, "%s\n", gszMsgBox);
+       } else {
+--- tgif-QPL-4.2.5/auxtext.c
++++ tgif-QPL-4.2.5/auxtext.c
+@@ -113,7 +113,7 @@
+    if (canvasFontDoubleByte) {
+       sprintf(gszMsgBox, TgLoadString(STID_INPUT_OCTAL_STR), "\\244\\244");
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_INPUT_STR));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_INPUT_STR));
+    }
+    Dialog(gszMsgBox, TgLoadCachedString(CSTID_DLG_ACCEPT_CANCEL), szSpec);
+    UtilTrimBlanks(szSpec);
+--- tgif-QPL-4.2.5/cutpaste.c
++++ tgif-QPL-4.2.5/cutpaste.c
+@@ -200,7 +200,7 @@
+          lastKeyOrBtnEvInfo.time);
+    if (XGetSelectionOwner(mainDisplay, XA_PRIMARY) != mainWindow) {
+       setselowner_failed = TRUE;
+-      sprintf(gszMsgBox, TgLoadString(STID_CANT_ACQUIRE_X_SELECTION));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_CANT_ACQUIRE_X_SELECTION));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+    } else {
+       startSelectionOwnershipTimeValid = TRUE;
+@@ -349,10 +349,10 @@
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+    } else {
+       if (!WriteBufToCutBuffer(cut_buffer, stat.st_size, FALSE, FALSE, NULL)) {
+-         sprintf(gszMsgBox, TgLoadString(STID_COPY_FAILED_OBJ_MAYBE_TOO_BIG));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_COPY_FAILED_OBJ_MAYBE_TOO_BIG));
+          MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       } else {
+-         sprintf(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_COPY_BUFFER_UPDATED));
+          Msg(gszMsgBox);
+       }
+    }
+--- tgif-QPL-4.2.5/drawing.c
++++ tgif-QPL-4.2.5/drawing.c
+@@ -3339,7 +3339,7 @@
+ 
+    SaveStatusStrings();
+    if (*attr_ptr->attr_name.s == '\0') {
+-      sprintf(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
++      sprintf(title, "%s", TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
+       sprintf(cmd, gszEditorCmd, title, tfi.tmp_fname);
+       sprintf(gszMsgBox, TgLoadString(STID_EDIT_UNNAME_ATTR_WITH_CMD), cmd);
+    } else {
+@@ -3460,7 +3460,7 @@
+    }
+    SaveStatusStrings();
+    if (*attr_ptr->attr_name.s == '\0') {
+-      sprintf(title, TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
++      sprintf(title, "%s", TgLoadString(STID_EDIT_UNNAME_ATTR_DOTS));
+       sprintf(cmd, gszEditorCmd, title, tfi.tmp_fname);
+       sprintf(gszMsgBox, TgLoadString(STID_EDIT_UNNAME_ATTR_WITH_CMD), cmd);
+    } else {
+--- tgif-QPL-4.2.5/edit.c
++++ tgif-QPL-4.2.5/edit.c
+@@ -1138,7 +1138,7 @@
+             INFO_MB);
+       return;
+    }
+-   sprintf(gszMsgBox, TgLoadString(STID_VERTEX_AT_3_OCLOCK_YNC));
++   sprintf(gszMsgBox, "%s", TgLoadString(STID_VERTEX_AT_3_OCLOCK_YNC));
+    if ((vertex_at_right=MsgBox(gszMsgBox, TOOL_NAME, YNC_MB)) ==
+          MB_ID_CANCEL) {
+       return;
+@@ -6104,7 +6104,7 @@
+       return;
+    }
+    if (CountObjectWithShadow() == 0) {
+-      sprintf(gszMsgBox, TgLoadString(STID_NO_OBJ_SHADOW_FOUND));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_NO_OBJ_SHADOW_FOUND));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       return;
+    }
+--- tgif-QPL-4.2.5/eps.c
++++ tgif-QPL-4.2.5/eps.c
+@@ -670,7 +670,7 @@
+          }
+          fclose(xbm_fp);
+          if (writeFileFailed) {
+-            fprintf(stderr, TgLoadString(STID_FAIL_TO_WRITE_TO_STDOUT));
++            fprintf(stderr, "%s", TgLoadString(STID_FAIL_TO_WRITE_TO_STDOUT));
+          }
+          unlink(xbm_fname);
+          *xbm_fname = '\0';
+--- tgif-QPL-4.2.5/exec.c
++++ tgif-QPL-4.2.5/exec.c
+@@ -1753,7 +1753,7 @@
+    if (ESCPressed() || (check_any_button && XCheckMaskEvent(mainDisplay,
+          ButtonPressMask | KeyPressMask, &ev)) || CheckInterrupt(TRUE)) {
+       if (orig_cmd == NULL) {
+-         sprintf(gszMsgBox, TgLoadString(STID_USER_INTR));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_USER_INTR));
+       } else {
+          sprintf(gszMsgBox, TgLoadString(STID_FUNC_USER_INTR), orig_cmd);
+       }
+--- tgif-QPL-4.2.5/file.c
++++ tgif-QPL-4.2.5/file.c
+@@ -4376,7 +4376,7 @@
+          sprintf(gszMsgBox, TgLoadString(STID_FILE_VER_ABORT_IMPORT),
+                fileVersion, TOOL_NAME, homePageURL);
+       } else {
+-         sprintf(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_IMPORT));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_FILE_CORRUPTED_ABORT_IMPORT));
+       }
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       SetDefaultCursor(mainWindow);
+@@ -4862,7 +4862,7 @@
+          sprintf(gszMsgBox, TgLoadString(STID_FILE_VER_ABORT_OPEN),
+                fileVersion, TOOL_NAME, homePageURL);
+       } else {
+-         sprintf(gszMsgBox, TgLoadString(STID_FILE_CORRUPTED_ABORT_OPEN));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_FILE_CORRUPTED_ABORT_OPEN));
+       }
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       DrawPaperBoundary(drawWindow);
+@@ -6609,7 +6609,7 @@
+          whereToPrint == HTML_FILE || whereToPrint == PNG_FILE ||
+          whereToPrint == JPEG_FILE || whereToPrint == PPM_FILE) {
+       if (topObj == NULL) {
+-         sprintf(gszMsgBox, TgLoadString(STID_NO_OBJ_TO_EXPORT));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_NO_OBJ_TO_EXPORT));
+          if (PRTGIF) {
+             fprintf(stderr, "%s\n", gszMsgBox);
+          } else {
+@@ -7646,7 +7646,7 @@
+          SetOutputFileName(ps_file, TEXT_FILE_EXT, NULL, &FileName);
+       } else {
+          if (!curFileDefined) {
+-            sprintf(gszMsgBox, TgLoadString(STID_NO_CUR_FILE_CANNOT_GEN_TEXT));
++            sprintf(gszMsgBox, "%s", TgLoadString(STID_NO_CUR_FILE_CANNOT_GEN_TEXT));
+             MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+             unlink(tmpFile);
+             return FALSE;
+@@ -8675,7 +8675,7 @@
+       }
+       sprintf(file_name, "%s%c%s", path, DIR_SEP, name);
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_SELECT_FILE_AS_TEMPLATE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_SELECT_FILE_AS_TEMPLATE));
+       if (SelectFileNameToImport(gszMsgBox, OBJ_FILE_EXT, file_name) ==
+             INVALID) {
+          return;
+--- tgif-QPL-4.2.5/grid.c
++++ tgif-QPL-4.2.5/grid.c
+@@ -358,7 +358,7 @@
+       sprintf(gszMsgBox, TgLoadString(STID_RIGHT_MARGIN_IS), buf);
+       Msg(gszMsgBox);
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_RIGHT_MARGIN_DISABLED));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_RIGHT_MARGIN_DISABLED));
+       Msg(gszMsgBox);
+    }
+ }
+--- tgif-QPL-4.2.5/imgproc.c
++++ tgif-QPL-4.2.5/imgproc.c
+@@ -9102,7 +9102,7 @@
+             }
+          }
+          if (!found) {
+-            snprintf(gszMsgBox, sizeof(gszMsgBox), TgLoadString(STID_CANNOT_FIND_GOOD_TRANSPIX));
++            snprintf(gszMsgBox, sizeof(gszMsgBox), "%s", TgLoadString(STID_CANNOT_FIND_GOOD_TRANSPIX));
+             MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+             return FALSE;
+          }
+@@ -9753,7 +9753,7 @@
+             fillReplaceBlueThresh);
+       Msg(gszMsgBox);
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_FLOOD_REPLACE_DISABLED));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_FLOOD_REPLACE_DISABLED));
+       Msg(gszMsgBox);
+    }
+ }
+--- tgif-QPL-4.2.5/import.c
++++ tgif-QPL-4.2.5/import.c
+@@ -2674,7 +2674,7 @@
+    memset(&ii, 0, sizeof(struct ImportInfoRec));
+ 
+    /* pick an animated GIF file */
+-   sprintf(szTop, TgLoadString(STID_SEL_ANIM_GIF_FILE_TO_IMPORT));
++   sprintf(szTop, "%s", TgLoadString(STID_SEL_ANIM_GIF_FILE_TO_IMPORT));
+    importingFile = TRUE;
+    *gif_fname = *tmp_fname = '\0';
+    if (importFromLibrary) {
+--- tgif-QPL-4.2.5/page.c
++++ tgif-QPL-4.2.5/page.c
+@@ -1583,7 +1583,7 @@
+    if (spi.num_pages_specified == lastPageNum) {
+       MsgBox(TgLoadString(STID_CANT_DEL_ALL_PAGES), TOOL_NAME, INFO_MB);
+    } else if (spi.num_pages_specified > 0) {
+-      sprintf(gszMsgBox, TgLoadString(spi.num_pages_specified > 1 ?
++      sprintf(gszMsgBox, "%s", TgLoadString(spi.num_pages_specified > 1 ?
+             STID_DELETE_A_PAGE_CAUSE_FLUSH :
+             STID_DELETE_PAGES_PAGE_CAUSE_FLUSH));
+       if (firstCmd == NULL || OkToFlushUndoBuffer(gszMsgBox)) {
+--- tgif-QPL-4.2.5/pattern.c
++++ tgif-QPL-4.2.5/pattern.c
+@@ -1738,16 +1738,16 @@
+    *gszMsgBox = '\0';
+    switch (curSpline) {
+    case LT_STRAIGHT:
+-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRAIGHT));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_LINE_TYPE_IS_STRAIGHT));
+       break;
+    case LT_SPLINE:
+-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_SPLINE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_LINE_TYPE_IS_SPLINE));
+       break;
+    case LT_INTSPLINE:
+-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_INTSPLINE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_LINE_TYPE_IS_INTSPLINE));
+       break;
+    case LT_STRUCT_SPLINE:
+-      sprintf(gszMsgBox, TgLoadString(STID_LINE_TYPE_IS_STRUCT_SPLINE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_LINE_TYPE_IS_STRUCT_SPLINE));
+       break;
+    }
+    Msg(gszMsgBox);
+@@ -2290,7 +2290,7 @@
+       item_info->menu_str = (char*)(Pixmap*)(&lineDashPixmap[i]);
+       item_info->shortcut_str = NULL;
+       if (i == 0) {
+-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_NO_DASH));
++         sprintf(gszMsgBox, "%s", TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_NO_DASH));
+       } else {
+          sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_DASH_PAT_PAT_NUM),
+                i);
+@@ -2507,13 +2507,13 @@
+       item_info->shortcut_str = NULL;
+       switch (i) {
+       case NONEPAT:
+-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_NONE));
++         sprintf(gszMsgBox, "%s", TgLoadCachedString(CSTID_SET_PEN_TO_NONE));
+          break;
+       case SOLIDPAT:
+-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_SOLID));
++         sprintf(gszMsgBox, "%s", TgLoadCachedString(CSTID_SET_PEN_TO_SOLID));
+          break;
+       case BACKPAT:
+-         sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_BACKGROUND));
++         sprintf(gszMsgBox, "%s", TgLoadCachedString(CSTID_SET_PEN_TO_BACKGROUND));
+          break;
+       default:
+          sprintf(gszMsgBox, TgLoadCachedString(CSTID_SET_PEN_TO_PAT_NUM), i);
+--- tgif-QPL-4.2.5/poly.c
++++ tgif-QPL-4.2.5/poly.c
+@@ -5506,7 +5506,7 @@
+       smooth[0] = smooth[num_pts-1] = FALSE;
+       SetFileModified(TRUE);
+ 
+-      sprintf(gszMsgBox, TgLoadCachedString(CSTID_BAD_SMOOTHHINGE_POLY_FIXED));
++      sprintf(gszMsgBox, "%s", TgLoadCachedString(CSTID_BAD_SMOOTHHINGE_POLY_FIXED));
+       if (PRTGIF) {
+          fprintf(stderr, "%s\n", gszMsgBox);
+       } else {
+--- tgif-QPL-4.2.5/scroll.c
++++ tgif-QPL-4.2.5/scroll.c
+@@ -1559,13 +1559,13 @@
+ 
+    switch (smoothScrollingCanvas) {
+    case SMOOTH_SCROLLING:
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_SMOOTH_SCROLL));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_UPD_WIN_SMOOTH_SCROLL));
+       break;
+    case JUMP_SCROLLING:
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_UPD_WIN_JUMP_SCROLL));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_UPD_WIN_JUMP_SCROLL));
+       break;
+    case NO_UPDATE_SCROLLING:
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_UPD_WIN_SCROLL));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_NOT_UPD_WIN_SCROLL));
+       break;
+    }
+    Msg(gszMsgBox);
+--- tgif-QPL-4.2.5/shape.c
++++ tgif-QPL-4.2.5/shape.c
+@@ -1111,7 +1111,7 @@
+ 
+    if ((objFill == NONEPAT || (objFill == BACKPAT && transPat)) &&
+          (shapeShadowDx != 0 || shapeShadowDy != 0)) {
+-      sprintf(gszMsgBox, TgLoadString(objFill==NONEPAT ?
++      sprintf(gszMsgBox, "%s", TgLoadString(objFill==NONEPAT ?
+             STID_CREATE_SHADOW_SHAPE_NO_FILL :
+             STID_CREATE_SHADOW_SHAPE_TRAN_FILL));
+       switch (MsgBox(gszMsgBox, TOOL_NAME, YNC_MB)) {
+--- tgif-QPL-4.2.5/special.c
++++ tgif-QPL-4.2.5/special.c
+@@ -1292,15 +1292,15 @@
+    if (*existing_signal_name == '\0') {
+       if (signal_name_diff) {
+          /* conflicting signal names */
+-         sprintf(gszMsgBox, TgLoadString(STID_CONFLICT_SIG_NAME_ENT_NEW));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_CONFLICT_SIG_NAME_ENT_NEW));
+       } else {
+          /* all ports have no signal names */
+-         sprintf(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_PLS_ENT_SIG_NAME));
+       }
+    } else {
+       UtilStrCpyN(new_signal_name, sizeof(new_signal_name),
+             existing_signal_name);
+-      sprintf(gszMsgBox, TgLoadString(STID_PLS_ENT_SIG_NAME));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_PLS_ENT_SIG_NAME));
+    }
+    if (!(*new_signal_name != '\0' && already_has_broadcast_signal_name)) {
+       UtilTrimBlanks(new_signal_name);
+@@ -3090,7 +3090,7 @@
+             }
+          }
+          if (ok) {
+-            sprintf(&buf[cur_len], gszMsgBox);
++            sprintf(&buf[cur_len], "%s", gszMsgBox);
+             cur_len += len;
+          }
+       }
+@@ -3127,7 +3127,7 @@
+ void ToggleShowWireSignalName()
+ {
+    showWireSignalName = !showWireSignalName;
+-   sprintf(gszMsgBox, TgLoadString(showWireSignalName ?
++   sprintf(gszMsgBox, "%s", TgLoadString(showWireSignalName ?
+          STID_WILL_SHOW_WIRE_SIGNAL_NAME : STID_WILL_HIDE_WIRE_SIGNAL_NAME));
+    Msg(gszMsgBox);
+ }
+--- tgif-QPL-4.2.5/stream.c
++++ tgif-QPL-4.2.5/stream.c
+@@ -669,7 +669,7 @@
+       *prev_agent = '\0';
+       GetUserAgent(prev_agent, sizeof(prev_agent));
+       if (*prev_agent == '\0') {
+-         sprintf(gszMsgBox, TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP));
+       } else {
+          sprintf(gszMsgBox, TgLoadString(STID_ENTER_USERAGENT_FOR_HTTP_CUR),
+                prev_agent);
+@@ -685,7 +685,7 @@
+    *prev_agent = '\0';
+    GetUserAgent(prev_agent, sizeof(prev_agent));
+    if (*prev_agent == '\0') {
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_DEF_USERAGENT_HTTP));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_USE_DEF_USERAGENT_HTTP));
+    } else {
+       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_NAMED_USERAGENT_HTTP),
+             prev_agent);
+@@ -708,7 +708,7 @@
+       if (len > 0 && spec[len-1] == ')') spec[len-1] = '\0';
+    } else {
+       if (gpszFakedReferer == NULL) {
+-         sprintf(gszMsgBox, TgLoadString(STID_ENTER_REFERRER_FOR_HTTP));
++         sprintf(gszMsgBox, "%s", TgLoadString(STID_ENTER_REFERRER_FOR_HTTP));
+       } else {
+          sprintf(gszMsgBox, TgLoadString(STID_ENTER_REFERRER_FOR_HTTP_CUR),
+                gpszFakedReferer);
+@@ -727,7 +727,7 @@
+    UtilTrimBlanks(spec);
+    HttpFakeReferer(spec);
+    if (gpszFakedReferer == NULL) {
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_REFERRER_HTTP));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_NOT_USE_REFERRER_HTTP));
+    } else {
+       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_NAMED_REFERRER_HTTP),
+             gpszFakedReferer);
+@@ -738,7 +738,7 @@
+ void ToggleKeepAlive()
+ {
+    gnHttpKeepAlive = (!gnHttpKeepAlive);
+-   sprintf(gszMsgBox, TgLoadString(gnHttpKeepAlive ?
++   sprintf(gszMsgBox, "%s", TgLoadString(gnHttpKeepAlive ?
+          STID_WILL_USE_KEEP_ALIVE_HTTP : STID_NOT_WILL_USE_KEEP_ALIVE_HTTP));
+    Msg(gszMsgBox);
+ }
+--- tgif-QPL-4.2.5/text.c
++++ tgif-QPL-4.2.5/text.c
+@@ -3749,9 +3749,9 @@
+          copy_db_utf8_str && (double_byte_font_index != INVALID), NULL);
+ 
+    if (copy_failed) {
+-      sprintf(gszMsgBox, TgLoadString(STID_COPY_FAIL_SEL_STR_MAY_TOO_LNG));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_COPY_FAIL_SEL_STR_MAY_TOO_LNG));
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_COPY_BUFFER_UPDATED));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_COPY_BUFFER_UPDATED));
+    }
+    Msg(gszMsgBox);
+    free(cut_buffer);
+--- tgif-QPL-4.2.5/tgcwdl.c
++++ tgif-QPL-4.2.5/tgcwdl.c
+@@ -1727,7 +1727,7 @@
+ 
+    TidgetSetFocusWindow(None);
+    if (!colorDisplay || mainVisual->class != TrueColor) {
+-      sprintf(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       free(pcwdi);
+       return NULL;
+--- tgif-QPL-4.2.5/tgisdl.c
++++ tgif-QPL-4.2.5/tgisdl.c
+@@ -808,7 +808,7 @@
+ 
+    TidgetSetFocusWindow(None);
+    if (!colorDisplay || mainVisual->class != TrueColor) {
+-      sprintf(gszMsgBox, TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_COLOR_WHEEL_NOT_AVAIL));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       free(pisdi);
+       return NULL;
+--- tgif-QPL-4.2.5/wb.c
++++ tgif-QPL-4.2.5/wb.c
+@@ -20,9 +20,7 @@
+ 
+ #define _INCLUDE_FROM_WB_C_
+ 
+-#if (defined(PTHREAD) || defined(HAVE_LIBPTHREAD))
+ #include <pthread.h>
+-#endif /* (defined(PTHREAD) || defined(HAVE_LIBPTHREAD)) */
+ 
+ #include "tgifdefs.h"
+ #include "cmdids.h"
+@@ -2283,7 +2281,7 @@
+    *content_type = '\0';
+    if (!GetContentInfoFromBuf(buf, content_type, sizeof(content_type),
+          &content_length, &buf_data_start)) {
+-      sprintf(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_FAILED_NO_CONTTYPE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_JOIN_WB_IN_FAILED_NO_CONTTYPE));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+       return;
+    }
+@@ -2512,7 +2510,7 @@
+       gstWBInfo.join_session_in_progress = TRUE;
+    } else {
+       CleanUpWBCmds();
+-      sprintf(gszMsgBox, TgLoadString(STID_JOIN_WB_IN_PROGRESS_FAILED));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_JOIN_WB_IN_PROGRESS_FAILED));
+       MsgBox(gszMsgBox, TOOL_NAME, INFO_MB);
+    }
+    if (need_to_free_buf) UtilFree(buf);
+--- tgif-QPL-4.2.5/xbitmap.c
++++ tgif-QPL-4.2.5/xbitmap.c
+@@ -147,7 +147,7 @@
+    char spec[MAXSTRING<<1];
+ 
+    if (*gszHhtmlExportTemplate == '\0') {
+-      sprintf(gszMsgBox, TgLoadString(STID_ENTER_HTML_TEMPLATE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_ENTER_HTML_TEMPLATE));
+    } else {
+       sprintf(gszMsgBox, TgLoadString(STID_ENTER_HTML_TEMPLATE_CUR_IS),
+             gszHhtmlExportTemplate);
+@@ -172,7 +172,7 @@
+    }
+    UtilStrCpyN(gszHhtmlExportTemplate, sizeof(gszHhtmlExportTemplate), spec);
+    if (*gszHhtmlExportTemplate == '\0') {
+-      sprintf(gszMsgBox, TgLoadString(STID_NO_HTML_TEMPLATE_FILE));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_NO_HTML_TEMPLATE_FILE));
+    } else {
+       sprintf(gszMsgBox, TgLoadString(STID_HTML_TEMPLATE_SET_TO_GIVEN),
+             gszHhtmlExportTemplate);
+@@ -421,7 +421,7 @@
+       sprintf(gszMsgBox, TgLoadString(STID_WILL_USE_GIVE_SMPLE_THRESHOLD),
+             bitmapThresholdStr);
+    } else {
+-      sprintf(gszMsgBox, TgLoadString(STID_WILL_NOT_USE_SIMPLE_THRESHOLD));
++      sprintf(gszMsgBox, "%s", TgLoadString(STID_WILL_NOT_USE_SIMPLE_THRESHOLD));
+    }
+    Msg(gszMsgBox);
+ }
+@@ -3153,7 +3153,7 @@
+       } else if ((attr_ptr=FindFileAttrWithName("title=")) != NULL) {
+          fprintf(map_fp, "%s", attr_ptr->attr_value.s);
+       } else {
+-         fprintf(map_fp, TgLoadCachedString(CSTID_PARANED_UNKNOWN));
++         fprintf(map_fp, "%s", TgLoadCachedString(CSTID_PARANED_UNKNOWN));
+       }
+       break;
+    case TGV_MAP_WIDTH: fprintf(map_fp, "%1d", RbX-LtX); break;

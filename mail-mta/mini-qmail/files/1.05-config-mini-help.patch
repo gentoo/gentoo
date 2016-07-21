@@ -1,0 +1,16 @@
+--- config-mini.sh.orig	2004-05-05 23:24:23.468285864 -0400
++++ config-mini.sh	2004-05-05 23:27:00.622394808 -0400
+@@ -1,7 +1,12 @@
+ 
+ case $# in
+   0|1|2|3|4)
+-    echo 'config-mini: usage: config-mini me defaultdom plusdom idhost qmqpserver ...' 1>&2
++    echo 'usage: config-mini me defaultdom plusdom idhost qmqpserver [more qmqp servers]' 1>&2
++    echo ' me         - copied from the QMQP server'
++    echo ' plusdom    - copied from the QMQP server'
++    echo ' defaultdom - copied from the QMQP server'
++    echo ' idhost     - hostname of QMPQ client'
++    echo ' qmqpserver - list of QMQP servers IP addresses to send mail through'
+     exit 100
+     ;;
+   esac

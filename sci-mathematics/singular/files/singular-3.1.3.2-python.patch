@@ -1,0 +1,45 @@
+--- Singular/pyobject.cc.orig	2011-01-31 15:03:16.000000000 +0100
++++ Singular/pyobject.cc	2011-08-24 17:22:57.000000000 +0200
+@@ -14,7 +14,7 @@
+ 
+ 
+ 
+-
++#include <Python.h>
+ 
+ #include <Singular/mod2.h>
+ 
+@@ -27,7 +27,7 @@
+ 
+ #include <Singular/lists.h>
+ 
+-#include <Python.h>
++
+ #include <iterator>             // std::distance
+ #include <stdio.h>
+ 
+@@ -592,11 +592,12 @@
+   long len = newElts.size();
+   for (long idx = 0; idx < len; ++idx)
+   {
+-    char* name = newElts[idx][0].str();
++    PythonObject current (newElts[idx]);
++    char* name = current.operator[](0).str();
+     if (name && (*name != '\0') && (*name != '_'))
+     {
+       Py_XDECREF(get_current_definition(name));
+-      newElts[idx][1].import_as(name);
++      newElts[idx].operator[](1).import_as(name);
+     }
+ 
+   }
+--- Singular/pyobject_setup.cc.orig	2011-02-10 19:15:30.000000000 +0100
++++ Singular/pyobject_setup.cc		2011-08-24 17:23:55.000000000 +0200
+@@ -12,6 +12,7 @@
+ **/
+ //*****************************************************************************
+ 
++#include <Python.h>
+ #include <Singular/mod2.h>
+ #include <kernel/febase.h>
+ #include "static.h"

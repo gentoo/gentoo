@@ -1,0 +1,14 @@
+diff --git a/tclconfig/tcl.m4 b/tclconfig/tcl.m4
+index ff26a0f..faba464 100644
+--- a/tclconfig/tcl.m4
++++ b/tclconfig/tcl.m4
+@@ -1447,7 +1447,8 @@ dnl AC_CHECK_TOOL(AR, ar)
+ 	    # get rid of the warnings.
+ 	    #CFLAGS_OPTIMIZE="${CFLAGS_OPTIMIZE} -D__NO_STRING_INLINES -D__NO_MATH_INLINES"
+ 
+-	    SHLIB_LD="${CC} -shared"
++	    # TEA specific: use LDFLAGS_DEFAULT instead of LDFLAGS
++	    SHLIB_LD='${CC} -shared ${CFLAGS} ${LDFLAGS_DEFAULT} ${LDFLAGS}'
+ 	    DL_OBJS="tclLoadDl.o"
+ 	    DL_LIBS="-ldl"
+ 	    LDFLAGS="$LDFLAGS -Wl,--export-dynamic"

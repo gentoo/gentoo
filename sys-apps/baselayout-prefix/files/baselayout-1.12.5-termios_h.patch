@@ -1,0 +1,30 @@
+<termios.h> is standard as per SUSv2 already:
+http://pubs.opengroup.org/onlinepubs/007908799/xsh/termios.h.html
+AIX does not provide <sys/termios.h> at all, Linux, Solaris, HP-UX,
+Darwin and Interix have both, redirecting one to the other.
+
+--- src/start-stop-daemon.c.orig	2011-03-28 13:55:36 +0200
++++ src/start-stop-daemon.c	2011-03-28 14:50:47 +0200
+@@ -37,6 +37,9 @@
+ #define NONRETURNING \
+ 	__attribute__((noreturn))
+ 
++#define HAVE_TERMIOS_H
++#undef HAVE_SYS_TERMIOS_H
++
+ #if defined(linux) || (defined(__FreeBSD_kernel__) && defined(__GLIBC__))
+ #  define OSLinux
+ #elif defined(__GNU__)
+@@ -97,7 +123,11 @@
+ #include <grp.h>
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+-#include <sys/termios.h>
++#if defined(HAVE_TERMIOS_H)
++# include <termios.h>
++#elif defined(HAVE_SYS_TERMIOS_H)
++# include <sys/termios.h>
++#endif
+ #include <fcntl.h>
+ #include <limits.h>
+ #include <assert.h>

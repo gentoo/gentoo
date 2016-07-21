@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-ruby category contains libraries and utilities relevant to the
+		Ruby programming language.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-ruby enthält Bibliotheken und Werkzeuge für die
+		Programmiersprache Ruby.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-ruby contiene librerias y utilidades referentes al
+		lenguaje de programación Ruby.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-ruby カテゴリーにはRubyプログラミング言語に関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De categorie dev-ruby bevat bibliotheken en hulpmiddelen voor het gebruik
+		van de programmeertaal Ruby.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-ruby chứa các thư viện và tiện ích liên quan
+		đến ngôn ngữ lập trình Ruby.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-ruby contiene librerie ed utilità per il linguaggio di programmazione Ruby.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-ruby contém bibliotecas e utilitários referentes
+		à linguagem de programação Ruby.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-ruby zawiera biblioteki i narzędzia związane z językiem
+		programowania Ruby.
+	</longdescription>
+</catmetadata>
+

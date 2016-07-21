@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig	2011-11-27 01:27:11.116482600 +0100
++++ CMakeLists.txt	2012-01-29 17:09:54.072342306 +0100
+@@ -160,8 +160,8 @@ if(MINGW)
+     INCLUDE_DIRECTORIES(${FFI_INCLUDE_DIR})
+     INSTALL(FILES ${FFI_LIBRARY_DLL} DESTINATION bin )
+ else(MINGW)
+-    FIND_LIBRARY(FFI_LIBRARY NAMES ffi DOC "Location of the FFI library" PATHS ${LOCAL_PATH})
+-    FIND_PATH(FFI_INCLUDE_DIR ffi.h doc "Location of ffi.h" PATHS ${LOCAL_PATH} /usr/include/ffi /usr/lib64/libffi-3.0.9/include)
++    FIND_LIBRARY(FFI_LIBRARY NAMES ffi DOC "Location of the FFI library" PATHS ${LOCAL_PATH} ${PROJECT_SOURCE_DIR}/dependencies/libffi/build/.libs)
++    FIND_PATH(FFI_INCLUDE_DIR ffi.h doc "Location of ffi.h" PATHS ${LOCAL_PATH} /usr/include/ffi /usr/lib64/libffi-3.0.9/include ${PROJECT_SOURCE_DIR}/dependencies/libffi/build/include /mingw/include/ffi)
+     SET(OPTIONAL_LIBS ${OPTIONAL_LIBS} ${FFI_LIBRARY})
+     INCLUDE_DIRECTORIES(${FFI_INCLUDE_DIR})
+ endif(MINGW)

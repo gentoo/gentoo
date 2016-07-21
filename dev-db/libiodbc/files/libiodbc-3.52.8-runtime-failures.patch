@@ -1,0 +1,56 @@
+diff -u -r iODBC-3.52.8.orig/configure.in iODBC-3.52.8/configure.in
+--- iODBC-3.52.8.orig/configure.in	2012-03-27 05:15:02.000000000 -0500
++++ iODBC-3.52.8/configure.in	2013-01-08 10:31:39.740041040 -0600
+@@ -87,7 +87,7 @@
+ AC_CONFIG_SRCDIR([include/isql.h])
+ AC_CONFIG_AUX_DIR(admin)
+ AC_CONFIG_MACRO_DIR(admin)
+-AM_CONFIG_HEADER(include/config.h)
++AC_CONFIG_HEADER(include/config.h)
+ AM_INIT_AUTOMAKE(AC_PACKAGE_TARNAME, AC_PACKAGE_VERSION)
+ AC_CANONICAL_HOST
+ AM_MAINTAINER_MODE
+diff -u -r iODBC-3.52.8.orig/iodbcadm/gtk/administrator.c iODBC-3.52.8/iodbcadm/gtk/administrator.c
+--- iODBC-3.52.8.orig/iodbcadm/gtk/administrator.c	2012-03-27 05:15:02.000000000 -0500
++++ iODBC-3.52.8/iodbcadm/gtk/administrator.c	2013-01-08 10:29:51.758462953 -0600
+@@ -72,6 +72,13 @@
+  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#ifdef __linux
++# ifndef _GNU_SOURCE
++#  define _GNU_SOURCE  /* make sure dladdr is declared */
++# endif
++# define HAVE_DL_INFO 1
++#endif
++
+ #include <iodbc.h>
+ #include <dlfcn.h>
+ #include <sys/stat.h>
+@@ -82,7 +89,7 @@
+ #include "odbc4.xpm"
+ 
+ 
+-#if !defined(HAVE_DL_INFO)
++#if defined (HAVE_DLADDR) && !defined(HAVE_DL_INFO)
+ typedef struct
+ {
+   const char *dli_fname;	/* File name of defining object.  */
+@@ -90,6 +97,7 @@
+   const char *dli_sname;	/* Name of nearest symbol.  */
+   void *dli_saddr;		/* Exact value of nearest symbol.  */
+ } Dl_info;
++
+ #endif /* HAVE_DL_INFO */
+ 
+ static char *szDriverButtons[] = {
+diff -u -r iODBC-3.52.8.orig/iodbcadm/gtk/gui.h iODBC-3.52.8/iodbcadm/gtk/gui.h
+--- iODBC-3.52.8.orig/iodbcadm/gtk/gui.h	2012-03-27 05:15:02.000000000 -0500
++++ iODBC-3.52.8/iodbcadm/gtk/gui.h	2013-01-08 10:30:48.124240299 -0600
+@@ -219,5 +219,6 @@
+ void addlistofdir_to_optionmenu(GtkWidget* widget, LPCSTR path, TDSNCHOOSER *choose_t);
+ LPSTR create_keyval (HWND wnd, LPCSTR attrs, BOOL *verify_conn);
+ LPSTR create_fgensetup (HWND hwnd, LPCSTR dsn, LPCSTR attrs, BOOL add, BOOL *verify_conn);
++void  create_message (HWND hwnd, LPCSTR dsn, LPCSTR text);
+ 
+ #endif

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Event-ExecFlow</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Event::CondVar</remote-id>
+    <remote-id type="cpan-module">AnyEvent::Impl::Event::Glib</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Callbacks</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Frontend</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Frontend::Term</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Job</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Job::Code</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Job::Command</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Job::Group</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Scheduler</remote-id>
+    <remote-id type="cpan-module">Event::ExecFlow::Scheduler::SimpleMax</remote-id>
+  </upstream>
+</pkgmetadata>

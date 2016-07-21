@@ -1,0 +1,40 @@
+diff -Nadurp ngspice-23.orig//configure.ac ngspice-23/configure.ac
+--- ngspice-23.orig//configure.ac	2011-05-30 12:47:05.000000000 -0600
++++ ngspice-23/configure.ac	2011-07-14 10:47:14.668378976 -0600
+@@ -203,10 +203,10 @@ dnl the above AC_PROG_CC may set CFLAGS
+ if test "$enable_debug" = "no"; then
+ 	if test "x$GCC" = "xyes"; then
+ 		AC_MSG_WARN(Removing debugging option!)
+-		CFLAGS="$ext_CFLAGS -O2 -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wimplicit-function-declaration -Wnested-externs -Wold-style-definition -Wredundant-decls -s"
++		CFLAGS="$ext_CFLAGS -Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wimplicit-function-declaration -Wnested-externs -Wold-style-definition -Wredundant-decls"
+ 	else
+ 		AC_MSG_WARN(Removing debugging option!)
+-		CFLAGS="$ext_CFLAGS -O2"
++		CFLAGS="$ext_CFLAGS"
+ 	fi
+ else
+     AC_DEFINE(NGDEBUG,1,[Compile with debug info])
+diff -Nadurp ngspice-23.orig//src/xspice/icm/makedefs.in ngspice-23/src/xspice/icm/makedefs.in
+--- ngspice-23.orig//src/xspice/icm/makedefs.in	2011-01-25 11:34:11.000000000 -0700
++++ ngspice-23/src/xspice/icm/makedefs.in	2011-07-14 10:58:25.521002437 -0600
+@@ -41,16 +41,16 @@ endif
+ CMPP = $(top_builddir)/src/xspice/cmpp/cmpp
+ 
+ # Flags to use when linking shared library
+-LDFLAGS = -shared
++LDFLAGS += -shared
+ ifeq ($(ISMINGW), 1)
+-  LDFLAGS = -shared @LDFLAGS@
++  LDFLAGS += -shared @LDFLAGS@
+ endif
+ ifeq "$(strip $(uname))" "Darwin"
+-  LDFLAGS = -bundle -flat_namespace -undefined suppress
++  LDFLAGS += -bundle -flat_namespace -undefined suppress
+ endif
+ ifeq "$(strip $(uname))" "SunOS"
+   ifneq "$(CC)" "gcc"
+-    LDFLAGS = -G
++    LDFLAGS += -G
+   endif
+ endif
+ 

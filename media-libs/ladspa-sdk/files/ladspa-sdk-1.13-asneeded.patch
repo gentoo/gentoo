@@ -1,0 +1,15 @@
+Index: ladspa_sdk/src/makefile
+===================================================================
+--- ladspa_sdk.orig/src/makefile
++++ ladspa_sdk/src/makefile
+@@ -36,6 +36,10 @@ MKDIR_P		=	mkdirhier
+ # RULES TO BUILD PLUGINS FROM C OR C++ CODE
+ #
+ 
++../plugins/filter.so:	plugins/filter.c ladspa.h
++	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -o plugins/filter.o -c plugins/filter.c
++	$(LD) $(RAW_LDFLAGS) -o ../plugins/filter.so plugins/filter.o -shared -lm
++
+ ../plugins/%.so:	plugins/%.c ladspa.h
+ 	$(CC) $(CFLAGS) $(INCLUDES) -fPIC -o plugins/$*.o -c plugins/$*.c
+ 	$(LD) $(RAW_LDFLAGS) -o ../plugins/$*.so plugins/$*.o -shared

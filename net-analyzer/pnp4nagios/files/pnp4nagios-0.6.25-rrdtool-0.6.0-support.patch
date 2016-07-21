@@ -1,0 +1,93 @@
+From 0a539e1c7ab03ec015c27e4ad0fe16343a98c269 Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Mon, 25 Apr 2016 12:31:49 +0200
+Subject: [PATCH] Use complete option arguments for compatibility with rrdtool
+ 1.6.0
+
+Since rrdtool switched to optparse, it seems that complete option
+arguments must be used:
+https://github.com/oetiker/rrdtool-1.x/commit/83530d3e43cebc32da157733d35c60bf4bb098da
+---
+ share/pnp/templates.dist/check_dns.php       | 2 +-
+ share/pnp/templates.dist/check_multi.php     | 2 +-
+ share/pnp/templates.dist/check_ping_tick.php | 2 +-
+ share/pnp/templates.dist/check_users.php     | 2 +-
+ share/pnp/templates.dist/default.php         | 6 +++---
+ 5 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/share/pnp/templates.dist/check_dns.php b/share/pnp/templates.dist/check_dns.php
+index b8ab048..dad209a 100644
+--- a/share/pnp/templates.dist/check_dns.php
++++ b/share/pnp/templates.dist/check_dns.php
+@@ -4,7 +4,7 @@
+ # Template for check_dns
+ #
+ 
+-$opt[1] = "--lower=$MIN[1] --vertical-label $UNIT[1]  --title \"DNS Response Time\" ";
++$opt[1] = "--lower-limit=$MIN[1] --vertical-label $UNIT[1]  --title \"DNS Response Time\" ";
+ 
+ 
+ $def[1] =  "DEF:var1=$RRDFILE[1]:$DS[1]:AVERAGE " ;
+diff --git a/share/pnp/templates.dist/check_multi.php b/share/pnp/templates.dist/check_multi.php
+index ba6bcd1..cd0794a 100644
+--- a/share/pnp/templates.dist/check_multi.php
++++ b/share/pnp/templates.dist/check_multi.php
+@@ -4,7 +4,7 @@
+ # Template for check_multi
+ # 
+ 
+-$opt[1] = "--lower=$MIN[1] --vertical-label num  --title \"Number of Checks\" ";
++$opt[1] = "--lower-limit=$MIN[1] --vertical-label num  --title \"Number of Checks\" ";
+ $ds_name[1] = "Executed Plugins";
+ 
+ $def[1] =  "DEF:var1=$RRDFILE[1]:$DS[1]:AVERAGE " ;
+diff --git a/share/pnp/templates.dist/check_ping_tick.php b/share/pnp/templates.dist/check_ping_tick.php
+index 865479f..f191049 100644
+--- a/share/pnp/templates.dist/check_ping_tick.php
++++ b/share/pnp/templates.dist/check_ping_tick.php
+@@ -6,7 +6,7 @@
+ # RTA
+ #
+ $ds_name[1] = "Round Trip Times";
+-$opt[1]  = "--lower=0 --vertical-label \"RTA\" --title \"Ping times\" ";
++$opt[1]  = "--lower-limit=0 --vertical-label \"RTA\" --title \"Ping times\" ";
+ $opt[1] .=  rrd::darkteint();
+ $def[1]  =  rrd::def("var1", $RRDFILE[1], $DS[1], "AVERAGE") ;
+ $def[1] .=  rrd::ticker("var1", $WARN[1], $CRIT[1]) ;
+diff --git a/share/pnp/templates.dist/check_users.php b/share/pnp/templates.dist/check_users.php
+index 9fe878d..c66fc01 100644
+--- a/share/pnp/templates.dist/check_users.php
++++ b/share/pnp/templates.dist/check_users.php
+@@ -4,7 +4,7 @@
+ # Template for check_users
+ #
+ 
+-$opt[1] = "--lower=$MIN[1] --vertical-label \"Users\"  --title \"Users\" ";
++$opt[1] = "--lower-limit=$MIN[1] --vertical-label \"Users\"  --title \"Users\" ";
+ 
+ 
+ $def[1] =  "DEF:var1=$RRDFILE[1]:$DS[1]:MAX " ;
+diff --git a/share/pnp/templates.dist/default.php b/share/pnp/templates.dist/default.php
+index 6fdf38c..823ee6a 100644
+--- a/share/pnp/templates.dist/default.php
++++ b/share/pnp/templates.dist/default.php
+@@ -47,7 +47,7 @@
+ 		$crit_min = $VAL['CRIT_MIN'];
+ 	}
+ 	if ( $VAL['MIN'] != "" && is_numeric($VAL['MIN']) ) {
+-		$lower = " --lower=" . $VAL['MIN'];
++		$lower = " --lower-limit=" . $VAL['MIN'];
+ 		$minimum = $VAL['MIN'];
+ 	}
+ 	if ( $VAL['MAX'] != "" && is_numeric($VAL['MAX']) ) {
+@@ -55,8 +55,8 @@
+ 	}
+ 	if ($VAL['UNIT'] == "%%") {
+ 		$vlabel = "%";
+-		$upper = " --upper=101 ";
+-		$lower = " --lower=0 ";
++		$upper = " --upper-limit=101 ";
++		$lower = " --lower-limit=0 ";
+ 	}
+ 	else {
+ 		$vlabel = $VAL['UNIT'];

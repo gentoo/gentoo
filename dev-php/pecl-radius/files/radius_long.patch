@@ -1,0 +1,15 @@
+Gentoo bug: 460836
+Upstream bug: 60885
+
+diff -u php-radius-1.2.5/radius-1.2.5/radius.c php-radius-1.2.5/radius-1.2.5/radius.c
+--- php-radius-1.2.5/radius-1.2.5/radius.c
++++ php-radius-1.2.5/radius-1.2.5/radius.c
+@@ -265,7 +265,7 @@
+ /* {{{ proto bool radius_create_request(desc, code) */
+ PHP_FUNCTION(radius_create_request)
+ {
+-	int code;
++	long code;
+ 	radius_descriptor *raddesc;
+ 	zval *z_radh;
+ 

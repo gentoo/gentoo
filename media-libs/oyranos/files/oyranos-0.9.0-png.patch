@@ -1,0 +1,31 @@
+from http://www.oyranos.org/scm?p=oyranos.git;a=commitdiff;h=c39976bf5de8a70f71cef2ecafae13d17e811857
+--- a/modules/oyranos_cmm_oPNG.c
++++ b/modules/oyranos_cmm_oPNG.c
+@@ -816,7 +816,8 @@ oyImage_s *  oyImage_FromPNG         ( const char        * filename,
+        spp = 2; break;
+   case PNG_COLOR_TYPE_PALETTE:
+        png_set_palette_to_rgb( png_ptr );
+-       spp = 3; break;
++       /* expect alpha */
++       spp = 4; break;
+   case PNG_COLOR_TYPE_RGB:
+        spp = 3; break;
+   case PNG_COLOR_TYPE_RGB_ALPHA:
+@@ -884,10 +885,15 @@ oyImage_s *  oyImage_FromPNG         ( const char        * filename,
+                                         oyToDataType_m(pixel_layout),
+                                         0 );
+     png_byte ** array2d = (png_byte**) oyArray2d_GetData( a );
+-    int i;
++    int i,y;
+ 
++    /* both variants of libpng access appear equal */
++    if(1)
++      png_read_image( png_ptr, array2d );
++    else
+     for( i = 0; i < num_passes; ++i )
+-      png_read_rows( png_ptr, array2d, NULL, height );
++      for( y = 0; y < height; ++y )
++        png_read_row( png_ptr, array2d[y], NULL );
+ 
+     oyImage_SetData ( image_in, (oyStruct_s**) &a, 0,0,0,0,0,0 );
+   }

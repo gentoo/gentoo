@@ -1,0 +1,20 @@
+ burrow/canvas/gw/Makefile.am |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/burrow/canvas/gw/Makefile.am b/burrow/canvas/gw/Makefile.am
+index da50ee3..2ed89bc 100644
+--- a/burrow/canvas/gw/Makefile.am
++++ b/burrow/canvas/gw/Makefile.am
+@@ -31,9 +31,11 @@ H2DEF=@top_srcdir@/utils/h2def.py
+ canvas.defs: $(HEADERS_1)
+ 	$(H2DEF) --all $(HEADERS_1) > $@
+ 
+-canvas-gw.c canvas-gw.h canvas-gw.scm: canvas.defs
++canvas-gw.c canvas-gw.h: canvas.defs
+ 	GUILE_LOAD_PATH=@srcdir@:@builddir@:@GUILE_GNOME_MODULE_DIR@:@G_WRAP_MODULE_DIR@:$$GUILE_LOAD_PATH $(GUILE) -s @srcdir@/run-g-wrap.scm
+ 
++BUILT_SOURCES=canvas-gw.c canvas-gw.h canvas.defs
++
+ INCLUDES=@GTK_CFLAGS@ @G_WRAP_CFLAGS@ @GUILE_GNOME_CFLAGS@ @GUILE_CAIRO_CFLAGS@ @GUILE_CFLAGS@ -I$(headers_dir) -I@top_srcdir@
+ 
+ moduledir=$(datadir)/guile/burrow

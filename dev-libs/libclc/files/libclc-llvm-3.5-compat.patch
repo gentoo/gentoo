@@ -1,0 +1,83 @@
+diff -urpN libclc-0.0.1_pre20140101.orig/utils/prepare-builtins.cpp libclc-0.0.1_pre20140101/utils/prepare-builtins.cpp
+--- libclc-0.0.1_pre20140101.orig/utils/prepare-builtins.cpp	2014-09-22 13:08:50.236934929 -0700
++++ libclc-0.0.1_pre20140101/utils/prepare-builtins.cpp	2014-09-22 13:12:43.164665140 -0700
+@@ -1,4 +1,3 @@
+-#include "llvm/ADT/OwningPtr.h"
+ #include "llvm/Bitcode/ReaderWriter.h"
+ #include "llvm/IR/Function.h"
+ #include "llvm/IR/GlobalVariable.h"
+@@ -7,11 +6,28 @@
+ #include "llvm/Support/CommandLine.h"
+ #include "llvm/Support/ManagedStatic.h"
+ #include "llvm/Support/MemoryBuffer.h"
++#include "llvm/Support/FileSystem.h"
+ #include "llvm/Support/raw_ostream.h"
+-#include "llvm/Support/system_error.h"
++#include "llvm/Support/ErrorOr.h"
+ #include "llvm/Support/ToolOutputFile.h"
+ #include "llvm/Config/config.h"
+ 
++#define LLVM_350_AND_NEWER \
++  (LLVM_VERSION_MAJOR > 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 5))
++
++#if LLVM_350_AND_NEWER
++#include <system_error>
++
++#define ERROR_CODE std::error_code
++#define UNIQUE_PTR std::unique_ptr
++#else
++#include "llvm/ADT/OwningPtr.h"
++#include "llvm/Support/system_error.h"
++
++#define ERROR_CODE error_code
++#define UNIQUE_PTR OwningPtr
++#endif
++
+ using namespace llvm;
+ 
+ static cl::opt<std::string>
+@@ -31,11 +47,26 @@ int main(int argc, char **argv) {
+   std::auto_ptr<Module> M;
+ 
+   {
+-    OwningPtr<MemoryBuffer> BufferPtr;
+-    if (error_code ec = MemoryBuffer::getFileOrSTDIN(InputFilename, BufferPtr))
++#if LLVM_350_AND_NEWER
++    ErrorOr<std::unique_ptr<MemoryBuffer>> BufferOrErr =
++      MemoryBuffer::getFile(InputFilename);
++    std::unique_ptr<MemoryBuffer> &BufferPtr = BufferOrErr.get();
++    if (std::error_code  ec = BufferOrErr.getError())
++#else
++    UNIQUE_PTR<MemoryBuffer> BufferPtr;
++    if (ERROR_CODE ec = MemoryBuffer::getFileOrSTDIN(InputFilename, BufferPtr))
++#endif
+       ErrorMessage = ec.message();
+-    else
++    else {
++#if LLVM_VERSION_MAJOR > 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR > 4)
++      ErrorOr<Module *> ModuleOrErr = parseBitcodeFile(BufferPtr.get(), Context);
++      if (ERROR_CODE ec = ModuleOrErr.getError())
++	ErrorMessage = ec.message();
++      M.reset(ModuleOrErr.get());
++#else
+       M.reset(ParseBitcodeFile(BufferPtr.get(), Context, &ErrorMessage));
++#endif
++    }
+   }
+ 
+   if (M.get() == 0) {
+@@ -65,10 +95,12 @@ int main(int argc, char **argv) {
+   }
+ 
+   std::string ErrorInfo;
+-  OwningPtr<tool_output_file> Out
++  UNIQUE_PTR<tool_output_file> Out
+   (new tool_output_file(OutputFilename.c_str(), ErrorInfo,
+-#if LLVM_VERSION_MAJOR > 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR > 3)
++#if (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR == 4)
+                         sys::fs::F_Binary));
++#elif LLVM_VERSION_MAJOR > 3 || (LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 5)
++                        sys::fs::F_None));
+ #else
+                         raw_fd_ostream::F_Binary));
+ #endif

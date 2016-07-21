@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  METIS is a set of serial programs for partitioning graphs,
+  partitioning finite element meshes, and producing fill reducing
+  orderings for sparse matrices. The algorithms implemented in METIS are
+  based on the multilevel recursive-bisection, multilevel k-way, and
+  multi-constraint partitioning schemes.
+</longdescription>
+</pkgmetadata>

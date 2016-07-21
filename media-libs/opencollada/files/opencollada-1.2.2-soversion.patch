@@ -1,0 +1,15 @@
+Source:
+https://build.opensuse.org/package/show/graphics/openCOLLADA
+
+diff -Naur OpenCOLLADA.orig/CMakeLists.txt OpenCOLLADA/CMakeLists.txt
+--- OpenCOLLADA.orig/CMakeLists.txt	2013-08-10 02:00:51.000000000 -0500
++++ OpenCOLLADA/CMakeLists.txt	2013-08-28 10:34:50.122102989 -0500
+@@ -77,7 +77,7 @@
+ 			message(${name} " WARNING: Shared library support implemented for UNIX-like OS only")
+ 		endif ()
+ 		add_library(${name}_shared SHARED ${sources})
+-		set_target_properties(${name}_shared PROPERTIES OUTPUT_NAME ${name})
++		set_target_properties(${name}_shared PROPERTIES OUTPUT_NAME ${name} SOVERSION ${soversion})
+ 		foreach(target_lib ${target_libs})
+ 			if(TARGET ${target_lib}_shared)
+ 				target_link_libraries(${name}_shared ${target_lib}_shared)

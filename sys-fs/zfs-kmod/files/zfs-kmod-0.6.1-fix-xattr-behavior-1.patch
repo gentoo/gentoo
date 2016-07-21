@@ -1,0 +1,50 @@
+From f706421173c571371afff5e2a2ee0784c5e3f95d Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Wed, 17 Apr 2013 13:07:36 -0700
+Subject: [PATCH] Correctly return ERANGE in getxattr(2)
+
+According to the getxattr(2) man page the ERANGE errno should be
+returned when the size of the value buffer is to small to hold the
+result.  Prior to this patch the implementation would just truncate
+the value to size bytes.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #1408
+---
+ module/zfs/zpl_xattr.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/module/zfs/zpl_xattr.c b/module/zfs/zpl_xattr.c
+index c03764f..a7e38e6 100644
+--- a/module/zfs/zpl_xattr.c
++++ b/module/zfs/zpl_xattr.c
+@@ -225,6 +225,11 @@
+ 		goto out;
+ 	}
+ 
++	if (size < i_size_read(xip)) {
++		error = -ERANGE;
++		goto out;
++	}
++
+ 	error = zpl_read_common(xip, value, size, 0, UIO_SYSSPACE, 0, cr);
+ out:
+ 	if (xip)
+@@ -263,9 +268,12 @@
+ 	if (!size)
+ 		return (nv_size);
+ 
+-	memcpy(value, nv_value, MIN(size, nv_size));
++	if (size < nv_size)
++		return (-ERANGE);
++
++	memcpy(value, nv_value, nv_size);
+ 
+-	return (MIN(size, nv_size));
++	return (nv_size);
+ }
+ 
+ static int
+-- 
+1.8.1.6
+

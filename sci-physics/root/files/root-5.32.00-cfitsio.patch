@@ -1,0 +1,13 @@
+--- configure.orig	2012-01-19 23:44:44.127607638 +0100
++++ configure	2012-01-20 00:19:20.420652913 +0100
+@@ -3435,9 +3435,7 @@
+     cfitsioinc=$found_hdr
+     cfitsioincdir=$found_dir
+ 
+-    # At this time, libcfitsio.a should always be prefered over .so,
+-    # to avoid forcing users to install cfitsio.
+-    check_library "libcfitsio cfitsio" "no" "$cfitsiolibdir" \
++    check_library "libcfitsio cfitsio" "yes" "$cfitsiolibdir" \
+         $CFITSIO ${CFITSIO:+$CFITSIO/lib} ${CFITSIO:+$CFITSIO/.libs} \
+         ${finkdir:+$finkdir/lib} \
+         /usr/local/lib /usr/lib /opt/cfitsio/lib

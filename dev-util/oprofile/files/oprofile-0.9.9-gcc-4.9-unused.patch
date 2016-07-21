@@ -1,0 +1,47 @@
+commit 98f57a6c0e32bc6080a50e1cdd769b9ff78108bc
+Author: William Cohen <wcohen@redhat.com>
+Date:   Tue Jun 10 09:56:55 2014 -0500
+
+    Remove unused functions causing errors in recent gcc
+    
+    The Fedora rawhide compiler is now stricter and will treat the
+    warnings for unused functions as errors and stop the compile. This patch
+    removes two unused functions in the code.
+    
+    Signed-off-by: William Cohen <wcohen@redhat.com>
+
+diff --git a/libpp/callgraph_container.cpp b/libpp/callgraph_container.cpp
+index 1d1c95f..c5bc272 100644
+--- a/libpp/callgraph_container.cpp
++++ b/libpp/callgraph_container.cpp
+@@ -36,13 +36,6 @@ using namespace std;
+ 
+ namespace {
+ 
+-bool operator==(cg_symbol const & lhs, cg_symbol const & rhs)
+-{
+-	less_symbol cmp_symb;
+-	return !cmp_symb(lhs, rhs) && !cmp_symb(rhs, lhs);
+-}
+-
+-
+ // we store {caller,callee} inside a single u64
+ odb_key_t caller_to_key(u32 value)
+ {
+diff --git a/libpp/xml_utils.cpp b/libpp/xml_utils.cpp
+index 5f1a3a1..3de41e5 100644
+--- a/libpp/xml_utils.cpp
++++ b/libpp/xml_utils.cpp
+@@ -101,12 +101,6 @@ bool has_separated_thread_info()
+ }
+ 
+ 
+-string get_cpu_num(size_t pclass)
+-{
+-	return classes.v[pclass].ptemplate.cpu;
+-}
+-
+-
+ };  // anonymous namespace
+ 
+ xml_utils::xml_utils(format_output::xml_formatter * xo,

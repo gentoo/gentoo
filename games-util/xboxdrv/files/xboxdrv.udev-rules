@@ -1,0 +1,5 @@
+SUBSYSTEM=="usb", ACTION=="add",\
+	ENV{ID_MODEL_FROM_DATABASE}=="Xbox*Controller|Xbox*Controller S",\
+	TAG+="systemd",\
+	ENV{SYSTEMD_ALIAS}="/sys/subsystem/usb/xbox/controller$number",\
+	ENV{SYSTEMD_WANTS}+="xboxdrv.service"

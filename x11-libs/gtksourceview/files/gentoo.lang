@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+
+<!--
+	GtkSourceView syntax highlight for Gentoo-specific files
+	Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2006.
+	Distributed under the same license(s) as gtksourceview.
+
+	This .lang file should provide almost the same behaviour of
+	gentoo.nanorc. The exceptions are the line-comment and string elements.
+	If you get little 
+
+	TODO:
+	- some styles don't get automatic colors, why?
+	- add syntax for /etc/portage/*
+-->
+
+<language _name="Gentoo" version="1.0" _section="Scripts" mimetypes="text/plain">
+
+	<escape-char>\</escape-char>
+
+	<line-comment _name="Line Comment" style="Comment">
+		<start-regex>#</start-regex>
+	</line-comment>
+
+	<string _name="String" style="String" end-at-line-end="false">
+		<start-regex>&quot;</start-regex>
+		<end-regex>&quot;</end-regex>
+  	</string>
+
+	<pattern-item _name="Bash syntax" style="Operator">
+		<regex>(\b(case|do|done|elif|else|esac|exit|fi|for|function|if|in|local|read|return|select|shift|then|time|until|while)\b|(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|&gt;|%lt;|!|=|&amp;|\|)|-(e|d|f|r|g|u|w|x|L)\b|-(eq|ne|gt|lt|ge|le|s|n|z)\b)</regex>
+	</pattern-item>
+
+	<pattern-item _name="Bash variables" style="Others">
+		<regex>\$\{?[a-zA-Z_0-9]+\}?</regex>
+	</pattern-item>
+
+	<pattern-item _name="Bash commands" style="Others 2">
+		<regex>(\bmake\b|\b(cat|cd|chmod|chown|cp|echo|env|export|grep|let|ln|mkdir|mv|rm|sed|set|tar|touch|unset)\b)</regex>
+	</pattern-item>
+
+	<pattern-item _name="Portage variables" style="Keyword">
+		<regex>\b((ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|FILESDIR|WORKDIR|(P|R)?DEPEND|PROVIDE|DISTDIR|RESTRICT|USERLAND)|(S|D|T|PV|PF|P|PN|A)|C(XX)?FLAGS|LDFLAGS|C(HOST|TARGET|BUILD))\b</regex>
+	</pattern-item>
+
+	<pattern-item _name="Portage commands" style="Data Type">
+		<regex>\b(e(begin|end|conf|install|make|warn|infon?|error|patch|log|javac|ant)|die|use(_(with|enable))?|inherit|has|(has|best)_version|unpack|(do|new)(ins|s?bin|doc|lib(|\.so|\.a)|man|info|exe|initd|confd|envd|pam|menu|icon)|do(python|sed|dir|hard|sym|html|jar|mo)|keepdir|prepall(|docs|info|man|strip)|prep(info|lib|lib\.(so|a)|man|strip)|(|doc|ins|exe)into|f(owners|perms)|(exe|ins|dir)opts)\b</regex>
+	</pattern-item>
+
+	<pattern-item _name="Portage functions" style="Function">
+		<regex>^(src_(unpack|compile|install|test)|pkg_(config|nofetch|setup|(pre|post)(inst|rm)))</regex>
+	</pattern-item>
+
+	<pattern-item _name="Inherits and USE flags" style="Specials">
+		<regex>(\buse(_(with|enable))?\b [\!a-zA-Z0-9_+ -]*|inherit*$)</regex>
+	</pattern-item>
+
+</language>

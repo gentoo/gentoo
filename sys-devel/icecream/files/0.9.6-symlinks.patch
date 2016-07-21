@@ -1,0 +1,19 @@
+diff -urN icecc-0.9.6//client/Makefile.am icecc-0.9.6.new//client/Makefile.am
+--- icecc-0.9.6//client/Makefile.am	2010-09-11 13:43:53.922000148 +0200
++++ icecc-0.9.6.new//client/Makefile.am	2010-09-11 13:44:39.950000148 +0200
+@@ -7,15 +7,3 @@
+ noinst_HEADERS = client.h md5.h util.h
+ 
+ EXTRA_DIST = icecc-create-env
+-
+-install-exec-local:
+-	$(mkinstalldirs) $(DESTDIR)$(bindir)
+-	for link in g++ gcc c++ cc icerun; do \
+-	  rm -f $(DESTDIR)$(bindir)/$$link ;\
+-	  $(LN_S) icecc $(DESTDIR)$(bindir)/$$link ;\
+-	done
+-
+-uninstall-local:
+-	for link in g++ gcc c++ cc; do \
+-	  rm $(DESTDIR)$(bindir)/$$link ;\
+-	done

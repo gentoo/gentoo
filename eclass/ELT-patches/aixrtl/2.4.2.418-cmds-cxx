@@ -1,0 +1,11 @@
+--- configure
++++ configure
+@@ -13307,7 +13307,7 @@
+ 
+           hardcode_libdir_flag_spec_CXX='$wl-blibpath:$libdir:'"$aix_libpath"
+ 
+-          archive_expsym_cmds_CXX='$CC -o $output_objdir/$soname $libobjs $deplibs $wl'$no_entry_flag' $compiler_flags `if test -n "$allow_undefined_flag"; then func_echo_all "$wl$allow_undefined_flag"; else :; fi` $wl'$exp_sym_flag:\$export_symbols' '$shared_flag
++          archive_expsym_cmds_CXX='eval `echo "$soname" | sed -e "s,^,: ,; s,(,; membnam=,; s,\.o),,"`~$RM -r $lib.d~$MKDIR $lib.d~$CC -o $lib.d/$membnam.o $libobjs $deplibs $wl'$no_entry_flag' $compiler_flags -shared $wl-G$allow_undefined_flag $wl'$exp_sym_flag':$export_symbols~$STRIP -e $lib.d/$membnam.o~( echo "#! $soname"; if test $membnam = shr_64; then echo "# 64"; else echo "# 32"; fi; cat $export_symbols ) > $lib.d/$membnam.imp~$AR $AR_FLAGS $lib $lib.d/$membnam.o $lib.d/$membnam.imp~$RM -r $lib.d'
+         else
+           if test ia64 = "$host_cpu"; then
+ 	    hardcode_libdir_flag_spec_CXX='$wl-R $libdir:/usr/lib:/lib'

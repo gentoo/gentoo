@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<longdescription>
+		TRANSFAC® is a database of eukaryotic transcription factors, of their
+		genomic binding sites and DNA-binding profiles. TRANSFAC 3.2 is an old
+		public version available at the European Bioinformatics Institute.
+		TRANSFAC® is currently maintained by the BIOBASE company. Altough they
+		offer public access to a more recent version of the database, they
+		offer no free downloadable version.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,54 @@
+From 93362c849d4a3ba1748d033369f76e93557f1c06 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 22 Nov 2012 15:02:21 +0100
+Subject: [PATCH] Support disabling V4L support completely.
+
+---
+ mediastreamer-2.8.2/configure.ac | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/mediastreamer-2.8.2/configure.ac b/mediastreamer-2.8.2/configure.ac
+index d5be955..86703a0 100644
+--- a/mediastreamer-2.8.2/configure.ac
++++ b/mediastreamer-2.8.2/configure.ac
+@@ -624,6 +624,16 @@ PACKAGE_DATA_DIR="$prefix/share"
+ AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR,  "${package_prefix}/share" ,[path of data])
+ AC_SUBST(PACKAGE_DATA_DIR)
+ 
++AC_ARG_ENABLE(v4l,
++      [  --disable-v4l       Disable usage of v4l],
++      [case "${enableval}" in
++        yes) v4l=yes ;;
++        no)  v4l=no ;;
++        *) AC_MSG_ERROR(bad value ${enableval} for --disable-v4l) ;;
++      esac],[v4l=yes])
++
++if test "$v4l" = "yes" ; then
++
+ dnl check for video4linux headers
+ AC_CHECK_HEADERS(linux/videodev.h linux/videodev2.h)
+ if test "${ac_cv_header_linux_videodev_h}" = "yes" ; then
+@@ -637,9 +647,6 @@ else
+ 	found_v4l2=no
+ fi
+ 
+-AM_CONDITIONAL(BUILD_V4L1, test x$found_v4l1 = xyes )
+-AM_CONDITIONAL(BUILD_V4L2, test x$found_v4l2 = xyes )
+-
+ AC_ARG_ENABLE(libv4l1,
+       [  --disable-libv4l1    Disable usage of libv4l1, really discouraged],
+       [case "${enableval}" in
+@@ -680,6 +687,10 @@ this check.
+ 	fi
+ fi
+ 
++fi
++
++AM_CONDITIONAL(BUILD_V4L1, test x$found_v4l1 = xyes )
++AM_CONDITIONAL(BUILD_V4L2, test x$found_v4l2 = xyes )
+ 
+ AC_ARG_ENABLE(tests,
+       [  --enable-tests    Disable compilation of tests],
+-- 
+1.8.0
+

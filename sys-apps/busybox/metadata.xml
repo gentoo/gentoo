@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+<email>embedded@gentoo.org</email>
+<name>Embedded Gentoo</name>
+</maintainer>
+<use>
+<flag name="make-symlinks">Create all the appropriate symlinks in /bin and /sbin.</flag>
+<flag name="math">Enable math support in gawk (requires libm)</flag>
+<flag name="mdev">Create the appropriate symlink in /sbin and install mdev.conf and support files</flag>
+<flag name="sep-usr">Support a separate /usr without needing an initramfs by booting with init=/ginit</flag>
+<flag name="static">Make the system rescue shell (/bin/bb) static so you can recover even when glibc is broken</flag>
+<flag name="systemd">Support systemd</flag>
+</use>
+<upstream>
+<remote-id type="cpe">cpe:/a:busybox:busybox</remote-id>
+</upstream>
+</pkgmetadata>

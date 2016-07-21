@@ -1,0 +1,11 @@
+--- Makefile.in
++++ Makefile.in
+@@ -16,7 +16,7 @@
+ all: rename
+ 
+ rename:	$(OBJS)
+-	$(CC) $(CFLAGS) -o $@ $^
++	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ 
+ static:	$(OBJS)

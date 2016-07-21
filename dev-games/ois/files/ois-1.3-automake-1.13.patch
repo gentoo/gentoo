@@ -1,0 +1,11 @@
+--- ois-v1-3/configure.ac
++++ ois-v1-3/configure.ac
+@@ -5,7 +5,7 @@
+ 
+ AC_CANONICAL_TARGET
+ AM_INIT_AUTOMAKE( [OIS], 1.3.0 )
+-AM_CONFIG_HEADER([includes/config.h])
++AC_CONFIG_HEADERS([includes/config.h])
+ 
+ dnl Check for programs
+ AC_PROG_CC

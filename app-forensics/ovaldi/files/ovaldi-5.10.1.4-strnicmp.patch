@@ -1,0 +1,11 @@
+--- src/Main.h.old	2010-10-22 14:59:13.000000000 +0200
++++ src/Main.h	2010-10-22 14:59:38.000000000 +0200
+@@ -38,7 +38,7 @@
+ #endif
+ 
+ #ifdef LINUX
+-#  define STRNICMP strnicmp
++#  define STRNICMP strncasecmp
+ #elif defined SUNOS
+ #  define STRNICMP strncasecmp
+ #elif defined DARWIN

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
+	<use>
+		<flag name="authcram">Enable AUTHCRAM support</flag>
+		<flag name="gencertdaily">Generate SSL certificates daily instead of
+			hourly</flag>
+		<flag name="highvolume">Prepare netqmail for high volume servers</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">qmail-spp</remote-id>
+	</upstream>
+</pkgmetadata>

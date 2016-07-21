@@ -1,0 +1,11 @@
+--- libtest/GNUmakefile.orig	2015-06-08 12:11:24.235000000 +0000
++++ libtest/GNUmakefile	2015-06-08 11:47:52.963000000 +0000
+@@ -38,7 +38,7 @@
+ #   http://weblogs.java.net/blog/kellyohair/archive/2006/01/compilation_of_1.html
+ JFLAGS = -fno-omit-frame-pointer -fno-strict-aliasing
+ OFLAGS = -O2 $(JFLAGS)
+-WFLAGS = -W -Werror -Wall -Wno-unused -Wno-parentheses
++WFLAGS = -W -Wall -Wno-unused -Wno-parentheses
+ PICFLAGS = -fPIC
+ SOFLAGS = -shared -Wl,-O1
+ LDFLAGS += $(SOFLAGS)

@@ -1,0 +1,36 @@
+diff -Nru /tmp/cglib-3.0.orig/build.xml ./build.xml
+--- /tmp/cglib-3.0.orig/build.xml	2012-08-17 19:21:37.387574672 +0300
++++ ./build.xml	2012-08-17 19:26:58.982564260 +0300
+@@ -73,7 +73,7 @@
+   <target depends="prepare" description="Compile shareable components" 
+           name="compile">
+     <javac debug="${compile.debug}" deprecation="${compile.deprecation}" destdir="${build.home}/classes" optimize="${compile.optimize}" srcdir="${source.home}"
+-      target="${compile.target}" bootclasspath="${compile.bootclasspath}" extdirs="${compile.extdirs}" source="${compile.source}">
++      target="${compile.target}" extdirs="${compile.extdirs}" source="${compile.source}">
+       <classpath refid="compile.classpath"/>
+       <compilerarg compiler="jikes" value="-nowarn"/>
+     </javac>
+@@ -124,14 +124,6 @@
+       <exclude name="samples/**" />
+     </jar> 
+ 
+-    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" classpathref="compile.classpath"/>
+-    <jarjar basedir="${build.home}/classes" jarfile="${dist.home}/${component.name}-nodep-${component.version}.jar" >
+-      <zipfileset dir="lib" includes="asm*.txt"/>
+-      <zipfileset src="lib/asm-4.0.jar" excludes="META-INF"/>
+-      <rule pattern="org.objectweb.asm.**" result="net.sf.cglib.asm.@1"/>
+-      <include name="**/*"/>
+-      <exclude name="samples/**"/>
+-    </jarjar> 
+   </target>
+ 
+   <target depends="compile,javadoc" description="Create docs and source distribution" name="srcjar">
+@@ -246,7 +238,7 @@
+   <!-- <jvmarg value="-verbose:class"/> -->
+   <!-- <jvmarg value="-Xprof"/> -->
+   <!-- <jvmarg value="-server"/> -->
+-  <!-- <sysproperty key="cglib.debugLocation" value="debug"/> -->
++  <sysproperty key="cglib.debugLocation" value="${cglib.debugLocation}"/>
+   <!-- <jvmarg value="-Djava.security.policy==java.policy" /> -->
+   <!-- <jvmarg value="-Djava.security.manager" />  -->
+  

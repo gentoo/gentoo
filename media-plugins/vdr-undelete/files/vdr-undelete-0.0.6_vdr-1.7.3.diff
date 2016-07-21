@@ -1,0 +1,76 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 92_undelete-0.0.6-1.7.3.dpatch by Thomas Günther <tom@toms-cafe.de>
+## http://toms-cafe.de/vdr/download/undelete-0.0.6-1.7.3.diff
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Changes for VDR >= 1.7.3.
+
+@DPATCH@
+--- undelete-0.0.6/menuundelete.c
++++ undelete-0.0.6/menuundelete.c
+@@ -672,11 +672,20 @@ eOSState cMenuUndelete::ProcessKey(eKeys
+                                     processerror = true;
+                                   }
+                                   SalvageRecording = true;
++#if VDRVERSNUM >= 10703
++                                  cIndexFile *index = new cIndexFile(NewName, false, recording->IsPesRecording());
++#else
+                                   cIndexFile *index = new cIndexFile(NewName, false);
++#endif
+                                   int LastFrame = index->Last() - 1;
+                                   if (LastFrame > 0) {
++#if VDRVERSNUM >= 10703
++                                    uint16_t FileNumber = 0;
++                                    off_t FileOffset = 0;
++#else
+                                     uchar FileNumber = 0;
+                                     int FileOffset = 0;
++#endif
+                                     index->Get(LastFrame, &FileNumber, &FileOffset);
+                                     delete index;
+                                     if (FileNumber == 0) {
+@@ -686,7 +695,11 @@ eOSState cMenuUndelete::ProcessKey(eKeys
+                                     } else {
+                                       for (int i = 1; i <= FileNumber; i++) {
+                                         char *temp;
++#if VDRVERSNUM >= 10703
++                                        asprintf(&temp, recording->IsPesRecording() ? "%s/%03d.vdr" : "%s/%05d.ts", (const char *)NewName, i);
++#else
+                                         asprintf(&temp, "%s/%03d.vdr", (const char *)NewName, i);
++#endif
+                                         if (access(temp, R_OK) != 0) {
+                                           i = FileNumber;                                          
+                                           if (verbose.u)
+--- undelete-0.0.6/undelete.c
++++ undelete-0.0.6/undelete.c
+@@ -956,17 +956,30 @@ cString cPluginUndelete::SVDRPCommand(co
+             asprintf(&temp, "%sS#%d#", SVDRP_Process ? SVDRP_Process : "", recnumber);
+             free(SVDRP_Process);
+             SVDRP_Process = temp;
++#if VDRVERSNUM >= 10703
++            cIndexFile *index = new cIndexFile(NewName, false, recording->IsPesRecording());
++#else
+             cIndexFile *index = new cIndexFile(NewName, false);
++#endif
+             int LastFrame = index->Last() - 1;
+             if (LastFrame > 0) {
++#if VDRVERSNUM >= 10703
++              uint16_t FileNumber = 0;
++              off_t FileOffset = 0;
++#else
+               uchar FileNumber = 0;
+               int FileOffset = 0;
++#endif
+               index->Get(LastFrame, &FileNumber, &FileOffset);
+               delete index;
+               if (FileNumber == 0)
+                 return cString::sprintf("error while read last filenumber for \"%s\" [%s]", Option, recording->Title());
+               for (int i = 1; i <= FileNumber; i++) {
++#if VDRVERSNUM >= 10703
++                asprintf(&temp, recording->IsPesRecording() ? "%s/%03d.vdr" : "%s/%05d.ts", (const char *)NewName, i);
++#else
+                 asprintf(&temp, "%s/%03d.vdr", (const char *)NewName, i);
++#endif
+                 if (access(temp, R_OK) != 0) {
+                   free(temp);
+                   return cString::sprintf("error accessing vdrfile %03d for \"%s\" [%s]", i, Option, recording->Title());

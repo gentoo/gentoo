@@ -1,0 +1,10 @@
+diff --git a/test/doctests.hs b/test/doctests.hs
+index 3862bd3..943da13 100644
+--- a/test/doctests.hs
++++ b/test/doctests.hs
+@@ -3,4 +3,4 @@ module Main where
+ import Test.DocTest
+ 
+ main :: IO ()
+-main = doctest ["Data/Conduit.hs"]
++main = doctest $ ["Data/Conduit.hs", "-hide-all-packages"] ++ (map ("-package "++) ["base","resourcet","lifted-base","transformers-base","monad-control","containers","transformers","mtl","bytestring","text","void","mmorph","directory"])

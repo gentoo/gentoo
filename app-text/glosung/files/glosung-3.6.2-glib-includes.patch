@@ -1,0 +1,11 @@
+diff -ruN glosung-3.6.2/src/losung.c glosung-3.6.2-patched/src/losung.c
+--- glosung-3.6.2/src/losung.c	2010-01-04 15:28:38.000000000 -0500
++++ glosung-3.6.2-patched/src/losung.c	2013-01-21 14:34:14.318711560 -0500
+@@ -31,7 +31,6 @@
+ #endif /* WIN32 */
+ 
+ #include <glib/gi18n.h>
+-#include <glib/goption.h>
+ 
+ #include "util.h"
+ 

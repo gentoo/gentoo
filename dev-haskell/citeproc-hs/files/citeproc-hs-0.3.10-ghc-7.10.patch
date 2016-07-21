@@ -1,0 +1,28 @@
+--- citeproc-hs-0.3.10-orig/src/Text/CSL/Eval.hs	2015-03-17 21:32:38.000000000 +1100
++++ citeproc-hs-0.3.10/src/Text/CSL/Eval.hs	2015-04-04 11:18:45.018893632 +1100
+@@ -1,4 +1,5 @@
+ {-# LANGUAGE PatternGuards #-}
++{-# LANGUAGE FlexibleContexts #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Text.CSL.Eval
+--- citeproc-hs-0.3.10-orig/src/Text/CSL/Eval/Names.hs	2015-03-17 21:32:38.000000000 +1100
++++ citeproc-hs-0.3.10/src/Text/CSL/Eval/Names.hs	2015-04-04 11:18:28.823909497 +1100
+@@ -1,4 +1,5 @@
+ {-# LANGUAGE PatternGuards #-}
++{-# LANGUAGE FlexibleContexts #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Text.CSL.Eval.Names
+--- citeproc-hs-0.3.10-orig/src/Text/CSL/Test.hs	2015-03-17 21:32:38.000000000 +1100
++++ citeproc-hs-0.3.10/src/Text/CSL/Test.hs	2015-04-04 11:21:42.164719120 +1100
+@@ -29,7 +29,9 @@
+ import Data.Maybe (isJust)
+ import Data.Time
+ import System.Directory
++#if !MIN_VERSION_time(1,5,0)
+ import System.Locale
++#endif
+ 
+ import Text.ParserCombinators.Parsec
+ 

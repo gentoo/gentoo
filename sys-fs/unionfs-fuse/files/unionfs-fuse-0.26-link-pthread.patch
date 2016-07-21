@@ -1,0 +1,11 @@
+--- src/Makefile	2012-09-22 22:14:36.484677038 +0200
++++ src/Makefile	2012-09-22 22:14:40.162631059 +0200
+@@ -5,7 +5,7 @@
+ 
+ LDFLAGS += 
+ 
+-LIB = $(shell pkg-config --libs fuse)
++LIB = $(shell pkg-config --libs fuse) -lpthread
+ 
+ HASHTABLE_OBJ = hashtable.o hashtable_itr.o
+ UNIONFS_OBJ = unionfs.o stats.o opts.o debug.o findbranch.o readdir.o \

@@ -1,0 +1,144 @@
+--- a/Makefile.conf.in
++++ b/Makefile.conf.in
+@@ -100,3 +100,6 @@ initdir = @initdir@
+ 
+ # Location of systemd unit files
+ systemddir = @systemddir@
++
++# Use the compiler determined by configure
++CC := @CC@
+--- a/Makefile.rules
++++ b/Makefile.rules
+@@ -16,44 +16,30 @@ INSTALLROOT = $(DESTDIR)
+ AUTOFS_LIB = ../lib/autofs.a
+ 
+ # Compilers, linkers and flags
+-# The STRIP defined here *must not* remove any dynamic-loading symbols
+-
+ ifdef DMALLOCLIB
+ DEBUG=1
+ endif
+ 
+ ifdef DEBUG
+ CFLAGS    ?= -g -Wall -DDEBUG
+-LDFLAGS   = -g
+-STRIP     = :
+ else
+-ifdef DONTSTRIP
+ CFLAGS    ?= -O2 -g
+-LDFLAGS   = -g
+-STRIP     = :
+-else
+-CFLAGS    ?= -O2 -Wall
+-LDFLAGS   = -s
+-STRIP     = strip --strip-debug
+-endif
+ endif
++AUTOFS_LDFLAGS = -g
+ 
+-CC        = gcc
+-CXX       = g++
+ CXXFLAGS  = $(CFLAGS)
+ LD        = ld
+ SOLDFLAGS = -shared
+ 
+ CFLAGS += -D_REENTRANT -D_FILE_OFFSET_BITS=64
+-LDFLAGS += -lpthread
+ 
+ ifdef TIRPCLIB
+ CFLAGS += -I/usr/include/tirpc
+-LDFLAGS += $(TIRPCLIB)
++AUTOFS_LDFLAGS += $(TIRPCLIB)
+ endif
+ 
+ ifdef DMALLOCLIB
+-LDFLAGS += $(DMALLOCLIB)
++AUTOFS_LDFLAGS += $(DMALLOCLIB)
+ endif
+ 
+ ifdef SASL
+@@ -71,5 +57,4 @@ endif
+ 	$(CC) $(CFLAGS) -S $<
+ 
+ .c.so:
+-	$(CC) $(SOLDFLAGS) $(CFLAGS) -o $*.so $< $(AUTOFS_LIB) $(DMALLOCLIB) $(LIBNSL)
+-	$(STRIP) $*.so
++	$(CC) $(LDFLAGS) $(SOLDFLAGS) $(CFLAGS) -o $*.so $< $(AUTOFS_LIB) $(DMALLOCLIB) $(LIBNSL)
+--- a/configure.in
++++ b/configure.in
+@@ -183,7 +183,7 @@ AC_ARG_WITH(hesiod,
+ 		: Search for Hesiod in normal directory path
+ 	else
+ 		: Search for Hesiod in specific directory
+-		LDFLAGS="$LDFLAGS -L${withval}/lib"
++		LDFLAGS="$LDFLAGS -Wl,--no-as-needed -L${withval}/lib"
+ 		LIBHESIOD="-L${withval}/lib"
+ 		HESIOD_FLAGS="-I${withval}/include"
+ 	fi
+--- a/daemon/Makefile
++++ b/daemon/Makefile
+@@ -20,7 +20,7 @@ CFLAGS += -DAUTOFS_FIFO_DIR=\"$(autofsfi
+ CFLAGS += -DAUTOFS_FLAG_DIR=\"$(autofsflagdir)\"
+ CFLAGS += -DVERSION_STRING=\"$(version)\"
+ LDFLAGS += -rdynamic
+-LIBS = -ldl
++LIBS += -ldl -lpthread
+ 
+ ifeq ($(LDAP), 1)
+     CFLAGS += $(XML_FLAGS)
+@@ -30,8 +30,7 @@ endif
+ all: automount
+ 
+ automount: $(OBJS) $(AUTOFS_LIB)
+-	$(CC) $(LDFLAGS) $(DAEMON_LDFLAGS) -o automount $(OBJS) $(AUTOFS_LIB) $(LIBS)
+-	$(STRIP) automount
++	$(CC) $(AUTOFS_LDFLAGS) $(DAEMON_LDFLAGS) $(LDFLAGS) -o automount $(OBJS) $(AUTOFS_LIB) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o *.s *~ automount
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -41,14 +41,12 @@ mount_clnt.c: mount.h
+ 
+ mount_clnt.o: mount_clnt.c
+ 	$(CC) $(CFLAGS) -o mount_clnt.o -c mount_clnt.c
+-	$(STRIP) mount_clnt.o
+ 
+ mount_xdr.c: mount.h
+ 	$(RPCGEN) -c -o mount_xdr.c mount.x
+ 
+ mount_xdr.o: mount_xdr.c
+ 	$(CC) $(CFLAGS) -Wno-unused-variable -o mount_xdr.o -c mount_xdr.c
+-	$(STRIP) mount_xdr.o
+ 
+ master_tok.c: master_tok.l
+ 	$(LEX) -o$@ -Pmaster_ $?
+--- a/modules/Makefile
++++ b/modules/Makefile
+@@ -87,9 +87,8 @@ endif
+ # Ad hoc compilation rules for modules which need auxilliary libraries
+ #
+ lookup_hesiod.so: lookup_hesiod.c
+-	$(CC) $(SOLDFLAGS) $(CFLAGS) $(HESIOD_FLAGS) -o lookup_hesiod.so \
++	$(CC) $(LDFLAGS) $(SOLDFLAGS) $(CFLAGS) $(HESIOD_FLAGS) -o lookup_hesiod.so \
+ 		lookup_hesiod.c $(AUTOFS_LIB) $(LIBHESIOD) $(LIBRESOLV)
+-	$(STRIP) lookup_hesiod.so
+ 
+ cyrus-sasl.o: cyrus-sasl.c
+ 	$(CC) $(CFLAGS) $(LDAP_FLAGS) -c $<
+@@ -98,13 +97,10 @@ cyrus-sasl-extern.o: cyrus-sasl-extern.c
+ 	$(CC) $(CFLAGS) $(LDAP_FLAGS) -c $<
+ 
+ lookup_ldap.so: lookup_ldap.c dclist.o base64.o $(SASL_OBJ)
+-	$(CC) $(SOLDFLAGS) $(CFLAGS) $(LDAP_FLAGS) -o lookup_ldap.so \
++	$(CC) $(LDFLAGS) $(SOLDFLAGS) $(CFLAGS) $(LDAP_FLAGS) -o lookup_ldap.so \
+ 		lookup_ldap.c dclist.o base64.o $(SASL_OBJ) \
+ 		$(AUTOFS_LIB) $(LIBLDAP) $(LIBRESOLV)
+-	$(STRIP) lookup_ldap.so
+ 
+ mount_nfs.so: mount_nfs.c replicated.o
+-	$(CC) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
++	$(CC) $(LDFLAGS) $(SOLDFLAGS) $(CFLAGS) -o mount_nfs.so \
+ 		mount_nfs.c replicated.o $(AUTOFS_LIB) $(LIBNSL)
+-	$(STRIP) mount_nfs.so
+-

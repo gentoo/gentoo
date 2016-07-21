@@ -1,0 +1,27 @@
+--- Makefile.in	2012-11-07 22:04:51.207982344 -0500
++++ Makefile.in.new	2012-11-07 22:06:00.905977580 -0500
+@@ -18,19 +18,19 @@
+ all: md6sum
+ 
+ md6sum: $(OBJS)
+-	$(CC) $(OBJS) $(CXXFLAGS) $(LDFLAGS) -o $@
++	$(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) -o $@
+ 
+ md6_compress.o: md6_compress.c inttypes.h  md6.h  md6_nist.h  stdint.h
+-	$(CC) $(CXXFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ md6_mode.o: md6_mode.c inttypes.h  md6.h  md6_nist.h  stdint.h 
+-	$(CC) $(CXXFLAGS) -c $< -o $@ 
++	$(CC) $(CFLAGS) -c $< -o $@ 
+ 
+ md6_nist.o: md6_nist.c inttypes.h  md6.h  md6_nist.h  stdint.h 
+-	$(CC) $(CXXFLAGS) -c $< -o $@ 
++	$(CC) $(CFLAGS) -c $< -o $@ 
+ 
+ md6sum.o: md6sum.c inttypes.h  md6.h  md6_nist.h  stdint.h 
+-	$(CC) $(CXXFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ clean:
+ 	rm *.o 

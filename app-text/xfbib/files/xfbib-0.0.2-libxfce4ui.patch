@@ -1,0 +1,106 @@
+http://bugzilla.xfce.org/show_bug.cgi?id=9568
+
+--- src/entry_edit_dialog.c
++++ src/entry_edit_dialog.c
+@@ -17,7 +17,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <config.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ 
+ #include "entry_edit_dialog.h"
+ #include "entry.h"
+@@ -589,11 +589,13 @@
+ 			key = (char *) gtk_entry_get_text(GTK_ENTRY(key_entry));
+ 			if ((type = gtk_combo_box_get_active_text(GTK_COMBO_BOX(combobox))) == NULL) {
+ 				_DEBUG(("No type selected"));
+-				xfce_warn(_("No type was selected"));
++				/* xfce_warn(_("No type was selected")); */
++				xfce_dialog_show_warning(NULL,NULL,_("No type was selected"));
+ 				continue;
+ 			} else if (strcmp(key, "") == 0) {
+ 				_DEBUG(("No key selected"));
+-				xfce_warn(_("No key was selected"));
++				/* xfce_warn(_("No key was selected")); */
++				xfce_dialog_show_warning(NULL,NULL,_("No key was selected"));
+ 				continue;
+ 			} else {
+ 				if (selected == NULL) {
+--- src/menubar.c
++++ src/menubar.c
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include <gtk/gtk.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libintl.h>
+ #include <config.h>
+ 
+--- src/open.c
++++ src/open.c
+@@ -14,7 +14,7 @@
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <config.h>
+ #include <string.h>
+ #include <stdlib.h>
+--- src/open_dialog.c
++++ src/open_dialog.c
+@@ -14,7 +14,7 @@
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libintl.h>
+ #include <string.h>
+ #include <stdlib.h>
+--- src/save_dialog.c
++++ src/save_dialog.c
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include <libintl.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <config.h>
+ 
+ #include "xfbib.h"
+--- src/string_edit_dialog.c
++++ src/string_edit_dialog.c
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include <gtk/gtk.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ 
+ #include "debug.h"
+ #include "strings.h"
+--- src/treeview.c
++++ src/treeview.c
+@@ -14,7 +14,7 @@
+  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  */
+ 
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libintl.h>
+ #include <config.h>
+ #include <string.h>
+--- src/xfbib.c
++++ src/xfbib.c
+@@ -20,7 +20,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <stdlib.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ #include <libintl.h>
+ 
+ #include "window.h"

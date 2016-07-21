@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Mail-DKIM</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Algorithm::Base</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Algorithm::dk_rsa_sha1</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Algorithm::rsa_sha1</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Algorithm::rsa_sha256</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::AuthorDomainPolicy</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::Base</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::DkCommon</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::DkimCommon</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::dk_nofws</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::dk_simple</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::nowsp</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::relaxed</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::simple</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Common</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::DNS</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::DkPolicy</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::DkSignature</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::DkimPolicy</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Key</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::KeyValueList</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::MessageParser</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Policy</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::PrivateKey</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::PublicKey</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Signature</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Signer</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::SignerPolicy</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::TextWrap</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Verifier</remote-id>
+  </upstream>
+</pkgmetadata>

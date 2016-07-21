@@ -1,0 +1,11 @@
+--- platform.h.orig	2010-02-03 13:21:41.300205559 -0500
++++ platform.h	2010-02-03 13:22:25.704049074 -0500
+@@ -79,7 +79,7 @@
+  #define GL_GLEXT_LEGACY
+  #include <GL/gl.h>
+  #include <GL/glu.h>
+- #include "glext.h"
++ #include <GL/glext.h>
+ #endif
+ 
+ // Inlucde the plaform specific location sound libs

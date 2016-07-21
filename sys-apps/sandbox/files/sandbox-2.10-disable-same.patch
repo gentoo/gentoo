@@ -1,0 +1,77 @@
+From 7a923f646ce10b7dec3c7ae5fe2079c10aa21752 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 20 Dec 2015 16:08:16 -0500
+Subject: [PATCH] libsbutil: gnulib: hand disable same_name usage
+
+We don't provide same_name because the one caller we don't use, but it
+relies on gc-sections to avoid link errors.  That flag doesn't work on
+ia64 though, so we need to hand delete the one caller.  Ugh.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsbutil/gnulib/hash-triple.c |  9 ---------
+ libsbutil/gnulib/same.h        | 25 -------------------------
+ 2 files changed, 34 deletions(-)
+ delete mode 100644 libsbutil/gnulib/same.h
+
+diff --git a/libsbutil/gnulib/hash-triple.c b/libsbutil/gnulib/hash-triple.c
+index c3b6d9f..06cfbdf 100644
+--- a/libsbutil/gnulib/hash-triple.c
++++ b/libsbutil/gnulib/hash-triple.c
+@@ -24,7 +24,6 @@
+ #include <string.h>
+ 
+ #include "hash-pjw.h"
+-#include "same.h"
+ #include "same-inode.h"
+ 
+ #define STREQ(a, b) (strcmp (a, b) == 0)
+@@ -52,14 +51,6 @@ triple_hash_no_name (void const *x, size_t table_size)
+ 
+ /* Compare two F_triple structs.  */
+ bool
+-triple_compare (void const *x, void const *y)
+-{
+-  struct F_triple const *a = x;
+-  struct F_triple const *b = y;
+-  return (SAME_INODE (*a, *b) && same_name (a->name, b->name)) ? true : false;
+-}
+-
+-bool
+ triple_compare_ino_str (void const *x, void const *y)
+ {
+   struct F_triple const *a = x;
+diff --git a/libsbutil/gnulib/same.h b/libsbutil/gnulib/same.h
+deleted file mode 100644
+index ee313c5..0000000
+--- a/libsbutil/gnulib/same.h
++++ /dev/null
+@@ -1,25 +0,0 @@
+-/* Determine whether two file names refer to the same file.
+-
+-   Copyright (C) 1997-2000, 2003-2004, 2009-2015 Free Software Foundation, Inc.
+-
+-   This program is free software: you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-#ifndef SAME_H_
+-# define SAME_H_ 1
+-
+-# include <stdbool.h>
+-
+-bool same_name (const char *source, const char *dest);
+-
+-#endif /* SAME_H_ */
+-- 
+2.6.2
+

@@ -1,0 +1,75 @@
+iff -ur duke3d/source/buildengine/a.c duke3d-gcc4/source/buildengine/a.c
+--- duke3d/source/buildengine/a.c	2004-11-25 13:55:21.000000000 -0500
++++ duke3d-gcc4/source/buildengine/a.c	2005-06-18 18:14:24.000000000 -0400
+@@ -186,7 +186,9 @@
+     if (i3 == 0)
+     {
+ 	    i1 += i4;
+-	    ((unsigned long)i4) >>= mach3_al;
++			unsigned long temp = i4;
++	    temp >>= mach3_al;
++			i4 = temp;
+ 	    i4 = (i4&0xffffff00) | (source[i4]&0xff);
+ 	    *dest = ((unsigned char*)i2)[i4];
+ 	    return i1;
+diff -ur duke3d/source/buildengine/pragmas.c duke3d-gcc4/source/buildengine/pragmas.c
+--- duke3d/source/buildengine/pragmas.c	2003-07-25 20:11:32.000000000 -0400
++++ duke3d-gcc4/source/buildengine/pragmas.c	2005-06-18 18:25:37.000000000 -0400
+@@ -56,28 +56,39 @@
+ 
+ void clearbufbyte(void *buffer, int size, long fill_value) {
+   int lsize;
++	unsigned char *p=buffer;
++	unsigned short *s=buffer;
+   switch(size){
+   case 0: return;
+-  case 1: *((unsigned char*)buffer)++ = fill_value; return;
+-  case 2: *((unsigned short*)buffer)++ = fill_value; return;
+-  case 3: { unsigned char *p=buffer; p[2]=p[1]=p[0] = fill_value;} return;
++  case 1: ++p; *p = fill_value; return;
++  case 2: ++s; *s = fill_value; return;
++  case 3: { p[2]=p[1]=p[0] = fill_value;} return;
+   default:
+ 	if ((int)buffer&1) {
+-		*((unsigned char*)buffer)++ = fill_value; size--;
++		++p; *p = fill_value; size--;
++		buffer = p;
+ 	}
+ 	if ((int)buffer&2) {
+-		*((unsigned short*)buffer)++ = fill_value; size-=2;
++		++s; *s = fill_value; size-=2;
++		buffer = s;
+ 	}
+ 	lsize = size>>2;
++	unsigned int *up = buffer;
+ 	while(lsize) {
+-		*((unsigned int*)buffer)++ = fill_value;
++		++up;
++		*up = fill_value;
+ 		lsize--;
+ 	}
++	buffer = up;
+ 	if (size&2) {
+-		*((unsigned short*)buffer)++ = fill_value;
++		s = buffer;
++		++s;
++		*s = fill_value;
+ 	}
+ 	if (size&1) {
+-		*((unsigned char*)buffer)++ = fill_value;
++		p = buffer;
++		++p;
++		*p = fill_value;
+ 	}
+   }
+ }
+@@ -122,7 +133,7 @@
+ 	{
+ 		*((unsigned short *)source) = ((linum>>16)&0xffff);
+ 		linum += linum_inc;
+-		((unsigned char*)source) = ((unsigned char*)source) + 2;
++		source = ((unsigned char*)source) + 2;
+ 		size--;
+ 		if (size == 0) return;
+ 	}
+

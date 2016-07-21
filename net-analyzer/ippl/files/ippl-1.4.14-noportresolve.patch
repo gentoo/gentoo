@@ -1,0 +1,347 @@
+patch by Marc Haber <mh+debian-packages@zugschlus.de>
+
+--- a/Docs/ippl.conf.man
++++ b/Docs/ippl.conf.man
+@@ -92,6 +92,13 @@
+ .PP
+ By default, IP address resolution is disabled for all the protocols.
+ 
++Ippl by default resolves tcp/udp port numbers to their respective
++service names. If you pass a protocol to the noportresolve option,
++ippl logs the port number instead. This is a Debian specific extension.
++
++By default service resolving is enabled, since this is the behaviour
++of the upstream program.
++
+ .SH LOGGING FORMAT
+ 
+ .BR ippl
+@@ -198,6 +205,12 @@
+ .I noresolve
+ disable IP address resolution.
+ .PP
++.I portresolve
++enable IP service resolution.
++.PP
++.I noportresolve
++disable IP service resolution.
++.PP
+ .I ident
+ use ident logging (only for TCP).
+ .PP
+
+--- a/Source/configuration.c
++++ b/Source/configuration.c
+@@ -60,6 +60,7 @@
+   extern unsigned int dns_expire;
+   extern unsigned short log_protocols;
+   extern unsigned short resolve_protocols;
++  extern unsigned short portresolve_protocols;
+   extern unsigned short icmp_format;
+   extern unsigned short tcp_format;
+   extern unsigned short udp_format;
+@@ -71,6 +72,7 @@
+   dns_expire = DNS_EXPIRE;
+   log_protocols = NONE;
+   resolve_protocols = 0; /* Do not resolve by default */
++  portresolve_protocols = RUN_TCP | RUN_UDP | RUN_ICMP; /* Resolve by default */
+   icmp_format = LOGFORMAT_NORMAL;
+   tcp_format = LOGFORMAT_NORMAL;
+   udp_format = LOGFORMAT_NORMAL;
+
+--- a/Source/filter.c
++++ b/Source/filter.c
+@@ -46,6 +46,7 @@
+ 
+ extern unsigned short use_ident;
+ extern unsigned short resolve_protocols;
++extern unsigned short portresolve_protocols;
+ extern unsigned short icmp_format;
+ extern unsigned short tcp_format;
+ extern unsigned short udp_format;
+@@ -66,7 +67,7 @@
+ #ifdef FILTER_DEBUG
+ void display_info(struct log_info *info, int entries) {
+ 
+-  log.log(log.level_or_fd, "DBG: (e:%d) log:%d ident:%d resolve:%d closing:%d format:%d", entries, info->log, info->ident, info->resolve, info->logclosing, info->logformat);
++  log.log(log.level_or_fd, "DBG: (e:%d) log:%d ident:%d resolve:%d portresolve: %d, closing:%d format:%d", entries, info->log, info->ident, info->resolve, info->portresolve, info->logclosing, info->logformat);
+ }
+ #endif
+ 
+@@ -200,6 +201,19 @@
+       break;
+     }
+   }
++  if (info->portresolve == -1) {
++    switch (protocol) {
++    case IPPROTO_ICMP:
++      info->portresolve = portresolve_protocols & RUN_ICMP;
++      break;
++    case IPPROTO_TCP:
++      info->portresolve = portresolve_protocols & RUN_TCP;
++      break;
++    case IPPROTO_UDP:
++      info->portresolve = portresolve_protocols & RUN_UDP;
++      break;
++    }
++  }
+ }
+ 
+ struct log_info do_log(const __u32 from, const __u32 to, const __u16 type, const __u16 srctype, const short protocol) {
+@@ -244,6 +258,7 @@
+         info.log = p->log;
+         info.ident = p->ident;
+         info.resolve = p->resolve;
++        info.portresolve = p->portresolve;
+         info.logformat = p->logformat;
+         info.logclosing = p->logclosing;
+         set_defaults(protocol, &info);
+@@ -265,6 +280,7 @@
+         info.log = p->log;
+         info.ident = p->ident;
+         info.resolve = p->resolve;
++        info.portresolve = p->portresolve;
+         info.logformat = p->logformat;
+         set_defaults(protocol, &info);
+ #ifdef FILTER_DEBUG
+@@ -280,7 +296,7 @@
+   info.log = TRUE;
+   info.ident = use_ident;
+   info.logclosing = log_closing;
+-  info.logformat = info.resolve = -1;
++  info.logformat = info.resolve = info.portresolve = -1;
+   set_defaults(protocol, &info);
+ 
+ #ifdef FILTER_DEBUG
+
+--- a/Source/filter.h
++++ b/Source/filter.h
+@@ -53,6 +53,7 @@
+ struct filter_entry {
+   short log;		/* TRUE for "log", FALSE for "ignore" */
+   short ident;          /* TRUE if we should use ident */
++  short portresolve;    /* TRUE if we should resolve TCP/UDP services */
+   short resolve;        /* TRUE if we should resolve IP addresses */
+   short logformat;      /* format used to log */
+   short logclosing;     /* TRUE to log closing TCP connections */
+@@ -72,6 +73,7 @@
+   short log;
+   short ident;
+   short resolve;
++  short portresolve;
+   short logclosing;
+   short logformat;
+ };
+
+--- a/Source/ippl.l
++++ b/Source/ippl.l
+@@ -75,6 +75,9 @@
+ [lL][oO][gG][cC][lL][oO][sS][iI][nN][gG] return LOGCLOSING;
+ [nN][oO][lL][oO][gG][cC][lL][oO][sS][iI][nN][gG] return NOLOGCLOSING;
+ 
++[nN][oO][pP][oO][rR][tT][rR][eE][sS][oO][lL][vV][eE] return NOPORTRESOLVE;
++[pP][oO][rR][tT][rR][eE][sS][oO][lL][vV][eE] return PORTRESOLVE;
++
+ [nN][oO][rR][eE][sS][oO][lL][vV][eE] return NORESOLVE;
+ [rR][eE][sS][oO][lL][vV][eE] return RESOLVE;
+ 
+
+--- a/Source/ippl.y
++++ b/Source/ippl.y
+@@ -61,6 +61,7 @@
+ 
+ /* Should name resolving be done? */
+ unsigned short resolve_protocols;
++unsigned short portresolve_protocols;
+ 
+ /* Logging format for each protocol */
+ unsigned short icmp_format;
+@@ -100,7 +101,7 @@
+ %token<stringval> IP HOSTMASK IDENTIFIER FILENAME
+ %token<longval> NUMBER
+ 
+-%token LOGFORMAT DETAILED SHORT NORMAL RESOLVE NORESOLVE IDENT NOIDENT LOGCLOSING NOLOGCLOSING
++%token LOGFORMAT DETAILED SHORT NORMAL RESOLVE NORESOLVE IDENT NOIDENT LOGCLOSING NOLOGCLOSING PORTRESOLVE NOPORTRESOLVE
+ %token RUN RUNAS EXPIRE LOG_IN LOG IGNORE FROM TO TYPE PORT SRCPORT OPTION COMMA
+ %token ICMP TCP UDP ALL
+ 
+@@ -138,6 +139,11 @@
+         | NORESOLVE ProtoList EOL
+           { resolve_protocols &= ~$2; }
+ 
++        | PORTRESOLVE ProtoList EOL
++          { portresolve_protocols |= $2; }
++        | NOPORTRESOLVE ProtoList EOL
++          { portresolve_protocols &= ~$2; }
++
+         | LOGCLOSING EOL
+           { log_closing = TRUE; }
+         | NOLOGCLOSING EOL
+@@ -249,6 +255,7 @@
+             switches.log = -1;
+             switches.ident = use_ident;
+             switches.resolve = -1;
++	    switches.portresolve = -1;
+             switches.logformat = -1;
+             switches.logclosing = log_closing;
+           } 
+@@ -259,6 +266,7 @@
+             $$->ident = switches.ident;
+             $$->logclosing = switches.logclosing;
+             $$->resolve = switches.resolve;
++            $$->portresolve = switches.portresolve;
+             $$->logformat = switches.logformat;
+             $$->protocol = $4.protocol;
+             $$->loginfo = $4.loginfoval;
+@@ -287,6 +295,8 @@
+         | NOIDENT    { switches.ident = FALSE; }
+         | RESOLVE    { switches.resolve = RUN_ICMP | RUN_TCP | RUN_UDP; }
+         | NORESOLVE  { switches.resolve = 0; }
++        | PORTRESOLVE    { switches.portresolve = RUN_ICMP | RUN_TCP | RUN_UDP; }
++        | NOPORTRESOLVE  { switches.portresolve = 0; }
+         | SHORT      { switches.logformat = LOGFORMAT_SHORT; }
+         | NORMAL     { switches.logformat = LOGFORMAT_NORMAL; }
+         | DETAILED   { switches.logformat = LOGFORMAT_DETAILED; }
+
+--- a/Source/main.c
++++ b/Source/main.c
+@@ -48,6 +48,10 @@
+ #include "filter.h"
+ #include "pidfile.h"
+ 
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
++
+ /* Logging mechanism */
+ struct loginfo log;
+ 
+
+--- a/Source/netutils.c
++++ b/Source/netutils.c
+@@ -237,15 +237,21 @@
+  * Get a service name for a specified protocol
+  */
+ 
+-void service_lookup(char *proto, char *service, __u16 port) {
++void service_lookup(char *proto, char *service, __u16 port, int portresolve) {
+   struct servent *se;
+ 
+   pthread_mutex_lock(&service_mutex);
+-  se = getservbyport(port, proto);
+-  if (se == NULL)
++  if (portresolve)
++  {
++    se = getservbyport(port, proto);
++    if (se == NULL)
++      snprintf(service, SERVICE_LENGTH, "port %d", ntohs(port));
++    else {
++      snprintf(service, SERVICE_LENGTH, "%s", se->s_name);
++    }
++  }
++  else {
+     snprintf(service, SERVICE_LENGTH, "port %d", ntohs(port));
+-  else {
+-    snprintf(service, SERVICE_LENGTH, "%s", se->s_name);
+   }
+   pthread_mutex_unlock(&service_mutex);
+ }
+
+--- a/Source/netutils.h
++++ b/Source/netutils.h
+@@ -53,6 +53,6 @@
+                  const __u32 src_addr, const __u16 src_port,
+                  const __u32 dst_addr, const __u16 dst_port);
+ 
+-void service_lookup(char *proto, char *service, __u16 port);
++void service_lookup(char *proto, char *service, __u16 port, int portresolve);
+ 
+ #endif
+
+--- a/Source/tcp.c
++++ b/Source/tcp.c
+@@ -51,6 +51,7 @@
+ struct loginfo tcp_log;
+ extern struct loginfo log;
+ extern unsigned short resolve_protocols;
++extern unsigned short portresolve_protocols;
+ 
+ /*
+  * Structure of a TCP packet
+@@ -88,7 +89,7 @@
+     *details ='\0';
+     host_print(remote_host, IPHDR.saddr,
+                info.resolve);
+-    service_lookup("tcp", service, TCPHDR.dest);
++    service_lookup("tcp", service, TCPHDR.dest, info.portresolve);
+     if (info.logformat == LOGFORMAT_DETAILED) {
+       get_details(details,
+                   IPHDR.saddr,
+@@ -186,7 +187,7 @@
+     *details ='\0';
+     host_print(remote_host, IPHDR.saddr,
+                info.resolve);
+-    service_lookup("tcp", service, TCPHDR.dest);
++    service_lookup("tcp", service, TCPHDR.dest, info.portresolve);
+     if (info.logformat == LOGFORMAT_DETAILED) {
+       get_details(details,
+                   IPHDR.saddr,
+
+--- a/Source/udp.c
++++ b/Source/udp.c
+@@ -81,7 +81,7 @@
+     *details ='\0';
+     host_print(remote_host, IPHDR.saddr,
+                info.resolve);
+-    service_lookup("udp", service, UDPHDR.dest);
++    service_lookup("udp", service, UDPHDR.dest, info.portresolve);
+     if (info.logformat == LOGFORMAT_DETAILED) {
+       get_details(details,
+                   IPHDR.saddr,
+
+--- a/ippl.conf
++++ b/ippl.conf
+@@ -4,13 +4,15 @@
+ # User used
+ # ---------
+ # Specify the user (declared in /etc/passwd) used to run the
+-# logging threads.
+-#runas nobody
++# logging threads. The ippl process visible in the process table
++# is still running as root! Look in /proc/pid/task to see the threads
++# running as ippl
++runas ippl
+ 
+ # Resolve hostnames?
+ # ------------------
+-# Uncomment the line below to disable DNS lookups
+-#noresolve all
++# Uncomment the line below to enable DNS lookups
++#resolve all
+ 
+ # Use ident?
+ # ----------
+@@ -38,9 +40,14 @@
+ # ----------------
+ run icmp tcp
+ # Uncomment the line below to log UDP traffic.
+-# See ippl.conf(5) for recommandations.
++# See ippl.conf(5) for recommendations.
+ #run udp
+ 
++# Resolve tcp/udp port to service name?
++# -------------------------------------
++# portresolve icmp tcp udp
++# Set noportresolve <protocol-list> to log port numbers instead
++
+ # Logging format
+ # ----------------
+ # If you want to see the destination address, the ports, etc
+@@ -63,6 +70,3 @@
+ # Do not log DNS queries
+ #ignore udp port domain
+ #ignore udp srcport domain
+-
+-# End of configuration
+-# Copyright (C) 1998-1999 Hugo Haas - Etienne Bernard
+

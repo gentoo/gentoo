@@ -1,0 +1,14 @@
+--- src/gui/qxtglobalshortcut_x11.cpp.orig	2013-12-17 15:03:25.388283632 +0400
++++ src/gui/qxtglobalshortcut_x11.cpp	2013-12-17 15:04:31.566286818 +0400
+@@ -59,7 +59,11 @@
+             // Mod1Mask == Alt, Mod4Mask == Meta
+             key->state & (ShiftMask | ControlMask | Mod1Mask | Mod4Mask));
+     }
++#if QT_VERSION < QT_VERSION_CHECK(5,0,0)
++    return prevEventFilter ? prevEventFilter(message) : false;
++#else
+     return false;
++#endif
+ }
+ 
+ quint32 QxtGlobalShortcutPrivate::nativeModifiers(Qt::KeyboardModifiers modifiers)

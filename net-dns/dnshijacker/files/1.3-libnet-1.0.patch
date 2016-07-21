@@ -1,0 +1,39 @@
+diff -U 0 -r dnshijacker-1.3.orig/Makefile dnshijacker-1.3/Makefile
+--- dnshijacker-1.3.orig/Makefile	2003-08-19 15:39:54.068117160 -0400
++++ dnshijacker-1.3/Makefile	2003-08-19 15:40:26.836135664 -0400
+@@ -4 +4 @@
+-	gcc ask_dns.c -lnet `libnet-config --defines` -o ask_dns
++	gcc ask_dns.c -lnet-1.0 `libnet-1.0-config --defines` -o ask_dns
+@@ -7 +7 @@
+-	gcc answer_dns.c -lnet `libnet-config --defines` -o answer_dns
++	gcc answer_dns.c -lnet-1.0 `libnet-1.0-config --defines` -o answer_dns
+@@ -10 +10 @@
+-	gcc dnshijacker.c -lpcap -lnet -lresolv `libnet-config --defines` -o dnshijacker
++	gcc dnshijacker.c -lpcap -lnet-1.0 -lresolv `libnet-1.0-config --defines` -o dnshijacker
+@@ -13 +13 @@
+-	gcc dnshijacker.c -lpcap -lnet -lresolv `libnet-config --defines` -o dnshijacker -DDEBUG -ggdb
++	gcc dnshijacker.c -lpcap -lnet-1.0 -lresolv `libnet-1.0-config --defines` -o dnshijacker -DDEBUG -ggdb
+diff -U 0 -r dnshijacker-1.3.orig/README dnshijacker-1.3/README
+--- dnshijacker-1.3.orig/README	2003-08-19 15:39:54.068117160 -0400
++++ dnshijacker-1.3/README	2003-08-19 15:40:26.840135056 -0400
+@@ -61 +61 @@
+-	gcc dnshijacker.c -lpcap -lnet `libnet-config --defines` -o dnshijacker
++	gcc dnshijacker.c -lpcap -lnet-1.0 `libnet-1.0-config --defines` -o dnshijacker
+diff -U 0 -r dnshijacker-1.3.orig/answer_dns.c dnshijacker-1.3/answer_dns.c
+--- dnshijacker-1.3.orig/answer_dns.c	2003-08-19 15:39:54.069117008 -0400
++++ dnshijacker-1.3/answer_dns.c	2003-08-19 15:40:48.815794248 -0400
+@@ -5 +5 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -U 0 -r dnshijacker-1.3.orig/ask_dns.c dnshijacker-1.3/ask_dns.c
+--- dnshijacker-1.3.orig/ask_dns.c	2003-08-19 15:39:54.068117160 -0400
++++ dnshijacker-1.3/ask_dns.c	2003-08-19 15:40:48.816794096 -0400
+@@ -5 +5 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>
+diff -U 0 -r dnshijacker-1.3.orig/dnshijacker.h dnshijacker-1.3/dnshijacker.h
+--- dnshijacker-1.3.orig/dnshijacker.h	2003-08-19 15:39:54.068117160 -0400
++++ dnshijacker-1.3/dnshijacker.h	2003-08-19 15:40:48.818793792 -0400
+@@ -10 +10 @@
+-#include <libnet.h>
++#include <libnet-1.0.h>

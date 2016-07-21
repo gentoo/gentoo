@@ -1,0 +1,34 @@
+diff --git a/mapwfs11.c b/mapwfs11.c
+index 20ab164..4dc15fc 100755
+--- a/mapwfs11.c
++++ b/mapwfs11.c
+@@ -29,12 +29,12 @@
+ 
+ #include "mapserver.h"
+ #include "mapows.h"
++#include "mapowscommon.h"
+ 
+ 
+ 
+ #if defined(USE_WFS_SVR) && defined(USE_LIBXML2)
+ #include "maplibxml2.h"
+-#include "mapowscommon.h"
+ #include "mapogcfilter.h"
+ 
+ /************************************************************************/
+diff --git a/mapwfs20.c b/mapwfs20.c
+index 710d444..cf69ee3 100755
+--- a/mapwfs20.c
++++ b/mapwfs20.c
+@@ -29,10 +29,10 @@
+ 
+ #include "mapserver.h"
+ #include "mapows.h"
++#include "mapowscommon.h"
+ 
+ #if defined(USE_WFS_SVR) && defined(USE_LIBXML2)
+ #include "maplibxml2.h"
+-#include "mapowscommon.h"
+ #include "mapogcfilter.h"
+ 
+ #define MS_OWS_11_NAMESPACE_PREFIX       MS_OWSCOMMON_OWS_NAMESPACE_PREFIX

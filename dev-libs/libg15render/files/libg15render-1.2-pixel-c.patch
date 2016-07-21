@@ -1,0 +1,19 @@
+dev-libs/libg15render-1.2:
+ 
+ * QA Notice: Package has poor programming practices which may compile
+ *            fine but exhibit random runtime failures.
+ * pixel.c:356: warning: incompatible implicit declaration of built-in function 'ceil'
+ 
+ 
+Should be fixed by including math.h:
+ 
+--- libg15render-1.2_old/pixel.c        2007-03-14 23:37:42.000000000 +0100
++++ libg15render-1.2/pixel.c    2007-03-14 23:36:29.000000000 +0100
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include <fcntl.h>
++#include <math.h>
+ #include "libg15render.h"
+ 
+ void

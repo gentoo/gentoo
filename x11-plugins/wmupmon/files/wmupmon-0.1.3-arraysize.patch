@@ -1,0 +1,32 @@
+--- src/main.c.orig	2006-10-12 13:09:14.000000000 +0200
++++ src/main.c	2006-10-12 13:12:27.000000000 +0200
+@@ -66,10 +66,10 @@
+ int main(int argc, char **argv)
+ {
+    int i, a, aa, b, bb;
+-   char* real_off_xpm[(style == 2 ? sizeof(backlight2_off_xpm) :
+-                       sizeof(backlight_off_xpm))];
+-   char* real_on_xpm[(style == 2 ? sizeof(backlight2_on_xpm) :
+-                       sizeof(backlight_on_xpm))];
++   char* real_off_xpm[(style == 2 ? sizeof(backlight2_off_xpm)/sizeof(char*) :
++                       sizeof(backlight_off_xpm)/sizeof(char*))];
++   char* real_on_xpm[(style == 2 ? sizeof(backlight2_on_xpm)/sizeof(char*) :
++                       sizeof(backlight_on_xpm)/sizeof(char*))];
+    XEvent event;
+    XpmColorSymbol colors[2] = { {"Back0", NULL, 0}, {"Back1", NULL, 0} };
+    int ncolor = 0;
+@@ -79,10 +79,10 @@
+    
+    /* setup pixmap to use - this is ugly but it works */
+    
+-   a = sizeof(backlight2_off_xpm);
+-   aa = sizeof(backlight2_on_xpm);
+-   b = sizeof(backlight_off_xpm);
+-   bb = sizeof(backlight_on_xpm);
++   a = sizeof(backlight2_off_xpm)/sizeof(char*);
++   aa = sizeof(backlight2_on_xpm)/sizeof(char*);
++   b = sizeof(backlight_off_xpm)/sizeof(char*);
++   bb = sizeof(backlight_on_xpm)/sizeof(char*);
+    if(style == 2){
+       for(i=0; i<a; i++)
+          real_off_xpm[i] = backlight2_off_xpm[i];

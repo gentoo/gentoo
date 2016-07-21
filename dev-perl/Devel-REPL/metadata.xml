@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Devel-REPL</remote-id>
+    <remote-id type="cpan-module">Devel::REPL</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Error</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Meta::Plugin</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::B::Concise</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Colors</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Commands</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Completion</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::Globals</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::INC</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::Keywords</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::LexEnv</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::Methods</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::CompletionDriver::Turtles</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::DDC</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::DDS</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::DumpHistory</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::FancyPrompt</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::FindVariable</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::History</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Interrupt</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::LexEnv</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::MultiLine::PPI</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::NewlineHack</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Nopaste</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::OutputCache</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::PPI</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Packages</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Packages::DefaultScratchpad</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Peek</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::ReadLineHistory</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Refresh</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::ShowClass</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Timing</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Plugin::Turtles</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Profile</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Profile::Default</remote-id>
+    <remote-id type="cpan-module">Devel::REPL::Script</remote-id>
+  </upstream>
+</pkgmetadata>

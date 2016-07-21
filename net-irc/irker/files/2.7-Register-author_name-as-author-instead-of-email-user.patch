@@ -1,0 +1,32 @@
+From 108e898c600cf7a80a3d01a83a270c7579460b42 Mon Sep 17 00:00:00 2001
+From: Bertrand Jacquin <beber@meleeweb.net>
+Date: Mon, 23 Sep 2013 23:10:23 +0200
+Subject: [PATCH 1/3] Register author_name as author instead of email userpart
+
+Signed-off-by: Bertrand Jacquin <beber@meleeweb.net>
+---
+ irkerhook.py | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/irkerhook.py b/irkerhook.py
+index 5f15032..36a875e 100755
+--- a/irkerhook.py
++++ b/irkerhook.py
+@@ -275,15 +275,8 @@ class GitExtractor(GenericExtractor):
+         # Design choice: for git we ship only the first message line, which is
+         # conventionally supposed to be a summary of the commit.  Under
+         # other VCSes a different choice may be appropriate.
+-        commit.author_name, commit.mail, commit.logmsg = \
+-            do("git log -1 '--pretty=format:%an%n%ae%n%s' " + shellquote(commit.commit)).split("\n")
+-        # This discards the part of the author's address after @.
+-        # Might be be nice to ship the full email address, if not
+-        # for spammers' address harvesters - getting this wrong
+-        # would make the freenode #commits channel into harvester heaven.
+-        commit.author = commit.mail.split("@")[0]
+-        commit.author_date, commit.commit_date = \
+-            do("git log -1 '--pretty=format:%ai|%ci' " + shellquote(commit.commit)).split("|")
++        commit.logmsg = do("git log -1 '--pretty=format:%s' " + shellquote(commit.commit))
++        commit.author = do("git log -1 '--pretty=format:%an' " + shellquote(commit.commit))
+         return commit
+ 
+ class SvnExtractor(GenericExtractor):

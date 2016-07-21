@@ -1,0 +1,21 @@
+--- configure.in.orig	2012-08-08 17:19:49.374366942 +0100
++++ configure.in	2012-08-08 17:20:40.585155226 +0100
+@@ -334,7 +334,8 @@
+ 
+ # Build hypre module if HYPRE is installed
+ hypre=no
+-if test "x$use_mpicc" = "xyes" ; then # HYPRE needs MPI
++# hypre does not need mpi
++#if test "x$use_mpicc" = "xyes" ; then # HYPRE needs MPI
+    AC_CHECK_LIB(HYPRE, HYPRE_IJMatrixCreate, hypre="yes", hypre="no", [-lm])
+    if test x$hypre = xyes; then
+       AC_CHECK_HEADERS(HYPRE.h, hypre="yes", hypre="no")
+@@ -342,7 +343,7 @@
+    if test x$hypre = xno; then
+       AC_MSG_WARN([HYPRE not found. hypre Module won't be available.])
+    fi
+-fi
++#fi
+ AM_CONDITIONAL(BUILD_HYPRE, test x$hypre = xyes)
+ 
+ # Build lis module if lis is installed

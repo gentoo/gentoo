@@ -1,0 +1,11 @@
+[Unit]
+Description=WPA supplicant
+
+[Service]
+Type=dbus
+BusName=fi.epitest.hostap.WPASupplicant
+ExecStart=/usr/sbin/wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant.conf -u
+
+[Install]
+WantedBy=multi-user.target
+Alias=dbus-fi.epitest.hostap.WPASupplicant.service

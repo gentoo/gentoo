@@ -1,0 +1,26 @@
+a few xfsprogs defs are still used in the code base.
+these are copied from the platform_defs.h.in file.
+
+--- include/config.h.in
++++ include/config.h.in
+@@ -21,4 +21,20 @@
+ #endif
+ #include <locale.h>
+ 
++#define IRIX_DEV_BITSMAJOR      14
++#define IRIX_DEV_BITSMINOR      18
++#define IRIX_DEV_MAXMAJ         0x1ff
++#define IRIX_DEV_MAXMIN         0x3ffff
++#define IRIX_DEV_MAJOR(dev)	((int)(((unsigned)(dev) >> IRIX_DEV_BITSMINOR) \
++					& IRIX_DEV_MAXMAJ))
++#define IRIX_DEV_MINOR(dev)	((int)((dev) & IRIX_DEV_MAXMIN))
++#define IRIX_MKDEV(major,minor)	((xfs_dev_t)(((major) << IRIX_DEV_BITSMINOR) \
++					| (minor&IRIX_DEV_MAXMIN)))
++#define IRIX_DEV_TO_KDEVT(dev)	makedev(IRIX_DEV_MAJOR(dev),IRIX_DEV_MINOR(dev))
++
++#ifndef min
++#define min(a,b)	(((a)<(b))?(a):(b))
++#define max(a,b)	(((a)>(b))?(a):(b))
++#endif
++
+ #endif	/* __CONFIG_H__ */

@@ -1,0 +1,10 @@
+--- a/include/dos.h
++++ b/include/dos.h
+@@ -26,6 +26,7 @@
+ #include <net/ppp_defs.h>
+ #include <sys/ioctl.h>
+ #include <time.h>
++#include <ctype.h> /* isdigit() */
+ 
+ /*
+ #define DEBUG_TREE	1

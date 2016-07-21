@@ -1,0 +1,49 @@
+Fixes makefile.in to respect DESTDIR during install
+Fixes makefile.in to use $MAKE instead of 'make'
+Fixes makefile.in to respect AR during libbas build
+
+Patch by Kevin McCarthy <signals42@gmail.com>
+
+--- Makefile.in
++++ Makefile.in
+@@ -27,7 +27,7 @@
+ libbas.a:	auto.o bas.o fs.o global.o token.o program.o \
+ 		str.o value.o var.o
+ 		rm -f $@
+-		ar cq $@ auto.o bas.o fs.o global.o token.o program.o \
++		$(AR) cq $@ auto.o bas.o fs.o global.o token.o program.o \
+ 		str.o value.o var.o
+ 		@RANLIB@ libbas.a
+ 
+@@ -35,7 +35,7 @@
+ install-po-no:
+ install-po-yes:	$(CATALOGS)
+ 		for cat in $(CATALOGS); do \
+-		  dir=$(localedir)/`basename $$cat .mo`/LC_MESSAGES; \
++		  dir=$(DESTDIR)/$(localedir)/`basename $$cat .mo`/LC_MESSAGES; \
+ 		  [ -d $$dir ] || @INSTALL@ -m 755 -d $$dir; \
+ 		  @INSTALL@ -m 644 $$cat $$dir/bas.mo; \
+ 		done
+@@ -44,14 +44,14 @@
+ 		for i in test/test*; do ./$$i || break; done
+ 
+ install:	all
+-		@INSTALL@ -m 755 -d @bindir@
+-		@INSTALL@ bas @bindir@/bas
+-		@INSTALL@ -m 755 -d @libdir@
+-		@INSTALL@ -m 644 libbas.a @libdir@/libbas.a
+-		@RANLIB@ @libdir@/libbas.a
+-		@INSTALL@ -m 755 -d @mandir@/man1
+-		@INSTALL@ -m 644 bas.1 @mandir@/man1/bas.1
+-		make install-po
++		@INSTALL@ -m 755 -d $(DESTDIR)/@bindir@
++		@INSTALL@ bas $(DESTDIR)/@bindir@/bas
++		@INSTALL@ -m 755 -d $(DESTDIR)/@libdir@
++		@INSTALL@ -m 644 libbas.a $(DESTDIR)/@libdir@/libbas.a
++		@RANLIB@ $(DESTDIR)/@libdir@/libbas.a
++		@INSTALL@ -m 755 -d $(DESTDIR)/@mandir@/man1
++		@INSTALL@ -m 644 bas.1 $(DESTDIR)/@mandir@/man1/bas.1
++		$(MAKE) install-po
+ 
+ .c.o:
+ 		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<

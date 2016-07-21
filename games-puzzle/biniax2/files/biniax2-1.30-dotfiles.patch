@@ -1,0 +1,60 @@
+--- biniax.c
++++ biniax.c
+@@ -47,6 +47,8 @@
+ INCLUDES
+ ******************************************************************************/
+ 
++#include <unistd.h>
++
+ #include "game.h"
+ #include "lev.h"
+ #include "inc.h"
+@@ -97,6 +99,8 @@
+ 	UNREF( argc );
+ 	UNREF( argv );
+ 
++	chdir( getenv( "HOME" ) );
++
+ 	cfgInit();
+ 	hofInit();
+ 	if ( gfxInit() == BNX_FALSE )
+--- desktop/cfg.c
++++ desktop/cfg.c
+@@ -36,7 +36,7 @@
+ ******************************************************************************/
+ 
+ #define _Cfg_Buffer 255
+-#define csConfigName "config.bnx2"
++#define csConfigName ".config.bnx2"
+ 
+ struct BNX_SETUP
+ {
+--- game.h
++++ game.h
+@@ -37,7 +37,7 @@
+ DEFINITIONS
+ ******************************************************************************/
+ 
+-#define csSaveGameName		"autosave.bnx2"
++#define csSaveGameName		".autosave.bnx2"
+ 
+ /******************************************************************************
+ CONSTANTS
+--- hof.c
++++ hof.c
+@@ -34,7 +34,7 @@
+ #define chCursor		'_'			/* Cursor ON */
+ #define chSpace			' '			/* Cursor OFF*/
+ 
+-#define csHOFName		"hof.bnx2"	/* File name */
++#define csHOFName		".hof.bnx2"	/* File name */
+ #define cHOFFileSize	504			/* File size */
+ 
+ BNX_HALL	Hof;
+@@ -292,4 +292,4 @@
+ BNX_HALL *hofGet()
+ {
+ 	return (BNX_HALL *) &Hof;
+-}
+\ No newline at end of file
++}

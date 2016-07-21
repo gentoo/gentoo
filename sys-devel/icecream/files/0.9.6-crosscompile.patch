@@ -1,0 +1,12 @@
+diff -urN icecc-0.9.6.old//client/icecc-create-env icecc-0.9.6//client/icecc-create-env
+--- icecc-0.9.6.old//client/icecc-create-env	2010-09-18 12:10:08.143391700 +0200
++++ icecc-0.9.6//client/icecc-create-env	2010-09-18 12:10:46.574391700 +0200
+@@ -97,7 +97,7 @@
+ 
+ add_file $added_gcc /usr/bin/gcc
+ add_file $added_gxx /usr/bin/g++
+-add_file /usr/bin/as
++add_file `$added_gcc -print-prog-name=as` /usr/bin/as
+ 
+ if test "$is_darwin" = 1; then
+     # add dynamic linker

@@ -1,0 +1,67 @@
+--- p9m4-v05-orig/setup.py	2007-11-17 09:31:26.000000000 +1100
++++ p9m4-v05/setup.py	2012-07-02 23:48:21.753760992 +1000
+@@ -26,23 +26,24 @@
+ 
+ from setuptools import setup
+ 
+-APP = ['prover9-mace4.py']
+-DATA_FILES = ['platforms.py',
+- 'utilities.py',
+- 'wx_utilities.py',
+- 'files.py',
+- 'options.py',
+- 'partition_input.py',
+- 'my_setup.py',
+- 'control.py',
+- 'Images',
+- 'Samples',
+- 'bin-mac']
+-OPTIONS = {'argv_emulation': True, 'iconfile': '/Users/mccune/gui/v4/p9.icns'}
++OPTIONS = {'argv_emulation': True, 'iconfile': '/usr/share/p9m4/Images/p9.ico'}
+ 
+ setup(
+-    app=APP,
+-    data_files=DATA_FILES,
+-    options={'py2app': OPTIONS},
+-    setup_requires=['py2app'],
++    name='p9m4',
++    version='05',
++    scripts=['prover9-mace4.py'],
++    package_dir = {'p9m4': 'p9m4'},
++    py_modules=['p9m4.platforms',
++             'p9m4.utilities',
++             'p9m4.wx_utilities',
++             'p9m4.files',
++             'p9m4.options',
++             'p9m4.partition_input',
++             'p9m4.my_setup',
++             'p9m4.control'],
++    # remove py2app
++    # https://bugs.gentoo.org/show_bug.cgi?id=423555
++    # sci-mathematics/p9m4-05: tries to use network during install
++    # options={'py2app': OPTIONS},
++    # setup_requires=['py2app'],
+ )
+--- p9m4-v05-orig/prover9-mace4.py	2007-12-08 03:27:13.000000000 +1100
++++ p9m4-v05/prover9-mace4.py	2012-01-08 18:12:09.970620044 +1100
+@@ -27,13 +27,13 @@
+ 
+ # local imports
+ 
+-import partition_input
+-import utilities
+-from files import *
+-from platforms import *
+-from wx_utilities import *
+-from my_setup import *
+-from control import *
++import p9m4.partition_input
++import p9m4.utilities
++from p9m4.files import *
++from p9m4.platforms import *
++from p9m4.wx_utilities import *
++from p9m4.my_setup import *
++from p9m4.control import *
+ 
+ Program_name = 'Prover9-Mace4'
+ Program_version = '0.5'

@@ -1,0 +1,40 @@
+diff -ur mwavem-2.0.orig/src/include/mwmparsi.h mwavem-2.0/src/include/mwmparsi.h
+--- mwavem-2.0.orig/src/include/mwmparsi.h	2001-05-04 22:28:52.000000000 +0300
++++ mwavem-2.0/src/include/mwmparsi.h	2009-08-08 11:58:51.000000000 +0300
+@@ -516,8 +516,8 @@
+ 
+   
+ #ifdef DEBUG
+-   void    dprintf(char *szFormat, ...);
+-   #define DPF  dprintf
++   void    mwavem_dprintf(char *szFormat, ...);
++   #define DPF  mwavem_dprintf
+    
+ #else
+    #define DPF ((void)0)
+diff -ur mwavem-2.0.orig/src/include/mwmspcfc.h mwavem-2.0/src/include/mwmspcfc.h
+--- mwavem-2.0.orig/src/include/mwmspcfc.h	2001-05-04 22:28:52.000000000 +0300
++++ mwavem-2.0/src/include/mwmspcfc.h	2009-08-08 11:56:34.000000000 +0300
+@@ -705,8 +705,8 @@
+ void MWM_ENTRY mwmPostMessage(UINT uMsg, LONG wParam, LONG lParam); // @TBD
+ 
+ #ifdef DEBUG
+-   void    dprintf(char *szFormat, ...);
+-   #define DPF  dprintf
++   void    mwavem_dprintf(char *szFormat, ...);
++   #define DPF  mwavem_dprintf
+ #else
+    #define DPF ((void)0)
+ #endif
+diff -ur mwavem-2.0.orig/src/mwmlw32/mwmload.c mwavem-2.0/src/mwmlw32/mwmload.c
+--- mwavem-2.0.orig/src/mwmlw32/mwmload.c	2004-03-31 06:58:55.000000000 +0300
++++ mwavem-2.0/src/mwmlw32/mwmload.c	2009-08-08 11:56:50.000000000 +0300
+@@ -72,7 +72,7 @@
+ 
+ 
+ #define MODNAME "MWMODEM"
+-void dprintf(char *szFormat, ...)
++void mwavem_dprintf(char *szFormat, ...)
+ {
+   /*if (usDebugWindow)
+   {*/

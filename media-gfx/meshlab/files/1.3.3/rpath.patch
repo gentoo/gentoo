@@ -1,0 +1,39 @@
+diff -Nur meshlab.orig/src/meshlab/meshlab.pro meshlab/src/meshlab/meshlab.pro
+--- meshlab.orig/src/meshlab/meshlab.pro	2012-05-31 00:32:44.000000000 +1000
++++ meshlab/src/meshlab/meshlab.pro	2012-08-06 21:26:01.405784190 +1000
+@@ -130,11 +130,11 @@
+ #}
+ 
+-linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
++linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU -lGLEW
+-linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+-linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -ljhead -L../distrib -lcommon -lGLU
++linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -ljhead -L../distrib -lcommon -lGLU -lGLEW
+-linux-g++-32:QMAKE_RPATHDIR += ../distrib
++linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+-linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -ljhead -L../distrib -lcommon -lGLU
++linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -ljhead -L../distrib -lcommon -lGLU -lGLEW
+-linux-g++-64:QMAKE_RPATHDIR += ../distrib
++linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ 
+ # uncomment in your local copy only in emergency cases.
+ # We should never be too permissive
+diff -Nur meshlab.orig/src/meshlabserver/meshlabserver.pro meshlab/src/meshlabserver/meshlabserver.pro
+--- meshlab.orig/src/meshlabserver/meshlabserver.pro	2011-10-15 03:34:48.000000000 +1100
++++ meshlab/src/meshlabserver/meshlabserver.pro	2012-08-06 21:26:34.609557938 +1000
+@@ -26,11 +26,11 @@
+ win32-msvc2010:  LIBS += -L../distrib -lcommon
+ win32-g++:  LIBS += -L../distrib -lcommon
+ linux-g++:  LIBS += -L../distrib -lcommon
+-linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ linux-g++-32:  LIBS += -L../distrib -lcommon
+-linux-g++-32:QMAKE_RPATHDIR += ../distrib
++linux-g++-32:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ linux-g++-64:  LIBS += -L../distrib -lcommon
+-linux-g++-64:QMAKE_RPATHDIR += ../distrib
++linux-g++-64:QMAKE_LFLAGS += -Wl,-rpath,\''$'$ORIGIN\'
+ #CONFIG (release,debug | release) {
+ #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
+ #	win32-msvc2008:release:  LIBS += -L../common/release -lcommon

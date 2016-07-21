@@ -1,0 +1,12 @@
+--- usr.sbin/bsdinstall/distextract/distextract.c.old	2011-11-02 20:28:08.000000000 +0000
++++ usr.sbin/bsdinstall/distextract/distextract.c	2011-11-02 20:28:57.000000000 +0000
+@@ -32,6 +32,9 @@
+ #include <limits.h>
+ #include <archive.h>
+ #include <dialog.h>
++#ifndef archive_read_free
++#define archive_read_free(x) archive_read_finish(x)
++#endif
+ 
+ static int extract_files(int nfiles, const char **files);
+ 

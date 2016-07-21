@@ -1,0 +1,865 @@
+ c++/include/corelib/ncbiexpt.hpp                   |   4 +-
+ c++/include/corelib/ncbimisc.hpp                   |   2 +
+ c++/include/corelib/ncbiobj.hpp                    |   2 +-
+ c++/include/corelib/ncbistl.hpp                    |   6 +-
+ c++/include/corelib/ncbistr.hpp                    |   2 +-
+ c++/include/corelib/test_boost.hpp                 |  44 +++++-
+ c++/include/dbapi/driver/dbapi_object_convert.hpp  |   8 +-
+ .../dbapi/driver/impl/dbapi_driver_utils.hpp       |   2 +-
+ c++/include/serial/impl/stltypes.hpp               |  16 ++-
+ c++/include/serial/iterator.hpp                    |   6 +-
+ c++/include/serial/serialbase.hpp                  |   8 +-
+ c++/include/util/bitset/bmfunc.h                   |   7 +
+ c++/include/util/linkedset.hpp                     |  16 +--
+ c++/include/util/rangemap.hpp                      |   4 +-
+ c++/src/connect/ncbi_gnutls.c                      |  19 ++-
+ c++/src/corelib/ncbifile.cpp                       |   2 +-
+ c++/src/corelib/test_boost.cpp                     | 156 ++++++++++++++++++++-
+ c++/src/objtools/blast/seqdb_reader/seqdbimpl.hpp  |   2 +-
+ c++/src/serial/stdtypes.cpp                        |   8 +-
+ 19 files changed, 269 insertions(+), 45 deletions(-)
+
+diff --git a/c++/include/corelib/ncbiexpt.hpp b/c++/include/corelib/ncbiexpt.hpp
+index a9cf850..6d90e74 100644
+--- a/c++/include/corelib/ncbiexpt.hpp
++++ b/c++/include/corelib/ncbiexpt.hpp
+@@ -831,7 +831,7 @@ const TTo* UppermostCast(const TFrom& from)
+     exception_class(const exception_class& other) \
+        : base_class(other) \
+     { \
+-        x_Assign(other); \
++        this->x_Assign(other); \
+     } \
+ public: \
+     virtual ~exception_class(void) throw() {} \
+@@ -1154,7 +1154,7 @@ public:
+         : TBase( other)
+     {
+         m_Errno = other.m_Errno;
+-        x_Assign(other);
++        this->x_Assign(other);
+     }
+ 
+     /// Destructor.
+diff --git a/c++/include/corelib/ncbimisc.hpp b/c++/include/corelib/ncbimisc.hpp
+index f45d280..f0c030d 100644
+--- a/c++/include/corelib/ncbimisc.hpp
++++ b/c++/include/corelib/ncbimisc.hpp
+@@ -57,6 +57,8 @@
+  * @{
+  */
+ 
++#include <stdlib.h>
++
+ #ifndef NCBI_ESWITCH_DEFINED
+ #define NCBI_ESWITCH_DEFINED
+ 
+diff --git a/c++/include/corelib/ncbiobj.hpp b/c++/include/corelib/ncbiobj.hpp
+index 4f83db4..815c188 100644
+--- a/c++/include/corelib/ncbiobj.hpp
++++ b/c++/include/corelib/ncbiobj.hpp
+@@ -2128,7 +2128,7 @@ public:
+         CIRef<Interface, TThisType> ref(
+                    dynamic_cast<Interface*>(proxy->GetLockedObject()), *this);
+         if (ref.NotNull()) {
+-            Unlock(ref.GetPointer());
++            this->Unlock(ref.GetPointer());
+         }
+         return ref;
+     }
+diff --git a/c++/include/corelib/ncbistl.hpp b/c++/include/corelib/ncbistl.hpp
+index 0bf465a..0618d9d 100644
+--- a/c++/include/corelib/ncbistl.hpp
++++ b/c++/include/corelib/ncbistl.hpp
+@@ -37,7 +37,6 @@
+ 
+ #include <common/ncbi_export.h>
+ 
+-
+ // Get rid of some warnings in MSVC++ 6.00
+ #if (_MSC_VER >= 1200)
+ // too long identificator name in the debug info;  truncated
+@@ -162,6 +161,9 @@ typedef int NCBI_NAME2(T_EAT_SEMICOLON_,UniqueName)
+ #endif
+ 
+ #if defined(NCBI_COMPILER_GCC) || defined(NCBI_COMPILER_WORKSHOP)
++#  if defined(NCBI_COMPILER_GCC)  &&  NCBI_COMPILER_VERSION >= 400
++#    include <algorithm>
++#  endif
+ // This template is used by some stl algorithms (sort, reverse...)
+ // We need to have our own implementation because some C++ Compiler vendors 
+ // implemented it by using a temporary variable and an assignment operator 
+@@ -174,7 +176,7 @@ template<typename Iter>
+ inline
+ void iter_swap( Iter it1, Iter it2 )
+ {
+-    swap( *it1, * it2 );
++    swap( *it1, *it2 );
+ }
+ 
+ END_STD_SCOPE
+diff --git a/c++/include/corelib/ncbistr.hpp b/c++/include/corelib/ncbistr.hpp
+index db7054f..63e3299 100644
+--- a/c++/include/corelib/ncbistr.hpp
++++ b/c++/include/corelib/ncbistr.hpp
+@@ -2583,7 +2583,7 @@ public:
+         : TBase(other)
+     {
+         m_Pos = other.m_Pos;
+-        x_Assign(other);
++        this->x_Assign(other);
+     }
+ 
+     /// Destructor.
+diff --git a/c++/include/corelib/test_boost.hpp b/c++/include/corelib/test_boost.hpp
+index 69c41f3..4cd77d3 100644
+--- a/c++/include/corelib/test_boost.hpp
++++ b/c++/include/corelib/test_boost.hpp
+@@ -56,10 +56,18 @@
+ #  undef BOOST_AUTO_TEST_MAIN
+ #endif
+ 
++#ifdef NCBI_COMPILER_MSVC
++#  pragma warning(push)
++// 'class' : class has virtual functions, but destructor is not virtual
++#  pragma warning(disable: 4265)
++#endif
++
++#include <boost/version.hpp>
+ #include <boost/test/auto_unit_test.hpp>
+ #include <boost/test/floating_point_comparison.hpp>
+ #include <boost/test/framework.hpp>
+ #include <boost/test/execution_monitor.hpp>
++#include <boost/test/parameterized_test.hpp>
+ 
+ #include <boost/preprocessor/tuple/rem.hpp>
+ #include <boost/preprocessor/repeat.hpp>
+@@ -72,6 +80,7 @@
+ #undef BOOST_CHECK_THROW_IMPL
+ #undef BOOST_CHECK_NO_THROW_IMPL
+ #undef BOOST_FIXTURE_TEST_CASE
++#undef BOOST_PARAM_TEST_CASE
+ 
+ #define BOOST_CHECK_THROW_IMPL( S, E, P, prefix, TL )                    \
+ try {                                                                    \
+@@ -109,6 +118,12 @@ catch( ... ) {                                                               \
+ }                                                                            \
+ /**/
+ 
++#if BOOST_VERSION >= 104200
++#  define NCBI_BOOST_LOCATION()  , boost::execution_exception::location()
++#else
++#  define NCBI_BOOST_LOCATION()
++#endif
++
+ #define BOOST_FIXTURE_TEST_CASE( test_name, F )                         \
+ struct test_name : public F { void test_method(); };                    \
+                                                                         \
+@@ -124,7 +139,8 @@ static void BOOST_AUTO_TC_INVOKER( test_name )()                        \
+                          ::framework::current_test_case().p_name        \
+                  << "\"" << ex);                                        \
+         throw boost::execution_exception(                               \
+-                boost::execution_exception::cpp_exception_error, "");   \
++                boost::execution_exception::cpp_exception_error, ""     \
++                NCBI_BOOST_LOCATION() );                                \
+     }                                                                   \
+ }                                                                       \
+                                                                         \
+@@ -142,6 +158,12 @@ BOOST_JOIN( BOOST_JOIN( test_name, _registrar ), __LINE__ ) (           \
+ void test_name::test_method()                                           \
+ /**/
+ 
++#define BOOST_PARAM_TEST_CASE( function, begin, end )                       \
++    ::NCBI_NS_NCBI::NcbiTestGenTestCases( function,                         \
++                                          BOOST_TEST_STRINGIZE( function ), \
++                                          (begin), (end) )                  \
++/**/
++
+ /// Set timeout value for the test case created using auto-registration
+ /// facility.
+ #define BOOST_AUTO_TEST_CASE_TIMEOUT(test_name, n)                      \
+@@ -158,6 +180,26 @@ static struct BOOST_JOIN( test_name, _timeout_spec )                    \
+ } BOOST_JOIN( test_name, _timeout_spec_inst );                          \
+ /**/
+ 
++/// Automatic registration of the set of test cases based on some function
++/// accepting one parameter. Set of parameters used to call that function is
++/// taken from iterator 'begin' which is incremented until it reaches 'end'.
++///
++/// @sa BOOST_PARAM_TEST_CASE
++#define BOOST_AUTO_PARAM_TEST_CASE( function, begin, end )               \
++    BOOST_AUTO_TU_REGISTRAR(function) (                                  \
++                            BOOST_PARAM_TEST_CASE(function, begin, end)) \
++/**/
++
++#define BOOST_TIMEOUT(M)                                        \
++    do {                                                        \
++        static string s(M);                                     \
++        throw boost::execution_exception(                       \
++                boost::execution_exception::timeout_error, s    \
++                NCBI_BOOST_LOCATION());                         \
++    } while (0)                                                 \
++/**/
++
++
+ 
+ #define NCBITEST_CHECK_IMPL(P, check_descr, TL, CT)                          \
+     BOOST_CHECK_NO_THROW_IMPL(BOOST_CHECK_IMPL(P, check_descr, TL, CT), TL)
+diff --git a/c++/include/dbapi/driver/dbapi_object_convert.hpp b/c++/include/dbapi/driver/dbapi_object_convert.hpp
+index 6fcde61..eddde81 100644
+--- a/c++/include/dbapi/driver/dbapi_object_convert.hpp
++++ b/c++/include/dbapi/driver/dbapi_object_convert.hpp
+@@ -67,7 +67,7 @@ public:
+     operator const CTime&(void) const;
+ 
+ private:
+-    mutable obj_type& m_Value; 
++    obj_type& m_Value; 
+ };
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -92,7 +92,7 @@ public:
+     operator const CTime&(void) const;
+ 
+ private:
+-    mutable obj_type& m_Value; 
++    obj_type& m_Value; 
+ };
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -133,7 +133,7 @@ public:
+     operator const CTime&(void) const;
+ 
+ private:
+-    mutable obj_type& m_Value; 
++    obj_type& m_Value; 
+ };
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+@@ -174,7 +174,7 @@ public:
+     operator const CTime&(void) const;
+ 
+ private:
+-    mutable obj_type& m_Value; 
++    obj_type& m_Value; 
+ };
+ 
+ ////////////////////////////////////////////////////////////////////////////////
+diff --git a/c++/include/dbapi/driver/impl/dbapi_driver_utils.hpp b/c++/include/dbapi/driver/impl/dbapi_driver_utils.hpp
+index 0792a6d..b6bd64b 100644
+--- a/c++/include/dbapi/driver/impl/dbapi_driver_utils.hpp
++++ b/c++/include/dbapi/driver/impl/dbapi_driver_utils.hpp
+@@ -231,7 +231,7 @@ protected:
+ 
+ private:
+     const string& m_SPName;
+-    mutable impl::CConnection& m_Conn;
++    impl::CConnection& m_Conn;
+ };
+ 
+ 
+diff --git a/c++/include/serial/impl/stltypes.hpp b/c++/include/serial/impl/stltypes.hpp
+index d41ab94..7d9e3ce 100644
+--- a/c++/include/serial/impl/stltypes.hpp
++++ b/c++/include/serial/impl/stltypes.hpp
+@@ -412,6 +412,7 @@ public:
+     typedef StlIterator TStlIterator;
+     typedef TypeInfoIterator TTypeInfoIterator;
+     typedef typename TTypeInfoIterator::TObjectPtr TObjectPtr;
++    typedef CStlClassInfoFunctions<Container> CParent;
+ 
+     static TStlIterator& It(TTypeInfoIterator& iter)
+         {
+@@ -437,7 +438,8 @@ public:
+         }
+     static bool InitIterator(TTypeInfoIterator& iter)
+         {
+-            TStlIterator stl_iter = Get(iter.GetContainerPtr()).begin();
++            TStlIterator stl_iter
++                = CParent::Get(iter.GetContainerPtr()).begin();
+             if ( sizeof(TStlIterator) <= sizeof(iter.m_IteratorData) ) {
+                 void* data = &iter.m_IteratorData;
+                 new (data) TStlIterator(stl_iter);
+@@ -445,7 +447,7 @@ public:
+             else {
+                 iter.m_IteratorData = new TStlIterator(stl_iter);
+             }
+-            return stl_iter != Get(iter.GetContainerPtr()).end();
++            return stl_iter != CParent::Get(iter.GetContainerPtr()).end();
+         }
+     static void ReleaseIterator(TTypeInfoIterator& iter)
+         {
+@@ -466,7 +468,7 @@ public:
+ 
+     static bool NextElement(TTypeInfoIterator& iter)
+         {
+-            return ++It(iter) != Get(iter.GetContainerPtr()).end();
++            return ++It(iter) != CParent::Get(iter.GetContainerPtr()).end();
+         }
+     static TObjectPtr GetElementPtr(const TTypeInfoIterator& iter)
+         {
+@@ -503,7 +505,7 @@ public:
+     
+     static bool EraseElement(TTypeInfoIterator& iter)
+         {
+-            TStlIterator& it = It(iter);
++            TStlIterator& it = CParent::It(iter);
+             Container* c = static_cast<Container*>(iter.GetContainerPtr());
+             it = c->erase(it);
+             return it != c->end();
+@@ -511,7 +513,7 @@ public:
+     static void EraseAllElements(TTypeInfoIterator& iter)
+         {
+             Container* c = static_cast<Container*>(iter.GetContainerPtr());
+-            c->erase(It(iter), c->end());
++            c->erase(CParent::It(iter), c->end());
+         }
+ 
+     static void SetIteratorFunctions(CStlOneArgTemplate* info)
+@@ -542,7 +544,7 @@ public:
+         }
+     static bool EraseElement(TTypeInfoIterator& iter)
+         {
+-            TStlIterator& it = It(iter);
++            TStlIterator& it = CParent::It(iter);
+             Container* c = static_cast<Container*>(iter.GetContainerPtr());
+             TStlIterator erase = it++;
+             c->erase(erase);
+@@ -551,7 +553,7 @@ public:
+     static void EraseAllElements(TTypeInfoIterator& iter)
+         {
+             Container* c = static_cast<Container*>(iter.GetContainerPtr());
+-            c->erase(It(iter), c->end());
++            c->erase(CParent::It(iter), c->end());
+         }
+ 
+     static void SetIteratorFunctions(CStlOneArgTemplate* info)
+diff --git a/c++/include/serial/iterator.hpp b/c++/include/serial/iterator.hpp
+index 25e1193..cddb046 100644
+--- a/c++/include/serial/iterator.hpp
++++ b/c++/include/serial/iterator.hpp
+@@ -491,13 +491,13 @@ protected:
+     CTypeIteratorBase(TTypeInfo needType, const TBeginInfo& beginInfo)
+         : m_NeedType(needType)
+         {
+-            Init(beginInfo);
++            this->Init(beginInfo);
+         }
+     CTypeIteratorBase(TTypeInfo needType, const TBeginInfo& beginInfo,
+                       const string& filter)
+         : m_NeedType(needType)
+         {
+-            Init(beginInfo, filter);
++            this->Init(beginInfo, filter);
+         }
+ 
+     virtual bool CanSelect(const CConstObjectInfo& object)
+@@ -599,7 +599,7 @@ public:
+ 
+     CTypesIteratorBase<Parent>& operator=(const TBeginInfo& beginInfo)
+         {
+-            Init(beginInfo);
++            this->Init(beginInfo);
+             return *this;
+         }
+ 
+diff --git a/c++/include/serial/serialbase.hpp b/c++/include/serial/serialbase.hpp
+index be6a4f9..d59fb25 100644
+--- a/c++/include/serial/serialbase.hpp
++++ b/c++/include/serial/serialbase.hpp
+@@ -364,11 +364,15 @@ public:
+     // cast to object type
+     TObject& operator*(void)
+         {
+-            return *reinterpret_cast<TObject*>(m_Buffer);
++            TObject* ptr = static_cast<TObject*>
++                (static_cast<void*>(m_Buffer));
++            return *ptr;
+         }
+     const TObject& operator*(void) const
+         {
+-            return *reinterpret_cast<const TObject*>(m_Buffer);
++            const TObject* ptr = static_cast<const TObject*>
++                (static_cast<const void*>(m_Buffer));
++            return *ptr;
+         }
+ 
+     // construct/destruct object
+diff --git a/c++/include/util/bitset/bmfunc.h b/c++/include/util/bitset/bmfunc.h
+index 5917ee5..a8c204b 100644
+--- a/c++/include/util/bitset/bmfunc.h
++++ b/c++/include/util/bitset/bmfunc.h
+@@ -37,6 +37,13 @@ For more information please visit:  http://bmagic.sourceforge.net
+ namespace bm
+ {
+ 
++bm::id_t bit_block_any_range(const bm::word_t* block,
++                             bm::word_t left,
++                             bm::word_t right);
++
++bm::id_t bit_block_calc_count_range(const bm::word_t* block,
++                                    bm::word_t left,
++                                    bm::word_t right);
+ 
+ /*!
+     @brief Structure with statistical information about bitset's memory 
+diff --git a/c++/include/util/linkedset.hpp b/c++/include/util/linkedset.hpp
+index e8bbe6e..364164b 100644
+--- a/c++/include/util/linkedset.hpp
++++ b/c++/include/util/linkedset.hpp
+@@ -268,10 +268,10 @@ public:
+             pair<iterator, bool> ins = m_Container.insert(value);
+             if ( ins.second ) {
+                 if ( ins.first == begin() )
+-                    insertToStart(*ins.first);
++                    this->insertToStart(*ins.first);
+                 else {
+                     iterator prev = ins.first;
+-                    insertAfter(*--prev, *ins.first);
++                    this->insertAfter(*--prev, *ins.first);
+                 }
+             }
+             return ins;
+@@ -280,10 +280,10 @@ public:
+     void erase(iterator iter)
+         {
+             if ( iter == begin() )
+-                removeFromStart(*iter);
++                this->removeFromStart(*iter);
+             else {
+                 iterator prev = iter;
+-                removeAfter(*--prev, *iter);
++                this->removeAfter(*--prev, *iter);
+             }
+             m_Container.erase(iter);
+         }
+@@ -422,10 +422,10 @@ public:
+         {
+             iterator iter = m_Container.insert(value);
+             if ( iter == begin() )
+-                insertToStart(get(iter));
++                this->insertToStart(get(iter));
+             else {
+                 iterator prev = iter;
+-                insertAfter(get(--prev), get(iter));
++                this->insertAfter(get(--prev), get(iter));
+             }
+             return iter;
+         }
+@@ -433,10 +433,10 @@ public:
+     void erase(iterator iter)
+         {
+             if ( iter == begin() )
+-                removeFromStart(get(iter));
++                this->removeFromStart(get(iter));
+             else {
+                 iterator prev = iter;
+-                removeAfter(get(--prev), get(iter));
++                this->removeAfter(get(--prev), get(iter));
+             }
+             m_Container.erase(iter);
+         }
+diff --git a/c++/include/util/rangemap.hpp b/c++/include/util/rangemap.hpp
+index c4f5f37..56e267d 100644
+--- a/c++/include/util/rangemap.hpp
++++ b/c++/include/util/rangemap.hpp
+@@ -578,7 +578,7 @@ public:
+             // get level
+ 
+             // insert element
+-            TSelectMapI selectIter = insertLevel(selectKey);
++            TSelectMapI selectIter = this->insertLevel(selectKey);
+             pair<TLevelMapI, bool> levelIns = selectIter->second.insert(value);
+             
+             pair<iterator, bool> ret;
+@@ -640,7 +640,7 @@ public:
+             // insert element
+             iterator ret;
+             ret.m_Range = range_type::GetWhole();
+-            ret.m_SelectIter = insertLevel(selectKey);
++            ret.m_SelectIter = this->insertLevel(selectKey);
+             ret.m_SelectIterEnd = this->m_SelectMap.end();
+             ret.m_LevelIter = ret.m_SelectIter->second.insert(value);
+             return ret;
+diff --git a/c++/src/connect/ncbi_gnutls.c b/c++/src/connect/ncbi_gnutls.c
+index f0242b7..8b13713 100644
+--- a/c++/src/connect/ncbi_gnutls.c
++++ b/c++/src/connect/ncbi_gnutls.c
+@@ -98,7 +98,6 @@ static const int kGnuTlsCertPrio[] = {
+     0
+ };
+ static const int kGnuTlsCompPrio[] = {
+-    GNUTLS_COMP_LZO,
+     GNUTLS_COMP_ZLIB,
+     GNUTLS_COMP_NULL,
+     0
+@@ -254,6 +253,24 @@ static EIO_Status s_GnuTlsOpen(void* session, int* error)
+ }
+ 
+ 
++/*ARGSUSED*/
++static void x_set_errno(gnutls_session_t session, int error)
++{
++#  ifdef LIBGNUTLS_VERSION_NUMBER
++#    if                                         \
++    LIBGNUTLS_VERSION_MAJOR > 1  ||             \
++    LIBGNUTLS_VERSION_MINOR > 5  ||             \
++    LIBGNUTLS_VERSION_PATCH > 3
++    gnutls_transport_set_errno(session, error);
++    return;
++#    endif /*LIBGNUTLS_VERSION >= 1.5.4*/
++#  endif /*LIBGNUTLS_VERSION_NUMBER*/
++    /*NOTREACHED*/
++    if (error)
++        errno = error;
++}
++
++
+ static ssize_t x_GnuTlsPull(gnutls_transport_ptr_t ptr,
+                             void* buf, size_t size)
+ {
+diff --git a/c++/src/corelib/ncbifile.cpp b/c++/src/corelib/ncbifile.cpp
+index d751e62..fdc81c7 100644
+--- a/c++/src/corelib/ncbifile.cpp
++++ b/c++/src/corelib/ncbifile.cpp
+@@ -51,8 +51,8 @@
+ #  include <dirent.h>
+ #  include <pwd.h>
+ #  include <fcntl.h>
+-#  include <sys/time.h>
+ #  include <sys/mman.h>
++#  include <sys/time.h>
+ #  ifdef HAVE_SYS_STATVFS_H
+ #    include <sys/statvfs.h>
+ #  endif
+diff --git a/c++/src/corelib/test_boost.cpp b/c++/src/corelib/test_boost.cpp
+index dfd9cc8..f93d2ca 100644
+--- a/c++/src/corelib/test_boost.cpp
++++ b/c++/src/corelib/test_boost.cpp
+@@ -41,6 +41,7 @@
+ #ifndef BOOST_TEST_NO_LIB
+ #  define BOOST_TEST_NO_LIB
+ #endif
++#define BOOST_TEST_NO_MAIN
+ #include <corelib/test_boost.hpp>
+ 
+ #include <boost/preprocessor/cat.hpp>
+@@ -95,6 +96,7 @@ const char* kTestResultTimeout     = "timeout";
+ const char* kTestResultAborted     = "aborted";
+ const char* kTestResultSkipped     = "skipped";
+ const char* kTestResultDisabled    = "disabled";
++const char* kTestResultToFix       = "tofix";
+ 
+ 
+ typedef but::results_reporter::format   TBoostRepFormatter;
+@@ -168,14 +170,24 @@ public:
+                                           unsigned long elapsed);
+     virtual
+     void test_unit_skipped(ostream& ostr, but::test_unit const& tu);
++#if BOOST_VERSION >= 104200
++    virtual
++    void log_exception    (ostream& ostr, but::log_checkpoint_data const& lcd,
++                                          boost::execution_exception const& ex);
++    // Next line is necessary for compiling with ICC and Boost 1.41.0 and up
++    using TBoostLogFormatter::log_exception;
++#else
+     virtual
+     void log_exception    (ostream& ostr, but::log_checkpoint_data const& lcd,
+                                           but::const_string explanation);
++#endif
+     virtual
+     void log_entry_start  (ostream& ostr, but::log_entry_data const& led,
+                                           log_entry_types let);
+     virtual
+     void log_entry_value  (ostream& ostr, but::const_string value);
++    // Next line is necessary for compiling with ICC and Boost 1.41.0 and up
++    using TBoostLogFormatter::log_entry_value;
+     virtual
+     void log_entry_finish (ostream& ostr);
+ 
+@@ -402,10 +414,15 @@ public:
+ 
+     /// Mark test case as failed due to hit of the timeout
+     void SetTestTimedOut(but::test_case* tc);
++    /// Register the fact of test failure
++    void SetTestErrored(but::test_case* tc);
++    /// Check if given test is marked as requiring fixing in the future
++    bool IsTestToFix(const but::test_unit* tu);
+ 
+     /// Get number of actually executed tests
+     int GetRanTestsCount(void);
+-
++    /// Get number of tests that were failed but are marked to be fixed
++    int GetToFixTestsCount(void);
+     /// Get string representation of result of test execution
+     string GetTestResultString(but::test_unit* tu);
+ 
+@@ -415,6 +432,11 @@ public:
+     /// Check if user initialization functions failed
+     bool IsInitFailed(void);
+ 
++    /// Check if there were any test errors
++    bool HasTestErrors(void);
++    /// Check if there were any timeouted tests
++    bool HasTestTimeouts(void);
++
+ private:
+     typedef list<TNcbiTestUserFunction> TUserFuncsList;
+ 
+@@ -493,6 +515,8 @@ private:
+     TUnitsSet                 m_DisabledTests;
+     /// List of all tests which result is a timeout
+     TUnitsSet                 m_TimedOutTests;
++    /// List of all tests marked as in need of fixing in the future
++    TUnitsSet                 m_ToFixTests;
+     /// List of all dependencies for each test having dependencies
+     TUnitToManyMap            m_TestDeps;
+     /// Observer to make test dependencies and look for unit's timeouts
+@@ -512,12 +536,18 @@ private:
+     /// String representation for whole test timeout (real value taken from
+     /// CHECK_TIMEOUT in Makefile).
+     string                    m_TimeoutStr;
++    /// Multiplicator for timeouts
++    double                    m_TimeMult;
+     /// Timer measuring elapsed time for the whole test
+     CStopWatch                m_Timer;
+     /// Timeout that was set in currently executing unit before adjustment
+     ///
+     /// @sa AdjustTestTimeout()
+     unsigned int              m_CurUnitTimeout;
++    /// Flag showing if there were some test errors
++    bool                      m_HasTestErrors;
++    /// Flag showing if there were some timeouted tests
++    bool                      m_HasTestTimeouts;
+ };
+ 
+ 
+@@ -794,7 +824,10 @@ CNcbiTestApplication::CNcbiTestApplication(void)
+       m_RunMode  (0),
+       m_DummyTest(NULL),
+       m_Timeout  (0),
+-      m_Timer    (CStopWatch::eStart)
++      m_TimeMult (1),
++      m_Timer    (CStopWatch::eStart),
++      m_HasTestErrors(false),
++      m_HasTestTimeouts(false)
+ {
+     m_Reporter = new CNcbiBoostReporter();
+     m_Logger   = new CNcbiBoostLogger();
+@@ -1244,6 +1277,24 @@ CNcbiTestApplication::GetRanTestsCount(void)
+     return result;
+ }
+ 
++int
++CNcbiTestApplication::GetToFixTestsCount(void)
++{
++    int result = 0;
++    ITERATE(TUnitsSet, it, m_ToFixTests) {
++        if (!but::results_collector.results((*it)->p_id).passed())
++            ++result;
++    }
++    return result;
++}
++
++inline bool
++CNcbiTestApplication::IsTestToFix(const but::test_unit* tu)
++{
++    return m_ToFixTests.find(const_cast<but::test_unit*>(tu))
++                                                        != m_ToFixTests.end();
++}
++
+ inline void
+ CNcbiTestApplication::x_SetupBoostReporters(void)
+ {
+@@ -1391,6 +1442,18 @@ CNcbiTestApplication::InitTestFramework(int argc, char* argv[])
+     return NULL;
+ }
+ 
++inline bool
++CNcbiTestApplication::HasTestErrors(void)
++{
++    return m_HasTestErrors;
++}
++
++inline bool
++CNcbiTestApplication::HasTestTimeouts(void)
++{
++    return m_HasTestTimeouts;
++}
++
+ void
+ CNcbiTestsCollector::visit(but::test_case const& test)
+ {
+@@ -1431,9 +1494,20 @@ CNcbiTestsObserver::test_unit_finish(but::test_unit const& tu,
+     // elapsed comes in microseconds
+     if (timeout != 0  &&  timeout < elapsed / 1000000) {
+         boost::execution_exception ex(
+-               boost::execution_exception::timeout_error, "Timeout exceeded");
++               boost::execution_exception::timeout_error, "Timeout exceeded"
++               NCBI_BOOST_LOCATION());
+         but::framework::exception_caught(ex);
+     }
++
++    but::test_results& tr = but::s_rc_impl().m_results_store[tu.p_id];
++    if (!tr.passed()  &&  s_GetTestApp().IsTestToFix(&tu)) {
++        static_cast<but::readwrite_property<bool>& >(
++            static_cast<but::class_property<bool>& >(
++                                            tr.p_skipped)).set(true);
++        static_cast<but::readwrite_property<but::counter_t>& >(
++            static_cast<but::class_property<but::counter_t>& >(
++                                            tr.p_assertions_failed)).set(0);
++    }
+ }
+ 
+ void
+@@ -1551,12 +1625,21 @@ CNcbiBoostLogger::test_unit_skipped(ostream& ostr, but::test_unit const& tu)
+     m_Upper->test_unit_skipped(ostr, tu);
+ }
+ 
++#if BOOST_VERSION >= 104200
++void
++CNcbiBoostLogger::log_exception(ostream& ostr, but::log_checkpoint_data const& lcd,
++                                boost::execution_exception const& ex)
++{
++    m_Upper->log_exception(ostr, lcd, ex);
++}
++#else
+ void
+ CNcbiBoostLogger::log_exception(ostream& ostr, but::log_checkpoint_data const& lcd,
+                                 but::const_string explanation)
+ {
+     m_Upper->log_exception(ostr, lcd, explanation);
+ }
++#endif
+ 
+ void
+ CNcbiBoostLogger::log_entry_start(ostream& ostr, but::log_entry_data const& led,
+@@ -1631,9 +1714,74 @@ NcbiTestGetUnit(CTempString test_name)
+ END_NCBI_SCOPE
+ 
+ 
++using namespace but;
++
+ /// Global initialization function called from Boost framework
+-but::test_suite*
++test_suite*
+ init_unit_test_suite(int argc, char* argv[])
+ {
+     return NCBI_NS_NCBI::s_GetTestApp().InitTestFramework(argc, argv);
+ }
++
++// This main() is mostly a copy from Boost's unit_test_main.ipp
++int
++main(int argc, char* argv[])
++{
++    int result = boost::exit_success;
++
++    try {
++        framework::init( &init_unit_test_suite, argc, argv );
++
++        if( !runtime_config::test_to_run().is_empty() ) {
++            test_case_filter filter( runtime_config::test_to_run() );
++
++            traverse_test_tree( framework::master_test_suite().p_id, filter );
++        }
++
++        framework::run();
++
++        // Let's try to make report in case of any error after all catches.
++        //results_reporter::make_report();
++
++        if (!runtime_config::no_result_code()) {
++            result = results_collector.results( framework::master_test_suite().p_id ).result_code();
++            if (!NCBI_NS_NCBI::s_GetTestApp().HasTestErrors()
++                &&  NCBI_NS_NCBI::s_GetTestApp().HasTestTimeouts())
++            {
++                // This should certainly go to the output. So we can use only
++                // printf, nothing else.
++                printf("There were no test failures, only timeouts.\n"
++                       " (for autobuild scripts: NCBI_UNITTEST_TIMEOUTS_BUT_NO_ERRORS)\n");
++            }
++        }
++    }
++#if BOOST_VERSION >= 104200
++    catch( framework::nothing_to_test const& ) {
++        result = boost::exit_success;
++    }
++#endif
++    catch( framework::internal_error const& ex ) {
++        results_reporter::get_stream() << "Boost.Test framework internal error: " << ex.what() << std::endl;
++        
++        result = boost::exit_exception_failure;
++    }
++    catch( framework::setup_error const& ex ) {
++        results_reporter::get_stream() << "Test setup error: " << ex.what() << std::endl;
++        
++        result = boost::exit_exception_failure;
++    }
++    catch( std::exception const& ex ) {
++        results_reporter::get_stream() << "Test framework error: " << ex.what() << std::endl;
++
++        result = boost::exit_exception_failure;
++    }
++    catch( ... ) {
++        results_reporter::get_stream() << "Boost.Test framework internal error: unknown reason" << std::endl;
++        
++        result = boost::exit_exception_failure;
++    }
++
++    results_reporter::make_report();
++
++    return result;
++}
+diff --git a/c++/src/objtools/blast/seqdb_reader/seqdbimpl.hpp b/c++/src/objtools/blast/seqdb_reader/seqdbimpl.hpp
+index 92e817f..cfab8ab 100644
+--- a/c++/src/objtools/blast/seqdb_reader/seqdbimpl.hpp
++++ b/c++/src/objtools/blast/seqdb_reader/seqdbimpl.hpp
+@@ -1199,7 +1199,7 @@ private:
+     CSeqDBAtlasHolder m_AtlasHolder;
+     
+     /// Reference to memory management layer.
+-    mutable CSeqDBAtlas & m_Atlas;
++    CSeqDBAtlas & m_Atlas;
+     
+     /// The list of database names provided to the constructor.
+     string m_DBNames;
+diff --git a/c++/src/serial/stdtypes.cpp b/c++/src/serial/stdtypes.cpp
+index f6fa651..d6e8f80 100644
+--- a/c++/src/serial/stdtypes.cpp
++++ b/c++/src/serial/stdtypes.cpp
+@@ -720,7 +720,7 @@ public:
+             if ( IsSigned() ) {
+                 // signed -> unsigned
+                 // check for negative value
+-                if ( IsNegative(value) )
++                if ( CParent::IsNegative(value) )
+                     ThrowIntegerOverflow();
+             }
+             if ( sizeof(value) > sizeof(result) ) {
+@@ -751,7 +751,7 @@ public:
+                 // unsigned -> signed
+                 if ( sizeof(value) == sizeof(result) ) {
+                     // same size - check for sign change only
+-                    if ( IsNegative(result) )
++                    if ( CParent::IsNegative(result) )
+                         ThrowIntegerOverflow();
+                 }
+             }
+@@ -786,7 +786,7 @@ public:
+             if ( IsSigned() ) {
+                 // signed -> unsigned
+                 // check for negative value
+-                if ( IsNegative(value) )
++                if ( CParent::IsNegative(value) )
+                     ThrowIntegerOverflow();
+             }
+             if ( sizeof(value) > sizeof(result) ) {
+@@ -817,7 +817,7 @@ public:
+                 // unsigned -> signed
+                 if ( sizeof(value) == sizeof(result) ) {
+                     // same size - check for sign change only
+-                    if ( IsNegative(result) )
++                    if ( CParent::IsNegative(result) )
+                         ThrowIntegerOverflow();
+                 }
+             }

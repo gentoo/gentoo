@@ -1,0 +1,59 @@
+--- configure.in
++++ configure.in
+@@ -83,22 +83,29 @@
+ 
+ dnl -- configure options --
+ 
+-XIPH_PATH_OGG(, AC_MSG_ERROR(must have Ogg installed!(Perhaps you need --with-ogg-prefix=/usr/local)))
+-XIPH_PATH_VORBIS(, AC_MSG_ERROR(must have Vorbis installed!(Perhaps you need --with-vorbis-prefix=/usr/local)))
+-AM_PATH_CURL(,,AC_MSG_ERROR(must have libcurl installed!))
+-AM_PATH_MAD(, AC_MSG_ERROR(must have libmad installed!))
+-AM_PATH_LAME(, AC_MSG_ERROR(must have libmp3lame installed!))
++PKG_CHECK_MODULES([OGG],[ogg])
++PKG_CHECK_MODULES([VORBIS],[vorbis])
++PKG_CHECK_MODULES([VORBISENC],[vorbisenc])
++PKG_CHECK_MODULES([VORBISFILE],[vorbisfile])
++PKG_CHECK_MODULES([CURL],[libcurl])
++PKG_CHECK_MODULES([MAD],[mad])
++
++AC_PATH_PROG([LAME],[lame])
+ 
+ dnl Make substitutions
+ 
+ AC_SUBST(MAD_CFLAGS)
+ AC_SUBST(MAD_LIBS)
+ AC_SUBST(LAME_CFLAGS)
+-AC_SUBST(LAME_LIBS)
++AC_SUBST([LAME_LIBS],[-lmp3lame])
+ AC_SUBST(OGG_CFLAGS)
+ AC_SUBST(VORBIS_CFLAGS)
++AC_SUBST(VORBISENC_CFLAGS)
++AC_SUBST(VORBISFILE_CFLAGS)
+ AC_SUBST(OGG_LIBS)
+ AC_SUBST(VORBIS_LIBS)
++AC_SUBST(VORBISENC_LIBS)
++AC_SUBST(VORBISFILE_LIBS)
+ AC_SUBST(LIBTOOL_DEPS)
+ AC_SUBST(OPT)
+ AC_SUBST(LIBS)
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -17,5 +17,6 @@
+  
+ INCLUDES = -I$(srcdir)/liboddcast -I$(srcdir)/libtranscoder
+ 
+-install-hook:
+-	cp transcoder.cfg $(DESTDIR)$(sysconfdir)/transcoder.cfg
++install-data-hook:
++	$(INSTALL) -d $(DESTDIR)$(sysconfdir)
++	$(INSTALL) -m644 transcoder.cfg $(DESTDIR)$(sysconfdir)/transcoder.cfg
+--- src/libtranscoder/transcurl.cpp
++++ src/libtranscoder/transcurl.cpp
+@@ -18,7 +18,6 @@
+ #include <winsock2.h>
+ #endif
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ #include "transcurl.h"
+ #include "cbuffer.h"

@@ -1,0 +1,29 @@
+From 5f7db08c046bd31b162a102ca868fa334a0357b9 Mon Sep 17 00:00:00 2001
+From: Michael Marineau <mike@marineau.org>
+Date: Sat, 20 Sep 2014 12:49:43 -0700
+Subject: [PATCH] linux 3.17
+
+http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=c835a677331495cf137a7f8a023463afd9f032f8
+---
+ src/wl/sys/wl_linux.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/wl/sys/wl_linux.c b/src/wl/sys/wl_linux.c
+index 1622127..11c4ec2 100644
+--- a/src/wl/sys/wl_linux.c
++++ b/src/wl/sys/wl_linux.c
+@@ -1308,7 +1308,11 @@ wl_alloc_linux_if(wl_if_t *wlif)
+ 	dev->priv = priv_link;
+ #else
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 17, 0))
+ 	dev = alloc_netdev(sizeof(priv_link_t), intf_name, ether_setup);
++#else
++	dev = alloc_netdev(sizeof(priv_link_t), intf_name, NET_NAME_UNKNOWN, ether_setup);
++#endif
+ 	if (!dev) {
+ 		WL_ERROR(("wl%d: %s: alloc_netdev failed\n",
+ 			(wl->pub)?wl->pub->unit:wlif->subunit, __FUNCTION__));
+-- 
+1.8.5.5
+

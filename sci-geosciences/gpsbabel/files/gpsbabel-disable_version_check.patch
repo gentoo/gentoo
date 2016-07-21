@@ -1,0 +1,47 @@
+Disable version mismatch check.
+
+--- a/gui/preferences.ui
++++ b/gui/preferences.ui
+@@ -53,13 +53,6 @@
+           </property>
+          </widget>
+         </item>
+-        <item>
+-         <widget class="QCheckBox" name="ignoreVersionMismatchCheck">
+-          <property name="text">
+-           <string>Ignore mismatch between command line and GUI version.</string>
+-          </property>
+-         </widget>
+-        </item>
+        </layout>
+       </widget>
+      </widget>
+--- a/gui/preferences.cpp
++++ b/gui/preferences.cpp
+@@ -41,7 +41,6 @@ Preferences::Preferences(QWidget* parent
+ 
+   ui_.startupCheck->setChecked(bd_.startupVersionCheck);
+   ui_.reportStatisticsCheck->setChecked(bd_.reportStatistics);
+-  ui_.ignoreVersionMismatchCheck->setChecked(bd_.ignoreVersionMismatch);
+   // Because of an unfortunate bug in 1.4.0, we turn this off in 1.4.1.
+   if (VERSION == "1.4.1") 
+     bd_.ignoreVersionMismatch = false;
+@@ -84,7 +83,6 @@ void Preferences::acceptClicked()
+ 
+   bd_.startupVersionCheck = ui_.startupCheck->isChecked();
+   bd_.reportStatistics = ui_.reportStatisticsCheck->isChecked();
+-  bd_.ignoreVersionMismatch = ui_.ignoreVersionMismatchCheck->isChecked();
+   accept();
+ }
+ 
+--- a/gui/babeldata.h
++++ b/gui/babeldata.h
+@@ -66,7 +66,7 @@ public:
+     startupVersionCheck(true),
+     reportStatistics(true),
+     allowBetaUpgrades(false),
+-    ignoreVersionMismatch(false),
++    ignoreVersionMismatch(true),
+     disableDonateDialog(false),
+     donateSplashed(QDateTime(QDate(2010, 1, 1), QTime(0, 0, 0)))
+   {

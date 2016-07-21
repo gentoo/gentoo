@@ -1,0 +1,12 @@
+diff -rup warsow_1.51_sdk-upstream/source/source/Makefile warsow_1.51_sdk/source/source/Makefile
+--- warsow_1.51_sdk-upstream/source/source/Makefile	2014-07-23 16:59:16.819811217 +0300
++++ warsow_1.51_sdk/source/source/Makefile	2014-07-23 16:37:40.069824137 +0300
+@@ -285,7 +285,7 @@ endif
+ ifeq ($(BUILD_SND_QF),YES)
+ SDL_CONFIG?=sdl-config
+ 
+-CFLAGS_QF=$(shell $(SDL_CONFIG) --cflags) -I./snd_openal -I./snd_common 
++CFLAGS_QF=$(shell $(SDL_CONFIG) --cflags) -I./snd_qf -I./snd_common 
+ LDFLAGS_QF=$(shell $(SDL_CONFIG) --libs) -lvorbisfile
+ endif # BUILD_SND_QF
+ 

@@ -1,0 +1,12 @@
+Tests fail with /bin/dash
+
+Singned-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+--- numactl-2.0.9/test/printcpu
++++ numactl-2.0.9/test/printcpu
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/bin/bash
+ #print cpu it is running on
+ declare -a arr
+ arr=( $(< /proc/self/stat) )

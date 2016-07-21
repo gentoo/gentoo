@@ -1,0 +1,90 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 04_fix_442782_preprocessor_declaration_syntax.dpatch by Colin Watson <cjwatson@debian.org>.
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Conventionally, preprocessor declarations should start with
+## DP:       '\"
+## DP:   rather than
+## DP:       .\"
+## DP:   Current man-db only supports the first (and recommended) syntax. So
+## DP:   Colin Watson provided this patch to fix docbook2x.
+## DP:
+## DP: <URL:http://bugs.debian.org/442782>
+## DP: <URL:http://lists.gnu.org/archive/html/groff/2007-11/msg00023.html>
+
+@DPATCH@
+diff -urNad trunk~/perl/db2x_manxml.pl trunk/perl/db2x_manxml.pl
+--- trunk~/perl/db2x_manxml.pl	2006-04-22 17:21:32.000000000 +0200
++++ trunk/perl/db2x_manxml.pl	2007-11-24 01:27:37.000000000 +0100
+@@ -342,6 +342,25 @@
+     $self->{line_start} = 1;
+ }
+ 
++#
++# Print a comment in the output, without causing a break.
++# Params: comment - the comment text.  
++#                   May use any characters; they need not be escaped.
++#
++sub comment_nobreak
++{
++    my ($self, $comment) = @_;
++    $self->write("\n") unless $self->{line_start};
++
++    foreach my $line (split(/\n/, $comment)) {
++        $self->write('\'\" ');
++        $self->write($line);
++        $self->write("\n");
++    }
++
++    $self->{line_start} = 1;
++}
++
+ 
+ #
+ # Use a roff "escape" i.e. commands embedded in text starting with \
+@@ -510,16 +529,20 @@
+ 
+     $self->{'adjust-stack'} = [ 'b' ];
+ 
+-    $self->{rw}->comment($elem->attr('preprocessors'))
+-        if($elem->attr('preprocessors') ne '');
+-
++    my $preprocessors = $elem->attr('preprocessors');
+     # I've dug through the Internet to see if there was any
+     # standard way to specify encoding with man pages.
+     # The following seems to be a reasonable proposal:
+     # <URL:http://mail.nl.linux.org/linux-utf8/2001-04/msg00168.html>
+     my $encoding = $self->{options}->{'encoding'};
+     $encoding =~ s#//TRANSLIT$##i;
+-    $self->{rw}->comment("-*- coding: $encoding -*-");
++    $encoding = "-*- coding: $encoding -*-";
++    if ($preprocessors eq '') {
++        $preprocessors = $encoding;
++    } else {
++        $preprocessors = "$preprocessors $encoding";
++    }
++    $self->{rw}->comment_nobreak($preprocessors);
+     
+     # Define escapes for switching to and from monospace fonts (groff only)
+     $self->{rw}->request(qw{ .if \n(.g .ds T< \\\\FC});
+diff -urNad trunk~/xslt/backend/db2x_manxml.xsl trunk/xslt/backend/db2x_manxml.xsl
+--- trunk~/xslt/backend/db2x_manxml.xsl	2006-04-23 16:44:52.000000000 +0200
++++ trunk/xslt/backend/db2x_manxml.xsl	2007-11-24 01:27:37.000000000 +0100
+@@ -528,7 +528,7 @@
+       <exslt:document method="text" 
+                       encoding="{$encoding}" 
+                       href="{$path}">
+-        <xsl:text>.\" -*- coding: </xsl:text>
++        <xsl:text>'\" -*- coding: </xsl:text>
+         <xsl:value-of select="$encoding" />
+         <xsl:text> -*-&#10;</xsl:text>
+         <xsl:copy-of select="$content" />
+@@ -538,7 +538,7 @@
+       <saxon:output method="text" 
+                     encoding="{$encoding}" 
+                     href="{$path}">
+-        <xsl:text>.\" -*- coding: </xsl:text>
++        <xsl:text>'\" -*- coding: </xsl:text>
+         <xsl:value-of select="$encoding" />
+         <xsl:text> -*-&#10;</xsl:text>
+         <xsl:copy-of select="$content" />

@@ -1,0 +1,17 @@
+diff -Naur a/makefiles/Makefile.linux b/makefiles/Makefile.linux
+--- a/makefiles/Makefile.linux	2012-01-25 14:13:40.000000000 -0500
++++ b/makefiles/Makefile.linux	2012-02-22 06:15:45.652523000 -0500
+@@ -12,9 +12,9 @@
+ endif
+ 
+ %.so: %.o
+-	$(CC) -shared -o $@ $<
++	$(CC) $(LDFLAGS) -shared -o $@ $<
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c -o $@ $<
+ 
+-sqlmansect = 7
+\ No newline at end of file
++sqlmansect = 7

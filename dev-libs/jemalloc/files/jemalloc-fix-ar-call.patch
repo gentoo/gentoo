@@ -1,0 +1,59 @@
+diff --git a/Makefile.in b/Makefile.in
+index 7481047..478becb 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -55,6 +55,8 @@ PIC_CFLAGS = @PIC_CFLAGS@
+ CTARGET = @CTARGET@
+ LDTARGET = @LDTARGET@
+ MKLIB = @MKLIB@
++AR = @AR@
++ARFLAGS = crus
+ CC_MM = @CC_MM@
+ 
+ ifeq (macho, $(ABI))
+@@ -185,7 +187,7 @@ $(objroot)lib/$(LIBJEMALLOC)_s.$(A) : $(COBJS)
+ 
+ $(STATIC_LIBS):
+ 	@mkdir -p $(@D)
+-	$(MKLIB) $+
++	$(AR) $(ARFLAGS) $@ $+
+ 
+ $(objroot)test/bitmap$(EXE): $(objroot)src/bitmap.$(O)
+ 
+diff --git a/configure.ac b/configure.ac
+index c270662..f4b4c21 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -226,9 +226,13 @@ PIC_CFLAGS='-fPIC -DPIC'
+ CTARGET='-o $@'
+ LDTARGET='-o $@'
+ EXTRA_LDFLAGS=
+-MKLIB='ar crus $@'
+ CC_MM=1
+ 
++AN_MAKEVAR([AR], [AC_PROG_AR])
++AN_PROGRAM([ar], [AC_PROG_AR])
++AC_DEFUN([AC_PROG_AR], [AC_CHECK_TOOL(AR, ar, :)])
++AC_PROG_AR
++
+ dnl Platform-specific settings.  abi and RPATH can probably be determined
+ dnl programmatically, but doing so is error-prone, which makes it generally
+ dnl not worth the trouble.
+@@ -310,7 +314,8 @@ case "${host}" in
+ 	  EXTRA_LDFLAGS="-link -DEBUG"
+ 	  CTARGET='-Fo$@'
+ 	  LDTARGET='-Fe$@'
+-	  MKLIB='lib -nologo -out:$@'
++	  AR='lib'
++	  ARFLAGS='-nologo -out:'
+ 	  CC_MM=
+         else
+ 	  importlib="${so}"
+@@ -403,7 +408,6 @@ AC_SUBST([enable_autogen])
+ 
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+-AC_PATH_PROG([AR], [ar], [false], [$PATH])
+ AC_PATH_PROG([LD], [ld], [false], [$PATH])
+ AC_PATH_PROG([AUTOCONF], [autoconf], [false], [$PATH])
+ 

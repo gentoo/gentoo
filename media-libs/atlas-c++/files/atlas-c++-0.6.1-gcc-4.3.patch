@@ -1,0 +1,30 @@
+--- Atlas/Filter.cpp.old	2008-04-14 23:55:23.000000000 +0200
++++ Atlas/Filter.cpp	2008-04-14 23:57:04.000000000 +0200
+@@ -4,6 +4,8 @@
+ 
+ #include <Atlas/Filter.h>
+ 
++#include <string.h>
++
+ namespace Atlas {
+ 
+ Filter::Filter(Filter* next)
+@@ -41,7 +43,7 @@
+ 
+     if (numPutback > m_inPutback) numPutback = m_inPutback;
+ 
+-    std::memcpy(m_outBuffer + (m_inPutback - numPutback),
++    ::memcpy(m_outBuffer + (m_inPutback - numPutback),
+                 gptr() - numPutback,
+                 (unsigned long) numPutback);
+ 
+--- tools/atlas_convert.cpp.old	2008-04-14 23:58:53.000000000 +0200
++++ tools/atlas_convert.cpp	2008-04-14 23:59:15.000000000 +0200
+@@ -14,6 +14,7 @@
+ #include <fstream>
+ #include <iostream>
+ 
++#include <stdlib.h>
+ #include <unistd.h>
+ 
+ int option_format = 0;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		This module adds support for accepting CLI
+		arguments easily using multiple notations and argument types.
+
+		cliargs allows you to define required, optional, and flag arguments.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">amireh/lua_cliargs</remote-id>
+	</upstream>
+</pkgmetadata>

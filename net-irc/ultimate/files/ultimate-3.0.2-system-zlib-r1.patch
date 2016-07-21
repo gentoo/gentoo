@@ -1,0 +1,53 @@
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+Subject: Don't  compile against internal  zlib. Missing ./configure.ac
+	changes  because ./configure.ac wasn't  shipped with  the dist
+	tarball.
+Date: 2011/04/27
+Subject: Use @ZLIB_LIBS@ and @ZLIB_CFLAGS@ instead of $(ZLIB_LIBS) and
+	friends because we don't get AC_SUBST() declared as Makefile
+	variables for free. https://bugs.gentoo.org/371889
+Date: 2011/06/16
+
+--- a/autoconf/configure.in
++++ b/autoconf/configure.in
+@@ -702,6 +702,8 @@
+ wi_ARG_DISABLE_CCDV
+ wi_PROG_CCDV
+ 
++PKG_CHECK_MODULES([ZLIB], [zlib])
++
+ AC_SUBST(SSL_INCLUDES)
+ AC_SUBST(SSL_LIBS)
+ AC_SUBST(ENCRYPT_SRC)
+@@ -716,7 +718,7 @@
+ AC_SUBST(SEDOBJ)
+ AC_SUBST(CCDV)
+ 
+-AC_OUTPUT(Makefile data/Makefile data/networks/Makefile src/Makefile tools/Makefile tools/ircdcron/Makefile tools/ssl-cert/Makefile zlib/Makefile)
++AC_OUTPUT(Makefile data/Makefile data/networks/Makefile src/Makefile tools/Makefile tools/ircdcron/Makefile tools/ssl-cert/Makefile)
+ 
+ echo
+ echo =================================================================
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -28,3 +28,3 @@
+ SHELL=/bin/sh
+-SUBDIRS=zlib src tools data @SUBDIR_MESSAGES@
++SUBDIRS = src tools data @SUBDIR_MESSAGES@
+ SUBDIRS2=data/networks tools/ircdcron tools/ssl-cert
+
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -53,9 +53,9 @@
+ SSL_LIBS	= @SSL_LIBS@
+ SSL_INCLUDES	= @SSL_INCLUDES@
+ 
+-IRCDLIBS	= ../zlib/libz.a @LIBS@ $(SSL_LIBS)
++IRCDLIBS	= @ZLIB_LIBS@ @LIBS@ $(SSL_LIBS)
+ 
+-INCLUDES	= -I../include -I../zlib $(SSL_INCLUDES)
++INCLUDES	= -I../include @ZLIB_CFLAGS@ $(SSL_INCLUDES)
+ CPPFLAGS	= ${INCLUDES} @CPPFLAGS@
+ 
+ default:	all
+

@@ -1,0 +1,23 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,6 +11,7 @@
+ CLEANFILES = *~ *.orig *.rej
+ 
+ install-data-local:
+-	$(INSTALL_DATA) urlview.man $(mandir)/man1/urlview.1
++	$(mkinstalldirs) $(DESTDIR)$(mandir)/man1
++	$(INSTALL_DATA) urlview.man ${DESTDIR}$(mandir)/man1/urlview.1
+ 
+ # how to create a target for uninstall-data-local???
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -318,7 +318,8 @@
+ 
+ 
+ install-data-local:
+-	$(INSTALL_DATA) urlview.man $(mandir)/man1/urlview.1
++	$(mkinstalldirs) $(DESTDIR)$(mandir)/man1
++	$(INSTALL_DATA) urlview.man $(DESTDIR)$(mandir)/man1/urlview.1
+ 
+ # how to create a target for uninstall-data-local???
+ 

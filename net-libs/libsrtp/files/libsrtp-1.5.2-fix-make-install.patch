@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 002d25d..1a40de2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -260,7 +260,7 @@ install:
+ 	if [ -f libsrtp.dll.a ]; then cp libsrtp.dll.a $(DESTDIR)$(libdir)/; fi
+ 	if [ -f libsrtp.$(SHAREDLIBSUFFIX) ]; then \
+ 		cp libsrtp.$(SHAREDLIBSUFFIX) $(DESTDIR)$(SHAREDLIB_DIR)/; \
+-		cp libsrtp.$(SHAREDLIBSUFFIXNOVER) $(DESTDIR)$(SHAREDLIB_DIR)/; \
++		ln -sfn libsrtp.$(SHAREDLIBSUFFIX) $(DESTDIR)$(SHAREDLIB_DIR)/libsrtp.$(SHAREDLIBSUFFIXNOVER); \
+ 	fi
+ 	if [ "$(pkgconfig_DATA)" != "" ]; then \
+ 		$(INSTALL) -d $(DESTDIR)$(pkgconfigdir); \

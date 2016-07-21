@@ -1,0 +1,13 @@
+Index: src/bin/e_main.c
+===================================================================
+--- src/bin/e_main.c	(revision 61690)
++++ src/bin/e_main.c	(working copy)
+@@ -93,7 +93,7 @@
+ static Eina_Bool _e_main_cb_startup_fake_end(void *data __UNUSED__);
+ 
+ /* local variables */
+-static Eina_Bool really_know = EINA_FALSE;
++static Eina_Bool really_know = EINA_TRUE;
+ static Eina_Bool locked = EINA_FALSE;
+ static Eina_Bool inloop = EINA_FALSE;
+ static jmp_buf x_fatal_buff;

@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,7 +51,10 @@
+ 
+ save_LIBS="$LIBS"
+ AC_CHECK_LIB([ncurses], [curses_version], [],
+-	     [AC_ERROR("libncurses not found.")])
++	AC_CHECK_LIB([tinfo], [curses_version], [],
++		[AC_ERROR("libncurses not found.")]))
++AC_CHECK_LIB([ncurses], [wnoutrefresh], [],
++		[AC_ERROR("libncurses not found.")])
+ AC_CHECK_LIB([form], [free_form], [], [AC_ERROR("libform not found.")])
+ AC_CHECK_LIB([m], [matherr], [], [AC_ERROR("libm not found.")])
+ AC_CHECK_LIB([menu], [new_menu], [], [AC_ERROR("libmenu not found.")])

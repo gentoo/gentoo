@@ -1,0 +1,16 @@
+--- a/texmaker.cpp	2014-11-26 09:06:56.000000000 -0300
++++ b/texmaker.cpp	2015-06-19 20:49:58.801377000 -0300
+@@ -4451,7 +4451,12 @@
+ #if (QT_VERSION >= QT_VERSION_CHECK(5, 0, 0))
+ if (modern_style)
+     {
+-qApp->setStyle(new ManhattanStyle(QLatin1String("fusion")));
++		if(desktop_env == 1){
++			if (styles.contains("GTK+")) qApp->setStyle(new ManhattanStyle(QLatin1String("gtkstyle")));
++			else if (styles.contains("Windows")) qApp->setStyle(new ManhattanStyle(QLatin1String("windows")));
++			else qApp->setStyle(new ManhattanStyle(QLatin1String("fusion")));
++		}
++		else qApp->setStyle(new ManhattanStyle(QLatin1String("fusion")));
+     }
+ // else
+ // {

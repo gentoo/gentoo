@@ -1,0 +1,12 @@
+Without this linking fails during a stage3 build.
+
+--- lib/librpcsec_gss/Makefile.orig
++++ lib/librpcsec_gss/Makefile
+@@ -8,6 +8,7 @@
+ 
+ DPADD+=	${LIBGSSAPI}
+ LDADD+=	-lgssapi
++LDFLAGS+= 	-L${.OBJDIR}/../libgssapi
+ 
+ VERSION_DEF=	${.CURDIR}/../libc/Versions.def
+ SYMBOL_MAPS=	${.CURDIR}/Symbol.map

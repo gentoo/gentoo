@@ -1,0 +1,41 @@
+diff -ru libdbx_1.0.3/libdbx.c libdbx_1.0.3-new/libdbx.c
+--- libdbx_1.0.3/libdbx.c	2002-10-05 15:07:36.000000000 +0200
++++ libdbx_1.0.3-new/libdbx.c	2006-09-20 08:53:46.000000000 +0200
+@@ -485,11 +485,11 @@
+ 	    switch (blockp.type) {
+ 	    case 0x01: //pointer to flag
+ 	    	email->flag = 0;
+-	    	((int*)bufx) = &(email->flag);
++	    	bufx = (char **)&(email->flag);
+ 	    	readtype = CHAR_TYPE;
+ 	    	break;
+ 	    case 0x04: //pointer to dataptr
+-	      ((int*)bufx) = &(email->data_offset);
++	      bufx = (char **)&(email->data_offset);
+ 	      readtype = INT_TYPE;
+ 	      break;
+ 	    case 0x05: //asciiz string of subject (without RE: or FWD: etc...)
+@@ -521,7 +521,7 @@
+ 	      readtype = STRING_TYPE;
+ 	      break;
+ 	    case 0x12: //date - of what i'm not sure. It is in a win32 FILETIME structure. needs converting to something
+-				((struct FILETIME*)bufx) = &(email->date);
++				bufx = (char **)&(email->date);
+ 				readtype = W32FT_TYPE;
+ 				break;
+ 	    case 0x13: //recipient's name
+Only in libdbx_1.0.3-new: libdbx.o
+Only in libdbx_1.0.3-new: readdbx
+diff -ru libdbx_1.0.3/readdbx.c libdbx_1.0.3-new/readdbx.c
+--- libdbx_1.0.3/readdbx.c	2002-10-05 15:20:25.000000000 +0200
++++ libdbx_1.0.3-new/readdbx.c	2006-09-20 08:54:10.000000000 +0200
+@@ -19,6 +19,7 @@
+ #include <getopt.h>
+ #include <time.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ #include "libdbx.h"
+ #include "common.h"
+Only in libdbx_1.0.3-new: readoe
+Files libdbx_1.0.3/timeconv.o and libdbx_1.0.3-new/timeconv.o differ

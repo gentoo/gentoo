@@ -1,0 +1,17 @@
+--- src/tools/radiant/radiant/camera/CameraSettings.h.old	2014-10-22 08:30:35.690248415 +0200
++++ src/tools/radiant/radiant/camera/CameraSettings.h	2014-10-22 08:31:12.329900302 +0200
+@@ -16,13 +16,13 @@
+ const std::string RKEY_ENABLE_FARCLIP = "user/ui/camera/enableCubicClipping";
+ const std::string RKEY_DRAWMODE = "user/ui/camera/drawMode";
+ const std::string RKEY_SOLID_SELECTION_BOXES = "user/ui/xyview/solidSelectionBoxes";
++}
+ 
+ enum CameraDrawMode
+ {
+ 	drawWire, drawSolid, drawTexture
+ };
+ 
+-}
+ /* greebo: This is the home of all the camera settings. As this class derives
+  * from a RegistryKeyObserver, it can be connected to the according registry keys
+  * and gets notified if any of the observed keys are changed.*/

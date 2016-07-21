@@ -1,0 +1,40 @@
+ mpv_gtk.c |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mpv_gtk.c b/mpv_gtk.c
+index 3abba24..ea99144 100644
+--- a/mpv_gtk.c
++++ b/mpv_gtk.c
+@@ -2499,12 +2499,12 @@ static mpdm_t gtk_drv_startup(mpdm_t a, mpdm_t ctxt)
+ #endif
+     gtk_notebook_set_scrollable(GTK_NOTEBOOK(file_tabs), 1);
+ 
+-    vbox = gtk_vbox_new(FALSE, 2);
++    vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 2);
+     gtk_container_add(GTK_CONTAINER(window), vbox);
+ 
+     build_menu();
+ 
+-    hbox = gtk_hbox_new(FALSE, 0);
++    hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+     gtk_box_pack_start(GTK_BOX(hbox), menu_bar, FALSE, FALSE, 0);
+     gtk_box_pack_start(GTK_BOX(hbox), file_tabs, TRUE, TRUE, 0);
+@@ -2512,7 +2512,7 @@ static mpdm_t gtk_drv_startup(mpdm_t a, mpdm_t ctxt)
+     gtk_notebook_popup_enable(GTK_NOTEBOOK(file_tabs));
+ 
+     /* horizontal box holding the text and the scrollbar */
+-    hbox = gtk_hbox_new(FALSE, 2);
++    hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
+     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+ 
+     /* the Minimum Profit area */
+@@ -2578,7 +2578,7 @@ static mpdm_t gtk_drv_startup(mpdm_t a, mpdm_t ctxt)
+                      G_CALLBACK(switch_page), NULL);
+ 
+     /* the scrollbar */
+-    scrollbar = gtk_vscrollbar_new(NULL);
++    scrollbar = gtk_scrollbar_new(GTK_ORIENTATION_VERTICAL, NULL);
+     gtk_box_pack_start(GTK_BOX(hbox), scrollbar, FALSE, FALSE, 0);
+ 
+     g_signal_connect(G_OBJECT

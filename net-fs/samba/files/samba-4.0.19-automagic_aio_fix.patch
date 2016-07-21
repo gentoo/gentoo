@@ -1,0 +1,57 @@
+https://bugzilla.samba.org/show_bug.cgi?id=10370
+
+--- samba-4.0.19/source3/wscript
++++ samba-4.0.19/source3/wscript
+@@ -507,9 +507,10 @@
+     else:
+         conf.DEFINE('HAVE_NO_AIO', '1')
+ 
+-    if host_os.rfind('linux') > -1:
+-	conf.CHECK_FUNCS_IN('io_submit', 'aio')
+-	conf.CHECK_CODE('''
++    if Options.options.with_aio_support != False:
++	if host_os.rfind('linux') > -1:
++	    conf.CHECK_FUNCS_IN('io_submit', 'aio')
++	    conf.CHECK_CODE('''
+ struct io_event ioev;
+ struct iocb *ioc;
+ io_context_t ctx;
+@@ -526,11 +527,11 @@
+ io_getevents(ctx, 1, 1, &ioev, &ts);
+ ''',
+ 			'HAVE_LINUX_KERNEL_AIO',
+-			msg='Checking for linux kernel asynchronous io support',
+-			headers='unistd.h stdlib.h sys/types.h fcntl.h sys/eventfd.h libaio.h',
+-			lib='aio')
++				msg='Checking for linux kernel asynchronous io support',
++				headers='unistd.h stdlib.h sys/types.h fcntl.h sys/eventfd.h libaio.h',
++				lib='aio')
+ 
+-    conf.CHECK_CODE('''
++	    conf.CHECK_CODE('''
+ struct msghdr msg;
+ union {
+         struct cmsghdr cm;
+@@ -540,17 +541,17 @@
+ msg.msg_controllen = sizeof(control_un.control);
+ ''',
+         'HAVE_MSGHDR_MSG_CONTROL',
+-        msg='Checking if we can use msg_control for passing file descriptors',
+-        headers='sys/types.h stdlib.h stddef.h sys/socket.h sys/un.h')
+-    conf.CHECK_CODE('''
++    		msg='Checking if we can use msg_control for passing file descriptors',
++    		headers='sys/types.h stdlib.h stddef.h sys/socket.h sys/un.h')
++	    conf.CHECK_CODE('''
+ struct msghdr msg;
+ int fd;
+ msg.msg_acctrights = (caddr_t) &fd;
+ msg.msg_acctrightslen = sizeof(fd);
+ ''',
+         'HAVE_MSGHDR_MSG_ACCTRIGHTS',
+-        msg='Checking if we can use msg_acctrights for passing file descriptors',
+-        headers='sys/types.h stdlib.h stddef.h sys/socket.h sys/un.h')
++    		msg='Checking if we can use msg_acctrights for passing file descriptors',
++    		headers='sys/types.h stdlib.h stddef.h sys/socket.h sys/un.h')
+ 
+     if Options.options.with_winbind:
+         conf.env.build_winbind = True

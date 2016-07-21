@@ -1,0 +1,201 @@
+From dd726dcc6a95355d0e0cc949018d9c8aefc89a02 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 24 Dec 2012 19:41:49 -0500
+Subject: [PATCH 1/2] libsandbox: reject "" paths with *at funcs before
+ checking the dirfd
+
+When it comes to processing errors, an empty path is checked before
+an invalid dirfd.  Make sure sandbox matches that behavior for the
+random testsuites out there that look for this.
+
+URL: https://bugs.gentoo.org/346929
+Reported-by: Marien Zwart <marienz@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/wrapper-funcs/__pre_check.c        |  2 ++
+ libsandbox/wrapper-funcs/mkdirat_pre_check.c  | 17 +++++------------
+ libsandbox/wrapper-funcs/openat_pre_check.c   | 15 ++++-----------
+ libsandbox/wrapper-funcs/unlinkat_pre_check.c | 17 +++++------------
+ libsandbox/wrappers.h                         |  2 ++
+ tests/mkdirat-3.sh                            |  7 +++++++
+ tests/mkdirat.at                              |  1 +
+ tests/openat-2.sh                             |  9 +++++++++
+ tests/openat.at                               |  1 +
+ tests/unlinkat-4.sh                           |  7 +++++++
+ tests/unlinkat.at                             |  1 +
+ 11 files changed, 44 insertions(+), 35 deletions(-)
+ create mode 100755 tests/mkdirat-3.sh
+ create mode 100755 tests/openat-2.sh
+ create mode 100755 tests/unlinkat-4.sh
+
+diff --git a/libsandbox/wrapper-funcs/__pre_check.c b/libsandbox/wrapper-funcs/__pre_check.c
+index 2d5711f..28ad91f 100644
+--- a/libsandbox/wrapper-funcs/__pre_check.c
++++ b/libsandbox/wrapper-funcs/__pre_check.c
+@@ -20,3 +20,5 @@
+ #if SB_NR_UNLINK != SB_NR_UNDEF && SB_NR_UNLINKAT == SB_NR_UNDEF
+ # include "unlinkat_pre_check.c"
+ #endif
++
++#include "__pre_at_check.c"
+diff --git a/libsandbox/wrapper-funcs/mkdirat_pre_check.c b/libsandbox/wrapper-funcs/mkdirat_pre_check.c
+index 77a65df..0b48d1f 100644
+--- a/libsandbox/wrapper-funcs/mkdirat_pre_check.c
++++ b/libsandbox/wrapper-funcs/mkdirat_pre_check.c
+@@ -1,20 +1,13 @@
+ bool sb_mkdirat_pre_check(const char *func, const char *pathname, int dirfd)
+ {
+ 	char canonic[SB_PATH_MAX];
+-	char dirfd_path[SB_PATH_MAX];
+ 
+ 	save_errno();
+ 
+-	/* Expand the dirfd path first */
+-	switch (resolve_dirfd_path(dirfd, pathname, dirfd_path, sizeof(dirfd_path))) {
+-		case -1:
+-			sb_debug_dyn("EARLY FAIL: %s(%s) @ resolve_dirfd_path: %s\n",
+-				func, pathname, strerror(errno));
+-			return false;
+-		case 0:
+-			pathname = dirfd_path;
+-			break;
+-	}
++	/* Check incoming args against common *at issues */
++	char dirfd_path[SB_PATH_MAX];
++	if (!sb_common_at_pre_check(func, &pathname, dirfd, dirfd_path, sizeof(dirfd_path)))
++		return false;
+ 
+ 	/* Then break down any relative/symlink paths */
+ 	if (-1 == canonicalize(pathname, canonic))
+diff --git a/libsandbox/wrapper-funcs/openat_pre_check.c b/libsandbox/wrapper-funcs/openat_pre_check.c
+index 0127708..5fd5eaa 100644
+--- a/libsandbox/wrapper-funcs/openat_pre_check.c
++++ b/libsandbox/wrapper-funcs/openat_pre_check.c
+@@ -15,17 +15,10 @@ bool sb_openat_pre_check(const char *func, const char *pathname, int dirfd, int
+ 
+ 	save_errno();
+ 
+-	/* Expand the dirfd path first */
++	/* Check incoming args against common *at issues */
+ 	char dirfd_path[SB_PATH_MAX];
+-	switch (resolve_dirfd_path(dirfd, pathname, dirfd_path, sizeof(dirfd_path))) {
+-		case -1:
+-			sb_debug_dyn("EARLY FAIL: %s(%s) @ resolve_dirfd_path: %s\n",
+-				func, pathname, strerror(errno));
+-			return false;
+-		case 0:
+-			pathname = dirfd_path;
+-			break;
+-	}
++	if (!sb_common_at_pre_check(func, &pathname, dirfd, dirfd_path, sizeof(dirfd_path)))
++		return false;
+ 
+ 	/* Doesn't exist -> skip permission checks */
+ 	struct stat st;
+diff --git a/libsandbox/wrapper-funcs/unlinkat_pre_check.c b/libsandbox/wrapper-funcs/unlinkat_pre_check.c
+index 9f5e7d7..c004d15 100644
+--- a/libsandbox/wrapper-funcs/unlinkat_pre_check.c
++++ b/libsandbox/wrapper-funcs/unlinkat_pre_check.c
+@@ -1,20 +1,13 @@
+ bool sb_unlinkat_pre_check(const char *func, const char *pathname, int dirfd)
+ {
+ 	char canonic[SB_PATH_MAX];
+-	char dirfd_path[SB_PATH_MAX];
+ 
+ 	save_errno();
+ 
+-	/* Expand the dirfd path first */
+-	switch (resolve_dirfd_path(dirfd, pathname, dirfd_path, sizeof(dirfd_path))) {
+-		case -1:
+-			sb_debug_dyn("EARLY FAIL: %s(%s) @ resolve_dirfd_path: %s\n",
+-				func, pathname, strerror(errno));
+-			return false;
+-		case 0:
+-			pathname = dirfd_path;
+-			break;
+-	}
++	/* Check incoming args against common *at issues */
++	char dirfd_path[SB_PATH_MAX];
++	if (!sb_common_at_pre_check(func, &pathname, dirfd, dirfd_path, sizeof(dirfd_path)))
++		return false;
+ 
+ 	/* Then break down any relative/symlink paths */
+ 	if (-1 == canonicalize(pathname, canonic))
+diff --git a/libsandbox/wrappers.h b/libsandbox/wrappers.h
+index 5b97787..0aa58bb 100644
+--- a/libsandbox/wrappers.h
++++ b/libsandbox/wrappers.h
+@@ -28,5 +28,7 @@ attribute_hidden bool sb_mkdirat_pre_check  (const char *func, const char *pathn
+ attribute_hidden bool sb_openat_pre_check   (const char *func, const char *pathname, int dirfd, int flags);
+ attribute_hidden bool sb_openat64_pre_check (const char *func, const char *pathname, int dirfd, int flags);
+ attribute_hidden bool sb_unlinkat_pre_check (const char *func, const char *pathname, int dirfd);
++attribute_hidden bool sb_common_at_pre_check(const char *func, const char **pathname, int dirfd,
++                                             char *dirfd_path, size_t dirfd_path_len);
+ 
+ #endif
+-- 
+1.8.1.2
+
+From 0b8a6d9773cc0e6d86bf1187f46817d5716698fe Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 24 Dec 2012 19:41:49 -0500
+Subject: [PATCH 2/2] libsandbox: reject "" paths with *at funcs before
+ checking the dirfd [missing file]
+
+When it comes to processing errors, an empty path is checked before
+an invalid dirfd.  Make sure sandbox matches that behavior for the
+random testsuites out there that look for this.
+
+Forgot to `git add` in the previous commit :/.
+
+URL: https://bugs.gentoo.org/346929
+Reported-by: Marien Zwart <marienz@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libsandbox/wrapper-funcs/__pre_at_check.c | 34 +++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+ create mode 100644 libsandbox/wrapper-funcs/__pre_at_check.c
+
+diff --git a/libsandbox/wrapper-funcs/__pre_at_check.c b/libsandbox/wrapper-funcs/__pre_at_check.c
+new file mode 100644
+index 0000000..f72c40c
+--- /dev/null
++++ b/libsandbox/wrapper-funcs/__pre_at_check.c
+@@ -0,0 +1,34 @@
++/*
++ * common *at() pre-checks.
++ *
++ * Copyright 1999-2012 Gentoo Foundation
++ * Licensed under the GPL-2
++ */
++
++/* We assume the parent has nested use with save/restore errno */
++bool sb_common_at_pre_check(const char *func, const char **pathname, int dirfd,
++                            char *dirfd_path, size_t dirfd_path_len)
++{
++	/* the empty path name should fail with ENOENT before any dirfd
++	 * checks get a chance to run #346929
++	 */
++	if (*pathname && *pathname[0] == '\0') {
++		errno = ENOENT;
++		sb_debug_dyn("EARLY FAIL: %s(%s): %s\n",
++			func, *pathname, strerror(errno));
++		return false;
++	}
++
++	/* Expand the dirfd path first */
++	switch (resolve_dirfd_path(dirfd, *pathname, dirfd_path, dirfd_path_len)) {
++		case -1:
++			sb_debug_dyn("EARLY FAIL: %s(%s) @ resolve_dirfd_path: %s\n",
++				func, *pathname, strerror(errno));
++			return false;
++		case 0:
++			*pathname = dirfd_path;
++			break;
++	}
++
++	return true;
++}
+-- 
+1.8.1.2
+

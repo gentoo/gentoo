@@ -1,0 +1,12 @@
+diff -ur hercules-3.06.orig/hsccmd.c hercules-3.06/hsccmd.c
+--- hercules-3.06.orig/hsccmd.c	2009-01-10 02:18:33.000000000 +0200
++++ hercules-3.06/hsccmd.c	2009-08-10 14:59:34.000000000 +0300
+@@ -7676,7 +7676,7 @@
+         break;
+       }
+     }
+-#elif // OPTION_CMDTGT
++#else // OPTION_CMDTGT
+ #ifdef _FEATURE_SYSTEM_CONSOLE
+     if ('.' == cmd[0] || '!' == cmd[0])
+     {

@@ -1,0 +1,68 @@
+From 1b663ceffe51008af7ae9749e5b7999b2f7d6698 Mon Sep 17 00:00:00 2001
+From: Bernhard Miklautz <bernhard.miklautz@shacknet.at>
+Date: Fri, 12 Dec 2014 18:26:45 +0100
+Subject: [PATCH] build: cmake 3.1 compatibility
+
+* fix problem with REMOVE_DUPLICATES on undefined lists
+* since 3.1 file(GLOB FILEPATHS RELATIVE .. returns single / instead of // as
+  previously - necessary adoptions for regex and matches done. Should
+	work with all cmake versions.
+
+Tested with 3.1.0-rc3
+---
+ channels/CMakeLists.txt        | 4 ++--
+ channels/client/CMakeLists.txt | 2 ++
+ client/CMakeLists.txt          | 4 ++--
+ server/CMakeLists.txt          | 4 ++--
+ third-party/CMakeLists.txt     | 6 +++---
+ 5 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/channels/CMakeLists.txt b/channels/CMakeLists.txt
+index c4e6048..540b1ac 100644
+--- a/channels/CMakeLists.txt
++++ b/channels/CMakeLists.txt
+@@ -253,8 +253,8 @@ set(FILENAME "ChannelOptions.cmake")
+ file(GLOB FILEPATHS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/${FILENAME}")
+ 
+ foreach(FILEPATH ${FILEPATHS})
+-	if(${FILEPATH} MATCHES "^([^/]*)//${FILENAME}")
+-		string(REGEX REPLACE "^([^/]*)//${FILENAME}" "\\1" DIR ${FILEPATH})
++	if(${FILEPATH} MATCHES "^([^/]*)/+${FILENAME}")
++		string(REGEX REPLACE "^([^/]*)/+${FILENAME}" "\\1" DIR ${FILEPATH})
+ 		set(CHANNEL_OPTION)
+ 		include(${FILEPATH})
+ 		if(${CHANNEL_OPTION})
+diff --git a/channels/client/CMakeLists.txt b/channels/client/CMakeLists.txt
+index 049bc7b..2db18e8 100644
+--- a/channels/client/CMakeLists.txt
++++ b/channels/client/CMakeLists.txt
+@@ -24,7 +24,9 @@ set(${MODULE_PREFIX}_SRCS
+ 	${CMAKE_CURRENT_SOURCE_DIR}/addin.c
+ 	${CMAKE_CURRENT_SOURCE_DIR}/addin.h)
+ 
++if(CHANNEL_STATIC_CLIENT_ENTRIES)
+ list(REMOVE_DUPLICATES CHANNEL_STATIC_CLIENT_ENTRIES)
++endif()
+ 
+ foreach(STATIC_ENTRY ${CHANNEL_STATIC_CLIENT_ENTRIES})
+ 	foreach(STATIC_MODULE ${CHANNEL_STATIC_CLIENT_MODULES})
+diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
+index 09b1fd4..610f35e 100644
+--- a/third-party/CMakeLists.txt
++++ b/third-party/CMakeLists.txt
+@@ -22,11 +22,11 @@
+ file(GLOB all_valid_subdirs RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/CMakeLists.txt")
+ 
+ foreach(dir ${all_valid_subdirs})
+-	if(${dir} MATCHES "^([^/]*)//CMakeLists.txt")
+-		string(REGEX REPLACE "^([^/]*)//CMakeLists.txt" "\\1" dir_trimmed ${dir})
++	if(${dir} MATCHES "^([^/]*)/+CMakeLists.txt")
++		string(REGEX REPLACE "^([^/]*)/+CMakeLists.txt" "\\1" dir_trimmed ${dir})
+ 		message(STATUS "Adding third-party component ${dir_trimmed}")
+ 		add_subdirectory(${dir_trimmed})
+ 	endif()
+ endforeach(dir)
+ 
+-set(THIRD_PARTY_INCLUDES ${THIRD_PARTY_INCLUDES} PARENT_SCOPE)
+\ No newline at end of file
++set(THIRD_PARTY_INCLUDES ${THIRD_PARTY_INCLUDES} PARENT_SCOPE)

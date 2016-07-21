@@ -1,0 +1,253 @@
+---
+ Update libtomoe-gtk to gucharmap-2 API
+ https://bugs.gentoo.org/show_bug.cgi?id=243160
+
+ Makefile.am                 |    1 
+ bindings/python/Makefile.am |    5 ++-
+ configure.ac                |   14 +++++---
+ src/tomoe-gucharmap.c       |   71 +++++++++++++++++++++++++++++++++++++++-----
+ 4 files changed, 78 insertions(+), 13 deletions(-)
+
+--- a/Makefile.am	2007-06-07 14:36:06.000000000 +0900
++++ b/Makefile.am	2008-12-21 01:24:06.000000000 +0900
+@@ -1,3 +1,4 @@
++ACLOCAL_AMFLAGS = -I macros
+ SUBDIRS=src data po test doc bindings
+ 
+ EXTRA_DIST = autogen.sh tomoe-gtk.pc
+--- a/configure.ac	2007-06-12 17:17:23.000000000 +0900
++++ b/configure.ac	2008-12-21 01:08:16.000000000 +0900
+@@ -94,6 +94,9 @@
+ AC_SUBST(TOMOE_CFLAGS)
+ AC_SUBST(TOMOE_LIBS)
+ 
++TOMOE_GTK_REQUIRED_LIBS="tomoe >= 0.4.0 gtk+-2.0 >= 2.4.0"
++AC_SUBST(TOMOE_GTK_REQUIRED_LIBS)
++
+ # Checks for gucharmap
+ AC_ARG_WITH(gucharmap,
+             AS_HELP_STRING([--with-gucharmap],
+@@ -102,14 +105,15 @@
+             [use_gucharmap=yes])
+ if test x"$use_gucharmap" = "xyes"; then
+   # Checks for gucharmap
+-  PKG_CHECK_MODULES(GUCHARMAP, [gucharmap >= 1.4.0])
+-  TOMOE_GTK_REQUIRED_LIBS="tomoe >= 0.4.0 gtk+-2.0 >= 2.4.0 gucharmap >= 1.4.0"
+-else
+-  TOMOE_GTK_REQUIRED_LIBS="tomoe >= 0.4.0 gtk+-2.0 >= 2.4.0"
++  PKG_CHECK_EXISTS(gucharmap-2,
++                   [PKG_CHECK_MODULES(GUCHARMAP, [gucharmap-2],
++		                      [gucharmap_lib="gucharmap-2"])],
++                   [PKG_CHECK_MODULES(GUCHARMAP, [gucharmap >= 1.4.0],
++                                      [gucharmap_lib="gucharmap >= 1.4.0"])])
++  TOMOE_GTK_REQUIRED_LIBS="$TOMOE_GTK_REQUIRED_LIBS $gucharmap_lib"
+ fi
+ AC_SUBST(GUCHARMAP_CFLAGS)
+ AC_SUBST(GUCHARMAP_LIBS)
+-AC_SUBST(TOMOE_GTK_REQUIRED_LIBS)
+ AM_CONDITIONAL([USE_GUCHARMAP], [test x"$use_gucharmap" = "xyes"])
+ 
+ # Check for pygtk
+--- a/src/tomoe-gucharmap.c	2007-04-27 14:41:40.000000000 +0900
++++ b/src/tomoe-gucharmap.c	2008-12-21 01:08:16.000000000 +0900
+@@ -34,7 +34,11 @@
+ {
+     GtkWidget         *chapters_type_combobox;
+     GtkWidget         *chapters_combobox;
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+     GucharmapChapters *chapters;
++#else
++    GucharmapChaptersModel *chapters_model;
++#endif
+     GucharmapCharmap  *charmap;
+     gchar             *selected;
+ };
+@@ -120,14 +124,24 @@
+     gtk_widget_show (combobox);
+ 
+     /* gucharmap */
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+     priv->chapters  = GUCHARMAP_CHAPTERS (gucharmap_block_chapters_new ());
+     priv->charmap = GUCHARMAP_CHARMAP (gucharmap_charmap_new (priv->chapters));
++#else
++    priv->chapters_model = gucharmap_block_chapters_model_new ();
++    priv->charmap = GUCHARMAP_CHARMAP (gucharmap_charmap_new ());
++    gucharmap_charmap_set_chapters_model (priv->charmap, priv->chapters_model);
++#endif
+     widget = GTK_WIDGET (priv->charmap);
+     gtk_box_pack_start (GTK_BOX (vbox), widget, TRUE, TRUE, 2);
+     gtk_widget_show (widget);
+ 
+     /* Hide chapters page by default. Usually use combo box instead. */
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+     gtk_widget_hide (GTK_WIDGET (priv->chapters));
++#else
++    gucharmap_charmap_set_chapters_visible (priv->charmap, FALSE);
++#endif
+ 
+ #if 0
+     /* CharDetails view will be here */
+@@ -146,10 +160,11 @@
+     g_signal_connect (G_OBJECT (priv->chapters_combobox), "changed",
+                       G_CALLBACK (on_chapters_combo_changed),
+                       (gpointer) page);
+-    g_signal_connect (G_OBJECT (priv->charmap->chartable), "activate",
++    g_signal_connect (G_OBJECT (gucharmap_charmap_get_chartable (priv->charmap)),
++                      "activate",
+                       G_CALLBACK (on_gucharmap_activate),
+                       (gpointer) page);
+-    g_signal_connect (G_OBJECT (priv->charmap->chartable),
++    g_signal_connect (G_OBJECT (gucharmap_charmap_get_chartable (priv->charmap)),
+                       "button-release-event",
+                       G_CALLBACK (on_gucharmap_button_release),
+                       (gpointer) page);
+@@ -162,7 +177,11 @@
+ 
+     priv->chapters_type_combobox = NULL;
+     priv->chapters_combobox      = NULL;
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+     priv->chapters               = NULL;
++#else
++    priv->chapters_model         = NULL;
++#endif
+     priv->charmap                = NULL;
+     if (priv->selected) {
+         g_free (priv->selected);
+@@ -188,7 +207,11 @@
+ tomoe_gucharmap_get_selected_char (TomoeGucharmap *page)
+ {
+     TomoeGucharmapPrivate *priv;
++#ifdef GUCHARMAP_TABLE
+     GucharmapTable *table;
++#else
++    GucharmapChartable *table;
++#endif
+     gunichar c;
+     gchar buf[7];
+     gint bytes;
+@@ -196,9 +219,17 @@
+     g_return_val_if_fail (TOMOE_IS_GUCHARMAP (page), NULL);
+ 
+     priv = TOMOE_GUCHARMAP_GET_PRIVATE (page);
++#ifdef GUCHARMAP_TABLE
+     table = GUCHARMAP_TABLE (priv->charmap->chartable);
++#else
++    table = gucharmap_charmap_get_chartable (priv->charmap);
++#endif
+ 
++#ifdef GUCHARMAP_TABLE
+     c = gucharmap_table_get_active_character (table);
++#else
++    c = gucharmap_chartable_get_active_character (table);
++#endif
+     bytes = g_unichar_to_utf8(c, buf);
+ 
+     if (bytes > 0 && bytes < 7) {
+@@ -222,7 +253,13 @@
+ setup_chapters_combo_box (TomoeGucharmap *page)
+ {
+     TomoeGucharmapPrivate *priv = TOMOE_GUCHARMAP_GET_PRIVATE (page);
+-    GtkTreeModel *model = priv->chapters->tree_model;
++    GtkTreeModel *model;
++
++#ifdef GUCHARMAP_TYPE_CHAPTERS
++    model = priv->chapters->tree_model;
++#else
++    model = GTK_TREE_MODEL (priv->chapters_model);
++#endif
+ 
+     gtk_combo_box_set_model (GTK_COMBO_BOX (priv->chapters_combobox), model);
+     gtk_combo_box_set_active (GTK_COMBO_BOX (priv->chapters_combobox), 0);
+@@ -235,12 +272,26 @@
+     TomoeGucharmapPrivate *priv = TOMOE_GUCHARMAP_GET_PRIVATE (page);
+     gint idx = gtk_combo_box_get_active (combobox);
+ 
+-    if (idx == 1)
++    if (idx == 1) {
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+         priv->chapters = GUCHARMAP_CHAPTERS (gucharmap_script_chapters_new ());
+-    else
++#else
++        priv->chapters_model = gucharmap_script_chapters_model_new ();
++#endif
++    } else {
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+         priv->chapters = GUCHARMAP_CHAPTERS (gucharmap_block_chapters_new ());
++#else
++        priv->chapters_model = gucharmap_block_chapters_model_new ();
++#endif
++    }
++#ifdef GUCHARMAP_TYPE_CHAPTERS
+     gucharmap_charmap_set_chapters (priv->charmap, priv->chapters);
+     gtk_widget_hide (GTK_WIDGET (priv->chapters));
++#else
++    gucharmap_charmap_set_chapters_model (priv->charmap, priv->chapters_model);
++    gucharmap_charmap_set_chapters_visible (priv->charmap, FALSE);
++#endif
+     setup_chapters_combo_box (page);
+ }
+ 
+@@ -249,6 +300,7 @@
+ {
+     TomoeGucharmap *page = data;
+     TomoeGucharmapPrivate *priv = TOMOE_GUCHARMAP_GET_PRIVATE (page);
++    GtkTreeView *tree_view;
+     GtkTreePath *path;
+     gchar buf[8];
+     gint idx;
+@@ -256,8 +308,13 @@
+     idx = gtk_combo_box_get_active (combobox);
+     g_snprintf (buf, 8 , "%d", idx);
+     path = gtk_tree_path_new_from_string (buf);
+-    gtk_tree_view_set_cursor (GTK_TREE_VIEW (priv->chapters->tree_view),
+-                              path, NULL, FALSE);
++#ifdef GUCHARMAP_TYPE_CHAPTERS
++    tree_view = GTK_TREE_VIEW (priv->chapters->tree_view);
++#else
++    tree_view =
++        GTK_TREE_VIEW (gucharmap_charmap_get_chapters_view (priv->charmap));
++#endif
++    gtk_tree_view_set_cursor (tree_view, path, NULL, FALSE);
+     gtk_tree_path_free (path);
+ }
+
+--- a/bindings/python/Makefile.am 
++++ b/bindings/python/Makefile.am 
+@@ -6,6 +6,7 @@
+ 	$(PYTHON_CFLAGS)	\
+ 	$(PYGOBJECT_CFLAGS)	\
+ 	$(PYGTK_CFLAGS)		\
++	$(GUCHARMAP_CFLAGS)	\
+ 	$(GTK2_CFLAGS)		\
+ 	$(TOMOE_CFLAGS)		\
+ 	-I$(top_srcdir)/src	\
+@@ -21,11 +22,13 @@
+ 	-module				\
+ 	-avoid-version			\
+ 	$(TOMOE_LDFLAGS)		\
+-	$(PYTHON_LDFLAGS)
++	$(PYTHON_LDFLAGS)		\
++	$(GUCHARMAP_LDFLAGS)
+ 
+ tomoegtk_la_LIBADD =			\
+ 	$(TOMOE_LIBS)			\
+ 	$(PYGTK_LIBS)			\
++	$(GUCHARMAP_LIBS)		\
+ 	$(top_builddir)/src/libtomoe-gtk.la
+ 
+ OVERRIDES =				\
+--- a/doc/reference/Makefile.am	2009-03-09 23:53:04.000000000 +0100
++++ b/doc/reference/Makefile.am	2009-03-09 23:52:30.000000000 +0100
+@@ -27,10 +27,12 @@
+ 	-I$(top_srcdir)/src 	\
+ 	-I$(top_builddir)/src	\
+ 	$(TOMOE_CFLAGS)		\
++	$(GUCHARMAP_CFLAGS)	\
+ 	$(GTK2_CFLAGS)
+ GTKDOC_LIBS = \
+ 	$(top_builddir)/src/libtomoe-gtk.la	\
+ 	$(TOMOE_LIBS)				\
++	$(GUCHARMAP_LIBS)			\
+ 	$(GTK2_LIBS)
+ 
+ # Extra options to supply to gtkdoc-mkdb

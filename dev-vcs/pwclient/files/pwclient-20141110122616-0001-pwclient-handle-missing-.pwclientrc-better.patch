@@ -1,0 +1,45 @@
+From 601e1362d63293ca567295f63cb52bcfeb5d9959 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Tue, 5 May 2015 23:19:57 -0400
+Subject: [PATCH 1/3] pwclient: handle missing ~/.pwclientrc better
+
+The upgrade path will crash if ~/.pwclientrc doesn't exist, so add an
+explicit check for the file before we try to "upgrade" it.
+
+The default error messages don't mention the config file, so it can be
+a bit confusing what pwclient is complaining about when running.
+
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ apps/patchwork/bin/pwclient | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/apps/patchwork/bin/pwclient b/apps/patchwork/bin/pwclient
+index 2a80981..56aa909 100755
+--- a/apps/patchwork/bin/pwclient
++++ b/apps/patchwork/bin/pwclient
+@@ -552,7 +552,7 @@ def main():
+     config = ConfigParser.ConfigParser()
+     config.read([CONFIG_FILE])
+ 
+-    if not config.has_section('options'):
++    if not config.has_section('options') and os.path.exists(CONFIG_FILE):
+         sys.stderr.write('~/.pwclientrc is in the old format. Migrating it...')
+ 
+         old_project = config.get('base','project')
+@@ -590,10 +590,10 @@ def main():
+             sys.exit(1)
+ 
+     if not config.has_section(project_str):
+-        sys.stderr.write("No section for project %s\n" % project_str)
++        sys.stderr.write('No section for project %s in ~/.pwclientrc\n' % project_str)
+         sys.exit(1)
+     if not config.has_option(project_str, 'url'):
+-        sys.stderr.write("No URL for project %s\n" % project_str)
++        sys.stderr.write('No URL for project %s in ~/.pwclientrc\n' % project_str)
+         sys.exit(1)
+     if not do_signoff and config.has_option('options', 'signoff'):
+         do_signoff = config.getboolean('options', 'signoff')
+-- 
+2.4.0
+

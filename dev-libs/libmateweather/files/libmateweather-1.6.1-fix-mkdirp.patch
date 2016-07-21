@@ -1,0 +1,11 @@
+diff -burN a/python/Makefile.am b/python/Makefile.am
+--- a/python/Makefile.am	2012-06-22 01:08:01.978411103 +0200
++++ b/python/Makefile.am	2012-06-22 01:11:02.007416691 +0200
+@@ -1,4 +1,7 @@
+ if BUILD_PYTHON
++
++MKDIR_P=@mkdir_p@
++
+ AM_CPPFLAGS =			\
+ 	-I$(top_srcdir)		\
+ 	$(PYTHON_INCLUDES)	\

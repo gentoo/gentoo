@@ -1,0 +1,10 @@
+--- beagle/include/beagle/RouletteT.hpp
++++ beagle/include/beagle/RouletteT.hpp
+@@ -87,7 +87,7 @@
+     Beagle_StackTraceBeginM();
+     Beagle_AssertM(inWeight>=0.0);
+     if(VectorType::empty()==false) inWeight += VectorType::back().first;
+-    push_back(std::make_pair(inWeight,inValue));
++    this->push_back(std::make_pair(inWeight,inValue));
+     Beagle_StackTraceEndM("void RouletteT<T>::insert(const T& inValue, double inWeight)");
+   }

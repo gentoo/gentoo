@@ -1,0 +1,33 @@
+Author: Benda Xu <heroxbd@gentoo.org>
+Date: 2014-12-08
+Forwarded: John E. Davis <jed@jedsoft.org>
+
+cp or rm does not necessarily reside in /bin.  If it does, /bin is
+in $PATH by convention.  In either case, hardcoding /bin/cp or /bin/rm
+is not a good idea.
+
+Index: most-5.0.0a/src/Makefile.in
+===================================================================
+--- most-5.0.0a.orig/src/Makefile.in
++++ most-5.0.0a/src/Makefile.in
+@@ -61,7 +61,7 @@ $(OBJDIR):
+ 	-mkdir $(OBJDIR)
+ #
+ $(CONFIG_H) : $(SRCDIR)/sysconf.h
+-	/bin/cp $(SRCDIR)/sysconf.h $(CONFIG_H)
++	cp $(SRCDIR)/sysconf.h $(CONFIG_H)
+ #
+ slangversion: $(OBJDIR)/chkslang
+ 	$(OBJDIR)/chkslang $(EXEC) 20000
+@@ -75,9 +75,9 @@ $(SRCDIR)/version.h: $(SRCDIR)/../change
+ 	fi
+ #
+ clean:
+-	/bin/rm -f $(OBJDIR)/* *~
++	rm -f $(OBJDIR)/* *~
+ distclean: clean
+-	/bin/rm -rf $(OBJDIR) Makefile sysconf.h
++	rm -rf $(OBJDIR) Makefile sysconf.h
+ installdirs:
+ 	$(MKINSDIR) $(DEST_DOCDIR)
+ 	$(MKINSDIR) $(DEST_MANDIR)/man1

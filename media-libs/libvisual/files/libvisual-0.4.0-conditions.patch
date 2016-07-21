@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/show_bug.cgi?id=431066
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=456856
+
+diff -u libvisual-0.4.0/libvisual/lv_cpu.c libvisual-0.4.0/libvisual/lv_cpu.c
+--- libvisual-0.4.0/libvisual/lv_cpu.c
++++ libvisual-0.4.0/libvisual/lv_cpu.c
+@@ -76,7 +76,7 @@
+ 
+ /* The sigill handlers */
+ #if defined(VISUAL_ARCH_X86) //x86 (linux katmai handler check thing)
+-#if defined(VISUAL_OS_LINUX) && defined(_POSIX_SOURCE) && defined(X86_FXSR_MAGIC)
++#if defined(VISUAL_OS_LINUX) && defined(_POSIX_SOURCE)
+ static void sigill_handler_sse( int signal, struct sigcontext sc )
+ {
+ 	/* Both the "xorps %%xmm0,%%xmm0" and "divps %xmm0,%%xmm1"
+@@ -109,7 +109,7 @@
+ 	}
+ }
+ #endif
+-#endif /* VISUAL_OS_LINUX && _POSIX_SOURCE && X86_FXSR_MAGIC */
++#endif /* VISUAL_OS_LINUX && _POSIX_SOURCE */
+ 
+ #if defined(VISUAL_OS_WIN32)
+ LONG CALLBACK win32_sig_handler_sse(EXCEPTION_POINTERS* ep)

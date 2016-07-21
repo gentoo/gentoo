@@ -1,0 +1,48 @@
+https://bugs.launchpad.net/do/+bug/634550
+
+Patches by Andrew Jorgensen
+
+--- Do/gtk-gui/Do.UI.ColorConfigurationWidget.cs	2009-06-28 18:19:29.000000000 -0600
++++ Do/gtk-gui/Do.UI.ColorConfigurationWidget.cs	2010-09-01 13:58:26.000000000 -0600
+@@ -57,7 +57,7 @@
+             Stetic.Gui.Initialize(this);
+             // Widget Do.UI.ColorConfigurationWidget
+             Stetic.BinContainer.Attach(this);
+-            this.Name = "Do.UI.ColorConfigurationWidget";
++            base.Name = "Do.UI.ColorConfigurationWidget";
+             // Container child Do.UI.ColorConfigurationWidget.Gtk.Container+ContainerChild
+             this.vbox2 = new Gtk.VBox();
+             this.vbox2.Name = "vbox2";
+--- Do/gtk-gui/Do.UI.GeneralPreferencesWidget.cs	2009-06-28 18:19:29.000000000 -0600
++++ Do/gtk-gui/Do.UI.GeneralPreferencesWidget.cs	2010-09-01 13:58:43.000000000 -0600
+@@ -33,7 +33,7 @@
+             Stetic.Gui.Initialize(this);
+             // Widget Do.UI.GeneralPreferencesWidget
+             Stetic.BinContainer.Attach(this);
+-            this.Name = "Do.UI.GeneralPreferencesWidget";
++            base.Name = "Do.UI.GeneralPreferencesWidget";
+             // Container child Do.UI.GeneralPreferencesWidget.Gtk.Container+ContainerChild
+             this.alignment4 = new Gtk.Alignment(0.5F, 0.5F, 1F, 1F);
+             this.alignment4.Name = "alignment4";
+--- Do/gtk-gui/Do.UI.KeybindingsPreferencesWidget.cs	2009-06-28 18:19:29.000000000 -0600
++++ Do/gtk-gui/Do.UI.KeybindingsPreferencesWidget.cs	2010-09-01 13:59:08.000000000 -0600
+@@ -27,7 +27,7 @@
+             Stetic.Gui.Initialize(this);
+             // Widget Do.UI.KeybindingsPreferencesWidget
+             Stetic.BinContainer.Attach(this);
+-            this.Name = "Do.UI.KeybindingsPreferencesWidget";
++            base.Name = "Do.UI.KeybindingsPreferencesWidget";
+             // Container child Do.UI.KeybindingsPreferencesWidget.Gtk.Container+ContainerChild
+             this.vbox2 = new Gtk.VBox();
+             this.vbox2.Name = "vbox2";
+--- Do/gtk-gui/Do.UI.ManagePluginsPreferencesWidget.cs	2009-06-28 18:19:29.000000000 -0600
++++ Do/gtk-gui/Do.UI.ManagePluginsPreferencesWidget.cs	2010-09-01 13:59:19.000000000 -0600
+@@ -43,7 +43,7 @@
+             Stetic.Gui.Initialize(this);
+             // Widget Do.UI.ManagePluginsPreferencesWidget
+             Stetic.BinContainer.Attach(this);
+-            this.Name = "Do.UI.ManagePluginsPreferencesWidget";
++            base.Name = "Do.UI.ManagePluginsPreferencesWidget";
+             // Container child Do.UI.ManagePluginsPreferencesWidget.Gtk.Container+ContainerChild
+             this.vbox3 = new Gtk.VBox();
+             this.vbox3.Name = "vbox3";

@@ -1,0 +1,132 @@
+--- cdat_lite-6.0rc2/libcdms/Makefile.in
++++ cdat_lite-6.0rc2/libcdms/Makefile.in
+@@ -44,15 +44,15 @@
+ PARMDIR=$(prefix)/lib/lats
+ 
+ CC = @CC@
+-CFLAGS = -I../../include @CFLAGS@ $(DEBUG) -Dgrads @GRIB2INC@ @GRIB2OPTS@
++CFLAGS = -fPIC -I../../include @CFLAGS@ -Dgrads @GRIB2INC@ @GRIB2OPTS@
+ CPPFLAGS = @CPPFLAGS@
+ DEBUG = -O
+ DEFS = @DEFS@
+ FC = @FC@
+-FFLAGS = -I../../include @FFLAGS@ $(DEBUG)
++FFLAGS = -I../../include @FFLAGS@
+ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+-LDFLAGS = -L../../../lib -lcdms @NCOPTS@ @HDFOPTS@ @DRSOPTS@ @LIBS@ @GRIB2LIB@
++LDFLAGS += -L../../../lib -lcdms @NCOPTS@ @HDFOPTS@ @DRSOPTS@ @LIBS@ @GRIB2LIB@
+ OS = @OS@
+ RANLIB = @RANLIB@
+ 
+--- cdat_lite-6.0rc2/libcdms/src/db_util/Makefile.in
++++ cdat_lite-6.0rc2/libcdms/src/db_util/Makefile.in
+@@ -38,17 +38,18 @@
+ PARMDIR=$(prefix)/lib/lats
+ 
+ CC = @CC@
+-CFLAGS = -I../../include @CFLAGS@ $(DEBUG) -Dgrads
++CFLAGS = -fPIC -I../../include @CFLAGS@ -Dgrads
+ CPPFLAGS = @CPPFLAGS@
+ DEBUG = -O
+ DEFS = @DEFS@
+ FC = @FC@
+-FFLAGS = -I../../include @FFLAGS@ $(DEBUG)
++FFLAGS = -I../../include @FFLAGS@
+ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+-LDFLAGS = -L../../../lib -lcdms @NCOPTS@ @DRSOPTS@ @LIBS@
++LDFLAGS += -L../../../lib -lcdms @NCOPTS@ @DRSOPTS@ @LIBS@
+ OS = @OS@
+ RANLIB = @RANLIB@
++AR ?= ar
+ 
+ # Shell to run make subcommands
+ SHELL = /bin/sh
+@@ -60,7 +61,7 @@
+ 		  cdUtil.o
+ 
+ all:		$(OBJS) FORCE
+-		ar rv $(LIBRARY) $(OBJS)
++		$(AR) rv $(LIBRARY) $(OBJS)
+ 		$(RANLIB) $(LIBRARY)
+ 
+ cdTimeConv.o:	cdTimeConv.c ../../include/cdmsint.h ../../include/cdms.h ../../include/cdunif.h
+--- cdat_lite-6.0rc2/libcdms/src/cdunif/Makefile.in
++++ cdat_lite-6.0rc2/libcdms/src/cdunif/Makefile.in
+@@ -47,29 +47,29 @@
+ PARMDIR=$(prefix)/lib/lats
+ 
+ # Set the compiler flag for the 64-bit Opteron platform
++CC = @CC@
+ ARCH=$(shell uname -m)
+ ifeq ($(ARCH),x86_64)
+-   CC = gcc -fPIC -D__x86_64__
+-else
+-   CC = @CC@
++   CC += -fPIC -D__x86_64__
+ endif
+ 
+ ifneq (@GRIB2INC@,)
+-  CFLAGS = -I../../include -I"@NCINC@" -I@HDFINC@ -I@DRSINC@ @CFLAGS@ $(DEBUG) -Dgrads -I@GRIB2INC@ @GRIB2OPTS@
++  CFLAGS = -I../../include -I"@NCINC@" -I@HDFINC@ -I@DRSINC@ @CFLAGS@ -Dgrads -I@GRIB2INC@ @GRIB2OPTS@
+ else
+-  CFLAGS = -I../../include -I"@NCINC@" -I@HDFINC@ -I@DRSINC@ @CFLAGS@ $(DEBUG) -Dgrads
++  CFLAGS = -I../../include -I"@NCINC@" -I@HDFINC@ -I@DRSINC@ @CFLAGS@ -Dgrads
+ endif
+ 
+-CPPFLAGS = @CPPFLAGS@ -DSTNDALN=1 -DBYTEORDER=@GRADS_BYTEORDER@ -DGRADS_CRAY=@GRADS_CRAY@ @QLOPTS@ @PPOPTS@ @GRIB2OPTS@
++CPPFLAGS += @CPPFLAGS@ -DSTNDALN=1 -DBYTEORDER=@GRADS_BYTEORDER@ -DGRADS_CRAY=@GRADS_CRAY@ @QLOPTS@ @PPOPTS@ @GRIB2OPTS@
+ DEBUG = -O
+ DEFS = @DEFS@
+ FC = @FC@
+-FFLAGS = -I../../include @FFLAGS@ $(DEBUG)
++FFLAGS = -I../../include @FFLAGS@
+ INSTALL = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+-LDFLAGS = -L../../../lib -lcdms @NCOPTS@ @HDFOPTS@ @DRSOPTS@ @LIBS@ @GRIB2LIB@
++LDFLAGS += -L../../../lib -lcdms @NCOPTS@ @HDFOPTS@ @DRSOPTS@ @LIBS@ @GRIB2LIB@
+ OS = @OS@
+ RANLIB = @RANLIB@
++AR ?= ar
+ 
+ # Shell to run make subcommands
+ SHELL = /bin/sh
+@@ -80,7 +80,7 @@
+ OBJS		= cdunif.o cdunifint.o cdunifgen.o cdunifdrs.o cdunifgrads.o cdunifnc.o cdunifhdf.o cdunifslab.o cdunifstub.o cdunifra.o cdrra.o cdsort.o gamach.o gaio.o gaprnt.o gautil.o gaddes.o galloc.o gabufr.o gabufrtbl.o cdunifql.o @GRADS_IEEE2CRAY_OBJECT@
+ 
+ all:		$(OBJS) FORCE
+-		ar rv $(LIBRARY) $(OBJS)
++		$(AR) rv $(LIBRARY) $(OBJS)
+ 		cd cdunifpp; $(MAKE) DEBUG=$(DEBUG)
+ 		$(RANLIB) $(LIBRARY)
+ 
+--- cdat_lite-6.0rc2/libcdms/src/cdunif/cdunifpp/Makefile.in
++++ cdat_lite-6.0rc2/libcdms/src/cdunif/cdunifpp/Makefile.in
+@@ -37,12 +37,13 @@
+ # set to blank if you don't want to rename symbols in unpacking routines
+ 
+ CC = @CC@
+-CFLAGS = -I../../../include/cdunifpp -I@NCINC@ @CFLAGS@ -I../../../include $(DEBUG)
++CFLAGS = -fPIC -I../../../include/cdunifpp -I@NCINC@ @CFLAGS@ -I../../../include
+ CPPFLAGS = @CPPFLAGS@ @PPOPTS@ -Uhdf
+ LIBRARY = ../../../lib/libcdms.a
++AR ?= ar
+ 
+ all: $(OBJS)
+-	ar rv $(LIBRARY) $(OBJS)
++	$(AR) rv $(LIBRARY) $(OBJS)
+ # (ranlib called by higher-level makefile)
+ 
+ %.o: %.c $(HEADERS)
+--- cdat_lite-6.0rc2/setup_util.py
++++ cdat_lite-6.0rc2/setup_util.py
+@@ -296,8 +296,6 @@
+             nc4_defs = ''
+ 
+         self._system('cd libcdms ; '
+-                     'CFLAGS="-fPIC" '
+-                     'CC=%(cc)s '
+                      'sh ./configure --disable-drs --disable-hdf '
+                      '--disable-ql --with-ncinc=%(ncinc)s --with-ncincf=%(ncinc)s --with-nclib=%(nclib)s %(nc4)s'
+                      % dict(ncinc=netcdf_config.netcdf_incdir, nclib=netcdf_config.netcdf_libdir,

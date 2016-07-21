@@ -1,0 +1,12 @@
+diff -Naur VTK/CMakeLists.txt VTK.new/CMakeLists.txt
+--- VTK/CMakeLists.txt	2008-05-13 17:50:09.000000000 -0400
++++ VTK.new/CMakeLists.txt	2008-10-05 10:34:42.000000000 -0400
+@@ -182,7 +182,7 @@
+ # Compute the proper location for installing the Tcl package.  This
+ # must be a fixed relative path below the library install location and
+ # is therefore not settable by parent projects.
+-SET(VTK_INSTALL_TCL_DIR ${VTK_INSTALL_LIB_DIR})
++SET(VTK_INSTALL_TCL_DIR ${VTK_INSTALL_PACKAGE_DIR})
+ 
+ IF(NOT VTK_INSTALL_JAVA_DIR)
+   SET(VTK_INSTALL_JAVA_DIR ${VTK_INSTALL_PACKAGE_DIR}/java)

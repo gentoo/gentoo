@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>robbat2@gentoo.org</email>
+</maintainer>
+<longdescription> Springgraph will read in a .dot file description of a graph,
+    which, for each node, specifies its name and which other nodes it is
+    connected to, and then renders a graph. Each node is drawn as an ellipse,
+    and each connection is drawn as an arrow. The node placement is a result of
+    all of the nodes moving away from each other, while all nodes which are
+    connected move toward each other. This movement is repeated until it
+    stabilizes.</longdescription>
+</pkgmetadata>

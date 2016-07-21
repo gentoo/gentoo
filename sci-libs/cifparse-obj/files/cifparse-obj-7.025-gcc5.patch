@@ -1,0 +1,16 @@
+ etc/platform.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etc/platform.sh b/etc/platform.sh
+index ff0ab51..1b56ab1 100755
+--- a/etc/platform.sh
++++ b/etc/platform.sh
+@@ -60,7 +60,7 @@ case `uname -s` in
+ #   Check if it is a Linux platform
+     Linux)
+ #     Check if it is GCC version 4.x
+-      gcc_ver=`gcc --version | grep -e " 4\."`
++      gcc_ver=`gcc --version | grep -e " [45]\."`
+       if [[ -z $gcc_ver ]]
+       then
+ #       It is not GCC version 4.x. Check if it is GCC version 3.x

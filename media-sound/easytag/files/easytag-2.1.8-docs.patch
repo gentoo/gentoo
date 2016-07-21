@@ -1,0 +1,14 @@
+--- Makefile.am
++++ Makefile.am
+@@ -197,11 +197,6 @@
+ 	$(AM_V_at)$(POST_UNINSTALL)
+ 	test -n "$(DESTDIR)" || $(UPDATE_ICON_CACHE) "$(iconthemedir)"
+ 
+-dist_doc_DATA = \
+-	HACKING \
+-	THANKS \
+-	TODO
+-
+ dist_noinst_DATA = \
+ 	$(desktop_in_files) \
+ 	$(easytag_headers) \

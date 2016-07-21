@@ -1,0 +1,14 @@
+--- Makefile.orig	2005-06-12 04:07:56.000000000 +0200
++++ Makefile	2005-06-12 04:08:02.000000000 +0200
+@@ -12,11 +12,3 @@
+ CFLAGS=-Wall
+ 
+ include ../../Makefile.modules
+-
+-
+-install:
+-	-serctl stop
+-	-mv /usr/local/lib/ser/modules/ethz.so /usr/local/lib/ser/modules/ethz.so.OLD
+-	rm -f /usr/local/lib/ser/modules/ethz.so
+-	cp ethz.so /usr/local/lib/ser/modules
+-	-serctl start

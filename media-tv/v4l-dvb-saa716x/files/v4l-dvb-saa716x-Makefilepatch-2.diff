@@ -1,0 +1,8 @@
+--- v4l-dvb-saa716x-cfa4b4faab67/linux/drivers/media/common/saa716x/Makefile.orig	2013-03-02 07:44:51.112642592 +0100
++++ v4l-dvb-saa716x-cfa4b4faab67/linux/drivers/media/common/saa716x/Makefile	2013-03-02 07:46:56.703138542 +0100
+@@ -24,3 +24,5 @@
+ obj-$(CONFIG_DVB_SAA716X_FF)	  += saa716x_ff.o
+ 
+ EXTRA_CFLAGS = -Idrivers/media/dvb/dvb-core/ -Idrivers/media/dvb/frontends/ -Idrivers/media/dvb-core/ -Idrivers/media/dvb-frontends/
++EXTRA_CFLAGS += -Idrivers/media/common/tuners/ # up to kernel 3.6
++EXTRA_CFLAGS += -Idrivers/media/tuners/        # kernel 3.7+

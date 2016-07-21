@@ -1,0 +1,700 @@
+Description: Fix to work with wxwidgets3.0
+ Based on partial patch by dam.
+Author: Olly Betts <olly@survex.com>
+Bug-Debian: http://bugs.debian.org/749978
+Forwarded: no
+Last-Update: 2014-08-14
+
+--- a/src/ListView.h
++++ b/src/ListView.h
+@@ -28,6 +28,7 @@
+ #include <wx/scrolwin.h>
+ #include <wx/vlbox.h>
+ #include <wx/settings.h>
++#include <wx/listbase.h>
+ 
+ class guListViewClient;
+ class guListViewHeader;
+@@ -330,7 +331,7 @@
+     size_t                  GetVisibleEnd( void ) const { return m_ListBox->GetVisibleEnd(); }
+     size_t                  GetFirstVisibleLine() const { return m_ListBox->GetFirstVisibleLine(); }
+     size_t                  GetLastVisibleLine() const { return m_ListBox->GetLastVisibleLine(); }
+-    bool                    ScrollLines( int lines ) { return m_ListBox->ScrollLines( lines ); }
++    bool                    ScrollLines( int lines ) { return m_ListBox->wxWindow::ScrollLines( lines ); }
+ 
+     bool                    ScrollToLine( size_t line ) { return m_ListBox->ScrollToLine( line ); }
+ 
+--- a/src/FileBrowser.cpp
++++ b/src/FileBrowser.cpp
+@@ -36,6 +36,7 @@
+ #include <wx/arrimpl.cpp>
+ #include <wx/artprov.h>
+ #include <wx/clipbrd.h>
++#include <wx/gtk/tglbtn.h>
+ 
+ WX_DEFINE_OBJARRAY(guFileItemArray);
+ 
+@@ -221,7 +222,7 @@
+ 
+ 	DirBtnSizer->Add( 0, 0, 1, wxEXPAND, 5 );
+ 
+-	m_ShowLibPathsBtn = new wxToggleBitmapButton( this, wxID_ANY, guImage( guIMAGE_INDEX_tiny_library ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
++	m_ShowLibPathsBtn = new wxBitmapToggleButton( this, wxID_ANY, guImage( guIMAGE_INDEX_tiny_library ), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW );
+     m_ShowLibPathsBtn->SetToolTip( ShowPaths == guFILEBROWSER_SHOWPATH_SYSTEM ?
+                           _( "See used locations" ) :
+                           _( "See system files" ) );
+--- a/src/FileBrowser.h
++++ b/src/FileBrowser.h
+@@ -36,6 +36,7 @@
+ #include <wx/sizer.h>
+ #include <wx/string.h>
+ #include <wx/tglbtn.h>
++#include <wx/gtk/tglbtn.h>
+ 
+ 
+ #define     guPANEL_FILEBROWSER_DIRCTRL             ( 1 << 0 )
+@@ -122,7 +123,7 @@
+     guMediaViewer *     m_MediaViewer;
+     guGenericDirCtrl *  m_DirCtrl;
+     bool                m_AddingFolder;
+-    wxToggleBitmapButton *  m_ShowLibPathsBtn;
++    wxBitmapToggleButton *  m_ShowLibPathsBtn;
+ 
+     void                OnShowLibPathsClick( wxCommandEvent& event );
+ 
+--- a/src/AuiNotebook.cpp
++++ b/src/AuiNotebook.cpp
+@@ -47,8 +47,8 @@
+     m_TextFgColor = wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOWTEXT );
+     m_SelTextFgColour = wxSystemSettings::GetColour( wxSYS_COLOUR_WINDOWTEXT );
+ 
+-    m_disabled_close_bmp = guImage( guIMAGE_INDEX_tiny_close_normal );
+-    m_active_close_bmp = guImage( guIMAGE_INDEX_tiny_close_highlight );
++    m_disabledCloseBmp = guImage( guIMAGE_INDEX_tiny_close_normal );
++    m_activeCloseBmp = guImage( guIMAGE_INDEX_tiny_close_highlight );
+ }
+ 
+ // -------------------------------------------------------------------------------- //
+@@ -60,9 +60,9 @@
+ wxAuiTabArt * guAuiTabArt::Clone()
+ {
+     guAuiTabArt * art = new guAuiTabArt;
+-    art->SetNormalFont( m_normal_font );
+-    art->SetSelectedFont( m_selected_font );
+-    art->SetMeasuringFont( m_measuring_font );
++    art->SetNormalFont( m_normalFont );
++    art->SetSelectedFont( m_selectedFont );
++    art->SetMeasuringFont( m_measuringFont );
+ //    art->m_BgColor = m_BgColor;
+ //    art->m_SelBgColor = m_SelBgColor;
+ //    art->m_TextFgColor = m_TextFgColor;
+@@ -75,7 +75,7 @@
+     // draw background
+    //wxColor top_color      = m_base_colour;
+    wxColor top_color      = m_BgColor;
+-   wxColor bottom_color   = wxAuiStepColour( m_base_colour, 120 );
++   wxColor bottom_color   = wxAuiStepColour( m_baseColour, 120 );
+    wxRect r;
+ 
+    if( m_flags & wxAUI_NB_BOTTOM )
+@@ -88,7 +88,7 @@
+    dc.GradientFillLinear( r, top_color, bottom_color, wxNORTH );
+ 
+    // draw base lines
+-   dc.SetPen( m_border_pen );
++   dc.SetPen( m_borderPen );
+    int y = rect.GetHeight();
+    int w = rect.GetWidth();
+ 
+@@ -120,10 +120,10 @@
+     if( caption.empty() )
+         caption = wxT("Xj");
+ 
+-    dc.SetFont(m_selected_font);
++    dc.SetFont(m_selectedFont);
+     dc.GetTextExtent(caption, &selected_textx, &selected_texty);
+ 
+-    dc.SetFont(m_normal_font);
++    dc.SetFont(m_normalFont);
+     dc.GetTextExtent(caption, &normal_textx, &normal_texty);
+ 
+     // figure out the size of the tab
+@@ -135,7 +135,7 @@
+                                  close_button_state,
+                                  x_extent);
+ 
+-    wxCoord tab_height = m_tab_ctrl_height - 1;
++    wxCoord tab_height = m_tabCtrlHeight - 1;
+     if( !page.active )
+         tab_height -= 2;
+     wxCoord tab_width = tab_size.x;
+@@ -150,12 +150,12 @@
+ 
+     if( page.active )
+     {
+-        dc.SetFont( m_selected_font );
++        dc.SetFont( m_selectedFont );
+         texty = selected_texty;
+     }
+     else
+     {
+-        dc.SetFont(m_normal_font);
++        dc.SetFont(m_normalFont);
+         texty = normal_texty;
+     }
+ 
+@@ -221,7 +221,7 @@
+ //    }
+ 
+     // draw tab outline
+-    dc.SetPen( m_border_pen );
++    dc.SetPen( m_borderPen );
+     dc.SetBrush( * wxTRANSPARENT_BRUSH );
+     dc.DrawPolygon( WXSIZEOF( border_points ), border_points );
+ 
+@@ -230,7 +230,7 @@
+     if( page.active )
+     {
+         if( m_flags & wxAUI_NB_BOTTOM )
+-            dc.SetPen( wxPen( wxColour( wxAuiStepColour( m_base_colour, 170 ) ) ) );
++            dc.SetPen( wxPen( wxColour( wxAuiStepColour( m_baseColour, 170 ) ) ) );
+         // TODO: else if (m_flags &wxAUI_NB_LEFT) {}
+         // TODO: else if (m_flags &wxAUI_NB_RIGHT) {}
+         else //for wxAUI_NB_TOP
+@@ -246,7 +246,7 @@
+     int close_button_width = 0;
+     if (close_button_state != wxAUI_BUTTON_STATE_HIDDEN)
+     {
+-        close_button_width = m_active_close_bmp.GetWidth();
++        close_button_width = m_activeCloseBmp.GetWidth();
+     }
+ 
+ 
+@@ -284,12 +284,12 @@
+     // draw close button if necessary
+     if (close_button_state != wxAUI_BUTTON_STATE_HIDDEN)
+     {
+-        wxBitmap bmp = m_disabled_close_bmp;
++        wxBitmap bmp = m_disabledCloseBmp;
+ 
+         if (close_button_state == wxAUI_BUTTON_STATE_HOVER ||
+             close_button_state == wxAUI_BUTTON_STATE_PRESSED)
+         {
+-            bmp = m_active_close_bmp;
++            bmp = m_activeCloseBmp;
+         }
+ 
+         wxRect rect(tab_x + tab_width - close_button_width - 1,
+@@ -367,14 +367,14 @@
+ // UpdateTabCtrlHeight() does the actual tab resizing. It's meant
+ // to be used interally
+ // -------------------------------------------------------------------------------- //
+-void guAuiNotebook::UpdateTabCtrlHeight()
++bool guAuiNotebook::UpdateTabCtrlHeight()
+ {
+     // get the tab ctrl height we will use
+     int height = CalculateTabCtrlHeight();
+ 
+     wxAuiTabArt* art = m_tabs.GetArtProvider();
+ 
+-    m_tab_ctrl_height = height;
++    m_tabCtrlHeight = height;
+ 
+     wxAuiPaneInfoArray& all_panes = m_mgr.GetAllPanes();
+     size_t i, pane_count = all_panes.GetCount();
+@@ -385,10 +385,12 @@
+             continue;
+         wxTabFrame* tab_frame = (wxTabFrame*)pane.window;
+         wxAuiTabCtrl* tabctrl = tab_frame->m_tabs;
+-        tab_frame->SetTabCtrlHeight(m_tab_ctrl_height);
++        tab_frame->SetTabCtrlHeight(m_tabCtrlHeight);
+         tabctrl->SetArtProvider(art->Clone());
+         tab_frame->DoSizing();
+     }
++
++    return true;
+ }
+ 
+ // -------------------------------------------------------------------------------- //
+@@ -447,7 +449,7 @@
+             if( p )
+                 tabs += wxT( "," );
+ 
+-            if( ( int ) page_idx == m_curpage )
++            if( ( int ) page_idx == m_curPage )
+                 tabs += wxT( "*" );
+             else if( ( int ) p == tabframe->m_tabs->GetActivePage() )
+                 tabs += wxT( "+" );
+@@ -501,12 +503,12 @@
+         // create a new tab frame
+         wxTabFrame * new_tabs = new wxTabFrame;
+         new_tabs->m_tabs = new wxAuiTabCtrl( this,
+-                                    m_tab_id_counter++,
++                                    m_tabIdCounter++,
+                                     wxDefaultPosition,
+                                     wxDefaultSize,
+                                     wxNO_BORDER | wxWANTS_CHARS );
+         new_tabs->m_tabs->SetArtProvider( m_tabs.GetArtProvider()->Clone() );
+-        new_tabs->SetTabCtrlHeight( m_tab_ctrl_height );
++        new_tabs->SetTabCtrlHeight( m_tabCtrlHeight );
+         new_tabs->m_tabs->SetFlags( m_flags );
+         wxAuiTabCtrl * dest_tabs = new_tabs->m_tabs;
+ 
+@@ -555,7 +557,7 @@
+     m_mgr.LoadPerspective( frames );
+ 
+     // Force refresh of selection
+-    m_curpage = -1;
++    m_curPage = -1;
+     SetSelection( sel_page );
+ 
+     return true;
+--- a/src/AuiNotebook.h
++++ b/src/AuiNotebook.h
+@@ -205,7 +205,7 @@
+ 
+     virtual ~guAuiNotebook();
+ 
+-    virtual void UpdateTabCtrlHeight();
++    virtual bool UpdateTabCtrlHeight();
+ 
+     wxString SavePerspective( void );
+  	bool LoadPerspective( const wxString &layout );
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -120,7 +120,7 @@
+ SET( ADD_WXSQLITE_SUPPORT 0 )
+ PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3 )
+ IF( NOT LIBWXSQLITE3_LIBRARIES )
+-	PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3-2.8 )
++	PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3-3.0 )
+ 	IF( NOT LIBWXSQLITE3_LIBRARIES )
+ 		ADD_DEFINITIONS(-DADD_WXSQLITE_SUPPORT=1)
+ 		SET( ADD_WXSQLITE_SUPPORT 1 )
+--- a/src/LastFMPanel.cpp
++++ b/src/LastFMPanel.cpp
+@@ -2812,7 +2812,7 @@
+     if( event.GetKeyCode() == WXK_RETURN )
+     {
+         wxCommandEvent CmdEvent( wxEVT_COMMAND_TEXT_ENTER );
+-        m_ArtistTextCtrl->AddPendingEvent( CmdEvent );
++        m_ArtistTextCtrl->GetEventHandler()->AddPendingEvent( CmdEvent );
+         return;
+     }
+     event.Skip();
+--- a/src/MainApp.cpp
++++ b/src/MainApp.cpp
+@@ -360,8 +360,7 @@
+         if( LangInfo )
+         {
+             guLogError( wxT( "Could not initialize the translations engine for ( %s )" ), LangInfo->CanonicalName.c_str() );
+-            wxStandardPaths StdPaths;
+-            guLogError( wxT( "Locale directory '%s'" ), StdPaths.GetLocalizedResourcesDir( LangInfo->CanonicalName, wxStandardPaths::ResourceCat_Messages).c_str() );
++            guLogError( wxT( "Locale directory '%s'" ), wxStandardPaths::Get().GetLocalizedResourcesDir( LangInfo->CanonicalName, wxStandardPaths::ResourceCat_Messages).c_str() );
+         }
+         else
+         {
+--- a/src/PLSoListBox.cpp
++++ b/src/PLSoListBox.cpp
+@@ -179,7 +179,7 @@
+     if( event.GetKeyCode() == WXK_DELETE )
+     {
+         wxCommandEvent evt( wxEVT_COMMAND_MENU_SELECTED, ID_TRACKS_DELETE );
+-        GetParent()->AddPendingEvent( evt );
++        GetParent()->GetEventHandler()->AddPendingEvent( evt );
+         return;
+     }
+ 
+--- a/src/StatusBar.cpp
++++ b/src/StatusBar.cpp
+@@ -509,7 +509,7 @@
+ }
+ 
+ // -------------------------------------------------------------------------------- //
+-void guStatusBar::DrawField( wxDC &dc, int i )
++void guStatusBar::DrawField( wxDC &dc, int i, int textHeight )
+ {
+     wxRect rect;
+     GetFieldRect( i, rect );
+@@ -521,7 +521,7 @@
+         dc.DrawLine( rect.x + rect.width, rect.y + 1, rect.x + rect.width, rect.y + rect.height - 1 );
+     }
+ 
+-    DrawFieldText( dc, i );
++    DrawFieldText( dc, rect, i, textHeight );
+ }
+ 
+ // -------------------------------------------------------------------------------- //
+--- a/src/TagInfo.cpp
++++ b/src/TagInfo.cpp
+@@ -2453,7 +2453,7 @@
+ }
+ 
+ // -------------------------------------------------------------------------------- //
+-bool guTagSetLyrics( const wxString &filename, wxString &lyrics )
++bool guTagSetLyrics( const wxString &filename, const wxString &lyrics )
+ {
+     guMainFrame * MainFrame = ( guMainFrame * ) wxTheApp->GetTopWindow();
+ 
+--- a/src/TagInfo.h
++++ b/src/TagInfo.h
+@@ -329,7 +329,7 @@
+ bool        guTagSetPicture( const wxString &filename, wxImage * picture );
+ bool        guTagSetPicture( const wxString &filename, const wxString &imagefile );
+ wxString    guTagGetLyrics( const wxString &filename );
+-bool        guTagSetLyrics( const wxString &filename, wxString &lyrics );
++bool        guTagSetLyrics( const wxString &filename, const wxString &lyrics );
+ //void        guUpdateTrack( const guTrack &track, const wxImage * image, const wxString &lyrics, const int &changedflags );
+ void        guUpdateTracks( const guTrackArray &tracks, const guImagePtrArray &images,
+                     const wxArrayString &lyrics, const wxArrayInt &changedflags );
+--- a/src/PlayListAppend.cpp
++++ b/src/PlayListAppend.cpp
+@@ -128,7 +128,7 @@
+ int guPlayListAppend::GetSelectedPlayList( void )
+ {
+     int Selection = m_PlayListComboBox->GetSelection();
+-    if( Selection == wxNOT_FOUND && !m_PlayListComboBox->IsEmpty() )
++    if( Selection == wxNOT_FOUND && m_PlayListComboBox->GetCount() != 0 )
+     {
+         Selection = FindPlayListItem( m_PlayListItems, m_PlayListComboBox->GetValue().Lower().Trim().Trim( false ) );
+     }
+--- a/src/AlbumBrowser.cpp
++++ b/src/AlbumBrowser.cpp
+@@ -2308,7 +2308,7 @@
+                         // Its a LeftUp event
+                         event.SetEventType( wxEVT_LEFT_DOWN );
+                         event.m_leftDown = true;
+-                        m_BigCoverTracksListBox->AddPendingEvent( event );
++                        m_BigCoverTracksListBox->GetEventHandler()->AddPendingEvent( event );
+                     }
+                     return;
+                 }
+--- a/src/AuiDockArt.cpp
++++ b/src/AuiDockArt.cpp
+@@ -23,7 +23,34 @@
+ #include "Images.h"
+ #include "Utils.h"
+ 
+-extern wxString wxAuiChopText( wxDC &dc, const wxString &text, int max_size );
++wxString wxAuiChopText(wxDC& dc, const wxString& text, int max_size)
++{
++    wxCoord x,y;
++
++    // first check if the text fits with no problems
++    dc.GetTextExtent(text, &x, &y);
++    if (x <= max_size)
++        return text;
++
++    size_t i, len = text.Length();
++    size_t last_good_length = 0;
++    for (i = 0; i < len; ++i)
++    {
++        wxString s = text.Left(i);
++        s += wxT("...");
++
++        dc.GetTextExtent(s, &x, &y);
++        if (x > max_size)
++            break;
++
++        last_good_length = i;
++    }
++
++    wxString ret = text.Left(last_good_length);
++    ret += wxT("...");
++    return ret;
++}
++
+ 
+ // -------------------------------------------------------------------------------- //
+ guAuiDockArt::guAuiDockArt() : wxAuiDefaultDockArt()
+@@ -42,12 +69,12 @@
+ // -------------------------------------------------------------------------------- //
+ void guAuiDockArt::DrawCaptionBackground( wxDC &dc, const wxRect &rect, bool active )
+ {
+-    if( m_gradient_type == wxAUI_GRADIENT_NONE )
++    if( m_gradientType == wxAUI_GRADIENT_NONE )
+     {
+         if( active )
+-            dc.SetBrush( wxBrush( m_active_caption_colour ) );
++            dc.SetBrush( wxBrush( m_activeCaptionColour ) );
+         else
+-            dc.SetBrush( wxBrush( m_inactive_caption_colour ) );
++            dc.SetBrush( wxBrush( m_inactiveCaptionColour ) );
+ 
+         dc.DrawRectangle( rect.x, rect.y, rect.width, rect.height );
+     }
+@@ -58,15 +85,15 @@
+             // on mac the gradients are expected to become darker from the top
+ #ifdef __WXMAC__
+             DrawGradientRectangle( dc, rect,
+-                                 m_active_caption_colour,
+-                                 m_active_caption_gradient_colour,
+-                                 m_gradient_type );
++                                 m_activeCaptionColour,
++                                 m_activeCaptionGradientColour,
++                                 m_gradientType );
+ #else
+             // on other platforms, active gradients become lighter at the top
+             DrawGradientRectangle( dc, rect,
+-                                 m_active_caption_colour,
+-                                 m_active_caption_gradient_colour,
+-                                 m_gradient_type );
++                                 m_activeCaptionColour,
++                                 m_activeCaptionGradientColour,
++                                 m_gradientType );
+ #endif
+         }
+         else
+@@ -74,20 +101,20 @@
+ #ifdef __WXMAC__
+             // on mac the gradients are expected to become darker from the top
+             DrawGradientRectangle( dc, rect,
+-                                 m_inactive_caption_colour,
+-                                 m_inactive_caption_gradient_colour,
+-                                 m_gradient_type );
++                                 m_inactiveCaptionColour,
++                                 m_inactiveCaptionGradientColour,
++                                 m_gradientType );
+ #else
+             // on other platforms, inactive gradients become lighter at the bottom
+             DrawGradientRectangle( dc, rect,
+-                                 m_inactive_caption_colour,
+-                                 m_inactive_caption_gradient_colour,
+-                                 m_gradient_type );
++                                 m_inactiveCaptionColour,
++                                 m_inactiveCaptionGradientColour,
++                                 m_gradientType );
+ #endif
+         }
+     }
+ 
+-    dc.SetPen( m_border_pen );
++    dc.SetPen( m_borderPen );
+     int y = rect.y + rect.height - 1;
+     dc.DrawLine( rect.x, y, rect.x + rect.width, y );
+ }
+@@ -97,11 +124,11 @@
+ void guAuiDockArt::DrawCaption( wxDC &dc, wxWindow * window, const wxString &text, const wxRect &rect, wxAuiPaneInfo &pane )
+ {
+     dc.SetPen( * wxTRANSPARENT_PEN );
+-    dc.SetFont( m_caption_font );
++    dc.SetFont( m_captionFont );
+ 
+     DrawCaptionBackground( dc, rect, bool( pane.state & wxAuiPaneInfo::optionActive ) );
+ 
+-    dc.SetTextForeground( pane.state & wxAuiPaneInfo::optionActive ? m_active_caption_text_colour : m_inactive_caption_text_colour );
++    dc.SetTextForeground( pane.state & wxAuiPaneInfo::optionActive ? m_activeCaptionTextColour : m_inactiveCaptionTextColour );
+ 
+     wxCoord w, h;
+     dc.GetTextExtent( wxT( "ABCDEFHXfgkj" ), &w, &h );
+@@ -110,11 +137,11 @@
+     clip_rect.width -= 3; // text offset
+     clip_rect.width -= 2; // button padding
+     if( pane.HasCloseButton() )
+-        clip_rect.width -= m_button_size;
++        clip_rect.width -= m_buttonSize;
+     if( pane.HasPinButton() )
+-        clip_rect.width -= m_button_size;
++        clip_rect.width -= m_buttonSize;
+     if( pane.HasMaximizeButton() )
+-        clip_rect.width -= m_button_size;
++        clip_rect.width -= m_buttonSize;
+ 
+     wxString draw_text = wxAuiChopText( dc, text, clip_rect.width );
+ 
+--- a/src/SmartMode.cpp
++++ b/src/SmartMode.cpp
+@@ -500,7 +500,7 @@
+ int guGenSmartPlaylist::GetPlayListId( void )
+ {
+     int Selection = m_SaveToComboBox->GetSelection();
+-    if( Selection == wxNOT_FOUND && !m_SaveToComboBox->IsEmpty() )
++    if( Selection == wxNOT_FOUND && m_SaveToComboBox->GetCount() != 0 )
+     {
+         Selection = FindPlayListItem( &m_Playlists, m_SaveToComboBox->GetValue().Lower().Trim().Trim( false ) );
+     }
+--- a/src/StaticBitmap.cpp
++++ b/src/StaticBitmap.cpp
+@@ -70,7 +70,7 @@
+     {
+         wxCommandEvent event( guStaticBitmapMouseOverEvent, guEVT_STATICBITMAP_MOUSE_OVER );
+         event.SetEventObject( this );
+-        m_Bitmap->AddPendingEvent( event );
++        m_Bitmap->GetEventHandler()->AddPendingEvent( event );
+     }
+ }
+ 
+--- a/src/Equalizer.cpp
++++ b/src/Equalizer.cpp
+@@ -537,7 +537,7 @@
+ {
+     int Sel = m_PresetComboBox->GetSelection();
+ 
+-    m_SaveButton->Enable( !m_PresetComboBox->IsEmpty() &&
++    m_SaveButton->Enable( m_PresetComboBox->GetCount() != 0 &&
+                           ( m_BandChanged || !FindPresetName( m_PresetComboBox->GetValue(), m_EQPresets ) ) );
+ 
+     m_DelButton->Enable( Sel != wxNOT_FOUND );
+--- a/src/LocationPanel.cpp
++++ b/src/LocationPanel.cpp
+@@ -161,7 +161,52 @@
+     return 1;
+ }
+ 
+-extern wxColor wxAuiStepColour( const wxColor & c, int percent );
++unsigned char wxAuiBlendColour(unsigned char fg, unsigned char bg, double alpha)
++{
++    double result = bg + (alpha * (fg - bg));
++    if (result < 0.0)
++        result = 0.0;
++    if (result > 255)
++        result = 255;
++    return (unsigned char)result;
++}
++
++wxColor wxAuiStepColour(const wxColor& c, int ialpha)
++{
++    if (ialpha == 100)
++        return c;
++
++    unsigned char r = c.Red(),
++                  g = c.Green(),
++                  b = c.Blue();
++    unsigned char bg;
++
++    // ialpha is 0..200 where 0 is completely black
++    // and 200 is completely white and 100 is the same
++    // convert that to normal alpha 0.0 - 1.0
++    ialpha = wxMin(ialpha, 200);
++    ialpha = wxMax(ialpha, 0);
++    double alpha = ((double)(ialpha - 100.0))/100.0;
++
++    if (ialpha > 100)
++    {
++        // blend with white
++        bg = 255;
++        alpha = 1.0 - alpha;  // 0 = transparent fg; 1 = opaque fg
++    }
++    else
++    {
++        // blend with black
++        bg = 0;
++        alpha += 1.0;         // 0 = transparent fg; 1 = opaque fg
++    }
++
++    r = wxAuiBlendColour(r, bg, alpha);
++    g = wxAuiBlendColour(g, bg, alpha);
++    b = wxAuiBlendColour(b, bg, alpha);
++
++    return wxColour(r, g, b);
++}
+ 
+ // -------------------------------------------------------------------------------- //
+ void guLocationTreeCtrl::ReloadItems( const bool loadstate )
+--- a/src/StatusBar.h
++++ b/src/StatusBar.h
+@@ -46,7 +46,7 @@
+   public :
+     guGauge() : wxControl() { m_LastValue = wxNOT_FOUND; m_PaintWidth = 0; };
+     guGauge( wxWindow * parent, const wxString &label = wxEmptyString, bool showporcent = true, wxWindowID id = wxID_ANY, unsigned int max = 100,
+-               const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize, long style = wxGA_HORIZONTAL );
++               const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxDefaultSize, long style = wxGA_HORIZONTAL | wxBORDER_NONE );
+     ~guGauge( void );
+ 
+     void    SetRange( int range );
+@@ -101,7 +101,7 @@
+     void                SetPlayMode( const bool forcegapless );
+     void                SetAudioScrobble( const bool audioscrobble );
+ 
+-    virtual void        DrawField( wxDC &dc, int i );
++    virtual void        DrawField( wxDC &dc, int i, int textHeight );
+ 
+ };
+ 
+--- a/src/Utils.cpp
++++ b/src/Utils.cpp
+@@ -311,7 +311,7 @@
+     static const wxChar marks[] = wxT( "-_.\"!~*()'" );
+ 
+ 	wxString RetVal;
+-	unsigned char CurChar;
++	wxChar CurChar;
+ 
+ 	wxCharBuffer CharBuffer = url.ToUTF8();
+ 	int Index;
+@@ -352,7 +352,7 @@
+ 
+   for( index = 0; index < StrLen; index++ )
+   {
+-    unsigned char C = CharBuffer[ index ];
++    wxChar C = CharBuffer[ index ];
+     {
+       static const wxChar marks[] = wxT( " -_.\"/+!~*()'[]%" ); //~!@#$&*()=:/,;?+'
+ 
+--- a/src/ListView.cpp
++++ b/src/ListView.cpp
+@@ -914,7 +914,7 @@
+     // iterate over all visible lines
+     for( ; line < lineMax; line++ )
+     {
+-        const wxCoord hLine = OnGetLineHeight( line );
++        const wxCoord hLine = OnGetRowHeight( line );
+ 
+         rectLine.height = hLine;
+ 
+--- a/src/TimeLine.h
++++ b/src/TimeLine.h
+@@ -115,7 +115,7 @@
+ 
+     virtual void    TimerEvent( void );
+     virtual int     TimerCreate( void );
+-    virtual void    TimerDestroy( void ) { g_source_remove( m_TimerId ); }
++    virtual void    TimerDestroy( void ) { int id = m_TimerId; m_TimerId = 0; if (id) g_source_remove( id ); }
+ 
+ };
+ 
+--- a/src/SplashWin.cpp
++++ b/src/SplashWin.cpp
+@@ -79,7 +79,7 @@
+ 
+     Show( true );
+     SetThemeEnabled( false );
+-    SetBackgroundStyle( wxBG_STYLE_CUSTOM );
++    SetBackgroundStyle( wxBG_STYLE_ERASE );
+ 
+     m_Timer.SetOwner( this );
+     m_Timer.Start( timeout, wxTIMER_ONE_SHOT );
+--- a/src/RoundButton.cpp
++++ b/src/RoundButton.cpp
+@@ -33,7 +33,7 @@
+ 
+ // -------------------------------------------------------------------------------- //
+ guRoundButton::guRoundButton( wxWindow * parent, const wxImage &image, const wxImage &selimage, const int flags ) :
+-    wxControl( parent, wxID_ANY )
++    wxControl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE )
+ {
+     m_Bitmap = wxBitmap( image );
+     m_HoverBitmap = wxBitmap( selimage );
+--- a/src/RatingCtrl.cpp
++++ b/src/RatingCtrl.cpp
+@@ -34,7 +34,8 @@
+ END_EVENT_TABLE()
+ 
+ // -------------------------------------------------------------------------------- //
+-guRating::guRating( wxWindow * parent, const int style ) : wxControl( parent, wxID_ANY )
++guRating::guRating( wxWindow * parent, const int style ) :
++    wxControl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE )
+ {
+     m_Rating = wxNOT_FOUND;
+     m_Style = style;
+--- a/src/ToggleRoundButton.cpp
++++ b/src/ToggleRoundButton.cpp
+@@ -35,7 +35,7 @@
+ // -------------------------------------------------------------------------------- //
+ guToggleRoundButton::guToggleRoundButton( wxWindow * parent, const wxImage &image,
+         const wxImage &selimage, const wxImage &hoverimage ) :
+-    wxControl( parent, wxID_ANY )
++    wxControl( parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE )
+ {
+     m_Bitmap = wxBitmap( selimage );
+     m_DisBitmap = wxBitmap( image );

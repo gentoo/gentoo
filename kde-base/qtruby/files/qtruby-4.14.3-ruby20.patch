@@ -1,0 +1,18 @@
+--- qtruby-4.11.4.orig/src/qtruby.cpp	2013-06-28 19:16:12.057325696 +0200
++++ qtruby-4.11.4/src/qtruby.cpp	2014-01-07 19:22:11.000000000 +0100
+@@ -1398,11 +1391,14 @@
+ 		return Qfalse;
+ 	}
+ 
+-#if RUBY_VERSION >= 0x10900
++#if RUBY_VERSION >= 0x20000
++	QLatin1String signalname(rb_id2name(rb_frame_this_func()));
++#elif RUBY_VERSION >= 0x10900
+ 	QLatin1String signalname(rb_id2name(rb_frame_callee()));
+ #else
+ 	QLatin1String signalname(rb_id2name(rb_frame_last_func()));
+ #endif
++
+ 	VALUE metaObject_value = rb_funcall(qt_internal_module, rb_intern("getMetaObject"), 2, Qnil, self);
+ 
+ 	smokeruby_object *ometa = value_obj_info(metaObject_value);

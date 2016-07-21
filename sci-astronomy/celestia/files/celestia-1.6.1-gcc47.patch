@@ -1,0 +1,22 @@
+diff -up celestia-1.6.1/src/celengine/frametree.h.gcc47 celestia-1.6.1/src/celengine/frametree.h
+--- celestia-1.6.1/src/celengine/frametree.h.gcc47	2012-03-22 12:56:56.096087430 -0400
++++ celestia-1.6.1/src/celengine/frametree.h	2012-03-22 12:57:04.333022427 -0400
+@@ -13,6 +13,7 @@
+ #ifndef _CELENGINE_FRAMETREE_H_
+ #define _CELENGINE_FRAMETREE_H_
+ 
++#include <unistd.h>
+ #include <vector>
+ 
+ class Star;
+diff -up celestia-1.6.1/src/celengine/planetgrid.cpp.gcc47 celestia-1.6.1/src/celengine/planetgrid.cpp
+--- celestia-1.6.1/src/celengine/planetgrid.cpp.gcc47	2012-03-22 12:53:01.496950513 -0400
++++ celestia-1.6.1/src/celengine/planetgrid.cpp	2012-03-22 12:53:08.812891865 -0400
+@@ -12,6 +12,7 @@
+ 
+ #include <cstdio>
+ #include <cmath>
++#include <celmath/mathlib.h>
+ #include <celmath/intersect.h>
+ #include "planetgrid.h"
+ #include "body.h"

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-SNMP</remote-id>
+    <remote-id type="cpan-module">Net::SNMP</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Dispatcher</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Message</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::MessageProcessing</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::PDU</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Security</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Security::Community</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Security::USM</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv4</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv4::TCP</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv4::UDP</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv6</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv6::TCP</remote-id>
+    <remote-id type="cpan-module">Net::SNMP::Transport::IPv6::UDP</remote-id>
+  </upstream>
+</pkgmetadata>

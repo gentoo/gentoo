@@ -1,0 +1,16 @@
+--- a/cliserv.c
++++ b/cliserv.c
+@@ -81,6 +81,7 @@
+ 	hi = ntohl(hi);
+ 	return ((u64) lo) << 32U | hi;
+ }
++#endif
+ 
+ /**
+  * Read data from a file descriptor into a buffer
+@@ -103,5 +104,3 @@
+ 		}
+ 	}
+ }
+-
+-#endif

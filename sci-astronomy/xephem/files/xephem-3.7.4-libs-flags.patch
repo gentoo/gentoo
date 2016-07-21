@@ -1,0 +1,160 @@
+diff -Nur xephem-3.7.4.orig/GUI/xephem/Makefile xephem-3.7.4/GUI/xephem/Makefile
+--- xephem-3.7.4.orig/GUI/xephem/Makefile	2009-01-05 20:55:59.000000000 +0000
++++ xephem-3.7.4/GUI/xephem/Makefile	2009-07-26 15:26:42.000000000 +0100
+@@ -10,8 +10,8 @@
+ # one executable, xephem.
+ 
+ # These -I and -L flags point to the supporting XEphem libraries
+-LIBINC = -I../../libastro -I../../libip -I../../liblilxml -I../../libjpegd -I../../libpng -I../../libz
+-LIBLNK = -L../../libastro -L../../libip -L../../liblilxml -L../../libjpegd -L../../libpng -L../../libz
++LIBINC = -I../../libastro -I../../libip -I../../liblilxml
++LIBLNK = -L../../libastro -L../../libip -L../../liblilxml
+-LIBLIB = -lastro -lip -llilxml -ljpegd -lpng -lz
++LIBLIB = -lastro -lip -llilxml -ljpeg -lpng -lz
+ 
+ # MOTIFI is the directory containing the Xm directory of include files.
+@@ -32,12 +32,9 @@
+ 
+ # for linux and Apple OS X
+ # some systems now use just /usr/X11 (not /usr/X11R6)
+-CC = gcc
+-CLDFLAGS = -g
+-CFLAGS = $(LIBINC) $(CLDFLAGS) -O2 -Wall -I$(MOTIFI) -I/usr/X11R6/include
+-LDFLAGS = $(LIBLNK) $(CLDFLAGS) -L$(MOTIFL) -L/usr/X11R6/lib
+-XLIBS = $(MOTIFL)/libXm.a -lXp -lXt -lXext -lXmu -lX11
+-LIBS = $(XLIBS) $(LIBLIB) -lm
++XLIBS = -lXm -lXp -lXt -lXext -lXmu -lX11
++LIBS = $(LIBLNK) $(XLIBS) $(LIBLIB) -lm
++CFLAGS := $(LIBINC) $(CFLAGS)
+ 
+ # for ppc Apple OS X to make universal (i386 and ppc binary), requires
+ # Xcode 2.2, /Developers/SDK/MacOSX10.4u.sdk and all libs, including libXm,
+@@ -187,12 +184,9 @@
+ 	nroff -man $? > $@
+ 
+ libs:
+-	cd ../../libastro; make
+-	cd ../../libip; make
+-	cd ../../libjpegd; make
+-	cd ../../liblilxml; make
+-	cd ../../libpng; make
+-	cd ../../libz; make
++	cd ../../libastro; $(MAKE)
++	cd ../../libip; $(MAKE)
++	cd ../../liblilxml; $(MAKE)
+ 
+ clean:
+ 	rm -fr *.o ../../lib*/*.[ao]
+diff -Nur xephem-3.7.4.orig/GUI/xephem/tools/lx200xed/Makefile xephem-3.7.4/GUI/xephem/tools/lx200xed/Makefile
+--- xephem-3.7.4.orig/GUI/xephem/tools/lx200xed/Makefile	2005-03-20 11:04:51.000000000 +0000
++++ xephem-3.7.4/GUI/xephem/tools/lx200xed/Makefile	2009-07-26 15:15:06.000000000 +0100
+@@ -1,10 +1,6 @@
+ LIBASTRO = ../../../../libastro
+-CLDFLAGS =
+-CFLAGS = -Wall -O2 $(CLDFLAGS) -I$(LIBASTRO)
+-LDFLAGS = $(CLDFLAGS) -L$(LIBASTRO)
+-CC = gcc
+-
+-LIBS = -lastro -lm
++CFLAGS := -I$(LIBASTRO) $(CFLAGS)
++LIBS = -L$(LIBASTRO) -lastro -lm
+ 
+ OBJS = 			\
+ 	liblx200.o	\
+diff -Nur xephem-3.7.4.orig/GUI/xephem/tools/xedb/Makefile xephem-3.7.4/GUI/xephem/tools/xedb/Makefile
+--- xephem-3.7.4.orig/GUI/xephem/tools/xedb/Makefile	2005-03-20 11:04:51.000000000 +0000
++++ xephem-3.7.4/GUI/xephem/tools/xedb/Makefile	2009-07-26 15:13:30.000000000 +0100
+@@ -2,11 +2,8 @@
+ # assumes gcc, adjust to suit.
+ 
+ ASLIBDIR = ../../../../libastro
+-CLDFLAGS =
+-GCCFLAGS = -O2 -ffast-math -Wall
+-CFLAGS = $(CLDFLAGS) $(GCCFLAGS) -I$(ASLIBDIR)
+-LDFLAGS = $(CLDFLAGS) -L$(ASLIBDIR)
+-LIBS = -lastro -lm
++CFLAGS := -I$(ASLIBDIR) $(CFLAGS) 
++LIBS =  -L$(ASLIBDIR) -lastro -lm
+ 
+ OBJS =	xedb.o	\
+ 	print.o
+diff -Nur xephem-3.7.4.orig/GUI/xephem/tools/xephemdbd/Makefile xephem-3.7.4/GUI/xephem/tools/xephemdbd/Makefile
+--- xephem-3.7.4.orig/GUI/xephem/tools/xephemdbd/Makefile	2005-03-20 11:04:51.000000000 +0000
++++ xephem-3.7.4/GUI/xephem/tools/xephemdbd/Makefile	2009-07-26 15:16:13.000000000 +0100
+@@ -2,16 +2,12 @@
+ # run this after successfully making XEphem and its libs.
+ # Only tested on Linux.
+ 
+-CC = gcc
+-
+ XED = ../..
+ LAS = $(XED)/../../libastro
+ IPH = $(XED)/../../libip
+ 
+-CLDFLAGS =-g
+-CFLAGS = $(CLDFLAGS) -Wall -ffast-math -I$(XED) -I$(LAS) -I$(IPH)
+-LDFLAGS = $(CLDFLAGS) -L$(LAS)
+-LIBS = -lastro -lm
++CFLAGS := -I$(XED) -I$(LAS) -I$(IPH) $(CFLAGS)
++LIBS =  -L$(LAS) -lastro -lm
+ 
+ OBJS =	xephemdbd.o 		\
+ 	db.o			\
+diff -Nur xephem-3.7.4.orig/libastro/Makefile xephem-3.7.4/libastro/Makefile
+--- xephem-3.7.4.orig/libastro/Makefile	2006-02-24 03:37:31.000000000 +0000
++++ xephem-3.7.4/libastro/Makefile	2009-07-26 15:22:43.000000000 +0100
+@@ -3,10 +3,6 @@
+ 
+ # compiler and flags
+ 
+-# gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+-
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc
+ 
+@@ -87,7 +83,7 @@
+ 	ranlib $@
+ 
+ libastro.so: $(HS) $(OBJS)
+-	$(CC) -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libastro.a
+diff -Nur xephem-3.7.4.orig/libip/Makefile xephem-3.7.4/libip/Makefile
+--- xephem-3.7.4.orig/libip/Makefile	2009-01-05 20:53:46.000000000 +0000
++++ xephem-3.7.4/libip/Makefile	2009-07-26 15:20:43.000000000 +0100
+@@ -2,8 +2,7 @@
+ # (C) 2001 Elwood Charles Downey
+ 
+ # gcc
+-CC = gcc
+-CFLAGS= -I../libastro -O2 -Wall
++CFLAGS := -I../libastro $(CFLAGS)
+ 
+ # macosx universal binary
+ # CFLAGS= -I../libastro -O2 -Wall -arch i386 -arch ppc
+@@ -40,7 +39,7 @@
+ 	ranlib $@
+ 
+ libip.so:    $(OBJS)
+-	gcc -shared -o $@ $(OBJS)
++	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+ 
+ clobber:
+ 	rm -f *.o libip.a
+diff -Nur xephem-3.7.4.orig/liblilxml/Makefile xephem-3.7.4/liblilxml/Makefile
+--- xephem-3.7.4.orig/liblilxml/Makefile	2006-02-24 03:37:32.000000000 +0000
++++ xephem-3.7.4/liblilxml/Makefile	2009-07-26 15:22:04.000000000 +0100
+@@ -3,9 +3,6 @@
+ 
+ # compiler and flags
+ 
+-# gcc
+-CC = gcc
+-CFLAGS= -O2 -Wall
+ 
+ # macosx universal binary
+ # CFLAGS= -O2 -Wall -arch i386 -arch ppc

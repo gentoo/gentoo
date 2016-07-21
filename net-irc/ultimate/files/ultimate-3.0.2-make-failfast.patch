@@ -1,0 +1,76 @@
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+Subject: Cause build failures to be fail-fast instead of going undetected.
+Date: 2011/04/27
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -43,7 +43,7 @@
+ 	@for i in $(SUBDIRS); do \
+ 		echo "Building $$i";\
+ 		cd $$i;\
+-		${MAKE} build; cd ..;\
++		${MAKE} build || exit 1; cd ..;\
+ 	done
+ 	@echo ' '
+ 	@echo '================================================================='
+@@ -62,7 +62,7 @@
+ 	@for i in $(SUBDIRS); do \
+ 		echo "Building $$i [profile]";\
+ 		cd $$i;\
+-		${MAKEPROFILE} build; cd ..;\
++		${MAKEPROFILE} build || exit 1; cd ..;\
+ 	done
+ 
+ clean:
+@@ -70,7 +70,7 @@
+ 	@for i in $(SUBDIRS); do \
+ 		echo "Cleaning $$i";\
+ 		cd $$i;\
+-		${MAKE} clean; cd ..;\
++		${MAKE} clean || exit 1; cd ..;\
+ 	done
+ 	-@if [ -f include/setup.h ] ; then \
+ 	echo "To really restart installation, make distclean" ; \
+@@ -83,28 +83,28 @@
+ 	@for i in $(SUBDIRS); do \
+ 		echo "Cleaning $$i";\
+ 		cd $$i;\
+-		${MAKE} distclean; cd ..;\
++		${MAKE} distclean || exit 1; cd ..;\
+ 	done
+ 
+ depend:
+ 	@for i in $(SUBDIRS); do \
+ 		echo "depend ==> $$i";\
+ 		cd $$i;\
+-		${MAKE} depend; cd ..;\
++		${MAKE} depend || exit 1; cd ..;\
+ 	done
+ 
+ install: all
+ 	@for i in $(SUBDIRS); do \
+ 		echo "install ==> $$i";\
+ 		cd $$i;\
+-		${MAKE} install; \
++		${MAKE} install || exit 1; \
+ 		cd ..; \
+ 	done
+ 
+ 	@for i in $(SUBDIRS2); do \
+ 		echo "install ==> $$i";\
+ 		cd $$i;\
+-		${MAKE} install; \
++		${MAKE} install || exit 1; \
+ 		cd ../../; \
+ 	done
+ 
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -68,6 +68,7 @@
+ 
+ build: all
+ 
++depend:
+ 
+ mkpasswd: $(mkpasswd_OBJECTS)
+ 	$(CCDV)$(CC) ${CFLAGS} ${LDFLAGS} -o mkpasswd $(mkpasswd_OBJECTS) $(IRCDLIBS)

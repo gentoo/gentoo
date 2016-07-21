@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+Wings 3D is a polygon mesh modeler inspired by Nendo and 
+Mirai from Izware.
+
+It is possible to assign materials, vertex color, UV 
+coordinates and textures, but there will be improvements 
+in those features before Wings goes 1.0.
+
+There is no support in Wings for doing animations.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">wings</remote-id>
+	</upstream>
+</pkgmetadata>

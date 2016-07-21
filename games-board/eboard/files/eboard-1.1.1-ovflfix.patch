@@ -1,0 +1,22 @@
+--- proto_xboard.cc.old	2010-11-03 16:42:15.000000000 +0100
++++ proto_xboard.cc	2010-11-03 16:43:14.000000000 +0100
+@@ -1084,7 +1084,7 @@
+   snprintf(EngineCommandLine,512,"crafty bookpath=%s logpath=%s tbpath=%s",
+ 	   BookPath,LogPath,LogPath);
+   if (!global.env.Home.empty())
+-    snprintf(EngineRunDir,512,"%s/.eboard/craftylog",global.env.Home.c_str());
++    snprintf(EngineRunDir, sizeof(EngineRunDir), "%s/.eboard/craftylog", global.env.Home.c_str());
+   else
+     strcpy(EngineRunDir,"/tmp");
+ 
+--- util.cc.old	2010-11-03 16:42:24.000000000 +0100
++++ util.cc	2010-11-03 16:43:42.000000000 +0100
+@@ -783,7 +783,7 @@
+   int i,n;
+   char cmd[1024];
+ 
+-  n = snprintf(tmpfile,1024,"/tmp/eb%d-%s",(int) getpid(), origfile);
++  n = snprintf(tmpfile, sizeof(tmpfile), "/tmp/eb%d-%s", (int) getpid(), origfile);
+ 
+   if (n >= 1024) {
+     failure = 1;

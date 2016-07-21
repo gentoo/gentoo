@@ -1,0 +1,75 @@
+commit 83f868ea8decbbe97891631fe142e84c883ee33d
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Wed Jun 1 20:00:37 2016 +0300
+
+Allow to build and run tests with a system copy of gtest (googletest)
+
+Also add LIBS_UCHARDET to the mix only when uchardet is requested.
+
+Closes #1923
+
+Bug: http://devel.aegisub.org/ticket/1923
+---
+
+diff --git a/tests/Makefile b/tests/Makefile
+index 8c30c1d..c5bf049 100644
+--- a/tests/Makefile
++++ b/tests/Makefile
+@@ -1,24 +1,45 @@
+ include $(dir $(lastword $(MAKEFILE_LIST)))../header.mk
+
++WITH_SYSTEM_GTEST ?= no
++
++ifeq (no, $(WITH_SYSTEM_GTEST))
+ GTEST_ROOT ?= $(TOP)vendor/googletest
+ GTEST_FILE := ${GTEST_ROOT}/src/gtest-all
++GTEST_CPPFLAGS := -I$(GTEST_ROOT) -I$(GTEST_ROOT)/include
++GTEST_CXXFLAGS := $(CFLAGS_PTHREAD)
++GTEST_LIBS := $(LIBS_PTHREAD)
++else
++GTEST_CPPFLAGS := $(shell gtest-config --cppflags)
++GTEST_CXXFLAGS := $(shell gtest-config --cxxflags)
++GTEST_LIBS := $(shell gtest-config --libs)
++endif
+
+ run_PCH := $(d)support/tests_pre.h
+ run_CPPFLAGS := -I$(TOP)libaegisub/include -I$(TOP) -I$(d)support \
+-	-I$(GTEST_ROOT) -I$(GTEST_ROOT)/include $(CPPFLAGS_BOOST) $(CFLAGS_LUA)
+-run_CXXFLAGS := -Wno-unused-value -Wno-sign-compare
+-run_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(LIBS_UCHARDET) $(LIBS_PTHREAD)
++	$(CPPFLAGS_BOOST) $(CFLAGS_ICU) $(CFLAGS_LUA) $(GTEST_CPPFLAGS)
++run_CXXFLAGS := -Wno-unused-value -Wno-sign-compare $(GTEST_CXXFLAGS)
++run_LIBS := $(LIBS_BOOST) $(LIBS_ICU) $(GTEST_LIBS)
+ run_OBJ := \
+ 	$(subst .cpp,.o,$(wildcard $(d)tests/*.cpp)) \
+ 	$(d)support/main.o \
+ 	$(d)support/util.o \
+-	$(TOP)lib/libaegisub.a \
+-	$(GTEST_FILE).o
++	$(TOP)lib/libaegisub.a
+
++ifeq (yes, $(HAVE_UCHARDET))
++run_LIBS += $(LIBS_UCHARDET)
++endif
++
++ifeq (no, $(WITH_SYSTEM_GTEST))
++run_OBJ += $(GTEST_FILE).o
+ # This bit of goofiness is to make it only try to build the tests if google
+ # test can be found and silently skip it if not, by using $(wildcard) to check
+ # for file existence
+ PROGRAM += $(subst $(GTEST_FILE).cc,$(d)run,$(wildcard $(GTEST_FILE).cc))
++test: $(subst $(GTEST_FILE).cc,test-libaegisub,$(wildcard $(GTEST_FILE).cc))
++else
++PROGRAM += $(d)run
++test: test-libaegisub
++endif
+
+ ifeq (yes, $(BUILD_DARWIN))
+ run_LIBS += -framework ApplicationServices -framework Foundation
+@@ -31,6 +52,4 @@ gtest_filter ?= *
+ test-libaegisub: $(d)run $(d)data
+ 	cd $(TOP)tests; ./run --gtest_filter="$(gtest_filter)"
+
+-test: $(subst $(GTEST_FILE).cc,test-libaegisub,$(wildcard $(GTEST_FILE).cc))
+-
+ include $(TOP)Makefile.target

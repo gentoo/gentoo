@@ -1,0 +1,17 @@
+It is built but not installed.
+https://bugs.gentoo.org/show_bug.cgi?id=459630
+
+Index: gpac/Makefile
+===================================================================
+--- gpac.orig/Makefile
++++ gpac/Makefile
+@@ -59,6 +59,9 @@ install:
+ 	$(INSTALL) -d "$(DESTDIR)$(prefix)/bin"
+ ifeq ($(DISABLE_ISOFF), no)
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/MP4Box "$(DESTDIR)$(prefix)/bin"
++ifeq ($(DISABLE_M2TS), no)
++	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/mp42ts "$(DESTDIR)$(prefix)/bin"
++endif
+ endif
+ ifeq ($(DISABLE_PLAYER), no)
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/MP4Client "$(DESTDIR)$(prefix)/bin"

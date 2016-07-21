@@ -1,0 +1,10 @@
+--- src/engine/display/display.cpp.orig	2012-06-30 00:30:13.043995049 -0400
++++ src/engine/display/display.cpp	2012-06-30 00:30:28.194501544 -0400
+@@ -28,6 +28,7 @@
+ #include "engine/display/delta/delta_framebuffer.hpp"
+ #include "engine/display/null_framebuffer.hpp"
+ #include "util/log.hpp"
++#include "util/raise_exception.hpp"
+ 
+ std::unique_ptr<Framebuffer> Display::s_framebuffer;
+ 

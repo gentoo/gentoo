@@ -1,0 +1,13 @@
+# https://bugs.gentoo.org/298988
+
+--- a/vboxguest/Makefile
++++ b/vboxguest/Makefile
+@@ -104,7 +104,7 @@
+ 
+ MOD_DEFS = -DVBOX -DRT_OS_LINUX -DIN_RING0 -DIN_RT_R0 -DIN_GUEST \
+             -DIN_GUEST_R0 -DIN_MODULE -DRT_WITH_VBOX -DVBGL_VBOXGUEST \
+-            -DVBOX_WITH_HGCM
++            -DVBOX_WITH_HGCM -DLOG_USE_C99
+ ifeq ($(BUILD_TARGET_ARCH),amd64)
+  MOD_DEFS  += -DRT_ARCH_AMD64
+ else

@@ -1,0 +1,25 @@
+From 0a74380d2e5157d94c7e9141242af33e5c0bf951 Mon Sep 17 00:00:00 2001
+From: Santiago Pastorino <santiago@wyeworks.com>
+Date: Sat, 29 Dec 2012 17:36:08 -0200
+Subject: [PATCH] Fix Ruby 2.0 build
+
+---
+ test/spec_chunked.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/spec_chunked.rb b/test/spec_chunked.rb
+index c81409f..12f2158 100644
+--- a/test/spec_chunked.rb
++++ b/test/spec_chunked.rb
+@@ -41,7 +41,7 @@ def chunked(app)
+     response.headers.should.not.include 'Content-Length'
+     response.headers['Transfer-Encoding'].should.equal 'chunked'
+     response.body.encoding.to_s.should.equal "ASCII-8BIT"
+-    response.body.should.equal "c\r\n\xFE\xFFH\x00e\x00l\x00l\x00o\x00\r\n2\r\n \x00\r\na\r\nW\x00o\x00r\x00l\x00d\x00\r\n0\r\n\r\n"
++    response.body.should.equal "c\r\n\xFE\xFFH\x00e\x00l\x00l\x00o\x00\r\n2\r\n \x00\r\na\r\nW\x00o\x00r\x00l\x00d\x00\r\n0\r\n\r\n".force_encoding("BINARY")
+   end if RUBY_VERSION >= "1.9"
+ 
+   should 'not modify response when Content-Length header present' do
+-- 
+1.9.1
+

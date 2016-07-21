@@ -1,0 +1,11 @@
+--- a/src/utils.h	2013-11-08 00:04:21.877945385 +0100
++++ b/src/utils.h	2013-11-08 00:05:45.397901242 +0100
+@@ -34,6 +34,8 @@
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/socket.h>
++#include <arpa/inet.h>
+ 
+ #include "libgrss.h"
+ 

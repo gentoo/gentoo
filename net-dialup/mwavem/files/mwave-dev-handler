@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$1" in
+register)
+	[ ! -d /dev/modem ] && mkdir --mode=0755 /dev/modems
+	[ ! -h /dev/modems/mwave ] && ln -s /dev/misc/mwave /dev/modems/mwave
+	;;
+unregister)
+	rm -rf /dev/modems/mwave
+	;;
+esac

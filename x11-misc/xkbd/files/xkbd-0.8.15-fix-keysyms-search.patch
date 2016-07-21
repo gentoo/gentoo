@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/287075
+
+--- src/libvirtkeys.c
++++ src/libvirtkeys.c
+@@ -341,7 +341,7 @@
+ 
+ 	for (keycode = 0; ((keycode < (maxKeycode - minKeycode + 1)) && !found); keycode++)
+ 	{
+-		for (column = 0; ((column < keysymsPerKeycode) && !found); column++)
++		for (column = 0; ((column < (keysymsPerKeycode > 4 ? 4 : keysymsPerKeycode)) && !found); column++)
+ 		{
+ 			if (keymap[(keycode * keysymsPerKeycode + column)] == ks)
+ 			{

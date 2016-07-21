@@ -1,0 +1,33 @@
+From b67bfbe6a07529dd82e2ee83b6848d017e6e422f Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@hasufell.de>
+Date: Mon, 2 Nov 2015 16:51:28 +0100
+Subject: [PATCH 5/5] makefile: fix install rule dependency
+
+Otherwise the install rule will recompile the library, no matter
+if it has already been compiled.
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ae16f08..df0b59f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -122,12 +122,12 @@ parsertrace_g: http_parser_g.o contrib/parsertrace.c
+ tags: http_parser.c http_parser.h test.c
+ 	ctags $^
+ 
+-install: library
++install: $(SONAME)
+ 	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
+ 	$(INSTALL) -D $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
+ 	ln -s $(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+ 
+-install-strip: library
++install-strip: $(SONAME)
+ 	$(INSTALL) -D  http_parser.h "$(DESTDIR)$(INCLUDEDIR)/http_parser.h"
+ 	$(INSTALL) -D -s $(SONAME) "$(DESTDIR)$(LIBDIR)/$(SONAME)"
+ 	ln -s $(SONAME) "$(DESTDIR)$(LIBDIR)/libhttp_parser.$(SOEXT)"
+-- 
+2.6.1
+

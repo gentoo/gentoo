@@ -1,0 +1,58 @@
+diff --git a/Makefile b/Makefile
+index b2f81bb..35da75e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,17 +12,17 @@ compile all: datefudge datefudge.so
+ 
+ install: datefudge datefudge.so datefudge.1
+ 	install -d $(DESTDIR)/usr/lib/datefudge/
+-	$(INSTALL_PROGRAM) -o root -g root -m 644 datefudge.so $(DESTDIR)/usr/lib/datefudge/datefudge.so
++	$(INSTALL_PROGRAM) -o root -g wheel -m 644 datefudge.so $(DESTDIR)/usr/lib/datefudge/datefudge.so
+ 	install -d $(DESTDIR)/usr/bin/
+-	$(INSTALL_PROGRAM) -o root -g root -m 755 datefudge $(DESTDIR)/usr/bin
++	$(INSTALL_PROGRAM) -o root -g wheel -m 755 datefudge $(DESTDIR)/usr/bin
+ 	install -d $(DESTDIR)/usr/share/man/man1
+-	install -o root -g root -m 644 datefudge.1 $(DESTDIR)/usr/share/man/man1
++	install -o root -g wheel -m 644 datefudge.1 $(DESTDIR)/usr/share/man/man1
+ 
+ datefudge: datefudge.sh
+ 	sed -e 's,@VERSION@,$(VERSION),g' < $< > $@
+ 
+ datefudge.so: datefudge.o
+-	$(CC) $(LDFLAGS) -o $@ -shared $< -ldl -lc
++	$(CC) $(LDFLAGS) -o $@ -shared $< -lc
+ 
+ datefudge.o: datefudge.c
+ 	$(CC) $(CFLAGS) -c -o $@ $<
+@@ -39,8 +39,8 @@ test: compile
+ 	export TZ=UTC								 ;\
+ 	ret1=1; ret2=1                                                           ;\
+ 	for i in 1 2; do                                                         \
+-	        export DATEFUDGE=`LC_ALL=C date --date='yesterday 0:00'  +%s`   ;\
+-	        dt=`LC_ALL=C LD_PRELOAD=$(CURDIR)/datefudge.so date --date=12:15 +%F.%T` ;\
++	        export DATEFUDGE=`LC_ALL=C date -v-1d -v0H -v0M +%s`   ;\
++	        dt=`LC_ALL=C LD_PRELOAD=$(CURDIR)/datefudge.so date -v12H -v15M +%F.%T` ;\
+ 	        exp="1970-01-02.12:15:00"                                       ;\
+ 	        [ "$$dt" != "$$exp" ] || { echo "OK"; ret1=0; break; }          ;\
+ 	        echo "failed: expected: $$exp, actual: $$dt"                    ;\
+@@ -49,7 +49,7 @@ test: compile
+ 	echo -n "Running a simple perl localtime() test... "                    ;\
+ 	pscr='@t=localtime(time);$$t[5]+=1900;$$t[4]++;printf "%04d-%02d-%02d\n",$$t[5],$$t[4],$$t[3];';\
+ 	for i in 1 2; do                                                         \
+-	        export DATEFUDGE=`LC_ALL=C date --date='yesterday 0:00'  +%s`   ;\
++	        export DATEFUDGE=`LC_ALL=C date -v-1d -v0H -v0M +%s`   ;\
+ 	        dt=`LD_PRELOAD=$(CURDIR)/datefudge.so perl -e "$$pscr"`         ;\
+ 	        exp="1970-01-02"                                                ;\
+ 	        [ "$$dt" != "$$exp" ] || { echo "OK"; ret2=0; break; }          ;\
+diff --git a/datefudge.c b/datefudge.c
+index 8c86652..fc7e3d6 100644
+--- a/datefudge.c
++++ b/datefudge.c
+@@ -14,7 +14,6 @@
+ #include <stdlib.h>
+ #include <dlfcn.h>
+ #include <assert.h>
+-#include <features.h>
+ #include <unistd.h>
+ #include <time.h>
+ #include <sys/time.h>

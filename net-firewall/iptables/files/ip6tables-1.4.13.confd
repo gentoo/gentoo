@@ -1,0 +1,19 @@
+# /etc/conf.d/ip6tables
+
+# Location in which iptables initscript will save set rules on 
+# service shutdown
+IP6TABLES_SAVE="/var/lib/ip6tables/rules-save"
+
+# Options to pass to iptables-save and iptables-restore 
+SAVE_RESTORE_OPTIONS="-c"
+
+# Save state on stopping iptables
+SAVE_ON_STOP="yes"
+
+# If you need to log iptables messages as soon as iptables starts,
+# AND your logger does NOT depend on the network, then you may wish
+# to uncomment the next line.
+# If your logger depends on the network, and you uncomment this line
+# you will create an unresolvable circular dependency during startup.
+# After commenting or uncommenting this line, you must run 'rc-update -u'.
+#rc_use="logger"

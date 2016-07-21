@@ -1,0 +1,25 @@
+--- libtecla/configure.in.orig	2016-04-13 11:12:15.000000000 +0300
++++ libtecla/configure.in	2016-04-13 11:43:05.632287268 +0300
+@@ -426,6 +426,9 @@
+ AC_ARG_WITH(file-system, AC_HELP_STRING([--with-file-system], [Does the target have a filesystem (default=yes)]),
+  AC_DEFINE(WITHOUT_FILE_SYSTEM), )
+ 
++dnl Some users may be not interested in static libs
++AC_ARG_ENABLE([static-libs], AC_HELP_STRING([--enable-static-libs], [Enable static libs if shared libs will be also build (default=yes)]))
++
+ dnl The following bourne shell case statement is where system
+ dnl dependencies can be added.  In particular, if your system supports
+ dnl shared library creation, the following switch is the place to
+@@ -571,7 +574,11 @@
+ dnl libraries to the list of libraries to be built.
+ 
+ if test "$LINK_SHARED"_ != "_"; then
+-  TARGET_LIBS="static shared"
++    if test "$enable_static_libs"_ != "_"; then
++      TARGET_LIBS="static shared"
++    else
++      TARGET_LIBS="shared"
++    fi
+ else
+   TARGET_LIBS="static"
+   LINK_SHARED="@:"

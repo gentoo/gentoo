@@ -1,0 +1,30 @@
+=== modified file 'Ambiance/gtk-3.0/gtk-widgets.css'
+--- Ambiance/gtk-3.0/gtk-widgets.css	2013-02-10 12:59:27 +0000
++++ Ambiance/gtk-3.0/gtk-widgets.css	2013-02-19 12:56:19 +0000
+@@ -956,9 +956,8 @@
+ }*/
+ 
+ .menuitem {
++    background: transparent;
+     border-radius: 0;
+-    border-style: solid;
+-    border-width: 1px;
+     padding: 3px 2px 3px 2px;
+ 
+     text-shadow: none;
+
+=== modified file 'Radiance/gtk-3.0/gtk-widgets.css'
+--- Radiance/gtk-3.0/gtk-widgets.css	2013-02-10 12:59:27 +0000
++++ Radiance/gtk-3.0/gtk-widgets.css	2013-02-19 12:56:19 +0000
+@@ -956,9 +956,8 @@
+ }*/
+ 
+ .menuitem {
++    background: transparent;
+     border-radius: 0;
+-    border-style: solid;
+-    border-width: 1px;
+     padding: 3px 2px 3px 2px;
+ 
+     text-shadow: none;
+

@@ -1,0 +1,14 @@
+diff --git a/src/Darcs/Test/Patch.hs b/src/Darcs/Test/Patch.hs
+index 0f7ed24..078fbc3 100644
+--- a/src/Darcs/Test/Patch.hs
++++ b/src/Darcs/Test/Patch.hs
+@@ -2,6 +2,9 @@
+ #if __GLASGOW_HASKELL__ >= 700
+ {-# LANGUAGE ImpredicativeTypes #-}
+ #endif
++#if __GLASGOW_HASKELL__ >= 708
++{-# LANGUAGE AllowAmbiguousTypes #-}
++#endif
+ --  Copyright (C) 2002-2005,2007 David Roundy
+ --
+ --  This program is free software; you can redistribute it and/or modify

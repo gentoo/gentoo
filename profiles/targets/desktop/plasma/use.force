@@ -1,0 +1,4 @@
+# Force policykit on, other configurations are *maybe* possible but 
+# not supported. If you know how to disable this mask, you also know enough to 
+# handle the consequences.
+policykit

@@ -1,0 +1,20 @@
+diff --git a/persistent-sqlite.cabal b/persistent-sqlite.cabal
+index 39971e7..c0edfe3 100644
+--- a/persistent-sqlite.cabal
++++ b/persistent-sqlite.cabal
+@@ -76,2 +76,2 @@ executable sanity
+     hs-source-dirs: test
+-    build-depends: base, persistent-sqlite
++    build-depends: base, persistent-sqlite, monad-logger
+diff --git a/test/sanity.hs b/test/sanity.hs
+index aed09a3..ce61fed 100644
+--- a/test/sanity.hs
++++ b/test/sanity.hs
+@@ -3,2 +3,3 @@
+ import Database.Persist.Sqlite
++import Control.Monad.Logger
+ 
+@@ -7,2 +8,2 @@ $(return []) -- just force TH to run
+ main :: IO ()
+-main = withSqliteConn ":memory:" $ const $ return ()
++main = runStderrLoggingT $ withSqliteConn ":memory:" $ const $ return ()

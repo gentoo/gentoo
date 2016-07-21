@@ -1,0 +1,19 @@
+diff -Nuar litecoin-0.10.2.2/src/net.cpp litecoin-0.10.2.2-fix/src/net.cpp
+--- litecoin-0.10.2.2/src/net.cpp	2015-06-15 08:51:30.000000000 +0000
++++ litecoin-0.10.2.2-fix/src/net.cpp	2015-12-16 12:38:52.881533970 +0000
+@@ -1020,10 +1020,14 @@
+ #ifndef UPNPDISCOVER_SUCCESS
+     /* miniupnpc 1.5 */
+     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
+-#else
++#elif MINIUPNPC_API_VERSION < 14
+     /* miniupnpc 1.6 */
+     int error = 0;
+     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
++#else
++   /* miniupnpc 1.9.20150730 */
++   int error = 0;
++   devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 2, &error);
+ #endif
+ 
+     struct UPNPUrls urls;

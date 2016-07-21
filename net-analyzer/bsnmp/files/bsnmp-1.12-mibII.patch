@@ -1,0 +1,13 @@
+diff --git a/snmp_mibII/Makefile.in b/snmp_mibII/Makefile.in
+index d14c179..3a99850 100755
+--- a/snmp_mibII/Makefile.in
++++ b/snmp_mibII/Makefile.in
+@@ -10,7 +10,7 @@ MOD=	mibII
+ SRCS=	${MOD}_tree.c mibII.c mibII_ifmib.c mibII_ip.c			\
+ 	mibII_interfaces.c mibII_ipaddr.c mibII_ifstack.c		\
+ 	mibII_rcvaddr.c mibII_nettomedia.c mibII_tcp.c mibII_udp.c	\
+-	mibII_route.c
++	mibII_route.c mibII_begemot.c
+ INCS=	snmp_${MOD}.h
+ DEFS=	mibII_tree.def
+ MAN3=	snmp_mibII.3

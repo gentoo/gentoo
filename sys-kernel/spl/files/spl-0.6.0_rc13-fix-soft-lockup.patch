@@ -1,0 +1,179 @@
+From d4899f4747fd03be748fd1a589b9db5786fa1375 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Fri, 11 Jan 2013 14:29:32 -0800
+Subject: [PATCH] kmem-cache: Fix slab ageing soft lockup
+
+Commit a10287e00d13c4c4dbbff14f42b00b03da363fcb slightly reworked
+the slab ageing code such that it is no longer dependent on the
+Linux delayed work queue interfaces.
+
+This was good for portability and performance, but it requires us
+to use the on_each_cpu() function to execute the spl_magazine_age()
+function.  That means that the function is now executing in interrupt
+context whereas before it was scheduled in normal process context.
+And that means we need to be slightly more careful about the locking
+in the interrupt handler.
+
+With the reworked code it's possible that we'll be holding the
+skc->skc_lock and be interrupted to handle the spl_magazine_age()
+IRQ.  This will result in a deadlock and soft lockup errors unless
+we're careful to detect the contention and avoid taking the lock in
+the interupt handler.  So that's what this patch does.
+
+Alternately, (and slightly more conventionally) we could have used
+spin_lock_irqsave() to prevent this race entirely but I'd perfer to
+avoid disabling interrupts as much as possible due to performance
+concerns.  There is absolutely no penalty for us not aging objects
+out of the magazine due to contention.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Prakash Surya <surya1@llnl.gov>
+Closes zfsonlinux/zfs#1193
+---
+ module/spl/spl-kmem.c |   94 +++++++++++++++++++++++++++----------------------
+ 1 file changed, 51 insertions(+), 43 deletions(-)
+
+diff --git a/module/spl/spl-kmem.c b/module/spl/spl-kmem.c
+index bc08a55..cc5961e 100644
+--- a/module/spl/spl-kmem.c
++++ b/module/spl/spl-kmem.c
+@@ -827,8 +827,7 @@ char *kvasprintf(gfp_t gfp, const char *fmt, va_list ap)
+ struct rw_semaphore spl_kmem_cache_sem; /* Cache list lock */
+ taskq_t *spl_kmem_cache_taskq;          /* Task queue for ageing / reclaim */
+ 
+-static int spl_cache_flush(spl_kmem_cache_t *skc,
+-                           spl_kmem_magazine_t *skm, int flush);
++static void spl_cache_shrink(spl_kmem_cache_t *skc, void *obj);
+ 
+ SPL_SHRINKER_CALLBACK_FWD_DECLARE(spl_kmem_cache_generic_shrinker);
+ SPL_SHRINKER_DECLARE(spl_kmem_cache_shrinker,
+@@ -1244,6 +1243,38 @@ static int spl_cache_flush(spl_kmem_cache_t *skc,
+ 	SRETURN(0);
+ }
+ 
++/*
++ * Release objects from the per-cpu magazine back to their slab.  The flush
++ * argument contains the max number of entries to remove from the magazine.
++ */
++static void
++__spl_cache_flush(spl_kmem_cache_t *skc, spl_kmem_magazine_t *skm, int flush)
++{
++	int i, count = MIN(flush, skm->skm_avail);
++	SENTRY;
++
++	ASSERT(skc->skc_magic == SKC_MAGIC);
++	ASSERT(skm->skm_magic == SKM_MAGIC);
++	ASSERT(spin_is_locked(&skc->skc_lock));
++
++	for (i = 0; i < count; i++)
++		spl_cache_shrink(skc, skm->skm_objs[i]);
++
++	skm->skm_avail -= count;
++	memmove(skm->skm_objs, &(skm->skm_objs[count]),
++	        sizeof(void *) * skm->skm_avail);
++
++	SEXIT;
++}
++
++static void
++spl_cache_flush(spl_kmem_cache_t *skc, spl_kmem_magazine_t *skm, int flush)
++{
++	spin_lock(&skc->skc_lock);
++	__spl_cache_flush(skc, skm, flush);
++	spin_unlock(&skc->skc_lock);
++}
++
+ static void
+ spl_magazine_age(void *data)
+ {
+@@ -1252,10 +1283,23 @@ static int spl_cache_flush(spl_kmem_cache_t *skc,
+ 
+ 	ASSERT(skm->skm_magic == SKM_MAGIC);
+ 	ASSERT(skm->skm_cpu == smp_processor_id());
++	ASSERT(irqs_disabled());
++
++	/* There are no available objects or they are too young to age out */
++	if ((skm->skm_avail == 0) ||
++	    time_before(jiffies, skm->skm_age + skc->skc_delay * HZ))
++		return;
+ 
+-	if (skm->skm_avail > 0)
+-		if (time_after(jiffies, skm->skm_age + skc->skc_delay * HZ))
+-			(void) spl_cache_flush(skc, skm, skm->skm_refill);
++	/*
++	 * Because we're executing in interrupt context we may have
++	 * interrupted the holder of this lock.  To avoid a potential
++	 * deadlock return if the lock is contended.
++	 */
++	if (!spin_trylock(&skc->skc_lock))
++		return;
++
++	__spl_cache_flush(skc, skm, skm->skm_refill);
++	spin_unlock(&skc->skc_lock);
+ }
+ 
+ /*
+@@ -1451,7 +1495,7 @@ static int spl_cache_flush(spl_kmem_cache_t *skc,
+ 
+         for_each_online_cpu(i) {
+ 		skm = skc->skc_mag[i];
+-		(void)spl_cache_flush(skc, skm, skm->skm_avail);
++		spl_cache_flush(skc, skm, skm->skm_avail);
+ 		spl_magazine_free(skm);
+         }
+ 
+@@ -1932,42 +1976,6 @@ static int spl_cache_flush(spl_kmem_cache_t *skc,
+ }
+ 
+ /*
+- * Release a batch of objects from a per-cpu magazine back to their
+- * respective slabs.  This occurs when we exceed the magazine size,
+- * are under memory pressure, when the cache is idle, or during
+- * cache cleanup.  The flush argument contains the number of entries
+- * to remove from the magazine.
+- */
+-static int
+-spl_cache_flush(spl_kmem_cache_t *skc, spl_kmem_magazine_t *skm, int flush)
+-{
+-	int i, count = MIN(flush, skm->skm_avail);
+-	SENTRY;
+-
+-	ASSERT(skc->skc_magic == SKC_MAGIC);
+-	ASSERT(skm->skm_magic == SKM_MAGIC);
+-
+-	/*
+-	 * XXX: Currently we simply return objects from the magazine to
+-	 * the slabs in fifo order.  The ideal thing to do from a memory
+-	 * fragmentation standpoint is to cheaply determine the set of
+-	 * objects in the magazine which will result in the largest
+-	 * number of free slabs if released from the magazine.
+-	 */
+-	spin_lock(&skc->skc_lock);
+-	for (i = 0; i < count; i++)
+-		spl_cache_shrink(skc, skm->skm_objs[i]);
+-
+-	skm->skm_avail -= count;
+-	memmove(skm->skm_objs, &(skm->skm_objs[count]),
+-	        sizeof(void *) * skm->skm_avail);
+-
+-	spin_unlock(&skc->skc_lock);
+-
+-	SRETURN(count);
+-}
+-
+-/*
+  * Allocate an object from the per-cpu magazine, or if the magazine
+  * is empty directly allocate from a slab and repopulate the magazine.
+  */
+@@ -2053,7 +2061,7 @@ static int spl_cache_flush(spl_kmem_cache_t *skc,
+ 
+ 	/* Per-CPU cache full, flush it to make space */
+ 	if (unlikely(skm->skm_avail >= skm->skm_size))
+-		(void)spl_cache_flush(skc, skm, skm->skm_refill);
++		spl_cache_flush(skc, skm, skm->skm_refill);
+ 
+ 	/* Available space in cache, use it */
+ 	skm->skm_objs[skm->skm_avail++] = obj;
+-- 
+1.7.10
+

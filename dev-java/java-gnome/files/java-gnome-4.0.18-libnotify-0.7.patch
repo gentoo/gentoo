@@ -1,0 +1,231 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: serkan@gentoo.org-20110131175810-2wn3gvabeesq0b3x
+# target_branch: ../mainline
+# testament_sha1: dd22e2db4f450dde1d4a5128da7833d50c34ab69
+# timestamp: 2011-01-31 20:04:36 +0200
+# base_revision_id: andrew@operationaldynamics.com-20101224023849-\
+#   u859g3kgg2y9ybx4
+# 
+# Begin patch
+=== modified file 'configure'
+--- configure	2010-12-22 11:23:13 +0000
++++ configure	2011-01-31 17:58:10 +0000
+@@ -787,7 +787,7 @@
+ 			"gtkspell");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"libnotify");
+ 
+@@ -835,7 +835,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+@@ -897,7 +897,7 @@
+ 			"libgtksourceview2.0-dev");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"libnotify-dev");
+ 
+@@ -943,7 +943,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+@@ -989,7 +989,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+@@ -1050,7 +1050,7 @@
+ 			"FIXME");
+ 
+ 	check_system_library(@gnomedev_libs,
+-			"libnotify >= 0.4.5",
++			"libnotify >= 0.7.0",
+ 			"LibNotify",
+ 			"FIXME");
+ 
+
+=== modified file 'src/bindings/org/gnome/notify/Notification.java'
+--- src/bindings/org/gnome/notify/Notification.java	2010-01-06 06:28:28 +0000
++++ src/bindings/org/gnome/notify/Notification.java	2011-01-31 17:58:10 +0000
+@@ -71,8 +71,7 @@
+      * <p>
+      * The summary appears on the titlebar of notification and body appears as
+      * its text. Icon may be a string defining a theme icon or the filename
+-     * identifying the icon that appears next to text. Attach identifies the
+-     * widget that the notification relates to.
++     * identifying the icon that appears next to text.
+      * 
+      * <p>
+      * Note that all but summary can be <code>null</code>.
+@@ -80,19 +79,8 @@
+      * @since 4.0.12
+      */
+ 
+-    public Notification(String summary, String body, String icon, Widget attach) {
+-        super(NotifyNotification.createNotification(summary, body, icon, attach));
+-    }
+-
+-    /**
+-     * Create a new notification attached to a {@link StatusIcon}. See
+-     * {@link #Notification(String,String,String,Widget) Notification()} for
+-     * other parameters.
+-     * 
+-     * @since 4.0.12
+-     */
+-    public Notification(String summary, String body, String icon, StatusIcon statusIcon) {
+-        super(NotifyNotification.createNotificationWithStatusIcon(summary, body, icon, statusIcon));
++    public Notification(String summary, String body, String icon) {
++        super(NotifyNotification.createNotification(summary, body, icon));
+     }
+ 
+     /**
+@@ -109,34 +97,6 @@
+     }
+ 
+     /**
+-     * Attaches Notification to a Widget setting hints to its location.
+-     * 
+-     * @since 4.0.12
+-     */
+-    public void attach(Widget attach) {
+-        NotifyNotification.attachToWidget(this, attach);
+-    }
+-
+-    /**
+-     * Attaches Notification to a {@link StatusIcon} setting hints to its
+-     * location.
+-     * 
+-     * @since 4.0.12
+-     */
+-    public void attach(StatusIcon statusIcon) {
+-        NotifyNotification.attachToStatusIcon(this, statusIcon);
+-    }
+-
+-    /**
+-     * Sets the position of the notification to display on screen.
+-     * 
+-     * @since 4.0.12
+-     */
+-    public void setGeometryHints(Screen screen, int x, int y) {
+-        NotifyNotification.setGeometryHints(this, screen, x, y);
+-    }
+-
+-    /**
+      * Display the notification on screen.
+      * 
+      * @since 4.0.12
+
+=== modified file 'src/defs/NotifyNotification.defs'
+--- src/defs/NotifyNotification.defs	2009-05-16 05:46:28 +0000
++++ src/defs/NotifyNotification.defs	2011-01-31 17:58:10 +0000
+@@ -15,19 +15,6 @@
+     '("const-gchar*" "summary")
+     '("const-gchar*" "body" (null-ok))
+     '("const-gchar*" "icon" (null-ok))
+-    '("GtkWidget*" "attach" (null-ok))
+-  )
+-)
+-
+-(define-function notify_notification_new_with_status_icon
+-  (is-constructor-of "NotifyNotification")
+-  (c-name "notify_notification_new_with_status_icon")
+-  (return-type "NotifyNotification*")
+-  (parameters
+-    '("const-gchar*" "summary")
+-    '("const-gchar*" "body" (null-ok))
+-    '("const-gchar*" "icon" (null-ok))
+-    '("GtkStatusIcon*" "status_icon")
+   )
+ )
+ 
+@@ -42,35 +29,6 @@
+   )
+ )
+ 
+-(define-method attach_to_widget
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_attach_to_widget")
+-  (return-type "none")
+-  (parameters
+-    '("GtkWidget*" "attach")
+-  )
+-)
+-
+-(define-method attach_to_status_icon
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_attach_to_status_icon")
+-  (return-type "none")
+-  (parameters
+-    '("GtkStatusIcon*" "status_icon")
+-  )
+-)
+-
+-(define-method set_geometry_hints
+-  (of-object "NotifyNotification")
+-  (c-name "notify_notification_set_geometry_hints")
+-  (return-type "none")
+-  (parameters
+-    '("GdkScreen*" "screen")
+-    '("gint" "x")
+-    '("gint" "y")
+-  )
+-)
+-
+ (define-method show
+   (of-object "NotifyNotification")
+   (c-name "notify_notification_show")
+
+# Begin bundle
+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
+FSKBdAits/xdyRThQkAgyxQc

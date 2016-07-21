@@ -1,0 +1,14 @@
+diff -ur lm1100maint~/lm1100back lm1100maint/lm1100back
+--- lm1100maint~/lm1100back	2006-06-26 19:48:51.000000000 +0200
++++ lm1100maint/lm1100back	2006-06-26 19:50:41.000000000 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-dd if=/usr/share/lm1100maint/lexmarkback of=/dev/lp0
++dd if=/usr/share/lm1100/lexmarkback of=/dev/lp0
+diff -ur lm1100maint~/lm1100change lm1100maint/lm1100change
+--- lm1100maint~/lm1100change	2006-06-26 19:48:51.000000000 +0200
++++ lm1100maint/lm1100change	2006-06-26 19:50:55.000000000 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-dd if=/usr/share/lm1100maint/lexmarkchange of=/dev/lp0
++dd if=/usr/share/lm1100/lexmarkchange of=/dev/lp0

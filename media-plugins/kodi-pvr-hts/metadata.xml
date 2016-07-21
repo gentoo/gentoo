@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>fordfrog@gentoo.org</email>
+		<name>Miroslav Šulc</name>
+	</maintainer>
+	<longdescription>Tvheadend Live TV and Radio PVR client addon for Kodi</longdescription>
+	<upstream>
+		<remote-id type="github">kodi-pvr/pvr.hts</remote-id>
+	</upstream>
+</pkgmetadata>

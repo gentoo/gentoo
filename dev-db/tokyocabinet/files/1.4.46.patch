@@ -1,0 +1,12 @@
+diff --git a/Makefile.in b/Makefile.in
+index 8846c38..01caa50 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -125,7 +125,6 @@ install :
+ 	cd man && cp -Rf $(MAN3FILES) $(DESTDIR)$(MAN3DIR)
+ 	mkdir -p $(DESTDIR)$(PCDIR)
+ 	cp -Rf $(PCFILES) $(DESTDIR)$(PCDIR)
+-	-[ "$$UID" = 0 ] && PATH=/sbin:/usr/sbin:$(PATH) ldconfig 2>/dev/null || true
+ 	@printf '\n'
+ 	@printf '#================================================================\n'
+ 	@printf '# Thanks for using Tokyo Cabinet.\n'

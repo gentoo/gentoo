@@ -1,0 +1,164 @@
+diff -Naur Preferences.orig/GNUmakefile Preferences/GNUmakefile
+--- Preferences.orig/GNUmakefile	2004-06-11 00:38:31.000000000 +0200
++++ Preferences/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -55,7 +55,7 @@
+ export TOP_SRCDIR :=	$(CURDIR)/../..
+ endif
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ #
+ # Resource files
+diff -Naur Preferences.orig/GNUmakefile.preamble Preferences/GNUmakefile.preamble
+--- Preferences.orig/GNUmakefile.preamble	2007-11-06 15:49:02.000000000 +0100
++++ Preferences/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -37,7 +37,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ #ADDITIONAL_INSTALL_DIRS += \
+diff -Naur Preferences.orig/Modules/Colors/GNUmakefile Preferences/Modules/Colors/GNUmakefile
+--- Preferences.orig/Modules/Colors/GNUmakefile	2006-09-03 19:15:12.000000000 +0200
++++ Preferences/Modules/Colors/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -3,10 +3,10 @@
+ BUNDLE_NAME=		Colors
+ BUNDLE_EXTENSION=	.prefs
+ 
+-BUNDLE_INSTALL_DIR=	$(GNUSTEP_INSTALLATION_DIR)/Library/Preferences
++BUNDLE_INSTALL_DIR=	$(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/Preferences
+ 
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ Colors_LANGUAGES= \
+ 	English
+diff -Naur Preferences.orig/Modules/Colors/GNUmakefile.preamble Preferences/Modules/Colors/GNUmakefile.preamble
+--- Preferences.orig/Modules/Colors/GNUmakefile.preamble	2004-06-11 00:33:55.000000000 +0200
++++ Preferences/Modules/Colors/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -34,7 +34,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ ADDITIONAL_INSTALL_DIRS +=
+diff -Naur Preferences.orig/Modules/Defaults/GNUmakefile Preferences/Modules/Defaults/GNUmakefile
+--- Preferences.orig/Modules/Defaults/GNUmakefile	2003-08-16 19:19:29.000000000 +0200
++++ Preferences/Modules/Defaults/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -2,10 +2,10 @@
+ 
+ BUNDLE_NAME=		Defaults
+ BUNDLE_EXTENSION=	.prefs
+-BUNDLE_INSTALL_DIR=	$(GNUSTEP_INSTALLATION_DIR)/Library/Preferences
++BUNDLE_INSTALL_DIR=	$(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/Preferences
+ 
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ Defaults_LANGUAGES= \
+ 	English
+diff -Naur Preferences.orig/Modules/Defaults/GNUmakefile.preamble Preferences/Modules/Defaults/GNUmakefile.preamble
+--- Preferences.orig/Modules/Defaults/GNUmakefile.preamble	2003-08-16 19:35:57.000000000 +0200
++++ Preferences/Modules/Defaults/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -34,7 +34,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ ADDITIONAL_INSTALL_DIRS +=
+diff -Naur Preferences.orig/Modules/Font/GNUmakefile Preferences/Modules/Font/GNUmakefile
+--- Preferences.orig/Modules/Font/GNUmakefile	2005-10-12 02:02:36.000000000 +0200
++++ Preferences/Modules/Font/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -3,10 +3,10 @@
+ BUNDLE_NAME=		Font
+ BUNDLE_EXTENSION=	.prefs
+ 
+-BUNDLE_INSTALL_DIR=	$(GNUSTEP_INSTALLATION_DIR)/Library/Preferences
++BUNDLE_INSTALL_DIR=	$(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/Preferences
+ 
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ Font_LANGUAGES=	\
+ 	English \
+diff -Naur Preferences.orig/Modules/Font/GNUmakefile.preamble Preferences/Modules/Font/GNUmakefile.preamble
+--- Preferences.orig/Modules/Font/GNUmakefile.preamble	2003-08-16 19:35:57.000000000 +0200
++++ Preferences/Modules/Font/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -34,7 +34,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ ADDITIONAL_INSTALL_DIRS +=
+diff -Naur Preferences.orig/Modules/Keyboard/GNUmakefile Preferences/Modules/Keyboard/GNUmakefile
+--- Preferences.orig/Modules/Keyboard/GNUmakefile	2003-08-16 19:19:29.000000000 +0200
++++ Preferences/Modules/Keyboard/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -3,10 +3,10 @@
+ BUNDLE_NAME=		Keyboard
+ BUNDLE_EXTENSION=	.prefs
+ 
+-BUNDLE_INSTALL_DIR=	$(GNUSTEP_INSTALLATION_DIR)/Library/Preferences
++BUNDLE_INSTALL_DIR=	$(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/Preferences
+ 
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ Keyboard_LANGUAGES= \
+ 	English
+diff -Naur Preferences.orig/Modules/Keyboard/GNUmakefile.preamble Preferences/Modules/Keyboard/GNUmakefile.preamble
+--- Preferences.orig/Modules/Keyboard/GNUmakefile.preamble	2003-08-16 19:35:57.000000000 +0200
++++ Preferences/Modules/Keyboard/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -34,7 +34,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ ADDITIONAL_INSTALL_DIRS +=
+diff -Naur Preferences.orig/Modules/Time/GNUmakefile Preferences/Modules/Time/GNUmakefile
+--- Preferences.orig/Modules/Time/GNUmakefile	2003-08-16 19:19:29.000000000 +0200
++++ Preferences/Modules/Time/GNUmakefile	2007-11-06 15:48:49.000000000 +0100
+@@ -2,10 +2,10 @@
+ 
+ BUNDLE_NAME=		Time
+ BUNDLE_EXTENSION=	.prefs
+-BUNDLE_INSTALL_DIR=	$(GNUSTEP_INSTALLATION_DIR)/Library/Preferences
++BUNDLE_INSTALL_DIR=	$(DESTDIR)/$(GNUSTEP_SYSTEM_LIBRARY)/Preferences
+ 
+ FRAMEWORKS= PrefsModule
+-include $(TOP_SRCDIR)/Backbone.make
++
+ 
+ Time_LANGUAGES= \
+ 	English
+diff -Naur Preferences.orig/Modules/Time/GNUmakefile.preamble Preferences/Modules/Time/GNUmakefile.preamble
+--- Preferences.orig/Modules/Time/GNUmakefile.preamble	2003-08-16 19:35:57.000000000 +0200
++++ Preferences/Modules/Time/GNUmakefile.preamble	2007-11-06 15:48:49.000000000 +0100
+@@ -34,7 +34,7 @@
+ #
+ # Flags dealing with installing and uninstalling
+ #
+-GNUSTEP_INSTALLATION_DIR=$(GNUSTEP_SYSTEM_ROOT)
++
+ 
+ # Additional directories to be created during installation
+ ADDITIONAL_INSTALL_DIRS +=

@@ -1,0 +1,67 @@
+From c2ab38ee2cd768ea4875450b146b12edbc28d656 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 9 Jun 2015 01:41:45 +0200
+Subject: [PATCH] Fix function name mis-match for JACK compilation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes compile error:
+
+../audacious/impulser2.cpp: In function ‘void slot_save(SlotConfiguration*, int)’:
+../audacious/impulser2.cpp:278:86: error: ‘aud_set_str’ was not declared in this scope
+ t_str   (configSectionString, key_i("file",i), (gchar*)slot->filename.c_str());
+                                                                              ^
+../audacious/impulser2.cpp: In function ‘void slot_load(SlotConfiguration*, int)’:
+../audacious/impulser2.cpp:293:62: error: ‘aud_get_str’ was not declared in this scope
+   filename = aud_get_str(configSectionString, key_i("file",i));
+---
+ jack/configdb.h        | 4 ++--
+ jack/configdb_rcfile.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/jack/configdb.h b/jack/configdb.h
+index c3e6c19..0f793fa 100644
+--- a/jack/configdb.h
++++ b/jack/configdb.h
+@@ -23,13 +23,13 @@ void bmp_cfg_db_set_float (ConfigDb *db, const gchar *section, const gchar *key,
+ void bmp_cfg_db_set_double(ConfigDb *db, const gchar *section, const gchar *key, gdouble value);
+ void bmp_cfg_db_unset_key (ConfigDb *db, const gchar *section, const gchar *key);
+ 
+-gchar *  aud_get_string(const gchar *section, const gchar *key);
++gchar *  aud_get_str   (const gchar *section, const gchar *key);
+ gint     aud_get_int   (const gchar *section, const gchar *key);
+ gboolean aud_get_bool  (const gchar *section, const gchar *key);
+ gfloat   aud_get_float (const gchar *section, const gchar *key);
+ gdouble  aud_get_double(const gchar *section, const gchar *key);
+ 
+-void aud_set_string(const gchar *section, const gchar *key, gchar *value);
++void aud_set_str   (const gchar *section, const gchar *key, gchar *value);
+ void aud_set_int   (const gchar *section, const gchar *key, gint value);
+ void aud_set_bool  (const gchar *section, const gchar *key, gboolean value);
+ void aud_set_float (const gchar *section, const gchar *key, gfloat value);
+diff --git a/jack/configdb_rcfile.c b/jack/configdb_rcfile.c
+index c0125c8..69bb085 100644
+--- a/jack/configdb_rcfile.c
++++ b/jack/configdb_rcfile.c
+@@ -109,7 +109,7 @@ void bmp_cfg_db_unset_key(ConfigDb * db, const gchar * section, const gchar * ke
+ }
+ 
+ gchar * cfg_string;
+-gchar * aud_get_string(const gchar *section, const gchar *key)
++gchar * aud_get_str(const gchar *section, const gchar *key)
+ {
+   ConfigDb * cfg = bmp_cfg_db_open();
+   bmp_cfg_db_get_string(cfg,section,key,&cfg_string);
+@@ -153,7 +153,7 @@ gdouble aud_get_double(const gchar *section, const gchar *key)
+   return cfg_double;
+ }
+ 
+-void aud_set_string(const gchar *section, const gchar *key, gchar *value)
++void aud_set_str(const gchar *section, const gchar *key, gchar *value)
+ {
+   ConfigDb * cfg = bmp_cfg_db_open();
+   bmp_cfg_db_set_string(cfg,section,key,value);
+-- 
+2.4.0
+

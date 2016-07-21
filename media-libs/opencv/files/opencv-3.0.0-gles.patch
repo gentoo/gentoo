@@ -1,0 +1,14 @@
+Index: opencv-2.4.11/modules/highgui/src/window_QT.cpp
+===================================================================
+--- opencv-2.4.11.orig/modules/highgui/src/window_QT.cpp
++++ opencv-2.4.11/modules/highgui/src/window_QT.cpp
+@@ -3118,7 +3118,9 @@ void OpenGlViewPort::updateGl()
+ 
+ void OpenGlViewPort::initializeGL()
+ {
++#ifdef GL_PERSPECTIVE_CORRECTION_HINT
+     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
++#endif
+ }
+ 
+ void OpenGlViewPort::resizeGL(int w, int h)

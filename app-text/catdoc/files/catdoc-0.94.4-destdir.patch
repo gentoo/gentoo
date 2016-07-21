@@ -1,0 +1,17 @@
+--- catdoc-0.94.4/desktop/Makefile.in
++++ catdoc-0.94.4/desktop/Makefile.in
+@@ -20,10 +20,10 @@
+ clean:
+ 
+ install: all
+-	../mkinstalldirs $(prefix)$(desktopdir)
+-	../mkinstalldirs $(prefix)$(iconsdir)
+-	$(INSTALL) -m 644 wordview.desktop $(prefix)$(desktopdir)/wordview.desktop
+-	$(INSTALL) -m 644 wordview.xpm $(prefix)$(iconsdir)/wordview.xpm
++	../mkinstalldirs $(installroot)$(prefix)$(desktopdir)
++	../mkinstalldirs $(installroot)$(prefix)$(iconsdir)
++	$(INSTALL) -m 644 wordview.desktop $(installroot)$(prefix)$(desktopdir)/wordview.desktop
++	$(INSTALL) -m 644 wordview.xpm $(installroot)$(prefix)$(iconsdir)/wordview.xpm
+ 
+ distclean: clean
+ 	rm Makefile

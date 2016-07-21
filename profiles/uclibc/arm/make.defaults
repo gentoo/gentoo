@@ -1,0 +1,6 @@
+ARCH="arm"
+ACCEPT_KEYWORDS="arm"
+
+CHOST="set-CHOST-in-your-/etc/make.conf"
+
+UCLIBC_CPU_DEFAULT="GENERIC_ARM"

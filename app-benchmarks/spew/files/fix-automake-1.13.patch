@@ -1,0 +1,28 @@
+diff -Naur spew-1.0.8.orig/configure.ac spew-1.0.8/configure.ac
+--- spew-1.0.8.orig/configure.ac	2010-05-14 01:17:52.000000000 -0400
++++ spew-1.0.8/configure.ac	2013-06-21 09:06:42.000000000 -0400
+@@ -2,20 +2,13 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ(2.57)
+-AC_INIT(src/spew.cpp)
++AC_INIT(spew, 1.0.8)
++AC_CONFIG_SRCDIR(src/spew.cpp)
+ AC_CONFIG_AUX_DIR(config)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_MAINTAINER_MODE
+ 
+-SPEW_AGE=1
+-SPEW_REVISION=0
+-SPEW_CURRENT=8
+-AC_SUBST(SPEW_AGE)
+-AC_SUBST(SPEW_REVISION)
+-AC_SUBST(SPEW_CURRENT)
+-VERSION=$SPEW_AGE.$SPEW_REVISION.$SPEW_CURRENT
+-
+-AM_INIT_AUTOMAKE(spew, $VERSION)
++AM_INIT_AUTOMAKE
+ 
+ # Checks for programs.
+ AC_PROG_CXX

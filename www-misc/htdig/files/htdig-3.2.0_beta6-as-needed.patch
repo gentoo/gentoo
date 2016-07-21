@@ -1,0 +1,61 @@
+--- htdig-3.2.0b6/Makefile.config.orig	2006-11-19 08:49:57.000000000 -0800
++++ htdig-3.2.0b6/Makefile.config	2006-11-19 08:51:19.000000000 -0800
+@@ -22,10 +22,7 @@
+ 		$(LOCAL_DEFINES) $(PROFILING)
+ 
+ HTLIBS=		$(top_builddir)/htnet/libhtnet.la \
+-		$(top_builddir)/htcommon/libcommon.la \
+-		$(top_builddir)/htword/libhtword.la \
+ 		$(top_builddir)/htlib/libht.la \
+ 		$(top_builddir)/htcommon/libcommon.la \
+ 		$(top_builddir)/htword/libhtword.la \
+-		$(top_builddir)/db/libhtdb.la \
+-		$(top_builddir)/htlib/libht.la
++		$(top_builddir)/db/libhtdb.la 
+--- htdig-3.2.0b6/htlib/Makefile.am.orig	2006-11-19 09:13:47.000000000 -0800
++++ htdig-3.2.0b6/htlib/Makefile.am	2006-11-19 09:17:50.000000000 -0800
+@@ -1,7 +1,8 @@
+ include $(top_srcdir)/Makefile.config
+ 
+ pkglib_LTLIBRARIES = libht.la
+-
++libht_la_DEPENDENCIES = $(top_builddir)/db/libhtdb.la
++libht_la_LIBADD= $(top_builddir)/db/libhtdb.la
+ libht_la_SOURCES = Configuration.cc Database.cc Dictionary.cc \
+ 	DB2_db.cc IntObject.cc List.cc Object.cc \
+ 	ParsedString.cc Queue.cc QuotedStringList.cc Stack.cc \
+@@ -17,9 +18,6 @@
+ 	myqsort.c \
+ 	md5.cc mhash_md5.c 
+ 
+-libht_la_LIBADD=@LTLIBOBJS@
+-# this includes regex.c
+-
+ libht_la_LDFLAGS = -release $(HTDIG_MAJOR_VERSION).$(HTDIG_MINOR_VERSION).$(HTDIG_MICRO_VERSION) ${extra_ldflags}
+ 
+ pkginclude_HEADERS = \
+--- htdig-3.2.0b6/htword/Makefile.am.orig	2006-11-19 08:55:08.000000000 -0800
++++ htdig-3.2.0b6/htword/Makefile.am	2006-11-19 08:56:51.000000000 -0800
+@@ -10,7 +10,8 @@
+ LOCAL_DEFINES = 
+ 
+ pkglib_LTLIBRARIES = libhtword.la
+-
++libhtword_la_DEPENDENCIES = $(top_builddir)/htlib/libht.la
++libhtword_la_LIBADD = $(top_builddir)/htlib/libht.la
+ libhtword_la_SOURCES = \
+ 	WordBitCompress.cc \
+ 	WordContext.cc \
+
+--- htdig-3.2.0b6/htcommon/Makefile.am.orig	2006-11-19 09:32:39.000000000 -0800
++++ htdig-3.2.0b6/htcommon/Makefile.am	2006-11-19 09:33:42.000000000 -0800
+@@ -12,7 +12,8 @@
+ EXTRA_DIST=conf_lexer.cxx conf_parser.cxx
+ 
+ pkglib_LTLIBRARIES = libcommon.la
+-
++libcommon_la_DEPENDENCIES = $(top_builddir)/htword/libhtword.la
++libcommon_la_LIBADD = $(top_builddir)/htword/libhtword.la
+ libcommon_la_SOURCES = DocumentDB.cc DocumentRef.cc \
+ 	HtWordReference.cc HtWordList.cc defaults.cc \
+ 	HtURLCodec.cc URL.cc URLTrans.cc \

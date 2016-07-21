@@ -1,0 +1,17 @@
+From: hasufell <hasufell@gentoo.org>
+Date: Thu May  3 22:23:21 UTC 2012
+
+use_x11=no was not set when --disable-x11 was
+
+--- m4/devil-api_checks.m4
++++ m4/devil-api_checks.m4
+@@ -137,7 +137,8 @@
+                               [main],
+                               [dnl The use_x11 var is either "yes" already, or we don't want "no" to be overwritten
+                                ILUT_LIBS="-lX11 $ILUT_LIBS"],
+-                              [use_x11="no"]) ])
++                              [use_x11="no"]) ],
++		[use_x11="no"])
+           TEST_API([shm])
+           AS_IF([test "x$enable_shm" = "xyes"],
+                 [AC_CHECK_HEADER([X11/extensions/XShm.h],

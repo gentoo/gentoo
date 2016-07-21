@@ -1,0 +1,30 @@
+--- jokosher-0.11.5/Jokosher/Project.py.orig	2010-04-11 17:54:15.000000000 +0100
++++ jokosher-0.11.5/Jokosher/Project.py	2010-12-04 14:51:17.000000000 +0000
+@@ -787,7 +787,7 @@
+ 		params = doc.createElement("Parameters")
+ 		head.appendChild(params)
+ 		
+-		items = ["viewScale", "viewStart", "name", "author",
++		items = ["viewScale", "viewStart", "name", "author", "volume",
+ 		         "transportMode", "bpm", "meter_nom", "meter_denom", "projectfile"]
+ 		
+ 		Utils.StoreParametersToXML(self, doc, params, items)
+--- jokosher-0.11.5/Jokosher/VUWidget.py.orig	2010-03-04 19:46:54.000000000 +0000
++++ jokosher-0.11.5/Jokosher/VUWidget.py	2010-12-04 14:51:17.000000000 +0000
+@@ -307,6 +307,7 @@
+ 		
+ 		ctx = widget.window.cairo_create()
+ 		
++		ctx.save()
+ 		rect = self.get_allocation()
+ 
+ 		# Fill a black background		
+@@ -321,7 +322,7 @@
+ 		ctx.paint()
+ 
+ 		# Reset the clip region
+-		ctx.reset_clip()
++		ctx.restore()
+ 		
+ 		# Draw the current volume level bar, with highlight if appropriate
+ 		vpos = self.__GetVolumeHandleYPos()

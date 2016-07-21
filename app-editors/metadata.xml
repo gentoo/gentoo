@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-editors category contains text editors.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-editors enthält Texteditoren.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-editors contiene editores de textos.
+	</longdescription>
+	<longdescription lang="ja">
+		app-editorsカテゴリにはテキストエディタが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-editors categorie bevat text editors.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-editors chứa các trình soạn thảo văn bản.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-editors contiene editor di testo.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-editors contém editores de texto.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-editors zawiera edytory tekstu.
+	</longdescription>
+</catmetadata>
+

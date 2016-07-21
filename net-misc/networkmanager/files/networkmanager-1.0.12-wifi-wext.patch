@@ -1,0 +1,24 @@
+From 70c0defe753bc98ac75725cc32a84b36f32258e4 Mon Sep 17 00:00:00 2001
+From: Francesco Giudici <fgiudici@redhat.com>
+Date: Fri, 11 Mar 2016 09:55:39 +0100
+Subject: wifi: hack for wext devices reporting IW_MODE_AUTO configuration
+ mode.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=763388
+(cherry picked from commit 0f6febc6fbeafde62e6e0a8c12f57204d94166fb)
+
+diff --git a/src/platform/wifi/wifi-utils-wext.c b/src/platform/wifi/wifi-utils-wext.c
+index 470b73d..14a16ec 100644
+--- a/src/platform/wifi/wifi-utils-wext.c
++++ b/src/platform/wifi/wifi-utils-wext.c
+@@ -122,6 +122,7 @@ wifi_wext_get_mode (WifiData *data)
+ 	case IW_MODE_MASTER:
+ 		return NM_802_11_MODE_AP;
+ 	case IW_MODE_INFRA:
++	case IW_MODE_AUTO: /* hack for WEXT devices reporting IW_MODE_AUTO */
+ 		return NM_802_11_MODE_INFRA;
+ 	default:
+ 		break;
+-- 
+cgit v0.10.2
+

@@ -1,0 +1,11 @@
+--- libpst-0.6.52/python/Makefile.am.orig
++++ libpst-0.6.52/python/Makefile.am
+@@ -8,7 +8,7 @@
+ 
+ pythonlibdir            = $(libdir)/@PYTHON_VERSION@/site-packages
+ pythonlib_LTLIBRARIES   = _libpst.la
+-_libpst_la_LDFLAGS      = -module $(NO_UNDEFINED) -avoid-version
++_libpst_la_LDFLAGS      = -module $(NO_UNDEFINED) -avoid-version -shared
+ _libpst_la_SOURCES      = python-libpst.cpp
+ _libpst_la_LIBADD       = -lboost_python ../src/libpst.la
+ 

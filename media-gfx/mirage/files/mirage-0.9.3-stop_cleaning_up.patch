@@ -1,0 +1,27 @@
+diff -ur mirage-0.9.3.orig/setup.py mirage-0.9.3/setup.py
+--- mirage-0.9.3.orig/setup.py	2008-03-27 06:05:28.000000000 +0200
++++ mirage-0.9.3/setup.py	2008-11-30 16:34:11.000000000 +0200
+@@ -70,23 +70,3 @@
+ 			('share/locale/cs/LC_MESSAGES', ['mo/cs/mirage.mo']),
+ 			('share/locale/it/LC_MESSAGES', ['mo/it/mirage.mo'])],
+ 		)
+-
+-# Cleanup (remove /build, /mo, and *.pyc files:
+-print "Cleaning up..."
+-try:
+-	removeall("build/")
+-	os.rmdir("build/")
+-except:
+-	pass
+-try:
+-	removeall("mo/")
+-	os.rmdir("mo/")
+-except:
+-	pass
+-try:
+-	for f in os.listdir("."):
+-		if os.path.isfile(f):
+-			if os.path.splitext(os.path.basename(f))[1] == ".pyc":
+-				os.remove(f)
+-except:
+-	pass

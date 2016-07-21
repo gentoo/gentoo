@@ -1,0 +1,23 @@
+See Gentoo bug #322351.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,6 +99,9 @@ include_directories(
+     ${KDEPIMLIBS_INCLUDE_DIRS}
+ )
+ 
++# Pull in ARM configuration options if needed
++STRING(REGEX MATCH "PyQt_qreal_double" SIP_ARM_HACK ${PYQT4_SIP_FLAGS} "")
++
+ set(SIP_INCLUDES ${CMAKE_BINARY_DIR} ${PYQT4_SIP_DIR} sip)
+ set(SIP_CONCAT_PARTS 8)
+ if (WIN32)
+@@ -106,7 +109,7 @@ if (WIN32)
+ else ()
+     set(SIP_TAGS ALL WS_X11 ${PYQT4_VERSION_TAG})
+ endif ()
+-set(SIP_DISABLE_FEATURES VendorID PyQt_NoPrintRangeBug)
++set(SIP_DISABLE_FEATURES VendorID PyQt_NoPrintRangeBug ${SIP_ARM_HACK})
+ 
+ set(SIP_FILES_INSTALL_DIR ${SHARE_INSTALL_PREFIX}/sip)
+ 

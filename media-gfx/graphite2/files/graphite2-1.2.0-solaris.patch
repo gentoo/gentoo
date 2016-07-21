@@ -1,0 +1,22 @@
+Bidi: undef conflicting constants
+
+On Solaris ES and CS are already defined, resulting in compilation
+errors.  Since we won't need Solaris' ones here, simply undef them.
+
+--- graphite2-1.2.0/src/Bidi.cpp
++++ graphite2-1.2.0/src/Bidi.cpp
+@@ -30,6 +30,14 @@
+ 
+ using namespace graphite2;
+ 
++/* Solaris' headers define these */
++#ifdef ES
++# undef ES
++#endif
++#ifdef CS
++# undef CS
++#endif
++
+ enum DirCode {  // Hungarian: dirc
+         Unk        = -1,
+         N          =  0,   // other neutrals (default) - ON

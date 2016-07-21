@@ -1,0 +1,34 @@
+commit 43f3b631484a2c0178e6699584471dedd598eca3
+Author: Lee Jarvis <ljjarvis@gmail.com>
+Date:   Mon May 6 19:39:25 2013 +0100
+
+    Ensure we prefix xpath with // for searching entire document
+    
+    Tests prior to this commit passed because libxml2 was not so
+    strict. Since upgrading to 2.9.0 this issue has been revealed.
+    The former test should have been written with this in mind.
+    
+    Steps to reproduce (on OSX with Homebrew installed):
+    
+      gem uninstall nokogiri
+      brew install libxml2
+      LDFLAGS="-L/usr/local/opt/libxml2/lib" \
+        CPPFLAGS="-I/usr/local/opt/libxml2/include" \
+        gem install nokogiri
+    
+    closes #308
+
+diff --git a/test/test_mechanize_xml_file.rb b/test/test_mechanize_xml_file.rb
+index 58eb67c..bbe486c 100644
+--- a/test/test_mechanize_xml_file.rb
++++ b/test/test_mechanize_xml_file.rb
+@@ -23,7 +23,7 @@ class TestMechanizeXmlFile < Mechanize::TestCase
+   end
+ 
+   def test_at
+-    assert_equal 'Perl', @xml.at('language[2]').text
++    assert_equal 'Perl', @xml.at('//language[2]').text
+   end
+ 
+ end
+\ No newline at end of file

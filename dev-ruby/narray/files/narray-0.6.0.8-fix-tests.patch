@@ -1,0 +1,69 @@
+From c56dc59527f0681dae7175b2fcab1fe534444f52 Mon Sep 17 00:00:00 2001
+From: Masahiro TANAKA <masa16.tanaka@gmail.com>
+Date: Thu, 9 May 2013 16:47:50 +0900
+Subject: [PATCH] fix tests for change in Complex class
+
+---
+ test/testcomplex.rb | 4 ++--
+ test/testmath.rb    | 8 ++++----
+ test/testpow.rb     | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/test/testcomplex.rb b/test/testcomplex.rb
+index 7be2e18..8a6346d 100644
+--- a/test/testcomplex.rb
++++ b/test/testcomplex.rb
+@@ -10,8 +10,8 @@ def testop(a,b)
+   print "a**b = "; p a**b
+ end
+ 
+-a = NArray.complex(4,1).indgen!.sbt!(-1) + 0.25.im
+-b = NArray.complex(1,3).indgen!.add!(-0.5).mul!(0.5.im)
++a = NArray.complex(4,1).indgen!.sbt!(-1) + Complex(0,0.25)
++b = NArray.complex(1,3).indgen!.add!(-0.5).mul!(Complex(0,0.5))
+ testop(a,b)
+ 
+ # compare a/b with real-number operation
+diff --git a/test/testmath.rb b/test/testmath.rb
+index 0bf70d3..0aaf089 100644
+--- a/test/testmath.rb
++++ b/test/testmath.rb
+@@ -4,10 +4,10 @@
+ def pr x
+   x.each{|i|
+     if i.kind_of?(Complex)
+-      printf("%.3f%+.3fi ",i.real,i.image)
++      printf("%.3f%+.3fi ",i.real,i.imag)
+     else
+       printf("%.3f ",i)
+-    end      
++    end
+   }
+   print "\n"
+ end
+@@ -44,5 +44,5 @@ def testmath(x)
+ testmath NArray.sfloat(6).indgen.div!(2)
+ testmath NArray.float(6).indgen.div!(2)
+ 
+-testmath NArray.scomplex(6).indgen.div!(2)-2 - 1.im
+-testmath NArray.complex(6).indgen!/5-0.5# - 0.3.im
++testmath NArray.scomplex(6).indgen.div!(2)-2 - Complex(0,1)
++testmath NArray.complex(6).indgen!/5-0.5# - Complex(0,0.3)
+diff --git a/test/testpow.rb b/test/testpow.rb
+index 17f81d1..e7360e8 100644
+--- a/test/testpow.rb
++++ b/test/testpow.rb
+@@ -7,8 +7,8 @@ def test a
+   p  a**[[-3],[0],[7]]
+   puts 'a**[[-3.0],[0],[7.0]] = '
+   p  a**[[-3.0],[0],[7.0]]
+-  puts 'a**(1+0.im) = '
+-  p  a**(1+0.im)
++  puts 'a**Complex(1,0) = '
++  p  a**Complex(1,0)
+   puts 'a**1.0 = '
+   p  a**1.0
+   puts
+-- 
+1.8.1.6
+

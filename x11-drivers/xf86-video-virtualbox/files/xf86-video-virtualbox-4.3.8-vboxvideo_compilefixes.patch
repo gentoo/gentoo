@@ -1,0 +1,31 @@
+--- VirtualBox-4.3.8/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
++++ VirtualBox-4.3.8/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
+@@ -105,7 +105,6 @@
+ #define VBOX_NAME               "VBoxVideo"
+ #define VBOX_DRIVER_NAME        "vboxvideo"
+ 
+-#ifdef VBOX_DRI_OLD
+ /* DRI support */
+ #define _XF86DRI_SERVER_
+ /* Hack to work around a libdrm header which is broken on Solaris */
+@@ -120,7 +119,6 @@
+ /* For some reason this is not in the header files. */
+ extern void GlxSetVisualConfigs(int nconfigs, __GLXvisualConfig *configs,
+                                 void **configprivs);
+-#endif
+ 
+ #define VBOX_VIDEO_MAJOR  1
+ #define VBOX_VIDEO_MINOR  0
+@@ -191,12 +189,10 @@
+     Bool fAnyX;
+ #ifdef VBOX_DRI
+     Bool useDRI;
+-#ifdef VBOX_DRI_OLD
+     int cVisualConfigs;
+     __GLXvisualConfig *pVisualConfigs;
+     DRIInfoRec *pDRIInfo;
+     int drmFD;
+-# endif
+ #endif
+ } VBOXRec, *VBOXPtr;
+ 

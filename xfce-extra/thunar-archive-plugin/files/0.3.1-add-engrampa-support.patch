@@ -1,0 +1,68 @@
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index 4da529c..ec49cba 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -3,7 +3,8 @@
+ wrapperdir = $(libexecdir)/thunar-archive-plugin
+ wrapper_SCRIPTS =							\
+ 	ark.tap								\
+-	file-roller.tap
++	file-roller.tap							\
++	engrampa.tap
+ 
+ # Install symlink to 'gnome-file-roller.tap'
+ install-exec-hook:
+diff --git a/scripts/engrampa.tap b/scripts/engrampa.tap
+index e69de29..a9d9c10 100755
+--- a/scripts/engrampa.tap
++++ b/scripts/engrampa.tap
+@@ -0,0 +1,48 @@
++#!/bin/sh
++#
++# engrampa.tap - Wrapper script to create and extract archive files
++#                   in Thunar, via the thunar-archive-plugin, using the
++#                   engrampa archive manager.
++#
++# $Id$
++#
++# Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>.
++#
++# This program is free software; you can redistribute it and/or modify it
++# under the terms of the GNU General Public License as published by the Free
++# Software Foundation; either version 2 of the License, or (at your option)
++# any later version.
++#
++# This program is distributed in the hope that it will be useful, but WITHOUT
++# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++# more details.
++#
++# You should have received a copy of the GNU General Public License along with
++# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
++# Place, Suite 330, Boston, MA  02111-1307  USA.
++#
++
++# determine the action and the folder, $@ then contains only the files
++action=$1; shift;
++folder=$1; shift;
++
++# check the action
++case $action in
++create)
++	exec engrampa "--default-dir=$folder" --add "$@"
++	;;
++
++extract-here)
++	exec engrampa "--extract-to=$folder" --force "$@"
++	;;
++
++extract-to)
++	exec engrampa --extract "$@"
++	;;
++
++*)
++	echo "Unsupported action '$action'" >&2
++	exit 1
++esac
++
+

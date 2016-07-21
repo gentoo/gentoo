@@ -1,0 +1,38 @@
+--- config/common.h.orig	2004-12-23 20:00:50.710795840 +0100
++++ config/common.h	2004-12-23 20:39:40.271648760 +0100
+@@ -21,6 +21,23 @@
+ #ifndef COMMON_H
+ #define COMMON_H
+ 
++/* Bugfix for ppc, some functions aren't defined */
++#include <cmath>
++
++#undef MAX
++#define MAX(a,b) ((a) > (b)?(a):(b))
++#undef MIN
++#define MIN(a,b) ((a) < (b)?(a):(b))
++#undef ABS
++#define ABS(a) ((a) >= 0?(a):-(a))
++
++#define floorl(l) floor(l)
++#define nearbyintl(l) nearbyint(l)
++#define fabsl(l) fabs(l)
++#define logl(l) log(l)
++#define expl(l) exp(l)
++#define ceill(l) ceil(l)
++
+ /* common.h -- This file will deal with low-level portability problems. It
+  * should be includede at the top of every package file. */
+ 
+--- src/frontend_fox/FXWaveCanvas.cpp.orig	2004-12-23 20:18:55.790838600 +0100
++++ src/frontend_fox/FXWaveCanvas.cpp	2004-12-23 20:39:37.568059768 +0100
+@@ -56,6 +56,9 @@
+ #include "../backend/CSoundPlayerChannel.h"
+ #include "drawPortion.h"
+ 
++#include "../../config/common.h"
++#define max(a,b) MAX(a,b)
++
+ static FXColor playStatusColor=FXRGB(255,0,0);
+ 
+ #define RIGHT_MARGIN 10

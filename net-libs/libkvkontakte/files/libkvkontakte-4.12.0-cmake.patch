@@ -1,0 +1,9 @@
+--- a/CMakeLists.txt	2015-06-28 16:54:32.000000000 +0200
++++ b/CMakeLists.txt	2015-12-29 21:47:15.485256424 +0100
+@@ -1,4 +1,6 @@
+ cmake_minimum_required(VERSION 2.8.12)
++cmake_policy(SET CMP0022 OLD)
++cmake_policy(SET CMP0059 OLD)
+ project(kvkontakte)
+ 
+ # the version number, needed for

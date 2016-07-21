@@ -1,0 +1,77 @@
+--- usr/sbin/xe-linux-distribution.orig	2013-06-14 07:57:18.000000000 -0500
++++ usr/sbin/xe-linux-distribution	2014-04-19 13:54:13.270477193 -0500
+@@ -1,6 +1,7 @@
+ #! /bin/sh
+ 
+ # Copyright (C) 2009  Citrix Systems Inc.
++# Copyright (C) 2014  Christopher J. Camisa
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License
+@@ -68,7 +69,7 @@
+     eval $(awk -F. '/^[0-9]*\.[0-9]*/ \
+                         { print "major="$1 ; print "minor="$2 ; exit 0 }' \
+                    "${debian_version}")
+-    
++
+     if [ -z "${major}" ] && [ -z "${minor}" ] && ! grep -q /sid "${debian_version}" ; then
+ 	return 1
+     fi
+@@ -118,7 +119,7 @@
+     # Enterprise Linux Enterprise Linux Server release 5 (Carthage)
+     # Enterprise Linux Enterprise Linux Server release 5.5 (Carthage)
+     # Oracle Linux Server release 5.6
+-    
++
+     if [ ! -f "${redhat_release}" ] ; then
+ 	return 1
+     fi
+@@ -236,7 +237,7 @@
+     if [ ! -x "${lsb_release}" ] ; then
+ 	return 1
+     fi
+-    
++
+     distro=$(${lsb_release} --short --id | tr 'A-Z' 'a-z')
+     description=$(${lsb_release} --short --description | sed -e 's/^"\(.*\)"$/\1/g')
+     release=$(${lsb_release} --short --release)
+@@ -254,6 +255,31 @@
+     write_to_output "${distro}" "${major}" "${minor}" "${description}"
+ }
+ 
++identify_gentoo()
++{
++    gentoo_release="$1"
++
++    if [ ! -e "${gentoo_release}" ] ; then
++	return 1
++    fi
++
++    distro="gentoo"
++
++    eval $(cat ${gentoo_release} | awk '{ print "release=" $5 }' )
++
++    if [ -z "${release}" ] ; then
++	return 1
++    fi
++
++    eval $(echo $release | awk -F. -- '{ print "major=" $1 ; print "minor=" $2 }' )
++
++    if [ -z "${major}" -o -z "$minor" ] ; then
++	return 1
++    fi
++
++    write_to_output "${distro}" "${major}" "${minor}" "${distro}"
++}
++
+ if [ $# -eq 1 ] ; then
+     exec 1>"$1"
+ fi
+@@ -265,6 +291,7 @@
+     identify_sles   /etc/SuSE-release   && exit 0
+     identify_lsb    lsb_release         && exit 0
+     identify_debian /etc/debian_version && exit 0
++    identify_gentoo /etc/gentoo-release && exit 0
+ 
+     if [ $# -eq 1 ] ; then
+ 	rm -f "$1"

@@ -1,0 +1,76 @@
+From 66282f58000c8863e104666c30cb67b1d5cbdee3 Mon Sep 17 00:00:00 2001
+From: "Kyle J. McKay" <mackyle@gmail.com>
+Date: Fri, 18 May 2012 00:30:11 -0700
+Subject: [PATCH] libvncserver/sockets.c: do not segfault when
+ listenSock/listen6Sock == -1
+
+---
+ libvncserver/sockets.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libvncserver/sockets.c b/libvncserver/sockets.c
+index 84c9c98..3ff2aac 100644
+--- a/libvncserver/sockets.c
++++ b/libvncserver/sockets.c
+@@ -402,9 +402,9 @@ rfbProcessNewConnection(rfbScreenInfoPtr rfbScreen)
+       rfbLogPerror("rfbProcessNewConnection: error in select");
+       return FALSE;
+     }
+-    if (FD_ISSET(rfbScreen->listenSock, &listen_fds)) 
++    if (rfbScreen->listenSock >= 0 && FD_ISSET(rfbScreen->listenSock, &listen_fds))
+       chosen_listen_sock = rfbScreen->listenSock;
+-    if (FD_ISSET(rfbScreen->listen6Sock, &listen_fds)) 
++    if (rfbScreen->listen6Sock >= 0 && FD_ISSET(rfbScreen->listen6Sock, &listen_fds))
+       chosen_listen_sock = rfbScreen->listen6Sock;
+ 
+     if ((sock = accept(chosen_listen_sock,
+-- 
+1.8.5.5
+
+From 584542ba97d35706a9e5c001b5cdf64296b5dd7f Mon Sep 17 00:00:00 2001
+From: Oliver Loch <o.loch@gmx.net>
+Date: Wed, 8 Aug 2012 22:09:13 +0200
+Subject: [PATCH] Patched sockets.c to allow the use of IPv6 without IPv4.
+
+As requested only those lines are indented that have been changed.
+---
+ libvncserver/sockets.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/libvncserver/sockets.c b/libvncserver/sockets.c
+index 3ff2aac..15b40ac 100644
+--- a/libvncserver/sockets.c
++++ b/libvncserver/sockets.c
+@@ -176,7 +176,9 @@ rfbInitSockets(rfbScreenInfoPtr rfbScreen)
+ 	rfbScreen->maxFd = max((int)rfbScreen->listen6Sock,rfbScreen->maxFd);
+ #endif
+     }
+-    else if(rfbScreen->port>0) {
++    else
++    {
++	    if(rfbScreen->port>0) {
+       FD_ZERO(&(rfbScreen->allFds));
+ 
+       if ((rfbScreen->listenSock = rfbListenOnTCPPort(rfbScreen->port, iface)) < 0) {
+@@ -187,8 +189,10 @@ rfbInitSockets(rfbScreenInfoPtr rfbScreen)
+   
+       FD_SET(rfbScreen->listenSock, &(rfbScreen->allFds));
+       rfbScreen->maxFd = rfbScreen->listenSock;
++	    }
+ 
+ #ifdef LIBVNCSERVER_IPv6
++	    if (rfbScreen->ipv6port>0) {
+       if ((rfbScreen->listen6Sock = rfbListenOnTCP6Port(rfbScreen->ipv6port, rfbScreen->listen6Interface)) < 0) {
+ 	/* ListenOnTCP6Port has its own detailed error printout */
+ 	return;
+@@ -197,6 +201,7 @@ rfbInitSockets(rfbScreenInfoPtr rfbScreen)
+ 	
+       FD_SET(rfbScreen->listen6Sock, &(rfbScreen->allFds));
+       rfbScreen->maxFd = max((int)rfbScreen->listen6Sock,rfbScreen->maxFd);
++	    }
+ #endif
+ 
+     }
+-- 
+1.8.5.5
+

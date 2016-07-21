@@ -1,0 +1,150 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat Feb  2 01:16:21 UTC 2013
+Subject: build system
+
+	respect CC/CXX etc and CFLAGS/CXXFLAGS/LDFLAGS
+
+--- eduke32_20130201-3453/Makefile
++++ eduke32_20130201-3453/Makefile
+@@ -311,10 +311,10 @@
+ endif
+ 
+ COMPILER=$(CC) $(OURCONLYFLAGS)
+-LINKER=$(L_CC)
++LINKER=$(L_CC) $(OURCFLAGS) $(OURCONLYFLAGS)
+ ifneq ($(CPLUSPLUS),0)
+     COMPILER=$(CXX) $(OURCXXFLAGS)
+-    LINKER=$(L_CXX)
++    LINKER=$(L_CXX) $(OURCXXFLAGS)
+ endif
+ 
+ ifeq ($(PRETTY_OUTPUT),1)
+--- eduke32_20130201-3453/Makefile.common
++++ eduke32_20130201-3453/Makefile.common
+@@ -10,13 +10,14 @@
+ 
+ # Tools
+ CROSS=
+-CC=$(CROSS)gcc
+-CXX=$(CROSS)g++
+-AS=$(CROSS)nasm
+-AR=$(CROSS)ar
+-RC=$(CROSS)windres
+-RANLIB=$(CROSS)ranlib
+-STRIP=$(CROSS)strip
++CC ?= $(CROSS)gcc
++CXX ?= $(CROSS)g++
++AS ?= $(CROSS)nasm
++AR ?= $(CROSS)ar
++RC ?= $(CROSS)windres
++RANLIB ?= $(CROSS)ranlib
++STRIP ?= $(CROSS)strip
++PKG_CONFIG ?= pkgconfig
+ 
+ L_CC=$(CC)
+ L_CXX=$(CXX)
+@@ -164,7 +165,6 @@
+ #  FORCEWARNINGS - 1 = do not disable any compiler warnings within the source
+ #  KRANDDEBUG - 1 = include logging of krand() calls for debugging the demo system
+ #  EFENCE  - 1 = compile with Electric Fence for malloc() debugging
+-#  OPTLEVEL	- 0..3 = GCC optimization strategy
+ #  LTO - 1 = enable link-time optimization, for GCC 4.5 and up
+ #
+ CPLUSPLUS?=0
+@@ -178,13 +178,6 @@
+ PROFILER?=0
+ MUDFLAP?=0
+ 
+-# Select the default optimization level for release and debug builds.
+-ifeq ($(RELEASE),0)
+-    OPTLEVEL?=0
+-else
+-    OPTLEVEL?=2
+-endif
+-
+ ifeq ($(RELEASE),0)
+     override STRIP=
+ endif
+@@ -293,10 +286,9 @@
+ 
+ # compiler flags etc.
+ BASECFLAGS=
+-BASECONLYFLAGS=-Wimplicit -Wdeclaration-after-statement
+-BASECXXFLAGS= -fno-exceptions -fno-rtti -fpermissive -Wno-write-strings
+-BASEASFLAGS=-s #-g
+-BASELDFLAGS=
++BASECONLYFLAGS = $(CFLAGS) -std=gnu89 -Wimplicit -Wdeclaration-after-statement
++BASECXXFLAGS = $(CXXFLAGS) -fno-exceptions -fno-rtti -fpermissive -Wno-write-strings -Wno-narrowing
++BASELDFLAGS = $(LDFLAGS)
+ 
+ 
+ ifeq (1,$(strip $(shell expr $(GCC_MAJOR) \>= 4)))
+@@ -330,19 +322,6 @@
+ endif
+ 
+ 
+-ifneq ($(RELEASE)$(DEBUGANYWAY),10)
+-    # debug build or DEBUGANYWAY=1 --> -g flag
+-    ifneq (0,$(CLANG))
+-        debug=-g
+-    else ifeq ($(PLATFORM), WII)
+-        debug=-g
+-    else
+-        debug=-ggdb
+-    endif
+-endif
+-
+-debug+= -O$(OPTLEVEL)
+-
+ # See http://clang.llvm.org/docs/UsersManual.html#controlling-code-generation
+ # for a list of possible UBSan options.
+ # Clang 3.2 does only supports -fsanitize=address for the AddressSanitizer
+@@ -458,7 +437,7 @@
+ 
+ #### Lunatic development
+ # LuaJIT standalone interpreter executable:
+-LUAJIT:=luajit
++LUAJIT:=$(shell command -v luajit || command -v luajit-2 || command -v luajit-2.0)
+ # Options to "luajit -b" for synthesis. Since it runs on Linux, we need to tell
+ # the native LuaJIT to emit PE object files.
+ ifneq ($(SYNTHESIS),0)
+@@ -487,7 +466,8 @@
+     ifeq ($(PLATFORM),WINDOWS)
+         BASELIBS+= -lluajit
+     else
+-        BASELIBS+= -lluajit-5.1
++        BASECOMMONFLAGS+= $(shell $(PKG_CONFIG) --cflags luajit 2>/dev/null || $(PKG_CONFIG) --cflags luajit-2.0)
++        BASELIBS+= $(shell $(PKG_CONFIG) --libs luajit 2>/dev/null || $(PKG_CONFIG) --libs luajit-2.0)
+     endif
+ endif
+ 
+--- eduke32_20130201-3453/build/Makefile
++++ eduke32_20130201-3453/build/Makefile
+@@ -167,13 +167,15 @@
+ OURCOMMONFLAGS+= $(BUILDCOMMONFLAGS)
+ 
+ COMPILER=$(CC) $(OURCONLYFLAGS)
+-LINKER=$(L_CC)
++LINKER=$(L_CC) $(OURCFLAGS) $(OURCONLYFLAGS)
+ ifneq ($(CPLUSPLUS),0)
+     COMPILER=$(CXX) $(OURCXXFLAGS)
+-    LINKER=$(L_CXX)
++    LINKER=$(L_CXX) $(OURCXXFLAGS)
+ endif
+ 
+-.SILENT:
++ifeq ($(PRETTY_OUTPUT),1)
++ .SILENT:
++endif
+ .PHONY: clean cleanutils veryclean all utils dxutils sdlutils printutils printsdlutils printdxutils enginelib editorlib
+ 
+ # TARGETS
+@@ -266,7 +268,7 @@
+ 	if $(LINKER) -o $@ $^ $(OURLDFLAGS) $(UTILLIBS) -I$(SDLROOT)/include -I$(SDLROOT)/include/SDL; then $(ONESTEP_OK); else $(ONESTEP_FAILED); fi
+ arttool$(EXESUFFIX): $(OBJ)/arttool.$o $(UTILADDOBJS)
+ 	$(ONESTEP_STATUS)
+-	if $(L_CXX) -o $@ $^ $(OURLDFLAGS) $(STATICSTDCPP) $(STDCPPLIB) $(UTILLIBS); then $(ONESTEP_OK); else $(ONESTEP_FAILED); fi
++	if $(L_CXX) $(OURCXXFLAGS) -o $@ $^ $(OURLDFLAGS) $(STATICSTDCPP) $(STDCPPLIB) $(UTILLIBS); then $(ONESTEP_OK); else $(ONESTEP_FAILED); fi
+ givedepth$(EXESUFFIX): $(OBJ)/givedepth.$o $(UTILADDOBJS)
+ 	$(ONESTEP_STATUS)
+ 	if $(LINKER) -o $@ $^ $(OURLDFLAGS) $(UTILLIBS); then $(ONESTEP_OK); else $(ONESTEP_FAILED); fi

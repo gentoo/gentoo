@@ -1,0 +1,15 @@
+--- chaosreader	2012-01-18 21:47:02.000000000 +0100
++++ chaosreader-0.94	2012-03-13 12:10:44.740136742 +0100
+@@ -259,12 +259,6 @@
+ $| = 1;					# flush output
+ 
+ #
+-#  The following is needed for old perl5 multiline matching. New perl5 uses
+-#  a "/s" on the RE (which is used in this program as well).
+-#
+-$* = 1;					# old perl5
+-
+-#
+ #  These ports have been selected to be saved as coloured 2-way HTML files
+ #
+ @Save_As_HTML_TCP_Ports = (21,23,25,79,80,109,110,119,143,513,514,1080,

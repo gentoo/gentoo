@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" basedir="." name="kxml2" >
+
+  <property name="version" value="2.3.0" ></property>	
+	
+  
+  <target name="javadoc" >
+    <delete dir="www/kxml2/javadoc" ></delete>
+    <mkdir dir="www/kxml2/javadoc" ></mkdir>    
+    <javadoc use="true" windowtitle="kxml API" author="true" sourcepath="src" classpath="" destdir="www/kxml2/javadoc" doctitle="kxml API" version="true" packagenames="org.kxml2.*" public="yes" source="1.4" ></javadoc>
+  </target>
+  
+    
+    <target depends="build_jar,javadoc" name="build_src" >
+		<zip zipfile="dist/kxml2-src-${version}.zip" >
+		  <fileset dir="." >
+		    <include name="*/**" ></include>
+		    <exclude name=".*" ></exclude>
+		    <exclude name="classes/**" ></exclude>
+		    <exclude name="tmpclasses/**" ></exclude>
+		    <exclude name="dist/kxml2-src-*.zip" ></exclude>
+		   </fileset>
+		</zip>    
+    
+    </target>
+
+
+    <target name="build_jar" >
+
+    	<delete dir="tmpclasses" ></delete>
+    	<mkdir dir="tmpclasses" ></mkdir>
+    	
+    	<javac destdir="tmpclasses" debuglevel="none" srcdir="src" optimize="true" verbose="true" source="1.4" target="1.4" nowarn="yes" classpath="${gentoo.classpath}" ><classpath path="${gentoo.classpath}" ></classpath></javac>
+	
+        <mkdir dir="dist" ></mkdir>
+            
+    	
+		<jar jarfile="dist/kxml2-${version}.jar" >
+			<fileset dir="tmpclasses" >
+				<include name="**/*.class" ></include>
+				<include name="META-INF/**" ></include>
+			</fileset>
+			<fileset dir="src" >
+				<include name="META-INF/**" ></include>
+			</fileset>			
+		</jar>
+
+		<jar jarfile="dist/kxml2-min-${version}.jar" >
+			<fileset dir="tmpclasses" >
+				<include name="org/kxml2/io/KXmlParser.class" ></include>
+			</fileset>
+		</jar>
+
+    	<delete dir="tmpclasses" ></delete>
+	</target>
+
+
+    <target depends="build_src" name="build" ></target>
+
+	
+    
+</project>

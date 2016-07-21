@@ -1,0 +1,20 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Initialize GDL path if one is defined
+Forwarded: https://sourceforge.net/p/gnudatalanguage/patches/93/
+--- a/src/pythongdl.cpp
++++ b/src/pythongdl.cpp
+@@ -537,6 +537,14 @@
+     // instantiate the interpreter (creates $MAIN$ environment)
+     interpreter = new DInterpreter();
+ 
++    string gdlPath=GetEnvString("GDL_PATH");
++    if( gdlPath == "") gdlPath=GetEnvString("IDL_PATH");
++    if( gdlPath == "")
++      {
++        gdlPath = "+" GDLDATADIR "/lib";
++      }
++    SysVar::SetGDLPath( gdlPath);
++
+     PyObject* m = Py_InitModule("GDL", GDLMethods);
+ 
+     gdlError = PyErr_NewException((char*)"GDL.error", NULL, NULL);

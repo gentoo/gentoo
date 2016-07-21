@@ -1,0 +1,30 @@
+Replace some GNOME icons with their FreeDesktop equivalents
+so that it works with oxygen as a theme.
+
+--- specto-0.4.1/spectlib/notifier.py
++++ specto-0.4.1/spectlib/notifier.py
+@@ -213,11 +213,11 @@
+         """ show the right icon for the status from the watch. """
+         watch = self.specto.watch_db[id]
+         statusbar = self.builder.get_object("statusbar1")
+-        icon = self.get_icon("error", 50, False)
++        icon = self.get_icon("dialog-error", 50, False)
+ 
+         try:
+             if status == "checking":
+-                icon = self.get_icon("reload", 0, False)
++                icon = self.get_icon("view-refresh", 0, False)
+                 statusbar.push(0, (datetime.today().strftime("%H:%M") + " - " + _('The watch "%s" is checking.') % watch.name))
+ 
+             elif status == "idle":
+@@ -242,8 +242,8 @@
+ 
+             elif status == "error":
+                 statusbar.push(0, (datetime.today().strftime("%H:%M") + " - " + _('The watch "%s" has a problem.') % watch.name))
+-                balloon_icon = self.get_icon("error", 0, True)
+-                icon = self.get_icon("error", 50, False)
++                balloon_icon = self.get_icon("dialog-error", 0, True)
++                icon = self.get_icon("dialog-error", 50, False)
+                 if self.specto.specto_gconf.get_entry("pop_toast") == True:
+                     body = watch.escape(watch.error_message)
+                     self.balloon.show_toast(body, balloon_icon, urgency="critical", summary=(_("%s encountered a problem") % watch.name))

@@ -1,0 +1,10 @@
+--- modules/file/pixmap.c
++++ modules/file/pixmap.c
+@@ -39,6 +39,7 @@
+ #include <gtk/gtk.h>
+ 
+ #ifdef HAVE_PNG
++#include <zlib.h>
+ #include <png.h>
+ #endif
+ 

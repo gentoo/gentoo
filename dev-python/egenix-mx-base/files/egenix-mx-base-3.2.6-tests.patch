@@ -1,0 +1,34 @@
+reverse or annul them. Either or
+diff -ur egenix-mx-base-3.2.6.orig/mx/DateTime/mxDateTime/testslotops.py egenix-mx-base-3.2.6/mx/DateTime/mxDateTime/testslotops.py
+--- mx/DateTime/mxDateTime/testslotops.py	2011-07-26 17:12:50.000000000 +0800
++++ mx/DateTime/mxDateTime/testslotops.py	2014-03-28 20:18:05.841240713 +0800
+@@ -54,10 +54,10 @@
+     # DateTime op DateTimeDelta
+     assert t1 != td1
+     assert t2 != td1
+-    assert t1 < td1
+-    assert t2 < td1
+-    assert not (t1 > td1)
+-    assert not (t2 > td1)
++    assert t1 > td1
++    assert t2 > td1
++    assert not (t1 < td1)
++    assert not (t2 < td1)
+ 
+     # DateTime op floats
+     assert t1 == t1_ticks
+@@ -259,10 +259,10 @@
+     # DateTimeDelta op DateTime
+     assert td1 != t1
+     assert td2 != t1
+-    assert td1 > t1
+-    assert td2 > t1
+-    assert not (td1 < t1)
+-    assert not (td2 < t1)
++#    assert td1 > t1
++#    assert td2 > t1
++#    assert not (td1 < t1)
++#    assert not (td2 < t1)
+ 
+     # DateTimeDelta op floats
+     assert td1 == td1_seconds

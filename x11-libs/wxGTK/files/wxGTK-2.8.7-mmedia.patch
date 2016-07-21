@@ -1,0 +1,11 @@
+diff -Naur wxPython-src-2.8.7.1-orig/contrib/src/Makefile.in wxPython-src-2.8.7.1/contrib/src/Makefile.in
+--- wxPython-src-2.8.7.1-orig/contrib/src/Makefile.in	2007-07-27 17:57:27.000000000 -0600
++++ wxPython-src-2.8.7.1/contrib/src/Makefile.in	2007-12-28 17:34:28.000000000 -0600
+@@ -1,6 +1,6 @@
+ # $Id$
+ 
+-CONTRIB_SUBDIRS=fl gizmos mmedia ogl plot stc svg #deprecated #applet
++CONTRIB_SUBDIRS=fl gizmos ogl plot stc svg #deprecated #applet mmedia
+ 
+ all:
+ 	@for d in $(CONTRIB_SUBDIRS); do (cd $$d && $(MAKE)); done

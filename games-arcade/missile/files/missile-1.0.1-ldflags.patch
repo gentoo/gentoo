@@ -1,0 +1,15 @@
+--- Makefile.old	2010-09-22 09:11:48.000000000 +0200
++++ Makefile	2010-09-22 09:13:08.000000000 +0200
+@@ -125,10 +125,10 @@
+ 	fi
+ 
+ $(PROGRAM):	$(OBJECTS)
+-	$(CC) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(LIBS)
+ 
+ static : $(OBJECTS)
+-	$(CC) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(STATIC_LIBS)
++	$(CC) $(LDFLAGS) -o $(PROGRAM) $(OBJECTS) $(CFLAGS) $(STATIC_LIBS)
+ 
+ 
+ %.o : %.c %.h

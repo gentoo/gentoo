@@ -1,0 +1,18 @@
+--- Makefile.in
++++ Makefile.in
+@@ -2010,14 +2010,13 @@
+ 
+ tar: dist
+ 
+-install-exec-local:
++install-exec-hook:
+ @SETUID_HERCIFC_TRUE@	chown root $(DESTDIR)$(bindir)/hercifc
+ @HERCIFC_GROUPSET_TRUE@@SETUID_HERCIFC_TRUE@	chgrp $(HERCIFC_GROUPNAME) $(DESTDIR)$(bindir)/hercifc
+ @SETUID_HERCIFC_TRUE@	chmod 0750 $(DESTDIR)$(bindir)/hercifc
+ @SETUID_HERCIFC_TRUE@	chmod +s   $(DESTDIR)$(bindir)/hercifc
+ @SETUID_HERCIFC_TRUE@	rm                             hercifc
+ 
+-install-exec-hook:
+ 	rm -f $(DESTDIR)$(libdir)/libherc*.a
+ 	rm -f $(DESTDIR)$(modexecdir)/dyn*.a
+ 	rm -f $(DESTDIR)$(modexecdir)/hdt*.a

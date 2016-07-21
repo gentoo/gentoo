@@ -1,0 +1,134 @@
+From f2f4c950f3d461a249111c8826da3beaafccace9 Mon Sep 17 00:00:00 2001
+From: Chad Vizino <cvizino@adaptivecomputing.com>
+Date: Tue, 23 Sep 2014 17:40:59 -0600
+Subject: [PATCH 1/2] TRQ-2885 - limit tm_adopt() to only adopt a session id
+ that is owned by the calling user.
+
+---
+ src/cmds/pbs_track.c             |  6 ++++++
+ src/include/tm.h                 |  2 +-
+ src/include/tm_.h                |  1 +
+ src/lib/Libifl/tm.c              | 37 ++++++++++++++++++++++++++++++++++---
+ 5 files changed, 56 insertions(+), 4 deletions(-)
+
+diff --git a/src/cmds/pbs_track.c b/src/cmds/pbs_track.c
+index 7a90fda..9383ea5 100644
+--- a/src/cmds/pbs_track.c
++++ b/src/cmds/pbs_track.c
+@@ -164,6 +164,12 @@ int main(
+ 
+         break;
+ 
++      case TM_EPERM:
++
++        fprintf(stderr, "pbs_track: permission denied: %s (%d)\n",
++                pbse_to_txt(rc),
++                rc);
++
+       default:
+ 
+         /* Unexpected error occurred */
+diff --git a/src/include/tm.h b/src/include/tm.h
+index 106d3fb..2288828 100644
+--- a/src/include/tm.h
++++ b/src/include/tm.h
+@@ -125,7 +125,7 @@ int tm_register(tm_whattodo_t *what,
+ /*
+  *  DJH 15 Nov 2001.
+  *  Generic "out-of-band" task adoption call for tasks parented by
+- *  another job management system.  Minor security hole?
++ *  another job management system.
+  *  Cannot be called with any other tm call.
+  *  26 Feb 2002. Allows id to be jobid (adoptCmd = TM_ADOPT_JOBID)
+  *  or some altid (adoptCmd = TM_ADOPT_ALTID)
+diff --git a/src/include/tm_.h b/src/include/tm_.h
+index c9393b9..8cae7b0 100644
+--- a/src/include/tm_.h
++++ b/src/include/tm_.h
+@@ -136,6 +136,7 @@ typedef unsigned int tm_task_id;
+ #define TM_EBADENVIRONMENT 17005
+ #define TM_ENOTFOUND  17006
+ #define TM_BADINIT  17007
++#define TM_EPERM  17008
+ 
+ #define TM_TODO_NOP 5000 /* Do nothing (the nodes value may be new) */
+ #define TM_TODO_CKPT 5001 /* Checkpoint <what> and continue it */
+diff --git a/src/lib/Libifl/iff --git a/src/lib/Libifl/tm.c b/src/lib/Libifl/tm.c
+index edb6273..4f38529 100644
+--- a/src/lib/Libifl/tm.c
++++ b/src/lib/Libifl/tm.c
+@@ -94,6 +94,7 @@
+ #include <errno.h>
+ #include <assert.h>
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+ #include <netinet/in.h>
+@@ -169,6 +170,31 @@ typedef struct event_info
+ static event_info *event_hash[EVENT_HASH];
+ 
+ /*
++ * check if the owner of this process matches the owner of pid
++ *  returns TRUE if so, FALSE otherwise
++ */
++bool ispidowner(pid_t pid)
++  {
++  char        path[MAXPATHLEN];
++  struct stat sbuf;
++
++  /* build path to pid */
++  snprintf(path, sizeof(path), "/proc/%d", pid);
++
++  /* do the stat */
++  /*   if it fails, assume not owner */
++  if (stat(path, &sbuf) != 0)
++    return(FALSE);
++ 
++  /* see if caller is the owner of pid */
++  if (getuid() != sbuf.st_uid)
++    return(FALSE);
++
++  /* caller is owner */
++  return(TRUE);
++  }
++
++/*
+ ** Find an event number or return a NULL.
+ */
+ event_info *find_event(
+@@ -1800,8 +1826,8 @@ tm_poll_error:
+  *     some mpiruns simply use rsh to start remote processes - no AMS
+  *     tracking or management facilities are available.
+  *
+- *     This function allows any task (session) to be adopted into a PBS
+- *     job. It is used by:
++ *     This function allows any task (session) owned by the owner
++ *     of the job to be adopted into a PBS job. It is used by:
+  *         -  "adopter" (which is in turn used by our pvmrun)
+  *         -  our rmsloader wrapper (a home-brew replacement for RMS'
+  *            rmsloader that does some work and then exec()s the real
+@@ -1835,7 +1861,8 @@ tm_poll_error:
+  *     the mom. Returns TM_ENOTFOUND if the mom couldn't find a job
+  *     with the given RMS resource id. Returns TM_ESYSTEM or
+  *     TM_ENOTCONNECTED if there was some sort of comms error talking
+- *     to the mom
++ *     to the mom. Returns TM_EPERM if an attempt was made to adopt
++ *     a session not owned by the owner of the job.
+  *
+  * Side effects:
+  *     Sets the tm_* globals to fake values if tm_init() has never
+@@ -1860,6 +1887,10 @@ int tm_adopt(
+ 
+   sid = getsid(pid);
+ 
++  /* do not adopt a sid not owned by caller */
++  if (!ispidowner(sid))
++    return(TM_EPERM);
++
+   /* Must be the only call to call to tm and
+      must only be called once */
+ 
+-- 
+1.8.3.2
+

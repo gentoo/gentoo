@@ -1,0 +1,58 @@
+diff -urN audiorecorder-0.1.0-pre14.old/convert.c audiorecorder-0.1.0-pre14/convert.c
+--- audiorecorder-0.1.0-pre14.old/convert.c	2013-06-17 21:31:31.670412829 +0200
++++ audiorecorder-0.1.0-pre14/convert.c	2013-06-17 21:35:18.387404763 +0200
+@@ -51,8 +51,8 @@
+                 return;
+         }
+ 
+-        decoder_ctx = avcodec_alloc_context();
+-        decoder_open = avcodec_open(decoder_ctx, decoder_codec);
++        decoder_ctx = avcodec_alloc_context3(NULL);
++        decoder_open = avcodec_open2(decoder_ctx, decoder_codec, 0);
+ 
+         if (decoder_open < 0) {
+                 dsyslog("[audiorecorder]: could not open codec mp2 (%s, "
+@@ -77,13 +77,13 @@
+                 return;
+         }
+ 
+-        encoder_ctx = avcodec_alloc_context();
++        encoder_ctx = avcodec_alloc_context3(NULL);
+ 
+         encoder_ctx->bit_rate = bit_rate;
+         encoder_ctx->sample_rate = sample_rate;
+         encoder_ctx->channels = channels;
+ 
+-        encoder_open = avcodec_open(encoder_ctx, encoder_codec);
++        encoder_open = avcodec_open2(encoder_ctx, encoder_codec, 0);
+ 
+         if (encoder_open < 0) {
+                 dsyslog("[audiorecorder]: could not open codec %s (%s, %s())", codec, __FILE__, __func__);
+@@ -111,9 +111,13 @@
+         avcodec_decode_audio(decoder_ctx, (short *)decoder_buf.data,
+                 &decoder_buf.length, mpa_frame->data, mpa_frame->length);
+ #else
++        AVPacket avpkt;
++        av_init_packet(&avpkt);
++        avpkt.data = mpa_frame->data;
++        avpkt.size = mpa_frame->length;
+         decoder_buf.length = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-        avcodec_decode_audio2(decoder_ctx, (short *)decoder_buf.data,
+-                &decoder_buf.length, mpa_frame->data, mpa_frame->length);
++        int len = avcodec_decode_audio3(decoder_ctx, (short *)decoder_buf.data,
++                &decoder_buf.length, &avpkt);
+ #endif
+ }
+ 
+diff -urN audiorecorder-0.1.0-pre14.old/convert.h audiorecorder-0.1.0-pre14/convert.h
+--- audiorecorder-0.1.0-pre14.old/convert.h	2013-06-17 21:31:31.670412829 +0200
++++ audiorecorder-0.1.0-pre14/convert.h	2013-06-17 21:41:17.056392003 +0200
+@@ -10,7 +10,8 @@
+ #include "a-tools.h"
+ 
+ extern "C" {
+ #include <libavcodec/avcodec.h>
++#include <libavutil/mem.h>
+ }
+ 
+ 

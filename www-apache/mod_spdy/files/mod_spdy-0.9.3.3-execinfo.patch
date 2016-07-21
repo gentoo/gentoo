@@ -1,0 +1,30 @@
+not everyone has this header
+
+--- a/src/third_party/chromium/src/base/debug/debugger_posix.cc
++++ b/src/third_party/chromium/src/base/debug/debugger_posix.cc
+@@ -17,10 +17,6 @@
+ #include <string>
+ #include <vector>
+ 
+-#if !defined(OS_ANDROID) && !defined(OS_NACL)
+-#include <execinfo.h>
+-#endif
+-
+ #if defined(__GLIBCXX__)
+ #include <cxxabi.h>
+ #endif
+--- a/src/third_party/chromium/src/base/debug/stack_trace_posix.cc
++++ b/src/third_party/chromium/src/base/debug/stack_trace_posix.cc
+@@ -5,7 +5,12 @@
+ #include "base/debug/stack_trace.h"
+ 
+ #include <errno.h>
++#if defined(__GLIBC__) && !defined(__UCLIBC__)
+ #include <execinfo.h>
++#else
++#define backtrace(array, size) 0
++#define backtrace_symbols(array, size) NULL
++#endif
+ #include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>

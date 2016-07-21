@@ -1,0 +1,11 @@
+--- bin/e-file	2013-10-14 21:33:54.421701259 +0200
++++ bin/e-file	2013-10-14 21:34:10.004702370 +0200
+@@ -25,7 +25,7 @@
+ 
+ URL="http://www.portagefilelist.de/index.php/Special:PFLQuery2?file=$1&searchfile=lookup&lookup=file&txt"
+ 
+-curl -s $URL | awk -v isgentoo=$isgentoo '
++curl -s -f $URL | awk -v isgentoo=$isgentoo '
+ BEGIN{
+ 	FOUND=0
+ 	if(isgentoo){

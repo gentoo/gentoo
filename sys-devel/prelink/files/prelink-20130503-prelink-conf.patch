@@ -1,0 +1,39 @@
+--- a/doc/prelink.conf
++++ b/doc/prelink.conf
+@@ -5,6 +5,7 @@
+ # If a directory name is prefixed with `-h ', symbolic links in a
+ # directory hierarchy are followed.
+ # Directories or files with `-b ' prefix will be blacklisted.
++-c /etc/prelink.conf.d/*.conf
+ -b *.la
+ -b *.png
+ -b *.py
+@@ -16,8 +16,11 @@
+ -b *.a
+ -b *.js
+ -b /lib/modules
+--b /usr/lib/locale
+--b /usr/X11R6/lib{,64}/X11/xfig
++-b /usr/lib{,x32,32,64}/locale
++-b /usr/lib{,x32,32,64}/wine
++-b /usr/lib{,x32,32,64}/valgrind
++-b /usr/X11R6/lib{,x32,32,64}/X11/xfig
++-b /usr/src
+ -l /bin
+ -l /usr/bin
+ -l /sbin
+@@ -27,9 +30,9 @@
+ -l /usr/games
+ -l /usr/libexec
+ -l /var/ftp/bin
+--l /lib{,64}
+--l /usr/lib{,64}
+--l /usr/X11R6/lib{,64}
+--l /usr/kerberos/lib{,64}
++-l /lib{,x32,32,64}
++-l /usr/lib{,x32,32,64}
++-l /usr/X11R6/lib{,x32,32,64}
++-l /usr/kerberos/lib{,x32,32,64}
+ -l /usr/X11R6/LessTif
+--l /var/ftp/lib{,64}
++-l /var/ftp/lib{,x32,32,64}

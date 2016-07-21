@@ -1,0 +1,5 @@
+# /etc/conf.d/heimdal-kdc
+
+# Options to pass to the kdc daemon.  Please see man 8 kdc for details
+#
+# OPTIONS="-c /etc/krb5.conf"

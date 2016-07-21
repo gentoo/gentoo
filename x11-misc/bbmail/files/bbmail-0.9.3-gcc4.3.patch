@@ -1,0 +1,45 @@
+Reason: Fix compile with gcc 4.3 and glibc 2.8.
+Upstream: Sent, http://sourceforge.net/tracker/index.php?func=detail&aid=2116825&group_id=54703&atid=474517
+--- bbmail-0.9.3.orig/src/baseresource.cpp	2008-09-17 22:39:58.000000000 +0200
++++ bbmail-0.9.3/src/baseresource.cpp	2008-09-17 22:44:16.000000000 +0200
+@@ -20,6 +20,7 @@
+ //
+ 
+ #include <string>
++#include <cstring>
+ #include "baseresource.h"
+ #include <stdio.h>
+ #include "Menu.hh"
+--- bbmail-0.9.3.orig/src/bbmail.cpp	2008-09-17 22:39:58.000000000 +0200
++++ bbmail-0.9.3/src/bbmail.cpp	2008-09-17 22:43:49.000000000 +0200
+@@ -22,6 +22,8 @@
+ #include "bbmail.h"
+ #include "config.h"
+ #include <string>
++#include <cstring>
++
+ 
+ extern "C" {
+ #include <utime.h>
+--- bbmail-0.9.3.orig/src/main.cpp	2008-09-17 22:39:58.000000000 +0200
++++ bbmail-0.9.3/src/main.cpp	2008-09-17 22:42:09.000000000 +0200
+@@ -23,6 +23,8 @@
+ #include "main.h"
+ #include "config.h"
+ 
++#include <cstring>
++
+ Configuration::Configuration(int iargc, char **iargv)
+ {
+ 	withdrawn = false;
+--- bbmail-0.9.3.orig/src/resource.cpp	2008-09-17 22:39:58.000000000 +0200
++++ bbmail-0.9.3/src/resource.cpp	2008-09-17 22:44:36.000000000 +0200
+@@ -23,6 +23,8 @@
+ #include "resource.h"
+ #include "blackboxstyle.h"
+ 
++#include <cstring>
++
+ Resource::Resource(ToolWindow *toolwindow, const std::string &rc_file):
+ 		BaseResource(*toolwindow, toolwindow->getCurrentScreen(), rc_file), 
+     	spoolfile(0),

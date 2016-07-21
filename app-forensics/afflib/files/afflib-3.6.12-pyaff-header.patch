@@ -1,0 +1,13 @@
+Fix include location based on the include directories passed via CFLAGS.
+
+--- afflib-3.6.12/pyaff/pyaff.c.orig
++++ afflib-3.6.12/pyaff/pyaff.c
+@@ -21,7 +21,7 @@
+  ****************************************************/
+ 
+ #include "Python.h"
+-#include "lib/afflib.h"
++#include "afflib.h"
+ 
+ #include <string.h>
+ #include <stdlib.h>

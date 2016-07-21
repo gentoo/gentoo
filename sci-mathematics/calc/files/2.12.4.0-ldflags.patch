@@ -1,0 +1,101 @@
+diff --git a/Makefile b/Makefile
+index b526442..baa8273 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1144,11 +1144,13 @@ BLD_TYPE= calc-dynamic-only
+ #
+ CC_SHARE= -fPIC
+ LD_SHARE=
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ else
+-LIBCUSTCALC_SHLIB=
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ endif
+ #
+ CC_STATIC=
+@@ -1227,9 +1229,9 @@ BLD_TYPE= calc-dynamic-only
+ #
+ CC_SHARE= -fPIC
+ LD_SHARE=
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ else
+ LIBCUSTCALC_SHLIB=
+ endif
+@@ -1267,9 +1269,9 @@ BLD_TYPE= calc-dynamic-only
+ #
+ CC_SHARE= -fPIC
+ LD_SHARE= 
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ else
+ LIBCUSTCALC_SHLIB=
+ endif
+@@ -1304,9 +1306,9 @@ CC_SHARE= -fPIC
+ DEFAULT_LIB_INSTALL_PATH= ${PWD}:/lib:/usr/lib:${LIBDIR}:/usr/local/lib
+ LD_SHARE= "-Wl,-rpath,${DEFAULT_LIB_INSTALL_PATH}" \
+     "-Wl,-rpath-link,${DEFAULT_LIB_INSTALL_PATH}"
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ else
+ LIBCUSTCALC_SHLIB=
+ endif
+@@ -1340,8 +1342,8 @@ BLD_TYPE= calc-static-only
+ #
+ CC_SHARE= -fPIC
+ LD_SHARE= 
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ #
+ CC_STATIC=
+ LD_STATIC=
+@@ -1394,9 +1396,9 @@ BLD_TYPE= calc-static-only
+ #
+ CC_SHARE= -fPIC
+ LD_SHARE= 
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ else
+ LIBCUSTCALC_SHLIB=
+ endif
+@@ -1431,9 +1433,9 @@ CC_SHARE= -fPIC
+ DEFAULT_LIB_INSTALL_PATH= ${PWD}:/lib:/usr/lib:${LIBDIR}:/usr/local/lib
+ LD_SHARE= "-Wl,-rpath,${DEFAULT_LIB_INSTALL_PATH}" \
+     "-Wl,-rpath-link,${DEFAULT_LIB_INSTALL_PATH}"
+-LIBCALC_SHLIB= -shared "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcalc${LIB_EXT_VERSION}"
+ ifdef ALLOW_CUSTOM
+-LIBCUSTCALC_SHLIB= -shared "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
++LIBCUSTCALC_SHLIB= -shared ${LDFLAGS} "-Wl,-soname,libcustcalc${LIB_EXT_VERSION}"
+ else
+ LIBCUSTCALC_SHLIB=
+ endif
+@@ -2002,7 +2004,7 @@ calc-static-only: ${STATIC_FIRST_TARGETS} ${EARLY_TARGETS} \
+ 
+ calc${EXT}: .hsrc ${CALCOBJS} ${CALC_DYNAMIC_LIBS} ${MAKE_FILE}
+ 	${RM} -f $@
+-	${CC} ${CALCOBJS} ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	${CC} ${LDFLAGS} ${CALCOBJS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+ 	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
+ 
+ libcalc${LIB_EXT_VERSION}: ${LIBOBJS} ver_calc${EXT} ${MAKE_FILE}

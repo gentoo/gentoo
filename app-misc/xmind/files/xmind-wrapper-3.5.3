@@ -1,0 +1,8 @@
+#!/bin/bash
+#XMind wrapper script, copies configuration stuff into the user's local config dir if either 
+#the files aren't there or are older than the set in /opt (indicating that XMind has been upgraded)
+if [ ! -f ~/.xmind/configuration-cathy/config.ini -o ~/.xmind/configuration-cathy/config.ini -ot /opt/xmind/XMind/configuration/config.ini ]; then
+	mkdir -p ~/.xmind/configuration-cathy
+	cp -r /opt/xmind/XMind/configuration/* ~/.xmind/configuration-cathy/
+fi
+/opt/xmind/XMind/XMind "$@"

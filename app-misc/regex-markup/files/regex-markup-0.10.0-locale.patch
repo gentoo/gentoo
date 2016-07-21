@@ -1,0 +1,29 @@
+ src/cacheline.c |    2 ++
+ src/remark.c    |    1 +
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/src/cacheline.c b/src/cacheline.c
+index 8c6f97b..f395c60 100644
+--- a/src/cacheline.c
++++ b/src/cacheline.c
+@@ -27,6 +27,8 @@
+ #include "getline.h"		/* Gnulib/GNU Libc */
+ #include "version-etc.h"	/* Gnulib */
+ 
++#include <locale.h>
++
+ enum {
+     HELP_OPT = 256,
+     VERSION_OPT
+diff --git a/src/remark.c b/src/remark.c
+index dcf8327..8998112 100644
+--- a/src/remark.c
++++ b/src/remark.c
+@@ -44,6 +44,7 @@
+ #include "common/intutil.h"
+ /* regex-markup */
+ #include "remark.h"
++#include <locale.h>
+ 
+ #define PROGRAM "remark"
+ 

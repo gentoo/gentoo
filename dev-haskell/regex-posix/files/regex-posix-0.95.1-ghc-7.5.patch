@@ -1,0 +1,12 @@
+--- regex-posix-0.95.1-orig/Text/Regex/Posix/Wrap.hsc	2011-05-10 01:55:41.000000000 +1000
++++ regex-posix-0.95.1/Text/Regex/Posix/Wrap.hsc	2012-05-13 18:06:06.314466286 +1000
+@@ -133,6 +133,9 @@
+ import Foreign.Marshal.Alloc(mallocBytes)
+ import Foreign.C(CSize,CInt,CChar)
+ import Foreign.C.String(peekCAString, CString)
++#if (__GLASGOW_HASKELL__>=705)
++import Foreign.C.Types(CInt(..), CSize(..))
++#endif
+ import Text.Regex.Base.RegexLike(RegexOptions(..),RegexMaker(..),RegexContext(..),MatchArray)
+ import qualified System.IO.Error as IOERROR(try)
+ 

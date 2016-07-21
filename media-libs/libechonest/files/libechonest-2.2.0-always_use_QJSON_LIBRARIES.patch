@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/show_bug.cgi?id=503656#c4
+http://github.com/lfranchi/libechonest/pull/14
+
+--- src/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -40,16 +40,8 @@
+ 
+ QT_WRAP_CPP( ${LIBECHONEST_H} )
+ 
+-SET( OS_SPECIFIC_LINK_LIBRARIES "" )
+-IF( APPLE OR MINGW )
+-  SET( OS_SPECIFIC_LINK_LIBRARIES ${QJSON_LIBRARIES} )
+-ELSE( APPLE OR MINGW )
+-  SET( OS_SPECIFIC_LINK_LIBRARIES ${QJSON_LDFLAGS} )
+-ENDIF( APPLE OR MINGW )
+-
+-
+ add_library( echonest SHARED ${LIBECHONEST_SRC} )
+-target_link_libraries( echonest ${OS_SPECIFIC_LINK_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY}  )
++target_link_libraries( echonest ${QT_QTCORE_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QJSON_LIBRARIES} )
+ set_target_properties( echonest PROPERTIES VERSION ${ECHONEST_LIB_VERSION} SOVERSION ${ECHONEST_LIB_VERSION_SONAME} )
+ qt5_use_modules( echonest Core Network Xml )
+ install( TARGETS echonest   RUNTIME DESTINATION bin

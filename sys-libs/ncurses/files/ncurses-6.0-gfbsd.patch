@@ -1,0 +1,24 @@
+we'll hijack the freebsd* case that comes later
+
+--- ncurses-6.0/aclocal.m4
++++ ncurses-6.0/aclocal.m4
+@@ -5711,7 +5711,7 @@
+ 		fi
+ 		cf_cv_rm_so_locs=yes
+ 		;;
+-	(linux*|gnu*|k*bsd*-gnu)
++	(linux*|gnu*|k*bsd*-gnu|freebsd*|dragonfly*)
+ 		if test "$DFT_LWR_MODEL" = "shared" ; then
+ 			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
+ 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
+--- ncurses-6.0/configure
++++ ncurses-6.0/configure
+@@ -6188,7 +6188,7 @@
+ 		fi
+ 		cf_cv_rm_so_locs=yes
+ 		;;
+-	(linux*|gnu*|k*bsd*-gnu)
++	(linux*|gnu*|k*bsd*-gnu|freebsd*|dragonfly*)
+ 		if test "$DFT_LWR_MODEL" = "shared" ; then
+ 			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
+ 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"

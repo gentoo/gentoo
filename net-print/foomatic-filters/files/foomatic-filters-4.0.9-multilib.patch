@@ -1,0 +1,41 @@
+diff --git a/configure.ac b/configure.ac
+index acd2f0c..9b333b9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,24 +81,24 @@ if test -n "$CUPS_SERVERBIN"; then
+ 	AC_SUBST(CUPS_FILTERS)
+ 	AC_SUBST(CUPS_BACKENDS)
+ else
+-	# Check for /usr/lib/cups
+-	FM_PATH_DIR(CUPS,cups,/usr/lib/cups,$SERVERBIB$LIBSEARCHPATH)
++	# Check for ${libdir}/cups
++	FM_PATH_DIR(CUPS,cups,${libdir}/cups,$SERVERBIB$LIBSEARCHPATH)
+ 
+-	# Check for /usr/lib/cups/filter
+-	FM_PATH_DIR(CUPS_FILTERS,cups/filter,/usr/lib/cups/filter,$FILTERS$LIBSEARCHPATH)
++	# Check for ${libdir}/cups/filter
++	FM_PATH_DIR(CUPS_FILTERS,cups/filter,${libdir}/cups/filter,$FILTERS$LIBSEARCHPATH)
+ 
+-	# Check for /usr/lib/cups/backend
+-	FM_PATH_DIR(CUPS_BACKENDS,cups/backend,/usr/lib/cups/backend,$BACKENDS$LIBSEARCHPATH)
++	# Check for ${libdir}/cups/backend
++	FM_PATH_DIR(CUPS_BACKENDS,cups/backend,${libdir}/cups/backend,$BACKENDS$LIBSEARCHPATH)
+ fi
+ 
+-# Check for /usr/lib/ppr
+-FM_PATH_DIR(PPR,ppr,/usr/lib/ppr,$LIBSEARCHPATH)
++# Check for ${libdir}/ppr
++FM_PATH_DIR(PPR,ppr,${libdir}/ppr,$LIBSEARCHPATH)
+ 
+-# Check for /usr/lib/ppr/interfaces
+-FM_PATH_DIR(PPR_INTERFACES,ppr/interfaces,/usr/lib/ppr/interfaces,$LIBSEARCHPATH)
++# Check for ${libdir}/ppr/interfaces
++FM_PATH_DIR(PPR_INTERFACES,ppr/interfaces,${libdir}/ppr/interfaces,$LIBSEARCHPATH)
+ 
+-# Check for /usr/lib/ppr/lib
+-FM_PATH_DIR(PPR_LIB,ppr/lib,/usr/lib/ppr/lib,$LIBSEARCHPATH)
++# Check for ${libdir}/ppr/lib
++FM_PATH_DIR(PPR_LIB,ppr/lib,${libdir}/ppr/lib,$LIBSEARCHPATH)
+ 
+ AC_CHECK_HEADERS([ghostscript/ierrors.h ghostscript/iapi.h])
+ AC_CHECK_LIB(gs, gsapi_new_instance)

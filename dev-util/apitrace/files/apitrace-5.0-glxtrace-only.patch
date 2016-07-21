@@ -1,0 +1,53 @@
+Allow building of just glxtrace library for ebuilds without GUI tools.
+
+Updated from 4.0 version of patch to apply against 5.0.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 17f3dce..3bba2a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,6 +33,7 @@ set (ENABLE_EGL true CACHE BOOL "Enable EGL support.")
+ 
+ set (ENABLE_WAFFLE false CACHE BOOL "Enable WAFFLE support.")
+ 
++option (BUILD_LIB_ONLY "Build the glxtrace library only" OFF)
+ 
+ ##############################################################################
+ # Find dependencies
+@@ -301,6 +302,8 @@ set (MD5_LIBRARIES md5_bundled)
+ # - The packaged versions QJson are very old, and do not support NaN/Infinity.
+ # - To make it easier to build the GUI on Windows and MacOSX, as there are no
+ # binaries at all.
++if (NOT BUILD_LIB_ONLY)
++
+ if (QT4_FOUND)
+     add_definitions (-DQJSON_EXPORT=)
+     add_subdirectory (thirdparty/qjson)
+@@ -310,6 +313,8 @@ if (QT4_FOUND)
+     set (QJSON_FOUND TRUE)
+ endif ()
+ 
++endif (NOT BUILD_LIB_ONLY)
++
+ # We use bundled headers for all Khronos APIs, to guarantee support for both
+ # OpenGL and OpenGL ES at build time, because the OpenGL and OpenGL ES 1 APIs
+ # are so intertwined that conditional compilation extremely difficult. This
+diff --git a/retrace/CMakeLists.txt b/retrace/CMakeLists.txt
+index 4e37979..2607ddf 100644
+--- a/retrace/CMakeLists.txt
++++ b/retrace/CMakeLists.txt
+@@ -11,6 +11,8 @@ include_directories (
+ 
+ add_definitions (-DRETRACE)
+ 
++if (NOT BUILD_LIB_ONLY)
++
+ add_custom_command (
+     OUTPUT glretrace_gl.cpp
+     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/glretrace.py > ${CMAKE_CURRENT_BINARY_DIR}/glretrace_gl.cpp
+@@ -282,3 +284,5 @@ if (WIN32)
+ 
+     install (TARGETS d3dretrace RUNTIME DESTINATION bin)
+ endif ()
++
++endif (NOT BUILD_LIB_ONLY)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		Dust Racing (Dustrac) is a tile-based, cross-platform 2D racing
+		game written in Qt (C++) and OpenGL. Dust Racing comes with a
+		Qt-based level editor for easy level creation. A custom engine,
+		MiniCore, is used for physics modeling. Dust Racing 2D is
+		inspired by Super Cars and Slicks’n Slide.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">dustrac</remote-id>
+	</upstream>
+</pkgmetadata>

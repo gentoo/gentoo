@@ -1,0 +1,32 @@
+diff -r -U1 sympy-0.7.6.1.orig/sympy/functions/special/zeta_functions.py sympy-0.7.6.1/sympy/functions/special/zeta_functions.py
+--- sympy-0.7.6.1.orig/sympy/functions/special/zeta_functions.py	2015-09-04 02:34:00.000000000 +0600
++++ sympy-0.7.6.1/sympy/functions/special/zeta_functions.py	2015-12-01 11:27:24.000000000 +0600
+@@ -243,3 +243,3 @@
+     >>> polylog(s, -1)
+-    dirichlet_eta(s)
++    -dirichlet_eta(s)
+ 
+@@ -270,2 +270,3 @@
+     def eval(cls, s, z):
++        from sympy import unpolarify
+         if z == 1:
+@@ -273,6 +274,12 @@
+         elif z == -1:
+-            return dirichlet_eta(s)
++            return -dirichlet_eta(s)
+         elif z == 0:
+-            return 0
++            return S.Zero
+ 
++        # branch handling
++        if (1 - abs(z)).is_nonnegative:
++            newz = unpolarify(z)
++            if newz != z:
++                return cls(s, newz)
++ 
+     def fdiff(self, argindex=1):
+@@ -479,3 +486,3 @@
+ 
+-    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^n}{n^s}.
++    .. math:: \eta(s) = \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^s}.
+ 

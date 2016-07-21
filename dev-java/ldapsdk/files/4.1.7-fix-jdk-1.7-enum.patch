@@ -1,0 +1,151 @@
+diff --git a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPEntryChangeControl.java b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPEntryChangeControl.java
+index a0ba7e8..42834c1 100644
+--- a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPEntryChangeControl.java
++++ b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPEntryChangeControl.java
+@@ -107,9 +107,9 @@ public class LDAPEntryChangeControl extends LDAPControl {
+ 	BERSequence s = (BERSequence)BERElement.getElement(decoder, inStream,
+ 							   numRead);
+ 	
+-	BEREnumerated enum = (BEREnumerated)s.elementAt(0);
++	BEREnumerated enumx = (BEREnumerated)s.elementAt(0);
+ 	    
+-	_changeTypes = enum.getValue();
++	_changeTypes = enumx.getValue();
+ 
+ 	if (s.size() > 1) {
+ 	    if (s.elementAt(1) instanceof BEROctetString) {
+diff --git a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPPersistSearchControl.java b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPPersistSearchControl.java
+index c73bb68..5539f11 100644
+--- a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPPersistSearchControl.java
++++ b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/controls/LDAPPersistSearchControl.java
+@@ -263,9 +263,9 @@ public class LDAPPersistSearchControl extends LDAPControl {
+             BERSequence s = (BERSequence)BERElement.getElement(decoder, inStream,
+               numRead);
+ 
+-            BEREnumerated enum = (BEREnumerated)s.elementAt(0);
++            BEREnumerated enumx = (BEREnumerated)s.elementAt(0);
+ 
+-            con.setChangeType(enum.getValue());
++            con.setChangeType(enumx.getValue());
+ 
+             if (s.size() > 1) {
+                 if (s.elementAt(1) instanceof BEROctetString) {
+diff --git a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/util/RDN.java b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/util/RDN.java
+index e126d47..b5f6809 100644
+--- a/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/util/RDN.java
++++ b/mozilla/directory/java-sdk/ietfldap/org/ietf/ldap/util/RDN.java
+@@ -402,12 +402,12 @@ public final class RDN implements java.io.Serializable {
+      * @see org.ietf.ldap.util.RDN#getAttributeSyntax
+      */
+     public static String[] getAttributesForSyntax( String oid ) {
+-        Enumeration enum = m_attributehash.keys();
++        Enumeration enumx = m_attributehash.keys();
+         Vector key_v = new Vector();
+         String tmp_str = null;
+ 
+-        while ( enum.hasMoreElements() ) {
+-            tmp_str = (String)enum.nextElement();
++        while ( enumx.hasMoreElements() ) {
++            tmp_str = (String)enumx.nextElement();
+             if ( oid.equals( (String)m_attributehash.get( tmp_str ) ) ) {
+                 key_v.addElement( tmp_str );
+             }
+diff --git a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPConnection.java b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPConnection.java
+index a4d9e88..85cc7af 100644
+--- a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPConnection.java
++++ b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/LDAPConnection.java
+@@ -4519,9 +4519,9 @@ public class LDAPConnection
+         LDAPControl[] controls = null;
+ 
+         synchronized(m_responseControlTable) {            
+-            Enumeration enum = m_responseControlTable.keys();          
+-            while (enum.hasMoreElements()) {
+-                Object client = enum.nextElement();
++            Enumeration enumx = m_responseControlTable.keys();          
++            while (enumx.hasMoreElements()) {
++                Object client = enumx.nextElement();
+                 ResponseControls rspCtrls = (ResponseControls)m_responseControlTable.get(client);
+ 
+                 if (msgID == rspCtrls.msgID) {
+diff --git a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPEntryChangeControl.java b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPEntryChangeControl.java
+index 8e486c5..9256aa0 100644
+--- a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPEntryChangeControl.java
++++ b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPEntryChangeControl.java
+@@ -107,9 +107,9 @@ public class LDAPEntryChangeControl extends LDAPControl {
+ 	BERSequence s = (BERSequence)BERElement.getElement(decoder, inStream,
+ 							   numRead);
+ 	
+-	BEREnumerated enum = (BEREnumerated)s.elementAt(0);
++	BEREnumerated enumx = (BEREnumerated)s.elementAt(0);
+ 	    
+-	m_changeTypes = enum.getValue();
++	m_changeTypes = enumx.getValue();
+ 
+ 	if (s.size() > 1) {
+ 	    if (s.elementAt(1) instanceof BEROctetString) {
+diff --git a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPPersistSearchControl.java b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPPersistSearchControl.java
+index 9bab06a..a5836e8 100644
+--- a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPPersistSearchControl.java
++++ b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/controls/LDAPPersistSearchControl.java
+@@ -263,9 +263,9 @@ public class LDAPPersistSearchControl extends LDAPControl {
+             BERSequence s = (BERSequence)BERElement.getElement(decoder, inStream,
+               numRead);
+ 
+-            BEREnumerated enum = (BEREnumerated)s.elementAt(0);
++            BEREnumerated enumx = (BEREnumerated)s.elementAt(0);
+ 
+-            con.setChangeType(enum.getValue());
++            con.setChangeType(enumx.getValue());
+ 
+             if (s.size() > 1) {
+                 if (s.elementAt(1) instanceof BEROctetString) {
+diff --git a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/util/RDN.java b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/util/RDN.java
+index 57bce3a..392d7ea 100644
+--- a/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/util/RDN.java
++++ b/mozilla/directory/java-sdk/ldapjdk/netscape/ldap/util/RDN.java
+@@ -402,12 +402,12 @@ public final class RDN implements java.io.Serializable {
+      * @see netscape.ldap.util.RDN#getAttributeSyntax
+      */
+     public static String[] getAttributesForSyntax( String oid ) {
+-        Enumeration enum = m_attributehash.keys();
++        Enumeration enumx = m_attributehash.keys();
+         Vector key_v = new Vector();
+         String tmp_str = null;
+ 
+-        while ( enum.hasMoreElements() ) {
+-            tmp_str = (String)enum.nextElement();
++        while ( enumx.hasMoreElements() ) {
++            tmp_str = (String)enumx.nextElement();
+             if ( oid.equals( (String)m_attributehash.get( tmp_str ) ) ) {
+                 key_v.addElement( tmp_str );
+             }
+diff --git a/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/AttributesImpl.java b/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/AttributesImpl.java
+index 4bcb46d..7b22371 100644
+--- a/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/AttributesImpl.java
++++ b/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/AttributesImpl.java
+@@ -151,8 +151,8 @@ class AttributesImpl implements Attributes {
+      */
+     static LDAPAttributeSet jndiAttrsToLdapAttrSet(Attributes jndiAttrs) throws NamingException{
+         LDAPAttributeSet attrs = new LDAPAttributeSet();
+-        for (Enumeration enum = jndiAttrs.getAll(); enum.hasMoreElements();) {
+-            attrs.add(jndiAttrToLdapAttr((Attribute) enum.nextElement()));
++        for (Enumeration enumx = jndiAttrs.getAll(); enumx.hasMoreElements();) {
++            attrs.add(jndiAttrToLdapAttr((Attribute) enumx.nextElement()));
+         }
+         return attrs;
+     }    
+diff --git a/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/ObjectMapper.java b/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/ObjectMapper.java
+index 2595b8a..d9bd103 100644
+--- a/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/ObjectMapper.java
++++ b/mozilla/directory/java-sdk/ldapsp/com/netscape/jndi/ldap/ObjectMapper.java
+@@ -465,8 +465,8 @@ public class ObjectMapper {
+      */
+     static Attributes encodeDirCtxObj(DirContext obj, Attributes attrs) throws NamingException{
+         Attributes ctxAttrs = obj.getAttributes("");
+-        for (NamingEnumeration enum = ctxAttrs.getAll(); enum.hasMore();) {
+-            attrs.put((Attribute)enum.next());
++        for (NamingEnumeration enumx = ctxAttrs.getAll(); enumx.hasMore();) {
++            attrs.put((Attribute)enumx.next());
+         }
+         return attrs;
+     }

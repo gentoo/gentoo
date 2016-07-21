@@ -1,0 +1,16 @@
+--- contrib/php/build/rules.mk.orig	2004-12-09 13:01:04.417854240 +0000
++++ contrib/php/build/rules.mk	2004-12-09 13:01:42.460070944 +0000
+@@ -63,10 +63,10 @@
+ 
+ install-modules:
+ 	@test -d modules && \
+-	$(mkinstalldirs) $(moduledir) && \
+-	echo "installing shared modules into $(moduledir)" && \
++	$(mkinstalldirs) $(DESTDIR)/$(moduledir) && \
++	echo "installing shared modules into $(DESTDIR)/$(moduledir)" && \
+ 	rm -f modules/*.la && \
+-	cp modules/* $(moduledir) || true
++	cp modules/* $(DESTDIR)/$(moduledir) || true
+ 
+ include $(builddir)/.deps
+ 

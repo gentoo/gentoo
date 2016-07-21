@@ -1,0 +1,39 @@
+Ported from upstream by Dennis Schridde.
+
+https://bugs.gentoo.org/show_bug.cgi?id=560654
+
+https://bitbucket.org/rivanvx/beamer/issues/261/beamer-and-subcaption
+https://sourceforge.net/p/latex-caption/tickets/21/
+https://sourceforge.net/p/latex-caption/code/100/
+
+Index: texmf-dist/tex/latex/caption/caption.sty
+===================================================================
+--- texmf-dist/tex/latex/caption/caption.sty	(revision 99)
++++ texmf-dist/tex/latex/caption/caption.sty	(revision 100)
+@@ -36,7 +36,6 @@
+ %% and the user manuals
+ %%   caption-deu.tex, caption-eng.tex, and caption-rus.tex.
+ %% 
+- % bicaption.sty, ltcaption.sty, subcaption.sty, and newfloat.sty,
+ \NeedsTeXFormat{LaTeX2e}[1994/12/01]
+ \def\caption@tempa$Id: #1 #2 #3-#4-#5 #6${%
+   \def\caption@tempa{#3/#4/#5 }\def\caption@tempb{#2 }}
+@@ -379,6 +378,18 @@
+       {\@dblarg{\@caption\@captype}}%
+     }}%
+   \caption@CheckCommand\caption{%
++    % beamerbaselocalstructure.sty, Joseph Wright committed 4ac715c 2013-09-04
++    \def\caption{%
++      \ifx\@captype\@undefined
++        \@latex@error{\noexpand\caption outside figure or table}\@ehd
++        \expandafter\@gobble
++      \else
++        \refstepcounter\@captype
++        \expandafter\@firstofone
++      \fi
++      {\@dblarg{\@caption\@captype}}%
++    }}%
++  \caption@CheckCommand\caption{%
+     % float.sty [2001/11/08 v1.3d Float enhancements (AL)]
+     \long\def\caption{%
+       \ifx\@captype\@undefined

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+description="consolekit - tracks login sessions and seats"
+pidfile="/var/run/ConsoleKit/pid"
+command="/usr/sbin/console-kit-daemon"
+
+depend() {
+	need dbus
+	use logger
+}
+
+start_pre() {
+	checkpath -q -d -m 0755 /var/run/ConsoleKit
+}

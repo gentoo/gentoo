@@ -1,0 +1,90 @@
+diff -Naur BitTornado-CVS-orig/btcompletedirgui.py BitTornado-CVS/btcompletedirgui.py
+--- BitTornado-CVS-orig/btcompletedirgui.py	2006-12-23 12:20:52.000000000 -0600
++++ BitTornado-CVS/btcompletedirgui.py	2007-12-04 11:09:36.000000000 -0600
+@@ -19,12 +19,16 @@
+ import sys
+ from os import getcwd
+ from os.path import join
++
+ try:
+-    from wxPython.wx import *
+-except:
+-    print 'wxPython is either not installed or has not been installed properly.'
++    import wxversion
++    wxversion.select("2.6")
++except Exception, e:
++    print >> sys.stderr, "%s: wxPython 2.6 not installed." %e
+     sys.exit(1)
+ 
++from wxPython.wx import *
++
+ try:
+     True
+ except:
+diff -Naur BitTornado-CVS-orig/btdownloadgui.py BitTornado-CVS/btdownloadgui.py
+--- BitTornado-CVS-orig/btdownloadgui.py	2007-12-04 11:06:58.000000000 -0600
++++ BitTornado-CVS/btdownloadgui.py	2007-12-04 11:10:36.000000000 -0600
+@@ -18,10 +18,13 @@
+ assert version >= '2', "Install Python 2.0 or greater"
+ 
+ try:
+-    from wxPython.wx import *
+-except:
+-    print 'wxPython is either not installed or has not been installed properly.'
+-    exit(1)
++    import wxversion
++    wxversion.select("2.6")
++except Exception, e:
++    print >> sys.stderr, "%s: wxPython 2.6 not installed." %e
++    sys.exit(1)
++
++from wxPython.wx import *
+ from BitTornado.download_bt1 import BT1Download, defaults, parse_params, get_usage, get_response
+ from BitTornado.RawServer import RawServer, UPnP_ERROR
+ from random import seed
+diff -Naur BitTornado-CVS-orig/btmaketorrentgui.py BitTornado-CVS/btmaketorrentgui.py
+--- BitTornado-CVS-orig/btmaketorrentgui.py	2006-12-23 12:20:56.000000000 -0600
++++ BitTornado-CVS/btmaketorrentgui.py	2007-12-04 11:11:30.000000000 -0600
+@@ -21,12 +21,16 @@
+ import sys
+ from os import getcwd
+ from os.path import join, isdir
++
+ try:
+-    from wxPython.wx import *
+-except:
+-    print 'wxPython is either not installed or has not been installed properly.'
++    import wxversion
++    wxversion.select("2.6")
++except Exception, e:
++    print >> sys.stderr, "%s: wxPython 2.6 not installed." %e
+     sys.exit(1)
+ 
++from wxPython.wx import *
++
+ try:
+     True
+ except:
+diff -Naur BitTornado-CVS-orig/bt-t-make.py BitTornado-CVS/bt-t-make.py
+--- BitTornado-CVS-orig/bt-t-make.py	2006-12-23 12:20:52.000000000 -0600
++++ BitTornado-CVS/bt-t-make.py	2007-12-04 11:14:35.000000000 -0600
+@@ -22,12 +22,16 @@
+ from os import getcwd, listdir
+ from os.path import join, isdir
+ from traceback import print_exc
++
+ try:
+-    from wxPython.wx import *
+-except:
+-    print 'wxPython is either not installed or has not been installed properly.'
++    import wxversion
++    wxversion.select("2.6")
++except Exception, e:
++    print >> sys.stderr, "%s: wxPython 2.6 not installed." %e
+     sys.exit(1)
+ 
++from wxPython.wx import *
++
+ try:
+     True
+ except:

@@ -1,0 +1,17 @@
+Description: Fixes the category of cryptkeeper menu item
+Author: Francesco Namuri <francesco@namuri.it>
+Index: cryptkeeper-0.9.5/cryptkeeper.desktop
+===================================================================
+--- cryptkeeper-0.9.5.orig/cryptkeeper.desktop	2011-12-11 12:04:59.053286893 +0100
++++ cryptkeeper-0.9.5/cryptkeeper.desktop	2011-12-11 12:05:02.777287034 +0100
+@@ -1,9 +1,8 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Cryptkeeper
+ Exec=cryptkeeper
+ Icon=cryptkeeper
+-Categories=Application;System;
++Categories=System;GTK;Security;
+ Terminal=false
+ Type=Application
+ StartupNotify=false

@@ -1,0 +1,27 @@
+diff --git a/parts.c b/parts.c
+index 670d0d5..a59ad98 100644
+--- a/parts.c
++++ b/parts.c
+@@ -338,10 +338,10 @@ if(! file_header)
+ 	return 0;
+ 	}
+ 
+-strcpy(file_header -> main_chunk, "RIFF");
++memcpy(file_header -> main_chunk, "RIFF", 4);
+ file_header -> length = length + header_size - 8;
+-strcpy(file_header -> chunk_type, "WAVE"); 
+-strcpy(file_header -> sub_chunk, "fmt ");	// watch out the zero termination overwrites next var
++memcpy(file_header -> chunk_type, "WAVE", 4);
++memcpy(file_header -> sub_chunk, "fmt ", 4);	// watch out the zero termination overwrites next var
+ file_header -> length_chunk = 16;							//always 16
+ file_header -> format = 1;									//PCM
+ file_header -> modus = modus;								// stereo
+@@ -349,7 +349,7 @@ file_header -> sample_fq = sample_fq;						// 44100, 48000, etc...
+ file_header -> byte_p_sec = byte_p_sec;						// little endian
+ file_header -> byte_p_spl = byte_p_spl;		 				// 4 stereo
+ file_header -> bit_p_spl = bit_p_spl;						// 16 bits
+-strcpy(file_header -> data_chunk, "data");	// watch out the zero termination overwrites next var
++memcpy(file_header -> data_chunk, "data", 4);	// watch out the zero termination overwrites next var
+ file_header -> data_length = (unsigned long)length;
+ 
+ if(debug_flag)

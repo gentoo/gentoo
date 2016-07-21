@@ -1,0 +1,52 @@
+--- hexcompare-101/gui.c
++++ hexcompare-101/gui.c
+@@ -39,7 +39,7 @@
+ {	            
+ 	// With a given offset, calculate which element it corresponds to
+ 	// in the offset_index.            
+-	int i, current_block;                       
++	int i, current_block = 0;                       
+ 	for (i = 0; i < total_blocks; i++) {
+ 		
+ 		// Go block by block, and see if our offset is greater than
+@@ -62,7 +62,7 @@
+ 	char offset_query[32];
+ 	char offset_line[32];
+ 	int offset_size = 0;
+-	int previous_size, current_size, i;
++	int previous_size, current_size = 0, i;
+ 	int redo_loop = false; 
+ 	
+ 	// Endless loop until we figure out an offset size that is constant
+@@ -533,10 +533,6 @@
+ 	
+ 	// Create variables.
+ 	int i, j;
+-	bool active_declared = false;
+-	int offset_string_length = 0;
+-	unsigned long temp_offset;
+-	char offset_line[32];
+ 	
+ 	// Define colors block diagram.
+ 	init_pair(BLOCK_SAME,      COLOR_WHITE, COLOR_BLUE);
+@@ -621,12 +617,6 @@
+ 	// 
+ 	// 
+ 	
+-	// Create variables.
+-	int i, j;
+-	bool active_declared = false;
+-	int offset_string_length = 0;
+-	unsigned long temp_offset;
+-	
+ 	// Define colors block diagram.
+ 	init_pair(BLOCK_SAME,      COLOR_WHITE, COLOR_BLUE);
+ 	init_pair(BLOCK_DIFFERENT, COLOR_WHITE, COLOR_RED);  
+@@ -753,7 +743,6 @@
+ 	while((key_pressed = wgetch(main_window)) != 'q')
+ 	{	
+ 		int rows; 
+-		int bytes_per_row = (width - SIDE_MARGIN*2) * bytes_per_block;
+ 		if (mode == OVERVIEW_MODE) rows = 5; else rows = height - 5;
+ 		
+ 		switch(key_pressed)

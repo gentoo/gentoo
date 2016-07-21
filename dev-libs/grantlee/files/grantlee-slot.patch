@@ -1,0 +1,40 @@
+Install headers to a custom location to permit slotting with Qt4 version.
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 45f8673..7832a3b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,7 +94,7 @@ set (LIB_SUFFIX "" CACHE STRING "Define suffix of library directory name (eg. '6
+ set( LIB_INSTALL_DIR lib${LIB_SUFFIX} )
+ set( PLUGIN_INSTALL_DIR lib${LIB_SUFFIX}/grantlee/${Grantlee_MAJOR_MINOR_VERSION_STRING} )
+ set( BIN_INSTALL_DIR bin )
+-set( INCLUDE_INSTALL_DIR include )
++set( INCLUDE_INSTALL_DIR include/grantlee5 )
+ set( DATA_INSTALL_DIR share/apps )
+ 
+ # set up RPATH/install_name_dir
+diff --git a/templates/lib/CMakeLists.txt b/templates/lib/CMakeLists.txt
+index 789205c..7045449 100644
+--- a/templates/lib/CMakeLists.txt
++++ b/templates/lib/CMakeLists.txt
+@@ -79,6 +79,7 @@ add_library(Grantlee5::Templates ALIAS Grantlee_Templates)
+ generate_export_header(Grantlee_Templates)
+ set_property(TARGET Grantlee_Templates PROPERTY EXPORT_NAME Templates)
+ target_include_directories(Grantlee_Templates PRIVATE ../scriptabletags)
++target_include_directories(Grantlee_Templates INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
+ 
+ if (BUILD_TESTS)
+   set(GRANTLEE_TESTS_EXPORT "GRANTLEE_TEMPLATES_EXPORT")
+diff --git a/textdocument/lib/CMakeLists.txt b/textdocument/lib/CMakeLists.txt
+index 14163db..7c609f9 100644
+--- a/textdocument/lib/CMakeLists.txt
++++ b/textdocument/lib/CMakeLists.txt
+@@ -24,7 +24,7 @@ add_library(Grantlee_TextDocument SHARED
+ generate_export_header(Grantlee_TextDocument)
+ add_library(Grantlee::TextDocument ALIAS Grantlee_TextDocument)
+ set_property(TARGET Grantlee_TextDocument PROPERTY EXPORT_NAME TextDocument)
+-
++target_include_directories(Grantlee_TextDocument INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
+ 
+ target_link_libraries(Grantlee_TextDocument
+   LINK_PUBLIC Qt5::Gui

@@ -1,0 +1,73 @@
+#!/bin/bash
+# gzip-like CLI wrapper for p7zip
+set -e
+
+compress=true
+file=
+
+usage ()
+  {
+    echo "Usage: $0 [-d] [-h|--help] [file]"
+    exit 1
+  }
+
+while [ "$#" != "0" ] ; do
+  case "$1" in
+    -d) compress=false ;;
+    -c) echo "$0: ignoring $1 option (not yet implemented)" ;;
+    -h|--help) usage ;;
+    *)
+      if [ "${file}" = "" ] ; then
+        file="$1"
+      else
+        usage
+      fi
+    ;;
+  esac
+  shift
+done
+
+# make sure they're present, before we screw up
+for i in mktemp 7z rm cat tty ; do
+  if ! which $i > /dev/null ; then
+    echo "$0: $i: command not found"
+    exit 1
+  fi
+done
+
+if [ "${file}" != "" ] ; then
+  if ${compress} ; then
+    7z a ${file}.7z ${file}
+    rm ${file}
+  else
+    case ${file} in
+      *.7z)
+        7z x ${file}
+        rm ${file}
+      ;;
+      *)
+        echo "$0: ${file}: unknown suffix -- ignored"
+      ;;
+    esac
+  fi
+  exit 0
+fi
+
+tmp=`mktemp`
+trap "rm -f ${tmp}" 0
+
+if ${compress} ; then
+  if tty > /dev/null ; then
+    echo "$0: compressed data not written to a terminal."
+    echo "For help, type: $0 -h"
+    exit 1
+  fi
+  rm -f ${tmp}
+  7z a ${tmp} -si >/dev/null
+  cat ${tmp}
+else
+  cat > ${tmp}
+  7z x ${tmp} -so 2>/dev/null | cat
+fi
+
+rm -f ${tmp}

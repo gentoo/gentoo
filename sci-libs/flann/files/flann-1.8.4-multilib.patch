@@ -1,0 +1,15 @@
+ cmake/flann_utils.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/flann_utils.cmake b/cmake/flann_utils.cmake
+index 1a10939..afe4742 100644
+--- a/cmake/flann_utils.cmake
++++ b/cmake/flann_utils.cmake
+@@ -1,6 +1,6 @@
+ macro(GET_OS_INFO)
+     string(REGEX MATCH "Linux" OS_IS_LINUX ${CMAKE_SYSTEM_NAME})
+-    set(FLANN_LIB_INSTALL_DIR "lib")
++    set(FLANN_LIB_INSTALL_DIR "lib${LIB_SUFFIX}")
+     set(FLANN_INCLUDE_INSTALL_DIR
+         "include/${PROJECT_NAME_LOWER}-${FLANN_MAJOR_VERSION}.${FLANN_MINOR_VERSION}")
+ endmacro(GET_OS_INFO)

@@ -1,0 +1,17 @@
+/usr/bin/viewglob is a wrapper for vgd and vgseer (client and
+daemon, respectively). Generally speaking, this is what you want to
+execute from your shell.
+
+Should you prefer to start viewglob with each shell session, try
+something like this:
+
+  if [[ ! $VG_VIEWGLOB_ACTIVE && $DISPLAY ]] ; then
+      exec viewglob
+  fi
+
+Have a look at http://viewglob.sourceforge.net/faq.html for a
+few more viewglob tricks.
+
+There are some known bugs in viewglob with screen. Exercise some
+caution and take results with a pinch of salt if you try the two
+together.

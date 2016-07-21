@@ -1,0 +1,54 @@
+diff -urp kernel.orig/nv.c kernel/nv.c
+--- kernel.orig/nv.c	2011-09-24 02:32:09.000000000 +0200
++++ kernel/nv.c	2011-10-05 19:13:41.474242252 +0200
+@@ -1105,7 +1105,7 @@ static int __init nvidia_init_module(voi
+     NV_SPIN_LOCK_INIT(&km_lock);
+ #endif
+ 
+-    NV_KMEM_CACHE_CREATE(nv_stack_t_cache, "nv_stack_t", nv_stack_t);
++    NV_KMEM_CACHE_CREATE(nv_stack_t_cache, "nv_stack_t", nv_stack_t, SLAB_USERCOPY);
+     if (nv_stack_t_cache == NULL)
+     {
+         nv_printf(NV_DBG_ERRORS, "NVRM: stack cache allocation failed!\n");
+@@ -1220,7 +1220,7 @@ static int __init nvidia_init_module(voi
+     }
+ #endif
+ 
+-    NV_KMEM_CACHE_CREATE(nv_pte_t_cache, "nv_pte_t", nv_pte_t);
++    NV_KMEM_CACHE_CREATE(nv_pte_t_cache, "nv_pte_t", nv_pte_t, 0);
+     if (nv_pte_t_cache == NULL)
+     {
+         rc = -ENOMEM;
+@@ -1229,7 +1229,7 @@ static int __init nvidia_init_module(voi
+     }
+ 
+     NV_KMEM_CACHE_CREATE(nvidia_p2p_page_t_cache, "nvidia_p2p_page_t",
+-            nvidia_p2p_page_t);
++            nvidia_p2p_page_t, 0);
+     if (nvidia_p2p_page_t_cache == NULL)
+     {
+         rc = -ENOMEM;
+diff -urp kernel.orig/nv-linux.h kernel/nv-linux.h
+--- kernel.orig/nv-linux.h	2011-09-24 02:32:09.000000000 +0200
++++ kernel/nv-linux.h	2011-10-05 19:14:42.522238996 +0200
+@@ -695,16 +695,16 @@ extern nv_spinlock_t km_lock;
+ 
+ #if defined(NV_KMEM_CACHE_CREATE_PRESENT)
+ #if (NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT == 6)
+-#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type)            \
++#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type, flags)     \
+     {                                                           \
+         kmem_cache = kmem_cache_create(name, sizeof(type),      \
+-                        0, 0, NULL, NULL);                      \
++                        0, flags, NULL, NULL);                  \
+     }
+ #elif (NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT == 5)
+-#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type)            \
++#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type, flags)     \
+     {                                                           \
+         kmem_cache = kmem_cache_create(name, sizeof(type),      \
+-                        0, 0, NULL);                            \
++                        0, flags, NULL);                        \
+     }
+ #else
+ #error "NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT value unrecognized!"

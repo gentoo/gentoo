@@ -1,0 +1,21 @@
+AC_INIT(xscreensaver.app.c)
+
+AM_INIT_AUTOMAKE(XScreenSaver.App,2.3)
+
+AC_PROG_CC
+
+AC_PROG_INSTALL
+
+AC_PATH_X
+
+AC_CHECK_LIB(dockapp, DAProcessActionRects, , exit 1)
+
+PKG_CHECK_MODULES(LIBX11, x11,[LIBS="$LIBS $LIBX11_LIBS";CFLAGS="$CFLAGS $LIBX11_CFLAGS"],[exit 1])
+
+AC_CHECK_HEADER(dockapp.h, have_dockapp_h=yes, [], [])
+
+if test "$have_dockapp_h"x != "yes"x; then
+AC_CHECK_HEADER(libdockapp/dockapp.h, [CFLAGS="$CFLAGS -I/usr/include/libdockapp"], exit 1, [])
+fi
+
+AC_OUTPUT(Makefile)

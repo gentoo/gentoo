@@ -1,0 +1,13 @@
+Support older encfs5 volumes wrt Gentoo bug #446652.
+
+--- a/fsDialog.cpp
++++ b/fsDialog.cpp
+@@ -161,7 +161,7 @@
+ 
+     arg << cr << pm << "-S";
+     p->start(prg,arg);
+-    if (! QFile::exists(cr+"/.encfs6.xml")) p->write("\n");
++    if (! (QFile::exists(cr+"/.encfs6.xml") || QFile::exists(cr+"/.encfs5")) ) p->write("\n");
+     p->write(pw.toLocal8Bit().data());
+     p->write("\n");
+     p->waitForFinished();

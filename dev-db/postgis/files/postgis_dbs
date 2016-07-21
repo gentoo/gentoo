@@ -1,0 +1,49 @@
+# This file is used by 'emerge --config dev-db/postgis' to determine which
+# databases it should install to, upgrade or create as a template.
+
+# Unlike the previous versions of the PostGIS ebuilds, it no longer creates any
+# databases except for templates. All databases you list must already exist in
+# the cluster.
+
+# The user to perform the updates as. This user must have the privileges to
+# modify all of the databases you list here. 
+pguser="postgres"
+
+# By default, no databases will have PostGIS enabled. The databases listed here
+# must already exist. The databases you list here must not already be PostGIS
+# enabled. Instead, use the upgrade lists further down.
+#databases=( "your" "databases" )
+
+# Anything you place in this list will create a database and make it a template.
+# It will be PostGIS-enabled. To add additional features, add the template names
+# to the following lists.
+#templates=( "template_postgis" )
+
+# The PostGIS enabled templates will be created using this template.
+from_template="template1"
+
+# For a complete set of EPSG coordinate system definition identifiers, you can
+# also load the spatial_ref_sys.sql definitions file and populate the
+# spatial_ref_sys table. This will permit you to perform ST_Transform()
+# operations on geometries. 
+#epsg_databases=( "enable" "epsg" "on" "these" "databases" )
+
+# Add comments to PostGIS functions to the databases in this list.
+#comment_databases=( "comments" "on" "these" "databases" )
+
+# Any databases you have that are already PostGIS enabled can be listed among
+# the following list to perform a soft upgrade. If the soft upgrade fails,
+# you'll need to do a hard upgrade.
+# http://postgis.refractions.net/documentation/manual-1.5/ch02.html#hard_upgrade
+
+# Upgrade from PostGIS 1.3 to 1.5
+#upgrade_from_1_3=( "upgrade" "these" "databases" )
+
+# Upgrade from PostGIS 1.4 to 1.5
+#upgrade_from_1_4=( "upgrade" "these" "databases" )
+
+# Perform a minor upgrade for PostGIS 1.5
+#upgrade_from_1_5=( "upgrade" "these" "databases" )
+
+# Uncomment this once you're satisfied with the settings in this file.
+#configured="true"

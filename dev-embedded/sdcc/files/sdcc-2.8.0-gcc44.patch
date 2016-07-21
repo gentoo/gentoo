@@ -1,0 +1,9 @@
+diff -ur sdcc.orig/sim/ucsim/cmd.src/cmdlex.cc sdcc/sim/ucsim/cmd.src/cmdlex.cc
+--- sdcc.orig/sim/ucsim/cmd.src/cmdlex.cc	2004-07-16 19:32:30.000000000 +0300
++++ sdcc/sim/ucsim/cmd.src/cmdlex.cc	2009-08-10 11:09:58.000000000 +0300
+@@ -1,3 +1,5 @@
++#include <stdio.h>
++
+ #line 2 "cmdlex.cc"
+ 
+ #line 4 "cmdlex.cc"

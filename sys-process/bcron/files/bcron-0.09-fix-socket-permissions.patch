@@ -1,0 +1,10 @@
+--- a/bcron-spool.run	2005-06-09 04:14:42.000000000 +0400
++++ b/bcron-spool/run	2010-07-12 01:29:24.000000000 +0400
+@@ -5,6 +5,6 @@
+ envuidgid cron \
+ sh -c '
+ exec \
+-unixserver -U ${BCRON_SOCKET:-/var/run/bcron-spool} \
++unixserver -U ${BCRON_SOCKET:-/var/run/bcron-spool} -r 16 -p 0660 \
+ bcron-spool
+ '

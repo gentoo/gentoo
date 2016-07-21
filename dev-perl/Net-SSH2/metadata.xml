@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="gcrypt">Use libgcrypt instead of openssl</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpan">Net-SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH2</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::Channel</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::Dir</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::File</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::Listener</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::PublicKey</remote-id>
+    <remote-id type="cpan-module">Net::SSH2::SFTP</remote-id>
+  </upstream>
+</pkgmetadata>

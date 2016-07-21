@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Gwyddion is a modular program for SPM data analysis. Primarily it is
+  supposed to be used for analysis of height fields obtained by means of
+  scanning probe microscopy techniques (AFM, MFM, STM, NSOM), but
+  generally it can be used for any other height field analysis or
+  image analysis.
+</longdescription>
+  <use>
+    <flag name="sourceview">
+      Enable support for <pkg>x11-libs/gtksourceview</pkg>
+    </flag>
+    <flag name="fits">
+      Enable FITS image import via <pkg>sci-libs/cfitsio</pkg>
+    </flag>
+  </use>
+</pkgmetadata>

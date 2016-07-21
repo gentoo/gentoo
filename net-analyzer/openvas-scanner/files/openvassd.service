@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenVAS Scanner
+After=network.target
+Before=openvasmd.service
+
+[Service]
+EnvironmentFile=-/etc/openvas/openvassd-daemon.conf
+ExecStart=/usr/sbin/openvassd -f ${SCANNER_PORT} ${SCANNER_LISTEN} ${SCANNER_SRCIP} ${SCANNER_EXTRA_ARGS}
+Restart=always
+RestartSec=1
+User=root
+Group=root
+TimeoutSec=1200
+
+[Install]
+WantedBy=multi-user.target

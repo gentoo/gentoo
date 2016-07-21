@@ -1,0 +1,25 @@
+From fd206b003c0ba494cbdf6192395ec45fd1f706f3 Mon Sep 17 00:00:00 2001
+From: Tobias Schmidt <tobias@isntwork.org>
+Date: Sat, 12 Oct 2013 00:12:52 +0200
+Subject: [PATCH] add Exporters.GCode package to setup.py to fix broken
+ ToolpathExport plugin
+
+---
+ setup.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index 92feab4..634ff9f 100755
+--- a/setup.py
++++ b/setup.py
+@@ -89,6 +89,7 @@ Windows: select Python 2.5 in the following dialog.
+         "pycam",
+         "pycam.Cutters",
+         "pycam.Exporters",
++        "pycam.Exporters.GCode",
+         "pycam.Geometry",
+         "pycam.Gui",
+         "pycam.Importers",
+-- 
+1.7.10.4
+

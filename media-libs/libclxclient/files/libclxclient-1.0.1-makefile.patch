@@ -1,0 +1,30 @@
+Index: clxclient-1.0.1/Makefile
+===================================================================
+--- clxclient-1.0.1.orig/Makefile
++++ clxclient-1.0.1/Makefile
+@@ -1,5 +1,5 @@
+ CPPFLAGS += -I. -fpic -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -O2 
+-LDFLAGS += -L/usr/X11R6/lib
++LDFLAGS +=
+ LDLIBS +=
+ 
+ 
+@@ -17,14 +17,13 @@ CLXCLIENT_H = clxclient.h
+ 
+ 
+ $(CLXCLIENT_MIN): $(CLXCLIENT_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP)
+ 
+ 
+ install:	$(CLXCLIENT_MIN)
+-	cp -f $(CLXCLIENT_H) $(CLXCLIENT_INCDIR)
+-	cp -f $(CLXCLIENT_MIN) $(CLXCLIENT_LIBDIR)
+-	/sbin/ldconfig -n $(CLXCLIENT_LIBDIR)
+-	ln -sf $(CLXCLIENT_MIN) $(CLXCLIENT_LIBDIR)/$(CLXCLIENT_SO)
++	install -D $(CLXCLIENT_H) $(DESTDIR)$(CLXCLIENT_INCDIR)/$(CLXCLIENT_H)
++	install -D $(CLXCLIENT_MIN) $(DESTDIR)$(CLXCLIENT_LIBDIR)/$(CLXCLIENT_MIN)
++	ln -sf $(CLXCLIENT_MIN) $(DESTDIR)$(CLXCLIENT_LIBDIR)/$(CLXCLIENT_SO)
+ 
+ 
+ clean:

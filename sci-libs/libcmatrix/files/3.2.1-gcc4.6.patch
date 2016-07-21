@@ -1,0 +1,16 @@
+ NMR/MetaPropagation.cc |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/NMR/MetaPropagation.cc b/NMR/MetaPropagation.cc
+index b7ed98b..ce8c16f 100755
+--- a/NMR/MetaPropagation.cc
++++ b/NMR/MetaPropagation.cc
+@@ -2136,7 +2136,7 @@ SpinOpGenerator::add_A0(T& dest,F func, double coup, size_t j, size_t sk, Type2T
+       { ref_.clear(0); }
+     const space_T& operator()() const { return ref_; }
+     ~fudge_isotropic_() { ref_.ensure_rank(0); }
+-    mutable space_T& ref_;
++    space_T& ref_;
+   };
+   template<> struct fudge_isotropic_<double> { 
+     fudge_isotropic_(double v) : v_(v) {};

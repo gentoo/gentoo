@@ -1,0 +1,12 @@
+--- setup.py.orig	2007-07-04 23:05:19.000000000 -0700
++++ setup.py	2007-07-04 23:05:58.000000000 -0700
+@@ -6,7 +6,8 @@
+ # Usage: python setup.py install
+ #
+ 
+-from distutils.core import setup, Extension
++from setuptools import setup
++from distutils.core import Extension
+ from distutils import sysconfig
+ import sys, os
+ 

@@ -1,0 +1,11 @@
+--- vamps/Makefile.orig	2014-03-17 15:44:50.086513525 -0600
++++ vamps/Makefile	2014-03-17 15:44:56.443321441 -0600
+@@ -21,7 +21,7 @@
+ CFLAGS    ?= -O2  -g -D_LARGEFILE_SOURCE -DLARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 	       -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_REENTRANT
+ CFLAGS    += -Wall
+-LDFLAGS   += -s
++LDFLAGS   +=
+ LOADLIBES += -lm -pthread -ldvdread
+ 
+ INSTALL   ?= install

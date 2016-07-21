@@ -1,0 +1,23 @@
+diff -urN cmigemo-1.2.ORIG/tools/migemo.vim cmigemo-1.2/tools/migemo.vim
+--- cmigemo-1.2.ORIG/tools/migemo.vim	2003-01-07 22:57:59.000000000 +0900
++++ cmigemo-1.2/tools/migemo.vim	2004-03-13 17:25:31.944190968 +0900
+@@ -20,7 +20,7 @@
+     let dict = globpath(path, "migemo-dict")
+   endif
+   if dict == ''
+-    let dict = '/usr/local/share/migemo/'.&encoding.'/migemo-dict'
++    let dict = '/usr/share/migemo/migemo-dict'
+     if !filereadable(dict)
+       let dict = ''
+     endif
+@@ -43,7 +43,9 @@
+   nnoremap <Leader>f :call <SID>SearchChar(0)<CR>
+ else
+   " non-builtin version
+-  let g:migemodict = s:SearchDict()
++  if !exists('g:migemodict')
++    let g:migemodict = s:SearchDict()
++  endif
+   command! -nargs=* Migemo :call <SID>MigemoSearch(<q-args>)
+   nnoremap <silent> <leader>mi :call <SID>MigemoSearch('')<cr>
+ 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<longdescription>Shapelib is for working with ESRI shape files, a format used by the commercial ArcInfo GIS package.</longdescription>
+</pkgmetadata>

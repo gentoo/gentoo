@@ -1,0 +1,28 @@
+From a18c8fdc9cb3eb917e9a7a30466839c33131cc8a Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Tue, 28 Jul 2015 14:55:59 +0300
+Subject: [PATCH 4/4] dracut-initramfs-restore: make mount error nonfatal
+
+Script enables errexit option (set -e). So if /boot is not a mount point
+or is already mounted, then script dies after unsuccessful mount
+command. Fix this by always returning successful result.
+---
+ dracut-initramfs-restore.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dracut-initramfs-restore.sh b/dracut-initramfs-restore.sh
+index 0e6a1a8..0c41a59 100644
+--- a/dracut-initramfs-restore.sh
++++ b/dracut-initramfs-restore.sh
+@@ -14,7 +14,7 @@ SKIP="$dracutbasedir/skipcpio"
+ 
+ [[ -f /etc/machine-id ]] && read MACHINE_ID < /etc/machine-id
+ 
+-mount -o ro /boot &>/dev/null
++mount -o ro /boot &>/dev/null || true
+ 
+ if [[ $MACHINE_ID ]] && [[ -d /boot/${MACHINE_ID} || -L /boot/${MACHINE_ID} ]] ; then
+     IMG="/boot/${MACHINE_ID}/${KERNEL_VERSION}/initrd"
+-- 
+2.5.0
+

@@ -1,0 +1,13 @@
+Index: work/core/common/sys.h
+===================================================================
+--- work.orig/core/common/sys.h
++++ work/core/common/sys.h
+@@ -322,7 +322,7 @@ public:
+ #define _BIG_ENDIAN 1
+ #endif
+ 
+-typedef long long int64_t;
++#include <stdint.h>
+ 
+ typedef int (*THREAD_FUNC)(ThreadInfo *);
+ #define THREAD_PROC int 

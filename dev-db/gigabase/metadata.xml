@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+	Object-Relational Database Management System GigaBASE inherits most of the
+	features of FastDB, but uses page pool instead of direct mapping of file on
+	virtual memory. So GigaBASE is able to handle database, which size
+	significantly exceeds size of computer physical memory. Convenient and
+	flexible C++ interface makes development of application for GigaBASE very
+	easy and automatic scheme evaluation simplifies maintenance and modification
+	of the system. GigaBASE merges best features of relational (simple data
+	structure and non-procedural query language) and object-oriented (direct
+	object references, user defined types and methods) databases. GigaBASE is
+	primary oriented on application requiring fast data retrieving by means of
+	indices and direct object references, such as Web Server databases
+	applications. SUBSQL utility can be used for database browsing and
+	inspection, performing online backups, database recovery, importing data to
+	and exporting data from database. GigaBASE will perform automatic recovery
+	after system or application crash, you should not worry about it. The only
+	thing you can have to do manually is stopping all database application if
+	one of them is crashed leaving database blocked.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gigabase</remote-id>
+	</upstream>
+</pkgmetadata>

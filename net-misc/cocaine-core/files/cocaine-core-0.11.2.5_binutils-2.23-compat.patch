@@ -1,0 +1,19 @@
+commit 771bc9f8055e7baf58011ff7514827b6212f9f51
+Author: Andrey Sibiryov <me@kobology.ru>
+Date:   Fri Dec 6 12:51:59 2013 +0400
+
+    Added binutils 2.23 compatibility.
+
+diff --git a/config.hpp.in b/config.hpp.in
+index a73fa48..651aa3c 100644
+--- a/config.hpp.in
++++ b/config.hpp.in
+@@ -8,5 +8,8 @@
+ #define COCAINE_VERSION \
+ 	COCAINE_MAKE_VERSION(COCAINE_VERSION_MAJOR, COCAINE_VERSION_MINOR, COCAINE_VERSION_RELEASE)
+ 
++#define PACKAGE "cocaine-core"
++#define PACKAGE_VERSION COCAINE_VERSION
++
+ #cmakedefine COCAINE_DEBUG
+ #cmakedefine COCAINE_ALLOW_CGROUPS

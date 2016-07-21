@@ -1,0 +1,252 @@
+diff -ur lphdisk-0.9.1.orig/lphdisk.c lphdisk-0.9.1/lphdisk.c
+--- lphdisk-0.9.1.orig/lphdisk.c	2002-02-12 13:04:27.000000000 +0200
++++ lphdisk-0.9.1/lphdisk.c	2008-12-08 12:21:29.000000000 +0200
+@@ -19,8 +19,10 @@
+       Be careful!
+ */
+ 
++#define _LARGEFILE64_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <sys/types.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <stdarg.h>
+@@ -29,8 +31,8 @@
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include <sys/io.h>
+-#include "lrmi.h"
+-#include "vbe.h"
++#include <lrmi.h>
++#include <vbe.h>
+ 
+ /* General Program Defines: */
+ 
+@@ -100,58 +102,6 @@
+ /*                      General Purpose Utility Routines                     */
+ /*****************************************************************************/
+ 
+-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+-/* The following is a hack to take advantage of the ext2 "_llseek" system    */
+-/* call to do seeks to "long long" offsets under linux (this is needed to    */
+-/* seek to sectors beyond 4194303 (2GB)).  This isn't directly supported by  */
+-/* glibc, so we need to make our own interface function for it.  We should   */
+-/* be able to get the _NR__llseek define from linux/unistd.h.  From this we  */
+-/* can construct a wrapper to perform the right system call.                 */
+-
+-#include <linux/unistd.h>       /* for __NR__llseek */
+-
+-typedef long long lloff_t;
+-
+-#ifdef __NR__llseek
+-
+-static _syscall5(int,_llseek, unsigned int,fd, unsigned long,offset_high,
+-                 unsigned long,offset_low, lloff_t *,result,
+-                 unsigned int,origin)
+-
+-lloff_t llseek (unsigned int fd, lloff_t offset, unsigned int origin) {
+-  lloff_t result;
+-  int retval;
+-
+-  retval = _llseek (fd, ((unsigned long long) offset) >> 32,
+-                   ((unsigned long long) offset) & 0xffffffff,
+-                   &result, origin);
+-  return (retval == -1 ? (lloff_t) retval : result);
+-}
+-
+-#else /* __NR__llseek */
+-
+-/* Somehow, __NR__llseek wasn't in linux/unistd.h.  This shouldn't ever      */
+-/* happen, but better safe than sorry.. The best we can do is emulate it     */
+-/* with lseek, and hope we don't get an offset that's too large (throw an    */
+-/* error if we do)                                                           */
+-
+-lloff_t llseek (unsigned int fd, lloff_t offset, unsigned int origin) {
+-  off_t offt_offset = (off_t) offset;
+-
+-  if ((lloff_t)offt_offset != offset) {
+-    /* converting to off_t and back yields different result, indicating an */
+-    /* overflow.. */
+-    errno = EINVAL;
+-    return -1;
+-  } else {
+-    return lseek(fd, offt_offset, origin);
+-  }
+-}
+-
+-#endif /* __NR__llseek */
+-
+-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+-
+ #define get16(p) get_int_le(p,2)
+ #define get32(p) get_int_le(p,4)
+ 
+@@ -189,9 +139,9 @@
+ /* success, nonzero on error. */
+ 
+ int seek_sector (int fd, size_t secno) {
+-  lloff_t offset = (lloff_t) secno * SECTOR_SIZE;
++  off64_t offset = (off64_t) secno * SECTOR_SIZE;
+ 
+-  if (llseek(fd, offset, SEEK_SET) == (lloff_t) -1)
++  if (lseek64(fd, offset, SEEK_SET) == (off64_t) -1)
+     return -1;
+ 
+   return 0;
+@@ -556,25 +506,29 @@
+ 
+ int meminfo_physmem(void) {
+   FILE *f;
+-  unsigned int size;
++  unsigned int size = 0;
+   int ramsize;
++  char s[128];
+ 
+   if (!(f = fopen(meminfo_filename, "r"))) {
+     debug("Unable to open %s: %s\n", meminfo_filename, strerror(errno));
+     return 0;
+   }
+-  fscanf(f, "%*[^\n]\n");             /* Read the header line and discard it */
+  
+-  if (fscanf(f, "Mem: %u", &size) != 1) {
++  while (fgets(s, sizeof(s), f)) {
++    if (sscanf(s, "MemTotal: %u", &size) == 1) {
++      break;
++    }
++  }
++  if (size == 0) {
+     debug("Parse of %s failed.\n", meminfo_filename);
+     return 0;
+   }
+   fclose(f);
+ 
+-  /* convert to KB and then round up to the next power of 2 (since RAM */
++  /* size is in KB and then round up to the next power of 2 (since RAM */
+   /* sizes don't come in anything else, so this should correct for the */
+   /* kernel size, etc)                                                 */
+-  size >>= 10;
+   debug("%s reports memory size of %d KB", meminfo_filename, size);
+   for (ramsize = 1; size; size >>= 1) ramsize <<= 1;
+ 
+@@ -718,22 +672,22 @@
+   {"force",     0, 0, 'f'},
+ {0,0,0,0}};
+ 
+-const char usage_string[] = "\
+-Usage: %1$s [options] [device]
+-Prepare a hibernation partition for APM suspend-to-disk.
+-
+-options:
+-  -h, --help       Display brief usage and option information (this screen)
+-  -p, --probeonly  Only calculate and display required size, do not format
+-  -q, --quiet      Turn off informational messages, useful for scripts
+-  -d, --debug      Turn on (verbose) debugging messages
+-  -n, --nowrite    Do not actually write to the disk
+-  -f, --force      **DANGEROUS**  Format without regard to potential problems
+-
+-'device' should be a raw disk device (not a partition).  The default device
+-is /dev/hda.
+-
+-(%2$s)\n\n";
++const char usage_string[] = ""
++"Usage: %1$s [options] [device]\n"
++"Prepare a hibernation partition for APM suspend-to-disk.\n"
++"\n"
++"options:\n"
++"  -h, --help       Display brief usage and option information (this screen)\n"
++"  -p, --probeonly  Only calculate and display required size, do not format\n"
++"  -q, --quiet      Turn off informational messages, useful for scripts\n"
++"  -d, --debug      Turn on (verbose) debugging messages\n"
++"  -n, --nowrite    Do not actually write to the disk\n"
++"  -f, --force      **DANGEROUS**  Format without regard to potential problems\n"
++"\n"
++"'device' should be a raw disk device (not a partition).  The default device\n"
++"is /dev/hda.\n"
++"\n"
++"(%2$s)\n\n";
+ 
+ void print_usage (void) {
+   char *progname = rindex(argv0, '/');
+@@ -750,7 +704,7 @@
+   dev_t dev;
+   int partition;
+   int ramsize, vramsize, required_size;
+-  size_t required_sectors;
++  size_t required_sectors = 0;
+ 
+   argv0 = argv[0];
+ 
+@@ -821,9 +775,9 @@
+   }
+ 
+   if (!required_size) {
+-    if (!quiet_flag) printf("Reccomended partition size is unknown.\n");
++    if (!quiet_flag) printf("Recommended partition size is unknown.\n");
+   } else {
+-    if (!quiet_flag) printf("Reccomended partition size is %d MB"
++    if (!quiet_flag) printf("Recommended partition size is %d MB"
+                             " (%d sectors)\n", ((required_size+1023) >> 10),
+                             required_sectors);
+   }
+@@ -923,7 +877,7 @@
+ 
+   if ((pi[partition-1].size < required_sectors) && !quiet_flag) {
+     fprintf(stderr, "Warning: hibernate partition size (%d) is smaller than"
+-                    " reccomended size (%d).\n", pi[partition-1].size,
++                    " recommended size (%d).\n", pi[partition-1].size,
+             required_sectors);
+   }
+ 
+diff -ur lphdisk-0.9.1.orig/Makefile lphdisk-0.9.1/Makefile
+--- lphdisk-0.9.1.orig/Makefile	2002-02-12 11:06:46.000000000 +0200
++++ lphdisk-0.9.1/Makefile	2008-12-08 12:26:49.000000000 +0200
+@@ -4,37 +4,28 @@
+ #   lphdisk 0.9.1
+ #
+ 
+-INSTALL_PREFIX = /usr/local
++INSTALL_PREFIX = /usr
+ 
+-CFLAGS = -g -Wall
+-LIBS =
+-
+-LRMIDIR = lrmi-0.6m
++CFLAGS += -Wall
++LIBS = -llrmi
+ 
+ all:       lphdisk
+ 
+-lphdisk:   lphdisk.o lrmi.o
+-	$(CC) $(CFLAGS) -o lphdisk lphdisk.o lrmi.o $(LIBS)
+-
+-lphdisk.o: lphdisk.c lrmi.h vbe.h
+-
+-lrmi.o:
+-	cd $(LRMIDIR) && $(MAKE) $@
+-	cp $(LRMIDIR)/lrmi.o .
++lphdisk:   lphdisk.o
++	$(CC) $(LDFLAGS) $(CFLAGS) -o lphdisk lphdisk.o $(LIBS)
+ 
+-%.h: $(LRMIDIR)/%.h
+-	cp $^ $@
++lphdisk.o: lphdisk.c
+ 
+ install: all
+-	install -m 755 lphdisk $(INSTALL_PREFIX)/sbin
+-	install -m 644 lphdisk.8 $(INSTALL_PREFIX)/man/man8
++	mkdir -p $(DESTDIR)$(INSTALL_PREFIX)/sbin
++	install -m 755 lphdisk $(DESTDIR)$(INSTALL_PREFIX)/sbin
++	mkdir -p $(DESTDIR)$(INSTALL_PREFIX)/share/man/man8
++	install -m 644 lphdisk.8 $(DESTDIR)$(INSTALL_PREFIX)/share/man/man8
+ 
+ clean:
+-	cd $(LRMIDIR) && $(MAKE) $@
+-	rm -f *.o lrmi.h vbe.h
++	rm -f *.o
+ 
+ distclean: clean
+-	cd $(LRMIDIR) && $(MAKE) $@
+ 	rm -f lphdisk
+ 
+ .PHONY: all install clean distclean

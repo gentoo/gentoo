@@ -1,0 +1,50 @@
+diff -up plplot-5.9.11/examples/c++/Makefile.examples.in.multiarch plplot-5.9.11/examples/c++/Makefile.examples.in
+--- plplot-5.9.11/examples/c++/Makefile.examples.in.multiarch	2013-04-24 14:36:28.000000000 -0600
++++ plplot-5.9.11/examples/c++/Makefile.examples.in	2013-12-29 19:48:17.574496673 -0700
+@@ -25,10 +25,7 @@ CXX = @CXX@
+ EXEEXT = @EXEEXT@
+ 
+ LIB_TAG = @LIB_TAG@
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ @qt_gui_true@QT_MOC_EXECUTABLE = @QT_MOC_EXECUTABLE@
+-@qt_gui_true@qt_RPATHCMD = @qt_RPATHCMD@
+ 
+ @wxwidgets_true@PLPLOTWXWIDGETS_EXECUTABLES_list = \
+ @wxwidgets_true@	wxPLplotDemo$(EXEEXT)
+diff -up plplot-5.9.11/examples/c/Makefile.examples.in.multiarch plplot-5.9.11/examples/c/Makefile.examples.in
+--- plplot-5.9.11/examples/c/Makefile.examples.in.multiarch	2012-01-05 06:59:36.000000000 -0700
++++ plplot-5.9.11/examples/c/Makefile.examples.in	2013-12-29 19:48:17.574496673 -0700
+@@ -25,8 +25,6 @@ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+ LIB_TAG = @LIB_TAG@
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ 
+ @gcw_true@PLPLOTCANVAS_EXECUTABLES_list = \
+ @gcw_true@		 plplotcanvas_demo$(EXEEXT) \
+diff -up plplot-5.9.11/examples/f95/Makefile.examples.in.multiarch plplot-5.9.11/examples/f95/Makefile.examples.in
+--- plplot-5.9.11/examples/f95/Makefile.examples.in.multiarch	2012-02-19 11:33:33.000000000 -0700
++++ plplot-5.9.11/examples/f95/Makefile.examples.in	2013-12-29 19:48:20.960557580 -0700
+@@ -25,8 +25,6 @@ F95 = @FC@
+ EXEEXT = @EXEEXT@
+ 
+ LIB_TAG = @LIB_TAG@
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ 
+ EXECUTABLES_list = \
+ 		 x00f$(EXEEXT) \
+diff -up plplot-5.9.11/examples/tk/Makefile.examples.in.multiarch plplot-5.9.11/examples/tk/Makefile.examples.in
+--- plplot-5.9.11/examples/tk/Makefile.examples.in.multiarch	2013-12-29 19:48:20.961557593 -0700
++++ plplot-5.9.11/examples/tk/Makefile.examples.in	2013-12-29 19:49:19.876587409 -0700
+@@ -24,8 +24,6 @@ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+ LIB_TAG = @LIB_TAG@
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-plplottcltk_Main_RPATHCMD = @plplottcltk_Main_RPATHCMD@
+ 
+ EXECUTABLES_list = xtk01$(EXEEXT)
+ # Second and fourth examples depend on itk.

@@ -1,0 +1,15 @@
+ tests/thirdparty_tests.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/thirdparty_tests.py b/tests/thirdparty_tests.py
+index 6d2d150..f085f57 100644
+--- a/tests/thirdparty_tests.py
++++ b/tests/thirdparty_tests.py
+@@ -60,6 +60,7 @@ class FeedParserTest(unittest.TestCase):
+     def setUp(self):
+         try:
+             import feedparser
++            feedparser.PREFERRED_XML_PARSERS.remove('drv_libxml2')
+         except ImportError as e:
+             self.fail("feedparser module not available, please install")
+         self.doc = feedparser.parse(RSS_DOC)

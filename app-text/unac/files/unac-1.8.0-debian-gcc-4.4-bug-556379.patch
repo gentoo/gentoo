@@ -1,0 +1,47 @@
+See http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=556379
+
+diff -r fd7eb0d70970 unac-1.8.0/unac.c
+--- a/unac-1.8.0/unac.c	Fri Sep 17 10:35:14 2010 +0200
++++ b/unac-1.8.0/unac.c	Fri Sep 17 10:36:07 2010 +0200
+@@ -13873,9 +13873,9 @@
+     *out_lengthp = 0;
+   } else {
+     char* utf16 = 0;
+-    int utf16_length = 0;
++    size_t utf16_length = 0;
+     char* utf16_unaccented = 0;
+-    int utf16_unaccented_length = 0;
++    size_t utf16_unaccented_length = 0;
+   
+     if(convert(charset, utf16be(), in, in_length, &utf16, &utf16_length) < 0) {
+       return -1;
+diff -r fd7eb0d70970 unac-1.8.0/unaccent.c
+--- a/unac-1.8.0/unaccent.c	Fri Sep 17 10:35:14 2010 +0200
++++ b/unac-1.8.0/unaccent.c	Fri Sep 17 10:40:34 2010 +0200
+@@ -90,7 +90,7 @@
+     const char* charset = argv[optind++];
+ 
+     char* unaccented = 0;
+-    int unaccented_length = 0;
++    size_t unaccented_length = 0;
+ 
+     if(optind >= argc) {
+ #define BUFFER_SIZE 10240
+@@ -101,7 +101,7 @@
+ 	  perror("");
+ 	  exit(1);
+ 	}
+-	printf("%.*s", unaccented_length, unaccented);
++	printf("%.*s", (int)unaccented_length, unaccented);
+       }
+     } else {
+       const char* string = argv[optind++];
+@@ -114,7 +114,7 @@
+ 
+       if(debug_level > UNAC_DEBUG_NONE)
+ 	fprintf(stderr, "unaccented version is ");
+-      printf("%.*s\n", unaccented_length, unaccented);
++      printf("%.*s\n", (int)unaccented_length, unaccented);
+ 
+       if(optind < argc) {
+ 	const char* expected = argv[optind++];

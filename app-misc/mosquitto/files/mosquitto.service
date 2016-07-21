@@ -1,0 +1,12 @@
+[Unit]
+Description=Mosquitto MQTT Broker daemon
+ConditionPathExists=/etc/mosquitto/mosquitto.conf
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

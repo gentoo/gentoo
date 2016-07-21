@@ -1,0 +1,11 @@
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -47,6 +47,7 @@
+ 
+ if EXTRAS
+ libccext2_la_LIBADD = @THREAD_LIBS@ @BASE_LIB@ @SSL_LIBS@ @ZSTREAM_LIBS@
++libccext2_la_DEPENDENCIES = libccgnu2.la
+ libccext2_la_LDFLAGS = $(RELEASE) $(SHARED_FLAGS)
+ 
+ if GETOPT_LONG
+

@@ -1,0 +1,10 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index cef6a2f..d7092a7 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -80,4 +80,4 @@ endif
+ # Unseal library - for addition to existing apps, counter part of seal cmd
+ libtpm_unseal_la_SOURCES =	tpm_unseal.c
+ libtpm_unseal_la_LDFLAGS =	-shared -version-info 1:0:0
+-libtpm_unseal_la_LIBADD  =	-ltspi  libtpm_tspi.la
++libtpm_unseal_la_LIBADD  =	-ltspi  libtpm_tspi.la -lcrypto

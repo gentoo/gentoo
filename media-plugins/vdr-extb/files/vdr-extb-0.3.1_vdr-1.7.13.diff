@@ -1,0 +1,25 @@
+http://toms-cafe.de/vdr/download/extb-0.3.1-vdr-1.7.13.diff
+compile fix up from vdr-1.7.13
+
+--- extb-0.3.1/extboardio.c
++++ extb-0.3.1/extboardio.c
+@@ -361,10 +361,16 @@ void cExtBoardIO::Channel(int nChannelNu
+       m_nChannel  |= (0 != pChannel->Tpid()) ?eHasTpid:0;
+ 
+       if(pChannel->IsSat()) {
++#if VDRVERSNUM >= 10713
++        cDvbTransponderParameters dtp(pChannel->Parameters());
++        char polarization = dtp.Polarization();
++#else
++        char polarization = pChannel->Polarization();
++#endif
+         m_nChannel  |= eIsSourceSat;
+-        if (toupper(pChannel->Polarization()) == 'V')
++        if (toupper(polarization) == 'V')
+           m_nChannel  |= eIsSatVPolar;
+-        if (toupper(pChannel->Polarization()) == 'H')
++        if (toupper(polarization) == 'H')
+           m_nChannel  |= eIsSatHPolar;
+       }  
+       else if(pChannel->IsCable())
+

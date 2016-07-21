@@ -1,0 +1,14 @@
+Fix the /dev/fd test when running as a non root user
+after logging in as a root user #131875
+
+--- bash-3.1/configure
++++ bash-3.1/configure
+@@ -23098,7 +23098,7 @@
+   if test -d /dev/fd  && test -r /dev/fd/0 < /dev/null; then
+ # check for systems like FreeBSD 5 that only provide /dev/fd/[012]
+    exec 3<&0
+-   if test -r /dev/fd/3; then
++   if test -e /dev/fd/3; then
+      bash_cv_dev_fd=standard
+    else
+      bash_cv_dev_fd=absent

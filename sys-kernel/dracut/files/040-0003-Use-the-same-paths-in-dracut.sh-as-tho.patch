@@ -1,0 +1,74 @@
+From 5a1de9053d27feeb283253554033e7ad25c9aa31 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Wed, 2 Oct 2013 22:37:09 +0200
+Subject: [PATCH 3/4] Use the same paths in dracut.sh as those set with
+ configure script
+
+Makefile alters destination main dracut script and sets dracutbasedir to
+the value of pkglibdir set in configure.
+---
+ Makefile  | 3 +++
+ dracut.sh | 9 ++++-----
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 7127368..a4c35e5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -103,6 +103,9 @@ install: dracut-version.sh
+ 	mkdir -p $(DESTDIR)$(pkglibdir)/modules.d
+ 	mkdir -p $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(mandir)/man5 $(DESTDIR)$(mandir)/man7 $(DESTDIR)$(mandir)/man8
+ 	install -m 0755 dracut.sh $(DESTDIR)$(bindir)/dracut
++	sed -r \
++		-e "s|^(pkglibdir)=.*|\1=$(pkglibdir)|" \
++		-i $(DESTDIR)$(bindir)/dracut
+ 	install -m 0755 dracut-catimages.sh $(DESTDIR)$(bindir)/dracut-catimages
+ 	install -m 0755 mkinitrd-dracut.sh $(DESTDIR)$(bindir)/mkinitrd
+ 	install -m 0755 lsinitrd.sh $(DESTDIR)$(bindir)/lsinitrd
+diff --git a/dracut.sh b/dracut.sh
+index 1c7e208..ea30a7b 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -24,10 +24,13 @@
+ # store for logging
+ dracut_args=( "$@" )
+ 
++# base dirs
++pkglibdir=/usr/lib/dracut
++dracutbasedir="$pkglibdir"
++
+ set -o pipefail
+ 
+ usage() {
+-    [[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
+     if [[ -f $dracutbasedir/dracut-version.sh ]]; then
+         . $dracutbasedir/dracut-version.sh
+     fi
+@@ -52,7 +55,6 @@ EOF
+ }
+ 
+ long_usage() {
+-    [[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
+     if [[ -f $dracutbasedir/dracut-version.sh ]]; then
+         . $dracutbasedir/dracut-version.sh
+     fi
+@@ -656,8 +658,6 @@ export DRACUT_LOG_LEVEL=warning
+     debug=yes
+ }
+ 
+-[[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
+-
+ # if we were not passed a config file, try the default one
+ if [[ ! -f $conffile ]]; then
+     if [[ $allowlocal ]]; then
+@@ -798,7 +798,6 @@ stdloglvl=$((stdloglvl + verbosity_mod_l))
+ [[ $use_fstab_l ]] && use_fstab=$use_fstab_l
+ [[ $mdadmconf_l ]] && mdadmconf=$mdadmconf_l
+ [[ $lvmconf_l ]] && lvmconf=$lvmconf_l
+-[[ $dracutbasedir ]] || dracutbasedir=/usr/lib/dracut
+ [[ $fw_dir ]] || fw_dir="/lib/firmware/updates /lib/firmware"
+ [[ $tmpdir_l ]] && tmpdir="$tmpdir_l"
+ [[ $tmpdir ]] || tmpdir=/var/tmp
+-- 
+2.1.3
+

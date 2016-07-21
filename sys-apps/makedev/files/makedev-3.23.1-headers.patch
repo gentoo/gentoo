@@ -1,0 +1,25 @@
+http://bugs.gentoo.org/339674
+
+--- a/sel.h
++++ b/sel.h
+@@ -18,6 +18,7 @@
+  */
+ 
+ #ifdef MAKEDEV_SELINUX
++#include <limits.h>
+ #include <selinux/selinux.h>
+ static char secontextname[PATH_MAX + 2];
+ static char secontextflag[PATH_MAX + 7];
+
+https://bugs.gentoo.org/580500
+
+--- a/MAKEDEV.c
++++ b/MAKEDEV.c
+@@ -17,6 +17,7 @@
+  *
+  */
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>

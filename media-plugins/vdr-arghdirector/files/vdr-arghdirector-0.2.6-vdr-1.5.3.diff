@@ -1,0 +1,15 @@
+diff -ru arghdirector-0.2.6-orig/directorosd.c arghdirector-0.2.6/directorosd.c
+--- arghdirector-0.2.6-orig/directorosd.c	2007-06-24 15:28:04.733376979 +0200
++++ arghdirector-0.2.6/directorosd.c	2007-06-24 15:29:34.741637063 +0200
+@@ -323,7 +323,11 @@
+ 		char *buffer=0;
+ 		asprintf(&buffer,"1 %s %d", Channel->Name(), number);
+ 				
++#if VDRVERSNUM < 10503
+ 		int theHeigth = font->Height('A');
++#else
++		int theHeigth = font->Height("A");
++#endif
+ 		int m_height = (number * theHeigth) + 10;
+ 		
+ 		//get the width		

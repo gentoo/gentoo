@@ -1,0 +1,35 @@
+diff -r -U1 routino-3.0.orig/Makefile.conf routino-3.0/Makefile.conf
+--- routino-3.0.orig/Makefile.conf	2015-09-08 00:11:23.000000000 +0600
++++ routino-3.0/Makefile.conf	2016-01-04 13:02:46.557516477 +0600
+@@ -47,3 +47,3 @@
+ ifneq ($(HOST),MINGW)
+-prefix=/usr/local
++prefix=/usr
+ bindir=$(prefix)/bin
+@@ -51,3 +51,3 @@
+ libdir=$(prefix)/lib
+-docdir=$(prefix)/doc/routino
++docdir=$(prefix)/share/doc/$(PF)
+ datadir=$(prefix)/share/routino
+@@ -69,3 +69,3 @@
+ # Language dialect selection
+-CFLAGS=-std=c99
++CFLAGS+=-std=c99
+ 
+@@ -75,3 +75,3 @@
+ # Optimisation options
+-CFLAGS+=-O3
++#CFLAGS+=-O3
+ CFLAGS+=-ffast-math
+@@ -86,3 +86,3 @@
+ # Maths library
+-LDFLAGS=-lm
++LDFLAGS+=-lm
+ 
+@@ -121,4 +121,4 @@
+ # Required for xz support (uncomment these two lines if required)
+-#CFLAGS+=-DUSE_XZ
+-#LDFLAGS+=-llzma
++CFLAGS+=-DUSE_XZ
++LDFLAGS+=-llzma
+ 

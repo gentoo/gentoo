@@ -1,0 +1,13 @@
+should be fixed in octave-3.8 and above
+
+--- src/gl2ps-renderer.cc.orig	2012-05-31 03:43:29.000000000 +0200
++++ src/gl2ps-renderer.cc	2012-10-10 18:41:10.526639551 +0200
+@@ -223,7 +223,7 @@
+ 
+   // FIXME: handle margin and surrounding box
+ 
+-  glRasterPos3d (pos(0), pos(1), pos(2));
++  glRasterPos3d (pos(0), pos(1), pos.numel() > 2 ? pos(2) : 0.0);
+ 
+   octave_value string_prop = props.get_string ();
+ 

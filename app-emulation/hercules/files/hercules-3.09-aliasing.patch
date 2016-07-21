@@ -1,0 +1,41 @@
+From 7d3255a18ad845953cc8083371e8623e771ad4f5 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 27 Aug 2013 12:25:49 -0400
+Subject: [PATCH] sha: fix strict aliasing warnings
+
+sha256.c:492:3: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+sha256.c:784:2: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+sha256.c:785:2: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ crypto/sha256.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/crypto/sha256.c b/crypto/sha256.c
+index 1a6a243..b1e90b4 100644
+--- a/crypto/sha256.c
++++ b/crypto/sha256.c
+@@ -489,7 +489,7 @@ SHA256_Final(u_int8_t digest[], SHA256_CTX *context)
+    *context->buffer = 0x80;
+   }
+   /* Set the bit count: */
+-  *(u_int64_t *)&context->buffer[SHA256_SHORT_BLOCK_LENGTH] = context->bitcount;
++  memcpy (&context->buffer[SHA256_SHORT_BLOCK_LENGTH], &context->bitcount, 8);
+ 
+   /* Final transform: */
+   SHA256_Transform(context, context->buffer);
+@@ -781,8 +781,8 @@ SHA512_Last(SHA512_CTX *context)
+   *context->buffer = 0x80;
+  }
+  /* Store the length of input data (in bits): */
+- *(u_int64_t *)&context->buffer[SHA512_SHORT_BLOCK_LENGTH] = context->bitcount[1];
+- *(u_int64_t *)&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8] = context->bitcount[0];
++ memcpy (&context->buffer[SHA512_SHORT_BLOCK_LENGTH], &context->bitcount[1], 8);
++ memcpy (&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8], &context->bitcount[0], 8);
+ 
+  /* Final transform: */
+  SHA512_Transform(context, context->buffer);
+-- 
+1.8.3.2
+

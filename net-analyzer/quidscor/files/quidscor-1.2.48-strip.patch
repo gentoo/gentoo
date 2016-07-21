@@ -1,0 +1,10 @@
+--- a/Makefile
++++ b/Makefile
+@@ -69,7 +69,6 @@
+ 
+ $(PNAME): $(PNAME).debug	 
+ 	$(CP) $(PNAME).debug $@
+-	$(STRIP) $@	 
+ 
+ $(PNAME).debug: libqg/libqg.a $(OFILES) Makefile
+ 	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(OFILES) $(LIBS)

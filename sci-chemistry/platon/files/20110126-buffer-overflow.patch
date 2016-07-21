@@ -1,0 +1,15 @@
+--- xdrvr.c	2010-06-27 15:21:49.026967128 +0200
++++ xdrvr_new.c	2010-06-27 15:22:57.132069867 +0200
+@@ -864,11 +864,9 @@
+ int zdate_(string)
+ char *string;
+ {
+-  static char tmp[25];
+   time_t now;
+   now = time(NULL);
+-  strcpy(tmp,ctime(&now));
+-  strncpy(string,tmp,25);
++  strncpy(string,ctime(&now),25);
+   return(1);
+ }
+ int slaap_(int *i)

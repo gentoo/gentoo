@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A /vault/ is a typed, persistent store for values of arbitrary types.
+		It's like having first-class access to the storage space behind IORefs.
+		
+		The data structure is analogous to a bank vault,
+		where you can access different bank boxes with different keys;
+		hence the name.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">HeinrichApfelmus/vault</remote-id>
+	</upstream>
+</pkgmetadata>

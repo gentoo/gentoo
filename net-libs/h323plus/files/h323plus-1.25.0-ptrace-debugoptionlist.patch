@@ -1,0 +1,13 @@
+diff -ur a/src/h323pluginmgr.cxx b/src/h323pluginmgr.cxx
+--- a/src/h323pluginmgr.cxx	2012-11-29 17:23:26.000000000 +0100
++++ b/src/h323pluginmgr.cxx	2013-02-22 18:56:33.100356993 +0100
+@@ -1543,7 +1543,9 @@
+     PopulateMediaFormatOptions(codecDefn, fmt);
+     PopulateMediaFormatFromGenericData(fmt, 
+           (PluginCodec_H323GenericCodecData *)codecDefn->h323CapabilityData);
++#if PTRACING
+     OpalMediaFormat::DebugOptionList(fmt);
++#endif
+     return true;
+ }
+ 

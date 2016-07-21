@@ -1,0 +1,20 @@
+Add DESDIR support to Makefile.in
+Index: libmimedir-0.5.1/Makefile.in
+===================================================================
+--- libmimedir-0.5.1.orig/Makefile.in	2009-02-03 21:29:05.000000000 -0500
++++ libmimedir-0.5.1/Makefile.in	2009-02-03 21:31:01.000000000 -0500
+@@ -55,9 +55,11 @@
+ 	./test
+ 
+ install: all
+-	${INSTALL} -m 444 libmimedir.h ${includedir}
+-	${INSTALL} -m 444 libmimedir.a ${libdir}
+-	$(LIBTOOL) --mode=install ${INSTALL} -c -m 444 libmimedir.la ${libdir}/libmimedir.la
++	mkdir -p ${DESTDIR}${includedir}
++	mkdir -p ${DESTDIR}${libdir}
++	${INSTALL} -m 444 libmimedir.h ${DESTDIR}${includedir}
++	${INSTALL} -m 444 libmimedir.a ${DESTDIR}${libdir}
++	$(LIBTOOL) --mode=install ${INSTALL} -c -m 444 libmimedir.la ${DESTDIR}${libdir}
+ 
+ clean:
+ 	rm -f $(OBJS) $(LOBJS) test.o *.a *.la *.core

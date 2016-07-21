@@ -1,0 +1,13 @@
+Index: x264-snapshot-20150820-2245/configure
+===================================================================
+--- x264-snapshot-20150820-2245.orig/configure
++++ x264-snapshot-20150820-2245/configure
+@@ -1086,7 +1086,7 @@ fi
+ 
+ if [ "$gpac" = "auto" -a "$lsmash" != "yes" ] ; then
+     gpac="no"
+-    GPAC_LIBS="-lgpac_static"
++    GPAC_LIBS="-lgpac"
+     cc_check "" -lz && GPAC_LIBS="$GPAC_LIBS -lz"
+     if [ "$SYS" = "WINDOWS" ] ; then
+         cc_check "" -lws2_32 && GPAC_LIBS="$GPAC_LIBS -lws2_32"

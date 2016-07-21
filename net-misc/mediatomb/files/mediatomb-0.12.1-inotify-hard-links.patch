@@ -1,0 +1,34 @@
+make sure new hard links get processed like new files by handling
+the IN_CREATE flag properly
+
+patch by Mike Frysinger
+
+--- a/src/autoscan_inotify.cc
++++ b/src/autoscan_inotify.cc
+@@ -281,7 +284,7 @@
+                     }
+                 }
+                 
+-                if (adir != nil && mask & (IN_DELETE | IN_DELETE_SELF | IN_MOVE_SELF | IN_CLOSE_WRITE | IN_MOVED_FROM | IN_MOVED_TO | IN_UNMOUNT))
++                if (adir != nil && mask & (IN_DELETE | IN_DELETE_SELF | IN_MOVE_SELF | IN_CLOSE_WRITE | IN_MOVED_FROM | IN_MOVED_TO | IN_UNMOUNT | IN_CREATE))
+                 {
+                     String fullPath;
+                     if (mask & IN_ISDIR)
+@@ -289,7 +292,7 @@
+                     else
+                         fullPath = path;
+                     
+-                    if (! (mask & IN_MOVED_TO))
++                    if (! (mask & (IN_MOVED_TO | IN_CREATE)))
+                     {
+                         log_debug("deleting %s\n", fullPath.c_str());
+                         
+@@ -312,7 +315,7 @@
+                         if (objectID != INVALID_OBJECT_ID)
+                             cm->removeObject(objectID);
+                     }
+-                    if (mask & (IN_CLOSE_WRITE | IN_MOVED_TO))
++                    if (mask & (IN_CLOSE_WRITE | IN_MOVED_TO | IN_CREATE))
+                     {
+                         log_debug("adding %s\n", path.c_str());
+                         // path, recursive, async, hidden, low priority, cancellable

@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt	2012-01-15 23:14:49.478520648 +0100
++++ b/CMakeLists.txt	2012-01-15 23:15:06.947302261 +0100
+@@ -208,8 +208,7 @@
+ 
+ if (USE_EXPAT)
+ 	add_definitions(-DGENERATEDSAXPARSER_XMLPARSER_EXPAT)
+-	message("FATAL: EXPAT support not implemented")
+-	# TODO:: use externals
++	set(LIBEXPAT_LIBRARIES expat)
+ endif ()
+ 
+ #adding PCRE

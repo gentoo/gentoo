@@ -1,0 +1,7 @@
+--- tests/conftest.py.orig	2014-11-23 21:21:29.000000000 +0100
++++ tests/conftest.py	2015-01-28 18:37:25.388067816 +0100
+@@ -1,3 +1,4 @@
++# -*- coding: utf-8 -*-
+ import re
+ import time
+ import pytest

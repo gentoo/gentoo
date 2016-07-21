@@ -1,0 +1,12 @@
+http://git.videolan.org/gitweb.cgi/vlc.git/?a=commit;h=b82416d7000a993b33e903095a590fe32212a85e
+diff --git a/modules/video_filter/opencv_example.cpp b/modules/video_filter/opencv_example.cpp
+index ae3af05..998f286 100644 (file)
+--- a/modules/video_filter/opencv_example.cpp
++++ b/modules/video_filter/opencv_example.cpp
+@@ -41,6 +41,8 @@
+ 
+ #include <opencv2/core/core_c.h>
+ #include <opencv2/core/core.hpp>
++#include <opencv2/imgproc/imgproc_c.h>
++#include <opencv2/imgproc/imgproc.hpp>
+ #include <opencv2/objdetect/objdetect.hpp>

@@ -1,0 +1,65 @@
+diff -Nur util-linux-2.12r.orig/text-utils/Makefile util-linux-2.12r/text-utils/Makefile
+--- util-linux-2.12r.orig/text-utils/Makefile	2007-06-14 13:37:07 -0600
++++ util-linux-2.12r/text-utils/Makefile	2007-06-14 15:11:01 -0600
+@@ -30,13 +30,19 @@
+ CFLAGS:=$(CFLAGS) -DPGNOBELL
+ endif
+ 
++# On FreeBSD, we need to include libcompat (more uses re_comp & re_exec)
++OS=$(shell uname)
++ifeq "$(OS)" "FreeBSD"
++  LIBCOMPAT=-lcompat
++endif
++
+ all: $(BIN) $(USRBIN)
+ 
+ # more and pg and ul use curses - maybe we can't compile them
+ ifeq "$(HAVE_NCURSES)" "yes"
+ # Have ncurses - make more and pg and ul
+ more pg ul:
+-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBCURSES)
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBCURSES) $(LIBCOMPAT)
+ more: more.o $(LIB)/xstrncpy.o
+ pg: pg.o
+ ul: ul.o
+diff -Nur util-linux-2.12r.orig/text-utils/more.c util-linux-2.12r/text-utils/more.c
+--- util-linux-2.12r.orig/text-utils/more.c	2007-06-14 13:37:07 -0600
++++ util-linux-2.12r/text-utils/more.c	2007-06-14 13:28:34 -0600
+@@ -63,6 +63,16 @@
+ #include <regex.h>
+ #undef _REGEX_RE_COMP
+ 
++/* Include limits.h on FreeBSD */
++#ifdef __FreeBSD__
++#include <limits.h>
++#endif
++
++/* Define CBAUD for FreeBSD */
++#ifndef CBAUD
++#define CBAUD  0010017
++#endif
++
+ #define VI		"vi"	/* found on the user's path */
+ 
+ #define Fopen(s,m)	(Currline = 0,file_pos=0,fopen(s,m))
+@@ -1560,7 +1570,7 @@
+     }
+     if (feof (file)) {
+ 	if (!no_intty) {
+-#ifndef __linux__
++#if !defined(__linux__) && !defined(__FreeBSD__)
+ 				/* No longer in libc 4.5.8. . . */
+ 	    file->_flags &= ~STDIO_S_EOF_SEEN; /* why doesn't fseek do this ??!!??! */
+ #endif
+@@ -1805,7 +1815,11 @@
+     tcgetattr(fileno(stderr), &otty);
+     savetty0 = otty;
+     slow_tty = (otty.c_cflag & CBAUD) < B1200;
++#ifdef __FreeBSD__
++    hardtabs = 1;
++#else
+     hardtabs = (otty.c_oflag & TABDLY) != XTABS;
++#endif
+     if (!no_tty) {
+ 	otty.c_lflag &= ~(ICANON|ECHO);
+ 	otty.c_cc[VMIN] = 1;

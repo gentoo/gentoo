@@ -1,0 +1,50 @@
+--- pam/pam_thinkfinger-uinput.c	2009-12-27 18:42:26.000000000 +0100
++++ pam/pam_thinkfinger-uinput.c	2009-12-27 18:41:55.000000000 +0100
+@@ -34,27 +34,40 @@
+ int uinput_cr (int *fd)
+ {
+ 	int retval = 0, ev_size = 0;
+-	struct input_event ev = {
++	struct input_event key_ev = {
+ 		.type = EV_KEY,
+ 		.code = KEY_ENTER,
+ 		.time = {0, }
+ 	};
+ 
+-	ev_size = sizeof (ev);
++	ev_size = sizeof (key_ev);
+ 
+ 	/* key press */
+-	ev.value = 1;
+-	if (write (*fd, &ev, ev_size) != ev_size) {
++	key_ev.value = 1;
++	if (write (*fd, &key_ev, ev_size) != ev_size) {
+ 		retval = errno;
+ 		goto out;
+ 	}
+ 	/* key release */
+-	ev.value = 0;
+-	if (write (*fd, &ev, ev_size) != ev_size) {
++	key_ev.value = 0;
++	if (write (*fd, &key_ev, ev_size) != ev_size) {
+ 		retval = errno;
+ 		goto out;
+ 	}
+-
++	
++	/* syn event */
++	struct input_event syn_ev = {
++	  .time = {0, },
++	  .type = EV_SYN,
++	  .code = SYN_REPORT,
++	  .value = 0
++	};
++	
++	if (write (*fd, &syn_ev, ev_size) != ev_size) {
++		retval = errno;
++		goto out;
++	}
++    
+ out:
+ 	return retval;
+ }

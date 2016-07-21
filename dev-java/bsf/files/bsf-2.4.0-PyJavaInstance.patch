@@ -1,0 +1,35 @@
+--- src/org/apache/bsf/engines/jython/JythonEngine.java.orig	2015-07-04 08:00:17.120000000 +0000
++++ src/org/apache/bsf/engines/jython/JythonEngine.java	2015-07-04 08:04:55.230000000 +0000
+@@ -26,7 +26,7 @@
+ import org.apache.bsf.util.BSFFunctions;
+ import org.python.core.Py;
+ import org.python.core.PyException;
+-import org.python.core.PyJavaInstance;
++import org.python.core.PyJavaType;
+ import org.python.core.PyObject;
+ import org.python.util.InteractiveInterpreter;
+ 
+@@ -110,8 +110,9 @@
+           
+           Object result = interp.eval ("bsf_temp_fn()");
+           
+-          if (result != null && result instanceof PyJavaInstance)
+-              result = ((PyJavaInstance)result).__tojava__(Object.class);
++          if (result != null && result instanceof PyJavaType)
++              //result = ((PyJavaInstance)result).__tojava__(Object.class);
++              result = PyJavaType.wrapJavaObject(result).__tojava__(Object.class);
+           return result;
+       } catch (PyException e) {
+           throw new BSFException (BSFException.REASON_EXECUTION_ERROR,
+@@ -126,8 +127,9 @@
+ 		      Object script) throws BSFException {
+ 	try {
+ 	  Object result = interp.eval (byteify(script.toString ()));
+-	  if (result != null && result instanceof PyJavaInstance)
+-		result = ((PyJavaInstance)result).__tojava__(Object.class);
++	  if (result != null && result instanceof PyJavaType)
++        //result = ((PyJavaInstance)result).__tojava__(Object.class);
++        result = PyJavaType.wrapJavaObject(result).__tojava__(Object.class);
+ 	  return result;
+ 	} catch (PyException e) {
+ 	  throw new BSFException (BSFException.REASON_EXECUTION_ERROR,

@@ -1,0 +1,55 @@
+--- a/Makefile.in	1999-05-20 11:07:51.000000000 +0200
++++ b/Makefile.in	2012-12-12 17:22:36.444775985 +0100
+@@ -3,7 +3,7 @@
+ VPATH         = $(srcdir)
+ 
+ CC            = @CC@
+-CFLAGS        = -I.     # -O2   # for gcc 2.2.2
++CFLAGS        += -I.
+ 
+ INSTALL       = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -79,15 +79,15 @@
+ 
+ freeze$(EXE):   $(OBJS)
+ 		$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+-		-strip $@
++		
+ 
+ statist$(EXE):  statist.$(OBJ) lz.$(OBJ)
+ 		$(CC) $(LDFLAGS) -o $@ statist.$(OBJ) lz.$(OBJ) $(LIBS)
+-		-strip $@
++		
+ 
+ showhuf$(EXE):  showhuf.$(OBJ)
+ 		$(CC) $(LDFLAGS) -o $@ showhuf.$(OBJ) $(LIBS)
+-		-strip $@
++		
+ 
+ clobber:        clean
+ 		rm -f freeze$(EXE) statist$(EXE) showhuf$(EXE) *.man \#* *~ config.h Makefile
+@@ -101,18 +101,18 @@
+ 
+ $(DEST)/freeze: freeze
+ 		$(INSTALL_PROGRAM) freeze $@
+-		-ln -f $@ $(DEST)/melt
+-		-ln -f $@ $(DEST)/unfreeze
+-		-ln -f $@ $(DEST)/fcat
++		ln -sf $< $(DEST)/melt
++		ln -sf $< $(DEST)/unfreeze
++		ln -sf $< $(DEST)/fcat
+ 
+ $(DEST)/statist: statist
+ 		$(INSTALL_PROGRAM) statist $@
+ 
+ $(MANDEST)/freeze.$(SEC): freeze.1
+ 		$(INSTALL_DATA) $(srcdir)/freeze.1 $@
+-		-ln -f $@ $(MANDEST)/melt.$(SEC)
+-		-ln -f $@ $(MANDEST)/unfreeze.$(SEC)
+-		-ln -f $@ $(MANDEST)/fcat.$(SEC)
++		ln -sf $< $(MANDEST)/melt.$(SEC)
++		ln -sf $< $(MANDEST)/unfreeze.$(SEC)
++		ln -sf $< $(MANDEST)/fcat.$(SEC)
+ # This is much better for places which keep preformated manpages.
+ #		echo ".so man1/freeze.$(SEC)" > $(MANDEST)/melt.$(SEC)
+ #		echo ".so man1/freeze.$(SEC)" > $(MANDEST)/unfreeze.$(SEC)

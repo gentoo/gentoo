@@ -1,0 +1,32 @@
+From d2dce55c971fc44cc327818b0341eb89f1243db6 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Wed, 28 Jan 2015 21:55:20 -0600
+Subject: scanner: don't pass certain debug level flags to cpp
+
+These may cause cpp to output code that still has #defines in them,
+which the scanner does not expect.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=720504
+
+diff --git a/giscanner/sourcescanner.py b/giscanner/sourcescanner.py
+index dab1602..9a81421 100644
+--- a/giscanner/sourcescanner.py
++++ b/giscanner/sourcescanner.py
+@@ -294,6 +294,14 @@ class SourceScanner(object):
+         cpp_args += ['-E', '-C', '-I.', '-']
+         cpp_args += self._cpp_options
+ 
++        # We expect the preprocessor to remove macros. If debugging is turned
++        # up high enough that won't happen, so strip these out. Bug #720504
++        for flag in ['-g3', '-ggdb3', '-gstabs3', '-gcoff3', '-gxcoff3', '-gvms3']:
++            try:
++                cpp_args.remove(flag)
++            except ValueError:
++                pass
++
+         proc = subprocess.Popen(cpp_args,
+                                 stdin=subprocess.PIPE,
+                                 stdout=subprocess.PIPE)
+-- 
+cgit v0.10.2
+

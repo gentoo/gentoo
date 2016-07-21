@@ -1,0 +1,16 @@
+# le kludge that fixes https://github.com/Heather/gentoo-rust/issues/41
+--- src/rust-installer/install-template.sh
++++ src/rust-installer/install-template.sh
+@@ -622,12 +622,6 @@ install_components() {
+ 	    # Decide the destination of the file
+ 	    local _file_install_path="$_dest_prefix/$_file"
+ 
+-	    if echo "$_file" | grep "^lib/" > /dev/null
+-	    then
+-		local _f="$(echo "$_file" | sed 's/^lib\///')"
+-		_file_install_path="$CFG_LIBDIR/$_f"
+-	    fi
+-
+ 	    if echo "$_file" | grep "^share/man/" > /dev/null
+ 	    then
+ 		local _f="$(echo "$_file" | sed 's/^share\/man\///')"

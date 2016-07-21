@@ -1,0 +1,10 @@
+--- ./ptl_ips/ips_proto_header.h.orig	2012-01-20 15:49:17.000000000 +0400
++++ ./ptl_ips/ips_proto_header.h	2012-01-20 15:49:24.000000000 +0400
+@@ -72,7 +72,6 @@
+         union {
+ 	  struct {
+ 	    __u16 mqhdr : 14;    /* PSM matched queues */
+-	    __u16 dst_subcontext : 2; /* Destination subcontext */
+ 	  };
+ 	  struct {    /* for PSM Active Messages */
+ 	    __u16 amhdr_hidx  : 8; 

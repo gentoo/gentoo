@@ -1,0 +1,15 @@
+respect env LDFLAGS
+
+http://bugs.gentoo.org/236861
+
+--- tc/Makefile
++++ tc/Makefile
+@@ -83,7 +83,7 @@
+ 	rm -f emp_ematch.yacc.output
+ 
+ q_atm.so: q_atm.c
+-	$(CC) $(CFLAGS) -shared -fpic -o q_atm.so q_atm.c -latm
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -fpic -o q_atm.so q_atm.c -latm
+ 
+ %.yacc.c: %.y
+ 	$(YACC) $(YACCFLAGS) -o $@ $<

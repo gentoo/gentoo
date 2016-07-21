@@ -1,0 +1,12 @@
+--- xpyb-1.3.1/configure.ac.orig	2013-05-21 19:01:51.054962821 +0400
++++ xpyb-1.3.1/configure.ac	2013-05-21 19:05:22.342961464 +0400
+@@ -38,7 +38,8 @@
+ 
+ # Find the xcbgen Python package
+ AC_MSG_CHECKING([for xcb-proto python dir])
+-XCBPROTO_XCBPYTHONDIR=`$PKG_CONFIG --variable=pythondir xcb-proto`
++XCBPROTO_XCBPYTHONDIR=`$PYTHON -c 'import xcbgen; from os.path import dirname, abspath, join; \
++                       print abspath(join(dirname(xcbgen.[__file__]), ".."))'`
+ AC_MSG_RESULT($XCBPROTO_XCBPYTHONDIR)
+ AC_SUBST(XCBPROTO_XCBPYTHONDIR)
+ 

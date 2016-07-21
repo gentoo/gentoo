@@ -1,0 +1,12 @@
+diff -ruN kdevelop-php-1.2.0.orig/parser/CMakeLists.txt kdevelop-php-1.2.0/parser/CMakeLists.txt
+--- kdevelop-php-1.2.0.orig/parser/CMakeLists.txt	2011-01-23 20:42:54.000000000 +0100
++++ kdevelop-php-1.2.0/parser/CMakeLists.txt	2011-04-25 22:29:05.486182541 +0200
+@@ -21,6 +21,8 @@
+     ${KDE4_KTEXTEDITOR_LIBS}
+ )
+ 
++add_dependencies( kdev4phpparser php-parser-generated )
++
+ kde4_add_executable( php-parser main.cpp )
+ target_link_libraries(php-parser ${QT_QTCORE_LIBRARY} ${KDEVPLATFORM_TESTS_LIBRARIES} ${KDEVPLATFORM_LANGUAGE_LIBRARIES} kdev4phpparser)
+ 

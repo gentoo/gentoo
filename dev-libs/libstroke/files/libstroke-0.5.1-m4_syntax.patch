@@ -1,0 +1,31 @@
+Index: libstroke-0.5.1/libstroke.m4
+===================================================================
+--- libstroke-0.5.1/libstroke.m4	{cset 02bc4a5e-e9e6-4055-a406-5007a0ac3e55}
++++ libstroke-0.5.1/libstroke.m4	{local clone}
+@@ -26,7 +26,7 @@
+ dnl                     if different from name
+ dnl description         (optional) used to construct help string
+ dnl
+-AC_DEFUN(smr_ARG_WITHLIB, [
++AC_DEFUN([smr_ARG_WITHLIB], [
+ 
+ ifelse($2, , smr_lib=[$1], smr_lib=[$2])
+ 
+@@ -74,7 +74,7 @@
+ dnl extra-flags         (optional) flags required when compiling the
+ dnl                     header, typically more includes; for ex. X_CFLAGS
+ dnl
+-AC_DEFUN(smr_ARG_WITHINCLUDES, [
++AC_DEFUN([smr_ARG_WITHINCLUDES], [
+ 
+ AC_ARG_WITH([$1]-includes,
+ [  --with-$1-includes=DIR  set directory for $1 headers],
+@@ -116,7 +116,7 @@
+ dnl x-libs      (optional) extra libraries, if needed to link with lib
+ dnl x-flags     (optional) extra flags, if needed to include header files
+ dnl
+-AC_DEFUN(smr_CHECK_LIB,
++AC_DEFUN([smr_CHECK_LIB],
+ [
+ ifelse($2, , smr_lib=[$1], smr_lib=[$2])
+ ifelse($5, , , smr_header=[$5])

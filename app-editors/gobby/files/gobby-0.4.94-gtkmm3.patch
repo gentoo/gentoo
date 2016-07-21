@@ -1,0 +1,222 @@
+From 5932bfb4cf653b0588872fd6f8cc106b248ad964 Mon Sep 17 00:00:00 2001
+From: Armin Burgmeier <armin@arbur.net>
+Date: Sun, 29 Apr 2012 14:43:06 +0200
+Subject: [PATCH] Fix build against recent gtkmm3 versions
+
+2012-04-29  Armin Burgmeier  <armin@arbur.net>
+
+	* code/commands/autosave-commands.cpp:
+	* code/commands/folder-commands.cpp:
+	* code/commands/user-join-commands.cpp:
+	* code/core/filechooser.cpp:
+	* code/core/folder.cpp:
+	* code/core/header.cpp:
+	* code/core/preferences.cpp:
+	* code/core/statusbar.cpp:
+	* code/core/textsessionview.cpp:
+	* code/dialogs/initial-dialog.cpp:
+	* code/dialogs/preferences-dialog.cpp:
+	* code/operations/operation-open.cpp:
+	* code/operations/operation-open.hpp:
+	* code/operations/operation-save.hpp: Add some missing glibmm includes
+	that are no longer pulled in by gtkmm since recent gtkmm3 versions.
+---
+ ChangeLog                            |   18 ++++++++++++++++++
+ code/commands/autosave-commands.cpp  |    2 ++
+ code/commands/folder-commands.cpp    |    2 ++
+ code/commands/user-join-commands.cpp |    2 ++
+ code/core/filechooser.cpp            |    2 ++
+ code/core/folder.cpp                 |    2 ++
+ code/core/header.cpp                 |    1 +
+ code/core/preferences.cpp            |    4 ++++
+ code/core/statusbar.cpp              |    1 +
+ code/core/textsessionview.cpp        |    3 +++
+ code/dialogs/initial-dialog.cpp      |    1 +
+ code/dialogs/preferences-dialog.cpp  |    1 +
+ code/operations/operation-open.cpp   |    2 ++
+ code/operations/operation-open.hpp   |    1 +
+ code/operations/operation-save.hpp   |    1 +
+ 15 files changed, 43 insertions(+)
+
+diff --git a/code/commands/autosave-commands.cpp b/code/commands/autosave-commands.cpp
+index 0759b0d..827ffaf 100644
+--- a/code/commands/autosave-commands.cpp
++++ b/code/commands/autosave-commands.cpp
+@@ -23,6 +23,8 @@
+ 
+ #include "core/sessionuserview.hpp"
+ 
++#include <glibmm/main.h>
++
+ #include <ctime>
+ 
+ class Gobby::AutosaveCommands::Info
+diff --git a/code/commands/folder-commands.cpp b/code/commands/folder-commands.cpp
+index 92b7d71..8cc2bee 100644
+--- a/code/commands/folder-commands.cpp
++++ b/code/commands/folder-commands.cpp
+@@ -20,6 +20,8 @@
+ #include "commands/folder-commands.hpp"
+ #include "core/sessionuserview.hpp"
+ 
++#include <glibmm/main.h>
++
+ #include <libinftextgtk/inf-text-gtk-buffer.h>
+ 
+ // TODO: Make this work with non-text documents also... maybe split &
+diff --git a/code/commands/user-join-commands.cpp b/code/commands/user-join-commands.cpp
+index ebb0810..89ffdf2 100644
+--- a/code/commands/user-join-commands.cpp
++++ b/code/commands/user-join-commands.cpp
+@@ -20,6 +20,8 @@
+ #include "commands/user-join-commands.hpp"
+ #include "util/i18n.hpp"
+ 
++#include <glibmm/main.h>
++
+ #include <libinfinity/common/inf-error.h>
+ 
+ namespace
+diff --git a/code/core/filechooser.cpp b/code/core/filechooser.cpp
+index fbd7a67..23b85cf 100644
+--- a/code/core/filechooser.cpp
++++ b/code/core/filechooser.cpp
+@@ -19,6 +19,8 @@
+ 
+ #include "core/filechooser.hpp"
+ 
++#include <glibmm/miscutils.h>
++#include <glibmm/convert.h>
+ #include <gtkmm/stock.h>
+ 
+ Gobby::FileChooser::Dialog::Dialog(Gobby::FileChooser& chooser,
+diff --git a/code/core/folder.cpp b/code/core/folder.cpp
+index f9ebadc..7c84206 100644
+--- a/code/core/folder.cpp
++++ b/code/core/folder.cpp
+@@ -24,6 +24,8 @@
+ #include "core/texttablabel.hpp"
+ #include "util/file.hpp"
+ 
++#include <glibmm/miscutils.h>
++
+ #include <gdk/gdkkeysyms.h>
+ #include <stdexcept>
+ #include <iostream> // For std::cerr
+diff --git a/code/core/header.cpp b/code/core/header.cpp
+index d5d0c94..8f7f9f4 100644
+--- a/code/core/header.cpp
++++ b/code/core/header.cpp
+@@ -22,6 +22,7 @@
+ #include "util/i18n.hpp"
+ #include "features.hpp" // For PLATFORM_OSX_NATIVE
+ 
++#include <glibmm/markup.h>
+ #include <gtkmm/stock.h>
+ 
+ #ifdef PLATFORM_OSX_NATIVE
+diff --git a/code/core/preferences.cpp b/code/core/preferences.cpp
+index 9b8bfb3..a2952c6 100644
+--- a/code/core/preferences.cpp
++++ b/code/core/preferences.cpp
+@@ -20,6 +20,10 @@
+ #include "features.hpp"
+ #include "core/preferences.hpp"
+ 
++#include <glibmm/miscutils.h>
++#include <glibmm/fileutils.h>
++#include <glibmm/random.h>
++
+ // TODO: Support direct enum config storage via context specialization for
+ // enums.
+ Gobby::Preferences::User::User(Config::ParentEntry& entry):
+diff --git a/code/core/statusbar.cpp b/code/core/statusbar.cpp
+index 9b302b8..0a06a33 100644
+--- a/code/core/statusbar.cpp
++++ b/code/core/statusbar.cpp
+@@ -21,6 +21,7 @@
+ #include "util/gtk-compat.hpp"
+ #include "util/i18n.hpp"
+ 
++#include <glibmm/main.h>
+ #include <gtkmm/frame.h>
+ #include <gtkmm/stock.h>
+ 
+diff --git a/code/core/textsessionview.cpp b/code/core/textsessionview.cpp
+index 2246957..45eae14 100644
+--- a/code/core/textsessionview.cpp
++++ b/code/core/textsessionview.cpp
+@@ -21,6 +21,9 @@
+ #include "util/i18n.hpp"
+ #include "util/color.hpp"
+ 
++#include <glibmm/main.h>
++#include <glibmm/markup.h>
++#include <glibmm/pattern.h>
+ #include <gtkmm/scrolledwindow.h>
+ #include <gtkmm/textiter.h>
+ 
+diff --git a/code/dialogs/initial-dialog.cpp b/code/dialogs/initial-dialog.cpp
+index 031bc2c..494c859 100644
+--- a/code/dialogs/initial-dialog.cpp
++++ b/code/dialogs/initial-dialog.cpp
+@@ -24,6 +24,7 @@
+ #include "util/gtk-compat.hpp"
+ #include "features.hpp"
+ 
++#include <glibmm/markup.h>
+ #include <gtkmm/stock.h>
+ #include <gtkmm/alignment.h>
+ 
+diff --git a/code/dialogs/preferences-dialog.cpp b/code/dialogs/preferences-dialog.cpp
+index d0af7a0..be3690a 100644
+--- a/code/dialogs/preferences-dialog.cpp
++++ b/code/dialogs/preferences-dialog.cpp
+@@ -22,6 +22,7 @@
+ #include "util/i18n.hpp"
+ #include "util/gtk-compat.hpp"
+ 
++#include <glibmm/markup.h>
+ #include <gtkmm/messagedialog.h>
+ #include <gtkmm/scrolledwindow.h>
+ #include <gtkmm/stock.h>
+diff --git a/code/operations/operation-open.cpp b/code/operations/operation-open.cpp
+index 80b795f..26c53fd 100644
+--- a/code/operations/operation-open.cpp
++++ b/code/operations/operation-open.cpp
+@@ -22,6 +22,8 @@
+ #include "core/noteplugin.hpp"
+ #include "util/i18n.hpp"
+ 
++#include <glibmm/main.h>
++
+ #include <libinftextgtk/inf-text-gtk-buffer.h>
+ #include <gtksourceview/gtksourcebuffer.h>
+ 
+diff --git a/code/operations/operation-open.hpp b/code/operations/operation-open.hpp
+index 3e0e6f5..acf63ed 100644
+--- a/code/operations/operation-open.hpp
++++ b/code/operations/operation-open.hpp
+@@ -26,6 +26,7 @@
+ 
+ #include <giomm/file.h>
+ #include <giomm/inputstream.h>
++#include <glibmm/convert.h>
+ 
+ namespace Gobby
+ {
+diff --git a/code/operations/operation-save.hpp b/code/operations/operation-save.hpp
+index f7f2eb7..8fed55d 100644
+--- a/code/operations/operation-save.hpp
++++ b/code/operations/operation-save.hpp
+@@ -25,6 +25,7 @@
+ 
+ #include <giomm/file.h>
+ #include <giomm/outputstream.h>
++#include <glibmm/convert.h>
+ 
+ #include <ctime>
+ 
+-- 
+1.7.10
+

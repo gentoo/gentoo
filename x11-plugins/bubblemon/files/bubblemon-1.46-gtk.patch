@@ -1,0 +1,122 @@
+--- bubblemon.c
++++ bubblemon.c
+@@ -58,6 +58,7 @@
+ #include <gdk/gdk.h>
+ #include <gdk/gdkx.h>
+ #include <X11/Xresource.h>
++#include <gtk/gtk.h>
+ 
+ #include "include/master.xpm"
+ #include "include/bubblemon.h"
+@@ -575,7 +576,7 @@
+     attri.colormap = gdk_colormap_get_system();
+     attri.wmclass_name = "bubblemon";
+     attri.wmclass_class = "bubblemon";
+-    attri.window_type = GDK_WINDOW_TOPLEVEL;
++    attri.window_type = GDK_WINDOW_CHILD;
+ 
+     bm.iconwin = gdk_window_new(bm.win, &attri,
+ 				GDK_WA_TITLE | GDK_WA_WMCLASS);
+@@ -593,7 +594,6 @@
+     wmhints.window_group = win;
+     wmhints.flags =
+ 	StateHint | IconWindowHint | IconPositionHint | WindowGroupHint;
+-    XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
+ 
+     bm.gc = gdk_gc_new(bm.win);
+ 
+@@ -606,6 +606,7 @@
+     gdk_window_set_back_pixmap(bm.iconwin, bm.pixmap, False);
+ 
+     gdk_window_show(bm.win);
++    XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
+ #ifdef KDE_DOCKAPP
+     /* makes the dockapp visible inside KDE wm */
+     gdk_window_show(bm.iconwin);
+--- Makefile
++++ Makefile
+@@ -11,30 +11,49 @@
+ 
+ # no user serviceable parts below
+ EXTRA += $(WMAN)
++# gtk cflags and gtk lib flags
++GTK2_CFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
++GTK2_LIBS = $(shell pkg-config gtk+-2.0 --libs)
++
++
+ # optimization cflags
+-CFLAGS = -O3 -ansi -Wall `gtk-config --cflags` ${EXTRA}
++#CFLAGS = -O3 -Wall ${EXTRA}
++CFLAGS = ${GENTOO_CFLAGS} ${EXTRA}
++
+ # profiling cflags
+-# CFLAGS = -ansi -Wall -pg -O3 `gtk-config --cflags` ${EXTRA} -DPRO
++# CFLAGS = -ansi -Wall -pg -O3 ${EXTRA} -DPRO
+ # test coverage cflags
+-# CFLAGS = -fprofile-arcs -ftest-coverage -Wall -ansi -g `gtk-config --cflags` ${EXTRA} -DPRO
++# CFLAGS = -fprofile-arcs -ftest-coverage -Wall -ansi -g ${EXTRA} -DPRO
+ 
+ 
+-SHELL=sh
++SHELL = sh
+ OS = $(shell uname -s)
++SRCS = bubblemon.c
+ OBJS = bubblemon.o
++BUBBLEMON = bubblemon
++
++LDFLAGS = -shared -Wl
++
++STRIP = strip
++
+ CC = gcc
++INSTALLMAN = -m 644
++
++
+ 
+ # special things for Linux
+ ifeq ($(OS), Linux)
+-    OBJS += sys_linux.o
+-    LIBS = `gtk-config --libs | sed "s/-lgtk//g"`
+-    INSTALL = -m 755
++	SRCS += sys_linux.c
++	OBJS += sys_linux.o
++	INSTALL = -m 755
++	INSTALLMAN = -m 644
+ endif
+ 
+ # special things for FreeBSD
+ ifeq ($(OS), FreeBSD)
++	SRCS += sys_freebsd.c
+     OBJS += sys_freebsd.o
+-    LIBS = `gtk-config --libs | sed "s/-lgtk//g"` -lkvm
++    LIBS = -lkvm
+     INSTALL = -c -g kmem -m 2755 -o root
+ endif
+ 
+@@ -62,17 +81,21 @@
+     ifeq ($(COMPILER), gcc)
+ 	CFLAGS=-O3 -Wall
+     endif
+-    CFLAGS +=`gtk-config --cflags` ${EXTRA}
++    CFLAGS += ${EXTRA}
++	SRCS += sys_sunos.c
+     OBJS += sys_sunos.o
+-    LIBS = `gtk-config --libs` -lkstat -lm
++    LIBS = -lkstat -lm
+     INSTALL = -m 755
+ endif
+ 
++all: $(BUBBLEMON)
+ 
+-all: bubblemon
++bubblemon: clean_obj
++	$(CC) $(GTK2_CFLAGS) $(CFLAGS) -o $(BUBBLEMON) \
++		$(LIBS) $(GTK2_LIBS) $(SRCS)
+ 
+-bubblemon: $(OBJS)
+-	$(CC) $(CFLAGS) -o bubblemon $(OBJS) $(LIBS)
++clean_obj:
++	rm -rf *.o
+ 
+ clean:
+ 	rm -f bubblemon *.o *.bb* *.gcov gmon.* *.da *~

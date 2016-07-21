@@ -1,0 +1,13 @@
+https://code.google.com/p/abominade/issues/detail?id=26
+https://bugzilla.redhat.com/show_bug.cgi?id=700596
+
+--- a8-0.11/setup.py
++++ a8-0.11/setup.py
+@@ -19,7 +19,6 @@
+     'psutil',
+     'logbook',
+     'pygtkhelpers>=0.4.3',
+-    'argparse',
+     'pyyaml',
+   ],
+   packages = [

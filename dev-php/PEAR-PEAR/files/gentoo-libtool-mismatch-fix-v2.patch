@@ -1,0 +1,15 @@
+diff -aruN PEAR.orig/Builder.php PEAR/Builder.php
+--- PEAR.orig/Builder.php	2014-07-12 08:25:32.000000000 -0400
++++ PEAR/Builder.php	2015-01-16 13:43:14.927894013 -0500
+@@ -340,6 +340,11 @@
+         }
+         // }}} end of interactive part
+ 
++        if (file_exists('aclocal.m4')) {
++                $this->_runCommand('rm aclocal.m4');
++                $this->_runCommand('autoreconf');
++        }
++
+         // FIXME make configurable
+         if (!$user=getenv('USER')) {
+             $user='defaultuser';

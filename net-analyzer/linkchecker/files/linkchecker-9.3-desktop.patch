@@ -1,0 +1,34 @@
+From c25bdb3f55a791bfa087fb5a3d8e3d5d62991745 Mon Sep 17 00:00:00 2001
+From: Christopher Meng <cickumqt@gmail.com>
+Date: Fri, 10 Jan 2014 19:57:47 +0800
+Subject: [PATCH] Fix non-standard deskop file
+
+desktop-file-validate /home/rpmaker/rpmbuild/BUILDROOT/linkchecker-8.6-1.fc21.i386/usr/share/applications/linkchecker-gui.desktop /home/rpmaker/rpmbuild/BUILDROOT/linkchecker-8.6-1.fc21.i386/usr/share/applications/linkchecker.desktop
+/home/rpmaker/rpmbuild/BUILDROOT/linkchecker-8.6-1.fc21.i386/usr/share/applications/linkchecker-gui.desktop: error: value "Network;WebDevelopment" for string list key "Categories" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+/home/rpmaker/rpmbuild/BUILDROOT/linkchecker-8.6-1.fc21.i386/usr/share/applications/linkchecker.desktop: error: value "True" for boolean key "Terminal" in group "Desktop Entry" contains invalid characters, boolean values must be "false" or "true"
+/home/rpmaker/rpmbuild/BUILDROOT/linkchecker-8.6-1.fc21.i386/usr/share/applications/linkchecker.desktop: error: value "Network;WebDevelopment" for string list key "Categories" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+---
+ doc/linkchecker-gui.desktop | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/doc/linkchecker-gui.desktop b/doc/linkchecker-gui.desktop
+index 7e06b6e..09bd997 100644
+--- a/doc/linkchecker-gui.desktop
++++ b/doc/linkchecker-gui.desktop
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+-Name=LinkChecker GUI
++Name=LinkChecker GUI
+ GenericName=URL validator
+ GenericName[de]=URL Validator
+ Version=1.0
+ Type=Application
+ Exec=linkchecker-gui
+ Terminal=false
+-Categories=Network;WebDevelopment;
+-Icon=logo48x48
++Categories=Network;WebDevelopment;
++Icon=linkchecker
+-- 
+1.8.5.1
+

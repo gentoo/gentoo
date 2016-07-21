@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>reavertm@gentoo.org</email>
+	<name>Maciej Mrozowski</name>
+</maintainer>
+<maintainer type="project">
+	<email>kde@gentoo.org</email>
+	<name>Gentoo KDE Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>printing@gentoo.org</email>
+	<name>Gentoo Printing Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>office@gentoo.org</email>
+	<description>Please CC on stabilisation bugs</description>
+</maintainer>
+<use>
+	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
+	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
+	<flag name="cairo-qt">Enable experimental Cairo font rasterizer for Qt4 backend.</flag>
+</use>
+<slots>
+	<subslots>Reflects ABI compatibility of libpoppler.so only,
+		NOT libpoppler-{glib,qt4,cpp}.so!</subslots>
+</slots>
+</pkgmetadata>

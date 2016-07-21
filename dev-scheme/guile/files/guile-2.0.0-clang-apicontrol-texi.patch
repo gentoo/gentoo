@@ -1,0 +1,12 @@
+--- a/doc/ref/api-control.texi	2016-06-23 03:35:29.973976657 -0500
++++ b/doc/ref/api-control.texi	2016-06-23 03:33:36.589969005 -0500
+@@ -1492,8 +1492,8 @@
+ @deftypefnx {C Function} void scm_wrong_type_arg (char *@var{subr}, int @var{argnum}, SCM @var{bad_value})
+ @deftypefnx {C Function} void scm_wrong_type_arg_msg (char *@var{subr}, int @var{argnum}, SCM @var{bad_value}, const char *@var{expected})
+ @deftypefnx {C Function} void scm_memory_error (char *@var{subr})
+-Throw an error with the various keys described above.
+ @deftypefnx {C Function} void scm_misc_error (const char *@var{subr}, const char *@var{message}, SCM @var{args})
++Throw an error with the various keys described above.
+ 
+ In @code{scm_wrong_num_args}, @var{proc} should be a Scheme symbol
+ which is the name of the procedure incorrectly invoked.  The other

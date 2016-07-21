@@ -1,0 +1,17 @@
+# /etc/conf.d/cgred.conf: config file for /etc/init.d/cgred
+
+# Uncomment the following line to log to specified file instead of syslog
+#LOG_FILE="/var/log/cgrulesengd.log"
+
+# Uncomment the second line to run CGroup Rules Engine in non-daemon mode
+#NODAEMON=""
+NODAEMON="--nodaemon"
+
+# Uncomment the second line to disable logging for CGroup Rules Engine
+# Uncomment the third line to enable more verbose logging.
+#LOG=""
+LOG="--nolog"
+#LOG="-v"
+
+# PID file
+PID_FILE=/var/run/cgred.pid

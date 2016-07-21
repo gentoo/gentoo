@@ -1,0 +1,21 @@
+Description: Disable workaround for a cairo bug fixed in 1.14.0.
+Bug-Debian: http://bugs.debian.org/770141
+Origin: upstream, commit: r38135
+Last-Update: 2014-11-19
+---
+
+--- gnustep-back-0.24.0.orig/Source/cairo/CairoGState.m
++++ gnustep-back-0.24.0/Source/cairo/CairoGState.m
+@@ -1316,9 +1316,10 @@
+       ssize = [source->_surface size];
+     }
+ 
+-  if (cairo_version() >= CAIRO_VERSION_ENCODE(1, 8, 0))
++  if ((cairo_version() >= CAIRO_VERSION_ENCODE(1, 8, 0))
++      && (cairo_version() <= CAIRO_VERSION_ENCODE(1, 13, 0)))
+     {      
+-      // For cairo > 1.8 we seem to need this adjustment
++      // For cairo > 1.8 and < 1.13 we seem to need this adjustment
+       srcRectInBase.origin.y -= 2 * (source->offset.y - ssize.height);
+     }
+ 

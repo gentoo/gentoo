@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+	A free, simple, high performance, thread safe, Java API that allows
+	developers to easily monitor production applications
+	</longdescription>
+	<upstream>
+		<remote-id type="github">stevensouza/jamonapi</remote-id>
+		<remote-id type="sourceforge">jamonapi</remote-id>
+	</upstream>
+</pkgmetadata>

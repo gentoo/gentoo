@@ -1,0 +1,15 @@
+ AWTI/AWTI_import.cxx |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/AWTI/AWTI_import.cxx b/AWTI/AWTI_import.cxx
+index 8e730ac..e3f9ff4 100644
+--- a/AWTI/AWTI_import.cxx
++++ b/AWTI/AWTI_import.cxx
+@@ -12,6 +12,7 @@
+ #include <GEN.hxx>
+ 
+ #include <climits>
++#include <unistd.h>
+ 
+ using namespace std;
+ 

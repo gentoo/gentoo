@@ -1,0 +1,78 @@
+From 812793c07d3202d3f5bc39091aec2e7071d000c8 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 1 Jan 2012 19:30:57 +0100
+Subject: [PATCH] Use shipped sgmllib for Python 3.x
+
+---
+ feedparser/feedparser.py |   19 +++----------------
+ setup.py                 |    2 +-
+ 2 files changed, 4 insertions(+), 17 deletions(-)
+
+diff --git a/feedparser/feedparser.py b/feedparser/feedparser.py
+index 8275c29..9a8a053 100644
+--- a/feedparser/feedparser.py
++++ b/feedparser/feedparser.py
+@@ -204,17 +204,9 @@ else:
+ try:
+     import sgmllib
+ except ImportError:
+-    # This is probably Python 3, which doesn't include sgmllib anymore
+-    _SGML_AVAILABLE = 0
++    import _feedparser_sgmllib as sgmllib
+ 
+-    # Mock sgmllib enough to allow subclassing later on
+-    class sgmllib(object):
+-        class SGMLParser(object):
+-            def goahead(self, i):
+-                pass
+-            def parse_starttag(self, i):
+-                pass
+-else:
++if True:
+     _SGML_AVAILABLE = 1
+ 
+     # sgmllib defines a number of module-level regular expressions that are
+@@ -2520,9 +2512,6 @@ class _RelativeURIResolver(_BaseHTMLProcessor):
+         _BaseHTMLProcessor.unknown_starttag(self, tag, attrs)
+ 
+ def _resolveRelativeURIs(htmlSource, baseURI, encoding, _type):
+-    if not _SGML_AVAILABLE:
+-        return htmlSource
+-
+     p = _RelativeURIResolver(baseURI, encoding, _type)
+     p.feed(htmlSource)
+     return p.output()
+@@ -2803,8 +2792,6 @@ class _HTMLSanitizer(_BaseHTMLProcessor):
+ 
+ 
+ def _sanitizeHTML(htmlSource, encoding, _type):
+-    if not _SGML_AVAILABLE:
+-        return htmlSource
+     p = _HTMLSanitizer(encoding, _type)
+     htmlSource = htmlSource.replace('<![CDATA[', '&lt;![CDATA[')
+     p.feed(htmlSource)
+@@ -3890,7 +3877,7 @@ def parse(url_file_stream_or_string, etag=None, modified=None, agent=None, refer
+             result['bozo'] = 1
+             result['bozo_exception'] = feedparser.exc or e
+             use_strict_parser = 0
+-    if not use_strict_parser and _SGML_AVAILABLE:
++    if not use_strict_parser:
+         feedparser = _LooseFeedParser(baseuri, baselang, 'utf-8', entities)
+         feedparser.feed(data.decode('utf-8', 'replace'))
+     result['feed'] = feedparser.feeddata
+diff --git a/setup.py b/setup.py
+index a4a60fe..8c15451 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,7 +16,7 @@ setup(
+     download_url = 'https://pypi.python.org/pypi/feedparser',
+     platforms = ['POSIX', 'Windows'],
+     package_dir = {'': 'feedparser'},
+-    py_modules = ['feedparser'],
++    py_modules = ['feedparser', '_feedparser_sgmllib'],
+     keywords = ['atom', 'cdf', 'feed', 'parser', 'rdf', 'rss'],
+     classifiers = [
+         'Development Status :: 5 - Production/Stable',
+-- 
+1.7.8.1
+

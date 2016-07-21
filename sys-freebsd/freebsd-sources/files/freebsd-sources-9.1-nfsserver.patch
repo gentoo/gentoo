@@ -1,0 +1,16 @@
+http://www.freebsd.org/security/advisories/FreeBSD-SA-13:08.nfsserver.asc
+https://bugs.gentoo.org/show_bug.cgi?id=478314
+
+Index: sys/kern/vfs_export.c
+===================================================================
+--- sys/kern/vfs_export.c	(revision 253367)
++++ sys/kern/vfs_export.c	(working copy)
+@@ -208,7 +208,7 @@
+ 	np->netc_anon = crget();
+ 	np->netc_anon->cr_uid = argp->ex_anon.cr_uid;
+ 	crsetgroups(np->netc_anon, argp->ex_anon.cr_ngroups,
+-	    np->netc_anon->cr_groups);
++	    argp->ex_anon.cr_groups);
+ 	np->netc_anon->cr_prison = &prison0;
+ 	prison_hold(np->netc_anon->cr_prison);
+ 	np->netc_numsecflavors = argp->ex_numsecflavors;

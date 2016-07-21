@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		XOM is a new XML object model. It is a tree-based API for processing
+		XML with Java that strives for correctness and simplicity.
+	</longdescription>
+</pkgmetadata>

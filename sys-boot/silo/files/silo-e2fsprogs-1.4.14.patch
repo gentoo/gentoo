@@ -1,0 +1,54 @@
+# Patch to make silo compile and work with >=e2fsprogs-1.4.14
+# http://bugs.gentoo.org/show_bug.cgi?id=350677
+# http://marc.info/?l=linux-sparc&m=129468771631829&w=2
+--- silo.orig/common/malloc.c	2010-02-28 12:11:51.000000000 +0100
++++ silo/common/malloc.c	2011-01-22 12:06:42.849946213 +0100
+@@ -27,6 +27,12 @@
+ 
+ static char *last_alloc = 0;
+ 
++static char *align_ptr_to(char *ptr, unsigned long align)
++{
++    return (char *) ((((unsigned long) ptr) + (align - 1UL)) &
++		     ~(align - 1UL));
++}
++
+ void *malloc (int size)
+ {
+     char *caddr;
+@@ -34,10 +40,34 @@
+     caddr = malloc_ptr;
+     malloc_ptr += size;
+     last_alloc = caddr;
+-    malloc_ptr = (char *) ((((unsigned long) malloc_ptr) + 7) & (~7));
++    malloc_ptr = align_ptr_to(malloc_ptr, 8UL);
+     return caddr;
+ }
+ 
++int posix_memalign(void **memptr, unsigned long alignment, unsigned long size)
++{
++    char *caddr;
++
++    if (alignment & (alignment - 1UL))
++        return -1;
++    if (alignment & (sizeof(void *) - 1UL))
++        return -1;
++
++    if (size == 0) {
++      *memptr = (void *) 0;
++      return 0;
++    }
++
++    caddr = align_ptr_to(malloc_ptr, alignment);
++    malloc_ptr = (caddr + size);
++    last_alloc = caddr;
++    malloc_ptr = align_ptr_to(malloc_ptr, 8UL);
++
++    *memptr = caddr;
++
++    return 0;
++}
++
+ void free (void *m)
+ {
+     if (m == last_alloc)

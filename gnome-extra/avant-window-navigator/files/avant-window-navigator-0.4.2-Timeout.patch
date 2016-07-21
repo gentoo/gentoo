@@ -1,0 +1,11 @@
+--- a/applets/quick-prefs/applet.vala
++++ b/applets/quick-prefs/applet.vala
+@@ -288,7 +288,7 @@
+ 
+     if (this.timer_id == 0)
+     {
+-      this.timer_id = Timeout.add (300, this.on_timer_tick);
++      this.timer_id = Gtk.Timeout.add (300, this.on_timer_tick);
+     }
+     if (this.autohide_cookie == 0)
+     {

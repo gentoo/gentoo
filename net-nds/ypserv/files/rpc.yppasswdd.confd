@@ -1,0 +1,7 @@
+# -e chsh allows changing shell through ypchsh,
+# -e chfn allows changing GECOS ("finger") information through ypchfn,
+# -D <dir> allows specification of directory with yp/NIS sources
+# if other than /etc.
+#YPPASSWDD_OPTS="-e chsh -e chfn -D /var/yp/source"
+
+

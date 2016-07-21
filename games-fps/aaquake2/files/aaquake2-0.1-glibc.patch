@@ -1,0 +1,22 @@
+--- rw_aa.c.old
++++ rw_aa.c
+@@ -61,7 +61,7 @@
+ #include <signal.h>
+ #include <sys/mman.h>
+ 
+-#include <asm/io.h>
++#include <sys/io.h>
+ 
+ #include <aalib.h>
+ 
+--- rw_in_aa.c.old
++++ rw_in_aa.c
+@@ -46,7 +46,7 @@
+ #include <signal.h>
+ #include <sys/mman.h>
+ 
+-#include <asm/io.h>
++#include <sys/io.h>
+ 
+ #include <aalib.h>
+ 

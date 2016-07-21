@@ -1,0 +1,39 @@
+diff -ur ntfs-3g_ntfsprogs-2014.2.15.orig/ntfsprogs/Makefile.am ntfs-3g_ntfsprogs-2014.2.15/ntfsprogs/Makefile.am
+--- ntfs-3g_ntfsprogs-2014.2.15.orig/ntfsprogs/Makefile.am	2015-01-29 00:12:51.786936314 -0800
++++ ntfs-3g_ntfsprogs-2014.2.15/ntfsprogs/Makefile.am	2015-01-29 00:13:59.156442369 -0800
+@@ -140,8 +140,8 @@
+ # mkfs.ntfs[.8] hard link
+ 
+ install-exec-hook:
+-	$(INSTALL) -d $(DESTDIR)/sbin
+-	$(LN_S) -f $(sbindir)/mkntfs $(DESTDIR)/sbin/mkfs.ntfs
++	$(INSTALL) -d $(DESTDIR)/$(sbindir)
++	$(LN_S) -f mkntfs $(DESTDIR)/$(sbindir)/mkfs.ntfs
+ 
+ install-data-hook:
+ 	$(INSTALL) -d $(DESTDIR)$(man8dir)
+diff -ur ntfs-3g_ntfsprogs-2014.2.15.orig/src/Makefile.am ntfs-3g_ntfsprogs-2014.2.15/src/Makefile.am
+--- ntfs-3g_ntfsprogs-2014.2.15.orig/src/Makefile.am	2015-01-29 00:12:51.789936248 -0800
++++ ntfs-3g_ntfsprogs-2014.2.15/src/Makefile.am	2015-01-29 00:14:00.570411008 -0800
+@@ -68,9 +68,9 @@
+ 
+ if ENABLE_MOUNT_HELPER
+ install-exec-local:	install-rootbinPROGRAMS
+-	$(MKDIR_P) "$(DESTDIR)/sbin"
+-	$(LN_S) -f "$(rootbindir)/ntfs-3g" "$(DESTDIR)/sbin/mount.ntfs-3g"
+-	$(LN_S) -f "$(rootbindir)/lowntfs-3g" "$(DESTDIR)/sbin/mount.lowntfs-3g"
++	$(MKDIR_P) "$(DESTDIR)/$(sbindir)"
++	$(LN_S) -f "../bin/ntfs-3g" "$(DESTDIR)/$(sbindir)/mount.ntfs-3g"
++	$(LN_S) -f "../bin/lowntfs-3g" "$(DESTDIR)/$(sbindir)/mount.lowntfs-3g"
+ endif
+ 
+ install-data-local:	install-man8
+@@ -80,7 +79,7 @@
+ uninstall-local:
+ 	$(RM) -f "$(DESTDIR)$(man8dir)/mount.ntfs-3g.8"
+ if ENABLE_MOUNT_HELPER
+-	$(RM) -f "$(DESTDIR)/sbin/mount.ntfs-3g" "$(DESTDIR)/sbin/mount.lowntfs-3g"
++	$(RM) -f "$(DESTDIR)/$(sbindir)/mount.ntfs-3g" "$(DESTDIR)/$(sbindir)/mount.lowntfs-3g"
+ endif
+ 
+ endif # ENABLE_NTFS_3G

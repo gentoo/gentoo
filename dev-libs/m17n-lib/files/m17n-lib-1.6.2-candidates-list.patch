@@ -1,0 +1,83 @@
+--- src/input.c	2011/02/14 04:59:22	1.154
++++ src/input.c	2011/03/09 05:45:49	1.155
+@@ -3004,9 +3004,6 @@
+ take_action_list (MInputContext *ic, MPlist *action_list)
+ {
+   MInputContextInfo *ic_info = (MInputContextInfo *) ic->info;
+-  MPlist *candidate_list = ic->candidate_list;
+-  int candidate_index = ic->candidate_index;
+-  int candidate_show = ic->candidate_show;
+   MTextProperty *prop;
+ 
+   MPLIST_DO (action_list, action_list)
+@@ -3480,31 +3477,6 @@
+ 	    };
+ 	}
+     }
+-
+-  if (ic->candidate_list)
+-    {
+-      M17N_OBJECT_UNREF (ic->candidate_list);
+-      ic->candidate_list = NULL;
+-    }
+-  if (ic->cursor_pos > 0
+-      && (prop = mtext_get_property (ic->preedit, ic->cursor_pos - 1,
+-				     Mcandidate_list)))
+-    {
+-      ic->candidate_list = mtext_property_value (prop);
+-      M17N_OBJECT_REF (ic->candidate_list);
+-      ic->candidate_index
+-	= (int) mtext_get_prop (ic->preedit, ic->cursor_pos - 1,
+-				Mcandidate_index);
+-      ic->candidate_from = mtext_property_start (prop);
+-      ic->candidate_to = mtext_property_end (prop);
+-    }
+-
+-  if (candidate_list != ic->candidate_list)
+-    ic->candidates_changed |= MINPUT_CANDIDATES_LIST_CHANGED;
+-  if (candidate_index != ic->candidate_index)
+-    ic->candidates_changed |= MINPUT_CANDIDATES_INDEX_CHANGED;
+-  if (candidate_show != ic->candidate_show)
+-    ic->candidates_changed |= MINPUT_CANDIDATES_SHOW_CHANGED;    
+   return 0;
+ }
+ 
+@@ -3914,7 +3886,37 @@
+   ic_info->key_unhandled = 0;
+ 
+   do {
+-    if (handle_key (ic) < 0)
++    MPlist *candidate_list = ic->candidate_list;
++    int candidate_index = ic->candidate_index;
++    int candidate_show = ic->candidate_show;
++    MTextProperty *prop;
++    int result = handle_key (ic);
++
++    if (ic->candidate_list)
++      {
++	M17N_OBJECT_UNREF (ic->candidate_list);
++	ic->candidate_list = NULL;
++      }
++    if (ic->cursor_pos > 0
++	&& (prop = mtext_get_property (ic->preedit, ic->cursor_pos - 1,
++				       Mcandidate_list)))
++      {
++	ic->candidate_list = mtext_property_value (prop);
++	M17N_OBJECT_REF (ic->candidate_list);
++	ic->candidate_index
++	  = (int) mtext_get_prop (ic->preedit, ic->cursor_pos - 1,
++				  Mcandidate_index);
++	ic->candidate_from = mtext_property_start (prop);
++	ic->candidate_to = mtext_property_end (prop);
++      }
++    if (candidate_list != ic->candidate_list)
++      ic->candidates_changed |= MINPUT_CANDIDATES_LIST_CHANGED;
++    if (candidate_index != ic->candidate_index)
++      ic->candidates_changed |= MINPUT_CANDIDATES_INDEX_CHANGED;
++    if (candidate_show != ic->candidate_show)
++      ic->candidates_changed |= MINPUT_CANDIDATES_SHOW_CHANGED;    
++
++    if (result < 0)
+       {
+ 	/* KEY was not handled.  Delete it from the current key sequence.  */
+ 	if (ic_info->used > 0)

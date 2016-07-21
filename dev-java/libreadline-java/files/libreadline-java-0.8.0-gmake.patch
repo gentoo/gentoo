@@ -1,0 +1,21 @@
+Index: libreadline-java-0.8.0/src/native/Makefile
+===================================================================
+--- libreadline-java-0.8.0.orig/src/native/Makefile
++++ libreadline-java-0.8.0/src/native/Makefile
+@@ -69,13 +69,13 @@ all: $(T_LIBS) 
+ lib: $(ROOTDIR)/$(LIB_PRE)$(TG).$(LIB_EXT)
+ 
+ JavaReadline:
+-	make TG=$@ lib
++	$(MAKE) TG=$@ lib
+ 
+ JavaEditline:
+-	make TG=$@ lib
++	$(MAKE) TG=$@ lib
+ 
+ JavaGetline:
+-	make TG=$@ lib
++	$(MAKE) TG=$@ lib
+ 
+ $(ROOTDIR)/$(LIB_PRE)$(TG).$(LIB_EXT): $(OBJECTS)
+ ifeq (MSC,$(WIN32))

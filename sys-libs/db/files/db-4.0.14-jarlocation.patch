@@ -1,0 +1,14 @@
+diff -ur db-4.0.14.old/dist/Makefile.in db-4.0.14/dist/Makefile.in
+--- db-4.0.14.old/dist/Makefile.in	2003-10-18 02:24:50.000000000 -0700
++++ db-4.0.14/dist/Makefile.in	2003-10-18 02:25:18.000000000 -0700
+@@ -105,8 +105,8 @@
+ JAVA_DBDIR=	$(JAVA_SRCDIR)/$(JAVA_DBREL)
+ JAVA_EXDIR=	$(JAVA_SRCDIR)/$(JAVA_EXREL)
+ 
+-libj_jarfile=	db.jar
+-libj_exjarfile=	dbexamples.jar
++libj_jarfile=	db-$(SOVERSION).jar
++libj_exjarfile=	dbexamples-$(SOVERSION).jar
+ libjso_base=	libdb_java
+ libjso=		$(libjso_base)-$(SOVERSION).@SOSUFFIX@
+ libjso_static=	$(libjso_base)-$(SOVERSION).a

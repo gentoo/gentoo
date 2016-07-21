@@ -1,0 +1,62 @@
+diff -uNr ppx_sexp_value-113.33.00/_oasis ppx_sexp_value-113.33.00+4.03/_oasis
+--- ppx_sexp_value-113.33.00/_oasis	2016-03-09 16:44:54.000000000 +0100
++++ ppx_sexp_value-113.33.00+4.03/_oasis	2016-03-22 15:13:51.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_sexp_value
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         A ppx rewriter that simplifies building s-expressions from ocaml values
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_sexp_value-113.33.00/opam ppx_sexp_value-113.33.00+4.03/opam
+--- ppx_sexp_value-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_sexp_value-113.33.00+4.03/opam	2016-03-22 17:51:37.000000000 +0100
+@@ -18,4 +18,4 @@
+   "ppx_sexp_conv"
+   "ppx_tools"     {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_sexp_value-113.33.00/src/ppx_sexp_value.ml ppx_sexp_value-113.33.00+4.03/src/ppx_sexp_value.ml
+--- ppx_sexp_value-113.33.00/src/ppx_sexp_value.ml	2016-03-09 16:44:54.000000000 +0100
++++ ppx_sexp_value-113.33.00+4.03/src/ppx_sexp_value.ml	2016-03-22 15:13:51.000000000 +0100
+@@ -25,13 +25,10 @@
+     eapply ~loc (evar ~loc ("Sexplib.Conv.sexp_of_" ^ typ)) [pexp_constant ~loc const]
+   in
+   match const with
+-  | Const_int       _ -> f "int"
+-  | Const_char      _ -> f "char"
+-  | Const_string    _ -> f "string"
+-  | Const_float     _ -> f "float"
+-  | Const_int32     _ -> f "int32"
+-  | Const_int64     _ -> f "int64"
+-  | Const_nativeint _ -> f "nativeint"
++  | Pconst_integer       _ -> f "int"
++  | Pconst_char      _ -> f "char"
++  | Pconst_string    _ -> f "string"
++  | Pconst_float     _ -> f "float"
+ ;;
+ 
+ let sexp_of_constraint ~loc expr ctyp =
+@@ -90,7 +87,7 @@
+     | Pexp_record (fields, None) ->
+       sexp_of_record ~loc fields
+     | Pexp_apply ({ pexp_desc = Pexp_ident { txt = Lident "~~"; _ }; _},
+-                  [ ("", { pexp_desc = Pexp_constraint (expr, ctyp); _ }) ]) ->
++                  [ (Nolabel, { pexp_desc = Pexp_constraint (expr, ctyp); _ }) ]) ->
+       let expr_str = Pprintast.string_of_expression expr in
+       sexp_list ~loc
+         (elist ~loc [ sexp_atom ~loc (estring ~loc expr_str)
+@@ -168,7 +165,7 @@
+     (* Don't misinterpret [%sexp ~~(e : t)] for the deprecated application syntax. *)
+     | Pexp_apply ({ pexp_desc = Pexp_ident { txt = Lident "~~"; _}; _ }, _) -> expr
+     | Pexp_apply (f, (_ :: _ as args))
+-      when List.for_all args ~f:(fun (lab, _) -> lab = "") ->
++      when List.for_all args ~f:(fun (lab, _) -> lab = Nolabel) ->
+       let el = List.map (f :: List.map args ~f:snd) ~f:rewrite_arg in
+       let e = pexp_tuple ~loc el in
+       if !allow_deprecated_syntax then

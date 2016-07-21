@@ -1,0 +1,35 @@
+From dbf26f0a42a7f46d363abb150192bfcd1ccb204b Mon Sep 17 00:00:00 2001
+From: Laurent Georget <laurent@lgeorget.eu>
+Date: Sat, 14 May 2016 19:38:55 +0200
+Subject: [PATCH] Fix the `symbol stdscr not found` compilation error (#254)
+
+The compilation fails when the symbols of terminfo are not present in
+the libncurses.so. This can happen when the terminfo library libtinfo.so
+is compiled separately. Using pkg_config is the correct approach to
+handle all cases.
+---
+ cmake/ConkyPlatformChecks.cmake | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/cmake/ConkyPlatformChecks.cmake b/cmake/ConkyPlatformChecks.cmake
+index 05d8bbd..f19ac24 100644
+--- a/cmake/ConkyPlatformChecks.cmake
++++ b/cmake/ConkyPlatformChecks.cmake
+@@ -119,12 +119,12 @@ if(BUILD_HTTP)
+ endif(BUILD_HTTP)
+ 
+ if(BUILD_NCURSES)
+-	check_include_files(ncurses.h NCURSES_H)
+-	find_library(NCURSES_LIB NAMES ncurses)
+-	if(NOT NCURSES_H OR NOT NCURSES_LIB)
++	pkg_check_modules(NCURSES ncurses)
++	if(NOT NCURSES_FOUND)
+ 		message(FATAL_ERROR "Unable to find ncurses library")
+-	endif(NOT NCURSES_H OR NOT NCURSES_LIB)
+-	set(conky_libs ${conky_libs} ${NCURSES_LIB})
++	endif(NOT NCURSES_FOUND)
++	set(conky_libs ${conky_libs} ${NCURSES_LIBRARIES})
++	set(conky_includes ${conky_includes} ${NCURSES_INCLUDE_DIRS})
+ endif(BUILD_NCURSES)
+ 
+ if(BUILD_MYSQL)

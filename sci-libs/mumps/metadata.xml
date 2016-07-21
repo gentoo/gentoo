@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
+  MUltifrontal Massively Parallel sparse direct Solver implements a
+  direct solver for large sparse linear systems, with a particular
+  focus on symmetric positive definite matrices. It can operate on
+  distributed matrices e.g. over a cluster. It has Fortran and C
+  interfaces, and can interface with ordering tools such 
+  as Scotch or Metis.
+</longdescription>
+<use>
+  <flag name="metis">Enable matrix ordering with METIS
+  (<pkg>sci-libs/metis</pkg>, <pkg>sci-libs/parmetis</pkg>)</flag>
+  <flag name="scotch">Enable matrix ordering with <pkg>sci-libs/scotch</pkg></flag>
+</use>
+</pkgmetadata>

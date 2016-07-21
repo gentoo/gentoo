@@ -1,0 +1,53 @@
+slotmove kde-misc/colibri 0 4
+slotmove kde-misc/eventlist 0 4
+slotmove media-gfx/blender 2.60 0
+slotmove kde-misc/plasma-mpd-nowplaying 0 4
+slotmove kde-misc/kbstateapplet 0 4
+move net-voip/telepathy-sofiasip net-voip/telepathy-rakia
+slotmove kde-misc/kio-ftps 0 4
+slotmove kde-misc/kcollectd 0 4
+slotmove kde-misc/wicd-client-kde 0 4
+slotmove kde-misc/kanyremote 0 4
+slotmove kde-misc/semantik 0 4
+slotmove kde-misc/kio-upnp-ms 0 4
+move app-i18n/ibus-mozc app-i18n/mozc
+move sys-auth/nss-ldapd sys-auth/nss-pam-ldapd
+move sys-kernel/amd-ucode sys-firmware/amd-ucode
+move sys-apps/seabios sys-firmware/seabios
+move sys-apps/sgabios sys-firmware/sgabios
+move sys-apps/vgabios sys-firmware/vgabios
+move net-wireless/iwl1000-ucode sys-firmware/iwl1000-ucode
+move kde-misc/kdocker x11-misc/kdocker
+move net-misc/ferm net-firewall/ferm
+move sys-apps/whdd sys-block/whdd
+move dev-ruby/ruby-liquid dev-ruby/liquid
+move dev-ruby/sexp-processor dev-ruby/sexp_processor
+move dev-ruby/sqlite3-ruby dev-ruby/sqlite3
+move dev-ruby/ruby-zoom dev-ruby/zoom
+move dev-ruby/ruby-activeldap dev-ruby/activeldap
+move dev-ruby/ruby-fcgi dev-ruby/fcgi
+move dev-ruby/ruby-postgres dev-ruby/postgres
+move dev-ruby/ruby-inline dev-ruby/RubyInline
+move dev-ruby/ruby-ferret dev-ruby/ferret
+move net-wireless/iwl2030-ucode sys-firmware/iwl2030-ucode
+move net-wireless/iwl3945-ucode sys-firmware/iwl3945-ucode
+move net-wireless/iwl4965-ucode sys-firmware/iwl4965-ucode
+move net-wireless/iwl5000-ucode sys-firmware/iwl5000-ucode
+move net-wireless/iwl5150-ucode sys-firmware/iwl5150-ucode
+move net-wireless/iwl6000-ucode sys-firmware/iwl6000-ucode
+move net-wireless/iwl6005-ucode sys-firmware/iwl6005-ucode
+move net-wireless/iwl6030-ucode sys-firmware/iwl6030-ucode
+move net-wireless/iwl6050-ucode sys-firmware/iwl6050-ucode
+move net-analyzer/nagios-nsca net-analyzer/nsca
+move net-analyzer/nagios-nrpe net-analyzer/nrpe
+move dev-ruby/ruby-dbi dev-ruby/dbi
+move app-arch/TheUnarchiver app-arch/unar
+slotmove =media-libs/gst-plugins-bad-0.10* 0 0.10
+slotmove <media-libs/grilo-0.2 0 0.1
+slotmove <media-plugins/grilo-plugins-0.2 0 0.1
+slotmove app-doc/pms 2 0
+slotmove app-doc/pms 3 0
+slotmove app-doc/pms 4 0
+slotmove app-doc/pms 5 0
+move app-misc/lolcat games-misc/lolcat
+slotmove =dev-ruby/trollop-2.0 0 2

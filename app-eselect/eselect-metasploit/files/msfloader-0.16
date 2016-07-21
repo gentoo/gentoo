@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#todo:
+#add in optional auto starting/stopping of postgres
+
+#read the desired version of ruby from the eselected version of msf
+header="$(head -n1 /usr/lib/metasploit/msfconsole)"
+ruby="${header:2}"
+
+#normally msf makes this dir, however, this script runs first
+if [ ! -d ~/.msf4 ]; then
+	mkdir ~/.msf4
+fi
+
+#we cannot control if msf* exits normally so always start with cleanup
+if [ -f ~/.msf4/Gemfile ]; then
+	rm ~/.msf4/Gemfile
+fi
+if ls -A ~/.msf4/*.gemspec > /dev/zero 2>&1; then
+	rm ~/.msf4/*.gemspec
+fi
+
+#fetch the latest Gemfile and gemspecsfrom the selected version of msf
+cp /usr/lib/metasploit/Gemfile ~/.msf4/
+if ls -A /usr/lib/metasploit/*.gemspec > /dev/zero 2>&1; then
+	cp /usr/lib/metasploit/*.gemspec ~/.msf4/
+fi
+
+#ensure Gemfile.lock is up to date
+BUNDLE_GEMFILE=~/.msf4/Gemfile ${ruby} -S bundle check > /dev/null 2>&1
+if [ "$?" != "0" ]; then
+	if [ -f ~/.msf4/Gemfile.lock ]; then
+		rm ~/.msf4/Gemfile.lock
+	else
+		echo "Something went wrong, please open a bug for metasploit on https://bugs.gentoo.org"
+	fi
+fi
+
+#ready to go
+BUNDLE_GEMFILE=~/.msf4/Gemfile ${ruby} -S bundle exec /usr/lib/metasploit/$(basename $0) "$@"
+#profit

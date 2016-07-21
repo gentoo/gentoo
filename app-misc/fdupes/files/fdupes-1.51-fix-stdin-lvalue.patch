@@ -1,0 +1,20 @@
+This is a combination of upstream's fe2d8334 and 03abad.  See
+https://bugs.gentoo.org/show_bug.cgi?id=574610.
+
+diff -Naur fdupes-1.51.orig/fdupes.c fdupes-1.51/fdupes.c
+--- fdupes-1.51.orig/fdupes.c	2013-04-20 14:02:18.000000000 -0400
++++ fdupes-1.51/fdupes.c	2016-02-29 02:45:36.360804360 -0500
+@@ -1164,7 +1164,12 @@
+     }
+     else
+     {
+-      stdin = freopen("/dev/tty", "r", stdin);
++      if (freopen("/dev/tty", "r", stdin) == 0)
++      {
++        errormsg("could not open terminal for input\n");
++        exit(1);
++      }
++
+       deletefiles(files, 1, stdin);
+     }
+   }

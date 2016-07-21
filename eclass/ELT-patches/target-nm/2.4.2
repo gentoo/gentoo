@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/465558
+
+From a4629ebff263dcb2e05feb9e41df649ea5ce3f78 Mon Sep 17 00:00:00 2001
+From: Peter Rosin <peda@lysator.liu.se>
+Date: Sun, 28 Apr 2013 09:16:56 +0200
+Subject: [PATCH] libtool: break all the way out when a good nm is found
+
+The current code tries to locate a compatible nm tool.  It starts with
+a prefixed nm tool (great!) and includes a plain nm too (that's fine).
+The problem is that the code searches for the prefixed nm before the
+plain nm (normally fine), but doesn't break once it has found a valid
+match, and the plain nm ends up the winner.
+
+Report and analysis by Mike Frysinger.
+
+* m4/libtool.m4 (LT_PATH_NM): Break all the way out on a good match.
+
+Signed-off-by: Peter Rosin <peda@lysator.liu.se>
+---
+ m4/libtool.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m4/libtool.m4 b/m4/libtool.m4
+index 3f50b0c..d7013c5 100644
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -3397,13 +3397,13 @@ else
+ 	case `"$tmp_nm" -B /dev/null 2>&1 | sed '1q'` in
+ 	*/dev/null* | *'Invalid file or object type'*)
+ 	  lt_cv_path_NM="$tmp_nm -B"
+-	  break
++	  break 2
+ 	  ;;
+ 	*)
+ 	  case `"$tmp_nm" -p /dev/null 2>&1 | sed '1q'` in
+ 	  */dev/null*)
+ 	    lt_cv_path_NM="$tmp_nm -p"
+-	    break
++	    break 2
+ 	    ;;
+ 	  *)
+ 	    lt_cv_path_NM=${lt_cv_path_NM="$tmp_nm"} # keep the first match, but
+-- 
+1.8.2.1
+

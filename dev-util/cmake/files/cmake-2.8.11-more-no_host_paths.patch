@@ -1,0 +1,130 @@
+From 65571942d4f19d508174f6f89aeaac5ffe380a6e Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Tue, 6 Nov 2012 23:35:34 +1100
+Subject: [PATCH] Set some proper paths to make cmake find our tools.
+
+The ebuild now adds an extra / at the end of $EPREFIX so that it is
+never the empty string (so that CMAKE_SYSTEM_PREFIX_PATH remains
+correct)
+
+Original patch by Heiko Przybyl.
+Updated by Chris Reffett (cmake-2.8.8)
+Updated by Johannes Huber (cmake-2.8.9)
+Updated by Michael Palimaka (cmake-2.8.10)
+Updated by Chris Reffett (cmake-2.8.11)
+
+--- a/Modules/Platform/Darwin.cmake
++++ b/Modules/Platform/Darwin.cmake
+@@ -252,9 +252,9 @@
+       "<CMAKE_CXX_COMPILER> <LANGUAGE_COMPILE_FLAGS> <CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS> <LINK_FLAGS> -o <TARGET> <SONAME_FLAG> <TARGET_INSTALLNAME_DIR><TARGET_SONAME> <OBJECTS> <LINK_LIBRARIES>")
+ 
+ 
+-# default to searching for frameworks first
++# default to searching for frameworks last
+ if(NOT DEFINED CMAKE_FIND_FRAMEWORK)
+-  set(CMAKE_FIND_FRAMEWORK FIRST)
++  set(CMAKE_FIND_FRAMEWORK LAST)
+ endif()
+ 
+ # Older OS X linkers do not report their framework search path
+@@ -276,6 +276,8 @@
+ 
+ # set up the default search directories for frameworks
+ set(CMAKE_SYSTEM_FRAMEWORK_PATH
++  @GENTOO_PORTAGE_EPREFIX@Frameworks
++  @GENTOO_PORTAGE_EPREFIX@usr/lib
+   ~/Library/Frameworks
+   /Library/Frameworks
+   /Network/Library/Frameworks
+@@ -298,13 +300,15 @@
+   endif()
+ endif()
+ 
+-# default to searching for application bundles first
++# default to searching for application bundles last
+ if(NOT DEFINED CMAKE_FIND_APPBUNDLE)
+-  set(CMAKE_FIND_APPBUNDLE FIRST)
++  set(CMAKE_FIND_APPBUNDLE LAST)
+ endif()
+ # set up the default search directories for application bundles
+ set(_apps_paths)
+ foreach(_path
++  @GENTOO_PORTAGE_EPREFIX@Applications
++  @GENTOO_PORTAGE_EPREFIX@usr/bin
+   "~/Applications"
+   "/Applications"
+   "${OSX_DEVELOPER_ROOT}/../Applications" # Xcode 4.3+
+--- a/Modules/Platform/UnixPaths.cmake
++++ b/Modules/Platform/UnixPaths.cmake
+@@ -33,6 +33,7 @@
+ # search types.
+ list(APPEND CMAKE_SYSTEM_PREFIX_PATH
+   # Standard
++  @GENTOO_PORTAGE_EPREFIX@usr/local @GENTOO_PORTAGE_EPREFIX@usr @GENTOO_PORTAGE_EPREFIX@
+   /usr/local /usr /
+ 
+   # CMake install location
+@@ -44,43 +45,41 @@
+ 
+ # List common include file locations not under the common prefixes.
+ list(APPEND CMAKE_SYSTEM_INCLUDE_PATH
+-  # Windows API on Cygwin
+-  /usr/include/w32api
+-
+-  # X11
+-  /usr/X11R6/include /usr/include/X11
+-
+-  # Other
+-  /usr/pkg/include
+-  /opt/csw/include /opt/include
+-  /usr/openwin/include
++  @GENTOO_PORTAGE_EPREFIX@usr/include
+   )
+ 
+ list(APPEND CMAKE_SYSTEM_LIBRARY_PATH
+-  # Windows API on Cygwin
+-  /usr/lib/w32api
+-
+-  # X11
+-  /usr/X11R6/lib /usr/lib/X11
+-
+-  # Other
+-  /usr/pkg/lib
+-  /opt/csw/lib /opt/lib
+-  /usr/openwin/lib
++  @GENTOO_PORTAGE_GCCLIBDIR@/gcc
++  @GENTOO_PORTAGE_GCCLIBDIR@
++  @GENTOO_PORTAGE_EPREFIX@usr/lib64
++  @GENTOO_PORTAGE_EPREFIX@usr/libx32
++  @GENTOO_PORTAGE_EPREFIX@usr/lib32
++  @GENTOO_PORTAGE_EPREFIX@usr/lib
++  @GENTOO_PORTAGE_EPREFIX@lib
+   )
+ 
+ list(APPEND CMAKE_SYSTEM_PROGRAM_PATH
+-  /usr/pkg/bin
++  @GENTOO_PORTAGE_EPREFIX@usr/bin
++  @GENTOO_PORTAGE_EPREFIX@bin
+   )
+ 
+ list(APPEND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES
+-  /lib /usr/lib /usr/lib32 /usr/lib64
++  @GENTOO_PORTAGE_GCCLIBDIR@/gcc
++  @GENTOO_PORTAGE_GCCLIBDIR@
++  @GENTOO_PORTAGE_EPREFIX@usr/lib64
++  @GENTOO_PORTAGE_EPREFIX@usr/libx32
++  @GENTOO_PORTAGE_EPREFIX@usr/lib32
++  @GENTOO_PORTAGE_EPREFIX@usr/lib
++  @GENTOO_PORTAGE_EPREFIX@lib
++  /lib /usr/lib /usr/lib32 /usr/lib64 /usr/libx32
+   )
+ 
+ list(APPEND CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES
++  @GENTOO_PORTAGE_EPREFIX@usr/include
+   /usr/include
+   )
+ list(APPEND CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES
++  @GENTOO_PORTAGE_EPREFIX@usr/include
+   /usr/include
+   )
+ 

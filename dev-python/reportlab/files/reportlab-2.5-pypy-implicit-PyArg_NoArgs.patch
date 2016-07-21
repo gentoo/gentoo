@@ -1,0 +1,13 @@
+PyPy does not provide the PyArg_NoArgs macro.
+--- a/src/rl_addons/rl_accel/sgmlop.c
++++ b/src/rl_addons/rl_accel/sgmlop.c
+@@ -52,6 +52,9 @@
+  * OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.  */
+ 
+ #include "Python.h"
++#ifndef PyArg_NoArgs
++#define PyArg_NoArgs(v) PyArg_Parse(v, "")
++#endif
+ #if PY_VERSION_HEX < 0x02050000
+ #	define Py_ssize_t int
+ #	define lenfunc inquiry

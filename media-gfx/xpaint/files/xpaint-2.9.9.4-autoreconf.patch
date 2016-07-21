@@ -1,0 +1,24 @@
+From e22a3c15aea7d734f433370130458d97d6490d8a Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Sun, 6 Oct 2013 20:27:49 +0200
+Subject: [PATCH] add missing macros
+
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 169419e..e058529 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,6 +15,7 @@ AC_CONFIG_MACRO_DIR([m4])
+ AM_INIT_AUTOMAKE([-Wall -Werror])
+ 
+ AC_LANG_C
++AM_PROG_AR
+ 
+ ## basic types
+ 
+-- 
+1.8.3.2
+

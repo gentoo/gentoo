@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/402633
+http://projects.archlinux.org/svntogit/community.git/tree/trunk/extundelete-build.patch?h=packages/extundelete
+
+--- src/extundelete.cc
++++ src/extundelete.cc
+@@ -943,3 +943,3 @@
+	{
+-		group_descriptor_table[n] = fs->group_desc[n];
++		group_descriptor_table[n] = *ext2fs_group_desc(fs, fs->group_desc, n);
+	}
+@@ -2613,3 +2613,4 @@
+	inode->osd2.linux2.l_i_gid_high = le16_to_cpu( (uint16_t *) &inodebuf[item*60] );
+-	inode->osd2.linux2.l_i_reserved2 = le32_to_cpu( (uint32_t *) &inodebuf[item*62] );
++	inode->osd2.linux2.l_i_checksum_lo = le16_to_cpu( (uint16_t *) &inodebuf[item*62] );
++	inode->osd2.linux2.l_i_reserved = le16_to_cpu( (uint16_t *) &inodebuf[item*63] );
+ }
+--- src/insertionops.cc
++++ src/insertionops.cc
+@@ -65,3 +65,3 @@
+   os << "# Blocks per group: " << s_block->s_blocks_per_group << std::endl;
+-  os << "# Fragments per group: " << s_block->s_frags_per_group << std::endl;
++  os << "# Fragments per group: " << s_block->s_clusters_per_group << std::endl;
+   os << "# Inodes per group: " << s_block->s_inodes_per_group << std::endl;

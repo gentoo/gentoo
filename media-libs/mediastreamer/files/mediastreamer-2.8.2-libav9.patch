@@ -1,0 +1,115 @@
+diff -urb mediastreamer-2.8.2.old/src/h264dec.c mediastreamer-2.8.2/src/h264dec.c
+--- mediastreamer-2.8.2.old/src/h264dec.c	2013-06-22 19:13:24.649838347 +0200
++++ mediastreamer-2.8.2/src/h264dec.c	2013-06-22 19:20:52.044822431 +0200
+@@ -55,10 +55,10 @@
+ 	int error;
+ 	codec=avcodec_find_decoder(CODEC_ID_H264);
+ 	if (codec==NULL) ms_fatal("Could not find H264 decoder in ffmpeg.");
+-	avcodec_get_context_defaults(&d->av_context);
+-	error=avcodec_open(&d->av_context,codec);
++	avcodec_get_context_defaults3(&d->av_context, NULL);
++	error=avcodec_open2(&d->av_context,codec, NULL);
+ 	if (error!=0){
+-		ms_fatal("avcodec_open() failed.");
++		ms_fatal("avcodec_open2() failed.");
+ 	}
+ }
+ 
+diff -urb mediastreamer-2.8.2.old/src/jpegwriter.c mediastreamer-2.8.2/src/jpegwriter.c
+--- mediastreamer-2.8.2.old/src/jpegwriter.c	2013-06-22 19:13:24.649838347 +0200
++++ mediastreamer-2.8.2/src/jpegwriter.c	2013-06-22 19:17:57.087828655 +0200
+@@ -90,7 +90,7 @@
+ 			mblk_t *jpegm;
+ 			struct SwsContext *sws_ctx;
+ 			
+-			AVCodecContext *avctx=avcodec_alloc_context();
++			AVCodecContext *avctx=avcodec_alloc_context3(NULL);
+ 			
+ 			avctx->width=yuvbuf.w;
+ 			avctx->height=yuvbuf.h;
+@@ -98,9 +98,9 @@
+ 			avctx->time_base.den =1;
+ 			avctx->pix_fmt=PIX_FMT_YUVJ420P;
+ 
+-			error=avcodec_open(avctx,s->codec);
++			error=avcodec_open2(avctx,s->codec,NULL);
+ 			if (error!=0) {
+-				ms_error("avcodec_open() failed: %i",error);
++				ms_error("avcodec_open2() failed: %i",error);
+ 				cleanup(s,NULL);
+ 				av_free(avctx);
+ 				return;
+diff -urb mediastreamer-2.8.2.old/src/nowebcam.c mediastreamer-2.8.2/src/nowebcam.c
+--- mediastreamer-2.8.2.old/src/nowebcam.c	2013-06-22 19:13:24.652838347 +0200
++++ mediastreamer-2.8.2/src/nowebcam.c	2013-06-22 19:20:43.198822745 +0200
+@@ -68,9 +68,9 @@
+ 		return NULL;
+ 	}
+ 
+-	avcodec_get_context_defaults(&av_context);
+-	if (avcodec_open(&av_context,codec)<0){
+-		ms_error("jpeg2yuv: avcodec_open failed");
++	avcodec_get_context_defaults3(&av_context, NULL);
++	if (avcodec_open2(&av_context,codec,NULL)<0){
++		ms_error("jpeg2yuv: avcodec_open2 failed");
+ 		return NULL;
+ 	}
+ 	av_init_packet(&pkt);
+diff -urb mediastreamer-2.8.2.old/src/videodec.c mediastreamer-2.8.2/src/videodec.c
+--- mediastreamer-2.8.2.old/src/videodec.c	2013-06-22 19:13:24.654838347 +0200
++++ mediastreamer-2.8.2/src/videodec.c	2013-06-22 19:28:58.436805127 +0200
+@@ -52,7 +52,7 @@
+ 	DecState *s=(DecState *)ms_new0(DecState,1);
+ 	ms_ffmpeg_check_init();
+ 	
+-	avcodec_get_context_defaults(&s->av_context);
++	avcodec_get_context_defaults3(&s->av_context, NULL);
+ 	s->av_codec=NULL;
+ 	s->codec=cid;
+ 	s->input=NULL;
+@@ -133,8 +133,8 @@
+ 	if (s->av_context.codec==NULL){
+ 		/* we must know picture size before initializing snow decoder*/
+ 		if (s->codec!=CODEC_ID_SNOW){
+-			error=avcodec_open(&s->av_context, s->av_codec);
+-			if (error!=0) ms_error("avcodec_open() failed: %i",error);
++			error=avcodec_open2(&s->av_context, s->av_codec,NULL);
++			if (error!=0) ms_error("avcodec_open2() failed: %i",error);
+ 			if (s->codec==CODEC_ID_MPEG4 && s->dci_size>0){
+ 				s->av_context.extradata=s->dci;
+ 				s->av_context.extradata_size=s->dci_size;
+@@ -223,8 +223,8 @@
+ 			int error;
+ 			s->av_context.width=h>>16;
+ 			s->av_context.height=h&0xffff;
+-			error=avcodec_open(&s->av_context, s->av_codec);
+-			if (error!=0) ms_error("avcodec_open() failed for snow: %i",error);
++			error=avcodec_open2(&s->av_context, s->av_codec, NULL);
++			if (error!=0) ms_error("avcodec_open2() failed for snow: %i",error);
+ 			else {
+ 				s->snow_initialized=TRUE;
+ 				ms_message("Snow decoder initialized,size=%ix%i",
+diff -urb mediastreamer-2.8.2.old/src/videoenc.c mediastreamer-2.8.2/src/videoenc.c
+--- mediastreamer-2.8.2.old/src/videoenc.c	2013-06-22 19:13:24.654838347 +0200
++++ mediastreamer-2.8.2/src/videoenc.c	2013-06-22 19:20:19.732823580 +0200
+@@ -236,7 +236,7 @@
+ 	AVCodecContext *c=&s->av_context;
+ 	const int max_br_vbv=128000;
+ 
+-	avcodec_get_context_defaults(c);
++	avcodec_get_context_defaults3(c, NULL);
+ 	if (s->codec==CODEC_ID_MJPEG)
+ 	{
+ 		ms_message("Codec bitrate set to %i",c->bit_rate);
+@@ -342,9 +342,9 @@
+ 		ms_error("could not find encoder for codec id %i",s->codec);
+ 		return;
+ 	}
+-	error=avcodec_open(&s->av_context, s->av_codec);
++	error=avcodec_open2(&s->av_context, s->av_codec, NULL);
+ 	if (error!=0) {
+-		ms_error("avcodec_open() failed: %i",error);
++		ms_error("avcodec_open2() failed: %i",error);
+ 		return;
+ 	}
+ 	video_starter_init(&s->starter);

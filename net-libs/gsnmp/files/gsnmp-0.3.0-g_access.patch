@@ -1,0 +1,10 @@
+--- a/src/transport.c
++++ b/src/transport.c
+@@ -32,6 +32,7 @@
+ #include "transport.h"
+ #include "dispatch.h"
+ #include "pdu.h"	/* xxx only needed for debugging flags... */
++#include <glib/gstdio.h> /* g_access() */
+ 
+ 
+ static GUdpSocket  *udp_ipv4_socket = NULL;

@@ -1,0 +1,37 @@
+diff -ur openexr_viewers-1.0.1.orig/exrdisplay/applyCtl.cpp openexr_viewers-1.0.1/exrdisplay/applyCtl.cpp
+--- playexr/ctlToLut.cpp.orig	2009-12-14 09:07:00.863493115 -0800
++++ playexr/ctlToLut.cpp	2009-12-14 09:08:16.721186947 -0800
+@@ -49,6 +49,7 @@
+     #include <ImfFrameBuffer.h>
+     #include <cassert>
+     #include <iostream>
++    #include <cstdio>
+ 
+     using namespace std;
+     using namespace Ctl;
+@@ -61,6 +62,7 @@
+     #include <ImfHeader.h>
+     #include <cassert>
+     #include <iostream>
++    #include <cstdio>
+ 
+     using namespace std;
+     using namespace Imf;
+--- exrdisplay/applyCtl.cpp.orig	2009-12-14 09:11:44.950334079 -0800
++++ exrdisplay/applyCtl.cpp	2009-12-14 09:11:59.900332294 -0800
+@@ -49,6 +49,7 @@
+     #include <ImfFrameBuffer.h>
+     #include <cassert>
+     #include <iostream>
++    #include <cstdio>
+ 
+     using namespace std;
+     using namespace Ctl;
+@@ -61,6 +62,7 @@
+     #include <ImfHeader.h>
+     #include <cassert>
+     #include <iostream>
++    #include <cstdio>
+ 
+     using namespace std;
+     using namespace Imf;

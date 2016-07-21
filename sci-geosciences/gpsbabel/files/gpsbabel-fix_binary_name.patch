@@ -1,0 +1,12 @@
+Rename gpsbabelfe binary.
+--- a/gui/app.pro
++++ b/gui/app.pro
+@@ -26,7 +26,7 @@ RESOURCES = app.qrc
+ RC_FILE = app.rc
+ 
+ win32:TARGET=GPSBabelFE
+-unix:TARGET=gpsbabelfe-bin
++unix:TARGET=gpsbabelfe
+ mac:TARGET=GPSBabelFE
+ 
+ FORMS += aboutui.ui

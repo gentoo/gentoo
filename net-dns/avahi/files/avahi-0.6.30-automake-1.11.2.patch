@@ -1,0 +1,102 @@
+http://bugs.gentoo.org/397477
+
+--- avahi-python/avahi/Makefile.am
++++ avahi-python/avahi/Makefile.am
+@@ -31,7 +31,7 @@
+ 		-e 's,@FIRST_KEY\@,key = self.db.firstkey(),g' \
+ 		-e 's,@CHECK_KEY\@,while key is not None:,g' \
+ 		-e 's,@NEXT_KEY\@,key = self.db.nextkey(key),g' \
+-		-e 's,@pkglibdir\@,$(pkglibdir),g' $< > $@ && \
++		-e 's,@pkgdatadir\@,$(pkgdatadir),g' $< > $@ && \
+ 	chmod +x $@
+ endif
+ 
+@@ -44,7 +44,7 @@
+ 		-e 's,@FIRST_KEY\@,keys = self.db.keys(),g' \
+ 		-e 's,@CHECK_KEY\@,for key in keys:,g' \
+ 		-e 's,@NEXT_KEY\@,,g' \
+-		-e 's,@pkglibdir\@,$(pkglibdir),g' $< > $@ && \
++		-e 's,@pkgdatadir\@,$(pkgdatadir),g' $< > $@ && \
+ 	chmod +x $@
+ endif
+ 
+--- avahi-python/avahi/ServiceTypeDatabase.py.in
++++ avahi-python/avahi/ServiceTypeDatabase.py.in
+@@ -26,7 +26,7 @@
+ class ServiceTypeDatabase:
+     """ServiceTypeDatabase maps service types to descriptions"""
+ 
+-    def __init__(self, filename = "@pkglibdir@/service-types.db"):
++    def __init__(self, filename = "@pkgdatadir@/service-types.db"):
+ 
+         self.db = @DBM@.open(filename, "r")
+ 
+--- avahi-ui/Makefile.am
++++ avahi-ui/Makefile.am
+@@ -62,18 +62,18 @@
+ 
+ if HAVE_GDBM
+ libavahi_ui_la_SOURCES += ../avahi-utils/stdb.h ../avahi-utils/stdb.c
+-libavahi_ui_la_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++libavahi_ui_la_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ libavahi_ui_la_LIBADD += -lgdbm
+ 
+-libavahi_ui_gtk3_la_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++libavahi_ui_gtk3_la_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ libavahi_ui_gtk3_la_LIBADD += -lgdbm
+ endif
+ 
+ if HAVE_DBM
+ libavahi_ui_la_SOURCES += ../avahi-utils/stdb.h ../avahi-utils/stdb.c
+-libavahi_ui_la_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++libavahi_ui_la_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ 
+-libavahi_ui_gtk3_la_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++libavahi_ui_gtk3_la_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ endif
+ 
+ bin_PROGRAMS = bssh
+--- avahi-utils/Makefile.am
++++ avahi-utils/Makefile.am
+@@ -30,13 +30,13 @@
+ 
+ if HAVE_GDBM
+ avahi_browse_SOURCES += stdb.h stdb.c
+-avahi_browse_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++avahi_browse_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ avahi_browse_LDADD += -lgdbm
+ endif
+ 
+ if HAVE_DBM
+ avahi_browse_SOURCES += stdb.h stdb.c
+-avahi_browse_CFLAGS += -DDATABASE_FILE=\"$(pkglibdir)/service-types.db\"
++avahi_browse_CFLAGS += -DDATABASE_FILE=\"$(pkgdatadir)/service-types.db\"
+ endif
+ 
+ avahi_resolve_SOURCES = avahi-resolve.c sigint.c sigint.h
+--- service-type-database/Makefile.am
++++ service-type-database/Makefile.am
+@@ -18,13 +18,12 @@
+ EXTRA_DIST=build-db.in service-types
+ 
+ pkgdata_DATA=service-types
+-pkglib_DATA=
+ 
+ if HAVE_PYTHON
+ if HAVE_GDBM
+ 
+ noinst_SCRIPTS=build-db
+-pkglib_DATA+=service-types.db
++pkgdata_DATA+=service-types.db
+ 
+ build-db: build-db.in
+ 	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \
+@@ -41,7 +40,7 @@
+ if HAVE_DBM
+ 
+ noinst_SCRIPTS=build-db
+-pkglib_DATA+=service-types.db.pag service-types.db.dir
++pkgdata_DATA+=service-types.db.pag service-types.db.dir
+ 
+ build-db: build-db.in
+ 	$(AM_V_GEN)sed -e 's,@PYTHON\@,$(PYTHON),g' \

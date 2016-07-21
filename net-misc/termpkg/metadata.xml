@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Termpkg is a terminal server daemon and simple telnet like client.
+		Allows access to one or more serial ports through the telnet protocol.
+		Can be configured to connect in a one to one relation of telnet ports
+		to serial ports or in a round-robin fashion where one telnet port
+		serves many serial ports.
+	</longdescription>
+	<use>
+		<flag name="uucp">
+			Adds support for uucp style device locking
+		</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,28 @@
+uses the new proc_create function to create /proc entries
+instead of create_proc_entry which was deprecated: 
+https://lkml.org/lkml/2013/4/11/215
+
+--- a/vmblock-only/linux/control.c	2013-05-21 19:21:19.165750556 +0200
++++ b/vmblock-only/linux/control.c	2013-05-21 19:22:18.363747723 +0200
+@@ -208,9 +208,10 @@
+    VMBlockSetProcEntryOwner(controlProcMountpoint);
+ 
+    /* Create /proc/fs/vmblock/dev */
+-   controlProcEntry = create_proc_entry(VMBLOCK_CONTROL_DEVNAME,
+-                                        VMBLOCK_CONTROL_MODE,
+-                                        controlProcDirEntry);
++   controlProcEntry = proc_create(VMBLOCK_CONTROL_DEVNAME,
++                                  VMBLOCK_CONTROL_MODE,
++                                  controlProcDirEntry,
++                                  &ControlFileOps);
+    if (!controlProcEntry) {
+       Warning("SetupProcDevice: could not create " VMBLOCK_DEVICE "\n");
+       remove_proc_entry(VMBLOCK_CONTROL_MOUNTPOINT, controlProcDirEntry);
+@@ -218,7 +219,6 @@
+       return -EINVAL;
+    }
+ 
+-   controlProcEntry->proc_fops = &ControlFileOps;
+    return 0;
+ }
+ 

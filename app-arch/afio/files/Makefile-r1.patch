@@ -1,0 +1,23 @@
+diff -urN afio-2.5.1.orig/Makefile afio-2.5.1/Makefile
+--- afio-2.5.1.orig/Makefile	2012-02-05 14:52:24.000000000 +0100
++++ afio-2.5.1/Makefile	2012-03-11 14:02:16.267636685 +0100
+@@ -71,15 +71,12 @@
+ MW=
+ #MW=-Wtraditional -Wcast-qual -Wcast-align -Wconversion -pedantic -Wlong-long -Wimplicit -Wuninitialized -W -Wshadow -Wsign-compare -Wstrict-prototypes -Wmissing-declarations
+ 
+-CFLAGS1 = -Wall -Wstrict-prototypes -s -O2 -fomit-frame-pointer ${LARGEFILEFLAGS} ${MW}
+-
+-CC=gcc
+-
+-CFLAGS = ${CFLAGS1} $1 $2 $3 $4 $5 $6 $7 $8 $9 $a $b $c $d $e ${e2} $f $g $I
+-LDFLAGS =
++CC?=gcc
++CFLAGS+=-Wall -Wstrict-prototypes -s ${LARGEFILEFLAGS} ${2} ${3} ${6} ${8} ${c} ${d} ${e2} ${f} ${g}
++LDFLAGS+=
+ 
+ afio : afio.o compfile.o exten.o match.o $M
+-	${CC} ${LDFLAGS} afio.o compfile.o exten.o match.o $M -o afio
++	${CC} ${CFLAGS} ${LDFLAGS} afio.o compfile.o exten.o match.o $M -o afio
+ 
+ clean:
+ 	rm -f *.o afio 

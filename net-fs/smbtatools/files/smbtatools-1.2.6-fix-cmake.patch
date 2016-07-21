@@ -1,0 +1,38 @@
+--- a/CMakeLists.txt	2016-03-31 11:14:33.462962843 -0400
++++ b/CMakeLists.txt	2016-03-31 11:53:16.319234121 -0400
+@@ -30,7 +30,7 @@
+ 	MESSAGE( FATAL_ERROR "ERROR: you need the qt development files and library installed.")
+ ENDIF()
+ IF (QT_INCLUDE_DIR)
+-	INCLUDE_DIRECTORIES($QT_INCLUDE_DIR)
++	INCLUDE_DIRECTORIES(${QT_INCLUDE_DIR})
+ ENDIF()
+ 
+ 
+@@ -42,7 +42,7 @@
+ 	MESSAGE( FATAL_ERROR "ERROR: you need the pango library and headers installed.")
+ ENDIF()
+ IF (LIBPANGO_INCLUDE_DIRS)
+-	INCLUDE_DIRECTORIES($LIBPANGO_INCLUDE_DIRS)
++	INCLUDE_DIRECTORIES(${LIBPANGO_INCLUDE_DIRS})
+ ENDIF()
+ 
+ #
+@@ -53,7 +53,7 @@
+         MESSAGE( FATAL_ERROR "ERROR: you need the cairo library and headers installed.")
+ ENDIF() 
+ IF (LIBCAIRO_INCLUDE_DIRS)
+-	INCLUDE_DIRECTORIES($LIBCAIRO_INCLUDE_DIRS)
++	INCLUDE_DIRECTORIES(${LIBCAIRO_INCLUDE_DIRS})
+ ENDIF()
+ 
+ 
+@@ -65,7 +65,7 @@
+ 	                MESSAGE( FATAL_ERROR "ERROR: you will need curl development files installed.")
+ 		ENDIF()
+ 		if (CURL_INCLUDE_DIRS)
+-			        INCLUDE_DIRECTORIES($CURL_INCLUDE_DIRS)
++			        INCLUDE_DIRECTORIES(${CURL_INCLUDE_DIRS})
+ 			ENDIF()
+ 
+ # compile on SunOS

@@ -1,0 +1,147 @@
+--- a2ps-4.14/doc/a2ps.texi.bero	2013-03-26 10:31:31.230137555 +0100
++++ a2ps-4.14/doc/a2ps.texi	2013-03-26 11:01:01.504006086 +0100
+@@ -44,10 +44,6 @@
+ @end ifnottex
+ 
+ @c TeX variants
+-@macro LaTeX
+-La@TeX{}
+-@end macro
+-
+ @macro PreTeX
+ Pre@TeX{}
+ @end macro
+@@ -417,9 +413,9 @@ Genesis
+ @c Now, that's what I call humor :)
+ @cindex First Page
+ This document describes GNU @pack{} version @value{VERSION}.  The latest
+-versions may be found on the @href{@value{WWWHOME},@pack{} home page}.
+-We plan to update the @href{http://www.gnu.org/software/a2ps/, GNU
+-@pack{} home page} in the near future, in which case the latter will be
++versions may be found on the @uref{@value{WWWHOME}, home page}.
++We plan to update the @uref{@value{WWWHOME}, GNU home page}
++in the near future, in which case the latter will be
+ a better source of information.
+ 
+ We tried to make this document informative and pleasant.  It tries to be
+@@ -431,8 +427,8 @@ difficult to use.  @xref{Glossary}, for
+ information.
+ 
+ Please, send us emailcards @code{:)}. Whatever the comment is, or if you
+-just like @pack{}, write to @email{Miguel.Santana@@st.com, Miguel
+-Santana} and @email{akim@@freefriends.org, Akim Demaille}.  But
++just like @pack{}, write to @email{Miguel.Santana@@st.com, Miguel Santana}
++and @email{akim@@freefriends.org, Akim Demaille}.  But
+ @emph{never} write to either of us for asking questions, or to report
+ bugs.  Chances are very high never to receive an answer, as we receive
+ too many messages.  @xref{a2ps Mailing Lists}, for information on the
+@@ -517,8 +513,8 @@ everybody so that mistakes get fixed as
+ 
+ So, if you have a problem (configuration error, compilation error,
+ runtime error, documentation error or unclear), first check in the FAQ
+-(@pxref{FAQ}), then on the page @href{@value{WWWHOME}/bugs.html,Known
+-@pack{} Bugs} if the issue has not been addressed yet.  If it is not the
++(@pxref{FAQ}), then on the page @uref{@value{WWWHOME}/bugs.html,Known Bugs}
++if the issue has not been addressed yet.  If it is not the
+ case, but it appears that the version of @pack{} you have is old,
+ consider upgrading.
+ 
+@@ -2802,8 +2798,7 @@ Thou shalt start your PostScript DSC con
+ 
+ The bad news is that some printers will reject this header.  Then you
+ may change this header without any worry since the PostScript produced
+-by @pack{} is also 100% PostScript level 1@footnote{That is to say, there
+-are no PostScript printers that don't understand these files.}.
++by @pack{} is also 100% PostScript level 1@footnote{That is to say, there are no PostScript printers that don't understand these files.}.
+ 
+ @defvr {Configuration Setting} OutputFirstLine: @var{magic-number}
+ @cindex @samp{OutputFirstLine:}
+@@ -3971,13 +3966,13 @@ Quote @var{text} so that no special sequ
+ @itemx \end@{enumerate@}
+ @itemx \begin@{description@}
+ @itemx \end@{description@}
+-These commands are legal in @LaTeX but have no sense in @PreTeX{}.
++These commands are legal in @LaTeX{} but have no sense in @PreTeX{}.
+ Hence there are simply ignored and not printed (if immediately followed
+ by an end-of-line).
+ @end table
+ 
+ @node Differences with LaTeX
+-@subsubsection Differences with @LaTeX
++@subsubsection Differences with @LaTeX{}
+ The following symbols, inherited from the style sheet @code{Symbol}, are
+ not supported by @LaTeX{}:
+ 
+@@ -4124,9 +4119,9 @@ beautiful, with any character you might
+ prefix part of the file name, and is alpha-numerical, lower case, and
+ less than 8 characters long.
+ 
+-Anywhere @pack{} needs to recognize a style sheet by a name, @strong{it
+-uses the key} (in the @file{sheets.map} file, with the option @samp{-E},
+-etc.).
++Anywhere @pack{} needs to recognize a style sheet by a name,
++@strong{it uses the key} (in the @file{sheets.map} file, with the
++option @samp{-E}, etc.).
+ 
+ As an example, C++ is implemented in a file called @file{cxx.ssh}, in
+ which the name is declared to be @samp{C++}.
+@@ -5672,7 +5667,7 @@ supporting a @samp{--help}-like option.
+ @subsection Invoking @code{card}
+ 
+ @example
+-card [@var{options}] @var{applications} [-- @var{@pack{}-options}]
++card [@var{options}] @var{applications} [-- @var{-options}]
+ @end example
+ 
+ @noindent
+@@ -5680,7 +5675,7 @@ card [@var{options}] @var{applications}
+ @var{applications}' help message (typically by the options @samp{--help}
+ or @samp{-h}), and pretty prints it thanks to @pack{} (or the content of
+ the environment variable @samp{A2PS} if it is set).
+-@var{@pack{}-options} are passed to @pack{}.
++@var{-options} are passed to @pack{}.
+ 
+ Supported options are:
+ 
+@@ -5874,12 +5869,12 @@ difference finder,wdiff,GNU wdiff}) to e
+ @subsection Invoking @code{pdiff}
+ 
+ @example
+-pdiff [@var{options}] @var{file-1} @var{file-2} [-- @var{@pack{}-options}]
++pdiff [@var{options}] @var{file-1} @var{file-2} [-- @var{-options}]
+ @end example
+ 
+ @noindent
+ make a pretty comparison between @var{file-1} and @var{file-2}.
+-@var{@pack{}-options} are passed to @pack{}.
++@var{-options} are passed to @pack{}.
+ 
+ Supported options are:
+ 
+@@ -6222,7 +6217,7 @@ Error related questions.
+ @subsection Why Does it Print Nothing?
+ 
+ @quotation
+-@i{@pack{} works OK, but the printer prints nothing.}
++@i{works OK, but the printer prints nothing.}
+ @end quotation
+ 
+ There are two ways that printing can fail: silently, or with a
+@@ -6351,7 +6346,7 @@ If it is incorrect, ask for help around
+ @subsection Why Does it Say my File is Binary?
+ 
+ @quotation
+-@i{@pack{} complains that my file is binary though it is not.}
++@i{complains that my file is binary though it is not.}
+ @end quotation
+ 
+ There are several reasons that can cause @pack{} to consider a file is
+@@ -6591,7 +6586,7 @@ format you want for the date: @xref{Esca
+ @subsection Why Have the Options Changed?
+ 
+ @quotation
+-@i{The options of this @pack{} are not the same as in the previous versions.}
++@i{The options of this are not the same as in the previous versions.}
+ @end quotation
+ 
+ True.  But the old scheme (up to version 4.6.1) prevented us from

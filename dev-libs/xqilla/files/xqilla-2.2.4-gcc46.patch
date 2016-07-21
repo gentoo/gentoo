@@ -1,0 +1,11 @@
+diff -uNr XQilla-2.2.4.ORIG/include/xqilla/framework/XPath2MemoryManager.hpp XQilla-2.2.4/include/xqilla/framework/XPath2MemoryManager.hpp
+--- XQilla-2.2.4.ORIG/include/xqilla/framework/XPath2MemoryManager.hpp	2011-09-24 13:31:20.666469427 +0100
++++ XQilla-2.2.4/include/xqilla/framework/XPath2MemoryManager.hpp	2011-09-24 13:32:01.175470668 +0100
+@@ -23,6 +23,7 @@
+ #define __XPATH2MEMORYMANAGER_HPP
+ 
+ #include <algorithm>
++#include <cstddef>
+ #include <assert.h>
+ 
+ #include <xqilla/framework/XQillaExport.hpp>

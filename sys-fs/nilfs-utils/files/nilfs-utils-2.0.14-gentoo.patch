@@ -1,0 +1,10 @@
+diff -Naur nilfs-utils-2.0.14.orig/lib/Makefile.am nilfs-utils-2.0.14/lib/Makefile.am
+--- nilfs-utils-2.0.14.orig/lib/Makefile.am	2009-07-19 23:53:00.000000000 +0900
++++ nilfs-utils-2.0.14/lib/Makefile.am	2009-07-20 09:44:32.000000000 +0900
+@@ -23,6 +23,3 @@
+ libnilfs_la_CPPFLAGS = -I$(top_srcdir)/include
+ libnilfs_la_LDFLAGS = -version-info $(VERSIONINFO)
+ libnilfs_la_LIBADD = libnilfsmisc.la
+-
+-install-exec-hook:
+-	$(LDCONFIG) $(DESTDIR)$(libdir)

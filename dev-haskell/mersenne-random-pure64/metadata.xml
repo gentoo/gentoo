@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		The Mersenne twister is a pseudorandom number generator developed by
+		Makoto Matsumoto and Takuji Nishimura that is based on a matrix linear
+		recurrence over a finite binary field. It provides for fast generation
+		of very high quality pseudorandom numbers. The source for the C code
+		can be found here:
+		
+		&lt;http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt64.html&gt;
+		
+		This library provides a purely functional binding to the 64 bit
+		classic mersenne twister, along with instances of RandomGen, so the
+		generator can be used with System.Random. The generator should
+		typically be a few times faster than the default StdGen (but a tad
+		slower than the impure 'mersenne-random' library based on SIMD
+		instructions and destructive state updates.
+		
+	</longdescription>
+</pkgmetadata>

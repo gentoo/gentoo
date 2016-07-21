@@ -1,0 +1,31 @@
+From 75b554579b4e962e2c02053129a37611a2dc9133 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 14 Sep 2015 18:55:09 -0400
+Subject: [PATCH] Add fallback for kcmp() in case __NR_kcmp is undefined
+
+IA64 is missing this syscall as of linux-4.2.
+This works around it until the necessary kernel patch gets merged.
+---
+ src/basic/missing.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/basic/missing.h b/src/basic/missing.h
+index dc1f244..371ef8a 100644
+--- a/src/basic/missing.h
++++ b/src/basic/missing.h
+@@ -1028,7 +1028,12 @@ static inline int renameat2(int oldfd, const char *oldname, int newfd, const cha
+ 
+ #if !HAVE_DECL_KCMP
+ static inline int kcmp(pid_t pid1, pid_t pid2, int type, unsigned long idx1, unsigned long idx2) {
++#if defined(__NR_kcmp)
+         return syscall(__NR_kcmp, pid1, pid2, type, idx1, idx2);
++#else
++        errno = ENOSYS;
++        return -1;
++#endif
+ }
+ #endif
+ 
+-- 
+2.6.4
+

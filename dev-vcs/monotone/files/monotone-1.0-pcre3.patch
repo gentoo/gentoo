@@ -1,0 +1,26 @@
+Author: Francis Russell
+Bug-Debian: http://bugs.debian.org/665448
+Description: The test 'syntax_errors_in_.mtn-ignore' from the monotone
+ test suite contains a .mtn-ignore file which contains a number of
+ regular expressions. Some of these are intended to match and fail to
+ match the names of files created by the test harness. The rest have
+ invalid syntax and should be ignored.
+  .
+ One regex, '(?<=\C)' is presumably intended to be invalid, but with
+ the most recent version of pcre3 matches most files and therefore
+ causes the test to fail. In fact, it appears to be a valid regex that
+ performs a positive look behind to match a single data unit (usually a
+ byte, even in UTF mode). This patch removes the problematic regex until
+ the issue can be addressed upstream.
+Index: monotone-1.0/test/func/syntax_errors_in_.mtn-ignore/mtn-ignore
+===================================================================
+--- monotone-1.0.orig/test/func/syntax_errors_in_.mtn-ignore/mtn-ignore	2011-03-26 06:41:05.000000000 +0000
++++ monotone-1.0/test/func/syntax_errors_in_.mtn-ignore/mtn-ignore	2012-03-25 20:02:37.695875219 +0100
+@@ -21,7 +21,6 @@
+ [[:fnord:]]
+ \\x{123456}
+ (?(0))
+-(?<=\C)
+ \l
+ (?C256)
+ (?C1

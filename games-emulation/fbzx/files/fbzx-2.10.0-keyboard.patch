@@ -1,0 +1,11 @@
+--- menus.c.orig
++++ menus.c
+@@ -1820,7 +1820,7 @@
+ 	buffer=screen->pixels;
+ 	
+ 	clean_screen();
+-	fichero=myfopen("fbzx/keymap.bmp","r");
++	fichero=myfopen("keymap.bmp","r");
+ 	if (fichero==NULL) {
+ 		strcpy(ordenador.osd_text,"Keymap picture not found");
+ 		ordenador.osd_time=100;

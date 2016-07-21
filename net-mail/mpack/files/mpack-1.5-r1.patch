@@ -1,0 +1,82 @@
+--- mpack-1.5.orig/decode.c
++++ mpack-1.5/decode.c
+@@ -466,6 +466,7 @@
+ 	while (*from && *from != '\"') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -482,6 +483,7 @@
+ 	while (*from && !isspace(*from)) {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -571,6 +573,7 @@
+ 	while (*disposition && *disposition != '\"') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -588,6 +591,7 @@
+ 	       *disposition != '(') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+--- mpack-1.5.orig/unixos.c
++++ mpack-1.5/unixos.c
+@@ -89,7 +89,7 @@
+ 	strcpy(buf, getenv("TMPDIR"));
+     }
+     else {
+-	strcpy(buf, "/usr/tmp");
++	strcpy(buf, "/var/tmp");
+     }
+     strcat(buf, "/m-prts-");
+     p = getenv("USER");
+@@ -159,6 +159,11 @@
+
+     /* Get rid of leading ~ or ~/ */
+     while (*fname == '~' || *fname == '/') fname++;
++
++    /* Debian fix: the loop below handles internal "/../" but not
++     * leading "../" */
++    /* Get rid of leading "../" */
++    while (!strncmp(fname, "../", 3)) fname += 3;
+
+     /* Clean out bad characters, create directories along path */
+     for (p=fname; *p; p++) {
+--- mpack-1.5.orig/unixunpk.man
++++ mpack-1.5/unixunpk.man
+@@ -107,7 +107,7 @@
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /usr/tmp.
++Directory to store temporary files.  Default is /var/tmp.
+ .SH FILES
+ .TP
+ .B $TMPDIR/m-prts-$USER/
+--- mpack-1.5.orig/uudecode.c
++++ mpack-1.5/uudecode.c
+@@ -524,8 +524,9 @@
+      * representation syntax
+      */
+     do {
+-	while (*scan != '\n' && isprint(*scan)
+-	       && !isalnum(*scan) && *scan != '_') ++scan;
++        /* Debian patch: skip non-printable characters too.
++         * Sent upstream, no reply yet. */
++	while (*scan != '\n' && !isalnum(*scan) && *scan != '_') ++scan;
+ 	*fnamep = start = scan;
+ 	while (isalnum(*scan) || *scan == '-' || *scan == '+' || *scan == '&'
+ 	       || *scan == '_' || *scan == '.') {

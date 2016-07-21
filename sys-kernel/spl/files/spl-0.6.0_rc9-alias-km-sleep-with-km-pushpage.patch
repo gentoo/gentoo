@@ -1,0 +1,56 @@
+From 5c072b45b66e841ebc7952db7860c2ee7b024b08 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Mon, 25 Jun 2012 20:05:00 -0400
+Subject: [PATCH] Make KM_SLEEP an alias of KM_PUSHPAGE Use GFP_NOIO in
+ KM_SLEEP
+
+This should prevent direct reclaim issues without requiring
+Linux-specific changes to code from Solaris. This is what is done in
+FreeBSD.
+
+Note that a change to __taskq_dispatch() module/spl/spl-taskq.c is
+needed to make this work. Changing KM_PUSHPAGE to use GFP_NOIO is fine,
+but adding __GFP_HIGH to that triggers a hard-coded panic in
+__taskq_dispatch() during zvol initialization. Removing the hard coded
+panic has no ill effects.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+---
+ include/sys/kmem.h     |    2 +-
+ module/spl/spl-taskq.c |    7 ++++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/include/sys/kmem.h b/include/sys/kmem.h
+index 796af44..633278b 100644
+--- a/include/sys/kmem.h
++++ b/include/sys/kmem.h
+@@ -41,7 +41,7 @@
+ /*
+  * Memory allocation interfaces
+  */
+-#define KM_SLEEP	GFP_KERNEL	/* Can sleep, never fails */
++#define KM_SLEEP	(GFP_NOIO | __GFP_HIGH)	/* Can sleep, never fails */
+ #define KM_NOSLEEP	GFP_ATOMIC	/* Can not sleep, may fail */
+ #define KM_PUSHPAGE	(GFP_NOIO | __GFP_HIGH)	/* Use reserved memory */
+ #define KM_NODEBUG	__GFP_NOWARN	/* Suppress warnings */
+diff --git a/module/spl/spl-taskq.c b/module/spl/spl-taskq.c
+index 0c546c7..5ab387e 100644
+--- a/module/spl/spl-taskq.c
++++ b/module/spl/spl-taskq.c
+@@ -255,9 +255,10 @@
+ 	if (!(flags & (TQ_SLEEP | TQ_NOSLEEP)))
+ 		flags |= TQ_SLEEP;
+ 
+-	if (unlikely(in_atomic() && (flags & TQ_SLEEP)))
+-		PANIC("May schedule while atomic: %s/0x%08x/%d\n",
+-		    current->comm, preempt_count(), current->pid);
++	/* FIXME: Why does this fail when KM_SLEEP contains __GFP_HIGHMEM? */
++	//if (unlikely(in_atomic() && (flags & TQ_SLEEP)))
++	//	PANIC("May schedule while atomic: %s/0x%08x/%d\n",
++	//	    current->comm, preempt_count(), current->pid);
+ 
+         spin_lock_irqsave(&tq->tq_lock, tq->tq_lock_flags);
+ 
+-- 
+1.7.10
+

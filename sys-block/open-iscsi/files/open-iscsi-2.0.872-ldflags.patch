@@ -1,0 +1,11 @@
+--- utils/Makefile	2011-05-31 01:30:27.302609540 +0200
++++ utils/Makefile	2011-05-31 01:32:50.229602790 +0200
+@@ -6,7 +6,7 @@
+ all: $(PROGRAMS)
+ 
+ iscsi-iname: md5.o iscsi-iname.o
+-	$(CC) $(CFLAGS) $^ $(DBM_LIB) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(DBM_LIB) -o $@
+ 
+ clean:
+ 	rm -f *.o $(PROGRAMS) .depend

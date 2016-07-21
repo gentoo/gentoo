@@ -1,0 +1,6 @@
+--- json-c-0.10/Makefile.am.inc
++++ json-c-0.10/Makefile.am.inc
+@@ -1,2 +1,2 @@
+-AM_CFLAGS = -Wall -Wwrite-strings -Werror -std=gnu99 -D_GNU_SOURCE -D_REENTRANT
++AM_CFLAGS = -Wall -Wwrite-strings -std=gnu99 -D_GNU_SOURCE -D_REENTRANT
+ 

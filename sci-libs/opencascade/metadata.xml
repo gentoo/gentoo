@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <use>
+    <flag name="freeimage">Enable support for image i/o via media-libs/freeimage</flag>
+    <flag name="gl2ps">Use gl2ps PostScript printing library</flag>
+    <flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+    <flag name="vtk">Enable Virtualisation Toolkit</flag>
+  </use>
+</pkgmetadata>

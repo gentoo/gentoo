@@ -1,0 +1,104 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright (c) 2006-2013 Gentoo Foundation
+#
+# This file is part of the 'eselect' tools framework.
+#
+# eselect is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 2 of the License, or (at your option) any later
+# version.
+#
+# eselect is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# eselect.  If not, see <http://www.gnu.org/licenses/>.
+
+MODULE=opencascade
+TARGET=${EROOT}/etc/env.d/51${MODULE}
+CONFDIR=${EROOT}/etc/env.d/${MODULE}
+
+inherit tests path-manipulation
+
+find_implems() {
+	local -a implems
+	for file in "${CONFDIR}"/* ; do
+		[[ -f ${file} ]] || continue
+		implems=(${implems[@]} "${file##*/}")
+	done
+	echo ${implems[@]}
+}
+
+is_active() {
+	local f
+	[[ $# -eq 1 ]] || die "Need exactly 1 arguments!"
+	[[ -L ${TARGET} ]] || return 1
+	f=$(canonicalise ${TARGET})
+	[[ -e ${f} ]] || return 1
+	[[ ${f##*/} == ${1} ]]
+}
+
+# switch_implem $implem
+# switches $iface combination to $implem
+switch_implem() {
+	[[ $# -eq 1 ]] || die "Need exactly 1 arguments!"
+	$(is_active ${1}) && return
+	[[ -L ${TARGET} ]] && rm -f ${TARGET}
+	ln -s ${MODULE}/${1} ${TARGET}
+	env-update
+	echo "If you intend to use the selected opencascade in"
+	echo "an already running shell, please remember to do:"
+	echo
+	echo ". /etc/profile"
+}
+
+do_list() {
+	local implem i
+	write_list_start "Installed $MODULE"
+	for implem in $(find_implems) ; do
+		(( i++ ))
+		is_active ${implem##*/} \
+			&& implem=$(highlight_marker "${implem}")
+		write_numbered_list_entry $i "${implem}"
+	done
+}
+
+describe_set() {
+	echo "Activate one of the installed $MODULE implementations"
+}
+
+describe_set_parameters() {
+	echo "<implementation>"
+}
+
+describe_set_options() {
+	echo "implementation : implementation name or number (from 'list' action)"
+}
+
+do_set() {
+	[[ $# -ne 1 ]] && die -q "Please specify exactly 1 implementation!"
+	local -a implems
+
+	implems=( $(find_implems) )
+	
+	if is_number ${1} ; then
+		new_implem=${implems[$(( ${1} - 1 ))]}
+	else
+		new_implem=${1}
+	fi
+	echo $new_implem
+	switch_implem ${new_implem}
+}
+
+describe_show() {
+	echo "Print the currently active $MODULE implementation"
+}
+
+do_show() {
+	local f n
+	[[ -L ${TARGET} ]] || return 1
+	f=$(canonicalise ${TARGET})
+	[[ -f ${f} ]] || return 1
+	echo ${f##*/}
+}

@@ -1,0 +1,496 @@
+From c65685939185b4f1eced04f227dea72b249dd065 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Fri, 14 Dec 2012 10:50:28 +0100
+Subject: [PATCH 1/1] * [core]: fix compiler warnings
+
+dereferencing type-punned pointer will break strict-aliasing rules
+
+set but unused variable
+
+possible use of uninitialised variables
+
+...
+
+2013-03-30: backport to oyranos-0.9.1
+
+---
+ examples/devices/test_device.c             |   15 ++----------
+ examples/taxi/taxi.c                       |   30 ++++++++++---------------
+ modules/oyranos_cmm_lcm2.c                 |   32 +++++++++++++-------------
+ modules/oyranos_cmm_lcms.c                 |   32 +++++++++++++-------------
+ modules/oyranos_cmm_lraw.cpp               |    5 ++-
+ modules/oyranos_cmm_oyIM_profile.c         |    4 +-
+ oyjl/oyjl_tree_parse.c                     |    2 +-
+ test2.cpp                                  |    6 ++--
+ tests/test_oyranos.c                       |    2 +-
+ examples/oyranos_convert/oyranos_convert.c |   15 ++++++------
+ oyranos_gamma.c                            |    2 +-
+
+diff --git a/examples/devices/test_device.c b/examples/devices/test_device.c
+index 7ef2de8..016754b 100644
+--- a/examples/devices/test_device.c
++++ b/examples/devices/test_device.c
+@@ -205,7 +205,7 @@ int main(int argc, char *argv[])
+     oyConfig_s * oy_device = 0;
+     oyProfile_s * profile = 0;
+     const char * tmp = 0;
+-    icSignature profile_class;
++    icSignature profile_class = icSigDisplayClass;
+     oyOptions_s * options = 0;
+     oyOptions_SetFromText( &options,
+                    "//"OY_TYPE_STD"/config/icc_profile.x_color_region_target",
+@@ -331,7 +331,6 @@ int main(int argc, char *argv[])
+     oyConfig_s * oy_device = 0;
+     oyProfile_s * profile = 0;
+     const char * tmp = 0;
+-    icSignature profile_class;
+     oyOptions_s * options = 0;
+     oyOptions_SetFromText( &options,
+                    "//"OY_TYPE_STD"/config/icc_profile.x_color_region_target",
+@@ -344,15 +343,9 @@ int main(int argc, char *argv[])
+       oyConfDomain_s * d = oyConfDomain_FromReg( device_class, 0 );
+       const char * icc_profile_class = oyConfDomain_GetText( d,
+                                              "icc_profile_class", oyNAME_NICK );
+-      if(icc_profile_class && strcmp(icc_profile_class,"display") == 0)
+-        profile_class = icSigDisplayClass;
+-      else if(icc_profile_class && strcmp(icc_profile_class,"output") == 0)
+-        profile_class = icSigOutputClass;
+-      else if(icc_profile_class && strcmp(icc_profile_class,"input") == 0)
+-        profile_class = icSigInputClass;
+ 
+-       printf("icc_profile_class: %s\n", icc_profile_class );
+-       oyConfDomain_Release( &d );
++      printf("icc_profile_class: %s\n", icc_profile_class );
++      oyConfDomain_Release( &d );
+     }
+ 
+     error = oyDeviceGet( 0, device_class, device_name, 0, &oy_device );
+@@ -374,14 +367,12 @@ int main(int argc, char *argv[])
+     oyProfile_s * profile = 0;
+     oyConfigs_s * taxi_devices = 0;
+     oyConfig_s * device = oy_device;
+-    const char * profile_file_name = 0;
+     
+     oyDevicesFromTaxiDB( device, 0, &taxi_devices, 0 );
+     
+     size = oyConfigs_Count( taxi_devices );
+     
+     error = oyDeviceGetProfile( device, options, &profile );
+-    profile_file_name = oyProfile_GetFileName( profile, 0 );
+     
+     int show_only_device_related = 1;
+     int empty_added = -1;                   
+diff --git a/examples/taxi/taxi.c b/examples/taxi/taxi.c
+index 81c415a..ae3953f 100644
+--- a/examples/taxi/taxi.c
++++ b/examples/taxi/taxi.c
+@@ -7,9 +7,13 @@
+ #include <oyConfigs_s.h>
+ #include <oyProfile_s.h>
+ 
++#include "oyranos_config_internal.h"
+ #include <oyranos_devices.h>
+ #include "oyranos_helper_macros_cli.h"
++#include "oyranos_helper.h"
++#include "oyranos_i18n.h"
+ #include "oyranos_sentinel.h"
++#include "oyranos_string.h"
+ 
+ #include "oyjl/oyjl_tree.h"
+ 
+@@ -86,7 +90,7 @@ int oyLowerStrcmpWrap (const void * a_, const void * b_)
+ #endif
+ }
+ 
+-int oyStrCmp(char * a, char * b) { return (a && b) ? strcmp(a,b) : 1; }
++int oyStrCmp(const char * a, const char * b) { return (a && b) ? strcmp(a,b) : 1; }
+ 
+ #define OPENICC_DEVICE_JSON_HEADER_BASE \
+   "{\n" \
+@@ -107,8 +111,8 @@ void storeTaxiProfile( const char * taxi_id, const char * taxi_full_id, const ch
+ {
+   oyOptions_s * options = 0;
+   oyProfile_s * profile;
+-  int error = oyOptions_SetFromText( &options,
+-                                   "//" OY_TYPE_STD "/argv/TAXI_id",
++
++  oyOptions_SetFromText( &options, "//" OY_TYPE_STD "/argv/TAXI_id",
+                                    taxi_full_id,
+                                    OY_CREATE_NEW );
+ 
+@@ -138,15 +142,9 @@ void storeTaxiProfile( const char * taxi_id, const char * taxi_full_id, const ch
+ 
+ int main( int argc, char ** argv )
+ {
+-  oyConfig_s * moni = NULL,
+-             * device = NULL;
+   int error = 0;
+-  oyConfigs_s * devices = NULL;
+-  oyOptions_s * options = NULL;
+-  oyProfile_s * profile = NULL;
+   char * profile_name = 0;          /* the file to write to */
+-  int32_t rank_value = 0, max_rank_value = 0;
+-  int i,n, max_device_pos = -1,
++  int i,
+       verbose = 0,
+       list_manufacturers = 0,
+       list_urls = 0;
+@@ -156,11 +154,9 @@ int main( int argc, char ** argv )
+ 
+   size_t size = 0;
+   const char * short_name = NULL,
+-             * long_name = NULL,
+-             * name = NULL;
++             * long_name = NULL;
+   oyjl_value_s * root = 0;
+-  char * val = NULL,
+-       * key = NULL;
++  char * val = NULL;
+   oyjl_value_s * v = 0, * tv = 0;
+   int count;
+ 
+@@ -229,10 +225,8 @@ int main( int argc, char ** argv )
+       error = oyjl_tree_from_json( manufacturers, &root, NULL );
+     if(root)
+     {
+-      int level = 0;
+-
+       int count = oyjl_value_count(root);
+-      char ** sort = calloc( sizeof(char**), 2*count + 2 );
++      const char ** sort = calloc( sizeof(char**), 2*count + 2 );
+ 
+       for(i = 0; i < count; ++i)
+       {
+@@ -392,5 +386,5 @@ int main( int argc, char ** argv )
+         if(device_db) oyDeAllocateFunc_(device_db); device_db = 0;
+   }
+ 
+-  return 0;
++  return error;
+ }
+diff --git a/modules/oyranos_cmm_lcm2.c b/modules/oyranos_cmm_lcm2.c
+index c50df87..56c2228 100644
+--- a/modules/oyranos_cmm_lcm2.c
++++ b/modules/oyranos_cmm_lcm2.c
+@@ -215,8 +215,8 @@ lcm2ProfileWrap_s * lcm2CMMProfile_GetWrap_( oyPointer_s* cmm_ptr )
+ {
+   lcm2ProfileWrap_s * s = 0;
+ 
+-  char type_[4] = lcm2PROFILE;
+-  int type = *((int*)&type_);
++  char * type_ = lcm2PROFILE;
++  int type = *((int32_t*)type_);
+ 
+   if(cmm_ptr && !lcm2CMMCheckPointer( cmm_ptr, lcm2PROFILE ) &&
+      oyPointer_GetPointer(cmm_ptr))
+@@ -238,8 +238,8 @@ lcm2ProfileWrap_s * lcm2CMMProfile_GetWrap_( oyPointer_s* cmm_ptr )
+ int      lcm2CMMTransform_GetWrap_   ( oyPointer_s       * cmm_ptr,
+                                        lcm2TransformWrap_s ** s )
+ {
+-  char type_[4] = lcm2TRANSFORM;
+-  int type = *((int*)&type_);
++  char * type_ = lcm2TRANSFORM;
++  int type = *((int32_t*)type_);
+ 
+   if(cmm_ptr && !lcm2CMMCheckPointer( cmm_ptr, lcm2TRANSFORM ) &&
+      oyPointer_GetPointer(cmm_ptr))
+@@ -266,8 +266,8 @@ int lcm2CMMProfileReleaseWrap(oyPointer *p)
+   int error = !p;
+   lcm2ProfileWrap_s * s = 0;
+   
+-  char type_[4] = lcm2PROFILE;
+-  int type = *((int*)&type_);
++  char * type_ = lcm2PROFILE;
++  int type = *((int32_t*)type_);
+   char s_type[4];
+ 
+   if(!error && *p)
+@@ -315,8 +315,8 @@ int          lcm2CMMData_Open        ( oyStruct_s        * data,
+ 
+   if(!error)
+   {
+-    char type_[4] = lcm2PROFILE;
+-    int type = *((int*)&type_);
++    char * type_ = lcm2PROFILE;
++    int type = *((int32_t*)type_);
+     size_t size = 0;
+     oyPointer block = 0;
+     lcm2ProfileWrap_s * s = calloc(sizeof(lcm2ProfileWrap_s), 1);
+@@ -482,8 +482,8 @@ lcm2TransformWrap_s * lcm2TransformWrap_Set_ (
+   
+   if(!error)
+   {
+-    char type_[4] = lcm2TRANSFORM;
+-    int type = *((int*)&type_);
++    char * type_ = lcm2TRANSFORM;
++    int type = *((int32_t*)type_);
+     lcm2TransformWrap_s * ltw = calloc(sizeof(lcm2TransformWrap_s), 1);
+ 
+     ltw->type = type;
+@@ -991,8 +991,8 @@ cmsHPROFILE  lcm2AddProofProfile     ( oyProfile_s       * proof,
+   {
+     oyPointer_s * oy = cmm_ptr;
+ 
+-    char type_[4] = lcm2PROFILE;
+-    uint32_t type = *((uint32_t*)&type_);
++    char * type_ = lcm2PROFILE;
++    uint32_t type = *((uint32_t*)type_);
+     cmsUInt32Number size = 0;
+     oyPointer block = 0;
+     lcm2ProfileWrap_s * s = calloc(sizeof(lcm2ProfileWrap_s), 1);
+@@ -2182,10 +2182,10 @@ int      lcm2FilterPlug_CmmIccRun    ( oyFilterPlug_s    * requestor_plug,
+   {
+     uint8_t * array_in_tmp = 0,
+             * array_out_tmp = 0;
+-    float * array_in_tmp_flt,
+-          * array_out_tmp_flt;
+-    double * array_in_tmp_dbl,
+-           * array_out_tmp_dbl;
++    float * array_in_tmp_flt = 0,
++          * array_out_tmp_flt = 0;
++    double * array_in_tmp_dbl = 0,
++           * array_out_tmp_dbl = 0;
+     uint8_t ** array_in_data = oyArray2d_GetData( array_in ),
+             ** array_out_data = oyArray2d_GetData( array_out );
+     int threads_n = 
+diff --git a/modules/oyranos_cmm_lcms.c b/modules/oyranos_cmm_lcms.c
+index bea56ed..b42fc99 100644
+--- a/modules/oyranos_cmm_lcms.c
++++ b/modules/oyranos_cmm_lcms.c
+@@ -213,8 +213,8 @@ lcmsProfileWrap_s * lcmsCMMProfile_GetWrap_( oyPointer_s * cmm_ptr )
+ {
+   lcmsProfileWrap_s * s = 0;
+ 
+-  char type_[4] = lcmsPROFILE;
+-  int type = *((int*)&type_);
++  char * type_ = lcmsPROFILE;
++  int type = *((int32_t*)type_);
+ 
+   if(cmm_ptr && !lcmsCMMCheckPointer( cmm_ptr, lcmsPROFILE ) &&
+      oyPointer_GetPointer(cmm_ptr))
+@@ -236,8 +236,8 @@ lcmsProfileWrap_s * lcmsCMMProfile_GetWrap_( oyPointer_s * cmm_ptr )
+ int      lcmsCMMTransform_GetWrap_   ( oyPointer_s       * cmm_ptr,
+                                        lcmsTransformWrap_s ** s )
+ {
+-  char type_[4] = lcmsTRANSFORM;
+-  int type = *((int*)&type_);
++  char * type_ = lcmsTRANSFORM;
++  int type = *((int32_t*)type_);
+ 
+   if(cmm_ptr && !lcmsCMMCheckPointer( cmm_ptr, lcmsTRANSFORM ) &&
+      oyPointer_GetPointer(cmm_ptr))
+@@ -264,8 +264,8 @@ int lcmsCMMProfileReleaseWrap(oyPointer *p)
+   int error = !p;
+   lcmsProfileWrap_s * s = 0;
+   
+-  char type_[4] = lcmsPROFILE;
+-  int type = *((int*)&type_);
++  char * type_ = lcmsPROFILE;
++  int type = *((int32_t*)type_);
+   char s_type[4];
+ 
+   if(!error && *p)
+@@ -313,8 +313,8 @@ int          lcmsCMMData_Open        ( oyStruct_s        * data,
+ 
+   if(!error)
+   {
+-    char type_[4] = lcmsPROFILE;
+-    int type = *((int*)&type_);
++    char * type_ = lcmsPROFILE;
++    int type = *((int32_t*)type_);
+     size_t size = 0;
+     oyPointer block = 0;
+     lcmsProfileWrap_s * s = calloc(sizeof(lcmsProfileWrap_s), 1);
+@@ -466,8 +466,8 @@ lcmsTransformWrap_s * lcmsTransformWrap_Set_ (
+   
+   if(!error)
+   {
+-    char type_[4] = lcmsTRANSFORM;
+-    int type = *((int*)&type_);
++    char * type_ = lcmsTRANSFORM;
++    int type = *((int32_t*)type_);
+     lcmsTransformWrap_s * ltw = calloc(sizeof(lcmsTransformWrap_s), 1);
+ 
+     ltw->type = type;
+@@ -879,8 +879,8 @@ cmsHPROFILE  lcmsAddProofProfile     ( oyProfile_s       * proof,
+   {
+     oyPointer_s * oy = cmm_ptr;
+ 
+-    char type_[4] = lcmsPROFILE;
+-    uint32_t type = *((uint32_t*)&type_);
++    char * type_ = lcmsPROFILE;
++    uint32_t type = *((uint32_t*)type_);
+     size_t size = 0;
+     oyPointer block = 0;
+     lcmsProfileWrap_s * s = calloc(sizeof(lcmsProfileWrap_s), 1);
+@@ -1821,10 +1821,10 @@ int      lcmsFilterPlug_CmmIccRun    ( oyFilterPlug_s    * requestor_plug,
+   {
+     uint8_t * array_in_tmp = 0,
+             * array_out_tmp = 0;
+-    float * array_in_tmp_flt,
+-          * array_out_tmp_flt;
+-    double * array_in_tmp_dbl,
+-           * array_out_tmp_dbl;
++    float * array_in_tmp_flt = 0,
++          * array_out_tmp_flt = 0;
++    double * array_in_tmp_dbl = 0,
++           * array_out_tmp_dbl = 0;
+     uint8_t ** array_in_data = oyArray2d_GetData( array_in ),
+             ** array_out_data = oyArray2d_GetData( array_out );
+     int threads_n = 
+diff --git a/modules/oyranos_cmm_lraw.cpp b/modules/oyranos_cmm_lraw.cpp
+index 5494091..eacbc46 100644
+--- a/modules/oyranos_cmm_lraw.cpp
++++ b/modules/oyranos_cmm_lraw.cpp
+@@ -357,7 +357,7 @@ typedef struct {
+   oyCIExyY v[3];
+ } oyCIExyYTriple;
+ 
+-void _oyMAT3toCIExyYTriple ( const oyMAT3* a,oyCIExyYTriple * triple )
++int _oyMAT3toCIExyYTriple ( const oyMAT3* a,oyCIExyYTriple * triple )
+ {
+   int i,j,
+       fail=0;
+@@ -380,6 +380,7 @@ void _oyMAT3toCIExyYTriple ( const oyMAT3* a,oyCIExyYTriple * triple )
+         triple->v[i].xy[1] = 1;
+       }
+     }
++  return fail;
+ }
+ const char * _oyMAT3show ( const oyMAT3* a )
+ {
+@@ -488,7 +489,7 @@ oyProfile_s * createMatrixProfile      ( libraw_colordata_t & color )
+     _oyMAT3per( &ab_cm, &cam_zyx, &pre_mul );
+     if(_oyMAT3inverse( &ab_cm, &ab_cm_inverse ))
+       // convert to CIE*xyY
+-      _oyMAT3toCIExyYTriple( &ab_cm_inverse, &ab_cm_inverse_xyY );
++      fail = _oyMAT3toCIExyYTriple( &ab_cm_inverse, &ab_cm_inverse_xyY );
+     else
+     {
+       fail = 1;
+diff --git a/modules/oyranos_cmm_oyIM_profile.c b/modules/oyranos_cmm_oyIM_profile.c
+index 0bbb412..c98aba7 100644
+--- a/modules/oyranos_cmm_oyIM_profile.c
++++ b/modules/oyranos_cmm_oyIM_profile.c
+@@ -249,9 +249,9 @@ int  oyWriteIcSigLutAtoBType         ( oyStructList_s    * texts,
+                                        size_t              tag_size )
+ {
+   int error = 0;
+-  int size, i;
++  int size = 0, i;
+   size_t off;
+-  uint8_t * dimensions, precission, *u8;
++  uint8_t * dimensions = 0, precission = 1, *u8;
+   uint16_t u16;
+   char * tmp = 0;
+   char * text = oyAllocateFunc_(128);
+diff --git a/oyjl/oyjl_tree_parse.c b/oyjl/oyjl_tree_parse.c
+index 78c9882..e43117d 100644
+--- a/oyjl/oyjl_tree_parse.c
++++ b/oyjl/oyjl_tree_parse.c
+@@ -684,7 +684,7 @@ yajl_status  oyjl_tree_from_json     ( const char        * text,
+ #if YAJL_VERSION < 20000
+   yajl_parser_config yconfig = { 1, 1 };
+ #endif
+-  yajl_handle yhandle;
++  yajl_handle yhandle = 0;
+ 
+   if(!error && context)
+   {
+diff --git a/test2.cpp b/test2.cpp
+index a71f484..476c3be 100644
+--- a/test2.cpp
++++ b/test2.cpp
+@@ -3573,7 +3573,7 @@ oyTESTRESULT_e testImagePixel()
+       /* all other buffer pixels shall remain untouched */
+       buf_16out2x2[3]==0 && buf_16out2x2[4]==0 && buf_16out2x2[5]==0 &&
+       buf_16out2x2[6]==0 && buf_16out2x2[7]==0 && buf_16out2x2[8]==0 &&
+-      buf_16out2x2[9]==0 && buf_16out2x2[10]==0 && buf_16out2x2[10]==0
++      buf_16out2x2[9]==0 && buf_16out2x2[10]==0 && buf_16out2x2[11]==0
+       )
+   { PRINT_SUB( oyTESTRESULT_SUCCESS,
+     "lower right source pixel in 1 pixel RoI  %s",
+@@ -3621,7 +3621,7 @@ oyTESTRESULT_e testImagePixel()
+       buf_16in2x2[6]==0 && buf_16in2x2[7]==0 && buf_16in2x2[8]==0 &&
+       buf_16in2x2[9]==65535 && buf_16in2x2[10]==65535 &&buf_16in2x2[11]==65535&&
+       /* the result shall appear in the lower right corner / last pixel */
+-      buf_16out2x2[9]==65535 && buf_16out2x2[10]>20000&&buf_16out2x2[20]<40000&&
++      buf_16out2x2[9]==65535 && buf_16out2x2[10]>20000&&buf_16out2x2[11]<40000&&
+       /* all other buffer pixels shall remain untouched */
+       buf_16out2x2[0]==0 && buf_16out2x2[1]==0 && buf_16out2x2[2]==0 &&
+       buf_16out2x2[3]==0 && buf_16out2x2[4]==0 && buf_16out2x2[5]==0 &&
+@@ -3986,7 +3986,7 @@ oyTESTRESULT_e oyTestRun             ( oyTESTRESULT_e    (*test)(void),
+ /*  main */
+ int main(int argc, char** argv)
+ {
+-  int i, error;
++  int i, error = 0;
+ 
+   if(getenv("OY_DEBUG"))
+   {
+diff --git a/tests/test_oyranos.c b/tests/test_oyranos.c
+index bb3f521..bccec7c 100644
+--- a/tests/test_oyranos.c
++++ b/tests/test_oyranos.c
+@@ -1009,7 +1009,7 @@ oyTESTRESULT_e testObserver ()
+ /*  main */
+ int main(int argc, char** argv)
+ {
+-  int i, error;
++  int i, error = 0;
+ 
+   /* init */
+   for(i = 0; i <= oyTESTRESULT_UNKNOWN; ++i)
+diff --git a/examples/oyranos_convert/oyranos_convert.c b/examples/oyranos_convert/oyranos_convert.c
+index 099b872..51dd59d 100644
+--- a/examples/oyranos_convert/oyranos_convert.c
++++ b/examples/oyranos_convert/oyranos_convert.c
+@@ -135,16 +135,10 @@ int main( int argc , char** argv )
+ 
+   int levels = 0;
+ 
+-  const char * result_xml = 0;
+-  char * text = 0, * t = 0;
+-  const char * opt_names = 0;
+-  oyFormsArgs_s * forms_args = oyFormsArgs_New( 0 );
+-  const char * data = 0, * ct = 0;
+   char ** other_args = 0;
+   int other_args_n = 0;
+-  int i;
++  char * text = 0, * t = 0;
+   oyOptions_s * opts = 0;
+-  oyOption_s * o = 0;
+   oyImage_s * image = 0;
+ 
+ #ifdef USE_GETTEXT
+@@ -275,6 +269,13 @@ int main( int argc , char** argv )
+ #if 0
+   if(other_args)
+   {
++    const char * result_xml = 0;
++    const char * opt_names = 0;
++    oyFormsArgs_s * forms_args = oyFormsArgs_New( 0 );
++    const char * data = 0, * ct = 0;
++    int i;
++    oyOption_s * o = 0;
++
+     forms_args->print = 0;
+ 
+     error = oyXFORMsRenderUi( text, oy_ui_cmd_line_handlers, forms_args );
+diff --git a/oyranos_gamma.c b/oyranos_gamma.c
+index 598aa2d..0c5b09e 100644
+--- a/oyranos_gamma.c
++++ b/oyranos_gamma.c
+@@ -172,7 +172,7 @@ int main( int argc , char** argv )
+                         else if(OY_IS_ARG("profile"))
+                         { OY_PARSE_STRING_ARG2(prof_name, "profile"); break; }
+                         else if(OY_IS_ARG("display"))
+-                        { const char * t; OY_PARSE_STRING_ARG2(t, "display");
++                        { const char * t=0; OY_PARSE_STRING_ARG2(t, "display");
+                           if(t) display_name = strdup(t); break; }
+                         else if(OY_IS_ARG("modules"))
+                         { list_modules = 1; i=100; break; }
+-- 
+1.5.6.5
+
+

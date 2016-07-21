@@ -1,0 +1,11 @@
+--- build.xml.orig	2015-06-27 16:12:08.442000000 +0000
++++ build.xml	2015-06-27 16:12:15.684000000 +0000
+@@ -448,7 +448,7 @@
+     </target>
+ 
+     <target name="antlr_gen" depends="prepare-output" unless="antlr.notneeded">
+-        <java classname="org.antlr.Tool" failonerror="true" fork="true" dir="${jython.base.dir}">
++        <java classname="org.antlr.Tool" failonerror="false" fork="true" dir="${jython.base.dir}">
+             <jvmarg value="-Xmx512m"/>
+             <arg value="-Xconversiontimeout"/>
+             <arg value="2000"/>

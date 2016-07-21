@@ -1,0 +1,18 @@
+inspired by:
+http://groups.google.com/group/waf-users/browse_thread/thread/2bd6774056c850bc/
+27bfdcac2fb9ec05?lnk=gst#27bfdcac2fb9ec05
+
+we cannot "fix" the buildsystem, since it's bzip2-tarred *sigh*
+
+
+--- waf
++++ waf
+@@ -154,6 +154,8 @@
+ 
+ wafdir = find_lib()
+ sys.path.insert(0, wafdir)
++from waflib.Tools.c_config import MACRO_TO_DESTOS 
++MACRO_TO_DESTOS['__POWERPC__'] = 'darwin'
+ 
+ if __name__ == '__main__':
+ 	import waflib.extras.compat15

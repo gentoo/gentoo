@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-geosciences@gentoo.org</email>
+		<name>Gentoo Geosciences Project</name>
+	</maintainer>
+	<use>
+		<flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
+		<flag name="geos">Enable <pkg>sci-libs/geos</pkg> library support</flag>
+		<flag name="postgis">Enable <pkg>dev-db/postgis</pkg> support</flag>
+		<flag name="proj">Enable <pkg>sci-libs/proj</pkg> library support (geographic projections)</flag>
+		<flag name="xslt">Enable xslt and exslt support xml-mapfile support</flag>
+	</use>
+</pkgmetadata>

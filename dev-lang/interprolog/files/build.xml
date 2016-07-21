@@ -1,0 +1,45 @@
+<?xml version="1.0" ?><project default="jar" name="interprolog">
+
+	<!-- some properties -->
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="docs.dir" value="docs"/>
+	<property name="dist.dir" value="dist"/>
+	<property name="jarfile" value="${ant.project.name}.jar"/>
+	<property file="build.properties"/>
+
+	<!-- init -->
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${docs.dir}"/>
+	</target>	
+
+	<!-- compile everything -->
+	<target depends="init" name="compile">
+		<javac classpath="${gentoo.classpath}" deprecation="on" destdir="${build.dir}" encoding="ISO-8859-1" source="1.4" srcdir="${src.dir}" target="1.4"/>
+		<copy todir="${build.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- build the jar file -->
+	<target depends="compile" name="jar">
+		<jar basedir="${build.dir}" jarfile="${dist.dir}/${jarfile}"/>
+	</target>
+
+	<!-- generate javadocs -->
+	<target depends="init" name="javadoc">
+		<javadoc classpath="${gentoo.classpath}" author="true" destdir="${docs.dir}" encoding="ISO-8859-1" packagenames="com.*" source="1.4" sourcepath="${src.dir}" use="true" version="true" windowtitle="${ant.project.name} API"/>
+	</target>
+
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+		<delete dir="${dist.dir}"/>
+		<delete dir="${docs.dir}"/>
+	</target>
+</project>

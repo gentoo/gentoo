@@ -1,0 +1,11 @@
+--- sox-14.4.0/src/ffmpeg.h
++++ sox-14.4.0/src/ffmpeg.h
+@@ -27,6 +27,8 @@
+ #include <ffmpeg/avformat.h>
+ #endif
+ 
++#include <libavutil/mathematics.h>
++
+ #if defined __SUNPRO_C
+   #pragma enable_warn
+ #elif defined _MSC_VER

@@ -1,0 +1,21 @@
+diff -ur htmldoc-1.8.27~/htmldoc/ps-pdf.cxx htmldoc-1.8.27/htmldoc/ps-pdf.cxx
+--- htmldoc-1.8.27~/htmldoc/ps-pdf.cxx	2009-08-13 19:32:21.846860508 -0400
++++ htmldoc-1.8.27/htmldoc/ps-pdf.cxx	2009-08-13 19:40:29.185857503 -0400
+@@ -8619,7 +8619,7 @@
+           return (NULL);
+         }
+ 	// Safe because buffer is allocated...
+-        strcpy((char *)r->data.text.buffer, (char *)data);
++        memcpy((char *)r->data.text.buffer, (char *)data, strlen((char *)data));
+         get_color(_htmlTextColor, r->data.text.rgb);
+         break;
+     case RENDER_IMAGE :
+@@ -8640,7 +8640,7 @@
+           return (NULL);
+         }
+ 	// Safe because buffer is allocated...
+-        strcpy((char *)r->data.link, (char *)data);
++        memcpy((char *)r->data.link, (char *)data, strlen((char *)data));
+         break;
+   }
+ 

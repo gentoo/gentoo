@@ -1,0 +1,24 @@
+diff -ruN digikam-2.2.0.orig/extra/libkvkontakte/CMakeLists.txt digikam-2.2.0/extra/libkvkontakte/CMakeLists.txt
+--- digikam-2.2.0.orig/extra/libkvkontakte/CMakeLists.txt	2011-10-03 12:34:05.000000000 +0200
++++ digikam-2.2.0/extra/libkvkontakte/CMakeLists.txt	2011-10-03 20:01:54.082572683 +0200
+@@ -11,11 +11,6 @@
+ # TODO: calculate the version id properly (here is currently a hack that won't work for 1.10.0):
+ set(LIBKVKONTAKTE_VERSION_ID "0x0${LIBKVKONTAKTE_VERSION_MAJOR}0${LIBKVKONTAKTE_VERSION_MINOR}0${LIBKVKONTAKTE_VERSION_PATCH}")
+ 
+-if(NOT LIB_INSTALL_DIR)
+-	set(LIB_INSTALL_DIR lib${LIB_SUFFIX})
+-endif(NOT LIB_INSTALL_DIR)
+-set(CMAKECONFIG_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/LibKVkontakte )
+-
+ # Use a versioned install directory for the headers so multiple versions can be installed in parallel
+ set(INCLUDE_INSTALL_DIR include )
+ 
+@@ -26,6 +21,8 @@
+ include(KDE4Defaults)
+ include(MacroLibrary)
+ 
++set(CMAKECONFIG_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/LibKVkontakte )
++
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}")
+ 
+ set(QJSON_VERSION_REQUIRED 0.7)

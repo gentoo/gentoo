@@ -1,0 +1,17 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Dont compile gui/GraphLib/libsrc/uimxR5/src/sp_pty.c
+ This file uses either nonportable termio, or sgtty which is not available
+ everywhere (again, Hurd and FreeBSD are the examples here). In principle
+ it could be rewritten to use termios (which is standard today); however
+ the functions from this file are not needed in midas; therefore it is
+ simpler just not to compile this.
+--- a/gui/GraphLib/libsrc/uimxR5/src/makefile
++++ b/gui/GraphLib/libsrc/uimxR5/src/makefile
+@@ -65,7 +65,6 @@
+         subproc.o\
+ 	sp_utils.o\
+ 	sp_spmd.o\
+-	sp_pty.o\
+ 	swidget.o \
+         t_error.o\
+         uimx.o\

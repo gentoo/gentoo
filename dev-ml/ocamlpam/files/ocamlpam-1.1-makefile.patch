@@ -1,0 +1,17 @@
+--- a/Makefile	2012-09-14 22:46:11.508415083 +0200
++++ b/Makefile	2012-09-14 22:46:34.526338371 +0200
+@@ -35,10 +35,13 @@
+ 
+ install:
+ 	install -d $(DESTDIR)/pam
+-	install -m 644 -t $(DESTDIR)/pam META *.mli *.cmi *.cmx *.cma *.cmxa *.a
++	install -m 644 -t $(DESTDIR)/pam META *.mli *.cmi *.cma *.a
+ 	install -d $(DESTDIR)/stublibs
+ 	install -m 644 -t $(DESTDIR)/stublibs dll$(BASENAME).so
+ 
++install-opt:
++	install -m 644 -t $(DESTDIR)/pam *.cmx *.cmxa
++
+ dist: clean
+ 	mkdir -p $(DISTNAME)
+ 	-cp * $(DISTNAME)

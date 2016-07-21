@@ -1,0 +1,29 @@
+Prevent mk from ignoring errors
+
+By default, the plan9port INSTALL script doesn't report build error,
+which can result in a mostly broken build begin installed.
+--- a/INSTALL
++++ b/INSTALL
+@@ -41,7 +41,6 @@ echo " "
+ echo "* Resetting $PLAN9/config"
+ rm -f config
+ 
+-(
+ echo "* Compiler version:"
+ 9c -v 2>&1 | grep -v 'Configured with:' | grep -i version | sed 's/^/	/'
+ 
+@@ -134,7 +133,7 @@ if $dobuild; then
+ 		echo "* Warning: not all binaries built successfully."
+ 	fi
+ 	echo "* Installing everything in $PLAN9/bin..."
+-	mk -k install || exit 1
++	mk install || exit 1
+ 	if [ ! -x $PLAN9/bin/cleanname -o ! -x $PLAN9/bin/acme -o ! -x $PLAN9/bin/sam ]; then
+ 		echo " "
+ 		echo "* Warning: not all binaries built successfully."
+@@ -182,5 +181,4 @@ if $doinstall; then
+ 	echo "	PLAN9=$PLAN9 export PLAN9"
+ 	echo '	PATH=$PATH:$PLAN9/bin export PATH'
+ fi
+-) 2>&1 | tee install.log | $awk -f $PLAN9/dist/isum.awk -v 'copy='install.sum
+ 

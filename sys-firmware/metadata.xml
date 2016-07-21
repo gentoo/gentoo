@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-firmware category contains misc. firmware and microcode.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-firmware contiene firmware y microcódigo para
+		diversos dispositivos.
+	</longdescription>
+</catmetadata>

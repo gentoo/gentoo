@@ -1,0 +1,65 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
+# Requires unkeyworded media-sound/jack-audio-connection-kit & media-video/movit
+media-libs/mlt jack opengl
+
+# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Tests require non-keyworded qt5
+dev-qt/qtchooser test
+
+# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
+# Missing keyword on dev-libs/botan
+app-crypt/qca botan
+
+# Justin Lecher <jlec@gentoo.org> (18 Mar 2010)
+# Unkeyworded deps
+net-im/gajim kde
+
+# Alexandre Rostovtsev <tetromono@gentoo.org> (09 Jan 2012)
+# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
+# it's masked in base profile and unmasked here (bug #396313).
+net-libs/webkit-gtk -jit
+www-client/epiphany -jit
+
+# Pacho Ramos <pacho@gentoo> (18 Mar 2011)
+# Missing keywords on deps (GNOME related packages)
+dev-libs/totem-pl-parser quvi
+media-plugins/gst-plugins-meta dv dvd musepack vcd vpx wavpack
+
+# Justin Lecher <jlec@gentoo.org> (19 Sep 2010)
+# kde-base/konqueror not keyworded
+app-arch/p7zip kde
+
+# Justin Lecher <jlec@gentoo.org> (12 Sep 2010)
+# net-libs/farsight2 not keyworded
+net-im/gajim jingle
+
+# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# MKL not available on this arch
+media-gfx/povray mkl
+
+# Romain Perier <mrpouet@gentoo.org> (18 Oct. 2009)
+# >=networkmanager-0.7.0 is not keyworded.
+gnome-base/gnome-applets networkmanager
+
+# Java currently uses generation 1
+dev-libs/cyrus-sasl java
+
+# nvidia-driver uses acpid
+x11-drivers/nvidia-drivers acpi
+
+# Gilles Dartiguelongue <eva@gentoo.org> (19 Oct 2007)
+# afs not keyworded
+>=gnome-base/gdm-2.20 afs
+
+# gavl and opencv do not build
+media-plugins/frei0r-plugins scale0tilt facedetect
+
+# needs to rework xanim's ebuild to make it bsd-friendly
+media-video/mplayer xanim
+
+# Dependencies not keyworded, bug #424571
+net-nds/openldap smbkrb5passwd

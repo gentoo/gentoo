@@ -1,0 +1,13 @@
+diff -Naurp cdctl-0.15-orig/cdctl.c cdctl-0.15/cdctl.c
+--- cdctl-0.15-orig/cdctl.c	2006-08-08 23:18:44.000000000 +0200
++++ cdctl-0.15/cdctl.c	2006-08-08 23:19:33.000000000 +0200
+@@ -337,7 +337,9 @@ int do_print_capabilities(int cdrom) {
+ 	printf("Can report media change: %i\n", (ret & CDC_MEDIA_CHANGED)?1:0);
+ 	printf("Can play audio discs   : %i\n", (ret & CDC_PLAY_AUDIO)?1:0);
+ 	printf("Can do a hard reset    : %i\n", (ret & CDC_RESET)?1:0);
++#ifdef CDC_IOCTLS
+ 	printf("Has non-standard ioctls: %i\n", (ret & CDC_IOCTLS)?1:0);
++#endif
+ 	printf("Can report drive status: %i\n", (ret & CDC_DRIVE_STATUS)?1:0);
+ 
+ #ifdef CDROM_CHANGER_NSLOTS

@@ -1,0 +1,21 @@
+--- vm-8.0.1-465-orig/info/Makefile.in	2007-06-29 00:35:41.000000000 +0200
++++ vm-8.0.1-465/info/Makefile.in	2007-07-13 20:07:38.000000000 +0200
+@@ -35,7 +35,7 @@
+ 
+ all: info
+ 
+-info: vm.info vm-pcrisis.info
++info: vm.info
+ 
+ Makefile: @srcdir@/Makefile.in
+ 	cd @srcdir@/..; ./config.status
+--- vm-8.0.1-465-orig/lisp/Makefile.in	2007-06-29 00:35:41.000000000 +0200
++++ vm-8.0.1-465/lisp/Makefile.in	2007-07-13 20:08:00.000000000 +0200
+@@ -30,7 +30,6 @@
+ SOURCES += vm-motion.el
+ SOURCES += vm-mouse.el
+ SOURCES += vm-page.el
+-SOURCES += vm-pcrisis.el
+ SOURCES += vm-pgg.el
+ SOURCES += vm-pine.el
+ SOURCES += vm-pop.el

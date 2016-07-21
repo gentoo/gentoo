@@ -1,0 +1,154 @@
+# source:
+# http://hege.li/howto/spam/etc/postfwd/postfwd.conf
+#
+# This version was included on 29 Mar 2010. Newer versions
+# may be available.
+
+###
+### Example config for postfwd 1.10pre8+
+###
+
+## Check DNS Whitelisting
+
+id=OK_DNSWL; \
+  rbl=list.dnswl.org/^127/43200; \
+  action=OK
+
+## Check HELO and reverse DNS
+
+id=SET_HELO; \
+  helo_name=^(\[|[^.]+$|.*?[0-9.-]{8}); \
+  action=set(HIT_helo=1)
+
+id=SET_NODNS; \
+  client_name=^unknown$; \
+  action=set(HIT_nodns=1)
+
+id=REJECT_HELO_NODNS; \
+  HIT_helo==1; HIT_nodns==1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - Suspicious HELO [$$helo_name] and missing reverse DNS [$$client_address]
+
+## Check ZEN first for immediate blocking - less queries for other lists
+## See usage policy: http://www.spamhaus.org/organization/dnsblusage.html
+
+id=REJECT_RBL_ZEN; \
+  rbl=zen.spamhaus.org; \
+  action=REJECT Blocked - contact postmaster@example.net for help - DNSBL [$$dnsbltext]
+
+## Check other DNSBLs in parallel
+
+&&DNSBLS { \
+  rbl=bl.spamcop.net; \
+  rbl=b.barracudacentral.org; \
+  rbl=bl.spameatingmonkey.net; \
+  rbl=dnsbl-1.uceprotect.net; \
+  rbl=psbl.surriel.com; \
+  rbl=combined.njabl.org; \
+  rbl=dnsbl.sorbs.net; \
+  rbl=ix.dnsbl.manitu.net; \
+};
+
+id=EVAL_DNSBLS; \
+  &&DNSBLS; rblcount=all; \
+  action=set(HIT_rbls=$$rblcount,HIT_dtxt=$$dnsbltext)
+
+id=REJECT_RBL_MULTI; \
+  HIT_rbls>=2; \
+  action=REJECT Blocked - contact postmaster@example.net for help - Multiple DNSBLs [$$HIT_dtxt]
+
+## Check RHSBLs if there wasn't enough DNSBLs hit
+
+&&RHSBLS_REVERSE { \
+  rhsbl_reverse_client=dynamic.rhs.mailpolice.com; \
+};
+
+&&RHSBLS_SENDER { \
+  rhsbl_sender=dbl.spamhaus.org; \
+  rhsbl_sender=multi.uribl.com; \
+  rhsbl_sender=multi.surbl.org; \
+  rhsbl_sender=rhsbl.ahbl.org; \
+  rhsbl_sender=rhsbl.sorbs.net; \
+  rhsbl_sender=dsn.rfc-ignorant.org; \
+};
+
+id=EVAL_RHSBLS; \
+  &&RHSBLS_REVERSE; &&RHSBLS_SENDER; rhsblcount=all; \
+  action=set(HIT_rhsbls=$$rhsblcount,HIT_rtxt=$$dnsbltext)
+
+id=REJECT_RHSBL_MULTI; \
+  HIT_rhsbls>=2; \
+  action=REJECT Blocked - contact postmaster@example.net for help - Multiple RHSBLs [$$HIT_rtxt]
+
+## See if we get any combined hits from rules before
+
+id=REJECT_RBL_RHSBL; \
+  HIT_rbls>=1; HIT_rhsbls>=1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - RHSBL and DNSBL [$$HIT_rtxt] [$$HIT_dtxt]
+
+id=REJECT_RBL_HELO; \
+  HIT_rbls>=1; HIT_helo==1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - DNSBL [$$HIT_dtxt] and suspicious HELO [$$helo_name]
+
+id=REJECT_RBL_NODNS; \
+  HIT_rbls>=1; HIT_nodns==1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - DNSBL [$$HIT_dtxt] and missing reverse DNS [$$client_address]
+
+id=REJECT_RHSBL_HELO; \
+  HIT_rhsbls>=1; HIT_helo==1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - RHSBL [$$HIT_rtxt] and suspicious HELO [$$helo_name]
+
+id=REJECT_RHSBL_NODNS; \
+  HIT_rhsbls>=1; HIT_nodns==1; \
+  action=REJECT Blocked - contact postmaster@example.net for help - RHSBL [$$HIT_rtxt] and missing reverse DNS [$$client_address]
+
+## Finally greylist all lesser hits.
+##
+## A more DNSBL friendly way would be to greylist everything suspicious
+## before DNS checks. Currently this requires you to setup some postfix
+## tables before postfwd is called, since greylisting can be only done last
+## in postfwd (action always exits processing).
+
+id=GREY_HELO; HIT_helo==1; action=check_postgrey
+id=GREY_NODNS; HIT_nodns==1; action=check_postgrey
+id=GREY_RBL; HIT_rbls>=1; action=check_postgrey
+id=GREY_RHSBL; HIT_rhsbls>=1; action=check_postgrey
+
+&&DNSBLS_GREY { \
+  rbl=dnsbl-2.uceprotect.net; \
+  rbl=dnsbl-3.uceprotect.net; \
+};
+
+id=GREY_DNSBL; &&DNSBLS_GREY; action=check_postgrey
+
+
+
+##
+## This example is free to use as per BSD license:
+##
+## Copyright (c) 2008, Henrik Krohns <hege@hege.li>
+## All rights reserved.
+## 
+## Redistribution and use in source and binary forms, with or without modification,
+## are permitted provided that the following conditions are met:
+## 
+##  * Redistributions of source code must retain the above copyright
+##    notice, this list of conditions and the following disclaimer.
+##  * Redistributions in binary form must reproduce the above copyright
+##    notice, this list of conditions and the following disclaimer in
+##    the documentation and/or other materials provided with the
+##    distribution.
+##  * Neither the name of the authors nor the names of his contributors
+##    may be used to endorse or promote products derived from this
+##    software without specific prior written permission.
+## 
+## THIS SOFTWARE IS PROVIDED BY ME ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+## INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+## FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL BE LIABLE FOR ANY DIRECT,
+## INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+## NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+## PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+## WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+## ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+## POSSIBILITY OF SUCH DAMAGE.
+##
+

@@ -1,0 +1,11 @@
+--- openssh-7.0p1-hpnssh14v5/0002-add-support-for-the-NONE-cipher.patch.orig	2015-08-24 11:17:05.379280954 -0700
++++ openssh-7.0p1-hpnssh14v5/0002-add-support-for-the-NONE-cipher.patch	2015-08-24 11:19:30.788424050 -0700
+@@ -80,7 +80,7 @@
+ +			else
+ +				fatal("Pre-authentication none cipher requests are not allowed.");
+ +		}
+- 		debug("kex: %s %s %s %s",
++ 		debug("kex: %s cipher: %s MAC: %s compression: %s",
+  		    ctos ? "client->server" : "server->client",
+  		    newkeys->enc.name,
+ diff --git a/myproposal.h b/myproposal.h

@@ -1,0 +1,24 @@
+commit 1b6eb630bc82265f514c30717b712758917b0e1c
+Author: hasufell <hasufell@gentoo.org>
+Date:   Mon Jul 29 23:37:52 2013 +0200
+
+    fix desktop file
+
+diff --git a/obconf.desktop b/obconf.desktop
+index 0c9714e..a3ba032 100644
+--- a/obconf.desktop
++++ b/obconf.desktop
+@@ -1,5 +1,4 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Type=Application
+ Name=Openbox Configuration Manager
+ Name[zh_TW]=Openbox 組態管理器
+@@ -8,6 +7,6 @@ Comment[zh_TW]=管理 Openbox 組態設定
+ Icon=obconf
+ Exec=obconf %f
+ Categories=Settings;DesktopSettings;GTK;
+-MimeType=application/x-openbox-theme
++MimeType=application/x-openbox-theme;
+ StartupNotify=true
+ Terminal=false

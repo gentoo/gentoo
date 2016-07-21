@@ -1,0 +1,11 @@
+--- setup.py.old	2016-06-20 13:30:32.787572664 +0200
++++ setup.py	2016-06-20 13:33:47.360904835 +0200
+@@ -32,7 +32,7 @@
+     author='Divio AG',
+     author_email='info@divio.ch',
+     url='https://github.com/aldryn/aldryn-common',
+-    packages=find_packages(),
++    packages=find_packages(exclude=('tests',)),
+     license='LICENSE.txt',
+     platforms=['OS Independent'],
+     install_requires=REQUIREMENTS,

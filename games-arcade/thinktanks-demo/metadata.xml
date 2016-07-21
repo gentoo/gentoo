@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
+<longdescription>
+ThinkTanks is a tank combat game designed to be a blast for the new and 
+experienced gamer alike with lighthearted, fast paced pandemonium. Either 
+battling against brain-hungry bots in solo play or going head-to-head against 
+others online, ThinkTanks has something for everyone.
+
+You find yourself in a ThinkTank... just one of many brain slaves imprisoned by 
+Alien Mind Control-- only you have managed to escape their brain rays. But the 
+moment you are free, you are besieged on all sides by insane bot-tanks. You must 
+destroy or be destroyed and keep on your toes at all times. Luckily you can 
+collect powerups that give you wacky weapons to help you stay alive. As you 
+progress through each level, the bot tanks get smarter, stronger and crazier as 
+Alien Mind Control reprograms the bot tanks to match your wits. Your goal is to 
+beat the bosses, then rescue your brain-brethren and continue the fight on other 
+worlds.
+
+Upon entering, you are immediately engaged by heavy artillery. This is 
+no-holds-barred warfare and to the victor go the points. You can be catapulted or 
+thrust in any direction by rolling over the boost and jump pads to escape attack 
+or rush the enemy. The lush, green hills are scattered with bots on the warpath, 
+bots choking in their own smoke, floating orbs with special powers and 
+ammunition, boulders, trees, AND the dreaded pit of doom. The goal here is to 
+keep your brain intact, and triumph over bots of every shape, size, speed and 
+skill.
+
+You are cast into a veritable feeding frenzy of tanks. You need to simultaneously 
+track the position of your tank relative to the scrum ball using your radarscope, 
+while navigating your tank along the bumpy terrain. If you are quick enough to 
+pick up the ball yourself, you must make a mad dash to the goal, evading the 
+thirsty pack of mad bots heavy on your trail. You win by capturing the most scrum 
+balls in the allotted time.
+
+Both On-line BattleMode and Scrum games have team-play variants and online chat 
+that allow players to play together cooperatively.
+</longdescription>
+</pkgmetadata>

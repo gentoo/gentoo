@@ -1,0 +1,13 @@
+diff --git a/tests/cxx/tree/prefix/makefile b/tests/cxx/tree/prefix/makefile
+index 3317161..77b4b0a 100644
+--- a/tests/cxx/tree/prefix/makefile
++++ b/tests/cxx/tree/prefix/makefile
+@@ -35,7 +35,7 @@ gen  := $(addprefix $(out_base)/,$(genf))
+ 
+ $(gen): xsd := $(out_root)/xsd/xsd
+ $(gen): xsd_options := --generate-serialization --generate-polymorphic \
+---polymorphic-type foo\\\#base --root-element root
++--polymorphic-type foo\\\\\#base --root-element root
+ $(gen): $(out_root)/xsd/xsd
+ 
+ $(call include-dep,$(dep))

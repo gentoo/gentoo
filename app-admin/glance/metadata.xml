@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>openstack@gentoo.org</email>
+    <name>Openstack</name>
+  </maintainer>
+  <longdescription lang="en">
+    Provides services for discovering, registering, and retrieving virtual 
+    machine images. Glance has a RESTful API that allows querying of VM image 
+    metadata as well as retrieval of the actual image.
+  </longdescription>
+  <use>
+    <flag name="swift">Adds swift storage support</flag>
+  </use>
+  <upstream>
+    <remote-id type="launchpad">glance</remote-id>
+  </upstream>
+</pkgmetadata>

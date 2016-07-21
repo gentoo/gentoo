@@ -1,0 +1,28 @@
+From 798629da485b9504dbb5bd5c96c9ea1d3454ebe3 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 7 Jun 2015 13:39:55 -0400
+Subject: [PATCH] Revert "# Work arount a minor bug in InstallSharedLib() link
+ handling"
+
+This reverts commit 0532106c1ea0807922ea6f868fcde384f22d4e92 as it breaks
+parallel installs.  The original commit itself contains no real details.
+---
+ SConstruct | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 39a6b6a..c8a977e 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -1336,8 +1336,6 @@ if env["ncurses"]:
+     binaryinstall.append(env.Install(installdir('bindir'), [cgps, gpsmon]))
+ binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpslib, libgps_version))
+ binaryinstall.append(LibraryInstall(env, installdir('libdir'), compiled_gpsdlib, libgps_version))
+-# Work arount a minor bug in InstallSharedLib() link handling
+-env.AddPreAction(binaryinstall, 'rm -f %s/libgps.*' % (installdir('libdir'), ))
+ 
+ if qt_env:
+     binaryinstall.append(LibraryInstall(qt_env, installdir('libdir'), compiled_qgpsmmlib, libgps_version))
+-- 
+2.4.1
+

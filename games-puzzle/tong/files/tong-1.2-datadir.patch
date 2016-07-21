@@ -1,0 +1,41 @@
+--- tong.cpp.orig
++++ tong.cpp
+@@ -202,7 +202,6 @@
+ 	Tetrad *tetrad, *nexttetrad;
+ 	Paddle *paddle;
+ 	Ball *ball;
+-	char datadir[256];
+ 	input_t input;
+ 	int volume = MIX_MAX_VOLUME;
+ 
+@@ -210,7 +209,6 @@
+ 	volume = 24;
+ #endif
+ 	memset(&input, 0, sizeof(input_t));
+-	strcpy(datadir, GAME_DATA_DIR);
+ 	if(argc>1) {
+ 		if(!strcmp(argv[1], "-v") || !strcmp(argv[1], "--version")) {
+ 			printf("%s\n", GAME_ID);
+@@ -219,10 +217,6 @@
+ 				   "warranty; not even for MERCHANTABILITY or"
+ 				   " FITNESS FOR A PARTICULAR PURPOSE.\n");
+ 			return 0;
+-		} else if(!strncmp(argv[1], "-p=", 3)) {
+-			strcpy(datadir, argv[1]+(3*sizeof(char)));
+-		} else if(!strncmp(argv[1], "--path=", 7)) {
+-			strcpy(datadir, argv[1]+(7*sizeof(char)));
+ 		} else {
+ 			printf("Usage: %s [OPTION]\n", argv[0]);
+ 			printf("Play TONG, a Free Software game (Tetris meets Pong)\n");
+@@ -237,11 +231,6 @@
+ #ifdef WII
+ 	fatInitDefault();
+ #endif
+-	if (chdir(datadir)) {
+-		printf("Could not chdir to %s (attempting to use current dir)\n",
+-			   datadir);
+-	}
+-
+ 	if(SDL_Init(SDL_INIT_AUDIO
+ 				|SDL_INIT_VIDEO
+ 				|SDL_INIT_TIMER

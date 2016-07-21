@@ -1,0 +1,31 @@
+--- procinfo.c~	2005-01-31 20:52:29.250918264 +0200
++++ procinfo-18/procinfo.c	2005-01-31 20:48:55.907351416 +0200
+@@ -402,26 +402,8 @@
+     }
+ 
+     elapsed = new.uptime;
+-
+-/* XXX Is this stuff still relevant/true? */
+-
+-#ifdef __i386__		/* IRQ 0 is timer tick on i386's... */
+-    if (nr_irqs) {
+-	if (fs && old.uptime)
+-	    elapsed = DIFF (intr[0]);
+-    } else
+-#endif
+-#ifdef __sparc__	/* IRQ 10 is timer tick on sparc's... */
+-    if (nr_irqs) {
+-	if (fs && old.uptime)
+-	    elapsed = DIFF (intr[10]);
+-    } else
+-#endif
+-    {
+-	/* This won't be exact... */
+-	if (fs && old.uptime)
+-	    elapsed = DIFF (uptime);
+-    }
++    if (fs && old.uptime)
++	elapsed = DIFF (uptime);
+ 
+     printf ("user  : %s %s",
+ 	    hms (bDIFF (cpu_user)), perc (bDIFF (cpu_user), elapsed, nr_cpus));

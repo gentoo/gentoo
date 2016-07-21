@@ -1,0 +1,16 @@
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 64c18a2..75c2fb7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,7 +97,7 @@ endif(Qt5Core_FOUND AND Qt5Widgets_FOUND AND Qt5Gui_FOUND AND Qt5PrintSupport_FO
+ if(FORCEQt4)
+ 	add_definitions(-DQTVERSIONSUFFIX="")
+ else(FORCEQt4)
+-	add_definitions(-DQTVERSIONSUFFIX="\\\"-qt5\\\"")
++	add_definitions(-DQTVERSIONSUFFIX="-qt5")
+ endif(FORCEQt4)
+ 
+ # and OpenBabel2

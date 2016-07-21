@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/408459
+
+--- src/pak.cpp
++++ src/pak.cpp
+@@ -119,7 +119,7 @@
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+ 				closedir(dirp);
+-				gzclose(pak);
++				gzclose((gzFile)pak);
+ 				exit(1);
+ 			}
+ 			
+@@ -141,7 +141,7 @@
+ 			{
+ 				printf("Couldn't open %s for reading!\n", filename);
+ 				closedir(dirp);
+-				gzclose(pak);
++				gzclose((gzFile)pak);
+ 				exit(1);
+ 			}
+ 			else

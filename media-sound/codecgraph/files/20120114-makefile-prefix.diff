@@ -1,0 +1,18 @@
+diff -uNr codecgraph-20120114.ORIG/Makefile codecgraph-20120114/Makefile
+--- codecgraph-20120114.ORIG/Makefile	2012-04-20 11:46:16.585852026 +0100
++++ codecgraph-20120114/Makefile	2012-04-20 11:46:50.730851052 +0100
+@@ -1,4 +1,4 @@
+-PREFIX = /usr/local
++PREFIX = /usr
+ DOTTY = dot
+ 
+ samples = \
+@@ -87,7 +87,7 @@
+ install:
+ 	install -m755 -D codecgraph $(DESTDIR)$(PREFIX)/bin/codecgraph
+ 	install -m755 -D codecgraph.py $(DESTDIR)$(PREFIX)/bin/codecgraph.py
+-	install -m644 -D codecgraph.1 $(DESTDIR)$(PREFIX)/man/man1/codecgraph.1
++	install -m644 -D codecgraph.1 $(DESTDIR)$(PREFIX)/share/man/man1/codecgraph.1
+ 
+ thumbs: png
+ 	for p in $(pngfiles);do \

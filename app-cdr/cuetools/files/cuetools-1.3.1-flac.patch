@@ -1,0 +1,16 @@
+Fix cuetag for media-libs/flac-1.2.1
+
+https://bugs.gentoo.org/show_bug.cgi?id=327271
+
+Patch written by Alexander Kozyrev <sequoiahead@gmail.com>
+--- a/extras/cuetag.sh
++++ b/extras/cuetag.sh
+@@ -18,7 +18,7 @@
+ {
+ 	# FLAC tagging
+ 	# --remove-vc-all overwrites existing comments
+-	METAFLAC="metaflac --remove-vc-all --import-vc-from=-"
++	METAFLAC="metaflac --remove-all-tags --import-tags-from=-"
+ 
+ 	# Ogg Vorbis tagging
+ 	# -w overwrites existing comments

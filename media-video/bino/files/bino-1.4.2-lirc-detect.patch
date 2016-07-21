@@ -1,0 +1,35 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -284,14 +284,30 @@
+     [AS_HELP_STRING([--without-liblircclient], [Disable remote control support via liblircclient (enabled by default)])],
+     [if test "$withval" = "yes"; then lirc="yes"; else lirc="no"; fi], [lirc="yes"])
+ if test "$lirc" = "yes"; then
+-    PKG_CHECK_MODULES([liblircclient], [liblircclient0 >= 0.0], [HAVE_LIBLIRCCLIENT=1], [HAVE_LIBLIRCCLIENT=0])
++    CPPFLAGS_BAK="$CPPFLAGS"
++    CPPFLAGS="$CPPFLAGS $xliblircclient_CFLAGS"
++    AC_SUBST([liblircclient_CFLAGS])
++    AC_CHECK_HEADERS([lirc_client.h],
++                     [HAVE_LIBLIRCCLIENT=1],
++                     [HAVE_LIBLIRCCLIENT=0])
++    if test "HAVE_LIBLIRCCLIENT" = "1"; then
++        LDFLAGS_BAK="$LDFLAGS"
++        LDFLAGS="$LDFLAGS $xliblircclient_LDFLAGS"
++        AC_SUBST([liblircclient_LDFLAGS])
++        AC_CHECK_LIB([lirc_client],
++                     [lirc_deinit],
++                     [HAVE_LIBLIRCCLIENT=1],
++                     [HAVE_LIBLIRCCLIENT=0])
++        LDFLAGS="$LDFLAGS_BAK"
++    fi
++    CPPFLAGS="$CPPFLAGS_BAK"
+     if test "$HAVE_LIBLIRCCLIENT" != "1"; then
+         AC_MSG_WARN([optional library liblircclient not found:])
+         AC_MSG_WARN([$liblircclient_PKG_ERRORS])
+         AC_MSG_WARN([liblircclient is provided by LIRC; Debian package: liblircclient-dev])
+ 	lirc="no"
+     else
+-        LIBLIRCCLIENT_PKGCONFIG_VERSION="\"`$PKG_CONFIG --modversion liblircclient0`\""
++        LIBLIRCCLIENT_PKGCONFIG_VERSION="\"system\""
+     fi
+ else
+     HAVE_LIBLIRCCLIENT=0

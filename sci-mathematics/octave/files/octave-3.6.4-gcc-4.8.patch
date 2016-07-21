@@ -1,0 +1,34 @@
+Description: Fix compilation of C++ MEX files with GCC 4.8
+ The header mex.h was including mexproto.h within an extern "C" block. In turn,
+ mexproto.h includes cstdlib.
+ .
+ Apparently, including cstdlib within an extern "C" block was working with GCC
+ 4.7, but this is no longer the case with GCC 4.8.
+ .
+ The fix consists in including mexproto.h outside of the extern "C" block.
+Author: Sébastien Villemot <sebastien@debian.org>
+Bug: https://savannah.gnu.org/bugs/index.php?38746
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=705485
+Last-Update: 2013-05-29
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/mex.h
++++ b/src/mex.h
+@@ -64,6 +64,8 @@
+ 
+ #define mxMAXNAME 64
+ 
++#include "mexproto.h"
++
+ #if defined (__cplusplus)
+ extern "C" {
+ #endif
+@@ -74,8 +76,6 @@
+ void mexFunction (int nlhs, mxArray* plhs[], int nrhs, const mxArray *prhs[]);
+ #endif
+ 
+-#include "mexproto.h"
+-
+ /* V4 floating point routines renamed in V5.  */
+ #define mexIsNaN mxIsNaN
+ #define mexIsFinite mxIsFinite

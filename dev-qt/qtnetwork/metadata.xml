@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="bindist">Disable EC support via <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="connman">Enable <pkg>net-misc/connman</pkg>-based bearer plugin</flag>
+		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for automatic
+			HTTP/SOCKS proxy configuration</flag>
+		<flag name="networkmanager">Enable <pkg>net-misc/networkmanager</pkg>-based
+			bearer plugin</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc.qt.io/</doc>
+	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+diff -uNr libselinux-2.2.2.orig/src/Makefile libselinux-2.2.2/src/Makefile
+--- libselinux-2.2.2.orig/src/Makefile	2013-11-06 20:56:30.000000000 +0100
++++ libselinux-2.2.2/src/Makefile	2013-11-25 21:02:05.327561766 +0100
+@@ -16,7 +16,7 @@
+ PYLIBDIR ?= $(LIBDIR)/$(PYLIBVER)
+ RUBYLIBVER ?= $(shell $(RUBY) -e 'print RUBY_VERSION.split(".")[0..1].join(".")')
+ RUBYPLATFORM ?= $(shell $(RUBY) -e 'print RUBY_PLATFORM')
+-RUBYINC ?= $(shell pkg-config --cflags ruby)
++RUBYINC ?= $(shell pkg-config --cflags ruby-$(RUBYLIBVER))
+ RUBYINSTALL ?= $(LIBDIR)/ruby/site_ruby/$(RUBYLIBVER)/$(RUBYPLATFORM)
+ LIBBASE ?= $(shell basename $(LIBDIR))
+ 

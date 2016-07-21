@@ -1,0 +1,28 @@
+--- a/saslauthd/auth_rimap.c	2011-09-01 14:19:54.754622284 +0100
++++ b/saslauthd/auth_rimap.c	2011-09-01 14:19:59.410561033 +0100
+@@ -162,6 +162,7 @@
+     num_quotes = 0;
+     p1 = s;
+     while ((p1 = strchr(p1, '"')) != NULL) {
++	p1++;
+ 	num_quotes++;
+     }
+     
+@@ -438,7 +439,7 @@
+ 	syslog(LOG_WARNING, "auth_rimap: writev: %m");
+ 	memset(qlogin, 0, strlen(qlogin));
+ 	free(qlogin);
+-	memset(qpass, 0, strlen(qlogin));
++	memset(qpass, 0, strlen(qpass));
+ 	free(qpass);
+ 	(void)close(s);
+ 	return strdup(RESP_IERROR);
+@@ -447,7 +448,7 @@
+     /* don't need these any longer */
+     memset(qlogin, 0, strlen(qlogin));
+     free(qlogin);
+-    memset(qpass, 0, strlen(qlogin));
++    memset(qpass, 0, strlen(qpass));
+     free(qpass);
+ 
+     /* read and parse the LOGIN response */

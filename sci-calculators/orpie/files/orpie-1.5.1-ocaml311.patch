@@ -1,0 +1,200 @@
+diff -Naru orpie-1.5.1/Makefile.in orpie-1.5.1_1/Makefile.in
+--- orpie-1.5.1/Makefile.in	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/Makefile.in	2010-05-12 11:44:33.000000000 -0400
+@@ -257,10 +257,7 @@
+ units/%.cmo : units/%.ml
+ 	$(OCAMLC) -c $(UNITS_BFLAGS) $<
+ 
+-units/%.o : units/%.ml
+-	$(OCAMLOPT) -c $(UNITS_OFLAGS) $<
+-
+-units/%.cmx : units/%.ml
++units/%.o units/%.cmx : units/%.ml
+ 	$(OCAMLOPT) -c $(UNITS_OFLAGS) $<
+ 
+ 
+@@ -271,22 +268,15 @@
+ %.cmo : %.ml
+ 	$(OCAMLC) -c $(BFLAGS) $<
+ 
+-%.o : %.ml
+-	$(OCAMLOPT) -c $(OFLAGS) $<
+-
+-%.cmx : %.ml
++%.o %.cmx : %.ml
+ 	$(OCAMLOPT) -c $(OFLAGS) $<
+ 
+ %.ml : %.mll
+ 	$(OCAMLLEX) $<
+ 
+-%.ml : %.mly
++%.ml %.mli : %.mly
+ 	$(OCAMLYACC) -v $<
+ 
+-%.mli : %.mly
+-	$(OCAMLYACC) -v $<
+-
+-
+ 
+ # Emacs tags
+ ############
+diff -Naru orpie-1.5.1/gsl/gsl_blas.ml orpie-1.5.1_1/gsl/gsl_blas.ml
+--- orpie-1.5.1/gsl/gsl_blas.ml	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_blas.ml	2010-05-12 11:24:11.000000000 -0400
+@@ -118,6 +118,7 @@
+ 
+ (** {3 Single precision} *)
+ 
++(*
+ open Gsl_vector.Single
+ open Gsl_matrix.Single
+ 
+@@ -187,6 +188,7 @@
+     alpha:float -> a:matrix -> b:matrix -> unit
+ 	= "ml_gsl_blas_strsm_bc" "ml_gsl_blas_strsm"
+   end
++*)
+ 
+ 
+ (** {3 Complex} *)
+@@ -274,6 +276,7 @@
+ 
+ (** {3 Complex single precision} *)
+ 
++(*
+ open Gsl_vector_complex.Single
+ open Gsl_matrix_complex.Single
+ open Gsl_complex
+@@ -354,3 +357,4 @@
+     a:matrix -> b:matrix -> beta:float -> c:matrix -> unit
+ 	= "ml_gsl_blas_cher2k_bc" "ml_gsl_blas_cher2k"
+   end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_blas.mli orpie-1.5.1_1/gsl/gsl_blas.mli
+--- orpie-1.5.1/gsl/gsl_blas.mli	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_blas.mli	2010-05-12 11:23:36.000000000 -0400
+@@ -118,6 +118,7 @@
+ 
+ (** {3 Single precision} *)
+ 
++(*
+ open Gsl_vector.Single
+ open Gsl_matrix.Single
+ 
+@@ -187,6 +188,7 @@
+     alpha:float -> a:matrix -> b:matrix -> unit
+ 	= "ml_gsl_blas_strsm_bc" "ml_gsl_blas_strsm"
+   end
++*)
+ 
+ 
+ (** {3 Complex} *)
+@@ -274,6 +276,7 @@
+ 
+ (** {3 Complex single precision} *)
+ 
++(*
+ open Gsl_vector_complex.Single
+ open Gsl_matrix_complex.Single
+ open Gsl_complex
+@@ -354,3 +357,4 @@
+     a:matrix -> b:matrix -> beta:float -> c:matrix -> unit
+ 	= "ml_gsl_blas_cher2k_bc" "ml_gsl_blas_cher2k"
+   end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_matrix.ml orpie-1.5.1_1/gsl/gsl_matrix.ml
+--- orpie-1.5.1/gsl/gsl_matrix.ml	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_matrix.ml	2010-05-12 11:22:51.000000000 -0400
+@@ -86,6 +86,7 @@
+ 
+ 
+ 
++(*
+ module Single = 
+   struct
+   type float_mat_bigarr = 
+@@ -164,3 +165,4 @@
+   external transpose : matrix -> matrix -> unit = "ml_gsl_matrix_float_transpose_memcpy"
+   external transpose_in_place : matrix -> unit = "ml_gsl_matrix_float_transpose"
+   end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_matrix.mli orpie-1.5.1_1/gsl/gsl_matrix.mli
+--- orpie-1.5.1/gsl/gsl_matrix.mli	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_matrix.mli	2010-05-12 11:22:42.000000000 -0400
+@@ -45,6 +45,7 @@
+ external transpose_in_place : matrix -> unit = "ml_gsl_matrix_transpose"
+ 
+ 
++(*
+ module Single : sig
+ 
+   type float_mat_bigarr = 
+@@ -87,3 +88,4 @@
+   external transpose : matrix -> matrix -> unit = "ml_gsl_matrix_float_transpose_memcpy"
+   external transpose_in_place : matrix -> unit = "ml_gsl_matrix_float_transpose"
+ end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_matrix_complex.ml orpie-1.5.1_1/gsl/gsl_matrix_complex.ml
+--- orpie-1.5.1/gsl/gsl_matrix_complex.ml	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_matrix_complex.ml	2010-05-12 11:24:59.000000000 -0400
+@@ -108,6 +108,7 @@
+ 
+ 
+ 
++(*
+ module Single = 
+   struct
+   type complex_float_mat_bigarr = 
+@@ -208,3 +209,4 @@
+   external transpose : matrix -> matrix -> unit = "ml_gsl_matrix_complex_float_transpose_memcpy"
+   external transpose_in_place : matrix -> unit = "ml_gsl_matrix_complex_float_transpose"
+   end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_matrix_complex.mli orpie-1.5.1_1/gsl/gsl_matrix_complex.mli
+--- orpie-1.5.1/gsl/gsl_matrix_complex.mli	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_matrix_complex.mli	2010-05-12 11:25:00.000000000 -0400
+@@ -51,6 +51,7 @@
+ external transpose_in_place : matrix -> unit = "ml_gsl_matrix_complex_transpose"
+ 
+ 
++(*
+ module Single : sig
+ 
+   type complex_float_mat_bigarr = 
+@@ -96,3 +97,4 @@
+   external transpose : matrix -> matrix -> unit = "ml_gsl_matrix_complex_float_transpose_memcpy"
+   external transpose_in_place : matrix -> unit = "ml_gsl_matrix_complex_float_transpose"
+ end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_vector.ml orpie-1.5.1_1/gsl/gsl_vector.ml
+--- orpie-1.5.1/gsl/gsl_vector.ml	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_vector.ml	2010-05-12 11:22:19.000000000 -0400
+@@ -95,6 +95,7 @@
+ 
+ 
+ 
++(*
+ module Single = 
+ struct
+   type float_vector_bigarr = 
+@@ -178,3 +179,4 @@
+   external minmax_index : vector -> int * int
+       = "ml_gsl_vector_float_minmaxindex"
+ end
++*)
+diff -Naru orpie-1.5.1/gsl/gsl_vector.mli orpie-1.5.1_1/gsl/gsl_vector.mli
+--- orpie-1.5.1/gsl/gsl_vector.mli	2007-09-13 23:31:23.000000000 -0400
++++ orpie-1.5.1_1/gsl/gsl_vector.mli	2010-05-12 11:22:19.000000000 -0400
+@@ -65,6 +65,7 @@
+ 
+ (** {3 Single precision} *)
+ 
++(*
+ module Single : sig
+   type float_vector_bigarr =
+       (float, Bigarray.float32_elt, Bigarray.c_layout) Bigarray.Array1.t
+@@ -121,3 +122,4 @@
+       
+   val subvector : vector -> off:int -> len:int -> vector
+ end
++*)

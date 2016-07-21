@@ -1,0 +1,14 @@
+--- image/cinelerra-cv.desktop
++++ image/cinelerra-cv.desktop
+@@ -5,9 +5,8 @@
+ Name[fr]=Cinelerra-CV
+ Name[es]=Cinelerra-CV
+ Comment=Video Editor
+-Categories=Application;AudioVideo;Multimedia;VideoEditing;
+-Encoding=UTF-8
++Categories=AudioVideo;
+ Exec=cinelerra
+-Icon=cinelerra-cv.xpm
++Icon=cinelerra-cv
+ Terminal=false
+ Type=Application

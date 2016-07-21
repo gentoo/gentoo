@@ -1,0 +1,29 @@
+https://bitbucket.org/multicoreware/x265/pull-requests/22
+
+Link EXTRA_LIB before PLATFORM_LIBS since they're static libraries and as-needed
+might drop required libraries if they come after.
+
+Index: x265_11047/source/CMakeLists.txt
+===================================================================
+--- x265_11047.orig/source/CMakeLists.txt
++++ x265_11047/source/CMakeLists.txt
+@@ -455,6 +455,9 @@ option(ENABLE_SHARED "Build shared libra
+ if(ENABLE_SHARED)
+     add_library(x265-shared SHARED "${PROJECT_BINARY_DIR}/x265.def" ${YASM_OBJS}
+                 ${X265_RC_FILE} $<TARGET_OBJECTS:encoder> $<TARGET_OBJECTS:common>)
++    if(EXTRA_LIB)
++        target_link_libraries(x265-shared ${EXTRA_LIB})
++    endif()
+     target_link_libraries(x265-shared ${PLATFORM_LIBS})
+     if(MSVC)
+         set_target_properties(x265-shared PROPERTIES OUTPUT_NAME libx265)
+@@ -480,9 +483,6 @@ if(ENABLE_SHARED)
+                 ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+                 RUNTIME DESTINATION ${BIN_INSTALL_DIR})
+     endif()
+-    if(EXTRA_LIB)
+-        target_link_libraries(x265-shared ${EXTRA_LIB})
+-    endif()
+     if(LINKER_OPTIONS)
+         # set_target_properties can't do list expansion
+         string(REPLACE ";" " " LINKER_OPTION_STR "${LINKER_OPTIONS}")

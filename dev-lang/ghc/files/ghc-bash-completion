@@ -1,0 +1,218 @@
+# ghc-pkg command line completion for bash
+#
+# Copyright 2006-2007 Lennart Kolmodin <kolmodin@dtek.chalmers.se>
+
+_ghc-pkg-get-ghc-pkg()
+{
+    echo ghc-pkg
+}
+
+_ghc-pkg-pkg-fields()
+{
+    # usage: _ghc-pkg-pkg-fields pkg-id
+    #
+    # list all fields of the pkg-id
+
+    # same fields for all packages but different in different versions of
+    # ghc-pkg? this can probably be done better/faster
+
+    if [[ -z "$1" ]]; then
+        echo "usage: _ghc-pkg-pkg-fields pkg-id"
+        return 1
+    fi
+
+    local fields
+
+    fields="$( $(_ghc-pkg-get-ghc-pkg) describe $1 )"
+
+    #if [[ fields != *"cannot find package"* ]]; then
+    echo "$fields" | grep ".*:.*" | sed "s/^\(.*\):.*\$/\1/"
+    #fi
+}
+
+_ghc-pkg-pkg-ids()
+{
+    # usage: _ghc-pkg-pkg-ids
+    #
+    # simply lists all package ids known by ghc-pkg.
+    $(_ghc-pkg-get-ghc-pkg) list --simple-output
+}
+
+_ghc-pkg-pkgs()
+{
+    # usage: _ghc-pkg-pkgs [include-pkgs] [include-ids]
+    #
+    # with optional parameter include-pkgs it will list all packages known
+    # to ghc-pkg.
+    # with optional parameter include-ids it will list all package-ids known
+    # to ghc-pkg.
+    local pkgs
+    local result
+    pkgs=( $( _ghc-pkg-pkg-ids ) )
+    result=( )
+
+    local withPkgs="no" withIds="no"
+    while [[ -n "$1" ]]; do
+        case "$1" in
+            include-pkgs)
+                withPkgs="yes" ;;
+            include-ids)
+                withIds="yes" ;;
+            *)
+                echo "unknown parameter '$1' to _ghc-pkg-pkgs"
+                return 1 ;;
+        esac
+        shift
+    done
+
+    # user must supply either include-pkgs, include-ids or both
+    if [[ $withPkgs != "yes" && $withIds != "yes" ]]; then
+        echo "usage: _ghc-pkg-pkgs [include-pkgs] [include-ids]"
+        return 1
+    fi
+
+    # find all packages if the user requested them
+    if [[ $withPkgs == "yes" ]]; then
+        # O(n^2) algorithm to exclude duplicates
+        for p in ${pkgs[*]}; do
+            p="${p//-[0-9.]*/}"
+            for existing in ${result[*]}; do
+                if [[ "$existing" == "$p" ]]; then
+                    continue 2
+                fi
+            done
+            result=( "${result[@]}" "${p}" )
+        done
+    fi
+
+    # include all pkg-ids if requested
+    if [[ $withIds == "yes" ]]; then
+        result=( "${result[@]}" "${pkgs[@]}" )
+    fi
+
+    # we are finished, echo the result
+    echo "${result[*]}"
+
+    # happy ending
+    return 0
+}
+
+_ghc-pkg()
+{
+    local cur
+    cur=${COMP_WORDS[COMP_CWORD]}
+
+    COMPREPLY=()
+
+    local actions flags
+    actions='register update unregister expose hide list latest describe field'
+    dbflags="--user \
+        --global \
+        -f --package-conf= \
+        --global-conf="
+    registerflags="--force \
+        -g --auto-ghci-libs \
+        -D --define-name="
+    listflags="--simple-output"
+    flags="$dbflags \
+        $registerflags \
+        $listflags \
+        -? --help \
+        -V --version"
+
+    # if it's the users first word; complete it and return
+    if (($COMP_CWORD == 1)); then
+        COMPREPLY=( $( compgen -W "$actions $flags" -- $cur ) )
+        return 0
+    fi
+
+    # now we know we have at least one word written
+
+    local action="unknown" \
+          prev numwords \
+          cword act
+    prev=${COMP_WORDS[COMP_CWORD-1]}
+    numwords=${#COMP_WORDS[@]}
+
+    # find the action with O(n*m) algorithm
+    # where n = ${#COMP_WORDS[*]}
+    #       m = number of actions
+    for cword in ${COMP_WORDS[*]}; do
+        for act in $actions; do
+            if [[ "$cword" == "$act" ]]; then
+                action=$cword
+            fi
+        done
+    done
+
+    case $action in
+        register|update)
+            # we want to complete both flags and paths, how?
+            # we do it by checking if the user has started to write a flag
+            # or a path, and then decide what to complete.
+            # that is, to complete a flag, the user must start to write a '-'
+            if [[ "$cur" == -* ]]; then
+                # (we assume) it's the start of a flag
+                # set COMPREPLY to flags relevant to these actions
+                COMPREPLY=( $( compgen -W "$dbflags $registerflags" -- $cur ) )
+            fi
+            ;;
+        unregister|expose|hide|list|describe)
+            # all these actions can be completed with exactly one argument,
+            # a pkg-id.
+            COMPREPLY=( $( compgen -W "$dbflags" -- $cur ) )
+
+            # add special flags for some actions
+            if [[ "$action" == "list" ]]; then
+                COMPREPLY+=( $( compgen -W "$listflags" -- $cur ) )
+            fi
+
+            COMPREPLY+=( $( compgen -W "$( _ghc-pkg-pkgs include-ids )" -- $cur ) )
+            ;;
+        latest)
+            # complete only packages, not package ids
+            COMPREPLY=( $( compgen -W "$( _ghc-pkg-pkgs include-pkgs )" -- $cur ) )
+            ;;
+        field)
+            # we should always complete on the flags...
+            COMPREPLY=( $( compgen -W "$dbflags" -- $cur ) )
+
+            # then, we should either complete the package name or the field
+            # lets find out which one
+
+            # find the number of words in COMP_WORDS before COMP_CWORD that
+            # isn't flags. it should be 2 or 3 for us to complete it,
+            #   exactly 2 if we should complete the package name
+            #   exactly 3 if we should complete the field name
+            #   otherwise, don't do any additional completion except the
+            #   flags
+
+            # count the number of non flags up till the current word
+            local numnonflags=0 lastword i
+            for (( i=0 ; $i < $COMP_CWORD ; i++ )); do
+                if [[ ${COMP_WORDS[$i]} != -* ]]; then
+                    lastword=${COMP_WORDS[$i]}
+                    numnonflags=$(( ++numnonflags ))
+                fi
+            done
+
+            case $numnonflags in
+                2)
+                    # complete on pkg-ids
+                    COMPREPLY+=( $( compgen -W "$( _ghc-pkg-pkgs include-ids )" -- $cur ) ) ;;
+                3)
+                    # complete on fields
+                    COMPREPLY+=( $( compgen -W "$( _ghc-pkg-pkg-fields $lastword )" -- $cur ) ) ;;
+            esac
+            ;;
+        *)
+            # unknown action, not yet given by the user
+            # return all possible completions
+            COMPREPLY=( $( compgen -W "$actions $flags" -- $cur ) )
+            ;;
+    esac
+}
+
+complete -F _ghc-pkg -o default ghc-pkg
+
+# vim: set ft=sh tw=80 sw=4 et :

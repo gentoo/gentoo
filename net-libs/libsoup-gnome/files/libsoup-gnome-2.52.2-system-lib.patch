@@ -1,0 +1,263 @@
+diff -ur libsoup-2.52.2/configure.ac libsoup-2.52.2.new/configure.ac
+--- libsoup-2.52.2/configure.ac	2015-11-09 21:23:00.000000000 +0100
++++ libsoup-2.52.2.new/configure.ac	2015-11-17 10:32:25.562815235 +0100
+@@ -77,23 +77,28 @@
+ dnl ***********************
+ dnl *** Checks for glib ***
+ dnl ***********************
+-
+-GLIB_REQUIRED=2.38.0
+-AM_PATH_GLIB_2_0($GLIB_REQUIRED,,,gobject gio)
+-if test "$GLIB_LIBS" = ""; then
+-   AC_MSG_ERROR(GLIB $GLIB_REQUIRED or later is required to build libsoup)
++PKG_PROG_PKG_CONFIG
++enable_ssl=no
++AC_ARG_WITH(libsoup-system,
++   AS_HELP_STRING([--with-libsoup-system], [Use libsoup system library to build(default=no)]),
++   [with_libsoup_system=$withval], [with_libsoup_system=no])
++if test "$with_libsoup_system" = "no"; then
++    GLIB_REQUIRED=2.38.0
++    AM_PATH_GLIB_2_0($GLIB_REQUIRED,,,gobject gio)
++    if test "$GLIB_LIBS" = ""; then
++    AC_MSG_ERROR(GLIB $GLIB_REQUIRED or later is required to build libsoup)
++    fi
++    GLIB_CFLAGS="$GLIB_CFLAGS -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_38"
++    GLIB_MAKEFILE='$(top_srcdir)/Makefile.glib'
++    AC_SUBST(GLIB_MAKEFILE)
++    PKG_CHECK_MODULES(XML, libxml-2.0)
++    AC_SUBST(XML_CFLAGS)
++    AC_SUBST(XML_LIBS)
+ fi
+-GLIB_CFLAGS="$GLIB_CFLAGS -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_38"
+-
+-GLIB_MAKEFILE='$(top_srcdir)/Makefile.glib'
+-AC_SUBST(GLIB_MAKEFILE)
++AM_CONDITIONAL(BUILD_LIBSOUP, test $with_libsoup_system = no)
+ 
+ GLIB_TESTS
+ 
+-PKG_CHECK_MODULES(XML, libxml-2.0)
+-AC_SUBST(XML_CFLAGS)
+-AC_SUBST(XML_LIBS)
+-
+ PKG_CHECK_MODULES(SQLITE, sqlite3)
+ AC_SUBST(SQLITE_CFLAGS)
+ AC_SUBST(SQLITE_LIBS)
+@@ -148,6 +153,9 @@
+ 
+ if test $with_gnome != no; then
+ 	AC_DEFINE(HAVE_GNOME, 1, [Defined if GNOME support is enabled])
++	if test $with_libsoup_system != no; then
++		PKG_CHECK_MODULES(LIBSOUP, libsoup-$SOUP_API_VERSION = $VERSION)
++	fi
+ fi
+ AC_SUBST(HAVE_GNOME)
+ 
+Sólo en libsoup-2.52.2.new/: configure.ac~
+diff -ur libsoup-2.52.2/libsoup/Makefile.am libsoup-2.52.2.new/libsoup/Makefile.am
+--- libsoup-2.52.2/libsoup/Makefile.am	2015-11-09 21:21:48.000000000 +0100
++++ libsoup-2.52.2.new/libsoup/Makefile.am	2015-11-19 12:11:19.743369476 +0100
+@@ -3,14 +3,19 @@
+ EXTRA_DIST =
+ CLEANFILES =
+ 
+-
++BUILT_SOURCES =
+ include $(GLIB_MAKEFILE)
+ 
+ if OS_WIN32
+ LIBWS2_32 = -lws2_32
+ endif
+ 
+-AM_CPPFLAGS = 				\
++AM_CPPFLAGS =
++lib_LTLIBRARIES =
++CLEANFILES =
++
++if BUILD_LIBSOUP
++AM_CPPFLAGS +=                          \
+ 	-DG_LOG_DOMAIN=\"libsoup\" 	\
+ 	-DLIBSOUP_COMPILATION		\
+ 	-DLOCALEDIR=\"$(localedir)\"	\
+@@ -84,7 +89,7 @@
+ nodist_libsoupinclude_HEADERS =	\
+ 	soup-version.h
+ 
+-lib_LTLIBRARIES = libsoup-2.4.la
++lib_LTLIBRARIES += libsoup-2.4.la
+ 
+ libsoup_2_4_la_LDFLAGS =	\
+ 	-version-info $(SOUP_CURRENT):$(SOUP_REVISION):$(SOUP_AGE) \
+@@ -202,18 +207,23 @@
+ 	soup-xmlrpc.c			\
+ 	soup-xmlrpc-old.c
+ 
+-# TLD rules
+-EXTRA_DIST += tld-parser.py
+-
++BUILT_SOURCES += tld_data.inc
+ TLD_DATA_FILE=$(top_srcdir)/data/effective_tld_names.dat
+ 
+ tld_data.inc: tld-parser.py $(TLD_DATA_FILE)
+-	$(srcdir)/tld-parser.py $(TLD_DATA_FILE) tld_data.inc
++	$(AM_V_GEN) python $(srcdir)/tld-parser.py $(TLD_DATA_FILE) tld_data.inc
++
++# TLD rules
++EXTRA_DIST += tld-parser.py
++
++endif
+ 
+ if BUILD_LIBSOUP_GNOME
+ 
+ libsoupgnomeincludedir = $(includedir)/libsoup-gnome-2.4/libsoup
+ 
++AM_CPPFLAGS += $(LIBSOUP_CFLAGS)
++
+ libsoupgnomeinclude_HEADERS =	\
+ 	soup-cookie-jar-sqlite.h\
+ 	soup-gnome.h		\
+@@ -221,17 +231,26 @@
+ 
+ lib_LTLIBRARIES += libsoup-gnome-2.4.la
+ 
++if BUILD_LIBSOUP
++libsoup_gnome_2_4_la_LDFLAGS = $(libsoup_2_4_la_LDFLAGS)
++else
+ libsoup_gnome_2_4_la_LDFLAGS =	\
+ 	-version-info $(SOUP_CURRENT):$(SOUP_REVISION):$(SOUP_AGE) \
+ 	-no-undefined \
+ 	-export-symbols $(srcdir)/libsoup-gnome-2.4.sym
++endif
+ 
+ EXTRA_DIST += libsoup-gnome-2.4.sym
+ 
+ libsoup_gnome_2_4_la_LIBADD =		\
+-	libsoup-2.4.la			\
+ 	$(GLIB_LIBS)
+ 
++if BUILD_LIBSOUP
++libsoup_gnome_2_4_la_LIBADD += libsoup-2.4.la
++else
++libsoup_gnome_2_4_la_LIBADD += $(LIBSOUP_LIBS)
++endif
++
+ libsoup_gnome_2_4_la_SOURCES =		\
+ 	soup-cookie-jar-sqlite.c	\
+ 	soup-gnome-features.c		\
+@@ -243,9 +262,8 @@
+ endif
+ 
+ GLIB_GENERATED = soup-enum-types.c soup-enum-types.h
+-BUILT_SOURCES = \
+-	$(GLIB_GENERATED)   \
+-	tld_data.inc
++BUILT_SOURCES += \
++       $(GLIB_GENERATED)
+ 
+ soup_enum_types_sources = $(libsoupinclude_HEADERS) $(libsoupgnomeinclude_HEADERS)
+ soup_enum_types_MKENUMS_C_FLAGS = --fhead "\#define LIBSOUP_USE_UNSTABLE_REQUEST_API"
+@@ -260,6 +278,8 @@
+ 
+ if HAVE_INTROSPECTION
+ 
++if BUILD_LIBSOUP
++
+ # Core library
+ gi_soup_files = \
+ 	$(filter-out soup.h soup-enum-types.% soup-proxy-resolver.h,\
+@@ -292,20 +312,28 @@
+ 
+ EXTRA_DIST += Soup-2.4.metadata Soup-2.4-custom.vala libsoup-2.4.deps
+ 
++endif
++
+ if BUILD_LIBSOUP_GNOME
+ 
++if BUILD_LIBSOUP
++SOUP_GIR = Soup-2.4.gir
++else
++SOUP_GIR =
++endif
++
+ # GNOME extensions
+ gi_soup_gnome_files = $(filter-out soup-gnome.h,\
+ 		          $(libsoupgnomeinclude_HEADERS) \
+ 	                  $(filter-out %.h, $(libsoup_gnome_2_4_la_SOURCES)))
+-SoupGNOME-2.4.gir: libsoup-gnome-2.4.la Soup-2.4.gir
++SoupGNOME-2.4.gir: libsoup-gnome-2.4.la $(SOUP_GIR)
++SoupGNOME_2_4_gir_INCLUDES = Soup-2.4
+ SoupGNOME_2_4_gir_SCANNERFLAGS =			\
+ 	--identifier-prefix=Soup			\
+ 	--symbol-prefix=soup				\
+-	--c-include "libsoup/soup-gnome.h"		\
+-	--include-uninstalled=$(builddir)/Soup-2.4.gir
++	--c-include "libsoup/soup-gnome.h"
+ SoupGNOME_2_4_gir_CFLAGS = $(AM_CPPFLAGS)
+-SoupGNOME_2_4_gir_LIBS = libsoup-gnome-2.4.la libsoup-2.4.la
++SoupGNOME_2_4_gir_LIBS = libsoup-gnome-2.4.la
+ SoupGNOME_2_4_gir_FILES = $(addprefix $(srcdir)/,$(gi_soup_gnome_files))
+ SoupGNOME_2_4_gir_EXPORT_PACKAGES = libsoup-gnome-2.4
+ 
+@@ -319,12 +347,13 @@
+ typelibdir = $(libdir)/girepository-1.0
+ typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+ 
+-CLEANFILES+= $(gir_DATA) $(typelib_DATA) $(BUILT_SOURCES)
++CLEANFILES += $(gir_DATA) $(typelib_DATA) $(BUILT_SOURCES)
+ 
+ endif
+ 
+ # We only do this check on Linux, so we don't have to worry about
+ # different "nm" output on other platforms
++if BUILD_LIBSOUP
+ if OS_LINUX
+ check-local:
+ 	@echo Checking libsoup-2.4.so symbols
+@@ -334,3 +363,16 @@
+ 		env LC_ALL=C sort -u | \
+ 		diff -U0 $(srcdir)/libsoup-2.4.sym - >&2
+ endif
++endif
++
++if BUILD_LIBSOUP_GNOME
++if OS_LINUX
++check-local:
++	@echo Checking libsoup-gnome-2.4.so symbols
++	@nm $(builddir)/.libs/libsoup-gnome-2.4.so | \
++		grep "^[[:xdigit:]]\+ [BTR] " | \
++		sed "s/^[[:xdigit:]]\+ [BTR] //" | \
++		env LANG=C sort -u | \
++		diff -U0 $(srcdir)/libsoup-gnome-2.4.sym - >&2
++endif
++endif
+Sólo en libsoup-2.52.2.new/libsoup: Makefile.am~
+diff -ur libsoup-2.52.2/Makefile.am libsoup-2.52.2.new/Makefile.am
+--- libsoup-2.52.2/Makefile.am	2015-10-29 16:08:21.000000000 +0100
++++ libsoup-2.52.2.new/Makefile.am	2015-11-17 10:25:54.034816211 +0100
+@@ -1,7 +1,11 @@
+ ## Process this file with automake to produce Makefile.in
+ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ 
+-SUBDIRS = libsoup po tests examples docs
++SUBDIRS = libsoup
++
++if BUILD_LIBSOUP
++SUBDIRS += po tests docs
++endif
+ 
+ EXTRA_DIST =				\
+ 	data/effective_tld_names.dat	\
+@@ -18,7 +22,11 @@
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ 
+-pkgconfig_DATA = libsoup-2.4.pc
++pkgconfig_DATA = 
++
++if BUILD_LIBSOUP
++pkgconfig_DATA += libsoup-2.4.pc
++endif
+ 
+ if BUILD_LIBSOUP_GNOME
+ pkgconfig_DATA += libsoup-gnome-2.4.pc
+Sólo en libsoup-2.52.2.new/: Makefile.am~

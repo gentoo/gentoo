@@ -1,0 +1,125 @@
+From 3023bfdf7a8b6a1df13b8b937c60ee7c4bd1d9ae Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Mon, 1 Apr 2013 16:07:21 +0200
+Subject: [PATCH] Fix parallel installation for API version 0
+
+---
+ Makefile.am               |  6 ++++--
+ configure.ac              |  3 +++
+ doc/reference/Makefile.am |  4 ++--
+ libgrss.pc.in             |  4 ++--
+ src/Makefile.am           | 12 ++++++------
+ 5 files changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index effacb1..b4a53e1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,11 +1,13 @@
+ ACLOCAL_AMFLAGS = -I m4
+ SUBDIRS = src doc
+ EXTRA_DIST = autogen.sh
++CLEANFILES = libgrss-$(LIBGRSS_API_VERSION).pc
+ 
+ pcfiledir = $(libdir)/pkgconfig
+-pcfile_DATA = libgrss-0.pc
++
++pcfile_DATA = libgrss-$(LIBGRSS_API_VERSION).pc
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+ 
+-libgrss-0.pc: libgrss.pc
++libgrss-$(LIBGRSS_API_VERSION).pc: libgrss.pc
+ 	@cp -f $< $@
+diff --git a/configure.ac b/configure.ac
+index 64fe542..e036df6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,7 @@
+ m4_define([libgrss_major_version], [0])
+ m4_define([libgrss_minor_version], [3])
+ m4_define([libgrss_micro_version], [0])
++m4_define([libgrss_api_version], [0])
+ 
+ m4_define([libgrss_version],
+           [libgrss_major_version.libgrss_minor_version.libgrss_micro_version])
+@@ -46,10 +47,12 @@ AC_CHECK_FUNCS([strptime localtime_r])
+ LIBGRSS_MAJOR_VERSION=libgrss_major_version
+ LIBGRSS_MINOR_VERSION=libgrss_minor_version
+ LIBGRSS_MICRO_VERSION=libgrss_micro_version
++LIBGRSS_API_VERSION=libgrss_api_version
+ LIBGRSS_VERSION=libgrss_version
+ AC_SUBST(LIBGRSS_MAJOR_VERSION)
+ AC_SUBST(LIBGRSS_MICRO_VERSION)
+ AC_SUBST(LIBGRSS_MINOR_VERSION)
++AC_SUBST(LIBGRSS_API_VERSION)
+ AC_SUBST(LIBGRSS_VERSION)
+ 
+ dnl libgrss checks
+diff --git a/doc/reference/Makefile.am b/doc/reference/Makefile.am
+index 644642d..eafbc65 100644
+--- a/doc/reference/Makefile.am
++++ b/doc/reference/Makefile.am
+@@ -7,7 +7,7 @@ AUTOMAKE_OPTIONS = 1.6
+ # of using the various options.
+ 
+ # The name of the module, e.g. 'glib'.
+-DOC_MODULE=libgrss
++DOC_MODULE=libgrss-@LIBGRSS_API_VERSION@
+ 
+ # The top-level SGML file. You can change this if you want to.
+ DOC_MAIN_SGML_FILE=$(DOC_MODULE)-docs.sgml
+@@ -71,7 +71,7 @@ expand_content_files=
+ # e.g. GTKDOC_LIBS=$(top_builddir)/gtk/$(gtktargetlib)
+ 
+ INCLUDES=-I$(top_srcdir) $(LIBGRSS_CFLAGS)
+-GTKDOC_LIBS=$(top_builddir)/src/libgrss-1.0.la $(LIBGRSS_LIBS)
++GTKDOC_LIBS=$(top_builddir)/src/libgrss-@LIBGRSS_API_VERSION@.la $(LIBGRSS_LIBS)
+ 
+ # This includes the standard gtk-doc make rules, copied by gtkdocize.
+ include $(top_srcdir)/gtk-doc.make
+diff --git a/libgrss.pc.in b/libgrss.pc.in
+index 2ce65c9..5d4e1b0 100644
+--- a/libgrss.pc.in
++++ b/libgrss.pc.in
+@@ -6,6 +6,6 @@ includedir=${exec_prefix}/include
+ Name: libgrss
+ Description: GObject RSS handling library
+ Version: @VERSION@
+-Libs: -L${libdir} -lgrss-1.0
+-Cflags: -I${includedir}/libgrss
++Libs: -L${libdir} -lgrss-@LIBGRSS_API_VERSION@
++Cflags: -I${includedir}/libgrss-@LIBGRSS_API_VERSION@
+ Requires: gobject-2.0 libxml-2.0 libsoup-2.4
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 93c9be7..ee48a16 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -56,18 +56,18 @@ feed-marshal.c: feed-marshal.list
+ 	echo "#include \"feed-marshal.h\"" > $@ &&    \
+ 		$(GLIB_GENMARSHAL) $< --prefix=feed_marshal --body >> $@
+ 
+-lib_LTLIBRARIES = libgrss-1.0.la
++lib_LTLIBRARIES = libgrss-0.la
+ 
+-libgrss_1_0_la_LIBADD = $(LIBGRSS_LIBS)
+-libgrss_1_0_la_SOURCES = \
++libgrss_0_la_LIBADD = $(LIBGRSS_LIBS)
++libgrss_0_la_SOURCES = \
+ 	$(sources_public_h) \
+ 	$(sources_private_h) \
+ 	$(sources_c) \
+ 	$(NULL)
+-libgrss_1_0_la_LDFLAGS = $(LDADD)
++libgrss_0_la_LDFLAGS = $(LDADD)
+ 
+-libgrssincludedir = $(includedir)/libgrss
+-libgrssinclude_DATA = $(sources_public_h)
++libgrss_0_ladir = $(includedir)/libgrss-@LIBGRSS_API_VERSION@
++libgrss_0_la_HEADERS = $(sources_public_h)
+ 
+ CLEANFILES = $(pcfile_DATA)
+ 
+-- 
+1.8.1.5
+

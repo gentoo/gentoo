@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+Zeitgeist explorer is a tool which can be used to monitor and explore the 
+events logged by zeitgeist. In the monitor mode is can show the events logged
+in real-time just like wireshark. In explore mode, it can fetch already 
+logged events for a specific template
+</longdescription>
+  <upstream>
+    <remote-id type="launchpad">zeitgeist-explorer</remote-id>
+  </upstream>
+</pkgmetadata>

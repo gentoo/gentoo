@@ -1,0 +1,11 @@
+--- Lib/distutils/command/install.py
++++ Lib/distutils/command/install.py
+@@ -70,7 +70,7 @@
+         'purelib': '$base/Lib/site-packages',
+         'platlib': '$base/Lib/site-packages',
+         'headers': '$base/Include/$dist_name',
+-        'scripts': '$base/bin',
++        'scripts': '/usr/bin',
+         'data'   : '$base',
+         }
+     }

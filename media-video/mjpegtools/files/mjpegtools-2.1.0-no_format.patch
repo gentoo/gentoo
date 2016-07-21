@@ -1,0 +1,70 @@
+--- ./lavtools/lav_io.c.orig	2014-07-27 17:48:21.474622974 +0100
++++ ./lavtools/lav_io.c	2014-07-27 17:48:48.838881166 +0100
+@@ -926,7 +926,7 @@ lav_file_t *lav_open_input_file(char *fi
+             strcat(errmsg, ", quicktime");
+ #endif
+ 	    strcat(errmsg, ").\n");
+-            fprintf(stderr, errmsg);
++        fprintf(stderr, "%s", errmsg);
+ 	    free(lav_fd);
+ 	    internal_error = ERROR_FORMAT; /* Format not recognized */
+ 	    return 0;
+--- ./lavtools/lavtrans.c.orig	2014-07-27 17:58:09.410282056 +0100
++++ ./lavtools/lavtrans.c	2014-07-27 17:59:24.769016140 +0100
+@@ -275,7 +275,7 @@ int main(int argc, char ** argv)
+    if (process_image_frame != -1)
+    {
+       nv = el_get_video_frame(vbuff, process_image_frame, &el);
+-      sprintf(imgfname,outfile);
++      sprintf(imgfname, "%s", outfile);
+       imgfd = fopen(imgfname,"wb");
+       if (imgfd==0) system_error("opening image file","fopen");
+       res = fwrite(vbuff,nv,1,imgfd);
+--- ./lavtools/jpeg2yuv.c.orig	2014-07-27 18:00:55.600900476 +0100
++++ ./lavtools/jpeg2yuv.c	2014-07-27 18:01:36.848301893 +0100
+@@ -451,7 +451,7 @@ static int generate_YUV4MPEG(parameters_
+            
+            if (firstjpeg) {
+                p = firstjpeg;
+-               sprintf(jpegname, firstjpeg);
++               sprintf(jpegname, "%s", firstjpeg);
+                firstjpeg = NULL;
+            }
+            else {
+--- ./mplex/main.cpp.orig	2014-07-27 18:11:38.282143657 +0100
++++ ./mplex/main.cpp	2014-07-27 18:06:40.352252415 +0100
+@@ -614,7 +614,7 @@ bool CmdLineMultiplexJob::ParseWorkaroun
+                 if( flag_table[flag].longname != 0 )
+                     message += sep;
+             }
+-            mjpeg_error( message.c_str() );
++            mjpeg_error( "%s", message.c_str() );
+             return false;
+         }
+ 
+--- ./yuvfilters/yuvkineco.c.orig	2014-07-27 18:15:01.476097522 +0100
++++ ./yuvfilters/yuvkineco.c	2014-07-27 18:15:29.540366245 +0100
+@@ -48,7 +48,7 @@ buf_debug(char *buf, FILE *fp, const cha
+     } else {
+ #ifdef MJPEGTOOLS
+       buf[n] = '\0';
+-      mjpeg_debug(buf);
++      mjpeg_debug("%s", buf);
+ #else
+       fputs(buf, stderr);
+ #endif
+--- ./yuvfilters/yuvfilters.h.orig	2014-07-27 18:37:02.712645244 +0100
++++ ./yuvfilters/yuvfilters.h	2014-07-27 19:13:28.156101800 +0100
+@@ -34,9 +34,9 @@ extern "C" {
+ 
+ #ifdef MJPEGTOOLS
+ # define perror(MSG) mjpeg_error("%s: %s", MSG, strerror(errno))
+-# define WERROR(MSG) mjpeg_error(MSG)
+-# define WERRORL(MSG) mjpeg_error(MSG)
+-# define WWARN(MSG) mjpeg_warn(MSG)
++# define WERROR(MSG) mjpeg_error("%s", MSG)
++# define WERRORL(MSG) mjpeg_error("%s", MSG)
++# define WWARN(MSG) mjpeg_warn("%s", MSG)
+ #else
+ # define WERROR(MSG) write(2, MSG "\n", sizeof MSG)
+ # define WERRORL(MSG) do { write(2, MSG, strlen(MSG)); write(2, "\n", 1); } while (0)

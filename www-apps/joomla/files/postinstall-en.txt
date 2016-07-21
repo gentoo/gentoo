@@ -1,0 +1,29 @@
+You are almost done!
+
+  0. Make sure your database server is initialized and started,
+     and that you have the login details of a user who can create a database.
+
+  1. Login on http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
+     and finish the installation.
+
+     If the installation hangs, you might want to modify your php.ini:
+
+     max_execution_time = 3000 ;
+     memory_limit=128M ;
+
+  2. Move into the directory where you installed Joomla and remove
+     the "installation" folder:
+
+  # cd ${MY_INSTALLDIR}
+  # rm -rf installation
+
+  3. You can now launch your browser and point it to your Joomla site e.g.
+
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR} -> Main Site
+  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/administrator -> Admin
+
+  You can log into the administration view using the username 'admin'
+  along with the password that was generated or you chose during the
+  web based installation.
+
+  Enjoy Joomla!

@@ -1,0 +1,15 @@
+https://bugzilla.gnome.org/756477
+
+fix build w/newer releases of bionic (android)
+
+--- a/gio/gthreadedresolver.c
++++ b/gio/gthreadedresolver.c
+@@ -263,7 +263,7 @@ lookup_by_address_finish (GResolver     *resolver,
+ 
+ #if defined(G_OS_UNIX)
+ 
+-#ifdef __BIONIC__
++#if defined __BIONIC__ && !defined BIND_4_COMPAT
+ /* Copy from bionic/libc/private/arpa_nameser_compat.h
+  * and bionic/libc/private/arpa_nameser.h */
+ typedef struct {

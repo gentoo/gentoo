@@ -1,0 +1,44 @@
+From a498772e5fe942eafe06ed62a00a21c4b99164b5 Mon Sep 17 00:00:00 2001
+From: David Holm <dholmster@gmail.com>
+Date: Fri, 14 Sep 2012 20:57:30 +0200
+Subject: [PATCH] Fixes build issues on SUA 6.0
+
+The prototypes for strto[u]ll.c in SUA 6.0 use C99 and are defined using (u_)quad_t. This will cause compilation to fail since there is a mismatch between stdlib.h and the implementation in suacomp. This change switches to the C99 definition and undefines strto[u]ll in case stdlib.h wants to map them to existing implementations.
+
+https://sourceforge.net/p/suacomp/tickets/1/
+---
+ strtoll.c  |    3 ++-
+ strtoull.c |    3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/strtoll.c b/strtoll.c
+index 12f9886..c9e34b8 100644
+--- a/strtoll.c
++++ b/strtoll.c
+@@ -9,7 +9,8 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ 
+-long long int strtoll(const char* nptr, char** endptr, int base) {
++#undef strtoll
++quad_t strtoll(const char* nptr, char** endptr, int base) {
+     long long int ret;
+     DT("enter: %p, %p, %d\n", nptr, endptr, base);
+ 
+diff --git a/strtoull.c b/strtoull.c
+index d0e0e67..622ee9b 100644
+--- a/strtoull.c
++++ b/strtoull.c
+@@ -9,7 +9,8 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ 
+-long long int strtoull(const char* nptr, char** endptr, int base) {
++#undef strtoull
++u_quad_t strtoull(const char* nptr, char** endptr, int base) {
+     long long int ret;
+     DT("enter: %p, %p, %d\n", nptr, endptr, base);
+ 
+-- 
+1.7.6.1
+

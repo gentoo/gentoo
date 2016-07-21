@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
+  <use>
+    <flag name="minimal">
+    Only build the libcdio library and little more, just to be used to
+    link against from multimedia players. With this USE flag enabled,
+    none of the command-line utilities are built, nor is the CDDA library.
+  </flag>
+  </use>
+</pkgmetadata>

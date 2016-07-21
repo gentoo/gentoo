@@ -1,0 +1,34 @@
+diff -urN OpenCTM-1.0.3.old/lib/Makefile.linux OpenCTM-1.0.3/lib/Makefile.linux
+--- OpenCTM-1.0.3.old/lib/Makefile.linux	2014-08-20 09:39:00.614744990 +0200
++++ OpenCTM-1.0.3/lib/Makefile.linux	2014-08-20 09:40:09.782667989 +0200
+@@ -72,7 +72,7 @@
+ 	$(RM) $(DYNAMICLIB) $(SONAME) $(LIBNAME) $(OBJS) $(LZMA_OBJS)
+ 
+ $(DYNAMICLIB): $(OBJS) $(LZMA_OBJS)
+-	$(CC) $(LDFLAGS) -shared -s -Wl,-soname,$(SONAME) -o $@ $(OBJS) $(LZMA_OBJS) -lm
++	$(CC) $(LDFLAGS) -shared  -Wl,-soname,$(SONAME) -o $@ $(OBJS) $(LZMA_OBJS) -lm
+ 	ln -s $(DYNAMICLIB) $(SONAME)
+ 	ln -s $(DYNAMICLIB) $(LIBNAME)
+ 
+diff -urN OpenCTM-1.0.3.old/tools/Makefile.linux OpenCTM-1.0.3/tools/Makefile.linux
+--- OpenCTM-1.0.3.old/tools/Makefile.linux	2014-08-20 09:39:00.583745025 +0200
++++ OpenCTM-1.0.3/tools/Makefile.linux	2014-08-20 09:40:09.751668023 +0200
+@@ -52,15 +52,15 @@
+ 	rm -f ctmconv ctmviewer ctmbench $(CTMCONVOBJS) $(CTMVIEWEROBJS) $(CTMBENCHOBJS) bin2c phong_frag.h phong_vert.h
+ 
+ ctmconv: $(CTMCONVOBJS)
+-	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
++	$(CXX) $(LDFLAGS)  -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
+ 
+ ctmviewer: $(CTMVIEWEROBJS)
+-	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
++	$(CXX) $(LDFLAGS)  -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
+ 	-ltinyxml -ljpeg -lpnglite -lz -lGL -lglut -lGLU -lGLEW \
+ 	-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0
+ 
+ ctmbench: $(CTMBENCHOBJS)
+-	$(CXX) $(LDFLAGS) -s -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -lopenctm
++	$(CXX) $(LDFLAGS)  -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -lopenctm
+ 
+ %.o: %.cpp
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<

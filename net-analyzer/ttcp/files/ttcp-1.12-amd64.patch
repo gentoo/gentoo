@@ -1,0 +1,217 @@
+--- ttcp-1.12/sgi-ttcp.c	1999-06-24 17:59:43.000000000 -0400
++++ sgi-ttcp.c	2004-03-26 11:09:06.387402200 -0500
+@@ -45,6 +45,9 @@
+ /* #define SYSV */	/* required on SGI IRIX releases before 3.3 */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include <signal.h>
+ #include <ctype.h>
+ #include <errno.h>
+@@ -133,7 +136,7 @@
+ 
+ void err();
+ void mes();
+-int pattern();
++void pattern();
+ void prep_timer();
+ double read_timer();
+ int Nread();
+@@ -147,6 +150,7 @@
+ {
+ }
+ 
++int
+ main(argc,argv)
+ int argc;
+ char **argv;
+@@ -263,7 +267,7 @@
+ 	if ( (buf = (char *)malloc(buflen+bufalign)) == (char *)NULL)
+ 		err("malloc");
+ 	if (bufalign != 0)
+-		buf +=(bufalign - ((int)buf % bufalign) + bufoffset) % bufalign;
++		buf +=(bufalign - ((intptr_t)buf % bufalign) + bufoffset) % bufalign;
+ 
+ 	if (trans) {
+ 	    fprintf(stdout,
+@@ -285,7 +289,7 @@
+ 		err("socket");
+ 	mes("socket");
+ 
+-	if (bind(fd, &sinme, sizeof(sinme)) < 0)
++	if (bind(fd, (struct sockaddr *)&sinme, sizeof(sinme)) < 0)
+ 		err("bind");
+ 
+ #if defined(SO_SNDBUF) || defined(SO_RCVBUF)
+@@ -326,7 +330,7 @@
+ 			mes("nodelay");
+ 		}
+ #endif
+-		if(connect(fd, &sinhim, sizeof(sinhim) ) < 0)
++		if(connect(fd, (struct sockaddr *)&sinhim, sizeof(sinhim) ) < 0)
+ 			err("connect");
+ 		mes("connect");
+ 	    } else {
+@@ -348,11 +352,11 @@
+ 		}
+ 		fromlen = sizeof(frominet);
+ 		domain = AF_INET;
+-		if((fd=accept(fd, &frominet, &fromlen) ) < 0)
++		if((fd=accept(fd, (struct sockaddr *)&frominet, &fromlen) ) < 0)
+ 			err("accept");
+ 		{ struct sockaddr_in peer;
+ 		  int peerlen = sizeof(peer);
+-		  if (getpeername(fd, (struct sockaddr_in *) &peer, 
++		  if (getpeername(fd, (struct sockaddr *) &peer, 
+ 				&peerlen) < 0) {
+ 			err("getpeername");
+ 		  }
+@@ -423,7 +427,7 @@
+ 		nbytes, cput, outfmt(nbytes/cput));
+ 	}
+ 	fprintf(stdout,
+-		"ttcp%s: %d I/O calls, msec/call = %.2f, calls/sec = %.2f\n",
++		"ttcp%s: %ld I/O calls, msec/call = %.2f, calls/sec = %.2f\n",
+ 		trans?"-t":"-r",
+ 		numCalls,
+ 		1024.0 * realt/((double)numCalls),
+@@ -431,9 +435,9 @@
+ 	fprintf(stdout,"ttcp%s: %s\n", trans?"-t":"-r", stats);
+ 	if (verbose) {
+ 	    fprintf(stdout,
+-		"ttcp%s: buffer address %#x\n",
++		"ttcp%s: buffer address %#lx\n",
+ 		trans?"-t":"-r",
+-		buf);
++		(unsigned long)buf);
+ 	}
+ 	exit(0);
+ 
+@@ -459,6 +463,7 @@
+ 	fprintf(stderr,"ttcp%s: %s\n", trans?"-t":"-r", s);
+ }
+ 
++void
+ pattern( cp, cnt )
+ register char *cp;
+ register int cnt;
+@@ -614,13 +619,13 @@
+ 
+ 		case 'U':
+ 			tvsub(&tdiff, &r1->ru_utime, &r0->ru_utime);
+-			sprintf(outp,"%d.%01d", tdiff.tv_sec, tdiff.tv_usec/100000);
++			sprintf(outp,"%ld.%01ld", tdiff.tv_sec, tdiff.tv_usec/100000);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'S':
+ 			tvsub(&tdiff, &r1->ru_stime, &r0->ru_stime);
+-			sprintf(outp,"%d.%01d", tdiff.tv_sec, tdiff.tv_usec/100000);
++			sprintf(outp,"%ld.%01ld", tdiff.tv_sec, tdiff.tv_usec/100000);
+ 			END(outp);
+ 			break;
+ 
+@@ -642,49 +647,49 @@
+ 			break;
+ 
+ 		case 'X':
+-			sprintf(outp,"%d", t == 0 ? 0 : (r1->ru_ixrss-r0->ru_ixrss)/t);
++			sprintf(outp,"%ld", t == 0 ? 0 : (r1->ru_ixrss-r0->ru_ixrss)/t);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'D':
+-			sprintf(outp,"%d", t == 0 ? 0 :
++			sprintf(outp,"%ld", t == 0 ? 0 :
+ 			    (r1->ru_idrss+r1->ru_isrss-(r0->ru_idrss+r0->ru_isrss))/t);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'K':
+-			sprintf(outp,"%d", t == 0 ? 0 :
++			sprintf(outp,"%ld", t == 0 ? 0 :
+ 			    ((r1->ru_ixrss+r1->ru_isrss+r1->ru_idrss) -
+ 			    (r0->ru_ixrss+r0->ru_idrss+r0->ru_isrss))/t);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'M':
+-			sprintf(outp,"%d", r1->ru_maxrss/2);
++			sprintf(outp,"%ld", r1->ru_maxrss/2);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'F':
+-			sprintf(outp,"%d", r1->ru_majflt-r0->ru_majflt);
++			sprintf(outp,"%ld", r1->ru_majflt-r0->ru_majflt);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'R':
+-			sprintf(outp,"%d", r1->ru_minflt-r0->ru_minflt);
++			sprintf(outp,"%ld", r1->ru_minflt-r0->ru_minflt);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'I':
+-			sprintf(outp,"%d", r1->ru_inblock-r0->ru_inblock);
++			sprintf(outp,"%ld", r1->ru_inblock-r0->ru_inblock);
+ 			END(outp);
+ 			break;
+ 
+ 		case 'O':
+-			sprintf(outp,"%d", r1->ru_oublock-r0->ru_oublock);
++			sprintf(outp,"%ld", r1->ru_oublock-r0->ru_oublock);
+ 			END(outp);
+ 			break;
+ 		case 'C':
+-			sprintf(outp,"%d+%d", r1->ru_nvcsw-r0->ru_nvcsw,
++			sprintf(outp,"%ld+%ld", r1->ru_nvcsw-r0->ru_nvcsw,
+ 				r1->ru_nivcsw-r0->ru_nivcsw );
+ 			END(outp);
+ 			break;
+@@ -743,6 +748,7 @@
+ /*
+  *			N R E A D
+  */
++int
+ Nread( fd, buf, count )
+ int fd;
+ void *buf;
+@@ -752,7 +758,7 @@
+ 	int len = sizeof(from);
+ 	register int cnt;
+ 	if( udp )  {
+-		cnt = recvfrom( fd, buf, count, 0, &from, &len );
++		cnt = recvfrom( fd, buf, count, 0, (struct sockaddr *)&from, &len );
+ 		numCalls++;
+ 	} else {
+ 		if( b_flag )
+@@ -774,6 +780,7 @@
+ /*
+  *			N W R I T E
+  */
++int
+ Nwrite( fd, buf, count )
+ int fd;
+ void *buf;
+@@ -782,7 +789,7 @@
+ 	register int cnt;
+ 	if( udp )  {
+ again:
+-		cnt = sendto( fd, buf, count, 0, &sinhim, sizeof(sinhim) );
++		cnt = sendto( fd, buf, count, 0, (struct sockaddr *)&sinhim, sizeof(sinhim) );
+ 		numCalls++;
+ 		if( cnt<0 && errno == ENOBUFS )  {
+ 			delay(18000);
+@@ -803,7 +810,7 @@
+ 
+ 	tv.tv_sec = 0;
+ 	tv.tv_usec = us;
+-	(void)select( 1, (char *)0, (char *)0, (char *)0, &tv );
++	(void)select( 1, NULL, NULL, NULL, &tv );
+ }
+ 
+ /*

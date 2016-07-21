@@ -1,0 +1,40 @@
+From a70dff7f103b27d5b7016e13a64c7710c61dc96e Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Wed, 16 Oct 2013 11:30:08 +0200
+Subject: [PATCH 11/12] lvm: fix thin recognition
+
+The global var setting was happening in a pipe and did not have an
+effect.
+
+Use <<<$() instead.
+
+< <() cannot be used, because dracut is called in chroot's environments,
+where /dev/fd does not point to /proc/self/fd, but bash wants
+/dev/fd/<num> for this construct.
+---
+ modules.d/90lvm/module-setup.sh | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/modules.d/90lvm/module-setup.sh b/modules.d/90lvm/module-setup.sh
+index f8b598d..cbdf4a2 100755
+--- a/modules.d/90lvm/module-setup.sh
++++ b/modules.d/90lvm/module-setup.sh
+@@ -57,12 +57,13 @@ install() {
+     inst lvm
+ 
+     if [[ $hostonly ]]; then
+-        get_host_lvs | while read line; do
++        while read line; do
++            [[ -n "$line" ]] || continue
+             printf "%s" " rd.lvm.lv=$line"
+             if ! [[ $_needthin ]]; then
+                 [[ "$(lvs --noheadings -o segtype ${line%%/*} 2>/dev/null)" == *thin* ]] && _needthin=1
+             fi
+-        done >> "${initdir}/etc/cmdline.d/90lvm.conf"
++        done <<<$(get_host_lvs) >> "${initdir}/etc/cmdline.d/90lvm.conf"
+         echo >> "${initdir}/etc/cmdline.d/90lvm.conf"
+     else
+         _needthin=1
+-- 
+1.8.4.3
+

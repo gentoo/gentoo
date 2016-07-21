@@ -1,0 +1,34 @@
+--- Makefile.orig	1999-08-16 18:01:58.000000000 +0200
++++ Makefile	2008-01-27 23:23:36.000000000 +0100
+@@ -1,8 +1,8 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall 
+-INCDIR = -I/usr/X11R6/include/X11 -I/usr/X11R6/include
+-DESTDIR= /usr/X11R6
+-LIBDIR = -L/usr/X11R6/lib
++CC     ?= gcc
++CFLAGS += -Wall 
++INCDIR = -I/usr/include/X11 -I/usr/include
++PREFIX ?= /usr
++LIBDIR ?= /usr/lib
+ 
+ # for Linux
+ LIBS   = -lXpm -lX11 -lXext
+@@ -24,7 +24,7 @@
+ 
+ wmMatrix.o: wmMatrix_master.xpm wmMatrix_mask.xbm
+ wmMatrix:	$(OBJS) 
+-	$(CC) $(COPTS) $(SYSTEM) -o wmMatrix $^ $(INCDIR) $(LIBDIR) $(LIBS)
++	$(CC) $(COPTS) $(SYSTEM) -o wmMatrix $^ $(INCDIR) -L$(LIBDIR) $(LDFLAGS) $(LIBS)
+ 
+ 
+ clean:
+@@ -34,5 +34,6 @@
+ 	rm -f wmMatrix
+ 
+ install:: wmMatrix
+-	install -c -s -m 0755 wmMatrix $(DESTDIR)/bin
++	install -d $(DESTDIR)$(PREFIX)/bin
++	install -m 0755 wmMatrix $(DESTDIR)$(PREFIX)/bin
+ 
+

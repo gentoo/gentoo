@@ -1,0 +1,24 @@
+diff -Naurp dvhtool-1.0.1.orig-A/dvh.h dvhtool-1.0.1.orig/dvh.h
+--- dvhtool-1.0.1.orig-A/dvh.h	2005-09-28 02:45:56 -0400
++++ dvhtool-1.0.1.orig/dvh.h	2005-09-28 02:41:15 -0400
+@@ -129,6 +129,8 @@ struct partition_table {		/* one per log
+ #define	PTYPE_XVM	13		/* partition is sgi XVM */
+ #define	PTYPE_LSWAP	0x82		/* partition is Linux swap */
+ #define	PTYPE_LINUX	0x83		/* partition is Linux native */
++#define PTYPE_LLVM	0x8e		/* partition is Linux LVM */
++#define PTYPE_LRAID	0xfd		/* partition is Linux RAID */
+ #define NPTYPES		16
+ 
+ #define	VHMAGIC		0xbe5a941	/* randomly chosen value */
+diff -Naurp dvhtool-1.0.1.orig-A/dvhlib.c dvhtool-1.0.1.orig/dvhlib.c
+--- dvhtool-1.0.1.orig-A/dvhlib.c	2005-09-28 02:45:56 -0400
++++ dvhtool-1.0.1.orig/dvhlib.c	2005-09-28 02:41:45 -0400
+@@ -52,6 +52,8 @@ ptype2str(int ptype)
+ 	case PTYPE_XVM:		return "XVM Volume";
+ 	case PTYPE_LSWAP:	return "Linux Swap";
+ 	case PTYPE_LINUX:	return "Linux Native";
++	case PTYPE_LLVM:	return "Linux LVM";
++	case PTYPE_LRAID:	return "Linux RAID";
+ 	}
+ 	return "Unknown Partition Type";
+ }

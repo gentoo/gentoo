@@ -1,0 +1,125 @@
+From fcbd40fe7fa3fbdc5ffb386c5c7b72a8704e7136 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Wed, 6 May 2015 00:12:02 -0400
+Subject: [PATCH 3/3] pwclient: basic python3 support
+
+This fixes a few random issues to make the script work at least somewhat
+under python 3:
+- set the default encoding to utf-8
+- handle xmlrpclib/xmlrpc.client module renames
+- handle ConfigParser/configparser module renames
+- add a unicode() stub for python 3
+- fix old style class definition w/Filter
+- use list comprehension instead of map()
+- drop the unused version= keyword w/argparse
+
+The code still runs under python 2 the same as before, and now works for
+the most part under python 3 -- the handling of encoded content still needs
+some work, but that'll require more surgery, and is best left to another
+commit after this.
+
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ apps/patchwork/bin/pwclient | 31 +++++++++++++++++++++++--------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
+
+diff --git a/apps/patchwork/bin/pwclient b/apps/patchwork/bin/pwclient
+index 2e6daa5..5080a17 100755
+--- a/apps/patchwork/bin/pwclient
++++ b/apps/patchwork/bin/pwclient
+@@ -1,4 +1,5 @@
+ #!/usr/bin/env python
++# -*- coding: utf-8 -*-
+ #
+ # Patchwork command line client
+ # Copyright (C) 2008 Nate Case <ncase@xes-inc.com>
+@@ -23,16 +24,31 @@ from __future__ import print_function
+ 
+ import os
+ import sys
+-import xmlrpclib
++try:
++    import xmlrpclib
++except ImportError:
++    # Python 3 has merged/renamed things.
++    import xmlrpc.client as xmlrpclib
+ import argparse
+ import string
+ import tempfile
+ import subprocess
+ import base64
+-import ConfigParser
++try:
++    import ConfigParser
++except ImportError:
++    # Python 3 has renamed things.
++    import configparser as ConfigParser
+ import shutil
+ import re
+ 
++# Add a shim for Python 2's unicode() helper.
++try:
++    unicode
++except NameError:
++    # Python 3 does everything by unicode now.
++    unicode = str
++
+ # Default Patchwork remote XML-RPC server URL
+ # This script will check the PW_XMLRPC_URL environment variable
+ # for the URL to access.  If that is unspecified, it will fallback to
+@@ -40,7 +56,7 @@ import re
+ DEFAULT_URL = "http://patchwork/xmlrpc/"
+ CONFIG_FILE = os.path.expanduser('~/.pwclientrc')
+ 
+-class Filter:
++class Filter(object):
+     """Filter for selecting patches."""
+     def __init__(self):
+         # These fields refer to specific objects, so they are special
+@@ -135,7 +151,7 @@ def person_ids_by_name(rpc, name):
+     if len(name) == 0:
+         return []
+     people = rpc.person_list(name, 0)
+-    return map(lambda x: x['id'], people)
++    return [x['id'] for x in people]
+ 
+ def list_patches(patches, format_str=None):
+     """Dump a list of patches to stdout."""
+@@ -352,7 +368,7 @@ class _RecursiveHelpAction(argparse._HelpAction):
+         parser.exit()
+ 
+ def main():
+-    hash_parser = argparse.ArgumentParser(add_help=False, version=False)
++    hash_parser = argparse.ArgumentParser(add_help=False)
+     hash_parser.add_argument(
+         '-h', metavar='HASH', dest='hash', action='store',
+         help='''Lookup by patch hash'''
+@@ -362,7 +378,7 @@ def main():
+         help='Patch ID',
+     )
+ 
+-    filter_parser = argparse.ArgumentParser(add_help=False, version=False)
++    filter_parser = argparse.ArgumentParser(add_help=False)
+     filter_parser.add_argument(
+         '-s', metavar='STATE',
+         help='''Filter by patch state (e.g., 'New', 'Accepted', etc.)'''
+@@ -397,7 +413,7 @@ def main():
+         'patch_name', metavar='STR', nargs='?',
+         help='substring to search for patches by name',
+     )
+-    help_parser = argparse.ArgumentParser(add_help=False, version=False)
++    help_parser = argparse.ArgumentParser(add_help=False)
+     help_parser.add_argument(
+         '--help', action='help', help=argparse.SUPPRESS,
+         #help='''show this help message and exit'''
+@@ -406,7 +422,6 @@ def main():
+     action_parser = argparse.ArgumentParser(
+         prog='pwclient',
+         add_help=False,
+-        version=False,
+         formatter_class=argparse.RawDescriptionHelpFormatter,
+         epilog='''(apply | get | info | view | update) (-h HASH | ID [ID ...])''',
+     )
+-- 
+2.4.0
+

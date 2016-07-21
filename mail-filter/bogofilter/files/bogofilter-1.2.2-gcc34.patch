@@ -1,0 +1,24 @@
+diff -ruN bogofilter-1.2.1-orig/src/Makefile.am bogofilter-1.2.1/src/Makefile.am
+--- bogofilter-1.2.1-orig/src/Makefile.am	2009-05-28 22:59:05.000000000 +0200
++++ bogofilter-1.2.1/src/Makefile.am	2010-06-16 22:52:36.000000000 +0200
+@@ -16,7 +16,7 @@
+ AM_CPPFLAGS = -iquote$(top_srcdir)/gnugetopt -iquote$(top_srcdir)/trio \
+ 	      -I$(srcdir) @GSL_CFLAGS@ -I$(top_srcdir)/gsl/specfunc -I$(top_srcdir)
+ else
+-AM_CPPFLAGS = -I$(top_srcdir)/gnugetopt -I$(top_srcdir)/trio -I- -I. \
++AM_CPPFLAGS = -I$(top_srcdir)/gnugetopt -I$(top_srcdir)/trio -I. \
+ 	      -I$(srcdir) @GSL_CFLAGS@ -I$(top_srcdir)/gsl/specfunc -I$(top_srcdir)
+ endif
+ 
+diff -ruN bogofilter-1.2.1-orig/src/Makefile.in bogofilter-1.2.1/src/Makefile.in
+--- bogofilter-1.2.1-orig/src/Makefile.in	2009-08-01 21:00:51.000000000 +0200
++++ bogofilter-1.2.1/src/Makefile.in	2010-06-16 22:52:23.000000000 +0200
+@@ -483,7 +483,7 @@
+ @ENABLE_MEMDEBUG_TRUE@MEMDEBUG_SRC = memdebug.c memdebug.h
+ noinst_LIBRARIES = libbogofilter.a $(am__append_3) $(am__append_5) \
+ 	$(am__append_10)
+-@USE_GCC4_FALSE@AM_CPPFLAGS = -I$(top_srcdir)/gnugetopt -I$(top_srcdir)/trio -I- -I. \
++@USE_GCC4_FALSE@AM_CPPFLAGS = -I$(top_srcdir)/gnugetopt -I$(top_srcdir)/trio -I. \
+ @USE_GCC4_FALSE@	      -I$(srcdir) @GSL_CFLAGS@ -I$(top_srcdir)/gsl/specfunc -I$(top_srcdir)
+ 
+ @USE_GCC4_TRUE@AM_CPPFLAGS = -iquote$(top_srcdir)/gnugetopt -iquote$(top_srcdir)/trio \

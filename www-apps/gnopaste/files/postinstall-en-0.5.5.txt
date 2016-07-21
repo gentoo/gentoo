@@ -1,0 +1,4 @@
+Start your favorite browser and follow the install 
+instructions on the installer under the followinging url:
+
+http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/install.php

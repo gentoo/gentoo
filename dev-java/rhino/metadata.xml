@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription>
+		Rhino is an implementation of JavaScript written entirely in Java.
+		It is typically embedded into Java applications to provide scripting
+		to end users.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mozilla/rhino</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -519,7 +519,9 @@
+ endif ()
+ 
+ # Setup samples
+-add_subdirectory(Samples)
++if (OGRE_BUILD_SAMPLES)
++    add_subdirectory(Samples)
++endif ()
+ 
+ #Add android JNI binding
+ if(ANDROID)

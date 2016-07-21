@@ -1,0 +1,62 @@
+From 906d910415454d64ff0b021b06f0df422a8c82bd Mon Sep 17 00:00:00 2001
+From: Andy Shaw <andy.shaw@theqtcompany.com>
+Date: Wed, 23 Sep 2015 06:52:01 +0000
+Subject: [PATCH] Compile when QML is disabled
+
+Since QJSValue is part of the QML module then it should check if that is
+available before using it so we add a QT_NO_JSVALUE define to help with
+this.
+
+Task-number: QTBUG-46850
+Change-Id: I1974518a5c134dbb8508a46505b43c820a7a700a
+Reviewed-by: Liang Qi <liang.qi@theqtcompany.com>
+---
+ src/webchannel/qmetaobjectpublisher.cpp | 4 ++++
+ src/webchannel/webchannel.pro           | 2 ++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/webchannel/qmetaobjectpublisher.cpp b/src/webchannel/qmetaobjectpublisher.cpp
+index 0cad569..22df02b 100644
+--- a/src/webchannel/qmetaobjectpublisher.cpp
++++ b/src/webchannel/qmetaobjectpublisher.cpp
+@@ -41,7 +41,9 @@
+ #include <QDebug>
+ #include <QJsonObject>
+ #include <QJsonArray>
++#ifndef QT_NO_JSVALUE
+ #include <QJSValue>
++#endif
+ #include <QUuid>
+ 
+ QT_BEGIN_NAMESPACE
+@@ -486,12 +488,14 @@ QJsonValue QMetaObjectPublisher::wrapResult(const QVariant &result, QWebChannelA
+         if (!classInfo.isEmpty())
+             objectInfo[KEY_DATA] = classInfo;
+         return objectInfo;
++#ifndef QT_NO_JSVALUE
+     } else if (result.canConvert<QJSValue>()) {
+         // Workaround for keeping QJSValues from QVariant.
+         // Calling QJSValue::toVariant() converts JS-objects/arrays to QVariantMap/List
+         // instead of stashing a QJSValue itself into a variant.
+         // TODO: Improve QJSValue-QJsonValue conversion in Qt.
+         return wrapResult(result.value<QJSValue>().toVariant(), transport, parentObjectId);
++#endif
+     } else if (result.canConvert<QVariantList>()) {
+         // recurse and potentially wrap contents of the array
+         return wrapList(result.toList(), transport);
+diff --git a/src/webchannel/webchannel.pro b/src/webchannel/webchannel.pro
+index eba8123..931ee03 100644
+--- a/src/webchannel/webchannel.pro
++++ b/src/webchannel/webchannel.pro
+@@ -39,6 +39,8 @@ qtHaveModule(qml) {
+ 
+     PRIVATE_HEADERS += \
+         qqmlwebchannelattached_p.h
++} else {
++    DEFINES += QT_NO_JSVALUE
+ }
+ 
+ HEADERS += $$PUBLIC_HEADERS $$PRIVATE_HEADERS
+-- 
+2.4.10
+

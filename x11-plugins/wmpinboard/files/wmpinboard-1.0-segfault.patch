@@ -1,0 +1,11 @@
+--- src/wmpinboard.c	2000-04-13 13:01:17.000000000 +0200
++++ src/wmpinboard.c	2003-03-06 19:29:57.000000000 +0100
+@@ -165,7 +165,7 @@
+   char t[STRING_BUF_SIZE];
+   FILE *file;
+   int pid = (int) getpid();
+-  static int sizes[6];
++  static int sizes[7];
+   sizes[0] = size_0;
+   sizes[1] = size_1;
+   sizes[2] = size_2;

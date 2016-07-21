@@ -1,0 +1,8 @@
+--- libgoogle-data-mono-1.4.0.2/misc/gdata-sharp-core.pc.in	2010-03-09 13:07:29.000000000 +0100
++++ libgoogle-data-mono-1.4.0.2.new/misc/gdata-sharp-core.pc.in	2010-03-10 13:11:29.000000000 +0100
+@@ -5,4 +5,4 @@ Name: GData Sharp Core
+ Description: CLI bindings to Google's online services (Core libraries)
+ Version: 1.4.0.2
+ 
+-Libs: -r:${libdir}/mono/GData-Sharp/Google.GData.Client.dll -r${libdir}/mono/GData-Sharp/Google.GData.Extensions.dll
++Libs: -r:${libdir}/mono/GData-Sharp/Google.GData.Client.dll -r:${libdir}/mono/GData-Sharp/Google.GData.Extensions.dll

@@ -1,0 +1,20 @@
+Author: Ole Streicher <olebole@debian.net>
+Description: Increase c*type and ptype field string lengths
+ This is needed to allow C1TYPE='RA---TAN-SIP'
+Bug: https://bugs.launchpad.net/ubuntu/+source/saods9/+bug/1458333
+--- a/libwcs/wcsinit.c
++++ b/libwcs/wcsinit.c
+@@ -399,11 +399,11 @@
+ 	}
+ 
+     /* World coordinate system reference coordinate information */
+-    if (hgetsc (hstring, "CTYPE1", &mchar, 16, ctype1)) {
++    if (hgetsc (hstring, "CTYPE1", &mchar, 9, ctype1)) {
+ 
+ 	/* Read second coordinate type */
+ 	strcpy (ctype2, ctype1);
+-	if (!hgetsc (hstring, "CTYPE2", &mchar, 16, ctype2))
++	if (!hgetsc (hstring, "CTYPE2", &mchar, 9, ctype2))
+ 	    twod = 0;
+ 	else
+ 	    twod = 1;

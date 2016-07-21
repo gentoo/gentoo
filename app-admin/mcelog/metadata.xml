@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bkohler@gmail.com</email>
+		<name>Ben Kohler</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Starting with version 2.6.4, the Linux kernel for x86-64 no longer
+		decodes and logs recoverable Machine Check Exception events to the
+		kernel log on its own.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">andikleen/mcelog</remote-id>
+	</upstream>
+</pkgmetadata>

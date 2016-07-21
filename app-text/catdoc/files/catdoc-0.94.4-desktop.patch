@@ -1,0 +1,11 @@
+--- catdoc-0.94.4/desktop/wordview.desktop
++++ catdoc-0.94.4/desktop/wordview.desktop
+@@ -2,7 +2,7 @@
+ Name=Wordview Microsoft doc Viewer
+ Comment=Microsoft doc document file viewer
+ Exec=wordview
+-Icon=wordview.xpm
++Icon=wordview
+ Terminal=false
+ Categories=Office;GNOME;
+ Type=Application

@@ -1,0 +1,32 @@
+diff -Nur cmake/Modules.orig/ClhepPackageCompiler.cmake cmake/Modules/ClhepPackageCompiler.cmake
+--- cmake/Modules.orig/ClhepPackageCompiler.cmake	2012-08-14 13:07:41.891381108 -0700
++++ cmake/Modules/ClhepPackageCompiler.cmake	2012-08-14 13:08:39.826695769 -0700
+@@ -16,6 +16,7 @@
+   execute_process(COMMAND ${CMAKE_CXX_COMPILER}
+                           ${CMAKE_CXX_COMPILER_ARG1} -dumpversion
+     OUTPUT_VARIABLE _my_COMPILER_VERSION
++    OUTPUT_STRIP_TRAILING_WHITESPACE
+   )
+   set( COMPILER_VERSION ${_my_COMPILER_VERSION} PARENT_SCOPE)
+   STRING(REGEX REPLACE "([0-9])\\.([0-9])(\\.[0-9])?" "\\1\\2"
+diff -Nur cmake/Modules.orig/ClhepPackaging.cmake cmake/Modules/ClhepPackaging.cmake
+--- cmake/Modules.orig/ClhepPackaging.cmake	2012-08-14 13:07:41.890381099 -0700
++++ cmake/Modules/ClhepPackaging.cmake	2012-08-14 13:08:17.025571936 -0700
+@@ -68,7 +68,7 @@
+         # We have linux, so incorporate Vendor info into package name
+         # - Distributor ID
+         ##exec_program(${LSB_RELEASE_PROGRAM} ARGS -s -i OUTPUT_VARIABLE LSB_VENDOR)
+-	execute_process(COMMAND ${LSB_RELEASE_PROGRAM} -s -i OUTPUT_VARIABLE LSB_VENDOR)
++	execute_process(COMMAND ${LSB_RELEASE_PROGRAM} -s -i OUTPUT_VARIABLE LSB_VENDOR OUTPUT_STRIP_TRAILING_WHITESPACE)
+         string(REGEX REPLACE " " "-" LSB_VENDOR ${LSB_VENDOR})
+         string(TOLOWER ${LSB_VENDOR} LSB_VENDOR)
+ 	if("${LSB_VENDOR}" MATCHES "scientificslf")
+@@ -85,7 +85,7 @@
+ 
+         # - Distributor release
+         ##exec_program(${LSB_RELEASE_PROGRAM} ARGS -s -r OUTPUT_VARIABLE LSB_RELEASE)
+-	execute_process(COMMAND ${LSB_RELEASE_PROGRAM} -s -r OUTPUT_VARIABLE LSB_RELEASE)
++	execute_process(COMMAND ${LSB_RELEASE_PROGRAM} -s -r OUTPUT_VARIABLE LSB_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+         string(TOLOWER ${LSB_RELEASE} LSB_RELEASE)
+ 	string(REGEX REPLACE "([0-9])\\.([0-9])?" "\\1" LSB_RELEASE ${LSB_RELEASE})
+ 

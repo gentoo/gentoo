@@ -1,0 +1,203 @@
+--- Demo/Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ Demo/Makefile.am	2009-10-22 23:42:08.000000000 -0400
+@@ -0,0 +1,78 @@
++AM_CPPFLAGS = -I$(top_srcdir)/Include
++
++LDADD = $(top_builddir)/Source/libspqr.la \
++	$(CHOLMOD_LIBS) $(AMD_LIBS) $(CAMD_LIBS) \
++	$(COLAMD_LIBS) $(CCOLAMD_LIBS) \
++	$(METIS_LIBS) $(BLAS_LIBS) $(LAPACK_LIBS) $(TBB_LIBS)
++
++check_PROGRAMS = \
++	qrsimple qrsimplec \
++	qrdemo qrdemoc
++
++qrsimple_SOURCES = qrsimple.cpp
++qrsimplec = qrsimplec.c
++qrsimplec_CFLAGS = -ansi
++qrdemo_SOURCES = qrdemo.cpp
++qrdemoc_SOURCES = qrdemoc.c
++qrdemoc_CFLAGS = -ansi
++
++
++check-local: $(check_PROGRAMS)
++	./qrsimple < $(top_srcdir)/Matrix/ash219.mtx || exit 1
++	./qrsimplec < $(top_srcdir)/Matrix/ash219.mtx || exit 1
++	./qrsimple < $(top_srcdir)/Matrix/west0067.mtx || exit 1
++	./qrsimplec < $(top_srcdir)/Matrix/west0067.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a2.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/r2.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a04.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a2.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/west0067.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/c2.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a0.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/lfat5b.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/bfwa62.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/LFAT5.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/b1_ss.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/bcspwr01.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/lpi_galenet.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/lpi_itest6.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/ash219.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a4.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/s32.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/c32.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/lp_share1b.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/a1.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/GD06_theory.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/GD01_b.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/Tina_AskCal_perm.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/Tina_AskCal.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/GD98_a.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/Ragusa16.mtx || exit 1
++	./qrdemo < $(top_srcdir)/Matrix/young1c.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a2.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/r2.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a04.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a2.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/west0067.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/c2.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a0.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/lfat5b.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/bfwa62.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/LFAT5.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/b1_ss.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/bcspwr01.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/lpi_galenet.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/lpi_itest6.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/ash219.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a4.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/s32.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/c32.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/lp_share1b.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/a1.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/GD06_theory.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/GD01_b.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/Tina_AskCal_perm.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/Tina_AskCal.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/GD98_a.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/Ragusa16.mtx || exit 1
++	./qrdemoc < $(top_srcdir)/Matrix/young1c.mtx || exit 1
+--- Include/Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ Include/Makefile.am	2009-10-22 23:42:08.000000000 -0400
+@@ -0,0 +1,5 @@
++include_HEADERS = \
++	spqr.hpp \
++	SuiteSparseQR_C.h \
++	SuiteSparseQR_definitions.h \
++	SuiteSparseQR.hpp
+--- Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ Makefile.am	2009-10-22 23:42:08.000000000 -0400
+@@ -0,0 +1,2 @@
++SUBDIRS = Include Source Demo
++EXTRA_DIST = README.txt
+--- Source/Makefile.am	1969-12-31 19:00:00.000000000 -0500
++++ Source/Makefile.am	2009-10-22 23:43:03.000000000 -0400
+@@ -0,0 +1,48 @@
++AM_CPPFLAGS=-I$(top_srcdir)/Include
++
++lib_LTLIBRARIES = libspqr.la
++
++libspqr_la_SOURCES = \
++    spqr_rmap.cpp \
++    SuiteSparseQR_C.cpp \
++    SuiteSparseQR_expert.cpp \
++    spqr_parallel.cpp \
++    spqr_kernel.cpp \
++    spqr_analyze.cpp \
++    spqr_assemble.cpp \
++    spqr_cpack.cpp \
++    spqr_csize.cpp \
++    spqr_fcsize.cpp \
++    spqr_debug.cpp \
++    spqr_front.cpp \
++    spqr_factorize.cpp \
++    spqr_freenum.cpp \
++    spqr_freesym.cpp \
++    spqr_freefac.cpp \
++    spqr_fsize.cpp \
++    spqr_maxcolnorm.cpp \
++    spqr_rconvert.cpp \
++    spqr_rcount.cpp \
++    spqr_rhpack.cpp \
++    spqr_rsolve.cpp \
++    spqr_stranspose1.cpp \
++    spqr_stranspose2.cpp \
++    spqr_hpinv.cpp \
++    spqr_1fixed.cpp \
++    spqr_1colamd.cpp \
++    SuiteSparseQR.cpp \
++    spqr_1factor.cpp \
++    spqr_cumsum.cpp \
++    spqr_shift.cpp \
++    spqr_happly.cpp \
++    spqr_panel.cpp \
++    spqr_happly_work.cpp \
++    SuiteSparseQR_qmult.cpp \
++    spqr_trapezoidal.cpp \
++    spqr_larftb.cpp \
++    spqr_append.cpp \
++    spqr_type.cpp \
++    spqr_tol.cpp
++
++libspqr_la_CPPFLAGS = $(AM_CPPFLAGS) $(METIS_CFLAGS) $(TBB_CFLAGS) $(LAPACK_CFLAGS)
++libspqr_la_LIBADD = $(METIS_LIBS) $(TBB_LIBS) $(LAPACK_LIBS)
+--- configure.ac	1969-12-31 19:00:00.000000000 -0500
++++ configure.ac	2009-10-22 23:42:32.000000000 -0400
+@@ -0,0 +1,55 @@
++AC_PREREQ(2.59)
++AC_INIT(spqr, 1.2, davis@cise.ufl.edu)
++AM_INIT_AUTOMAKE([foreign])
++AC_CONFIG_SRCDIR([Source/spqr_kernel.cpp])
++AM_INIT_AUTOMAKE([foreign])
++
++AC_PROG_LIBTOOL
++AC_PROG_CXX
++AC_LANG(C++)
++
++AC_CHECK_LIB(m, sqrt)
++AC_CHECK_LIB(lapack,zlarft_)
++AC_CHECK_HEADERS(UFconfig.h)
++AC_CHECK_HEADERS(cholmod.h)
++AC_CHECK_LIB(cholmod, cholmod_solve, [], \
++            [AC_MSG_ERROR([Cannot find libcholmod])])
++
++AC_ARG_WITH(metis,
++    [AC_HELP_STRING([--with-metis],
++		    [Use METIS for partitioning])],
++     [with_metis=$withval],
++     [with_metis="yes"])
++if test x$with_metis = xyes; then
++    PKG_PROG_PKG_CONFIG
++    if test -n "$PKG_CONFIG"; then
++       PKG_CHECK_MODULES([metis], [metis])
++    else
++	AC_CHECK_HEADERS(metis.h)
++    	AC_CHECK_LIB(metis, METIS_NodeND, [METIS_LIBS=-lmetis], \
++		[AC_MSG_ERROR([Cannot find libmetis])])
++    fi
++    AC_DEFINE(NPARTITION)
++fi
++AM_CONDITIONAL([METIS], [test x$with_metis = xyes])
++
++AC_ARG_WITH(tbb,
++    [AC_HELP_STRING([--with-tbb],
++		    [Use Intel Threading Building Block for multithreading])],
++     [with_tbb=$withval],
++     [with_tbb="yes"])
++if test x$with_tbb = xyes; then
++    AC_CHECK_HEADERS(tbb/task.h)
++    TBB_CFLAGS=""
++    TBB_LIBS="-ltbb"
++    AC_SUBST(TBB_CFLAGS)
++    AC_SUBST(TBB_LIBS)
++    AC_DEFINE(HAVE_TBB)
++fi
++AM_CONDITIONAL([WITH_TBB], [test x$with_tbb = xyes])
++
++AC_CONFIG_FILES([Makefile
++    Source/Makefile
++    Include/Makefile
++    Demo/Makefile])
++AC_OUTPUT

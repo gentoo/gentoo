@@ -1,0 +1,270 @@
+--- src/XmlProcessor.cpp.old	2010-10-25 15:13:58.000000000 +0200
++++ src/XmlProcessor.cpp	2010-10-26 09:14:46.000000000 +0200
+@@ -34,8 +34,17 @@
+ //****************************************************************************************//
+ //			DataDirResolver Class                                   					  //	
+ //****************************************************************************************//
+-
++#if XERCES_VERSION_MAJOR < 3
+ DOMInputSource* DataDirResolver::resolveEntity (const XMLCh *const /*publicId*/, const XMLCh *const systemId, const XMLCh *const /*baseURI*/) {
++#else
++InputSource* DataDirResolver::resolveEntity(const XMLCh* publicId, const XMLCh* systemId)
++{
++	return NULL;
++	//return DataDirResolver::resolveEntity (publicId, systemId, NULL);
++}
++
++DOMLSInput* DataDirResolver::resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI) {
++#endif
+ 	string path = "";
+ 	size_t last;
+ 	string schemapath = Common::GetSchemaPath();
+@@ -111,21 +120,35 @@
+     // Instantiate the DOM parser.
+     static const XMLCh gLS[] = { chLatin_L, chLatin_S, chNull };
+     DOMImplementation *impl = DOMImplementationRegistry::getDOMImplementation(gLS);
++#if XERCES_VERSION_MAJOR < 3
+     parser = ((DOMImplementationLS*)impl)->createDOMBuilder(DOMImplementationLS::MODE_SYNCHRONOUS, 0);
++#else
++    parser = ((DOMImplementationLS*)impl)->createLSParser(DOMImplementationLS::MODE_SYNCHRONOUS, 0);
++#endif
+ 
+ 	///////////////////////////////////////////////////////
+     //	Set fetuares on the builder
+ 	///////////////////////////////////////////////////////
+ 
++#if XERCES_VERSION_MAJOR < 3
++#define SetParameter(parser,n,v) parser->setFeature(n,v)
++#else
++#define SetParameter(parser,n,v) parser->getDomConfig()->setParameter(n,v)
++#endif
++	SetParameter(parser, XMLUni::fgDOMComments, false); // Discard Comment nodes in the document. 
++	SetParameter(parser, XMLUni::fgDOMDatatypeNormalization, true); // Let the validation process do its datatype normalization that is defined in the used schema language.
++	SetParameter(parser, XMLUni::fgDOMNamespaces, true); //  Perform Namespace processing
++#if XERCES_VERSION_MAJOR < 3
++	SetParameter(parser, XMLUni::fgDOMValidation, true); // Report all validation errors.
++#else
++	SetParameter(parser, XMLUni::fgDOMValidate, true); // Report all validation errors.
++#endif
++	SetParameter(parser, XMLUni::fgXercesSchema, true); //  Enable the parser's schema support.
++	SetParameter(parser, XMLUni::fgXercesSchemaFullChecking, true); //  Enable full schema constraint checking, including checking which may be time-consuming or memory intensive. Currently, particle unique attribution constraint checking and particle derivation restriction checking are controlled by this option.
++	SetParameter(parser, XMLUni::fgXercesValidationErrorAsFatal, true); //  The parser will treat validation error as fatal and will exit
++	SetParameter(parser, XMLUni::fgXercesDOMHasPSVIInfo, true); // Enable storing of PSVI information in element and attribute nodes.
+ 
+-	parser->setFeature(XMLUni::fgDOMComments, false); // Discard Comment nodes in the document. 
+-    parser->setFeature(XMLUni::fgDOMDatatypeNormalization, true); // Let the validation process do its datatype normalization that is defined in the used schema language.  
+-	parser->setFeature(XMLUni::fgDOMNamespaces, true); //  Perform Namespace processing
+-	parser->setFeature(XMLUni::fgDOMValidation, true); // Report all validation errors.  
+-	parser->setFeature(XMLUni::fgXercesSchema, true); //  Enable the parser's schema support.
+-	parser->setFeature(XMLUni::fgXercesSchemaFullChecking, true); //  Enable full schema constraint checking, including checking which may be time-consuming or memory intensive. Currently, particle unique attribution constraint checking and particle derivation restriction checking are controlled by this option.  
+-	parser->setFeature(XMLUni::fgXercesValidationErrorAsFatal, true); //  The parser will treat validation error as fatal and will exit  
+-	parser->setFeature(XMLUni::fgXercesDOMHasPSVIInfo, true); // Enable storing of PSVI information in element and attribute nodes.
++#undef SetParameter
+ 
+ 	///////////////////////////////////////////////////////
+ //****************************************************************************************//
+@@ -133,7 +156,11 @@
+ //****************************************************************************************//
+ 	/* Look for XML schemas in local directory instead of Internet */
+ 		DataDirResolver resolver;
++#if XERCES_VERSION_MAJOR < 3
+ 		parser->setEntityResolver (&resolver);
++#else
++		parser->getDomConfig()->setParameter(XMLUni::fgXercesEntityResolver, &resolver);
++#endif
+ //****************************************************************************************//
+ //			End of air-gap code															  //	
+ //****************************************************************************************//
+@@ -144,7 +171,11 @@
+ 	// Create a new DOMErrorHandler
+ 	// and set it to the builder
+ 	XmlProcessorErrorHandler *errHandler = new XmlProcessorErrorHandler();
++#if XERCES_VERSION_MAJOR < 3
+ 	parser->setErrorHandler(errHandler);
++#else
++	parser->getDomConfig()->setParameter(XMLUni::fgDOMErrorHandler, errHandler);
++#endif
+ 
+     try  {
+ 		// reset document pool
+@@ -215,24 +246,26 @@
+ 		XMLCh tempStr[100];
+ 		XMLString::transcode("LS", tempStr, 99);
+ 		DOMImplementation *impl = DOMImplementationRegistry::getDOMImplementation(tempStr);
++#if XERCES_VERSION_MAJOR < 3
+ 		DOMWriter *theSerializer = ((DOMImplementationLS*)impl)->createDOMWriter();
++#else
++		DOMLSSerializer *theSerializer = ((DOMImplementationLS*)impl)->createLSSerializer();
++#endif
++
++#if XERCES_VERSION_MAJOR < 3
++#define SetParameter(serializer,n,v) if (serializer->canSetFeature(n,v)) serializer->setFeature(n,v)
++#else
++#define SetParameter(serializer,n,v) if (serializer->getDomConfig()->canSetParameter(n,v)) serializer->getDomConfig()->setParameter(n,v)
++#endif
+ 
+ 		// set feature if the serializer supports the feature/mode
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTSplitCdataSections, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTSplitCdataSections, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTFormatPrettyPrint, true))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTFormatPrettyPrint, true);
+-
+-		if (theSerializer->canSetFeature(XMLUni::fgDOMWRTBOM, false))
+-			theSerializer->setFeature(XMLUni::fgDOMWRTBOM, false);
+-
+-		//if (theSerializer->canSetFeature(XMLUni::fgDOMWRTDiscardDefaultContent, true))
+-		//	theSerializer->setFeature(XMLUni::fgDOMWRTBOM, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTSplitCdataSections, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTDiscardDefaultContent, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTFormatPrettyPrint, true);
++		SetParameter(theSerializer, XMLUni::fgDOMWRTBOM, false);
++		//SetParameter(theSerializer, XMLUni::fgDOMWRTBOM, true);
+ 
++#undef SetParameter
+ 		//
+ 		// Plug in a format target to receive the resultant
+ 		// XML stream from the serializer.
+@@ -249,7 +282,13 @@
+ 		//
+ 		// do the serialization through DOMWriter::writeNode();
+ 		//
++#if XERCES_VERSION_MAJOR < 3
+ 		theSerializer->writeNode(myFormTarget, *doc);
++#else
++		DOMLSOutput *output = ((DOMImplementationLS*)impl)->createLSOutput();
++		output->setByteStream(myFormTarget);
++		theSerializer->write(doc, output);
++#endif
+ 
+ 		delete theSerializer;
+ 		delete myFormTarget;
+--- src/XmlProcessor.h.old	2010-10-22 12:06:05.000000000 +0200
++++ src/XmlProcessor.h	2010-10-22 12:06:20.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ //	required xerces	includes
+ #include <xercesc/dom/DOMImplementationRegistry.hpp>
+-#include <xercesc/dom/DOMBuilder.hpp>
++//#include <xercesc/dom/DOMBuilder.hpp>
+ #include <xercesc/dom/DOMException.hpp>
+ #include <xercesc/dom/DOMErrorHandler.hpp>
+ #include <xercesc/dom/DOMError.hpp>
+--- src/XmlProcessor.h.old	2010-10-22 14:40:45.000000000 +0200
++++ src/XmlProcessor.h	2010-10-22 14:42:00.000000000 +0200
+@@ -50,18 +50,23 @@
+ // for dom Writer
+ #include <xercesc/dom/DOMImplementation.hpp>
+ #include <xercesc/dom/DOMImplementationLS.hpp>
+-#include <xercesc/dom/DOMWriter.hpp>
++//#include <xercesc/dom/DOMWriter.hpp>
+ #include <xercesc/framework/StdOutFormatTarget.hpp>
+ #include <xercesc/framework/LocalFileFormatTarget.hpp>
+ #include <xercesc/parsers/XercesDOMParser.hpp>
+ #include <xercesc/util/XMLUni.hpp>
+ 
+ // for entity resolver
+-#include <xercesc/dom/DOMEntityResolver.hpp>
+-#include <xercesc/dom/DOMInputSource.hpp>
++//#include <xercesc/dom/DOMEntityResolver.hpp>
++//#include <xercesc/dom/DOMInputSource.hpp>
+ #include <xercesc/framework/LocalFileInputSource.hpp>
+ #include <xercesc/framework/Wrapper4InputSource.hpp>
+ 
++#include <xercesc/dom/DOMImplementationRegistry.hpp>
++#include <xercesc/sax/EntityResolver.hpp>
++#include <xercesc/sax/InputSource.hpp>
++#include <xercesc/sax2/SAX2XMLReader.hpp>
++
+ 
+ XERCES_CPP_NAMESPACE_USE
+ 
+--- src/XmlProcessor.h.old	2010-10-22 14:43:06.000000000 +0200
++++ src/XmlProcessor.h	2010-10-22 14:44:16.000000000 +0200
+@@ -75,12 +75,14 @@
+ 	This class extends the default DOMEntityResolver and implments the resolve entity method 
+ 	to support 
+ */
+-class DataDirResolver : public DOMEntityResolver {
++class DataDirResolver : public EntityResolver {
+ public:
+ 	/**
+      *     
+ 	*/
+-	DOMInputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
++//	DOMInputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
++	InputSource *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId);
++	DOMLSInput *resolveEntity (const XMLCh *const publicId, const XMLCh *const systemId, const XMLCh *const baseURI);
+ };
+ 
+ /**
+@@ -120,7 +122,7 @@
+ 
+ 	static XmlProcessor* instance;
+ 	
+-	DOMBuilder *parser;
++	DOMLSParser *parser;
+ };
+ 
+ /** 
+--- src/probes/independent/XmlFileContentProbe.cpp.old	2010-10-22 14:49:22.000000000 +0200
++++ src/probes/independent/XmlFileContentProbe.cpp	2010-10-22 14:51:39.000000000 +0200
+@@ -419,12 +419,24 @@
+     return new DummyEntityResolver::DoNothingBinInputStream();
+ }
+ 
++#if XERCES_VERSION_MAJOR < 3
+ unsigned int DummyEntityResolver::DoNothingBinInputStream::curPos() const
++#else
++const XMLCh* DummyEntityResolver::DoNothingBinInputStream::getContentType() const
++{
++    return NULL;
++}
++XMLFilePos DummyEntityResolver::DoNothingBinInputStream::curPos() const
++#endif
+ {
+     return 0;
+ }
+ 
++#if XERCES_VERSION_MAJOR < 3
+ unsigned int DummyEntityResolver::DoNothingBinInputStream::readBytes(XMLByte *const /*toFill*/, const unsigned int /*maxToRead*/)
++#else
++XMLSize_t DummyEntityResolver::DoNothingBinInputStream::readBytes(XMLByte *const toFill, XMLSize_t maxToRead)
++#endif
+ {
+     return 0;
+ }
+--- src/probes/independent/XmlFileContentProbe.h.old	2010-10-22 14:55:47.000000000 +0200
++++ src/probes/independent/XmlFileContentProbe.h	2010-10-22 14:57:00.000000000 +0200
+@@ -134,8 +134,14 @@
+     class DoNothingBinInputStream : public BinInputStream
+     {
+     public:
++#if XERCES_VERSION_MAJOR < 3
+         virtual unsigned int curPos() const;
+         virtual unsigned int readBytes(XMLByte *const toFill, const unsigned int maxToRead);
++#else
++	virtual XMLFilePos curPos() const;
++	virtual const XMLCh* getContentType() const;
++	virtual XMLSize_t readBytes(XMLByte *const toFill, XMLSize_t maxToRead);
++#endif
+     };
+ };
+ 
+--- src/XmlCommon.cpp.old
++++ src/XmlCommon.cpp
+@@ -546,7 +546,11 @@ void XmlCommon::AddSchemaLocation(XERCES_CPP_NAMESPACE_QUALIFIER DOMDocument *do
+ string XmlCommon::GetNamespace(DOMElement *element) {
+ 
+ 	string xmlns = "";
++#if XERCES_VERSION_MAJOR < 3
+ 	xmlns = XmlCommon::ToString(element->getTypeInfo()->getNamespace());
++#else
++	xmlns = XmlCommon::ToString(element->getSchemaTypeInfo()->getTypeNamespace());
++#endif
+ 	if (xmlns.compare("") == 0) {
+ 		xmlns = "";
+ 	}

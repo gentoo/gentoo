@@ -1,0 +1,28 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -80,25 +80,6 @@
+ AC_CHECK_LIB([z], [zlibVersion],[], AC_MSG_ERROR([*** zlib not found!]))
+ LIBS="$LIBS -lz"
+ 
+-OPTIMIZER_FLAGS=""
+-
+-dnl -ffast-math removed January 12, 2013.  Don't re-add it, nor any of its sub-options(ESPECIALLY not -funsafe-math-optimizations),
+-dnl it messes up certain code(NES resampler, for example) under certain conditions and alignments of the great celestial squid.
+-dnl
+-dnl In fact, let's explicitly disable it here with -fno-fast-math.
+-dnl
+-dnl -fomit-frame-pointer is required for some x86 inline assembly to compile.
+-dnl
+-dnl November 28, 2014: Use -fwrapv unconditionally instead of -fno-strict-overflow, -fno-strict-overflow is buggy
+-dnl and does not work as documented/implied.
+-dnl
+-AX_CFLAGS_GCC_OPTION([-fno-fast-math], OPTIMIZER_FLAGS)
+-AX_CFLAGS_GCC_OPTION([-fno-unsafe-math-optimizations], OPTIMIZER_FLAGS)
+-AX_CFLAGS_GCC_OPTION([-fno-aggressive-loop-optimizations], OPTIMIZER_FLAGS)
+-AX_CFLAGS_GCC_OPTION([-fomit-frame-pointer], OPTIMIZER_FLAGS)
+-AX_CFLAGS_GCC_OPTION([-fwrapv], OPTIMIZER_FLAGS)
+-
+-
+ WARNING_FLAGS=""
+ AX_CFLAGS_GCC_OPTION([-Wall], WARNING_FLAGS)
+ AX_CFLAGS_GCC_OPTION([-Wshadow], WARNING_FLAGS)

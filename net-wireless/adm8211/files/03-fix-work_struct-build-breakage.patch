@@ -1,0 +1,69 @@
+From e8c4bd51047c6f428474f9f0788375a3433684e7 Mon Sep 17 00:00:00 2001
+From: John W. Linville <linville@tuxdriver.com>
+Date: Mon, 11 Dec 2006 18:32:06 -0500
+Subject: [PATCH] [PATCH] adm8211: fix work_struct build breakage
+
+Signed-off-by: John W. Linville <linville@tuxdriver.com>
+---
+ adm8211/ieee80211_sta.c |   12 ++++++------
+ adm8211/ieee80211_sta.h |    2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/adm8211/ieee80211_sta.c b/adm8211/ieee80211_sta.c
+index 032d067..940f742 100644
+--- a/adm8211/ieee80211_sta.c
++++ b/adm8211/ieee80211_sta.c
+@@ -30,7 +30,7 @@
+ #define IEEE80211_MONITORING_INTERVAL (30 * HZ)
+ #define IEEE80211_LINKCHECK_INTERVAL (3 * HZ)
+ 
+-static void ieee80211_timer(void *ptr);
++static void ieee80211_timer(struct work_struct *work);
+ 
+ ParseRes ieee802_11_parse_elems(struct ieee80211_info_element *start, size_t len,
+ 				struct ieee802_11_elems *elems)
+@@ -818,12 +818,12 @@ void ieee80211_start_scan(struct ieee80211_data *data)
+ 	ieee80211_set_associated(data, 0);
+ 	data->scan_channel = 0;
+ 
+-	schedule_work(&data->work);
++	schedule_work(&data->work.work);
+ }
+ 
+ void ieee80211_init(struct ieee80211_data *data)
+ {
+-	INIT_WORK(&data->work, ieee80211_timer, data);
++	INIT_DELAYED_WORK(&data->work, ieee80211_timer);
+ 
+ 	data->listen_interval = 10;
+ 	data->ieee->state = IEEE80211_UNINITIALIZED;
+@@ -1187,10 +1187,10 @@ void ieee80211_rx_mgmt(struct ieee80211_data *data, struct sk_buff *skb,
+ 		dev_kfree_skb(skb);
+ }
+ 
+-
+-static void ieee80211_timer(void *ptr)
++static void ieee80211_timer(struct work_struct *work)
+ {
+-	struct ieee80211_data *data = (struct ieee80211_data *) ptr;
++	struct ieee80211_data *data =
++		container_of(work, struct ieee80211_data, work.work);
+ 
+ 	switch (data->ieee->state) {
+ 	case IEEE80211_INITIALIZED:
+diff --git a/adm8211/ieee80211_sta.h b/adm8211/ieee80211_sta.h
+index b672936..75dc61b 100644
+--- a/adm8211/ieee80211_sta.h
++++ b/adm8211/ieee80211_sta.h
+@@ -47,7 +47,7 @@ struct ieee80211_data {
+ 	void (*link_monitor)(struct net_device *dev);
+ 	int (*set_channel)(struct net_device *dev, unsigned int channel);
+ 
+-	struct work_struct work;
++	struct delayed_work work;
+ 
+ #define AUTO_ASSOCIATE	(1<<0)
+ #define AUTO_RATE	(1<<1)
+-- 
+1.5.2.1
+

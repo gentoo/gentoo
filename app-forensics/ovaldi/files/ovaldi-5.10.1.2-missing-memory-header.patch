@@ -1,0 +1,20 @@
+--- src/CountFunction.cpp.old	2012-01-02 11:37:27.113604532 +0100
++++ src/CountFunction.cpp	2012-01-02 11:37:39.624998573 +0100
+@@ -29,6 +29,7 @@
+ //****************************************************************************************//
+ 
+ #include <cstddef>
++#include <memory>
+ #include "CountFunction.h"
+ #include "ComponentFactory.h"
+ 
+--- src/UniqueFunction.cpp.orig	2012-01-02 11:39:58.564269070 +0100
++++ src/UniqueFunction.cpp	2012-01-02 11:40:12.057615550 +0100
+@@ -29,6 +29,7 @@
+ //****************************************************************************************//
+ 
+ #include <set>
++#include <memory>
+ #include "Common.h"
+ #include "ComponentFactory.h"
+ #include "UniqueFunction.h"

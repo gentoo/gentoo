@@ -1,0 +1,20 @@
+diff -NrU5 libwmf-0.2.8.4.orig/src/ipa/ipa.c libwmf-0.2.8.4/src/ipa/ipa.c
+--- libwmf-0.2.8.4.orig/src/ipa/ipa.c	2009-05-10 23:41:17.000000000 +0200
++++ libwmf-0.2.8.4/src/ipa/ipa.c	2009-05-11 00:07:43.000000000 +0200
+@@ -33,10 +33,16 @@
+ 
+ /* Define WMF_API if this is module so that ipa headers are included via "wmfdefs.h" first
+  */
+ #define WMF_IPA 1
+ 
++#ifndef HAVE_GD
++#ifdef HAVE_LIBPNG
++#include <png.h>
++#endif /* HAVE_LIBPNG */
++#endif /* HAVE_GD */
++
+ #include "wmfdefs.h"
+ 
+ #include "ipa/ipa.h"
+ #include "ipa/ipa/bmp.h"   /* Provides default bitmap functionality */
+ 

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/511584
+
+From 2c0c2d90cbe450d208b320359b55089a441ff52a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 30 Oct 2014 17:17:41 -0400
+Subject: [PATCH] udev rules: source Gentoo config files
+
+---
+ gpsd.hotplug | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gpsd.hotplug b/gpsd.hotplug
+index dd0deaf..5f4ce13 100644
+--- a/gpsd.hotplug
++++ b/gpsd.hotplug
+@@ -24,6 +24,8 @@ export PATH
+ 
+ if [ -r /etc/default/gpsd ]; then
+   . /etc/default/gpsd
++elif [ -r /etc/conf.d/gpsd ]; then
++  . /etc/conf.d/gpsd
+ elif [ -r /etc/sysconfig/gpsd ]; then
+   . /etc/sysconfig/gpsd
+   GPSD_OPTIONS=$OPTIONS
+-- 
+2.1.2
+

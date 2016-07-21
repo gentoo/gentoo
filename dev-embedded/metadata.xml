@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-embedded category contains libraries and utilities relevant to
+		embedded programming.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie dev-embedded enhält Bibliotheken und Werkzeuge für die
+		Embedded-Programmierung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría dev-embedded contiene librerias y utilidades referentes a
+		embedded-programming.
+	</longdescription>
+	<longdescription lang="ja">
+		dev-embeddedカテゴリーには組み込みプログラミングに関連したライブラリーと
+		ユーティリティが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De dev-embedded categorie bevat bibliotheken en hulpmiddelen voor het
+		programmeren in een "embedded" omgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm dev-embedded chứa các thư viện và tiện ích liên quan
+		đến lập trình nhúng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-embedded contiene librerie ed utilità per la programmazione di sistemi embedded.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-embedded contém bibliotecas e utilitários
+		referentes a programação de dispositivos embedded.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria dev-embedded zawiera biblioteki i narzędzia związane z
+		programowaniem dla urządzeń osadzonych.
+	</longdescription>
+</catmetadata>
+

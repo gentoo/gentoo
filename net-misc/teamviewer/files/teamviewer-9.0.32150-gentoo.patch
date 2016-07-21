@@ -1,0 +1,138 @@
+diff --git a/opt/teamviewer9/tv_bin/script/tvw_extra b/opt/teamviewer9/tv_bin/script/tvw_extra
+index 71164aa..848cd25 100644
+--- a/opt/teamviewer9/tv_bin/script/tvw_extra
++++ b/opt/teamviewer9/tv_bin/script/tvw_extra
+@@ -16,13 +16,6 @@
+   isInstalledTV || return
+   ABecho "teamviewer --passwd [PASSWD]"	"set a password (useful when installing remote (ssh)"
+   echo
+-  ABecho "teamviewer --daemon status"	"show current status of the TeamViewer daemon"
+-  ABecho "teamviewer --daemon start"	"start		TeamViewer daemon"
+-  ABecho "teamviewer --daemon stop"		"stop		TeamViewer daemon"
+-  ABecho "teamviewer --daemon restart"	"stop/start	TeamViewer daemon"
+-  ABecho "teamviewer --daemon disable"	"disable	TeamViewer daemon - don't start daemon on system startup"
+-  ABecho "teamviewer --daemon enable"	"enable		TeamViewer daemon - start daemon on system startup (default)"
+-  echo
+ }
+ 
+ function PrintVersion()
+@@ -37,19 +30,6 @@
+   PrintDaemonStatus
+   echo
+   PrintTeamViewerID
+-}
+-
+-function PrintDaemonStatus()
+-{
+-  local cmd="$(daemonCtl 'status')"
+-  local txt="n/a"
+-
+-  if [ isInstalledTV ] ; then
+-    txt="$(eval "$cmd")"
+-    [ $? = 0 ] || txt='n/a (error)'
+-  fi
+-  
+-  ABecho "teamviewerd status" "$txt"
+ }
+ 
+ function PrintTeamViewerID()
+@@ -64,20 +44,21 @@
+   ABecho "TeamViewer ID:" "$tvid"
+ 
+   if [ -z "$tvid" ] && isInstalledTV; then
+-    echo "Try restarting the TeamViewer daemon (e.g. teamviewer --daemon restart)"
++    echo "Try restarting the TeamViewer daemon."
+   fi
+ }
+ 
+ function SetPasswd()
+ {
++  echo "Stop your teamviewer daemon first, then press enter."
++  read
++
+   local pwd="$1"
+   [ -n "$pwd" ] || die 'no password specified'
+ 
+   installedTVorDie
+   isSuperUser || die 'You need root permissions for this operation'
+ 
+-  Run_Daemon 'stop' > /dev/null
+-  
+   "$TV_BIN_DIR/teamviewerd" --passwd "$pwd"
+   case $? in
+     0  ) echo 'ok'	;;
+@@ -88,12 +69,14 @@
+     *  ) echo 'unknown response'	;;
+    esac
+   
+-  Run_Daemon 'start' > /dev/null || die 'failed to restart the daemon'
+-  echo
++  echo "You may start your teamviewer daemon again."
+ }
+ 
+ function ExportLicense()
+ {
++  echo "Stop your teamviewer daemon first, then press enter."
++  read
++
+   local license="$1"
+   local path='/tmp/tv_global.conf'
+ 
+@@ -101,8 +84,6 @@
+ 
+   isSuperUser || die 'You need root permissions for this operation'
+ 
+-  Run_Daemon 'stop' > /dev/null
+-  
+   "$TV_BIN_DIR/teamviewerd" --export-license "$license" "$path"
+   case $? in
+     0  ) echo "ok - license exported to '$path'"		;;
+@@ -110,8 +91,7 @@
+     *  ) echo 'unknown response'	;;
+    esac
+   
+-  Run_Daemon 'start' > /dev/null || die 'failed to restart the daemon'
+-  echo
++  echo "You may start your teamviewer daemon again."
+ }
+ 
+ function StripPersonalInformation()
+diff --git a/opt/teamviewer9/tv_bin/script/tvw_main b/opt/teamviewer9/tv_bin/script/tvw_main
+index 8984db0..c6dff8d 100644
+--- a/opt/teamviewer9/tv_bin/script/tvw_main
++++ b/opt/teamviewer9/tv_bin/script/tvw_main
+@@ -4,7 +4,6 @@
+ source "$TV_SCRIPT_DIR/tvw_config"
+ source "$TV_SCRIPT_DIR/tvw_exec"
+ source "$TV_SCRIPT_DIR/tvw_extra"
+-source "$TV_SCRIPT_DIR/tvw_daemon"
+ source "$TV_SCRIPT_DIR/tvw_profile"
+ 
+ function Main()
+@@ -18,7 +17,6 @@
+     --help )			PrintHelp				;;
+     --version )			PrintVersion			;;
+     --info )			PrintInfo				;;
+-    --daemon )			Run_Daemon $opt			;;
+     --winecfg )	shift;	Run_WineCfg "$@"		;;
+     --regedit )	shift;	Run_RegEdit "$@"		;;
+     --kill )			Run_KillTeamViewer		;;
+@@ -170,18 +168,3 @@
+   Init
+   wine regedit "$@"
+ }
+-
+-function Run_Daemon()
+-{
+-  local opt="$1"
+-  
+-  installedTVorDie
+-
+-  case "$opt" in
+-    ( disable )					removeDaemon	|| rootSuggest	;;
+-    ( enable  )					installDaemon	|| rootSuggest	;;
+-    ( start | stop | restart )	cmdDaemon $opt	|| rootSuggest	;;
+-    ( status )					cmdDaemon $opt					;;
+-    ( * )						echo "unknown option '$opt'"	;;
+-  esac
+-}

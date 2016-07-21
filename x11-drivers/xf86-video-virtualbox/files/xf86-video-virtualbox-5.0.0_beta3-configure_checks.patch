@@ -1,0 +1,52 @@
+--- VirtualBox-5.0.0_BETA3/configure
++++ VirtualBox-5.0.0_BETA3/configure
+@@ -1258,10 +1258,7 @@
+   XCloseDisplay(dpy);
+ }
+ EOF
+-  [ -n "$INCX11" ] && I_INCX11=`prefix_I "$INCX11"`
+-  if test_compile "$LIBX11 $I_INCX11" Xlibs Xlibs; then
+-    log_success "found"
+-  fi
++  test_compile "$LIBX11 $I_INCX11" Xlibs Xlibs
+ }
+ 
+ 
+@@ -1415,21 +1412,6 @@
+ #include <GL/glu.h>
+ extern "C" int main(void)
+ {
+-  Display *dpy;
+-  int major, minor;
+-
+-  dpy = XOpenDisplay(NULL);
+-  if (dpy)
+-  {
+-    Bool glx_version = glXQueryVersion(dpy, &major, &minor);
+-    XCloseDisplay(dpy);
+-    if (glx_version)
+-    {
+-      printf("found version %u.%u, OK.\n", major, minor);
+-      return 0;
+-    }
+-  }
+-  printf("found (inactive), OK.\n");
+   return 0;
+ }
+ EOF
+@@ -2706,7 +2688,6 @@
+   # don't check for yasm for the time beeing as 0.40 and 0.50 both have known bugs
+   # [ "$OS" != "darwin" ] && check_yasm
+   [ "$OS" != "darwin"  ] && check_xsltproc
+-  [ "$OS" != "darwin"  ] && check_mkisofs
+ fi
+ 
+ # the libraries
+@@ -2774,7 +2755,6 @@
+   check_compiler_h
+   [ $ONLY_ADDITIONS -eq 0 -a "$BUILD_MACHINE" = "amd64" -a $WITH_VMMRAW -eq 1 ] && check_32bit
+   # tools/common/makeself*
+-  [ $OSE -ge 1 ] && check_makeself
+ fi
+ 
+ [ -n "$SETUP_WINE" ] && setup_wine

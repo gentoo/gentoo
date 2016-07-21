@@ -1,0 +1,62 @@
+--- a/hwsetup.c
++++ b/hwsetup.c
+@@ -51,13 +51,40 @@
+ /* Do not, under any circumstances, load these modules automatically, */
+ /* even if in pcitable. (libkudzu may ignore this, and the KNOPPIX    */
+ /* autoconfig scripts may probe them, too)  */
+-char *blacklist[] =
++char *blacklist[200][200] =
+ { "apm","agpgart","yenta_socket","i82092","i82365","tcic",
+   "pcmcia_core","ds","ohci1394","hisax", "hisax_fcpcipnp",
+   "hisax_isac","hisax_st5481",
+   /* Winmodems, unusable, can block sound slot */
+   "snd-atiixp-modem", "snd-intel8x0m","snd-via82xx-modem"
+ };
++
++int blacklistsize = 13;
++void gen_blacklist(){
++	int n = 13;
++	int size = 0;
++	char *comment;
++	char module[1024];
++	FILE *stream;
++
++	if((stream = fopen ("/usr/share/hwdata/blacklist", "r")) != (FILE *)0) {
++		while((fgets(module, 1023, stream)) != (char *)0 ) {
++
++			comment = strchr(module, '#');
++			if (comment != 0) *comment = '\0';
++			comment = strchr(module, '\n');
++			if (comment != 0) *comment = '\0';
++			size = strlen(module);
++			if (size < 2) continue;
++			strcat (module , " \0");
++			strcpy(blacklist[n] , module);
++			n++;
++			if ( n == 200 ) break;
++			//printf(module);
++		}
++		blacklistsize = n;
++	}
++}
+ #endif
+ 
+ /* If a conflicting module in a row is already loaded, the new module will not be probed anymore */
+@@ -547,7 +574,7 @@
+  char *cc;
+  if((m==NULL)||(!strcmp("unknown",m))||(!strcmp("ignore",m))|| check_loaded(m)) return 0;
+ #ifdef BLACKLIST
+- for(i=0;i<(sizeof(blacklist)/sizeof(char*));i++)
++ for(i=0;i<blacklistsize;i++)
+   {
+    if(!modcmp(blacklist[i],m))
+     {
+@@ -781,5 +808,8 @@
+  /* Allow SIGTERM, SIGINT: rmmod depends on this. */
+  signal(SIGTERM,SIG_DFL); signal(SIGINT,SIG_DFL);
+  signal(SIGALRM,alarm_handler); alarm(MAX_TIME);
++#ifdef BLACKLIST
++ gen_blacklist();
++#endif
+  return hw_setup(dc,verbose,probeonly,skip);
+ }

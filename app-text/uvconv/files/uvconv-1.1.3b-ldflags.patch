@@ -1,0 +1,13 @@
+diff --git a/uvconvert/Makefile b/uvconvert/Makefile
+index 8819779..c610965 100644
+--- a/uvconvert/Makefile
++++ b/uvconvert/Makefile
+@@ -6,7 +6,7 @@ OPTFLAGS="-O3"
+ 
+ all: uvconv
+ uvconv: ${OBJS} libvnconv
+-	${CXX} ${CXXFLAGS} ${OPTFLAGS} -o $@ ${OBJS} ${LIBS}
++	${CXX} ${CXXFLAGS} ${OPTFLAGS} -o $@ ${OBJS} ${LIBS} ${LDFLAGS}
+ 
+ ${OBJS}: %.o: %.cpp
+ 	${CXX} ${CXXFLAGS} ${OPTFLAGS} -c $< -o $@ -I${INCLUDE_DIR}

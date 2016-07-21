@@ -1,0 +1,12 @@
+--- data/cardsets/Makefile.orig
++++ data/cardsets/Makefile
+@@ -12,8 +12,7 @@
+ 	@# In order to add all cardsets to the release
+ 	@# uncomment the following line, add a trailing backslash
+ 	@# and remove the line after
+-	@#for d in Altenburg xskat kdecarddecks pysol; do
+-	for d in Altenburg; do \
++	for d in Altenburg xskat kdecarddecks pysol; do \
+ 	  cp -r $$d $(DEPTH)/release/FreeDoko_$(VERSION)/cardsets/; \
+ 	done
+ endif

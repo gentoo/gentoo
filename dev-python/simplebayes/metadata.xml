@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription lang="en">
+A memory-based, optional-persistence naïve bayesian text classifier.
+
+This work is heavily inspired by the python "redisbayes" module found here:
+[https://github.com/jart/redisbayes] and [https://pypi.python.org/pypi/redisbayes]
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hickeroar/simplebayes</remote-id>
+	</upstream>
+</pkgmetadata>

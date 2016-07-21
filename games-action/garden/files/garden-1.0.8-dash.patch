@@ -1,0 +1,33 @@
+--- configure.ac.orig	2015-05-04 14:48:03.467935640 -0400
++++ configure.ac	2015-05-04 14:48:24.729199607 -0400
+@@ -80,7 +80,7 @@
+ 		       [have_allegro="no"])
+ 	AC_MSG_RESULT([$have_allegro])
+ 	LIBS=$LIBS_SAVE
+-	AS_IF([test "x$have_allegro" == "xyes"],
++	AS_IF([test "x$have_allegro" = "xyes"],
+ 	      [return 0],
+ 	      [return 1])
+ }
+@@ -89,7 +89,7 @@
+ AM_PATH_ALLEGRO([4.2.0]) 
+ 
+ try_link_allegro "$allegro_LIBS"
+-AS_IF([test "x$?" == "x0"],
++AS_IF([test "x$?" = "x0"],
+       [[LIBS="$LIBS $allegro_LIBS"
+        ALLEGRO_LIB=`echo $allegro_LIBS | sed -e 's/-l\([^[:blank:]]*\).*/\1/'`
+        have_allegro="yes"]])
+@@ -103,10 +103,10 @@
+ for lib in $ALLEGRO_LIBS
+ do
+ 	ldflag="-l$lib"
+-	AS_IF([test "x$have_allegro" == "xyes"],
++	AS_IF([test "x$have_allegro" = "xyes"],
+ 	      [break])
+ 	try_link_allegro $ldflag
+-	AS_IF([test "x$?" == "x0"],
++	AS_IF([test "x$?" = "x0"],
+ 	      [LIBS="$LIBS $ldflag"
+ 	       ALLEGRO_LIB="$lib"
+ 	       have_allegro="yes"])

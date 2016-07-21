@@ -1,0 +1,24 @@
+From 31136f8df53d4d528acb3b301271d4b19274dfc6 Mon Sep 17 00:00:00 2001
+From: ThomasVolkert <thomas@homer-conferencing.com>
+Date: Sat, 7 Jun 2014 13:31:51 +0200
+Subject: [PATCH] - fixed: ffmpeg compatibility
+
+---
+ HomerMultimedia/src/RTP.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/HomerMultimedia/src/RTP.cpp b/HomerMultimedia/src/RTP.cpp
+index ad4d04b..97b631b 100644
+--- a/HomerMultimedia/src/RTP.cpp
++++ b/HomerMultimedia/src/RTP.cpp
+@@ -611,7 +611,9 @@ bool RTP::OpenRtpEncoder(string pTargetHost, unsigned int pTargetPort, AVStream
+     mRtpEncoderStream->priv_data = NULL;
+     // create monotone timestamps
+     mRtpEncoderStream->cur_dts = 0;
+-    mRtpEncoderStream->reference_dts = 0;
++	#ifndef FF_API_REFERENCE_DTS
++    	mRtpEncoderStream->reference_dts = 0;
++	#endif
+ 
+     // set target coordinates for rtp stream
+     snprintf(mRtpFormatContext->filename, sizeof(mRtpFormatContext->filename), "rtp://%s:%u", pTargetHost.c_str(), pTargetPort);

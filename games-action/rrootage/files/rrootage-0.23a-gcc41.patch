@@ -1,0 +1,28 @@
+--- src/foecommand.h.old	2006-04-21 23:26:03.000000000 +0200
++++ src/foecommand.h	2006-04-21 23:26:26.000000000 +0200
+@@ -39,10 +39,10 @@
+   
+   virtual void doChangeDirection(double d);
+   virtual void doChangeSpeed(double s);
+-  virtual void FoeCommand::doAccelX(double ax);
+-  virtual void FoeCommand::doAccelY(double ay);
+-  virtual double FoeCommand::getBulletSpeedX();
+-  virtual double FoeCommand::getBulletSpeedY();
++  virtual void doAccelX(double ax);
++  virtual void doAccelY(double ay);
++  virtual double getBulletSpeedX();
++  virtual double getBulletSpeedY();
+   
+  private:
+   struct foe *foe;
+--- src/screen.c.old	2006-04-21 23:50:01.000000000 +0200
++++ src/screen.c	2006-04-21 23:50:30.000000000 +0200
+@@ -73,7 +73,7 @@
+ void loadGLTexture(char *fileName, GLuint *texture) {
+   SDL_Surface *surface;
+ 
+-  char name[32];
++  char name[128];
+   strcpy(name, SHARE_LOC);
+   strcat(name, "images/");
+   strcat(name, fileName);

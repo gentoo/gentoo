@@ -1,0 +1,15 @@
+--- tests/CMakeLists.txt.orig	2014-02-10 14:25:18.041841087 -0800
++++ tests/CMakeLists.txt	2014-02-10 14:25:40.224975614 -0800
+@@ -105,12 +105,6 @@
+         )
+ endif()
+ 
+-# If installation is requested, install the program
+-if (DYND_INSTALL_LIB)
+-    install(TARGETS test_libdynd
+-        RUNTIME DESTINATION bin)
+-endif()
+-
+ # Compile-time tests: test code that is supposed to produce compile errors
+ # I couldn't find a properly specified way to do this, so hacked together
+ # this function.

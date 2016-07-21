@@ -1,0 +1,21 @@
+diff --git a/oct2py/ipython/tests/test_octavemagic.py b/oct2py/ipython/tests/test_octavemagic.py
+index b75d992..43c0a8b 100644
+--- a/oct2py/ipython/tests/test_octavemagic.py
++++ b/oct2py/ipython/tests/test_octavemagic.py
+@@ -1,5 +1,6 @@
+ """Tests for Octave magics extension."""
+ 
++import codecs
+ import unittest
+ import sys
+ from IPython.testing.globalipapp import get_ipython
+@@ -22,7 +23,8 @@ class OctaveMagicTest(unittest.TestCase):
+         IPython team's logic.
+         '''
+         if not sys.stdin.encoding:
+-            sys.stdin.encoding = 'utf-8'  # needed for py.test
++            # needed for py.test
++            sys.stdin = codecs.getreader('utf-8')(sys.stdin)
+         cls.ip = get_ipython()
+         # This is just to get a minimally modified version of the changes
+         # working

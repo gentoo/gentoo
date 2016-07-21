@@ -1,0 +1,28 @@
+From: François Tigeot <ftigeot@wolfpond.org>
+Date: Sat, 21 Sep 2013 10:34:51 +0000 (+0200)
+Subject: osdep_bsd.c: Fix a typo causing memory to be overwritten
+X-Git-Url: http://repo.or.cz/w/wmaker-crm.git/commitdiff_plain/38e088314a2a4b7f8031f50eb546c22e5024bdf4
+
+osdep_bsd.c: Fix a typo causing memory to be overwritten
+
+* When compiled on DragonFly+gcc 4.7.3, this out of bounds array element
+  initialization causes an important variable to be overwritten and a
+  subsequent WindowMaker crash
+
+* It was sheer luck other compilers/environments didn't exhibit any obvious
+  issue so far
+---
+
+diff --git a/src/osdep_bsd.c b/src/osdep_bsd.c
+index 3393240..ad504ad 100644
+--- a/src/osdep_bsd.c
++++ b/src/osdep_bsd.c
+@@ -86,7 +86,7 @@ Bool GetCommandForPid(int pid, char ***argv, int *argc)
+ 		mib[0] = CTL_KERN;
+ 		mib[1] = KERN_ARGMAX;
+ 		mib[2] = 0;
+-		mib[4] = 0;
++		mib[3] = 0;
+ 
+ 		count = sizeof(argmax);
+ 		if (sysctl(mib, 2, &argmax, &count, NULL, 0) == -1)

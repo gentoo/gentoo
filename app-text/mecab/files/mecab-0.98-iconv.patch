@@ -1,0 +1,10 @@
+--- mecab-0.98/src/Makefile.am.old	2010-05-02 12:39:07.000000000 +0200
++++ mecab-0.98/src/Makefile.am	2010-05-02 12:39:28.000000000 +0200
+@@ -17,6 +17,7 @@
+ 			feature_index.cpp  feature_index.h  lbfgs.cpp \
+ 			lbfgs.h  learner_tagger.cpp  learner_tagger.h  learner.cpp  \
+ 			learner_node.h libmecab.cpp
++libmecab_la_LIBADD = $(LTLIBICONV)
+ 
+ include_HEADERS = mecab.h
+ bin_PROGRAMS    = mecab

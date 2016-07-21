@@ -1,0 +1,65 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Fix format security errors
+--- a/src/catout.c
++++ b/src/catout.c
+@@ -999,7 +999,7 @@
+       break;
+ 
+     case ASCII_SKYCAT:
+-      fprintf(ascfile, skycattail);
++	fprintf(ascfile, "%s", skycattail);
+       if (!prefs.pipe_flag)
+         fclose(ascfile);
+       break;
+--- a/src/xml.c
++++ b/src/xml.c
+@@ -696,7 +696,7 @@
+ 		name, ucd);
+       break;
+     case P_STRING:
+-      sprintf(value, (char *)key[i].ptr);
++	sprintf(value, "%s", (char *)key[i].ptr);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, *value? value: " ");
+@@ -705,13 +705,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, ((char **)key[i].ptr)[0]);
++        sprintf(value, "%s", ((char **)key[i].ptr)[0]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, *value? value: " ");
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, ((char **)key[i].ptr)[j]);
++          sprintf(value, "%s", ((char **)key[i].ptr)[j]);
+           fprintf(file, ",%s", *value? value: " ");
+           }
+         fprintf(file, "\"/>\n");
+@@ -722,7 +722,7 @@
+ 		name, ucd);
+       break;
+     case P_KEY:
+-      sprintf(value, key[i].keylist[*((int *)key[i].ptr)]);
++      sprintf(value, "%s", key[i].keylist[*((int *)key[i].ptr)]);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, value);
+@@ -731,13 +731,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, key[i].keylist[((int *)key[i].ptr)[0]]);
++        sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[0]]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, value);
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, key[i].keylist[((int *)key[i].ptr)[j]]);
++          sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[j]]);
+           fprintf(file, ",%s", value);
+           }
+         fprintf(file, "\"/>\n");

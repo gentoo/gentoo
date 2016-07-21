@@ -1,0 +1,35 @@
+diff -ru confix-9999.orig/libconfix/plugins/automake/bootstrap.py confix-9999/libconfix/plugins/automake/bootstrap.py
+--- confix-9999.orig/libconfix/plugins/automake/bootstrap.py	2009-10-30 13:25:27.962172020 +0100
++++ confix-9999/libconfix/plugins/automake/bootstrap.py	2009-10-30 13:27:14.780605001 +0100
+@@ -16,7 +16,7 @@
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+ # USA
+ 
+-import autoconf_archive
++#import autoconf_archive
+ import kde_hack
+ 
+ from libconfix.core.utils.error import Error
+@@ -29,7 +29,7 @@
+ 
+ def bootstrap(packageroot, use_kde_hack, argv0, path=None):
+     aclocal_incdirs = []
+-    aclocal_incdirs.append(autoconf_archive.include_path(argv0))
++    #aclocal_incdirs.append(autoconf_archive.include_path(argv0))
+ 
+     # if package's configure.ac looks like using libtool, then we
+     # assume that the package must be libtoolize'd.
+diff -ru confix-9999.orig/setup.py confix-9999/setup.py
+--- confix-9999.orig/setup.py	2009-10-30 13:25:27.965360137 +0100
++++ confix-9999/setup.py	2009-10-30 13:26:47.822129311 +0100
+@@ -41,8 +41,8 @@
+     return result
+ 
+ datafiles = []
+-datafiles.extend(recdir('share/confix/autoconf-archive/m4src', '.m4', []))
+-datafiles.extend(recdir('share/confix/autoconf-archive/htmldoc', '.html', []))
++#datafiles.extend(recdir('share/confix/autoconf-archive/m4src', '.m4', []))
++#datafiles.extend(recdir('share/confix/autoconf-archive/htmldoc', '.html', []))
+ 
+ # scripts to put in the auxdir.
+ datafiles.extend([('share/confix/kde-hack',

@@ -1,0 +1,10 @@
+--- PLUGINS/src/skincurses/skincurses.c	2008-03-14 13:57:14.000000000 +0100
++++ PLUGINS/src/skincurses/skincurses.c	2011-05-04 13:04:53.124920860 +0200
+@@ -19,6 +19,7 @@
+ 
+ class cCursesFont : public cFont {
+ public:
++  cCursesFont() {};
+   virtual int Width(uint c) const { return 1; }
+   virtual int Width(const char *s) const { return s ? Utf8StrLen(s) : 0; }
+   virtual int Height(void) const { return 1; }

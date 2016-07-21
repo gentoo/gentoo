@@ -1,0 +1,57 @@
+Index: gpac-0.5.2/applications/dashcast/video_encoder.c
+===================================================================
+--- gpac-0.5.2.orig/applications/dashcast/video_encoder.c
++++ gpac-0.5.2/applications/dashcast/video_encoder.c
+@@ -86,7 +86,7 @@ int dc_video_encoder_open(VideoOutputFil
+ 		video_output_file->codec_ctx->time_base.den = video_data_conf->time_base.den;
+ 		video_output_file->codec_ctx->time_base.num = video_data_conf->time_base.num * video_data_conf->time_base.den / video_data_conf->framerate;
+ 	}
+-	video_output_file->codec_ctx->pix_fmt = PIX_FMT_YUV420P;
++	video_output_file->codec_ctx->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	video_output_file->codec_ctx->gop_size = video_data_conf->framerate;
+ 
+ //	video_output_file->codec_ctx->codec_id = video_codec->id;
+@@ -96,7 +96,7 @@ int dc_video_encoder_open(VideoOutputFil
+ //	video_output_file->codec_ctx->height = video_data_conf->height;
+ //	video_output_file->codec_ctx->time_base = (AVRational) {1 ,
+ //				video_output_file->video_data_conf->framerate};
+-//	video_output_file->codec_ctx->codec->pix_fmt = PIX_FMT_YUV420P;
++//	video_output_file->codec_ctx->codec->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	video_output_file->codec_ctx->gop_size = video_data_conf->framerate;
+ //
+ //	av_opt_set(video_output_file->codec_ctx->priv_data, "preset", "ultrafast", 0);
+Index: gpac-0.5.2/applications/dashcast/video_muxer.c
+===================================================================
+--- gpac-0.5.2.orig/applications/dashcast/video_muxer.c
++++ gpac-0.5.2/applications/dashcast/video_muxer.c
+@@ -643,7 +643,7 @@ int dc_ffmpeg_video_muxer_open(VideoOutp
+ 
+ 	video_stream->codec->time_base = video_codec_ctx->time_base;
+ 
+-	video_stream->codec->pix_fmt = PIX_FMT_YUV420P;
++	video_stream->codec->pix_fmt = AV_PIX_FMT_YUV420P;
+ 	video_stream->codec->gop_size = video_codec_ctx->time_base.den; //video_output_file->video_data_conf->framerate;
+ 
+ 	av_opt_set(video_stream->codec->priv_data, "preset", "ultrafast", 0);
+Index: gpac-0.5.2/applications/dashcast/video_scaler.c
+===================================================================
+--- gpac-0.5.2.orig/applications/dashcast/video_scaler.c
++++ gpac-0.5.2/applications/dashcast/video_scaler.c
+@@ -125,7 +125,7 @@ int dc_video_scaler_data_init(VideoInput
+ 	dc_consumer_init(&video_scaled_data->consumer, video_cb_size, name);
+ 
+ 	video_scaled_data->num_producers = max_source;
+-	video_scaled_data->out_pix_fmt = PIX_FMT_YUV420P;
++	video_scaled_data->out_pix_fmt = AV_PIX_FMT_YUV420P;
+ 	GF_SAFE_ALLOC_N(video_scaled_data->vsprop, max_source, VideoScaledProp);
+ 	memset(video_scaled_data->vsprop, 0, max_source * sizeof(VideoScaledProp));
+ 
+@@ -198,7 +198,7 @@ int dc_video_scaler_scale(VideoInputData
+ 		video_scaled_data_node->cropped_frame->width  = video_input_data->vprop[index].width  - video_input_data->vprop[index].crop_x;
+ 		video_scaled_data_node->cropped_frame->height = video_input_data->vprop[index].height - video_input_data->vprop[index].crop_y;
+ #endif
+-		if (av_picture_crop((AVPicture*)video_scaled_data_node->cropped_frame, (AVPicture*)video_data_node->vframe, PIX_FMT_YUV420P, video_input_data->vprop[index].crop_y, video_input_data->vprop[index].crop_x) < 0) {
++		if (av_picture_crop((AVPicture*)video_scaled_data_node->cropped_frame, (AVPicture*)video_data_node->vframe, AV_PIX_FMT_YUV420P, video_input_data->vprop[index].crop_y, video_input_data->vprop[index].crop_x) < 0) {
+ 			GF_LOG(GF_LOG_ERROR, GF_LOG_DASH, ("Video scaler: error while cropping picture.\n"));
+ 			return -1;
+ 		}

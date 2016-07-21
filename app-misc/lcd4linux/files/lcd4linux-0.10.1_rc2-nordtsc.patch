@@ -1,0 +1,187 @@
+kMessage-ID: <47011930.60100@reinelt.co.at>
+Date: Mon, 01 Oct 2007 17:58:40 +0200
+From: Michael Reinelt <michael@reinelt.co.at>
+Subject: [Lcd4linux-devel] asm/msr.h inclusion and RDTSC stuff removed
+
+Hi there,
+
+I just committed a changeset where I removed the whole RDTSC delay loop 
+stuff, and therefore lcd4linux does no longer need asm/msr.h
+
+Instead, a gettimeofday() delay loop will be used when necessary.
+
+The rdtsc stuff worked fine, but had two major disadvantages: It did not 
+work with variable CPU frequencies, and latest kernels do no longer 
+offer the rdtsc() macro.
+
+The changeset has been committed to trunk, and will be backported to the 
+0.10.1 branch as soon as I get some positive feedback 8or at least I 
+don't get any negative feedback)
+
+
+bye, Michael
+
+-- 
+Michael Reinelt <michael@reinelt.co.at>
+http://home.pages.at/reinelt
+GPG-Key 0xDF13BA50
+ICQ #288386781
+
+Index: configure.in
+===================================================================
+--- lcd4linux-0.10.1-RC2/configure.in.orig
++++ lcd4linux-0.10.1-RC2/configure.in
+@@ -99,7 +99,6 @@ AC_HEADER_STDC
+ AC_CHECK_HEADERS([arpa/inet.h fcntl.h netdb.h netinet/in.h stdlib.h string.h sys/ioctl.h sys/socket.h sys/time.h sys/vfs.h syslog.h termios.h unistd.h])
+ AC_CHECK_HEADERS(sys/io.h asm/io.h)
+ AC_CHECK_HEADERS(linux/parport.h linux/ppdev.h)
+-AC_CHECK_HEADERS(asm/msr.h)
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+Index: udelay.c
+===================================================================
+--- lcd4linux-0.10.1-RC2/udelay.c.orig
++++ lcd4linux-0.10.1-RC2/udelay.c
+@@ -55,11 +55,6 @@
+ #include <string.h>
+ #include <sys/time.h>
+ 
+-#ifdef HAVE_ASM_MSR_H
+-#define u32 unsigned int
+-#include <asm/msr.h>
+-#endif
+-
+ 
+ #include "debug.h"
+ #include "cfg.h"
+@@ -67,79 +62,10 @@
+ #include "udelay.h"
+ 
+ 
+-static unsigned int ticks_per_usec = 0;
+-
+-
+-static void getCPUinfo(int *hasTSC, double *MHz)
+-{
+-    int fd;
+-    char buffer[4096], *p;
+-
+-    *hasTSC = 0;
+-    *MHz = -1;
+-
+-    fd = open("/proc/cpuinfo", O_RDONLY);
+-    if (fd == -1) {
+-	error("udelay: open(/proc/cpuinfo) failed: %s", strerror(errno));
+-	return;
+-    }
+-    if (read(fd, &buffer, sizeof(buffer) - 1) == -1) {
+-	error("udelay: read(/proc/cpuinfo) failed: %s", strerror(errno));
+-	close(fd);
+-	return;
+-    }
+-    close(fd);
+-
+-    p = strstr(buffer, "flags");
+-    if (p == NULL) {
+-	info("udelay: /proc/cpuinfo has no 'flags' line");
+-    } else {
+-	p = strstr(p, "tsc");
+-	if (p == NULL) {
+-	    info("udelay: CPU does not support Time Stamp Counter");
+-	} else {
+-	    info("udelay: CPU supports Time Stamp Counter");
+-	    *hasTSC = 1;
+-	}
+-    }
+-
+-    p = strstr(buffer, "cpu MHz");
+-    if (p == NULL) {
+-	info("udelay: /proc/cpuinfo has no 'cpu MHz' line");
+-    } else {
+-	if (sscanf(p + 7, " : %lf", MHz) != 1) {
+-	    error("udelay: parse(/proc/cpuinfo) failed: unknown 'cpu MHz' format");
+-	    *MHz = -1;
+-	} else {
+-	    info("udelay: CPU runs at %f MHz", *MHz);
+-	}
+-    }
+-
+-}
+-
+ 
+ void udelay_init(void)
+ {
+-#ifdef HAVE_ASM_MSR_H
+-
+-    int tsc;
+-    double mhz;
+-
+-    getCPUinfo(&tsc, &mhz);
+-
+-    if (tsc && mhz > 0.0) {
+-	ticks_per_usec = ceil(mhz);
+-	info("udelay: using TSC delay loop, %u ticks per microsecond", ticks_per_usec);
+-    } else
+-#else
+-    error("udelay: The file 'include/asm/msr.h' was missing at compile time.");
+-    error("udelay: Even if your CPU supports TSC, it will not be used!");
+-    error("udelay: You *really* should install msr.h and recompile LCD4linux!");
+-#endif
+-    {
+-	ticks_per_usec = 0;
+-	info("udelay: using gettimeofday() delay loop");
+-    }
++    info("udelay: using gettimeofday() delay loop");
+ }
+ 
+ 
+@@ -172,37 +98,17 @@ unsigned long timing(const char *driver,
+ void ndelay(const unsigned long nsec)
+ {
+ 
+-#ifdef HAVE_ASM_MSR_H
+-
+-    if (ticks_per_usec) {
++    struct timeval now, end;
+ 
+-	unsigned int t1, t2;
+-	unsigned long tsc;
+-
+-	tsc = (nsec * ticks_per_usec + 999) / 1000;
+-
+-	rdtscl(t1);
+-	do {
+-	    rep_nop();
+-	    rdtscl(t2);
+-	} while ((t2 - t1) < tsc);
+-
+-    } else
+-#endif
+-
+-    {
+-	struct timeval now, end;
+-
+-	gettimeofday(&end, NULL);
+-	end.tv_usec += (nsec + 999) / 1000;
+-	while (end.tv_usec > 1000000) {
+-	    end.tv_usec -= 1000000;
+-	    end.tv_sec++;
+-	}
+-
+-	do {
+-	    rep_nop();
+-	    gettimeofday(&now, NULL);
+-	} while (now.tv_sec == end.tv_sec ? now.tv_usec < end.tv_usec : now.tv_sec < end.tv_sec);
++    gettimeofday(&end, NULL);
++    end.tv_usec += (nsec + 999) / 1000;
++    while (end.tv_usec > 1000000) {
++	end.tv_usec -= 1000000;
++	end.tv_sec++;
+     }
++
++    do {
++	rep_nop();
++	gettimeofday(&now, NULL);
++    } while (now.tv_sec == end.tv_sec ? now.tv_usec < end.tv_usec : now.tv_sec < end.tv_sec);
+ }

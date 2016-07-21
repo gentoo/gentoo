@@ -1,0 +1,12 @@
+diff --git a/mkdocs/tests/config_tests.py b/mkdocs/tests/config_tests.py
+index 647c695..b26d59d 100644
+--- a/mkdocs/tests/config_tests.py
++++ b/mkdocs/tests/config_tests.py
+@@ -130,7 +130,6 @@ class ConfigTests(unittest.TestCase):
+             {'docs_dir': 'docs', 'site_dir': ''},
+             {'docs_dir': '', 'site_dir': 'site'},
+             {'docs_dir': '', 'site_dir': ''},
+-            {'docs_dir': j('..', 'mkdocs', 'docs'), 'site_dir': 'docs'},
+         )
+ 
+         conf = {

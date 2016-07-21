@@ -1,0 +1,74 @@
+--- a/Makefile	2006-12-23 15:27:39.000000000 +0100
++++ b/Makefile	2010-08-23 01:12:51.000000000 +0200
+@@ -2,8 +2,10 @@
+ 
+ ALLDEPS = nessus.tmpl
+ 
+-all: libnessus-client client sslstuff
+-
++all:
++	$(MAKE) -C libnessus
++	$(MAKE) -C nessus
++	$(MAKE) -C ssl
+ 
+ nessus.tmpl: nessus.tmpl.in configure VERSION
+ 	$(SHELL) configure $(CONFIGURE_ARGS)
+@@ -21,20 +23,17 @@
+ 	$(INSTALL) -m $(CLIENTMODE) nessusclient-mkcert $(DESTDIR)${bindir}
+ 	$(INSTALL) -m $(CLIENTMODE) ssl/nessusclient-mkrand $(DESTDIR)${bindir}
+ 
+-sslstuff:
+-	cd ssl && $(MAKE)
+-
+ install-man:
+ 	@echo installing man pages ...
+ 	@test -d $(DESTDIR)${mandir}/man1 || $(INSTALL_DIR) $(DESTDIR)${mandir}/man1
+ 	@test -d $(DESTDIR)${mandir}/man8 || $(INSTALL_DIR) $(DESTDIR)${mandir}/man8
+ 	@test -d $(DESTDIR)${datadir}/doc/ || $(INSTALL_DIR) $(DESTDIR)${datadir}/doc/
+-	@test -d $(DESTDIR)${datadir}/doc/NessusClient || $(INSTALL_DIR) $(DESTDIR)${datadir}/doc/NessusClient
++	@test -d $(NESSUS_DOCDIR) || $(INSTALL_DIR) $(NESSUS_DOCDIR)
+ 
+ 	$(INSTALL) -c -m 0444 ${MAN_NESSUS_1} $(DESTDIR)${mandir}/man1/NessusClient.1
+ 	$(INSTALL) -c -m 0444 doc/nessusclient-mkcert.1 $(DESTDIR)${mandir}/man1/nessusclient-mkcert.1
+ 	$(INSTALL) -c -m 0444 doc/nessusclient-mkrand.1 $(DESTDIR)${mandir}/man1/nessusclient-mkrand.1
+-	$(INSTALL) -c -m 0444 doc/NessusClient_UserGuide.pdf $(DESTDIR)${datadir}/doc/NessusClient/NessusClient_UserGuide.pdf
++	$(INSTALL) -c -m 0444 doc/NessusClient_UserGuide.pdf $(NESSUS_DOCDIR)/NessusClient_UserGuide.pdf
+ 
+ win32: ${MAN_NESSUS_1}
+ 	$(MANROFF) ${MAN_NESSUS_1}  > doc/NessusClient.1.cat
+@@ -45,23 +44,15 @@
+ 	@echo ' --------------------------------------------------------------'
+ 	@echo
+ 
+-client-install : client
++client-install : nessus
+ 	test -d $(DESTDIR)${bindir} || $(INSTALL_DIR) -m 755 $(DESTDIR)${bindir}
+ 	$(INSTALL) -m $(CLIENTMODE) ${make_bindir}/NessusClient $(DESTDIR)${bindir}
+ 
+-client : 
+-	cd nessus && $(MAKE)
+-
+-libnessus-client:
+-	cd libnessus && $(MAKE)
+-
+-
+ doc : $(MAN_NESSUS_1)
+ 
+ $(MAN_NESSUS_1) : $(MAN_NESSUS_1).in
+ 	@sed -e 's?@NESSUSD_CONFDIR@?${NESSUSD_CONFDIR}?g;s?@NESSUSD_DATADIR@?${NESSUSD_DATADIR}?g;s?@NESSUSD_PLUGINS@?${NESSUSD_PLUGINS}?g;' $(MAN_NESSUS_1).in  >$(MAN_NESSUS_1)
+ 
+-
+ clean:
+ 	cd nessus && $(MAKE) clean
+ 	cd libnessus && $(MAKE) clean
+--- a/ssl/Makefile	2006-09-12 23:41:31.000000000 +0200
++++ b/ssl/Makefile	2010-08-23 01:16:51.000000000 +0200
+@@ -6,7 +6,7 @@
+ all : nessusclient-mkrand
+ 
+ nessusclient-mkrand: $(OBJS)
+-	$(CC) $(OBJS) -o nessusclient-mkrand -lm
++	$(CC) $(LDFLAGS) $(OBJS) -o nessusclient-mkrand -lm
+ 
+ nessusclient-mkrand.o: nessusclient-mkrand.c
+ 	$(CC) $(CFLAGS) -c nessusclient-mkrand.c 

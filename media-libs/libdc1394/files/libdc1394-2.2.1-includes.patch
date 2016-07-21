@@ -1,0 +1,29 @@
+Fix out of source builds.
+https://bugs.gentoo.org/show_bug.cgi?id=488716
+
+Index: libdc1394-2.2.1/dc1394/juju/Makefile.am
+===================================================================
+--- libdc1394-2.2.1.orig/dc1394/juju/Makefile.am
++++ libdc1394-2.2.1/dc1394/juju/Makefile.am
+@@ -7,7 +7,7 @@ noinst_LTLIBRARIES = libdc1394-juju.la
+ pkgjujuinclude_HEADERS = 
+ endif
+ 
+-AM_CFLAGS = -I$(top_srcdir)/dc1394
++AM_CFLAGS = -I$(top_srcdir) -I$(top_srcdir)/dc1394
+ libdc1394_juju_la_SOURCES =  \
+ 	control.c \
+ 	capture.c \
+Index: libdc1394-2.2.1/dc1394/usb/Makefile.am
+===================================================================
+--- libdc1394-2.2.1.orig/dc1394/usb/Makefile.am
++++ libdc1394-2.2.1/dc1394/usb/Makefile.am
+@@ -7,7 +7,7 @@ noinst_LTLIBRARIES = libdc1394-usb.la
+ pkgusbinclude_HEADERS = 
+ endif
+ 
+-AM_CFLAGS = -I$(top_srcdir)/dc1394 $(LIBUSB_CFLAGS)
++AM_CFLAGS = -I$(top_srcdir) -I$(top_srcdir)/dc1394 $(LIBUSB_CFLAGS)
+ libdc1394_usb_la_LIBADD = $(LIBUSB_LIBS)
+ libdc1394_usb_la_SOURCES =  \
+ 	control.c \

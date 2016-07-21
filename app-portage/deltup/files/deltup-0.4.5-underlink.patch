@@ -1,0 +1,11 @@
+--- deltup-0.4.5/Makefile.orig	2009-06-26 00:38:01.000000000 +0400
++++ deltup-0.4.5/Makefile	2013-08-21 07:24:33.606691559 +0400
+@@ -5,7 +5,7 @@
+ CC = g++
+ 
+ objfiles=bpatch.o bzip2.o file.o system.o tmpstore.o deltup.o 
+-libs=-lstdc++ -lz -lbz2 -lssl
++libs=-lstdc++ -lz -lbz2 -lcrypto
+ 
+ #edelta: edelta.cpp deltup
+ #	gcc edelta.cpp ${CXXFLAGS} -o edelta

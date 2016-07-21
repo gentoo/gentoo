@@ -1,0 +1,39 @@
+--- build/packaging.rb.~1~	2013-09-14 10:09:56.000000000 +0200
++++ build/packaging.rb	2013-10-05 15:03:51.474846961 +0200
+@@ -306,14 +306,14 @@
+ 	require 'rbconfig'
+ 	require 'fileutils'
+ 	include RbConfig
+-	fakeroot = "pkg/fakeroot"
++	fakeroot = ENV['DISTDIR']
+ 	
+ 	# We don't use CONFIG['archdir'] and the like because we want
+ 	# the files to be installed to /usr, and the Ruby interpreter
+ 	# on the packaging machine might be in /usr/local.
+-	fake_rubylibdir = "#{fakeroot}/usr/lib/ruby/vendor_ruby"
++	fake_rubylibdir = "#{fakeroot}#{CONFIG['vendordir']}"
+ 	fake_libdir = "#{fakeroot}/usr/lib/#{GLOBAL_NAMESPACE_DIRNAME}"
+-	fake_native_support_dir = "#{fakeroot}/usr/lib/ruby/#{CONFIG['ruby_version']}/#{CONFIG['arch']}"
++	fake_native_support_dir = "#{fakeroot}#{CONFIG['archdir']}"
+ 	fake_agents_dir = "#{fakeroot}/usr/lib/#{GLOBAL_NAMESPACE_DIRNAME}/agents"
+ 	fake_helper_scripts_dir = "#{fakeroot}/usr/share/#{GLOBAL_NAMESPACE_DIRNAME}/helper-scripts"
+ 	fake_resources_dir = "#{fakeroot}/usr/share/#{GLOBAL_NAMESPACE_DIRNAME}"
+@@ -326,7 +326,6 @@
+ 	fake_ruby_extension_source_dir = "#{fakeroot}/usr/share/#{GLOBAL_NAMESPACE_DIRNAME}/ruby_extension_source"
+ 	fake_nginx_module_source_dir = "#{fakeroot}/usr/share/#{GLOBAL_NAMESPACE_DIRNAME}/ngx_http_passenger_module"
+ 	
+-	sh "rm -rf #{fakeroot}"
+ 	sh "mkdir -p #{fakeroot}"
+ 	
+ 	# Ruby sources
+@@ -405,10 +404,6 @@
+ 		end
+ 	end
+ 	
+-	# Apache 2 module
+-	sh "mkdir -p #{fake_apache2_module_dir}"
+-	sh "cp #{APACHE2_MODULE} #{fake_apache2_module_dir}/"
+-
+ 	# Ruby extension sources
+ 	sh "mkdir -p #{fake_ruby_extension_source_dir}"
+ 	sh "cp -R #{PhusionPassenger.ruby_extension_source_dir}/* #{fake_ruby_extension_source_dir}"

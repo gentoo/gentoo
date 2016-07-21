@@ -1,0 +1,55 @@
+From 08ec9556c8a384ea7bb5d42d3f6aab6c2f6a8786 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Fri, 25 Sep 2015 15:56:55 +0200
+Subject: [PATCH] Add option to disable looking for qt5
+
+* m4/qt.m4 (FIND_QT): Add --disable-pinentry-qt5 option to
+disable qt5 support even if it is available.
+
+--
+As requested by Kristan F.
+
+GnuPG-bug-id: 2105
+---
+ m4/qt.m4 | 23 ++++++++++++++++-------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/m4/qt.m4 b/m4/qt.m4
+index 0a7ea99..0e47ec6 100644
+--- a/m4/qt.m4
++++ b/m4/qt.m4
+@@ -28,15 +28,24 @@ dnl The moc lookup code is based on libpoppler (rev. d821207)
+ 
+ AC_DEFUN([FIND_QT],
+ [
+-  PKG_CHECK_MODULES(PINENTRY_QT,
+-                    Qt5Core >= 5.0.0 Qt5Gui >= 5.0.0 Qt5Widgets >= 5.0.0,
+-                    [have_qt5_libs="yes"],
+-                    [have_qt5_libs="no"])
++  AC_ARG_ENABLE(pinentry-qt5,
++                AC_HELP_STRING([--disable-pinentry-qt5],
++                           [Don't use qt5 even if it is available.]),
++                enable_pinentry_qt5=$enableval,
++                enable_pinentry_qt5="try")
+ 
+-  if "$PKG_CONFIG" --variable qt_config Qt5Core | grep -q "reduce_relocations"; then
+-    PINENTRY_QT_CFLAGS="$PINENTRY_QT_CFLAGS -fpic"
+-  fi
++  have_qt5_libs="no";
++
++  if test "$enable_pinentry_qt5" != "no"; then
++    PKG_CHECK_MODULES(PINENTRY_QT,
++                      Qt5Core >= 5.0.0 Qt5Gui >= 5.0.0 Qt5Widgets >= 5.0.0,
++                      [have_qt5_libs="yes"],
++                      [have_qt5_libs="no"])
+ 
++    if "$PKG_CONFIG" --variable qt_config Qt5Core | grep -q "reduce_relocations"; then
++      PINENTRY_QT_CFLAGS="$PINENTRY_QT_CFLAGS -fpic"
++    fi
++  fi
+   if test "$have_qt5_libs" = "yes"; then
+     AC_CHECK_TOOL(MOC, moc)
+     AC_MSG_CHECKING([moc version])
+-- 
+2.1.4
+

@@ -1,0 +1,27 @@
+ src/progs/quirks.C | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/progs/quirks.C b/src/progs/quirks.C
+index 47e5ee8..060b6f3 100644
+--- a/src/progs/quirks.C
++++ b/src/progs/quirks.C
+@@ -25,6 +25,8 @@
+ 
+ #include <boost/filesystem.hpp>
+ 
++#include <iostream>
++
+ // make the "tcmalloc: large alloc" messages from TCMallom disappear
+ // by setting the reporting environment variable to a very large value
+ // see: http://groups.google.com/group/google-perftools/browse_thread/thread/24a003fc35f3d470?pli=1
+--- a/src/mira/parameters.C
++++ b/src/mira/parameters.C
+@@ -2222,7 +2222,7 @@
+     MIRANOTIFY(Notify::FATAL, "File not found: " << pfile);
+   }
+ 
+-  parse(fin, Pv, nullptr);
++  parse(fin, Pv, false);
+ 
+   fin.close();
+ 

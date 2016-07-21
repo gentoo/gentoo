@@ -1,0 +1,15 @@
+diff --git a/source4/setup/named.conf.dlz b/source4/setup/named.conf.dlz
+index be20a57..d86f766 100644
+--- a/source4/setup/named.conf.dlz
++++ b/source4/setup/named.conf.dlz
+@@ -11,9 +11,9 @@
+ #
+ dlz "AD DNS Zone" {
+     # For BIND 9.8.0
+-    database "dlopen ${MODULESDIR}/bind9/dlz_bind9.so";
++    # database "dlopen ${MODULESDIR}/bind9/dlz_bind9.so";
+
+     # For BIND 9.9.0
+-    # database "dlopen ${MODULESDIR}/bind9/dlz_bind9_9.so";
++    database "dlopen ${MODULESDIR}/bind9/dlz_bind9_9.so";
+ };

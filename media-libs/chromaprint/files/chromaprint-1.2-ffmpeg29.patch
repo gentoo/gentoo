@@ -1,0 +1,48 @@
+commit 37092d380a28abcc63fa120499030a0f2b7df80f
+Author: Rodger Combs <rodger.combs@gmail.com>
+Date:   Fri Oct 2 14:48:01 2015 -0500
+
+    fpcalc: remove uses of deprecated lavc APIs
+
+Index: chromaprint-1.2/examples/fpcalc.c
+===================================================================
+--- chromaprint-1.2.orig/examples/fpcalc.c
++++ chromaprint-1.2/examples/fpcalc.c
+@@ -17,10 +17,6 @@
+ #define MAX(a, b) ((a) > (b) ? (a) : (b))
+ #define MIN(a, b) ((a) < (b) ? (a) : (b))
+ 
+-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(54, 28, 0)
+-#define avcodec_free_frame av_freep
+-#endif
+-
+ int decode_audio_file(ChromaprintContext *chromaprint_ctx, const char *file_name, int max_length, int *duration)
+ {
+ 	int ok = 0, remaining, length, consumed, codec_ctx_opened = 0, got_frame, stream_index;
+@@ -131,7 +127,7 @@ int decode_audio_file(ChromaprintContext
+ 	remaining = max_length * codec_ctx->channels * codec_ctx->sample_rate;
+ 	chromaprint_start(chromaprint_ctx, codec_ctx->sample_rate, codec_ctx->channels);
+ 
+-	frame = avcodec_alloc_frame();
++	frame = av_frame_alloc();
+ 
+ 	while (1) {
+ 		if (av_read_frame(format_ctx, &packet) < 0) {
+@@ -139,7 +135,7 @@ int decode_audio_file(ChromaprintContext
+ 		}
+ 
+ 		if (packet.stream_index == stream_index) {
+-			avcodec_get_frame_defaults(frame);
++			av_frame_unref(frame);
+ 
+ 			got_frame = 0;
+ 			consumed = avcodec_decode_audio4(codec_ctx, frame, &got_frame, &packet);
+@@ -196,7 +192,7 @@ finish:
+ 
+ done:
+ 	if (frame) {
+-		avcodec_free_frame(&frame);
++		av_frame_free(&frame);
+ 	}
+ 	if (dst_data[0]) {
+ 		av_freep(&dst_data[0]);

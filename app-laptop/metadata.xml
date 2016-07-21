@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-laptop category contains packages which are designed to work
+		with certain kinds of laptop or notebook computer.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-laptop enthält Pakete für das Arbeiten mit verschiedenen
+		Notebook- und Laptop-Modellen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-laptop contiene paquetes diseñados para trabajar
+		con ciertas clases de laptops ó computadoras portátiles.
+	</longdescription>
+	<longdescription lang="ja">
+		app-laptopカテゴリには様々なラップトップとノートブックコンピュータで
+		使うパッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-laptop categorie bevat applicaties voor laptopgebruikers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-laptop chứa các gói danh cho các loại máy
+		tính laptop và notebook.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-laptop contiene pacchetti progettaati per lavorare con alcuni
+		tipi di laptop o notebook.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-laptop contém pacotes que são desenhados para
+		trabalhar com certos tipos de laptops e notebooks.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-laptop zawiera pakiety ściśle związane z pracą na
+		laptopach i notebookach.
+	</longdescription>
+</catmetadata>
+

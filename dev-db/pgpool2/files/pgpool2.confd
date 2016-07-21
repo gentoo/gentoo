@@ -1,0 +1,17 @@
+# NICE_QUIT ignores new connections and wait for clients to disconnect from
+# server before shutting down. NICE_TIMEOUT in seconds determines how long to
+# wait for this to succeed.
+NICE_TIMEOUT=60
+
+# Forecfully disconnect clients from server and shut down. This is performed
+# after NICE_QUIT. Terminated client connections have their open transactions
+# rolled back.
+# Set RUDE_QUIT to "NO" to disable. RUDE_TIMEOUT in seconds.
+RUDE_QUIT="YES"
+RUDE_TIMEOUT=30
+
+# If the server still fails to shutdown, you can force it to quit by setting
+# this to YES.
+# Set FORCE_QUIT to "YES" to enable. FORCE_TIMEOUT in seconds.
+FORCE_QUIT="NO"
+FORCE_TIMEOUT=2

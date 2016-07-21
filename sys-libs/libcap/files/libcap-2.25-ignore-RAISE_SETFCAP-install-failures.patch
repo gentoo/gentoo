@@ -1,0 +1,33 @@
+From 8dfcdcfdcb9c462a05566aa8d3c6eca871f0ddbf Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 10 Feb 2016 09:52:45 +0100
+Subject: [PATCH] ignore RAISE_SETFCAP install failures
+
+While the new RAISE_SETFCAP feature is nifty, its failure to run (often
+due to the fs not supporting it) shouldn't impair the default install.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+
+Forward ported from libcap-2.20 to libcap-2.25
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ progs/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/progs/Makefile b/progs/Makefile
+index c094a24..4a6db38 100644
+--- a/progs/Makefile
++++ b/progs/Makefile
+@@ -27,7 +27,7 @@ install: all
+ 		install -m 0755 $$p $(FAKEROOT)$(SBINDIR) ; \
+ 	done
+ ifeq ($(RAISE_SETFCAP),yes)
+-	$(FAKEROOT)$(SBINDIR)/setcap cap_setfcap=i $(FAKEROOT)$(SBINDIR)/setcap
++	-$(FAKEROOT)$(SBINDIR)/setcap cap_setfcap=i $(FAKEROOT)$(SBINDIR)/setcap
+ endif
+ 
+ clean:
+-- 
+2.7.1
+

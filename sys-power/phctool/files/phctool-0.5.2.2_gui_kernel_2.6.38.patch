@@ -1,0 +1,21 @@
+--- phctool/inc/libs/cpuinfo.py
++++ phctool/inc/libs/cpuinfo.py
+@@ -1,6 +1,7 @@ 
+ #cpuinfo.py
+ #This is a function library to get 
+ #informations about CPUs and its PHC data
++#Modified by Fabio Veronese fveronese85*at*gmail.com 22 Mar 2011
+ 
+ 
+ import os, string
+@@ -30,6 +31,10 @@ 
+ 						if os.path.exists('/proc/acpi/processor/CPU'+cpunr):
+ 							##remember ACPI Pathname
+ 							self.data[cpunr]['acpi']['acpiname']='/proc/acpi/processor/CPU'+cpunr
++						elif os.path.exists('/sys/devices/system/cpu/cpu'+cpunr+'/thermal_throttle'):
++							##here some throttling infos for 2.6.38 and maybe laters
++							#self.data[cpunr]['acpi']['acpiname']='/sys/devices/system/cpu/cpu'+cpunr+'/thermal_throttle'
++							self.data[cpunr]['acpi']['acpiname']=''
+ 						else:
+ 							self.data[cpunr]['acpi']['exist']=False
+ 		# For some reason we have to fallback on the old function...

@@ -1,0 +1,9 @@
+diff -ru gngeo-0.8.orig/configure.in gngeo-0.8/configure.in
+--- gngeo-0.8.orig/configure.in	2012-11-15 17:57:57.849578009 -0500
++++ gngeo-0.8/configure.in	2012-11-15 18:19:55.305923094 -0500
+@@ -95,6 +95,7 @@
+ #AC_SUBST(LIBOBJS)
+ AC_CHECK_LIB([m], [acos])
+ AC_CHECK_LIB([z], [inflate])
++AC_CHECK_LIB([minizip], [unzReadCurrentFile])
+ 

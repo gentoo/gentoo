@@ -1,0 +1,36 @@
+Only use FITS support if explicitly enabled.
+
+--- luminance-hdr-2.4.0/CMakeLists.txt
++++ luminance-hdr-2.4.0/CMakeLists.txt
+@@ -10,6 +10,8 @@
+ include(cmake/CompilerSettings.cmake)
+ include(cmake/Internationalization.cmake)
+ 
++OPTION(USE_FITS "Enable FITS support." ON)
++
+ # find and setup Qt5 for this project
+ 
+ # Tell CMake to run moc when necessary:
+@@ -122,13 +124,15 @@
+ INCLUDE_DIRECTORIES(${JPEGLIB_INCLUDE_DIR})
+ INCLUDE_DIRECTORIES(${LCMS2_INCLUDE_DIR})
+ 
+-FIND_PACKAGE(CCfits)
+-IF(CCFITS_FOUND)
+-    INCLUDE_DIRECTORIES(${CCFITS_INCLUDE_DIRS})
+-    SET(LIBS ${LIBS} ${CCFITS_LIBRARIES})
+-    ADD_DEFINITIONS(-DHAVE_CCFITS)
+-ELSE()
+-    message(WARNING "CCfits not found! Building without FITS support!")
++IF(USE_FITS)
++    FIND_PACKAGE(CCfits REQUIRED)
++    IF(CCFITS_FOUND)
++        INCLUDE_DIRECTORIES(${CCFITS_INCLUDE_DIRS})
++        SET(LIBS ${LIBS} ${CCFITS_LIBRARIES})
++        ADD_DEFINITIONS(-DHAVE_CCFITS)
++    ELSE()
++        MESSAGE(FATAL_ERROR "CCfits not found!")
++    ENDIF()
+ ENDIF()
+ 
+ SET(LIBS ${LIBS} ${OPENEXR_LIBRARIES})

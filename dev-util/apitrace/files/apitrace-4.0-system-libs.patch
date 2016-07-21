@@ -1,0 +1,72 @@
+Find external system libraries for ebuild.
+
+Updated from 3.0 version of patch to apply against 4.0.
+
+--- apitrace/CMakeLists.txt
++++ apitrace/CMakeLists.txt
+@@ -224,23 +224,14 @@ set (WRAPPER_INSTALL_DIR ${LIB_ARCH_INSTALL_DIR}/wrappers)
+ # - on unices to prevent symbol collisions when tracing applications that link
+ # against other versions of these libraries
+ 
+-set (ZLIB_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/zlib)
+-set (ZLIB_LIBRARIES z_bundled)
+-add_subdirectory (thirdparty/zlib)
+-
+-include_directories (${ZLIB_INCLUDE_DIRS})
+-
+-set (SNAPPY_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/snappy)
+-set (SNAPPY_LIBRARIES snappy_bundled)
+-add_subdirectory (thirdparty/snappy)
++find_package (ZLIB REQUIRED)
++include_directories (${ZLIB_INCLUDE_DIRS})
+ 
++find_package (SNAPPY REQUIRED)
+ include_directories (${SNAPPY_INCLUDE_DIRS})
+ 
+-set (PNG_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libpng)
+-set (PNG_DEFINITIONS "")
+-set (PNG_LIBRARIES png_bundled)
+-
+-add_subdirectory (thirdparty/libpng)
++find_package (PNG REQUIRED)
++include_directories (${PNG_INCLUDE_DIRS})
+ 
+ if (MSVC)
+     add_subdirectory (thirdparty/getopt)
+diff --git a/cmake/FindSNAPPY.cmake b/cmake/FindSNAPPY.cmake
+new file mode 100644
+index 0000000..5cd64c3
+--- /dev/null
++++ apitrace/cmake/FindSNAPPY.cmake
+@@ -0,0 +1,31 @@
++# Find SNAPPY - A fast compressor/decompressor
++#
++# This module defines
++#  SNAPPY_FOUND - whether the qsjon library was found
++#  SNAPPY_LIBRARIES - the snappy library
++#  SNAPPY_INCLUDE_DIR - the include path of the snappy library
++#
++
++if (SNAPPY_INCLUDE_DIR AND SNAPPY_LIBRARIES)
++
++  # Already in cache
++  set (SNAPPY_FOUND TRUE)
++
++else (SNAPPY_INCLUDE_DIR AND SNAPPY_LIBRARIES)
++
++  find_library (SNAPPY_LIBRARIES
++    NAMES
++    snappy
++    PATHS
++  )
++
++  find_path (SNAPPY_INCLUDE_DIR
++    NAMES
++    snappy.h
++    PATHS
++  )
++
++  include(FindPackageHandleStandardArgs)
++  find_package_handle_standard_args(SNAPPY DEFAULT_MSG SNAPPY_LIBRARIES SNAPPY_INCLUDE_DIR)
++
++endif (SNAPPY_INCLUDE_DIR AND SNAPPY_LIBRARIES)

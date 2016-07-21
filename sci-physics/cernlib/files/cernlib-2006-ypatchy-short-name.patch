@@ -1,0 +1,11 @@
+--- src/patchy/Imakefile.orig	2013-01-16 13:45:07.161828513 -0800
++++ src/patchy/Imakefile	2013-01-16 13:45:34.768966597 -0800
+@@ -77,7 +77,7 @@
+ 	@ ln -s $< $@
+ 
+ %.f:  $(LDIR)%.cra $(LDIR)patchy.car
+-	ypatchy - :$@ :$< TTY .go
++	ypatchy - :$@ :$(shell basename $<) TTY .go
+ 
+ .f.o:
+ 	$(FC) -c $(FORTRANOPTIONS) $(FDEBUGFLAGS) $<

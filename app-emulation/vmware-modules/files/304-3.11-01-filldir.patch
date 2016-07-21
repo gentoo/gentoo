@@ -1,0 +1,53 @@
+simply remove the code for Filldir since it is no longer used with the new 
+iterate_dir API
+
+diff -rupN vmblock-only/linux/file.c vmblock-only.new/linux/file.c
+--- vmblock-only/linux/file.c	2014-10-07 23:22:46.832469618 -0400
++++ vmblock-only.new/linux/file.c	2014-10-07 23:24:35.276472720 -0400
+@@ -38,46 +38,6 @@ typedef u64 inode_num_t;
+ typedef ino_t inode_num_t;
+ #endif
+ 
+-/* Specifically for our filldir_t callback */
+-typedef struct FilldirInfo {
+-   filldir_t filldir;
+-   void *dirent;
+-} FilldirInfo;
+-
+-
+-/*
+- *----------------------------------------------------------------------------
+- *
+- * Filldir --
+- *
+- *    Callback function for readdir that we use in place of the one provided.
+- *    This allows us to specify that each dentry is a symlink, but pass through
+- *    everything else to the original filldir function.
+- *
+- * Results:
+- *    Original filldir's return value.
+- *
+- * Side effects:
+- *    Directory information gets copied to user's buffer.
+- *
+- *----------------------------------------------------------------------------
+- */
+-
+-static int
+-Filldir(void *buf,              // IN: Dirent buffer passed from FileOpReaddir
+-        const char *name,       // IN: Dirent name
+-        int namelen,            // IN: len of dirent's name
+-        loff_t offset,          // IN: Offset
+-        inode_num_t ino,        // IN: Inode number of dirent
+-        unsigned int d_type)    // IN: Type of file
+-{
+-   FilldirInfo *info = buf;
+-
+-   /* Specify DT_LNK regardless */
+-   return info->filldir(info->dirent, name, namelen, offset, ino, DT_LNK);
+-}
+-
+-
+ /* File operations */
+ 
+ /*

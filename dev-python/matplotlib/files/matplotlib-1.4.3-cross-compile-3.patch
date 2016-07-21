@@ -1,0 +1,58 @@
+https://github.com/matplotlib/matplotlib/pull/4430
+
+From d077e49be318c851f6bbd64708efeed78a3ece3f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Fri, 15 May 2015 03:49:02 -0400
+Subject: [PATCH 3/3] setupext: do not hardcode system -I/-L paths
+
+The native compiler should already know the right paths to look for
+includes and libraries.  Hardcoding a specific list of those paths
+breaks both cross-compiling and multilib.  In the former, paths like
+/usr/include and /usr/lib are for x86 but when you want to build for
+arm, mixing them leads to bad failures.  In the latter, paths like
+/usr/lib typically hold 32it libraries, but when you're building for
+64bit, you want the libs from /usr/lib64.  This goes even further as
+there are other mixed ABIs like /usr/libx32 and /usr/lib32, neither
+of which are handled here.
+
+Instead, delete the code entirely and rely on the compiler being
+properly configured.  If you want to use a misconfigured compiler,
+you can always set CFLAGS/CPPFLAGS/LDFLAGS to include the -I/-L
+that your system needs.
+---
+ setupext.py | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/setupext.py b/setupext.py
+index 57d80e7..7473e3a 100755
+--- a/setupext.py
++++ b/setupext.py
+@@ -216,9 +216,7 @@ sysconfig.customize_compiler = my_customize_compiler
+ 
+ def make_extension(name, files, *args, **kwargs):
+     """
+-    Make a new extension.  Automatically sets include_dirs and
+-    library_dirs to the base directories appropriate for this
+-    platform.
++    Make a new extension.
+ 
+     `name` is the name of the extension.
+ 
+@@ -228,14 +226,6 @@ def make_extension(name, files, *args, **kwargs):
+     `distutils.core.Extension` constructor.
+     """
+     ext = DelayedExtension(name, files, *args, **kwargs)
+-    for dir in get_base_dirs():
+-        include_dir = os.path.join(dir, 'include')
+-        if os.path.exists(include_dir):
+-            ext.include_dirs.append(include_dir)
+-        for lib in ('lib', 'lib64'):
+-            lib_dir = os.path.join(dir, lib)
+-            if os.path.exists(lib_dir):
+-                ext.library_dirs.append(lib_dir)
+     ext.include_dirs.append('.')
+ 
+     return ext
+-- 
+2.4.0
+

@@ -1,0 +1,13 @@
+--- simh-3.9.0/makefile
++++ simh-3.9.0/makefile
+@@ -300,8 +300,8 @@
+   CFLAGS_O = -O0
+   BUILD_FEATURES = - debugging support
+ else
+-  CFLAGS_O = -O2
+-  LDFLAGS_O = 
++  CFLAGS_O ?= -O2
++  LDFLAGS_O ?= 
+   GCC_MAJOR_VERSION = $(firstword $(subst  ., ,$(GCC_VERSION)))
+   ifneq (3,$(GCC_MAJOR_VERSION))
+     ifeq (,$(GCC_OPTIMIZERS_CMD))

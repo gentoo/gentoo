@@ -1,0 +1,214 @@
+--- projects/rlm_stg/build.org	2013-01-15 15:25:59.000000000 +0200
++++ projects/rlm_stg/build	2013-01-15 19:48:13.000000000 +0200
+@@ -16,21 +16,15 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
+-then
+-    MAKEOPTS="-j1"
+-    DEBUG="no"
++if [ "$1" = "debug" ]
++then
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
+ else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/rscriptd/build.org	2013-01-15 18:28:32.000000000 +0200
++++ projects/rscriptd/build	2013-01-15 18:38:13.000000000 +0200
+@@ -16,21 +16,15 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
+-    MAKEOPTS="-j1"
+-    DEBUG="no"
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
+ else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgauth/build.org	2013-01-15 18:29:20.000000000 +0200
++++ projects/sgauth/build	2013-01-15 18:36:33.000000000 +0200
+@@ -16,21 +16,15 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
+-    MAKEOPTS="-j1"
+-    DEBUG="no"
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
+ else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconf/build.org	2013-01-15 18:29:59.000000000 +0200
++++ projects/sgconf/build	2013-01-15 18:35:41.000000000 +0200
+@@ -16,21 +16,15 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
+-    MAKEOPTS="-j1"
+-    DEBUG="no"
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
+ else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconf_xml/build.org	2013-01-15 18:30:26.000000000 +0200
++++ projects/sgconf_xml/build	2013-01-15 18:34:53.000000000 +0200
+@@ -16,21 +16,15 @@
+ DIR_MODE=0755
+ OWNER=root
+ 
+-if [ -z $1 ]
++if [ "$1" = "debug" ]
+ then
+-    MAKEOPTS="-j1"
+-    DEBUG="no"
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
+ else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="-DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"
+--- projects/sgconv/build.org	2013-01-15 18:31:01.000000000 +0200
++++ projects/sgconv/build	2013-01-15 18:32:46.000000000 +0200
+@@ -16,11 +16,20 @@
+ DIR_MODE=0755
+ OWNER=root
+ VAR_DIR="./inst/var/stargazer"
+-DEFS="-DDEBUG"
+-MAKEOPTS="-j1"
++
++if [ "$1" = "debug" ]
++then
++   DEFS="$DEFS -DDEBUG"
++   MAKEOPTS="$MAKEOPTS -j1"
++   CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -Wextra"
++   DEBUG="yes"
++else
++   DEFS="$DEFS -DNDEBUG"
++   DEBUG="no"
++fi
++
+ CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall -I/usr/local/include"
+ LDFLAGS="$LDFLAGS -L/usr/local/lib"
+-DEBUG="yes"
+ 
+ if [ "$sys" = "Linux" ]
+ then
+--- projects/stargazer/build.org	2013-01-15 19:48:54.000000000 +0200
++++ projects/stargazer/build	2013-01-15 19:51:13.000000000 +0200
+@@ -35,23 +35,15 @@
+ XMLRPC_FEATURES="c++2 abyss-server"
+ 
+ 
+-if [ -z "$1" ]
++if [ "$1" = "debug" ]
+ then
++    DEFS="$DEFS -DDEBUG"
++    MAKEOPTS="$MAKEOPTS -j1"
++    CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
++    DEBUG="yes"
++else
+     DEFS="$DEFS -DNDEBUG"
+-    MAKEOPTS="-j1"
+     DEBUG="no"
+-else
+-    if [ "$1" = "debug" ]
+-    then
+-        DEFS="$DEFS -DDEBUG"
+-        MAKEOPTS="-j1"
+-        CXXFLAGS="$CXXFLAGS -ggdb3 -W -Wall"
+-        DEBUG="yes"
+-    else
+-        DEFS="$DEFS -DNDEBUG"
+-        MAKEOPTS="-j1"
+-        DEBUG="no"
+-    fi
+ fi
+ 
+ CXXFLAGS="$CXXFLAGS -I/usr/local/include"

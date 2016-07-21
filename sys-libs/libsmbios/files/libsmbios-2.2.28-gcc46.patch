@@ -1,0 +1,11 @@
+--- libsmbios-2.2.28/src/include/smbios/config/compiler/gcc.hpp
++++ libsmbios-2.2.28/src/include/smbios/config/compiler/gcc.hpp
+@@ -113,7 +113,7 @@
+ #  error "Compiler not configured - please reconfigure"
+ #endif
+ //
+-#if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 5))
++#if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 7))
+ #  if defined(LIBSMBIOS_ASSERT_CONFIG)
+ #     error "Unknown compiler version - please run the configure tests and report the results"
+ #  else

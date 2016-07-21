@@ -1,0 +1,11 @@
+--- docx2txt-1.1/docx2txt.pl.orig
++++ docx2txt-1.1/docx2txt.pl
+@@ -312,7 +312,7 @@
+     $para =~ s/<.*?>//og;
+     return justify($align,$para) if $align;
+ 
+-    return $para;
++    return $para . $config_newLine;
+ }
+ 
+ 

@@ -1,0 +1,25 @@
+ plugins/molfile_plugin/src/webpdbplugin.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/molfile_plugin/src/webpdbplugin.c b/plugins/molfile_plugin/src/webpdbplugin.c
+index 80b3bb9..78597f5 100644
+--- a/plugins/molfile_plugin/src/webpdbplugin.c
++++ b/plugins/molfile_plugin/src/webpdbplugin.c
+@@ -202,7 +202,7 @@ static void *open_file_read(const char *filename, const char *filetype,
+   sprintf(url, "http://www.rcsb.org/pdb/downloadFile.do?fileFormat=pdb&compression=NO&structureId=%s",filename);
+   sprintf(cmd, "set token [::http::geturl \"%s\"]", url);
+   if (Tcl_Eval(interp, cmd) != TCL_OK) {
+-    fprintf(stderr, "Error loading PDB: %s\n",interp->result);
++    fprintf(stderr, "Error loading PDB: %s\n",Tcl_GetStringResult(interp));
+     Tcl_DeleteInterp(interp);
+     return NULL;
+   } 
+@@ -211,7 +211,7 @@ static void *open_file_read(const char *filename, const char *filetype,
+   
+   result = Tcl_GetVar2(interp, (char *)"state", "body", TCL_GLOBAL_ONLY); 
+   if (!result) {
+-    fprintf(stderr, "Error loading PDB: %s\n", interp->result);
++    fprintf(stderr, "Error loading PDB: %s\n", Tcl_GetStringResult(interp));
+     Tcl_DeleteInterp(interp);
+     return NULL;
+   } 

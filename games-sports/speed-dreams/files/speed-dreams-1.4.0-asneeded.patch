@@ -1,0 +1,110 @@
+--- configure.in
++++ configure.in
+@@ -123,8 +123,7 @@
+ AC_CHECK_LIB(Xrandr, XRRQueryVersion,,AC_MSG_ERROR([Can't find libXrandr. Please check config.log and if you can't solve the problem send the file to speed-dreams-users@lists.sourceforge.net with the subject \"Speed Dreams compilation problem\"]))
+ AC_CHECK_LIB(openal, alEnable,, AC_MSG_ERROR([Can't find AL/al.h. OpenAL can be found on http://www.openal.org/]))
+ AC_CHECK_LIB(alut, alutLoadWAVFile,
+-	LDFLAGS="$LDFLAGS -lalut",
+-	LDFLAGS="$LDFLAGS")
++	LIBS="$LIBS -lalut", )
+ 
+ AC_CHECK_LIB(dl, dlopen)
+ AC_CHECK_FUNC(dlopen,,AC_MSG_ERROR([Can't find dlopen function. Please check config.log and if you can't solve the problem send the file to speed-dreams-users@lists.sourceforge.net with the subject \"Speed Dreams compilation problem\"]))
+@@ -141,7 +140,7 @@
+ AC_CHECK_LIB(glut, glutSwapBuffers,,AC_MSG_ERROR([Can't find libglut. freeglut can be found on http://freeglut.sourceforge.net/]))
+ 
+ dnl Checks for plib libraries.
+-LDFLAGS="$LDFLAGS -lplibjs"
++AC_CHECK_LIB(plibjs, main,,AC_MSG_ERROR([Can't find libplibjs. PLIB can be found on http://plib.sourceforge.net/]))
+ AC_CHECK_LIB(plibul, main,,AC_MSG_ERROR([Can't find libplibul. PLIB can be found on http://plib.sourceforge.net/]))
+ AC_CHECK_LIB(plibsg, main,,AC_MSG_ERROR([Can't find libplibsg. PLIB can be found on http://plib.sourceforge.net/]))
+ AC_CHECK_LIB(plibsl, main,,AC_MSG_ERROR([Can't find libplibsl. PLIB can be found on http://plib.sourceforge.net/]))
+--- Make-default.mk
++++ Make-default.mk
+@@ -402,7 +402,7 @@
+ ifdef PROGRAM
+ 
+ ${PROGRAM}: ${OBJECTS} $(subst -l,${EXPORTBASE}/lib/lib, ${LIBS:=.a})
+-	${CXX} ${OBJECTS} ${LDFLAGS} ${LIBS} ${SOLIBS} ${EXT_LIBS} -o $@
++	${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${OBJECTS} ${SOLIBS} ${LIBS} ${EXT_LIBS}
+ 
+ installprogram: ${PROGRAM}
+ 	@ createdir="${INSTLIBBASE}" ; \
+@@ -420,14 +420,14 @@
+ ifdef LOCALTOOLS
+ 
+ ${LOCALTOOLS}: ${OBJECTS} $(subst -l,${EXPORTBASE}/lib/lib, ${LIBS:=.a})
+-	${CXX} ${OBJECTS} ${LDFLAGS} ${LIBS} ${EXT_LIBS} ${SOLIBS} -o $@
++	${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${OBJECTS} ${SOLIBS} ${LIBS} ${EXT_LIBS}
+ 
+ endif
+ 
+ ifdef TOOLS
+ 
+ ${TOOLS}: ${OBJECTS} $(subst -l,${EXPORTBASE}/lib/lib, ${LIBS:=.a})
+-	${CXX} ${OBJECTS} ${LDFLAGS} ${LIBS} ${EXT_LIBS} ${SOLIBS} -o $@
++	${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${OBJECTS} ${SOLIBS} ${LIBS} ${EXT_LIBS}
+ 
+ installtools: ${TOOLS}
+ 	@createdir="${INSTBINBASE}/${TOOLSDIR}" ; \
+@@ -478,7 +478,7 @@
+ ifdef SOLIBRARY
+ 
+ ${SOLIBRARY}: ${OBJECTS}
+-	${CXX} -shared -o ${SOLIBRARY} ${OBJECTS} ${LDFLAGS} ${LIBSPATH} ${LIBS} ${DEBUG_LIBS}
++	${CXX} ${CXXFLAGS} ${LDFLAGS} -shared -o ${SOLIBRARY} ${OBJECTS} ${SOLIBS} ${LIBS} ${EXT_LIBS}
+ 	@D=`pwd` ; \
+ 	createdir="${EXPORTBASE}/lib" ; \
+ 	$(mkinstalldirs) $$createdir ; \
+@@ -509,7 +509,7 @@
+ ifdef MODULE
+ 
+ ${MODULE}: ${OBJECTS}
+-	${CXX} -shared -o ${MODULE} ${OBJECTS} ${LDFLAGS} ${LIBSPATH} ${LIBS} 
++	${CXX} ${CXXFLAGS} ${LDFLAGS} -shared -o ${MODULE} ${OBJECTS} ${SOLIBS} ${LIBS} ${EXT_LIBS}
+ 	@D=`pwd` ; \
+ 	createdir="${EXPORTBASE}/${MODULEDIR}" ; \
+ 	$(mkinstalldirs) $$createdir ; \
+--- src/libs/client/Makefile
++++ src/libs/client/Makefile
+@@ -23,6 +23,8 @@
+ SOURCES   = entry.cpp mainmenu.cpp splash.cpp exitmenu.cpp \
+ 	    optionmenu.cpp
+ 
++SOLIBS    = -lconfscreens -lraceengine
++
+ LIBS      =  -lplibssg -lplibsg -lplibul
+ 
+ EXPDIR    = include
+--- src/libs/Makefile
++++ src/libs/Makefile
+@@ -23,7 +23,7 @@
+ 
+ TOOLSUBDIRS	= txml
+ 
+-SUBDIRS		= confscreens racescreens robottools txml tgf tgfclient client raceengineclient learning \
++SUBDIRS		= confscreens racescreens robottools txml tgf tgfclient raceengineclient client learning \
+ 			  portability math
+ 
+ PKGSUBDIRS	= $(SUBDIRS)
+--- src/libs/raceengineclient/Makefile
++++ src/libs/raceengineclient/Makefile
+@@ -23,6 +23,8 @@
+ SOURCES      = singleplayer.cpp raceinit.cpp racemain.cpp racemanmenu.cpp racestate.cpp racegl.cpp \
+ 	       raceengine.cpp raceresults.cpp
+ 
++SOLIBS       = -lconfscreens -lrobottools -lracescreens
++
+ EXPDIR       = include
+ 
+ EXPORTS      = singleplayer.h raceinit.h
+--- src/libs/tgf/Makefile
++++ src/libs/tgf/Makefile
+@@ -29,6 +29,7 @@
+ 		profiler.cpp \
+ 		hash.cpp
+ 
++SOLIBS  = -ltxml
+ 
+ EXPDIR  = include
+ 

@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/404389
+
+From 92071e963e6ff50f0e221dde286f3229267b2ff9 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@enc.com.au>
+Date: Sat, 24 Jan 2015 18:53:29 +1100
+Subject: [PATCH] pmap: print process even if smaps unreadable
+
+pmap would previously print the process name if
+/proc/PID/smaps could be opened, even if subsequent
+reads failed.  This actually occurs with other users
+PIDs.
+
+Kernel 3.18rc1 introduced a change where the file could
+not been opened, meaning pmap -X 1 previously showed
+the process name and nothing else but NOW shows nothing
+make check failed because of this.
+
+This change prints the process name even before trying to open
+the file, returning it to previous behaviour.
+Thanks to Vincent Bernat for some analysis.
+
+References:
+  https://bugs.debian.org/775624
+  https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/commit/?id=29a40ace841cba9b661711f042d1821cdc4ad47c
+
+Signed-off-by: Craig Small <csmall@enc.com.au>
+---
+ NEWS   | 1 +
+ pmap.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/pmap.c b/pmap.c
+index c83617c..17e0e30 100644
+--- a/pmap.c
++++ b/pmap.c
+@@ -533,6 +533,10 @@ static int one_proc(proc_t * p)
+ 	 */
+ 	int maxcmd = 0xfffff;
+ 
++	escape_command(cmdbuf, p, sizeof cmdbuf, &maxcmd,
++		       ESC_ARGS | ESC_BRACKETS);
++	printf("%u:   %s\n", p->tgid, cmdbuf);
++
+ 	if (x_option || X_option || c_option) {
+ 		sprintf(buf, "/proc/%u/smaps", p->tgid);
+ 		if ((fp = fopen(buf, "r")) == NULL)
+@@ -543,10 +547,6 @@ static int one_proc(proc_t * p)
+ 			return 1;
+ 	}
+ 
+-	escape_command(cmdbuf, p, sizeof cmdbuf, &maxcmd,
+-		       ESC_ARGS | ESC_BRACKETS);
+-	printf("%u:   %s\n", p->tgid, cmdbuf);
+-
+ 	if (X_option || c_option) {
+ 		print_extended_maps(fp);
+ 		return 0;
+-- 
+2.4.0
+

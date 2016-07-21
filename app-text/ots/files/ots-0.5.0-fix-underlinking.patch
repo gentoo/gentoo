@@ -1,0 +1,22 @@
+--- src/Makefile.in.orig	2007-04-08 20:17:23.000000000 +0200
++++ src/Makefile.in	2008-07-05 02:16:42.000000000 +0200
+@@ -108,7 +108,7 @@
+ 
+ lib_LTLIBRARIES = libots-1.la
+ 
+-libots_1_la_LIBADD = $(OTS_LIBS)
++libots_1_la_LIBADD = $(OTS_LIBS) -lm
+ libots_1_la_LDFLAGS = -version-info @VERSION_INFO@ $(no_undefined)
+ libots_1_la_SOURCES =  	libots.h			article.c			dictionary.c			grader.c			grader-tf.c			grader-tc.c			grader-tc.h			html.c				parser.c 			text.c				stemmer.c			highlighter.c			wordlist.c			relations.c
+ 
+--- src/Makefile.am~	2007-04-08 18:21:51.000000000 +0200
++++ src/Makefile.am	2009-06-01 00:28:53.000000000 +0200
+@@ -20,7 +20,7 @@
+ 
+ lib_LTLIBRARIES = libots-1.la
+ 
+-libots_1_la_LIBADD  = $(OTS_LIBS)
++libots_1_la_LIBADD  = $(OTS_LIBS) -lm
+ libots_1_la_LDFLAGS = -version-info @VERSION_INFO@ $(no_undefined)
+ libots_1_la_SOURCES =		\
+ 	libots.h		\

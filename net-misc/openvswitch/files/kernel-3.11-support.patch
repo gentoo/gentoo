@@ -1,0 +1,68 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -134,10 +134,10 @@ AC_DEFUN([OVS_CHECK_LINUX], [
+     AC_MSG_RESULT([$kversion])
+ 
+     if test "$version" -ge 3; then
+-       if test "$version" = 3 && test "$patchlevel" -le 10; then
++       if test "$version" = 3 && test "$patchlevel" -le 11; then
+           : # Linux 3.x
+        else
+-         AC_ERROR([Linux kernel in $KBUILD is version $kversion, but version newer than 3.10.x is not supported])
++         AC_ERROR([Linux kernel in $KBUILD is version $kversion, but version newer than 3.11.x is not supported])
+        fi
+     else
+        if test "$version" -le 1 || test "$patchlevel" -le 5 || test "$sublevel" -le 31; then
+--- a/datapath/dp_notify.c
++++ b/datapath/dp_notify.c
+@@ -79,7 +79,7 @@ static int dp_device_event(struct notifi
+ 			   void *ptr)
+ {
+ 	struct ovs_net *ovs_net;
+-	struct net_device *dev = ptr;
++	struct net_device *dev = netdev_notifier_info_to_dev(ptr);
+ 	struct vport *vport = NULL;
+ 
+ 	if (!ovs_is_internal_dev(dev))
+--- a/datapath/linux/compat/include/linux/netdevice.h
++++ b/datapath/linux/compat/include/linux/netdevice.h
+@@ -120,4 +120,11 @@ static inline void netdev_upper_dev_unli
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
++static inline struct net_device *netdev_notifier_info_to_dev(void *info)
++{
++	return info;
++}
++#endif
++
+ #endif
+--- a/datapath/linux/compat/include/net/gre.h
++++ b/datapath/linux/compat/include/net/gre.h
+@@ -74,12 +74,17 @@ static inline __be16 tnl_flags_to_gre_fl
+ #endif /* LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0) */
+ 
+ #define MAX_GRE_PROTO_PRIORITY 255
++#define gre_cisco_protocol rpl_gre_cisco_protocol
++
+ struct gre_cisco_protocol {
+ 	int (*handler)(struct sk_buff *skb, const struct tnl_ptk_info *tpi);
+ 	u8 priority;
+ };
+ 
++#define gre_cisco_register rpl_gre_cisco_register
+ int gre_cisco_register(struct gre_cisco_protocol *proto);
++
++#define gre_cisco_unregister rpl_gre_cisco_unregister
+ int gre_cisco_unregister(struct gre_cisco_protocol *proto);
+ 
+ #define gre_build_header rpl_gre_build_header
+@@ -89,6 +94,7 @@ void gre_build_header(struct sk_buff *sk
+ #define gre_handle_offloads rpl_gre_handle_offloads
+ struct sk_buff *gre_handle_offloads(struct sk_buff *skb, bool gre_csum);
+ 
++#define ip_gre_calc_hlen rpl_ip_gre_calc_hlen
+ static inline int ip_gre_calc_hlen(__be16 o_flags)
+ {
+ 	int addend = 4;

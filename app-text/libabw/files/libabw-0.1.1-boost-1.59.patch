@@ -1,0 +1,22 @@
+From: David Tardon <dtardon@redhat.com>
+Date: Sun, 30 Aug 2015 06:05:31 +0000 (+0200)
+Subject: fix build with boost 1.59
+X-Git-Url: https://gerrit.libreoffice.org/gitweb?p=libabw.git;a=commitdiff_plain;h=ee2d0729315888d1847587ad556470d2fdc883a7;hp=7ea0b5530cf321cd80231b84421e4c107d1cc479
+
+fix build with boost 1.59
+
+Change-Id: I5645629526a8d9d896e4faeb2c7b9ea88540fd23
+---
+
+diff --git a/src/lib/Makefile.am b/src/lib/Makefile.am
+index 5766f39..d12d8e2 100644
+--- a/src/lib/Makefile.am
++++ b/src/lib/Makefile.am
+@@ -26,6 +26,7 @@ generated_files = \
+ 	$(top_builddir)/src/lib/tokens.h \
+ 	$(top_builddir)/src/lib/tokenhash.h
+ 
++libabw_@ABW_MAJOR_VERSION@_@ABW_MINOR_VERSION@_la_CPPFLAGS = -DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_DEPRECATED
+ libabw_@ABW_MAJOR_VERSION@_@ABW_MINOR_VERSION@_la_LIBADD  = $(REVENGE_LIBS) $(LIBXML_LIBS) $(ZLIB_LIBS) @LIBABW_WIN32_RESOURCE@
+ libabw_@ABW_MAJOR_VERSION@_@ABW_MINOR_VERSION@_la_DEPENDENCIES = @LIBABW_WIN32_RESOURCE@
+ libabw_@ABW_MAJOR_VERSION@_@ABW_MINOR_VERSION@_la_LDFLAGS = $(version_info) -export-dynamic $(no_undefined)

@@ -1,0 +1,86 @@
+diff -Naur bootpd-2.4/bootpd.c bootpd-2.4.new/bootpd.c
+--- bootpd-2.4/bootpd.c	1995-02-19 16:53:02.000000000 +0100
++++ bootpd-2.4.new/bootpd.c	2006-03-01 12:32:06.665548576 +0100
+@@ -185,7 +185,7 @@
+  * main server loop is started.
+  */
+ 
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -559,9 +559,9 @@
+ 			break;
+ 		}
+ 	}
++	return(0);
+ }
+ 
+-
+ 
+ 
+ /*
+diff -Naur bootpd-2.4/bootpef.c bootpd-2.4.new/bootpef.c
+--- bootpd-2.4/bootpef.c	1994-11-27 14:36:13.000000000 +0100
++++ bootpd-2.4.new/bootpef.c	2006-03-01 12:32:06.652550552 +0100
+@@ -139,7 +139,7 @@
+  * Initialization such as command-line processing is done and then the
+  * main server loop is started.
+  */
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -275,6 +275,7 @@
+ 		mktagfile(hp);
+ 		hp = (struct host *) hash_NextEntry(nmhashtable);
+ 	}
++	return(0);
+ }
+ 
+ 
+diff -Naur bootpd-2.4/bootpgw.c bootpd-2.4.new/bootpgw.c
+--- bootpd-2.4/bootpgw.c	1994-11-27 14:36:21.000000000 +0100
++++ bootpd-2.4.new/bootpgw.c	2006-03-01 12:32:06.665548576 +0100
+@@ -152,7 +152,7 @@
+  * main server loop is started.
+  */
+ 
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -481,6 +481,7 @@
+ 			break;
+ 		}
+ 	}
++	return(0);
+ }
+ 
+ 
+diff -Naur bootpd-2.4/getether.c bootpd-2.4.new/getether.c
+--- bootpd-2.4/getether.c	1994-11-27 14:36:20.000000000 +0100
++++ bootpd-2.4.new/getether.c	2006-03-01 12:32:06.664548728 +0100
+@@ -340,7 +340,7 @@
+ 	if (ioctl(fd, SIOCGIFHWADDR, &phys) < 0) {
+ 		report(LOG_ERR, "getether: ioctl SIOCGIFHWADDR failed");
+ 	} else {
+-		bcopy(phys.ifr_hwaddr, eap, EALEN);
++		bcopy(&phys.ifr_hwaddr, eap, EALEN);
+ 		rc = 0;
+ 	}
+ 	close(fd);
+diff -Naur bootpd-2.4/report.c bootpd-2.4.new/report.c
+--- bootpd-2.4/report.c	1994-11-27 14:36:16.000000000 +0100
++++ bootpd-2.4.new/report.c	2006-03-01 12:32:06.658549640 +0100
+@@ -10,6 +10,7 @@
+ 
+ #include <stdio.h>
+ #include <syslog.h>
++#include <errno.h>
+ 
+ #include "report.h"
+ 

@@ -1,0 +1,22 @@
+https://code.djangoproject.com/ticket/20514
+diff -ur Django-1.5.orig/django/contrib/gis/tests/test_measure.py Django-1.5/django/contrib/gis/tests/test_measure.py
+--- django/contrib/gis/tests/test_measure.py	2013-02-27 03:04:14.000000000 +0800
++++ django/contrib/gis/tests/test_measure.py	2013-05-28 04:40:18.983011224 +0800
+@@ -40,7 +40,7 @@
+         "Testing access in different units"
+         d = D(m=100)
+         self.assertEqual(d.km, 0.1)
+-        self.assertAlmostEqual(d.ft, 328.084, 3)
++        self.assertAlmostEqual(d.ft, 328.084, places=3)
+ 
+     def testAccessInvalid(self):
+         "Testing access in invalid units"
+@@ -172,7 +172,7 @@
+         "Testing access in different units"
+         a = A(sq_m=100)
+         self.assertEqual(a.sq_km, 0.0001)
+-        self.assertAlmostEqual(a.sq_ft, 1076.391, 3)
++        self.assertAlmostEqual(a.sq_ft, 1076.391, places=3)
+ 
+     def testAccessInvaliA(self):
+         "Testing access in invalid units"

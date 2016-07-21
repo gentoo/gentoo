@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-cluster category contains cluster-related software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-cluster contiene paquetes relacionados con clusters.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-cluster enthält Software für die Arbeit mit Clustern.
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-cluster categorie bevat software voor gebruik met clusters.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-cluster chứa các phần mềm liên quan đến cluster.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-cluster contiene pacchetti per l'utilizzo e la gestione dei clusters.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-cluster contém programas relacionados a cluster.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-cluster zawiera oprogramowanie dla klastrów.
+	</longdescription>
+</catmetadata>
+

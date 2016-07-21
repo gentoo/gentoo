@@ -1,0 +1,44 @@
+--- Make.inc.orig	2014-03-31 12:12:44.564468385 -0700
++++ Make.inc	2014-03-31 12:13:17.094660733 -0700
+@@ -8,27 +8,18 @@
+ libdir = $(prefix)/lib
+ includedir = $(prefix)/include
+ 
+-FC = gfortran
+-FFLAGS += -O3
++FC ?= gfortran
+ 
+-USEGCC = 1
+-USECLANG = 0
+ 
+-ifeq ($(OS), Darwin)
+-USEGCC = 0
+-USECLANG = 1
+-endif
+-
+-AR = ar
++AR ?= ar
++CC ?= gcc
+ 
+-ifeq ($(USECLANG),1)
++ifneq (,$(findstring clang,$(CC)))
+ USEGCC = 0
+-CC = clang
+ CFLAGS_add += -fno-builtin
+ endif
+ 
+-ifeq ($(USEGCC),1)
+-CC = gcc
++ifneq (,$(findstring gcc,$(CC)))
+ CFLAGS_add += -fno-gnu89-inline
+ endif
+ 
+@@ -37,7 +28,7 @@
+ $(error "the mingw32 compiler you are using fails the openblas testsuite. please see the Julia README.windows.md document for a replacement")
+ endif
+ 
+-CFLAGS_add += -std=c99 -Wall -O3 -I$(OPENLIBM_HOME) -I$(OPENLIBM_HOME)/include -I$(OPENLIBM_HOME)/ld80 -I$(OPENLIBM_HOME)/$(ARCH) -I$(OPENLIBM_HOME)/src -DASSEMBLER -D__BSD_VISIBLE -Wno-implicit-function-declaration
++CFLAGS_add += -std=c99 -Wall -I$(OPENLIBM_HOME) -I$(OPENLIBM_HOME)/include -I$(OPENLIBM_HOME)/ld80 -I$(OPENLIBM_HOME)/$(ARCH) -I$(OPENLIBM_HOME)/src -DASSEMBLER -D__BSD_VISIBLE -Wno-implicit-function-declaration
+ 
+ default: all
+ 

@@ -1,0 +1,21 @@
+diff -ur sbin/savecore/savecore.c sbin-zlib/savecore/savecore.c
+--- sbin/savecore/savecore.c	2005-02-26 01:21:50 +0000
++++ sbin-zlib/savecore/savecore.c	2005-05-06 12:00:06 +0000
+@@ -95,7 +95,7 @@
+ static int checkfor, compress, clear, force, keep, verbose;	/* flags */
+ static int nfound, nsaved, nerr;			/* statistics */
+ 
+-extern FILE *zopen(const char *, const char *);
++extern FILE *gzopen(const char *, const char *);
+ 
+ static void
+ printheader(FILE *f, const struct kerneldumpheader *h, const char *device,
+@@ -553,7 +553,7 @@
+ 	if (compress) {
+ 		sprintf(filename, "%s.%d.gz", istextdump ? "textdump.tar" :
+ 		    "vmcore", bounds);
+-		fp = zopen(filename, "w");
++		fp = gzopen(filename, "w");
+ 	} else {
+ 		sprintf(filename, "%s.%d", istextdump ? "textdump.tar" :
+ 		    "vmcore", bounds);

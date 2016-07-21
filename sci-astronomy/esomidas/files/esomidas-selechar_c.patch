@@ -1,0 +1,51 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Fix off-by-one initialization in prim/table/libsrc/selechar.c
+ I am, however, not sure whether it is in charfun() in selechar.c or SCFMAP()
+ in scfb.c.
+ .
+ It fixes the following crash:
+ .
+  ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61a00001f76c at pc 0x42ac5b bp 0x7fffb7a62330 sp 0x7fffb7a62328
+  WRITE of size 1 at 0x61a00001f76c thread T0
+    #0 0x42ac5a in charfun prim/table/libsrc/selechar.c:279
+    #1 0x4154f5 in level5 prim/table/libsrc/tbcomsel.c:797
+    #2 0x41572a in level4 prim/table/libsrc/tbcomsel.c:720
+    #3 0x415c57 in level3 prim/table/libsrc/tbcomsel.c:765
+    #4 0x415d1d in level2 prim/table/libsrc/tbcomsel.c:677
+    #5 0x41610e in level1 prim/table/libsrc/tbcomsel.c:636
+    #6 0x4165b0 in level0 prim/table/libsrc/tbcomsel.c:595
+    #7 0x41415d in level00 prim/table/libsrc/tbcomsel.c:555
+    #8 0x4179ff in tbl_comp prim/table/libsrc/tbcomsel.c:204
+    #9 0x4053fd in tk_cexec prim/edit/libsrc/tkeys.c:204
+    #10 0x404979 in main prim/table/src/tdatatbl.c:107
+    #11 0x7f1e97ae3b44 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #12 0x404d62 (prim/exec/tdatatbl.exe+0x404d62)
+ .
+  0x61a00001f76c is located 0 bytes to the right of 1260-byte region [0x61a00001f280,0x61a00001f76c)
+allocated by thread T0 here:
+    #0 0x7f1e9858373f in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.1+0x5473f)
+    #1 0x7f1e98241cf2 in SCFMAP libsrc/st/scfb.c:816
+    #2 0x42a0a3 in charfun prim/table/libsrc/selechar.c:250
+    #3 0x4154f5 in level5 prim/table/libsrc/tbcomsel.c:797
+    #4 0x41572a in level4 prim/table/libsrc/tbcomsel.c:720
+    #5 0x415c57 in level3 prim/table/libsrc/tbcomsel.c:765
+    #6 0x415d1d in level2 prim/table/libsrc/tbcomsel.c:677
+    #7 0x41610e in level1 prim/table/libsrc/tbcomsel.c:636
+    #8 0x4165b0 in level0 prim/table/libsrc/tbcomsel.c:595
+    #9 0x41415d in level00 prim/table/libsrc/tbcomsel.c:555
+    #10 0x4179ff in tbl_comp prim/table/libsrc/tbcomsel.c:204
+    #11 0x4053fd in tk_cexec prim/edit/libsrc/tkeys.c:204
+    #12 0x404979 in main prim/table/src/tdatatbl.c:107
+    #13 0x7f1e97ae3b44 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+
+--- a/prim/table/libsrc/selechar.c
++++ b/prim/table/libsrc/selechar.c
+@@ -247,7 +247,7 @@
+ 	     nconst[ibuf[6]] = nchar;
+ 	     items = nchar * ibuf[2];
+              SCFCRE(name,D_I1_FORMAT,F_X_MODE,F_IMA_TYPE,items,&imnoc[ibuf[6]]);
+-             SCFMAP(imnoc[ibuf[6]],F_X_MODE,1,items,&act,&cdata[ibuf[6]]);
++             SCFMAP(imnoc[ibuf[6]],F_X_MODE,1,items+1,&act,&cdata[ibuf[6]]);
+ 	     }
+ 	     if (nochar == 0) {
+ 	       for (i=0, k=0; i<items; i+=nchar,k++) {

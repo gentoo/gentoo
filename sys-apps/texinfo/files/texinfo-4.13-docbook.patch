@@ -1,0 +1,66 @@
+--- texinfo-4.13.orig/makeinfo/cmds.c	2008-05-22 05:11:34.000000000 -0700
++++ texinfo-4.13/makeinfo/cmds.c	2012-05-23 18:31:57.108264307 -0700
+@@ -1560,7 +1560,7 @@ cm_setfilename (void)
+   char *filename;
+   get_rest_of_line (1, &filename);
+   /* warning ("`@%s %s' encountered and ignored", command, filename); */
+-  if (xml)
++  if (xml && !docbook)
+     add_word_args ("<setfilename>%s</setfilename>", filename);
+   free (filename);
+ }
+--- texinfo-4.13.orig/makeinfo/node.c	2008-07-05 16:59:47.000000000 -0700
++++ texinfo-4.13/makeinfo/node.c	2012-05-23 17:02:46.517345024 -0700
+@@ -1233,10 +1233,12 @@ cm_anchor (int arg)
+     }
+   else if (xml || docbook)
+     {
++      char *id = xml_id(anchor);
+       xml_insert_element_with_attribute (ANCHOR, START,
+ 					 docbook ? "id=\"%s\"" : "name=\"%s\"",
+-					 anchor);
++					 id);
+       xml_insert_element (ANCHOR, END);
++      free(id);
+     }
+ 
+   /* Save it in the tag table.  */
+--- texinfo-4.13.orig/makeinfo/xml.c	2008-02-12 17:00:55.000000000 -0800
++++ texinfo-4.13/makeinfo/xml.c	2012-05-23 17:20:13.698858895 -0700
+@@ -586,21 +586,27 @@ static int in_indexterm = 0;
+ char *
+ xml_id (char *id)
+ {
+-  char *tem = xmalloc (strlen (id) + 1);
++  /* Get an extra space to accomodate adding an i-prefix. */
++  char *tem = xmalloc (strlen (id) + 2);
+   char *p = tem;
+-  strcpy (tem, id);
++
++  /* First character cannot be a number, '-' or '.'. Just always add
++     an i if we're not starting with a alphanumeric character
++     already, to simplify the code.
++  */
++  if (!isalpha(*id))
++    {
++      *p++ = 'i';
++    }
++
++  strcpy (p, id);
++
+   while (*p)
+     {
+-      if (strchr (":\" \t\f\r\n", *p))
++      if (!isalnum (*p) && !strchr (":_.-", *p))
+         *p = '-';
+       p++;
+     }
+-  p = tem;
+-
+-  /* First character cannot be a number.  Clearly we should make this
+-     dependent on the actual numeral found.  */
+-  if (strchr ("0123456789", *p))
+-    *p = 'i';
+ 
+   return tem;
+ }

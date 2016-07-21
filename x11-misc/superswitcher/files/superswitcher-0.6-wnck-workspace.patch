@@ -1,0 +1,62 @@
+It seems like wnck_window_is_skip_pager isn't all we need to check.
+
+--- superswitcher/src/screen.c
++++ superswitcher/src/screen.c
+@@ -505,6 +505,7 @@
+ static SSWindow *
+ add_window_to_screen (SSScreen *screen, WnckWindow *wnck_window)
+ {
++  WnckWorkspace *wnck_workspace;
+   SSWindow *window;
+   SSWorkspace *workspace;
+   int n;
+@@ -513,7 +514,13 @@
+     return NULL;
+   }
+ 
+-  n = wnck_workspace_get_number (wnck_window_get_workspace (wnck_window));
++  wnck_workspace = wnck_window_get_workspace (wnck_window);
++
++  if (wnck_workspace == NULL) {
++    return NULL;
++  }
++
++  n = wnck_workspace_get_number (wnck_workspace);
+   workspace = ss_screen_get_nth_workspace (screen, n);
+ 
+   window = ss_window_new (workspace, wnck_window);
+--- superswitcher/src/window.c
++++ superswitcher/src/window.c
+@@ -254,6 +254,7 @@
+ static void
+ on_workspace_changed (WnckWindow *wnck_window, gpointer data)
+ {
++  WnckWorkspace *wnck_workspace;
+   SSWindow *window;
+   SSWorkspace *old_workspace;
+   SSWorkspace *new_workspace;
+@@ -261,12 +262,19 @@
+ 
+   window = (SSWindow *) data;
+   old_workspace = window->workspace;
+-  new_workspace_id = wnck_workspace_get_number (wnck_window_get_workspace (wnck_window));
+-  new_workspace = ss_screen_get_nth_workspace (old_workspace->screen, new_workspace_id);
+-
+   ss_workspace_remove_window (old_workspace, window);
++
++  wnck_workspace = wnck_window_get_workspace (wnck_window);
++  if (wnck_workspace) {
++    new_workspace_id = wnck_workspace_get_number (wnck_workspace);
++    new_workspace = ss_screen_get_nth_workspace (old_workspace->screen, new_workspace_id);
++
++    ss_workspace_add_window (new_workspace, window);
++    window->workspace = new_workspace;
++  } else {
++    window->workspace = NULL;
++  }
++
+-  window->workspace = new_workspace;
+-  ss_workspace_add_window (new_workspace, window);
+   window->new_window_index = -1;
+   gtk_widget_queue_draw (gtk_widget_get_toplevel (window->widget));
+ }

@@ -1,0 +1,60 @@
+diff -ur eid-mw-4.1.4-v4.1.4-a/cardcomm/pkcs11/src/Makefile.am eid-mw-4.1.4-v4.1.4-b/cardcomm/pkcs11/src/Makefile.am
+--- eid-mw-4.1.4-v4.1.4-a/cardcomm/pkcs11/src/Makefile.am	2015-07-27 10:30:34.638418958 +0200
++++ eid-mw-4.1.4-v4.1.4-b/cardcomm/pkcs11/src/Makefile.am	2015-08-13 14:12:43.827586821 +0200
+@@ -164,29 +164,3 @@
+ 	dialogs/dialogsgtk/dlgs_gtk.cpp \
+ 	dialogs/dialogsgtk/single_dialog.c
+ endif
+-
+-libexec_PROGRAMS = beid-askpin beid-changepin beid-badpin beid-askaccess beid-spr-askpin beid-spr-changepin
+-
+-beid_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askpin.c
+-beid_askpin_CPPFLAGS = -I$(srcdir)/dialogsgtk -I$(srcdir)/../common/src -I$(srcdir)/src @GTK_CFLAGS@
+-beid_askpin_LDADD = @GTK_LIBS@
+-
+-beid_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-changepin.c
+-beid_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
+-beid_changepin_LDADD = @GTK_LIBS@
+-
+-beid_badpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-badpin.c
+-beid_badpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
+-beid_badpin_LDADD = @GTK_LIBS@
+-
+-beid_askaccess_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askaccess.c
+-beid_askaccess_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
+-beid_askaccess_LDADD = @GTK_LIBS@
+-
+-beid_spr_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-askpin.c
+-beid_spr_askpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
+-beid_spr_askpin_LDADD = @GTK_LIBS@
+-
+-beid_spr_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-changepin.c
+-beid_spr_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
+-beid_spr_changepin_LDADD = @GTK_LIBS@
+diff -ur eid-mw-4.1.4-v4.1.4-a/configure.ac eid-mw-4.1.4-v4.1.4-b/configure.ac
+--- eid-mw-4.1.4-v4.1.4-a/configure.ac	2015-07-27 10:30:34.641752294 +0200
++++ eid-mw-4.1.4-v4.1.4-b/configure.ac	2015-08-13 14:13:51.456736608 +0200
+@@ -55,11 +55,6 @@
+ 	fi
+ fi
+ 
+-if test x"$have_gtk" = "xno"
+-then
+-	AC_MSG_ERROR([At least one version of GTK is required.])
+-fi
+-
+ ###########################################################################
+ ####### read user-specific requests from --enable directives         ######
+ ###########################################################################
+diff -ur eid-mw-4.1.4-v4.1.4-a/Makefile.am eid-mw-4.1.4-v4.1.4-b/Makefile.am
+--- eid-mw-4.1.4-v4.1.4-a/Makefile.am	2015-07-27 10:30:34.638418958 +0200
++++ eid-mw-4.1.4-v4.1.4-b/Makefile.am	2015-08-13 14:11:43.878340486 +0200
+@@ -1,7 +1,7 @@
+ ACLOCAL_AMFLAGS = -I scripts/m4
+ EXTRA_DIST = scripts/build-aux/config.rpath  debian build-debian.sh rpm doc
+ 
+-SUBDIRS=cardcomm/pkcs11/src tests/unit plugins_tools/xpi plugins_tools/aboutmw/gtk
++SUBDIRS=cardcomm/pkcs11/src tests/unit plugins_tools/xpi
+ 
+ xpipackage:
+ 	$(MAKE) -C plugins_tools/xpi xpipackage

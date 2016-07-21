@@ -1,0 +1,23 @@
+--- bamtools-2.3.0/src/api/CMakeLists.txt.ori	2013-08-27 18:00:43.000000000 +0200
++++ bamtools-2.3.0/src/api/CMakeLists.txt	2013-08-27 18:00:47.000000000 +0200
+@@ -54,8 +54,8 @@
+ target_link_libraries( BamTools-static ${APILibs} )
+ 
+ # set library install destinations
+-install( TARGETS BamTools        LIBRARY DESTINATION "lib/bamtools" RUNTIME DESTINATION "bin")
+-install( TARGETS BamTools-static ARCHIVE DESTINATION "lib/bamtools")
++install( TARGETS BamTools        LIBRARY DESTINATION "lib${LIB_SUFFIX}" RUNTIME DESTINATION "bin")
++install( TARGETS BamTools-static ARCHIVE DESTINATION "lib${LIB_SUFFIX}")
+ 
+ # export API headers
+ include(../ExportHeader.cmake)
+--- bamtools-2.3.0/src/CMakeLists.txt.ori	2013-08-27 18:03:10.000000000 +0200
++++ bamtools-2.3.0/src/CMakeLists.txt	2013-08-27 18:03:23.000000000 +0200
+@@ -6,7 +6,6 @@
+ # ==========================
+ 
+ add_subdirectory( api )
+-add_subdirectory( third_party )
+ add_subdirectory( toolkit )
+ add_subdirectory( utils )
+ 

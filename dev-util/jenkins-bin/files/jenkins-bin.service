@@ -1,0 +1,10 @@
+[Unit]
+Description=Jenkins Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/java -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jenkins/home -jar /opt/jenkins/jenkins.war --daemon --logfile=/var/log/jenkins/jenkins.log --httpPort=8080 --debug=5 --handlerCountMax=100 --handlerCountMaxIdle=20 --accessLoggerClassName=winstone.accesslog.SimpleAccessLogger --simpleAccessLogger.format=combined --simpleAccessLogger.file=/var/log/jenkins/access_log
+User=jenkins
+
+[Install]
+WantedBy=multi-user.target

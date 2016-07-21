@@ -1,0 +1,20 @@
+--- a/tools/xmode2.c	2011-03-25 23:28:18.000000000 +0100
++++ b/tools/xmode2.c	2012-07-29 19:36:34.972246587 +0200
+@@ -69,7 +69,7 @@
+ Window w0, w1;			/*w0 = root */
+ char w1_wname[] = "xmode2";
+ char w1_iname[] = "xmode2";
+-char font1_name[] = "-*-Courier-medium-r-*-*-8-*-*-m-*-iso8859-1";
++char font1_name[] = "fixed";
+ 
+ int w1_x = 0, w1_y = 0;
+ unsigned int w1_w = 640, w1_h = 480, w1_border = 0;
+@@ -201,7 +201,7 @@
+ 		printf("coudn't allocate blue color\n");
+ 	f1_str = XLoadQueryFont(d1, font1_name);
+ 	if (f1_str == NULL) {
+-		printf("could't load font\n");
++		printf("couldn't load font\n");
+ 		exit(EXIT_FAILURE);
+ 	}
+ 

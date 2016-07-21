@@ -1,0 +1,134 @@
+From 5634ce9890da48f9ea88feece856361ce8f1563c Mon Sep 17 00:00:00 2001
+From: Brendan Horan <brendan@horan.hk>
+Date: Tue, 23 Jun 2015 09:32:31 +0800
+Subject: [PATCH] Fixed recursive use of make in makefiles [ make -> $(MAKE) ]
+
+---
+ Makefile.in                | 2 +-
+ config/Make-inc.mk         | 2 +-
+ src/Makefile.in            | 2 +-
+ src/etc/Makefile.in        | 2 +-
+ src/libcommon/Makefile.in  | 2 +-
+ src/libmissing/Makefile.in | 2 +-
+ src/libmunge/Makefile.in   | 2 +-
+ src/munge/Makefile.in      | 2 +-
+ src/munged/Makefile.in     | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 8b8ca76..df53ff1 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -830,7 +830,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/config/Make-inc.mk b/config/Make-inc.mk
+index 03a9622..edffea1 100644
+--- a/config/Make-inc.mk
++++ b/config/Make-inc.mk
+@@ -31,7 +31,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index c89ec9c..38c32da 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -648,7 +648,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/etc/Makefile.in b/src/etc/Makefile.in
+index ffd41a0..d1eed84 100644
+--- a/src/etc/Makefile.in
++++ b/src/etc/Makefile.in
+@@ -451,7 +451,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/libcommon/Makefile.in b/src/libcommon/Makefile.in
+index 45419a8..8512b74 100644
+--- a/src/libcommon/Makefile.in
++++ b/src/libcommon/Makefile.in
+@@ -683,7 +683,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/libmissing/Makefile.in b/src/libmissing/Makefile.in
+index 10b1a78..187f4b3 100644
+--- a/src/libmissing/Makefile.in
++++ b/src/libmissing/Makefile.in
+@@ -572,7 +572,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/libmunge/Makefile.in b/src/libmunge/Makefile.in
+index 69dc54f..ab21fdc 100644
+--- a/src/libmunge/Makefile.in
++++ b/src/libmunge/Makefile.in
+@@ -752,7 +752,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/munge/Makefile.in b/src/munge/Makefile.in
+index f411d7e..411ec3b 100644
+--- a/src/munge/Makefile.in
++++ b/src/munge/Makefile.in
+@@ -752,7 +752,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 
+diff --git a/src/munged/Makefile.in b/src/munged/Makefile.in
+index c14fd0b..5112da3 100644
+--- a/src/munged/Makefile.in
++++ b/src/munged/Makefile.in
+@@ -1243,7 +1243,7 @@ $(top_builddir)/src/libcommon/libcommon.la \
+ $(top_builddir)/src/libmissing/libmissing.la \
+ $(top_builddir)/src/libmunge/libmunge.la \
+ : force-dependency-check
+-	@cd `dirname $@` && make `basename $@`
++	@cd `dirname $@` && $(MAKE) `basename $@`
+ 
+ force-dependency-check:
+ 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Shell-EnvImporter</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Change</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Result</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::bash</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::csh</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::ksh</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::perl</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::sh</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::tcsh</remote-id>
+    <remote-id type="cpan-module">Shell::EnvImporter::Shell::zsh</remote-id>
+  </upstream>
+</pkgmetadata>

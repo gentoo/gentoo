@@ -1,0 +1,28 @@
+--- netcdf-cxx4-4.2.1/ncxx4-config.in.orig	2013-01-10 10:47:00.595224631 -0800
++++ netcdf-cxx4-4.2.1/ncxx4-config.in	2013-01-10 10:49:22.856926765 -0800
+@@ -5,7 +5,7 @@
+ 
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=@libdir@
+ includedir=${prefix}/include
+ 
+ cc="@CC@"
+@@ -13,7 +13,7 @@
+ fc="@FC@"
+ cflags=" -I${includedir} @CPPFLAGS@" 
+ fflags="@FFLAGS@ @MOD_FLAG@${includedir}"
+-libs="-L${libdir} @NC_LIBS@"
++libs="-L${libdir} @NC_LIBS@ -lnetcdf"
+ flibs="-L${libdir} @NC_FLIBS@"
+ has_dap="@HAS_DAP@"
+ has_nc2="@HAS_NC2@"
+--- netcdf-cxx4-4.2.1/netcdf-cxx4.pc.in.orig	2013-01-10 10:46:50.995177250 -0800
++++ netcdf-cxx4-4.2.1/netcdf-cxx4.pc.in	2013-01-10 10:49:45.030036161 -0800
+@@ -10,4 +10,4 @@
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} @NC_LIBS@
+ Cflags: -I${includedir}
+-
++Requires: netcdf

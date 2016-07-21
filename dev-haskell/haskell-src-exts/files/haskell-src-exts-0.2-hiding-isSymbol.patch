@@ -1,0 +1,68 @@
+diff -urwpN haskell-src-exts.org/src/haskell-src-exts/Language/Haskell/Hsx/Lexer.hs haskell-src-exts/src/haskell-src-exts/Language/Haskell/Hsx/Lexer.hs
+--- haskell-src-exts.org/src/haskell-src-exts/Language/Haskell/Hsx/Lexer.hs	2005-05-01 22:40:45.000000000 +0100
++++ haskell-src-exts/src/haskell-src-exts/Language/Haskell/Hsx/Lexer.hs	2006-10-11 19:42:53.000000000 +0100
+@@ -207,9 +207,9 @@ special_varids = [
+  ( "hiding", 	KW_Hiding )
+  ]
+ 
+-isIdent, isSymbol :: Char -> Bool
++isIdent, isSymbol' :: Char -> Bool
+ isIdent  c = isAlpha c || isDigit c || c == '\'' || c == '_'
+-isSymbol c = elem c ":!#$%&*+./<=>?@\\^|-~"
++isSymbol' c = elem c ":!#$%&*+./<=>?@\\^|-~"
+ 
+ matchChar :: Char -> String -> Lex a ()
+ matchChar c msg = do
+@@ -242,7 +242,7 @@ lexWhiteSpace bol = do
+ 		bol <- lexNestedComment bol
+ 		(bol, _) <- lexWhiteSpace bol
+ 		return (bol, True)
+-	    '-':'-':s | all (== '-') (takeWhile isSymbol s) -> do
++	    '-':'-':s | all (== '-') (takeWhile isSymbol' s) -> do
+ 		lexWhile (== '-')
+ 		lexWhile (/= '\n')
+ 		lexNewline
+@@ -489,8 +489,8 @@ lexStdToken = do
+ 			Just keyword -> keyword
+ 			Nothing -> VarId ident
+ 
+-	    | isSymbol c -> do
+-		sym <- lexWhile isSymbol
++	    | isSymbol' c -> do
++		sym <- lexWhile isSymbol'
+ 		return $ case lookup sym (reserved_ops ++ special_varops) of
+ 			Just t  -> t
+ 			Nothing -> case c of
+@@ -586,9 +586,9 @@ lexConIdOrQual qual = do
+ 		discard 1
+ 		lexConIdOrQual qual'
+ 
+-	     | isSymbol c -> do	-- qualified symbol?
++	     | isSymbol' c -> do	-- qualified symbol?
+ 		discard 1
+-		sym <- lexWhile isSymbol
++		sym <- lexWhile isSymbol'
+ 		case lookup sym reserved_ops of
+ 		    -- cannot qualify a reserved operator
+ 		    Just _  -> just_a_conid
+diff -urwpN haskell-src-exts.org/src/haskell-src-exts/Language/Haskell/Hsx/Transform.hs haskell-src-exts/src/haskell-src-exts/Language/Haskell/Hsx/Transform.hs
+--- haskell-src-exts.org/src/haskell-src-exts/Language/Haskell/Hsx/Transform.hs	2005-04-08 16:17:29.000000000 +0100
++++ haskell-src-exts/src/haskell-src-exts/Language/Haskell/Hsx/Transform.hs	2006-10-11 19:40:49.000000000 +0100
+@@ -1270,7 +1270,7 @@ trRPat s linear rp = case rp of
+ 		    	HsIdent n -> fail $ "Attempting to bind variable "++n++
+ 					  " inside the context of a numerable regular pattern"
+ 		    	_	      -> fail $ "This should never ever ever happen...\
+-						  \ how the ¤#% did you do it??!?"
++						  \ how the #% did you do it??!?"
+ 
+       where -- | Generate a declaration for a @ binding.
+ 	    mkAsDecl :: SrcLoc -> MFunMetaInfo -> Tr HsName
+@@ -1429,7 +1429,7 @@ trRPat s linear rp = case rp of
+   	-- of transformations of optional patterns should be able to call it...)
+   	mkOptDecl :: SrcLoc -> Bool -> MFunMetaInfo -> Tr MFunMetaInfo
+   	mkOptDecl s greedy nvt@(_, vs, t) = do
+-  		-- Un nome, s'il vouz plaît.
++  		-- Un nome, s'il vouz plaÃ®t.
+   		n <- genMatchName
+   		let -- Generate a generator for matching the subpattern
+   		    (g, val) = mkGenExp s nvt			-- (harp_valX, (foo, bar, ...)) <- harp_matchY

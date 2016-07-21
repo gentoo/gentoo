@@ -1,0 +1,82 @@
+--- command_line.cxx
++++ command_line.cxx
+@@ -19,7 +19,9 @@
+ 
+ #include <config.h>
+ #include <iostream>
+-#include <stdio.h>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
+ #include "settings.hxx"
+ #include "command_line.hxx"
+ 
+--- config.hxx
++++ config.hxx
+@@ -21,6 +21,7 @@
+ #define CONFIG_HH
+ 
+ #include <string>
++#include <cstdlib>
+ 
+ class Config
+ {
+--- lisp_reader.cxx
++++ lisp_reader.cxx
+@@ -17,6 +17,7 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
++#include <cstring>
+ #include "construo_error.hxx"
+ #include "lisp_reader.hxx"
+ 
+--- unix_system.cxx
++++ unix_system.cxx
+@@ -17,8 +17,9 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+-#include <stdio.h>
+-#include <assert.h>
++#include <cstdio>
++#include <cassert>
++#include <cstring>
+ #include <unistd.h>
+ #include <sys/time.h>
+ #include <time.h>
+--- vector.cxx
++++ vector.cxx
+@@ -16,8 +16,8 @@
+ 	totally replaced old CL_Vector with this code
+ */
+ 
+-#include <assert.h>
+-#include <math.h>
++#include <cassert>
++#include <cmath>
+ #include "vector.hxx"
+ 
+ CL_Vector::CL_Vector(float x, float y, float z, float w)
+--- world.cxx
++++ world.cxx
+@@ -17,7 +17,8 @@
+ //  along with this program; if not, write to the Free Software
+ //  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ 
+-#include <assert.h>
++#include <cassert>
++#include <cstring>
+ #include <algorithm>
+ #include "config.h"
+ 
+--- x11_display.cxx
++++ x11_display.cxx
+@@ -19,6 +19,7 @@
+ 
+ #include <config.h>
+ #include <iostream>
++#include <cstring>
+ #include <X11/Xutil.h>
+ #include <X11/cursorfont.h>
+ #include <X11/keysym.h>

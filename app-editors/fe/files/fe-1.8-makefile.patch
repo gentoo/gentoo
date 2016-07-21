@@ -1,0 +1,16 @@
+diff -Nur fe-1.8-orig/Makefile.in fe-1.8/Makefile.in
+--- fe-1.8-orig/Makefile.in	2007-08-31 20:47:09.000000000 +0200
++++ fe-1.8/Makefile.in	2011-08-27 21:07:43.000000000 +0200
+@@ -40,10 +40,10 @@
+ 
+ install:	all
+ 		$(INSTALL) -m 755 -d $(BINDIR)
+-		$(INSTALL_PROGRAM) -s fe $(BINDIR)/fe
++		$(INSTALL_PROGRAM) fe $(BINDIR)/fe
+ 		$(INSTALL) -m 755 -d $(MANDIR)/man1
+ 		$(INSTALL_DATA) fe.1 $(MANDIR)/man1/fe.1
+-		make install-po
++		$(MAKE) install-po
+ 
+ .c.o:
+ 		$(CC) -c $(CPPFLAGS) $(CFLAGS) $<

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+  <use>
+    <flag name="cdemu-daemon">Pull <pkg>app-cdr/cdemu-daemon</pkg> dependency, useful in chroot environment (bug #315491). Do not disable until you know what you are doing.</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">cdemu</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+--- lingot-0.9.1.orig/Makefile.am
++++ lingot-0.9.1/Makefile.am
+@@ -8,19 +8,11 @@
+ lingotdocdir = ${docdir}
+ lingotdoc_DATA = \
+ 	README\
+-	COPYING\
+ 	AUTHORS\
+ 	ChangeLog\
+-	INSTALL\
+ 	NEWS\
+-	TODO\
+ 	THANKS\
+-	MAINTAINERS\
+-	src/lingot-background.xpm\
+-	src/lingot-logo.xpm\
+-	intltool-extract.in\
+-	intltool-merge.in\
+-	intltool-update.in
++	MAINTAINERS
+ 
+ EXTRA_DIST = $(lingotdoc_DATA)
+ 

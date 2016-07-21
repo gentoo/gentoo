@@ -1,0 +1,603 @@
+
+Add S4U2Proxy feature:
+
+http://sourceforge.net/mailarchive/forum.php?thread_name=4EE665D1.3000308%40redhat.com&forum_name=modauthkerb-help
+
+The attached patches add support for using s4u2proxy 
+(http://k5wiki.kerberos.org/wiki/Projects/Services4User) to allow the 
+web service to obtain credentials on behalf of the authenticated user.
+
+The first patch adds basic support for s4u2proxy. This requires the web 
+administrator to manually create and manage the credentails cache for 
+the apache user (via a cron job, for example).
+
+The second patch builds on this and makes mod_auth_kerb manage the 
+ccache instead.
+
+These are patches against the current CVS HEAD (mod_auth_krb 5.4).
+
+I've added a new module option to enable this support, 
+KrbConstrainedDelegation. The default is off.
+
+--- mod_auth_kerb-5.4.orig/README	2008-11-26 11:51:05.000000000 -0500
++++ mod_auth_kerb-5.4/README	2012-01-04 11:17:22.000000000 -0500
+@@ -122,4 +122,16 @@ KrbSaveCredentials, the tickets will be 
+ credential cache that will be available for the request handler. The ticket
+ file will be removed after request is handled.
+ 
++Constrained Delegation
++----------------------
++S4U2Proxy, or constrained delegation, enables a service to use a client's
++ticket to itself to request another ticket for delegation. The KDC
++checks krbAllowedToDelegateTo to decide if it will issue a new ticket.
++If KrbConstrainedDelegation is enabled the server will use its own credentials
++to retrieve a delegated ticket for the user. For this to work the user must
++have a forwardable ticket (though the delegation flag need not be set).
++The server needs a valid credentials cache for this to work.
++
++The module itself will obtain and manage the necessary credentials.
++
+ $Id: README,v 1.12 2008/09/17 14:01:55 baalberith Exp $
+diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.4/src/mod_auth_kerb.c
+--- mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c	2011-12-09 17:55:05.000000000 -0500
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c	2012-03-01 14:19:40.000000000 -0500
+@@ -42,6 +42,31 @@
+  * POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++/*
++ * Locking mechanism inspired by mod_rewrite.
++ *
++ * Licensed to the Apache Software Foundation (ASF) under one or more
++ * contributor license agreements.  See the NOTICE file distributed with
++ * this work for additional information regarding copyright ownership.
++ * The ASF licenses this file to You under the Apache License, Version 2.0
++ * (the "License"); you may not use this file except in compliance with
++ * the License.  You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/*
++ * S4U2Proxy code
++ *
++ * Copyright (C) 2012  Red Hat
++ */
++
+ #ident "$Id: mod_auth_kerb.c,v 1.150 2008/12/04 10:14:03 baalberith Exp $"
+ 
+ #include "config.h"
+@@ -49,6 +74,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <unixd.h>
+ 
+ #define MODAUTHKERB_VERSION "5.4"
+ 
+@@ -122,6 +148,12 @@
+ module auth_kerb_module;
+ #endif
+ 
++#ifdef STANDARD20_MODULE_STUFF
++/* s4u2proxy only supported in 2.0+ */
++static const char *lockname;
++static apr_global_mutex_t *s4u2proxy_lock = NULL;
++#endif
++
+ /*************************************************************************** 
+  Macros To Ease Compatibility
+  ***************************************************************************/
+@@ -156,6 +188,7 @@
+ 	int krb_method_gssapi;
+ 	int krb_method_k5pass;
+ 	int krb5_do_auth_to_local;
++       int krb5_s4u2proxy;
+ #endif
+ #ifdef KRB4
+ 	char *krb_4_srvtab;
+@@ -176,6 +209,11 @@
+ 
+ static const char*
+ krb5_save_realms(cmd_parms *cmd, void *sec, const char *arg);
++static const char *
++cmd_delegationlock(cmd_parms *cmd, void *dconf, const char *a1);
++
++static int
++obtain_server_credentials(request_rec *r, const char *service_name);
+ 
+ #ifdef STANDARD20_MODULE_STUFF
+ #define command(name, func, var, type, usage)           \
+@@ -228,6 +266,12 @@
+ 
+    command("KrbLocalUserMapping", ap_set_flag_slot, krb5_do_auth_to_local,
+      FLAG, "Set to 'on' to have Kerberos do auth_to_local mapping of principal names to system user names."),
++
++   command("KrbConstrainedDelegation", ap_set_flag_slot, krb5_s4u2proxy,
++     FLAG, "Set to 'on' to have Kerberos use S4U2Proxy delegation."),
++
++    AP_INIT_TAKE1("KrbConstrainedDelegationLock", cmd_delegationlock, NULL,
++     RSRC_CONF, "the filename of a lockfile used for inter-process synchronization"),
+ #endif 
+ 
+ #ifdef KRB4
+@@ -293,6 +337,7 @@
+ #endif
+ #ifdef KRB5
+   ((kerb_auth_config *)rec)->krb5_do_auth_to_local = 0;
++	((kerb_auth_config *)rec)->krb5_s4u2proxy = 0;
+ 	((kerb_auth_config *)rec)->krb_method_k5pass = 1;
+ 	((kerb_auth_config *)rec)->krb_method_gssapi = 1;
+ #endif
+@@ -310,6 +355,24 @@
+    return NULL;
+ }
+ 
++static const char *
++cmd_delegationlock(cmd_parms *cmd, void *dconf, const char *a1)
++{
++    const char *error;
++
++    if ((error = ap_check_cmd_context(cmd, GLOBAL_ONLY)) != NULL)
++        return error;
++
++    /* fixup the path, especially for s4u2proxylock_remove() */
++    lockname = ap_server_root_relative(cmd->pool, a1);
++
++    if (!lockname) {
++        return apr_pstrcat(cmd->pool, "Invalid KrbConstrainedDelegationLock path ", a1, NULL);
++    }
++
++    return NULL;
++}
++
+ static void
+ log_rerror(const char *file, int line, int level, int status,
+            const request_rec *r, const char *fmt, ...)
+@@ -1161,6 +1224,7 @@
+    gss_buffer_desc token = GSS_C_EMPTY_BUFFER;
+    OM_uint32 major_status, minor_status, minor_status2;
+    gss_name_t server_name = GSS_C_NO_NAME;
++   gss_cred_usage_t usage = GSS_C_ACCEPT;
+    char buf[1024];
+    int have_server_princ;
+ 
+@@ -1203,10 +1267,14 @@
+ 
+    log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "Acquiring creds for %s",
+ 	      token.value);
++   if (conf->krb5_s4u2proxy) {
++       usage = GSS_C_BOTH;
++       obtain_server_credentials(r, conf->krb_service_name);
++   }
+    gss_release_buffer(&minor_status, &token);
+    
+    major_status = gss_acquire_cred(&minor_status, server_name, GSS_C_INDEFINITE,
+-			           GSS_C_NO_OID_SET, GSS_C_ACCEPT,
++			           GSS_C_NO_OID_SET, usage,
+ 				   server_creds, NULL, NULL);
+    gss_release_name(&minor_status2, &server_name);
+    if (GSS_ERROR(major_status)) {
+@@ -1248,6 +1316,305 @@
+ }
+ #endif
+ 
++/* Renew the ticket if it will expire in under a minute */
++#define RENEWAL_TIME 60
++
++/*
++ * Services4U2Proxy lets a server prinicipal request another service
++ * principal on behalf of a user. To do this the Apache service needs
++ * to have its own ccache. This will ensure that the ccache has a valid
++ * principal and will initialize or renew new credentials when needed.
++ */
++
++static int
++verify_server_credentials(request_rec *r,
++                          krb5_context kcontext,
++                          krb5_ccache ccache,
++                          krb5_principal princ,
++                          int *renew
++)
++{
++    krb5_creds match_cred;
++    krb5_creds creds;
++    char * princ_name = NULL;
++    char *tgs_princ_name = NULL;
++    krb5_timestamp now;
++    krb5_error_code kerr = 0;
++
++    *renew = 0;
++
++    memset (&match_cred, 0, sizeof(match_cred));
++    memset (&creds, 0, sizeof(creds));
++
++    if (NULL == ccache || NULL == princ) {
++        /* Nothing to verify */
++        *renew = 1;
++        goto cleanup;
++    }
++
++    if ((kerr = krb5_unparse_name(kcontext, princ, &princ_name))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Could not unparse principal %s (%d)",
++                   error_message(kerr), kerr);
++        goto cleanup;
++    }
++
++    log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++        "Using principal %s for s4u2proxy", princ_name);
++
++#ifdef HEIMDAL
++    tgs_princ_name = apr_psprintf(r->pool, "%s/%s@%s", KRB5_TGS_NAME,
++                                  krb5_principal_get_realm(kcontext, princ),
++                                  krb5_principal_get_realm(kcontext, princ));
++#else
++    tgs_princ_name = apr_psprintf(r->pool, "%s/%.*s@%.*s", KRB5_TGS_NAME,
++                                  krb5_princ_realm(kcontext, princ)->length,
++                                  krb5_princ_realm(kcontext, princ)->data,
++                                  krb5_princ_realm(kcontext, princ)->length,
++                                  krb5_princ_realm(kcontext, princ)->data);
++#endif
++
++    if ((kerr = krb5_parse_name(kcontext, tgs_princ_name, &match_cred.server))) 
++    {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                        "Could not parse principal %s: %s (%d)",
++                        tgs_princ_name, error_message(kerr), kerr);
++        goto cleanup;
++    }
++
++    match_cred.client = princ;
++
++    if ((kerr = krb5_cc_retrieve_cred(kcontext, ccache, 0, &match_cred, &creds)))
++    {
++        krb5_unparse_name(kcontext, princ, &princ_name);
++        log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                   "Could not unparse principal %s: %s (%d)",
++                   princ_name, error_message(kerr), kerr);
++        goto cleanup;
++    }
++
++    if ((kerr = krb5_timeofday(kcontext, &now))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                        "Could not get current time: %d (%s)",
++                        kerr, error_message(kerr));
++        goto cleanup;
++    }
++
++    if (now > (creds.times.endtime + RENEWAL_TIME)) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Credentials for %s have expired or will soon "
++                   "expire - now %d endtime %d",
++                   princ_name, now, creds.times.endtime);
++        *renew = 1;
++    } else {
++        log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                   "Credentials for %s will expire at "
++                   "%d, it is now %d", princ_name, creds.times.endtime, now);
++    }
++
++cleanup:
++    /* Closing context, ccache, etc happens elsewhere */
++    if (match_cred.server) {
++        krb5_free_principal(kcontext, match_cred.server);
++    }
++    if (creds.client) {
++        krb5_free_cred_contents(kcontext, &creds);
++    }
++
++    return kerr;
++}
++
++static int
++obtain_server_credentials(request_rec *r,
++                          const char *service_name)
++{
++    krb5_context kcontext = NULL;
++    krb5_keytab keytab = NULL;
++    krb5_ccache ccache = NULL;
++    char * princ_name = NULL;
++    char *tgs_princ_name = NULL;
++    krb5_error_code kerr = 0;
++    krb5_principal princ = NULL;
++    krb5_creds creds;
++    krb5_get_init_creds_opt gicopts;
++    int renew = 0;
++    apr_status_t rv = 0;
++
++    memset(&creds, 0, sizeof(creds));
++
++    if ((kerr = krb5_init_context(&kcontext))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++            "Kerberos context initialization failed: %s (%d)", error_message(kerr), kerr);
++        goto done;
++    }
++
++    if ((kerr = krb5_cc_default(kcontext, &ccache))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                        "Could not get default Kerberos ccache: %s (%d)",
++                        error_message(kerr), kerr);
++        goto done;
++    }
++
++    if ((kerr = krb5_cc_get_principal(kcontext, ccache, &princ))) {
++        char * name = NULL;
++
++        if ((asprintf(&name, "%s:%s", krb5_cc_get_type(kcontext, ccache),
++          krb5_cc_get_name(kcontext, ccache))) == -1) {
++            kerr = KRB5_CC_NOMEM;
++            goto done;
++        }
++
++        if (KRB5_FCC_NOFILE == kerr) {
++            log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                       "Credentials cache %s not found, create one", name);
++            krb5_cc_close(kcontext, ccache);
++            ccache = NULL;
++            free(name);
++        } else {
++            log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                       "Failure to open credentials cache %s: %s (%d)",
++                       name, error_message(kerr), kerr);
++            free(name);
++            goto done;
++        }
++    }
++
++    kerr = verify_server_credentials(r, kcontext, ccache, princ, &renew);
++
++    if (kerr || !renew) {
++        goto done;
++    }
++
++#ifdef STANDARD20_MODULE_STUFF
++    if (s4u2proxy_lock) {
++        rv = apr_global_mutex_lock(s4u2proxy_lock);
++        if (rv != APR_SUCCESS) {
++            ap_log_rerror(APLOG_MARK, APLOG_ERR, rv, r,
++                          "apr_global_mutex_lock(s4u2proxy_lock) "
++                          "failed");
++        }
++    }
++#endif
++
++    /* We have the lock, check again to be sure another process hasn't already
++     * renewed the ticket.
++     */
++    kerr = verify_server_credentials(r, kcontext, ccache, princ, &renew);
++    if (kerr || !renew) {
++        goto unlock;
++    }
++
++    if (NULL == princ) {
++        princ_name = apr_psprintf(r->pool, "%s/%s",
++            (service_name) ? service_name : SERVICE_NAME,
++            ap_get_server_name(r));
++
++        if ((kerr = krb5_parse_name(kcontext, princ_name, &princ))) {
++            log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                       "Could not parse principal %s: %s (%d) ",
++                       princ_name, error_message(kerr), kerr);
++            goto unlock;
++        }
++    } else if (NULL == princ_name) {
++        if ((kerr = krb5_unparse_name(kcontext, princ, &princ_name))) {
++            log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                       "Could not unparse principal %s: %s (%d)",
++                       princ_name, error_message(kerr), kerr);
++            goto unlock;
++        }
++    }
++
++    if ((kerr = krb5_kt_default(kcontext, &keytab))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Unable to get default keytab: %s (%d)",
++                   error_message(kerr), kerr);
++        goto unlock;
++    }
++
++    log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++               "Obtaining new credentials for %s", princ_name);
++    krb5_get_init_creds_opt_init(&gicopts);
++    krb5_get_init_creds_opt_set_forwardable(&gicopts, 1);
++
++#ifdef HEIMDAL
++    tgs_princ_name = apr_psprintf(r->pool, "%s/%s@%s", KRB5_TGS_NAME,
++                                  krb5_principal_get_realm(kcontext, princ),
++                                  krb5_principal_get_realm(kcontext, princ));
++#else
++    tgs_princ_name = apr_psprintf(r->pool, "%s/%.*s@%.*s", KRB5_TGS_NAME,
++                                  krb5_princ_realm(kcontext, princ)->length,
++                                  krb5_princ_realm(kcontext, princ)->data,
++                                  krb5_princ_realm(kcontext, princ)->length,
++                                  krb5_princ_realm(kcontext, princ)->data);
++#endif
++
++    if ((kerr = krb5_get_init_creds_keytab(kcontext, &creds, princ, keytab,
++         0, tgs_princ_name, &gicopts))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Failed to obtain credentials for principal %s: "
++                   "%s (%d)", princ_name, error_message(kerr), kerr);
++        goto unlock;
++    }
++
++    krb5_kt_close(kcontext, keytab);
++    keytab = NULL;
++
++    if (NULL == ccache) {
++        if ((kerr = krb5_cc_default(kcontext, &ccache))) {
++            log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                      "Failed to open default ccache: %s (%d)",
++                      error_message(kerr), kerr);
++            goto unlock;
++        }
++    }
++
++    if ((kerr = krb5_cc_initialize(kcontext, ccache, princ))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Failed to initialize ccache for %s: %s (%d)",
++                   princ_name, error_message(kerr), kerr);
++        goto unlock;
++    }
++
++    if ((kerr = krb5_cc_store_cred(kcontext, ccache, &creds))) {
++        log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
++                   "Failed to store %s in ccache: %s (%d)",
++                   princ_name, error_message(kerr), kerr);
++        goto unlock;
++    }
++
++unlock:
++#ifdef STANDARD20_MODULE_STUFF
++    if (s4u2proxy_lock) {
++        apr_global_mutex_unlock(s4u2proxy_lock);
++        if (rv != APR_SUCCESS) {
++            ap_log_rerror(APLOG_MARK, APLOG_ERR, rv, r,
++                          "apr_global_mutex_unlock(s4u2proxy_lock) "
++                          "failed");
++        }
++    }
++#endif
++
++done:
++    if (0 == kerr)
++        log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                   "Done obtaining credentials for s4u2proxy");
++    else
++        log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                   "Failed to obtain credentials for s4u2proxy");
++
++    if (creds.client) {
++        krb5_free_cred_contents(kcontext, &creds);
++    }
++    if (ccache) {
++        krb5_cc_close(kcontext, ccache);
++    }
++    if (kcontext) {
++        krb5_free_context(kcontext);
++    }
++
++    return kerr;
++}
++
+ static int
+ authenticate_user_gss(request_rec *r, kerb_auth_config *conf,
+ 		      const char *auth_line, char **negotiate_ret_value)
+@@ -1688,10 +2055,60 @@
+ /*************************************************************************** 
+  Module Setup/Configuration
+  ***************************************************************************/
++#ifdef STANDARD20_MODULE_STUFF
++static apr_status_t
++s4u2proxylock_create(server_rec *s, apr_pool_t *p)
++{
++    apr_status_t rc;
++
++    /* only operate if a lockfile is used */
++    if (lockname == NULL || *(lockname) == '\0') {
++        return APR_SUCCESS;
++    }
++
++    /* create the lockfile */
++    rc = apr_global_mutex_create(&s4u2proxy_lock, lockname,
++                                 APR_LOCK_DEFAULT, p);
++    if (rc != APR_SUCCESS) {
++        ap_log_error(APLOG_MARK, APLOG_CRIT, rc, s,
++                     "Parent could not create lock file %s", lockname);
++        return rc;
++    }
++
++#ifdef AP_NEED_SET_MUTEX_PERMS
++    rc = unixd_set_global_mutex_perms(s4u2proxy_lock);
++    if (rc != APR_SUCCESS) {
++        ap_log_error(APLOG_MARK, APLOG_CRIT, rc, s,
++                     "mod_auth_kerb: Parent could not set permissions "
++                     "on lock; check User and Group directives");
++        return rc;
++    }
++#endif
++
++    return APR_SUCCESS;
++}
++
++static apr_status_t
++s4u2proxylock_remove(void *unused)
++{
++    /* only operate if a lockfile is used */
++    if (lockname == NULL || *(lockname) == '\0') {
++        return APR_SUCCESS;
++    }
++
++    /* destroy the rewritelock */
++    apr_global_mutex_destroy(s4u2proxy_lock);
++    s4u2proxy_lock = NULL;
++    lockname = NULL;
++    return APR_SUCCESS;
++}
++#endif
++
+ #ifndef STANDARD20_MODULE_STUFF
+ static void
+ kerb_module_init(server_rec *dummy, pool *p)
+ {
++   apr_status_t status;
+ #ifndef HEIMDAL
+    /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
+       1.3.x are covered by the hack overiding the replay calls */
+@@ -1732,6 +2149,7 @@
+ kerb_init_handler(apr_pool_t *p, apr_pool_t *plog,
+       		  apr_pool_t *ptemp, server_rec *s)
+ {
++   apr_status_t rv;
+    ap_add_version_component(p, "mod_auth_kerb/" MODAUTHKERB_VERSION);
+ #ifndef HEIMDAL
+    /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
+@@ -1739,14 +2157,41 @@
+    if (getenv("KRB5RCACHETYPE") == NULL && have_rcache_type("none"))
+       putenv(strdup("KRB5RCACHETYPE=none"));
+ #endif
++#ifdef STANDARD20_MODULE_STUFF
++    rv = s4u2proxylock_create(s, p);
++    if (rv != APR_SUCCESS) {
++        return HTTP_INTERNAL_SERVER_ERROR;
++    }
++
++    apr_pool_cleanup_register(p, (void *)s, s4u2proxylock_remove,
++                              apr_pool_cleanup_null);
++#endif
+    
+    return OK;
+ }
+ 
+ static void
++initialize_child(apr_pool_t *p, server_rec *s)
++{
++    apr_status_t rv = 0;
++
++#ifdef STANDARD20_MODULE_STUFF
++    if (lockname != NULL && *(lockname) != '\0') {
++        rv = apr_global_mutex_child_init(&s4u2proxy_lock, lockname, p);
++        if (rv != APR_SUCCESS) {
++            ap_log_error(APLOG_MARK, APLOG_CRIT, rv, s,
++                         "mod_auth_kerb: could not init s4u2proxy_lock"
++                         " in child");
++        }
++    }
++#endif
++}
++
++static void
+ kerb_register_hooks(apr_pool_t *p)
+ {
+    ap_hook_post_config(kerb_init_handler, NULL, NULL, APR_HOOK_MIDDLE);
++   ap_hook_child_init(initialize_child, NULL, NULL, APR_HOOK_MIDDLE);
+    ap_hook_check_user_id(kerb_authenticate_user, NULL, NULL, APR_HOOK_MIDDLE);
+ }
+ 
