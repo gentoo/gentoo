@@ -192,7 +192,6 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-system-zlib-r0.patch"
-	epatch "${FILESDIR}/${PN}-linker-warnings-r0.patch"
 
 	epatch_user
 
@@ -247,6 +246,7 @@ src_prepare() {
 		'third_party/catapult/tracing/third_party/d3' \
 		'third_party/catapult/tracing/third_party/gl-matrix' \
 		'third_party/catapult/tracing/third_party/jszip' \
+		'third_party/catapult/tracing/third_party/mannwhitneyu' \
 		'third_party/cld_2' \
 		'third_party/cros_system_api' \
 		'third_party/cython/python_flags.py' \
@@ -518,6 +518,7 @@ src_configure() {
 
 	# Disable fatal linker warnings, bug 506268.
 	myconf_gyp+=" -Ddisable_fatal_linker_warnings=1"
+	myconf_gn+=" fatal_linker_warnings=false"
 
 	# Avoid CFLAGS problems, bug #352457, bug #390147.
 	if ! use custom-cflags; then
@@ -600,11 +601,9 @@ eninja() {
 src_compile() {
 	local ninja_targets="chrome chrome_sandbox chromedriver"
 
-	if ! use gn; then
-		# Build mksnapshot and pax-mark it.
-		eninja -C out/Release mksnapshot || die
-		pax-mark m out/Release/mksnapshot
-	fi
+	# Build mksnapshot and pax-mark it.
+	eninja -C out/Release mksnapshot || die
+	pax-mark m out/Release/mksnapshot
 
 	# Even though ninja autodetects number of CPUs, we respect
 	# user's options, for debugging with -j 1 or any other reason.
