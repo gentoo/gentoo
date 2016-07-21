@@ -9446,7 +9446,7 @@ dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521: 8-b
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5: Checks latex source for common mistakes
-dev-tex/circuit_macros 8.3.2 8.4: M4 Macros for Electric circuit diagrams in TeX or LaTeX
+dev-tex/circuit_macros 8.3.2 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cjk-latex 4.8.3-r1 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
 dev-tex/cpp2latex 2.3-r1: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6: CrossTeX - object oriented BibTeX replacement
@@ -17253,7 +17253,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.9999 3.14.58-r1 3.14.73 3.18.25-r1 3.18.36 4.1.15-r1 4.1.27 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.6.3 4.6.4: Full sources including the Gentoo patchset for the 4.6 kernel tree
 sys-kernel/git-sources 4.7_rc1 4.7_rc2 4.7_rc3 4.7_rc4 4.7_rc5 4.7_rc6 4.7_rc7: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.7-r5 4.6.4-r1 4.6.4-r2: Hardened kernel sources (kernel series 4.6)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.6.4-r1 4.6.4-r2: Hardened kernel sources (kernel series 4.6)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
