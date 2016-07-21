@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtopengl-4.5:4
 	>=dev-qt/qtsql-4.5:4[sqlite]
 	system-sqlite? ( dev-db/sqlite:3[fts3(+)] )
-	>=media-libs/taglib-1.8[mp4]
+	>=media-libs/taglib-1.8[mp4(+)]
 	>=dev-libs/glib-2.24.1-r1
 	dev-libs/libxml2
 	dev-libs/protobuf:=
