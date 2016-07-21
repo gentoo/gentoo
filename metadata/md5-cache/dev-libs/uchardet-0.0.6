@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=An encoding detector library
-EAPI=5
-HOMEPAGE=https://github.com/BYVoid/uchardet https://www.freedesktop.org/wiki/Software/uchardet/
+EAPI=6
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/uchardet/
 IUSE=static-libs test
-KEYWORDS=alpha amd64 ~arm ~hppa ~ppc64 x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86
 LICENSE=|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )
 SLOT=0
-SRC_URI=https://github.com/BYVoid/uchardet/archive/v0.0.5.tar.gz -> uchardet-0.0.5.tar.gz
+SRC_URI=https://www.freedesktop.org/software/uchardet/releases/uchardet-0.0.6.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4829e79f9b6c2e49bff8199931529253
+_md5_=15345a40b69477beb0c95fbe7110a77c
