@@ -1,0 +1,14 @@
+diff --git a/lib/Driver/Tools.cpp b/lib/Driver/Tools.cpp
+index b7ac24f..dcd9eb5 100644
+--- a/lib/Driver/Tools.cpp
++++ b/lib/Driver/Tools.cpp
+@@ -8632,6 +8632,9 @@ static std::string getLinuxDynamicLinker(const ArgList &Args,
+       return "/system/bin/linker64";
+     else
+       return "/system/bin/linker";
++  } else if (ToolChain.getTriple().getEnvironment() == llvm::Triple::Musl) {
++    return
++      "/lib/ld-musl-" + ToolChain.getTriple().getArchName().str() + ".so.1";
+   } else if (Arch == llvm::Triple::x86 || Arch == llvm::Triple::sparc ||
+              Arch == llvm::Triple::sparcel)
+     return "/lib/ld-linux.so.2";
