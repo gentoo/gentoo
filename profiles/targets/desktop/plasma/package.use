@@ -54,9 +54,6 @@ net-libs/libproxy -kde
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
-kde-apps/kwalletmanager:4 minimal
-kde-apps/libkipi:4 minimal
-kde-apps/libksane:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 net-p2p/ktorrent:4 -plasma
