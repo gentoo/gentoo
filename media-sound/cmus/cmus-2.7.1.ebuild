@@ -74,7 +74,7 @@ src_configure() {
 	my_config wavpack CONFIG_WAVPACK
 	my_config mp4 CONFIG_MP4
 	my_config aac CONFIG_AAC
-	my_config wma CONFIG_FFMPEG
+	my_config ffmpeg CONFIG_FFMPEG
 	my_config cue CONFIG_CUE
 	my_config pulseaudio CONFIG_PULSE
 	my_config alsa CONFIG_ALSA
