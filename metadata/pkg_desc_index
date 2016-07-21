@@ -594,6 +594,7 @@ app-crypt/pkcs11-dump 0.3.4: Utilities for PKCS#11 token content dump
 app-crypt/qca 2.1.0.3 2.1.1 2.1.1-r1: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b: gives you a quick MD5 Password from any string
 app-crypt/rainbowcrack 1.6.1: Hash cracker that precomputes plaintext - ciphertext pairs in advance
+app-crypt/rhash 1.3.3: Console utility for computing and verifying hash sums of files
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntool 0.6-r1: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scl011-bin 2.06: pcsc-lite driver for the German identification card (nPA)
@@ -9617,7 +9618,7 @@ dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
-dev-util/android-studio 1.5.2.0.141.2836215 2.1.1.0.143.2821654 2.1.2.0.143.2915827: A new Android development environment based on IntelliJ IDEA
+dev-util/android-studio 2.1.2.0.143.2915827: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.18.2 3.20.0: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
@@ -9662,7 +9663,7 @@ dev-util/cargo 0.10.0 0.11.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.16-r2 0.7.0 0.7.1 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/ccache 3.2.4 3.2.5: fast compiler cache
+dev-util/ccache 3.2.4 3.2.5 3.2.7: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
 dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
@@ -14659,7 +14660,7 @@ net-misc/directvnc 0.7.6-r1 0.7.8: Very thin VNC client for unix framebuffer sys
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.5 0.3.6: Google Drive client for the commandline
-net-misc/dropbear 2016.73: small SSH 2 client/server designed for small memory environments
+net-misc/dropbear 2016.73 2016.74: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox 5.3.18 6.3.13: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
