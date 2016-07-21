@@ -11409,7 +11409,7 @@ kde-apps/kurifilter-plugins 15.12.3 16.04.3: KDE: Plugins to manage filtering UR
 kde-apps/kuser 15.12.3 16.04.3: KDE application that helps you manage system users
 kde-apps/kwalletd 15.12.3 16.04.3: KDE Password Server
 kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
-kde-apps/kwalletmanager 15.04.3 15.04.3-r1 15.12.3 16.04.3: KDE Wallet management tool
+kde-apps/kwalletmanager 15.04.3-r1 15.12.3 16.04.3: KDE Wallet management tool
 kde-apps/kwordquiz 15.12.3-r1 16.04.3: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 15.12.3 16.04.3: KDE simple text editor
 kde-apps/libkcddb 15.12.3 16.04.3: KDE library for CDDB
@@ -11428,7 +11428,7 @@ kde-apps/libkmahjongg 4.14.3 15.12.3 16.04.3: Mahjongg library based on Qt/KDE F
 kde-apps/libkomparediff2 15.12.3 16.04.3: KDE library to compare files and strings
 kde-apps/libkonq 15.12.3 16.04.3: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2016.01: KDE pgp abstraction library
-kde-apps/libksane 15.08.3 15.08.3-r1 15.12.3 16.04.3: SANE Library interface based on KDE Frameworks
+kde-apps/libksane 15.08.3-r1 15.12.3 16.04.3: SANE Library interface based on KDE Frameworks
 kde-apps/lokalize 15.12.3 16.04.3: KDE Applications 5 translation tool
 kde-apps/lskat 15.12.3 16.04.3: Skat game by KDE
 kde-apps/marble 4.14.3 15.12.3 16.04.3: Generic geographical map widget
