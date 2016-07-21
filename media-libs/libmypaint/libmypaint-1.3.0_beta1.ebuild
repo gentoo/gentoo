@@ -5,7 +5,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 xdg-utils
+inherit python-any-r1 xdg-utils toolchain-funcs
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
@@ -46,6 +46,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-ld-disable-gold  # bug 589266
 	econf \
 			--disable-debug \
 			--disable-docs \
