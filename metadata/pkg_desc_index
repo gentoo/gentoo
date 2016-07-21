@@ -7229,7 +7229,7 @@ dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix
 dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.10.1-r1 0.10.1-r2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0: i18n and l10n support for Flask based on Babel and pytz
@@ -7255,7 +7255,7 @@ dev-python/flask-socketio 2.0 2.1 2.2: Socket.IO integration for Flask applicati
 dev-python/flask-sqlalchemy 1.0 1.0-r1 2.0 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.1 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
-dev-python/flask-uploads 0.1.3 0.2.0: Flexible and efficient upload handling for Flask
+dev-python/flask-uploads 0.1.3 0.2.0 0.2.0-r1: Flexible and efficient upload handling for Flask
 dev-python/flask-whooshalchemy 0.55a 0.56: Whoosh extension to Flask/SQLAlchemy
 dev-python/flask-wtf 0.10.2 0.10.3 0.11 0.12: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
@@ -13730,7 +13730,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.13 0.9.14: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.2 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.9.3-r1 0.9.4 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.9.3-r1 0.9.4 0.9.5 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
