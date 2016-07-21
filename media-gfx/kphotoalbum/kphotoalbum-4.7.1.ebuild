@@ -40,6 +40,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( ChangeLog README )
+PATCHES=( "${FILESDIR}/${P}-nokipi.patch" )
 
 src_configure() {
 	local mycmakeargs=(
