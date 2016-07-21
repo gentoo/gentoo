@@ -28,8 +28,9 @@ RDEPEND="${DEPEND}"
 
 MODULE_NAMES="wireguard(net:src)"
 BUILD_PARAMS="KERNELDIR=${KERNEL_DIR} V=1"
-CONFIG_CHECK="NET INET NET_UDP_TUNNEL NF_CONNTRACK NETFILTER_XT_MATCH_HASHLIMIT CRYPTO_BLKCIPHER ~PADATA"
+CONFIG_CHECK="NET INET NET_UDP_TUNNEL NF_CONNTRACK NETFILTER_XT_MATCH_HASHLIMIT CRYPTO_BLKCIPHER ~PADATA ~IP6_NF_IPTABLES"
 WARNING_PADATA="If you're running a multicore system you likely should enable CONFIG_PADATA for improved performance and parallel crypto."
+WARNING_IP6_NF_IPTABLES="If your kernel has CONFIG_IPV6, you need CONFIG_IP6_NF_IPTABLES; otherwise WireGuard will not insert."
 
 pkg_setup() {
 	linux-mod_pkg_setup
@@ -43,7 +44,7 @@ src_prepare() {
 
 src_compile() {
 	linux-mod_src_compile
-	emake -C src/tools
+	emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
 }
 
 src_install() {

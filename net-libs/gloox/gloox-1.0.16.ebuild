@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -27,10 +27,6 @@ DEPEND="idn? ( net-dns/libidn )
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	epatch_user
-}
 
 src_configure() {
 	# Examples are not installed anyway, so - why should we build them?
