@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Manages Ruby on Rails symlinks"
 HOMEPAGE="https://www.gentoo.org/"
-SRC_URI="https://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~flameeyes/ruby-team/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +18,8 @@ RDEPEND=">=app-admin/eselect-1.2.0"
 S=${WORKDIR}
 
 src_prepare() {
+	default
+
 	# Fix/Add Prefix support
 	sed -i -e 's/\${ROOT}/${EROOT}/' *.eselect || die
 }
