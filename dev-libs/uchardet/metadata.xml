@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">BYVoid/uchardet</remote-id>
+		<bugs-to>https://bugs.freedesktop.org/enter_bug.cgi?product=uchardet</bugs-to>
 	</upstream>
 </pkgmetadata>

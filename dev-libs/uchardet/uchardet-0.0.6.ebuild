@@ -4,15 +4,15 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="An encoding detector library"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/uchardet/"
-EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}/${PN}"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86"
 IUSE="static-libs test"
 
 src_prepare() {
