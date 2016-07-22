@@ -131,6 +131,7 @@ src_compile() {
 	addwrite /dev/dri/  # bug #574038
 	addwrite /proc/mtrr  # bug 589198
 
+	export XDG_DATA_DIRS=/usr/share  # bug 587004
 	gnome2_src_compile
 }
 
