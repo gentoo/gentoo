@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -67,7 +67,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch
+		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
 
 	if use nls; then
 		local lingua=''

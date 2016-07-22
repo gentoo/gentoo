@@ -73,8 +73,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-5.21-python.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-6.49-no-FORTIFY_SOURCE.patch \
-		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
+		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
+		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
 
 	if use nls; then
 		local lingua=''
