@@ -371,6 +371,7 @@ wayland - Enable dev-libs/wayland backend
 wavpack - Add support for wavpack audio compression tools
 wddx - Add support for Web Distributed Data eXchange
 webkit - Add support for the WebKit HTML rendering/layout engine
+webp - Add support for the WebP image format
 wifi - Enable wireless network functions
 wmf - Add support for the Windows Metafile vector image format
 wxwidgets - Add support for wxWidgets/wxGTK GUI toolkit
