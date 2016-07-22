@@ -52,19 +52,19 @@ RDEPEND="!!app-emulation/virtualbox
 	!app-emulation/virtualbox-additions
 	~app-emulation/virtualbox-modules-${MAIN_PV}
 	!headless? (
-		x11-libs/libXcursor
-		media-libs/libsdl[X]
-		x11-libs/libXrender
-		x11-libs/libXfixes
-		media-libs/libpng
-		x11-libs/libXi
-		x11-libs/libXrandr
-		x11-libs/libXinerama
-		x11-libs/libXft
-		media-libs/freetype
-		media-libs/fontconfig
-		x11-libs/libXext
 		dev-libs/glib
+		media-libs/fontconfig
+		media-libs/freetype
+		media-libs/libpng
+		media-libs/libsdl[X]
+		x11-libs/libXcursor
+		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXft
+		x11-libs/libXi
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libXrender
 		chm? ( dev-libs/expat )
 	)
 	dev-libs/libxml2
@@ -81,86 +81,7 @@ RDEPEND="!!app-emulation/virtualbox
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S=${WORKDIR}
 
-QA_TEXTRELS_amd64="opt/VirtualBox/VBoxVMM.so"
-QA_TEXTRELS_x86="opt/VirtualBox/VBoxGuestPropSvc.so
-	opt/VirtualBox/VBoxSDL.so
-	opt/VirtualBox/VBoxDbg.so
-	opt/VirtualBox/VBoxSharedFolders.so
-	opt/VirtualBox/VBoxDD2.so
-	opt/VirtualBox/VBoxOGLrenderspu.so
-	opt/VirtualBox/VBoxPython.so
-	opt/VirtualBox/VBoxPython2_7.so
-	opt/VirtualBox/VBoxDD.so
-	opt/VirtualBox/VBoxVRDP.so
-	opt/VirtualBox/VBoxDDU.so
-	opt/VirtualBox/VBoxREM64.so
-	opt/VirtualBox/VBoxSharedClipboard.so
-	opt/VirtualBox/VBoxHeadless.so
-	opt/VirtualBox/VBoxRT.so
-	opt/VirtualBox/VRDPAuth.so
-	opt/VirtualBox/VBoxREM.so
-	opt/VirtualBox/VBoxSettings.so
-	opt/VirtualBox/VBoxKeyboard.so
-	opt/VirtualBox/VBoxSharedCrOpenGL.so
-	opt/VirtualBox/VBoxVMM.so
-	opt/VirtualBox/VirtualBox.so
-	opt/VirtualBox/VBoxOGLhosterrorspu.so
-	opt/VirtualBox/components/VBoxC.so
-	opt/VirtualBox/components/VBoxSVCM.so
-	opt/VirtualBox/VBoxREM32.so
-	opt/VirtualBox/VBoxXPCOMC.so
-	opt/VirtualBox/VBoxOGLhostcrutil.so
-	opt/VirtualBox/VBoxNetDHCP.so
-	opt/VirtualBox/VBoxGuestControlSvc.so"
-QA_PRESTRIPPED="opt/VirtualBox/VBoxDD.so
-	opt/VirtualBox/VBoxDD2.so
-	opt/VirtualBox/VBoxDDU.so
-	opt/VirtualBox/VBoxDbg.so
-	opt/VirtualBox/VBoxGuestControlSvc.so
-	opt/VirtualBox/VBoxGuestPropSvc.so
-	opt/VirtualBox/VBoxHeadless
-	opt/VirtualBox/VBoxHeadless.so
-	opt/VirtualBox/VBoxKeyboard.so
-	opt/VirtualBox/VBoxManage
-	opt/VirtualBox/VBoxNetAdpCtl
-	opt/VirtualBox/VBoxNetDHCP
-	opt/VirtualBox/VBoxNetDHCP.so
-	opt/VirtualBox/VBoxOGLhostcrutil.so
-	opt/VirtualBox/VBoxOGLhosterrorspu.so
-	opt/VirtualBox/VBoxOGLrenderspu.so
-	opt/VirtualBox/VBoxPython.so
-	opt/VirtualBox/VBoxPython2_7.so
-	opt/VirtualBox/VBoxREM.so
-	opt/VirtualBox/VBoxREM32.so
-	opt/VirtualBox/VBoxREM64.so
-	opt/VirtualBox/VBoxRT.so
-	opt/VirtualBox/VBoxSDL
-	opt/VirtualBox/VBoxSDL.so
-	opt/VirtualBox/VBoxSVC
-	opt/VirtualBox/VBoxSettings.so
-	opt/VirtualBox/VBoxSharedClipboard.so
-	opt/VirtualBox/VBoxSharedCrOpenGL.so
-	opt/VirtualBox/VBoxSharedFolders.so
-	opt/VirtualBox/VBoxTestOGL
-	opt/VirtualBox/VBoxTunctl
-	opt/VirtualBox/VBoxVMM.so
-	opt/VirtualBox/VBoxVRDP.so
-	opt/VirtualBox/VBoxXPCOM.so
-	opt/VirtualBox/VBoxXPCOMC.so
-	opt/VirtualBox/VBoxXPCOMIPCD
-	opt/VirtualBox/VRDPAuth.so
-	opt/VirtualBox/VirtualBox
-	opt/VirtualBox/VirtualBox.so
-	opt/VirtualBox/accessible/libqtaccessiblewidgets.so
-	opt/VirtualBox/components/VBoxC.so
-	opt/VirtualBox/components/VBoxSVCM.so
-	opt/VirtualBox/components/VBoxXPCOMIPCC.so
-	opt/VirtualBox/kchmviewer
-	opt/VirtualBox/libQtCoreVBox.so.4
-	opt/VirtualBox/libQtGuiVBox.so.4
-	opt/VirtualBox/libQtNetworkVBox.so.4
-	opt/VirtualBox/libQtOpenGLVBox.so.4
-	opt/VirtualBox/vboxwebsrv"
+QA_PREBUILT="opt/VirtualBox/*"
 
 PYTHON_UPDATER_IGNORE="1"
 
@@ -192,19 +113,28 @@ src_install() {
 	newins "${FILESDIR}/${PN}-config" vbox.cfg
 
 	if ! use headless ; then
-		pushd "${S}"/icons &>/dev/null || die
-		for size in * ; do
-			if [ -f "${size}/virtualbox.png" ] ; then
-				insinto "/usr/share/icons/hicolor/${size}/apps"
-				newins "${size}/virtualbox.png" ${PN}.png
-			fi
-		done
-		dodir /usr/share/pixmaps
-		cp "48x48/virtualbox.png" "${D}/usr/share/pixmaps/${PN}.png" \
-			|| die
-		popd &>/dev/null || die
-
 		newmenu "${FILESDIR}"/${PN}.desktop-2 ${PN}.desktop
+
+		# set up symlinks (bug #572012)
+		dosym /opt/VirtualBox/virtualbox.xml /usr/share/mime/packages/virtualbox.xml
+
+		local size ico icofile
+		for size in 16 24 32 48 64 72 96 128 256 ; do
+			pushd "${S}"/icons/${size}x${size} &>/dev/null || die
+			if [[ -f "virtualbox.png" ]] ; then
+				doicon -s ${size} virtualbox.png
+			fi
+			for ico in hdd ova ovf vbox{,-extpack} vdi vdh vmdk ; do
+				icofile="virtualbox-${ico}.png"
+				if [[ -f "${icofile}" ]] ; then
+					doicon -s ${size} ${icofile}
+				fi
+			done
+			popd &>/dev/null || die
+		done
+		doicon -s scalable "${S}"/icons/scalable/virtualbox.svg
+		insinto /usr/share/pixmaps
+		newins "${S}"/icons/48x48/virtualbox.png ${PN}.png
 	fi
 
 	pushd "${S}"/${EXTP_PN} &>/dev/null || die
