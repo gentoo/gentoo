@@ -24,8 +24,7 @@ DOCS=( ChangeLog README )
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.0.0-tinfo.patch"
-	"${FILESDIR}/${P}-commlen.patch"
+	"${FILESDIR}/${PN}-2.0.2-tinfo.patch"
 )
 
 pkg_setup() {
@@ -52,9 +51,9 @@ src_configure() {
 	myeconfargs+=(
 		# fails to build against recent hwloc versions
 		--disable-hwloc
-		--enable-native-affinity
 		--enable-taskstats
 		$(use_enable kernel_linux cgroup)
+		$(use_enable kernel_linux linux-affinity)
 		$(use_enable openvz)
 		$(use_enable unicode)
 		$(use_enable vserver)

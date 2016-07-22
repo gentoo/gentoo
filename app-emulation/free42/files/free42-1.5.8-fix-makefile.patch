@@ -1,6 +1,6 @@
 diff -Nuar a/gtk/Makefile b/gtk/Makefile
---- a/gtk/Makefile	2014-06-21 19:46:55.000000000 +0200
-+++ b/gtk/Makefile	2014-06-24 00:03:38.719906032 +0200
+--- a/gtk/Makefile	2016-04-27 06:04:12.000000000 +0200
++++ b/gtk/Makefile	2016-07-22 10:33:06.730040039 +0200
 @@ -19,7 +19,6 @@
  	    -Wall \
  	    -Wno-parentheses \
@@ -9,7 +9,7 @@ diff -Nuar a/gtk/Makefile b/gtk/Makefile
  	    -I/usr/X11R6/include \
  	    -fno-exceptions \
  	    -fno-rtti \
-@@ -30,14 +29,11 @@
+@@ -30,13 +29,14 @@
  	    -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
  	    -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
  	    -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
@@ -18,13 +18,12 @@ diff -Nuar a/gtk/Makefile b/gtk/Makefile
 +	    ${CXXFLAGS}
  
 -LDFLAGS = -L/usr/X11R6/lib
--LIBS := gcc111libbid-$(shell uname -m).a -lXmu $(shell pkg-config --libs gtk+-2.0)
--
--ifeq "$(shell uname -s)" "Linux"
--LDFLAGS += -Wl,--hash-style=both
--endif
 +LDFLAGS := -L/usr/X11R6/lib ${LDFLAGS}
+ ifeq "$(shell uname -s)" "Darwin"
+ LIBS := gcc111libbid-mac-x64.a -lXmu $(shell pkg-config --libs gtk+-2.0)
+ else
+-LIBS := gcc111libbid-$(shell uname -m).a -lXmu $(shell pkg-config --libs gtk+-2.0)
 +LIBS := gcc111libbid-$(shell uname -m).a -lXmu -lX11 -ldl -lpthread $(shell pkg-config --libs gtk+-2.0)
+ endif
  
- SRCS = shell_main.cc shell_skin.cc skins.cc keymap.cc shell_loadimage.cc \
- 	shell_spool.cc core_main.cc core_commands1.cc core_commands2.cc \
+ ifeq "$(shell uname -s)" "Linux"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa"
 
 DEPEND="dev-libs/atk
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	x11-libs/libX11
 	x11-libs/libXmu"
 
-S="${WORKDIR}/${PN}-nologo-${PV}"
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	sed -i -e 's/print_gif_name\[FILENAMELEN\]/print_gif_name\[1000\]/' \

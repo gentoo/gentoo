@@ -4,11 +4,11 @@
 
 EAPI=6
 
-inherit flag-o-matic libtool multilib eutils
+inherit autotools flag-o-matic libtool multilib eutils
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.debian.org/hg/xine-lib/xine-lib-1.2"
-	inherit autotools mercurial eutils
+	inherit mercurial eutils
 	unset NLS_IUSE
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
@@ -116,23 +116,22 @@ REQUIRED_USE="vidix? ( || ( X fbcon ) )
 	xv? ( X )
 	xinerama? ( X )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-libxcb-1.12.patch"
+)
+
 src_prepare() {
 	default
 
 	sed -i -e '/define VDR_ABS_FIFO_DIR/s|".*"|"/var/vdr/xine"|' src/vdr/input_vdr.c || die
+	has_version '>=media-video/ffmpeg-2.9' && eapply "${FILESDIR}/ffmpeg29.patch"
 
-	if [[ ${PV} == *9999* ]]; then
-		epatch_user
-		eautoreconf
-	else
-		elibtoolize
-	fi
+	eautoreconf
 
 	local x
 	for x in 0 1 2 3; do
 		sed -i -e "/^O${x}_CFLAGS=\"-O${x}\"/d" configure || die
 	done
-	has_version '>=media-video/ffmpeg-2.9' && eapply "${FILESDIR}/ffmpeg29.patch"
 }
 
 src_configure() {
