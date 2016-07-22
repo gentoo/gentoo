@@ -38,9 +38,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 pkg_setup() {
-	# XXX: this looks like it should be used with BUILD_TYPE!=binary
-
-	if use openmp; then
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		if [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
 			ewarn "OpenMP is not available in your current selected gcc"
 			die "need openmp capable gcc"
