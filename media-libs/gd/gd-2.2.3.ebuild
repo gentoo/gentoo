@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit libtool multilib-minimal eutils autotools
+inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/ http://www.boutell.com/gd/"
-SRC_URI="https://bitbucket.org/libgd/gd-libgd/downloads/lib${P}.tar.xz"
+SRC_URI="https://github.com/libgd/libgd/releases/download/${P}/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="fontconfig jpeg png static-libs tiff truetype webp xpm zlib"
 
 # fontconfig has prefixed font paths, details see bug #518970
@@ -32,12 +31,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/lib${P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-headers.patch" #540376
-	epatch "${FILESDIR}/${P}-webp-pre.patch" #545956
-	epatch "${FILESDIR}/${P}-webp.patch" #545956
-
-	#elibtoolize  # for shared library on Solaris
-	eautoreconf
+	default
+	elibtoolize  # for shared library on Solaris
 }
 
 multilib_src_configure() {
@@ -46,7 +41,9 @@ multilib_src_configure() {
 	# don't care about on Gentoo systems.
 	ECONF_SOURCE=${S} \
 	econf \
+		--disable-werror \
 		--without-x \
+		--without-liq \
 		$(use_enable static-libs static) \
 		$(use_with fontconfig) \
 		$(use_with png) \
@@ -59,6 +56,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	dodoc NEWS README
+	dodoc NEWS README.md
 	prune_libtool_files
 }
