@@ -24,11 +24,11 @@ HOMEPAGE="http://openocd.sourceforge.net"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="cmsis-dap dummy ftdi parport +usb verbose-io"
+IUSE="cmsis-dap dummy ftdi parport +usb verbose-io jlink"
 RESTRICT="strip" # includes non-native binaries
 
 RDEPEND=">=dev-lang/jimtcl-0.76
-	dev-embedded/libjaylink
+	jlink? ( dev-embedded/libjaylink )
 	cmsis-dap? ( dev-libs/hidapi )
 	usb? (
 		virtual/libusb:0
@@ -39,6 +39,8 @@ RDEPEND=">=dev-lang/jimtcl-0.76
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-5" #549946
+
+REQUIRED_USE="jlink? ( usb )"
 
 src_prepare() {
 	epatch_user
@@ -76,7 +78,7 @@ src_configure() {
 			--enable-osbdm
 			--enable-opendous
 			--enable-usbprog
-			--enable-jlink
+			$(use_enable jlink)
 			--enable-rlink
 			--enable-stlink
 			--enable-vsllink
