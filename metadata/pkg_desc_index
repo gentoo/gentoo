@@ -3033,7 +3033,7 @@ dev-dotnet/ndesk-dbus 0.6.1a: Managed D-Bus Implementation for .NET
 dev-dotnet/ndesk-dbus-glib 0.4.1: glib integration for DBus-Sharp
 dev-dotnet/nini 1.1.0-r2: Nini - A configuration library for .NET
 dev-dotnet/notify-sharp 0.4.0_pre20090305 0.4.0_pre20090305-r1: a C# client implementation for Desktop Notifications
-dev-dotnet/nuget 2.8.3 2.8.7: Nuget - .NET Package Manager
+dev-dotnet/nuget 2.8.3 2.8.7 2.8.7-r1: Nuget - .NET Package Manager
 dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
 dev-dotnet/pe-format 2.1.2 2.1.2-r1 9999: Intelligent PE executable wrapper for binfmt_misc
 dev-dotnet/referenceassemblies-pcl 4.6: .NET Portable Class Library reference assemblies
@@ -8810,7 +8810,7 @@ dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
-dev-ruby/bluecloth 2.2.0-r1 2.2.0-r3: A Ruby implementation of Markdown
+dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bones 3.8.3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
@@ -8865,7 +8865,7 @@ dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.13.0 0.14.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.2: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
-dev-ruby/crack 0.4.2 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
+dev-ruby/crack 0.4.2-r1 0.4.3: Really simple JSON and XML parsing, ripped from Merb and Rails
 dev-ruby/crass 1.0.2: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.7.0: Cri is a library for building easy-to-use commandline tools
@@ -8995,7 +8995,7 @@ dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
 dev-ruby/listen 0.7.3-r2 1.3.1-r3 1.3.1-r4 2.8.6-r1 3.0.5 3.0.6 3.1.1 3.1.1-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.4: Module that provides Gem based plugin management
-dev-ruby/locale 2.1.0-r1 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic APIs for localization
+dev-ruby/locale 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic APIs for localization
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
@@ -9047,7 +9047,7 @@ dev-ruby/mongoid 2.8.1: ODM (Object Document Mapper) Framework for MongoDB
 dev-ruby/msgpack 0.7.4 0.7.5 0.7.6: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.11.2 1.11.3 1.12.0 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
-dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
+dev-ruby/multi_xml 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 0.99.5 1.0.2 1.0.3: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mysql2 0.3.20 0.4.2 0.4.3 0.4.4: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
@@ -9071,7 +9071,7 @@ dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pca
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1 1.2.1-r1: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.6.2 1.6.6.4 1.6.7.2 1.6.8: Nokogiri is an HTML, XML, SAX, and Reader parser
-dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences between two XML/HTML documents
+dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
@@ -9174,7 +9174,7 @@ dev-ruby/roadie-rails 1.1.1: Hooks Roadie into your Rails application to help wi
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.10.1 1.11.0 1.11.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
-dev-ruby/rr 1.1.2 1.1.2-r1 1.2.0: A double framework featuring a selection of double techniques and a terse syntax
+dev-ruby/rr 1.1.2-r1 1.2.0: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r2 2.14.1-r1 2.99.0 3.3.0 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
@@ -9223,7 +9223,7 @@ dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7-r1 3.0.8: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.15.9: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5 1.8.1: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.4.2-r1 1.7.5 1.8.1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby bindings for librsvg
@@ -9252,7 +9252,7 @@ dev-ruby/rubyzip 0.9.9-r2 1.1.7-r1 1.2.0: A ruby library for reading and writing
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.1.0 4.0.1 4.1.0: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22 3.4.22-r1: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22 3.4.22-r1: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1 5.0.5-r2: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1: rdoc generator html with javascript search index
@@ -9270,7 +9270,7 @@ dev-ruby/shoulda 2.11.3-r2 3.5.0-r2: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.2.1: Context framework extracted from Shoulda
 dev-ruby/shoulda-matchers 2.8.0 3.1.0 3.1.1: Making tests easy on the fingers and eyes
 dev-ruby/sigar 0.7.3: System Information Gatherer And Reporter
-dev-ruby/simple-rss 1.3.1 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
+dev-ruby/simple-rss 1.3.1-r1: A simple, flexible, extensible, and liberal RSS and Atom reader for Ruby
 dev-ruby/simple_oauth 0.2.0-r1 0.3.0 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.11.2 0.12.0: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.0: Generates a HTML report of your SimpleCov ruby code coverage results
@@ -9298,12 +9298,12 @@ dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.2 1.6.3 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
-dev-ruby/tdiff 0.3.3 0.3.3-r1: Calculates the differences between two tree-like structures
+dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
 dev-ruby/temple 0.6.10 0.7.6 0.7.7: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.2.2-r1 1.3.0 1.3.0-r1 1.3.2: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/termcolor 1.2.2: a library for ANSI color formatting like HTML for output in terminal
 dev-ruby/test-unit 1.2.3-r3 2.5.5-r2 3.1.5-r1 3.1.7 3.1.8 3.1.9 3.2.0: An xUnit family unit testing framework for Ruby
-dev-ruby/test-unit-rr 1.0.3 1.0.3-r1 1.0.5: RR adapter for Test::Unit
+dev-ruby/test-unit-rr 1.0.3-r1 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.1: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.5-r2: Simply adds a declarative test method syntax to test/unit
 dev-ruby/text 1.2.3-r2 1.3.1: A collection of text algorithms
