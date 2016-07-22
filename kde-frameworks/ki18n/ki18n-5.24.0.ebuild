@@ -31,5 +31,5 @@ pkg_setup() {
 
 src_install() {
 	kde5_src_install
-	python_fix_shebang "${D}/usr/$(get_libdir)/cmake/KF5I18n/ts-pmap-compile.py"
+	python_fix_shebang "${ED}/usr/$(get_libdir)/cmake/KF5I18n/ts-pmap-compile.py"
 }
