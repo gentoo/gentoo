@@ -3,8 +3,6 @@
 # $Id$
 
 EAPI=6
-AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"
-AUTOTOOLS_AUTORECONF=1
 
 inherit eutils linux-info mono-env flag-o-matic pax-utils versionator
 
@@ -34,7 +32,6 @@ DEPEND="${COMMONDEPEND}
 	!dev-lang/mono-basic
 "
 
-MAKEOPTS="${MAKEOPTS} -j1" #nowarn
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_pretend() {
