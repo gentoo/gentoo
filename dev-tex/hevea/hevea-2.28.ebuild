@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"
 RDEPEND="${DEPEND}
 	dev-texlive/texlive-latexextra"
+DEPEND="${DEPEND} dev-ml/ocamlbuild"
 
 src_compile() {
 	rm -f config.sh
