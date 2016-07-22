@@ -69,6 +69,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 		-DCMAKE_SKIP_RPATH=YES
+		-DLIBDIR=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
@@ -82,14 +83,7 @@ src_compile() {
 src_install() {
 	local i
 
-	#https://github.com/espressomd/espresso/issues/733
-	#cmake-utils_src_install
-	dobin ${CMAKE_BUILD_DIR}/Espresso
-	dolib.so "${CMAKE_BUILD_DIR}"/src/core/{,*}/lib*.so
-	if use python; then
-		insinto $(python_get_sitedir)/${PN}md
-		doins -r "${CMAKE_BUILD_DIR}"/src/python/espressomd
-	fi
+	cmake-utils_src_install
 
 	insinto /usr/share/${PN}/
 	doins ${CMAKE_BUILD_DIR}/myconfig-sample.hpp
@@ -134,6 +128,6 @@ pkg_postinst() {
 	elog "and reemerge with USE=savedconfig"
 	echo
 	elog "For a full feature list see:"
-	elog "/usr/share/${PN}/myconfig-sample.h"
+	elog "/usr/share/${PN}/myconfig-sample.hpp"
 	echo
 }
