@@ -12,7 +12,7 @@ SRC_URI="https://curl.haxx.se/download/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="adns http2 idn ipv6 kerberos ldap metalink rtmp samba ssh ssl static-libs test threads"
 IUSE+=" curl_ssl_axtls curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_polarssl curl_ssl_winssl"
 IUSE+=" elibc_Winnt"
@@ -129,7 +129,7 @@ multilib_src_configure() {
 	# So start with all ssl providers off until proven otherwise
 	local myconf=()
 	myconf+=( --without-axtls --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
-	myconf+=( --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt )
+	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	if use ssl ; then
 		if use curl_ssl_axtls; then
 			einfo "SSL provided by axtls"
@@ -223,6 +223,27 @@ multilib_src_configure() {
 		sed -i -e '/SUBDIRS/s:src::' Makefile || die
 		sed -i -e '/SUBDIRS/s:scripts::' Makefile || die
 	fi
+
+	# Fix up the pkg-config file to be more robust.
+	# https://github.com/curl/curl/issues/864
+	local priv=() libs=()
+	# We always enable zlib.
+	libs+=( "-lz" )
+	priv+=( "zlib" )
+	if use http2; then
+		libs+=( "-lnghttp2" )
+		priv+=( "libnghttp2" )
+	fi
+	if use curl_ssl_openssl; then
+		libs+=( "-lssl" "-lcrypto" )
+		priv+=( "openssl" )
+	fi
+	grep -q Requires.private libcurl.pc && die "need to update ebuild"
+	libs=$(printf '|%s' "${libs[@]}")
+	sed -i -r \
+		-e "/^Libs.private/s:(${libs#|})( |$)::g" \
+		libcurl.pc || die
+	echo "Requires.private: ${priv[*]}" >> libcurl.pc
 }
 
 multilib_src_install_all() {
@@ -230,8 +251,4 @@ multilib_src_install_all() {
 	prune_libtool_files --all
 
 	rm -rf "${ED}"/etc/
-
-	# https://sourceforge.net/tracker/index.php?func=detail&aid=1705197&group_id=976&atid=350976
-	insinto /usr/share/aclocal
-	doins docs/libcurl/libcurl.m4
 }
