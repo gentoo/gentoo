@@ -16,25 +16,33 @@ KEYWORDS="~amd64"
 IUSE="luajit"
 
 COMMON_DEPEND="media-video/mpv[cli]"
+RDEPEND="${COMMON_DEPEND}
+	>=app-shells/bash-completion-2.3-r1
+"
 DEPEND="${COMMON_DEPEND}
 	!luajit? ( dev-lang/lua:* )
 	luajit? ( dev-lang/luajit:2 )
 "
-RDEPEND="${COMMON_DEPEND}
-	>=app-shells/bash-completion-2.3-r1
-"
 
 src_prepare() {
 	default_src_prepare
-	# Disable screen resolution autodetection via xrandr.
-	sed -i -e '/x11ResList/{N;d;}' -e 's|, "Dimen"||' gen.lua || die
+	# Avoid 'mpv' make target that supports lua only.
+	sed -i -e 's|check: mpv|check:|' Makefile || die
 }
 
 src_compile() {
-	$(usex luajit 'luajit' 'lua') gen.lua > ${PN} || die
+	$(usex luajit 'luajit' 'lua') gen.lua > mpv || die
 }
 
 src_install() {
+	dobashcomp mpv
 	einstalldocs
-	newbashcomp ${PN} mpv
+}
+
+pkg_postinst() {
+	if ! has_version 'x11-apps/xrandr'; then
+		echo
+		elog "If you want completion of window sizes, please install 'x11-apps/xrandr'."
+		echo
+	fi
 }
