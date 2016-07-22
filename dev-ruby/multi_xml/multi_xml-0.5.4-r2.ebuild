@@ -18,7 +18,7 @@ DESCRIPTION="A generic swappable back-end for XML parsing"
 HOMEPAGE="http://rdoc.info/gems/multi_xml"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
 
