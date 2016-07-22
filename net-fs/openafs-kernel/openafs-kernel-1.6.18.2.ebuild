@@ -114,7 +114,7 @@ pkg_postinst() {
 	use kernel_FreeBSD && /usr/sbin/kldxref "${EPREFIX}/boot/modules"
 	use kernel_linux && linux-mod_pkg_postinst
 
-	if use kernel_linux && [[ ${REPLACING_VERSIONS} < "1.6.18.2" ]]; then
+	if use kernel_linux && ! version_is_at_least 1.6.18.2 ${REPLACING_VERSIONS}; then
 		ewarn "As of OpenAFS 1.6.18.2, Gentoo's packaging no longer requires"
 		ewarn "that CONFIG_DEBUG_RODATA be turned off in one's kernel config."
 		ewarn "If you only turned this option off for OpenAFS, please re-enable"
