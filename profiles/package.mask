@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (22 Jul 2016)
+# ruby20-only packages with no reverse dependencies, bug 576034
+# Masked for removal in 30 days.
+dev-ruby/matchy
+dev-ruby/watch
+
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
 # functionality is provided yet. Use --pretend to make sure correct
