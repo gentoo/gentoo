@@ -22,6 +22,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-python/ply[${PYTHON_USEDEP}]
+	dev-python/pygments[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
