@@ -7,6 +7,7 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KMNAME="kde-runtime"
 KMMODULE="kioslave"
+WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
 KEYWORDS="amd64 ~arm x86"
