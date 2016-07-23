@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="test"
 
 # They miserably fail.
@@ -39,7 +39,7 @@ python_test() {
 }
 
 python_install_all() {
-	doman man/ansi2html.1
-	DOCS=(  README.rst man/ansi2html.1.txt )
+	doman man/"${PN}.1"
+	DOCS=(  README.rst man/"${PN}".1.txt )
 	distutils-r1_python_install_all
 }
