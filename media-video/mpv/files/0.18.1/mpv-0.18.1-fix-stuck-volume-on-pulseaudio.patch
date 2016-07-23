@@ -1,0 +1,32 @@
+commit d191d76e52a992840ab614f760f1189391a5507d
+Author: wm4 <wm4@nowhere>
+Date:   Thu Jul 14 18:11:14 2016 +0200
+
+ao_pulse: fix some volume control rounding issues
+
+Volume could get easily "stuck" or making too huge steps when doing
+things like "add ao-volume 1".
+
+diff --git a/audio/out/ao_pulse.c b/audio/out/ao_pulse.c
+index d553b67..fc0dd0d 100644
+--- a/audio/out/ao_pulse.c
++++ b/audio/out/ao_pulse.c
+@@ -23,6 +23,7 @@
+ #include <stdbool.h>
+ #include <string.h>
+ #include <stdint.h>
++#include <math.h>
+ #include <pthread.h>
+
+ #include <pulse/pulseaudio.h>
+@@ -34,8 +35,8 @@
+ #include "ao.h"
+ #include "internal.h"
+
+-#define VOL_PA2MP(v) ((v) * 100 / PA_VOLUME_NORM)
+-#define VOL_MP2PA(v) ((v) * PA_VOLUME_NORM / 100)
++#define VOL_PA2MP(v) ((v) * 100.0 / PA_VOLUME_NORM)
++#define VOL_MP2PA(v) lrint((v) * PA_VOLUME_NORM / 100)
+
+ struct priv {
+     // PulseAudio playback stream object
