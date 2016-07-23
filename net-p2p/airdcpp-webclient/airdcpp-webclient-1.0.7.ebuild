@@ -11,7 +11,7 @@ HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="nat-pmp +tbb +webui"
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/boost
 	dev-libs/geoip
 	dev-libs/leveldb
-	dev-libs/openssl:0=
+	dev-libs/openssl:0=[-bindist]
 	net-libs/miniupnpc
 	sys-libs/zlib
 	virtual/libiconv
@@ -30,6 +30,7 @@ RDEPEND="
 "
 DEPEND="
 	dev-lang/python:*
+	virtual/pkgconfig
 	${RDEPEND}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
