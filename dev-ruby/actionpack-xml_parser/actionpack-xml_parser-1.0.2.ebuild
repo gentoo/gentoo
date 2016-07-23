@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -19,11 +19,12 @@ KEYWORDS="~amd64"
 SLOT="0"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0"
+ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0:* <dev-ruby/actionpack-5:*"
 ruby_add_bdepend "test? ( >=dev-ruby/activesupport-4.0.0 )"
 
 all_ruby_prepare() {
 	sed -i -e "/bundler/d" Rakefile test/helper.rb || die
+	sed -i -e '1igem "actionpack", "~>4.0"' test/helper.rb || die
 }
 
 each_ruby_test() {
