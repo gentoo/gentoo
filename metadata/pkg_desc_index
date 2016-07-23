@@ -7419,7 +7419,7 @@ dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema val
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1 4.2.2: Jupyter protocol implementation and client libraries
 dev-python/jupyter_console 4.0.3 4.1.0 4.1.1: A terminal-based console frontend for Jupyter kernels
-dev-python/jupyter_core 4.0.6: Core common functionality of Jupyter projects
+dev-python/jupyter_core 4.0.6 4.1.0: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
 dev-python/kaa-imlib2 0.2.3-r1 0.2.3-r2: Imlib2 wrapper for Python
@@ -7655,7 +7655,7 @@ dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper fo
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/phonenumbers 7.2.3 7.2.8: Python port of Google's libphonenumber
 dev-python/photutils 0.2.1: Python package for image astronomical photometry
-dev-python/pickleshare 0.5 0.6: A small 'shelve' like datastore with concurrency support
+dev-python/pickleshare 0.5 0.6 0.7.2: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
@@ -8253,7 +8253,7 @@ dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2 2.3.1: virtualenv-based automation of tes
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
-dev-python/traitlets 4.0.0 4.1.0 4.2.1: A configuration system for Python applications
+dev-python/traitlets 4.0.0 4.1.0 4.2.1 4.2.2: A configuration system for Python applications
 dev-python/traits 4.5.0 4.5.0-r1: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
 dev-python/translate-toolkit 1.12.0: Toolkit to convert between many translation formats
