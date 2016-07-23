@@ -62,8 +62,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
-	rm -r usr/lib || die
+	case ${ARCH} in
+		amd64)
+			mv usr/lib/x86_64-linux-gnu usr/$(get_libdir) || die
+			rm -r usr/lib || die
+			;;
+		x86)
+			mv usr/lib/i386-linux-gnu/${PN} usr/$(get_libdir) || die
+			rmdir usr/lib/i386-linux-gnu || die
+			;;
+	esac
 
 	rm usr/bin/${PN} || die
 
