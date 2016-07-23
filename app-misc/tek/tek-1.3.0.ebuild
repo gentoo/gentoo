@@ -11,7 +11,7 @@ DESCRIPTION="GUI tool for upgrading the firmware of a Truly Ergonomic Keyboard"
 HOMEPAGE="http://trulyergonomic.com/ https://github.com/m-ou-se/tek"
 SRC_URI="https://github.com/m-ou-se/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="all-rights-reserved GPL-3"
+LICENSE="all-rights-reserved GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
