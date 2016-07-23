@@ -5334,7 +5334,7 @@ dev-perl/Cisco-Reconfig 0.911.0: Parse and generate Cisco configuration files
 dev-perl/Class-Accessor 0.340.0-r1: Automated accessor generation
 dev-perl/Class-Accessor-Chained 0.10.0-r1: Perl module to make chained class accessors
 dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
-dev-perl/Class-Accessor-Lite 0.50.0-r1: A minimalistic variant of Class::Accessor
+dev-perl/Class-Accessor-Lite 0.50.0-r1 0.80.0: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
 dev-perl/Class-Base 0.50.0-r1: Useful base class for deriving other modules
