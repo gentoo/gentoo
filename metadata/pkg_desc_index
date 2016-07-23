@@ -5357,6 +5357,7 @@ dev-perl/Class-InsideOut 1.130.0-r1: A safe, simple inside-out object constructi
 dev-perl/Class-Inspector 1.280.0-r1: Provides information about Classes
 dev-perl/Class-Load 0.200.0-r1 0.230.0: A working (require q{Class::Name}) and more
 dev-perl/Class-Load-XS 0.60.0-r1: XS implementation of parts of Class::Load
+dev-perl/Class-Loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/Class-MakeMethods 1.10.0-r1: Automated method creation module for Perl
 dev-perl/Class-Member 1.600.0-r1: Class::Member - A set of modules to make the module developement easier
 dev-perl/Class-Method-Modifiers 2.30.0: provides Moose-like method modifiers
@@ -6572,7 +6573,6 @@ dev-perl/boolean 0.450.0: Boolean support for Perl
 dev-perl/cache-mmap 0.110.0-r1: Shared data cache using memory mapped files
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/cdk-perl 20141106: Perl extension for Cdk
-dev-perl/class-loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
