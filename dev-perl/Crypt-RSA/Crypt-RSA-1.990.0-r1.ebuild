@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ~ppc x86 ~x86-solaris"
 IUSE=""
 
-DEPEND="dev-perl/class-loader
+DEPEND="dev-perl/Class-Loader
 	dev-perl/Crypt-Blowfish
 	dev-perl/convert-ascii-armour
 	dev-perl/Crypt-CBC

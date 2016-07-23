@@ -24,7 +24,7 @@ RDEPEND="
 	dev-perl/Crypt-DES
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-RIPEMD160
-	dev-perl/class-loader
+	dev-perl/Class-Loader
 	dev-perl/Tie-EncryptedHash
 	dev-perl/convert-ascii-armour
 	dev-perl/data-buffer
