@@ -1,5 +1,5 @@
---- xkbset-0.5/Makefile
-+++ xkbset-0.5/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -11,7 +11,7 @@
  all: xkbset xkbset.1
  
