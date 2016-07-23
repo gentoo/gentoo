@@ -18,7 +18,7 @@ EGIT_REPO_URI="http://llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 LICENSE="UoI-NCSA"
-SLOT="0/${PV}"
+SLOT="0/${PV%.*}"
 KEYWORDS=""
 IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
 	python +static-analyzer test xml video_cards_radeon
@@ -400,7 +400,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=3.9
+		CLANG_VERSION=4.0
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang
