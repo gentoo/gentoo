@@ -18,9 +18,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm"
 IUSE="tools"
 
-DEPEND=""
-RDEPEND=""
-
 DOCS="README.md AUTHORS CONTRIBUTING.md"
 
 pkg_setup() {
@@ -35,13 +32,16 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/relaysrv.systemd.patch"
-	eapply_user
+	default
+	sed -i \
+		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/relaysrv|' \
+		src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
+		|| die
 }
 
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
-	cd src/${EGO_PN}
+	cd src/${EGO_PN} || die
 	# If we pass "build" to build.go, it builds only syncthing itself, and
 	# places the binary in the root folder. If we do not pass "build", all the
 	# tools are built, and all binaries are placed in folder ./bin.
@@ -53,12 +53,12 @@ src_compile() {
 }
 
 src_test() {
-	cd src/${EGO_PN}
+	cd src/${EGO_PN} || die
 	go run build.go test || die "test failed"
 }
 
 src_install() {
-	cd src/${EGO_PN}
+	cd src/${EGO_PN} || die
 	doman man/*.[157]
 
 	if use tools ; then
@@ -85,7 +85,7 @@ src_install() {
 
 	if use tools ; then
 		# openrc and systemd service files
-		systemd_dounit "${S}"/src/${EGO_PN}/cmd/relaysrv/etc/linux-systemd/${PN}-relaysrv.service
+		systemd_dounit "${S}"/src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
 		newconfd "${FILESDIR}/${PN}-relaysrv.confd" ${PN}-relaysrv
 		newinitd "${FILESDIR}/${PN}-relaysrv.initd" ${PN}-relaysrv
 
@@ -98,11 +98,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ $(get_version_component_range 2) -gt \
-			$(get_version_component_range 2 ${REPLACING_VERSIONS}) ]]; then
-		ewarn "Version ${PV} is not protocol-compatible with version" \
-			"0.$(($(get_version_component_range 2) - 1)).x or lower."
-		ewarn "Make sure all your devices are running at least version" \
-			"0.$(get_version_component_range 2).0."
-	fi
+	local v
+    for v in ${REPLACING_VERSIONS}; do
+		if [[ $(get_version_component_range 2) -gt \
+				$(get_version_component_range 2 ${v}) ]]; then
+			ewarn "Version ${PV} is not protocol-compatible with version" \
+				"0.$(($(get_version_component_range 2) - 1)).x or lower."
+			ewarn "Make sure all your devices are running at least version" \
+				"0.$(get_version_component_range 2).0."
+		fi
+	done
 }
