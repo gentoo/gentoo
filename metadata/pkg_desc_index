@@ -6403,7 +6403,7 @@ dev-perl/Text-Table 1.130.0: Organize Data in Tables
 dev-perl/Text-Template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 0.40.0-r1 1.270.0: Plain ASCII transliterations of Unicode text
-dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
+dev-perl/Text-VimColor 0.260-r1: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-Wrapper 1.40.0-r1 1.50.0: Word wrap text by breaking long lines
@@ -14872,7 +14872,7 @@ net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy s
 net-misc/r8168 8.040.00 8.042.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0 3.6.1 3.6.2: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 2.12 2.13: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 1.9.8 2.12 2.13 2.14: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
