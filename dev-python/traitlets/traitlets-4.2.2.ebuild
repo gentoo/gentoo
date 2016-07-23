@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
@@ -19,6 +19,7 @@ IUSE="doc test"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3)
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	"
@@ -27,7 +28,10 @@ DEPEND="
 		dev-python/ipython_genutils[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
-	test? (	dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		)
 	"
 
 python_prepare_all() {
@@ -44,7 +48,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests --verbosity=3 traitlets || die
+	py.test --cov traitlets -v traitlets || die
 }
 
 python_install_all() {
