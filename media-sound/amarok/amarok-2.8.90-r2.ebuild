@@ -11,6 +11,7 @@ KDE_REQUIRED="never"
 KDE_HANDBOOK="optional"
 VIRTUALX_REQUIRED="test"
 VIRTUALDBUS_TEST="true"
+WEBKIT_REQUIRED="always"
 inherit flag-o-matic kde4-base pax-utils
 
 DESCRIPTION="Advanced audio player based on KDE framework"
