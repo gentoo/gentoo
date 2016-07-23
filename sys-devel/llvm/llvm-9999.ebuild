@@ -400,7 +400,7 @@ src_install() {
 
 	if use clang; then
 		# note: magic applied in multilib_src_install()!
-		CLANG_VERSION=3.9
+		CLANG_VERSION=4.0
 
 		MULTILIB_CHOST_TOOLS+=(
 			/usr/bin/clang
