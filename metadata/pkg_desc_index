@@ -5366,7 +5366,7 @@ dev-perl/Class-Mix 0.5.0-r1: dynamic class mixing
 dev-perl/Class-ReturnValue 0.550.0-r1: A return-value object that lets you treat it as as a boolean, array or object
 dev-perl/Class-Singleton 1.500.0: Implementation of a Singleton class
 dev-perl/Class-Spiffy 0.150.0-r1: Spiffy Perl Interface Framework For You
-dev-perl/Class-Std 0.11.0-r1: Support for creating standard "inside-out" classes
+dev-perl/Class-Std 0.11.0-r1 0.13.0: Support for creating standard "inside-out" classes
 dev-perl/Class-Std-Fast 0.0.8-r1: Faster but less secure than Class::Std
 dev-perl/Class-Tiny 1.0.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1: Mixin to add / call inheritable triggers
