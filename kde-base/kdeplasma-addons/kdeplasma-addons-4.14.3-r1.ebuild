@@ -4,6 +4,7 @@
 
 EAPI=5
 
+WEBKIT_REQUIRED="always"
 inherit flag-o-matic kde4-base
 
 DESCRIPTION="Extra Plasma applets and engines"
