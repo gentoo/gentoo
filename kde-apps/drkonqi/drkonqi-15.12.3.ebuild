@@ -5,6 +5,7 @@
 EAPI=6
 
 KMNAME="kde-runtime"
+WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="KDE crash handler, gives the user feedback if a program crashed"

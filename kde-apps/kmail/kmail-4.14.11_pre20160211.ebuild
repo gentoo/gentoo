@@ -7,7 +7,8 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KMNAME="kdepim"
 EGIT_BRANCH="KDE/4.14"
-VIRTUALX_REQUIRED=test
+VIRTUALX_REQUIRED="test"
+WEBKIT_REQUIRED="always"
 inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email component of Kontact, the integrated personal information manager of KDE"
