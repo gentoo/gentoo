@@ -6913,7 +6913,7 @@ dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithm
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
 dev-python/aniso8601 0.82 0.83 0.90 0.92 1.0.0 1.1.0 1.1.0-r1: A library for parsing ISO 8601 strings
-dev-python/ansi2html 1.0.7 1.1.0 1.1.1: Convert text with ANSI color codes to HTML
+dev-python/ansi2html 1.1.1: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
