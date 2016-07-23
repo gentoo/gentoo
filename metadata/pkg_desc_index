@@ -5350,7 +5350,7 @@ dev-perl/Class-DBI-mysql 1.0.0-r1: Extensions to Class::DBI for MySQL
 dev-perl/Class-Data-Accessor 0.40.40-r1: Inheritable, overridable class and instance data accessor creation
 dev-perl/Class-Data-Inheritable 0.80.0-r1: Inheritable, overridable class data
 dev-perl/Class-Default 1.510.0-r1: Static calls apply to a default instantiation
-dev-perl/Class-ErrorHandler 0.30.0: Automated accessor generation
+dev-perl/Class-ErrorHandler 0.30.0 0.40.0: Automated accessor generation
 dev-perl/Class-Factory-Util 1.700.0-r1: Provide utility methods for factory classes
 dev-perl/Class-ISA 0.36-r1: Report the search path thru an ISA tree
 dev-perl/Class-InsideOut 1.130.0-r1: A safe, simple inside-out object construction kit
