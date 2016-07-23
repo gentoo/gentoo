@@ -5337,7 +5337,7 @@ dev-perl/Class-Accessor-Grouped 0.100.120: Lets you build groups of accessors
 dev-perl/Class-Accessor-Lite 0.50.0-r1 0.80.0: A minimalistic variant of Class::Accessor
 dev-perl/Class-Adapter 1.80.0-r1: Implementation of the "Adapter" Design Pattern
 dev-perl/Class-Autouse 2.10.0-r1: Runtime aspect loading of one or more classes
-dev-perl/Class-Base 0.50.0-r1: Useful base class for deriving other modules
+dev-perl/Class-Base 0.50.0-r1 0.60.0: Useful base class for deriving other modules
 dev-perl/Class-C3 0.300.0: A pragma to use the C3 method resolution order algortihm
 dev-perl/Class-C3-Componentised 1.1.0-r1: Load mix-ins or components to your C3-based class
 dev-perl/Class-C3-XS 0.130.0-r1: XS speedups for Class::C3
@@ -8365,7 +8365,7 @@ dev-python/xlutils 1.5.2-r1 1.7.1: provides a collection of utilities for workin
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.9.1 0.9.2 0.10.1 0.10.1-r1 0.10.2: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
-dev-python/xonsh 0.2.3 0.2.4 0.2.5 0.2.6: An exotic, usable shell
+dev-python/xonsh 0.2.6 0.4.4: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4 0.2.8: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93 0.94: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
