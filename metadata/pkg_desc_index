@@ -5370,7 +5370,7 @@ dev-perl/Class-Std 0.11.0-r1 0.13.0: Support for creating standard "inside-out" 
 dev-perl/Class-Std-Fast 0.0.8-r1: Faster but less secure than Class::Std
 dev-perl/Class-Tiny 1.0.0 1.4.0: Minimalist class construction
 dev-perl/Class-Trigger 0.140.0-r1: Mixin to add / call inheritable triggers
-dev-perl/Class-Unload 0.70.0-r1: Unload a class
+dev-perl/Class-Unload 0.70.0-r1 0.90.0: Unload a class
 dev-perl/Class-Virtual 0.60.0-r1: Base class for virtual base classes
 dev-perl/Class-WhiteHole 0.40.0-r1: base class to treat unhandled method calls as errors
 dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
