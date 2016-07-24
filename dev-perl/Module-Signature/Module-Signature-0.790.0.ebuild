@@ -26,7 +26,7 @@ RDEPEND="
 	dev-perl/Crypt-RIPEMD160
 	dev-perl/Class-Loader
 	dev-perl/Tie-EncryptedHash
-	dev-perl/convert-ascii-armour
+	dev-perl/Convert-ASCII-Armour
 	dev-perl/data-buffer
 	dev-perl/digest-md2
 	>=dev-perl/Math-Pari-2.010603
