@@ -288,12 +288,6 @@ media-tv/freevo
 # Obsolete mod, also buggy (#382055). Removal in a month.
 www-apache/mod-auth-mysql
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-#   Patrick Lauer <patrick@gentoo.org> (21 May 2013)
-#   broken dependencies -> uninstallable #470712
-# Removal in a month (#429998)
-app-portage/g-ctan
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
