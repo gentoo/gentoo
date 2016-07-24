@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	dev-libs/urdfdom
+	>=dev-libs/urdfdom-1:=
 	dev-libs/tinyxml
 	dev-libs/boost:=
 	sci-libs/ignition-math:2=
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )
 
 src_configure() {
 	echo "set (CMAKE_C_FLAGS_ALL \"${CXXFLAGS} \${CMAKE_C_FLAGS_ALL}\")" > "${S}/cmake/HostCFlags.cmake"
