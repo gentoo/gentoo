@@ -257,10 +257,6 @@ media-video/subotage
 >=www-client/chromium-53
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Buggy, upstream dead for ages (#148741). Removal in a month.
-app-cdr/dvd95
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # Unmaintained, development stalled for a long time (#168283).
 # Removal in a month.
 app-portage/epm
