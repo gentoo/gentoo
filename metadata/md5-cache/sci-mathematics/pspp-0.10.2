@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=dev-libs/libxml2:2= sci-libs/gsl:0= sys-devel/gettext:0= sys-libs/readline:0= sys-libs/zlib:0= virtual/libiconv cairo? ( x11-libs/cairo:0=[svg] ) emacs? ( virtual/emacs ) gtk? ( x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) ncurses? ( sys-libs/ncurses:0= ) postgres? ( dev-db/postgresql:=[server] ) virtual/pkgconfig doc? ( virtual/latex-base )
+DESCRIPTION=Program for statistical analysis of sampled data
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/pspp/pspp.html
+IUSE=cairo doc emacs examples gtk ncurses nls perl postgres static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-libs/libxml2:2= sci-libs/gsl:0= sys-devel/gettext:0= sys-libs/readline:0= sys-libs/zlib:0= virtual/libiconv cairo? ( x11-libs/cairo:0=[svg] ) emacs? ( virtual/emacs ) gtk? ( x11-libs/gtk+:3= x11-libs/gtksourceview:3.0= ) ncurses? ( sys-libs/ncurses:0= ) postgres? ( dev-db/postgresql:=[server] )
+SLOT=0/0.10.2
+SRC_URI=mirror://gnu/pspp/pspp-0.10.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=837c97067d0b1bf141574639dac17fb7
