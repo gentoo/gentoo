@@ -1,12 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
+inherit systemd
+
 DESCRIPTION="PaX flags maintenance daemon"
 HOMEPAGE="http://www.grsecurity.net/"
-SRC_URI="https://dev.gentoo.org/~blueness/hardened-sources/paxctld/${PN}_${PV}.orig.tar.gz"
+SRC_URI="https://www.grsecurity.net/${PN}/${PN}_${PV}.orig.tar.gz
+	https://dev.gentoo.org/~blueness/hardened-sources/${PN}/${PN}_${PV}.orig.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -16,8 +19,6 @@ IUSE="pam"
 RDEPEND=""
 DEPEND=""
 
-S="${WORKDIR}/paxctld-1.0"
-
 src_prepare() {
 	# Respect Gentoo flags and don't strip
 	sed -i \
@@ -26,4 +27,10 @@ src_prepare() {
 		-e '/^LDFLAGS/d' \
 		-e '/STRIP/d' \
 		Makefile
+}
+
+src_install() {
+	default
+
+	systemd_dounit "${S}"/rpm/${PN}.service
 }
