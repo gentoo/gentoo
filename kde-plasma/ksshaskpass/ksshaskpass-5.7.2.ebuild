@@ -20,7 +20,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!net-misc/ksshaskpass
+	!kde-plasma/ksshaskpass:4
 "
 
 src_install() {
