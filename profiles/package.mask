@@ -299,11 +299,6 @@ app-portage/g-ctan
 # Removal in a month.
 media-video/avinfo
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Needs to be ported to new eclasses, obsoleted by hydrogen
-# Removal in a month (#442614)
-media-sound/trommler
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
