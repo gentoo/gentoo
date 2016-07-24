@@ -5931,7 +5931,7 @@ dev-perl/Math-Spline 0.20.0: Cubic Spline Interpolation of data
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
-dev-perl/Mo 0.390.0: Perl Micro Object framework
+dev-perl/Mo 0.390.0 0.400.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.420.500 0.421.600: Build and install Perl modules

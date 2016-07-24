@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl Micro Object framework
+EAPI=5
+HOMEPAGE=https://metacpan.org/pod/distribution/Mo/lib/Mo.pod
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TI/TINITA/Mo-0.40.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=04e55cb2c43e93e4a66415de470f1df0
