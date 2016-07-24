@@ -362,11 +362,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	elisp-site-regen
-
-	local pvr
-	for pvr in ${REPLACING_VERSIONS}; do
-		[[ ${pvr%%[-_]*} = 24.[12] ]] && FORCE_PRINT_ELOG=1
-	done
 	readme.gentoo_print_elog
 
 	if use livecd; then
