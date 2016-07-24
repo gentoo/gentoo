@@ -238,9 +238,7 @@ media-video/motion
 
 # Michał Górny <mgorny@gentoo.org> (25 Jun 2016)
 # Obsolete packages for removal in 30 days. Replacements and bugs:
-# dev-ml/faillib -> dev-ml/ppx_fail, #586912
 # dev-ml/typehashlib -- not used anymore, #586928
-dev-ml/faillib
 dev-ml/typehashlib
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
