@@ -9624,7 +9624,6 @@ dev-util/archdiff 1.1.6: Utility to view the differences between two source code
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.7.4 0.8.1: Cucumber steps for driving out command line applications
-dev-util/as11 1.0: Motorola's AS11 Assembler for the 68HC11
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
 dev-util/autodia 2.140.0-r1: Parses source code, XML or data and produces an XML document in Dia format
@@ -9661,8 +9660,6 @@ dev-util/catkin 0.6.16-r2 0.7.0 0.7.1 9999: Cmake macros and associated python c
 dev-util/ccache 3.2.4 3.2.5 3.2.7: fast compiler cache
 dev-util/cccc 3.1.5: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
-dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
-dev-util/cdecl 2.5-r2: Turn English phrases to C or C++ declarations
 dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
@@ -9696,7 +9693,6 @@ dev-util/cpuinfo-collection 20060720 20070104 20101114: huge collection of /proc
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/crash 6.1.4 7.0.0 7.0.3 7.0.7 7.1.4: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.4.0 2.5.0: C-Reduce - a plugin-based C program reducer
-dev-util/crow-designer 2.21.0 2.99.0: GTK+ GUI building tool
 dev-util/cscope 15.8a: Interactively examine a C program
 dev-util/csup 20060318: A rewrite of CVSup
 dev-util/ctags 5.8 5.8-r1 5.8_p20140919: Exuberant Ctags creates tags files for code browsing in editors
@@ -9733,7 +9729,6 @@ dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for d
 dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
-dev-util/eggy 0.3.3-r1: An IDE/editor for several programming languages, including Python, Java, C, Perl and others
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
 dev-util/electron 0.36.12-r3: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
@@ -9742,7 +9737,6 @@ dev-util/eric 4.5.25-r1 5.5.2 6.1.7: A full featured Python IDE using PyQt and Q
 dev-util/fatrace 0.11: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
-dev-util/filepp 1.6.0 1.8.0: a generic file preprocessor with a CPP-like syntax
 dev-util/findbugs 3.0.1: Find Bugs in Java Programs
 dev-util/fix-la-relink-command 0.1.1: Helps prevent .la files from relinking to libraries outside a build tree
 dev-util/flawfinder 1.27-r2 1.31: Examines C/C++ source code for security flaws
@@ -9755,7 +9749,6 @@ dev-util/geany 1.24.1 1.25 1.26 1.27 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/ghh 9999: a tool to track the history and make backups of your home directory
 dev-util/glade 3.8.5 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a specified object in various sources
 dev-util/gnome-devel-docs 3.18.1 3.20.2: Documentation for developing for the GNOME desktop environment
@@ -9771,7 +9764,6 @@ dev-util/gtk-doc-am 1.21 1.24 1.25: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.16.7 3.18.4: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.9: A code search tool
-dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
 dev-util/huc 0.1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
@@ -9783,10 +9775,8 @@ dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 3.5 3.6 3.7-r1 3.8: find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1: Indent program source files
-dev-util/injectso 0.2-r1: Inject shared libraries into running processes under Solaris and Linux
 dev-util/insight 6.8.1-r1: A graphical interface to the GNU debugger
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
-dev-util/intel2gas 1.3.3-r3: Converts assembler source from Intel (NASM), to AT&T (gas)
 dev-util/intltool 0.50.2-r1 0.51.0 0.51.0-r1: Internationalization Tool Collection
 dev-util/its4 1.1.1: ITS4: Software Security Tool
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
@@ -9794,7 +9784,6 @@ dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files f
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
 dev-util/jenkins-bin 1.651.2 2.5: Extensible continuous integration server
-dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
@@ -9805,7 +9794,6 @@ dev-util/kdevelop-python 1.7.2 1.7.3: Python plugin for KDevelop 4
 dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
 dev-util/kdevplatform 1.7.2-r1 1.7.3: KDE development support libraries and apps
-dev-util/kdoc 2.0_alpha54: C++ and IDL Source Documentation System
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
 dev-util/kscope 1.9.4-r1: Source Editing Environment based on Qt
@@ -9828,7 +9816,6 @@ dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo relea
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
-dev-util/mock 1.0.3: create chroots and build packages in them for Fedora and RedHat
 dev-util/molecule 0.9.24.6 0.9.24.8 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
@@ -9868,7 +9855,6 @@ dev-util/omake 0.9.8.6.0_rc1: Make replacement
 dev-util/open-vcdiff 0.8.3 0.8.4: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 0.9.9-r1 0.9.9-r2 1.1.0-r1: A transparent low-overhead system-wide profiler
 dev-util/osc 0.148.2 0.152.0 0.154.0 9999: Command line tool for Open Build Service
-dev-util/par 00.05.01: par manipulates PalmOS database files
 dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
@@ -9887,7 +9873,6 @@ dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2016.1.3 2016.1.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2016.1.3 2016.1.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.5 1.5.2: Cross-platform build tool
-dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
@@ -9898,8 +9883,6 @@ dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.5.1 2.6.0 2.6.1: A sophisticated build-tool for Erlang projects that follows OTP principles
-dev-util/rec 1.6: Reverse Engineering Compiler
-dev-util/redet 8.26: A regular expression development and execution tool
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
@@ -9924,7 +9907,6 @@ dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line p
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6: Unit-test framework for Bourne-based shell scripts
-dev-util/skelgen 1.2: A Skeleton Source File Generator
 dev-util/skipfish 2.10_beta: A fully automated, active web application security reconnaissance tool
 dev-util/smem 20071119_p1: A tool to parse smaps statistics
 dev-util/source-highlight 3.1.7-r2: Generate highlighted source code as an (x)html document
@@ -9963,7 +9945,6 @@ dev-util/vmtouch 1.0.2: Virtual Memory Toucher, portable file system cache diagn
 dev-util/vtable-dumper 1.1: A tool to list content of virtual tables in a shared library
 dev-util/w32api 3.17.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest)
-dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/webstorm 10.0.4.141.1550: JavaScript IDE for complex client-side development and server-side development with Node.js
 dev-util/weka 3.7.13 3.8.0: A Java data mining package
