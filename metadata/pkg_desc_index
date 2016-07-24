@@ -15705,7 +15705,7 @@ sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA p
 sci-electronics/qucs 0.0.17.130503 0.0.18: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
-sci-electronics/splat 1.4.1-r1 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool for the spectrum between 20 MHz and 20 GHz
+sci-electronics/splat 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool
 sci-electronics/systemc 2.2.0-r2 2.3.0 2.3.1: A C++ based modeling platform for VLSI and system-level co-design
 sci-electronics/vbs 1.4.0: vbs - the Verilog Behavioral Simulator
 sci-electronics/voacapl 0.5.8 0.6.4 0.6.5 0.6.7: HF propagation prediction tool
