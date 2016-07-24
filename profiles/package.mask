@@ -250,7 +250,6 @@ app-portage/epm
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
 # Masked for removal in 30 days.
-dev-util/filepp
 dev-util/kdoc
 dev-util/skelgen
 dev-util/ftncheck
