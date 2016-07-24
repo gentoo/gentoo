@@ -23,7 +23,7 @@ fi
 DESCRIPTION="URDF (U-Robot Description Format) library"
 HOMEPAGE="http://ros.org/wiki/urdf"
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/1"
 IUSE=""
 
 RDEPEND=">=dev-libs/urdfdom_headers-1.0.0
