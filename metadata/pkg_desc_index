@@ -2841,7 +2841,7 @@ dev-cpp/gtksourceviewmm 2.10.3 2.10.3-r1 3.12.0 3.18.0: C++ bindings for gtksour
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
 dev-cpp/libassa 3.5.1-r1: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbackend-elements 1.7.2: A collection of elementary building blocks for implementing compiler backends in c++
-dev-cpp/libbinio 1.4: Binary I/O stream class library
+dev-cpp/libbinio 1.4 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.0-r1 0.5.1 9999: C++ client library for the CMIS interface
 dev-cpp/libcult 1.4.6-r1: A collection of C++ libraries
 dev-cpp/libfrontend-elements 1.1.4: A collection of elementary building blocks for implementing compiler frontends in c++
