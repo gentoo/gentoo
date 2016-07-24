@@ -265,45 +265,6 @@ app-cdr/dvd95
 # Removal in a month.
 app-portage/epm
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Unmaintained, buggy and not needed by anything in the tree (#221667).
-# Removal in a month.
-dev-libs/vdk
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# No buildable version in the tree and nobody is taking care
-# of it (#349457). Removal in a month.
-media-tv/dvbstreamer
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Multiple bugs, upstream died for ages (#360631). Removal in a month.
-net-p2p/microdc2
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Upstream stopped taking care and suggests kodi as an alternative.
-# (#363513). Removal in a month.
-media-tv/freevo
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Obsolete mod, also buggy (#382055). Removal in a month.
-www-apache/mod-auth-mysql
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-#   Patrick Lauer <patrick@gentoo.org> (21 May 2013)
-#   broken dependencies -> uninstallable #470712
-# Removal in a month (#429998)
-app-portage/g-ctan
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Fails to build, nothing requires it in the tree (#432718)
-# Removal in a month.
-media-video/avinfo
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Needs to be ported to new eclasses, obsoleted by hydrogen
-# Removal in a month (#442614)
-media-sound/trommler
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
@@ -504,10 +465,6 @@ dev-perl/ExtUtils-Constant
 net-im/silc-server
 
 # NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
-# Security issues bug #536334. Remove this entry in a month.
-<net-nds/389-ds-base-1.3.2.22
-
-# NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
 # Security issues bug #536334. Under investigation by maintainer.
 app-admin/389-ds-console
 net-nds/389-admin
@@ -616,12 +573,6 @@ dev-python/south
 # disabling GLX indirect rendering protocol support on the X server.
 <x11-drivers/nvidia-drivers-304
 
-# Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
-# Missing deps, uninstallable
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Removal in 14 days, #528198.
-www-apps/trac-downloads
-
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
 # Causes undefined references few layers down (in mediastreamer),
 # someone needs to investigate.
@@ -714,13 +665,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
-
-# Diego Elio Pettenò <flameeyes@gentoo.org> (13 Oct 2013)
-# Requires a NPN support in mod_ssl (www-server/apache) to work.
-# See #471512 for more details.
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
-# Replaced by mod_h2 (in Apache). Removal in 14 days, #587146.
-www-apache/mod_spdy
 
 # Sergey Popov <pinkbyte@gentoo.org> (18 Sep 2013)
 # Mask development releases of botan:
