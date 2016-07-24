@@ -8847,11 +8847,11 @@ dev-ruby/color 1.8: Colour management with Ruby
 dev-ruby/colorator 0.1-r1 1.0.0 1.1.0: Colorize your text in the terminal
 dev-ruby/colored 1.2: Console coloring
 dev-ruby/colorize 0.7.7 0.8.0 0.8.1: Adds methods to set color, background color and text effect on console easier
-dev-ruby/columnize 0.8.9 0.9.0: Sorts an array in column order
+dev-ruby/columnize 0.9.0: Sorts an array in column order
 dev-ruby/combustion 0.5.4 0.5.5: Elegant Rails Engine Testing
 dev-ruby/commander 4.3.7 4.3.8 4.4.0: The complete solution for Ruby command-line executables
-dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
-dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
+dev-ruby/compass 1.0.3-r1: Compass Stylesheet Authoring Framework
+dev-ruby/compass-core 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.0 1.0.1 1.0.2 1.0.2-r1: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
@@ -8866,12 +8866,12 @@ dev-ruby/cri 2.7.0: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.3.6 1.4.1 1.4.2 1.4.4 1.4.5: Sass-based Stylesheet Framework
 dev-ruby/curb 0.8.8: Ruby-language bindings for libcurl
 dev-ruby/curses 1.0.2: Ruby binding for curses, ncurses, and PDCurses
-dev-ruby/d3_rails 3.5.10 3.5.11 3.5.16: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
+dev-ruby/d3_rails 3.5.16: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.4 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.5.1 1.5.2 1.5.3: Strategies for cleaning databases
-dev-ruby/date_validator 0.8.0 0.8.1 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
+dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4 3.0.5: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
@@ -8939,15 +8939,15 @@ dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashe
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.4.3 3.4.4: Hashie is a small collection of tools that make hashes more powerful
-dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashr 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0: A simple pluggable Hierarchical Database
-dev-ruby/hiera-eyaml 2.0.8 2.1.0: Encrypted YAML backend for hiera
+dev-ruby/hiera-eyaml 2.1.0: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hike 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
-dev-ruby/hipchat 1.5.2 1.5.3: Ruby library to interact with HipChat
+dev-ruby/hipchat 1.5.3: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3 1.2.4: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.rb
@@ -8963,7 +8963,7 @@ dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication proto
 dev-ruby/httpclient 2.6.0.1 2.7.1 2.7.2 2.8.0: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
-dev-ruby/inifile 2.0.2-r1 3.0.0: Native Ruby package for reading and writing INI files
+dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
 dev-ruby/instance_storage 1.0.0: Manage class instances with dictionary
 dev-ruby/instantiator 0.0.6: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.3: Dynamic inspection of the hierarchy of method definitions on a Ruby object
@@ -8985,7 +8985,7 @@ dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
 dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libxml 2.8.0-r1 2.9.0: Ruby libxml with a user friendly API, akin to REXML
-dev-ruby/liquid 2.6.2 3.0.4 3.0.6: Template engine for Ruby
+dev-ruby/liquid 2.6.2 3.0.6: Template engine for Ruby
 dev-ruby/liquid-c 3.0.0: Liquid performance extension in C
 dev-ruby/listen 0.7.3-r2 1.3.1-r3 1.3.1-r4 2.8.6-r1 3.0.5 3.0.6 3.1.1 3.1.1-r1: Listens to file modifications and notifies you about the changes
 dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
@@ -8994,7 +8994,7 @@ dev-ruby/locale 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic A
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
-dev-ruby/logging 2.0.0 2.1.0: Flexible logging library based on the design of Java's log4j library
+dev-ruby/logging 2.1.0: Flexible logging library based on the design of Java's log4j library
 dev-ruby/logue 1.0.2-r2: A module that adds logging/trace functionality
 dev-ruby/loofah 2.0.3: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
