@@ -275,10 +275,6 @@ dev-libs/vdk
 # of it (#349457). Removal in a month.
 media-tv/dvbstreamer
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Multiple bugs, upstream died for ages (#360631). Removal in a month.
-net-p2p/microdc2
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
