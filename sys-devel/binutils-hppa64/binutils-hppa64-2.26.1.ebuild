@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 export CTARGET=hppa64-${CHOST#*-}
 
-PATCHVER="1.2"
+PATCHVER="1.0"
 ELF2FLT_VER=""
 inherit toolchain-binutils
 
