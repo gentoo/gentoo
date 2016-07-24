@@ -270,11 +270,6 @@ app-portage/epm
 # Removal in a month.
 dev-libs/vdk
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# No buildable version in the tree and nobody is taking care
-# of it (#349457). Removal in a month.
-media-tv/dvbstreamer
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
