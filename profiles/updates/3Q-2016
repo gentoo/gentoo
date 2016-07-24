@@ -4,3 +4,4 @@ move app-crypt/openssl-af_alg-engine app-crypt/af_alg
 slotmove >=dev-php/pecl-mailparse-3.0 0 7
 move dev-perl/class-loader dev-perl/Class-Loader
 move x11-apps/xkbset x11-misc/xkbset
+move dev-perl/convert-ascii-armour dev-perl/Convert-ASCII-Armour

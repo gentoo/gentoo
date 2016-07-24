@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="dev-perl/Class-Loader
 	dev-perl/Crypt-Blowfish
-	dev-perl/convert-ascii-armour
+	dev-perl/Convert-ASCII-Armour
 	dev-perl/Crypt-CBC
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-Random
