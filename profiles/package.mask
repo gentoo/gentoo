@@ -284,10 +284,6 @@ net-p2p/microdc2
 # (#363513). Removal in a month.
 media-tv/freevo
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Obsolete mod, also buggy (#382055). Removal in a month.
-www-apache/mod-auth-mysql
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
