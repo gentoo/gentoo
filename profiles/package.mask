@@ -246,31 +246,6 @@ media-video/motion
 # Removal in a month.
 app-portage/epm
 
-# Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
-# Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
-# ebuilds are still sitting in ~arch after years in the tree.
-# Masked for removal in 30 days.
-dev-util/ccmalloc
-dev-util/cdecl
-dev-util/redet
-dev-util/eggy
-dev-util/mock
-dev-util/par
-dev-util/injectso
-dev-util/ghh
-dev-util/rec
-dev-util/jif
-dev-util/httpup
-dev-util/crow-designer
-dev-util/qdevelop
-dev-util/intel2gas
-dev-util/webcpp
-dev-util/as11
-dev-util/filepp
-dev-util/kdoc
-dev-util/skelgen
-dev-util/ftncheck
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
