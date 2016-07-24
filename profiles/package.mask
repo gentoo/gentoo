@@ -265,11 +265,6 @@ app-cdr/dvd95
 # Removal in a month.
 app-portage/epm
 
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Unmaintained, buggy and not needed by anything in the tree (#221667).
-# Removal in a month.
-dev-libs/vdk
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
