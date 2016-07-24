@@ -2107,7 +2107,6 @@ app-portage/fetchcommandwrapper 0.7.1 0.7.2: Wrapper integrating aria2 into port
 app-portage/flaggie 0.2.1 9999: A smart CLI mangler for package.* files
 app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9 9999: Autogenerate and install ebuilds for CPAN modules
-app-portage/g-ctan 2011.1 2011.1-r1: Generate and install ebuilds from the TeXLive package manager
 app-portage/g-octave 0.4.1-r4: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
@@ -4958,7 +4957,6 @@ dev-libs/vala-common 0.28.1 0.30.1 0.32.0 0.32.1: Build infrastructure for packa
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0: SIMD Vector Class Library for C++
-dev-libs/vdk 2.5.1: A Visual Development Kit for RAD
 dev-libs/vrb 0.3.0 0.5.1: Library for a virtual ring buffer
 dev-libs/wayland 1.6.1 1.7.0 1.8.1 1.9.0 1.10.0-r1 1.11.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.3 1.4 1.5 9999: Wayland protocol files
@@ -13430,7 +13428,6 @@ media-sound/tk707 0.8-r1: An "7x7" type midi drum sequencer for Linux
 media-sound/tomahawk 0.8.4-r3 9999: Multi-source social music player
 media-sound/toolame 02l-r3 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/traverso 0.49.2-r1 0.49.3: Professional Audio Tools for GNU/Linux
-media-sound/trommler 3.8: GTK+ based drum machine
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17: Directory browser for Radio and TV streams
@@ -13472,9 +13469,7 @@ media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1 1.3.9: A software synthesizer based
 media-sound/zynaddsubfx 2.4.3 2.5.0 2.5.1 2.5.2 2.5.4: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
-media-tv/dvbstreamer 1.1-r1 2.0.0_rc1: DVB over UDP streaming solution
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
-media-tv/freevo 1.9.0-r1: Digital video jukebox (PVR, DVR)
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts necessary for use of vdr as a set-top-box
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
@@ -13506,7 +13501,6 @@ media-video/asfrecorder 1.1: ASFRecorder - Download Windows Media Streaming file
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/avidemux 2.6.8 9999: Video editor designed for simple cutting, filtering and encoding tasks
-media-video/avinfo 1.0_alpha15 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/baka-mplayer 2.0.3 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/bashnapi 1.1.5 1.3.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
@@ -14758,7 +14752,7 @@ net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.0 1.11 1.14 1.22: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linux-identd 1.3-r2: A real IDENT daemon for linux
-net-misc/linuxptp 1.5 1.6: The Linux Precision Time Protocol (PTP) implementation
+net-misc/linuxptp 1.5 1.6 1.7: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r1: Live Source Client For IceCast
 net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
 net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Transmission Protocol implementation
@@ -15078,7 +15072,6 @@ net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and 
 net-p2p/ktorrent 4.3.1-r1 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
 net-p2p/mldonkey 3.1.5-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
@@ -17124,7 +17117,7 @@ sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
-sys-fs/bedup 0.10.0 0.10.1 9999: Btrfs file de-duplication tool
+sys-fs/bedup 0.10.1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 4.5.2 4.5.3 4.6.1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4 0.10.9: Provides a caching directory on an already mounted filesystem
@@ -17639,7 +17632,6 @@ virtual/w3m 0: Virtual for the w3m web browser
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29 1.1.29-r1: A terminal anywhere
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
-www-apache/mod-auth-mysql 4.3.9-r1: Apache 2 module enabling HTTP authentication against MySQL databases.
 www-apache/mod_access_dnsbl 0.02: Specify access controls based on DNSBL zones
 www-apache/mod_anonymize_ip 0.3.1: mod_anonymize_ip is a simple module for anonymizing the client IP address
 www-apache/mod_auth_cookie_mysql2 1.0: An Apache2 backend authentication module that uses cookies and MySQL
@@ -17694,7 +17686,6 @@ www-apache/mod_rpaf 0.6 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
 www-apache/mod_security 2.7.7: Web application firewall and Intrusion Detection System for Apache
 www-apache/mod_slotlimit 1.3: manage resources used for each running site using dynamic slot allocation algorithm and static rules
-www-apache/mod_spdy 0.9.3.3 0.9.4.2 0.9.4.3 9999: Apache module for rewriting web pages to reduce latency and bandwidth
 www-apache/mod_tcl 1.0.1: An Apache2 module providing an embedded Tcl interpreter
 www-apache/mod_tidy 0.5.5-r1: a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
@@ -17798,7 +17789,6 @@ www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Us
 www-apps/sugarcrm 6.5.9 6.5.10: A complete CRM and groupware system for businesses of all sizes
 www-apps/trac 1.0.9 1.0.10 1.0.11 1.0.12: Enhanced wiki and issue tracking system for software development projects
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
-www-apps/trac-downloads 0.3_p9282: Project release downloads plugin for Trac
 www-apps/trac-mercurial 0.12.0.29_pre10899 1.0.0.3_pre20130206: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6: Tags plugin for Trac
 www-apps/tt-rss 20160124 20160527: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
@@ -18464,7 +18454,7 @@ x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xac 0.6_pre4: Xorgautoconfig (xac) generates configuration files for X.org
 x11-misc/xaos 3.5-r1 3.6: Very fast real-time fractal zoomer
-x11-misc/xautolock 2.2: An automatic X screen-locker/screen-saver
+x11-misc/xautolock 2.2 2.2_p5: An automatic X screen-locker/screen-saver
 x11-misc/xautomation 1.05 1.06 1.09: Control X from command line and find things on screen
 x11-misc/xbatt 1.2.1-r1 1.3_rc1: Notebook battery indicator for X
 x11-misc/xbattbar 1.4.3 1.4.4 1.4.5 1.4.8: Advanced Power Management battery status display for X
