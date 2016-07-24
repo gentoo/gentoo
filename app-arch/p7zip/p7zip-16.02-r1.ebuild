@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 WX_GTK_VER="3.0"
 
@@ -15,22 +15,24 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}_src_all.tar.bz2"
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
-IUSE="doc kde rar +pch static wxwidgets abi_x86_x32"
+IUSE="abi_x86_x32 doc kde +pch rar static wxwidgets"
 
 REQUIRED_USE="kde? ( wxwidgets )"
 
-RDEPEND="
-	kde? ( x11-libs/wxGTK:${WX_GTK_VER}[X] kde-base/kdelibs )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
+RDEPEND="wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}
-	amd64? ( dev-lang/yasm )
 	abi_x86_x32? ( >=dev-lang/yasm-1.2.0-r1 )
+	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/nasm )"
 
 S=${WORKDIR}/${PN}_${PV}
 
+DOCS=( ChangeLog README TODO )
+
+PATCHES=( "${FILESDIR}"/${P}-darwin.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-darwin.patch
+	default
 
 	if ! use pch; then
 		sed "s:PRE_COMPILED_HEADER=StdAfx.h.gch:PRE_COMPILED_HEADER=:g" -i makefile.* || die
@@ -128,12 +130,12 @@ src_install() {
 
 		if use kde; then
 			rm GUI/kde4/p7zip_compress.desktop || die
-			insinto /usr/share/kde4/services/ServiceMenus
+			insinto /usr/share/kservices5/ServiceMenus
 			doins GUI/kde4/*.desktop
-			dodir /usr/share/kservices5/ServiceMenus
-			for item in "${D}"/usr/share/kde4/services/ServiceMenus/*.desktop; do
+			dodir /usr/share/kde4/services/ServiceMenus # drop these lines after konqueror:4/krusader:4 are gone
+			for item in "${ED}"usr/share/kservices5/ServiceMenus/*.desktop; do
 				item="$(basename ${item})"
-				dosym "/usr/share/kde4/services/ServiceMenus/${item}" "/usr/share/kservices5/ServiceMenus/${item}"
+				dosym "/usr/share/kservices5/ServiceMenus/${item}" "/usr/share/kde4/services/ServiceMenus/${item}"
 			done
 		fi
 	fi
@@ -150,7 +152,6 @@ src_install() {
 	fi
 
 	doman man1/7z.1 man1/7za.1 man1/7zr.1
-	dodoc ChangeLog README TODO
 
 	if use doc; then
 		dodoc DOC/*.txt
