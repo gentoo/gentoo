@@ -13190,7 +13190,7 @@ media-sound/ifp-gnome 0.7: Gnome front-end for file management on iRiver iFP MP3
 media-sound/imp3sh 0.2.4: flexible playlist manipulation shell and song player/streamer
 media-sound/jaaa 0.4.2 0.6.0 0.8.4: The JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 media-sound/jack 3.1.1-r1: A frontend for several cd-rippers and mp3 encoders
-media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1: A low-latency audio server
+media-sound/jack-audio-connection-kit 0.121.3-r1 0.124.1-r1: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack MIDI
