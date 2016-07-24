@@ -236,29 +236,10 @@ app-portage/pms-test-suite
 # Unpatched security vulnerability per bug #475120
 media-video/motion
 
-# Michał Górny <mgorny@gentoo.org> (25 Jun 2016)
-# Obsolete packages for removal in 30 days. Replacements and bugs:
-# dev-ml/comparelib -> dev-ml/ppx_compare, #586904
-# dev-ml/deriving-ocsigen -> dev-ml/deriving, #586906
-# dev-ml/faillib -> dev-ml/ppx_fail, #586912
-# dev-ml/typehashlib -- not used anymore, #586928
-dev-ml/comparelib
-dev-ml/deriving-ocsigen
-dev-ml/faillib
-dev-ml/typehashlib
-
-# Michał Górny <mgorny@gentoo.org> (23 Jun 2016)
-# Integrated in media-video/bashnapi. Removal in 30 days.
-media-video/subotage
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 >=www-client/chromium-53
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Buggy, upstream dead for ages (#148741). Removal in a month.
-app-cdr/dvd95
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # Unmaintained, development stalled for a long time (#168283).
