@@ -86,7 +86,12 @@ COMMON_DEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
-	d3d9? ( media-libs/mesa[d3d9,${MULTILIB_USEDEP}] )
+	d3d9? (
+		media-libs/mesa[d3d9,egl,${MULTILIB_USEDEP}]
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
+	)
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
