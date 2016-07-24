@@ -99,7 +99,7 @@ src_install() {
 
 pkg_postinst() {
 	local v
-    for v in ${REPLACING_VERSIONS}; do
+	for v in ${REPLACING_VERSIONS}; do
 		if [[ $(get_version_component_range 2) -gt \
 				$(get_version_component_range 2 ${v}) ]]; then
 			ewarn "Version ${PV} is not protocol-compatible with version" \
