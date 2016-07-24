@@ -18,7 +18,6 @@ LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libav multilib qt4 qt5"
-REQUIRED_USE="?? ( qt4 qt5 )"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
@@ -27,44 +26,22 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/openssl:0
 	sys-libs/zlib
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
+	!qt5? ( qt4? (
+		dev-qt/qtcore:4
+		dev-qt/qtdbus:4
+		dev-qt/qtgui:4
+	) )
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
 "
 RDEPEND="${DEPEND}
 	net-misc/wget"
-
-# Upstream uses non-standard locale names so map them with this
-# associative array and perform some tricks below.
-declare -A MY_LOCALES
-MY_LOCALES=(
-	[zh]=chi
-	[da]=dan
-	[de]=deu
-	[nl]=dut
-	[fr]=fra
-	[it]=ita
-	[ja]=jpn
-	[no]=nor
-	[fa]=per
-	[pl]=pol
-	[pt_BR]=ptb
-	[es]=spa
-	[sv]=swe
-)
-
-PLOCALES="${!MY_LOCALES[@]}"
-inherit l10n
 
 S="${WORKDIR}/makemkv-oss-${PV}"
 
@@ -74,14 +51,11 @@ src_prepare() {
 	# Qt5 always trumps Qt4 if it is available. There are no configure
 	# options or variables to control this and there is no publicly
 	# available configure.ac either.
-	if use qt4; then
-		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
-	elif use qt5; then
+	if use qt5; then
 		PATCHES+=( "${FILESDIR}"/${PN}-qt5.patch )
+	elif use qt4; then
+		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
 	fi
-
-	# Check for locale changes against the non-standard names.
-	PLOCALES="${MY_LOCALES[@]}" l10n_find_plocales_changes "${WORKDIR}"/${MY_PB}/src/share makemkv_ .mo.gz
 
 	default
 }
@@ -92,7 +66,7 @@ src_configure() {
 
 	local econf_args=()
 
-	if use qt4 || use qt5; then
+	if use qt5 || use qt4; then
 		econf_args+=( '--enable-gui' )
 	else
 		econf_args+=( '--disable-gui' )
@@ -117,7 +91,7 @@ src_install() {
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
 
-	if use qt4 || use qt5; then
+	if use qt5 || use qt4; then
 		dobin out/makemkv
 
 		local res
@@ -138,16 +112,9 @@ src_install() {
 		use multilib && dobin bin/i386/mmdtsdec
 	fi
 
+	# install profiles and locales
 	insinto /usr/share/MakeMKV
-
-	# install profiles
-	doins src/share/*.xml
-
-	# install locales
-	local locale
-	for locale in $(l10n_get_locales); do
-		doins src/share/makemkv_${MY_LOCALES[${locale}]}.mo.gz
-	done
+	doins src/share/*.{mo.gz,xml}
 }
 
 pkg_preinst() { gnome2_icon_savelist; }
