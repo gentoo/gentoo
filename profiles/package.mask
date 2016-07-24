@@ -236,11 +236,6 @@ app-portage/pms-test-suite
 # Unpatched security vulnerability per bug #475120
 media-video/motion
 
-# Michał Górny <mgorny@gentoo.org> (25 Jun 2016)
-# Obsolete packages for removal in 30 days. Replacements and bugs:
-# dev-ml/typehashlib -- not used anymore, #586928
-dev-ml/typehashlib
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
