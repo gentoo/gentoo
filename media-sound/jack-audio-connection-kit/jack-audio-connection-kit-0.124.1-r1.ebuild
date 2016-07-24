@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,7 @@ IUSE="cpu_flags_x86_3dnow altivec alsa coreaudio doc debug examples oss cpu_flag
 # readline: only used for jack_transport -> useless for non native ABIs
 # libsndfile: ditto for jackrec
 RDEPEND="
+	sys-libs/db[${MULTILIB_USEDEP}]
 	sys-libs/readline
 	>=media-libs/libsndfile-1.0.0
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
