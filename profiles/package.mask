@@ -247,10 +247,6 @@ dev-ml/deriving-ocsigen
 dev-ml/faillib
 dev-ml/typehashlib
 
-# Michał Górny <mgorny@gentoo.org> (23 Jun 2016)
-# Integrated in media-video/bashnapi. Removal in 30 days.
-media-video/subotage
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
