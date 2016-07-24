@@ -6,10 +6,12 @@ EAPI=5
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/git/wayland/${PN}"
+	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 	AUTOTOOLS_AUTORECONF=1
-	inherit autotools-utils git-r3
 fi
+
+inherit autotools-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland protocol files"
 HOMEPAGE="https://wayland.freedesktop.org/"
