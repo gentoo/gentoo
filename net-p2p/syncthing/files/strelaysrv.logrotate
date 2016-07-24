@@ -1,0 +1,6 @@
+/var/log/syncthing/relaysrv.log {
+    missingok
+    notifempty
+    sharedscripts
+    copytruncate
+}
