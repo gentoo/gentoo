@@ -14561,7 +14561,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
-net-misc/apt-cacher-ng 0.9.3 0.9.3.1: Yet another caching HTTP proxy for Debian/Ubuntu software packages
+net-misc/apt-cacher-ng 0.9.3.1 0.9.3.2: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
@@ -16968,7 +16968,7 @@ sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel b
 sys-devel/binutils 2.21.1-r1 2.22-r1 2.23.2 2.24-r3 2.25 2.25-r1 2.25.1-r1 2.26.1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7.2-r1 7.3 7.3.1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 7.3.1
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.1 2.23.2 2.24 2.25 2.25.1: binutils package for building 64bit kernels on HPPA
+sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20140214 20151010 20151220 20160220 20160315: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
