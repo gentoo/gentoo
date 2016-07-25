@@ -27,7 +27,7 @@ ruby_add_bdepend "
 USE_RUBY=${USE_RUBY/ruby22} ruby_add_bdepend "test? ( >=dev-ruby/kramdown-1.4.2 )"
 
 ruby_add_rdepend "
-	>=dev-ruby/gherkin-3.2.0:3
+	>=dev-ruby/gherkin-4.0:4
 "
 
 each_ruby_prepare() {
