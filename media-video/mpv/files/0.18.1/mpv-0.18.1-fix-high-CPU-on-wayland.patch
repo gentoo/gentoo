@@ -1,0 +1,34 @@
+commit e11a20a8122b370b66235284dd4f67ce1f1bbc0b
+Author: Rostislav Pehlivanov <atomnuker@gmail.com>
+Date:   Tue Jul 19 03:00:03 2016 +0100
+
+vo_wayland: fix high CPU usage due to busy polling
+
+There's no need to call wl_display_flush() since all the client-side
+buffered data has already been flushed prior to polling the fd.
+Instead only check for POLLIN and the usual ERR+HUP.
+
+diff --git a/video/out/wayland_common.c b/video/out/wayland_common.c
+index 0e44ddd..6861c93 100644
+--- a/video/out/wayland_common.c
++++ b/video/out/wayland_common.c
+@@ -1106,7 +1106,7 @@ static int vo_wayland_poll (struct vo *vo, int timeout_msecs)
+
+     struct pollfd fd = {
+         wl->display.display_fd,
+-        POLLIN | POLLOUT | POLLERR | POLLHUP,
++        POLLIN | POLLERR | POLLHUP,
+         0
+     };
+
+@@ -1125,8 +1125,8 @@ static int vo_wayland_poll (struct vo *vo, int timeout_msecs)
+         }
+         if (fd.revents & POLLIN)
+             wl_display_dispatch(dp);
+-        if (fd.revents & POLLOUT)
+-            wl_display_flush(dp);
++        else
++            wl_display_dispatch_pending(dp);
+     }
+
+     return polled;

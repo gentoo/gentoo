@@ -126,7 +126,12 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
-PATCHES=( "${FILESDIR}/${PV}/${P}-fix-height-alignment-on-xv.patch" )
+PATCHES=(
+	"${FILESDIR}/${PV}/${P}-fix-height-alignment-on-xv.patch"
+	"${FILESDIR}/${PV}/${P}-fix-initial-av-sync.patch"
+	"${FILESDIR}/${PV}/${P}-fix-fbo-resize-memleak.patch"
+	"${FILESDIR}/${PV}/${P}-fix-doc-build.patch"
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then

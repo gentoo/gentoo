@@ -1,0 +1,38 @@
+commit 8b47e5daa440ed30d8e0aa83287bb7a7c014d2ae
+Author: wm4 <wm4@nowhere>
+Date:   Tue Jul 12 19:35:47 2016 +0200
+
+video: respect --deinterlace=auto
+
+--deinterlace=auto is the default, and has the obscure semantics that
+deinterlacing is disabled, unless the user has manually inserted a
+deinterlacing filter.
+
+While in software decoding this doesn't matter, and we will happily
+insert 2 yadif filters (if the user has already added one), or not
+remove the yadif filter (if deinterlacing is disabled, but the user has
+added the filter manually), this is different with hardware deinterlacer
+filters. These support VFCTRL_SET_DEINTERLACE for toggling deinterlacing
+filtering at runtime. It exists mainly for legacy reasons, and possibly
+because it makes switching deinterlacing modes more efficient. It might
+also gives us an entry-point for VO deinterlacing, maybe. For whatever
+reasons this mechanism exists, we still support and use it.
+
+This commit fixes that video.c always used VFCTRL_SET_DEINTERLACE to
+disable deinterlacing, even if --deinterlace=auto was set. Fix this by
+checking the value of the option directly.
+
+diff --git a/player/video.c b/player/video.c
+index 59ce72f..0f324b3 100644
+--- a/player/video.c
++++ b/player/video.c
+@@ -214,7 +214,8 @@ static void filter_reconfig(struct MPContext *mpctx, struct vo_chain *vo_c)
+     }
+
+     // Make sure to reset this even if runtime deint switching is used.
+-    video_vf_vo_control(vo_c, VFCTRL_SET_DEINTERLACE, &(int){0});
++    if (mpctx->opts->deinterlace >= 0)
++        video_vf_vo_control(vo_c, VFCTRL_SET_DEINTERLACE, &(int){0});
+
+     if (params.rotate && (params.rotate % 90 == 0)) {
+         if (!(vo_c->vo->driver->caps & VO_CAP_ROTATE90)) {
