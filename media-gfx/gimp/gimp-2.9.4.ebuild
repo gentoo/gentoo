@@ -39,7 +39,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	dev-libs/libxslt
 	x11-themes/hicolor-icon-theme
 	>=media-libs/babl-0.1.18
-	>=media-libs/gegl-0.3.8:0.3[cairo,png]
+	>=media-libs/gegl-0.3.8:0.3[cairo]
 	>=dev-libs/glib-2.43
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
