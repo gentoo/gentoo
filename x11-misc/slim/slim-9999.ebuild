@@ -84,15 +84,31 @@ src_install() {
 }
 
 pkg_postinst() {
-	# note, $REPLACING_VERSIONS will always contain 0 or 1 PV's for slim
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	# massage ${REPLACING_VERSIONS} to come up with whether or not it's a new install
+	# or if it's older than 1.3.2-r7
+	# Note - there should only ever be zero or one version as this package isn't slotted,
+	# so the logic doesn't worry about what happens if there's two, due to the case where
+	# a previous emerge attempt failed in the middle of qmerge.
+	local rv=none
+	for rv in ${REPLACING_VERSIONS} ; do
+		if version_is_at_least "1.3.2-r7" "${rv}" ; then
+			rv=newer
+			break;
+		fi
+		if version_is_at_least "1.0" "${rv}"  ; then
+			rv=older
+			break;
+		fi
+	done
+
+	if [[ ${rv} == none ]]; then
 		elog
 		elog "The configuration file is located at /etc/slim.conf."
 		elog
 		elog "If you wish ${PN} to start automatically, set DISPLAYMANAGER=\"${PN}\" "
 		elog "in /etc/conf.d/xdm and run \"rc-update add xdm default\"."
 	fi
-	if ! version_is_at_least "1.3.6" "${REPLACING_VERSIONS:-1.0}" ; then
+	if [[ ${rv} != newer ]]; then
 		elog
 		elog "By default, ${PN} is set up to provide X session selection based on the"
 		elog ".desktop entries in /usr/share/xsessions/ that are installed by each"
@@ -109,12 +125,10 @@ pkg_postinst() {
 		elog "/usr/share/doc/${PF} and change your login_cmd in /etc/slim.conf"
 		elog "accordingly."
 		elog
-		if ! version_is_at_least "1.3.2-r7" "${REPLACING_VERSIONS:-1.4}" ; then
-			ewarn "Please note that slim supports consolekit directly.  Please do not use any "
-			ewarn "old work-arounds (including calls to 'ck-launch-session' in xinitrc scripts)"
-			ewarn "and enable USE=\"consolekit\" instead."
-			ewarn
-		fi
+		ewarn "Please note that slim supports consolekit directly.  Please do not use any "
+		ewarn "old work-arounds (including calls to 'ck-launch-session' in xinitrc scripts)"
+		ewarn "and enable USE=\"consolekit\" instead."
+		ewarn
 	fi
 	if ! use pam; then
 		elog "You have merged ${PN} without USE=\"pam\", this will cause ${PN} to fall back to"
