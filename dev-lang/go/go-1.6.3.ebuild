@@ -243,11 +243,6 @@ pkg_postinst()
 		-exec touch -r "${EROOT}"${tref} {} \;
 	eend $?
 
-	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} &&
-		${REPLACING_VERSIONS} != ${PV} ]]; then
-		elog "Release notes are located at http://golang.org/doc/go${PV}"
-	fi
-
 	if $had_support_files; then
 		ewarn
 		ewarn "All editor support, IDE support, shell completion"
