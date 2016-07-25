@@ -11844,7 +11844,7 @@ mail-mta/courier 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
 mail-mta/exim 4.87: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
-mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.6.1 1.6.2 1.6.3 1.6.4 1.6.5: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.9.2_p1-r1 5.9.2_p1-r2 5.9.2.201607021504_p1-r1: Lightweight but featured SMTP daemon from OpenBSD
@@ -14479,7 +14479,7 @@ net-mail/hotwayd 0.8.4: Hotmail to pop3 daemon
 net-mail/imapsync 1.592-r1 1.607-r1 1.644: A tool allowing incremental and recursive imap transfer from one mailbox to another
 net-mail/isync 1.0.6 1.2.0 1.2.1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
-net-mail/lbdb 0.39 0.39-r1: Little Brother database
+net-mail/lbdb 0.39 0.39-r1 0.41: Little Brother database
 net-mail/libdbx 1.0.3: Tools and library for reading Outlook Express mailboxes (.dbx format)
 net-mail/libpst 0.6.64 0.6.66: Tools and library for reading Outlook files (.pst format)
 net-mail/list-remote-forwards 0.0.1-r1: List all remote forwards for mail accounts stored in a database
@@ -14500,7 +14500,7 @@ net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r1 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
 net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
-net-mail/mpop 1.2.2 1.2.4: A small, fast, and portable POP3 client
+net-mail/mpop 1.2.4 1.2.5: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate mailbox syncs
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
