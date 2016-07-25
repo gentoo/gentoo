@@ -6827,7 +6827,7 @@ dev-php/pecl-ssh2 0.12-r3 0.13 1.0: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.8: PHP extension to communicate with Stomp compliant Message Brokers
 dev-php/pecl-svn 1.0.3: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
-dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
+dev-php/pecl-timezonedb 2015.7 2016.6: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.1-r1 0.6.2: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r2: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
@@ -18567,7 +18567,7 @@ x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private convers
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1 1.21.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
-x11-plugins/pidgin-skypeweb 1.1 9999: SkypeWeb Plugin for Pidgin
+x11-plugins/pidgin-skypeweb 1.1 1.2 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
