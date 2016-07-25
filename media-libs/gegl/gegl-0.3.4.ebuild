@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun openexr png raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun openexr raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_IUSE="
 	svg? ( cairo )
 	vala? ( introspection )
@@ -49,12 +49,12 @@ RDEPEND="
 		>=media-video/ffmpeg-2.8:0=
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	jpeg? ( virtual/jpeg:0= )
+	virtual/jpeg:0=
 	jpeg2k? ( >=media-libs/jasper-1.900.1 )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr )
-	png? ( media-libs/libpng:0= )
+	media-libs/libpng:0=
 	raw? ( >=media-libs/libraw-0.15.4 )
 	sdl? ( media-libs/libsdl )
 	svg? ( >=gnome-base/librsvg-2.14:2 )
@@ -81,7 +81,6 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-0.3.4-endian.patch \
-		"${FILESDIR}"/${P}-without-jpeg-png.patch \
 		"${FILESDIR}"/${P}-underlinking.patch
 
 	# FIXME: the following should be proper patch sent to upstream
@@ -152,14 +151,14 @@ src_configure() {
 		$(use_with ffmpeg libavformat) \
 		--without-gexiv2 \
 		--without-graphviz \
-		$(use_with jpeg libjpeg) \
+		--with-libjpeg \
 		$(use_with jpeg2k jasper) \
 		$(use_with lcms) \
 		$(use_with lensfun) \
 		--without-lua \
 		--without-mrg \
 		$(use_with openexr) \
-		$(use_with png libpng) \
+		--with-libpng \
 		$(use_with raw libraw) \
 		$(use_with sdl) \
 		$(use_with svg librsvg) \
