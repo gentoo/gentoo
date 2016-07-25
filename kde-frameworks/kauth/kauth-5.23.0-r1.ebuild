@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework to let applications perform actions as a privileged user"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="nls +policykit"
 
 # drop qtgui subslot operator when QT_MINIMAL >= 5.7.0
