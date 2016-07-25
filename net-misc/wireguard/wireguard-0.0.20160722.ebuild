@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="debug"
 
 DEPEND="net-libs/libmnl"
 RDEPEND="${DEPEND}"
@@ -43,6 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
+	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y"
 	linux-mod_src_compile
 	emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
 }
