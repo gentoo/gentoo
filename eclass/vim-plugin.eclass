@@ -1,11 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-#
+
+# @ECLASS: vim-plugin.eclass
+# @MAINTAINER:
+# vim@gentoo.org
+# @DESCRIPTION:
 # This eclass simplifies installation of app-vim plugins into
 # /usr/share/vim/vimfiles.  This is a version-independent directory
 # which is read automatically by vim.  The only exception is
-# documentation, for which we make a special case via vim-doc.eclass
+# documentation, for which we make a special case via vim-doc.eclass.
 
 inherit vim-doc
 EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
