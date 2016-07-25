@@ -36,7 +36,7 @@ RDEPEND="
 	dev-perl/Crypt-DSA
 	dev-perl/Crypt-RSA
 	dev-perl/Convert-ASN1
-	dev-perl/convert-pem
+	dev-perl/Convert-PEM
 	dev-perl/Crypt-OpenPGP
 	app-crypt/gnupg
 	virtual/perl-File-Temp
