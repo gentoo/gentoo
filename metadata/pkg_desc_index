@@ -5298,7 +5298,7 @@ dev-perl/CGI-Session 4.480.0-r1: persistent session data in CGI applications
 dev-perl/CGI-Simple 1.115.0: A Simple totally OO CGI interface that is CGI.pm compliant
 dev-perl/CHI 0.600.0: Unified cache handling interface
 dev-perl/CPAN-Changes 0.400.2: Read and write Changes files
-dev-perl/CPAN-Checksums 2.80.0-r1: Write a CHECKSUMS file for a directory as on CPAN
+dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a directory as on CPAN
 dev-perl/CPAN-Meta-Check 0.12.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
@@ -14460,7 +14460,7 @@ net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program 
 net-mail/courier-imap 4.15-r2 4.16.0-r1 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
-net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8: The Cyrus IMAP Server
+net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.7 2.5.8 2.5.9: The Cyrus IMAP Server
 net-mail/dbmail 3.2.2 3.2.3: DBMail is an open-source project that enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.19 2.2.19-r1 2.2.21 2.2.21-r1 2.2.21-r2 2.2.22 2.2.23 2.2.24 2.2.25: An IMAP and POP3 server written with security primarily in mind
