@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	indi? (
 		$(add_frameworks_dep knotifications)
-		>=sci-libs/indilib-1.1.0
+		>=sci-libs/indilib-1.2.0
 	)
 	wcs? ( sci-astronomy/wcslib )
 	xplanet? ( x11-misc/xplanet )
