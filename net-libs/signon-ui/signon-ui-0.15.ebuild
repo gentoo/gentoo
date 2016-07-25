@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="test"
 
 RESTRICT="test"
 
-# libproxy[kde] results into segfaults
+# <libproxy-0.4.12[kde] results in segfaults due to symbol collisions with qt4
 RDEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5
@@ -28,8 +28,9 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	net-libs/accounts-qt
 	net-libs/signond
-	net-libs/libproxy[-kde]
+	net-libs/libproxy
 	x11-libs/libnotify
+	!<net-libs/libproxy-0.4.12[kde]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
