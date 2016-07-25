@@ -4,7 +4,6 @@
 
 EAPI=5
 
-MY_PN=Convert-PEM
 MODULE_AUTHOR=BTROTT
 MODULE_VERSION=0.08
 inherit perl-module
