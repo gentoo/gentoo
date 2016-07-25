@@ -167,6 +167,8 @@ mozconfig_init() {
 			mozconfig_annotate "from CFLAGS" --enable-optimize=-O0
 		elif [[ ${ARCH} == ppc ]] && has_version '>=sys-libs/glibc-2.8'; then
 			mozconfig_annotate "more than -O1 segfaults on ppc with glibc-2.8" --enable-optimize=-O1
+		elif is-flag -O4; then
+			mozconfig_annotate "from CFLAGS" --enable-optimize=-O4
 		elif is-flag -O3; then
 			mozconfig_annotate "from CFLAGS" --enable-optimize=-O3
 		elif is-flag -O1; then
