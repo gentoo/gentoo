@@ -354,3 +354,7 @@ net-im/pidgin zephyr
 # Masked Parallel LCD devices for bug #180683
 # app-misc/lcd4linux
 app-misc/lcd4linux lcd_devices_hd44780
+
+# Chí-Thanh Christopher Nguyễn (25 Jul 2016)
+# Requires nvidia-video-sdk and openh264 which are unavailable for powerpc
+media-libs/ffmpeg nvenc openh264
