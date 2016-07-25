@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>
+DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD), suitables for home players, from any number of video files, in any of the formats supported by Mplayer. The big advantage over other utilites is that it only needs Mplayer, Mencoder, FFMpeg, DVDAuthor, VCDImager and MKisofs (well, and Python3, PyGTK and PyGlade), so its dependencies are quite small.
+
+The suffix NG is because it is a rewrite from scratch of the old Devede, to work with Python3 and Gtk3, and with a new internal architecture that allows to expand it and easily add new features.
+	</longdescription>
+</pkgmetadata>
