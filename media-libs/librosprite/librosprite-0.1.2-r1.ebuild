@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/librosprite/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
 IUSE=""
 
 PATCHES=( "${FILESDIR}"/${P}-Werror.patch )
