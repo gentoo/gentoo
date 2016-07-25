@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (25 Jul 2016)
+# Upstream temp workaround. No reverse dependencies.
+# Removal in 30 days.
+kde-plasma/kactivities-workspace
+
 # Hans de Graaff <graaff@gentoo.org> (22 Jul 2016)
 # ruby20-only packages with no reverse dependencies, bug 576034
 # Masked for removal in 30 days.
