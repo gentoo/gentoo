@@ -26,7 +26,7 @@ ruby_add_rdepend "=dev-ruby/rack-1*:* >=dev-ruby/rack-1.5:*
 ruby_add_bdepend "test? ( >=dev-ruby/rack-test-0.5.6 dev-ruby/erubis dev-ruby/builder )"
 
 # haml tests are optional and not yet marked for ruby20.
-USE_RUBY="ruby20" ruby_add_bdepend "test? ( >=dev-ruby/haml-3.0 )"
+#USE_RUBY="ruby20" ruby_add_bdepend "test? ( >=dev-ruby/haml-3.0 )"
 
 all_ruby_prepare() {
 	# Remove implicit build dependency on git.
