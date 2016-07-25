@@ -12,7 +12,7 @@ HOMEPAGE="http://www.netsurf-browser.org/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE=""
 
 DEPEND="virtual/yacc"
