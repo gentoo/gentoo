@@ -5,6 +5,7 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
@@ -27,3 +28,6 @@ DEPEND="
 	net-libs/accounts-qt
 "
 RDEPEND="${DEPEND}"
+
+# requires running environment
+RESTRICT="test"
