@@ -9,5 +9,5 @@ RDEPEND=!<=app-admin/salt-2015.5.6 !~app-admin/salt-2015.8.0 !~app-admin/salt-20
 SLOT=0
 SRC_URI=https://github.com/saltstack/salt-vim/archive/5b15d379fbcbb84f82c6a345abc08cea9d374be9.tar.gz -> salt-vim-20151119.tar.gz
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	d03d134cdf2c29ad924139c1c76b9043
 _md5_=8b64c83b1ccce64a4836d8a6e9fbd576
