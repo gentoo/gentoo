@@ -1,5 +1,5 @@
---- p7zip_15.14.1/CPP/myWindows/StdAfx.h
-+++ p7zip_15.14.1/CPP/myWindows/StdAfx.h
+--- a/CPP/myWindows/StdAfx.h
++++ b/CPP/myWindows/StdAfx.h
 @@ -32,7 +32,7 @@
  #include <errno.h>
  #include <math.h>
