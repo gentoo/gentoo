@@ -44,9 +44,6 @@ dev-qt/qtcore icu
 # Required by kde-plasma/kwin
 media-libs/mesa egl wayland
 
-# Required by net-libs/signon-ui
-net-libs/libproxy -kde
-
 # Required by kde-apps/kdenlive
 >=media-libs/mlt-0.9.8-r2 kdenlive melt -kde -qt4
 
