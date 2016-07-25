@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1 virtual/pkgconfig
+DESCRIPTION=musl-nscd is an implementation of the NSCD protocol for the musl libc
+EAPI=6
+HOMEPAGE=https://github.com/pikhq/musl-nscd
+IUSE=minimal
+LICENSE=MIT
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=7dc640884de11eb330452bd8d61275a2

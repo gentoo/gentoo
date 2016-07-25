@@ -17301,6 +17301,7 @@ sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is N
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.12 1.1.14 1.1.14-r2 1.1.15 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
@@ -18926,7 +18927,7 @@ x11-wm/mutter 3.18.4 3.20.2 3.20.3: GNOME 3 compositing window manager based on 
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
-x11-wm/page 1.9.6-r4 1.9.6-r5: A mouse friendly tiling window manager
+x11-wm/page 1.9.6-r4 1.9.6-r5 1.9.7: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.10.5 0.10.6 9999: A full-featured, hackable tiling window manager written in Python
