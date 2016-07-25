@@ -17,8 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cli cups tcl test"
 
-QT_MINIMAL=5.3
-
 RDEPEND="
 	dev-db/sqlite:3
 	$(add_qt_dep qtcore)
