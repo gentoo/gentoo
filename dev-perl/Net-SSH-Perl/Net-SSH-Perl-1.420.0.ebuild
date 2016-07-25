@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~mips ~x86"
 IUSE="minimal test"
 
 RDEPEND="
-	>=dev-perl/convert-pem-0.50.0
+	>=dev-perl/Convert-PEM-0.50.0
 	dev-perl/Crypt-DES
 	>=dev-perl/Crypt-DH-0.10.0
 	>=dev-perl/Crypt-DSA-0.110.0
