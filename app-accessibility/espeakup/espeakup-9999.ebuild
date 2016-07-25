@@ -2,17 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/williamh/espeakup.git"
-	vcs=git-2
+	inherit git-r3
 else
-	SRC_URI=""
+	EGIT_COMMIT=v${PV}
+	SRC_URI="https://github.com/williamh/espeakup/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	inherit vcs-snapshot
 fi
 
-inherit $vcs linux-info
+inherit linux-info
 
 DESCRIPTION="espeakup is a small lightweight connector for espeak and speakup"
 HOMEPAGE="https://github.com/williamh/espeakup"
@@ -42,13 +44,9 @@ pkg_setup() {
 	fi
 }
 
-src_compile() {
-	emake || die "Compile failed."
-}
-
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install || die "Install failed."
-	dodoc README ToDo
+	emake DESTDIR="${D}" PREFIX=/usr install
+	einstalldocs
 	newconfd "${FILESDIR}"/espeakup.confd espeakup
 	newinitd "${FILESDIR}"/espeakup.rc espeakup
 }
