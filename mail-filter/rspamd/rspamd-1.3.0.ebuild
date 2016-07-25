@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+jit"
 
-DEPEND="dev-libs/openssl:0[-bindist]
+RDEPEND="dev-libs/openssl:0[-bindist]
 		jit? (
 			dev-libs/libpcre[jit]
 			dev-lang/luajit:2
@@ -31,7 +31,8 @@ DEPEND="dev-libs/openssl:0[-bindist]
 		dev-util/ragel
 		sys-apps/file
 		virtual/libiconv"
-RDEPEND="${DEPEND}"
+DEPEND="dev-util/ragel
+		${RDEPEND}"
 
 pkg_setup() {
 	enewgroup rspamd
