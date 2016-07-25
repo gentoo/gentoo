@@ -36,7 +36,7 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.5.1}
+: ${QT_MINIMAL:=5.6.1}
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
