@@ -5396,6 +5396,7 @@ dev-perl/Convert-BER 1.320.0-r1: Class for encoding/decoding BER messages
 dev-perl/Convert-BinHex 1.123.0-r1 1.124.0 1.125.0: Extract data from Macintosh BinHex files
 dev-perl/Convert-Binary-C 0.760.0-r1 0.770.0 0.780.0: Binary Data Conversion using C Types
 dev-perl/Convert-Color 0.80.0-r1 0.110.0: Color space conversions and named lookups
+dev-perl/Convert-PEM 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0-r1: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
@@ -6571,7 +6572,6 @@ dev-perl/cdk-perl 20141106: Perl extension for Cdk
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/convert-pem 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/data-buffer 0.40.0-r1: Read/write buffer class
 dev-perl/dbix-searchbuilder 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
