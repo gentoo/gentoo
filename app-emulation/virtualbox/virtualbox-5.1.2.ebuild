@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.16-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.2-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
