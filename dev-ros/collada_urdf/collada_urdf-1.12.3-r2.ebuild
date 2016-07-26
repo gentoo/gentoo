@@ -25,6 +25,7 @@ RDEPEND="
 	media-libs/assimp
 	dev-libs/tinyxml
 	dev-libs/collada-dom
+	>=dev-libs/urdfdom-1:=
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/urdfdom1.patch" )
