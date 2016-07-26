@@ -18,5 +18,3 @@ LICENSE="Ruby"
 KEYWORDS="~amd64"
 SLOT="0"
 IUSE="test"
-
-
