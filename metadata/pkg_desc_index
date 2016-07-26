@@ -8449,7 +8449,7 @@ dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to est
 dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
 dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
 dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
-dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
+dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
@@ -8472,7 +8472,7 @@ dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for R
 dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.0 1.12.1 9999: Converts between ROS Image messages and OpenCV images
-dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Nodelets for processing depth images such as those produced by OpenNI camera
+dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.9 1.8.10 9999: Aggregates ROS diagnostics
 dev-ros/diagnostic_analysis 1.8.8 1.8.9 1.8.10 9999: Converts diagnostics data into a series of CSV files
@@ -8519,10 +8519,11 @@ dev-ros/hector_slam_launch 0.3.3 0.3.4 0.3.5 9999: Launch files for launching he
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 0.3.5 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.12.0-r1 1.12.1 9999: C++ and Python libraries for interpreting images geometrically
-dev-ros/image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Single image rectification and color processing
-dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 1.12.18 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
+dev-ros/image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Single image rectification and color processing
+dev-ros/image_publisher 1.12.19 9999: Publish an image stream from single image file or avi file.
+dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.14-r1 1.12.15 1.12.16 1.12.18 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.14-r1 1.12.15 1.12.16 1.12.18 1.12.19 9999: Simple viewer for ROS image topics
 dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 0.10.1 9999: Interactive marker tutorials
@@ -8696,7 +8697,7 @@ dev-ros/sound_play 0.2.12 9999: ROS node that translates commands on a ROS topic
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
-dev-ros/stereo_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 9999: Stereo and single image rectification and disparity processing
+dev-ros/stereo_image_proc 1.12.14 1.12.15 1.12.16 1.12.18 1.12.19 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 1.7.17 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.8 1.8.9 1.8.10 9999: diagnostic_aggregator tests
@@ -15310,7 +15311,7 @@ ros-meta/geometry_tutorials 0.2.2 9999: Metapackage of geometry tutorials ROS
 ros-meta/hector_localization 0.2.0 0.2.1 0.3.0 9999: Collection of packages, that provide the full 6DOF pose of a robot or platform
 ros-meta/hector_slam 0.3.3 0.3.4 0.3.5 9999: hector_mapping and related packages
 ros-meta/image_common 1.11.7 1.11.8 1.11.9 1.11.10 9999: Common code for working with images in ROS
-ros-meta/image_pipeline 1.12.14 1.12.15 1.12.16 1.12.18 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
+ros-meta/image_pipeline 1.12.19 9999: Fills the gap between getting raw images from a camera driver and higher-level vision processing
 ros-meta/image_transport_plugins 1.9.2 1.9.3 9999: Plugins for publishing and subscribing topics in representations other than raw pixel data
 ros-meta/imu_pipeline 0.2.1 9999: Tools for processing and pre-processing IMU messages for easier use by later subscribers
 ros-meta/laser_pipeline 1.6.1 1.6.2 9999: Meta-package for processing laser data, e.g. converting laser data into 3D representations
