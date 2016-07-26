@@ -10312,7 +10312,7 @@ games-board/mt_dolphin_ia 0.1.98: client for the french tarot game maitretarot
 games-board/mt_gtk_client 0.1.98: client for the french tarot game maitretarot
 games-board/mt_ncurses_client 0.1.98: client for the french tarot game maitretarot
 games-board/natch 2.4: A program to solve chess proof games
-games-board/openyahtzee 1.9.2: A full-featured wxWidgets version of the classic dice game Yahtzee
+games-board/openyahtzee 1.9.2 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee
 games-board/pasang-emas 3.1.0: A traditional game of Brunei
 games-board/peg-e 1.1.2: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
@@ -10395,7 +10395,7 @@ games-emulation/snes9x 1.53: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 4.0 4.7.2: Stella Atari 2600 VCS Emulator
 games-emulation/vbam 2.0.0_pre1507 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-emulation/vgba 4.8: Gameboy Advance (GBA) emulator for Linux
-games-emulation/virtualjaguar 2.1.2-r1: an Atari Jaguar emulator
+games-emulation/virtualjaguar 2.1.2-r1 2.1.2-r2: an Atari Jaguar emulator
 games-emulation/visualboyadvance 1.7.2-r4: gameboy, gameboy color, and gameboy advance emulator
 games-emulation/xe 2.16.2: a multi system emulator for many console and handheld video game systems
 games-emulation/yabause 0.9.14: A Sega Saturn emulator
