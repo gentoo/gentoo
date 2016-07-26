@@ -949,7 +949,7 @@ app-dicts/sword-xhosa 1.1: Xhosa Bible
 app-dicts/sword-ylt 1.1: Young's Literal Translation (1898)
 app-dicts/verbiste 0.1.38-r1 0.1.41: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
-app-dicts/wordnet 3.0-r4: A lexical database for the English language
+app-dicts/wordnet 3.0-r4 3.0-r5: A lexical database for the English language
 app-dicts/ydpdict 1.0.2: Interface for the Collins Dictionary
 app-doc/NaturalDocs 1.52-r1: Extensible, multi-language source code documentation generator
 app-doc/abs-guide 10: An in-depth exploration of the art of shell scripting

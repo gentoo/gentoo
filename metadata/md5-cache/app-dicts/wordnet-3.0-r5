@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-lang/tcl:0= dev-lang/tk:0= !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A lexical database for the English language
+EAPI=6
+HOMEPAGE=http://wordnet.princeton.edu/
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=Princeton
+RDEPEND=dev-lang/tcl:0= dev-lang/tk:0=
+SLOT=0
+SRC_URI=http://wordnetcode.princeton.edu/3.0/WordNet-3.0.tar.gz mirror://gentoo/wordnet-3.0-patchset-1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=a1eee1d3a58a63c6d4d864d6186496bf
