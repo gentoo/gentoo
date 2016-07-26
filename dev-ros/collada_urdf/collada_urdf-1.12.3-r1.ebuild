@@ -7,7 +7,7 @@ ROS_REPO_URI="https://github.com/ros/robot_model"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
-inherit ros-catkin
+inherit ros-catkin flag-o-matic
 
 DESCRIPTION="Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents"
 LICENSE="BSD"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-ros/angles
 	dev-ros/collada_parser
 	dev-ros/resource_retriever
-	dev-ros/urdf
+	>=dev-ros/urdf-1.12.3-r1
 	dev-ros/geometric_shapes
 	dev-ros/tf
 	media-libs/assimp
@@ -27,3 +27,9 @@ RDEPEND="
 	dev-libs/collada-dom
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )
+
+src_configure() {
+	append-cxxflags -std=gnu++11
+	ros-catkin_src_configure
+}
