@@ -1,0 +1,13 @@
+Index: urdf/src/model.cpp
+===================================================================
+--- urdf.orig/src/model.cpp
++++ urdf/src/model.cpp
+@@ -136,7 +136,7 @@ bool Model::initXml(TiXmlElement *robot_
+ 
+ bool Model::initString(const std::string& xml_string)
+ {
+-  boost::shared_ptr<ModelInterface> model;
++  std::shared_ptr<ModelInterface> model;
+ 
+   // necessary for COLLADA compatibility
+   if( IsColladaData(xml_string) ) {
