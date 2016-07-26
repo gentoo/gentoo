@@ -177,7 +177,7 @@ cabal-version() {
 		else
 			# We ask portage, not ghc, so that we only pick up
 			# portage-installed cabal versions.
-			_CABAL_VERSION_CACHE="$(ROOT=$(ghc-host-root) ghc-extractportageversion dev-haskell/cabal)"
+			_CABAL_VERSION_CACHE="$(ghc-extractportageversion dev-haskell/cabal)"
 		fi
 	fi
 	echo "${_CABAL_VERSION_CACHE}"
