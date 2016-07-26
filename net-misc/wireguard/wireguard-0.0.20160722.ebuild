@@ -43,7 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
-	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y"
+	use debug && BUILD_PARAMS="CONFIG_WIREGUARD_DEBUG=y ${BUILD_PARAMS}"
 	linux-mod_src_compile
 	emake RUNSTATEDIR="${EPREFIX}/run" -C src/tools
 }
