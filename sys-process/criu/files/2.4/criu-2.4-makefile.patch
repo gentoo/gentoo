@@ -1,8 +1,8 @@
 diff --git a/Makefile.install b/Makefile.install
-index 6fcf25e..103373b 100644
+index e3dd551..495ad39 100644
 --- a/Makefile.install
 +++ b/Makefile.install
-@@ -5,23 +5,10 @@ PREFIX		?= /usr/local
+@@ -6,24 +6,11 @@ BINDIR		?= $(PREFIX)/bin
  SBINDIR		?= $(PREFIX)/sbin
  MANDIR		?= $(PREFIX)/share/man
  SYSTEMDUNITDIR	?= $(PREFIX)/lib/systemd/system/
@@ -10,6 +10,7 @@ index 6fcf25e..103373b 100644
 +LOGROTATEDIR	?= $(SYSCONFDIR)/etc/logrotate.d/
  LIBDIR		?= $(PREFIX)/lib
  INCLUDEDIR	?= $(PREFIX)/include/criu
+ LIBEXECDIR	?= $(PREFIX)/libexec
  
 -#
 -# For recent Debian/Ubuntu with multiarch support.
@@ -24,14 +25,14 @@ index 6fcf25e..103373b 100644
 -        endif
 -endif
 -
- export SBINDIR MANDIR SYSTEMDUNITDIR LOGROTATEDIR
- export INCLUDEDIR LIBDIR DESTDIR PREFIX
+ export BINDIR SBINDIR MANDIR SYSTEMDUNITDIR LOGROTATEDIR
+ export INCLUDEDIR LIBDIR DESTDIR PREFIX LIBEXECDIR
  
 diff --git a/lib/Makefile b/lib/Makefile
-index f372a52..7312fcb 100644
+index f1c0821..3bef265 100644
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -21,8 +21,12 @@ lib-c: c/$(CRIU_SO)
+@@ -25,8 +25,12 @@ lib-c: c/$(CRIU_SO)
  #
  # Python bindings.
  lib-py:
@@ -44,7 +45,7 @@ index f372a52..7312fcb 100644
  .PHONY: lib-py
  
  all: lib-c lib-py
-@@ -39,7 +43,7 @@ clean:
+@@ -43,7 +47,7 @@ clean:
  	$(Q) $(RM) -r build usr
  .PHONY: clean
  
@@ -53,13 +54,15 @@ index f372a52..7312fcb 100644
  	$(E) "  INSTALL " $(CRIU_SO)
  	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)
  	$(Q) install -m 755 c/$(CRIU_SO) $(DESTDIR)$(LIBDIR)/$(CRIU_SO).$(CRIU_SO_VERSION_MAJOR).$(CRIU_SO_VERSION_MINOR)
-@@ -51,6 +55,4 @@ install: lib-c lib-py ../crit/crit c/criu.pc.in
+@@ -55,8 +59,6 @@ install: lib-c lib-py ../crit/crit c/criu.pc.in
  	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)/pkgconfig
  	$(Q) sed -e 's,@version@,$(CRIU_VERSION),' -e 's,@libdir@,$(LIBDIR),' -e 's,@includedir@,$(dir $(INCLUDEDIR)),' c/criu.pc.in > c/criu.pc
  	$(Q) install -m 644 c/criu.pc $(DESTDIR)$(LIBDIR)/pkgconfig
 -	$(E) "  INSTALL " crit
--	$(Q) python ../scripts/crit-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX)
+-	$(Q) python ../scripts/crit-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX) --record $(CRIT_SETUP_FILES)
  .PHONY: install
+ 
+ uninstall:
 diff --git a/scripts/nmk/scripts/build.mk b/scripts/nmk/scripts/build.mk
 index bd40944..3cfbffa 100644
 --- a/scripts/nmk/scripts/build.mk
