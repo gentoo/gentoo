@@ -10,7 +10,7 @@ app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
 app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
 app-accessibility/espeak 1.47.11-r1 1.48.04: Speech synthesizer for English and other languages
-app-accessibility/espeakup 0.71-r1 9999: espeakup is a small lightweight connector for espeak and speakup
+app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
 app-accessibility/festival 2.1-r1: Festival Text to Speech engine
 app-accessibility/festival-fi 20041119: Finnish diphones and text to speech script for festival
 app-accessibility/festival-freebsoft-utils 0.2 0.10: a collection of Festival functions for speech-dispatcher
@@ -13907,7 +13907,7 @@ net-analyzer/suricata 2.0.11 3.0.1 3.1: High performance Network IDS, IPS and Ne
 net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
-net-analyzer/tcpdump 4.7.4 4.7.4-r1 9999: A Tool for network monitoring and data acquisition
+net-analyzer/tcpdump 4.7.4 4.7.4-r1 4.8.0 9999: A Tool for network monitoring and data acquisition
 net-analyzer/tcpflow 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
@@ -14362,7 +14362,7 @@ net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.6.6 0.8.0 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.7.4 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.7.4 1.8.0 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.7 2.0.8: A library that performs application layer protocol identification for flows
