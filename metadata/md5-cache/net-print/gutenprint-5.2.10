@@ -4,7 +4,7 @@ DESCRIPTION=Ghostscript and cups printer drivers
 EAPI=5
 HOMEPAGE=http://gutenprint.sourceforge.net
 IUSE=cups foomaticdb gimp gtk nls readline ppds static-libs
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl dev-lang/perl readline? ( sys-libs/readline ) cups? ( >=net-print/cups-1.1.14 ) foomaticdb? ( net-print/foomatic-db-engine ) gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl )
 REQUIRED_USE=gimp? ( gtk )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/gimp-print/gutenprint-5.2.10.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=da6726eda7b199ba530cf37e3d8cdebb
+_md5_=44f761e7d48afd896f5d68de0a93a259
