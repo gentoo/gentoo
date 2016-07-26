@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp
+	dev-libs/urdfdom:=
 
 	dev-ros/angles
 	dev-ros/image_geometry

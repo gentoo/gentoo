@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ ROS_REPO_URI="https://github.com/ros-visualization/rviz"
 KEYWORDS="~amd64"
 PYTHON_COMPAT=( python2_7 )
 
-inherit ros-catkin
+inherit ros-catkin flag-o-matic
 
 DESCRIPTION="3D visualization tool for ROS"
 LICENSE="BSD"
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp
+	dev-libs/urdfdom:=
 
 	dev-ros/angles
 	dev-ros/image_geometry
@@ -41,7 +42,7 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/tf
-	dev-ros/urdf
+	>=dev-ros/urdf-1.12.3-r1
 
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/map_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
@@ -58,8 +59,10 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_USEDEP}]
 		dev-cpp/gtest
 	)"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )
 
 src_configure() {
+	append-cxxflags -std=gnu++11
 	local mycatkincmakeargs=( "-DUseQt5=ON" )
 	ros-catkin_src_configure
 }
