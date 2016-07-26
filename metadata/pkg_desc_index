@@ -8458,7 +8458,7 @@ dev-ros/class_loader 0.3.3 0.3.4 9999: ROS-independent package for loading plugi
 dev-ros/clear_costmap_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.3-r1 9999: C++ parser for the Collada robot description format
-dev-ros/collada_urdf 1.12.3-r1 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
+dev-ros/collada_urdf 1.12.3-r2 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.11.0 9999: Combined Robot HW class
 dev-ros/combined_robot_hw_tests 0.11.0 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending depth images using PNG compression
