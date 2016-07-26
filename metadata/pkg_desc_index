@@ -4440,7 +4440,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0 5.24.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.5.37 5.6.23 5.6.23-r3 7.0.8-r2: The PHP language runtime engine
+dev-lang/php 5.5.37 5.5.38 5.6.23 5.6.23-r3 5.6.24 7.0.9: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 2.7.12 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.4.4 3.4.5 3.5.0-r2 3.5.1-r2 3.5.1-r3 3.5.2: An interpreted, interactive, object-oriented programming language
@@ -8288,6 +8288,7 @@ dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv m
 dev-python/unidecode 0.04.18 0.04.19: Module providing ASCII transliterations of Unicode text
 dev-python/unittest2 1.0.1-r1 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uranium 2.1.0_beta-r2: A Python framework for building 3D printing related applications
+dev-python/urdf_parser_py 0.3.2: URDF parser for Python
 dev-python/uritemplate 0.6: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
 dev-python/urllib3 1.10.4 1.12 1.13.1-r1 1.14: HTTP library with thread-safe connection pooling, file post, and more
