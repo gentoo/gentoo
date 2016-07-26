@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND="dev-util/icmake"
+DEPEND=">=dev-util/icmake-8.00.00"
 
 S=${WORKDIR}/${P}/${PN}
 
