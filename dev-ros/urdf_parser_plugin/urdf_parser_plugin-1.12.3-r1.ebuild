@@ -14,5 +14,6 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/urdfdom_headers"
+RDEPEND=">=dev-libs/urdfdom_headers-1.0"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/urdfdom1.patch" )
