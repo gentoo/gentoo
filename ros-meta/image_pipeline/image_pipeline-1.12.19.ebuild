@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/camera_calibration
 	dev-ros/depth_image_proc
 	dev-ros/image_proc
+	dev-ros/image_publisher
 	dev-ros/image_rotate
 	dev-ros/image_view
 	dev-ros/stereo_image_proc
