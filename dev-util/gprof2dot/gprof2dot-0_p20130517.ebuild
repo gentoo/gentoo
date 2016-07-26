@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 _make_call_script() {
-	cat <<-EOF >"${D}/$1"
+	cat <<-EOF >"${ED}/$1"
 	#! /usr/bin/env python
 	from gprof2dot import Main
 	Main().main()
@@ -39,7 +39,8 @@ _make_call_script() {
 
 src_install() {
 	abi_specific_install() {
-		insinto "$(python_get_sitedir)"
+		local sitedir="$(python_get_sitedir)"
+		insinto ${sitedir#"${EPREFIX}"}
 		doins ${PN}.py || die
 		python_optimize || die
 	}
@@ -47,5 +48,5 @@ src_install() {
 
 	dodir /usr/bin || die
 	_make_call_script /usr/bin/${PN} || die
-	python_replicate_script "${D}"/usr/bin/${PN} || die
+	python_replicate_script "${ED}"/usr/bin/${PN} || die
 }
