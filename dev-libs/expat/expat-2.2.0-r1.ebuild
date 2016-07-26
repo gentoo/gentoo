@@ -16,6 +16,10 @@ IUSE="elibc_FreeBSD examples static-libs unicode"
 RDEPEND="abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r6
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.1.1-CVE-2016-0718-regression.patch
+}
+
 multilib_src_configure() {
 	local myconf="$(use_enable static-libs static)"
 
