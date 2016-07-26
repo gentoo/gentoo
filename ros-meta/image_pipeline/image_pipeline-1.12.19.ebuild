@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/camera_calibration
 	dev-ros/depth_image_proc
 	dev-ros/image_proc
+	dev-ros/image_publisher
 	dev-ros/image_rotate
 	dev-ros/image_view
 	dev-ros/stereo_image_proc

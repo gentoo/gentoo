@@ -5,22 +5,23 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/image_pipeline"
 KEYWORDS="~amd64 ~arm"
+PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Fills the gap between getting raw images from a camera driver and higher-level vision processing"
+DESCRIPTION="Publish an image stream from single image file or avi file."
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/camera_calibration
-	dev-ros/depth_image_proc
-	dev-ros/image_proc
-	dev-ros/image_publisher
-	dev-ros/image_rotate
-	dev-ros/image_view
-	dev-ros/stereo_image_proc
+	dev-ros/cv_bridge
+	dev-ros/dynamic_reconfigure
+	dev-ros/camera_info_manager
+	dev-ros/image_transport
+	dev-ros/nodelet
+	dev-ros/roscpp
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"
