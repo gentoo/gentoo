@@ -2109,7 +2109,7 @@ app-portage/g-cpan 0.16.5 0.16.6 0.16.7 0.16.9 9999: Autogenerate and install eb
 app-portage/g-octave 0.4.1-r4: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
-app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9-r2 0.3.1.1 0.3.2 9999: Collection of administration scripts for Gentoo
+app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9-r2 0.3.1.1 0.3.2 0.3.2-r1 9999: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 9999: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
@@ -4554,7 +4554,7 @@ dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer i
 dev-libs/elfutils 0.163 0.164 0.165 0.166: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.1.1-r1 2.1.1-r2 2.2.0: Stream-oriented XML parser library
+dev-libs/expat 2.1.1-r1 2.1.1-r2 2.1.1-r3 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 6.0.1 7.0.1 7.0.1-r1: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
