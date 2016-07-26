@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (26 Jul 2016)
+# Upstream closed service. Switch to another IPv6 tunnel broker
+# Masked for removal in 30 days, bug #589760
+net-misc/gogoc
+
 # Johannes Huber <johu@gentoo.org> (25 Jul 2016)
 # Upstream temp workaround. No reverse dependencies.
 # Removal in 30 days.
