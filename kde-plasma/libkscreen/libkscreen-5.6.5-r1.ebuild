@@ -24,7 +24,10 @@ RDEPEND="${DEPEND}
 	!x11-libs/libkscreen:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-config-fix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-config-fix.patch"
+	"${FILESDIR}/${P}-fix-crash.patch"
+)
 
 # requires running session
 RESTRICT="test"
