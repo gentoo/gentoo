@@ -5302,7 +5302,7 @@ dev-perl/CPAN-Checksums 2.80.0-r1 2.120.0: Write a CHECKSUMS file for a director
 dev-perl/CPAN-Meta-Check 0.12.0 0.13.0: Verify requirements in a CPAN::Meta object
 dev-perl/CPAN-Mini 1.111.11 1.111.16: Create a minimal mirror of CPAN
 dev-perl/CPAN-Mini-Inject 0.330.0-r1: Inject modules into a CPAN::Mini mirror
-dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0: Mapping Perl releases on CPAN to the location of the tarballs
+dev-perl/CPAN-Perl-Releases 2.340.0 2.540.0 2.880.0: Mapping Perl releases on CPAN to the location of the tarballs
 dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subtypes
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Packer 2.0.0: Another CSS minifier
@@ -14569,7 +14569,7 @@ net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0: A download utility with segmented do
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.21.1 11.21.2 11.22.0 13.9.1: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.21.1 11.21.2 11.22.0 11.23.0 13.9.1 13.10.0: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.5 11.0.3.1.6: G.729 codec and supporting files for asterisk
