@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
+# Only available on amd64.
+dev-java/icedtea -shenandoah
+
 # Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
 # This flag only has meaning on amd64
 sys-boot/grub:2 -grub_platforms_xen-32
