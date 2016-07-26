@@ -38,7 +38,10 @@ KMEXTRA="
 	kdeeject
 "
 
-PATCHES=( "${FILESDIR}/${P}-webkit.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-webkit.patch"
+	"${FILESDIR}/${P}-perl-5.22.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
