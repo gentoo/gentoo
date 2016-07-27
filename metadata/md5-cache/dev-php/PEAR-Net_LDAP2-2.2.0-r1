@@ -1,13 +1,13 @@
 DEFINED_PHASES=install test
-DEPEND=test? ( dev-lang/php:*[ldap] dev-php/phpunit )
+DEPEND=test? ( dev-lang/php:*[ldap] dev-php/PEAR-PEAR dev-php/phpunit )
 DESCRIPTION=OO interface for searching and manipulating LDAP-entries
 EAPI=6
 HOMEPAGE=https://pear.php.net/package/Net_LDAP2
 IUSE=examples test
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=LGPL-2.1
-RDEPEND=dev-lang/php:*[ldap]
+RDEPEND=dev-lang/php:*[ldap] dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Net_LDAP2-2.2.0.tgz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=85d6968d9c698fe62ee641f0508490d0
+_md5_=593185e6b0e13748c97a1c9fe6354ab7
