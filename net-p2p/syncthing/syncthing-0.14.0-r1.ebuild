@@ -25,16 +25,19 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 
 	if use tools ; then
-		# separate user for relaysrv
-		enewgroup ${PN}-relaysrv
-		enewuser ${PN}-relaysrv -1 -1 /var/lib/${PN}-relaysrv ${PN}-relaysrv
+		# separate user for the relay server
+		enewgroup strelaysrv
+		enewuser strelaysrv -1 -1 /var/lib/strelaysrv strelaysrv
+		# and his home folder
+		keepdir /var/lib/strelaysrv
+		fowners strelaysrv:strelaysrv /var/lib/strelaysrv
 	fi
 }
 
 src_prepare() {
 	default
 	sed -i \
-		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/relaysrv|' \
+		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/strelaysrv|' \
 		src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
 		|| die
 }
@@ -86,14 +89,11 @@ src_install() {
 	if use tools ; then
 		# openrc and systemd service files
 		systemd_dounit "${S}"/src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
-		newconfd "${FILESDIR}/${PN}-relaysrv.confd" ${PN}-relaysrv
-		newinitd "${FILESDIR}/${PN}-relaysrv.initd" ${PN}-relaysrv
-
-		keepdir /var/lib/${PN}-relaysrv
-		fowners ${PN}-relaysrv:${PN}-relaysrv /var/{lib,log}/${PN}
+		newconfd "${FILESDIR}/strelaysrv.confd" strelaysrv
+		newinitd "${FILESDIR}/strelaysrv.initd" strelaysrv
 
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}/syncthing-relaysrv.logrotate" syncthing-relaysrv
+		newins "${FILESDIR}/strelaysrv.logrotate" strelaysrv
 	fi
 }
 
@@ -108,4 +108,15 @@ pkg_postinst() {
 				"0.$(get_version_component_range 2).0."
 		fi
 	done
+
+	# check if user syncthing-relaysrv exists
+	# if yes, warn that it has been moved to strelaysrv
+	if [ -n "$(egetent passwd syncthing-relaysrv 2>/dev/null)" ]; then
+		ewarn
+		ewarn "The user and group for the relay server have been changed"
+		ewarn "from syncthing-relaysrv to strelaysrv"
+		ewarn "The old user and group are not deleted automatically. Delete them by running:"
+		ewarn "    userdel -r syncthing-relaysrv"
+		ewarn "    groupdel syncthing-relaysrv"
+	fi
 }
