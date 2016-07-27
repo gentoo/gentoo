@@ -10115,7 +10115,7 @@ games-action/shootingstar 1.2.0: A topdown shooter
 games-action/slune 1.0.15-r1: A 3D action game with multiplayer mode and amazing graphics
 games-action/snipes 1.0.4: 2D scrolling shooter, resembles the old DOS game of same name
 games-action/solar2 1.10: An open-world, sandbox game set in an infinite abstract universe
-games-action/spacearyarya-kxl 1.0.2-r1: A 2D/3D shooting game
+games-action/spacearyarya-kxl 1.0.2-r1 1.0.2-r2: A 2D/3D shooting game
 games-action/spacetripper-demo 1: hardcore arcade shoot-em-up
 games-action/super-hexagon 20141027: A minimal action game by Terry Cavanagh, with music by Chipzel
 games-action/supertuxkart 0.9.1: A kart racing game starring Tux, the linux penguin (TuxKart fork)
