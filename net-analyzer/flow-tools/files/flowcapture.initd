@@ -2,6 +2,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+PORT=${PORT:=2055}
+PIDFILE=${PIDFILE:=/run/flows/flowcapture.pid.${PORT}}
+
 depend() {
 	use net
 }
@@ -10,7 +13,7 @@ start() {
 	ebegin "Starting flow-capture"
 	checkpath -d -o flows /run/flows
 	start-stop-daemon --start --user ${USER} --exec /usr/bin/flow-capture \
-		--pidfile /run/flows/flowcapture.pid.${PORT} \
+		--pidfile ${PIDFILE} \
 		-- ${FLOW_OPTS} >/dev/null 2>&1
 	eend $?
 }
@@ -18,6 +21,6 @@ start() {
 stop() {
 	ebegin "Stopping flow-capture"
 	start-stop-daemon --stop --quiet --exec /usr/bin/flow-capture \
-		--pidfile /run/flows/flowcapture.pid.${PORT}
+		--pidfile ${PIDFILE}
 	eend $?
 }
