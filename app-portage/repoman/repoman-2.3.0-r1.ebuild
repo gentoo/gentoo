@@ -11,7 +11,7 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1 multilib
+inherit distutils-r1 eutils multilib
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -42,9 +42,11 @@ prefix_src_archives() {
 
 TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)
+	https://gitweb.gentoo.org/proj/portage.git/patch/?id=ef33db45a0c1d462411d4ced1857a322c0ab28f6 -> repoman-2.3.0-bug-586864.patch"
 
 python_prepare_all() {
+	epatch "${DISTDIR}/repoman-2.3.0-bug-586864.patch"
 	distutils-r1_python_prepare_all
 
 	if [[ -n ${EPREFIX} ]] ; then
