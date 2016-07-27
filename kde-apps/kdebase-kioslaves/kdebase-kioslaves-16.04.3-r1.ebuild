@@ -7,6 +7,7 @@ EAPI=6
 KDE_HANDBOOK="optional"
 KMNAME="kde-runtime"
 KMMODULE="kioslave"
+WEBKIT_REQUIRED="optional"
 inherit kde4-meta
 
 KEYWORDS="~amd64 ~arm ~x86"
@@ -37,6 +38,11 @@ KMEXTRA="
 	kdeeject
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-webkit.patch"
+	"${FILESDIR}/${P}-perl-5.22.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_SLP=OFF
@@ -46,6 +52,7 @@ src_configure() {
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Samba=$(usex samba)
 		-DWITH_LibSSH=$(usex sftp)
+		-DWITH_KDEWEBKIT=$(usex webkit)
 	)
 
 	kde4-meta_src_configure
