@@ -17,6 +17,7 @@ IUSE="examples sasl"
 DEPEND=""
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Net_Socket
+	dev-php/pear
 	sasl? ( dev-php/PEAR-Auth_SASL )"
 
 S="${WORKDIR}/${MY_P}"
