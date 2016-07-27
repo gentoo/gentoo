@@ -7,8 +7,9 @@ EAPI=6
 CMAKE_MIN_VERSION="3.3.1-r1"
 CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
-OPENGL_REQUIRED="optional"
 KDE_HANDBOOK="optional"
+OPENGL_REQUIRED="optional"
+WEBKIT_REQUIRED="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
 APPS_VERSION="16.04.3" # Don't forget to bump this
@@ -133,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
 	"${FILESDIR}/${PN}-4.14.20-strigi-optional.patch"
+	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
 )
 
 pkg_pretend() {
@@ -214,6 +216,7 @@ src_configure() {
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
 		-DWITH_Avahi=$(usex zeroconf)
+		-DWITH_KDEWEBKIT=$(usex webkit)
 	)
 
 	kde4-base_src_configure

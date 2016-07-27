@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE=threads
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
@@ -17,8 +17,8 @@ PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
-#inherit distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
-inherit distutils-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
+#inherit python-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
+inherit python-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -32,7 +32,7 @@ IUSE="java lua perl php python ruby tcl"
 #REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )"
 REQUIRED_USE="|| ( java lua perl php python ruby tcl )"
 
-COMMONDEPEND="dev-libs/xapian:0/30
+COMMONDEPEND="dev-libs/xapian:0/1.3.8
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
 	python? (
@@ -88,6 +88,7 @@ src_configure() {
 		$(use_with perl) \
 		$(use_with php) \
 		$(use_with python) \
+		$(use_with python python3) \
 		$(use_with ruby) \
 		$(use_with tcl)
 #		$(use_with mono csharp)

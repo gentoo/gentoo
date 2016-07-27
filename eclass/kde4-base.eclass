@@ -131,6 +131,12 @@ OPENGL_REQUIRED="${OPENGL_REQUIRED:-never}"
 # This variable must be set before inheriting any eclasses. Defaults to 'never'.
 MULTIMEDIA_REQUIRED="${MULTIMEDIA_REQUIRED:-never}"
 
+# @ECLASS-VARIABLE: WEBKIT_REQUIRED
+# @DESCRIPTION:
+# Is qtwebkit required? Possible values are 'always', 'optional' and 'never'.
+# This variable must be set before inheriting any eclasses. Defaults to 'never'.
+WEBKIT_REQUIRED="${WEBKIT_REQUIRED:-never}"
+
 # @ECLASS-VARIABLE: CPPUNIT_REQUIRED
 # @DESCRIPTION:
 # Is cppunit required for tests? Possible values are 'always', 'optional' and 'never'.
@@ -258,6 +264,22 @@ case ${MULTIMEDIA_REQUIRED} in
 esac
 unset qtmultimediadepend
 
+# WebKit dependencies
+qtwebkitdepend="
+	>=dev-qt/qtwebkit-${QT_MINIMAL}:4
+"
+case ${WEBKIT_REQUIRED} in
+	always)
+		COMMONDEPEND+=" ${qtwebkitdepend}"
+		;;
+	optional)
+		IUSE+=" +webkit"
+		COMMONDEPEND+=" webkit? ( ${qtwebkitdepend} )"
+		;;
+	*) ;;
+esac
+unset qtwebkitdepend
+
 # CppUnit dependencies
 cppuintdepend="
 	dev-util/cppunit
@@ -287,11 +309,17 @@ kdecommondepend="
 	>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support]
 	>=dev-qt/qtsvg-${QT_MINIMAL}:4
 	>=dev-qt/qttest-${QT_MINIMAL}:4
-	>=dev-qt/qtwebkit-${QT_MINIMAL}:4
 "
 
 if [[ ${PN} != kdelibs ]]; then
-	kdecommondepend+=" $(add_kdebase_dep kdelibs)"
+	local _kdelibsuse
+	case ${WEBKIT_REQUIRED} in
+		always) _kdelibsuse="webkit" ;;
+		optional) _kdelibsuse="webkit?" ;;
+		*) ;;
+	esac
+	kdecommondepend+=" || ( $(add_kdebase_dep kdelibs "${_kdelibsuse}" 4.14.22) <kde-base/kdelibs-4.14.22 )"
+	unset _kdelibsuse
 	if [[ ${KDEBASE} = kdevelop ]]; then
 		if [[ ${PN} != kdevplatform ]]; then
 			# @ECLASS-VARIABLE: KDEVPLATFORM_REQUIRED

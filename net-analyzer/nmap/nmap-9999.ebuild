@@ -32,7 +32,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
-	net-libs/libpcap[ipv6?]
+	|| ( >=net-libs/libpcap-1.8.0 <net-libs/libpcap-1.8.0[ipv6?] )
 	zenmap? (
 		dev-python/pygtk:2[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
