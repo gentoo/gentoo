@@ -39,7 +39,7 @@ DEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtsql 'sqlite')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	>=app-text/hunspell-1.2.8
+	>=app-text/hunspell-1.2.8:=
 "
 RDEPEND="${DEPEND}
 	dev-python/translate-toolkit[${PYTHON_USEDEP}]
