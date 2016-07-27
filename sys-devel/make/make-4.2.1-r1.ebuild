@@ -22,6 +22,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.82-darwin-library_search-dylib.patch
+	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
 )
 
 src_prepare() {
