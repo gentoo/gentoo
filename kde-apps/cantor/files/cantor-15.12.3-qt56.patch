@@ -1,0 +1,27 @@
+From 683418b3663ddc588c44063cc11abb20970e8e08 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 2 Jun 2016 08:56:43 +0200
+Subject: [PATCH] Fix compilation error "qobject.h:300:9: error: static
+ assertion failed: Signal and slot arguments are not compatible."
+
+(cherry picked from commit 841b6f6e19d829d6ab9ee13a5d4b0bcc9f1ee2df)
+---
+ src/worksheettextitem.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/worksheettextitem.cpp b/src/worksheettextitem.cpp
+index 503153c..493ed48 100644
+--- a/src/worksheettextitem.cpp
++++ b/src/worksheettextitem.cpp
+@@ -180,7 +180,7 @@ void WorksheetTextItem::populateMenu(QMenu *menu, const QPointF& pos)
+ QKeyEvent* WorksheetTextItem::eventForStandardAction(KStandardAction::StandardAction actionID)
+ {
+     // there must be a better way to get the shortcut...
+-    QAction * action = KStandardAction::create(actionID, this, 0, this);
++    QAction * action = KStandardAction::create(actionID, this, SLOT(copy()), this);
+     QKeySequence keySeq = action->shortcut();
+     // we do not support key sequences with multiple keys here
+     int code = keySeq[0];
+-- 
+2.7.3
+
