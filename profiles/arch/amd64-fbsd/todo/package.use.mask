@@ -149,9 +149,6 @@ x11-base/xorg-drivers video_cards_tdfx
 # x11-libs/libdrm[libkms,video_cards_vmware]
 x11-base/xorg-drivers video_cards_vmware
 
-# >=dev-cpp/clucene-0.9.21[-debug]
-app-misc/strigi clucene
-
 # >=sys-auth/polkit-qt-0.103.0
 # >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127
 # >=sys-auth/polkit-kde-agent-0.99

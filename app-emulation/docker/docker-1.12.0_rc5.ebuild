@@ -80,7 +80,7 @@ CONFIG_CHECK="
 
 	~POSIX_MQUEUE
 
-	~MEMCG_KMEM ~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
+	~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
 
 	~BLK_CGROUP ~IOSCHED_CFQ
 	~CGROUP_PERF
@@ -91,7 +91,6 @@ CONFIG_CHECK="
 "
 
 ERROR_KEYS="CONFIG_KEYS: is mandatory"
-ERROR_MEMCG_KMEM="CONFIG_MEMCG_KMEM: is optional"
 ERROR_MEMCG_SWAP="CONFIG_MEMCG_SWAP: is required if you wish to limit swap usage of containers"
 ERROR_RESOURCE_COUNTERS="CONFIG_RESOURCE_COUNTERS: is optional for container statistics gathering"
 
@@ -138,6 +137,13 @@ pkg_setup() {
 		CONFIG_CHECK+="
 			~CGROUP_NET_PRIO
 		"
+	fi
+
+	if kernel_is lt 4 5; then
+		CONFIG_CHECK+="
+			~MEMCG_KMEM
+		"
+		ERROR_MEMCG_KMEM="CONFIG_MEMCG_KMEM: is optional"
 	fi
 
 	if use aufs; then

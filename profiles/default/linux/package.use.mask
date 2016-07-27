@@ -12,7 +12,6 @@ sys-auth/consolekit -cgroups
 
 # Michael Palimaka <kensington@gentoo.org> (03 Sep 2015)
 # Native inotify support is preferred on linux.
-app-misc/strigi fam
 kde-base/kdelibs fam
 kde-frameworks/kcoreaddons fam
 

@@ -205,12 +205,6 @@ net-dns/namecoin-qt
 # Masked for removal in 30 days.
 kde-apps/mplayerthumbs
 
-# Johannes Huber <johu@gentoo.org> (28 Jun 2016)
-# Masked for removal in 30 days. Dead upstream. Was only
-# useful with Nepomuk, superseded by Baloo long time ago.
-# No reverse dependencies, bug #583716.
-app-misc/strigi
-
 # Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
 # (on behalf of QA & proxy-maint)
 # Major QA violations, bug #587342 (#585722 in particular).
