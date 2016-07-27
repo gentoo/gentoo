@@ -864,11 +864,6 @@ media-gfx/k3d cuda
 # Unmask if you really know what you are doing.
 <sys-apps/groff-1.20.1-r2 linguas_ja
 
-# Samuli Suominen <ssuominen@gentoo.org> (09 Oct 2009)
-# log4cxx has known memory leaking issues wrt bug #287697,
-# unmask when log4cxx is fixed and stable.
-app-misc/strigi log
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan X
