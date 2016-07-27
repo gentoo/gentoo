@@ -9,7 +9,7 @@ PLOCALES="da de eo es fr hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
 inherit l10n toolchain-funcs
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
-HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html http://sourceforge.net/projects/dos2unix/"
+HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html https://sourceforge.net/projects/dos2unix/"
 SRC_URI="
 	http://www.xs4all.nl/~waterlan/${PN}/${P}.tar.gz
 	mirror://sourceforge/${PN}/${P}.tar.gz"

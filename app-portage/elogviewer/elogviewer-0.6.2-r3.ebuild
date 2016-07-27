@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-r1
 
 DESCRIPTION="GTK+ based utility to parse the contents of elogs created by Portage"
-HOMEPAGE="http://sourceforge.net/projects/elogviewer/"
+HOMEPAGE="https://sourceforge.net/projects/elogviewer/"
 
 SRC_URI="mirror://sourceforge/elogviewer/${P}.tar.gz"
 

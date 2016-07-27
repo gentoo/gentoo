@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="large set of crack/cracklib dictionaries"
-HOMEPAGE="http://sourceforge.net/projects/cracklib"
+HOMEPAGE="https://sourceforge.net/projects/cracklib"
 SRC_URI="mirror://sourceforge/cracklib/${P}.gz"
 
 LICENSE="public-domain"

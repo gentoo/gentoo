@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool
 
 DESCRIPTION="AMPAS' Color Transformation Language"
-HOMEPAGE="http://sourceforge.net/projects/ampasctl"
+HOMEPAGE="https://sourceforge.net/projects/ampasctl"
 SRC_URI="mirror://sourceforge/ampasctl/${P}.tar.gz"
 
 LICENSE="AMPAS"

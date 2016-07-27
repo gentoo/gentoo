@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Puppy Linux .pet to .tar.gz converter"
-HOMEPAGE="http://sourceforge.net/projects/pet2tgz/"
+HOMEPAGE="https://sourceforge.net/projects/pet2tgz/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

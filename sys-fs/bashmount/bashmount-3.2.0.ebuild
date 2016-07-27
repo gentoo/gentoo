@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="A bash script that uses udisks to handle removable devices without dependencies on any GUI"
-HOMEPAGE="http://sourceforge.net/projects/bashmount/"
+HOMEPAGE="https://sourceforge.net/projects/bashmount/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

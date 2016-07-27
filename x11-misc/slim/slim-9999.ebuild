@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Simple Login Manager"
-HOMEPAGE="http://sourceforge.net/projects/slim.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="branding pam consolekit"

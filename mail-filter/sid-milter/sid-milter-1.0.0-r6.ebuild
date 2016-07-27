@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils toolchain-funcs user
 
 DESCRIPTION="A milter-based application to provide Sender-ID verification service"
-HOMEPAGE="http://sourceforge.net/projects/sid-milter/"
+HOMEPAGE="https://sourceforge.net/projects/sid-milter/"
 SRC_URI="mirror://sourceforge/sid-milter/${P}.tar.gz"
 
 LICENSE="Sendmail-Open-Source"

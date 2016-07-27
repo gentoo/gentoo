@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Command-line utility to read data from standard in and place it in an X selection"
-HOMEPAGE="http://sourceforge.net/projects/xclip/"
+HOMEPAGE="https://sourceforge.net/projects/xclip/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -54,7 +54,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Do not filter out Werror
-	# Upstream Bug  http://sourceforge.net/tracker/?func=detail&aid=2959749&group_id=204462&atid=989708
+	# Upstream Bug  https://sourceforge.net/tracker/?func=detail&aid=2959749&group_id=204462&atid=989708
 	# sed -i -e 's/CFLAGS=.*Werror/#&/g' configure || die "sed comment out Werror failed"
 	sed -i -e 's:\(TEST_PLUGIN_INSTALLDIR=\).*:\1\$libdir/open-vm-tools/plugins/tests:g' configure || die "sed test_plugin_installdir failed"
 }

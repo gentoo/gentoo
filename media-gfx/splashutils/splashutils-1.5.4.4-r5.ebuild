@@ -21,7 +21,7 @@ RESTRICT="test"
 IUSE="hardened +png +truetype gpm fbcondecor"
 
 DESCRIPTION="Framebuffer splash utilities"
-HOMEPAGE="http://sourceforge.net/projects/fbsplash.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/fbsplash.berlios/"
 SRC_URI="
 	mirror://sourceforge/fbsplash.berlios/${PN}-lite-${PV}.tar.bz2
 	mirror://sourceforge/fbsplash.berlios/${GENTOOSPLASH}.tar.bz2

@@ -1,5 +1,5 @@
 Improved regular expression for matching season and episode; see
-http://sourceforge.net/tracker/index.php?func=detail&aid=2818315&group_id=203642&atid=986413
+https://sourceforge.net/tracker/index.php?func=detail&aid=2818315&group_id=203642&atid=986413
 
 --- pytvshows.orig	2011-08-17 23:20:16.000000000 +0200
 +++ pytvshows	2011-08-17 23:22:30.000000000 +0200

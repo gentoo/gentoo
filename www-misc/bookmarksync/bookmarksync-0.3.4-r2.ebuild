@@ -7,7 +7,7 @@ EAPI="2"
 inherit toolchain-funcs
 
 DESCRIPTION="bookmarksync synchronizes various browser bookmark files"
-HOMEPAGE="http://sourceforge.net/projects/booksync/"
+HOMEPAGE="https://sourceforge.net/projects/booksync/"
 SRC_URI="mirror://sourceforge/booksync/${P}.tar.gz"
 
 LICENSE="GPL-2"

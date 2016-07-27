@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils flag-o-matic games
 
 DESCRIPTION="A Sega Genesis/CD/32X emulator"
-HOMEPAGE="http://sourceforge.net/projects/gens/"
+HOMEPAGE="https://sourceforge.net/projects/gens/"
 SRC_URI="mirror://sourceforge/gens/${P}.tar.gz"
 
 LICENSE="GPL-2"

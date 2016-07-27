@@ -8,7 +8,7 @@ MY_P="powerpc-utils-${PV}"
 
 DESCRIPTION="This package provides utilities for the maintainance
 of the IBM and Apple powerpc platforms."
-HOMEPAGE="http://sourceforge.net/projects/powerpc-utils"
+HOMEPAGE="https://sourceforge.net/projects/powerpc-utils"
 SRC_URI="mirror://sourceforge/powerpc-utils/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"

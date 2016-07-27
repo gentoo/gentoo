@@ -6,7 +6,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="The ohsnap / osnap monospace font (based on Artwiz Snap)"
-HOMEPAGE="http://sourceforge.net/projects/osnapfont"
+HOMEPAGE="https://sourceforge.net/projects/osnapfont"
 SRC_URI="mirror://sourceforge/osnapfont/${P}.tar.gz"
 
 LICENSE="GPL-2"

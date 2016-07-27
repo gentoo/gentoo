@@ -5,7 +5,7 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="MP3 consistency checker"
-HOMEPAGE="http://sourceforge.net/projects/mp3check/"
+HOMEPAGE="https://sourceforge.net/projects/mp3check/"
 SRC_URI="mirror://sourceforge/mp3check/${P}.tar.gz"
 
 LICENSE="GPL-2"

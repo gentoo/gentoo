@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 SONGS_PN=ultrastar-songs
 
 DESCRIPTION="SingStar GPL clone"
-HOMEPAGE="http://sourceforge.net/projects/performous/"
+HOMEPAGE="https://sourceforge.net/projects/performous/"
 SRC_URI="https://github.com/performous/performous/archive/1.0.tar.gz -> ${P}.tar.gz
 	songs? (
 		mirror://sourceforge/performous/${SONGS_PN}-restricted-3.zip

@@ -5,7 +5,7 @@
 inherit latex-package
 
 DESCRIPTION="pgf -- The TeX Portable Graphic Format"
-HOMEPAGE="http://sourceforge.net/projects/pgf"
+HOMEPAGE="https://sourceforge.net/projects/pgf"
 SRC_URI="mirror://sourceforge/pgf/${PN}_${PV}.tds.zip"
 
 LICENSE="GPL-2 LPPL-1.3c FDL-1.2"

@@ -7,7 +7,7 @@ EAPI=5
 inherit scons-utils qt4-r2 games
 
 DESCRIPTION="An accuracy-focused Gameboy / Gameboy Color emulator"
-HOMEPAGE="http://sourceforge.net/projects/gambatte"
+HOMEPAGE="https://sourceforge.net/projects/gambatte"
 SRC_URI="https://dev.gentoo.org/~hasufell/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"

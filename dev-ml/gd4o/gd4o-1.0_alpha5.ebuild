@@ -9,7 +9,7 @@ inherit toolchain-funcs findlib
 MY_P="${P/_alpha/a}"
 
 DESCRIPTION="OCaml interface to the GD graphics library"
-HOMEPAGE="http://sourceforge.net/projects/gd4o/"
+HOMEPAGE="https://sourceforge.net/projects/gd4o/"
 SRC_URI="mirror://sourceforge/gd4o/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

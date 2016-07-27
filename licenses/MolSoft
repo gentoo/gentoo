@@ -71,7 +71,7 @@ USE OF FREE LIBRARY.
 
 Molsoft ICM Version 3.0 uses a free library called Qwt for building its executable.  The Qwt library is found in the ICM 3.0 file "qwt.dll" in the distribution and is available under the GNU Lesser General Public License, which is available at http://www.gnu.org/copyleft/lesser.html.  According to the terms of the GNU Lesser General Public License for the use of Qwt, Licensees are free to modify the source code for Qwt, which can be found at:
 
-http://sourceforge.net/projects/qwt.
+https://sourceforge.net/projects/qwt.
 
 You are free to modify the content of the Qwt library and recompile the library, but you are prohibited from changing the content of the definition file.  The following disclaimer applies to the Qwt library:
 

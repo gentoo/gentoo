@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
-HOMEPAGE="http://sourceforge.net/projects/strace/"
+HOMEPAGE="https://sourceforge.net/projects/strace/"
 
 LICENSE="BSD"
 SLOT="0"

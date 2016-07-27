@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Library to interface with IEEE 1394 cameras following the IIDC specification"
-HOMEPAGE="http://sourceforge.net/projects/libdc1394/"
+HOMEPAGE="https://sourceforge.net/projects/libdc1394/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

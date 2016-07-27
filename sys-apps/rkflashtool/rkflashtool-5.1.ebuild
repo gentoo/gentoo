@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Tool for flashing Rockchip devices"
-HOMEPAGE="http://sourceforge.net/projects/rkflashtool/"
+HOMEPAGE="https://sourceforge.net/projects/rkflashtool/"
 SRC_URI="mirror://sourceforge/project/${PN}/${P}/${P}-src.tar.xz"
 
 LICENSE="BSD-2"

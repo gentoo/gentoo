@@ -8,7 +8,7 @@ inherit eutils autotools wxwidgets games
 
 MY_P="${PN}_v${PV}"
 DESCRIPTION="Open source clone of the four-player board game Blokus"
-HOMEPAGE="http://sourceforge.net/projects/blokish/"
+HOMEPAGE="https://sourceforge.net/projects/blokish/"
 SRC_URI="mirror://sourceforge/blokish/${MY_P}.tgz"
 
 LICENSE="GPL-2"

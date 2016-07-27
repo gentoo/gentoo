@@ -7,7 +7,7 @@ EAPI="2"
 inherit autotools eutils
 
 DESCRIPTION="A text mode (ncurses) SMB network commander. Features: resume and UTF-8"
-HOMEPAGE="http://sourceforge.net/projects/smbc/"
+HOMEPAGE="https://sourceforge.net/projects/smbc/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"

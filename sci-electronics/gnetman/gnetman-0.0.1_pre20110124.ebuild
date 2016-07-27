@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A GNU Netlist Manipulation Library"
-HOMEPAGE="http://sourceforge.net/projects/gnetman/"
+HOMEPAGE="https://sourceforge.net/projects/gnetman/"
 #snapshot from http://gnetman.git.sourceforge.net/git/gitweb.cgi?p=gnetman/gnetman;
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 

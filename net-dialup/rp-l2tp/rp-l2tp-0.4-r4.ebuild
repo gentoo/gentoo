@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="User-space implementation of L2TP for Linux and other UNIX systems"
-HOMEPAGE="http://sourceforge.net/projects/rp-l2tp/"
+HOMEPAGE="https://sourceforge.net/projects/rp-l2tp/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

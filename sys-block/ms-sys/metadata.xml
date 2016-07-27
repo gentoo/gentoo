@@ -4,6 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">ms-sys</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=59200</bugs-to>
+		<bugs-to>https://sourceforge.net/tracker/?group_id=59200</bugs-to>
 	</upstream>
 </pkgmetadata>

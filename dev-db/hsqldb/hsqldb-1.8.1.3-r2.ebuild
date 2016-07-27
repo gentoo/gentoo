@@ -66,7 +66,7 @@ java_prepare() {
 
 	# Missing source file - needed for tests
 	# http://hsqldb.cvs.sourceforge.net/*checkout*/hsqldb/hsqldb-dev/src/org/hsqldb/lib/StringComparator.java?revision=1.1&pathrev=hsqldb_1_8_0_10
-	# http://sourceforge.net/tracker/index.php?func=detail&aid=2008754&group_id=23316&atid=378131
+	# https://sourceforge.net/tracker/index.php?func=detail&aid=2008754&group_id=23316&atid=378131
 	cp "${FILESDIR}/StringComparator.java" src/org/hsqldb/lib || die
 	cp "${FILESDIR}/TestBug1191815.java" src/org/hsqldb/test/ || die
 }

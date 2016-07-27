@@ -8,7 +8,7 @@ inherit autotools bash-completion-r1 eutils toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
 SRC_URI="mirror://sourceforge/iprdd/${P}.tar.gz"
-HOMEPAGE="http://sourceforge.net/projects/iprdd/"
+HOMEPAGE="https://sourceforge.net/projects/iprdd/"
 
 SLOT="0"
 LICENSE="IBM"

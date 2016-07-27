@@ -43,5 +43,5 @@ python_install() {
 
 pkg_postinst() {
 	elog "DrPython plugins are available on DrPython homepage:"
-	elog "http://sourceforge.net/projects/drpython/files/DrPython%20Plugins/"
+	elog "https://sourceforge.net/projects/drpython/files/DrPython%20Plugins/"
 }

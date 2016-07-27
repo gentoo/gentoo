@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 DESCRIPTION="downloads torrents for TV shows from RSS feeds provided by ezrss.it"
-HOMEPAGE="http://sourceforge.net/projects/pytvshows/"
+HOMEPAGE="https://sourceforge.net/projects/pytvshows/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="automatically monitor system logs and mail security violations on a periodic basis"
 # Seems that the project has been discontinued by CISCO?
-HOMEPAGE="http://sourceforge.net/projects/sentrytools/"
+HOMEPAGE="https://sourceforge.net/projects/sentrytools/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

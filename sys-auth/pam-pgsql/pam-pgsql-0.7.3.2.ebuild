@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils pam
 
 DESCRIPTION="pam module to authenticate users via PostgreSQL"
-HOMEPAGE="http://sourceforge.net/projects/pam-pgsql/"
+HOMEPAGE="https://sourceforge.net/projects/pam-pgsql/"
 
 if [[ ${PV} == *_p* ]]; then
 	SRC_URI="http://www.flameeyes.eu/gentoo-distfiles/${P}.tar.gz"

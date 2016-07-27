@@ -7,7 +7,7 @@ EAPI=6
 IUSE="X gtk"
 
 DESCRIPTION="TV-Out for NVidia cards"
-HOMEPAGE="http://sourceforge.net/projects/nv-tv-out/"
+HOMEPAGE="https://sourceforge.net/projects/nv-tv-out/"
 SRC_URI="mirror://sourceforge/nv-tv-out/${P}.tar.gz"
 
 SLOT="0"

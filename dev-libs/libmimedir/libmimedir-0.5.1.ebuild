@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Library for manipulating MIME directory profiles (RFC2425)"
-HOMEPAGE="http://sourceforge.net/projects/libmimedir/"
+HOMEPAGE="https://sourceforge.net/projects/libmimedir/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2" # COPYING -> BSD-2, dirsynt.* -> GPL-2

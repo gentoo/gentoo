@@ -5,7 +5,7 @@
 inherit eutils autotools
 
 DESCRIPTION="blackbox date display"
-HOMEPAGE="http://sourceforge.net/projects/bbtools"
+HOMEPAGE="https://sourceforge.net/projects/bbtools"
 SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"

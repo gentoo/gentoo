@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="The Blue Obelisk Data Repository listing element and isotope properties"
-HOMEPAGE="http://sourceforge.net/projects/bodr"
+HOMEPAGE="https://sourceforge.net/projects/bodr"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"

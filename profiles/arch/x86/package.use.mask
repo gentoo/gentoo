@@ -81,7 +81,7 @@ media-libs/mesa -openmax
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
-# http://sourceforge.net/p/mikmod/bugs/16/#17ea
+# https://sourceforge.net/p/mikmod/bugs/16/#17ea
 media-libs/libmikmod sse2
 media-libs/libmikmod cpu_flags_x86_sse2
 

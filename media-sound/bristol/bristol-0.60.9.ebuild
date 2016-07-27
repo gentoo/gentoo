@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils autotools-utils
 
 DESCRIPTION="Synthesizer keyboard emulation package: Moog, Hammond and others"
-HOMEPAGE="http://sourceforge.net/projects/bristol"
+HOMEPAGE="https://sourceforge.net/projects/bristol"
 SRC_URI="mirror://sourceforge/bristol/${P}.tar.gz"
 
 LICENSE="GPL-2"

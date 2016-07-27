@@ -1,4 +1,4 @@
-http://sourceforge.net/p/pyserial/patches/26/
+https://sourceforge.net/p/pyserial/patches/26/
 Index: trunk/pyserial/serial/tools/list_ports_posix.py
 ===================================================================
 --- trunk/pyserial/serial/tools/list_ports_posix.py	(revision 439)

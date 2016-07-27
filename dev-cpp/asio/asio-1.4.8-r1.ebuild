@@ -31,7 +31,7 @@ install:
 	fi
 
 	# Added ASIO_DECL to a number of function definitions
-	# http://sourceforge.net/tracker/?func=detail&aid=3291113&group_id=122478&atid=694037
+	# https://sourceforge.net/tracker/?func=detail&aid=3291113&group_id=122478&atid=694037
 	epatch "${FILESDIR}/${P}_declarations.patch"
 }
 

@@ -1,7 +1,7 @@
 This patch simply alters the feed site since txrss.net was closed/shut down.
 Luckily, ezrss.it expects the same arguments and should generally work. You can
 find similar details at:
-http://sourceforge.net/projects/pytvshows/forums/forum/726961/topic/3309243?message=7544190
+https://sourceforge.net/projects/pytvshows/forums/forum/726961/topic/3309243?message=7544190
 
 Yes, this could have been accomplished via the --feed paramater, but this is
 more user friendly.

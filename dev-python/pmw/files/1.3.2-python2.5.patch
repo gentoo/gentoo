@@ -14,9 +14,9 @@ so we put in a python version check to see if we need to manually delete
 commands.
 
 fixes the Pmw bug referred to here:
-http://sourceforge.net/forum/forum.php?thread_id=3283195&forum_id=33675
+https://sourceforge.net/forum/forum.php?thread_id=3283195&forum_id=33675
 and here:
-http://sourceforge.net/tracker/?func=detail&aid=2795731&group_id=10743&ati
+https://sourceforge.net/tracker/?func=detail&aid=2795731&group_id=10743&ati
 d=110743
 
 --- a/src/Pmw/Pmw_1_3/lib/PmwOptionMenu.py

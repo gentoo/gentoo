@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Simple scripts for converting xml to groff or html"
-HOMEPAGE="http://sourceforge.net/projects/xmltoman/"
+HOMEPAGE="https://sourceforge.net/projects/xmltoman/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

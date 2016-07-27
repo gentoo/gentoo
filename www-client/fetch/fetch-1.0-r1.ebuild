@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library"
-HOMEPAGE="http://sourceforge.net/projects/fetch/"
+HOMEPAGE="https://sourceforge.net/projects/fetch/"
 SRC_URI="mirror://sourceforge/fetch/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"

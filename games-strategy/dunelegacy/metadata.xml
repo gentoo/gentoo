@@ -6,7 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>http://sourceforge.net/apps/mediawiki/dunelegacy/index.php?title=Development/Reporting_Bugs</bugs-to>
+		<bugs-to>https://sourceforge.net/apps/mediawiki/dunelegacy/index.php?title=Development/Reporting_Bugs</bugs-to>
 		<remote-id type="sourceforge">dunelegacy</remote-id>
 	</upstream>
 	<longdescription lang="en">

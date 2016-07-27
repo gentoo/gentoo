@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="small command line tool for testing SIP applications and devices"
-HOMEPAGE="http://sourceforge.net/projects/sipsak.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/sipsak.berlios/"
 SRC_URI="mirror://sourceforge/sipsak.berlios/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-2"

@@ -9,7 +9,7 @@ PYTHON_DEPEND="python? 2:2.7"
 inherit python
 
 DESCRIPTION="Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="MIT"

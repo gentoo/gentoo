@@ -2,7 +2,7 @@ Check chdir() on chroot() syscalls (and similar) as chroot without proper
 chdir() allows to escape from changed root.
 
 http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=597382
-http://sourceforge.net/tracker/?func=detail&aid=3095679&group_id=80387&atid=559616
+https://sourceforge.net/tracker/?func=detail&aid=3095679&group_id=80387&atid=559616
 
 --- mingetty-1.08/mingetty.c
 +++ mingetty-1.08/mingetty.c

@@ -5,7 +5,7 @@
 EAPI=2
 
 DESCRIPTION="A plugin for pidgin which enables text-to-speech output of conversations using festival"
-HOMEPAGE="http://sourceforge.net/projects/pidgin-festival/"
+HOMEPAGE="https://sourceforge.net/projects/pidgin-festival/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

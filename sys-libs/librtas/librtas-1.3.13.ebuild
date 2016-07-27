@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A set of libraries for userspace access to RTAS on the PowerPC platform(s)"
-HOMEPAGE="http://sourceforge.net/projects/librtas/"
+HOMEPAGE="https://sourceforge.net/projects/librtas/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="IBM"

@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="Utility for Xine decoding support in transKode"
-HOMEPAGE="http://sourceforge.net/projects/transkode"
+HOMEPAGE="https://sourceforge.net/projects/transkode"
 SRC_URI="mirror://sourceforge/transkode/${P}.tar.bz2"
 
 LICENSE="GPL-2"

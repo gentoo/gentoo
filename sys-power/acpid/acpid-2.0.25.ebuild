@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils linux-info systemd
 
 DESCRIPTION="Daemon for Advanced Configuration and Power Interface"
-HOMEPAGE="http://sourceforge.net/projects/acpid2"
+HOMEPAGE="https://sourceforge.net/projects/acpid2"
 SRC_URI="mirror://sourceforge/${PN}2/${P}.tar.xz"
 
 LICENSE="GPL-2"

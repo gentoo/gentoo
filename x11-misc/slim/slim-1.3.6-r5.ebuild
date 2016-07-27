@@ -8,7 +8,7 @@ CMAKE_MIN_VERSION="2.8.8"
 inherit cmake-utils pam eutils systemd versionator
 
 DESCRIPTION="Simple Login Manager"
-HOMEPAGE="http://sourceforge.net/projects/slim.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="GPL-2"

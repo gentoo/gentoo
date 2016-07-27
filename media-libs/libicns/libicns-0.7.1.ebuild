@@ -5,7 +5,7 @@
 EAPI=2
 
 DESCRIPTION="A library for manipulating MacOS X .icns icon format"
-HOMEPAGE="http://sourceforge.net/projects/icns"
+HOMEPAGE="https://sourceforge.net/projects/icns"
 SRC_URI="mirror://sourceforge/icns/${P}.tar.gz"
 
 LICENSE="GPL-2"
