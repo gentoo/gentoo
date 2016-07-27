@@ -194,8 +194,11 @@ src_compile() {
 		grep -q -- '-fno-PIC' hack/make.sh || die 'hardened sed failed'
 
 		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
-			-i hack/make/dynbinary || die
-		grep -q -- '-fno-PIC' hack/make/dynbinary || die 'hardened sed failed'
+			-i hack/make/dynbinary-client || die
+		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
+			-i hack/make/dynbinary-daemon || die
+		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
+		grep -q -- '-fno-PIC' hack/make/dynbinary-client || die 'hardened sed failed'
 	fi
 
 	# let's set up some optional features :)
