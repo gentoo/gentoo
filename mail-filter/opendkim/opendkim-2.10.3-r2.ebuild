@@ -120,7 +120,7 @@ src_install() {
 	dosbin stats/opendkim-reportstats
 
 	newinitd "${FILESDIR}/opendkim.init.r3" opendkim
-	systemd_dounit "${FILESDIR}/opendkim-r1.service"
+	systemd_newunit "${FILESDIR}/opendkim-r1.service" opendkim.service
 
 	dodir /etc/opendkim /var/lib/opendkim
 	fowners milter:milter /var/lib/opendkim
