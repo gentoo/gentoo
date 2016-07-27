@@ -39,7 +39,10 @@ WORKDIR=/var/lib/flows/ft
 # user to run as
 USER=flows
 
+# Pidfile
+PIDFILE=/run/flows/flowcapture.pid.${PORT}
+
 # This pulls in the options above
-FLOW_OPTS="-p /run/flows/flowcapture.pid -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
+FLOW_OPTS="-p $PIDFILE -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
 # Use below only if you have sorted out the STAT_INT problem
-#FLOW_OPTS="-p /run/flows/flowcapture.pid -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -S $STAT_INT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
+#FLOW_OPTS="-p /run/flows/flowcapture.pid.$PORT -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -S $STAT_INT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
