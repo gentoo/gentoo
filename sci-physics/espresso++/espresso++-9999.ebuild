@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-r1
 
 DESCRIPTION="A Modern Multiscale Simulation Package for Soft Matter Systems"
 HOMEPAGE="https://www.espresso-pp.de"
@@ -31,14 +31,29 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/mpi
 	dev-libs/boost:=[python,mpi,${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0
-	dev-python/mpi4py"
+	dev-python/mpi4py[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local mycmakeargs=(
-		-DEXTERNAL_BOOST=ON
-		-DEXTERNAL_MPI4PY=ON
-		-DWITH_RC_FILES=OFF
-	)
-	cmake-utils_src_configure
+	src_configure_internal() {
+		local mycmakeargs=(
+			-DEXTERNAL_BOOST=ON
+			-DEXTERNAL_MPI4PY=ON
+			-DWITH_RC_FILES=OFF
+		)
+		cmake-utils_src_configure
+	}
+	python_foreach_impl src_configure_internal
+}
+
+src_compile() {
+	python_foreach_impl cmake-utils_src_make
+}
+
+src_test() {
+	python_foreach_impl cmake-utils_src_test
+}
+
+src_install() {
+	python_foreach_impl cmake-utils_src_install
 }

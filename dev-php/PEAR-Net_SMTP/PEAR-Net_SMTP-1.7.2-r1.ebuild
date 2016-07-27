@@ -14,8 +14,9 @@ LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="examples sasl"
-
-RDEPEND="dev-php/PEAR-Net_Socket
+DEPEND=""
+RDEPEND="dev-lang/php:*
+	dev-php/PEAR-Net_Socket
 	sasl? ( dev-php/PEAR-Auth_SASL )"
 
 S="${WORKDIR}/${MY_P}"
