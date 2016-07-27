@@ -69,7 +69,7 @@ COMMON_DEPEND="
 	media-libs/tiff:0
 	virtual/jpeg:0
 	addressbook? (
-		$(add_kdeapps_dep akonadi-contact)
+		$(add_kdeapps_dep akonadi-contacts)
 		$(add_kdeapps_dep kcontacts)
 	)
 	scanner? ( $(add_kdeapps_dep libksane) )
