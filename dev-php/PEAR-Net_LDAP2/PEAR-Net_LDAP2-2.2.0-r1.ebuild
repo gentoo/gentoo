@@ -13,7 +13,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="examples test"
 
-RDEPEND="dev-lang/php:*[ldap]"
+RDEPEND="dev-lang/php:*[ldap]
+	dev-php/PEAR-PEAR"
 DEPEND="test? ( ${RDEPEND} dev-php/phpunit )"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
