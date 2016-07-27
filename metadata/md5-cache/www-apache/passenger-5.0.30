@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test unpack
+DEPEND=ruby_targets_ruby20? ( dev-ruby/rake[ruby_targets_ruby20] ) ruby_targets_ruby21? ( dev-ruby/rake[ruby_targets_ruby21] ) ruby_targets_ruby22? ( dev-ruby/rake[ruby_targets_ruby22] ) ruby_targets_ruby23? ( dev-ruby/rake[ruby_targets_ruby23] ) test? ( ruby_targets_ruby20? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby20] >=dev-ruby/rake-0.8.1[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby21] >=dev-ruby/rake-0.8.1[ruby_targets_ruby21] ) ruby_targets_ruby22? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby22] >=dev-ruby/rake-0.8.1[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby23] >=dev-ruby/rake-0.8.1[ruby_targets_ruby23] ) ) >=dev-libs/libuv-1.8.0 net-misc/curl[ssl] www-servers/apache[apache2_modules_unixd(+)] =www-servers/apache-2* ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
+DESCRIPTION=Passenger makes deployment of Ruby on Rails applications a breeze
+EAPI=5
+HOMEPAGE=https://www.phusionpassenger.com/
+IUSE=debug test elibc_FreeBSD ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ruby_targets_ruby20? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby20] >=dev-ruby/rake-0.8.1[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby21] >=dev-ruby/rake-0.8.1[ruby_targets_ruby21] ) ruby_targets_ruby22? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby22] >=dev-ruby/rake-0.8.1[ruby_targets_ruby22] ) ruby_targets_ruby23? ( >=dev-ruby/rack-1.0.0:*[ruby_targets_ruby23] >=dev-ruby/rake-0.8.1[ruby_targets_ruby23] ) >=dev-libs/libuv-1.8.0 net-misc/curl[ssl] www-servers/apache[apache2_modules_unixd(+)] =www-servers/apache-2* ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby22? ( dev-lang/ruby:2.2 ) ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
+REQUIRED_USE=|| ( ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23 )
+SLOT=0
+SRC_URI=http://s3.amazonaws.com/phusion-passenger/releases/passenger-5.0.30.tar.gz
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:- src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ruby-ng	3b6431b487e69b5070a45ea20d1c4c6c	ruby-utils	2f896785ed65442d7e84ab5f5eef3bd3	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=74c90505f29996307e2d5e1f988cb8fe
