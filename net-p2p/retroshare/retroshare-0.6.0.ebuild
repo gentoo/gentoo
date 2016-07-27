@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils qmake-utils
+inherit eutils gnome2-utils qmake-utils versionator
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
@@ -78,6 +78,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/RetroShare-${PV}"
 
+PATCHES=( "${FILESDIR}/${P}-c11-compat.patch" )
+
 src_prepare() {
 	local dir
 
@@ -99,6 +101,7 @@ src_prepare() {
 		retroshare-gui/src/retroshare-gui.pro \
 		retroshare-nogui/src/retroshare-nogui.pro || die 'sed on retroshare-gui/src/retroshare-gui.pro failed'
 
+	epatch ${PATCHES[@]}
 	eapply_user
 }
 
@@ -147,13 +150,17 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ "${REPLACING_VERSIONS}" = "0.5*"  ]]; then
-		elog "You are upgrading from Retroshare 0.5.* to ${PV}"
-		elog "Version 0.6.* is backward-incompatible with 0.5 branch"
-		elog "and clients with 0.6.* can not connect to clients that have 0.5.*"
-		elog "It's recommended to drop all your configuration and either"
-		elog "generate a new certificate or import existing from a backup"
-	fi
+	local ver
+	for ver in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 0.5.9999 ${ver}; then
+			elog "You are upgrading from Retroshare 0.5.* to ${PV}"
+			elog "Version 0.6.* is backward-incompatible with 0.5 branch"
+			elog "and clients with 0.6.* can not connect to clients that have 0.5.*"
+			elog "It's recommended to drop all your configuration and either"
+			elog "generate a new certificate or import existing from a backup"
+			break
+		fi
+	done
 	gnome2_icon_savelist
 }
 
