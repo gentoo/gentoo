@@ -1,13 +1,13 @@
---- bmp/Makefile.am
-+++ bmp/Makefile.am
+--- a/bmp/Makefile.am
++++ b/bmp/Makefile.am
 @@ -1,4 +1,4 @@
 -bmpdir = $(prefix)/share/SpaceAryarya/bmp
 +bmpdir = $(BMP_PATH)
  bmp_DATA =   my.bmp enemy1.bmp shot.bmp bomb.bmp\
  	     enemy2.bmp kage.bmp wall.bmp wall2.bmp eshot.bmp\
  	     boss1_b.bmp  boss1_do.bmp  boss1_f.bmp\
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -25,17 +25,20 @@
          BMP_PATH=/usr/local/share/SpaceAryarya/bmp
          WAV_PATH=/usr/local/share/SpaceAryarya/wav
@@ -32,8 +32,8 @@
  
  AC_OUTPUT([data/Makefile wav/Makefile bmp/Makefile src/Makefile
  spacearyarya.spec Makefile])
---- data/Makefile.am
-+++ data/Makefile.am
+--- a/data/Makefile.am
++++ b/data/Makefile.am
 @@ -1,6 +1,7 @@
 -datadir = $(prefix)/share/SpaceAryarya/data
 +datadir = $(DATA_PATH)
@@ -45,8 +45,8 @@
 +install-data-local:
 +	$(mkinstalldirs) $(DESTDIR)$(SCORE_PATH)
 +	$(INSTALL) -m 660 .score $(DESTDIR)$(SCORE_PATH)
---- src/ranking.c
-+++ src/ranking.c
+--- a/src/ranking.c
++++ b/src/ranking.c
 @@ -36,7 +36,7 @@
    FILE *fp;
    Uint16 i;
@@ -65,8 +65,8 @@
      fprintf(fp, "%d\n", Root->HiScore);
      for (i = 0; i < 5; i ++)
        fprintf(fp, "%d %d %s\n",
---- wav/Makefile.am
-+++ wav/Makefile.am
+--- a/wav/Makefile.am
++++ b/wav/Makefile.am
 @@ -1,3 +1,3 @@
 -wavdir = $(prefix)/share/SpaceAryarya/wav
 +wavdir = $(WAV_PATH)
