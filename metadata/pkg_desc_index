@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.0_rc3 1.12.0_rc4 1.12.0_rc4-r1 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.0_rc3 1.12.0_rc4 1.12.0_rc4-r1 1.12.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.7.1 1.8.0_rc1 1.8.0_rc2: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.6.0 0.7.0: Machine management for a container-centric world
 app-emulation/docker-registry 2.4.0: Docker Registry 2.0
@@ -4964,7 +4964,7 @@ dev-libs/wlc 0.0.3-r1 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.19 1.2.22 1.2.23 1.3.6 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.19 1.2.22 1.2.23 1.3.6 1.3.7-r1 1.4.0: SWIG and JNI bindings for Xapian
+dev-libs/xapian-bindings 1.2.19 1.2.22 1.2.23 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
@@ -11238,7 +11238,7 @@ kde-apps/kdeartwork-wallpapers 15.08.3 15.08.3-r2: Wallpapers from KDE
 kde-apps/kdeartwork-weatherwallpapers 15.08.3 15.08.3-r2: Weather aware wallpapers. Changes with weather outside
 kde-apps/kdebase-data 15.12.3 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 15.12.3 16.04.3: Oxygen Plasma 4 desktop theme
-kde-apps/kdebase-kioslaves 15.12.3 16.04.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
+kde-apps/kdebase-kioslaves 15.12.3 16.04.3-r1: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-menu 15.12.3 16.04.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 15.12.3 16.04.3: KDE menu icons
 kde-apps/kdebase-meta 15.12.3 16.04.3: Transitional package to pull in plasma-meta plus basic applications
@@ -16192,7 +16192,7 @@ sci-visualization/xgraph 12.1-r2 12.1-r3: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1: Tool for extracting data points from graphs
 sci-visualization/yt 3.2.2 3.2.3: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.10 2.10.1: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.10.1: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for acct
@@ -16455,8 +16455,8 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20151213: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.10 2.10.1: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.10 2.10.1: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.10.1: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.10.1: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.4: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
@@ -17265,7 +17265,7 @@ sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries fo
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
-sys-libs/libapparmor 2.10 2.10.1: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.10.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7: POSIX 1003.1e capabilities
@@ -18210,7 +18210,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.9 0.8.10: Desktop agnostic launcher
+x11-misc/albert 0.8.10: Desktop agnostic launcher
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
