@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.0_rc3 1.12.0_rc4 1.12.0_rc4-r1 1.12.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.0_rc5 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.7.1 1.8.0_rc1 1.8.0_rc2: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.6.0 0.7.0: Machine management for a container-centric world
 app-emulation/docker-registry 2.4.0: Docker Registry 2.0
@@ -1912,7 +1912,6 @@ app-misc/specto 0.4.1-r1: watch configurable events and trigger notifications
 app-misc/sphinx 0.9.9 2.0.10 2.1.8 2.1.9 2.2.10: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
-app-misc/strigi 0.7.8-r1 0.7.8-r2: Fast crawling desktop search engine with Qt4 GUI
 app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
@@ -4211,8 +4210,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.8.0.92: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.8.0.92: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.8.0.92 1.8.0.101 1.8.0.102: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.92 1.8.0.102: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)

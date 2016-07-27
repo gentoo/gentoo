@@ -991,9 +991,6 @@ app-misc/screenfetch:X - Use the media-gfx/scrot package to take screenshots
 app-misc/sphinx:id64 - use 64-bit document and word IDs
 app-misc/sphinx:re2 - use the dev-libs/re2 regular expression library
 app-misc/sphinx:stemmer - Enable language stemming support
-app-misc/strigi:clucene - Enable dev-cpp/clucene backend support.
-app-misc/strigi:inotify - Enable support for inotify.
-app-misc/strigi:log - Enables advanced logging through dev-libs/log4cxx.
 app-misc/subsurface:linguas_da_DK - Language support for da_DK.
 app-misc/subsurface:linguas_de_CH - Language support for de_CH.
 app-misc/subsurface:linguas_gsw - Language support for gsw.
