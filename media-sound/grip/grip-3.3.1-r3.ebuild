@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils flag-o-matic toolchain-funcs libtool
 
 DESCRIPTION="GTK+ based Audio CD Player/Ripper"
-HOMEPAGE="http://sourceforge.net/projects/grip/"
+HOMEPAGE="https://sourceforge.net/projects/grip/"
 SRC_URI="mirror://sourceforge/grip/${P}.tar.gz"
 
 LICENSE="GPL-2"

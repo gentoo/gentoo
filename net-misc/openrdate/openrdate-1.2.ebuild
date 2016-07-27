@@ -7,7 +7,7 @@ WANT_AUTOMAKE=1.9
 inherit autotools eutils
 
 DESCRIPTION="use TCP or UDP to retrieve the current time of another machine"
-HOMEPAGE="http://sourceforge.net/projects/openrdate/"
+HOMEPAGE="https://sourceforge.net/projects/openrdate/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

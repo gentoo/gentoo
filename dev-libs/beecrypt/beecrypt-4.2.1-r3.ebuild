@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib autotools java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="general-purpose cryptography library"
-HOMEPAGE="http://sourceforge.net/projects/beecrypt/"
+HOMEPAGE="https://sourceforge.net/projects/beecrypt/"
 SRC_URI="mirror://sourceforge/beecrypt/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"

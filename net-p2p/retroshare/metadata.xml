@@ -22,7 +22,7 @@
 		<flag name="voip">Enables VOIP plugin</flag>
 	</use>
 	<upstream>
-		<bugs-to>http://sourceforge.net/p/retroshare/bugs</bugs-to>
+		<bugs-to>https://sourceforge.net/p/retroshare/bugs</bugs-to>
 		<remote-id type="sourceforge">retroshare</remote-id>
 	</upstream>
 </pkgmetadata>

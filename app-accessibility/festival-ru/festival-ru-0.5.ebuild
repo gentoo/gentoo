@@ -6,7 +6,7 @@ EAPI="2"
 MY_PN=msu_ru_nsh_clunits
 
 DESCRIPTION="Russian voices for Festival"
-HOMEPAGE="http://sourceforge.net/projects/festlang.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/festlang.berlios/"
 SRC_URI="mirror://sourceforge/project/festlang.berlios/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="BSD"

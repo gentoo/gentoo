@@ -4,7 +4,7 @@
 
 # TODO
 # 1. Track upstream bug --disable-docs does not work.
-#	http://sourceforge.net/tracker/index.php?func=detail&aid=1643870&group_id=8874&atid=108874
+#	https://sourceforge.net/tracker/index.php?func=detail&aid=1643870&group_id=8874&atid=108874
 
 EAPI=6
 inherit eutils multilib multilib-minimal udev user

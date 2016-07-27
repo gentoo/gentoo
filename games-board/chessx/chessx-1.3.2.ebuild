@@ -7,7 +7,7 @@ inherit eutils qmake-utils games
 
 DESCRIPTION="Qt5-based Chess Database Utility"
 HOMEPAGE="http://chessx.sourceforge.net/"
-SRC_URI="http://sourceforge.net/projects/chessx/files/chessx/${PV}/${P}.tgz"
+SRC_URI="https://sourceforge.net/projects/chessx/files/chessx/${PV}/${P}.tgz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ ZLIB"
 SLOT="0"

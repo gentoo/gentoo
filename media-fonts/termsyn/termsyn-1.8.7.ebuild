@@ -7,7 +7,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="Monospaced font based on terminus and tamsyn"
-HOMEPAGE="http://sourceforge.net/projects/termsyn/"
+HOMEPAGE="https://sourceforge.net/projects/termsyn/"
 SRC_URI="mirror://sourceforge/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

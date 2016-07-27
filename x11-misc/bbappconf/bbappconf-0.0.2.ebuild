@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="utility that allows you to specify window properties in blackbox"
-HOMEPAGE="http://sourceforge.net/projects/bbtools"
+HOMEPAGE="https://sourceforge.net/projects/bbtools"
 SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"

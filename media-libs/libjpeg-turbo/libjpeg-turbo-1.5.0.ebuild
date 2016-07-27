@@ -7,7 +7,7 @@ EAPI=6
 inherit libtool eutils java-pkg-opt-2 libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
-HOMEPAGE="http://libjpeg-turbo.virtualgl.org/ http://sourceforge.net/projects/libjpeg-turbo/"
+HOMEPAGE="http://libjpeg-turbo.virtualgl.org/ https://sourceforge.net/projects/libjpeg-turbo/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://gentoo/libjpeg8_8d-2.debian.tar.gz"
 

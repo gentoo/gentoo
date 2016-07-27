@@ -7,7 +7,7 @@ EAPI="3"
 inherit eutils
 
 DESCRIPTION="Schoca is a Scheme implementation in OCaml"
-HOMEPAGE="http://sourceforge.net/projects/chesslib/"
+HOMEPAGE="https://sourceforge.net/projects/chesslib/"
 SRC_URI="mirror://sourceforge/chesslib/${P}.tar.bz2"
 
 LICENSE="GPL-2"

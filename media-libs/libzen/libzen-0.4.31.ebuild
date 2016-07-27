@@ -8,7 +8,7 @@ inherit autotools multilib eutils
 
 MY_PN="ZenLib"
 DESCRIPTION="Shared library for libmediainfo and mediainfo"
-HOMEPAGE="http://sourceforge.net/projects/zenlib"
+HOMEPAGE="https://sourceforge.net/projects/zenlib"
 SRC_URI="mirror://sourceforge/zenlib/${PN}_${PV}.tar.bz2"
 
 LICENSE="ZLIB"

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="a system tray dockapp with the ability to display more than just four tray icons"
-HOMEPAGE="http://sourceforge.net/projects/wmsystemtray/"
+HOMEPAGE="https://sourceforge.net/projects/wmsystemtray/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

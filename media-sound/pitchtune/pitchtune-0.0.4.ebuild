@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="Precise Instrument Tweaking for Crispy Harmony - tuner"
-HOMEPAGE="http://sourceforge.net/projects/pitchtune/"
+HOMEPAGE="https://sourceforge.net/projects/pitchtune/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

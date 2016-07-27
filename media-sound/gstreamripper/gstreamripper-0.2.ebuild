@@ -8,7 +8,7 @@ inherit eutils
 MY_P=GStreamripperX-${PV}
 
 DESCRIPTION="A GTK+ toolkit based frontend for streamripper"
-HOMEPAGE="http://sourceforge.net/projects/gstreamripper/"
+HOMEPAGE="https://sourceforge.net/projects/gstreamripper/"
 SRC_URI="mirror://sourceforge/gstreamripper/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,7 +1,7 @@
 
 Add S4U2Proxy feature:
 
-http://sourceforge.net/mailarchive/forum.php?thread_name=4EE665D1.3000308%40redhat.com&forum_name=modauthkerb-help
+https://sourceforge.net/mailarchive/forum.php?thread_name=4EE665D1.3000308%40redhat.com&forum_name=modauthkerb-help
 
 The attached patches add support for using s4u2proxy 
 (http://k5wiki.kerberos.org/wiki/Projects/Services4User) to allow the 

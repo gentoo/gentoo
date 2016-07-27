@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 fdo-mime gnome2-utils
 
 DESCRIPTION="GUI app that can merge or split pdfs and rotate, crop and rearrange their pages"
-HOMEPAGE="http://sourceforge.net/projects/pdfshuffler/"
+HOMEPAGE="https://sourceforge.net/projects/pdfshuffler/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

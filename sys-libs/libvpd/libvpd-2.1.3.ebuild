@@ -5,8 +5,8 @@
 EAPI=4
 
 DESCRIPTION="Library implementation for listing vpds"
-HOMEPAGE="http://sourceforge.net/projects/linux-diag/"
-SRC_URI="http://sourceforge.net/projects/linux-diag/files/libvpd/${PV}/libvpd-${PV}.tar.gz"
+HOMEPAGE="https://sourceforge.net/projects/linux-diag/"
+SRC_URI="https://sourceforge.net/projects/linux-diag/files/libvpd/${PV}/libvpd-${PV}.tar.gz"
 
 LICENSE="IBM"
 SLOT="0"

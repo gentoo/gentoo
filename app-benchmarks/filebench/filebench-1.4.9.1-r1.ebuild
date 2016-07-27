@@ -7,7 +7,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="Filebench - A Model Based File System Workload Generator"
-HOMEPAGE="http://sourceforge.net/projects/filebench/"
+HOMEPAGE="https://sourceforge.net/projects/filebench/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="CDDL"

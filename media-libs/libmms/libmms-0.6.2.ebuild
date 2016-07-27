@@ -5,7 +5,7 @@
 EAPI=2
 
 DESCRIPTION="Common library for accessing Microsoft Media Server (MMS) media streaming protocol"
-HOMEPAGE="http://sourceforge.net/projects/libmms/ https://launchpad.net/libmms/"
+HOMEPAGE="https://sourceforge.net/projects/libmms/ https://launchpad.net/libmms/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

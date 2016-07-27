@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Implementation of the IDMEF XML draft"
-HOMEPAGE="http://sourceforge.net/projects/libidmef/"
+HOMEPAGE="https://sourceforge.net/projects/libidmef/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

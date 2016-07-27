@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Library to interface with IEEE 1394 cameras following the IIDC specification"
-HOMEPAGE="http://sourceforge.net/projects/libdc1394/"
+HOMEPAGE="https://sourceforge.net/projects/libdc1394/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~ssuominen/sdl.m4-20140620.tar.xz"
 

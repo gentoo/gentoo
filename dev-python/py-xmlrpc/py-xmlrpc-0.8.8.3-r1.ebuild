@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.* 2.7-pypy-* *-jython"
 inherit distutils eutils
 
 DESCRIPTION="Fast XML-RPC implementation for Python"
-HOMEPAGE="http://sourceforge.net/projects/py-xmlrpc/"
+HOMEPAGE="https://sourceforge.net/projects/py-xmlrpc/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

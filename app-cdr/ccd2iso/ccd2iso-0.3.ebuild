@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="Converts CloneCD images (popular under Windows) to ISOs"
-HOMEPAGE="http://sourceforge.net/projects/ccd2iso/"
+HOMEPAGE="https://sourceforge.net/projects/ccd2iso/"
 SRC_URI="mirror://sourceforge/ccd2iso/${P}.tar.gz"
 
 LICENSE="GPL-2"

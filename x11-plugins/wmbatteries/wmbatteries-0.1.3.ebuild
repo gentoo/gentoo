@@ -5,7 +5,7 @@
 inherit eutils
 
 DESCRIPTION="Dock app for monitoring the current battery status and CPU temperature"
-HOMEPAGE="http://sourceforge.net/projects/wmbatteries"
+HOMEPAGE="https://sourceforge.net/projects/wmbatteries"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 IUSE=""
 LICENSE="GPL-2"

@@ -284,11 +284,6 @@ www-client/luakit
 # Bug #483888
 <=dev-perl/Archive-Rar-2.20.0-r1
 
-# Lars Wendler <polynomial-c@gentoo.org> (19 May 2016)
-# Masked until all reverse dependencies have been fixed.
-# See tracker bug https://bugs.gentoo.org/583478
->=app-text/hunspell-1.4.0
-
 # Alon Bar-Lev <alonbl@gentoo.org) (13 May 2016)
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0

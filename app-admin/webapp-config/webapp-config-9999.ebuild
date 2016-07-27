@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Gentoo's installer for web-based applications"
-HOMEPAGE="http://sourceforge.net/projects/webapp-config/"
+HOMEPAGE="https://sourceforge.net/projects/webapp-config/"
 
 LICENSE="GPL-2"
 SLOT="0"

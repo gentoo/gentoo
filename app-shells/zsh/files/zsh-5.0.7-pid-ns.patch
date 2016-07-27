@@ -5,7 +5,7 @@ bug report here: http://www.zsh.org/mla/workers/2014/msg01769.html.
 
 The first chunk of this diff fixes this problem and has already been applied
 upstream:
-http://sourceforge.net/p/zsh/code/ci/0c4cb0cc1b527f4341f1a39a10f4120aa7c7d594/.
+https://sourceforge.net/p/zsh/code/ci/0c4cb0cc1b527f4341f1a39a10f4120aa7c7d594/.
 
 The second chunk is a suggested fix for the warning that zsh prints when
 exiting: http://www.zsh.org/mla/workers/2014/msg01779.html.

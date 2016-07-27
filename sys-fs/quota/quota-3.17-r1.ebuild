@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic
 
 DESCRIPTION="Linux quota tools"
-HOMEPAGE="http://sourceforge.net/projects/linuxquota/"
+HOMEPAGE="https://sourceforge.net/projects/linuxquota/"
 SRC_URI="mirror://sourceforge/linuxquota/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,7 +1,7 @@
 Description: Build fix for apache 2.4
  Fix for API changes in apache 2.4.
 Author: Ivo De Decker <ivo.dedecker@ugent.be>
-Forwarded: http://sourceforge.net/mailarchive/forum.php?thread_name=20120518111425.GA9186%40ugent.be&forum_name=modauthtkt-users
+Forwarded: https://sourceforge.net/mailarchive/forum.php?thread_name=20120518111425.GA9186%40ugent.be&forum_name=modauthtkt-users
 Last-Update: 2012-05-17
 
 --- libapache2-mod-auth-tkt-2.1.0.orig/src/mod_auth_tkt.c

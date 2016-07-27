@@ -6,7 +6,7 @@ EAPI=2
 inherit autotools eutils
 
 DESCRIPTION="DirectConnect client library"
-HOMEPAGE="http://sourceforge.net/projects/wxdcgui"
+HOMEPAGE="https://sourceforge.net/projects/wxdcgui"
 SRC_URI="mirror://sourceforge/wxdcgui/${P}.tar.bz2"
 
 LICENSE="GPL-2"

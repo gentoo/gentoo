@@ -15,7 +15,7 @@
 	<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
   </use>
   <upstream>
-    <bugs-to>http://sourceforge.net/tracker/?group_id=70849</bugs-to>
+    <bugs-to>https://sourceforge.net/tracker/?group_id=70849</bugs-to>
     <remote-id type="sourceforge">kid3</remote-id>
   </upstream>
 </pkgmetadata>

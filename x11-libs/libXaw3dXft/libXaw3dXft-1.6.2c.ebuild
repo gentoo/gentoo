@@ -7,7 +7,7 @@ EAPI=5
 inherit xorg-2
 
 DESCRIPTION="Xaw3dXft library"
-HOMEPAGE="http://sourceforge.net/projects/sf-xpaint"
+HOMEPAGE="https://sourceforge.net/projects/sf-xpaint"
 SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
 
 KEYWORDS="amd64 x86"

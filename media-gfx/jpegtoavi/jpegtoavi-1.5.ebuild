@@ -6,7 +6,7 @@ EAPI=2
 inherit eutils toolchain-funcs
 
 DESCRIPTION="JPEG to AVI/MJPEG animation command-line conversion tool"
-HOMEPAGE="http://sourceforge.net/projects/jpegtoavi/"
+HOMEPAGE="https://sourceforge.net/projects/jpegtoavi/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

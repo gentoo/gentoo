@@ -5,7 +5,7 @@
 EAPI=6
 
 DESCRIPTION="A free ASCII-Text Screen Editor for UNIX"
-HOMEPAGE="http://sourceforge.net/projects/joe-editor/"
+HOMEPAGE="https://sourceforge.net/projects/joe-editor/"
 SRC_URI="mirror://sourceforge/joe-editor/${P}.tar.gz"
 
 LICENSE="GPL-1+ CC-BY-3.0"

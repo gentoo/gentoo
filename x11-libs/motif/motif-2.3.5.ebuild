@@ -7,7 +7,7 @@ EAPI=6
 inherit autotools eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="The Motif user interface component toolkit"
-HOMEPAGE="http://sourceforge.net/projects/motif/
+HOMEPAGE="https://sourceforge.net/projects/motif/
 	http://motif.ics.com/"
 SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
 	http://dev.gentoo.org/~ulm/distfiles/${P}-patches-1.tar.xz"

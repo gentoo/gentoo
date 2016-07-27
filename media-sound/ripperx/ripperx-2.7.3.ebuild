@@ -9,7 +9,7 @@ MY_P=${P/x/X}
 MY_PN=${PN/x/X}
 
 DESCRIPTION="a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats"
-HOMEPAGE="http://sourceforge.net/projects/ripperx"
+HOMEPAGE="https://sourceforge.net/projects/ripperx"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

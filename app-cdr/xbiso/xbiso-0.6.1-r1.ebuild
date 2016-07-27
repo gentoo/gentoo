@@ -6,7 +6,7 @@ EAPI=4
 inherit flag-o-matic
 
 DESCRIPTION="Xbox xdvdfs ISO extraction utility"
-HOMEPAGE="http://sourceforge.net/projects/xbiso/"
+HOMEPAGE="https://sourceforge.net/projects/xbiso/"
 SRC_URI="mirror://sourceforge/xbiso/${P}.tar.gz"
 
 LICENSE="GPL-2"

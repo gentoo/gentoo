@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="InstallShield CAB file extractor"
-HOMEPAGE="https://github.com/twogood/unshield http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://github.com/twogood/unshield https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="MIT"

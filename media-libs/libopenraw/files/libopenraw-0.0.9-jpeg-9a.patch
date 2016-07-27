@@ -1,5 +1,5 @@
 http://bugs.gentoo.org/520888
-http://sourceforge.net/p/fink/package-submissions/4336/
+https://sourceforge.net/p/fink/package-submissions/4336/
 
 --- lib/jfifcontainer.cpp
 +++ lib/jfifcontainer.cpp

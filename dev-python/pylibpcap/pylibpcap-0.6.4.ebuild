@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils
 
 DESCRIPTION="Python interface to libpcap"
-HOMEPAGE="http://sourceforge.net/projects/pylibpcap/"
+HOMEPAGE="https://sourceforge.net/projects/pylibpcap/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

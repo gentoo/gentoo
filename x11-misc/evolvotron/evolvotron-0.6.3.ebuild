@@ -6,7 +6,7 @@ EAPI=5
 inherit qt4-r2
 
 DESCRIPTION="Generative art image evolver"
-HOMEPAGE="http://sourceforge.net/projects/evolvotron/"
+HOMEPAGE="https://sourceforge.net/projects/evolvotron/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
