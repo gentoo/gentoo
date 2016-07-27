@@ -4,14 +4,13 @@
 
 EAPI=6
 
-EGO_PN="github.com/syncthing/syncthing"
-EGIT_COMMIT=v${PV}
+EGO_PN="github.com/${PN}/${PN}"
 
 inherit golang-vcs-snapshot systemd user versionator
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
-SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -63,6 +62,7 @@ src_test() {
 src_install() {
 	cd src/${EGO_PN} || die
 	doman man/*.[157]
+	einstalldocs
 
 	if use tools ; then
 		dobin bin/syncthing
