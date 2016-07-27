@@ -6706,7 +6706,7 @@ dev-php/PEAR-Net_LDAP2 2.0.12 2.1.0 2.2.0: OO interface for searching and manipu
 dev-php/PEAR-Net_LMTP 1.0.2: Provides an implementation of the RFC2033 LMTP protocol
 dev-php/PEAR-Net_POP3 1.3.8: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r1: OS independent wrapper class for executing ping calls
-dev-php/PEAR-Net_SMTP 1.6.2 1.7.1: An implementation of the SMTP protocol
+dev-php/PEAR-Net_SMTP 1.6.2 1.7.2: A PHP implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.2-r1 1.0.3: Generic server class for PHP
 dev-php/PEAR-Net_Sieve 1.3.2 1.3.3 1.5.2: An API for talking to sieve (RFC 3028) servers
 dev-php/PEAR-Net_SmartIRC 1.1.4: Net_SmartIRC is a PHP class for communication with IRC networks
@@ -10097,7 +10097,7 @@ games-action/minetest 0.4.13 0.4.14: An InfiniMiner/Minecraft inspired game
 games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
-games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook
+games-action/nighthawk 2.2 2.2-r1: A tribute to Paradroid by Andrew Braybrook
 games-action/noiz2sa 0.51a 0.51a-r1: Abstract Shooting Game
 games-action/openastromenace 1.3.2: Modern 3D space shooter with spaceship upgrade possibilities
 games-action/openclonk 7.0: A free multiplayer action game where you control clonks
@@ -17225,7 +17225,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.9999 3.14.58-r1 3.14.73 3.18.25-r1 3.18.36 4.1.15-r1 4.1.27 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.6.3 4.6.4: Full sources including the Gentoo patchset for the 4.6 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.9999 3.14.58-r1 3.14.73 3.18.25-r1 3.18.36 4.1.15-r1 4.1.27 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.6.3 4.6.4 4.7.0: Full sources including the Gentoo patchset for the 4.7 kernel tree
 sys-kernel/git-sources 4.7_rc1 4.7_rc2 4.7_rc3 4.7_rc4 4.7_rc5 4.7_rc6 4.7_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.6.4-r1 4.6.4-r2 4.6.4-r3: Hardened kernel sources (kernel series 4.6)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files

@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=x11-libs/libXpm
+DESCRIPTION=A tribute to Paradroid by Andrew Braybrook
+EAPI=6
+HOMEPAGE=http://night-hawk.sourceforge.net/nighthawk.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXpm
+SLOT=0
+SRC_URI=ftp://metalab.unc.edu/pub/Linux/games/arcade/nighthawk-2.2-1.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_md5_=2fe2a4424f01ed8f17176a64d669293d
