@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="sasl"
 
 RDEPEND="dev-lang/php:*
+	dev-php/PEAR-PEAR
 	dev-php/PEAR-Net_Socket
 	sasl? ( dev-php/PEAR-Auth_SASL )"
 
