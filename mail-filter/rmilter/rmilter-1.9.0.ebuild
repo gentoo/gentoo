@@ -30,7 +30,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE-DKIM=$(usex dkim ON OFF)
+		-DENABLE_DKIM=$(usex dkim ON OFF)
 		-DENABLE_MEMCACHED=$(usex memcached ON OFF)
 	)
 	cmake-utils_src_configure

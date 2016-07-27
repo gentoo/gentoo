@@ -56,7 +56,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${P}-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${P}-qt56.patch"
+)
 
 pkg_setup() {
 	use python && python_setup
