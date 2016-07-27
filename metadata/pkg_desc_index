@@ -11699,7 +11699,7 @@ kde-plasma/kwallet-pam 5.6.5-r1 5.7.2: KWallet PAM module to not enter password 
 kde-plasma/kwayland-integration 5.6.5 5.7.2: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.6.5-r1 5.7.2: KDE window manager
 kde-plasma/kwrited 5.6.5 5.7.2: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.6.5 5.7.2: Plasma screen management library
+kde-plasma/libkscreen 5.6.5 5.6.5-r1 5.7.2: Plasma screen management library
 kde-plasma/libksysguard 5.6.5 5.7.2: Task management and system monitoring library
 kde-plasma/milou 5.6.5 5.7.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.6.5 5.7.2: KDE window manager theme
