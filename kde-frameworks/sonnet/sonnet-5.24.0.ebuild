@@ -15,7 +15,7 @@ RDEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	aspell? ( app-text/aspell )
-	hunspell? ( app-text/hunspell )
+	hunspell? ( app-text/hunspell:= )
 "
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
