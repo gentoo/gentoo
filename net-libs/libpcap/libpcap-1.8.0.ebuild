@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="bluetooth dbus ipv6 netlink static-libs canusb"
+IUSE="bluetooth dbus netlink static-libs canusb"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
@@ -51,10 +51,10 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable bluetooth) \
-		$(use_enable ipv6) \
 		$(use_enable canusb) \
 		$(use_enable dbus) \
-		$(use_with netlink libnl)
+		$(use_with netlink libnl) \
+		--enable-ipv6
 }
 
 multilib_src_compile() {
