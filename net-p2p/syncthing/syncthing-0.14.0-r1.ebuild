@@ -28,6 +28,9 @@ pkg_setup() {
 		# separate user for the relay server
 		enewgroup strelaysrv
 		enewuser strelaysrv -1 -1 /var/lib/strelaysrv strelaysrv
+		# and his home folder
+		keepdir /var/lib/strelaysrv
+		fowners strelaysrv:strelaysrv /var/lib/strelaysrv
 	fi
 }
 
@@ -105,4 +108,15 @@ pkg_postinst() {
 				"0.$(get_version_component_range 2).0."
 		fi
 	done
+
+	# check if user syncthing-relaysrv exists
+	# if yes, warn that it has been moved to strelaysrv
+	if [ -n "$(egetent passwd syncthing-relaysrv 2>/dev/null)" ]; then
+		ewarn
+		ewarn "The user and group for the relay server have been changed"
+		ewarn "from syncthing-relaysrv to strelaysrv"
+		ewarn "The old user and group are not deleted automatically. Delete them by running:"
+		ewarn "    userdel -r syncthing-relaysrv"
+		ewarn "    groupdel syncthing-relaysrv"
+	fi
 }
