@@ -154,7 +154,6 @@ REQUIRED_USE="
 
 PHP_MV="$(get_major_version)"
 
-
 # Allow users to install production version if they want to
 if [[ "${PHP_INI_VERSION}" == "production" ]]; then
 	PHP_INI_UPSTREAM="php.ini-production"
