@@ -1,9 +1,0 @@
---- hxt-regex-xmlschema-9.0.1-orig/hxt-regex-xmlschema.cabal	2011-08-15 23:57:32.000000000 +1000
-+++ hxt-regex-xmlschema-9.0.1/hxt-regex-xmlschema.cabal	2011-08-16 11:50:27.245104305 +1000
-@@ -47,6 +47,5 @@
-   ghc-prof-options: -auto-all -caf-all
- 
-   build-depends:     base               >= 4   && < 5,
--                     haskell98          >= 1   && < 2,
-                      parsec             >= 2.1 && < 4,
-                      hxt-charproperties >= 9   && < 10
