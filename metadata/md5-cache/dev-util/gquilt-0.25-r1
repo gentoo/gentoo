@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] || ( dev-util/quilt dev-vcs/mercurial ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
 DESCRIPTION=A Python/GTK wrapper for quilt
 EAPI=5
-HOMEPAGE=http://gquilt.sourceforge.net/ http://sourceforge.net/projects/gquilt/
+HOMEPAGE=http://gquilt.sourceforge.net/ https://sourceforge.net/projects/gquilt/
 IUSE=python_targets_python2_7
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/gquilt/gquilt-0.25.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=420cf28f6fd90685ba00689f38b519d5
+_md5_=241030bf031f28a7f63fcc721835ca85

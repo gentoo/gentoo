@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install postinst unpack
 DEPEND=sys-fs/lufis !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=User-mode filesystem implementation
 EAPI=0
-HOMEPAGE=http://sourceforge.net/projects/lufs/
+HOMEPAGE=https://sourceforge.net/projects/lufs/
 IUSE=debug
 KEYWORDS=x86 ppc ~amd64
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/lufs/lufs-0.9.7.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=2112ea3cdd9b46609c24454aa39d2b1d
+_md5_=3a0fa92afed66f564c68c95895262f01

@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=sys-libs/libraw1394-2.1.0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r4 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] ) virtual/pkgconfig
 DESCRIPTION=library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 EAPI=4
-HOMEPAGE=http://sourceforge.net/projects/libavc1394/
+HOMEPAGE=https://sourceforge.net/projects/libavc1394/
 IUSE=static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/libavc1394/libavc1394-0.5.4.tar.gz
 _eclass_exported_funcs=src_prepare:autotools-multilib src_configure:autotools-multilib src_compile:autotools-multilib src_test:autotools-multilib src_install:autotools-multilib
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-multilib	77afca16a6cb82823eed6366a10e7f75	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=8a5426752f3af1734046a492584d2eeb
+_md5_=1597df555bf9305c44481febc207af50

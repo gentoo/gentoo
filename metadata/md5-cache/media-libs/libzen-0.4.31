@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare
 DEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Shared library for libmediainfo and mediainfo
 EAPI=5
-HOMEPAGE=http://sourceforge.net/projects/zenlib
+HOMEPAGE=https://sourceforge.net/projects/zenlib
 IUSE=doc static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=ZLIB
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/zenlib/libzen_0.4.31.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=05d457c6473e72013f495829551520ce
+_md5_=b87dc3d09c65c0219c2e242775119420

@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install unpack
 DESCRIPTION=MP3 consistency checker
 EAPI=0
-HOMEPAGE=http://sourceforge.net/projects/mp3check/
+HOMEPAGE=https://sourceforge.net/projects/mp3check/
 KEYWORDS=amd64 ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/mp3check/mp3_check-1.98.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=e7174ac9a7520b5da6a18f122752233a
+_md5_=39a5c8b17d271a3608664ebfe022b3e1

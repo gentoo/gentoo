@@ -2,11 +2,11 @@ DEFINED_PHASES=compile install prepare
 DEPEND=sys-devel/bison !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=networked mud that can be used for different types of collaborative software
 EAPI=6
-HOMEPAGE=http://sourceforge.net/projects/lambdamoo/
+HOMEPAGE=https://sourceforge.net/projects/lambdamoo/
 KEYWORDS=~x86 ~sparc
 LICENSE=LambdaMOO GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/lambdamoo/LambdaMOO-1.8.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=706ef08b0beac924a43650c0aef90986
+_md5_=71b44bfd1602fb735475a2bd4d54d151

@@ -1,11 +1,11 @@
 DEFINED_PHASES=prepare
 DESCRIPTION=A utility to run commands with fake root privileges
 EAPI=5
-HOMEPAGE=http://sourceforge.net/projects/fakerootng/
+HOMEPAGE=https://sourceforge.net/projects/fakerootng/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/fakerootng/fakeroot-ng-0.18.tar.gz
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=311e408de1390531dc7a388893d0eaf3
+_md5_=a8ee2c4590fa039516392cb7ecc7e39b

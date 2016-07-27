@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/asio/asio-1.4.8.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=8451a00d63f0b30205eea19855af1091
+_md5_=10867ecd3191ddf1eb6b40ace0d3a5a3

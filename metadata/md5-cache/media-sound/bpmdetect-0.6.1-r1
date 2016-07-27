@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install
 DEPEND=media-libs/taglib media-libs/id3lib >=media-libs/fmod-4.25.07-r1:1 dev-qt/qtgui:4 sys-apps/sed dev-util/scons virtual/pkgconfig dev-util/scons
 DESCRIPTION=Automatic BPM detection utility
 EAPI=6
-HOMEPAGE=http://sourceforge.net/projects/bpmdetect
+HOMEPAGE=https://sourceforge.net/projects/bpmdetect
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/taglib media-libs/id3lib >=media-libs/fmod-4.25.07-r1:1 dev-qt/qtgui:4
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/bpmdetect/bpmdetect-0.6.1-src.tar.bz2
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	scons-utils	6a35944612b7ecb18a3803359554badc	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=98d56a71bb452944fa102ff2058405bf
+_md5_=e02197e1d8fa09b9ab5675530798f3ce

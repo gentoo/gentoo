@@ -1,7 +1,7 @@
 DEFINED_PHASES=install postinst prepare
 DESCRIPTION=bookmarksync synchronizes various browser bookmark files
 EAPI=2
-HOMEPAGE=http://sourceforge.net/projects/booksync/
+HOMEPAGE=https://sourceforge.net/projects/booksync/
 IUSE=perl
 KEYWORDS=~amd64 ppc x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/booksync/bookmarksync-0.3.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=3ded01c96d4030f2c803d1efbae81694
+_md5_=3c34fe0575aed48dec6aa12666bf5b86
