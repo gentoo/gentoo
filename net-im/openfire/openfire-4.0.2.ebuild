@@ -13,7 +13,7 @@ SRC_URI="http://www.igniterealtime.org/builds/openfire/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.7"
