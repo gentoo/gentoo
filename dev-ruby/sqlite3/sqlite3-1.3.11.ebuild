@@ -47,7 +47,10 @@ each_ruby_configure() {
 all_ruby_compile() {
 	all_fakegem_compile
 
-	rdoc --title "${P} Dcoumentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
+	# Not a single version of rdoc in gentoo appears to install rdoc, how is this supposed to work? bug #589934
+	#if use doc; then
+	#	rdoc --title "${P} Dcoumentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
+	#fi
 }
 
 each_ruby_compile() {
