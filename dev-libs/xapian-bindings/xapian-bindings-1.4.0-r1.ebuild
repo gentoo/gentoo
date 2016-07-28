@@ -17,8 +17,8 @@ PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
-#inherit python-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
-inherit python-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
+#inherit distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
+inherit libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -53,7 +53,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 pkg_setup() {
 #	use mono && mono-env_pkg_setup
 	use java && java-pkg-opt-2_pkg_setup
-	use python && python-single-r1_pkg_setup
+#	use python && python-r1_pkg_setup
 }
 
 src_prepare() {
