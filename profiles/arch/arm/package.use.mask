@@ -60,7 +60,7 @@ media-sound/moc timidity
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires SWT, which is currently unsupported on ARM.
 app-text/tesseract scrollview
 
@@ -537,7 +537,7 @@ media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavp
 # projectm not keyworded, bug #314969
 media-video/vlc projectm chromaprint opencv
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 

@@ -214,7 +214,7 @@ video_cards_vmware
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
 # mask d3d since we don't have wine
 d3d
 

@@ -27,7 +27,7 @@ app-office/planner eds
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
@@ -375,7 +375,7 @@ app-text/enchant zemberek
 # Mask srtp for ortp because libsrtp is marked -sparc
 net-libs/ortp srtp
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 

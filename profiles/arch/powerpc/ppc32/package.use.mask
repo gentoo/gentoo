@@ -29,7 +29,7 @@ kde-plasma/libksysguard detailedmemory
 # dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
 media-video/mpv uchardet
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview
 
