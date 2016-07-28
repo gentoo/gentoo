@@ -32,7 +32,7 @@ fi
 LICENSE="kvirc"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
+IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -104,19 +104,21 @@ src_configure() {
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
 		-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
-		-DWANT_CRYPT=yes
 		-DWANT_ENV_FLAGS=yes
 		-DWANT_VERBOSE=yes
 
+		-DWANT_CRYPT=yes
+		-DWANT_DCC_VOICE=yes
+		-DWANT_IPC=yes
+		-DWANT_IPV6=yes
+		-DWANT_TRANSPARENCY=yes
+
 		-DWANT_AUDIOFILE=$(usex audiofile)
 		-DWANT_DCC_VIDEO=$(usex dcc_video)
-		-DWANT_DCC_VOICE=$(usex dcc_voice)
 		-DWANT_DEBUG=$(usex debug)
 		-DWANT_DOXYGEN=$(usex doc)
 		-DWANT_GETTEXT=$(usex nls)
 		-DWANT_GSM=$(usex gsm)
-		-DWANT_IPC=$(usex ipc)
-		-DWANT_IPV6=$(usex ipv6)
 		-DWANT_KDE=$(usex kde)
 		-DWANT_MEMORY_PROFILE=$(usex profile)
 		-DWANT_OGG_THEORA=$(usex theora)
@@ -128,7 +130,6 @@ src_configure() {
 		-DWANT_QTDBUS=$(usex dbus)
 		-DWANT_QTWEBKIT=$(usex webkit)
 		-DWANT_SPELLCHECKER=$(usex spell)
-		-DWANT_TRANSPARENCY=$(usex transparency)
 
 		# COMPILE_SVG_SUPPORT not used in source code.
 		-DWANT_QTSVG=no
