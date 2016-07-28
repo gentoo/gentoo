@@ -14,7 +14,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="x11-libs/libX11"
-RDEPEND=${DEPEND}
+RDEPEND="!sci-biology/emboss
+	${DEPEND}"
 
 PATCHES=(
 		"${FILESDIR}"/${P}-va_list.patch
