@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,11 +57,6 @@ pkg_postinst() {
 		elog "to the theme you want tuxonice to use, e.g.:"
 		elog
 		elog "  # ln -sfn /etc/splash/emergence /etc/splash/tuxonice"
-		if [[ ${REPLACING_VERSIONS} < 1.1 ]]; then
-			einfo
-			elog "You must refer to '/sbin/tuxoniceui -f' instead of /sbin/tuxoniceui_fbsplash'"
-			elog "in all places you set it."
-		fi
 	fi
 	einfo
 	einfo "Please see /usr/share/doc/${PF}/README.* for further"
