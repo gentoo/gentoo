@@ -12,8 +12,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc ~ppc64 ~sparc x86"
 
-DEPEND=""
-RDEPEND="dev-lang/php:*[ldap]"
+RDEPEND="
+	dev-lang/php:*[ldap]
+	dev-php/PEAR-Net_LDAP2
+"
 
 S="${WORKDIR}"
 
