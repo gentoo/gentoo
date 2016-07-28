@@ -1573,7 +1573,7 @@ app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r1 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.11.1_beta: A command line interface for Transifex
 app-i18n/translate-shell 0.9.4: Online command-line translator
-app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
+app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-data 6.0.0 6.1.0: Unicode data from unicode.org
 app-i18n/x-unikey 1.0.4-r2: Vietnamese X Input Method
@@ -6937,7 +6937,7 @@ dev-python/astroscrappy 1.0.3: Optimized cosmic ray annihilation astropy python 
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
-dev-python/atomicwrites 0.1.8: Atomic file writes.
+dev-python/atomicwrites 0.1.8 0.1.9: Atomic file writes.
 dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 15.2.0: Attributes without boilerplate
