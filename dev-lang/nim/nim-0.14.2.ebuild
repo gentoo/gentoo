@@ -38,7 +38,7 @@ src_compile() {
 }
 
 src_test() {
-	PATH="./bin:$PATH" ./koch test || die "test suire failed"
+	PATH="./bin:$PATH" ./koch test || die "test suite failed"
 }
 
 src_install() {
