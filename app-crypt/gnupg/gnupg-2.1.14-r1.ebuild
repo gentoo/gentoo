@@ -21,7 +21,7 @@ COMMON_DEPEND_LIBS="
 	>=dev-libs/libassuan-2.4.3
 	>=dev-libs/libgcrypt-1.7.1
 	>=dev-libs/libgpg-error-1.24
-	>=dev-libs/libksba-1.2.0
+	>=dev-libs/libksba-1.3.4
 	>=net-misc/curl-7.10
 	gnutls? ( >=net-libs/gnutls-3.0:0= )
 	sys-libs/zlib
