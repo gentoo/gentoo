@@ -65,12 +65,12 @@ RDEPEND="
 		qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_USEDEP}] )
 	)
 	qt5? (
-		dev-qt/designer:4
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		dev-qt/qthelp:4[compat]
-		dev-qt/qtsql:4
-		dev-qt/qtwebkit:4
+		dev-qt/designer:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qthelp:5
+		dev-qt/qtsql:5
+		dev-qt/qtwebkit:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tcl? ( dev-lang/tcl:0= )
