@@ -1,0 +1,13 @@
+diff --git a/src/im/account.cpp b/src/im/account.cpp
+index f155334..f040fcd 100644
+--- a/src/im/account.cpp
++++ b/src/im/account.cpp
+@@ -272,7 +272,7 @@ void Account::setBuddyIcon(string filename)
+ 				else
+ 				{
+ 					char** prpl_formats = g_strsplit(prplinfo->icon_spec.format,",",0);
+-					ImlibLoadError err = IMLIB_LOAD_ERROR_UNKNOWN;
++					Imlib_Load_Error err = IMLIB_LOAD_ERROR_UNKNOWN;
+ 
+ 					close(temp_fd);
+ 					/* Try to encode in a supported format. */
