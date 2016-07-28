@@ -73,9 +73,11 @@ CONFIG_CHECK="
 	~DEVPTS_MULTIPLE_INSTANCES
 	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS ~MEMCG
 	~KEYS ~MACVLAN ~VETH ~BRIDGE ~BRIDGE_NETFILTER
-	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
-	~IP_VS
+	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_MANGLE ~IP_NF_TARGET_MASQUERADE
+	~IP_VS ~IP_VS_RR
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK
+	~NETFILTER_XT_MATCH_IVPS
+	~NETFILTER_XT_MARK ~NETFILTER_XT_TARGET_REDIRECT
 	~NF_NAT ~NF_NAT_NEEDED
 
 	~POSIX_MQUEUE
@@ -194,8 +196,11 @@ src_compile() {
 		grep -q -- '-fno-PIC' hack/make.sh || die 'hardened sed failed'
 
 		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
-			-i hack/make/dynbinary || die
-		grep -q -- '-fno-PIC' hack/make/dynbinary || die 'hardened sed failed'
+			-i hack/make/dynbinary-client || die
+		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
+			-i hack/make/dynbinary-daemon || die
+		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
+		grep -q -- '-fno-PIC' hack/make/dynbinary-client || die 'hardened sed failed'
 	fi
 
 	# let's set up some optional features :)
