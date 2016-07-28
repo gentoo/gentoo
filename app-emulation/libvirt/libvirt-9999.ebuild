@@ -377,10 +377,6 @@ pkg_postinst() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	if [[ -n ${REPLACING_VERSIONS} ]] && ! version_is_at_least 1.2.18-r2 ${REPLACING_VERSIONS} ]]; then
-		FORCE_PRINT_ELOG=true
-	fi
-
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
