@@ -289,6 +289,6 @@ media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
 # projectm not keyworded, bug #314969
 media-video/vlc projectm chromaprint opencv
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
