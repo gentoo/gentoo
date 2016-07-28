@@ -82,10 +82,11 @@ src_install() {
 
 	# For non-gui installs we need to remove GUI bits
 	if ! use gui; then
+		rm -rf "${D}/etc/xdg/autostart"
 		rm -f "${D}/usr/bin/firewall-applet"
 		rm -f "${D}/usr/bin/firewall-config"
-		rm -rf "${D}/usr/share/icons"
 		rm -rf "${D}/usr/share/applications"
+		rm -rf "${D}/usr/share/icons"
 	fi
 
 	newinitd "${FILESDIR}"/firewalld.init firewalld
