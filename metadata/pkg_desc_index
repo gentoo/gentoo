@@ -463,7 +463,7 @@ app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
 app-cdr/gcdemu 3.0.0 3.0.1: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/gnomebaker 0.6.4-r1: GnomeBaker is a GTK2/Gnome cd burning application
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
-app-cdr/gtkcdlabel 1.12 1.14-r1: a GUI frontend to cdlabelgen which is a program that can generate a variety of CD tray covers
+app-cdr/gtkcdlabel 1.12 1.14-r1 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
 app-cdr/isomaster 1.3.5 1.3.9-r1 1.3.11 1.3.13: Graphical CD image editor for reading, modifying and writing ISO images
 app-cdr/k3b 2.0.3-r2 2.0.3-r3: The CD/DVD Kreator for KDE
@@ -4427,6 +4427,7 @@ dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distrib
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202 0_p20160504: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
+dev-lang/nim 0.14.2: compiled, garbage-collected systems programming language
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.03 2016.04 2016.04-r3 2016.05 2016.06 2016.07 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
