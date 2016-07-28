@@ -53,7 +53,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 pkg_setup() {
 #	use mono && mono-env_pkg_setup
 	use java && java-pkg-opt-2_pkg_setup
-#	use python && python-r1_pkg_setup
+#	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
