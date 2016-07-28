@@ -444,7 +444,7 @@ app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel 
 app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting it
 app-cdr/cdemu 3.0.0 3.0.1: Command-line tool for controlling cdemu-daemon
 app-cdr/cdemu-daemon 3.0.2 3.0.4: Daemon of the CDEmu optical media image mounting suite
-app-cdr/cdlabelgen 4.0.0 4.1.0: CD cover, tray card and envelope generator
+app-cdr/cdlabelgen 4.0.0 4.1.0 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2 1.2.3-r3: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdrtools 3.01_alpha17 3.01_alpha17-r1 3.01_alpha24 3.02_alpha06 3.02_alpha06-r1: A set of tools for CD/DVD reading and recording, including cdrecord
