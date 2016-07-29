@@ -39,7 +39,6 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 DEPEND="${RDEPEND}
 	low-memory? ( virtual/pypy:0 )
 	!low-memory? ( ${PYTHON_DEPS} )"
-PDEPEND="app-admin/python-updater"
 
 S="${WORKDIR}/${P}-src"
 
