@@ -1,0 +1,109 @@
+diff --git a/tests/unit/modules/linux_sysctl_test.py b/tests/unit/modules/linux_sysctl_test.py
+index 89bea83..49851cb 100644
+--- a/tests/unit/modules/linux_sysctl_test.py
++++ b/tests/unit/modules/linux_sysctl_test.py
+@@ -85,18 +85,6 @@ class LinuxSysctlTestCase(TestCase):
+                 'net.ipv4.ip_forward', 1), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           linux_sysctl.persist,
+-                                           'net.ipv4.ip_forward',
+-                                           1, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     @patch('os.path.exists', MagicMock(return_value=True))
+     def test_persist_no_conf_success(self):
+         '''
+diff --git a/tests/unit/modules/mac_sysctl_test.py b/tests/unit/modules/mac_sysctl_test.py
+index e90ec64..b2ea691 100644
+--- a/tests/unit/modules/mac_sysctl_test.py
++++ b/tests/unit/modules/mac_sysctl_test.py
+@@ -67,18 +67,6 @@ class DarwinSysctlTestCase(TestCase):
+                 'net.inet.icmp.icmplim', 50), ret)
+ 
+     @patch('os.path.isfile', MagicMock(return_value=False))
+-    def test_persist_no_conf_failure(self):
+-        '''
+-        Tests adding of config file failure
+-        '''
+-        with patch('salt.utils.fopen', mock_open()) as m_open:
+-            helper_open = m_open()
+-            helper_open.write.assertRaises(CommandExecutionError,
+-                                           mac_sysctl.persist,
+-                                           'net.inet.icmp.icmplim',
+-                                           50, config=None)
+-
+-    @patch('os.path.isfile', MagicMock(return_value=False))
+     def test_persist_no_conf_success(self):
+         '''
+         Tests successful add of config file when previously not one
+diff --git a/tests/unit/modules/mount_test.py b/tests/unit/modules/mount_test.py
+index 290c368..16918d8 100644
+--- a/tests/unit/modules/mount_test.py
++++ b/tests/unit/modules/mount_test.py
+@@ -137,15 +137,6 @@ class MountTestCase(TestCase):
+                 with patch('salt.utils.fopen', mock_open()):
+                     self.assertTrue(mount.rm_fstab('name', 'device'))
+ 
+-        mock_fstab = MagicMock(return_value={'name': 'name'})
+-        with patch.dict(mount.__grains__, {'kernel': ''}):
+-            with patch.object(mount, 'fstab', mock_fstab):
+-                with patch('salt.utils.fopen', mock_open()) as m_open:
+-                    helper_open = m_open()
+-                    helper_open.write.assertRaises(CommandExecutionError,
+-                                                   mount.rm_fstab,
+-                                                   config=None)
+-
+     def test_set_fstab(self):
+         '''
+         Tests to verify that this mount is represented in the fstab,
+@@ -178,14 +169,6 @@ class MountTestCase(TestCase):
+         with patch.object(mount, 'automaster', mock):
+             self.assertTrue(mount.rm_automaster('name', 'device'))
+ 
+-        mock = MagicMock(return_value={'name': 'name'})
+-        with patch.object(mount, 'fstab', mock):
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                               mount.rm_automaster,
+-                                               'name', 'device')
+-
+     def test_set_automaster(self):
+         '''
+         Verify that this mount is represented in the auto_salt, change the mount
+diff --git a/tests/unit/modules/puppet_test.py b/tests/unit/modules/puppet_test.py
+index 02bc2e1..1fd915b 100644
+--- a/tests/unit/modules/puppet_test.py
++++ b/tests/unit/modules/puppet_test.py
+@@ -85,11 +85,6 @@ class PuppetTestCase(TestCase):
+                 with patch('salt.utils.fopen', mock_open()):
+                     self.assertTrue(puppet.disable())
+ 
+-                with patch('salt.utils.fopen', mock_open()) as m_open:
+-                    helper_open = m_open()
+-                    helper_open.write.assertRaises(CommandExecutionError,
+-                                                    puppet.disable)
+-
+     def test_status(self):
+         '''
+             Test to display puppet agent status
+@@ -144,11 +139,6 @@ class PuppetTestCase(TestCase):
+                         mock_open(read_data="resources: 1")):
+                 self.assertDictEqual(puppet.summary(), {'resources': 1})
+ 
+-            with patch('salt.utils.fopen', mock_open()) as m_open:
+-                helper_open = m_open()
+-                helper_open.write.assertRaises(CommandExecutionError,
+-                                                puppet.summary)
+-
+     def test_plugin_sync(self):
+         '''
+             Test to runs a plugin synch between the puppet master and agent
