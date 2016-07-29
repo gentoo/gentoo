@@ -11200,7 +11200,7 @@ kde-apps/kajongg 15.12.3 16.04.3: The classical Mah Jongg for four players
 kde-apps/kalarm 4.4.2016.01 4.14.11_pre20160211: Personal alarm message, command and email scheduler for KDE
 kde-apps/kalgebra 15.12.3 16.04.3: MathML-based graph calculator by KDE
 kde-apps/kalzium 15.12.3-r2 16.04.3: Periodic table of the elements
-kde-apps/kamera 15.08.3 15.12.3 16.04.3: Plasma integration for gphoto2 cameras
+kde-apps/kamera 15.12.3 16.04.3: Plasma integration for gphoto2 cameras
 kde-apps/kanagram 15.12.3 16.04.3: Game based on anagrams of words
 kde-apps/kapman 15.12.3 16.04.3: Pac-Man clone by KDE
 kde-apps/kapptemplate 4.14.3 15.12.3-r1 16.04.3: A shell script to create the necessary framework to develop KDE applications
@@ -11435,7 +11435,7 @@ kde-apps/spectacle 15.12.3 16.04.3: Screenshot capture utility
 kde-apps/step 15.12.3 16.04.3: Interactive physics simulator
 kde-apps/svgpart 15.12.3 16.04.3: Svgpart is a kpart for viewing SVGs
 kde-apps/sweeper 15.12.3 16.04.3: KDE Privacy Settings Widget
-kde-apps/thumbnailers 15.08.3 15.12.3 16.04.3: Thumbnail generators for PDF/PS and RAW files
+kde-apps/thumbnailers 15.12.3 16.04.3: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 15.12.3 16.04.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 15.12.3 16.04.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
