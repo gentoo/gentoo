@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 inherit eutils toolchain-funcs
 
 DESCRIPTION="User Interface for TuxOnIce"
-HOMEPAGE="http://www.tuxonice.net"
+HOMEPAGE="http://tuxonice.nigelcunningham.com.au/ https://github.com/NigelCunningham/Tuxonice-Userui"
 SRC_URI="http://tuxonice.net/files/${P}.tar.gz -> ${P}.tar
 	mirror://debian/pool/main/t/${PN}/${PN}_${PV}-2~exp1.debian.tar.gz"
 
@@ -17,12 +17,10 @@ KEYWORDS="amd64 x86"
 IUSE="fbsplash"
 
 DEPEND="fbsplash? (
-		>=app-arch/bzip2-1.0.6-r3[static-libs]
-		>=media-gfx/splashutils-1.5.2.1
-		media-libs/freetype[static-libs]
-		media-libs/libmng
-		>=media-libs/libpng-1.4.8[static-libs]
-		virtual/jpeg
+		media-libs/freetype:2=
+		media-libs/libmng:0=
+		media-libs/libpng:0=
+		virtual/jpeg:0=
 	)"
 RDEPEND="${DEPEND}"
 
@@ -57,11 +55,6 @@ pkg_postinst() {
 		elog "to the theme you want tuxonice to use, e.g.:"
 		elog
 		elog "  # ln -sfn /etc/splash/emergence /etc/splash/tuxonice"
-		if [[ ${REPLACING_VERSIONS} < 1.1 ]]; then
-			einfo
-			elog "You must refer to '/sbin/tuxoniceui -f' instead of /sbin/tuxoniceui_fbsplash'"
-			elog "in all places you set it."
-		fi
 	fi
 	einfo
 	einfo "Please see /usr/share/doc/${PF}/README.* for further"
