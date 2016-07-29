@@ -49,7 +49,9 @@ RDEPEND="${RDEPEND} ${COMMON_DEPEND}
 		virtual/perl-Term-ANSIColor
 		virtual/perl-Time-HiRes )
 "
-MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h )
+MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h
+	/usr/include/mysql/private/probes_mysql_nodtrace.h
+	/usr/include/mysql/private/probes_mysql_dtrace.h )
 
 src_configure(){
 	# bug 508724 mariadb cannot use ld.gold
