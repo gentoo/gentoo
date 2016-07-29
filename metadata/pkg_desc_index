@@ -11415,7 +11415,6 @@ kde-apps/lokalize 15.12.3 16.04.3: KDE Applications 5 translation tool
 kde-apps/lskat 15.12.3 16.04.3: Skat game by KDE
 kde-apps/marble 4.14.3 15.12.3 16.04.3: Generic geographical map widget
 kde-apps/minuet 16.04.3: A KDE Software for Music Education
-kde-apps/mplayerthumbs 15.12.3: Thumbnail Generator for Video Files on KDE filemanagers
 kde-apps/nsplugins 15.12.3 16.04.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 15.12.3 16.04.3: KDE hexeditor
 kde-apps/okular 15.12.3 16.04.3: Universal document viewer based on KPDF
