@@ -41,20 +41,22 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	>=dev-ruby/actionpack-4.2.6:4.2
 	>=dev-ruby/activerecord-4.2.6:4.2
 	dev-ruby/bcrypt-ruby
+	dev-ruby/bit-struct
 	dev-ruby/builder:3
 	dev-ruby/bundler
 	dev-ruby/filesize
 	dev-ruby/jsobfu:0.3.0
-	dev-ruby/json
+	dev-ruby/json:*
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
 	>=dev-ruby/metasploit_data_models-2.0.0
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.1.11
+	dev-ruby/metasploit-payloads:1.1.13
 	>=dev-ruby/metasploit-credential-2.0.0
 	>=dev-ruby/metasploit-concern-2.0.0
 	>=dev-ruby/metasploit-model-2.0.0
 	dev-ruby/msgpack
+	dev-ruby/net-ssh:*
 	dev-ruby/nokogiri
 	dev-ruby/octokit
 	dev-ruby/openssl-ccm:1.2.1
@@ -62,12 +64,18 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/recog:2.0.14
 	dev-ruby/redcarpet
 	=dev-ruby/rkelly-remix-0.0.6
+	dev-ruby/rex-powershell
+	dev-ruby/rex-random_identifier
+	dev-ruby/rex-registry
+	dev-ruby/rex-text
+	dev-ruby/rex-zip
 	dev-ruby/sqlite3
 	>=dev-ruby/pg-0.11
 	dev-ruby/packetfu:1.1.11
 	>=dev-ruby/rubyzip-1.1
 	dev-ruby/rb-readline-r7
 	dev-ruby/robots
+	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
 	java? ( dev-ruby/rjb )
 	oracle? ( dev-ruby/ruby-oci8 )
@@ -194,6 +202,9 @@ all_ruby_prepare() {
 
 	#https://bugs.gentoo.org/show_bug.cgi?id=584522 no tzinfo-data by choice in gentoo
 	sed -i '/tzinfo-data/d' metasploit-framework.gemspec
+
+	#mettle has no tags, and no releases on rubygems.
+	sed -i '/metasploit_payloads-mettle/d' metasploit-framework.gemspec
 
 	#let's bogart msfupdate
 	rm msfupdate
