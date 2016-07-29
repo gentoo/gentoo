@@ -14289,7 +14289,7 @@ net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
-net-libs/ignition-transport 1.1.0 1.2.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
+net-libs/ignition-transport 1.1.0 1.2.0 1.3.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.2.1: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
@@ -15881,7 +15881,7 @@ sci-libs/htslib 1.0 1.1 1.2.1 1.3: C library for high-throughput sequencing data
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
-sci-libs/ignition-math 1.0.0 2.2.2 2.3.0 2.4.0: A small, fast, and high performance math library for robot applications
+sci-libs/ignition-math 1.0.0 2.2.2 2.3.0 2.4.0 2.5.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.1.0 1.2.0: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
