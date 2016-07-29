@@ -139,5 +139,5 @@ src_install() {
 		./packages/report-failed || die "Cannot report failed packages"
 	fi
 
-	dodoc ReleaseNotes/relnotes-5.10 INSTALL README VERSION
+	dodoc ReleaseNotes/relnotes-5.10 INSTALL README.md VERSION
 }
