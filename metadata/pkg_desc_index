@@ -1372,7 +1372,7 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 1.8-r2 1.8.1-r2 1.8.2 1.8.2-r1 1.8.3 1.9.4-r2 1.9.5-r2 1.9.6-r2 1.9.7-r2 1.9.8-r1 1.9.9-r2 1.9.10-r2 1.9.11-r2 1.9.12-r1 1.9.13-r1 1.9.14-r1 1.9.15 9999: Free implementation of Windows(tm) on Unix
-app-emulation/winetricks 20160709 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.6.3-r1 4.7.0-r1: The Xen virtual machine monitor
@@ -10737,7 +10737,7 @@ games-puzzle/rezerwar 0.4.2: Puzzle game like the known tetromino and the averag
 games-puzzle/scramble 0.9.5: Create as many words as you can before the time runs out
 games-puzzle/sdl-jewels 1.1.1: Swap and match 3 or more jewels in a line in order to score points
 games-puzzle/seatris 0.0.14: A color ncurses tetris clone
-games-puzzle/sgt-puzzles 9861 20160315 99999999: Simon Tatham's Portable Puzzle Collection
+games-puzzle/sgt-puzzles 20160315 99999999: Simon Tatham's Portable Puzzle Collection
 games-puzzle/shaaft 0.5.0: A falling block game similar to Blockout
 games-puzzle/skoosh 2.5.0-r1: Sliding tile puzzle for Gnome 2
 games-puzzle/splice 20121120: An experimental and artistic puzzler set in a microbial world
