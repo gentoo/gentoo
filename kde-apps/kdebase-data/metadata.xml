@@ -5,7 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="wallpapers">Install the KDE wallpapers</flag>
-	</use>
 </pkgmetadata>
