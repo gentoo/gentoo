@@ -476,8 +476,13 @@ src_configure() {
 
 	local myarch="$(tc-arch)"
 	if [[ $myarch = amd64 ]] ; then
-		target_arch=x64
-		ffmpeg_target_arch=x64
+		if [[ ${ABI} == x32 ]]; then
+			target_arch=x32
+			ffmpeg_target_arch=x32
+		else
+			target_arch=x64
+			ffmpeg_target_arch=x64
+		fi
 	elif [[ $myarch = x86 ]] ; then
 		target_arch=ia32
 		ffmpeg_target_arch=ia32
