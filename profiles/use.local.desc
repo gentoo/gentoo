@@ -3269,11 +3269,9 @@ kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
 kde-apps/kdeartwork-kscreensaver:eigen - Enable various arithmetic screensavers which use Eigen2 for computations.
 kde-apps/kdeartwork-kscreensaver:kexiv2 - Enable image rotation based on exif tags with libkexiv2.
-kde-apps/kdebase-data:wallpapers - Install the KDE wallpapers
 kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kdebase-runtime-meta:oldwallet - Install kde-apps/kwalletd on a minimal setup for migration purposes
 kde-apps/kdecore-meta:minimal - Disable install of various KDE SC 4 based packages
-kde-apps/kdecore-meta:wallpapers - Install the KDE wallpapers
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenetwork-meta:telepathy - Enable build of kde-apps/plasma-telepathy-meta, otherwise kde-apps/kopete.
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
@@ -3343,7 +3341,7 @@ kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
-kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
+kde-base/kdebase-startkde:wallpapers - Install the KDE Plasma wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble

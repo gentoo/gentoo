@@ -8805,6 +8805,7 @@ dev-ruby/bcat 0.6.2-r1 0.6.2-r2: Pipe to browser utility for use at the shell an
 dev-ruby/bcrypt-ruby 3.1.11 3.1.11-r1: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
+dev-ruby/bit-struct 0.15.0: Library for packed binary data stored in ruby Strings
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
@@ -9023,7 +9024,7 @@ dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, an
 dev-ruby/metasploit-concern 1.0.0 2.0.1: Metasploit concern allows you to define concerns in app/concerns.
 dev-ruby/metasploit-credential 1.0.0 1.0.1 2.0.3: Code for modeling and managing credentials in Metasploit
 dev-ruby/metasploit-model 1.0.0 2.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.21 1.0.22 1.1.11: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit-payloads 1.1.11 1.1.13: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/metasploit_data_models 1.2.9 1.2.10 2.0.0: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
@@ -9158,6 +9159,11 @@ dev-ruby/regexp_parser 0.3.1 0.3.2: A library for tokenizing, lexing, and parsin
 dev-ruby/request_store 1.0.5 1.3.0 1.3.1: Per-request global storage for Rack
 dev-ruby/rest-client 1.8.0 1.8.0-r1 1.8.0-r2: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
+dev-ruby/rex-powershell 0.1.1: Ruby Exploitation(Rex) library for generating/manipulating Powershell scripts
+dev-ruby/rex-random_identifier 0.1.0: Ruby Exploitation(Rex) library for generating Random identifier strings
+dev-ruby/rex-registry 0.1.0: Rex library for parsing offline registry files from a Windows machine
+dev-ruby/rex-text 0.1.1: Rex library for text generation and manipulation
+dev-ruby/rex-zip 0.1.0: Ruby Exploitation(Rex) library for working with zip and related files
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.6.6 0.8.0 0.8.1: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
@@ -9288,6 +9294,7 @@ dev-ruby/sprockets 2.2.3 2.11.3 2.12.3-r1 3.4.1 3.5.2 3.6.0 3.6.1 3.6.3: Ruby li
 dev-ruby/sprockets-rails 2.0.0 2.1.3 2.2.4 2.3.3-r1 3.0.4 3.0.4-r1 3.1.1: Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline
 dev-ruby/spy 0.4.2 0.4.3 0.4.5: A simple opinionated mocking framework
 dev-ruby/sqlite3 1.3.10 1.3.10-r1 1.3.11: An extension library to access a SQLite database from Ruby
+dev-ruby/sshkey 1.8.0: SSH private and public key generator in pure Ruby
 dev-ruby/sshkit 1.10.0 1.11.0 1.11.1: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
@@ -13765,7 +13772,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.8.0 1.10.2: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 4.11.5_p2015110401-r1 4.11.7 4.12.7 9999: Advanced framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 4.12.7 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.1 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
