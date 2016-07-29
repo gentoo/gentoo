@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit eutils flag-o-matic python-single-r1 toolchain-funcs
+inherit autotools eutils flag-o-matic python-single-r1 toolchain-funcs
 
 MY_P=${P/_beta/BETA}
 
@@ -74,7 +74,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
-		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
+		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
+		"${FILESDIR}"/${PN}-7.25-EC.patch
 
 	if use nls; then
 		local lingua=''
@@ -109,6 +110,8 @@ src_prepare() {
 		zenmap/install_scripts/unix/zenmap.desktop || die
 
 	epatch_user
+
+	eautoreconf
 }
 
 src_configure() {
