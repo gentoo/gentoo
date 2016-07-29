@@ -39,10 +39,13 @@ WORKDIR=/var/lib/flows/ft
 # user to run as
 USER=flows
 
-# Pidfile
-PIDFILE=/run/flows/flowcapture.pid.${PORT}
+# Pidfile base
+# The daemon takes the pidfile argument and APPENDS .$PORT itself in writing.
+# It may have multiple children by original design, but this is not recommended
+# for Gentoo at this time.
+PIDFILE_BASE=${PIDFILE_BASE:=/run/flows/flowcapture.pid}
 
 # This pulls in the options above
-FLOW_OPTS="-p $PIDFILE -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
+FLOW_OPTS="-p $PIDFILE_BASE -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
 # Use below only if you have sorted out the STAT_INT problem
 #FLOW_OPTS="-p /run/flows/flowcapture.pid.$PORT -w $WORKDIR $LOCALIP/$REMOTEIP/$PORT -S $STAT_INT -V $FLOW_VER -E $SIZE -n $ROTATIONS -N $NEST -R $ROTATE_PROG"
