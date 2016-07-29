@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-multilib
 
 MY_P="libunwind-${PV}"
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
@@ -13,7 +13,7 @@ SRC_URI="http://llvm.org/releases/${PV}/${MY_P}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+static-libs"
 
 DEPEND=""
@@ -26,7 +26,7 @@ src_prepare() {
 	eapply "${FILESDIR}/libunwind-3.8-cmake.patch"
 }
 
-src_configure() {
+multilib_src_configure() {
 	local libdir=$(get_libdir)
 
 	local mycmakeargs=(
