@@ -46,7 +46,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	aqua? ( x11-libs/gtk-mac-integration )
 	dev-util/gdbus-codegen
 	gnome? ( gnome-base/gvfs )
-	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
+	webkit? ( >=net-libs/webkit-gtk-1.6.1:4 )
 	virtual/jpeg:0
 	jpeg2k? ( media-libs/jasper )
 	>=media-libs/lcms-2.2:2
