@@ -9,5 +9,5 @@ RDEPEND=app-vim/vim-addon-mw-utils app-vim/tlib || ( >=app-editors/vim-7.3 >=app
 SLOT=0
 SRC_URI=https://github.com/garbas/vim-snipmate/archive/v0.87.tar.gz -> snipmate-0.87.tar.gz
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:vim-plugin
-_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	d03d134cdf2c29ad924139c1c76b9043
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	cba1cae8a355e4e89cbd2615aed3b1d5
 _md5_=b53840b071d289a8facb71b2d7415ee9

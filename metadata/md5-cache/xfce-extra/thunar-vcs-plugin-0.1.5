@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-libs/glib-2.18:2= >=x11-libs/gtk+-2.14:2= >=xfce-base/exo-0.6:= >=xfce-base/libxfce4util-4.8:= >=xfce-base/thunar-1.2:= git? ( dev-vcs/git ) subversion? ( >=dev-libs/apr-0.9.7:= >=dev-vcs/subversion-1.5:= ) dev-util/intltool virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Adds Subversion and GIT actions to the context menu of thunar
+EAPI=5
+HOMEPAGE=http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
+IUSE=debug +git +subversion
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.18:2= >=x11-libs/gtk+-2.14:2= >=xfce-base/exo-0.6:= >=xfce-base/libxfce4util-4.8:= >=xfce-base/thunar-1.2:= git? ( dev-vcs/git ) subversion? ( >=dev-libs/apr-0.9.7:= >=dev-vcs/subversion-1.5:= )
+SLOT=0
+SRC_URI=mirror://xfce/src/thunar-plugins/thunar-vcs-plugin/0.1/thunar-vcs-plugin-0.1.5.tar.bz2
+_eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
+_md5_=f6fe315d9ad9ae3975a80c3fe941966d

@@ -1758,7 +1758,7 @@ app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular t
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
-app-misc/evemu 2.1.0 2.2.0: Tools and bindings for kernel input event device emulation, data capture, and replay
+app-misc/evemu 2.1.0 2.2.0 2.4.0: tools and bindings for kernel evdev device emulation, data capture, and replay
 app-misc/evtest 1.29 1.30 1.31: test program for capturing input device events
 app-misc/fdupes 1.51 9999: Identify/delete duplicate files residing within specified directories
 app-misc/fdutils 5.4.20020222-r1 5.5-r2 5.5.20060227: utilities for configuring and debugging the Linux floppy driver
@@ -13439,7 +13439,7 @@ media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r1: WavSplit is a simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a midi player using the gus patch set
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
-media-sound/xfmpc 0.2.2: Music Player Daemon (MPD) client for the Xfce desktop environment
+media-sound/xfmpc 0.2.2 0.2.3: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8-r2 0.8-r3 0.8-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
@@ -18972,7 +18972,7 @@ xfce-extra/multiload-nandhp 0.2 0.3: A port of the GNOME multiload applet for th
 xfce-extra/thunar-archive-plugin 0.3.1 0.3.1-r1 0.3.1-r2: Archive plug-in for the Thunar filemanager
 xfce-extra/thunar-media-tags-plugin 0.2.1: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.2.0_p20101105: Thunar plugin to share files using Samba
-xfce-extra/thunar-vcs-plugin 0.1.4: adds Subversion and GIT actions to the context menu of thunar
+xfce-extra/thunar-vcs-plugin 0.1.4 0.1.5: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.8.0 0.8.1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.1.30 0.1.31 0.1.31-r1: A thumbnail service for the filemanager of Xfce desktop environment
@@ -19006,7 +19006,7 @@ xfce-extra/xfce4-mpc-plugin 0.4.4 0.4.5: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.2.0-r1 1.2.2 1.2.4: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3 0.3.1: A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.2.4: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.2.4 0.3.0: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.6.0 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.3.0 1.4.1 1.4.4 1.5.0 1.5.2 1.6.0: Power manager for the Xfce desktop environment
