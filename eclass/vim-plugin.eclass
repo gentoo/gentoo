@@ -5,6 +5,7 @@
 # @ECLASS: vim-plugin.eclass
 # @MAINTAINER:
 # vim@gentoo.org
+# @BLURB: used for installing vim plugins
 # @DESCRIPTION:
 # This eclass simplifies installation of app-vim plugins into
 # /usr/share/vim/vimfiles.  This is a version-independent directory
