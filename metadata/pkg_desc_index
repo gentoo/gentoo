@@ -6719,7 +6719,7 @@ dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web bro
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
 dev-php/PEAR-OLE 0.6.1 1.0.0_rc2: Package for reading and writing OLE containers
-dev-php/PEAR-PEAR 1.9.4 1.9.5 1.10.1: PEAR Base System
+dev-php/PEAR-PEAR 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR Base System
 dev-php/PEAR-PEAR_Info 1.7.0 1.9.2-r3: Show Information about your PEAR install and its packages
 dev-php/PEAR-PEAR_PackageFileManager 1.6.3 1.7.0: Takes an existing package.xml file and updates it with a new filelist and changelog
 dev-php/PEAR-PHP_Beautifier 0.1.15-r1: Code Beautifier for PHP
@@ -6786,7 +6786,7 @@ dev-php/ming-php 0.4.5: PHP extension for the ming Flash movie generation librar
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
-dev-php/pear 1.9.4 1.9.5 1.10.1: PEAR - PHP Extension and Application Repository
+dev-php/pear 1.9.4 1.9.5 1.10.1 1.10.1-r1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.4.0 1.7.0 1.7.1: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.5: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via APCu
