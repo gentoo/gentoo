@@ -10341,7 +10341,7 @@ games-board/tetzle 2.0.3: A jigsaw puzzle game that uses tetrominoes for the pie
 games-board/xboard 4.8.0: GUI for gnuchess and for internet chess servers
 games-board/xfreecell 1.0.5b: A freecell game for X
 games-board/xgammon 0.98: very nice backgammon game for X
-games-board/xmahjongg 3.7: friendly GUI version of xmahjongg
+games-board/xmahjongg 3.7 3.7-r1: friendly GUI version of xmahjongg
 games-board/xmille 2.0-r2: Mille Bournes card game
 games-board/xscrabble 2.10-r1: An X11 clone of the well-known Scrabble
 games-board/xskat 4.0 4.0-r1: Famous german card game
