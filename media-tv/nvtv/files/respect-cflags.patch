@@ -1,0 +1,31 @@
+The rest of the build system will respect the user's CFLAGS if we
+don't wipe them out, so just delete the line that does that. The
+removal of the gtk-1.x stuff is so that we can run eautoreconf and
+have it work; we don't support gtk1 in Gentoo anyway.
+
+diff --git a/configure.in b/configure.in
+index f8f48cc..d8f1261 100755
+--- a/configure.in
++++ b/configure.in
+@@ -57,9 +57,6 @@ dnl
+ dnl Debugging enables, CFLAGS
+ dnl
+ 
+-dnl Clear -g -O2 from CFLAGS
+-CFLAGS=""
+-
+ AC_MSG_CHECKING(for debugging info)
+ 
+ AC_ARG_ENABLE(debug,
+@@ -110,11 +107,6 @@ if test ${with_gtk} = no ; then
+ fi
+ 
+ if test ${have_gtk} = no ; then
+-  if test ${with_gtk} = yes -o ${with_gtk} = gtk1 ; then
+-    AM_PATH_GTK(1.2.0, have_gtk=gtk1)
+-  fi
+-fi
+-if test ${have_gtk} = no ; then
+   if test ${with_gtk} = yes -o ${with_gtk} = gtk2 ; then
+     AM_PATH_GTK_2_0(2.0.0, have_gtk=gtk2)
+   fi
