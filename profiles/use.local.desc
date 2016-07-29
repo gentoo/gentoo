@@ -2290,12 +2290,14 @@ dev-python/PyQt4:svg - Build bindings for the QtSvg module
 dev-python/PyQt4:testlib - Build bindings for the QtTest module
 dev-python/PyQt4:webkit - Build bindings for the QtWebKit module
 dev-python/PyQt4:xmlpatterns - Build bindings for the QtXmlPatterns module
+dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
 dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
 dev-python/PyQt5:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/PyQt5:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-python/PyQt5:gui - Build bindings for the QtGui module
 dev-python/PyQt5:help - Build bindings for the QtHelp module
+dev-python/PyQt5:location - Build bindings for the QtLocation module
 dev-python/PyQt5:multimedia - Build bindings for the QtMultimedia module
 dev-python/PyQt5:network - Build bindings for the QtNetwork module
 dev-python/PyQt5:opengl - Build bindings for the QtOpenGL module
@@ -2307,6 +2309,7 @@ dev-python/PyQt5:sql - Build bindings for the QtSql module
 dev-python/PyQt5:svg - Build bindings for the QtSvg module
 dev-python/PyQt5:testlib - Build bindings for the QtTest module
 dev-python/PyQt5:webchannel - Build bindings for the QtWebChannel module
+dev-python/PyQt5:webengine - Build bindings for the QtWebEngine module
 dev-python/PyQt5:webkit - Build bindings for the QtWebKit module
 dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
