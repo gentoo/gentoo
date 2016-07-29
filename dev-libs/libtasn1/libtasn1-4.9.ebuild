@@ -24,6 +24,9 @@ RDEPEND="
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
 DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 
 multilib_src_configure() {
