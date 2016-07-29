@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
+# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 location webengine
+
 # Davide Pesavento <pesa@gentoo.org> (13 May 2016)
 # dev-qt/qtwebengine:5 not keyworded, bug 581478
 dev-qt/qt-creator webengine

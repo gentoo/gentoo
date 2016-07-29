@@ -37,10 +37,6 @@ dev-lang/python-exec -python_targets_python3_5
 =app-office/libreoffice-5.0* gtk3
 =app-office/libreoffice-5.1* gtk3
 
-# Davide Pesavento <pesa@gentoo.org> (26 Aug 2015)
-# dev-qt/qtserialport:5 not stable yet, bug 577074
-dev-python/PyQt5 serialport
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
