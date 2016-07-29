@@ -3317,6 +3317,8 @@ kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/krdc:rdesktop - Enable runtime dependency for net-misc/rdesktop
 kde-apps/krdc:telepathy - Enable desktop sharing through a telepathy client
+kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
+kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/ksnapshot:kipi - Support for the KDE Image Plugin Interface.
 kde-apps/kstars:indi - Enable support for Astronomical control library using libindi
 kde-apps/kstars:wcs - Enable support for World Coordinate System library using wcslib
