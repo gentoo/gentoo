@@ -192,7 +192,7 @@ app-admin/rex 1.3.3 1.4.0-r1 1.4.1: (R)?ex is a small script to ease the executi
 app-admin/rsyslog 8.16.0-r1 8.18.0 8.19.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2015.5.10 2015.8.8 2015.8.10 2015.8.11 2016.3.1 9999: Salt is a remote execution and configuration manager
+app-admin/salt 2015.5.10 2015.8.8 2015.8.10 2015.8.11 2016.3.1 2016.3.2 9999: Salt is a remote execution and configuration manager
 app-admin/setools 3.3.8-r5 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.5-r1 1.6.2 1.6.4: protects hosts from brute force attacks against ssh
@@ -7055,7 +7055,7 @@ dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 1.0 1.0.1: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 3.7.1 4.0.3 4.1: Code coverage measurement for Python
+dev-python/coverage 3.7.1 4.0.3 4.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
 dev-python/croniter 0.3.11: Python module to provide iteration for datetime object
 dev-python/crumbs 2.0.0 2.0.1 2.0.2 2.1.0: Generalized all-in-one parameters module
@@ -11348,7 +11348,7 @@ kde-apps/krdc 15.12.3 16.04.3: Remote desktop connection (RDP and VNC) client
 kde-apps/kreadconfig 15.12.3 16.04.3: Command-line tool to read KConfig entries
 kde-apps/kremotecontrol 15.12.3 16.04.3: KDE frontend for the Linux Infrared Remote Control system
 kde-apps/kreversi 15.12.3 16.04.3: Board Game by KDE
-kde-apps/krfb 15.08.3 15.12.3 16.04.3: VNC-compatible server to share KDE desktops
+kde-apps/krfb 15.12.3 16.04.3: VNC-compatible server to share KDE desktops
 kde-apps/kross-interpreters 16.04.3: Kross interpreter plugins for programming languages
 kde-apps/kruler 15.12.3 16.04.3: Screen ruler for Plasma
 kde-apps/ksaneplugin 15.12.3 16.04.3: SANE Plugin by KDE
