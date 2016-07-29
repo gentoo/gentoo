@@ -3,7 +3,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 PORT=${PORT:=2055}
-PIDFILE=${PIDFILE:=/run/flows/flowcapture.pid.${PORT}}
+# The daemon takes the pidfile argument and APPENDS .$PORT itself in writing.
+# It may have multiple children by original design, but this is not recommended
+# for Gentoo at this time.
+PIDFILE_BASE=${PIDFILE_BASE:=/run/flows/flowcapture.pid}
+PIDFILE=${PIDFILE:=${PIDFILE}.${PORT}}
 
 depend() {
 	use net
