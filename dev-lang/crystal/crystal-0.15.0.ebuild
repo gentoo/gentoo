@@ -41,7 +41,7 @@ src_compile() {
 	emake \
 		release=1 \
 		threads=4 \
-		PATH="${PATH}":"${WORKDIR}"/${PN}-${BV}/bin \
+		PATH="${WORKDIR}"/${PN}-${BV}/bin:"${PATH}" \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
 		CRYSTAL_CONFIG_PATH="libs:/usr/$(get_libdir)/crystal"

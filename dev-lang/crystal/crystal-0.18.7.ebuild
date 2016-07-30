@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit multilib
 
@@ -24,7 +24,7 @@ IUSE="doc examples +xml +yaml"
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
 	<sys-devel/llvm-3.7.0
-	dev-libs/boehm-gc[static-libs]
+	dev-libs/boehm-gc[static-libs,threads]
 	dev-libs/libatomic_ops
 	dev-libs/libevent
 	dev-libs/libpcre
@@ -41,10 +41,10 @@ src_compile() {
 	emake \
 		release=1 \
 		threads=4 \
-		PATH="${PATH}":"${WORKDIR}"/${PN}-${BV}/bin \
+		PATH="${WORKDIR}"/${PN}-${BV}/bin:"${PATH}" \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
-		CRYSTAL_CONFIG_PATH="libs:/usr/$(get_libdir)/crystal"
+		CRYSTAL_CONFIG_PATH="libs:${EPREFIX}/usr/$(get_libdir)/crystal"
 	use doc && emake doc
 }
 
