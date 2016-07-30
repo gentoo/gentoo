@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,13 +11,12 @@ SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
-IUSE="debug libmpd"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="debug +libmpd"
 
-RDEPEND=">=xfce-base/exo-0.6
-	>=xfce-base/libxfce4ui-4.8
-	>=xfce-base/xfce4-panel-4.8
-	libmpd? ( media-libs/libmpd )"
+RDEPEND=">=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
+	>=xfce-base/xfce4-panel-4.12:=
+	libmpd? ( media-libs/libmpd:= )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
