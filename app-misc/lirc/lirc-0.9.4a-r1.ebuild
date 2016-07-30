@@ -51,19 +51,17 @@ RDEPEND="
 	usb? ( virtual/libusb:0 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/lirc-0.9.4-doc-path-fix.patch # https://bugs.gentoo.org/show_bug.cgi?id=589246 https://sourceforge.net/p/lirc/tickets/214/
+)
+
 src_configure() {
 	filter-flags -Wl,-O1
 	econf \
+		--docdir=/usr/share/doc/${PF} \
+		--localstatedir=/var \
 		$(use_enable static-libs static) \
 		$(use_with X x)
-}
-
-# Defined src_compile as a workaround for a parallel make issue
-# See https://bugs.gentoo.org/show_bug.cgi?id=588864
-# and https://sourceforge.net/p/lirc/tickets/210/
-src_compile() {
-	emake lib
-	emake
 }
 
 src_install() {
@@ -76,12 +74,8 @@ src_install() {
 	insinto /etc/modprobe.d/
 	newins "${FILESDIR}"/modprobed.lirc lirc.conf
 
-	newinitd "${FILESDIR}"/irexec-initd irexec
+	newinitd "${FILESDIR}"/irexec-initd-0.9.4a-r1 irexec
 	newconfd "${FILESDIR}"/irexec-confd irexec
-
-	if use doc ; then
-		dodoc -r doc/html
-	fi
 
 	keepdir /etc/lirc
 	if [[ -e "${D}"/etc/lirc/lircd.conf ]]; then
@@ -91,6 +85,10 @@ src_install() {
 	if ! use static-libs; then
 		rm "${D}/usr/$(get_libdir)/liblirc_client.la" || die
 	fi
+
+	# Avoid QA notice
+	rm -d "${D}"/var/run/lirc || die
+	rm -d "${D}"/var/run || die
 }
 
 pkg_preinst() {
