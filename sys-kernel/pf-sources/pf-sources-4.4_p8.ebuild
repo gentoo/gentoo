@@ -16,7 +16,7 @@ inherit kernel-2
 detect_version
 K_NOSETEXTRAVERSION="don't_set_it"
 
-DESCRIPTION="Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM"
+DESCRIPTION="Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOnIce and UKSM)"
 HOMEPAGE="https://pf.natalenko.name/"
 
 PF_VERS="1"
