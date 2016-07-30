@@ -75,6 +75,12 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gphoto2-config
 )
 
+PATCHES=(
+	# Fix building with latest jpeg-turbo, bug #586336, fixed in the
+	# next version
+	"${FILESDIR}"/${P}-jpeg.patch
+)
+
 pkg_pretend() {
 	if ! echo "${USE}" | grep "cameras_" > /dev/null 2>&1; then
 		einfo "No camera drivers will be built since you did not specify any."
