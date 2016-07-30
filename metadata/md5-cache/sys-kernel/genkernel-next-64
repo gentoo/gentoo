@@ -9,7 +9,7 @@ LICENSE=GPL-2
 RDEPEND=app-text/asciidoc sys-fs/e2fsprogs !sys-fs/eudev[-kmod,modutils] selinux? ( sys-libs/libselinux ) !sys-kernel/genkernel cryptsetup? ( sys-fs/cryptsetup ) dmraid? ( >=sys-fs/dmraid-1.0.0_rc16 ) gpg? ( app-crypt/gnupg ) iscsi? ( sys-block/open-iscsi ) mdadm? ( sys-fs/mdadm ) plymouth? ( sys-boot/plymouth ) app-portage/portage-utils app-arch/cpio >=app-misc/pax-utils-0.6 !<sys-apps/openrc-0.9.9 sys-apps/util-linux sys-block/thin-provisioning-tools sys-fs/lvm2
 RESTRICT=mirror
 SLOT=0
-SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v64.tar.gz -> 64.tar.gz
+SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v64.tar.gz -> genkernel-next-64.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=b4bc4c4714fca3538718bac15715094c
+_md5_=855ad2209b320561da2014520fc7e714
