@@ -15204,7 +15204,7 @@ net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.22
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0-r1: open source captive portal or wireless LAN access point controller
-net-wireless/chirp 20160419 20160513 99999999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20160513 20160717 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.4.0-r1: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.4.0-r1: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
