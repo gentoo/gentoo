@@ -123,7 +123,7 @@ src_prepare() {
 		root password, add your user account to the 'plugdev' group."
 
 	# Don't build examples, they are not needed and can cause build failure
-	sed -e '/^\s*examples\s*\\/d' -i Makefile.{am,in} || die
+	sed -e '/^\s*examples\s*\\*/d' -i Makefile.{am,in} || die
 
 	# Upstream patches from 1.2 branch
 	eapply "${FILESDIR}/${P}-sleep-monitor-upower-include.patch" #588278
@@ -172,6 +172,7 @@ multilib_src_configure() {
 		--disable-lto \
 		--disable-config-plugin-ibft \
 		--disable-ifnet \
+		--disable-qt \
 		--without-netconfig \
 		--with-dbus-sys-dir=/etc/dbus-1/system.d \
 		--with-libnm-glib \
@@ -299,31 +300,6 @@ pkg_postinst() {
 			elog "without changing its behavior, you may want to remove it."
 			;;
 		esac
-	fi
-
-	# ifnet plugin was disabled for systemd users with 0.9.8.6 version
-	# and for all people with 0.9.10.0-r1 (see ChangeLog for full explanations)
-	if use systemd; then
-		if ! version_is_at_least 0.9.8.6 ${REPLACING_VERSIONS}; then
-			ewarn "Ifnet plugin won't be used with systemd support enabled"
-			ewarn "as it is meant to be used with openRC and can cause collisions"
-			ewarn "(like bug #485658)."
-			ewarn "Because of this, you will likely need to reconfigure some of"
-			ewarn "your networks. To do this you can rely on Gnome control center,"
-			ewarn "nm-connection-editor or nmtui tools for example once updated"
-			ewarn "NetworkManager version is installed."
-		fi
-	else
-		if ! version_is_at_least 0.9.10.0-r1 ${REPLACING_VERSIONS}; then
-			ewarn "Ifnet plugin is now disabled because of it being unattended"
-			ewarn "and unmaintained for a long time, leading to some unfixed bugs"
-			ewarn "and new problems appearing. We will now use upstream 'keyfile'"
-			ewarn "plugin."
-			ewarn "Because of this, you will likely need to reconfigure some of"
-			ewarn "your networks. To do this you can rely on Gnome control center,"
-			ewarn "nm-connection-editor or nmtui tools for example once updated"
-			ewarn "NetworkManager version is installed."
-		fi
 	fi
 
 	# NM fallbacks to plugin specified at compile time (upstream bug #738611)
