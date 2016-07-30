@@ -400,34 +400,6 @@ migrate_locale() {
 	fi
 }
 
-migrate_net_name_slot() {
-	# If user has disabled 80-net-name-slot.rules using a empty file or a symlink to /dev/null,
-	# do the same for 80-net-setup-link.rules to keep the old behavior
-	local net_move=no
-	local net_name_slot_sym=no
-	local net_rules_path="${EROOT%/}"/etc/udev/rules.d
-	local net_name_slot="${net_rules_path}"/80-net-name-slot.rules
-	local net_setup_link="${net_rules_path}"/80-net-setup-link.rules
-	if [[ -e ${net_setup_link} ]]; then
-		net_move=no
-	elif [[ -f ${net_name_slot} && $(sed -e "/^#/d" -e "/^\W*$/d" ${net_name_slot} | wc -l) == 0 ]]; then
-		net_move=yes
-	elif [[ -L ${net_name_slot} && $(readlink ${net_name_slot}) == /dev/null ]]; then
-		net_move=yes
-		net_name_slot_sym=yes
-	fi
-	if [[ ${net_move} == yes ]]; then
-		ebegin "Copying ${net_name_slot} to ${net_setup_link}"
-
-		if [[ ${net_name_slot_sym} == yes ]]; then
-			ln -nfs /dev/null "${net_setup_link}"
-		else
-			cp "${net_name_slot}" "${net_setup_link}"
-		fi
-		eend $? || FAIL=1
-	fi
-}
-
 reenable_unit() {
 	if systemctl is-enabled --root="${ROOT}" "$1" &> /dev/null; then
 		ebegin "Re-enabling $1"
@@ -466,9 +438,6 @@ pkg_postinst() {
 	# Bug 465468, make sure locales are respect, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	# Migrate 80-net-name-slot.rules -> 80-net-setup-link.rules
-	migrate_net_name_slot
 
 	# Re-enable systemd-networkd for socket activation
 	reenable_unit systemd-networkd.service
