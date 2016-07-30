@@ -44,7 +44,7 @@ src_compile() {
 		PATH="${WORKDIR}"/${PN}-${BV}/bin:"${PATH}" \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
-		CRYSTAL_CONFIG_PATH="libs:/usr/$(get_libdir)/crystal"
+		CRYSTAL_CONFIG_PATH="libs:${EPREFIX}/usr/$(get_libdir)/crystal"
 	use doc && emake doc
 }
 
