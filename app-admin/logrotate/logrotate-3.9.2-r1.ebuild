@@ -30,6 +30,7 @@ RDEPEND="${CDEPEND}
 	cron? ( virtual/cron )"
 
 install_cron_file() {
+	sed -i 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.cron
 	exeinto /etc/cron.daily
 	newexe "${S}"/examples/logrotate.cron "${PN}"
 }
