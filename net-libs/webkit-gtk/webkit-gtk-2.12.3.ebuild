@@ -226,7 +226,7 @@ src_configure() {
 
 	# support for webgl (aka 2d-canvas accelerating)
 	local canvas_enabled
-	if use webgl ; then
+	if use webgl && ! use gles2 ; then
 		canvas_enabled=ON
 	else
 		canvas_enabled=OFF

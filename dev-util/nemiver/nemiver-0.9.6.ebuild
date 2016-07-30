@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit eutils gnome2
@@ -14,10 +13,10 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nemiver"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="memoryview"
+IUSE="debug memoryview"
 
 RDEPEND="
-	>=dev-libs/glib-2.16:2
+	>=dev-libs/glib-2.16:2[dbus]
 	>=dev-cpp/glibmm-2.30:2
 	>=dev-cpp/gtkmm-3:3.0
 	>=dev-cpp/gtksourceviewmm-3:3.0
@@ -39,11 +38,21 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# Use RefPtr::bool() operator in the conditions, fixed in next
+	# version
+	"${FILESDIR}/${P}-bool-build.patch"
+
+	# Fix compiliation warnings & errors, fixed in next version
+	"${FILESDIR}/${P}-fix-build.patch"
+)
+
 src_configure() {
 	gnome2_src_configure \
 		--disable-dynamiclayout \
 		--disable-static \
 		--disable-symsvis \
 		--enable-gsettings \
+		$(use_enable debug) \
 		$(use_enable memoryview)
 }
