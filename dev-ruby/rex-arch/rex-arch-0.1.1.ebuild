@@ -7,11 +7,12 @@ EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby Exploitation(Rex) library for working with zip and related files"
-HOMEPAGE="https://rubygems.org/gems/rex-zip"
+DESCRIPTION="architecture specific information for Rex"
+HOMEPAGE="https://rubygems.org/gems/rex-arch"
 
 LICENSE="BSD"
 
@@ -23,8 +24,3 @@ IUSE=""
 RESTRICT=test
 
 ruby_add_bdepend "dev-ruby/rex-text"
-
-all_ruby_install() {
-	ruby_fakegem_binwrapper console ${PN}-console
-	ruby_fakegem_binwrapper setup ${PN}-setup
-}

@@ -7,11 +7,12 @@ EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby Exploitation(Rex) library for generating Random identifier strings"
-HOMEPAGE="https://rubygems.org/gems/rex-random_identifier"
+DESCRIPTION="Ruby Exploitation(Rex) library gem for reading/writing OLE files and streams"
+HOMEPAGE="https://rubygems.org/gems/rex-ole"
 
 LICENSE="BSD"
 
@@ -23,8 +24,3 @@ IUSE=""
 RESTRICT=test
 
 ruby_add_bdepend "dev-ruby/rex-text"
-
-all_ruby_install() {
-	ruby_fakegem_binwrapper console ${PN}-console
-	ruby_fakegem_binwrapper setup ${PN}-setup
-}
