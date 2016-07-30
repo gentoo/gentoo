@@ -2,16 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=yes
-AUTOTOOLS_IN_SOURCE_BUILD=yes
-
-inherit autotools-utils flag-o-matic systemd toolchain-funcs
+inherit autotools flag-o-matic systemd toolchain-funcs
 
 KEYWORDS="~amd64"
 
-PXE_VERSION="1032.0.0"
+PXE_VERSION="1097.0.0"
 PXE_SYSTEMD_VERSION="v229"
 KVM_LINUX_VERSION="4.3.1"
 KVMTOOL_VERSION="d62653e177597251c24494a6dda60acd6d846671"
@@ -70,6 +67,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	eapply_user
+
 	# disable git fetch of systemd
 	sed -e 's~^include makelib/git.mk$~'\
 'ifneq ($(wildcard $(RKT_STAGE1_SYSTEMD_SRC)),)\n\n'\
@@ -103,11 +102,7 @@ src_prepare() {
 			-i stage1/init/init.go || die
 	fi
 
-	# https://github.com/coreos/rkt/pull/2633
-	sed -e 's:^\(func \)\(TestCalculateDataDir\):\1_\2:' \
-		-i rkt/rkt_test.go || die
-
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -115,6 +110,8 @@ src_configure() {
 		--with-stage1-default-images-directory="/usr/share/rkt"
 		--with-stage1-default-location="${STAGE1_DEFAULT_LOCATION}"
 	)
+
+	use systemd || myeconfargs+=( --enable-sdjournal=no )
 
 	# enable flavors (first is default)
 	use rkt_stage1_host && flavors+=",host"
@@ -152,7 +149,7 @@ src_configure() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export BUILDDIR
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -160,19 +157,19 @@ src_compile() {
 	case ${arch} in
 		amd64) arch=x86_64;;
 	esac
-	ARCH=${arch} autotools-utils_src_compile
+	ARCH=${arch} emake
 }
 
 src_install() {
 	dodoc README.md
 	use doc && dodoc -r Documentation
 	use examples && dodoc -r examples
-	use actool && dobin "${S}/${BUILDDIR}/bin/actool"
+	use actool && dobin "${S}/${BUILDDIR}/tools/actool"
 
-	dobin "${S}/${BUILDDIR}/bin/rkt"
+	dobin "${S}/${BUILDDIR}/target/bin/rkt"
 
 	insinto /usr/share/rkt
-	doins "${S}/${BUILDDIR}/bin/"*.aci
+	doins "${S}/${BUILDDIR}/target/bin/"*.aci
 
 	# create symlink for default stage1 image path
 	if use rkt_stage1_host; then

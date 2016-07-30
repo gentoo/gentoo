@@ -673,16 +673,6 @@ app-text/cuneiform
 =dev-libs/yaz-4*
 >=dev-perl/Net-Z3950-ZOOM-1.300.0
 
-# Johannes Huber <johu@gentoo.org> (30 Jun 2016)
-# Andreas K. Huettel <dilfridge@gentoo.org> (22 Mar 2012)
-# Masked for removal in 30 days. Dead upstream. Superseded
-# by oxygen-gtk long time ago.
-#
-# (Original mask: Even its author admits that it's an ugly
-# hack. Crashes e.g. firefox with kde-4.8. Unmask at your own
-# risk.)
-kde-misc/kgtk
-
 # Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2012)
 # Masked for testing since this is known to break nearly
 # every reverse dependency wrt bug 407091
