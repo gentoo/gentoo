@@ -7,6 +7,7 @@ EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
@@ -21,8 +22,3 @@ IUSE=""
 
 # doesn't seem to actually run any tests
 RESTRICT=test
-
-all_ruby_install() {
-	ruby_fakegem_binwrapper console ${PN}-console
-	ruby_fakegem_binwrapper setup ${PN}-setup
-}
