@@ -1,0 +1,36 @@
+From 262cf9657f9c2727a816972b348692adcc666008 Mon Sep 17 00:00:00 2001
+From: Marcin Kolny <marcin.kolny@gmail.com>
+Date: Fri, 1 Jul 2016 19:45:05 +0200
+Subject: Use RefPtr::bool() operator in the conditions
+
+Since bool() operator in RefPtr class is explicit,
+comparision with integer doesn't compile.
+---
+ src/persp/dbgperspective/nmv-dbg-perspective.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/persp/dbgperspective/nmv-dbg-perspective.cc b/src/persp/dbgperspective/nmv-dbg-perspective.cc
+index be652db..ac207e4 100644
+--- a/src/persp/dbgperspective/nmv-dbg-perspective.cc
++++ b/src/persp/dbgperspective/nmv-dbg-perspective.cc
+@@ -5672,7 +5672,7 @@ DBGPerspective::switch_to_asm (const common::DisassembleInfo &a_info,
+     a_source_editor->clear_decorations ();
+ 
+     Glib::RefPtr<Gsv::Buffer> asm_buf;
+-    if ((asm_buf = a_source_editor->get_assembly_source_buffer ()) == 0) {
++    if (!(asm_buf = a_source_editor->get_assembly_source_buffer ())) {
+         SourceEditor::setup_buffer_mime_and_lang (asm_buf, "text/x-asm");
+         a_source_editor->register_assembly_source_buffer (asm_buf);
+         asm_buf = a_source_editor->get_assembly_source_buffer ();
+@@ -5720,7 +5720,7 @@ DBGPerspective::switch_to_source_code ()
+ 
+     Glib::RefPtr<Gsv::Buffer> source_buf;
+     UString source_path;
+-    if ((source_buf = source_editor->get_non_assembly_source_buffer ()) == 0) {
++    if (!(source_buf = source_editor->get_non_assembly_source_buffer ())) {
+         // Woops!
+         // We don't have any source code buffer. Let's try hard to get
+         // the source code corresponding to the current frame. For that,
+-- 
+cgit v0.12
+
