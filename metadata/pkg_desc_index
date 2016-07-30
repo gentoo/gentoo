@@ -1336,7 +1336,7 @@ app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use w
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/rkt 1.6.0 1.7.0 1.10.1 9999: A CLI for running app containers, and an implementation of the App Container Spec.
+app-emulation/rkt 1.10.1 1.11.0: A CLI for running app containers, and an implementation of the App Container Spec.
 app-emulation/runc 0.0.2 0.0.5 0.1.0 0.1.1 1.0.0_rc1 9999: runc container cli tools
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
@@ -11618,7 +11618,6 @@ kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma the
 kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
 kde-misc/kfilebox 0.4.9: KDE dropbox client
 kde-misc/kgrubeditor 0.8.5: A KDE utility that edits GRUB configuration files
-kde-misc/kgtk 0.11.0: Allows *some* Gtk and Qt4 applications to use KDE's file dialogs when run under KDE
 kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
