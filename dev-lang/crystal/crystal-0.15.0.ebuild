@@ -24,7 +24,7 @@ IUSE="doc examples +xml +yaml"
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
 	<sys-devel/llvm-3.7.0
-	dev-libs/boehm-gc[static-libs]
+	dev-libs/boehm-gc[static-libs,threads]
 	dev-libs/libatomic_ops
 	dev-libs/libevent
 	dev-libs/libpcre
