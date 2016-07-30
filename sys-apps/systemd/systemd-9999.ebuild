@@ -400,14 +400,6 @@ migrate_locale() {
 	fi
 }
 
-reenable_unit() {
-	if systemctl is-enabled --root="${ROOT}" "$1" &> /dev/null; then
-		ebegin "Re-enabling $1"
-		systemctl reenable --root="${ROOT}" "$1"
-		eend $? || FAIL=1
-	fi
-}
-
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -438,9 +430,6 @@ pkg_postinst() {
 	# Bug 465468, make sure locales are respect, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	# Re-enable systemd-networkd for socket activation
-	reenable_unit systemd-networkd.service
 
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
