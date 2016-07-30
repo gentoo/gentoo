@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=|| ( dev-lang/vala:0.32[vapigen(+)] dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] ) app-text/enchant >=app-text/gspell-1.0:0= >=dev-libs/glib-2.40:2[dbus] >=dev-libs/libgee-0.10:0.8= gnome-base/gsettings-desktop-schemas >=x11-libs/gtk+-3.20:3 >=x11-libs/gtksourceview-3.18:3.0= x11-libs/gdk-pixbuf:2 x11-libs/libX11 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) >=dev-util/gtk-doc-am-1.14 >=dev-util/intltool-0.50.1 dev-util/itstool virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Integrated LaTeX environment for GNOME
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Apps/LaTeXila
+IUSE=+introspection +latexmk rubber
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=|| ( dev-lang/vala:0.32[vapigen(+)] dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] ) app-text/enchant >=app-text/gspell-1.0:0= >=dev-libs/glib-2.40:2[dbus] >=dev-libs/libgee-0.10:0.8= gnome-base/gsettings-desktop-schemas >=x11-libs/gtk+-3.20:3 >=x11-libs/gtksourceview-3.18:3.0= x11-libs/gdk-pixbuf:2 x11-libs/libX11 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) virtual/latex-base x11-themes/hicolor-icon-theme latexmk? ( dev-tex/latexmk ) rubber? ( dev-tex/rubber )
+SLOT=0
+SRC_URI=mirror://gnome/sources/latexila/3.20/latexila-3.20.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	vala	764817a25b405b65269d8619e203a52f	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=a7b57334f79f2d5b41fcfe66147706e5
