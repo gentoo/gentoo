@@ -15518,7 +15518,7 @@ sci-biology/rmblast 1.2-r1: RepeatMasker compatible version of NCBI BLAST+
 sci-biology/rnaview 20040713 20040713-r2 20040713-r3: Generates 2D displays of RNA/DNA secondary structures with tertiary interactions
 sci-biology/samtools 0.1.12 0.1.19-r2 0.1.20-r2 1.0 1.0-r1 1.1 1.2 1.3-r1: Utilities for analysing and manipulating the SAM/BAM alignment formats
 sci-biology/seaview 4.3.5 4.5.4: A graphical multiple sequence alignment editor
-sci-biology/seqan 1.4.2-r1 2.1.1: C++ Sequence Analysis Library
+sci-biology/seqan 1.4.2-r1 2.2.0: C++ Sequence Analysis Library
 sci-biology/shrimp 2.0.1 2.2.3: SHort Read Mapping Package
 sci-biology/sibsim4 0.20: A rewrite and improvement upon sim4, a DNA-mRNA aligner
 sci-biology/sim4 20030921 20030921-r1: A program to align cDNA and genomic DNA
