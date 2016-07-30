@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="acl apparmor audit cryptsetup curl doc elfutils +gcrypt gnuefi http
-	idn importd +kdbus +kmod +lz4 lzma nat pam policykit
+	idn importd +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
@@ -228,7 +228,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable importd)
 		$(multilib_native_use_enable importd bzip2)
 		$(multilib_native_use_enable importd zlib)
-		$(use_enable kdbus)
 		$(multilib_native_use_enable kmod)
 		$(use_enable lz4)
 		$(use_enable lzma xz)
@@ -284,12 +283,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi || continue
-
-	# Needed for bus-related tests
-	local -x SANDBOX_WRITE=${SANDBOX_WRITE}
-	addwrite /sys/fs/kdbus
-
+	multilib_is_native_abi || return 0
 	default
 }
 
