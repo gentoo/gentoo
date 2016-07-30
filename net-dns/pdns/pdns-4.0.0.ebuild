@@ -145,11 +145,11 @@ pkg_postinst() {
 	if [[ $fix_perms -eq 1 ]] ; then
 		ewarn "To fix a security bug (bug #458018) had the following"
 		ewarn "files/directories the world-readable bit removed (if set):"
-		ewarn "  ${EPREFIX}/etc/pdns"
-		ewarn "  ${EPREFIX}/etc/pdns/pdns.conf"
+		ewarn "  ${EPREFIX}/etc/powerdns"
+		ewarn "  ${EPREFIX}/etc/powerdns/pdns.conf"
 		ewarn "Check if this is correct for your setup"
 		ewarn "This is a one-time change and will not happen on subsequent updates."
-		chmod o-rwx "${EPREFIX}"/etc/pdns/{,pdns.conf}
+		chmod o-rwx "${EPREFIX}"/etc/powerdns/{,pdns.conf}
 	fi
 
 }
