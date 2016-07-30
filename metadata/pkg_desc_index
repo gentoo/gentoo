@@ -1833,7 +1833,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
-app-misc/lirc 0.9.0-r6 0.9.4 0.9.4a: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.9.0-r6 0.9.4 0.9.4a 0.9.4a-r1: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.0.4 2.1 2.2 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -7650,7 +7650,7 @@ dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper fo
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/phonenumbers 7.2.3 7.2.8: Python port of Google's libphonenumber
 dev-python/photutils 0.2.1: Python package for image astronomical photometry
-dev-python/pickleshare 0.5 0.6 0.7.2: A small 'shelve' like datastore with concurrency support
+dev-python/pickleshare 0.5 0.6 0.7.2 0.7.3: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
@@ -7685,7 +7685,7 @@ dev-python/processing 0.52-r1: Package for using processes, which mimics the thr
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1 2.3-r2: Text progressbar library for python
 dev-python/promise 0.2.2-r1 0.4.1 0.4.2: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58 0.60 1.0.0: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58 0.60 1.0.0 1.0.3: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.0.0_beta3_p1: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
@@ -15889,7 +15889,7 @@ sci-libs/gsl 1.14 1.16 2.1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for storing scientific data
-sci-libs/htslib 1.0 1.1 1.2.1 1.3: C library for high-throughput sequencing data formats
+sci-libs/htslib 1.0 1.1 1.2.1 1.3 1.3.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
 sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
