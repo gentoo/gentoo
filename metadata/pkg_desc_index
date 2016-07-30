@@ -2614,7 +2614,7 @@ app-vim/rust-mode 1_beta20150411: Rust mode for vim
 app-vim/salt-vim 20151119: Vim files for working on Salt files
 app-vim/scala-syntax 1.0: vim plugin: Scala syntax highlighting, filetype and indent settings
 app-vim/screen 1.5: vim plugin: simulate a split shell with screen or tmux
-app-vim/searchcomplete 1.1 1.1-r1: vim plugin: tab completion in searches
+app-vim/searchcomplete 1.1-r1: vim plugin: tab completion in searches
 app-vim/securemodelines 20140926: vim plugin: secure, user-configurable modeline support
 app-vim/selinux-syntax 20041225: vim plugin: SELinux type enforcement policy syntax
 app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
