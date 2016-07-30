@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_4 python3_5 )
 
 inherit distutils-r1 vcs-snapshot
 
-MY_PV="${PV//_beta/b}"
+MY_PV="${PV//_alpha/a}"
 
 DESCRIPTION="multidict implementation"
 HOMEPAGE="https://github.com/aio-libs/multidict/"
