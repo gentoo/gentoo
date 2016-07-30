@@ -70,5 +70,7 @@ src_install() {
 	# pkg-config file
 	mv "${ED}"/usr/share/pkgconfig/${PN}-{$(get_version_component_range 1),${SLOT}}.pc || die
 
-	dosym /usr/share/pkgconfig/${PN}-{${SLOT},$(get_version_component_range 1)}.pc
+	pushd "${ED}"/usr/share/pkgconfig/ >/dev/null
+		ln -s ${PN}-{${SLOT},$(get_version_component_range 1)}.pc || die
+	popd >/dev/null
 }
