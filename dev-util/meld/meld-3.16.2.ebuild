@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 PYTHON_REQ_USE="xml"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
@@ -15,7 +14,7 @@ HOMEPAGE="http://meldmerge.org/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
@@ -23,8 +22,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.8:3[cairo,${PYTHON_USEDEP}]
 	gnome-base/gsettings-desktop-schemas
-	>=x11-libs/gtk+-3.12:3[introspection]
-	>=x11-libs/gtksourceview-3.10:3.0[introspection]
+	>=x11-libs/gtk+-3.14:3[introspection]
+	>=x11-libs/gtksourceview-3.14:3.0[introspection]
 	x11-themes/hicolor-icon-theme
 "
 DEPEND="${RDEPEND}

@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="Library providing GLib serialization and deserialization for the JSON format"
@@ -17,7 +15,7 @@ IUSE="debug +introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.37.6:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 "
 DEPEND="${RDEPEND}
 	~app-text/docbook-xml-dtd-4.1.2

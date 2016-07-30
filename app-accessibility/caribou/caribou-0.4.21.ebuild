@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-r1
@@ -15,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Caribou"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -50,12 +49,13 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	# FIXME: Now this supports python3 too... 
 	# delete custom PYTHONPATH, useless on Gentoo and potential bug source
 	# + caribou is python2 only so fix the shell scripts
-	sed -e '/export PYTHONPATH=.*python/ d' \
-		-e "s:@PYTHON@:${EPREFIX}/usr/bin/python2:" \
-		-i bin/{antler-keyboard,caribou-preferences}.in ||
-		die "sed failed"
+#	sed -e '/export PYTHONPATH=.*python/ d' \
+#		-e "s:@PYTHON@:${EPREFIX}/usr/bin/python2:" \
+#		-i bin/{antler-keyboard,caribou-preferences}.in ||
+#		die "sed failed"
 
 	gnome2_src_prepare
 
@@ -86,5 +86,7 @@ src_test() {
 
 src_install() {
 	python_foreach_impl run_in_build_dir gnome2_src_install
+
+	# https://bugzilla.gnome.org/show_bug.cgi?id=769323
 	dodoc AUTHORS NEWS README # ChangeLog simply points to git log
 }
