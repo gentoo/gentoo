@@ -54,8 +54,7 @@ DEPEND="${RDEPEND}
 	!sys-devel/gcc[libffi]"
 RDEPEND+=" !build? ( app-misc/mime-types )
 	doc? ( dev-python/python-docs:${SLOT} )"
-PDEPEND="app-eselect/eselect-python
-	app-admin/python-updater"
+PDEPEND="app-eselect/eselect-python"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -319,8 +318,6 @@ pkg_postinst() {
 		ewarn "You have just upgraded from an older version of Python."
 		ewarn
 		ewarn "Please adjust PYTHON_TARGETS (if so desired), and run emerge with the --newuse or --changed-use option to rebuild packages installing python modules."
-		ewarn
-		ewarn "For legacy packages, you should switch active version of Python and run 'python-updater [options]' to rebuild Python modules."
 	fi
 }
 
