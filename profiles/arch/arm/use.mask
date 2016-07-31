@@ -134,7 +134,6 @@ librtmp
 rtmp
 vpx
 iplayer
-plotutils
 lpsol
 upnp
 bluray
