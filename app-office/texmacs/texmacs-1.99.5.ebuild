@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils fdo-mime gnome2-utils
+inherit autotools fdo-mime gnome2-utils
 
 MY_P=${P/tex/TeX}-src
 
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="imlib jpeg netpbm pdf qt4 svg spell"
-KEYWORDS="alpha amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
@@ -43,31 +43,28 @@ PATCHES=(
 	# dont update mime and desktop databases and icon cache
 	"${FILESDIR}"/${PN}-updates.patch
 
-	# underlinking 540600
-	"${FILESDIR}"/${P}-underlinking.patch
-
-	# scanelf: rpath_security_checks(): Security problem NULL DT_RUNPATH
-	"${FILESDIR}"/${P}-norpath.patch
-
-	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${PN}-1.99.2-desktop.patch
 
 	# remove new/delete declarations, bug 590002
 	"${FILESDIR}"/${PN}-1.99-remove-new-declaration.patch
 )
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	default
 
 	mv configure.{in,ac} || die
 
 	eautoreconf
+
+	# delete files that contain binary
+	# headers only used on OS X
+	rm src/{Plugins/Ghostscript/._ghostscript.cpp,System/Misc/._sys_utils.cpp} || die
 }
 
 src_configure() {
 	econf \
 		--enable-optimize="${CXXFLAGS}" \
 		$(use_with imlib imlib2) \
-		$(use_enable qt4 qt) \
 		$(use_enable pdf pdf-renderer)
 }
 
