@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure
+DEPEND=>=sys-fs/fuse-2.8.6:= lzma? ( >=app-arch/xz-utils-5.0.4:= ) zlib? ( >=sys-libs/zlib-1.2.5-r2:= ) lzo? ( >=dev-libs/lzo-2.06:= ) lz4? ( >=app-arch/lz4-0_p106:= )
+DESCRIPTION=FUSE filesystem to mount squashfs archives
+EAPI=6
+HOMEPAGE=https://github.com/vasi/squashfuse
+IUSE=lz4 lzma lzo +zlib
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=BSD-2
+RDEPEND=>=sys-fs/fuse-2.8.6:= lzma? ( >=app-arch/xz-utils-5.0.4:= ) zlib? ( >=sys-libs/zlib-1.2.5-r2:= ) lzo? ( >=dev-libs/lzo-2.06:= ) lz4? ( >=app-arch/lz4-0_p106:= )
+REQUIRED_USE=|| ( lz4 lzma lzo zlib )
+SLOT=0
+SRC_URI=https://github.com/vasi/squashfuse/releases/download/0.1.100/squashfuse-0.1.100.tar.gz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=5d76de859efeeb4f2c5f86f01ed4f51f
