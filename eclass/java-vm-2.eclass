@@ -132,14 +132,29 @@ java_set_default_vm_() {
 # @FUNCTION: get_system_arch
 # @DESCRIPTION:
 # Get Java specific arch name.
+#
+# NOTE the mips and sparc values are best guesses. Oracle uses sparcv9
+# but does OpenJDK use sparc64? We don't support OpenJDK on sparc or any
+# JVM on mips though so it doesn't matter much.
 
 get_system_arch() {
-	local sarch
-	sarch=$(echo ${ARCH} | sed -e s/[i]*.86/i386/ -e s/x86_64/amd64/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/)
-	if [ -z "${sarch}" ]; then
-		sarch=$(uname -m | sed -e s/[i]*.86/i386/ -e s/x86_64/amd64/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/)
-	fi
-	echo ${sarch}
+	local abi=${1-${ABI}}
+
+	case $(get_abi_CHOST ${abi}) in
+		mips*l*) echo mipsel ;;
+		mips*) echo mips ;;
+		ppc64le*) echo ppc64le ;;
+		*)
+			case ${abi} in
+				*_fbsd) get_system_arch ${abi%_fbsd} ;;
+				arm64) echo aarch64 ;;
+				hppa) echo parisc ;;
+				sparc32) echo sparc ;;
+				sparc64) echo sparcv9 ;;
+				x86*) echo i386 ;;
+				*) echo ${abi} ;;
+			esac ;;
+	esac
 }
 
 
