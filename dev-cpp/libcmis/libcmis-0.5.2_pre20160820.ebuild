@@ -12,7 +12,7 @@ unset SCM_ECLASS
 DESCRIPTION="C++ client library for the CMIS interface"
 HOMEPAGE="https://github.com/tdf/libcmis"
 if [[ ${PV} = *_pre* ]]; then
-	snapshot=d2054a12e3f52fff8e96341e8c48f0dcd75e2e2a
+	snapshot=da8c3fdc281a0cb3753a6bb9eaa63ac6385e2963
 	SRC_URI="https://github.com/tdf/${PN}/archive/${snapshot}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${snapshot}"
 	unset snapshot
