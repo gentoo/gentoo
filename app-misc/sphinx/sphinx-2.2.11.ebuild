@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,13 @@ SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
-IUSE="debug id64 mysql odbc postgres stemmer syslog test xml"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
+IUSE="debug +id64 mysql odbc postgres re2 stemmer syslog xml"
 
 RDEPEND="mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	odbc? ( dev-db/unixODBC )
+	re2? ( dev-libs/re2 )
 	stemmer? ( dev-libs/snowball-stemmer )
 	xml? ( dev-libs/expat )
 	virtual/libiconv"
@@ -40,6 +41,10 @@ src_prepare() {
 	pushd api/libsphinxclient || die
 	eautoreconf
 	popd || die
+
+	# Drop bundled code to ensure building against system versions. We
+	# cannot remove libstemmer_c since configure updates its Makefile.
+	rm -rf libexpat libre2 || die
 }
 
 src_configure() {
@@ -53,6 +58,7 @@ src_configure() {
 		$(use_with mysql) \
 		$(use_with odbc unixodbc) \
 		$(use_with postgres pgsql) \
+		$(use_with re2) \
 		$(use_with stemmer libstemmer) \
 		$(use_with syslog syslog) \
 		$(use_with xml libexpat )
@@ -68,8 +74,9 @@ src_compile() {
 }
 
 src_test() {
-	elog "Tests require access to a live MySQL database and may require configuration."
-	elog "You will find them in /usr/share/${PN}/test and they require dev-lang/php"
+	# Tests require a live database and only work from the source
+	# directory.
+	:
 }
 
 src_install() {
@@ -82,9 +89,4 @@ src_install() {
 	dodir /var/log/sphinx
 
 	newinitd "${FILESDIR}"/searchd.rc searchd
-
-	if use test; then
-		insinto /usr/share/${PN}
-		doins -r test
-	fi
 }
