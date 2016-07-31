@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 CDEPEND="
 	>=sys-devel/gcc-4.8:*
 	>=dev-libs/boost-1.54[nls]
-	net-misc/curl"
+	<net-misc/curl-7.50.0"
 
 RDEPEND+=" ${CDEPEND}"
 DEPEND+=" test? ( ${CDEPEND} )"
