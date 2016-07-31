@@ -6947,7 +6947,7 @@ dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
 dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 1.2.2 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
-dev-python/awscli 1.10.38 1.10.42 1.10.47: Universal Command Line Environment for AWS
+dev-python/awscli 1.10.38 1.10.42 1.10.47 1.10.51: Universal Command Line Environment for AWS
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backports 1.0: Namespace for backported Python features
@@ -6974,7 +6974,7 @@ dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1 3.1.5: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2 1.4.3: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0: Next generation Python numpy
+dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1 0.10.0 0.10.1: Next generation Python numpy
 dev-python/bleach 1.4.1 1.4.2 1.4.3: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
