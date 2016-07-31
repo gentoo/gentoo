@@ -39,7 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-libs/gstreamer:1.0[introspection]
 	media-libs/gst-plugins-base:1.0[introspection]
 	media-plugins/gst-plugins-meta:1.0
-	media-plugins/grilo-plugins:0.2[tracker]
+	media-plugins/grilo-plugins:0.3[tracker]
 	x11-misc/xdg-user-dirs
 "
 DEPEND="${COMMON_DEPEND}
