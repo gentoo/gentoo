@@ -1524,7 +1524,7 @@ app-i18n/libpinyin 0.8.0 1.0.0 1.3.0: Library for Chinese pinyin input methods
 app-i18n/librime 0.9.9 1.2 1.2.9: Rime Input Method Engine library
 app-i18n/libskk 0.0.9 0.0.11 0.0.12 1.0.1: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
-app-i18n/libtomoe-gtk 0.6.0-r2 0.6.0-r3: Tomoe GTK+ interface widget library
+app-i18n/libtomoe-gtk 0.6.0-r2 0.6.0-r3 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
 app-i18n/man-pages-de 1.12 1.13: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 2.39.0 3.40.1: A somewhat comprehensive collection of french Linux man pages
@@ -1575,7 +1575,7 @@ app-i18n/transifex-client 0.10 0.11.1_beta: A command line interface for Transif
 app-i18n/translate-shell 0.9.4: Online command-line translator
 app-i18n/uim 1.8.6-r1 1.8.6-r2: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
-app-i18n/unicode-data 6.0.0 6.1.0: Unicode data from unicode.org
+app-i18n/unicode-data 6.1.0 9.0.0: Unicode data from unicode.org
 app-i18n/x-unikey 1.0.4-r2: Vietnamese X Input Method
 app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 2.0.3-r3 2.0.4_pre20130108: The SunPinyin IMEngine Wrapper for XIM Framework
@@ -11082,7 +11082,7 @@ gnome-extra/gnome-weather 3.18.1 3.20.1: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
-gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2: Unicode character map viewer and library
+gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2 9.0.0: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4 5.2.4-r1: GNOME database access library
 gnome-extra/libgsf 1.14.34 1.14.36 1.14.39: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
