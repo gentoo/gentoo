@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=media-libs/libpng:0 x11-libs/fox:1.6[png,truetype] x11-libs/libX11 x11-libs/libXft startup-notification? ( x11-libs/startup-notification ) virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=MS-Explorer-like minimalist file manager for X
+EAPI=6
+HOMEPAGE=http://roland65.free.fr/xfe
+IUSE=debug nls startup-notification linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es_AR linguas_es_CO linguas_es linguas_fr linguas_hu linguas_it linguas_ja linguas_nl linguas_no linguas_pl linguas_pt_BR linguas_pt_PT linguas_ru linguas_sv linguas_tr linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng:0 x11-libs/fox:1.6[png,truetype] x11-libs/libX11 x11-libs/libXft startup-notification? ( x11-libs/startup-notification )
+SLOT=0
+SRC_URI=mirror://sourceforge/xfe/xfe/1.42/xfe-1.42.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	l10n	e26ea0642846685782f1813642e7ff0f	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=30d16b9e223e5909896c1f49b4ead3e2
