@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5} )
 
 inherit distutils-r1
 
-DESCRIPTION="A daemon that spawns a specified command to handle each connection, and dampens connection bursts"
+DESCRIPTION="A daemon that spawns one command per connection, and dampens connection bursts"
 HOMEPAGE="https://github.com/zmedico/${PN}"
 SRC_URI="https://github.com/zmedico/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
