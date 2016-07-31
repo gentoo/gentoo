@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.42:2=
-	>=x11-libs/gtk+-3.14:3=
+	>=x11-libs/gtk+-3.20.6:3=
 	>=x11-libs/libnotify-0.7:=
 	>=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.12:=
