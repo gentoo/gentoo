@@ -12837,7 +12837,7 @@ media-plugins/gst-plugins-libde265 1.6.3: H.265 decoder plugin for GStreamer.
 media-plugins/gst-plugins-libmms 0.10.23-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
 media-plugins/gst-plugins-libnice 0.1.13 0.1.13-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 0.10.31-r1 1.4.5 1.6.3 1.8.2: GStreamer encoder/decoder for PNG images
-media-plugins/gst-plugins-libvisual 0.10.36-r1 1.4.5 1.6.3: plugin for gstreamer
+media-plugins/gst-plugins-libvisual 0.10.36-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
 media-plugins/gst-plugins-meta 0.10-r10 1.0-r2 1.6.1 1.6.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
@@ -13175,7 +13175,7 @@ media-sound/gmusicbrowser 1.1.13 1.1.14 1.1.15 9999: An open-source jukebox for 
 media-sound/gnac 0.2.4.1: Audio converter for GNOME
 media-sound/gnaural 1.0.20110606: An opensource binaural-beat generator
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.18.2 3.20.2: Music management for Gnome
+media-sound/gnome-music 3.18.2 3.20.2-r1: Music management for Gnome
 media-sound/gnome-sound-recorder 3.18.2-r1 3.20.2: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS

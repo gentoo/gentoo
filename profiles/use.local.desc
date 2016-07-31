@@ -3966,7 +3966,8 @@ media-libs/grilo:network - Enable network access for media discovery using net-l
 media-libs/grilo:playlist - Enable support for playlists through dev-libs/totem-pl-parser
 media-libs/gst-plugins-bad:egl - Enable EGL support
 media-libs/gst-plugins-bad:gles2 - Enable GLES2 support
-media-libs/gst-plugins-base:ivorbis - Enable integer based vorbis decoder.
+media-libs/gst-plugins-base:ivorbis - Enable integer based vorbis decoder
+media-libs/gst-plugins-base:opus - Enable opus codec support
 media-libs/gst-plugins-base:pango - Enable pango GStreamer plugin
 media-libs/gstreamer:orc - Disable some PaX memory protections to allow plugins that use dev-lang/orc for runtime optimization to be used on hardened PaX systems
 media-libs/harfbuzz:glib - Compile with GLib Unicode support
@@ -4195,6 +4196,7 @@ media-plugins/gst-plugins-meta:libvisual - Enable visualization effects via medi
 media-plugins/gst-plugins-meta:opus - Enable Opus audio codec support
 media-plugins/gst-plugins-meta:vpx - Enables vp8 codec support using libvpx, required to play some HTML5 videos
 media-plugins/gst-plugins-vaapi:drm - Enable DRM renderer
+media-plugins/gst-plugins-vaapi:egl - Enable EGL support
 media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
 media-plugins/imlib2_loaders:eet - Enable Eet image loader
 media-plugins/imlib2_loaders:xcf - Enable XCF image loader
