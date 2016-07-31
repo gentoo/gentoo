@@ -21,7 +21,7 @@ DESCRIPTION="Free implementation of the Remote Desktop Protocol"
 HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
-SLOT="0/1.2"
+SLOT="0/2"
 IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
@@ -65,7 +65,10 @@ RDEPEND="
 	)
 	smartcard? ( sys-apps/pcsc-lite )
 	systemd? ( sys-apps/systemd:0= )
-	wayland? ( dev-libs/wayland )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libxkbcommon
+	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxkbfile
