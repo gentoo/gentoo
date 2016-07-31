@@ -4,13 +4,13 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs
+inherit autotools
 
-PATCH_LEVEL=14
+PATCH_LEVEL=15
 MY_P="${PN}_${PV}"
 
 DESCRIPTION="Utility for opening arj archives"
-HOMEPAGE="http://arj.sourceforge.net"
+HOMEPAGE="http://arj.sourceforge.net/"
 SRC_URI="mirror://debian/pool/main/a/arj/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/a/arj/${MY_P}-${PATCH_LEVEL}.debian.tar.xz"
 
@@ -27,28 +27,26 @@ PATCHES=(
 	"${FILESDIR}/${P}-interix.patch"
 )
 
+DOCS=(
+	doc/compile.txt
+	doc/debug.txt
+	doc/glossary.txt
+	doc/rev_hist.txt
+	doc/xlation.txt
+)
+
 src_prepare() {
 	default
-	cd gnu || die
-	mv configure.{in,ac} || die
+	cd gnu || die 'failed to change to the "gnu" directory'
+	echo -n "" > stripgcc.lnk || die "failed to disable stripgcc.lnk"
+
+	# This gets rid of the QA warning, but should be fixed upstream...
+	mv configure.{in,ac} || die 'failed to move configure.in to configure.ac'
+
 	eautoreconf
 }
 
 src_configure() {
-	cd gnu || die
-	CFLAGS="${CFLAGS} -Wall" econf
-}
-
-src_compile() {
-	sed -i -e '/stripgcc/d' GNUmakefile || die
-
-	ARJLIBDIR="${EPREFIX}/usr/$(get_libdir)"
-	emake CC=$(tc-getCC) libdir="${ARJLIBDIR}" \
-		ADD_LDFLAGS="${LDFLAGS}" \
-		pkglibdir="${ARJLIBDIR}" all
-}
-
-src_install() {
-	emake pkglibdir="${ARJLIBDIR}" DESTDIR="${D}" install
-	dodoc doc/rev_hist.txt
+	cd gnu || die 'failed to change to the "gnu" directory'
+	econf
 }
