@@ -24,10 +24,10 @@ RDEPEND="
 	x11-apps/xmodmap
 	x11-libs/libXext
 	virtual/latex-base
+	dev-qt/qtgui:4
 	imlib? ( media-libs/imlib2 )
 	jpeg? ( || ( media-gfx/imagemagick media-gfx/jpeg2ps ) )
 	netpbm? ( media-libs/netpbm )
-	qt4? ( dev-qt/qtgui:4 )
 	spell? ( app-text/aspell )
 	svg? ( || ( media-gfx/inkscape gnome-base/librsvg:2 ) )
 "
