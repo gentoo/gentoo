@@ -10693,7 +10693,7 @@ games-puzzle/enigma 1.21-r2: puzzle game similar to Oxyd
 games-puzzle/ensemblist 040126: Put together several primitives to build a given shape. (C.S.G. Game)
 games-puzzle/fbg 0.9-r1: A Tetris clone written in OpenGL
 games-puzzle/fish-fillets 1.0.1: Underwater puzzle game - find a safe way out
-games-puzzle/five-or-more 3.18.0 3.20.0: Five or More Game for GNOME
+games-puzzle/five-or-more 3.18.0 3.20.0 3.20.1: Five or More Game for GNOME
 games-puzzle/flobopuyo 0.20-r1: Clone of the famous PuyoPuyo game
 games-puzzle/freesweep 0.92: Console Minesweeper
 games-puzzle/galaxis 1.8: A UNIX-hosted, curses-based clone of the nifty little Macintosh freeware game Galaxis
@@ -12157,7 +12157,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
-media-gfx/fbida 2.10 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.10 2.12 9999: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/feh 2.9.3 2.10 2.11 2.12 2.12.1 2.13.1 2.14: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5: A vector based graphics editor similar to xfig, but simpler
@@ -15739,7 +15739,7 @@ sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gp
 sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
-sci-geosciences/gnome-maps 3.18.2 3.20.1: A map application for GNOME
+sci-geosciences/gnome-maps 3.18.2 3.20.1 3.20.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.4.1529: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
