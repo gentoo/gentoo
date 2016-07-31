@@ -16574,8 +16574,8 @@ sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserv
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
 sys-apps/inxi 2.2.14 2.2.19: A newer, better system information script for irc, administration, and system troubleshooters.
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
-sys-apps/ipmitool 1.8.14-r1 1.8.16: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 2.8.5 2.9.3 2.9.8: IPMI Management Utilities
+sys-apps/ipmitool 1.8.14-r1 1.8.16 1.8.17: Utility for controlling IPMI enabled devices.
+sys-apps/ipmiutil 2.8.5 2.9.8 2.9.9: IPMI Management Utilities
 sys-apps/iproute2 2.6.38 3.3.0 3.8.0 3.17.0 3.19.0 4.0.0-r2 4.1.1 4.2.0 4.3.0 4.4.0 4.5.0 4.6.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 0.56 1.0.4 1.0.5-r1 1.0.6 1.0.7 1.0.7-r1 1.0.9 1.0.9-r1: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
@@ -17325,7 +17325,7 @@ sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS 
 sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
-sys-libs/openipmi 2.0.18-r1 2.0.21: Library interface to IPMI
+sys-libs/openipmi 2.0.18-r1 2.0.21 2.0.22: Library interface to IPMI
 sys-libs/pam 1.2.1 1.2.1-r1 1.3.0: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r1 6.3_p8-r2 7.0_rc1: Another cute console display library
