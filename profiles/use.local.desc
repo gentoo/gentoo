@@ -6120,7 +6120,6 @@ net-misc/electrum:vkb - Enable plugin for virtual keyboard
 net-misc/fatrat:bittorrent - Use the bittorrent protocol via net-libs/rb_libtorrent.
 net-misc/fatrat:webinterface - Enable builtin webinterface.
 net-misc/flexget:transmission - Support comminucation with net-p2p/transmission
-net-misc/freerdp:channels - Build virtual channel plugins
 net-misc/freerdp:client - Build client binaries
 net-misc/freerdp:server - Build server binaries
 net-misc/gnome-online-miners:flickr - Enable Flickr support
