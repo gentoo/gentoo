@@ -27,6 +27,12 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
+	pdf? (
+		media-libs/libepoxy
+		media-libs/mesa
+		x11-libs/cairo[opengl]
+		x11-libs/libdrm
+	)
 	png? ( media-libs/libpng:* )
 	scanner? ( media-gfx/sane-backends )
 	tiff? ( media-libs/tiff:* )
@@ -44,7 +50,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	X? ( x11-proto/xextproto x11-proto/xproto )
-	pdf? ( app-text/ghostscript-gpl )
 "
 
 src_prepare() {
