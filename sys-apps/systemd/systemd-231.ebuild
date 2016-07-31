@@ -434,7 +434,7 @@ pkg_postinst() {
 
 	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
 		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX}/lib/systemd ${ROOT}etc/resolv.conf"
+		ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 
