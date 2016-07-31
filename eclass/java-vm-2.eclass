@@ -267,10 +267,13 @@ java-vm_set-pax-markings() {
 # @CODE
 
 java-vm_revdep-mask() {
+	debug-print-function ${FUNCNAME} "$*"
+
 	local VMROOT="${1-"${EPREFIX}"/opt/${P}}"
 
-	dodir /etc/revdep-rebuild/
-	echo "SEARCH_DIRS_MASK=\"${VMROOT}\""> "${ED}/etc/revdep-rebuild/61-${VMHANDLE}"
+	dodir /etc/revdep-rebuild
+	echo "SEARCH_DIRS_MASK=\"${VMROOT}\"" >> "${ED}/etc/revdep-rebuild/61-${VMHANDLE}" \
+		 || die "Failed to write revdep-rebuild mask file"
 }
 
 
