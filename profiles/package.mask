@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (31 Jul 2016)
+# Upstream is dead and the ebuild is a complete mess. Does not compile with
+# recent JVMs. Masked for removal in 30 days. See bug #584562.
+dev-java/oscache
+
 # Pacho Ramos <pacho@gentoo.org> (31 Jul 2016)
 # Upstream looks completely dead for a long time, doesn't reply to any bug
 # we report to them. This relies on obsolete software like (#587448) and
