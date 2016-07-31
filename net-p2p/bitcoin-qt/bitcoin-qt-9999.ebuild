@@ -20,7 +20,7 @@ RDEPEND="
 	qrcode? (
 		media-gfx/qrencode
 	)
-	qt4? ( dev-qt/qtgui:4 )
+	qt4? ( dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 )
 	qt5? ( dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 )
 	dbus? (
 		qt4? ( dev-qt/qtdbus:4 )
