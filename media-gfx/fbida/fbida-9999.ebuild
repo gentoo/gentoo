@@ -2,18 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=6
+inherit eutils git-r3 toolchain-funcs
 
 DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
 HOMEPAGE="http://www.kraxel.org/blog/linux/fbida/"
+EGIT_REPO_URI="
+	git://git.kraxel.org/fbida
+"
 SRC_URI="
-	http://www.kraxel.org/releases/${PN}/${P}.tar.gz
 	mirror://gentoo/ida.png.bz2
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm hppa ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS=""
 IUSE="curl fbcon +gif lirc pdf +png scanner +tiff X +webp"
 REQUIRED_USE="
 	pdf? ( tiff )
@@ -53,11 +55,18 @@ DEPEND="
 	X? ( x11-proto/xextproto x11-proto/xproto )
 "
 
+src_unpack() {
+	unpack ${A}
+	git-r3_src_unpack
+}
+
 src_prepare() {
-	epatch \
+	eapply \
 		"${FILESDIR}"/ida-desktop.patch \
 		"${FILESDIR}"/${PN}-2.10-giflib-4.2.patch \
 		"${FILESDIR}"/${PN}-2.10-fprintf-format.patch
+
+	eapply_user
 
 	tc-export CC CPP
 
