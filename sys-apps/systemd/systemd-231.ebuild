@@ -433,10 +433,10 @@ pkg_postinst() {
 		eerror
 	fi
 
-	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
-		ewarn "You should replace the resolv.conf symlink:"
-		ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
-	fi
+	#if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
+	#	ewarn "You should replace the resolv.conf symlink:"
+	#	ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
+	#fi
 }
 
 pkg_prerm() {
