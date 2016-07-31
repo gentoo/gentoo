@@ -1,15 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit cmake-utils vcs-snapshot
+inherit cmake-utils
 
-if [[ ${PV} != 9999* ]]; then
-	COMMIT="aa2181dcf2dd98693767ba738c5b2ad8c3d742d4"
+if [[ ${PV} != 9999 ]]; then
+	inherit vcs-snapshot
+	COMMIT="5b2455f3147aca395a441fc65b602938600f0788"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ppc ppc64 x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 else
 	inherit git-r3
 	SRC_URI=""
@@ -21,12 +22,12 @@ DESCRIPTION="Free implementation of the Remote Desktop Protocol"
 HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
-SLOT="0/1.2"
-IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg
-	neon pulseaudio server smartcard test usb wayland X xinerama xv"
+SLOT="0/2"
+IUSE="alsa +client cpu_flags_x86_sse2 cups debug doc ffmpeg gstreamer jpeg libressl neon pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 
 RDEPEND="
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	sys-libs/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
@@ -46,7 +47,7 @@ RDEPEND="
 			xv? ( x11-libs/libXv )
 		)
 	)
-	ffmpeg? ( >=virtual/ffmpeg-9 )
+	ffmpeg? ( virtual/ffmpeg )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -64,7 +65,11 @@ RDEPEND="
 		)
 	)
 	smartcard? ( sys-apps/pcsc-lite )
-	wayland? ( dev-libs/wayland )
+	systemd? ( sys-apps/systemd:0= )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libxkbcommon
+	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxkbfile
@@ -80,29 +85,31 @@ DEPEND="${RDEPEND}
 
 DOCS=( README )
 
-PATCHES=( "${FILESDIR}/freerdp-armfp.patch" "${FILESDIR}/freerdp-ffmpeg29.patch" )
-
 src_configure() {
+	onoff() {
+		usex "$1" ON OFF
+	}
 	local mycmakeargs=(
-		$(cmake-utils_use_with alsa ALSA)
-		$(cmake-utils_use_with client CLIENT)
-		$(cmake-utils_use_with cups CUPS)
-		$(cmake-utils_use_with debug DEBUG_ALL)
-		$(cmake-utils_use_with doc MANPAGES)
-		$(cmake-utils_use_with ffmpeg FFMPEG)
-		$(cmake-utils_use_with gstreamer GSTREAMER_1_0)
-		$(cmake-utils_use_with jpeg JPEG)
-		$(cmake-utils_use_with neon NEON)
-		$(cmake-utils_use_with pulseaudio PULSE)
-		$(cmake-utils_use_with server SERVER)
-		$(cmake-utils_use_with smartcard PCSC)
-		$(cmake-utils_use_with cpu_flags_x86_sse2 SSE2)
-		$(cmake-utils_use usb CHANNEL_URBDRC)
-		$(cmake-utils_use_with X X11)
-		$(cmake-utils_use_with xinerama XINERAMA)
-		$(cmake-utils_use_with xv XV)
-		$(cmake-utils_use_build test TESTING)
-		$(cmake-utils_use_with wayland WAYLAND)
+		-DWITH_ALSA=$(onoff alsa)
+		-DWITH_CLIENT=$(onoff client)
+		-DWITH_CUPS=$(onoff cups)
+		-DWITH_DEBUG_ALL=$(onoff debug)
+		-DWITH_MANPAGES=$(onoff doc)
+		-DWITH_FFMPEG=$(onoff ffmpeg)
+		-DWITH_GSTREAMER_1_0=$(onoff gstreamer)
+		-DWITH_JPEG=$(onoff jpeg)
+		-DWITH_NEON=$(onoff neon)
+		-DWITH_PULSE=$(onoff pulseaudio)
+		-DWITH_SERVER=$(onoff server)
+		-DWITH_PCSC=$(onoff smartcard)
+		-DWITH_LIBSYSTEMD=$(onoff systemd)
+		-DWITH_SSE2=$(onoff cpu_flags_x86_sse2)
+		-DCHANNEL_URBDRC=$(onoff usb)
+		-DWITH_X11=$(onoff X)
+		-DWITH_XINERAMA=$(onoff xinerama)
+		-DWITH_XV=$(onoff xv)
+		-DBUILD_TESTING=$(onoff test)
+		-DWITH_WAYLAND=$(onoff wayland)
 	)
 	cmake-utils_src_configure
 }
