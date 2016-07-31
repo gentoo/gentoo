@@ -28,6 +28,7 @@ RDEPEND="
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
 	pdf? (
+		app-text/poppler
 		media-libs/libepoxy
 		media-libs/mesa
 		x11-libs/cairo[opengl]
