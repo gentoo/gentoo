@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-libs/openssl:0 sys-libs/zlib alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) client? ( usb? ( virtual/libudev:0= sys-apps/util-linux:0= dev-libs/dbus-glib:0= virtual/libusb:1= ) X? ( x11-libs/libXcursor x11-libs/libXext x11-libs/libXi x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 x11-libs/libXrandr ) jpeg? ( virtual/jpeg:0 ) pulseaudio? ( media-sound/pulseaudio ) server? ( X? ( x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes xinerama? ( x11-libs/libXinerama ) ) ) smartcard? ( sys-apps/pcsc-lite ) X? ( x11-libs/libX11 x11-libs/libxkbfile ) <dev-util/cmake-3.1 virtual/pkgconfig client? ( X? ( doc? ( app-text/docbook-xml-dtd:4.1.2 app-text/xmlto ) ) ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Free implementation of the Remote Desktop Protocol
+EAPI=5
+HOMEPAGE=http://www.freerdp.com/
+IUSE=alsa +client cups debug directfb doc ffmpeg gstreamer jpeg pulseaudio server smartcard cpu_flags_x86_sse2 test usb X xinerama xv
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/openssl:0 sys-libs/zlib alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) client? ( usb? ( virtual/libudev:0= sys-apps/util-linux:0= dev-libs/dbus-glib:0= virtual/libusb:1= ) X? ( x11-libs/libXcursor x11-libs/libXext x11-libs/libXi x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) xv? ( x11-libs/libXv ) ) ) directfb? ( dev-libs/DirectFB ) ffmpeg? ( virtual/ffmpeg ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 x11-libs/libXrandr ) jpeg? ( virtual/jpeg:0 ) pulseaudio? ( media-sound/pulseaudio ) server? ( X? ( x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes xinerama? ( x11-libs/libXinerama ) ) ) smartcard? ( sys-apps/pcsc-lite ) X? ( x11-libs/libX11 x11-libs/libxkbfile )
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/FreeRDP/archive/780d451afad21a22d2af6bd030ee71311856f038.tar.gz -> freerdp-1.1.0_beta1_p20130710.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9647da4b1ee56eaa666a411ab25226de
