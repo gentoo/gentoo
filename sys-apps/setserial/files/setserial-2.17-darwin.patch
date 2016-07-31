@@ -1,0 +1,33 @@
+https://541536.bugs.gentoo.org/attachment.cgi?id=397618
+https://bugs.gentoo.org/show_bug.cgi?id=541536
+
+diff --git a/setserial.c b/setserial.c
+index 3474402..3ce8009 100644
+--- a/setserial.c
++++ b/setserial.c
+@@ -31,6 +31,25 @@
+ 
+ #include "version.h"
+ 
++#ifdef __APPLE__
++// see http://www.insanelymac.com/forum/topic/155999-compiling-setserial-on-mac-os-x/
++#ifndef TIOCGSERIAL
++#define TIOCGSERIAL 0x541E
++#endif
++#ifndef TIOCSERCONFIG
++#define TIOCSERCONFIG 0x5453
++#endif
++#ifndef TIOCSSERIAL
++#define TIOCSSERIAL 0x541F
++#endif
++#ifndef TIOCSERGWILD
++#define TIOCSERGWILD 0x5454
++#endif
++#ifndef TIOCSERSWILD
++#define TIOCSERSWILD 0x5455
++#endif
++#endif
++
+ static char version_str[] = "setserial version " SETSERIAL_VERSION ", "
+ 	SETSERIAL_DATE;
+ 
