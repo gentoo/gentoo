@@ -1,0 +1,41 @@
+From 3f5c84e17acfa71dfd44514384398f5a4c449630 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sat, 30 Jul 2016 17:50:42 +0200
+Subject: [PATCH 2/2] Check for XRefEntry existing before using it
+
+Bug #97005
+---
+ poppler/Hints.cc | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/poppler/Hints.cc b/poppler/Hints.cc
+index bdd0d32..6c2fc25 100644
+--- a/poppler/Hints.cc
++++ b/poppler/Hints.cc
+@@ -5,7 +5,7 @@
+ // This file is licensed under the GPLv2 or later
+ //
+ // Copyright 2010, 2012 Hib Eris <hib@hiberis.nl>
+-// Copyright 2010, 2011, 2013, 2014 Albert Astals Cid <aacid@kde.org>
++// Copyright 2010, 2011, 2013, 2014, 2016 Albert Astals Cid <aacid@kde.org>
+ // Copyright 2010, 2013 Pino Toscano <pino@kde.org>
+ // Copyright 2013 Adrian Johnson <ajohnson@redneon.com>
+ // Copyright 2014 Fabio D'Urso <fabiodurso@hotmail.it>
+@@ -43,7 +43,13 @@ Hints::Hints(BaseStream *str, Linearization *linearization, XRef *xref, Security
+       pageObjectFirst);
+     pageObjectFirst = 0;
+   }
+-  pageOffsetFirst = xref->getEntry(pageObjectFirst)->offset;
++  XRefEntry *pageObjectFirstXRefEntry = xref->getEntry(pageObjectFirst);
++  if (!pageObjectFirstXRefEntry) {
++      error(errSyntaxWarning, -1, "No XRef entry for first page object");
++      pageOffsetFirst = 0;
++  } else {
++      pageOffsetFirst = pageObjectFirstXRefEntry->offset;
++  }
+ 
+   if (nPages >= INT_MAX / (int)sizeof(Guint)) {
+      error(errSyntaxWarning, -1, "Invalid number of pages ({0:d}) for hints table", nPages);
+-- 
+2.9.1
+
