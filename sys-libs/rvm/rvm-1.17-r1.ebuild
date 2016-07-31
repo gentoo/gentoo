@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
 DESCRIPTION="Recoverable Virtual Memory (used by Coda)"
 HOMEPAGE="http://www.coda.cs.cmu.edu/"
@@ -17,7 +17,4 @@ RDEPEND=">=sys-libs/lwp-2.5"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc NEWS
-}
+DOCS=( NEWS )
