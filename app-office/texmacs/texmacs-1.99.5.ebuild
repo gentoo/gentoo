@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools fdo-mime gnome2-utils
+inherit autotools fdo-mime gnome2-utils qmake-utils
 
 MY_P=${P/tex/TeX}-src
 
@@ -64,6 +64,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-optimize="${CXXFLAGS}" \
+		--with-qt="$(qt4_get_bindir)" \
 		$(use_with imlib imlib2) \
 		$(use_enable pdf pdf-renderer)
 }
