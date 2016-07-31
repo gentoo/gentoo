@@ -64,6 +64,14 @@ src_configure() {
 		$(use_with X x)
 }
 
+# Defined src_compile as a workaround for a parallel make issue
+# See https://bugs.gentoo.org/show_bug.cgi?id=588864
+# and https://sourceforge.net/p/lirc/tickets/210/
+src_compile() {
+	emake lib
+	emake
+}
+
 src_install() {
 	default
 
