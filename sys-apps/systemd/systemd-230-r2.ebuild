@@ -106,7 +106,7 @@ python_check_deps() {
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-		~DEVPTS_MULTIPLE_INSTANCES ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
+		~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
 		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SECCOMP ~SIGNALFD ~SYSFS
 		~TIMERFD ~TMPFS_XATTR ~UNIX
 		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
@@ -114,6 +114,7 @@ pkg_pretend() {
 
 	use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
 	kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
+	kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 
 	if linux_config_exists; then
 		local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
