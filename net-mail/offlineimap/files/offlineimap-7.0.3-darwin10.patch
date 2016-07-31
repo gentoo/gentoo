@@ -1,0 +1,12 @@
+see http://pogma.com/2009/09/09/snow-leopard-and-offlineimap/ and bug 284925
+
+--- a/offlineimap.py	2016-07-31 23:58:39.131404136 +0800
++++ b/offlineimap.py	2016-07-31 23:58:57.987466173 +0800
+@@ -20,6 +20,7 @@
+ import os
+ import sys
+ 
++from locale import *
+ from offlineimap import OfflineImap
+ 
+ oi = OfflineImap()
