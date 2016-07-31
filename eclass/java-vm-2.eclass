@@ -161,14 +161,14 @@ get_system_arch() {
 # @FUNCTION: set_java_env
 # @DESCRIPTION:
 # Installs a vm env file.
+# DEPRECATED, use java-vm_install-env instead.
 
-# TODO rename to something more evident, like install_env_file
 set_java_env() {
 	debug-print-function ${FUNCNAME} $*
 
 	local platform="$(get_system_arch)"
 	local env_file="${ED}${JAVA_VM_CONFIG_DIR}/${VMHANDLE}"
-	local old_env_file="${ED}/etc/env.d/java/20${P}"
+
 	if [[ ${1} ]]; then
 		local source_env_file="${1}"
 	else
@@ -206,8 +206,49 @@ set_java_env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE} \
-		|| die "Failed to make VM symlink at ${JAVA_VM_DIR}/${VMHANDLE}"
+	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE}
+}
+
+
+# @FUNCTION: java-vm_install-env
+# @DESCRIPTION:
+#
+# Installs a Java VM environment file. The source can be specified but
+# defaults to ${FILESDIR}/${VMHANDLE}.env.sh.
+#
+# Environment variables within this file will be resolved. You should
+# escape the $ when referring to variables that should be resolved later
+# such as ${JAVA_HOME}. Subshells may be used but avoid using double
+# quotes. See icedtea-bin.env.sh for a good example.
+
+java-vm_install-env() {
+	debug-print-function ${FUNCNAME} "$*"
+
+	local env_file="${ED}${JAVA_VM_CONFIG_DIR}/${VMHANDLE}"
+	local source_env_file="${1-${FILESDIR}/${VMHANDLE}.env.sh}"
+
+	if [[ ! -f "${source_env_file}" ]]; then
+		die "Unable to find the env file: ${source_env_file}"
+	fi
+
+	dodir "${JAVA_VM_CONFIG_DIR}"
+
+	# Here be dragons! ;) -- Chewi
+	eval echo "\"$(cat <<< "$(sed 's:":\\":g' "${source_env_file}")")\"" > "${env_file}" ||
+		die "failed to create Java env file"
+
+	(
+		echo "VMHANDLE=\"${VMHANDLE}\""
+		echo "BUILD_ONLY=\"${JAVA_VM_BUILD_ONLY}\""
+		[[ ${JAVA_PROVIDE} ]] && echo "PROVIDES=\"${JAVA_PROVIDE}\"" || true
+	) >> "${env_file}" || die "failed to append to Java env file"
+
+	local java_home=$(unset JAVA_HOME; source "${env_file}"; echo ${JAVA_HOME})
+	[[ -z ${java_home} ]] && die "No JAVA_HOME defined in ${env_file}"
+
+	# Make the symlink
+	dodir "${JAVA_VM_DIR}"
+	dosym "${java_home#${EPREFIX}}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 
