@@ -9639,7 +9639,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
@@ -10351,9 +10351,9 @@ games-board/stockfish 6-r1 6-r2: Free UCI chess engine, claimed to be the strong
 games-board/tali 3.18.0 3.20.0: Beat the odds in a poker-style dice game
 games-board/teg 0.11.2: Gnome Risk Clone
 games-board/tetzle 2.0.3: A jigsaw puzzle game that uses tetrominoes for the pieces
-games-board/xboard 4.8.0: GUI for gnuchess and for internet chess servers
-games-board/xfreecell 1.0.5b: A freecell game for X
-games-board/xgammon 0.98: very nice backgammon game for X
+games-board/xboard 4.8.0 4.8.0-r1: GUI for gnuchess and for internet chess servers
+games-board/xfreecell 1.0.5b 1.0.5b-r1: A freecell game for X
+games-board/xgammon 0.98 0.98-r1: very nice backgammon game for X
 games-board/xmahjongg 3.7 3.7-r1: friendly GUI version of xmahjongg
 games-board/xmille 2.0-r2: Mille Bournes card game
 games-board/xscrabble 2.10-r1: An X11 clone of the well-known Scrabble
