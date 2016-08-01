@@ -12,7 +12,7 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action"
+DESCRIPTION="Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
