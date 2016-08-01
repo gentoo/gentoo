@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-themes/hicolor-icon-theme
 
-	rdp? ( net-misc/freerdp )
+	rdp? ( <net-misc/freerdp-2 )
 	ssh? ( >=x11-libs/vte-0.20:2.91 )
 	spice? (
 		app-emulation/spice-protocol
