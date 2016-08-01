@@ -6,8 +6,6 @@
 		<flag name="gist">
 			Enable Gist, the Gecode Interactive Search Tool
 		</flag>
-	</use>
-	<use>
 		<flag name="gmp">
 			Enable trigonometric and transcendental float
 			constraints
