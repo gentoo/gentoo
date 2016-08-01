@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit linux-info systemd user
+inherit linux-info systemd user fcaps
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/firehol/${PN}.git"
@@ -43,6 +43,10 @@ DEPEND="${RDEPEND}
 
 : ${NETDATA_USER:=netdata}
 : ${NETDATA_GROUP:=netdata}
+
+FILECAPS=(
+	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
+)
 
 pkg_setup() {
 	linux-info_pkg_setup
