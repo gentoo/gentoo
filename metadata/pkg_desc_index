@@ -13724,7 +13724,7 @@ net-analyzer/fail2ban 0.9.3-r1 0.9.4 0.9.5 99999999: scans log files and bans IP
 net-analyzer/fe3d 0.11.2: A 3D visualization tool for network security information
 net-analyzer/ffp 0.0.8-r1: a tool to do fuzzy fingerprinting for man-in-the-middle attacks
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
-net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r6 0.68.5.1-r7 0.68.5.1-r8: library and programs to process reports from NetFlow data
+net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r9: library and programs to process reports from NetFlow data
 net-analyzer/flowgrind 0.7.1: Network performance measurement tool
 net-analyzer/fping 2.4_beta2_p161-r2 3.10 3.13: A utility to ping multiple hosts at once
 net-analyzer/fprobe 1.1 1.1-r2: A libpcap-based tool to collect network traffic data and emit it as NetFlow flows
@@ -17817,7 +17817,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.41: A fast and secure web browser
 www-client/opera-beta 39.0.2256.37 39.0.2256.42: A fast and secure web browser
-www-client/opera-developer 40.0.2296.0 40.0.2301.0: A fast and secure web browser
+www-client/opera-developer 40.0.2301.0 40.0.2306.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
