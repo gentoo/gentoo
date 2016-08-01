@@ -16203,7 +16203,7 @@ sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
 sci-visualization/xgraph 12.1-r2 12.1-r3: X11 Plotting Utility
 sci-visualization/xyscan 3.3.1: Tool for extracting data points from graphs
-sci-visualization/yt 3.2.2 3.2.3: Astrophysical Simulation Analysis and Vizualization package
+sci-visualization/yt 3.2.3 3.3.1: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.4 4.2.6: Interactive 3D mathematical function viewer
 sec-policy/apparmor-profiles 2.10.1: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for abrt
