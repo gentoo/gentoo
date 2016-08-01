@@ -10342,9 +10342,9 @@ games-board/pychess 0.10.1-r2 0.12.3: A chess client for Gnome
 games-board/pysolfc 2.0-r3: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322: An ancient boardgame, very common in Japan, China and Korea
-games-board/scid 4.6.2: a free chess database application
-games-board/simsu 1.2.3: A basic sudoku game
-games-board/sirius 0.8.0: A program for playing the game of othello/reversi
+games-board/scid 4.6.2 4.6.2-r1: a free chess database application
+games-board/simsu 1.2.3 1.2.3-r1: A basic sudoku game
+games-board/sirius 0.8.0 0.8.0-r1: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
 games-board/spider 1.2_p4-r1: Spider Solitaire
 games-board/stockfish 6-r1 6-r2: Free UCI chess engine, claimed to be the strongest in the world
