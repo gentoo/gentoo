@@ -8606,7 +8606,7 @@ dev-ros/rosbag 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Set of
 dev-ros/rosbag_storage 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Set of tools for recording from and playing back ROS message
 dev-ros/rosbash 1.12.3 1.12.5 1.13.1 9999: Assorted shell commands for using ros with bash
 dev-ros/rosboost_cfg 1.12.3 1.12.5 1.13.1 9999: Tool for determining cflags/lflags/etc. of boost on your system
-dev-ros/rosbridge_library 0.7.13 0.7.14 0.7.15 9999: Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action
+dev-ros/rosbridge_library 0.7.15 9999: Core rosbridge package responsible for interpreting JSON and performing the appropriate ROS action
 dev-ros/rosbridge_server 0.7.13-r2 0.7.14 0.7.15 9999: A WebSocket interface to rosbridge
 dev-ros/rosbuild 1.12.3 1.12.5 1.13.1 9999: Scripts for managing the CMake-based build system for ROS
 dev-ros/rosclean 1.12.3 1.12.5 1.13.1 9999: Cleanup filesystem resources (e.g. log files)
@@ -16114,7 +16114,7 @@ sci-mathematics/spin 6.2.1 6.2.3 6.2.5 6.4.5: Tool for formal verification of di
 sci-mathematics/topcom 0.17.4-r1: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/wxmaxima 13.04.2 15.08.2 16.04.1: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 13.04.2 15.08.2 16.04.1 16.04.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 1.6.5 1.6.6: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-mathematics/yacas 1.3.2 1.3.3 1.3.4: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
