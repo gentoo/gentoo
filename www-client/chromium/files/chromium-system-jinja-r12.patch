@@ -1,0 +1,79 @@
+--- a/third_party/WebKit/Source/bindings/scripts/scripts.gyp.orig	2014-08-19 09:55:10.330972228 +0000
++++ b/third_party/WebKit/Source/bindings/scripts/scripts.gyp	2014-08-19 09:55:26.387286232 +0000
+@@ -54,7 +54,6 @@
+     'actions': [{
+       'action_name': 'cache_jinja_templates',
+       'inputs': [
+-        '<@(jinja_module_files)',
+         'code_generator_v8.py',
+         '<@(code_generator_template_files)',
+       ],
+--- a/third_party/WebKit/Source/build/scripts/scripts.gypi.orig	2014-08-19 10:00:00.216521733 +0000
++++ b/third_party/WebKit/Source/build/scripts/scripts.gypi	2014-08-19 10:00:11.464735099 +0000
+@@ -2,10 +2,6 @@
+ {
+     'variables': {
+         'scripts_for_in_files': [
+-            # jinja2/__init__.py contains version string, so sufficient as
+-            # dependency for whole jinja2 package
+-            '<(DEPTH)/third_party/jinja2/__init__.py',
+-            '<(DEPTH)/third_party/markupsafe/__init__.py',  # jinja2 dep
+             'hasher.py',
+             'in_file.py',
+             'in_generator.py',
+--- a/third_party/WebKit/Source/bindings/scripts/scripts.gypi.orig	2014-08-19 10:53:02.824618979 +0000
++++ b/third_party/WebKit/Source/bindings/scripts/scripts.gypi	2014-08-19 10:53:20.784957370 +0000
+@@ -12,9 +12,6 @@
+       '<(DEPTH)/third_party/markupsafe/__init__.py',  # jinja2 dep
+     ],
+     'idl_lexer_parser_files': [
+-      # PLY (Python Lex-Yacc)
+-      '<(DEPTH)/third_party/ply/lex.py',
+-      '<(DEPTH)/third_party/ply/yacc.py',
+       # Web IDL lexer/parser (base parser)
+       '<(DEPTH)/tools/idl_parser/idl_lexer.py',
+       '<(DEPTH)/tools/idl_parser/idl_node.py',
+--- a/third_party/WebKit/Source/build/scripts/scripts.gni.orig	2016-06-02 09:54:28.510152077 +0000
++++ b/third_party/WebKit/Source/build/scripts/scripts.gni	2016-06-02 09:54:50.966612510 +0000
+@@ -9,10 +9,6 @@
+ _scripts_dir = "//third_party/WebKit/Source/build/scripts"
+ 
+ scripts_for_in_files = [
+-  # jinja2/__init__.py contains version string, so sufficient as
+-  # dependency for whole jinja2 package
+-  "//third_party/jinja2/__init__.py",
+-  "//third_party/markupsafe/__init__.py",  # jinja2 dep
+   "$_scripts_dir/hasher.py",
+   "$_scripts_dir/in_file.py",
+   "$_scripts_dir/in_generator.py",
+--- a/third_party/WebKit/Source/bindings/scripts/BUILD.gn.orig	2016-06-02 10:03:01.100658943 +0000
++++ b/third_party/WebKit/Source/bindings/scripts/BUILD.gn	2016-06-02 10:03:13.240907715 +0000
+@@ -36,7 +36,7 @@
+ action("cached_jinja_templates") {
+   script = "code_generator_v8.py"
+ 
+-  inputs = jinja_module_files + [ "code_generator_v8.py" ] +
++  inputs = [ "code_generator_v8.py" ] +
+            code_generator_template_files
+ 
+   # Dummy file to track dependency.
+--- a/third_party/WebKit/Source/platform/v8_inspector/v8_inspector.gyp.orig	2016-06-03 12:31:49.844954196 +0000
++++ b/third_party/WebKit/Source/platform/v8_inspector/v8_inspector.gyp	2016-06-03 12:32:01.869198425 +0000
+@@ -60,7 +60,6 @@
+         {
+           'action_name': 'generateV8InspectorProtocolBackendSources',
+           'inputs': [
+-            '<@(jinja_module_files)',
+             # The python script in action below.
+             '../inspector_protocol/CodeGenerator.py',
+             # Input files for the script.
+--- a/third_party/WebKit/Source/core/inspector/inspector.gyp.orig	2016-06-03 12:38:20.712891692 +0000
++++ b/third_party/WebKit/Source/core/inspector/inspector.gyp	2016-06-03 12:38:31.197104557 +0000
+@@ -52,7 +52,6 @@
+         {
+           'action_name': 'generateInspectorProtocolBackendSources',
+           'inputs': [
+-            '<@(jinja_module_files)',
+             # The python script in action below.
+             '../../platform/inspector_protocol/CodeGenerator.py',
+             # Input files for the script.
