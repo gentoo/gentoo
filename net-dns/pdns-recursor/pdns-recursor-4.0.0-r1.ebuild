@@ -57,9 +57,7 @@ src_install() {
 
 	doinitd "${FILESDIR}"/pdns-recursor
 
-	# Pretty ugly, uh?
-	dodir /var/lib/powerdns/var/lib
-	dosym ../.. /var/lib/powerdns/var/lib/powerdns
+	keepdir /var/lib/powerdns
 }
 
 pkg_postinst() {
