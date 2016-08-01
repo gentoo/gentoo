@@ -6,8 +6,8 @@ EAPI=6
 
 DESCRIPTION="Unicode data from unicode.org"
 HOMEPAGE="http://www.unicode.org/ucd/"
-SRC_URI="http://www.unicode.org/Public/zipped/${PV}/UCD.zip
-	http://www.unicode.org/Public/zipped/${PV}/Unihan.zip"
+SRC_URI="http://www.unicode.org/Public/zipped/${PV}/UCD.zip -> ${P}-UCD.zip
+	http://www.unicode.org/Public/zipped/${PV}/Unihan.zip -> ${P}-Unihan.zip"
 
 LICENSE="unicode"
 SLOT="0"
@@ -22,11 +22,11 @@ S="${WORKDIR}"
 src_unpack() {
 	# Unihan.zip needs to be installed as a zip for reverse deps
 	# https://bugzilla.gnome.org/show_bug.cgi?id=768210
-	unpack UCD.zip
+	unpack ${P}-UCD.zip
 }
 
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r "${S}"/*
-	doins "${DISTDIR}"/Unihan.zip
+	newins "${DISTDIR}"/${P}-Unihan.zip Unihan.zip
 }
