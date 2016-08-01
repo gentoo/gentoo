@@ -16559,7 +16559,7 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
 sys-apps/hwdata-redhat 0.217: Hardware identification and configuration data
-sys-apps/hwids 20141010 20141110 20141214 20150107 20150129 20150417 20150421 20150421-r1 20150717 20150717-r1 20160306 20160421 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20150717 20150717-r1 20160306 20160421 20160801 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 19.1 20.0 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.6.1 1.6.2 1.7.2 1.8.1 1.9 1.10.0 1.10.0-r2 1.10.1-r1 1.11.2: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
