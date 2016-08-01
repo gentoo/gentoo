@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (01 Aug 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-54
+
 # Patrice Clement <monsieurp@gentoo.org> (31 Jul 2016)
 # Upstream is dead and the ebuild is a complete mess. Does not compile with
 # recent JVMs. Masked for removal in 30 days. See bug #584562.
@@ -256,11 +261,6 @@ app-portage/pms-test-suite
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 media-video/motion
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-53
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # Unmaintained, development stalled for a long time (#168283).
