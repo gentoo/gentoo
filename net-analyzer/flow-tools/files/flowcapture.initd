@@ -7,7 +7,7 @@ PORT=${PORT:=2055}
 # It may have multiple children by original design, but this is not recommended
 # for Gentoo at this time.
 PIDFILE_BASE=${PIDFILE_BASE:=/run/flows/flowcapture.pid}
-PIDFILE=${PIDFILE:=${PIDFILE}.${PORT}}
+PIDFILE=${PIDFILE:=${PIDFILE_BASE}.${PORT}}
 
 depend() {
 	use net
