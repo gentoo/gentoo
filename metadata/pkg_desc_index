@@ -15873,7 +15873,7 @@ sci-libs/dsdp 5.8-r2: Software for interior-point for semidefinite programming
 sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
-sci-libs/fftw 2.1.5-r8 3.3.4 9999: Fast C library for the Discrete Fourier Transform
+sci-libs/fftw 2.1.5-r8 3.3.4 3.3.5 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.8.4-r1 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
 sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
