@@ -30,6 +30,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (1 Aug 2016)
+# Masked for removal in 30 days. Dead by upstream. Last release
+# with 15.08. Exported to kde-sunset overlay.
+kde-apps/kdeartwork-colorschemes
+kde-apps/kdeartwork-desktopthemes
+kde-apps/kdeartwork-emoticons
+kde-apps/kdeartwork-iconthemes
+kde-apps/kdeartwork-kscreensaver
+kde-apps/kdeartwork-meta
+kde-apps/kdeartwork-styles
+kde-apps/kdeartwork-wallpapers
+kde-apps/kdeartwork-weatherwallpapers
+kde-apps/kde-base-artwork
+
 # Patrice Clement <monsieurp@gentoo.org> (31 Jul 2016)
 # Upstream is dead and the ebuild is a complete mess. Does not compile with
 # recent JVMs. Masked for removal in 30 days. See bug #584562.
