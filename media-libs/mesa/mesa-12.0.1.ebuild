@@ -186,6 +186,7 @@ pkg_setup() {
 
 src_prepare() {
 	[[ ${PV} == 9999 ]] && eautoreconf
+	epatch "${FILESDIR}"/${PN}-12.0-sysmacros.patch #580392
 }
 
 multilib_src_configure() {

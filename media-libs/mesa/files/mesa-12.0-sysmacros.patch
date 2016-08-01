@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/580392
+
+fixed in upstream here:
+	https://cgit.freedesktop.org/mesa/mesa/commit/?id=20553e4a2d952f6dc37f40f63d2c86b0718c58f9
+
+this is a hack for the 12.0 branch
+
+--- a/src/gallium/winsys/svga/drm/vmw_screen.c
++++ b/src/gallium/winsys/svga/drm/vmw_screen.c
+@@ -31,6 +31,9 @@
+ #include "pipe/p_compiler.h"
+ #include "util/u_hash_table.h"
+ #include <sys/types.h>
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
+--- a/src/gbm/main/gbm.c
++++ b/src/gbm/main/gbm.c
+@@ -31,6 +31,9 @@
+ #include <stdint.h>
+ 
+ #include <sys/types.h>
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <errno.h>
+--- a/src/loader/loader.c
++++ b/src/loader/loader.c
+@@ -80,6 +80,9 @@
+ #include "xmlpool.h"
+ #endif
+ #endif
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ #ifdef HAVE_SYSFS
+ #include <sys/types.h>
+ #endif
