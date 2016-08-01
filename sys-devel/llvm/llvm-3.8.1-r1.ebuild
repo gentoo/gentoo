@@ -22,9 +22,9 @@ SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
 LICENSE="UoI-NCSA"
 SLOT="0/3.8.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
-	python +static-analyzer test xml video_cards_radeon
-	kernel_Darwin kernel_FreeBSD"
+IUSE="clang debug default-compiler-rt default-libcxx doc gold libedit +libffi
+	lldb multitarget ncurses ocaml python +sanitize +static-analyzer test xml
+	video_cards_radeon elibc_musl kernel_Darwin kernel_FreeBSD"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
@@ -169,6 +169,12 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
 	eapply "${FILESDIR}"/llvm-3.8-soversion.patch
 
+	# support building llvm against musl-libc
+	use elibc_musl && eapply "${FILESDIR}"/llvm-3.8-musl-fixes.patch
+
+	# support "musl" as a valid environment type in llvm
+	eapply "${FILESDIR}"/llvm-3.8-musl-support.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
@@ -185,6 +191,14 @@ src_prepare() {
 
 		eapply "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
+
+		pushd "${S}"/tools/clang || die
+		# be able to specify default values for -stdlib and -rtlib at build time
+		eapply "${FILESDIR}"/clang-3.8-default-libs.patch
+
+		# enable clang to recognize musl-libc
+		eapply "${FILESDIR}"/clang-3.8-musl-support.patch
+		popd || die
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/bin/scan-build || die
@@ -282,6 +296,14 @@ multilib_src_configure() {
 			# libgomp support fails to find headers without explicit -I
 			# furthermore, it provides only syntax checking
 			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+
+			# override default stdlib and rtlib
+			-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
+			-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
+
+			# compiler-rt's test cases depend on sanitizer
+			-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+			-DCOMPILER_RT_INCLUDE_TESTS=$(usex sanitize)
 		)
 	fi
 
