@@ -5,3 +5,7 @@
 # Kacper Kowalik <xarthisius@gentoo.org> (25 Apr 2012)
 # Masking due to unsolved dependencies
 app-admin/puppet rrdtool
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
+# dev-qt/qtwebkit:5 not keyworded.
+net-irc/kvirc webkit
