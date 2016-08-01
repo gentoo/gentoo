@@ -7,7 +7,7 @@ EAPI=6
 # Normally you need only one version of this.
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 python3_4 )
-PYTHON_REQ_USE="threads,sqlite?,ssl?"
+PYTHON_REQ_USE="threads,sqlite,ssl?"
 
 inherit distutils-r1
 
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/OfflineIMAP/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc ssl sqlite"
+IUSE="doc ssl"
 
 RDEPEND="dev-python/six"
 DEPEND="doc? ( app-text/asciidoc )"
@@ -41,7 +41,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
 	elog "You will need to configure offlineimap by creating ~/.offlineimaprc"
 	elog "Sample configurations are in /usr/share/doc/${PF}/"
 	elog ""
@@ -50,10 +49,4 @@ pkg_postinst() {
 	elog "configuration file to be sure it connects to the same server every"
 	elog "time. This serves to help fixing CVE-2010-4532 (offlineimap doesn't"
 	elog "check SSL server certificate) in cases where you have no CA cert."
-	echo
-
-	if use sqlite ; then
-		elog "The sqlite USE flag only enables a dependency on sqlite. To use"
-		elog "the sqlite backend you need to enable it in your .offlineimaprc"
-	fi
 }
