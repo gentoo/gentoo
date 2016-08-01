@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
+
 inherit udev eutils
 
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]]; then
 	inherit git-2
 else
 	SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 fi
 
 LICENSE="|| ( GPL-2 BSD ) public-domain"
@@ -33,6 +33,14 @@ src_prepare() {
 	[[ ${PV} == "99999999" ]] && emake fetch
 
 	sed -i -e '/udevadm hwdb/d' Makefile || die
+
+	# Create a rules file compatible with older udev.
+	sed -e 's/evdev:name/keyboard:name/' \
+		-e 's/evdev:atkbd:dmi/keyboard:dmi/' \
+		-e 's/evdev:input:b\([^v]*\)v\([^p]*\)p\([^e]*\)\(e.*\)\?/keyboard:usb:v\2p\3/' \
+		-e 's/keyboard:usb:v046DpC52D\*/keyboard:usb:v046DpC52Dd*dc*dsc*dp*ic*isc*ip*in00*/' \
+		-e 's/keyboard:usb:v0458p0708\*/keyboard:usb:v0458p0708d*dc*dsc*dp*ic*isc*ip*in01*/' \
+		udev/60-keyboard.hwdb > udev/61-oldkeyboard.hwdb || die
 }
 
 _emake() {
