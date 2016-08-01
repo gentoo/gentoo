@@ -4567,7 +4567,7 @@ dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode b
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.18.0 3.20.0: GNOME docking library
-dev-libs/gecode 3.7.3: Gecode is an environment for developing constraint-based systems and applications
+dev-libs/gecode 4.4.0: An environment for developing constraint-based applications
 dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]

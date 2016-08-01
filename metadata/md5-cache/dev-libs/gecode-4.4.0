@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=gist? ( || ( ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) ) ) gmp? ( || ( dev-libs/gmp:0 sci-libs/mpir ) dev-libs/mpfr:0 ) doc? ( app-doc/doxygen media-gfx/graphviz )
+DESCRIPTION=An environment for developing constraint-based applications
+EAPI=6
+HOMEPAGE=http://www.gecode.org/
+IUSE=doc examples gist gmp test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=gist? ( || ( ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) ) ) gmp? ( || ( dev-libs/gmp:0 sci-libs/mpir ) dev-libs/mpfr:0 )
+SLOT=0
+SRC_URI=http://www.gecode.org/download/gecode-4.4.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
+_md5_=8131ea2c624f34b7c4da491af9daa71b
