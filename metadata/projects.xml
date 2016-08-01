@@ -396,6 +396,11 @@
       <name>Amy Winston</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
@@ -967,6 +972,11 @@
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
+      <role>member</role>
+    </member>
+    <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
       <role>member</role>
     </member>
     <member>
@@ -2165,6 +2175,11 @@
       <role>Mathematics</role>
     </member>
     <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
+      <role>Numerics, Statistics</role>
+    </member>
+    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Mathematics, Numerics, Statistics</role>
@@ -2628,6 +2643,11 @@
       <role>Physics</role>
     </member>
     <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
+      <role>High Energy Physics</role>
+    </member>
+    <member>
       <email>nicolasbock@gentoo.org</email>
       <name>Nicolas Bock</name>
       <role>Physics</role>
@@ -2955,6 +2975,11 @@
     <member>
       <email>maksbotan@gentoo.org</email>
       <name>Maxim Koltsov</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
       <role>Member</role>
     </member>
     <member>
@@ -3719,6 +3744,11 @@
       <email>jlec@gentoo.org</email>
       <name>Justin Lecher</name>
       <role>Chemistry, Biology, *</role>
+    </member>
+    <member>
+      <email>marecki@gentoo.org</email>
+      <name>Marek Szuba</name>
+      <role>Physics, Mathematics, Electronics, *</role>
     </member>
     <member>
       <email>nicolasbock@gentoo.org</email>
