@@ -1,25 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit autotools eutils fdo-mime python-single-r1
-
-GNULIB="b287b621969d5a3f56058ff01e554839814da4e1"
-UTHASH="ac47d4928e61c5abc6e977d91310d31ed74690e4"
+inherit eutils fdo-mime python-single-r1
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
-SRC_URI="https://github.com/fontforge/fontforge/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~floppym/dist/gnulib-${GNULIB}.tar.gz
-	https://github.com/troydhanson/uthash/archive/${UTHASH}.tar.gz -> uthash-${UTHASH}.tar.gz"
+SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/${PN}-dist-${PV}.tar.gz"
 
 LICENSE="BSD GPL-3+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="cairo truetype-debugger gif gtk jpeg png +python readline tiff svg unicode X"
 
 REQUIRED_USE="
@@ -47,7 +42,6 @@ RDEPEND="
 	X? (
 		x11-libs/libX11:0=
 		x11-libs/libXi:0=
-		x11-libs/libxkbui:0=
 		>=x11-libs/pango-1.10:0=[X]
 	)
 	!media-gfx/pfaedit
@@ -64,25 +58,10 @@ DEPEND="${RDEPEND}
 #		>=net-libs/zeromq-4.0.4:0=
 #	)
 
+S="${WORKDIR}/fontforge-2.0.20140101"
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-gnulib_import() {
-	(
-		func_add_hook() { :; }
-		source bootstrap.conf
-		set -- "${WORKDIR}/gnulib/gnulib-tool" --libtool --import ${gnulib_modules}
-		echo "$@"
-		"$@"
-	)
-}
-
-src_prepare() {
-	mv "${WORKDIR}/uthash-${UTHASH}" "${S}/uthash" || die
-	gnulib_import || die
-	epatch_user
-	eautoreconf
 }
 
 src_configure() {
@@ -117,7 +96,7 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	prune_libtool_files --modules
 }
 
 pkg_postrm() {

@@ -52,7 +52,7 @@ src_prepare() {
 		-e "s:share/icons:share/pixmaps:" \
 		setup.py || die
 
-	mv docs/README{,.txt}
+	mv docs/README{,.txt} || die
 }
 
 src_compile() {
