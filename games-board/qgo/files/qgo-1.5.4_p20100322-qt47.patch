@@ -1,5 +1,5 @@
---- src/network/playergamelistings.h.old	2010-11-08 13:49:25.000000000 +0100
-+++ src/network/playergamelistings.h	2010-11-08 13:52:24.000000000 +0100
+--- a/src/network/playergamelistings.h	2010-11-08 13:49:25.000000000 +0100
++++ b/src/network/playergamelistings.h	2010-11-08 13:52:24.000000000 +0100
 @@ -66,21 +66,21 @@
  	bool hidden;
  	PlayerListing() : id(0), 
@@ -39,8 +39,8 @@
  	flags(IN_PROGRESS),
  	rated(0), 
  	owner_id(0), 
---- src/board/board.h.old	2010-11-08 13:57:26.000000000 +0100
-+++ src/board/board.h	2010-11-08 13:58:17.000000000 +0100
+--- a/src/board/board.h	2010-11-08 13:57:26.000000000 +0100
++++ b/src/board/board.h	2010-11-08 13:58:17.000000000 +0100
 @@ -50,7 +50,7 @@
  
  	void removeGhosts();
@@ -50,8 +50,8 @@
  	Mark* hasMark(int x, int y);
  	void removeMark(int x, int y, bool update = false);
  	void removeDeadMarks();
---- src/board/boardwindow.h.old	2010-11-08 14:21:19.000000000 +0100
-+++ src/board/boardwindow.h	2010-11-08 14:21:39.000000000 +0100
+--- a/src/board/boardwindow.h	2010-11-08 14:21:19.000000000 +0100
++++ b/src/board/boardwindow.h	2010-11-08 14:21:39.000000000 +0100
 @@ -45,7 +45,7 @@
  	~BoardWindow();
  	
@@ -61,8 +61,8 @@
  	bool doSave(QString fileName, bool force);
  	QString getCandidateFileName();
  
---- src/sgf/sgfparser.h.old	2010-11-08 14:29:05.000000000 +0100
-+++ src/sgf/sgfparser.h	2010-11-08 14:29:27.000000000 +0100
+--- a/src/sgf/sgfparser.h	2010-11-08 14:29:05.000000000 +0100
++++ b/src/sgf/sgfparser.h	2010-11-08 14:29:27.000000000 +0100
 @@ -51,7 +51,7 @@
  */
  protected:
