@@ -1,0 +1,18 @@
+Update to latest freedesktop spec.
+
+--- qalculate-gtk-0.9.9/data/qalculate-gtk.desktop.in
++++ qalculate-gtk-0.9.9/data/qalculate-gtk.desktop.in
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Qalculate!
+ _Comment=Powerful and easy to use calculator
+ Exec=qalculate-gtk
+-Icon=qalculate.png
++Icon=qalculate
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GTK;Application;Utility;Calculator;Science;Math;
++Categories=GTK;Utility;Calculator;Science;Math;
+ 
