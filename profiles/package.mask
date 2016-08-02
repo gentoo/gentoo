@@ -262,11 +262,6 @@ games-emulation/ppsspp
 # Breaks dev-ml/ppx_type_conv
 >=dev-ml/ppx_deriving-4
 
-# Sergei Trofimovich <slyfox@gentoo.org> (26 Jun 2016)
-# Deprecated by upstream in favour of dev-haskell/conduit-extra.
-# Masked for removal.
-dev-haskell/filesystem-conduit
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 media-video/motion
