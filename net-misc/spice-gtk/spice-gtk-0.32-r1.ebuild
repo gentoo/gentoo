@@ -113,6 +113,7 @@ src_configure() {
 		$(use_enable vala) \
 		$(use_enable webdav) \
 		$(use_enable dbus) \
+		--disable-gtk-doc \
 		--disable-werror \
 		--enable-pie"
 
