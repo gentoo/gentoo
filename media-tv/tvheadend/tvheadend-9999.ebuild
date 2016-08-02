@@ -54,7 +54,7 @@ src_configure() {
 	econf --prefix="${EPREFIX}"/usr \
 		--datadir="${EPREFIX}"/usr/share \
 		--disable-hdhomerun_static \
-		--disable-libffmpeg_static \
+		--disable-ffmpeg_static \
 		--disable-ccache \
 		--disable-dvbscan \
 		$(use_enable avahi) \
