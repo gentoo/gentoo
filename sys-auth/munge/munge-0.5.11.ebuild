@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools eutils user
+inherit autotools eutils user prefix
 
 DESCRIPTION="An authentication service for creating and validating credentials"
 HOMEPAGE="https://github.com/dun/munge"
@@ -30,12 +30,14 @@ src_prepare() {
 	# Accepted upstream, https://github.com/dun/munge/pull/40
 	epatch "${FILESDIR}"/fixed-recursive-use-of-make-in-makefiles.patch
 
+	hprefixify config/x_ac_path_openssl.m4
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--localstatedir=/var \
+		--localstatedir="${EPREFIX}"/var \
 		--with-crypto-lib=$(usex gcrypt libgcrypt openssl)
 }
 
@@ -45,19 +47,19 @@ src_install() {
 	default
 
 	# 450830
-	if [ -d "${D}"/var/run ]; then
-		rm -rf "${D}"/var/run || die
+	if [ -d "${ED}"/var/run ]; then
+		rm -rf "${ED}"/var/run || die
 	fi
 
-	diropts -o munge -g munge -m700
+	[[ ${EUID} = 0 ]] && diropts -o munge -g munge -m700
 	dodir /etc/munge
 
 	for d in "init.d" "default" "sysconfig"; do
-		if [ -d "${D}"/etc/${d} ]; then
-			rm -r "${D}"/etc/${d} || die
+		if [ -d "${ED}"/etc/${d} ]; then
+			rm -r "${ED}"/etc/${d} || die
 		fi
 	done
 
-	newconfd "${FILESDIR}"/${PN}d.confd ${PN}d
-	newinitd "${FILESDIR}"/${PN}d.initd ${PN}d
+	newconfd "$(prefixify_ro "${FILESDIR}"/${PN}d.confd)" ${PN}d
+	newinitd "$(prefixify_ro "${FILESDIR}"/${PN}d.initd)" ${PN}d
 }
