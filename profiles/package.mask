@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> <2 Aug 2016>
+# Doesn't install .so, causing all its revdeps to fail to build.
+# Doesn't honour USE=static-libs.
+# Bugs #590272, #590270, #590268, #590266 etc.
+=sci-libs/fftw-3.3.5
+
 # Michał Górny <mgorny@gentoo.org> (1 Aug 2016)
 # Masked for testing, handling keywords and  collecting more changes
 # before unleashing the huge rebuild on all users. Has gotten musl
