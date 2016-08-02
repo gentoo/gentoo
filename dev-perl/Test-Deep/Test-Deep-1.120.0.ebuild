@@ -22,9 +22,16 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		>=virtual/perl-Test-Simple-0.880.0
-		|| (
-			>=virtual/perl-Test-Simple-1.1.10
-			( <virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-Tester-0.40.0 )
-		)
 	)
 "
+
+src_test() {
+	# Bug 584238 Avoidance
+	if perl -e 'exit ( eval { require Test::Tester; Test::Tester->VERSION(0.04); 1 } ? 0 : 1 )'; then
+		perl-module_src_test
+	else
+		einfo "Test phase skipped: Test::Tester required for tests"
+		einfo "Please upgrade to >=dev-lang/perl-5.22.0 or >=virtual/perl-Test-Simple-1.1.10"
+		einfo "if you want this tested"
+	fi
+}
