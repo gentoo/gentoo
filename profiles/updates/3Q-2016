@@ -8,3 +8,4 @@ move dev-perl/convert-ascii-armour dev-perl/Convert-ASCII-Armour
 move net-misc/ksshaskpass kde-plasma/ksshaskpass
 move dev-perl/convert-pem dev-perl/Convert-PEM
 slotmove >=dev-php/pecl-yaml-2.0.0_rc1 0 7
+move dev-perl/regexp-common dev-perl/Regexp-Common
