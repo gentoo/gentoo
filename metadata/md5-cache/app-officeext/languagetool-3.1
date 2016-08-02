@@ -1,15 +1,15 @@
 DEFINED_PHASES=install postinst prerm unpack
-DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( || ( app-office/openoffice[java] app-office/openoffice-bin[java] ) ) app-arch/unzip
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( app-office/openoffice-bin[java] ) app-arch/unzip
 DESCRIPTION=Style and Grammar Checker for libreoffice
 EAPI=5
 HOMEPAGE=https://www.languagetool.org/
 IUSE=office_implementation_libreoffice office_implementation_openoffice
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2
-RDEPEND=>=virtual/jre-1.7 office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( || ( app-office/openoffice[java] app-office/openoffice-bin[java] ) )
+RDEPEND=>=virtual/jre-1.7 office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( app-office/openoffice-bin[java] )
 REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
 SLOT=0
 SRC_URI=https://www.languagetool.org/download/LanguageTool-3.1.oxt
 _eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	office-ext-r1	342fc56feaa095aba175303656869008	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
 _md5_=4d9ca1606084c9ce4ff3b92c2e0408e2
