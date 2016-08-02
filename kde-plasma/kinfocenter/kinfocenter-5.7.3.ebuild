@@ -11,7 +11,7 @@ DESCRIPTION="A utility that provides information about a computer system"
 HOMEPAGE="https://www.kde.org/applications/system/kinfocenter/"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="egl gles2 ieee1394 nfs +opengl +pci samba wayland"
+IUSE="egl gles2 ieee1394 +opengl +pci wayland"
 
 REQUIRED_USE="egl? ( || ( gles2 opengl ) )"
 
@@ -50,8 +50,6 @@ DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep plasma)
 "
 RDEPEND="${COMMON_DEPEND}
-	nfs? ( net-fs/nfs-utils )
-	samba? ( net-fs/samba[server(+)] )
 	$(add_plasma_dep kde-cli-tools)
 	!kde-base/kcontrol:4
 	!kde-base/kinfocenter:4
@@ -79,4 +77,13 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins "${DISTDIR}"/glogo-small.png
+}
+
+pkg_postinst() {
+	if ! has_version "net-fs/nfs-utils"; then
+		einfo "Installing net-fs/nfs-utils will enable the NFS information module."
+	fi
+	if ! has_version "net-fs/samba" || ! has_version "net-fs/samba[server]"; then
+		einfo "Installing net-fs/samba[server(+)] will enable the Samba status information module."
+	fi
 }
