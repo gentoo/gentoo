@@ -6188,6 +6188,7 @@ dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up re
 dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
+dev-perl/Regexp-Common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
 dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
@@ -6610,7 +6611,6 @@ dev-perl/pcsc-perl 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.3: Mozilla PerLDAP
 dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking processes
-dev-perl/regexp-common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1 0.350.0: provides '$self' in OO code
