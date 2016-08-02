@@ -22,6 +22,7 @@
 <longdescription>The IcedTea project provides a harness to build the source code from OpenJDK (http://openjdk.java.net) using Free Software build tools along with additional tools such as a browser plugin and Web Start support via NetX. </longdescription>
 <use>
   <flag name="cacao">Use the CACAO virtual machine rather than HotSpot.</flag>
+  <flag name="cups">Link against the CUPS library at compile time, rather than using it dynamically at runtime.</flag>
   <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs (used to be X flag)</flag>
   <flag name="infinality">Enable better font rendering using fontconfig.</flag>
   <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
@@ -30,6 +31,7 @@
   <flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
   <flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
+  <flag name="shenandoah">Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (x86_64 only)</flag>
   <flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
   <flag name="sunec">Build the SunEC provider against system NSS</flag>
   <flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
