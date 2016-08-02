@@ -20,8 +20,8 @@ IUSE=""
 
 RUBY_S=${P/_/-}
 
-DEPEND+=" >=dev-libs/gecode-3.5.0"
-RDEPEND+=" >=dev-libs/gecode-3.5.0"
+DEPEND+=" >=dev-libs/gecode-3.5.0 <dev-libs/gecode-4"
+RDEPEND+=" >=dev-libs/gecode-3.5.0 <dev-libs/gecode-4"
 
 ruby_add_rdepend "dev-ruby/uuidtools"
 
