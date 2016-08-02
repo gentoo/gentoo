@@ -4,12 +4,12 @@ DESCRIPTION=Python daemon that collects and publishes system metrics
 EAPI=5
 HOMEPAGE=https://github.com/python-diamond/Diamond
 IUSE=test mongo mysql snmp redis python_targets_python2_7
-KEYWORDS=~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=MIT
 RDEPEND=dev-python/configobj dev-python/setproctitle mongo? ( dev-python/pymongo ) mysql? ( dev-python/mysql-python ) snmp? ( dev-python/pysnmp ) redis? ( dev-python/redis-py ) !kernel_linux? ( >=dev-python/psutil-3 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/python-diamond/Diamond/archive/v4.0.tar.gz -> python-diamond-4.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
-_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=97227ef1ddf72fc9a0141db5629e274e
+_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	prefix	e41dbc7154fb2749724e2adedfdf71df	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=30edef31dd763ac573b9ba9d15c7c210
