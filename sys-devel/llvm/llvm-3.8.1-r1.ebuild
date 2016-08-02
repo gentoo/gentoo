@@ -225,6 +225,10 @@ src_prepare() {
 		# https://llvm.org/bugs/show_bug.cgi?id=26651
 		eapply "${FILESDIR}"/clang-3.8-compiler-rt-fbsd.patch
 
+		# Backport abi-tag support, bug #571600
+		eapply "${FILESDIR}"/clang-3.8-abi-tag-support-sema.patch
+		eapply "${FILESDIR}"/clang-3.8-abi-tag-support-mangler.patch
+
 		pushd projects/compiler-rt >/dev/null || die
 
 		# Fix WX sections, bug #421527
