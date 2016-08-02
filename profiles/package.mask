@@ -273,11 +273,6 @@ dev-haskell/filesystem-conduit
 # Removal in 14 days, #587156.
 app-portage/layman-dbtools
 
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Unmaintained, unused, upstream gone. The only revdep (crow-designer)
-# is already last rited for removal, #587142.
-dev-libs/guiloader
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 media-video/motion
