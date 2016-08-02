@@ -10,13 +10,13 @@ if [[ ${PV} = 9999* ]]; then
 	S=${WORKDIR}/diamond-${PV}
 else
 	SRC_URI="https://github.com/python-diamond/Diamond/archive/v${PV}.tar.gz -> python-diamond-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S=${WORKDIR}/Diamond-${PV}
 fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils prefix
 
 DESCRIPTION="Python daemon that collects and publishes system metrics"
 HOMEPAGE="https://github.com/python-diamond/Diamond"
@@ -37,10 +37,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# adjust for Prefix
-	sed -i \
-		-e '/default="\/etc\/diamond\/diamond.conf"/s:=":="'"${EPREFIX}"':' \
-		bin/diamond* \
-		|| die
+	hprefixify bin/diamond*
 
 	# fix necessary to make handlers honour their config, simple sed
 	# doing the same as upstream
@@ -67,6 +64,7 @@ python_install() {
 	sed -i \
 		-e '/pid_file =/s:/var/run:/run:' \
 		"${ED}"/etc/diamond/diamond.conf.example || die
+	hprefixify "${ED}"/etc/diamond/diamond.conf.example
 }
 
 src_install() {
