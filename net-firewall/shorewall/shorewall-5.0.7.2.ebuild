@@ -400,29 +400,35 @@ pkg_postinst() {
 
 	fi
 
-	if [[ -n "${REPLACING_VERSIONS}" && ${REPLACING_VERSIONS} < ${MY_MAJOR_RELEASE_NUMBER} ]]; then
-		# This is an upgrade
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least ${MY_MAJOR_RELEASE_NUMBER} ${v}; then
+			# This is an upgrade
 
-		elog "You are upgrading from a previous major version. It is highly recommended that you read"
-		elog ""
-		elog "  - /usr/share/doc/shorewall*/releasenotes.tx*"
-		elog "  - http://shorewall.net/upgrade_issues.htm#idp8704902640"
-
-		if use ipv4; then
+			elog "You are upgrading from a previous major version. It is highly recommended that you read"
 			elog ""
-			elog "You can auto-migrate your configuration using"
-			elog ""
-			elog "  # shorewall update -A"
+			elog "  - /usr/share/doc/shorewall*/releasenotes.tx*"
+			elog "  - http://shorewall.net/Shorewall-5.html#idp51151872"
 
-			if use ipv6; then
-				elog "  # shorewall6 update -A"
+			if use ipv4; then
+				elog ""
+				elog "You can auto-migrate your configuration using"
+				elog ""
+				elog "  # shorewall update -A"
+
+				if use ipv6; then
+					elog "  # shorewall6 update -A"
+				fi
+
+				elog ""
+				elog "But if you are not familiar with the \"shorewall[6] update\" command,"
+				elog "please read the shorewall[6] man page first."
 			fi
 
-			elog ""
-			elog "But if you are not familiar with the \"shorewall[6] update\" command,"
-			elog "please read the shorewall[6] man page first."
+			# Show this elog only once
+			break
 		fi
-	fi
+	done
 
 	if ! use init; then
 		elog ""
