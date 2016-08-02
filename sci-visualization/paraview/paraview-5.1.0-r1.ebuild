@@ -166,6 +166,7 @@ src_configure() {
 	mycmakeargs+=(
 		$(cmake-utils_use development PARAVIEW_INSTALL_DEVELOPMENT_FILES)
 		$(cmake-utils_use qt5 PARAVIEW_BUILD_QT_GUI)
+		$(usex qt5 "-DPARAVIEW_QT_VERSION=5" "")
 		$(cmake-utils_use qt5 Module_vtkGUISupportQtOpenGL)
 		$(cmake-utils_use qt5 Module_vtkGUISupportQtSQL)
 		$(cmake-utils_use qt5 Module_vtkGUISupportQtWebkit)
