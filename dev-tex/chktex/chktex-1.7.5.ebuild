@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,6 +40,7 @@ src_configure() {
 
 src_compile() {
 	autotools-utils_src_compile
+	autotools-utils_src_compile ChkTeX.dvi
 	use doc && autotools-utils_src_compile html
 }
 
@@ -48,6 +49,7 @@ src_install() {
 		HTML_DOCS=("${AUTOTOOLS_BUILD_DIR}/HTML/ChkTeX/")
 		DOCS+=("${AUTOTOOLS_BUILD_DIR}/HTML/ChkTeX.tex")
 	fi
+	DOCS+=("${AUTOTOOLS_BUILD_DIR}/ChkTeX.dvi")
 	autotools-utils_src_install
 	doman *.1
 }

@@ -120,7 +120,6 @@ src_configure() {
 	econf ${myconf}
 }
 
-
 src_install() {
 	default
 
