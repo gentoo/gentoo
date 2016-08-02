@@ -21,7 +21,7 @@ RDEPEND="dev-libs/openssl:=
 	avahi? ( net-dns/avahi )
 	dbus? ( sys-apps/dbus )
 	ffmpeg? (
-		!libav? ( media-video/ffmpeg:0= )
+		!libav? ( >=media-video/ffmpeg-3:= )
 		libav? ( media-video/libav:= )
 	)
 	hdhomerun? ( media-libs/libhdhomerun )
