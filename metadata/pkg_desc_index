@@ -17662,7 +17662,7 @@ www-apache/mod_h2 1.4.7 1.5.6 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40: JK module for connecting Tomcat and Apache using the ajp13 protocol.
 www-apache/mod_layout 5.1: An Apache2 module for adding custom headers and/or footers
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
-www-apache/mod_limitipconn 0.24 0.24-r1: Allows administrators to limit the number of simultaneous downloads permitted
+www-apache/mod_limitipconn 0.24 0.24-r2: Limit the number of simultaneous apache connections
 www-apache/mod_loadavg 0.0.1: Apache module executing CGI-Requests depending on the load of the server
 www-apache/mod_log_rotate 1.00 1.01: Log rotation support for mod_log_config based on strftime(3)
 www-apache/mod_log_sql 1.101-r1 1.101-r2: An Apache module for logging to an SQL (MySQL) database
