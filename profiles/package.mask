@@ -205,27 +205,11 @@ net-p2p/syncthing-relaysrv
 # Masked for removal in 30 days.
 app-mobilephone/freesmee
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (3 Jul 2016)
-# One of the last reverse dependencies of the deprecated libgnomeprint*
-# libs and some others; unmaintained; obsolete version.
-# Masked for removal in 30 days.
-app-office/lotus-notes
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
 # Removal in 30 days, #568978
 dev-ruby/mail:2.5
-
-# Michał Górny <mgorny@gentoo.org> (1 Jul 2016)
-# Unmaintained upstream, superseded by gnome-base/gnome-shell built-in
-# recording capabilities. Removal in 30 days, #587494.
-media-video/istanbul
-
-# Michał Górny <mgorny@gentoo.org> (1 Jul 2016)
-# No maintainer, multiple QA violations, dead upstream since 2011.
-# Removal in 30 days, #587278.
-net-misc/mknbi
 
 # Hans de Graaff <graaff@gentoo.org> (1 Jul 2016)
 # With the release of Rails 5.0 versions older than 4.2 are no longer
@@ -261,28 +245,6 @@ games-emulation/ppsspp
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2016)
 # Breaks dev-ml/ppx_type_conv
 >=dev-ml/ppx_deriving-4
-
-# Sergei Trofimovich <slyfox@gentoo.org> (26 Jun 2016)
-# Deprecated by upstream in favour of dev-haskell/conduit-extra.
-# Masked for removal.
-dev-haskell/filesystem-conduit
-
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Used to convert ancient layman files, has some ancient hardcoded data.
-# Not really useful anymore, masked for being live since 2009.
-# Removal in 14 days, #587156.
-app-portage/layman-dbtools
-
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Unmaintained, unused, upstream gone. The only revdep (crow-designer)
-# is already last rited for removal, #587142.
-dev-libs/guiloader
-dev-libs/guiloader-c++
-
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Unmaintained, not updated since 2012. Not really useful for anything.
-# Removal in 30 days, #587138.
-app-portage/pms-test-suite
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
