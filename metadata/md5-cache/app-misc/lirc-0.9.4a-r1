@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst preinst
+DEFINED_PHASES=compile configure install postinst preinst
 DEPEND=doc? ( app-doc/doxygen ) virtual/pkgconfig
 DESCRIPTION=decode and send infra-red signals of many commonly used remote controls
 EAPI=6
@@ -10,6 +10,6 @@ RDEPEND=X? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) systemd? ( sys-app
 REQUIRED_USE=iguanair? ( irman )
 SLOT=0
 SRC_URI=mirror://sourceforge/lirc/lirc-0.9.4a.tar.bz2
-_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:- src_install:-
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=ce8fdac30d9c4c877a6c08cf2135c8ea
+_md5_=1e9da1c59005da56c7cbafc83744e0c6
