@@ -6283,9 +6283,11 @@ net-misc/rdesktop:kerberos - Enable CredSPP support + Kerberos authentication wi
 net-misc/rdesktop:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite driver
 net-misc/rdesktop:xrandr - Enable XRandR window extension support
 net-misc/remmina:freerdp - Add support for the net-misc/freerdp application
+net-misc/remmina:libsecret - Enable libsecret support to store login credentials
 net-misc/remmina:ssh - Enable support for SSH/SFTP protocol; see also 'vte'
 net-misc/remmina:telepathy - Enable telepathy support
 net-misc/remmina:vte - Enable virtual terminal support (for SSH sessions)
+net-misc/remmina:webkit - Enable a user survey using net-libs/webkit-gtk
 net-misc/rsync:stunnel - Provide helper scripts for using rsync via >=net-misc/stunnel-4
 net-misc/rygel:tracker - Install dependencies for the tracker plugin
 net-misc/rygel:transcode - Install dependencies for transcoding support

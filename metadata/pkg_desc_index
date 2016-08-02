@@ -2906,7 +2906,7 @@ dev-db/lib_mysqludf_udf 0.0.3: MySQL UDFs for reporting internals from the udf i
 dev-db/lib_mysqludf_xql 1.0.0: MySQL UDFs which can be used to create XML output directly from MySQL
 dev-db/libdbi 0.9.0: libdbi is a database-independent abstraction layer in C, similar to the DBI/DBD layer in Perl
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
-dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
+dev-db/libiodbc 3.52.8-r2 3.52.12: ODBC Interface for Linux
 dev-db/libodbc++ 0.2.5-r2: C++ class library that provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC
 dev-db/libzdb 2.11.1 2.11.2 2.11.3 2.12 3.0 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.14 0.9.17 0.9.18: An ultra-fast, ultra-compact key-value embedded data store
@@ -6336,7 +6336,7 @@ dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-Needs 0.2.2: Skip tests when modules not available
 dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
-dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while testing
+dev-perl/Test-NoWarnings 1.40.0-r3: Make sure you didn't emit any warnings while testing
 dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
@@ -14856,7 +14856,7 @@ net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git exten
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 9999: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 1.2.0_rc14 9999: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
