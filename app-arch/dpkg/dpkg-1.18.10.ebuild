@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils multilib autotools toolchain-funcs
 
 DESCRIPTION="Package maintenance system for Debian"
@@ -17,7 +17,6 @@ IUSE="+bzip2 +lzma nls selinux test unicode +update-alternatives +zlib"
 RDEPEND="
 	>=dev-lang/perl-5.6.0:=
 	dev-perl/TimeDate
-	>=sys-libs/ncurses-5.2-r7:=
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	selinux? ( sys-libs/libselinux )
@@ -44,9 +43,11 @@ DOCS=( ChangeLog THANKS TODO )
 
 src_prepare() {
 	# do not expect Debian's gzip --rsyncable extension
-	epatch "${FILESDIR}"/${PN}-1.17.0-gzip-rsyncable.patch
+	eapply "${FILESDIR}"/${PN}-1.17.0-gzip-rsyncable.patch
 
-	epatch "${FILESDIR}"/${PN}-1.17.1-flags.patch
+	eapply "${FILESDIR}"/${PN}-1.17.1-flags.patch
+
+	eapply "${FILESDIR}"/${PN}-1.18.9-strerror.patch
 
 	# Force the use of the running bash for get-version (this file is never
 	# installed, so no need to worry about hardcoding a temporary bash)
@@ -66,6 +67,8 @@ src_prepare() {
 
 	use nls && strip-linguas -i po
 
+	eapply_user
+
 	eautoreconf
 }
 
@@ -75,15 +78,16 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable unicode) \
 		$(use_enable update-alternatives) \
-		$(use_with bzip2 bz2) \
+		$(use_with bzip2 libbz2) \
 		$(use_with lzma liblzma) \
-		$(use_with selinux) \
-		$(use_with zlib) \
+		$(use_with selinux libselinux) \
+		$(use_with zlib libz) \
 		--disable-compiler-warnings \
 		--disable-dselect \
 		--disable-silent-rules \
 		--disable-start-stop-daemon \
-		--localstatedir="${EPREFIX}"/var
+		--localstatedir="${EPREFIX}"/var \
+		--without-libmd
 }
 
 src_compile() {
