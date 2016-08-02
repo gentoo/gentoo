@@ -20,7 +20,7 @@ DEPEND="
 	dev-perl/Exporter-Lite
 	dev-perl/File-Which
 	dev-perl/Getopt-Tabular
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	dev-perl/Sys-CPU
 	dev-util/astyle
 	dev-util/indent
