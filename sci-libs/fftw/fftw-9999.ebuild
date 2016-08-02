@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
-IUSE="altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi openmp quad static-libs test threads zbus"
+IUSE="altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
 
 RDEPEND="
 	mpi? ( virtual/mpi )"
@@ -83,6 +83,8 @@ multilib_src_configure() {
 	fi
 
 	local myconf=(
+		--enable-shared
+		$(use_enable static-libs static)
 		$(use_enable "cpu_flags_x86_fma$(usex cpu_flags_x86_fma3 3 4)" fma)
 		$(use_enable fortran)
 		$(use_enable zbus mips-zbus-timer)
@@ -99,6 +101,7 @@ multilib_src_configure() {
 				$(use_enable cpu_flags_x86_avx2 avx2)
 				$(use_enable cpu_flags_x86_sse sse)
 				$(use_enable cpu_flags_x86_sse2 sse2)
+				$(use_enable neon)
 				${enable_mpi}
 			)
 			;;

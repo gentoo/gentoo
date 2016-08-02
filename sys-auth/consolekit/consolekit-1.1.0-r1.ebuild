@@ -2,21 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils linux-info pam
+EAPI=6
+inherit linux-info pam
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Framework for defining and tracking users, login sessions and seats"
 HOMEPAGE="https://github.com/ConsoleKit2/ConsoleKit2 https://www.freedesktop.org/wiki/Software/ConsoleKit"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar.bz2
-	https://launchpad.net/debian/+archive/primary/+files/${PN}_0.4.6-4.debian.tar.gz" # for logrotate file
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc64 ~x86"
-IUSE="acl cgroups debug doc kernel_linux pam policykit selinux test"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux"
+IUSE="acl cgroups debug doc kernel_linux pam pm-utils policykit selinux test"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19
@@ -33,8 +32,10 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		)
 	pam? ( virtual/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
+# pm-utils: bug 557432
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )
+	pm-utils? ( sys-power/pm-utils )
 	selinux? ( sec-policy/selinux-consolekit )"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
@@ -49,6 +50,8 @@ S=${WORKDIR}/${MY_P}
 
 QA_MULTILIB_PATHS="usr/lib/ConsoleKit/.*"
 
+PATCHES=( "${FILESDIR}/${P}-Remove-the-root-restriction-for-runtime-dirs.patch" )
+
 pkg_setup() {
 	if use kernel_linux; then
 		# This is from https://bugs.gentoo.org/376939
@@ -62,7 +65,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
-	epatch_user
+	default
 }
 
 src_configure() {
@@ -104,15 +107,13 @@ src_install() {
 	exeinto /etc/X11/xinit/xinitrc.d
 	newexe "${FILESDIR}"/90-consolekit-3 90-consolekit
 
+	if use kernel_linux; then
+		# bug 571524
+		exeinto /usr/lib/ConsoleKit/run-session.d
+		doexe "${FILESDIR}"/pam-foreground-compat.ck
+	fi
+
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
 	rm -rf "${ED}"/var/run || die # let the init script create the directory
-
-	insinto /etc/logrotate.d
-	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
-}
-
-pkg_postinst() {
-	elog "For suspend/hibernate support, please emerge"
-	elog "  sys-power/pm-utils"
 }

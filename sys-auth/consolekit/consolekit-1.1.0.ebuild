@@ -10,8 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Framework for defining and tracking users, login sessions and seats"
 HOMEPAGE="https://github.com/ConsoleKit2/ConsoleKit2 https://www.freedesktop.org/wiki/Software/ConsoleKit"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar.bz2
-	https://launchpad.net/debian/+archive/primary/+files/${PN}_0.4.6-4.debian.tar.gz" # for logrotate file
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -115,7 +114,4 @@ src_install() {
 	prune_libtool_files --all # --all for pam_ck_connector.la
 
 	rm -rf "${ED}"/var/run || die # let the init script create the directory
-
-	insinto /etc/logrotate.d
-	newins "${WORKDIR}"/debian/${PN}.logrotate ${PN} #374513
 }
