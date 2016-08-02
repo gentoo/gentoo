@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=dev-perl/Config-General dev-libs/libxslt rbd? ( sys-cluster/ceph ) infiniband? ( sys-fabric/libibverbs:= sys-fabric/librdmacm:= ) app-text/docbook-xsl-stylesheets
+DESCRIPTION=Linux SCSI target framework (tgt)
+EAPI=5
+HOMEPAGE=http://stgt.sourceforge.net
+IUSE=fcoe fcp ibmvio infiniband rbd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Config-General dev-libs/libxslt rbd? ( sys-cluster/ceph ) infiniband? ( sys-fabric/libibverbs:= sys-fabric/librdmacm:= ) app-text/docbook-xsl-stylesheets dev-libs/libaio sys-apps/sg3_utils
+SLOT=0
+SRC_URI=https://github.com/fujita/tgt/tarball/v1.0.66 -> tgt-1.0.66.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=fc87490c3c045d17fbe12b1091274b0b
