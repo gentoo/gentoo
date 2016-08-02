@@ -267,12 +267,6 @@ games-emulation/ppsspp
 # Masked for removal.
 dev-haskell/filesystem-conduit
 
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Used to convert ancient layman files, has some ancient hardcoded data.
-# Not really useful anymore, masked for being live since 2009.
-# Removal in 14 days, #587156.
-app-portage/layman-dbtools
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 media-video/motion
