@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="http://spice-space.org/download/gtk/${P}.tar.bz2"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="dbus doc gstreamer gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
+IUSE="dbus gstreamer gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
 
 REQUIRED_USE="
 	?? ( pulseaudio gstreamer )
@@ -116,16 +116,6 @@ src_configure() {
 		--disable-werror \
 		--enable-pie"
 
-	if use gtk3; then
-		myconf+=" \
-			$(use_enable doc gtk-doc) \
-			$(use_enable doc gtk-doc-html)"
-	else
-		myconf+=" \
-			--disable-gtk-doc \
-			--disable-gtk-doc-html"
-	fi
-
 	econf ${myconf}
 }
 
@@ -137,9 +127,6 @@ src_install() {
 
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files
-
-	# Make sure no gtk-doc bits are installed for -doc
-	use doc || rm -rf "${ED}usr/share/gtk-doc"
 
 	make_desktop_entry spicy Spicy "utilities-terminal" "Network;RemoteAccess;"
 }
