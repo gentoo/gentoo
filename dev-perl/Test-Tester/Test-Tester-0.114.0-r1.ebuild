@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,4 +14,19 @@ LICENSE="GPL-2"
 # this is just a dummy ebuild to help with portage dependency resolution on
 # Perl 5.22 upgrade - it does not install any files
 
-RDEPEND="~virtual/perl-Test-Simple-1.1.14"
+RDEPEND="=virtual/perl-Test-Simple-1.1.14*"
+
+removal_message() {
+	einfo "This package is only a stub for upgrade purposes and can now be removed"
+	einfo "Equivalent modules now should be supported by either"
+	einfo " a) virtual/perl-Test-Simple installing >=perl-core/Test-Simple-1.1.14"
+	einfo " b) virtual/perl-Test-Simple installing >=dev-lang/perl-5.22.0"
+}
+
+pkg_postinst() {
+	removal_message
+}
+
+pkg_info() {
+	removal_message
+}
