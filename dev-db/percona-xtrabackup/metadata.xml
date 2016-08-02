@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+    <description>Proxy maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="system-boost">Use system boost (dev-libs/boost) instead of bundled one</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">percona/percona-xtrabackup</remote-id>
+  </upstream>
+</pkgmetadata>
