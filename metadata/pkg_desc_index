@@ -5112,7 +5112,7 @@ dev-ml/ocaml-gettext 0.3.5-r1: Provides support for internationalization of OCam
 dev-ml/ocaml-hashcons 1.0 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
-dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
+dev-ml/ocaml-mysql 1.1.1 1.2.0 1.2.1: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.3.0 0.3.1: Redis bindings for OCaml
@@ -9515,7 +9515,7 @@ dev-tex/pstplus 1.6: A PSTricks GUI
 dev-tex/qtexengine 0.3: TeX support for Qt
 dev-tex/quotchap 0.9f: LaTeX package used to add quotes to chapters
 dev-tex/rail 1.2_p1: Offers syntax/railroad diagrams
-dev-tex/rcsinfo 1.9: A LaTeX module to acces RCS/CVS version info
+dev-tex/rcsinfo 1.9 1.11: A LaTeX module to acces RCS/CVS version info
 dev-tex/revtex 4 4.1_p2-r1: LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics
 dev-tex/rubber 1.1_p20090819 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
