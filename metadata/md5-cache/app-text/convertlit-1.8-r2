@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-libs/libtommath-0.36-r1 app-arch/unzip
+DESCRIPTION=CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
+EAPI=6
+HOMEPAGE=http://www.convertlit.com/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libtommath-0.36-r1
+SLOT=0
+SRC_URI=http://www.convertlit.com/clit18src.zip
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=0d9bd4661eeeffd73b5253ddbbbcdf21

@@ -2216,7 +2216,7 @@ app-text/chm2pdf 0.9.1-r1 0.9.1-r2: A script that converts a CHM file into a sin
 app-text/clara 20031214: An OCR (Optical Character Recognition) program
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
-app-text/convertlit 1.8-r1: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
+app-text/convertlit 1.8-r1 1.8-r2: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 1.15 1.15-r1 2.0: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor and for similar text processing
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
@@ -14809,7 +14809,7 @@ net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07 9999: Free client for C
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/openssh 7.1_p2-r1 7.2_p2 7.2_p2-r1: Port of OpenBSD's free SSH release
+net-misc/openssh 7.1_p2-r1 7.2_p2 7.2_p2-r1 7.3_p1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn 2.3.11 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
