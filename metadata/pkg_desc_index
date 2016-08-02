@@ -6357,7 +6357,7 @@ dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
 dev-perl/Test-TCP 2.60.0 2.160.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
-dev-perl/Test-Tester 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
+dev-perl/Test-Tester 0.109.0-r1 0.114.0-r1: Ease testing test modules built with Test::Builder
 dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for testing
 dev-perl/Test-Trap 0.2.2-r1 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
