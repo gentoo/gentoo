@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="dev-perl/Config-General
 	dev-perl/Math-VecStat
 	dev-perl/Params-Validate
 	dev-perl/Readonly
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	>=dev-perl/Set-IntSpan-1.11
 	dev-perl/Graphics-ColorObject
 	dev-perl/List-MoreUtils"
