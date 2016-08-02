@@ -1,0 +1,57 @@
+From 664d2fdbd966764836b1f4da2dbc5750c7f01f0f Mon Sep 17 00:00:00 2001
+From: Eric Koegel <eric.koegel@gmail.com>
+Date: Sun, 10 Apr 2016 11:20:24 +0300
+Subject: [PATCH] Remove the root restriction for runtime dirs
+
+---
+ src/ck-sysdeps-unix.c       |  5 -----
+ tools/ck-remove-directory.c | 10 ----------
+ 2 files changed, 15 deletions(-)
+
+diff --git a/src/ck-sysdeps-unix.c b/src/ck-sysdeps-unix.c
+index 67d8eac..ecd176a 100644
+--- a/src/ck-sysdeps-unix.c
++++ b/src/ck-sysdeps-unix.c
+@@ -409,11 +409,6 @@ ck_generate_runtime_dir_for_user (guint uid)
+ 
+         TRACE ();
+ 
+-        if (uid < 1) {
+-                g_debug ("We do not create runtime dirs for root");
+-                return NULL;
+-        }
+-
+         errno = 0;
+         pwent = getpwuid (uid);
+         if (pwent == NULL) {
+diff --git a/tools/ck-remove-directory.c b/tools/ck-remove-directory.c
+index cf44fd6..b1a5722 100644
+--- a/tools/ck-remove-directory.c
++++ b/tools/ck-remove-directory.c
+@@ -51,11 +51,6 @@ become_user (uid_t uid, const gchar* dest)
+         int            res;
+         struct passwd *pwent;
+ 
+-        if (uid < 1) {
+-                g_critical ("invalid UID");
+-                exit (1);
+-        }
+-
+         if (dest == NULL) {
+                 g_critical ("invalid dest");
+                 exit (1);
+@@ -148,11 +143,6 @@ main (int    argc,
+                 exit (1);
+         }
+ 
+-        if (user_id < 1) {
+-                g_warning ("Invalid UID");
+-                exit (1);
+-        }
+-
+         /* Ensure we have a dest and that it starts with the correct prefix
+          * so we don't remove something important.
+          */
+-- 
+2.7.3
+
