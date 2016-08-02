@@ -10328,11 +10328,11 @@ games-board/openyahtzee 1.9.2 1.9.3: A full-featured wxWidgets version of the cl
 games-board/pasang-emas 3.1.0: A traditional game of Brunei
 games-board/peg-e 1.1.2: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
-games-board/pioneers 15.3: A clone of the popular board game The Settlers of Catan
-games-board/pokerth 1.1.1 1.1.1-r1: Texas Hold'em poker game
+games-board/pioneers 15.3 15.3-r1: A clone of the popular board game The Settlers of Catan
+games-board/pokerth 1.1.1 1.1.1-r1 1.1.1-r2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r2: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
-games-board/pychess 0.10.1-r2 0.12.3: A chess client for Gnome
+games-board/pychess 0.10.1-r2 0.12.3 0.12.3-r1: A chess client for Gnome
 games-board/pysolfc 2.0-r3 2.0-r4: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230 20091230-r1: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322 1.5.4_p20100322-r1: An ancient boardgame, very common in Japan, China and Korea
@@ -10668,7 +10668,7 @@ games-puzzle/amoebax 0.2.1: a cute and addictive action-puzzle game, similar to 
 games-puzzle/anagramarama 0.2: Create as many words as you can before the time runs out
 games-puzzle/angrydd 1.0.1-r1: Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter
 games-puzzle/arrows 0.6: simple maze-like game where you navigate around and destroy arrows
-games-puzzle/atomix 3.18.0: a game where you build full molecules, from simple inorganic to extremely complex organic ones
+games-puzzle/atomix 3.18.0 3.18.0-r1: A game where you build full molecules, from simple inorganic to extremely complex organic ones
 games-puzzle/bastet 0.43: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30: Logic game with arcade and tactics modes
 games-puzzle/braincurses 0.5b: An ncurses-based mastermind clone

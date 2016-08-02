@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-db/sqlite:3 dev-libs/boost:=[threads(+)] dev-libs/libgcrypt:0 dev-libs/protobuf dev-libs/tinyxml[stl] dev-qt/qtcore:5 dev-qt/qtnetwork:5 >=net-libs/libircclient-1.6-r2 >=net-misc/curl-7.16 virtual/gsasl !dedicated? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/libsdl:0 media-libs/sdl-mixer[mod,vorbis] ) !dedicated? ( dev-qt/qtsql:5 ) virtual/pkgconfig
+DESCRIPTION=Texas Hold'em poker game
+EAPI=6
+HOMEPAGE=http://www.pokerth.net/
+IUSE=dedicated
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain
+RDEPEND=dev-db/sqlite:3 dev-libs/boost:=[threads(+)] dev-libs/libgcrypt:0 dev-libs/protobuf dev-libs/tinyxml[stl] dev-qt/qtcore:5 dev-qt/qtnetwork:5 >=net-libs/libircclient-1.6-r2 >=net-misc/curl-7.16 virtual/gsasl !dedicated? ( dev-qt/qtgui:5 dev-qt/qtwidgets:5 media-libs/libsdl:0 media-libs/sdl-mixer[mod,vorbis] )
+SLOT=0
+SRC_URI=mirror://sourceforge/pokerth/PokerTH-1.1.1-src.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=b14bef4323b60fd8b402890a68f8c761
