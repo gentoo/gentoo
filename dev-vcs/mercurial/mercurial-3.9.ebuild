@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
@@ -10,12 +10,12 @@ PYTHON_REQ_USE="threads"
 inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
-HOMEPAGE="http://mercurial.selenic.com/"
-SRC_URI="http://mercurial.selenic.com/release/${P}.tar.gz"
+HOMEPAGE="https://www.mercurial-scm.org/"
+SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="bugzilla emacs gpg test tk"
 
 RDEPEND="bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
@@ -84,11 +84,6 @@ python_install_all() {
 	dodoc -r contrib
 	docompress -x /usr/share/doc/${PF}/contrib
 	doman doc/*.?
-
-	cat > "${T}/80mercurial" <<-EOF
-HG="${EPREFIX}/usr/bin/hg"
-EOF
-	doenvd "${T}/80mercurial"
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
