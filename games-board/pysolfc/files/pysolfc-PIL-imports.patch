@@ -3,9 +3,9 @@ https://bugs.gentoo.org/show_bug.cgi?id=471514
 
 Index: pysollib/mfxutil.py
 ===================================================================
-diff --git a/PySolFC/trunk/pysollib/mfxutil.py b/PySolFC/trunk/pysollib/mfxutil.py
---- a/PySolFC/trunk/pysollib/mfxutil.py	(revision 279)
-+++ b/PySolFC/trunk/pysollib/mfxutil.py	(working copy)
+diff --git a/pysollib/mfxutil.py b/pysollib/mfxutil.py
+--- a/pysollib/mfxutil.py	(revision 279)
++++ b/pysollib/mfxutil.py	(working copy)
 @@ -41,18 +41,18 @@
  Image = ImageTk = ImageOps = None
  if TOOLKIT == 'tk':
@@ -35,9 +35,9 @@ diff --git a/PySolFC/trunk/pysollib/mfxutil.py b/PySolFC/trunk/pysollib/mfxutil.
  if TOOLKIT == 'tk' and Image and Image.VERSION >= '1.1.7':
 Index: scripts/cardset_viewer.py
 ===================================================================
-diff --git a/PySolFC/trunk/scripts/cardset_viewer.py b/PySolFC/trunk/scripts/cardset_viewer.py
---- a/PySolFC/trunk/scripts/cardset_viewer.py	(revision 279)
-+++ b/PySolFC/trunk/scripts/cardset_viewer.py	(working copy)
+diff --git a/scripts/cardset_viewer.py b/scripts/cardset_viewer.py
+--- a/scripts/cardset_viewer.py	(revision 279)
++++ b/scripts/cardset_viewer.py	(working copy)
 @@ -7,7 +7,7 @@
  from math import sqrt, sin, cos, pi
  from Tkinter import *
