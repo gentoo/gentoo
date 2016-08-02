@@ -279,11 +279,6 @@ app-portage/layman-dbtools
 dev-libs/guiloader
 dev-libs/guiloader-c++
 
-# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
-# Unmaintained, not updated since 2012. Not really useful for anything.
-# Removal in 30 days, #587138.
-app-portage/pms-test-suite
-
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
 media-video/motion
