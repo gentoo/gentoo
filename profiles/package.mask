@@ -277,7 +277,6 @@ app-portage/layman-dbtools
 # Unmaintained, unused, upstream gone. The only revdep (crow-designer)
 # is already last rited for removal, #587142.
 dev-libs/guiloader
-dev-libs/guiloader-c++
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
 # Unpatched security vulnerability per bug #475120
