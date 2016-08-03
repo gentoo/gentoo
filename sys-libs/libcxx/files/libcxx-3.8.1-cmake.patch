@@ -1,0 +1,119 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6c96f6..f694099 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,6 +49,7 @@ endif()
+ # Basic options ---------------------------------------------------------------
+ option(LIBCXX_ENABLE_ASSERTIONS "Enable assertions independent of build mode." ON)
+ option(LIBCXX_ENABLE_SHARED "Build libc++ as a shared library." ON)
++option(LIBCXX_ENABLE_STATIC "Build libc++ as a static library." OFF)
+ 
+ option(LIBCXX_INCLUDE_TESTS "Build the libc++ tests." ${LLVM_INCLUDE_TESTS})
+ option(LIBCXX_INCLUDE_DOCS "Build the libc++ documentation." ${LLVM_INCLUDE_DOCS})
+@@ -262,6 +263,18 @@ remove_flags(-DNDEBUG -UNDEBUG -D_DEBUG
+ # so they don't get transformed into -Wno and -errors respectivly.
+ remove_flags(-Wno-pedantic -pedantic-errors -pedantic)
+ 
++# FIXME: this is cribbed from HandleLLVMOptions.cmake.
++if(LIBCXX_STANDALONE_BUILD)
++  # Pass -Wl,-z,defs. This makes sure all symbols are defined. Otherwise a DSO
++  # build might work on ELF but fail on MachO/COFF.
++  if(NOT (${CMAKE_SYSTEM_NAME} MATCHES "Darwin" OR WIN32 OR CYGWIN OR
++          ${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD" OR
++          ${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD") AND
++     NOT LLVM_USE_SANITIZER)
++    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-z,defs")
++  endif()
++endif()
++
+ # Required flags ==============================================================
+ add_compile_flags_if_supported(-std=c++11)
+ if (NOT MSVC AND NOT LIBCXX_SUPPORTS_STD_EQ_CXX11_FLAG)
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index d6a35f8..608eb4e 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -28,16 +28,6 @@ if(NOT LIBCXX_INSTALL_LIBRARY)
+   set(exclude_from_all EXCLUDE_FROM_ALL)
+ endif()
+ 
+-if (LIBCXX_ENABLE_SHARED)
+-  add_library(cxx SHARED ${exclude_from_all} ${LIBCXX_SOURCES} ${LIBCXX_HEADERS})
+-else()
+-  add_library(cxx STATIC ${exclude_from_all} ${LIBCXX_SOURCES} ${LIBCXX_HEADERS})
+-endif()
+-
+-if (DEFINED LIBCXX_CXX_ABI_DEPS)
+-  add_dependencies(cxx LIBCXX_CXX_ABI_DEPS)
+-endif()
+-
+ #if LIBCXX_CXX_ABI_LIBRARY_PATH is defined we want to add it to the search path.
+ add_link_flags_if(LIBCXX_CXX_ABI_LIBRARY_PATH "-L${LIBCXX_CXX_ABI_LIBRARY_PATH}")
+ 
+@@ -124,18 +114,48 @@ if ( APPLE AND (LIBCXX_CXX_ABI_LIBNAME STREQUAL "libcxxabi" OR
+   endif()
+ endif()
+ 
+-target_link_libraries(cxx ${LIBCXX_LIBRARIES})
+ split_list(LIBCXX_COMPILE_FLAGS)
+ split_list(LIBCXX_LINK_FLAGS)
+ 
+-set_target_properties(cxx
+-  PROPERTIES
+-    COMPILE_FLAGS "${LIBCXX_COMPILE_FLAGS}"
+-    LINK_FLAGS    "${LIBCXX_LINK_FLAGS}"
+-    OUTPUT_NAME   "c++"
+-    VERSION       "${LIBCXX_ABI_VERSION}.0"
+-    SOVERSION     "${LIBCXX_ABI_VERSION}"
+-  )
++set(LIBCXX_TARGETS)
++
++if (LIBCXX_ENABLE_SHARED)
++  add_library(cxx_shared SHARED
++      ${exclude_from_all} ${LIBCXX_SOURCES} ${LIBCXX_HEADERS})
++  if (DEFINED LIBCXX_CXX_ABI_DEPS)
++    add_dependencies(cxx_shared LIBCXX_CXX_ABI_DEPS)
++  endif()
++
++  target_link_libraries(cxx_shared ${LIBCXX_LIBRARIES})
++  set_target_properties(cxx_shared
++    PROPERTIES
++      COMPILE_FLAGS "${LIBCXX_COMPILE_FLAGS}"
++      LINK_FLAGS    "${LIBCXX_LINK_FLAGS}"
++      OUTPUT_NAME   "c++"
++      VERSION       "${LIBCXX_ABI_VERSION}.0"
++      SOVERSION     "${LIBCXX_ABI_VERSION}"
++    )
++  list(APPEND LIBCXX_TARGETS "cxx_shared")
++endif()
++
++if (LIBCXX_ENABLE_STATIC)
++  add_library(cxx_static STATIC
++      ${exclude_from_all} ${LIBCXX_SOURCES} ${LIBCXX_HEADERS})
++  if (DEFINED LIBCXX_CXX_ABI_DEPS)
++    add_dependencies(cxx_static LIBCXX_CXX_ABI_DEPS)
++  endif()
++
++  target_link_libraries(cxx_static ${LIBCXX_LIBRARIES})
++  set_target_properties(cxx_static
++    PROPERTIES
++      COMPILE_FLAGS "${LIBCXX_COMPILE_FLAGS}"
++      LINK_FLAGS    "${LIBCXX_LINK_FLAGS}"
++      OUTPUT_NAME   "c++"
++    )
++  list(APPEND LIBCXX_TARGETS "cxx_static")
++endif()
++
++add_custom_target(cxx DEPENDS ${LIBCXX_TARGETS})
+ 
+ # Generate a linker script inplace of a libc++.so symlink. Rerun this command
+ # after cxx builds.
+@@ -159,7 +179,7 @@ if (LIBCXX_ENABLE_ABI_LINKER_SCRIPT)
+ endif()
+ 
+ if (LIBCXX_INSTALL_LIBRARY)
+-  install(TARGETS cxx
++  install(TARGETS ${LIBCXX_TARGETS}
+     LIBRARY DESTINATION lib${LIBCXX_LIBDIR_SUFFIX} COMPONENT libcxx
+     ARCHIVE DESTINATION lib${LIBCXX_LIBDIR_SUFFIX} COMPONENT libcxx
+     )

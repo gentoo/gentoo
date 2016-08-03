@@ -1,0 +1,50 @@
+diff --git a/include/__mutex_base b/include/__mutex_base
+index b019b47..e2261e0 100644
+--- a/include/__mutex_base
++++ b/include/__mutex_base
+@@ -28,16 +28,20 @@ _LIBCPP_BEGIN_NAMESPACE_STD
+ 
+ class _LIBCPP_TYPE_VIS mutex
+ {
++#ifndef _LIBCPP_HAS_NO_CONSTEXPR
++    pthread_mutex_t __m_ = PTHREAD_MUTEX_INITIALIZER;
++#else
+     pthread_mutex_t __m_;
++#endif
+ 
+ public:
+     _LIBCPP_INLINE_VISIBILITY
+ #ifndef _LIBCPP_HAS_NO_CONSTEXPR
+-     constexpr mutex() _NOEXCEPT : __m_(PTHREAD_MUTEX_INITIALIZER) {}
++    constexpr mutex() _NOEXCEPT _LIBCPP_DEFAULT
+ #else
+-     mutex() _NOEXCEPT {__m_ = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;}
++    mutex() _NOEXCEPT {__m_ = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;}
+ #endif
+-     ~mutex();
++    ~mutex();
+ 
+ private:
+     mutex(const mutex&);// = delete;
+@@ -268,13 +272,19 @@ _LIBCPP_DECLARE_STRONG_ENUM_EPILOG(cv_status)
+ 
+ class _LIBCPP_TYPE_VIS condition_variable
+ {
++#ifndef _LIBCPP_HAS_NO_CONSTEXPR
++    pthread_cond_t __cv_ = PTHREAD_COND_INITIALIZER;
++#else
+     pthread_cond_t __cv_;
++#endif
++
+ public:
+     _LIBCPP_INLINE_VISIBILITY
+ #ifndef _LIBCPP_HAS_NO_CONSTEXPR
+-    constexpr condition_variable() : __cv_(PTHREAD_COND_INITIALIZER) {}
++    constexpr condition_variable() _NOEXCEPT _LIBCPP_DEFAULT
+ #else
+-    condition_variable() {__cv_ = (pthread_cond_t)PTHREAD_COND_INITIALIZER;}
++    condition_variable() _NOEXCEPT
++    {__cv_ = (pthread_cond_t)PTHREAD_COND_INITIALIZER;}
+ #endif
+     ~condition_variable();
+ 
