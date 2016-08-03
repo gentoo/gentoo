@@ -67,7 +67,7 @@ dev-db/sqlitebrowser -qt4
 >=dev-games/openscenegraph-3.2.1-r1 -qt4
 >=dev-libs/quazip-0.7.1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
->=media-libs/opencv-3.0.0 -qt4
+>=media-libs/opencv-2.4.12-r1 -qt4
 >=media-sound/cantata-2.0.1 -kde
 >=media-sound/mixxx-2.0.0-r1 -qt4
 >=media-video/smplayer-14.9.0.6690 -qt4
