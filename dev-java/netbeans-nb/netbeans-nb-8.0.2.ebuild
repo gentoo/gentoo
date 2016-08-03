@@ -12,7 +12,7 @@ SOURCE_URL="http://download.netbeans.org/netbeans/8.0.2/final/zip/netbeans-8.0.2
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.0.2-build.xml.patch.bz2
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-7.0.png"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="amd64 x86"
 IUSE="keychain"
 S="${WORKDIR}"

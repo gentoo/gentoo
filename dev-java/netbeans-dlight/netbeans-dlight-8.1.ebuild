@@ -12,7 +12,7 @@ SOURCE_URL="http://download.netbeans.org/netbeans/8.1/final/zip/netbeans-8.1-201
 SRC_URI="${SOURCE_URL}
 	http://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.1-build.xml.patch.bz2
 	http://hg.netbeans.org/binaries/51AC4960C19CF4C2CCA636765BFBC09A5029BFC5-fs_server-1.0.zip"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"

@@ -19,7 +19,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/480C9E376169E21EA3BDA5D5841425BD7CC054D7-libplist.1.dylib
 	http://hg.netbeans.org/binaries/08FE518AB60FFA2E5440B75B4D9F8502E0791B3C-libs.jstestdriver-ext.jar
 	http://hg.netbeans.org/binaries/D05B7274396C8EED185207399B6D0400DE347DB7-libusbmuxd.2.dylib"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="amd64 x86"
 IUSE=""
 S="${WORKDIR}"

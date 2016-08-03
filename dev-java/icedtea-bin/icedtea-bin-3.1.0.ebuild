@@ -24,7 +24,7 @@ done
 
 DESCRIPTION="A Gentoo-made binary build of the IcedTea JDK"
 HOMEPAGE="http://icedtea.classpath.org"
-LICENSE="GPL-2-with-linking-exception"
+LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
 
 IUSE="+alsa +cups doc examples +gtk headless-awt multilib nsplugin pulseaudio selinux source +webstart"
