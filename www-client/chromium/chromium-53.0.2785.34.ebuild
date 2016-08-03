@@ -439,7 +439,7 @@ src_configure() {
 
 	if [[ $(tc-getCC) == *clang* ]]; then
 		myconf_gyp+=" -Dclang=1"
-		myconf_gn+=" is_clang=true"
+		myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
 	else
 		myconf_gyp+=" -Dclang=0"
 		myconf_gn+=" is_clang=false"
