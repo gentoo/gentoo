@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
@@ -55,6 +55,7 @@ pkg_setup() {
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
+	eapply_user
 }
 
 src_configure() {
