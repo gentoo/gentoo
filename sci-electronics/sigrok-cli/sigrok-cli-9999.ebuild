@@ -35,12 +35,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
-
-	# This is fixed after the 0.5.0 release.
-	sed -i \
-		-e '/WITH_SRD=$enableval/s:=$enableval:=$withval:' \
-		configure || die
-
 	eapply_user
 }
 
