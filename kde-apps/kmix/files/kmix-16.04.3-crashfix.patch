@@ -1,0 +1,26 @@
+commit 7aa904ecacfd2eeaa91068e17cc9bd79ba058206
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Thu Jul 28 12:49:32 2016 +0200
+
+    Fix infinite recursion by scroll wheel volume change
+    
+    BUGS: 364141
+    REVIEW: 128546
+
+diff --git a/gui/viewdockareapopup.cpp b/gui/viewdockareapopup.cpp
+index 846d9be..24e462b 100644
+--- a/gui/viewdockareapopup.cpp
++++ b/gui/viewdockareapopup.cpp
+@@ -137,9 +137,11 @@ void ViewDockAreaPopup::wheelEvent ( QWheelEvent * e )
+ {
+   if ( _mdws.isEmpty() )
+     return;
+-  
++
++#ifndef X_KMIX_KF5_BUILD
+    // Pass wheel event from "border widget" to child
+    QApplication::sendEvent( _mdws.first(), e);
++#endif
+ }
+ 
+ 
