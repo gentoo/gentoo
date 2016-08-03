@@ -4,6 +4,7 @@
 
 EAPI=6
 
+KDE_BLOCK_SLOT4="false"
 inherit kde5-meta-pkg
 
 DESCRIPTION="kdepim - merge this to pull in all kdepim-derived packages"
