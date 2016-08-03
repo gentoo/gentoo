@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit qt4-r2
 
 DESCRIPTION="Tool for sending SMS and sending/receiving Freesmee-Message-Service"
 HOMEPAGE="http://www.freesmee.com"
-SRC_URI="https://github.com/${PN}/${PN}-desktop/archive/0.8-b3.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}-desktop/archive/0.8-b3.tar.gz -> ${PN}-0.8-b3.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

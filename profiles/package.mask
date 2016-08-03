@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (31 Jul 2016)
+# Non working ebuild, bug #588394
+=media-video/pitivi-0.96
+
+# Johannes Huber <johu@gentoo.org> (29 Jul 2016)
+# Masked for removal in 30 days. Dead by upstream, superseded by
+# kde-plasma/plasma-workspace-wallpapers. Last release with
+# 15.08.3. Exported to kde-sunset overlay.
+kde-apps/kde-wallpapers
+
 # Bernard Cafarelli <voyageur@gentoo.org> (26 Jul 2016)
 # Upstream closed service. Switch to another IPv6 tunnel broker
 # Masked for removal in 30 days, bug #589760
@@ -667,16 +677,6 @@ app-text/cuneiform
 =dev-libs/yaz-4*
 >=dev-perl/Net-Z3950-ZOOM-1.300.0
 
-# Johannes Huber <johu@gentoo.org> (30 Jun 2016)
-# Andreas K. Huettel <dilfridge@gentoo.org> (22 Mar 2012)
-# Masked for removal in 30 days. Dead upstream. Superseded
-# by oxygen-gtk long time ago.
-#
-# (Original mask: Even its author admits that it's an ugly
-# hack. Crashes e.g. firefox with kde-4.8. Unmask at your own
-# risk.)
-kde-misc/kgtk
-
 # Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2012)
 # Masked for testing since this is known to break nearly
 # every reverse dependency wrt bug 407091
@@ -685,15 +685,6 @@ kde-misc/kgtk
 # Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2011)
 # Masked for security bug #294253, use only at your own risk!
 =media-libs/fmod-3*
-
-# Marijn Schouten <hkBst@gentoo.org> (07 April 2011)
-# Masked for number of issues, but can be used to
-# test against if people are impatient ;P
-# Known issues:
-# - Broken emacs support (ulm has promised to look)
-# - doesn't build when boehm-gc is built without threads
-# - no SLOTting yet!
-=dev-scheme/guile-2.0.0
 
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from

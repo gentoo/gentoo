@@ -3,10 +3,8 @@
 # $Id$
 
 EAPI=6
-AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"
-AUTOTOOLS_AUTORECONF=1
 
-inherit eutils linux-info mono-env flag-o-matic pax-utils versionator
+inherit eutils linux-info mono-env flag-o-matic pax-utils versionator multilib-minimal
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.mono-project.com/Main_Page"
@@ -34,7 +32,6 @@ DEPEND="${COMMONDEPEND}
 	!dev-lang/mono-basic
 "
 
-MAKEOPTS="${MAKEOPTS} -j1" #nowarn
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_pretend() {
@@ -83,11 +80,12 @@ src_prepare() {
 	#epatch "${FILESDIR}/fix-for-GitExtensions-issue-2710-another-resolution.patch"
 	#epatch "${FILESDIR}/fix-for-bug36724.patch"
 
-	default_src_prepare
+	default
 	#eapply_user
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		--disable-silent-rules
 		$(use_with xen xen_opt)
@@ -97,19 +95,15 @@ src_configure() {
 		$(use_enable nls)
 	)
 
-	default_src_configure
+	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	default_src_compile
-}
-
-src_test() {
+multilib_src_test() {
 	cd mcs/tests || die
 	emake check
 }
 
-src_install() {
+multilib_src_install() {
 	default_src_install
 
 	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora

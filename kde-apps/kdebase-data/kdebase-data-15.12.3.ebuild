@@ -9,12 +9,11 @@ KMNOMODULE="true"
 inherit kde4-meta
 
 DESCRIPTION="Icons, localization data and various .desktop files from kdebase"
-IUSE="+wallpapers"
+IUSE=""
 KEYWORDS="amd64 ~arm x86"
 
 RDEPEND="
 	x11-themes/hicolor-icon-theme
-	wallpapers? ( || ( $(add_kdeapps_dep kde-wallpapers '' 15.08.3) kde-apps/kde-wallpapers:5 ) )
 "
 
 KMEXTRA="

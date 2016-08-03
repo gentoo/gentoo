@@ -44,7 +44,6 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	aqua? ( x11-libs/gtk-mac-integration )
-	dev-util/gdbus-codegen
 	gnome? ( gnome-base/gvfs )
 	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
 	virtual/jpeg:0
@@ -125,6 +124,11 @@ src_prepare() {
 	eautoreconf  # If you remove this: remove dev-util/gtk-doc-am from DEPEND, too
 
 	gnome2_src_prepare
+}
+
+src_configure() {
+	gnome2_src_configure \
+			GDBUS_CODEGEN=/bin/false
 }
 
 src_compile() {

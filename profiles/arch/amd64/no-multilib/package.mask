@@ -8,6 +8,7 @@
 =games-action/lugaru-1.0c-r1
 >=app-i18n/atokx3-3.0.0
 >=dev-java/sun-j2me-bin-2.5.2.01
+<games-roguelike/dwarf-fortress-0.43.0
 app-accessibility/mbrola
 app-accessibility/perlbox-voice
 app-arch/stuffit
@@ -113,7 +114,6 @@ games-misc/papers-please
 games-puzzle/drod-bin
 games-puzzle/hoh-bin
 games-roguelike/adom
-games-roguelike/dwarf-fortress
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo

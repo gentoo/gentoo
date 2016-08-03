@@ -25,8 +25,7 @@ rkt_stage1_kvm? (
 )
 rkt_stage1_src? ( https://github.com/systemd/systemd/archive/${PXE_SYSTEMD_VERSION}.tar.gz -> systemd-${PXE_SYSTEMD_VERSION#v}.tar.gz )"
 
-DESCRIPTION="A CLI for running app containers, and an implementation of the App
-Container Spec."
+DESCRIPTION="rkt is an App Container runtime for Linux"
 HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"

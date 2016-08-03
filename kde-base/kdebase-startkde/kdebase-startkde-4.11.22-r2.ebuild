@@ -93,7 +93,7 @@ RDEPEND="
 		$(add_kdebase_dep qguiplatformplugin_kde)
 		$(add_kdebase_dep solid-actions-kcm)
 	)
-	wallpapers? ( kde-apps/kde-wallpapers:* )
+	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
 "
 
 KMEXTRACTONLY="

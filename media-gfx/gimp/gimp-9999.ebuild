@@ -46,7 +46,6 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )
 	aqua? ( x11-libs/gtk-mac-integration )
-	dev-util/gdbus-codegen
 	gnome? ( gnome-base/gvfs )
 	webkit? ( >=net-libs/webkit-gtk-1.6.1:2 )
 	virtual/jpeg:0
@@ -70,6 +69,7 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	postscript? ( app-text/ghostscript-gpl )
 	udev? ( virtual/libgudev:= )"
 DEPEND="${RDEPEND}
+	dev-util/gdbus-codegen
 	sys-apps/findutils
 	virtual/pkgconfig
 	>=dev-util/intltool-0.40.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,7 +41,9 @@ multilib_src_compile() {
 	tc-export CC AR
 	# we must not use the 'all' target since it builds test programs
 	# & extra -m32 executables
-	emake -C lib liblz4 liblz4.pc
+	emake -C lib liblz4 liblz4.pc \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}"/usr/$(get_libdir)
 	emake -C programs lz4 lz4c
 	# work around lack of proper target dependencies
 	touch lib/liblz4

@@ -19,7 +19,7 @@
   </longdescription>
   <use>
     <flag name="tools">
-      Install discosrv, relaysrv and other tools to /usr/libexec/synsthing/.
+      Install stdiscosrv, strelaysrv and other tools to /usr/libexec/syncthing/.
     </flag>
   </use>
   <upstream>

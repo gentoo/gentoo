@@ -13,11 +13,12 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="GPL-2+ LGPL-2+"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-IUSE="alsa +introspection ivorbis +ogg +orc +pango theora +vorbis X"
+IUSE="alsa +introspection ivorbis +ogg +opus +orc +pango theora +vorbis X"
 REQUIRED_USE="
 	ivorbis? ( ogg )
 	theora? ( ogg )
 	vorbis? ( ogg )
+	opus? ( ogg )
 "
 
 RDEPEND="
@@ -30,6 +31,7 @@ RDEPEND="
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 	ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.23[${MULTILIB_USEDEP}] )
+	opus? ( >=media-libs/opus-1.1[${MULTILIB_USEDEP}] )
 	pango? ( >=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}] )
 	theora? ( >=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
@@ -52,6 +54,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable introspection) \
 		$(use_enable ivorbis) \
 		$(use_enable ogg) \
+		$(use_enable opus) \
 		$(use_enable orc) \
 		$(use_enable pango) \
 		$(use_enable theora) \

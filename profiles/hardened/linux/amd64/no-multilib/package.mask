@@ -121,7 +121,7 @@ games-misc/little-inferno
 games-puzzle/drod-bin
 games-puzzle/hoh-bin
 games-roguelike/adom
-games-roguelike/dwarf-fortress
+<games-roguelike/dwarf-fortress-0.43.0
 games-rpg/dear-esther
 games-rpg/eschalon-book-1-demo
 games-rpg/nwmouse
