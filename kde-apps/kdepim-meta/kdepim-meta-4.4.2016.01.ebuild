@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-KDE_OVERRIDE_MINIMAL="${PV}"
-inherit kde4-meta-pkg
+inherit kde5-meta-pkg
 
 DESCRIPTION="kdepim - merge this to pull in all kdepim-derived packages"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
+SLOT="4"
 
 RDEPEND="
 	kde-frameworks/oxygen-icons:5
