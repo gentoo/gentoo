@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-ESVN_REPO_URI="http://llvm.org/svn/llvm-project/libcxx/trunk"
+EGIT_REPO_URI="http://llvm.org/git/libcxx.git
+	https://github.com/llvm-mirror/libcxx.git"
 
-[ "${PV%9999}" != "${PV}" ] && SCM="subversion" || SCM=""
+[ "${PV%9999}" != "${PV}" ] && SCM="git-r3" || SCM=""
 
-inherit ${SCM} flag-o-matic toolchain-funcs multilib multilib-minimal
+inherit ${SCM} cmake-multilib toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="http://libcxx.llvm.org/"
@@ -26,84 +27,64 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="elibc_glibc elibc_musl +libcxxrt libunwind +static-libs test"
-REQUIRED_USE="libunwind? ( libcxxrt )"
+IUSE="elibc_glibc elibc_musl libcxxabi +libcxxrt libsupc++ libunwind +static-libs"
+REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
+	^^ ( libcxxabi libcxxrt libsupc++ )"
 
-RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[libunwind?,static-libs?,${MULTILIB_USEDEP}] )
-	!libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] )"
+RDEPEND="libcxxabi? ( sys-libs/libcxxabi[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
+	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
+	libsupc++? ( >=sys-devel/gcc-4.7:=[cxx] )"
 DEPEND="${RDEPEND}
-	test? ( sys-devel/clang )
 	app-arch/xz-utils"
 
 DOCS=( CREDITS.TXT )
 
 pkg_setup() {
-	if ! use libcxxrt ; then
+	if use libsupc++ && ! tc-is-gcc ; then
+		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
+		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
+		eerror "and try again."
+		die
+	fi
+	if use libsupc++ ; then
 		ewarn "You have disabled USE=libcxxrt. This will build ${PN} against"
 		ewarn "libsupc++. Please note that this is not well supported."
 		ewarn "In particular, static linking will not work."
 	fi
-	if [[ $(gcc-version) < 4.7 ]] && [[ $(tc-getCXX) != *clang++* ]] ; then
-		eerror "${PN} needs to be built with clang++ or gcc-4.7 or later."
-		eerror "Please use gcc-config to switch to gcc-4.7 or later version."
+	if tc-is-gcc && [[ $(gcc-version) < 4.7 ]] ; then
+		eerror "${PN} needs to be built with gcc-4.7 or later (or other"
+		eerror "conformant compilers). Please use gcc-config to switch to"
+		eerror "gcc-4.7 or later version."
 		die
 	fi
 }
 
-src_prepare() {
-	cp -f "${FILESDIR}/Makefile" lib/ || die
-	use elibc_musl && epatch "${FILESDIR}/${P}-musl-support.patch"
-	multilib_copy_sources
-}
-
-src_configure() {
-	export LIBS="-lpthread -lrt -lc -l$(usex libunwind unwind gcc_s)"
-	if use libcxxrt ; then
-		append-cppflags -DLIBCXXRT "-I${EPREFIX}/usr/include/libcxxrt/"
-		LIBS="-lcxxrt ${LIBS}"
-		cp "${EPREFIX}/usr/include/libcxxrt/"*.h "${S}/include"
+multilib_src_configure() {
+	local cxxabi cxxabi_incs
+	if use libcxxabi; then
+		cxxabi=libcxxabi
+		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
+	elif use libcxxrt; then
+		cxxabi=libcxxrt
+		cxxabi_incs="${EPREFIX}/usr/include/libcxxrt"
 	else
-		# Very hackish, see $HOMEPAGE
-		# If someone has a clever idea, please share it!
-		local includes="$(echo | ${CHOST}-g++ -Wp,-v -x c++ - -fsyntax-only 2>&1 | grep -C 2 '#include.*<...>' | tail -n 2 | sed -e 's/^ /-I/' | tr '\n' ' ')"
-		local libcxx_gcc_dirs="$(echo | ${CHOST}-g++ -Wp,-v -x c++ - -fsyntax-only 2>&1 | grep -C 2 '#include.*<...>' | tail -n 2 | tr '\n' ' ')"
-		append-cppflags -D__GLIBCXX__ ${includes}
-		LIBS="-lsupc++ ${LIBS}"
-		local libsupcxx_includes="cxxabi.h bits/c++config.h bits/os_defines.h bits/cpu_defines.h bits/cxxabi_tweaks.h bits/cxxabi_forced.h"
-		for i in ${libsupcxx_includes} ; do
-			local found=""
-			[ -d "${S}/include/$(dirname ${i})/" ] || mkdir -p "${S}/include/$(dirname ${i})"
-			for j in ${libcxx_gcc_dirs} ; do
-				if [ -f "${j}/${i}" ] ; then
-					cp "${j}/${i}" "${S}/include/$(dirname ${i})/" || die
-					found=yes
-				fi
-			done
-			[ -n "${found}" ] || die "Header not found: ${i}"
-		done
+		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
+		cxxabi=libsupc++
+		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
-	tc-export AR CC CXX
-
-	append-ldflags "-Wl,-z,defs" # make sure we are not underlinked
-}
-
-multilib_src_compile() {
-	cd "${BUILD_DIR}/lib" || die
-	emake shared
-	use static-libs && emake static
-}
-
-# Tests fail for now, if anybody is able to fix them, help is very welcome.
-multilib_src_test() {
-	cd "${BUILD_DIR}/test"
-	LD_LIBRARY_PATH="${BUILD_DIR}/lib:${LD_LIBRARY_PATH}" \
-		CC="clang++ $(get_abi_CFLAGS) ${CXXFLAGS}" \
-		HEADER_INCLUDE="-I${BUILD_DIR}/include" \
-		SOURCE_LIB="-L${BUILD_DIR}/lib" \
-		LIBS="-lm $(usex libcxxrt -lcxxrt "")" \
-		./testit || die
-	# TODO: fix link against libsupc++
+	local libdir=$(get_libdir)
+	local mycmakeargs=(
+		-DLLVM_CONFIG_PATH=OFF
+		-DLIBCXX_LIBDIR_SUFFIX=${libdir#lib}
+		-DLIBCXX_ENABLE_SHARED=ON
+		-DLIBCXX_ENABLE_STATIC=$(usex static-libs)
+		-DLIBCXX_CXX_ABI=${cxxabi}
+		-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${cxxabi_incs}
+		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
+		-DLIBCXX_HAS_GCC_S_LIB=$(usex !libunwind)
+	)
+	cmake-utils_src_configure
 }
 
 # Usage: deps
@@ -121,50 +102,44 @@ GROUP ( $@ )
 END_LDSCRIPT
 }
 
+# Usage: cxxabi
 gen_static_ldscript() {
-	if use libcxxrt ; then
-		# Move it first.
-		mv "${ED}/usr/$(get_libdir)/libc++.a" "${ED}/usr/$(get_libdir)/libc++_static.a" || die
+	local libdir=$(get_libdir)
+	local cxxabi=$1
 
-		# Generate libc++.a ldscript for inclusion of its dependencies so that
-		# clang++ -stdlib=libc++ -static works out of the box.
-		local deps="${EPREFIX}/usr/$(get_libdir)/libc++_static.a ${EPREFIX}/usr/$(get_libdir)/libcxxrt.a"
-		# On Linux/glibc it does not link without libpthread or libdl. It is
-		# fine on FreeBSD.
-		use elibc_glibc && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libpthread.a ${EPREFIX}/usr/$(get_libdir)/libdl.a"
+	# Move it first.
+	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
 
-		# unlike libgcc_s, libunwind is not implicitly linked
-		use libunwind && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libunwind.a"
+	# Generate libc++.a ldscript for inclusion of its dependencies so that
+	# clang++ -stdlib=libc++ -static works out of the box.
+	local deps="${EPREFIX}/usr/${libdir}/libc++_static.a ${EPREFIX}/usr/${libdir}/${cxxabi}.a"
+	# On Linux/glibc it does not link without libpthread or libdl. It is
+	# fine on FreeBSD.
+	use elibc_glibc && deps+=" ${EPREFIX}/usr/${libdir}/libpthread.a ${EPREFIX}/usr/${libdir}/libdl.a"
+	# unlike libgcc_s, libunwind is not implicitly linked
+	use libunwind && deps+=" ${EPREFIX}/usr/${libdir}/libunwind.a"
 
-		gen_ldscript "${deps}" > "${ED}/usr/$(get_libdir)/libc++.a"
-	fi
-	# TODO: Generate a libc++.a ldscript when building against libsupc++
+	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.a" || die
 }
 
+# Usage: cxxabi
 gen_shared_ldscript() {
-	if use libcxxrt ; then
-		mv "${ED}/usr/$(get_libdir)/libc++.so" "${ED}/usr/$(get_libdir)/libc++_shared.so" || die
-		local deps="${EPREFIX}/usr/$(get_libdir)/libc++_shared.so ${EPREFIX}/usr/$(get_libdir)/libcxxrt.so"
-		use libunwind && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libunwind.so"
-		gen_ldscript "${deps}" > "${ED}/usr/$(get_libdir)/libc++.so"
-	fi
-	# TODO: Generate the linker script for other configurations too.
+	local libdir=$(get_libdir)
+	local cxxabi=$1
+
+	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
+	local deps="${EPREFIX}/usr/${libdir}/libc++_shared.so ${EPREFIX}/usr/${libdir}/${cxxabi}.so"
+	use libunwind && deps+=" ${EPREFIX}/usr/${libdir}/libunwind.so"
+	gen_ldscript "${deps}" > "${ED}/usr/${libdir}/libc++.so" || die
 }
 
 multilib_src_install() {
-	cd "${BUILD_DIR}/lib"
-	if use static-libs ; then
-		dolib.a libc++.a
-		gen_static_ldscript
+	cmake-utils_src_install
+	if ! use libsupc++; then
+		local cxxabi=$(usex libcxxabi libc++abi libcxxrt)
+		gen_shared_ldscript ${cxxabi}
+		use static-libs && gen_static_ldscript ${cxxabi}
 	fi
-	dolib.so libc++.so*
-	gen_shared_ldscript
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	insinto /usr/include/c++/v1
-	doins -r include/*
 }
 
 pkg_postinst() {
