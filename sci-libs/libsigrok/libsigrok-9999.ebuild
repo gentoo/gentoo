@@ -67,6 +67,7 @@ src_configure() {
 		$(use_enable cxx) \
 		$(use_enable java) \
 		$(use_enable python) \
+		--disable-ruby \
 		$(use_enable static-libs static)
 }
 
