@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-
-inherit eutils
+EAPI="6"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -34,6 +32,7 @@ src_unpack() {
 
 src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
+	eapply_user
 }
 
 src_install() {
