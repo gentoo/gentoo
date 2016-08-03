@@ -24,7 +24,7 @@ COMMON_DEPEND="x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libXrender
 	x11-libs/libXmu
-	imlib? ( media-libs/imlib2 )
+	imlib? ( media-libs/imlib2[X] )
 	!imlib? (
 		gif? ( media-libs/giflib:= )
 		png? ( >=media-libs/libpng-1.4:0= )
