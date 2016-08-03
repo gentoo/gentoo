@@ -19,9 +19,9 @@ HOMEPAGE="http://sigrok.org/wiki/Libserialport"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="static-libs udev"
+IUSE="static-libs"
 
-RDEPEND="udev? ( virtual/libudev )"
+RDEPEND=""
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -31,9 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_with udev libudev)
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
