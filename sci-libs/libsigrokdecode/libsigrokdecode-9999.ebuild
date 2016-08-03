@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python3_{3,4} )
+
 inherit eutils python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
@@ -36,6 +37,8 @@ src_prepare() {
 	sed -i \
 		-e '/build_runtc=/s:yes:no:' \
 		configure || die
+
+	eapply_user
 }
 
 src_configure() {
