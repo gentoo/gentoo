@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/5.0.0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="doc static-libs"
 
 DEPEND="doc? ( dev-ruby/asciidoctor )"
