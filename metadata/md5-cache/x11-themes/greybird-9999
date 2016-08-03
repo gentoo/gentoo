@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=The default theme from Xubuntu
+EAPI=6
+HOMEPAGE=http://shimmerproject.org/project/greybird/ https://github.com/shimmerproject/Greybird
+IUSE=ayatana gnome
+LICENSE=CC-BY-SA-3.0 GPL-2+
+RDEPEND=>=x11-themes/gtk-engines-murrine-0.90
+RESTRICT=binchecks strip
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=9670ec1c246046a057ce1a3e24485a35
