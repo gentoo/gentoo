@@ -27,7 +27,7 @@ REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND=">=dev-libs/glib-2.28.0
 	>=sci-libs/libsigrok-0.3.0
 	decode? (
-		>=sci-libs/libsigrokdecode-0.3.0
+		>=sci-libs/libsigrokdecode-0.3.0[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
