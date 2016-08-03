@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Cross platform serial port access library"
 HOMEPAGE="http://sigrok.org/wiki/Libserialport"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3"
 SLOT="0"
 IUSE="static-libs udev"
 
