@@ -309,7 +309,7 @@ src_configure() {
 		$(use_enable !headless-awt system-png) \
 		$(use_enable doc docs) \
 		$(use_enable infinality) \
-		$(use_with pax_kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
+		--with-pax="${EPREFIX}"$(usex pax_kernel /usr/sbin/paxmark.sh /bin/true) \
 		$(use_enable sunec) \
 		${zero_config} ${cacao_config} ${jamvm_config} ${hs_config}
 }
