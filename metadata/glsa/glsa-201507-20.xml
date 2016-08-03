@@ -31,6 +31,7 @@
       <unaffected range="rge">9.3.9</unaffected>
       <unaffected range="rge">9.3.10</unaffected>
       <unaffected range="rge">9.3.11</unaffected>
+      <unaffected range="rge">9.3.12</unaffected>
       <vulnerable range="lt">9.4.3</vulnerable>
     </package>
   </affected>
