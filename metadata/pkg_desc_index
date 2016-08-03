@@ -4006,6 +4006,7 @@ dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
+dev-java/javax-mail 1.4: Provides a platform/protocol-independent framework for mail and messaging apps
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
 dev-java/jaxen 1.1.1 1.1.4-r1 1.1.6: A Java XPath Engine
 dev-java/jaxme 0.5.2-r2: An open source implementation of JAXB, the specification for Java/XML binding
@@ -10947,7 +10948,7 @@ games-strategy/warmux 11.04.1: A free Worms clone
 games-strategy/warzone2100 3.1.2 3.1.5: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17 0.18: A game similar to Settlers 2
-games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
+games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.0_p20141002: Chart Program to use with Flightgear Flight Simulator
 games-util/biounzip 1.1a: Unpacks BioZip archives

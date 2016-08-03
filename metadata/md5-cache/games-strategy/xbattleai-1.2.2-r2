@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-lang/tcl:0 dev-lang/tk:0 x11-libs/libX11 x11-libs/libXext !games-strategy/xbattle app-text/rman x11-misc/imake x11-proto/xproto
+DESCRIPTION=A multi-player game of strategy and coordination
+EAPI=6
+HOMEPAGE=https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/
+KEYWORDS=~amd64 ~x86
+LICENSE=xbattle
+RDEPEND=dev-lang/tcl:0 dev-lang/tk:0 x11-libs/libX11 x11-libs/libXext !games-strategy/xbattle
+SLOT=0
+SRC_URI=https://inf.ug.edu.pl/~piotao/xbattle/mirror/www.lysator.liu.se/XBattleAI/xbattleai-1.2.2.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=f28a8f5f070b213f1305742f76e6a005
