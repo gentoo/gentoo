@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 # Private headers of dev-qt/qtgui:5 used.
