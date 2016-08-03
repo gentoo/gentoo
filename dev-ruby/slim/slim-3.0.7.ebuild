@@ -16,7 +16,7 @@ DESCRIPTION="A template language aiming to reduce the syntax to the essential pa
 HOMEPAGE="http://slim-lang.com/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 SLOT="0"
 IUSE="doc"
 
