@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl ) >=sys-apps/sed-4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Rotates, compresses, and mails system logs
+EAPI=6
+HOMEPAGE=https://github.com/logrotate/logrotate
+IUSE=acl +cron selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/popt-1.5 selinux? ( sys-libs/libselinux ) acl? ( virtual/acl ) selinux? ( sec-policy/selinux-logrotate ) cron? ( virtual/cron )
+SLOT=0
+SRC_URI=https://github.com/logrotate/logrotate/releases/download/3.10.0/logrotate-3.10.0.tar.gz -> logrotate-3.10.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=5c1303a625174070301ee2f7db6ddb3d
