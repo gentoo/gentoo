@@ -25,13 +25,14 @@ IUSE="+decode qt4 qt5 static"
 REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} ) ^^ ( qt4 qt5 )"
 
 RDEPEND="
-	dev-libs/boost:0=
-	dev-libs/glib:2
+	>=dev-libs/boost-1.53:=
+	>=dev-libs/glib-2.28.0:2
+	>=dev-cpp/glibmm-2.28.0:2
 	>=sci-libs/libsigrok-0.4.0[cxx]
 	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtsvg:4
+		>=dev-qt/qtcore-4.5:4
+		>=dev-qt/qtgui-4.5:4
+		>=dev-qt/qtsvg-4.5:4
 	)
 	qt5? (
 		dev-qt/qtcore:5
