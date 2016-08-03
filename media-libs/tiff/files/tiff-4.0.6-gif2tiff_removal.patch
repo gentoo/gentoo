@@ -1,0 +1,37 @@
+# Removing vulnerable gif2tiff (CVE-2016-5102)
+# Upstream seems to no longer ship this tool with >=tiff-4.0.7 versions.
+
+http://bugzilla.maptools.org/show_bug.cgi?id=2552
+https://bugzilla.redhat.com/show_bug.cgi?id=1343407
+https://bugs.gentoo.org/585274
+
+--- tiff-4.0.6/man/Makefile.am
++++ tiff-4.0.6/man/Makefile.am
+@@ -27,7 +27,6 @@
+ 	bmp2tiff.1 \
+ 	fax2ps.1 \
+ 	fax2tiff.1 \
+-	gif2tiff.1 \
+ 	pal2rgb.1 \
+ 	ppm2tiff.1 \
+ 	ras2tiff.1 \
+--- tiff-4.0.6/tools/Makefile.am
++++ tiff-4.0.6/tools/Makefile.am
+@@ -34,7 +34,6 @@
+ 	bmp2tiff \
+ 	fax2ps \
+ 	fax2tiff \
+-	gif2tiff \
+ 	pal2rgb \
+ 	ppm2tiff \
+ 	ras2tiff \
+@@ -73,9 +72,6 @@
+ fax2tiff_SOURCES = fax2tiff.c
+ fax2tiff_LDADD = $(LIBTIFF) $(LIBPORT)
+ 
+-gif2tiff_SOURCES = gif2tiff.c
+-gif2tiff_LDADD = $(LIBTIFF) $(LIBPORT)
+-
+ pal2rgb_SOURCES = pal2rgb.c
+ pal2rgb_LDADD = $(LIBTIFF) $(LIBPORT)
+ 
