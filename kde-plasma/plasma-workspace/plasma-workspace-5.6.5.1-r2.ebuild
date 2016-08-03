@@ -90,6 +90,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep ksysguard)
 	$(add_plasma_dep milou)
+	$(add_plasma_dep plasma-integration)
 	$(add_qt_dep qdbus)
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtpaths)
