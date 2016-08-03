@@ -20,7 +20,7 @@ IUSE="debug doc examples svg"
 
 RDEPEND="
 	x11-libs/qwt:5[svg?]
-	|| ( >=dev-python/PyQt4-4.11.2-r1[${PYTHON_USEDEP},compat(-)] <dev-python/PyQt4-4.11.2-r1[${PYTHON_USEDEP}] )
+	|| ( dev-python/PyQt4[${PYTHON_USEDEP},compat(+)] )
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/sip[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
