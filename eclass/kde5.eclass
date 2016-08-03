@@ -455,6 +455,7 @@ EOF
 	# when required
 	if [[ -d po && -v LINGUAS ]] ; then
 		pushd po > /dev/null || die
+		local lang
 		for lang in *; do
 			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
 				rm -r ${lang} || die
@@ -470,9 +471,10 @@ EOF
 		popd > /dev/null || die
 	fi
 
-	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
-		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
+	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
+		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && -v LINGUAS ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null || die
+			local lang
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					cmake_comment_add_subdirectory ${lang}
