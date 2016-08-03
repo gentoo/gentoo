@@ -1925,7 +1925,7 @@ app-misc/tek 1.3.0: GUI tool for upgrading the firmware of a Truly Ergonomic Key
 app-misc/terminal-colors 2.0 2.1 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmate 2.2.0-r1: Instant terminal sharing
+app-misc/tmate 2.2.0-r1 2.2.1: Instant terminal sharing
 app-misc/tmux 2.1 2.2 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
@@ -7857,7 +7857,7 @@ dev-python/pypy3 2.4.0-r2 5.2.0_alpha1 9999: A fast, compliant alternative imple
 dev-python/pypy3-bin 2.4.0-r4 5.2.0_alpha1-r1: A fast, compliant alternative implementation of Python 3.3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
 dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
-dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
+dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4 1.9.7: Python language bindings for OpenStack Clouds
 dev-python/pyregion 1.1.4: Python module to parse ds9 region file

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Instant terminal sharing
+EAPI=5
+HOMEPAGE=http://tmate.io/
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sys-libs/zlib[static-libs?] sys-libs/libutempter[static-libs?] dev-libs/openssl[static-libs?] dev-libs/libevent[static-libs?] dev-libs/msgpack[static-libs?] >=net-libs/libssh-0.6.0[static-libs?]
+SLOT=0
+SRC_URI=https://github.com/tmate-io/tmate/archive/2.2.1.tar.gz -> tmate-2.2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=e2f7e4874b6c693a7f8025c6278d36bf
