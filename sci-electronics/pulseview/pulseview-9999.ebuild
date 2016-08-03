@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python3_{3,4} )
-inherit eutils cmake-utils python-single-r1
+
+inherit cmake-utils python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -50,9 +51,9 @@ DOCS=( HACKING NEWS README )
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=TRUE
-		$(cmake-utils_use_enable decode DECODE)
-		$(cmake-utils_use_enable static STATIC_PKGDEPS_LIBS)
-		$(cmake-utils_use qt4 FORCE_QT4)
+		-DENABLE_DECODE=$(usex decode)
+		-DSTATIC_PKGDEPS_LIBS=$(usex static)
+		-DFORCE_QT4=$(usex qt4)
 	)
 	cmake-utils_src_configure
 }
