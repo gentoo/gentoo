@@ -31,7 +31,7 @@ LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
-	serial? ( dev-libs/libserialport[static-libs(+)] )
+	serial? ( >=dev-libs/libserialport-0.1.1[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"
 RDEPEND="!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )
