@@ -16,22 +16,7 @@
 	format to another. FontForge has support for many macintosh font formats.
 	</longdescription>
 	<use>
-		<flag name="truetype-debugger">Enable truetype debugger in
-	fontforge</flag>
-		<flag name="type3">Build in support for type3/svg fonts containing
-	multilayered drawing with strokes, fills, images, etc. Type3 fonts are only
-	supported by postscript printers (not by most windowing displays). They are
-	capable of more exotic images than normal fonts but require much more effort
-	to support.</flag>
-		<flag name="pango">Enable pango font rendering</flag>
-		<flag name="pasteafter">Controls whether fontforge has a paste after command
-	(Useful for making words?). This is kind of fun, but it isn't useful for
-	normal fonts.</flag>
-		<flag name="cjk">Controls whether fontforge understands the gb12345 encoding
-	and installs cidmap package to edit CID-keyed fonts</flag>
-		<flag name="tilepath">Controls whether fontforge has a tile path command (a
-	variant of expand stroke) This is useful for very decorative fonts, most
-	people won't want it.</flag>
+		<flag name="truetype-debugger">Enable truetype debugger in fontforge</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">troydhanson/uthash</remote-id>
