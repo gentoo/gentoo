@@ -4608,7 +4608,7 @@ dev-libs/jthread 1.3.1: JThread provides some classes to make use of threads eas
 dev-libs/judy 1.0.4 1.0.5: A C library that implements a dynamic array
 dev-libs/keybinder 0.3.0-r200 0.3.0-r201 0.3.0-r300 0.3.1-r200 0.3.1-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 1.5.25 2.0.2 2.0.2-r1 2.0.3 2.0.3-r1 2.0.4: A minimal libc subset for use with initramfs
-dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521: Library implementing generic path searching, configuration, and TeX-specific file searching
+dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r1: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
 dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.2 0.7.3 0.7.4 0.7.5-r2 0.8.1: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
@@ -9478,7 +9478,7 @@ dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.07 4.11 4.12-r1: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
 dev-tex/herm-pic 1.0.2: LaTeX class for creating ERM and HER diagramms
-dev-tex/hevea 2.03 2.28: HeVeA is a quite complete and fast LaTeX to HTML translator
+dev-tex/hevea 2.03 2.28 2.29: HeVeA is a quite complete and fast LaTeX to HTML translator
 dev-tex/hlatex 1.0.1: HLaTeX is a LaTeX package to use Hangul with LaTeX
 dev-tex/html2latex 1.1-r1: Perl script to convert HTML files into formatted LaTeX
 dev-tex/hyphen_show 20000425: Show hyphenations in DVI files
@@ -12236,7 +12236,7 @@ media-gfx/krita 3.0: Free digital painting application. Digital Painting, Creati
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.3.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9-r1 9999: Generic 2D CAD program
-media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
+media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.4.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mandelbulber 1.11 1.12.1 1.21.1: Tool to render 3D fractals
@@ -16980,7 +16980,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20140214 20151010 20151220 20160220 20160315: NetBSD's portable make
+sys-devel/bmake 20160315 20160606: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
