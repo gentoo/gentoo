@@ -2041,7 +2041,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.5 1.4.6 1.5.0-r1 1.5.1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.3.0 2.4.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -12369,7 +12369,7 @@ media-libs/adplug 2.2.1: A free, cross-platform, hardware independent AdLib soun
 media-libs/aften 0.0.8 0.0.8-r1: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
-media-libs/alsa-lib 1.0.29 1.1.0 1.1.1: Advanced Linux Sound Architecture Library
+media-libs/alsa-lib 1.0.29 1.1.1 1.1.2: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2: The OpenAL Utility Toolkit
 media-libs/assimp 3.0.1270 3.1.1 3.2-r2: Importer library to import assets from 3D files
@@ -13066,7 +13066,7 @@ media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.0.28 1.0.29 1.1.0: Advanced Linux Sound Architecture tools
-media-sound/alsa-utils 1.0.29 1.1.0 1.1.1: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
+media-sound/alsa-utils 1.0.29 1.1.1 1.1.2: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixer-app 0.1: AlsaMixer.app is a simple mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
@@ -14088,7 +14088,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.4 5.0.7.2 5.0.9.2 5.0.10: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.4 5.0.7.2 5.0.9.2 5.0.10.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10 2.11: iptables extensions not yet accepted in the main kernel
