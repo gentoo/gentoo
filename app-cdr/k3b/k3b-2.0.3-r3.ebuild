@@ -17,7 +17,6 @@ zh_CN zh_TW"
 SRC_URI="mirror://kde/stable/${PN}/${P}a.tar.xz"
 DOCS=( FAQ PERMISSIONS README )
 
-WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="The CD/DVD Kreator for KDE"
