@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: library for simplifying indent files"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=678"
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\
