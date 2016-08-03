@@ -2,11 +2,11 @@ DEFINED_PHASES=-
 DESCRIPTION=kdepim - merge this to pull in all kdepim-derived packages
 EAPI=6
 HOMEPAGE=https://www.kde.org/ https://community.kde.org/KDE_PIM
-IUSE=nls aqua
+IUSE=nls
 KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
 LICENSE=metapackage
-RDEPEND=kde-frameworks/oxygen-icons:5 >=kde-apps/akonadiconsole-4.14.11_pre20160211:4[aqua=] >=kde-apps/akregator-4.14.11_pre20160211:4[aqua=] >=kde-apps/blogilo-4.14.11_pre20160211:4[aqua=] >=kde-apps/calendarjanitor-4.14.11_pre20160211:4[aqua=] >=kde-apps/kabcclient-4.14.11_pre20160211:4[aqua=] >=kde-apps/kaddressbook-4.14.11_pre20160211:4[aqua=] >=kde-apps/kalarm-4.14.11_pre20160211:4[aqua=] >=kde-apps/kdepim-kresources-4.14.11_pre20160211:4[aqua=] >=kde-apps/kdepim-runtime-4.14.11_pre20160211:4[aqua=] >=kde-apps/kjots-4.14.11_pre20160211:4[aqua=] >=kde-apps/kleopatra-4.14.11_pre20160211:4[aqua=] >=kde-apps/kmail-4.14.11_pre20160211:4[aqua=] >=kde-apps/knode-4.14.11_pre20160211:4[aqua=] >=kde-apps/knotes-4.14.11_pre20160211:4[aqua=] >=kde-apps/konsolekalendar-4.14.11_pre20160211:4[aqua=] >=kde-apps/kontact-4.14.11_pre20160211:4[aqua=] >=kde-apps/korganizer-4.14.11_pre20160211:4[aqua=] >=kde-apps/ktimetracker-4.14.11_pre20160211:4[aqua=] >=kde-apps/ktnef-4.14.11_pre20160211:4[aqua=] nls? ( >=kde-apps/kde4-l10n-4.14.3-r1:4[aqua=] >=kde-apps/kdepim-l10n-4.14.3-r1:4[aqua=] )
+RDEPEND=kde-frameworks/oxygen-icons:5 >=kde-apps/akonadiconsole-4.14.10 >=kde-apps/akregator-4.14.10 >=kde-apps/blogilo-4.14.10 >=kde-apps/calendarjanitor-4.14.10 >=kde-apps/kabcclient-4.14.10 >=kde-apps/kaddressbook-4.14.10 >=kde-apps/kalarm-4.14.10 >=kde-apps/kdepim-kresources-4.14.10 >=kde-apps/kdepim-runtime-4.14.10 >=kde-apps/kjots-4.14.10 >=kde-apps/kleopatra-4.14.10 >=kde-apps/kmail-4.14.10 >=kde-apps/knode-4.14.10 >=kde-apps/knotes-4.14.10 >=kde-apps/konsolekalendar-4.14.10 >=kde-apps/kontact-4.14.10 >=kde-apps/korganizer-4.14.10 >=kde-apps/ktimetracker-4.14.10 >=kde-apps/ktnef-4.14.10 nls? ( >=kde-apps/kde4-l10n-4.14.3 >=kde-apps/kdepim-l10n-4.14.3 ) !kde-apps/kdepim-meta:4
 SLOT=4
 _eclass_exported_funcs=-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde4-functions	8a4cfd7f1a927a64f5dbcc8f3277ec51	kde4-meta-pkg	c44f6f251d9dd5378f5b40877eb9eb4f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3d5eb5bd66f727c059b20df1c906b14e
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde5-functions	2cb26421bb0ad7617283215e37aef3f1	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8b48c9eede298f30eae34a7dce5b4582

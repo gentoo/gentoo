@@ -1,12 +1,12 @@
 DEFINED_PHASES=-
 DESCRIPTION=kdepim - merge this to pull in all kdepim-derived packages
-EAPI=5
+EAPI=6
 HOMEPAGE=https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi
-IUSE=nls aqua
+IUSE=nls
 KEYWORDS=amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=metapackage
-RDEPEND=kde-frameworks/oxygen-icons:5 >=kde-apps/akregator-4.4.2016.01:4[aqua=] >=kde-apps/blogilo-4.4.2016.01:4[aqua=] >=kde-apps/kabcclient-4.4.2016.01:4[aqua=] >=kde-apps/kaddressbook-4.4.2016.01:4[aqua=] >=kde-apps/kalarm-4.4.2016.01:4[aqua=] >=kde-apps/kdepim-kresources-4.4.2016.01:4[aqua=] >=kde-apps/kdepim-wizards-4.4.2016.01:4[aqua=] >=kde-apps/kjots-4.4.2016.01:4[aqua=] >=kde-apps/kleopatra-4.4.2016.01:4[aqua=] >=kde-apps/kmail-4.4.2016.01:4[aqua=] >=kde-apps/knode-4.4.2016.01:4[aqua=] >=kde-apps/knotes-4.4.2016.01:4[aqua=] >=kde-apps/konsolekalendar-4.4.2016.01:4[aqua=] >=kde-apps/kontact-4.4.2016.01:4[aqua=] >=kde-apps/korganizer-4.4.2016.01:4[aqua=] >=kde-apps/ktimetracker-4.4.2016.01:4[aqua=] >=kde-apps/libkdepim-4.4.2016.01:4[aqua=] >=kde-apps/libkleo-4.4.2016.01:4[aqua=] >=kde-apps/libkpgp-4.4.2016.01:4[aqua=] nls? ( >=kde-apps/kde4-l10n-4.14.3:4[aqua=] >=kde-apps/kdepim-l10n-4.4.11.1-r1:4[aqua=] ) !kde-apps/kdepim-runtime
+RDEPEND=kde-frameworks/oxygen-icons:5 >=kde-apps/akregator-4.4.2016 >=kde-apps/blogilo-4.4.2016 >=kde-apps/kabcclient-4.4.2016 >=kde-apps/kaddressbook-4.4.2016 >=kde-apps/kalarm-4.4.2016 >=kde-apps/kdepim-kresources-4.4.2016 >=kde-apps/kdepim-wizards-4.4.2016 >=kde-apps/kjots-4.4.2016 >=kde-apps/kleopatra-4.4.2016 >=kde-apps/kmail-4.4.2016 >=kde-apps/knode-4.4.2016 >=kde-apps/knotes-4.4.2016 >=kde-apps/konsolekalendar-4.4.2016 >=kde-apps/kontact-4.4.2016 >=kde-apps/korganizer-4.4.2016 >=kde-apps/ktimetracker-4.4.2016 >=kde-apps/libkdepim-4.4.2016 >=kde-apps/libkleo-4.4.2016 >=kde-apps/libkpgp-4.4.2016 nls? ( >=kde-apps/kde4-l10n-4.14.3 >=kde-apps/kdepim-l10n-4.4.11 ) !kde-apps/kdepim-runtime !kde-apps/kdepim-meta:4
 SLOT=4
 _eclass_exported_funcs=-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde4-functions	8a4cfd7f1a927a64f5dbcc8f3277ec51	kde4-meta-pkg	c44f6f251d9dd5378f5b40877eb9eb4f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=50a968d56118bf9096113c51a390ce95
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde5-functions	2cb26421bb0ad7617283215e37aef3f1	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e0c796b03031d53092adfdff2a774a5c
