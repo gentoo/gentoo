@@ -14037,7 +14037,7 @@ net-dns/knot 1.6.6 2.1.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.30 1.32-r1 1.33: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 0.10: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
-net-dns/maradns 2.0.09-r1: A security-aware DNS server
+net-dns/maradns 2.0.09-r1 2.0.09-r2: A security-aware DNS server
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/namecoin-qt 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
