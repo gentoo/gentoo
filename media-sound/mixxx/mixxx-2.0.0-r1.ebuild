@@ -69,7 +69,10 @@ RDEPEND="dev-db/sqlite
 DEPEND="${RDEPEND}
 	sci-libs/fftw:3.0
 	virtual/pkgconfig
-	qt5? ( dev-qt/qtxmlpatterns:5 )"
+	qt5? (
+		dev-qt/qttest:5
+		dev-qt/qtxmlpatterns:5
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
