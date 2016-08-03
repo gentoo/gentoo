@@ -24,7 +24,7 @@ KEYWORDS=""
 fi
 IUSE="+magic sqlite synctex test"
 
-RDEPEND=">=dev-libs/girara-0.2.5:3=
+RDEPEND=">=dev-libs/girara-0.2.6:3=
 	>=dev-libs/glib-2.32:2=
 	x11-libs/cairo:=
 	>=x11-libs/gtk+-3.6:3

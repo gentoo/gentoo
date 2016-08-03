@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils systemd udev
 
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
@@ -17,16 +17,12 @@ IUSE="bat doc +libsamplerate +ncurses nls selinux"
 CDEPEND=">=media-libs/alsa-lib-${PV}
 	libsamplerate? ( media-libs/libsamplerate )
 	ncurses? ( >=sys-libs/ncurses-5.7-r7:0= )
-	bat? ( sci-libs/fftw )"
+	bat? ( sci-libs/fftw:= )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-text/xmlto )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-alsa )"
-
-src_prepare() {
-	epatch_user
-}
 
 src_configure() {
 	local myconf
@@ -40,7 +36,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable ncurses alsamixer) \
 		--disable-alsaconf \
-		"$(systemd_with_unitdir)" \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		--with-udev-rules-dir="$(get_udevdir)"/rules.d \
 		${myconf}
 }
