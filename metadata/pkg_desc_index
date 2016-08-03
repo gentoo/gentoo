@@ -2947,6 +2947,7 @@ dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition pa
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/percona-server 5.6.31.77.0: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.11 2.2.15 2.2.17: Advanced command-line tools to perform a variety of MySQL and system tasks
+dev-db/percona-xtrabackup 2.4.4: Hot backup utility for MySQL based servers
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.18.1 1.20.0 1.20.0-r1 1.20.0-r2 1.22.0 1.22.1 1.22.1-r1: wxWidgets GUI for PostgreSQL
