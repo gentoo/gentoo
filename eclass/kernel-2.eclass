@@ -526,6 +526,7 @@ if [[ ${ETYPE} == sources ]]; then
 
 elif [[ ${ETYPE} == headers ]]; then
 	DESCRIPTION="Linux system headers"
+	IUSE="crosscompile_opts_headers-only"
 
 	# Since we should NOT honour KBUILD_OUTPUT in headers
 	# lets unset it here.
