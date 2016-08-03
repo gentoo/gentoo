@@ -15547,7 +15547,7 @@ sci-calculators/orpie 1.5.1 1.5.1-r1 1.5.2 1.5.2-r1: A fullscreen RPN calculator
 sci-calculators/pcalc 2 3: the programmers calculator
 sci-calculators/qalculate-bases 0.9.4-r2: GTK+ base conversion tool
 sci-calculators/qalculate-currency 0.9.4-r2: A GTK+ currency converter
-sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1: Modern multi-purpose calculator
+sci-calculators/qalculate-gtk 0.9.7 0.9.7-r1 0.9.9: Modern multi-purpose calculator
 sci-calculators/qalculate-units 0.9.4-r2: A GTK+ unit conversion tool
 sci-calculators/qalculator 0.4b: A Qt4 based small calculator application
 sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator for power users
@@ -15923,7 +15923,7 @@ sci-libs/libnova 0.12.3 0.14.0 0.15.0: Celestial Mechanics and Astronomical Calc
 sci-libs/liborigin 20110829: Library for reading OriginLab OPJ project files
 sci-libs/libpdb 991112 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728 040728-r1: PDB Record I/O Libraries -- c++ version
-sci-libs/libqalculate 0.9.7-r1: A modern multi-purpose calculator library
+sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0 9999: provide basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5 1.8.5-r1: General framework for developing spatial indices
