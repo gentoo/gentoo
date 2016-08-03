@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,7 @@ TEXMF_PATH=/usr/share/texmf-dist
 src_prepare() {
 	cd "${WORKDIR}/texlive-${PV#*_p}-source"
 	S="${WORKDIR}/texlive-${PV#*_p}-source" elibtoolize #sane .so versionning on gfbsd
-	cp "${FILESDIR}/texmf-update-r1" "${S}"/texmf-update
+	cp "${FILESDIR}/texmf-update-r2" "${S}"/texmf-update
 	eprefixify "${S}"/texmf-update
 }
 
