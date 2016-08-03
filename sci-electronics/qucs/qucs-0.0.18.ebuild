@@ -17,6 +17,8 @@ IUSE=""
 
 RDEPEND="dev-qt/qtcore:4[qt3support]
 	dev-qt/qtgui:4[qt3support]
+	dev-qt/qtsvg:4
+	dev-qt/qtscript:4
 	dev-qt/qt3support:4
 	x11-libs/libX11:0="
 DEPEND="${RDEPEND}"
