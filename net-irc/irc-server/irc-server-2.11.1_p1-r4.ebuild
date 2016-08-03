@@ -4,36 +4,34 @@
 
 EAPI=6
 
-inherit eutils versionator flag-o-matic user
+inherit versionator user
 
-MY_P=irc${PV/_/}
+MY_P="irc${PV/_/}"
 
 DESCRIPTION="RFC compliant IRC server"
 HOMEPAGE="http://www.irc.org/"
 SRC_URI="ftp://ftp.irc.org/irc/server/${MY_P}.tgz
 	ftp://ftp.irc.org/irc/server/Old/irc$(get_version_component_range 1-2)/${MY_P}.tgz"
 
-LICENSE="GPL-1"
+# GPL-2 is for the init script, bug 426038.
+LICENSE="GPL-1 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="zlib ipv6"
 
-RDEPEND="sys-libs/ncurses
+RDEPEND="sys-libs/ncurses:0
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	sys-apps/sed
 	sys-apps/grep"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}"/2.10.3_p3-gentoo.patch )
 
 pkg_setup() {
 	enewgroup ircd
 	enewuser ircd -1 -1 -1 ircd
-}
-
-src_prepare() {
-	eapply "${FILESDIR}"/2.10.3_p3-gentoo.patch
-	default
 }
 
 src_configure () {
@@ -47,10 +45,17 @@ src_configure () {
 		-e "s/^#undef\tIRC_UID$/#define\tIRC_UID\t$IRCUID/" \
 		-e "s/^#undef\tIRC_GID$/#define\tIRC_GID\t$IRCGID/" \
 		-e "s/^#undef USE_SERVICES$/#define\tUSE_SERVICES/" \
-		"${S}"/support/config.h.dist
+		"${S}"/support/config.h.dist \
+		|| die "failed to sed definitions in config.h.dist"
 
-	use zlib && sed -i -e "s/^#undef\tZIP_LINKS$/#define\tZIP_LINKS/" "${S}"/support/config.h.dist
+	if use zlib ; then
+		sed -i -e "s/^#undef\tZIP_LINKS$/#define\tZIP_LINKS/" \
+			"${S}"/support/config.h.dist \
+			|| die "failed to sed ZIP_LINKS definition in config.h.dist"
+	fi
 
+	# The --mandir has single quotes around it, the $prefix is NOT
+	# interpolated into the string.
 	econf \
 		--sysconfdir=/etc/ircd \
 		--localstatedir=/var/run/ircd \
@@ -62,12 +67,14 @@ src_configure () {
 }
 
 src_compile() {
-	cd $(support/config.guess)
+	cd $(support/config.guess) \
+		|| die "failed to change into the source directory in src_compile"
 	emake ircd iauth chkconf ircd-mkpasswd ircdwatch tkserv
 }
 
 src_install() {
-	cd $(support/config.guess)
+	cd $(support/config.guess) \
+		|| die "failed to change into the source directory in src_install"
 
 	emake \
 		prefix="${D}"/usr \
@@ -80,7 +87,8 @@ src_install() {
 	fowners ircd:ircd /var/run/ircd
 	fowners ircd:ircd /var/log/ircd
 
-	cd ../doc
+	cd ../doc || die "failed to change into the doc directory in src_install"
+
 	dodoc \
 		*-New alt-irc-faq Authors BUGS ChangeLog Etiquette \
 		iauth-internals.txt INSTALL.appendix INSTALL.* \
