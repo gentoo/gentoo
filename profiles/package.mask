@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
+# No reverse dependencies, was never clear why it was in tree,
+# upstream stagnant, dev-libs/cdk is mostly unmaintained.
+#
+# Please voice concerns on bug 575036 if you still need this.
+# Removal in 30 days.
+dev-perl/cdk-perl
+
 # Matthias Maier <tamiko@gentoo.org> (3 Aug 2016)
 # Masked for removal in 30 days. Obsolete packages that are now part of
 # sci-libs/libqalculate and/or sci-calculators/qalculate-gtk
