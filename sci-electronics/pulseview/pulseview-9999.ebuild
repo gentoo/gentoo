@@ -40,7 +40,7 @@ RDEPEND="
 		dev-qt/qtsvg:5
 	)
 	decode? (
-		>=sci-libs/libsigrokdecode-0.4.0
+		>=sci-libs/libsigrokdecode-0.4.0[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
