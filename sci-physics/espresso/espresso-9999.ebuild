@@ -24,24 +24,25 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda doc examples +fftw +hdf5 packages python test -tk"
+IUSE="cuda doc examples +fftw +hdf5 packages +python tcl test"
 
-REQUIRED_USE=" python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	packages? ( tcl )
+	|| ( python tcl )
+	${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	python? (
-		${PYTHON_DEPS}
 		>dev-python/cython-0.22[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	dev-lang/tcl:0=
+	tcl? ( dev-lang/tcl:0= )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
 	dev-libs/boost:=[mpi]
-	virtual/mpi
 	hdf5? ( sci-libs/hdf5 )
-	packages? ( dev-tcltk/tcllib )
-	tk? ( >=dev-lang/tk-8.4.18-r1:0= )"
+	packages? ( dev-tcltk/tcllib )"
 
 DEPEND="${RDEPEND}
 	doc? (
@@ -51,10 +52,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README ChangeLog )
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
-
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake-utils_src_prepare
@@ -63,9 +60,12 @@ src_prepare() {
 src_configure() {
 	mycmakeargs=(
 		-DWITH_CUDA=$(usex cuda)
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DWITH_PYTHON=$(usex python)
+		-DWITH_TCL=$(usex tcl)
 		-DWITH_TESTS=$(usex test)
-		-DWITH_H5MD=$(usex hdf5)
+		-DWITH_SCAFACOS=ON
+		-DINSTALL_PYPRESSO=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 		-DCMAKE_SKIP_RPATH=YES
@@ -81,7 +81,7 @@ src_compile() {
 }
 
 src_install() {
-	local i
+	local i docdir="${S}"
 
 	cmake-utils_src_install
 
@@ -91,24 +91,22 @@ src_install() {
 	save_config ${CMAKE_BUILD_DIR}/src/core/myconfig-final.hpp
 
 	if use doc; then
-		if [[ ${PV} = 9999 ]] ; then
-			newdoc ${CMAKE_BUILD_DIR}/doc/dg/dg.pdf developer_guide.pdf
-			newdoc ${CMAKE_BUILD_DIR}/doc/ug/ug.pdf user_guide.pdf
-			for i in ${CMAKE_BUILD_DIR}/doc/tutorials/*/*/[0-9]*.pdf; do
-				newdoc "${i}" "tutorial_${i##*/}"
+		[[ ${PV} = 9999 ]] && docdir="${CMAKE_BUILD_DIR}"
+		newdoc "${docdir}"/doc/dg/dg.pdf developer_guide.pdf
+		newdoc "${docdir}"/doc/ug/ug.pdf user_guide.pdf
+		for j in $(usev python) $(usev tcl); do
+			for i in "${docdir}/doc/tutorials/${j}"/*/[0-9]*.pdf; do
+		  		newdoc "${i}" "${j}_tutorial_${i##*/}"
 			done
-		else
-			newdoc "${S}"/doc/ug/ug.pdf user_guide.pdf
-			for i in "${S}"/doc/tutorials/*/*/[0-9]*.pdf; do
-				newdoc "${i}" "tutorial_${i##*/}"
-			done
-		fi
+		done
 		dodoc -r ${CMAKE_BUILD_DIR}/doc/doxygen/html
 	fi
 
 	if use examples; then
-		insinto /usr/share/${PN}/examples
-		doins -r samples/*
+		for i in $(usev python) $(usev tcl); do
+			insinto "/usr/share/${PN}/examples/${i}"
+			doins -r samples/${i}/.
+		done
 	fi
 
 	if use packages; then
