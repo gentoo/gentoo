@@ -7097,7 +7097,7 @@ sci-physics/cernlib-montecarlo:herwig - Build Herwig internal event generator, n
 sci-physics/clhep:exceptions - Enable zoom exceptions for user intervention
 sci-physics/espresso:cuda - Enable cuda support
 sci-physics/espresso:examples - Installs the examples
-sci-physics/espresso:packages - Installs extra subpackages
+sci-physics/espresso:packages - Installs extra TCL subpackages
 sci-physics/fastjet:cgal - Use sci-mathematics/cgal instead of bundled algorithms
 sci-physics/fastjet:plugins - Build all standard and C++ plugins
 sci-physics/geant:data - Add a lot of standard physics data files for geant4
