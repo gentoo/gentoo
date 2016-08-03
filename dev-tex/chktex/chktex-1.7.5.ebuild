@@ -23,6 +23,7 @@ RDEPEND="virtual/latex-base
 	pcre? ( dev-libs/libpcre )"
 DEPEND="${RDEPEND}
 	sys-apps/groff
+	dev-texlive/texlive-fontsrecommended
 	doc? ( dev-tex/latex2html )"
 
 PATCHES=( "${FILESDIR}/${PN}-1.7.1-asneeded.patch" )
