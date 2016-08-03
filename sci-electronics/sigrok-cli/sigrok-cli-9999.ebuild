@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 PYTHON_COMPAT=( python3_{3,4} )
-inherit eutils python-single-r1
+
+inherit python-single-r1
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -39,6 +40,8 @@ src_prepare() {
 	sed -i \
 		-e '/WITH_SRD=$enableval/s:=$enableval:=$withval:' \
 		configure || die
+
+	eapply_user
 }
 
 src_configure() {
