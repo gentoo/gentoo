@@ -4,11 +4,11 @@
 
 EAPI="5"
 
-# don't forget to update these when bumping the version
-PLUGINS_V=2.1.7  # http://www.vuze.com/plugins/details/azplugins
-RATING_V=1.4.3   # http://www.vuze.com/plugins/details/azrating
-UPDATER_V=1.9.1  # http://www.vuze.com/plugins/details/azupdater
-UPNPAV_V=0.4.9   # http://www.vuze.com/plugins/details/azupnpav
+# update these when bumping the version
+PLUGINS_V=2.1.10  # http://www.vuze.com/plugins/details/azplugins
+RATING_V=1.5.19   # http://www.vuze.com/plugins/details/azrating
+UPDATER_V=1.9.2   # http://www.vuze.com/plugins/details/azupdater
+UPNPAV_V=0.5.6    # http://www.vuze.com/plugins/details/azupnpav
 
 PLUGINS_DIST=azplugins_${PLUGINS_V}.jar
 RATING_DIST=azrating_${RATING_V}.jar
