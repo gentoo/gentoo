@@ -10059,7 +10059,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.1.1: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 3.7.3 3.8.3 3.8.4 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.7.3 3.8.4 3.9 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20150502 1.20151229: Manage config files in $HOME via fake bare git repositories
 dev-vcs/veracity 1.0.0.10517 1.1.0.10565: A modern and featureful DVCS (distributed version control system)
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
