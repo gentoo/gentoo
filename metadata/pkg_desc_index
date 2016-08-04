@@ -4927,7 +4927,7 @@ dev-libs/svrcore 4.0.4-r1 4.1.2: Mozilla LDAP C SDK
 dev-libs/sway 0.8 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
-dev-libs/tinyxml2 1.0.9_p20121123 2.2.0: A simple, small, efficient, C++ XML parser
+dev-libs/tinyxml2 1.0.9_p20121123 2.2.0 4.0.1: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r1: Modular, multithreaded webapplicationserver extensible with C++
 dev-libs/totem-pl-parser 3.10.5 3.10.6: Playlist parsing library
 dev-libs/tre 0.8.0: Lightweight, robust, and efficient POSIX compliant regexp matching library
