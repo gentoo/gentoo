@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
+EAPI="6"
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # No, I am not calling ruby-ng
-inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
+inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
@@ -47,11 +47,11 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live builds, place them in /etc/portage/patches
-		epatch "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
-		epatch "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
+		eapply "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
+		eapply "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
 	fi
 
-	epatch_user
+	eapply_user
 
 	multilib_copy_sources
 }
