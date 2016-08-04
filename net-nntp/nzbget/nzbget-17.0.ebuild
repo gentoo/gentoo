@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic user
+inherit autotools eutils flag-o-matic user
 
 MY_PV=${PV/_pre/-r}
 MY_P=${PN}-${PV/_pre/-testing-r}
@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 DOCS=( ChangeLog README nzbget.conf )
 
+PATCHES=(
+	"${FILESDIR}"/${P}_parcheck-tests-fix.patch
+)
+
 S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
 pkg_pretend() {
@@ -42,6 +46,8 @@ pkg_pretend() {
 
 src_prepare() {
 	default
+	eautoreconf
+
 	sed -i 's:^ScriptDir=.*:ScriptDir=/usr/share/nzbget/ppscripts:' nzbget.conf || die
 
 	sed \
