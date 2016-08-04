@@ -11323,7 +11323,7 @@ kde-apps/kmahjongg 15.12.3 16.04.3: A tile matching game for one or two players
 kde-apps/kmail 4.4.2016.01 4.14.11_pre20160211: Email component of Kontact, the integrated personal information manager of KDE
 kde-apps/kmimetypefinder 15.12.3 16.04.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 15.12.3-r1 16.04.3: Classic mine sweeper game
-kde-apps/kmix 15.12.3 16.04.3: Plasma mixer gui
+kde-apps/kmix 15.12.3 16.04.3-r1: Plasma mixer gui
 kde-apps/kmousetool 15.12.3 16.04.3: KDE program that clicks the mouse for you
 kde-apps/kmouth 15.12.3 16.04.3: Text-to-speech synthesizer front end
 kde-apps/kmplot 15.12.3 16.04.3: Mathematical function plotter
