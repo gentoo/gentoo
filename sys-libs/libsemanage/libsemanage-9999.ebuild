@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+EAPI="6"
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
+inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 MY_RELEASEDATE="20160223"
@@ -16,7 +16,7 @@ SELNX_VER="${PV}"
 DESCRIPTION="SELinux kernel and policy management library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	S="${WORKDIR}/${MY_P}/${PN}"
@@ -74,11 +74,11 @@ src_prepare() {
 
 	if [[ ${PV} != 9999 ]] ; then
 		# If wanted for live builds, please use /etc/portage/patches
-		epatch "${FILESDIR}/0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch"
+		eapply "${FILESDIR}/0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch"
 	fi
-	epatch "${FILESDIR}"/${PN}-2.4-build-paths.patch
+	eapply "${FILESDIR}"/${PN}-2.6-build-paths.patch
 
-	epatch_user
+	eapply_user
 
 	multilib_copy_sources
 }
