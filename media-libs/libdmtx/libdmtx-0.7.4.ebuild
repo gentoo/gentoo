@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
 DESCRIPTION="Barcode data matrix reading and writing library"
-HOMEPAGE="http://www.libdmtx.org/"
+HOMEPAGE="http://libdmtx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
