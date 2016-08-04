@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,11 @@ RDEPEND=">=dev-perl/Sub-Uplevel-0.12
 	dev-perl/Tree-DAG_Node
 	virtual/perl-Test-Simple
 	virtual/perl-File-Spec"
-DEPEND="test? ( ${RDEPEND}
-		dev-perl/Test-Pod )"
+DEPEND="test? ( ${RDEPEND} )"
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
+}
