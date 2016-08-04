@@ -10328,7 +10328,7 @@ games-board/mt_ncurses_client 0.1.98: client for the french tarot game maitretar
 games-board/natch 2.4: A program to solve chess proof games
 games-board/openyahtzee 1.9.2 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee
 games-board/pasang-emas 3.1.0: A traditional game of Brunei
-games-board/peg-e 1.1.2: A peg solitaire game
+games-board/peg-e 1.1.2 1.1.2-r1: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
 games-board/pioneers 15.3 15.3-r1: A clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.1 1.1.1-r1 1.1.1-r2: Texas Hold'em poker game
