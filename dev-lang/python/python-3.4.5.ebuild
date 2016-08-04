@@ -175,7 +175,12 @@ src_compile() {
 
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
-	pax-mark m python
+	# Work around bug 329499. See also bug 413751 and 457194.
+	if has_version dev-libs/libffi[pax_kernel]; then
+		pax-mark E python
+	else
+		pax-mark m python
+	fi
 }
 
 src_test() {
