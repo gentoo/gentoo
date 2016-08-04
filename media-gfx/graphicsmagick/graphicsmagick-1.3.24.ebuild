@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-
 IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg threads tiff truetype webp wmf X zlib"
 
-RDEPEND=">=sys-devel/libtool-2.2.6b
+RDEPEND="dev-libs/libltdl:0
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
 	imagemagick? ( !media-gfx/imagemagick )
