@@ -1022,7 +1022,6 @@ app-misc/vifm:vim-plugin - Install the vifm vim plugin
 app-misc/vifm:vim-syntax - Pulls in related vim syntax scripts
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/worker:magic - Add magic file support from sys-apps/file to automatically detect file types
-app-misc/workrave:distribution - Enable networking. See http://www.workrave.org/features/
 app-misc/workrave:mate - Add support for MATE panel
 app-misc/workrave:xfce - Add support for XFCE panel
 app-misc/zygrib:maps - Installs additional GSHHS maps for high resolution coastline data and cities

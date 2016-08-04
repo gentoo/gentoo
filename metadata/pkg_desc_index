@@ -1952,7 +1952,7 @@ app-misc/webcomics-collector 0.7.3 0.7.3-r1: python script for downloading webco
 app-misc/when 1.1.33 1.1.35: Extremely simple personal calendar program aimed at the Unix geek who wants something minimalistic
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
-app-misc/workrave 1.10.6-r1 1.10.6-r2 1.10.8: Helpful utility to attack Repetitive Strain Injury (RSI)
+app-misc/workrave 1.10.8 1.10.15: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/wyrd 1.4.6-r1: Text-based front-end to Remind
 app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2 3.6.1-r1: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
@@ -2001,7 +2001,7 @@ app-office/calcurse 4.0.0 4.1.0: a text-based calendar and scheduling applicatio
 app-office/calligra 2.9.11: KDE Office Suite
 app-office/calligra-l10n 2.9.11: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
-app-office/dia2code 0.8.7: Convert UML diagrams produced with Dia to various source code flavours
+app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.8.0 0.9.1 0.9.4: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
@@ -4438,7 +4438,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0 5.24.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.5.37 5.5.38 5.6.23 5.6.23-r3 5.6.24 5.6.24-r1 7.0.9 7.0.9-r1: The PHP language runtime engine
+dev-lang/php 5.5.37 5.5.38 5.6.23 5.6.23-r3 5.6.24 5.6.24-r1 7.0.9-r2: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 2.7.12 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.4.4 3.4.5 3.5.0-r2 3.5.1-r2 3.5.1-r3 3.5.2: An interpreted, interactive, object-oriented programming language
