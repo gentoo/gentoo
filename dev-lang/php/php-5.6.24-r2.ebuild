@@ -2,58 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools flag-o-matic versionator libtool systemd
-
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-
-function php_get_uri ()
-{
-	case "${1}" in
-		"php-pre")
-			echo "http://downloads.php.net/dsp/${2}"
-		;;
-		"php")
-			echo "http://www.php.net/distributions/${2}"
-		;;
-		"olemarkus")
-			echo "https://dev.gentoo.org/~olemarkus/php/${2}"
-		;;
-		"gentoo")
-			echo "mirror://gentoo/${2}"
-		;;
-		*)
-			die "unhandled case in php_get_uri"
-		;;
-	esac
-}
-
-PHP_MV="$(get_major_version)"
-SLOT="$(get_version_component_range 1-2)"
-
-# alias, so we can handle different types of releases (finals, rcs, alphas,
-# betas, ...) w/o changing the whole ebuild
-PHP_PV="${PV/_rc/RC}"
-PHP_PV="${PHP_PV/_alpha/alpha}"
-PHP_PV="${PHP_PV/_beta/beta}"
-PHP_RELEASE="php"
-[[ ${PV} == ${PV/_alpha/} ]] || PHP_RELEASE="php-pre"
-[[ ${PV} == ${PV/_beta/} ]] || PHP_RELEASE="php-pre"
-[[ ${PV} == ${PV/_rc/} ]] || PHP_RELEASE="php-pre"
-PHP_P="${PN}-${PHP_PV}"
-
-PHP_SRC_URI="$(php_get_uri "${PHP_RELEASE}" "${PHP_P}.tar.bz2")"
-
-PHP_FPM_CONF_VER="1"
-
-SRC_URI="${PHP_SRC_URI}"
+inherit autotools flag-o-matic versionator libtool systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="http://php.net/"
+SRC_URI="http://php.net/distributions/${P}.tar.xz"
 LICENSE="PHP-3"
-
-S="${WORKDIR}/${PHP_P}"
+SLOT="$(get_version_component_range 1-2)"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2"
@@ -75,16 +33,14 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	sybase-ct sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
-DEPEND="
-	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
-	>=dev-libs/libpcre-8.32[unicode]
-	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
-		<www-servers/apache-2.4[threads=] ) )"
-
 # The supported (that is, autodetected) versions of BDB are listed in
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
-DEPEND="${DEPEND}
+COMMON_DEPEND="
+	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
+	>=dev-libs/libpcre-8.32[unicode]
+	apache2? ( || ( >=www-servers/apache-2.4[apache2_modules_unixd,threads=]
+		<www-servers/apache-2.4[threads=] ) )
 	berkdb? ( || ( 	sys-libs/db:5.3
 					sys-libs/db:5.1
 					sys-libs/db:4.8
@@ -163,10 +119,19 @@ DEPEND="${DEPEND}
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
 	zip? ( sys-libs/zlib )
 	zlib? ( sys-libs/zlib )
-	virtual/mta
 "
 
-php="=${CATEGORY}/${PF}"
+RDEPEND="${COMMON_DEPEND}
+	virtual/mta
+	fpm? (
+		selinux? ( sec-policy/selinux-phpfpm )
+		systemd? ( sys-apps/systemd ) )"
+
+DEPEND="${COMMON_DEPEND}
+	app-arch/xz-utils
+	sys-devel/flex
+	>=sys-devel/m4-1.4.3
+	>=sys-devel/libtool-1.5.18"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
@@ -200,17 +165,7 @@ REQUIRED_USE="
 
 	!cli? ( !cgi? ( !fpm? ( !apache2? ( !embed? ( cli ) ) ) ) )"
 
-RDEPEND="${DEPEND}"
-
-RDEPEND="${RDEPEND}
-	fpm? (
-		selinux? ( sec-policy/selinux-phpfpm )
-		systemd? ( sys-apps/systemd ) )"
-
-DEPEND="${DEPEND}
-	sys-devel/flex
-	>=sys-devel/m4-1.4.3
-	>=sys-devel/libtool-1.5.18"
+PHP_MV="$(get_major_version)"
 
 # Allow users to install production version if they want to
 if [[ "${PHP_INI_VERSION}" == "production" ]]; then
@@ -218,8 +173,6 @@ if [[ "${PHP_INI_VERSION}" == "production" ]]; then
 else
 	PHP_INI_UPSTREAM="php.ini-development"
 fi
-
-PHP_INI_FILE="php.ini"
 
 php_install_ini() {
 	local phpsapi="${1}"
@@ -241,7 +194,7 @@ php_install_ini() {
 
 	dodir "${PHP_INI_DIR#${EPREFIX}}"
 	insinto "${PHP_INI_DIR#${EPREFIX}}"
-	newins "${phpinisrc}" "${PHP_INI_FILE}"
+	newins "${phpinisrc}" php.ini
 
 	elog "Installing php.ini for ${phpsapi} into ${PHP_INI_DIR#${EPREFIX}}"
 	elog
@@ -300,11 +253,10 @@ src_prepare() {
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
 
-	# Add user patches #357637
-	epatch_user
+	eapply_user
 
 	# Force rebuilding aclocal.m4
-	rm -f aclocal.m4 || die
+	rm -f aclocal.m4 || die "failed to remove aclocal.m4 in src_prepare"
 	eautoreconf
 
 	if [[ ${CHOST} == *-darwin* ]] ; then

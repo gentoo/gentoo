@@ -57,7 +57,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kio-extras)
 	thumbnail? (
-		|| ( $(add_kdeapps_dep ffmpegthumbs) media-video/ffmpegthumbnailer )
+		$(add_kdeapps_dep ffmpegthumbs)
 		$(add_kdeapps_dep thumbnailers)
 	)
 "
