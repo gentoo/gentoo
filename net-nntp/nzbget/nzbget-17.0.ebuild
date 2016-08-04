@@ -13,7 +13,7 @@ DESCRIPTION="A command-line based binary newsgrabber supporting .nzb files"
 HOMEPAGE="http://nzbget.net/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="debug gnutls ncurses parcheck ssl test zlib"
