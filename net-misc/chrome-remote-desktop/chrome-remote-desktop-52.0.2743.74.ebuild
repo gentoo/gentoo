@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Base URL: https://dl.google.com/linux/chrome-remote-desktop/deb/
 # Fetch the Release file:
@@ -24,12 +23,11 @@ DESCRIPTION="access remote computers via Chrome!"
 PLUGIN_URL="https://chrome.google.com/remotedesktop"
 HOMEPAGE="https://support.google.com/chrome/answer/1649523 ${PLUGIN_URL}"
 BASE_URI="https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/${PN}/${PN}_${PV}"
-SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )
-	x86? ( ${BASE_URI}_i386.deb )"
+SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )"
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 
 # All the libs this package links against.

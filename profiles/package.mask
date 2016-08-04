@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (4 Aug 2016)
+# Masked for removal in 30 days. Dead upstream. Last release
+# 7 years ago. No reverse dependencies. Use kde-apps/ffmpegthumbs
+# or media-video/ffmpegthumbnailer instead.
+media-video/kffmpegthumbnailer
+
 # Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
 # No reverse dependencies, was never clear why it was in tree,
 # upstream stagnant, dev-libs/cdk is mostly unmaintained.
