@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools flag-o-matic versionator libtool systemd
+inherit autotools flag-o-matic versionator libtool systemd
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="http://php.net/"
@@ -217,6 +217,9 @@ php_set_ini_dir() {
 }
 
 src_prepare() {
+	# Disable some assembly on x86.
+	eapply "${FILESDIR}/fix-x86-build-bug_571658.patch"
+
 	# Change PHP branding
 	# Get the alpha/beta/rc version
 	sed -re	"s|^(PHP_EXTRA_VERSION=\").*(\")|\1-pl${PR/r/}-gentoo\2|g" \
@@ -234,11 +237,10 @@ src_prepare() {
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
 
-	# Add user patches #357637
-	epatch_user
+	eapply_user
 
 	# Force rebuilding aclocal.m4
-	rm -f aclocal.m4 || die
+	rm -f aclocal.m4 || die "failed to remove aclocal.m4 in src_prepare"
 	eautoreconf
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
