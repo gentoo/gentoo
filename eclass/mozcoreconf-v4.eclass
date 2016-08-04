@@ -227,17 +227,6 @@ mozconfig_init() {
 		--disable-strip \
 		--disable-install-strip
 
-	# Here is a strange one...
-	if is-flag '-mcpu=ultrasparc*' || is-flag '-mtune=ultrasparc*'; then
-		mozconfig_annotate "building on ultrasparc" --enable-js-ultrasparc
-	fi
-
-	# Currently --enable-elf-dynstr-gc only works for x86,
-	# thanks to Jason Wever <weeve@gentoo.org> for the fix.
-	if use x86 && [[ ${enable_optimize} != -O0 ]]; then
-		mozconfig_annotate "${ARCH} optimized build" --enable-elf-dynstr-gc
-	fi
-
 	# jemalloc won't build with older glibc
 	! has_version ">=sys-libs/glibc-2.4" && mozconfig_annotate "we have old glibc" --disable-jemalloc
 }
