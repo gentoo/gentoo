@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=dev-libs/boehm-gc-7.0[threads?] dev-libs/gmp:= virtual/libffi dev-libs/libltdl:= sys-devel/libtool sys-libs/ncurses:= virtual/pkgconfig sys-apps/texinfo sys-devel/gettext
+DESCRIPTION=GNU Ubiquitous Intelligent Language for Extensions
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/guile/
+IUSE=debug debug-malloc +deprecated networking nls +regex +threads
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-3+
+RDEPEND=>=dev-libs/boehm-gc-7.0[threads?] dev-libs/gmp:= virtual/libffi dev-libs/libltdl:= sys-devel/libtool sys-libs/ncurses:=
+SLOT=12
+SRC_URI=mirror://gnu/guile/guile-2.0.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=c0b5e8f2f6953e799b2497c312fb24c0

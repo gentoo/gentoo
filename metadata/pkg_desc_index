@@ -9380,7 +9380,7 @@ dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3: Small process-control library for Guile
 dev-scheme/greg 2.0.0 2.0.0-r1: Testing-Framework for guile
-dev-scheme/guile 1.8.8-r1 1.8.8-r2: Scheme interpreter
+dev-scheme/guile 1.8.8-r1 1.8.8-r2 2.0.12: GNU Ubiquitous Intelligent Language for Extensions
 dev-scheme/guile-cairo 1.4.0 1.9.91: Wraps the Cairo graphics library for Guile Scheme
 dev-scheme/guile-gnome-platform 2.16.1 2.16.1-r1 2.16.2: Guile Scheme code that wraps the GNOME developer platform
 dev-scheme/guile-gui 0.2: Guile Scheme code that aims to implement a graphical user interface
@@ -17799,7 +17799,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.8.0 45.2.0 45.3.0 48.0: Firefox Web Browser
 www-client/firefox-bin 45.3.0 48.0: Firefox Web Browser
 www-client/google-chrome 52.0.2743.116: The web browser from Google
-www-client/google-chrome-beta 53.0.2785.34: The web browser from Google
+www-client/google-chrome-beta 53.0.2785.46: The web browser from Google
 www-client/google-chrome-unstable 54.0.2816.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17856,7 +17856,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
-www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.34_beta 54.0.2816.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.46_beta 54.0.2816.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
