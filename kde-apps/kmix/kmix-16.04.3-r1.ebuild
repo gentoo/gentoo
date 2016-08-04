@@ -42,6 +42,8 @@ RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 "
 
+PATCHES=( "${FILESDIR}/${P}-crashfix.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DKMIX_KF5_BUILD=ON

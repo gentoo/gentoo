@@ -30,6 +30,8 @@ DEPEND="
 DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
 FILECAPS=( cap_net_raw /usr/sbin/mtr )
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.80-impl-dec.patch
+	"${FILESDIR}"/${PN}-9999-ipv6.patch
 	"${FILESDIR}"/${PN}-9999-tinfo.patch
 )
 
