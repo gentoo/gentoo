@@ -11,3 +11,5 @@ HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze-gtk"
 LICENSE="LGPL-2.1+"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
+
+RDEPEND="!>=x11-libs/gtk+-3.20:3"
