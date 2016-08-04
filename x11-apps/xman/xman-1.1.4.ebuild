@@ -8,7 +8,7 @@ inherit xorg-2
 
 DESCRIPTION="Manual page display program for the X Window System"
 
-KEYWORDS="alpha ~amd64 arm ~hppa ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha ~amd64 arm hppa ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 DEPEND="x11-libs/libXaw
