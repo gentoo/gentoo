@@ -122,9 +122,6 @@ src_prepare() {
 	DOC_CONTENTS="To modify system network connections without needing to enter the
 		root password, add your user account to the 'plugdev' group."
 
-	# Don't build examples, they are not needed and can cause build failure
-	sed -e '/^\s*examples\s*\\*/d' -i Makefile.{am,in} || die
-
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
@@ -207,6 +204,13 @@ multilib_src_configure() {
 			ln -s "${S}"/docs/${d}/html docs/${d}/html || die
 		done
 	fi
+
+	# Disable examples
+	cat > examples/Makefile <<-EOF
+	.PHONY: all install
+	all:
+	install:
+	EOF
 }
 
 multilib_src_compile() {
