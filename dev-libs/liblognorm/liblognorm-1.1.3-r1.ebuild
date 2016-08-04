@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="http://www.liblognorm.com/files/download/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~arm hppa ~x86 ~amd64-linux"
 fi
 
 LICENSE="LGPL-2.1"
