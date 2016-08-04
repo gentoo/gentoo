@@ -227,11 +227,6 @@ mozconfig_init() {
 		--disable-strip \
 		--disable-install-strip
 
-	# Here is a strange one...
-	if is-flag '-mcpu=ultrasparc*' || is-flag '-mtune=ultrasparc*'; then
-		mozconfig_annotate "building on ultrasparc" --enable-js-ultrasparc
-	fi
-
 	# jemalloc won't build with older glibc
 	! has_version ">=sys-libs/glibc-2.4" && mozconfig_annotate "we have old glibc" --disable-jemalloc
 }
