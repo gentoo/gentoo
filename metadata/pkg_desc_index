@@ -17754,7 +17754,7 @@ www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generat
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 4.0.12 4.0.13: OTRS is an Open source Ticket Request System
-www-apps/owncloud 7.0.15 8.0.13 8.0.14 8.1.9 8.2.7 9.0.4: Web-based storage application where all your data is under your own control
+www-apps/owncloud 7.0.15 8.0.13 8.0.14 8.1.9 8.2.7 9.0.4 9.1.0: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
 www-apps/pcgi 2.0_alpha5: Jeff Bauer's Persistent CGI
 www-apps/phpBB 3.0.10 3.0.11 3.0.12: phpBB is an open-source bulletin board package
