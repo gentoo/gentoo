@@ -18,6 +18,8 @@ HOMEPAGE="https://www.kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 
-RDEPEND+=" !kde-apps/${PN}:4"
+if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
+	RDEPEND+=" !kde-apps/${PN}:4"
+fi
 
 fi
