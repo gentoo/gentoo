@@ -8,10 +8,10 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit flag-o-matic python-r1 qmake-utils
 
-MY_P="PyQwt-${PV}"
 DESCRIPTION="Python bindings for the Qwt library"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 HOMEPAGE="http://pyqwt.sourceforge.net/"
+MY_P="PyQwt-${PV}"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 SLOT="5"
 LICENSE="GPL-2"
@@ -19,14 +19,14 @@ KEYWORDS="amd64 arm ia64 x86"
 IUSE="debug doc examples svg"
 
 RDEPEND="
-	x11-libs/qwt:5[svg?]
-	|| ( dev-python/PyQt4[${PYTHON_USEDEP},compat(+)] )
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/sip[${PYTHON_USEDEP}]"
+	dev-python/PyQt4[${PYTHON_USEDEP},compat(+)]
+	dev-python/sip[${PYTHON_USEDEP}]
+	x11-libs/qwt:5[svg?]"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-S="${WORKDIR}/${MY_P}/configure"
+S=${WORKDIR}/${MY_P}/configure
 
 src_prepare() {
 	sed -i -e "s|configuration.qt_dir, 'bin'|'$(qt4_get_bindir)'|" configure.py || die
