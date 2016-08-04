@@ -122,6 +122,11 @@ src_prepare() {
 	DOC_CONTENTS="To modify system network connections without needing to enter the
 		root password, add your user account to the 'plugdev' group."
 
+	local PATCHES=(
+		# https://bugs.gentoo.org/590432
+		"${FILESDIR}/1.2.4-upower.patch"
+	)
+
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
