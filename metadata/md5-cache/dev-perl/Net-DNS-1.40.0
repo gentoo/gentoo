@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/Digest-HMAC-1.30.0 >=virtual/perl-Digest-MD5-2.130.0 >=virtual/perl-Digest-SHA-5.230.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 ipv6? ( dev-perl/IO-Socket-INET6 ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple dev-perl/Test-Pod ) dev-lang/perl:=
+DEPEND=>=dev-perl/Digest-HMAC-1.30.0 >=virtual/perl-Digest-MD5-2.130.0 >=virtual/perl-Digest-SHA-5.230.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 ipv6? ( dev-perl/IO-Socket-INET6 ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
 DESCRIPTION=Perl Net::DNS - Perl DNS Resolver Module
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Net-DNS/
@@ -9,6 +9,6 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Digest-HMAC-1.30.0 >=virtual/perl-Digest-MD5-2.130.0 >=virtual/perl-Digest-SHA-5.230.0 >=virtual/perl-File-Spec-0.860.0 >=virtual/perl-MIME-Base64-2.110.0 ipv6? ( dev-perl/IO-Socket-INET6 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/N/NL/NLNETLABS/Net-DNS-1.04.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:- src_test:perl-module src_install:perl-module
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:- src_test:- src_install:perl-module
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=0a1a79cee5f412467014682d4f0304bf
+_md5_=f9deade32c7f467611eb28c52aac3a24
