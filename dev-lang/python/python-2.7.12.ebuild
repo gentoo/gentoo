@@ -216,12 +216,7 @@ src_compile() {
 	cd "${BUILD_DIR}" || die
 	emake
 
-	# Work around bug 329499. See also bug 413751 and 457194.
-	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E python
-	else
-		pax-mark m python
-	fi
+	pax-mark m python
 }
 
 src_test() {
