@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-perl/Test-Pod
 		dev-perl/Test-LeakTrace
 	)
 "
@@ -31,6 +30,11 @@ SRC_TEST="do"
 src_compile() {
 	export SKIP_SAX_INSTALL=1
 	perl-module_src_compile
+}
+
+src_test() {
+	perl_rm_files t/pod.t t/style-trailing-space.t t/cpan-changes.t
+	perl-module_src_test
 }
 
 pkg_postinst() {
