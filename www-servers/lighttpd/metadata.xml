@@ -9,6 +9,10 @@
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zlg@gentoo.org</email>
+		<name>Daniel Campbell</name>
+	</maintainer>
 	<longdescription lang="en">
 		lighttpd a secure, fast, compliant and very flexible web-server
 		which has been optimized for high-performance environments. It has a very
