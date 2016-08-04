@@ -54,7 +54,7 @@ COMMONDEPEND="
 		media-libs/phonon[qt4]
 		x11-libs/libXrandr
 	)
-	redeyes? ( >=media-libs/opencv-3.0.0:=[contrib] )
+	redeyes? ( media-libs/opencv:=[contrib(+)] )
 	scanner? (
 		$(add_kdeapps_dep libksane)
 		media-gfx/sane-backends
@@ -122,7 +122,7 @@ src_configure() {
 	filter-flags -floop-strip-mine
 
 	mycmakeargs+=(
-		-DENABLE_OPENCV3=ON
+		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 		$(cmake-utils_use_with ipod GLIB2)
 		$(cmake-utils_use_with ipod GObject)
 		$(cmake-utils_use_with ipod Gdk)

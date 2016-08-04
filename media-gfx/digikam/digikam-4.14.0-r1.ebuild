@@ -41,7 +41,7 @@ CDEPEND="
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	>=media-libs/opencv-3.0.0:=[contrib]
+	media-libs/opencv:=[contrib(+)]
 	media-libs/phonon[qt4]
 	>=media-libs/tiff-3.8.2:0
 	virtual/jpeg:0
@@ -102,17 +102,17 @@ src_configure() {
 	# LQR = only allows to choose between bundled/external
 	local mycmakeargs=(
 		-DENABLE_LCMS2=ON
-		-DENABLE_OPENCV3=ON
 		-DWITH_LQR=ON
 		-DWITH_LENSFUN=ON
+		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 		$(cmake-utils_use_enable addressbook KDEPIMLIBSSUPPORT)
+		$(cmake-utils_use_enable debug DEBUG_MESSAGES)
 		$(cmake-utils_use_enable gphoto2 GPHOTO2)
 		$(cmake-utils_use_with gphoto2)
-		$(cmake-utils_use_enable thumbnails THUMBS_DB)
 		$(cmake-utils_use_enable mysql INTERNALMYSQL)
 		$(cmake-utils_use_enable mysql MYSQLSUPPORT)
-		$(cmake-utils_use_enable debug DEBUG_MESSAGES)
 		$(cmake-utils_use_enable semantic-desktop BALOOSUPPORT)
+		$(cmake-utils_use_enable thumbnails THUMBS_DB)
 	)
 
 	kde4-base_src_configure
