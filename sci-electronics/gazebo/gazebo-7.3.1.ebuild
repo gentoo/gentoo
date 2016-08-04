@@ -54,6 +54,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo
+PATCHES=( "${FILESDIR}/tinyxml2.patch" )
 
 src_configure() {
 	# doesnt build without it
