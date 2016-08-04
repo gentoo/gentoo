@@ -1,19 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no" # --enable-debug only messes up with FLAGS
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2 python-single-r1 versionator
+inherit autotools gnome2 python-single-r1 versionator vcs-snapshot
 
 DESCRIPTION="Helpful utility to attack Repetitive Strain Injury (RSI)"
 HOMEPAGE="http://www.workrave.org/"
-# SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 MY_PV=$(replace_all_version_separators '_')
 SRC_URI="https://github.com/rcaelers/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -55,11 +52,12 @@ RDEPEND="
 #                dev-libs/dbus-glib )
 
 DEPEND="${RDEPEND}
+	dev-python/cheetah
 	>=dev-util/intltool-0.40.0
+	sys-devel/autoconf-archive
 	x11-proto/xproto
 	x11-proto/inputproto
 	x11-proto/recordproto
-	dev-python/cheetah
 	virtual/pkgconfig
 	doc? (
 		app-text/docbook-sgml-utils
@@ -71,10 +69,18 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_unpack() {
+	vcs-snapshot_src_unpack
+}
+
 src_prepare() {
 	# Fix gstreamer slot automagic dependency, bug #563584
 	# http://issues.workrave.org/show_bug.cgi?id=1179
-	epatch "${FILESDIR}"/${PN}-1.10.6-automagic-gstreamer.patch
+	eapply "${FILESDIR}"/${PN}-1.10.6-automagic-gstreamer.patch
+
+	# Fix build issue, fixed in next release.
+	eapply "${FILESDIR}"/${P}-gsettings.patch
+
 	eautoreconf
 	gnome2_src_prepare
 }
