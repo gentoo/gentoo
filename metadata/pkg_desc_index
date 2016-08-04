@@ -11088,7 +11088,7 @@ gnome-extra/nautilus-sendto 3.8.3 3.8.4: A nautilus extension for sending files 
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.6.2 1.8.0: Nautilus extension to tag files for Tracker
 gnome-extra/nemo 2.8.7 3.0.6: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.0.10 1.2.2: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.0.10 1.2.2 1.2.4: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
