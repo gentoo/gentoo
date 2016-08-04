@@ -8,7 +8,7 @@ MOZ_ESR=1
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 # Not officially supported as of yet
 # csb
-MOZ_LANGS=(ach af an ar as ast az be bg bn-BD bn-IN br bs ca cs cy da de el en
+MOZ_LANGS=( ach af an ar as ast az be bg bn-BD bn-IN br bs ca cs cy da de el en
 en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL ga-IE gd gl
 gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lt lv mai mk ml mr ms
 nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
@@ -26,7 +26,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
 
-inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
+inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas-v2 nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
