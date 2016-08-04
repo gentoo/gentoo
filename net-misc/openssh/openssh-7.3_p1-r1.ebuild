@@ -132,7 +132,7 @@ src_prepare() {
 		epatch "${WORKDIR}"/${LDAP_PATCH%.*}
 		save_version LPK
 	fi
-	epatch "${FILESDIR}"/${PN}-7.2_p1-GSSAPI-dns.patch #165444 integrated into gsskex
+	epatch "${FILESDIR}"/${PN}-7.3_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	epatch "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	epatch "${WORKDIR}"/${SCTP_PATCH%.*}
 	if use hpn ; then
