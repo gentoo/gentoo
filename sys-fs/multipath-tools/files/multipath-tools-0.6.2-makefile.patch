@@ -1,0 +1,239 @@
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/kpartx/Makefile multipath-tools-e165b73/kpartx/Makefile
+--- multipath-tools-e165b73.orig/kpartx/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/kpartx/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -12,7 +12,7 @@
+ 	CFLAGS += -DLIBDM_API_COOKIE
+ endif
+ 
+-LDFLAGS = -ldevmapper
++LIBS = -ldevmapper
+ OBJS = bsd.o dos.o kpartx.o solaris.o unixware.o dasd.o sun.o \
+        gpt.o mac.o ps3.o crc32.o lopart.o xstrncpy.o devmapper.o
+ EXEC = kpartx
+@@ -20,8 +20,7 @@
+ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXEC)
+ 
+ install: $(EXEC) $(EXEC).8
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -31,14 +30,14 @@
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(libudevdir)/rules.d
+ 	$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)$(libudevdir)/rules.d/66-kpartx.rules
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8
+ 	$(RM) $(DESTDIR)$(libudevdir)/kpartx_id
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/66-kpartx.rules
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/67-kpartx-compat.rules
+ 
+ clean:
+-	$(RM) core *.o $(EXEC) *.gz
++	$(RM) core *.o $(EXEC)
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/libmpathcmd/Makefile multipath-tools-e165b73/libmpathcmd/Makefile
+--- multipath-tools-e165b73.orig/libmpathcmd/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/libmpathcmd/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -27,4 +27,4 @@
+ 	$(RM) $(DESTDIR)$(incdir)/mpath_cmd.h
+ 
+ clean:
+-	$(RM) core *.a *.o *.gz *.so *.so.*
++	$(RM) core *.a *.o *.so *.so.*
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/libmpathpersist/Makefile multipath-tools-e165b73/libmpathpersist/Makefile
+--- multipath-tools-e165b73.orig/libmpathpersist/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/libmpathpersist/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -18,10 +18,8 @@
+ 
+ $(LIBS):
+ 	$(CC) -Wall -fPIC -c $(CFLAGS) *.c
+-	$(CC) $(SHARED_FLAGS) $(LIBDEPS) -Wl,-soname=$@ $(CFLAGS) -o $@ $(OBJS)
++	$(CC) $(SHARED_FLAGS) $(CFLAGS) $(LDFLAGS) $(LIBDEPS) -Wl,-soname=$@ -o $@ $(OBJS)
+ 	$(LN) $(LIBS) $(DEVLIB)
+-	$(GZIP) mpath_persistent_reserve_in.3 > mpath_persistent_reserve_in.3.gz
+-	$(GZIP) mpath_persistent_reserve_out.3 > mpath_persistent_reserve_out.3.gz
+ 
+ install: $(LIBS)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(syslibdir)
+@@ -29,20 +27,18 @@
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(syslibdir)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(man3dir)
+ 	$(INSTALL_PROGRAM) -m 755 -d $(DESTDIR)$(incdir)
+-	$(LN) $(LIBS) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+-	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_in.3.gz $(DESTDIR)$(man3dir)
+-	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_out.3.gz $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_in.3 $(DESTDIR)$(man3dir)
++	$(INSTALL_PROGRAM) -m 644 mpath_persistent_reserve_out.3 $(DESTDIR)$(man3dir)
+ 	$(INSTALL_PROGRAM) -m 644 mpath_persist.h $(DESTDIR)$(incdir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(syslibdir)/$(LIBS)
+-	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_in.3.gz
+-	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_out.3.gz
++	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_in.3
++	$(RM) $(DESTDIR)$(man3dir)/mpath_persistent_reserve_out.3
+ 	$(RM) $(DESTDIR)$(incdir)/mpath_persist.h
+ 	$(RM) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+ 
+ clean:
+ 	$(RM) core *.a *.o
+-	$(RM) libmpathpersist.so.0
+-	$(RM) libmpathpersist.so
+-	$(RM) mpath_persistent_reserve_in.3.gz mpath_persistent_reserve_out.3.gz
++	$(RM) $(LIBS)
++	$(RM) $(DEVLIB)
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/libmultipath/Makefile multipath-tools-e165b73/libmultipath/Makefile
+--- multipath-tools-e165b73.orig/libmultipath/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/libmultipath/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -70,4 +70,4 @@
+ 	$(RM) $(DESTDIR)$(syslibdir)/$(DEVLIB)
+ 
+ clean:
+-	$(RM) core *.a *.o *.gz *.so *.so.*
++	$(RM) core *.a *.o *.so *.so.*
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/Makefile.inc multipath-tools-e165b73/Makefile.inc
+--- multipath-tools-e165b73.orig/Makefile.inc	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/Makefile.inc	2016-08-05 10:47:41.623054217 -0700
+@@ -61,7 +61,7 @@
+ INSTALL_PROGRAM = install
+ 
+ OPTFLAGS     = -Wunused -Wstrict-prototypes -O2 -g -pipe -Wformat-security -Wall \
+-		-Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4
++		-Wp,-U_FORTIFY_SOURCE -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4
+ 
+ CFLAGS	     = $(OPTFLAGS) -fPIC -DLIB_STRING=\"${LIB}\" -DRUN_DIR=\"${RUN}\"
+ SHARED_FLAGS = -shared
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/mpathpersist/Makefile multipath-tools-e165b73/mpathpersist/Makefile
+--- multipath-tools-e165b73.orig/mpathpersist/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/mpathpersist/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -5,26 +5,24 @@
+ OBJS = main.o
+ 
+ CFLAGS += -I$(multipathdir) -I$(mpathpersistdir)
+-LDFLAGS += -lpthread -ldevmapper -L$(mpathpersistdir) -lmpathpersist -L$(multipathdir) -L$(mpathcmddir) -lmpathcmd -lmultipath -ludev
++LIBS += -lpthread -ldevmapper -L$(mpathpersistdir) -lmpathpersist -L$(multipathdir) -L$(mpathcmddir) -lmpathcmd -lmultipath -ludev
+ 
+ EXEC = mpathpersist
+ 
+ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) -g $(OBJS) -o $(EXEC) $(LDFLAGS) $(CFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
++	$(CC) $(CFLAGS) $(CFLAGS) -g $(OBJS) -o $(EXEC) $(LIBS)
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) -m 755 $(EXEC) $(DESTDIR)$(bindir)/
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 
+ clean:
+ 	$(RM) *.o $(EXEC)
+-	$(RM) mpathpersist.8.gz
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/multipath/Makefile multipath-tools-e165b73/multipath/Makefile
+--- multipath-tools-e165b73.orig/multipath/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/multipath/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -7,7 +7,7 @@
+ OBJS = main.o
+ 
+ CFLAGS += -I$(multipathdir) -I$(mpathcmddir)
+-LDFLAGS += -lpthread -ldevmapper -ldl -L$(multipathdir) -lmultipath -ludev \
++LIBS += -lpthread -ldevmapper -ldl -L$(multipathdir) -lmultipath -ludev \
+ 	-L$(mpathcmddir) -lmpathcmd
+ 
+ EXEC = multipath
+@@ -15,9 +15,7 @@
+ all: $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC) $(LDFLAGS)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
+-	$(GZIP) $(EXEC).conf.5 > $(EXEC).conf.5.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXEC) $(LIBS)
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -26,16 +24,14 @@
+ 	$(INSTALL_PROGRAM) -m 644 11-dm-mpath.rules $(DESTDIR)$(udevrulesdir)
+ 	$(INSTALL_PROGRAM) -m 644 $(EXEC).rules $(DESTDIR)$(libudevdir)/rules.d/56-multipath.rules
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(man5dir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5.gz $(DESTDIR)$(man5dir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).conf.5 $(DESTDIR)$(man5dir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+ 	$(RM) $(DESTDIR)$(udevrulesdir)/11-dm-mpath.rules
+ 	$(RM) $(DESTDIR)$(libudevdir)/rules.d/56-multipath.rules
+-	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8.gz
+-	$(RM) $(DESTDIR)$(man5dir)/$(EXEC).conf.5.gz
+ 
+ clean:
+-	$(RM) core *.o $(EXEC) *.gz
++	$(RM) core *.o $(EXEC)
+diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/multipathd/Makefile multipath-tools-e165b73/multipathd/Makefile
+--- multipath-tools-e165b73.orig/multipathd/Makefile	2016-07-22 02:38:14.000000000 -0700
++++ multipath-tools-e165b73/multipathd/Makefile	2016-08-05 10:47:28.248804380 -0700
+@@ -9,15 +9,15 @@
+ ifdef SYSTEMD
+ 	CFLAGS += -DUSE_SYSTEMD=$(SYSTEMD)
+ endif
+-LDFLAGS += -lurcu -lpthread -ldevmapper -lreadline
++LIBS += -lurcu -lpthread -ldevmapper -lreadline
+ ifdef SYSTEMD
+ 	ifeq ($(shell test $(SYSTEMD) -gt 209 && echo 1), 1)
+-		LDFLAGS += -lsystemd
++		LIBS += -lsystemd
+ 	else
+-		LDFLAGS += -lsystemd-daemon
++		LIBS += -lsystemd-daemon
+ 	endif
+ endif
+-LDFLAGS += -ludev -ldl \
++LIBS += -ludev -ldl \
+ 	-L$(multipathdir) -lmultipath -L$(mpathpersistdir) -lmpathpersist \
+ 	-L$(mpathcmddir) -lmpathcmd
+ 
+@@ -40,8 +40,7 @@
+ all : $(EXEC)
+ 
+ $(EXEC): $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(EXEC)
+-	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $(EXEC)
+ 
+ install:
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
+@@ -52,13 +51,13 @@
+ 	$(INSTALL_PROGRAM) -m 644 $(EXEC).socket $(DESTDIR)$(unitdir)
+ endif
+ 	$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)
+-	$(INSTALL_PROGRAM) -m 644 $(EXEC).8.gz $(DESTDIR)$(mandir)
++	$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(bindir)/$(EXEC)
+-	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8.gz
++	$(RM) $(DESTDIR)$(mandir)/$(EXEC).8
+ 	$(RM) $(DESTDIR)$(unitdir)/$(EXEC).service
+ 	$(RM) $(DESTDIR)$(unitdir)/$(EXEC).socket
+ 
+ clean:
+-	$(RM) core *.o $(EXEC) *.gz
++	$(RM) core *.o $(EXEC)
