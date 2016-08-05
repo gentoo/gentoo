@@ -56,7 +56,7 @@ src_install() {
 	doman docs/manpage/*
 
 	# Do not compress the apps help files
-	docompress -x  /usr/share/doc/${PF}/${PN}.hh{c,k,p}
+	docompress -x /usr/share/doc/${PF}/${PN}.hh{c,k,p}
 
 	distutils-r1_src_install
 }
