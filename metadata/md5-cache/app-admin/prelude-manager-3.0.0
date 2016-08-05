@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/gnutls dev-libs/libprelude dbx? ( dev-libs/libpreludedb ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 ) geoip? ( dev-libs/libmaxminddb ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Bus communication for all Prelude modules
+EAPI=6
+HOMEPAGE=https://www.prelude-siem.org
+IUSE=tcpwrapper xml geoip dbx
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=net-libs/gnutls dev-libs/libprelude dbx? ( dev-libs/libpreludedb ) tcpwrapper? ( sys-apps/tcp-wrappers ) xml? ( dev-libs/libxml2 ) geoip? ( dev-libs/libmaxminddb )
+SLOT=0
+SRC_URI=https://www.prelude-siem.org/pkg/src/3.0.0/prelude-manager-3.0.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=3f18574c7865d8af24b2ddf77f398776
