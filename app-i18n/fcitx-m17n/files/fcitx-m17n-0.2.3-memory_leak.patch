@@ -1,0 +1,20 @@
+https://github.com/fcitx/fcitx-m17n/commit/52d3d740c35845c78857ead8a0537eb7b0d4706f
+
+--- /im/fcitx-m17n.c
++++ /im/fcitx-m17n.c
+@@ -592,6 +592,7 @@
+         } else {
+             iconName = uniqueName;
+         }
++        m17n_object_unref(info);
+ 
+         FcitxIMIFace iface;
+         memset(&iface, 0, sizeof(FcitxIMIFace));
+@@ -619,6 +620,7 @@
+         free(uniqueName);
+         free(fxName);
+     }
++    m17n_object_unref(mimlist);
+ 
+     fcitx_utils_free(curlang);
+ 
