@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit distutils-r1 fdo-mime gnome2-utils versionator
 MAJOR_MINOR_VERSION="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Gaupol is a subtitle editor for text-based subtitles"
-HOMEPAGE="http://home.gna.org/gaupol"
+HOMEPAGE="http://otsaloma.io/gaupol/"
 SRC_URI="http://download.gna.org/${PN}/${MAJOR_MINOR_VERSION}/${P}.tar.gz"
 
 LICENSE="GPL-2"
