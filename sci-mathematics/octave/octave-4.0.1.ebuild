@@ -15,7 +15,7 @@ HOMEPAGE="http://www.octave.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot +graphicsmagick gui hdf5 +imagemagick java jit opengl
+IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java jit opengl
 	postscript +qhull +qrupdate readline +sparse static-libs X zlib"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
