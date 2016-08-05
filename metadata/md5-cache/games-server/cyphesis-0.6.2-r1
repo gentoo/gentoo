@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=dev-db/postgresql:= >=dev-games/mercator-0.3.3 >=dev-games/wfmath-1.0.1 dev-libs/libgcrypt:0 dev-libs/libsigc++:2 sys-libs/ncurses:0 sys-libs/readline:0 >=media-libs/atlas-c++-0.6.3 >=media-libs/skstream-0.3.9 >=media-libs/varconf-0.6.4 >=dev-libs/boost-1.40 dev-libs/libxml2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=WorldForge server running small games
+EAPI=6
+HOMEPAGE=http://worldforge.org/index.php/components/cyphesis/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/postgresql:= >=dev-games/mercator-0.3.3 >=dev-games/wfmath-1.0.1 dev-libs/libgcrypt:0 dev-libs/libsigc++:2 sys-libs/ncurses:0 sys-libs/readline:0 >=media-libs/atlas-c++-0.6.3 >=media-libs/skstream-0.3.9 >=media-libs/varconf-0.6.4
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/worldforge/cyphesis-0.6.2.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=ba767052bb24237ea6e049629e894bd0
