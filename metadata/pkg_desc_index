@@ -13389,7 +13389,7 @@ media-sound/sonic-visualiser 1.9 2.3 2.4.1 2.5: Music audio files viewer and ana
 media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.18.2 3.20.0: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
-media-sound/soundkonverter 2.1.2 2.2.0 2.2.2: Frontend to various audio converters
+media-sound/soundkonverter 2.2.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
@@ -13556,7 +13556,7 @@ media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using 
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 2.0.3 2.0.4: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.4: Media player with digital TV support by KDE
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.2: Application to take pictures and videos from your webcam by KDE
 media-video/kffmpegthumbnailer 1.1.0-r3 1.1.0-r4: KDE thumbnailer based on ffmpegthumbnailer
