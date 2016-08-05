@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -29,7 +29,9 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/usr"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.6.4-gentoo-path.patch
+	default
+
+	eapply "${FILESDIR}"/${PN}-2.6.4-gentoo-path.patch
 	sed -e "s/Application;//" -i share/applications/*desktop || die
 
 	# These will be installed separately
