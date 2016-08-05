@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ DESCRIPTION="Create DateTime parser classes and objects"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
-IUSE="test"
+IUSE=""
 
 RDEPEND="dev-perl/DateTime
 	dev-perl/Class-Factory-Util
@@ -20,6 +20,12 @@ RDEPEND="dev-perl/DateTime
 	>=dev-perl/DateTime-Format-Strptime-1.0800"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
-	test? ( dev-perl/Test-Pod )"
+"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/release-pod-syntax.t t/release-eol.t t/release-pod-linkcheck.t \
+		t/release-cpan-changes.t t/release-no-tabs.t t/990pod.t
+	perl-module_src_test
+}

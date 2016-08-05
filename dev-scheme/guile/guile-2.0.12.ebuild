@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	virtual/libffi
 	dev-libs/libltdl:=
+	dev-libs/libunistring
 	sys-devel/libtool
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}

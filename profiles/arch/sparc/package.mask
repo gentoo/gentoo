@@ -1,6 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Amy Winston <amynka@gentoo.org> (04 August 2016)
+# Necessary dependency dev-libs/libunistring
+# not keyworded bug #590520
+>=dev-scheme/guile-2.0.12
 
 # Patrice Clement <monsieurp@gentoo.org> (30 Oct 2015)
 # Requires dependencies that are not stable on sparc yet.
@@ -61,4 +66,3 @@ sys-devel/kgcc64
 >=dev-texlive/texlive-pictures-2013
 >=dev-texlive/texlive-genericrecommended-2013
 >=dev-texlive/texlive-publishers-2013
-
