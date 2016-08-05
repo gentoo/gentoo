@@ -133,10 +133,6 @@ sys-auth/sssd augeas
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.
 www-client/chromium widevine
 
-# Markos Chandras <hwoarang@gentoo.org> (07 Feb 2015)
-# app-admin/cgmanager misses ARM keyword. Bug #539208
-app-emulation/lxc cgmanager
-
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #536226
 net-misc/strongswan strongswan_plugins_unbound
