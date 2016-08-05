@@ -12,13 +12,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="ca3e3c4c5a61.tar.bz2"
-JAXP_TARBALL="683427778edf.tar.bz2"
-JAXWS_TARBALL="63f7bf7ed2d4.tar.bz2"
-JDK_TARBALL="55c38c1ace75.tar.bz2"
-LANGTOOLS_TARBALL="e42dd50480d3.tar.bz2"
-OPENJDK_TARBALL="882cfee70fe8.tar.bz2"
-HOTSPOT_TARBALL="3022a3d80efd.tar.bz2"
+CORBA_TARBALL="e5578d3bc593.tar.bz2"
+JAXP_TARBALL="b643540c673d.tar.bz2"
+JAXWS_TARBALL="4a99f4eac257.tar.bz2"
+JDK_TARBALL="8b6b930489cb.tar.bz2"
+LANGTOOLS_TARBALL="ca9d8b242a10.tar.bz2"
+OPENJDK_TARBALL="6aafb6fe0a1e.tar.bz2"
+HOTSPOT_TARBALL="75297b84957e.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -52,9 +52,8 @@ SRC_URI="
 	${DROP_URL}/cacao/${CACAO_TARBALL} -> ${CACAO_GENTOO_TARBALL}
 	${DROP_URL}/jamvm/${JAMVM_TARBALL} -> ${JAMVM_GENTOO_TARBALL}"
 
-LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-classpath-exception LGPL-2 MPL-1.0 MPL-1.1 public-domain W3C"
-KEYWORDS="~amd64 ~arm ~x86"
-RESTRICT="test"
+LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 MPL-1.0 MPL-1.1 public-domain W3C"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt infinality
 	jamvm javascript +jbootstrap kerberos libressl nsplugin nss pax_kernel
@@ -87,10 +86,10 @@ X_DEPEND="
 	x11-proto/xproto"
 
 COMMON_DEP="
+	app-misc/mime-types
 	>=dev-libs/glib-2.26:2
 	>=dev-util/systemtap-1
 	media-libs/fontconfig
-	>=media-libs/freetype-2.5.3:2=[infinality?]
 	>=media-libs/lcms-2.5
 	>=sys-libs/zlib-1.2.3:=
 	virtual/jpeg:0=
@@ -101,6 +100,8 @@ COMMON_DEP="
 		>=x11-libs/gtk+-2.8:2=
 		>=x11-libs/pango-1.24.5
 	)
+	!infinality? ( >=media-libs/freetype-2.5.3:2= )
+	infinality? ( <media-libs/freetype-2.6.4:2=[infinality] )
 	javascript? ( dev-java/rhino:1.6 )
 	kerberos? ( virtual/krb5 )
 	nss? ( >=dev-libs/nss-3.12.5-r1 )
@@ -132,7 +133,6 @@ DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_
 	|| (
 		>=dev-java/gcj-jdk-4.3
 		dev-java/icedtea-bin:7
-		dev-java/icedtea-bin:6
 		dev-java/icedtea:7
 		dev-java/icedtea:6
 	)
@@ -177,8 +177,7 @@ pkg_setup() {
 
 	JAVA_PKG_WANT_BUILD_VM="
 		icedtea-7 icedtea-bin-7
-		icedtea-6 icedtea-bin-6
-		gcj-jdk"
+		icedtea-6 gcj-jdk"
 	JAVA_PKG_WANT_SOURCE="1.5"
 	JAVA_PKG_WANT_TARGET="1.5"
 
@@ -226,9 +225,8 @@ src_configure() {
 	fi
 
 	# Are we on a architecture with a HotSpot port?
-	# In-tree JIT ports are available for amd64, arm64, ppc64 (be&le), SPARC and x86.
-	# arm is broken as of 7.2.6.6.
-	if { use amd64 || use arm64 || use ppc64 || use sparc || use x86; }; then
+	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
+	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
 	fi
 
@@ -294,10 +292,9 @@ src_configure() {
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--with-pkgversion="Gentoo ${PF}" \
-		--disable-downloading --disable-Werror \
-		--disable-hotspot-tests --disable-jdk-tests \
+		--disable-downloading --disable-Werror --disable-tests \
 		--enable-system-lcms --enable-system-jpeg \
-		--enable-system-zlib \
+		--enable-system-zlib --disable-systemtap-tests \
 		$(use_enable !headless-awt system-gif) \
 		$(use_enable !headless-awt system-png) \
 		$(use_enable !debug optimizations) \
@@ -354,15 +351,6 @@ src_install() {
 		rm -v "${ddest}"/src.zip || die
 	fi
 
-	# provided by icedtea-web but we need it in JAVA_HOME to work with run-java-tool
-	if use webstart || use nsplugin; then
-		dosym /usr/libexec/icedtea-web/itweb-settings ${dest}/bin/itweb-settings
-		dosym /usr/libexec/icedtea-web/itweb-settings ${dest}/jre/bin/itweb-settings
-	fi
-	if use webstart; then
-		dosym /usr/libexec/icedtea-web/javaws ${dest}/bin/javaws
-		dosym /usr/libexec/icedtea-web/javaws ${dest}/jre/bin/javaws
-	fi
 	dosym /usr/share/doc/${PF} /usr/share/doc/${PN}${SLOT}
 
 	# Fix the permissions.
@@ -379,7 +367,7 @@ src_install() {
 	cp -vRP cacerts "${ddest}/jre/lib/security/" || die
 	chmod 644 "${ddest}/jre/lib/security/cacerts" || die
 
-	set_java_env "${FILESDIR}/icedtea.env"
+	java-vm_install-env "${FILESDIR}/icedtea.env.sh"
 	java-vm_sandbox-predict /proc/self/coredump_filter
 }
 

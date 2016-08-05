@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,13 @@ RDEPEND="dev-perl/HTML-Parser
 	>=dev-perl/XML-Parser-2.30"
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build
-	test? ( dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
-		>=dev-perl/Test-Manifest-0.9 )"
+	test? ( virtual/perl-Test-Simple )"
 		#dev-perl/Test-Differences
+
+PATCHES=(
+	"${FILESDIR}/nomanifest.patch"
+)
+src_test() {
+	perl_rm_files t/pod{,-coverage}.t t/cpan-changes.t t/style-trailing-space.t
+	perl-module_src_test
+}
