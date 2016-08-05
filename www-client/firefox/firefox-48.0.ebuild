@@ -59,8 +59,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
-	system-sqlite? ( >=dev-db/sqlite-3.12.2 )
 	pgo? ( >=sys-devel/gcc-4.5 )
+	system-sqlite? ( >=dev-db/sqlite-3.12.2 )
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
