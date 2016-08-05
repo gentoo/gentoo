@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4 virtual/pkgconfig
+DESCRIPTION=A program to train your spatial insight
+EAPI=6
+HOMEPAGE=http://www.vandenoever.info/software/cubetest/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4
+SLOT=0
+SRC_URI=http://www.vandenoever.info/software/cubetest/cubetest-0.9.4.tar.bz2
+_eclass_exported_funcs=src_prepare:-
+_md5_=dd1412243c613232b41ed63b03c41914

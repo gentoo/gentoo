@@ -10566,15 +10566,15 @@ games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
-games-kids/crayon-physics 55: 2D physics puzzle/sandbox game with drawing
-games-kids/cubetest 0.9.4: A program to train your spatial insight
-games-kids/gcompris 14.12 15.10: full featured educational application for children from 2 to 10
-games-kids/gmult 8.0: Multiplication Puzzle is a simple GTK+ 2 game that emulates the multiplication game found in Emacs
-games-kids/lletters 0.1.95-r2: Game that helps young kids learn their letters and numbers
+games-kids/crayon-physics 55 55-r1: 2D physics puzzle/sandbox game with drawing
+games-kids/cubetest 0.9.4 0.9.4-r1: A program to train your spatial insight
+games-kids/gcompris 14.12 15.10 15.10-r1: full featured educational application for children from 2 to 10
+games-kids/gmult 8.0 8.0-r1: Multiplication Puzzle is a simple GTK+ 2 game that emulates the multiplication game found in Emacs
+games-kids/lletters 0.1.95-r2 0.1.95-r3: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6: Brain teasers, puzzle and memory games for kid's in one pack
-games-kids/pytraffic 2.5.4-r1: Python version of the board game Rush Hour
-games-kids/tuxmath 2.0.1 2.0.3: Educational arcade game where you have to solve maths problems
-games-kids/tuxmathscrabble 0.8.1: math-version of the popular board game for children 4-10
+games-kids/pytraffic 2.5.4-r1 2.5.4-r2: Python version of the board game Rush Hour
+games-kids/tuxmath 2.0.1 2.0.3 2.0.3-r1: Educational arcade game where you have to solve maths problems
+games-kids/tuxmathscrabble 0.8.1 0.8.1-r1: math-version of the popular board game for children 4-10
 games-kids/tuxtype 1.8.1 1.8.1-r1: Typing tutorial with lots of eye-candy
 games-misc/OilWar 1.2.1-r1 1.2.1-r2: Evil army is attacking your country and tries to steal your oil
 games-misc/asr-manpages 1.3_rc6: set of humorous manual pages developed on alt.sysadmin.recovery
