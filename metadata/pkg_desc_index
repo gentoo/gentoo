@@ -7052,7 +7052,7 @@ dev-python/configshell 9999: ConfigShell Community Edition for target_core_mod/C
 dev-python/contextlib2 0.4.0 0.5.1 0.5.3: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
-dev-python/couchdb-python 1.0 1.0.1: Python library for working with CouchDB
+dev-python/couchdb-python 1.0 1.0.1 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0: plugin core for use by pytest-cov, nose-cov and nose2-cov
 dev-python/coverage 3.7.1 4.0.3 4.1 4.2: Code coverage measurement for Python
 dev-python/crcmod 1.7-r2: Python CRC Generator module
