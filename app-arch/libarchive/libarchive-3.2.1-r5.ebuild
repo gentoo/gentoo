@@ -103,7 +103,8 @@ multilib_src_install() {
 
 		# Create symlinks for FreeBSD
 		if ! use prefix && [[ ${CHOST} == *-freebsd* ]]; then
-			for bin in cat cpio tar; do
+			# Exclude cat for the time being #589876
+			for bin in cpio tar; do
 				dosym bsd${bin} /usr/bin/${bin}
 				echo '.so bsd${bin}.1' > "${T}"/${bin}.1
 				doman "${T}"/${bin}.1
