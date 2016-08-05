@@ -20,8 +20,12 @@ RDEPEND=""
 
 S="${WORKDIR}"/${PN}-${P}
 
+src_compile() {
+	emake CC="$(tc-getCC)"
+}
+
 src_install() {
 	local my_prefix="${ED}/usr"
-	emake PREFIX="${my_prefix}" MANDIR="${my_prefix}/share/man" install
+	emake PREFIX="${my_prefix}" MANDIR="${my_prefix}/share/man/man8" install
 	dodoc CHANGES README.md TODO
 }
