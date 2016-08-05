@@ -21,12 +21,15 @@ SLOT="4"
 KEYWORDS="amd64 x86"
 IUSE="+bookmarks debug"
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_kdeapps_dep libkonq)
 	sys-libs/zlib
 	bookmarks? ( $(add_kdeapps_dep keditbookmarks) )
 "
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	$(add_kdeapps_dep kdebase-kioslaves)
+"
+DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
 
