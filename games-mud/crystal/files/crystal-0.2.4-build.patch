@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -31,7 +31,9 @@
  AC_PROG_CXX
  AC_CHECK_FUNCS(select socket strerror strstr)
@@ -11,8 +11,8 @@
  
  AC_CHECK_LIB(z, main, [LIBS=$LIBS" -lz "; AC_DEFINE(HAVE_ZLIB)], AC_MSG_WARN([No zlib - MCCP support will not be built]))
  
---- Makefile.am
-+++ Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -5,7 +5,11 @@
  		common.h crystal.h grid.h io.h telnet.h wcwidth.c \
  	scripting.cc scripting.h
