@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,10 +34,10 @@ REQUIRED_USE="server? ( client )"
 # tests make a temporary install relative to $prefix, so docdir must be relative to it as well
 src_configure() {
 	econf --disable-sxhttpd \
-          --with-system-libs \
-          --docdir="\${prefix}/usr/share/doc/${PF}" \
-          $(use_enable client sxclient) \
-          $(use_enable server)
+		--with-system-libs \
+		--docdir="\${prefix}/usr/share/doc/${PF}" \
+		$(use_enable client sxclient) \
+		$(use_enable server)
 }
 
 src_install() {
