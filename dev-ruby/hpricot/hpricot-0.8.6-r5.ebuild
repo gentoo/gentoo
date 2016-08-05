@@ -20,6 +20,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd6
 IUSE=""
 
 ruby_add_bdepend "dev-ruby/rake
+	dev-ruby/rdoc
 	dev-ruby/rake-compiler"
 
 ruby_add_rdepend "dev-ruby/fast_xs"
@@ -37,6 +38,9 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git.
 	sed -i -e '/^REV/ s/.*/REV = "6"/' Rakefile || die
+
+	# Fix int size warning
+	sed -i -e 's/te - ts/(int)(te - ts)/' ext/hpricot_scan/hpricot_css.rl || die
 }
 
 each_ruby_prepare() {

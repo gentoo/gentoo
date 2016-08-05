@@ -27,7 +27,7 @@ ruby_add_bdepend "
 		>=dev-ruby/minitest-5.8:5
 	)"
 
-ruby_add_rdepend "=dev-ruby/json-1* >=dev-ruby/json-1.4"
+ruby_add_rdepend ">=dev-ruby/json-1.4:0"
 
 all_ruby_prepare() {
 	# Other packages also have use for a nonexistent directory, bug 321059
@@ -46,9 +46,6 @@ all_ruby_prepare() {
 
 	# Remove test depending on FEATURES=userpriv, bug 361959
 	sed -i -e '/def test_check_files/,/^  end/ s:^:#:' test/test_rdoc_options.rb || die
-
-	# Make sure we get the expected version of minitest.
-	#echo 'gem "minitest", "~> 5.8"' > test/test_0000.rb || die
 
 	# Remove tests for code that is not included and not listed in Manifest.txt
 	rm -f test/test_rdoc_i18n_{locale,text}.rb \
@@ -72,7 +69,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+	${RUBY} -Ilib:. -e 'gem "json", "~>1.4"; Dir["test/test_*.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
