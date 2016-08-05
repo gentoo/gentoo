@@ -75,7 +75,7 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	if has_version '>dev-scheme/slib-3.2.4'; then
+	if has_version '>=dev-scheme/slib-3.2.4'; then
 		einfo "Registering slib with guile"
 		install_slib_for_guile
 	fi
