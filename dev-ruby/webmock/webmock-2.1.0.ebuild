@@ -27,7 +27,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
 	dev-ruby/rspec:3
 	dev-ruby/rack
-	>=dev-ruby/httpclient-2.2.4
+	>=dev-ruby/httpclient-2.8.0
 	>=dev-ruby/patron-0.4.18
 	>=dev-ruby/http-0.8.0:0.8 )"
 
@@ -41,6 +41,12 @@ all_ruby_prepare() {
 	# version is too old.
 	sed -i -e '/\(curb\|typhoeus\|em-http\)/d' spec/spec_helper.rb || die
 	rm spec/acceptance/{typhoeus,curb,excon,em_http_request}/* || die
+
+	# Avoid httpclient specs that require network access, most likely
+	# because mocking does not fully work.
+	sed -i -e '/httpclient streams response/,/^  end/ s:^:#:' \
+		-e '/are detected when manually specifying Authorization header/,/^    end/ s:^:#:' \
+		spec/acceptance/httpclient/httpclient_spec.rb
 }
 
 each_ruby_test() {
