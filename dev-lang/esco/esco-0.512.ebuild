@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
@@ -15,9 +15,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="gmp linguas_ru"
+IUSE="gmp l10n_ru"
 
-DEPEND="gmp? ( dev-libs/gmp )"
+DEPEND="gmp? ( dev-libs/gmp:0 )"
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README TODO docs/basics.txt )
@@ -28,5 +28,5 @@ src_configure() {
 
 src_install() {
 	default
-	use linguas_ru && dodoc docs/README_RU.utf8
+	use l10n_ru && dodoc docs/README_RU.utf8
 }
