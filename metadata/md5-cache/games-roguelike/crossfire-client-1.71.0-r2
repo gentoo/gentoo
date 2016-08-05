@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=lua? ( dev-lang/lua:0= ) media-libs/libpng:0 net-misc/curl opengl? ( virtual/opengl media-libs/freeglut ) sdl? ( media-libs/libsdl[video] media-libs/sdl-image[png] ) sound? ( media-libs/sdl-mixer[vorbis] ) sys-libs/zlib x11-libs/gtk+:2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=Client for the nethack-style but more in the line of UO
+EAPI=6
+HOMEPAGE=http://crossfire.real-time.com/
+IUSE=lua opengl sdl sound
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=lua? ( dev-lang/lua:0= ) media-libs/libpng:0 net-misc/curl opengl? ( virtual/opengl media-libs/freeglut ) sdl? ( media-libs/libsdl[video] media-libs/sdl-image[png] ) sound? ( media-libs/sdl-mixer[vorbis] ) sys-libs/zlib x11-libs/gtk+:2
+SLOT=0
+SRC_URI=mirror://sourceforge/crossfire/crossfire-client-1.71.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=354ae9e94747e0c5a1ef4ce92bfa5fad

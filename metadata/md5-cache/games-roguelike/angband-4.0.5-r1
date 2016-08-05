@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) ) ncurses? ( sys-libs/ncurses:0=[unicode] ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-image media-libs/sdl-ttf sound? ( media-libs/libsdl[sound] ) media-libs/sdl-mixer[mp3] ) dev-python/docutils virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+EAPI=6
+HOMEPAGE=http://rephial.org/
+IUSE=ncurses sdl +sound X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) ) ncurses? ( sys-libs/ncurses:0=[unicode] ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-image media-libs/sdl-ttf sound? ( media-libs/libsdl[sound] ) media-libs/sdl-mixer[mp3] )
+SLOT=0
+SRC_URI=http://rephial.org/downloads/4.0/angband-4.0.5.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=a954a901619474b935fd0439fd67daf3
