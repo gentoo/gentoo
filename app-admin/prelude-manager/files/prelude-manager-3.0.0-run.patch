@@ -1,0 +1,13 @@
+When : everytime
+Why : since systemd, run dir has changed
+--- prelude-manager-3.0.0/configure.in	2016-04-22 23:27:29.451000362 +0200
++++ prelude-manager-3.0.0/configure.in.new	2016-05-16 00:57:13.521253544 +0200
+@@ -304,7 +304,7 @@
+ 
+ manager_failover_dir=$LOCALSTATEDIR/spool/prelude-manager/failover
+ manager_scheduler_dir=$LOCALSTATEDIR/spool/prelude-manager/scheduler
+-manager_run_dir=$LOCALSTATEDIR/run/prelude-manager
++manager_run_dir=/run/prelude-manager
+ 
+ AC_DEFINE_UNQUOTED(REPORT_PLUGIN_DIR, "$report_plugin_dir", Prelude-Manager report plugin directory)
+ AC_DEFINE_UNQUOTED(DECODE_PLUGIN_DIR, "$decode_plugin_dir", Prelude-Manager decode plugin directory)

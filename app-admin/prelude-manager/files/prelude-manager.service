@@ -1,0 +1,14 @@
+[Unit]
+Description=Prelude-Manager service
+DefaultDependencies=no
+After=remote_fs.target
+Before=prelude-lml.service prelude-correlator.service
+
+[Service]
+ExecStart=/usr/bin/prelude-manager -d -P /run/prelude-manager/prelude-manager.pid
+Type=forking
+PIDFile=/run/prelude-manager/prelude-manager.pid
+Restart=always
+
+[Install]
+WantedBy=prelude-lml.service prelude-correlator.service multi-user.target

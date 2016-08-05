@@ -1,0 +1,14 @@
+--- libprelude-3.0.0/configure.in	2016-04-22 23:26:58.350000364 +0200
++++ libprelude-3.0.0/configure.in.new	2016-07-15 22:44:04.891423743 +0200
+@@ -525,9 +525,9 @@
+ dnl * Ruby support                                   *
+ dnl **************************************************
+ 
+-
+-AM_PATH_RUBY(,with_ruby=yes, with_ruby=no)
++AC_ARG_WITH(ruby, AC_HELP_STRING(--with-ruby@<:@=PATH@:>@, Enable support for ruby binding @<:@default=auto@:>@),,with_ruby=no)
+ if test x$with_ruby != xno; then
++    AM_PATH_RUBY(,with_ruby=yes, with_ruby=no)
+     RUBY_ARCHDIR=`$RUBY -e 'require "rbconfig.rb"; puts RbConfig::expand("\$(archdir)")'`
+     RUBY_LIBRUBYARG=`$RUBY -e 'require "rbconfig.rb"; puts RbConfig::expand("\$(LIBRUBYARG)")'`
+ 

@@ -1,0 +1,14 @@
+--- prelude-lml-3.0.0/configure.in	2016-04-22 23:27:18.448000362 +0200
++++ prelude-lml-3.0.0/configure.in.new	2016-05-16 00:31:01.911254318 +0200
+@@ -187,9 +187,9 @@
+ configdir=$SYSCONFDIR/prelude-lml
+ prelude_lml_conf=$configdir/prelude-lml.conf
+ regex_conf=$configdir/plugins.rules
+-metadata_dir=$LOCALSTATEDIR/lib/prelude-lml
++metadata_dir=$LOCALSTATEDIR/prelude-lml
+ plugindir=$LIBDIR/prelude-lml
+-lml_run_dir=$LOCALSTATEDIR/run/prelude-lml
++lml_run_dir=/run/prelude-lml
+ 
+ AC_DEFINE_UNQUOTED(PRELUDE_LML_CONF, "$prelude_lml_conf", Path to the LML configuration file)
+ AC_DEFINE_UNQUOTED(LOG_PLUGIN_DIR, "$plugindir", Prelude-LML report plugin directory)
