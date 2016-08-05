@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Prelude-Manager is a high availability server that
+		accepts secured connections from distributed sensors
+		and saves received events to a media specified by the user
+		(database, log file, mail etc.). The server schedules and
+		establishes the priorities of treatment according to the
+		critical character and the source of the alerts.
+	</longdescription>
+	<use>
+		<flag name="tcpwrapper">Enables Prelude Manager using
+		tcp wrapper. It requires <pkg>sys-apps/tcp-wrappers</pkg>
+		.</flag>
+		<flag name="dbx">Enables Prelude Manager storing Prelude
+		alerts into database through <pkg>dev-libs/libpreludedb</pkg>
+		.</flag>
+	</use>
+</pkgmetadata>

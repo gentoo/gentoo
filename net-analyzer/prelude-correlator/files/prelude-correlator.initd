@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+BIN_CORRELATOR=/usr/bin/prelude-correlator
+PID_CORRELATOR=/run/prelude-correlator/prelude-correlator.pid
+
+depend() {
+  need net
+  after prelude-manager
+}
+
+start() {
+  ebegin "Starting prelude-correlator"
+  checkpath -d -m 0755 -o root:root /run/prelude-correlator
+  start-stop-daemon --start --exec $BIN_CORRELATOR \
+    --pidfile $PID_CORRELATOR -- -d -P $PID_CORRELATOR
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping prelude-correlator"
+  start-stop-daemon --stop --exec $BIN_CORRELATOR \
+    --pidfile $PID_CORRELATOR
+  eend $?
+}

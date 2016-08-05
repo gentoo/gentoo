@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Prewikka is the graphical front-end analysis console for the
+		Prelude Universal SIM. Providing numerous features, Prewikka
+		facilitates the work of users and analysts. It provides alert
+		aggregation and sensor and hearbeat views, and has user management
+		and configurable filters. Prewikka also provides access to external
+		tools such as whois and traceroute.
+	</longdescription>
+</pkgmetadata>
