@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/gtk+:2 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language
+EAPI=6
+HOMEPAGE=http://dw.nl.eu.org/mudix.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2
+SLOT=0
+SRC_URI=http://dw.nl.eu.org/gmudix/gmudix-1.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=87478f6d7ba3dc14757d4484b2c6b3d7

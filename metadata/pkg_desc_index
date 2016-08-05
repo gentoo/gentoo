@@ -10655,18 +10655,18 @@ games-misc/xcruiser 0.30: Fly about 3D-formed file system
 games-misc/xpenguins 2.2-r1: Cute little penguins invading your desktop
 games-misc/yadex 1.7.0: A Doom level (wad) editor
 games-mud/circlemud 3.1: a multi-user dungeon game system server
-games-mud/crystal 0.2.4: The crystal MUD client
-games-mud/gmudix 1.0: GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language
-games-mud/gnome-mud 0.11.2: GNOME MUD client
-games-mud/kildclient 3.0.1: Powerful MUD client with a built-in PERL interpreter
+games-mud/crystal 0.2.4 0.2.4-r1: The crystal MUD client
+games-mud/gmudix 1.0 1.0-r1: GTK+ MUD client with ANSI color, macros, timers, triggers, variables, and an easy scripting language
+games-mud/gnome-mud 0.11.2 0.11.2-r1: GNOME MUD client
+games-mud/kildclient 3.0.1 3.0.1-r1: Powerful MUD client with a built-in PERL interpreter
 games-mud/kmuddy 1.0.1-r3: MUD client for KDE
-games-mud/lyntin 4.2-r1: tintin mud client clone implemented in Python
-games-mud/mudix 4.3-r1: A small, stable MUD client for the console
-games-mud/powwow 1.2.16: PowWow Console MUD Client
+games-mud/lyntin 4.2-r1 4.2-r2: tintin mud client clone implemented in Python
+games-mud/mudix 4.3-r1 4.3-r2: A small, stable MUD client for the console
+games-mud/powwow 1.2.16 1.2.16-r1: PowWow Console MUD Client
 games-mud/tf 50_beta8-r1: A small, flexible, screen-oriented MUD client (aka TinyFugue)
-games-mud/tintin 2.01.1: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
-games-mud/tkmoo 0.3.32: MOO Client written in Tcl/Tk
-games-mud/trebuchet 1.075: A crossplatform TCL/TK based MUD client
+games-mud/tintin 2.01.1 2.01.1-r1: (T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
+games-mud/tkmoo 0.3.32 0.3.32-r1: MOO Client written in Tcl/Tk
+games-mud/trebuchet 1.075 1.075-r1: A crossplatform TCL/TK based MUD client
 games-mud/wxmud 9999: Cross-platform MUD client
 games-puzzle/4stattack 2.1.4: Connect-4 game, single or network multiplayer
 games-puzzle/amoebax 0.2.1: a cute and addictive action-puzzle game, similar to tetris

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-lang/perl dev-perl/Locale-gettext dev-perl/JSON sys-libs/zlib x11-libs/gtk+:3 virtual/libintl spell? ( app-text/gtkspell:3 ) gnutls? ( net-libs/gnutls ) sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Powerful MUD client with a built-in PERL interpreter
+EAPI=6
+HOMEPAGE=http://kildclient.sourceforge.net
+IUSE=doc gnutls spell
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl dev-perl/Locale-gettext dev-perl/JSON sys-libs/zlib x11-libs/gtk+:3 virtual/libintl spell? ( app-text/gtkspell:3 ) gnutls? ( net-libs/gnutls )
+SLOT=0
+SRC_URI=mirror://sourceforge/kildclient/kildclient-3.0.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=74d0d28d4b56948458473b02842290f5

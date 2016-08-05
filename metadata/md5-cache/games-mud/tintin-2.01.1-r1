@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-libs/libpcre net-libs/gnutls sys-libs/readline:0 sys-libs/zlib
+DESCRIPTION=(T)he k(I)cki(N) (T)ickin d(I)kumud clie(N)t
+EAPI=6
+HOMEPAGE=http://tintin.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/libpcre net-libs/gnutls sys-libs/readline:0 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/tintin/tintin-2.01.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=967a78f2b76505c734c76b83445a6a8a
