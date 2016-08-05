@@ -14017,7 +14017,7 @@ net-dns/bind-tools 9.10.3_p2 9.10.3_p4 9.10.4_p2: bind tools: dig, nslookup, hos
 net-dns/c-ares 1.10.0-r1 1.11.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
 net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
-net-dns/djbdns 1.05-r29 1.05-r30: Collection of DNS client/server software
+net-dns/djbdns 1.05-r29 1.05-r30 1.05-r31: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r1: A caching DNS proxy server
 net-dns/dnscap 20130814: dnscap is a network capture utility designed specifically for DNS traffic
 net-dns/dnscrypt-proxy 1.4.2 1.4.3 1.6.0 1.6.0-r1 1.6.1: A tool for securing communications between a client and a DNS resolver
