@@ -484,7 +484,7 @@ src_configure() {
 
 				apache2)
 					if [[ "${one_sapi}" == "${sapi}" ]] ; then
-						sapi_conf+=( --with-apxs2="${EPREFIX}/usr/sbin/apxs" )
+						sapi_conf+=( --with-apxs2="${EPREFIX}/usr/bin/apxs" )
 					else
 						sapi_conf+=( --without-apxs2 )
 					fi
