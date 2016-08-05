@@ -68,7 +68,7 @@ RDEPEND=">=sys-devel/gcc-4.9.3[multilib?]
 	!multilib? ( ${RDEPEND//%/} )"
 
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0 )
+	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
 	pulseaudio? ( dev-java/icedtea-sound )"
 
 S="${WORKDIR}"

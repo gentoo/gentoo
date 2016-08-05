@@ -1,6 +1,6 @@
-diff -U5 -r tf-50b8.orig/src/tfio.c tf-50b8/src/tfio.c
---- src/tfio.c.orig	2007-01-13 18:12:39.000000000 -0500
-+++ src/tfio.c	2007-02-02 16:50:12.000000000 -0500
+diff -U5 -r a/src/tfio.c b/src/tfio.c
+--- a/src/tfio.c	2007-01-13 18:12:39.000000000 -0500
++++ b/src/tfio.c	2007-02-02 16:50:12.000000000 -0500
 @@ -495,10 +495,11 @@
      const char *q, *sval;
      char *specptr, quote;
