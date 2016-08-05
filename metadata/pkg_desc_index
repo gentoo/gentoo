@@ -11690,7 +11690,7 @@ kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
 kde-plasma/bluedevil 5.6.5 5.7.3: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.6.5-r1 5.7.3: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.6.5 5.7.3: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.6.5 5.7.3: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/breeze-gtk 5.6.5 5.7.3 5.7.3-r1: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/breeze-plymouth 5.6.5 5.7.3: Breeze theme for Plymouth
 kde-plasma/kactivities-workspace 5.5.0: Transitional package for activities KCM and KIO modules in Plasma-5.5
 kde-plasma/kactivitymanagerd 5.6.5 5.7.3: System service to manage user's activities, track the usage patterns etc.
