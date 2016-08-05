@@ -1,4 +1,4 @@
-# Copyright 2013-2015 Gentoo Foundation
+# Copyright 2013-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,13 +34,13 @@ src_configure()
 		$(use_enable !static shared) \
 		--bindir=/bin \
 		--sbindir=/sbin \
-                --dynlibdir=/$(get_libdir) \
-                --libdir=/usr/$(get_libdir)/${PN} \
-                --datadir=/etc \
-                --sysdepdir=/usr/$(get_libdir)/${PN} \
-                --with-dynlib=/$(get_libdir) \
-                --with-lib=/usr/$(get_libdir)/skalibs \
-                --with-sysdeps=/usr/$(get_libdir)/skalibs
+		--dynlibdir=/$(get_libdir) \
+		--libdir=/usr/$(get_libdir)/${PN} \
+		--datadir=/etc \
+		--sysdepdir=/usr/$(get_libdir)/${PN} \
+		--with-dynlib=/$(get_libdir) \
+		--with-lib=/usr/$(get_libdir)/skalibs \
+		--with-sysdeps=/usr/$(get_libdir)/skalibs
 }
 
 src_compile()
