@@ -4,16 +4,12 @@
 
 EAPI=6
 
-# Can go if we ever drop the "PEAR-" prefix.
-MY_PN="${PN#PEAR-}"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="Detect violations of PHP code standards"
 HOMEPAGE="https://github.com/squizlabs/PHP_CodeSniffer"
 
 # The test suite isn't part of the Github tarball at the moment. Keep an
 # eye on https://github.com/squizlabs/PHP_CodeSniffer/issues/548
-SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
+SRC_URI="http://download.pear.php.net/package/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -22,9 +18,6 @@ IUSE="test"
 
 DEPEND="test? ( >=dev-php/phpunit-4 )"
 RDEPEND="dev-lang/php:*[cli,tokenizer,xmlwriter]"
-
-# Can go if we ever drop the "PEAR-" prefix.
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( CONTRIBUTING.md README.md )
 src_install() {
