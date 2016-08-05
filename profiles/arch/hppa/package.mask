@@ -7,6 +7,3 @@
 # not keyworded bug #590520
 >=dev-scheme/guile-2.0.12
 
-# Alexey Shvetsov <alexxy@gentoo.org> (21 May 2012)
-# Need deps pecl-apc and pecl-uploadprogress bug #416897
->=www-apps/drupal-7.14
