@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/gtk+:2 dev-lang/perl
+DESCRIPTION=A networked Mah Jong program, together with a computer player
+EAPI=6
+HOMEPAGE=http://www.stevens-bradfield.com/MahJong/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2
+SLOT=0
+SRC_URI=http://mahjong.julianbradfield.org/Source/mj-1.14-src.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=41d07e5d7d8aea7dd0b4ff6635958733

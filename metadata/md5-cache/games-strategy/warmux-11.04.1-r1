@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/libsdl[joystick,video,X] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net >=media-libs/sdl-gfx-2.0.22 net-misc/curl media-fonts/dejavu dev-libs/libxml2 x11-libs/libX11 nls? ( virtual/libintl ) unicode? ( dev-libs/fribidi ) virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A free Worms clone
+EAPI=6
+HOMEPAGE=http://gna.org/projects/warmux/
+IUSE=debug nls unicode
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[joystick,video,X] media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-ttf media-libs/sdl-net >=media-libs/sdl-gfx-2.0.22 net-misc/curl media-fonts/dejavu dev-libs/libxml2 x11-libs/libX11 nls? ( virtual/libintl ) unicode? ( dev-libs/fribidi )
+SLOT=0
+SRC_URI=http://download.gna.org/warmux/warmux-11.04.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=2a428f778ede340a697c388437b2339a

@@ -10315,19 +10315,19 @@ games-board/grhino 0.16.1: Reversi game for GNOME, supporting the Go/Game Text P
 games-board/gtkatlantic 0.6.1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0: Board games system
 games-board/hexxagon 1.0.2: Clone of the original DOS game
-games-board/holdingnuts 0.0.5-r1: An open source poker client and server
+games-board/holdingnuts 0.0.5-r1 0.0.5-r2: An open source poker client and server
 games-board/iagno 3.18.2 3.20.2: Dominate the board in a classic version of Reversi
-games-board/kcheckers 0.8.1: Qt version of the classic boardgame checkers
+games-board/kcheckers 0.8.1 0.8.1-r1: Qt version of the classic boardgame checkers
 games-board/knights 2.5.0-r1: Simple chess board for KDE
-games-board/mah-jong 1.14: A networked Mah Jong program, together with a computer player
-games-board/maitretarot 0.1.98: server for the french tarot game maitretarot
-games-board/megamek 0.34.10: an unofficial, online version of the Classic BattleTech board game
-games-board/mt_dolphin_ia 0.1.98: client for the french tarot game maitretarot
-games-board/mt_gtk_client 0.1.98: client for the french tarot game maitretarot
-games-board/mt_ncurses_client 0.1.98: client for the french tarot game maitretarot
-games-board/natch 2.4: A program to solve chess proof games
+games-board/mah-jong 1.14 1.14-r1: A networked Mah Jong program, together with a computer player
+games-board/maitretarot 0.1.98 0.1.98-r1: server for the french tarot game maitretarot
+games-board/megamek 0.34.10 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
+games-board/mt_dolphin_ia 0.1.98 0.1.98-r1: client for the french tarot game maitretarot
+games-board/mt_gtk_client 0.1.98 0.1.98-r1: client for the french tarot game maitretarot
+games-board/mt_ncurses_client 0.1.98 0.1.98-r1: client for the french tarot game maitretarot
+games-board/natch 2.4 2.4-r1: A program to solve chess proof games
 games-board/openyahtzee 1.9.2 1.9.3: A full-featured wxWidgets version of the classic dice game Yahtzee
-games-board/pasang-emas 3.1.0: A traditional game of Brunei
+games-board/pasang-emas 3.1.0 3.1.0-r1: A traditional game of Brunei
 games-board/peg-e 1.1.2 1.1.2-r1: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
 games-board/pioneers 15.3 15.3-r1: A clone of the popular board game The Settlers of Catan
@@ -10944,10 +10944,10 @@ games-strategy/ufo-ai 2.4: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
-games-strategy/warmux 11.04.1: A free Worms clone
-games-strategy/warzone2100 3.1.2 3.1.5: 3D real-time strategy game
+games-strategy/warmux 11.04.1 11.04.1-r1: A free Worms clone
+games-strategy/warzone2100 3.1.2 3.1.5 3.1.5-r1: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
-games-strategy/widelands 0.17 0.18: A game similar to Settlers 2
+games-strategy/widelands 0.17 0.18 0.18-r1: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.0_p20141002: Chart Program to use with Flightgear Flight Simulator

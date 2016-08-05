@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-games/physfs-2[zip] dev-libs/fribidi dev-qt/qtcore:4 dev-qt/qtscript:4 media-libs/fontconfig media-libs/freetype:2 media-libs/glew:= media-libs/libogg media-libs/libpng:0 media-libs/libtheora media-libs/libvorbis media-libs/openal sys-libs/zlib virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXrandr nls? ( virtual/libintl ) qt4? ( dev-qt/qtgui:4 dev-qt/qtopengl:4 ) !qt4? ( media-libs/libsdl[opengl,video,X] ) app-arch/zip virtual/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=3D real-time strategy game
+EAPI=6
+HOMEPAGE=http://wz2100.net/
+IUSE=debug nls qt4 videos
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+ CC-BY-SA-3.0 public-domain
+RDEPEND=>=dev-games/physfs-2[zip] dev-libs/fribidi dev-qt/qtcore:4 dev-qt/qtscript:4 media-libs/fontconfig media-libs/freetype:2 media-libs/glew:= media-libs/libogg media-libs/libpng:0 media-libs/libtheora media-libs/libvorbis media-libs/openal sys-libs/zlib virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXrandr nls? ( virtual/libintl ) qt4? ( dev-qt/qtgui:4 dev-qt/qtopengl:4 ) !qt4? ( media-libs/libsdl[opengl,video,X] ) media-fonts/dejavu
+SLOT=0
+SRC_URI=mirror://sourceforge/warzone2100/warzone2100-3.1.5.tar.xz videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/2.2/high-quality-en/sequences.wz -> warzone2100-videos-2.2.wz )
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=0b9c3d43e86b11f770be315041f69b5a

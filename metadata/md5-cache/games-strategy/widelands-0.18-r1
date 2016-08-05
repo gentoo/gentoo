@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/lua:0 >=dev-libs/boost-1.48 media-libs/glew media-libs/libpng:0 media-libs/libsdl[video] media-libs/sdl-gfx media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf sys-libs/zlib[minizip] sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A game similar to Settlers 2
+EAPI=6
+HOMEPAGE=http://www.widelands.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/lua:0 >=dev-libs/boost-1.48 media-libs/glew media-libs/libpng:0 media-libs/libsdl[video] media-libs/sdl-gfx media-libs/sdl-image[jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-net media-libs/sdl-ttf sys-libs/zlib[minizip]
+SLOT=0
+SRC_URI=https://launchpad.net/widelands/build18/build-18/+download/widelands-build18-src.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=91c4e5d66470f2e2ac5e41302540c982

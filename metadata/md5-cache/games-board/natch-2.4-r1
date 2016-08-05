@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/ncurses:0
+DESCRIPTION=A program to solve chess proof games
+EAPI=6
+HOMEPAGE=http://natch.free.fr/Natch.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0
+SLOT=0
+SRC_URI=http://natch.free.fr/Natch/Natch-2.4.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=3f773ef1db08e5271f901a565745d915
