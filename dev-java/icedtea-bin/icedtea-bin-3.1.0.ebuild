@@ -54,6 +54,7 @@ RDEPEND=">=dev-libs/glib-2.42:2%
 		>=media-libs/giflib-4.1.6-r1%
 		media-libs/libpng:0/16%
 		>=x11-libs/libX11-1.6%
+		>=x11-libs/libXcomposite-0.4%
 		>=x11-libs/libXext-1.3%
 		>=x11-libs/libXi-1.7%
 		>=x11-libs/libXrender-0.9.8%
