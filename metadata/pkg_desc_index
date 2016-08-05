@@ -1189,7 +1189,7 @@ app-emacs/magit 1.2.2 2.6.1 2.6.2 2.7.0: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0 2.1: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
-app-emacs/mcomplete 1.5-r1 1.10: An improved interface to minibuffer completion
+app-emacs/mcomplete 1.10: An improved interface to minibuffer completion
 app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
 app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
