@@ -38,8 +38,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Deep
 		dev-perl/PadWalker
 		dev-perl/Test-Memory-Cycle
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)"
 
 mydoc="extras/* examples/*"
