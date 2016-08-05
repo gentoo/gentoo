@@ -26,7 +26,8 @@ DEPEND=${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 PATCHES=(
-		"${DISTDIR}"/tf-all*patch.txt
+		"${DISTDIR}"/tf-allrootpatch.txt
+		"${DISTDIR}"/tf-allsrcpatch.txt
 		"${FILESDIR}"/${P}-pcre.patch
 		"${FILESDIR}"/${P}-stdarg.patch
 )
