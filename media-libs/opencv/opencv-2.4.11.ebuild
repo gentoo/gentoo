@@ -80,10 +80,10 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-2.3.1a-libav-0.7.patch" \
-        	"${FILESDIR}/${PN}-2.4.3-gcc47.patch" \
-        	"${FILESDIR}/${PN}-2.4.2-cflags.patch" \
-        	"${FILESDIR}/${PN}-2.4.8-javamagic.patch" \
-        	"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch" \
+		"${FILESDIR}/${PN}-2.4.3-gcc47.patch" \
+		"${FILESDIR}/${PN}-2.4.2-cflags.patch" \
+		"${FILESDIR}/${PN}-2.4.8-javamagic.patch" \
+		"${FILESDIR}/${PN}-2.4.9-cuda-pkg-config.patch" \
 		"${FILESDIR}/${P}-git-autodetect.patch"
 
 	# remove bundled stuff
