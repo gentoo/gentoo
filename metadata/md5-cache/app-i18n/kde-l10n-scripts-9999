@@ -7,5 +7,5 @@ LICENSE=LGPL-3
 RDEPEND=app-crypt/md5deep app-i18n/pology app-shells/bash:* dev-vcs/subversion kde-apps/poxml
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:-
-_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2
+_eclasses_=git-2	7af5d170bfc02983b4bcd3167dc5edd4
 _md5_=76a1e23dffcf3b44a7f77d5826ca1435

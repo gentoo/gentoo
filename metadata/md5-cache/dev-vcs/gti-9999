@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=dev-vcs/git
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_install:-
-_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2
+_eclasses_=git-2	7af5d170bfc02983b4bcd3167dc5edd4
 _md5_=e93c0afde121a5c0a0563604132dfec2
