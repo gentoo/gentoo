@@ -2584,7 +2584,7 @@ app-vim/nerdcommenter 2.3.0: vim plugin: easy commenting of code for many filety
 app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nerdtree-tabs 1.4.6: vim plugin: NERDTree and tabs in vim
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
-app-vim/notes 0.33 0.33.4: vim plugin: easy note taking in vim
+app-vim/notes 0.33.4: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pam-syntax 20060424: vim plugin: PAM configuration syntax highlighting
