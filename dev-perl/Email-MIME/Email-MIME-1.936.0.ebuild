@@ -32,7 +32,5 @@ DEPEND="${RDEPEND}
 	test? (
 		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-0.960.0
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
