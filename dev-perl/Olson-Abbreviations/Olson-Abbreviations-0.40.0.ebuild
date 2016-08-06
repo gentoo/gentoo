@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,13 @@ RDEPEND="
 	dev-perl/namespace-autoclean
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
-	)
+	test? ( virtual/perl-Test-Simple )
 "
 
 SRC_TEST=do
+
+# MI's fault
+src_configure() {
+	use test && perl_rm_files t/pod.t t/pod-coverage.t
+	perl-module_src_configure
+}

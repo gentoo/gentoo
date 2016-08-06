@@ -16,10 +16,11 @@ LICENSE="Artistic"
 KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
-DEPEND="
-	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
-	)"
+DEPEND="test? ( virtual/perl-Test-Simple )"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files "t/pod.t" "t/pod_coverage.t"
+	perl-module_src_test
+}
