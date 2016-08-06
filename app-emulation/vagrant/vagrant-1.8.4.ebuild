@@ -24,7 +24,7 @@ IUSE="+virtualbox"
 RDEPEND="${RDEPEND}
 	app-arch/libarchive
 	net-misc/curl
-	virtualbox? ( || ( app-emulation/virtualbox app-emulation/virtualbox-bin ) )"
+	virtualbox? ( || ( <app-emulation/virtualbox-5.1 <app-emulation/virtualbox-bin-5.1 ) )"
 
 ruby_add_rdepend "
 	>=dev-ruby/bundler-1.12.5
