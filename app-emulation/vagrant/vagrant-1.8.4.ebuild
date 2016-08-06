@@ -24,7 +24,7 @@ IUSE="+virtualbox"
 RDEPEND="${RDEPEND}
 	app-arch/libarchive
 	net-misc/curl
-	virtualbox? ( || ( app-emulation/virtualbox app-emulation/virtualbox-bin ) )"
+	virtualbox? ( || ( <app-emulation/virtualbox-5.1 <app-emulation/virtualbox-bin-5.1 ) )"
 
 ruby_add_rdepend "
 	>=dev-ruby/bundler-1.12.5
@@ -37,7 +37,7 @@ ruby_add_rdepend "
 	>=dev-ruby/net-ssh-3.0.1
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.1.0
-	>=dev-ruby/rest-client-1.6.0 <dev-ruby/rest-client-2.0
+	>=dev-ruby/rest-client-1.6.0:0
 	>=dev-ruby/nokogiri-1.6.7.1
 	>=dev-ruby/mime-types-2.6.2:* <dev-ruby/mime-types-3:*
 "
