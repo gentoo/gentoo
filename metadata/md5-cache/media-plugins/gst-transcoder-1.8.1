@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure
+DEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.1:1.0 >=media-libs/gst-plugins-base-1.8.2:1.0 >=dev-util/meson-0.28.0 virtual/pkgconfig
+DESCRIPTION=GStreamer Transcoding API
+EAPI=6
+HOMEPAGE=https://github.com/pitivi/gst-transcoder
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/gobject-introspection:= dev-libs/glib:2 >=media-libs/gstreamer-1.8.1:1.0 >=media-libs/gst-plugins-base-1.8.2:1.0
+SLOT=0
+SRC_URI=https://github.com/pitivi/gst-transcoder/archive/1.8.1.tar.gz -> gst-transcoder-1.8.1.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:-
+_md5_=0e76f74f33850ee7c8979f9f7d2ef7c4
