@@ -82,15 +82,16 @@ https://bugzilla.mindrot.org/show_bug.cgi?id=1008
  .Xr ssh 1
 --- a/sshconnect2.c
 +++ b/sshconnect2.c
-@@ -656,6 +656,12 @@
+@@ -656,6 +656,13 @@
  	static u_int mech = 0;
  	OM_uint32 min;
  	int ok = 0;
 +	const char *gss_host;
 +
-+	if (options.gss_trust_dns)
++	if (options.gss_trust_dns) {
++		extern const char *auth_get_canonical_hostname(struct ssh *ssh, int use_dns);
 +		gss_host = auth_get_canonical_hostname(active_state, 1);
-+	else
++	} else
 +		gss_host = authctxt->host;
  
  	/* Try one GSSAPI method at a time, rather than sending them all at
