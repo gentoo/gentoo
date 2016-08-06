@@ -35,7 +35,6 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Template-Toolkit-2.200.0
 		dev-perl/Test-Exception
 		dev-perl/Test-Differences
-		dev-perl/Test-Pod
 		>=dev-perl/XML-LibXML-1.690.0
 	)
 "

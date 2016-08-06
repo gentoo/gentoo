@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,8 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-perl/PadWalker
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Exception
 		dev-perl/Test-NoWarnings
 		dev-perl/Test-Taint
@@ -42,3 +40,9 @@ DEPEND="${RDEPEND}
 myconf="--local --nolive"
 
 SRC_TEST=do
+
+# MI makes these configure problems
+src_prepare() {
+	use test && perl_rm_files t/pod.t t/pod-coverage.t
+	perl-module_src_prepare
+}

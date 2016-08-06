@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,11 @@ KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux 
 IUSE="test"
 
 RDEPEND=""
-DEPEND="test? ( dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage )"
+DEPEND="test? ( virtual/perl-Test-Simple )"
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/pod-coverage.t t/pod.t
+	perl-module_src_test
+}
