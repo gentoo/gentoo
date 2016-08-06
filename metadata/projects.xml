@@ -338,11 +338,6 @@
       <name>Robin Johnson</name>
       <role>Specialized block devices and lots of other miscellaneous stuff</role>
     </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-      <role>Misc stuff that needs to get done</role>
-    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -415,11 +410,6 @@
     <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
       <role>Developer</role>
     </member>
   </project>
@@ -821,10 +811,6 @@
     <member>
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
-    </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
     </member>
     <member>
       <email>xarthisius@gentoo.org</email>
@@ -1482,10 +1468,6 @@
       <name>Tim Harder</name>
     </member>
     <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-    </member>
-    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
@@ -1840,11 +1822,6 @@
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Member (Kernel, gentoo-sources, hardened-sources, genpatches)</role>
-    </member>
-    <member>
-      <email>caster@gentoo.org</email>
-      <name>Vlastimil Babka</name>
-      <role>Member (Kernel)</role>
     </member>
     <member>
       <email>chainsaw@gentoo.org</email>
@@ -2530,10 +2507,6 @@
     <member>
       <email>grknight@gentoo.org</email>
       <name>Brian Evans</name>
-    </member>
-    <member>
-      <email>mabi@gentoo.org</email>
-      <name>Matti</name>
     </member>
     <member>
       <email>mjo@gentoo.org</email>
@@ -3873,11 +3846,6 @@
       <role>Member ( misc )</role>
     </member>
     <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-      <role>Member ( misc )</role>
-    </member>
-    <member>
       <email>yngwin@gentoo.org</email>
       <name>Ben de Groot</name>
       <role>Member ( misc )</role>
@@ -4089,11 +4057,6 @@
       <name>Pacho Ramos</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>udev-bugs@gentoo.org</email>
@@ -4115,10 +4078,6 @@
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-    </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
@@ -4198,11 +4157,6 @@
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
       <role>Lead ( Gentoo/PPC work, mplayer, ffmpeg )</role>
-    </member>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-      <role>Member ( misc )</role>
     </member>
   </project>
   <project>
