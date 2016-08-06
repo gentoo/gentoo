@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
 		dev-perl/prefork
 		dev-perl/Module-Pluggable
 		dev-perl/Test-Requires
@@ -34,3 +33,8 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/0-pod.t
+	perl-module_src_test
+}

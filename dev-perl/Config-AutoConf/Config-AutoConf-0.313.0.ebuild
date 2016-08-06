@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND="test? ( >=dev-perl/Test-Pod-1.14
-	>=dev-perl/Test-Pod-Coverage-1.08 )"
+DEPEND="test? ( virtual/perl-Test-Simple )"
 RDEPEND="dev-perl/Capture-Tiny"
 
 SRC_TEST="do"
