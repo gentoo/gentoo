@@ -1,0 +1,24 @@
+From a43f582918d3295b7cdef9e056bf5b1c4eb2ef80 Mon Sep 17 00:00:00 2001
+From: Yaakov Selkowitz <yselkowi@redhat.com>
+Date: Mon, 22 Jun 2015 05:18:44 -0500
+Subject: [PATCH] Include net/if.h for IFF_* macros
+
+---
+ python-ethtool/ethtool.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/python-ethtool/ethtool.c b/python-ethtool/ethtool.c
+index 0f9cdbb..5415ec6 100644
+--- a/python-ethtool/ethtool.c
++++ b/python-ethtool/ethtool.c
+@@ -27,6 +27,7 @@
+ #include <sys/types.h>
+ #include <ifaddrs.h>
+ #include <netlink/route/addr.h>
++#include <net/if.h>
+ 
+ #include "etherinfo_struct.h"
+ #include "etherinfo_obj.h"
+-- 
+2.1.0
+
