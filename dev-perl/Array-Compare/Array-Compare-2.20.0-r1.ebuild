@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,6 +20,9 @@ RDEPEND="dev-perl/Moose"
 DEPEND=">=dev-perl/Module-Build-0.28
 	test? ( ${RDEPEND}
 		dev-perl/Test-NoWarnings
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)"
+
+src_test() {
+	perl_rm_files t/pod.t t/pod_coverage.t
+	perl-module_src_test
+}
