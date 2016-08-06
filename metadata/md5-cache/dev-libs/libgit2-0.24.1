@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) sys-libs/zlib net-libs/http-parser:= gssapi? ( virtual/krb5 ) ssh? ( net-libs/libssh2 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A linkable library for Git
+EAPI=5
+HOMEPAGE=https://libgit2.github.com/
+IUSE=examples gssapi libressl ssh test threads trace
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~ppc-macos
+LICENSE=GPL-2-with-linking-exception
+RDEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) sys-libs/zlib net-libs/http-parser:= gssapi? ( virtual/krb5 ) ssh? ( net-libs/libssh2 )
+SLOT=0/24
+SRC_URI=https://github.com/libgit2/libgit2/archive/v0.24.1.tar.gz -> libgit2-0.24.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:-
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=032123a809e59bca7e91bf2ce42f762d
