@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="aac debug doc hid mp3 mp4 qt4 +qt5 shout wavpack ffmpeg"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
-# fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this 
+# fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
 RDEPEND="dev-db/sqlite
 	dev-libs/libusb:1

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="+cairo openmp"
 
-# Bug #536734; configure sets boostlib 1.53.0 but 1.54.0 is required 
+# Bug #536734; configure sets boostlib 1.53.0 but 1.54.0 is required
 CDEPEND="${PYTHON_DEPS}
 	>=dev-libs/boost-1.54.0[python,${PYTHON_USEDEP}]
 	dev-libs/expat

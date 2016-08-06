@@ -62,7 +62,7 @@ RDEPEND="
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	# built in... 
+	# built in...
 	sed -i '/^argparse/d' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all

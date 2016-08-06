@@ -49,7 +49,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	# FIXME: Now this supports python3 too... 
+	# FIXME: Now this supports python3 too...
 	# delete custom PYTHONPATH, useless on Gentoo and potential bug source
 	# + caribou is python2 only so fix the shell scripts
 #	sed -e '/export PYTHONPATH=.*python/ d' \
