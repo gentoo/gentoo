@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,12 @@ IUSE="test"
 
 DEPEND="
 	>=dev-perl/Module-Build-0.380.0
-	test? (
-		dev-perl/Test-Pod
-	)
+	test? ( virtual/perl-Test-Simple )
 "
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/99pod.t
+	perl-module_src_test
+}
