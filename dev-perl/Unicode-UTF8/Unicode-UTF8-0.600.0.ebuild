@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Test-Fatal-0.6.0
 		>=virtual/perl-Test-Simple-0.470.0
 
-		dev-perl/Test-Pod
 		dev-perl/Taint-Runtime
 		dev-perl/Variable-Magic
 		dev-perl/Test-LeakTrace
@@ -34,3 +33,8 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/999_pod.t
+	perl-module_src_test
+}
