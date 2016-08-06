@@ -37,11 +37,6 @@
       <name>Agostino Sarubbo</name>
       <role>Developer</role>
     </member>
-    <member is-lead="1">
-      <email>angelos@gentoo.org</email>
-      <name>Christoph Mende</name>
-      <role>Strategic Lead</role>
-    </member>
     <member>
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
@@ -890,11 +885,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Dotnet</url>
     <description>The Dotnet Project handles the development using the C# language. More specifically, it is often oriented with the mono development environment.</description>
     <member>
-      <email>angelos@gentoo.org</email>
-      <name>Christoph Mende</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>cynede@gentoo.org</email>
       <name>Mikhail Pukhlikov</name>
       <role>Member</role>
@@ -1641,11 +1631,6 @@
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
       <role>General System Administration, Wiki, Security</role>
-    </member>
-    <member>
-      <email>darkside@gentoo.org</email>
-      <name>Jeremy Olexa</name>
-      <role>Mirrors, Web applications</role>
     </member>
     <member>
       <email>dastergon@gentoo.org</email>
@@ -2798,11 +2783,6 @@
       <name>Guilherme Amadio</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>darkside@gentoo.org</email>
-      <name>Jeremy Olexa</name>
-      <role>Developer</role>
-    </member>
     <member is-lead="1">
       <email>grobian@gentoo.org</email>
       <name>Fabian Groffen</name>
@@ -3790,10 +3770,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Shell_Tools</url>
     <description>Maintains miscellaneous tools used from within a shell environment.</description>
     <member>
-      <email>darkside@gentoo.org</email>
-      <name>Jeremy Olexa</name>
-    </member>
-    <member>
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
     </member>
@@ -3818,11 +3794,6 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member ( misc )</role>
-    </member>
-    <member>
-      <email>angelos@gentoo.org</email>
-      <name>Christoph Mende</name>
       <role>Member ( misc )</role>
     </member>
     <member is-lead="1">
@@ -4442,11 +4413,6 @@
     <name>Gentoo Xfce Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Xfce</url>
     <description>The Gentoo Xfce Project aims to bring the current and complete Xfce desktop environment to Gentoo.</description>
-    <member is-lead="1">
-      <email>angelos@gentoo.org</email>
-      <name>Christoph Mende</name>
-      <role>Lead</role>
-    </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>

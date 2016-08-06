@@ -1234,7 +1234,7 @@ app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0_beta3: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 1.9.3_p429 2.0.0_p247 2.1.5 2.2.0 2.2.2 2.3.0: Emacs major mode for editing Ruby code
-app-emacs/rudel 0.3_pre20110721: Collaborative editing environment for GNU Emacs
+app-emacs/rudel 0.3_pre20110721 0.3_pre20110721-r1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 1_beta20150411: A major emacs mode for editing Rust source code
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
