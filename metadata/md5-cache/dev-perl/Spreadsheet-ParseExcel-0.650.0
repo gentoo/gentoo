@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-perl/OLE-StorageLite-0.19 dev-perl/IO-stringy dev-perl/Text-CSV_XS dev-perl/Crypt-RC4 dev-perl/Digest-Perl-MD5 unicode? ( dev-perl/Unicode-Map ) cjk? ( dev-perl/Jcode ) virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Test-Pod dev-perl/Unicode-Map dev-perl/Spreadsheet-WriteExcel dev-perl/Jcode ) dev-lang/perl:=[-build(-)]
+DEPEND=>=dev-perl/OLE-StorageLite-0.19 dev-perl/IO-stringy dev-perl/Text-CSV_XS dev-perl/Crypt-RC4 dev-perl/Digest-Perl-MD5 unicode? ( dev-perl/Unicode-Map ) cjk? ( dev-perl/Jcode ) virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Unicode-Map dev-perl/Spreadsheet-WriteExcel dev-perl/Jcode ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Read information from an Excel file
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Spreadsheet-ParseExcel/
@@ -9,6 +9,6 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/OLE-StorageLite-0.19 dev-perl/IO-stringy dev-perl/Text-CSV_XS dev-perl/Crypt-RC4 dev-perl/Digest-Perl-MD5 unicode? ( dev-perl/Unicode-Map ) cjk? ( dev-perl/Jcode ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DOUGW/Spreadsheet-ParseExcel-0.65.tar.gz
-_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=616dbb27e736fb34efa2d7377a7e55e9
+_md5_=4b2a4d2ebfc497b6a53690777cd61655

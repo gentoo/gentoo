@@ -888,11 +888,6 @@
       <role>Editor</role>
     </member>
     <member>
-      <email>josejx@gentoo.org</email>
-      <name>Joseph Jezak</name>
-      <role>PPC Editor</role>
-    </member>
-    <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Author, Editor</role>
@@ -1095,11 +1090,6 @@
     <name>eselect configuration and management tool</name>
     <url>https://wiki.gentoo.org/wiki/Project:Eselect</url>
     <description>eselect is Gentoo's modular framework for configuration and administration utilities.</description>
-    <member>
-      <email>dberkholz@gentoo.org</email>
-      <name>Donnie Berkholz</name>
-      <role>Member (skel library)</role>
-    </member>
     <member is-lead="1">
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
@@ -2825,10 +2815,6 @@
       <name>Jack Morgan</name>
     </member>
     <member>
-      <email>josejx@gentoo.org</email>
-      <name>Joseph Jezak</name>
-    </member>
-    <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3048,10 +3034,6 @@
       <email>dastergon@gentoo.org</email>
       <name>Pavlos Ratis</name>
       <role>GMN, Facebook</role>
-    </member>
-    <member is-lead="1">
-      <email>dberkholz@gentoo.org</email>
-      <name>Donnie Berkholz</name>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -4424,10 +4406,6 @@
     <member>
       <email>chithanh@gentoo.org</email>
       <name>Chí-Thanh Christopher Nguyễn</name>
-    </member>
-    <member>
-      <email>dberkholz@gentoo.org</email>
-      <name>Donnie Berkholz</name>
     </member>
     <member>
       <email>leio@gentoo.org</email>

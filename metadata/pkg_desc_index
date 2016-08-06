@@ -9031,7 +9031,7 @@ dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 2.99.2 3.0 3.0-r1 3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2015.1120 3.2016.0221 3.2016.0521: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.1 0.3.2: Fast mime detection by extension or content
-dev-ruby/mini_magick 4.4.0: Manipulate images with minimal use of memory
+dev-ruby/mini_magick 4.4.0 4.5.1: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.3 5.8.4 5.9.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
