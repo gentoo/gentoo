@@ -6,9 +6,9 @@
   <name>Andreis Vinogradovs</name>
   <description>Primary maintainer, assign bugs to him</description>
 </maintainer>
-<maintainer type="person">
-  <email>pva@gentoo.org</email>
-  <name>Peter Volkov</name>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
 </maintainer>
 <longdescription lang="en">
 vzdump is a utility to make consistent snapshots of running OpenVZ VEs. It basically creates a tar archive of the VE private area, which also includes the VE configuration files.
