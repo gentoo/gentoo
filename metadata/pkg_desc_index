@@ -7930,7 +7930,7 @@ dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, 
 dev-python/python-daemon 1.6-r1 2.0.4 2.0.5 2.0.6 2.1.1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.1-r1 2.2 2.4.0 2.4.1-r1 2.4.2 2.4.2-r1 2.5.3: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
-dev-python/python-debian 0.1.26 0.1.27: Python modules to work with Debian-related data formats
+dev-python/python-debian 0.1.26 0.1.27 0.1.28: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.0.0: Python bindings to the Designate API.
 dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.0: Python bindings for libdiscid
