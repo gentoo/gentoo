@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://www.hartwork.org/public/freeverb3-3.1.2_pre20151102.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=fa9258d9486673a2e3b9712d5be2636f
+_md5_=fccb428b48ffb1c867a15972e4c18cc5

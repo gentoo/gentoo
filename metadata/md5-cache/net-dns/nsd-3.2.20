@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://www.nlnetlabs.nl/downloads/nsd/nsd-3.2.20.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
 _eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
-_md5_=58f1956dba1ab23800ff94b9a9e55339
+_md5_=a40741d9165346e2a6e0121eab938e32

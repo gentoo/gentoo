@@ -10,4 +10,4 @@ RDEPEND=!static? ( >=dev-libs/skalibs-2.3.10.0 )
 SLOT=0
 SRC_URI=http://www.skarnet.org/software/execline/execline-2.1.5.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:-
-_md5_=fefa1f6b982e4a526292492b683e5be1
+_md5_=ca2f59a591acc4ed9ab0e2084355be5a
