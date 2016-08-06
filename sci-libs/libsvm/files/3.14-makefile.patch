@@ -5,8 +5,8 @@
 * link the shared version library
 nov 2012 - bicatali@gentoo.org
 
---- Makefile.orig	2012-11-29 10:39:07.149421728 -0800
-+++ Makefile	2012-11-29 10:57:19.727766521 -0800
+--- a/Makefile.orig	2012-11-29 10:39:07.149421728 -0800
++++ b/Makefile	2012-11-29 10:57:19.727766521 -0800
 @@ -1,9 +1,12 @@
  CXX ?= g++
 -CFLAGS = -Wall -Wconversion -O3 -fPIC
