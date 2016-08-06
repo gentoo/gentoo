@@ -1,25 +1,31 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="git://linux-iscsi.org/${PN}.git"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="ConfigShell Community Edition for target_core_mod/ConfigFS"
-HOMEPAGE="http://linux-iscsi.org/"
-SRC_URI=""
+HOMEPAGE="http://linux-iscsi.org/wiki/targetcli"
 
-LICENSE="AGPL-3"
+LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	dev-python/epydoc[${PYTHON_USEDEP}]
-	dev-python/simpleparse[${PYTHON_USEDEP}]
-	"
-RDEPEND="${DEPEND}"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://github.com/Datera/${PN}.git
+		https://github.com/Datera/${PN}.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/Datera/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
+
+DEPEND="dev-python/epydoc[${PYTHON_USEDEP}]
+	dev-python/pyparsing[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}
+	dev-python/urwid[${PYTHON_USEDEP}]"
