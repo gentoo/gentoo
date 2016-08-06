@@ -5,10 +5,6 @@
     <email>nikoli@gmx.us</email>
     <name>Nikoli</name>
   </maintainer>
-  <maintainer type="person">
-    <email>ssuominen@gentoo.org</email>
-    <name>Samuli Suominen</name>
-  </maintainer> 
 <maintainer type="project">
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
