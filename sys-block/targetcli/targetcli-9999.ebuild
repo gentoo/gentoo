@@ -1,35 +1,46 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-EGIT_REPO_URI="git://linux-iscsi.org/${PN}.git"
-PYTHON_DEPEND="2"
-RESTRICT_PYTHON_ABIS="3.*"
-SUPPORT_PYTHON_ABIS="1"
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils git-2 python linux-info
+inherit distutils-r1 linux-info
 
-DESCRIPTION="The targetcli administration shell"
-HOMEPAGE="http://linux-iscsi.org/"
-SRC_URI=""
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="git://github.com/Datera/${PN}.git
+		https://github.com/Datera/${PN}.git"
+	KEYWORDS=""
+else
+	MY_PV=${PV/_/-}
+	SRC_URI="https://github.com/Datera/${PN}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+	KEYWORDS="~amd64"
+fi
 
-LICENSE="AGPL-3"
+DESCRIPTION="CLI and shell for the Linux SCSI target"
+HOMEPAGE="http://linux-iscsi.org/wiki/targetcli"
+
+LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	dev-python/configshell
-	dev-python/rtslib
-	sys-block/lio-utils
-	"
-RDEPEND="${DEPEND}"
+DEPEND="dev-python/configshell[${PYTHON_USEDEP}]
+	dev-python/prettytable[${PYTHON_USEDEP}]
+	dev-python/rtslib[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}
+	dev-python/urwid[${PYTHON_USEDEP}]"
 
-CONFIG_CHECK="~TARGET_CORE"
-
-pkg_setup() {
-	linux-info_pkg_setup
-	python_pkg_setup
+pkg_pretend() {
+	if use kernel_linux; then
+		linux-info_get_any_version
+		if ! linux_config_exists; then
+			eerror "Unable to check your kernel for SCSI target support"
+		else
+			CONFIG_CHECK="~TARGET_CORE"
+			check_extra_config
+		fi
+	fi
 }
