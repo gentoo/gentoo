@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
-	</maintainer>
 	<longdescription>
 		Enterprise client-server fax package for class 1 and 2 fax modems.
 	</longdescription>
