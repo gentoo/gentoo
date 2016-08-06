@@ -185,32 +185,6 @@ dev-perl/cache-mmap
 # Vulnerable due to wrong suid binary permissions (#345337)
 <app-cdr/xcdroast-0.98_alpha16-r2
 
-# Michael Palimaka <kensington@gentoo.org> (7 Jul 2016)
-# Requires obsolete kde-apps/kate:4. No further upstream development.
-# Masked for removal in 30 days.
-kde-misc/katelatexplugin
-
-# Michael Palimaka <kensington@gentoo.org> (7 Jul 2016)
-# Requires obsolete kde-apps/kmix:4. No further upstream development.
-# Masked for removal in 30 days.
-kde-misc/kosd
-
-# Michael Palimaka <kensington@gentoo.org> (7 Jul 2016)
-# Dead upstream and unsupported. Bug 586276.
-# Masked for removal in 30 days.
-kde-apps/kdebindings-meta
-kde-base/kimono
-kde-base/korundum
-kde-base/krossjava
-kde-base/krossruby
-kde-base/perlkde
-kde-base/perlqt
-kde-base/qtruby
-kde-base/qyoto
-kde-base/smokegen
-kde-base/smokekde
-kde-base/smokeqt
-
 # Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
 # No development since 2012, upstream repository removed in Jan 2016.
 # No longer builds. Removal in 30 days, #582448.
