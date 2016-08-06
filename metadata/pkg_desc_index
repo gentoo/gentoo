@@ -12276,7 +12276,7 @@ media-gfx/picturewall 1.0-r1: Qt4 picture viewer and image searching tool using 
 media-gfx/pinta 1.4 1.6 1.6-r1 1.6-r2 9999: Simple Painting for Gtk
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
-media-gfx/plantuml 7999: PlantUML is used to draw UML diagram, using a simple and human readable text description
+media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.7.81 1.7.85 1.7.86 1.7.92 1.8.0: Portable Network Graphics (PNG) optimizing utility
