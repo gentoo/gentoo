@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit autotools db-use eutils flag-o-matic
+inherit autotools db-use flag-o-matic
 
 DBVERS="4.8.30 4.7 4.6 4.5 4.4 4.3 4.2"
 DBSLOTS=
@@ -30,35 +30,38 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="perl tcl unicode"
 
 CDEPEND="|| ( ${DBDEPENDS} )
-	>=sys-libs/ncurses-5.6-r2
+	>=sys-libs/ncurses-5.6-r2:=
 	perl? ( dev-lang/perl )
 	tcl? ( !unicode? ( >=dev-lang/tcl-8.5:0 ) )"
 
 DEPEND="${CDEPEND}
-		virtual/pkgconfig"
+	virtual/pkgconfig"
 
 RDEPEND="${CDEPEND}
 	app-eselect/eselect-vi"
 
 REQUIRED_USE="tcl? ( !unicode )"
 
-src_prepare() {
+PATCHES=(
+	"${FILESDIR}"/${P}-strlen-macro-renaming.patch
+	"${FILESDIR}"/${P}-db44.patch
+	"${FILESDIR}"/${P}-db.patch
+	"${FILESDIR}"/${P}-perl-as-needed.patch
+	"${FILESDIR}"/${P}-perl-shortnames.patch
+	"${FILESDIR}"/${P}-ac_config_header.patch
+	"${FILESDIR}"/${P}-use_pkgconfig_for_ncurses.patch
+	"${FILESDIR}"/${P}-printf-types.patch
+	)
 
-	epatch "${FILESDIR}"/${P}-strlen-macro-renaming.patch
-	epatch "${FILESDIR}"/${P}-db44.patch
-	epatch "${FILESDIR}"/${P}-db.patch
-	epatch "${FILESDIR}"/${P}-perl-as-needed.patch
-	epatch "${FILESDIR}"/${P}-perl-shortnames.patch
-	epatch "${FILESDIR}"/${P}-ac_config_header.patch
-	epatch "${FILESDIR}"/${P}-use_pkgconfig_for_ncurses.patch
+src_prepare() {
+	default
 
 	cd dist || die
 	chmod +x findconfig || die
 
-	append-cppflags -I"$(db_includedir ${DBSLOTS})"
-
-	sed -i -e "s@-ldb@-l$(db_libname ${DBSLOTS})@" configure.in || die
-	rm -f configure || die
+	mv configure.{in,ac} || die
+	sed -i -e "s@-ldb@-l$(db_libname ${DBSLOTS})@" configure.ac || die
+	sed -i -e "s@^install-\(.*\)-local:@install-\1-hook:@" Makefile.am || die
 	eautoreconf -Im4
 }
 
@@ -70,25 +73,21 @@ src_configure() {
 	use tcl && ! use unicode && myconf="${myconf} --enable-tclinterp"
 
 	append-cppflags '-D_PATH_MSGCAT="\"/usr/share/vi/catalog/\""'
+	append-cppflags -I"$(db_includedir ${DBSLOTS})"
 
-	pushd dist 2>/dev/null
+	pushd dist 2>/dev/null || die
 	econf \
 		--program-prefix=n \
-		${myconf} \
-		|| die "configure failed"
-	popd 2>/dev/null
+		${myconf}
+	popd 2>/dev/null || die
 }
 
 src_compile() {
-	pushd dist 2>/dev/null
-	emake || die "make failed"
-	popd 2>/dev/null
+	emake -C dist
 }
 
 src_install() {
-	pushd dist 2>/dev/null
-	emake -j1 DESTDIR="${D}" install || die "install failed"
-	popd 2>/dev/null
+	emake -C dist DESTDIR="${D}" install
 }
 
 pkg_postinst() {
