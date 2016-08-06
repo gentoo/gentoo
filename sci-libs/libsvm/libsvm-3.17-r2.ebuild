@@ -83,8 +83,7 @@ src_install() {
 
 		local t
 		for t in tools/*.py; do
-			mv ${t} svm-$(basename ${t} .py) || die
-			python_doscript svm-$(basename ${t} .py)
+			python_newscript ${t} svm-$(basename ${t} .py)
 		done
 
 		newdoc tools/README README.tools
