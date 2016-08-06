@@ -209,8 +209,6 @@ app-admin/logrotate:acl - Installs acl support
 app-admin/logrotate:cron - Installs cron file
 app-admin/logrotate:selinux - Installs Security Enhanced Linux support
 app-admin/logstash-bin:all-plugins - contains the standard distribution package plus all plugins
-app-admin/mate-system-tools:caja - Adds support for the Caja file manager
-app-admin/mate-system-tools:nfs - Adds support for NFS shares
 app-admin/matter:entropy - Add Entropy support
 app-admin/mcollective:client - Install client utilities
 app-admin/mms-agent:monitoring - Install the monitoring agent
@@ -3700,7 +3698,6 @@ mail-mta/qmail-ldap:rfc822 - Add support for RFC822 compliant mail attributes
 mail-mta/qpsmtpd:postfix - create user with permissions for proper postfix interaction
 mail-mta/ssmtp:mta - Install symlinks for sendmail-compatible MTA.
 mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
-mate-base/caja:unique - Enable single instance support using dev-libs/libunique.
 mate-base/mate:base - Install base MATE Desktop applications that are recommended for the most common usage; for example, this installs the file manager. Disable this and other USE flags if you want a more minimal MATE Desktop.
 mate-base/mate:extras - Install additional MATE Desktop applications that are recommended for extended usage of the MATE Desktop as upstream sees it; for example, this installs MATE Desktop's office related applications. Disable this if you plan to use your own non-MATE Desktop alternatives or a custom mixture of MATE and non-MATE packages.
 mate-base/mate:notification - Force notification daemon to default to MATE's notification daemon. Enabled by default. Disable if it causes conflicts with other installed desktop environments.
@@ -3717,7 +3714,6 @@ mate-extra/caja-extensions:open-terminal - Add an extension to support an open t
 mate-extra/caja-extensions:pidgin - Add an extension to support net-im/pidgin
 mate-extra/caja-extensions:share - Add an extension to support sharing files.
 mate-extra/caja-extensions:wallpaper - Add an extension to support setting an image as the current wallpaper
-mate-extra/mate-media:twolame - Bring in twolame gstreamer support
 mate-extra/mate-polkit:accountsservice - Support extraction of data from AccountsService
 mate-extra/mate-polkit:appindicator - Add support for AppIndicator
 mate-extra/mate-power-manager:applet - Enable building of the MATE applet.
