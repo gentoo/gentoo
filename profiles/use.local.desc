@@ -3359,52 +3359,14 @@ kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-base/kfilemetadata:mobi - Adds support for reading MOBI ebook metadata
-kde-base/kimono:akonadi - Compile bindings for Akonadi
-kde-base/kimono:plasma - Compile bindings for KDE's Plasma
 kde-base/klipper:prison - Enable support for barcodes/QRcodes
-kde-base/korundum:akonadi - Compile bindings for Akonadi
-kde-base/korundum:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/korundum:okular - Compile bindings for kde-apps/okular
 kde-base/kwin:gles - Enable support for GLES.
 kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
-kde-base/perlkde:akonadi - Compile bindings for Akonadi
-kde-base/perlkde:attica - Compile bindings for dev-libs/libattica
-kde-base/perlkde:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/perlkde:okular - Compile bindings for kde-apps/okular
-kde-base/perlqt:declarative - Compile bindings for dev-qt/qtdeclarative.
-kde-base/perlqt:multimedia - Compile bindings for dev-qt/qtmultimedia.
-kde-base/perlqt:phonon - Compile bindings for Phonon.
-kde-base/perlqt:qimageblitz - Compile bindings for media-libs/qimageblitz.
-kde-base/perlqt:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/perlqt:qthelp - Compile bindings for QtHelp from dev-qt/qthelp.
-kde-base/perlqt:qwt - Compile bindings for x11-libs/qwt.
-kde-base/perlqt:webkit - Compile bindings for dev-qt/qtwebkit.
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-base/plasma-workspace:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-base/powerdevil:pm-utils - Adds support for suspend/resume the system through sys-power/pm-utils
 kde-base/pykde4:akonadi - Compile bindings for Akonadi
-kde-base/qtruby:declarative - Compile bindings for dev-qt/qtdeclarative.
-kde-base/qtruby:phonon - Compile bindings for Phonon.
-kde-base/qtruby:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/qtruby:qwt - Compile bindings for x11-libs/qwt.
-kde-base/qtruby:webkit - Compile bindings for dev-qt/qtwebkit.
-kde-base/qyoto:phonon - Compile bindings for Phonon.
-kde-base/qyoto:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/qyoto:webkit - Compile bindings for dev-qt/qtwebkit.
-kde-base/smokekde:akonadi - Compile bindings for Akonadi
-kde-base/smokekde:attica - Compile bindings for dev-libs/libattica
-kde-base/smokekde:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/smokekde:okular - Compile bindings for kde-apps/okular
-kde-base/smokeqt:declarative - Compile bindings for dev-qt/qtdeclarative.
-kde-base/smokeqt:multimedia - Compile bindings for dev-qt/qtmultimedia.
-kde-base/smokeqt:phonon - Compile bindings for Phonon.
-kde-base/smokeqt:qimageblitz - Compile bindings for media-libs/qimageblitz.
-kde-base/smokeqt:qscintilla - Compile bindings for x11-libs/qscintilla.
-kde-base/smokeqt:qthelp - Compile bindings for QtHelp from dev-qt/qthelp.
-kde-base/smokeqt:qwt - Compile bindings for x11-libs/qwt.
-kde-base/smokeqt:webkit - Compile bindings for dev-qt/qtwebkit.
-kde-base/smokeqt:xmlpatterns - Compile bindings for dev-qt/qtxmlpatterns.
 kde-base/systemsettings:kscreen - Use kde-misc/kscreen for screen management
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages

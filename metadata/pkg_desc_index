@@ -11466,14 +11466,10 @@ kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
 kde-base/khotkeys 4.11.22: KDE: hotkey daemon
-kde-base/kimono 4.14.3: C# bindings for KDE
 kde-base/kinfocenter 4.11.22: The KDE Info Center
 kde-base/klipper 4.11.22: Applet for KDE and X clipboard management
 kde-base/kmenuedit 4.11.22: KDE menu editor
-kde-base/korundum 4.14.3-r1: KDE Ruby bindings
-kde-base/krossjava 4.14.3: Java plugin for the kdelibs/kross scripting framework
 kde-base/krosspython 4.14.3: Kross scripting framework: Python interpreter
-kde-base/krossruby 4.14.3-r1: Kross scripting framework: Ruby interpreter
 kde-base/krunner 4.11.22: KDE Command Runner
 kde-base/kscreensaver 4.11.22: KDE screensaver framework
 kde-base/ksmserver 4.11.22: The reliable KDE session manager that talks the standard X11R6
@@ -11491,17 +11487,10 @@ kde-base/liboxygenstyle 4.11.22: Library to support the Oxygen style in KDE
 kde-base/libplasmaclock 4.11.22: Libraries for KDE Plasma's clocks
 kde-base/libplasmagenericshell 4.11.22: Libraries for the KDE Plasma shell
 kde-base/libtaskmanager 4.11.22: A library that provides basic taskmanager functionality
-kde-base/perlkde 4.14.3: KDE Perl bindings
-kde-base/perlqt 4.14.3: Qt Perl bindings
 kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
 kde-base/powerdevil 4.11.22: PowerDevil is an utility for KDE4 for Laptop Powermanagement
 kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
-kde-base/qtruby 4.14.3-r2: Qt Ruby bindings
-kde-base/qyoto 4.14.3: C# bindings for Qt
-kde-base/smokegen 4.14.3: Scripting Meta Object Kompiler Engine - generators
-kde-base/smokekde 4.14.3: Scripting Meta Object Kompiler Engine - KDE bindings
-kde-base/smokeqt 4.14.3-r1: Scripting Meta Object Kompiler Engine - Qt bindings
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
 kde-base/systemsettings 4.11.22-r2: System settings utility
 kde-frameworks/attica 5.23.0 5.24.0: Framework providing access to Open Collaboration Services
@@ -11600,7 +11589,6 @@ kde-misc/gx-mail-notify 0.4.4: Plasmoid for checking unread mail
 kde-misc/hdaps_monitor 0.3-r1: KDE-based monitor for the IBM HDAPS system
 kde-misc/homerun 1.2.5: Application launcher for KDE Plasma desktop
 kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
-kde-misc/katelatexplugin 0.5: Kate LaTeX typesetting plugin
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kbstateapplet 0_p1268845: Plasmoid that shows the state of keyboard leds
 kde-misc/kcaldav 1.2.0: CalDAV support plugin for KDE Kontact
@@ -11630,7 +11618,6 @@ kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
 kde-misc/kopete-thinklight 0.50: A thinkpad's light flash on every incoming message
-kde-misc/kosd 0.8.1: KDE application that runs in the background and responds to button presses by showing a tiny OSD
 kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/kprayertime 4.01: Islamic Prayer Times Plasmoid
 kde-misc/kraidmonitor 0.5: Indicator widget for raid arrays
