@@ -7,10 +7,10 @@ EAPI="6"
 inherit cmake-utils
 
 if [[ ${PV} != 9999 ]]; then
-	inherit vcs-snapshot
 	COMMIT="5b2455f3147aca395a441fc65b602938600f0788"
 	SRC_URI="https://github.com/FreeRDP/FreeRDP/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+	S="${WORKDIR}/FreeRDP-${COMMIT}"
 else
 	inherit git-r3
 	SRC_URI=""
