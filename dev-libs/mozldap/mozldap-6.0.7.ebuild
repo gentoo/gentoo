@@ -79,10 +79,10 @@ src_install () {
 
 	#create compatibility PATH link
 
-	 for i in ldapcmp ldapcompare ldapdelete ldapmodify \
+	for i in ldapcmp ldapcompare ldapdelete ldapmodify \
 			ldappasswd ldapsearch;do
-	 	dosym /usr/$(get_libdir)/mozldap/$i /usr/bin/moz"${i}" || die
-	 # compat for 389-project
+		dosym /usr/$(get_libdir)/mozldap/$i /usr/bin/moz"${i}" || die
+		# compat for 389-project
 		dosym /usr/$(get_libdir)/mozldap/$i /usr/bin/389-"${i}" || die
 	done
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,12 @@ RDEPEND="
 	>=dev-perl/Devel-Symdump-2.01
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-perl/Test-Pod
-	)
+	test? ( virtual/perl-Test-Simple )
 "
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/07pod.t
+	perl-module_src_test
+}
