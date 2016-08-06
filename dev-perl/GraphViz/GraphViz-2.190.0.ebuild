@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,6 @@ DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.421.100
 	>=dev-perl/File-Which-1.90.0
 	test? (
-		>=dev-perl/Test-Pod-1.480.0
 		>=virtual/perl-Test-Simple-1.1.14
 	)
 "
@@ -42,4 +41,9 @@ src_install() {
 
 	insinto /usr/share/doc/${PF}/examples
 	doins "${S}"/examples/*
+}
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
 }
