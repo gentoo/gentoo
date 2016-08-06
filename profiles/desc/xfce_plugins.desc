@@ -6,8 +6,6 @@
 
 # Keep it sorted.
 
-battery - Build battery plug-in for panel
-brightness - Build xfce4-brightness-plugin for panel
 clock - Build xfce4-orageclock-plugin for panel
 multiload-nandhp - Build a port of the GNOME multiload applet for panel
 power - Build power management plug-in for panel
