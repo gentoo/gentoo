@@ -19,8 +19,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="v4l test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-# Do not forget to check pitivi/check.py for dependencies
+# Do not forget to check pitivi/check.py for dependencies!!!
 # pycanberra, gnome-desktop, libav and libnotify are optional
+GST_VER="1.8.2"
+
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=dev-python/pycairo-1.10[${PYTHON_USEDEP}]
@@ -41,17 +43,18 @@ RDEPEND="${COMMON_DEPEND}
 	gnome-base/librsvg:=
 	gnome-base/gnome-desktop:3=[introspection]
 
-	>=media-libs/gstreamer-1.6.0:1.0[introspection]
-	>=media-libs/gstreamer-editing-services-1.6.0:1.0[introspection]
-	>=media-libs/gst-plugins-base-1.6.0:1.0
-	>=media-libs/gst-plugins-bad-1.6.1:1.0[gtk]
-	>=media-libs/gst-plugins-good-1.6.0:1.0
-	>=media-plugins/gst-plugins-libav-1.6.0:1.0
+	>=media-libs/gstreamer-${GST_VER}:1.0[introspection]
+	>=media-libs/gstreamer-editing-services-${GST_VER}:1.0[introspection]
+	>=media-libs/gst-plugins-base-${GST_VER}:1.0
+	>=media-libs/gst-plugins-bad-${GST_VER}:1.0[gtk]
+	>=media-libs/gst-plugins-good-${GST_VER}:1.0
+	>=media-plugins/gst-plugins-libav-${GST_VER}:1.0
+	>=media-plugins/gst-transcoder-1.8
 
 	x11-libs/libnotify[introspection]
-	>=x11-libs/gtk+-3.10.0:3[introspection]
+	>=x11-libs/gtk+-3.20.0:3[introspection]
 
-	v4l? ( >=media-plugins/gst-plugins-v4l2-1.4:1.0 )
+	v4l? ( >=media-plugins/gst-plugins-v4l2-${GST_VER}:1.0 )
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
@@ -62,11 +65,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "
-
-src_configure() {
-	gnome2_src_configure \
-		--disable-static
-}
 
 src_test() {
 	export PITIVI_TOP_LEVEL_DIR="${S}"

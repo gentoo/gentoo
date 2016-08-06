@@ -104,10 +104,6 @@ dev-java/oscache
 # month if nobody comes with the fixes.
 www-client/midori
 
-# Pacho Ramos <pacho@gentoo.org> (31 Jul 2016)
-# Non working ebuild, bug #588394
-=media-video/pitivi-0.96
-
 # Johannes Huber <johu@gentoo.org> (29 Jul 2016)
 # Masked for removal in 30 days. Dead by upstream, superseded by
 # kde-plasma/plasma-workspace-wallpapers. Last release with
