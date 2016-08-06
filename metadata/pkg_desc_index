@@ -7942,6 +7942,7 @@ dev-python/python-editor 0.4: Programmatically open an editor, capture the resul
 dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 0.8.1 0.8.6 0.8.8 0.9.1: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3: A python client for etcd
+dev-python/python-ethtool 0.11: Ethernet settings python bindings
 dev-python/python-evdev 0.4.3 0.4.5: Python library for evdev bindings
 dev-python/python-eventlib 0.2.1: Coroutine-based networking library
 dev-python/python-exconsole 0.1.5: Emergency/postmortem Python console
