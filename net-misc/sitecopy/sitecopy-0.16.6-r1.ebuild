@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,7 +49,7 @@ src_prepare() {
 	# Source package uses incorrect '/usr/doc' for the doc folder.  So use
 	# sed to correct this error.
 	sed -i -e "s:docdir \= .*:docdir \= \$\(prefix\)\/share/doc\/${PF}:" \
-        	Makefile.in || die "Documentation directory patching failed"
+		Makefile.in || die "Documentation directory patching failed"
 
 	# NOTE: eautoconf/eautomake is provided by 'inherit autotools'
 	# Need to recreate the source package provided configure script,

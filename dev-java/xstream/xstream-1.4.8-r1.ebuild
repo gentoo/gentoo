@@ -48,7 +48,7 @@ JAVA_GENTOO_CLASSPATH="
 	joda-time"
 
 # Two drivers for two very old implementations of StAX.
-# StAX has been last-rited from Gentoo as it is now part of the Java 6 JDK. 
+# StAX has been last-rited from Gentoo as it is now part of the Java 6 JDK.
 # See bug 561504. These drivers rely on ancient APIs that aren't maintained
 # upstream and may contain security holes.
 JAVA_RM_FILES=(

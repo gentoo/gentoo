@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -77,5 +77,4 @@ src_install() {
 
 	# remove /var/run data created by Makefile, handled by initd script
 	rm -r "${ED}"/var/run || die "could not remove /var/run/ directory"
-
 }
