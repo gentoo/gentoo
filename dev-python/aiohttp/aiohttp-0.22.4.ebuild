@@ -20,13 +20,15 @@ IUSE="doc examples test"
 
 CDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/multidict[${PYTHON_USEDEP}]
+	>=dev-python/multidict-1.1.0[${PYTHON_USEDEP}]
+	<dev-python/multidict-2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
+		dev-python/sphinxcontrib-asyncio[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-newsfeed[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-spelling[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
