@@ -448,7 +448,6 @@ sys-fabric/ofed ofed_drivers_ehca
 # Bugs: 483104, 483102
 =dev-ruby/rubygems-1.8* server
 <media-libs/libcaca-0.99_beta19 ruby
-=dev-vcs/subversion-1.7* ruby
 media-sound/podcatcher bittorrent
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
