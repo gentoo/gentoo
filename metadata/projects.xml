@@ -48,11 +48,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>hparker@gentoo.org</email>
-      <name>Homer Parker</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>nimiux@gentoo.org</email>
       <name>Chema Alonso</name>
       <role>Developer</role>
@@ -1069,11 +1064,6 @@
     <name>Project Enlightenment</name>
     <url>https://wiki.gentoo.org/wiki/Project:Enlightenment</url>
     <description>Project Enlightenment maintains efl packages including e17</description>
-    <member>
-      <email>pva@gentoo.org</email>
-      <name>Peter</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>tommy@gentoo.org</email>
       <name>Thomas Sachau</name>
