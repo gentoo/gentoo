@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,11 +12,9 @@ DESCRIPTION="Associate user-defined magic to variables from Perl"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ppc x86 ~ppc-aix ~x64-macos"
-IUSE="test"
+IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND}
-	test? ( dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage )"
+DEPEND="${RDEPEND}"
 
 SRC_TEST=do
