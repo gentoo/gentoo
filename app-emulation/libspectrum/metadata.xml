@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>neurogeek@gentoo.org</email>
-		<name>Jesus Rivero</name>
-		<description>Proxy Maintainer</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>jmfo1982@yahoo.es</email>
 		<name>José Manuel Ferrer Ortiz</name>
 		<description>Proxied Maintainer. Please CC on bugs.</description>
