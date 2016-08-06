@@ -10,5 +10,5 @@ RDEPEND=dev-perl/DBI || ( mail-filter/libmilter mail-mta/sendmail ) dev-perl/Swi
 SLOT=0
 SRC_URI=mirror://sourceforge/opendmarc/opendmarc-1.3.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
-_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
 _md5_=3806fe726f7d65c5d8476b2958601927

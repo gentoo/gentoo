@@ -10,5 +10,5 @@ RDEPEND=dev-libs/openssl:0= virtual/yacc
 SLOT=0
 SRC_URI=http://www.nlnetlabs.nl/downloads/nsd/nsd-3.2.22.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
-_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
 _md5_=cd823594800cae563aaab35eb7134ab0
