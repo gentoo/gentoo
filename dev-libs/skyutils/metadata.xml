@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>This library contains many useful functions such as
-chained lists, string manipulation, socket, and the HTTP protocol.</longdescription>
+  <!-- maintainer-needed -->
+  <longdescription>
+    This library contains many useful functions such as chained lists,
+    string manipulation, socket, and the HTTP protocol.
+  </longdescription>
+
+  <use>
+    <flag name="sslv3">
+      Require OpenSSL to be built with the old SSLv3 protocol enabled.
+    </flag>
+  </use>
 </pkgmetadata>
