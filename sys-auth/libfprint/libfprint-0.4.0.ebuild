@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="debug static-libs"
 
 RDEPEND="virtual/libusb:1
 	dev-libs/nss
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] x11-libs/gdk-pixbuf )"
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] x11-libs/gdk-pixbuf )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
