@@ -59,7 +59,7 @@ RDEPEND="
 	lzma? ( app-arch/xz-utils )
 	zlib? ( sys-libs/zlib:= )"
 DEPEND="${RDEPEND}
-	!media-gfx/graphicsmagick[imagemagick]
+	!media-gfx/graphicsmagick[imagemagick-compat]
 	virtual/pkgconfig
 	X? ( x11-proto/xextproto )"
 
