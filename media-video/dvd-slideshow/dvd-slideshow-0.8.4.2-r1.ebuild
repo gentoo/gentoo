@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="examples mp3 themes vorbis"
 
 RDEPEND="media-sound/sox
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	media-video/mjpegtools
 	>media-video/dvdauthor-0.6.11
 	virtual/cdrtools
