@@ -213,11 +213,6 @@ dev-perl/cache-mmap
 # Vulnerable due to wrong suid binary permissions (#345337)
 <app-cdr/xcdroast-0.98_alpha16-r2
 
-# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
-# No development since 2012, upstream repository removed in Jan 2016.
-# No longer builds. Removal in 30 days, #582448.
-dev-util/rootstrap
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
