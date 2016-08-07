@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="transcode vcd"
 
 DEPEND=">=media-libs/libdvdread-0.9.4"
 RDEPEND="${DEPEND}
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	media-video/mjpegtools
 	transcode? ( >=media-video/transcode-0.6.2 )
 	vcd? ( >=media-video/vcdimager-0.7.2 )"
