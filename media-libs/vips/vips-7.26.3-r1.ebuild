@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND=">=dev-libs/glib-2.6:2
 	>=x11-libs/pango-1.8
 	fftw? ( sci-libs/fftw:3.0 )
 	imagemagick? ( || ( >=media-gfx/imagemagick-5.0.0
-		media-gfx/graphicsmagick[imagemagick] ) )
+		media-gfx/graphicsmagick[imagemagick-compat] ) )
 	lcms? ( media-libs/lcms )
 	openexr? ( >=media-libs/openexr-1.2.2 )
 	exif? ( >=media-libs/libexif-0.6 )

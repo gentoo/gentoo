@@ -1,0 +1,21 @@
+Fix QA warnings caused by implicit declarations:
+
+* QA Notice: Package triggers severe warnings which indicate that it
+*            may exhibit random runtime failures.
+* im_vips2png.c:148:2: warning: implicit declaration of function 'memset' [-Wimplicit-function-declaration]
+* im_vips2png.c:148:2: warning: incompatible implicit declaration of built-in function 'memset'
+* im_vips2png.c:372:2: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+* im_vips2png.c:372:2: warning: incompatible implicit declaration of built-in function 'strcpy'
+* im_vips2png.c:462:2: warning: implicit declaration of function 'memcpy' [-Wimplicit-function-declaration]
+* im_vips2png.c:462:2: warning: incompatible implicit declaration of built-in function 'memcpy'
+
+--- vips-7.26.7/libvips/format/im_vips2png.c
++++ vips-7.26.7/libvips/format/im_vips2png.c
+@@ -78,6 +78,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include <vips/vips.h>
+ #include <vips/internal.h>
