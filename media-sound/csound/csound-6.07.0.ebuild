@@ -116,13 +116,6 @@ src_prepare() {
 src_configure() {
 	local myconf=()
 
-	if use csoundac ; then
-		myconf+=(
-			-DBUILD_CSOUND_AC_PYTHON_INTERFACE=$(usex python)
-			-DBUILD_CSOUND_AC_LUA_INTERFACE=$(usex lua)
-		)
-	fi
-
 	use python && myconf+=( "-DPYTHON_MODULE_INSTALL_DIR=$(python_get_sitedir)" )
 
 	[[ $(get_libdir) == "lib64" ]] && myconf+=( -DUSE_LIB64=ON )
@@ -132,6 +125,8 @@ src_configure() {
 		-DBUILD_CSBEATS=$(usex beats)
 		-DBUILD_CHUA_OPCODES=$(usex chua)
 		-DBUILD_CSOUND_AC=$(usex csoundac)
+		-DBUILD_CSOUND_AC_LUA_INTERFACE=$(usex csoundac $(usex lua))
+		-DBUILD_CSOUND_AC_PYTHON_INTERFACE=$(usex csoundac $(usex python))
 		-DBUILD_CXX_INTERFACE=$(usex cxx)
 		-DUSE_CURL=$(usex curl)
 		-DNEW_PARSER_DEBUG=$(usex debug)
