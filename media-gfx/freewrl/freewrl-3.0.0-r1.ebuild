@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	SRC_URI=
 	KEYWORDS=
 else
-	SRC_URI="mirror://sourceforge/freewrl/${P}.1.tar.gz"
+	SRC_URI="mirror://sourceforge/freewrl/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,14 +23,19 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="curl debug java libeai motif +nsplugin opencl osc +sox static-libs"
 
-COMMONDEPEND="x11-libs/libXau
-	x11-libs/libXdmcp
-	x11-libs/libXext
+COMMONDEPEND="x11-libs/libICE
+	x11-libs/libSM
 	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXmu
+	x11-libs/libXt
+	x11-libs/libXxf86vm
 	motif? ( x11-libs/motif:0= )
 	!motif? ( x11-libs/libXaw )
 	media-libs/mesa
 	virtual/opengl
+	media-libs/freealut
+	media-libs/openal
 	media-libs/libpng:0=
 	virtual/jpeg:0=
 	media-libs/imlib2
@@ -47,13 +52,12 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
 	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
+		media-gfx/graphicsmagick[imagemagick-compat] )
 	app-arch/unzip
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ld.gold.patch
 	epatch_user
 	eautoreconf
 }
@@ -69,6 +73,7 @@ src_configure() {
 		--with-x
 		--with-imageconvert=/usr/bin/convert
 		--with-unzip=/usr/bin/unzip
+		--disable-mozjs-17.0
 		${spidermonkeys[@]/#/ --disable-}"
 
 	if has_version "<dev-lang/spidermonkey-1.8.5" ; then

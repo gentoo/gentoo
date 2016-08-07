@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ COMMONDEPEND="x11-libs/libXau
 	motif? ( x11-libs/motif:0= )
 	!motif? ( x11-libs/libXaw )
 	media-libs/mesa
-	glew? ( media-libs/glew )
+	glew? ( media-libs/glew:0= )
 	virtual/opengl
 	media-libs/libpng:0=
 	virtual/jpeg:0=
@@ -39,7 +39,7 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
 	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
+		media-gfx/graphicsmagick[imagemagick-compat] )
 	app-arch/unzip
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"

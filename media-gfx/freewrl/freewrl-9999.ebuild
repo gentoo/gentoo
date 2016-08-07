@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,7 +52,7 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
 	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
+		media-gfx/graphicsmagick[imagemagick-compat] )
 	app-arch/unzip
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
