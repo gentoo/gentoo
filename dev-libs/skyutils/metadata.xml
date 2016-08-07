@@ -6,10 +6,4 @@
     This library contains many useful functions such as chained lists,
     string manipulation, socket, and the HTTP protocol.
   </longdescription>
-
-  <use>
-    <flag name="sslv3">
-      Require OpenSSL to be built with the old SSLv3 protocol enabled.
-    </flag>
-  </use>
 </pkgmetadata>

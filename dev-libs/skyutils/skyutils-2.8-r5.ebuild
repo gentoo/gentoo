@@ -13,13 +13,9 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="libressl ssl sslv3"
-REQUIRED_USE="sslv3? ( ssl? ( !libressl ) )"
+IUSE="ssl"
 
-DEPEND="ssl? (
-	!libressl? ( dev-libs/openssl:0=[sslv3?] )
-	libressl? ( dev-libs/libressl:0= )
-)"
+DEPEND="ssl? ( dev-libs/openssl:0=[sslv3] )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
