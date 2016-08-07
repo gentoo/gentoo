@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 inherit autotools eutils gnome2-utils
 
-DESCRIPTION="Tango icons for iPod Digital Audio Player (DAP) devices and the Dell Pocket DJ DAP"
+DESCRIPTION="Tango icons for iPod Digital Audio Players (DAP) and the Dell Pocket DJ DAP"
 HOMEPAGE="http://tango.freedesktop.org"
 SRC_URI="http://tango.freedesktop.org/releases/${P}.tar.gz"
 
@@ -18,7 +18,7 @@ RDEPEND=">=x11-themes/tango-icon-theme-0.8.90"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=gnome-base/librsvg-2.34
-	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick,png?] )
+	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick-compat,png?] )
 	>=x11-misc/icon-naming-utils-0.8.90"
 
 RESTRICT="binchecks strip"
