@@ -5,10 +5,6 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>wired@gentoo.org</email>
-		<name>Alex Alexander</name>
-	</maintainer>
 	<use>
 		<flag name="contrib">Install extra widgets, some for less common hardware, some contributed by Vicious users.</flag>
 	</use>
