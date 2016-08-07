@@ -958,7 +958,7 @@ app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implemen
 app-doc/casting-spels-emacs 19-r1: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.1: Clsync and libclsync API documentation
 app-doc/cppman 0.4.6 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
-app-doc/csound-manual 6.01 6.03 6.04 6.05 6.06: The Csound reference manual
+app-doc/csound-manual 6.06 6.07: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.10-r1 1.8.11-r2 9999: Documentation system for most programming languages
@@ -12272,7 +12272,7 @@ media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: verifies the integrity of PNG, JNG and MNG files with internal checksums
-media-gfx/pngcrush 1.7.81 1.7.85 1.7.86 1.7.92 1.8.0: Portable Network Graphics (PNG) optimizing utility
+media-gfx/pngcrush 1.8.0 1.8.2: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
 media-gfx/pngquant 1.8.2 1.8.3 2.0.2 2.1.0 2.2.0 2.3.3 2.5.2: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.3.0 1.4.0: A utility which reduces large palettes in PNG images
@@ -13115,7 +13115,7 @@ media-sound/codecgraph 20120114: Generates a graph based on the ALSA description
 media-sound/combine_wave 0.3.1-r1: sync up 2 audio ch. and/or combine 2 mono audio ch. into one stereo wave ch
 media-sound/coquillo 1.12: GUI audio tagger based on Qt4 and taglib
 media-sound/cplay 1.49: A Curses front-end for various audio players
-media-sound/csound 6.02 6.04 6.05.0 6.06.0: A sound design and signal processing system providing facilities for composition and performance
+media-sound/csound 6.06.0 6.07.0: A sound design and signal processing system providing facilities for composition and performance
 media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2: A live audio streamer
