@@ -1,9 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils toolchain-funcs readme.gentoo
+EAPI=6
+
+inherit toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="A new type of presentation program"
 HOMEPAGE="http://www.srcf.ucam.org/~dmi1000/multitalk/"
@@ -21,7 +22,7 @@ DEPEND=">=media-libs/libsdl-1.2.7
 
 RDEPEND="${DEPEND}
 	latex? ( virtual/latex-base
-		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )"
+		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] ) )"
 
 S="${WORKDIR}/${PN}"
 
@@ -30,6 +31,8 @@ DOC_CONTENTS="
 	See also /usr/share/doc/${PF}/${PN}.pdf."
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e "s:g++:$(tc-getCXX) ${CXXFLAGS}:" \
 		-e "s:-L\${HOME}/lib:${LDFLAGS}:" \
@@ -38,7 +41,7 @@ src_prepare() {
 
 src_install() {
 	dodir /usr/bin
-	emake SYSPREFIX="${D}usr" install
+	emake SYSPREFIX="${ED}usr" install
 
 	insinto /usr/share/${PN}/examples
 	doins examples/about.{graph,talk}
