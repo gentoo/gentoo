@@ -18545,7 +18545,7 @@ x11-plugins/gkrellm-radio 2.0.4: A minimalistic GKrellM2 plugin to control radio
 x11-plugins/gkrellm-trayicons 1.03: Configurable Tray Icons for GKrellM
 x11-plugins/gkrellm-vaiobright 2.5-r1: Superslim VAIO LCD Brightness Control Plugin for Gkrellm
 x11-plugins/gkrellm-volume 2.1.13 2.1.13-r2: A mixer control plugin for gkrellm
-x11-plugins/gkrellm-xkb 1.05: XKB keyboard switcher for gkrellm2
+x11-plugins/gkrellm-xkb 1.05 1.05-r1: XKB keyboard switcher for gkrellm2
 x11-plugins/gkrellmlaunch 0.5: A Program-Launcher Plugin for GKrellM2
 x11-plugins/gkrellmoon 0.6-r1: A GKrellM2 plugin of the famous wmMoonClock dockapp
 x11-plugins/gkrellmss 2.6 2.6-r1 2.6-r2: A plugin for GKrellM2 that has a VU meter and a sound chart
