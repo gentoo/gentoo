@@ -138,8 +138,8 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		tc-is-gcc && [[ $(gcc-major-version) -lt 4 ]] || \
+	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
+		[[ $(gcc-major-version) -lt 4 ]] || \
 				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
 			&& die "Sorry, but gcc-4.3 and earlier won't work for KDE SC 4.6 (see bug #354837)."
 	fi
