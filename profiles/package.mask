@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (7 Aug 2016)
+# Upstream dead, depends on old gstreamer, old webkit, many unresolved bug
+# reports... Removal in a month (#581052)
+media-video/miro
+
 # Michał Górny <mgorny@gentoo.org> (7 Aug 2016)
 # Seems to cause major issues wrt Xfce4 session handling.
 # Masked for more restrictive testing.
