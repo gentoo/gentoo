@@ -223,12 +223,6 @@ dev-util/rootstrap
 # Removal in 30 days, #548866.
 dev-python/charade
 
-# Alexey Korepanov <kaikaikai@yandex.ru> (5 Jul 2016)
-# net-p2p/syncthing-relaysrv has been merged into net-p2p/syncthing
-# both upstream and in Gentoo.
-# Removal in 30 days.
-net-p2p/syncthing-relaysrv
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
