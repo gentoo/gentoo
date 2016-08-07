@@ -13,11 +13,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug l10n_cs l10n_de l10n_es l10n_fr l10n_hu l10n_it l10n_pl l10n_pt l10n_ru l10n_tr"
+IUSE="debug l10n_cs l10n_de l10n_es l10n_fr l10n_hu l10n_it l10n_ja l10n_pl l10n_pt l10n_ru l10n_tr"
 
 # FIXME: graphicsmagick dependency does not work properly, failures when compiling
 #	|| ( media-gfx/imagemagick[cxx] media-gfx/graphicsmagick[cxx,imagemagick-compat] )
 RDEPEND="
+	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	media-gfx/imagemagick[cxx]
 "
