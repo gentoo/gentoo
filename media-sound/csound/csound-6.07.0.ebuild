@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib java-pkg-opt-2 cmake-utils toolchain-funcs versionator python-single-r1
 
@@ -16,18 +16,27 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+alsa beats chua csoundac curl +cxx debug double-precision dssi examples
 fltk +fluidsynth +image jack java keyboard linear lua luajit nls osc openmp
 portaudio portmidi pulseaudio python samples score static-libs stk tcl test
-+threads +utils vim-syntax"
++threads +utils vim-syntax websocket"
 
 LANGS=" de en_US es_CO fr it ro ru"
 IUSE+="${LANGS// / linguas_}"
 
+REQUIRED_USE="
+	csoundac? ( || ( lua python ) )
+	java? ( cxx )
+	linear? ( double-precision )
+	lua? ( cxx )
+	python? ( cxx )
+"
+
 RDEPEND="
 	>=media-libs/libsndfile-1.0.16
+	media-libs/libsamplerate
 	alsa? ( media-libs/alsa-lib )
 	csoundac? (
 		x11-libs/fltk:1[threads?]
 		dev-cpp/eigen:3
-		dev-libs/boost
+		dev-libs/boost:=
 	)
 	curl? ( net-misc/curl )
 	dssi? (
@@ -56,6 +65,7 @@ RDEPEND="
 		>=dev-lang/tk-8.5:0=
 	)
 	utils? ( !media-sound/snd )
+	websocket? ( net-libs/libwebsockets )
 "
 DEPEND="${RDEPEND}
 	sys-devel/flex
@@ -67,13 +77,6 @@ DEPEND="${RDEPEND}
 		dev-util/cunit
 		${PYTHON_DEPS}
 	)
-"
-REQUIRED_USE="
-	csoundac? ( || ( lua python ) )
-	java? ( cxx )
-	linear? ( double-precision )
-	lua? ( cxx )
-	python? ( cxx )
 "
 
 # requires specific alsa settings
@@ -92,76 +95,78 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/csound-6.05-python.patch
-
-	# bug #566064
-	epatch "${FILESDIR}"/csound-6.05-underlinking.patch
+	local PATCHES=(
+		"${FILESDIR}"/csound-6.05-python.patch
+		"${FILESDIR}"/${P}-fltk-headers.patch
+	)
 
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
 		-i CMakeLists.txt || die
-
-	if use python ; then
-		sed -e 's#${REPLACE_ME}#'$(python_get_sitedir)'#' \
-			-i CMakeLists.txt || die
-	fi
 
 	for lang in ${LANGS} ; do
 		if ! use linguas_${lang} ; then
 			sed -i "/compile_po(${lang}/d" po/CMakeLists.txt || die
 		fi
 	done
+
+	default
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
 	if use csoundac ; then
-		myconf+=" -DBUILD_CSOUND_AC_PYTHON_INTERFACE=$(usex python ON OFF)"
-		myconf+=" -DBUILD_CSOUND_AC_LUA_INTERFACE=$(usex lua ON OFF)"
+		myconf+=(
+			-DBUILD_CSOUND_AC_PYTHON_INTERFACE=$(usex python)
+			-DBUILD_CSOUND_AC_LUA_INTERFACE=$(usex lua)
+		)
 	fi
 
-	[[ $(get_libdir) == "lib64" ]] && myconf+=" -DUSE_LIB64=ON"
+	use python && myconf+=( "-DPYTHON_MODULE_INSTALL_DIR=$(python_get_sitedir)" )
+
+	[[ $(get_libdir) == "lib64" ]] && myconf+=( -DUSE_LIB64=ON )
 
 	local mycmakeargs=(
-		$(cmake-utils_use_use alsa ALSA)
-		$(cmake-utils_use_build beats CSBEATS)
-		$(cmake-utils_use_build chua CHUA_OPCODES)
-		$(cmake-utils_use_build csoundac CSOUND_AC)
-		$(cmake-utils_use_build cxx CXX_INTERFACE)
-		$(cmake-utils_use_use curl CURL)
-		$(cmake-utils_use debug NEW_PARSER_DEBUG)
-		$(cmake-utils_use_use double-precision DOUBLE)
-		$(cmake-utils_use_build dssi DSSI_OPCODES)
-		$(cmake-utils_use_build fluidsynth FLUID_OPCODES)
-		$(cmake-utils_use_use fltk FLTK)
-		$(cmake-utils_use_build image IMAGE_OPCODES)
-		$(cmake-utils_use_use jack JACK)
-		$(cmake-utils_use_build jack JACK_OPCODES)
-		$(cmake-utils_use_build java JAVA_INTERFACE)
-		$(cmake-utils_use_build keyboard VIRTUAL_KEYBOARD)
-		$(cmake-utils_use_build linear LINEAR_ALGEBRA_OPCODES)
-		$(cmake-utils_use_build lua LUA_OPCODES)
-		$(cmake-utils_use_build lua LUA_INTERFACE)
-		$(cmake-utils_use_use nls GETTEXT)
-		$(cmake-utils_use_build osc OSC_OPCODES)
-		$(cmake-utils_use_use openmp OPEN_MP)
-		$(cmake-utils_use_use portaudio PORTAUDIO)
-		$(cmake-utils_use_use portmidi PORTMIDI)
-		$(cmake-utils_use_use pulseaudio PULSEAUDIO)
-		$(cmake-utils_use_build python PYTHON_OPCODES)
-		$(cmake-utils_use_build python PYTHON_INTERFACE)
-		$(cmake-utils_use score SCORE_PARSER)
-		$(cmake-utils_use_build static-libs STATIC_LIBRARY)
-		$(cmake-utils_use_build stk STK_OPCODES)
-		$(cmake-utils_use_build test TESTS)
-		$(cmake-utils_use_build test STATIC_LIBRARY)
-		$(cmake-utils_use_build tcl TCLCSOUND)
-		$(cmake-utils_use_build threads MULTI_CORE)
-		$(cmake-utils_use_build utils UTILITIES)
+		-DUSE_ALSA=$(usex alsa)
+		-DBUILD_CSBEATS=$(usex beats)
+		-DBUILD_CHUA_OPCODES=$(usex chua)
+		-DBUILD_CSOUND_AC=$(usex csoundac)
+		-DBUILD_CXX_INTERFACE=$(usex cxx)
+		-DUSE_CURL=$(usex curl)
+		-DNEW_PARSER_DEBUG=$(usex debug)
+		-DUSE_DOUBLE=$(usex double-precision)
+		-DBUILD_DSSI_OPCODES=$(usex dssi)
+		-DBUILD_FLUID_OPCODES=$(usex fluidsynth)
+		-DUSE_FLTK=$(usex fltk)
+		-DBUILD_IMAGE_OPCODES=$(usex image)
+		-DUSE_JACK=$(usex jack)
+		-DBUILD_JACK_OPCODES=$(usex jack)
+		-DBUILD_JAVA_INTERFACE=$(usex java)
+		-DBUILD_VIRTUAL_KEYBOARD=$(usex keyboard)
+		-DBUILD_LINEAR_ALGEBRA_OPCODES=$(usex linear)
+		-DBUILD_LUA_OPCODES=$(usex lua)
+		-DBUILD_LUA_INTERFACE=$(usex lua)
+		-DUSE_GETTEXT=$(usex nls)
+		-DBUILD_OSC_OPCODES=$(usex osc)
+		-DUSE_OPEN_MP=$(usex openmp)
+		-DUSE_PORTAUDIO=$(usex portaudio)
+		-DUSE_PORTMIDI=$(usex portmidi)
+		-DUSE_PULSEAUDIO=$(usex pulseaudio)
+		-DBUILD_PYTHON_OPCODES=$(usex python)
+		-DBUILD_PYTHON_INTERFACE=$(usex python)
+		-DSCORE_PARSER=$(usex score)
+		-DBUILD_STATIC_LIBRARY=$(usex static-libs)
+		-DBUILD_STK_OPCODES=$(usex stk)
+		-DBUILD_TESTS=$(usex test)
+		-DBUILD_STATIC_LIBRARY=$(usex test)
+		-DBUILD_TCLCSOUND=$(usex tcl)
+		-DBUILD_MULTI_CORE=$(usex threads)
+		-DBUILD_UTILITIES=$(usex utils)
+		-DBUILD_WEBSOCKET_OPCODE=$(usex websocket)
 		-DNEED_PORTTIME=OFF
 		-DBUILD_RELEASE=ON
-		${myconf}
+		"${myconf[@]}"
 	)
 
 	cmake-utils_src_configure

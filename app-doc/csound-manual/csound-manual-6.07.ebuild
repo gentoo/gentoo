@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_P=Csound${PV}
 
 DESCRIPTION="The Csound reference manual"
 HOMEPAGE="http://csounds.com/"
 SRC_URI="
-	mirror://sourceforge/csound/${MY_P}_manual_pdf.zip
-	l10n_fr? ( mirror://sourceforge/csound/${MY_P}_manual-fr_pdf.zip )
+	https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual_pdf.zip
+	l10n_fr? ( https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual-fr_pdf.zip )
 
 	html? (
-		mirror://sourceforge/csound/${MY_P}_manual_html.zip
-		l10n_fr? ( mirror://sourceforge/csound/${MY_P}_manual-fr_html.zip )
+		https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual_html.zip
+		l10n_fr? ( https://github.com/csound/csound/releases/download/${PV}.0/${MY_P}_manual-fr_html.zip )
 	)"
 
 LICENSE="FDL-1.2+"
@@ -52,13 +52,14 @@ src_install() {
 	dodoc *.pdf
 
 	if use html ; then
-		dohtml -r html-en/*
+		docinto html
+		dodoc -r html-en/*
 
 		local lang
 		for lang in ${LANGS} ; do
 			use l10n_${lang} || continue
 			docinto html-${lang}
-			dohtml -r html-${lang}/*
+			dodoc -r html-${lang}/*
 		done
 	fi
 }
