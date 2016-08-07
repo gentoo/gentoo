@@ -19,6 +19,8 @@ DEPEND="alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}_missing_include.patch" )
+
 # ENABLE_JACK does not support the current version of jack1
 # See https://github.com/andrewrk/libsoundio/issues/11
 multilib_src_configure() {
