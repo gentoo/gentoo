@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib user
+inherit user
 
 DESCRIPTION="Official plugins for Nagios"
 HOMEPAGE="http://nagios-plugins.org/"
@@ -50,10 +50,26 @@ RDEPEND="${DEPEND}
 # At least one test is interactive.
 RESTRICT="test"
 
+DOCS=(
+	ACKNOWLEDGEMENTS
+	AUTHORS
+	CODING
+	ChangeLog
+	FAQ
+	NEWS
+	README
+	REQUIREMENTS
+	SUPPORT
+	THANKS
+)
+
 src_prepare() {
+	default
+
 	# Fix the path to our perl interpreter
 	sed -i -e "1s:/usr/local/bin/perl:/usr/bin/perl:" \
-		"${S}"/plugins-scripts/*.pl || die
+		"${S}"/plugins-scripts/*.pl \
+		|| die 'failed to fix perl interpreter path'
 }
 
 src_configure() {
@@ -84,9 +100,6 @@ src_configure() {
 		--libexecdir="/usr/$(get_libdir)/nagios/plugins" \
 		--sysconfdir="/etc/nagios"
 }
-
-DOCS=( ACKNOWLEDGEMENTS AUTHORS CODING ChangeLog FAQ \
-		NEWS README REQUIREMENTS SUPPORT THANKS )
 
 pkg_preinst() {
 	enewgroup nagios
