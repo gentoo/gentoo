@@ -65,7 +65,7 @@ SWIG_DEPEND=">=dev-lang/swig-2.0"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	compressed-lumas? ( || ( media-gfx/imagemagick[png]
-			media-gfx/graphicsmagick[imagemagick,png] ) )
+			media-gfx/graphicsmagick[imagemagick-compat,png] ) )
 	lua? ( ${SWIG_DEPEND} virtual/pkgconfig )
 	python? ( ${SWIG_DEPEND} ${PYTHON_DEPS} )
 	ruby? ( ${SWIG_DEPEND} )"
