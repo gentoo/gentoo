@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>sdamashek@gentoo.org</email>
-		<name>Samuel Damashek</name>
-	</maintainer>
 	<longdescription lang="en">
 		This is a client for the Dogecoin cryptocurrency.
 		Dogecoin is a scrypt-based alternative to Bitcoin.
