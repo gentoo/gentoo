@@ -213,12 +213,6 @@ dev-perl/cache-mmap
 # Vulnerable due to wrong suid binary permissions (#345337)
 <app-cdr/xcdroast-0.98_alpha16-r2
 
-# Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
-# This slot has unfixed security issues. With dev-ruby/rails:3.2
-# masked there are no reverse dependencies anymore.
-# Removal in 30 days, #568978
-dev-ruby/mail:2.5
-
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
 www-apps/egroupware
