@@ -17345,7 +17345,7 @@ sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated t
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpudyn 1.0.1 1.0.1-r2: A daemon to control laptop power consumption via cpufreq and disk standby
-sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0: Shows and sets processor power related values
+sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0 4.7.0: Shows and sets processor power related values
 sys-power/cpuspeedy 0.4.1: A simple and easy to use program to control the speed and the voltage of CPUs on the fly
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20130117-r1 20140828 20150717: Intel ACPI Source Language (ASL) compiler
