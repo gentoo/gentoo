@@ -1988,7 +1988,7 @@ app-mobilephone/ringtonetools 2.26: program for creating ringtones and logos for
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/sms 2.0.3 2.1.0: Command line program for sending SMS to Polish GSM mobile phone users
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
-app-mobilephone/smssend 3.4 3.4-r1: Universal SMS sender
+app-mobilephone/smssend 3.4 3.4-r2: Universal SMS sender
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
@@ -4916,7 +4916,7 @@ dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports readin
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0: skarnet.org general-purpose libraries
-dev-libs/skyutils 2.8-r2 2.8-r4: Library of assorted C utility functions
+dev-libs/skyutils 2.8-r2 2.8-r5: Library of assorted C utility functions
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20091122 0.20140325: This contains all you need to include the snowball stemming algorithms into a C project of your own
