@@ -12,15 +12,15 @@ HOMEPAGE="http://www.graphicsmagick.org/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
+IUSE="bzip2 cxx debug fpx imagemagick-compat jbig jpeg jpeg2k lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg threads tiff truetype webp wmf X zlib"
 
 RDEPEND="dev-libs/libltdl:0
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
-	imagemagick? ( !media-gfx/imagemagick )
+	imagemagick-compat? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
@@ -76,7 +76,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable debug prof) \
 		$(use_enable debug gcov) \
-		$(use_enable imagemagick magick-compat) \
+		$(use_enable imagemagick-compat magick-compat) \
 		$(use_with threads) \
 		$(use_with modules) \
 		--with-quantum-depth=${depth} \
