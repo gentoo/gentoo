@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ DEPEND=">=media-video/vdr-1.6
 		sys-libs/zlib
 		media-libs/libsndfile
 		vorbis? ( media-libs/libvorbis )
-		imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+		imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] ) )
 		!imagemagick? ( media-libs/imlib2 )"
 
 src_prepare() {
