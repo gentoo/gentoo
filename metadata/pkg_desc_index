@@ -2520,7 +2520,7 @@ app-vim/cctree 1.61: vim plugin: Cscope based source-code browser and code flow 
 app-vim/cecutil 17: vim plugin: library used by many of Charles Campbell's plugins
 app-vim/cfengine-syntax 20141019: vim plugin: Cfengine 3 configuration files syntax
 app-vim/checkattach 0.17: vim plugin: check for attachments when writing mails with mutt
-app-vim/closetag 0.9.1: vim plugin: close HTML/XML tags quickly
+app-vim/closetag 0.9.1-r1: vim plugin: close HTML/XML tags quickly
 app-vim/cmdalias 3.0: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
 app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
