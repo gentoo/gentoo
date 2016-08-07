@@ -5,10 +5,5 @@
           <email>jdhore@gentoo.org</email>
           <name>Jeff Horelick</name>
   </maintainer>
-  <maintainer type="person">
-    <email>binki@gentoo.org</email>
-    <name>Nathan Phillip Brink</name>
-    <description>Co-maintainer</description>
-  </maintainer>
   <longdescription/>
 </pkgmetadata>
