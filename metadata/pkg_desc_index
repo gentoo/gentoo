@@ -7380,7 +7380,7 @@ dev-python/iso8601 0.1.10 0.1.11: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.5.0 0.5.1 0.5.4: ISO 8601 date/time/duration parser and formater
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
 dev-python/jaraco-classes 1.3 1.4: Classes used by other projects by developer jaraco
-dev-python/jaraco-collections 1.3.2 1.4: Models and classes to supplement the stdlib collections module
+dev-python/jaraco-collections 1.4 1.4.1: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.9 1.11: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 1.7.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-logging 1.3.1 1.5: Additional facilities to supplement Python's stdlib logging module
@@ -11034,7 +11034,7 @@ gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types d
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
-gnome-extra/chrome-gnome-shell 6: Provides integration with GNOME Shell extensions repository for Chrome browser
+gnome-extra/chrome-gnome-shell 6.2: Provides integration with GNOME Shell extensions repository for Chrome browser
 gnome-extra/cinnamon 2.8.8 3.0.6: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.8.1 3.0.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.8.1 3.0.2: A collection of libraries and utilites used by Cinnamon
@@ -14855,7 +14855,7 @@ net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git exten
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
-net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 1.2.0_rc14 9999: A GTK+ RDP, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 1.2.0_rc14 1.2.0_rc14-r1 9999: A GTK+ RDP, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync

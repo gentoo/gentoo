@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.31.18:2 >=net-libs/libvncserver-0.9.8.2 x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) freerdp? ( >=net-misc/freerdp-2 ) gnome-keyring? ( app-crypt/libsecret ) ssh? ( net-libs/libssh[sftp] ) telepathy? ( net-libs/telepathy-glib ) vte? ( x11-libs/vte:2.91 ) webkit? ( net-libs/webkit-gtk:4 ) zeroconf? ( net-dns/avahi[gtk3] ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 >=sys-apps/sed-4
+DESCRIPTION=A GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=6
+HOMEPAGE=http://remmina.org/ https://github.com/FreeRDP/Remmina
+IUSE=ayatana crypt debug freerdp gnome-keyring nls ssh telepathy vte webkit zeroconf
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.31.18:2 >=net-libs/libvncserver-0.9.8.2 x11-libs/libxkbfile x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 virtual/freedesktop-icon-theme ayatana? ( dev-libs/libappindicator:3 ) crypt? ( dev-libs/libgcrypt:0= ) freerdp? ( >=net-misc/freerdp-2 ) gnome-keyring? ( app-crypt/libsecret ) ssh? ( net-libs/libssh[sftp] ) telepathy? ( net-libs/telepathy-glib ) vte? ( x11-libs/vte:2.91 ) webkit? ( net-libs/webkit-gtk:4 ) zeroconf? ( net-dns/avahi[gtk3] ) x11-base/xorg-server[kdrive] !net-misc/remmina-plugins
+REQUIRED_USE=ssh? ( vte )
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/Remmina/archive/v1.2.0-rcgit.14.tar.gz -> remmina-1.2.0_rc14.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=a0164cc839f4a3181ad05f5e7ad70b5f
