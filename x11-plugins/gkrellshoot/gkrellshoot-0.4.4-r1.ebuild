@@ -1,8 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
 inherit gkrellm-plugin
 
 S=${WORKDIR}/${P/s/S}
@@ -15,4 +16,4 @@ SLOT="2"
 KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE=""
 
-RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )"
+RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )"
