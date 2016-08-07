@@ -1,0 +1,10 @@
+--- csound-6.07.0/InOut/CMakeLists.txt
++++ csound-6.07.0/InOut/CMakeLists.txt
+@@ -213,6 +213,7 @@
+     #add_dependency_to_framework(widgets ${FLTK_BASE_LIBRARY})
+     #add_dependency_to_framework(widgets ${FLTK_FORMS_LIBRARY})
+     #add_dependency_to_framework(widgets ${FLTK_IMAGES_LIBRARY})
++    include_directories(${FLTK_INCLUDE_DIR})
+ endif()
+ 
+ check_deps(BUILD_VIRTUAL_KEYBOARD FLTK_FOUND)
