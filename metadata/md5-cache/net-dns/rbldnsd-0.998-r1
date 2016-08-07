@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst setup test
+DEPEND=zlib? ( sys-libs/zlib ) test? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-python/pydns:2[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
+DESCRIPTION=DNS server designed to serve blacklist zones
+EAPI=6
+HOMEPAGE=http://www.corpit.ru/mjt/rbldnsd.html
+IUSE=ipv6 test zlib python_targets_python2_7
+KEYWORDS=~amd64 ~hppa ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=zlib? ( sys-libs/zlib )
+REQUIRED_USE=test? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://www.corpit.ru/mjt/rbldnsd/rbldnsd-0.998.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	user	c66cbe7502fe1161066eb947d15b79f6
+_md5_=a4b6b20a9b239f664655497497b1b63f
