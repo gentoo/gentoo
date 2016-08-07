@@ -5,10 +5,6 @@
     <email>jdhore@gentoo.org</email>
     <name>Jeff Horelick</name>
   </maintainer>
-  <maintainer type="person">
-    <email>binki@gentoo.org</email>
-    <name>Nathan Phillip Brink</name>
-  </maintainer>
   <use>
     <flag name="largenet">Enable support/tweaks for large networks</flag>
   </use>

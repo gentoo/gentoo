@@ -68,7 +68,7 @@ python_compile_all() {
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
 	# and don't work with ${BUILD_DIR}/lib.
-	PYTHONPATH=. "${PYTHON}" tests/runtests.py --settings=test_sqlite -v2 \
+	PYTHONPATH=. "${PYTHON}" tests/runtests.py --settings=test_sqlite -v2 --parallel 1 \
 		|| die "Tests fail with ${EPYTHON}"
 }
 
