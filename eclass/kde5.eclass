@@ -109,13 +109,6 @@ if [[ ${KDEBASE} = kdel10n ]]; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: KDE_PUNT_BOGUS_DEPS
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# For any other value, do black magic to make hardcoded-but-optional dependencies
-# optional again. An upstream solution is preferable and this is a last resort.
-: ${KDE_PUNT_BOGUS_DEPS:=false}
-
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
 # If set to "none", do nothing.
@@ -488,18 +481,6 @@ EOF
 	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
 		cmake_comment_add_subdirectory tests
 	fi
-
-	case ${KDE_PUNT_BOGUS_DEPS} in
-		false)	;;
-		*)
-			if ! use_if_iuse test ; then
-				punt_bogus_dep Qt5 Test
-			fi
-			if ! use_if_iuse handbook ; then
-				punt_bogus_dep KF5 DocTools
-			fi
-			;;
-	esac
 
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
