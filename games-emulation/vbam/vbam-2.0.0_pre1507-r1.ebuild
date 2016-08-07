@@ -44,7 +44,7 @@ RDEPEND=">=media-libs/libpng-1.4:0=
 DEPEND="${RDEPEND}
 	wxwidgets? ( || (
 		media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] ) )
+		media-gfx/graphicsmagick[imagemagick-compat] ) )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig"
