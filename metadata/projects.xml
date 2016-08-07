@@ -2364,11 +2364,6 @@
     <description>The Gentoo Overlays team is responsible for the administration of the overlays and the *.overlays.gentoo.org websites.</description>
     <subproject ref="repo-qa-checks@gentoo.org"/>
     <member>
-      <email>dastergon@gentoo.org</email>
-      <name>Pavlos Ratis</name>
-      <role>Git</role>
-    </member>
-    <member>
       <email>djc@gentoo.org</email>
       <name>Dirkjan Ochtman</name>
     </member>
