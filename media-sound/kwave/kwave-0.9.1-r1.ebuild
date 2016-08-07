@@ -60,7 +60,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep poxml)
 	$(add_qt_dep qtconcurrent)
-	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick,png,svg] )
+	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick-compat,png,svg] )
 	sys-devel/gettext
 "
 RDEPEND="${COMMON_DEPEND}

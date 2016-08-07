@@ -43,7 +43,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	kde-apps/poxml:*
-	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick,png,svg] )
+	|| ( media-gfx/imagemagick[png,svg] media-gfx/graphicsmagick[imagemagick-compat,png,svg] )
 "
 
 PATCHES=( "${FILESDIR}/${P}-fr.patch" )
