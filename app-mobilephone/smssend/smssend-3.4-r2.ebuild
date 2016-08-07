@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND=">=dev-libs/skyutils-2.7[sslv3]"
+# -r5 of skyutils fixes a runtime crash, bug 588326.
+# Without SSL support in skyutils, some providers fail.
+DEPEND=">=dev-libs/skyutils-2.8-r5[ssl]"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-verizon.diff" )
