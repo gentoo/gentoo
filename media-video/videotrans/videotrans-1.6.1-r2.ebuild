@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="
 	media-video/mplayer
 	media-video/mjpegtools[png]
 	media-video/dvdauthor
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	libav? ( media-video/libav )
 	!libav? ( media-video/ffmpeg:0 )
 "
