@@ -20,7 +20,7 @@ RDEPEND="
 	>=app-shells/bash-4
 	|| ( app-text/recode ( dev-lang/perl dev-perl/HTML-Parser ) )
 	dev-vcs/git
-	|| ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick,tiff] )
+	|| ( media-gfx/imagemagick[tiff] media-gfx/graphicsmagick[imagemagick-compat,tiff] )
 	net-misc/curl
 	sys-apps/util-linux
 	javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) )
