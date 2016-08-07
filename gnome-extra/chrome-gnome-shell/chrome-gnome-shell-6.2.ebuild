@@ -20,10 +20,12 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	gnome-base/gnome-shell
 "
 
 src_configure() {
+	python_setup
 	python_fix_shebang ./connector
 
 	local mycmakeargs=( -DBUILD_EXTENSION=OFF )

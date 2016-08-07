@@ -580,6 +580,8 @@ dev-ruby/weakling
 
 # Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
 # Masked slotted lua for testing
+# William Hubbs <williamh@gentoo.org> (07 Aug 2016)
+# Taking this mask since Mabi is retired
 app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r2
 =dev-lang/lua-5.1.5-r100
