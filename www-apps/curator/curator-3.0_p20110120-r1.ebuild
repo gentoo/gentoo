@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/pillow
-	|| ( >=media-gfx/imagemagick-5.4.9 media-gfx/graphicsmagick[imagemagick] )"
+	|| ( >=media-gfx/imagemagick-5.4.9 media-gfx/graphicsmagick[imagemagick-compat] )"
 
 S="${WORKDIR}/curator-3.0_pf078f1686a78"
 
