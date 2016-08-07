@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim"
 HOMEPAGE="https://savannah.nongnu.org/projects/fbi-improved"
@@ -22,7 +20,7 @@ RDEPEND="media-fonts/terminus-font
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib )
 	graphicsmagick? ( media-gfx/graphicsmagick )
-	imagemagick? ( || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick ) )
+	imagemagick? ( || ( media-gfx/graphicsmagick[imagemagick-compat] media-gfx/imagemagick ) )
 	jpeg? ( virtual/jpeg:0 )
 	pdf? ( >=app-text/poppler-0.31 )
 	png? ( media-libs/libpng:0 )
@@ -38,9 +36,9 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P/_rc/-rc}
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-poppler031.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-poppler031.patch"
+)
 
 src_configure() {
 	econf \
@@ -87,8 +85,4 @@ src_configure() {
 
 src_compile() {
 	emake -j1
-}
-
-src_install() {
-	emake DESTDIR="${D}" docdir=/usr/share/doc/${PF} install
 }
