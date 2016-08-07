@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,11 +10,11 @@ inherit eutils distutils-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
 HOMEPAGE="http://www.secdev.org/projects/scapy/"
-SRC_URI="http://www.secdev.org/projects/scapy/files/${P}.tar.gz"
+SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gnuplot pyx crypt graphviz imagemagick visual tcpreplay"
 
 RDEPEND="
@@ -26,13 +26,9 @@ RDEPEND="
 	imagemagick? (
 		|| (
 			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
+			media-gfx/graphicsmagick[imagemagick-compat]
 		)
 	)
 	visual? ( dev-python/visual )
 	tcpreplay? ( net-analyzer/tcpreplay )
 "
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix-sendpfast.patch
-}
