@@ -62,7 +62,7 @@ COMMONDEPEND="
 	upnp? ( media-libs/herqq )
 	videoslideshow?	(
 		>=media-libs/qt-gstreamer-0.9.0[qt4(+)]
-		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+		|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	)
 	vkontakte? ( >=net-libs/libkvkontakte-4.12.0:4 )
 "
@@ -76,7 +76,7 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	cdr? ( app-cdr/k3b )
 	expoblending? ( media-gfx/hugin )
-	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] ) )
 	panorama? (
 		media-gfx/enblend
 		>=media-gfx/hugin-2011.0.0

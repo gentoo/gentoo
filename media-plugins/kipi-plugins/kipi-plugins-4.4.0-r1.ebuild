@@ -40,8 +40,8 @@ COMMONDEPEND="
 	dev-libs/qjson
 	gpssync?	( >=kde-apps/libkgeomap-4.2.0:4 )
 	media-libs/libpng:0=
-	media-libs/tiff
-	virtual/jpeg
+	media-libs/tiff:0
+	virtual/jpeg:0
 	calendar?	( $(add_kdeapps_dep kdepimlibs) )
 	crypt?		( app-crypt/qca:2[qt4(+)] )
 	ipod?		(
@@ -57,7 +57,7 @@ COMMONDEPEND="
 	upnp?		( media-libs/herqq )
 	videoslideshow?	(
 			  media-libs/qt-gstreamer[qt4(+)]
-			  || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+			  || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 			)
 	vkontakte?	( net-libs/libkvkontakte )
 "
@@ -71,7 +71,7 @@ DEPEND="${COMMONDEPEND}
 RDEPEND="${COMMONDEPEND}
 	cdr? 		( app-cdr/k3b )
 	expoblending? 	( media-gfx/hugin )
-	imagemagick? 	( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+	imagemagick? 	( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] ) )
 	panorama?	(
 			  media-gfx/enblend
 			  >=media-gfx/hugin-2011.0.0
