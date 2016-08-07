@@ -1968,7 +1968,6 @@ app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX440
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
 app-mobilephone/dfu-util 0.7 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
-app-mobilephone/freesmee 0.83 9999: Tool for sending SMS and sending/receiving Freesmee-Message-Service
 app-mobilephone/gammu 1.33.0 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
 app-mobilephone/gnocky 0.0.7: GTK-2 version of gnokii
@@ -4838,7 +4837,7 @@ dev-libs/log4sh 1.2.5-r1 1.4.2: A flexible logging framework for shell scripts
 dev-libs/log4shib 1.0.1 1.0.4: Internet2 version for OpenSAML of log4cpp logging framework
 dev-libs/ltxml 1.2.5 1.2.9: Integrated set of XML tools and a developers tool-kit with C API
 dev-libs/luise-bin 0.1.1: Programming interface for the Wallbraun LCD-USB-Interface
-dev-libs/lzo 2.08 2.08-r1 2.09: An extremely fast compression and decompression library
+dev-libs/lzo 2.08 2.09: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.5.2 1.5.5 1.6.2 1.6.3 1.6.3-r1 1.6.4: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/mapm 4.9.5: Mike's Arbitrary Precision Math Library
@@ -7019,7 +7018,6 @@ dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chaco 4.5.0: Enthought Tool Suite: Interactive plotting toolkit
 dev-python/chameleon 2.16 2.19 2.20 2.22 2.24: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.1.0 14.3.0 14.3.0-r1: Python attributes without the boilerplate
-dev-python/charade 1.0.3: Universal encoding detector for python 2 and 3 (fork of chardet)
 dev-python/chardet 2.2.1 2.3.0: Universal encoding detector
 dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
@@ -9910,7 +9908,6 @@ dev-util/rebar 2.5.1 2.6.0 2.6.1: A sophisticated build-tool for Erlang projects
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
-dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
 dev-util/rosdep 0.11.4 0.11.5 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.6 0.7.7 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 0.1.12 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
@@ -15080,7 +15077,6 @@ net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syncthing 0.13.9 0.13.10 0.14.0-r1 0.14.3: Open Source Continuous File Synchronization
-net-p2p/syncthing-relaysrv 0.12.18: Syncthing relay server
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1 2.92: A Fast, Easy and Free BitTorrent client
