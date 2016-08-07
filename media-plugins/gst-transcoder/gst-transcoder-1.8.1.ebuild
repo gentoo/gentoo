@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+inherit xdg
 
 DESCRIPTION="GStreamer Transcoding API"
 HOMEPAGE="https://github.com/pitivi/gst-transcoder"

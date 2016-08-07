@@ -59,7 +59,6 @@ COMMON_DEPEND="
 		xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	)
 "
-# gtk-doc is also needed when running eautoreconf, bug #589192
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.1.2
@@ -67,7 +66,6 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/gobject-introspection-common
 	>=dev-util/gdbus-codegen-2.38.2
 	>=dev-util/gtk-doc-am-1.20
-	>=dev-util/gtk-doc-1.20
 	>=sys-devel/gettext-0.18.3[${MULTILIB_USEDEP}]
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	X? (
