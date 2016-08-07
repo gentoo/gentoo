@@ -2021,7 +2021,7 @@ app-office/impressive 0.10.5 0.11.0b-r1: Stylish way of giving presentations wit
 app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1-r1 3.1.1: A double-entry accounting system with a command-line reporting interface
-app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
+app-office/libalkimia 4.3.2-r1 5.0.0: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 5.1.4.2 5.1.9999 5.2.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.1.4.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
