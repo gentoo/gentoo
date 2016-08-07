@@ -219,11 +219,6 @@ dev-perl/cache-mmap
 # Removal in 30 days, #568978
 dev-ruby/mail:2.5
 
-# Hans de Graaff <graaff@gentoo.org> (1 Jul 2016)
-# With the release of Rails 5.0 versions older than 4.2 are no longer
-# supported. Mask Rails 3.2 and related packages for removal in 30 days.
-dev-ruby/activesupport:3.2
-
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
 www-apps/egroupware
