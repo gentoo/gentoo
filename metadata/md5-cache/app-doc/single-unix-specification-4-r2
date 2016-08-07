@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=The Single UNIX Specification, Version 4, 2013 Edition
+EAPI=6
+HOMEPAGE=https://www2.opengroup.org/ogsys/catalog/T101
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos
+LICENSE=sus4-copyright
+SLOT=4
+SRC_URI=http://pubs.opengroup.org/onlinepubs/9699919799/download/susv4tc1.tgz
+_eclass_exported_funcs=src_install:-
+_md5_=cde41ea0209a06b9a0a4470ae2ff7ddc
