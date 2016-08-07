@@ -521,11 +521,6 @@
       <name>Bernard Cafarelli</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>wired@gentoo.org</email>
-      <name>Alex Alexander</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>cjk@gentoo.org</email>
@@ -3154,11 +3149,6 @@
       <role>Lead</role>
     </member>
     <member>
-      <email>wired@gentoo.org</email>
-      <name>Alex Alexander</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Developer</role>
@@ -3213,11 +3203,6 @@
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>wired@gentoo.org</email>
-      <name>Alex Alexander</name>
       <role>Developer</role>
     </member>
     <member>
@@ -3588,11 +3573,6 @@
     <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>vostorga@gentoo.org</email>
-      <name>Victor Ostorga</name>
       <role>Member</role>
     </member>
   </project>

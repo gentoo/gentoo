@@ -7094,7 +7094,7 @@ dev-python/discogs-client 2.0.2 2.2.0 2.2.1: Official Python API client for Disc
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.1-r1 0.2.2: Distribution utilities
 dev-python/dj-database-url 0.3.0 0.4.0: Use Database URLs in your Django Application
-dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.9.2 1.9.5 9999: High-level Python web framework
+dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.8.14 1.9.9 1.10 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6 1.2.7: Django LDAP authentication backend
