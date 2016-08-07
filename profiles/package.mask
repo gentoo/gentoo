@@ -213,27 +213,6 @@ dev-perl/cache-mmap
 # Vulnerable due to wrong suid binary permissions (#345337)
 <app-cdr/xcdroast-0.98_alpha16-r2
 
-# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
-# No development since 2012, upstream repository removed in Jan 2016.
-# No longer builds. Removal in 30 days, #582448.
-dev-util/rootstrap
-
-# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
-# Deprecated upstream. Replaced by dev-python/chardet.
-# Removal in 30 days, #548866.
-dev-python/charade
-
-# Alexey Korepanov <kaikaikai@yandex.ru> (5 Jul 2016)
-# net-p2p/syncthing-relaysrv has been merged into net-p2p/syncthing
-# both upstream and in Gentoo.
-# Removal in 30 days.
-net-p2p/syncthing-relaysrv
-
-# Agostino Sarubbo <ago@gentoo.org> (5 Jul 2016)
-# Dead upstream and fails to compile, wrt bug #587766
-# Masked for removal in 30 days.
-app-mobilephone/freesmee
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
