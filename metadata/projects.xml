@@ -311,10 +311,6 @@
       <role>LILO</role>
     </member>
     <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
-    </member>
-    <member>
       <email>hwoarang@gentoo.org</email>
       <name>Markos Chandras</name>
     </member>
@@ -748,10 +744,6 @@
       <name>Alon Bar-Lev</name>
     </member>
     <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
-    </member>
-    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
       <role>GnuPG, libgcrypt and related packages</role>
@@ -828,10 +820,6 @@
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
-    </member>
-    <member>
-      <email>pacho@gentoo.org</email>
-      <name>Pacho Ramos</name>
     </member>
     <member>
       <email>ulm@gentoo.org</email>
@@ -2421,11 +2409,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:PAM</url>
     <description>Pluggable Authentication Method is the main authentication method supported by Gentoo; the PAM maintenance project maintain the related software.</description>
     <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Member</role>
@@ -3056,11 +3039,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>tommy@gentoo.org</email>
-      <name>Thomas Sachau</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>Member</role>
@@ -3335,11 +3313,6 @@
     <member>
       <email>a3li@gentoo.org</email>
       <name>Alex Legler</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
       <role>Developer</role>
     </member>
     <member is-lead="1">
@@ -3765,10 +3738,6 @@
       <name>Tiziano Müller</name>
     </member>
     <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
-    </member>
-    <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
     </member>
@@ -4053,10 +4022,6 @@
     <member>
       <email>dev-zero@gentoo.org</email>
       <name>Tiziano Müller</name>
-    </member>
-    <member>
-      <email>flameeyes@gentoo.org</email>
-      <name>Diego Elio Pettenò</name>
     </member>
     <member>
       <email>lu_zero@gentoo.org</email>
