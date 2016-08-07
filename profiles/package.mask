@@ -218,11 +218,6 @@ dev-perl/cache-mmap
 # No longer builds. Removal in 30 days, #582448.
 dev-util/rootstrap
 
-# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
-# Deprecated upstream. Replaced by dev-python/chardet.
-# Removal in 30 days, #548866.
-dev-python/charade
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
