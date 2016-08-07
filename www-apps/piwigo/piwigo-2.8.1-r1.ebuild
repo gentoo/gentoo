@@ -15,7 +15,7 @@ IUSE="+exif +gd imagemagick"
 
 DEPEND=""
 RDEPEND="imagemagick? ( || ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] ) )
+		media-gfx/graphicsmagick[imagemagick-compat] ) )
 	dev-lang/php[ctype,exif?,gd?,filter,iconv,json,mysqli]
 	>=virtual/mysql-5.0
 	virtual/httpd-php"
