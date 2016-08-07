@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="doc emacs examples hdf5"
 DEPEND="
 	>=sci-libs/netcdf-4
 	virtual/latex-base
-	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png,imagemagick] )
+	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png,imagemagick-compat] )
 	app-text/ghostscript-gpl
 	emacs? ( virtual/emacs )"
 RDEPEND="${DEPEND}"
