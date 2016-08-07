@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>sochotnicky@gentoo.org</email>
-		<name>Stanislav Ochotnicky</name>
-	</maintainer>
 	<longdescription lang="en">
 		SIMPLE-MTPFS (Simple Media Transfer Protocol FileSystem) is a file system for
 		Linux (and other operating systems with a FUSE implementation, such as Mac OS X
