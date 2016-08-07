@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	)
 	png? (
 		app-text/dvipng
-		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )
+		|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick-compat,png] )
 	)
 "
 
