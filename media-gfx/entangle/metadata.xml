@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
 <maintainer type="project">
