@@ -27,7 +27,7 @@ RDEPEND="app-arch/cabextract
 	app-crypt/gnupg
 	app-emulation/wine
 	dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	net-misc/wget
 	x11-apps/mesa-progs
 	x11-terms/xterm
