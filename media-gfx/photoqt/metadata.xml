@@ -9,8 +9,5 @@
 		<flag name="exiv2">
 			Use <pkg>media-gfx/exiv2</pkg> as optional dependency
 		</flag>
-		<flag name="graphicsmagick">
-			Use <pkg>media-gfx/graphicsmagick</pkg> as optional dependency
-		</flag>
 	</use>
 </pkgmetadata>
