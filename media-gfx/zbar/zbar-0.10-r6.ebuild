@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE="gtk imagemagick jpeg python qt4 static-libs +threads v4l X xv"
 RDEPEND="gtk? ( dev-libs/glib:2 x11-libs/gtk+:2 )
 	imagemagick? (
 		|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] ) )
+		media-gfx/graphicsmagick[imagemagick-compat] ) )
 	jpeg? ( virtual/jpeg:0 )
 	python? ( ${PYTHON_DEPS}
 		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] ) )
