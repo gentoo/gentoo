@@ -141,6 +141,7 @@ app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon p
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
 app-admin/lsyncd 2.1.5: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
+app-admin/mate-system-tools 1.8.1: Tools aimed to make easy the administration of UNIX systems
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 100 117 122: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.8.0 2.8.8: Framework to build server orchestration or parallel job execution systems
@@ -11876,6 +11877,8 @@ mate-base/mate-session-manager 1.10.3: MATE session manager
 mate-base/mate-settings-daemon 1.10.3: MATE Settings Daemon
 mate-extra/caja-dropbox 1.10.1: Store, Sync and Share Files Online
 mate-extra/caja-extensions 1.10.1-r2: Several Caja extensions
+mate-extra/mate-calc 1.8.0: A calculator application for MATE
+mate-extra/mate-dialogs 1.8.0: Display MATE dialogs from the commandline and shell scripts
 mate-extra/mate-indicator-applet 1.10.0: MATE indicator applet
 mate-extra/mate-media 1.10.1: Multimedia related programs for the MATE desktop
 mate-extra/mate-netbook 1.10.0: MATE utilities for netbooks
