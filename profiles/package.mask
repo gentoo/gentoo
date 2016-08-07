@@ -233,7 +233,6 @@ dev-ruby/activesupport:3.2
 dev-ruby/coffee-rails:3.2
 dev-ruby/mongoid
 dev-ruby/sass-rails:3.2
-dev-ruby/activeldap:3
 
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
