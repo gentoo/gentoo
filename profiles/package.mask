@@ -229,11 +229,6 @@ dev-python/charade
 # Removal in 30 days.
 net-p2p/syncthing-relaysrv
 
-# Agostino Sarubbo <ago@gentoo.org> (5 Jul 2016)
-# Dead upstream and fails to compile, wrt bug #587766
-# Masked for removal in 30 days.
-app-mobilephone/freesmee
-
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
