@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND="app-cdr/cdrdao
 	app-cdr/dvd+rw-tools
 	dev-python/pycairo
 	dev-tcltk/tix
-	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick,png] )
+	|| ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[imagemagick-compat,png] )
 	media-sound/normalize
 	>=media-sound/sox-14.3.2
 	media-video/dvdauthor
