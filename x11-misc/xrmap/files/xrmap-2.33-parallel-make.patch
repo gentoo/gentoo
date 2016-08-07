@@ -2,8 +2,8 @@ Parallel make fixes
 
 Patch by Kevin McCarthy <signals@gentoo.org>
 
---- Makefile.noimake
-+++ Makefile.noimake
+--- a/Makefile.noimake
++++ b/Makefile.noimake
 @@ -21,12 +21,12 @@
  
  all: explorer.o image.o xrmap.o
@@ -20,8 +20,8 @@ Patch by Kevin McCarthy <signals@gentoo.org>
  
  explorer.o: xrmap.h version.h bitmaps.h numdefs.h menudefs.h xrmap.c
  	gcc $(CCOPTIONS) -c explorer.c
---- tools/Makefile
-+++ tools/Makefile
+--- a/tools/Makefile
++++ b/tools/Makefile
 @@ -3,16 +3,16 @@
  	./preproc > ../numdefs.h
  
