@@ -19,7 +19,7 @@ IUSE="doc"
 
 RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.5[python,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.8[python,${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.29[python(+),${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.10[python,${MULTILIB_USEDEP}]
 	net-nds/openldap
