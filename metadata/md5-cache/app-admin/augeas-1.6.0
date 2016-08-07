@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libxml2 sys-libs/readline:= virtual/pkgconfig >=app-doc/NaturalDocs-1.40 test? ( dev-lang/ruby )
+DESCRIPTION=A library for changing configuration files
+EAPI=5
+HOMEPAGE=http://augeas.net/
+IUSE=static-libs test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libxml2 sys-libs/readline:=
+SLOT=0
+SRC_URI=http://download.augeas.net/augeas-1.6.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=896cc6c946d954a375ecce4ecdb285e2
