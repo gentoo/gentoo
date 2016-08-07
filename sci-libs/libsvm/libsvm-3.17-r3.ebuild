@@ -79,11 +79,9 @@ src_install() {
 	dodoc README
 
 	if use tools; then
-		python_setup
-
 		local t
 		for t in tools/*.py; do
-			python_newscript ${t} svm-$(basename ${t} .py)
+			python_foreach_impl python_newscript ${t} svm-$(basename ${t} .py)
 		done
 
 		newdoc tools/README README.tools
