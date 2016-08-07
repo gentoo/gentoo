@@ -414,11 +414,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
       <role>Developer</role>
@@ -974,11 +969,6 @@
       <role>Developer (Emacs maintainer)</role>
     </member>
     <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>matsl@gentoo.org</email>
       <name>Mats Lidell</name>
       <role>Developer (XEmacs maintainer)</role>
@@ -1300,11 +1290,6 @@
     <member>
       <email>graaff@gentoo.org</email>
       <name>Hans de Graaff</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
       <role>Developer</role>
     </member>
     <member>
@@ -1840,26 +1825,12 @@
     <name>Gentoo LXDE Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXDE</url>
     <description>The LXDE project manages ebuilds in Gentoo for [http://lxde.org/ LXDE], the Lightweight X11 Desktop Environment, and handles related issues.</description>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-      <role>member</role>
-    </member>
-    <member>
-      <email>nullishzero@gentoo.org</email>
-      <name>Pavel Kazakov</name>
-      <role>member</role>
-    </member>
   </project>
   <project>
     <email>lxqt@gentoo.org</email>
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-    </member>
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
@@ -2094,11 +2065,6 @@
     <member>
       <email>gienah@gentoo.org</email>
       <name>Mark Wright</name>
-      <role>Mathematics</role>
-    </member>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
       <role>Mathematics</role>
     </member>
     <member>
@@ -2557,11 +2523,6 @@
       <role>High Energy Physics, General Physics</role>
     </member>
     <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-      <role>Physics</role>
-    </member>
-    <member>
       <email>marecki@gentoo.org</email>
       <name>Marek Szuba</name>
       <role>High Energy Physics</role>
@@ -2639,11 +2600,6 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Member</role>
-    </member>
-    <member>
-      <email>nullishzero@gentoo.org</email>
-      <name>Pavel Kazakov</name>
-      <role>Member, on dev-away</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -3059,11 +3015,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>sdamashek@gentoo.org</email>
-      <name>Samuel Damashek</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
       <role>Member</role>
@@ -3081,11 +3032,6 @@
     <member>
       <email>xarthisius@gentoo.org</email>
       <name>Kacper Kowalik</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>yac@gentoo.org</email>
-      <name>Jan Matejka</name>
       <role>Member</role>
     </member>
   </project>
@@ -3412,11 +3358,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>p8952@gentoo.org</email>
-      <name>Peter Wilmott</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Developer</role>
@@ -3438,10 +3379,6 @@
     <member>
       <email>djc@gentoo.org</email>
       <name>Dirkjan Ochtman</name>
-    </member>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
@@ -3621,11 +3558,6 @@
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
       <role>Astronomy, Mathematics, Physics</role>
-    </member>
-    <member>
-      <email>jauhien@gentoo.org</email>
-      <name>Jauhien Piatlicki</name>
-      <role>Mathematics, Physics, *</role>
     </member>
     <member is-lead="1">
       <email>jlec@gentoo.org</email>
@@ -4159,11 +4091,6 @@
     <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>sdamashek@gentoo.org</email>
-      <name>Samuel Damashek</name>
       <role>Member</role>
     </member>
     <member>
