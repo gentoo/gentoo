@@ -38,7 +38,7 @@ CDEPEND="dev-libs/glib:2
 
 DEPEND="${CDEPEND}
 	test? (
-		|| ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick )
+		|| ( media-gfx/graphicsmagick[imagemagick-compat] media-gfx/imagemagick )
 		sci-electronics/gerbv
 	)
 	>=dev-util/intltool-0.35
