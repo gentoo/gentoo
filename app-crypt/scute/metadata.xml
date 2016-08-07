@@ -6,10 +6,6 @@
     <name>Lucas Yamanishi</name>
     <description>Proxy maintainer.</description>
   </maintainer>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-    <description>Proxying maintainer.</description>
-  </maintainer>
   <maintainer type="project">
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>

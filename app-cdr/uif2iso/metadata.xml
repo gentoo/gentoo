@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-  </maintainer>
   <longdescription lang="en">
     uif2iso is a program that can convert images taken with the
     MagicISO software under Windows, with its proprietary UIF format,
