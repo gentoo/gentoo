@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>jdhore@gentoo.org</email>
-    <name>Jeff Horelick</name>
-  </maintainer>
-  <maintainer type="person">
     <email>radhermit@gentoo.org</email>
     <name>Tim Harder</name>
   </maintainer>
