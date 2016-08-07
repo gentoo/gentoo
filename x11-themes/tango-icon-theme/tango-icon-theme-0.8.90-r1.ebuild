@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
 	>=gnome-base/librsvg-2.34
-	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick,png?] )
+	|| ( media-gfx/imagemagick[png?] media-gfx/graphicsmagick[imagemagick-compat,png?] )
 	sys-devel/gettext
 	>=x11-misc/icon-naming-utils-0.8.90"
 
