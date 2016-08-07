@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Script to create html and text report about your system"
 HOMEPAGE="http://www.josealberto.org"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+RDEPEND="|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	app-shells/bash
 	net-analyzer/rrdtool[graph]"
 
