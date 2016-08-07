@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND="dev-libs/glib:2
 	sys-apps/dbus
 	>=net-wireless/bluez-4.31
 	<dev-libs/openobex-1.7.1
-	imagemagick? ( !gtk? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) )
+	imagemagick? ( !gtk? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] ) ) )
 	gtk? ( x11-libs/gtk+:2 )
 	usb? ( virtual/libusb:0 )
 	!app-mobilephone/obexd[server]"
