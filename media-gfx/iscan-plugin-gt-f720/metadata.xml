@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>flameeyes@gentoo.org</email>
-	</maintainer>
 	<longdescription lang="en">
 		Proprietary plugin for several EPSON scanner models with the epkowa SANE backend (provided by media-gfx/iscan).
 		This particular plugin (f720) seems to be required for:
