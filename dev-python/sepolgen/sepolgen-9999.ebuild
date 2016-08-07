@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit python-r1 eutils
+inherit python-r1
 
 MY_P="${P//_/-}"
 MY_RELEASEDATE="20160223"
@@ -35,10 +35,10 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live ebuilds please use /etc/portage/patches
-		epatch "${FILESDIR}/0030-default-path-for-tests-also-needed-bug-467264.patch"
+		eapply "${FILESDIR}/0030-default-path-for-tests-also-needed-bug-467264.patch"
 	fi
 
-	epatch_user
+	eapply_user
 
 	python_copy_sources
 }
