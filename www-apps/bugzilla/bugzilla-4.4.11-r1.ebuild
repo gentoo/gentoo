@@ -64,7 +64,7 @@ RDEPEND="
 		dev-perl/TheSchwartz:*
 		dev-perl/Daemon-Generic:*
 		dev-perl/File-MimeInfo:*
-		|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
+		|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick-compat,perl] )
 		dev-perl/MIME-tools:*
 	)
 	modperl? (
