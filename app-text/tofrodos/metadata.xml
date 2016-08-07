@@ -5,10 +5,6 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>vostorga@gentoo.org</email>
-		<name>Victor Ostorga</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">tofrodos</remote-id>
 	</upstream>
