@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="Apsfilter Prints So Fine, It Leads To Extraordinary Results"
 HOMEPAGE="http://www.apsfilter.org"
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 RDEPEND="|| ( net-print/cups net-print/lprng )
 	app-text/ghostscript-gpl
 	>=app-text/psutils-1.17
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	>=app-text/a2ps-4.13b-r4
 	virtual/awk
 	virtual/mta"
@@ -35,7 +35,8 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install
+	default
+
 	dosym /usr/share/apsfilter/SETUP /usr/bin/apsfilter
 	use cups && \
 	    dosym /etc/cups/printcap /etc/printcap || \
