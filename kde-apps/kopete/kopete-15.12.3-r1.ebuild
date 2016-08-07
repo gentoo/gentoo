@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 
 KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="KDE multi-protocol IM client"
 HOMEPAGE="https://kopete.kde.org https://www.kde.org/applications/internet/kopete"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug ssl v4l"
 
 # tests hang, last checked for 4.2.96
@@ -103,7 +103,7 @@ RDEPEND="${COMMONDEPEND}
 	latex? (
 		|| (
 			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
+			media-gfx/graphicsmagick[imagemagick-compat]
 		)
 		virtual/latex-base
 	)
@@ -111,6 +111,7 @@ RDEPEND="${COMMONDEPEND}
 	ssl? ( app-crypt/qca:2[openssl] )
 	winpopup? ( net-fs/samba )
 "
+#	telepathy? ( net-libs/decibel )"
 DEPEND="${COMMONDEPEND}
 	jingle? ( dev-libs/jsoncpp )
 	!aqua? ( x11-proto/scrnsaverproto )
@@ -120,27 +121,27 @@ src_configure() {
 	local x x2
 	# Handle common stuff
 	local mycmakeargs=(
-		-DWITH_GOOGLETALK=$(usex jingle)
-		-DWITH_LiboRTP=$(usex jingle)
-		-DWITH_Mediastreamer=$(usex jingle)
-		-DWITH_Speex=$(usex jingle)
-		-DDISABLE_VIDEOSUPPORT=$(usex !v4l)
+		$(cmake-utils_use_with jingle GOOGLETALK)
+		$(cmake-utils_use_with jingle LiboRTP)
+		$(cmake-utils_use_with jingle Mediastreamer)
+		$(cmake-utils_use_with jingle Speex)
+		$(cmake-utils_use_disable v4l VIDEOSUPPORT)
 	)
 	# enable protocols
 	for x in ${PROTOCOLS}; do
 		case ${x/+/} in
 			zeroconf) x2=bonjour ;;
 			xmpp) x2=jabber ;;
-			*) x2=${x/+/} ;;
+			*) x2='' ;;
 		esac
-		mycmakeargs+=( -DWITH_${x2}=$(usex ${x/+/}) )
+		mycmakeargs+=($(cmake-utils_use_with ${x/+/} ${x2}))
 	done
 
 	mycmakeargs+=( -DWITH_Libmsn=OFF -DWITH_qq=OFF )
 
 	# enable plugins
 	for x in ${PLUGINS}; do
-		mycmakeargs+=( -DWITH_${x/+/}=$(usex ${x/+/}) )
+		mycmakeargs+=($(cmake-utils_use_with ${x/+/}))
 	done
 
 	kde4-base_src_configure
@@ -148,6 +149,12 @@ src_configure() {
 
 pkg_postinst() {
 	kde4-base_pkg_postinst
+
+	#if use telepathy; then
+	#	elog "To use kopete telepathy plugins, you need to start gabble first:"
+	#	elog "GABBLE_PERSIST=1 telepathy-gabble &"
+	#	elog "export TELEPATHY_DATA_PATH='${EPREFIX}/usr/share/telepathy/managers/'"
+	#fi
 
 	if ! use ssl; then
 		if use xmpp ; then # || use irc; then
