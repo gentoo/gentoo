@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}
 SLOT="12"
 MAJOR="2.0"
 
+PATCHES=( "${FILESDIR}/${P}-build-includes.patch" ) #bug 590528 patched by upstream
 DOCS=( GUILE-VERSION HACKING README )
 
 src_configure() {
@@ -67,7 +68,7 @@ src_install() {
 	keepdir /usr/share/guile/site
 
 	# Dark magic necessary for some deps
-	dosym /usr/$(get_libdir)/libguile-2.0.so /usr/$(get_libdir)/libguile.so
+	dosym libguile-2.0.so /usr/$(get_libdir)/libguile.so
 }
 
 pkg_postinst() {
