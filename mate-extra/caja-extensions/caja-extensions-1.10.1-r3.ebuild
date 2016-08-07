@@ -38,7 +38,7 @@ RDEPEND=">=x11-libs/gtk+-2.24:2
 	image-converter? (
 		|| (
 			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
+			media-gfx/graphicsmagick[imagemagick-compat]
 		)
 	)
 	pidgin? ( >=dev-libs/dbus-glib-0.60:0 )
