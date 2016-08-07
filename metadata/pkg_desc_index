@@ -1059,7 +1059,7 @@ app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powe
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
-app-editors/nvi 1.81.6-r3 1.81.6-r4 1.81.6-r5: Vi clone
+app-editors/nvi 1.81.6-r4 1.81.6-r6: Vi clone
 app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.10.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
@@ -13109,7 +13109,7 @@ media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
-media-sound/chuck 1.2.1.2 1.3.5.1: Strongly-timed, concurrent, and on-the-fly audio programming language
+media-sound/chuck 1.3.5.1 1.3.5.2: Strongly-timed, concurrent, and on-the-fly audio programming language
 media-sound/clementine 1.2.3 1.2.3-r2 1.3.1-r2 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.7.1: A ncurses based music player with plugin support for many formats
@@ -14188,7 +14188,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/telegram-desktop-bin 0.9.51 0.9.56: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 0.9.56 0.10.0: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.3 5.16.3-r1: An account manager and channel dispatcher for the Telepathy framework
@@ -15930,7 +15930,7 @@ sci-libs/libqalculate 0.9.7-r1 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0 0.4.0 9999: provide basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.3.0 0.4.0 9999: provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.8.1 1.8.5 1.8.5-r1: General framework for developing spatial indices
-sci-libs/libsvm 3.17-r1 3.17-r2: Library for Support Vector Machines
+sci-libs/libsvm 3.17-r1 3.17-r3: Library for Support Vector Machines
 sci-libs/libticables2 1.3.3-r1 1.3.4: Library to handle different link cables for TI calculators
 sci-libs/libticalcs2 1.1.7 1.1.8: Library for communication with TI calculators
 sci-libs/libticonv 1.1.3 1.1.4: Charset conversion library for TI calculators

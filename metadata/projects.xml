@@ -1814,11 +1814,6 @@
       <role>Lead (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
-      <email>psomas@gentoo.org</email>
-      <name>psomas</name>
-      <role>Member (Kernel, gentoo-sources, genpatches)</role>
-    </member>
-    <member>
       <email>zorry@gentoo.org</email>
       <name>Magnus Granberg</name>
       <role>Member (Kernel, hardened)</role>
@@ -2135,10 +2130,6 @@
     <member>
       <email>axs@gentoo.org</email>
       <name>Ian Stakenvicius</name>
-    </member>
-    <member>
-      <email>jdhore@gentoo.org</email>
-      <name>Jeff Horelick</name>
     </member>
     <member>
       <email>polynomial-c@gentoo.org</email>
@@ -2972,10 +2963,6 @@
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
       <role>Facebook</role>
-    </member>
-    <member>
-      <email>jdhore@gentoo.org</email>
-      <name>Jeff Horelick</name>
     </member>
     <member>
       <email>k_f@gentoo.org</email>
@@ -3994,11 +3981,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>moult@gentoo.org</email>
-      <name>Dion Moult</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
       <role>Member</role>
@@ -4200,10 +4182,6 @@
       <name>Alex Legler</name>
     </member>
     <member>
-      <email>jdhore@gentoo.org</email>
-      <name>Jeff Horelick</name>
-    </member>
-    <member>
       <email>nightmorph@gentoo.org</email>
       <name>Joshua Saddler</name>
     </member>
@@ -4327,11 +4305,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Developer (Security bugs primarily)</role>
-    </member>
-    <member is-lead="1">
-      <email>jdhore@gentoo.org</email>
-      <name>Jeff Horelick</name>
-      <role>Lead/Security Liaison</role>
     </member>
     <member>
       <email>nativemad@gentoo.org</email>
