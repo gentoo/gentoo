@@ -229,7 +229,6 @@ dev-ruby/actionpack:3.2
 dev-ruby/activeresource:3.2
 dev-ruby/activemodel:3.2
 dev-ruby/activesupport:3.2
-dev-ruby/coffee-rails:3.2
 
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920
