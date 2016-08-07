@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,7 +57,7 @@ RDEPEND="${COMMON_DEPEND}
 RDEPEND="${RDEPEND}
 	|| (
 	( x11-apps/xwininfo
-	  || ( media-gfx/imagemagick[X] media-gfx/graphicsmagick[imagemagick,X] )
+	  || ( media-gfx/imagemagick[X] media-gfx/graphicsmagick[imagemagick-compat,X] )
 	)
 	x11-misc/habak
 	media-gfx/feh
