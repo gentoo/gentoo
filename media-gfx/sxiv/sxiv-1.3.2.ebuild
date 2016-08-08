@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils savedconfig toolchain-funcs
+inherit eutils gnome2-utils savedconfig toolchain-funcs
 
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
 HOMEPAGE="https://github.com/muennich/sxiv/"
@@ -23,15 +23,32 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	sed -i '/^LDFLAGS/d' Makefile || die
 	tc-export CC
 
 	restore_config config.h
+	default
 }
 
 src_install() {
 	emake DESTDIR="${ED}" PREFIX=/usr install
+	emake -C icon DESTDIR="${ED}" PREFIX=/usr install
 	dodoc README.md
+	domenu sxiv.desktop
 
 	save_config config.h
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
 }
