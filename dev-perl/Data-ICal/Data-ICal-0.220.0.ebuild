@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,8 +22,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Warn
 		dev-perl/Test-NoWarnings
 		dev-perl/Test-LongString
@@ -36,4 +34,9 @@ SRC_TEST="do"
 src_prepare() {
 	sed -i "/^auto_install();/d" "${S}"/Makefile.PL || die
 	perl-module_src_prepare
+}
+
+src_test() {
+	perl_rm_files t/pod.t t/pod-coverage.t
+	perl-module_src_test
 }
