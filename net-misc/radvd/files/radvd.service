@@ -4,18 +4,15 @@ Documentation=man:radvd(8)
 After=network.target
 
 [Service]
-User=radvd
-Group=radvd
 Type=forking
 ExecStartPre=/usr/sbin/radvd --configtest
-ExecStart=/usr/sbin/radvd --logmethod stderr --debug 0
+ExecStart=/usr/sbin/radvd --username radvd --logmethod stderr --debug 0
 ExecReload=/usr/sbin/radvd --configtest ; \
            /bin/kill -HUP $MAINPID
 CPUSchedulingPolicy=idle
 PIDFile=/run/radvd/radvd.pid
 RuntimeDirectory=radvd
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE  CAP_NET_RAW
-AmbientCapabilities=CAP_NET_BIND_SERVICE  CAP_NET_RAW
+CapabilityBoundingSet=CAP_SETUID CAP_SETGID CAP_NET_BIND_SERVICE  CAP_NET_RAW
 PrivateTmp=yes
 PrivateDevices=yes
 ProtectSystem=full
