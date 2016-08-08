@@ -14833,7 +14833,7 @@ net-misc/proxychains 4.11: force any tcp connections to flow through a proxy (or
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 net-misc/ps3mediaserver 1.82.0 1.90.0 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
-net-misc/ptpd 2.3.1: Precision Time Protocol daemon
+net-misc/ptpd 2.3.1 2.3.1-r1: Precision Time Protocol daemon
 net-misc/puf 1.0.0: A download tool for UNIX-like systems
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.67 9999: A Free Telnet/SSH Client
@@ -16500,7 +16500,7 @@ sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r4 1.7-r5: Dog is better than cat
-sys-apps/dstat 0.6.9-r1 0.7.2-r1: Versatile replacement for vmstat, iostat and ifstat
+sys-apps/dstat 0.6.9-r1 0.7.2-r1 0.7.3: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/ed 1.10 1.12 1.13: Your basic line editor
@@ -16801,7 +16801,7 @@ sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memor
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.26.0 0.26.0-r1 0.26.1: Gnome Partition Editor
-sys-block/hdrecover 0.4: Attempts to recover a hard disk that has bad blocks on it
+sys-block/hdrecover 0.4 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
 sys-block/kvpm 0.9.9: KDE frontend for Linux LVM2 and GNU parted
