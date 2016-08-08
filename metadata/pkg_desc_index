@@ -12120,8 +12120,8 @@ media-gfx/cptutils 1.61 1.62 1.63: A number of utilities for the manipulation of
 media-gfx/cropgui 0.1.1-r3 0.2 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
-media-gfx/cura 2.1.0_beta: A 3D model slicing application for 3D printing
-media-gfx/curaengine 2.1.0_beta: A 3D model slicing engine for 3D printing
+media-gfx/cura 0.15.04.4 0.15.04.5_rc5 2.1.0_beta: A 3D model slicing application for 3D printing
+media-gfx/curaengine 0.15.04.6 2.1.0_beta: A 3D model slicing engine for 3D printing
 media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
 media-gfx/darktable 1.6.9 2.0.3 2.0.4 2.0.5 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
