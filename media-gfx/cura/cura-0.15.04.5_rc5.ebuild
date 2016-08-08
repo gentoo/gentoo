@@ -38,8 +38,7 @@ src_prepare() {
 		PYTHONPATH="\$PYTHONPATH:${EPREFIX}/usr/share/cura/" "${PYTHON}" "${EPREFIX}/usr/share/cura/cura.py" "\$@"
 	CURAEOF
 
-	eapply "${PATCHES[@]}"
-	eapply_user
+	default
 }
 
 src_install() {
