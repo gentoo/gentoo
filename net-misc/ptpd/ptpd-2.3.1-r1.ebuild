@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils flag-o-matic systemd
+inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Precision Time Protocol daemon"
 HOMEPAGE="https://github.com/ptpd/ptpd"
@@ -25,6 +25,8 @@ RDEPEND="${RDEPEND}
 S=${WORKDIR}/ptpd-${P}
 
 src_prepare() {
+	eapply_user
+	sed -i -e 's/U64/struct counter64/' src/dep/snmp.c || die "sed failed"
 	eautoreconf
 }
 
@@ -54,5 +56,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "Do not forget to setup correct network interface."
-	elog "Change the config file /etc/ptpd2.conf to suit your needs."
+	elog "Change the config file ${EROOT}etc/ptpd2.conf to suit your needs."
 }

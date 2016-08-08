@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,12 @@ IUSE="test"
 RDEPEND="dev-perl/Curses
 	dev-perl/TermReadKey"
 DEPEND="${RDEPEND}
-	test? (
-		dev-perl/Test-Pod
-	)"
+	test? ( virtual/perl-Test-Simple )
+"
 
 SRC_TEST="do"
+
+src_prepare() {
+	use test && perl_rm_files t/05pod.t
+	perl-module_src_prepare
+}
