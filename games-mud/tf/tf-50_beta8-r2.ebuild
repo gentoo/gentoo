@@ -48,16 +48,16 @@ src_install() {
 	newman src/tf.1.nroffman tf.1
 	dodoc CHANGES CREDITS README
 
-	insinto "${GAMES_DATADIR}"/${PN}-lib
+	insinto /usr/share/${PN}-lib
 	# the application looks for this file here if /changes is called.
 	# see comments on bug #23274
 	doins CHANGES
 	insopts -m0755
 	doins tf-lib/*
 	if use doc ; then
-		cd ../${MY_P}-help
+		cd ../${MY_P}-help || die
 		dodoc -r *.html commands topics
-		cd ../${MY_P}
+		cd ../${MY_P} || die
 	fi
 }
 
