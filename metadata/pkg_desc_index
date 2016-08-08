@@ -9706,7 +9706,7 @@ dev-util/cppcheck 1.72 1.73 1.74 9999: static analyzer of C/C++ code
 dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 1.1.2: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.13.1 1.13.2-r2 9999: C++ port of the famous JUnit framework for unit testing
-dev-util/cpputest 3.6 3.7.2: unit testing and mocking framework for C/C++
+dev-util/cpputest 3.7.2 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7e: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20060720 20070104 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
@@ -14954,7 +14954,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.11 5.2.12: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20160722 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-misc/wireguard 0.0.20160808 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
