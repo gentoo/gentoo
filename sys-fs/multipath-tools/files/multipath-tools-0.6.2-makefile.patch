@@ -127,7 +127,7 @@ diff -Nuar --exclude '*~' multipath-tools-e165b73.orig/mpathpersist/Makefile mul
  $(EXEC): $(OBJS)
 -	$(CC) -g $(OBJS) -o $(EXEC) $(LDFLAGS) $(CFLAGS)
 -	$(GZIP) $(EXEC).8 > $(EXEC).8.gz
-+	$(CC) $(CFLAGS) $(CFLAGS) -g $(OBJS) -o $(EXEC) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -g $(OBJS) -o $(EXEC) $(LIBS)
  
  install:
  	$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)
