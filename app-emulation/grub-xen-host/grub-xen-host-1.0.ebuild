@@ -60,12 +60,22 @@ src_compile() {
 
 	tar cf memdisk.tar grub.cfg || die "failed to tar"
 
-	grub2-mkimage -O x86_64-xen \
-		-c grub-bootstrap.cfg \
-		-m memdisk.tar \
-		-o grub-x86_64-xen.bin \
-		/usr/lib/grub/x86_64-xen/*.mod \
-		|| die "failed to grub-mkimage"
+	local grub_mkimage=grub-mkimage
+	if type grub2-mkimage &> /dev/null; then
+		grub_mkimage=grub2-mkimage
+	fi
+
+	local args=(
+		"${grub_mkimage}"
+		-O x86_64-xen
+		-c grub-bootstrap.cfg
+		-m memdisk.tar
+		-o grub-x86_64-xen.bin
+		/usr/lib/grub/x86_64-xen/*.mod
+	)
+
+	echo "${args[@]}"
+	"${args[@]}" || die "failed to grub-mkimage"
 }
 
 src_install() {
