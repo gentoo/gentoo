@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	sys-devel/gettext"
 
-SLOT="12"
+SLOT="12/22" # subslot is soname version
 MAJOR="2.0"
 
 PATCHES=( "${FILESDIR}/${P}-build-includes.patch" ) #bug 590528 patched by upstream
