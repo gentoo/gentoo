@@ -3177,7 +3177,7 @@ dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
-dev-go/ed25519 0.0.20160420: ed25519 for Go
+dev-go/ed25519 0_pre20160420: ed25519 for Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
@@ -14346,7 +14346,7 @@ net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.5 1.6: Library for Neighbor Discovery Protocol
-net-libs/libnet 1.0.2a-r5 1.1.6 1.2_rc3: library to provide an API for commonly used low-level network functions (mainly packet injection)
+net-libs/libnet 1.0.2a-r5 1.1.6 1.1.6-r1 1.2_rc3 1.2_rc3-r1: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.5: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0: userspace library that provides the programming interface to the user-space helper infrastructure
@@ -17809,7 +17809,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.41 39.0.2256.43 39.0.2256.48: A fast and secure web browser
 www-client/opera-beta 39.0.2256.42 40.0.2308.3: A fast and secure web browser
-www-client/opera-developer 40.0.2301.0 40.0.2306.0: A fast and secure web browser
+www-client/opera-developer 40.0.2306.0 41.0.2315.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
