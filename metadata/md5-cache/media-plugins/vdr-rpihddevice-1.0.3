@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEPEND=>=media-video/vdr-2 >=media-libs/raspberrypi-userland-0_pre20140117 virtual/ffmpeg >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: Output Device for Raspberry Pi
+EAPI=5
+HOMEPAGE=http://projects.vdr-developer.org/projects/plg-rpihddevice
+KEYWORDS=~arm
+LICENSE=GPL-2
+RDEPEND=>=media-video/vdr-2 >=media-libs/raspberrypi-userland-0_pre20140117 virtual/ffmpeg >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=mirror://vdr-developerorg/2045/vdr-rpihddevice-1.0.3.tgz
+_eclass_exported_funcs=pkg_postrm:vdr-plugin-2 pkg_postinst:vdr-plugin-2 pkg_setup:vdr-plugin-2 src_unpack:vdr-plugin-2 src_prepare:- src_compile:vdr-plugin-2 src_install:vdr-plugin-2
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	unpacker	45d07319df5f40ee6af58418b0f930be	vdr-plugin-2	793155a4c77b7ce10630747d0afcac0c
+_md5_=fe1ec220da11e509de0f037705b602af
