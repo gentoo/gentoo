@@ -1738,7 +1738,6 @@ dev-java/icedtea:jbootstrap - If possible, recompile the final IcedTea executabl
 dev-java/icedtea:nsplugin - Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.
 dev-java/icedtea:nss - Enable NSS security provider support.
 dev-java/icedtea:pax_kernel - Apply patch needed for pax enabled kernels.
-dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
 dev-java/icedtea:shenandoah - Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (x86_64 only)
 dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
 dev-java/icedtea:sunec - Build the SunEC provider against system NSS
@@ -1791,7 +1790,6 @@ dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in
 dev-lang/erlang:halfword - Enable halfword emulator
 dev-lang/erlang:hipe - HIgh Performance Erlang extension
 dev-lang/erlang:kpoll - Enable kernel polling support
-dev-lang/erlang:sctp - Support for Stream Control Transmission Protocol
 dev-lang/fpc:ide - Build and install the Free Pascal Compiler IDE
 dev-lang/gdl:eigen - Build matrix manipulation with dev-cpp/eigen
 dev-lang/gdl:grib - Add support for the meteorological GRIB format with sci-libs/grib_api
@@ -2102,7 +2100,6 @@ dev-libs/opensc:secure-messaging - Enable secure messaging.
 dev-libs/openssl:asm - Support assembly hand optimized crypto functions (i.e. faster run time)
 dev-libs/openssl:bindist - Disable EC algorithms (as they seem to be patented) -- note: changes the ABI
 dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
-dev-libs/openssl:sctp - Support for Stream Control Transmission Protocol
 dev-libs/openssl:sslv2 - Support for the old/insecure SSLv2 protocol -- note: not required for TLS/https
 dev-libs/openssl:sslv3 - Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https
 dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
@@ -5049,7 +5046,6 @@ net-analyzer/netdata:compression - Enable compression via zlib
 net-analyzer/netdata:nfacct - Enable the nfacct plugin
 net-analyzer/netdata:nodejs - Enable use of nodejs (which some plugins use)
 net-analyzer/netperf:demo - Emit interim results during the run. May affect results
-net-analyzer/netperf:sctp - Include tests to measure SCTP performance
 net-analyzer/nfdump:compat15 - Enable read support for nfdump data files created with nfdump 1.5.x
 net-analyzer/nfdump:ftconv - Build the flow-tools to nfdump converter
 net-analyzer/nfdump:nfprofile - Build nfprofile used by NfSen
@@ -5741,7 +5737,6 @@ net-libs/mbedtls:havege - Enable the HAVEGE random generator. Warning: the HAVEG
 net-libs/mbedtls:programs - Build PolarSSL programs
 net-libs/neon:libproxy - Add support for net-libs/libproxy
 net-libs/neon:pkcs11 - Add support for PKCS#11 using dev-libs/pakchois
-net-libs/netembryo:sctp - Support for Stream Control Transmission Protocol
 net-libs/nghttp2:hpack-tools - Install HPACK (header compression) helper tools
 net-libs/nghttp2:jemalloc - Use dev-libs/jemalloc for memory allocation
 net-libs/nghttp2:utils - Install nghttp, nghttpd and nghttpx
@@ -6097,7 +6092,6 @@ net-misc/i2pd:i2p-hardening - Compile with hardening on vanilla compilers/linker
 net-misc/icecast:kate - Add karaoke and text encapsulation support for Ogg files
 net-misc/icecast:logrotate - Install support files for app-admin/logrotate?
 net-misc/icecast:yp - Build support for yp public directory listings
-net-misc/iperf:sctp - Support for Stream Control Transmission Protocol
 net-misc/iputils:SECURITY_HAZARD - Allow non-root users to flood (ping -f). This is generally a very bad idea.
 net-misc/iputils:arping - Build and install arping -- tool for sending ARP requests to peers (see also net-analyzer/arping)
 net-misc/iputils:clockdiff - Build and install clockdiff -- tool for comparing clocks via ICMP packets
@@ -6200,7 +6194,6 @@ net-misc/openssh:hpn - Enable high performance ssh
 net-misc/openssh:ldap - Add support for storing SSH public keys in LDAP
 net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
-net-misc/openssh:sctp - Support for Stream Control Transmission Protocol
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
 net-misc/openvpn:down-root - Enable the down-root plugin
@@ -6578,7 +6571,6 @@ net-voip/yate:isac-fixed - Enable iSAC fixed codec
 net-voip/yate:isac-float - Enable iSAC float codec
 net-voip/yate:mysql - use MySQL client library
 net-voip/yate:postgres - use Postgress SQL
-net-voip/yate:sctp - Enable SCTP sockets
 net-voip/yate:spandsp - use spandsp library
 net-voip/yate:speex - use Speex codec
 net-voip/yate:tdmcard - Enable TDMV API card driver
