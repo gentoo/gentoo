@@ -30,7 +30,6 @@
   <flag name="nss">Enable NSS security provider support.</flag>
   <flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
   <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
-  <flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
   <flag name="shenandoah">Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (x86_64 only)</flag>
   <flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
   <flag name="sunec">Build the SunEC provider against system NSS</flag>
