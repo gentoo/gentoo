@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS=""
+BACKPORTS="20160709" # CVE-2016-5008
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -174,7 +174,6 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
-	krnel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	if $(kernel_is ge 3 6); then
 		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
@@ -228,6 +227,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
+		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch \
 		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&
@@ -239,9 +239,9 @@ src_prepare() {
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex avahi avahi-daemon '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi iscsid '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd  ceph '')/" \
+		-e "s/USE_FLAG_AVAHI/$(usex avahi 'use avahi-daemon' '')/" \
+		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
+		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	AUTOTOOLS_AUTORECONF=true
@@ -320,6 +320,10 @@ src_configure() {
 		# bug #377279
 		(cd .gnulib && git reset --hard > /dev/null)
 	fi
+
+	# Workaround: Sometimes this subdirectory is missing and leads to a
+	# build failure.
+	mkdir -p "${BUILD_DIR}"/docs/internals
 }
 
 src_test() {
