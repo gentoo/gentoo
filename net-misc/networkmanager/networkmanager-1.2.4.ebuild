@@ -277,8 +277,8 @@ multilib_src_install_all() {
 	insinto /usr/share/polkit-1/rules.d/
 	doins "${FILESDIR}/01-org.freedesktop.NetworkManager.settings.modify.system.rules"
 
-	# Remove any empty directories
-	find "${D}" -type d -empty -delete || die
+	# Remove empty /run/NetworkManager
+	rmdir "${D}"/run/NetworkManager "${D}"/run || die
 }
 
 pkg_postinst() {
