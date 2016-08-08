@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-perl/CPAN-Perl-Releases-1.940.0
+	<dev-perl/CPAN-Perl-Releases-2.880.0
 	>=dev-perl/Capture-Tiny-0.250.0
 	>=dev-perl/Devel-PatchPerl-1.280.0
 	>=virtual/perl-Pod-Parser-1.620.0
