@@ -4,7 +4,7 @@ DESCRIPTION=A software that lets you send anything you want directly to a pasteb
 EAPI=5
 HOMEPAGE=https://launchpad.net/pastebinit
 IUSE=crypt python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[xml] ) python_single_target_python3_4? ( dev-lang/python:3.4[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)?,python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] dev-python/configobj[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)?,python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] crypt? ( app-crypt/gnupg )
 REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://launchpad.net/pastebinit/trunk/1.5/+download/pastebinit-1.5.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=be32ca4f1695fe953c74061b2c657ddf
+_md5_=e278d1dfc949ae202cc2fd8a01cd7683
