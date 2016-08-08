@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="google-code">yaml-cpp</remote-id>
 		<remote-id type="github">jbeder/yaml-cpp</remote-id>
