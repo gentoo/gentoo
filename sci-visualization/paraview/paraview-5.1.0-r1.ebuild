@@ -19,7 +19,7 @@ RESTRICT="mirror"
 LICENSE="paraview GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol plugins python qt5 sqlite tcl test tk"
+IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol plugins python +qt5 sqlite tcl test tk"
 RESTRICT="test"
 
 REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
