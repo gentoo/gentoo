@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,6 @@ RDEPEND=">=app-emulation/libvirt-${PV}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? (
-		dev-perl/CPAN-Changes
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/XML-XPath
 		virtual/perl-Time-HiRes
 	)"
@@ -29,4 +26,9 @@ SRC_TEST="do"
 
 src_compile() {
 	MAKEOPTS+=" -j1" perl-module_src_compile
+}
+
+src_test() {
+	perl_rm_files "t/010-pod-coverage.t" "t/005-pod.t" "t/015-changes.t"
+	perl-module_src_test
 }
