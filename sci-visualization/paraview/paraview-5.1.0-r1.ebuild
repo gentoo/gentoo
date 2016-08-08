@@ -67,10 +67,11 @@ RDEPEND="
 	qt5? (
 		dev-qt/designer:5
 		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
 		dev-qt/qthelp:5
+		dev-qt/qtopengl:5
 		dev-qt/qtsql:5
 		dev-qt/qtwebkit:5
+		dev-qt/qtx11extras:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tcl? ( dev-lang/tcl:0= )
