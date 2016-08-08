@@ -123,6 +123,10 @@ src_prepare() {
 }
 
 src_configure() {
+	if use qt5; then
+		export QT_SELECT=qt5
+	fi
+
 	# VTK_USE_SYSTEM_QTTESTING
 	# PARAVIEW_USE_SYSTEM_AUTOBAHN
 	local mycmakeargs=(
