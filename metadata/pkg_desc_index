@@ -17170,7 +17170,7 @@ sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio 
 sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.5.0-r1 0.6.2: Device mapper target autoconfig
+sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.11: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
