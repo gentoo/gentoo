@@ -292,7 +292,7 @@ app-arch/pdlzip 1.5 1.6 1.7: Public-domain version of lzip compressor
 app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary package
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.3.3: A parallel implementation of gzip
-app-arch/pixz 1.0.3 9999: Parallel Indexed XZ compressor
+app-arch/pixz 1.0.3 1.0.6 9999: Parallel Indexed XZ compressor
 app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
@@ -1824,7 +1824,7 @@ app-misc/jitac 0.3.0: An image to ASCII converter written in Java
 app-misc/jot 9.0-r1: Print out increasing, decreasing, random, or redundant data
 app-misc/joy2key 1.6.3: An application that translates joystick events to keyboard events
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
-app-misc/jq 1.4 1.4-r1 1.5-r1 1.5-r2: A lightweight and flexible command-line JSON processor
+app-misc/jq 1.5-r2: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khal 0.7.0 0.8.1: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program

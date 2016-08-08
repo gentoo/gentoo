@@ -9,4 +9,4 @@ RDEPEND=sys-boot/grub:2=[grub_platforms_xen] app-emulation/xen-tools:=
 RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_md5_=ca68ae5dd4fd467e3010088b7ec9af51
+_md5_=3cb61884ea62f12508b330f2a033d3f3

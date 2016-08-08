@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=!static? ( >=app-arch/libarchive-2.8:= >=app-arch/xz-utils-5 ) static? ( >=app-arch/libarchive-2.8:=[static-libs(+)] >=app-arch/xz-utils-5[static-libs(+)] ) app-text/asciidoc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Parallel Indexed XZ compressor
+EAPI=6
+HOMEPAGE=https://github.com/vasi/pixz
+IUSE=static
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD-2
+RDEPEND=!static? ( >=app-arch/libarchive-2.8:= >=app-arch/xz-utils-5 )
+SLOT=0
+SRC_URI=https://github.com/vasi/pixz/archive/v1.0.6.tar.gz -> pixz-1.0.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=dbfca079678f532e21aac83e81fe01b6
