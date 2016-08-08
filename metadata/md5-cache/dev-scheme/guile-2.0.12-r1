@@ -7,8 +7,8 @@ IUSE=debug debug-malloc +deprecated networking nls +regex +threads
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LGPL-3+
 RDEPEND=>=dev-libs/boehm-gc-7.0[threads?] dev-libs/gmp:= virtual/libffi dev-libs/libltdl:= dev-libs/libunistring sys-devel/libtool sys-libs/ncurses:=
-SLOT=12
+SLOT=12/22
 SRC_URI=mirror://gnu/guile/guile-2.0.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
-_md5_=707ef8e41c78146fac45eae072db19f1
+_md5_=db2cbc2b19bfe0a6863c8e67de0340da
