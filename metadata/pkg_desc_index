@@ -2129,7 +2129,7 @@ app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.56 0.60 0.61 0.62 0.63: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r1 0.6.1-r2 0.6.1-r3 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.0.25 2.1.9 2.1.18 2.1.19 2.1.20: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.0.25 2.1.9 2.1.18 2.1.19 2.1.20 2.1.20-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/prefix-chain-setup 0.4-r5: Chained EPREFIX bootstrapping utility
 app-portage/repo-commit 0.4.1 9999: A repository commit helper
