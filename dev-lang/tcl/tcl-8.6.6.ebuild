@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils flag-o-matic multilib multilib-minimal toolchain-funcs versionator
 
@@ -23,16 +23,22 @@ DEPEND="${RDEPEND}"
 SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.5.13-multilib.patch
+
+	# Bug 125971
+	"${FILESDIR}"/${PN}-8.6.1-conf.patch
+)
+
 src_prepare() {
 	find \
 		"${SPARENT}"/compat/* \
 		"${SPARENT}"/doc/try.n \
 		-delete || die
 
-	epatch "${FILESDIR}"/${PN}-8.5.13-multilib.patch
-
-	# Bug 125971
-	epatch "${FILESDIR}"/${PN}-8.6.1-conf.patch
+	pushd "${SPARENT}" &>/dev/null || die
+	default
+	popd &>/dev/null || die
 
 	# workaround stack check issues, bug #280934
 	use hppa && append-cflags "-DTCL_NO_STACK_CHECK=1"

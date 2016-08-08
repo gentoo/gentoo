@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils multilib multilib-minimal prefix toolchain-funcs versionator virtualx
 
@@ -35,20 +35,25 @@ DEPEND="${RDEPEND}
 SPARENT="${WORKDIR}/${MY_P}"
 S="${SPARENT}"/unix
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.5.11-fedora-xft.patch \
+	"${FILESDIR}"/${PN}-8.5.13-multilib.patch
+
+	"${FILESDIR}"/${PN}-8.4.15-aqua.patch
+
+	# Bug 125971
+	"${FILESDIR}"/${PN}-8.5.14-conf.patch
+)
+
 src_prepare() {
 	find \
 		"${SPARENT}"/compat/* \
 		-delete || die
 
-	epatch \
-		"${FILESDIR}"/${PN}-8.5.11-fedora-xft.patch \
-		"${FILESDIR}"/${PN}-8.5.13-multilib.patch
-
-	epatch "${FILESDIR}"/${PN}-8.4.15-aqua.patch
+	pushd "${SPARENT}" &>/dev/null || die
+	default
+	popd &>/dev/null || die
 	eprefixify Makefile.in
-
-	# Bug 125971
-	epatch "${FILESDIR}"/${PN}-8.5.14-conf.patch
 
 	# Make sure we use the right pkg-config, and link against fontconfig
 	# (since the code base uses Fc* functions).
@@ -57,7 +62,7 @@ src_prepare() {
 		-e "s:\<pkg-config\>:$(tc-getPKG_CONFIG):" \
 		-e 's:xft freetype2:xft freetype2 fontconfig:' \
 		-i configure.in || die
-	rm -f configure || die
+	rm configure || die
 
 	tc-export CC
 
@@ -89,7 +94,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	Xemake test
+	virtx emake test
 }
 
 multilib_src_install() {
