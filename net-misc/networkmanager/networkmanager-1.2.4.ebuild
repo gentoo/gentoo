@@ -212,8 +212,9 @@ multilib_src_configure() {
 
 	# Disable examples
 	cat > examples/Makefile <<-EOF
-	.PHONY: all install
+	.PHONY: all check install
 	all:
+	check:
 	install:
 	EOF
 }
