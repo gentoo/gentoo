@@ -1,20 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-MODULE_AUTHOR=GUGOD
-MODULE_VERSION=0.73
+EAPI=6
+
+DIST_AUTHOR=GUGOD
+DIST_VERSION=0.74
 inherit perl-module
 
 DESCRIPTION='Manage perl installations in your $HOME'
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
 	>=dev-perl/CPAN-Perl-Releases-1.940.0
+	<dev-perl/CPAN-Perl-Releases-2.880.0
 	>=dev-perl/Capture-Tiny-0.250.0
 	>=dev-perl/Devel-PatchPerl-1.280.0
 	>=virtual/perl-Pod-Parser-1.620.0
@@ -33,5 +35,3 @@ DEPEND="${RDEPEND}
 		>=dev-perl/Test-Spec-0.470.0
 	)
 "
-
-SRC_TEST="do parallel"
