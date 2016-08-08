@@ -7,6 +7,5 @@
 </maintainer>
 <use>
 <flag name="demo">Emit interim results during the run. May affect results</flag>
-<flag name="sctp">Include tests to measure SCTP performance</flag>
 </use>
 </pkgmetadata>
