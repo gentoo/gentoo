@@ -125,6 +125,10 @@ src_prepare() {
 	# Don't build examples, they are not needed and can cause build failure
 	sed -e '/^\s*examples\s*\\*/d' -i Makefile.{am,in} || die
 
+	# If Qt-5.7.0 is installed and the Qt based examples are desired
+	sed -e '/Qt[CDN]/s/Qt/Qt5/g' -e 's/moc_location/host_bins/' -i configure || die
+	sed -i 's/\(@CXXFLAGS@\)/\1 -fPIC/' examples/C/qt/Makefile.in || die
+
 	# Upstream patches from 1.2 branch
 	eapply "${FILESDIR}/${P}-sleep-monitor-upower-include.patch" #588278
 
