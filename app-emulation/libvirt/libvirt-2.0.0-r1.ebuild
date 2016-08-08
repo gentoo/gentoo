@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS="20160709" # CVE-2016-5008
+BACKPORTS=""
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -17,14 +17,14 @@ if [[ ${PV} = *9999* ]]; then
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
 		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -34,7 +34,7 @@ LICENSE="LGPL-2.1"
 IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
 	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
 	selinux systemd +udev uml +vepa virtualbox virt-network wireshark-plugins \
-	xen"
+	xen elibc_glibc"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -71,11 +71,12 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	caps? ( sys-libs/libcap-ng )
+	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
-	lvm? ( >=sys-fs/lvm2-2.02.48-r2 )
+	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	lxc? ( !systemd? ( sys-power/pm-utils ) )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
@@ -85,7 +86,7 @@ RDEPEND="
 	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
-		sys-fs/lvm2
+		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
@@ -226,7 +227,6 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
-		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch \
 		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&

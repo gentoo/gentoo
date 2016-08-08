@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ LICENSE="LGPL-2.1"
 IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
 	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
 	selinux systemd +udev uml +vepa virtualbox virt-network wireshark-plugins \
-	xen"
+	xen elibc_glibc"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -71,11 +71,12 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	caps? ( sys-libs/libcap-ng )
+	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
-	lvm? ( >=sys-fs/lvm2-2.02.48-r2 )
+	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	lxc? ( !systemd? ( sys-power/pm-utils ) )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
@@ -85,7 +86,7 @@ RDEPEND="
 	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
-		sys-fs/lvm2
+		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
