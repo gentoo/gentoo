@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-inherit eutils python-single-r1 multilib cmake-utils
+CMAKE_MAKEFILE_GENERATOR=emake
+inherit python-single-r1 cmake-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -25,7 +26,7 @@ PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xf
 #INTERFACES="+ncurses gtk"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
-LANGS=" cs de es fr hu it ja pl pt_BR ru tr"
+LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
 IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 #REQUIRED_USE=" || ( ncurses gtk )"
 
@@ -35,7 +36,7 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	charset? ( virtual/libiconv )
-	guile? ( dev-scheme/guile:12 )
+	guile? ( >=dev-scheme/guile-2.0 )
 	lua? ( dev-lang/lua:0[deprecated] )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl )
@@ -49,14 +50,14 @@ RDEPEND="
 #	gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	doc? (
-		app-text/asciidoc
+		>=dev-ruby/asciidoctor-1.5.4
 		dev-util/source-highlight
 	)
 	nls? ( >=sys-devel/gettext-0.15 )
 	test? ( dev-util/cpputest )
 "
 
-DOCS="AUTHORS.asciidoc ChangeLog.asciidoc ReleaseNotes.asciidoc README.asciidoc"
+DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.adoc"
 
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
@@ -68,9 +69,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local i
-
-	epatch "${PATCHES[@]}"
+	default
 
 	# fix libdir placement
 	sed -i \
@@ -79,6 +78,7 @@ src_prepare() {
 		CMakeLists.txt || die "sed failed"
 
 	# install only required translations
+	local i
 	for i in ${LANGS} ; do
 		if ! use linguas_${i} ; then
 			sed -i \
@@ -88,47 +88,50 @@ src_prepare() {
 	done
 
 	# install only required documentation ; en always
-	for i in `grep ADD_SUBDIRECTORY doc/CMakeLists.txt \
-			| sed -e 's/.*ADD_SUBDIRECTORY( \(..\) ).*/\1/' -e '/en/d'`; do
+	for i in $(grep add_subdirectory doc/CMakeLists.txt \
+			| sed -e 's/.*add_subdirectory(\(..\)).*/\1/' -e '/en/d'); do
 		if ! use linguas_${i} ; then
 			sed -i \
-				-e '/ADD_SUBDIRECTORY( '${i}' )/d' \
+				-e '/add_subdirectory('${i}')/d' \
 				doc/CMakeLists.txt || die
 		fi
 	done
+
+	# install docs in correct directory
+	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
 }
 
 src_configure() {
 	# $(cmake-utils_use_enable gtk)
 	# $(cmake-utils_use_enable ncurses)
 	local mycmakeargs=(
-		"-DENABLE_NCURSES=ON"
-		"-DENABLE_LARGEFILE=ON"
-		"-DENABLE_DEMO=OFF"
-		"-DENABLE_GTK=OFF"
-		"-DENABLE_JAVASCRIPT=OFF"
-		$(cmake-utils_use_enable alias)
-		$(cmake-utils_use_enable doc)
-		$(cmake-utils_use_enable charset)
-		$(cmake-utils_use_enable exec)
-		$(cmake-utils_use_enable fifo)
-		$(cmake-utils_use_enable guile)
-		$(cmake-utils_use_enable irc)
-		$(cmake-utils_use_enable logger)
-		$(cmake-utils_use_enable lua)
-		$(cmake-utils_use_enable nls)
-		$(cmake-utils_use_enable perl)
-		$(cmake-utils_use_enable python)
-		$(cmake-utils_use_enable relay)
-		$(cmake-utils_use_enable ruby)
-		$(cmake-utils_use_enable scripts)
-		$(cmake-utils_use_enable scripts script)
-		$(cmake-utils_use_enable spell ASPELL)
-		$(cmake-utils_use_enable ssl GNUTLS)
-		$(cmake-utils_use_enable tcl)
-		$(cmake-utils_use_enable test TESTS)
-		$(cmake-utils_use_enable trigger)
-		$(cmake-utils_use_enable xfer)
+		-DENABLE_NCURSES=ON
+		-DENABLE_LARGEFILE=ON
+		-DENABLE_DEMO=OFF
+		-DENABLE_GTK=OFF
+		-DENABLE_JAVASCRIPT=OFF
+		-DENABLE_ALIAS=$(usex alias)
+		-DENABLE_DOC=$(usex doc)
+		-DENABLE_CHARSET=$(usex charset)
+		-DENABLE_EXEC=$(usex exec)
+		-DENABLE_FIFO=$(usex fifo)
+		-DENABLE_GUILE=$(usex guile)
+		-DENABLE_IRC=$(usex irc)
+		-DENABLE_LOGGER=$(usex logger)
+		-DENABLE_LUA=$(usex lua)
+		-DENABLE_NLS=$(usex nls)
+		-DENABLE_PERL=$(usex perl)
+		-DENABLE_PYTHON=$(usex python)
+		-DENABLE_RELAY=$(usex relay)
+		-DENABLE_RUBY=$(usex ruby)
+		-DENABLE_SCRIPTS=$(usex scripts)
+		-DENABLE_SCRIPT=$(usex scripts)
+		-DENABLE_ASPELL=$(usex spell)
+		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_TCL=$(usex tcl)
+		-DENABLE_TESTS=$(usex test)
+		-DENABLE_TRIGGER=$(usex trigger)
+		-DENABLE_XFER=$(usex xfer)
 	)
 
 	if use python; then
