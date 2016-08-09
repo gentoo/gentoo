@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>tardyp@gmail.com</email>
+			<name>Pierre Tardy</name>
+		</maintainer>
+		<remote-id type="pypi">txrequests</remote-id>
+	</upstream>
+	<longdescription>Small add-on for the python requests http library.
+		Makes use twisted's ThreadPool, so that the requests'API returns
+		deferred.  The additional API and changes are minimal and strives to
+		avoid surprises.
+	</longdescription>
+</pkgmetadata>
