@@ -7225,10 +7225,10 @@ dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable sta
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1 0.11.1-r1: Configures Flask applications in a canonical way
-dev-python/flask-babel 0.8-r1 0.9 0.10.0: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 0.8-r1 0.9 0.10.0 0.11.1: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-bootstrap 3.3.5.7 3.3.6.0: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
@@ -8228,7 +8228,7 @@ dev-python/tempora 1.4: Objects and routines pertaining to date and time
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6: Terminals served to term.js using Tornado websockets
 dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0 4.9.1: A collection of helpers and mock objects for unit tests and doc tests
-dev-python/testify 0.5.7 0.7.2 0.8.0 0.9.0 0.10.0: A more pythonic replacement for the unittest module and nose
+dev-python/testify 0.5.7 0.7.2 0.8.0 0.9.0 0.10.0 0.11.0: A more pythonic replacement for the unittest module and nose
 dev-python/testpath 0.2 0.3: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 1.0.0: A pyunit extension for managing expensive test resources
