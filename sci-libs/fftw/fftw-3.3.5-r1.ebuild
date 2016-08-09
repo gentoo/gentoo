@@ -163,7 +163,15 @@ src_install() {
 	DOCS=( AUTHORS ChangeLog NEWS README TODO COPYRIGHT CONVENTIONS )
 	HTML_DOCS=( doc/html/ )
 
-	multibuild_foreach_variant multilib-minimal_src_install
+	#workaroud for bug #590446
+	my_abi_install() {
+		pushd "${BUILD_DIR}" >/dev/null || die
+		emake DESTDIR="${D}" install
+		popd >/dev/null || die
+	}
+	multibuild_foreach_variant multilib_foreach_abi my_abi_install
+
+	einstalldocs
 
 	if use doc; then
 		dodoc doc/*.pdf
