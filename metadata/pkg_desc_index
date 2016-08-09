@@ -14183,7 +14183,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/telegram-desktop-bin 0.9.56 0.10.0: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 0.9.56 0.10.0 0.10.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.3 5.16.3-r1: An account manager and channel dispatcher for the Telepathy framework
@@ -17876,7 +17876,7 @@ www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39: Lightwe
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.1 1.10.1-r1 1.11.2: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.1 1.10.1-r1 1.11.2 1.11.3: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.7-r1: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
