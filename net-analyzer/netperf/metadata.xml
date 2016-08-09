@@ -5,6 +5,17 @@
 <email>netmon@gentoo.org</email>
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
+<longdescription lang="en">
+Netperf is a benchmark that can be used to measure the performance of many
+different types of networking. It provides tests for both unidirectional
+throughput, and end-to-end latency. The environments currently measureable by
+netperf include:
+
+ - TCP and UDP via BSD Sockets for both IPv4 and IPv6
+ - DLPI
+ - Unix Domain Sockets
+ - SCTP for both IPv4 and IPv6
+</longdescription>
 <use>
 <flag name="demo">Emit interim results during the run. May affect results</flag>
 </use>
