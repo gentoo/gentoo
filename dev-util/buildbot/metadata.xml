@@ -5,6 +5,10 @@
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
 	<longdescription lang="en">The BuildBot is a system to automate the compile/test cycle required
     by most software projects to validate code changes.
     Features:
@@ -25,8 +29,8 @@
 	</use>
 	<upstream>
 		<maintainer>
-			<email>dustin@v.igoro.us</email>
-			<name>Dustin J. Mitchell</name>
+			<email>devel@buildbot.net</email>
+			<name>Developers List</name>
 		</maintainer>
 		<remote-id type="pypi">buildbot</remote-id>
 	</upstream>
