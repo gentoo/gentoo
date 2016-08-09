@@ -9195,7 +9195,7 @@ dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driv
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 2.14.2 2.99.0 3.3.3 3.4.2 3.5.0 3.5.1: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.4.5: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.4.5 0.5.0: Retry intermittently failing rspec examples
 dev-ruby/rspec-support 3.3.0 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.0 0.70.7: RSpec support and matchers
 dev-ruby/ruby-atk 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Atk bindings
@@ -9309,7 +9309,7 @@ dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attri
 dev-ruby/stomp 1.3.4 1.3.5 1.4.0 1.4.1: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.5.2 2.6.0 2.6.0-r1 2.6.1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
-dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
+dev-ruby/syntax 1.2.0-r1 1.2.1: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.2 1.6.3 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
 dev-ruby/systemu 2.6.5: Universal capture of STDOUT and STDERR and handling of child process PID
 dev-ruby/tdiff 0.3.3-r1: Calculates the differences between two tree-like structures
@@ -16495,7 +16495,7 @@ sys-apps/dbus 1.8.16 1.8.20 1.10.6 1.10.8-r1: A message bus system, a simple way
 sys-apps/dcfldd 1.3.4.1: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.4 4.7 4.8: A selection of tools from Debian
-sys-apps/diffutils 3.3: Tools to make diffs and compare files
+sys-apps/diffutils 3.3 3.4: Tools to make diffs and compare files
 sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 2.12-r1 3.0: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
