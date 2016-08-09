@@ -24,7 +24,7 @@ S=${WORKDIR}
 
 JENKINS_DIR=/var/lib/jenkins
 
-pkg_preinst() {
+pkg_setup() {
 	enewgroup jenkins
 	enewuser jenkins -1 -1 ${JENKINS_DIR} jenkins
 }
