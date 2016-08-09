@@ -12,17 +12,19 @@ inherit autotools-utils multilib toolchain-funcs fortran-2 flag-o-matic java-pkg
 DESCRIPTION="High-level interactive language for numerical computations"
 LICENSE="GPL-3"
 HOMEPAGE="http://www.octave.org/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java opengl
+IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java jit opengl
 	postscript +qhull +qrupdate readline +sparse static-libs X zlib"
-KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+REQUIRED_USE="?? ( graphicsmagick imagemagick )"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libpcre:3=
 	sys-libs/ncurses:0=
+	virtual/blas
 	virtual/lapack
 	curl? ( net-misc/curl:0= )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -30,11 +32,12 @@ RDEPEND="
 	gnuplot? ( sci-visualization/gnuplot )
 	gui? ( x11-libs/qscintilla:0= )
 	hdf5? ( sci-libs/hdf5:0= )
-	imagemagick? (
-		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
-		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
-	)
+	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+	imagemagick? ( media-gfx/imagemagick:=[cxx] )
 	java? ( >=virtual/jre-1.6.0:* )
+	jit? (
+		>=sys-devel/autoconf-archive-2015.02.04
+		>=sys-devel/llvm-3.3:0= <sys-devel/llvm-3.6:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -66,16 +69,16 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-genericrecommended
-		dev-texlive/texlive-metapost
-		sys-apps/texinfo )
+		dev-texlive/texlive-metapost )
+	sys-apps/texinfo
 	dev-util/gperf
 	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.3-texi.patch
 	"${FILESDIR}"/${PN}-3.8.0-disable-getcwd-path-max-test-as-it-is-too-slow.patch
-	"${FILESDIR}"/${PN}-3.8.0-imagemagick-configure.patch
-	"${FILESDIR}"/${PN}-3.8.1-imagemagick.patch
+	"${FILESDIR}"/${PN}-4.0.0-imagemagick-configure.patch
+	"${FILESDIR}"/${PN}-4.0.0-imagemagick.patch
 	"${FILESDIR}"/${PN}-3.8.1-pkgbuilddir.patch
 )
 
@@ -85,6 +88,12 @@ src_prepare() {
 		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
+
+	# Octave fails to build with LLVM 3.5 https://savannah.gnu.org/bugs/?41061
+	use jit && \
+		has_version ">=sys-devel/llvm-3.5" && \
+		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch && \
+		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5-gnulib-hg.patch
 
 	# Fix bug 501756
 	sed -i \
@@ -106,11 +115,11 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var/state/octave"
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
+		--disable-64
 		$(use_enable doc docs)
 		$(use_enable java)
 		$(use_enable gui)
-		# requires llvm < 3.5
-		--disable-jit
+		$(use_enable jit)
 		$(use_enable readline)
 		$(use_with curl)
 		$(use_with fftw fftw3)
@@ -130,12 +139,10 @@ src_configure() {
 		$(use_with X x)
 		$(use_with zlib z)
 	)
-	if use imagemagick; then
-		if has_version media-gfx/graphicsmagick[cxx]; then
-			myeconfargs+=( "--with-magick=GraphicsMagick" )
-		else
-			myeconfargs+=( "--with-magick=ImageMagick" )
-		fi
+	if use graphicsmagick; then
+		myeconfargs+=( "--with-magick=GraphicsMagick" )
+	elif use imagemagick; then
+		myeconfargs+=( "--with-magick=ImageMagick" )
 	else
 		myeconfargs+=( "--without-magick" )
 	fi
@@ -144,14 +151,20 @@ src_configure() {
 
 src_compile() {
 	emake
-	if use java ; then
+	if use java || use jit ; then
 		pax-mark m "${S}/src/.libs/octave-cli"
 	fi
 }
 
 src_install() {
 	autotools-utils_src_install
-	use doc && dodoc $(find doc -name \*.pdf)
+	if use doc; then
+		dodoc $(find doc -name \*.pdf)
+	else
+		# bug 566134, macros.texi is installed by make install if use doc
+		insinto /usr/share/${PN}/${PV}/etc
+		doins doc/interpreter/macros.texi
+	fi
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
 	use java && \
 		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"
