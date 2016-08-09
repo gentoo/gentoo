@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="drawing webphoto"
 RDEPEND="dev-lang/perl
 	drawing? ( dev-perl/Goo-Canvas  )
 	webphoto? ( gnome-extra/gnome-web-photo )
-	|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
+	|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick-compat,perl] )
 	dev-perl/libxml-perl
 	dev-perl/gnome2-wnck
 	dev-perl/gnome2-canvas

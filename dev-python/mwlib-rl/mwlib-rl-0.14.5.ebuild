@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND=">=dev-python/mwlib-0.15.8-r1[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	media-fonts/freefont
-	|| ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick )
+	|| ( media-gfx/graphicsmagick[imagemagick-compat] media-gfx/imagemagick )
 	pdftk? ( app-text/pdftk )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND="app-emulation/wine
 	app-arch/unzip
 	app-crypt/gnupg
 	dev-python/wxpython:2.8[${PYTHON_USEDEP}]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	net-misc/wget
 	x11-apps/mesa-progs
 	x11-terms/xterm

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 inherit eutils python-r1
 
-DESCRIPTION="Configurable and full featured FVWM theme, with lots of transparency and freedesktop compatible menu"
+DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="${PYTHON_DEPS}
 	>=x11-wm/fvwm-2.6.5[png]
-	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] )
+	|| ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick-compat] )
 	|| ( >=x11-misc/stalonetray-0.6.2-r2 x11-misc/trayer )
 	|| ( x11-misc/hsetroot media-gfx/feh )
 	sys-apps/sed

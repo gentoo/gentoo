@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,14 +12,15 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+alsa audioscrobbler debug dbus +ffmpeg flac libnotify mad openal pulseaudio syslog"
+IUSE="+alsa audioscrobbler debug dbus +ffmpeg flac graphicsmagick +imagemagick libnotify mad openal pulseaudio syslog"
+REQUIRED_USE="^^ ( graphicsmagick imagemagick )"
 
 RDEPEND="dev-cpp/gtkmm:2.4
 	dev-cpp/pangomm:1.4
 	media-libs/taglib
 	dev-db/sqlite:3
-	|| ( media-gfx/imagemagick[cxx]
-	media-gfx/graphicsmagick[imagemagick] )
+	imagemagick? ( media-gfx/imagemagick[cxx] )
+	graphicsmagick? ( media-gfx/graphicsmagick[cxx,imagemagick-compat] )
 	mad? ( media-libs/libmad )
 	flac? ( media-libs/flac[cxx] )
 	ffmpeg? ( >=virtual/ffmpeg-9 )

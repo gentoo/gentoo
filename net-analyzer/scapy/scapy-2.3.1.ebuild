@@ -26,7 +26,7 @@ RDEPEND="
 	imagemagick? (
 		|| (
 			media-gfx/imagemagick
-			media-gfx/graphicsmagick[imagemagick]
+			media-gfx/graphicsmagick[imagemagick-compat]
 		)
 	)
 	visual? ( dev-python/visual )

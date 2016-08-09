@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 				dev-libs/libxslt
 				|| (
 					media-gfx/imagemagick[png]
-					media-gfx/graphicsmagick[imagemagick,png]
+					media-gfx/graphicsmagick[imagemagick-compat,png]
 				)
 		)
 		virtual/pkgconfig
