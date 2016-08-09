@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+		<name>Brian Dolbec</name>
+	</maintainer>
+	<longdescription lang="en">The buildbot-waterfall-view plugin is the user interface code used to generate
+    the web pages used to display information about the builds.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>devel@buildbot.net</email>
+			<name>Developers List</name>
+		</maintainer>
+		<remote-id type="pypi">buildbot</remote-id>
+	</upstream>
+</pkgmetadata>
