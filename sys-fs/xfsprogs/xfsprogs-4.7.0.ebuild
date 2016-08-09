@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils toolchain-funcs multilib
 
@@ -18,16 +17,22 @@ IUSE="libedit nls readline static static-libs"
 REQUIRED_USE="static? ( static-libs )"
 
 LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
-	readline? ( sys-libs/readline[static-libs(+)] )
+	readline? ( sys-libs/readline:0=[static-libs(+)] )
 	!readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	!<sys-fs/xfsdump-3"
 DEPEND="${RDEPEND}
 	static? (
 		${LIB_DEPEND}
-		readline? ( sys-libs/ncurses[static-libs] )
+		readline? ( sys-libs/ncurses:0=[static-libs] )
 	)
 	nls? ( sys-devel/gettext )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.7.0-sharedlibs.patch
+	"${FILESDIR}"/${PN}-4.7.0-libxcmd-link.patch
+	"${FILESDIR}"/${PN}-4.3.0-cross-compile.patch
+)
 
 pkg_setup() {
 	if use readline && use libedit ; then
@@ -37,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.2.0-sharedlibs.patch
+	epatch "${PATCHES[@]}"
 
 	# LLDFLAGS is used for programs, so apply -all-static when USE=static is enabled.
 	# Clear out -static from all flags since we want to link against dynamic xfs libs.
@@ -48,16 +53,11 @@ src_prepare() {
 	find -name Makefile -exec \
 		sed -i -r -e '/^LLDFLAGS [+]?= -static(-libtool-libs)?$/d' {} +
 
-	# libdisk has broken blkid conditional checking
-	sed -i \
-		-e '/LIB_SUBDIRS/s:libdisk::' \
-		Makefile || die
-
-	# TODO: write a patch for configure.in to use pkg-config for the uuid-part
+	# TODO: Write a patch for configure.ac to use pkg-config for the uuid-part.
 	if use static && use readline ; then
 		sed -i \
-			-e 's|-lreadline|\0 -lncurses|' \
-			-e 's|-lblkid|\0 -luuid|' \
+			-e 's|-lreadline|& -lncurses|' \
+			-e 's|-lblkid|& -luuid|' \
 			configure || die
 	fi
 }
@@ -75,8 +75,6 @@ src_configure() {
 	fi
 
 	econf \
-		--bindir=/usr/bin \
-		--libexecdir=/usr/$(get_libdir) \
 		$(use_enable nls gettext) \
 		$(use_enable readline) \
 		$(usex readline --disable-editline $(use_enable libedit editline)) \
@@ -91,7 +89,7 @@ src_install() {
 	emake -j1 DIST_ROOT="${ED}" install-dev
 
 	# handle is for xfsdump, the rest for xfsprogs
-	gen_usr_ldscript -a xfs xlog
+	gen_usr_ldscript -a handle xcmd xfs xlog
 	# removing unnecessary .la files if not needed
 	use static-libs || find "${ED}" -name '*.la' -delete
 }

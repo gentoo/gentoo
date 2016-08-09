@@ -1,0 +1,30 @@
+From d01d3689fd512811b9d860598ddf26089bb5955c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 9 Aug 2016 22:37:45 +0800
+Subject: [PATCH xfsprogs] libxcmd: link against used libs
+
+Since this lib uses symbols from libxfs (platform_findsizes) and many
+symbols from libblkid, link against both.  Otherwise, the resulting
+shared lib has missing symbols which makes linking against annoying.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ libxcmd/Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libxcmd/Makefile b/libxcmd/Makefile
+index aab8d6d63624..46ba138a37e2 100644
+--- a/libxcmd/Makefile
++++ b/libxcmd/Makefile
+@@ -12,6 +12,8 @@ LT_AGE = 0
+ 
+ CFILES = command.c input.c paths.c projects.c help.c quit.c topology.c
+ 
++LTLIBS = $(LIBXFS) $(LIBBLKID)
++
+ ifeq ($(HAVE_GETMNTENT),yes)
+ LCFLAGS += -DHAVE_GETMNTENT
+ endif
+-- 
+2.9.0
+

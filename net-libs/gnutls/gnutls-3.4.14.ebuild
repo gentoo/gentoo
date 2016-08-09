@@ -10,14 +10,11 @@ DESCRIPTION="A TLS 1.2 and SSL 3.0 implementation for the GNU project"
 HOMEPAGE="http://www.gnutls.org/"
 SRC_URI="mirror://gnupg/gnutls/v$(get_version_component_range 1-2)/${P}.tar.xz"
 
-# LGPL-3 for libgnutls library and GPL-3 for libgnutls-extra library.
-# soon to be relicensed as LGPL-2.1 unless heartbeat extension enabled.
-LICENSE="GPL-3 LGPL-3"
+LICENSE="GPL-3 LGPL-2.1"
 SLOT="0/30" # libgnutls.so number
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE_LINGUAS=" en cs de fi fr it ms nl pl sv uk vi zh_CN"
-IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test +tools zlib ${IUSE_LINGUAS// / linguas_}"
-# heartbeat support is not disabled until re-licensing happens fullyf
+IUSE="+cxx +crywrap dane doc examples guile nls +openssl pkcs11 static-libs test +tls-heartbeat +tools zlib ${IUSE_LINGUAS// / linguas_}"
 
 # NOTICE: sys-devel/autogen is required at runtime as we
 # use system libopts
@@ -96,7 +93,6 @@ multilib_src_configure() {
 	econf \
 		--disable-valgrind-tests \
 		--without-included-libtasn1 \
-		--enable-heartbeat-support \
 		$(use_enable cxx) \
 		$(use_enable dane libdane) \
 		$(multilib_native_enable manpages) \
@@ -108,6 +104,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable test tests) \
 		$(use_enable nls) \
 		$(use_enable openssl openssl-compatibility) \
+		$(use_enable tls-heartbeat heartbeat-support) \
 		$(use_enable static-libs static) \
 		$(use_with pkcs11 p11-kit) \
 		$(use_with zlib) \
