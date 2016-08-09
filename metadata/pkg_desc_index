@@ -2672,7 +2672,7 @@ app-vim/voom 5.1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.1 0.2: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r1: vim plugin: XQuery syntax highlighting
-app-vim/xsl-syntax 0.3.11-r1 0.3.11-r2: vim plugin: Syntax for XSLT (with HTML and others)
+app-vim/xsl-syntax 0.3.11-r2: vim plugin: Syntax for XSLT (with HTML and others)
 app-vim/yankring 19.0: vim plugin: maintains a history of previous yanks and deletes
 app-vim/youcompleteme 20130910 99999999: vim plugin: a code-completion engine for Vim
 app-vim/zenburn 2.25: Low-contrast color scheme for Vim
