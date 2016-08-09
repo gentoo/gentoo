@@ -9803,7 +9803,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.11 2.12: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
@@ -11298,7 +11298,6 @@ kde-apps/kfind 15.12.3 16.04.3: KDE file finder utility
 kde-apps/kfloppy 15.12.3 16.04.3: A straightforward graphical means to format 3.5" and 5.25" floppy disks
 kde-apps/kfmclient 15.12.3 16.04.3: KDE tool for opening URLs from the command line
 kde-apps/kfourinline 15.12.3-r1 16.04.3: KDE four-in-a-row game
-kde-apps/kgamma 4.14.3: KDE screen gamma values kcontrol module
 kde-apps/kgeography 15.12.3 16.04.3: Geography learning tool
 kde-apps/kget 15.12.3 16.04.3: An advanced download manager by KDE
 kde-apps/kglobalaccel 15.12.3 16.04.3: KDE's Global Shortcut Daemon
@@ -16078,7 +16077,7 @@ sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansi
 sci-mathematics/normaliz 2.12.2 3.1.1: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.3.1 2.5.0 2.5.2 2.5.3 2.5.4: NuSMV: new symbolic model checker
-sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r1: High-level interactive language for numerical computations
+sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2-r1 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r2: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
