@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Network performance benchmark
+EAPI=6
+HOMEPAGE=http://www.netperf.org/
+IUSE=demo sctp
+KEYWORDS=~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=netperf
+SLOT=0
+SRC_URI=ftp://ftp.netperf.org/netperf/netperf-2.7.0.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	user	c66cbe7502fe1161066eb947d15b79f6
+_md5_=c77f92096e084b7afd09b8d450c59923
