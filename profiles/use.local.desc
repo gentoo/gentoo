@@ -5883,7 +5883,6 @@ net-mail/notmuch:mutt - Install helper script for Mutt
 net-mail/notmuch:nmbug - Install experimental tag sharing / pseudo-bug-tracking script for Notmuch (see http://notmuchmail.org/nmbug/)
 net-mail/notmuch:valgrind - Depend on dev-util/vagrind for test suite
 net-mail/offlineimap:sqlite - Enable runtime support for sqlite mail status backend.
-net-mail/postfix-logwatch:logwatch - Install filters for use with sys-apps/logwatch.
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
 net-mail/qpopper:drac - Enables DRAC support
