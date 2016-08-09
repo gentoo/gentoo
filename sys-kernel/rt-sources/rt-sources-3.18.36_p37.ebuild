@@ -11,7 +11,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
 inherit versionator
 
 CKV="$(get_version_component_range 1-3)"
-K_SECURITY_UNSUPPORTED="yes"
+K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 RT_PATCHSET="${PV/*_p}"
 
