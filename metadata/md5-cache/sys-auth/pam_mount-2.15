@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/pam-0.99 >=sys-libs/libhx-3.12.1 >=dev-libs/libxml2-2.6 crypt
 SLOT=0
 SRC_URI=mirror://sourceforge/pam-mount/pam_mount-2.15.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=e4b9491a78819b0cc038e76e556522ef

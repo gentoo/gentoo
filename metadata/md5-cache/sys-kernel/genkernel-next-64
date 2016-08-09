@@ -11,5 +11,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v64.tar.gz -> genkernel-next-64.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=855ad2209b320561da2014520fc7e714

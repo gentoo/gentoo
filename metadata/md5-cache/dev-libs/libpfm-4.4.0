@@ -8,5 +8,5 @@ LICENSE=GPL-2 MIT
 SLOT=0/4
 SRC_URI=mirror://sourceforge/perfmon2/libpfm4/libpfm-4.4.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=b3a15a74ee0c0d1d2ff24d7e8849ad86

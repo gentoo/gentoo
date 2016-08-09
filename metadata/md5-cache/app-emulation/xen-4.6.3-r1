@@ -12,5 +12,5 @@ RESTRICT=test splitdebug strip
 SLOT=0
 SRC_URI=http://bits.xensource.com/oss-xen/release/4.6.3/xen-4.6.3.tar.gz https://dev.gentoo.org/~dlan/distfiles/xen-security-patches-13.tar.xz
 _eclass_exported_funcs=pkg_pretend:mount-boot pkg_prerm:mount-boot pkg_preinst:mount-boot pkg_postrm:mount-boot pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	mount-boot	41ed556fa5641393d5323e421c8e5bcf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=e57c493e0e9b1feadf264d54170182cb

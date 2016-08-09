@@ -12,5 +12,5 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/tatsuhiro-t/aria2/releases/download/release-1.23.0/aria2-1.23.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=db7d2c610f541a4c9b104da32b1fa2e8

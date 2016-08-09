@@ -8,5 +8,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://ftp.awk.cz/pub/cntlm-0.93beta5.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6
 _md5_=02f346c4e9d5dcd626e6d998f22db1ec

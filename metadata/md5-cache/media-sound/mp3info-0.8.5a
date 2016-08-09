@@ -10,5 +10,5 @@ RDEPEND=gtk? ( >=x11-libs/gtk+-2.6.10:2 ) sys-libs/ncurses
 SLOT=0
 SRC_URI=http://ibiblio.org/pub/linux/apps/sound/mp3-utils/mp3info/mp3info-0.8.5a.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=ffc1f31c6df45aae91022a6776a84f9b

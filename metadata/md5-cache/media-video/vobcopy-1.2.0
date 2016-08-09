@@ -9,5 +9,5 @@ RDEPEND=>=media-libs/libdvdread-0.9.4
 SLOT=0
 SRC_URI=http://lpn.rnbhq.org/download/vobcopy-1.2.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=21a8b5e27b9bf74452303bc17ac4f7ac

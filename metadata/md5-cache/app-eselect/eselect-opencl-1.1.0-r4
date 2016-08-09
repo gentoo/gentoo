@@ -9,5 +9,5 @@ RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~xarthisius/distfiles/eselect-opencl-1.1.0-r1.tar.xz https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl10.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl11.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl12.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl20.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl21.zip http://packages.gentooexperimental.org/opencl-cpp-headers.tar
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=edb9bd463814f7982385327f49ab974e

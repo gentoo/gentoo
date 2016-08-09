@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/br101/horst/archive/version-5.0.tar.gz -> horst-5.0.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
 _md5_=526ebccab95d1d024557a2cfb287ee1a

@@ -10,5 +10,5 @@ RDEPEND=gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
 SLOT=0
 SRC_URI=http://humdi.net/vnstat/vnstat-1.15.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6
 _md5_=bbd114800e1d1afeb39eb844e447ad0c

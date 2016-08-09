@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.0 nls? ( virtual/libintl ) sys-libs/ncurses:0 sys-libs
 SLOT=0
 SRC_URI=mirror://sourceforge/palcal/pal-0.4.3.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e41dbc7154fb2749724e2adedfdf71df	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e41dbc7154fb2749724e2adedfdf71df	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=6745c82bef5d6ac11aa7051740fc7848

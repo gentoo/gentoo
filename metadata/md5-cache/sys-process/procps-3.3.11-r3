@@ -10,5 +10,5 @@ RDEPEND=ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] ) selinux? ( sys-libs/l
 SLOT=0/5
 SRC_URI=mirror://sourceforge/procps-ng/procps-ng-3.3.11.tar.xz https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> procps-3.3.11-remove_Unix98_output_limits.patch
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=64d63661778bca6651eb816dfc521002
