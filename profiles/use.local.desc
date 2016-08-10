@@ -3303,7 +3303,6 @@ kde-apps/kopete:otr - Allows crypting your chat (drugs and talking nonsense are 
 kde-apps/kopete:pipes - Send messages to external pipe.
 kde-apps/kopete:privacy - Filter for incoming messages
 kde-apps/kopete:skype - Enable Skype protocol handler (not fully functional yet).
-kde-apps/kopete:sms - Enable SMS sendinge functionality.
 kde-apps/kopete:statistics - Everybody loves statistic graphs, especially cake ones. ;]
 kde-apps/kopete:testbed - Enable the testbed protocol.
 kde-apps/kopete:texteffect - Various fancy text effects for your messages (don't ever consider writing us with this enabled ;]).
