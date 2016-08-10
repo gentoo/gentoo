@@ -7,9 +7,8 @@
 		<description>Primary Maintainer</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>whissi@whissi.de</email>
-		<name>Thomas D. (Whissi)</name>
-		<description>Proxy-Maintainer, CC. bugs</description>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<use>
 		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>

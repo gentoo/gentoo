@@ -2,18 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Primary proxied maintainer; set to assignee in all bugs</description>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+		<description>Primary maintainer</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>whissi@whissi.de</email>
-		<name>Thomas D.</name>
-		<description>Proxied co-maintainer</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
+		<email>bugs@bergstroem.nu</email>
+		<name>Johan Bergström</name>
+		<description>Proxy maintainer; CC him on bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 		Collectd gathers statistics about the system it is running on and stores this

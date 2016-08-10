@@ -6,6 +6,10 @@
     <name>Tiziano Müller</name>
   </maintainer>
   <maintainer type="person">
+    <email>whissi@gentoo.org</email>
+    <name>Thomas Deutschmann</name>
+  </maintainer>
+  <maintainer type="person">
     <email>bugs@bergstroem.nu</email>
     <name>Johan Bergström</name>
     <description>Co-maintainer, CC on bugs.</description>
