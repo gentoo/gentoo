@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="doc static-libs"
 
 src_prepare() {
