@@ -98,6 +98,10 @@ RDEPEND="${COMMONDEPEND}
 	app-misc/mime-types
 	x11-misc/shared-mime-info"
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_configure() {
 	# Don't use libsoup-gnome (bug #565924)
 	export HAVE_LIBSOUP_GNOME=no

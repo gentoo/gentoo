@@ -16,7 +16,7 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc gdata gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell +gnutls startup-notification valgrind webkit xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -46,55 +46,68 @@ PLUGINBLOCK="!!mail-client/claws-mail-acpi-notifier
 	!!mail-client/claws-mail-address_keeper
 	!!mail-client/claws-mail-pdf-viewer"
 
-COMMONDEPEND=">=sys-devel/gettext-0.18
+COMMONDEPEND="
+	archive? (
+		app-arch/libarchive
+		>=net-misc/curl-7.9.7
+	)
+	bogofilter? ( mail-filter/bogofilter )
+	calendar? ( >=net-misc/curl-7.9.7 )
+	dbus? ( >=dev-libs/dbus-glib-0.60 )
 	gdata? ( >=dev-libs/libgdata-0.17.1 )
+	gnutls? ( >=net-libs/gnutls-3.0 )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( >=x11-libs/gtk+-2.20:2 )
-	pda? ( >=app-pda/jpilot-0.99 )
-	gnutls? ( >=net-libs/gnutls-3.0 )
-	ldap? ( >=net-nds/openldap-2.0.7 )
-	pgp? ( >=app-crypt/gpgme-1.0.0 )
-	valgrind? ( dev-util/valgrind )
-	dbus? ( >=dev-libs/dbus-glib-0.60 )
-	spell? ( >=app-text/enchant-1.0.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
+	ldap? ( >=net-nds/openldap-2.0.7 )
+	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
-	startup-notification? ( x11-libs/startup-notification )
-	session? ( x11-libs/libSM
-			x11-libs/libICE )
-	archive? ( app-arch/libarchive
-		>=net-misc/curl-7.9.7 )
-	bogofilter? ( mail-filter/bogofilter )
 	notification? (
-		libnotify? ( x11-libs/libnotify )
+		dev-libs/glib:2
 		libcanberra? (  media-libs/libcanberra[gtk] )
 		libindicate? ( dev-libs/libindicate:3[gtk] )
-		dev-libs/glib:2
+		libnotify? ( x11-libs/libnotify )
+	)
+	pda? ( >=app-pda/jpilot-0.99 )
+	pdf? ( app-text/poppler[cairo] )
+	pgp? ( >=app-crypt/gpgme-1.0.0 )
+	session? (
+		x11-libs/libICE
+		x11-libs/libSM
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
-	calendar? ( >=net-misc/curl-7.9.7 )
-	pdf? ( app-text/poppler[cairo] )
 	spam-report? ( >=net-misc/curl-7.9.7 )
+	spell? ( >=app-text/enchant-1.0.0 )
+	startup-notification? ( x11-libs/startup-notification )
+	valgrind? ( dev-util/valgrind )
 	webkit? ( >=net-libs/webkit-gtk-1.1.14:2 )
 "
 
 DEPEND="${PLUGINBLOCK}
 	${COMMONDEPEND}
 	app-arch/xz-utils
-	xface? ( >=media-libs/compface-1.4 )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	xface? ( >=media-libs/compface-1.4 )"
 
 RDEPEND="${COMMONDEPEND}
-	pdf? ( app-text/ghostscript-gpl )
+	app-misc/mime-types
+	x11-misc/shared-mime-info
 	clamav? ( app-antivirus/clamav )
 	networkmanager? ( net-misc/networkmanager )
+	pdf? ( app-text/ghostscript-gpl )
 	perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.3 )
-	rss? ( net-misc/curl
-		dev-libs/libxml2 )
-	app-misc/mime-types
-	x11-misc/shared-mime-info"
+	python? (
+		${PYTHON_DEPS}
+		>=dev-python/pygtk-2.10.3
+	)
+	rss? (
+		dev-libs/libxml2
+		net-misc/curl
+	)"
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -106,51 +119,51 @@ src_configure() {
 	export HAVE_LIBSOUP_GNOME=no
 
 	local myeconfargs=(
-		$(use_enable debug crash-dialog)
-		$(use_enable valgrind valgrind)
-		$(use_enable doc manual)
-		$(use_enable gtk3)
-		$(use_enable ipv6)
-		$(use_enable ldap)
-		$(use_enable dbus dbus)
-		$(use_enable networkmanager)
-		$(use_enable pda jpilot)
-		$(use_enable session libsm)
-		$(use_enable spell enchant)
-		$(use_enable gnutls)
-		$(use_enable startup-notification)
-		$(use_enable xface compface)
-		$(use_enable archive archive-plugin)
-		$(use_enable bogofilter bogofilter-plugin)
-		$(use_enable calendar vcalendar-plugin)
-		$(use_enable clamav clamd-plugin)
-		$(use_enable gdata gdata-plugin)
-		$(use_enable notification notification-plugin)
-		$(use_enable pdf pdf_viewer-plugin)
-		$(use_enable perl perl-plugin)
-		$(use_enable pgp pgpmime-plugin)
-		$(use_enable pgp pgpinline-plugin)
-		$(use_enable pgp pgpcore-plugin)
-		$(use_enable python python-plugin)
-		$(use_enable rss rssyl-plugin)
-		$(use_enable spamassassin spamassassin-plugin)
-		$(use_enable sieve managesieve-plugin)
-		$(use_enable smime smime-plugin)
-		$(use_enable spam-report spam_report-plugin)
-		$(use_enable webkit fancy-plugin)
-		--enable-alternate-addressbook
-		--enable-nls
+		--disable-bsfilter-plugin
+		--disable-generic-umpc
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
+		--enable-alternate-addressbook
 		--enable-att_remover-plugin
 		--enable-attachwarner-plugin
 		--enable-fetchinfo-plugin
 		--enable-mailmbox-plugin
 		--enable-newmail-plugin
 		--enable-tnef_parse-plugin
-		--disable-generic-umpc
-		--disable-bsfilter-plugin
 		--with-password-encryption=$(usex gnutls gnutls old)
+		$(use_enable archive archive-plugin)
+		$(use_enable bogofilter bogofilter-plugin)
+		$(use_enable calendar vcalendar-plugin)
+		$(use_enable clamav clamd-plugin)
+		$(use_enable dbus)
+		$(use_enable debug crash-dialog)
+		$(use_enable doc manual)
+		$(use_enable gdata gdata-plugin)
+		$(use_enable gnutls)
+		$(use_enable gtk3)
+		$(use_enable ipv6)
+		$(use_enable ldap)
+		$(use_enable networkmanager)
+		$(use_enable nls)
+		$(use_enable notification notification-plugin)
+		$(use_enable pda jpilot)
+		$(use_enable pdf pdf_viewer-plugin)
+		$(use_enable perl perl-plugin)
+		$(use_enable pgp pgpcore-plugin)
+		$(use_enable pgp pgpinline-plugin)
+		$(use_enable pgp pgpmime-plugin)
+		$(use_enable python python-plugin)
+		$(use_enable rss rssyl-plugin)
+		$(use_enable session libsm)
+		$(use_enable sieve managesieve-plugin)
+		$(use_enable smime smime-plugin)
+		$(use_enable spam-report spam_report-plugin)
+		$(use_enable spamassassin spamassassin-plugin)
+		$(use_enable spell enchant)
+		$(use_enable startup-notification)
+		$(use_enable valgrind valgrind)
+		$(use_enable webkit fancy-plugin)
+		$(use_enable xface compface)
 	)
 
 	# libetpan is needed if user wants nntp or imap functionality
@@ -172,11 +185,9 @@ src_install() {
 	# => also install higher resolution icons in /usr/share/icons/hicolor/...
 	insinto /usr/share/pixmaps
 	doins ${PN}.png
-	local res resdir
-	for res in 64x64 128x128 ; do
-		resdir="/usr/share/icons/hicolor/${res}/apps"
-		insinto ${resdir}
-		newins ${PN}-${res}.png ${PN}.png
+	local size
+	for size in 64 128 ; do
+		newicon -s ${size} ${PN}-${size}x${size}.png ${PN}.png
 	done
 
 	docinto tools
