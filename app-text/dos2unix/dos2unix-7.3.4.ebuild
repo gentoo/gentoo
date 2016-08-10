@@ -69,7 +69,7 @@ src_prepare() {
 
 lintl() {
 	# same logic as from virtual/libintl
-	use !elibc_glibc && use !elibc_uclibc && echo "-lintl"
+	use !elibc_glibc && use !elibc_uclibc && use !elibc_musl && echo "-lintl"
 }
 
 src_compile() {
