@@ -12419,7 +12419,7 @@ media-libs/flickcurl 1.24 1.25 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fmod 3.75 4.38.00 4.38.02: music and sound effects library, and a sound processing system
 media-libs/fnlib 0.5-r2: Font Library for enlightenment
-media-libs/fontconfig 2.11.1-r2 2.11.95 2.12.0: A library for configuring and customizing font access
+media-libs/fontconfig 2.11.1-r2 2.12.0 2.12.1: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20120619 20130404: Configuration to be used in conjunction with the freetype-infinality subpixel hinting
 media-libs/fontconfig-ultimate 2015.04 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
@@ -12499,7 +12499,7 @@ media-libs/libcaca 0.99_beta18-r2 0.99_beta19: A library that creates colored AS
 media-libs/libcanberra 0.30-r4 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
-media-libs/libcdr 0.0.14 0.0.16 0.1.1 0.1.2-r1 9999: Library parsing the Corel cdr documents
+media-libs/libcdr 0.0.14 0.0.16 0.1.1 0.1.2-r1 0.1.3 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.13: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
