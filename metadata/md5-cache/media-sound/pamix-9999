@@ -1,0 +1,11 @@
+DEFINED_PHASES=unpack
+DEPEND=virtual/pkgconfig media-sound/pulseaudio sys-libs/ncurses:0=[unicode] >=dev-vcs/git-1.8.2.1
+DESCRIPTION=A PulseAudio NCurses mixer
+EAPI=6
+HOMEPAGE=https://github.com/patroclos/PAmix
+LICENSE=MIT
+RDEPEND=media-sound/pulseaudio sys-libs/ncurses:0=[unicode]
+SLOT=0
+_eclass_exported_funcs=src_unpack:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=9aa8c0b3d4d6175e0c47dbb94727ccc8

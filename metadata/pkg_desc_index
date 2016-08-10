@@ -13307,6 +13307,7 @@ media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
 media-sound/opus-tools 0.1.6 0.1.8 0.1.9: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r2 1.6-r3: Command line MP3 player
+media-sound/pamix 1.1 9999: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.10: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.2.1 0.5.2: PulseAudio system tray
 media-sound/patchage 0.5.0-r1 1.0.0: Modular patch bay for JACK-based audio and MIDI systems
