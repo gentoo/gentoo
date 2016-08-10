@@ -5599,7 +5599,7 @@ dev-perl/Exporter-Lite 0.20.0-r1: Lightweight exporting of variables
 dev-perl/Exporter-Tiny 0.42.0: An exporter with the features of Sub::Exporter but only core dependencies
 dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a more sophisticated form of dependency information
 dev-perl/ExtUtils-CChecker 0.90.0: Configure-time utilities for using C headers
-dev-perl/ExtUtils-Config 0.7.0: A wrapper for perl's configuration
+dev-perl/ExtUtils-Config 0.7.0 0.8.0: A wrapper for perl's configuration
 dev-perl/ExtUtils-Constant 0.230.0: Generate XS code to import C header constants
 dev-perl/ExtUtils-CppGuess 0.110.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.404.0 0.405.0: Easily build XS extensions that depend on XS extensions
