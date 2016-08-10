@@ -2,11 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Amy Winston <amynka@gentoo.org> (04 August 2016)
-# Necessary dependency dev-libs/libunistring
-# not keyworded bug #590520
->=dev-scheme/guile-2.0.12
-
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2013)
 # TeX Live 2013 mask.
 # kpathsea has to be there because it has config files without /usr/share/texmf

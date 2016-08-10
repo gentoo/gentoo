@@ -2,11 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Amy Winston <amynka@gentoo.org> (04 August 2016)
-# Necessary dependency dev-libs/libunistring
-# not keyworded bug #590520
->=dev-scheme/guile-2.0.12
-
 # Brent Baude <ranger@gentoo.org> (20 Nov 2012)
 # Masking kgcc64 now that toolchain is biarch
 sys-devel/kgcc64
