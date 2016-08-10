@@ -2145,6 +2145,7 @@ dev-libs/wlc:X - Enable X11 backend and XWayland support.
 dev-libs/wlc:systemd - Enable support for systemd-logind.
 dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
+dev-libs/xapian:glass - Enabled glass backend db support
 dev-libs/xapian:inmemory - Enabled inmemory backend db support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
