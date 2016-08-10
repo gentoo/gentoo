@@ -1,9 +1,2 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Amy Winston <amynka@gentoo.org> (04 August 2016)
-# Necessary dependency dev-libs/libunistring
-# not keyworded bug #590520
->=dev-scheme/guile-2.0.12
-
