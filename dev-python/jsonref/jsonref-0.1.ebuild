@@ -9,7 +9,7 @@ inherit eutils distutils-r1
 
 DESCRIPTION="An implementation of JSON Reference for Python"
 HOMEPAGE="https://github.com/gazpachoking/jsonref https://pypi.python.org/pypi/jsonref"
-SRC_URI="https://github.com/gazpachoking/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
