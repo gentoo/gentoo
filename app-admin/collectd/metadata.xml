@@ -11,10 +11,6 @@
 		<name>Johan Bergström</name>
 		<description>Proxy maintainer; CC him on bugs</description>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
-	</maintainer>
 	<longdescription lang="en">
 		Collectd gathers statistics about the system it is running on and stores this
 		information. Those statistics can then be used to find current performance
