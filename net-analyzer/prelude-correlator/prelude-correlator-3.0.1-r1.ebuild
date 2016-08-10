@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="dev-python/setuptools"
 
 RDEPEND="dev-python/netaddr[${PYTHON_USEDEP}]
-	dev-libs/libprelude[${PYTHON_USEDEP}]"
+	dev-libs/libprelude[python,${PYTHON_USEDEP}]"
 
 src_install() {
 	distutils-r1_src_install
