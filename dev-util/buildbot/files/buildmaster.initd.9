@@ -1,0 +1,54 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${BASEDIR}" ]; then
+		eerror "BASEDIR not set"
+		return 1
+	fi
+	if [ -z "${USERNAME}" ]; then
+		eerror "USERNAME not set"
+		return 1
+	fi
+	if [ ! -d "${BASEDIR}" ]; then
+		eerror "${BASEDIR} is not a directory"
+		return 1
+	fi
+	if [ ! -e "${BASEDIR}/buildbot.tac" ]; then
+		eerror "${BASEDIR} does not contain buildbot.tac"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting buildmaster in ${BASEDIR}"
+	start-stop-daemon --start -u "${USERNAME}" \
+		--pidfile "${BASEDIR}/buildmaster.pid" \
+		--exec /usr/bin/twistd -- \
+		--no_save \
+		--logfile="${BASEDIR}/twistd.log" \
+		--pidfile="${BASEDIR}/buildmaster.pid" \
+		--python="${BASEDIR}/buildbot.tac"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping buildmaster in ${BASEDIR}"
+	start-stop-daemon --stop --pidfile "${BASEDIR}/buildmaster.pid"
+	eend $?
+}
+
+reload() {
+	ebegin "Reconfiguring buildmaster in ${BASEDIR}"
+	start-stop-daemon --signal HUP --pidfile \
+		"${BASEDIR}"/buildmaster.pid
+	eend $?
+}
