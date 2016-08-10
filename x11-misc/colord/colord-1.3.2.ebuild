@@ -25,7 +25,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	dev-db/sqlite:3=
+	dev-db/sqlite:3=[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.44.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.6:2=[${MULTILIB_USEDEP}]
 	argyllcms? ( media-gfx/argyllcms )
