@@ -14,9 +14,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-qt/qtcore:5
+DEPEND="
 	dev-qt/qtgui:5
+	dev-qt/qtcore:5
 	dev-qt/qtwidgets:5"
+
 RDEPEND="${DEPEND}"
 
 src_configure() {
