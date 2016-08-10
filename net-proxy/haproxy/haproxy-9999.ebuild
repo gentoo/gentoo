@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,12 +15,17 @@ EGIT_REPO_URI="http://master.formilux.org/git/people/willy/haproxy.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="+crypt examples +pcre pcre-jit ssl tools vim-syntax +zlib"
+IUSE="+crypt examples libressl +pcre pcre-jit ssl tools vim-syntax +zlib"
 
-DEPEND="pcre? ( dev-libs/libpcre
-				pcre-jit? ( dev-libs/libpcre[jit] )
-				)
-	ssl? ( dev-libs/openssl:0[zlib?] )
+DEPEND="
+	pcre? (
+		dev-libs/libpcre
+		pcre-jit? ( dev-libs/libpcre[jit] )
+	)
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[zlib?] )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 

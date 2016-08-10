@@ -15,12 +15,17 @@ SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/$
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="+crypt doc examples net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
+IUSE="+crypt doc examples libressl net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
 
-DEPEND="pcre? ( dev-libs/libpcre
+DEPEND="
+	pcre? (
+		dev-libs/libpcre
 		pcre-jit? ( dev-libs/libpcre[jit] )
 	)
-	ssl? ( dev-libs/openssl:0[zlib?] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[zlib?] )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	zlib? ( sys-libs/zlib )"
 # lua? ( dev-lang/lua:5.3 )
 RDEPEND="${DEPEND}"
