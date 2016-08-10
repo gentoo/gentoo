@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+# tests try to fetch data from online sources
+RESTRICT="test"
+
 S=${WORKDIR}/${MY_PN}Lib/Project/GNU/Library
 
 src_prepare() {
