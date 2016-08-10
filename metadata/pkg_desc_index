@@ -16657,6 +16657,7 @@ sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of ch
 sys-apps/pv 1.6.0 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/pyrenamer 0.6.0-r2: Mass rename files
 sys-apps/qcontrol 0.4.2-r1: Allows to send commands to some microcontrollers, for example to change leds or sound a buzzer
+sys-apps/qdirstat 1.0: Qt app to show where your disk space has gone and to help you clean it up
 sys-apps/qdiskusage 1.0.4: Qt4 Graphical Disk Usage Analyzer
 sys-apps/qingy 1.0.0 1.0.0-r1 1.0.0-r2: a DirectFB getty replacement
 sys-apps/raidutils 0.0.6-r2: Utilities to manage i2o/dtp RAID controllers
