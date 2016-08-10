@@ -4,6 +4,7 @@
 
 EAPI=6
 
+CMAKE_MIN_VERSION="3.0"
 KDE_HANDBOOK="true"
 KDE_TEST="true"
 VIRTUALX_REQUIRED="test"
@@ -14,7 +15,7 @@ HOMEPAGE="http://www.digikam.org/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 KEYWORDS="~amd64 ~x86"
-IUSE="flashexport mediawiki vkontakte"
+IUSE="flashexport mediawiki +remotestorage vkontakte"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	MY_PV="${PV/_/-}"
@@ -37,10 +38,10 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
+	$(add_kdeapps_dep libkipi '' '' '5=')
 	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
@@ -49,9 +50,9 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	$(add_qt_dep qtxmlpatterns)
-	kde-apps/libkipi:5=
 	flashexport? ( $(add_frameworks_dep karchive) )
 	mediawiki? ( net-libs/libmediawiki:5 )
+	remotestorage? ( $(add_frameworks_dep kio) )
 	vkontakte? ( net-libs/libkvkontakte:5 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -89,6 +90,7 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package flashexport KF5Archive)
 		$(cmake-utils_use_find_package mediawiki KF5MediaWiki)
+		$(cmake-utils_use_find_package remotestorage KF5KIO)
 		$(cmake-utils_use_find_package vkontakte KF5Vkontakte)
 	)
 
