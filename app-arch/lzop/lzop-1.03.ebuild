@@ -15,6 +15,10 @@ IUSE=""
 RDEPEND=">=dev-libs/lzo-2"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-x32.patch #575450
+)
+
 src_test() {
 	einfo "compressing config.status to test"
 	src/lzop config.status || die 'compression failed'
