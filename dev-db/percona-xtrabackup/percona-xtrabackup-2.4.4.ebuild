@@ -24,7 +24,8 @@ DEPEND="system-boost? ( =dev-libs/boost-1.59.0 )
 		net-misc/curl
 		sys-libs/zlib"
 RDEPEND="${DEPEND}
-		!dev-db/xtrabackup-bin"
+		!dev-db/xtrabackup-bin
+		dev-perl/DBD-mysql"
 
 src_configure() {
 	local my_args
