@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="system-boost"
 
 DEPEND="system-boost? ( =dev-libs/boost-1.59.0 )
+		app-editors/vim-core
 		dev-libs/libaio
 		dev-libs/libev
 		dev-libs/libgcrypt:0=
