@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=sys-apps/sed || ( sys-apps/coreutils sys-freebsd/freebsd-bin app-misc/realpath ) doc? ( dev-python/docutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEPEND=sys-apps/sed doc? ( dev-python/docutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Gentoo's multi-purpose configuration and management tool
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Eselect
 IUSE=doc emacs vim-syntax
 LICENSE=GPL-2+ || ( GPL-2+ CC-BY-SA-2.5 )
 PDEPEND=emacs? ( app-emacs/eselect-mode ) vim-syntax? ( app-vim/eselect-syntax )
-RDEPEND=sys-apps/sed || ( sys-apps/coreutils sys-freebsd/freebsd-bin app-misc/realpath ) sys-apps/file sys-libs/ncurses
+RDEPEND=sys-apps/sed sys-apps/file sys-libs/ncurses
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=5b7feb326d10ea60e08f4a90cb501f04
+_md5_=43f1049e71971b535769ead5c5048018
