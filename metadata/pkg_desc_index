@@ -9938,7 +9938,7 @@ dev-util/shellcheck 0.4.4: Shell script analysis tool
 dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line programs
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
-dev-util/shunit2 2.1.6: Unit-test framework for Bourne-based shell scripts
+dev-util/shunit2 2.1.6 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/skipfish 2.10_beta: A fully automated, active web application security reconnaissance tool
 dev-util/smem 20071119_p1: A tool to parse smaps statistics
 dev-util/source-highlight 3.1.7-r2: Generate highlighted source code as an (x)html document
@@ -14117,7 +14117,7 @@ net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS s
 net-fs/openafs 1.6.17 1.6.18.2: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.17 1.6.18.2: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.6.25 4.2.11 4.2.14 4.3.11 4.4.5 4.5.0_rc1: Samba Suite Version 4
+net-fs/samba 3.6.25 4.2.11 4.2.14 4.3.11 4.4.5 4.5.0_rc2: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
@@ -14796,7 +14796,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.0.12-r1 1.2.2 1.2.4: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.0.12-r1 1.2.4: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect plugin
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2: NetworkManager OpenVPN plugin
