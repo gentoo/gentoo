@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_PN="curator"
-ES_VERSION="2.3.3"
+ES_VERSION="2.3.5"
 
 inherit distutils-r1
 
@@ -49,17 +49,18 @@ python_test() {
 	# run Elasticsearch instance on custom port
 	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
 		s/# cluster.name: my-application/cluster.name: gentoo-es-curator-test/g" \
-		${ES}/config/elasticsearch.yml
+		${ES}/config/elasticsearch.yml || die
 
 	# Elasticsearch 1.6+ needs to set path.repo
 	grep -q "^path.repo" "${ES}/config/elasticsearch.yml"
 	if [ $? -ne 0 ]; then
-		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml"
+		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml" || die
 	fi
 
 	# start local instance of elasticsearch
-	${ES}/bin/elasticsearch -d -p ${PID}
+	${ES}/bin/elasticsearch -d -p ${PID} || die
 
+	local i
 	for i in {1..10}; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [ $? -eq 0 ]; then
