@@ -4163,6 +4163,7 @@ media-plugins/kipi-plugins:gpssync - Build the gpssync plugin, which requires kd
 media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
 media-plugins/kipi-plugins:panorama - Pull in dependencies needed by panorama plugin
 media-plugins/kipi-plugins:redeyes - Add redeyes removal support
+media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
 media-plugins/kipi-plugins:videoslideshow - Build videoslideshow plugin
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
