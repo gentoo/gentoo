@@ -2236,7 +2236,7 @@ app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13: Diction and style checkers for english and german texts
 app-text/diffpdf 2.1.3: Program that textually or visually compares two PDF files
 app-text/ding 1.7: Tk based dictionary (German-English) (incl. dictionary itself)
-app-text/discount 2.1.6-r1 2.1.8a-r1: An implementation of John Gruber's Markdown text to html language written in C
+app-text/discount 2.1.8a-r1 2.2.0: A Markdown-to HTML translator written in C
 app-text/djview 4.9 4.10 4.10.3 4.10.5 4.10.6: Portable DjVu viewer using Qt4
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/djvusmooth 0.2.14: Graphical editor for DjVu documents
@@ -17810,7 +17810,7 @@ www-client/firefox 38.8.0 45.2.0 45.3.0 48.0: Firefox Web Browser
 www-client/firefox-bin 45.3.0 48.0: Firefox Web Browser
 www-client/google-chrome 52.0.2743.116: The web browser from Google
 www-client/google-chrome-beta 53.0.2785.46: The web browser from Google
-www-client/google-chrome-unstable 54.0.2816.0: The web browser from Google
+www-client/google-chrome-unstable 54.0.2824.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17865,7 +17865,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
-www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.46_beta 54.0.2816.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.46_beta 54.0.2824.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
