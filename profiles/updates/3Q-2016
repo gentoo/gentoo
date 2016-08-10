@@ -11,3 +11,4 @@ slotmove >=dev-php/pecl-yaml-2.0.0_rc1 0 7
 move dev-perl/regexp-common dev-perl/Regexp-Common
 move dev-php/PEAR-PHP_CodeSniffer dev-php/PHP_CodeSniffer
 move kde-apps/kgamma kde-plasma/kgamma
+slotmove =sci-geosciences/osm-gps-map-0.7.3 0 2
