@@ -1,11 +1,11 @@
 DEFINED_PHASES=install prepare unpack
-DEPEND=virtual/pkgconfig dev-vcs/mercurial
+DEPEND=dev-cpp/gtkmm:3.0 dev-libs/libxml2 net-misc/curl[ssl] virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A standalone skill monitoring application for EVE Online
-EAPI=4
+EAPI=6
 HOMEPAGE=http://gtkevemon.battleclinic.com
 LICENSE=GPL-3
-RDEPEND=dev-cpp/gtkmm:2.4 dev-libs/libxml2
+RDEPEND=dev-cpp/gtkmm:3.0 dev-libs/libxml2 net-misc/curl[ssl]
 SLOT=0
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	mercurial	789038b352d112bcff9dff083aa40d8d	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=44699c9a4e5851399808585eaf3e59f6
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=3e7c3a82e87a27752cdff58904712a5e
