@@ -5551,7 +5551,7 @@ dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for file
 dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa code
 dev-perl/Digest-Perl-MD5 1.900.0: Pure perl implementation of MD5
 dev-perl/Digest-SHA1 2.130.0-r1: NIST SHA message digest algorithm
-dev-perl/Dist-CheckConflicts 0.20.0-r1: Declare version conflicts for your dist
+dev-perl/Dist-CheckConflicts 0.20.0-r1 0.110.0: Declare version conflicts for your dist
 dev-perl/EV 4.180.0 4.220.0: Perl interface to libev, a high performance full-featured event loop
 dev-perl/Emacs-PDE 0.2.16-r1: Perl Develop Environment in Emacs
 dev-perl/Email-Abstract 3.7.0: unified interface to mail representations
