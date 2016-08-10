@@ -33,6 +33,7 @@ src_configure() {
 }
 
 src_compile() {
+	addpredict /dev #590848
 	# We cannot use 'make' as it won't allow us to build verbosely
 	cd build && ninja -v
 }

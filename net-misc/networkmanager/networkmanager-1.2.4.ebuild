@@ -211,6 +211,7 @@ multilib_src_configure() {
 	fi
 
 	# Disable examples
+	# https://bugzilla.gnome.org/show_bug.cgi?id=769711
 	cat > examples/Makefile <<-EOF
 	.PHONY: all check install
 	all:
