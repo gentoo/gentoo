@@ -5472,7 +5472,7 @@ dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
 dev-perl/Data-ObjectDriver 0.90.0-r1: Simple, transparent data interface, with caching
-dev-perl/Data-OptList 0.109.0: parse and validate simple name/value option pairs
+dev-perl/Data-OptList 0.109.0 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Perl 0.2.9: Base classes wrapping fundamental Perl data types
 dev-perl/Data-Random 0.80.0: A module used to generate random data
@@ -9092,7 +9092,7 @@ dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.2.0: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.4.1 2.4.2 2.4.3: A fast XML parser and Object marshaller
+dev-ruby/ox 2.4.3 2.4.4: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
 dev-ruby/parser 2.3.0.7 2.3.1.0 2.3.1.2: A production-ready Ruby parser written in pure Ruby
@@ -9728,7 +9728,7 @@ dev-util/csup 20060318: A rewrite of CVSup
 dev-util/ctags 5.8 5.8-r1 5.8_p20140919: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 1.3.17 1.3.18 1.3.19 1.3.20 1.3.20-r1 2.4.0: Executable feature scenarios
 dev-util/cucumber-core 1.4.0 1.5.0: Executable feature scenarios
-dev-util/cucumber-rails 1.4.1 1.4.2 1.4.3: Executable feature scenarios for Rails
+dev-util/cucumber-rails 1.4.3 1.4.4: Executable feature scenarios for Rails
 dev-util/cucumber-wire 0.0.1: Executable feature scenarios
 dev-util/cunit 2.1_p2-r1 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
