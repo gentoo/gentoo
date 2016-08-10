@@ -171,19 +171,16 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_security? ( Apache-2.0 )
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
-SLOT="mainline"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif
 	fastcgi geo gzip limit_req limit_conn map memcached proxy referer
-	rewrite scgi ssi split_clients upstream_hash upstream_ip_hash
-	upstream_keepalive upstream_least_conn upstream_zone userid uwsgi"
+	rewrite scgi ssi split_clients upstream_ip_hash userid uwsgi"
 NGINX_MODULES_OPT="addition auth_request dav degradation flv geoip gunzip
 	gzip_static image_filter mp4 perl random_index realip secure_link
 	slice stub_status sub xslt"
-NGINX_MODULES_STREAM_STD="access geo limit_conn map return split_clients
-	upstream_hash upstream_least_conn upstream_zone"
-NGINX_MODULES_STREAM_OPT="geoip"
+NGINX_MODULES_STREAM="access limit_conn upstream"
 NGINX_MODULES_MAIL="imap pop3 smtp"
 NGINX_MODULES_3RD="
 	http_upload_progress
@@ -216,11 +213,7 @@ for mod in $NGINX_MODULES_OPT; do
 	IUSE="${IUSE} nginx_modules_http_${mod}"
 done
 
-for mod in $NGINX_MODULES_STREAM_STD; do
-	IUSE="${IUSE} nginx_modules_stream_${mod}"
-done
-
-for mod in $NGINX_MODULES_STREAM_OPT; do
+for mod in $NGINX_MODULES_STREAM; do
 	IUSE="${IUSE} nginx_modules_stream_${mod}"
 done
 
@@ -275,7 +268,7 @@ CDEPEND="
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-nginx )
-	!www-servers/nginx:0"
+	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -325,14 +318,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
-	eapply "${FILESDIR}/${PN}-httpoxy-mitigation.patch"
-	eapply "${FILESDIR}/${PN}-1.11.3-fix-build-without-stream_ssl_module.patch"
-
-	if use nginx_modules_http_sticky; then
-		cd "${HTTP_STICKY_MODULE_WD}" || die
-		eapply "${FILESDIR}"/http-sticky-nginx-1.11.2.patch
-		cd "${S}" || die
-	fi
+	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
@@ -523,18 +509,18 @@ src_configure() {
 	fi
 
 	# Stream modules
-	for mod in $NGINX_MODULES_STREAM_STD; do
+	for mod in $NGINX_MODULES_STREAM; do
 		if use nginx_modules_stream_${mod}; then
 			stream_enabled=1
 		else
-			myconf+=( --without-stream_${mod}_module )
-		fi
-	done
-
-	for mod in $NGINX_MODULES_STREAM_OPT; do
-		if use nginx_modules_stream_${mod}; then
-			stream_enabled=1
-			myconf+=( --with-stream_${mod}_module )
+			# Treat stream upstream slightly differently
+			if ! use nginx_modules_stream_upstream; then
+				myconf+=( --without-stream_upstream_hash_module )
+				myconf+=( --without-stream_upstream_least_conn_module )
+				myconf+=( --without-stream_upstream_zone_module )
+			else
+				myconf+=( --without-stream_${mod}_module )
+			fi
 		fi
 	done
 
@@ -723,7 +709,7 @@ src_install() {
 
 pkg_postinst() {
 	if use ssl; then
-		if [[ ! -f "${EROOT}"etc/ssl/${PN}/${PN}.key ]]; then
+		if [ ! -f "${EROOT}"etc/ssl/${PN}/${PN}.key ]; then
 			install_cert /etc/ssl/${PN}/${PN}
 			use prefix || chown ${PN}:${PN} "${EROOT}"etc/ssl/${PN}/${PN}.{crt,csr,key,pem}
 		fi
@@ -743,7 +729,7 @@ pkg_postinst() {
 	# existing installations
 	local fix_perms=0
 
-	for rv in ${REPLACING_VERSIONS}; do
+	for rv in ${REPLACING_VERSIONS} ; do
 		version_compare ${rv} 1.4.1-r2
 		[[ $? -eq 1 ]] && fix_perms=1
 	done
