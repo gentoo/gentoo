@@ -4258,13 +4258,10 @@ media-sound/banshee:cdda - Build with audio CD support
 media-sound/banshee:daap - Build with Daap support
 media-sound/banshee:karma - Build with karma support
 media-sound/banshee:youtube - Enable the Youtube plugin
-media-sound/beets:beatport - Enable support for beatport.com API
 media-sound/beets:bpd - Enable support for media-sound/mpd server emulation
 media-sound/beets:chroma - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
 media-sound/beets:convert - Enable support for the convert plugin which makes it possible to transcode files
 media-sound/beets:discogs - Enable support for the discogs API plugin
-media-sound/beets:echonest - Enable support for fetching and storing acoustic attributes of a track from Echo Nest
-media-sound/beets:echonest_tempo - Enable support for writing the BPM of a track into its metadata
 media-sound/beets:lastgenre - Enable support for importing music genres from last.fm tags
 media-sound/beets:mpdstats - Enable support for collecting statistic about listening habits from media-sound/mpd
 media-sound/beets:opus - Enable opus support in gstreamer-based replaygain
