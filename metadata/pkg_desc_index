@@ -13878,7 +13878,7 @@ net-analyzer/portbunny 1.0_p20080423: A kernel based highspeed TCP SYN port scan
 net-analyzer/portmon 2.0: Portmon is a network service monitoring daemon
 net-analyzer/portsentry 1.2-r1: Automated port scan detector and response tool
 net-analyzer/postal 0.72: SMTP and POP mailserver benchmark. Supports SSL, randomized user accounts and more
-net-analyzer/prelude-correlator 3.0.1: Real time correlator of events received by Prelude Manager
+net-analyzer/prelude-correlator 3.0.1-r1: Real time correlator of events received by Prelude Manager
 net-analyzer/prelude-lml 3.0.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1: Prelude LML community ruleset
 net-analyzer/prelude-nessus 20021107: Nessus Correlation support for Prelude-IDS
