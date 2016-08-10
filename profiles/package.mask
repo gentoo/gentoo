@@ -209,11 +209,6 @@ dev-qt/qtquick1
 net-dns/namecoind
 net-dns/namecoin-qt
 
-# Kent Fredric <kentnl@gentoo.org> (10 Jul 2016)
-# Only produces Segfaults since Perl 5.20 (#588528), upstream
-# dead. Masked for removal in 30 days.
-dev-perl/cache-mmap
-
 # Andrew Savchenko <bircoph@gentoo.org> (09 Jul 2016)
 # Vulnerable due to wrong suid binary permissions (#345337)
 <app-cdr/xcdroast-0.98_alpha16-r2
