@@ -5,9 +5,11 @@
 EAPI=6
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
+	KDE_HANDBOOK="true"
 	KDE_TEST="true"
 fi
 CMAKE_MAKEFILE_GENERATOR="emake"
+CMAKE_MIN_VERSION="3.0"
 inherit kde5
 
 DESCRIPTION="Digital photo management application"
@@ -65,7 +67,8 @@ COMMON_DEPEND="
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	media-libs/opencv:=
+	media-libs/opencv:=[-qt4]
+	|| ( <media-libs/opencv-3.0.0 >=media-libs/opencv-3.1.0 )
 	media-libs/tiff:0
 	virtual/jpeg:0
 	addressbook? (
@@ -102,16 +105,21 @@ RESTRICT=test
 # bug 366505
 
 src_prepare() {
-	undetect_lib() {
-		local _use=${1}
-		local _name=${2}
-		[[ -z ${_name} ]] && _name=$(echo ${_use} | sed 's/./\U&/g')
-		use $_use || \
-			sed -i -e "/DETECT_LIB${_name}/d" CMakeLists.txt || die
-	}
+	if [[ ${KDE_BUILD_TYPE} != live ]]; then
+		# prepare the translations
+		mv "${WORKDIR}/${MY_P}/po" po || die
+		find po -name "*.po" -and -not -name "digikam.po" -delete || die
+		echo "set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)" >> CMakeLists.txt || die
+		echo "find_package(Gettext REQUIRED)" >> CMakeLists.txt || die
+		echo "add_subdirectory( po )" >> CMakeLists.txt || die
 
-	undetect_lib kipi
-	undetect_lib scanner KSANE
+		if use handbook; then
+			# subdirs need to be preserved b/c relative paths...
+			# doc-translated is, in fact, broken, and ignored
+			mv "${WORKDIR}/${MY_P}/doc/${PN}" doc-default || die
+			echo "add_subdirectory( doc-default )" >> CMakeLists.txt || die
+		fi
+	fi
 
 	kde5_src_prepare
 }
@@ -125,8 +133,10 @@ src_configure() {
 		-DENABLE_MEDIAPLAYER=$(usex video)
 		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 		$(cmake-utils_use_find_package gphoto2 Gphoto2)
+		$(cmake-utils_use_find_package kipi KF5Kipi)
 		$(cmake-utils_use_find_package lensfun LensFun)
 		$(cmake-utils_use_find_package marble Marble)
+		$(cmake-utils_use_find_package scanner KF5Sane)
 		$(cmake-utils_use_find_package X X11)
 	)
 
