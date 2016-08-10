@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
+# Requires insecure SSLv3. Unmaintained. Upstream disappeared.
+# Masked for removal in 30 days. Bug 590732.
+app-mobilephone/smssend
+dev-libs/skyutils
+
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
 # https://bugs.gentoo.org/590780
