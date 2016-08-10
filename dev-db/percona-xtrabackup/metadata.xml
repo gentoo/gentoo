@@ -4,7 +4,10 @@
   <maintainer type="person">
     <email>hydrapolic@gmail.com</email>
     <name>Tomáš Mózes</name>
-    <description>Proxy maintainer</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>manwe@manwe.pl</email>
+    <name>Michał Zając</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
