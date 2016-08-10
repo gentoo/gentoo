@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI="6"
 
 DESCRIPTION="Utility for fast (even real-time) compression/decompression"
 HOMEPAGE="http://www.lzop.org/"
@@ -25,8 +24,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README THANKS
+	default
 	dodoc doc/lzop.{txt,ps}
 	dohtml doc/*.html
 }
