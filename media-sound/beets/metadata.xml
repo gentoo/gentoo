@@ -27,7 +27,6 @@
     shockingly simple if you know a little Python.
   </longdescription>
   <use>
-    <flag name="beatport">Enable support for beatport.com API</flag>
     <flag name="bpd">
       Enable support for <pkg>media-sound/mpd</pkg> server emulation
     </flag>
@@ -36,10 +35,6 @@
     <flag name="convert">Enable support for the convert plugin which makes it
       possible to transcode files</flag>
     <flag name="discogs">Enable support for the discogs API plugin</flag>
-    <flag name="echonest_tempo">Enable support for writing the BPM of a track
-      into its metadata</flag>
-    <flag name="echonest">Enable support for fetching and storing acoustic
-      attributes of a track from Echo Nest</flag>
     <flag name="lastgenre">Enable support for importing music genres from
       last.fm tags</flag>
     <flag name="mpdstats">Enable support for collecting statistic about
