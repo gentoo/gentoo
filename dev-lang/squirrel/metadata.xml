@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">squirrel</remote-id>
+		<remote-id type="github">albertodemichelis/squirrel</remote-id>
 	</upstream>
 </pkgmetadata>
