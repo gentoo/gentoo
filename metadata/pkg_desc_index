@@ -6568,7 +6568,6 @@ dev-perl/autobox 2.830.0: Call methods on native types
 dev-perl/autovivification 0.160.0: Lexically disable autovivification
 dev-perl/bareword-filehandles 0.3.0: Disables bareword filehandles
 dev-perl/boolean 0.450.0: Boolean support for Perl
-dev-perl/cache-mmap 0.110.0-r1: Shared data cache using memory mapped files
 dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/cdk-perl 20141106: Perl extension for Cdk
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
@@ -17815,7 +17814,6 @@ www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open S
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
 www-client/links 2.8-r1 2.9 2.9-r1 2.10 2.11 2.12 2.12-r1: A fast and lightweight web browser running in both graphics and text mode
-www-client/luakit 2012.09.13_p1-r1 9999: fast, small, webkit-gtk based micro-browser extensible by lua
 www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6 2.8.9_pre9: An excellent console-based web browser with ssl support
 www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
