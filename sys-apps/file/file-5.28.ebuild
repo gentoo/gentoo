@@ -43,11 +43,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
-	ac_cv_header_zlib_h=$(usex zlib) \
-	ac_cv_lib_z_gzopen=$(usex zlib)
 	econf \
 		--enable-fsect-man5 \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		$(use_enable zlib)
 }
 
 src_configure() {
