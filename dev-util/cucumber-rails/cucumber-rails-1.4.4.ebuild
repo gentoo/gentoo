@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -35,11 +35,11 @@ RESTRICT="test"
 #	)"
 
 ruby_add_rdepend "
-	>=dev-util/cucumber-1.3.8
+	>=dev-util/cucumber-1.3.8 <dev-util/cucumber-3
 	>=dev-ruby/nokogiri-1.5.0
-	>=dev-ruby/capybara-1.1.2 <dev-ruby/capybara-3
-	>=dev-ruby/rails-3.0.0
-	>=dev-ruby/mime-types-1.16:0"
+	>=dev-ruby/capybara-1.1.2:* <dev-ruby/capybara-3:*
+	>=dev-ruby/railties-3.0.0:* <dev-ruby/railties-5.1:*
+	>=dev-ruby/mime-types-1.16:* <dev-ruby/mime-types-4:*"
 
 all_ruby_prepare() {
 	rm Gemfile || die
