@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=net-libs/zeromq >=net-libs/mbedtls-2.1[havege] dev-db/sqlite:3
+DESCRIPTION=A language agnostic web server focused on web applications
+EAPI=6
+HOMEPAGE=http://mongrel2.org
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=net-libs/zeromq >=net-libs/mbedtls-2.1[havege] dev-db/sqlite:3
+SLOT=0
+SRC_URI=https://github.com/mongrel2/mongrel2/archive/v1.11.0.tar.gz -> mongrel2-1.11.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=d714fe41578f4e381b222cee4a45bb31
