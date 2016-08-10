@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
+# Fails to build. Dead upstream.
+# Masked for removal in 30 days. Bug 543154.
+net-im/indicator-messages
+
+# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
 # Requires vulnerable version of webkit-gtk. Dead upstream.
 # Masked for removal in 30 days. Bug 584176.
 media-plugins/gmpc-wikipedia
