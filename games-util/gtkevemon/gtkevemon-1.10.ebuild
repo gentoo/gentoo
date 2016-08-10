@@ -4,27 +4,26 @@
 
 EAPI=6
 
-inherit flag-o-matic git-r3
+inherit flag-o-matic
 
 DESCRIPTION="A standalone skill monitoring application for EVE Online"
 HOMEPAGE="http://gtkevemon.battleclinic.com"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+SRC_URI="http://github.com/gtkevemon/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-cpp/gtkmm:3.0
+	dev-cpp/gtkmm:2.4
 	dev-libs/libxml2
-	net-misc/curl[ssl]
+	dev-libs/openssl:0
 "
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
-
 src_prepare() {
 	default
 

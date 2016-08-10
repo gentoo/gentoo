@@ -101,7 +101,7 @@ COMMON_DEPEND="
 	collectd_plugins_rrdcached?		( net-analyzer/rrdtool:= )
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool:= )
 	collectd_plugins_sensors?		( sys-apps/lm_sensors )
-	collectd_plugins_sigrok?		( sci-libs/libsigrok )
+	collectd_plugins_sigrok?		( <sci-libs/libsigrok-0.4 )
 	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
