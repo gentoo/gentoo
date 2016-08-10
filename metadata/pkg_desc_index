@@ -11422,7 +11422,7 @@ kde-apps/kwordquiz 15.12.3-r1 16.04.3: A powerful flashcard and vocabulary learn
 kde-apps/kwrite 15.12.3 16.04.3: KDE simple text editor
 kde-apps/libkcddb 15.12.3 16.04.3: KDE library for CDDB
 kde-apps/libkcompactdisc 15.12.3-r1 16.04.3: KDE library for playing & ripping CDs
-kde-apps/libkdcraw 4.14.3-r1 15.08.3 15.12.3 16.04.3: Digital camera raw image library wrapper
+kde-apps/libkdcraw 15.08.3 15.12.3 16.04.3: Digital camera raw image library wrapper
 kde-apps/libkdeedu 15.12.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3-r1 15.12.3 16.04.3: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2016.01: Common library for KDE PIM apps (noakonadi branch)
