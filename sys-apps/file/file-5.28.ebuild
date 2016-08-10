@@ -37,6 +37,8 @@ src_prepare() {
 	[[ ${PV} == "9999" ]] && eautoreconf
 	elibtoolize
 
+	epatch "${FILESDIR}"/${P}-der-mmap.patch
+
 	# don't let python README kill main README #60043
 	mv python/README{,.python}
 }
