@@ -53,7 +53,7 @@ PLUGINS="+addbookmarks +autoreplace +contactnotes +highlight +history latex
 #	yahoo: media-libs/jasper
 #	zeroconf (bonjour): NO DEPS
 PROTOCOLS="gadu groupwise jingle meanwhile oscar skype
-sms testbed winpopup +xmpp yahoo zeroconf"
+testbed winpopup +xmpp yahoo zeroconf"
 
 # disabled protocols
 #   telepathy: net-libs/decibel
@@ -107,7 +107,6 @@ RDEPEND="${COMMONDEPEND}
 		)
 		virtual/latex-base
 	)
-	sms? ( app-mobilephone/smssend )
 	ssl? ( app-crypt/qca:2[openssl] )
 	winpopup? ( net-fs/samba )
 "
@@ -136,7 +135,7 @@ src_configure() {
 		mycmakeargs+=( -DWITH_${x2}=$(usex ${x/+/}) )
 	done
 
-	mycmakeargs+=( -DWITH_Libmsn=OFF -DWITH_qq=OFF )
+	mycmakeargs+=( -DWITH_Libmsn=OFF -DWITH_qq=OFF -DWITH_sms=OFF )
 
 	# enable plugins
 	for x in ${PLUGINS}; do
