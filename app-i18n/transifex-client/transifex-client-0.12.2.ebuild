@@ -19,5 +19,3 @@ IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
-
-PATCHES="${FILESDIR}/${P}_urllib3_six.patch"
