@@ -29,9 +29,9 @@ else
 fi
 
 RDEPEND="
-	=dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
-	=dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}
