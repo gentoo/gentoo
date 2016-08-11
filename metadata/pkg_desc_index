@@ -4590,7 +4590,7 @@ dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: An implementation of the HTML5 parsing 
 dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics with low overhead.
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.11.0 0.11.0-r1 0.13.1: Minimalistic C client library for the Redis database
+dev-libs/hiredis 0.11.0-r1 0.13.1: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
@@ -9747,7 +9747,7 @@ dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug trackin
 dev-util/devhelp 3.18.1 3.20.0: An API documentation browser for GNOME
 dev-util/dialog 1.2.20150920 1.3.20160209 1.3.20160424: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
-dev-util/difffilter 0.3.1 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
+dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
@@ -14147,7 +14147,7 @@ net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
 net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
-net-ftp/tlswrap 1.04-r2: a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
+net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
