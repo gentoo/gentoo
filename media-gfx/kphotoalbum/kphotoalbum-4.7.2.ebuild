@@ -17,7 +17,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 LICENSE="GPL-2+ FDL-1.2"
 SLOT="4"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +exif +face +geolocation +kipi +map +raw"
+IUSE="debug +exif +face +kipi +map +raw"
 
 REQUIRED_USE="map? ( exif )"
 
@@ -27,7 +27,6 @@ COMMON_DEPEND="
 	virtual/jpeg:0
 	exif? ( >=media-gfx/exiv2-0.17:= )
 	face? ( >=kde-apps/libkface-15.08.3:4 )
-	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
 	map? ( >=kde-apps/libkgeomap-15.08.3:4 )
 	raw? ( $(add_kdeapps_dep libkdcraw '' 4.9.58) )
@@ -46,7 +45,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_Exiv2=$(usex exif)
 		-DWITH_Kface=$(usex face)
-		-DWITH_Marble=$(usex geolocation)
 		-DWITH_Kipi=$(usex kipi)
 		-DWITH_KGeoMap=$(usex map)
 		-DWITH_Kdcraw=$(usex raw)
