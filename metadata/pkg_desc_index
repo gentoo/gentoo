@@ -17794,7 +17794,7 @@ www-apps/venus 20100911: A feed aggregator application
 www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
-www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
+www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 52.0.2743.116 53.0.2785.21 53.0.2785.34 54.0.2810.2 54.0.2824.0: Open-source version of Google Chrome web browser
