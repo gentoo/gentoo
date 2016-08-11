@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=virtual/libintl fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) ncurses? ( sys-libs/ncurses:0= ) pam? ( virtual/pam ) virtual/yacc doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=The OpenAFS distributed file system
+EAPI=6
+HOMEPAGE=https://www.openafs.org/
+IUSE=bitmap-later debug doc fuse kerberos +modules ncurses pam pthreaded-ubik +supergroups
+KEYWORDS=~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=IBM BSD openafs-krb5-a APSL-2
+RDEPEND=virtual/libintl fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) ncurses? ( sys-libs/ncurses:0= ) pam? ( virtual/pam ) modules? ( ~net-fs/openafs-kernel-1.6.18.3 )
+SLOT=0
+SRC_URI=https://openafs.org/dl/openafs/1.6.18.3/openafs-1.6.18.3-src.tar.bz2 https://openafs.org/dl/openafs/1.6.18.3/openafs-1.6.18.3-doc.tar.bz2 https://dev.gentoo.org/~bircoph/afs/openafs-patches-20160801-2.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ff461645dd280a56364b8bda24991a30
