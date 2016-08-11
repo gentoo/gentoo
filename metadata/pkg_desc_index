@@ -2047,7 +2047,7 @@ app-office/scribus 1.4.5 1.4.6 1.5.0-r1 1.5.1 9999: Desktop publishing (DTP) and
 app-office/skrooge 2.4.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
-app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
+app-office/texmacs 1.99.2-r1 1.99.5: Wysiwyg text processor with high-quality maths
 app-office/texmaker 4.4.1-r1 4.5: A nice LaTeX-IDE
 app-office/texstudio 2.10.2 2.10.8: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.6 0.6.20131229 0.7 99999999: Convert between document formats supported by Libreoffice
@@ -14759,7 +14759,7 @@ net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for ac
 net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25 1.4.26 1.4.27 1.4.29: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
-net-misc/mikutter 3.2.7 3.3.5 9999: Simple, powerful and moeful twitter client
+net-misc/mikutter 3.3.5 3.4.2 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301: MiniSSDP Daemon
