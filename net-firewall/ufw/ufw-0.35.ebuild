@@ -162,6 +162,9 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	local print_check_req_warn
+	print_check_req_warn=false
+
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		echo
 		elog "To enable ufw, add it to boot sequence and activate it:"
@@ -170,10 +173,17 @@ pkg_postinst() {
 		echo
 		elog "If you want to keep ufw logs in a separate file, take a look at"
 		elog "/usr/share/doc/${PF}/logging."
+		print_check_req_warn=true
+	else
+		for rv in ${REPLACING_VERSIONS}; do
+			local major=${rv%%.*}
+			local minor=${rv#${major}.}
+			if [[ ${major} -eq 0 && ${minor} -lt 34 ]]; then
+				print_check_req_warn=true
+			fi
+		done
 	fi
-	if [[ -z ${REPLACING_VERSIONS} ]] \
-		|| [[ ${REPLACING_VERSIONS} < 0.34 ]];
-	then
+	if $print_check_req_warn; then
 		echo
 		elog "/usr/share/ufw/check-requirements script is installed."
 		elog "It is useful for debugging problems with ufw. However one"
