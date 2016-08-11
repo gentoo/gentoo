@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils fortran-2 multilib
+inherit cmake-utils fortran-2
 
 DESCRIPTION="A package for unstructured serial graph partitioning"
 HOMEPAGE="http://www-users.cs.umn.edu/~karypis/metis/metis/"
@@ -25,7 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-datatype.patch
 	"${FILESDIR}"/${P}-shared-GKlib.patch
 	"${FILESDIR}"/${P}-multilib.patch
-	)
+)
 
 src_prepare() {
 	sed \
@@ -39,7 +39,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DGKLIB_PATH="${S}"/GKlib
 		-DSHARED=TRUE
-		$(cmake-utils_use openmp)
+		-DOPENMP="$(usex openmp)"
 	)
 	cmake-utils_src_configure
 }
@@ -55,16 +55,16 @@ src_test() {
 
 src_install() {
 	cat >> "${T}"/metis.pc <<- EOF
-	prefix="${EPREFIX}"/usr
-	exec_prefix="${EPREFIX}"/usr
-	libdir="${EPREFIX}"/usr/$(get_libdir)
-	includedir="${EPREFIX}"/usr/include
+	prefix=${EPREFIX}/usr
+	exec_prefix=\${prefix}
+	libdir=\${exec_prefix}/$(get_libdir)
+	includedir=\${prefix}/include
 
 	Name: METIS
 	Description: Software for partioning unstructured graphes and meshes
 	Version: ${PV}
-	Libs: -L${libdir} -lmetis
-	Cflags: -I${includedir}/metis
+	Cflags: -I\${includedir}/metis
+	Libs: -L\${libdir} -lmetis
 	EOF
 
 	insinto /usr/$(get_libdir)/pkgconfig
