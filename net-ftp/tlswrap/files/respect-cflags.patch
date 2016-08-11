@@ -1,0 +1,66 @@
+From 1a38cd3f931d728fc7a2bcfdf1fa19510a19acde Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 11 Aug 2016 12:53:53 -0400
+Subject: [PATCH 1/3] Rename configure.in to configure.ac and respect the
+ user's CFLAGS.
+
+The name configure.in has been deprecated for a long time, so the
+first order of business was to rename it to configure.ac.
+
+To respect the user's CFLAGS, the most important change was to remove
+the line CFLAGS="-g" which wiped out any pre-existing CFLAGS and
+replaced them all with just "-g". There was also a test for GCC that
+would append a few flags like "-O2" and "-Wall" to the user's CFLAGS
+if the configure script detected GCC. That test was modified to only
+trigger when the user's CFLAGS were unset, and in that case, the (now
+removed) "-g" flag was added back.
+
+The end result of the CFLAGS changes is that a default set of CFLAGS
+will be used for GCC, but only if the user does not have any CFLAGS
+previously set. The default behavior should be completely unchanged
+when CFLAGS="".
+
+Gentoo-Bug: 240898
+---
+ configure.in => configure.ac | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
+ rename configure.in => configure.ac (84%)
+
+diff --git a/configure.in b/configure.ac
+similarity index 84%
+rename from configure.in
+rename to configure.ac
+index dd0ee15..575a5ab 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -6,23 +6,14 @@ dnl
+ dnl Get cannonical host
+ dnl
+ 
+-CFLAGS="-g"
+-
+ dnl Checks for programs.
+ AC_PROG_CC
+-if test "$GCC" = "yes" && test "$CC" != "icc"; then CFLAGS="$CFLAGS -O2 -Wall -Wmissing-prototypes"; fi
+-#  if test -n "$GCC"; then
+-#    CFLAGS="$CFLAGS -O2 -Wall -Wmissing-prototypes"
+-#  else
+-    #case "$host_os" in
+-#      *hpux*)  CFLAGS="$CFLAGS +O3"                      ;;
+-#      *ultrix* | *osf*) CFLAGS="$CFLAGS -O -Olimit 2000" ;;
+-#      *)       CFLAGS="$CFLAGS -O" ;;
+-#    esac
+-#  fi
++if test "$GCC" = "yes" && test "$CC" != "icc" && test -z "$CFLAGS" ; then
++   CFLAGS="-g -O2 -Wall -Wmissing-prototypes";
++fi
+ 
+ AC_CYGWIN
+-if test "$CYGWIN" = "yes"; then CFLAGS="$CFLAGS -Dsys_errlist=_imp___sys_errlist"; fi
++if test "$CYGWIN" = "yes"; then CFLAGS="$CFLAGS -g -Dsys_errlist=_imp___sys_errlist"; fi
+ checkssldir() { :
+     if test -f "$1/include/openssl/ssl.h"; then
+ #       AC_DEFINE(HAVE_OPENSSL)
+-- 
+2.7.3
+
