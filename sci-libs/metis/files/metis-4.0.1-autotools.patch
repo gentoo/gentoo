@@ -1,5 +1,5 @@
---- configure.ac 	1970-01-01 01:00:00.000000000 +0100
-+++ configure.ac	2008-03-25 10:05:57.090715324 +0000
+--- a/configure.ac
++++ b/configure.ac
 @@ -0,0 +1,15 @@
 +# -*- Autoconf -*-
 +AC_PREREQ(2.59)
