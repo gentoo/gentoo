@@ -6365,7 +6365,7 @@ dev-perl/Test-Trap 0.2.2-r1 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.170.0: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
-dev-perl/Test-Warn 0.240.0-r1 0.300.0-r1: Perl extension to test methods for warnings
+dev-perl/Test-Warn 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
