@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	dev-scheme/guile:12[deprecated]
+	<dev-scheme/guile-1.9[deprecated]
 	media-libs/freetype
 	x11-apps/xmodmap
 	x11-libs/libXext
