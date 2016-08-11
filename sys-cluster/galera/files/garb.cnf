@@ -7,6 +7,9 @@
 # Galera cluster name, should be the same as on the rest of the nodes.
 # GALERA_GROUP=""
 
+# Arbitrator node name, give a specific name to this node in cluster.
+# NODE_NAME=""
+
 # Optional Galera internal options string (e.g. SSL settings)
 # see http://www.codership.com/wiki/doku.php?id=galera_parameters
 # GALERA_OPTIONS=""
