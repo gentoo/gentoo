@@ -6,9 +6,12 @@
         <name>Gentoo MATE Desktop</name>
     </maintainer>
 	<use>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="mate">Install <pkg>x11-themes/mate-icon-theme</pkg> which 
 		is needed when this package is used in the MATE desktop 
 		environment.</flag>
+		<flag name="packagekit">Enable support for installing via <pkg>app-admin/packagekit</pkg>
+		based on mimetype</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/caja</remote-id>
