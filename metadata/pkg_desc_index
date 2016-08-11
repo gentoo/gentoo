@@ -4503,7 +4503,7 @@ dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0: Boost Libraries for C++
+dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0 1.61.0-r1: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.12 1.11.29: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
@@ -15875,7 +15875,7 @@ sci-libs/dsdp 5.8-r2: Software for interior-point for semidefinite programming
 sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
-sci-libs/fftw 2.1.5-r8 3.3.4 3.3.5-r1 9999: Fast C library for the Discrete Fourier Transform
+sci-libs/fftw 2.1.5-r8 3.3.4 3.3.5-r1 3.3.5-r2 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.8.4-r1 9999: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
 sci-libs/freesteam 2.0 9999: Open source implementation of IF97 steam tables
@@ -16947,7 +16947,7 @@ sys-cluster/lspbs 1.1-r1: Displays clear, concise and up-to-date PBS node and CP
 sys-cluster/maui 3.2.6_p16 3.2.6_p21 3.2.6_p21-r1 3.3 3.3.1-r2 3.3.1-r3: Maui Cluster Scheduler
 sys-cluster/moosefs 1.6.26-r1 1.6.27: A filesystem for highly reliable petabyte storage
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
-sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2: A high performance and portable MPI implementation
+sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2 3.2-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
@@ -16957,7 +16957,7 @@ sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
-sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.0 1.10.2: A high-performance message passing library (MPI)
+sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.0 1.10.2 1.10.2-r1: A high-performance message passing library (MPI)
 sys-cluster/openstack-meta 2015.2.9999 2016.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
@@ -17084,21 +17084,21 @@ sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-64
 sys-firmware/vgabios 0.6c-r1 0.7a 0.7a-r1: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.4 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
-sys-freebsd/boot0 8.2 9.1 10.2 10.3: FreeBSD's bootloader
-sys-freebsd/freebsd-bin 8.2 9.1 10.2 10.3: FreeBSD /bin tools
-sys-freebsd/freebsd-cddl 8.2 9.1 10.2 10.3: FreeBSD CDDL (opensolaris/zfs) extra software
+sys-freebsd/boot0 8.2 9.1 10.3: FreeBSD's bootloader
+sys-freebsd/freebsd-bin 8.2 9.1 10.3: FreeBSD /bin tools
+sys-freebsd/freebsd-cddl 8.2 9.1 10.3: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
-sys-freebsd/freebsd-lib 8.2-r1 9.1-r10 9.1-r11 10.2-r2 10.3-r1: FreeBSD's base system libraries
-sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.2 10.3: FreeBSD libexec things
-sys-freebsd/freebsd-mk-defs 8.2 9.1 10.2 10.3: Makefiles definitions used for building and installing libraries and system files
-sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.2 10.3: FreeBSD's PAM authentication modules
-sys-freebsd/freebsd-pf 8.2 9.1 10.2 10.3: FreeBSD's base system libraries
-sys-freebsd/freebsd-rescue 8.2 9.1 10.2 10.3: FreeBSD's rescue binaries
-sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.2 10.3: FreeBSD sbin utils
-sys-freebsd/freebsd-share 8.2 9.1 10.2 10.3: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.2-r7 10.3-r3: FreeBSD kernel sources
-sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.2-r2 10.3-r1: FreeBSD's base system source for /usr/bin
-sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.2-r4 10.3: FreeBSD /usr/sbin tools
+sys-freebsd/freebsd-lib 8.2-r1 9.1-r10 9.1-r11 10.3-r1: FreeBSD's base system libraries
+sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.3: FreeBSD libexec things
+sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3: Makefiles definitions used for building and installing libraries and system files
+sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3: FreeBSD's PAM authentication modules
+sys-freebsd/freebsd-pf 8.2 9.1 10.3: FreeBSD's base system libraries
+sys-freebsd/freebsd-rescue 8.2 9.1 10.3: FreeBSD's rescue binaries
+sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.3: FreeBSD sbin utils
+sys-freebsd/freebsd-share 8.2 9.1 10.3: FreeBSD shared tools/files
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.3-r3: FreeBSD kernel sources
+sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.3-r1: FreeBSD's base system source for /usr/bin
+sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.3: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
 sys-freebsd/virtio-kmod 0.228301-r1: Virtio drivers from FreeBSD Ports' emulators/virtio-kmod
 sys-fs/archivemount 0.8.3 0.8.4 0.8.5 0.8.7: Mount archives using libarchive and FUSE
@@ -17257,7 +17257,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rt-sources 3.14.65_p68 3.14.72_p75 3.18.29_p30 3.18.36_p37 4.1.20_p23 4.1.27_p30 4.4.9_p17 4.4.12_p19 4.6.1_p3 4.6.2_p5: Full Linux 4.6 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.81 3.4.112 3.10.102 3.12.62 3.14.74 3.16.36 3.18.38 4.1.29 4.4.16 4.6.5 4.7.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.81 3.4.112 3.10.102 3.12.62 3.14.75 3.16.36 3.18.39 4.1.30 4.4.17 4.6.6 4.7.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
@@ -17490,7 +17490,7 @@ virtual/mailx 0 1: Virtual for mail implementations
 virtual/man 0-r1: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/modutils 0: Virtual for utilities to manage Linux kernel modules
-virtual/mpi 2.0-r3: Virtual for Message Passing Interface (MPI) v2.0 implementation
+virtual/mpi 2.0-r3 2.0-r4: Virtual for Message Passing Interface (MPI) v2.0 implementation
 virtual/mta 0 1: Virtual for Message Transfer Agents
 virtual/mysql 5.5-r1 5.6-r6 5.6-r7 5.6-r8: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
