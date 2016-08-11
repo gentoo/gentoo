@@ -4,14 +4,13 @@
 
 EAPI=6
 
-EGO_PN="github.com/syncthing/syncthing"
-EGIT_COMMIT=v${PV}
+EGO_PN="github.com/${PN}/${PN}"
 
 inherit golang-vcs-snapshot systemd user versionator
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
-SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -19,17 +18,27 @@ KEYWORDS="~amd64 ~x86 ~arm"
 IUSE="tools"
 
 DOCS="README.md AUTHORS CONTRIBUTING.md"
-PATCHES=( "${FILESDIR}/relaysrv.systemd.patch" )
 
 pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 
 	if use tools ; then
-		# separate user for relaysrv
-		enewgroup ${PN}-relaysrv
-		enewuser ${PN}-relaysrv -1 -1 /var/lib/${PN}-relaysrv ${PN}-relaysrv
+		# separate user for the relay server
+		enewgroup strelaysrv
+		enewuser strelaysrv -1 -1 /var/lib/strelaysrv strelaysrv
+		# and his home folder
+		keepdir /var/lib/strelaysrv
+		fowners strelaysrv:strelaysrv /var/lib/strelaysrv
 	fi
+}
+
+src_prepare() {
+	default
+	sed -i \
+		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/strelaysrv|' \
+		src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
+		|| die
 }
 
 src_compile() {
@@ -53,6 +62,7 @@ src_test() {
 src_install() {
 	cd src/${EGO_PN} || die
 	doman man/*.[157]
+	einstalldocs
 
 	if use tools ; then
 		dobin bin/syncthing
@@ -78,24 +88,35 @@ src_install() {
 
 	if use tools ; then
 		# openrc and systemd service files
-		systemd_dounit "${S}"/src/${EGO_PN}/cmd/relaysrv/etc/linux-systemd/${PN}-relaysrv.service
-		newconfd "${FILESDIR}/${PN}-relaysrv.confd" ${PN}-relaysrv
-		newinitd "${FILESDIR}/${PN}-relaysrv.initd" ${PN}-relaysrv
-
-		keepdir /var/lib/${PN}-relaysrv
-		fowners ${PN}-relaysrv:${PN}-relaysrv /var/{lib,log}/${PN}
+		systemd_dounit "${S}"/src/${EGO_PN}/cmd/strelaysrv/etc/linux-systemd/strelaysrv.service
+		newconfd "${FILESDIR}/strelaysrv.confd" strelaysrv
+		newinitd "${FILESDIR}/strelaysrv.initd" strelaysrv
 
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}/syncthing-relaysrv.logrotate" syncthing-relaysrv
+		newins "${FILESDIR}/strelaysrv.logrotate" strelaysrv
 	fi
 }
 
 pkg_postinst() {
-	if [[ $(get_version_component_range 2) -gt \
-			$(get_version_component_range 2 ${REPLACING_VERSIONS}) ]]; then
-		ewarn "Version ${PV} is not protocol-compatible with version" \
-			"0.$(($(get_version_component_range 2) - 1)).x or lower."
-		ewarn "Make sure all your devices are running at least version" \
-			"0.$(get_version_component_range 2).0."
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ $(get_version_component_range 2) -gt \
+				$(get_version_component_range 2 ${v}) ]]; then
+			ewarn "Version ${PV} is not protocol-compatible with version" \
+				"0.$(($(get_version_component_range 2) - 1)).x or lower."
+			ewarn "Make sure all your devices are running at least version" \
+				"0.$(get_version_component_range 2).0."
+		fi
+	done
+
+	# check if user syncthing-relaysrv exists
+	# if yes, warn that it has been moved to strelaysrv
+	if [ -n "$(egetent passwd syncthing-relaysrv 2>/dev/null)" ]; then
+		ewarn
+		ewarn "The user and group for the relay server have been changed"
+		ewarn "from syncthing-relaysrv to strelaysrv"
+		ewarn "The old user and group are not deleted automatically. Delete them by running:"
+		ewarn "    userdel -r syncthing-relaysrv"
+		ewarn "    groupdel syncthing-relaysrv"
 	fi
 }
