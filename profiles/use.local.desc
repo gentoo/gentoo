@@ -4423,7 +4423,7 @@ media-sound/pianobooster:fluidsynth - Enable Fluidsynth MIDI software synthesis
 media-sound/picard:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
 media-sound/pithos:appindicator - Enable usage of appindicator to export menu options in to unity
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
-media-sound/pms:regex - Enable regular expression searches using dev-libs/boost
+media-sound/pms:regex - Enable regular expression searches
 media-sound/podcatcher:bittorrent - Enable support for bittorrent downloads
 media-sound/potamus:opus - Adds support for the Opus codec.
 media-sound/pragha:glyr - Enable music metadata searchengine support using media-libs/glyr
@@ -8265,6 +8265,8 @@ x11-misc/xlockmore:xlockrc - Enables xlockrc for people without PAM
 x11-misc/xmobar:mpd - Support mpd plugin
 x11-misc/xmobar:mpris - Enables MPRIS v1, v2 support
 x11-misc/xmobar:timezone - Enables localized date support
+x11-misc/xmobar:with_conduit - Use conduit to fetch weather data.
+x11-misc/xmobar:with_uvmeter - Plugin to show UV data for Australia.
 x11-misc/xscreensaver:gdm - Use gdmflexiserver from gnome-base/gdm instead of x11-misc/lightdm
 x11-misc/xscreensaver:new-login - Enable user switching support using gdmflexiserver (x11-misc/lightdm) or kdmctl (kde-base/kdm)
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module

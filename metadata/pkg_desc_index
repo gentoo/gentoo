@@ -16804,7 +16804,7 @@ sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writ
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.35 4.41 4.42: Disk Information Utility
+sys-block/di 4.35 4.42 4.43: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
@@ -18486,7 +18486,7 @@ x11-misc/xkbset 0.5-r1 0.5_p5_p1: User preference utility for XKB extensions for
 x11-misc/xkeyboard-config 2.14 2.16 2.17 2.18: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1: GUI frontend to xmodmap
 x11-misc/xlockmore 5.45 5.46 5.47: Just another screensaver application for X
-x11-misc/xmobar 0.20.1-r1 0.21 0.22.1 0.23 0.23.1: A Minimalistic Text Based Status Bar
+x11-misc/xmobar 0.23.1 0.24.2: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19: Program suite to record, replay and distribute user actions
