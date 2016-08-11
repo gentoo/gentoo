@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Savchenko <bircoph@gentoo.org> (11 Aug 2016)
+# PGO is fixed on amd64
+>=www-client/firefox-48 -pgo
+
 # James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
 # Only available on amd64.
 dev-java/icedtea -shenandoah
