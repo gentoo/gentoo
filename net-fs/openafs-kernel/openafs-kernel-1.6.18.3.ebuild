@@ -37,9 +37,9 @@ QA_TEXTRELS_amd64_fbsd="/boot/modules/libafs.ko"
 PATCHES=( "${WORKDIR}/gentoo/patches" )
 
 pkg_pretend() {
-	if use kernel_linux && kernel_is ge 4 7 ; then
+	if use kernel_linux && kernel_is ge 4 8 ; then
 		ewarn "Gentoo supports kernels which are supported by OpenAFS"
-		ewarn "which are limited to the kernel versions: < 4.7"
+		ewarn "which are limited to the kernel versions: < 4.8"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"

@@ -32,8 +32,8 @@ RDEPEND=""
 
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-21.2.1[${PYTHON_USEDEP}]
-	=dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
-	=dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-${PV}[${PYTHON_USEDEP}]
+	~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 "
 
