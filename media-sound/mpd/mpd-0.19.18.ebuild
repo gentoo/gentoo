@@ -80,7 +80,7 @@ CDEPEND="!<sys-cluster/mpich2-1.4_rc2
 	opus? ( media-libs/opus )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( || ( <net-fs/samba-4.0.25[smbclient] >=net-fs/samba-4.0.25 ) )
-	sid? ( media-libs/libsidplay:2 )
+	sid? ( || ( media-libs/libsidplay:2 media-libs/libsidplayfp ) )
 	sndfile? ( media-libs/libsndfile )
 	soundcloud? ( >=dev-libs/yajl-2 )
 	libsoxr? ( media-libs/soxr )
