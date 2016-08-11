@@ -168,7 +168,7 @@ RDEPEND="${RDEPEND}
 		)
 		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 		vorbis? ( >=media-libs/libvorbis-1.1:0 )
-		vpx? ( media-libs/libvpx:0 )
+		vpx? ( media-libs/libvpx:0= )
 		X? ( x11-libs/libX11:0 )
 		x264? ( >=media-libs/x264-0.0.20090923:0= )
 		x265? ( media-libs/x265:0= )
