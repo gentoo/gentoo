@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils fortran-2 multilib
+inherit cmake-utils fortran-2
 
 DESCRIPTION="A package for unstructured serial graph partitioning"
 HOMEPAGE="http://www-users.cs.umn.edu/~karypis/metis/metis/"
@@ -25,7 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-datatype.patch
 	"${FILESDIR}"/${P}-shared-GKlib.patch
 	"${FILESDIR}"/${P}-multilib.patch
-	)
+)
 
 src_prepare() {
 	sed \
@@ -39,7 +39,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DGKLIB_PATH="${S}"/GKlib
 		-DSHARED=TRUE
-		$(cmake-utils_use openmp)
+		-DOPENMP="$(usex openmp)"
 	)
 	cmake-utils_src_configure
 }
