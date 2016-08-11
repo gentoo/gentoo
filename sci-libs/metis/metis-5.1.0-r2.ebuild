@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -55,16 +55,16 @@ src_test() {
 
 src_install() {
 	cat >> "${T}"/metis.pc <<- EOF
-	prefix="${EPREFIX}"/usr
-	exec_prefix="${EPREFIX}"/usr
-	libdir="${EPREFIX}"/usr/$(get_libdir)
-	includedir="${EPREFIX}"/usr/include
+	prefix=${EPREFIX}/usr
+	exec_prefix=\${prefix}
+	libdir=\${exec_prefix}/$(get_libdir)
+	includedir=\${prefix}/include
 
 	Name: METIS
 	Description: Software for partioning unstructured graphes and meshes
 	Version: ${PV}
-	Libs: -L${libdir} -lmetis
-	Cflags: -I${includedir}/metis
+	Cflags: -I\${includedir}/metis
+	Libs: -L\${libdir} -lmetis
 	EOF
 
 	insinto /usr/$(get_libdir)/pkgconfig
