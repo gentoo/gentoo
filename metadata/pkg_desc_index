@@ -9674,7 +9674,7 @@ dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0 1.61.0: A syst
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.9: A massively-parallel software build system implemented on top of GNU make
-dev-util/buildbot 0.8.10 0.8.12-r2 0.9.0_rc1 9999: BuildBot build automation system
+dev-util/buildbot 0.8.10 0.8.12-r2 0.9.1_rc1-r1 9999: BuildBot build automation system
 dev-util/buildbot-console-view 0.9.0_rc1: Buildbot console-view plugin
 dev-util/buildbot-pkg 0.9.0_rc1: BuildBot common www build tools for packaging releases
 dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
