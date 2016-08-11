@@ -74,6 +74,8 @@ src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
 
+	epatch "${FILESDIR}"/${PN}-4.4-assign-crash.patch
+
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then
 		rm -rf lib/{readline,termcap}/*
@@ -100,7 +102,6 @@ src_configure() {
 		-DSYS_BASH_LOGOUT=\'\"${EPREFIX}/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
 		-DSSH_SOURCE_BASHRC \
-		-DUSE_MKTEMP -DUSE_MKSTEMP \
 		$(use bashlogger && echo -DSYSLOG_HISTORY)
 
 	# Don't even think about building this statically without
