@@ -27,5 +27,5 @@ RDEPEND="dev-python/cheetah[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	adns? ( dev-python/twisted-names[${PYTHON_USEDEP}] )
 	media-fonts/font-xfree86-type1
-	dev-libs/libprelude[${PYTHON_USEDEP}]
-	dev-libs/libpreludedb[${PYTHON_USEDEP}]"
+	dev-libs/libprelude[python,${PYTHON_USEDEP}]
+	dev-libs/libpreludedb[python,${PYTHON_USEDEP}]"
