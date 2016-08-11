@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201608-01">
+  <title>OptiPNG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OptiPNG, the worst of
+    which could lead to the remote execution of arbitrary code, or cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>August 11, 2016</announced>
+  <revised>August 11, 2016: 1</revised>
+  <bug>561882</bug>
+  <bug>579030</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/optipng" auto="yes" arch="*">
+      <unaffected range="ge">0.7.6</unaffected>
+      <vulnerable range="lt">0.7.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OptiPNG is a PNG optimizer that recompresses image files to a smaller
+      size, without losing any information.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OptiPNG. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file resulting in the execution of arbitrary code with the privileges of
+      the process, or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OptiPNG users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/optipng-0.7.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2191">CVE-2016-2191</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3981">CVE-2016-3981</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-3982">CVE-2016-3982</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 26 Jun 2016 12:03:00 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Thu, 11 Aug 2016 06:06:28 +0000">b-man</metadata>
+</glsa>
