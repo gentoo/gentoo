@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (11 Aug 2016)
+# No longer works. Masked for removal in 30 days.
+app-text/kpaste
+
 # Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
 # Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug 443812.
