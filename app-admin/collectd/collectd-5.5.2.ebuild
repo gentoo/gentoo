@@ -6,7 +6,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit autotools fcaps java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd user
+inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd user
 
 DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
@@ -16,7 +16,7 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev"
+IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
 
@@ -66,6 +66,7 @@ COMMON_DEPEND="
 	dev-libs/libltdl:0=
 	perl?					( dev-lang/perl:=[ithreads] )
 	udev?					( virtual/udev )
+	xfs?					( sys-fs/xfsprogs )
 	collectd_plugins_amqp?			( net-libs/rabbitmq-c )
 	collectd_plugins_apache?		( net-misc/curl:0= )
 	collectd_plugins_ascent?		( net-misc/curl:0= dev-libs/libxml2:2= )
@@ -123,8 +124,6 @@ COMMON_DEPEND="
 
 # Enforcing <=sys-kernel/linux-headers-4.4 due to #577846
 DEPEND="${COMMON_DEPEND}
-	collectd_plugins_cgroups?		( sys-fs/xfsprogs )
-	collectd_plugins_df?			( sys-fs/xfsprogs )
 	collectd_plugins_genericjmx?		( >=virtual/jdk-1.6 )
 	collectd_plugins_iptables?		( <=sys-kernel/linux-headers-4.4 )
 	collectd_plugins_java?			( >=virtual/jdk-1.6 )
@@ -144,7 +143,8 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.10.3-werror.patch
-	"${FILESDIR}"/${PN}-5.5.1-{libocci,lt,nohal,issue-1637}.patch
+	"${FILESDIR}"/${PN}-5.5.1-{libocci,lt,nohal}.patch
+	"${FILESDIR}"/${PN}-5.5.2-issue-{1870,1877}.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -400,6 +400,12 @@ src_configure() {
 	KERNEL_DIR="${KERNEL_DIR}" econf --config-cache --disable-ltdl-install \
 		--without-included-ltdl $(use_enable static-libs static) \
 		--localstatedir=/var ${myconf}
+
+	if ! use xfs; then
+		# Workaround for https://github.com/collectd/collectd/issues/1878
+		einfo "Disabling XFS support ..."
+		sed -i -e "s/HAVE_XFS_XQM_H 1/HAVE_XFS_XQM_H 0/" src/config.h || die
+	fi
 }
 
 src_install() {
