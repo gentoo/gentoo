@@ -1064,7 +1064,7 @@ app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring
 app-editors/pluma 1.10.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
-app-editors/qxmledit 0.9.3 0.9.4: Simple Qt-based XML editor
+app-editors/qxmledit 0.9.4: Simple Qt-based XML editor
 app-editors/retext 4.1.3 5.3.0 5.3.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
@@ -13278,7 +13278,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.25 0.26 0.27: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15 0.19.18: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
@@ -17837,7 +17837,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.2.490.35_p1 1.3.551.13_p1 1.3.551.21_p1: A new browser for our friends
+www-client/vivaldi 1.2.490.35_p1 1.3.551.21_p1 1.3.551.30_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
