@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 inherit eutils ruby-ng
 
@@ -25,24 +25,30 @@ HOMEPAGE="http://mikutter.hachune.net/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+libnotify sound"
+IUSE="+libnotify"
 
 DEPEND=""
 RDEPEND="
 	libnotify? ( x11-libs/libnotify )
-	sound? ( media-sound/alsa-utils )"
+	media-sound/alsa-utils"
 
 ruby_add_rdepend "dev-ruby/addressable
-	dev-ruby/bsearch
 	dev-ruby/delayer
-	dev-ruby/json
-	dev-ruby/memoize
+	dev-ruby/delayer-deferred
+	dev-ruby/httpclient
+	dev-ruby/json:0
+	dev-ruby/instance_storage
+	dev-ruby/memoist
 	>=dev-ruby/moneta-0.7
+	dev-ruby/nokogiri
 	>=dev-ruby/oauth-0.4.7
+	dev-ruby/pluggaloid
 	dev-ruby/rcairo
 	>=dev-ruby/ruby-gettext-3.0.1
 	>=dev-ruby/ruby-gtk2-2.2.0
 	dev-ruby/ruby-hmac
+	dev-ruby/totoridipjp
+	dev-ruby/twitter-text
 	dev-ruby/typed-array
 	virtual/ruby-ssl"
 
@@ -57,14 +63,10 @@ all_ruby_unpack() {
 each_ruby_install() {
 	local rubyversion
 
-	#if use ruby_targets_ruby22; then
-	#	rubyversion=ruby22
-	if use ruby_targets_ruby21; then
+	if use ruby_targets_ruby22; then
+		rubyversion=ruby22
+	elif use ruby_targets_ruby21; then
 		rubyversion=ruby21
-	elif use ruby_targets_ruby20; then
-		rubyversion=ruby20
-	else
-		die "Select Ruby verion 2.x"
 	fi
 
 	exeinto /usr/share/mikutter
