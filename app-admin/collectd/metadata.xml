@@ -151,5 +151,6 @@
 		<flag name="filecaps">When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user</flag>
 		<flag name="java">Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin</flag>
 		<flag name="udev">Enable optional udev usage in disk plugin; Required for smart plugin</flag>
+		<flag name="xfs">Enable optional capability to filter on XFS file system in df plugin; Requires XFS headers from <pkg>sys-fs/xfsprogs</pkg></flag>
 	</use>
 </pkgmetadata>
