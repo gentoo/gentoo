@@ -14,6 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
+# Installs regex.h which most C libs provide.
+RDEPEND="!sys-libs/glibc
+	!sys-libs/uclibc
+	!sys-libs/musl"
+
 src_prepare() {
 	default
 
