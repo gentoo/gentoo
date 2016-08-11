@@ -155,7 +155,7 @@ src_install () {
 	default
 
 	# From USE=vt see #359917
-	rm "${ED}"/usr/share/libtool &> /dev/null
+	rm -rf "${ED}"/usr/share/libtool &> /dev/null
 
 	# Avoid collisions with libevent
 	rm -rf "${ED}"/usr/include/event2 &> /dev/null

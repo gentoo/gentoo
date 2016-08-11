@@ -174,8 +174,6 @@ sci-chemistry/mars
 sci-chemistry/xdsgui
 sci-chemistry/xdsstat-bin
 sci-libs/ipp
-sys-apps/memtest86
-sys-apps/memtest86+
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
 www-plugins/pipelight
