@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit depend.php eutils webapp
+inherit webapp
 
 MY_P="${P//_/}"
 
@@ -18,32 +18,32 @@ IUSE="enscript"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=""
-RDEPEND="dev-vcs/subversion
+RDEPEND="dev-lang/php:*[xml]
+	dev-vcs/subversion
+	virtual/httpd-php:*
 	enscript? ( app-text/enscript )"
 RESTRICT="mirror"
 
-need_httpd_cgi
-need_php_httpd
+PATCHES=(
+	"${FILESDIR}/13_security_CVE-2013-6892.patch"
+	"${FILESDIR}/30_CVE-2016-2511.patch"
+	"${FILESDIR}/31_CVE-2016-1236.patch"
+)
 
 S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	webapp_pkg_setup
-	has_php
-	require_php_with_use xml
-}
 
 src_install() {
 	webapp_src_preinst
 
-	mv include/{dist,}config.php
+	DOCS=( changes.txt )
+	HTML_DOCS=( doc/* )
+	einstalldocs
 
-	dodoc changes.txt || die "dodoc failed"
-	dohtml doc/* || die "dohtml failed"
+	mv include/{dist,}config.php
 	rm -rf license.txt changes.txt doc/
 
 	insinto "${MY_HTDOCSDIR}"
-	doins -r . || die "doins failed"
+	doins -r .
 
 	webapp_configfile "${MY_HTDOCSDIR}"/include/config.php
 	webapp_configfile "${MY_HTDOCSDIR}"/wsvn.php
