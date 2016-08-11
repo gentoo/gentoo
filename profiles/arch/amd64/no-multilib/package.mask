@@ -165,8 +165,6 @@ sci-chemistry/icm
 sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp
-sys-apps/memtest86
-sys-apps/memtest86+
 sys-libs/lib-compat-loki
 www-plugins/nspluginwrapper
 www-plugins/pipelight
