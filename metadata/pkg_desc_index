@@ -2964,7 +2964,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.4.15.5 4.5.5.1 4.6.0 4.6.1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.5.1 9.5.2 9.5.3 9.6_beta3 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.1.23 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.2.18 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.3.14 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.4.9 9.5.1 9.5.2 9.5.3 9.5.4 9.6_beta3 9.6_beta4 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
@@ -17241,7 +17241,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.9999 3.14.58-r1 3.14.73 3.14.74 3.14.75 3.18.25-r1 3.18.36 3.18.38 3.18.39 4.1.15-r1 4.1.27 4.1.29 4.1.30 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.4.16 4.6.3 4.6.4 4.6.5 4.7.0: Full sources including the Gentoo patchset for the 4.7 kernel tree
+sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.9999 3.14.58-r1 3.14.73 3.14.74 3.14.75 3.18.25-r1 3.18.36 3.18.38 3.18.39 4.1.15-r1 4.1.27 4.1.29 4.1.30 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.4.16 4.4.17 4.6.3 4.6.4 4.6.5 4.7.0: Full sources including the Gentoo patchset for the 4.7 kernel tree
 sys-kernel/git-sources 4.8_rc1: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.6.4-r1 4.6.5-r1: Hardened kernel sources (kernel series 4.6)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
