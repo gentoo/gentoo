@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_BLOCK_SLOT4="false"
-KDE_PUNT_BOGUS_DEPS="true"
 inherit kde5
 
 DESCRIPTION="Mahjongg library based on Qt/KDE Frameworks"
@@ -24,3 +23,8 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}"
+
+src_prepare(){
+	punt_bogus_dep Qt5 Test
+	kde5_src_prepare
+}
