@@ -36,6 +36,7 @@ src_prepare() {
 	if has_version '>=dev-lang/ocaml-4.03' ; then
 		epatch "${FILESDIR}/"{camlp4,oc43}.patch
 	fi
+	has_version '>=dev-ml/tyxml-4' && epatch "${FILESDIR}/tyxml4.patch"
 }
 
 src_compile() {

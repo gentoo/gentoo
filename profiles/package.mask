@@ -275,11 +275,6 @@ app-portage/epm
 # Use at your own risk.
 =app-text/xiphos-4.0.4-r1
 
-# Alexis Ballier <aballier@gentoo.org> (24 May 2016)
-# API change, breaks e.g. eliom
->=dev-ml/tyxml-4
->=dev-ml/js_of_ocaml-2.8
-
 # Luca Barbato <lu_zero@gentoo.org> (23 May 2016)
 # Masked for testing, vlc-2.2 configure rejects it.
 =media-video/libav-12*
