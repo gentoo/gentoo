@@ -48,7 +48,7 @@ COMMON_DEPEND="app-text/rarian:0
 	!pm-utils? ( >=sys-power/upower-0.9.23:= )"
 
 RDEPEND="${COMMON_DEPEND}
-	policykit? ( >=mate-extra/mate-polkit-1.6[gtk3(-)=] )"
+	policykit? ( >=mate-extra/mate-polkit-1.6 )"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
