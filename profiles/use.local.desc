@@ -318,7 +318,9 @@ app-arch/deltarpm:system-zlib - Use system sys-libs/zlib. Do not enable features
 app-arch/dpkg:update-alternatives - Install update-alternatives
 app-arch/dump:ermt - encrypted rmt support
 app-arch/engrampa:caja - Enable engrampa to integrate with mate-base/caja by providing entries in its context menu
+app-arch/engrampa:gtk3 - Build with GTK+3 instead of GTK+2
 app-arch/engrampa:magic - Enable filetype auto-detection via sys-apps/file
+app-arch/engrampa:packagekit - Enable support for installing via app-admin/packagekit based on archive type
 app-arch/file-roller:nautilus - Enable file-roller to integrate with gnome-base/nautilus by providing entries in its context menu
 app-arch/file-roller:packagekit - Enable support for the distro-neutral package manager GUI app-admin/packagekit
 app-arch/gzip:pic - disable optimized assembly code that is not PIC friendly
@@ -537,6 +539,7 @@ app-editors/nano:minimal - Disable all fancy features, including ones that other
 app-editors/ne:tinfo - Link against libtinfo from sys-libs/ncurses
 app-editors/neovim:jemalloc - Use dev-libs/jemalloc for allocations
 app-editors/neovim:nvimpager - Install nvimpager symlink to less.sh macro
+app-editors/pluma:gtk3 - Build with GTK+3 instead of GTK+2
 app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
 app-editors/vim:X - Link console vim against X11 libraries to enable title and clipboard features in xterm
@@ -1151,8 +1154,9 @@ app-text/asciidoc:highlight - Enable source code highlighting
 app-text/atril:caja - Enable property page extension in mate-base/caja
 app-text/atril:dvi - Enable build-in DVI viewer
 app-text/atril:epub - Enable build-in DVI viewer using net-libs/webkit-gtk
+app-text/atril:gtk3 - Build with GTK+3 instead of GTK+2
 app-text/atril:t1lib - Enable the Type-1 fonts for the build-in DVI viewer (media-libs/t1lib)
-app-text/atril:xps - Enable XPS viewer using app-text/libgxps
+app-text/atril:xps - Enable XPS viewer using app-text/libxps
 app-text/blogc:git - Build blogc-git-receiver tool
 app-text/blogc:httpd - Build blogc-runserver tool
 app-text/crm114:mew - Add support for using the mewdecode mime decoder (app-emacs/mew)
@@ -2032,6 +2036,7 @@ dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
 dev-libs/liblogging:rfc3195 - Enables RFC 3195 protocol (aka syslog-reliable) support. If you don't know what this is, you don't need it!
 dev-libs/liblogging:stdlog - Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
 dev-libs/libmail:apop - Enables the APOP authentication method
+dev-libs/libmateweather:gtk3 - Build with GTK+3 instead of GTK+2
 dev-libs/libmemcached:hsieh - Use Hsieh hash algorithm.
 dev-libs/libmemcached:libevent - Use the libevent event loop interface.
 dev-libs/libmemcached:sasl - Use sasl auth for communications.
@@ -2421,6 +2426,7 @@ dev-python/pyside:sql - Build QtSql module
 dev-python/pyside:svg - Build QtSvg module
 dev-python/pyside:webkit - Build QtWebKit module
 dev-python/pyside:xmlpatterns - Build QtXmlPatterns module
+dev-python/python-caja:gtk3 - Build with GTK+3 instead of GTK+2
 dev-python/python-stdnum:vies - Enable VIES
 dev-python/pyudev:pygobject - Install PyGobject binding
 dev-python/pyudev:pyqt4 - Install PyQt4 binding
@@ -3658,30 +3664,56 @@ mail-mta/qmail-ldap:rfc2307 - Add support for RFC2307 compliant uid/gid attribut
 mail-mta/qmail-ldap:rfc822 - Add support for RFC822 compliant mail attributes
 mail-mta/qpsmtpd:postfix - create user with permissions for proper postfix interaction
 mail-mta/ssmtp:mta - Install symlinks for sendmail-compatible MTA.
+mate-base/caja:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
+mate-base/caja:packagekit - Enable support for installing via app-admin/packagekit based on mimetype
+mate-base/libmatekbd:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate:base - Install base MATE Desktop applications that are recommended for the most common usage; for example, this installs the file manager. Disable this and other USE flags if you want a more minimal MATE Desktop.
 mate-base/mate:extras - Install additional MATE Desktop applications that are recommended for extended usage of the MATE Desktop as upstream sees it; for example, this installs MATE Desktop's office related applications. Disable this if you plan to use your own non-MATE Desktop alternatives or a custom mixture of MATE and non-MATE packages.
+mate-base/mate:gtk3 - Build all of MATE DE with GTK+3 instead of GTK+2
+mate-base/mate:help - Install gnome-extra/yelp to handle in application help menus and documentation browsing
 mate-base/mate:notification - Force notification daemon to default to MATE's notification daemon. Enabled by default. Disable if it causes conflicts with other installed desktop environments.
 mate-base/mate:themes - Install MATE Desktop's themes; if you use other themes, you can disable this to spare some space and time.
+mate-base/mate-applets:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate-applets-meta:appindicator - Pull in mate-extra/mate-indicator-applet for AppIndicator applet
+mate-base/mate-applets-meta:gtk3 - Make sure applets are built with GTK+3 instead of GTK+2
+mate-base/mate-applets-meta:netspeed - Pull in net-analyzer/mate-netspeed for net speed monitoring applet
 mate-base/mate-applets-meta:sensors - Pull in mate-extra/mate-sensors-applet for hw sensors applet
+mate-base/mate-control-center:appindicator - Add support for AppIndicator
+mate-base/mate-control-center:gtk3 - Build with GTK+3 instead of GTK+2
+mate-base/mate-desktop:gtk3 - Build with GTK+3 instead of GTK+2
 mate-base/mate-desktop:user-guide - Install MATE user guide
+mate-base/mate-panel:gtk3 - Build with GTK+3 instead of GTK+2
+mate-base/mate-session-manager:gtk3 - Build with GTK+3 instead of GTK+2
+mate-base/mate-settings-daemon:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/caja-extensions:cdr - Add an extension to burn files to cds using app-cdr/brasero.
 mate-extra/caja-extensions:gajim - Add an extension to support net-im/gajim.
 mate-extra/caja-extensions:gksu - Add an extension to support opening files as root with x11-libs/gksu.
+mate-extra/caja-extensions:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/caja-extensions:image-converter - Add image conversion support.
 mate-extra/caja-extensions:mail - Add an extension to support e-mail functionality.
 mate-extra/caja-extensions:open-terminal - Add an extension to support an open terminal.
 mate-extra/caja-extensions:pidgin - Add an extension to support net-im/pidgin
 mate-extra/caja-extensions:share - Add an extension to support sharing files.
 mate-extra/caja-extensions:wallpaper - Add an extension to support setting an image as the current wallpaper
+mate-extra/mate-indicator-applet:gtk3 - Build with GTK+3 instead of GTK+2
+mate-extra/mate-media:gtk3 - Build with GTK+3 instead of GTK+2
+mate-extra/mate-netbook:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-polkit:accountsservice - Support extraction of data from AccountsService
 mate-extra/mate-polkit:appindicator - Add support for AppIndicator
+mate-extra/mate-polkit:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-power-manager:applet - Enable building of the MATE applet.
+mate-extra/mate-power-manager:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-power-manager:man - Build power manager's man page.
+mate-extra/mate-power-manager:pm-utils - Adds support for suspend/resume using sys-power/upower-pm-utils instead of sys-power/upower
 mate-extra/mate-power-manager:unique - Enable single instance support using dev-libs/libunique.
-mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolekit
+mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolkekit
+mate-extra/mate-screensaver:gtk3 - Build with GTK+3 instead of GTK+2
+mate-extra/mate-sensors-applet:gtk3 - Build with GTK+3 instead of GTK+2
+mate-extra/mate-system-monitor:gtk3 - Build with GTK+3 instead of GTK+2
+mate-extra/mate-user-share:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-utils:applet - Enable the mate dictionary applet
+mate-extra/mate-utils:gtk3 - Build with GTK+3 instead of GTK+2
 media-fonts/corefonts:tahoma - Also install the Tahoma font. Due to the lack of a free bold variant, this may render badly. See bug 184790.
 media-fonts/culmus:ancient - Install ancient semitic scripts
 media-fonts/culmus:fancy - Install fancy fonts
@@ -3761,6 +3793,7 @@ media-gfx/enblend:image-cache - allow for processing of large images
 media-gfx/eog-plugins:flickr - Enable uploading to Flickr
 media-gfx/eog-plugins:map - Enable world map display using media-libs/libchamplain
 media-gfx/eog-plugins:picasa - Enable uploading to Google's Picasa Web Albums
+media-gfx/eom:gtk3 - Build with GTK+3 instead of GTK+2
 media-gfx/exact-image:swig - Adds Swig support dev-lang/swig
 media-gfx/exiv2:webready - Support reading metadata over the internet
 media-gfx/fbida:X - Install the Motif based image viewer "ida"
@@ -4992,6 +5025,7 @@ net-analyzer/icinga2:plugins - Adds support for nagios plugins
 net-analyzer/icinga2:studio - Adds support for Icinga-studio
 net-analyzer/ipsumdump:nanotimestamp - Enable timestamps with nano-second resolution
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
+net-analyzer/mate-netspeed:gtk3 - Build with GTK+3 instead of GTK+2
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
 net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
 net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
@@ -8235,6 +8269,8 @@ x11-misc/light-locker:gtk3 - Build with GTK+ 3 instead of GTK+ 2.
 x11-misc/light-locker:screensaver - Lock the screen on screensaver activation.
 x11-misc/lightdm:gtk - Pull in the gtk+ greeter
 x11-misc/lightdm:kde - Pull in the kde greeter
+x11-misc/mate-notification-daemon:gtk3 - Build with GTK+3 instead of GTK+2
+x11-misc/mozo:gtk3 - Build with GTK+3 instead of GTK+2
 x11-misc/openbox-menu:icons - Enable support for icons in menus
 x11-misc/openbox-menu:svg - Support SVG icons
 x11-misc/rednotebook:libyaml - enable libyaml support
@@ -8289,6 +8325,7 @@ x11-terms/eterm:utempter - Include libutempter support
 x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell search
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/hanterm:utempter - Records user logins. Useful on multi-user systems
+x11-terms/mate-terminal:gtk3 - Build with GTK+3 instead of GTK+2
 x11-terms/mlterm:fcitx - Enable app-i18n/fcitx support
 x11-terms/mlterm:ibus - Enable app-i18n/ibus support
 x11-terms/mlterm:libssh2 - Enable net-libs/libssh2 support
@@ -8330,6 +8367,7 @@ x11-themes/gtk-engines-murrine:themes - Pull in themes via x11-themes/murrine-th
 x11-themes/gtk-engines-nodoka:animation-rtl - Progressbar animation from right to left
 x11-themes/kfaenza:additional - Install additional KFaenza icons. See third homepage for details
 x11-themes/light-themes:gtk3 - Support GTK 3.x, too
+x11-themes/mate-themes-meta:gtk2-only - Allow dependency-resolution for a system without GTK+3
 x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
 x11-themes/qtcurve:windeco - Enable window decoration for KWin
 x11-themes/redhat-artwork:audacious - Install media-sound/audacious theme
@@ -8416,6 +8454,7 @@ x11-wm/fvwm:netpbm - Enable NetPBM support (used by FvwmScript-ScreenDump)
 x11-wm/fvwm:rplay - Enable rplay support
 x11-wm/fvwm:stroke - Mouse Gesture support
 x11-wm/i3:pango - Use x11-libs/pango to render text in order to support fonts which have more glyphs (e.g. Kanji). See RELEASE-NOTES for more information
+x11-wm/marco:gtk3 - Build with GTK+3 instead of GTK+2
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
 x11-wm/mutter:kms - Enable KMS support.
