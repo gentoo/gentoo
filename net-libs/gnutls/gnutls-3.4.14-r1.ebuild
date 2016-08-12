@@ -46,6 +46,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS doc/TODO )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.4.7-build-allow-installing-man-1-even-with-disable-doc.patch"
+	"${FILESDIR}/${PN}-3.4.14-build.patch"
 )
 
 pkg_setup() {
