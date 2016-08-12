@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,10 +26,17 @@ RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	dev-ml/ocaml-ssl:=
 	>=dev-ml/lwt-2.5.0:=
 	dev-ml/calendar:=
+	dev-ml/camlp4:=
 	ppx? ( >=dev-ml/ppx_tools-0.99.3:= )"
 DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild
 	dev-ml/opam"
+
+src_prepare() {
+	if has_version '>=dev-lang/ocaml-4.03' ; then
+		epatch "${FILESDIR}/"{camlp4,oc43}.patch
+	fi
+}
 
 src_compile() {
 	if use ocamlopt ; then
