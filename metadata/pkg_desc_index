@@ -13404,7 +13404,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.34: Spotify is a social music platform
+media-sound/spotify 1.0.36: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365-r1 1.1_p381-r1: A lightweight streaming audio player for Logitech Media Server
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
@@ -18534,7 +18534,7 @@ x11-misc/zim 0.65: A desktop wiki
 x11-plugins/allin1 0.5.0 0.5.0-r1: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
 x11-plugins/asclock 2.0.12-r1: Clock applet for AfterStep
-x11-plugins/ascpu 1.11: CPU statistics monitor utility for X Windows
+x11-plugins/ascpu 1.11 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12: a swallowable applet monitors the utilization level of memory, cache and swap space
 x11-plugins/asmon 0.71 0.71-r1: WindowMaker/AfterStep system monitor dockapp
 x11-plugins/astime 2.8-r1: Analogue clock utility for X Windows
