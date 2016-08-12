@@ -39,7 +39,6 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-8.5-do-not-install-revision.patch"
 	epatch "${FILESDIR}/${PN}-8.4_p5-no-clean-before-test.patch"
-	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
 }
 
 src_configure() {
