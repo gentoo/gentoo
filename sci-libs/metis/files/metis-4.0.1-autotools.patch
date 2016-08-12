@@ -16,8 +16,8 @@
 +	Programs/Makefile\
 +	Test/Makefile])
 +AC_OUTPUT
---- metis.pc.in 	1970-01-01 01:00:00.000000000 +0100
-+++ metis.pc.in	2008-02-15 14:45:09.378997263 +0000
+--- a/metis.pc.in
++++ b/metis.pc.in
 @@ -0,0 +1,10 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
@@ -29,16 +29,16 @@
 +Version: @VERSION@
 +Libs: -L${libdir} -lmetis
 +Cflags: -I${includedir}/metis
---- Makefile.am 	1970-01-01 01:00:00.000000000 +0100
-+++ Makefile.am	2008-02-15 14:46:16.578826763 +0000
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -0,0 +1,5 @@
 +SUBDIRS = Lib Programs Test
 +EXTRA_DIST = CHANGES VERSION metis.pc.in
 +
 +pkgconfigdir = $(libdir)/pkgconfig
 +pkgconfig_DATA = metis.pc
---- Lib/Makefile.am 	1970-01-01 01:00:00.000000000 +0100
-+++ Lib/Makefile.am	2008-03-25 10:06:10.719491984 +0000
+--- a/Lib/Makefile.am
++++ b/Lib/Makefile.am
 @@ -0,0 +1,15 @@
 +pkginclude_HEADERS = defs.h macros.h metis.h proto.h rename.h struct.h
 +pkgincludedir = $(includedir)/metis
@@ -55,8 +55,8 @@
 +	mrefine2.c minitpart2.c mbalance2.c mfm2.c \
 +	kvmetis.c kwayvolrefine.c kwayvolfm.c subdomains.c
 +libmetis_la_LDFLAGS = -no-undefined -version-info 4:0:0
---- Programs/Makefile.am 	1970-01-01 01:00:00.000000000 +0100
-+++ Programs/Makefile.am	2008-01-31 12:00:14.981124649 +0000
+--- a/Programs/Makefile.am
++++ b/Programs/Makefile.am
 @@ -0,0 +1,15 @@
 +AM_CPPFLAGS = -I$(top_srcdir)/Lib
 +LDADD = $(top_builddir)/Lib/libmetis.la -lm
@@ -73,8 +73,8 @@
 +partdmesh_SOURCES = partdmesh.c io.c 
 +partnmesh_SOURCES = partnmesh.c io.c 
 +graphchk_SOURCES = graphchk.c io.c 
---- Test/Makefile.am 	1970-01-01 01:00:00.000000000 +0100
-+++ Test/Makefile.am	2008-01-31 12:37:59.532517099 +0000
+--- a/Test/Makefile.am
++++ b/Test/Makefile.am
 @@ -0,0 +1,7 @@
 +AM_CPPFLAGS = -I$(top_srcdir)/Lib
 +LDADD = $(top_builddir)/Lib/libmetis.la -lm
