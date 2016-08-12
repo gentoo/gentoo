@@ -37,7 +37,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The template configuration file has been installed as"
-	elog "/usr/share/doc/${PF}/rsnapshot.conf.default"
+	elog "The template configuration file has been compressed and installed as"
+	elog "  /usr/share/doc/${PF}/rsnapshot.conf.default.[gz|bz2|etc]"
 	elog "Copy and edit the the above file as /etc/rsnapshot.conf"
 }
