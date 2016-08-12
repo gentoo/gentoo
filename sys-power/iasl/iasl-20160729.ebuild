@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic eutils
 
@@ -16,7 +16,7 @@ SRC_URI="http://www.acpica.org/sites/acpica/files/${MY_P}.tar.gz
 
 LICENSE="iASL"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
 
 DEPEND="sys-devel/bison
@@ -35,14 +35,13 @@ pkg_setup() {
 	fi
 }
 
+PATCHES=(
+	"${FILESDIR}/${PN}-20140828-locale.patch"
+	"${FILESDIR}/${PN}-20140214-nostrip.patch"
+)
+
 src_prepare() {
-	#epatch "${FILESDIR}/${PN}-20110922-as-needed.patch"
-	epatch "${FILESDIR}/${PN}-20120816-locale.patch"
-	# Upstream has changed the buildsystem a lot, not sure if these are still
-	# needed
-	#epatch "${FILESDIR}/${PN}-20120816-parallelmake-001.patch"
-	#epatch "${FILESDIR}/${PN}-20110922-parallelmake-002.patch"
-	#epatch "${FILESDIR}/${PN}-20110922-parallelmake-003.patch"
+	default
 
 	find "${S}" -type f -name 'Makefile*' -print0 | \
 		xargs -0 -I '{}' \
@@ -62,7 +61,7 @@ src_configure() {
 }
 
 src_compile() {
-	cd acpica/generate/unix
+	cd generate/unix || die
 	emake BITS=${BITS}
 }
 
@@ -73,7 +72,7 @@ src_test() {
 }
 
 src_install() {
-	cd acpica/generate/unix
+	cd generate/unix || die
 	emake install DESTDIR="${D}" BITS=${BITS}
 	default_src_install
 	#local bin
@@ -94,18 +93,18 @@ src_install() {
 		eend $?
 		dodir /usr/share/${PF}
 		insinto /usr/share/${PF}
-		doins ${tb} || die "doins testresults.tar.bz2 failed"
+		doins ${tb}
 	fi
 
 }
 
 aslts_test() {
-	export	ASL="${S}"/generate/unix/bin${BITS}/iasl \
-		acpiexec="${S}"/generate/unix/bin${BITS}/acpiexec \
+	export	ASL="${S}"/generate/unix/bin/iasl \
+		acpiexec="${S}"/generate/unix/bin/acpiexec \
 		ASLTSDIR="${WORKDIR}/${MY_TESTS_P}"/tests/aslts
 	export	PATH="${PATH}:${ASLTSDIR}/bin"
 	echo "$ASLTSDIR" >"${T}"/asltdir
-	cd "${ASLTSDIR}"
+	cd "${ASLTSDIR}" || die
 	edos2unix $(find . -type 'f')
 	make install || die "make install aslts test failed"
 	chmod +x $(find bin/ ! -regex 'ERROR_OPCODES|HOW_TO_USE|README' ) || die "chmod bin +x failed"
@@ -124,6 +123,6 @@ aapits_test() {
 	make || die "make in aapits failed"
 	cd asl || die "cd asl failed"
 	make || die "make in asl failed"
-	cd ../bin
+	cd ../bin || die
 	./aapitsrun || die "aapitsrun failed"
 }
