@@ -15782,7 +15782,7 @@ sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin 
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
-sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
+sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
