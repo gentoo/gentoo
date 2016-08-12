@@ -1,0 +1,48 @@
+From 9eb8c3652d6a424a9c60da03584b8056497d1fdf Mon Sep 17 00:00:00 2001
+From: Mark H Weaver <mhw@netris.org>
+Date: Thu, 11 Aug 2016 03:59:40 -0400
+Subject: build: .x and .doc files depend on generated includes.
+
+Fixes <https://bugs.gentoo.org/show_bug.cgi?id=590528>.
+
+* libguile/Makefile.am (BUILT_INCLUDES): New variable.
+(BUILT_SOURCES): Put .i and other generated .h to BUILT_INCLUDES.
+(DOT_X_FILES, EXTRA_DOT_X_FILES, DOT_DOC_FILES, EXTRA_DOT_DOC_FILES):
+Depend on $(BUILT_INCLUDES), in place of scmconfig.h which is included
+in $(BUILT_INCLUDES).
+---
+ libguile/Makefile.am | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/libguile/Makefile.am b/libguile/Makefile.am
+index cd85604..1383c13 100644
+--- a/libguile/Makefile.am
++++ b/libguile/Makefile.am
+@@ -430,9 +430,9 @@ DOT_I_FILES = vm-i-system.i vm-i-scheme.i vm-i-loader.i
+ .c.i:
+ 	$(AM_V_GEN)$(GREP) '^VM_DEFINE' $< > $@
+ 
+-BUILT_SOURCES = cpp-E.c cpp-SIG.c libpath.h \
+-    scmconfig.h \
+-    $(DOT_I_FILES) $(DOT_X_FILES) $(EXTRA_DOT_X_FILES)
++BUILT_INCLUDES = $(DOT_I_FILES) scmconfig.h
++BUILT_SOURCES = cpp-E.c cpp-SIG.c libpath.h $(BUILT_INCLUDES) \
++    $(DOT_X_FILES) $(EXTRA_DOT_X_FILES)
+ 
+ # Force the generation of `guile-procedures.texi' because the top-level
+ # Makefile expects it to be built.
+@@ -735,9 +735,9 @@ SUFFIXES = .x .doc
+ .c.doc:
+ 	$(AM_V_SNARF)./guile-snarf-docs -o $@ $< -- $(snarfcppopts)
+ 
+-$(DOT_X_FILES) $(EXTRA_DOT_X_FILES): scmconfig.h snarf.h guile-snarf.in version.h
++$(DOT_X_FILES) $(EXTRA_DOT_X_FILES): $(BUILT_INCLUDES) snarf.h guile-snarf.in version.h
+ 
+-$(DOT_DOC_FILES) $(EXTRA_DOT_DOC_FILES): scmconfig.h snarf.h guile-snarf-docs.in guile_filter_doc_snarfage$(EXEEXT)
++$(DOT_DOC_FILES) $(EXTRA_DOT_DOC_FILES): $(BUILT_INCLUDES) snarf.h guile-snarf-docs.in guile_filter_doc_snarfage$(EXEEXT)
+ 
+ error.x: cpp-E.c
+ posix.x: cpp-SIG.c
+-- 
+cgit v1.0
+
