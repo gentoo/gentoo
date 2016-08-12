@@ -1156,7 +1156,7 @@ app-text/atril:dvi - Enable build-in DVI viewer
 app-text/atril:epub - Enable build-in DVI viewer using net-libs/webkit-gtk
 app-text/atril:gtk3 - Build with GTK+3 instead of GTK+2
 app-text/atril:t1lib - Enable the Type-1 fonts for the build-in DVI viewer (media-libs/t1lib)
-app-text/atril:xps - Enable XPS viewer using app-text/libxps
+app-text/atril:xps - Enable XPS viewer using app-text/libgxps
 app-text/blogc:git - Build blogc-git-receiver tool
 app-text/blogc:httpd - Build blogc-runserver tool
 app-text/crm114:mew - Add support for using the mewdecode mime decoder (app-emacs/mew)
@@ -3707,7 +3707,7 @@ mate-extra/mate-power-manager:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-power-manager:man - Build power manager's man page.
 mate-extra/mate-power-manager:pm-utils - Adds support for suspend/resume using sys-power/upower-pm-utils instead of sys-power/upower
 mate-extra/mate-power-manager:unique - Enable single instance support using dev-libs/libunique.
-mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolkekit
+mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolekit
 mate-extra/mate-screensaver:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-sensors-applet:gtk3 - Build with GTK+3 instead of GTK+2
 mate-extra/mate-system-monitor:gtk3 - Build with GTK+3 instead of GTK+2
