@@ -60,7 +60,7 @@ src_configure() {
 }
 
 src_compile() {
-	mate_py_cond_func_wrap mate_src_compile
+	mate_py_cond_func_wrap default
 }
 
 src_install() {
