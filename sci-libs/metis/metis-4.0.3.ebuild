@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}
 	!sci-libs/parmetis"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.0.1-autotools.patch
+	epatch -p1 "${FILESDIR}"/${PN}-4.0.1-autotools.patch
 	sed -i -e "s/4.0.1/${PV}/" configure.ac || die
 	eautoreconf
 }
