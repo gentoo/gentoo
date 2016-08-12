@@ -1,0 +1,17 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.7.0 media-libs/fontconfig >=media-libs/freetype-2.6.1:2 >=media-libs/harfbuzz-1.0.6:= >=sys-libs/zlib-1.2.5 virtual/opengl dbus? ( ~dev-qt/qtdbus-5.7.0 ) egl? ( media-libs/mesa[egl] ) eglfs? ( media-libs/mesa[gbm] x11-libs/libdrm ) evdev? ( sys-libs/mtdev ) gtk? ( x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango !!x11-libs/cairo[qt4] ) gles2? ( media-libs/mesa[gles2] ) jpeg? ( virtual/jpeg:0 ) libinput? ( dev-libs/libinput:= x11-libs/libxkbcommon ) png? ( media-libs/libpng:0= ) tslib? ( x11-libs/tslib ) tuio? ( ~dev-qt/qtnetwork-5.7.0 ) udev? ( virtual/libudev:= ) xcb? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXi-1.7.4 x11-libs/libXrender >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) evdev? ( sys-kernel/linux-headers ) udev? ( sys-kernel/linux-headers ) dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.7.0 )
+DESCRIPTION=The GUI module and platform plugins for the Qt5 framework
+EAPI=6
+HOMEPAGE=https://www.qt.io/
+IUSE=accessibility dbus egl eglfs evdev +gif gles2 gtk ibus jpeg libinput +png tslib tuio +udev +xcb debug test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3
+PDEPEND=ibus? ( app-i18n/ibus )
+RDEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.7.0 media-libs/fontconfig >=media-libs/freetype-2.6.1:2 >=media-libs/harfbuzz-1.0.6:= >=sys-libs/zlib-1.2.5 virtual/opengl dbus? ( ~dev-qt/qtdbus-5.7.0 ) egl? ( media-libs/mesa[egl] ) eglfs? ( media-libs/mesa[gbm] x11-libs/libdrm ) evdev? ( sys-libs/mtdev ) gtk? ( x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango !!x11-libs/cairo[qt4] ) gles2? ( media-libs/mesa[gles2] ) jpeg? ( virtual/jpeg:0 ) libinput? ( dev-libs/libinput:= x11-libs/libxkbcommon ) png? ( media-libs/libpng:0= ) tslib? ( x11-libs/tslib ) tuio? ( ~dev-qt/qtnetwork-5.7.0 ) udev? ( virtual/libudev:= ) xcb? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 >=x11-libs/libXi-1.7.4 x11-libs/libXrender >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm ) dev-qt/qtchooser
+REQUIRED_USE=|| ( eglfs xcb ) accessibility? ( dbus xcb ) eglfs? ( egl ) ibus? ( dbus ) libinput? ( udev ) xcb? ( gles2? ( egl ) )
+RESTRICT=test
+SLOT=5/5.7
+SRC_URI=https://download.qt.io/official_releases/qt/5.7/5.7.0/submodules/qtbase-opensource-src-5.7.0.tar.xz
+_eclass_exported_funcs=pkg_postrm:qt5-build pkg_postinst:qt5-build src_unpack:qt5-build src_prepare:- src_configure:- src_compile:qt5-build src_test:qt5-build src_install:qt5-build
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qt5-build	c08fc6c5028076eb1a42b7edc5847f42	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
+_md5_=feed618380f1364ebaf2da7ff2996f31

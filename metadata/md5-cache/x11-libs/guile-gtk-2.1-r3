@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-scheme/guile-2[deprecated(+)] x11-libs/gtk+:2 gnome-base/libglade:2.0 >=x11-libs/gtkglarea-1.90:2 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=GTK+ bindings for guile
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/guile-gtk/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=dev-scheme/guile-2[deprecated(+)] x11-libs/gtk+:2 gnome-base/libglade:2.0 >=x11-libs/gtkglarea-1.90:2
+SLOT=0
+SRC_URI=mirror://gnu/guile-gtk/guile-gtk-2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:autotools-utils src_compile:autotools-utils src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
+_md5_=299d9ff0a6f2a31f2dd3da8cb5086542

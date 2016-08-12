@@ -2527,10 +2527,13 @@ dev-qt/qt-mobility:versit - Build the QtVersit module
 dev-qt/qt3support:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtbearer:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtbluetooth:qml - Build QML/QtQuick bindings and imports
+dev-qt/qtcharts:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtcore:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtcore:glib - Enable dev-libs/glib eventloop support
 dev-qt/qtcore:qt3support - Enable the Qt3Support libraries for Qt4. Note that this does not mean you can compile pure Qt3 programs with Qt4.
 dev-qt/qtcore:systemd - Enable native journald logging support
+dev-qt/qtdatavis3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
+dev-qt/qtdatavis3d:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtdbus:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtdeclarative:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtdeclarative:gles2 - Use GLES 2.0 or later instead of full OpenGL
