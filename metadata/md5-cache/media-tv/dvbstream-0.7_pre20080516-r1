@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/linuxtv-dvb-headers
+DESCRIPTION=RTP multicast stream server and other tools for DVB cards
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/dvbtools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://gentoo/dvbstream-snapshot-20080302.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=0f018404fc21a43bebfd2f2692996eaf
