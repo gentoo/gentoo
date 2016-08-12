@@ -17364,7 +17364,7 @@ sys-power/cpudyn 1.0.1 1.0.1-r2: A daemon to control laptop power consumption vi
 sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0 4.7.0: Shows and sets processor power related values
 sys-power/cpuspeedy 0.4.1: A simple and easy to use program to control the speed and the voltage of CPUs on the fly
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20121018 20130117-r1 20140828 20150717: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20121018 20140828 20150717 20160729: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.6.5-r1 2.7.2-r2 2.7.3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
