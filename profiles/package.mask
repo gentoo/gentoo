@@ -362,14 +362,6 @@ dev-libs/libtomcrypt
 ~mail-client/thunderbird-24.8.0
 ~mail-client/thunderbird-31.8.0
 
-# Alexis Ballier <aballier@gentoo.org> (01 Mar 2016)
-# Breaks some of its rev deps, still in beta stage
->=dev-lang/ocaml-4.03_beta
->=dev-ml/camlp4-4.03
->=dev-ml/ppx_tools-5.0.4.03
->=dev-ml/labltk-8.06.1
->=dev-ml/parmap-1.0_rc7-r1
-
 # Patrick Lauer <patrick@gentoo.org> (22 Feb 2016)
 # Inactive upstream, build failures, obsoleted by rakudo/perl6
 dev-lang/niecza
