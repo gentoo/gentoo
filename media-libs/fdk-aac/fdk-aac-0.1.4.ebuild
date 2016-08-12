@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,4 +39,13 @@ src_configure() {
 		"$(use_enable examples example)"
 	)
 	autotools-multilib_src_configure
+}
+
+src_install() {
+	autotools-multilib_src_install
+	use examples && mv "${ED}/usr/bin/aac-enc" "${ED}/usr/bin/fdk-aac-enc"
+}
+
+pkg_postinst() {
+	use examples && einfo "aac-enc was renamed to fdk-aac-enc to prevent file collision with other packages"
 }
