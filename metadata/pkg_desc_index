@@ -5087,7 +5087,7 @@ dev-ml/js_of_ocaml 2.7 2.8 2.8.1: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1: Objective CAML interface for Gtk+2
+dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
@@ -6835,7 +6835,7 @@ dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
 dev-php/pecl-xdiff 1.5.2-r3 2.0.0: PHP extension for generating diff files
 dev-php/pecl-xrange 1.3.2-r1: Implementation of weak references
 dev-php/pecl-yaml 1.2.0 1.3.0_beta1 2.0.0_rc8: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
-dev-php/pecl-yaz 1.1.6 1.1.9: This extension implements a Z39.50 client for PHP using the YAZ toolkit
+dev-php/pecl-yaz 1.1.6 1.1.9 1.2.0: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/phing 2.8.2 2.10.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2: Generates a highlighted code browsing parsed from xml reports generated from codesniffer or phpunit
 dev-php/php-openid 2.2.3_pre20140423: PHP OpenID implementation

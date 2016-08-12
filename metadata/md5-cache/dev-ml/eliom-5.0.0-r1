@@ -11,4 +11,4 @@ SLOT=0/5.0.0
 SRC_URI=https://github.com/ocsigen/eliom/archive/5.0.0.tar.gz -> eliom-5.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=4760c07bb1d1a87361d604ebafb060bc
+_md5_=8b841d863e00c418683e722fec85802a
