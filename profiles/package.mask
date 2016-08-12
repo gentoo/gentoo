@@ -30,6 +30,58 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (12 Aug 2016)
+# Requires revdeps to build with at least C++11. Bug 589412.
+# Masked for wider testing.
+~dev-qt/assistant-5.7.0
+~dev-qt/designer-5.7.0
+~dev-qt/linguist-5.7.0
+~dev-qt/linguist-tools-5.7.0
+~dev-qt/pixeltool-5.7.0
+~dev-qt/qdbus-5.7.0
+~dev-qt/qdbusviewer-5.7.0
+~dev-qt/qdoc-5.7.0
+~dev-qt/qt3d-5.7.0
+~dev-qt/qtbluetooth-5.7.0
+~dev-qt/qtcharts-5.7.0
+~dev-qt/qtconcurrent-5.7.0
+~dev-qt/qtcore-5.7.0
+~dev-qt/qtdatavis3d-5.7.0
+~dev-qt/qtdbus-5.7.0
+~dev-qt/qtdeclarative-5.7.0
+~dev-qt/qtdiag-5.7.0
+~dev-qt/qtgraphicaleffects-5.7.0
+~dev-qt/qtgui-5.7.0
+~dev-qt/qthelp-5.7.0
+~dev-qt/qtimageformats-5.7.0
+~dev-qt/qtlocation-5.7.0
+~dev-qt/qtmultimedia-5.7.0
+~dev-qt/qtnetwork-5.7.0
+~dev-qt/qtopengl-5.7.0
+~dev-qt/qtpaths-5.7.0
+~dev-qt/qtplugininfo-5.7.0
+~dev-qt/qtpositioning-5.7.0
+~dev-qt/qtprintsupport-5.7.0
+~dev-qt/qtquickcontrols2-5.7.0
+~dev-qt/qtquickcontrols-5.7.0
+~dev-qt/qtscript-5.7.0
+~dev-qt/qtscxml-5.7.0
+~dev-qt/qtsensors-5.7.0
+~dev-qt/qtserialport-5.7.0
+~dev-qt/qtsql-5.7.0
+~dev-qt/qtsvg-5.7.0
+~dev-qt/qttest-5.7.0
+~dev-qt/qttranslations-5.7.0
+~dev-qt/qtwayland-5.7.0
+~dev-qt/qtwebchannel-5.7.0
+~dev-qt/qtwebengine-5.7.0
+~dev-qt/qtwebkit-5.7.0
+~dev-qt/qtwebsockets-5.7.0
+~dev-qt/qtwidgets-5.7.0
+~dev-qt/qtx11extras-5.7.0
+~dev-qt/qtxml-5.7.0
+~dev-qt/qtxmlpatterns-5.7.0
+
 # Michael Palimaka <kensington@gentoo.org> (11 Aug 2016)
 # No longer works. Masked for removal in 30 days.
 app-text/kpaste
