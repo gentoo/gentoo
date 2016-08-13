@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Lexically warn about using the indirect method call syntax"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
