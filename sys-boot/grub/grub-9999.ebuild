@@ -114,23 +114,10 @@ DEPEND+=" !!=media-libs/freetype-2.5.4"
 STRIP_MASK="*/grub/*/*.{mod,img}"
 RESTRICT="test"
 
-QA_EXECSTACK="
-	usr/bin/grub*-emu*
-	usr/lib*/grub/*/*.mod
-	usr/lib*/grub/*/*.module
-	usr/lib*/grub/*/kernel.exec
-	usr/lib*/grub/*/kernel.img
-"
-
-QA_WX_LOAD="
-	usr/lib*/grub/*/kernel.exec
-	usr/lib*/grub/*/kernel.img
-	usr/lib*/grub/*/*.image
-"
-
-QA_PRESTRIPPED="
-	usr/lib.*/grub/.*/kernel.img
-"
+QA_EXECSTACK="usr/bin/grub*-emu* usr/lib*/grub/*"
+QA_WX_LOAD="usr/lib*/grub/*"
+QA_MULTILIB_PATHS="usr/lib.*/grub/.*"
+QA_PRESTRIPPED="usr/lib.*/grub/.*"
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
