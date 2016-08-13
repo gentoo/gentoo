@@ -213,7 +213,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.3.5: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -2140,7 +2140,7 @@ app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.3_p46 4.4_beta2: The standard GNU Bourne again shell
-app-shells/bash-completion 1.3-r2 2.1-r2 2.1_p20141224-r1 2.1_p20141224-r2 2.2 2.3-r2: Programmable Completion for bash
+app-shells/bash-completion 2.1_p20141224-r1 2.3-r2 2.4: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r3 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -2847,7 +2847,7 @@ dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libgnomemm 2.30.0 2.30.0-r1: C++ bindings for libgnome
 dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
-dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
+dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 0.7.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.38.1 2.40.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema definition language
