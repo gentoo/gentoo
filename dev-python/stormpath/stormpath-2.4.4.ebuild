@@ -37,7 +37,7 @@ RDEPEND="
 "
 
 python_compile_all() {
-	use doc && emake -C docs html
+	esetup.py docs
 }
 
 python_test() {
