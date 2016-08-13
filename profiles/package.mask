@@ -30,6 +30,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (13 Aug 2016)
+
+# Unfixed security problems, bug 576068. No longer supported by
+# upstream. Use Rails 4.2 instead. Masked for removal in 30 days.
+dev-ruby/rails:4.0
+dev-ruby/railties:4.0
+dev-ruby/activerecord:4.0
+dev-ruby/actionmailer:4.0
+dev-ruby/actionpack:4.0
+dev-ruby/activemodel:4.0
+dev-ruby/activesupport:4.0
+dev-ruby/metasploit-concern:1.0
+dev-ruby/metasploit-credential:1.0
+dev-ruby/metasploit-credential:1.0.1
+dev-ruby/metasploit_data_models:1.2.9
+dev-ruby/metasploit_data_models:1.2.10
+dev-ruby/metasploit-model:1.0
+
 # Michael Palimaka <kensington@gentoo.org> (12 Aug 2016)
 # Requires revdeps to build with at least C++11. Bug 589412.
 # Masked for wider testing.

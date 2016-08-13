@@ -3,29 +3,22 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="Native PostgreSQL data types and querying extensions for ActiveRecord and Arel"
-HOMEPAGE="https://github.com/dockyard/postgres_ext"
-SRC_URI="mirror://rubygems/${P}.gem"
+DESCRIPTION="Simple library to parse PostgreSQL arrays into a array of strings"
+HOMEPAGE="https://github.com/dockyard/pg_array_parser"
 
-LICENSE="BSD"
-SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm ~x86"
+LICENSE="MIT"
+SLOT="$(get_version_component_range 1-3)"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
-
-# Requires live database connection
-RESTRICT=test
-
-ruby_add_rdepend "|| (
-			dev-ruby/activerecord:4.1
-			dev-ruby/activerecord:4.2 )
-		>=dev-ruby/arel-4.0.1:*
-		dev-ruby/pg_array_parser:0.0.9"
 
 ruby_add_bdepend "dev-ruby/bundler"
 
@@ -42,10 +35,6 @@ all_ruby_prepare() {
 	#if ! use test && ! use development; then
 		sed -i -e "/^group :development, :test do/,/^end$/d" Gemfile || die
 	#fi
-		#https://github.com/dockyard/postgres_ext/issues/166
-		#ugh, thanks
-		sed -i -e "/byebug/d" Gemfile || die
-		sed -i -e "/fivemat/d" Gemfile || die
 }
 
 each_ruby_prepare() {
@@ -53,4 +42,13 @@ each_ruby_prepare() {
 		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle install --local || die
 		BUNDLE_GEMFILE=Gemfile ${RUBY} -S bundle check || die
 	fi
+}
+
+each_ruby_configure() {
+	${RUBY} -Cext/pg_array_parser extconf.rb || die
+}
+
+each_ruby_compile() {
+	emake -Cext/pg_array_parser V=1
+	cp ext/pg_array_parser/pg_array_parser.so lib/
 }
