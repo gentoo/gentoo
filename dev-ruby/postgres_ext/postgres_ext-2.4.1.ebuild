@@ -7,7 +7,7 @@ USE_RUBY="ruby20 ruby21"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="Adds native PostgreSQL data types to ActiveRecord and querying extensions for ActiveRecord and Arel"
+DESCRIPTION="Native PostgreSQL data types and querying extensions for ActiveRecord and Arel"
 HOMEPAGE="https://github.com/dockyard/postgres_ext"
 SRC_URI="mirror://rubygems/${P}.gem"
 
