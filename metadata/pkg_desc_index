@@ -18508,7 +18508,7 @@ x11-misc/xplanetFX 2.6.7 2.6.12: GUI to configure, run or daemonize xplanet with
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.34 5.35: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.34 5.35 5.35-r1: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0: XSel is a command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors

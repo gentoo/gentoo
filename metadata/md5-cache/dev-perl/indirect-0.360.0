@@ -4,11 +4,11 @@ DESCRIPTION=Lexically warn about using the indirect method call syntax
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/indirect/
 IUSE=test
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-XSLoader dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/V/VP/VPIT/indirect-0.36.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=363416ed82a5bb9b01281f5150b798b5
+_md5_=70cba10b0b4feab468a603cadc751bbc
