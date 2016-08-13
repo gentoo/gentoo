@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -17,12 +17,12 @@ KEYWORDS="~amd64"
 IUSE="doc test"
 
 CDEPEND="
-	>=dev-python/botocore-1.3.0[${PYTHON_USEDEP}]
-	<dev-python/botocore-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.4.1[${PYTHON_USEDEP}]
+	<dev-python/botocore-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/jmespath-1.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/futures-2.2.0[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep '<dev-python/futures-4.0.0[${PYTHON_USEDEP}]' 'python2_7')
+	>=dev-python/s3transfer-0.1.0[${PYTHON_USEDEP}]
+	<dev-python/s3transfer-0.2.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
