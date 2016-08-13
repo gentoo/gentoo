@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 eutils multilib
+inherit distutils-r1 eutils multilib prefix
 
 DESCRIPTION="Collection of Gentoo-specific tools for Java"
 HOMEPAGE="https://www.gentoo.org/proj/en/java/"
@@ -23,6 +23,7 @@ python_prepare_all() {
 		"${FILESDIR}/${P}-python2.6.patch"
 		"${FILESDIR}/${P}-no-pyxml.patch"
 	)
+	hprefixify setup.py
 
 	distutils-r1_python_prepare_all
 }
