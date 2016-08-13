@@ -122,6 +122,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4-startkde-script.patch"
+	"${FILESDIR}/${PN}-5.7.3-unused-dep.patch"
 	"${FILESDIR}/${PN}-5.7.5-klipper-autostart.patch"
 )
 
