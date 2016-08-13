@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-qt/qtgui-5.6.1:5 >=dev-qt/qtwidgets-5.6.1:5 X? ( >=dev-qt/qtx11extras-5.6.1:5 x11-libs/libX11 x11-libs/libXfixes x11-libs/libxcb x11-libs/xcb-util-keysyms ) nls? ( >=dev-qt/linguist-tools-5.6.1:5 ) X? ( x11-proto/xproto ) sys-devel/make >=dev-util/cmake-2.8.12 >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.25:5 test? ( >=dev-qt/qttest-5.6.1:5 ) >=dev-qt/qtcore-5.6.1:5 dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Framework providing access to properties and features of the window manager
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=nls X test debug test
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=|| ( LGPL-2.1 LGPL-3 ) MIT
+RDEPEND=>=dev-qt/qtgui-5.6.1:5 >=dev-qt/qtwidgets-5.6.1:5 X? ( >=dev-qt/qtx11extras-5.6.1:5 x11-libs/libX11 x11-libs/libXfixes x11-libs/libxcb x11-libs/xcb-util-keysyms ) >=kde-frameworks/kf-env-3 !kde-apps/kde4-l10n[-minimal(+)] !<kde-apps/kde4-l10n-15.12.3-r1 >=dev-qt/qtcore-5.6.1:5
+RESTRICT=test
+SLOT=5/5.25
+SRC_URI=mirror://kde/stable/frameworks/5.25/kwindowsystem-5.25.0.tar.xz
+_eclass_exported_funcs=pkg_preinst:kde5 pkg_postrm:kde5 pkg_postinst:kde5 pkg_setup:kde5 src_unpack:kde5 src_prepare:kde5 src_configure:- src_compile:kde5 src_test:kde5 src_install:kde5
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	kde5	4de8e6210c9126e2c44c0ba78bedaab7	kde5-functions	18478b89b41e86c3a865d9bf93258ec6	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=01212d4ecd8fba07129a7e5135e7aace
