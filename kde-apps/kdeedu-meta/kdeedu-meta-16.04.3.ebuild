@@ -9,7 +9,7 @@ inherit kde5-meta-pkg
 DESCRIPTION="KDE educational apps - merge this to pull in all kdeedu-derived packages"
 HOMEPAGE="https://edu.kde.org"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+webkit"
 
 RDEPEND="
 	$(add_kdeapps_dep analitza)
@@ -27,9 +27,7 @@ RDEPEND="
 	$(add_kdeapps_dep kiten)
 	$(add_kdeapps_dep klettres)
 	$(add_kdeapps_dep kmplot)
-	$(add_kdeapps_dep kqtquickcharts)
 	$(add_kdeapps_dep kstars)
-	$(add_kdeapps_dep ktouch)
 	$(add_kdeapps_dep kturtle)
 	$(add_kdeapps_dep kwordquiz)
 	$(add_kdeapps_dep libkeduvocdocument)
@@ -38,4 +36,8 @@ RDEPEND="
 	$(add_kdeapps_dep parley)
 	$(add_kdeapps_dep rocs)
 	$(add_kdeapps_dep step)
+	webkit? (
+		$(add_kdeapps_dep kqtquickcharts)
+		$(add_kdeapps_dep ktouch)
+	)
 "
