@@ -28,7 +28,7 @@ RDEPEND="
 	>=mate-base/libmatekbd-1.7.1[gtk3(-)=]
 	>=mate-base/mate-desktop-1.9.4[gtk3(-)=]
 	>=mate-base/mate-menus-1.6
-	>=mate-base/mate-session-manager-1.6[gtk3(-)=]
+	>=mate-base/mate-session-manager-1.6
 	>=sys-apps/dbus-0.30:0
 	>=x11-libs/gdk-pixbuf-2.14:2
 	>=x11-libs/libX11-1:0
