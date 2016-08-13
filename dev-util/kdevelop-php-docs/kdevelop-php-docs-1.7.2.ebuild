@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,7 @@ EAPI=5
 KDE_LINGUAS="bs ca ca@valencia da de el en_GB es et fi fr gl hu it kk nb nds nl
 pl pt pt_BR ru sk sl sv tr uk zh_CN zh_TW"
 KMNAME="kdevelop"
-EGIT_REPONAME="kdev-php-docs"
-EGIT_BRANCH="1.7"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="PHP documentation plugin for KDevelop 4"
