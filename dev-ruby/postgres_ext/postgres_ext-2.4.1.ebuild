@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 RESTRICT=test
 
-ruby_add_rdepend "|| ( dev-ruby/activerecord:4.0
+ruby_add_rdepend "|| (
 			dev-ruby/activerecord:4.1
 			dev-ruby/activerecord:4.2 )
 		>=dev-ruby/arel-4.0.1:*
