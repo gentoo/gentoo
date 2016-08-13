@@ -35,8 +35,8 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 )
 
-DEJAVU=dejavu-sans-ttf-2.35
-UNIFONT=unifont-8.0.01
+DEJAVU=dejavu-sans-ttf-2.37
+UNIFONT=unifont-9.0.01
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
