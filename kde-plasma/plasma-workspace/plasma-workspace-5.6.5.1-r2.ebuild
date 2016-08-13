@@ -123,6 +123,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.6.5-drop-kscreen-dep.patch"
 	"${FILESDIR}/${PN}-5.6.5.1-struts.patch"
 	"${FILESDIR}/${PN}-5.6.5.1-legacy-session-mgmt.patch" # backport in 5.6 after release
+	"${FILESDIR}/${PN}-5.6.5.1-unused-dep.patch"
 )
 
 RESTRICT="test"
