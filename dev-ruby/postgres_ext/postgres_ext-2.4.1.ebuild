@@ -3,7 +3,9 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
 inherit ruby-fakegem versionator
 
@@ -15,6 +17,8 @@ LICENSE="BSD"
 SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+
+# Requires live database connection
 RESTRICT=test
 
 ruby_add_rdepend "|| (
