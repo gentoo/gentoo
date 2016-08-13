@@ -1,0 +1,34 @@
+From 23e9778684ba734dbfba1445e145b04dd6b59e76 Mon Sep 17 00:00:00 2001
+From: Simon Butcher <simon.butcher@arm.com>
+Date: Wed, 13 Jul 2016 13:31:08 +0100
+Subject: [PATCH] Adds missing conditions for platform time
+
+In platform.c, made the time functions dependent on the configuration
+MBEDTLS_HAVE_TIME to fix a build break where the functions could be
+built but the mbedtls_time_t was not defined.
+---
+ library/platform.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/library/platform.c b/library/platform.c
+index 68ca45d..2591c45 100644
+--- a/library/platform.c
++++ b/library/platform.c
+@@ -190,6 +190,8 @@ int mbedtls_platform_set_exit( void (*exit_func)( int status ) )
+ }
+ #endif /* MBEDTLS_PLATFORM_EXIT_ALT */
+ 
++#if defined(MBEDTLS_HAVE_TIME)
++
+ #if defined(MBEDTLS_PLATFORM_TIME_ALT)
+ #if !defined(MBEDTLS_PLATFORM_STD_TIME)
+ /*
+@@ -213,6 +215,8 @@ int mbedtls_platform_set_time( mbedtls_time_t (*time_func)( mbedtls_time_t* time
+ }
+ #endif /* MBEDTLS_PLATFORM_TIME_ALT */
+ 
++#endif /* MBEDTLS_HAVE_TIME */
++
+ #if defined(MBEDTLS_ENTROPY_NV_SEED)
+ #if !defined(MBEDTLS_PLATFORM_NO_STD_FUNCTIONS) && defined(MBEDTLS_FS_IO)
+ /* Default implementations for the platform independent seed functions use
