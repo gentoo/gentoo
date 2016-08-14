@@ -21,6 +21,8 @@ IUSE="debug download gstreamer"
 
 DEPEND="dev-qt/qtgui:5[accessibility]
 	dev-qt/qtdbus:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtscript:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtsingleapplication[qt5(+),X]
