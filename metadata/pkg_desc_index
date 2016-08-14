@@ -13581,7 +13581,7 @@ media-video/makemkv 1.10.0: Tool for ripping and streaming Blu-ray, HD-DVD and D
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
 media-video/maven-poke 0.0.1: Matrox utility to read and set maven registers (tune tvout)
 media-video/mediainfo 0.7.73 0.7.85 0.7.86 0.7.87: MediaInfo supplies technical and tag information about media files
-media-video/minitube 2.0 2.4: Qt4 YouTube Client
+media-video/minitube 2.0 2.4 2.5.2: Qt5 YouTube Client
 media-video/miro 4.0.6 5.0.4 6.0: Open source video player and podcast client
 media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
