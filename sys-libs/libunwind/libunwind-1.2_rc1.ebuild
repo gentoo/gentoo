@@ -6,7 +6,7 @@ EAPI="5"
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit eutils libtool
+inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -30,6 +30,23 @@ QA_DT_NEEDED_x86_fbsd="usr/lib/libunwind.so.7.0.0"
 
 S="${WORKDIR}/${MY_P}"
 
+MULTILIB_WRAPPED_HEADERS=(
+	/usr/include/libunwind.h
+
+	# see libunwind.h for the full list of arch-specific headers
+	/usr/include/libunwind-aarch64.h
+	/usr/include/libunwind-arm.h
+	/usr/include/libunwind-hppa.h
+	/usr/include/libunwind-ia64.h
+	/usr/include/libunwind-mips.h
+	/usr/include/libunwind-ppc32.h
+	/usr/include/libunwind-ppc64.h
+	/usr/include/libunwind-sh.h
+	/usr/include/libunwind-tilegx.h
+	/usr/include/libunwind-x86.h
+	/usr/include/libunwind-x86_64.h
+)
+
 src_prepare() {
 	# These tests like to fail.  bleh.
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c
@@ -40,9 +57,10 @@ src_prepare() {
 	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
 
 	elibtoolize
+	multilib_copy_sources
 }
 
-src_configure() {
+multilib_src_configure() {
 	# --enable-cxx-exceptions: always enable it, headers provide the interface
 	# and on some archs it is disabled by default causing a mismatch between the
 	# API and the ABI, bug #418253
@@ -63,13 +81,13 @@ src_configure() {
 		$(use_enable debug)
 }
 
-src_test() {
+multilib_src_test() {
 	# Explicitly allow parallel build of tests.
 	# Sandbox causes some tests to freak out.
 	SANDBOX_ON=0 emake check
 }
 
-src_install() {
+multilib_src_install() {
 	default
 	# libunwind-ptrace.a (and libunwind-ptrace.h) is separate API and without
 	# shared library, so we keep it in any case
