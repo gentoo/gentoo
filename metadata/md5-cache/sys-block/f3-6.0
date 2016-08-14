@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=extra? ( sys-block/parted virtual/udev )
+DESCRIPTION=Utilities to detect broken or counterfeit flash storage
+EAPI=6
+HOMEPAGE=http://oss.digirati.com.br/f3/ https://github.com/AltraMayor/f3
+IUSE=extra
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://github.com/AltraMayor/f3/archive/v6.0.tar.gz -> f3-6.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=7eaf1a357dab99bfa2a2503902d8aaee

@@ -7372,6 +7372,7 @@ sys-auth/sssd:nfsv4 - Add support for the nfsv4 idmapd plugin provided by net-li
 sys-auth/sssd:ssh - Build helper to let net-misc/openssh use sssd provided information
 sys-auth/sssd:sudo - Build helper to let app-admin/sudo use sssd provided information
 sys-auth/ykpers:consolekit - Use sys-auth/consolekit and virtual/udev to allow access to the YubiKey HID device to the console user.
+sys-block/f3:extra - Build the additional f3probe, f3brew and f3fix utility (requires sys-block/parted and virtual/udev)
 sys-block/fio:aio - Enable AIO ioengine
 sys-block/fio:glusterfs - Enable GlusterFS gfapi support via sys-cluster/glusterfs
 sys-block/fio:gnuplot - Install tools for generating gnuplots
