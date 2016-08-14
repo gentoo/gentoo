@@ -16,5 +16,5 @@ HOMEPAGE="https://github.com/jeremyevans/minitest-hooks"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
