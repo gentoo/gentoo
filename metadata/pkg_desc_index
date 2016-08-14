@@ -7382,7 +7382,7 @@ dev-python/isodate 0.5.0 0.5.1 0.5.4: ISO 8601 date/time/duration parser and for
 dev-python/itsdangerous 0.24: Various helpers to pass trusted data to untrusted environments and back
 dev-python/jaraco-classes 1.3 1.4: Classes used by other projects by developer jaraco
 dev-python/jaraco-collections 1.4 1.4.1: Models and classes to supplement the stdlib collections module
-dev-python/jaraco-functools 1.9 1.11: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-functools 1.9 1.12: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 1.7.1: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-logging 1.3.1 1.5: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-stream 1.1 1.1.1: Routines for handling streaming data
@@ -11738,7 +11738,7 @@ lxde-base/lxappearance-obconf 0.2.1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r2 0.5.5-r3: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r4: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
-lxde-base/lxdm 0.4.1-r9: LXDE Display Manager
+lxde-base/lxdm 0.4.1-r9 0.5.3: LXDE Display Manager
 lxde-base/lxinput 0.3.2: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.2 0.1.4: Provides files needed for LXDE application menus
