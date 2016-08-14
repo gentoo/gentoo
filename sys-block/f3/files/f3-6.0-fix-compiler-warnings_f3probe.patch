@@ -1,0 +1,50 @@
+From 77d2ceb374ff70b64e95a41f0e05486575147b53 Mon Sep 17 00:00:00 2001
+From: Michel Machado <michel@digirati.com.br>
+Date: Mon, 4 Jan 2016 13:49:05 -0500
+Subject: [PATCH] f3probe: avoid compiler warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When using -O2, GCC was issuing the following warning:
+
+cc -O2 -std=c99 -Wall -Wextra -pedantic -MMD -ggdb -c -o f3probe.o f3probe.c
+f3probe.c: In function ‘main’:
+f3probe.c:446:13: warning: ‘sdev’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   sdev_flush(sdev);
+             ^
+f3probe.c:369:30: note: ‘sdev’ was declared here
+  struct device *dev, *pdev, *sdev;
+                              ^
+
+NOTE: The warning was wrong.
+      GCC could not follow that @args->save being true implied
+      @sdev to not be NULL.
+
+This patch addresses one of the issues discussed here:
+https://github.com/AltraMayor/f3/issues/34
+---
+ f3probe.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/f3probe.c b/f3probe.c
+index e647d7c..9f214ab 100644
+--- a/f3probe.c
++++ b/f3probe.c
+@@ -393,6 +393,7 @@ static int test_device(struct args *args)
+ 		pdev = NULL;
+ 	}
+ 
++	sdev = NULL;
+ 	if (args->save) {
+ 		sdev = create_safe_device(dev,
+ 			probe_device_max_blocks(dev), args->min_mem);
+@@ -434,7 +435,7 @@ static int test_device(struct args *args)
+ 			&read_count, &read_time_us,
+ 			&write_count, &write_time_us,
+ 			&reset_count, &reset_time_us);
+-	if (args->save) {
++	if (sdev) {
+ 		uint64_t very_last_pos = real_size_byte >> block_order;
+ 		printf("Probe finished, recovering blocks...");
+ 		fflush(stdout);
