@@ -2588,10 +2588,6 @@ dev-qt/qtphonon:qt3support - Enable the Qt3Support libraries for Qt4. Note that 
 dev-qt/qtpositioning:geoclue - Use enhanced location information from app-misc/geoclue
 dev-qt/qtpositioning:qml - Build QML bindings
 dev-qt/qtprintsupport:gles2 - Use GLES 2.0 or later instead of full OpenGL
-dev-qt/qtquick1:designer - Build plugin for dev-qt/designer
-dev-qt/qtquick1:gles2 - Use GLES 2.0 or later instead of full OpenGL
-dev-qt/qtquick1:webkit - Build the WebView import for QtQuick1 (requires QtWebKit)
-dev-qt/qtquick1:xml - Build the XmlListModel import for QtQuick1 (requires QtXmlPatterns)
 dev-qt/qtquickcontrols:widgets - Enable QtWidgets support
 dev-qt/qtscript:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtscript:scripttools - Build the QtScriptTools module (requires QtWidgets)
@@ -3327,7 +3323,6 @@ kde-apps/krdc:rdesktop - Enable runtime dependency for net-misc/rdesktop
 kde-apps/krdc:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
 kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
-kde-apps/ksnapshot:kipi - Support for the KDE Image Plugin Interface.
 kde-apps/kstars:indi - Enable support for Astronomical control library using libindi
 kde-apps/kstars:wcs - Enable support for World Coordinate System library using wcslib
 kde-apps/kstars:xplanet - Enable support for Xplanet
