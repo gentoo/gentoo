@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=gnome-base/libgtop-2.11.92:2=
 	>=mate-base/mate-desktop-1.9[gtk3(-)=]
 	>=mate-base/mate-panel-1.7[gtk3(-)=]
-	>=mate-base/mate-settings-daemon-1.6[gtk3(-)=]
+	>=mate-base/mate-settings-daemon-1.6
 	>=sys-apps/dbus-1.1.2:0
 	sys-power/cpupower
 	x11-libs/gdk-pixbuf:2
