@@ -4,21 +4,24 @@
 
 EAPI=5
 
-EGIT_REPO_URI="https://github.com/lxde/${PN}"
-inherit autotools git-r3 fdo-mime vala
+inherit autotools fdo-mime multilib vala
 
+MY_PV=${PV/_/}
+MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A library for file management"
 HOMEPAGE="http://pcmanfm.sourceforge.net/"
+SRC_URI="https://github.com/lxde/libfm/archive/1.2.4.tar.gz -> ${MY_P}.tar.gz"
 
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 SLOT="0/4.4.0" #copy ABI_VERSION because it seems upstream change it randomly
 IUSE="+automount debug doc examples exif gtk udisks vala"
-KEYWORDS=""
 
 COMMON_DEPEND=">=dev-libs/glib-2.18:2
 	gtk? ( >=x11-libs/gtk+-2.16:2 )
 	>=lxde-base/menu-cache-0.3.2:=
-	x11-libs/libfm-extra"
+	~x11-libs/libfm-extra-${PV}
+	udisks? ( dev-libs/dbus-glib )"
 RDEPEND="${COMMON_DEPEND}
 	!lxde-base/lxshortcut
 	x11-misc/shared-mime-info
@@ -32,25 +35,27 @@ DEPEND="${COMMON_DEPEND}
 	doc? (
 		dev-util/gtk-doc
 	)
+	app-arch/xz-utils
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 	sys-devel/gettext"
 
-DOCS=( AUTHORS TODO )
+S="${WORKDIR}"/${MY_P}
 
 REQUIRED_USE="udisks? ( automount ) doc? ( gtk )"
 
 src_prepare() {
+	# Fix use after free bug, see
+	# https://github.com/lxde/libfm/pull/11/commits/9e3a809c6a8a5079f05e04edac9457d317822321
+	epatch "${FILESDIR}"/libfm-fix-use-after-free.diff
+
 	if ! use doc; then
 		sed -ie '/^SUBDIR.*=/s#docs##' "${S}"/Makefile.am || die "sed failed"
 		sed -ie '/^[[:space:]]*docs/d' configure.ac || die "sed failed"
-	else
-		gtkdocize --copy || die
 	fi
 	sed -i -e "s:-O0::" -e "/-DG_ENABLE_DEBUG/s: -g::" \
 		configure.ac || die "sed failed"
 
-	intltoolize --force --copy --automake || die
 	#disable unused translations. Bug #356029
 	for trans in app-chooser ask-rename exec-file file-prop preferred-apps \
 		progress;do
