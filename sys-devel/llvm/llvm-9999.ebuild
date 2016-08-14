@@ -20,9 +20,9 @@ EGIT_REPO_URI="http://llvm.org/git/llvm.git
 LICENSE="UoI-NCSA"
 SLOT="0/${PV%.*}"
 KEYWORDS=""
-IUSE="clang debug +doc gold libedit +libffi lldb multitarget ncurses ocaml
-	python +static-analyzer test xml video_cards_radeon
-	kernel_Darwin kernel_FreeBSD"
+IUSE="clang debug default-compiler-rt default-libcxx +doc gold libedit +libffi
+	lldb multitarget ncurses ocaml python +sanitize +static-analyzer test xml
+	video_cards_radeon elibc_musl kernel_Darwin kernel_FreeBSD"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
@@ -60,6 +60,7 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
+	default-libcxx? ( sys-libs/libcxx )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
@@ -174,6 +175,9 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
 	eapply "${FILESDIR}"/llvm-3.8-soversion.patch
 
+	# support building llvm against musl-libc
+	use elibc_musl && eapply "${FILESDIR}"/llvm-3.8-musl-fixes.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
@@ -257,6 +261,14 @@ multilib_src_configure() {
 			# libgomp support fails to find headers without explicit -I
 			# furthermore, it provides only syntax checking
 			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+
+			# override default stdlib and rtlib
+			-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
+			-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
+
+			# compiler-rt's test cases depend on sanitizer
+			-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+			-DCOMPILER_RT_INCLUDE_TESTS=$(usex sanitize)
 		)
 	fi
 
