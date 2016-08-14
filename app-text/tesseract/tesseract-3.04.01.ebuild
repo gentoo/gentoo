@@ -94,6 +94,7 @@ DOCS=(AUTHORS ChangeLog NEWS README.md ReleaseNotes )
 PATCHES=(
 	"${FILESDIR}/tesseract-2.04-gcc47.patch"
 	"${FILESDIR}/${P}-use-system-piccolo2d.patch"
+	"${FILESDIR}/${P}-fix-opencl-ldflags.patch"
 )
 
 src_unpack() {
