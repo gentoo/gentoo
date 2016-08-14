@@ -10,7 +10,9 @@ MY_PV=$(replace_version_separator 2 '-')
 
 DESCRIPTION="HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)"
 HOMEPAGE="http://h20564.www2.hpe.com/hpsc/swd/public/detail?swItemId=MTX_04bffb688a73438598fef81ddd"
-SRC_URI="http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/current/${PN}-${MY_PV}.x86_64.rpm"
+SRC_URI="
+	amd64? ( http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/x86_64/current/${PN}-${MY_PV}.x86_64.rpm )
+	x86? ( http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/i686/current/${PN}-${MY_PV}.i386.rpm )"
 
 LICENSE="hpe"
 SLOT="0"
