@@ -17114,8 +17114,8 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627 3_p20160815: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627 0_pre20160815: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
