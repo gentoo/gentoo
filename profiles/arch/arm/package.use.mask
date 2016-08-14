@@ -13,10 +13,6 @@ sci-mathematics/octave graphicsmagick
 # keyword them solely because of PyQt5 while there are no other in-tree users.
 dev-python/PyQt5 location webengine
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
-# Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
-
 # Göktürk Yüksek <gokturk@gentoo.org> (14 June 2016) on behalf of
 # Nicholas Vinson <nvinso234@gmail.com> (proxy-maint)
 # net-firewall/nftables[doc] requires dblatex which is not keyworded
