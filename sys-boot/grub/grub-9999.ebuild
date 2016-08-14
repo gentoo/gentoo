@@ -111,13 +111,11 @@ RDEPEND+="
 
 DEPEND+=" !!=media-libs/freetype-2.5.4"
 
-STRIP_MASK="*/grub/*/*.{mod,img}"
-RESTRICT="test"
+RESTRICT="strip test"
 
-QA_EXECSTACK="usr/bin/grub*-emu* usr/lib*/grub/*"
-QA_WX_LOAD="usr/lib*/grub/*"
-QA_MULTILIB_PATHS="usr/lib.*/grub/.*"
-QA_PRESTRIPPED="usr/lib.*/grub/.*"
+QA_EXECSTACK="usr/bin/grub*-emu* usr/lib/grub/*"
+QA_WX_LOAD="usr/lib/grub/*"
+QA_MULTILIB_PATHS="usr/lib/grub/.*"
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
