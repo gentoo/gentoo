@@ -42,7 +42,8 @@ esac
 DEPEND=">=mate-base/mate-common-${MATE_BRANCH}"
 
 # @FUNCTION: mate_py_cond_func_wrap
-# @DESCRIPTION: Wraps a function for conditional python use, to run for each
+# @DESCRIPTION:
+# Wraps a function for conditional python use, to run for each
 # python implementation in the build directory.
 # This function should only be used if the ebuild also inherits the
 # python-r1 eclass
@@ -66,7 +67,8 @@ mate_py_cond_func_wrap() {
 : ${MATE_FORCE_AUTORECONF:="false"}
 
 # @FUNCTION: ematedocize
-# @DESCRIPTION: A wrapper around mate-doc-common
+# @DESCRIPTION:
+# A wrapper around mate-doc-common
 ematedocize() {
 	ebegin "Running mate-doc-common --copy"
 		mate-doc-common --copy || die
