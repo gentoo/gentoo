@@ -35,10 +35,7 @@ CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md docs/i2pd.conf debian/tunnels.conf debian/subscriptions.txt )
 
-src_prepare() {
-	eapply "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch"
-	eapply_user
-}
+PATCHES=( "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch" )
 
 src_configure() {
 	mycmakeargs=(
