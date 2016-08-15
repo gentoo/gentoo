@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pygoocanvas[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.16.0[${PYTHON_USEDEP}]
 	gnome-base/librsvg:2
-	sci-geosciences/osm-gps-map:2
+	sci-geosciences/osm-gps-map
 	x11-misc/xdg-utils
 	gnome? (
 		dev-python/gconf-python[${PYTHON_USEDEP}]
