@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/glib-2.0 zlib? ( sys-libs/zlib ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Userland client/server for kernel network block device
+EAPI=5
+HOMEPAGE=http://nbd.sourceforge.net/
+IUSE=debug zlib
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.0 zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/nbd/nbd-3.14.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=313ceefcd88b975d494089183b2068c5
