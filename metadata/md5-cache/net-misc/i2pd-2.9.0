@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!static? ( >=dev-libs/boost-1.49[threads] dev-libs/crypto++ !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) upnp? ( net-libs/miniupnpc ) ) static? ( >=dev-libs/boost-1.49[static-libs,threads] dev-libs/crypto++[static-libs] !libressl? ( dev-libs/openssl:0[-bindist,static-libs] ) libressl? ( dev-libs/libressl[static-libs] ) upnp? ( net-libs/miniupnpc[static-libs] ) ) i2p-hardening? ( >=sys-devel/gcc-4.7 ) || ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A C++ daemon for accessing the I2P anonymous network
+EAPI=6
+HOMEPAGE=https://github.com/PurpleI2P/i2pd
+IUSE=cpu_flags_x86_aes i2p-hardening libressl pch static +upnp
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( >=dev-libs/boost-1.49[threads] dev-libs/crypto++ !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) upnp? ( net-libs/miniupnpc ) )
+SLOT=0
+SRC_URI=https://github.com/PurpleI2P/i2pd/archive/2.9.0.tar.gz -> i2pd-2.9.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	022d8ca5c8887ca2d21e83b57f5c75ff	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=65ef153e9dd7c1d0e88606e270e49e6c
