@@ -4,11 +4,11 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic systemd toolchain-funcs
+inherit autotools flag-o-matic systemd toolchain-funcs user
 
 KEYWORDS="~amd64"
 
-PXE_VERSION="1068.0.0"
+PXE_VERSION="1097.0.0"
 PXE_SYSTEMD_VERSION="v229"
 KVM_LINUX_VERSION="4.3.1"
 KVMTOOL_VERSION="d62653e177597251c24494a6dda60acd6d846671"
@@ -16,7 +16,6 @@ PXE_URI="http://alpha.release.core-os.net/amd64-usr/${PXE_VERSION}/coreos_produc
 PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
 
 SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-https://github.com/coreos/rkt/commit/64e931a183d12a30e3e25deefbeab0753dca99bf.patch -> rkt-sdjournal-64e931a183d12a30e3e25deefbeab0753dca99bf.patch
 rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
@@ -49,6 +48,11 @@ RDEPEND="!app-emulation/rocket
 BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
 
+pkg_setup() {
+	enewgroup rkt-admin
+	enewgroup rkt
+}
+
 src_unpack() {
 	local x
 	for x in ${A}; do
@@ -67,7 +71,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${DISTDIR}/rkt-sdjournal-64e931a183d12a30e3e25deefbeab0753dca99bf.patch"
 	eapply_user
 
 	# disable git fetch of systemd
@@ -189,4 +192,8 @@ src_install() {
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.timer
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.service
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-metadata.socket
+
+	keepdir /etc/${PN}
+	fowners :rkt-admin /etc/${PN}
+	fperms 2775 /etc/${PN}
 }
