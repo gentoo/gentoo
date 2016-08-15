@@ -18,7 +18,13 @@ UPSTREAM_PATCHES=( "SA-16:18/atkbd.patch"
 	"SA-16:20/linux.patch"
 	"SA-16:21/stat.patch"
 	"EN-16:07/ipi.patch"
-	"EN-16:08/zfs.patch" )
+	"EN-16:08/zfs.patch"
+	"EN-16:11/vmbus.patch"
+	"EN-16:12/hv_storvsc.patch"
+	"EN-16:13/vmbus.patch"
+	"EN-16:14/hv_storvsc.patch"
+	"EN-16:15/vmbus.patch"
+	"EN-16:16/hv_storvsc.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
