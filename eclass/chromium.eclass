@@ -5,6 +5,8 @@
 # DEPRECATED
 # This eclass has been deprecated and should not be used by any new ebuilds.
 
+# @DEAD
+
 # @ECLASS: chromium.eclass
 # @MAINTAINER:
 # Chromium Herd <chromium@gentoo.org>
