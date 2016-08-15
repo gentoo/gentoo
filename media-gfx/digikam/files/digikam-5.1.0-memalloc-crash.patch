@@ -1,0 +1,95 @@
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Thu, 11 Aug 2016 19:43:46 +0000
+Subject: fix check of maximum addressable memory on 64bits
+X-Git-Url: http://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=90f31456779f4aeb9ac06a385f398827fd35c985
+---
+fix check of maximum addressable memory on 64bits
+CCBUGS: 366621
+---
+
+
+--- a/libs/dimg/loaders/dimgloader.cpp
++++ b/libs/dimg/loaders/dimgloader.cpp
+@@ -163,7 +163,7 @@
+ 
+ qint64 DImgLoader::checkAllocation(qint64 fullSize)
+ {
+-    if (fullSize > std::numeric_limits<int>::max())
++    if (fullSize > std::numeric_limits<size_t>::max())
+     {
+         qCWarning(DIGIKAM_DIMG_LOG) << "Cannot allocate buffer of size" << fullSize;
+         return 0;
+
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Fri, 12 Aug 2016 19:29:50 +0000
+Subject: fix crash by big memory allocation for DImg on 64bit
+X-Git-Url: http://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=65fa04ca097d4ff695690886a9f2be459b4279a9
+---
+fix crash by big memory allocation for DImg on 64bit
+CCBUGS: 366621
+---
+
+
+--- a/libs/dimg/dimg.cpp
++++ b/libs/dimg/dimg.cpp
+@@ -211,7 +211,7 @@
+ 
+     if (old->data)
+     {
+-        int size = allocateData();
++        size_t size = allocateData();
+         memcpy(m_priv->data, old->data, size);
+     }
+ }
+@@ -234,7 +234,7 @@
+     }
+     else if (copyData)
+     {
+-        int size = allocateData();
++        size_t size = allocateData();
+ 
+         if (data)
+         {
+@@ -303,7 +303,7 @@
+     setImageData(src->null, src->width, src->height, src->sixteenBit, src->alpha);
+ }
+ 
+-int DImg::allocateData()
++size_t DImg::allocateData()
+ {
+     size_t size  = m_priv->width * m_priv->height * (m_priv->sixteenBit ? 8 : 4);
+     m_priv->data = DImgLoader::new_failureTolerant(size);
+@@ -2231,7 +2231,7 @@
+ 
+ void DImg::resize(int w, int h)
+ {
+-    if (w <= 0 || h <= 0)
++    if (isNull() || w <= 0 || h <= 0)
+     {
+         return;
+     }
+
+--- a/libs/dimg/dimg.h
++++ b/libs/dimg/dimg.h
+@@ -655,7 +655,7 @@
+     void copyImageData(const Private* const src);
+     void setImageData(bool null, uint width, uint height, bool sixteenBit, bool alpha);
+     void setImageDimension(uint width, uint height);
+-    int  allocateData();
++    size_t allocateData();
+ 
+     static void bitBlt(const uchar* const src, uchar* const dest,
+                        int sx, int sy, int w, int h, int dx, int dy,
+
+--- a/libs/dimg/loaders/dimgloader.cpp
++++ b/libs/dimg/loaders/dimgloader.cpp
+@@ -163,7 +163,7 @@
+ 
+ qint64 DImgLoader::checkAllocation(qint64 fullSize)
+ {
+-    if (fullSize > std::numeric_limits<size_t>::max())
++    if ((quint64)fullSize > std::numeric_limits<size_t>::max())
+     {
+         qCWarning(DIGIKAM_DIMG_LOG) << "Cannot allocate buffer of size" << fullSize;
+         return 0;
+
