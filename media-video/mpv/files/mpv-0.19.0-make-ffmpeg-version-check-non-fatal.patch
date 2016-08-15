@@ -3,10 +3,10 @@ player: make ffmpeg/libav version check non-fatal
 We already enforce mpv rebuilds when ffmpeg/libav SONAME changes.
 
 diff --git a/player/main.c b/player/main.c
-index 88b60e1..1d12679 100644
+index 67dde34..ee133a9 100644
 --- a/player/main.c
 +++ b/player/main.c
-@@ -421,13 +421,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
+@@ -419,13 +419,12 @@ int mp_initialize(struct MPContext *mpctx, char **options)
      if (!print_libav_versions(mp_null_log, 0)) {
          // Using mismatched libraries can be legitimate, but even then it's
          // a bad idea. We don't acknowledge its usefulness and stability.
