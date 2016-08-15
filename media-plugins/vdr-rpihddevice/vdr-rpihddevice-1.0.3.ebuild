@@ -24,6 +24,6 @@ RDEPEND="${DEPEND}"
 
 src_prepare()
 {
-	sed -i "${S}"/Makefile -e 's/-lGLESv2 -lEGL/-lEGL -lGLESv2/' || die "sed failed"
+	sed -i "${S}"/Makefile -e '/LDFLAGS.*VCLIBDIR/s/$/ -Wl,--no-as-needed/' || die "sed failed"
 	vdr-plugin-2_src_prepare
 }
