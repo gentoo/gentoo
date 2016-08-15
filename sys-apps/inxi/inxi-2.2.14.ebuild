@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-DESCRIPTION="A newer, better system information script for irc, administration, and system troubleshooters."
+DESCRIPTION="Commandline script to print hardware information for irc and administration."
 HOMEPAGE="https://github.com/smxi/inxi"
 SRC_URI="https://inxi.googlecode.com/svn/tarballs/${PN}_${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
