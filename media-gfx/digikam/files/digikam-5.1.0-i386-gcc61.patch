@@ -1,0 +1,41 @@
+From: Gilles Caulier <caulier.gilles@gmail.com>
+Date: Tue, 09 Aug 2016 18:41:17 +0000
+Subject: apply patch #100514 to fix broken compilation under 32 bits platform with GCC 6.1
+X-Git-Url: http://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=067a88d8c84a5149469961d54b1d5c93df6a3167
+---
+apply patch #100514 to fix broken compilation under 32 bits platform with GCC 6.1
+BUGS: 366542
+FIXED-IN: 5.2.0
+---
+
+
+--- a/libs/rawengine/libraw/libraw/libraw_types.h
++++ b/libs/rawengine/libraw/libraw/libraw_types.h
+@@ -612,10 +612,10 @@
+ #elif defined(__INTEL__)
+ #define LibRawBigEndian 0
+ 
+-#elif defined(_M_IX86)
++#elif defined(_M_IX86) || defined(__i386__)
+ #define LibRawBigEndian 0
+ 
+-#elif defined(_M_X64) || defined(__amd64__)
++#elif defined(_M_X64) || defined(__amd64__) || defined(__x86_64__)
+ #define LibRawBigEndian 0
+ 
+ #elif defined(__LITTLE_ENDIAN__)
+@@ -625,6 +625,13 @@
+ #define LibRawBigEndian 1
+ #elif defined(_ARM_)
+ #define LibRawBigEndian 0
++
++#elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
++#define LibRawBigEndian 0
++
++#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
++#define LibRawBigEndian 1
++
+ #else
+ #ifndef qXCodeRez
+ #error Unable to figure out byte order.
+
