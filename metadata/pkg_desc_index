@@ -4469,7 +4469,7 @@ dev-lang/teyjus 2.0.2: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/ucblogo 5.5 5.5-r1 6.0 6.0-r1: a reflective, functional programming language
+dev-lang/ucblogo 6.0-r2: a reflective, functional programming language
 dev-lang/vala 0.26.2 0.28.1 0.30.1 0.32.1: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.3.6 3.3.7 3.5.0 3.6.0: XSB is a logic programming and deductive database system
