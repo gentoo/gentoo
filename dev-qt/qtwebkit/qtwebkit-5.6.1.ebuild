@@ -10,7 +10,7 @@ DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 SRC_URI="https://download.qt.io/community_releases/${PV%.*}/${PV}/${PN}-opensource-src-${PV}.tar.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 fi
 
 # TODO: qttestlib
