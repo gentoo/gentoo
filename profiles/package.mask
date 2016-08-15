@@ -149,6 +149,7 @@ media-video/miro
 # Seems to cause major issues wrt Xfce4 session handling.
 # Masked for more restrictive testing.
 =xfce-base/exo-0.11.0
+=xfce-base/exo-0.11.0-r1
 
 # NP-Hardass <NP-Hardass@gentoo.org> (6 Aug 2016)
 # Masked for removal in 14 days.

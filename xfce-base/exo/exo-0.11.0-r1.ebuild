@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=( ${FILESDIR}/${P}-env.patch )
+
 pkg_setup() {
 	XFCONF=(
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
