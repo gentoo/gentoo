@@ -34,16 +34,9 @@ RDEPEND="${COMMON_DEPEND}
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-pygobject.patch
-
 	sed -i \
-		-e "/^UNITDIR = /s:\$(shell rpm --eval '%{_unitdir}'):$(systemd_get_unitdir):" \
 		-e "/\$(DESTDIR)\/run\/tuned/d" \
 		Makefile ||die
-
-	sed -i \
-		-i "s:/usr/bin/lsblk:/bin/lsblk:g" \
-		tuned/plugins/plugin_mounts.py || die
 }
 
 src_install() {
