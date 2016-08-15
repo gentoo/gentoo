@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 DESCRIPTION="light-weight performance monitoring tool capable of reporting interactively and logging to disk"
 HOMEPAGE="http://collectl.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/collectl/${P}.src.tar.gz"
 
 LICENSE="GPL-2 Artistic"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.8.8
@@ -28,6 +28,8 @@ src_install() {
 
 	rm "${D}"/etc/init.d/* || die
 	newinitd "${FILESDIR}"/collectl.initd-2 collectl
+
+	rm "${D}"/usr/share/${PN}/UNINSTALL || die
 
 	cd "${D}"/usr/share/doc/${PF} || die
 	dohtml *

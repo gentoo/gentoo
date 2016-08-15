@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
-inherit eutils toolchain-funcs
+inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Userland client/server for kernel network block device"
 HOMEPAGE="http://nbd.sourceforge.net/"
@@ -21,7 +21,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/nbd-3.12.1-readit-and-weep.patch
+	# Fails to build systemd target.
+	# Once this is fixed we don't need autotools.eclass anymore.
+	sed '/^SUBDIRS/s@ systemd@@' -i Makefile.am || die
+	# eautoreconf fails without this
+	sed "s@m4_esyscmd_s(support/genver.sh)@[${PV}]@" -i configure.ac \
+		|| die
+	eautoreconf
 }
 
 src_configure() {
