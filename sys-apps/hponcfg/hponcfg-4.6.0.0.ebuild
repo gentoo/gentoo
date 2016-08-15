@@ -11,8 +11,8 @@ MY_PV=$(replace_version_separator 3 '-')
 DESCRIPTION="HP Lights-Out Online Configuration Utility (HPONCFG)"
 HOMEPAGE="http://h20564.www2.hpe.com/hpsc/swd/public/detail?swItemId=MTX_5ab6295f49964f16a699064f29"
 SRC_URI="
-	amd64? ( http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/x86_64/current/${PN}-${MY_PV}.x86_64.rpm )
-	x86? ( http://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/i686/current/${PN}-${MY_PV}.i386.rpm )"
+	amd64? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/x86_64/current/${PN}-${MY_PV}.x86_64.rpm )
+	x86? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/6/i686/current/${PN}-${MY_PV}.i386.rpm )"
 
 LICENSE="hpe"
 SLOT="0"
