@@ -72,6 +72,9 @@ src_prepare() {
 		# taken from sys/sys/cdefs.h
 		echo '#define __compiler_membar()  __asm __volatile(" " : : : "memory")' >> "${S}"/rtld-elf/rtld.h
 		# taken from sys/sys/mman.h
+		echo '#define MAP_ALIGNED(n) ((n) << MAP_ALIGNMENT_SHIFT)' >> "${S}"/rtld-elf/rtld.h
+		echo '#define MAP_ALIGNMENT_SHIFT 24' >> "${S}"/rtld-elf/rtld.h
+		echo '#define MAP_ALIGNMENT_MASK MAP_ALIGNED(0xff)' >> "${S}"/rtld-elf/rtld.h
 		echo '#define MAP_ALIGNED_SUPER MAP_ALIGNED(1)' >> "${S}"/rtld-elf/rtld.h
 	fi
 }
