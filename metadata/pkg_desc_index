@@ -4421,7 +4421,7 @@ dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Addit
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/moarvm 2016.03 2016.04 2016.04-r2 2016.05 2016.06 2016.07 9999: A 6model-based VM for NQP and Rakudo Perl 6
-dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.4.0.148 4.4.1.0: Mono runtime and class libraries, a C# compiler/interpreter
+dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.4.0.148 4.4.1.0 4.6.0.125: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
@@ -15785,7 +15785,7 @@ sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin 
 sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
-sci-geosciences/osm-gps-map 0.7.3 1.1.0: A GTK+ viewer for OpenStreetMap files
+sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
