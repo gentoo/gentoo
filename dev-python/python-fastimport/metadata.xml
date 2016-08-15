@@ -10,6 +10,7 @@
 		<name>Gentoo Bazaar Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">python-fastimport</remote-id>
+		<remote-id type="github">jelmer/python-fastimport</remote-id>
+		<bugs-to>https://github.com/jelmer/python-fastimport/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
