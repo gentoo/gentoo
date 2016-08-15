@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,7 +35,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-libs/libxslt
 	dev-libs/libzip
 	gnome-base/gconf:2
-	sci-geosciences/osm-gps-map:2
+	sci-geosciences/osm-gps-map
 	net-libs/libsoup:2.4
 	virtual/libusb
 	x11-libs/cairo

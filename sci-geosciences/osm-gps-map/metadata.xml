@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marecki@gentoo.org</email>
-		<name>Marek Szuba</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>sci-geosciences@gentoo.org</email>
-		<name>Geosciences Project</name>
-	</maintainer>
+  <maintainer type="project">
+  	<email>sci-geosciences@gentoo.org</email>
+	<name>Geosciences Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    A gtk+ viewer for OpenStreetMap files.
+  </longdescription>
 </pkgmetadata>
