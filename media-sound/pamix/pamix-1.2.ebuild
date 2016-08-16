@@ -4,7 +4,7 @@
 
 EAPI=6
 
-[[ "${PV}" == 9999 ]] && inherit autotools git-r3
+[[ "${PV}" == 9999 ]] && inherit git-r3
 
 DESCRIPTION="A PulseAudio NCurses mixer"
 HOMEPAGE="https://github.com/patroclos/PAmix"
@@ -27,12 +27,4 @@ DEPEND="virtual/pkgconfig
 src_unpack() {
 	[[ "${PV}" == 9999 ]] && git-r3_src_unpack
 	default
-}
-
-src_prepare() {
-	default
-	if [[ "${PV}" == 9999 ]] ; then
-		sed 's@^pamix_LDFLAGS@pamix_LDADD@' -i Makefile.am || die
-		eautoreconf
-	fi
 }
