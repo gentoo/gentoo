@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit apache-module depend.apache
+inherit apache-module
 
 DESCRIPTION="Store and configure Apache virtual hosts using LDAP"
 HOMEPAGE="http://modvhostldap.alioth.debian.org/"
@@ -20,13 +20,16 @@ APACHE2_MOD_DEFINE="VHOST_LDAP LDAP"
 
 DOCFILES="AUTHORS ChangeLog README"
 
-# apache[ldap] is needed to run, but not to compile.
-DEPEND=""
-RDEPEND="=www-servers/apache-2*[ldap]"
+# We need apr-util[ldap] and apache to build, but the ldap module for
+# apache is only needed when we try to run the thing.
+DEPEND="dev-libs/apr-util[ldap]"
+RDEPEND="=www-servers/apache-2.4*[ldap]"
 
-need_apache2
+need_apache2_4
 
 src_prepare() {
+	default
+
 	sed -i "s/MOD_VHOST_LDAP_VERSION/\"${PV}\"/g" "${PN}.c" || \
 		die "failed to sed version string"
 }
