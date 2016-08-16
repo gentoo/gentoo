@@ -31,10 +31,12 @@ fi
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
-IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
-	lxc +macvtap nfs nls numa openvz parted pcap phyp pm-utils policykit \
-	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
-	wireshark-plugins xen elibc_glibc"
+IUSE="
+	apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm
+	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
+	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
+	xen elibc_glibc
+"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -88,7 +90,6 @@ RDEPEND="
 		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
-	pm-utils? ( sys-power/pm-utils )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-0.13.0
@@ -269,7 +270,6 @@ src_configure() {
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
 		$(use_with phyp)
-		$(use_with pm-utils pm-utils)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -325,7 +325,8 @@ src_configure() {
 }
 
 src_test() {
-	# Explicitly allow parallel build of tests
+	cd "${BUILD_DIR}"
+
 	export VIR_TEST_DEBUG=1
 	HOME="${T}" emake check || die "tests failed"
 }

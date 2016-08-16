@@ -72,8 +72,6 @@
 		macvtap support requires very new kernels and is
 		currently evolving. Support for this is experimental at best.
 	</flag>
-	<flag name="pm-utils">Use sys-power/pm-utils for power management.
-	</flag>
 	<flag name="vepa">Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg
 		support. Relies on macvtap support.</flag>
 	<flag name="virt-network">
