@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP="php5-6 php5-5"
 
 inherit php-ext-source-r2 eutils
 
@@ -29,6 +29,7 @@ RESTRICT="test"
 
 src_unpack() {
 	default
+
 	# create the default modules directory to be able
 	# to use the php-ext-source-r2 eclass to configure/build
 	ln -s src "${S}/modules"
@@ -43,7 +44,7 @@ src_install() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
 		insinto "${EXT_DIR}"
-		newins "src/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so"
+		newins "src/.libs/${PHP_EXT_NAME}.so.0.0.0" "${PHP_EXT_NAME}.so"
 	done
 	php-ext-source-r2_createinifiles
 	dodoc AUTHORS ChangeLog NEWS README
