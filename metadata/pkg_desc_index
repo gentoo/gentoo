@@ -11936,7 +11936,7 @@ media-fonts/courier-prime 1.203: A redesign of Courier
 media-fonts/cronyx-fonts 2.3.1-r2 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.21.0 1.23.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
-media-fonts/dejavu 2.34 2.35: DejaVu fonts, bitstream vera with ISO-8859-2 characters
+media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r3 113-r4: Font family from Google's Android project
 media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script, provided by the Bhutanese government
