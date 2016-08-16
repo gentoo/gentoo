@@ -1804,6 +1804,42 @@
     </member>
   </project>
   <project>
+    <email>llvm@gentoo.org</email>
+    <name>LLVM</name>
+    <url>https://wiki.gentoo.org/wiki/Project:LLVM</url>
+    <description>Support project for LLVM, clang and the related packages.</description>
+    <member>
+      <email>aballier@gentoo.org</email>
+      <name>Alexis Ballier</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>lu_zero@gentoo.org</email>
+      <name>Luca Barbato</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>wizardedit@gentoo.org</email>
+      <name>Austin English</name>
+      <role>Member</role>
+    </member>
+  </project>
+  <project>
     <email>lxde@gentoo.org</email>
     <name>Gentoo LXDE Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXDE</url>
