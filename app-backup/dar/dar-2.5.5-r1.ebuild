@@ -12,30 +12,42 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
-IUSE="acl dar32 dar64 doc gcrypt gpgme lzo nls static static-libs"
+IUSE="acl dar32 dar64 doc gcrypt gpg lzo nls static static-libs"
 
 RESTRICT="test" # need to be run as root
 
 RDEPEND=">=sys-libs/zlib-1.2.3:=
-	!static? ( app-arch/bzip2:=
-		    app-arch/xz-utils:= )
-	acl? ( !static? ( sys-apps/attr:= ) )
-	gcrypt? ( dev-libs/libgcrypt:0= )
-	gpgme? ( app-crypt/gpgme )
+	!static? (
+		app-arch/bzip2:=
+		app-arch/xz-utils:=
+		sys-libs/libcap
+		acl? ( sys-apps/attr:= )
+		gcrypt? ( dev-libs/libgcrypt:0= )
+		gpg? ( app-crypt/gpgme )
+	)
 	lzo? ( !static? ( dev-libs/lzo:= ) )
 	nls? ( virtual/libintl )"
 
 DEPEND="${RDEPEND}
-	static? ( app-arch/bzip2[static-libs]
-		    app-arch/xz-utils[static-libs]
-		    sys-libs/zlib[static-libs] )
-	acl? ( static? ( sys-apps/attr[static-libs] ) )
-	lzo? ( static? ( dev-libs/lzo[static-libs] ) )
+	static? (
+		app-arch/bzip2[static-libs]
+		app-arch/xz-utils[static-libs]
+		sys-libs/libcap[static-libs]
+		sys-libs/zlib[static-libs]
+		acl? ( sys-apps/attr[static-libs] )
+		gcrypt? ( dev-libs/libgcrypt:0=[static-libs] )
+		gpg? (
+			app-crypt/gpgme[static-libs]
+			dev-libs/libassuan[static-libs]
+			dev-libs/libgpg-error[static-libs]
+		)
+		lzo? ( dev-libs/lzo[static-libs] )
+	)
 	nls? ( sys-devel/gettext )
 	doc? ( app-doc/doxygen )"
 
 REQUIRED_USE="?? ( dar32 dar64 )
-		gpgme? ( gcrypt )"
+		gpg? ( gcrypt )"
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS TODO"
 
@@ -48,13 +60,19 @@ src_configure() {
 	# Bug 103741
 	filter-flags -fomit-frame-pointer
 
+	# configure.ac is totally funked up regarding the AC_ARG_ENABLE
+	# logic.
+	# For example "--enable-dar-static" causes configure to DISABLE
+	# static builds of dar.
+	# Do _not_ use $(use_enable) until you have verified that the
+	# logic has been fixed by upstream.
 	use acl || myconf+=( --disable-ea-support )
 	use dar32 && myconf+=( --enable-mode=32 )
 	use dar64 && myconf+=( --enable-mode=64 )
 	use doc || myconf+=( --disable-build-html )
 	# use examples && myconf+=( --enable-examples )
 	use gcrypt || myconf+=( --disable-libgcrypt-linking )
-	use gpgme || myconf+=( --disable-gpgme-linking )
+	use gpg || myconf+=( --disable-gpgme-linking )
 	use lzo || myconf+=( --disable-liblzo2-linking )
 	use nls || myconf=( --disable-nls )
 	if ! use static ; then
