@@ -13,7 +13,7 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="proxy account container object +memcached"
 REQUIRED_USE="|| ( proxy account container object )"
 
