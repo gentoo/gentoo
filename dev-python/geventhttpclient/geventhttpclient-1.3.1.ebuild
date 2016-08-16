@@ -30,6 +30,12 @@ DEPEND="
 	)
 "
 
+python_prepare_all() {
+	# https://github.com/gwik/geventhttpclient/pull/82
+	rm -rf src/geventhttpclient/tests/__pycache__ || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	# Ignore tests which require network access
 	py.test src/geventhttpclient/tests --ignore \
