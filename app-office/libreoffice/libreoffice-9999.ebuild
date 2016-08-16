@@ -540,10 +540,6 @@ src_install() {
 	# Remove desktop files to support old installs that can't parse mime
 	rm -r "${ED}"usr/share/mimelnk/ || die
 
-	# FIXME: Hack add missing file
-	exeinto /usr/$(get_libdir)/${PN}/program
-	doexe "${S}"/instdir/program/libsaxlo.so
-
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${ED}"usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
