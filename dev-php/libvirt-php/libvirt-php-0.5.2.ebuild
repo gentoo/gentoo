@@ -7,23 +7,20 @@ EAPI=5
 PHP_EXT_NAME="libvirt-php"
 PHP_EXT_SKIP_PHPIZE="yes"
 USE_PHP="php5-6 php5-5"
-# Automake 1.14 is broken.  Check this later
-WANT_AUTOMAKE="1.13"
 
-inherit php-ext-source-r2 git-r3 autotools
+inherit php-ext-source-r2 eutils
 
 DESCRIPTION="PHP 5 bindings for libvirt"
 HOMEPAGE="http://libvirt.org/php/"
-EGIT_REPO_URI="git://libvirt.org/libvirt-php.git"
+SRC_URI="http://libvirt.org/sources/php/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="doc"
 
 RDEPEND="app-emulation/libvirt
-	dev-libs/libxml2
-	dev-php/pecl-imagick"
+	dev-libs/libxml2"
 DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	doc? ( app-text/xhtml1 )"
@@ -31,7 +28,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_unpack() {
-	git-r3_src_unpack
+	default
 
 	# create the default modules directory to be able
 	# to use the php-ext-source-r2 eclass to configure/build
@@ -42,20 +39,12 @@ src_unpack() {
 	done
 }
 
-src_prepare() {
-	local slot
-	for slot in $(php_get_slots); do
-		php_init_slot_env ${slot}
-		eautoreconf
-	done
-}
-
 src_install() {
 	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
 		insinto "${EXT_DIR}"
-		newins "src/.libs/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so"
+		newins "src/.libs/${PHP_EXT_NAME}.so.0.0.0" "${PHP_EXT_NAME}.so"
 	done
 	php-ext-source-r2_createinifiles
 	dodoc AUTHORS ChangeLog NEWS README
