@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-
+EAPI=6
 inherit font versionator
 
 DESCRIPTION="DejaVu fonts, bitstream vera with ISO-8859-2 characters"
 HOMEPAGE="http://dejavu.sourceforge.net/"
-LICENSE="BitstreamVera"
 
 # If you want to test snapshot from dejavu.sf.net/snapshots/
 # just rename ebuild to dejavu-2.22.20071220.2156.ebuild
@@ -18,28 +16,25 @@ snapv=${snapv/./-}
 MY_BP=${PN}-fonts-ttf-${MY_PV}
 MY_SP=${PN}-fonts-${MY_PV}
 
-if [ -z ${snapv} ]
-then
-	SRC_URI="!fontforge? (  mirror://sourceforge/${PN}/${MY_BP}.tar.bz2 )
+if [[ -z ${snapv} ]]; then
+	SRC_URI="!fontforge? ( mirror://sourceforge/${PN}/${MY_BP}.tar.bz2 )
 		fontforge? ( mirror://sourceforge/${PN}/${MY_SP}.tar.bz2 )"
 else
-	MY_BP=${MY_BP}-${snapv}
-	MY_SP=${MY_SP}-${snapv}
-	SRC_URI="!fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_BP}.tar.bz2 )
-		fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_SP}.tar.bz2 )"
+	SRC_URI="!fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_BP}-${snapv}.tar.bz2 )
+		fontforge? ( http://dejavu.sourceforge.net/snapshots/${MY_SP}-${snapv}.tar.bz2 )"
 fi
 
+LICENSE="BitstreamVera"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
-
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="fontforge"
+
 DEPEND="fontforge? ( x11-apps/mkfontscale
 		>=media-gfx/fontforge-20080429
 		x11-apps/mkfontdir
 		dev-perl/Font-TTF
 		app-i18n/unicode-data
 		>media-libs/fontconfig-2.6.0 )"
-RDEPEND=""
 
 FONT_CONF=(
 	fontconfig/20-unhint-small-dejavu-sans-mono.conf
@@ -52,7 +47,7 @@ FONT_CONF=(
 
 FONT_S="ttf"
 FONT_SUFFIX="ttf"
-DOCS="AUTHORS NEWS README status.txt langcover.txt unicover.txt"
+DOCS="AUTHORS NEWS README.md status.txt langcover.txt unicover.txt"
 
 src_unpack() {
 	default
@@ -64,9 +59,8 @@ src_unpack() {
 }
 
 src_compile() {
-	if use fontforge
-	then
-		emake -j1 \
+	if use fontforge; then
+		emake \
 			BUILDDIR=ttf \
 			BLOCKS=/usr/share/unicode-data/Blocks.txt \
 			UNICODEDATA=/usr/share/unicode-data/UnicodeData.txt \
@@ -78,8 +72,7 @@ src_compile() {
 
 src_install() {
 	font_src_install
-	if use fontforge
-	then
+	if use fontforge; then
 		dodoc ttf/*.txt
 	fi
 }
