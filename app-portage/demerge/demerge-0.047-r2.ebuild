@@ -1,14 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
 DESCRIPTION="demerge - revert to previous installation states"
 HOMEPAGE="http://download.mpsna.de/opensource/demerge/"
 SRC_URI="http://download.mpsna.de/opensource/demerge/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 sh sparc x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 ~sh sparc x86"
 IUSE=""
 
 DEPEND="dev-lang/perl
@@ -19,12 +20,10 @@ DEPEND="dev-lang/perl
 RDEPEND="${DEPEND}
 		sys-apps/portage"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	# Fix path for new make.conf location
 	sed -i -e 's:/etc/make.conf:/etc/portage/make.conf:g' demerge
+	default
 }
 
 src_install() {
@@ -41,4 +40,5 @@ pkg_postinst() {
 		elog "If you wish for it to be automatically run at the end of every --sync simply chmod +x /etc/portage/postsync.d/demerge-record"
 		elog "If ever you find this to be an inconvenience simply chmod -x /etc/portage/postsync.d/demerge-record"
 	fi
+
 }
