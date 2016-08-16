@@ -35,7 +35,8 @@ CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md docs/i2pd.conf debian/tunnels.conf debian/subscriptions.txt )
 
-PATCHES=( "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch" )
+PATCHES=( "${FILESDIR}/i2pd-2.9.0-static.patch" \
+	"${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch" )
 
 src_configure() {
 	mycmakeargs=(
