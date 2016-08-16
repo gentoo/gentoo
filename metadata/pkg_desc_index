@@ -17697,7 +17697,7 @@ www-apache/mod_tcl 1.0.1: An Apache2 module providing an embedded Tcl interprete
 www-apache/mod_tidy 0.5.5-r1: a TidyLib based module to parse, clean-up and pretty-print the webservers' (X)HTML output
 www-apache/mod_umask 0.1.0: Sets the Unix umask of the Apache2 webserver process after it has started
 www-apache/mod_vdbh 1.0.3-r1: An Apache2 module for mass virtual hosting using a MySQL database
-www-apache/mod_vhost_ldap 2.4.0: Store and configure Apache virtual hosts using LDAP
+www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_wsgi 4.4.21 4.4.22 4.5.2: An Apache2 module for running Python WSGI applications
 www-apache/mod_xml2enc 1.0.3 1.0.4: An Apache2 module to provide libxml2 encoding

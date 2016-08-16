@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare setup
-DEPEND==www-servers/apache-2*
+DEPEND=dev-libs/apr-util[ldap] =www-servers/apache-2.4*
 DESCRIPTION=Store and configure Apache virtual hosts using LDAP
 EAPI=5
 HOMEPAGE=http://modvhostldap.alioth.debian.org/
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND==www-servers/apache-2*[ldap] =www-servers/apache-2*
+RDEPEND==www-servers/apache-2.4*[ldap] =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mjo/distfiles/mod_vhost_ldap-2.4.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_prepare:- src_compile:apache-module src_install:-
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=44c6c437125d7540cf0066f186e45c61
+_md5_=772a68294cd53f5cf6dda7d717b43d5a
