@@ -5,7 +5,7 @@
 EAPI=6
 
 # change MY_COMMITID for trivial BUMP
-MY_COMMITID=ebf6ff7
+MY_COMMITID=ebf6ff7 #p20160419, because upstream does not tag commits with versionnumbers
 MY_GITUSERNAME=smxi
 
 DESCRIPTION="Commandline script to print hardware information for irc and administration."
