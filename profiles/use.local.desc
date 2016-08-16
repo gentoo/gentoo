@@ -368,7 +368,7 @@ app-backup/btrbk:pv - Use sys-apps/pv to enable progress bar functionality
 app-backup/dar:dar32 - Enables --enable-mode=32 option, which replace infinite by 32 bit integers
 app-backup/dar:dar64 - Enables --enable-mode=64 option, which replace infinite by 64 bit integers
 app-backup/dar:gcrypt - Enables strong encryption support
-app-backup/dar:gpgme - Enables usage of asymetric crypto algorithms
+app-backup/dar:gpg - Enables usage of asymetric crypto algorithms
 app-backup/deja-dup:nautilus - Build gnome-base/nautilus extension
 app-backup/duplicity:s3 - Support for backing up to the Amazon S3 system
 app-backup/holland-backup-mysql-meta:lvm - Install Holland LVM Plugin
