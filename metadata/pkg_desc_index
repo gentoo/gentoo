@@ -5090,7 +5090,7 @@ dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
-dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
+dev-ml/lambda-term 1.9 1.10 1.10.1: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
@@ -5103,7 +5103,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 2.1.0 2.2.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5191,7 +5191,7 @@ dev-ml/typerep 113.24.00 113.33.03: Library for creating runtime representation 
 dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0 4.0.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.19.2-r1: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.19.2-r1 1.19.3: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 113.24.00 113.33.03: OCaml variants as first class values
