@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ml/result:=
 	dev-ml/sequence:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND} dev-ml/cppo"
 PATCHES=( "${FILESDIR}/notests.patch" )
 
 src_configure() {
