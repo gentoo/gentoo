@@ -9345,7 +9345,7 @@ dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.5: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
-dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.2 2.0.3 2.0.4 2.0.5: Thin interface over template engines to make their usage as generic as possible
+dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.4 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 1.6.0 1.8.2 1.9.0 1.10.1 1.10.2 1.11.0: All the stuff that isn't good enough for a real library
