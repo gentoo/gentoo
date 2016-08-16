@@ -1,20 +1,22 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs versionator
 
-DEB_PV=${PV%.*}
-DEB_PATCH=${PV##*.}
-DEB_PF="${PN}_${DEB_PV}-${DEB_PATCH}"
-MY_P="${PN}-${DEB_PV}"
+MY_PV="$(get_version_component_range 1-3)"
+DEB_PATCH="$(get_version_component_range 4)"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell) and is POSIX compliant"
 HOMEPAGE="http://gondor.apana.org.au/~herbert/dash/"
-SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${PN}-${DEB_PV}.tar.gz
-	mirror://debian/pool/main/d/dash/${DEB_PF}.diff.gz"
+SRC_URI="http://gondor.apana.org.au/~herbert/dash/files/${MY_P}.tar.gz"
+if [[ -n "${DEB_PATCH}" ]] ; then
+	DEB_PF="${PN}_${MY_PV}-${DEB_PATCH}"
+	SRC_URI+=" mirror://debian/pool/main/d/dash/${DEB_PF}.diff.gz"
+fi
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,11 +30,17 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.9-dumb-echo.patch #337329 #527848
+	"${FILESDIR}"/${PN}-0.5.8.1-eval-warnx.patch
+)
+
 src_prepare() {
-	epatch "${WORKDIR}"/${DEB_PF}.diff
-	epatch */debian/diff/*
-	epatch "${FILESDIR}"/${PN}-0.5.8.1-dumb-echo.patch #337329 #527848
-	epatch "${FILESDIR}"/${PN}-0.5.8.1-eval-warnx.patch
+	if [[ -n "${DEB_PATCH}" ]] ; then
+		epatch "${WORKDIR}"/${DEB_PF}.diff
+		epatch */debian/diff/*
+	fi
+	epatch "${PATCHES[@]}"
 
 	# Fix the invalid sort
 	sed -i -e 's/LC_COLLATE=C/LC_ALL=C/g' src/mkbuiltins
@@ -58,5 +66,7 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc */debian/changelog
+	if [[ -n "${DEB_PATCH}" ]] ; then
+		dodoc */debian/changelog
+	fi
 }
