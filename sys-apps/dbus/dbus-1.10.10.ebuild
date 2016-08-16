@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo systemd virtualx user multilib-minimal
+inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -13,8 +13,8 @@ SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="debug doc selinux static-libs systemd test X"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+IUSE="debug doc selinux static-libs systemd test user-session X"
 
 RESTRICT="test"
 
@@ -74,7 +74,7 @@ src_prepare() {
 		-e '/"dispatch"/d' \
 		bus/test-main.c || die
 
-	epatch_user
+	eapply_user
 
 	# required for asneeded patch but also for bug 263909, cross-compile so
 	# don't remove eautoreconf
@@ -110,16 +110,16 @@ multilib_src_configure() {
 		$(use_enable kernel_linux inotify)
 		$(use_enable kernel_FreeBSD kqueue)
 		$(use_enable systemd)
-		$(use_enable systemd user-session)
+		$(use_enable user-session)
 		--disable-embedded-tests
 		--disable-modular-tests
 		$(use_enable debug stats)
 		--with-session-socket-dir="${EPREFIX}"/tmp
 		--with-system-pid-file="${EPREFIX}"/var/run/dbus.pid
 		--with-system-socket="${EPREFIX}"/var/run/dbus/system_bus_socket
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-dbus-user=messagebus
 		$(use_with X x)
-		"$(systemd_with_unitdir)"
 		)
 
 	if [[ ${CHOST} == *-darwin* ]]; then
@@ -252,5 +252,17 @@ pkg_postinst() {
 		elog "specified and refused to start otherwise, then export the"
 		elog "the following to your environment:"
 		elog " DBUS_SESSION_BUS_ADDRESS=\"launchd:env=DBUS_LAUNCHD_SESSION_BUS_SOCKET\""
+	fi
+
+	if use user-session; then
+		ewarn "You have enabled user-session. Please note this can cause"
+		ewarn "bogus behaviors in several dbus consumers that are not prepared"
+		ewarn "for this dbus activation method yet."
+		ewarn
+		ewarn "See the following link for background on this change:"
+		ewarn "https://lists.freedesktop.org/archives/systemd-devel/2015-January/027711.html"
+		ewarn
+		ewarn "Known issues are tracked here:"
+		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=576028"
 	fi
 }
