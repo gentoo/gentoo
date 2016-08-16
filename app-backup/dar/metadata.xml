@@ -17,7 +17,6 @@ operations, including with ssh.
 		by 64 bit integers</flag>
 		<flag name="gcrypt">Enables strong encryption support</flag>
 		<flag name="gpg">Enables usage of asymetric crypto algorithms</flag>
-		<flag name="gpgme">Enables usage of asymetric crypto algorithms</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dar</remote-id>
