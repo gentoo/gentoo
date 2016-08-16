@@ -2088,7 +2088,7 @@ app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update w
 app-portage/conf-update 1.0.3 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 2: Tool to guess CPU_FLAGS_X86 flags for the host
 app-portage/deltup 0.4.5-r1 0.4.6: Delta-Update - patch system for updating source-archives.
-app-portage/demerge 0.047-r1: demerge - revert to previous installation states
+app-portage/demerge 0.047-r2: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r2 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
