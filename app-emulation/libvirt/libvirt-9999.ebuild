@@ -32,9 +32,9 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
-	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
-	selinux systemd +udev uml +vepa virtualbox virt-network wireshark-plugins \
-	xen elibc_glibc"
+	lxc +macvtap nfs nls numa openvz parted pcap phyp pm-utils policykit \
+	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	wireshark-plugins xen elibc_glibc"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -77,7 +77,6 @@ RDEPEND="
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
-	lxc? ( !systemd? ( sys-power/pm-utils ) )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -89,16 +88,15 @@ RDEPEND="
 		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
+	pm-utils? ( sys-power/pm-utils )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-0.13.0
 		dev-libs/yajl
-		!systemd? ( sys-power/pm-utils )
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
-	systemd? ( sys-apps/systemd )
 	virt-network? (
 		net-dns/dnsmasq[script]
 		net-firewall/ebtables
@@ -174,7 +172,6 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
-	krnel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	if $(kernel_is ge 3 6); then
 		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
@@ -239,9 +236,9 @@ src_prepare() {
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex avahi avahi-daemon '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi iscsid '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd  ceph '')/" \
+		-e "s/USE_FLAG_AVAHI/$(usex avahi 'use avahi-daemon' '')/" \
+		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
+		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	AUTOTOOLS_AUTORECONF=true
@@ -272,14 +269,13 @@ src_configure() {
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
 		$(use_with phyp)
+		$(use_with pm-utils pm-utils)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
 		$(use_with rbd storage-rbd)
 		$(use_with sasl)
 		$(use_with selinux)
-		$(use_with systemd systemd-daemon)
-		$(usex systemd --with-init-script=systemd '')
 		$(use_with udev)
 		$(use_with uml)
 		$(use_with vepa virtualport)
@@ -293,7 +289,9 @@ src_configure() {
 		--without-netcf
 		--without-sanlock
 		--without-xenapi
+
 		--with-esx
+		--with-init-script=systemd
 		--with-qemu-group=$(usex caps qemu root)
 		--with-qemu-user=$(usex caps qemu root)
 		--with-remote
@@ -345,7 +343,7 @@ src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	use systemd && systemd_install_serviced \
+	systemd_install_serviced \
 		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
 
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
