@@ -2223,6 +2223,7 @@ dev-ml/ocaml-uri:allservices - Compile support for all service types
 dev-ml/ocamlnet:cryptokit - Enables encryption support via dev-ml/cryptokit
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
+dev-ml/onanomsg:lwt - Enables lwt support.
 dev-ml/pgocaml:camlp4 - Enable PG'Ocaml syntax extension.
 dev-ml/qcheck:ounit - Enable integration with ounit
 dev-ml/tyxml:camlp4 - Enables the camlp4 syntax extension (deprecated)

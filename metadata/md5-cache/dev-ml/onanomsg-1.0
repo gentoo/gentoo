@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/nanomsg:= dev-lang/ocaml:=[ocamlopt?] dev-ml/ocaml-ctypes:= dev-ml/ocaml-ipaddr:=[ocamlopt?] dev-ml/ppx_deriving:=[ocamlopt?] dev-ml/ocaml-containers:=[ocamlopt?] lwt? ( dev-ml/lwt:=[ocamlopt?] ) test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=nanomsg bindings for OCaml
+EAPI=5
+HOMEPAGE=https://github.com/rgrinberg/onanomsg
+IUSE=+lwt +ocamlopt test
+KEYWORDS=~amd64
+LICENSE=WTFPL-2
+RDEPEND=dev-libs/nanomsg:= dev-lang/ocaml:=[ocamlopt?] dev-ml/ocaml-ctypes:= dev-ml/ocaml-ipaddr:=[ocamlopt?] dev-ml/ppx_deriving:=[ocamlopt?] dev-ml/ocaml-containers:=[ocamlopt?] lwt? ( dev-ml/lwt:=[ocamlopt?] )
+SLOT=0
+SRC_URI=https://github.com/rgrinberg/onanomsg/archive/1.0.tar.gz -> onanomsg-1.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=36f258e5aff6d990057784a69c1ee94d
