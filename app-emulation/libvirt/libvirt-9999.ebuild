@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user autotools-utils linux-info systemd readme.gentoo
+inherit eutils user autotools-utils linux-info systemd readme.gentoo-r1
 
 BACKPORTS=""
 
