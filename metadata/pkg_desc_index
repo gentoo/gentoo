@@ -2463,7 +2463,7 @@ app-text/vilistextum 2.6.9-r1: Html to ascii converter specifically programmed t
 app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech texts
 app-text/wdiff 1.2.2: Create a diff disregarding formatting
 app-text/webgen 1.3.0 1.4.0: A template-based static website generator
-app-text/wgetpaste 2.25-r3 2.27: Command-line interface to various pastebins
+app-text/wgetpaste 2.25-r3 2.28: Command-line interface to various pastebins
 app-text/wiki2beamer 0.9.5-r1: Tool to produce LaTeX Beamer code from wiki-like input
 app-text/winefish 1.3.3-r1 1.3.3-r2: LaTeX editor based on Bluefish
 app-text/wklej 0.2.0 0.2.1-r1: A wklej.org submitter
@@ -2925,7 +2925,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.4.0 1.5.2 1.5.2-r1 1.6.0 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.50 5.6.30 5.6.31: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.50 5.5.51 5.6.30 5.6.31: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
@@ -16591,7 +16591,7 @@ sys-apps/ifplugd 0.28-r9: Brings up/down ethernet ports automatically with cable
 sys-apps/input-utils 0.0.1_pre20081014 1.1 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
-sys-apps/inxi 2.2.14 2.2.19: A newer, better system information script for irc, administration, and system troubleshooters.
+sys-apps/inxi 2.2.14 2.2.19: Commandline script to print hardware information for irc and administration.
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.16 1.8.17: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 2.8.5 2.9.8 2.9.9: IPMI Management Utilities
