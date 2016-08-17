@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
-IUSE="acl dar32 dar64 doc gcrypt gpg lzo nls static static-libs"
+IUSE="dar32 dar64 doc gcrypt gpg lzo nls static static-libs xattr"
 
 RESTRICT="test" # need to be run as root
 
@@ -21,9 +21,9 @@ RDEPEND=">=sys-libs/zlib-1.2.3:=
 		app-arch/bzip2:=
 		app-arch/xz-utils:=
 		sys-libs/libcap
-		acl? ( sys-apps/attr:= )
 		gcrypt? ( dev-libs/libgcrypt:0= )
 		gpg? ( app-crypt/gpgme )
+		xattr? ( sys-apps/attr:= )
 	)
 	lzo? ( !static? ( dev-libs/lzo:= ) )
 	nls? ( virtual/libintl )"
@@ -34,7 +34,6 @@ DEPEND="${RDEPEND}
 		app-arch/xz-utils[static-libs]
 		sys-libs/libcap[static-libs]
 		sys-libs/zlib[static-libs]
-		acl? ( sys-apps/attr[static-libs] )
 		gcrypt? ( dev-libs/libgcrypt:0=[static-libs] )
 		gpg? (
 			app-crypt/gpgme[static-libs]
@@ -42,6 +41,7 @@ DEPEND="${RDEPEND}
 			dev-libs/libgpg-error[static-libs]
 		)
 		lzo? ( dev-libs/lzo[static-libs] )
+		xattr? ( sys-apps/attr[static-libs] )
 	)
 	nls? ( sys-devel/gettext )
 	doc? ( app-doc/doxygen )"
@@ -66,7 +66,7 @@ src_configure() {
 	# static builds of dar.
 	# Do _not_ use $(use_enable) until you have verified that the
 	# logic has been fixed by upstream.
-	use acl || myconf+=( --disable-ea-support )
+	use xattr || myconf+=( --disable-ea-support )
 	use dar32 && myconf+=( --enable-mode=32 )
 	use dar64 && myconf+=( --enable-mode=64 )
 	use doc || myconf+=( --disable-build-html )
@@ -74,7 +74,7 @@ src_configure() {
 	use gcrypt || myconf+=( --disable-libgcrypt-linking )
 	use gpg || myconf+=( --disable-gpgme-linking )
 	use lzo || myconf+=( --disable-liblzo2-linking )
-	use nls || myconf=( --disable-nls )
+	use nls || myconf+=( --disable-nls )
 	if ! use static ; then
 		myconf+=( --disable-dar-static )
 		if ! use static-libs ; then

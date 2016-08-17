@@ -1,0 +1,34 @@
+--- a/configure.ac	2016-08-17 14:16:14.671302073 -0400
++++ b/configure.ac	2016-08-17 14:14:57.351587309 -0400
+@@ -151,8 +151,12 @@
+ SPICE_GTK_REQUIRES="${SPICE_GTK_REQUIRES} gtk+-$GTK_API_VERSION >= $GTK_REQUIRED"
+ 
+ PKG_CHECK_EXISTS([gtk+-x11-$with_gtk], [have_x11=yes], [have_x11=no])
+-AS_IF([test "x$have_x11" = "xyes"], [AC_DEFINE([HAVE_X11], 1, [Have x11?])])
++AS_IF([test "x$have_x11" = "xyes"], [
++AC_DEFINE([HAVE_X11], 1, [Have x11?])
++PKG_CHECK_MODULES(X11, x11)])
+ AM_CONDITIONAL([WITH_DISPLAY_X11], [test "x$have_x11" = "xyes"])
++AC_SUBST(X11_CFLAGS)
++AC_SUBST(X11_LIBS)
+ 
+ PKG_CHECK_EXISTS([gtk+-quartz-$with_gtk], [have_quartz=yes], [have_quartz=no])
+ AS_IF([test "x$have_quartz" = "xyes"], [AC_DEFINE([HAVE_QUARTZ], 1, [Have Quartz?])])
+--- a/src/Makefile.am	2016-02-18 10:29:04.000000000 -0500
++++ b/src/Makefile.am	2016-08-17 14:18:46.340742557 -0400
+@@ -103,6 +103,7 @@
+ 	$(GUDEV_CFLAGS)						\
+ 	$(SOUP_CFLAGS)						\
+ 	$(PHODAV_CFLAGS)					\
++	$(X11_CFLAGS)						\
+ 	$(LZ4_CFLAGS)					\
+ 	$(NULL)
+ 
+@@ -123,6 +124,7 @@
+ 	$(GTK_LIBS)			\
+ 	$(CAIRO_LIBS)			\
+ 	$(EPOXY_LIBS)			\
++	$(X11_LIBS)			\
+ 	$(LIBM)				\
+ 	$(NULL)
+ 
