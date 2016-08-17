@@ -73,17 +73,17 @@ RDEPEND="
 	x11-libs/libXScrnSaver:=
 	x11-libs/libXtst:=
 	x11-libs/pango:=
+	app-arch/snappy:=
+	>=dev-libs/libevent-1.4.13:=
+	dev-libs/libxml2:=[icu]
+	dev-libs/libxslt:=
+	media-libs/flac:=
+	>=media-libs/harfbuzz-0.9.41:=[icu(+)]
+	>=media-libs/libwebp-0.4.0:=
+	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
 	!gn? (
 		>=app-accessibility/speech-dispatcher-0.8:=
-		app-arch/snappy:=
-		>=dev-libs/libevent-1.4.13:=
-		dev-libs/libxml2:=[icu]
-		dev-libs/libxslt:=
-		media-libs/flac:=
-		>=media-libs/harfbuzz-0.9.41:=[icu(+)]
-		>=media-libs/libwebp-0.4.0:=
-		sys-libs/zlib:=[minizip]
 	)"
 DEPEND="${RDEPEND}
 	>=app-arch/gzip-1.7
