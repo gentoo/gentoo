@@ -5,6 +5,7 @@
 EAPI=6
 
 MY_COMMIT=c2a22b3e2590d896d4b0a8fd298f505cc1d787f5 #because upstream refuses to tag commits with version numbers
+MY_SHORTCOMMIT=${MY_COMMIT:0:7}
 
 DESCRIPTION="Commandline script to print hardware information for irc and administration."
 
@@ -20,7 +21,7 @@ RDEPEND=">=app-shells/bash-3.0
 	sys-apps/pciutils
 	"
 
-S="${WORKDIR}/smxi-${PN}-${MY_COMMITID}"
+S="${WORKDIR}/smxi-${PN}-${MY_SHORTCOMMIT}"
 
 src_install() {
 	dobin ${PN}
