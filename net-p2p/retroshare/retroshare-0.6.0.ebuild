@@ -13,7 +13,7 @@ SRC_URI="https://github.com/RetroShare/RetroShare/archive/v${PV}.tar.gz -> ${P}.
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="cli feedreader qt4 +qt5 voip"
 REQUIRED_USE="^^ ( qt4 qt5 )
