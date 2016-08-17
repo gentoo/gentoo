@@ -689,7 +689,10 @@ app-emulation/rkt:rkt_stage1_kvm - Build stage1-kvm.aci
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/runc:apparmor - Enable AppArmor support.
 app-emulation/spice:lz4 - Enable support for LZ4 compression using app-arch/lz4
+app-emulation/spice:mjpeg - Enables mjpeg encodec support using media-plugins/gst-plugins-libav
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
+app-emulation/spice:vpx - Enables vp8 encodec support using media-plugins/gst-plugins-vpx
+app-emulation/spice:x264 - Enables x264 encodec support using media-plugins/gst-plugins-x264
 app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
 app-emulation/uae:scsi - Enable the uaescsi.device
 app-emulation/vagrant:virtualbox - Use VirtualBox provider.
@@ -6297,6 +6300,8 @@ net-misc/sitecopy:webdav - Enable WebDav (Web-based Distributed Authoring and Ve
 net-misc/sks:optimize - Enables bytecode optimization
 net-misc/slimrat:X - Install also GUI client
 net-misc/spice-gtk:dbus - Support for desktop integration such as automounting and other APIs exposed by your DE via D-Bus
+net-misc/spice-gtk:gstaudio - Using gstreamer backend as audio decodec support
+net-misc/spice-gtk:gstvideo - Using gstreamer backend as video decodec support
 net-misc/spice-gtk:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 net-misc/spice-gtk:lz4 - Enable support for LZ4 compression using app-arch/lz4
 net-misc/spice-gtk:mjpeg - Enable builtin mjpeg video decoder

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=~app-emulation/spice-protocol-0.12.12 virtual/pkgconfig || ( ( dev-lang/python:3.4 >=dev-python/pyparsing-1.5.6-r2[python_targets_python3_4(-),python_single_target_python3_4(+)] dev-python/six[python_targets_python3_4(-),python_single_target_python3_4(+)] ) ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/pyparsing-1.5.6-r2[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/six[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) smartcard? ( app-emulation/qemu[smartcard] ) >=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) lz4? ( app-arch/lz4 ) smartcard? ( >=app-emulation/libcacard-0.1.2 ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) gstreamer? ( media-libs/gstreamer:1.0 )
+DESCRIPTION=SPICE server
+EAPI=6
+HOMEPAGE=http://spice-space.org/
+IUSE=libressl lz4 sasl smartcard static-libs gstreamer
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) lz4? ( app-arch/lz4 ) smartcard? ( >=app-emulation/libcacard-0.1.2 ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] ) gstreamer? ( media-libs/gstreamer:1.0 )
+SLOT=0
+SRC_URI=http://spice-space.org/download/releases/spice-0.13.2.tar.bz2
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=9cc8b466cbbff45994df7de58780ef4a
