@@ -6,18 +6,18 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 
-inherit eutils git-r3 python-any-r1 autotools readme.gentoo-r1
+inherit eutils python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="http://spice-space.org/"
-SRC_URI=""
-EGIT_REPO_URI="git://git.freedesktop.org/git/spice/spice"
+SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
+# the libspice-server only uses the headers of libcacard
 RDEPEND="
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
 	>=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?]
@@ -33,7 +33,7 @@ RDEPEND="
 	gstreamer? ( media-libs/gstreamer:1.0 )"
 
 DEPEND="
-	=app-emulation/spice-protocol-9999
+	~app-emulation/spice-protocol-0.12.12
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
@@ -55,11 +55,8 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
 }
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
+# maintainer notes:
+# * opengl support is currently broken
 src_configure() {
 	local myconf="
 		$(use_enable static-libs static)
