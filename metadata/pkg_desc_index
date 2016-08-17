@@ -210,7 +210,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.3.5: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.2.6 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0 4.8.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -17840,7 +17840,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.41 39.0.2256.43 39.0.2256.48: A fast and secure web browser
 www-client/opera-beta 40.0.2308.3 40.0.2308.11: A fast and secure web browser
-www-client/opera-developer 40.0.2306.0 41.0.2315.0: A fast and secure web browser
+www-client/opera-developer 41.0.2315.0 41.0.2323.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
