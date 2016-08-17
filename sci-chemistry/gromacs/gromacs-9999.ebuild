@@ -157,8 +157,8 @@ src_configure() {
 		-DGMX_SIMD="$acce"
 		-DGMX_LIB_INSTALL_DIR="$(get_libdir)"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
-		-DBUILD_TESTING=OFF
-		-DGMX_BUILD_UNITTESTS=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DGMX_BUILD_UNITTESTS=$(usex test)
 		${extra}
 	)
 
