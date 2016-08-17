@@ -4,8 +4,6 @@
 
 EAPI="5"
 
-inherit eutils
-
 DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="http://wgetpaste.zlin.dk/"
 SRC_URI="http://wgetpaste.zlin.dk/${P}.tar.bz2"
