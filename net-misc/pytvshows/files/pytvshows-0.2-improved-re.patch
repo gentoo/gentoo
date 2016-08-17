@@ -1,8 +1,8 @@
 Improved regular expression for matching season and episode; see
 https://sourceforge.net/tracker/index.php?func=detail&aid=2818315&group_id=203642&atid=986413
 
---- pytvshows.orig	2011-08-17 23:20:16.000000000 +0200
-+++ pytvshows	2011-08-17 23:22:30.000000000 +0200
+--- a/pytvshows.orig	2011-08-17 23:20:16.000000000 +0200
++++ b/pytvshows	2011-08-17 23:22:30.000000000 +0200
 @@ -346,7 +346,8 @@
  	if self.feedurl:
  	    for episode in self.rss['entries']:

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
@@ -21,9 +21,12 @@ IUSE=""
 DEPEND=""
 RDEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
 
-PATCHES=( "${FILESDIR}/${P}-ezrss.it.patch"
+PATCHES=(
+	"${FILESDIR}/${P}-ezrss.it.patch"
 	"${FILESDIR}/${P}-feedurl.patch"
-	"${FILESDIR}/${P}-improved-re.patch" )
+	"${FILESDIR}/${P}-improved-re.patch"
+	"${FILESDIR}/${P}-rename-var.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
