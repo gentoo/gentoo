@@ -1,11 +1,11 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 inherit eutils
 
 DESCRIPTION="A program to convert C++ code to LaTeX source"
-HOMEPAGE="http://www.arnoldarts.de/drupal/?q=Cpp2LaTeX"
+HOMEPAGE="http://www.arnoldarts.de/cpp2latex/"
 SRC_URI="http://www.arnoldarts.de/drupal/files/downloads/cpp2latex/${P}.tar.gz"
 LICENSE="GPL-2"
 
