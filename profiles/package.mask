@@ -361,10 +361,6 @@ app-portage/epm
 # Broken reverse deps. At least one header file has been moved around.
 >=media-gfx/imagemagick-7.0.1.0
 
-# Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
-# Security mask of older branches, wrt bug #5567810
-<dev-vcs/subversion-1.8
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
 # Masked because of security bug 580210
 =www-misc/monitorix-3.6.0
