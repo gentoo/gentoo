@@ -13,9 +13,9 @@ SRC_URI="http://download.rsyslog.com/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 
 # subslot = soname version
-SLOT="0/0.1.0"
+SLOT="0/0.2.0"
 
-KEYWORDS="~amd64 ~arm ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 IUSE="debug doc +ssl static-libs"
 
 RDEPEND="
