@@ -31,8 +31,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS=( CHANGES.txt README.txt )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.2-fix-desktop-file.patch
-	epatch "${FILESDIR}"/${PN}-1.4.3-version-check.patch
+	epatch "${FILESDIR}"/${P}-fix-desktop-file.patch
 }
 
 python_install_all() {
