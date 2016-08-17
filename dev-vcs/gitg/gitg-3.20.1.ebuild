@@ -34,6 +34,7 @@ RDEPEND="
 
 	>=dev-libs/libpeas-1.5.0[gtk]
 	>=dev-libs/libxml2-2.9.0:2
+	net-libs/libsoup:2.4
 	>=gnome-base/gsettings-desktop-schemas-0.1.1
 	>=x11-libs/gtk+-3.20.0:3
 	>=x11-libs/gtksourceview-3.10:3.0
