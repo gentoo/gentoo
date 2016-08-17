@@ -1,5 +1,5 @@
---- main.cpp	Thu Mar  6 08:15:36 2003
-+++ main.cpp	Tue Jan 24 21:47:17 2006
+--- a/cpp2latex/main.cpp	Thu Mar  6 08:15:36 2003
++++ a/cpp2latex/main.cpp	Tue Jan 24 21:47:17 2006
 @@ -27,12 +27,14 @@
  #include <stdio.h>
  #include <getopt.h>
