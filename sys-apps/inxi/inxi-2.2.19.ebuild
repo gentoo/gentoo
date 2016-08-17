@@ -13,14 +13,8 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}
-	>=app-shells/bash-3.0
-	sys-apps/coreutils
-	sys-apps/gawk
-	sys-apps/grep
+RDEPEND=">=app-shells/bash-3.0
 	sys-apps/pciutils
-	sys-process/procps
-	sys-apps/sed
 	"
 
 S=${WORKDIR}
