@@ -689,10 +689,7 @@ app-emulation/rkt:rkt_stage1_kvm - Build stage1-kvm.aci
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/runc:apparmor - Enable AppArmor support.
 app-emulation/spice:lz4 - Enable support for LZ4 compression using app-arch/lz4
-app-emulation/spice:mjpeg - Enables mjpeg encodec support using media-plugins/gst-plugins-libav
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
-app-emulation/spice:vpx - Enables vp8 encodec support using media-plugins/gst-plugins-vpx
-app-emulation/spice:x264 - Enables x264 encodec support using media-plugins/gst-plugins-x264
 app-emulation/spice-vdagent:consolekit - Use sys-auth/consolekit to determine the master vdagentd in case of multiple running vdagentds (highly recommended)
 app-emulation/uae:scsi - Enable the uaescsi.device
 app-emulation/vagrant:virtualbox - Use VirtualBox provider.
