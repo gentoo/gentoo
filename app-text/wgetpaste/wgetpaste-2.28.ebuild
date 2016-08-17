@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils
 
@@ -19,6 +19,7 @@ DEPEND=""
 RDEPEND="net-misc/wget"
 
 src_prepare() {
+	default
 	sed -i -e "s:/etc:\"${EPREFIX}\"/etc:g" wgetpaste || die
 }
 
