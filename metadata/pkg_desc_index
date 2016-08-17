@@ -16591,7 +16591,7 @@ sys-apps/ifplugd 0.28-r9: Brings up/down ethernet ports automatically with cable
 sys-apps/input-utils 0.0.1_pre20081014 1.1 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
-sys-apps/inxi 2.2.14 2.2.19: Commandline script to print hardware information for irc and administration.
+sys-apps/inxi 2.2.14 2.2.19 2.3.0_p20160807: Commandline script to print hardware information for irc and administration.
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.14-r1 1.8.16 1.8.17: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 2.8.5 2.9.8 2.9.9: IPMI Management Utilities
