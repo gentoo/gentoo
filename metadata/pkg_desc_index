@@ -14014,7 +14014,7 @@ net-dialup/ppp 2.4.4-r25 2.4.5-r3 2.4.6-r3 2.4.7 2.4.7-r1 2.4.7-r2: Point-to-Poi
 net-dialup/ppp-scripts 0: Common set of scripts for various PPP implementations
 net-dialup/pppconfig 2.3.21: A text menu based utility for configuring ppp
 net-dialup/pptpclient 1.7.2-r3 1.8.0: Linux client for PPTP
-net-dialup/pptpd 1.4.0-r1: Linux Point-to-Point Tunnelling Protocol Server
+net-dialup/pptpd 1.4.0-r1 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-dialup/qtwvdialer 0.4.4_p20091228: Qt4 frontend for wvdial
 net-dialup/radiusclient 0.3.2 0.3.2-r1: A library for writing RADIUS clients accompanied with several client utilities
 net-dialup/radiusclient-ng 0.5.6-r1: RadiusClient NextGeneration - library for RADIUS clients accompanied with several client utilities
