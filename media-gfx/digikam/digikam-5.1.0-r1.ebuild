@@ -10,14 +10,14 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 fi
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_MIN_VERSION="3.0"
-inherit kde5
+inherit kde5 toolchain-funcs
 
 DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="addressbook gphoto2 kipi lensfun marble semantic-desktop mysql scanner video X"
+IUSE="addressbook gphoto2 jpeg2k +kipi +lensfun marble semantic-desktop mysql opengl openmp +panorama scanner video X"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 
@@ -61,8 +61,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtxml)
 	dev-libs/boost[threads]
 	dev-libs/expat
-	>=media-gfx/exiv2-0.24:=
-	media-libs/jasper
+	media-gfx/exiv2:=
 	media-libs/lcms:2
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
@@ -75,8 +74,8 @@ COMMON_DEPEND="
 		$(add_kdeapps_dep akonadi-contacts)
 		$(add_kdeapps_dep kcontacts)
 	)
-	scanner? ( $(add_kdeapps_dep libksane) )
 	gphoto2? ( media-libs/libgphoto2:= )
+	jpeg2k? ( media-libs/jasper )
 	kipi? ( $(add_kdeapps_dep libkipi '' '16.03.80') )
 	lensfun? ( media-libs/lensfun )
 	marble? (
@@ -84,8 +83,14 @@ COMMON_DEPEND="
 		$(add_frameworks_dep kitemmodels)
 		$(add_kdeapps_dep marble)
 	)
-	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	mysql? ( virtual/mysql )
+	opengl? (
+		$(add_qt_dep qtopengl)
+		virtual/opengl
+	)
+	panorama? ( $(add_frameworks_dep threadweaver) )
+	scanner? ( $(add_kdeapps_dep libksane) )
+	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	video? ( $(add_qt_dep qtmultimedia 'widgets') )
 	X? (
 		$(add_qt_dep qtx11extras)
@@ -95,14 +100,33 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
 	sys-devel/gettext
+	panorama? (
+		sys-devel/bison
+		sys-devel/flex
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/kipi-plugins:5
+	panorama? ( media-gfx/hugin )
 	!media-gfx/digikam:4
 "
 
 RESTRICT=test
 # bug 366505
+
+PATCHES=(
+	"${FILESDIR}/${P}-i386-gcc61.patch"
+	"${FILESDIR}/${P}-albums-crashfix.patch"
+	"${FILESDIR}/${P}-memalloc-crash.patch"
+)
+
+# FIXME: Unbundle libraw (libs/rawengine/libraw)
+pkg_pretend() {
+	if use openmp ; then
+		tc-has-openmp || die "Please switch to an openmp compatible compiler"
+	fi
+	kde5_pkg_pretend
+}
 
 src_prepare() {
 	if [[ ${KDE_BUILD_TYPE} != live ]]; then
@@ -133,9 +157,13 @@ src_configure() {
 		-DENABLE_MEDIAPLAYER=$(usex video)
 		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 		$(cmake-utils_use_find_package gphoto2 Gphoto2)
+		$(cmake-utils_use_find_package jpeg2k Jasper)
 		$(cmake-utils_use_find_package kipi KF5Kipi)
 		$(cmake-utils_use_find_package lensfun LensFun)
 		$(cmake-utils_use_find_package marble Marble)
+		$(cmake-utils_use_find_package opengl OpenGL)
+		$(cmake-utils_use_find_package openmp OpenMP)
+		$(cmake-utils_use_find_package panorama KF5ThreadWeaver)
 		$(cmake-utils_use_find_package scanner KF5Sane)
 		$(cmake-utils_use_find_package X X11)
 	)
