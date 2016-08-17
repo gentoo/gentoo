@@ -15720,7 +15720,7 @@ sci-electronics/gsmc 1.1-r2: A GTK program for doing Smith Chart calculations
 sci-electronics/gspeakers 0.11-r2: GTK based loudspeaker enclosure and crossovernetwork designer
 sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.68 3.3.73: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
-sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
+sci-electronics/gwave 20090213-r1 20120229: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.1-r1 4.0.2-r1 4.0.2-r2 4.0.2-r3 4.0.2-r4: Electronic Schematic and PCB design tools.
