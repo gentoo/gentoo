@@ -8846,7 +8846,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.6.2 2.7.0 2.7.1: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.7.1: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
@@ -9262,7 +9262,7 @@ dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.4.1 2.5.0: ruby shadow bindings
-dev-ruby/ruby-shout 2.2.1-r2: A Ruby interface to libshout2
+dev-ruby/ruby-shout 2.2.1-r2 2.2.2: A Ruby interface to libshout2
 dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
 dev-ruby/ruby-termios 1.0.0-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby vte bindings
@@ -9352,7 +9352,7 @@ dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML ta
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.4 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
-dev-ruby/tins 1.6.0 1.8.2 1.9.0 1.10.1 1.10.2 1.11.0: All the stuff that isn't good enough for a real library
+dev-ruby/tins 1.6.0 1.8.2 1.9.0 1.10.1 1.10.2 1.11.0 1.12.0: All the stuff that isn't good enough for a real library
 dev-ruby/tokyocabinet 1.29.1 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
