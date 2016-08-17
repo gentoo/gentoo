@@ -8,8 +8,5 @@
 	<use>
 		<flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
 		<flag name="smartcard">Enable smartcard remoting using <pkg>app-emulation/libcacard</pkg></flag>
-		<flag name="mjpeg">Enables mjpeg encodec support using <pkg>media-plugins/gst-plugins-libav</pkg></flag>
-		<flag name="vpx">Enables vp8 encodec support using <pkg>media-plugins/gst-plugins-vpx</pkg></flag>
-		<flag name="x264">Enables x264 encodec support using <pkg>media-plugins/gst-plugins-x264</pkg></flag>
 	</use>
 </pkgmetadata>
