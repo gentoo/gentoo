@@ -15801,7 +15801,7 @@ sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
-sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
+sci-geosciences/qgis 1.8.0 2.12.1 2.12.2 2.14.5: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.6.1-r2 1.6.3: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1 3.1.1: Routing application based on openstreetmap data
@@ -18990,7 +18990,7 @@ x11-wm/wmii 3.9.2-r4: A dynamic window manager for X11
 x11-wm/xmonad 0.11-r1 0.11-r3 0.11.1 0.12: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12: Third party extensions for xmonad
 x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.10.6 0.10.7 0.11.0-r1: Extensions, widgets and framework library with session support for Xfce
+xfce-base/exo 0.10.6 0.10.7 0.11.1: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.12.1-r2 4.13.0: Unified widget and session management libraries for Xfce
 xfce-base/libxfce4util 4.12.1 4.12.1-r1: A basic utility library for the Xfce desktop environment
