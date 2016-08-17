@@ -464,7 +464,7 @@ app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
 app-cdr/gcdemu 3.0.0 3.0.1: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/gnomebaker 0.6.4-r1: GnomeBaker is a GTK2/Gnome cd burning application
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
-app-cdr/gtkcdlabel 1.12 1.14-r1 1.15: A GUI for cdlabelgen that generates CD labels
+app-cdr/gtkcdlabel 1.14-r1 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
 app-cdr/isomaster 1.3.5 1.3.9-r1 1.3.11 1.3.13: Graphical CD image editor for reading, modifying and writing ISO images
 app-cdr/k3b 2.0.3-r2 2.0.3-r3: The CD/DVD Kreator for KDE
@@ -482,7 +482,7 @@ app-cdr/pburn 3.4.3: A burning tool with GTK+ frontend
 app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM drive
 app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image files
 app-cdr/qpxtool 0.7.2: CD/DVD quality checking utilities
-app-cdr/recorder 1.4.5 1.4.5-r1: A simple GTK+ disc burner
+app-cdr/recorder 1.4.5-r1: A simple GTK+ disc burner
 app-cdr/sync2cd 1.3 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c: Converts MagicISO CD-images to iso
@@ -1882,7 +1882,7 @@ app-misc/qlcplus 4.10.2b 4.10.3 4.10.4: QLC+ - Q Light Controller Plus to contro
 app-misc/ranger 1.7.1 1.7.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r3: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
-app-misc/recoll 1.17.3-r1 1.19.5 1.19.5-r1: A personal full text search package
+app-misc/recoll 1.17.3-r1 1.19.5-r1: A personal full text search package
 app-misc/regex-markup 0.10.0 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/relevation 1.3: a command-line searcher for the Revelation password manager
@@ -4771,7 +4771,7 @@ dev-libs/libpwquality 1.3.0: Library for password quality checking and generatin
 dev-libs/libqtxdg 1.3.0: A Qt implementation of XDG standards
 dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
 dev-libs/librdkafka 0.9.1: Apache Kafka C/C++ client library
-dev-libs/librelp 1.2.7-r1 1.2.9 1.2.10: An easy to use library for the RELP protocol
+dev-libs/librelp 1.2.7-r1 1.2.10 1.2.12: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
 dev-libs/libressl 2.3.7 2.4.2: Free version of the SSL/TLS protocol forked from OpenSSL
@@ -13251,7 +13251,7 @@ media-sound/lame 3.99.5-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
-media-sound/lilycomp 1.0.2-r1: graphical note entry program for use with LilyPond
+media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
 media-sound/lilypond 2.18.2 2.18.2-r1 2.18.2-r2 2.19.42 9999: GNU Music Typesetter
 media-sound/lingot 0.9.0 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
@@ -14088,11 +14088,11 @@ net-dns/valtz 0.7: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.1f_rc1: Arno's iptables firewall script
 net-firewall/arptables 0.0.3.4-r2: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.2 1.4.3: Connection tracking userspace tools
-net-firewall/dshieldpy 3.2-r1: Python script to submit firewall logs to dshield.org
+net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.2 2.3: Command line util for managing firewall rules
 net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1 3.0.1-r1: iptables firewall generator
-net-firewall/firewalld 0.3.13 0.4.2-r1: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.3.13 0.4.3.3: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
@@ -14950,7 +14950,7 @@ net-misc/tightvnc 1.3.10-r2 1.3.10-r3: A great client/server software package al
 net-misc/tinc 1.0.28 1.1_pre14: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
-net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
+net-misc/tn5250 0.17.4 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/tor 0.2.7.6 0.2.8.6 0.2.9.1_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
