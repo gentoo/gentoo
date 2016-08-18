@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils udev user
 
 if [[ ${PV} == 9999* ]]; then
@@ -26,12 +26,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+DOCS="AUTHORS README TODO"
+
 pkg_setup() {
-	DOCS="AUTHORS README TODO"
 	enewgroup plugdev
 }
 
 src_prepare() {
+	default
+
 	# ChangeLog says "RETIRING THIS FILE ..pause..  GIT" (Last entry from start of 2011)
 	rm -f ChangeLog
 
