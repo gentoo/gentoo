@@ -8409,7 +8409,7 @@ dev-qt/qdbus 5.5.1-r1 5.6.1 5.7.0: Interface to Qt applications communicating ov
 dev-qt/qdbusviewer 4.8.6-r1 4.8.7 5.5.1-r1 5.6.1 5.7.0: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.5.1 5.6.1 5.7.0: Qt documentation generator
 dev-qt/qt-creator 3.6.1 4.0.3 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.5.1_p0 5.6.1_p0: Documentation for Qt5, for use with Qt Creator and other tools
+dev-qt/qt-docs 5.5.1_p0 5.6.1_p1 5.7.0_p1: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
 dev-qt/qt3d 5.7.0: The 3D module for the Qt5 framework
@@ -17842,7 +17842,7 @@ www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on We
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.41 39.0.2256.43 39.0.2256.48: A fast and secure web browser
-www-client/opera-beta 40.0.2308.3 40.0.2308.11: A fast and secure web browser
+www-client/opera-beta 40.0.2308.3 40.0.2308.11 40.0.2308.15: A fast and secure web browser
 www-client/opera-developer 41.0.2315.0 41.0.2323.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
