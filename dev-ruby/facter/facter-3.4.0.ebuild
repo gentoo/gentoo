@@ -22,6 +22,7 @@ CDEPEND="
 	>=dev-libs/boost-1.54[nls]
 	>=dev-libs/leatherman-0.4.2
 	>=dev-cpp/yaml-cpp-0.5.1
+	dev-cpp/cpp-hocon
 	dev-libs/openssl:*
 	sys-apps/util-linux
 	app-emulation/virt-what

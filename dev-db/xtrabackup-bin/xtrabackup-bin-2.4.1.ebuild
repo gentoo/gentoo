@@ -25,7 +25,7 @@ IUSE=""
 # NOTE: dev-perl/DBD-mysql still necessary, now for bin/xtrabackup?
 DEPEND=""
 RDEPEND="dev-libs/libaio
-	|| ( dev-libs/libgcrypt:0/11 dev-libs/libgcrypt:11/11 )
+	dev-libs/libgcrypt:11/11
 	dev-libs/libgpg-error
 	dev-perl/DBD-mysql
 	sys-libs/zlib"

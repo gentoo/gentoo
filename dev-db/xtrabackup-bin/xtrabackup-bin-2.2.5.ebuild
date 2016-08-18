@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,12 +24,12 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="dev-libs/libaio
-	|| ( dev-libs/libgcrypt:0/11 dev-libs/libgcrypt:11/11 )
+	dev-libs/libgcrypt:11/11
 	dev-libs/libgpg-error
 	dev-perl/DBD-mysql
 	sys-libs/zlib"
