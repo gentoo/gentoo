@@ -8,5 +8,5 @@ RDEPEND=dev-lang/perl sys-apps/diffutils
 SLOT=0
 SRC_URI=http://www.colordiff.org/colordiff-1.0.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=prefix	e41dbc7154fb2749724e2adedfdf71df
+_eclasses_=prefix	99dcca42e6528d8fe3c214bf5731aaf2
 _md5_=57170b763f7db09e7a43b97bcb38c246

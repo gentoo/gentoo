@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=sys-devel/gcc-config
 SLOT=0
 _eclass_exported_funcs=src_install:-
-_eclasses_=prefix	e41dbc7154fb2749724e2adedfdf71df
+_eclasses_=prefix	99dcca42e6528d8fe3c214bf5731aaf2
 _md5_=b486318589a9a166d78cb6d5f55025f0
