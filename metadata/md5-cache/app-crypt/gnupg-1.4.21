@@ -4,11 +4,11 @@ DESCRIPTION=The GNU Privacy Guard, a GPL pgp replacement
 EAPI=5
 HOMEPAGE=http://www.gnupg.org/
 IUSE=bzip2 curl ldap mta nls readline selinux smartcard static usb zlib
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2
 RDEPEND=!static? ( ldap? ( net-nds/openldap ) bzip2? ( app-arch/bzip2 ) zlib? ( sys-libs/zlib ) curl? ( net-misc/curl ) mta? ( virtual/mta ) readline? ( sys-libs/readline:0= ) smartcard? ( =virtual/libusb-0* ) usb? ( =virtual/libusb-0* ) ) selinux? ( sec-policy/selinux-gpg ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-1.4.21.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=515818e994fb633bf44e28df8b4aff88
+_md5_=05a90cc6aeee7e329dc50d20971046b0
