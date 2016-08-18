@@ -19,14 +19,26 @@ IUSE="gtk3 +autoclose +automark +commander ctags debugger +defineformat devhelp 
 REQUIRED_USE="gtk3? ( !debugger !devhelp !multiterm !python !scope )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND=">=dev-util/geany-1.26[!gtk3?]
+GTK_COMMON_DEPEND="gtk3? ( x11-libs/gtk+:3 )
+		!gtk3? ( x11-libs/gtk+:2 )"
+
+WEBKIT_COMMON_DEPEND="gtk3? (
+			net-libs/webkit-gtk:3
+			x11-libs/gtk+:3
+		)
+		!gtk3? (
+			net-libs/webkit-gtk:2
+			x11-libs/gtk+:2
+		)"
+
+COMMON_DEPEND=">=dev-util/geany-1.26[gtk3?]
 	dev-libs/glib:2
 	dev-libs/libxml2:2
-	autoclose? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
-	commander? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
+	autoclose? ( ${GTK_COMMON_DEPEND} )
+	commander? ( ${GTK_COMMON_DEPEND} )
 	ctags? ( dev-util/ctags )
 	debugger? ( x11-libs/vte:0 )
-	defineformat? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
+	defineformat? ( ${GTK_COMMON_DEPEND} )
 	devhelp? (
 		gnome-base/gconf:2
 		net-libs/webkit-gtk:2
@@ -37,24 +49,13 @@ COMMON_DEPEND=">=dev-util/geany-1.26[!gtk3?]
 	git? ( dev-libs/libgit2 )
 	gpg? ( app-crypt/gpgme )
 	gtkspell? (
-		gtk3? (
-			app-text/gtkspell:3
-			)
-		!gtk3? (
-			app-text/gtkspell:2
-			)
+		gtk3? ( app-text/gtkspell:3 )
+		!gtk3? ( app-text/gtkspell:2 )
 		)
 	lua? ( =dev-lang/lua-5.1*:= )
 	markdown? (
 		app-text/discount
-		gtk3? (
-			net-libs/webkit-gtk:3
-			x11-libs/gtk+:3
-			)
-		!gtk3? (
-			net-libs/webkit-gtk:2
-			x11-libs/gtk+:2
-			)
+		${WEBKIT_COMMON_DEPEND}
 		)
 	multiterm? (
 		$(vala_depend)
@@ -68,14 +69,7 @@ COMMON_DEPEND=">=dev-util/geany-1.26[!gtk3?]
 	scope? ( x11-libs/vte:0 )
 	soup? ( net-libs/libsoup )
 	webkit? (
-		gtk3? (
-			net-libs/webkit-gtk:3
-			x11-libs/gtk+:3
-			)
-		!gtk3? (
-			net-libs/webkit-gtk:2
-			x11-libs/gtk+:2
-			)
+		${WEBKIT_COMMON_DEPEND}
 		x11-libs/gdk-pixbuf:2
 		)"
 RDEPEND="${COMMON_DEPEND}
