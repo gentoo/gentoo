@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,15 +24,19 @@ DOCFILES="INSTALL README"
 
 need_apache2
 
+PATCHES=(
+	"${FILESDIR}"/${P}-rcopshack.patch
+	"${FILESDIR}"/${P}-fixes.patch
+	"${FILESDIR}"/${P}-s4u2proxy.patch
+	"${FILESDIR}"/${P}-httpd24.patch
+	"${FILESDIR}"/${P}-delegation.patch
+	"${FILESDIR}"/${P}-cachedir.patch
+	"${FILESDIR}"/${P}-longuser.patch
+	"${FILESDIR}"/${P}-handle-continue.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-rcopshack.patch
-	epatch "${FILESDIR}"/${P}-fixes.patch
-	epatch "${FILESDIR}"/${P}-s4u2proxy-r3.patch
-	epatch "${FILESDIR}"/${P}-httpd24.patch
-	epatch "${FILESDIR}"/${P}-delegation.patch
-	epatch "${FILESDIR}"/${P}-cachedir.patch
-	epatch "${FILESDIR}"/${P}-longuser.patch
-	epatch "${FILESDIR}"/${P}-handle-continue.patch
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {
