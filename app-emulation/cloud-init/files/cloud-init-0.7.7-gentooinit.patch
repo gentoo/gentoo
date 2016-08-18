@@ -1,0 +1,34 @@
+diff --git a/setup.py b/setup.py
+index 4abbb67..4885cb5 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/env python
+ # vi: ts=4 expandtab
+ #
+ #    Distutils magic for ec2-init
+@@ -74,6 +75,7 @@ INITSYS_FILES = {
+     'sysvinit': [f for f in glob('sysvinit/redhat/*') if is_f(f)],
+     'sysvinit_freebsd': [f for f in glob('sysvinit/freebsd/*') if is_f(f)],
+     'sysvinit_deb': [f for f in glob('sysvinit/debian/*') if is_f(f)],
++    'sysvinit_openrc': [f for f in glob('sysvinit/gentoo/*') if is_f(f)],
+     'systemd': [f for f in (glob('systemd/*.service') +
+                             glob('systemd/*.target')) if is_f(f)],
+     'systemd.generators': [f for f in glob('systemd/*-generator') if is_f(f)],
+@@ -83,6 +85,7 @@ INITSYS_ROOTS = {
+     'sysvinit': '/etc/rc.d/init.d',
+     'sysvinit_freebsd': '/usr/local/etc/rc.d',
+     'sysvinit_deb': '/etc/init.d',
++    'sysvinit_openrc': '/etc/init.d',
+     'systemd': pkg_config_read('systemd', 'systemdsystemunitdir'),
+     'systemd.generators': pkg_config_read('systemd',
+                                           'systemdsystemgeneratordir'),
+@@ -203,7 +206,7 @@ setuptools.setup(
+     author='Scott Moser',
+     author_email='scott.moser@canonical.com',
+     url='http://launchpad.net/cloud-init/',
+-    packages=setuptools.find_packages(exclude=['tests']),
++    packages=setuptools.find_packages(exclude=['tests.*', 'tests']),
+     scripts=['tools/cloud-init-per'],
+     license='GPLv3',
+     data_files=data_files,
