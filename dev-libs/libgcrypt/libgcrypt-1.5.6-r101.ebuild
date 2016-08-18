@@ -29,8 +29,7 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-uscore.patch
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
-	"${FILESDIR}"/${P}-clang-arm.patch
-	"${FILESDIR}"/${P}-CVE-2015-7511.patch
+	"${FILESDIR}"/${PN}-1.5.4-clang-arm.patch
 )
 
 src_configure() {
