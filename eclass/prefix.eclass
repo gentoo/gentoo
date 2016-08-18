@@ -92,7 +92,7 @@ hprefixify() {
 		if [[ -e ${x} ]] ; then
 			ebegin "  ${x##*/}"
 			sed -r \
-				-e "${PREFIX_LINE_MATCH}s,([^[:alnum:]}\)\.])/(usr|lib(|[onx]?32|n?64)|etc|bin|sbin|var|opt),\1${EPREFIX}/\2,g" \
+				-e "${PREFIX_LINE_MATCH}s,([^[:alnum:]}\)\.])/(usr|lib(|[onx]?32|n?64)|etc|bin|sbin|var|opt|run),\1${EPREFIX}/\2,g" \
 				-e "${PREFIX_EXTRA_REGEX}" \
 				-i "${x}"
 			eend $? || die "failed to prefixify ${x}"
