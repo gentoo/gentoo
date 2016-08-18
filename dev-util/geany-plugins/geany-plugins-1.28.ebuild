@@ -31,7 +31,7 @@ WEBKIT_COMMON_DEPEND="gtk3? (
 			x11-libs/gtk+:2
 		)"
 
-COMMON_DEPEND=">=dev-util/geany-1.26[gtk3?]
+COMMON_DEPEND=">=dev-util/geany-1.26[gtk3=]
 	dev-libs/glib:2
 	dev-libs/libxml2:2
 	autoclose? ( ${GTK_COMMON_DEPEND} )
