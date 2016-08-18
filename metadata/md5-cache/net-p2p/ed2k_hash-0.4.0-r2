@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Tool for generating eDonkey2000 links
+EAPI=6
+HOMEPAGE=http://ed2k-tools.sourceforge.net/ed2k_hash.shtml
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RESTRICT=mirror
+SLOT=0
+SRC_URI=mirror://sourceforge/ed2k-tools/ed2k_hash-0.4.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=ce7aa52c83b3907c6867fa852e608741
