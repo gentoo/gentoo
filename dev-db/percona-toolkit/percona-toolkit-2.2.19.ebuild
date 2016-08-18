@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils perl-app perl-module toolchain-funcs
+inherit perl-module
 
-DESCRIPTION="essential command-line utilities for MySQL"
-HOMEPAGE="http://www.percona.com/software/percona-toolkit/"
-SRC_URI="http://www.percona.com/downloads/${PN}/${PV}/tarball/${P}.tar.gz"
+DESCRIPTION="Advanced command-line tools to perform a variety of MySQL and system tasks"
+HOMEPAGE="https://www.percona.com/software/mysql-tools/percona-toolkit"
+SRC_URI="https://www.percona.com/downloads/${PN}/${PV}/tarball/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 Artistic )"
 SLOT="0"
@@ -36,13 +36,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/perl-ExtUtils-MakeMaker"
 
 src_prepare() {
-	# bug 501904 - CVE-2014-2029
+	# Bug #501904 - CVE-2014-2029
 	# sed -i -e '/^=item --\[no\]version-check/,/^default: yes/{/^default: yes/d}' bin/*
-	epatch "${FILESDIR}/${PN}-2.2.7-no-versioncheck.patch"
-}
+	eapply -p2 "${FILESDIR}"/${PN}-2.2.7-no-versioncheck.patch
+	eapply -p1 "${FILESDIR}"/${PN}-2.2.19-fix-package-name.patch
 
-# Percona Toolkit does NOT contain the UDF code for Murmur/FNV any more.
-src_install() {
-	perl-module_src_install
-	dodoc docs/percona-toolkit.pod
+	default
 }
