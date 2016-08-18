@@ -17654,7 +17654,7 @@ www-apache/mod_access_dnsbl 0.02: Specify access controls based on DNSBL zones
 www-apache/mod_anonymize_ip 0.3.1: mod_anonymize_ip is a simple module for anonymizing the client IP address
 www-apache/mod_auth_cookie_mysql2 1.0: An Apache2 backend authentication module that uses cookies and MySQL
 www-apache/mod_auth_imap2 2.2.0: An Apache2 module to provide authentication via an IMAP Mail server
-www-apache/mod_auth_kerb 5.3 5.4-r2: An Apache authentication module using Kerberos
+www-apache/mod_auth_kerb 5.4-r2: An Apache authentication module using Kerberos
 www-apache/mod_auth_mysql 3.0.0-r3: Basic authentication for Apache using a MySQL database
 www-apache/mod_auth_nufw 2.2.2: A NuFW authentication module for Apache
 www-apache/mod_auth_radius 1.5.8: Radius authentication for Apache
