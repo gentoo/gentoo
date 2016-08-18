@@ -9,11 +9,10 @@ CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
 KDE_HANDBOOK="optional"
 OPENGL_REQUIRED="optional"
-WEBKIT_REQUIRED="always"
+WEBKIT_REQUIRED="optional"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
-EGIT_BRANCH="KDE/4.14"
-APPS_VERSION="16.04.2" # Don't forget to bump this
+APPS_VERSION="16.08.0" # Don't forget to bump this
 
 DESCRIPTION="KDE libraries needed by all KDE programs"
 [[ ${KDE_BUILD_TYPE} != live ]] && \
@@ -37,7 +36,7 @@ COMMONDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
 	>=dev-libs/libattica-0.4.2
-	>=dev-libs/libdbusmenu-qt-0.3.2[qt4(+)]
+	dev-libs/libdbusmenu-qt[qt4]
 	dev-libs/libpcre[unicode]
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -48,7 +47,7 @@ COMMONDEPEND="
 	media-libs/phonon[qt4]
 	sys-libs/zlib
 	virtual/jpeg:0
-	>=x11-misc/shared-mime-info-0.60
+	x11-misc/shared-mime-info
 	acl? ( virtual/acl )
 	!aqua? (
 		x11-libs/libICE
@@ -72,7 +71,7 @@ COMMONDEPEND="
 		)
 	)
 	bzip2? ( app-arch/bzip2 )
-	crypt? ( app-crypt/qca:2[qt4(+)] )
+	crypt? ( app-crypt/qca:2[qt4] )
 	fam? ( virtual/fam )
 	jpeg2k? ( media-libs/jasper )
 	kerberos? ( virtual/krb5 )
@@ -80,7 +79,7 @@ COMMONDEPEND="
 		media-libs/openexr:=
 		media-libs/ilmbase:=
 	)
-	policykit? ( >=sys-auth/polkit-qt-0.103.0[qt4(+)] )
+	policykit? ( sys-auth/polkit-qt[qt4] )
 	spell? ( app-text/enchant )
 	ssl? (
 		libressl? ( dev-libs/libressl )
@@ -95,8 +94,6 @@ DEPEND="${COMMONDEPEND}
 "
 RDEPEND="${COMMONDEPEND}
 	!dev-qt/qtphonon
-	!<=kde-base/plasma-workspace-4.7.1:4
-	!<=kde-base/kcontrol-4.4.50:4
 	>=app-crypt/gnupg-2.0.11
 	app-misc/ca-certificates
 	$(add_kdebase_dep kde-env '' 4.14.3)
@@ -105,7 +102,7 @@ RDEPEND="${COMMONDEPEND}
 		udisks? ( sys-fs/udisks:2 )
 		x11-apps/iceauth
 		x11-apps/rgb
-		>=x11-misc/xdg-utils-1.0.2-r3
+		x11-misc/xdg-utils
 		upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )
 	)
 	udev? ( app-misc/media-player-info )
@@ -135,10 +132,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
 	"${FILESDIR}/${PN}-4.14.20-strigi-optional.patch"
+	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
+	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
 		[[ $(gcc-major-version) -lt 4 ]] || \
 				( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -le 3 ]] ) \
 			&& die "Sorry, but gcc-4.3 and earlier won't work for KDE SC 4.6 (see bug #354837)."
@@ -187,10 +185,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_HSPELL=OFF
 		-DWITH_ASPELL=OFF
-		-DWITH_DNSSD=OFF
 		-DKDE_DEFAULT_HOME=.kde4
 		-DKAUTH_BACKEND=POLKITQT-1
-		-DBUILD_libkactivities=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_SharedDesktopOntologies=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_Strigi=ON
@@ -216,7 +212,10 @@ src_configure() {
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
 		-DWITH_Avahi=$(usex zeroconf)
+		-DWITH_KDEWEBKIT=$(usex webkit)
 	)
+
+	use zeroconf || mycmakeargs+=( -DWITH_DNSSD=OFF )
 
 	kde4-base_src_configure
 }

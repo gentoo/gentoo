@@ -135,6 +135,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
 	"${FILESDIR}/${PN}-4.14.20-strigi-optional.patch"
 	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
+	"${FILESDIR}/${PN}-4.14.22-gcc6-visibility.patch"
 )
 
 pkg_pretend() {
