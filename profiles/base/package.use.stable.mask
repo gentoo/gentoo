@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@
 # flag until a source based version that doesn't depend
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
-dev-db/mysql sst-xtrabackup
+dev-db/mariadb-galera sst-xtrabackup
 
 # William Hubbs <williamh@gentoo.org (13 Apr 2016)
 # Needs gcc-5 which is currently unstable
