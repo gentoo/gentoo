@@ -1311,6 +1311,7 @@ dev-db/mariadb:galera - Enables galera replication
 dev-db/mariadb:innodb-lz4 - Enables lz4 compression methods for InnoDB/XtraDB
 dev-db/mariadb:innodb-lzo - Enables lzo compression methods for InnoDB/XtraDB
 dev-db/mariadb:innodb-snappy - Enables snappy compression methods for InnoDB/XtraDB using app-arch/snappy
+dev-db/mariadb:jdbc - Enable the CONNECT engine to access foreign databases via JDBC
 dev-db/mariadb:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/mariadb:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/mariadb:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
