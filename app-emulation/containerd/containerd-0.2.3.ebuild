@@ -8,7 +8,8 @@ EGO_PN="github.com/docker/${PN}"
 if [[ ${PV} == *9999 ]]; then
 	inherit golang-vcs
 else
-	EGIT_COMMIT=14e7949
+	MY_PV="${PV/_/-}"
+	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64"
 	inherit golang-vcs-snapshot
@@ -26,10 +27,6 @@ RDEPEND=">=app-emulation/runc-1.0.0_rc1
 	seccomp? ( sys-libs/libseccomp )"
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
-
-src_prepare() {
-	eapply_user
-}
 
 src_compile() {
 	local options=( $(usex seccomp "seccomp") )
