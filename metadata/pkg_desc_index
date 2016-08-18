@@ -2510,7 +2510,7 @@ app-vim/ant_menu 0.5.7.1: vim plugin: Java ant build system integration
 app-vim/autoalign 14: vim plugin: automatically align bib, c, c++, tex and vim code
 app-vim/automatictexplugin 12.5-r1: vim plugin: a comprehensive plugin for editing LaTeX files
 app-vim/bash-support 3.12 4.1 4.2.1: vim plugin: Bash-IDE - Write and run bash scripts using menus and hotkeys
-app-vim/bnf-syntax 1.2-r1: vim plugin: BNF file syntax highlighting
+app-vim/bnf-syntax 1.2-r1 1.2-r2: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
 app-vim/bufexplorer 7.4.6 7.4.9-r1: vim plugin: easily browse vim buffers
@@ -2533,7 +2533,7 @@ app-vim/csv 0.31-r1: vim plugin: display and alter csv files
 app-vim/ctrlp 1.79: vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex support
 app-vim/ctx 1.17-r1: vim plugin: display current scope context in a C file
 app-vim/curcmdmode 1.0: vim plugin: library for extending vim's mode() function
-app-vim/cvsmenu 1.147 1.147-r1: vim plugin: CVS(NT) integration script
+app-vim/cvsmenu 1.147-r1: vim plugin: CVS(NT) integration script
 app-vim/dbext 22.0 23.0: vim plugin: easy access to databases
 app-vim/detectindent 1.0 1.0_p20150908: vim plugin: automatically detect file indent settings
 app-vim/dhcpd-syntax 20030825: vim plugin: syntax highlighting for dhcpd.conf
