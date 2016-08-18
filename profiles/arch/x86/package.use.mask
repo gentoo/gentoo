@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
 # Patrice Clement <monsieurp@gentoo.org> (05 Jun 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-lua/busted lacks x86 keyword. See bug #581210.

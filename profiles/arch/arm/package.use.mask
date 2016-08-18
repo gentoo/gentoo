@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
 # David Seifert <soap@gentoo.org> (31 Jul 2016)
 # media-gfx/graphicsmagick is not keyworded on arm, users will need
 # to enable imagemagick flag and disable graphicsmagick use flag
