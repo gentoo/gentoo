@@ -11,8 +11,7 @@ MY_PF="${MY_PN}-${MY_PVR}"
 
 inherit eutils
 
-DESCRIPTION="MySQL hot backup software that performs non-blocking backups for
-InnoDB and XtraDB databases"
+DESCRIPTION="MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases"
 HOMEPAGE="http://www.percona.com/software/percona-xtrabackup"
 SRC_URI="
 	amd64? (
