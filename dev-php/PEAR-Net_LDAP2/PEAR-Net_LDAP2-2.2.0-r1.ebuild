@@ -5,7 +5,7 @@
 EAPI=6
 
 MY_PN="${PN/PEAR-/}"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 DESCRIPTION="OO interface for searching and manipulating LDAP-entries"
 HOMEPAGE="https://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_PN}-${PV}.tgz"
