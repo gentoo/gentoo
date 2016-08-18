@@ -8,7 +8,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="Merge this to pull in all kdebase-runtime-derived packages"
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="+oldwallet pam"
+IUSE="+oldwallet pam +webkit"
 
 RDEPEND="
 	$(add_kdeapps_dep kcmshell '' 16.04.3)
@@ -35,11 +35,11 @@ RDEPEND="
 	$(add_kdeapps_dep ktraderclient '' 16.04.3)
 	$(add_kdeapps_dep kurifilter-plugins '' 16.04.3)
 	$(add_kdeapps_dep phonon-kde '' 16.04.3)
-	$(add_kdeapps_dep plasma-runtime '' 16.04.3)
 	$(add_kdeapps_dep renamedlg-plugins '' 16.04.3)
 	$(add_kdeapps_dep solid-runtime '-bluetooth' 16.04.3)
 	oldwallet? (
 		$(add_kdeapps_dep kwalletd '' 16.04.3)
 		pam? ( || ( $(add_plasma_dep kwallet-pam 'oldwallet') kde-apps/kwalletd-pam:4 ) )
 	)
+	webkit? ( $(add_kdeapps_dep plasma-runtime '' 16.04.3) )
 "
