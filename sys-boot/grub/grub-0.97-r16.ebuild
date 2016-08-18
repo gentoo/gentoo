@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,6 +37,7 @@ LIB_DEPEND="ncurses? ( >=sys-libs/ncurses-5.9-r3:0[static-libs(+),abi_x86_32(-)]
 RDEPEND="!static? ( ${LIB_DEPEND//[static-libs(+),/=[} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
+RDEPEND+=" !sys-boot/grub:2[-multislot]"
 
 pkg_setup() {
 	case $(tc-arch) in
