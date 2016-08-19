@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-
 inherit autotools eutils fdo-mime flag-o-matic subversion
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
@@ -26,16 +25,16 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXt
 	cairo? ( x11-libs/cairo )
-	opengl? ( virtual/opengl )
+	opengl? ( virtual/glu virtual/opengl )
 	xinerama? ( x11-libs/libXinerama )
-	xft? ( x11-libs/libXft )"
-DEPEND="${RDEPEND}
+	xft? ( x11-libs/libXft )
+"
+DEPEND="
+	${RDEPEND}
 	x11-proto/xextproto
 	doc? ( app-doc/doxygen )
-	xinerama? ( x11-proto/xineramaproto )"
-
-FLTK_INCDIR=${EPREFIX}/usr/include/fltk
-FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
+	xinerama? ( x11-proto/xineramaproto )
+"
 
 src_prepare() {
 	rm -rf zlib jpeg png || die
@@ -75,22 +74,25 @@ src_prepare() {
 }
 
 src_configure() {
+	FLTK_INCDIR=${EPREFIX}/usr/include/fltk
+	FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
+
 	econf \
-		--includedir=${FLTK_INCDIR}\
-		--libdir=${FLTK_LIBDIR} \
+		$(use_enable cairo) \
+		$(use_enable debug) \
+		$(use_enable opengl gl) \
+		$(use_enable threads) \
+		$(use_enable xft) \
+		$(use_enable xinerama) \
+		--disable-localjpeg \
+		--disable-localpng \
+		--disable-localzlib \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--enable-largefile \
 		--enable-shared \
 		--enable-xdbe \
-		--disable-localjpeg \
-		--disable-localpng \
-		--disable-localzlib \
-		$(use_enable debug) \
-		$(use_enable cairo) \
-		$(use_enable opengl gl) \
-		$(use_enable threads) \
-		$(use_enable xft) \
-		$(use_enable xinerama)
+		--includedir=${FLTK_INCDIR} \
+		--libdir=${FLTK_LIBDIR}
 }
 
 src_compile() {
