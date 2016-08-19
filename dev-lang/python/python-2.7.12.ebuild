@@ -63,7 +63,7 @@ RDEPEND="app-arch/bzip2:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
-	!sys-devel/gcc[libffi]"
+	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )
 	doc? ( dev-python/python-docs:${SLOT} )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
