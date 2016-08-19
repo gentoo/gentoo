@@ -2597,7 +2597,7 @@ app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax hi
 app-vim/phpdocs 0.26: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
 app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
-app-vim/pushpop 4.0: vim plugin: pushd / popd from the vim commandline
+app-vim/pushpop 4.0 4.0-r1: vim plugin: pushd / popd from the vim commandline
 app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/pydiction 1.2.3: vim plugin: Tab-complete your Python code
 app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
