@@ -1,12 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+inherit flag-o-matic
 
-inherit base eutils flag-o-matic
-
-DESCRIPTION="Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
+DESCRIPTION="Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
 HOMEPAGE="http://cuecue.berlios.de/"
 #SRC_URI="mirror://berlios/cuecue/${P}.tar.gz"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
@@ -18,32 +17,37 @@ KEYWORDS="~amd64 ~x86"
 IUSE="flac mp3 +vorbis"
 REQUIRED_USE="|| ( flac mp3 vorbis )"
 
-DEPEND="mp3? ( media-libs/libmad )
+DEPEND="
 	flac? ( media-libs/flac )
-	vorbis? ( media-libs/libvorbis media-libs/libogg )"
+	mp3? ( media-libs/libmad )
+	vorbis? ( media-libs/libvorbis media-libs/libogg )
+"
 
-PATCHES=( "${FILESDIR}/${P}-flac113.diff" ) # bug 157706
+PATCHES=(
+	"${FILESDIR}"/${P}-flac113.diff # bug 157706
+	"${FILESDIR}"/${P}-namespace.patch
+	"${FILESDIR}"/${P}-unused.patch
+)
 DOCS="CHANGES README TODO"
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
+		$(use_enable flac) \
 		$(use_enable mp3) \
 		$(use_enable vorbis ogg) \
+		--disable-dependency-tracking \
+		--disable-libFLACtest \
 		--disable-oggtest \
-		--disable-vorbistest \
-		$(use_enable flac) \
-		--disable-libFLACtest
+		--disable-vorbistest
 }
 
 src_compile() {
-	# fixes portage QA notice
-	append-flags "-ansi -pedantic"
 	emake CFLAGS="${CFLAGS}"
 }
 
-src_install () {
+src_install() {
 	default
+
 	insinto /usr/include
-	doins src/libcuecue/cuecue.h || die "doins failed."
+	doins src/libcuecue/cuecue.h
 }

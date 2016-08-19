@@ -1,0 +1,12 @@
+--- a/src/libcuecue/cuecue.c
++++ b/src/libcuecue/cuecue.c
+@@ -24,7 +24,9 @@
+ 
+ 
+ #define LINE_MAX 1024
++#ifndef FILENAME_MAX
+ #define FILENAME_MAX 1024
++#endif
+ 
+ FUNC_DECODER decoders[]=
+ {
