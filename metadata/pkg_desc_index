@@ -8901,7 +8901,7 @@ dev-ruby/daemons 1.2.3 1.2.4: Wrap existing ruby scripts to be run as a daemon
 dev-ruby/dalli 2.7.4 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.5.1 1.5.2 1.5.3: Strategies for cleaning databases
 dev-ruby/date_validator 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
-dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4 3.0.5: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
+dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4 3.0.5 3.0.6: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
 dev-ruby/debug_inspector 0.0.2: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/debugger-linecache 1.2.0: A module to read and cache file information of a Ruby program
 dev-ruby/deep_merge 1.0.1 1.1.1: A simple set of utility functions for Hash
@@ -8990,7 +8990,7 @@ dev-ruby/http-form_data 1.0.1 1.0.1-r1: Utility-belt to build form data request 
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.7 0.14.0: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
-dev-ruby/httpclient 2.6.0.1 2.7.1 2.7.2 2.8.0 2.8.1: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+dev-ruby/httpclient 2.6.0.1 2.7.1 2.7.2 2.8.0 2.8.1 2.8.2.2: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
@@ -9009,7 +9009,7 @@ dev-ruby/json 1.8.2-r1 1.8.3 2.0.1 2.0.2: A JSON implementation as a Ruby extens
 dev-ruby/jwt 1.5.3 1.5.4: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.2: ruby interface to kissfft
-dev-ruby/kramdown 1.4.2 1.10.0 1.11.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 1.4.2 1.10.0 1.11.1 1.12.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
