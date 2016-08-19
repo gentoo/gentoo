@@ -9,5 +9,5 @@ KMNAME="kde-runtime"
 inherit kde4-meta
 
 DESCRIPTION="Dialog box for setting preferences for debug output"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"

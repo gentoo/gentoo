@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KWallet extension for signond"
 HOMEPAGE="https://01.org/gsso/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="LGPL-2.1"
 
 DEPEND="

@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Visualise disk usage with interactive map of concentric, segmented rings"
 HOMEPAGE="https://utils.kde.org/projects/filelight"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

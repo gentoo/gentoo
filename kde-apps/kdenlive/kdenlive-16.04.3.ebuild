@@ -11,7 +11,7 @@ DESCRIPTION="Non-linear video editing suite by KDE"
 HOMEPAGE="https://www.kdenlive.org/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gles2 v4l semantic-desktop"
 
 RDEPEND="

@@ -11,7 +11,7 @@ DESCRIPTION="Qt/C++ wrapper around LibFace to perform face recognition and detec
 HOMEPAGE="https://projects.kde.org/projects/kde/kdegraphics/libs/libkface"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

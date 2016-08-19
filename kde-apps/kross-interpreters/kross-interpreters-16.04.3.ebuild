@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 kde5
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
