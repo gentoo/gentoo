@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -101,9 +101,9 @@ src_install() {
 		newconfd "${FILESDIR}"/ip6tables-1.4.13.confd ip6tables
 	fi
 
-	systemd_dounit "${FILESDIR}"/systemd/iptables{,-{re,}store}.service
+	systemd_dounit "${FILESDIR}"/systemd/iptables-{re,}store.service
 	if use ipv6 ; then
-		systemd_dounit "${FILESDIR}"/systemd/ip6tables{,-{re,}store}.service
+		systemd_dounit "${FILESDIR}"/systemd/ip6tables-{re,}store.service
 	fi
 
 	# Move important libs to /lib #332175
