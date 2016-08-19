@@ -1,6 +1,22 @@
 --- ltmain.sh
 +++ ltmain.sh
-@@ -8367,7 +8367,7 @@
+@@ -7955,13 +7955,13 @@
+
+	# Find the relevant object directory and library name.
+	if test yes = "$installed"; then
+-	  if test ! -f "$lt_sysroot$libdir/$linklib" && test -f "$abs_ladir/$linklib"; then
++	  if test ! -f "${lt_sysroot:-${SYSROOT}}$libdir/$linklib" && test -f "$abs_ladir/$linklib"; then
+	    func_warning "library '$lib' was moved."
+	    dir=$ladir
+	    absdir=$abs_ladir
+	    libdir=$abs_ladir
+	  else
+-	    dir=$lt_sysroot$libdir
++	    dir=${lt_sysroot:-${SYSROOT}}$libdir
+	    absdir=$lt_sysroot$libdir
+	  fi
+	  test yes = "$hardcode_automatic" && avoidtemprpath=yes
+@@ -8344,7 +8344,7 @@
  	       test no = "$hardcode_direct_absolute"; then
  	      add=$libdir/$linklib
  	    elif test yes = "$hardcode_minus_L"; then
@@ -9,7 +25,7 @@
  	      add=-l$name
  	    elif test yes = "$hardcode_shlibpath_var"; then
  	      case :$finalize_shlibpath: in
-@@ -8384,7 +8384,7 @@
+@@ -8361,7 +8361,7 @@
  	      fi
  	    else
  	      # We cannot seem to hardcode it, guess we'll fake it.
@@ -18,4 +34,3 @@
  	      # Try looking first in the location we're being installed to.
  	      if test -n "$inst_prefix_dir"; then
  		case $libdir in
-
