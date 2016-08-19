@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
+# gnutls is broken for years
+>=net-libs/gsoap-2.8.0 gnutls
+
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Mask jdbc as most arches don't support java
 dev-db/mariadb jdbc
