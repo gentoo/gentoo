@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multilib versionator python-single-r1 cmake-utils
+inherit eutils cmake-utils multilib python-single-r1 toolchain-funcs versionator
 
 MAIN_PV=$(get_major_version)
 MAJOR_PV=$(get_version_component_range 1-2)
@@ -19,7 +19,7 @@ RESTRICT="mirror"
 LICENSE="paraview GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol plugins python +qt5 sqlite tcl test tk"
+IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp plugins python +qt5 sqlite tcl test tk"
 RESTRICT="test"
 
 REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
@@ -40,7 +40,6 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
 	virtual/opengl
-	>=x11-libs/gl2ps-1.3.8
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXmu
@@ -85,6 +84,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
+		eerror "For USE=openmp a gcc with openmp support is required"
+		eerror
+		return 1
+	fi
+}
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	PVLIBDIR=$(get_libdir)/${PN}-${MAJOR_PV}
@@ -94,8 +101,7 @@ src_prepare() {
 	# see patch headers for description
 	epatch "${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch \
 		"${FILESDIR}"/${PN}-4.3.1-fix-development-install.patch \
-		"${FILESDIR}"/${PN}-4.4.0-removesqlite.patch \
-		"${FILESDIR}"/${P}-only-require-cmake-3.3.patch
+		"${FILESDIR}"/${PN}-4.4.0-removesqlite.patch
 
 	# lib64 fixes
 	sed -i \
@@ -138,9 +144,18 @@ src_configure() {
 		-DOPENGL_gl_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGL.so
 		-DOPENGL_glu_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libGLU.so
 		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_COLOR_MAKEFILE=TRUE
+		-DCMAKE_USE_PTHREADS=ON
+		-DCMAKE_VERBOSE_MAKEFILE=ON
+		-DPARAVIEW_USE_SYSTEM_MPI4PY=ON
+		-DPROTOC_LOCATION=$(type -P protoc)
+		-DVTK_Group_StandAlone=ON
+		-DVTK_RENDERING_BACKEND=OpenGL2
+		-DVTK_USE_FFMPEG_ENCODER=OFF
+		-DVTK_USE_OFFSCREEN=TRUE
 		-DVTK_USE_SYSTEM_EXPAT=ON
 		-DVTK_USE_SYSTEM_FREETYPE=ON
-		-DVTK_USE_SYSTEM_GL2PS=ON
+		-DVTK_USE_SYSTEM_GL2PS=OFF
 		-DVTK_USE_SYSTEM_HDF5=ON
 		-DVTK_USE_SYSTEM_JPEG=ON
 		-DVTK_USE_SYSTEM_JSONCPP=ON
@@ -150,18 +165,10 @@ src_configure() {
 		-DVTK_USE_SYSTEM_PNG=ON
 		-DVTK_USE_SYSTEM_PROTOBUF=ON
 		-DVTK_USE_SYSTEM_TIFF=ON
+		-DVTK_USE_SYSTEM_TWISTED=ON
 		-DVTK_USE_SYSTEM_XDMF2=OFF
 		-DVTK_USE_SYSTEM_ZLIB=ON
-		-DPARAVIEW_USE_SYSTEM_MPI4PY=ON
 		-DVTK_USE_SYSTEM_ZOPE=ON
-		-DVTK_USE_SYSTEM_TWISTED=ON
-		-DCMAKE_VERBOSE_MAKEFILE=ON
-		-DCMAKE_COLOR_MAKEFILE=TRUE
-		-DVTK_USE_OFFSCREEN=TRUE
-		-DCMAKE_USE_PTHREADS=ON
-		-DVTK_USE_FFMPEG_ENCODER=OFF
-		-DPROTOC_LOCATION=$(type -P protoc)
-		-DVTK_Group_StandAlone=ON
 		# force this module due to incorrect build system deps
 		# wrt bug 460528
 		-DModule_vtkUtilitiesProcessXML=ON
@@ -218,6 +225,10 @@ src_configure() {
 		$(cmake-utils_use tcl Module_vtkWrappingTcl)
 		$(cmake-utils_use test BUILD_TESTING)
 		)
+
+	if use openmp; then
+		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP )
+	fi
 
 	if use qt5 ; then
 		mycmakeargs+=( -DVTK_INSTALL_QT_DIR=/${PVLIBDIR}/plugins/designer )
