@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KDE character selection utility"
 HOMEPAGE="https://www.kde.org/applications/utilities/kcharselect
 https://utils.kde.org/projects/kcharselect"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

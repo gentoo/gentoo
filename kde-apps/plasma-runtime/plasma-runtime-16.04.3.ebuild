@@ -11,7 +11,7 @@ WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="Script engine and package tool for plasma"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="
