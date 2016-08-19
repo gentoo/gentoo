@@ -1319,11 +1319,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Games</url>
     <description>The Gentoo Games Project manages the game categories (dev-games, games-*) in Portage</description>
     <member>
-      <email>tristan@gentoo.org</email>
-      <name>Tristan Heaven</name>
-      <role>Member ( general games ninja )</role>
-    </member>
-    <member>
       <email>tupone@gentoo.org</email>
       <name>Alfredo Tupone</name>
       <role>Member ( general games ninja )</role>
