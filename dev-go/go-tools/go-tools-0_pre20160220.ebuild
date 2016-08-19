@@ -95,7 +95,10 @@ src_install() {
 
 	# bug 558818: install binaries in $GOROOT/bin to avoid file collisions
 	exeinto "$(go env GOROOT)/bin"
-	doexe bin/* "${T}/goroot/bin/godoc"
+	doexe bin/*
+	# godoc location varies depending on whether or not it's
+	# installed on the system (bug 591656)
+	[[ -e bin/godoc ]] || doexe "${T}/goroot/bin/godoc"
 	dodir /usr/bin
 	ln "${ED}$(go env GOROOT)/bin/godoc" "${ED}usr/bin/godoc" || die
 
