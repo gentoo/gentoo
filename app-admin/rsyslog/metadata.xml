@@ -2,13 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ultrabug@gentoo.org</email>
-		<name>Ultrabug</name>
-		<description>Primary Maintainer</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
+		<description>Primary Maintainer</description>
 	</maintainer>
 	<use>
 		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
