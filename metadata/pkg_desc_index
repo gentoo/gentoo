@@ -8838,12 +8838,12 @@ dev-ruby/bones 3.8.3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
-dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/bson 1.12.0 3.2.6 4.1.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r2 3.1.4 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.3.0 2.3.1 2.4.0 2.5.0: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.3.0 2.3.1 2.4.0 2.5.0 2.5.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
