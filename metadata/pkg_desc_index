@@ -7627,7 +7627,7 @@ dev-python/osprofiler 0.3.0 1.2.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0: OVS bindings for python.
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5 16.6: Core utilities for Python packages
-dev-python/pafy 0.5.1: Python library to retrieve YouTube content and metadata
+dev-python/pafy 0.5.1 0.5.2: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.1: A client class with support for both MQTT v3.1 and v3.1.1 on Python 2.7 or 3.x.
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
