@@ -4514,7 +4514,7 @@ dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.4-r1: disassembly/disassembler framework + bindings
-dev-libs/cdk 5.0.20131107 5.0.20141106: A library of curses widgets
+dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.10: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs
 dev-libs/check 0.9.8-r1 0.9.11 0.10.0-r1: A unit test framework for C
@@ -4660,7 +4660,7 @@ dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.6.5 0.6.6: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
-dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3: Extensible binary format library (kinda like XML)
+dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.3.2-r1 0.3.2-r2 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
@@ -12581,7 +12581,7 @@ media-libs/liblrdf 0.5.0 0.5.0-r1: A library for the manipulation of RDF file in
 media-libs/liblscp 0.5.5 0.5.6 0.5.7: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r8: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.10.1 1.12.1-r1: Mixer library for MATE Desktop
-media-libs/libmatroska 1.2.0 1.3.0 1.4.4: Extensible multimedia container format based on EBML
+media-libs/libmatroska 1.2.0 1.3.0 1.4.4 1.4.5: Extensible multimedia container format based on EBML
 media-libs/libmediaart 0.7.0 1.9.0: Manages, extracts and handles media art caches
 media-libs/libmediainfo 0.7.73 0.7.85 0.7.86 0.7.87: MediaInfo libraries
 media-libs/libmetalink 0.1.0-r1 0.1.1 0.1.1-r1 0.1.3: Library for handling Metalink files
@@ -17819,7 +17819,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 52.0.2743.116 53.0.2785.21 53.0.2785.34 54.0.2810.2 54.0.2824.0: Open-source version of Google Chrome web browser
+www-client/chromium 52.0.2743.116 53.0.2785.34 53.0.2785.70 54.0.2810.2 54.0.2824.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
