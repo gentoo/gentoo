@@ -13315,7 +13315,7 @@ media-sound/musescore 1.1 1.2 1.3 2.0.2 2.0.2-r1: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.1: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.4: Qt4 music player
 media-sound/ncmpc 0.24 0.24-r2: A ncurses client for the Music Player Daemon (MPD)
-media-sound/ncmpcpp 0.7 0.7.3-r1 0.7.4 9999: featureful ncurses based MPD client inspired by ncmpc
+media-sound/ncmpcpp 0.7 0.7.4 0.7.5 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/neroaac 1.5.1: Nero AAC reference quality MPEG-4 and 3GPP audio codec
 media-sound/neutrino 0.8.4: A GNOME application to manage Creative music players using the PDE protocol
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
@@ -14995,7 +14995,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.08.12 2016.08.13 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.08.13 2016.08.19 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
