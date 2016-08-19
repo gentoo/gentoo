@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-RDEPEND="dev-lang/erlang"
+RDEPEND="dev-lang/erlang[ssl]"
 DEPEND="${RDEPEND}
 	app-arch/zip
 	app-arch/unzip
