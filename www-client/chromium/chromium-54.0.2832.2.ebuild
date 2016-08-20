@@ -165,8 +165,7 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ $(tc-getCC) == *gcc* ]] && \
-		[[ $(gcc-major-version)$(gcc-minor-version) -lt 48 ]]; then
+	if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
 		die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
 	fi
 
