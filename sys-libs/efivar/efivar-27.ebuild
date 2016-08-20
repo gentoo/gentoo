@@ -18,6 +18,11 @@ RDEPEND="dev-libs/popt"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.18"
 
+src_prepare() {
+	default
+	sed -i -e s/-Werror// gcc.specs || die
+}
+
 src_configure() {
 	tc-export CC
 	tc-ld-disable-gold
