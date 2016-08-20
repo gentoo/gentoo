@@ -6,7 +6,7 @@ EAPI=6
 
 inherit multilib multilib-minimal
 
-DESCRIPTION="libpcre.so.3 symlink for compatibility with Debian"
+DESCRIPTION="libpcre(posix).so.3 symlinks for compatibility with Debian"
 HOMEPAGE="http://www.pcre.org/"
 LICENSE="BSD"
 SLOT="3"
@@ -19,4 +19,7 @@ S="${WORKDIR}"
 multilib_src_install() {
 	dosym $(multilib_is_native_abi || echo /usr)/$(get_libdir)/libpcre.so.1 \
 		  /usr/$(get_libdir)/debiancompat/libpcre.so.3
+
+	dosym /usr/$(get_libdir)/libpcreposix.so.0 \
+		  /usr/$(get_libdir)/debiancompat/libpcreposix.so.3
 }
