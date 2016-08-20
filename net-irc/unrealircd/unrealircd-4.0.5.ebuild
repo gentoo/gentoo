@@ -63,7 +63,7 @@ src_configure() {
 		--with-tmpdir="${EPREFIX}"/var/lib/${PN}/tmp \
 		--with-nick-history=2000 \
 		--with-sendq=3000000 \
-		--with-permissions=0600 \
+		--with-permissions=0640 \
 		--with-fd-setsize=1024 \
 		--with-system-cares \
 		--with-system-pcre2 \
@@ -213,10 +213,29 @@ s/"and another one";/"'"${keys[2]}"'";/
 		eend $?
 	fi
 
+	# Precreate ircd.tune and ircd.log with the correct ownership to
+	# protect people from themselves when they run unrealircd as root
+	# before trying the initscripts. #560790
+	local f
+	for f in "${EROOT}"var/{lib/${PN}/ircd.tune,log/${PN}/ircd.log}; do
+		[[ -e ${f} ]] && continue
+		ebegin "Precreating ${f} to set ownership"
+		(
+			umask 0037
+			# ircd.tune must be seeded with content instead of being empty.
+			if [[ ${f} == *ircd.tune ]]; then
+				echo 0 > "${f}"
+				echo 0 >> "${f}"
+			fi
+			touch "${f}"
+		)
+		chown unrealircd "${f}"
+		eend $?
+	done
+
 	elog "UnrealIRCd will not run until you've set up /etc/unrealircd/unrealircd.conf"
 	elog
 	elog "You can also configure ${PN} start at boot with rc-update(1)."
-	elog "Note that it is recommended to run unrealircd as an"
-	elog "unprivileged user (the provided init.d script does this"
-	elog "for you). Running as root will break file permissions."
+	elog "It is recommended to run unrealircd as an unprivileged user."
+	elog "The provided init.d script does this for you."
 }
