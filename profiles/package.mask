@@ -710,10 +710,6 @@ app-eselect/eselect-lua
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
 
-# Tim Harder <radhermit@gentoo.org> (04 Feb 2014)
-# Mask development releases
-=media-sound/lilypond-2.19*
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
