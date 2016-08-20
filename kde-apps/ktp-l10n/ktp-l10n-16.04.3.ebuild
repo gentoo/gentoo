@@ -24,7 +24,7 @@ DEPEND="
 	sys-devel/gettext
 "
 RDEPEND="
-	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde-l10n-16.04.3
 	!kde-apps/ktp-accounts-kcm:4
 	!kde-apps/ktp-approver:4
 	!kde-apps/ktp-auth-handler:4
