@@ -1,0 +1,29 @@
+From d7bc0e05e8064e0c939db6c2fb6d215fd0340708 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 23:30:39 +0200
+Subject: [PATCH 4/7] cmake: Adjust llvm-lit search to match the one in LLVM
+
+Adjust the system lit executable search to look for llvm-lit as that is
+the name used in AddLLVM.cmake installed by LLVM.
+
+Patch: https://reviews.llvm.org/D23745
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aee0d0a..e95ab52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -140,7 +140,7 @@ Please install Python or specify the PYTHON_EXECUTABLE CMake variable.")
+       endif()
+     else()
+       # Seek installed Lit.
+-      find_program(LLVM_LIT "lit.py" ${LLVM_MAIN_SRC_DIR}/utils/lit
++      find_program(LLVM_LIT "llvm-lit" ${LLVM_MAIN_SRC_DIR}/utils/lit
+         DOC "Path to lit.py")
+     endif()
+ 
+-- 
+2.9.3
+
