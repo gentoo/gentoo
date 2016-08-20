@@ -33,9 +33,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if ! has_version "kde-apps/kwalletd-pam" || ! has_version "kde-apps/kwalletmanager:4" ; then
+	if ! has_version "kde-plasma/kwallet-pam[oldwallet]" || ! has_version "kde-apps/kwalletmanager:4" ; then
 		elog
-		elog "Install kde-apps/kwalletd-pam for auto-unlocking after account login."
+		elog "Install kde-plasma/kwallet-pam[oldwallet] for auto-unlocking after account login."
 		elog "Install kde-apps/kwalletmanager:4 to manage your kwallet."
 		elog
 	fi
