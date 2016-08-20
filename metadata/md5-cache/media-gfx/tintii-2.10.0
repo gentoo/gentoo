@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=x11-libs/wxGTK:3.0[X] dev-libs/boost
+DESCRIPTION=A photo editor for selective color, saturation, and hue shift adjustments
+EAPI=6
+HOMEPAGE=http://www.indii.org/software/tintii
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/wxGTK:3.0[X]
+SLOT=0
+SRC_URI=http://www.indii.org/files/tint/releases/tintii-2.10.0.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=7a43dd91eb4d42445f677b02f2020033
