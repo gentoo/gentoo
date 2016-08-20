@@ -432,7 +432,7 @@ src_configure() {
 	myconf_gyp+=" -Dfieldtrial_testing_like_official_build=1"
 	myconf_gn+=" fieldtrial_testing_like_official_build=true"
 
-	if [[ $(tc-getCC) == *clang* ]]; then
+	if tc-is-clang; then
 		myconf_gyp+=" -Dclang=1"
 		myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
 	else
