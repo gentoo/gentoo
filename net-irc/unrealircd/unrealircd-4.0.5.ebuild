@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -144,7 +144,7 @@ pkg_preinst() {
 		shift 3
 		while dir=${1} && shift; do
 			if [[ ! -d "${EROOT}${dir}" ]]; then
-				ebegin "Creating ${EROOT}${dir} with correct permissions"
+				ebegin "Creating ""${EROOT}${dir}"" with correct permissions"
 				install -d -m "${mode}" -o "${user}" -g "${group}" "${EROOT}${dir}" || die
 				eend ${?}
 			elif ! [[ ${REPLACING_VERSIONS} ]] || for v in ${REPLACING_VERSIONS}; do
@@ -152,7 +152,7 @@ pkg_preinst() {
 					# existing permissions.
 					version_is_at_least "${v}" 3.2.10 && break
 				done; then
-				ebegin "Correcting permissions of ${EROOT}${dir} left by ${CATEGORY}/${PN}-${v}"
+				ebegin "Correcting permissions of ""${EROOT}${dir}"" left by ${CATEGORY}/${PN}-${v}"
 				chmod "${mode}" "${EROOT}${dir}" \
 					&& chown ${user}:${group} "${EROOT}${dir}" \
 					|| die "Unable to correct permissions of ${EROOT}${dir}"
