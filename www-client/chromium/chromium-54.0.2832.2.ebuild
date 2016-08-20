@@ -165,8 +165,10 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
-		die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
+			die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
+		fi
 	fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
@@ -181,7 +183,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-
 	# Make sure the build system will use the right python, bug #344367.
 	python-any-r1_pkg_setup
 
