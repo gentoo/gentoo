@@ -5,6 +5,14 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# xanim is going to be removed, bug #181959
+media-video/mplayer xanim
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# mpb is going to be removed, bug #449964
+sci-physics/meep mpb
+
 # Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
 # gnutls is broken for years
 >=net-libs/gsoap-2.8.0 gnutls

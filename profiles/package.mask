@@ -30,6 +30,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# codecs are not usable, also really obsolete, bug #181959
+# Removal in a month.
+media-video/xanim
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Collides with ircii, this is dead since 1999, bug #247987
+# Removal in a month.
+net-irc/irc-client
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Needs a major version bump, completely outdated, bug #262902
+# Removal in a month.
+net-im/simpserver-bin
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Outdated, not compatible with current kernels (#263549).
+# Removal in a month.
+net-analyzer/portbunny
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Dead since 2008, ugly build system, incorrect deps (#298157).
+# Removal in a month.
+app-text/notecase
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Dead for ages, nothing needs it in the tree, fails to crosscompile
+# (#373347). Removal in a month.
+net-dialup/radiusclient
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Dead for ages, phantomjs should be used instead, bug #374943
+# Removal in a month.
+media-gfx/cutycapt
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Broken, needs someone to take care of it and update it, bug #421869
+# Removal in a month.
+www-misc/reflector
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Multiple QA issues, nothing needs it (#430690). Removal in a month.
+net-libs/wt
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# Fails to build, bug #449964. Removal in a month.
+sci-physics/mpb
+
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Mask new MariaDB alphas for testing
 >=dev-db/mariadb-10.2.0
