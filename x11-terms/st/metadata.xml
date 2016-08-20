@@ -5,4 +5,7 @@
 <email>xmw@gentoo.org</email>
 <name>Michael Weber</name>
 </maintainer>
+<maintainer type="person">
+<email>jer@gentoo.org</email>
+</maintainer>
 </pkgmetadata>
