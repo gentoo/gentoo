@@ -1,0 +1,27 @@
+From ec16b3f76a26a3a10b0272d012b306963fa93013 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 23:24:19 +0200
+Subject: [PATCH 1/7] cmake: Add ordering dep between HTML Sphinx docs and
+ manpages
+
+---
+ docs/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 13b79fdf..bd75b63 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -102,6 +102,9 @@ if (LLVM_ENABLE_SPHINX)
+     endif()
+     if (${SPHINX_OUTPUT_MAN})
+       add_sphinx_target(man clang)
++      if (${SPHINX_OUTPUT_HTML})
++        add_dependencies(docs-clang-html docs-clang-man)
++      endif()
+     endif()
+   endif()
+ endif()
+-- 
+2.9.3
+

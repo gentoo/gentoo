@@ -27,6 +27,8 @@ A simple and hackable code base
 A single unified parser for C, Objective C, C++, and Objective C++
 Conformance with C/C++/ObjC and their variants</longdescription>
 	<use>
+		<flag name="default-compiler-rt">Use compiler-rt instead of libgcc as the default rtlib for clang</flag>
+		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
 		<flag name="multitarget">Build all host targets (default: host only)</flag>
 		<flag name="static-analyzer">Install the Clang static analyzer</flag>
 	</use>
