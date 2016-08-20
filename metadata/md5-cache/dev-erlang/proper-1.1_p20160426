@@ -3,11 +3,11 @@ DEPEND=>=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang dev-util/rebar
 DESCRIPTION=QuickCheck-inspired property-based testing tool for Erlang
 EAPI=6
 HOMEPAGE=https://github.com/manopapad/proper
-KEYWORDS=amd64 ~arm ~ia64 ~ppc ~sparc x86
+KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc x86
 LICENSE=GPL-3
 RDEPEND=>=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/proper/proper-1.1_p20160426.tar.bz2
 _eclass_exported_funcs=src_prepare:rebar src_configure:- src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=99fa50a6143c008c49b8ce1f50896755
+_md5_=bbe68c82c894e8e5720c85e80acd3084
