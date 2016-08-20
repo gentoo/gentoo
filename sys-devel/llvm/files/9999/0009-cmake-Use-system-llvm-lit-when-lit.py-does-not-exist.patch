@@ -1,0 +1,33 @@
+From bcdf2c49b7686046f8a9a5664f0e46117997baf4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 23:19:40 +0200
+Subject: [PATCH 09/10] cmake: Use system llvm-lit when lit.py does not exist
+ in srcdir
+
+Modify the add_lit_target function to use lit.py from LLVM_MAIN_SRC_DIR
+only when one does exist there, and otherwise fall back to looking for
+system install of llvm-lit. This is based on a similar conditional in
+clang's CMakeLists.txt, and makes it possible to run clang's tests when
+built separately from LLVM with no access to the original sources.
+
+Patch: https://reviews.llvm.org/D23742
+---
+ cmake/modules/AddLLVM.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/AddLLVM.cmake b/cmake/modules/AddLLVM.cmake
+index 83a2359..87540d5 100644
+--- a/cmake/modules/AddLLVM.cmake
++++ b/cmake/modules/AddLLVM.cmake
+@@ -1081,7 +1081,7 @@ function(add_lit_target target comment)
+   if (NOT CMAKE_CFG_INTDIR STREQUAL ".")
+     list(APPEND LIT_ARGS --param build_mode=${CMAKE_CFG_INTDIR})
+   endif ()
+-  if (LLVM_MAIN_SRC_DIR)
++  if(EXISTS ${LLVM_MAIN_SRC_DIR}/utils/lit/lit.py)
+     set (LIT_COMMAND ${PYTHON_EXECUTABLE} ${LLVM_MAIN_SRC_DIR}/utils/lit/lit.py)
+   else()
+     find_program(LIT_COMMAND llvm-lit)
+-- 
+2.9.3
+
