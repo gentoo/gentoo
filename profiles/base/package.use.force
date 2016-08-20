@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (20 Aug 2016)
+# Chromium GYP build is no longer supported - always use GN.
+>=www-client/chromium-54 gn
+
 # Michael Palimaka <kensington@gentoo.org> (27 Jul 2016)
 # Reverse dependencies need to be fully investigated yet
 kde-base/kdelibs webkit
