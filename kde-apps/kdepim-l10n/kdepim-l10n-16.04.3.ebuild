@@ -24,7 +24,7 @@ DEPEND="
 	sys-devel/gettext
 "
 RDEPEND="
-	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde-l10n-16.04.3
 	!<kde-apps/kde4-l10n-4.14.3-r1
 "
 
