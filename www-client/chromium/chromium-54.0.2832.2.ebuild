@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="cups gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc widevine"
+IUSE="cups +gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
@@ -73,17 +73,17 @@ RDEPEND="
 	x11-libs/libXScrnSaver:=
 	x11-libs/libXtst:=
 	x11-libs/pango:=
+	app-arch/snappy:=
+	>=dev-libs/libevent-1.4.13:=
+	dev-libs/libxml2:=[icu]
+	dev-libs/libxslt:=
+	media-libs/flac:=
+	>=media-libs/harfbuzz-0.9.41:=[icu(+)]
+	>=media-libs/libwebp-0.4.0:=
+	sys-libs/zlib:=[minizip]
 	kerberos? ( virtual/krb5 )
 	!gn? (
 		>=app-accessibility/speech-dispatcher-0.8:=
-		app-arch/snappy:=
-		>=dev-libs/libevent-1.4.13:=
-		dev-libs/libxml2:=[icu]
-		dev-libs/libxslt:=
-		media-libs/flac:=
-		>=media-libs/harfbuzz-0.9.41:=[icu(+)]
-		>=media-libs/libwebp-0.4.0:=
-		sys-libs/zlib:=[minizip]
 	)"
 DEPEND="${RDEPEND}
 	>=app-arch/gzip-1.7
@@ -159,10 +159,8 @@ For other desktop environments, try one of the following:
 
 PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r3.patch"
-	"${FILESDIR}/${PN}-system-jinja-r12.patch"
+	"${FILESDIR}/${PN}-system-jinja-r13.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-last-commit-position-r1.patch"
-	"${FILESDIR}/${PN}-gn-r3.patch"
 )
 
 pkg_pretend() {
@@ -253,11 +251,11 @@ src_prepare() {
 		'third_party/catapult/tracing/third_party/mannwhitneyu' \
 		'third_party/ced' \
 		'third_party/cld_2' \
+		'third_party/cld_3' \
 		'third_party/cros_system_api' \
 		'third_party/cython/python_flags.py' \
 		'third_party/devscripts' \
 		'third_party/dom_distiller_js' \
-		'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js' \
 		'third_party/fips181' \
 		'third_party/flatbuffers' \
 		'third_party/flot' \
@@ -604,7 +602,10 @@ eninja() {
 }
 
 src_compile() {
-	local ninja_targets="chrome chrome_sandbox chromedriver"
+	local ninja_targets="chrome chromedriver"
+	if use suid; then
+		ninja_targets+=" chrome_sandbox"
+	fi
 
 	# Build mksnapshot and pax-mark it.
 	eninja -C out/Release mksnapshot || die
@@ -621,8 +622,10 @@ src_install() {
 	exeinto "${CHROMIUM_HOME}"
 	doexe out/Release/chrome || die
 
-	newexe out/Release/chrome_sandbox chrome-sandbox || die
-	fperms 4755 "${CHROMIUM_HOME}/chrome-sandbox"
+	if use suid; then
+		newexe out/Release/chrome_sandbox chrome-sandbox || die
+		fperms 4755 "${CHROMIUM_HOME}/chrome-sandbox"
+	fi
 
 	doexe out/Release/chromedriver || die
 	use widevine && doexe out/Release/libwidevinecdmadapter.so
