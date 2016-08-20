@@ -20,32 +20,23 @@ DOCS=( CONTRIBUTORS README README.zopflipng )
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-# zopfli statically links libzopfli
-# zopflipng statically links libzopflipng
-# zopflipng also statically links an exact version of LodePNG (https://github.com/lvandeve/lodepng)
-# As of version 1.0.1 neither of the binaries
-# use the libraries we install. The libraries
-# exist solely for use by external programs.
+# zopflipng statically links an exact version of LodePNG (https://github.com/lvandeve/lodepng)
 
-src_compile() {
+src_prepare() {
+	default
 	tc-export CC CXX
-	emake libzopfli
-	emake zopfli
-
-	emake libzopflipng
-	emake zopflipng
 }
 
 # The Makefile has no install phase
 src_install() {
-	dolib.so libzopfli.so.${PV}
-	dosym libzopfli.so.${PV} /usr/$(get_libdir)/libzopfli.so.1
+	dolib.so libzopfli.so*
+	doheader src/zopfli/zopfli.h
 
 	dobin ${PN}
 
 	# This version was erroneously not bumped to match ${PV}
-	dolib.so libzopflipng.so.1.0.0
-	dosym libzopflipng.so.1.0.0 /usr/$(get_libdir)/libzopflipng.so.1
+	dolib.so libzopflipng.so*
+	doheader src/zopflipng/zopflipng_lib.h
 
 	dobin zopflipng
 }
