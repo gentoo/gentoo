@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install
+DEFINED_PHASES=compile configure install prepare
 DEPEND=dev-libs/popt >=sys-kernel/linux-headers-3.18
 DESCRIPTION=Tools and library to manipulate EFI variables
 EAPI=6
@@ -8,6 +8,6 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/popt
 SLOT=0/27
 SRC_URI=https://github.com/rhinstaller/efivar/archive/27.tar.gz -> efivar-27.tar.gz
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=aef7a0c10b365d02411c157739c8f366
+_md5_=5df423bb6b4ba7d7a438eb6ba3fa878c
