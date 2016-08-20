@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils git-r3 multilib savedconfig toolchain-funcs
 
 DESCRIPTION="simple terminal implementation for X"
@@ -28,7 +28,7 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch_user
+	eapply_user
 
 	sed -e '/^CFLAGS/s:[[:space:]]-Wall[[:space:]]: :' \
 		-e '/^CFLAGS/s:[[:space:]]-O[^[:space:]]*[[:space:]]: :' \
