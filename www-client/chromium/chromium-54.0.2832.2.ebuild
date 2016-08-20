@@ -31,7 +31,7 @@ QA_FLAGS_IGNORED=".*\.nexe"
 # right tools for it, bug #469144 .
 QA_PRESTRIPPED=".*\.nexe"
 
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
@@ -84,8 +84,20 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	!gn? (
 		>=app-accessibility/speech-dispatcher-0.8:=
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+# For nvidia-drivers blocker, see bug #413637 .
+RDEPEND="${COMMON_DEPEND}
+	!=www-client/chromium-9999
+	!<www-plugins/chrome-binary-plugins-37
+	x11-misc/xdg-utils
+	virtual/opengl
+	virtual/ttf-fonts
+	selinux? ( sec-policy/selinux-chromium )
+	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
+	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
+"
+DEPEND="${COMMON_DEPEND}
 	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm
@@ -97,29 +109,18 @@ DEPEND="${RDEPEND}
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	$(python_gen_any_dep '
+		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
+		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
+	')
+"
 
-# For nvidia-drivers blocker, see bug #413637 .
-RDEPEND+="
-	!=www-client/chromium-9999
-	!<www-plugins/chrome-binary-plugins-37
-	x11-misc/xdg-utils
-	virtual/opengl
-	virtual/ttf-fonts
-	selinux? ( sec-policy/selinux-chromium )
-	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
-	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )"
-
-# Python dependencies. The DEPEND part needs to be kept in sync
-# with python_check_deps.
-DEPEND+=" $(python_gen_any_dep '
-	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
-	dev-python/html5lib[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/ply[${PYTHON_USEDEP}]
-	dev-python/simplejson[${PYTHON_USEDEP}]
-')"
+# Keep this in sync with the python_gen_any_dep call.
 python_check_deps() {
 	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
 	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
