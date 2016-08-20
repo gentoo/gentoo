@@ -1430,7 +1430,7 @@ app-eselect/eselect-vi 1.1.7-r1 1.1.8 1.1.9: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4 3.7.7: Library that implements the AFF image standard
-app-forensics/afl 2.12b 2.19b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.12b 2.19b 2.32b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.14.2 0.15.1: AIDE (Advanced Intrusion Detection Environment) is a replacement for Tripwire
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
@@ -14276,7 +14276,7 @@ net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/smuxi 0.8.10.1 0.8.11 0.11.1: A flexible, irssi-like and user-friendly IRC client for the Gnome Desktop
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
-net-irc/unrealircd 3.2.10.4: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 3.2.10.4 4.0.5: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.5 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.2-r1 1.4 1.4-r1 1.6.1-r1 1.6.3 9999: An advanced IRC Bouncer
