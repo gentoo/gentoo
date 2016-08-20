@@ -19,7 +19,6 @@ RDEPEND="sys-libs/zlib
 	>=app-arch/zopfli-1.0.1-r2:=
 	media-libs/libpng:0="
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	app-arch/unzip"
 
 S=${WORKDIR}
