@@ -5,8 +5,12 @@
 		<email>contact@jovicaillic.org</email>
 		<name>Jovica Illic</name>
 	</maintainer>
-        <maintainer type="person">
-                <email>patrick@gentoo.org</email>
-                <name>Patrick Lauer</name>
-        </maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
 </pkgmetadata>
