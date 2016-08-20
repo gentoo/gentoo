@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -15,14 +15,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="sys-libs/zlib
+	media-libs/libpng:0="
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 S=${WORKDIR}
 
-src_compile() {
-	emake CC="$(tc-getCC)" LDLIBS="-lz" ${PN}
+src_prepare() {
+	local PATCHES=( "${FILESDIR}"/${PN}-1.6-makefile.patch )
+	default
+
+	rm -rf libpng zlib || die
+	tc-export CXX
 }
 
 src_install() {
