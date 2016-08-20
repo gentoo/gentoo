@@ -1,4 +1,4 @@
-DEFINED_PHASES=install preinst
+DEFINED_PHASES=install setup
 DEPEND=virtual/pkgconfig
 DESCRIPTION=Extensible continuous integration server
 EAPI=6
@@ -8,7 +8,7 @@ LICENSE=MIT
 RDEPEND=media-fonts/dejavu media-libs/freetype !dev-util/jenkins-bin:lts >=virtual/jre-1.7.0
 RESTRICT=mirror
 SLOT=0
-SRC_URI=http://mirrors.jenkins-ci.org/war/2.12/jenkins.war -> jenkins-bin-2.12.war
-_eclass_exported_funcs=pkg_preinst:- src_install:-
+SRC_URI=http://mirrors.jenkins-ci.org/war/2.17/jenkins.war -> jenkins-bin-2.17.war
+_eclass_exported_funcs=pkg_setup:- src_install:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6
-_md5_=f0a7fc8203e6cb9e474a62cd1c49cba3
+_md5_=42b6de4f6461dddac1cb5f77d47a1ed9
