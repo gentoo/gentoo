@@ -13232,7 +13232,7 @@ media-sound/jack-smf-utils 1.0: Utilities for MIDI streams and files using Jack 
 media-sound/jack2 1.9.10: Jackdmp jack implemention for multi-processor machine
 media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.4.4 1.4.6: Simple but fully featured LV2 host for Jack
-media-sound/jamin 0.95.0-r2: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
+media-sound/jamin 0.95.0-r2 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jokosher 0.11.5-r1: A simple yet powerful multi-track studio
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
