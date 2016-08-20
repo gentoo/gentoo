@@ -64,7 +64,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
 		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch" \
 		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch" \
+		"${FILESDIR}/${PN}-6.30.223.271-r3-linux-4.7.patch"
 
 	epatch_user
 }
