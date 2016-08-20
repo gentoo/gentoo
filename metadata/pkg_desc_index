@@ -14171,7 +14171,7 @@ net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
 net-im/bitlbee 3.4.1 3.4.2 9999: irc to IM gateway that support multiple IM protocols
 net-im/bitlbee-steam 1.2.0 9999: Steam protocol plugin for BitlBee
 net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
-net-im/choqok 1.5: Free/Open Source micro-blogging client for KDE
+net-im/choqok 1.5 1.5-r1: Free/Open Source micro-blogging client by KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
