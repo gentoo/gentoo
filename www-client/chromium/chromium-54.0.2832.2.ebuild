@@ -181,12 +181,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ "${SLOT}" == "0" ]]; then
-		CHROMIUM_SUFFIX=""
-	else
-		CHROMIUM_SUFFIX="-${SLOT}"
-	fi
-	CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${CHROMIUM_SUFFIX}"
 
 	# Make sure the build system will use the right python, bug #344367.
 	python-any-r1_pkg_setup
@@ -619,6 +613,7 @@ src_compile() {
 }
 
 src_install() {
+	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${CHROMIUM_SUFFIX}"
 	exeinto "${CHROMIUM_HOME}"
 	doexe out/Release/chrome || die
 
