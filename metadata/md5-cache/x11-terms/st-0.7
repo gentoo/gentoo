@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=!<sys-libs/ncurses-6.0 media-libs/fontconfig x11-libs/libX11 x11-libs/libXext x11-libs/libXft virtual/pkgconfig x11-proto/xextproto x11-proto/xproto
+DESCRIPTION=simple terminal implementation for X
+EAPI=6
+HOMEPAGE=http://st.suckless.org/
+IUSE=savedconfig savedconfig
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=MIT-with-advertising
+RDEPEND=!<sys-libs/ncurses-6.0 media-libs/fontconfig x11-libs/libX11 x11-libs/libXext x11-libs/libXft
+SLOT=0
+SRC_URI=http://dl.suckless.org/st/st-0.7.tar.gz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=556d7769a76f033741c91349d46ad455
