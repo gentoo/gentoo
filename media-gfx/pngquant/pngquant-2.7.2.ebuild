@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit toolchain-funcs
 
 DESCRIPTION="command-line utility and library for lossy compression of PNG images"
 HOMEPAGE="http://pngquant.org/"
-SRC_URI="http://pngquant.org/${P}-src.tar.bz2"
+SRC_URI="http://pngquant.org/${P}-src.tar.gz"
 
-LICENSE="HPND rwpng"
+LICENSE="GPL-3 HPND rwpng"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug lcms openmp cpu_flags_x86_sse2"
