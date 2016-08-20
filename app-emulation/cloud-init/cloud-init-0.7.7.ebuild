@@ -52,6 +52,8 @@ RDEPEND="
 PATCHES=( "${FILESDIR}/cloud-init-0.7.7-gentooinit.patch" )
 
 python_prepare_all() {
+	sed -i '/^argparse/d' requirements.txt || die
+	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
