@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="savedconfig"
 
 RDEPEND="
-	!<sys-libs/ncurses-6.0
+	>=sys-libs/ncurses-6.0:0=
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXext
