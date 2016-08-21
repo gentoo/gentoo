@@ -168,10 +168,6 @@ www-apache/mod_slotlimit
 www-apache/mod_tcl
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Nobody willing to update this, bug #532918. Removal in a month.
-app-misc/asciinema
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Security issues (#534184), removal in a month.
 app-misc/run-mailcap
 
