@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-3.0.1:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
