@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ tvp_base="http://tvbrowser.org/downloads"
 
 DESCRIPTION="Themeable and easy to use TV Guide - written in Java"
 HOMEPAGE="http://www.tvbrowser.org/"
-ESVN_REPO_URI="https://tvbrowser.svn.sourceforge.net/svnroot/tvbrowser/trunk/tvbrowser"
+ESVN_REPO_URI="https://svn.code.sf.net/p/tvbrowser/code/trunk/tvbrowser"
 SRC_URI="
 themes? (
 	${tp_base}/BeOSthemepack.zip
