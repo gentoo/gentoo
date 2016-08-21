@@ -6,6 +6,10 @@
 # New entries go on top.
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# x11-libs/libsvg-cairo is being removed, bug #537918
+dev-ml/cairo-ocaml svg
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # net-libs/libzrtpcpp will be removed, bug #528514
 net-libs/ortp zrtp
 
