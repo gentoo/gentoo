@@ -15,11 +15,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=sys-fs/fuse-2.8.0
+CDEPEND=">=sys-fs/fuse-2.8.0
 	>=net-misc/curl-7.22.0
 	dev-libs/boost:=
 	>=net-libs/rb_libtorrent-0.16.0"
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	virtual/pkgconfig"
+RDEPEND="${CDEPEND}
 	${PYTHON_DEPS}"
 
 src_prepare() {
