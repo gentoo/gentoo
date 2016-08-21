@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-GCONF_DEBUG=no
 GNOME2_LA_PUNT=yes
 PYTHON_COMPAT=( python2_7 )
 
@@ -38,11 +37,11 @@ DEPEND="
 DOCS=( AUTHORS ChangeLog NEWS README.rst )
 
 src_prepare() {
+	eapply_user
+
 	eautoreconf
 
 	gnome2_src_prepare
-
-	G2CONF="--disable-static"
 }
 
 pkg_postinst() {
