@@ -168,10 +168,6 @@ www-apache/mod_slotlimit
 www-apache/mod_tcl
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Nobody willing to update this, bug #532918. Removal in a month.
-app-misc/asciinema
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Security issues (#534184), removal in a month.
 app-misc/run-mailcap
 
@@ -585,12 +581,6 @@ dev-perl/Test-Tester
 # Doesn't honour USE=static-libs.
 # Bugs #590272, #590270, #590268, #590266 etc.
 =sci-libs/fftw-3.3.5
-
-# Michał Górny <mgorny@gentoo.org> (1 Aug 2016)
-# Masked for testing, handling keywords and  collecting more changes
-# before unleashing the huge rebuild on all users. Has gotten musl
-# support and switches to control the default rtlib and C++ library.
-=sys-devel/llvm-3.8.1-r1
 
 # Johannes Huber <johu@gentoo.org> (1 Aug 2016)
 # Masked for removal in 30 days. Dead by upstream. Last release
