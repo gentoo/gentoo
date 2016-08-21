@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ if [[ $PV != *9999 ]]; then
 	SRC_URI="https://sourceforge.net/code-snapshots/svn/c/cl/cloudcity/code/cloudcity-code-${REV}.zip"
 	KEYWORDS="~amd64 ~x86"
 else
-	ESVN_REPO_URI="http://svn.code.sf.net/p/cloudcity/code/"
+	ESVN_REPO_URI="https://svn.code.sf.net/p/cloudcity/code/"
 	KEYWORDS=""
 fi
 
