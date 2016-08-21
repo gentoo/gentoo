@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 		$(python_gen_any_dep '
 			dev-python/pygobject:2[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
-		media-plugins/grilo-plugins:0.2 )
+		media-plugins/grilo-plugins:${SLOT%/*} )
 "
 # eautoreconf requires gnome-common
 
@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e "s:GETTEXT_PACKAGE=grilo$:GETTEXT_PACKAGE=grilo-${SLOT}:" \
+	sed -e "s:GETTEXT_PACKAGE=grilo$:GETTEXT_PACKAGE=grilo-${SLOT%/*}:" \
 		-i configure.ac configure || die "sed configure.ac configure failed"
 
 	# Don't build examples
