@@ -1,0 +1,11 @@
+--- /usr/sbin/checkrestart	2016-02-22 08:08:34.000000000 -0800
++++ /usr/sbin/checkrestarta	2016-02-22 08:19:16.013507231 -0800
+@@ -114,7 +114,7 @@
+ def portage_fQuery(programs, packages):
+     
+     dpkgQuery = ["qfile", "-C"] + programs.keys()
+-    dpkgProc = subprocess.Popen(dpkgQuery, stdout=subprocess.PIPE)
++    dpkgProc = subprocess.Popen(dpkgQuery, stdout=subprocess.PIPE, cwd='/')
+     for line in dpkgProc.stdout.readlines():
+         packagename, program = line[:-1].split(' ')
+         program = re.match('\((.*)\)', program).group(1)
