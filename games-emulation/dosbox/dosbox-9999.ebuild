@@ -5,7 +5,7 @@
 EAPI=6
 
 if [[ ${PV} = 9999 ]]; then
-	ESVN_REPO_URI="https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk"
+	ESVN_REPO_URI="https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk"
 	inherit subversion
 else
 	SRC_URI="mirror://sourceforge/dosbox/${P}.tar.gz"
