@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit cmake-utils python-any-r1 games
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="http://www.freeorion.org"
-SRC_URI="https://dev.gentoo.org/~tomka/files/${P}.tar.bz2"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/FreeOrion_v0.4.5_2015-09-01.f203162_Source.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
@@ -23,7 +23,6 @@ RDEPEND="
 	media-libs/libsdl2
 	>=dev-libs/boost-1.47[python]
 	media-libs/freealut
-	media-libs/glew
 	media-libs/libogg
 	media-libs/libsdl[X,opengl,video]
 	media-libs/libvorbis
@@ -44,16 +43,19 @@ pkg_setup() {
 	games_pkg_setup
 }
 
+src_unpack() {
+	default
+	mv src-tarball "${P}" || die
+	}
+
 src_prepare() {
-
-	epatch "${FILESDIR}/${P}-boost-1.57.patch"
-	epatch "${FILESDIR}/${P}-boost-1.58.patch"
-
 	# parse subdir sets -O3
 	sed -e "s:-O3::" -i parse/CMakeLists.txt
+	epatch "${FILESDIR}/${P}-boost-1.61.patch"
 
-	# set revision for display in game -- update on bump!
-	sed -i -e 's/???/8051/' CMakeLists.txt
+	# For snapshots, the following can be used to the set revision
+	# for display in game -- update on bump!
+	# sed -i -e 's/???/8051/' CMakeLists.txt
 }
 
 src_configure() {
@@ -61,6 +63,8 @@ src_configure() {
 		-DRELEASE_COMPILE_FLAGS=""
 		-DCMAKE_SKIP_RPATH=ON
 		)
+
+	append-cppflags -DBOOST_OPTIONAL_CONFIG_USE_OLD_IMPLEMENTATION_OF_OPTIONAL
 
 	cmake-utils_src_configure
 }
