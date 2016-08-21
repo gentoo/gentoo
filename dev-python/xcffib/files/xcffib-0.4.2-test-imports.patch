@@ -1,0 +1,35 @@
+Relative imports don't work because the test dir isn't a proper python module.
+
+--- xcffib-0.4.2/test/test_connection.py
++++ xcffib-0.4.2/test/test_connection.py
+@@ -20,7 +20,7 @@
+ 
+ from xcffib import ffi
+ from xcffib.testing import XvfbTest
+-from .testing import XcffibTest
++from testing import XcffibTest
+ 
+ from nose.tools import raises
+ from nose import SkipTest
+--- xcffib-0.4.2/test/test_fakeinput.py
++++ xcffib-0.4.2/test/test_fakeinput.py
+@@ -2,7 +2,7 @@
+ import xcffib.xproto
+ import xcffib.xtest
+ 
+-from .testing import XcffibTest
++from testing import XcffibTest
+ 
+ class TestConnection(XcffibTest):
+     def test_fakeinput(self):
+--- xcffib-0.4.2/test/test_python_code.py
++++ xcffib-0.4.2/test/test_python_code.py
+@@ -18,7 +18,7 @@
+ import struct
+ from xcffib.xproto import EventMask
+ 
+-from .testing import XcffibTest
++from testing import XcffibTest
+ 
+ class TestPythonCode(XcffibTest):
+ 
