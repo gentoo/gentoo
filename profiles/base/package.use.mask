@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
+# Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
+media-plugins/grilo-plugins chromaprint
+
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # media-libs/libdlna is being removed, bug #540214
 media-video/ushare dlna
