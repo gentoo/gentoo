@@ -91,8 +91,10 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # For any other value, add test to IUSE and add a dependency on dev-qt/qttest:5.
 # If set to "optional", configure with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
 # when USE=!test.
-# If set to "forceoptional", remove a Qt5Test dependency from the root
-# CMakeLists.txt in addition to the above.
+# If set to "forceoptional", remove a Qt5Test dependency and comment test
+# subdirs from the root CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
+# test subdirs from *any* CMakeLists.txt in addition to the above.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 else
@@ -487,13 +489,17 @@ EOF
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
-			cmake_comment_add_subdirectory autotests
-			cmake_comment_add_subdirectory test
-			cmake_comment_add_subdirectory tests
+			cmake_comment_add_subdirectory autotests test tests
+		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
+			local d
+			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test"); do
+				pushd ${d%/*} > /dev/null || die
+					punt_bogus_dep Qt5 Test
+					cmake_comment_add_subdirectory autotests test tests
+				popd > /dev/null || die
+			done
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-			cmake_comment_add_subdirectory autotests
-			cmake_comment_add_subdirectory test
-			cmake_comment_add_subdirectory tests
+			cmake_comment_add_subdirectory autotests test tests
 		fi
 	fi
 }
