@@ -45,3 +45,5 @@ DEPEND="${RDEPEND}
 "
 
 RESTRICT=test	# 1/10 tests currently fails
+
+PATCHES=( "${FILESDIR}/${P}-qt57.patch" )
