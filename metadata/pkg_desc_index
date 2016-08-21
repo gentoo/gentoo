@@ -6971,7 +6971,7 @@ dev-python/bcolz 0.10.0 0.11.3 0.12.1 1.1.0: Provides columnar and compressed da
 dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
-dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1 4.5.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
 dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
@@ -7017,7 +7017,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
-dev-python/certifi 2015.9.6.2 2015.11.20 2015.11.20.1 2016.2.28: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2015.9.6.2 2015.11.20 2015.11.20.1 2016.2.28 2016.8.8: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -7092,7 +7092,7 @@ dev-python/defusedxml 0.4.1-r1: XML bomb protection for Python stdlib modules, a
 dev-python/demjson 2.2.2 2.2.3 2.2.4: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
 dev-python/dib-utils 0.0.8: Standalone tools related to diskimage-builder.
-dev-python/dicttoxml 1.5.6 1.6.6 1.7.4: Converts a Python dictionary or other ata type to a valid XML string
+dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other ata type to a valid XML string
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
 dev-python/dill 0.2.5: Serialize all of python (almost)
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
@@ -7294,7 +7294,7 @@ dev-python/genshi 0.7: Python toolkit for stream-based generation of output for 
 dev-python/genty 1.2.1 1.3.0 1.3.2: Allows you to run a test with multiple data sets
 dev-python/geoip-python 1.3.2: Python bindings for GeoIP
 dev-python/geopy 1.8.1 1.9.1 1.10.0 1.11.0: A Geocoding Toolbox for Python
-dev-python/gevent 1.0 1.0.1 1.0.2 1.1.0 1.1.1: Coroutine-based network library
+dev-python/gevent 1.0 1.0.1 1.0.2 1.1.0 1.1.1 1.1.2: Coroutine-based network library
 dev-python/gevent-socketio 0.3.5_rc2-r1 0.3.6: SocketIO server based on the Gevent pywsgi server
 dev-python/gevent-websocket 0.9.3 0.9.5: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.3.1: A high performance, concurrent HTTP client library for Python using gevent
@@ -8326,7 +8326,7 @@ dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versioneer 0.15 0.16: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1 0.3.1-r1: An implementation of the Q2Q protocol
-dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1 14.0.3 14.0.5 14.0.6 15.0.1: Virtual Python Environment builder
+dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1 14.0.3 14.0.5 14.0.6 15.0.1 15.0.3: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
@@ -8377,7 +8377,7 @@ dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data fro
 dev-python/xlsxwriter 0.7.8 0.8.4 0.9.2: Python module for creating Excel XLSX files
 dev-python/xlutils 1.5.2-r1 1.7.1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
-dev-python/xmltodict 0.9.1 0.9.2 0.10.1 0.10.1-r1 0.10.2: Makes working with XML feel like you are working with JSON
+dev-python/xmltodict 0.10.1-r1 0.10.2: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
 dev-python/xonsh 0.2.6 0.4.4: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4 0.2.8: Python wrapper for running a display inside X virtual framebuffer
@@ -14943,7 +14943,7 @@ net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
-net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
+net-misc/tigervnc 1.3.1-r4 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2 1.3.10-r3: A great client/server software package allowing remote network access to graphical desktops
 net-misc/tinc 1.0.28 1.1_pre14: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
@@ -16041,7 +16041,7 @@ sci-libs/umfpack 5.2.0 5.6.2: Unsymmetric multifrontal sparse LU factorization l
 sci-libs/vecmath-objectclub 1.14: Unofficial free implementation of Sun javax.vecmath by Kenji Hiranabe
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.2.4 1.3 1.3.1 9999: Votca tools library
-sci-libs/vtk 6.0.0 6.1.0 6.1.0-r1 6.1.0-r2: The Visualization Toolkit
+sci-libs/vtk 6.0.0 6.1.0 6.1.0-r1 6.1.0-r2 6.1.0-r3: The Visualization Toolkit
 sci-libs/vtkdata 6.0.0 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r1: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1: Library to read gromacs trajectory and topology files
