@@ -40,6 +40,7 @@ COMMON_DEPEND="
 	>=dev-libs/jsoncpp-0.5.0-r1:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
+	>=dev-libs/re2-0.2016.05.01:=
 	gnome? ( >=gnome-base/gconf-2.24.0:= )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
@@ -282,7 +283,6 @@ src_prepare() {
 		third_party/protobuf
 		third_party/protobuf/third_party/six
 		third_party/qcms
-		third_party/re2
 		third_party/sfntly
 		third_party/skia
 		third_party/smhasher
@@ -344,7 +344,6 @@ src_configure() {
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
 	# TODO: use_system_protobuf (bug #525560).
-	# TODO: use_system_re2 (bug #571156).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 	myconf_gyp+="
@@ -375,6 +374,7 @@ src_configure() {
 		libwebp
 		libxml
 		libxslt
+		re2
 		snappy
 		yasm
 		zlib"
