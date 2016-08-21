@@ -308,6 +308,10 @@ punt_bogus_dep() {
 	local prefix=${1}
 	local dep=${2}
 
+	if [[ ! -e "CMakeLists.txt" ]]; then
+		return
+	fi
+
 	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
 
 	# pcregrep returns non-zero on no matches/error
