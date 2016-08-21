@@ -1551,7 +1551,7 @@ app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.22 0.32 0.35: Data resources for Rime Input Method Engine
 app-i18n/scim 1.4.14 1.4.16 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
-app-i18n/scim-anthy 1.2.7-r1 1.3.1: Japanese input method Anthy IMEngine for SCIM
+app-i18n/scim-anthy 1.2.7-r1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-bridge 0.4.16-r3: Yet another IM-client of SCIM
 app-i18n/scim-hangul 0.3.2 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3 0.1.3.1: Input pad for SCIM used to input symbols and special characters
@@ -4794,7 +4794,6 @@ dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
 dev-libs/libtasn1 4.5 4.8 4.9: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.17 0.18: Library for easy processing of keyboard entry from terminal-based programs
-dev-libs/libtomcrypt 1.17: Modular and portable cryptographic toolkit
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
 dev-libs/libtommath 0.42.0-r1 1.0: highly optimized and portable routines for integer based number theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
@@ -4977,7 +4976,7 @@ dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.2.4 2.3.0: An XQuery and XPath 2 library and command line utility written in C++
 dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and asset management
 dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
-dev-libs/yaz 3.0.50 3.0.53 4.2.30 4.2.51: C/C++ toolkit for Z39.50v3 clients and servers
+dev-libs/yaz 3.0.50 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zookeeper-c 3.4.8: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
@@ -6071,7 +6070,7 @@ dev-perl/Net-Twitter 4.10.100: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.3: Perl extension for UPnP
 dev-perl/Net-Whois-IP 1.190.0: Perl extension for looking up the whois information for ip addresses
 dev-perl/Net-XMPP 1.20.0-r1 1.50.0: XMPP Perl Library
-dev-perl/Net-Z3950-ZOOM 1.280.0-r1 1.300.0: Perl extension for invoking the ZOOM-C API
+dev-perl/Net-Z3950-ZOOM 1.280.0-r1: Perl extension for invoking the ZOOM-C API
 dev-perl/NetAddr-IP 4.72.0 4.78.0: Manipulation and operations on IP addresses
 dev-perl/NetPacket 1.6.0: Assemble / disassemble network packets at the protocol level
 dev-perl/NetxAP 0.20.0-r1: A base class for protocols such as IMAP, ACAP, IMSP, and ICAP
@@ -9796,7 +9795,7 @@ dev-util/geany 1.24.1 1.25 1.26 1.27 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26 1.28: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0: Gertty is a console-based interface to the Gerrit Code Review system.
-dev-util/glade 3.8.5 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
+dev-util/glade 3.18.3 3.20.0: A user interface designer for GTK+ and GNOME
 dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a specified object in various sources
 dev-util/gnome-devel-docs 3.18.1 3.20.2: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
@@ -14455,7 +14454,7 @@ net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 0.9.3 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.19 1.0.7 1.0.9-r1 1.0.9-r2: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/rest 0.7.93 0.8.0: Helper library for RESTful services
+net-libs/rest 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
@@ -17470,7 +17469,7 @@ virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
 virtual/gnat 3.4 4.1 4.2 4.3 4.4 4.6 4.9: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.22.0 0.23.0 0.24.0 0.24.1 0.25.0: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
-virtual/httpd-basic 0-r1 0-r2: Virtual for static HTML-enabled webservers
+virtual/httpd-basic 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
 virtual/httpd-php 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
