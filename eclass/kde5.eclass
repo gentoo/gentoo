@@ -225,6 +225,19 @@ if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
 fi
 
+# Drop this when kdepim is finally split upstream
+if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
+	S="${S}/${PN}"
+fi
+
+if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
+	if [[ -n ${KMNAME} ]]; then
+		S=${WORKDIR}/${KMNAME}-${PV%.0}	# kdevelop missing trailing .0 in first release
+	else
+		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
+	fi
+fi
+
 # Determine fetch location for released tarballs
 _calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -278,6 +291,25 @@ _calculate_src_uri() {
 			esac
 			;;
 	esac
+
+	if [[ -z ${SRC_URI} && -n ${KDEBASE} ]] ; then
+		local _kdebase
+		case ${PN} in
+			kdevelop-pg-qt)
+				_kdebase=${PN} ;;
+			*)
+				_kdebase=${KDEBASE} ;;
+		esac
+		case ${PV} in
+			*.*.[6-9]? )
+				SRC_URI="mirror://kde/unstable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz"
+				RESTRICT+=" mirror"
+				;;
+			*)
+				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV%.0}.tar.xz" ;;
+		esac
+		unset _kdebase
+	fi
 
 	if [[ ${KDEBASE} = kdel10n ]] ; then
 		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
