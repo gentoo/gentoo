@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.28"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 python-any-r1 vala
+inherit gnome2 python-any-r1 vala virtualx
 
 DESCRIPTION="A framework for easy media discovery and browsing"
 HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
@@ -74,6 +74,10 @@ src_configure() {
 		$(use_enable playlist grl-pls) \
 		$(use_enable test tests) \
 		$(use_enable vala)
+}
+
+src_test() {
+	virtx emake check
 }
 
 src_install() {
