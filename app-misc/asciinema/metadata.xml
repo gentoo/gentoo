@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="github">asciinema/asciinema</remote-id>
 		<remote-id type="pypi">asciinema</remote-id>
 	</upstream>
 </pkgmetadata>
