@@ -30,6 +30,330 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Ugly buildsystem, hard to bump, orphan (#462670). Removal in a month.
+x11-misc/ardesia
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Removal in a month, bug #463662
+# NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
+# Security issues.
+app-admin/389-ds-console
+net-nds/389-admin
+app-admin/389-admin-console
+www-apps/389-dsgw
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, all versions broken in several ways, bug #465604
+# Removal in a month.
+app-editors/gobby
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, broken, bug #466870. Removal in a month.
+sys-boot/plymouth-openrc-plugin
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream dead, relies on a lot of obsolete libs, bug #471458.
+# Removal in a month.
+media-sound/listen
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken, unmaintained, bug #473376. Removal in a month.
+x11-plugins/prpltwtr
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for a long time in favour of hopm, bug #473754.
+# Removal in a month.
+net-misc/bopm
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, pending major version bump, doesn't integrate well with
+# portage, bug #477798. Removal in a month.
+app-benchmarks/phoronix-test-suite
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream dead, not needed with apache-2.4, bug #480310. Removal in a
+# month.
+www-apache/mod_fastcgi
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream dead, buggy, removal in a month (#484290)
+media-video/dvd-slideshow
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, relies on obsolete libs. Try to use to better maintained
+# alternatives (like handbrake), bug #485320. Removal in a month.
+media-video/arista
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Incompatible with bluez-5, dead for ages, bug #500722. Removal in a month.
+app-mobilephone/obex-data-server
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead since 2011, needs a major version bump, bug #505050. Removal in a
+# month.
+media-video/xvideoservicethief
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, broken in several ways, try to use linux-firmware, bug
+# #508848. Removal in a month.
+media-tv/linuxtv-dvb-firmware
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, nothing needs this, collides with
+# sphinxcontrib-programoutput, bug #512496. Removal in a month.
+dev-python/sphinxcontrib-plantuml
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead since 2002, buggy (#513044). Removal in a month.
+app-benchmarks/piozone
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken in several ways for ages, bug #514074. Removal in a month.
+dev-ada/asis-gpl
+dev-lang/gnat-gpl
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead, doesn't build, bug #514830. Removal in a month.
+x11-misc/xac
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, needs multiple obsolete libs, bug #515078. Removal in a
+# month.
+app-cdr/gnomebaker
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Needs fixing (#515944), nothing needs this in the tree. Removal in a
+# month.
+dev-lang/regina-rexx
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, unclear security status, bug #521664
+# Removal in a month.
+www-servers/webfs
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, broken, bug #527268. Removal in a month.
+app-misc/ddccontrol
+app-misc/ddccontrol-db
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken, unmaintained, bug #528514. Removal in a month.
+net-libs/libzrtpcpp
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken (#530756), removal in a month.
+dev-libs/log4c
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Doesn't work (#532668), dead for ages. Removal in a month.
+net-misc/googlecl
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Remove dead plugins that became obsolete with apache-2.4 (#532782 and
+# others). Removal in a month.
+www-apache/mod_anonymize_ip
+www-apache/mod_auth_cookie_mysql2
+www-apache/mod_auth_imap2
+www-apache/mod_auth_mysql
+www-apache/mod_auth_nufw
+www-apache/mod_auth_token
+www-apache/mod_cband
+www-apache/mod_ftpd
+www-apache/mod_layout
+www-apache/mod_loadavg
+www-apache/mod_proxy_fcgi
+www-apache/mod_proxy_html
+www-apache/mod_slotlimit
+www-apache/mod_tcl
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Nobody willing to update this, bug #532918. Removal in a month.
+app-misc/asciinema
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Security issues (#534184), removal in a month.
+app-misc/run-mailcap
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken (#536710), upstream dead and unmaintained. Removal in a month.
+x11-libs/fxscintilla
+dev-ruby/fxruby
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, librsvg should be used instead, bug #537918. Removal in a
+# month.
+x11-libs/libsvg-cairo
+media-gfx/xsvg
+media-libs/libsvg
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken on libav/ffmpeg updates, upstream dead, unmaintained (#540214).
+# Removal in a month.
+media-libs/libdlna
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to compile (#544002), unmaintained, nothing needs this in the tree.
+# Removal in a month.
+dev-lang/io
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Obsolete for years in favour of plain libsoup usage. Removal in a month.
+net-libs/libsoup-gnome
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream inactive, still relies on vulnerable and obsolete webkit-gtk
+# versions, bug #553088. Removal in a month.
+www-client/dwb
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#555568). Removal in a month.
+app-i18n/scim-skk
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# This was merged in systemd, if you want to keep it, take it a maintain it
+# splitted (#556734). Removal in a month.
+sys-boot/gummiboot
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#557452), nothing requires this in the tree. Removal in a
+# month.
+media-plugins/audacious-dumb
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead, unmaintained, fails to build (#558068). Removal in a month.
+net-misc/yajhfc
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Outdated, unmaintained, use linux-firmware instead (#561996). Removal in a
+# month.
+sys-firmware/iwl6000-ucode
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Security issues (#562898), nothing needs it, removal in a month.
+app-admin/lsyncd
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead, not compatible with wxGTK3 (#564088). Removal in a month.
+games-mud/wxmud
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, broken (#566628). Removal in a month.
+app-pda/coldsync
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Broken (#570062), upstream stopped its development years ago in favour of
+# its java version. Removal in a month.
+media-sound/gnaural
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#575906), removal in a month.
+app-misc/slashtime
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Collides with newer obexftp (#578916), removal in a month.
+sys-fs/obexfs
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Replaced by filebeat-bin, bug #579690. Removal in a month.
+app-admin/logstash-forwarder
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#583334), unmaintained, removal in a month.
+app-benchmarks/ltp
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream dead for a long time, needs multiple fixes (#583786). Removal in
+# a month.
+app-cdr/burncenter
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained, relies on obsolete and vulnerable webkit-gtk versions
+# (#584192). Removal in a month.
+www-client/vimprobable2
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, nothing needs it (#587262). Removal in a month.
+dev-libs/libgringotts
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Calls prepstrip, nothing needs it in the tree (#587312). Removal in a
+# month.
+dev-util/nsis
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#587804), upstream dead. Removal in a month.
+net-nntp/nzb
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Fails to build (#588402), nothing needs this. Removal in a month.
+dev-libs/libxr
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Upstream dead for ages, it doesn't work (#588880). Removal in a month.
+app-emulation/vboxgtk
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, broken in several ways (#589808). Removal in a month.
+net-misc/jigdo
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead since 2010, unmaintained (#590142). Removal in a month.
+dev-libs/libmal
+app-pda/jpilot-syncmal
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Obsolete, requires lots of dead libs (#591104). Removal in a month.
+media-video/coriander
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Packages added without a maintainer:
+dev-vcs/git-deps #591110
+net-wireless/portapack-firmware #591114
+app-arch/threadzip #591118
+media-video/pgcedit # 591122
+dev-python/remoteobjects #591124
+net-dns/hesinfo #591126
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Unmaintained packages, not needed by anything in the tree and that would
+# need migration to new python eclasses
+app-text/lodgeit #591466
+dev-util/metro #591470
+mail-filter/isbg #591472
+net-misc/goog-sitemapgen #591478
+net-misc/gtkvncviewer #591480
+dev-python/pynut #591482
+net-misc/nut-monitor #591482
+sys-power/cpuspeedy #591486
+x11-misc/denu #591488
+net-misc/identicurse #591504
+app-pda/synce-sync-engine #591500
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead since 2007, requires cdrkit, bug #591780
+app-cdr/mybashburn
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead since 2013, relies on obsolete libs (#591798), unmaintained. Removal
+# in a month.
+net-misc/gnome-rdp
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Multiple unresolved bugs (#368997), upstream doesn't take care of -1
+# branch for a long time. Use tigervnc instead.
+net-misc/tightvnc
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Security issues (#560426), relies on obsolete libs (#551284). Removal in a
+# month.
+x11-misc/shutter
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# Dead for ages, relies on obsolete and vulnerable webkit-gtk versions
+# (#572984). Removal in a month.
+gnome-extra/gnome-web-photo
+
 # Michael Palimaka <kensington@gentoo.org> (20 Aug 2016)
 # Deprecated. Use kde-plasma/kwallet-pam[oldwallet] instead.
 # Masked for removal in 30 days.
@@ -435,10 +759,6 @@ dev-java/spring-instrument
 # Segfaults when creating directories #578582
 =sys-apps/sandbox-2.11*
 
-# Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
-# Tons-o-bugs and no actual testing by new author. #578490
-dev-libs/libtomcrypt
-
 # José María Alonso <nimiux@gentoo.org> (24 Mar 2016)
 # Fails to build dev-lisp/sbcl-1.3.3 #563812
 =dev-lisp/asdf-3.1.7
@@ -513,13 +833,6 @@ dev-perl/ExtUtils-Constant
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Unbuildable for a long time, bug #522916. Removal in a month.
 net-im/silc-server
-
-# NP-Hardass <NP-Hardass@gentoo.org> (05 Feb 2016)
-# Security issues. Under investigation by maintainer.
-app-admin/389-ds-console
-net-nds/389-admin
-app-admin/389-admin-console
-www-apps/389-dsgw
 
 # Andrey Grozin <grozin@gentoo.org> (04 Jan 2016)
 # Needs a bump and substantial ebuild rewrite
@@ -758,13 +1071,6 @@ sci-geosciences/googleearth
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Robin H. Johnson <robbat2@gentoo.org> (09 Feb 2012)
-# Needs to be slotted better
-# Andreas K. Hüttel <dilfridge@gentoo.org> (08 Apr 2016)
-# Add dev-perl/Net-Z3950-ZOOM-1.300.0 which requires yaz-4*
-=dev-libs/yaz-4*
->=dev-perl/Net-Z3950-ZOOM-1.300.0
-
 # Samuli Suominen <ssuominen@gentoo.org> (06 Mar 2012)
 # Masked for testing since this is known to break nearly
 # every reverse dependency wrt bug 407091
@@ -818,10 +1124,6 @@ games-fps/doom3-roe
 games-fps/quake4-bin
 games-fps/quake4-data
 games-fps/quake4-demo
-
-# MATSUU Takuto <matsuu@gentoo.org> (05 Apr 2007)
-# to be tested, seems unstable
->=app-i18n/scim-anthy-1.3.0
 
 # <klieber@gentoo.org> (01 Apr 2004)
 # The following packages contain a remotely-exploitable

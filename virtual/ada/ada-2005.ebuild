@@ -9,11 +9,10 @@ HOMEPAGE=""
 SRC_URI=""
 LICENSE=""
 SLOT="2005"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 # Only one at present, but gnat-gcc-4.3 is coming soon too
 RDEPEND="|| (
-	>=dev-lang/gnat-gcc-4.3
-	>=dev-lang/gnat-gpl-4.1 )"
+	>=dev-lang/gnat-gcc-4.3 )"
 DEPEND=""

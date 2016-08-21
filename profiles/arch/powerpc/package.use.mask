@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# gnat-gpl is being removed, bug #514074
+mail-client/alpine topal
+
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.

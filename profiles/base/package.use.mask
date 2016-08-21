@@ -5,6 +5,18 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# media-libs/libdlna is being removed, bug #540214
+media-video/ushare dlna
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# x11-libs/libsvg-cairo is being removed, bug #537918
+dev-ml/cairo-ocaml svg
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# net-libs/libzrtpcpp will be removed, bug #528514
+net-libs/ortp zrtp
+
 # Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
 # xanim is going to be removed, bug #181959
 media-video/mplayer xanim
