@@ -9483,7 +9483,7 @@ dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5: Checks latex source for common mistakes
 dev-tex/circuit_macros 8.3.2 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cjk-latex 4.8.3-r1 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
-dev-tex/cpp2latex 2.3-r1: A program to convert C++ code to LaTeX source
+dev-tex/cpp2latex 2.3-r1 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r1: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7: Culmus fonts support for latex
@@ -13555,7 +13555,7 @@ media-video/ffmpegthumbnailer 2.0.8 2.0.10 2.1.0 2.1.1: Lightweight video thumbn
 media-video/flumotion 0.8.1 0.8.1-r1 0.10.1: Flumotion Streaming server
 media-video/flvstreamer 2.1c: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/frameworks 0.3.7-r1: A small v4l frame capture utility especially suited for stop motion animation
-media-video/gaupol 0.19.2-r1 0.28.2-r1 0.91 0.92: A subtitle editor for text-based subtitles
+media-video/gaupol 0.91 0.92: A subtitle editor for text-based subtitles
 media-video/get_flash_videos 1.24-r1 9999: Downloads videos from various Flash-based video hosting sites
 media-video/gnome-mplayer 1.0.8 1.0.9: A GTK+ interface to MPlayer
 media-video/gnome-subtitles 1.2 1.3: Video subtitling for the Gnome desktop
@@ -17887,7 +17887,7 @@ www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.70_beta 54.0.2832.2_al
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
-www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 9999: Video chat browser plug-in for Google Talk
+www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/kaffeine-mozilla-plugin 0.2-r1: The Kaffeine Mozilla starter plugin
 www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to embed file viewers into non-KDE browsers
 www-plugins/lightspark 0.7.2_p20150318: High performance flash player
