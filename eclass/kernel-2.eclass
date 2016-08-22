@@ -49,6 +49,9 @@
 # 						  as a result the user cannot choose to apply those patches.
 # K_EXP_GENPATCHES_LIST	- A list of patches to pick from "experimental" to apply when
 # 						  the USE flag is unset and K_EXP_GENPATCHES_PULL is set.
+# K_FROM_GIT - If set, this variable signals that the kernel sources derives from a git tree and special
+#	    handling will be applied so that any patches that are applied will actually apply.
+#
 # K_GENPATCHES_VER		- The version of the genpatches tarball(s) to apply.
 #						  A value of "5" would apply genpatches-2.6.12-5 to
 #						  my-sources-2.6.12.ebuild
@@ -1090,7 +1093,7 @@ unipatch() {
 			#                                                                  #
 			# https://bugs.gentoo.org/show_bug.cgi?id=507656                   #
 			####################################################################
-			if [[ ${PN} == "git-sources" ]] ; then
+			if [[ -n ${K_FROM_GIT} ]] ; then
 				if [[ ${KV_MAJOR} -gt 3 || ( ${KV_MAJOR} -eq 3 && ${KV_PATCH} -gt 15 ) &&
 					${RELEASETYPE} == -rc ]] ; then
 					ebegin "Applying ${i/*\//} (-p1)"
