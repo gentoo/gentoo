@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <upstream>
-    <maintainer>
-      <email>sustrik@fastmq.com</email>
-      <name>Martin Sustrik</name>
-    </maintainer>
-    <doc>http://zguide.zeromq.org/chapter:1</doc>
-    <bugs-to>https://github.com/zeromq/zeromq2/issues</bugs-to>
-    <!-- remote-id type="github">zeromq/zeromq2</remote-id-->
-  </upstream>
-  <longdescription lang="en">
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>sustrik@fastmq.com</email>
+			<name>Martin Sustrik</name>
+		</maintainer>
+		<doc>http://zguide.zeromq.org/page:all</doc>
+		<bugs-to>https://github.com/zeromq/zeromq4-1/issues</bugs-to>
+		<remote-id type="github">zeromq/zeromq4-1</remote-id>
+	</upstream>
+	<longdescription lang="en">
 		The 0MQ lightweight messaging kernel is a library which
 		extends the standard socket interfaces with features
 		traditionally provided by specialised messaging middleware
@@ -19,10 +23,10 @@
 		(subscriptions), seamless access to multiple transport protocols
 		and more.
 	</longdescription>
-  <use>
-    <flag name="pgm">
-Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
-multicast transport of data over IP networks.
+	<use>
+		<flag name="pgm">
+			Build PGM (Pragmatic General Multicast)extention, a protocol for reliable 
+			multicast transport of data over IP networks.
 		</flag>
-  </use>
+	</use>
 </pkgmetadata>
