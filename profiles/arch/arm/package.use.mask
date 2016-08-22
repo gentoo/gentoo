@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
+# Missing keywords on dev-libs/gom - bug #521972
+media-libs/grilo test
+
 # Brian Evans <grknight@gentoo.org> (18 Aug 2016)
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
