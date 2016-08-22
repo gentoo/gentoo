@@ -93,32 +93,32 @@ src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
-	eapply "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-multilib.patch
+	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	eapply "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-build_doc.patch
+	eapply "${FILESDIR}"/9999/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
-	eapply "${FILESDIR}"/cmake/0002-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
+	eapply "${FILESDIR}"/9999/0003-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
 
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
-	eapply "${FILESDIR}"/cmake/0003-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
+	eapply "${FILESDIR}"/9999/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
 
 	# Prevent installing libgtest
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	eapply "${FILESDIR}"/cmake/0004-cmake-Do-not-install-libgtest.patch
+	eapply "${FILESDIR}"/9999/0005-cmake-Do-not-install-libgtest.patch
 
 	# Allow custom cmake build types (like 'Gentoo')
-	eapply "${FILESDIR}"/cmake/${PN}-3.8-allow_custom_cmake_build_types.patch
+	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/llvm-3.9-llvm-config.patch
+	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
 	# Restore SOVERSIONs for shared libraries
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
-	eapply "${FILESDIR}"/llvm-3.8-soversion.patch
+	eapply "${FILESDIR}"/9999/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
 
 	# Fix lit tests to find installed llvm-lit correctly
 	eapply "${FILESDIR}"/9999/0009-cmake-Use-system-llvm-lit-when-lit.py-does-not-exist.patch
@@ -126,7 +126,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/9999/0010-lit-setup.py-Install-as-llvm-lit-as-cmake-expects-it.patch
 
 	# support building llvm against musl-libc
-	use elibc_musl && eapply "${FILESDIR}"/llvm-3.8-musl-fixes.patch
+	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die

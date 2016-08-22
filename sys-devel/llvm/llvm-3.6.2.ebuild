@@ -148,23 +148,23 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.2-nodoctargz.patch
-	epatch "${FILESDIR}"/${PN}-3.5-gcc-4.9.patch
-	epatch "${FILESDIR}"/${PN}-3.6-gentoo-install.patch
-	epatch "${FILESDIR}"/${PN}-3.6.0-ocaml-ctypes-0.4.0.patch
+	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
+	epatch "${FILESDIR}"/3.6.2/gcc-4.9.patch
+	epatch "${FILESDIR}"/3.6.2/gentoo-install.patch
+	epatch "${FILESDIR}"/3.6.2/ocaml-ctypes-0.4.0.patch
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
+		epatch "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.6-gentoo-install.patch
-		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.7.1/clang/gentoo-install.patch
+		epatch "${FILESDIR}"/3.8.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		# Fix build fails with using gcc-4.9 on Gentoo/FreeBSD, bug #548444
-		epatch "${FILESDIR}"/clang-3.6-fbsd-gcc49.patch
+		epatch "${FILESDIR}"/3.6.2/clang/fbsd-gcc49.patch
 	fi
 
 	if use prefix && use clang; then
