@@ -21,6 +21,8 @@ RDEPEND=">=dev-lang/perl-5.8.2
 DEPEND="${RDEPEND}"
 
 src_install() {
+	docompress -x "/usr/share/doc/${PF}/rsnapshot.conf.default"
+
 	# Change sysconfdir to install the template file as documentation
 	# rather than in /etc.
 	emake install DESTDIR="${D}" \
@@ -37,7 +39,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The template configuration file has been compressed and installed as"
-	elog "  /usr/share/doc/${PF}/rsnapshot.conf.default.[gz|bz2|etc]"
+	elog "The template configuration file has been installed as"
+	elog "  /usr/share/doc/${PF}/rsnapshot.conf.default"
 	elog "Copy and edit the the above file as /etc/rsnapshot.conf"
 }
