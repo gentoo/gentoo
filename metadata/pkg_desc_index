@@ -8070,7 +8070,7 @@ dev-python/rax-default-network-flags-python-novaclient-ext 0.1.3 0.1.3-r1 0.2.4 
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
-dev-python/rebulk 0.7.2 9999: Python library that performs advanced searches in strings
+dev-python/rebulk 0.7.2 0.7.3 9999: Python library that performs advanced searches in strings
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/reconfigure 0.1.50 0.1.72 0.1.75 0.1.79: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
