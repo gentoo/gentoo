@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=ssl? ( dev-libs/openssl:= ) virtual/pkgconfig
+DESCRIPTION=Advanced command line hexadecimal editor and more
+EAPI=5
+HOMEPAGE=http://www.radare.org
+IUSE=ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=http://www.radare.org/get/radare2-0.10.5.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=5e482235f0b3133db1e114c951f40411

@@ -2627,6 +2627,7 @@ app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-t
 app-vim/syntastic 3.7.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
+app-vim/tasklist 1.0.1: Highlight FIXME/TODO/CUSTOM keywords in a separate list
 app-vim/tcomment 3.08: vim plugin: an extensible and universal comment toggler
 app-vim/thlnk 1.2.1: vim plugin: linking in plaintext
 app-vim/tlib 1.20: vim plugin: a library of utility functions
@@ -6924,7 +6925,7 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.11.1_p1 3.13.0_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 0.8.1 0.8.9 0.9.0 1.0.0 1.1.0 1.1.1 1.4.1: Bash tab completion for argparse
+dev-python/argcomplete 1.4.1: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1 0.26.2: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
@@ -8107,7 +8108,7 @@ dev-python/robotframework-sshlibrary 2.0.2 2.1.1 2.1.2: A test library for Robot
 dev-python/roman 2.0.0: An Integer to Roman numerals converter
 dev-python/root_numpy 3.2.0 3.3.0 3.3.1 4.4.0: Interface between ROOT and numpy
 dev-python/rootpy 0.7.1 0.8.0: Pythonic layer on top of the ROOT framework's PyROOT bindings
-dev-python/rope 0.9.4-r1 0.10.2 0.10.3: Python refactoring library
+dev-python/rope 0.10.3: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
@@ -9924,7 +9925,7 @@ dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machine
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.0.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.63 9999: quilt patch manager
-dev-util/radare2 0.10.3 0.10.4 9999: Advanced command line hexadecimal editor and more
+dev-util/radare2 0.10.3 0.10.4 0.10.5 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.6: Command line tools for use with Review Board
