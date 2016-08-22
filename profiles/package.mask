@@ -217,8 +217,8 @@ www-client/dwb
 app-i18n/scim-skk
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# This was merged in systemd, if you want to keep it, take it a maintain it
-# splitted (#556734). Removal in a month.
+# This was merged into sys-apps/systemd, USE=gnuefi (#556734).
+# Removal in a month.
 sys-boot/gummiboot
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
