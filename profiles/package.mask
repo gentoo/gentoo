@@ -618,13 +618,6 @@ kde-apps/kde-base-artwork
 # recent JVMs. Masked for removal in 30 days. See bug #584562.
 dev-java/oscache
 
-# Pacho Ramos <pacho@gentoo.org> (31 Jul 2016)
-# Upstream looks completely dead for a long time, doesn't reply to any bug
-# we report to them. This relies on obsolete software like (#587448) and
-# other bugs are being accumulated without any fix/attention. Removal in a
-# month if nobody comes with the fixes.
-www-client/midori
-
 # Johannes Huber <johu@gentoo.org> (29 Jul 2016)
 # Masked for removal in 30 days. Dead by upstream, superseded by
 # kde-plasma/plasma-workspace-wallpapers. Last release with
