@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
+# php 5.5 is end of life, masked for removal
+php_targets_php5-5
 
 # Brian Evans <grknight@gentoo.org> (2 Dec 2015)
 # php 5.4 is end of life, masked for removal
