@@ -1,17 +1,17 @@
-From 3da7d5f7f928aa2aa5e7436b27908bb7e7eb3cc1 Mon Sep 17 00:00:00 2001
+From 597ebcc28580a8532f6634e2a723901c3448b9ff Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Mon, 28 Mar 2016 22:21:19 +0200
-Subject: [PATCH] cmake: Restore SOVERSIONs on shared libraries
+Subject: [PATCH 08/10] cmake: Restore SOVERSIONs on shared libraries
 
 ---
  cmake/modules/AddLLVM.cmake | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/cmake/modules/AddLLVM.cmake b/cmake/modules/AddLLVM.cmake
-index a829751..a7e0688 100644
+index 9590a1b..83a2359 100644
 --- a/cmake/modules/AddLLVM.cmake
 +++ b/cmake/modules/AddLLVM.cmake
-@@ -436,6 +436,11 @@ function(llvm_add_library name)
+@@ -445,6 +445,11 @@ function(llvm_add_library name)
          PREFIX ""
          )
      endif()
@@ -24,5 +24,5 @@ index a829751..a7e0688 100644
  
    if(ARG_MODULE OR ARG_SHARED)
 -- 
-2.7.4
+2.9.3
 

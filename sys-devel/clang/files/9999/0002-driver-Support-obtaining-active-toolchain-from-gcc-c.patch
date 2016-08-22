@@ -1,0 +1,46 @@
+From 67025453e6c2373c8d761f6435e7fa4ddaacd8fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 5 Sep 2014 16:49:35 +0200
+Subject: [PATCH 2/7] driver: Support obtaining active toolchain from
+ gcc-config on Gentoo
+
+Author: Richard Yao <ryao@gentoo.org>
+Bug: https://bugs.gentoo.org/406163
+Bug: https://bugs.gentoo.org/417913
+---
+ lib/Driver/ToolChains.cpp | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/lib/Driver/ToolChains.cpp b/lib/Driver/ToolChains.cpp
+index 68d5214..7689f86 100644
+--- a/lib/Driver/ToolChains.cpp
++++ b/lib/Driver/ToolChains.cpp
+@@ -1418,6 +1418,25 @@ void Generic_GCC::GCCInstallationDetector::init(
+     }
+   }
+ 
++  for (unsigned k = 0, ke = CandidateTripleAliases.size(); k < ke; ++k) {
++    llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> File =
++        llvm::MemoryBuffer::getFile(D.SysRoot + "/etc/env.d/gcc/config-" + CandidateTripleAliases[k].str());
++    if (File)
++    {
++      const std::string VersionText = File.get()->getBuffer().rsplit('-').second.substr(0,5).str();
++      const std::string GentooPath = D.SysRoot + "/usr/lib/gcc/" + CandidateTripleAliases[k].str() + "/" + VersionText;
++      if (llvm::sys::fs::exists(GentooPath + "/crtbegin.o"))
++      {
++        Version = GCCVersion::Parse(VersionText);
++        GCCInstallPath = GentooPath;
++        GCCParentLibPath = GCCInstallPath + "/../../..";
++        GCCTriple.setTriple(CandidateTripleAliases[k]);
++        IsValid = true;
++        return;
++      }
++    }
++  }
++
+   // Loop over the various components which exist and select the best GCC
+   // installation available. GCC installs are ranked by version number.
+   Version = GCCVersion::Parse("0.0.0");
+-- 
+2.9.3
+

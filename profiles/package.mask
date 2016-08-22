@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
+# PHP 5.5 has reached end of life and will no longer receive security updates.
+# Also include associated packages which do not work on newer versions
+# Removal in 90 days
+dev-lang/php:5.5
+dev-php/pecl-http:0
+=dev-php/pecl-mailparse-2.1.6-r1
+
+
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Ugly buildsystem, hard to bump, orphan (#462670). Removal in a month.
 x11-misc/ardesia

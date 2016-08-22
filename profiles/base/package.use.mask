@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
+# Depends on masked, end-of-life php versions
+=dev-libs/ossp-uuid-1.6.2-r4 php
+=dev-libs/xapian-bindings-1.2.22 php
+=www-servers/uwsgi-2.0.9 php
+
 # Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
 # Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
 media-plugins/grilo-plugins chromaprint

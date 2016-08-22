@@ -144,19 +144,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.2-nodoctargz.patch
-	epatch "${FILESDIR}"/${PN}-3.5-gcc-4.9.patch
-	epatch "${FILESDIR}"/${PN}-3.5-gentoo-install.patch
-	epatch "${FILESDIR}"/${P}-gcc-5.1.patch
+	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
+	epatch "${FILESDIR}"/3.6.2/gcc-4.9.patch
+	epatch "${FILESDIR}"/3.5.2/gentoo-install.patch
+	epatch "${FILESDIR}"/3.5.2/gcc-5.1.patch
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/Ocaml/*ml  || die
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
+		epatch "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.5-gentoo-install.patch
-		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.5.2/clang/gentoo-install.patch
+		epatch "${FILESDIR}"/3.8.1/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 

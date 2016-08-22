@@ -1,19 +1,20 @@
-From 2ec240a76253839cd1c5dc2e964f55698ae468fc Mon Sep 17 00:00:00 2001
+From 1251ac2021b768d3a56b4dc03212ea2fd12a34dd Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Mon, 8 Jun 2015 06:43:00 +0200
-Subject: [PATCH 2/4] cmake: Support overriding Sphinx HTML doc install
+Subject: [PATCH 03/10] cmake: Support overriding Sphinx HTML doc install
  directory
 
 Provide ${PROJECT}_INSTALL_HTML variables (e.g. LLVM_INSTALL_HTML) to
 override Sphinx HTML doc install directory.
 
-Fixes: https://llvm.org/bugs/show_bug.cgi?id=23780
+Bug: https://llvm.org/bugs/show_bug.cgi?id=23780
+Patch: https://reviews.llvm.org/D23757
 ---
  cmake/modules/AddSphinxTarget.cmake | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/modules/AddSphinxTarget.cmake b/cmake/modules/AddSphinxTarget.cmake
-index 045dc23..9c9c444 100644
+index 045dc23..fac143f 100644
 --- a/cmake/modules/AddSphinxTarget.cmake
 +++ b/cmake/modules/AddSphinxTarget.cmake
 @@ -53,8 +53,12 @@ function (add_sphinx_target builder project)
@@ -26,11 +27,11 @@ index 045dc23..9c9c444 100644
 +        set(${project_upper}_INSTALL_HTML "share/doc/${project}/html"
 +            CACHE STRING "HTML documentation install directory for ${project}")
 +
-+        install(DIRECTORY "${SPHINX_BUILD_DIR}/"
++        install(DIRECTORY "${SPHINX_BUILD_DIR}/."
 +                DESTINATION "${${project_upper}_INSTALL_HTML}")
        else()
          message(WARNING Installation of ${builder} not supported)
        endif()
 -- 
-2.4.3
+2.9.3
 
