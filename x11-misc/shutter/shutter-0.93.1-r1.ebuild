@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Feature-rich screenshot program"
@@ -13,16 +12,15 @@ SRC_URI="http://shutter-project.org/wp-content/uploads/releases/tars/${P}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="drawing webphoto"
+IUSE="drawing"
 
 RDEPEND="dev-lang/perl
 	drawing? ( dev-perl/Goo-Canvas  )
-	webphoto? ( gnome-extra/gnome-web-photo )
 	|| ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] )
 	dev-perl/libxml-perl
-	dev-perl/gnome2-wnck
 	dev-perl/gnome2-canvas
 	dev-perl/gnome2-perl
+	dev-perl/gnome2-wnck
 	dev-perl/Gtk2-Unique
 	dev-perl/Gtk2-ImageView
 	dev-perl/File-DesktopEntry
@@ -42,8 +40,11 @@ RDEPEND="dev-lang/perl
 	dev-perl/libwww-perl"
 
 src_prepare() {
-	use webphoto || epatch "${FILESDIR}"/${PN}-0.90-webphoto.patch
-	use drawing || epatch "${FILESDIR}"/${PN}-0.90-goocanvas.patch
+	default
+
+	eapply "${FILESDIR}"/${PN}-0.90-webphoto.patch
+	use drawing || eapply "${FILESDIR}"/${PN}-0.90-goocanvas.patch
+
 	#Fix tray icon because it doesn't pick the right icon using various themes
 	sed -i -e "/\$tray->set_from_icon_name/s:set_from_icon_name:set_from_file:" \
 	-e "s:shutter-panel:/usr/share/icons/hicolor/scalable/apps/&.svg:" \
@@ -67,4 +68,16 @@ src_install() {
 		|| die "failed to make plugins executables"
 	find "${D}"/usr/share/shutter/resources/system/upload_plugins/upload -type f \
 		-name "*.pm" -exec chmod 755 {} \; || die "failed to make upload plugins executables"
+}
+
+pkg_postinst() {
+	elog ""
+	elog "The following optional dependencies can be used to provide"
+	elog "additional functionality:"
+	elog ""
+	elog "- media-libs/exiftool            : Writing Exif information"
+	elog "- dev-libs/libappindicator       : Status icon support for Unity"
+	elog "- dev-perl/{Net-OAuth,Path-Class}: Dropbox support"
+	elog "- dev-perl/JSON-XS               : vgy.me image hosting support"
+	elog""
 }

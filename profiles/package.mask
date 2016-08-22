@@ -358,11 +358,6 @@ net-misc/gnome-rdp
 net-misc/tightvnc
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Security issues (#560426), relies on obsolete libs (#551284). Removal in a
-# month.
-x11-misc/shutter
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Dead for ages, relies on obsolete and vulnerable webkit-gtk versions
 # (#572984). Removal in a month.
 gnome-extra/gnome-web-photo
