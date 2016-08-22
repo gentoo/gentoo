@@ -19,7 +19,8 @@ IUSE="custom-cflags selinux"
 RESTRICT="test"
 
 DEPEND="app-crypt/trousers
-app-crypt/tpm-tools"
+app-crypt/tpm-tools
+dev-libs/openssl:0=[-bindist]"
 
 RDEPEND="${DEPEND}
 sys-boot/grub:2
