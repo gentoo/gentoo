@@ -20,6 +20,12 @@ RDEPEND=">=dev-lang/perl-5.8.2
 		>=net-misc/rsync-2.6.0"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	default
+	# remove '/etc/' since we don't place it here, bug #461554
+	sed -i -e 's:/etc/rsnapshot.conf.default:rsnapshot.conf.default:' rsnapshot-program.pl || die
+}
+
 src_install() {
 	docompress -x "/usr/share/doc/${PF}/rsnapshot.conf.default"
 
