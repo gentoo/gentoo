@@ -6818,7 +6818,7 @@ dev-php/pecl-memcache 2.2.7 3.0.8-r1: PHP extension for using memcached
 dev-php/pecl-memcached 2.2.0-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.9 1.6.11 1.6.14: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.1.7 1.1.8: MongoDB database driver for PHP
-dev-php/pecl-mysqlnd_ms 1.5.2-r1 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
+dev-php/pecl-mysqlnd_ms 1.6.0_pre20141127: A replication and load balancing plugin for the mysqlnd library
 dev-php/pecl-mysqlnd_qc 1.2.0-r1: A query cache plugin for the mysqlnd library
 dev-php/pecl-ncurses 1.0.2-r2: Terminal screen handling and optimization package
 dev-php/pecl-oauth 1.2.3-r3 2.0.2: OAuth is an authorization protocol built on top of HTTP
@@ -17014,7 +17014,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (y
 sys-devel/bmake 20160315 20160606: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
+sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 9999: C language family frontend for LLVM
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17282,6 +17282,7 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3 1.3-r1: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.25.1-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/compiler-rt 9999: Compiler runtime libraries for clang
 sys-libs/cracklib 2.9.1-r1 2.9.4 2.9.5 2.9.6: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r1 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.35 6.1.26 6.2.23: Oracle Berkeley DB
