@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=net-misc/curl dev-libs/openssl:0= libnotify? ( >=x11-libs/libnotify-0.7 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Last.fm scrobbler for cmus music player
+EAPI=6
+HOMEPAGE=https://github.com/Arkq/cmusfm
+IUSE=libnotify
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-misc/curl dev-libs/openssl:0= libnotify? ( >=x11-libs/libnotify-0.7 ) media-sound/cmus
+SLOT=0
+SRC_URI=https://github.com/Arkq/cmusfm/archive/v0.3.1.tar.gz -> cmusfm-0.3.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=0bc38e4be7f658b20da02a6d936c7e40
