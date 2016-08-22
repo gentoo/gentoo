@@ -315,8 +315,6 @@ media-video/coriander
 # Packages added without a maintainer:
 #591110
 dev-vcs/git-deps
-#591114
-net-wireless/portapack-firmware
 #591118
 app-arch/threadzip
 #591122
