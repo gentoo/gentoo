@@ -14679,7 +14679,7 @@ net-misc/elliptics-eblob 0.0.1 0.22.16: The elliptics network - eblob backend
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
-net-misc/fatrat 1.2.0_beta2: Qt4-based download/upload manager
+net-misc/fatrat 1.2.0_beta2 1.2.0_beta2_p20150803: Qt4-based download/upload manager
 net-misc/flexget 1.2.315 1.2.346-r1 9999: Multipurpose automation tool for content like torrents, nzbs, podcasts, comics
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freelan 2.0: Peer-to-peer VPN software that abstracts a LAN over the Internet
@@ -17180,7 +17180,7 @@ sys-fs/growpart 0.0.1: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
-sys-fs/inotify-tools 3.13-r1 3.14: a set of command-line programs providing a simple interface to inotify
+sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9 2.4.10.1 2.4.11.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
