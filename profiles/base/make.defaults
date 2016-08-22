@@ -58,7 +58,7 @@ CAMERAS="ptp2"
 
 # Ole Markus With <olemarkus@gentoo.org> (09 Oct 2010)
 # Default PHP targets (should always be latest stable version)
-PHP_TARGETS="php5-5"
+PHP_TARGETS="php5-6"
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd
