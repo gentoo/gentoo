@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 # Dependency for docbuild documentation which is not noted in
@@ -28,15 +28,14 @@ python_test() {
 }
 
 python_compile_all() {
-	local i;
 	if use doc; then
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		mkdir build || die
-		for i in ./*.rst
-		do
+		local i
+		for i in ./*.rst; do
 			rst2html.py $i > ./build/${i/rst/html} || die
 		done
-	   	popd > /dev/null
+	   	popd > /dev/null || die
 	fi
 }
 
