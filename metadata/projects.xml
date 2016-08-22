@@ -130,11 +130,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Accessibility</url>
     <description>The Gentoo Accessibility Project provides a way for Gentoo developers in various teams to coordinate efforts to make Gentoo more accessible to users who have disabilities.</description>
     <member>
-      <email>dang@gentoo.org</email>
-      <name>Daniel Gryniewicz</name>
-      <role>Member ( GNOME Accessibility Maintainer )</role>
-    </member>
-    <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
       <role>Member ( GNOME Team Lead )</role>
@@ -1230,11 +1225,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:GNOME</url>
     <description>The Gentoo Gnome Project aims to bring the current and complete GNOME Desktop Environment to Gentoo.</description>
     <member>
-      <email>dang@gentoo.org</email>
-      <name>Daniel Gryniewicz</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>eva@gentoo.org</email>
       <name>Gilles Dartiguelongue</name>
       <role>Member</role>
@@ -1765,11 +1755,6 @@
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
       <role>Member (Kernel, mm-sources, vanilla-sources)</role>
-    </member>
-    <member>
-      <email>dang@gentoo.org</email>
-      <name>Daniel Gryniewicz</name>
-      <role>Member (Kernel, User Mode Linux)</role>
     </member>
     <member is-lead="1">
       <email>mpagano@gentoo.org</email>

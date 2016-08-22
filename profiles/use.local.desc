@@ -8007,9 +8007,7 @@ www-client/google-chrome-beta:plugins - Add system plugins path to launcher
 www-client/google-chrome-unstable:plugins - Add system plugins path to launcher
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
-www-client/midori:deprecated - Enable GTK+-2 instead of GTK+-3 because of external plugins like adobe-flash
 www-client/midori:granite - Enable support for the elementary library dev-libs/granite
-www-client/midori:webkit2 - Enable WebKit2 API that splits web content rendering and application UI into separate processes
 www-client/midori:zeitgeist - Add support for Zeitgeist event tracking system
 www-client/netsurf:bmp - BMP bitmap image support (media-libs/libnsbmp)
 www-client/netsurf:duktape - Use duktape.org javascript engine
