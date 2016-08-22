@@ -8285,7 +8285,6 @@ x11-misc/rss-glx:quesoglc - Enable support for OpenGL Character Renderer
 x11-misc/sddm:consolekit - Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)
 x11-misc/sent:savedconfig - Without a saved config.h, this package depends on media-gfx/farbfeld for image conversions
 x11-misc/shutter:drawing - Enables drawing tool
-x11-misc/shutter:webphoto - Enables screenshots of websites
 x11-misc/slim:consolekit - Enable native consolekit support
 x11-misc/spacefm:gtk2 - Support GTK+ 2.x instead of GTK+ 3.x
 x11-misc/spacefm:gtk3 - Support GTK+ 3.x instead of GTK+ 2.x
