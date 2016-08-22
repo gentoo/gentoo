@@ -304,27 +304,44 @@ media-video/coriander
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Packages added without a maintainer:
-dev-vcs/git-deps #591110
-net-wireless/portapack-firmware #591114
-app-arch/threadzip #591118
-media-video/pgcedit # 591122
-dev-python/remoteobjects #591124
-net-dns/hesinfo #591126
+#591110
+dev-vcs/git-deps
+#591114
+net-wireless/portapack-firmware
+#591118
+app-arch/threadzip
+#591122
+media-video/pgcedit
+#591124
+dev-python/remoteobjects
+#591126
+net-dns/hesinfo
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Unmaintained packages, not needed by anything in the tree and that would
 # need migration to new python eclasses
-app-text/lodgeit #591466
-dev-util/metro #591470
-mail-filter/isbg #591472
-net-misc/goog-sitemapgen #591478
-net-misc/gtkvncviewer #591480
-dev-python/pynut #591482
-net-misc/nut-monitor #591482
-sys-power/cpuspeedy #591486
-x11-misc/denu #591488
-net-misc/identicurse #591504
-app-pda/synce-sync-engine #591500
+#591466
+app-text/lodgeit
+#591470
+dev-util/metro
+#591472
+mail-filter/isbg
+#591478
+net-misc/goog-sitemapgen
+#591480
+net-misc/gtkvncviewer
+#591482
+dev-python/pynut
+#591482
+net-misc/nut-monitor
+#591486
+sys-power/cpuspeedy
+#591488
+x11-misc/denu
+#591504
+net-misc/identicurse
+#591500
+app-pda/synce-sync-engine
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Dead since 2007, requires cdrkit, bug #591780
