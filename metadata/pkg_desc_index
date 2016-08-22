@@ -4453,7 +4453,7 @@ dev-lang/rebol-bin 3_pre111 3_pre20140304: Relative Expression-Based Object Lang
 dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.3.0 2.3.1: An object-oriented scripting language
-dev-lang/rust 1.9.0 1.10.0: Systems programming language from Mozilla
+dev-lang/rust 1.9.0 1.10.0 1.11.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
@@ -9699,7 +9699,7 @@ dev-util/buildbot-www 0.9.0_rc1: BuildBot base web interface, use with buildbot-
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711 20160606: the best variant of the Yacc parser generator
-dev-util/cargo 0.10.0 0.11.0: The Rust's package manager
+dev-util/cargo 0.10.0 0.11.0 0.12.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.16-r2 0.7.0 0.7.1 9999: Cmake macros and associated python code used to build some parts of ROS
@@ -17369,6 +17369,7 @@ sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
 sys-power/acpid 2.0.23 2.0.25 2.0.26 2.0.27: Daemon for Advanced Configuration and Power Interface
+sys-power/acpilight 0_pre20160724: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
