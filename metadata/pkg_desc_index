@@ -2043,7 +2043,7 @@ app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.4.5 1.4.6 1.5.0-r1 1.5.1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.4.5 1.4.6 1.5.0-r1 1.5.1 1.5.2 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.4.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.4.3: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
@@ -4441,7 +4441,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0 5.24.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.5.37 5.5.38 5.6.23 5.6.24 5.6.24-r2 7.0.9-r2: The PHP language runtime engine
+dev-lang/php 5.5.37 5.5.38 5.6.23 5.6.24 5.6.25 7.0.10: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 2.7.12 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.4.4 3.4.5 3.5.0-r2 3.5.1-r2 3.5.1-r3 3.5.2: An interpreted, interactive, object-oriented programming language
@@ -4921,7 +4921,7 @@ dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0: skarnet.org general-purpose libraries
 dev-libs/skyutils 2.8-r2 2.8-r5: Library of assorted C utility functions
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
-dev-libs/snowball-stemmer 0.20091122 0.20140325: This contains all you need to include the snowball stemming algorithms into a C project of your own
+dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/softhsm 1.3.6 1.3.7 2.0.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0: Library for storing RDF data in memory
@@ -7579,7 +7579,7 @@ dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0 0.26.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
+dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 1.11.0 9999: Fast array and numerical python library
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
@@ -8786,7 +8786,7 @@ dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (remove
 dev-ruby/actionpack-xml_parser 1.0.2: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionview 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.6 4.2.7 4.2.7.1: Job framework with pluggable queues
-dev-ruby/activeldap 4.0.5 4.0.6: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
+dev-ruby/activeldap 4.0.6: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activerecord 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
@@ -9067,7 +9067,7 @@ dev-ruby/mocha 0.10.5-r1 0.10.5-r2 0.11.4-r1 0.12.10-r1 0.13.3-r2 0.14.0 1.1.0: 
 dev-ruby/modernizr 2.6.2: Modernizr JS assets for use in Sprockets or the Rails 3 asset pipeline
 dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 1.12.0 2.0.6: A Ruby driver for MongoDB
-dev-ruby/msgpack 0.7.4 0.7.5 0.7.6: Binary-based efficient data interchange format for ruby binding
+dev-ruby/msgpack 0.7.4 0.7.5 0.7.6 1.0.0: Binary-based efficient data interchange format for ruby binding
 dev-ruby/multi_json 1.9.3 1.11.2 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing

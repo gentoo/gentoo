@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare unpack
-DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libXrandr x11-libs/pango[X] virtual/pkgconfig x11-proto/xextproto x11-proto/renderproto x11-proto/randrproto >=dev-vcs/git-1.8.2.1
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-libs/libXrender x11-libs/pango[X] virtual/pkgconfig x11-proto/randrproto x11-proto/renderproto x11-proto/xextproto >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A desktop sticky note program for the unix geek
 EAPI=5
 HOMEPAGE=http://xnots.sourceforge.net https://github.com/thePalindrome/xnots
 IUSE=vim-syntax
 LICENSE=GPL-2
-RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrender x11-libs/libXrandr x11-libs/pango[X]
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr x11-libs/libXrender x11-libs/pango[X]
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=28a3520366150e4496ea4c7728d1410f
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=01915b6c895c9da52911581d5e3ceee7
