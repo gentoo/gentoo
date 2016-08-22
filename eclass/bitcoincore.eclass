@@ -100,8 +100,8 @@ case "${PV}" in
 		BITCOINCORE_RBF_PATCHFILE="${MyPN}-rbf-v0.11.0rc3.patch"
 	fi
 	;;
-0.12*)
-	BITCOINCORE_MINOR=12
+0.12* | 0.13*)
+	BITCOINCORE_MINOR=$(get_version_component_range 2)
 	IUSE="${IUSE} libressl"
 	OPENSSL_DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )"
 	if in_bcc_iuse libevent; then
