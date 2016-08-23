@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs autotools-utils
 
 DESCRIPTION="Utilities for signing and verifying files for UEFI Secure Boot"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/sbsigntools.git/"
-SRC_URI="https://kernel.googlesource.com/pub/scm/linux/kernel/git/jejb/sbsigntools.git/+archive/df8303a4e37e42cce36d8ef7d4ea4d75b1080e28.tar.gz -> ${P}.tar.gz
+SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.gz
 	https://dev.gentoo.org/~tamiko/distfiles/${P}-ccan.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 LGPL-2.1 CC0-1.0"
