@@ -14069,7 +14069,7 @@ net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 3.2.22 4.1.7 4.1.10 4.1.11: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.3.18-r1 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.10 2.0.1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
 net-dns/pdns 3.4.7 3.4.8 3.4.9 4.0.0 4.0.1: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
@@ -14166,7 +14166,7 @@ net-ftp/scythia 0.9.3_p2: Just a small FTP client
 net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
 net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
-net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3: Very Secure FTP Daemon written with speed, size and security in mind
+net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3 3.0.3-r1: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
@@ -14724,7 +14724,7 @@ net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for cl
 net-misc/i2pd 2.6.0-r3 2.7.0 2.8.0 2.9.0-r1: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 13.3.0.344519-r1: ICA Client for Citrix Presentation servers
-net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
+net-misc/icecast 2.4.2 2.4.3: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/identicurse 0.9: A simple Identi.ca client with a curses-based UI
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
