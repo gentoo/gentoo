@@ -15969,7 +15969,7 @@ sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3 5.1.0-r2: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
 sci-libs/minuit 5.28.00: A C++ physics analysis tool for function minimization
-sci-libs/mkl 10.0.5.025: Intel(R) Math Kernel Library: linear algebra, fft, math functions
+sci-libs/mkl 10.0.5.025 10.0.5.025-r1: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mmdb 1.25.5-r1 2.0.1: The Coordinate Library, designed to assist CCP4 developers in working with coordinate files
 sci-libs/mmtk 2.7.3 2.7.5 2.7.9: Molecular Modeling ToolKit for Python
 sci-libs/monomer-db 5.41: Monomer library used for macromolecular structure building and refinement
