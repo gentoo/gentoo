@@ -2,11 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils
+inherit autotools eutils
 
 DESCRIPTION="A brokerless kernel"
 HOMEPAGE="http://www.zeromq.org/"
@@ -21,6 +19,8 @@ RDEPEND="
 	dev-libs/libsodium:=
 	pgm? ( =net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
+	app-text/asciidoc
+	app-text/xmlto
 	sys-apps/util-linux
 	pgm? ( virtual/pkgconfig )"
 
@@ -28,22 +28,22 @@ src_prepare() {
 	sed \
 		-e '/libzmq_werror=/s:yes:no:g' \
 		-i configure.ac || die
-	autotools-utils_src_prepare
+	default
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
+		--enable-shared
+		$(use_enable static-libs static)
 		--with-relaxed
 		--with-libsodium
 		$(use_with pgm)
 	)
-	autotools-utils_src_configure
-}
-
-src_test() {
-	autotools-utils_src_test -j1
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	doman "${BUILD_DIR}"/doc/*.[1-9]
+	default
+	prune_libtool_files
 }
