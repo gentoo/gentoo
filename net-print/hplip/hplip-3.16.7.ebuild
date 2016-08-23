@@ -237,7 +237,11 @@ src_configure() {
 }
 
 src_install() {
-	default
+	# disable parallel install
+	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=578018
+	emake -j1 DESTDIR="${D}" install
+	einstalldocs
+	# default
 
 	# Installed by sane-backends
 	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=201023
