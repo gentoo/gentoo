@@ -1,14 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5} pypy )
 
-ES_VERSION="2.0.0"
+ES_VERSION="2.3.5"
 
 inherit distutils-r1
+
+RESTRICT="test" # fails to start in chroot envs, unreliable
+
+MY_PN=${PN/-py/}
 
 DESCRIPTION="official Python low-level client for Elasticsearch"
 HOMEPAGE="http://elasticsearch-py.rtfd.org/"
@@ -17,14 +21,14 @@ SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples doc test"
 
 RDEPEND=">=dev-python/urllib3-1.8[${PYTHON_USEDEP}]
-		<dev-python/urllib3-2.0[${PYTHON_USEDEP}]"
+	<dev-python/urllib3-2.0[${PYTHON_USEDEP}]"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
+	>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 		<dev-python/requests-3.0.0[${PYTHON_USEDEP}]
@@ -35,15 +39,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		|| ( virtual/jre:1.8 virtual/jre:1.7 ) )"
 
-python_prepare_all() {
-	# rename manpage to elasticsearch-py
-	sed \
-		-e "s@('index', 'elasticsearch'@('index', 'elasticsearch-py'@g" \
-		-i docs/conf.py || die
-
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
 	ES_PORT="25124"
@@ -52,12 +47,13 @@ python_test() {
 
 	# run Elasticsearch instance on custom port
 	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
-	s/# cluster.name: my-application/cluster.name: gentoo-es-py-test/g" \
-	${ES}/config/elasticsearch.yml
+		s/# cluster.name: my-application/cluster.name: gentoo-es-py-test/g" \
+		${ES}/config/elasticsearch.yml || die
 
 	# start local instance of elasticsearch
-	${ES}/bin/elasticsearch -d -p ${PID}
+	${ES}/bin/elasticsearch -d -p ${PID} || die
 
+	local i
 	for i in `seq 10`; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [ $? -eq 0 ]; then
@@ -89,7 +85,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( example/. )
+	use examples && dodoc -r example
 	doman docs/_build/man/*
 	distutils-r1_python_install_all
 }
