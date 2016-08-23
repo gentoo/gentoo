@@ -5099,14 +5099,14 @@ dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20160526 20160808: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
-dev-ml/oasis 0.4.5-r1 0.4.6: OASIS is a tool to integrate a configure, build and install system in OCaml project
+dev-ml/oasis 0.4.5-r1 0.4.6 0.4.7: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
-dev-ml/ocaml-containers 0.18: A modular standard library focused on data structures
+dev-ml/ocaml-containers 0.18 0.19: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.1.0 2.2.0 2.3.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0 0.9.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -8583,7 +8583,7 @@ dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, 
 dev-ros/move_base 1.13.0 1.13.1 1.14.0 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 1.14.0 9999: Move slow and clear
-dev-ros/moveit_msgs 0.8.0 0.8.1 9999: Messages, services and actions used by MoveIt
+dev-ros/moveit_msgs 0.8.0 0.8.1 0.8.3 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.13.0 1.13.1 1.14.0 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.3 1.12.4 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.13.1-r1 1.14.0 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
@@ -13599,7 +13599,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 8.5.2 9.2.0 9.3.1: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 8.5.2 9.2.0 9.3.1 9.4.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2: Modern Video Toolkit
