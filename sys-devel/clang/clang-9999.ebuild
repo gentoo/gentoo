@@ -90,8 +90,6 @@ src_prepare() {
 	# automatically select active system GCC's libraries, bugs #406163 and #417913
 	# TODO: cross-linux tests broken by this one
 	eapply "${FILESDIR}"/9999/0002-driver-Support-obtaining-active-toolchain-from-gcc-c.patch
-	# use cmake checks for rlimits, rather than __has_include_next()
-	eapply "${FILESDIR}"/9999/0003-driver-Support-checking-for-rlimits-via-cmake-when-b.patch
 	# adjust llvm-lit search to match LLVM cmake macros
 	eapply "${FILESDIR}"/9999/0004-cmake-Adjust-llvm-lit-search-to-match-the-one-in-LLV.patch
 	# support overriding clang runtime install directory
