@@ -8,6 +8,9 @@
         clean, well documented and well tested shared library, that strives 
         to make the most common use cases as convenient as possible.
     </longdescription>
+    <slots>
+        <subslots>Reflect ABI of libmongo-client.so.</subslots>
+    </slots>
     <upstream>
         <remote-id type="github">algernon/libmongo-client</remote-id>
     </upstream>
