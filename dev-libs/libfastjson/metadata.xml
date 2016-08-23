@@ -5,6 +5,9 @@
 		<email>whissi@gentoo.org</email>
 		<name>Thomas Deutschmann</name>
 	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libfastjson.so.</subslots>
+	</slots>
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/libfastjson/issues</bugs-to>
 		<remote-id type="github">rsyslog/libfastjson</remote-id>
