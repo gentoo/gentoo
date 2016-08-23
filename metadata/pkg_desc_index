@@ -40,7 +40,7 @@ app-admin/389-admin-console 1.1.8-r1: 389 Server Management Console (jar and hel
 app-admin/389-console 1.1.7-r1: A Java based console for remote management 389 server
 app-admin/389-ds-console 1.2.6-r1: Java based remote management console used for Managing 389-admin 389-ds
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
-app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1: Web UI based monitoring tool for Aerospike Community Edition Server
+app-admin/aerospike-amc-community 3.6.8 3.6.8.2 3.6.9 3.6.10.1 3.6.11: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.6 2.0.2.0-r1 2.1.0.0 2.1.1.0 9999: Model-driven deployment, config management, and command execution framework
@@ -2153,7 +2153,7 @@ app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris c
 app-shells/hstr 1.17 1.18 1.19: Shell history suggest box
 app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
-app-shells/mksh 52 52b 52c 9999: MirBSD Korn Shell
+app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 0.17 3.3.4: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4 1.3.4-r1: A simple console menu program
@@ -7551,7 +7551,7 @@ dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced d
 dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0 4.2.0: Converting Jupyter Notebooks
-dev-python/nbformat 4.0.1: Reference implementation of the Jupyter Notebook format
+dev-python/nbformat 4.0.1 4.1.0: Reference implementation of the Jupyter Notebook format
 dev-python/nbsphinx 0.2.8: Jupyter Notebook Tools for Sphinx
 dev-python/ndg-httpsclient 0.4.0: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7 0.1.9: Python client for Neovim
@@ -9711,7 +9711,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.16.5 2.16.6: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.16.6 2.16.7: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186 2016.2.1: A complete toolset for C and C++ development
