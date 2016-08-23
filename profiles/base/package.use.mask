@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Brian Evans <grknight@gentoo.org> (23 Aug 2016)
+# It's only supported on amd64
+dev-db/percona-server tokudb tokudb-backup-plugin
+
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # Depends on masked, end-of-life php versions
 =dev-libs/ossp-uuid-1.6.2-r4 php
