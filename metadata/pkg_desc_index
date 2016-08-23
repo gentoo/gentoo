@@ -9036,7 +9036,7 @@ dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
 dev-ruby/maxitest 1.5.7 2.0.2 2.1.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
-dev-ruby/mechanize 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
+dev-ruby/mechanize 2.7.3-r1 2.7.4 2.7.5: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r2: A ruby library for accessing memcached
 dev-ruby/memoist 0.14.0: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
