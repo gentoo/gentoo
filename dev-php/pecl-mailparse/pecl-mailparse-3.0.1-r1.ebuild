@@ -34,3 +34,11 @@ unset target phpslot
 DEPEND="${PHPUSEDEPEND}
 	dev-util/re2c"
 RDEPEND="${PHPUSEDEPEND} php_targets_php5-6? ( dev-php/pecl-mailparse:0[php_targets_php5-6] )"
+
+src_prepare() {
+	if use php_targets_php7-0 ; then
+		php-ext-source-r3_src_prepare
+	else
+		default_src_prepare
+	fi
+}
