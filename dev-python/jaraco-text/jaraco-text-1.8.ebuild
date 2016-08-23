@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
@@ -16,12 +16,16 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE="doc test"
 
 PDEPEND="dev-python/jaraco-collections[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/jaraco-functools[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/rst-linker[${PYTHON_USEDEP}]
+	)
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
@@ -31,17 +35,15 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-python_prepare_all() {
-	if use test; then
-		if has_version "${CATEGORY}/${PN}"; then
-			die "Ensure $PN is not already installed or the test suite will fail"
-		elif ! has_version "dev-python/jaraco-collections"; then
-			die "Ensure dev-python/jaraco-collections is installed or the test suite will fail"
-		fi
-	fi
-	distutils-r1_python_prepare_all
+python_compile_all() {
+	use doc && esetup.py build_sphinx
 }
 
 python_test() {
 	PYTHONPATH=. py.test || die "tests failed with ${EPYTHON}"
+}
+
+python_install_all() {
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
+	distutils-r1_python_install_all
 }
