@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="+dbus gstreamer ipod +udev"
 
 RDEPEND="dev-libs/keybinder:3[introspection]
