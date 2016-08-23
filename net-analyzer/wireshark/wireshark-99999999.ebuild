@@ -13,13 +13,15 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk
-	kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl tfshark
-	zlib
+	adns androiddump +caps ciscodump cpu_flags_x86_sse4_2 crypt doc doc-pdf
+	geoip +gtk kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi
+	libssh randpkt randpktdump sshdump ssl tfshark zlib
 "
 REQUIRED_USE="
-	ssl? ( crypt )
 	?? ( qt4 qt5 )
+	ciscodump? ( libssh )
+	sshdump? ( libssh )
+	ssl? ( crypt )
 "
 
 CDEPEND="
@@ -36,6 +38,7 @@ CDEPEND="
 		x11-misc/xdg-utils
 	)
 	kerberos? ( virtual/krb5 )
+	libssh? ( >=net-libs/libssh-0.6 )
 	lua? ( >=dev-lang/lua-5.1:* )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
@@ -129,7 +132,13 @@ src_configure() {
 		myconf+=( "--disable-wireshark" )
 	fi
 
-	use qt4 && export QT_MIN_VERSION=4.6.0
+	if ! use qt4 && ! use qt5; then
+		myconf+=( "--with-qt=no" )
+	fi
+
+	if use qt4; then
+		export QT_MIN_VERSION=4.6.0
+	fi
 
 	if use qt5; then
 		export QT_MIN_VERSION=5.3.0
@@ -140,19 +149,15 @@ src_configure() {
 	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
 	use doc-pdf || export ac_cv_prog_HAVE_FOP=false
 
-	if use qt4; then
-		myconf+=" --with-qt=4"
-	elif use qt5; then
-		myconf+=" --with-qt=5"
-	else
-		myconf+=" --with-qt=no"
-	fi
-
 	# dumpcap requires libcap
 	# --disable-profile-build bugs #215806, #292991, #479602
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use_enable androiddump) \
+		$(use_enable ciscodump) \
+		$(use_enable randpkt) \
+		$(use_enable randpktdump) \
+		$(use_enable sshdump) \
 		$(use_enable tfshark) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
@@ -160,10 +165,17 @@ src_configure() {
 		$(use_with geoip) \
 		$(use_with gtk gtk 3) \
 		$(use_with kerberos krb5) \
+		$(use_with libssh ssh) \
 		$(use_with lua) \
 		$(use_with pcap dumpcap-group wireshark) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
+		$(use_with sbc) \
+		$(use_with smi libsmi) \
+		$(use_with ssl gnutls) \
+		$(use_with zlib) \
+		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
+		$(usex netlink --with-libnl=3 --without-libnl) \
 		$(usex qt4 --with-qt=4 '') \
 		$(usex qt4 LRELEASE=$(qt4_get_bindir)/lrelease '') \
 		$(usex qt4 MOC=$(qt4_get_bindir)/moc '') \
@@ -174,12 +186,6 @@ src_configure() {
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
 		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
-		$(use_with sbc) \
-		$(use_with smi libsmi) \
-		$(use_with ssl gnutls) \
-		$(use_with zlib) \
-		$(usex netlink --with-libnl=3 --without-libnl) \
-		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
 		--disable-profile-build \
 		--disable-warnings-as-errors \
 		--sysconfdir="${EPREFIX}"/etc/wireshark \
