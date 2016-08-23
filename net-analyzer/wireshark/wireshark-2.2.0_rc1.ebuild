@@ -18,10 +18,10 @@ IUSE="
 	libssh randpkt randpktdump sshdump ssl tfshark zlib
 "
 REQUIRED_USE="
-	ssl? ( crypt )
 	?? ( qt4 qt5 )
 	ciscodump? ( libssh )
 	sshdump? ( libssh )
+	ssl? ( crypt )
 "
 
 S=${WORKDIR}/${P/_/}
@@ -40,6 +40,7 @@ CDEPEND="
 		x11-misc/xdg-utils
 	)
 	kerberos? ( virtual/krb5 )
+	libssh? ( >=net-libs/libssh-0.6 )
 	lua? ( >=dev-lang/lua-5.1:* )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
@@ -58,7 +59,6 @@ CDEPEND="
 	)
 	sbc? ( media-libs/sbc )
 	smi? ( net-libs/libsmi )
-	libssh? ( >=net-libs/libssh-0.6 )
 	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
 "
