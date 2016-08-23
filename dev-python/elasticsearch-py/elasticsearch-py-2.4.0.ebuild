@@ -53,6 +53,7 @@ python_test() {
 	# start local instance of elasticsearch
 	${ES}/bin/elasticsearch -d -p ${PID} || die
 
+	local i
 	for i in `seq 10`; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [ $? -eq 0 ]; then
