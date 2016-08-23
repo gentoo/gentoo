@@ -6,7 +6,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs
+inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -92,6 +92,8 @@ src_unpack() {
 src_prepare() {
 	#notes/todos
 	# -on apple: there is framework support
+
+	xdg_environment_reset #591952
 
 	cmake-utils_src_prepare
 
