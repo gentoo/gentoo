@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit check-reqs eutils fortran-2 multilib toolchain-funcs
+inherit check-reqs fortran-2 toolchain-funcs
 
 PID=1232
 PB=${PN}
@@ -16,7 +16,7 @@ SRC_URI="http://registrationcenter-download.intel.com/irc_nas/${PID}/${P_ARCHIVE
 
 SLOT="0"
 LICENSE="Intel-SDP"
-KEYWORDS="-* amd64 ~ia64 x86"
+KEYWORDS="-* ~amd64 ~ia64 ~x86"
 IUSE="doc fftw fortran95 int64 mpi"
 
 RESTRICT="strip mirror"
@@ -28,6 +28,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	doc? ( app-doc/blas-docs app-doc/lapack-docs )
 	mpi? ( virtual/mpi )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-10.0.2.018-openmpi.patch # allow openmpi to work
+)
 
 MKL_DIR=/opt/intel/${PN}/${PV}
 INTEL_LIC_DIR=/opt/intel/licenses
@@ -109,7 +113,7 @@ src_unpack () {
 	# The file will be instman/mkl.ini
 	# Then check it and modify the ebuild-created one below
 	# --norpm is required to be able to install 10.x
-	cat > mkl.ini <<-EOF
+	cat > mkl.ini <<-EOF || die
 		[MKL]
 		EULA_ACCEPT_REJECT=ACCEPT
 		FLEXLM_LICENSE_LOCATION=${WORKDIR}/${MKL_LIC}
@@ -120,7 +124,8 @@ src_unpack () {
 	./install \
 		--silent ./mkl.ini \
 		--installpath "${S}" \
-		--log log.txt &> /dev/null
+		--log log.txt &> /dev/null \
+		|| die
 
 	if [[ -z $(find "${S}" -name libmkl.so) ]]; then
 		eerror "Could not find extracted files"
@@ -130,16 +135,14 @@ src_unpack () {
 }
 
 src_prepare() {
+	default
+
 	# remove left over
 	rm -f /opt/intel/.*mkl*.log /opt/intel/intel_sdp_products.db || die
 
 	# remove unused stuff and set up intel names
 	rm -rf "${WORKDIR}"/l_* || die
 
-	# allow openmpi to work
-	epatch "${FILESDIR}"/${PN}-10.0.2.018-openmpi.patch
-	# make scalapack tests work for gfortran
-	#epatch "${FILESDIR}"/${PN}-10.0.2.018-tests.patch
 	case ${ARCH} in
 		x86)	MKL_ARCH=32
 				MKL_KERN=ia32
@@ -177,9 +180,7 @@ src_compile() {
 		fi
 		local x
 		for x in blas95 lapack95; do
-			pushd ${x} > /dev/null || die
-			emake ${myconf}
-			popd > /dev/null || die
+			emake -C ${x} ${myconf}
 		done
 	fi
 
@@ -193,9 +194,7 @@ src_compile() {
 		einfo "Compiling fftw static lib wrappers"
 		local x
 		for x in ${fftwdirs}; do
-			pushd ${x} > /dev/null || die
-			emake ${myconf}
-			popd > /dev/null || die
+			emake -C ${x} ${myconf}
 		done
 	fi
 }
@@ -204,6 +203,7 @@ src_test() {
 	cd "${S}"/tests
 	local myconf
 	local testdirs="blas cblas"
+	local x
 	use int64 && myconf="${myconf} interface=ilp64"
 	# buggy with g77 and gfortran
 	#if use mpi; then
@@ -211,14 +211,11 @@ src_test() {
 	#	myconf="${myconf} mpi=${MKL_MPI}"
 	#fi
 	for x in ${testdirs}; do
-		pushd ${x}
 		einfo "Testing ${x}"
-		emake \
+		emake -C ${x} \
 			compiler=${MKL_FC} \
 			${myconf} \
-			so${MKL_ARCH} \
-			|| die "emake ${x} failed"
-		popd
+			so${MKL_ARCH}
 	done
 }
 
@@ -226,18 +223,18 @@ mkl_make_generic_profile() {
 	cd "${S}" || die
 	# produce eselect files
 	# don't make them in FILESDIR, it changes every major version
-	cat  > eselect.blas <<-EOF
+	cat  > eselect.blas <<-EOF || die
 		${MKL_LIBDIR}/libmkl_${MKL_KERN}.a /usr/@LIBDIR@/libblas.a
 		${MKL_LIBDIR}/libmkl.so /usr/@LIBDIR@/libblas.so
 		${MKL_LIBDIR}/libmkl.so /usr/@LIBDIR@/libblas.so.0
 	EOF
-	cat  > eselect.cblas <<-EOF
+	cat  > eselect.cblas <<-EOF || die
 		${MKL_LIBDIR}/libmkl_${MKL_KERN}.a /usr/@LIBDIR@/libcblas.a
 		${MKL_LIBDIR}/libmkl.so /usr/@LIBDIR@/libcblas.so
 		${MKL_LIBDIR}/libmkl.so /usr/@LIBDIR@/libcblas.so.0
 		${MKL_DIR}/include/mkl_cblas.h /usr/include/cblas.h
 	EOF
-	cat > eselect.lapack <<-EOF
+	cat > eselect.lapack <<-EOF || die
 		${MKL_LIBDIR}/libmkl_lapack.a /usr/@LIBDIR@/liblapack.a
 		${MKL_LIBDIR}/libmkl_lapack.so /usr/@LIBDIR@/liblapack.so
 		${MKL_LIBDIR}/libmkl_lapack.so /usr/@LIBDIR@/liblapack.so.0
@@ -250,7 +247,7 @@ mkl_add_profile() {
 	local prof=${1}
 	local x
 	for x in blas cblas lapack; do
-		cat > ${x}-${prof}.pc <<-EOF
+		cat > ${x}-${prof}.pc <<-EOF || die
 			prefix=${MKL_DIR}
 			libdir=${MKL_LIBDIR}
 			includedir=\${prefix}/include
@@ -260,15 +257,15 @@ mkl_add_profile() {
 			URL: ${HOMEPAGE}
 		EOF
 	done
-	cat >> blas-${prof}.pc <<-EOF
+	cat >> blas-${prof}.pc <<-EOF || die
 		Libs: -Wl,--no-as-needed -L\${libdir} ${2} ${3} -lmkl_core ${4} -lpthread
 	EOF
-	cat >> cblas-${prof}.pc <<-EOF
+	cat >> cblas-${prof}.pc <<-EOF || die
 		Requires: blas
 		Libs: -Wl,--no-as-needed -L\${libdir} ${2} ${3} -lmkl_core ${4} -lpthread
 		Cflags: -I\${includedir}
 	EOF
-	cat >> lapack-${prof}.pc <<-EOF
+	cat >> lapack-${prof}.pc <<-EOF || die
 		Requires: blas
 		Libs: -Wl,--no-as-needed -L\${libdir} ${2} ${3} -lmkl_core -lmkl_lapack ${4} -lpthread
 	EOF
@@ -277,7 +274,7 @@ mkl_add_profile() {
 		doins ${x}-${prof}.pc
 		cp eselect.${x} eselect.${x}.${prof} || die
 		echo "${MKL_LIBDIR}/${x}-${prof}.pc /usr/@LIBDIR@/pkgconfig/${x}.pc" \
-			>> eselect.${x}.${prof}
+			>> eselect.${x}.${prof} || die
 		eselect ${x} add $(get_libdir) eselect.${x}.${prof} ${prof}
 	done
 }
@@ -329,7 +326,7 @@ src_install() {
 	mkl_make_profiles
 
 	# install env variables
-	cat > 35mkl <<-EOF
+	cat > 35mkl <<-EOF || die
 		MKLROOT=${MKL_DIR}
 		LDPATH=${MKL_LIBDIR}
 		MANPATH=${MKL_DIR}/man
@@ -341,6 +338,7 @@ pkg_postinst() {
 	# if blas profile is mkl, set lapack and cblas profiles as mkl
 	local blas_prof=$(eselect blas show | cut -d' ' -f2)
 	local def_prof="mkl-gfortran-threads"
+	local x
 	has_version 'dev-lang/ifc' && def_prof="mkl-ifort-threads"
 	use int64 && def_prof="${def_prof}-int64"
 	for x in blas cblas lapack; do
@@ -348,7 +346,7 @@ pkg_postinst() {
 		if [[ -z ${cur_prof} ||	${cur_prof} == ${def_prof} ]]; then
 			# work around eselect bug #189942
 			local configfile="${ROOT}"/etc/env.d/${x}/$(get_libdir)/config
-			[[ -e ${configfile} ]] && rm -f ${configfile}
+			rm -f ${configfile} || die
 			eselect ${x} set ${def_prof}
 			elog "${x} has been eselected to ${def_prof}"
 		else
