@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-apps/util-linux sys-apps/help2man sys-boot/gnu-efi sys-libs/binutils-libs virtual/pkgconfig
+DESCRIPTION=Utilities for signing and verifying files for UEFI Secure Boot
+EAPI=5
+HOMEPAGE=https://git.kernel.org/cgit/linux/kernel/git/jejb/sbsigntools.git/
+IUSE=libressl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 LGPL-3 LGPL-2.1 CC0-1.0
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-apps/util-linux
+SLOT=0
+SRC_URI=https://kernel.googlesource.com/pub/scm/linux/kernel/git/jejb/sbsigntools.git/+archive/df8303a4e37e42cce36d8ef7d4ea4d75b1080e28.tar.gz -> sbsigntool-0.8.tar.gz https://dev.gentoo.org/~tamiko/distfiles/sbsigntool-0.8-ccan.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=ef33ab8593c38383ff74c75a0beff32e
