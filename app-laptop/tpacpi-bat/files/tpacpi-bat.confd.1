@@ -1,0 +1,19 @@
+# /etc/conf.d/tpacpi-bat: config file for /etc/init.d/tpacpi-bat
+
+# use '/etc/init.d/tpacpi-bat info' at any time to check the thresholds
+# currently used by the driver
+
+# list of batteries the script should manage
+# for example: BATS="1 2"
+BATS="1"
+
+# default thresholds for '/etc/init.d/tpacpi-bat start'
+TPACPI_BAT_THRESH_START="30"
+TPACPI_BAT_THRESH_STOP="85"
+# values to be used for '/etc/init.d/tpacpi-bat low'
+TPACPI_BAT_LOW_THRESH_START="${TPACPI_BAT_THRESH_START}"
+TPACPI_BAT_LOW_THRESH_STOP="${TPACPI_BAT_THRESH_STOP}"
+
+# values to be used for '/etc/init.d/tpacpi-bat high'
+TPACPI_BAT_HIGH_THRESH_START="95"
+TPACPI_BAT_HIGH_THRESH_STOP="99" #see bug #485526
