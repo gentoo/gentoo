@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (23 Aug 2016)
+# Old llvm-3.5 branch and (old versions of) revdeps, masked for removal
+# in 14 days. Bug #588094.
+=sys-devel/llvm-3.5*
+=sys-devel/clang-3.5*
+
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # PHP 5.5 has reached end of life and will no longer receive security updates.
 # Also include associated packages which do not work on newer versions
