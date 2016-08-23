@@ -4,7 +4,6 @@
 <upstream>
 	<changelog>https://ece.uwaterloo.ca/~aplevich/dpic/CHANGES</changelog>
 	<doc>https://ece.uwaterloo.ca/~aplevich/dpic/dpicdoc.pdf</doc>
-	<name>J. D. Aplevich</name>
 </upstream>
 
 <maintainer type="project">
