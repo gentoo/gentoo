@@ -7379,7 +7379,7 @@ dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
 dev-python/ipdb 0.8 0.8.1 0.8.2 0.9.0: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.82a 0.83: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 4.2.0 4.2.1 4.2.2 4.3.0 4.3.1: IPython Kernel for Jupyter
+dev-python/ipykernel 4.2.0 4.2.1 4.2.2 4.3.0 4.3.1 4.4.1: IPython Kernel for Jupyter
 dev-python/ipyparallel 4.1.0 5.0.0 5.0.1 5.1.1: Interactive Parallel Computing with IPython
 dev-python/ipython 3.2.1-r1 4.0.1 4.0.3 4.1.1 4.1.2 4.2.0-r1: Advanced interactive shell for Python
 dev-python/ipython_genutils 0.1.0: Vestigial utilities from IPython
@@ -14067,7 +14067,7 @@ net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/Postgr
 net-dns/namecoin-qt 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 3.2.20 3.2.21 3.2.22 4.1.7 4.1.9 4.1.10: An authoritative only, high performance, open source name server
+net-dns/nsd 3.2.22 4.1.7 4.1.10 4.1.11: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
