@@ -3,8 +3,9 @@
 # $Id$
 
 EAPI=6
+WANT_LIBTOOL=none
 
-inherit linux-info
+inherit autotools linux-info
 
 DESCRIPTION="Minimalistic UEFI bootloader"
 HOMEPAGE="https://freedesktop.org/wiki/Software/gummiboot/"
@@ -22,8 +23,17 @@ DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	>=sys-boot/gnu-efi-3.0.2"
 
+PATCHES=(
+	"${FILESDIR}/48-sysmacros.patch"
+)
+
 pkg_pretend() {
 	# CONFIG_EFI_STUB  is required to boot a kernel with gummiboot
 	local CONFIG_CHECK="~EFI_STUB"
 	check_extra_config
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
