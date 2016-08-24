@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+mysql postgres classicui console libressl lto mail minimal nano-syntax +plugins studio +vim-syntax"
 
 CDEPEND="
@@ -159,6 +159,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "DB IDO schema upgrade required. http://docs.icinga.org/icinga2/snapshot/chapter-2.html#upgrading-the-mysql-database"
-	elog "You will need to update your configuration files, see https://dev.icinga.org/issues/5909"
+	if [[ ${PV} != 9999 && -n ${REPLACING_VERSIONS} && ${REPLACING_VERSIONS} != ${PV} ]]; then
+		elog "DB IDO schema upgrade may be required required.
+		http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/upgrading-icinga-2"
+	fi
 }
