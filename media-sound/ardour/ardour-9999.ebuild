@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="http://community.ardour.org/srctar -> ${P}.tar.bz2"
+	SRC_URI="http://fossies.org/linux/misc/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -136,5 +136,8 @@ src_install() {
 
 pkg_postinst() {
 	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}"
+	elog "then please consider to make a donation upstream at ${HOMEPAGE}."
+	elog "Please do _not_ report problems with the package to ${PN} upstream."
+	elog "If you think you've found a bug, check the upstream binary package"
+	elog "before you report anything to upstream."
 }
