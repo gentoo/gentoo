@@ -13982,7 +13982,7 @@ net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the
 net-dialup/accel-ppp 1.10.3 1.10.9999 1.11.0 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
 net-dialup/capidivert 0.0.2: CAPI based utility to control ISDN diversion facilities
-net-dialup/capifwd 0.6.3-r1 0.6.3-r2: A daemon forwarding CAPI messages to capi20proxy clients
+net-dialup/capifwd 0.6.3-r1 0.6.3-r3: A daemon forwarding CAPI messages to capi20proxy clients
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers that speak the RADIUS protocol
 net-dialup/cutecom 0.22.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
