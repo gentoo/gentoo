@@ -14,6 +14,9 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of liblognorm.so.</subslots>
+	</slots>
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/liblognorm/issues</bugs-to>
 		<remote-id type="github">rsyslog/liblognorm</remote-id>
