@@ -1070,7 +1070,7 @@
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
     <url>https://wiki.gentoo.org/wiki/Project:Fonts</url>
-    <description>The fonts project handles all fonts-related issues within the Gentoo Desktop project.</description>
+    <description>The fonts project handles all fonts-related issues within the Gentoo project.</description>
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
