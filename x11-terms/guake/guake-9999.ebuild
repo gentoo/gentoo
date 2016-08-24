@@ -4,7 +4,6 @@
 
 EAPI=6
 
-GCONF_DEBUG=no
 GNOME2_LA_PUNT=yes
 PYTHON_COMPAT=( python2_7 )
 
@@ -44,11 +43,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	eautoreconf
 
 	gnome2_src_prepare
-
-	G2CONF="--disable-static"
 }
 
 pkg_postinst() {
