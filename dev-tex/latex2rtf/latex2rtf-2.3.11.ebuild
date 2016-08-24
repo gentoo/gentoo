@@ -10,7 +10,7 @@ HOMEPAGE="http://latex2rtf.sourceforge.net/"
 SRC_URI="mirror://sourceforge/latex2rtf/${P}a.tar.gz" # 'a' is only for 2.3.11 version for fixing a tarball generation bug
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ~ppc ppc64 ~sparc ~x86"
 SLOT="0"
 IUSE="test"
 S="${WORKDIR}/${P%b}"
