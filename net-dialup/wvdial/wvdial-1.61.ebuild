@@ -33,7 +33,7 @@ DOC_CONTENTS="
 	Users have to be member of the dialout AND the uucp group to use
 	wvdial
 "
-	
+
 src_configure() {
 	# Hand made configure...
 	./configure || die
