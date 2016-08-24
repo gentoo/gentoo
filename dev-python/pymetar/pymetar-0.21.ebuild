@@ -20,4 +20,4 @@ RDEPEND=""
 
 DOCS="librarydoc.txt"
 
-PATCHES=( "${FILESDIR}"/setup_pymetar-0.20.patch )
+PATCHES=( "${FILESDIR}"/setup_pymetar-0.21.patch )
