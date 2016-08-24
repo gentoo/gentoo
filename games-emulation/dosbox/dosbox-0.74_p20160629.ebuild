@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/dosbox-code-0-${PATCH}-dosbox-trunk.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="alsa debug hardened opengl"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
