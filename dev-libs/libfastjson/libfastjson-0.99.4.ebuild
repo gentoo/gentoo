@@ -14,7 +14,7 @@ SLOT="0/4.0.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE="static-libs"
 
-DEPEND=">=sys-devel/autoconf-archive-2015.02.24"
+DEPEND=">=sys-devel/autoconf-archive-2015.02.04"
 RDEPEND=""
 
 src_prepare() {
