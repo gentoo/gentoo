@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (24 Aug 2016)
+# No longer produced by upstream and no longer used by anything.
+# Masked for removal in 30 days.
+kde-apps/libkdeedu
+
 # Brian Evans <grknight@gentoo.org> (22 Aug 2016)
 # PHP 5.5 has reached end of life and will no longer receive security updates.
 # Also include associated packages which do not work on newer versions
