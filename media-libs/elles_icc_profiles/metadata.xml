@@ -20,4 +20,7 @@
 		to be well-behaved, making them suitable for colour-managed image
 		editing.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ellelstone/elles_icc_profiles</remote-id>
+	</upstream>
 </pkgmetadata>
