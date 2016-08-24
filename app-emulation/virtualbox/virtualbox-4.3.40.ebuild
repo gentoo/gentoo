@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+additions alsa doc extensions headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
-	sys-power/iasl
+	<sys-power/iasl-20160729
 	pam? ( sys-libs/pam )
 	sys-libs/libcap
 	doc? (
@@ -145,6 +145,10 @@ pkg_setup() {
 src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -rf kBuild/bin tools
+
+	# Remove pointless GCC version limitations in check_gcc()
+	sed -e "/\s*-o\s*\\\(\s*\$cc_maj\s*-eq\s*[5-9]\s*-a\s*\$cc_min\s*-gt\s*[0-5]\s*\\\)\s*\\\/d" \
+		-i configure || die
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \

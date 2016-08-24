@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="dri"
 
 RDEPEND=">=x11-base/xorg-server-1.7:=[-minimal]
@@ -80,6 +80,10 @@ src_prepare() {
 
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -rf kBuild/bin tools
+
+	# Remove pointless GCC version limitations in check_gcc()
+	sed -e "/\s*-o\s*\\\(\s*\$cc_maj\s*-eq\s*[5-9]\s*-a\s*\$cc_min\s*-gt\s*[0-5]\s*\\\)\s*\\\/d" \
+		-i configure || die
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-3-localconfig" LocalConfig.kmk || die
