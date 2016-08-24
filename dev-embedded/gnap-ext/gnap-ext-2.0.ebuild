@@ -36,9 +36,9 @@ src_install() {
 	if ! use minimal; then
 		dodir /usr/lib/gnap
 		insinto /usr/lib/gnap
-		newins ${DISTDIR}/gnap-basefs-${PV}.tar.bz2 gnap-basefs.tar.bz2
+		newins "${DISTDIR}/gnap-basefs-${PV}.tar.bz2" gnap-basefs.tar.bz2
 		dodir /usr/lib/gnap/extensions
 		insinto /usr/lib/gnap/extensions
-		doins ${WORKDIR}/gnapext_*.tbz2
+		doins "${WORKDIR}"/gnapext_*.tbz2
 	fi
 }
