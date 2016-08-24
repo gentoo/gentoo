@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A daemon forwarding CAPI messages to capi20proxy clients"
 HOMEPAGE="http://capi20proxy.sourceforge.net/"
@@ -19,24 +19,27 @@ DEPEND="net-dialup/capi4k-utils"
 
 S="${WORKDIR}/linux-server"
 
+PATCHES=(
+	"${FILESDIR}/${P}-r1.patch"
+	"${FILESDIR}/${P}-amd64-r1.patch"
+)
+
 src_prepare() {
-	eapply -p0 "${FILESDIR}/${P}.patch"
-	eapply -p0 "${FILESDIR}/${P}-amd64.patch"
+	default
 
 	# Replace obsolete sys_errlist with strerror
 	sed -i -e 's:sys_errlist *\[ *errno *\]:strerror(errno):' \
-		src/capifwd.c src/capi/waitforsignal.c src/auth/auth.c || \
-		die "failed to replace sys_errlist"
+		src/capifwd.c src/capi/waitforsignal.c src/auth/auth.c \
+		|| die 'failed to replace sys_errlist'
 
-	eapply_user
+	# We don't patch autotools, but it's already screwed up, so this
+	# fixes a big QA warning.
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="$D" install
-	dodoc AUTHORS ChangeLog README
+	default
 
-	# install init-script
-	newinitd "${FILESDIR}/capifwd.init" capifwd
-	newconfd "${FILESDIR}/capifwd.conf" capifwd
+	newinitd "${FILESDIR}/${PN}.init" "${PN}"
+	newconfd "${FILESDIR}/${PN}.conf" "${PN}"
 }
