@@ -13,3 +13,4 @@ move dev-php/PEAR-PHP_CodeSniffer dev-php/PHP_CodeSniffer
 move kde-apps/kgamma kde-plasma/kgamma
 slotmove =sci-geosciences/osm-gps-map-0.7.3 2 0
 move sys-fs/btfs net-fs/btfs
+move sys-fs/s3fs net-fs/s3fs
