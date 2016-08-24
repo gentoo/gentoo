@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>a3li@gentoo.org</email>
-  <name>Alex Legler</name>
-  <description>Primary maintainer</description>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
   <flag name="timezone">
     Add dependency over <pkg>dev-ruby/tzinfo</pkg> to enable the "time"
