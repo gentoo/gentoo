@@ -13986,7 +13986,7 @@ net-dialup/capifwd 0.6.3-r1 0.6.3-r2: A daemon forwarding CAPI messages to capi2
 net-dialup/cistronradius 1.6.8-r2: Authentication and accounting server for terminal servers that speak the RADIUS protocol
 net-dialup/cutecom 0.22.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
-net-dialup/dial 1.2-r1: A simple client for DWUN
+net-dialup/dial 1.2-r1 1.2-r2: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/drdsl 1.2.0: AVM DSL Assistant for autodetecting DSL values (VPI, VCI, VPP) for 'fcdsl' based cards
 net-dialup/dtrace 2.01-r3: DTRACE traces ISDN messages with AVM ISDN-controllers

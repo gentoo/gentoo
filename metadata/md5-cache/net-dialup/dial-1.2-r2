@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=A simple client for DWUN
+EAPI=6
+HOMEPAGE=http://dwun.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=net-dialup/dwun
+SLOT=0
+SRC_URI=mirror://sourceforge/dwun/dial-1.2.tar.gz
+_eclass_exported_funcs=-
+_md5_=c4fd684254b9b57f8fec3bfb8ef3a5a3
