@@ -67,7 +67,7 @@ src_install() {
 
 	dodoc doc/{ChangeLog,CREDITS,NSD-4-features,NSD-FOR-BIND-USERS,README,RELNOTES,REQUIREMENTS}
 
-	newinitd "${FILESDIR}"/nsd.initd nsd
+	newinitd "${FILESDIR}"/nsd.initd-r1 nsd
 
 	# install munin plugin and config
 	if use munin ; then
