@@ -24,7 +24,7 @@ RDEPEND="
 	x11-libs/libSM
 	x11-libs/libXext
 	x11-libs/libXt
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[X] )
 	opengl? ( virtual/glu virtual/opengl )
 	xinerama? ( x11-libs/libXinerama )
 	xft? ( x11-libs/libXft )

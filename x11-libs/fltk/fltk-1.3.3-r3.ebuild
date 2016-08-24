@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-
 inherit autotools eutils fdo-mime flag-o-matic
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
@@ -23,7 +22,7 @@ RDEPEND="
 	x11-libs/libSM
 	x11-libs/libXext
 	x11-libs/libXt
-	cairo? ( x11-libs/cairo )
+	cairo? ( x11-libs/cairo[X] )
 	opengl? ( virtual/glu virtual/opengl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
