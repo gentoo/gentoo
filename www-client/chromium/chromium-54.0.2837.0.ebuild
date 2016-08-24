@@ -31,7 +31,7 @@ QA_FLAGS_IGNORED=".*\.nexe"
 # right tools for it, bug #469144 .
 QA_PRESTRIPPED=".*\.nexe"
 
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/bzip2:=
 	cups? ( >=net-print/cups-1.3.11:= )
 	>=dev-libs/elfutils-0.149
@@ -40,17 +40,19 @@ RDEPEND="
 	>=dev-libs/jsoncpp-0.5.0-r1:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
+	>=dev-libs/re2-0.2016.05.01:=
 	gnome? ( >=gnome-base/gconf-2.24.0:= )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
 	media-libs/libexif:=
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-3.0.1:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
@@ -84,8 +86,20 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	!gn? (
 		>=app-accessibility/speech-dispatcher-0.8:=
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+# For nvidia-drivers blocker, see bug #413637 .
+RDEPEND="${COMMON_DEPEND}
+	!=www-client/chromium-9999
+	!<www-plugins/chrome-binary-plugins-37
+	x11-misc/xdg-utils
+	virtual/opengl
+	virtual/ttf-fonts
+	selinux? ( sec-policy/selinux-chromium )
+	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
+	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
+"
+DEPEND="${COMMON_DEPEND}
 	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm
@@ -97,29 +111,18 @@ DEPEND="${RDEPEND}
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	$(python_gen_any_dep '
+		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
+		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/jinja[${PYTHON_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
+	')
+"
 
-# For nvidia-drivers blocker, see bug #413637 .
-RDEPEND+="
-	!=www-client/chromium-9999
-	!<www-plugins/chrome-binary-plugins-37
-	x11-misc/xdg-utils
-	virtual/opengl
-	virtual/ttf-fonts
-	selinux? ( sec-policy/selinux-chromium )
-	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
-	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )"
-
-# Python dependencies. The DEPEND part needs to be kept in sync
-# with python_check_deps.
-DEPEND+=" $(python_gen_any_dep '
-	dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
-	dev-python/html5lib[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/ply[${PYTHON_USEDEP}]
-	dev-python/simplejson[${PYTHON_USEDEP}]
-')"
+# Keep this in sync with the python_gen_any_dep call.
 python_check_deps() {
 	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
 	has_version --host-root ">=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]" &&
@@ -159,16 +162,16 @@ For other desktop environments, try one of the following:
 
 PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r3.patch"
-	"${FILESDIR}/${PN}-system-jinja-r12.patch"
+	"${FILESDIR}/${PN}-system-jinja-r13.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-last-commit-position-r1.patch"
-	"${FILESDIR}/${PN}-gn-r4.patch"
+	"${FILESDIR}/${PN}-gn-r5.patch"
 )
 
 pkg_pretend() {
-	if [[ $(tc-getCC) == *gcc* ]] && \
-		[[ $(gcc-major-version)$(gcc-minor-version) -lt 48 ]]; then
-		die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-gcc && ! version_is_at_least 4.8 "$(gcc-version)"; then
+			die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
+		fi
 	fi
 
 	# Check build requirements, bug #541816 and bug #471810 .
@@ -183,13 +186,6 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ "${SLOT}" == "0" ]]; then
-		CHROMIUM_SUFFIX=""
-	else
-		CHROMIUM_SUFFIX="-${SLOT}"
-	fi
-	CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${CHROMIUM_SUFFIX}"
-
 	# Make sure the build system will use the right python, bug #344367.
 	python-any-r1_pkg_setup
 
@@ -199,130 +195,127 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	local conditional_bundled_libraries=""
+	local keeplibs=(
+		base/third_party/dmg_fp
+		base/third_party/dynamic_annotations
+		base/third_party/icu
+		base/third_party/nspr
+		base/third_party/superfasthash
+		base/third_party/symbolize
+		base/third_party/valgrind
+		base/third_party/xdg_mime
+		base/third_party/xdg_user_dirs
+		breakpad/src/third_party/curl
+		chrome/third_party/mozilla_security_manager
+		courgette/third_party
+		net/third_party/mozilla_security_manager
+		net/third_party/nss
+		third_party/WebKit
+		third_party/analytics
+		third_party/angle
+		third_party/angle/src/common/third_party/numerics
+		third_party/angle/src/third_party/compiler
+		third_party/angle/src/third_party/libXNVCtrl
+		third_party/angle/src/third_party/murmurhash
+		third_party/angle/src/third_party/trace_event
+		third_party/boringssl
+		third_party/brotli
+		third_party/cacheinvalidation
+		third_party/catapult
+		third_party/catapult/third_party/polymer
+		third_party/catapult/third_party/py_vulcanize
+		third_party/catapult/third_party/py_vulcanize/third_party/rcssmin
+		third_party/catapult/third_party/py_vulcanize/third_party/rjsmin
+		third_party/catapult/tracing/third_party/d3
+		third_party/catapult/tracing/third_party/gl-matrix
+		third_party/catapult/tracing/third_party/jszip
+		third_party/catapult/tracing/third_party/mannwhitneyu
+		third_party/ced
+		third_party/cld_2
+		third_party/cld_3
+		third_party/cros_system_api
+		third_party/cython/python_flags.py
+		third_party/devscripts
+		third_party/dom_distiller_js
+		third_party/fips181
+		third_party/flatbuffers
+		third_party/flot
+		third_party/google_input_tools
+		third_party/google_input_tools/third_party/closure_library
+		third_party/google_input_tools/third_party/closure_library/third_party/closure
+		third_party/hunspell
+		third_party/iccjpeg
+		third_party/icu
+		third_party/jstemplate
+		third_party/khronos
+		third_party/leveldatabase
+		third_party/libXNVCtrl
+		third_party/libaddressinput
+		third_party/libjingle
+		third_party/libphonenumber
+		third_party/libsecret
+		third_party/libsrtp
+		third_party/libudev
+		third_party/libusb
+		third_party/libwebm
+		third_party/libxml/chromium
+		third_party/libyuv
+		third_party/lss
+		third_party/lzma_sdk
+		third_party/mesa
+		third_party/modp_b64
+		third_party/mt19937ar
+		third_party/openh264
+		third_party/openmax_dl
+		third_party/opus
+		third_party/ots
+		third_party/pdfium
+		third_party/pdfium/third_party/agg23
+		third_party/pdfium/third_party/base
+		third_party/pdfium/third_party/bigint
+		third_party/pdfium/third_party/freetype
+		third_party/pdfium/third_party/lcms2-2.6
+		third_party/pdfium/third_party/libjpeg
+		third_party/pdfium/third_party/libopenjpeg20
+		third_party/pdfium/third_party/libpng16
+		third_party/pdfium/third_party/libtiff
+		third_party/pdfium/third_party/zlib_v128
+		third_party/polymer
+		third_party/protobuf
+		third_party/protobuf/third_party/six
+		third_party/qcms
+		third_party/sfntly
+		third_party/skia
+		third_party/smhasher
+		third_party/sqlite
+		third_party/tcmalloc
+		third_party/usrsctp
+		third_party/web-animations-js
+		third_party/webdriver
+		third_party/webrtc
+		third_party/widevine
+		third_party/woff2
+		third_party/x86inc
+		third_party/zlib/google
+		url/third_party/mozilla
+		v8/src/third_party/valgrind
+	)
 	if ! use system-ffmpeg; then
-		conditional_bundled_libraries+=" third_party/ffmpeg"
+		keeplibs+=( third_party/ffmpeg )
 	fi
 	if use gn; then
-		conditional_bundled_libraries+="
+		keeplibs+=(
 			base/third_party/libevent
 			third_party/adobe
 			third_party/speech-dispatcher
 			third_party/usb_ids
 			third_party/xdg-utils
 			third_party/yasm/run_yasm.py
-		"
+		)
 	fi
 
 	# Remove most bundled libraries. Some are still needed.
-	build/linux/unbundle/remove_bundled_libraries.py \
-		${conditional_bundled_libraries} \
-		'base/third_party/dmg_fp' \
-		'base/third_party/dynamic_annotations' \
-		'base/third_party/icu' \
-		'base/third_party/nspr' \
-		'base/third_party/superfasthash' \
-		'base/third_party/symbolize' \
-		'base/third_party/valgrind' \
-		'base/third_party/xdg_mime' \
-		'base/third_party/xdg_user_dirs' \
-		'breakpad/src/third_party/curl' \
-		'chrome/third_party/mozilla_security_manager' \
-		'courgette/third_party' \
-		'net/third_party/mozilla_security_manager' \
-		'net/third_party/nss' \
-		'third_party/WebKit' \
-		'third_party/analytics' \
-		'third_party/angle' \
-		'third_party/angle/src/common/third_party/numerics' \
-		'third_party/angle/src/third_party/compiler' \
-		'third_party/angle/src/third_party/libXNVCtrl' \
-		'third_party/angle/src/third_party/murmurhash' \
-		'third_party/angle/src/third_party/trace_event' \
-		'third_party/boringssl' \
-		'third_party/brotli' \
-		'third_party/cacheinvalidation' \
-		'third_party/catapult' \
-		'third_party/catapult/third_party/polymer' \
-		'third_party/catapult/third_party/py_vulcanize' \
-		'third_party/catapult/third_party/py_vulcanize/third_party/rcssmin' \
-		'third_party/catapult/third_party/py_vulcanize/third_party/rjsmin' \
-		'third_party/catapult/tracing/third_party/d3' \
-		'third_party/catapult/tracing/third_party/gl-matrix' \
-		'third_party/catapult/tracing/third_party/jszip' \
-		'third_party/catapult/tracing/third_party/mannwhitneyu' \
-		'third_party/ced' \
-		'third_party/cld_2' \
-		'third_party/cros_system_api' \
-		'third_party/cython/python_flags.py' \
-		'third_party/devscripts' \
-		'third_party/dom_distiller_js' \
-		'third_party/dom_distiller_js/dist/proto_gen/third_party/dom_distiller_js' \
-		'third_party/fips181' \
-		'third_party/flatbuffers' \
-		'third_party/flot' \
-		'third_party/google_input_tools' \
-		'third_party/google_input_tools/third_party/closure_library' \
-		'third_party/google_input_tools/third_party/closure_library/third_party/closure' \
-		'third_party/hunspell' \
-		'third_party/iccjpeg' \
-		'third_party/icu' \
-		'third_party/jstemplate' \
-		'third_party/khronos' \
-		'third_party/leveldatabase' \
-		'third_party/libXNVCtrl' \
-		'third_party/libaddressinput' \
-		'third_party/libjingle' \
-		'third_party/libjpeg_turbo' \
-		'third_party/libphonenumber' \
-		'third_party/libsecret' \
-		'third_party/libsrtp' \
-		'third_party/libudev' \
-		'third_party/libusb' \
-		'third_party/libwebm' \
-		'third_party/libxml/chromium' \
-		'third_party/libyuv' \
-		'third_party/lss' \
-		'third_party/lzma_sdk' \
-		'third_party/mesa' \
-		'third_party/modp_b64' \
-		'third_party/mt19937ar' \
-		'third_party/openh264' \
-		'third_party/openmax_dl' \
-		'third_party/opus' \
-		'third_party/ots' \
-		'third_party/pdfium' \
-		'third_party/pdfium/third_party/agg23' \
-		'third_party/pdfium/third_party/base' \
-		'third_party/pdfium/third_party/bigint' \
-		'third_party/pdfium/third_party/freetype' \
-		'third_party/pdfium/third_party/lcms2-2.6' \
-		'third_party/pdfium/third_party/libjpeg' \
-		'third_party/pdfium/third_party/libopenjpeg20' \
-		'third_party/pdfium/third_party/libpng16' \
-		'third_party/pdfium/third_party/libtiff' \
-		'third_party/pdfium/third_party/zlib_v128' \
-		'third_party/polymer' \
-		'third_party/protobuf' \
-		'third_party/protobuf/third_party/six' \
-		'third_party/qcms' \
-		'third_party/re2' \
-		'third_party/sfntly' \
-		'third_party/skia' \
-		'third_party/smhasher' \
-		'third_party/sqlite' \
-		'third_party/tcmalloc' \
-		'third_party/usrsctp' \
-		'third_party/web-animations-js' \
-		'third_party/webdriver' \
-		'third_party/webrtc' \
-		'third_party/widevine' \
-		'third_party/woff2' \
-		'third_party/x86inc' \
-		'third_party/zlib/google' \
-		'url/third_party/mozilla' \
-		'v8/src/third_party/valgrind' \
-		--do-remove || die
+	build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove || die
 }
 
 src_configure() {
@@ -347,12 +340,10 @@ src_configure() {
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_icu (bug #576370).
-	# TODO: use_system_libjpeg (bug #584518).
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
 	# TODO: use_system_opus (https://code.google.com/p/webrtc/issues/detail?id=3077).
 	# TODO: use_system_protobuf (bug #525560).
-	# TODO: use_system_re2 (bug #571156).
 	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 	myconf_gyp+="
@@ -378,11 +369,13 @@ src_configure() {
 		flac
 		harfbuzz-ng
 		libevent
+		libjpeg
 		libpng
 		libvpx
 		libwebp
 		libxml
 		libxslt
+		re2
 		snappy
 		yasm
 		zlib"
@@ -441,7 +434,7 @@ src_configure() {
 	myconf_gyp+=" -Dfieldtrial_testing_like_official_build=1"
 	myconf_gn+=" fieldtrial_testing_like_official_build=true"
 
-	if [[ $(tc-getCC) == *clang* ]]; then
+	if tc-is-clang; then
 		myconf_gyp+=" -Dclang=1"
 		myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
 	else
@@ -621,6 +614,7 @@ src_compile() {
 }
 
 src_install() {
+	local CHROMIUM_HOME="/usr/$(get_libdir)/chromium-browser${CHROMIUM_SUFFIX}"
 	exeinto "${CHROMIUM_HOME}"
 	doexe out/Release/chrome || die
 
