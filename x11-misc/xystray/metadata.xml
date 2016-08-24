@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-               <email>marecki@gentoo.org</email>
-                <name>Marek Szuba</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">steelman/xystray</remote-id>
+	</upstream>
 </pkgmetadata>
