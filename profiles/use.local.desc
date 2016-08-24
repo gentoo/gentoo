@@ -7730,6 +7730,10 @@ sys-fs/owfs:parport - Enable support for the DS1410E parallel port adapter
 sys-fs/owfs:server - Enable building the OWFS server (owserver)
 sys-fs/quota:netlink - Compile daemon receiving quota messages via netlink
 sys-fs/quota:rpc - Enable quota interaction via RPC
+sys-fs/s3fs:gnutls - Enable dev-libs/gnutls crypto backend
+sys-fs/s3fs:nettle - Use dev-libs/nettle network functions with GnuTLS.
+sys-fs/s3fs:nss - Enable dev-libs/nss crypto backend
+sys-fs/s3fs:openssl - Enable dev-libs/openssl crypto backend
 sys-fs/s3ql:contrib - Install additional contributed scripts
 sys-fs/squashfs-tools:lz4 - Enable support for LZ4 compression using app-arch/lz4
 sys-fs/squashfs-tools:xz - Enable support for XZ ("LZMA2") compression using app-arch/xz-utils

@@ -17224,7 +17224,7 @@ sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
 sys-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
-sys-fs/s3fs 1.74 1.78: Amazon mounting S3 via fuse
+sys-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
 sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1: A full-featured file system for online data storage
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
