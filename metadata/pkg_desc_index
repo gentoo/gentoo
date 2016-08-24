@@ -190,7 +190,7 @@ app-admin/recursos 2.0: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.16.0-r1 8.18.0 8.19.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.16.0-r1 8.19.0 8.21.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.10 2015.8.8 2015.8.10 2015.8.11 2016.3.1 2016.3.2 9999: Salt is a remote execution and configuration manager
@@ -4591,7 +4591,7 @@ dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: An implementation of the HTML5 parsing 
 dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics with low overhead.
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
-dev-libs/hiredis 0.11.0-r1 0.13.1: Minimalistic C client library for the Redis database
+dev-libs/hiredis 0.11.0-r1 0.13.1 0.13.3: Minimalistic C client library for the Redis database
 dev-libs/http-fetcher 1.1.0: small, robust, flexible library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2: Hyperdex fork/extension of leveldb
 dev-libs/hyphen 2.8.6 2.8.8: ALTLinux hyphenation library
@@ -4662,7 +4662,7 @@ dev-libs/libdynd 0.6.5 0.6.6: C++ dynamic multi-dimensionnal array library with 
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3 1.3.4: Extensible binary format library (kinda like XML)
 dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
-dev-libs/libee 0.3.2-r1 0.3.2-r2 0.4.1: An Event Expression Library inspired by CEE
+dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.7 1.0.8 1.0.8-r1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.9 0.1.10: Library for some string essentials
@@ -4674,7 +4674,7 @@ dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
-dev-libs/libfastjson 0.99.2: Fork of the json-c library, which is optimized for liblognorm processing
+dev-libs/libfastjson 0.99.2 0.99.4: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.5.3 0.6.0 0.6.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented interface for C++
@@ -4714,8 +4714,8 @@ dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit p
 dev-libs/liblinear 210-r1: A Library for Large Linear Classification
 dev-libs/liblinebreak 2.1: Line breaking library
 dev-libs/liblist 2.3.1-r1 2.4: This package provides generic linked-list manipulation routines, plus queues and stacks
-dev-libs/liblogging 1.0.2 1.0.4 1.0.5: Liblogging is an easy to use, portable, open source library for system logging
-dev-libs/liblognorm 1.1.0 1.1.2-r1 1.1.3-r1: Fast samples-based log normalization library
+dev-libs/liblogging 1.0.5: Liblogging is an easy to use, portable, open source library for system logging
+dev-libs/liblognorm 1.1.0 1.1.2-r1 1.1.3-r1 2.0.1: Fast samples-based log normalization library
 dev-libs/liblouis 2.5.3: An open-source braille translator and back-translator
 dev-libs/libltdl 1.3.5 1.5.26 2.4.4 2.4.5 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.1.2 0.2: small C library for reading LZW compressed files (.Z)
@@ -4737,7 +4737,7 @@ dev-libs/libmirage 3.0.3 3.0.4: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.0.6 3.1.1 3.1.2: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r2: multi octet character encoding handling library
-dev-libs/libmongo-client 0.1.7: The alternative C driver for MongoDB
+dev-libs/libmongo-client 0.1.7 0.1.8: The alternative C driver for MongoDB
 dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
@@ -14953,7 +14953,7 @@ net-misc/tightvnc 1.3.10-r2 1.3.10-r3: A great client/server software package al
 net-misc/tinc 1.0.28 1.1_pre14: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
-net-misc/tn5250 0.17.4 0.17.4-r1: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
+net-misc/tn5250 0.17.4 0.17.4-r1 0.17.4-r2: IBM AS/400 telnet client which emulates 5250 terminals/printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
 net-misc/tor 0.2.7.6 0.2.8.6 0.2.9.1_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
