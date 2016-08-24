@@ -20,7 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-devel/llvm-3.7:=[clang]
+RDEPEND=">=sys-devel/llvm-3.7:=
+	sys-devel/clang
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
