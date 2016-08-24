@@ -31,10 +31,9 @@ RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-yaml:0[php_targets_php5-6]
 PHP_EXT_ECONF_ARGS=""
 
 src_prepare() {
-        if use php_targets_php7-0 ; then
-                php-ext-source-r3_src_prepare
-        else
-                default_src_prepare
-        fi
+	if use php_targets_php7-0 ; then
+		php-ext-source-r3_src_prepare
+	else
+		default_src_prepare
+	fi
 }
-
