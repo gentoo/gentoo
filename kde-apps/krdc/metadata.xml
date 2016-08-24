@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="rdesktop">Enable runtime dependency for <pkg>net-misc/rdesktop</pkg></flag>
-		<flag name="telepathy">Enable desktop sharing through a telepathy client</flag>
 	</use>
 </pkgmetadata>
