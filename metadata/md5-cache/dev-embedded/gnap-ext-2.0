@@ -1,12 +1,12 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Gentoo-based Network Appliance extensions and remastering tool
-EAPI=0
-HOMEPAGE=https://embedded.gentoo.org/gnap.xml
+EAPI=6
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 IUSE=minimal
-KEYWORDS=~x86 ~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=sys-fs/squashfs-tools
+RDEPEND=sys-fs/squashfs-tools:0
 SLOT=0
 SRC_URI=mirror://gentoo/gnap-tools-2.0.tar.bz2 !minimal? ( mirror://gentoo/gnap-basefs-2.0.tar.bz2 mirror://gentoo/gnap-extensions-2.0.tar )
 _eclass_exported_funcs=src_unpack:- src_install:-
-_md5_=1a8e4eff63f15b652cbfcd36783e3c43
+_md5_=be38e6fc5eb5c05cd60afdd3a963d66e

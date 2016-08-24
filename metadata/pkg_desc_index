@@ -724,7 +724,7 @@ app-dicts/myspell-is 2012.09.01: Icelandic dictionaries for myspell/hunspell
 app-dicts/myspell-it 20081129-r1: Italian dictionaries for myspell/hunspell
 app-dicts/myspell-km 1.6: Khmer dictionaries for myspell/hunspell
 app-dicts/myspell-ku 0.21: Kurdish dictionaries for myspell/hunspell
-app-dicts/myspell-lt 1.2.1: Lithuanian dictionaries for myspell/hunspell
+app-dicts/myspell-lt 1.2.1 1.3: Lithuanian dictionaries for myspell/hunspell
 app-dicts/myspell-lv 1.0.0 1.1.0: Latvian dictionaries for myspell/hunspell
 app-dicts/myspell-mi 20060316: Maori dictionaries for myspell/hunspell
 app-dicts/myspell-mk 20060316: Macedonian dictionaries for myspell/hunspell
