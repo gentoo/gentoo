@@ -7834,7 +7834,7 @@ dev-python/pylzma 0.4.4-r1 0.4.5 0.4.6 0.4.8: Python bindings for the LZMA compr
 dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 2.1.4 2.1.5: A wrapper around the mediainfo library
-dev-python/pymetar 0.19-r1: Downloads, decodes and provides access to the weather report for a given station ID
+dev-python/pymetar 0.19-r1 0.21: Downloads, decodes and provides access to the weather report for a given station ID
 dev-python/pyminuit 1.2.1 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
 dev-python/pymongo 2.6.3 2.7.2 2.8.1 2.9.3 3.0.3 3.1.1 3.2.2 3.3.0: Python driver for MongoDB
