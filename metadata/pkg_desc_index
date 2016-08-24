@@ -14089,7 +14089,7 @@ net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.1f_rc1: Arno's iptables firewall script
 net-firewall/arptables 0.0.3.4-r2: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.2 1.4.3: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.2 1.4.3 1.4.4: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.2 2.3: Command line util for managing firewall rules
@@ -14107,7 +14107,7 @@ net-firewall/ipt_netflow 2.2 2.2-r1: Netflow iptables module
 net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3 1.4.21-r4 1.6.0-r1: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
-net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
+net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
 net-firewall/nftables 0.6-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
@@ -14378,8 +14378,8 @@ net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.5 1.6: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.1.6 1.1.6-r1 1.2_rc3 1.2_rc3-r1: library providing an API for commonly used low-level network functions
-net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
-net-libs/libnetfilter_conntrack 1.0.4 1.0.5: programming interface (API) to the in-kernel connection tracking state table
+net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
+net-libs/libnetfilter_conntrack 1.0.4 1.0.5 1.0.6: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
@@ -18778,7 +18778,7 @@ x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well 
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.16.2-r2 3.18.2 3.18.3 3.20.2: The Gnome Terminal
-x11-terms/guake 0.8.3 0.8.5 0.8.6 9999: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.8.3 0.8.5 0.8.7 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
