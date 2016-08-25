@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,6 +32,8 @@ RDEPEND="dev-libs/boost[threads]
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
+
+REQUIRED_USE="|| ( btrfs ext4 lvm )"
 
 DOCS=( AUTHORS README )
 
