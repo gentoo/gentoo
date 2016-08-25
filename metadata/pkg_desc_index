@@ -678,7 +678,7 @@ app-dicts/dictd-vera 1.22 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms 
 app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/dikt 2l: A dictionary for KDE
-app-dicts/duali-data 0.1b: Dictionary data for the Arab dictionary project duali
+app-dicts/duali-data 0.1b 0.1b-r1: Dictionary data for the Arab dictionary project duali
 app-dicts/eblook 1.6.1: Interactive search utility for electronic dictionaries
 app-dicts/edictionary 2.6: Command line dictionary and thesaurus
 app-dicts/freedict-deu-eng 1.0: Freedict for language translation from German to English
@@ -2250,7 +2250,7 @@ app-text/docbook-xsl-stylesheets 1.78.0-r1 1.79.0 1.79.1-r1: XSL Stylesheets for
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.2 1.3 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3-r1 7.3.3 7.3.4: Convert DOS or MAC text files to UNIX format or vice versa
-app-text/duali 0.2.0: Arabic dictionary based on the DICT protocol
+app-text/duali 0.2.0 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvibook 20001129: DVI file utilities: dvibook, dviconcat, dvitodvi, and dviselect
 app-text/dvipdfm 0.13.2d-r1 0.13.2d-r2: DVI to PDF translator
 app-text/dvipdfmx 20110311-r1: DVI to PDF translator with multi-byte character support
@@ -3061,8 +3061,8 @@ dev-embedded/gnap-dev 2.0: Gentoo-based Network Appliance building system develo
 dev-embedded/gnap-ext 2.0: Gentoo-based Network Appliance extensions and remastering tool
 dev-embedded/gnome-avrdude 0.1: GNOME GUI for avrdude
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
-dev-embedded/gpsim 0.26.1 0.27.0: A simulator for the Microchip PIC microcontrollers
-dev-embedded/gputils 0.13.6-r1 0.13.7 0.14.0 0.14.1 0.14.2 1.2.0 1.4.0: Collection of tools including assembler, linker and librarian for PIC microcontrollers
+dev-embedded/gpsim 0.26.1 0.27.0 0.29.0: A simulator for the Microchip PIC microcontrollers
+dev-embedded/gputils 0.13.6-r1 0.13.7 0.14.0 0.14.1 0.14.2 1.2.0 1.4.0 1.5.0: Collection of tools including assembler, linker and librarian for PIC microcontrollers
 dev-embedded/icdprog 0.5: Microchip PIC Programmer using ICD hardware
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
 dev-embedded/jal 0.4.60 0.4.62: A high-level language for a number of Microchip PIC and Ubicom SX microcontrollers
@@ -14135,11 +14135,14 @@ net-fs/nfstest 1.0.2 2.1.2: Tools for testing either the NFS client or the NFS s
 net-fs/openafs 1.6.17 1.6.18.2 1.6.18.3: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.17 1.6.18.2 1.6.18.3: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
+net-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.74 1.78 1.80: Amazon S3 mounting via fuse
+net-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20: A full-featured file system for online data storage
 net-fs/samba 3.6.25 4.2.11 4.2.14 4.3.11 4.4.5 4.5.0_rc2: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
+net-fs/sshfs 2.5 2.7 2.8: Fuse-filesystem utilizing the sftp service
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
@@ -14546,7 +14549,7 @@ net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Ma
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1: Thread-based e-mail indexer, supporting quick search and tagging
-net-mail/offlineimap 6.5.6 6.5.7 6.7.0.3 7.0.3-r1 7.0.4 7.0.5: Powerful IMAP/Maildir synchronization and reader support
+net-mail/offlineimap 6.5.6 6.5.7 6.7.0.3 7.0.3-r1 7.0.4 7.0.5 7.0.6: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
@@ -17223,8 +17226,6 @@ sys-fs/rarfs 0.1.1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
-sys-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
-sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1 2.20: A full-featured file system for online data storage
 sys-fs/safecopy 1.7: Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files
 sys-fs/scan-ffs 1.2: Recovers lost disklabel
 sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is used
@@ -17233,7 +17234,6 @@ sys-fs/simple-mtpfs 0.1 0.2 9999: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 3.2_p2 3.4 4.3 4.3-r1 4.3-r2 9999: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1_p20130530 0.1.100: FUSE filesystem to mount squashfs archives
-sys-fs/sshfs 2.5 2.7 2.8: Fuse-filesystem utilizing the sftp service
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
