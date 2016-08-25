@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dbus kde +qrcode qt5 upnp"
 
 RDEPEND="
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0[-bindist]
 	dev-libs/protobuf:=
 	qrcode? (
@@ -45,12 +45,14 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtnetwork:5[ssl]
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 		dbus? (
 			dev-qt/qtdbus:5
 		)
 	)
 "
 DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
 	>=app-shells/bash-4.1
 "
 
