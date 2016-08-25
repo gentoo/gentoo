@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils linux-info multilib user
+inherit autotools linux-info multilib user
 
 DESCRIPTION="A client implementation of Secure Socket Tunneling Protocol (SSTP)"
 HOMEPAGE="http://sstp-client.sourceforge.net/"
@@ -31,9 +31,10 @@ pkg_setup() {
 
 src_prepare() {
 	# set proper examples dir, --docdir overriding is src_configure does not work
-	sed -i -e "/^docdir/s:@PACKAGE@:${PF}/examples:" Makefile.in || die 'sed on Makefile.in failed'
+	sed -i -e "/^docdir/s:@PACKAGE@:${PF}/examples:" Makefile.am || die 'sed on Makefile.am failed'
 
-	epatch_user
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -45,6 +46,7 @@ src_configure() {
 		--enable-group=sstpc \
 		--enable-user=sstpc \
 		--with-pppd-plugin-dir="/usr/$(get_libdir)/pppd/${PPPD_VER}" \
+		--with-runtime-dir="/run/sstpc" \
 		$(use_enable static)
 }
 
