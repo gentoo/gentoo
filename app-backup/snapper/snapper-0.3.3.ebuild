@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README )
+REQUIRED_USE="|| ( btrfs ext4 lvm )"
+
+DOCS=( AUTHORS )
 
 src_prepare() {
 	epatch "${FILESDIR}"/cron-confd.patch
