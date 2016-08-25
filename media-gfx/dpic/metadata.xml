@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<upstream>
-	<changelog>https://ece.uwaterloo.ca/~aplevich/dpic/CHANGES</changelog>
-	<doc>https://ece.uwaterloo.ca/~aplevich/dpic/dpicdoc.pdf</doc>
-</upstream>
-
-<maintainer type="project">
-	<email>tex@gentoo.org</email>
-	<name>Gentoo TeX Project</name>
-</maintainer>
-
-<longdescription> Dpic is an implementation of the pic "little language" for creating line
-drawings and illustrations for documents, web pages, and other uses. 
-</longdescription>
-
+	<upstream>
+		<changelog>https://ece.uwaterloo.ca/~aplevich/dpic/CHANGES</changelog>
+		<doc>https://ece.uwaterloo.ca/~aplevich/dpic/dpicdoc.pdf</doc>
+		<maintainer status="active">
+			<name>J. D. Aplevich</name>
+		</maintainer>
+	</upstream>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<longdescription>Dpic is an implementation of the pic "little language" for creating line drawings and illustrations for documents, web pages, and other uses.
+	</longdescription>
 </pkgmetadata>
