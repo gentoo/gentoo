@@ -23,7 +23,6 @@ DEPEND="
 	dev-perl/Sys-CPU
 	dev-util/astyle
 	dev-util/indent
-	=sys-devel/clang-3.8*
-	=sys-devel/llvm-3.8*[clang]"
+	=sys-devel/clang-3.8*"
 
 RDEPEND="${DEPEND}"
