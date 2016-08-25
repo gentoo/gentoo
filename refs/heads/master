@@ -1,12 +1,16 @@
 certificate version 0.1
-pusher 0BBEEA1FEA4843A4 1472161791 -0400
-pushee ssh://git.gentoo.org/repo/gentoo.git
-nonce 1472161791-f73cb574b07930dd54be
+pusher 0x4AB3E85B4F064CA3 1472161840 -0400
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1472161841-6ec0ea4a703e18dac9e8
 
-55e4154fda49cc7cd95af9281282c7fc137d7983 a77265a69accb9701be0a9f85eef9e14cb81a711 refs/heads/master
+a77265a69accb9701be0a9f85eef9e14cb81a711 522d1a43227c9251d0899618f9a18c641e97856e refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iF4EABEIAAYFAle/Z/8ACgkQRxvnM+8pGj+cFgD/eLuPbHJFkSfknJArH6HS/D21
-jC9Y9NOKWZTQRXjwH2IBAI4CONRU3JdT5grflPD1+/oJAGhEWFYtyeRNpPH7I98x
-=n87y
+iQEcBAABCgAGBQJXv2gwAAoJEEqz6FtPBkyjno0IAIFhxjVOsl62ZuG86+6ra1hc
+HF2sjIlIRi1j8cyu5E/IS0y3glRJBbvsa0eSU5Yfa6xHnX1Gk1GjXEUj7bfWIjTb
+PfT6j70E+IyDA/o3/WBsK1k8v/Ii3M36Vt7lWDOLy3pd61fd0LoFtooGPS8v6BLk
+MEdfqk6zplYJG1U2jPSStMmU8NYKqSVsUhYStO2IpPE+mkHqkbezM3Dgy793SJjQ
+sD0TzuZv1LoTVKuZs2ZFjzQguVl5xnsseS0hojuUWbbytjbOyvN45kQK81UcNErt
+0BEri6eksVGv77tR62NfqC8bk2biwA6gP92xq+eYu/zO/RLIZ6t9UrMLqMiwvTg=
+=Wf4M
 -----END PGP SIGNATURE-----
