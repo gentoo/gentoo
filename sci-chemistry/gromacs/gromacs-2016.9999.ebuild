@@ -55,7 +55,9 @@ DEPEND="${CDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
-	)"
+	)
+	test? ( dev-libs/tinyxml2 )
+	"
 RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
@@ -161,6 +163,7 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=OFF
 		-DGMX_BUILD_UNITTESTS=OFF
+		-DGMX_EXTERNAL_TINYXML2=ON
 		${extra}
 	)
 
