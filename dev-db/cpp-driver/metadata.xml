@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		DataStax Cassandra C/C++ driver for Apache Cassandra or Scilla
+	</longdescription>
+	<maintainer type="person">
+		<email>geaaru@gmail.com</email>
+		<name>Geaaru</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+</pkgmetadata>
