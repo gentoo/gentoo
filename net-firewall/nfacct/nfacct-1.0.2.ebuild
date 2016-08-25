@@ -7,7 +7,7 @@ inherit linux-info
 
 DESCRIPTION="Command line tool to create/retrieve/delete accounting objects in NetFilter"
 HOMEPAGE="http://www.netfilter.org/projects/nfacct"
-SRC_URI="${HOMEPAGE}/${PN}/files/${P}.tar.bz2"
+SRC_URI="${HOMEPAGE}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
