@@ -1975,7 +1975,7 @@ app-mobilephone/gnokii 0.6.31 9999: user space driver and tools for use with mob
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
-app-mobilephone/kannel 1.4.3-r2 1.5.0-r2: Powerful SMS and WAP gateway
+app-mobilephone/kannel 1.4.3-r2 1.5.0-r2 1.5.0-r3: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 0.7.2 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
@@ -2879,6 +2879,7 @@ dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1: Administration tool for disas
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r3 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/couchdb 1.6.1 1.6.1-r2: Distributed, fault-tolerant and schema-free document-oriented database
+dev-db/cpp-driver 2.4.3: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
 dev-db/ctdb 1.13-r1 9999: A cluster implementation of the TDB database used to store temporary data
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
