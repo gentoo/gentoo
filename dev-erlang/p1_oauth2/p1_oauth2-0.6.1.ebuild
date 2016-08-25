@@ -13,7 +13,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 IUSE="test"
 
 CDEPEND=">=dev-lang/erlang-17.1"

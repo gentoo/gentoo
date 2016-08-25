@@ -1,0 +1,535 @@
+diff -burN a/capplet/gsm-properties-dialog.c b/capplet/gsm-properties-dialog.c
+--- a/capplet/gsm-properties-dialog.c	2012-02-29 22:03:08.000000000 +0100
++++ b/capplet/gsm-properties-dialog.c	2012-08-08 12:16:37.527332034 +0200
+@@ -26,6 +26,8 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
++#include <dbus/dbus-glib.h>
++#include <dbus/dbus-glib-lowlevel.h>
+ 
+ #include <mateconf/mateconf-client.h>
+ 
+@@ -36,6 +38,11 @@
+ #include "gsp-app.h"
+ #include "gsp-app-manager.h"
+ 
++
++#define GSM_SERVICE_DBUS   "org.gnome.SessionManager"
++#define GSM_PATH_DBUS      "/org.gnome.SessionManager"
++#define GSM_INTERFACE_DBUS "org.gnome.SessionManager"
++
+ #define GSM_PROPERTIES_DIALOG_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GSM_TYPE_PROPERTIES_DIALOG, GsmPropertiesDialogPrivate))
+ 
+ #define IS_STRING_EMPTY(x) ((x)==NULL||(x)[0]=='\0')
+@@ -50,6 +57,7 @@
+ #define CAPPLET_DELETE_WIDGET_NAME        "session_properties_delete_button"
+ #define CAPPLET_EDIT_WIDGET_NAME          "session_properties_edit_button"
+ #define CAPPLET_SAVE_WIDGET_NAME          "session_properties_save_button"
++#define CAPPLET_SESSION_SAVED_WIDGET_NAME "session_properties_session_saved_label"
+ #define CAPPLET_REMEMBER_WIDGET_NAME      "session_properties_remember_toggle"
+ 
+ #define STARTUP_APP_ICON     "system-run"
+@@ -493,10 +501,66 @@
+ }
+ 
+ static void
++session_saved_message (GsmPropertiesDialog *dialog,
++                       const char *msg,
++                       gboolean is_error)
++{
++        GtkLabel *label;
++        gchar *markup;
++        
++        label = GTK_LABEL (gtk_builder_get_object (dialog->priv->xml, CAPPLET_SESSION_SAVED_WIDGET_NAME));
++        if (is_error)
++                markup = g_markup_printf_escaped ("<span foreground=\"red\">%s</span>", msg);
++        else
++                markup = g_markup_escape_text (msg, -1);
++
++        gtk_label_set_markup (label, markup);
++        g_free (markup);
++}
++
++static void
++session_saved_cb (DBusGProxy *proxy,
++                  DBusGProxyCall *call_id,
++                  void *user_data)
++{
++        gboolean res;
++        GsmPropertiesDialog *dialog = user_data;
++
++        res = dbus_g_proxy_end_call (proxy, call_id, NULL, G_TYPE_INVALID);
++        if (res)
++                session_saved_message (dialog, _("Your session has been saved."), FALSE);
++        else
++                session_saved_message (dialog, _("Failed to save session"), TRUE);
++
++        g_object_unref (proxy);
++}
++
++static void
+ on_save_session_clicked (GtkWidget           *widget,
+                          GsmPropertiesDialog *dialog)
+ {
+-        g_debug ("Session saving is not implemented yet!");
++        DBusGConnection *conn;
++        DBusGProxy *proxy;
++        DBusGProxyCall *call;
++
++        conn = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
++        if (conn == NULL) {
++                session_saved_message (dialog, _("Could not connect to the session bus"), TRUE);
++                return;
++        }
++
++        proxy = dbus_g_proxy_new_for_name (conn, GSM_SERVICE_DBUS, GSM_PATH_DBUS, GSM_INTERFACE_DBUS);
++        if (proxy == NULL) {
++                session_saved_message (dialog, _("Could not connect to the session manager"), TRUE);
++                return;
++        }
++
++        call = dbus_g_proxy_begin_call (proxy, "SaveSession", session_saved_cb, dialog, NULL, G_TYPE_INVALID);
++        if (call == NULL) {
++                session_saved_message (dialog, _("Failed to save session"), TRUE);
++                g_object_unref (proxy);
++                return;
++        }
+ }
+ 
+ static void
+diff -burN a/configure.ac b/configure.ac
+--- a/configure.ac	2012-02-29 22:03:09.000000000 +0100
++++ b/configure.ac	2012-08-08 12:18:58.740336360 +0200
+@@ -75,6 +75,7 @@
+ PKG_CHECK_MODULES(SESSION_PROPERTIES,
+         glib-2.0 >= $GLIB_REQUIRED
+         gtk+-$GTK_API_VERSION >= $GTK_REQUIRED
++        dbus-glib-1 >= $DBUS_GLIB_REQUIRED
+ )
+ 
+ PKG_CHECK_MODULES(SM, sm)
+diff -burN a/data/session-properties.ui b/data/session-properties.ui
+--- a/data/session-properties.ui	2012-02-29 22:03:08.000000000 +0100
++++ b/data/session-properties.ui	2012-08-08 12:22:36.619343035 +0200
+@@ -148,6 +148,7 @@
+             <property name="visible">True</property>
+             <child>
+               <object class="GtkButton" id="session_properties_save_button">
++                <property name="visible">True</property>
+                 <property name="can_focus">True</property>
+                 <property name="receives_default">True</property>
+                 <child>
+@@ -191,6 +192,17 @@
+             <property name="position">1</property>
+           </packing>
+         </child>
++        <child>
++          <object class="GtkLabel" id="session_properties_session_saved_label">
++            <property name="visible">True</property>
++            <property name="wrap">True</property>
++          </object>
++          <packing>
++            <property name="expand">False</property>
++            <property name="fill">False</property>
++            <property name="position">2</property>
++          </packing>
++        </child>
+       </object>
+       <packing>
+         <property name="position">1</property>
+diff -burN a/mate-session/gsm-client.c b/mate-session/gsm-client.c
+--- a/mate-session/gsm-client.c	2012-02-29 22:03:08.000000000 +0100
++++ b/mate-session/gsm-client.c	2012-08-08 12:24:20.120346205 +0200
+@@ -510,6 +510,17 @@
+         g_signal_emit (client, signals[DISCONNECTED], 0);
+ }
+ 
++gboolean
++gsm_client_request_save (GsmClient *client,
++                         guint      flags,
++                         GError   **error)
++{
++        g_return_val_if_fail (GSM_IS_CLIENT (client), FALSE);
++
++        return GSM_CLIENT_GET_CLASS (client)->impl_request_save (client, flags, error);
++}
++
++
+ GKeyFile *
+ gsm_client_save (GsmClient *client,
+                  GError   **error)
+diff -burN a/mate-session/gsm-client.h b/mate-session/gsm-client.h
+--- a/mate-session/gsm-client.h	2012-02-29 22:03:09.000000000 +0100
++++ b/mate-session/gsm-client.h	2012-08-08 12:26:38.848350455 +0200
+@@ -94,6 +94,9 @@
+                                                               GError   **error);
+         gboolean              (*impl_stop)                   (GsmClient *client,
+                                                               GError   **error);
++        gboolean              (*impl_request_save)           (GsmClient *client,
++                                                              guint      flags,
++                                                              GError   **error);
+         GKeyFile *            (*impl_save)                   (GsmClient *client,
+                                                               GError   **error);
+ };
+@@ -139,6 +142,10 @@
+ 
+ void                  gsm_client_disconnected               (GsmClient  *client);
+ 
++gboolean              gsm_client_request_save               (GsmClient  *client,
++                                                             guint       flags,
++                                                             GError    **error);
++
+ GKeyFile             *gsm_client_save                       (GsmClient  *client,
+                                                              GError    **error);
+ /* exported to bus */
+diff -burN a/mate-session/gsm-dbus-client.c b/mate-session/gsm-dbus-client.c
+--- a/mate-session/gsm-dbus-client.c	2012-02-29 22:03:08.000000000 +0100
++++ b/mate-session/gsm-dbus-client.c	2012-08-08 12:38:15.393371794 +0200
+@@ -413,6 +413,19 @@
+         G_OBJECT_CLASS (gsm_dbus_client_parent_class)->finalize (object);
+ }
+ 
++static gboolean
++dbus_client_request_save (GsmClient *client,
++                          guint      flags,
++                          GError   **error)
++{
++        g_debug ("GsmDBusClient: sending save request to client with id %s",
++                 gsm_client_peek_id (client));
++
++        /* FIXME: The protocol does not support this */
++
++        return FALSE;
++}
++
+ static GKeyFile *
+ dbus_client_save (GsmClient *client,
+                   GError   **error)
+@@ -665,6 +678,7 @@
+         object_class->set_property         = gsm_dbus_client_set_property;
+         object_class->dispose              = gsm_dbus_client_dispose;
+ 
++        client_class->impl_request_save           = dbus_client_request_save;
+         client_class->impl_save                   = dbus_client_save;
+         client_class->impl_stop                   = dbus_client_stop;
+         client_class->impl_query_end_session      = dbus_client_query_end_session;
+diff -burN a/mate-session/gsm-manager.c b/mate-session/gsm-manager.c
+--- a/mate-session/gsm-manager.c	2012-02-29 22:03:09.000000000 +0100
++++ b/mate-session/gsm-manager.c	2012-08-08 12:47:24.627388620 +0200
+@@ -68,6 +68,7 @@
+ #define GSM_MANAGER_DBUS_NAME "org.gnome.SessionManager"
+ 
+ #define GSM_MANAGER_PHASE_TIMEOUT 30 /* seconds */
++#define GSM_MANAGER_SAVE_SESSION_TIMEOUT 2
+ 
+ #define MDM_FLEXISERVER_COMMAND "mdmflexiserver"
+ #define MDM_FLEXISERVER_ARGS    "--startnew Standard"
+@@ -1176,6 +1177,69 @@
+ 
+ }
+ 
++static gboolean
++_client_request_save (GsmClient            *client,
++                      ClientEndSessionData *data)
++{
++        gboolean ret;
++        GError  *error;
++
++        error = NULL;
++        ret = gsm_client_request_save (client, data->flags, &error);
++        if (ret) {
++                g_debug ("GsmManager: adding client to query clients: %s", gsm_client_peek_id (client));
++                data->manager->priv->query_clients = g_slist_prepend (data->manager->priv->query_clients,
++                                                                      client);
++        } else if (error) {
++                g_debug ("GsmManager: unable to query client: %s", error->message);
++                g_error_free (error);
++        }
++
++        return FALSE;
++}
++
++static gboolean
++_client_request_save_helper (const char           *id,
++                             GsmClient            *client,
++                             ClientEndSessionData *data)
++{
++        return _client_request_save (client, data);
++}
++
++static void
++query_save_session_complete (GsmManager *manager)
++{
++        GError *error = NULL;
++
++        if (g_slist_length (manager->priv->next_query_clients) > 0) {
++                ClientEndSessionData data;
++
++                data.manager = manager;
++                data.flags = GSM_CLIENT_END_SESSION_FLAG_LAST;
++
++                g_slist_foreach (manager->priv->next_query_clients,
++                                 (GFunc)_client_request_save,
++                                 &data);
++
++                g_slist_free (manager->priv->next_query_clients);
++                manager->priv->next_query_clients = NULL;
++
++                return;
++        }
++
++        if (manager->priv->query_timeout_id > 0) {
++                g_source_remove (manager->priv->query_timeout_id);
++                manager->priv->query_timeout_id = 0;
++        }
++
++        gsm_session_save (manager->priv->clients, &error);
++
++        if (error) {
++                g_warning ("Error saving session: %s", error->message);
++                g_error_free (error);
++        }
++}
++
+ static guint32
+ generate_cookie (void)
+ {
+@@ -1250,6 +1314,21 @@
+         return FALSE;
+ }
+ 
++static gboolean
++_on_query_save_session_timeout (GsmManager *manager)
++{
++        manager->priv->query_timeout_id = 0;
++
++        g_debug ("GsmManager: query to save session timed out");
++
++        g_slist_free (manager->priv->query_clients);
++        manager->priv->query_clients = NULL;
++
++        query_save_session_complete (manager);
++
++        return FALSE;
++}
++
+ static void
+ do_phase_query_end_session (GsmManager *manager)
+ {
+@@ -1886,13 +1965,32 @@
+                                 const char *reason,
+                                 GsmManager *manager)
+ {
+-        /* just ignore if received outside of shutdown */
+-        if (manager->priv->phase < GSM_MANAGER_PHASE_QUERY_END_SESSION) {
++        /* just ignore if we are not yet running */
++        if (manager->priv->phase < GSM_MANAGER_PHASE_RUNNING) {
+                 return;
+         }
+ 
+         g_debug ("GsmManager: Response from end session request: is-ok=%d do-last=%d cancel=%d reason=%s", is_ok, do_last, cancel, reason ? reason :"");
+ 
++        if (manager->priv->phase == GSM_MANAGER_PHASE_RUNNING) {
++                /* Ignore responses when no requests were sent */
++                if (manager->priv->query_clients == NULL) {
++                        return;
++                }
++
++                manager->priv->query_clients = g_slist_remove (manager->priv->query_clients, client);
++
++                if (do_last) {
++                        manager->priv->next_query_clients = g_slist_prepend (manager->priv->next_query_clients,
++                                                                             client);
++                }
++
++                if (manager->priv->query_clients == NULL) {
++                        query_save_session_complete (manager);
++                }
++                return;
++        }
++
+         if (cancel) {
+                 cancel_end_session (manager);
+                 return;
+@@ -1991,6 +2089,15 @@
+ }
+ 
+ static void
++on_xsmp_client_save_request (GsmXSMPClient *client,
++                             gboolean       show_dialog,
++                             GsmManager    *manager)
++{
++        g_debug ("GsmManager: save_request");
++        gsm_manager_save_session (manager, NULL);
++}
++
++static void
+ on_store_client_added (GsmStore   *store,
+                        const char *id,
+                        GsmManager *manager)
+@@ -2011,6 +2118,10 @@
+                                   "logout-request",
+                                   G_CALLBACK (on_xsmp_client_logout_request),
+                                   manager);
++		g_signal_connect (client,
++				  "save-request",
++				  G_CALLBACK (on_xsmp_client_save_request),
++				  manager);
+         }
+ 
+         g_signal_connect (client,
+@@ -2968,6 +3079,41 @@
+ }
+ 
+ gboolean
++gsm_manager_save_session (GsmManager *manager,
++                          GError     **error)
++{
++        ClientEndSessionData data;
++
++        g_debug ("GsmManager: SaveSession called");
++
++        g_return_val_if_fail (GSM_IS_MANAGER (manager), FALSE);
++
++        if (manager->priv->phase != GSM_MANAGER_PHASE_RUNNING) {
++                g_set_error (error,
++                             GSM_MANAGER_ERROR,
++                             GSM_MANAGER_ERROR_NOT_IN_RUNNING,
++                             "SaveSession interface is only available during the Running phase");
++                return FALSE;
++        }
++
++        data.manager = manager;
++        data.flags = 0;
++        gsm_store_foreach (manager->priv->clients,
++                           (GsmStoreFunc)_client_request_save_helper,
++                           &data);
++
++        if (manager->priv->query_clients) {
++                manager->priv->query_timeout_id = g_timeout_add_seconds (GSM_MANAGER_SAVE_SESSION_TIMEOUT,
++                                                                         (GSourceFunc)_on_query_save_session_timeout,
++                                                                         manager);
++                return TRUE;
++        } else {
++                g_debug ("GsmManager: Nothing to save");
++                return FALSE;
++        }
++}
++
++gboolean
+ gsm_manager_can_shutdown (GsmManager *manager,
+                           gboolean   *shutdown_available,
+                           GError    **error)
+diff -burN a/mate-session/gsm-manager.h b/mate-session/gsm-manager.h
+--- a/mate-session/gsm-manager.h	2012-02-29 22:03:09.000000000 +0100
++++ b/mate-session/gsm-manager.h	2012-08-08 12:49:14.262391979 +0200
+@@ -154,6 +154,9 @@
+ gboolean            gsm_manager_shutdown                       (GsmManager     *manager,
+                                                                 GError        **error);
+ 
++gboolean            gsm_manager_save_session                   (GsmManager     *manager,
++                                                                GError        **error);
++
+ gboolean            gsm_manager_can_shutdown                   (GsmManager     *manager,
+                                                                 gboolean       *shutdown_available,
+                                                                 GError        **error);
+diff -burN a/mate-session/gsm-xsmp-client.c b/mate-session/gsm-xsmp-client.c
+--- a/mate-session/gsm-xsmp-client.c	2012-02-29 22:03:08.000000000 +0100
++++ b/mate-session/gsm-xsmp-client.c	2012-08-08 12:52:27.719397905 +0200
+@@ -69,6 +69,7 @@
+ enum {
+         REGISTER_REQUEST,
+         LOGOUT_REQUEST,
++        SAVE_REQUEST,
+         LAST_SIGNAL
+ };
+ 
+@@ -502,6 +503,31 @@
+         return TRUE;
+ }
+ 
++static gboolean
++xsmp_request_save (GsmClient *client,
++                   guint      flags,
++                   GError   **error)
++{
++        GsmXSMPClient *xsmp = (GsmXSMPClient *) client;
++
++        g_debug ("GsmXSMPClient: xsmp_request_save ('%s')", xsmp->priv->description);
++
++        if (xsmp->priv->conn == NULL) {
++                g_set_error (error,
++                             GSM_CLIENT_ERROR,
++                             GSM_CLIENT_ERROR_NOT_REGISTERED,
++                             "Client is not registered");
++                return FALSE;
++        }
++
++        if (flags & GSM_CLIENT_END_SESSION_FLAG_LAST)
++                xsmp_save_yourself_phase2 (client);
++        else
++                do_save_yourself (xsmp, SmSaveLocal, FALSE);
++
++        return TRUE;
++}
++
+ static char *
+ get_desktop_file_path (GsmXSMPClient *client)
+ {
+@@ -976,6 +1002,8 @@
+         object_class->get_property         = gsm_xsmp_client_get_property;
+         object_class->set_property         = gsm_xsmp_client_set_property;
+ 
++
++        client_class->impl_request_save           = xsmp_request_save;
+         client_class->impl_save                   = xsmp_save;
+         client_class->impl_stop                   = xsmp_stop;
+         client_class->impl_query_end_session      = xsmp_query_end_session;
+@@ -1003,6 +1031,16 @@
+                               NULL,
+                               NULL,
+                               g_cclosure_marshal_VOID__BOOLEAN,
++                              G_TYPE_NONE,
++                              1, G_TYPE_BOOLEAN);
++        signals[SAVE_REQUEST] =
++		g_signal_new ("save-request",
++                              G_OBJECT_CLASS_TYPE (object_class),
++                              G_SIGNAL_RUN_LAST,
++                              G_STRUCT_OFFSET (GsmXSMPClientClass, save_request),
++                              NULL,
++                              NULL,
++                              g_cclosure_marshal_VOID__BOOLEAN,
+                               G_TYPE_NONE,
+                               1, G_TYPE_BOOLEAN);
+ 
+diff -burN a/mate-session/gsm-xsmp-client.h b/mate-session/gsm-xsmp-client.h
+--- a/mate-session/gsm-xsmp-client.h	2012-02-29 22:03:09.000000000 +0100
++++ b/mate-session/gsm-xsmp-client.h	2012-08-08 12:53:39.629400108 +0200
+@@ -57,6 +57,8 @@
+         gboolean (*logout_request)       (GsmXSMPClient  *client,
+                                           gboolean        prompt);
+ 
++        gboolean (*save_request)         (GsmXSMPClient  *client,
++                                          gboolean        prompt);
+ 
+         void     (*saved_state)          (GsmXSMPClient  *client);
+ 
+diff -burN a/mate-session/org.gnome.SessionManager.xml b/mate-session/org.gnome.SessionManager.xml
+--- a/mate-session/org.gnome.SessionManager.xml	2012-02-29 22:03:09.000000000 +0100
++++ b/mate-session/org.gnome.SessionManager.xml	2012-08-08 12:57:41.216407509 +0200
+@@ -256,6 +256,14 @@
+       </doc:doc>
+     </method>
+ 
++    <method name="SaveSession">
++      <doc:doc>
++	    <doc:description>
++	      <doc:para>Request to save session</doc:para>
++	    </doc:description>
++      </doc:doc>
++    </method>
++
+     <method name="CanShutdown">
+       <arg name="is_available" direction="out" type="b">
+         <doc:doc>

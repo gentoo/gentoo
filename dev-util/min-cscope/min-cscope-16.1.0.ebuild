@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Interactively examine a C program"
-HOMEPAGE="http://sourceforge.net/projects/kscope/"
+HOMEPAGE="https://sourceforge.net/projects/kscope/"
 SRC_URI="mirror://sourceforge/kscope/${P}.tar.gz"
 
 LICENSE="BSD"

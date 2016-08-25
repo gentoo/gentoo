@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A C library implementing a suite of algorithms to factor large integers"
-HOMEPAGE="http://sourceforge.net/projects/msieve/"
+HOMEPAGE="https://sourceforge.net/projects/msieve/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}.tar.gz"
 
 LICENSE="public-domain"

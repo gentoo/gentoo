@@ -1,0 +1,62 @@
+From 34d55f6d771bcf026f453457f45d787391910598 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Tue, 2 Feb 2016 13:56:50 -0700
+Subject: [PATCH] cmake: fixed CheckCXXLibraryExists() with >=cmake-3.4
+
+---
+ CMakeModules/CheckCXXLibraryExists.cmake |  6 +-----
+ CMakeModules/CheckFunctionExists.cpp     | 23 +++++++++++++++++++++++
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+ create mode 100644 CMakeModules/CheckFunctionExists.cpp
+
+diff --git a/CMakeModules/CheckCXXLibraryExists.cmake b/CMakeModules/CheckCXXLibraryExists.cmake
+index 9c76fe2..d84aea7 100644
+--- a/CMakeModules/CheckCXXLibraryExists.cmake
++++ b/CMakeModules/CheckCXXLibraryExists.cmake
+@@ -54,13 +54,9 @@ macro(CHECK_CXX_LIBRARY_EXISTS LIBRARY FUNCTION LOCATION VARIABLE)
+       set(CHECK_LIBRARY_EXISTS_LIBRARIES
+         ${CHECK_LIBRARY_EXISTS_LIBRARIES} ${CMAKE_REQUIRED_LIBRARIES})
+     endif()
+-    if(NOT EXISTS ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CheckFunctionExists.cpp)
+-      file(COPY ${CMAKE_ROOT}/Modules/CheckFunctionExists.c DESTINATION ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY})
+-      file(RENAME ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CheckFunctionExists.c ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CheckFunctionExists.cpp)
+-    endif()
+     try_compile(${VARIABLE}
+       ${CMAKE_BINARY_DIR}
+-      ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CheckFunctionExists.cpp
++      ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/CheckFunctionExists.cpp
+       COMPILE_DEFINITIONS ${CMAKE_REQUIRED_DEFINITIONS}
+       LINK_LIBRARIES ${CHECK_LIBRARY_EXISTS_LIBRARIES}
+       CMAKE_FLAGS
+diff --git a/CMakeModules/CheckFunctionExists.cpp b/CMakeModules/CheckFunctionExists.cpp
+new file mode 100644
+index 0000000..607b3e8
+--- /dev/null
++++ b/CMakeModules/CheckFunctionExists.cpp
+@@ -0,0 +1,23 @@
++#ifdef CHECK_FUNCTION_EXISTS
++
++char CHECK_FUNCTION_EXISTS();
++#ifdef __CLASSIC_C__
++int main(){
++  int ac;
++  char*av[];
++#else
++int main(int ac, char*av[]){
++#endif
++  CHECK_FUNCTION_EXISTS();
++  if(ac > 1000)
++    {
++    return *av[0];
++    }
++  return 0;
++}
++
++#else  /* CHECK_FUNCTION_EXISTS */
++
++#  error "CHECK_FUNCTION_EXISTS has to specify the function"
++
++#endif /* CHECK_FUNCTION_EXISTS */
+-- 
+2.7.3
+

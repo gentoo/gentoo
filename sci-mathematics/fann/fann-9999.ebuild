@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils git-2
+inherit cmake-multilib git-r3
 
 DESCRIPTION="Fast Artificial Neural Network Library"
 HOMEPAGE="http://leenissen.dk/fann/"
-EGIT_REPO_URI="git://github.com/libfann/fann.git"
+EGIT_REPO_URI="https://github.com/libfann/fann"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -21,7 +21,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake-multilib_src_install
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r examples

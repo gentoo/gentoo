@@ -1,5 +1,5 @@
---- plugins/Makefile.orig	2013-05-15 14:36:33.994231829 +0400
-+++ plugins/Makefile	2013-05-15 14:37:06.686234429 +0400
+--- a/plugins/Makefile	2013-05-15 14:36:33.994231829 +0400
++++ b/plugins/Makefile	2013-05-15 14:37:06.686234429 +0400
 @@ -17,14 +17,14 @@
  %.so: %.c
  	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^ $(LDADD)

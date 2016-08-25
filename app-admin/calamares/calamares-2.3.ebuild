@@ -4,7 +4,6 @@
 
 EAPI=6
 
-QT_MINIMAL="5.6.0"
 PYTHON_COMPAT=( python{3_4,3_5} )
 inherit kde5 python-r1
 

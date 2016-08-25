@@ -41,7 +41,11 @@ DEPEND="${RDEPEND}
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Spec
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Perl-Critic-Dynamic
 	)
 "
+
+src_test() {
+	perl_rm_files t/01-pod.t t/02-pod-coverage.t t/03-kwalitee.t \
+		t/04-critic.t t/release-pod-syntax.t
+	perl-module_src_test
+}

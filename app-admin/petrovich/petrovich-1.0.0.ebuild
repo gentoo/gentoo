@@ -7,7 +7,7 @@ inherit eutils
 S=${WORKDIR}/${PN}
 DESCRIPTION="Filesystem Integrity Checker"
 SRC_URI="mirror://sourceforge/petrovich/${P}.tar.gz"
-HOMEPAGE="http://sourceforge.net/projects/petrovich"
+HOMEPAGE="https://sourceforge.net/projects/petrovich"
 IUSE=""
 SLOT="0"
 LICENSE="GPL-2"

@@ -6,7 +6,7 @@ EAPI=5
 inherit perl-app
 
 DESCRIPTION="A gtk-perl mplayer/mencoder frontend for ripping DVDs"
-HOMEPAGE="http://sourceforge.net/acidrip/"
+HOMEPAGE="https://sourceforge.net/acidrip/"
 SRC_URI="mirror://sourceforge/${P}.tar.gz"
 
 LICENSE="GPL-2"

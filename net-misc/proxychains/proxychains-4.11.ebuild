@@ -15,7 +15,7 @@ SRC_URI="https://github.com/rofl0r/${MY_PN}/releases/download/v${PV}/${MY_P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 S=${WORKDIR}/${MY_P}
 

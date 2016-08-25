@@ -15,8 +15,9 @@ HOMEPAGE="http://www.octave.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot hdf5 +imagemagick opengl postscript
+IUSE="curl doc fftw +glpk gnuplot graphicsmagick hdf5 +imagemagick opengl postscript
 	+qhull +qrupdate readline +sparse static-libs X zlib"
+REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 RDEPEND="
@@ -29,9 +30,8 @@ RDEPEND="
 	glpk? ( sci-mathematics/glpk )
 	gnuplot? ( sci-visualization/gnuplot )
 	hdf5? ( sci-libs/hdf5 )
-	imagemagick? ( || (
-			media-gfx/graphicsmagick[cxx]
-			media-gfx/imagemagick[cxx] ) )
+	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
+	imagemagick? ( media-gfx/imagemagick:=[cxx] )
 	opengl? (
 		media-libs/freetype:2
 		media-libs/fontconfig
@@ -111,12 +111,10 @@ src_configure() {
 		$(use_with X x)
 		$(use_with zlib z)
 	)
-	if use imagemagick; then
-		if has_version media-gfx/graphicsmagick[cxx]; then
-			myeconfargs+=( "--with-magick=GraphicsMagick" )
-		else
-			myeconfargs+=( "--with-magick=ImageMagick" )
-		fi
+	if use graphicsmagick; then
+		myeconfargs+=( "--with-magick=GraphicsMagick" )
+	elif use imagemagick; then
+		myeconfargs+=( "--with-magick=ImageMagick" )
 	else
 		myeconfargs+=( "--without-magick" )
 	fi

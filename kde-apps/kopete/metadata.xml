@@ -29,7 +29,6 @@
 		<!-- uncomment this when enabled in ebuild
 		<flag name="telepathy">Enable support for the real-time communication framework telepathy.</flag>
 		-->
-		<flag name="sms">Enable SMS sendinge functionality.</flag>
 		<flag name="testbed">Enable the testbed protocol.</flag>
 		<flag name="winpopup">Enable pop-up messages sending on windows. (same as good old "net send" messages ;])</flag>
 		<flag name="yahoo">Enable yahoo protocol support.</flag>

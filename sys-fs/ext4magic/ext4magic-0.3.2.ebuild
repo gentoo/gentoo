@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems"
-HOMEPAGE="http://sourceforge.net/projects/ext4magic/"
+HOMEPAGE="https://sourceforge.net/projects/ext4magic/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -4,3 +4,7 @@
 
 dev-libs/libpcre cxx
 sys-libs/ncurses cxx
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
+# dev-qt/qtwebkit:5 and kde-frameworks/*:5 not keyworded.
+net-irc/kvirc kde webkit

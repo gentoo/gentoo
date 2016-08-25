@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,7 +62,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-	 	--docdir=/usr/share/doc/${PF} \
+		--docdir=/usr/share/doc/${PF} \
 		$(use_enable debug) \
 		--with-wx-config=${WX_CONFIG}
 }

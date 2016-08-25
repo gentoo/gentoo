@@ -25,7 +25,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc
 SLOT="0"
 IUSE=""
 
-ruby_add_rdepend "|| ( >=dev-ruby/json-1.4 >=dev-ruby/yajl-ruby-1.0 =dev-ruby/activesupport-3* )"
+ruby_add_rdepend "|| ( >=dev-ruby/json-1.4 >=dev-ruby/yajl-ruby-1.0 )"
 
 ruby_add_bdepend "doc? ( dev-ruby/rspec:3 dev-ruby/yard )"
 

@@ -9,7 +9,7 @@ inherit vdr-plugin-2
 GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="VDR Plugin: Xinelib PlugIn"
-HOMEPAGE="http://sourceforge.net/projects/xineliboutput/"
+HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tar.xz"
 
 SLOT="0"

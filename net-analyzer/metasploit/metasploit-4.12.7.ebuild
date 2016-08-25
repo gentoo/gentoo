@@ -45,7 +45,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bundler
 	dev-ruby/filesize
 	dev-ruby/jsobfu:0.3.0
-	dev-ruby/json
+	dev-ruby/json:*
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
 	>=dev-ruby/metasploit_data_models-2.0.0

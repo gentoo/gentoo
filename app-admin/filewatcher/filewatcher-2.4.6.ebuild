@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="This is a configuration file control system and IDS"
-HOMEPAGE="http://sourceforge.net/projects/filewatcher/"
+HOMEPAGE="https://sourceforge.net/projects/filewatcher/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

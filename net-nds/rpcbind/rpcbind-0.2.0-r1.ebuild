@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="portmap replacement which supports RPC over various protocols"
-HOMEPAGE="http://sourceforge.net/projects/rpcbind/"
+HOMEPAGE="https://sourceforge.net/projects/rpcbind/"
 
 LICENSE="BSD"
 SLOT="0"

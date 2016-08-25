@@ -83,6 +83,10 @@ src_prepare() {
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
+	# Remove pointless GCC version limitations in check_gcc()
+	sed -e "/\s*-o\s*\\\(\s*\$cc_maj\s*-eq\s*[5-9]\s*-a\s*\$cc_min\s*-gt\s*[0-5]\s*\\\)\s*\\\/d" \
+		-i configure || die
+
 	default
 
 	# link with lazy on hardened #394757

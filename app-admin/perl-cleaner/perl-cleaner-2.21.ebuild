@@ -22,7 +22,6 @@ IUSE=""
 [[ "${PV}" == "9999" ]] && DEPEND="sys-apps/help2man"
 
 RDEPEND="app-shells/bash
-	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath sys-freebsd/freebsd-bin )
 	dev-lang/perl
 	|| (
 		( sys-apps/portage app-portage/portage-utils )

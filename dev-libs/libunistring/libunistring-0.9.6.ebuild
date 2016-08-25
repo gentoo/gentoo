@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -12,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux"
 IUSE="doc static-libs"
 
 src_prepare() {
@@ -24,13 +23,11 @@ src_configure() {
 }
 
 src_install() {
-	dodoc AUTHORS README ChangeLog || die "dodoc failed"
+	default
 	if use doc; then
-		dohtml doc/*.html || die "dohtml failed"
-		doinfo doc/*.info || die "doinfo failed"
+		dohtml doc/*.html
+		doinfo doc/*.info
 	fi
-
-	emake DESTDIR="${D}" install || die "Install failed"
 
 	prune_libtool_files
 }

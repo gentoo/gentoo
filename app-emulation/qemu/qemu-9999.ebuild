@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="de_DE fr_FR hu it tr zh_CN"
+PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo pax-utils l10n
@@ -25,7 +25,7 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
+IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt glusterfs \
 gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
@@ -65,8 +65,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # Older versions of gnutls are supported, but it's simpler to just require
 # the latest versions.  This is also why we require nettle.
+#
+# TODO: Split out tools deps into another var.  e.g. bzip2 is only used by
+# system binaries and tools, not user binaries.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
+	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	xattr? ( sys-apps/attr[static-libs(+)] )"
 SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
@@ -329,7 +333,6 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	epatch "${FILESDIR}"/${PN}-2.6.0-crypto-static.patch
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
@@ -393,6 +396,7 @@ qemu_src_configure() {
 	conf_opts+=(
 		$(conf_softmmu accessibility brlapi)
 		$(conf_softmmu aio linux-aio)
+		$(conf_softmmu bzip2)
 		$(conf_softmmu bluetooth bluez)
 		$(conf_softmmu caps cap-ng)
 		$(conf_softmmu curl)
@@ -463,6 +467,7 @@ qemu_src_configure() {
 			--disable-linux-user
 			--disable-system
 			--disable-blobs
+			$(use_enable bzip2)
 		)
 		static_flag="static"
 		;;

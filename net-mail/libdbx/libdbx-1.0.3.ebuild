@@ -10,7 +10,7 @@ MY_PN="libdbx"
 MYFILE="${MY_PN}_${PV}.tgz"
 
 DESCRIPTION="Tools and library for reading Outlook Express mailboxes (.dbx format)"
-HOMEPAGE="http://sourceforge.net/projects/ol2mbox"
+HOMEPAGE="https://sourceforge.net/projects/ol2mbox"
 SRC_URI="mirror://sourceforge/ol2mbox/${MYFILE}"
 
 LICENSE="GPL-2"

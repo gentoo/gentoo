@@ -7,6 +7,7 @@ EAPI=6
 KMNAME="kdepim"
 EGIT_BRANCH="KDE/4.14"
 KMNOMODULE="true"
+WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="Common libraries for KDE PIM apps"

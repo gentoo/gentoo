@@ -1,0 +1,23 @@
+diff -Naur libfm-1.2.3/src/base/fm-config.c libfm-1.2.3-fix-uaf-new2/src/base/fm-config.c
+--- libfm-1.2.3/src/base/fm-config.c	2014-10-14 18:29:21.000000000 +0200
++++ libfm-1.2.3-fix-uaf-new2/src/base/fm-config.c	2016-06-18 18:23:35.721837971 +0200
+@@ -346,7 +346,8 @@
+     cfg->modules_blacklist = NULL;
+     cfg->system_modules_blacklist = NULL;
+     _cfg_monitor_free(cfg);
+-    g_free(cfg->_cfg_name);
++    if(name != cfg->_cfg_name)
++        g_free(cfg->_cfg_name);
+     if(G_LIKELY(!name))
+         name = "libfm/libfm.conf";
+     else
+@@ -363,7 +364,8 @@
+         }
+     }
+ 
+-    cfg->_cfg_name = g_strdup(name);
++    if(name != cfg->_cfg_name)
++        cfg->_cfg_name = g_strdup(name);
+     dirs = g_get_system_config_dirs();
+     /* bug SF #887: first dir in XDG_CONFIG_DIRS is the most relevant
+        so we shoult process the list in reverse order */

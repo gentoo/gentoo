@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit autotools eutils prefix
 
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="http://w3m.sourceforge.net/"
@@ -49,6 +49,7 @@ src_prepare() {
 			"${FILESDIR}"/${P}-url-schema.patch
 	ecvs_clean
 	sed -i -e "/^AR=/s/ar/$(tc-getAR)/" {.,w3mimg,libwc}/Makefile.in || die
+	hprefixify acinclude.m4
 	eautoconf
 }
 

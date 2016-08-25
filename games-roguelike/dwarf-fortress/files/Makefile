@@ -1,4 +1,4 @@
-# Copyright 2014-2015 Alex Xu (Hello71)
+# Copyright 2014-2016 Alex Xu (Hello71)
 # Distributed under the terms of the GNU General Public License v2
 
 PKG_CONFIG ?= pkg-config
@@ -11,7 +11,7 @@ SRCS := g_src/basics.cpp g_src/command_line.cpp g_src/enabler.cpp \
 	g_src/music_and_sound_openal.cpp g_src/random.cpp g_src/textlines.cpp \
 	g_src/enabler_input.cpp g_src/KeybindingScreen.cpp \
 	g_src/win32_compat.cpp g_src/textures.cpp g_src/resize++.cpp \
-	g_src/renderer_offscreen.cpp g_src/ttf_manager.cpp
+	g_src/renderer_offscreen.cpp g_src/ttf_manager.cpp g_src/ViewBase.cpp
 OBJS := $(SRCS:.cpp=.o)
 
 BLIBS := ncursesw openal sndfile

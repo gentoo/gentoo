@@ -6,8 +6,8 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="An encoding detector library ported from Mozilla"
-HOMEPAGE="https://github.com/BYVoid/uchardet"
+DESCRIPTION="An encoding detector library"
+HOMEPAGE="https://github.com/BYVoid/uchardet https://www.freedesktop.org/wiki/Software/uchardet/"
 SRC_URI="https://github.com/BYVoid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"

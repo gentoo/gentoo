@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils pam autotools multilib readme.gentoo
+inherit eutils pam autotools multilib readme.gentoo-r1
 
 DESCRIPTION="PAM interface for the S/Key authentication system"
 HOMEPAGE="http://freshmeat.net/projects/pam_skey/"
@@ -48,9 +48,11 @@ src_configure() {
 	econf --libdir="/$(get_libdir)" CFLAGS="${CFLAGS} -fPIC"
 }
 
+src_install() {
+	default
+	readme.gentoo_create_doc
+}
+
 pkg_postinst() {
-	case ${REPLACING_VERSIONS} in
-		1.1.[45]|1.1.5-r[123]) FORCE_PRINT_ELOG=1 ;;
-	esac
 	readme.gentoo_print_elog
 }

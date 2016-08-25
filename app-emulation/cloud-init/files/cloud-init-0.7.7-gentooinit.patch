@@ -1,0 +1,42 @@
+diff --git a/cloudinit/sources/DataSourceOpenNebula.py b/cloudinit/sources/DataSourceOpenNebula.py
+index 7b3a76b..635a836 100644
+--- a/cloudinit/sources/DataSourceOpenNebula.py
++++ b/cloudinit/sources/DataSourceOpenNebula.py
+@@ -407,7 +407,7 @@ def read_context_disk_dir(source_dir, asuser=None):
+     # http://opennebula.org/documentation:rel3.8:cong#network_configuration
+     for k in context:
+         if re.match(r'^ETH\d+_IP$', k):
+-            (out, _) = util.subp(['/sbin/ip', 'link'])
++            (out, _) = util.subp(['ip', 'link'])
+             net = OpenNebulaNetwork(out, context)
+             results['network-interfaces'] = net.gen_conf()
+             break
+diff --git a/setup.py b/setup.py
+index bbadd7b..1578a3d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -74,6 +74,7 @@ INITSYS_FILES = {
+     'sysvinit': [f for f in glob('sysvinit/redhat/*') if is_f(f)],
+     'sysvinit_freebsd': [f for f in glob('sysvinit/freebsd/*') if is_f(f)],
+     'sysvinit_deb': [f for f in glob('sysvinit/debian/*') if is_f(f)],
++    'sysvinit_openrc': [f for f in glob('sysvinit/gentoo/*') if is_f(f)],
+     'systemd': [f for f in (glob('systemd/*.service') +
+                             glob('systemd/*.target')) if is_f(f)],
+     'systemd.generators': [f for f in glob('systemd/*-generator') if is_f(f)],
+@@ -83,6 +84,7 @@ INITSYS_ROOTS = {
+     'sysvinit': '/etc/rc.d/init.d',
+     'sysvinit_freebsd': '/usr/local/etc/rc.d',
+     'sysvinit_deb': '/etc/init.d',
++    'sysvinit_openrc': '/etc/init.d',
+     'systemd': pkg_config_read('systemd', 'systemdsystemunitdir'),
+     'systemd.generators': pkg_config_read('systemd',
+                                           'systemdsystemgeneratordir'),
+@@ -205,7 +207,7 @@ setuptools.setup(
+     author='Scott Moser',
+     author_email='scott.moser@canonical.com',
+     url='http://launchpad.net/cloud-init/',
+-    packages=setuptools.find_packages(exclude=['tests']),
++    packages=setuptools.find_packages(exclude=['tests.*', 'tests']),
+     scripts=['tools/cloud-init-per'],
+     license='GPLv3',
+     data_files=data_files,

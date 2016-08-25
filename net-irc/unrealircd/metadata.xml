@@ -5,10 +5,6 @@
 		<email>binki@gentoo.org</email>
 		<name>Nathan Phillip Brink</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
-	</maintainer>
 	<use>
 		<flag name="class-nofakelag">Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).</flag>
 		<flag name="extban-stacking">Enable extended channel bans (such as +b ~c: and +b ~n:) to contain other extended bans instead of just hostmasks.</flag>

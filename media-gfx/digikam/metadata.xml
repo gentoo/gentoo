@@ -13,6 +13,7 @@
 		<flag name="kipi">Enable support for <pkg>media-plugins/kipi-plugins</pkg></flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
 		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
+		<flag name="panorama">Build the panorama plugin which requires <pkg>media-gfx/hugin</pkg></flag>
 		<flag name="semantic-desktop">Enable <pkg>kde-frameworks/kfilemetadata</pkg> support</flag>
 		<flag name="themedesigner">Build the digikam theme designer</flag>
 		<flag name="thumbnails">Enable thumbnails database support</flag>

@@ -6,7 +6,7 @@
 	<name>Michael Weber</name>
 </maintainer>
 <upstream>
-	<bugs-to>http://sourceforge.net/tracker/?group_id=243163</bugs-to>
+	<bugs-to>https://sourceforge.net/tracker/?group_id=243163</bugs-to>
 	<remote-id type="sourceforge">minidlna</remote-id>
 </upstream>
 <use>

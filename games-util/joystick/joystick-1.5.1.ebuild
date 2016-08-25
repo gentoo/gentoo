@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 MY_P="linuxconsoletools-${PV}"
 DESCRIPTION="joystick testing utilities"
-HOMEPAGE="http://sourceforge.net/projects/linuxconsole/ http://atrey.karlin.mff.cuni.cz/~vojtech/input/"
+HOMEPAGE="https://sourceforge.net/projects/linuxconsole/ http://atrey.karlin.mff.cuni.cz/~vojtech/input/"
 SRC_URI="mirror://sourceforge/linuxconsole/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"

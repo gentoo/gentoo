@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~arm ~ppc ~x86 ~sparc"
 IUSE=""
 RDEPEND=">=app-admin/eselect-1.2.5"
 
+S="${WORKDIR}"
+
 MODULEDIR="/usr/share/eselect/modules"
 
 # NOTE!!

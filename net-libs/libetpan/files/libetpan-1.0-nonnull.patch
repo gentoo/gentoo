@@ -1,4 +1,4 @@
-http://sourceforge.net/mailarchive/forum.php?thread_name=k2vfc2c80ae1004051048n4a2b5ab0y85ab946c2a556544%40mail.gmail.com&forum_name=libetpan-devel
+https://sourceforge.net/mailarchive/forum.php?thread_name=k2vfc2c80ae1004051048n4a2b5ab0y85ab946c2a556544%40mail.gmail.com&forum_name=libetpan-devel
 --- a/src/low-level/nntp/Makefile.am
 +++ b/src/low-level/nntp/Makefile.am
 @@ -35,6 +35,8 @@

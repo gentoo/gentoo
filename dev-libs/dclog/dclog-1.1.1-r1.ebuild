@@ -7,7 +7,7 @@ EAPI="2"
 inherit toolchain-funcs
 
 DESCRIPTION="A logging library for C/C++ programs"
-HOMEPAGE="http://sourceforge.net/projects/dclog/"
+HOMEPAGE="https://sourceforge.net/projects/dclog/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"

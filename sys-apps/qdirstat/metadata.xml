@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+        </maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Qt-based directory statistics: KDirStat without any KDE -- from
+		the author of the original KDirStat.
+
+		QDirStat is a graphical application to show where your disk space
+		has gone and to help you to clean it up.
+
+		This is a Qt-only port of the old Qt3/KDE3-based KDirStat, now
+		based on the latest Qt 5. It does not need any KDE libs or
+		infrastructure. It runs on every X11-based desktop on Linux, BSD
+		and other Unix-like systems.
+	</longdescription>
+</pkgmetadata>

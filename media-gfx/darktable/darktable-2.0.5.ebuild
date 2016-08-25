@@ -31,7 +31,7 @@ CDEPEND="
 	dev-libs/libxml2:2
 	dev-libs/pugixml:0=
 	gnome-base/librsvg:2
-	media-gfx/exiv2:0=[xmp]
+	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
 	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
@@ -138,7 +138,7 @@ pkg_postinst() {
 	elog "please bear in mind that your edits will be preserved during this process,"
 	elog "but it will not be possible to downgrade from 2.0 to 1.6 any more."
 	echo
-	ewarn "There will not be possible to downgrade!"
+	ewarn "It will not be possible to downgrade!"
 }
 
 pkg_postrm() {

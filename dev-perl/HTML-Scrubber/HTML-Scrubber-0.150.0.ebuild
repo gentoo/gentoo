@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,9 +19,17 @@ DEPEND="${REPEND}
 	dev-perl/Module-Build
 	test? (
 		dev-perl/Test-Memory-Cycle
-		dev-perl/Test-CPAN-Meta
-		dev-perl/Test-NoTabs
-		dev-perl/Test-EOL
 	)"
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/author-no-tabs.t t/release-unused-vars.t \
+		t/release-has-version.t t/author-critic.t \
+		t/release-minimum-version.t t/release-dist-manifest.t \
+		t/author-eol.t t/release-pod-syntax.t \
+		t/release-distmeta.t t/author-pod-spell.t \
+		t/release-portability.t t/000-report-versions.t \
+		t/release-synopsis.t
+	perl-module_src_test
+}

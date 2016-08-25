@@ -16,7 +16,7 @@ SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.ta
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="+bmp +duktape fbcon truetype +gif gstreamer gtk +javascript +jpeg +mng
 	pdf-writer +png +rosprite +svg +svgtiny +webp fbcon_frontend_able
 	fbcon_frontend_linux fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x"

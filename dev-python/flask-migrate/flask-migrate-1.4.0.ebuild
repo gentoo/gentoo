@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_PN="Flask-Migrate"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SQLAlchemy database migrations for Flask applications using Alembic"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-Admin"
+HOMEPAGE="https://pypi.python.org/pypi/Flask-Migrate"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"

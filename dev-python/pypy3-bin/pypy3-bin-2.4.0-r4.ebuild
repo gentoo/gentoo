@@ -73,7 +73,6 @@ DEPEND="${RDEPEND}
 	test? ( ${PYTHON_DEPS} )"
 #	doc? ( ${PYTHON_DEPS}
 #		dev-python/sphinx )
-PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy3-${PV}-src
 

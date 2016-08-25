@@ -1,0 +1,13 @@
+[Unit]
+Description=Prelude-Correlator service
+DefaultDependencies=no
+After=remote_fs.target prelude-manager.service
+
+[Service]
+ExecStart=/usr/bin/prelude-correlator -d -P /run/prelude-correlator/prelude-correlator.pid
+Type=forking
+PIDFile=/run/prelude-correlator/prelude-correlator.pid
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

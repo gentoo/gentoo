@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,6 +10,7 @@ KMNAME="kde-workspace"
 KMMODULE="plasma"
 PYTHON_COMPAT=( python2_7 )
 OPENGL_REQUIRED="always"
+WEBKIT_REQUIRED="always"
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,7 +63,7 @@ start_pre() {
 	if [ ! -d "${datadir}"/mysql ] ; then
 		# find which package is installed to report an error
 		local EROOT=$(portageq envvar EROOT)
-		local DBPKG_P=$(portageq match ${EROOT} $(portageq expand_virtual ${EROOT} virtual/mysql))
+		local DBPKG_P=$(portageq match ${EROOT} $(portageq expand_virtual ${EROOT} virtual/mysql | head -n1))
 		if [ -z ${DBPKG_P} ] ; then
 			eerror "You don't appear to have a server package installed yet."
 		else

@@ -1,0 +1,11 @@
+--- a/configure	2016-08-07 15:50:20.386687733 +0200
++++ b/configure	2016-08-07 15:53:55.489691690 +0200
+@@ -2967,7 +2967,7 @@
+ }
+ EOF
+
+-if ! compile_prog "-Werror $CFLAGS" "$LIBS" ; then
++if ! compile_prog "$CFLAGS" "$LIBS" ; then
+     error_exit "sizeof(size_t) doesn't match GLIB_SIZEOF_SIZE_T."\
+                "You probably need to set PKG_CONFIG_LIBDIR"\
+ 	       "to point to the right pkg-config files for your"\

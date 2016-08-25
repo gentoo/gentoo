@@ -7,7 +7,7 @@ inherit user linux-mod cmake-utils udev
 
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
-HOMEPAGE="http://sourceforge.net/projects/tpm-emulator.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/tpm-emulator.berlios/"
 SRC_URI="mirror://sourceforge/tpm-emulator/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 

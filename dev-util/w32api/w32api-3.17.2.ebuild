@@ -15,7 +15,7 @@ inherit eutils flag-o-matic
 MY_P="${P:0:${#P}-2}-${PV:0-1}-mingw32"
 DESCRIPTION="Free Win32 runtime and import library definitions"
 HOMEPAGE="http://www.mingw.org/"
-# http://sourceforge.net/projects/mingw/files/MinGW/Base/w32api/
+# https://sourceforge.net/projects/mingw/files/MinGW/Base/w32api/
 SRC_URI="mirror://sourceforge/mingw/${MY_P}-src.tar.lzma"
 
 LICENSE="BSD"

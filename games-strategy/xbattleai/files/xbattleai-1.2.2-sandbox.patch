@@ -1,5 +1,5 @@
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -200,87 +200,87 @@
  .PHONY: install-bin
  

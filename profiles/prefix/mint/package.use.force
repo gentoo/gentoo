@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Michael Haubenwallner <haubi@gentoo.org) (18 Apr 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (18 Apr 2016)
 # adjust MiNT specifics via USE flags
 sys-apps/coreutils hostname kill uptime
 

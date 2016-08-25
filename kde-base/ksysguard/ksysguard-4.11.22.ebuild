@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,6 +8,7 @@ KDE_HANDBOOK="optional"
 KMNAME="kde-workspace"
 CPPUNIT_REQUIRED="optional"
 VIRTUALX_REQUIRED="test"
+WEBKIT_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="KSysguard is a network enabled task manager and system monitor application"

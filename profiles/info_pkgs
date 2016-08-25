@@ -9,6 +9,7 @@ sys-kernel/linux-headers
 sys-libs/glibc
 sys-libs/musl
 sys-libs/uclibc
+sys-libs/uclibc-ng
 sys-freebsd/freebsd-lib
 sys-devel/binutils
 sys-devel/libtool

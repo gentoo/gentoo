@@ -6,7 +6,7 @@ EAPI=5
 inherit cmake-utils eutils games
 
 DESCRIPTION="A beach ball game with blobs of goo"
-HOMEPAGE="http://sourceforge.net/projects/blobby/"
+HOMEPAGE="https://sourceforge.net/projects/blobby/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}2-linux-${PV}.tar.gz"
 
 LICENSE="GPL-2"

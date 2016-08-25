@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>Marek.Szuba@cern.ch</email>
+		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<longdescription lang="en">
 	Pidgin usually stores passwords as plaintext with the "save password"
@@ -15,4 +11,7 @@
 	keyring, which some would argue is a more secure form of password
 	storage.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">aebrahim/pidgin-gnome-keyring</remote-id>
+	</upstream>
 </pkgmetadata>

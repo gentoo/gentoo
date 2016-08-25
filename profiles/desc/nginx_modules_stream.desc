@@ -6,5 +6,13 @@
 
 # Keep it sorted.
 access - This module allows limiting access to certain client addresses.
+geo - This module creates variables, whose values depend on the IP-address of the client.
+geoip - This module creates variables based on the IP-address of the client matched against the MaxMind GeoIP binary files.
 limit_conn - This module is used to limit the number of connections per the defined key.
+map - This module allows you to classify, or map a set of values into a different set of values and store the result in a variable.
+return - This module allows sending a specified value to the client and then closing the connection.
+split_clients - This module provides A/B testing support.
 upstream - This module is used to define groups of servers that can be referenced by the proxy_pass directive.
+upstream_hash - This module provides the ability to distribute upstream requests based on hashed key value.
+upstream_least_conn - This module provides the ability to distribute upstream requests using load balancing methods.
+upstream_zone - This module makes it possible to define a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes.

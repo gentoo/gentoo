@@ -1,0 +1,66 @@
+commit a0219e9d8292b70ac3ffa632a9c48cdcee44c9fb
+Author: Sebastian Kügler <sebas@kde.org>
+Date:   Tue Jun 7 14:35:11 2016 +0200
+
+    Fix crasher on application quit, bump Qt dep to 5.4
+    
+    Something changed inside QScreen, and now we get invalid objects during
+    teardown, where they previously were still accessible. Qt has "new" API
+    as of 5.4 so use that and prevent the crash from happening.
+    
+    REVIEWED-BY:Aleix Pol
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c834d9..1f6f890 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,7 +16,7 @@ include(ECMQtDeclareLoggingCategory)
+ include(FeatureSummary)
+ include(CheckCXXCompilerFlag)
+ 
+-set(REQUIRED_QT_VERSION 5.2.0)
++set(REQUIRED_QT_VERSION 5.4.0)
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core DBus Gui Test X11Extras)
+ 
+ # Wayland backend
+diff --git a/backends/qscreen/qscreenconfig.cpp b/backends/qscreen/qscreenconfig.cpp
+index c3c69db..156d973 100644
+--- a/backends/qscreen/qscreenconfig.cpp
++++ b/backends/qscreen/qscreenconfig.cpp
+@@ -39,6 +39,7 @@ QScreenConfig::QScreenConfig(QObject *parent)
+     }
+     m_blockSignals = false;
+     connect(qApp, &QGuiApplication::screenAdded, this, &QScreenConfig::screenAdded);
++    connect(qApp, &QGuiApplication::screenRemoved, this, &QScreenConfig::screenRemoved);
+ }
+ 
+ QScreenConfig::~QScreenConfig()
+@@ -75,14 +76,12 @@ void QScreenConfig::screenAdded(const QScreen *qscreen)
+     qscreenoutput->setId(outputId(qscreen));
+     m_outputMap.insert(qscreenoutput->id(), qscreenoutput);
+ 
+-    connect(qscreen, &QObject::destroyed, this, &QScreenConfig::screenDestroyed);
+-
+     if (!m_blockSignals) {
+         Q_EMIT configChanged(toKScreenConfig());
+     }
+ }
+ 
+-void QScreenConfig::screenDestroyed(QObject *qscreen)
++void QScreenConfig::screenRemoved(QScreen *qscreen)
+ {
+     qCDebug(KSCREEN_QSCREEN) << "Screen removed" << qscreen << QGuiApplication::screens().count();
+     // Find output matching the QScreen object and remove it
+diff --git a/backends/qscreen/qscreenconfig.h b/backends/qscreen/qscreenconfig.h
+index 1dfcc95..2c80eed 100644
+--- a/backends/qscreen/qscreenconfig.h
++++ b/backends/qscreen/qscreenconfig.h
+@@ -45,7 +45,7 @@ public:
+ 
+ private Q_SLOTS:
+     void screenAdded(const QScreen *qscreen);
+-    void screenDestroyed(QObject *qscreen = 0);
++    void screenRemoved(QScreen *qscreen);
+ 
+ Q_SIGNALS:
+     void configChanged(const KScreen::ConfigPtr &config);

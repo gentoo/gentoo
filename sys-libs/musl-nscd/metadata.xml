@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lejonet@gentoo.org</email>
+		<name>Daniel Kuehn</name>
+	</maintainer>
+	<use>
+		<flag name="minimal">Only installs the header files</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pikhq/musl-nscd</remote-id>
+	</upstream>
+</pkgmetadata>

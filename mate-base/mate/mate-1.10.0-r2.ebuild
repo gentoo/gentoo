@@ -15,7 +15,7 @@ HOMEPAGE="http://mate-desktop.org"
 LICENSE="metapackage"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+base -bluetooth +notification +themes +extras"
 
 S="${WORKDIR}"

@@ -1,0 +1,90 @@
+diff -Naur Cura-14.09/Cura/gui/printWindow.py Cura-14.09.new/Cura/gui/printWindow.py
+--- Cura-14.09/Cura/gui/printWindow.py	2014-09-19 05:44:21.000000000 -0400
++++ Cura-14.09.new/Cura/gui/printWindow.py	2014-12-08 16:36:18.410389600 -0500
+@@ -1,7 +1,6 @@
+ __copyright__ = "Copyright (C) 2013 David Braam - Released under terms of the AGPLv3 License"
+ 
+ import wx
+-import power
+ import time
+ import sys
+ import os
+@@ -319,18 +318,6 @@
+ 		self.sizer = wx.GridBagSizer(2, 2)
+ 		self.panel.SetSizer(self.sizer)
+ 
+-		self.powerWarningText = wx.StaticText(parent=self.panel,
+-			id=-1,
+-			label=_("Your computer is running on battery power.\nConnect your computer to AC power or your print might not finish."),
+-			style=wx.ALIGN_CENTER)
+-		self.powerWarningText.SetBackgroundColour('red')
+-		self.powerWarningText.SetForegroundColour('white')
+-		self.powerManagement = power.PowerManagement()
+-		self.powerWarningTimer = wx.Timer(self)
+-		self.Bind(wx.EVT_TIMER, self.OnPowerWarningChange, self.powerWarningTimer)
+-		self.OnPowerWarningChange(None)
+-		self.powerWarningTimer.Start(10000)
+-
+ 		self.statsText = wx.StaticText(self.panel, -1, _("InfoLine from printer connection\nInfoLine from dialog\nExtra line\nMore lines for layout\nMore lines for layout\nMore lines for layout"))
+ 
+ 		self.connectButton = wx.Button(self.panel, -1, _("Connect"))
+@@ -341,7 +328,6 @@
+ 		self.errorLogButton = wx.Button(self.panel, -1, _("Error log"))
+ 		self.progress = wx.Gauge(self.panel, -1, range=1000)
+ 
+-		self.sizer.Add(self.powerWarningText, pos=(0, 0), span=(1, 5), flag=wx.EXPAND|wx.BOTTOM, border=5)
+ 		self.sizer.Add(self.statsText, pos=(1, 0), span=(1, 5), flag=wx.LEFT, border=5)
+ 		self.sizer.Add(self.connectButton, pos=(2, 0))
+ 		#self.sizer.Add(self.loadButton, pos=(2,1))
+@@ -373,21 +359,6 @@
+ 			self._printerConnection.openActiveConnection()
+ 		preventComputerFromSleeping(True)
+ 
+-	def OnPowerWarningChange(self, e):
+-		type = self.powerManagement.get_providing_power_source_type()
+-		if type == power.POWER_TYPE_AC and self.powerWarningText.IsShown():
+-			self.powerWarningText.Hide()
+-			self.panel.Layout()
+-			self.Layout()
+-			self.Fit()
+-			self.Refresh()
+-		elif type != power.POWER_TYPE_AC and not self.powerWarningText.IsShown():
+-			self.powerWarningText.Show()
+-			self.panel.Layout()
+-			self.Layout()
+-			self.Fit()
+-			self.Refresh()
+-
+ 	def OnClose(self, e):
+ 		if self._printerConnection.hasActiveConnection():
+ 			if self._printerConnection.isPrinting():
+diff -Naur Cura-14.09/scripts/linux/cura.py Cura-14.09.new/scripts/linux/cura.py
+--- Cura-14.09/scripts/linux/cura.py	2014-09-19 05:44:21.000000000 -0400
++++ Cura-14.09.new/scripts/linux/cura.py	2014-12-08 16:37:44.840391177 -0500
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import os, sys
+ 
+@@ -9,7 +9,6 @@
+ 	import wx
+ 	import serial
+ 	import numpy
+-	import power
+ except ImportError as e:
+ 	if e.message[0:16] == 'No module named ':
+ 		module = e.message[16:]
+@@ -20,12 +19,6 @@
+ 			module = 'pyserial'
+ 		print 'Requires ' + module
+ 
+-		if module == 'power':
+-			print "Install from: https://github.com/GreatFruitOmsk/Power"
+-		else:
+-			print "Try sudo easy_install " + module
+-		print e.message
+-    
+ 	exit(1)
+ 
+ 

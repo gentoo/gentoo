@@ -2,9 +2,28 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
-# Missing keywords on app-text/gspell - bug #587368
->=app-editors/gedit-3.20 spell
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
+# Missing keywords on media-libs/grilo - bug #521972
+media-sound/rhythmbox upnp-av
+
+# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
+# Missing keywords on dev-libs/gom - bug #521972
+media-libs/grilo test
+
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
+# David Seifert <soap@gentoo.org> (31 Jul 2016)
+# media-gfx/graphicsmagick is not keyworded on arm, users will need
+# to enable imagemagick flag and disable graphicsmagick use flag
+# to enable conversion facilities
+sci-mathematics/octave graphicsmagick
+
+# Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
+# The corresponding Qt5 modules are not keyworded on arm, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 location webengine
 
 # Göktürk Yüksek <gokturk@gentoo.org> (14 June 2016) on behalf of
 # Nicholas Vinson <nvinso234@gmail.com> (proxy-maint)
@@ -60,7 +79,7 @@ media-sound/moc timidity
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires SWT, which is currently unsupported on ARM.
 app-text/tesseract scrollview
 
@@ -121,10 +140,6 @@ sys-auth/sssd augeas
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.
 www-client/chromium widevine
-
-# Markos Chandras <hwoarang@gentoo.org> (07 Feb 2015)
-# app-admin/cgmanager misses ARM keyword. Bug #539208
-app-emulation/lxc cgmanager
 
 # Markus Meier <maekke@gentoo.org> (17 Jan 2015)
 # Unkeyworded deps, bug #536226
@@ -537,7 +552,7 @@ media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavp
 # projectm not keyworded, bug #314969
 media-video/vlc projectm chromaprint opencv
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 

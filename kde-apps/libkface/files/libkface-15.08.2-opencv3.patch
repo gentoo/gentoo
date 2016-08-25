@@ -422,7 +422,7 @@ dc62c0e0ea55d189d918501cce4d92f4198a1a0c use same OpenCV logic than digiKam and 
 -                  obj.info()->addParam(obj, "histograms", obj.m_histograms);         // modification: Make Read/Write
 -                  obj.info()->addParam(obj, "labels",     obj.m_labels);             // modification: Make Read/Write
 -                  obj.info()->addParam(obj, "statistic",  obj.m_statisticsMode));    // modification: Add parameter
-+#if OPENCV_VERSION <= OPENCV_MAKE_VERSION(2,4,11)
++#if OPENCV_VERSION <= OPENCV_MAKE_VERSION(2,4,99)
 +    CV_INIT_ALGORITHM(LBPHFaceRecognizer, "FaceRecognizer.LBPH-KFaceIface",
 +                      obj.info()->addParam(obj, "radius",     obj.m_radius);
 +                      obj.info()->addParam(obj, "neighbors",  obj.m_neighbors);

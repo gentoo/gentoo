@@ -5,7 +5,7 @@
 EAPI=6
 
 DESCRIPTION="MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger"
-HOMEPAGE="http://sourceforge.net/projects/mtkbabel/"
+HOMEPAGE="https://sourceforge.net/projects/mtkbabel/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

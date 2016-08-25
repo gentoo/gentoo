@@ -17,7 +17,7 @@ IUSE="debug fribidi wiimote"
 
 # don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
-# http://sourceforge.net/tracker/?func=detail&aid=3454889&group_id=74339&atid=540679
+# https://sourceforge.net/tracker/?func=detail&aid=3454889&group_id=74339&atid=540679
 
 RDEPEND="media-libs/libpng:0
 	media-libs/libvorbis

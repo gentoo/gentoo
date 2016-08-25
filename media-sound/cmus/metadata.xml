@@ -12,7 +12,6 @@
     <flag name="pidgin">install support script for <pkg>net-im/pidgin</pkg></flag>
     <flag name="opus">enable support for <pkg>media-libs/opusfile</pkg></flag>
     <flag name="tremor">use libivorbis from <pkg>media-libs/tremor</pkg> instead of <pkg>media-libs/libvorbis</pkg></flag>
-    <flag name="wma">add support for Windows Media Audio</flag>
   </use>
   <upstream>
     <remote-id type="github">cmus/cmus</remote-id>

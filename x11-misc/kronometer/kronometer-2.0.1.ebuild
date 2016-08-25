@@ -4,9 +4,8 @@
 
 EAPI=6
 
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
-KDE_PUNT_BOGUS_DEPS="true"
 inherit kde5
 
 DESCRIPTION="Stopwatch application"

@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit autotools-utils
 
 DESCRIPTION="Small Footprint CIM Client Library"
-HOMEPAGE="http://sourceforge.net/apps/mediawiki/sblim"
+HOMEPAGE="https://sourceforge.net/apps/mediawiki/sblim"
 SRC_URI="mirror://sourceforge/project/sblim/${PN}/${P}.tar.bz2"
 
 LICENSE="EPL-1.0"

@@ -16,7 +16,7 @@ fi
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="Python daemon that collects and publishes system metrics"
 HOMEPAGE="https://github.com/python-diamond/Diamond"
@@ -37,10 +37,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# adjust for Prefix
-	sed -i \
-		-e '/default="\/etc\/diamond\/diamond.conf"/s:=":="'"${EPREFIX}"':' \
-		bin/diamond* \
-		|| die
+	hprefixify bin/diamond*
 
 	distutils-r1_src_prepare
 }
@@ -57,6 +54,7 @@ python_install() {
 	sed -i \
 		-e '/pid_file =/s:/var/run:/run:' \
 		"${ED}"/etc/diamond/diamond.conf.example || die
+	hprefixify "${ED}"/etc/diamond/diamond.conf.example
 }
 
 src_install() {

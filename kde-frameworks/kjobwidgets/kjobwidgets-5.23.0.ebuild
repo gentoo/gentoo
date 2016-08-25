@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework providing assorted widgets for showing the progress of jobs"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="nls X"
 
 RDEPEND="

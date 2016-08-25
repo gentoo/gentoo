@@ -1,0 +1,45 @@
+From b756fd2e58ab013b5c9bfc2658ed9ad48868067c Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Sun, 7 Aug 2016 18:24:47 -0400
+Subject: [PATCH] avoid warning about unused asprintf return value
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+some versions of gcc produce this warning, which is treated as an
+error due to our conservative defaults in Makefile:
+
+src/agent-transfer/main.c: In function ‘main’:
+src/agent-transfer/main.c:676:5: error: ignoring return value of ‘asprintf’, declared with attribute warn_unused_result [-Werror=unused-result]
+     asprintf (&alt_comment, "GnuPG keygrip %s", args.keygrip);
+     ^
+cc1: all warnings being treated as errors
+
+this patch avoids the warning.
+---
+ src/agent-transfer/main.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/agent-transfer/main.c b/src/agent-transfer/main.c
+index 406aaa3..3038f5c 100644
+--- a/src/agent-transfer/main.c
++++ b/src/agent-transfer/main.c
+@@ -672,8 +672,13 @@ int main (int argc, const char* argv[]) {
+     return 1;
+   }
+ 
+-  if (!args.comment)
+-    asprintf (&alt_comment, "GnuPG keygrip %s", args.keygrip);
++  if (!args.comment) {
++    err = asprintf (&alt_comment, "GnuPG keygrip %s", args.keygrip);
++    if (err < 0) {
++      fprintf (stderr, "failed to generate key comment\n");
++      return 1;
++    }
++  }
+   
+   err = send_to_ssh_agent (&e, ssh_sock_fd, args.seconds, args.confirm,
+                            args.comment ? args.comment : alt_comment);
+-- 
+2.7.3
+

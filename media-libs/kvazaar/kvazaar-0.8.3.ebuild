@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,14 +11,14 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ultravideo/kvazaar"
 fi
 
-inherit multilib autotools multilib-minimal toolchain-funcs ${SCM}
+inherit eutils multilib autotools multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="An open-source HEVC encoder"
 HOMEPAGE="http://ultravideo.cs.tut.fi/ https://github.com/ultravideo/kvazaar"
 
 if [ "${PV#9999}" = "${PV}" ] ; then
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc"
 fi
 
 LICENSE="LGPL-2.1"
@@ -35,6 +35,7 @@ DEPEND="${DEPEND}
 	abi_x86_64? ( ${ASM_DEP} )"
 
 src_prepare() {
+	epatch "${FILESDIR}/ppc.patch"
 	eautoreconf
 }
 

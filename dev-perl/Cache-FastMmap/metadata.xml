@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Cache-FastMmap</remote-id>
+    <remote-id type="cpan-module">Cache::FastMmap</remote-id>
+    <remote-id type="cpan-module">Cache::FastMmap::OnLeave</remote-id>
+  </upstream>
 </pkgmetadata>

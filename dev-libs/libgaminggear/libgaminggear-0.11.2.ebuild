@@ -8,7 +8,7 @@ inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Provides functionality for gaming input devices"
 
-HOMEPAGE="http://sourceforge.net/projects/libgaminggear/"
+HOMEPAGE="https://sourceforge.net/projects/libgaminggear/"
 SRC_URI="mirror://sourceforge/libgaminggear/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"

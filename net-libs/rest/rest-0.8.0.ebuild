@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
 LICENSE="LGPL-2.1"
 SLOT="0.7"
 IUSE="+introspection test"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # Coverage testing should not be enabled
 RDEPEND="

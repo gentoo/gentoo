@@ -12,7 +12,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/libnsfb/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc"
 IUSE="sdl test vnc wayland xcb"
 
 RDEPEND="sdl? ( >=media-libs/libsdl-1.2.15-r4[static-libs?,${MULTILIB_USEDEP}] )

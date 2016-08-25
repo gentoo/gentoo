@@ -1,5 +1,5 @@
 this is a minimal version of:
-http://sourceforge.net/p/fuse/fuse/ci/6b02a7082ae4c560427ff95b51aa8930bb4a6e1f/
+https://sourceforge.net/p/fuse/fuse/ci/6b02a7082ae4c560427ff95b51aa8930bb4a6e1f/
 
 --- a/include/fuse_kernel.h
 +++ b/include/fuse_kernel.h

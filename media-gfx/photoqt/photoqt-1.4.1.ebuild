@@ -10,9 +10,9 @@ DESCRIPTION="Simple but powerful Qt-based image viewer"
 HOMEPAGE="http://photoqt.org/"
 SRC_URI="http://photoqt.org/pkgs/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="exiv2 graphicsmagick raw"
 
 RDEPEND="

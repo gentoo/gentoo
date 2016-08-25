@@ -25,11 +25,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.210.0
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Test-Inter
 		virtual/perl-Test-Simple
 	)
 "
 
 mydoc="HISTORY"
+
+src_test() {
+	perl_rm_files t/pod_coverage.t t/pod.t
+	perl-module_src_test
+}

@@ -4,7 +4,7 @@
 
 EAPI=5
 # no longer compatible with ruby 1.8.
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_TEST=""
 

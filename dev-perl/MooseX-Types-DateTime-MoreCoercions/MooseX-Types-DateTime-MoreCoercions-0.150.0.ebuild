@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,6 @@ DEPEND="${RDEPEND}
 		virtual/perl-ExtUtils-MakeMaker
 		virtual/perl-File-Spec
 		dev-perl/Test-Fatal
-		|| ( >=virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-use-ok-0.20.0 )
+		>=virtual/perl-Test-Simple-1.1.10
 	)
 "

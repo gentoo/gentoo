@@ -138,7 +138,7 @@ pkg_postinst() {
 	elog "please bear in mind that your edits will be preserved during this process,"
 	elog "but it will not be possible to downgrade from 2.0 to 1.6 any more."
 	echo
-	ewarn "There will not be possible to downgrade!"
+	ewarn "It will not be possible to downgrade!"
 }
 
 pkg_postrm() {

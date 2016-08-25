@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,8 +23,6 @@ DEPEND="${RDEPEND}
 	virtual/perl-CPAN-Meta
 	test? (
 		>=virtual/perl-Test-Simple-0.320.0
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 

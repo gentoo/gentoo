@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="dnswalk is a DNS database debugger"
-HOMEPAGE="http://sourceforge.net/projects/dnswalk/"
+HOMEPAGE="https://sourceforge.net/projects/dnswalk/"
 SRC_URI="mirror://sourceforge/dnswalk/${P}.tar.gz"
 
 LICENSE="freedist"

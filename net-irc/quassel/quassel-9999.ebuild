@@ -191,18 +191,6 @@ pkg_postinst() {
 		einfo "Quassel can use net-misc/oidentd package if installed on your system."
 		einfo "Consider installing it if you want to run quassel within identd daemon."
 	fi
-
-	# temporary info mesage
-	if use server && [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]]; then
-		echo
-		ewarn "Please note that all configuration moved from"
-		ewarn "/home/\${QUASSEL_USER}/.config/quassel-irc.org/"
-		ewarn "to: ${QUASSEL_DIR}."
-		echo
-		ewarn "For migration, stop the core, move quasselcore files (pretty much"
-		ewarn "everything apart from quasselclient.conf and settings.qss) into"
-		ewarn "new location and then start server again."
-	fi
 }
 
 pkg_config() {

@@ -2,7 +2,7 @@ https://bugs.gentoo.org/542192
 
 Description: Build xmm_quantize_sub.c with -msse
 Author: Sebastian Ramacher <sramacher@debian.org>
-Bug: http://sourceforge.net/p/lame/bugs/443/
+Bug: https://sourceforge.net/p/lame/bugs/443/
 Bug-Debian: https://bugs.debian.org/760047
 Last-Update: 2014-08-31
 

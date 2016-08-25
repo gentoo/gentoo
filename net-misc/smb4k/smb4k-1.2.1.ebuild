@@ -12,7 +12,7 @@ KDE_DOC_DIRS="doc doc-translations/%lingua_${PN}"
 inherit kde4-base
 
 DESCRIPTION="The advanced network neighborhood browser for KDE"
-HOMEPAGE="http://sourceforge.net/projects/smb4k/"
+HOMEPAGE="https://sourceforge.net/projects/smb4k/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"

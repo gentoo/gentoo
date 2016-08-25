@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/src"
 
 DOCS="Pmw/README"
-# http://sourceforge.net/p/pmw/bugs/39/
+# https://sourceforge.net/p/pmw/bugs/39/
 RESTRICT="test"
 
 PATCHES=( "${FILESDIR}"/${P}-install-no-docs.patch )

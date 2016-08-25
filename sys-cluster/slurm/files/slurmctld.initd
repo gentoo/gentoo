@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ extra_commands="reload"
 [[ -f /etc/conf.d/slurm ]] && . /etc/conf.d/slurm
 
 depend() {
-	local _need="net"
+	local _need
 	[[ ${SLURM_USE_MUNGE} -ne 0 ]] && _need="${_need} munged"
 	[[ ${SLURM_USE_YPBIND} -ne 0 ]] && _need="${_need} ypbind"
 	after logger slurmdbd

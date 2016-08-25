@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,8 @@ HOMEPAGE="https://www.kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 
-RDEPEND+=" !kde-apps/${PN}:4"
+if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
+	RDEPEND+=" !kde-apps/${PN}:4"
+fi
 
 fi

@@ -1,0 +1,34 @@
+--- a/Makefile	2002-12-11 04:36:06.000000000 +0100
++++ b/Makefile_new	2013-03-16 13:04:00.963512605 +0100
+@@ -4,23 +4,26 @@
+ INSTALLDIR = ${DESTDIR}/usr/lib/gkrellm2/plugins
+ 
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_INCLUDE)
++FLAGS = -fPIC $(GTK_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
++CC = $(CC)
+ 
+ OBJS = gkrellmoon.o MoonRise.o CalcEphem.o Moon.o
+ 
++all: gkrellmoon.so
++
++%.o: %.c
++	$(CC) $(CFLAGS) $(LDFLAGS) $(FLAGS) -c -o $@ $<
++
+ gkrellmoon.so: $(OBJS)
+-	$(CC) $(OBJS) -o gkrellmoon.so $(LFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(FLAGS) $(LDFLAGS) $(OBJS) -o gkrellmoon.so $(LFLAGS) $(LIBS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+ 
+ gkrellmoon.o: gkrellmoon.c moon_60.xpm
+ 
+-# %.o: %.c
+-
+ install: gkrellmoon.so
+ 	install -c -s -m 644 gkrellmoon.so $(INSTALLDIR)

@@ -20,7 +20,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${MATE_GTK_V}"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 S="${WORKDIR}/${PN}-gtk${MATE_GTK_V}-${PV}"
 

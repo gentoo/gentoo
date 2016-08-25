@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -62,7 +62,11 @@ stub_status - This module provides the ability to get some status from nginx.
 sub - This module can search and replace text in the nginx response.
 upload_progress - This module adds the ability to track POST upload progress via JSON API
 upstream_check - Add health check support for upstream servers.
+upstream_hash - This module provides the ability to distribute upstream requests based on hashed key value.
 upstream_ip_hash - This module provides the ability to distribute upstream requests based on the IP-address of the client.
+upstream_keepalive - Thiis module provides the ability to cache connections to upstream servers.
+upstream_least_conn - This module provides the ability to distribute upstream requests using load balancing methods.
+upstream_zone - This module makes it possible to define a shared memory zone that keeps the group's configuration and run-time state that are shared between worker processes.
 userid - This module gives out cookies for identification of clients.
 uwsgi - External module for the uWSGI protocol for python web apps.
 xslt - This module is a filter which converts an XML response with the aid of one or more XSLT templates.

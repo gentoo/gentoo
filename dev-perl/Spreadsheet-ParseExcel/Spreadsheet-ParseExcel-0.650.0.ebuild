@@ -28,7 +28,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		dev-perl/Test-Pod
 		dev-perl/Unicode-Map
 		dev-perl/Spreadsheet-WriteExcel
 		dev-perl/Jcode
@@ -36,3 +35,8 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/90_pod.t t/91_minimumversion.t t/92_meta.t
+	perl-module_src_test
+}

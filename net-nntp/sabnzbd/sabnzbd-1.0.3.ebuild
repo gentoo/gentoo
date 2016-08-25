@@ -117,12 +117,16 @@ pkg_postinst() {
 	einfo "As growl isn't default notification system on gentoo we disable it."
 	einfo "By default notifications are forwarded to the 23053 port(gntp)."
 
-	if [ "$(get_major_version ${REPLACING_VERSIONS})" == "0" ]; then
-		echo
-		ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes"
-		ewarn "See http://wiki.sabnzbd.org/introducing-1-0-0."
-		ewarn "In particular, you need to let your queue complete before restarting ${PN}"
-	fi
+	local replacing
+	for replacing in ${REPLACING_VERSIONS}; do
+		if [ "$(get_major_version ${replacing})" == "0" ]; then
+			echo
+			ewarn "Upgrading from ${PN}-0.x.y to ${PN}-1.x.y introduces incompatible changes"
+			ewarn "See http://wiki.sabnzbd.org/introducing-1-0-0."
+			ewarn "In particular, you need to let your queue complete before restarting ${PN}"
+			break
+		fi
+	done
 }
 
 pkg_postrm() {

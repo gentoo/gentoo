@@ -19,6 +19,5 @@ IUSE=""
 RDEPEND="|| (
 	=dev-lang/gnat-gcc-4.2*
 	=dev-lang/gnat-gcc-4.1*
-	=dev-lang/gnat-gcc-3.4*
-	=dev-lang/gnat-gpl-3.4* )"
+	=dev-lang/gnat-gcc-3.4* )"
 DEPEND=""

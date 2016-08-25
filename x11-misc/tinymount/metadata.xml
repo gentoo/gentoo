@@ -6,10 +6,6 @@
     <name>Mike Limansky</name>
     <description>Both upstream and ebuild author</description>
   </maintainer>
-  <maintainer type="person">
-    <email>ssuominen@gentoo.org</email>
-    <name>Samuli Suominen</name>
-  </maintainer>
   <maintainer type="project">
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>

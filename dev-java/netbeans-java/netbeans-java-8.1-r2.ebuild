@@ -37,7 +37,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/7666B94C1004AFFFE88E5328BD70EBA6F60125F4-spring-framework-3.2.7.RELEASE.zip
 	http://hg.netbeans.org/binaries/91B55CDAC59BC4DDDF0AF9A54EAAE4304EDEF266-spring-framework-4.0.1.RELEASE.zip
 	http://hg.netbeans.org/binaries/B572007A07023ADF7ECBDB7FC2D572BF1BDED20D-wagon-http-2.8-shaded.jar"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 S="${WORKDIR}"

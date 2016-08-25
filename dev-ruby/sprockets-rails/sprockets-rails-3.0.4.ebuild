@@ -32,3 +32,8 @@ ruby_add_bdepend "
 		>=dev-ruby/railties-4
 		dev-ruby/test-unit:2
 	)"
+
+all_ruby_prepare() {
+	# Help load correct rack version consistently
+	sed -i -e "3irequire 'action_controller'" test/test_helper.rb || die
+}

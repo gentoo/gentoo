@@ -30,17 +30,7 @@
 		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
 		<flag name="sqlite">Enable SQLite database support</flag>
 		<flag name="zlib">Enable Stream Compression (XEP-0138) using zlib</flag>
-
-		<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
-		<flag name="mod_statsdx">Measures several statistics, and provides a new section in ejabberd Web Admin to view them.</flag>
-		<flag name="elixir">Enable Elixir language support (http://elixir-lang.org/). Use bundled plugin instead of dev-lang/elixir.</flag>
-		<flag name="lager">Use lager Erlang logging tool instead of standard error logger</flag>
-		<flag name="mod_bosh">Enable support for XMPP over BOSH (XEP-0206)</flag>
-		<flag name="mod_irc">Build irc gateway</flag>
-		<flag name="mod_muc">Build Multi User Chat module</flag>
-		<flag name="mod_pubsub">Build Pubsub module</flag>
-		<flag name="tools">Build development tools</flag>
-		<flag name="web">Enable web admin interface</flag>
+		<!-- TODO Add later: flag name="tools">Build development tools</flag -->
 	</use>
 	<upstream>
 		<remote-id type="github">processone/ejabberd</remote-id>

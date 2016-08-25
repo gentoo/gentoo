@@ -6,7 +6,7 @@ EAPI=2
 inherit autotools eutils
 
 DESCRIPTION="Library and client for communicating with PTP enabled devices (e.g. digital photo cameras)"
-HOMEPAGE="http://sourceforge.net/projects/libptp/"
+HOMEPAGE="https://sourceforge.net/projects/libptp/"
 SRC_URI="mirror://sourceforge/libptp/${P}.tar.gz"
 
 LICENSE="GPL-2"

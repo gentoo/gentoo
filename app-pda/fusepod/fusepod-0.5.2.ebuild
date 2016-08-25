@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="A userspace filesystem which mounts your iPod into a directory"
-HOMEPAGE="http://sourceforge.net/projects/fusepod/"
+HOMEPAGE="https://sourceforge.net/projects/fusepod/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

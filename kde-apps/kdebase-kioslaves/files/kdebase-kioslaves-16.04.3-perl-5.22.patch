@@ -1,0 +1,37 @@
+commit 36139181fff43c227023f4c03c1e1a31e1be9dda
+Author: Tomáš Trnka <tomastrnka@gmx.com>
+Date:   Thu Jul 21 21:34:53 2016 +0200
+
+    info: remove extra defined(@array)
+    
+    Such syntax is long deprecated and a fatal error in Perl 5.22.0 [1].
+    
+    This commit is the KDE4 equivalent of kio-extras.git commit
+    af92d6180d479d1e56bc549bbda30a3036687182.
+    
+    BUG: 359015
+    
+    [1] http://perldoc.perl.org/perl5220delta.html
+
+diff --git a/kioslave/info/kde-info2html b/kioslave/info/kde-info2html
+index 8dcc28f..0f217ae 100755
+--- a/kioslave/info/kde-info2html
++++ b/kioslave/info/kde-info2html
+@@ -171,7 +171,7 @@ sub FileNotFound {
+ 		next if $looking && !/\* Menu/;
+ 		$looking = 0;
+ 		my @item = &ParseMenuItem($_,'dir');
+-		if (!defined(@item)) { next }
++		if (!@item) { next }
+     		my ($MenuLinkTag, $MenuLinkFile, $MenuLinkRef, $MenuLinkText) = @item;
+ 		if ($MenuLinkRef eq $FileName) {
+ 			&Redirect($MenuLinkFile, $MenuLinkTag);
+@@ -429,7 +429,7 @@ sub ParseMenuItem {
+ sub MenuItem2HTML {
+     my ($Line, $BaseInfoFile) = @_;
+     my @parse_results = &ParseMenuItem($Line, $BaseInfoFile);
+-    if (!defined (@parse_results)) { return $Line; }
++    if (!@parse_results) { return $Line; }
+     my ($MenuLinkTag, $MenuLinkFile, $MenuLinkRef, $MenuLinkText) = @parse_results;
+     #-- produce a HTML line
+     return "<tr class=\"infomenutr\"><td class=\"infomenutd\" style=\"width:30%\"><ul><li><a href=\"info:/$MenuLinkFile/$MenuLinkTag\">$MenuLinkRef</a></ul></td><td class=\"infomenutd\">$MenuLinkText";

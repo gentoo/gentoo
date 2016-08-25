@@ -1,0 +1,106 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad2ac42..18dcfbe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -196,6 +196,24 @@ set(GCC_INSTALL_PREFIX "" CACHE PATH "Directory where gcc is installed." )
+ set(DEFAULT_SYSROOT "" CACHE PATH
+   "Default <path> to all compiler invocations for --sysroot=<path>." )
+ 
++set(CLANG_DEFAULT_CXX_STDLIB "" CACHE STRING
++  "Default C++ stdlib to use (libstdc++ or libc++)")
++if (NOT(CLANG_DEFAULT_CXX_STDLIB STREQUAL "" OR
++        CLANG_DEFAULT_CXX_STDLIB STREQUAL "libstdc++" OR
++        CLANG_DEFAULT_CXX_STDLIB STREQUAL "libc++"))
++  message(WARNING "Resetting default C++ stdlib to use platform default")
++  set(CLANG_DEFAULT_CXX_STDLIB "")
++endif()
++
++set(CLANG_DEFAULT_RTLIB "" CACHE STRING
++  "Default runtime library to use (libgcc or compiler-rt)")
++if (NOT(CLANG_DEFAULT_RTLIB STREQUAL "" OR
++        CLANG_DEFAULT_RTLIB STREQUAL "libgcc" OR
++        CLANG_DEFAULT_RTLIB STREQUAL "compiler-rt"))
++  message(WARNING "Resetting default rtlib to use platform default")
++  set(CLANG_DEFAULT_RTLIB "")
++endif()
++
+ set(CLANG_DEFAULT_OPENMP_RUNTIME "libomp" CACHE STRING
+   "Default OpenMP runtime used by -fopenmp.")
+ 
+diff --git a/include/clang/Config/config.h.cmake b/include/clang/Config/config.h.cmake
+index b7486f3..eb8aa27 100644
+--- a/include/clang/Config/config.h.cmake
++++ b/include/clang/Config/config.h.cmake
+@@ -8,6 +8,12 @@
+ /* Bug report URL. */
+ #define BUG_REPORT_URL "${BUG_REPORT_URL}"
+ 
++/* Default C++ stdlib to use. */
++#define CLANG_DEFAULT_CXX_STDLIB "${CLANG_DEFAULT_CXX_STDLIB}"
++
++/* Default runtime library to use. */
++#define CLANG_DEFAULT_RTLIB "${CLANG_DEFAULT_RTLIB}"
++
+ /* Default OpenMP runtime used by -fopenmp. */
+ #define CLANG_DEFAULT_OPENMP_RUNTIME "${CLANG_DEFAULT_OPENMP_RUNTIME}"
+ 
+diff --git a/lib/Driver/ToolChain.cpp b/lib/Driver/ToolChain.cpp
+index cbbd485..3af7f8a 100644
+--- a/lib/Driver/ToolChain.cpp
++++ b/lib/Driver/ToolChain.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "Tools.h"
+ #include "clang/Basic/ObjCRuntime.h"
++#include "clang/Config/config.h"
+ #include "clang/Driver/Action.h"
+ #include "clang/Driver/Driver.h"
+ #include "clang/Driver/DriverDiagnostic.h"
+@@ -520,29 +521,29 @@ void ToolChain::addProfileRTLibs(const llvm::opt::ArgList &Args,
+ 
+ ToolChain::RuntimeLibType ToolChain::GetRuntimeLibType(
+     const ArgList &Args) const {
+-  if (Arg *A = Args.getLastArg(options::OPT_rtlib_EQ)) {
+-    StringRef Value = A->getValue();
+-    if (Value == "compiler-rt")
+-      return ToolChain::RLT_CompilerRT;
+-    if (Value == "libgcc")
+-      return ToolChain::RLT_Libgcc;
+-    getDriver().Diag(diag::err_drv_invalid_rtlib_name)
+-      << A->getAsString(Args);
+-  }
++  const Arg* A = Args.getLastArg(options::OPT_rtlib_EQ);
++  StringRef LibName = A ? A->getValue() : CLANG_DEFAULT_RTLIB;
++
++  if (LibName == "compiler-rt")
++    return ToolChain::RLT_CompilerRT;
++  if (LibName == "libgcc")
++    return ToolChain::RLT_Libgcc;
++  if (A)
++    getDriver().Diag(diag::err_drv_invalid_rtlib_name) << A->getAsString(Args);
+ 
+   return GetDefaultRuntimeLibType();
+ }
+ 
+ ToolChain::CXXStdlibType ToolChain::GetCXXStdlibType(const ArgList &Args) const{
+-  if (Arg *A = Args.getLastArg(options::OPT_stdlib_EQ)) {
+-    StringRef Value = A->getValue();
+-    if (Value == "libc++")
+-      return ToolChain::CST_Libcxx;
+-    if (Value == "libstdc++")
+-      return ToolChain::CST_Libstdcxx;
+-    getDriver().Diag(diag::err_drv_invalid_stdlib_name)
+-      << A->getAsString(Args);
+-  }
++  const Arg* A = Args.getLastArg(options::OPT_stdlib_EQ);
++  StringRef LibName = A ? A->getValue() : CLANG_DEFAULT_CXX_STDLIB;
++
++  if (LibName == "libc++")
++    return ToolChain::CST_Libcxx;
++  if (LibName == "libstdc++")
++    return ToolChain::CST_Libstdcxx;
++  if (A)
++    getDriver().Diag(diag::err_drv_invalid_stdlib_name) << A->getAsString(Args);
+ 
+   return ToolChain::CST_Libstdcxx;
+ }

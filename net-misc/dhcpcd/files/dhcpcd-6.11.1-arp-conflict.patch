@@ -1,0 +1,61 @@
+Index: ipv4ll.c
+==================================================================
+--- a/ipv4ll.c
++++ b/ipv4ll.c
+@@ -242,31 +242,33 @@
+ 	assert(astate != NULL);
+ 	assert(astate->iface != NULL);
+ 	ifp = astate->iface;
+ 	state = IPV4LL_STATE(ifp);
+ 	assert(state != NULL);
+-	assert(state->addr != NULL);
+ 
+ 	fail = 0;
+ 	/* RFC 3927 2.2.1, Probe Conflict Detection */
+ 	if (amsg == NULL ||
+ 	    (amsg->sip.s_addr == astate->addr.s_addr ||
+ 	    (amsg->sip.s_addr == 0 && amsg->tip.s_addr == astate->addr.s_addr)))
+ 		fail = astate->addr.s_addr;
+ 
+ 	/* RFC 3927 2.5, Conflict Defense */
+-	if (IN_LINKLOCAL(ntohl(state->addr->addr.s_addr)) &&
++	if (state->addr != NULL &&
++	    IN_LINKLOCAL(ntohl(state->addr->addr.s_addr)) &&
+ 	    amsg && amsg->sip.s_addr == state->addr->addr.s_addr)
+ 		fail = state->addr->addr.s_addr;
+ 
+ 	if (fail == 0)
+ 		return;
+ 
+ 	astate->failed.s_addr = fail;
+ 	arp_report_conflicted(astate, amsg);
+ 
+-	if (astate->failed.s_addr == state->addr->addr.s_addr) {
++	if (state->addr != NULL &&
++	    astate->failed.s_addr == state->addr->addr.s_addr)
++	{
+ 		struct timespec now, defend;
+ 
+ 		/* RFC 3927 Section 2.5 says a defence should
+ 		 * broadcast an ARP announcement.
+ 		 * Because the kernel will also unicast a reply to the
+@@ -378,16 +380,18 @@
+ 	astate->conflicted_cb = ipv4ll_conflicted;
+ 	astate->free_cb = ipv4ll_arpfree;
+ 
+ 	/* Find an existing IPv4LL address and ensure we can work with it. */
+ 	ia = ipv4_iffindlladdr(ifp);
++
+ #ifdef IN_IFF_TENTATIVE
+ 	if (ia != NULL && ia->addr_flags & IN_IFF_DUPLICATED) {
+ 		ipv4_deladdr(ia, 0);
+ 		ia = NULL;
+ 	}
+ #endif
++
+ 	if (ia != NULL) {
+ 		astate->addr = ia->addr;
+ #ifdef IN_IFF_TENTATIVE
+ 		if (ia->addr_flags & (IN_IFF_TENTATIVE | IN_IFF_DETACHED)) {
+ 			logger(ifp->ctx, LOG_INFO,
+

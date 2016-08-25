@@ -138,7 +138,7 @@ pkg_postinst() {
 		touch /etc/selinux/${POLTYPE}/contexts/files/file_contexts.local || die
 		# Fix bug 516608
 		for EXPRFILE in file_contexts file_contexts.homedirs file_contexts.local ; do
-			if [[ -f ${EXPRFILE} ]]; then
+			if [[ -f "/etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE}" ]]; then
 				sefcontext_compile /etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE} \
 				|| die "Failed to recompile contexts"
 			fi

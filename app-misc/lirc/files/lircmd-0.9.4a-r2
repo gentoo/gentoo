@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need lircd
+}
+
+start() {
+	ebegin "Starting lircmd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/lircmd -- ${LIRCMD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping lircmd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/lircmd
+	eend $?
+}

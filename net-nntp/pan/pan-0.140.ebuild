@@ -11,7 +11,7 @@ SRC_URI="http://pan.rebelbase.com/download/releases/${PV}/source/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 hppa ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="dbus gnome-keyring libnotify spell ssl"
 
 RDEPEND="

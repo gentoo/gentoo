@@ -1,0 +1,341 @@
+Fix byte-compilation with Emacs 25.
+https://bugs.gentoo.org/590340
+
+This comprises parts of the following commits from ELPA:
+
+commit 9ec4b84e27f3faae8ad3eb5d3e96c523ce1fece2
+Author: Stefan Monnier <monnier@iro.umontreal.ca>
+Date:   Sun Jul 10 18:16:39 2016 -0400
+
+    * rudel-backend.el: Try and fix compilation problem
+
+commit 5e4f147f6b23c392505cb0cbb5f13384d6d96304
+Author: Stefan Monnier <monnier@iro.umontreal.ca>
+Date:   Mon May 12 02:23:00 2014 -0400
+
+    Fix up headers and compilation
+
+--- rudel-orig/rudel-backend.el
++++ rudel/rudel-backend.el
+@@ -46,8 +46,7 @@
+ ;;; Code:
+ ;;
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'warnings)
+ 
+@@ -97,24 +96,34 @@
+   "Factory class that holds an object for each known backend
+ category. Objects manage backend implementation for one backend
+ category each.")
+-(oset-default rudel-backend-factory factories
++(oset-default 'rudel-backend-factory factories
+ 	      (make-hash-table :test #'eq))
+ 
+-(defmethod initialize-instance ((this rudel-backend-factory) &rest slots)
++(defmethod initialize-instance ((this rudel-backend-factory) &rest _slots)
+   "Initialize slots of THIS with SLOTS."
+   (when (next-method-p)
+     (call-next-method))
+-  (oset this :backends (make-hash-table :test #'eq)))
++  (oset this backends (make-hash-table :test #'eq)))
++
++;;;###autoload
++(progn
++(defmacro rudel--with-memoization (place &rest code)
++  (declare (indent 1) (debug t))
++  (gv-letplace (getter setter) place
++    `(or ,getter
++         ,(macroexp-let2 nil val (macroexp-progn code)
++            `(progn
++               ,(funcall setter val)
++               ,val))))))
+ 
+ ;;;###autoload
+ (defmethod rudel-get-factory :static ((this rudel-backend-factory)
+ 				      category)
+   "Return the factory responsible for CATEGORY.
+ If there is no responsible factory, create one and return it."
+-  (with-slots (factories) this
+-    (or (gethash category factories)
+-	(puthash category (rudel-backend-factory category) factories)))
+-  )
++  (rudel--with-memoization
++   (gethash category (eieio-oref-default this 'factories))
++   (make-instance 'rudel-backend-factory))) ;; category
+ 
+ ;;;###autoload
+ (defmethod rudel-add-backend ((this rudel-backend-factory)
+@@ -188,7 +197,8 @@
+        (unless (object-p class)
+ 	 (condition-case error
+ 	     (puthash name (make-instance
+-			    class (symbol-name name)) backends)
++			    class (symbol-name name))
++                      backends)
+ 	   (error
+ 	    ;; Store this error on the name symbol of the backend for
+ 	    ;; later display.
+@@ -224,7 +234,7 @@
+ ;;;###autoload
+ (defun rudel-backend-get-factory (category)
+   "A shortcut for getting the factory object for CATEGORY."
+-  (rudel-get-factory rudel-backend-factory category))
++  (rudel-get-factory 'rudel-backend-factory category))
+ 
+ (defun rudel-backend-suitable-backends (category predicate)
+   "Return backends from category CATEGORY that satisfy PREDICATE.
+@@ -290,15 +300,15 @@
+ 
+      ;; Insert all backends provided by this factory.
+      (dolist (backend (rudel-all-backends factory))
+-       (if (or (object-p (cdr backend))
+-	       (null (get (car backend)
+-			  'rudel-backend-last-load-error)))
+-	   (insert (rudel-backend--format-backend-normal backend))
+-	 (insert (rudel-backend--format-backend-error backend))))
++       (insert (if (or (object-p (cdr backend))
++                       (null (get (car backend)
++                                  'rudel-backend-last-load-error)))
++                   (rudel-backend--format-backend-normal backend)
++                 (rudel-backend--format-backend-error backend))))
+ 
+      ;; One empty line between backend categories.
+      (insert "\n"))
+-   (oref rudel-backend-factory factories))
++   (oref-default 'rudel-backend-factory factories))
+   (current-buffer))
+ 
+ (defun rudel-backend--format-backend-normal (backend)
+@@ -316,7 +326,7 @@
+ 	  (propertize
+ 	   (if (object-p (cdr backend))
+ 	       (mapconcat #'prin1-to-string
+-			  (oref (cdr backend) :version)
++			  (oref (cdr backend) version)
+ 			  ".")
+ 	     "?")
+ 	   'face 'font-lock-constant-face)
+@@ -324,7 +334,7 @@
+ 	  (propertize
+ 	   (if (object-p (cdr backend))
+ 	       (mapconcat #'prin1-to-string
+-			  (oref (cdr backend) :capabilities)
++			  (oref (cdr backend) capabilities)
+ 			  " ")
+ 	     "?")
+ 	   'face 'font-lock-constant-face))
+--- rudel-orig/rudel-color.el
++++ rudel/rudel-color.el
+@@ -46,6 +46,7 @@
+ ;;; Code:
+ ;;
+ 
++(eval-when-compile (require 'cl))
+ 
+ ;;; RGV <-> HSV conversion
+ ;;
+--- rudel-orig/rudel.el
++++ rudel/rudel.el
+@@ -41,8 +41,7 @@
+ ;;; Code:
+ ;;
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'eieio)
+ (require 'eieio-base)
+--- rudel-orig/rudel-icons.el
++++ rudel/rudel-icons.el
+@@ -41,8 +41,9 @@
+ ;;; Image constants
+ ;;
+ 
++(eval-and-compile
+ (defconst rudel-icons-image-formats '(svg png)
+-  "Image formats to try (in that order) when loading Rudel icons.")
++  "Image formats to try (in that order) when loading Rudel icons."))
+ 
+ (defvar rudel-icons-directory
+   (file-name-as-directory
+--- rudel-orig/rudel-interactive.el
++++ rudel/rudel-interactive.el
+@@ -38,6 +38,7 @@
+ 
+ ;;; Code:
+ ;;
++(require 'cl)
+ 
+ (require 'rudel-compat) ;; for `read-color' replacement
+ (require 'rudel-backend) ;; for `rudel-backend-cons-p'
+@@ -80,25 +81,29 @@
+     (setq prompt "Session: "))
+   ;; For presentation and identification of sessions, use the :name
+   ;; property.
+-  (flet ((to-string (session)
+-		    (if (rudel-backend-cons-p session)
+-			(symbol-name (car session))
+-		      (plist-get session :name))))
++  (let ((to-string
++         (lambda (session)
++           (if (rudel-backend-cons-p session)
++               (symbol-name (car session))
++             (plist-get session :name)))))
+     ;; Read a session by name, then return that name or the
+     ;; corresponding session info.
+     (let ((session-name (completing-read prompt
+-					 (mapcar #'to-string sessions)
++					 (mapcar to-string sessions)
+ 					 nil t)))
+       (cond
+        ((eq return 'object)
+ 	(find session-name sessions
+-	      :key  #'to-string :test #'string=))
++	      :key to-string :test #'string=))
+        (t session-name))))
+   )
+ 
+ (defvar rudel-read-user-name-history nil
+   "History of inputs read by `rudel-read-user-name'.")
+ 
++(defvar rudel-default-username)
++(defvar rudel-current-session)
++
+ (defun rudel-read-user-name ()
+   "Read a username.
+ The default is taken from `rudel-default-username'."
+--- rudel-orig/rudel-mode.el
++++ rudel/rudel-mode.el
+@@ -48,6 +48,7 @@
+ ;;; Code:
+ ;;
+ 
++(require 'cl)
+ (require 'easy-mmode)
+ (require 'easymenu)
+ 
+@@ -132,6 +133,8 @@
+ 	   (rudel-buffer-document))))
+   (force-mode-line-update))
+ 
++(defvar rudel-header-subscriptions-minor-mode)
++
+ (defun rudel-header-subscriptions--options-changed ()
+   "Update headers in buffers that have header subscriptions mode enabled."
+   (dolist (buffer (buffer-list))
+@@ -228,8 +231,7 @@
+ 			  #'rudel-header-subscriptions--remove-user))
+ 
+     ;; Reset header line to default format.
+-    (setq header-line-format default-header-line-format)
+-    (force-mode-line-update)) ;; TODO remove all handlers
++    (kill-local-variable 'header-line-format)) ;; TODO remove all handlers
+ 
+    ;; No buffer document
+    (t
+@@ -237,8 +239,7 @@
+     (setq rudel-header-subscriptions-minor-mode nil)
+ 
+     ;; Reset header line to default format.
+-    (setq header-line-format default-header-line-format)
+-    (force-mode-line-update)))
++    (kill-local-variable 'header-line-format)))
+   )
+ 
+ 
+@@ -411,6 +412,8 @@
+   (force-mode-line-update)
+   )
+ 
++(defvar rudel-mode-line-publish-state-minor-mode)
++
+ (defun rudel-mode-line-publish-state--document-attach (document buffer)
+   "Handle attaching of DOCUMENT to BUFFER.
+ When `rudel-mode-line-publish-state-minor-mode' is enabled in
+--- rudel-orig/rudel-overlay.el
++++ rudel/rudel-overlay.el
+@@ -36,8 +36,7 @@
+ 
+ (require 'custom)
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'eieio)
+ 
+--- rudel-orig/rudel-session-initiation.el
++++ rudel/rudel-session-initiation.el
+@@ -54,8 +54,7 @@
+ ;;; Code:
+ ;;
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'eieio)
+ 
+--- rudel-orig/rudel-speedbar.el
++++ rudel/rudel-speedbar.el
+@@ -77,6 +77,8 @@
+   '([ "Subscribe" #'ignore t])
+   "Menu part in easymenu format used in speedbar while browsing objects.")
+ 
++(defvar rudel-current-session)
++
+ (defun rudel-speedbar-toplevel-buttons (dir)
+   "Return a list of objects to display in speedbar.
+ Argument DIR is the directory from which to derive the list of objects."
+--- rudel-orig/rudel-state-machine.el
++++ rudel/rudel-state-machine.el
+@@ -41,8 +41,7 @@
+ ;;; Code:
+ ;;
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'eieio)
+ 
+--- rudel-orig/rudel-transport-util.el
++++ rudel/rudel-transport-util.el
+@@ -48,7 +48,10 @@
+ 
+ ;;; Code:
+ ;;
+ 
++(eval-when-compile (require 'cl))
++(require 'eieio)
++(eval-when-compile (require 'rudel-util))
+ (require 'rudel-errors) ;; for `rudel-error'
+ (require 'rudel-transport)
+ 
+--- rudel-orig/rudel-util.el
++++ rudel/rudel-util.el
+@@ -43,8 +43,7 @@
+ ;;; Code:
+ ;;
+ 
+-(eval-when-compile
+-  (require 'cl))
++(require 'cl)
+ 
+ (require 'eieio)
+ 
+--- rudel-orig/rudel-xml.el
++++ rudel/rudel-xml.el
+@@ -45,6 +45,7 @@
+ ;;; Code:
+ ;;
+ 
++(eval-when-compile (require 'cl))
+ (require 'xml)
+ 
+ 

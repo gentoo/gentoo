@@ -14,24 +14,29 @@ SRC_URI="
 LICENSE="GPL-2 IJG"
 SLOT="0"
 KEYWORDS="alpha ~amd64 arm hppa ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="curl fbcon +gif lirc pdf +png scanner +tiff X +webp"
+IUSE="curl fbcon ghostscript +gif lirc +png scanner +tiff X +webp"
 REQUIRED_USE="
-	pdf? ( tiff )
+	ghostscript? ( tiff )
 "
 
-RDEPEND="
+CDEPEND="
 	!media-gfx/fbi
+	app-text/poppler
 	>=media-libs/fontconfig-2.2
 	>=media-libs/freetype-2.0
+	media-libs/libepoxy
 	media-libs/libexif
+	media-libs/mesa
+	virtual/jpeg:*
+	virtual/ttf-fonts
+	x11-libs/cairo[opengl]
+	x11-libs/libdrm
 	curl? ( net-misc/curl )
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
 	png? ( media-libs/libpng:* )
 	scanner? ( media-gfx/sane-backends )
 	tiff? ( media-libs/tiff:* )
-	virtual/jpeg:*
-	virtual/ttf-fonts
 	webp? ( media-libs/libwebp )
 	X? (
 		>=x11-libs/motif-2.3:0
@@ -42,9 +47,15 @@ RDEPEND="
 "
 
 DEPEND="
-	${RDEPEND}
+	${CDEPEND}
 	X? ( x11-proto/xextproto x11-proto/xproto )
-	pdf? ( app-text/ghostscript-gpl )
+"
+
+RDEPEND="
+	${CDEPEND}
+	ghostscript? (
+		app-text/ghostscript-gpl
+	)
 "
 
 src_prepare() {
@@ -81,7 +92,7 @@ src_configure() {
 	gentoo_fbida fbcon LINUX_FB_H
 	gentoo_fbida gif LIBUNGIF
 	gentoo_fbida lirc LIBLIRC
-	gentoo_fbida pdf LIBTIFF
+	gentoo_fbida ghostscript LIBTIFF
 	gentoo_fbida png LIBPNG
 	gentoo_fbida scanner LIBSANE
 	gentoo_fbida tiff LIBTIFF
@@ -101,8 +112,11 @@ src_install() {
 
 	dodoc README
 
-	if use fbcon && ! use pdf; then
-		rm "${D}"/usr/bin/fbgs "${D}"/usr/share/man/man1/fbgs.1 || die
+	if use fbcon && ! use ghostscript; then
+		rm \
+			"${D}"/usr/bin/fbgs \
+			"${D}"/usr/share/man/man1/fbgs.1 \
+			|| die
 	fi
 
 	if use X ; then

@@ -7,7 +7,7 @@ EAPI=5
 inherit flag-o-matic mount-boot
 
 DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
-HOMEPAGE="http://sourceforge.net/projects/tboot/"
+HOMEPAGE="https://sourceforge.net/projects/tboot/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

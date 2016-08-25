@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-    <description>Co-maintainer, not trying to call for exclusive</description>
-  </maintainer>
   <longdescription>
     SquidClamAV is a <pkg>net-proxy/squid</pkg> redirector which allows easy antivirus file
     scanning.  It can use either a local or a remote ClamAV daemon. As

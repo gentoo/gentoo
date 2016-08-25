@@ -8,10 +8,10 @@ inherit eutils
 DESCRIPTION="Guacamole is a html5 vnc client as servlet"
 HOMEPAGE="http://guac-dev.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-client-${PV}.tar.gz
-	mysql? ( http://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-jdbc-${PV}.tar.gz )
-	postgres? ( http://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-jdbc-${PV}.tar.gz )
-	noauth? ( http://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-noauth-${PV}.tar.gz )
-	ldap? ( http://sourceforge.net/projects/guacamole/files/current/extensions/${PN}-auth-ldap-${PV}.tar.gz )"
+	mysql? ( https://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-jdbc-${PV}.tar.gz )
+	postgres? ( https://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-jdbc-${PV}.tar.gz )
+	noauth? ( https://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-noauth-${PV}.tar.gz )
+	ldap? ( https://sourceforge.net/projects/guacamole/files/current/extensions/${PN}-auth-ldap-${PV}.tar.gz )"
 S="${WORKDIR}/${PN}-client-${PV}"
 
 LICENSE="MIT"

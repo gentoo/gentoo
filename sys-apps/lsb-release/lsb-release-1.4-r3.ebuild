@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="LSB version query program"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/lsb"
+HOMEPAGE="https://wiki.linuxfoundation.org/lsb/"
 SRC_URI="mirror://sourceforge/lsb/${P}.tar.gz"
 
 LICENSE="GPL-2"

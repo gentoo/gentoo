@@ -35,7 +35,9 @@ RDEPEND="dev-libs/tinyxml
 		dev-qt/qtcore:5
 		kde-frameworks/kio:5 )"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+	gtk3? ( virtual/pkgconfig )
+	webp? ( virtual/pkgconfig )"
 
 DOCS=( docs/files/ase.txt
 	docs/files/fli.txt

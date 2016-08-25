@@ -10,7 +10,7 @@ inherit eutils flag-o-matic toolchain-funcs wxwidgets
 MY_P="${PN}-v${PV}0"
 
 DESCRIPTION="GUI frontend for Ngspice and Gnucap"
-HOMEPAGE="http://sourceforge.net/projects/gspiceui/"
+HOMEPAGE="https://sourceforge.net/projects/gspiceui/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

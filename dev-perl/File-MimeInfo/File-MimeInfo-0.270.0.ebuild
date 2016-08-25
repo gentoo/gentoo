@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,9 +21,14 @@ RDEPEND=">=dev-perl/File-BaseDir-0.03
 DEPEND="${RDEPEND}
 		dev-perl/Module-Build
 		test? (
-			dev-perl/Test-Pod
-			dev-perl/Test-Pod-Coverage
+			virtual/perl-Test-Simple
 		)
 		virtual/perl-ExtUtils-MakeMaker"
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/08_changes.t t/06_pod_ok.t t/07_pod_cover.t \
+		t/09_no404s.t
+	perl-module_src_test
+}

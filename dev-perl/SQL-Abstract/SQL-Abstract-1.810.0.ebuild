@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,11 +28,9 @@ DEPEND="${RDEPEND}
 		virtual/perl-Storable
 		>=dev-perl/Test-Deep-0.101.0
 		>=dev-perl/Test-Exception-0.310.0
-		dev-perl/Test-Pod
 		>=virtual/perl-Test-Simple-0.880.0
 		dev-perl/Test-Warn
 	)
 "
-#		dev-perl/Test-Pod-Coverage
 
 SRC_TEST="do"

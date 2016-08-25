@@ -317,12 +317,6 @@ src_configure() {
 		sed -i -e '/Build for EABI/a \\tdefault y' extra/Configs/Config.arm
 	fi
 
-	# For mips
-	if [[ ${target} == "mips" ]]; then
-		sed -i -e "s|default CONFIG_MIPS_O32_ABI|CONFIG_MIPS_${ABI^[on]}_ABI|" \
-			extra/Configs/Config.mips || die
-	fi
-
 	# We set HOSTCC to the proper tuple rather than just 'gcc'
 	sed -i -e "s|^HOSTCC.*=.*|HOSTCC=$(tc-getBUILD_CC)|" Rules.mak
 

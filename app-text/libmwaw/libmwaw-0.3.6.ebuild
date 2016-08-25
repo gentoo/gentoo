@@ -9,7 +9,7 @@ inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing many pre-OSX MAC text formats"
-HOMEPAGE="http://sourceforge.net/p/libmwaw/wiki/Home/"
+HOMEPAGE="https://sourceforge.net/p/libmwaw/wiki/Home/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

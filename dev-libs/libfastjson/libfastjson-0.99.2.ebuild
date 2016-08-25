@@ -15,7 +15,7 @@ LICENSE="MIT"
 # subslot = soname version
 SLOT="0/3.0.0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 hppa ~x86"
 IUSE="static-libs"
 
 DEPEND=""

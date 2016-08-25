@@ -25,6 +25,7 @@
 	<use>
 		<flag name="brass">Enabled brass backend db support</flag>
 		<flag name="chert">Enabled chert backend db support</flag>
+		<flag name="glass">Enabled glass backend db support</flag>
 		<flag name="inmemory">Enabled inmemory backend db support</flag>
 	</use>
 </pkgmetadata>

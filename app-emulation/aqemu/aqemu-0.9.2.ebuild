@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Graphical interface for QEMU and KVM emulators, using Qt5"
-HOMEPAGE="http://sourceforge.net/projects/aqemu"
+HOMEPAGE="https://sourceforge.net/projects/aqemu"
 SRC_URI="https://github.com/tobimensch/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,6 +25,7 @@ RDEPEND="app-emulation/qemu
 	dev-qt/qtprintsupport:5"
 
 DOCS="AUTHORS CHANGELOG README TODO"
+PATCHES=( "${FILESDIR}/${PN}-0.9.2-qtbindir.patch" )
 
 src_configure() {
 	local mycmakeargs=(

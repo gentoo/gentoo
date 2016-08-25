@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -24,7 +24,8 @@ start() {
 
 	OPTIONS="-a gcomm://${GALERA_NODES// /,} -g ${GALERA_GROUP}"
 	[ -n "${GALERA_OPTIONS}" ] && OPTIONS="${OPTIONS} -o ${GALERA_OPTIONS}"
-        [ -n "${LOG_FILE}" ]       && OPTIONS="${OPTIONS} -l ${LOG_FILE}"
+	[ -n "${LOG_FILE}" ]       && OPTIONS="${OPTIONS} -l ${LOG_FILE}"
+	[ -n "${NODE_NAME}" ]      && OPTIONS="${OPTIONS} -n ${NODE_NAME}"
 
 	start-stop-daemon \
 		--start \
@@ -46,4 +47,3 @@ stop() {
 		--pidfile "${PIDFILE}"
 	eend $?
 }
-

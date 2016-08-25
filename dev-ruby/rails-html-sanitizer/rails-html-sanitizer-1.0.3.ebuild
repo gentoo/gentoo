@@ -22,6 +22,12 @@ ruby_add_rdepend "dev-ruby/loofah:0"
 
 ruby_add_bdepend "test? ( dev-ruby/rails-dom-testing )"
 
+all_ruby_prepare() {
+	# Avoid tests failing with libxml2-2.9.3
+	# https://github.com/rails/rails-html-sanitizer/issues/49
+	sed -i -e '/test_\(strip_links_with_tags_in_tags\|strip_nested_tags\|should_sanitize_script_tag_with_multiple_open_brackets\|strip_tags_with_many_open_quotes\|strip_invalid_html\)/,/^  end/ s:^:#:' test/sanitizer_test.rb || die
+}
+
 each_ruby_test() {
 	${RUBY} -Ilib:test:. -e 'Dir["test/*_test.rb"].each{|f| require f}' || die
 }

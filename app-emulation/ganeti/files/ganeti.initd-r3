@@ -3,6 +3,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+extra_commands="forcestart is_master"
+
 depend() {
 	need localmount logger
 	after bootmisc sshd
@@ -15,6 +17,17 @@ is_master() {
 	[ -z "${ganeti_master}" ] && ganeti_master="$(gnt-cluster getmaster)"
 	[ -z "${local_hostname}" ] && local_hostname="$(hostname -f)"
 	[ "${ganeti_master}" = "${local_hostname}" ]
+}
+
+# This exists specifically for restarting a 2-node cluster where quorum might
+# not be available.
+forcestart() {
+	ewarn "Forcing non-quorum Ganeti master start"
+	GANETI_WCONFD_OPTS="${GANETI_WCONFD_OPTS} --no-voting --yes-do-it"
+	GANETI_LUXID_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	GANETI_MASTERD_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	export GANETI_WCONFD_OPTS GANETI_LUXID_OPTS GANETI_MASTERD_OPTS
+	start
 }
 
 start() {
@@ -39,6 +52,7 @@ start() {
 
 		ebegin "Starting ${daemon}"
 		eindent
+		veinfo ${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts}
 		${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts} || retval=${?}
 
 		if [ ${retval} != 0  ] && [ -n "${started_daemons}" ]; then

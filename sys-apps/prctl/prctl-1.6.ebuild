@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Tool to query and modify process behavior"
-HOMEPAGE="http://sourceforge.net/projects/prctl/"
+HOMEPAGE="https://sourceforge.net/projects/prctl/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

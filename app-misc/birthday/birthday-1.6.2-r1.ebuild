@@ -7,7 +7,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Displays a list of events happening in the near future"
-HOMEPAGE="http://sourceforge.net/projects/birthday/"
+HOMEPAGE="https://sourceforge.net/projects/birthday/"
 SRC_URI="mirror://sourceforge/birthday/${P}.tar.bz2"
 
 LICENSE="GPL-2"

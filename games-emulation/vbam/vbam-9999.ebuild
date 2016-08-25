@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
-HOMEPAGE="http://sourceforge.net/projects/vbam/"
+HOMEPAGE="https://sourceforge.net/projects/vbam/"
 
 LICENSE="GPL-2"
 SLOT="0"

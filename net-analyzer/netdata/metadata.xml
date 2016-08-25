@@ -15,6 +15,9 @@
         <flag name="nfacct">Enable the nfacct plugin</flag>
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
     </use>
+    <upstream>
+        <remote-id type="github">firehol/netdata</remote-id>
+    </upstream>
     <longdescription lang="en">
         Linux real time system monitoring web interface
     </longdescription>

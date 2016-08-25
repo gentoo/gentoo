@@ -39,6 +39,10 @@ DEPEND="
 	smartcard? ( app-emulation/qemu[smartcard] )
 	${RDEPEND}"
 
+# Prevent sandbox violations, bug #586560
+# https://bugzilla.gnome.org/show_bug.cgi?id=581836
+addpredict /dev
+
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
 	has_version "dev-python/six[${PYTHON_USEDEP}]"

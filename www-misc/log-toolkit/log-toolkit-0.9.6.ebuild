@@ -5,7 +5,7 @@
 inherit depend.apache
 
 DESCRIPTION="set of tools to manipulate and maintain webserver logfiles"
-HOMEPAGE="http://sourceforge.net/projects/log-toolkit/"
+HOMEPAGE="https://sourceforge.net/projects/log-toolkit/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools
 
 DESCRIPTION="MBrowse is a graphical MIB browser"
-HOMEPAGE="http://sourceforge.net/projects/mbrowse/"
+HOMEPAGE="https://sourceforge.net/projects/mbrowse/"
 SRC_URI="mirror://sourceforge/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"

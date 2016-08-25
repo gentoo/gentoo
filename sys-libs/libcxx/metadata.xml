@@ -11,7 +11,12 @@
     <email>bsd@gentoo.org</email>
     <name>BSD Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <use>
 	  <flag name="libcxxrt">Build on top of <pkg>sys-libs/libcxxrt</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
+	  <flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
   </use>
 </pkgmetadata>

@@ -1,0 +1,224 @@
+Index: collada_parser/include/collada_parser/collada_parser.h
+===================================================================
+--- collada_parser.orig/include/collada_parser/collada_parser.h
++++ collada_parser/include/collada_parser/collada_parser.h
+@@ -47,7 +47,7 @@
+ namespace urdf {
+ 
+ /// \brief Load Model from string
+-boost::shared_ptr<ModelInterface> parseCollada(const std::string &xml_string );
++std::shared_ptr<ModelInterface> parseCollada(const std::string &xml_string );
+ 
+ }
+ 
+Index: collada_parser/include/collada_parser/collada_parser_plugin.h
+===================================================================
+--- collada_parser.orig/include/collada_parser/collada_parser_plugin.h
++++ collada_parser/include/collada_parser/collada_parser_plugin.h
+@@ -46,7 +46,7 @@ class ColladaURDFParser : public URDFPar
+ {
+ public:
+ 
+-  virtual boost::shared_ptr<ModelInterface> parse(const std::string &xml_string);    
++  virtual std::shared_ptr<ModelInterface> parse(const std::string &xml_string);    
+ };
+ 
+ }
+Index: collada_parser/src/collada_parser.cpp
+===================================================================
+--- collada_parser.orig/src/collada_parser.cpp
++++ collada_parser/src/collada_parser.cpp
+@@ -176,7 +176,7 @@ public:
+         USERDATA(double scale) : scale(scale) {
+         }
+         double scale;
+-        boost::shared_ptr<void> p; ///< custom managed data
++        std::shared_ptr<void> p; ///< custom managed data
+     };
+ 
+     enum GeomType {
+@@ -409,7 +409,7 @@ public:
+     };
+ 
+ public:
+-    ColladaModelReader(boost::shared_ptr<ModelInterface> model) : _dom(NULL), _nGlobalSensorId(0), _nGlobalManipulatorId(0), _model(model) {
++    ColladaModelReader(std::shared_ptr<ModelInterface> model) : _dom(NULL), _nGlobalSensorId(0), _nGlobalManipulatorId(0), _model(model) {
+         daeErrorHandler::setErrorHandler(this);
+         _resourcedir = ".";
+     }
+@@ -715,7 +715,7 @@ protected:
+             }
+ 
+             // find the target joint
+-            boost::shared_ptr<Joint> pjoint = _getJointFromRef(pf->getTarget()->getParam()->getValue(),pf);
++            std::shared_ptr<Joint> pjoint = _getJointFromRef(pf->getTarget()->getParam()->getValue(),pf);
+             if (!pjoint) {
+                 continue;
+             }
+@@ -785,7 +785,7 @@ protected:
+                     }
+                     BOOST_ASSERT(psymboljoint->hasAttribute("encoding"));
+                     BOOST_ASSERT(psymboljoint->getAttribute("encoding")==std::string("COLLADA"));
+-                    boost::shared_ptr<Joint> pbasejoint = _getJointFromRef(psymboljoint->getCharData().c_str(),pf);
++                    std::shared_ptr<Joint> pbasejoint = _getJointFromRef(psymboljoint->getCharData().c_str(),pf);
+                     if( !!pbasejoint ) {
+                         // set the mimic properties
+                         pjoint->mimic.reset(new JointMimic());
+@@ -801,7 +801,7 @@ protected:
+     }
+ 
+     ///  \brief Extract Link info and add it to an existing body
+-    boost::shared_ptr<Link> _ExtractLink(const domLinkRef pdomlink,const domNodeRef pdomnode, const Pose& tParentWorldLink, const Pose& tParentLink, const std::vector<domJointRef>& vdomjoints, const KinematicsSceneBindings& bindings) {
++    std::shared_ptr<Link> _ExtractLink(const domLinkRef pdomlink,const domNodeRef pdomnode, const Pose& tParentWorldLink, const Pose& tParentLink, const std::vector<domJointRef>& vdomjoints, const KinematicsSceneBindings& bindings) {
+         const std::list<JointAxisBinding>& listAxisBindings = bindings.listAxisBindings;
+         //  Set link name with the name of the COLLADA's Link
+         std::string linkname = _ExtractLinkName(pdomlink);
+@@ -817,7 +817,7 @@ protected:
+             }
+         }
+ 
+-        boost::shared_ptr<Link> plink;
++        LinkSharedPtr plink;
+         _model->getLink(linkname,plink);
+         if( !plink ) {
+             plink.reset(new Link());
+@@ -921,7 +921,7 @@ protected:
+ 
+                 if (!pdomjoint || pdomjoint->typeID() != domJoint::ID()) {
+                     ROS_WARN_STREAM(str(boost::format("could not find attached joint %s!\n")%pattfull->getJoint()));
+-                    return boost::shared_ptr<Link>();
++                    return std::shared_ptr<Link>();
+                 }
+ 
+                 // get direct child link
+@@ -952,7 +952,7 @@ protected:
+                 }
+ 
+                 // create the joints before creating the child links
+-                std::vector<boost::shared_ptr<Joint> > vjoints(vdomaxes.getCount());
++                std::vector<std::shared_ptr<Joint> > vjoints(vdomaxes.getCount());
+                 for (size_t ic = 0; ic < vdomaxes.getCount(); ++ic) {
+                     bool joint_active = true; // if not active, put into the passive list
+                     FOREACHC(itaxisbinding,listAxisBindings) {
+@@ -966,7 +966,7 @@ protected:
+                         }
+                     }
+ 
+-                    boost::shared_ptr<Joint> pjoint(new Joint());
++                    std::shared_ptr<Joint> pjoint(new Joint());
+                     pjoint->limits.reset(new JointLimits());
+                     pjoint->limits->velocity = 0.0;
+                     pjoint->limits->effort = 0.0;
+@@ -995,12 +995,12 @@ protected:
+                     }
+ 
+                     _getUserData(pdomjoint)->p = pjoint;
+-                    _getUserData(pdomaxis)->p = boost::shared_ptr<int>(new int(_model->joints_.size()));
++                    _getUserData(pdomaxis)->p = std::shared_ptr<int>(new int(_model->joints_.size()));
+                     _model->joints_[pjoint->name] = pjoint;
+                     vjoints[ic] = pjoint;
+                 }
+ 
+-                boost::shared_ptr<Link> pchildlink = _ExtractLink(pattfull->getLink(), pchildnode, _poseMult(_poseMult(tParentWorldLink,tlink), tatt), tatt, vdomjoints, bindings);
++                std::shared_ptr<Link> pchildlink = _ExtractLink(pattfull->getLink(), pchildnode, _poseMult(_poseMult(tParentWorldLink,tlink), tatt), tatt, vdomjoints, bindings);
+ 
+                 if (!pchildlink) {
+                     ROS_WARN_STREAM(str(boost::format("Link has no child: %s\n")%plink->name));
+@@ -1035,7 +1035,7 @@ protected:
+                     }
+ 
+                     ROS_DEBUG_STREAM(str(boost::format("Joint %s assigned %d \n")%vjoints[ic]->name%ic));
+-                    boost::shared_ptr<Joint> pjoint = vjoints[ic];
++                    std::shared_ptr<Joint> pjoint = vjoints[ic];
+                     pjoint->child_link_name = pchildlink->name;
+ 
+ #define PRINT_POSE(pname, apose) ROS_DEBUG(pname" pos: %f %f %f, rot: %f %f %f %f", \
+@@ -1178,7 +1178,7 @@ protected:
+         return plink;
+     }
+ 
+-    boost::shared_ptr<Geometry> _CreateGeometry(const std::string& name, const std::list<GEOMPROPERTIES>& listGeomProperties)
++    urdf::GeometrySharedPtr _CreateGeometry(const std::string& name, const std::list<GEOMPROPERTIES>& listGeomProperties)
+     {
+         std::vector<std::vector<Vector3> > vertices;
+         std::vector<std::vector<int> > indices;
+@@ -1219,12 +1219,12 @@ protected:
+         }
+ 
+         if (vert_counter == 0) {
+-          boost::shared_ptr<Mesh> ret;
++          std::shared_ptr<Mesh> ret;
+           ret.reset();
+           return ret;
+         }
+ 
+-        boost::shared_ptr<Mesh> geometry(new Mesh());
++        std::shared_ptr<Mesh> geometry(new Mesh());
+         geometry->type = Geometry::MESH;
+         geometry->scale.x = 1;
+         geometry->scale.y = 1;
+@@ -2020,7 +2020,7 @@ protected:
+                 //std::string aname = pextra->getAttribute("name");
+                 domTechniqueRef tec = _ExtractOpenRAVEProfile(pextra->getTechnique_array());
+                 if( !!tec ) {
+-                    boost::shared_ptr<Joint> pjoint;
++                    std::shared_ptr<Joint> pjoint;
+                     daeElementRef domactuator;
+                     {
+                         daeElementRef bact = tec->getChild("bind_actuator");
+@@ -2413,7 +2413,7 @@ protected:
+         return name.substr(pos+1)==type;
+     }
+ 
+-    boost::shared_ptr<Joint> _getJointFromRef(xsToken targetref, daeElementRef peltref) {
++    std::shared_ptr<Joint> _getJointFromRef(xsToken targetref, daeElementRef peltref) {
+         daeElement* peltjoint = daeSidRef(targetref, peltref).resolve().elt;
+         domJointRef pdomjoint = daeSafeCast<domJoint> (peltjoint);
+ 
+@@ -2426,10 +2426,10 @@ protected:
+ 
+         if (!pdomjoint || pdomjoint->typeID() != domJoint::ID() || !pdomjoint->getName()) {
+             ROS_WARN_STREAM(str(boost::format("could not find collada joint %s!\n")%targetref));
+-            return boost::shared_ptr<Joint>();
++            return std::shared_ptr<Joint>();
+         }
+ 
+-        boost::shared_ptr<Joint> pjoint;
++        std::shared_ptr<Joint> pjoint;
+         std::string name(pdomjoint->getName());
+         if (_model->joints_.find(name) == _model->joints_.end()) {
+             pjoint.reset();
+@@ -2797,7 +2797,7 @@ protected:
+     int _nGlobalSensorId, _nGlobalManipulatorId;
+     std::string _filename;
+     std::string _resourcedir;
+-    boost::shared_ptr<ModelInterface> _model;
++    std::shared_ptr<ModelInterface> _model;
+     Pose _RootOrigin;
+     Pose _VisualRootOrigin;
+ };
+@@ -2805,9 +2805,9 @@ protected:
+ 
+ 
+ 
+-boost::shared_ptr<ModelInterface> parseCollada(const std::string &xml_str)
++std::shared_ptr<ModelInterface> parseCollada(const std::string &xml_str)
+ {
+-    boost::shared_ptr<ModelInterface> model(new ModelInterface);
++    std::shared_ptr<ModelInterface> model(new ModelInterface);
+ 
+     ColladaModelReader reader(model);
+     if (!reader.InitFromData(xml_str))
+Index: collada_parser/src/collada_parser_plugin.cpp
+===================================================================
+--- collada_parser.orig/src/collada_parser_plugin.cpp
++++ collada_parser/src/collada_parser_plugin.cpp
+@@ -38,7 +38,7 @@
+ #include "collada_parser/collada_parser.h"
+ #include <class_loader/class_loader.h>
+ 
+-boost::shared_ptr<urdf::ModelInterface> urdf::ColladaURDFParser::parse(const std::string &xml_string)
++std::shared_ptr<urdf::ModelInterface> urdf::ColladaURDFParser::parse(const std::string &xml_string)
+ {
+   return urdf::parseCollada(xml_string);
+ }

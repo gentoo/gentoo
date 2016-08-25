@@ -1,5 +1,5 @@
---- src/log_pam.c
-+++ src/log_pam.c
+--- a/src/log_pam.c
++++ b/src/log_pam.c
 @@ -49,7 +49,7 @@
  # endif
  

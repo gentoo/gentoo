@@ -21,7 +21,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Italian dictionaries for myspell/hunspell"
-HOMEPAGE="http://sourceforge.net/projects/linguistico/"
+HOMEPAGE="https://sourceforge.net/projects/linguistico/"
 SRC_URI="mirror://sourceforge/linguistico/Dizionari.IT_${PV}.oxt"
 
 LICENSE="AGPL-3 GPL-3 LGPL-3"

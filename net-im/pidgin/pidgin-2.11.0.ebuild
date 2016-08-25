@@ -247,7 +247,7 @@ src_install() {
 	fi
 	use perl && perl_delete_localpod
 
-	if use python || use dbus ; then
+	if use python && use dbus ; then
 		python_fix_shebang "${D}"
 		python_optimize
 	fi

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wired@gentoo.org</email>
-		<name>Alex Alexander</name>
-	</maintainer>
 	<longdescription lang="en">
 		Uget is a download manager. It allows you to classify URLs before downloading
 		them, and allows you to import URLs from HTML files. Every category has an

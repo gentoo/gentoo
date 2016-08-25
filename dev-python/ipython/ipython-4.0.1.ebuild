@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -93,7 +93,7 @@ python_compile_all() {
 python_test() {
 	distutils_install_for_testing
 	# https://github.com/ipython/ipython/issues/8639
-	# Failure of some modules only in python3.4 
+	# Failure of some modules only in python3.4
 	local fail
 	run_tests() {
 		pushd ${TEST_DIR} > /dev/null || die

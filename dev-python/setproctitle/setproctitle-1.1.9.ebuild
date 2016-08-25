@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Allow customization of the process title"
-HOMEPAGE="https://code.google.com/p/py-setproctitle/ https://pypi.python.org/pypi/setproctitle"
+HOMEPAGE="https://github.com/dvarrazzo/py-setproctitle"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -32,7 +32,7 @@ python_compile_all() {
 }
 
 python_test() {
-		# The suite via the Makefile appears to not cater to pypy
+	# The suite via the Makefile appears to not cater to pypy
 	[[ ${EPYTHON} =~ pypy ]] && return
 
 	# prepare embedded executable

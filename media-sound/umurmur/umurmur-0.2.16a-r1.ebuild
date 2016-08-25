@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools systemd eutils readme.gentoo user
+inherit autotools systemd eutils readme.gentoo-r1 user
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
-HOMEPAGE="https://code.google.com/p/umurmur/ https://github.com/umurmur/umurmur"
+HOMEPAGE="https://github.com/umurmur/umurmur"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -49,6 +49,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	eautoreconf
 }
 

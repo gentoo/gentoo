@@ -13,6 +13,6 @@
 		messages, partial DNSSEC verification, and EDNS0.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">http://sourceforge.net/projects/dnsjava/</remote-id>
+		<remote-id type="sourceforge">https://sourceforge.net/projects/dnsjava/</remote-id>
 	</upstream>
 </pkgmetadata>

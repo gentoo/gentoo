@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools
 
 DESCRIPTION="A command line player/recorder for wav files"
-HOMEPAGE="http://sourceforge.net/projects/wavplay/"
+HOMEPAGE="https://sourceforge.net/projects/wavplay/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

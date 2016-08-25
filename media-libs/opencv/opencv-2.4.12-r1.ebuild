@@ -197,7 +197,7 @@ src_configure() {
 
 	if use cuda; then
 		if [[ "$(gcc-version)" > "4.8" ]]; then
-			# bug 577410 
+			# bug 577410
 			# #error -- unsupported GNU version! gcc 4.9 and up are not supported!
 			ewarn "CUDA and >=sys-devel/gcc-4.9 do not play well together. Disabling CUDA support."
 			mycmakeargs+=( -DWITH_CUDA=OFF )

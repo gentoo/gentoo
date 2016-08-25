@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -26,8 +26,8 @@ ruby_add_bdepend "test? ( dev-ruby/hashie
 
 each_ruby_test() {
 	# Run specs with monkeypatch
-	${RUBY} -S rspec --tag ~libraries || die
+	${RUBY} -S rspec-2 --tag ~libraries || die
 
 	# Running specs without monkeypatch
-	${RUBY} -S rspec --tag libraries || die
+	${RUBY} -S rspec-2 --tag libraries || die
 }

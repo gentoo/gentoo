@@ -1,6 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
+# libressl: dev-libs/libressl is a base package on FreeBSD
+# luajit:   dev-lang/luajit not keyworded on FreeBSD
+www-servers/nginx libressl luajit
 
 # As per UberLord's requests
 sys-apps/openrc pam

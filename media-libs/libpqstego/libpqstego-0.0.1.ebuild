@@ -5,7 +5,7 @@
 EAPI=2
 
 DESCRIPTION="Library for Perturbed Quantization Steganography"
-HOMEPAGE="http://sourceforge.net/projects/pqstego/"
+HOMEPAGE="https://sourceforge.net/projects/pqstego/"
 SRC_URI="mirror://sourceforge/${PN/lib}/${P}.tar.gz"
 
 LICENSE="GPL-2"

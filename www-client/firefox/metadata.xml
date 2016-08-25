@@ -20,6 +20,7 @@
 	<flag name="minimal">Prevent sdk and headers from being installed</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
 		for faster binaries. This option will double the compile time.</flag>
+	<flag name="skia">Enable the SKIA engine for 2D rendering as an alternative to cairo</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
 		instead of bundled.</flag>
 	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>

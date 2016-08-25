@@ -22,4 +22,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-SRC_TEST="do parallel"
+SRC_TEST="do"

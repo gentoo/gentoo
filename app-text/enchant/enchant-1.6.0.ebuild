@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils autotools
 
@@ -30,7 +30,12 @@ REQUIRED_USE="|| ( hunspell aspell zemberek )"
 
 DOCS="AUTHORS BUGS ChangeLog HACKING MAINTAINERS NEWS README TODO"
 
+PATCHES=(
+	"${FILESDIR}/${P}-hunspell140_fix.patch"
+)
+
 src_prepare() {
+	default
 	sed -i \
 		-e 's:noinst_PROGRAMS:check_PROGRAMS:' \
 		tests/Makefile.am || die

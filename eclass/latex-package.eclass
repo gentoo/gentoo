@@ -138,6 +138,7 @@ latex-package_src_doinstall() {
 				if ! in_iuse doc || use doc ; then
 					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
 					do
+						[ -n "${LATEX_PACKAGE_SKIP}" ] && has ${i##*/} ${LATEX_PACKAGE_SKIP} && continue
 						einfo "Making documentation: $i"
 						if pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null ; then
 							pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null || die

@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Displays information about ACPI devices"
-HOMEPAGE="http://sourceforge.net/projects/acpiclient/"
+HOMEPAGE="https://sourceforge.net/projects/acpiclient/"
 SRC_URI="mirror://sourceforge/acpiclient/${P}.tar.gz"
 
 LICENSE="GPL-2"

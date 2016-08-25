@@ -207,8 +207,8 @@ src_prepare() {
 	local testfile
 	if has_version '>=dev-lang/ghc-7.10'; then
 		# Breaks the build on 7.8
-		PATCHES+=( 
-			"${WORKDIR}"/debian/patches/ghc-7.10-compatibility.patch 
+		PATCHES+=(
+			"${WORKDIR}"/debian/patches/ghc-7.10-compatibility.patch
 		)
 	fi
 	eapply "${PATCHES[@]}"

@@ -12,7 +12,7 @@ MY_PN="JSAP"
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Java Simple Arguments Parser (JSAP)"
-HOMEPAGE="http://sourceforge.net/projects/jsap"
+HOMEPAGE="https://sourceforge.net/projects/jsap"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

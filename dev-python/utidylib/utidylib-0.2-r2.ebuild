@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_P="uTidylib-${PV}"
 
 DESCRIPTION="TidyLib Python wrapper"
-HOMEPAGE="http://sourceforge.net/projects/utidylib/"
+HOMEPAGE="https://sourceforge.net/projects/utidylib/"
 #SRC_URI="mirror://berlios/${PN}/${MY_P}.zip"
 SRC_URI="mirror://gentoo/${MY_P}.zip"
 

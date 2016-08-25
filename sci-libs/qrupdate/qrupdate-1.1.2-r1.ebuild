@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils fortran-2 multilib versionator toolchain-funcs
 
 DESCRIPTION="Library for updating of QR and Cholesky decompositions"
-HOMEPAGE="http://sourceforge.net/projects/qrupdate"
+HOMEPAGE="https://sourceforge.net/projects/qrupdate"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

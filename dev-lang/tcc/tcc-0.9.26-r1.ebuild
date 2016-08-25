@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,12 +40,12 @@ src_configure() {
 					# better fixes welcome, it feels wrong to hack the env like this
 	# not autotools, so call configure directly
 	./configure --cc="$(tc-getCC)" \
-                --bindir=/usr/bin \
-                --libdir=/usr/$(get_libdir) \
-                --tccdir=tcc \
-                --includedir=/usr/include \
-                --docdir=/usr/share/doc/${PF} \
-                --mandir=/usr/share/man
+		--bindir=/usr/bin \
+		--libdir=/usr/$(get_libdir) \
+		--tccdir=tcc \
+		--includedir=/usr/include \
+		--docdir=/usr/share/doc/${PF} \
+		--mandir=/usr/share/man
 }
 
 src_compile() {

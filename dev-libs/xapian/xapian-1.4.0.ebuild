@@ -15,7 +15,7 @@ SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/30" # ABI version of libxapian.so
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inmemory"
+IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +glass +chert +inmemory"
 
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
@@ -44,7 +44,7 @@ src_configure() {
 
 	myconf="${myconf} $(use_enable static-libs static)"
 
-	use brass || myconf="${myconf} --disable-backend-brass"
+	use glass || myconf="${myconf} --disable-backend-glass"
 	use chert || myconf="${myconf} --disable-backend-chert"
 	use inmemory || myconf="${myconf} --disable-backend-inmemory"
 

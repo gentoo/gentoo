@@ -1,0 +1,39 @@
+From f2dcef1e5cba52bb6d06b189ec77398116bd204a Mon Sep 17 00:00:00 2001
+From: Gokturk Yuksek <gokturk@gentoo.org>
+Date: Thu, 4 Aug 2016 00:52:14 -0400
+Subject: [PATCH] Do not compile ParCheckerTest and ParRenamerTest if parcheck
+ is disabled
+
+---
+ Makefile.am | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b2c830b..0e01087 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -217,8 +217,6 @@ nzbget_SOURCES += \
+ 	tests/main/CommandLineParserTest.cpp \
+ 	tests/main/OptionsTest.cpp \
+ 	tests/feed/FeedFilterTest.cpp \
+-	tests/postprocess/ParCheckerTest.cpp \
+-	tests/postprocess/ParRenamerTest.cpp \
+ 	tests/postprocess/DupeMatcherTest.cpp \
+ 	tests/queue/NzbFileTest.cpp \
+ 	tests/nntp/ServerPoolTest.cpp \
+@@ -226,6 +224,12 @@ nzbget_SOURCES += \
+ 	tests/util/NStringTest.cpp \
+ 	tests/util/UtilTest.cpp
+ 
++if WITH_PAR2
++nzbget_SOURCES += \
++	tests/postprocess/ParCheckerTest.cpp \
++	tests/postprocess/ParRenamerTest.cpp
++endif
++
+ AM_CPPFLAGS += \
+ 	-I$(srcdir)/lib/catch \
+ 	-I$(srcdir)/tests/suite
+-- 
+2.7.3
+

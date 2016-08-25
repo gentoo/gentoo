@@ -4,7 +4,7 @@
 
 # TODO
 # 1. Track upstream bug --disable-docs does not work.
-#	http://sourceforge.net/tracker/index.php?func=detail&aid=1643870&group_id=8874&atid=108874
+#	https://sourceforge.net/tracker/index.php?func=detail&aid=1643870&group_id=8874&atid=108874
 
 EAPI=6
 inherit eutils multilib multilib-minimal udev user
@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.
@@ -73,6 +73,12 @@ DEPEND="${RDEPEND}
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gphoto2-port-config
 	/usr/bin/gphoto2-config
+)
+
+PATCHES=(
+	# Fix building with latest jpeg-turbo, bug #586336, fixed in the
+	# next version
+	"${FILESDIR}"/${P}-jpeg.patch
 )
 
 pkg_pretend() {

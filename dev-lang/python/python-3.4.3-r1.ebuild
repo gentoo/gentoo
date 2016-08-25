@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,10 +49,9 @@ RDEPEND="app-arch/bzip2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
-	!sys-devel/gcc[libffi]"
+	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
-PDEPEND="app-eselect/eselect-python
-	app-admin/python-updater"
+PDEPEND="app-eselect/eselect-python"
 
 S="${WORKDIR}/${MY_P}"
 

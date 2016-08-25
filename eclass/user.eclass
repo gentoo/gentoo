@@ -5,7 +5,6 @@
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
-# Joe Jezak <josejx@gmail.com> (OS X)
 # usata@gentoo.org (OS X)
 # Aaron Walker <ka0ttic@gentoo.org> (FreeBSD)
 # @BLURB: user management in ebuilds

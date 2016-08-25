@@ -5,7 +5,7 @@
 inherit eutils flag-o-matic
 
 DESCRIPTION="configuration tool for setting traffic bandwidth parameters"
-HOMEPAGE="ftp://archive.download.redhat.com/pub/redhat/linux/9/en/os/i386/SRPMS http://sourceforge.net/projects/cbqinit"
+HOMEPAGE="ftp://archive.download.redhat.com/pub/redhat/linux/9/en/os/i386/SRPMS https://sourceforge.net/projects/cbqinit"
 SRC_URI="mirror://gentoo/shaper.${PV}.tar.gz"
 
 LICENSE="GPL-2"

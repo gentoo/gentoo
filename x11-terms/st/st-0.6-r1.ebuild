@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,11 +12,11 @@ SRC_URI="http://dl.suckless.org/st/${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 IUSE="savedconfig"
 
 RDEPEND="
-	!<sys-libs/ncurses-6.0
+	sys-libs/ncurses:=
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXext

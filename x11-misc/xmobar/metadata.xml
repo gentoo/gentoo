@@ -3,11 +3,14 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
 		<flag name="mpd">Support mpd plugin</flag>
 		<flag name="mpris">Enables MPRIS v1, v2  support</flag>
 		<flag name="timezone">Enables localized date support</flag>
+		<flag name="with_conduit">Use conduit to fetch weather data.</flag>
+		<flag name="with_uvmeter">Plugin to show UV data for Australia.</flag>
 	</use>
 	<longdescription>
 		Xmobar is a minimalistic text based status bar.

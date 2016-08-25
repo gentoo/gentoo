@@ -9,10 +9,8 @@
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<use>
-		<flag name="maui">Enable maui scheduler support</flag>
 		<flag name="munge">Enable authentication via munge</flag>
 		<flag name="multiple-slurmd">Allow multiple slurmd to run</flag>
-		<flag name="ypbind">Enable ypbind based auth</flag>
 		<flag name="torque">Enable perl scripts that emulates pbs (qstat, qsub etc.)</flag>
 	</use>
 </pkgmetadata>

@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>elizabeth@interlinked.me</email>
 		<name>Elizabeth Myers</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>

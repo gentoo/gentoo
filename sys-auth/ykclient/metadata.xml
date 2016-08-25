@@ -6,11 +6,6 @@
     <name>Brant Gurganus</name>
     <description>Proxied co-maintainer, assign bugs to him</description>
   </maintainer>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-    <name>Diego Elio Pettenò</name>
-    <description>Proxy maintainer, CC him on bugs</description>
-  </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>

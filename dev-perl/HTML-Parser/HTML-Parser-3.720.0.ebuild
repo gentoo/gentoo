@@ -21,9 +21,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		dev-perl/Test-Pod
 		virtual/perl-Test-Simple
 	)
 "
 
 mydoc="ANNOUNCEMENT"
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
+}

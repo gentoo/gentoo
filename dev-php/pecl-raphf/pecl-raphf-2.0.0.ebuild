@@ -23,3 +23,11 @@ SLOT="7"
 IUSE=""
 
 RDEPEND="php_targets_php5-6? ( ${CATEGORY}/${PN}:0[php_targets_php5-6] )"
+
+src_prepare() {
+	if use php_targets_php7-0 ; then
+		php-ext-source-r3_src_prepare
+	else
+		default_src_prepare
+	fi
+}
