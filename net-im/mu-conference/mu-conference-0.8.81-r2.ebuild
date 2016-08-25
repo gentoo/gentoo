@@ -20,9 +20,16 @@ RDEPEND="
 	>=dev-libs/glib-2:2
 	net-dns/libidn
 	net-im/jabberd2
-	mysql? ( virtual/mysql )"
+	mysql? ( virtual/mysql )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	# http://gna.org/bugs/?16238
+	"${FILESDIR}"/${P}-sha1_64bit.patch
+)
 
 src_prepare() {
 	# Fix missing header in src/conference_user.c in order to
@@ -42,7 +49,7 @@ src_prepare() {
 		sed -i -e 's/gcc -g/$(CC) -g/' src/jcomp/Makefile || die
 	tc-export CC AR RANLIB
 
-	eapply_user
+	default
 }
 
 src_install() {
