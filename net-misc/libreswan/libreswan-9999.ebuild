@@ -19,7 +19,7 @@ HOMEPAGE="https://libreswan.org/"
 
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
-IUSE="caps curl dnssec ldap pam"
+IUSE="caps curl dnssec ldap pam systemd"
 
 COMMON_DEPEND="
 	dev-libs/gmp:0=
@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	dnssec? ( net-dns/unbound net-libs/ldns )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
+	systemd? ( sys-apps/systemd:0= )
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
@@ -70,6 +71,7 @@ src_configure() {
 	export USE_LIBCAP_NG=$(usetf caps)
 	export USE_LIBCURL=$(usetf curl)
 	export USE_LDAP=$(usetf ldap)
+	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
 	export USE_XAUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
