@@ -17,6 +17,8 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 RDEPEND="app-admin/eselect"
 
+S="${WORKDIR}"
+
 MODULEDIR="/usr/share/eselect/modules"
 
 # NOTE!!
