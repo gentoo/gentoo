@@ -157,7 +157,7 @@ src_prepare() {
 
 	# Prevent installing libgtest
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	eapply "${FILESDIR}"/9999/0005-cmake-Do-not-install-libgtest.patch
+	eapply "${FILESDIR}"/3.8.1/0005-cmake-Do-not-install-libgtest.patch
 
 	# Allow custom cmake build types (like 'Gentoo')
 	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
