@@ -8951,7 +8951,7 @@ dev-ruby/flickraw 0.9.8 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/forwardable-extended 2.6.0: Forwardable with hash, and instance variable extensions
-dev-ruby/fuubar 2.0.0 2.1.1: Instafailing RSpec progress bar formatter
+dev-ruby/fuubar 2.0.0 2.1.1 2.2.0: Instafailing RSpec progress bar formatter
 dev-ruby/fxruby 1.6.29 1.6.29-r1 1.6.34: Ruby language binding to the FOX GUI toolkit
 dev-ruby/gettext_i18n_rails 1.5.0 1.7.2 1.8.0: FastGettext / Rails integration
 dev-ruby/gh 0.14.0: multi-layer client for the github api v3
@@ -9036,7 +9036,7 @@ dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
-dev-ruby/maxitest 1.5.7 2.0.2 2.1.0: Minitest + all the features you always wanted
+dev-ruby/maxitest 1.5.7 2.0.2 2.1.0 2.2.0: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.4 2.7.5: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r2: A ruby library for accessing memcached
