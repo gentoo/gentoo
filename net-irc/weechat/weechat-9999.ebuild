@@ -23,12 +23,10 @@ SLOT="0"
 
 NETWORKS="+irc"
 PLUGINS="+alias +charset +exec +fifo +logger +relay +scripts +spell +trigger +xfer"
-#INTERFACES="+ncurses gtk"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
 IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
-#REQUIRED_USE=" || ( ncurses gtk )"
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
@@ -46,8 +44,6 @@ RDEPEND="
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
-#	ncurses? ( sys-libs/ncurses )
-#	gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	doc? (
 		>=dev-ruby/asciidoctor-1.5.4
@@ -102,13 +98,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# $(cmake-utils_use_enable gtk)
-	# $(cmake-utils_use_enable ncurses)
 	local mycmakeargs=(
 		-DENABLE_NCURSES=ON
 		-DENABLE_LARGEFILE=ON
-		-DENABLE_DEMO=OFF
-		-DENABLE_GTK=OFF
 		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_ALIAS=$(usex alias)
 		-DENABLE_DOC=$(usex doc)
