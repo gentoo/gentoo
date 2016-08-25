@@ -52,6 +52,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
 	>=app-shells/bash-4.1
 "
 
