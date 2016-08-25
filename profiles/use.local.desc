@@ -3329,7 +3329,6 @@ kde-apps/kopete:winpopup - Enable pop-up messages sending on windows. (same as g
 kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
 kde-apps/krdc:rdesktop - Enable runtime dependency for net-misc/rdesktop
-kde-apps/krdc:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
 kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
 kde-apps/kstars:indi - Enable support for Astronomical control library using libindi
