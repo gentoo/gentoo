@@ -42,8 +42,8 @@ configtest() {
 
 start_pre() {
 	checkconfig || return $?
-	checkpath --directory --owner nsd:nsd $(dirname "${pidfile}")
 	pidfile="$(get_pidfile)"
+	checkpath --directory --owner nsd:nsd "${pidfile%/*}" || return 1
 }
 
 stop_pre() {
