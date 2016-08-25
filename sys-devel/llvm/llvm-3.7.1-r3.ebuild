@@ -155,7 +155,7 @@ src_prepare() {
 
 	# Prevent installing libgtest
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	eapply "${FILESDIR}"/9999/0005-cmake-Do-not-install-libgtest.patch
+	eapply "${FILESDIR}"/3.8.1/0005-cmake-Do-not-install-libgtest.patch
 
 	# Fix llvm-config for shared linking, sane flags and return values
 	# in order:
