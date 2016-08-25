@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup
-DEPEND=dev-libs/boost[threads(+)] dev-libs/openssl:0[-bindist] logrotate? ( app-admin/logrotate ) upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] >=dev-libs/leveldb-1.18-r1 >=app-shells/bash-4.1 sys-apps/sed !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEPEND=dev-libs/boost:=[threads(+)] dev-libs/openssl:0[-bindist] logrotate? ( app-admin/logrotate ) upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] >=dev-libs/leveldb-1.18-r1 >=app-shells/bash-4.1 sys-apps/sed !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. It's based on Bitcoin and not so widely adapted.
 EAPI=5
 HOMEPAGE=https://litecoin.org/
 IUSE=logrotate upnp +wallet
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT ISC GPL-2
-RDEPEND=dev-libs/boost[threads(+)] dev-libs/openssl:0[-bindist] logrotate? ( app-admin/logrotate ) upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] >=dev-libs/leveldb-1.18-r1
+RDEPEND=dev-libs/boost:=[threads(+)] dev-libs/openssl:0[-bindist] logrotate? ( app-admin/logrotate ) upnp? ( net-libs/miniupnpc ) sys-libs/db:4.8[cxx] >=dev-libs/leveldb-1.18-r1
 SLOT=0
 SRC_URI=https://github.com/litecoin-project/litecoin/archive/v0.10.4.0.tar.gz -> litecoin-0.10.4.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=88dcb32ee1496d4447a01788ed7f49d6
+_md5_=12e9df954a58f21f69ad2caa15f4ffc6
