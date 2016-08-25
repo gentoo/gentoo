@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="regex"
 
 RDEPEND="
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode]
 	dev-libs/glib:2
 	media-libs/libmpdclient
 "
