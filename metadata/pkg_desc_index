@@ -1966,7 +1966,7 @@ app-misc/zygrib 6.2.3 7.0.0: GRIB File Viewer - Weather data visualization
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/bitpim 1.0.6-r2: Program to view and manipulate data on LG VX4400/VX6000 and many Sanyo Sprint mobile phones
 app-mobilephone/cobex 0.2.13: small implementation of Obex for phones using the DCU-11 USB-to-serial adapter
-app-mobilephone/dfu-util 0.7 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
+app-mobilephone/dfu-util 0.7 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/esms 0.9.5: A small console program to send SMS messages to Spanish cellular phones
 app-mobilephone/gammu 1.33.0 1.33.0-r1 1.36.8: A tool to handle your cellular phone
 app-mobilephone/ganyremote 6.0.1 6.3.3: Gnome frontend to Anyremote
@@ -3021,7 +3021,7 @@ dev-dotnet/gtk-sharp-gapi 2.12.10: GtkSharp's gtk-gapi module of the gtk-sharp t
 dev-dotnet/gtksourceview-sharp 2.24.0-r10: GtkSharp's gtksourceview module of the gnome-desktop-sharp tarball
 dev-dotnet/gudev-sharp 0.1: GUDEV API C# binding
 dev-dotnet/ikvm-bin 0.46.0.2 7.1.4532.2: Java VM for .NET
-dev-dotnet/libgdiplus 2.10.9 2.10.9-r1 2.10.9-r2 3.12 4.2-r1 4.2-r2: Library for using System.Drawing with mono
+dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 4.2-r2: Library for using System.Drawing with mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/mono-nat 1.1.0: Mono.Nat is a C# library used for automatic port forwarding, using either uPnP or nat-pmp
@@ -4543,7 +4543,7 @@ dev-libs/dbus-glib 0.102 0.104 0.106: D-Bus bindings for glib
 dev-libs/dbxml 2.5.16-r2: BerkeleyDB XML, a native XML database from the BerkeleyDB team
 dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
 dev-libs/dee 1.2.7: Provide objects allowing to create Model-View-Controller type programs across DBus
-dev-libs/dietlibc 0.30-r2 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
+dev-libs/dietlibc 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0: set of utility libraries (mostly used by sssd)
 dev-libs/distorm64 3.3-r1 3.3.3: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/djb 0.5.2: Library created from code by Dan Bernstein
@@ -13339,7 +13339,7 @@ media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.0.1 1.1.1 9999: Pandora.com client for the GNOME desktop
 media-sound/playmidi 2.5-r2: Command Line and GUI based MIDI Player
-media-sound/pms 0.42 0.42-r1 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
+media-sound/pms 0.42-r2 9999: Practical Music Search: an open source ncurses client for mpd, written in C++
 media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
