@@ -72,6 +72,7 @@ src_configure() {
 	export USE_LIBCURL=$(usetf curl)
 	export USE_LDAP=$(usetf ldap)
 	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
+	export SD_WATCHDOGSEC=$(usex systemd 200 0)
 	export USE_XAUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
