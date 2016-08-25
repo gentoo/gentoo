@@ -389,7 +389,7 @@ app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on 
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1: Cross-platform backup program
 app-backup/snapback2 1.1.0-r1: Routines for support of rsync-based snapshot backup
-app-backup/snapper 0.2.8 9999: Command-line program for btrfs and ext4 snapshot management
+app-backup/snapper 0.2.8-r1 0.3.3 9999: Command-line program for btrfs and ext4 snapshot management
 app-backup/spideroak-bin 6.1.3: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
@@ -14996,7 +14996,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
-net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
+net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
 net-misc/youtube-dl 2016.01.01 2016.08.22 2016.08.24.1 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
@@ -17409,7 +17409,7 @@ sys-process/at 3.1.16 3.1.18-r1 3.1.20: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1 2.4.4 2.6.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.2 2.3 2.4: utility to checkpoint/restore a process tree
+sys-process/criu 2.2 2.3 2.4 2.5: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1 1.5.1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
