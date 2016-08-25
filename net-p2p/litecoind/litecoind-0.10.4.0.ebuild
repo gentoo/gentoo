@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="logrotate upnp +wallet"
 
 RDEPEND="
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0[-bindist]
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )

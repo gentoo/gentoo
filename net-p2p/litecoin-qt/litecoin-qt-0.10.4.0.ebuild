@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dbus kde +qrcode qt5 upnp"
 
 RDEPEND="
-	dev-libs/boost[threads(+)]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/openssl:0[-bindist]
 	dev-libs/protobuf:=
 	qrcode? (
