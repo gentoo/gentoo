@@ -45,6 +45,7 @@ RDEPEND="
 	qt5? (
 		dev-qt/qtnetwork:5[ssl]
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 		dbus? (
 			dev-qt/qtdbus:5
 		)
