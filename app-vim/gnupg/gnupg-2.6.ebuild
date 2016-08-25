@@ -21,9 +21,9 @@ src_prepare() {
 	# There's good documentation included with the script, but it's not
 	# in a helpfile. Since there's rather too much information to include
 	# in a VIM_PLUGIN_HELPTEXT, we'll sed ourselves a help doc.
-	mkdir doc
+	mkdir doc || die
 	sed -e '/" Section: Plugin header.\+$/,9999d' -e 's/^" \?//' \
 		-e 's/\(Name:\s\+\)\([^.]\+\)\.vim/\1*\2.txt*/' \
 		plugin/${PN}.vim \
-		> doc/${PN}.txt
+		> doc/${PN}.txt || die
 }
