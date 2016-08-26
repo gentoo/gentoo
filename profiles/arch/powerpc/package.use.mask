@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# Enable numa support on supported architectures
+dev-db/percona-server -numa
+
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # gnat-gpl is being removed, bug #514074
 mail-client/alpine topal

@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# It's only supported on amd64, ia64, powerpc and x86
+dev-db/percona-server numa
+
 # Brian Evans <grknight@gentoo.org> (23 Aug 2016)
 # It's only supported on amd64
 dev-db/percona-server tokudb tokudb-backup-plugin
