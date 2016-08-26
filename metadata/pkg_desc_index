@@ -15268,7 +15268,7 @@ net-wireless/orinoco-fwutils 0.3: ORiNOCO IEEE 802.11 wireless LAN firmware util
 net-wireless/orinoco-usb 9999: ORiNOCO IEEE 802.11 wireless LAN driver
 net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
 net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
-net-wireless/portapack-firmware 20160222 20160728: Firmware and scripts for controlling the Portapack from Sharebrained
+net-wireless/portapack-firmware 20160728-r1: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/pyrit 0.4.0-r1: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r1 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
