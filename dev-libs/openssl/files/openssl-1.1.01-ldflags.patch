@@ -5,7 +5,7 @@
  	NOALLSYMSFLAGS='-Wl,--no-whole-archive'; \
  	$(DO_GNU_SO_COMMON)
 -DO_GNU_APP=LDFLAGS="$(CFLAGS) $(LDFLAGS) -Wl,-rpath,$(LIBRPATH)"
-+DO_GNU_APP=LDFLAGS="$(LDFLAGS) -Wl,-rpath,$(LIBRPATH)"
++DO_GNU_APP=LDFLAGS="$(CFLAGS) $(LDFLAGS)"
  
  #This is rather special.  It's a special target with which one can link
  #applications without bothering with any features that have anything to
