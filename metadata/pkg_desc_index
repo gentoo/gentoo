@@ -18564,7 +18564,7 @@ x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE a
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6 0.2.6-r1 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4 0.3.4-r1: Nice analog clock for GKrellM2
-x11-plugins/gkrellfire 0.4.2: Cpu load flames for GKrellM 2
+x11-plugins/gkrellfire 0.4.2 0.4.2-r1: CPU load flames for GKrellM 2
 x11-plugins/gkrellflynn 0.8: A funny GKrellM2 load monitor (for Doom(tm) fans)
 x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2
 x11-plugins/gkrellm-bgchanger 0.1.10 0.1.11 0.1.11-r1: Plugin for GKrellM2 to change your desktop background
