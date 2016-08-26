@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils toolchain-funcs
 
@@ -33,12 +33,12 @@ src_compile() {
 }
 
 src_install() {
-	cd tools
+	cd tools || die
 	dobin bmp_logo gen_eth_addr img2srec mkimage
 	dobin easylogo/easylogo
 	dobin env/fw_printenv
 	dosym fw_printenv /usr/bin/fw_setenv
 	insinto /etc
 	doins env/fw_env.config
-	doman "${S}/doc/mkimage.1"
+	doman "${S}"/doc/mkimage.1
 }
