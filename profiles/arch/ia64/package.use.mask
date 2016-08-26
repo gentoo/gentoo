@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# Enable numa support on supported architectures
+dev-db/percona-server -numa
+
 # Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
 # Missing keywords on media-libs/grilo - bug #521972
 media-sound/rhythmbox upnp-av
@@ -52,10 +56,6 @@ dev-qt/qtchooser test
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
-
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on ia64
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies

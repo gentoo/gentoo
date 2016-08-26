@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# libressl:  dev-libs/libressl is a base package on FreeBSD
+# jemalloc:  dev-libs/jemalloc is not keyworded on FreeBSD
+# systemtap: dev-util/systemtap is not keyworded on FreeBSD and is also
+#            a linux specialized tool
+dev-db/percona-server jemalloc libressl systemtap
+
 # Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
 # libressl: dev-libs/libressl is a base package on FreeBSD
 # luajit:   dev-lang/luajit not keyworded on FreeBSD
