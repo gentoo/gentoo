@@ -241,8 +241,8 @@ net-misc/yajhfc
 sys-firmware/iwl6000-ucode
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Security issues (#562898), nothing needs it, removal in a month.
-app-admin/lsyncd
+# Security issues (#562898)
+=app-admin/lsyncd-2.1.5
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Dead, not compatible with wxGTK3 (#564088). Removal in a month.
