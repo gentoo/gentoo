@@ -18,6 +18,11 @@ RDEPEND=">=virtual/jre-1.6"
 
 S=${WORKDIR}
 
+src_prepare() {
+	default
+	java-pkg-2_src_prepare
+}
+
 src_unpack() { :; }
 src_compile() { :; }
 
