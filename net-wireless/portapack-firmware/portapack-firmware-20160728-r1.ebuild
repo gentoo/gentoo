@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 PDEPEND=">=net-wireless/hackrf-tools-2015.07.2-r1
-	=app-mobilephone/dfu-util-0.7"
+	>=app-mobilephone/dfu-util-0.7"
 
 S="${WORKDIR}"
 
