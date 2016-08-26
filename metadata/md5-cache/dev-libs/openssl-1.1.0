@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=app-misc/c_rehash-1.7-r1 zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) >=dev-lang/perl-5 sctp? ( >=net-misc/lksctp-tools-1.0.12 ) test? ( sys-apps/diffutils sys-devel/bc )
+DESCRIPTION=full-strength general purpose cryptography library (including SSL and TLS)
+EAPI=5
+HOMEPAGE=http://www.openssl.org/
+IUSE=+asm bindist rfc3779 sctp cpu_flags_x86_sse2 static-libs test tls-heartbeat vanilla zlib abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~arm-linux ~x86-linux
+LICENSE=openssl
+PDEPEND=app-misc/ca-certificates
+RDEPEND=>=app-misc/c_rehash-1.7-r1 zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+RESTRICT=!bindist? ( bindist )
+SLOT=0/1.1
+SRC_URI=mirror://openssl/source/openssl-1.1.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=be2f3b84c517faafb31bb27951387b33

@@ -4872,7 +4872,7 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2g-r2 1.0.2h 1.0.2h-r1 1.0.2h-r2: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2g-r2 1.0.2h 1.0.2h-r1 1.0.2h-r2 1.1.0: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4 1.6.2-r5: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -14200,7 +14200,7 @@ net-im/licq 1.8.2: ICQ Client with v8 support
 net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 1.0.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
 net-im/mu-conference 0.8.81-r2: Multi-User Chat for jabberd
-net-im/openfire 4.0.2: Openfire (formerly wildfire) real time collaboration (RTC) server
+net-im/openfire 4.0.2 4.0.3: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.11.0: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
 net-im/prosody 0.9.10: Prosody is a flexible communications server for Jabber/XMPP written in Lua
