@@ -1390,6 +1390,7 @@ dev-db/percona-server:extraengine - Add support for alternative storage engines 
 dev-db/percona-server:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/percona-server:latin1 - Use LATIN1 encoding instead of UTF8
 dev-db/percona-server:libressl - Enable SSL connections and crypto functions using dev-libs/libressl
+dev-db/percona-server:numa - Enable NUMA support using sys-process/numactl (NUMA kernel support is also required)
 dev-db/percona-server:openssl - Enable SSL connections and crypto functions using dev-libs/openssl
 dev-db/percona-server:profiling - Add support for statement profiling (requires USE=community).
 dev-db/percona-server:server - Build the server program
