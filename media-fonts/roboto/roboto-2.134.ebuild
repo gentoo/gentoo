@@ -6,7 +6,7 @@ EAPI=6
 inherit font
 
 DESCRIPTION="Standard font for Android 4.0 (Ice Cream Sandwich) and later"
-HOMEPAGE="http://developer.android.com/design/style/typography.html"
+HOMEPAGE="https://github.com/google/roboto"
 SRC_URI="https://github.com/google/${PN}/releases/download/v${PV}/roboto-unhinted.zip -> ${P}.zip"
 
 LICENSE="Apache-2.0"
