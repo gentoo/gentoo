@@ -77,10 +77,6 @@ dev-python/restkit cli
 # work on alpha. Mask USE flag for layman accordingly
 app-portage/layman -g-sorcery
 
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on alpha
-dev-db/percona-server tokudb tokudb-backup-plugin
-
 # Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
 # Mask USE=sssd for sudo because sys-auth/sssd is relatively big and doesn't
 # compile on alpha. The version specified does not have the USE flag, but that

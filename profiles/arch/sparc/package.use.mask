@@ -71,10 +71,6 @@ net-mail/dovecot lz4
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
 
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on sparc
-dev-db/percona-server tokudb tokudb-backup-plugin
-
 # Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
