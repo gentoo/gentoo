@@ -139,7 +139,7 @@ app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for 
 app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
-app-admin/lsyncd 2.1.5: Live Syncing (Mirror) Daemon
+app-admin/lsyncd 2.1.5 2.1.6: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/mate-system-tools 1.8.1: Tools aimed to make easy the administration of UNIX systems
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
