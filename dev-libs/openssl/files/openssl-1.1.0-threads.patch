@@ -1,0 +1,20 @@
+--- openssl-1.1.0/Configurations/10-main.conf
++++ openssl-1.1.0/Configurations/10-main.conf
+@@ -612,7 +612,7 @@
+                                            debug   => "-O0 -g",
+                                            release => "-O3"),
+                                     threads("-pthread")),
+-        ex_libs          => add("-ldl"),
++        ex_libs          => add("-ldl",threads("-lpthread")),
+         bn_ops           => "BN_LLONG RC4_CHAR",
+         thread_scheme    => "pthreads",
+         dso_scheme       => "dlfcn",
+@@ -721,7 +721,7 @@
+         inherit_from     => [ "linux-generic32", asm("x86_elf_asm") ],
+         cflags           => add(picker(default => "-DL_ENDIAN",
+                                        release => "-fomit-frame-pointer")),
+-        ex_libs          => add(picker(debug => "-lefence")),
++        ex_libs          => add(picker(debug => "-lefence"),threads("-lpthread")),
+         bn_ops           => "BN_LLONG",
+     },
+     "linux-aout" => {
