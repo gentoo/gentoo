@@ -52,6 +52,8 @@ stop_pre() {
 }
 
 reload() {
+	checkconfig || return $?
+	pidfile="$(get_pidfile)"
 	ebegin "Reloading config and zone files"
 	kill -s HUP $(cat ${pidfile})
 	eend $?
