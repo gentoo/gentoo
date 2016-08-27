@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools-utils
+inherit autotools-utils flag-o-matic
 
 MY_P="${P/q/Q}"
 
@@ -23,6 +23,7 @@ RDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
+	virtual/opengl
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -38,6 +39,8 @@ PATCHES=(
 DOCS=(AUTHORS NEWS README)
 
 src_configure() {
+	append-libs -lGL #369967, library calls glEnable()
+
 	local myeconfargs=(
 		htmldir="${ROOT}usr/share/doc/${PF}/html"
 		--enable-pkgconfig
