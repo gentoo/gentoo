@@ -56,8 +56,10 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	use npp && sed -i src/kmplayer_part.desktop \
+	if use npp; then
+		sed -i src/kmplayer_part.desktop \
 		-e ":^MimeType: s:=:=application/x-shockwave-flash;:" || die
+	fi
 
 	kde5_src_prepare
 }
