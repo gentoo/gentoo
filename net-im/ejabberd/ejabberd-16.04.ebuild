@@ -224,8 +224,8 @@ src_install() {
 		fperms 4750 "${epam_path}"
 	fi
 
-	newconfd "${FILESDIR}/${PN}-3.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-3.initd" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${PN}.service"
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
 
