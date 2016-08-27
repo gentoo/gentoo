@@ -537,8 +537,11 @@ app-editors/nano:justify - Enable justify/unjustify functions for text formattin
 app-editors/nano:magic - Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
 app-editors/nano:minimal - Disable all fancy features, including ones that otherwise have a dedicated USE flag (such as spelling).
 app-editors/ne:tinfo - Link against libtinfo from sys-libs/ncurses
+app-editors/neovim:clipboard - Enable clipboard support through a provider
 app-editors/neovim:jemalloc - Use dev-libs/jemalloc for allocations
+app-editors/neovim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/neovim:nvimpager - Install nvimpager symlink to less.sh macro
+app-editors/neovim:tui - Build the neovim unix tui
 app-editors/pluma:gtk3 - Build with GTK+3 instead of GTK+2
 app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
