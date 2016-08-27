@@ -81,11 +81,6 @@ media-sound/listen
 x11-plugins/prpltwtr
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
-# Dead for a long time in favour of hopm, bug #473754.
-# Removal in a month.
-net-misc/bopm
-
-# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # Unmaintained, pending major version bump, doesn't integrate well with
 # portage, bug #477798. Removal in a month.
 app-benchmarks/phoronix-test-suite
