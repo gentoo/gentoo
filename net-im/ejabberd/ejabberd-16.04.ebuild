@@ -220,8 +220,8 @@ src_install() {
 		newbin epam-wrapper epam
 		# PAM helper module permissions
 		# https://www.process-one.net/docs/ejabberd/guide_en.html#pam
-		fperms 4750 "${epam_path}"
 		fowners root:jabber "${epam_path}"
+		fperms 4750 "${epam_path}"
 	fi
 
 	newconfd "${FILESDIR}/${PN}-3.confd" "${PN}"
