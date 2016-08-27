@@ -71,7 +71,7 @@ app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
 app-admin/collectd 5.5.2: Collects system statistics and provides mechanisms to store the values
-app-admin/conky 1.9.0-r3 1.10.1 1.10.3 1.10.4: An advanced, highly configurable system monitor for X
+app-admin/conky 1.9.0-r3 1.10.4: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
@@ -15143,7 +15143,7 @@ net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
 net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported printers
 net-print/gtklp 1.3.0 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.9 5.2.10: Ghostscript and cups printer drivers
-net-print/hplip 3.14.10 3.16.3 3.16.5-r1 3.16.7: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip 3.14.10 3.16.3 3.16.7: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
 net-print/hplip-plugin 3.14.10 3.16.3 3.16.5 3.16.7: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
