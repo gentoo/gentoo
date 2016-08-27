@@ -187,6 +187,14 @@ src_prepare() {
 	skip_docs
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
+
+	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory
+	# rather than its parent which is default. That way ejabberd directory
+	# takes precedence is module lookup.
+	local ejabberd_erl_libs="$(get_ejabberd_path):$(get_erl_libs)"
+	sed -e "s|\(ERL_LIBS=\){{libdir}}.*|\1${ejabberd_erl_libs}|" \
+		-i "${S}/ejabberdctl.template" \
+		|| die 'failed to set ERL_LIBS in ejabberdctl.template'
 }
 
 src_configure() {
