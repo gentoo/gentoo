@@ -132,8 +132,12 @@ ejabberd_cert_install() {
 }
 
 # Get path to ejabberd lib directory.
+#
+# This is the path ./configure script Base for this path is path set in
+# ./configure script which is /usr/lib by default. If libdir is explicitely set
+# to something else than this should be adjusted here as well.
 get_ejabberd_path() {
-	echo "$(get_erl_libs)/${P}"
+	echo "/usr/$(get_libdir)/${P}"
 }
 
 # Make ejabberd.service for systemd from upstream provided template.
@@ -188,7 +192,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--libdir="${EPREFIX}$(get_erl_libs)" \
 		--enable-user=jabber \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
