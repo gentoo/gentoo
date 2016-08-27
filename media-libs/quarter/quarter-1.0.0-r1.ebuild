@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ IUSE="debug doc static-libs"
 
 RDEPEND="
 	>=media-libs/coin-3.0.0[javascript]
+	dev-qt/designer:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
