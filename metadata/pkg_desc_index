@@ -18113,6 +18113,7 @@ x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developin
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/fxscintilla 3.3.5: A free source code editing component for the FOX-Toolkit
 x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0: Image loading library for GTK+
+x11-libs/gdk-pixbuf-loader-webp 20160328234507: WebP Image format GdkPixbuf loader
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
