@@ -121,10 +121,6 @@ kde-apps/ktp-text-ui speech
 # Fails to build with recent doxygen. Bug #569776.
 dev-cpp/eigen:2 doc
 
-# Michael Palimaka <kensington@gentoo.org> (14 Apr 2016)
-# Requires unreleased version of net-libs/telepathy-qt
-kde-misc/kdeconnect telepathy
-
 # James Le Cuirot <chewi@gentoo.org> (10 Apr 2016)
 # Slower and less reliable than HotSpot and we don't support Java on
 # any non-HotSpot platforms. Don't unmask these unless you know what
