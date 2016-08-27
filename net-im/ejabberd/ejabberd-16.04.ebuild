@@ -114,7 +114,7 @@ ejabberd_cert_exists() {
 
 	for cert in $(gawk -- \
 			'match($0, /^[[:space:]]*certfile: "([^"]+)"/, m) {print m[1];}' \
-			"${EROOT}${JABBER_ETC}/ejabberd.yml"); do
+			"${EROOT%/}${JABBER_ETC}/ejabberd.yml"); do
 		[[ -f ${cert} ]] && return 0
 	done
 
@@ -126,8 +126,8 @@ ejabberd_cert_exists() {
 ejabberd_cert_install() {
 	SSL_ORGANIZATION="${SSL_ORGANIZATION:-ejabberd XMPP Server}"
 	install_cert "${EJABBERD_CERT%.*}"
-	chown root:jabber "${EROOT}${EJABBERD_CERT}" || die
-	chmod 0440 "${EROOT}${EJABBERD_CERT}" || die
+	chown root:jabber "${EROOT%/}${EJABBERD_CERT}" || die
+	chmod 0440 "${EROOT%/}${EJABBERD_CERT}" || die
 }
 
 # Get path to ejabberd lib directory.
