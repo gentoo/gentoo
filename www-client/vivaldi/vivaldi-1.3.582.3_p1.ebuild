@@ -4,15 +4,17 @@
 
 EAPI=5
 CHROMIUM_LANGS="
-	am ar bg bn ca cs da de el en_GB en_US es_419 es et fa fil fi fr gu he hi
-	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv
-	sw ta te th tr uk vi zh_CN zh_TW
+	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
+	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
+	sw ta te th tr uk vi zh-CN zh-TW
 "
-inherit chromium eutils multilib unpacker toolchain-funcs
+inherit chromium-2 eutils multilib unpacker toolchain-funcs
 
+VIVALDI_PN="${PN}-snapshot"
+VIVALDI_HOME="opt/${VIVALDI_PN}"
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${PN}-snapshot_${PV/_p/-}_"
+VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
@@ -59,7 +61,6 @@ RDEPEND="
 
 QA_PREBUILT="*"
 S=${WORKDIR}
-VIVALDI_HOME="opt/${PN}-snapshot"
 
 src_unpack() {
 	unpack_deb ${A}
@@ -67,16 +68,16 @@ src_unpack() {
 
 src_prepare() {
 	sed -i \
-		-e 's|vivaldi-snapshot|vivaldi|g' \
-		usr/share/applications/${PN}-snapshot.desktop \
-		usr/share/xfce4/helpers/${PN}-snapshot.desktop || die
+		-e "s|${VIVALDI_PN}|${PN}|g" \
+		usr/share/applications/${VIVALDI_PN}.desktop \
+		usr/share/xfce4/helpers/${VIVALDI_PN}.desktop || die
 
-	mv usr/share/doc/${PN}-snapshot usr/share/doc/${PF} || die
+	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${PN}-snapshot \
+		etc/cron.daily/${VIVALDI_PN} \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
