@@ -5097,7 +5097,7 @@ dev-ml/lambda-term 1.9 1.10 1.10.1: A cross-platform library for manipulating th
 dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20160526 20160808: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20160526 20160808 20160825: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1 0.4.6 0.4.7: OASIS is a tool to integrate a configure, build and install system in OCaml project
@@ -12396,7 +12396,7 @@ media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility 
 media-libs/alure 1.2: The OpenAL Utility Toolkit
 media-libs/assimp 3.0.1270 3.1.1 3.2-r2: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
-media-libs/aubio 0.4.1 0.4.2: Library for audio labelling
+media-libs/aubio 0.4.1 0.4.2 0.4.3: Library for audio labelling
 media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
 media-libs/avidemux-core 2.6.8 9999: Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.6.8 9999: Plugins for avidemux; a video editor designed for simple cutting, filtering and encoding tasks
@@ -12906,7 +12906,7 @@ media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV 
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.05.20 2016.06.26 2016.07.19: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.05.20 2016.06.26 2016.07.19 2016.08.27: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -14842,7 +14842,7 @@ net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07 9999: Free client for C
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
-net-misc/openssh 7.1_p2-r1 7.2_p2 7.2_p2-r1 7.3_p1 7.3_p1-r1: Port of OpenBSD's free SSH release
+net-misc/openssh 7.1_p2-r1 7.2_p2 7.2_p2-r1 7.3_p1 7.3_p1-r1 7.3_p1-r2: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn 2.3.11 2.3.12 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
@@ -17017,7 +17017,7 @@ sys-devel/binutils-apple 4.3-r2 5.1-r1 6.1-r1 6.3-r1 7.0 7.0-r1 7.1 7.1-r1 7.2 7
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.2 2.24 2.25.1 2.26.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20160315 20160606: NetBSD's portable make
+sys-devel/bmake 20160315 20160606 20160818: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 9999: C language family frontend for LLVM
