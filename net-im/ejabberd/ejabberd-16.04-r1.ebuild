@@ -288,4 +288,12 @@ pkg_postinst() {
 	if ! ejabberd_cert_exists; then
 		ejabberd_cert_install
 	fi
+
+	if use pam; then
+		# sfperms drops read bit from files with suid. Reapply it.
+		# Fix bug #592218.
+		local epam_path="$(get_ejabberd_path)/priv/bin/epam"
+		chmod g+r "${EROOT%/}${epam_path}" \
+			|| die "failed to correct ${epam_path} permissions"
+	fi
 }
