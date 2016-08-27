@@ -8765,7 +8765,7 @@ dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and l
 dev-ros/turtlesim 0.6.1 0.7.0 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
 dev-ros/urdf 1.12.3-r1 1.12.4 9999: C++ parser for the Unified Robot Description Format (URDF)
-dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4 9999: C++ base class for URDF parsers
+dev-ros/urdf_parser_plugin 1.12.3-r1 1.12.4-r1 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
