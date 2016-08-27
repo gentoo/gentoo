@@ -63,6 +63,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	captcha? ( media-gfx/imagemagick[truetype,png] )"
 
+DOCS=( README )
 PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch" )
 
 EJABBERD_CERT="${EPREFIX}/etc/ssl/ejabberd/server.pem"
