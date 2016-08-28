@@ -14228,7 +14228,7 @@ net-im/ysm 2.9.9.1 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
 net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
-net-irc/bnc 2.9.4: BNC (BouNCe) is used as a gateway to an IRC Server
+net-irc/bnc 2.9.4 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
 net-irc/bobotpp 2.2.3: A flexible IRC bot scriptable in scheme
 net-irc/cgiirc 0.5.10: A perl/CGI program to use IRC from a web browser
 net-irc/charybdis 3.3.0 3.4.2: The atheme project's IRCd based on ratbox
