@@ -144,7 +144,7 @@ src_prepare() {
 	# Fix libdir for ocaml bindings install, bug #559134
 	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	eapply "${FILESDIR}"/3.8.1/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
+	eapply "${FILESDIR}"/3.9.0/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
@@ -177,13 +177,13 @@ src_prepare() {
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		eapply "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
+		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		# Support gcc4.9 search paths
 		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
 		eapply "${FILESDIR}"/3.8.1/clang/gcc4.9-search-path.patch
 
-		eapply "${FILESDIR}"/3.8.1/clang/darwin_prefix-include-paths.patch
+		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
@@ -191,7 +191,7 @@ src_prepare() {
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
-		eapply "${FILESDIR}"/3.8.1/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
+		eapply "${FILESDIR}"/3.9.0/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
 		eapply "${FILESDIR}"/3.8.1/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Do not force -march flags on arm platforms
@@ -201,7 +201,7 @@ src_prepare() {
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
-		eapply "${FILESDIR}"/3.8.1/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+		eapply "${FILESDIR}"/3.9.0/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
@@ -226,7 +226,7 @@ src_prepare() {
 		sed -e 's/add_subdirectory(readline)/#&/' \
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
 		# Do not install bundled six module
-		eapply "${FILESDIR}"/3.8.1/lldb/six.patch
+		eapply "${FILESDIR}"/3.9.0/lldb/six.patch
 	fi
 
 	# User patches

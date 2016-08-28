@@ -143,7 +143,7 @@ src_prepare() {
 	# Fix libdir for ocaml bindings install, bug #559134
 	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	eapply "${FILESDIR}"/3.8.1/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
+	eapply "${FILESDIR}"/3.9.0/0002-cmake-Make-OCaml-docs-dependent-on-LLVM_BUILD_DOCS.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
@@ -178,7 +178,7 @@ src_prepare() {
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		eapply "${FILESDIR}"/3.8.1/clang/gentoo-runtime-gcc-detection-v3.patch
+		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
 		# Support gcc4.9 search paths
 		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
@@ -186,7 +186,7 @@ src_prepare() {
 
 		eapply "${FILESDIR}"/3.7.1/clang/gentoo-install.patch
 
-		eapply "${FILESDIR}"/3.8.1/clang/darwin_prefix-include-paths.patch
+		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		# Fix -isystem support in ccc-analyzer
@@ -207,7 +207,7 @@ src_prepare() {
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
-		eapply "${FILESDIR}"/3.8.1/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+		eapply "${FILESDIR}"/3.9.0/clang/0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
