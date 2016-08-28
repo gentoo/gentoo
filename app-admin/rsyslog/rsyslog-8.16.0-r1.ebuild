@@ -16,6 +16,7 @@ PATCHES=(
 	"${FILESDIR}"/8-stable/50-rsyslog-8.15.0-imfile-readmode2-vg-test-workaround.patch
 	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-fix-queue-engine-issue-262.patch
 	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-fix-leap-year-handling.patch
+	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-restrict-build-deps.patch
 )
 
 if [[ ${PV} == "9999" ]]; then
@@ -57,7 +58,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	normalize? (
 		>=dev-libs/libee-0.4.0
-		>=dev-libs/liblognorm-1.1.2:=
+		=dev-libs/liblognorm-1.1.2*:=
 	)
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
