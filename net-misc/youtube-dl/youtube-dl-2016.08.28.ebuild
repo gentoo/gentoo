@@ -33,9 +33,9 @@ python_prepare_all() {
 			eroprofile extremetube fourtube foxgay goshgay hellporno
 			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
 			myvidster porn91 pornhd pornotube pornovoisines pornoxo redtube
-			ruleporn sexu slutload spankbang spankwire sunporno thisav trutube
-			tube8 vporn watchindianporn xbef xnxx xtube xvideos xxxymovies
-			youjizz youporn
+			ruleporn sexu slutload spankbang spankwire sunporno thisav tube8
+			vporn watchindianporn xbef xnxx xtube xvideos xxxymovies youjizz
+			youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
