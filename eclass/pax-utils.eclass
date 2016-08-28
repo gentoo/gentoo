@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,8 @@
 # @MAINTAINER:
 # The Gentoo Linux Hardened Team <hardened@gentoo.org>
 # @AUTHOR:
-# Original Author: Kevin F. Quinn <kevquinn@gentoo.org>
-# Modifications for bugs #365825, #431092, #520198, @ ECLASS markup: Anthony G. Basile <blueness@gentoo.org>
+# Author: Kevin F. Quinn <kevquinn@gentoo.org>
+# Author: Anthony G. Basile <blueness@gentoo.org>
 # @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
@@ -77,16 +77,14 @@ pax-mark() {
 		# _pax_list_files einfo "$@"
 		for f in "$@"; do
 
-			# First try paxctl -> this might try to create/convert program headers.
+			# First try paxctl
 			if type -p paxctl >/dev/null; then
 				einfo "PT_PAX marking -${flags} ${f} with paxctl"
-				# First, try modifying the existing PAX_FLAGS header.
+				# We try modifying the existing PT_PAX_FLAGS header.
 				paxctl -q${flags} "${f}" >/dev/null 2>&1 && continue
-				# Second, try creating a PT_PAX header (works on ET_EXEC).
-				# Even though this is less safe, most exes need it. #463170
-				paxctl -qC${flags} "${f}" >/dev/null 2>&1 && continue
-				# Third, try stealing the (unused under PaX) PT_GNU_STACK header
-				paxctl -qc${flags} "${f}" >/dev/null 2>&1 && continue
+				# We no longer try to create/convert a PT_PAX_FLAGS header, bug #590422
+				# paxctl -qC${flags} "${f}" >/dev/null 2>&1 && continue
+				# paxctl -qc${flags} "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# Next try paxctl-ng -> this will not create/convert any program headers.
