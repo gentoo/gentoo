@@ -9260,7 +9260,7 @@ dev-ruby/ruby-opengl 0.8.0 0.9.2 0.9.2-r1: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7-r1 3.0.8: Ruby poppler-glib bindings
-dev-ruby/ruby-prof 0.15.9: A module for profiling Ruby code
+dev-ruby/ruby-prof 0.15.9 0.16.2: A module for profiling Ruby code
 dev-ruby/ruby-progressbar 1.4.2-r1 1.7.5 1.8.1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
@@ -17781,7 +17781,7 @@ www-apps/moodle 2.7.15 2.9.7 3.0.5 3.1.1: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.27.5 0.28: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 3.8.0 4.1.6 4.2.0 4.2.4 4.3.0: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 3.8.0 4.1.6 4.2.0 4.2.4 4.3.0 4.3.2: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 9.0.53 10.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
