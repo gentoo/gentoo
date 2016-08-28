@@ -222,6 +222,7 @@ app-i18n/scim-skk
 
 # Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
 # This was merged into sys-apps/systemd, USE=gnuefi (#556734).
+# Alternatively, see sys-boot/systemd-boot for a standalone version.
 # Removal in a month.
 sys-boot/gummiboot
 
