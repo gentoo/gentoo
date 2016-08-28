@@ -45,5 +45,4 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 	dodoc docs/USERS-GUIDE
-	rm -f "${ED}"usr/share/gftp/COPYING
 }
