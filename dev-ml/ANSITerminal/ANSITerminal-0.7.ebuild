@@ -21,5 +21,6 @@ IUSE=""
 DOCS=( "README.txt" "AUTHORS.txt" )
 
 src_prepare() {
+	epatch "${FILESDIR}/oasis.patch"
 	oasis setup || die
 }
