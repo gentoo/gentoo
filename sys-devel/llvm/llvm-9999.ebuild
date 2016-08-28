@@ -5,7 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-CMAKE_MIN_VERSION=3.4.3
+# (needed due to lib32 find_library fix)
+CMAKE_MIN_VERSION=3.6.1-r1
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 
@@ -90,8 +91,6 @@ src_prepare() {
 	# Python is needed to run tests using lit
 	python_setup
 
-	# Make ocaml warnings non-fatal, bug #537308
-	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
 	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 

@@ -5,6 +5,8 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+# (needed due to lib32 find_library fix)
+CMAKE_MIN_VERSION=3.6.1-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit check-reqs cmake-utils eutils flag-o-matic multilib \
@@ -12,19 +14,19 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
-	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
-		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
-	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
-	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )"
+SRC_URI="http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/${P/_/}.src.tar.xz
+	clang? ( http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/compiler-rt-${PV/_/}.src.tar.xz
+		http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/cfe-${PV/_/}.src.tar.xz
+		http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/clang-tools-extra-${PV/_/}.src.tar.xz )
+	lldb? ( http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/lldb-${PV/_/}.src.tar.xz )
+	!doc? ( http://dev.gentoo.org/~mgorny/dist/${PN}-3.9.0_rc3-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="clang debug doc gold libedit +libffi lldb multitarget ncurses ocaml
-	python +static-analyzer test xml video_cards_radeon
-	kernel_Darwin kernel_FreeBSD"
+KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+IUSE="clang debug default-compiler-rt default-libcxx doc gold libedit +libffi
+	lldb multitarget ncurses ocaml python +sanitize +static-analyzer test xml
+	video_cards_radeon elibc_musl kernel_Darwin kernel_FreeBSD"
 
 COMMON_DEPEND="
 	sys-libs/zlib:0=
@@ -67,6 +69,7 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
+	default-libcxx? ( sys-libs/libcxx )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
@@ -139,8 +142,6 @@ src_unpack() {
 src_prepare() {
 	python_setup
 
-	# Make ocaml warnings non-fatal, bug #537308
-	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
 	eapply "${FILESDIR}"/9999/0001-cmake-Install-OCaml-modules-into-correct-package-loc.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
@@ -154,20 +155,19 @@ src_prepare() {
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
 	eapply "${FILESDIR}"/9999/0004-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
 
-	# Prevent installing libgtest
-	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	eapply "${FILESDIR}"/3.8.1/0005-cmake-Do-not-install-libgtest.patch
-
 	# Allow custom cmake build types (like 'Gentoo')
 	eapply "${FILESDIR}"/9999/0006-cmake-Remove-the-CMAKE_BUILD_TYPE-assertion.patch
 
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/3.8.1/llvm-config.patch
+	eapply "${FILESDIR}"/3.9.0/llvm-config-r1.patch
 
 	# Restore SOVERSIONs for shared libraries
 	# https://bugs.gentoo.org/show_bug.cgi?id=578392
 	eapply "${FILESDIR}"/9999/0008-cmake-Restore-SOVERSIONs-on-shared-libraries.patch
+
+	# support building llvm against musl-libc
+	use elibc_musl && eapply "${FILESDIR}"/9999/musl-fixes.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
@@ -179,12 +179,13 @@ src_prepare() {
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		eapply "${FILESDIR}"/3.9.0/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		# Support gcc4.9 search paths
-		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
-		eapply "${FILESDIR}"/3.8.1/clang/gcc4.9-search-path.patch
-
 		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
+
+		pushd "${S}"/tools/clang >/dev/null || die
+		# be able to specify default values for -stdlib and -rtlib at build time
+		eapply "${FILESDIR}"/3.9.0/clang/default-libs.patch
+		popd >/dev/null || die
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/bin/scan-build || die
@@ -192,11 +193,7 @@ src_prepare() {
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
 		eapply "${FILESDIR}"/3.9.0/clang/0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
-
-		# Do not force -march flags on arm platforms
-		# https://bugs.gentoo.org/show_bug.cgi?id=562706
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/arm_march_flags.patch
+		eapply "${FILESDIR}"/3.9.0/compiler-rt/0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
@@ -205,19 +202,6 @@ src_prepare() {
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
-
-		# Fix 'stdarg.h' file not found on Gentoo/FreeBSD, bug #578064
-		# https://llvm.org/bugs/show_bug.cgi?id=26651
-		eapply "${FILESDIR}"/3.8.1/compiler-rt/fbsd.patch
-
-		pushd projects/compiler-rt >/dev/null || die
-
-		# Fix WX sections, bug #421527
-		find lib/builtins -type f -name '*.S' -exec sed \
-			-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
-			-i {} + || die
-
-		popd >/dev/null || die
 	fi
 
 	if use lldb; then
@@ -241,7 +225,7 @@ multilib_src_configure() {
 	if use multitarget; then
 		targets=all
 	else
-		targets='host;BPF;CppBackend'
+		targets='host;BPF'
 		use video_cards_radeon && targets+=';AMDGPU'
 	fi
 
@@ -256,7 +240,6 @@ multilib_src_configure() {
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=ON
-		-DLLVM_ENABLE_TIMESTAMPS=OFF
 		-DLLVM_TARGETS_TO_BUILD="${targets}"
 		-DLLVM_BUILD_TESTS=$(usex test)
 
@@ -282,6 +265,14 @@ multilib_src_configure() {
 			# libgomp support fails to find headers without explicit -I
 			# furthermore, it provides only syntax checking
 			-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+
+			# override default stdlib and rtlib
+			-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
+			-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
+
+			# compiler-rt's test cases depend on sanitizer
+			-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)
+			-DCOMPILER_RT_INCLUDE_TESTS=$(usex sanitize)
 		)
 	fi
 
@@ -453,9 +444,6 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	if multilib_is_native_abi; then
-		# Install man pages.
-		use doc || doman "${WORKDIR}"/${PN}-3.8.0-manpages/*.1
-
 		# Symlink the gold plugin.
 		if use gold; then
 			dodir "/usr/${CHOST}/binutils-bin/lib/bfd-plugins"
@@ -505,6 +493,15 @@ multilib_src_install_all() {
 	doins -r utils/vim/*/.
 	# some users may find it useful
 	dodoc utils/vim/vimrc
+
+	# Install man pages from the prebuilt package
+	if ! use doc; then
+		if ! use clang; then
+			rm "${WORKDIR}"/${PN}-3.9.0_rc3-manpages/{clang,extraclangtools,scan-build}.1 || die
+		fi
+
+		doman "${WORKDIR}"/${PN}-3.9.0_rc3-manpages/*.1
+	fi
 
 	if use clang; then
 		pushd tools/clang >/dev/null || die

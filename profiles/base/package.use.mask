@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
+# lldb fails to build in the current RC, and needs a lot of minor fixes.
+# It's no longer available in -9999 line, and it won't be in 3.9.0
+# either unless somebody steps up to fix it.
+>=sys-devel/llvm-3.9.0_rc lldb
+
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # It's only supported on amd64, ia64, powerpc and x86
 dev-db/percona-server numa

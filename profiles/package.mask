@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
+# Last-minute RC, masked for testing. Includes dev-util/cmake
+# find_library() lib32 support backport.
+=dev-util/cmake-3.6.1-r1
+~sys-devel/clang-3.9.0_rc3
+~sys-devel/llvm-3.9.0_rc3
+
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
@@ -630,12 +637,6 @@ kde-apps/kde-base-artwork
 # Upstream is dead and the ebuild is a complete mess. Does not compile with
 # recent JVMs. Masked for removal in 30 days. See bug #584562.
 dev-java/oscache
-
-# Johannes Huber <johu@gentoo.org> (29 Jul 2016)
-# Masked for removal in 30 days. Dead by upstream, superseded by
-# kde-plasma/plasma-workspace-wallpapers. Last release with
-# 15.08.3. Exported to kde-sunset overlay.
-kde-apps/kde-wallpapers
 
 # Bernard Cafarelli <voyageur@gentoo.org> (26 Jul 2016)
 # Upstream closed service. Switch to another IPv6 tunnel broker
