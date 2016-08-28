@@ -1,0 +1,26 @@
+@@ -, +, @@ 
+ <kevin.bernard.allies@gmail.com>
+ * the Encoding key is now deprecated, and UTF-8 is the default value.
+ * As the value of Icon is not an absolute path, there should be no extension.
+ * The Application category is deprecated.
+ docs/gftp.desktop | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+--- a/docs/gftp.desktop	
++++ a/docs/gftp.desktop	
+@@ -1,5 +1,4 @@ 
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=gFTP
+ Comment=Download and upload files using multiple file transfer protocols
+ Comment[fr]=Télécharge des fichiers en utilisant le protocole FTP
+@@ -8,8 +7,8 @@ Exec=gftp %u
+ Terminal=false
+ X-MultipleArgs=false
+ Type=Application
+-Icon=gftp.png
+-Categories=Application;Network;
++Icon=gftp
++Categories=Network;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gftp
+ X-GNOME-Bugzilla-Component=general
