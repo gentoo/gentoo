@@ -259,6 +259,11 @@ src_configure() {
 src_install() {
 	waf-utils_src_install
 
+	if use lua; then
+		insinto /usr/share/${PN}
+		doins -r TOOLS/lua
+	fi
+
 	if use cli && use luajit; then
 		pax-mark -m "${ED}"usr/bin/${PN}
 	fi
