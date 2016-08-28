@@ -10,4 +10,4 @@ REQUIRED_USE=pam? ( !skey ) skey? ( !pam )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:mercurial src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	mercurial	789038b352d112bcff9dff083aa40d8d	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=ed81970a6ac15fd38337c2d7ee9b1bee
+_md5_=80f8349d24a6040b9d52c5471f672951
