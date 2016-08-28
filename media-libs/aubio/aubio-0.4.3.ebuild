@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DOCS=( AUTHORS ChangeLog README.md )
-PYTHON_SRC_DIR="${S}/python"
+PYTHON_SRC_DIR="${S}"
 
 src_prepare() {
 	sed -i -e "s:doxygen:doxygen_disabled:" wscript || die
@@ -101,6 +101,6 @@ src_install() {
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
 		DOCS="" distutils-r1_src_install
-		newdoc README README.python
+		newdoc python/README.md README.python
 	fi
 }
