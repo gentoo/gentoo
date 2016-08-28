@@ -1,0 +1,55 @@
+From ac9acbd9297cf986873e972968aca98d65377dab Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann
+Date: Sun, 28 Aug 2016 20:08:58 +0200
+Subject: [PATCH 1/2] configure: Restrict to json-c usage
+
+---
+ configure.ac | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4551c46..6789ab2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,10 +26,8 @@ PKG_PROG_PKG_CONFIG
+ 
+ # modules we require
+ PKG_CHECK_MODULES(LIBESTR, libestr >= 0.1.9)
+-PKG_CHECK_MODULES([JSON_C], [libfastjson],, [
+-	PKG_CHECK_MODULES([JSON_C], [json],, [
+-		PKG_CHECK_MODULES([JSON_C], [json-c],,)
+-	])
++PKG_CHECK_MODULES([JSON_C], [json],, [
++	PKG_CHECK_MODULES([JSON_C], [json-c],,)
+ ])
+ 
+ save_CFLAGS="$CFLAGS"
+-- 
+2.9.3
+
+
+From 7eed92763725244a53c50110fbe7419ba90d41a6 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann
+Date: Sun, 28 Aug 2016 20:15:32 +0200
+Subject: [PATCH 2/2] configure: Restrict to liblognorm-1.1.2 usage
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6789ab2..5f29106 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -927,7 +927,7 @@ AC_ARG_ENABLE(mmnormalize,
+         [enable_mmnormalize=no]
+ )
+ if test "x$enable_mmnormalize" = "xyes"; then
+-	PKG_CHECK_MODULES(LIBLOGNORM, lognorm >= 1.1.2)
++	PKG_CHECK_MODULES(LIBLOGNORM, lognorm = 1.1.2)
+ 
+ 	save_CFLAGS="$CFLAGS"
+ 	save_LIBS="$LIBS"
+-- 
+2.9.3
+
