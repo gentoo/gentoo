@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
+# Last-minute RC, masked for testing. Includes dev-util/cmake
+# find_library() lib32 support backport.
+=dev-util/cmake-3.6.1-r1
+~sys-devel/clang-3.9.0_rc3
+~sys-devel/llvm-3.9.0_rc3
+
 # Lars Wendler <polynomial-c@gentoo.org> (26 Aug 2016)
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1*
