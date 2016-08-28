@@ -523,8 +523,9 @@ EOF
 			# if forceoptional, also cover non-kde categories
 			cmake_comment_add_subdirectory autotests test tests
 		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
+			punt_bogus_dep Qt5 Test
 			local d
-			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test"); do
+			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
 				pushd ${d%/*} > /dev/null || die
 					punt_bogus_dep Qt5 Test
 					cmake_comment_add_subdirectory autotests test tests
