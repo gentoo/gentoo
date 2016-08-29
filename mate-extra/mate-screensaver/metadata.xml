@@ -8,6 +8,7 @@
 	<use>
 		<flag name="consolekit">Enable support for 
 			<pkg>sys-auth/consolekit</pkg></flag>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/mate-screensaver</remote-id>

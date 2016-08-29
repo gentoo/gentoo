@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/python-exec/issues/</bugs-to>
+    <bugs-to>https://github.com/mgorny/python-exec/issues/</bugs-to>
     <remote-id type="bitbucket">mgorny/python-exec</remote-id>
   </upstream>
 </pkgmetadata>

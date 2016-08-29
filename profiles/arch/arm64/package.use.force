@@ -1,6 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# James Le Cuirot <chewi@gentoo.org> (16 May 2016)
+# For reasons best known to themselves, Oracle do not ship the
+# libawt_xawt.so library on arm64 even though they do on arm32.
+dev-java/oracle-jdk-bin headless-awt
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs dev-lang/luajit tested #499974

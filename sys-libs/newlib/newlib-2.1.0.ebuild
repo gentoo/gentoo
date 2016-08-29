@@ -15,7 +15,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 DESCRIPTION="Newlib is a C library intended for use on embedded systems"
-HOMEPAGE="http://sourceware.org/newlib/"
+HOMEPAGE="https://sourceware.org/newlib/"
 SRC_URI="ftp://sourceware.org/pub/newlib/${P}.tar.gz"
 
 LICENSE="NEWLIB LIBGLOSS GPL-2"

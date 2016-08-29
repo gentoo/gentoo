@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,15 +10,19 @@
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
-inherit eutils fdo-mime multilib pax-utils prefix
+case ${EAPI:-0} in
+	5|6) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
+
+inherit fdo-mime multilib pax-utils prefix
 
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
 RDEPEND="
 	>=dev-java/java-config-2.2.0-r3
-	app-eselect/eselect-java"
+	>=app-eselect/eselect-java-0.2.0"
 DEPEND="${RDEPEND}"
-has "${EAPI}" 0 1 && DEPEND="${DEPEND} >=sys-apps/portage-2.1"
 
 export WANT_JAVA_CONFIG=2
 
@@ -66,11 +70,10 @@ java-vm-2_pkg_setup() {
 # @DESCRIPTION:
 # default pkg_postinst
 #
-# Set the generation-2 system VM and Java plugin, if it isn't set or the
-# setting is invalid. Also update mime database.
+# Set the generation-2 system VM, if it isn't set or the setting is
+# invalid. Also update mime database.
 
 java-vm-2_pkg_postinst() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT=${ROOT}
 	# Note that we cannot rely on java-config here, as it will silently recognize
 	# e.g. icedtea6-bin as valid system VM if icedtea6 is set but invalid (e.g. due
 	# to the migration to icedtea-6)
@@ -84,61 +87,7 @@ java-vm-2_pkg_postinst() {
 		fi
 	fi
 
-	if [[ "${_install_mozilla_plugin_called}" = 1 ]]; then
-		java-vm_check-nsplugin
-		java_mozilla_clean_
-	fi
-
 	fdo-mime_desktop_database_update
-}
-
-
-# @FUNCTION: java-vm_check-nsplugin
-# @INTERNAL
-# @DESCRIPTION:
-# Check if the nsplugin needs updating
-
-java-vm_check-nsplugin() {
-	local libdir
-	if [[ ${VMHANDLE} =~ emul-linux-x86 ]]; then
-		libdir=lib32
-	else
-		libdir=lib
-	fi
-
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EPREFIX=
-
-	# Install a default nsplugin if we don't already have one
-	if in_iuse nsplugin && use nsplugin; then
-		if [[ ! -f "${ROOT}${EPREFIX}"/usr/${libdir}/nsbrowser/plugins/javaplugin.so ]]; then
-			einfo "No system nsplugin currently set."
-			java-vm_set-nsplugin
-		else
-			einfo "System nsplugin is already set, not changing it."
-		fi
-		einfo "You can change nsplugin with eselect java-nsplugin."
-	fi
-}
-
-
-# @FUNCTION: java-vm_set-nsplugin
-# @INTERNAL
-# @DESCRIPTION:
-# Set the nsplugin implemetation.
-
-java-vm_set-nsplugin() {
-	local extra_args
-	if use amd64; then
-		if [[ ${VMHANDLE} =~ emul-linux-x86 ]]; then
-			extra_args="32bit"
-		else
-			extra_args="64bit"
-		fi
-		einfo "Setting ${extra_args} nsplugin to ${VMHANDLE}"
-	else
-		einfo "Setting nsplugin to ${VMHANDLE}..."
-	fi
-	eselect java-nsplugin set ${extra_args} ${VMHANDLE}
 }
 
 
@@ -149,7 +98,6 @@ java-vm_set-nsplugin() {
 # Warn user if removing system-vm.
 
 java-vm-2_pkg_prerm() {
-	# Although REPLACED_BY_VERSION is EAPI=4, we shouldn't need to check EAPI for this use case
 	if [[ "$(GENTOO_VM="" java-config -f 2>/dev/null)" == "${VMHANDLE}" && -z "${REPLACED_BY_VERSION}" ]]; then
 		ewarn "It appears you are removing your system-vm!"
 		ewarn "Please run java-config -L to list available VMs,"
@@ -184,33 +132,43 @@ java_set_default_vm_() {
 # @FUNCTION: get_system_arch
 # @DESCRIPTION:
 # Get Java specific arch name.
+#
+# NOTE the mips and sparc values are best guesses. Oracle uses sparcv9
+# but does OpenJDK use sparc64? We don't support OpenJDK on sparc or any
+# JVM on mips though so it doesn't matter much.
 
 get_system_arch() {
-	local sarch
-	sarch=$(echo ${ARCH} | sed -e s/[i]*.86/i386/ -e s/x86_64/amd64/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/)
-	if [ -z "${sarch}" ]; then
-		sarch=$(uname -m | sed -e s/[i]*.86/i386/ -e s/x86_64/amd64/ -e s/sun4u/sparc/ -e s/sparc64/sparc/ -e s/arm.*/arm/ -e s/sa110/arm/)
-	fi
-	echo ${sarch}
+	local abi=${1-${ABI}}
+
+	case $(get_abi_CHOST ${abi}) in
+		mips*l*) echo mipsel ;;
+		mips*) echo mips ;;
+		ppc64le*) echo ppc64le ;;
+		*)
+			case ${abi} in
+				*_fbsd) get_system_arch ${abi%_fbsd} ;;
+				arm64) echo aarch64 ;;
+				hppa) echo parisc ;;
+				sparc32) echo sparc ;;
+				sparc64) echo sparcv9 ;;
+				x86*) echo i386 ;;
+				*) echo ${abi} ;;
+			esac ;;
+	esac
 }
 
 
 # @FUNCTION: set_java_env
 # @DESCRIPTION:
 # Installs a vm env file.
+# DEPRECATED, use java-vm_install-env instead.
 
-# TODO rename to something more evident, like install_env_file
 set_java_env() {
 	debug-print-function ${FUNCNAME} $*
 
-	if has ${EAPI:-0} 0 1 2 && ! use prefix ; then
-		ED="${D}"
-		EPREFIX=""
-	fi
-
 	local platform="$(get_system_arch)"
 	local env_file="${ED}${JAVA_VM_CONFIG_DIR}/${VMHANDLE}"
-	local old_env_file="${ED}/etc/env.d/java/20${P}"
+
 	if [[ ${1} ]]; then
 		local source_env_file="${1}"
 	else
@@ -248,8 +206,49 @@ set_java_env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE} \
-		|| die "Failed to make VM symlink at ${JAVA_VM_DIR}/${VMHANDLE}"
+	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE}
+}
+
+
+# @FUNCTION: java-vm_install-env
+# @DESCRIPTION:
+#
+# Installs a Java VM environment file. The source can be specified but
+# defaults to ${FILESDIR}/${VMHANDLE}.env.sh.
+#
+# Environment variables within this file will be resolved. You should
+# escape the $ when referring to variables that should be resolved later
+# such as ${JAVA_HOME}. Subshells may be used but avoid using double
+# quotes. See icedtea-bin.env.sh for a good example.
+
+java-vm_install-env() {
+	debug-print-function ${FUNCNAME} "$*"
+
+	local env_file="${ED}${JAVA_VM_CONFIG_DIR}/${VMHANDLE}"
+	local source_env_file="${1-${FILESDIR}/${VMHANDLE}.env.sh}"
+
+	if [[ ! -f "${source_env_file}" ]]; then
+		die "Unable to find the env file: ${source_env_file}"
+	fi
+
+	dodir "${JAVA_VM_CONFIG_DIR}"
+
+	# Here be dragons! ;) -- Chewi
+	eval echo "\"$(cat <<< "$(sed 's:":\\":g' "${source_env_file}")")\"" > "${env_file}" ||
+		die "failed to create Java env file"
+
+	(
+		echo "VMHANDLE=\"${VMHANDLE}\""
+		echo "BUILD_ONLY=\"${JAVA_VM_BUILD_ONLY}\""
+		[[ ${JAVA_PROVIDE} ]] && echo "PROVIDES=\"${JAVA_PROVIDE}\"" || true
+	) >> "${env_file}" || die "failed to append to Java env file"
+
+	local java_home=$(unset JAVA_HOME; source "${env_file}"; echo ${JAVA_HOME})
+	[[ -z ${java_home} ]] && die "No JAVA_HOME defined in ${env_file}"
+
+	# Make the symlink
+	dodir "${JAVA_VM_DIR}"
+	dosym "${java_home#${EPREFIX}}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 
@@ -309,15 +308,13 @@ java-vm_set-pax-markings() {
 # @CODE
 
 java-vm_revdep-mask() {
-	if has ${EAPI:-0} 0 1 2 && ! use prefix; then
-		ED="${D}"
-		EPREFIX=
-	fi
+	debug-print-function ${FUNCNAME} "$*"
 
 	local VMROOT="${1-"${EPREFIX}"/opt/${P}}"
 
-	dodir /etc/revdep-rebuild/
-	echo "SEARCH_DIRS_MASK=\"${VMROOT}\""> "${ED}/etc/revdep-rebuild/61-${VMHANDLE}"
+	dodir /etc/revdep-rebuild
+	echo "SEARCH_DIRS_MASK=\"${VMROOT}\"" >> "${ED}/etc/revdep-rebuild/61-${VMHANDLE}" \
+		 || die "Failed to write revdep-rebuild mask file"
 }
 
 
@@ -335,8 +332,6 @@ java-vm_sandbox-predict() {
 	debug-print-function ${FUNCNAME} "$*"
 	[[ -z "${1}" ]] && die "${FUNCNAME} takes at least one argument"
 
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-
 	local path path_arr=("$@")
 	# subshell this to prevent IFS bleeding out dependant on bash version.
 	# could use local, which *should* work, but that requires a lot of testing.
@@ -344,58 +339,4 @@ java-vm_sandbox-predict() {
 	dodir /etc/sandbox.d
 	echo "SANDBOX_PREDICT=\"${path}\"" > "${ED}/etc/sandbox.d/20${VMHANDLE}" \
 		|| die "Failed to write sandbox control file"
-}
-
-
-# @FUNCTION: java_get_plugin_dir_
-# @INTERNAL
-# @DESCRIPTION:
-# Get the java plugin dir.
-
-java_get_plugin_dir_() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EPREFIX=
-	echo "${EPREFIX}"/usr/$(get_libdir)/nsbrowser/plugins
-}
-
-
-# @FUNCTION: install_mozilla_plugin
-# @DESCRIPTION:
-# Register a netscape java-plugin.
-
-install_mozilla_plugin() {
-	_install_mozilla_plugin_called=1
-
-	local plugin="${1}"
-	local variant="${2}"
-
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	if [[ ! -f "${ED}/${plugin}" ]]; then
-		die "Cannot find mozilla plugin at ${ED}/${plugin}"
-	fi
-
-	if [[ -n "${variant}" ]]; then
-		variant="-${variant}"
-	fi
-
-	local plugin_dir="/usr/share/java-config-2/nsplugin"
-	dodir "${plugin_dir}"
-	dosym "${plugin}" "${plugin_dir}/${VMHANDLE}${variant}-javaplugin.so"
-}
-
-
-# @FUNCTION: java_mozilla_clean_
-# @INTERNAL
-# @DESCRIPTION:
-# Because previously some ebuilds installed symlinks outside of pkg_install
-# and are left behind, which forces you to manualy remove them to select the
-# jdk/jre you want to use for java
-
-java_mozilla_clean_() {
-	local plugin_dir=$(java_get_plugin_dir_)
-	for file in ${plugin_dir}/javaplugin_*; do
-		rm -f ${file}
-	done
-	for file in ${plugin_dir}/libjavaplugin*; do
-		rm -f ${file}
-	done
 }

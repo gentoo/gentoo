@@ -1,0 +1,37 @@
+Index: eliom-5.0.0/src/lib/eliom_lib.client.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_lib.client.mli
++++ eliom-5.0.0/src/lib/eliom_lib.client.mli
+@@ -43,7 +43,6 @@ type 'a shared_value = 'a
+ 
+ val create_shared_value : 'a -> 'a client_value -> 'a shared_value
+ 
+-exception Eliom_Internal_Error of string
+ 
+ (** This exception is raised (in Lwt) on the client if a call to a
+     server function {% <<a_api subproject="server"|val
+Index: eliom-5.0.0/src/lib/eliom_lib.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_lib.server.mli
++++ eliom-5.0.0/src/lib/eliom_lib.server.mli
+@@ -50,7 +50,6 @@ type +'a shared_value
+ *)
+ exception Client_value_creation_invalid_context of string
+ 
+-exception Eliom_Internal_Error of string
+ 
+ type file_info = Ocsigen_extensions.file_info
+ 
+Index: eliom-5.0.0/src/syntax/pa_include.ml
+===================================================================
+--- eliom-5.0.0.orig/src/syntax/pa_include.ml
++++ eliom-5.0.0/src/syntax/pa_include.ml
+@@ -27,7 +27,7 @@ module Make(Syntax : Camlp4.Sig.Camlp4Sy
+   class subst_type env = object (self)
+     inherit Ast.map as super
+     method sig_item si = match si with
+-      | Ast.SgTyp (_loc, (Ast.TyDcl (_, lid, _, Ast.TyNil _, _)))
++      | Ast.SgTyp (_loc, rf, (Ast.TyDcl (_, lid, _, Ast.TyNil _, _)))
+         when List.mem_assoc lid env -> <:sig_item< >>
+       | si -> super#sig_item si
+     method ctyp ty = match ty with

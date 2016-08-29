@@ -27,7 +27,7 @@ if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	esac
 fi
 
-if [[ ${CATEGORY} != kde-frameworks ]]; then
+if [[ -v KDE_GCC_MINIMAL ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
@@ -36,7 +36,7 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimal Qt version to require for the package.
-: ${QT_MINIMAL:=5.5.1}
+: ${QT_MINIMAL:=5.6.1}
 
 # @ECLASS-VARIABLE: KDE_AUTODEPS
 # @DESCRIPTION:
@@ -56,21 +56,12 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # Otherwise, add debug to IUSE to control building with that flag.
 : ${KDE_DEBUG:=true}
 
-# @ECLASS-VARIABLE: KDE_DOXYGEN
+# @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
 # @DESCRIPTION:
 # If set to "false", do nothing.
-# Otherwise, add "doc" to IUSE, add appropriate dependencies, and generate and
-# install API documentation.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${KDE_DOXYGEN:=true}
-else
-	: ${KDE_DOXYGEN:=false}
-fi
-
-# @ECLASS-VARIABLE: KDE_DOX_DIR
-# @DESCRIPTION:
-# Defaults to ".". Otherwise, use alternative KDE doxygen path.
-: ${KDE_DOX_DIR:=.}
+# Otherwise, add "designer" to IUSE to toggle build of designer plugins
+# and add the necessary DEPENDs.
+: ${KDE_DESIGNERPLUGIN:=false}
 
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
@@ -108,6 +99,16 @@ else
 	: ${KDE_TEST:=false}
 fi
 
+# @ECLASS-VARIABLE: KDE_L10N
+# @DESCRIPTION:
+# This is an array of translations this ebuild supports. These translations
+# are automatically added to IUSE.
+if [[ ${KDEBASE} = kdel10n ]]; then
+	if [[ -n ${KDE_L10N} ]]; then
+		IUSE="${IUSE} $(printf 'l10n_%s ' ${KDE_L10N[@]})"
+	fi
+fi
+
 # @ECLASS-VARIABLE: KDE_PUNT_BOGUS_DEPS
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -124,6 +125,8 @@ fi
 
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
+elif [[ ${KDEBASE} = kdel10n ]]; then
+	HOMEPAGE="http://l10n.kde.org"
 else
 	HOMEPAGE="https://www.kde.org/"
 fi
@@ -156,15 +159,9 @@ case ${KDE_AUTODEPS} in
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
-			local blocked_version=15.08.0-r1
-
-			if [[ ${CATEGORY} = kde-plasma && $(get_version_component_range 2) -ge 6 ]]; then
-				blocked_version=15.12.3-r1
-			fi
-
 			RDEPEND+="
-				!kde-apps/kde4-l10n[-minimal(-)]
-				!<kde-apps/kde4-l10n-${blocked_version}
+				!kde-apps/kde4-l10n[-minimal(+)]
+				!<kde-apps/kde4-l10n-15.12.3-r1
 			"
 		fi
 
@@ -174,21 +171,21 @@ case ${KDE_AUTODEPS} in
 		;;
 esac
 
-case ${KDE_DOXYGEN} in
-	false)	;;
-	*)
-		IUSE+=" doc"
-		DEPEND+=" doc? (
-				$(add_frameworks_dep kapidox)
-				app-doc/doxygen
-			)"
-		;;
-esac
-
 case ${KDE_DEBUG} in
 	false)	;;
 	*)
 		IUSE+=" debug"
+		;;
+esac
+
+case ${KDE_DESIGNERPLUGIN} in
+	false)  ;;
+	*)
+		IUSE+=" designer"
+		DEPEND+=" designer? (
+			$(add_frameworks_dep kdesignerplugin)
+			$(add_qt_dep designer)
+		)"
 		;;
 esac
 
@@ -249,8 +246,7 @@ _calculate_src_uri() {
 		kjs | \
 		kjsembed | \
 		kmediaplayer | \
-		kross | \
-		krunner)
+		kross)
 			_kmname="portingAids/${_kmname}"
 			;;
 	esac
@@ -285,6 +281,21 @@ _calculate_src_uri() {
 			esac
 			;;
 	esac
+
+	if [[ ${KDEBASE} = kdel10n ]] ; then
+		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
+		SRC_URI=""
+		for my_l10n in ${KDE_L10N[@]} ; do
+			case ${my_l10n} in
+				sr | sr-ijekavsk | sr-Latn-ijekavsk | sr-Latn)
+					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-sr-${PV}.tar.xz )"
+					;;
+				*)
+					SRC_URI="${SRC_URI} l10n_${my_l10n}? ( ${uri_base}-$(kde_l10n2lingua ${my_l10n})-${PV}.tar.xz )"
+					;;
+			esac
+		done
+	fi
 }
 
 # Determine fetch location for live sources
@@ -299,7 +310,7 @@ _calculate_live_repo() {
 			# @DESCRIPTION:
 			# This variable allows easy overriding of default kde mirror service
 			# (anongit) with anything else you might want to use.
-			EGIT_MIRROR=${EGIT_MIRROR:=git://anongit.kde.org}
+			EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
 			local _kmname
 
@@ -364,6 +375,16 @@ kde5_src_unpack() {
 				git-r3_src_unpack
 				;;
 		esac
+	elif [[ ${KDEBASE} = kdel10n ]]; then
+		local l10npart=5
+		[[ ${PN} = kde4-l10n ]] && l10npart=4
+		mkdir -p "${S}" || die "Failed to create source dir ${S}"
+		cd "${S}"
+		for my_tar in ${A}; do
+			tar -xpf "${DISTDIR}/${my_tar}" --xz \
+				"${my_tar/.tar.xz/}/CMakeLists.txt" "${my_tar/.tar.xz/}/${l10npart}" 2> /dev/null ||
+				elog "${my_tar}: tar extract command failed at least partially - continuing"
+		done
 	else
 		default
 	fi
@@ -374,6 +395,38 @@ kde5_src_unpack() {
 # Function for preparing the KDE 5 sources.
 kde5_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${KDEBASE} = kdel10n ]]; then
+		local l10npart=5
+		[[ ${PN} = kde4-l10n ]] && l10npart=4
+		# move known variant subdirs to root dir, currently sr@*
+		use_if_iuse l10n_sr-ijekavsk && _l10n_variant_subdir2root sr-ijekavsk sr
+		use_if_iuse l10n_sr-Latn-ijekavsk && _l10n_variant_subdir2root sr-Latn-ijekavsk sr
+		use_if_iuse l10n_sr-Latn && _l10n_variant_subdir2root sr-Latn sr
+		if use_if_iuse l10n_sr; then
+			rm -rf kde-l10n-sr-${PV}/${l10npart}/sr/sr@* || die "Failed to cleanup L10N=sr"
+			_l10n_variant_subdir_buster sr
+		elif [[ -d kde-l10n-sr-${PV} ]]; then
+			# having any variant selected means parent lingua will be unpacked as well
+			rm -r kde-l10n-sr-${PV} || die "Failed to remove sr parent lingua"
+		fi
+
+		# add all l10n directories to cmake
+		cat <<-EOF > CMakeLists.txt || die
+project(${PN})
+cmake_minimum_required(VERSION 2.8.12)
+$(printf "add_subdirectory( %s )\n" \
+	`find . -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"`)
+EOF
+
+		# for KF5: drop KDE4-based part; for KDE4: drop KF5-based part
+		case ${l10npart} in
+			5) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
+				sed -i -e "/add_subdirectory(4)/ s/^/#DONT/" {} + || die ;;
+			4) find -maxdepth 2 -type f -name CMakeLists.txt -exec \
+				sed -i -e "/add_subdirectory(5)/ s/^/#DONT/" {} + || die ;;
+		esac
+	fi
 
 	cmake-utils_src_prepare
 
@@ -398,7 +451,7 @@ kde5_src_prepare() {
 
 	# enable only the requested translations
 	# when required
-	if [[ -d po ]] ; then
+	if [[ -d po && -v LINGUAS ]] ; then
 		pushd po > /dev/null || die
 		for lang in *; do
 			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
@@ -485,6 +538,10 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
+	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+	fi
+
 	# install mkspecs in the same directory as qt stuff
 	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
 
@@ -501,11 +558,6 @@ kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_compile "$@"
-
-	# Build doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		kgenapidox ${KDE_DOX_DIR} || die
-	fi
 }
 
 # @FUNCTION: kde5_src_test
@@ -545,11 +597,6 @@ kde5_src_test() {
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# Install doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		dodoc -r apidocs/html
-	fi
-
 	cmake-utils_src_install
 
 	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
@@ -587,6 +634,42 @@ kde5_pkg_postrm() {
 
 	gnome2_icon_cache_update
 	xdg_pkg_postrm
+}
+
+_l10n_variant_subdir2root() {
+	local l10npart=5
+	[[ ${PN} = kde4-l10n ]] && l10npart=4
+	local lingua=$(kde_l10n2lingua ${1})
+	local src=kde-l10n-${2}-${PV}
+	local dest=kde-l10n-${lingua}-${PV}/${l10npart}
+
+	# create variant rootdir structure from parent lingua and adapt it
+	mkdir -p ${dest} || die "Failed to create ${dest}"
+	mv ${src}/${l10npart}/${2}/${lingua} ${dest}/${lingua} || die "Failed to create ${dest}/${lingua}"
+	cp -f ${src}/CMakeLists.txt kde-l10n-${lingua}-${PV} || die "Failed to prepare L10N=${1} subdir"
+	echo "add_subdirectory(${lingua})" > ${dest}/CMakeLists.txt ||
+		die "Failed to prepare ${dest}/CMakeLists.txt"
+	cp -f ${src}/${l10npart}/${2}/CMakeLists.txt ${dest}/${lingua} ||
+		die "Failed to create ${dest}/${lingua}/CMakeLists.txt"
+	sed -e "s/${2}/${lingua}/" -i ${dest}/${lingua}/CMakeLists.txt ||
+		die "Failed to prepare ${dest}/${lingua}/CMakeLists.txt"
+
+	_l10n_variant_subdir_buster ${1}
+}
+
+_l10n_variant_subdir_buster() {
+	local l10npart=5
+	[[ ${PN} = kde4-l10n ]] && l10npart=4
+	local dir=kde-l10n-$(kde_l10n2lingua ${1})-${PV}/${l10npart}/$(kde_l10n2lingua ${1})
+
+	case ${l10npart} in
+		5) sed -e "/^add_subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
+		4) sed -e "/^macro.*subdirectory(/d" -i ${dir}/CMakeLists.txt || die "Failed to cleanup ${dir} subdir" ;;
+	esac
+
+	for subdir in $(find ${dir} -mindepth 1 -maxdepth 1 -type d | sed -e "s:^\./::"); do
+		echo "add_subdirectory(${subdir##*/})" >> ${dir}/CMakeLists.txt
+	done
 }
 
 fi

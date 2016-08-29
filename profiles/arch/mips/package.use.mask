@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
+# net-libs/openpgm is not keyworded on mips
+net-libs/zeromq pgm
 
 # Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
 # Needs arch love for elementary. #575322
@@ -29,11 +33,6 @@ dev-libs/efl physics
 # Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
 
 # Davide Pesavento <pesa@gentoo.org> (02 Jun 2014)
 # dev-qt/qtdeclarative:4 is not keyworded on mips

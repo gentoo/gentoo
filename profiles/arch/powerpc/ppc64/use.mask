@@ -23,10 +23,6 @@ battery
 # Unmask the flag for Playstation 3
 -ps3
 
-# Raúl Porcel <armin76@gentoo.org> (11 Aug 2008)
-# Missing keyword on net-wireless/madwifi
-madwifi
-
 # mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
 custom-cpuopts
 cpudetection

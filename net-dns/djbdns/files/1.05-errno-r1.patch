@@ -1,0 +1,11 @@
+--- a/error.h	2001-02-11 15:11:45.000000000 -0600
++++ b/error.h	2003-02-26 02:10:21.000000000 -0600
+@@ -1,7 +1,7 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;

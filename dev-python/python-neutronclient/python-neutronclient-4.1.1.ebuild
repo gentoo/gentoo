@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 REQUIRED_USE="test? ( doc )"
 
@@ -62,7 +62,7 @@ RDEPEND="
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	# built in... 
+	# built in...
 	sed -i '/^argparse/d' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="C Language Support for Inline"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 DIST_TEST="do" # parallelism thwarted by race conditions
@@ -22,6 +22,7 @@ RDEPEND="
 	>=dev-perl/Inline-0.790.0
 	>=dev-perl/Parse-RecDescent-1.967.9
 	>=dev-perl/Pegex-0.580.0
+	!<dev-perl/Inline-0.510.0
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

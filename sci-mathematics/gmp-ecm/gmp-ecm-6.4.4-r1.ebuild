@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+blas +custom-tune gwnum -openmp static-libs test"
 
 DEPEND="
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	blas? ( sci-libs/gsl )
 	gwnum? ( sci-mathematics/gwnum )
-	openmp? ( sys-devel/gcc[openmp] )"
+	openmp? ( sys-devel/gcc:*[openmp] )"
 RDEPEND="${DEPEND}"
 
 # can't be both enabled

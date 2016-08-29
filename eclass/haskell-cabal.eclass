@@ -59,6 +59,13 @@ inherit eutils ghc-package multilib multiprocessing
 # linking 'setup' faster.
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
+# @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup test'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
+: ${CABAL_EXTRA_TEST_FLAGS:=}
+
 # @ECLASS-VARIABLE: CABAL_DEBUG_LOOSENING
 # @DESCRIPTION:
 # Show debug output for 'cabal_chdeps' function if set.
@@ -119,6 +126,7 @@ fi
 
 if [[ -n "${CABAL_USE_HOOGLE}" ]]; then
 	# enabled only in ::haskell
+	#IUSE="${IUSE} hoogle"
 	CABAL_USE_HOOGLE=
 fi
 
@@ -602,13 +610,25 @@ haskell-cabal_src_compile() {
 }
 
 haskell-cabal_src_test() {
+	local cabaltest=()
+
 	pushd "${S}" > /dev/null || die
 
 	if cabal-is-dummy-lib; then
 		einfo ">>> No tests for dummy library: ${CATEGORY}/${PF}"
 	else
 		einfo ">>> Test phase [cabal test]: ${CATEGORY}/${PF}"
-		set -- test "$@"
+
+		# '--show-details=streaming' appeared in Cabal-1.20
+		if ./setup test --help | grep -q -- "'streaming'"; then
+			cabaltest+=(--show-details=streaming)
+		fi
+
+		set -- test \
+			"${cabaltest[@]}" \
+			${CABAL_TEST_FLAGS} \
+			${CABAL_EXTRA_TEST_FLAGS} \
+			"$@"
 		echo ./setup "$@"
 		./setup "$@" || die "cabal test failed"
 	fi

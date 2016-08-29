@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="nls"
 RDEPEND=">=dev-libs/glib-2.10
 	media-libs/tiff:0=
 	x11-libs/libX11
-	x11-libs/c++-gtk-utils:0
+	x11-libs/c++-gtk-utils:0[gtk]
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

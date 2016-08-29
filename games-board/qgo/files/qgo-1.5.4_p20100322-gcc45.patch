@@ -1,5 +1,5 @@
---- src/board/board.cpp.old	2010-06-01 08:20:32.000000000 +0200
-+++ src/board/board.cpp	2010-06-01 08:20:54.000000000 +0200
+--- a/src/board/board.cpp	2010-06-01 08:20:32.000000000 +0200
++++ b/src/board/board.cpp	2010-06-01 08:20:54.000000000 +0200
 @@ -347,7 +347,7 @@
  		}
  
@@ -9,8 +9,8 @@
  
  }
  
---- src/board/clockdisplay.cpp.old	2010-06-01 08:31:10.000000000 +0200
-+++ src/board/clockdisplay.cpp	2010-06-01 08:31:38.000000000 +0200
+--- a/src/board/clockdisplay.cpp	2010-06-01 08:31:10.000000000 +0200
++++ b/src/board/clockdisplay.cpp	2010-06-01 08:31:38.000000000 +0200
 @@ -274,13 +274,13 @@
  
  	if(b_time > 3600 || w_time > 3600)
@@ -29,8 +29,8 @@
  	}
  	
  	switch(timeSystem)
---- src/gtp/qgtp.cpp.old	2010-06-01 08:34:09.000000000 +0200
-+++ src/gtp/qgtp.cpp	2010-06-01 08:34:28.000000000 +0200
+--- a/src/gtp/qgtp.cpp	2010-06-01 08:34:09.000000000 +0200
++++ b/src/gtp/qgtp.cpp	2010-06-01 08:34:28.000000000 +0200
 @@ -341,7 +341,7 @@
  	_cpt++;
  
@@ -40,8 +40,8 @@
  
  //	int j= programProcess->waitForBytesWritten ( 100 );
  
---- src/board/imagehandler.cpp.old	2010-06-01 08:34:55.000000000 +0200
-+++ src/board/imagehandler.cpp	2010-06-01 08:35:17.000000000 +0200
+--- a/src/board/imagehandler.cpp	2010-06-01 08:34:55.000000000 +0200
++++ b/src/board/imagehandler.cpp	2010-06-01 08:35:17.000000000 +0200
 @@ -93,8 +93,8 @@
  	{
  		altGhostPixmaps = new QList<QPixmap>();//::QList();
@@ -53,8 +53,8 @@
  
  		if (alt1.isNull() || alt2.isNull())
  			qFatal("Could not load alt_ghost pixmaps.");
---- src/board/mark.cpp.old	2010-06-01 08:36:39.000000000 +0200
-+++ src/board/mark.cpp	2010-06-01 08:36:51.000000000 +0200
+--- a/src/board/mark.cpp	2010-06-01 08:36:39.000000000 +0200
++++ b/src/board/mark.cpp	2010-06-01 08:36:51.000000000 +0200
 @@ -109,7 +109,7 @@
  		setPen(QPen(col, 2));
  //	else
@@ -64,8 +64,8 @@
  
  //		setPen(QPen(col, 1));
  	setSize(s, s);
---- src/network/gamedialog.cpp.old	2010-06-01 08:45:26.000000000 +0200
-+++ src/network/gamedialog.cpp	2010-06-01 08:45:40.000000000 +0200
+--- a/src/network/gamedialog.cpp	2010-06-01 08:45:26.000000000 +0200
++++ b/src/network/gamedialog.cpp	2010-06-01 08:45:40.000000000 +0200
 @@ -1123,7 +1123,7 @@
  	 * probably FIXME, I just wonder why its like that in the first place */
  	

@@ -1,6 +1,5 @@
-diff -urN ./kBuild-0.1.5.orig/bootstrap.gmk ./kBuild-0.1.5/bootstrap.gmk
---- ./bootstrap.gmk	2009-01-10 03:24:02.000000000 +0100
-+++ ./bootstrap.gmk	2009-03-11 10:39:25.679010950 +0100
+--- a/bootstrap.gmk
++++ b/bootstrap.gmk
 @@ -179,7 +179,7 @@
  	echo done > $@
  

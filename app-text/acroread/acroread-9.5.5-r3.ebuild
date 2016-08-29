@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="-* amd64 x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="html ldap nsplugin"
 # asian fonts from separate package:
-IUSE+=" linguas_zh_CN linguas_zh_TW linguas_ja linguas_ko"
+IUSE+=" l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW"
 
 RESTRICT="strip mirror"
 
@@ -34,10 +34,7 @@ RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 	x11-libs/pango[abi_x86_32(-)]
-	|| (
-		>=x11-libs/pangox-compat-0.0.2[abi_x86_32(-)]
-		<x11-libs/pango-1.31[X]
-	)
+	>=x11-libs/pangox-compat-0.0.2[abi_x86_32(-)]
 	nsplugin? ( x11-libs/libXt[abi_x86_32(-)] )
 	ldap? ( >=net-nds/openldap-2.4.38-r1[abi_x86_32(-)] )
 	x86? ( html? (
@@ -48,10 +45,10 @@ RDEPEND="
 			www-client/seamonkey
 		)
 	) )
-	linguas_zh_CN? ( media-fonts/acroread-asianfonts[linguas_zh_CN] )
-	linguas_ja? ( media-fonts/acroread-asianfonts[linguas_ja] )
-	linguas_zh_TW? ( media-fonts/acroread-asianfonts[linguas_zh_TW] )
-	linguas_ko? ( media-fonts/acroread-asianfonts[linguas_ko] )"
+	l10n_ja? ( media-fonts/acroread-asianfonts[l10n_ja] )
+	l10n_ko? ( media-fonts/acroread-asianfonts[l10n_ko] )
+	l10n_zh-CN? ( media-fonts/acroread-asianfonts[l10n_zh-CN] )
+	l10n_zh-TW? ( media-fonts/acroread-asianfonts[l10n_zh-TW] )"
 
 QA_EXECSTACK="
 	opt/Adobe/Reader9/Reader/intellinux/bin/acroread

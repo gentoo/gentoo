@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit autotools python-r1
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/anyremote/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bluetooth"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -46,6 +46,8 @@ src_prepare() {
 	if ! use bluetooth ; then
 		sed -e "s/usepybluez    = True/usepybluez    = False/" -i kanyremote || die
 	fi
+
+	default
 }
 
 src_install() {

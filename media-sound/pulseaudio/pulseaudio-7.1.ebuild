@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -76,7 +76,7 @@ RDEPEND="
 	)
 	>=media-libs/speex-1.2_rc1
 	gdbm? ( sys-libs/gdbm )
-	webrtc-aec? ( media-libs/webrtc-audio-processing )
+	webrtc-aec? ( <media-libs/webrtc-audio-processing-0.2 )
 	xen? ( app-emulation/xen-tools )
 	systemd? ( sys-apps/systemd:0=[${MULTILIB_USEDEP}] )
 	>=dev-libs/json-c-0.11[${MULTILIB_USEDEP}]

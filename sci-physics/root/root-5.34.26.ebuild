@@ -57,8 +57,8 @@ CDEPEND="
 		x11-libs/libXpm:0=
 		!minimal? (
 			|| (
-				media-libs/libafterimage:0=[gif,jpeg,png,tiff]
-				>=x11-wm/afterstep-2.2.11:0=[gif,jpeg,png,tiff]
+				media-libs/libafterimage[gif,jpeg,png,tiff]
+				>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff]
 			)
 			opengl? ( virtual/opengl virtual/glu x11-libs/gl2ps:0= )
 			qt4? (
@@ -88,7 +88,7 @@ CDEPEND="
 			mpi? ( virtual/mpi )
 		)
 		mysql? ( virtual/mysql )
-		odbc? ( || ( dev-db/libiodbc:0= dev-db/unixODBC:0= ) )
+		odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 		oracle? ( dev-db/oracle-instantclient-basic:0= )
 		postgres? ( dev-db/postgresql:= )
 		pythia6? ( sci-physics/pythia:6= )

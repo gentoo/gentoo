@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+		<name>Michael Orlitzky</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		/Usage/:
+		
+		@
+		list-remote-forwards [OPTIONS]
+		@
+		
+		List all remote forwards for mail accounts stored in a SQL database.
+		
+		A list of local domains is supplied to the program (more or less)
+		through the @--domain-query@ option. Any addresses which
+		forward to another address not contained in this list of local domains
+		is considered a remote forward. Remote forwards can cause problems for
+		a number of reasons, the most common of which are,
+		
+		* If the sender has an SPF record authorizing his mail server to send
+		mail on his behalf, then when his message is forwarded by the
+		recipient's mail server, it will fail any subsequent SPF checks. This
+		will likely cause the message to be rejected, and the original
+		recipient's server will generate backscatter.
+		
+		* If any spam makes it through the filter on the recipient's mail
+		server, that spam will then be forwarded to a remote destination. The
+		remote destination will blame the forwarding server for the spam, and
+		that can impact its reputation and potentially lead to a blacklisting
+		even though the spam did not originate on the recipient's server.
+		
+		Whether or not these are an issue depends on the circumstances, but in
+		any case it is useful to know who is forwarding mail off-site.
+		
+		/Input:/
+		
+		None.
+		
+		/Output:/
+		
+		A list of addresses that are forwarded to remote domains.
+		
+		/Options/:
+		
+		@
+		\--database
+		@
+		
+		The name of the database (or file, if SQLite) to which we should
+		connect.
+		
+		Default: The name of the current user (Postgres only).
+		
+		@
+		\--domain-query
+		@
+		SQL query used to produce a list of local domains. This should return
+		the set of all domains (i.e one column) that are local to the
+		server. See the default value for an example.
+		
+		Default: \"SELECT domain FROM domain WHERE domain &lt;&gt; 'ALL' ORDER BY domain;\"
+		
+		@
+		\--exclude-mx, -e
+		@
+		
+		The name of a mail exchanger, the forwards of whose domains we should
+		ignore. For example, if one mail exchanger, mx1.example.com, has
+		strict spam filtering, it may be acceptable to have remote forwarding
+		for domains that have mx1.example.com as their sole mail exchanger (MX
+		record). In that case, you might want to exclude those domains from
+		the report by naming mx1.example.com here.
+		
+		A forward will be excluded from the report only if /all/ of its MX
+		records are contained in the given exclude list.
+		
+		This option can be repeated to add mail exchangers to the exclude list.
+		
+		Default: [] (empty)
+		
+		@
+		\--forward-query, -f
+		@
+		
+		SQL query used to produce a list of all forwards on the mail
+		system. This query should return the set of all (address, goto)
+		triples, where \"goto\" is the destination address; i.e. to where
+		the \"address\" forwards. The \"goto\" field may contain more
+		than one email address, separated by commas.
+		
+		Default: \"SELECT address,goto FROM alias ORDER BY address;\"
+		
+		@
+		\--host, -h
+		@
+		
+		Hostname where the database is located (Postgres-only).
+		
+		Default: None, a UNIX domain socket connection is attempted (Postgres only)
+		
+		@
+		\--password
+		@
+		
+		Password used to connect to the database (Postgres-only).
+		
+		Default: None (assumes passwordless authentication)
+		
+		@
+		\--port
+		@
+		Port number used to connect to the database (Postgres-only).
+		
+		Default: None, a UNIX domain socket connection is attempted (Postgres only)
+		
+		@
+		\--username, -u
+		@
+		
+		Username used to connect to the database (Postgres-only).
+		
+		Default: The current user
+		
+		/Examples/:
+		
+		@
+		$ list-remote-forwards --database=test/fixtures/postfixadmin.sqlite3
+		user1@example.com -&gt; user1@example.net
+		user2@example.com -&gt; user1@example.org
+		user2@example.com -&gt; user2@example.org
+		user2@example.com -&gt; user3@example.org
+		user7@example.com -&gt; user8@example.net
+		@
+	</longdescription>
+</pkgmetadata>

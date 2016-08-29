@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL_SUBSLOT=yes
 inherit perl-app
 
 DESCRIPTION="Perl-based system log watcher"
-HOMEPAGE="http://sourceforge.net/projects/swatch/"
+HOMEPAGE="https://sourceforge.net/projects/swatch/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

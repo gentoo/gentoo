@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ install_cropgui_wrapper() {
 }
 
 src_install() {
-	local python_moduleroot="${PN}"
+	python_moduleinto "${PN}"
 	python_foreach_impl install_cropgui_wrapper
 
 	domenu "${PN}.desktop"

@@ -120,8 +120,6 @@ src_configure() {
 
 	filter-flags -malign-double
 
-	[[ "${ARCH}" == "alpha" ]] && append-flags -fPIC
-
 	# https://bugs.gentoo.org/show_bug.cgi?id=50309
 	if is-flagq -O3; then
 		is-flagq -fstack-protector-all && replace-flags -O3 -O2

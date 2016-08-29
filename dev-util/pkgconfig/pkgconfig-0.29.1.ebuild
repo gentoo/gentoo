@@ -31,7 +31,8 @@ IUSE="elibc_FreeBSD elibc_glibc hardened internal-glib"
 RDEPEND="!internal-glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
 	!dev-util/pkgconf[pkg-config]
 	!dev-util/pkg-config-lite
-	!dev-util/pkgconfig-openbsd[pkg-config]"
+	!dev-util/pkgconfig-openbsd[pkg-config]
+	virtual/libintl"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -67,6 +68,12 @@ multilib_src_configure() {
 			# not good, esp. since Carbon should be deprecated
 			[[ ${CHOST} == *-darwin* ]] && \
 				append-ldflags -framework CoreFoundation -framework Carbon
+			if [[ ${CHOST} == *-solaris* ]] ; then
+				# required due to __EXTENSIONS__
+				append-cppflags -DENABLE_NLS
+				# similar to Darwin
+				append-ldflags -lintl
+			fi
 		fi
 	else
 		if ! has_version dev-util/pkgconfig; then

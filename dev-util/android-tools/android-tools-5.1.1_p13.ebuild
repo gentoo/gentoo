@@ -21,7 +21,7 @@ mirror://gentoo/${MY_P}-f2fs-tools.tar.gz"
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~arm-linux ~x86-linux"
 IUSE="libressl"
 
 RDEPEND="sys-libs/zlib:=
@@ -53,10 +53,14 @@ src_prepare() {
 		-i extras/f2fs_utils/f2fs_utils.c  || die
 	mv arch/*/trunk/Makefile ./ || die
 	sed -i '1i#include <sys/sysmacros.h>' core/adb/usb_linux.c || die #580058
+	sed -e 's|^#include <sys/cdefs.h>$|/*\0*/|' \
+		-e 's|^__BEGIN_DECLS$|#ifdef __cplusplus\nextern "C" {\n#endif|' \
+		-e 's|^__END_DECLS$|#ifdef __cplusplus\n}\n#endif|' \
+		-i extras/ext4_utils/sha1.{c,h} || die #580686
 	tc-export CC
 }
 
 src_install() {
-	default
+	emake DESTDIR="${ED}" install
 	newbashcomp arch/*/trunk/bash_completion fastboot
 }

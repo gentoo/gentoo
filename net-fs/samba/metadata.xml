@@ -24,7 +24,6 @@
 		<flag name="quota">Enables support for user quotas</flag>
 		<flag name="smbclient">Enable smbclient tool</flag>
 		<flag name="smbsharemodes">Enable special smb share modes (?) </flag>
-		<flag name="smbtav2">Enable Samba Traffic Analyzer version 2 </flag>
 		<flag name="system-mitkrb5">Use <pkg>app-crypt/mit-krb5</pkg> instead of
 			<pkg>app-crypt/heimdal</pkg>.</flag>
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>

@@ -5,4 +5,11 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
+
+	<use>
+  	  <flag name="coverage">
+	    Enable the coverager module (not recommended for
+	    production servers).
+	  </flag>
+	</use>
 </pkgmetadata>

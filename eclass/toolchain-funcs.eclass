@@ -22,7 +22,7 @@ inherit multilib
 _tc-getPROG() {
 	local tuple=$1
 	local v var vars=$2
-	local prog=$3
+	local prog=( $3 )
 
 	var=${vars%% *}
 	for v in ${vars} ; do
@@ -34,11 +34,11 @@ _tc-getPROG() {
 	done
 
 	local search=
-	[[ -n $4 ]] && search=$(type -p "$4-${prog}")
-	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p "${!tuple}-${prog}")
-	[[ -n ${search} ]] && prog=${search##*/}
+	[[ -n $4 ]] && search=$(type -p $4-${prog[0]})
+	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p ${!tuple}-${prog[0]})
+	[[ -n ${search} ]] && prog[0]=${search##*/}
 
-	export ${var}=${prog}
+	export ${var}="${prog[*]}"
 	echo "${!var}"
 }
 tc-getBUILD_PROG() { _tc-getPROG CBUILD "BUILD_$1 $1_FOR_BUILD HOST$1" "${@:2}"; }
@@ -59,7 +59,7 @@ tc-getCC() { tc-getPROG CC gcc "$@"; }
 # @FUNCTION: tc-getCPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor
-tc-getCPP() { tc-getPROG CPP cpp "$@"; }
+tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @FUNCTION: tc-getCXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
@@ -132,7 +132,7 @@ tc-getBUILD_CC() { tc-getBUILD_PROG CC gcc "$@"; }
 # @FUNCTION: tc-getBUILD_CPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor for building binaries to run on the build machine
-tc-getBUILD_CPP() { tc-getBUILD_PROG CPP cpp "$@"; }
+tc-getBUILD_CPP() { tc-getBUILD_PROG CPP "$(tc-getBUILD_CC) -E" "$@"; }
 # @FUNCTION: tc-getBUILD_CXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler for building binaries to run on the build machine
@@ -219,6 +219,21 @@ tc-is-static-only() {
 
 	# *MiNT doesn't have shared libraries, only platform so far
 	[[ ${host} == *-mint* ]]
+}
+
+# @FUNCTION: tc-stack-grows-down
+# @DESCRIPTION:
+# Return shell true if the stack grows down.  This is the default behavior
+# for the vast majority of systems out there and usually projects shouldn't
+# care about such internal details.
+tc-stack-grows-down() {
+	# List the few that grow up.
+	case ${ARCH} in
+	hppa|metag) return 1 ;;
+	esac
+
+	# Assume all others grow down.
+	return 0
 }
 
 # @FUNCTION: tc-export_build_env
@@ -445,10 +460,6 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 	local host=$2
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
 
-	local KV=${KV:-${KV_FULL}}
-	[[ ${type} == "kern" ]] && [[ -z ${KV} ]] && \
-	ewarn "QA: Kernel version could not be determined, please inherit kernel-2 or linux-info"
-
 	case ${host} in
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
@@ -464,7 +475,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
 			# FreeBSD still uses i386
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -lt $(KV_to_int 2.6.24) || ${host} == *freebsd* ]] ; then
+			if [[ ${type} == "kern" && ${host} == *freebsd* ]] ; then
 				echo i386
 			else
 				echo x86
@@ -477,23 +488,15 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		mips*)		echo mips;;
 		nios2*)		echo nios2;;
 		nios*)		echo nios;;
-		or32*)		echo openrisc;;
+		or1k|or32*)	echo openrisc;;
 		powerpc*)
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,
 			# ppc32 is still using ARCH="ppc" as default
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.16) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo powerpc
-			elif [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -eq $(KV_to_int 2.6.15) ]] ; then
-				if [[ ${host} == powerpc64* ]] || [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-					echo powerpc
-				else
-					echo ppc
-				fi
 			elif [[ ${host} == powerpc64* ]] ; then
 				echo ppc64
-			elif [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-				ninj ppc64 ppc
 			else
 				echo ppc
 			fi
@@ -514,10 +517,10 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		x86_64*)
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.24) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo x86
 			else
-				ninj x86_64 amd64
+				echo amd64
 			fi
 			;;
 		xtensa*)	echo xtensa;;
@@ -570,12 +573,46 @@ tc-endian() {
 	esac
 }
 
+# @FUNCTION: tc-get-compiler-type
+# @RETURN: keyword identifying the compiler: gcc, clang, pathcc, unknown
+tc-get-compiler-type() {
+	local code='
+#if defined(__PATHSCALE__)
+	HAVE_PATHCC
+#elif defined(__clang__)
+	HAVE_CLANG
+#elif defined(__GNUC__)
+	HAVE_GCC
+#endif
+'
+	local res=$($(tc-getCPP "$@") -E -P - <<<"${code}")
+
+	case ${res} in
+		*HAVE_PATHCC*)	echo pathcc;;
+		*HAVE_CLANG*)	echo clang;;
+		*HAVE_GCC*)		echo gcc;;
+		*)				echo unknown;;
+	esac
+}
+
+# @FUNCTION: tc-is-gcc
+# @RETURN: Shell true if the current compiler is GCC, false otherwise.
+tc-is-gcc() {
+	[[ $(tc-get-compiler-type) == gcc ]]
+}
+
+# @FUNCTION: tc-is-clang
+# @RETURN: Shell true if the current compiler is clang, false otherwise.
+tc-is-clang() {
+	[[ $(tc-get-compiler-type) == clang ]]
+}
+
 # Internal func.  The first argument is the version info to expand.
 # Query the preprocessor to improve compatibility across different
 # compilers rather than maintaining a --version flag matrix. #335943
 _gcc_fullversion() {
 	local ver="$1"; shift
-	set -- `$(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__"`
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
 	eval echo "$ver"
 }
 
@@ -603,6 +640,39 @@ gcc-minor-version() {
 # @RETURN: micro compiler version (micro: 3.4.[6])
 gcc-micro-version() {
 	_gcc_fullversion '$3' "$@"
+}
+
+# Internal func. Based on _gcc_fullversion() above.
+_clang_fullversion() {
+	local ver="$1"; shift
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
+	eval echo "$ver"
+}
+
+# @FUNCTION: clang-fullversion
+# @RETURN: compiler version (major.minor.micro: [3.4.6])
+clang-fullversion() {
+	_clang_fullversion '$1.$2.$3' "$@"
+}
+# @FUNCTION: clang-version
+# @RETURN: compiler version (major.minor: [3.4].6)
+clang-version() {
+	_clang_fullversion '$1.$2' "$@"
+}
+# @FUNCTION: clang-major-version
+# @RETURN: major compiler version (major: [3].4.6)
+clang-major-version() {
+	_clang_fullversion '$1' "$@"
+}
+# @FUNCTION: clang-minor-version
+# @RETURN: minor compiler version (minor: 3.[4].6)
+clang-minor-version() {
+	_clang_fullversion '$2' "$@"
+}
+# @FUNCTION: clang-micro-version
+# @RETURN: micro compiler version (micro: 3.4.[6])
+clang-micro-version() {
+	_clang_fullversion '$3' "$@"
 }
 
 # Returns the installation directory - internal toolchain

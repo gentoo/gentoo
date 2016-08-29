@@ -30,7 +30,7 @@ setup-allowed-flags() {
 		-fno-PIE -fno-pie -nopie -fno-unit-at-a-time
 		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
 		-fno-ident -fpermissive -frecord-gcc-switches
-		'-fdiagnostics*'
+		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
 		# CPPFLAGS and LDFLAGS
@@ -54,7 +54,7 @@ setup-allowed-flags() {
 		-mno-faster-structs -mfaster-structs -m32 -m64 -mx32 -mabi
 		-mlittle-endian -mbig-endian -EL -EB -fPIC -mlive-g0 -mcmodel
 		-mstack-bias -mno-stack-bias -msecure-plt '-m*-toc' -mfloat-abi
-		-mfix-r10000 -mno-fix-r10000
+		-mfix-r10000 -mno-fix-r10000 -mthumb -marm
 
 		# gcc 4.5
 		-mno-fma4 -mno-movbe -mno-xop -mno-lwp

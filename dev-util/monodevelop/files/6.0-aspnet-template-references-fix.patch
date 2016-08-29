@@ -1,0 +1,20 @@
+diff -u -r work.unpacked/monodevelop-6.0/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml work/monodevelop-6.0/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml
+--- work.unpacked/monodevelop-6.0/src/addins/AspNet/Templates/Projects/EmptyMvcProject.xpt.xml
++++ work/monodevelop-6.0/src/addins/AspNet/Templates/Projects/EmptyProject.xpt.xml
+@@ -27,5 +27,6 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />
+diff -u -r work.unpacked/monodevelop-6.0/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml work/monodevelop-6.0/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml
+--- work.unpacked/monodevelop-6.0/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml
++++ work/monodevelop-6.0/src/addins/AspNet/Templates/Projects/MvcProject.xpt.xml
+@@ -29,5 +29,6 @@
+ 			<References>
+ 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
++				<Reference type="Package" refto="System.Web.Mvc" />
+ 				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+ 				<Reference type="Package" refto="System.Core" />

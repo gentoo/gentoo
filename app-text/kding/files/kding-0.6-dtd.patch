@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/338466
 
---- doc/de/index.docbook
-+++ doc/de/index.docbook
+--- a/doc/de/index.docbook
++++ b/doc/de/index.docbook
 @@ -1,5 +1,5 @@
  <?xml version="1.0" encoding="UTF-8"?>
 -<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
@@ -9,8 +9,8 @@ http://bugs.gentoo.org/338466
      <!ENTITY kding "<application>KDing</application>">
      <!ENTITY kappname "&kding;"><!-- Do *not* replace kappname-->
      <!ENTITY % addindex "IGNORE">
---- doc/en/index.docbook
-+++ doc/en/index.docbook
+--- a/doc/en/index.docbook
++++ b/doc/en/index.docbook
 @@ -1,5 +1,5 @@
  <?xml version="1.0" ?>
 -<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [

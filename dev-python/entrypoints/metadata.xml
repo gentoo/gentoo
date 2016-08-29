@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>marbre@linux.sungazer.de</email>
+  <name>Marius Brehler</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    Entry points are a way for Python packages to advertise objects with
+    some common interface. The most common examples are console_scripts
+    entry points, which define shell commands by identifying a Python
+    function to run.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">takluyver/testpath</remote-id>
+  </upstream>
+</pkgmetadata>

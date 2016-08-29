@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
 	</maintainer>
 	<slots>
 		<subslots>

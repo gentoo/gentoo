@@ -14,7 +14,7 @@ DESCRIPTION="Records your test suite's HTTP interactions and replay them during 
 HOMEPAGE="https://github.com/myronmarston/vcr/"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 SLOT="2"
 IUSE="test"
 

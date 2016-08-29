@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="An application that translates joystick events to keyboard events"
-HOMEPAGE="http://sourceforge.net/projects/joy2key"
+HOMEPAGE="https://sourceforge.net/projects/joy2key"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

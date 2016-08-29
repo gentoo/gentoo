@@ -20,33 +20,27 @@ DESCRIPTION="Measurement control and automation with Perl"
 HOMEPAGE="http://www.labmeasurement.de/"
 
 SLOT="0"
-IUSE="debug +xpression"
+IUSE="+xpression"
 
 RDEPEND="
 	dev-perl/Class-ISA
-	dev-perl/Clone
-	dev-perl/Exception-Class
+	>=dev-perl/Clone-0.310.0
+	virtual/perl-Data-Dumper
+	virtual/perl-Encode
+	>=dev-perl/Exception-Class-1
 	dev-perl/Hook-LexWrap
 	dev-perl/List-MoreUtils
 	dev-perl/Term-ANSIScreen
 	dev-perl/TermReadKey
 	dev-perl/TeX-Encode
-	dev-perl/XML-Generator
-	dev-perl/XML-DOM
-	dev-perl/XML-Twig
-	dev-perl/encoding-warnings
-	dev-perl/YAML
-	dev-perl/Switch
-	sci-visualization/gnuplot
-	virtual/perl-Data-Dumper
-	virtual/perl-Encode
 	virtual/perl-Time-HiRes
+	dev-perl/XML-DOM
+	dev-perl/XML-Generator
+	dev-perl/XML-Twig
+	dev-perl/YAML
+	sci-visualization/gnuplot
 	!dev-perl/Lab-Instrument
 	!dev-perl/Lab-Tools
-	debug? (
-		dev-lang/perl[ithreads]
-		dev-perl/Wx
-	)
 	xpression? (
 		dev-perl/Wx
 	)

@@ -8,7 +8,7 @@ inherit eutils flag-o-matic
 
 APPLE_PV=${PV}
 DESCRIPTION="Apple branch of the GNU Debugger, Developer Tools 4.0"
-HOMEPAGE="http://sourceware.org/gdb/"
+HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gdb-${APPLE_PV}.tar.gz"
 
 LICENSE="APSL-2 GPL-2"

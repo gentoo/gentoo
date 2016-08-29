@@ -11,11 +11,14 @@
 	</maintainer>
 	<use>
 		<flag name="gnome">Use the gksu sudo GUI for managing the devices</flag>
-		<flag name="icoutils">Enable icoutils support</flag>
+		<flag name="ico">Enable ico support via <pkg>media-gfx/icoutils</pkg></flag>
+		<flag name="icoutils">Enable <pkg>media-gfx/icoutils</pkg> support</flag>
+		<flag name="iso">Support unprivileged mounting of ISO9660 images via <pkg>sys-fs/fuseiso</pkg></flag>
 		<flag name="kde">Use the kdesu sudo GUI for managing the devices</flag>
-		<flag name="wineappdb">Enable Win AppDB browser subsystem</flag>
+		<flag name="wineappdb">Enable Wine AppDB browser support</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">brezerk/q4wine</remote-id>
 		<remote-id type="sourceforge">q4wine</remote-id>
 	</upstream>
 </pkgmetadata>

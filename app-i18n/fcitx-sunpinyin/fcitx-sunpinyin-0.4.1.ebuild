@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit cmake-utils gnome2-utils
 
@@ -16,13 +16,10 @@ KEYWORDS="amd64 ~ppc ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=app-i18n/fcitx-4.2.8
-	>app-i18n/sunpinyin-2.0.3"
-DEPEND="${RDEPEND}
+	>=app-i18n/sunpinyin-2.0.4_alpha
 	virtual/libintl"
-
-src_prepare() {
-	epatch_user
-}
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
 
 pkg_postinst() {
 	gnome2_icon_cache_update

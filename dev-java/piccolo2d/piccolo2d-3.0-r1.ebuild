@@ -41,10 +41,10 @@ src_install() {
 	dodoc Readme.txt ReleaseNotes.txt
 
 	if use examples; then
-		local INSDESTTREE=/usr/share/doc/${PF}/examples
-		doins -r examples/src/main/java/org/piccolo2d/examples/*
-		doins -r examples/src/main/java/org/piccolo2d/tutorial
-		doins -r swt-examples/src/main/java/org/piccolo2d/extras
-		docompress -x "${INSDESTTREE}"
+		docinto examples
+		dodoc -r examples/src/main/java/org/piccolo2d/examples/*
+		dodoc -r examples/src/main/java/org/piccolo2d/tutorial
+		dodoc -r swt-examples/src/main/java/org/piccolo2d/extras
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

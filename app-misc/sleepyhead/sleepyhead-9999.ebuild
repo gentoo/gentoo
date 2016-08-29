@@ -15,7 +15,7 @@ EGIT_BRANCH="rich-test"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 IUSE="debug"
 

@@ -1,0 +1,44 @@
+From f075deff61d3092d6754e48a3b63d40647888a35 Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sf.net>
+Date: Thu, 10 Mar 2016 19:13:41 +0100
+Subject: Fix build against current input ABI (xserver 1.18)
+
+xf86PostKeyEvent dropped the valuator arguments it wasn't using.
+
+Debian bug#813359 <https://bugs.debian.org/813359>
+
+Signed-off-by: Julien Cristau <jcristau@debian.org>
+
+diff --git a/src/xf86Aiptek.c b/src/xf86Aiptek.c
+index 7368602..78532e4 100644
+--- a/src/xf86Aiptek.c
++++ b/src/xf86Aiptek.c
+@@ -293,13 +293,19 @@ xf86AiptekSendEvents(InputInfoPtr pInfo, int r_z)
+                  */
+ 
+                 /* Keyboard 'make' (press) event */
+-                xf86PostKeyEvent(pInfo->dev, i+8, TRUE,
+-                                 bAbsolute, 0, 5,
+-                                 x, y, common->currentValues.button, xTilt, yTilt);
++                xf86PostKeyEvent(pInfo->dev, i+8, TRUE
++#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) < 22
++                                 , bAbsolute, 0, 5,
++                                 x, y, common->currentValues.button, xTilt, yTilt
++#endif
++                );
+                 /* Keyboard 'break' (depress) event */
+-                xf86PostKeyEvent(pInfo->dev, i+8, FALSE,
+-                                 bAbsolute, 0, 5,
+-                                 x, y, common->currentValues.button, xTilt, yTilt);
++                xf86PostKeyEvent(pInfo->dev, i+8, FALSE
++#if GET_ABI_MAJOR(ABI_XINPUT_VERSION) < 22
++                                 , bAbsolute, 0, 5,
++                                 x, y, common->currentValues.button, xTilt, yTilt
++#endif
++                );
+                 break;
+             }
+         }
+-- 
+cgit v0.10.2
+

@@ -6,7 +6,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">rtomac/robotframework-selenium2library</remote-id>
+    <remote-id type="github">robotframework/Selenium2Library</remote-id>
     <remote-id type="pypi">robotframework-selenium2library</remote-id>
   </upstream>
 </pkgmetadata>

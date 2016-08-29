@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug slp +tcp infiniband rdma"
 
-DEPEND="slp? ( net-libs/openslp ) infiniband? ( sys-infiniband/ofed )"
+DEPEND="slp? ( net-libs/openslp ) infiniband? ( sys-fabric/ofed )"
 RDEPEND="${DEPEND}
 	sys-fs/lsscsi
 	sys-apps/util-linux"

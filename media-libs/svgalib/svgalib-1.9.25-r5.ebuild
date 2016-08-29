@@ -46,6 +46,8 @@ src_compile() {
 	use kernel-helper || export NO_HELPER=y
 
 	export CC=$(tc-getCC)
+	# C89 extern inlines are needed, see #576260
+	append-cflags -fgnu89-inline
 
 	# First build static
 	emake OPTIMIZE="${CFLAGS}" static

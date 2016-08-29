@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ IUSE="+gtk +xpi +dialogs"
 REQUIRED_USE="
 	dialogs? ( gtk )"
 
-RDEPEND="gtk? ( x11-libs/gtk+:* )
+RDEPEND="gtk? ( x11-libs/gtk+:= )
 	>=sys-apps/pcsc-lite-1.2.9
 	xpi? ( || ( >=www-client/firefox-bin-3.6.24
 		>=www-client/firefox-3.6.20 ) )
@@ -43,8 +43,8 @@ src_prepare() {
 
 	if [[ ${PV} == "9999" ]] ; then
 		# Only in current git. Hopefully, in next release.
-		sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac
-		sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in
+		sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac || die
+		sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in || die
 	fi
 
 	if [[ ${PV} == "9999" ]] || ! use gtk ; then
@@ -61,7 +61,7 @@ src_install() {
 
 	if [[ ${PV} != "9999" ]] ; then
 		# Automatically done in current git. Hopefully, in next release.
-		rm doc/sdk/include/rsaref220/win32.h
+		rm doc/sdk/include/rsaref220/win32.h || die
 		doheader -r doc/sdk/include/*
 	fi
 	if use xpi; then
@@ -75,5 +75,5 @@ src_install() {
 			xpi_install	"${D}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
 		fi
 	fi
-	rm -r "${D}/usr/share" "${D}"/usr/lib*/*.la
+	rm -r "${D}/usr/share" "${D}"/usr/lib*/*.la || die
 }

@@ -1,0 +1,23 @@
+--- build.xml.orig	2016-03-16 14:37:28.000000000 +0000
++++ build.xml	2016-04-16 22:22:27.692967205 +0100
+@@ -320,7 +320,9 @@
+       <pathelement path="${build}/${jar}"/>
+       <pathelement path="${test.classes}"/>
+       <pathelement path="${build}/${testjar}"/>
++      <!--
+       <pathelement path="lib/clover.jar"/>
++      -->
+       <path refid="test.libs"/>
+     </path>
+   </target>
+@@ -909,8 +911,10 @@
+     <mkdir dir="${build}/jws"/>
+     <copy todir="${build}/jws" file="${build}/${jar}"/>
+     <copy todir="${build}/jws" file="${build}/${testjar}"/>
++    <!--
+     <copy todir="${build}/jws" file="lib/junit.jar"/>
+     <copy todir="${build}/jws" file="lib/clover.jar"/>
++    -->
+     <jar jarfile="${build}/jws/jnidispatch.jar">
+       <fileset dir="${build.native}" includes="*jnidispatch.*"/>
+     </jar>

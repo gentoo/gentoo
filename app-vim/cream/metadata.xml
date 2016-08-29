@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>degrenier@easyconnect.fr</email>
 		<description>Please Cc: Thomas de Grenier de Latour (not a Gentoo
 			developer) on any bugs, as he knows lots about the package and I'd
 			like his opinion before I make any big changes.</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>vim@gentoo.org</email>
-		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">cream</remote-id>

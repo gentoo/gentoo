@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -107,7 +107,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		--cache-file="${BUILD_DIR}"/config.cache \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir='$(datarootdir)'/doc/${PF} \
 		--with-curses \
 		$(use_enable static-libs static)
 

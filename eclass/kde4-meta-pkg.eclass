@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# @DEAD
+# This eclass is deprecated and no longer used. Superseded by
+# kde5-meta-pkg.eclass It will be removed in 30 days.
 
 # @ECLASS: kde4-meta-pkg.eclass
 # @MAINTAINER:

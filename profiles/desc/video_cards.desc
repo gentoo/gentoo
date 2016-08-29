@@ -12,7 +12,6 @@ ark - VIDEO_CARDS setting to build driver for ark video cards
 ast - VIDEO_CARDS setting to build driver for ASpeedTech video cards
 chips - VIDEO_CARDS setting to build driver for chips video cards
 cirrus - VIDEO_CARDS setting to build driver for cirrus video cards
-cyrix - VIDEO_CARDS setting to build driver for cyrix video cards
 dummy - VIDEO_CARDS setting to build driver for dummy video cards
 epson - VIDEO_CARDS setting to build driver for epson video cards
 exynos - VIDEO_CARDS setting to build driver for Samsung Exynos video cards
@@ -26,14 +25,12 @@ i740 - VIDEO_CARDS setting to build driver for Intel i740 video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 ilo - VIDEO_CARDS setting to build unofficial gallium driver for Intel gen6/7 video cards
-impact - VIDEO_CARDS setting to build driver for impact video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 mach64 - VIDEO_CARDS setting to build driver for mach64 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 modesetting - VIDEO_CARDS setting to build driver for unaccelerated modesetting
 neomagic - VIDEO_CARDS setting to build driver for neomagic video cards
 newport - VIDEO_CARDS setting to build driver for newport video cards
-none - VIDEO_CARDS setting to build no drivers (useful when using binary drivers)
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nsc - VIDEO_CARDS setting to build driver for nsc video cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
@@ -46,7 +43,6 @@ r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
 r200 - VIDEO_CARDS setting to build only r200 based chips code for radeon
 r300 - VIDEO_CARDS setting to build only r300, r400 and r500 based chips code for radeon
 r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Islands based chips code for radeon
-radeonhd - VIDEO_CARDS setting to build driver for ATI radeon HD video cards (radeon also works)
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 rendition - VIDEO_CARDS setting to build driver for rendition video cards
@@ -75,5 +71,3 @@ via - VIDEO_CARDS setting to build driver for via video cards
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
 voodoo - VIDEO_CARDS setting to build driver for voodoo video cards
-xgi - VIDEO_CARDS setting to build driver for xgi video cards
-svga - VIDEO_CARDS setting to build driver for svga (VMware Virtual GPU) via Gallium

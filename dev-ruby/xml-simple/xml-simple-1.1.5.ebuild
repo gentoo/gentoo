@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/maik/xml-simple"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 each_ruby_test() {

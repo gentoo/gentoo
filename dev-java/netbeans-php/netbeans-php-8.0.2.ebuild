@@ -14,7 +14,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/0702230EB3354A1687E4496D73A94F33A1E343BD-phpdocdesc.zip
 	http://hg.netbeans.org/binaries/BFB982F9B33E2F1A1766C212C8208793F9B7E77C-phpsigfiles.zip
 	http://hg.netbeans.org/binaries/3D6AF75EA20D715887DAF47A3F063864EF0814C1-predefined_vars.zip"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="amd64 x86"
 IUSE=""
 S="${WORKDIR}"

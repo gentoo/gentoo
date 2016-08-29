@@ -8,7 +8,7 @@ inherit elisp-common eutils toolchain-funcs
 
 DESCRIPTION="an extremely light-weight and barebones wm modelled after screen"
 HOMEPAGE="http://www.nongnu.org/ratpoison/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

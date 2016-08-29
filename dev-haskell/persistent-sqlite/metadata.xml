@@ -9,7 +9,6 @@
 		This package includes a thin sqlite3 wrapper based on the direct-sqlite package, as well as the entire C library, so there are no system dependencies.
 	</longdescription>
 	<use>
-          <flag name="systemlib">Use the system-wide sqlite library.</flag>
 	  <flag name="build-sanity-exe">Build a sanity check test executable.</flag>
 	</use>
 </pkgmetadata>

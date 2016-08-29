@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # This script is based on the one created by Phil (bug #255329).
 
 depend() {

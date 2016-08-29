@@ -9,6 +9,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<longdescription>
 		MiniUPnP Internet Gateway Device Deamon, used to allow UPnP enabled clients to forward ports.
 	</longdescription>

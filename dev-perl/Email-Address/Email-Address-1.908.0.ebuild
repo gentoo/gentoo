@@ -21,7 +21,5 @@ DEPEND="${RDEPEND}
 		virtual/perl-Encode
 		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-0.960.0
-		>=dev-perl/Test-Pod-1.140.0
-		>=dev-perl/Test-Pod-Coverage-1.80.0
 	)
 "

@@ -1,0 +1,25 @@
+From 124ba14f188fd3b63735b73828fa3d99ebfdb7af Mon Sep 17 00:00:00 2001
+From: "John R. Daily" <git@epep.us>
+Date: Thu, 19 May 2016 15:26:02 -0400
+Subject: [PATCH 5/5] R15 does not appear to properly handle the export_all
+ directive added to rebar.config
+
+---
+ src/lager_app.erl | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lager_app.erl b/src/lager_app.erl
+index 7b02e54..b76da53 100644
+--- a/src/lager_app.erl
++++ b/src/lager_app.erl
+@@ -23,6 +23,7 @@
+ -behaviour(application).
+ -include("lager.hrl").
+ -ifdef(TEST).
++-compile([export_all]).
+ -include_lib("eunit/include/eunit.hrl").
+ -endif.
+ -export([start/0,
+-- 
+2.8.3
+

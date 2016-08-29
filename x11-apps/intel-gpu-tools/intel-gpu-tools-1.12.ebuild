@@ -22,6 +22,11 @@ DEPEND="dev-libs/glib:2
 	unwind? ( sys-libs/libunwind )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12-inttypes.patch #582430
+	"${FILESDIR}"/${PN}-1.12-sysmacros.patch #581080
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

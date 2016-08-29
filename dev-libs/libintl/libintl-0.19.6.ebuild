@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,6 +23,7 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
 # Block C libraries known to provide libintl.
 RDEPEND="${DEPEND}
 	!sys-libs/glibc
+	!sys-libs/musl
 	!<sys-devel/gettext-0.19.6-r1"
 
 S="${WORKDIR}/${MY_P}/gettext-runtime"

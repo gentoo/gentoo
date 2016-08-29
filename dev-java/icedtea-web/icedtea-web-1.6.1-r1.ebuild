@@ -13,7 +13,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 SRC_URI="http://icedtea.classpath.org/download/source/${P}.tar.gz"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc64 x86"
 IUSE="doc javascript nsplugin tagsoup test"
 RESTRICT="test"
 

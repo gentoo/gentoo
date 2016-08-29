@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="pypi">jaraco.logging</remote-id>
 		<remote-id type="github">jaraco/jaraco.logging</remote-id>
+		<bugs-to>https://github.com/jaraco/jaraco.logging/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

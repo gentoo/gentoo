@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 # TODO: QtBluetooth, QtLocation, QtNfc, QtWebEngine{Core,Widgets}
 IUSE="dbus debug declarative designer doc examples gles2 gui help multimedia

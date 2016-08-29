@@ -19,8 +19,8 @@ IUSE="dbus doc emf fits hdf5 minuit vo"
 
 CDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	>=dev-python/PyQt4-4.11.4[X,svg,${PYTHON_USEDEP}]
-	<dev-python/PyQt4-4.12_pre1604171631[X,svg,${PYTHON_USEDEP}]"
+	>=dev-python/PyQt4-4.11.4[compat,X,svg,${PYTHON_USEDEP}]
+	<dev-python/PyQt4-4.12_pre1604171631[compat,X,svg,${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	emf? ( dev-python/pyemf[$(python_gen_usedep 'python2*')] )

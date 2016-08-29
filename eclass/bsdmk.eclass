@@ -4,9 +4,7 @@
 
 # @ECLASS: bsdmk.eclass
 # @MAINTAINER:
-# Otavio R. Piske "AngusYoung" <angusyoung@gentoo.org>
-# Diego Pettenò <flameeyes@gentoo.org>
-# Benigno B. Junior <bbj@gentoo.org>
+# maintainer-needed@gentoo.org
 # @BLURB: Some functions for BSDmake
 
 inherit toolchain-funcs portability flag-o-matic

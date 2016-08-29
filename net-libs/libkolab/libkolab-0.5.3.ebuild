@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://mirror.kolabsys.com/pub/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2+ LGPL-2.1+ LGPL-3+"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="php python test"
 
 # Tests fail, last checked 0.5.3

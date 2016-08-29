@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools autotools-utils eutils
 
 DESCRIPTION="A unit test framework for C"
-HOMEPAGE="http://sourceforge.net/projects/check/"
+HOMEPAGE="https://sourceforge.net/projects/check/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

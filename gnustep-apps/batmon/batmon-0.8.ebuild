@@ -7,7 +7,7 @@ inherit gnustep-2
 
 DESCRIPTION="displays the status of your laptop battery"
 HOMEPAGE="http://www.nongnu.org/gap/batmon/index.html"
-SRC_URI="http://savannah.nongnu.org/download/gap/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,8 +1,0 @@
-diff --git a/src/Graphics/UI/WX/Window.hs b/src/Graphics/UI/WX/Window.hs
-index 0b04fa9..39c0505 100644
---- a/src/Graphics/UI/WX/Window.hs
-+++ b/src/Graphics/UI/WX/Window.hs
-@@ -1,2 +1,2 @@
--{-# LANGUAGE TypeSynonymInstances, FlexibleInstances #-}
-+{-# LANGUAGE TypeSynonymInstances, FlexibleInstances, FlexibleContexts #-}
- --------------------------------------------------------------------------------

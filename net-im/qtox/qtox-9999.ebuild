@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils qmake-utils git-r3
 
@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(tc-getCXX) == *g++ ]] ; then
+		if tc-is-gcc ; then
 			if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 || $(gcc-major-version) -lt 4 ]] ; then
 				eerror "You need at least sys-devel/gcc-4.8.3"
 				die "You need at least sys-devel/gcc-4.8.3"
@@ -56,18 +56,11 @@ pkg_pretend() {
 	fi
 }
 
-src_prepare() {
-	epatch_user
-}
-
 src_configure() {
 	use gtk || local NO_GTK_SUPPORT="ENABLE_SYSTRAY_STATUSNOTIFIER_BACKEND=NO ENABLE_SYSTRAY_GTK_BACKEND=NO"
 	use X || local NO_X_SUPPORT="DISABLE_PLATFORM_EXT=YES"
-	# filter_audio is disabled since it's not available in Gentoo, and
-	# support for it in qTox at the present is ~broken anyway
 	eqmake5 \
 			PREFIX="${D}/usr" \
-			DISABLE_FILTER_AUDIO=YES \
 			${NO_GTK_SUPPORT} \
 			${NO_X_SUPPORT}
 }

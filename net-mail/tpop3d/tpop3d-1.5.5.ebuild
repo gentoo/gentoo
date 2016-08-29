@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils flag-o-matic autotools
 
 DESCRIPTION="An extensible POP3 server with vmail-sql/MySQL support"
-HOMEPAGE="http://savannah.nongnu.org/projects/tpop3d/"
+HOMEPAGE="https://savannah.nongnu.org/projects/tpop3d/"
 SRC_URI="http://download.savannah.nongnu.org/releases/tpop3d/${P}.tar.gz"
 
 LICENSE="GPL-2"

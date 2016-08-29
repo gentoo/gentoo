@@ -16,8 +16,8 @@ DESCRIPTION="Translator library for raster geospatial data formats (includes OGR
 HOMEPAGE="http://www.gdal.org/"
 SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
-SLOT="0"
-LICENSE="MIT"
+SLOT="0/2"
+LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python spatialite sqlite threads xls"
 
@@ -249,7 +249,7 @@ src_configure() {
 
 src_compile() {
 	if use perl; then
-		rm "${S}"/swig/perl/*_wrap.cpp
+		rm "${S}"/swig/perl/*_wrap.cpp || die
 		emake -C "${S}"/swig/perl generate
 	fi
 
@@ -265,7 +265,7 @@ src_compile() {
 	use doc && emake docs
 
 	compile_python() {
-		rm -f swig/python/*_wrap.cpp
+		rm -f swig/python/*_wrap.cpp || die
 		emake -C swig/python generate
 		emake -C swig/python build
 	}

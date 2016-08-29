@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
-DESCRIPTION="Todo management application for KDE"
+DESCRIPTION="Todo management application by KDE"
 HOMEPAGE="https://zanshin.kde.org/"
 SRC_URI="https://files.kde.org/${PN}/${P}.tar.bz2"
 
@@ -16,12 +16,12 @@ SLOT="4"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="
+DEPEND="
 	$(add_kdeapps_dep kdepim-runtime '' 4.6.0)
 	$(add_kdeapps_dep kdepimlibs)
 	$(add_kdebase_dep baloo)
 	dev-libs/boost
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 RESTRICT="test"

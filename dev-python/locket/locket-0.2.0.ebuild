@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="File-based locks for Python"
-HOMEPAGE="http://github.com/mwilliamson/locket.py"
+HOMEPAGE="https://github.com/mwilliamson/locket.py"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>jer@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>wired@gentoo.org</email>
-		<name>Alex Alexander</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>

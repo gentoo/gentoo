@@ -6,6 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros-controls/control_toolbox"
 KEYWORDS="~amd64"
 CATKIN_HAS_MESSAGES=yes
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
@@ -19,8 +20,8 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/dynamic_reconfigure
 	dev-ros/realtime_tools
-	dev-ros/std_msgs
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml
+	dev-ros/control_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}"

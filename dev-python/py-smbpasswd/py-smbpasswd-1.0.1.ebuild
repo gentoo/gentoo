@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 
 inherit distutils
 
-DESCRIPTION="This module can generate both LANMAN and NT password hashes, suitable for use with Samba"
+DESCRIPTION="Module capable of generating both LANMAN and NT password hashes, for e.g. Samba"
 HOMEPAGE="http://barryp.org/software/py-smbpasswd/"
 SRC_URI="http://barryp.org/software/${PN}/files/${P}.tar.gz"
 

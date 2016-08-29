@@ -1,0 +1,102 @@
+diff -Nuar a/configure b/configure
+--- a/configure	2008-06-09 02:02:30.000000000 +0200
++++ b/configure	2015-05-18 11:53:26.179944658 +0200
+@@ -1379,47 +1379,6 @@
+ 
+ 
+ tcap=no
+-echo $ac_n "checking for -ltermcap""... $ac_c" 1>&6
+-ac_lib_var=`echo termcap'_'tgetstr | tr './+\055' '__p_'`
+-if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+-  echo $ac_n "(cached) $ac_c" 1>&6
+-else
+-  ac_save_LIBS="$LIBS"
+-LIBS="-ltermcap  $LIBS"
+-cat > conftest.$ac_ext <<EOF
+-#line 1337 "configure"
+-#include "confdefs.h"
+-/* Override any gcc2 internal prototype to avoid an error.  */
+-/* We use char because int might match the return type of a gcc2
+-    builtin and then its argument prototype would still apply.  */
+-char tgetstr();
+-
+-int main() { return 0; }
+-int t() {
+-tgetstr()
+-; return 0; }
+-EOF
+-if { (eval echo configure:1349: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; }; then
+-  rm -rf conftest*
+-  eval "ac_cv_lib_$ac_lib_var=yes"
+-else
+-  rm -rf conftest*
+-  eval "ac_cv_lib_$ac_lib_var=no"
+-fi
+-rm -f conftest*
+-LIBS="$ac_save_LIBS"
+-
+-fi
+-if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+-  echo "$ac_t""yes" 1>&6
+-  cat >> confdefs.h <<\EOF
+-#define HAVE_LIBTERMCAP 1
+-EOF
+- LIBS="$LIBS -ltermcap" tcap=yes
+-else
+-  echo "$ac_t""no" 1>&6
+-fi
+-
+ if test $tcap = no; then
+    echo $ac_n "checking for -ltermlib""... $ac_c" 1>&6
+ ac_lib_var=`echo termlib'_'tgetstr | tr './+\055' '__p_'`
+diff -Nuar a/configure-gtk b/configure-gtk
+--- a/configure-gtk	2008-06-09 02:10:14.000000000 +0200
++++ b/configure-gtk	2015-05-18 11:53:38.889944587 +0200
+@@ -1379,47 +1379,6 @@
+ 
+ 
+ tcap=no
+-echo $ac_n "checking for -ltermcap""... $ac_c" 1>&6
+-ac_lib_var=`echo termcap'_'tgetstr | tr './+\055' '__p_'`
+-if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+-  echo $ac_n "(cached) $ac_c" 1>&6
+-else
+-  ac_save_LIBS="$LIBS"
+-LIBS="-ltermcap  $LIBS"
+-cat > conftest.$ac_ext <<EOF
+-#line 1337 "configure"
+-#include "confdefs.h"
+-/* Override any gcc2 internal prototype to avoid an error.  */
+-/* We use char because int might match the return type of a gcc2
+-    builtin and then its argument prototype would still apply.  */
+-char tgetstr();
+-
+-int main() { return 0; }
+-int t() {
+-tgetstr()
+-; return 0; }
+-EOF
+-if { (eval echo configure:1349: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; }; then
+-  rm -rf conftest*
+-  eval "ac_cv_lib_$ac_lib_var=yes"
+-else
+-  rm -rf conftest*
+-  eval "ac_cv_lib_$ac_lib_var=no"
+-fi
+-rm -f conftest*
+-LIBS="$ac_save_LIBS"
+-
+-fi
+-if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+-  echo "$ac_t""yes" 1>&6
+-  cat >> confdefs.h <<\EOF
+-#define HAVE_LIBTERMCAP 1
+-EOF
+- LIBS="$LIBS -ltermcap" tcap=yes
+-else
+-  echo "$ac_t""no" 1>&6
+-fi
+-
+ if test $tcap = no; then
+    echo $ac_n "checking for -ltermlib""... $ac_c" 1>&6
+ ac_lib_var=`echo termlib'_'tgetstr | tr './+\055' '__p_'`

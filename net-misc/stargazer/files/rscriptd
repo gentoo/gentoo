@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 DAEMON=/usr/sbin/rscriptd
 RSCRIPTD_OPTS="/etc/stargazer/rscriptd.conf"

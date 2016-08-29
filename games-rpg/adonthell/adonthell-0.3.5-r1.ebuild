@@ -9,7 +9,7 @@ inherit autotools eutils python-single-r1 games
 
 DESCRIPTION="roleplaying game engine"
 HOMEPAGE="http://adonthell.linuxgames.com/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${PN}-src-${PV}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

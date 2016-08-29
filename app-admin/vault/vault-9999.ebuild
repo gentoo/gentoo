@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils fcaps git-r3 golang-build systemd user
 
@@ -30,7 +30,7 @@ S="${WORKDIR}/src/${GO_PN}"
 EGIT_CHECKOUT_DIR="${S}"
 
 FILECAPS=(
-	-m 755 'cap_ipc_lock=+ei' usr/bin/${PN}
+	-m 755 'cap_ipc_lock=+ep' usr/bin/${PN}
 )
 
 pkg_setup() {

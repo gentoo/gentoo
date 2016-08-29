@@ -7,7 +7,6 @@
 
 aivdm - AIVDM protocol support
 ashtech - Ashtech protocol support
-clientdebug - Client debugging protocol support
 earthmate - Earthmate protocol support
 evermore - EverMore protocol support
 fury - Jackson Labs Fury and Firefly support
@@ -24,14 +23,12 @@ nmea0183 - NMEA protocol support
 nmea2000 - NMEA2000/CAN support
 ntrip - NTRIP protocol support
 oceanserver - OceanServer protocol support
-oldstyle - Oldstyle (pre-JSON) protocol support
 oncore - OnCore protocol support
 passthrough - Pass through JSON data
 rtcm104v2 - RTCM104V2 protocol support
 rtcm104v3 - RTCM104V3 protocol support
 sirf - SiRF protocol support
 superstar2 - SuperStarII protocol support
-timing - Timing protocol support
 tnt - True North protocol support
 tripmate - Tripmate protocol support
 tsip - Trimble TSIP protocol support

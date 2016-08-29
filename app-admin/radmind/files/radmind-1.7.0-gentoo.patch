@@ -9,7 +9,7 @@ diff -Naur radmind-1.5.0/rc.radmind radmind-1.5.0-r1/rc.radmind
 --- radmind-1.5.0/rc.radmind	1970-01-01 01:00:00.000000000 +0100
 +++ radmind-1.5.0-r1/rc.radmind	2005-02-24 23:04:12.379193384 +0100
 @@ -0,0 +1,18 @@
-+#!/sbin/runscript
++#!/sbin/openrc-run
 +
 +depend (){
 +  need net

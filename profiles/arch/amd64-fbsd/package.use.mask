@@ -10,7 +10,7 @@ dev-qt/qtchooser test
 # Missing keyword on dev-libs/botan and dev-libs/pkcs11-helper
 app-crypt/qca botan pkcs11
 
-# Michael Palimaka <kensington@gentoo.org) (26 Dec 2014)
+# Michael Palimaka <kensington@gentoo.org> (26 Dec 2014)
 # Unkeyworded media-libs/opencv
 media-plugins/frei0r-plugins facedetect
 media-video/vlc opencv

@@ -1,0 +1,41 @@
+From 897a64b18f8727c951dac8ca91ebf43f2c18f908 Mon Sep 17 00:00:00 2001
+From: Javier Llorente <javier@opensuse.org>
+Date: Sat, 13 Feb 2016 12:20:03 +0100
+Subject: [PATCH] Fix desktop categories, remove version (see
+ desktop-entry-spec), add a newline at eof
+
+---
+ src/daemon/snorenotify.desktop.in     | 3 +--
+ src/settings/snoresettings.desktop.in | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/daemon/snorenotify.desktop.in b/src/daemon/snorenotify.desktop.in
+index 83f0e3f..9fc1876 100644
+--- a/src/daemon/snorenotify.desktop.in
++++ b/src/daemon/snorenotify.desktop.in
+@@ -1,8 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+-Version=@SNORE_VERSION_MAJOR@.@SNORE_VERSION_MINOR@.@SNORE_VERSION_PATCH@
+ Name=SnoreNotify
+ Comment=A daemon redirecting desktop notifications to one or multiple additional backends.
+ Icon=snore
+ Exec=snorenotify
+-Categories=Qt;System;
+\ No newline at end of file
++Categories=Qt;Settings;Qt;Utility;DesktopSettings;
+diff --git a/src/settings/snoresettings.desktop.in b/src/settings/snoresettings.desktop.in
+index 823bb2d..497d119 100644
+--- a/src/settings/snoresettings.desktop.in
++++ b/src/settings/snoresettings.desktop.in
+@@ -1,8 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+-Version=@SNORE_VERSION_MAJOR@.@SNORE_VERSION_MINOR@.@SNORE_VERSION_PATCH@
+ Name=SnoreSettings
+ Comment=Settings client for applications using libsnore.
+ Icon=snore
+ Exec=snoresettings
+-Categories=Qt;System;
+\ No newline at end of file
++Categories=Qt;Settings;Qt;Utility;DesktopSettings;

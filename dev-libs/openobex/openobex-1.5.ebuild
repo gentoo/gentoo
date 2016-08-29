@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils autotools
 
 DESCRIPTION="An implementation of the OBEX protocol used for transferring data to mobile devices"
-HOMEPAGE="http://sourceforge.net/projects/openobex/"
+HOMEPAGE="https://sourceforge.net/projects/openobex/"
 SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"

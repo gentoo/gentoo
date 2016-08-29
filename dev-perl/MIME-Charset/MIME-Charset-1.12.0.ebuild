@@ -12,7 +12,7 @@ DESCRIPTION="Charset Informations for MIME"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="linguas_ja linguas_zh"
+IUSE="l10n_ja l10n_zh"
 PATCHES=(
 	"${FILESDIR}/${DIST_VERSION}-makefilepl.patch"
 )
@@ -20,8 +20,8 @@ PATCHES=(
 # And POD2
 RDEPEND="
 	>=virtual/perl-Encode-1.980.0
-	linguas_ja? ( >=dev-perl/Encode-EUCJPASCII-0.20.0 )
-	linguas_zh? ( >=dev-perl/Encode-HanExtra-0.200.0  )
+	l10n_ja? ( >=dev-perl/Encode-EUCJPASCII-0.20.0 )
+	l10n_zh? ( >=dev-perl/Encode-HanExtra-0.200.0  )
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

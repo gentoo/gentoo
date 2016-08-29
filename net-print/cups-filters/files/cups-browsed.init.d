@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 PIDFILE=/var/run/cups-browsed.pid
 

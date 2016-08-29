@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ DEPEND="dev-cpp/eigen:3
 	dev-cpp/muParser
 	dev-qt/qtcore:4
 	dev-qt/qtopengl:4
+	dev-qt/qtxmlpatterns:4
 	media-libs/glew
 	media-libs/qhull
 	=media-libs/lib3ds-1*

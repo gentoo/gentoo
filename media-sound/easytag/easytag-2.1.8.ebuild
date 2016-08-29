@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND=">=x11-libs/gtk+-2.24:2
 		media-libs/flac
 		media-libs/libvorbis
 		)
-	mp4? ( media-libs/taglib[mp4] )
+	mp4? ( media-libs/taglib[mp4(+)] )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 	speex? (

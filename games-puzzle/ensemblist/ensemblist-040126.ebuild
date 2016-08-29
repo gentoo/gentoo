@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="Put together several primitives to build a given shape. (C.S.G. Game)"
 HOMEPAGE="http://www.nongnu.org/ensemblist/index_en.html"
-SRC_URI="http://savannah.nongnu.org/download/ensemblist/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/ensemblist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

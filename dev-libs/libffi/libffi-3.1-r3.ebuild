@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
-HOMEPAGE="http://sourceware.org/libffi/"
+HOMEPAGE="https://sourceware.org/libffi/"
 SRC_URI="ftp://sourceware.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -42,7 +42,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-typing_error.patch
 
 	sed -i -e 's:@toolexeclibdir@:$(libdir):g' Makefile.in || die #462814
-	# http://sourceware.org/ml/libffi-discuss/2014/msg00060.html
+	# https://sourceware.org/ml/libffi-discuss/2014/msg00060.html
 	sed -i -e 's:@toolexeclibdir@:${libdir}:' libffi.pc.in || die #511726
 
 	epatch_user

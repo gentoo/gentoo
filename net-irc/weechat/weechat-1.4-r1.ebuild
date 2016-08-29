@@ -4,6 +4,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+CMAKE_MAKEFILE_GENERATOR=emake
 inherit eutils python-single-r1 multilib cmake-utils
 
 if [[ ${PV} == "9999" ]] ; then
@@ -11,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"

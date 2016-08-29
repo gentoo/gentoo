@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ MY_P=${P/_beta/-beta}
 DBV=20080531
 
 DESCRIPTION="A simple utility to read the temperature of SMART capable hard drives"
-HOMEPAGE="http://savannah.nongnu.org/projects/hddtemp/"
+HOMEPAGE="https://savannah.nongnu.org/projects/hddtemp/"
 SRC_URI="http://download.savannah.gnu.org/releases/hddtemp/${MY_P}.tar.bz2 mirror://gentoo/hddtemp-${DBV}.db.bz2"
 
 LICENSE="GPL-2"
@@ -41,6 +41,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-nls.patch
 	epatch "${FILESDIR}"/${P}-iconv.patch
 	epatch "${FILESDIR}"/${P}-dontwake.patch
+	mv "${S}"/configure.{in,ac} || die
 	AT_M4DIR="m4" eautoreconf
 }
 

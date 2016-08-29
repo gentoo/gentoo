@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,8 +57,7 @@ src_install() {
 		insinto /usr/share/vdr/rcscript
 		newins "${FILESDIR}"/rc-addon-0.6.0.sh plugin-streamdev-server.sh
 
-		insinto /etc/conf.d
-		newins "${FILESDIR}"/confd-0.6.0 vdr.streamdev-server
+		newconfd "${FILESDIR}"/confd-0.6.0 vdr.streamdev-server
 
 		insinto /etc/vdr/plugins/streamdev-server
 		newins streamdev-server/streamdevhosts.conf streamdevhosts.conf

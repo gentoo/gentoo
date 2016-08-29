@@ -8,4 +8,8 @@
   <upstream>
     <remote-id type="github">ocsigen/tyxml</remote-id>
   </upstream>
+  <use>
+    <flag name="camlp4">Enables the camlp4 syntax extension (deprecated)</flag>
+	<flag name="ppx">Enables the ppx syntax extension (preferred)</flag>
+  </use>
 </pkgmetadata>

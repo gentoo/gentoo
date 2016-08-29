@@ -1,5 +1,5 @@
 https://bugs.gentoo.org/503424#c5
-http://sourceforge.net/p/pam-ssh/bugs/16/
+https://sourceforge.net/p/pam-ssh/bugs/16/
 
 --- a/pam_ssh.c
 +++ b/pam_ssh.c

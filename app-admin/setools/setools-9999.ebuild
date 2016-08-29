@@ -28,15 +28,14 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/bzip2:=
 	dev-libs/libpcre:=
 	X? (
-	    dev-python/PyQt5
-		dev-qt/qtchooser
+		dev-python/PyQt5
 	)"
 
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-2.0.12:0
 	sys-devel/bison
 	sys-devel/flex
-	>=sys-libs/libsepol-2.4
+	>=sys-libs/libsepol-2.5
 	test? (
 		python_targets_python2_7? ( dev-python/mock[${PYTHON_USEDEP}] )
 		dev-python/tox[${PYTHON_USEDEP}]
@@ -45,7 +44,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	sed -i "s/'-Werror', //" "${S}"/setup.py || die "failed to remove Werror"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.0.0-remove-gui.patch )
+	use X || local PATCHES=( "${FILESDIR}"/setools-4.0.1-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 

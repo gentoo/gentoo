@@ -7,16 +7,23 @@
 #  config-TARGET:	CURRENT=version for TARGET
 #  TARGET-VER:		has a TARGET and VER variable
 
+EPREFIX="@GENTOO_PORTAGE_EPREFIX@"
+if [[ ${EPREFIX} == "@"GENTOO_PORTAGE_EPREFIX"@" ]] ; then
+	EPREFIX=""
+fi
+
 : ${ROOT:=/}
 [[ ${ROOT} != */ ]] && ROOT="${ROOT}/"
 [[ ${ROOT} != /* ]] && ROOT="${PWD%/}/${ROOT}"
 
-cd /
+EROOT="${ROOT%/}${EPREFIX}/"
+
+cd "${EPREFIX}/"
 
 trap ":" INT QUIT TSTP
 
 argv0=${0##*/}
-FUNCTIONS_SH="/lib/gentoo/functions.sh"
+FUNCTIONS_SH="${EPREFIX}/lib/gentoo/functions.sh"
 source ${FUNCTIONS_SH} || {
 	echo "${argv0}: Could not source ${FUNCTIONS_SH}!" 1>&2
 	exit 1
@@ -97,14 +104,14 @@ setup_env() {
 		# Newer paths: /usr/${HOST}/${TARGET}/...
 		# Older paths: /usr/${TARGET}/...
 		#
-		if [[ -d ${ROOT}/usr/${HOST}/${TARGET}/binutils-bin/${VER} ]] ; then
-			BINPATH=/usr/${HOST}/${TARGET}/binutils-bin/${VER}
-			BINPATH_LINKS=/usr/libexec/gcc/${TARGET}
+		if [[ -d "${EROOT}"/usr/${HOST}/${TARGET}/binutils-bin/${VER} ]] ; then
+			BINPATH="${EPREFIX}"/usr/${HOST}/${TARGET}/binutils-bin/${VER}
+			BINPATH_LINKS="${EPREFIX}"/usr/libexec/gcc/${TARGET}
 		fi
 	fi
 	if [[ -z ${BINPATH} ]] ; then
-		BINPATH=/usr/${TARGET}/binutils-bin/${VER}
-		BINPATH_LINKS=/usr/${TARGET}/bin
+		BINPATH="${EPREFIX}"/usr/${TARGET}/binutils-bin/${VER}
+		BINPATH_LINKS="${EPREFIX}"/usr/${TARGET}/bin
 	fi
 }
 
@@ -123,24 +130,24 @@ switch_profile() {
 	setup_env || return 1
 
 	cd "${ROOT}/${BINPATH}" || exit 1
-	mkdir -p "${ROOT}/${BINPATH_LINKS}" "${ROOT}/usr/bin"
+	mkdir -p "${ROOT}/${BINPATH_LINKS}" "${EROOT}/usr/bin"
 	for x in * ; do
 		atomic_ln "${BINPATH}/${x}" "${ROOT}/${BINPATH_LINKS}" "${x}"
-		atomic_ln "${BINPATH_LINKS}/${x}" "${ROOT}/usr/bin" "${TARGET}-${x}"
+		atomic_ln "${BINPATH_LINKS}/${x}" "${EROOT}/usr/bin" "${TARGET}-${x}"
 		if [[ ${TARGET} == ${HOST} ]] ; then
-			atomic_ln "${TARGET}-${x}" "${ROOT}/usr/bin" "${x}"
+			atomic_ln "${TARGET}-${x}" "${EROOT}/usr/bin" "${x}"
 		fi
 	done
 
 	#
 	# Generate library / ldscripts symlinks
 	#
-	: ${LIBPATH:=/usr/lib/binutils/${TARGET}/${VER}}
+	: ${LIBPATH:=${EPREFIX}/usr/lib/binutils/${TARGET}/${VER}}
 	cd "${ROOT}/${LIBPATH}" || exit 1
 	if [[ ${TARGET} == ${HOST} ]] ; then
-		dstlib=${ROOT}/usr/${HOST}/lib
+		dstlib=${EROOT}/usr/${HOST}/lib
 	else
-		dstlib=${ROOT}/usr/${HOST}/${TARGET}/lib
+		dstlib=${EROOT}/usr/${HOST}/${TARGET}/lib
 	fi
 	# When upgrading, we need to clean up ldscripts and libs.
 	# Don't symlink back in the libs -- the binutils-lib package handles
@@ -149,16 +156,7 @@ switch_profile() {
 	mkdir -p "${dstlib}"
 	rm -rf "${ROOT}/${BINPATH_LINKS}"/ldscripts
 	atomic_ln "${LIBPATH}/ldscripts" "${dstlib}" "ldscripts"
-	find -L "${dstlib}" -xtype l -name 'lib*' -delete
-	# Detect older binutils w/broken rpaths. #562460
-	# We can hardcode the "/lib" part since that's what the binutils
-	# configure scripts have.  They did not include any other path.
-	if [[ $(scanelf -qF '%r#F' "${ROOT}/${BINPATH}/as") == */lib ]] ; then
-		ewarn "Old cross-binutils detected; please re-emerge to fix (see bug #562460)."
-		for x in lib* ; do
-			atomic_ln "${LIBPATH}/${x}" "${dstlib}" "${x}"
-		done
-	fi
+	find -L "${dstlib}" -xtype l -name 'lib*' -exec rm -f {} +
 
 	#
 	# Clean out old generated include symlinks
@@ -169,17 +167,17 @@ switch_profile() {
 		if [[ ${HOST} == ${TARGET} ]] ; then
 			# The binutils-lib package handles these files now.
 			for x in libiberty "${HEADERS[@]}" ; do
-				x="${ROOT}/usr/include/${x}"
+				x="${EROOT}/usr/include/${x}"
 				if [[ -L ${x} ]] ; then
 					rm "${x}"
 				fi
 			done
 		else
 			# Clean out old path -- cannot use '-exec {} +' syntax here
-			find . -type f -exec rm -f "${ROOT}/usr/${TARGET}/usr/include/{}" \;
-			rmdir "${ROOT}/usr/${TARGET}/usr/include" >& /dev/null
-			rmdir "${ROOT}/usr/${TARGET}/usr" >& /dev/null
-			rmdir "${ROOT}/usr/${TARGET}" >& /dev/null
+			find . -type f -exec rm -f "${EROOT}/usr/${TARGET}/usr/include/{}" \;
+			rmdir "${EROOT}/usr/${TARGET}/usr/include" >& /dev/null
+			rmdir "${EROOT}/usr/${TARGET}/usr" >& /dev/null
+			rmdir "${EROOT}/usr/${TARGET}" >& /dev/null
 		fi
 	fi
 
@@ -192,14 +190,14 @@ switch_profile() {
 		# Note: This skips ldconfig update if env.d had LDPATH, but meh.
 		# Most people have upgraded to ld.so.conf.d, and someone else will
 		# eventually re-run ldconfig for us.
-		x="${ROOT}"/etc/ld.so.conf.d/05binutils.conf
+		x="${EROOT}"/etc/ld.so.conf.d/05binutils.conf
 		if [[ -e ${x} ]]; then
 			rm -f "${x}"
 			env_update_flag=""
 		fi
 
-		DATAPATH=/usr/share/binutils-data/${TARGET}/${VER}
-		local e="${ROOT}"/etc/env.d/05binutils
+		DATAPATH="${EPREFIX}"/usr/share/binutils-data/${TARGET}/${VER}
+		local e="${EROOT}"/etc/env.d/05binutils
 		local ee="${e}.tmp"
 		rm -f "${ee}"
 		[[ -d ${ROOT}/${DATAPATH}/man  ]] && echo "MANPATH=${DATAPATH}/man"   >> "${ee}"
@@ -222,7 +220,7 @@ switch_profile() {
 		echo
 		ewarn "Please remember to run:"
 		echo
-		ewarn "  # . /etc/profile"
+		ewarn "  # . ${EPREFIX}/etc/profile"
 		echo
 	fi
 
@@ -251,33 +249,33 @@ uninstall_target() {
 
 	local x
 	for x in \
-		addr2line ar as c++filt dwp elf2flt elfedit flthdr gprof \
+		addr2line ar as c++filt elf2flt elfedit flthdr gprof \
 		ld ld.{bfd,gold,real} \
 		nm objcopy objdump ranlib readelf size strings strip
 	do
 		x=(
-			"${ROOT}"/usr/bin/${TARGET}-${x}
-			"${ROOT}"/usr/{${HOST}/,}${TARGET}/bin/${x}
-			"${ROOT}"/usr/libexec/gcc/${TARGET}/${x}
+			"${EROOT}"/usr/bin/${TARGET}-${x}
+			"${EROOT}"/usr/{${HOST}/,}${TARGET}/bin/${x}
+			"${EROOT}"/usr/libexec/gcc/${TARGET}/${x}
 		)
 		rm -f "${x[@]}"
 	done
 	for x in "${HEADERS[@]}" ; do
-		rm -f "${ROOT}"/usr/{${HOST}/,}${TARGET}/{usr/,}include/${x}
+		rm -f "${EROOT}"/usr/{${HOST}/,}${TARGET}/{usr/,}include/${x}
 	done
 	for x in bfd iberty opcodes ; do
-		rm -f "${ROOT}"/usr/${HOST}/${TARGET}/lib/lib${x}{{-*,}.so,.a,.la}
+		rm -f "${EROOT}"/usr/${HOST}/${TARGET}/lib/lib${x}{{-*,}.so,.a,.la}
 	done
 	# Delete broken symlinks
-	local destdir="${ROOT}/usr/${HOST}/${TARGET}"
+	local destdir="${EROOT}/usr/${HOST}/${TARGET}"
 	rm -f "${destdir}"/lib/ldscripts
 	find -L "${destdir}"/lib -type l -exec rm {} +
 	rmdir \
 		"${destdir}"/{bin,include,lib,usr} \
 		"${destdir}" \
-		"${ROOT}"/var/db/pkg/cross-${TARGET} \
-		"${ROOT}"/usr/{${HOST}/,}${TARGET}/bin \
-		"${ROOT}"/usr/libexec/gcc/${TARGET} \
+		"${EROOT}"/var/db/pkg/cross-${TARGET} \
+		"${EROOT}"/usr/{${HOST}/,}${TARGET}/bin \
+		"${EROOT}"/usr/libexec/gcc/${TARGET} \
 		2>/dev/null
 
 	rm -f "${ENV_D}"/${TARGET}-*
@@ -376,7 +374,7 @@ set_HOST() {
 	: ${HOST:=${CHOST:-$(portageq envvar CHOST)}}
 }
 
-ENV_D="${ROOT}etc/env.d/binutils"
+ENV_D="${EROOT}etc/env.d/binutils"
 
 DEBUG="no"
 NEED_ACTION="yes"

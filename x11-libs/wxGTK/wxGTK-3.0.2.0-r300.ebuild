@@ -31,7 +31,7 @@ RDEPEND="
 		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:0[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
@@ -49,7 +49,7 @@ RDEPEND="
 		)
 	aqua? (
 		x11-libs/gtk+:3[aqua=,${MULTILIB_USEDEP}]
-		virtual/jpeg:0[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)"
 

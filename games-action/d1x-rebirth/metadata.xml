@@ -14,7 +14,7 @@ Descent 1 source that was released by Parallax and is based on the D1X source.
   <use>
     <flag name="demo">Use the demo data instead of the full game</flag>
 	<flag name="music">Support for ingame music</flag>
-    <flag name="linguas_de">Provides German translations for the game's
+    <flag name="l10n_de">Provides German translations for the game's
       briefings, robot descriptions, and outro of the original campaign</flag>
     <flag name="opl3-musicpack">Include alternate version of the game's music, recorded
       with the Yamaha YMF262 OPL3 soundchip</flag>

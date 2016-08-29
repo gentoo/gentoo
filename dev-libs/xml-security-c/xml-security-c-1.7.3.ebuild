@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,10 +14,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug examples nss static-libs xalan"
+IUSE="debug examples libressl nss static-libs xalan"
 
 RDEPEND=">=dev-libs/xerces-c-3.1
-	dev-libs/openssl
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	nss? ( dev-libs/nss )
 	xalan? ( dev-libs/xalan-c )"
 DEPEND="${RDEPEND}

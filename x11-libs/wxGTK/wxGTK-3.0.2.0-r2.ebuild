@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://wxwidgets.org/"
 SRC_URI="mirror://sourceforge/wxpython/wxPython-src-${PV}.tar.bz2
 	doc? ( mirror://sourceforge/wxpython/wxPython-docs-${PV}.tar.bz2 )"
 
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+X aqua doc debug gstreamer libnotify opengl sdl tiff webkit"
 
 SLOT="3.0"
@@ -26,7 +26,7 @@ RDEPEND="
 		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		>=x11-libs/gtk+-2.18:2[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
@@ -41,8 +41,8 @@ RDEPEND="
 		webkit? ( net-libs/webkit-gtk:2 )
 		)
 	aqua? (
-		>=x11-libs/gtk+-2.4:2[aqua=,${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[aqua=,${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)"
 

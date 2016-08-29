@@ -4,6 +4,19 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# Enable numa support on supported architectures
+dev-db/percona-server -numa
+
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
+# Patrice Clement <monsieurp@gentoo.org> (05 Jun 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lua/busted lacks x86 keyword. See bug #581210.
+media-video/aegisub test
+
 # Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
 # rspec:3 is not keyworded for x86 at this time
 =dev-ruby/bundler-audit-0.5.0 test
@@ -76,7 +89,7 @@ media-libs/mesa -openmax
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
-# http://sourceforge.net/p/mikmod/bugs/16/#17ea
+# https://sourceforge.net/p/mikmod/bugs/16/#17ea
 media-libs/libmikmod sse2
 media-libs/libmikmod cpu_flags_x86_sse2
 
@@ -235,10 +248,6 @@ www-client/firefox -ipc
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
 
-# Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
->=dev-java/ibm-jdk-bin-1.5 -nsplugin
->=dev-java/ibm-jre-bin-1.5 -nsplugin
-
 # Jim Ramsay <lack@gentoo.org> (24 March 2011)
 # '64bit' '32bit' 'nspluginwrapper' are for amd64 only
 www-plugins/adobe-flash 32bit 64bit
@@ -268,11 +277,6 @@ app-text/enchant -zemberek
 
 x11-terms/eterm sse2
 x11-terms/eterm cpu_flags_x86_sse2
-
-# Christian Faulhammer <opfer@gentoo.org> (14 Jan 2008)
-# only works on x86
-dev-java/ibm-jdk-bin -alsa
-dev-java/ibm-jre-bin -alsa
 
 # Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
 media-video/mplayer -cpudetection -custom-cpuopts -bindist

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>itumaykin+gentoo@gmail.com</email>
+		<name>Coacher</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This program allows users to configure Qt5 settings (theme, font,
+		icons, etc.) under DE/WM without Qt5 integration.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">qt5ct</remote-id>
+	</upstream>
+</pkgmetadata>

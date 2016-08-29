@@ -6,6 +6,6 @@
     <name>Cjk</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">sunpinyin</remote-id>
+    <remote-id type="github">sunpinyin/sunpinyin</remote-id>
   </upstream>
 </pkgmetadata>

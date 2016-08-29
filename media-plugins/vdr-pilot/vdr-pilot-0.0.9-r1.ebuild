@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -27,5 +27,5 @@ src_prepare() {
 	fi
 
 	sed -i pilot.c -e "s:RegisterI18n://RegisterI18n:"
-	remove_i18n_include pilot.c
+	vdr_remove_i18n_include pilot.c
 }

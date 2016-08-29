@@ -309,18 +309,12 @@ src_configure() {
 	if [[ ${target} == "i386" ]]; then
 		[[ ${CTARGET} == i[456]86* ]] && cpu="${CTARGET:1:1}86"
 		sed -i -e "s|default CONFIG_686|default CONFIG_${cpu:-486}|" \
-			extra/Configs/Config.i385 || die
+			extra/Configs/Config.i386 || die
 	fi
 
 	# For arm
 	if [[ ${target} == "arm" ]]; then
 		sed -i -e '/Build for EABI/a \\tdefault y' extra/Configs/Config.arm
-	fi
-
-	# For mips
-	if [[ ${target} == "mips" ]]; then
-		sed -i -e "s|default CONFIG_MIPS_O32_ABI|CONFIG_MIPS_${ABI^[on]}_ABI|" \
-			extra/Configs/Config.mips || die
 	fi
 
 	# We set HOSTCC to the proper tuple rather than just 'gcc'

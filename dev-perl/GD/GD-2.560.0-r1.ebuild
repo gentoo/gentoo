@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,9 @@ DESCRIPTION="Interface to Thomas Boutell's gd library"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="animgif gif jpeg png truetype xpm"
-
+PATCHES=(
+	"${FILESDIR}/${P}-rt106594.patch"
+)
 RDEPEND="
 	virtual/perl-Math-Complex
 	>=media-libs/gd-2.0.33

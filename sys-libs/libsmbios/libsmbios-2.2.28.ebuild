@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -67,7 +67,7 @@ src_install() {
 		rmdir "${D}libsmbios_c" "${D}usr/share/smbios-utils"
 		rm -rf "${D}etc"
 	else
-		local python_scriptroot="/usr/sbin"
+		python_scriptinto /usr/sbin
 		python_doscript "${D}"/usr/sbin/smbios-{lcd-brightness,passwd,rbu-bios-update,sys-info,token-ctl,wakeup-ctl,wireless-ctl}
 	fi
 

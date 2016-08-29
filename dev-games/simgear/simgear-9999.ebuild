@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_WARN_UNUSED_CLI=1
 inherit eutils cmake-utils git-r3
 
 DESCRIPTION="Development library for simulation games"
@@ -16,15 +15,16 @@ EGIT_BRANCH="next"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="curl debug subversion test"
+IUSE="+dns debug subversion test"
 
 COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-games/openscenegraph-3.2.0
 	media-libs/openal
+	net-misc/curl
 	sys-libs/zlib
 	virtual/opengl
-	curl? ( net-misc/curl )
+	dns? ( net-libs/udns )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
@@ -33,11 +33,15 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
+PATCHES=(
+	"${FILESDIR}/simgear-2016.2.1-unbundle-udns.patch"
+)
+
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_CURL=$(usex curl)
+		-DENABLE_DNS=$(usex dns)
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SOUND=ON
@@ -45,6 +49,7 @@ src_configure() {
 		-DSIMGEAR_HEADLESS=OFF
 		-DSIMGEAR_SHARED=ON
 		-DSYSTEM_EXPAT=ON
+		-DSYSTEM_UDNS=ON
 	)
 	cmake-utils_src_configure
 }

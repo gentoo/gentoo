@@ -21,9 +21,11 @@
 		<flag name="lastfm">Use liblastfm for fetching song info, scrobbling and radio streams</flag>
 		<flag name="moodbar">Enable moodbar support</flag>
 		<flag name="projectm">Build with ProjectM visualization</flag>
+		<flag name="seafile">Enable support for seafile: a file sync service</flag>
 		<flag name="skydrive">Enable Skydrive support</flag>
 		<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation</flag>
 		<flag name="ubuntu-one">Enable Ubuntu One support</flag>
+		<flag name="udisks_legacy">Enable storage management support via legacy <pkg>sys-fs/udisks</pkg>:0</flag>
 		<flag name="vkontakte">Enable vk.com support</flag>
 		<flag name="wiimote">Enable support for Wii remote</flag>
 	</use>

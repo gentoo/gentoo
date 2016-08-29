@@ -1,6 +1,6 @@
-diff -uNr config.orig/autoconf/nss.m4 config/autoconf/nss.m4
---- config.orig/autoconf/nss.m4	2009-10-06 11:21:10.898930843 +0300
-+++ config/autoconf/nss.m4	2009-10-06 11:23:37.754923372 +0300
+diff -uNr a/config/autoconf/nss.m4 b/config/autoconf/nss.m4
+--- a/config/autoconf/nss.m4	2009-10-06 11:21:10.898930843 +0300
++++ b/config/autoconf/nss.m4	2009-10-06 11:23:37.754923372 +0300
 @@ -86,41 +86,6 @@
  
  ])

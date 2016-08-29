@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,15 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-CDEPEND="
+RDEPEND="
 	>=dev-perl/B-Hooks-Parser-0.80.0
 	>=dev-perl/B-OPCheck-0.270.0
 	>=dev-perl/Devel-Declare-0.3.4
 	>=dev-perl/PadWalker-1.930.0
 	dev-perl/Sub-Exporter
 "
-RDEPEND="${CDEPEND}
-	>=virtual/perl-ExtUtils-MakeMaker-6.590.0"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
+	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? ( >=virtual/perl-Test-Simple-0.420.0 )
 "

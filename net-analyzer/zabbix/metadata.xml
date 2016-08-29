@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
-	</maintainer>
+  <maintainer type="person">
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
 	<longdescription>
 ZABBIX is software for monitoring of your applications, network and servers.
 ZABBIX supports both polling and trapping techniques to collect data from

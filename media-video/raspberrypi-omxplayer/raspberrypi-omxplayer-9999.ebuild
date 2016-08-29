@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/popcornmix/omxplayer.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="X"
 
 RDEPEND="dev-libs/libpcre
 	media-fonts/freefont
@@ -21,8 +21,12 @@ RDEPEND="dev-libs/libpcre
 	sys-apps/dbus
 	sys-apps/fbset
 	virtual/ffmpeg
-	x11-apps/xrefresh
-	x11-apps/xset"
+	dev-libs/boost
+	media-libs/freetype:2
+	X? (
+		x11-apps/xrefresh
+		x11-apps/xset
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

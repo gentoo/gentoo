@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README )
+PATCHES=( "${FILESDIR}/${P}-lpthread.patch" )
 
 src_prepare() {
 	# remove bundled lib

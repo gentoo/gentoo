@@ -10,7 +10,6 @@
   </longdescription>
   <use>
     <flag name="javascript">Enable support for using proxy auto config (PAC) files.</flag>
-    <flag name="icedtea7">Build icedtea-7 support in addition to icedtea-6 support. Requires icedtea{-bin}-7</flag>
     <flag name="nsplugin">Enable the browser plugin (NPPlugin).</flag>
 	<flag name="tagsoup">Depend on dev-java/tagsoup which allows parsing malformed .jnlp files</flag>
   </use>

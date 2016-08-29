@@ -16,4 +16,18 @@
 	<upstream>
 		<remote-id type="sourceforge">firejail</remote-id>
 	</upstream>
+	<use>
+		<flag name="bind">Enable custom bind mounts</flag>
+		<flag name="chroot">Enable chrooting to custom directory</flag>
+		<flag name="file-transfer">Enable file transfers between sandboxes and
+			the host system</flag>
+		<flag name="network">Enable networking features</flag>
+		<flag name="network-restricted">Grant access to --interface,
+			--net=ethXXX and --netfilter only to root user; regular users are
+			only allowed --net=none</flag>
+		<flag name="seccomp">Enable system call filtering</flag>
+		<flag name="userns">Enable attaching a new user namespace to a
+			sandbox (--noroot option)</flag>
+		<flag name="x11">Enable X11 sandboxing</flag>
+	</use>
 </pkgmetadata>

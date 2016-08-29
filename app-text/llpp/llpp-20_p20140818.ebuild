@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE="+ocamlopt static"
 #IUSE="egl +ocamlopt static"
 
 LIB_DEPEND=">=app-text/mupdf-1.5:0=[static-libs]
+	<app-text/mupdf-1.9a:0=[static-libs]
 	media-libs/openjpeg:2[static-libs]
 	media-libs/fontconfig:1.0[static-libs]
 	media-libs/freetype:2[static-libs]

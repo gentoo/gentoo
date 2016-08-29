@@ -18,7 +18,7 @@ IUSE="json mongo redis"
 RDEPEND="
 	dev-libs/gmp:0
 	net-libs/libpcap
-	json? ( dev-libs/json-c )
+	dev-libs/json-c
 	mongo? ( dev-db/mongodb )
 	redis? ( dev-libs/hiredis )"
 DEPEND="${RDEPEND}
@@ -38,9 +38,8 @@ src_configure() {
 		-DENABLE_DEVELOPMENT=OFF
 		-DENABLE_HARDENING=OFF
 		-DWITH_WERROR=OFF
-		-DWITH_json="$(usex json)"
-		-DWITH_json="$(usex mongo)"
-		-DWITH_json="$(usex redis)"
+		-DWITH_mongo="$(usex mongo)"
+		-DWITH_redis="$(usex redis)"
 		)
 	cmake-utils_src_configure
 }

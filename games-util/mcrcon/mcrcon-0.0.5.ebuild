@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs games
 
 DESCRIPTION="Remote connection client for Minecraft servers"
-HOMEPAGE="http://sourceforge.net/projects/mcrcon/"
+HOMEPAGE="https://sourceforge.net/projects/mcrcon/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 LICENSE="ZLIB"
 SLOT="0"

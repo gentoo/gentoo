@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,10 +10,11 @@ KMNAME="kde-workspace"
 KMMODULE="plasma"
 PYTHON_COMPAT=( python2_7 )
 OPENGL_REQUIRED="always"
+WEBKIT_REQUIRED="always"
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps json +kdepim python qalculate"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

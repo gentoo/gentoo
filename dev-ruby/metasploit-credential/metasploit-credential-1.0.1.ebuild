@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/metasploit-concern-1.0.0:1.0
-	>=dev-ruby/metasploit_data_models-1.2.0
+	>=dev-ruby/metasploit_data_models-1.2.0:*
 	>=dev-ruby/metasploit-model-1.0.0
 	dev-ruby/rubyzip:1
 	dev-ruby/rubyntlm

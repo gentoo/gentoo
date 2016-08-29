@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>gentoo_bugs_peep@parallaxshift.com</email>
+    <name>Philippe Chaintreuil</name>
+  </maintainer>
+
+  <maintainer type="person">
+    <email>bug@mejor.pl</email>
+    <name>Marcin Mirosław</name>
+  </maintainer>
+
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
   <use>
-  <flag name="qmail">Build qmail functionality and docs</flag>
-  <flag name="bayes">
-    Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to
-    enable the Bayesian filtering database.
-  </flag>
-</use>
+    <flag name="bayes">
+      Require a database (MySQL, SQLite, Postgres, or BerkDB) backend
+      to enable the Bayesian filtering database.
+    </flag>
+    <flag name="cron">
+      Install a cron job to update SpamAssassin's rules daily.
+    </flag>
+    <flag name="qmail">Build qmail functionality and docs</flag>
+  </use>
 </pkgmetadata>

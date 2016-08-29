@@ -27,6 +27,5 @@ integrated user-friendly GUI.
   <use>
     <flag name="sql">Include SQL database support</flag>
     <flag name="cuda">Include cuda support</flag>
-    <flag name="webkit">Uses <pkg>dev-qt/qtwebkit</pkg> for drawing</flag>
   </use>
 </pkgmetadata>

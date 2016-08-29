@@ -23,7 +23,7 @@ IUSE="ipv6 +perl selinux ssl socks5 +proxy libressl"
 CDEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
 	ssl? ( !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 
 DEPEND="

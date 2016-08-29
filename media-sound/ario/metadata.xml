@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>angelos@gentoo.org</email>
-		<name>Christoph Mende</name>
-	</maintainer>
 	<use>
 		<flag name="audioscrobbler">Enable song tracking via last.fm</flag>
 		<flag name="idle">Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14</flag>

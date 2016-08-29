@@ -11,6 +11,7 @@
 		<flag name="dvi">Enable build-in DVI viewer</flag>
 		<flag name="epub">Enable build-in DVI viewer using
 			<pkg>net-libs/webkit-gtk</pkg></flag>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="t1lib">Enable the Type-1 fonts for the build-in DVI viewer
 			(<pkg>media-libs/t1lib</pkg>)</flag>
 		<flag name="xps">Enable XPS viewer using 

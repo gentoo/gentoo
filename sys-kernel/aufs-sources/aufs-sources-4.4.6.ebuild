@@ -11,8 +11,6 @@ K_DEBLOB_AVAILABLE="0"
 K_KDBUS_AVAILABLE="0"
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
-detect_version
-detect_arch
 
 AUFS_VERSION=4.4_p20160328
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
@@ -23,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/"
 IUSE="deblob experimental module vanilla"
 
-DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree and aufs4 support"
+DESCRIPTION="Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support"
 SRC_URI="
 	${KERNEL_URI}
 	${ARCH_URI}
@@ -36,6 +34,8 @@ PDEPEND="=sys-fs/aufs-util-4*"
 README_GENTOO_SUFFIX="-r1"
 
 src_unpack() {
+	detect_version
+	detect_arch
 	if use vanilla; then
 		unset UNIPATCH_LIST_GENPATCHES UNIPATCH_LIST_DEFAULT
 		ewarn "You are using USE=vanilla"

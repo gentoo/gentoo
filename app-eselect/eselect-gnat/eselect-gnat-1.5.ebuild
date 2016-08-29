@@ -1,6 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=5
 
 inherit eutils
 
@@ -14,6 +16,8 @@ KEYWORDS="~amd64 ~ppc ~x86 ~sparc"
 
 IUSE=""
 RDEPEND=">=app-admin/eselect-1.2.5"
+
+S="${WORKDIR}"
 
 MODULEDIR="/usr/share/eselect/modules"
 

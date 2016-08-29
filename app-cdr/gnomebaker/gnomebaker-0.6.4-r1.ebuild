@@ -7,7 +7,7 @@ GCONF_DEBUG=no
 inherit eutils gnome2
 
 DESCRIPTION="GnomeBaker is a GTK2/Gnome cd burning application"
-HOMEPAGE="http://sourceforge.net/projects/gnomebaker"
+HOMEPAGE="https://sourceforge.net/projects/gnomebaker"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

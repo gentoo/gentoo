@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # Control Groups Configuration Startup
 #

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs multilib-minimal
 
 DESCRIPTION="Userspace access to USB devices"
-HOMEPAGE="http://libusb.info/"
+HOMEPAGE="http://libusb.info/ https://github.com/libusb/libusb"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"

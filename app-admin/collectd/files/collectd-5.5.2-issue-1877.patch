@@ -1,0 +1,37 @@
+[PATCH 5/5] Fix compilation against >=xfsprogs-4.7.0
+
+Gentoo-Bug: https://bugs.gentoo.org/590998
+Bug: https://github.com/collectd/collectd/issues/1877
+---
+ src/utils_mount.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/utils_mount.c b/src/utils_mount.c
+index da53b98..37b52d6 100644
+--- a/src/utils_mount.c
++++ b/src/utils_mount.c
+@@ -24,16 +24,17 @@
+ # include "config.h"
+ #endif
+ 
++#define _GNU_SOURCE
++
++#include "collectd.h"
++#include "utils_mount.h"
++
+ #if HAVE_XFS_XQM_H
+-# define _GNU_SOURCE
+ # include <xfs/xqm.h>
+ #define XFS_SUPER_MAGIC_STR "XFSB"
+ #define XFS_SUPER_MAGIC2_STR "BSFX"
+ #endif
+ 
+-#include "collectd.h"
+-#include "utils_mount.h"
+-
+ #include "common.h" /* sstrncpy() et alii */
+ #include "plugin.h" /* ERROR() macro */
+ 
+-- 
+2.9.2
+

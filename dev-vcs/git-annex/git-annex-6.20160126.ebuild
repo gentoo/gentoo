@@ -64,7 +64,8 @@ RDEPEND="dev-haskell/aeson:=
 	dev-haskell/xml-types:=
 	>=dev-lang/ghc-7.6.1:=
 	assistant? ( dev-haskell/dns:=
-			dev-haskell/hinotify:= )
+			dev-haskell/hinotify:=
+			sys-process/lsof )
 	benchmark? ( dev-haskell/criterion:= )
 	concurrentoutput? ( >=dev-haskell/concurrent-output-1.6:= )
 	cryptonite? ( dev-haskell/cryptonite:= )

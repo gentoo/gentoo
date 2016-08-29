@@ -19,6 +19,7 @@
 	<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg>.</flag>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
 	<flag name="dcadec">Enables DCA decoding with <pkg>media-sound/dcadec</pkg>.</flag>
+	<flag name="ebur128">Enables EBU R128 loudness normalization filter via <pkg>media-libs/libebur128</pkg></flag>
 	<flag name="faac">Use external faac library for AAC encoding</flag>
 	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
 	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
@@ -57,4 +58,9 @@
 	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
 	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
   </use>
+  <slots>
+    <slot name="0">For building against. This is the only slot that provides
+     headers and command line tools. Binary compatibility slots come and go
+     as required, so always pin dependencies to this slot when appropriate.</slot>
+  </slots>
 </pkgmetadata>

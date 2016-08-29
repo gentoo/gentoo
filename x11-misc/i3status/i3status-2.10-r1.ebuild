@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pulseaudio"
 
-RDEPEND="dev-libs/confuse
+RDEPEND="dev-libs/confuse:=
 	dev-libs/libnl:3
 	>=dev-libs/yajl-2.0.2
 	media-libs/alsa-lib

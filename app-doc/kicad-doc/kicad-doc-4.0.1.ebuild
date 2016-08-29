@@ -1,27 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit cmake-utils vcs-snapshot
+inherit cmake-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools manuals"
-HOMEPAGE="http://www.kicad-pcb.org"
+HOMEPAGE="http://www.kicad-pcb.org/"
 SRC_URI="https://github.com/KiCad/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="|| ( GPL-3+ CC-BY-3.0 ) GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-FUSE="html pdf"
+IUSE="html pdf"
 LANGS="en fr it ja nl pl"
-LINGUAS=""
-for lang in ${LANGS} ; do
-	LINGUAS="${LINGUAS} linguas_${lang}"
+for lang in ${LANGS}; do
+	IUSE+=" l10n_${lang}"
 done
-IUSE="${FUSE} ${LINGUAS}"
-
-REQUIRED_USE="( || ( pdf html ) ) ( ^^ ( ${LINGUAS} ) )"
 
 DEPEND=">=app-text/asciidoc-8.6.9
 	app-text/dblatex
@@ -29,7 +25,7 @@ DEPEND=">=app-text/asciidoc-8.6.9
 	>=sys-devel/gettext-0.18
 	dev-util/source-highlight
 	dev-perl/Unicode-LineBreak
-	linguas_ja? ( media-fonts/vlgothic )"
+	l10n_ja? ( media-fonts/vlgothic )"
 RDEPEND=""
 
 src_prepare() {
@@ -40,20 +36,34 @@ src_prepare() {
 src_configure() {
 	local formats=""
 	local doclang=""
+	local format lang
 
 	# construct format string
-	for format in ${FUSE}; do
-		use $format && formats+="${format};"
+	for format in html pdf; do
+		use ${format} && formats+="${format};"
 	done
+	if [[ -z ${formats} ]]; then
+		formats="html;"
+		ewarn "Neither \"html\" nor \"pdf\" USE flag set, using html."
+	fi
 
 	# find out which language is requested
 	for lang in ${LANGS}; do
-		if use linguas_${lang}; then
-			doclang=${lang}
+		if use l10n_${lang}; then
+			if [[ -z ${doclang} ]]; then
+				doclang="${lang}"
+			else
+				ewarn "Only one single language can be enabled." \
+					"Using \"${doclang}\", ignoring \"${lang}\"."
+			fi
 		fi
 	done
+	if [[ -z ${doclang} ]]; then
+		doclang="en"
+		ewarn "No language flag set, falling back to \"en\"."
+	fi
 
-	local mycmakeargs+=(
+	local mycmakeargs=(
 		-DBUILD_FORMATS="${formats}"
 		-DSINGLE_LANGUAGE="${doclang}"
 	)

@@ -7,7 +7,7 @@ EAPI=4
 MY_P=lib${P}
 
 DESCRIPTION="A tool and library for extracting cabs from executable installers"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${MY_P}.tar.gz"
 
 LICENSE="MIT"

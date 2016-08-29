@@ -14,11 +14,11 @@ HOMEPAGE="http://www.darktable.org/"
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 #KEYWORDS="~amd64 ~x86"
-LANGS=" af ca cs da de el es fi fr gl it ja nl pl pt_BR pt_PT ro ru sk sq sv th uk zh_CN"
+LANGS=" af ca cs da de el es fi fr gl it ja nl pl pt-BR pt-PT ro ru sk sq sv th uk zh-CN"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
 nls opencl openmp openexr pax_kernel +slideshow webp
-${LANGS// / linguas_}"
+${LANGS// / l10n_}"
 
 # sse3 support is required to build darktable
 REQUIRED_USE="cpu_flags_x86_sse3"
@@ -29,7 +29,7 @@ CDEPEND="
 	dev-libs/libxml2:2
 	dev-libs/pugixml:0=
 	gnome-base/librsvg:2
-	media-gfx/exiv2:0=[xmp]
+	>=media-gfx/exiv2-0.25-r2:0=[xmp]
 	media-libs/lcms:2
 	>=media-libs/lensfun-0.2.3:0=
 	media-libs/libpng:0=
@@ -111,7 +111,7 @@ src_install() {
 	cmake-utils_src_install
 
 	for lang in ${LANGS} ; do
-		use linguas_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
+		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
 	done
 
 	if use pax_kernel && use opencl ; then

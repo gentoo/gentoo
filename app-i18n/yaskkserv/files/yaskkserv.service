@@ -1,0 +1,12 @@
+[Unit]
+Description=Yet Another SKK server
+After=yaskkserv.socket
+Requires=yaskkserv.socket
+
+[Service]
+User=nobody
+EnvironmentFile=/etc/conf.d/yaskkserv
+ExecStart=/usr/sbin/yaskkserv${YASKKSERV_SERVER_TYPE} --no-daemonize ${YASKKSERV_OPTS}
+
+[Install]
+WantedBy=multi-user.target

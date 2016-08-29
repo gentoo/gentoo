@@ -9,8 +9,8 @@ AUTOTOOLS_IN_SOURCE_BUILD=1 # bug #474098
 inherit autotools-utils
 
 DESCRIPTION="template based math library, written in C++, for symbolic and numeric calculus applications"
-HOMEPAGE="http://rm-rf.in/libmath%2B%2B/"
-SRC_URI="http://upstream.rm-rf.in/libmath%2B%2B/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"

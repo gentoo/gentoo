@@ -14,12 +14,13 @@ SRC_URI="http://pychess.org/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gstreamer"
 
 DEPEND="dev-python/librsvg-python
+	x11-libs/gtksourceview:3.0
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
 	gstreamer? ( dev-python/gst-python:0.10[${PYTHON_USEDEP}] )

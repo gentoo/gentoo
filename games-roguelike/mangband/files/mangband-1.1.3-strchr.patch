@@ -1,0 +1,22 @@
+diff --git a/src/common/h-system.h b/src/common/h-system.h
+index f60bbc1..0294dd3 100644
+--- a/common/h-system.h
++++ a/common/h-system.h
+@@ -104,17 +104,6 @@
+ 
+ #ifdef SET_UID
+ 
+-# ifdef USG
+-#  include <string.h>
+-# else
+-#  include <strings.h>
+-extern char *strstr();
+-extern char *strchr();
+-extern char *strrchr();
+-# endif
+-
+-#else
+-
+ # include <string.h>
+ 
+ #endif

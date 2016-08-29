@@ -43,3 +43,17 @@ media-gfx/gimp webkit
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
+
+# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
+# Requires media-libs/phonon[qt5], masked below
+=app-office/texstudio-2.10.2 qt5
+
+# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
+# Requires unstable dev-qt/qtx11extras:5 (bug 585228)
+<=app-office/lyx-2.1.4 qt5
+=media-libs/phonon-4.7.2 qt5
+=media-libs/phonon-gstreamer-4.7.2 qt5
+=media-libs/phonon-vlc-0.7.2 qt5
+<=media-sound/qsynth-0.3.9 qt5
+=media-video/vlc-2.2.1-r1 qt5
+=x11-themes/qtcurve-1.8.18-r1 qt5

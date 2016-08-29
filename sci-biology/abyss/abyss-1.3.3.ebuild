@@ -17,6 +17,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-cpp/sparsehash
+	dev-libs/boost
 	mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 

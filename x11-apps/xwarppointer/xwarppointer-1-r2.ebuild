@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.ishiboo.com/~nirva/Projects/xwarppointer/${PN}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"
@@ -32,6 +32,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin xwarppointer
+	dobin "${PN}"
 	dodoc README
 }

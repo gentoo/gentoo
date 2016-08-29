@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ S="${WORKDIR}/${P%_*}"
 
 src_prepare() {
 	EPATCH_SOURCE="${WORKDIR}/debian/patches" EPATCH_SUFFIX="patch" \
-        	EPATCH_OPTS="-p1" EPATCH_FORCE="yes" epatch
+	EPATCH_OPTS="-p1" EPATCH_FORCE="yes" epatch
 
 	sed -i '1i#include <sys/sysmacros.h>' sbin/fsdb/fsdbutil.c || die #580292
 

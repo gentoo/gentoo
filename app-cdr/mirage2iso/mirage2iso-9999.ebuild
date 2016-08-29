@@ -1,60 +1,42 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
 EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils versionator
-
-TESTS_PV=0.3
+inherit autotools git-r3
 
 DESCRIPTION="CD/DVD image converter using libmirage"
 HOMEPAGE="https://bitbucket.org/mgorny/mirage2iso/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2
-	test? ( https://www.bitbucket.org/mgorny/${PN}/downloads/${PN}-${TESTS_PV}-tests.tar.xz )"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="pinentry test"
 
 COMMON_DEPEND=">=dev-libs/libmirage-2.0.0:0=
 	dev-libs/glib:2=
 	pinentry? ( dev-libs/libassuan:0= )"
 DEPEND="${COMMON_DEPEND}
+	dev-libs/libassuan
 	virtual/pkgconfig
 	test? ( app-arch/xz-utils )"
 RDEPEND="${COMMON_DEPEND}
 	pinentry? ( app-crypt/pinentry )"
 
-#if LIVE
-DEPEND="${DEPEND}
-	dev-libs/libassuan"
-KEYWORDS=
-SRC_URI=
-#endif
+RESTRICT="!test? ( test )"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		$(use_with pinentry libassuan)
 	)
 
-	autotools-utils_src_configure
-}
-
-src_test() {
-#if LIVE
-	autotools-utils_src_test
-	return ${?}
-
-#endif
-	mv "${WORKDIR}"/${PN}-${TESTS_PV}/tests/* tests/ || die
-	autotools-utils_src_test
+	econf "${myconf[@]}"
 }

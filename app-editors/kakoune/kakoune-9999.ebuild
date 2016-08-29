@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="debug"
 
 RDEPEND="
-	sys-libs/ncurses:*[unicode]
+	sys-libs/ncurses:=[unicode]
 	dev-libs/boost
 "
 DEPEND="
@@ -29,18 +29,12 @@ PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
 
 src_configure() {
 	append-cppflags $(pkg-config --cflags ncursesw)
+	append-libs $(pkg-config --libs ncursesw)
 	export CXX=$(tc-getCXX)
 	export debug=$(usex debug)
-}
-
-src_compile() {
-	emake -C src
-}
-
-src_test() {
-	emake -C src test
+	S="${WORKDIR}/${P}/src"
 }
 
 src_install() {
-	emake -C src DESTDIR="${D}" PREFIX="/usr" install
+	emake DESTDIR="${D}" PREFIX="/usr" docdir="${D}/usr/share/doc/${PF}" install
 }

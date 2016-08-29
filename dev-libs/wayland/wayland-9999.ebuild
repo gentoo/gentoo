@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,8 @@ SLOT="0"
 IUSE="doc static-libs"
 
 RDEPEND=">=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
-	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]"
+	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:="
 DEPEND="${RDEPEND}
 	doc? (
 		>=app-doc/doxygen-1.6[dot]
@@ -39,19 +40,16 @@ DEPEND="${RDEPEND}
 	)
 	virtual/pkgconfig"
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable static-libs static)
-		$(use_enable doc documentation)
+		$(multilib_native_use_enable doc documentation)
+		$(multilib_native_enable dtd-validation)
 	)
 	if tc-is-cross-compiler ; then
 		myeconfargs+=( --with-host-scanner )
 	fi
-	if ! multilib_is_native_abi; then
-		myeconfargs+=( --disable-documentation )
-	fi
 
-	autotools-multilib_src_configure
+	autotools-utils_src_configure
 }
 
 src_test() {

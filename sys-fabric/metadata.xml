@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-fabric category contains OFED software stack and other infiniband related software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-fabric contiene la pila de software OFED y
+		otro software relacionado con infiniband.
+	</longdescription>
+</catmetadata>
+

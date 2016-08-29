@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/2.02_beta3-10_linux-UUID.patch
 	"${FILESDIR}"/2.02_beta3-sysmacros.patch
+	"${FILESDIR}"/2.02_beta3-gcc6-ld-no-pie.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.35
@@ -48,9 +49,9 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount multislot nls static sdl test +themes truetype libzfs"
 
-GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen )
+GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="
@@ -84,6 +85,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	fonts? ( media-libs/freetype:2 )
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
+	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
@@ -106,7 +108,7 @@ RDEPEND+="
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 )
+	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
 
@@ -166,21 +168,23 @@ grub_configure() {
 	local platform
 
 	case ${MULTIBUILD_VARIANT} in
-		efi-32)
-			platform=efi
-			if [[ ${CTARGET:-${CHOST}} == x86_64* ]]; then
-				local CTARGET=${CTARGET:-i386}
-			fi ;;
-		efi-64)
-			platform=efi
-			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
-				local CTARGET=${CTARGET:-x86_64}
-				local TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
-				local TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
-				export TARGET_CFLAGS TARGET_CPPFLAGS
-			fi ;;
+		efi*) platform=efi ;;
+		xen*) platform=xen ;;
 		guessed) ;;
-		*)	platform=${MULTIBUILD_VARIANT} ;;
+		*) platform=${MULTIBUILD_VARIANT} ;;
+	esac
+
+	case ${MULTIBUILD_VARIANT} in
+		*-32)
+			if [[ ${CTARGET:-${CHOST}} == x86_64* ]]; then
+				local CTARGET=i386
+			fi ;;
+		*-64)
+			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
+				local CTARGET=x86_64
+				local -x TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
+				local -x TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
+			fi ;;
 	esac
 
 	local myeconfargs=(
@@ -215,19 +219,6 @@ grub_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-grub_get_platforms() {
-	MULTIBUILD_VARIANTS=()
-	local platform
-	for platform in "${GRUB_ALL_PLATFORMS[@]}"; do
-		if use "grub_platforms_${platform}"; then
-			MULTIBUILD_VARIANTS+=( "${platform}" )
-		fi
-	done
-	if (( ${#MULTIBUILD_VARIANTS[@]} == 0 )); then
-		MULTIBUILD_VARIANTS=( guessed )
-	fi
-}
-
 src_configure() {
 	# Bug 508758.
 	replace-flags -O3 -O2
@@ -249,7 +240,7 @@ src_configure() {
 	tc-export BUILD_CC # Bug 485592
 
 	# Portage will take care of cleaning up GRUB_PLATFORMS
-	grub_get_platforms
+	MULTIBUILD_VARIANTS=( ${GRUB_PLATFORMS:-guessed} )
 	grub_do grub_configure
 }
 

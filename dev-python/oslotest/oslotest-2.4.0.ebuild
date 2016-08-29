@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 inherit distutils-r1
 
 DESCRIPTION="Oslo test framework"
-HOMEPAGE="http://launchpad.net/oslo"
+HOMEPAGE="https://launchpad.net/oslo"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -42,7 +42,7 @@ RDEPEND="
 
 python_compile_all() {
 	if use doc; then
-	 	esetup.py build_sphinx
+		esetup.py build_sphinx
 	else
 		esetup.py build_sphinx -b man
 	fi

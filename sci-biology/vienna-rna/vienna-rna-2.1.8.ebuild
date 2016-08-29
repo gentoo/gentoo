@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ DEPEND="
 	doc? ( dev-texlive/texlive-latex )
 	python? (
 		${PYTHON_DEPS}
-		dev-lang/swig )"
+		dev-lang/swig:0 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/ViennaRNA-${PV}"

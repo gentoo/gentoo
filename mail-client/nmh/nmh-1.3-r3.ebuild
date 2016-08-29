@@ -8,7 +8,7 @@ inherit eutils base
 
 DESCRIPTION="New MH mail reader"
 HOMEPAGE="http://www.nongnu.org/nmh/"
-SRC_URI="http://savannah.nongnu.org/download/nmh/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/nmh/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

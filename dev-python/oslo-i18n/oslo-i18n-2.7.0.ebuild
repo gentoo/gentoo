@@ -11,7 +11,7 @@ inherit distutils-r1 vcs-snapshot
 MY_PN=${PN/-/.}
 
 DESCRIPTION="Oslo i18n library"
-HOMEPAGE="http://launchpad.net/oslo"
+HOMEPAGE="https://launchpad.net/oslo"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,11 +63,10 @@ RDEPEND="app-arch/bzip2:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
-	!sys-devel/gcc[libffi]"
+	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )
 	doc? ( dev-python/python-docs:${SLOT} )"
-PDEPEND=">=app-eselect/eselect-python-20140125-r1
-	app-admin/python-updater"
+PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -150,8 +149,6 @@ src_configure() {
 	fi
 
 	filter-flags -malign-double
-
-	[[ "${ARCH}" == "alpha" ]] && append-flags -fPIC
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=50309
 	if is-flagq -O3; then
@@ -345,12 +342,6 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-${SLOT}" && ! has_version "${CATEGORY}/${PN}:2.7"; then
-		python_updater_warning="1"
-	fi
-}
-
 eselect_python_update() {
 	if [[ -z "$(eselect python show)" || ! -f "${EROOT}usr/bin/$(eselect python show)" ]]; then
 		eselect python update
@@ -359,12 +350,6 @@ eselect_python_update() {
 
 pkg_postinst() {
 	eselect_python_update
-
-	if [[ "${python_updater_warning}" == "1" ]]; then
-		ewarn "You have just upgraded from an older version of Python."
-		ewarn "You should switch active version of Python ${PV%%.*} and run"
-		ewarn "'python-updater [options]' to rebuild Python modules."
-	fi
 }
 
 pkg_postrm() {

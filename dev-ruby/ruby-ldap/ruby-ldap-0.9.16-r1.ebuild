@@ -5,7 +5,7 @@
 EAPI=5
 # jruby: mkmf
 # rbx: require 'ldap' no such file to load
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20"
 
 inherit multilib ruby-fakegem
 

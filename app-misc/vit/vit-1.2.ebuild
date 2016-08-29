@@ -4,21 +4,15 @@
 
 EAPI=5
 
-inherit eutils git-r3
+inherit eutils
 
 DESCRIPTION="Perl/Curses front-end for Taskwarrior (app-misc/task)"
 HOMEPAGE="http://tasktools.org/projects/vit.html"
-
-EGIT_REPO_URI="https://git.tasktools.org/scm/ex/vit.git"
-if [[ ${PV} = 9999* ]]; then
-	KEYWORDS=""
-else
-	EGIT_COMMIT=v${PV}
-	KEYWORDS="~amd64 ~arm ~x86"
-fi
+SRC_URI="https://git.tasktools.org/plugins/servlet/archive/projects/EX/repos/vit?at=refs%2Ftags%2Fv1.2&format=tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
@@ -26,6 +20,8 @@ DEPEND="
 	dev-lang/perl
 	dev-perl/Curses"
 RDEPEND="${DEPEND}"
+
+S=${WORKDIR}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-allow-nonsudo-install.patch \

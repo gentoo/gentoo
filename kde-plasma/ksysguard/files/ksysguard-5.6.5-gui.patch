@@ -1,0 +1,40 @@
+From 181202b59dcda03ec3f13de5a79336da4247c447 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Fri, 17 Jun 2016 05:42:23 +1000
+Subject: [PATCH] Remove Qt5WebKitWidgets dependency and build gui
+ unconditionally.
+
+Summary: Qt5WebKitWidgets is not actually used anywhere.
+
+Reviewers: #plasma, sgaist
+
+Differential Revision: https://phabricator.kde.org/D1919
+---
+ CMakeLists.txt | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 56aaafc..5ee0946 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,16 +46,7 @@ set_package_properties(Sensors PROPERTIES
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ configure_file(config-workspace.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-workspace.h)
+ 
+-find_package(Qt5WebKitWidgets CONFIG)
+-set_package_properties(Qt5WebKitWidgets PROPERTIES
+-                       URL "git://gitorious.org/qt/qtwebkit.git"
+-                       DESCRIPTION "Qt Webkit module (web browsing engine)"
+-                       TYPE OPTIONAL
+-                       PURPOSE "Used by the HTML-based GUI ksysguard library"
+-                      )
+-if(Qt5WebKitWidgets_FOUND)
+-    add_subdirectory( gui )
+-endif()
++add_subdirectory( gui )
+ 
+ add_subdirectory( doc )
+ add_subdirectory( pics )
+-- 
+2.7.3
+

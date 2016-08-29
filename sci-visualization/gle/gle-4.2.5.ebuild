@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,11 @@ IUSE="X qt4 jpeg png tiff doc emacs vim-syntax"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	X? ( x11-libs/libX11 )
 	qt4? ( dev-qt/qtopengl:4 )
 	jpeg? ( virtual/jpeg:0 )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
 	doc? ( dev-texlive/texlive-latexextra )
 	emacs? ( virtual/emacs )"

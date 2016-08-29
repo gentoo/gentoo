@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC="faq"
 RUBY_FAKEGEM_DOCDIR="doc faq"
@@ -47,7 +47,9 @@ each_ruby_configure() {
 all_ruby_compile() {
 	all_fakegem_compile
 
-	rdoc --title "${P} Dcoumentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
+	if use doc; then
+		rdoc --title "${P} Dcoumentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
+	fi
 }
 
 each_ruby_compile() {

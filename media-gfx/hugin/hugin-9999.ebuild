@@ -19,8 +19,8 @@ LICENSE="GPL-2 SIFT"
 SLOT="0"
 KEYWORDS=""
 
-LANGS=" ca@valencia ca_ES cs_CZ da de en_GB es eu fi fr hu it ja nl pl pt_BR ro ru sk sv zh_CN zh_TW"
-IUSE="debug lapack python sift $(echo ${LANGS//\ /\ linguas_})"
+LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
+IUSE="debug lapack python sift $(echo ${LANGS//\ /\ l10n_})"
 
 CDEPEND="
 	!!dev-util/cocom
@@ -66,9 +66,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed \
-		-e 's:-O3::g' \
-		-i src/celeste/CMakeLists.txt || die
 	rm CMakeModules/{FindLAPACK,FindPkgConfig}.cmake || die
 
 	cmake-utils_src_prepare
@@ -80,9 +77,11 @@ src_install() {
 
 	for lang in ${LANGS} ; do
 		case ${lang} in
-			ca@valencia) dir=ca_ES@valencia;;
-			*) dir=${lang};;
+			ca) dir=ca_ES;;
+			ca-valencia) dir=ca_ES@valencia;;
+			cs) dir=cs_CZ;;
+			*) dir=${lang/-/_};;
 		esac
-		use linguas_${lang} || rm -r "${D}"/usr/share/locale/${dir}
+		use l10n_${lang} || rm -r "${D}"/usr/share/locale/${dir}
 	done
 }

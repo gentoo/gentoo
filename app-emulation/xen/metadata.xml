@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="flask">Enable the Flask XSM module from NSA</flag>
-		<flag name="xsm">Enable the Xen Security Modules (XSM)</flag>
 		<flag name="efi">Adds efi boot support, requires LDFLAG -melf_x86_64 for amd64</flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,28 @@
+From 602425abd5cef741fc1b5d4d1dd70c68e153fc8d Mon Sep 17 00:00:00 2001
+From: Ira Cooper <ira@redhat.com>
+Date: Thu, 31 Mar 2016 12:30:45 -0400
+Subject: [PATCH] configure: Add -D_LARGEFILE64_SOURCE to Linux build.
+
+Without -D_LARGEFILE64_SOURCE we can't build against libxfs,
+because off64_t must be defined.
+
+Signed-off-by: Ira Cooper <ira@redhat.com>
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 48a7fc2..610c40b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,6 +63,7 @@ darwin*)
+ 	;;
+ linux*)
+ 	linux="yes"
++	CFLAGS="-D_LARGEFILE64_SOURCE ${CFLAGS}"
+ 	;;
+ freebsd*)
+ 	freebsd="yes"
+-- 
+2.8.4
+

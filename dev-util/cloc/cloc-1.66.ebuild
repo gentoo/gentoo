@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 DEPEND=">=dev-lang/perl-5.6"
 RDEPEND="${DEPEND}
 	dev-perl/Algorithm-Diff
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	virtual/perl-Digest-MD5
 	virtual/perl-Getopt-Long
 	virtual/perl-File-Spec

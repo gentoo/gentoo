@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/riece/${P}.tar.gz"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="linguas_ja"
+IUSE="l10n_ja"
 RESTRICT="test"
 
 SITEFILE="50${PN}-gentoo.el"
@@ -33,7 +33,7 @@ src_install() {
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc AUTHORS NEWS README doc/HACKING lisp/ChangeLog*
 
-	if use linguas_ja; then
+	if use l10n_ja; then
 		dodoc NEWS.ja README.ja doc/HACKING.ja
 	else
 		rm -f "${ED}"/usr/share/info/riece-ja.info*

@@ -30,3 +30,20 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	kde5_src_prepare
+
+	local docdir=doc-translations
+	if use_if_iuse handbook && [[ -d ${docdir} ]] ; then
+		pushd ${docdir} > /dev/null || die
+		for lang in *; do
+			if ! has ${lang/_${PN}/} ${LINGUAS} ; then
+				cmake_comment_add_subdirectory "${lang}/${PN}"
+			fi
+		done
+		popd > /dev/null || die
+	else
+		cmake_comment_add_subdirectory ${docdir}
+	fi
+}

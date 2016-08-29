@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ EMVER="1.6"
 MOZ_FTP_URI="ftp://ftp.mozilla.org/pub/${PN}/releases/"
 MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases/"
 
-inherit flag-o-matic toolchain-funcs mozconfig-3 makeedit multilib autotools pax-utils check-reqs nsplugins mozlinguas
+inherit flag-o-matic toolchain-funcs mozcoreconf-2 makeedit multilib autotools pax-utils check-reqs nsplugins mozlinguas
 
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
@@ -37,7 +37,7 @@ HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist crypt gstreamer +jit ldap +lightning +minimal mozdom pulseaudio selinux system-cairo system-icu system-jpeg system-sqlite"
+IUSE="+alsa bindist crypt +dbus debug gstreamer +jit ldap libnotify +lightning +minimal mozdom pulseaudio selinux startup-notification system-cairo system-icu system-jpeg system-sqlite wifi"
 RESTRICT="!bindist? ( bindist )"
 
 PATCH="thunderbird-24.0-patches-0.1"
@@ -82,7 +82,23 @@ CDEPEND="
 			)
 		)
 		=app-crypt/gnupg-1.4*
-	) )"
+	) )
+	app-arch/zip
+	app-arch/unzip
+	>=app-text/hunspell-1.2
+	dev-libs/expat
+	>=dev-libs/libevent-1.4.7
+	>=x11-libs/cairo-1.8[X]
+	>=x11-libs/gtk+-2.8.6:2
+	>=x11-libs/pango-1.10.1[X]
+	virtual/jpeg:0
+	alsa? ( media-libs/alsa-lib )
+	virtual/freedesktop-icon-theme
+	dbus? ( >=dev-libs/dbus-glib-0.72 )
+	libnotify? ( >=x11-libs/libnotify-0.4 )
+	startup-notification? ( >=x11-libs/startup-notification-0.8 )
+	wifi? ( net-wireless/wireless-tools )
+"
 
 DEPEND="${CDEPEND}
 	>=sys-devel/binutils-2.16.1
@@ -206,7 +222,36 @@ src_configure() {
 	####################################
 
 	mozconfig_init
-	mozconfig_config
+
+	# Migrated from mozconfig-3.eclass
+	mozconfig_annotate '' --enable-default-toolkit=cairo-gtk2
+
+	mozconfig_use_enable !bindist official-branding
+
+	mozconfig_use_enable dbus
+	mozconfig_use_enable debug
+	mozconfig_use_enable debug tests
+	if ! use debug ; then
+		mozconfig_annotate 'disabled by Gentoo' --disable-debug-symbols
+	fi
+	mozconfig_use_enable startup-notification
+	mozconfig_use_enable system-sqlite
+	mozconfig_use_enable wifi necko-wifi
+
+	mozconfig_annotate 'required' --enable-ogg
+	mozconfig_annotate 'required' --enable-wave
+	mozconfig_annotate 'required' --with-system-libvpx
+
+	# These are enabled by default in all mozilla applications
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${EPREFIX}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${EPREFIX}"/usr
+	mozconfig_annotate '' --x-includes="${EPREFIX}"/usr/include --x-libraries="${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-libevent="${EPREFIX}"/usr
+	mozconfig_annotate '' --enable-system-hunspell
+	mozconfig_annotate '' --disable-gnomevfs
+	mozconfig_annotate '' --disable-gnomeui
+	mozconfig_annotate '' --enable-gio
+	mozconfig_annotate '' --disable-crashreporter
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"

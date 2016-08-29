@@ -1,9 +1,0 @@
-diff -Naur i2pd-2.5.1/debian/i2pd.conf i2pd-2.5.1b/debian/i2pd.conf
---- i2pd-2.5.1/debian/i2pd.conf	2016-03-10 19:34:16.000000000 +0100
-+++ i2pd-2.5.1b/debian/i2pd.conf	2016-03-24 22:30:51.490011172 +0100
-@@ -1,4 +1,4 @@
--ipv6
-+#ipv6
- 
- [httpproxy]
- address = 127.0.0.1

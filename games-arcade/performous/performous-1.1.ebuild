@@ -27,7 +27,7 @@ LICENSE="GPL-2
 		CC-BY-NC-ND-2.5
 	)"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="midi songs tools webcam"
 
 RDEPEND="dev-cpp/glibmm
@@ -63,10 +63,12 @@ src_prepare() {
 		"${FILESDIR}"/${P}-linguas.patch
 	sed -i \
 		-e "s:@GENTOO_BINDIR@:${GAMES_BINDIR}:" \
-		-e '/ Z /s/ Z / ZLIB /' \
+		-e '/ Z /s/ Z/ ZLIB/g' \
+		-e 's/Z_FOUND/ZLIB_FOUND/g' \
+		-e 's/Z_LIBRARIES/ZLIB_LIBRARIES/g' \
 		-e 's/Jpeg/JPEG/' \
 		-e 's/Png/PNG/' \
-		game/CMakeLists.txt || die
+		{game,tools}/CMakeLists.txt || die
 
 	strip-linguas -u lang
 }

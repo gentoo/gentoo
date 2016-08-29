@@ -27,8 +27,5 @@ net-firewall/iptables netlink
 # Tests for Linux-PAM 0.99 require >=sys-libs/glibc-2.4
 >=sys-libs/pam-0.99.8 test
 
-# Masking since this pulls in app-crypt/pinentry, which isn't keyworded
-dev-libs/opensc nsplugin
-
 # Masking these to keep repoman happy
 media-gfx/graphviz perl

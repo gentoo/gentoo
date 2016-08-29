@@ -54,6 +54,7 @@ GUI_RDEPEND="
 			kde-frameworks/sonnet:5
 		)
 		phonon? ( media-libs/phonon[qt5] )
+		!phonon? ( dev-qt/qtmultimedia:5 )
 		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
@@ -104,7 +105,7 @@ REQUIRED_USE="
 	ayatana? ( || ( X monolithic ) )
 	crypt? ( || ( server monolithic ) )
 	dbus? ( || ( X monolithic ) )
-	kde? ( || ( X monolithic ) phonon )
+	kde? ( || ( X monolithic ) )
 	phonon? ( || ( X monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	qt5? ( !ayatana )
@@ -135,6 +136,7 @@ src_configure() {
 		-DWANT_MONO=$(usex monolithic)
 		$(cmake-utils_use_find_package phonon Phonon)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
+		$(cmake-utils_use_find_package !phonon Qt5Multimedia)
 		-DUSE_QT5=$(usex qt5)
 		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
@@ -188,18 +190,6 @@ pkg_postinst() {
 	if use server || use monolithic ; then
 		einfo "Quassel can use net-misc/oidentd package if installed on your system."
 		einfo "Consider installing it if you want to run quassel within identd daemon."
-	fi
-
-	# temporary info mesage
-	if use server && [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]]; then
-		echo
-		ewarn "Please note that all configuration moved from"
-		ewarn "/home/\${QUASSEL_USER}/.config/quassel-irc.org/"
-		ewarn "to: ${QUASSEL_DIR}."
-		echo
-		ewarn "For migration, stop the core, move quasselcore files (pretty much"
-		ewarn "everything apart from quasselclient.conf and settings.qss) into"
-		ewarn "new location and then start server again."
 	fi
 }
 

@@ -12,7 +12,7 @@ KDE_SCM="svn"
 inherit kde4-meta
 
 DESCRIPTION="Wallpapers from kde"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 KMEXTRA="

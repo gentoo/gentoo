@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils fortran-2
 
 DESCRIPTION="Binary Decision Diagram Package"
-HOMEPAGE="http://sourceforge.net/projects/buddy/"
+HOMEPAGE="https://sourceforge.net/projects/buddy/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="buddy"

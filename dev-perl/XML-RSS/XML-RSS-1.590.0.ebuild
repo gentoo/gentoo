@@ -24,16 +24,14 @@ RDEPEND="
 	>=dev-perl/XML-Parser-2.230.0"
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.360.0
-	test? (
-		>=dev-perl/Test-Manifest-0.900
-		virtual/perl-Test-Simple
-	)
+	test? ( virtual/perl-Test-Simple )
 "
+
+PATCHES=(
+	"${FILESDIR}/nomanifest.patch"
+)
+
 src_test() {
-	# Ugh. Why does this havce to be so difficult.
 	perl_rm_files  t/pod{,-coverage}.t t/cpan-changes.t t/style-trailing-space.t
-	sed -i -e '/^pod.*t/d' "${S}/t/test_manifest" || die
-	sed -i -e '/^cpan-changes\.t/d' "${S}/t/test_manifest" || die
-	sed -i -e '/^style-trailing-space\.t/d' "${S}/t/test_manifest" || die
 	perl-module_src_test
 }

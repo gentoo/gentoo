@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Tool for sending text messages for various Swiss providers"
-HOMEPAGE="http://sourceforge.net/projects/pysms/"
+HOMEPAGE="https://sourceforge.net/projects/pysms/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

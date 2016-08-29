@@ -8,8 +8,8 @@ inherit eutils gnome2
 
 DESCRIPTION="Stream directory browser for browsing internet radio streams"
 HOMEPAGE="http://www.nongnu.org/streamtuner"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz
-	 http://savannah.nongnu.org/download/${PN}/${P}-pygtk-2.6.diff"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz
+	 https://savannah.nongnu.org/download/${PN}/${P}-pygtk-2.6.diff"
 
 LICENSE="BSD"
 SLOT="0"

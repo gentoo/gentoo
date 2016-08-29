@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -61,10 +61,10 @@ REQUIRED_USE="
 # Unfortunately, luabins upstream is dead since 2011.
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${P}-fix-lua-regexp.patch"
-	"${FILESDIR}/${P}-unbundle-luajit.patch"
-	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
-	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
+	"${FILESDIR}/${PV}/${P}-fix-lua-regexp.patch"
+	"${FILESDIR}/${PV}/${P}-unbundle-luajit.patch"
+	"${FILESDIR}/${PV}/${P}-add-missing-pthread-flags.patch"
+	"${FILESDIR}/${PV}/${P}-respect-user-compiler-flags.patch"
 )
 
 pkg_pretend() {

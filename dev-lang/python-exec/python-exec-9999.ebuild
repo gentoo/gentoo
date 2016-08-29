@@ -5,7 +5,7 @@
 EAPI=5
 
 #if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 inherit autotools git-r3
 #endif
@@ -19,8 +19,8 @@ PYTHON_COMPAT=( "${_PYTHON_ALL_IMPLS[@]}" )
 inherit python-r1
 
 DESCRIPTION="Python script wrapper"
-HOMEPAGE="https://bitbucket.org/mgorny/python-exec/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/python-exec/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="2"

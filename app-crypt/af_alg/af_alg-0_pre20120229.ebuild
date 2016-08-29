@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,9 +17,10 @@ SRC_URI="http://src.carnivore.it/users/common/af_alg/snapshot/${MY_P}.tar.gz"
 LICENSE="openssl"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libressl"
 
-DEPEND="dev-libs/openssl"
+DEPEND="!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"

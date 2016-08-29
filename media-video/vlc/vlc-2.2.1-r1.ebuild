@@ -15,7 +15,7 @@ if [ "${PV%9999}" != "${PV}" ] ; then
 	fi
 fi
 
-inherit eutils multilib autotools toolchain-funcs flag-o-matic virtualx ${SCM}
+inherit eutils multilib autotools toolchain-funcs flag-o-matic versionator virtualx ${SCM}
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -124,7 +124,7 @@ RDEPEND="
 		qt4? ( >=dev-qt/qtgui-4.6:4 >=dev-qt/qtcore-4.6:4 )
 		qt5? ( >=dev-qt/qtgui-5.1:5 >=dev-qt/qtcore-5.1:5 >=dev-qt/qtwidgets-5.1:5
 			>=dev-qt/qtx11extras-5.1:5 )
-		rdp? ( >=net-misc/freerdp-1.0.1:0=[client] )
+		rdp? ( >=net-misc/freerdp-1.0.1:0=[client] <net-misc/freerdp-2 )
 		samba? ( || ( ( >=net-fs/samba-3.4.6:0[smbclient] <net-fs/samba-4.0.0_alpha1:0[smbclient] )
 			>=net-fs/samba-4.0.0_alpha1:0[client] ) )
 		schroedinger? ( >=media-libs/schroedinger-1.0.10:0 )
@@ -168,7 +168,7 @@ RDEPEND="${RDEPEND}
 		)
 		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
 		vorbis? ( >=media-libs/libvorbis-1.1:0 )
-		vpx? ( media-libs/libvpx:0 )
+		vpx? ( media-libs/libvpx:0= )
 		X? ( x11-libs/libX11:0 )
 		x264? ( >=media-libs/x264-0.0.20090923:0= )
 		x265? ( media-libs/x265:0= )
@@ -213,8 +213,8 @@ REQUIRED_USE="
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	if [[ "${MERGE_TYPE}" != "binary" && "$(tc-getCC)" == *"gcc"* ]] ; then
-		if [[ $(gcc-major-version) < 4 || ( $(gcc-major-version) == 4 && $(gcc-minor-version) < 5 ) ]] ; then
+	if [[ "${MERGE_TYPE}" != "binary" ]] && tc-is-gcc ; then
+		if ! version_is_at_least 4.5 $(gcc-version) ; then
 			die "You need to have at least >=sys-devel/gcc-4.5 to build and/or have a working vlc, see bug #426754."
 		fi
 	fi
@@ -236,7 +236,7 @@ src_prepare() {
 	# config.h:793: warning: ignoring #pragma STDC FP_CONTRACT [-Wunknown-pragmas]
 	#
 	# https://gcc.gnu.org/c99status.html
-	if [[ "$(tc-getCC)" == *"gcc"* ]] ; then
+	if tc-is-gcc ; then
 		sed -i 's/ifndef __FAST_MATH__/if 0/g' configure.ac || die
 	fi
 

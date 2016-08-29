@@ -10,6 +10,7 @@
 	</maintainer>
 	<use>
 		<flag name="embedded">Embed plugins instead of building them as real plugins. When disabling this USE flag make sure you specify all used plugins in your uWSGI configuration. Note: Language plugins will always be built as real plugins.</flag>
+		<flag name="go">Build the gccgo plugin to run Go applications.</flag>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> instead of libc's malloc</flag>
 		<flag name="json">Support json as a configuration file format.</flag>
 		<flag name="pypy">Build the pypy plugin to run your code using <pkg>virtual/pypy</pkg>.</flag>

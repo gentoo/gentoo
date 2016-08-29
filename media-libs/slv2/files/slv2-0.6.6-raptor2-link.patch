@@ -1,0 +1,23 @@
+To reproduce it run:
+    $ LDFLAGS="-Wl,--no-undefined" emerge -1 slv2
+Fixes https://bugs.gentoo.org/371747 by ftrvxmtrx
+--- slv2-0.6.6.orig/wscript	2009-05-26 05:44:51.000000000 +0200
++++ slv2-0.6.6/wscript	2014-01-21 00:46:19.890443103 +0100
+@@ -51,6 +51,7 @@
+ 	autowaf.check_pkg(conf, 'lv2core', uselib_store='LV2CORE', atleast_version='1.0', mandatory=True)
+ 	autowaf.check_pkg(conf, 'redland', uselib_store='REDLAND', atleast_version='1.0.6', mandatory=True)
+ 	autowaf.check_pkg(conf, 'jack', uselib_store='JACK', atleast_version='0.107.0', mandatory=False)
++	autowaf.check_pkg(conf, 'raptor2', uselib_store='RAPTOR2', atleast_version='2.0.8', mandatory=True)
+ 	conf.env.append_value('CCFLAGS', '-std=c99')
+ 	conf.define('SLV2_VERSION', SLV2_VERSION)
+ 	conf.write_config_header('slv2-config.h')
+@@ -96,7 +97,8 @@
+ 	obj.target       = 'slv2'
+ 	obj.vnum         = SLV2_LIB_VERSION
+ 	obj.install_path = '${LIBDIR}'
+-	autowaf.use_lib(bld, obj, 'REDLAND LV2CORE')
++	obj.lib          = ['dl']
++	autowaf.use_lib(bld, obj, 'REDLAND LV2CORE RAPTOR2')
+ 
+ 	# Static library (for unit test code coverage)
+ 	if bld.env['BUILD_TESTS']:

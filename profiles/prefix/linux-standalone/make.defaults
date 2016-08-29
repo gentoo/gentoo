@@ -12,6 +12,3 @@ USE="iconv"
 
 # build gcc with parallelization support
 USE="${USE} openmp"
-
-# Avoid host binaries called by ebuild. (#576658)
-EXTRA_PATH=""

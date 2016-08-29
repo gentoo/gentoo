@@ -4,6 +4,7 @@
 
 EAPI=5
 
+CMAKE_MIN_VERSION="3.3"
 inherit cmake-utils eutils versionator multilib
 
 PV1=$(get_version_component_range 1 ${PV})

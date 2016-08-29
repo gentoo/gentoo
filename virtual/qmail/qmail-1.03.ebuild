@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,6 @@ DEPEND=""
 # See its website, http://www.qmail.org/netqmail/
 
 RDEPEND="|| (
-	~mail-mta/netqmail-1.05
 	~mail-mta/netqmail-1.06
 	~mail-mta/mini-qmail-1.05
 	~mail-mta/mini-qmail-1.06

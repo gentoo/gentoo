@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,8 +25,8 @@ IUSE="doc infiniband static-libs"
 # --enable-systemd : Install systemd service files
 RDEPEND="!sys-cluster/heartbeat
 	infiniband? (
-		sys-infiniband/libibverbs
-		sys-infiniband/librdmacm
+		sys-fabric/libibverbs
+		sys-fabric/librdmacm
 	)
 	dev-libs/nss
 	>=sys-cluster/libqb-0.14.4"

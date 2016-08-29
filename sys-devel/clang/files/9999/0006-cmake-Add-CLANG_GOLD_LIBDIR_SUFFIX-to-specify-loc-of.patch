@@ -1,0 +1,64 @@
+From cf60af04f0ac2836f50d5a042acc89ef76e76a66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 23:31:28 +0200
+Subject: [PATCH 6/7] cmake: Add CLANG_GOLD_LIBDIR_SUFFIX to specify loc of
+ LLVMgold.so
+
+Add CLANG_GOLD_LIBDIR_SUFFIX that defaults to ${LLVM_LIBDIR_SUFFIX}
+and can be overriden if LLVMgold.so is installed elsewhere. The use case
+are multilib systems where binutils is 64-bit and clang is 32-bit,
+therefore the gold plugin is installed in 64-bit libdir while clang
+is not.
+
+Bug: https://llvm.org/bugs/show_bug.cgi?id=23793
+Patch: https://reviews.llvm.org/D23754
+---
+ CMakeLists.txt                      | 3 +++
+ include/clang/Config/config.h.cmake | 3 +++
+ lib/Driver/Tools.cpp                | 2 +-
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 67b85b5..8ed8c10 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,6 +239,9 @@ set(CLANG_LIBDIR_SUFFIX "${LLVM_LIBDIR_SUFFIX}" CACHE
+   STRING "Define suffix of library directory name for clang runtime (32/64)")
+ set(CLANG_LIBRARY_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/lib${CLANG_LIBDIR_SUFFIX})
+ 
++set(CLANG_GOLD_LIBDIR_SUFFIX "${LLVM_LIBDIR_SUFFIX}" CACHE
++  STRING "Define suffix of library directory name that contains LLVMgold.so (32/64)")
++
+ set(CLANG_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ set(CLANG_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
+ 
+diff --git a/include/clang/Config/config.h.cmake b/include/clang/Config/config.h.cmake
+index 9bf9ea5..26e0e7e 100644
+--- a/include/clang/Config/config.h.cmake
++++ b/include/clang/Config/config.h.cmake
+@@ -20,6 +20,9 @@
+ /* Multilib suffix for libdir. */
+ #define CLANG_LIBDIR_SUFFIX "${CLANG_LIBDIR_SUFFIX}"
+ 
++/* Multilib suffix for libdir containing LLVMgold.so. */
++#define CLANG_GOLD_LIBDIR_SUFFIX "${CLANG_GOLD_LIBDIR_SUFFIX}"
++
+ /* Relative directory for resource files */
+ #define CLANG_RESOURCE_DIR "${CLANG_RESOURCE_DIR}"
+ 
+diff --git a/lib/Driver/Tools.cpp b/lib/Driver/Tools.cpp
+index a814df3..333a2e9 100644
+--- a/lib/Driver/Tools.cpp
++++ b/lib/Driver/Tools.cpp
+@@ -2007,7 +2007,7 @@ static void AddGoldPlugin(const ToolChain &ToolChain, const ArgList &Args,
+   // forward.
+   CmdArgs.push_back("-plugin");
+   std::string Plugin =
+-      ToolChain.getDriver().Dir + "/../lib" CLANG_LIBDIR_SUFFIX "/LLVMgold.so";
++      ToolChain.getDriver().Dir + "/../lib" CLANG_GOLD_LIBDIR_SUFFIX "/LLVMgold.so";
+   CmdArgs.push_back(Args.MakeArgString(Plugin));
+ 
+   // Try to pass driver level flags relevant to LTO code generation down to
+-- 
+2.9.3
+

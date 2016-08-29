@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.igniterealtime.org/builds/openfire/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.7"
@@ -48,7 +48,7 @@ src_compile() {
 
 	# delete nativeAuth prebuilt libs:
 	#    uses outdated unmaintained libshaj, does not support amd64
-	rm -rfv target/openfire/resources/nativeAuth || dir
+	rm -rfv target/openfire/resources/nativeAuth || die
 }
 
 src_install() {

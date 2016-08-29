@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="SCSI RDMA Protoaemon daemon"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if ! modinfo ib_srp > /dev/null 2>&1 ; then
+		eerror "ib_srp module not found!"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig
+	ebegin "Loading ib_srp module"
+	modprobe ib_srp
+	eend $?
+	ebegin "Starting srp_daemon"
+	start-stop-daemon \
+		--start \
+		--background \
+		--make-pidfile \
+		--pidfile ${SRP_DAEMON_PID:-/var/run/srpd.pid} \
+		--exec /usr/sbin/srp_daemon -- ${SRP_DAEMON_OPTS:- -e -R 60}
+	eend $?
+	
+}
+
+stop() {
+	ebegin "Stopping srp_daemon"
+	start-stop-daemon --stop --pidfile ${SRP_DAEMON_PID:-/var/run/srpd.pid}
+	eend $?
+	ebegin "Unloading ib_srp module"
+	rmmod ib_srp
+	eend $?
+}

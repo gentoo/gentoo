@@ -1,0 +1,25 @@
+From 0160e50fa9b255ad338a50b97bcbb2bfa56aa93d Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Tue, 3 May 2016 10:51:54 -0500
+Subject: [PATCH] armv7l doesnt support -momit-leaf-frame-pointer
+
+---
+ src/rocksdb/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rocksdb/Makefile b/src/rocksdb/Makefile
+index c64ea36..541dbf3 100644
+--- a/src/rocksdb/Makefile
++++ b/src/rocksdb/Makefile
+@@ -84,7 +84,7 @@ endif
+ # compile with -O2 if debug level is not 2
+ ifneq ($(DEBUG_LEVEL), 2)
+ OPT += -O2 -fno-omit-frame-pointer
+-ifneq ($(MACHINE),ppc64) # ppc64 doesn't support -momit-leaf-frame-pointer
++ifneq ($(MACHINE),$(filter $(MACHINE),ppc64 armv7l)) # ppc64 and armv7l doesn't support -momit-leaf-frame-pointer
+ OPT += -momit-leaf-frame-pointer
+ endif
+ endif
+-- 
+2.7.3
+

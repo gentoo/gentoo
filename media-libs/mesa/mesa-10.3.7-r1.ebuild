@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -101,19 +101,10 @@ RDEPEND="
 	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
 	llvm? (
-		video_cards_radeonsi? ( || (
-			>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-			>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-			) )
-		video_cards_r600? ( || (
-			>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-			>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-			) )
+		video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
+		video_cards_r600? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		!video_cards_r600? (
-			video_cards_radeon? ( || (
-				>=dev-libs/elfutils-0.155-r1:=[${MULTILIB_USEDEP}]
-				>=dev-libs/libelf-0.8.13-r2:=[${MULTILIB_USEDEP}]
-				) )
+			video_cards_radeon? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 		)
 		>=sys-devel/llvm-3.3-r3:=[${MULTILIB_USEDEP}]
 		<sys-devel/llvm-3.6

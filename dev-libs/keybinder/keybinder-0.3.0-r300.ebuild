@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ S=${WORKDIR}/${MY_P}
 src_configure() {
 	econf \
 		$(use_enable introspection) \
-		--with-html-dir=/usr/share/doc/${PF}/html
+		--with-html-dir="${EPREFIX}/usr/share/doc/${PF}/html"
 }
 
 src_install() {

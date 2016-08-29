@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Turn on strict and make most warnings fatal"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~hppa ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test minimal"
 
 RDEPEND="

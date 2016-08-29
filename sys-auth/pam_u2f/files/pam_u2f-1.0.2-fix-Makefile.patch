@@ -1,0 +1,13 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -34,8 +34,8 @@
+ # Release
+ 
+ install-exec-hook:
+-	rm -f $(PAMDIR)/pam_u2f.la
+-	chmod -f 644 $(PAMDIR)/pam_u2f.so || true
++	rm -f $(DESTDIR)/$(PAMDIR)/pam_u2f.la
++	chmod -f 644 $(DESTDIR)/$(PAMDIR)/pam_u2f.so || true
+ 
+ indent:
+ 	indent -kr -nut -i2 *.c *.h pamu2fcfg/*.c pamu2fcfg/*.h

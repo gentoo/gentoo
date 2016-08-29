@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/e/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc examples test"
 
 RDEPEND=">=dev-python/greenlet-0.3[${PYTHON_USEDEP}]"

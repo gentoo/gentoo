@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,10 +16,7 @@ SLOT="0"
 
 RDEPEND=">=net-libs/ccrtp-2
 	>=dev-cpp/commoncpp2-1.5.1
-	|| (
-		>=dev-libs/openssl-0.9.8[-bindist]
-		dev-libs/libgcrypt:0=
-	)"
+	>=dev-libs/openssl-0.9.8:0=[-bindist]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

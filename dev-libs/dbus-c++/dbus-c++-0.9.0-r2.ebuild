@@ -9,7 +9,7 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES="modules"
 inherit autotools-multilib
 
 DESCRIPTION="Provides a C++ API for D-BUS"
-HOMEPAGE="http://sourceforge.net/projects/dbus-cplusplus/ http://sourceforge.net/apps/mediawiki/dbus-cplusplus/index.php?title=Main_Page"
+HOMEPAGE="https://sourceforge.net/projects/dbus-cplusplus/ https://sourceforge.net/apps/mediawiki/dbus-cplusplus/index.php?title=Main_Page"
 SRC_URI="mirror://sourceforge/dbus-cplusplus/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"

@@ -22,9 +22,9 @@ for arch in amd64 arm ppc64 x86; do
 		)"
 done
 
-LICENSE="GPL-2-with-linking-exception"
+LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
-KEYWORDS="-* ~amd64 ~arm ppc64 ~x86"
+KEYWORDS="-* amd64 ~arm ppc64 x86"
 
 IUSE="+alsa cjk +cups doc examples +gtk headless-awt nsplugin pulseaudio selinux source +webstart"
 REQUIRED_USE="gtk? ( !headless-awt ) nsplugin? ( !headless-awt )"

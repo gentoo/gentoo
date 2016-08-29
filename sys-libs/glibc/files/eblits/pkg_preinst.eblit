@@ -11,7 +11,7 @@
 glibc_sanity_check() {
 	cd / #228809
 
-	# We enter ${D} so to avoid trouble if the path contains
+	# We enter ${ED} so to avoid trouble if the path contains
 	# special characters; for instance if the path contains the
 	# colon character (:), then the linker will try to split it
 	# and look for the libraries in an unexpected place. This can
@@ -53,7 +53,7 @@ eblit-glibc-pkg_preinst() {
 	fi
 
 	[[ ${ROOT} != "/" ]] && return 0
-	[[ -d ${D}/$(get_libdir) ]] || return 0
+	[[ -d ${ED}/$(get_libdir) ]] || return 0
 	glibc_sanity_check
 
 	# For newer EAPIs, this was run in pkg_pretend.

@@ -1,5 +1,5 @@
---- configure.ac~	2015-10-16 17:06:50.000000000 +0200
-+++ configure.ac	2016-01-30 13:33:07.595401835 +0100
+--- a/configure.ac~	2015-10-16 17:06:50.000000000 +0200
++++ b/configure.ac	2016-01-30 13:33:07.595401835 +0100
 @@ -58,7 +58,7 @@
          gtk+-3.0 >= $GTK_REQUIRED_VERSION
          dbus-glib-1 >= $DBUS_REQUIRED_VERSION

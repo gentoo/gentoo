@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Deep
 		>=virtual/perl-Test-Simple-0.880.0
 		dev-perl/Test-Requires
-		|| ( >=virtual/perl-Test-Simple-1.1.14 dev-perl/Test-Tester )
 		>=dev-perl/Test-Warnings-0.9.0
 		virtual/perl-if
 		virtual/perl-parent
@@ -51,3 +50,14 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do parallel"
+
+src_test() {
+	# Bug 584238 Avoidance
+	if perl -e 'exit ( eval { require Test::Tester; 1 } ? 0 : 1 )'; then
+		perl-module_src_test
+	else
+		einfo "Test phase skipped: Test::Tester required for tests"
+		einfo "Please upgrade to >=dev-lang/perl-5.22.0 or >=virtual/perl-Test-Simple-1.1.10"
+		einfo "if you want this tested"
+	fi
+}

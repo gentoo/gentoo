@@ -1,0 +1,21 @@
+--- ltmain.sh
++++ ltmain.sh
+@@ -8367,7 +8367,7 @@
+ 	       test no = "$hardcode_direct_absolute"; then
+ 	      add=$libdir/$linklib
+ 	    elif test yes = "$hardcode_minus_L"; then
+-	      add_dir=-L$libdir
++	      add_dir=-L${lt_sysroot:-${SYSROOT}}$libdir
+ 	      add=-l$name
+ 	    elif test yes = "$hardcode_shlibpath_var"; then
+ 	      case :$finalize_shlibpath: in
+@@ -8384,7 +8384,7 @@
+ 	      fi
+ 	    else
+ 	      # We cannot seem to hardcode it, guess we'll fake it.
+-	      add_dir=-L$libdir
++	      add_dir=-L${lt_sysroot:-${SYSROOT}}$libdir
+ 	      # Try looking first in the location we're being installed to.
+ 	      if test -n "$inst_prefix_dir"; then
+ 		case $libdir in
+

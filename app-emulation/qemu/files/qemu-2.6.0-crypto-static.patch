@@ -1,0 +1,60 @@
+https://lists.gnu.org/archive/html/qemu-devel/2016-06/msg01611.html
+
+From 6a2909cf98e892783b2502df6f7f4de46d13e42b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@chromium.org>
+Date: Mon, 6 Jun 2016 17:58:26 -0400
+Subject: [PATCH] crypto: aes: always rename internal symbols
+
+OpenSSL's libcrypto always defines AES symbols with the same names as
+qemu's local aes code.  This is problematic when enabling at least curl
+as that frequently also uses libcrypto.  It might not be noticed when
+running, but if you try to statically link, everything falls down.
+
+An example snippet:
+  LINK  qemu-nbd
+.../libcrypto.a(aes-x86_64.o): In function 'AES_encrypt':
+(.text+0x460): multiple definition of 'AES_encrypt'
+crypto/aes.o:aes.c:(.text+0x670): first defined here
+.../libcrypto.a(aes-x86_64.o): In function 'AES_decrypt':
+(.text+0x9f0): multiple definition of 'AES_decrypt'
+crypto/aes.o:aes.c:(.text+0xb30): first defined here
+.../libcrypto.a(aes-x86_64.o): In function 'AES_cbc_encrypt':
+(.text+0xf90): multiple definition of 'AES_cbc_encrypt'
+crypto/aes.o:aes.c:(.text+0xff0): first defined here
+collect2: error: ld returned 1 exit status
+.../qemu-2.6.0/rules.mak:105: recipe for target 'qemu-nbd' failed
+make: *** [qemu-nbd] Error 1
+
+The aes.h header has redefines already for FreeBSD, but go ahead and
+enable that for everyone since there's no real good reason to not use
+a namespace all the time.
+
+Signed-off-by: Mike Frysinger <vapier@chromium.org>
+---
+ include/crypto/aes.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/include/crypto/aes.h b/include/crypto/aes.h
+index a006da2224a9..12fb321b89de 100644
+--- a/include/crypto/aes.h
++++ b/include/crypto/aes.h
+@@ -10,14 +10,13 @@ struct aes_key_st {
+ };
+ typedef struct aes_key_st AES_KEY;
+ 
+-/* FreeBSD has its own AES_set_decrypt_key in -lcrypto, avoid conflicts */
+-#ifdef __FreeBSD__
++/* FreeBSD/OpenSSL have their own AES functions with the same names in -lcrypto
++ * (which might be pulled in via curl), so redefine to avoid conflicts. */
+ #define AES_set_encrypt_key QEMU_AES_set_encrypt_key
+ #define AES_set_decrypt_key QEMU_AES_set_decrypt_key
+ #define AES_encrypt QEMU_AES_encrypt
+ #define AES_decrypt QEMU_AES_decrypt
+ #define AES_cbc_encrypt QEMU_AES_cbc_encrypt
+-#endif
+ 
+ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
+ 	AES_KEY *key);
+-- 
+2.8.2
+

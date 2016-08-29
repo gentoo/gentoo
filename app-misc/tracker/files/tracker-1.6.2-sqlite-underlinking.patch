@@ -1,0 +1,58 @@
+From f69ece17fd3d6414ef2634336c7e780207b0f4a7 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sun, 15 May 2016 15:15:50 -0400
+Subject: [PATCH] build: embedded copy of SQLite requires -ldl and -pthread
+
+https://bugzilla.gnome.org/show_bug.cgi?id=766487
+---
+ configure.ac           | 8 ++++++++
+ src/sqlite/Makefile.am | 9 +++++++--
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2ccda7a..b6c978a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -719,6 +719,14 @@ if test "x$enable_journal" = "xno" ; then
+    AC_DEFINE(DISABLE_JOURNAL, 1, [Define if we disable the journal])
+ fi
+ 
++####################################################################
++# Check for SQLite
++####################################################################
++
++# Our copy of sqlite requires libdl on some platforms
++AC_CHECK_LIB(dl, dlsym, [LIBDL=-ldl], [LIBDL=])
++AC_SUBST(LIBDL)
++
+ ##################################################################
+ # Check for libtracker-common, make sure libstemmer exists
+ ##################################################################
+diff --git a/src/sqlite/Makefile.am b/src/sqlite/Makefile.am
+index 8b0ac18..354f054 100644
+--- a/src/sqlite/Makefile.am
++++ b/src/sqlite/Makefile.am
+@@ -3,7 +3,8 @@ AM_CPPFLAGS =                                          \
+ 	-I$(top_srcdir)/src                            \
+ 	-DSQLITE_THREADSAFE=1                          \
+ 	-DSQLITE_ENABLE_FTS4                           \
+-	-DSQLITE_ENABLE_FTS3_TOKENIZER
++	-DSQLITE_ENABLE_FTS3_TOKENIZER                 \
++	-pthread
+ 
+ noinst_LTLIBRARIES = libtracker-sqlite.la
+ 
+@@ -12,5 +13,9 @@ libtracker_sqlite_la_SOURCES =                         \
+ 	sqlite3.h                                      \
+ 	sqlite3ext.h
+ 
++libtracker_sqlite_la_LDFLAGS =                         \
++	-pthread
++
+ libtracker_sqlite_la_LIBADD =                          \
+-	$(BUILD_LIBS)
++	$(BUILD_LIBS)                                      \
++	$(LIBDL)
+-- 
+2.8.2
+

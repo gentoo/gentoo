@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,8 +29,8 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils"
 RDEPEND="${RDEPEND}
 	|| (
-		net-misc/tigervnc:0=[server,xorgmodule]
-		net-misc/x11rdp:0=
+		net-misc/tigervnc:0[server,xorgmodule]
+		net-misc/x11rdp:0
 	)"
 
 # does not work with gentoo version of freerdp

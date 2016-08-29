@@ -14,7 +14,7 @@ S="${WORKDIR}/oslo.vmware-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"

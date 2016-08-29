@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Shows and sets processor power related values"
 HOMEPAGE="https://www.kernel.org/"
-SRC_URI="mirror://kernel/linux/kernel/v3.x/linux-${PV}.tar.xz"
+SRC_URI="mirror://kernel/linux/kernel/v${PV%%.*}.x/linux-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~x86"
+KEYWORDS="alpha amd64 ~hppa ppc ppc64 ~x86"
 IUSE="+bzip2"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,11 +20,13 @@ KEYWORDS="amd64 x86"
 RDEPEND=">=dev-texlive/texlive-latex-2012"
 DEPEND="app-arch/unzip"
 
-IUSE=""
+IUSE="doc"
 
 S="${WORKDIR}/${MY_P}"
 
 TEXMF=/usr/share/texmf-site
+# Bug #574350
+LATEX_PACKAGE_SKIP="reftest4-1.tex 00readme.tex aip.dtx ltxgrid.dtx ltxdocext.dtx"
 
 src_unpack() {
 	default

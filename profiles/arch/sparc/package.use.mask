@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-libs/uchardet lacks sparc keyword. See bug #569114.
@@ -23,7 +27,7 @@ app-office/planner eds
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
@@ -66,10 +70,6 @@ net-mail/dovecot lz4
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
-
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on sparc
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
@@ -142,11 +142,6 @@ sys-apps/systemd xkb
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2014)
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
 
 # Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
 # Missing keywords on dev-libs/protobuf-c (bug 519772)
@@ -376,7 +371,7 @@ app-text/enchant zemberek
 # Mask srtp for ortp because libsrtp is marked -sparc
 net-libs/ortp srtp
 
-# Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 

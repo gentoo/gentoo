@@ -1,0 +1,88 @@
+From 4eb8b813d0086a6eca9627ab64721378b07aa030 Mon Sep 17 00:00:00 2001
+From: Luke Bakken <lbakken@basho.com>
+Date: Sat, 9 Jul 2016 07:43:41 -0700
+Subject: [PATCH] OTP 19 support via compilation of CT suite. This defines
+ namespaced_types. Disable CT auto-compile. Fix warnings. Update to proper
+ v1.2
+
+---
+ .gitignore                       |  8 ++++++++
+ test.config                      | 16 +++++++++++++---
+ test/hamcrest_matchers_SUITE.erl |  4 ++--
+ 3 files changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 59ac5eb..d6882d0 100755
+--- a/.gitignore
++++ b/.gitignore
+@@ -4,6 +4,7 @@
+ *.o
+ *.so
+ *.swp
++.rebar/
+ build/*
+ ^build$
+ Emakefile
+@@ -15,3 +16,10 @@ ebin/*.beam
+ logs/*
+ include/hamcrest.hrl
+ qc.hrl
++deps/
++ct_*/
++all_runs.html
++ct_*
++jquery-latest.js
++jquery.tablesorter.min.js
++variables-ct@localhost
+diff --git a/test.config b/test.config
+index bff1a63..f206e37 100644
+--- a/test.config
++++ b/test.config
+@@ -1,9 +1,19 @@
+-
+ {cover_enabled, true}.
++
+ {deps, [
+-    %% TODO: bind to a specific commit or tag instead of 'master'
+-    {proper, ".*", {git, "http://github.com/manopapad/proper.git", "v1.1"}}
++    {proper, "1.*", {git, "http://github.com/manopapad/proper.git", "v1.2"}}
+ ]}.
+ 
++{erl_opts, [
++    debug_info,
++    fail_on_warning,
++    {src_dirs, ["test"]},
++    {platform_define, "^[0-9]+", namespaced_types}
++    ]}.
++
++{validate_app_modules, false}.
++
++{ct_extra_params, "-no_auto_compile"}.
++
+ {plugin_dir, "priv/build/plugins"}.
+ {plugins, [eqc_resolver]}.
+diff --git a/test/hamcrest_matchers_SUITE.erl b/test/hamcrest_matchers_SUITE.erl
+index f2889e2..6726425 100644
+--- a/test/hamcrest_matchers_SUITE.erl
++++ b/test/hamcrest_matchers_SUITE.erl
+@@ -69,7 +69,7 @@ is_not_evaluates_to_logical_negation_of_underlying_matcher(_) ->
+     ?EQC(P).
+ 
+ is_not_provides_convenient_shortcut_for_not_equal_to(_) ->
+-    P = ?FORALL({X, Y}, {binary(), binary()},
++    P = ?FORALL({X, _Y}, {binary(), binary()},
+             begin
+                 #'hamcrest.matchspec'{matcher=F1} = equal_to(X),
+                 #'hamcrest.matchspec'{matcher=F2} = is_not(X),
+@@ -240,7 +240,7 @@ ends_with_should_only_match_last_portion_of_string(_) ->
+         ?IMPLIES(length(Xs) > 0,
+         begin
+           Y = round(length(Xs) / 2),
+-          LStr = string:left(Xs, Y),
++          _LStr = string:left(Xs, Y),
+           RStr = string:right(Xs, Y),
+           case (assert_that(Xs, ends_with(RStr))) of
+             true -> true;
+-- 
+2.9.0
+

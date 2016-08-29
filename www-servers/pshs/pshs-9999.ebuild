@@ -1,22 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 inherit autotools git-r3
-#endif
 
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
-HOMEPAGE="https://bitbucket.org/mgorny/pshs/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/pshs/"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="libressl +magic +netlink qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=
@@ -32,12 +30,10 @@ DEPEND="${RDEPEND}
 		>=sys-kernel/linux-headers-2.6.27 )"
 # libnetlink is static only ATM
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-
-src_prepare() { eautoreconf; }
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(

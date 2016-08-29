@@ -10,7 +10,7 @@ RESTRICT_PYTHON_ABIS="2.4 2.5 3.* *-jython 2.7-pypy-*"
 inherit distutils eutils multilib python
 
 DESCRIPTION="Font preview application"
-HOMEPAGE="http://savannah.nongnu.org/projects/fontypython"
+HOMEPAGE="https://savannah.nongnu.org/projects/fontypython"
 SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

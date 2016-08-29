@@ -1,0 +1,32 @@
+From 3e66829717c8fde611b2b611497f08a46da40ce7 Mon Sep 17 00:00:00 2001
+From: Joerg Sonnenberger <joerg@bec.de>
+Date: Tue, 21 Jun 2016 18:29:07 +0200
+Subject: [PATCH] Dummy out copy_acls if sys/acl.h is missing or ACL support is
+ disabled.
+
+---
+ libarchive/archive_write_disk_posix.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libarchive/archive_write_disk_posix.c b/libarchive/archive_write_disk_posix.c
+index 6737cd7..67aacf1 100644
+--- a/libarchive/archive_write_disk_posix.c
++++ b/libarchive/archive_write_disk_posix.c
+@@ -3487,6 +3487,9 @@ copy_xattrs(struct archive_write_disk *a, int tmpfd, int dffd)
+ static int
+ copy_acls(struct archive_write_disk *a, int tmpfd, int dffd)
+ {
++#ifndef HAVE_SYS_ACL_H
++	return 0;
++#else
+ 	acl_t acl, dfacl = NULL;
+ 	int acl_r, ret = ARCHIVE_OK;
+ 
+@@ -3514,6 +3517,7 @@ copy_acls(struct archive_write_disk *a, int tmpfd, int dffd)
+ 	if (dfacl)
+ 		acl_free(dfacl);
+ 	return (ret);
++#endif
+ }
+ 
+ static int

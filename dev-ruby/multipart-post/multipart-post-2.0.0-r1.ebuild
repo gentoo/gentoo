@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -22,5 +22,5 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 each_ruby_test() {
-	${RUBY} -S testrb -Ilib test || die "Tests failed."
+	${RUBY} -Ilib:. -e "Dir['test/test_*.rb'].each{|f| require f}" || die
 }

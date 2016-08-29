@@ -6,7 +6,6 @@
 <name>Gentoo Toolchain Project</name>
 </maintainer>
 <use>
-<flag name="multislot">Allow for multiple versions of binutils to be emerged at once for same CTARGET</flag>
 <flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>
 </use>
 <upstream>

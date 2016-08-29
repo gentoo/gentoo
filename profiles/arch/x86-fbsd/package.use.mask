@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
+# Requires unkeyworded media-sound/jack-audio-connection-kit & media-video/movit
+media-libs/mlt jack opengl
+
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test

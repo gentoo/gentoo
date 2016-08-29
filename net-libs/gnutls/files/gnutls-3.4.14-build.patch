@@ -1,0 +1,25 @@
+From 107e1df19715ffd4701bfcd3325c5cc80e5174b0 Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@redhat.com>
+Date: Thu, 18 Feb 2016 09:17:17 +0100
+Subject: [PATCH] src: added systemkey-args to BUILT_SOURCES
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1901a76..fda8b9e 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -25,7 +25,7 @@ BUILT_SOURCES = srptool-args.c srptool-args.h \
+ 	serv-args.c serv-args.h cli-args.c cli-args.h \
+ 	cli-debug-args.c cli-debug-args.h certtool-args.c certtool-args.h \
+ 	danetool-args.c danetool-args.h p11tool-args.c p11tool-args.h \
+-	tpmtool-args.c tpmtool-args.h
++	tpmtool-args.c tpmtool-args.h systemkey-args.c systemkey-args.h
+ 
+ if ENABLE_CRYWRAP
+ SUBDIRS += crywrap
+-- 
+2.7.3
+

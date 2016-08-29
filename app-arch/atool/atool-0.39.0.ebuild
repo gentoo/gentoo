@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="a script for managing file archives of various types"
 HOMEPAGE="http://www.nongnu.org/atool/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

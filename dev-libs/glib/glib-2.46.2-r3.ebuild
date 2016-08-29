@@ -32,7 +32,7 @@ REQUIRED_USE="
 	test? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 RDEPEND="
 	!<dev-util/gdbus-codegen-${PV}
@@ -45,11 +45,7 @@ RDEPEND="
 	utils? (
 		${PYTHON_DEPS}
 		>=dev-util/gdbus-codegen-${PV}[${PYTHON_USEDEP}]
-		|| (
-			>=dev-libs/elfutils-0.142
-			>=dev-libs/libelf-0.8.12
-			>=sys-freebsd/freebsd-lib-9.2_rc1
-		)
+		virtual/libelf:0=
 	)
 "
 DEPEND="${RDEPEND}

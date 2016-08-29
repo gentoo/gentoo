@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/Knio/dominate"
 # https://github.com/Knio/dominate/pull/69
 SRC_URI="https://github.com/Knio/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"

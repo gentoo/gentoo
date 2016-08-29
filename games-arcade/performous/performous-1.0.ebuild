@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 SONGS_PN=ultrastar-songs
 
 DESCRIPTION="SingStar GPL clone"
-HOMEPAGE="http://sourceforge.net/projects/performous/"
+HOMEPAGE="https://sourceforge.net/projects/performous/"
 SRC_URI="https://github.com/performous/performous/archive/1.0.tar.gz -> ${P}.tar.gz
 	songs? (
 		mirror://sourceforge/performous/${SONGS_PN}-restricted-3.zip
@@ -66,9 +66,11 @@ src_prepare() {
 	sed -i \
 		-e "s:@GENTOO_BINDIR@:${GAMES_BINDIR}:" \
 		-e '/ Z /s/ Z / ZLIB /' \
+		-e 's/Z_FOUND/ZLIB_FOUND/g' \
+		-e 's/Z_LIBRARIES/ZLIB_LIBRARIES/g' \
 		-e 's/Jpeg/JPEG/' \
 		-e 's/Png/PNG/' \
-		game/CMakeLists.txt || die
+		{game,tools}/CMakeLists.txt || die
 
 	strip-linguas -u lang
 }

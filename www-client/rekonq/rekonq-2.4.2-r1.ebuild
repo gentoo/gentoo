@@ -4,11 +4,11 @@
 
 EAPI=5
 
-WEBKIT_REQUIRED="always"
 KDE_LINGUAS="cs da de el es et eu fi fr gl hu ia it km lt mr nb nl pl pt pt_BR
 sk sl sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
 KDE_HANDBOOK="optional"
 KDE_MINIMAL="4.13.1"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="A browser based on qtwebkit"

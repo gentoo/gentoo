@@ -11,7 +11,7 @@ inherit cmake-utils fdo-mime gnome2-utils virtualx
 DESCRIPTION="A Qt IMAP e-mail client"
 HOMEPAGE="http://trojita.flaska.net/"
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -24,6 +24,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsvg:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	crypt? (

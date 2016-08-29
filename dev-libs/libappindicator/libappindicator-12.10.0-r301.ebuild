@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils multilib-minimal vala
+inherit autotools eutils multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -38,6 +38,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	xdg_environment_reset
 
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die

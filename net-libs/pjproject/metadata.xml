@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <use>
+	<flag name="amr">Inlcude AMR codec in the build</flag>
+	<flag name="v4l2">Include Video4Linux v2 support in the build</flag>
+    <flag name="epoll">Use /dev/epoll ioqueue on Linux (experimental)</flag>
+    <flag name="g711">Include G.711 codecs in the build</flag>
+    <flag name="g722">Include G.722 codec in the build</flag>
+    <flag name="g7221">Include G.722.1 codec in the build</flag>
+    <flag name="ilbc">Include iLBC codec in the build</flag>
+    <flag name="l16">Include Linear/L16 codec family in the build</flag>
+    <flag name="libyuv">Include libyuv in the build</flag>
+    <flag name="openh264">Include Open H.264 support in the build</flag>
+    <flag name="opus">Include OPUS support in the build</flag>
+    <flag name="resample">Include resampling implementations in the build</flag>
+    <flag name="silk">Include SILK support in the build</flag>
+    <flag name="webrtc">Enable WebRTC support</flag>
+  </use>
+</pkgmetadata>

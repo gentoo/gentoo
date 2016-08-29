@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
-	</maintainer>
 	<longdescription lang="en">
 		SL is an extremely sophisticated type remediation program at which you
 		will be astonished.  The original program has experienced gradual

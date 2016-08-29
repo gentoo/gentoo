@@ -31,7 +31,6 @@ REQUIRED_USE="
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
-DOCS=( "${S}"/{ChangeLog,NEWS} )
 
 src_prepare() {
 	python_setup 'python2*'
@@ -90,10 +89,11 @@ src_compile() {
 
 src_install() {
 	installation() {
-		default
+		emake DESTDIR="${D}" install
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
 
+	einstalldocs
 	use doc && dodoc -r doc/html
 }

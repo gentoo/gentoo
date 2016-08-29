@@ -9,7 +9,7 @@ EAPI=5
 CABAL_FEATURES="lib profile haddock hoogle hscolour"
 inherit haskell-cabal
 
-DESCRIPTION="Run tests by filtering the test tree depending on the result of previous test runs"
+DESCRIPTION="Run tests by filtering the tests depending on the result of previous runs"
 HOMEPAGE="https://github.com/ocharles/tasty-rerun"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 

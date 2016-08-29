@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="ftp://ftp.tvdr.de/vdr/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~hd_brummy/distfiles/${EXT_P}.patch.bz2"
 
-KEYWORDS="~arm amd64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 

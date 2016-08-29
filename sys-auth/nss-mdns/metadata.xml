@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+	    <email>amynka@gentoo.org</email>
+	</maintainer>
 	<use>
 	<flag name="search-domains">Honour search domains from
 		/etc/resolv.conf (see bug #201948 for possible side effects)</flag>
-</use>
+	</use>
 	<longdescription lang="en">
 		Name service switch module for multicast dns.
 	</longdescription>

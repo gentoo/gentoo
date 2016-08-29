@@ -16,7 +16,7 @@ SRC_PATH="stable"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.2.9.tar.xz"
-KEYWORDS="amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
 [[ ${PV} = *_rc* ]] && KEYWORDS="arm hppa ppc64"
 
 DESCRIPTION="Samba Suite Version 4"
@@ -42,6 +42,7 @@ MULTILIB_WRAPPED_HEADERS=(
 # sys-apps/attr is an automagic dependency (see bug #489748)
 CDEPEND="${PYTHON_DEPS}
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
+	dev-lang/perl:=
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
@@ -79,6 +80,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	client? ( net-fs/cifs-utils[ads?] )
 	selinux? ( sec-policy/selinux-samba )
+	!dev-perl/Parse-Yapp
 "
 
 REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )

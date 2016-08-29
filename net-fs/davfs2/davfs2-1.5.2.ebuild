@@ -7,7 +7,7 @@ EAPI=5
 inherit user
 
 DESCRIPTION="Linux FUSE (or coda) driver that allows you to mount a WebDAV resource"
-HOMEPAGE="http://savannah.nongnu.org/projects/davfs2"
+HOMEPAGE="https://savannah.nongnu.org/projects/davfs2"
 SRC_URI="http://mirror.lihnidos.org/GNU/savannah/davfs2/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -11,7 +11,7 @@ MUKTINARROW_P="MuktiNarrow-0.94"
 
 DESCRIPTION="Unicode compliant Open Type Bangla fonts"
 HOMEPAGE="http://www.nongnu.org/freebangfont/index.html"
-SRC_BASE="http://savannah.nongnu.org/download/freebangfont"
+SRC_BASE="https://savannah.nongnu.org/download/freebangfont"
 SRC_URI="${SRC_BASE}/${AKAASH_P}.tar.gz
 	${SRC_BASE}/${ANI_P}.tar.gz
 	${SRC_BASE}/${LIKHAN_P}.tar.gz

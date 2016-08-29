@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Turn on strict and make all warnings fatal"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 hppa ppc x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND=""

@@ -26,6 +26,8 @@ DEPEND="
 	)"
 RDEPEND=""
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	if use doc || use test; then
 		python-any-r1_pkg_setup

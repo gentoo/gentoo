@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Fabian Groffen <grobian@gentoo.org> (27 Jun 2016)
+# sys-libs/libseccomp is a linux interface, not sure if it will work
+# in prefix for Linux either, bug #585756
+app-misc/pax-utils seccomp
+
 # Mikle Kolyada <zlogene@gentoo.org> (29 Nov 2014)
 # Masked because of lack of manpower/time (bug #497068)
 dev-vcs/git mediawiki

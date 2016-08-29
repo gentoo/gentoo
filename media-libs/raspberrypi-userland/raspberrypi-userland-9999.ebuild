@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,14 @@ EGIT_REPO_URI="https://github.com/raspberrypi/userland"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DVMCS_INSTALL_PREFIX="/usr"
+	)
+
+	cmake-utils_src_configure
 }
 
 src_install() {

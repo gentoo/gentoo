@@ -23,7 +23,7 @@ else
 fi
 
 DESCRIPTION="A Qt-based text editor for Markdown and reStructuredText"
-HOMEPAGE="http://sourceforge.net/p/retext/home/ReText/"
+HOMEPAGE="https://sourceforge.net/p/retext/home/ReText/"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,11 +9,6 @@
 # Unmask arm arch specific flags
 -iwmmxt
 
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
-# no LibreSSL support yet
-curl_ssl_libressl
-libressl
-
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
 ayatana
@@ -112,7 +107,6 @@ nvtv
 mzscheme
 xemacs
 scanner
-madwifi
 libupnp
 zvbi
 fluidsynth
@@ -229,7 +223,7 @@ video_cards_vmware
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# Matt Turner <mattst88@gentoo.org> (10 Feb 2012)
 # mask d3d since we don't have wine
 d3d
 

@@ -18,7 +18,7 @@ SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/rel
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 
 IUSE="python ruby static-libs ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
 
@@ -138,7 +138,7 @@ pkg_postinst() {
 		touch /etc/selinux/${POLTYPE}/contexts/files/file_contexts.local || die
 		# Fix bug 516608
 		for EXPRFILE in file_contexts file_contexts.homedirs file_contexts.local ; do
-			if [[ -f ${EXPRFILE} ]]; then
+			if [[ -f "/etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE}" ]]; then
 				sefcontext_compile /etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE} \
 				|| die "Failed to recompile contexts"
 			fi

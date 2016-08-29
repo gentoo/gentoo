@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/${PN}/Tapestry-${PV}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="3.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/bsf:2.3
@@ -35,7 +35,6 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	app-arch/unzip
 	>=virtual/jdk-1.4"
 
 IUSE="${JAVA_PKG_IUSE}"
@@ -46,11 +45,11 @@ EANT_GENTOO_CLASSPATH="commons-logging,commons-fileupload,commons-lang-2.1"
 EANT_GENTOO_CLASSPATH+=",commons-codec,commons-beanutils-1.7,commons-digester"
 EANT_GENTOO_CLASSPATH+=",servletapi-2.4,ognl-3.0,bsf-2.3,jakarta-oro-2.0"
 EANT_GENTOO_CLASSPATH+=",javassist-2"
+
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 java_prepare() {
 	mkdir config lib || die
-
 	cp "${FILESDIR}/Version.properties" config/ || die
 	cp "${FILESDIR}/build.properties" config/ || die
 	cp "${FILESDIR}/common.properties" config/ || die
@@ -58,15 +57,12 @@ java_prepare() {
 
 src_compile() {
 	cd "${S}/framework" || die
-
 	eant -Dgentoo.classpath="$(java-pkg_getjars ${EANT_GENTOO_CLASSPATH})"
-
 	use doc && javadoc -sourcepath src/ org.apache.tapestry -d ../javadoc
 }
 
 src_install() {
 	java-pkg_newjar "lib/${P}.jar"
-
 	use source && java-pkg_dosrc framework/src/org
 	use doc && java-pkg_dojavadoc javadoc
 }

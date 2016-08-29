@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/rtomayko/rdiscount"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-macos"
 IUSE=""
 
 all_ruby_prepare() {

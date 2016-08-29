@@ -4,3 +4,6 @@
 
 # Re-add Cygwin's libc
 -elibc_Cygwin
+
+# python-3.5 is not cygwin ready yet
+python_targets_python3_5

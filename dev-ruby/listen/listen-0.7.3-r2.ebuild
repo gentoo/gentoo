@@ -21,7 +21,7 @@ SRC_URI="https://github.com/guard/listen/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x64-macos"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rb-inotify-0.9.0"

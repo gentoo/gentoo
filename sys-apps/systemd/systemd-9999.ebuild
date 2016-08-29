@@ -8,20 +8,22 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit autotools bash-completion-r1 linux-info \
-	multilib-minimal pam systemd toolchain-funcs udev user
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+
+inherit autotools bash-completion-r1 linux-info multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit cryptsetup curl elfutils +gcrypt gnuefi http
-	idn importd +kdbus +kmod +lz4 lzma nat pam policykit
+IUSE="acl apparmor audit cryptsetup curl doc elfutils +gcrypt gnuefi http
+	idn importd +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
@@ -63,14 +65,13 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 
 # baselayout-2.2 has /run
-# laptop-mode-tools: https://github.com/systemd/systemd/issues/2684
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
-	selinux? ( sec-policy/selinux-systemd )
+	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	!sys-auth/nss-myhostname
+	!<sys-kernel/dracut-044
 	!sys-fs/eudev
-	!sys-fs/udev
-	!app-laptop/laptop-mode-tools"
+	!sys-fs/udev"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.8.8:0[systemd]
@@ -95,18 +96,24 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	doc? ( $(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]') )
 "
+
+python_check_deps() {
+	has_version --host-root "dev-python/lxml[${PYTHON_USEDEP}]"
+}
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
-		~DEVPTS_MULTIPLE_INSTANCES ~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
+		~DEVTMPFS ~DMIID ~EPOLL ~FANOTIFY ~FHANDLE
 		~INOTIFY_USER ~IPV6 ~NET ~NET_NS ~PROC_FS ~SECCOMP ~SIGNALFD ~SYSFS
-		~TIMERFD ~TMPFS_XATTR
+		~TIMERFD ~TMPFS_XATTR ~UNIX
 		~!FW_LOADER_USER_HELPER ~!GRKERNSEC_PROC ~!IDE ~!SYSFS_DEPRECATED
 		~!SYSFS_DEPRECATED_V2"
 
 	use acl && CONFIG_CHECK+=" ~TMPFS_POSIX_ACL"
 	kernel_is -lt 3 7 && CONFIG_CHECK+=" ~HOTPLUG"
+	kernel_is -lt 4 7 && CONFIG_CHECK+=" ~DEVPTS_MULTIPLE_INSTANCES"
 
 	if linux_config_exists; then
 		local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
@@ -168,6 +175,8 @@ src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 
+	use doc && python_setup
+
 	multilib-minimal_src_configure
 }
 
@@ -204,7 +213,6 @@ multilib_src_configure() {
 		# no deps
 		--enable-efi
 		--enable-ima
-		--without-python
 
 		# Optional components/dependencies
 		$(multilib_native_use_enable acl)
@@ -221,7 +229,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable importd)
 		$(multilib_native_use_enable importd bzip2)
 		$(multilib_native_use_enable importd zlib)
-		$(use_enable kdbus)
 		$(multilib_native_use_enable kmod)
 		$(use_enable lz4)
 		$(use_enable lzma xz)
@@ -234,6 +241,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test dbus)
 		$(multilib_native_use_enable xkb xkbcommon)
+		$(multilib_native_use_with doc python)
 
 		# hardcode a few paths to spare some deps
 		KILL=/bin/kill
@@ -249,6 +257,9 @@ multilib_src_configure() {
 		--with-dbussystemservicedir="${EPREFIX}/usr/share/dbus-1/system-services"
 
 		--with-ntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
+
+		# Breaks screen, tmux, etc.
+		--without-kill-user-processes
 	)
 
 	# Work around bug 463846.
@@ -273,12 +284,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi || continue
-
-	# Needed for bus-related tests
-	local -x SANDBOX_WRITE=${SANDBOX_WRITE}
-	addwrite /sys/fs/kdbus
-
+	multilib_is_native_abi || return 0
 	default
 }
 
@@ -311,6 +317,10 @@ multilib_src_install() {
 multilib_src_install_all() {
 	prune_libtool_files --modules
 	einstalldocs
+
+	if [[ ${PV} != 9999 ]]; then
+		use doc || doman "${WORKDIR}"/man/systemd.{directives,index}.7
+	fi
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
@@ -385,42 +395,6 @@ migrate_locale() {
 	fi
 }
 
-migrate_net_name_slot() {
-	# If user has disabled 80-net-name-slot.rules using a empty file or a symlink to /dev/null,
-	# do the same for 80-net-setup-link.rules to keep the old behavior
-	local net_move=no
-	local net_name_slot_sym=no
-	local net_rules_path="${EROOT%/}"/etc/udev/rules.d
-	local net_name_slot="${net_rules_path}"/80-net-name-slot.rules
-	local net_setup_link="${net_rules_path}"/80-net-setup-link.rules
-	if [[ -e ${net_setup_link} ]]; then
-		net_move=no
-	elif [[ -f ${net_name_slot} && $(sed -e "/^#/d" -e "/^\W*$/d" ${net_name_slot} | wc -l) == 0 ]]; then
-		net_move=yes
-	elif [[ -L ${net_name_slot} && $(readlink ${net_name_slot}) == /dev/null ]]; then
-		net_move=yes
-		net_name_slot_sym=yes
-	fi
-	if [[ ${net_move} == yes ]]; then
-		ebegin "Copying ${net_name_slot} to ${net_setup_link}"
-
-		if [[ ${net_name_slot_sym} == yes ]]; then
-			ln -nfs /dev/null "${net_setup_link}"
-		else
-			cp "${net_name_slot}" "${net_setup_link}"
-		fi
-		eend $? || FAIL=1
-	fi
-}
-
-reenable_unit() {
-	if systemctl is-enabled --root="${ROOT}" "$1" &> /dev/null; then
-		ebegin "Re-enabling $1"
-		systemctl reenable --root="${ROOT}" "$1"
-		eend $? || FAIL=1
-	fi
-}
-
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -452,12 +426,6 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
-	# Migrate 80-net-name-slot.rules -> 80-net-setup-link.rules
-	migrate_net_name_slot
-
-	# Re-enable systemd-networkd for socket activation
-	reenable_unit systemd-networkd.service
-
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
@@ -465,11 +433,9 @@ pkg_postinst() {
 		eerror
 	fi
 
-	if [[ $(readlink "${ROOT}"/etc/resolv.conf) == */run/systemd/network/resolv.conf ]]; then
-		ewarn "resolv.conf is now generated by systemd-resolved. To use it, enable"
-		ewarn "systemd-resolved.service, and create a symlink from /etc/resolv.conf"
-		ewarn "to /run/systemd/resolve/resolv.conf"
-		ewarn
+	if [[ $(readlink "${ROOT}"etc/resolv.conf) == */run/systemd/* ]]; then
+		ewarn "You should replace the resolv.conf symlink:"
+		ewarn "ln -snf ${ROOTPREFIX-/usr}/lib/systemd/resolv.conf ${ROOT}etc/resolv.conf"
 	fi
 }
 

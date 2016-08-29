@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,9 +18,11 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-IUSE="minimal static"
+IUSE="libressl minimal static"
 
-LIB_DEPEND="dev-libs/openssl:0=[static-libs(+)]
+LIB_DEPEND="
+	!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+	libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	sys-apps/util-linux:=[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	!minimal? (
@@ -35,7 +37,6 @@ S=${WORKDIR}
 
 src_prepare() {
 	sed -i \
-		-e 's: -Werror : :g' \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
 		-e 's:${DESTDIR}/default:${DESTDIR}/etc/default:g' \
 		Makefile || die
@@ -50,6 +51,7 @@ _emake() {
 		HOST_ARCH=${arch} \
 		LIBDIR="$(get_libdir)" \
 		DEBUG_FLAGS= \
+		WERROR= \
 		MINIMAL=$(usev minimal) \
 		STATIC=$(usev static) \
 		$(usex elibc_musl HAVE_MUSL=1 "") \

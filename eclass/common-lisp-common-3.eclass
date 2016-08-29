@@ -1,6 +1,11 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# @DEAD
+# This eclass is deprecated and no longer used. It will be removed
+# in 30 days, #551906.
+
 #
 # Author Matthew Kennedy <mkennedy@gentoo.org>
 #

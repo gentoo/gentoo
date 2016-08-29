@@ -8,7 +8,7 @@ inherit eutils python-single-r1 games
 
 DESCRIPTION="role playing game to showcase the adonthell engine"
 HOMEPAGE="http://adonthell.linuxgames.com/"
-SRC_URI="http://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

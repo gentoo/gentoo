@@ -1,0 +1,39 @@
+diff --git a/tuned-gui.py b/tuned-gui.py
+index 0555404..b169dec 100755
+--- a/tuned-gui.py
++++ b/tuned-gui.py
+@@ -89,7 +89,7 @@ class Base(object):
+ 		try:
+ 			self.controller = \
+ 				tuned.admin.DBusController(consts.DBUS_BUS,
+-					consts.DBUS_OBJECT, consts.DBUS_INTERFACE)
++					consts.DBUS_INTERFACE, consts.DBUS_OBJECT)
+ 			self.controller.is_running()
+ 		except tuned.admin.exceptions.TunedAdminDBusException, ex:
+ 			response = self.tuned_daemon_exception_dialog.run()
+diff --git a/tuned.spec b/tuned.spec
+index 3a2dcec..1b46daf 100644
+--- a/tuned.spec
++++ b/tuned.spec
+@@ -334,8 +334,6 @@ fi
+ %changelog
+ * Tue Jul 19 2016 Jaroslav Škarvada <jskarvad@redhat.com> - 2.7.0-1
+ - new-release
+-  - rebase tuned to latest upstream
+-    resolves: rhbz#1289048
+   - gui: fixed save profile
+     resolves: rhbz#1242491
+   - tuned-adm: added --ignore-missing parameter
+diff --git a/tuned/admin/admin.py b/tuned/admin/admin.py
+index ad501c0..cbdd1be 100644
+--- a/tuned/admin/admin.py
++++ b/tuned/admin/admin.py
+@@ -98,7 +98,7 @@ class Admin(object):
+ 
+ 	def _action_list(self):
+ 		self._print_profiles(self._profiles_locator.get_known_names_summary())
+-		self._action_dbus_active()
++		self._action_active()
+ 		return True
+ 
+ 	def _dbus_get_active_profile(self):

@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1-2)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}/${P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="-* amd64 x86 ~x86-fbsd"
 fi
 
 GV="2.40"
@@ -50,11 +50,11 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl staging test +threads +truetype +udisks v4l vaapi +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
-	test? ( abi_x86_32 )
 	elibc_glibc? ( threads )
 	mono? ( abi_x86_32 )
 	pipelight? ( staging )
 	s3tc? ( staging )
+	test? ( abi_x86_32 )
 	vaapi? ( staging )
 	osmesa? ( opengl )" #286560
 
@@ -63,17 +63,6 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
-	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
-	capi? ( net-dialup/capi4k-utils )
-	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
-	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
-	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
-	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
-	gstreamer? (
-		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
-		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
-	)
 	X? (
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
@@ -83,34 +72,45 @@ COMMON_DEPEND="
 	)
 	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
+	capi? ( net-dialup/capi4k-utils )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
+	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
+	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
+	gstreamer? (
+		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
+		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
+	)
+	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
+	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
+	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
+	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
+	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
+	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
+	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
 	)
-	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
-	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
-	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
-	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
-	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
-	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
 	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
+	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
 	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
+	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
+	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
+	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
+	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	xml? (
 		dev-libs/libxml2[${MULTILIB_USEDEP}]
 		dev-libs/libxslt[${MULTILIB_USEDEP}]
 	)
-	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
-	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
-	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
-	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
-	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 		!<app-emulation/emul-linux-x86-baselibs-20140508-r14
@@ -130,27 +130,35 @@ COMMON_DEPEND="
 
 RDEPEND="${COMMON_DEPEND}
 	dos? ( games-emulation/dosbox )
-	perl? ( dev-lang/perl dev-perl/XML-Simple )
+	perl? (
+		dev-lang/perl
+		dev-perl/XML-Simple
+	)
+	pulseaudio? (
+		realtime? ( sys-auth/rtkit )
+	)
 	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )
-	pulseaudio? ( realtime? ( sys-auth/rtkit ) )"
+	udisks? ( sys-fs/udisks:2 )"
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
-	staging? ( dev-lang/perl dev-perl/XML-Simple )
+	sys-devel/flex
+	>=sys-kernel/linux-headers-2.6
+	virtual/pkgconfig
+	virtual/yacc
+	prelink? ( sys-devel/prelink )
+	staging? (
+		dev-lang/perl
+		dev-perl/XML-Simple
+	)
 	X? (
 		x11-proto/inputproto
 		x11-proto/xextproto
 		x11-proto/xf86vidmodeproto
 	)
-	xinerama? ( x11-proto/xineramaproto )
-	prelink? ( sys-devel/prelink )
-	>=sys-kernel/linux-headers-2.6
-	virtual/pkgconfig
-	virtual/yacc
-	sys-devel/flex"
+	xinerama? ( x11-proto/xineramaproto )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu
@@ -159,42 +167,57 @@ usr/share/applications/wine-notepad.desktop
 usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
 
-wine_build_environment_check() {
+wine_compiler_check() {
 	[[ ${MERGE_TYPE} = "binary" ]] && return 0
 
-	# bug #549768
-	if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
-		einfo "Checking for gcc-5 ms_abi compiler bug ..."
-		$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
-		# Run in subshell to prevent "Aborted" message
-		if ! ( "${T}"/pr66838 || false ) >/dev/null 2>&1; then
-			eerror "64-bit wine cannot be built with gcc-5.1 or initial patchset of 5.2.0"
-			eerror "due to compiler bugs; please re-emerge the latest gcc-5.2.x ebuild,"
-			eerror "or use gcc-config to select a different compiler version."
-			eerror "See https://bugs.gentoo.org/549768"
-			eerror
-			return 1
+	# GCC-specific bugs
+	if tc-is-gcc; then
+		# bug #549768
+		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
+			einfo "Checking for gcc-5 ms_abi compiler bug ..."
+			$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
+			# Run in subshell to prevent "Aborted" message
+			if ! ( "${T}"/pr66838 || false ) >/dev/null 2>&1; then
+				eerror "64-bit wine cannot be built with gcc-5.1 or initial patchset of 5.2.0"
+				eerror "due to compiler bugs; please re-emerge the latest gcc-5.2.x ebuild,"
+				eerror "or use gcc-config to select a different compiler version."
+				eerror "See https://bugs.gentoo.org/549768"
+				eerror
+				return 1
+			fi
 		fi
-	fi
-	# bug #574044
-	if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
-		einfo "Checking for gcc-5-3 stack realignment compiler bug ..."
-		# Compile in subshell to prevent "Aborted" message
-		if ! ( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1; then
-			eerror "Wine cannot be built with this version of gcc-5.3"
-			eerror "due to compiler bugs; please use gcc-config to select a"
-			eerror "different compiler version."
-			eerror "See https://bugs.gentoo.org/574044"
-			eerror
-			return 1
+		# bug #574044
+		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
+			einfo "Checking for gcc-5-3 stack realignment compiler bug ..."
+			# Compile in subshell to prevent "Aborted" message
+			if ! ( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1; then
+				eerror "Wine cannot be built with this version of gcc-5.3"
+				eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
+				eerror "or use gcc-config to select a different compiler version."
+				eerror "See https://bugs.gentoo.org/574044"
+				eerror
+				return 1
+			fi
 		fi
 	fi
 
-	if use abi_x86_64 && [[ $(( $(gcc-major-version) * 100 + $(gcc-minor-version) )) -lt 404 ]]; then
-		eerror "You need gcc-4.4+ to build 64-bit wine"
-		eerror
-		return 1
+	# Ensure compiler support
+	if use abi_x86_64; then
+		einfo "Checking for builtin_ms_va_list ..."
+		if ( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1) ; then
+			einfo "$(tc-getCC) supports builtin_ms_va_list, enabling 64-bit wine"
+		else
+			eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
+			eerror
+			eerror "You need gcc-4.4+ or clang 3.8+ to build 64-bit wine"
+			eerror
+			return 1
+		fi
 	fi
+}
+
+wine_build_environment_check() {
+	[[ ${MERGE_TYPE} = "binary" ]] && return 0
 
 	if use abi_x86_32 && use opencl && [[ x$(eselect opencl show 2> /dev/null) = "xintel" ]]; then
 		eerror "You cannot build wine with USE=opencl because intel-ocl-sdk is 64-bit only."
@@ -205,6 +228,7 @@ wine_build_environment_check() {
 }
 
 pkg_pretend() {
+	wine_compiler_check || die
 	wine_build_environment_check || die
 }
 
@@ -290,7 +314,7 @@ src_prepare() {
 	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
-	l10n_get_locales > po/LINGUAS # otherwise wine doesn't respect LINGUAS
+	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 }
 
 src_configure() {

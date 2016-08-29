@@ -4,7 +4,7 @@
 
 EAPI=5
 
-EGIT_REPO_URI='git://git.exherbo.org/paludis/paludis.git'
+EGIT_REPO_URI='https://git.exherbo.org/paludis/paludis.git'
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
 RUBY_VER=2.1
@@ -52,6 +52,7 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="app-eselect/eselect-package-manager"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then

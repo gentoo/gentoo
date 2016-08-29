@@ -1,5 +1,5 @@
---- gengetopt-2.22.6/Makefile.am
-+++ gengetopt-2.22.6/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -19,5 +19,3 @@
  
  EXTRA_DIST = configure TODO LICENSE gl/m4/gnulib-cache.m4

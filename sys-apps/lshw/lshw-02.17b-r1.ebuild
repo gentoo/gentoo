@@ -41,7 +41,7 @@ src_prepare() {
 
 		for i in $(cd src/po ; echo *.po | sed 's/\.po//') ; do
 			if has ${i} ${LINGUAS} ; then
-				langs += " ${i}"
+				langs+=" ${i}"
 			fi
 		done
 		sed -i \

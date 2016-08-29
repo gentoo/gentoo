@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 #---------------------------------------------------------------------------
 # This script starts/stops the MIT Kerberos 5 Admin daemon

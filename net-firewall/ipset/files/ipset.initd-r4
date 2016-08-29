@@ -1,0 +1,96 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_commands="save"
+extra_started_commands="reload"
+
+IPSET_SAVE=${IPSET_SAVE:-/var/lib/ipset/rules-save}
+
+depend() {
+    before iptables ip6tables
+}
+
+checkconfig() {
+    if [ ! -f "${IPSET_SAVE}" ] ; then
+        eerror "Not starting ${SVCNAME}. First create some rules then run:"
+        eerror "/etc/init.d/${SVCNAME} save"
+        return 1
+    fi
+    return 0
+}
+
+start() {
+    checkconfig || return 1
+    ebegin "Loading ipset session"
+    ipset restore < "${IPSET_SAVE}"
+    eend $?
+}
+
+stop() {
+    # check if there are any references to current sets
+
+    if ! ipset list | gawk '
+        ($1 == "References:") { refcnt += $2 }
+        ($1 == "Type:" && $2 == "list:set") { set = 1 }
+        (scan) { if ($0 != "") setcnt++; else { scan = 0; set = 0 } }
+        (set && $1 == "Members:") {scan = 1}
+        END { if ((refcnt - setcnt) > 0) exit 1 }
+    '; then
+        eerror "ipset is in use, can't stop"
+        return 1
+    fi
+
+    if [ "${SAVE_ON_STOP}" = "yes" ] ; then
+        save || return 1
+    fi
+
+    ebegin "Removing kernel IP sets"
+    ipset flush
+    ipset destroy
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading ipsets"
+
+    # Loading sets from a save file is only additive (there is no
+    # automatic flushing or replacing). And, we can not remove sets
+    # that are currently used in existing iptables rules.
+    #
+    # Instead, we create new temp sets for any set that is already
+    # in use, and then atomically swap them into place.
+    #
+    # XXX: This does not clean out previously used ipsets that are
+    # not in the new saved policy--it can't, because they may still
+    # be referenced in the current iptables rules.
+
+    # Build a list of all currently used sets (if any).
+    running_ipset_list=$(ipset save | gawk '/^create/{printf "%s ",$2}')
+	running_ipset_list="${running_ipset_list% }"
+    # Build a regular expression that matches those set names.
+    running_ipset_list_regex="$(echo "$running_ipset_list" | tr -s ' ' '|' )"
+
+    # Load up sets from the save file, but rename any set that already
+    # exists to a temporary name that we will swap later.
+    if ! cat ${IPSET_SAVE} | sed -r "s/^(create|add) (${running_ipset_list_regex}) /\1 \2_atomic_temp /" | ipset restore ; then
+        eend $? "Failed to load new ipsets"
+    fi
+
+    # Now for every set name that currently exists, atomically swap it
+    # with the temporary new one we created, and then destroy the old set.
+    for ipset_name in ${running_ipset_list} ; do
+        ipset swap ${ipset_name} ${ipset_name}_atomic_temp || eend $? "Failed to swap in new ipset $ipset_name"
+        ipset destroy ${ipset_name}_atomic_temp || eend $? "Failed to delete obsolete ipset ${ipset_name}_atomic_temp"
+    done
+    eend 0
+}
+
+save() {
+    ebegin "Saving ipset session"
+    touch "${IPSET_SAVE}"
+    chmod 0600 "${IPSET_SAVE}"
+    ipset save > "${IPSET_SAVE}"
+    eend $?
+}

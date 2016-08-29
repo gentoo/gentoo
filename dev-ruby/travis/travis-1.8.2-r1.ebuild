@@ -31,7 +31,7 @@ ruby_add_rdepend "
 	>dev-ruby/highline-1.6
 	>dev-ruby/launchy-2.1
 	>dev-ruby/pusher-client-0.4
-	>=dev-ruby/typhoeus-0.6.8
+	=dev-ruby/typhoeus-0.6*
 "
 
 all_ruby_install() {

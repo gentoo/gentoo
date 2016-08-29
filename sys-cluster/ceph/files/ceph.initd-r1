@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 ceph_conf="${ceph_conf:-/etc/ceph/ceph.conf}"
 extra_commands="reload"

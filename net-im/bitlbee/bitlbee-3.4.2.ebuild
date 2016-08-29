@@ -133,8 +133,10 @@ src_configure() {
 	# NOTE: bitlbee's configure script is not an autotool creation,
 	# so that is why we don't use econf.
 	./configure \
-		--prefix=/usr --datadir=/usr/share/bitlbee \
-		--etcdir=/etc/bitlbee --plugindir=/usr/$(get_libdir)/bitlbee \
+		--prefix="${EPREFIX}/usr" \
+		--datadir="${EPREFIX}/usr/share/bitlbee" \
+		--etcdir="${EPREFIX}/etc/bitlbee" \
+		--plugindir="${EPREFIX}/usr/$(get_libdir)/bitlbee" \
 		--systemdsystemunitdir=$(systemd_get_unitdir) \
 		--doc=1 --strip=0 ${myconf} || die "econf failed"
 

@@ -12,9 +12,9 @@ inherit autotools eutils multilib
 DESCRIPTION="Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina"
 HOMEPAGE="http://www.chevreux.org/projects_mira.html"
 SRC_URI="
-	http://sourceforge.net/projects/mira-assembler/files/MIRA/stable/"${PN}"-"${MY_PV}".tar.bz2
+	https://sourceforge.net/projects/mira-assembler/files/MIRA/stable/"${PN}"-"${MY_PV}".tar.bz2
 	mirror://sourceforge/mira-assembler/mira_3rdparty_${MIRA_3RDPARTY_PV}.tar.bz2"
-#	http://sourceforge.net/projects/mira-assembler/files/MIRA/development/${P}.tar.bz2
+#	https://sourceforge.net/projects/mira-assembler/files/MIRA/development/${P}.tar.bz2
 #	mirror://sourceforge/mira-assembler/mira_3rdparty_${MIRA_3RDPARTY_PV}.tar.bz2"
 
 S="${WORKDIR}"/"${PN}"-"${MY_PV}"

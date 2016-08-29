@@ -37,3 +37,9 @@ gnome-base/gvfs google
 >=x11-libs/gtk+-3.12.2 cloudprint
 x11-libs/gksu gnome
 x11-wm/icewm gnome
+
+# sufficiently recent wayland is not stable yet, bug #559062
+~dev-libs/efl-1.15.2 wayland
+~dev-libs/efl-1.17.0 wayland
+~media-libs/elementary-1.15.2 wayland
+~media-libs/elementary-1.17.0 wayland

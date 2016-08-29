@@ -32,7 +32,7 @@ RDEPEND="
 	emacs? ( virtual/emacs )
 	fastjet? ( sci-physics/fastjet:0= )
 	hepmc? ( sci-physics/hepmc:0= )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.5:* )
 	lhapdf? ( sci-physics/lhapdf:0= )
 	rivet? ( sci-physics/rivet:0= )
 	zlib? ( sys-libs/zlib:0= )"

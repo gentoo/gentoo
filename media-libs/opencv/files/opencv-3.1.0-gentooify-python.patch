@@ -1,0 +1,101 @@
+diff -purN a/cmake/OpenCVDetectGentooPython.cmake b/cmake/OpenCVDetectGentooPython.cmake
+--- a/cmake/OpenCVDetectGentooPython.cmake	1970-01-01 01:00:00.000000000 +0100
++++ b/cmake/OpenCVDetectGentooPython.cmake	2016-06-09 10:21:09.236148446 +0100
+@@ -0,0 +1,77 @@
++# Find specified Python version
++# Arguments:
++#   found (variable): Set if interpreter found
++#   executable (variable): Output of executable found
++#   version_string (variable): Output of found version
++#   version_major (variable): Output of found major version
++#   version_minor (variable): Output of found minor version
++#   libs_found (variable): Set if libs found
++#   libs_version_string (variable): Output of found libs version
++#   libraries (variable): Output of found Python libraries
++#   library (variable): Output of found Python library
++#   debug_libraries (variable): Output of found Python debug libraries
++#   debug_library (variable): Output of found Python debug library
++#   include_path (variable): Output of found Python include path
++#   include_dir (variable): Output of found Python include dir
++#   include_dir2 (variable): Output of found Python include dir2
++#   packages_path (variable): Output of found Python packages path
++#   numpy_include_dirs (variable): Output of found Python Numpy include dirs
++function(find_python found executable version_string version_major version_minor
++         libs_found libs_version_string libraries library debug_libraries
++         debug_library include_path include_dir include_dir2 packages_path
++         numpy_include_dirs)
++
++  set(${found} "TRUE" PARENT_SCOPE)
++  set(${executable} "${GENTOO_PYTHON_EXECUTABLE}" CACHE FILEPATH "Path to Python interpretor")
++  set(${version_string} "${GENTOO_PYTHON_MAJOR}.${GENTOO_PYTHON_MINOR}" PARENT_SCOPE)
++  set(${version_major} "${GENTOO_PYTHON_MAJOR}" PARENT_SCOPE)
++  set(${version_minor} "${GENTOO_PYTHON_MINOR}" PARENT_SCOPE)
++  set(${libs_found} "TRUE" PARENT_SCOPE)
++  set(${libs_version_string} "${version_string}" PARENT_SCOPE)
++  set(${libraries} "${GENTOO_PYTHON_LIBRARIES}" PARENT_SCOPE)
++  set(${library} "${GENTOO_PYTHON_LIBRARIES}" CACHE FILEPATH "Path to Python library")
++  set(${debug_libraries} "${GENTOO_PYTHON_DEBUG_LIBRARIES}" PARENT_SCOPE)
++  set(${debug_library} "${GENTOO_PYTHON_DEBUG_LIBRARIES}" CACHE FILEPATH "Path to Python debug")
++  set(${include_path} "${GENTOO_PYTHON_INCLUDE_PATH}" PARENT_SCOPE)
++  set(${include_dir} "${GENTOO_PYTHON_INCLUDE_PATH}" CACHE PATH "Python include dir")
++  set(${include_dir2} "${GENTOO_PYTHON_INCLUDE_PATH}" CACHE PATH "Python include dir 2")
++  set(${packages_path} "${GENTOO_PYTHON_PACKAGES_PATH}" CACHE PATH "Where to install the python packages.")
++  set(${numpy_include_dirs} "${GENTOO_PYTHON_PACKAGES_PATH}/numpy/core/include/" CACHE PATH "Path to numpy headers")
++endfunction(find_python)
++
++# In order to use existing CMake files, this needs to be here to switch between
++# Python 2 and 3. It's messy and could be in the ebuild to declare this,
++# but then the ebuild would be a mile long and unreadable. This makes then
++# messy stuff hidden out of the way.
++set(PYTHON2INTERP_FOUND "FALSE")
++set(PYTHON3INTERP_FOUND "FALSE")
++
++if(WITH_PYTHON)
++  if(GENTOO_PYTHON_MAJOR EQUAL 2)
++    find_python(PYTHON2INTERP_FOUND PYTHON2_EXECUTABLE PYTHON2_VERSION_STRING
++      PYTHON2_VERSION_MAJOR PYTHON2_VERSION_MINOR PYTHON2LIBS_FOUND
++      PYTHON2LIBS_VERSION_STRING PYTHON2_LIBRARIES PYTHON2_LIBRARY
++      PYTHON2_DEBUG_LIBRARIES PYTHON2_LIBRARY_DEBUG PYTHON2_INCLUDE_PATH
++      PYTHON2_INCLUDE_DIR PYTHON2_INCLUDE_DIR2 PYTHON2_PACKAGES_PATH
++      PYTHON2_NUMPY_INCLUDE_DIRS)
++  endif()
++
++  if(GENTOO_PYTHON_MAJOR EQUAL 3)
++    find_python(PYTHON3INTERP_FOUND PYTHON3_EXECUTABLE PYTHON3_VERSION_STRING
++      PYTHON3_VERSION_MAJOR PYTHON3_VERSION_MINOR PYTHON3LIBS_FOUND
++      PYTHON3LIBS_VERSION_STRING PYTHON3_LIBRARIES PYTHON3_LIBRARY
++      PYTHON3_DEBUG_LIBRARIES PYTHON3_LIBRARY_DEBUG PYTHON3_INCLUDE_PATH
++      PYTHON3_INCLUDE_DIR PYTHON3_INCLUDE_DIR2 PYTHON3_PACKAGES_PATH
++      PYTHON3_NUMPY_INCLUDE_DIRS)
++  endif()
++endif()
++
++if(PYTHON2INTERP_FOUND) # Use Python 2 as default Python interpreter
++  set(PYTHON_DEFAULT_AVAILABLE "TRUE")
++  set(PYTHON_DEFAULT_EXECUTABLE "${PYTHON2_EXECUTABLE}")
++elseif(PYTHON3INTERP_FOUND) # Use Python 2 as fallback Python interpreter (if there is no Python 2)
++  set(PYTHON_DEFAULT_AVAILABLE "TRUE")
++  set(PYTHON_DEFAULT_EXECUTABLE "${PYTHON3_EXECUTABLE}")
++else()
++  set(PYTHON_DEFAULT_AVAILABLE "FALSE")
++endif()
+diff -purN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2015-12-18 15:02:16.000000000 +0000
++++ b/CMakeLists.txt	2016-06-08 18:57:53.489793304 +0100
+@@ -215,6 +215,7 @@ OCV_OPTION(WITH_VA             "Include
+ OCV_OPTION(WITH_VA_INTEL       "Include Intel VA-API/OpenCL support"         OFF  IF (UNIX AND NOT ANDROID) )
+ OCV_OPTION(WITH_GDAL           "Include GDAL Support"                        OFF  IF (NOT ANDROID AND NOT IOS AND NOT WINRT) )
+ OCV_OPTION(WITH_GPHOTO2        "Include gPhoto2 library support"             ON   IF (UNIX AND NOT ANDROID) )
++OCV_OPTION(WITH_PYTHON         "Include python bindings"                     OFF)
+ 
+ # OpenCV build components
+ # ===================================================
+@@ -559,7 +560,7 @@ if(BUILD_DOCS)
+ endif(BUILD_DOCS)
+ 
+ # --- Python Support ---
+-include(cmake/OpenCVDetectPython.cmake)
++include(cmake/OpenCVDetectGentooPython.cmake)
+ 
+ # --- Java Support ---
+ include(cmake/OpenCVDetectApacheAnt.cmake)

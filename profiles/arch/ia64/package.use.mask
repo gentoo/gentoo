@@ -2,6 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# Enable numa support on supported architectures
+dev-db/percona-server -numa
+
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Aug 2016)
+# Missing keywords on media-libs/grilo - bug #521972
+media-sound/rhythmbox upnp-av
+
+# Gilles Dartiguelongue <eva@gentoo.org> (22 Aug 2016)
+# Missing keywords on dev-libs/gom - bug #521972
+media-libs/grilo test
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
@@ -40,10 +56,6 @@ dev-qt/qtchooser test
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
-
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on ia64
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (14 Sep 2015)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
@@ -119,11 +131,6 @@ dev-haskell/vector test
 # Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
 sys-apps/systemd terminal
 sys-apps/systemd xkb
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
 
 # Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
 # Missing keywords on dev-libs/protobuf-c (bug 519772)
@@ -311,7 +318,7 @@ www-client/seamonkey custom-optimization
 # qtmultimedia is not keyworded, bug 293671
 dev-python/PyQt4 multimedia
 
-# Raúl Porcel <armin76@gentoo.org)
+# Raúl Porcel <armin76@gentoo.org>
 # Keep deps minimal
 x11-wm/fvwm lock
 

@@ -12,7 +12,7 @@ SRC_URI="https://arthurdejong.org/rl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ~mips ~ppc ~s390 ~sparc ~x86"
 IUSE="debug"
 
 multilib_src_configure() {

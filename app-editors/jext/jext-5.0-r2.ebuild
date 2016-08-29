@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A text editor written in Java"
-HOMEPAGE="http://sourceforge.net/projects/jext/"
+HOMEPAGE="https://sourceforge.net/projects/jext/"
 MY_PV="${PV/_}"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-sources-${MY_PV}.tar.gz"
 LICENSE="|| ( GPL-2 JPython )"

@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>lxnay@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
 	    <email>ziapannocchia@gmail.com</email>
 		<name>Marco Clocchiatti</name>
 	    <description>Proxied co-maintainer</description>

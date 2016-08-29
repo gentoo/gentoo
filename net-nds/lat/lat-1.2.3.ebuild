@@ -10,7 +10,7 @@ inherit gnome2 mono versionator
 KEYWORDS="amd64 x86"
 
 DESCRIPTION="LDAP Administration Tool, allows you to browse LDAP-based directories and add/edit/delete entries"
-HOMEPAGE="http://sourceforge.net/projects/ldap-at/"
+HOMEPAGE="https://sourceforge.net/projects/ldap-at/"
 SRC_URI="mirror://sourceforge/ldap-at/${P}.tar.gz"
 LICENSE="GPL-2"
 IUSE="avahi"

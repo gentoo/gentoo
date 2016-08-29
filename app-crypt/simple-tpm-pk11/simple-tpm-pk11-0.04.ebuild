@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,13 +20,14 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE=""
+IUSE="libressl"
 RESTRICT="test" # needs to communicate with the TPM and gtest is all broken
 
 DEPEND="app-crypt/tpm-tools[pkcs11]
 	dev-libs/opencryptoki[tpm]
 	app-crypt/trousers
-	dev-libs/openssl:0="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}
 	net-misc/openssh[-X509]"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/${PN}-${MY_PV}.t
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* ~mips"
-IUSE=""
+IUSE="abi_mips_o32"
 DEPEND="sys-boot/dvhtool
 	abi_mips_o32? ( sys-devel/kgcc64 )"
 RDEPEND=""

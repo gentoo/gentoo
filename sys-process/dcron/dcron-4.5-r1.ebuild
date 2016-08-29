@@ -39,18 +39,10 @@ src_install() {
 	doins extra/prune-cronstamps
 	dodoc extra/run-cron extra/root.crontab
 
-	newinitd "${FILESDIR}"/dcron.init-4.5 dcron
-	newconfd "${FILESDIR}"/dcron.confd-4.4 dcron
+	newinitd "${FILESDIR}"/dcron.init dcron
+	newconfd "${FILESDIR}"/dcron.confd dcron
 	systemd_dounit "${FILESDIR}"/dcron.service
 
 	insinto /etc/logrotate.d
 	newins extra/crond.logrotate dcron
-}
-
-pkg_postinst() {
-	# upstream renamed their pid file
-	local src="${ROOT}/var/run/cron.pid" dst="${ROOT}/var/run/crond.pid"
-	if [ -e "${src}" -a ! -e "${dst}" ] ; then
-		cp "${src}" "${dst}"
-	fi
 }

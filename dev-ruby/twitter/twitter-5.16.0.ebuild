@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -29,7 +29,7 @@ ruby_add_rdepend "
 	>=dev-ruby/faraday-0.9.0
 	dev-ruby/http:1.0
 	>=dev-ruby/http_parser_rb-0.6.0
-	>=dev-ruby/json-1.8
+	>=dev-ruby/json-1.8:0
 	>=dev-ruby/memoizable-0.4.0
 	>=dev-ruby/naught-1.0
 	=dev-ruby/simple_oauth-0.3*

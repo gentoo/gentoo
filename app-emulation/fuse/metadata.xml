@@ -6,11 +6,6 @@
 		<description>Proxied Maintainer. Please assign on bugs.</description>
 		<name>José Manuel Ferrer Ortiz</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>neurogeek@gentoo.org</email>
-		<name>Jesus Rivero</name>
-		<description>Proxy Maintainer. Please CC on bugs</description>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers Project</name>

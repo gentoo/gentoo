@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="framework for ebuild generators"
 HOMEPAGE="https://github.com/jauhien/g-sorcery"
@@ -22,6 +22,11 @@ DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
+
+src_prepare() {
+	hprefixify setup.py
+	default
+}
 
 python_test() {
 	PYTHONPATH="." "${PYTHON}" scripts/run_tests.py

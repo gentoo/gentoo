@@ -7,7 +7,13 @@ EAPI="5"
 inherit eutils toolchain-funcs multilib pam systemd
 
 IUSE="dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X elibc_glibc"
-REQUIRED_USE="spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )"
+REQUIRED_USE="
+	dane? ( !gnutls )
+	dmarc? ( spf dkim )
+	pkcs11? ( gnutls )
+	spf? ( exiscan-acl )
+	srs? ( exiscan-acl )
+"
 
 COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
 
@@ -19,7 +25,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2:=
@@ -28,7 +34,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	gnutls? ( net-libs/gnutls[pkcs11?]
@@ -222,7 +228,7 @@ src_configure() {
 
 	if use redis; then
 		cat >> Makefile <<- EOC
-			EXPERIMENTAL_REDIS=yes
+			LOOKUP_REDIS=yes
 			LOOKUP_LIBS += -lhiredis
 		EOC
 	fi

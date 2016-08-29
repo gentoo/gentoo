@@ -16,7 +16,7 @@
 # the src_prepare, src_configure, src_compile, and src_install
 # phase hooks.
 
-inherit cmake-utils flag-o-matic multilib prefix eutils
+inherit cmake-utils flag-o-matic multilib prefix eutils toolchain-funcs
 
 #
 # HELPER FUNCTIONS:
@@ -243,6 +243,10 @@ configure_cmake_standard() {
 		if mysql_version_is_at_least "10.1.2" ; then
 			mycmakeargs+=( $(mysql-cmake_use_plugin cracklib CRACKLIB_PASSWORD_CHECK ) )
 		fi
+
+		# The build forces this to be defined when cross-compiling.  We pass it
+		# all the time for simplicity and to make sure it is actually correct.
+		mycmakeargs+=( -DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1) )
 	else
 		mycmakeargs+=( $(cmake-utils_use_with extraengine FEDERATED_STORAGE_ENGINE) )
 	fi

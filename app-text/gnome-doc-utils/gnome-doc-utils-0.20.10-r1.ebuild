@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit gnome2 multibuild python-r1
@@ -18,9 +17,8 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	${PYTHON_DEPS}
-	>=dev-libs/libxml2-2.6.12[python,${PYTHON_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	>=dev-libs/libxml2-2.6.12:2[python,${PYTHON_USEDEP}]
 	>=dev-libs/libxslt-1.1.8
 "
 DEPEND="${RDEPEND}
@@ -38,7 +36,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# Stop build from relying on installed package
-	epatch "${FILESDIR}"/${P}-fix-out-of-tree-build.patch
+	eapply "${FILESDIR}"/${P}-fix-out-of-tree-build.patch
 
 	gnome2_src_prepare
 
@@ -57,7 +55,7 @@ src_configure() {
 }
 
 src_compile() {
-	python_foreach_impl run_in_build_dir gnome2_src_compile
+	MAKEOPTS="${MAKEOPTS} -j1" python_foreach_impl run_in_build_dir gnome2_src_compile #574282
 }
 
 src_test() {
@@ -65,7 +63,6 @@ src_test() {
 }
 
 src_install() {
-	dodoc AUTHORS ChangeLog NEWS README
 	python_foreach_impl run_in_build_dir gnome2_src_install
 	python_replicate_script "${ED}"/usr/bin/xml2po
 }

@@ -13,9 +13,6 @@
  by objects which contain all the symbolic information of the given class: 
  methods, fields and byte code instructions, in particular.
 </longdescription>
-  <use>
-    <flag name="findbugs">Include performance patch for findbugs package.</flag>
-  </use>
   <upstream>
     <remote-id type="github">apache/commons-bcel</remote-id>
   </upstream>

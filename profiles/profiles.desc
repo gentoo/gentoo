@@ -134,6 +134,7 @@ ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde     
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/desktop/kde/systemd     stable
 ppc64           default/linux/powerpc/ppc64/13.0/64bit-userland/developer               stable
 ppc64		default/linux/powerpc/ppc64/13.0/64bit-userland/little-endian		exp
+ppc64		default/linux/powerpc/ppc64/13.0/64bit-userland/little-endian/systemd	exp
 
 # RISC-V Profiles
 riscv           default/linux/riscv/13.0                        exp
@@ -173,14 +174,11 @@ x86		default/linux/x86/13.0/systemd			stable
 
 # Gentoo/FreeBSD Profiles
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
-amd64-fbsd	default/bsd/fbsd/amd64/10.2			dev
 amd64-fbsd	default/bsd/fbsd/amd64/10.3			dev
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
-amd64-fbsd	default/bsd/fbsd/amd64/10.2/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/10.3/clang		exp
 sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			dev
-x86-fbsd	default/bsd/fbsd/x86/10.2			dev
 x86-fbsd	default/bsd/fbsd/x86/10.3			dev
 
 # Hardened Profiles
@@ -251,7 +249,10 @@ x86-linux		prefix/linux/x86				exp
 
 # Linux Standalone Profiles
 amd64-linux		prefix/linux-standalone/amd64			exp
+amd64-linux		prefix/linux-standalone/amd64/legacy		exp
 x86-linux		prefix/linux-standalone/x86			exp
+x86-linux		prefix/linux-standalone/x86/legacy		exp
+arm-linux		prefix/linux-standalone/arm/armv7a		exp
 
 # Mac OS X Profiles
 ppc-macos		prefix/darwin/macos/10.4/ppc			exp
@@ -301,9 +302,8 @@ x86-winnt		prefix/windows/winnt/6.0/x86			exp
 x86-winnt		prefix/windows/winnt/6.1/x86			exp
 
 # Cygwin Profiles
-x86-cygwin		prefix/windows/cygwin/1.7/x86			exp
-x86-cygwin		prefix/windows/cygwin/2.0/x86			exp
-x64-cygwin		prefix/windows/cygwin/2.0/x64			exp
+x86-cygwin		prefix/windows/cygwin/x86			exp
+x64-cygwin		prefix/windows/cygwin/x64			exp
 
 # HP-UX Profiles
 ia64-hpux		prefix/hpux/B.11.23/ia64			exp

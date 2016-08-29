@@ -25,7 +25,7 @@ STRIP_MASK="*.a"
 S="${WORKDIR}/${P}"
 
 FILECAPS=(
-	-m 755 'cap_ipc_lock=+ei' usr/bin/${PN}
+	-m 755 'cap_ipc_lock=+ep' usr/bin/${PN}
 )
 
 pkg_setup() {

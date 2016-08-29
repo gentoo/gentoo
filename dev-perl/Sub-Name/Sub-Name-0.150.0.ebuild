@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="(Re)name a sub"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~s390 ~sh ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~s390 ~sh ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="test suggested"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://luvit.io/dist/latest/${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="bundled-libs examples"
+IUSE="bundled-libs examples libressl"
 # luvit Apache-2.0
 # luajit MIT
 # yajl BSD
@@ -25,7 +25,8 @@ LICENSE="Apache-2.0 bundled-libs? ( BSD MIT )"
 RESTRICT="test"
 
 RDEPEND="
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/zlib
 	!bundled-libs? (
 		dev-lang/luajit:2[lua52compat]

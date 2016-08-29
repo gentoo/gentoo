@@ -4,10 +4,6 @@
 	<longdescription>
 		pyusb is a python wrapper for the libusb user space USB device library.
 	</longdescription>
-	<maintainer type="person">
-		<email>josejx@gentoo.org</email>
-		<name>Joseph Jezak</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>

@@ -37,6 +37,7 @@ RDEPEND="
 		dev-qt/qtcore:4[glib]
 		dev-qt/qtgui:4[glib]
 		dev-qt/qtopengl:4
+		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
 	)
 	qt5? (
 		dev-qt/qtcore:5

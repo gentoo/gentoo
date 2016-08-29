@@ -49,8 +49,8 @@ CDEPEND="
 		x11-libs/libXext:0=
 		x11-libs/libXpm:0=
 		|| (
-			media-libs/libafterimage:0=[gif,jpeg,png,tiff?]
-			>=x11-wm/afterstep-2.2.11:0=[gif,jpeg,png,tiff?]
+			media-libs/libafterimage[gif,jpeg,png,tiff?]
+			>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
 		)
 		opengl? ( virtual/opengl virtual/glu x11-libs/gl2ps:0= )
 		qt4? (
@@ -79,7 +79,7 @@ CDEPEND="
 		mpi? ( virtual/mpi )
 	)
 	mysql? ( virtual/mysql )
-	odbc? ( || ( dev-db/libiodbc:0= dev-db/unixODBC:0= ) )
+	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic:0= )
 	postgres? ( dev-db/postgresql:= )
 	pythia6? ( sci-physics/pythia:6= )
@@ -241,7 +241,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.00.01-dotfont.patch \
 		"${FILESDIR}"/${PN}-6.00.01-llvm.patch \
 		"${FILESDIR}"/${PN}-6.00.01-nobyte-compile.patch \
-		"${FILESDIR}"/${P}-prop-flags.patch
+		"${FILESDIR}"/${PN}-6.04.06-prop-flags.patch \
+		"${FILESDIR}"/${PN}-6.04.06-gsl2.patch
 		# "${FILESDIR}"/${PN}-6.02.05-xrootd4.patch
 		# "${FILESDIR}"/${PN}-6.02.05-dictpch.patch \
 

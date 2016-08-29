@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,9 +26,10 @@ if [ "${PV%9999}" = "${PV}" ] ; then
 else
 	KEYWORDS=""
 fi
-IUSE="elibc_glibc +libcxxrt +static-libs test"
+IUSE="elibc_glibc elibc_musl +libcxxrt libunwind +static-libs test"
+REQUIRED_USE="libunwind? ( libcxxrt )"
 
-RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[static-libs?,${MULTILIB_USEDEP}] )
+RDEPEND="libcxxrt? ( >=sys-libs/libcxxrt-0.0_p20130725[libunwind?,static-libs?,${MULTILIB_USEDEP}] )
 	!libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] )"
 DEPEND="${RDEPEND}
 	test? ( sys-devel/clang )
@@ -51,11 +52,12 @@ pkg_setup() {
 
 src_prepare() {
 	cp -f "${FILESDIR}/Makefile" lib/ || die
+	use elibc_musl && epatch "${FILESDIR}/${P}-musl-support.patch"
 	multilib_copy_sources
 }
 
 src_configure() {
-	export LIBS="-lpthread -lrt -lc -lgcc_s"
+	export LIBS="-lpthread -lrt -lc -l$(usex libunwind unwind gcc_s)"
 	if use libcxxrt ; then
 		append-cppflags -DLIBCXXRT "-I${EPREFIX}/usr/include/libcxxrt/"
 		LIBS="-lcxxrt ${LIBS}"
@@ -131,6 +133,9 @@ gen_static_ldscript() {
 		# fine on FreeBSD.
 		use elibc_glibc && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libpthread.a ${EPREFIX}/usr/$(get_libdir)/libdl.a"
 
+		# unlike libgcc_s, libunwind is not implicitly linked
+		use libunwind && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libunwind.a"
+
 		gen_ldscript "${deps}" > "${ED}/usr/$(get_libdir)/libc++.a"
 	fi
 	# TODO: Generate a libc++.a ldscript when building against libsupc++
@@ -140,9 +145,10 @@ gen_shared_ldscript() {
 	if use libcxxrt ; then
 		mv "${ED}/usr/$(get_libdir)/libc++.so" "${ED}/usr/$(get_libdir)/libc++_shared.so" || die
 		local deps="${EPREFIX}/usr/$(get_libdir)/libc++_shared.so ${EPREFIX}/usr/$(get_libdir)/libcxxrt.so"
+		use libunwind && deps="${deps} ${EPREFIX}/usr/$(get_libdir)/libunwind.so"
 		gen_ldscript "${deps}" > "${ED}/usr/$(get_libdir)/libc++.so"
 	fi
-	# TODO: Generate the linker script for other confiurations too.
+	# TODO: Generate the linker script for other configurations too.
 }
 
 multilib_src_install() {

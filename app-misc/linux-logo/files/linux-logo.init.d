@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 ISSUE_BACKUP_FILE="/etc/issue.linux-logo.backup"
 ISSUE_NET_BACKUP_FILE="/etc/issue.net.linux-logo.backup"

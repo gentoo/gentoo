@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # bcfgd - bcfg configuration daemon
 #

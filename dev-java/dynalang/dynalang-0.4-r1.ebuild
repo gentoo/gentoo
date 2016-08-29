@@ -12,7 +12,7 @@ inherit java-pkg-2 java-ant-2
 MY_P="${PN}-mop-${PV}"
 
 DESCRIPTION="Library for implementation of interoperable metaobject protocols for dynamic languages"
-HOMEPAGE="http://sourceforge.net/projects/dynalang/"
+HOMEPAGE="https://sourceforge.net/projects/dynalang/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}.tgz"
 
 LICENSE="Apache-2.0"

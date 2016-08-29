@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ RDEPEND="
 	>=dev-perl/MooseX-StrictConstructor-0.160.0
 	>=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0
 	dev-perl/Path-Class
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	dev-perl/Term-Encoding
 	dev-perl/Term-ProgressBar-Simple
 	dev-perl/URI

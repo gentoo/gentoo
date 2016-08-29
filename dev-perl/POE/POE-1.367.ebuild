@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A framework for creating multitasking programs in Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ipv6 libwww ncurses tk test"
 
 RDEPEND="
@@ -47,14 +47,17 @@ DEPEND="${RDEPEND}
 		>=dev-perl/POE-Test-Loops-${POE_TEST_LOOPS_VERSION}
 		>=virtual/perl-Test-Harness-2.26
 		>=virtual/perl-Test-Simple-0.54
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 
 SRC_TEST=do
 
 src_test() {
+	perl_rm_files t/10_units/01_pod/01_pod.t    \
+		t/10_units/01_pod/02_pod_coverage.t \
+		t/10_units/01_pod/03_pod_no404s.t   \
+		t/10_units/01_pod/04_pod_linkcheck.t
+
 	# Disable network tests
 	rm -f "${S}"/run_network_tests || die
 	perl-module_src_test

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,9 +13,10 @@ SRC_URI="http://pogostick.net/~pnh/ntpasswd/${PN}-source-${PV}.zip"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="static"
+IUSE="libressl static"
 
-RDEPEND="dev-libs/openssl:0"
+RDEPEND="!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	static? ( dev-libs/openssl:0[static-libs] )"

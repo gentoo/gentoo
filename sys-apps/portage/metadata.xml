@@ -12,7 +12,6 @@
   <use>
     <flag name="epydoc">Build html API documentation with epydoc.</flag>
     <flag name="ipc">Use inter-process communication between portage and running ebuilds.</flag>
-    <flag name="pypy2_0">Use pypy-c2.0 as Python interpreter.</flag>
     <flag name="python2">Use python2 as Python interpreter.</flag>
     <flag name="python3">Use python3 as Python interpreter.</flag>
     <flag name="xattr">Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.</flag>

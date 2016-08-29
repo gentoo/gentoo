@@ -6,7 +6,7 @@ EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
@@ -69,7 +69,8 @@ multilib_src_configure() {
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
 		-DWITH_GLIB2=$(usex pulseaudio)
 		-DWITH_PulseAudio=$(usex pulseaudio)
-		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist))
+		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist) || echo -DWITH_QZeitgeist=OFF)
+		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
 
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then

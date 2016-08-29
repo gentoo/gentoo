@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+gtk motif"
 
 RDEPEND="dev-libs/libltdl:0
-	|| ( dev-libs/elfutils dev-libs/libelf )
 	sys-libs/ncurses
+	virtual/libelf
 	gtk? (
 		gnome-base/libglade:2.0
 		gnome-base/libgnomeui

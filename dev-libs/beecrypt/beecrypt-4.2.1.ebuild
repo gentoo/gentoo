@@ -8,7 +8,7 @@ PYTHON_DEPEND="python? 2"
 inherit eutils multilib autotools java-pkg-opt-2 python
 
 DESCRIPTION="general-purpose cryptography library"
-HOMEPAGE="http://sourceforge.net/projects/beecrypt/"
+HOMEPAGE="https://sourceforge.net/projects/beecrypt/"
 SRC_URI="mirror://sourceforge/beecrypt/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC="doc:yard"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"

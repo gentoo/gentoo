@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Find a development path somewhere in an upper hierarchy"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test minimal"
 
 RDEPEND="

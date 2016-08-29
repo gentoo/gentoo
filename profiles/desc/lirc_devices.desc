@@ -28,11 +28,6 @@ bte - LIRC_DEVICES setting to add support for bte receiver device
 bw6130 - LIRC_DEVICES setting to add support for bw6130 receiver device
 caraca - LIRC_DEVICES setting to add support for caraca receiver device
 chronos - LIRC_DEVICES setting to add support for chronos receiver device
-cmdir - LIRC_DEVICES setting to add support for cmdir receiver device
-com1 - LIRC_DEVICES setting to add support for serial receiver device (defaults on using port #1)
-com2 - LIRC_DEVICES setting to add support for serial receiver device (defaults on using port #2)
-com3 - LIRC_DEVICES setting to add support for serial receiver device (defaults on using port #3)
-com4 - LIRC_DEVICES setting to add support for serial receiver device (defaults on using port #4)
 commandir - LIRC_DEVICES setting to add support for commandir receiver device
 cph06x - LIRC_DEVICES setting to add support for cph06x receiver device
 creative_infracd - LIRC_DEVICES setting to add support for creative_infracd receiver device
@@ -58,7 +53,6 @@ imon_24g - LIRC_DEVICES setting to add support for imon_24g receiver device
 imon_knob - LIRC_DEVICES setting to add support for imon_knob device
 imon_lcd - LIRC_DEVICES setting to add support for imon_lcd receiver device
 imon_pad - LIRC_DEVICES setting to add support for imon_pad receiver device
-imon_pad2keys - LIRC_DEVICES setting to add support for imon_pad receiver device (converting pad events to keypresses)
 imon_rsc - LIRC_DEVICES setting to add support for imon_rsc receiver device
 inputlirc - LIRC_DEVICES setting to grab events from /dev/input/event* with inputlircd
 irdeo - LIRC_DEVICES setting to add support for irdeo receiver device
@@ -76,11 +70,7 @@ leadtek_pvr2000 - LIRC_DEVICES setting to add support for leadtek_pvr2000 receiv
 livedrive_midi - LIRC_DEVICES setting to add support for livedrive_midi receiver device
 livedrive_seq - LIRC_DEVICES setting to add support for livedrive_seq receiver device
 logitech - LIRC_DEVICES setting to add support for logitech receiver device
-lpt1 - LIRC_DEVICES setting to add support for parallel receiver device (defaults on using port #1)
-lpt2 - LIRC_DEVICES setting to add support for parallel receiver device (defaults on using port #2)
 macmini - LIRC_DEVICES setting to add support for macmini receiver device
-mceusb2 - LIRC_DEVICES setting to add support for mceusb2 receiver device
-mceusb - LIRC_DEVICES setting to add support for mceusb receiver device
 mediafocusI - LIRC_DEVICES setting to add support for mediafocusI receiver device
 mouseremote - LIRC_DEVICES setting to add support for mouseremote receiver device
 mouseremote_ps2 - LIRC_DEVICES setting to add support for mouseremote_ps2 receiver device
@@ -118,7 +108,6 @@ tvbox - LIRC_DEVICES setting to add support for tvbox receiver device
 udp - LIRC_DEVICES setting to add support for udp receiver device
 uirt2 - LIRC_DEVICES setting to add support for uirt2 receiver device
 uirt2_raw - LIRC_DEVICES setting to add support for uirt2_raw receiver device
-usbirboy - LIRC_DEVICES setting to add support for the usbirboy homebrew device
 usb_uirt_raw - LIRC_DEVICES setting to add support for usb_uirt_raw receiver device
 usbx - LIRC_DEVICES setting to add support for usbx receiver device
 userspace - LIRC_DEVICES setting to add support for userspace receiver device

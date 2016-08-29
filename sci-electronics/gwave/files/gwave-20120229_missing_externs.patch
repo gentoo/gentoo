@@ -1,0 +1,23 @@
+diff -ur gwave-code-249-trunk.orig/remote/gwaverepl.c gwave-code-249-trunk/remote/gwaverepl.c
+--- gwave-code-249-trunk.orig/remote/gwaverepl.c	2000-11-05 23:39:09.000000000 -0700
++++ gwave-code-249-trunk/remote/gwaverepl.c	2016-08-17 13:20:17.071406553 -0600
+@@ -32,6 +32,8 @@
+ Window w;
+ 
+ extern char *split_at(char **to_split, int i);
++extern int check_balance(char *expr);
++extern int appending_fgets(char **sofar);
+ 
+ 
+ int
+diff -ur gwave-code-249-trunk.orig/spicefile/spicestream.h gwave-code-249-trunk/spicefile/spicestream.h
+--- gwave-code-249-trunk.orig/spicefile/spicestream.h	2004-12-26 20:10:24.000000000 -0700
++++ gwave-code-249-trunk/spicefile/spicestream.h	2016-08-17 13:20:24.208011807 -0600
+@@ -100,6 +100,7 @@
+ extern int fread_line(FILE *fp, char **bufp, int *bufsize);
+ extern void ss_msg(SSMsgLevel type, const char *id, const char *msg, ...);
+ extern char *ss_filetype_name(int n);
++extern void ss_delete(SpiceStream *ss);
+ 
+ 
+ #ifdef __cplusplus

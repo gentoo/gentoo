@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,20 +34,20 @@ DOCS=( CHANGES COPYING README )
 src_prepare() {
 	# Remove unneeded icon resources update needing running X
 	sed -i \
-        -e '/self\._make_resources\(\)/d' \
-        setup.py
+		-e '/self\._make_resources\(\)/d' \
+		setup.py
 
 	# Fix desktop file entry
 	sed -i \
-        -e '/^Version.*/d' \
-        data/photofilmstrip.desktop
+		-e '/^Version.*/d' \
+		data/photofilmstrip.desktop
 
 	distutils-r1_src_prepare
 }
 
 src_install() {
 	# Do not compress the apps help files
-	docompress -x  /usr/share/doc/${PN}
+	docompress -x /usr/share/doc/${PN}
 
 	distutils-r1_src_install
 }

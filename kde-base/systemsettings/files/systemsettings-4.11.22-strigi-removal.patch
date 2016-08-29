@@ -1,0 +1,35 @@
+diff -Naur kde-workspace-4.11.22.orig/CMakeLists.txt kde-workspace-4.11.22/CMakeLists.txt
+--- kde-workspace-4.11.22.orig/CMakeLists.txt	2015-08-12 09:03:15.000000000 +0200
++++ kde-workspace-4.11.22/CMakeLists.txt	2016-05-25 21:17:36.503606974 +0200
+@@ -20,12 +20,6 @@
+ 
+ option(WITH_XINERAMA "Xinerama support for multi-headed X displays" ON)
+ 
+-find_package(Strigi)
+-
+-set_package_properties(Strigi PROPERTIES DESCRIPTION "Desktop indexing and search support"
+-                       URL "http://strigi.sourceforge.net"
+-                       TYPE REQUIRED
+-                      )
+ 
+ find_package(ZLIB)
+ set_package_properties(ZLIB PROPERTIES DESCRIPTION "Support for gzip compressed files and data streams"
+diff -Naur kde-workspace-4.11.22.orig/kcontrol/kfontinst/CMakeLists.txt kde-workspace-4.11.22/kcontrol/kfontinst/CMakeLists.txt
+--- kde-workspace-4.11.22.orig/kcontrol/kfontinst/CMakeLists.txt	2015-08-12 09:03:15.000000000 +0200
++++ kde-workspace-4.11.22/kcontrol/kfontinst/CMakeLists.txt	2016-05-25 21:18:13.023186175 +0200
+@@ -4,7 +4,6 @@
+     find_package(Qt4 REQUIRED)
+     find_package(Freetype REQUIRED)
+     find_package(Fontconfig REQUIRED)
+-    find_package(Strigi REQUIRED)
+     find_package(X11 REQUIRED)
+     macro_log_feature(X11_Xft_FOUND "libxft" "X FreeType interface library" "http://www.x.org" FALSE "" "Font installer and font previews")
+     include(KDE4Defaults)
+@@ -40,7 +39,6 @@
+     add_subdirectory( lib ) 
+     add_subdirectory( dbus )
+     add_subdirectory( kcmfontinst ) 
+-    add_subdirectory( strigi-analyzer )
+     add_subdirectory( apps )
+     add_subdirectory( kio ) 
+     add_subdirectory( thumbnail )

@@ -5,9 +5,6 @@
 		<email>natanael.copa@gmail.com</email>
 		<name>Natanael Copa</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>armin76@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

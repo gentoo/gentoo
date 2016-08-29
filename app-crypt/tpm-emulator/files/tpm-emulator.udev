@@ -1,1 +1,0 @@
-KERNEL=="tpm", NAME="%k", SYMLINK+="tpm0", GROUP="tss", MODE="0660"

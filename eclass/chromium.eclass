@@ -1,6 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# DEPRECATED
+# This eclass has been deprecated and should not be used by any new ebuilds.
+
+# @DEAD
 
 # @ECLASS: chromium.eclass
 # @MAINTAINER:
@@ -10,6 +15,8 @@
 # @BLURB: Shared functions for chromium and google-chrome
 
 inherit eutils fdo-mime gnome2-utils linux-info
+
+eqawarn "chromium.eclass is deprecated"
 
 if [[ ${CHROMIUM_EXPORT_PHASES} != no ]]; then
 	EXPORT_FUNCTIONS pkg_preinst pkg_postinst pkg_postrm
@@ -64,23 +71,11 @@ if [[ ${CHROMIUM_LANGS} ]]; then
 fi
 
 _chromium_crlang() {
-	local x
-	for x in "$@"; do
-		case $x in
-			es_LA) echo es-419 ;;
-			*) echo "${x/_/-}" ;;
-		esac
-	done
+	echo "${@/_/-}"
 }
 
 _chromium_syslang() {
-	local x
-	for x in "$@"; do
-		case $x in
-			es-419) echo es_LA ;;
-			*) echo "${x/-/_}" ;;
-		esac
-	done
+	echo "${@/-/_}"
 }
 
 _chromium_strip_pak() {

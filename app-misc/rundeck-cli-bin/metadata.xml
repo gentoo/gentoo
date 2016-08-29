@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Gentoo Java team</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a command line interface for
+		<pkg>app-misc/rundeck-cli-bin</pkg>.
+	</longdescription>
+</pkgmetadata>

@@ -2,6 +2,4 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-ARCH="amd64"
-CHOST="x86_64-pc-linux-gnu"
-ACCEPT_KEYWORDS="~amd64 ~amd64-linux"
+ACCEPT_KEYWORDS="~${ARCH} ~${ARCH}-linux"

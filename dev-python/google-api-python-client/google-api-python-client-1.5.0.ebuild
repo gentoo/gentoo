@@ -14,7 +14,7 @@ SRC_URI="https://github.com/google/google-api-python-client/archive/v${PV}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="test"
 
 RDEPEND="
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
 
-python_prepare_all(){
+python_prepare_all() {
 	export SKIP_GOOGLEAPICLIENT_COMPAT_CHECK=true
 	distutils-r1_python_prepare_all
 }

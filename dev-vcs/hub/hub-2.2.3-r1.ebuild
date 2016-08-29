@@ -21,7 +21,7 @@ RDEPEND=">=dev-vcs/git-1.7.3"
 DOC_CONTENTS="You may want to add 'alias git=hub' to your .{csh,bash}rc"
 
 # https://github.com/github/hub/issues/592
-# https://github.com/github/hub/pull/1136	
+# https://github.com/github/hub/pull/1136
 PATCHES=( "${FILESDIR}"/"${P}"-bashcomp.patch )
 
 src_compile() {

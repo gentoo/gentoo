@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -49,5 +49,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" PKGDOCDIR='$(DOCDIR)'/${PF} install
+	_emake DESTDIR="${D}" PKGDOCDIR='$(DOCDIR)'/${PF} install
 }

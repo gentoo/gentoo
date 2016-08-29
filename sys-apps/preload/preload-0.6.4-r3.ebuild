@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils autotools
 
 DESCRIPTION="Adaptive readahead daemon"
-HOMEPAGE="http://sourceforge.net/projects/preload/"
+HOMEPAGE="https://sourceforge.net/projects/preload/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

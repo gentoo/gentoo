@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+XORG_EAUTORECONF=yes
 XORG_MULTILIB=yes
 inherit xorg-2 toolchain-funcs versionator
 
@@ -15,6 +16,10 @@ RDEPEND="abi_x86_32? (
 	!<=app-emulation/emul-linux-x86-gtklibs-20131008
 	!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-clang.patch"
+)
 
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(

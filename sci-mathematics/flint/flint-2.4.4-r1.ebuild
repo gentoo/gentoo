@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc gc ntl static-libs test"
 
-RDEPEND="dev-libs/gmp
-	dev-libs/mpfr
+RDEPEND="dev-libs/gmp:0=
+	dev-libs/mpfr:0
 	gc? ( dev-libs/boehm-gc )
 	ntl? ( dev-libs/ntl )"
 DEPEND="${RDEPEND}

@@ -35,7 +35,7 @@ RDEPEND=">=dev-lang/perl-5.16
 	>=dev-perl/List-MoreUtils-0.408.0
 	dev-perl/Log-Log4perl
 	dev-perl/LWP-Protocol-https
-	dev-perl/regexp-common
+	dev-perl/Regexp-Common
 	dev-perl/Readonly
 	dev-perl/Readonly-XS
 	dev-perl/Text-Roman

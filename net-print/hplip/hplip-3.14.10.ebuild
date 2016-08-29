@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads,xml"
 
 inherit eutils fdo-mime linux-info python-single-r1 udev autotools toolchain-funcs
 
-DESCRIPTION="HP Linux Imaging and Printing. Includes printer, scanner, fax drivers and service tools"
+DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
 SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
 		https://dev.gentoo.org/~billie/distfiles/${PN}-3.14.10-patches-1.tar.xz"

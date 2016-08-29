@@ -19,7 +19,7 @@ HOMEPAGE="http://projects.puppetlabs.com/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="amd64 hppa ppc sparc x86"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha )"
 

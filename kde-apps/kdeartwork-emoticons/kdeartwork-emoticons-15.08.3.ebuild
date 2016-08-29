@@ -12,5 +12,5 @@ KDE_SCM="svn"
 inherit kde4-meta
 
 DESCRIPTION="EmotIcons (icons for things like smilies :-) for kde"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""

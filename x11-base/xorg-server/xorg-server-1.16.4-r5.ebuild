@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -70,7 +70,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	>=x11-apps/xinit-1.3
 	systemd? (
 		sys-apps/dbus
-		sys-apps/systemd
+		<sys-apps/systemd-230
 	)"
 
 DEPEND="${CDEPEND}

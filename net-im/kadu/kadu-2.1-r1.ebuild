@@ -13,7 +13,7 @@ HOMEPAGE="http://www.kadu.net"
 SRC_URI="http://download.kadu.im/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="+gadu mpd otr phonon sdk speech spell xmpp"
 REQUIRED_USE="

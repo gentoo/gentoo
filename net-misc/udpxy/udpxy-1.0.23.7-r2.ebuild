@@ -7,7 +7,7 @@ inherit eutils systemd toolchain-funcs versionator
 
 MY_PV=$(replace_version_separator 3 -)
 DESCRIPTION="Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection"
-HOMEPAGE="http://sourceforge.net/projects/udpxy/"
+HOMEPAGE="https://sourceforge.net/projects/udpxy/"
 SRC_URI="http://www.udpxy.com/download/1_23/${PN}.${MY_PV}-prod.tar.gz"
 
 LICENSE="GPL-3"

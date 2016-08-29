@@ -5,8 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="kdepim">Pull in KDE PIM</flag>
-		<flag name="sdk">Pull in developer-specific meta-packages</flag>
-	</use>
 </pkgmetadata>

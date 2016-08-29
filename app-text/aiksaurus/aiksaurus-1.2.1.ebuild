@@ -6,7 +6,7 @@ EAPI=2
 inherit flag-o-matic eutils libtool
 
 DESCRIPTION="A thesaurus lib, tool and database"
-HOMEPAGE="http://sourceforge.net/projects/aiksaurus"
+HOMEPAGE="https://sourceforge.net/projects/aiksaurus"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

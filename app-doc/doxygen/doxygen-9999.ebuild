@@ -25,13 +25,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="clang debug doc dot doxysearch latex qt5 sqlite userland_GNU"
 
-#missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
-LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk
-nl nb pl pt ro ru sl sk sr sv tr uk vi af)
-for X in "${LANGS[@]}" ; do
-	IUSE="${IUSE} linguas_${X}"
-done
-
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
@@ -61,34 +54,6 @@ DEPEND="sys-apps/sed
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
 RESTRICT="test"
 EPATCH_SUFFIX="patch"
-
-get_langs() {
-	# using only user set linguas also fixes #263641
-	my_linguas=()
-	for lingua in ${LINGUAS}; do
-		if has ${lingua} "${LANGS[@]}"; then
-			case ${lingua} in
-				hy) lingua=am ;;
-			    pt_BR) lingua=br ;;
-				zh*) lingua=cn ;;
-				cs) lingua=cz ;;
-				da) lingua=dk ;;
-				el*) lingua=gr ;;
-				ja*) lingua=jp ;;
-				ko) lingua=kr ;;
-				nb) lingua=no ;;
-				sl) lingua=si ;;
-			    tr*) lingua=tr ;;
-			    uk) lingua=ua ;;
-			    af) lingua=za ;;
-			esac
-			has ${lingua} "${my_linguas[@]}" ||
-				my_linguas+=(${lingua})
-		fi
-	done
-	f_langs="${my_linguas[@]^^}"
-	echo ${f_langs// /;}
-}
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
@@ -125,7 +90,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DDOC_INSTALL_DIR="share/doc/${P}"
-		-DLANG_CODES="$(get_langs)"
 		$(cmake-utils_use clang use_libclang)
 		$(cmake-utils_use doc build_doc)
 		$(cmake-utils_use doxysearch build_search)

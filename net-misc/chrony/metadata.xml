@@ -19,6 +19,7 @@ Chrony はコンピュータのシステム・クロックの精度を保つた�
 </longdescription>
 <use>
 <flag name="cmdmon">Support for command and monitoring</flag>
+<flag name="html">Install HTML documentation</flag>
 <flag name="ntp">Support for the Network Time Protocol (NTP)</flag>
 <flag name="phc">Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface</flag>
 <flag name="pps">Support for the Linux Pulse Per Second (PPS) interface</flag>

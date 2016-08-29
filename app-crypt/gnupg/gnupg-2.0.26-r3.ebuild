@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -84,6 +84,9 @@ src_configure() {
 	else
 		myconf+=( --enable-symcryptrun )
 	fi
+
+	# glib fails and picks up clang's internal stdint.h causing weird errors
+	[[ ${CC} == *clang ]] && export gl_cv_absolute_stdint_h=/usr/include/stdint.h
 
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \

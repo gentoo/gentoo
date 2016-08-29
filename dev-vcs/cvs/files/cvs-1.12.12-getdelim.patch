@@ -2,7 +2,7 @@ The function getdelim() behaves slightly different on FreeBSD,
 only appending to the *line buffer if line_size is 0.
 
 See: 
-http://savannah.nongnu.org/bugs/?29466
+https://savannah.nongnu.org/bugs/?29466
 http://bugs.gentoo.org/314791
 
 Already comitted upstream:

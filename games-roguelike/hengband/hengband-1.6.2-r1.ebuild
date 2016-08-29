@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge.jp/hengband/10331/${P}.tar.bz2
 KEYWORDS="ppc x86 ~x86-fbsd"
 LICENSE="Moria"
 SLOT="0"
-IUSE="X linguas_ja"
+IUSE="X l10n_ja"
 
 RDEPEND=">=sys-libs/ncurses-5:0
 	X? ( x11-libs/libX11 )"
@@ -41,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	use linguas_ja || myconf="--disable-japanese"
+	use l10n_ja || myconf="--disable-japanese"
 
 	egamesconf \
 		--with-setgid=${GAMES_GROUP} \
@@ -51,7 +51,7 @@ src_configure() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	if use linguas_ja ; then
+	if use l10n_ja ; then
 		dodoc readme.txt autopick.txt readme_eng.txt autopick_eng.txt
 	else
 		newdoc readme_eng.txt readme.txt

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/sahlberg/libiscsi/archive/${PV}.tar.gz -> ${P}.tar.g
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc64 ~x86"
 IUSE="static-libs"
 
 RDEPEND="dev-libs/libgcrypt:0="

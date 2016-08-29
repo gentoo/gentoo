@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ KDE_HANDBOOK="optional"
 inherit kde4-base
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
-HOMEPAGE="https://projects.kde.org/projects/extragear/multimedia/kmplayer"
+HOMEPAGE="https://kmplayer.kde.org"
 SRC_URI="https://kmplayer.kde.org/pkgs/${P}.tar.bz2"
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"

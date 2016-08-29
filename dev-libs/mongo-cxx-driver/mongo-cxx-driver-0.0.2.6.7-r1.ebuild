@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mongodb/${PN}/archive/${MY_P}.tar.gz"
 LICENSE="AGPL-3 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="kerberos ssl static-libs"
+IUSE="kerberos libressl ssl static-libs"
 
 RDEPEND="
 	app-arch/snappy
@@ -25,7 +25,10 @@ RDEPEND="
 	>=dev-libs/boost-1.50[threads(+)]
 	>=dev-libs/libpcre-8.30[cxx]
 	dev-util/google-perftools[-minimal]
-	ssl? ( dev-libs/openssl:= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )"
 

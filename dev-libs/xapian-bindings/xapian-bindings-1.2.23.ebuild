@@ -7,7 +7,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-USE_PHP="php5-5"
+USE_PHP="php5-5 php5-6"
 
 PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"

@@ -62,6 +62,7 @@ games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-rpg/nwmouse
+games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded
 games-simulation/bcs-demo

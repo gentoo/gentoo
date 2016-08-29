@@ -58,7 +58,7 @@ RDEPEND="
 	dev-perl/URI
 	dev-perl/XML-LibXML
 	virtual/perl-parent
-	>=dev-perl/regexp-common-2013031301
+	>=dev-perl/Regexp-Common-2013031301
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.360.100

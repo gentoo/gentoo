@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils games
 
 DESCRIPTION="Bomberman-like multiplayer game"
-HOMEPAGE="http://savannah.nongnu.org/projects/clanbomber/"
+HOMEPAGE="https://savannah.nongnu.org/projects/clanbomber/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.lzma"
 
 LICENSE="GPL-2"

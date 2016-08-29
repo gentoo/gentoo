@@ -93,14 +93,14 @@ python_compile_all() {
 python_test() {
 	distutils_install_for_testing
 	# https://github.com/ipython/ipython/issues/8639
-	# Failure of some modules only in python3.4 
+	# Failure of some modules only in python3.4
 	local fail
 	run_tests() {
 		pushd ${TEST_DIR} > /dev/null || die
 		"${PYTHON}" -m IPython.testing.iptestcontroller --all || fail=1
 		popd > /dev/null || die
 	}
-	VIRTUALX_COMMAND=run_tests virtualmake
+	virtx run_tests
 	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
 }
 

@@ -77,7 +77,7 @@ l10n_for_each_disabled_locale_do() {
 # Example: l10n_find_plocales_changes "${S}/src/translations" "${PN}_" '.ts'
 l10n_find_plocales_changes() {
 	[[ $# -ne 3 ]] && die "Exactly 3 arguments are needed!"
-	einfo "Looking in ${1} for new locales ..."
+	ebegin "Looking in ${1} for new locales"
 	pushd "${1}" >/dev/null || die "Cannot access ${1}"
 	local current= x=
 	for x in ${2}*${3} ; do
@@ -88,11 +88,14 @@ l10n_find_plocales_changes() {
 	popd >/dev/null
 	# RHS will be sorted with single spaces so ensure the LHS is too
 	# before attempting to compare them for equality. See bug #513242.
-	if [[ $(tr -s "[:space:]" "\n" <<< "${PLOCALES}" | sort | xargs echo) != ${current%[[:space:]]} ]] ; then
-		einfo "There are changes in locales! This ebuild should be updated to:"
-		einfo "PLOCALES=\"${current%[[:space:]]}\""
+	# Run them both through the same sorting algorithm so we don't have
+	# to worry about them being the same.
+	if [[ "$(printf '%s\n' ${PLOCALES} | LC_ALL=C sort)" != "$(printf '%s\n' ${current} | LC_ALL=C sort)" ]] ; then
+		eend 1 "There are changes in locales! This ebuild should be updated to:"
+		eerror "PLOCALES=\"${current%[[:space:]]}\""
+		return 1
 	else
-		einfo "Done"
+		eend 0
 	fi
 }
 

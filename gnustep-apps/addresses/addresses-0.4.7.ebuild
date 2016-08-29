@@ -8,7 +8,7 @@ S=${WORKDIR}/${PN/a/A}
 
 DESCRIPTION="Addresses is a Apple Addressbook work alike (standalone and for GNUMail)"
 HOMEPAGE="http://giesler.biz/bjoern/en/sw_addr.html"
-SRC_URI="http://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${P/a/A}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~x86-fbsd"

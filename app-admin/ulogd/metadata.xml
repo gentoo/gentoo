@@ -10,15 +10,12 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="json">Build JSON output plugin to save packets in JSON file format.</flag>
-		<flag name="pcap">Build PCAP output plugin to save packets in libpcap file format.</flag>
-		<flag name="mysql">Build MySQL output plugin to save packets in a mysql database.</flag>
-		<flag name="postgres">Build PGSQL output plugin to save packets in a postgres database.</flag>
-		<flag name="sqlite">Build SQLITE3 output plugin to save packets in a sqlite database.</flag>
-		<flag name="nflog">Build NFLOG input plugin to support stateless packet-based logging via nfnetlink_queue.</flag>
-		<flag name="nfct">Build NFCT input plugin to support stateful flow-based logging via nf_conntrack_netlink.</flag>
-		<flag name="nfacct">Build NFACCT input plugin to support traffic accounting via nfnetlink_acct.</flag>
-		<flag name="ulog">Build ULOG input plugin to support deprecated packet-based logging via ULOG target.</flag>
+		<flag name="json">Build JSON output plugin to save packets in JSON file format</flag>
+		<flag name="pcap">Build PCAP output plugin to save packets in libpcap file format</flag>
+		<flag name="nfacct">Build NFACCT input plugin to support traffic accounting via nfnetlink_acct</flag>
+		<flag name="nfct">Build NFCT input plugin to support stateful flow-based logging via nfnetlink_conntrack</flag>
+		<flag name="nflog">Build NFLOG input plugin to support stateless packet-based logging via nfnetlink_log</flag>
+		<flag name="ulog">Build ULOG input plugin to support deprecated packet-based logging via ULOG target</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugzilla.netfilter.org/enter_bug.cgi?product=ulogd</bugs-to>

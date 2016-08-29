@@ -39,6 +39,7 @@ CDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit?]
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
+	<dev-libs/boost-1.61[context,nls,threads,python?]
 	>=dev-libs/boost-1.56[context,nls,threads,python?]
 	github? ( dev-libs/openssl:0 )
 	media-libs/glew
@@ -99,7 +100,7 @@ src_prepare() {
 		done
 		# cmakelists does not respect our build dir variables, so make it point to the right location
 		sed "s|\${CMAKE_BINARY_DIR}|${WORKDIR}/${P}_build|g" -i ${PN}-i18n/CMakeLists.txt || die "sed failed"
-		# we also make from the master project so the source dir is understood incorretly, replace that too 
+		# we also make from the master project so the source dir is understood incorretly, replace that too
 		sed "s|\${CMAKE_SOURCE_DIR}/\${LANG}|\${CMAKE_SOURCE_DIR}/${PN}-i18n/\${LANG}|g" -i ${PN}-i18n/CMakeLists.txt || die "sed failed"
 		# add the translations directory to cmake as a subproject to build
 		sed "/add_subdirectory( bitmaps_png )/a add_subdirectory( ${PN}-i18n )" -i CMakeLists.txt || die "sed failed"
@@ -112,7 +113,7 @@ src_prepare() {
 		# install demos into the examples folder too
 		sed -e 's:${KICAD_DATA}/demos:${KICAD_DOCS}/examples:' -i CMakeLists.txt || die "sed failed"
 	else
-		# remove additional demos/examples as its not strictly required to run the binaries 
+		# remove additional demos/examples as its not strictly required to run the binaries
 		sed -e '/add_subdirectory( demos )/d' -i CMakeLists.txt || die "sed failed"
 	fi
 

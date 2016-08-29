@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>jsbronder@gentoo.org</email>
-		<name>Justin Bronder</name>
-	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>

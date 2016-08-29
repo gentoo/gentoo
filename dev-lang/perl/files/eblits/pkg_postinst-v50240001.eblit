@@ -1,0 +1,36 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+eblit-perl-pkg_postinst() {
+	dual_scripts
+
+	if [[ "${ROOT}" = "/" ]] ; then
+		local INC DIR file
+		INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${SHORT_PV}'|etc|local|perl$/; print "$line\n" }')
+		einfo "Removing old .ph files"
+		for DIR in ${INC} ; do
+			if [[ -d "${DIR}" ]] ; then
+				for file in $(find "${DIR}" -name "*.ph" -type f ) ; do
+					rm -f "${file}"
+					einfo "<< ${file}"
+				done
+			fi
+		done
+		# Silently remove the now empty dirs
+		for DIR in ${INC} ; do
+			if [[ -d "${DIR}" ]] ; then
+				find "${DIR}" -depth -type d -print0 | xargs -0 -r rmdir &> /dev/null
+			fi
+		done
+
+#		einfo "Converting C header files to the corresponding Perl format (ignore any error)"
+#		# Prefix note: unprefixed as this is all kernel/libc stuff that we never provide
+#		pushd /usr/include >/dev/null
+#			h2ph -Q -a -d "${EPREFIX}"${ARCH_LIB} \
+#				asm/termios.h syscall.h syslimits.h syslog.h sys/ioctl.h \
+#				sys/socket.h sys/time.h wait.h sysexits.h
+#		popd >/dev/null
+
+	fi
+}

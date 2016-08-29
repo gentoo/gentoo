@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		Lager (as in the beer) is a logging framework for Erlang. Its purpose
+		is to provide a more traditional way to perform logging in an erlang
+		application that plays nicely with traditional UNIX logging tools like
+		logrotate and syslog.
+	</longdescription>
+</pkgmetadata>

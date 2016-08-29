@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>qnikst@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="vim">
       Install a vim plugin allowing to paste and download from within vim

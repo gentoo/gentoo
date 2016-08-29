@@ -11,7 +11,7 @@ inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email component of Kontact (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
@@ -21,7 +21,9 @@ DEPEND="
 	$(add_kdeapps_dep libkleo '' 4.4.2015)
 	$(add_kdeapps_dep libkpgp '' 4.4.2015)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!>=kde-apps/kdepimlibs-4.14.11_pre20160211
+"
 
 KMEXTRACTONLY="
 	korganizer/org.kde.Korganizer.Calendar.xml
@@ -45,9 +47,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# Bug 308903
-	use ppc64 && append-flags -mminimal-toc
-
 	mycmakeargs=(
 		-DWITH_IndicateQt=OFF
 	)

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -16,8 +16,8 @@ HOMEPAGE="https://github.com/rails/ruby-coffee-script https://github.com/rails/c
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x64-macos"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x64-macos"
 
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/coffee-script-source dev-ruby/execjs"
+ruby_add_rdepend "dev-ruby/coffee-script-source dev-ruby/execjs:*"

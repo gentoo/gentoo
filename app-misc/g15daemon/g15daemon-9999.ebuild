@@ -1,15 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
+PYTHON_COMPAT=( python2_7 )
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_DEPEND="python? *"
-SUPPORT_PYTHON_ABIS="1"
 ESVN_PROJECT=${PN}/trunk
 ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${ESVN_PROJECT}/${PN}-wip"
 
-inherit eutils linux-info perl-module python base subversion autotools
+inherit eutils linux-info perl-module python-r1 base subversion autotools
 
 DESCRIPTION="G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="http://g15daemon.sourceforge.net/"
@@ -27,8 +27,10 @@ DEPEND="virtual/libusb:0
 		dev-lang/perl
 		dev-perl/GDGraph
 		>=dev-perl/Inline-0.4
-	)"
+	)
+	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.5.3-g510-keys.patch"
@@ -56,9 +58,6 @@ uinput_check() {
 pkg_setup() {
 	linux-info_pkg_setup
 	uinput_check
-	if use python; then
-		python_pkg_setup
-	fi
 }
 
 src_unpack() {
@@ -152,11 +151,7 @@ src_install() {
 		ebegin "Installing Python Bindings (g15daemon.py)"
 		cd "${WORKDIR}/pyg15daemon"
 
-		installation() {
-			insinto $(python_get_sitedir)
-			doins g15daemon.py
-		}
-		python_execute_function installation
+		python_foreach_impl python_domodule g15daemon.py
 
 		docinto python
 		dodoc AUTHORS
@@ -164,11 +159,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use python; then
-		python_mod_optimize g15daemon.py
-		echo ""
-	fi
-
 	elog "To use g15daemon, you need to add g15daemon to the default runlevel."
 	elog "This can be done with:"
 	elog "# /sbin/rc-update add g15daemon default"
@@ -182,10 +172,4 @@ pkg_postinst() {
 	elog ""
 	elog "Adding keycodes to an existing xmodmap:"
 	elog "cat /usr/share/g15daemon/contrib/xmodmaprc >> ~/.Xmodmap"
-}
-
-pkg_postrm() {
-	if use python; then
-		python_mod_cleanup g15daemon.py
-	fi
 }

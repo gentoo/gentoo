@@ -34,7 +34,7 @@ RDEPEND="
 	>=dev-php/PEAR-Net_SMTP-1.6.2
 	virtual/httpd-php
 	enigma? ( >=dev-php/PEAR-Crypt_GPG-1.2.0 app-crypt/gnupg )
-	ldap? ( >=dev-php/PEAR-Net_LDAP2-2.0.12 )
+	ldap? ( >=dev-php/PEAR-Net_LDAP2-2.0.12 dev-php/PEAR-Net_LDAP3 )
 	managesieve? ( >=dev-php/PEAR-Net_Sieve-1.3.2 )
 	mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) )
 	spell? ( dev-lang/php[curl,spell] )

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,10 +51,9 @@ RDEPEND="app-arch/bzip2:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/autoconf-2.65
-	!sys-devel/gcc[libffi]"
+	!sys-devel/gcc[libffi(-)]"
 RDEPEND+=" !build? ( app-misc/mime-types )"
-PDEPEND=">=app-eselect/eselect-python-20140125-r1
-	app-admin/python-updater"
+PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -117,8 +116,6 @@ src_configure() {
 	fi
 
 	filter-flags -malign-double
-
-	[[ "${ARCH}" == "alpha" ]] && append-flags -fPIC
 
 	# https://bugs.gentoo.org/show_bug.cgi?id=50309
 	if is-flagq -O3; then

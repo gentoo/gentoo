@@ -20,11 +20,6 @@
 =sys-devel/autogen-5.18.1
 =sys-devel/autogen-5.18.2
 
-# Fabian Groffen <grobian@gentoo.org> (29 Apr 2012)
-# AT_FDCWD, openat, faccessat, etc. issues on probably all but Linux
-# platforms, masking for now.
->=app-misc/pax-utils-0.3
-
 # Elias Pipping <pipping@gentoo.org> (09 Oct 2007)
 # darwin-miscutils are only available on darwin
 sys-apps/darwin-miscutils

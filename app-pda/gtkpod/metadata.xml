@@ -4,7 +4,6 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="clutter">Enable clutter support for displaying coverart</flag>
-		<flag name="webkit">Enable webkit support for finding coverart</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gtkpod</remote-id>

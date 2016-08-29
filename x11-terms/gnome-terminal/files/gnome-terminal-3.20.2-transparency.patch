@@ -1,0 +1,463 @@
+From 9ef3a75e6dcc347c023cf9c927383596912a7f2c Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Mon, 12 May 2014 14:57:18 +0200
+Subject: [PATCH 1/6] Restore transparency
+
+The transparency settings were removed as a side effect of
+2bff4b63ed3ceef6055e35563e9b0b33ad57349d
+
+This restores them and you will need a compositing window manager to
+use it. The background image setting, also known as faux transparency,
+was not restored.
+
+The transparency checkbox lost its mnemonic accelerator because 't'
+is already taken and using any other letter would make it hard to
+restore the translations of the string.
+---
+ src/org.gnome.Terminal.gschema.xml | 10 +++++
+ src/profile-editor.c               | 11 +++++
+ src/profile-preferences.ui         | 92 ++++++++++++++++++++++++++++++++++++++
+ src/terminal-schemas.h             |  3 ++
+ src/terminal-screen.c              | 22 ++++++++-
+ src/terminal-window.c              |  7 +++
+ 6 files changed, 144 insertions(+), 1 deletion(-)
+
+diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
+index c031c8ace24a..7bdd156e36aa 100644
+--- a/src/org.gnome.Terminal.gschema.xml
++++ b/src/org.gnome.Terminal.gschema.xml
+@@ -370,6 +370,16 @@
+       <default>'narrow'</default>
+       <summary>Whether ambiguous-width characters are narrow or wide when using UTF-8 encoding</summary>
+     </key>
++    <key name="use-transparent-background" type="b">
++      <default>false</default>
++      <summary>Whether to use a transparent background</summary>
++    </key>
++    <key name="background-transparency-percent" type="i">
++      <default>50</default>
++      <range min="0" max="100"/>
++      <summary>Adjust the amount of transparency</summary>
++      <description>A value between 0 and 100, where 0 is opaque and 100 is fully transparent.</description>
++    </key>
+   </schema>
+ 
+   <!-- Keybinding settings -->
+diff --git a/src/profile-editor.c b/src/profile-editor.c
+index ff26df6a0e1b..b8c1c784d17e 100644
+--- a/src/profile-editor.c
++++ b/src/profile-editor.c
+@@ -1218,7 +1218,18 @@ terminal_profile_edit (GSettings  *profile,
+                    "active-id",
+                    G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+ 
++  g_settings_bind (profile, TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND,
++                   gtk_builder_get_object (builder, "use-transparent-background"),
++                   "active", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
++  g_settings_bind (profile, TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND,
++                   gtk_builder_get_object (builder, "background-transparent-scale-box"),
++                   "sensitive", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
++  g_settings_bind (profile, TERMINAL_PROFILE_BACKGROUND_TRANSPARENCY_PERCENT,
++                   gtk_builder_get_object (builder, "background-transparent-adjustment"),
++                   "value", G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
++
+   /* Finished! */
++
+   terminal_util_bind_mnemonic_label_sensitivity (editor);
+ 
+   terminal_util_dialog_focus_widget (editor, widget_name);
+diff --git a/src/profile-preferences.ui b/src/profile-preferences.ui
+index 9c0094687ffd..9caf72da0f14 100644
+--- a/src/profile-preferences.ui
++++ b/src/profile-preferences.ui
+@@ -23,6 +23,11 @@
+     <property name="step_increment">1</property>
+     <property name="page_increment">100</property>
+   </object>
++  <object class="GtkAdjustment" id="background-transparent-adjustment">
++    <property name="upper">100</property>
++    <property name="step_increment">1</property>
++    <property name="page_increment">10</property>
++  </object>
+   <object class="GtkListStore" id="cjk-ambiguous-width-model">
+     <columns>
+       <!-- column-name gchararray -->
+@@ -1035,6 +1040,93 @@
+                                 <property name="position">1</property>
+                               </packing>
+                             </child>
++                            <child>
++                              <object class="GtkBox" id="use-transparent-background-box">
++                                <property name="visible">True</property>
++                                <property name="can_focus">False</property>
++                                <property name="orientation">horizontal</property>
++                                <property name="spacing">12</property>
++                                <child>
++                                  <object class="GtkCheckButton" id="use-transparent-background">
++                                    <property name="label" translatable="yes">Transparent background</property>
++                                    <property name="visible">True</property>
++                                    <property name="can_focus">True</property>
++                                    <property name="receives_default">False</property>
++                                    <property name="use_underline">True</property>
++                                    <property name="xalign">0</property>
++                                    <property name="draw_indicator">True</property>
++                                  </object>
++                                  <packing>
++                                    <property name="expand">False</property>
++                                    <property name="fill">False</property>
++                                    <property name="position">0</property>
++                                  </packing>
++                                </child>
++                                <child>
++                                  <object class="GtkBox" id="background-transparent-scale-box">
++                                    <property name="visible">True</property>
++                                    <property name="can_focus">False</property>
++                                    <property name="orientation">horizontal</property>
++                                    <property name="spacing">6</property>
++                                    <child>
++                                      <object class="GtkLabel" id="background-transparent-min-label">
++                                        <property name="visible">True</property>
++                                        <property name="can_focus">False</property>
++                                        <property name="xalign">0.5</property>
++                                        <property name="label" translatable="yes">none</property>
++                                        <style>
++                                          <class name="dim-label"/>
++                                        </style>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">0</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkScale" id="background-transparent-scale">
++                                        <property name="visible">True</property>
++                                        <property name="can_focus">True</property>
++                                        <property name="adjustment">background-transparent-adjustment</property>
++                                        <property name="draw_value">False</property>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">True</property>
++                                        <property name="fill">True</property>
++                                        <property name="position">1</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkLabel" id="background-transparent-max-label">
++                                        <property name="visible">True</property>
++                                        <property name="can_focus">False</property>
++                                        <property name="xalign">0.5</property>
++                                        <property name="label" translatable="yes">full</property>
++                                        <style>
++                                          <class name="dim-label"/>
++                                        </style>
++                                      </object>
++                                      <packing>
++                                        <property name="expand">False</property>
++                                        <property name="fill">False</property>
++                                        <property name="position">2</property>
++                                      </packing>
++                                    </child>
++                                  </object>
++                                  <packing>
++                                    <property name="expand">True</property>
++                                    <property name="fill">True</property>
++                                    <property name="position">1</property>
++                                  </packing>
++                                </child>
++                              </object>
++                              <packing>
++                                <property name="expand">True</property>
++                                <property name="fill">True</property>
++                                <property name="position">2</property>
++                              </packing>
++                            </child>
+                           </object>
+                         </child>
+                       </object>
+diff --git a/src/terminal-schemas.h b/src/terminal-schemas.h
+index 4b734a3961d1..e434075d86af 100644
+--- a/src/terminal-schemas.h
++++ b/src/terminal-schemas.h
+@@ -69,6 +69,9 @@ G_BEGIN_DECLS
+ #define TERMINAL_PROFILE_VISIBLE_NAME_KEY               "visible-name"
+ #define TERMINAL_PROFILE_WORD_CHAR_EXCEPTIONS_KEY       "word-char-exceptions"
+ 
++#define TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND      "use-transparent-background"
++#define TERMINAL_PROFILE_BACKGROUND_TRANSPARENCY_PERCENT "background-transparency-percent"
++
+ #define TERMINAL_SETTING_CONFIRM_CLOSE_KEY              "confirm-close"
+ #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
+ #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index 33a34abc2f93..92e8bb387d03 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -855,7 +855,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+       prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_COLORS_SET_KEY) ||
+       prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_BACKGROUND_COLOR_KEY) ||
+       prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_FOREGROUND_COLOR_KEY) ||
+-      prop_name == I_(TERMINAL_PROFILE_PALETTE_KEY))
++      prop_name == I_(TERMINAL_PROFILE_PALETTE_KEY) ||
++      prop_name == I_(TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND) ||
++      prop_name == I_(TERMINAL_PROFILE_BACKGROUND_TRANSPARENCY_PERCENT))
+     update_color_scheme (screen);
+ 
+   if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
+@@ -925,6 +927,8 @@ update_color_scheme (TerminalScreen *screen)
+   GdkRGBA *cursor_bgp = NULL, *cursor_fgp = NULL;
+   GdkRGBA *highlight_bgp = NULL, *highlight_fgp = NULL;
+   GtkStyleContext *context;
++  GtkWidget *toplevel;
++  gboolean transparent;
+   gboolean use_theme_colors;
+ 
+   context = gtk_widget_get_style_context (widget);
+@@ -966,6 +970,18 @@ update_color_scheme (TerminalScreen *screen)
+     }
+ 
+   colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
++
++  transparent = g_settings_get_boolean (profile, TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND);
++  if (transparent)
++    {
++      gint transparency_percent;
++
++      transparency_percent = g_settings_get_int (profile, TERMINAL_PROFILE_BACKGROUND_TRANSPARENCY_PERCENT);
++      bg.alpha = (100 - transparency_percent) / 100.0;
++    }
++  else
++    bg.alpha = 1.0;
++
+   vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
+                            colors, n_colors);
+   vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
+@@ -973,6 +989,10 @@ update_color_scheme (TerminalScreen *screen)
+   vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
+   vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
+   vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
++
++  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
++  if (toplevel != NULL && gtk_widget_is_toplevel (toplevel))
++    gtk_widget_set_app_paintable (toplevel, transparent);
+ }
+ 
+ static void
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index 80e54b002819..0642ccecda30 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -2618,6 +2618,8 @@ terminal_window_init (TerminalWindow *window)
+   TerminalWindowPrivate *priv;
+   TerminalApp *app;
+   TerminalSettingsList *profiles_list;
++  GdkScreen *screen;
++  GdkVisual *visual;
+   GtkActionGroup *action_group;
+   GtkAction *action;
+   GtkUIManager *manager;
+@@ -2632,6 +2634,11 @@ terminal_window_init (TerminalWindow *window)
+ 
+   gtk_widget_init_template (GTK_WIDGET (window));
+ 
++  screen = gtk_widget_get_screen (GTK_WIDGET (window));
++  visual = gdk_screen_get_rgba_visual (screen);
++  if (visual != NULL)
++    gtk_widget_set_visual (GTK_WIDGET (window), visual);
++
+   uuid_generate (u);
+   uuid_unparse (u, uuidstr);
+   priv->uuid = g_strdup (uuidstr);
+-- 
+2.5.0
+
+
+From 0bdf26225511bac8d00c08477dee431f04763330 Mon Sep 17 00:00:00 2001
+From: Lars Uebernickel <lars.uebernickel@canonical.com>
+Date: Wed, 28 May 2014 14:11:02 +0200
+Subject: [PATCH 2/6] window: Make the drawing robust across all themes
+
+There are lots of themes out there in the wild that do not specify a
+background-color for all widgets and the default is transparent. This
+is usually not a problem because GTK+ sets an opaque region on the
+whole window and things without a background-color get drawn with the
+theme's default background colour. However, to achieve transparency
+we disable the opaque region by making the window app-paintable. This
+can lead to transparent menubars or notebook tabs in some themes. We
+can avoid this by ensuring that the window always renders a background.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=730016
+---
+ src/terminal-window.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index 0642ccecda30..1616689b3765 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -2290,6 +2290,26 @@ terminal_window_realize (GtkWidget *widget)
+ }
+ 
+ static gboolean
++terminal_window_draw (GtkWidget *widget,
++                      cairo_t   *cr)
++{
++  if (gtk_widget_get_app_paintable (widget))
++    {
++      GtkStyleContext *context;
++      int width;
++      int height;
++
++      context = gtk_widget_get_style_context (widget);
++      width = gtk_widget_get_allocated_width (widget);
++      height = gtk_widget_get_allocated_height (widget);
++      gtk_render_background (context, cr, 0, 0, width, height);
++      gtk_render_frame (context, cr, 0, 0, width, height);
++    }
++
++  return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
++}
++
++static gboolean
+ terminal_window_state_event (GtkWidget            *widget,
+                              GdkEventWindowState  *event)
+ {
+@@ -2818,6 +2838,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+ 
+   widget_class->show = terminal_window_show;
+   widget_class->realize = terminal_window_realize;
++  widget_class->draw = terminal_window_draw;
+   widget_class->window_state_event = terminal_window_state_event;
+   widget_class->screen_changed = terminal_window_screen_changed;
+   widget_class->style_updated = terminal_window_style_updated;
+-- 
+2.5.0
+
+
+From 8ecbda047d7c15bd6b387e9b7128e688708303e7 Mon Sep 17 00:00:00 2001
+From: "Owen W. Taylor" <otaylor@fishsoup.net>
+Date: Fri, 13 Nov 2015 15:16:42 +0100
+Subject: [PATCH 3/6] screen, window: Extra padding around transparent
+ terminals in Wayland
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1207943
+---
+ src/terminal-screen.c | 40 +++++++++++++++++++++++++++++++++++++---
+ src/terminal-window.c | 18 ++++++++++++------
+ 2 files changed, 49 insertions(+), 9 deletions(-)
+
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index 92e8bb387d03..1718d42edaa8 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -140,6 +140,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
+ static gboolean terminal_screen_popup_menu (GtkWidget *widget);
+ static gboolean terminal_screen_button_press (GtkWidget *widget,
+                                               GdkEventButton *event);
++static void terminal_screen_hierarchy_changed (GtkWidget *widget,
++                                               GtkWidget *previous_toplevel);
+ static gboolean terminal_screen_do_exec (TerminalScreen *screen,
+                                          FDSetupData    *data,
+                                          GError **error);
+@@ -510,6 +512,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+   widget_class->drag_data_received = terminal_screen_drag_data_received;
+   widget_class->button_press_event = terminal_screen_button_press;
+   widget_class->popup_menu = terminal_screen_popup_menu;
++  widget_class->hierarchy_changed = terminal_screen_hierarchy_changed;
+ 
+   terminal_class->child_exited = terminal_screen_child_exited;
+ 
+@@ -913,6 +916,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+ }
+ 
+ static void
++update_toplevel_transparency (TerminalScreen *screen)
++{
++  GtkWidget *widget = GTK_WIDGET (screen);
++  TerminalScreenPrivate *priv = screen->priv;
++  GSettings *profile = priv->profile;
++  GtkWidget *toplevel;
++
++  toplevel = gtk_widget_get_toplevel (widget);
++  if (toplevel != NULL && gtk_widget_is_toplevel (toplevel))
++    {
++      gboolean transparent;
++
++      transparent = g_settings_get_boolean (profile, TERMINAL_PROFILE_USE_TRANSPARENT_BACKGROUND);
++      if (gtk_widget_get_app_paintable (toplevel) != transparent)
++        {
++          gtk_widget_set_app_paintable (toplevel, transparent);
++
++          /* The opaque region of the toplevel isn't updated until the toplevel is allocated;
++           * set_app_paintable() doesn't force an allocation, so do that manually.
++           */
++          gtk_widget_queue_resize (toplevel);
++        }
++    }
++}
++
++static void
+ update_color_scheme (TerminalScreen *screen)
+ {
+   GtkWidget *widget = GTK_WIDGET (screen);
+@@ -990,9 +1019,7 @@ update_color_scheme (TerminalScreen *screen)
+   vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
+   vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
+ 
+-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+-  if (toplevel != NULL && gtk_widget_is_toplevel (toplevel))
+-    gtk_widget_set_app_paintable (toplevel, transparent);
++  update_toplevel_transparency (screen);
+ }
+ 
+ static void
+@@ -1595,6 +1622,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+   terminal_screen_popup_info_unref (info);
+ }
+ 
++static void
++terminal_screen_hierarchy_changed (GtkWidget *widget,
++                                   GtkWidget *previous_toplevel)
++{
++  update_toplevel_transparency (TERMINAL_SCREEN (widget));
++}
++
+ static gboolean
+ terminal_screen_button_press (GtkWidget      *widget,
+                               GdkEventButton *event)
+diff --git a/src/terminal-window.c b/src/terminal-window.c
+index 1616689b3765..353647903af0 100644
+--- a/src/terminal-window.c
++++ b/src/terminal-window.c
+@@ -2295,15 +2295,21 @@ terminal_window_draw (GtkWidget *widget,
+ {
+   if (gtk_widget_get_app_paintable (widget))
+     {
++      GtkAllocation child_allocation;
+       GtkStyleContext *context;
+-      int width;
+-      int height;
++      GtkWidget *child;
++
++      /* Get the *child* allocation, so we don't overwrite window borders */
++      child = gtk_bin_get_child (GTK_BIN (widget));
++      gtk_widget_get_allocation (child, &child_allocation);
+ 
+       context = gtk_widget_get_style_context (widget);
+-      width = gtk_widget_get_allocated_width (widget);
+-      height = gtk_widget_get_allocated_height (widget);
+-      gtk_render_background (context, cr, 0, 0, width, height);
+-      gtk_render_frame (context, cr, 0, 0, width, height);
++      gtk_render_background (context, cr,
++                             child_allocation.x, child_allocation.y,
++                             child_allocation.width, child_allocation.height);
++      gtk_render_frame (context, cr,
++                        child_allocation.x, child_allocation.y,
++                        child_allocation.width, child_allocation.height);
+     }
+ 
+   return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
+-- 
+2.5.0
+

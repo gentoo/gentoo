@@ -17,7 +17,7 @@ inherit flag-o-matic autotools versionator eutils
 MY_P="mingwrt-$(version_format_string '$1.$2-$3')-mingw32"
 DESCRIPTION="Free Win32 runtime and import library definitions"
 HOMEPAGE="http://www.mingw.org/"
-# http://sourceforge.net/projects/mingw/files/MinGW/Base/mingw-rt/
+# https://sourceforge.net/projects/mingw/files/MinGW/Base/mingw-rt/
 SRC_URI="mirror://sourceforge/mingw/${MY_P}-src.tar.lzma"
 
 LICENSE="BSD"

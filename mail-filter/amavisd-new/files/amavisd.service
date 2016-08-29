@@ -6,8 +6,17 @@ Wants=clamd.service
 After=network.target
 
 [Service]
+User=amavis
+Group=amavis
 ExecStart=/usr/sbin/amavisd -c /etc/amavisd.conf foreground
 ExecReload=/usr/sbin/amavisd -c /etc/amavisd.conf reload
+PrivateTmp=true
+CapabilityBoundingSet=
+ProtectSystem=full
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectHome=true
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target

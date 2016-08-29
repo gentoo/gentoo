@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ DESCRIPTION="GNAT Ada Compiler - gcc version"
 HOMEPAGE="https://gcc.gnu.org/"
 LICENSE="GMGPL"
 
-IUSE="doc lto" # doc and lto from gnatbuild.eclass
+IUSE="doc" # doc from gnatbuild.eclass
 
 # SLOT is set in gnatbuild.eclass, depends only on PV (basically SLOT=GCCBRANCH)
 # so the URI's are static.

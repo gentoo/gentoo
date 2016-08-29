@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,19 +9,19 @@ HOMEPAGE="https://www.gentoo.org/"
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="linguas_cs linguas_de linguas_it linguas_sk offensive"
+IUSE="l10n_cs l10n_de l10n_it l10n_sk offensive"
 
 RDEPEND="games-misc/fortune-mod
-	linguas_cs? ( games-misc/fortune-mod-cs )
-	linguas_de? (
+	l10n_cs? ( games-misc/fortune-mod-cs )
+	l10n_de? (
 		games-misc/fortune-mod-at-linux
 		games-misc/fortune-mod-norbert-tretkowski
 		games-misc/fortune-mod-thomas-ogrisegg
 		games-misc/fortune-mod-fvl
 		games-misc/fortune-mod-rss
 	)
-	linguas_it? ( games-misc/fortune-mod-it )
-	linguas_sk? ( games-misc/fortune-mod-debilneho )
+	l10n_it? ( games-misc/fortune-mod-it )
+	l10n_sk? ( games-misc/fortune-mod-debilneho )
 	games-misc/fortune-mod-bofh-excuses
 	games-misc/fortune-mod-calvin
 	games-misc/fortune-mod-chucknorris

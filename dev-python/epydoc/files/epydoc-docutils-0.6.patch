@@ -3,7 +3,7 @@ Make epydoc work with docutils-0.6.
 Patch created by Engelbert Gruber (grubert) and adjusted by Martin von Gagern.
 
 References:
-http://sourceforge.net/tracker/?func=detail&aid=2895197&group_id=32455&atid=405618
+https://sourceforge.net/tracker/?func=detail&aid=2895197&group_id=32455&atid=405618
 http://thread.gmane.org/gmane.text.docutils.devel/4888/focus=4924
 http://bugs.gentoo.org/287546
 

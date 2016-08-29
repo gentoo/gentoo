@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="amqplib doc examples msgpack sqs test"
 
 # couchdb backend support possible via dev-python/couchdb-python
@@ -94,7 +94,7 @@ python_test() {
 		nosetests "${S}"/kombu/tests || die "Tests failed under ${EPYTHON}"
 		# funtests appears to be coded only for py2, a kind of 2nd tier. pypy fails 6.
 		# https://github.com/celery/kombu/issues/411
-		# Fix to https://github.com/celery/kombu/issues/474 breaks the 
+		# Fix to https://github.com/celery/kombu/issues/474 breaks the
 		# funtests under >=dev-python/pymongo-3.0.2
 #		if [[ "${EPYTHON}" == python2.7 ]]; then
 #			pushd funtests > /dev/null

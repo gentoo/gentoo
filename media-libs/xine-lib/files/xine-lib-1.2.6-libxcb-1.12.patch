@@ -1,0 +1,25 @@
+https://bugs.xine-project.org/show_bug.cgi?id=572
+https://bugs.gentoo.org/584640
+
+--- xine-lib-1.2.6/m4/video_out.m4
++++ xine-lib-1.2.6/m4/video_out.m4
+@@ -305,7 +305,7 @@
+     dnl xcb
+     XINE_ARG_WITH([xcb], [Enable support for XCB video out plugins])
+     if test x"$with_xcb" != x"no"; then
+-        PKG_CHECK_MODULES([XCB], [xcb-shape >= 1.0], [have_xcb=yes], [have_xcb=no])
++        PKG_CHECK_MODULES([XCB], [xcb xcb-shape >= 1.0], [have_xcb=yes], [have_xcb=no])
+         if test x"$hard_enable_xcb" = x"yes" && test x"$have_xcb" != x"yes"; then
+             AC_MSG_ERROR([XCB support requested, but XCB not found])
+         elif test x"$have_xcb" = x"yes"; then
+--- xine-lib-1.2.6/src/video_out/Makefile.am
++++ xine-lib-1.2.6/src/video_out/Makefile.am
+@@ -147,7 +147,7 @@
+ xineplug_vo_out_xcbshm_la_CFLAGS = $(AM_CFLAGS) $(XCB_CFLAGS) $(XCBSHM_CFLAGS) $(AVUTIL_CFLAGS)
+ 
+ xineplug_vo_out_xcbxv_la_SOURCES = video_out_xcbxv.c $(XCBOSD)
+-xineplug_vo_out_xcbxv_la_LIBADD = $(XINE_LIB) $(PTHREAD_LIBS) $(LTLIBINTL) $(XCBXV_LIBS) $(XCB_LIBS)
++xineplug_vo_out_xcbxv_la_LIBADD = $(XINE_LIB) $(PTHREAD_LIBS) $(LTLIBINTL) $(XCBXV_LIBS) $(XCBSHM_LIBS) $(XCB_LIBS)
+ xineplug_vo_out_xcbxv_la_CFLAGS = $(AM_CFLAGS) $(XCB_CFLAGS) $(XCBXV_CFLAGS)
+ 
+ xineplug_vo_out_xshm_la_SOURCES = video_out_xshm.c $(X11OSD)

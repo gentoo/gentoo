@@ -7,8 +7,8 @@ EAPI="4"
 inherit eutils
 
 DESCRIPTION="tool for AVR microcontrollers which can interface to many hardware in-system programmers"
-HOMEPAGE="http://savannah.nongnu.org/projects/uisp"
-SRC_URI="http://savannah.nongnu.org/download/uisp/${P}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/uisp"
+SRC_URI="https://savannah.nongnu.org/download/uisp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

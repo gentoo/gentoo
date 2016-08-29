@@ -1,13 +1,13 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Monica is a Monitor Calibration Tool"
-HOMEPAGE="http://www.pcbypaul.com/software/monica.html"
-SRC_URI="http://www.pcbypaul.com/software/dl/${P}.tar.bz2"
+HOMEPAGE="http://freecode.com/projects/monica"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

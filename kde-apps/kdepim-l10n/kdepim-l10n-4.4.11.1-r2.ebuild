@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ RDEPEND="
 	!<kde-apps/kde4-l10n-4.14.3-r1
 "
 
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu
@@ -28,12 +28,12 @@ MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu
 
 PIM_L10N="kdepim kdepimlibs"
 
-URI_BASE="${SRC_URI/-${PV}.tar.bz2/}"
+URI_BASE="mirror://kde/Attic/4.4.5/src/kde-l10n"
 SRC_URI=""
 
 for MY_LANG in ${MY_LANGS} ; do
-	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE}/kde-l10n-${MY_LANG}-4.4.5.tar.bz2 )"
+	IUSE="${IUSE} l10n_${MY_LANG/[@_]/-}"
+	SRC_URI="${SRC_URI} l10n_${MY_LANG/[@_]/-}? ( ${URI_BASE}/kde-l10n-${MY_LANG}-4.4.5.tar.bz2 )"
 done
 
 S="${WORKDIR}"
@@ -42,12 +42,10 @@ src_unpack() {
 	local LNG DIR
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 
@@ -55,9 +53,9 @@ src_unpack() {
 	[[ -n ${A} ]] && unpack ${A}
 	cd "${S}"
 
-	# for all linguas do:
+	# for all l10n do:
 	if [[ -n ${A} ]]; then
-		for LNG in ${LINGUAS}; do
+		for LNG in ${MY_LANGS}; do
 			einfo "Processing ${LNG} localization"
 			DIR="kde-l10n-${LNG}-4.4.5"
 

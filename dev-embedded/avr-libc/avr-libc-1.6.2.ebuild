@@ -11,9 +11,9 @@ DOCS_PV="1.6.2"
 
 DESCRIPTION="C library for Atmel AVR microcontrollers"
 HOMEPAGE="http://www.nongnu.org/avr-libc/"
-SRC_URI="http://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
-	http://savannah.nongnu.org/download/avr-libc/${PN}-manpages-${DOCS_PV}.tar.bz2
-	doc? ( http://savannah.nongnu.org/download/avr-libc/${PN}-user-manual-${DOCS_PV}.tar.bz2 )"
+SRC_URI="https://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
+	https://savannah.nongnu.org/download/avr-libc/${PN}-manpages-${DOCS_PV}.tar.bz2
+	doc? ( https://savannah.nongnu.org/download/avr-libc/${PN}-user-manual-${DOCS_PV}.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0"

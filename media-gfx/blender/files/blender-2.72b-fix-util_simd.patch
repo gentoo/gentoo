@@ -1,0 +1,10 @@
+--- a/intern/cycles/util/util_simd.h	2014-10-20 12:58:22.000000000 +0500
++++ b/intern/cycles/util/util_simd.h	2015-05-17 11:57:37.000000000 +0500
+@@ -19,6 +19,7 @@
+ #define __UTIL_SIMD_TYPES_H__
+ 
+ #include <limits>
++#include <x86intrin.h>
+ 
+ #include "util_debug.h"
+ #include "util_types.h"

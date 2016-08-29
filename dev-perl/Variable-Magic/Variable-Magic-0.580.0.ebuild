@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Associate user-defined magic to variables from Perl"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc x86 ~ppc-aix ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc x86 ~ppc-aix ~x64-macos"
 IUSE="test"
 
 RDEPEND="
@@ -23,8 +23,6 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 

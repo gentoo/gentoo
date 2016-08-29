@@ -5,10 +5,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>joker@gentoo.org</email>
-		<name>Christian Birchinger</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">mupen64plus/mupen64plus-input-sdl</remote-id>
 	</upstream>

@@ -1,28 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="de_DE fr_FR hu it tr zh_CN"
+PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo pax-utils l10n
-
-BACKPORTS=
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
 	inherit git-2
 	SRC_URI=""
 else
-	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2
-	${BACKPORTS:+
-		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -30,7 +25,7 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
+IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt glusterfs \
 gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
@@ -70,8 +65,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # Older versions of gnutls are supported, but it's simpler to just require
 # the latest versions.  This is also why we require nettle.
+#
+# TODO: Split out tools deps into another var.  e.g. bzip2 is only used by
+# system binaries and tools, not user binaries.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
+	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	xattr? ( sys-apps/attr[static-libs(+)] )"
 SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
@@ -84,8 +83,8 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
-		dev-libs/nettle[static-libs(+)]
-		>=net-libs/gnutls-3.0[static-libs(+)]
+		dev-libs/nettle:=[static-libs(+)]
+		>=net-libs/gnutls-3.0:=[static-libs(+)]
 	)
 	gtk? (
 		gtk2? (
@@ -97,9 +96,9 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 			vte? ( x11-libs/vte:2.90 )
 		)
 	)
-	infiniband? ( sys-infiniband/librdmacm:=[static-libs(+)] )
+	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
 	iscsi? ( net-libs/libiscsi )
-	jpeg? ( virtual/jpeg:=[static-libs(+)] )
+	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	ncurses? ( sys-libs/ncurses:0=[static-libs(+)] )
 	nfs? ( >=net-fs/libnfs-1.9.3[static-libs(+)] )
@@ -332,10 +331,8 @@ src_prepare() {
 		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
 		Makefile Makefile.target || die
 
-	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
-	[[ -n ${BACKPORTS} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
-			epatch
+	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
+	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
@@ -399,6 +396,7 @@ qemu_src_configure() {
 	conf_opts+=(
 		$(conf_softmmu accessibility brlapi)
 		$(conf_softmmu aio linux-aio)
+		$(conf_softmmu bzip2)
 		$(conf_softmmu bluetooth bluez)
 		$(conf_softmmu caps cap-ng)
 		$(conf_softmmu curl)
@@ -469,6 +467,7 @@ qemu_src_configure() {
 			--disable-linux-user
 			--disable-system
 			--disable-blobs
+			$(use_enable bzip2)
 		)
 		static_flag="static"
 		;;
@@ -558,7 +557,6 @@ src_test() {
 qemu_python_install() {
 	python_domodule "${S}/scripts/qmp/qmp.py"
 
-	python_doscript "${S}/scripts/kvm/kvm_stat"
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
 	python_doscript "${S}/scripts/qmp/qemu-ga-client"

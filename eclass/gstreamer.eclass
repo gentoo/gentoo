@@ -26,7 +26,7 @@
 inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	0|1|2|3|4)
 		die "EAPI=\"${EAPI:-0}\" is not supported anymore"

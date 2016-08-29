@@ -18,7 +18,7 @@ SRC_URI="http://gforge.inria.fr/frs/download.php/${DID}/${MYP}.tar.gz"
 
 LICENSE="CeCILL-2"
 SLOT="0/${SOVER}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi static-libs tools threads"
 
 DEPEND="

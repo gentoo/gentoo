@@ -5,17 +5,12 @@
     <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
   </maintainer>
-  <maintainer type="person">
-    <email>hasufell@gentoo.org</email>
-    <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
-  </maintainer>
 <!-- 
 Please note that this list is shared between the following packages:
 dev-db/mysql
 dev-db/mariadb
 -->
 <use>
-  <flag name="client-libs">Build the libmysqlclient libraries</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
   <flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
@@ -31,7 +26,6 @@ dev-db/mariadb
   <flag name="sphinx">Add suport for the sphinx full-text search engine</flag>
   <flag name="test">Install upstream testsuites for end use.</flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
-  <flag name="tools">Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>

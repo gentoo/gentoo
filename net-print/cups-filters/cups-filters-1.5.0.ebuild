@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ else
 	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~m68k-mint"
 fi
 DESCRIPTION="Cups PDF filters"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdfasstandardprintjobformat"
+HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/pdf_as_standard_print_job_format"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
@@ -61,7 +61,7 @@ src_configure() {
 		$(use_with png) \
 		$(use_with tiff) \
 		--with-rcdir=no \
- 		--with-browseremoteprotocols=DNSSD,CUPS \
+		--with-browseremoteprotocols=DNSSD,CUPS \
 		--without-php
 }
 

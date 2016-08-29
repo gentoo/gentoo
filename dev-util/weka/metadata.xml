@@ -11,10 +11,4 @@
 	<upstream>
 		<remote-id type="sourceforge">weka</remote-id>
 	</upstream>
-	<use>
-		<flag name="svm">
-			Enable support for Support Vector Machines (SVM)
-			through sci-libs/libsvm
-		</flag>
-	</use>
 </pkgmetadata>

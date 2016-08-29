@@ -7,6 +7,7 @@ EAPI=5
 KDE_LINGUAS="bs ca ca@valencia da de el en_GB es et fi fr gl hu it kk nb nds nl
 pl pt pt_BR ru sk sl sv th tr uk zh_CN zh_TW"
 VIRTUALX_REQUIRED="test"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Integrated Development Environment, supporting KDE/Qt, C/C++ and much more"
@@ -14,7 +15,7 @@ LICENSE="GPL-2 LGPL-2"
 IUSE="+cmake +cxx debug +gdbui okteta qthelp"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DEPEND="

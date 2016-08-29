@@ -10,7 +10,7 @@ HOMEPAGE="http://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~ppc x86 ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ppc x86 ~arm-linux ~x86-linux"
 SLOT="0"
 
 # upower USE flag is enabled by default in the desktop profile

@@ -1,0 +1,25 @@
+From 717df8c2088087ea4bce870400a2c99b36b0e53d Mon Sep 17 00:00:00 2001
+From: Robert Kern <rkern@enthought.com>
+Date: Mon, 21 Dec 2015 19:25:51 +0000
+Subject: [PATCH] BUG: fix name from copypasta.
+
+Fixes #43
+
+Thanks, @anntzer!
+---
+ line_profiler.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/line_profiler.py b/line_profiler.py
+index 4480c7b..aac01c8 100755
+--- a/line_profiler.py
++++ b/line_profiler.py
+@@ -303,7 +303,7 @@ def magic_lprun(self, parameter_s=''):
+             mod = __import__(modname, fromlist=[''])
+             profile.add_module(mod)
+         except Exception as e:
+-            raise UsageError('Could not find module %r.\n%s: %s' % (name,
++            raise UsageError('Could not find module %r.\n%s: %s' % (modname,
+                 e.__class__.__name__, e))
+ 
+     # Add the profiler to the builtins for @profile.

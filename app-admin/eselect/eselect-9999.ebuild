@@ -15,12 +15,7 @@ LICENSE="GPL-2+ || ( GPL-2+ CC-BY-SA-2.5 )"
 SLOT="0"
 IUSE="doc emacs vim-syntax"
 
-RDEPEND="sys-apps/sed
-	|| (
-		sys-apps/coreutils
-		sys-freebsd/freebsd-bin
-		app-misc/realpath
-	)"
+RDEPEND="sys-apps/sed"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/docutils )"
 RDEPEND="${RDEPEND}

@@ -25,7 +25,7 @@ RDEPEND=">=app-crypt/gpgme-1
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	nls? ( sys-devel/gettext )
-	dev-libs/boost"
+	dev-libs/boost:="
 
 src_prepare() {
 	local licq_plugins="auto-reply icq rms"

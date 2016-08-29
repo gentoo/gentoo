@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,8 @@ IUSE="debug doc ipv6 static-libs"
 DOCS="NEWS README ChangeLog"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-suse.patch
+	epatch "${FILESDIR}"/${P}-suse.patch \
+		"${FILESDIR}"/${P}-docs-install.patch
 
 	# fix tests
 	chmod +x ixml/test/test_document.sh || die

@@ -1,0 +1,89 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marc-Andre Lureau <marcandre.lureau@redhat.com>
+Date: Thu, 17 Dec 2015 18:13:47 +0100
+Subject: [PATCH] smartcard: add a ref to item before adding to pipe
+
+There is an unref when the message is sent.
+
+==17204== ERROR: AddressSanitizer: heap-use-after-free on address 0x6008000144a8 at pc 0x7fffee0ce245 bp 0x7fffffffc630 sp 0x7fffffffc620
+READ of size 4 at 0x6008000144a8 thread T0
+    #0 0x7fffee0ce244 in smartcard_unref_vsc_msg_item /home/elmarco/src/spice/spice/server/smartcard.c:608
+    #1 0x7fffee0cb451 in smartcard_unref_msg_to_client /home/elmarco/src/spice/spice/server/smartcard.c:178
+    #2 0x7fffedfcdf14 in spice_char_device_read_from_device /home/elmarco/src/spice/spice/server/char-device.c:330
+    #3 0x7fffedfd1763 in spice_char_device_wakeup /home/elmarco/src/spice/spice/server/char-device.c:901
+    #4 0x7fffee05da98 in spice_server_char_device_wakeup /home/elmarco/src/spice/spice/server/reds.c:2990
+    #5 0x55555593fa34 in spice_chr_write /home/elmarco/src/qemu/spice-qemu-char.c:189
+    #6 0x5555559375f1 in qemu_chr_fe_write /home/elmarco/src/qemu/qemu-char.c:220
+    #7 0x555555b3b682 in ccid_card_vscard_send_msg.isra.2 /home/elmarco/src/qemu/hw/usb/ccid-card-passthru.c:76
+    #8 0x555555b3c466 in ccid_card_vscard_send_error /home/elmarco/src/qemu/hw/usb/ccid-card-passthru.c:91
+    #9 0x555555b3c466 in ccid_card_vscard_handle_message /home/elmarco/src/qemu/hw/usb/ccid-card-passthru.c:242
+    #10 0x555555b3c466 in ccid_card_vscard_read /home/elmarco/src/qemu/hw/usb/ccid-card-passthru.c:289
+    #11 0x55555593f169 in vmc_write /home/elmarco/src/qemu/spice-qemu-char.c:41
+    #12 0x7fffedfcee6d in spice_char_device_write_to_device /home/elmarco/src/spice/spice/server/char-device.c:477
+    #13 0x7fffedfcfd31 in spice_char_device_write_buffer_add /home/elmarco/src/spice/spice/server/char-device.c:629
+    #14 0x7fffee0ce9df in smartcard_channel_write_to_reader /home/elmarco/src/spice/spice/server/smartcard.c:675
+    #15 0x7fffee0cc7db in smartcard_char_device_notify_reader_add /home/elmarco/src/spice/spice/server/smartcard.c:341
+    #16 0x7fffee0ce4f3 in smartcard_add_reader /home/elmarco/src/spice/spice/server/smartcard.c:648
+    #17 0x7fffee0cf2e2 in smartcard_channel_handle_message /home/elmarco/src/spice/spice/server/smartcard.c:763
+    #18 0x7fffedffe21f in red_peer_handle_incoming /home/elmarco/src/spice/spice/server/red-channel.c:307
+    #19 0x7fffedffe4f6 in red_channel_client_receive /home/elmarco/src/spice/spice/server/red-channel.c:325
+    #20 0x7fffee00726c in red_channel_client_event /home/elmarco/src/spice/spice/server/red-channel.c:1566
+    #21 0x555555c3c53d in qemu_iohandler_poll /home/elmarco/src/qemu/iohandler.c:143
+    #22 0x555555c3b800 in main_loop_wait /home/elmarco/src/qemu/main-loop.c:504
+    #23 0x5555556f160c in main_loop /home/elmarco/src/qemu/vl.c:1818
+    #24 0x5555556f160c in main /home/elmarco/src/qemu/vl.c:4394
+    #25 0x7fffed7d0b14 in __libc_start_main /usr/src/debug/glibc-2.17-c758a686/csu/libc-start.c:274
+    #26 0x5555556f9c20 in _start (/home/elmarco/src/qemu/x86_64-softmmu/qemu-system-x86_64+0x1a5c20)
+0x6008000144a8 is located 24 bytes inside of 40-byte region [0x600800014490,0x6008000144b8)
+freed by thread T0 here:
+    #0 0x7ffff4e61009 in __interceptor_free /usr/src/debug/gcc-4.8.5-20150702/obj-x86_64-redhat-linux/x86_64-redhat-linux/libsanitizer/asan/../../../../libsanitizer/asan/asan_malloc_linux.cc:61
+    #1 0x7fffee0ce2a1 in smartcard_unref_vsc_msg_item /home/elmarco/src/spice/spice/server/smartcard.c:610
+    #2 0x7fffee0cdd58 in smartcard_channel_release_pipe_item /home/elmarco/src/spice/spice/server/smartcard.c:548
+    #3 0x7fffee000668 in red_channel_client_release_item /home/elmarco/src/spice/spice/server/red-channel.c:602
+    #4 0x7fffee0006ef in red_channel_client_release_sent_item /home/elmarco/src/spice/spice/server/red-channel.c:609
+    #5 0x7fffee0007b5 in red_channel_peer_on_out_msg_done /home/elmarco/src/spice/spice/server/red-channel.c:620
+    #6 0x7fffedffed7e in red_peer_handle_outgoing /home/elmarco/src/spice/spice/server/red-channel.c:385
+    #7 0x7fffee0057bb in red_channel_client_send /home/elmarco/src/spice/spice/server/red-channel.c:1294
+    #8 0x7fffee0076e6 in red_channel_client_begin_send_message /home/elmarco/src/spice/spice/server/red-channel.c:1605
+    #9 0x7fffee0cdccd in smartcard_channel_send_item /home/elmarco/src/spice/spice/server/smartcard.c:541
+    #10 0x7fffee000570 in red_channel_client_send_item /home/elmarco/src/spice/spice/server/red-channel.c:588
+    #11 0x7fffee005bfb in red_channel_client_push /home/elmarco/src/spice/spice/server/red-channel.c:1347
+    #12 0x7fffee007ef7 in red_channel_client_pipe_add_push /home/elmarco/src/spice/spice/server/red-channel.c:1673
+    #13 0x7fffee0cde4d in smartcard_channel_client_pipe_add_push /home/elmarco/src/spice/spice/server/smartcard.c:571
+    #14 0x7fffee0cb567 in smartcard_send_msg_to_client /home/elmarco/src/spice/spice/server/smartcard.c:187
+    #15 0x7fffedfcdba2 in spice_char_device_send_msg_to_clients /home/elmarco/src/spice/spice/server/char-device.c:282
+    #16 0x7fffedfcdea4 in spice_char_device_read_from_device /home/elmarco/src/spice/spice/server/char-device.c:329
+    #17 0x7fffedfd1763 in spice_char_device_wakeup /home/elmarco/src/spice/spice/server/char-device.c:901
+    #18 0x7fffee05da98 in spice_server_char_device_wakeup /home/elmarco/src/spice/spice/server/reds.c:2990
+    #19 0x55555593fa34 in spice_chr_write /home/elmarco/src/qemu/spice-qemu-char.c:189
+
+Signed-off-by: Marc-Andre Lureau <marcandre.lureau@redhat.com>
+---
+ server/smartcard.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/server/smartcard.c b/server/smartcard.c
+index aad22aa..8d529fe 100644
+--- a/server/smartcard.c
++++ b/server/smartcard.c
+@@ -172,14 +172,17 @@ static void smartcard_unref_msg_to_client(SpiceCharDeviceMsgToClient *msg,
+     smartcard_unref_vsc_msg_item((MsgItem *)msg);
+ }
+ 
+-static void smartcard_send_msg_to_client(SpiceCharDeviceMsgToClient *msg,
++static void smartcard_send_msg_to_client(SpiceCharDeviceMsgToClient *message,
+                                          RedClient *client,
+                                          void *opaque)
+ {
+     SmartCardDeviceState *dev = opaque;
+-    spice_assert(dev->scc && dev->scc->base.client == client);
+-    smartcard_channel_client_pipe_add_push(&dev->scc->base, &((MsgItem *)msg)->base);
++    MsgItem *msg = (MsgItem *)message;
++    PipeItem *item = &msg->base;
+ 
++    spice_assert(dev->scc && dev->scc->base.client == client);
++    smartcard_ref_vsc_msg_item(msg);
++    smartcard_channel_client_pipe_add_push(&dev->scc->base, item);
+ }
+ 
+ static void smartcard_send_tokens_to_client(RedClient *client, uint32_t tokens, void *opaque)

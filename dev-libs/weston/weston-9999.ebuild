@@ -29,23 +29,24 @@ LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
 IUSE_VIDEO_CARDS="video_cards_intel video_cards_v4l"
-IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi lcms rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor +X xwayland ${IUSE_VIDEO_CARDS}"
+IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg lcms rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland ${IUSE_VIDEO_CARDS}"
 
 REQUIRED_USE="
 	drm? ( gles2 )
 	screen-sharing? ( rdp )
+	systemd? ( dbus )
 	test? ( X )
 	wayland-compositor? ( gles2 )
 "
 
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
-	>=dev-libs/wayland-1.9.90
-	>=dev-libs/wayland-protocols-1.0
+	>=dev-libs/wayland-1.10.0
+	>=dev-libs/wayland-protocols-1.2
 	lcms? ( media-libs/lcms:2 )
 	media-libs/libpng:0=
-	media-libs/libwebp:0=
-	virtual/jpeg:0=
+	webp? ( media-libs/libwebp:0= )
+	jpeg? ( virtual/jpeg:0= )
 	>=x11-libs/cairo-1.11.3
 	>=x11-libs/libdrm-2.4.30
 	x11-libs/libxkbcommon
@@ -127,10 +128,14 @@ src_configure() {
 		$(use_enable resize-optimization) \
 		$(use_enable screen-sharing) \
 		$(use_enable suid setuid-install) \
+		$(use_enable systemd systemd-login) \
+		$(use_enable systemd systemd-notify) \
 		$(use_enable xwayland) \
 		$(use_enable xwayland xwayland-test) \
 		$(use_enable video_cards_intel simple-dmabuf-intel-client) \
 		$(use_enable video_cards_v4l simple-dmabuf-v4l-client) \
+		$(use_with jpeg) \
+		$(use_with webp) \
 		${myconf}
 }
 

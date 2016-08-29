@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="test"
+
+# They miserably fail.
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -36,7 +39,7 @@ python_test() {
 }
 
 python_install_all() {
-	doman man/ansi2html.1
-	DOCS=(  README.rst man/ansi2html.1.txt )
+	doman man/"${PN}.1"
+	DOCS=(  README.rst man/"${PN}".1.txt )
 	distutils-r1_python_install_all
 }

@@ -1,0 +1,11 @@
+--- gkrellm-2.3.7/Makefile
++++ gkrellm-2.3.7/Makefile
+@@ -131,7 +131,7 @@
+ 	(cd server && ${MAKE} gkrellmd)
+ 
+ gkrellm.pc: Makefile
+-	echo 'prefix=$(INSTALLROOT)\n'\
++	printf 'prefix=$(INSTALLROOT)\n'\
+ 	'Name: GKrellM\n'\
+ 	'Description: Extensible GTK system monitoring application\n'\
+ 	'Version: $(VERSION)\n'\

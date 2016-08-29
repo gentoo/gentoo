@@ -30,12 +30,12 @@ DEPEND="${RDEPEND}
 "
 #	>=dev-python/pyparsing-2.0.6[${PYTHON_USEDEP}]
 PDEPEND="
-	>=dev-python/certifi-2015.11.20[${PYTHON_USEDEP}]"
+	>=dev-python/certifi-2016.2.28[${PYTHON_USEDEP}]"
 
 # Force in-source build because build system modifies sources.
 DISTUTILS_IN_SOURCE_BUILD=1
 
-DOCS=( README.txt docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
+DOCS=( README.rst docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
 python_prepare_all() {
 #	rm -r ./pkg_resources/_vendor || die

@@ -1,0 +1,90 @@
+From e5663f7b7bd506b7af2ee7ab2e68722ade1f2a03 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 28 Aug 2016 16:06:09 -0400
+Subject: [PATCH 1/1] autotools: fix --with-ssl option and respect
+ {C,CPP,LD}FLAGS.
+
+Patch the build system to support LDFLAGS. This is a new revision of
+an existing Gentoo patch that made the build system support CFLAGS,
+and incorporates binki's patch from our bugzilla to add CPPFLAGS
+support.
+
+The --with-ssl option is also fixed in configure.in (it was
+missing a dash).
+
+Gentoo-Bug: 338181
+---
+ Makefile.in  | 32 +++++++++++++++++++++-----------
+ configure.in |  2 +-
+ 2 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index b7c9733..f28a355 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,28 +1,38 @@
+ LIBS=@LIBS@
+-CFLAGS=-O3 -Wall -include config.h
++CFLAGS=@CFLAGS@ -Wall
++CPPFLAGS = -include config.h @CPPFLAGS@
+ CC=@CC@
+ 
+-ALL: bnc mkpasswd
++DESTDIR     =
++prefix      = @prefix@
++exec_prefix = @exec_prefix@
++bindir      = @bindir@
++
++all ALL: bnc mkpasswd
++
++install: bnc mkpasswd
++	install -m 755 -d $(DESTDIR)$(bindir)
++	install -m 755 bnc mkpasswd bncchk bncsetup $(DESTDIR)$(bindir)
+ 
+ mkpasswd:mkpasswd.c
+-	${CC} ${CFLAGS} -o mkpasswd mkpasswd.c ${LIBS} 
++	${CC} ${CFLAGS} -o mkpasswd mkpasswd.c ${LIBS} ${LDFLAGS}
+ bnc: bnc.o conf.o server.o cmds.o ctcp.o send.o sbuf.o Makefile
+-	${CC} -o bnc bnc.o conf.o server.o cmds.o ctcp.o sbuf.o send.o ${LIBS}
++	${CC} -o bnc bnc.o conf.o server.o cmds.o ctcp.o sbuf.o send.o ${LIBS} ${LDFLAGS}
+ 
+ bnc.o: config.h struct.h bnc.c Makefile
+-	${CC} ${CFLAGS} -c bnc.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c bnc.c
+ conf.o: config.h struct.h conf.c Makefile
+-	${CC} ${CFLAGS} -c conf.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c conf.c
+ cmds.o: config.h struct.h cmds.c Makefile
+-	${CC} ${CFLAGS} -c cmds.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c cmds.c
+ ctcp.o: config.h ctcp.c Makefile
+-	${CC} ${CFLAGS} -c ctcp.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c ctcp.c
+ server.o: config.h struct.h server.c Makefile
+-	${CC} ${CFLAGS} -c server.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c server.c
+ send.o: send.c send.h Makefile
+-	${CC} ${CFLAGS} -c send.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c send.c
+ sbuf.o: sbuf.c
+-	${CC} ${CFLAGS} -c sbuf.c
++	${CC} ${CPPFLAGS} ${CFLAGS} -c sbuf.c
+ 
+ clean:
+ 	rm -rf *.o *~ core bnc mkpasswd
+diff --git a/configure.in b/configure.in
+index be17af3..3552eb1 100644
+--- a/configure.in
++++ b/configure.in
+@@ -35,7 +35,7 @@ AC_CHECK_LIB(crypt, crypt, LIBS="$LIBS -lcrypt",)
+ dnl Check for SSL support.
+ AC_MSG_CHECKING(whether to enable SSL support)
+ AC_ARG_WITH(ssl,
+-[  -with-ssl              Enable SSL support],
++[  --with-ssl              Enable SSL support],
+ [ case "$withval" in
+     yes)
+       AC_MSG_RESULT(yes)
+-- 
+2.7.3
+

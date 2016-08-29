@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit gnome2
 DESCRIPTION="C++ bindings for gtksourceview"
 HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
 
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 SLOT="3.0"
 LICENSE="LGPL-2.1"

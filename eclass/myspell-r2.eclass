@@ -26,7 +26,7 @@ EXPORT_FUNCTIONS src_unpack src_install
 # @ECLASS-VARIABLE: MYSPELL_THES
 # @DESCRIPTION:
 # Array variable containing list of all thesarus files.
-# MYSPELL_HYPH=( "file.dat" "dir/file2.idx" )
+# MYSPELL_THES=( "file.dat" "dir/file2.idx" )
 
 # Basically no extra deps needed.
 # Unzip is required for .oxt libreoffice extensions
@@ -64,7 +64,7 @@ myspell-r2_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local x target
-	
+
 	# Following the debian directory layout here.
 	# DICT: /usr/share/hunspell
 	# THES: /usr/share/mythes

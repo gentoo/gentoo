@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
-IUSE="bounds-checking debug portable cpu_flags_x86_sse4_1 +unsafe-tricks"
+IUSE="bounds-checking portable cpu_flags_x86_sse4_1 +unsafe-tricks"
 
 RDEPEND="dev-haskell/primitive:=[profile?]
 	>=dev-haskell/vector-0.7:=[profile?] <dev-haskell/vector-0.12:=[profile?]
@@ -30,7 +30,6 @@ DEPEND="${RDEPEND}
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag bounds-checking bounds-checking) \
-		$(cabal_flag debug debug) \
 		$(cabal_flag portable portable) \
 		$(cabal_flag cpu_flags_x86_sse4_1 sse41) \
 		$(cabal_flag unsafe-tricks unsafe-tricks)

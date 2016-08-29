@@ -45,11 +45,7 @@ RDEPEND="
 	utils? (
 		${PYTHON_DEPS}
 		>=dev-util/gdbus-codegen-${PV}[${PYTHON_USEDEP}]
-		|| (
-			>=dev-libs/elfutils-0.142
-			>=dev-libs/libelf-0.8.12
-			>=sys-freebsd/freebsd-lib-9.2_rc1
-		)
+		virtual/libelf:0=
 	)
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20130224-r9

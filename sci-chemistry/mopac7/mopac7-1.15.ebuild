@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Autotooled, updated version of a powerful, fast semi-empirical package"
-HOMEPAGE="http://sourceforge.net/projects/mopac7/"
+HOMEPAGE="https://sourceforge.net/projects/mopac7/"
 SRC_URI="
 	http://www.bioinformatics.org/ghemical/download/current/${P}.tar.gz
 	http://wwwuser.gwdg.de/~ggroenh/qmmm/mopac/dcart.f

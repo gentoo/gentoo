@@ -6,9 +6,8 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE="sqlite,xml"
-PLOCALES="cs de en es fr it pt ru tr zh_CN"
 
-inherit eutils l10n python-single-r1
+inherit eutils python-single-r1
 
 DESCRIPTION="A full featured Python IDE using PyQt4 and QScintilla"
 HOMEPAGE="http://eric-ide.python-projects.org/"
@@ -19,14 +18,17 @@ MY_P=${PN}${SLOT}-${MY_PV}
 
 BASE_URI="mirror://sourceforge/eric-ide/${PN}${SLOT}/stable/${MY_PV}"
 SRC_URI="${BASE_URI}/${MY_P}.tar.gz"
-for L in ${PLOCALES}; do
-	SRC_URI+=" linguas_${L}? ( ${BASE_URI}/${PN}${SLOT}-i18n-${L/zh_CN/zh_CN.GB2312}-${MY_PV}.tar.gz )"
-done
-unset L
 
 LICENSE="GPL-3"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
+
+PLOCALES="cs de en es fr it pt ru tr zh-CN"
+for L in ${PLOCALES}; do
+	SRC_URI+=" l10n_${L}? ( ${BASE_URI}/${PN}${SLOT}-i18n-${L/zh-CN/zh_CN.GB2312}-${MY_PV}.tar.gz )"
+	IUSE+=" l10n_${L}"
+done
+unset L
 
 DEPEND="
 	${PYTHON_DEPS}

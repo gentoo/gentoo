@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="NAST - Network Analyzer Sniffer Tool"
-HOMEPAGE="http://sourceforge.net/projects/nast.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/nast.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"

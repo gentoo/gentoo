@@ -9,6 +9,7 @@
     <flag name="cdr">Enable support for CorelDRAW Diagrams</flag>
     <flag name="dia">pull in <pkg>app-office/dia</pkg> for dia import extension</flag>
     <flag name="inkjar">Enable support for OpenOffice.org SVG jar files</flag>
+    <flag name="latex">pull in dependencies for LaTeX formulas</flag>
     <flag name="visio">Enable support for Microsoft Visio Diagrams</flag>
     <flag name="wpg">Enable support for WordPerfect Graphics</flag>
   </use>

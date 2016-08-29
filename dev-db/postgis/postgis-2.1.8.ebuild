@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ RDEPEND="
 		dev-libs/libxml2:2
 		>=sci-libs/geos-3.4.2
 		>=sci-libs/proj-4.6.0
-		>=sci-libs/gdal-1.10.0
+		>=sci-libs/gdal-1.10.0:=
 		gtk? ( x11-libs/gtk+:2 )
 "
 

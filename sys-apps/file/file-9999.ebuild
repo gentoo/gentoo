@@ -18,13 +18,17 @@ else
 fi
 
 DESCRIPTION="identify a file's format by scanning binary data for patterns"
-HOMEPAGE="http://www.darwinsys.com/file/"
+HOMEPAGE="http://www.darwinsys.com/file/ http://mx.gw.com/pipermail/file/"
 
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
 
-DEPEND="python? ( ${PYTHON_DEPS} )
+DEPEND="
+	python? (
+		${PYTHON_DEPS}
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
@@ -39,10 +43,10 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
-	ac_cv_header_zlib_h=$(usex zlib) \
-	ac_cv_lib_z_gzopen=$(usex zlib)
 	econf \
-		$(use_enable static-libs static)
+		--enable-fsect-man5 \
+		$(use_enable static-libs static) \
+		$(use_enable zlib)
 }
 
 src_configure() {
@@ -73,7 +77,9 @@ multilib_src_compile() {
 	if multilib_is_native_abi ; then
 		emake
 	else
-		emake -C src libmagic.la
+		cd src
+		emake magic.h #586444
+		emake libmagic.la
 	fi
 }
 

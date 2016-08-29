@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ RDEPEND="
 	emacs? ( virtual/emacs )
 	fastjet? ( sci-physics/fastjet:0= )
 	hepmc? ( sci-physics/hepmc:0= )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.5:* )
 	lhapdf? ( sci-physics/lhapdf:0= )
 	rivet? ( sci-physics/rivet:0= )
 	zlib? ( sys-libs/zlib:0= )"

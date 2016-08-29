@@ -1,0 +1,11 @@
+--- a/lib/dpkg/path-remove.c
++++ b/lib/dpkg/path-remove.c
+@@ -28,6 +28,8 @@
+ #include <errno.h>
+ #include <unistd.h>
+ 
++#include <string.h> /* strerror() */
++
+ #include <dpkg/i18n.h>
+ #include <dpkg/dpkg.h>
+ #include <dpkg/path.h>

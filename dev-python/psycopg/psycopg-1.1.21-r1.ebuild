@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,8 +66,7 @@ src_install () {
 	dodoc RELEASE-1.0 SUCCESS doc/python-taylor.txt
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r doc/examples/.
-		docompress -x "${INSDESTTREE}"
+		dodoc -r doc/examples
+		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

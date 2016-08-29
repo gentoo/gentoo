@@ -24,5 +24,12 @@ RDEPEND=">=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
-	test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.3 )
+	test? ( >=dev-haskell/hunit-1.2 )
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-ghc-7.10.patch
+
+	cabal_chdeps \
+		'HUnit >= 1.2 && < 1.3' 'HUnit >= 1.2'
+}

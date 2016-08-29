@@ -10,6 +10,7 @@
   <use>
     <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> as crypto backend</flag>
     <flag name="polarssl">Use <pkg>net-libs/polarssl</pkg> as crypto backend</flag>
+	<flag name="system-libs">Use system libraries instead of the ones included in the upstream distribution</flag>
   </use>
   <upstream>
     <remote-id type="github">shadowsocks/shadowsocks-libev</remote-id>

@@ -1,0 +1,12 @@
+diff --git a/testsrc/TestInfrastructure.hs b/testsrc/TestInfrastructure.hs
+index f4d574e..d427495 100644
+--- a/testsrc/TestInfrastructure.hs
++++ b/testsrc/TestInfrastructure.hs
+@@ -76,2 +76,3 @@ instance (CoArbitrary i) => CoArbitrary (FM.FMList i) where
+ 
++#if ! MIN_VERSION_QuickCheck(2,8,2)
+ instance (Arbitrary i) => Arbitrary (S.Seq i) where
+@@ -85,2 +86,3 @@ instance (CoArbitrary i) => CoArbitrary (S.Seq i) where
+     coarbitrary l = coarbitrary (LL.toList l)
++#endif
+ 

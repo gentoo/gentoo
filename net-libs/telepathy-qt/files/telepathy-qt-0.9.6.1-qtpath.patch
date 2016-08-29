@@ -8,8 +8,8 @@ is necessary to find the correct version explicitly.
 
 Once qmake is found, it is queried for the correct location of all other items.
 
---- cmake/modules/FindQt.cmake
-+++ cmake/modules/FindQt.cmake
+--- a/cmake/modules/FindQt.cmake
++++ b/cmake/modules/FindQt.cmake
 @@ -19,7 +19,7 @@
  IF(NOT QT5_INSTALLED)
      IF(NOT QT_QMAKE_EXECUTABLE)

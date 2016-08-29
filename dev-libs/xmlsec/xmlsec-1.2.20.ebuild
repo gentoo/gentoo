@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND=">=dev-libs/libxml2-2.7.4
 		>=dev-libs/nspr-4.4.1
 		>=dev-libs/nss-3.9
 	)
-	openssl? ( >=dev-libs/openssl-0.9.7 )"
+	openssl? ( >=dev-libs/openssl-0.9.7:* )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

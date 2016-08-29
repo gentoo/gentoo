@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://x-stream.github.io"
 SRC_URI="http://central.maven.org/maven2/com/thoughtworks/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 CDEPEND="
 	dev-java/kxml:2
@@ -48,7 +48,7 @@ JAVA_GENTOO_CLASSPATH="
 	joda-time"
 
 # Two drivers for two very old implementations of StAX.
-# StAX has been last-rited from Gentoo as it is now part of the Java 6 JDK. 
+# StAX has been last-rited from Gentoo as it is now part of the Java 6 JDK.
 # See bug 561504. These drivers rely on ancient APIs that aren't maintained
 # upstream and may contain security holes.
 JAVA_RM_FILES=(

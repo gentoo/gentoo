@@ -1,5 +1,5 @@
---- accelerator.py
-+++ accelerator.py
+--- a/accelerator.py
++++ b/accelerator.py
 @@ -274,7 +274,7 @@
  	glColorMaterial(GL_FRONT,GL_AMBIENT_AND_DIFFUSE)
  	glMaterialfv(GL_FRONT,GL_SHININESS,128)

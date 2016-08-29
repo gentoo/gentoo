@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,8 +11,8 @@ inherit eutils versionator
 # http://snowball.tartarus.org/dist/libstemmer_c.tgz.
 PVDATE=$(get_after_major_version)
 
-DESCRIPTION="This contains all you need to include the snowball stemming algorithms into a C project of your own"
-HOMEPAGE="http://snowball.tartarus.org/download.php"
+DESCRIPTION="All you need to include the snowball stemming algorithms into a C project"
+HOMEPAGE="https://snowballstem.org/"
 SRC_URI="https://dev.gentoo.org/~graaff/libstemmer_c-${PVDATE}.tgz"
 
 # This will probably be different if this ebuild ends up being used for both

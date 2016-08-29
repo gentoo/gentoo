@@ -1,0 +1,42 @@
+taken from upstream
+
+From b807c200016fefa9dc5f588c1a88ce08bb61381c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 16 May 2016 14:01:52 -0400
+Subject: [PATCH] configure: respect --valac option
+
+Make sure we don't still test `valac` when the compiler has been set to
+a specific version/path.
+---
+ configure | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index b0a9277..c66d268 100755
+--- a/configure
++++ b/configure
+@@ -87,10 +87,10 @@ def has_posixvala ():
+ 		print (OKGREEN + 'Using posix profile.' + ENDC)			
+ 	return 'True'
+ 
+-def configure(gtk, libbgee):
++def configure(gtk, libbgee, valac):
+ 	global gee
+ 	
+-	if not test_program_version ('valac', 0, 16, 0):
++	if not test_program_version(valac, 0, 16, 0):
+ 		print (FAIL + 'valac is too old.' + ENDC)
+ 		exit (1)
+ 
+@@ -203,7 +203,7 @@ if not options.nonnull:
+ else:
+ 	options.nonnull = True
+ 	
+-configure(options.gtk, options.gee)
++configure(options.gtk, options.gee, options.valac)
+ 
+ configfile.write_config(options.prefix)
+ configfile.write_compile_parameters(options.prefix,
+-- 
+2.8.2
+

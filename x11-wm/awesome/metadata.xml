@@ -9,10 +9,6 @@
     <email>skrattaren@yandex.ru</email>
     <name>Nikolaj Sjujskij</name>
   </maintainer>
-  <maintainer type="person">
-    <email>wired@gentoo.org</email>
-    <name>Alex Alexander</name>
-  </maintainer>
 <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>

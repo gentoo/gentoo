@@ -73,7 +73,7 @@ index abf1d01..8322bdd 100644
 + * This is here mostly to deal with the fact that on certain systems,
 + * gethostbyname()/getaddrinfo() can return a duplicate 127.0.0.1
 + * for 'localhost'.  See
-+ *   - http://sourceware.org/bugzilla/show_bug.cgi?id=4980
++ *   - https://sourceware.org/bugzilla/show_bug.cgi?id=4980
 + *   - https://bugzilla.redhat.com/show_bug.cgi?id=496300
 + */
 +static int already_bound(const struct sockaddr *addr, socklen_t addrlen) {

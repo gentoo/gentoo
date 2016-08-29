@@ -23,7 +23,7 @@ IUSE="doc examples test"
 
 DEPEND="!dev-python/pmw:0"
 RDEPEND="${DEPEND}"
-# http://sourceforge.net/p/pmw/bugs/39/
+# https://sourceforge.net/p/pmw/bugs/39/
 RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"

@@ -4,30 +4,67 @@
 
 memtest=/boot/memtest86plus/memtest
 
-if [ -f "${memtest}" ]; then
-	device="$("${grub_probe}" --target=device "${memtest}")"
-	path="$(make_system_path_relative_to_its_root "${memtest}")"
+memtestbsd=/boot/memtest86plus/memtest.netbsd
+
+if [ -f "${memtest}" ] && [ -f "${memtestbsd}" ]; then
+	multiple_memtest=true
+fi
+
+submenu_indentation=""
+if [ "x${multiple_memtest}" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
+	submenu_indentation="${grub_tab}"
 	cat <<EOF
-menuentry "Memtest86+" {
-EOF
-	prepare_grub_to_access_device "${device}" | grub_add_tab
-	cat <<EOF
-	linux16 "${path}"
-}
+submenu 'Memtest86+' {
 EOF
 fi
 
-memtest=/boot/memtest86plus/memtest.netbsd
 
 if [ -f "${memtest}" ]; then
+
+	gettext_printf "Found memtest image: %s\n" "${memtest}" >&2
+
 	device="$("${grub_probe}" --target=device "${memtest}")"
 	path="$(make_system_path_relative_to_its_root "${memtest}")"
 	cat <<EOF
-menuentry "Memtest86+ (netbsd)" {
+${submenu_indentation}menuentry 'Memtest86+' {
 EOF
-	prepare_grub_to_access_device "${device}" | grub_add_tab
+
+	if [ "x${submenu_indentation}" != "x" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
 	cat <<EOF
-	knetbsd "${path}"
+	${submenu_indentation}linux16 "${path}"
+${submenu_indentation}}
+EOF
+fi
+
+if [ -f "${memtestbsd}" ]; then
+
+	gettext_printf "Found memtest image: %s\n" "${memtestbsd}" >&2
+
+	device="$("${grub_probe}" --target=device "${memtestbsd}")"
+	path="$(make_system_path_relative_to_its_root "${memtestbsd}")"
+	cat <<EOF
+${submenu_indentation}menuentry 'Memtest86+ (netbsd)' {
+EOF
+
+	if [ "x${submenu_indentation}" != "x" ]; then
+		prepare_grub_to_access_device "${device}" | grub_add_tab | grub_add_tab
+	else
+		prepare_grub_to_access_device "${device}" | grub_add_tab
+	fi
+
+	cat <<EOF
+	${submenu_indentation}knetbsd "${path}"
+${submenu_indentation}}
+EOF
+fi
+
+if [ "x${multiple_memtest}" = xtrue ] && [ "x${GRUB_DISABLE_SUBMENU}" != xy ]; then
+	cat <<EOF
 }
 EOF
 fi

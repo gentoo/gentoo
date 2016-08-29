@@ -16,7 +16,7 @@ index f3ab2f9..c121897 100755
 --- a/initsystems/openrc/ipsec.init.in
 +++ b/initsystems/openrc/ipsec.init.in
 @@ -1,7 +1,5 @@
- #!/sbin/runscript
+ #!/sbin/openrc-run
  
 -PLUTO_OPTS=""
 -

@@ -11,7 +11,7 @@ DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="amd64 ~ppc ~x86"
 else
 	SRC_URI=""
 	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"

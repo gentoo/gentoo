@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
+VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 
 inherit eutils autotools gnome2-utils vala vcs-snapshot

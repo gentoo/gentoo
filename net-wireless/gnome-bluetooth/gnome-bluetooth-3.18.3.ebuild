@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeBluetooth"
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="2/13" # subslot = libgnome-bluetooth soname version
 IUSE="+introspection"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.38:2

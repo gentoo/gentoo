@@ -31,7 +31,7 @@ RDEPEND="
 		dev-libs/libxml2:2
 		>=sci-libs/geos-3.5.0
 		>=sci-libs/proj-4.6.0
-		>=sci-libs/gdal-1.10.0
+		>=sci-libs/gdal-1.10.0:=
 		gtk? ( x11-libs/gtk+:2 )
 "
 

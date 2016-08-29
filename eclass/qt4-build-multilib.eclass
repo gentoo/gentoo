@@ -113,10 +113,13 @@ multilib_src_install_all()	{ qt4_multilib_src_install_all; }
 # @DESCRIPTION:
 # Unpacks the sources.
 qt4-build-multilib_src_unpack() {
-	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ]]; then
-		ewarn
-		ewarn "Using a GCC version lower than 4.4 is not supported."
-		ewarn
+	if tc-is-gcc; then
+		if [[ $(gcc-major-version) -lt 4 ]] || \
+		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ]]; then
+			ewarn
+			ewarn "Using a GCC version lower than 4.4 is not supported"
+			ewarn
+		fi
 	fi
 
 	if [[ ${PN} == qtwebkit ]]; then
@@ -172,7 +175,7 @@ qt4-build-multilib_src_prepare() {
 	if [[ ${PN} == qtdeclarative ]]; then
 		# Bug 551560
 		# gcc-4.8 ICE with -Os, fixed in 4.9
-		if use x86 && [[ $(gcc-version) == 4.8 ]]; then
+		if use x86 && tc-is-gcc && [[ $(gcc-version) == 4.8 ]]; then
 			replace-flags -Os -O2
 		fi
 	fi
@@ -585,9 +588,13 @@ qt4_prepare_env() {
 	QT4_EXAMPLESDIR=${QT4_DATADIR}/examples
 	QT4_DEMOSDIR=${QT4_DATADIR}/demos
 	QT4_SYSCONFDIR=${EPREFIX}/etc/qt4
-	QMAKE_LIBDIR_QT=${QT4_LIBDIR}
 
+	# are these still needed?
+	QMAKE_LIBDIR_QT=${QT4_LIBDIR}
 	export XDG_CONFIG_HOME="${T}"
+
+	# can confuse qmake if set (bug 583352)
+	unset QMAKESPEC
 }
 
 # @FUNCTION: qt4_foreach_target_subdir

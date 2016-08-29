@@ -1,0 +1,71 @@
+diff --git a/org/gudy/azureus2/ui/swt/mainwindow/SWTThread.java b/org/gudy/azureus2/ui/swt/mainwindow/SWTThread.java
+index 256daff..68010b9 100644
+--- a/org/gudy/azureus2/ui/swt/mainwindow/SWTThread.java
++++ b/org/gudy/azureus2/ui/swt/mainwindow/SWTThread.java
+@@ -231,66 +231,6 @@ public class SWTThread {
+ 			}
+ 		});
+ 
+-		if (Constants.isOSX) {
+-			
+-			// On Cocoa, we get a Close trigger on display.  Need to check if all
+-			// platforms send this.
+-			display.addListener(SWT.Close, new Listener() {
+-				public void handleEvent(Event event) {
+-					UIFunctions uiFunctions = UIFunctionsManager.getUIFunctions();
+-					if (uiFunctions != null) {
+-						event.doit = uiFunctions.dispose(false, false);
+-					}
+-				}
+-			});
+-
+-			String platform = SWT.getPlatform();
+-			// use reflection here so we decouple generic SWT from OSX specific stuff to an extent
+-
+-			if (platform.equals("carbon")) {
+-				try {
+-
+-					Class<?> ehancerClass = Class.forName("org.gudy.azureus2.ui.swt.osx.CarbonUIEnhancer");
+-
+-					Constructor<?> constructor = ehancerClass.getConstructor(new Class[] {});
+-
+-					constructor.newInstance(new Object[] {});
+-
+-				} catch (Throwable e) {
+-
+-					Debug.printStackTrace(e);
+-				}
+-			} else if (platform.equals("cocoa")) {
+-				try {
+-
+-					Class<?> ehancerClass = Class.forName("org.gudy.azureus2.ui.swt.osx.CocoaUIEnhancer");
+-
+-					Method mGetInstance = ehancerClass.getMethod("getInstance", new Class[0]);
+-					Object claObj = mGetInstance.invoke(null, new Object[0] );
+-
+-					Method mHookAppMenu = claObj.getClass().getMethod("hookApplicationMenu", new Class[] {});
+-					if (mHookAppMenu != null) {
+-						mHookAppMenu.invoke(claObj, new Object[0]);
+-					}
+-
+-					Method mHookDocOpen = claObj.getClass().getMethod("hookDocumentOpen", new Class[] {});
+-					if (mHookDocOpen != null) {
+-						mHookDocOpen.invoke(claObj, new Object[0]);
+-					}
+-					
+-					Method mIsRetinaDisplay = claObj.getClass().getMethod("isRetinaDisplay");
+-					if (mIsRetinaDisplay != null) {
+-						isRetinaDisplay = (Boolean) mIsRetinaDisplay.invoke(claObj);
+-					}
+-
+-					
+-				} catch (Throwable e) {
+-
+-					Debug.printStackTrace(e);
+-				}
+-			}
+-		}   
+-
+ 		if (app != null) {
+ 			app.runInSWTThread();
+ 			runner = new Thread(new AERunnable() {

@@ -48,10 +48,13 @@ multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
 
 	local myconf=()
+	# acl: libarchive has tight integration with OSX, disabling acl
+	#      breaks the code for it knows it is there and assumes hence is
+	#      enabled
 	myconf=(
 		$(use_enable static-libs static)
 		$(use_enable xattr)
-		$(use_enable acl)
+		$([[ ${CHOST} != *-darwin* ]] && use_enable acl)
 		$(use_with zlib)
 		$(use_with bzip2 bz2lib)
 		$(use_with iconv)

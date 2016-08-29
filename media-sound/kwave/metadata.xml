@@ -13,6 +13,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">kwave</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=6478</bugs-to>
+		<bugs-to>https://sourceforge.net/tracker/?group_id=6478</bugs-to>
 	</upstream>
 </pkgmetadata>

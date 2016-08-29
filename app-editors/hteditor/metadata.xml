@@ -7,7 +7,7 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">hte</remote-id>
-    <bugs-to>http://sourceforge.net/tracker/?group_id=1066</bugs-to>
+    <bugs-to>https://sourceforge.net/tracker/?group_id=1066</bugs-to>
     <remote-id type="github">sebastianbiallas/ht</remote-id>
   </upstream>
 </pkgmetadata>

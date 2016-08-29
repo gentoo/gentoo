@@ -14,7 +14,7 @@ DESCRIPTION="This library facilitates communication between Cura and its backend
 HOMEPAGE="https://github.com/Ultimaker/libArcus"
 SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+"
 SLOT="0/2"
 IUSE="examples python static-libs"
 KEYWORDS="~amd64 ~x86"

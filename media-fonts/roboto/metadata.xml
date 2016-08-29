@@ -5,4 +5,7 @@
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">google/roboto</remote-id>
+  </upstream>
 </pkgmetadata>

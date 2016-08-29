@@ -1,0 +1,25 @@
+From b5a1b3488a72abd250cbd5d4dfbeac3e3739c237 Mon Sep 17 00:00:00 2001
+From: Hodorgasm <nsane457@gmail.com>
+Date: Thu, 12 May 2016 20:38:12 -0400
+Subject: [PATCH] Support GCC-6
+
+---
+ src/shared/cmake/MacroCheckGccVisibility.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/shared/cmake/MacroCheckGccVisibility.cmake b/src/shared/cmake/MacroCheckGccVisibility.cmake
+index 2022aa3..020f913 100644
+--- a/src/shared/cmake/MacroCheckGccVisibility.cmake
++++ b/src/shared/cmake/MacroCheckGccVisibility.cmake
+@@ -15,7 +15,7 @@ macro(MACRO_CHECK_GCC_VISIBILITY GccVisibility)
+    # get the gcc version
+    exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE _gcc_version_info)
+ 
+-   string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
++   string (REGEX MATCH "[3456]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
+    if (NOT _gcc_version)
+    
+       # clang reports: clang version 1.1 (trunk 95754)
+-- 
+2.8.2
+

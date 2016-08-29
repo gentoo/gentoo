@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -80,7 +80,7 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == [45] ]] && inherit eutils
-inherit toolchain-funcs
+inherit toolchain-funcs xdg-utils
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit multiprocessing python-r1
@@ -242,10 +242,19 @@ esetup.py() {
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
+	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
+
 	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die "${die_args[@]}" || return ${?}
+	"${@}" || die "${die_args[@]}"
+	local ret=${?}
+
+	if [[ ${BUILD_DIR} ]]; then
+		rm "${HOME}"/.pydistutils.cfg || die "${die_args[@]}"
+	fi
+
+	return ${ret}
 }
 
 # @FUNCTION: distutils_install_for_testing
@@ -315,11 +324,13 @@ _distutils-r1_disable_ez_setup() {
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EAPI} != [45] ]]; then
-		default
-	else
-		[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
-		epatch_user
+	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
+		if [[ ${EAPI} != [45] ]]; then
+			default
+		else
+			[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
+			epatch_user
+		fi
 	fi
 
 	# by default, use in-source build if python_prepare() is used
@@ -434,7 +445,6 @@ _distutils-r1_copy_egg_info() {
 distutils-r1_python_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_distutils-r1_create_setup_cfg
 	_distutils-r1_copy_egg_info
 
 	esetup.py build "${@}"
@@ -509,9 +519,6 @@ distutils-r1_python_install() {
 	# enable compilation for the install phase.
 	local -x PYTHONDONTWRITEBYTECODE=
 
-	# re-create setup.cfg with install paths
-	_distutils-r1_create_setup_cfg
-
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
 	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
@@ -553,8 +560,8 @@ distutils-r1_python_install() {
 		done
 	fi
 
-	local root=${D}/_${EPYTHON}
-	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D}
+	local root=${D%/}/_${EPYTHON}
+	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
 	esetup.py install --root="${root}" "${args[@]}"
 
@@ -588,9 +595,11 @@ distutils-r1_python_install_all() {
 	if declare -p EXAMPLES &>/dev/null; then
 		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
 
-		local INSDESTTREE=/usr/share/doc/${PF}/examples
-		doins -r "${EXAMPLES[@]}"
-		docompress -x "${INSDESTTREE}"
+		(
+			docinto examples
+			dodoc -r "${EXAMPLES[@]}"
+		)
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 
 	_DISTUTILS_DEFAULT_CALLED=1
@@ -627,12 +636,6 @@ distutils-r1_run_phase() {
 	# not valid then associates a NullImporter object to ${BUILD_DIR}/lib storing it
 	# in the sys.path_importer_cache)
 	mkdir -p "${BUILD_DIR}/lib" || die
-
-	# We need separate home for each implementation, for .pydistutils.cfg.
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local -x HOME=${HOME}/${EPYTHON}
-		mkdir -p "${HOME}" || die
-	fi
 
 	# Set up build environment, bug #513664.
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
@@ -746,6 +749,7 @@ distutils-r1_src_prepare() {
 
 distutils-r1_src_configure() {
 	python_export_utf8_locale
+	xdg_environment_reset # Bug 577704
 
 	if declare -f python_configure >/dev/null; then
 		_distutils-r1_run_foreach_impl python_configure

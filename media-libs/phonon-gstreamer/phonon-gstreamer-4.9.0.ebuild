@@ -9,7 +9,7 @@ MY_P=${MY_PN}-${PV}
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+	KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
@@ -37,6 +37,7 @@ RDEPEND="
 		dev-qt/qtcore:4[glib]
 		dev-qt/qtgui:4[glib]
 		dev-qt/qtopengl:4
+		!<dev-qt/qtwebkit-4.10.4:4[gstreamer]
 	)
 	qt5? (
 		dev-qt/qtcore:5

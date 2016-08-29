@@ -42,7 +42,7 @@ install_cropgui_wrapper() {
 }
 
 src_install() {
-	local python_moduleroot="${PN}"
+	python_moduleinto "${PN}"
 	python_foreach_impl install_cropgui_wrapper
 
 	domenu "${PN}.desktop"

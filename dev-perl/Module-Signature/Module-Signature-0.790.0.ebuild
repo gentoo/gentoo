@@ -24,9 +24,9 @@ RDEPEND="
 	dev-perl/Crypt-DES
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-RIPEMD160
-	dev-perl/class-loader
+	dev-perl/Class-Loader
 	dev-perl/Tie-EncryptedHash
-	dev-perl/convert-ascii-armour
+	dev-perl/Convert-ASCII-Armour
 	dev-perl/data-buffer
 	dev-perl/digest-md2
 	>=dev-perl/Math-Pari-2.010603
@@ -36,7 +36,7 @@ RDEPEND="
 	dev-perl/Crypt-DSA
 	dev-perl/Crypt-RSA
 	dev-perl/Convert-ASN1
-	dev-perl/convert-pem
+	dev-perl/Convert-PEM
 	dev-perl/Crypt-OpenPGP
 	app-crypt/gnupg
 	virtual/perl-File-Temp

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.gdal.org/"
 SRC_URI="http://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="MIT"
+LICENSE="BSD Info-ZIP MIT"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k mdb mysql netcdf odbc ogdi opencl pdf perl png postgres python ruby spatialite sqlite threads xls"
 
@@ -59,7 +59,7 @@ RDEPEND="
 	xls? ( dev-libs/freexl )
 "
 
-SWIG_DEP=">=dev-lang/swig-2.0.2 <=dev-lang/swig-3.0.4"
+SWIG_DEP=">=dev-lang/swig-2.0.2"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.6 )
@@ -121,6 +121,9 @@ src_prepare() {
 
 	# bug 540132
 	epatch "${FILESDIR}"/${PN}-1.11.1-poppler-0.31.0-support.patch
+
+	# Fix swig-3.0.6 problem, https://trac.osgeo.org/gdal/ticket/6045
+	epatch "${FILESDIR}"/${PN}-1.11-swig-3.0.6.patch
 
 	tc-export AR RANLIB
 

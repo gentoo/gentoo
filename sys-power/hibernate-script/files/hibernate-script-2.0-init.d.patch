@@ -3,7 +3,7 @@ diff -Nru hibernate-script-2.0.vanilla/init.d/hibernate-cleanup.sh hibernate-scr
 +++ hibernate-script-2.0/init.d/hibernate-cleanup.sh	2009-05-01 23:03:55.000000000 +0100
 @@ -1,4 +1,4 @@
 -#!/bin/sh
-+#!/sbin/runscript
++#!/sbin/openrc-run
  
  # This script invalidates any stale swsusp and TuxOnIce images. It
  # searches all swap partitions on your machine, as well as TuxOnIce's

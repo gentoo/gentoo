@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=x11-libs/motif-2.3:0
-	virtual/jpeg
+	virtual/jpeg:0
 	media-libs/libpng:0="
 DEPEND="${RDEPEND}
 	sys-apps/groff"

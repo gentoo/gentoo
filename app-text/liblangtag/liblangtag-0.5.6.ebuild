@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit autotools-utils
+inherit xdg-utils autotools-utils
 
 DESCRIPTION="An interface library to access tags for identifying languages"
 HOMEPAGE="https://tagoh.bitbucket.org/liblangtag/"
@@ -30,6 +30,7 @@ RESTRICT="test"
 PATCHES=( "${FILESDIR}/${PN}-0.5.6-musl.patch" )
 
 src_configure() {
+	xdg_environment_reset
 	local myeconfargs=(
 		$(use_enable introspection)
 		$(use_enable test)

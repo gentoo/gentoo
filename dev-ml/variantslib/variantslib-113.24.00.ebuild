@@ -9,7 +9,7 @@ OASIS_BUILD_DOCS=1
 inherit oasis
 
 DESCRIPTION="OCaml variants as first class values"
-HOMEPAGE="https://bitbucket.org/yminsky/ocaml-core/wiki/Home"
+HOMEPAGE="https://janestreet.github.io/ https://github.com/janestreet/variantslib"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

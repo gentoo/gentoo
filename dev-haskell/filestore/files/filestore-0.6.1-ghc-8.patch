@@ -1,0 +1,14 @@
+diff --git a/Data/FileStore/Types.hs b/Data/FileStore/Types.hs
+index e950c7a..e116761 100644
+--- a/Data/FileStore/Types.hs
++++ b/Data/FileStore/Types.hs
+@@ -152,3 +152,3 @@ data FileStore = FileStore {
+     -- | Save contents in the filestore.
+-  , save           :: Contents a
++  , save           :: forall a . Contents a
+                    => FilePath          -- Resource to save.
+@@ -160,3 +160,3 @@ data FileStore = FileStore {
+     -- | Retrieve the contents of the named resource.
+-  , retrieve       :: Contents a
++  , retrieve       :: forall a . Contents a
+                    => FilePath          -- Resource to retrieve.

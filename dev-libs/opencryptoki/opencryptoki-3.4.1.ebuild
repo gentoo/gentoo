@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 inherit autotools multilib flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
-HOMEPAGE="http://sourceforge.net/projects/opencryptoki"
+HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
 SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${PN}-v${PV}.tgz"
 
 # Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA
@@ -15,12 +15,12 @@ SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${PN}-v${PV}.tgz"
 LICENSE="CPL-0.5"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
+IUSE="debug libressl +tpm"
 
 RDEPEND="tpm? ( app-crypt/trousers )
-		 dev-libs/openssl:*"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}"
-
-IUSE="+tpm debug"
 
 S="${WORKDIR}/${PN}"
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		A quasiquoter for raw string literals - that is, string literals that don't
+		recognise the standard escape sequences (such as @\'\\n\'@). Basically, they
+		make your code more readable by freeing you from the responsibility to
+		escape backslashes. They are useful when working with regular expressions,
+		DOS/Windows paths and markup languages (such as XML).
+		
+		See @examples/RawRegex.hs@ for a usage example.
+	</longdescription>
+</pkgmetadata>

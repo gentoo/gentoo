@@ -1,0 +1,27 @@
+--- a/toolkit/crashreporter/google-breakpad/src/common/linux/dump_symbols.cc
++++ b/toolkit/crashreporter/google-breakpad/src/common/linux/dump_symbols.cc
+@@ -920,10 +920,9 @@ string FormatIdentifier(unsigned char identifier[16]) {
+ // Return the non-directory portion of FILENAME: the portion after the
+ // last slash, or the whole filename if there are no slashes.
+ string BaseFileName(const string &filename) {
+-  // Lots of copies!  basename's behavior is less than ideal.
+-  char* c_filename = strdup(filename.c_str());
+-  string base = basename(c_filename);
+-  free(c_filename);
++  const char *c_filename = filename.c_str();
++  const char *p = strrchr(c_filename, '/');
++  string base = p ? p+1 : c_filename;
+   return base;
+ }
+ 
+--- a/toolkit/crashreporter/google-breakpad/src/third_party/lss/linux_syscall_support.h
++++ b/toolkit/crashreporter/google-breakpad/src/third_party/lss/linux_syscall_support.h
+@@ -3851,7 +3851,7 @@ struct kernel_statfs {
+         return -1;
+     }
+   }
+-  #if defined(__x86_64__)
++  #if defined(__x86_64__) && defined(__ILP32__)
+     /* Need to make sure loff_t isn't truncated to 32-bits under x32.  */
+     LSS_INLINE ssize_t LSS_NAME(pread64)(int f, void *b, size_t c, loff_t o) {
+       LSS_BODY(4, ssize_t, pread64, LSS_SYSCALL_ARG(f), LSS_SYSCALL_ARG(b),

@@ -6,6 +6,7 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="gssapi">Enable GSSAPI support</flag>
 		<flag name="samba">Use <pkg>net-fs/samba</pkg> for NTLM Single
 			Sign-On</flag>
 	</use>

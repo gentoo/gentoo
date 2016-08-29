@@ -16,7 +16,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+bluetooth +networkmanager +nls -openrc-force"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXfixes-5.0 needed for pointer barriers
 # FIXME:

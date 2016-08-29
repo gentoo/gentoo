@@ -12,19 +12,20 @@ SRC_URI="https://gitlab.com/accounts-sso/signond/repository/archive.tar.gz?ref=V
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="doc test"
 
 RESTRICT="test"
 
-# libproxy[kde] results in segfaults due to symbol collisions with qt4
+# <libproxy-0.4.12[kde] results in segfaults due to symbol collisions with qt4
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5
-	net-libs/libproxy[-kde]
+	net-libs/libproxy
+	!<net-libs/libproxy-0.4.12[kde]
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )

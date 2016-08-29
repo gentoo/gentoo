@@ -6,7 +6,7 @@ inherit mount-boot
 
 MY_P="sh-lilo-sel-${PV}"
 DESCRIPTION="bootloader for the SuperH Lantank"
-HOMEPAGE="http://www.linux-sh.org/"
+HOMEPAGE="http://oss.renesas.com/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+ BSD"

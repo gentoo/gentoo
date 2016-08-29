@@ -40,12 +40,12 @@ IUSE="acl java +tsm_cit +tsm_hw"
 QA_PREBUILT="*"
 
 # not available (yet?)
-#MY_LANGS="cs:CS_CZ de:DE_DE es:ES_ES fr:FR_FR hu:HU_HU it:IT_IT
-#	ja:JA_JP ko:KO_KR pl:PL_PL pt:PT_BR ru:RU_RU zh:ZH_CN zh_TW:ZH_TW"
+#MY_LANGS="cs:CS_CZ de:DE_DE es:ES_ES fr:FR_FR hu:HU_HU it:IT_IT ja:JA_JP
+#	ko:KO_KR pl:PL_PL pt-BR:PT_BR ru:RU_RU zh-CN:ZH_CN zh-TW:ZH_TW"
 MY_LANG_PV="${MY_PVR_ALLDOTS}-"
 for lang in ${MY_LANGS}; do
-	IUSE="${IUSE} linguas_${lang%:*}"
-	SRC_URI="${SRC_URI} linguas_${lang%:*}? ( \
+	IUSE="${IUSE} l10n_${lang%:*}"
+	SRC_URI="${SRC_URI} l10n_${lang%:*}? ( \
 ${BASE_URI}TIVsm-msg.${lang#*:}.x86_64.rpm -> \
 ${MY_LANG_PV}TIVsm-msg.${lang#*:}.x86_64.rpm )"
 done

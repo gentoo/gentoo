@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,6 @@ RDEPEND=">=dev-perl/Email-MIME-1.900
 	>=dev-perl/Email-MIME-ContentType-1.012"
 DEPEND="${RDEPEND}
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Capture-Tiny
 	)"
 

@@ -1,0 +1,23 @@
+This bug only affects certain Test::More implementations.
+
+https://github.com/ehuelsmann/perl-Test-Dependencies/issues/5
+
+diff -Naur Test-Dependencies-0.21/t/00-load-basic.t Test-Dependencies-0.21b/t/00-load-basic.t
+--- Test-Dependencies-0.21/t/00-load-basic.t	2016-07-10 14:10:43.000000000 +0000
++++ Test-Dependencies-0.21b/t/00-load-basic.t	2016-07-10 15:11:40.007701860 +0000
+@@ -3,12 +3,12 @@
+ use Test::More 0.98;
+ use Test::Needs;
+ 
+-use_ok('Test::Dependencies');
+-use_ok('Test::Dependencies::Light');
++require_ok('Test::Dependencies');
++require_ok('Test::Dependencies::Light');
+ 
+ subtest "Heavy Loading" => sub {
+     test_needs 'B::PerlReq', 'PerlReq::Utils';
+-    use_ok('Test::Dependencies::Heavy');
++    require_ok('Test::Dependencies::Heavy');
+ };
+ 
+ done_testing;

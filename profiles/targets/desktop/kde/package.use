@@ -1,6 +1,34 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Resolve conflicts with slot 5 ebuilds
+kde-base/baloo minimal
+kde-apps/kde4-l10n minimal
+
+# Required by kde-frameworks/kauth
+sys-auth/polkit-qt qt5
+
+# Required by kde-frameworks/knotifications[dbus]
+dev-libs/libdbusmenu-qt qt5
+
+# Required by kde-frameworks/knotifyconfig[phonon]
+media-libs/phonon qt5
+
+# Required by media-libs/phonon[vlc]
+media-libs/phonon-vlc qt5
+
+# Required by kde-apps/kdenlive:5
+media-libs/mlt kdenlive qt5 melt -kde -qt4
+
+# Required by dev-qt/qtcore:5
+dev-libs/libpcre pcre16
+
+# Required by kde-frameworks/kcoreaddons
+dev-qt/qtcore icu
+
+# Required by kde-apps/kate[addons]
+dev-libs/libgit2 threads
 
 # Required by kde-base/pykde4
 dev-python/PyQt4 script sql webkit
@@ -25,6 +53,3 @@ dev-qt/qt-mobility multimedia
 
 # Required by app-office/libreoffice
 media-libs/phonon designer
-
-# Enable crash-reporter here instead of in ebuild
-kde-apps/kdebase-runtime-meta crash-reporter

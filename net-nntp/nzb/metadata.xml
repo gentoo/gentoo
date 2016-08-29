@@ -4,6 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">nzb</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=113793</bugs-to>
+		<bugs-to>https://sourceforge.net/tracker/?group_id=113793</bugs-to>
 	</upstream>
 </pkgmetadata>

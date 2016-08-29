@@ -12,7 +12,7 @@
 # We need to bring in the kernel sources seperately
 # Because they have to be configured in a way that differs from the copy in
 # /usr/src/. The sys-kernel/linux-headers are too stripped down to use
-# unfortunetly.
+# unfortunately.
 # This will be able to go away once the klibc author updates his code
 # to build again the headers provided by the kernel's 'headers_install' target.
 

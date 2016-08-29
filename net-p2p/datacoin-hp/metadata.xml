@@ -4,10 +4,11 @@
 	<maintainer type="person">
 		<email>email@missionaccomplish.com</email>
 		<name>Fernando V.</name>
+		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="logrotate">Use app-admin/logrotate for rotating logs</flag>

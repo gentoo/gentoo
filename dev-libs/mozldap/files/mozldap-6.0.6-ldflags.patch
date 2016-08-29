@@ -2,8 +2,8 @@ Respect LDFLAGS
 
 http://bugs.gentoo.org/show_bug.cgi?id=327335
 
---- config/autoconf.mk.in
-+++ config/autoconf.mk.in
+--- a/config/autoconf.mk.in
++++ b/config/autoconf.mk.in
 @@ -117,7 +117,7 @@
  
  MKSHLIB		= @MKSHLIB@

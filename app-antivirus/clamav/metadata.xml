@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>net-mail@gentoo.org</email>
-    <name>Net-Mail</name>
-  </maintainer>
-  <maintainer type="project">
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
   </maintainer>
   <use>
     <flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>

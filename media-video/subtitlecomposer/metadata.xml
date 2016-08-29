@@ -9,6 +9,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="mpv">Build mpv backend support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">maxrd2/subtitlecomposer</remote-id>
 	</upstream>

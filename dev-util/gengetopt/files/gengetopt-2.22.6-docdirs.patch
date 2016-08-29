@@ -1,5 +1,5 @@
---- gengetopt-2.22.6/configure.ac
-+++ gengetopt-2.22.6/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -27,11 +27,11 @@
  
  dnl directory for docs (html)

@@ -20,7 +20,7 @@ else
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD-4"
 SLOT="0"
@@ -40,7 +40,7 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 	) )"
 RDEPEND="arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
-	traceroute? ( !net-misc/traceroute )
+	traceroute? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )

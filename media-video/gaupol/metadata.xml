@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">otsaloma/gaupol</remote-id>
+		<bugs-to>https://github.com/otsaloma/gaupol/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

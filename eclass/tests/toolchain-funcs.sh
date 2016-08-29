@@ -25,13 +25,6 @@ test-tc-arch-kernel() {
 	done
 	return ${ret}
 }
-tbegin "tc-arch-kernel() (KV=2.6.0)"
-test-tc-arch-kernel 2.6.0 \
-	alpha arm{,eb}:arm avr32 bfin:blackfin cris hppa:parisc \
-	i{3..6}86:i386 ia64 m68k mips{,eb}:mips nios2 powerpc:ppc powerpc64:ppc64 \
-	s390{,x}:s390 sh{1..4}{,eb}:sh sparc{,64} vax x86_64 \
-	i{3..6}86-gentoo-freebsd:i386
-tend $?
 tbegin "tc-arch-kernel() (KV=2.6.30)"
 test-tc-arch-kernel 2.6.30 \
 	i{3..6}86:x86 x86_64:x86 \
@@ -111,5 +104,73 @@ tc-ld-disable-gold
 )
 tend $?
 
+unset CPP
+
+tbegin "tc-get-compiler-type (gcc)"
+(
+export CC=gcc
+[[ $(tc-get-compiler-type) == gcc ]]
+)
+tend $?
+
+tbegin "tc-is-gcc (gcc)"
+(
+export CC=gcc
+tc-is-gcc
+)
+tend $?
+
+tbegin "! tc-is-clang (gcc)"
+(
+export CC=gcc
+! tc-is-clang
+)
+tend $?
+
+if type -P clang &>/dev/null; then
+	tbegin "tc-get-compiler-type (clang)"
+	(
+	export CC=clang
+	[[ $(tc-get-compiler-type) == clang ]]
+	)
+	tend $?
+
+	tbegin "! tc-is-gcc (clang)"
+	(
+	export CC=clang
+	! tc-is-gcc
+	)
+	tend $?
+
+	tbegin "tc-is-clang (clang)"
+	(
+	export CC=clang
+	tc-is-clang
+	)
+	tend $?
+fi
+
+if type -P pathcc &>/dev/null; then
+	tbegin "tc-get-compiler-type (pathcc)"
+	(
+	export CC=pathcc
+	[[ $(tc-get-compiler-type) == pathcc ]]
+	)
+	tend $?
+
+	tbegin "! tc-is-gcc (pathcc)"
+	(
+	export CC=pathcc
+	! tc-is-gcc
+	)
+	tend $?
+
+	tbegin "! tc-is-clang (pathcc)"
+	(
+	export CC=pathcc
+	! tc-is-clang
+	)
+	tend $?
+fi
 
 texit

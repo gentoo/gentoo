@@ -8,7 +8,7 @@ inherit autotools autotools-utils eutils
 
 DESCRIPTION="A flexible IRC bot scriptable in scheme"
 HOMEPAGE="http://unknownlamer.org/code/bobot.html"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

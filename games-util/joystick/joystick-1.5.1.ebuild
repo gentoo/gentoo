@@ -7,12 +7,12 @@ inherit eutils toolchain-funcs
 
 MY_P="linuxconsoletools-${PV}"
 DESCRIPTION="joystick testing utilities"
-HOMEPAGE="http://sourceforge.net/projects/linuxconsole/ http://atrey.karlin.mff.cuni.cz/~vojtech/input/"
+HOMEPAGE="https://sourceforge.net/projects/linuxconsole/ http://atrey.karlin.mff.cuni.cz/~vojtech/input/"
 SRC_URI="mirror://sourceforge/linuxconsole/files/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="sdl udev"
 
 DEPEND="sdl? ( media-libs/libsdl:0[video] )

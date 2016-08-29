@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+RESTRICT=test # circular depend: hspec-expectations[test]->hspec[test]->hspec-expectations
+
 RDEPEND="dev-haskell/hunit:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 "

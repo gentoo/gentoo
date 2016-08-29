@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_WARN_UNUSED_CLI=1
 inherit cmake-utils bash-completion-r1 git-r3
 
 DESCRIPTION="Open Source Flight Simulator"

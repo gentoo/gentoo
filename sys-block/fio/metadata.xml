@@ -13,6 +13,6 @@
 		<flag name="gnuplot">Install tools for generating gnuplots</flag>
 		<flag name="numa">Enable numa support</flag>
 		<flag name="rbd">Enable Rados block device support via <pkg>sys-cluster/ceph</pkg></flag>
-		<flag name="rdma">Enable infiniband support via <pkg>sys-infiniband/librdmacm</pkg></flag>
+		<flag name="rdma">Enable infiniband support via <pkg>sys-fabric/librdmacm</pkg></flag>
 	</use>
 </pkgmetadata>

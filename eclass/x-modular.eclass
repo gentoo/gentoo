@@ -8,7 +8,6 @@
 #
 # @ECLASS: x-modular.eclass
 # @MAINTAINER:
-# Donnie Berkholz <dberkholz@gentoo.org>
 # x11@gentoo.org
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:

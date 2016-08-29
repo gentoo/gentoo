@@ -1,0 +1,31 @@
+From e0516ff9a2a49b3fa5698ab1902b2579609c45b5 Mon Sep 17 00:00:00 2001
+From: Sebastian Wagner <sebix@sebix.at>
+Date: Fri, 13 May 2016 23:32:35 +0200
+Subject: [PATCH] Fix ifdef in GSettings hh, so gconf headers work
+
+Signed-off-by: Sebastian Wagner <sebix@sebix.at>
+---
+ backend/src/GSettingsConfigurator.hh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/backend/src/GSettingsConfigurator.hh b/backend/src/GSettingsConfigurator.hh
+index 9b8c5d6..3974396 100644
+--- a/backend/src/GSettingsConfigurator.hh
++++ b/backend/src/GSettingsConfigurator.hh
+@@ -17,8 +17,8 @@
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ //
+ 
+-#ifndef GCONFCONFIGURATOR_HH
+-#define GCONFCONFIGURATOR_HH
++#ifndef GSETTINGSCONFIGURATOR_HH
++#define GSETTINGSCONFIGURATOR_HH
+ 
+ #include <string>
+ #include <map>
+@@ -69,4 +69,4 @@ private:
+ };
+ 
+ 
+-#endif // GCONFCONFIGURATOR_HH
++#endif // GGSETTINGSCONFIGURATOR_HH

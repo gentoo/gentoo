@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,14 +14,17 @@ SRC_URI="ftp://ftp.cyrusimap.org/cyrus-imapd/cyrus-imapd-${MY_PV}.tar.gz"
 LICENSE="BSD-with-attribution"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="berkdb kerberos ssl"
+IUSE="berkdb kerberos libressl ssl"
 
 RDEPEND=">=dev-lang/perl-5.6.1
 	>=dev-libs/cyrus-sasl-2.1.13
 	dev-perl/Term-ReadLine-Perl
 	dev-perl/TermReadKey
 	berkdb? ( >=sys-libs/db-3.2:* )
-	ssl? ( >=dev-libs/openssl-0.9.6:* )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	kerberos? ( virtual/krb5 )"
 
 DEPEND="$RDEPEND"

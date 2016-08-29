@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit elisp-common
 
-DESCRIPTION="CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT) problems"
+DESCRIPTION="CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems"
 HOMEPAGE="http://www.cs.nyu.edu/acsys/cvc3/index.html"
 SRC_URI="http://www.cs.nyu.edu/acsys/cvc3/releases/2.4.1/${P}.tar.gz"
 
@@ -16,7 +16,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs isabelle test zchaff"
 
-RDEPEND="dev-libs/gmp
+RDEPEND="dev-libs/gmp:0=
 		isabelle? (
 			>=sci-mathematics/isabelle-2011.1-r1:=
 		)"

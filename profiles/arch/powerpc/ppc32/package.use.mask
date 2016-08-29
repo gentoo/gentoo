@@ -4,20 +4,36 @@
 
 # This file requires >=portage-2.1.1
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
+# dev-qt/qtwebkit:5 and kde-frameworks/*:5 not keyworded.
+net-irc/kvirc kde webkit
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-qt/qtmultimedia:5
+media-plugins/audacious-plugins qt5
+net-analyzer/wireshark qt5
+sci-astronomy/stellarium sound
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
+# minor arches and has been declared deprecated by upstream. So we'd like
+# to avoid keywording it, unless requested by users.
+app-office/texmaker qt5
+app-text/kchmviewer qt5
+dev-qt/designer webkit
+net-irc/quassel webkit
+kde-plasma/libksysguard detailedmemory
+
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
 media-video/mpv uchardet
 
-# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
-# Requires unkeyworded dev-qt/qtwebkit
-dev-qt/designer webkit
-
-# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
-# Requires unkeyworded dev-qt/qtmultimedia:5[widgets]
-sci-astronomy/stellarium sound
-
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview
 
@@ -41,10 +57,6 @@ media-video/mpv sdl
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
 media-video/vlc x265
-
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword
@@ -89,10 +101,6 @@ gnome-extra/zeitgeist-datasources -tomboy
 # masking libvirt for cfengine (bug #412253)
 net-misc/cfengine libvirt
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
-# sys-devel/llvm is keyworded on ppc
-#media-libs/mesa -llvm
-
 # Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
 # Needs media-libs/simage keyworded, bug 325623
 media-libs/coin simage
@@ -100,3 +108,8 @@ media-libs/coin simage
 #nixnut <nixnut@gentoo.org> (24 jan 2009)
 #don't want zemberek for enchant for ppc32
 app-text/enchant zemberek
+
+# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
+# Requires unkeyworded kde-frameworks packages
+net-irc/quassel qt5
+

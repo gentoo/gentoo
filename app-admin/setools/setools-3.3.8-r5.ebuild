@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools java-pkg-opt-2 python-r1 eutils toolchain-funcs
 
 DESCRIPTION="SELinux policy tools"
-HOMEPAGE="http://www.tresys.com/selinux/selinux_policy_tools.shtml"
+HOMEPAGE="https://github.com/TresysTechnology/setools/wiki"
 SRC_URI="http://oss.tresys.com/projects/setools/chrome/site/dists/${P}/${P}.tar.bz2
 	https://dev.gentoo.org/~swift/patches/setools/${P}-01-fedora-patches.tar.gz
 	https://dev.gentoo.org/~swift/patches/setools/${P}-03-gentoo-patches.tar.gz"

@@ -31,3 +31,9 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/test-framework-0.8 <dev-haskell/test-framework-0.9
 		>=dev-haskell/test-framework-hunit-0.3 <dev-haskell/test-framework-hunit-0.4 )
 "
+
+src_prepare() {
+	cabal_chdeps \
+		'base >= 4 && < 4.9' 'base >= 4' \
+		'time < 1.6' 'time'
+}

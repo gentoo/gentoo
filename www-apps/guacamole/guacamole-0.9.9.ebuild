@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,11 +23,11 @@ REQUIRED_USE="|| ( ldap mysql noauth postgres )"
 DEPEND="dev-java/maven-bin:*"
 
 RDEPEND="${DEPEND}
-	www-servers/tomcat[websockets]
+	|| ( www-servers/tomcat:7[websockets] www-servers/tomcat )
 	>virtual/jre-1.6
 	net-misc/guacamole-server
-	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	mysql? ( virtual/mysql dev-java/jdbc-mysql )
+	postgres? ( dev-db/postgresql dev-java/jdbc-postgresql )
 	ldap? ( net-nds/openldap )"
 
 src_compile() {
@@ -67,10 +67,11 @@ src_install() {
 		find "${WORKDIR}/${PN}-client-${PV}/extensions/${PN}-auth-jdbc/modules/${PN}-auth-jdbc-mysql/schema/" -name '*.sql' -exec doins '{}' +
 		elog "Please add a mysql database and a user and load the sql files in /usr/share/guacamole/schema/ into it."
 		elog "If this is an update, then you will need to apply the appropriate update script in the location above."
-		elog "You will also need to adjust the DB propeties in /etc/guacamole.properties!"
+		elog "You will also need to adjust the DB properties in /etc/guacamole.properties!"
 		elog "The default user and it's password is \"guacadmin\"."
-		elog "You will also need to download the mysql-connector from here http://dev.mysql.com/downloads/connector/j/"
-		elog "and put the contained .jar file into /etc/guacamole/lib!"
+		elog "You also have to enable jdbc-mysql in tomcat!"
+		elog "For tomcat under openrc this can be done in /etc/conf.d/tomcat-7 with TOMCAT_EXTRA_JARS=jdbc-mysql"
+		elog "Another way is to add /usr/share/jdbc-mysql/lib/jdbc-mysql.jar to the classpath."
 		elog "-"
 	fi
 	if use postgres; then
@@ -86,10 +87,11 @@ src_install() {
 		find "${WORKDIR}/${PN}-client-${PV}/extensions/${PN}-auth-jdbc/modules/${PN}-auth-jdbc-postgresql/schema/" -name '*.sql' -exec doins '{}' +
 		elog "Please add a postgresql database and a user and load the sql files in /usr/share/guacamole/schema/ into it."
 		elog "If this is an update, then you will need to apply the appropriate update script in the location above."
-		elog "You will also need to adjust the DB propeties in /etc/guacamole.properties!"
+		elog "You will also need to adjust the DB properties in /etc/guacamole.properties!"
 		elog "The default user and it's password is \"guacadmin\"."
-		elog "You will also need to download the postgresql-connector from here https://jdbc.postgresql.org/download.html#current"
-		elog "and put the contained .jar file into /etc/guacamole/lib!"
+		elog "You also have to enable jdbc-postgresql in tomcat!"
+		elog "For tomcat under openrc this can be done in /etc/conf.d/tomcat-7 with TOMCAT_EXTRA_JARS=jdbc-postgresql"
+		elog "Another way is to add /usr/share/jdbc-postgresql/lib/jdbc-postgresql.jar to the classpath."
 		elog "-"
 	fi
 	if use ldap; then
@@ -115,10 +117,11 @@ src_install() {
 	doenvd 98guacamole
 	insinto "/var/lib/${PN}"
 	newins "${S}/${PN}/target/${P}.war" "${PN}.war"
-	elog "If it is an update, please make sure to delete the old webapp in /var/lib/tomcat-7/webapps/ first!"
+	elog "If it is an update, please make sure to delete the old webapp in /var/lib/tomcat-8/webapps/ first!"
 	elog "To deploy guacamole with tomcat, you will need to link the war file and create the configuration!"
-	elog "ln -sf /var/lib/${PN}/${PN}.war /var/lib/tomcat-7-main/webapps/"
+	elog "ln -sf /var/lib/${PN}/${PN}.war /var/lib/tomcat-8/webapps/"
 	elog "You will also need to adjust the configuration in /etc/${PN}/${PN}.properties"
+	elog "With systemd make sure that the var GUACAMOLE_HOME is set to /etc/guacamole. for example via /etc/conf/tomcat."
 	elog "See http://guac-dev.org/doc/${PV}/gug/configuring-guacamole.html#initial-setup for a basic setup"
 	elog "or http://guac-dev.org/doc/${PV}/gug/jdbc-auth.html for a database for authentication and host definitions."
 }

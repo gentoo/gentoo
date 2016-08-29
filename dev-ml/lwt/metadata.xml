@@ -5,17 +5,9 @@
     <email>aballier@gentoo.org</email>
     <name>Alexis Ballier</name>
   </maintainer>
-  <maintainer type="person">
-    <email>pclairam@gmail.com</email>
-    <name>Pierre Clairambault</name>
-  </maintainer>
   <maintainer type="project">
     <email>ml@gentoo.org</email>
     <name>Gentoo ML Project</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
 	<flag name="ppx">Enables the ppx syntax extension</flag>

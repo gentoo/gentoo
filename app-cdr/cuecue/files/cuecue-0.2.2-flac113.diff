@@ -1,6 +1,5 @@
-diff -Naur src.orig/libcuecue/flac.c src/libcuecue/flac.c
---- src.orig/libcuecue/flac.c	2004-09-22 04:28:21.000000000 +0200
-+++ src/libcuecue/flac.c	2007-02-27 23:25:36.000000000 +0100
+--- a/src/libcuecue/flac.c
++++ b/src/libcuecue/flac.c
 @@ -27,6 +27,12 @@
  #include "cuecue.h"
  #include "cuecue_internal.h"

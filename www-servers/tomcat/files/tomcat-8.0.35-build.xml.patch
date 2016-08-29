@@ -1,0 +1,265 @@
+diff -Naur apache-tomcat-8.0.24-src.orig/build.xml apache-tomcat-8.0.24-src/build.xml
+--- apache-tomcat-8.0.24-src.orig/build.xml	2015-07-01 21:25:21.000000000 +0100
++++ apache-tomcat-8.0.24-src/build.xml	2015-08-22 21:17:05.825564599 +0100
+@@ -697,24 +697,29 @@
+       manifest="${tomcat.manifests}/annotations-api.jar.manifest" />
+ 
+     <!-- Servlet 3.1 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${servlet-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.servlet-api"
+       manifest="${tomcat.manifests}/servlet-api.jar.manifest"
+       notice="${tomcat.manifests}/servlet-api.jar.notice"
+       license="${tomcat.manifests}/servlet-api.jar.license" />
+-
++-->
+     <!-- JSP 2.3 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${jsp-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.jsp-api"
+       manifest="${tomcat.manifests}/jsp-api.jar.manifest" />
++-->
+ 
+     <!-- EL 3.0 Implementation JAR File -->
++<!--
+     <jarIt jarfile="${el-api.jar}"
+       filesDir="${tomcat.classes}"
+       filesId="files.el-api"
+       manifest="${tomcat.manifests}/el-api.jar.manifest" />
++-->
+ 
+     <!-- WebSocket 1.1 API JAR File -->
+     <jarIt jarfile="${websocket-api.jar}"
+@@ -982,14 +987,14 @@
+ 
+   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+-
++<!--
+     <copy tofile="${tomcat.build}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.build}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+ 
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
+-
++-->
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+       <fileset dir="bin">
+@@ -1049,7 +1054,7 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
+-    <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
++<!--    <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/> -->
+ 
+     <!-- Add sources for examples -->
+     <antcall target="examples-sources" />
+@@ -1083,7 +1088,7 @@
+     </javac>
+   </target>
+ 
+-  <target name="build-tomcat-jdbc" depends="package">
++  <target name="build-tomcat-jdbc" depends="package" unless="noget">
+     <!-- build the jdbc-pool jar and source jar-->
+     <echo message="Building Tomcat JDBC pool libraries"/>
+     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
+@@ -1098,7 +1103,7 @@
+     <copy file="${tomcat-jdbc.jar}" todir="${tomcat.build}/lib"/>
+   </target>
+ 
+-  <target name="build-tomcat-jdbc-src">
++  <target name="build-tomcat-jdbc-src" unless="noget">
+     <!-- build the jdbc-pool source jar-->
+     <echo message="Building Tomcat JDBC pool src JAR"/>
+     <ant antfile="${tomcat.jdbc.dir}/build.xml" dir="${tomcat.jdbc.dir}"
+@@ -1202,10 +1207,11 @@
+ 
+     <copy file="${basedir}/LICENSE" todir="${tomcat.embed}" />
+     <copy file="${basedir}/NOTICE" todir="${tomcat.embed}" />
++<!--
+     <copy file="${tomcat-dbcp.jar}" todir="${tomcat.embed}"
+       failonerror="false"/>
+     <copy file="${jdt.jar}" todir="${tomcat.embed}" />
+-
++-->
+     <!-- Note the meta-inf below will work as long as there is only one JAR
+          that needs to add entries. If there is more than one a more complex
+          solution will be required. -->
+@@ -1542,7 +1548,7 @@
+ 
+   <target name="extras-commons-logging-prepare"
+           depends="extras-prepare"
+-          description="Prepare to build web services extras package">
++          description="Prepare to build web services extras package" unless="noget">
+ 
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${commons-logging-src.loc.1}"/>
+@@ -1681,7 +1687,7 @@
+ 
+   <target name="extras-webservices-prepare"
+           depends="extras-prepare"
+-          description="Prepare to build web services extras package">
++          description="Prepare to build web services extras package" unless="noget">
+ 
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
+@@ -1882,6 +1888,7 @@
+ 
+   <target name="javadoc" depends="dist-source,extras-webservices-prepare"
+     description="Create the Tomcat javadoc" >
++<!--
+     <javadoc packagenames="javax.servlet.*"
+       excludepackagenames="javax.servlet.jsp.*"
+       sourcepath="${tomcat.dist}/src/java"
+@@ -1940,6 +1947,7 @@
+         <path location="${ant.core.lib}"/>
+       </classpath>
+     </javadoc>
++-->
+     <javadoc packagenames="javax.websocket.*"
+       sourcepath="${tomcat.dist}/src/java"
+       destdir="${tomcat.dist}/webapps/docs/websocketapi"
+@@ -1970,15 +1978,17 @@
+       docencoding="UTF-8"
+       charset="UTF-8"
+       additionalparam="-breakiterator -notimestamp"
+-      maxmemory="256m" >
++      maxmemory="512m" >
+       <classpath>
+         <path refid="compile.classpath"/>
+         <path refid="tomcat.webservices.classpath"/>
+         <path location="${ant.core.lib}"/>
+       </classpath>
++<!--
+       <link href="../servletapi"/>
+       <link href="../jspapi"/>
+       <link href="../elapi"/>
++-->
+       <link href="../websocketapi"/>
+       <link href="http://docs.oracle.com/javase/7/docs/api/"/>
+       <link href="http://commons.apache.org/proper/commons-io/javadocs/api-release/"/>
+@@ -2739,7 +2749,7 @@
+   </target>
+ 
+   <target name="download-compile"
+-          description="Download (and build) components necessary to compile" >
++          description="Download (and build) components necessary to compile" unless="noget">
+ 
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${tomcat-native.loc.1}"/>
+@@ -2773,7 +2783,7 @@
+   </target>
+ 
+   <target name="download-test-compile"
+-          description="Download additional components for the tests" >
++          description="Download additional components for the tests" unless="noget">
+ 
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${junit.loc}"/>
+@@ -2819,7 +2829,7 @@
+   </target>
+ 
+   <target name="download-dist"
+-          description="Download additional components for a distribution" >
++          description="Download additional components for a distribution" unless="noget">
+ 
+     <antcall target="downloadzip-2">
+       <param name="sourcefile.1" value="${tomcat-native.win.1}"/>
+@@ -2845,18 +2855,18 @@
+ 
+   <!-- =============== Utility Targets to support downloads ================ -->
+ 
+-  <target name="setproxy" if="${proxy.use}">
++  <target name="setproxy" if="${proxy.use}" unless="noget">
+     <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
+               proxyuser="${proxy.user}" proxypassword="${proxy.password}" />
+     <echo message="Using ${proxy.host}:${proxy.port} to download ${sourcefile}"/>
+   </target>
+ 
+-  <target name="testexist">
++  <target name="testexist" unless="noget">
+     <echo message="Testing  for ${destfile}"/>
+     <available file="${destfile}" property="exist"/>
+   </target>
+ 
+-  <target name="downloadgz" unless="exist" depends="testexist,setproxy">
++  <target name="downloadgz" unless="noget" depends="testexist,setproxy">
+     <!-- Download and extract the package -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2868,7 +2878,7 @@
+     <delete file="${temp.file}.tar.gz"/>
+   </target>
+ 
+-  <target name="downloadgz-2" unless="exist" depends="testexist">
++  <target name="downloadgz-2" unless="noget" depends="testexist">
+     <!-- Download and extract the package from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2887,7 +2897,7 @@
+     <delete file="${temp.file}.tar.gz"/>
+   </target>
+ 
+-  <target name="downloadzip" unless="exist" depends="testexist,setproxy">
++  <target name="downloadzip" unless="noget" depends="testexist,setproxy">
+     <!-- Download and extract the package -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2898,7 +2908,7 @@
+     <delete file="${temp.file}"/>
+   </target>
+ 
+-  <target name="downloadzip-2" unless="exist" depends="testexist">
++  <target name="downloadzip-2" unless="noget" depends="testexist">
+     <!-- Download and extract the package from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2916,7 +2926,7 @@
+     <delete file="${temp.file}"/>
+   </target>
+ 
+-  <target name="downloadfile" unless="exist" depends="testexist,setproxy">
++  <target name="downloadfile" unless="noget" depends="testexist,setproxy">
+     <!-- Download the file -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2926,7 +2936,7 @@
+     <move file="${temp.file}" tofile="${destfile}"/>
+   </target>
+ 
+-  <target name="downloadfile-2" unless="exist" depends="testexist">
++  <target name="downloadfile-2" unless="noget" depends="testexist">
+     <!-- Download the file from the two alternative locations -->
+     <local name="temp.file"/>
+     <mkdir dir="${base.path}"/>
+@@ -2949,7 +2959,7 @@
+     <move file="${temp.file}" tofile="${destfile}"/>
+   </target>
+ 
+-  <target name="trydownload.check" depends="setproxy">
++  <target name="trydownload.check" depends="setproxy" unless="noget">
+     <condition property="trydownload.run">
+       <and>
+         <not>
+@@ -2960,7 +2970,7 @@
+     </condition>
+   </target>
+ 
+-  <target name="trydownload" if="trydownload.run" depends="trydownload.check">
++  <target name="trydownload" if="trydownload.run" depends="trydownload.check" unless="noget">
+     <!-- Downloads a file if not yet downloaded and the source URL is available -->
+     <get src="${sourcefile}" httpusecaches="${trydownload.httpusecaches}" dest="${destfile}" />
+   </target>
+@@ -2971,7 +2981,7 @@
+ 
+   <target name="ide-eclipse"
+           depends="download-compile, extras-webservices-prepare, download-test-compile"
+-          description="Prepares the source tree to be built in Eclipse">
++          description="Prepares the source tree to be built in Eclipse" unless="noget">
+ 
+     <!-- Copy the sample project files into the root directory -->
+     <copy file="${tomcat.home}/res/ide-support/eclipse/eclipse.project" tofile="${tomcat.home}/.project"/>

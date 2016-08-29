@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>binki@gentoo.org</email>
-    <name>Nathan Phillip Brink</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>jdhore@gentoo.org</email>
-    <name>Jeff Horelick</name>
-    <description>Co-maintainer</description>
-  </maintainer>
   <use>
     <flag name="cracklib">Enable nickserv/cracklib module for enforcing strong account passwords</flag>
 		<flag name="largenet">Enable support/tweaks for large networks</flag>

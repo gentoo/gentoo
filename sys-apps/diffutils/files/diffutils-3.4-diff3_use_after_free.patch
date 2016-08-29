@@ -1,0 +1,26 @@
+From 1a0df4396ebe3b9a58b882bb976cfce3f50d3cac Mon Sep 17 00:00:00 2001
+From: Bastian Beischer <bastian.beischer@rwth-aachen.de>
+Date: Sat, 13 Aug 2016 18:53:36 -0700
+Subject: diff3: fix heap use-after-free; add minimal diff3 test coverage
+
+Commit v3.3-42-g3b74a90, "FIXME: src/diff3: plug a leak" added an
+invalid use of free, leading to use-after-free in nearly any invocation
+of diff3.  Revert that commit.
+Reported by Bastian Beischer in http://bugs.gnu.org/24210
+---
+
+diff --git a/src/diff3.c b/src/diff3.c
+index 6ef90f4..0eb643e 100644
+--- a/src/diff3.c
++++ b/src/diff3.c
+@@ -1039,7 +1039,6 @@ process_diff (char const *filea,
+ 
+   *block_list_end = NULL;
+   *last_block = bptr;
+-  free (diff_contents);
+   return block_list;
+ }
+ 
+--
+cgit v1.0
+

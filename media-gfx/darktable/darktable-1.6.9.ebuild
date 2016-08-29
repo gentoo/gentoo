@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,11 @@ SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${PV}/
 LICENSE="GPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
-LANGS=" ca cs da de el es fr it ja nl pl pt_BR pt_PT ru sq sv uk"
+LANGS=" ca cs da de el es fr it ja nl pl pt-BR pt-PT ru sq sv uk"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cpu_flags_x86_sse3 doc flickr geo gphoto2 graphicsmagick jpeg2k kde libsecret
 nls opencl openmp openexr pax_kernel +rawspeed +slideshow +squish web-services webp
-${LANGS// / linguas_}"
+${LANGS// / l10n_}"
 
 # sse3 support is required to build darktable
 REQUIRED_USE="cpu_flags_x86_sse3"
@@ -118,7 +118,7 @@ src_install() {
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
-		use linguas_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
+		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang/-/_}
 	done
 
 	if use pax_kernel && use opencl ; then

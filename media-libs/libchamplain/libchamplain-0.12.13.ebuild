@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,18 +13,19 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libchamplain"
 
 SLOT="0.12"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="debug +gtk +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	dev-db/sqlite:3
-	dev-libs/glib:2
+	>=dev-libs/glib-2.16:2
 	>=media-libs/clutter-1.12:1.0[introspection?]
 	media-libs/cogl:=
 	>=net-libs/libsoup-2.34:2.4
-	x11-libs/cairo
+	>=x11-libs/cairo-1.4
+	x11-libs/gtk+:3
 	gtk? (
 		x11-libs/gtk+:3[introspection?]
 		media-libs/clutter-gtk:1.0 )

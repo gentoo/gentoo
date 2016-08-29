@@ -18,14 +18,9 @@
 
 #--- END OF EXAMPLES ---
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (26 Feb 2016)
-# KDE Frameworks 5 not yet stable.
->=net-irc/kvirc-4.4_pre20150000000000 kde
-
-# Justin Lecher <jlec@gentoo.org> (27 Oct 2015)
-# No stable dev-python/PyQt5 for now
-# 552394
-dev-python/matplotlib qt5
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# Dependencies not yet stable
+dev-cpp/eigen test
 
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
@@ -51,7 +46,3 @@ dev-lang/python-exec -python_single_target_pypy3
 # Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
 # [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
 www-apps/cgit jit
-
-# Ben de Groot <yngwin@gentoo.org (19 Apr 2015)
-# >=opus-1.0.3 is still not stable (bug 500868)
-media-video/vlc opus

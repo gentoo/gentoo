@@ -1,7 +1,9 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+extra_commands="forcestart is_master"
 
 depend() {
 	need localmount logger
@@ -17,6 +19,17 @@ is_master() {
 	[ "${ganeti_master}" = "${local_hostname}" ]
 }
 
+# This exists specifically for restarting a 2-node cluster where quorum might
+# not be available.
+forcestart() {
+	ewarn "Forcing non-quorum Ganeti master start"
+	GANETI_WCONFD_OPTS="${GANETI_WCONFD_OPTS} --no-voting --yes-do-it"
+	GANETI_LUXID_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	GANETI_MASTERD_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	export GANETI_WCONFD_OPTS GANETI_LUXID_OPTS GANETI_MASTERD_OPTS
+	start
+}
+
 start() {
 	if ! [ -e ${DAEMON_UTIL} ]; then
 		eerror "Could not find daemon utility at ${DAEMON_UTIL}"
@@ -29,16 +42,17 @@ start() {
 	local daemon retval=0 optsvar started_daemons daemon_opts
 
 	for daemon in $(${DAEMON_UTIL} list-start-daemons); do
-		optsvar="${daemon//-/_}"
+		optsvar="$(printf "${daemon}_OPTS" | tr - _ | LC_ALL=C tr '[:lower:]' '[:upper:]')"
 
 		case "${daemon#ganeti-}" in
 			masterd|rapi|luxid) is_master || continue;;
 		esac
 
-		eval daemon_opts=\"\$\{${optsvar^^*}_OPTS\}\"
+		eval daemon_opts=\"\$\{${optsvar}\}\"
 
 		ebegin "Starting ${daemon}"
 		eindent
+		veinfo ${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts}
 		${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts} || retval=${?}
 
 		if [ ${retval} != 0  ] && [ -n "${started_daemons}" ]; then

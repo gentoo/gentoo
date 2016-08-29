@@ -7,7 +7,7 @@ inherit eutils flag-o-matic games
 
 DESCRIPTION="Multiplayer, networked game of little tanks with really big weapons"
 HOMEPAGE="http://www.nongnu.org/koth/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/default.pkg/${PV}/${P}.tar.bz2"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/default.pkg/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nullishzero@gentoo.org</email>
-		<name>Pavel Kazakov</name>
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">limitcpu</remote-id>

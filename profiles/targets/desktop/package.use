@@ -13,7 +13,7 @@ x11-drivers/nvidia-drivers gtk2
 
 # Ben de Groot <yngwin@gentoo.org> (18 Feb 2015)
 # Enable sensible defaults for desktop users (bug #540046)
-dev-python/PyQt5 declarative gui network printsupport sql widgets xmlpatterns
+dev-python/PyQt5 gui network printsupport widgets
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (17 Sep 2014)
 # Disable glamor for xf86-video-intel since it also needs uxa, which is

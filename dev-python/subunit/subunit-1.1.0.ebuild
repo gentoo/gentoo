@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,10 +19,11 @@ IUSE="static-libs test"
 
 RDEPEND="
 	>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]
-	dev-python/extras[${PYTHON_USEDEP}]"
+	dev-python/extras[${PYTHON_USEDEP}]
+	dev-lang/perl:=
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-lang/perl:=
 	>=dev-libs/check-0.9.11[${MULTILIB_USEDEP}]
 	>=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}]
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]

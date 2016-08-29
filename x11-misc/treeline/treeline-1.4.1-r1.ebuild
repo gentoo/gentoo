@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,14 +13,14 @@ DESCRIPTION="TreeLine is a structured information storage program"
 HOMEPAGE="http://treeline.bellz.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
 TLLINGUAS=( de fr )
-IUSE+=" ${TLLINGUAS[@]/#/linguas_}"
+IUSE+=" ${TLLINGUAS[@]/#/l10n_}"
 for lingua in ${TLLINGUAS[@]}; do
-	SRC_URI+=" linguas_${lingua}? ( mirror://sourceforge/${PN}/${PN}-i18n-${PV}a.tar.gz )"
+	SRC_URI+=" l10n_${lingua}? ( mirror://sourceforge/${PN}/${PN}-i18n-${PV}a.tar.gz )"
 done
 unset lingua
 
@@ -37,8 +37,8 @@ S="${WORKDIR}/TreeLine"
 src_unpack() {
 	unpack ${P}.tar.gz
 	local lingua
-	for lingua in ${TLLINGUAS}; do
-		if use linguas_${lingua}; then
+	for lingua in "${TLLINGUAS[@]}"; do
+		if use l10n_${lingua}; then
 			tar xozf "${DISTDIR}"/${PN}-i18n-${PV}a.tar.gz \
 				TreeLine/doc/{readme_${lingua}.trl,README_${lingua}.html} \
 				TreeLine/translations/{treeline_${lingua}.{qm,ts},qt_${lingua}.{qm,ts}} || die

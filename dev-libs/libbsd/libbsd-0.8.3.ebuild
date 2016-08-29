@@ -11,14 +11,14 @@ SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
 
 LICENSE="BSD BSD-2 BSD-4 ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="static-libs"
 
 DEPEND=">=sys-kernel/linux-headers-3.17"
 RDEPEND=""
 
 pkg_setup() {
-	local f="${ROOT}/usr/$(get_libdir)/${PN}.a"
+	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
 	local m="You need to remove ${f} by hand or re-emerge sys-libs/glibc first."
 	if ! has_version ${CATEGORY}/${PN}; then
 		if [[ -e ${f} ]]; then

@@ -18,6 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+RESTRICT=test # circular depend: nanospec[test]->silently[test]->nanospec
+
 RDEPEND=">=dev-lang/ghc-7.4.1:=
 "
 DEPEND="${RDEPEND}

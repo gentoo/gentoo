@@ -1,5 +1,5 @@
---- Makefile.am.old	2013-09-25 14:26:30.518751250 +0200
-+++ Makefile.am	2013-09-25 14:27:21.846257911 +0200
+--- a/Makefile.am	2013-09-25 14:26:30.518751250 +0200
++++ b/Makefile.am	2013-09-25 14:27:21.846257911 +0200
 @@ -13,8 +13,6 @@
  
  # FIXME Remove the mkdir hack if it gets fixed in a future automake

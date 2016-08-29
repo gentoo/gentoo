@@ -1,0 +1,22 @@
+Index: gazebo-7.3.1/gazebo/util/LogPlay.cc
+===================================================================
+--- gazebo-7.3.1.orig/gazebo/util/LogPlay.cc
++++ gazebo-7.3.1/gazebo/util/LogPlay.cc
+@@ -72,7 +72,7 @@ void LogPlay::Open(const std::string &_l
+ 
+   // Flag use to indicate if a parser failure has occurred
+   bool xmlParserFail = this->dataPtr->xmlDoc.LoadFile(_logFile.c_str()) !=
+-    tinyxml2::XML_NO_ERROR;
++    tinyxml2::XML_SUCCESS;
+ 
+   // Parse the log file
+   if (xmlParserFail)
+@@ -105,7 +105,7 @@ void LogPlay::Open(const std::string &_l
+ 
+           // Retry loading the log file.
+           xmlParserFail = this->dataPtr->xmlDoc.LoadFile(_logFile.c_str()) !=
+-            tinyxml2::XML_NO_ERROR;
++            tinyxml2::XML_SUCCESS;
+         }
+       }
+     }

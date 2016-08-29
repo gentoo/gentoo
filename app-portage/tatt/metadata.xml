@@ -5,10 +5,6 @@
     <email>tomka@gentoo.org</email>
     <name>Thomas Kahle</name>
   </maintainer>
-  <maintainer type="person">
-    <email>fauli@gentoo.org</email>
-    <name>Christian Faulhammer</name>
-  </maintainer>
   <use>
     <flag name="templates">Install template scripts to be used with tatt</flag>
   </use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,11 +27,11 @@ RDEPEND="
 	dev-libs/glib:2
 	media-libs/freeglut
 	media-libs/giflib
-	>=media-libs/libpng-1.4
+	>=media-libs/libpng-1.4:0=
 	sci-libs/gts
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg
+	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}"

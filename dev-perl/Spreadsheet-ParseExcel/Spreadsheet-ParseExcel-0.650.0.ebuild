@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Read information from an Excel file"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="test cjk unicode"
 
 # Digest::Perl::MD5 cannot be replaced by Digest::MD5, as this module actually
@@ -28,7 +28,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		dev-perl/Test-Pod
 		dev-perl/Unicode-Map
 		dev-perl/Spreadsheet-WriteExcel
 		dev-perl/Jcode
@@ -36,3 +35,8 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/90_pod.t t/91_minimumversion.t t/92_meta.t
+	perl-module_src_test
+}

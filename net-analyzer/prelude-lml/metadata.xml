@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Prelude-LML is a log analyser that allows Prelude to collect and
+		analyze information from all kind of applications emitting logs or
+		syslog messages in order to detect suspicious activities and transform
+		them into Prelude-IDMEF alerts. Prelude-LML handles events generated
+		by a large set of applications
+	</longdescription>
+	<use>
+		<flag name="tls">Enables Prelude LML support Syslog through TLS
+		using <pkg>net-libs/gnutls</pkg>.</flag>
+	</use>
+</pkgmetadata>

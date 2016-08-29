@@ -1,0 +1,66 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+eblit-perl-pkg_setup() {
+	case ${CHOST} in
+		*-freebsd*)   osname="freebsd" ;;
+		*-dragonfly*) osname="dragonfly" ;;
+		*-netbsd*)    osname="netbsd" ;;
+		*-openbsd*)   osname="openbsd" ;;
+		*-darwin*)    osname="darwin" ;;
+		*-interix*)   osname="interix" ;;
+		*-aix*)       osname="aix" ;;
+		*)            osname="linux" ;;
+	esac
+
+	myarch="${CHOST%%-*}-${osname}"
+	if use debug ; then
+		myarch+="-debug"
+	fi
+	if use ithreads ; then
+		mythreading="-multi"
+		myarch+="-thread"
+	fi
+
+	LIBPERL="libperl$(get_libname ${MY_PV} )"
+	PRIV_LIB="/usr/$(get_libdir)/perl5/${MY_PV}"
+	ARCH_LIB="/usr/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
+	SITE_LIB="/usr/local/$(get_libdir)/perl5/${MY_PV}"
+	SITE_ARCH="/usr/local/$(get_libdir)/perl5/${MY_PV}/${myarch}${mythreading}"
+	VENDOR_LIB="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}"
+	VENDOR_ARCH="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}/${myarch}${mythreading}"
+
+	if use ithreads ; then
+		echo ""
+		ewarn "THREADS WARNING"
+		ewarn "PLEASE NOTE: You are compiling ${MY_P} with interpreter-level threading enabled."
+		ewarn "Threading is not supported by all applications that compile against perl. You"
+		ewarn "use threading at your own discretion."
+	fi
+	check_rebuild
+	dual_scripts
+}
+
+check_rebuild() {
+	if has_version "<dev-lang/perl-${SHORT_PV}" ; then
+		echo ""
+		ewarn "UPDATE THE PERL MODULES:"
+		ewarn "After updating dev-lang/perl the installed Perl modules will"
+		ewarn "have to be re-installed. In most cases, this is done automatically"
+		ewarn "by the package manager, but you should still call perl-cleaner to"
+		ewarn "make sure your system is consistent."
+		ewarn "Use: perl-cleaner --all"
+	elif has_version dev-lang/perl ; then
+		if (   use ithreads && ! has_version dev-lang/perl[ithreads] ) || \
+		   ( ! use ithreads &&   has_version dev-lang/perl[ithreads] ) || \
+		   (   use debug    && ! has_version dev-lang/perl[debug]    ) || \
+		   ( ! use debug    &&   has_version dev-lang/perl[debug]    ) ; then
+			echo ""
+			ewarn "TOGGLED USE-FLAGS WARNING:"
+			ewarn "You changed one of the use-flags ithreads or debug."
+			ewarn "You must rebuild all perl-modules installed."
+			ewarn "Use: perl-cleaner --modules ; perl-cleaner --force --libperl"
+		fi
+	fi
+}

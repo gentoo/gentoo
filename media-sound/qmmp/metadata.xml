@@ -28,5 +28,6 @@
 	<flag name="kde">Use kde4 notifier system</flag>
 	<flag name="projectm">Enable projectm music visualization plugin</flag>
     <flag name="scrobbler">Enable audioscrobbler/last.fm support</flag>
+    <flag name="soxr">Use the SoX resampling library</flag>
   </use>
 </pkgmetadata>

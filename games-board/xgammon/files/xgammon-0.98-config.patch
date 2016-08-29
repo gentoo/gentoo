@@ -1,4 +1,4 @@
---- xgammon-0.98/xgammon.ad.rhconfig	Tue Aug 29 01:35:39 1995
+--- xgammon-0.98/xgammon.ad	Tue Aug 29 01:35:39 1995
 +++ xgammon-0.98/xgammon.ad	Wed Aug 12 18:22:25 1998
 @@ -67,4 +67,4 @@
  xgammon.buttonmove:			false
@@ -6,7 +6,7 @@
  xgammon.delaytime:			5
 -xgammon.database:			lib/xgammon.db
 +xgammon.database:			/usr/lib/X11/xgammon/xgammon.db
---- xgammon-0.98/Imakefile.rhconfig	Wed Aug 23 15:26:39 1995
+--- xgammon-0.98/Imakefile	Wed Aug 23 15:26:39 1995
 +++ xgammon-0.98/Imakefile	Wed Aug 12 18:42:55 1998
 @@ -12,9 +12,9 @@
  

@@ -4,7 +4,6 @@
 
 EAPI=6
 
-KDE_DOXYGEN="true"
 KDE_HANDBOOK="true"
 inherit kde5
 
@@ -17,7 +16,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 COMMON_DEPEND="
@@ -41,7 +40,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
 		$(cmake-utils_use_find_package handbook KF5DocTools)
 	)
 

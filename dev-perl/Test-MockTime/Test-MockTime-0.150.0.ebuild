@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,14 +12,18 @@ DESCRIPTION="Replaces actual time with simulated time"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE=""
 
 RDEPEND="
 	virtual/perl-Time-Piece
 	virtual/perl-Time-Local
 	virtual/perl-Test-Simple
 "
-DEPEND="${RDEPEND}
-	test? ( dev-perl/Test-Pod )"
+DEPEND="${RDEPEND}"
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
+}

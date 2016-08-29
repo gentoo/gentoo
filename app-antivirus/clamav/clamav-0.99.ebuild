@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="bzip2 clamdtop iconv ipv6 libressl milter metadata-analysis-api selinux static-libs uclibc"
 
 CDEPEND="bzip2? ( app-arch/bzip2 )
@@ -25,7 +25,9 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-devel/libtool
+	>dev-libs/libpcre-6
 	!!<app-antivirus/clamav-0.99"
+# hard block clamav < 0.99 due to linking problems Bug #567680
 # openssl is now *required* see this link as to why
 # http://blog.clamav.net/2014/02/introducing-openssl-as-dependency-to.html
 DEPEND="${CDEPEND}

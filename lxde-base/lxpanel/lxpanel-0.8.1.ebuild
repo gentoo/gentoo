@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://lxde.org/"
 SRC_URI="mirror://sourceforge/lxde/LXPanel%20%28desktop%20panel%29/LXPanel%20${MAJOR_VER}.x/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~ppc ~x86 ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
 SLOT="0"
 IUSE="+alsa wifi"
 RESTRICT="test"  # bug 249598

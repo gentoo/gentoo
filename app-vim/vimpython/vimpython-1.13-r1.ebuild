@@ -9,4 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: A set of menus/shortcuts to work with Python files"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=30"
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+
+DEPEND="app-arch/unzip"
+RDEPEND="dev-lang/python:*"

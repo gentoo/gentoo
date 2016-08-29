@@ -1,0 +1,55 @@
+--- a/etc/rundeck/profile	2016-06-10 21:37:22.000000000 +0100
++++ b/etc/rundeck/profile	2016-06-14 00:02:11.630959252 +0100
+@@ -1,27 +1,11 @@
+ RDECK_BASE=/var/lib/rundeck
+ export RDECK_BASE
+ 
+-JAVA_CMD=java
+ RUNDECK_TEMPDIR=/tmp/rundeck
+ 
+ RDECK_HTTP_PORT=4440
+ RDECK_HTTPS_PORT=4443
+ 
+-#
+-# If JAVA_HOME is set, then add it to home and set JAVA_CMD to use the version specified in that
+-# path.  JAVA_HOME can be set in the rundeck profile.  Or set in this file.
+-#JAVA_HOME=<path/to/JDK or JRE/install>
+-
+-if [ ! -z $JAVA_HOME ]; then
+-	PATH=$PATH:$JAVA_HOME/bin
+-	export PATH
+-	JAVA_CMD=$JAVA_HOME/bin/java
+-fi
+-
+-
+-
+-export CLI_CP=$(find /var/lib/rundeck/cli -name \*.jar -printf %p:)
+-export BOOTSTRAP_CP=$(find /var/lib/rundeck/bootstrap -name \*.jar -printf %p:)
+ export RDECK_JVM="-Djava.security.auth.login.config=/etc/rundeck/jaas-loginmodule.conf \
+ 	-Dloginmodule.name=RDpropertyfilelogin \
+ 	-Drdeck.config=/etc/rundeck \
+@@ -36,7 +20,7 @@
+ #
+ # Set min/max heap size
+ #
+-RDECK_JVM="$RDECK_JVM -Xmx1024m -Xms256m -XX:MaxPermSize=256m -server"
++RDECK_JVM="$RDECK_JVM -Xmx1024m -Xms256m -server"
+ #
+ # SSL Configuration - Uncomment the following to enable.  Check SSL.properties for details.
+ #
+@@ -44,15 +28,4 @@
+ 
+ export RDECK_SSL_OPTS="-Djavax.net.ssl.trustStore=/etc/rundeck/ssl/truststore -Djavax.net.ssl.trustStoreType=jks -Djava.protocol.handler.pkgs=com.sun.net.ssl.internal.www.protocol"
+ 
+-if test -t 0 -a -z "$RUNDECK_CLI_TERSE"
+-then
+-  RUNDECK_CLI_TERSE=true
+-  export RUNDECK_CLI_TERSE
+-fi
+-
+-if test -n "$JRE_HOME"
+-then
+-   unset JRE_HOME
+-fi
+-
+ umask 002

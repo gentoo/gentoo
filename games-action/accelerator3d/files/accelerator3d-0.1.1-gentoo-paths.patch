@@ -1,5 +1,5 @@
---- accelerator.py.old	2006-04-18 21:51:28.000000000 +0200
-+++ accelerator.py	2006-04-18 22:07:28.000000000 +0200
+--- a/accelerator.py	2006-04-18 21:51:28.000000000 +0200
++++ b/accelerator.py	2006-04-18 22:07:28.000000000 +0200
 @@ -72,7 +72,7 @@
  	# default parameters on it (min/mag filters, wrapping).
  	def __init__(self,texfile,mipmap = False):

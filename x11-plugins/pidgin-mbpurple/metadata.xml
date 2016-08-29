@@ -5,10 +5,6 @@
 		<email>nils@nils-andresen.de</email>
 		<name>Nils Andresen</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>fauli@gentoo.org</email>
-		<name>Christian Faulhammer</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

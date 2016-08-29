@@ -16,6 +16,6 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

@@ -7,6 +7,8 @@
 	</maintainer>
 	<longdescription>Geeqie is a lightweight image viewer. It was forked from GQview. The development is focused on features for photo collection maintenance: raw format, Exif/IPTC/XMP metadata and integration with programs like UFraw, ImageMagick, Gimp, gPhoto or ExifTool</longdescription>
 	<use>
+		<flag name="gpu-accel">Enable GPU acceleration support - experimental</flag>
 		<flag name="gtk3">Link against <pkg>x11-libs/gtk+</pkg>:3 instead of <pkg>x11-libs/gtk+</pkg>:2</flag>
+		<flag name="map">Enable items map display - experimental</flag>
 	</use>
 </pkgmetadata>

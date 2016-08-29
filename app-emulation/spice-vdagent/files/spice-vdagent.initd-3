@@ -1,0 +1,61 @@
+#!/sbin/openrc-run
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+    after dbus
+}
+
+PIDFILE="/var/run/spice-vdagentd/spice-vdagentd.pid"
+
+start() {
+    PORT="${PORT:-/dev/virtio-ports/com.redhat.spice.0}"
+    DEVICE="${DEVICE:-/dev/uinput}"
+
+    ebegin "Checking for required modules and devices"
+
+    if [ ! -d /sys/module/uinput ]; then
+        modprobe -q uinput
+    fi
+
+    if [ ! -d /sys/module/uinput ]; then
+        eerror "Module 'uinput' not loaded or not enabled in the kernel"
+        eend 1
+        return 1
+    fi
+
+    if [ ! -c "${PORT}" ] ; then
+        eerror "Required virtio port does not exist. Make sure you"
+        eerror "started the virtual machine with appropriate parameters."
+        eend 1
+        return 1
+    fi
+    eend 0
+
+    if [ ! -c ${DEVICE} -a -c /dev/input/uinput ]; then
+        DEVICE=/dev/input/uinput
+    fi
+
+    # recreate the directory since /var/run may reside on a ramdisk
+    mkdir -p /var/run/spice-vdagentd
+
+    # cleanup stalled socket
+    rm -f /var/run/spice-vdagentd/spice-vdagent-sock
+
+    ebegin "Starting spice VD agent daemon"
+    start-stop-daemon \
+        --start \
+        --pidfile "${PIDFILE}" \
+        --exec /usr/sbin/spice-vdagentd \
+        -- -u "${DEVICE}" ${SPICE_VDAGENT_ARGS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping spice VD agent daemon"
+    start-stop-daemon \
+        --stop \
+        --pidfile "${PIDFILE}"
+    eend $?
+}

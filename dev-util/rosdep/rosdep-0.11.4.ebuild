@@ -20,7 +20,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
-		http://github.com/ros-infrastructure/rosdep/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/ros-infrastructure/rosdep/archive/${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm"
 fi

@@ -8,12 +8,12 @@ MY_P="${MY_PN}-${PV}"
 inherit linux-info linux-mod toolchain-funcs
 
 DESCRIPTION="Netflow iptables module"
-HOMEPAGE="http://sourceforge.net/projects/ipt-netflow"
+HOMEPAGE="https://sourceforge.net/projects/ipt-netflow"
 SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug snmp"
 

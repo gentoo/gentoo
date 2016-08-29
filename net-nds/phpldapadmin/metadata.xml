@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>vostorga@gentoo.org</email>
-    <name>Víctor Ostorga</name>
-  </maintainer>
-  <maintainer type="person">
     <email>jmbsvicetto@gentoo.org</email>
     <name>Jorge Manuel B. S. Vicetto</name>
   </maintainer>

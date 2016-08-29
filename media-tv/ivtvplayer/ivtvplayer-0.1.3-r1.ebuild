@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils
 
 DESCRIPTION="Simple IVTV command line TV and radio player with support of LIRC"
-HOMEPAGE="http://sourceforge.net/projects/ivtvplayer/"
+HOMEPAGE="https://sourceforge.net/projects/ivtvplayer/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"

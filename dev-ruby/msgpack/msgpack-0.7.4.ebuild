@@ -33,6 +33,10 @@ all_ruby_prepare() {
 
 each_ruby_configure() {
 	${RUBY} -Cext/${PN} extconf.rb || die "Configuration of extension failed."
+
+	# rb_num2int is not inlined on 32 bit arches but also not explicitly
+	# defined, bug 582968
+	sed -i -e 's:-Wl,--no-undefined::' ext/${PN}/Makefile || die
 }
 
 each_ruby_compile() {

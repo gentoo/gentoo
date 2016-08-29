@@ -1,0 +1,25 @@
+From b19eaebad1e9ae58ed8db028b65c5391cab1271a Mon Sep 17 00:00:00 2001
+From: Nicolas Sebrecht <nicolas.s-dev@laposte.net>
+Date: Sat, 30 Jul 2016 04:23:25 +0200
+Subject: [PATCH] ConfigHelperMixin must be new-style class to not break
+ inheritance
+
+Github-fix: https://github.com/OfflineIMAP/offlineimap/issues/363
+Signed-off-by: Nicolas Sebrecht <nicolas.s-dev@laposte.net>
+---
+ offlineimap/CustomConfig.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/offlineimap/CustomConfig.py b/offlineimap/CustomConfig.py
+index b528e70..7dce4a6 100644
+--- a/offlineimap/CustomConfig.py
++++ b/offlineimap/CustomConfig.py
+@@ -165,7 +165,7 @@ def CustomConfigDefault():
+ 
+ 
+ 
+-class ConfigHelperMixin:
++class ConfigHelperMixin(object):
+     """Allow comfortable retrieving of config values pertaining
+     to a section.
+ 

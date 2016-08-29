@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 set_phpvars() {
 	PHPSLOT=${SVCNAME#php-fpm-}

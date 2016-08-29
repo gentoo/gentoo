@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,8 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-FOXCONF="$(use_enable jpeg) \
-	$(use_enable png) \
-	$(use_enable tiff)"
+src_compile() {
+	FOXCONF="$(use_enable jpeg) \
+		$(use_enable png) \
+		$(use_enable tiff)" fox_src_compile
+}

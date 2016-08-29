@@ -1,0 +1,24 @@
+From 6455e21ee1e1d52e9bd35e61f776031d37ca1b6c Mon Sep 17 00:00:00 2001
+From: Tobias Leupold <tobias.leupold@web.de>
+Date: Wed, 20 Jul 2016 22:53:06 +0200
+Subject: [PATCH] Fix building without KIPI.
+
+---
+ Viewer/InfoBox.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Viewer/InfoBox.cpp b/Viewer/InfoBox.cpp
+index 5c619c5..b37c0de 100644
+--- a/Viewer/InfoBox.cpp
++++ b/Viewer/InfoBox.cpp
+@@ -34,6 +34,7 @@
+ #include <KGlobal>
+ #include <KIconLoader>
+ #include <KDebug>
++#include <KLocale>
+ 
+ // Local includes
+ #include "Browser/BrowserWidget.h"
+-- 
+2.7.3
+

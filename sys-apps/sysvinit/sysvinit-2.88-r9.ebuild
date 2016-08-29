@@ -7,12 +7,12 @@ EAPI=5
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="/sbin/init - parent of all processes"
-HOMEPAGE="http://savannah.nongnu.org/projects/sysvinit"
+HOMEPAGE="https://savannah.nongnu.org/projects/sysvinit"
 SRC_URI="mirror://nongnu/${PN}/${P}dsf.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="selinux ibm static kernel_FreeBSD"
 
 CDEPEND="

@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="eXtended XKB - assign different keymaps to different windows"
-HOMEPAGE="http://sourceforge.net/projects/xxkb/"
+HOMEPAGE="https://sourceforge.net/projects/xxkb/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}-src.tar.gz
 	svg? ( https://dev.gentoo.org/~jer/${PN}-flags.tar.bz2 )

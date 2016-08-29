@@ -27,4 +27,3 @@ nfs - Support NFS
 ssh-client - Install ssh and scp along with config files and specified keys
 syslog - Enable logging with syslog-ng or rsyslog
 systemd - Experimental systemd module
-xen - Support for Xen

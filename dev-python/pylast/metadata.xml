@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>idella4@gentoo.org</email>
-    <name>Ian Delaney</name>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
   </maintainer>
   <longdescription lang="en">
 Python interface to last.fm and other api-compatible websites

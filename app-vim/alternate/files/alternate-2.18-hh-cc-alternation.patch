@@ -1,5 +1,5 @@
---- plugin/a.vim	2005-05-06 22:20:24.000000000 +0100
-+++ plugin/a.vim	2005-06-20 15:45:45.000000000 +0100
+--- a/plugin/a.vim	2005-05-06 22:20:24.000000000 +0100
++++ b/plugin/a.vim	2005-06-20 15:45:45.000000000 +0100
 @@ -57,13 +57,14 @@
  " Mappings for C and C++
  call <SID>AddAlternateExtensionMapping('h',"c,cpp,cxx,cc,CC")

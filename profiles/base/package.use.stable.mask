@@ -1,19 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
+# Not ready to be stabilized yet.
+app-admin/packagekit-base entropy
+
+# Kristian Fiskerstrand <k_f@gentoo.org> (18 Aug 2016)
+# Dropping stable for xtrabackup-bin, stable masking use
+# flag until a source based version that doesn't depend
+# on a vulnerable libgcrypt version is in tree
+dev-db/mariadb sst-xtrabackup
+dev-db/mariadb-galera sst-xtrabackup
+
 # William Hubbs <williamh@gentoo.org (13 Apr 2016)
 # Needs gcc-5 which is currently unstable
 dev-lang/go gccgo
-
-# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# Requires >=dev-util/cmocka-1.0, which is unstable atm,
-# has open bugs and thus not yet ready for stabilization.
-media-video/mpv test
 
 # Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
 # Needs unsable media-libs/opencv
@@ -42,12 +47,6 @@ dev-lang/python-exec -python_targets_python3_5
 # Not stable enough for stable (Debian and SuSE disable it completely)
 =app-office/libreoffice-5.0* gtk3
 =app-office/libreoffice-5.1* gtk3
-
-# Davide Pesavento <pesa@gentoo.org> (26 Aug 2015)
-# The corresponding Qt5 modules are not stable yet, and we don't want
-# to stabilize them solely because of PyQt5 when there are no other
-# in-tree users yet.
-dev-python/PyQt5 serialport websockets
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized

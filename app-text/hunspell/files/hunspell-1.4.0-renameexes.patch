@@ -1,0 +1,124 @@
+--- hunspell-1.4.0/src/tools/chmorph.cxx
++++ hunspell-1.4.0/src/tools/chmorph.cxx
+@@ -58,11 +58,11 @@
+     if (!argv[i]) {
+       fprintf(
+           stderr,
+-          "chmorph - change affixes by morphological analysis and generation\n"
+-          "correct syntax is:\nchmorph affix_file "
++          "hunspell-chmorph - change affixes by morphological analysis and generation\n"
++          "correct syntax is:\nhunspell-chmorph affix_file "
+           "dictionary_file file_to_convert STRING1 STRING2\n"
+           "STRINGS may be arbitrary parts of the morphological descriptions\n"
+-          "example: chmorph hu.aff hu.dic hu.txt SG_2 SG_3 "
++          "example: hunspell-chmorph hu.aff hu.dic hu.txt SG_2 SG_3 "
+           " (convert informal Hungarian second person texts to formal third "
+           "person texts)\n");
+       exit(1);
+--- hunspell-1.4.0/src/tools/example.cxx
++++ hunspell-1.4.0/src/tools/example.cxx
+@@ -54,9 +54,9 @@
+   /* first parse the command line options */
+ 
+   if (argc < 4) {
+-    fprintf(stderr, "example (now it works with more dictionary files):\n");
++    fprintf(stderr, "hunspell-example (now it works with more dictionary files):\n");
+     fprintf(stderr,
+-            "example affix_file dictionary_file(s) file_of_words_to_check\n");
++            "hunspell-example affix_file dictionary_file(s) file_of_words_to_check\n");
+     exit(1);
+   }
+ 
+--- hunspell-1.4.0/src/tools/Makefile.am
++++ hunspell-1.4.0/src/tools/Makefile.am
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS=analyze chmorph hunspell munch unmunch hzip hunzip
++bin_PROGRAMS=hunspell-analyze hunspell-chmorph hunspell hunspell-munch hunspell-unmunch hzip hunzip
+ 
+ INCLUDES=-I${top_srcdir}/src/hunspell -I${top_srcdir}/src/parsers
+ 
+@@ -6,8 +6,8 @@
+ hunzip_SOURCES=hunzip.cxx
+ hunzip_LDADD = ../hunspell/libhunspell-1.4.la
+ 
+-munch_SOURCES=munch.cxx munch.h
+-unmunch_SOURCES=unmunch.cxx unmunch.h
++hunspell_munch_SOURCES=munch.cxx munch.h
++hunspell_unmunch_SOURCES=unmunch.cxx unmunch.h
+ 
+ example_SOURCES=example.cxx
+ example_LDADD = ../hunspell/libhunspell-1.4.la
+@@ -16,11 +16,11 @@
+ hunspell_LDADD = @LIBINTL@ @LIBICONV@ ../parsers/libparsers.a \
+ 	../hunspell/libhunspell-1.4.la @CURSESLIB@ @READLINELIB@
+ 
+-analyze_SOURCES=analyze.cxx
+-analyze_LDADD = ../hunspell/libhunspell-1.4.la
++hunspell_analyze_SOURCES=analyze.cxx
++hunspell_analyze_LDADD = ../hunspell/libhunspell-1.4.la
+ 
+-chmorph_SOURCES=chmorph.cxx
+-chmorph_LDADD = ../parsers/libparsers.a ../hunspell/libhunspell-1.4.la
++hunspell_chmorph_SOURCES=chmorph.cxx
++hunspell_chmorph_LDADD = ../parsers/libparsers.a ../hunspell/libhunspell-1.4.la
+ 
+ noinst_PROGRAMS=example
+ 
+--- hunspell-1.4.0/src/tools/munch.cxx
++++ hunspell-1.4.0/src/tools/munch.cxx
+@@ -80,14 +80,14 @@
+     wf = mystrdup(argv[1]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "munch word_list_file affix_file\n");
++    fprintf(stderr, "hunspell-munch word_list_file affix_file\n");
+     exit(1);
+   }
+   if (argv[2]) {
+     af = mystrdup(argv[2]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "munch word_list_file affix_file\n");
++    fprintf(stderr, "hunspell-munch word_list_file affix_file\n");
+     exit(1);
+   }
+ 
+--- hunspell-1.4.0/src/tools/unmunch.cxx
++++ hunspell-1.4.0/src/tools/unmunch.cxx
+@@ -76,14 +76,14 @@
+     wf = mystrdup(argv[1]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "unmunch dic_file affix_file\n");
++    fprintf(stderr, "hunspell-unmunch dic_file affix_file\n");
+     exit(1);
+   }
+   if (argv[2]) {
+     af = mystrdup(argv[2]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "unmunch dic_file affix_file\n");
++    fprintf(stderr, "hunspell-unmunch dic_file affix_file\n");
+     exit(1);
+   }
+ 
+--- hunspell-1.4.0/tests/test.sh
++++ hunspell-1.4.0/tests/test.sh
+@@ -74,7 +74,7 @@
+ shopt -s expand_aliases
+ 
+ alias hunspell='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la ../src/tools/hunspell'
+-alias analyze='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la ../src/tools/analyze'
++alias analyze='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la ../src/tools/hunspell-analyze'
+ 
+ if [ "$VALGRIND" != "" ]; then
+   rm -f $TEMPDIR/test.pid*
+@@ -83,7 +83,7 @@
+   fi
+ 
+   alias hunspell='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la valgrind --tool=$VALGRIND --leak-check=yes --show-reachable=yes --log-file=$TEMPDIR/test.pid ../src/tools/hunspell'
+-  alias analyze='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la valgrind --tool=$VALGRIND --leak-check=yes --show-reachable=yes --log-file=$TEMPDIR/test.pid ../src/tools/analyze'
++  alias analyze='../libtool --mode=execute -dlopen ../src/hunspell/.libs/libhunspell*.la valgrind --tool=$VALGRIND --leak-check=yes --show-reachable=yes --log-file=$TEMPDIR/test.pid ../src/tools/hunspell-analyze'
+ fi
+ 
+ # Tests good words

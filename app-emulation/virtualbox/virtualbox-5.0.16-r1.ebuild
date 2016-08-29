@@ -143,6 +143,10 @@ src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
+	# Remove pointless GCC version limitations in check_gcc()
+	sed -e "/\s*-o\s*\\\(\s*\$cc_maj\s*-eq\s*[5-9]\s*-a\s*\$cc_min\s*-gt\s*[0-5]\s*\\\)\s*\\\/d" \
+		-i configure || die
+
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
 		"${FILESDIR}"/${PN}-5-localconfig > LocalConfig.kmk || die

@@ -36,13 +36,13 @@ CDEPEND="
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
-	dev-libs/qtkeychain[qt5]
+	dev-libs/qtkeychain:=[qt5]
 	dev-libs/quazip[qt5]
 	>=media-libs/libechonest-2.3.1:=[qt5]
 	media-libs/liblastfm[qt5]
 	>=media-libs/taglib-1.8.0
 	media-video/vlc:=[flac,dvbpsi,ffmpeg,mp3]
-	>=net-libs/gnutls-3.2
+	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
 	telepathy? ( net-libs/telepathy-qt[qt5] )

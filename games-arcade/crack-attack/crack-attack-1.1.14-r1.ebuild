@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="Addictive OpenGL-based block game"
 HOMEPAGE="http://www.nongnu.org/crack-attack/"
-SRC_URI="http://savannah.nongnu.org/download/crack-attack/${P}.tar.bz2"
+SRC_URI="https://savannah.nongnu.org/download/crack-attack/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
