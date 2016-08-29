@@ -141,7 +141,7 @@ pkg_postinst() {
 	fi
 
 	if has_version app-editors/gvim || has_version app-editors/vim; then
-		elog "install app-vim/rust-mode to get vim support for rust."
+		elog "install app-vim/rust-vim to get vim support for rust."
 	fi
 
 	if has_version 'app-shells/zsh'; then
