@@ -14,7 +14,7 @@
  SUBDIRS = src
  
 -data_DATA = bopm.conf.sample bopm.conf.blitzed
-+dist_doc_DATA = bopm.conf.blitzed
++dist_doc_DATA = bopm.conf.sample bopm.conf.blitzed
  
 -EXTRA_DIST = ChangeLog contrib INSTALL README bopm.conf.sample bopm.conf.blitzed network-bopm
 +EXTRA_DIST = ChangeLog contrib INSTALL README network-bopm

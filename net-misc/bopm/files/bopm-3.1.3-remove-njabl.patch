@@ -3,10 +3,10 @@ Remove NJABL as an example blacklist.
 NJABL has been shut down and bopm upstream still lists it in its default
 configuration.
 ---
-diff --git a/bopm.conf b/bopm.conf
+diff --git a/bopm.conf.sample b/bopm.conf.sample
 index 74483e1..bc05bf4 100644
---- a/bopm.conf
-+++ b/bopm.conf
+--- a/bopm.conf.sample
++++ b/bopm.conf.sample
 @@ -363,18 +363,6 @@ OPM {
  #        };
  

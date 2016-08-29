@@ -28,16 +28,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	mv bopm.conf{.sample,} || die
-	mv configure.{in,ac} || die
-	mv src/libopm/configure.{in,ac} || die
-
 	sed -i \
 		-e "s!/some/path/bopm.pid!/run/${PN}/${PN}.pid!" \
 		-e "s!/some/path/scan.log!/var/log/${PN}/scan.log!" \
-		bopm.conf || die
+		bopm.conf.sample || die
+
+	mv configure.{in,ac} || die
+	mv src/libopm/configure.{in,ac} || die
 
 	default
+	cp bopm.conf{.sample,} || die
+
 	eautoreconf
 }
 
