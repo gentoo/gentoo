@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -24,7 +24,7 @@ ruby_add_bdepend "
 		>=dev-ruby/unindent-1.0
 	)"
 
-USE_RUBY=${USE_RUBY/ruby22} ruby_add_bdepend "test? ( >=dev-ruby/kramdown-1.4.2 )"
+USE_RUBY=${USE_RUBY/ruby23} ruby_add_bdepend "test? ( >=dev-ruby/kramdown-1.4.2 )"
 
 ruby_add_rdepend "
 	>=dev-ruby/gherkin-4.0:4
@@ -32,7 +32,7 @@ ruby_add_rdepend "
 
 each_ruby_prepare() {
 	case ${RUBY} in
-		*ruby22)
+		*ruby23)
 			# Avoid dependency on kramdown so we can add the ruby22
 			# target.
 			rm -f spec/readme_spec.rb || die
