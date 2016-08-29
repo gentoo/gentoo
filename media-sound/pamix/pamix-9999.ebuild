@@ -13,6 +13,7 @@ DESCRIPTION="A PulseAudio NCurses mixer"
 HOMEPAGE="https://github.com/patroclos/PAmix"
 LICENSE="MIT"
 SLOT="0"
+IUSE="+unicode"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="git://github.com/patroclos/PAmix.git"
@@ -23,11 +24,15 @@ else
 fi
 
 RDEPEND="media-sound/pulseaudio
-	sys-libs/ncurses:0=[unicode]"
+	sys-libs/ncurses:0=[unicode?]"
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable unicode)
 }
