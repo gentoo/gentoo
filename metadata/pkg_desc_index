@@ -7699,7 +7699,7 @@ dev-python/processing 0.52-r1: Package for using processes, which mimics the thr
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1 2.3-r2: Text progressbar library for python
 dev-python/promise 0.2.2-r1 0.4.1 0.4.2: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58 0.60 1.0.0 1.0.3: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.0.0_beta3_p1: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
@@ -8343,7 +8343,7 @@ dev-python/waitress 0.8.9 0.8.10-r1: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3 0.8.3-r1: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8: Framework for plotting astronomical and geospatial data
-dev-python/wcwidth 0.1.4 0.1.5 0.1.6 0.1.6-r1 0.1.7: Measures number of Terminal column cells of wide-character codes
+dev-python/wcwidth 0.1.7: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 0.21-r1 0.22 0.23 0.26 0.29: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
