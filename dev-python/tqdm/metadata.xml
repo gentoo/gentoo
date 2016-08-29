@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Instantly make your loops show a progress meter - just wrap 
+		any iterator with "tqdm(iterator)", and you're done!
+	</longdescription>
+	<upstream>
+		<remote-id type="github">noamraph/tqdm</remote-id>
+	</upstream>
+</pkgmetadata>
