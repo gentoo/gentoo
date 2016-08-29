@@ -286,7 +286,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	[ "${EROOT}" == "/" ] && pkg_config
+	#[ "${EROOT}" == "/" ] && pkg_config
 
 	if [[ ! -e /etc/mail/aliases.db ]] ; then
 		ewarn
@@ -297,12 +297,16 @@ pkg_postinst() {
 	fi
 }
 
-pkg_config() {
+pkg_postinst() {
 	# configure tls
 	if use ssl ; then
-		elog "To configure client side TLS settings:"
-		elog "${EROOT}"usr/sbin/postfix tls enable-client
-		elog "To configure server side TLS settings:"
-		elog "${EROOT}"usr/sbin/postfix tls enable-server
+		if "${EROOT}"/usr/sbin/postfix tls all-default-client; then
+			elog "To configure client side TLS settings:"
+			elog "${EROOT}"usr/sbin/postfix tls enable-client
+		fi
+		if "${EROOT}"/usr/sbin/postfix tls all-default-server; then
+			elog "To configure server side TLS settings:"
+			elog "${EROOT}"usr/sbin/postfix tls enable-server
+		fi
 	fi
 }
