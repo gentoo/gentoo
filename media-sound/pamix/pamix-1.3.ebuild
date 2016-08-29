@@ -4,12 +4,16 @@
 
 EAPI=6
 
-[[ "${PV}" == 9999 ]] && inherit git-r3
+SCM=""
+[[ "${PV}" == 9999 ]] && SCM="git-r3"
+inherit autotools ${SCM}
+unset SCM
 
 DESCRIPTION="A PulseAudio NCurses mixer"
 HOMEPAGE="https://github.com/patroclos/PAmix"
 LICENSE="MIT"
 SLOT="0"
+IUSE="+unicode"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="git://github.com/patroclos/PAmix.git"
@@ -20,11 +24,15 @@ else
 fi
 
 RDEPEND="media-sound/pulseaudio
-	sys-libs/ncurses:0=[unicode]"
+	sys-libs/ncurses:0=[unicode?]"
 DEPEND="virtual/pkgconfig
 	${RDEPEND}"
 
-src_unpack() {
-	[[ "${PV}" == 9999 ]] && git-r3_src_unpack
+src_prepare() {
 	default
+	eautoreconf
+}
+
+src_configure() {
+	econf $(use_enable unicode)
 }
