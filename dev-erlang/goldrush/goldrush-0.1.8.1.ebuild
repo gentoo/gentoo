@@ -28,5 +28,5 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	rebar_src_prepare
 	# 'priv' directory contains only edoc.css, but doc isn't going to be built.
-	rm -r "${S}/priv"
+	rm -r "${S}/priv" || die
 }
