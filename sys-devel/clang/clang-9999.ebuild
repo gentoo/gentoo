@@ -158,6 +158,8 @@ multilib_src_configure() {
 			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
+		)
+		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/clang"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)
