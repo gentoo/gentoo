@@ -8,5 +8,5 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://download.newrelic.com/server_monitor/archive/1.1.2.124/newrelic-sysmond-1.1.2.124-linux.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
-_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
 _md5_=e276ed7ae8d39c31ab2499a90196a0f1

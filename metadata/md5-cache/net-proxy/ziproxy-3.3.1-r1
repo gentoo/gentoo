@@ -10,5 +10,5 @@ RDEPEND=media-libs/giflib media-libs/libpng:0= virtual/jpeg sys-libs/zlib jpeg2k
 SLOT=0
 SRC_URI=mirror://sourceforge/ziproxy/ziproxy-3.3.1.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
 _md5_=b225e75279fa7ec3d23473ad2937b086

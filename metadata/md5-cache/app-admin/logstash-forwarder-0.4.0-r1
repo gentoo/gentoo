@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/elastic/logstash-forwarder/archive/v0.4.0.tar.gz -> logstash-forwarder-0.4.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
-_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
 _md5_=1dd656246f7c7f456b9d9df8dd3f0d99

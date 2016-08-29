@@ -9,5 +9,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=x86? ( http://http.distributed.net/pub/dcti/v2.9110/dnetc519-linux-x86-elf-uclibc.tar.gz )
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=user	c66cbe7502fe1161066eb947d15b79f6
+_eclasses_=user	80aaa71614ced86f02ee1a513821dc87
 _md5_=df6ac08fe8058a223ef899063cbfc62a
