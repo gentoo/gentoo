@@ -13566,7 +13566,7 @@ media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube
 media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 0.6.1 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
-media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3: GTK+ UVC Viewer
+media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3 2.0.4: GTK+ UVC Viewer
 media-video/gxine 0.5.907-r1 0.5.908: GTK+ Front-End for libxine
 media-video/h264enc 10.4.1 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/handbrake 0.10.5-r1 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
