@@ -13442,6 +13442,7 @@ media-sound/traverso 0.49.2-r1 0.49.3: Professional Audio Tools for GNU/Linux
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
 media-sound/tunapie 2.1.17: Directory browser for Radio and TV streams
+media-sound/tuxguitar 1.3.2: TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT
 media-sound/twolame 0.3.13-r1 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a 0.2.16a-r1: Minimalistic Murmur (Mumble server)
