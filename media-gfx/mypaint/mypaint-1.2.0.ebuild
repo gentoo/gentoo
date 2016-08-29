@@ -47,6 +47,8 @@ src_prepare() {
 	# multilib support
 	sed -i -e "s:lib\/${PN}:$(get_libdir)\/${PN}:" \
 		SConstruct SConscript || die
+		
+	epatch "${FILESDIR}"/${P}-filename_to_unicode.patch
 }
 
 src_compile() {
