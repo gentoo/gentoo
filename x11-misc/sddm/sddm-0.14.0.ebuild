@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 	dev-python/docutils
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
+	kde-frameworks/extra-cmake-modules
 	virtual/pkgconfig"
 
 pkg_pretend() {
