@@ -65,11 +65,12 @@ src_compile() {
 	local build_order=( ${LIBRARY_LIST[@]} ${PLUGIN_LIST[@]/#/TuxGuitar-} )
 	local directory
 
+	append-flags -fPIC $(java-pkg_get-jni-cflags)
+
 	for directory in ${build_order[@]}; do
 		cd "${S}"/${directory} || die "cd ${directory} failed"
 		eant
 		if [[ -d jni ]]; then
-			append-flags -fPIC $(java-pkg_get-jni-cflags)
 			CC=$(tc-getCC) emake -C jni
 		fi
 	done
