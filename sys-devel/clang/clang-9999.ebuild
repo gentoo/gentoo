@@ -75,10 +75,19 @@ pkg_setup() {
 src_unpack() {
 	git-r3_fetch "http://llvm.org/git/clang-tools-extra.git
 		https://github.com/llvm-mirror/clang-tools-extra.git"
+	if use test; then
+		# needed for patched gtest
+		git-r3_fetch "http://llvm.org/git/llvm.git
+			https://github.com/llvm-mirror/llvm.git"
+	fi
 	git-r3_fetch
 
 	git-r3_checkout http://llvm.org/git/clang-tools-extra.git \
 		"${S}"/tools/clang/tools/extra
+	if use test; then
+		git-r3_checkout http://llvm.org/git/llvm.git \
+			"${WORKDIR}"/llvm
+	fi
 	git-r3_checkout
 }
 
@@ -140,13 +149,17 @@ multilib_src_configure() {
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 	)
+	use test && mycmakeargs+=(
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
+	)
 
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
-			# TODO: docs don't work out-of-llvm
 			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
+		)
+		use doc && mycmakeargs+=(
 			-DCLANG_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/clang"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 		)

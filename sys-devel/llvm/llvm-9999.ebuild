@@ -188,16 +188,15 @@ multilib_src_configure() {
 			-DLLVM_BUILD_DOCS=$(usex doc)
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
-			-DLLVM_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/html"
-			-DSPHINX_WARNINGS_AS_ERRORS=OFF
 			-DLLVM_INSTALL_UTILS=ON
 		)
-
-		if use gold; then
-			mycmakeargs+=(
-				-DLLVM_BINUTILS_INCDIR="${EPREFIX}"/usr/include
-			)
-		fi
+		use doc && mycmakeargs+=(
+			-DLLVM_INSTALL_HTML="${EPREFIX}/usr/share/doc/${PF}/html"
+			-DSPHINX_WARNINGS_AS_ERRORS=OFF
+		)
+		use gold && mycmakeargs+=(
+			-DLLVM_BINUTILS_INCDIR="${EPREFIX}"/usr/include
+		)
 	fi
 
 	if tc-is-cross-compiler; then
