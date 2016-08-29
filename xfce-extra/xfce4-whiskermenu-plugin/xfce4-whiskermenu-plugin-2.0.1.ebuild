@@ -38,7 +38,7 @@ src_prepare() {
 		done
 	fi
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -49,11 +49,6 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	dodoc NEWS README
 }
 
 pkg_preinst() {
