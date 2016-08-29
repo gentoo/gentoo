@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/swanandp/acts_as_list"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~x86 ~x86-macos"
+KEYWORDS="~amd64 ~x86-macos"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/activerecord-3:*"
