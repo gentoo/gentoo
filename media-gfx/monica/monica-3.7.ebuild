@@ -17,14 +17,10 @@ IUSE=""
 DEPEND=">=x11-libs/fltk-1.1:1"
 RDEPEND="${DEPEND}
 	x11-apps/xgamma"
-
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-3.6-makefile-cleanup.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
-
-	emake clean
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.6-makefile-cleanup.patch
+	"${FILESDIR}"/${P}-gcc44.patch
+)
 
 src_compile() {
 	emake \
