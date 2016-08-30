@@ -27,6 +27,7 @@ S="${WORKDIR}"
 PATCHES=(
 	"${FILESDIR}/${P}-respectflags-r1.patch"
 	"${FILESDIR}/fix-Wformat-security-warnings.patch"
+	"${FILESDIR}/support-ar-variable.patch"
 )
 
 src_compile() {
