@@ -973,6 +973,8 @@ app-misc/mosquitto:srv - Include SRV lookup support.
 app-misc/muttprint:doc - Builds documentation
 app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
+app-misc/openastro:jpeg - Enable exporting Astrological Charts to jpeg
+app-misc/openastro:png - Enable exporting Astrological Charts to png
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
 app-misc/recoll:chm - Index chm files
