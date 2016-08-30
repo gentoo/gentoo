@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="examples opengl test"
 
 RDEPEND="
-	dev-libs/boost[python,${PYTHON_USEDEP}]
+	dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
