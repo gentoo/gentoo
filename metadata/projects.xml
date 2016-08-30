@@ -4028,6 +4028,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:Vim</url>
     <description>The Gentoo Vim Project maintains Vim-related packages.</description>
     <member>
+      <email>monsieurp@gentoo.org</email>
+      <name>Patrice Clement</name>
+    </member>
+    <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
     </member>
