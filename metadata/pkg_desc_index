@@ -2217,7 +2217,7 @@ app-text/chm2pdf 0.9.1-r1 0.9.1-r2: A script that converts a CHM file into a sin
 app-text/clara 20031214 20031214-r1: An OCR (Optical Character Recognition) program
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
 app-text/code2html 0.9.1-r1 0.9.1-r2: Converts source files to colored HTML output
-app-text/convertlit 1.8-r1 1.8-r2: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
+app-text/convertlit 1.8-r1 1.8-r3: CLit converts MS ebook .lit files to .opf (xml+html+png+jpg)
 app-text/convmv 1.15 1.15-r1 2.0: convert filenames to utf8 or any other charset
 app-text/cook 1.0.2-r1: Embedded language which can be used as a macro preprocessor and for similar text processing
 app-text/cpdf 2.1.1-r1: A command line tool for manipulating PDF files
@@ -8049,7 +8049,7 @@ dev-python/pyxattr 0.5.3 0.5.5 9999: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2 9999: Provides Python interfaces for Xen's XenStore
 dev-python/pyxml 0.8.4-r3: A collection of libraries to process XML with Python
-dev-python/pyyaml 3.11: YAML parser and emitter for Python
+dev-python/pyyaml 3.11 3.12: YAML parser and emitter for Python
 dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 0.5.0-r2 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
