@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files"
 HOMEPAGE="http://www.linuxsampler.org/libgig/"
@@ -32,6 +32,10 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README TODO
+
+	# For libgig.so to be found at runtime
+	printf "LDPATH=\"${EPREFIX}/usr/$(get_libdir)/libgig/\"" > 99${PN}
+	doenvd "99${PN}"
 
 	if use doc ; then
 		dohtml -r doc/html/*
