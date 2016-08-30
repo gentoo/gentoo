@@ -1,0 +1,12 @@
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2014-08-01 21:56:09.000000000 +0100
++++ b/Makefile	2016-08-26 10:22:08.748884675 +0100
+@@ -18,7 +18,7 @@
+ 
+ include makeinclude
+ 
+-DIRS = $(IMAGEDIRS) src $(CAIRODIR) fluid test documentation
++DIRS = $(IMAGEDIRS) src $(CAIRODIR)
+ 
+ all: makeinclude fltk-config
+ 	for dir in $(DIRS); do\
