@@ -1,23 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
+COMMIT_ID="2c3dbe92b5eab4702ced403e4f6c030249a308c2"
 
-inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo systemd user
+inherit autotools eutils flag-o-matic linux-info readme.gentoo-r1 systemd user vcs-snapshot
 
 DESCRIPTION="A userspace logging daemon for netfilter/iptables related logging"
 HOMEPAGE="https://netfilter.org/projects/ulogd/index.html"
-SRC_URI="
-	https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
-	ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
-"
+SRC_URI="http://git.netfilter.org/${PN}2/snapshot/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
 
 RDEPEND="
@@ -40,57 +37,53 @@ DEPEND="${RDEPEND}
 	doc? (
 		app-text/linuxdoc-tools
 		app-text/texlive-core
+		dev-texlive/texlive-fontsrecommended
 		virtual/latex-base
 	)
 "
 
-DOCS=( AUTHORS README TODO )
-
-PATCHES=( "${FILESDIR}/${P}-remove-db-automagic.patch" )
-
+DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
-	You must have at least one logging stack enabled to make ulogd work.
-	Please edit example configuration located at /etc/ulogd.conf
+You must have at least one logging stack enabled to make ulogd work.
+Please edit the example configuration located at '${EPREFIX}/etc/ulogd.conf'.
 "
 
 pkg_setup() {
-	enewgroup ulogd
-	enewuser ulogd -1 -1 /var/log/ulogd ulogd
-
 	linux-info_pkg_setup
 
 	if kernel_is lt 2 6 14; then
-		die "ulogd requires kernel newer than 2.6.14"
-	fi
-
-	if kernel_is lt 2 6 18; then
-		ewarn "You are using kernel older than 2.6.18"
-		ewarn "Some ulogd features may be unavailable"
+		die "${PN} requires a kernel >= 2.6.14."
 	fi
 
 	if use nfacct && kernel_is lt 3 3 0; then
-		ewarn "NFACCT input plugin requires kernel newer than 3.3.0"
+		ewarn "NFACCT input plugin requires a kernel >= 3.3."
 	fi
 
-	if use ulog && kernel_is gt 3 17 0; then
-		ewarn "ULOG target was removed since 3.17.0 kernel release"
-		ewarn "Consider enabling NFACCT, NFCT or NFLOG support"
+	if use ulog && kernel_is ge 3 17 0; then
+		ewarn "ULOG target has been removed in the 3.17 kernel release."
+		ewarn "Consider enabling NFACCT, NFCT, or NFLOG support instead."
 	fi
+
+	enewgroup ulogd
+	enewuser ulogd -1 -1 /var/log/ulogd ulogd
 }
 
 src_prepare() {
-	# - make all logs to be kept in a single dir /var/log/ulogd
-	# - place sockets in /run instead of /tmp
+	default_src_prepare
+
+	# Change default settings to:
+	# - keep log files in /var/log/ulogd instead of /var/log;
+	# - create sockets in /run instead of /tmp.
 	sed -i \
-		-e 's:var/log:var/log/ulogd:g' \
-		-e 's:tmp:run:g' \
+		-e "s|var/log|var/log/${PN}|g" \
+		-e 's|tmp|run|g' \
 		ulogd.conf.in || die
 
-	append-lfs-flags
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
+	append-lfs-flags
 	local myeconfargs=(
 		$(use_with dbi)
 		$(use_with json jansson)
@@ -103,37 +96,35 @@ src_configure() {
 		$(use_with sqlite)
 		$(use_enable ulog)
 	)
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default_src_compile
 
 	if use doc; then
-		# Prevent access violations from bitmap font files generation
-		export VARTEXFONTS="${T}"/fonts
+		# Prevent access violations from bitmap font files generation.
+		export VARTEXFONTS="${T}/fonts"
 		emake -C doc
 	fi
 }
 
 src_install() {
-	autotools-utils_src_install
-	readme.gentoo_create_doc
+	use doc && HTML_DOCS=( doc/${PN}.html )
+
+	default_src_install
 	prune_libtool_files --modules
+	readme.gentoo_create_doc
 
-	if use doc; then
-		dohtml doc/${PN}.html
-		dodoc doc/${PN}.{dvi,ps,txt}
-	fi
+	doman ${PN}.8
 
+	use doc && dodoc doc/${PN}.{dvi,ps,txt}
 	use mysql && dodoc doc/mysql-*.sql
 	use postgres && dodoc doc/pgsql-*.sql
 	use sqlite && dodoc doc/sqlite3.table
 
-	doman ${PN}.8
-
 	insinto /etc
-	doins "${BUILD_DIR}/${PN}.conf"
+	doins ${PN}.conf
 	fowners root:ulogd /etc/${PN}.conf
 	fperms 640 /etc/${PN}.conf
 
@@ -145,4 +136,8 @@ src_install() {
 
 	diropts -o ulogd -g ulogd
 	keepdir /var/log/ulogd
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
