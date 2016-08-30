@@ -14,7 +14,7 @@ SRC_URI="https://github.com/dchest/siphash/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Go implementation of SipHash-2.4"
 HOMEPAGE="https://github.com/dchest/siphash"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 LICENSE="CC0-1.0"
 SLOT="0"
