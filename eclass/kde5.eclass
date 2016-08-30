@@ -225,7 +225,7 @@ if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
 fi
 
-# Drop this when kdepim is finally split upstream
+# FIXME: Drop this when kdepim-16.08.x is no more
 if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
 	S="${S}/${PN}"
 fi
