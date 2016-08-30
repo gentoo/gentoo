@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -22,22 +22,21 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 		http://docs.scipy.org/doc/${DOC_P}/${PN}-ref-${DOC_PV}.pdf
 		http://docs.scipy.org/doc/${DOC_P}/${PN}-user-${DOC_PV}.pdf
 	)"
-# It appears the docs haven't been upgraded, still @ 1.8.1
+# It appears the docs haven't been upgraded, still @ 1.11.0
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 
-RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	lapack? ( virtual/cblas virtual/lapack )"
+RDEPEND="lapack? ( virtual/cblas virtual/lapack )"
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( app-arch/unzip )
 	lapack? ( virtual/pkgconfig )
 	test? ( >=dev-python/nose-1.0[${PYTHON_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.10.2-no-hardcode-blas.patch
+	"${FILESDIR}"/${PN}-1.11.1-no-hardcode-blas.patch
 )
 
 src_unpack() {
@@ -109,6 +108,20 @@ python_prepare_all() {
 	sed \
 		-e 's:test_f2py:_&:g' \
 		-i numpy/tests/test_scripts.py || die
+
+	# QA bug 590464
+	# The .py files from numpy/core/tests are just added, instead
+	# of being bytecode compiled as a proper subdir package.
+	# We trick the buildsystem into accepting it as a bytecode
+	# package by adding a setup.py and an empty __init__.py
+	cp numpy/{compat/setup.py,core/tests} || die
+	touch numpy/core/tests/__init__.py || die
+	sed \
+		-e 's:compat:tests:' \
+		-i numpy/core/tests/setup.py || die
+	sed \
+		-e "s:config\.add_data_dir('tests'):config\.add_subpackage('tests'):" \
+		-i numpy/core/setup.py || die
 
 	distutils-r1_python_prepare_all
 }
