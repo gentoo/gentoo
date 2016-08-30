@@ -18555,7 +18555,7 @@ x11-plugins/asclock 2.0.12-r1: Clock applet for AfterStep
 x11-plugins/ascpu 1.11 1.11-r1: CPU statistics monitor utility for X Windows
 x11-plugins/asmem 1.12 1.12-r1: Monitor the utilization level of memory, cache and swap space
 x11-plugins/asmon 0.71 0.71-r1: WindowMaker/AfterStep system monitor dockapp
-x11-plugins/astime 2.8-r1: Analogue clock utility for X Windows
+x11-plugins/astime 2.8-r1 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r1 0.6.4-r2: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r2: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/compiz-plugins-extra 0.8.8: Compiz Fusion Window Decorator Extra Plugins
