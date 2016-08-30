@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils perl-module linux-info python-single-r1
 
 DESCRIPTION="High-level language bindings for libnetfilter_queue"
-HOMEPAGE="https://www.wzdftpd.net/redmine/projects/nfqueue-bindings/wiki/"
+HOMEPAGE="https://github.com/chifflier/nfqueue-bindings"
 SRC_URI="https://www.wzdftpd.net/redmine/attachments/download/68/nfqueue-bindings-0.5.tar.xz"
 
 KEYWORDS="~x86 ~amd64"

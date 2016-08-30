@@ -7,4 +7,7 @@
 	<maintainer type="person">
 		<email>chutzpah@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">chifflier/nfqueue-bindings</remote-id>
+	</upstream>
 </pkgmetadata>
