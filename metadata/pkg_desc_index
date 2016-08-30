@@ -12550,7 +12550,7 @@ media-libs/libggi 2.2.2: Fast and safe graphics and drivers for about any graphi
 media-libs/libggigcp 1.0.2: Library for General Graphics Interface
 media-libs/libggimisc 2.2.2: Library for General Graphics Interface
 media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
-media-libs/libgig 3.3.0 4.0.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
+media-libs/libgig 3.3.0 4.0.0-r1: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.8 2.5.10: Library that implements support for numerous digital cameras
@@ -13362,7 +13362,7 @@ media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 0.9.2 0.9.8 0.9.10 0.10.1 0.10.2 1.0.7 1.0.10 1.1.1 1.1.2 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r1: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
-media-sound/qsampler 0.2.2_p2345 0.3.1: A graphical frontend to the LinuxSampler engine
+media-sound/qsampler 0.2.2_p2345 0.3.1 0.4.0: A graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.3.6 0.3.9 0.4.0 0.4.1: A Qt application to control FluidSynth
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
