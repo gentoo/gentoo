@@ -4518,6 +4518,7 @@ dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serializati
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
 dev-libs/capstone 3.0.4-r1: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
+dev-libs/cereal 1.2.1: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.10: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs
 dev-libs/check 0.9.8-r1 0.9.11 0.10.0-r1: A unit test framework for C
