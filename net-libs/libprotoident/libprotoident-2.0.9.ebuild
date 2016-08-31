@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools-utils
+EAPI=6
 
 DESCRIPTION="A library that performs application layer protocol identification for flows"
 HOMEPAGE="http://research.wand.net.nz/software/libprotoident.php"
@@ -14,15 +13,16 @@ SLOT="0/2"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs +tools"
 
-DEPEND=">=net-libs/libtrace-3.0.7
-	tools? ( net-libs/libflowmanager )"
-RDEPEND="${DEPEND}"
-
-AUTOTOOLS_IN_SOURCE_BUILD=1
+DEPEND="
+	>=net-libs/libtrace-3.0.9
+	tools? ( net-libs/libflowmanager )
+"
+RDEPEND="
+	${DEPEND}
+"
 
 src_configure() {
-	local myeconfargs=(
+	econf \
+		$(use_enable static-libs static) \
 		$(use_with tools)
-	)
-	autotools-utils_src_configure
 }
