@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.8-flags.patch
+	"${FILESDIR}"/${PN}-2.9.9-lib_symlink.patch
 )
 
 src_prepare() {
@@ -49,5 +50,6 @@ src_install() {
 	emake DESTDIR="${D}" sysdto="${D}/$(systemd_get_systemunitdir)" install
 	dodoc -r AUTHORS ChangeLog NEWS README TODO doc/UserGuide
 
-	rm -r "${ED}"/etc/init.d || die 'remove initscripts failed' # These are only for Fedora
+	# Init scripts are only for Fedora
+	rm -r "${ED}"/etc/init.d || die 'remove initscripts failed'
 }

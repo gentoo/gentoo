@@ -40,7 +40,7 @@ IUSE="berkdb debug doc examples gdbm ipv6 +rdoc rubytests socks5 ssl tk xemacs n
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	tk? (
 		dev-lang/tcl:0=[threads]
