@@ -257,7 +257,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.10.2 1.12.0: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
-app-arch/file-roller 3.16.5 3.20.2: Archive manager for GNOME
+app-arch/file-roller 3.16.5 3.20.2 3.20.3: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.6 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
@@ -4471,7 +4471,7 @@ dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix8
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tool Command Language
 dev-lang/teyjus 2.0.2: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
-dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.6: Tk Widget Set
+dev-lang/tk 8.5.17 8.5.17-r100 8.6.5 8.6.5-r1 8.6.6: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/ucblogo 6.0-r2: a reflective, functional programming language
 dev-lang/vala 0.26.2 0.28.1 0.30.1 0.32.1: Compiler for the GObject type system
