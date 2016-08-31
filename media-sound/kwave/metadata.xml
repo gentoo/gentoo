@@ -8,7 +8,6 @@
 	<longdescription>With Kwave you can edit many sorts of wav-files including multi-channel files. You are able to alter and play back each channel on its own. Kwave also includes many plugins (most are still under development) to transform the wave-file in several ways and presents a graphical view with a complete zoom- and scroll capability.</longdescription>
 	<use>
 		<flag name="opus">Enable Opus audio codec support</flag>
-		<flag name="phonon">Enable playback via Phonon</flag>
 		<flag name="qtmedia">Enable playback via Qt5Multimedia</flag>
 	</use>
 	<upstream>
