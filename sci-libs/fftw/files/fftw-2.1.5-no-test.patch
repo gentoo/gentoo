@@ -1,13 +1,13 @@
---- tests/Makefile.am.orig	2008-06-22 12:29:53.149138283 +0100
-+++ tests/Makefile.am	2008-06-22 12:30:32.731595087 +0100
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
 @@ -1,4 +1,4 @@
 -noinst_PROGRAMS = fftw_test rfftw_test
 +check_PROGRAMS = fftw_test rfftw_test
  noinst_HEADERS = test_main.h
  
  FFTWDIR=../fftw
---- mpi/Makefile.am.orig	2008-06-22 17:21:16.998466390 +0100
-+++ mpi/Makefile.am	2008-06-22 17:27:42.996463162 +0100
+--- a/mpi/Makefile.am
++++ b/mpi/Makefile.am
 @@ -4,8 +4,8 @@
  
  lib_LTLIBRARIES = @FFTW_MPI_LIBLIST@
@@ -18,8 +18,8 @@
  EXTRA_LTLIBRARIES = lib@FFTW_PREFIX@fftw_mpi.la \
                      lib@FFTW_PREFIX@rfftw_mpi.la
  EXTRA_HEADERS = @FFTW_PREFIX@fftw_mpi.h @FFTW_PREFIX@rfftw_mpi.h 
---- threads/Makefile.am.orig	2008-06-22 17:18:18.940409610 +0100
-+++ threads/Makefile.am	2008-06-22 17:28:00.485459803 +0100
+--- a/threads/Makefile.am
++++ b/threads/Makefile.am
 @@ -4,9 +4,9 @@
  
  lib_LTLIBRARIES = @FFTW_THREADS_LIBLIST@

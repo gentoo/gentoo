@@ -1,5 +1,5 @@
---- rfftw/Makefile.am.orig	2008-04-03 15:23:06.989019659 +0000
-+++ rfftw/Makefile.am	2008-04-03 15:23:35.658653448 +0000
+--- a/rfftw/Makefile.am
++++ b/rfftw/Makefile.am
 @@ -18,6 +18,7 @@
  					 rfftw.h                   
  
@@ -8,8 +8,8 @@
  MAINTAINERCLEANFILES = $(CODELETS) rconfig.c
  DISTCLEANFILES = srfftw.h drfftw.h
  
---- threads/Makefile.am.orig	2008-04-03 15:23:10.101197011 +0000
-+++ threads/Makefile.am	2008-04-03 15:23:35.662653676 +0000
+--- a/threads/Makefile.am
++++ b/threads/Makefile.am
 @@ -28,6 +28,10 @@
                               -version-info @SHARED_VERSION_INFO@ \
                               -rpath $(libdir)
@@ -33,8 +33,8 @@
  @FFTW_PREFIX1@rfftw_threads.h: rfftw_threads.h
  	rm -f $@
  	sed 's/\"fftw/\"@FFTW_PREFIX@fftw/g;s/\"rfftw/\"@FFTW_PREFIX@rfftw/g' $(srcdir)/rfftw_threads.h > $@
---- mpi/Makefile.am.orig	2008-04-03 15:22:43.811698858 +0000
-+++ mpi/Makefile.am	2008-04-03 15:25:50.930362143 +0000
+--- a/mpi/Makefile.am
++++ b/mpi/Makefile.am
 @@ -28,6 +28,9 @@
                           -version-info @SHARED_VERSION_INFO@ \
                           -rpath $(libdir)
@@ -92,8 +92,8 @@
  
  # for some reason, automake tries to use autoheader in order to
  # generate config.h.in, and fails because config.h.in is GNU-lly
---- mpi/test_sched.c.orig	2008-04-03 16:58:01.969033125 +0000
-+++ mpi/test_sched.c	2008-04-03 16:59:27.521908505 +0000
+--- a/mpi/test_sched.c
++++ b/mpi/test_sched.c
 @@ -27,6 +27,8 @@
       int **sched;
       int npes = -1, sortpe = -1, steps;
