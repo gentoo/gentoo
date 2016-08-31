@@ -22,7 +22,7 @@ app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written enti
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes sample voices
 app-accessibility/nfbtrans 7.74 7.74-r1: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.18.2 3.20.2 3.20.3: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.18.2 3.20.3 3.20.3-r1: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pidgin-festival 2.4: A plugin for pidgin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Large open source vocabulary, speaker-independent continuous speech recognition engine
@@ -14301,7 +14301,7 @@ net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for fr
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4 1.4-r1: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.0.25 5.4.3_beta 5.5.1 5.6.10: Generic Online Banking Interface
-net-libs/axtls 1.5.3 1.5.4 2.0.0: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 1.5.3 1.5.4 2.0.0 2.0.1: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2: A multicast protocol to support Bible software shared co-navigation
