@@ -6945,10 +6945,10 @@ dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4 1.4.5 1.4.6 1.4.7 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
-dev-python/astropy 1.1.2: Core functionality for performing astrophysics with Python
+dev-python/astropy 1.1.2 1.2.1: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.1.2 1.2: Helpers for Astropy and Affiliated packages
 dev-python/astroquery 0.3.1 0.3.2: Collection of packages to access online astronomical resources
-dev-python/astroscrappy 1.0.3: Optimized cosmic ray annihilation astropy python module
+dev-python/astroscrappy 1.0.3 1.0.5: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
