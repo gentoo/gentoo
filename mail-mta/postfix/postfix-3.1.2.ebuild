@@ -294,8 +294,8 @@ pkg_postinst() {
 		ewarn
 	fi
 
-    # configure tls
-    if use ssl ; then
+	# configure tls
+	if use ssl ; then
 		if "${EROOT}"/usr/sbin/postfix tls all-default-client; then
 			elog "To configure client side TLS settings:"
 			elog "${EROOT}"usr/sbin/postfix tls enable-client
