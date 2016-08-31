@@ -39,7 +39,7 @@ RDEPEND="
 	gdbm? ( sys-libs/gdbm )
 	jemalloc? ( dev-libs/jemalloc )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)
 	socks5? ( >=net-proxy/dante-1.1.13 )
