@@ -1,14 +1,14 @@
-From 2dba8c81db58d7dd62c67379eaa175498a4370f2 Mon Sep 17 00:00:00 2001
+From df2ea14b7c07dd7cf3e33f2e66f36af8af3b425e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
 Date: Sat, 20 Aug 2016 23:47:41 +0200
-Subject: [PATCH 07/10] llvm-config: Clean up exported values, update for
- shared linking
+Subject: [PATCH 6/9] llvm-config: Clean up exported values, update for shared
+ linking
 
 Gentoo-specific fixup for llvm-config, including:
 - wiping build-specific CFLAGS, CXXFLAGS,
 - updating library suffixes for shared libs,
 - wiping --system-libs for shared linking,
-- making --obj-root and --src-root return invalid path (/dev/null),
+- making --src-root return invalid path (/dev/null),
 - making --build-mode return "Release" rather than "Gentoo".
 
 Thanks to Steven Newbury for the initial patch.
@@ -17,8 +17,8 @@ Bug: https://bugs.gentoo.org/565358
 Bug: https://bugs.gentoo.org/501684
 ---
  tools/llvm-config/CMakeLists.txt  | 11 ++++++++---
- tools/llvm-config/llvm-config.cpp | 15 ++++++++++++---
- 2 files changed, 20 insertions(+), 6 deletions(-)
+ tools/llvm-config/llvm-config.cpp |  9 +++++++--
+ 2 files changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/tools/llvm-config/CMakeLists.txt b/tools/llvm-config/CMakeLists.txt
 index 744fa4e..593788a 100644
@@ -50,7 +50,7 @@ index 744fa4e..593788a 100644
    set(LLVM_ENABLE_SHARED ON)
  else()
 diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
-index c63733f..ead11b9 100644
+index c63733f..3162091 100644
 --- a/tools/llvm-config/llvm-config.cpp
 +++ b/tools/llvm-config/llvm-config.cpp
 @@ -522,7 +522,8 @@ int main(int argc, char **argv) {
@@ -63,16 +63,9 @@ index c63733f..ead11b9 100644
        } else if (Arg == "--assertion-mode") {
  #if defined(NDEBUG)
          OS << "OFF\n";
-@@ -538,9 +539,17 @@ int main(int argc, char **argv) {
-       } else if (Arg == "--shared-mode") {
-         PrintSharedMode = true;
+@@ -540,7 +541,11 @@ int main(int argc, char **argv) {
        } else if (Arg == "--obj-root") {
--        OS << ActivePrefix << '\n';
-+        if (IsInDevelopmentTree) {
-+          OS << ActivePrefix << '\n';
-+        } else {
-+          OS << "/dev/null\n";
-+        }
+         OS << ActivePrefix << '\n';
        } else if (Arg == "--src-root") {
 -        OS << LLVM_SRC_ROOT << '\n';
 +        if (IsInDevelopmentTree) {

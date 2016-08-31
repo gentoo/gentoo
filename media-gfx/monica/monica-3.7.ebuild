@@ -3,7 +3,8 @@
 # $Id$
 
 EAPI=6
-inherit eutils toolchain-funcs
+
+inherit toolchain-funcs
 
 DESCRIPTION="Monica is a Monitor Calibration Tool"
 HOMEPAGE="http://freecode.com/projects/monica"
@@ -18,13 +19,11 @@ DEPEND=">=x11-libs/fltk-1.1:1"
 RDEPEND="${DEPEND}
 	x11-apps/xgamma"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-3.6-makefile-cleanup.patch \
-		"${FILESDIR}"/${P}-gcc44.patch
-
-	emake clean
-}
+DOCS=( authors ChangeLog news readme )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.6-makefile-cleanup.patch
+	"${FILESDIR}"/${P}-gcc44.patch
+)
 
 src_compile() {
 	emake \
@@ -36,5 +35,5 @@ src_compile() {
 
 src_install() {
 	dobin monica
-	dodoc authors ChangeLog news readme
+	einstalldocs
 }
