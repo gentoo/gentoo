@@ -1,0 +1,251 @@
+From 83f12b27d14853e7c89a326f7cd31a6c739d378e Mon Sep 17 00:00:00 2001
+From: Felipe Sateler <fsateler@users.noreply.github.com>
+Date: Mon, 22 Aug 2016 16:40:58 -0300
+Subject: [PATCH] core: do not fail at step SECCOMP if there is no kernel
+ support (#4004)
+
+Fixes #3882
+
+Signed-off-by: Elias Probst <mail@eliasprobst.eu>
+---
+ src/core/execute.c        | 38 ++++++++++++++++++++++++++++++--------
+ src/core/main.c           |  6 ++++++
+ src/shared/seccomp-util.c | 10 ++++++++++
+ src/shared/seccomp-util.h |  2 ++
+ src/test/test-execute.c   | 11 ++++++++++-
+ 5 files changed, 58 insertions(+), 9 deletions(-)
+
+diff --git a/src/core/execute.c b/src/core/execute.c
+index 0af8eb5..55f15d7 100644
+--- a/src/core/execute.c
++++ b/src/core/execute.c
+@@ -1074,7 +1074,17 @@ static void rename_process_from_path(const char *path) {
+ 
+ #ifdef HAVE_SECCOMP
+ 
+-static int apply_seccomp(const ExecContext *c) {
++static bool skip_seccomp_unavailable(const Unit* u, const char* msg) {
++        if (!is_seccomp_available()) {
++                log_open();
++                log_unit_debug(u, "SECCOMP not detected in the kernel, skipping %s", msg);
++                log_close();
++                return true;
++        }
++        return false;
++}
++
++static int apply_seccomp(const Unit* u, const ExecContext *c) {
+         uint32_t negative_action, action;
+         scmp_filter_ctx *seccomp;
+         Iterator i;
+@@ -1083,6 +1093,9 @@ static int apply_seccomp(const ExecContext *c) {
+ 
+         assert(c);
+ 
++        if (skip_seccomp_unavailable(u, "syscall filtering"))
++                return 0;
++
+         negative_action = c->syscall_errno == 0 ? SCMP_ACT_KILL : SCMP_ACT_ERRNO(c->syscall_errno);
+ 
+         seccomp = seccomp_init(c->syscall_whitelist ? negative_action : SCMP_ACT_ALLOW);
+@@ -1123,13 +1136,16 @@ finish:
+         return r;
+ }
+ 
+-static int apply_address_families(const ExecContext *c) {
++static int apply_address_families(const Unit* u, const ExecContext *c) {
+         scmp_filter_ctx *seccomp;
+         Iterator i;
+         int r;
+ 
+         assert(c);
+ 
++        if (skip_seccomp_unavailable(u, "RestrictAddressFamilies="))
++                return 0;
++
+         seccomp = seccomp_init(SCMP_ACT_ALLOW);
+         if (!seccomp)
+                 return -ENOMEM;
+@@ -1244,12 +1260,15 @@ finish:
+         return r;
+ }
+ 
+-static int apply_memory_deny_write_execute(const ExecContext *c) {
++static int apply_memory_deny_write_execute(const Unit* u, const ExecContext *c) {
+         scmp_filter_ctx *seccomp;
+         int r;
+ 
+         assert(c);
+ 
++        if (skip_seccomp_unavailable(u, "MemoryDenyWriteExecute="))
++                return 0;
++
+         seccomp = seccomp_init(SCMP_ACT_ALLOW);
+         if (!seccomp)
+                 return -ENOMEM;
+@@ -1283,7 +1302,7 @@ finish:
+         return r;
+ }
+ 
+-static int apply_restrict_realtime(const ExecContext *c) {
++static int apply_restrict_realtime(const Unit* u, const ExecContext *c) {
+         static const int permitted_policies[] = {
+                 SCHED_OTHER,
+                 SCHED_BATCH,
+@@ -1296,6 +1315,9 @@ static int apply_restrict_realtime(const ExecContext *c) {
+ 
+         assert(c);
+ 
++        if (skip_seccomp_unavailable(u, "RestrictRealtime="))
++                return 0;
++
+         seccomp = seccomp_init(SCMP_ACT_ALLOW);
+         if (!seccomp)
+                 return -ENOMEM;
+@@ -2403,7 +2425,7 @@ static int exec_child(
+ 
+ #ifdef HAVE_SECCOMP
+                 if (use_address_families) {
+-                        r = apply_address_families(context);
++                        r = apply_address_families(unit, context);
+                         if (r < 0) {
+                                 *exit_status = EXIT_ADDRESS_FAMILIES;
+                                 return r;
+@@ -2411,7 +2433,7 @@ static int exec_child(
+                 }
+ 
+                 if (context->memory_deny_write_execute) {
+-                        r = apply_memory_deny_write_execute(context);
++                        r = apply_memory_deny_write_execute(unit, context);
+                         if (r < 0) {
+                                 *exit_status = EXIT_SECCOMP;
+                                 return r;
+@@ -2419,7 +2441,7 @@ static int exec_child(
+                 }
+ 
+                 if (context->restrict_realtime) {
+-                        r = apply_restrict_realtime(context);
++                        r = apply_restrict_realtime(unit, context);
+                         if (r < 0) {
+                                 *exit_status = EXIT_SECCOMP;
+                                 return r;
+@@ -2427,7 +2449,7 @@ static int exec_child(
+                 }
+ 
+                 if (use_syscall_filter) {
+-                        r = apply_seccomp(context);
++                        r = apply_seccomp(unit, context);
+                         if (r < 0) {
+                                 *exit_status = EXIT_SECCOMP;
+                                 return r;
+diff --git a/src/core/main.c b/src/core/main.c
+index 125cfb2..7d8322e 100644
+--- a/src/core/main.c
++++ b/src/core/main.c
+@@ -72,6 +72,9 @@
+ #include "process-util.h"
+ #include "raw-clone.h"
+ #include "rlimit-util.h"
++#ifdef HAVE_SECCOMP
++#include "seccomp-util.h"
++#endif
+ #include "selinux-setup.h"
+ #include "selinux-util.h"
+ #include "signal-util.h"
+@@ -1186,6 +1189,9 @@ static int enforce_syscall_archs(Set *archs) {
+         void *id;
+         int r;
+ 
++        if (!is_seccomp_available())
++                return 0;
++
+         seccomp = seccomp_init(SCMP_ACT_ALLOW);
+         if (!seccomp)
+                 return log_oom();
+diff --git a/src/shared/seccomp-util.c b/src/shared/seccomp-util.c
+index 8656d11..4667f50 100644
+--- a/src/shared/seccomp-util.c
++++ b/src/shared/seccomp-util.c
+@@ -21,6 +21,8 @@
+ #include <seccomp.h>
+ #include <stddef.h>
+ 
++#include "alloc-util.h"
++#include "fileio.h"
+ #include "macro.h"
+ #include "seccomp-util.h"
+ #include "string-util.h"
+@@ -89,6 +91,14 @@ int seccomp_add_secondary_archs(scmp_filter_ctx *c) {
+ 
+ }
+ 
++bool is_seccomp_available(void) {
++        _cleanup_free_ char* field = NULL;
++        static int cached_enabled = -1;
++        if (cached_enabled < 0)
++                cached_enabled = get_proc_field("/proc/self/status", "Seccomp", "\n", &field) == 0;
++        return cached_enabled;
++}
++
+ const SystemCallFilterSet syscall_filter_sets[] = {
+         {
+                 /* Clock */
+diff --git a/src/shared/seccomp-util.h b/src/shared/seccomp-util.h
+index be33eec..cca7c17 100644
+--- a/src/shared/seccomp-util.h
++++ b/src/shared/seccomp-util.h
+@@ -27,6 +27,8 @@ int seccomp_arch_from_string(const char *n, uint32_t *ret);
+ 
+ int seccomp_add_secondary_archs(scmp_filter_ctx *c);
+ 
++bool is_seccomp_available(void);
++
+ typedef struct SystemCallFilterSet {
+         const char *set_name;
+         const char *value;
+diff --git a/src/test/test-execute.c b/src/test/test-execute.c
+index 1d24115..05ec1d2 100644
+--- a/src/test/test-execute.c
++++ b/src/test/test-execute.c
+@@ -30,6 +30,9 @@
+ #include "mkdir.h"
+ #include "path-util.h"
+ #include "rm-rf.h"
++#ifdef HAVE_SECCOMP
++#include "seccomp-util.h"
++#endif
+ #include "test-helper.h"
+ #include "unit.h"
+ #include "util.h"
+@@ -132,21 +135,27 @@ static void test_exec_privatedevices(Manager *m) {
+ 
+ static void test_exec_systemcallfilter(Manager *m) {
+ #ifdef HAVE_SECCOMP
++        if (!is_seccomp_available())
++                return;
+         test(m, "exec-systemcallfilter-not-failing.service", 0, CLD_EXITED);
+         test(m, "exec-systemcallfilter-not-failing2.service", 0, CLD_EXITED);
+         test(m, "exec-systemcallfilter-failing.service", SIGSYS, CLD_KILLED);
+         test(m, "exec-systemcallfilter-failing2.service", SIGSYS, CLD_KILLED);
++
+ #endif
+ }
+ 
+ static void test_exec_systemcallerrornumber(Manager *m) {
+ #ifdef HAVE_SECCOMP
+-        test(m, "exec-systemcallerrornumber.service", 1, CLD_EXITED);
++        if (is_seccomp_available())
++                test(m, "exec-systemcallerrornumber.service", 1, CLD_EXITED);
+ #endif
+ }
+ 
+ static void test_exec_systemcall_system_mode_with_user(Manager *m) {
+ #ifdef HAVE_SECCOMP
++        if (!is_seccomp_available())
++                return;
+         if (getpwnam("nobody"))
+                 test(m, "exec-systemcallfilter-system-user.service", 0, CLD_EXITED);
+         else if (getpwnam("nfsnobody"))
+-- 
+2.9.3
+
