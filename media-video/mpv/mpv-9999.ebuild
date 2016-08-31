@@ -277,7 +277,7 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 
-	local softvol_0_18_1=0
+	local rv softvol_0_18_1=0
 	for rv in ${REPLACING_VERSIONS}; do
 		version_compare ${rv} 0.18.1-r1
 		[[ $? -eq 1 ]] && softvol_0_18_1=1
@@ -318,6 +318,7 @@ pkg_postrm() {
 
 src_test() {
 	cd "${S}"/build/test || die
+	local test
 	for test in *; do
 		if [[ -x ${test} ]]; then
 			./"${test}" || die "Test suite failed"
