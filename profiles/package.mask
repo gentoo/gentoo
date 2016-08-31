@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (31 Aug 2016)
+# Mask old versions of thunderbird as they are no longer supported,
+# but we keep them in the repo for now in case there is a need
+# for them for upgrading old user profiles, etc.
+~mail-client/thunderbird-24.8.0
+~mail-client/thunderbird-31.8.0
+~mail-client/thunderbird-38.8.0
+
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
 # Last-minute RC, masked for testing. Includes dev-util/cmake
 # find_library() lib32 support backport.
@@ -775,13 +783,6 @@ dev-java/spring-instrument
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #512356.
 =app-forensics/chkrootkit-0.49
-
-# Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
-# Mask old versions of thunderbird as they are no longer supported,
-# but we keep them in the repo for now in case there is a need
-# for them for upgrading old user profiles, etc.
-~mail-client/thunderbird-24.8.0
-~mail-client/thunderbird-31.8.0
 
 # Patrick Lauer <patrick@gentoo.org> (22 Feb 2016)
 # Inactive upstream, build failures, obsoleted by rakudo/perl6
