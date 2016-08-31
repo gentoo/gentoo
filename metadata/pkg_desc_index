@@ -568,7 +568,7 @@ app-crypt/mhash 0.9.9.9-r1: library providing a uniform interface to a large num
 app-crypt/mit-krb5 1.14.2 1.14.3: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG keys
-app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37 0.38 0.39: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
 app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
@@ -17844,8 +17844,8 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.8.0 45.2.0 45.3.0 48.0: Firefox Web Browser
 www-client/firefox-bin 45.3.0 48.0: Firefox Web Browser
 www-client/google-chrome 52.0.2743.116: The web browser from Google
-www-client/google-chrome-beta 53.0.2785.80: The web browser from Google
-www-client/google-chrome-unstable 54.0.2837.0: The web browser from Google
+www-client/google-chrome-beta 53.0.2785.89: The web browser from Google
+www-client/google-chrome-unstable 54.0.2840.6: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17866,7 +17866,7 @@ www-client/qutebrowser 0.6.2 0.7.0 0.8.2 9999: A keyboard-driven, vim-like brows
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.39 2.40: Seamonkey Web Browser
-www-client/seamonkey-bin 2.39 2.44_pre20160608: Mozilla Application Suite - web browser, email, HTML editor, IRC
+www-client/seamonkey-bin 2.39 2.44_pre20160608 2.45_pre20160812: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
@@ -17900,7 +17900,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
-www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.80_beta 54.0.2837.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 52.0.2743.116 53.0.2785.89_beta 54.0.2840.6_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1 0.3.5: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features

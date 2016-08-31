@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=app-crypt/gnupg:0= net-misc/socat:0= dev-perl/Crypt-OpenSSL-RSA:0= dev-perl/Digest-SHA1:0= app-misc/lockfile-progs:0=
+DESCRIPTION=Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+EAPI=5
+HOMEPAGE=http://web.monkeysphere.info/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=app-crypt/gnupg:0= net-misc/socat:0= dev-perl/Crypt-OpenSSL-RSA:0= dev-perl/Digest-SHA1:0= app-misc/lockfile-progs:0=
+RESTRICT=test
+SLOT=0/0
+SRC_URI=mirror://debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.39.orig.tar.gz http://archive.monkeysphere.info/debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.39.orig.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=95617ac3cb298209005192af822ad5ba
