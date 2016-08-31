@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>george.sakkis@gmail.com</email>
+			<name>George Sakkis</name>
+		</maintainer>
+		<remote-id type="pypi">PyTrie</remote-id>
+	</upstream>
+	<longdescription>
+		A *trie* is an ordered tree data structure that is used to store a
+		mapping where the keys are sequences, usually strings over an alphabet.
+		In addition to implementing the mapping interface, tries allow finding
+		the items for a given prefix, and vice versa, finding the items whose
+		keys are prefixes of a given key.
+	</longdescription>
+</pkgmetadata>
