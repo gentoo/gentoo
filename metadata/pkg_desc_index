@@ -9243,7 +9243,7 @@ dev-ruby/ruby-clutter-gstreamer 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Clutter b
 dev-ruby/ruby-clutter-gtk 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby Clutter bindings
 dev-ruby/ruby-dict 0.9.4-r4: RFC 2229 client in Ruby
 dev-ruby/ruby-elf 1.0.8: Ruby library to access ELF files information
-dev-ruby/ruby-feedparser 0.9.3: Ruby library to parse ATOM/RSS feeds
+dev-ruby/ruby-feedparser 0.9.3 0.9.4: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.1: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.8: Ruby GdkPixbuf2 bindings
