@@ -18,6 +18,7 @@ RDEPEND="
 	>=net-libs/libpcap-0.8
 	dev-libs/openssl:0=
 	ncurses? ( sys-libs/ncurses:0= )
+	net-libs/wandio
 	numa? ( sys-process/numactl )
 "
 DEPEND="

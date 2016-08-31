@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -72,6 +72,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-qreal-cast.patch
 	# bug #516794
 	epatch "${FILESDIR}"/${P}-mimetypes.patch
+	# bug #437262
+	epatch "${FILESDIR}"/${P}-ld-bfd.patch
 }
 
 src_compile() {
