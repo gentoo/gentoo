@@ -626,20 +626,6 @@ dev-perl/Test-Tester
 # Bugs #590272, #590270, #590268, #590266 etc.
 =sci-libs/fftw-3.3.5
 
-# Johannes Huber <johu@gentoo.org> (1 Aug 2016)
-# Masked for removal in 30 days. Dead by upstream. Last release
-# with 15.08. Exported to kde-sunset overlay.
-kde-apps/kdeartwork-colorschemes
-kde-apps/kdeartwork-desktopthemes
-kde-apps/kdeartwork-emoticons
-kde-apps/kdeartwork-iconthemes
-kde-apps/kdeartwork-kscreensaver
-kde-apps/kdeartwork-meta
-kde-apps/kdeartwork-styles
-kde-apps/kdeartwork-wallpapers
-kde-apps/kdeartwork-weatherwallpapers
-kde-apps/kde-base-artwork
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (01 Aug 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
