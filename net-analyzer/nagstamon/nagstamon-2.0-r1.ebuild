@@ -33,7 +33,8 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}"
 
-PATCHES="${FILESDIR}/${P}-setup.patch"
+PATCHES="${FILESDIR}/${P}-setup.patch
+	${FILESDIR}/${P}-EWMH.patch"
 
 src_prepare() {
 	default_src_prepare
@@ -42,16 +43,4 @@ src_prepare() {
 
 #	rm -rf "${S}/Nagstamon/thirdparty/Xlib/" || die
 	rm -rf "${S}/Nagstamon/thirdparty/keyring/" || die
-}
-
-pkg_preinst() {
-	if has_version "<net-analyzer/nagstamon-2.0"; then
-		OLD_NAGSTAMON_VERSION=yup
-	fi
-}
-
-pkg_postinst() {
-	if [ -n "${OLD_NAGSTAMON_VERSION}" ]; then
-		ewarn "WARNING: It is recommend to move your old Nagstamon 1.x ~/.nagstamon/ away and start from scratch!"
-	fi
 }
