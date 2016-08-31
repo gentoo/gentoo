@@ -8147,7 +8147,7 @@ dev-python/ryu 3.26 4.0: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.0.1 0.1.1 0.1.2: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
-dev-python/scapy-python3 0.18: Packet crafting/sending/... PCAP processing tool with python3 compatibility
+dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schema 0.5.0: Library for validating Python data structures
 dev-python/scientificpython 2.9.1 2.9.3 2.9.4: Scientific Module for Python
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
@@ -11283,7 +11283,6 @@ kde-apps/kcolorchooser 16.04.3: KDE color selector/editor
 kde-apps/kcontrol 16.04.3: The KDE Control Center
 kde-apps/kcron 16.04.3: KDE Task Scheduler
 kde-apps/kde-apps-meta 16.04.3: Meta package for the KDE Applications collection
-kde-apps/kde-base-artwork 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 16.04.3: KDE Development Scripts
 kde-apps/kde-dev-utils 16.04.3: KDE Development Utilities
 kde-apps/kde-l10n 16.04.3: KDE internationalization package
@@ -11291,15 +11290,7 @@ kde-apps/kde-meta 16.04.3: Merge this to pull in all KDE Plasma and Applications
 kde-apps/kde4-l10n 16.04.3: KDE legacy internationalization package
 kde-apps/kdeaccessibility-meta 16.04.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 16.04.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
-kde-apps/kdeartwork-colorschemes 15.08.3: KDE extra colorschemes
-kde-apps/kdeartwork-desktopthemes 15.08.3: Additional KDE4 Plasma themes
 kde-apps/kdeartwork-emoticons 15.08.3: EmotIcons (icons for things like smilies :-) for kde
-kde-apps/kdeartwork-iconthemes 15.08.3: Icon themes for kde
-kde-apps/kdeartwork-kscreensaver 15.08.3-r1: Extra screensavers for kde
-kde-apps/kdeartwork-meta 15.08.3-r1: kdeartwork - merge this to pull in all kdeartwork-derived packages
-kde-apps/kdeartwork-styles 15.08.3: Extra KWin styles and window decorations
-kde-apps/kdeartwork-wallpapers 15.08.3 15.08.3-r2: Wallpapers from KDE
-kde-apps/kdeartwork-weatherwallpapers 15.08.3 15.08.3-r2: Weather aware wallpapers. Changes with weather outside
 kde-apps/kdebase-data 16.04.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 16.04.3: Oxygen Plasma 4 desktop theme
 kde-apps/kdebase-kioslaves 16.04.3-r1: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
