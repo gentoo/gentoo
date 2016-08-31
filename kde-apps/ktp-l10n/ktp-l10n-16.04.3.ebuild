@@ -6,9 +6,9 @@ EAPI=6
 
 KDE_HANDBOOK="false"
 KDE_L10N=(
-	ar ast bg bs ca ca-valencia cs da de el en-GB eo es et eu fa fi fr ga gl he
-	hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt-BR ro ru sk
-	sl sr sr-ijekavsk sr-Latn sr-Latn-ijekavsk sv tr ug uk wa zh-CN zh-TW
+	ar ast bg bs ca ca-valencia cs da de el en-GB eo es et fi fr ga gl
+	hu ia it ja kk km ko lt mr nb nds nl pa pl pt pt-BR ro ru
+	sk sl sr sr-ijekavsk sr-Latn sr-Latn-ijekavsk sv tr ug uk wa zh-CN zh-TW
 )
 KMNAME="kde-l10n"
 inherit kde5
