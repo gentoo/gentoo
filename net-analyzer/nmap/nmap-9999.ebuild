@@ -61,14 +61,14 @@ pkg_setup() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-4.75-nolua.patch \
 		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
 		"${FILESDIR}"/${PN}-5.21-python.patch \
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
 		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
-		"${FILESDIR}"/${PN}-7.25-EC.patch
+		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
+		"${FILESDIR}"/${PN}-7.25-libpcre.patch
 
 	if use nls; then
 		local lingua=''
