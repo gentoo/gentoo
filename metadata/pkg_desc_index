@@ -14357,7 +14357,7 @@ net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the S
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6 1.0.6-r1 1.0.6-r2: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.6 1.7 1.7.2 1.7.2-r1: A portable, efficient middleware for different kinds of mail access
-net-libs/libflowmanager 2.0.4: A library designed to facilitate performing flow-based measurement tasks using packet-based inputs
+net-libs/libflowmanager 2.0.4 2.0.5: A library that measures and reports on packet flows
 net-libs/libgadu 1.11.4 1.12.0 1.12.1: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgcal 0.9.6-r1: C/C++ interface to the Google Data API
 net-libs/libgfbgraph 0.2.2 0.2.3: A GObject library for Facebook Graph API
@@ -14416,7 +14416,7 @@ net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations 
 net-libs/libpcap 1.7.4 1.8.0 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15 1.5.0: Primary Rate ISDN (PRI) library
-net-libs/libprotoident 2.0.7 2.0.8: A library that performs application layer protocol identification for flows
+net-libs/libprotoident 2.0.8 2.0.9: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.11-r2 0.4.13-r1: Library for automatic proxy configuration management
 net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 9999: QMI modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
@@ -14433,7 +14433,7 @@ net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
-net-libs/libtrace 3.0.22: A library and tools for trace processing
+net-libs/libtrace 3.0.22 4.0.0_beta: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
 net-libs/libwebsockets 1.7.8 2.0.2: canonical libwebsockets.org websocket library

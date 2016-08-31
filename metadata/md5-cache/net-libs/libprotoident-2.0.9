@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=net-libs/libtrace-3.0.9 tools? ( net-libs/libflowmanager )
+DESCRIPTION=A library that performs application layer protocol identification for flows
+EAPI=6
+HOMEPAGE=http://research.wand.net.nz/software/libprotoident.php
+IUSE=static-libs +tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libtrace-3.0.9 tools? ( net-libs/libflowmanager )
+SLOT=0/2
+SRC_URI=http://research.wand.net.nz/software/libprotoident/libprotoident-2.0.9.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=54275a894cedef2df3ed307e92cde614
