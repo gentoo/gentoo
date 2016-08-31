@@ -9855,14 +9855,14 @@ dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, prov
 dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
-dev-util/kdevelop 4.7.2 4.7.3: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
-dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0: A LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 1.7.2 1.7.3: PHP plugin for KDevelop 4
+dev-util/kdevelop 4.7.2 4.7.3 5.0.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0 2.0.0: LL(1) parser generator used mainly by KDevelop language plugins
+dev-util/kdevelop-php 1.7.2 1.7.3 5.0.0: PHP plugin for KDevelop
 dev-util/kdevelop-php-docs 1.7.2 1.7.3: PHP documentation plugin for KDevelop 4
-dev-util/kdevelop-python 1.7.2 1.7.3: Python plugin for KDevelop 4
+dev-util/kdevelop-python 1.7.2 1.7.3 5.0.0: Python plugin for KDevelop
 dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
-dev-util/kdevplatform 1.7.2-r1 1.7.3: KDE development support libraries and apps
+dev-util/kdevplatform 1.7.2-r1 1.7.3 5.0.0: KDE development support libraries and apps
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
 dev-util/kscope 1.9.4-r1: Source Editing Environment based on Qt
@@ -11819,7 +11819,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.1.4 1.2_beta 1.2.0: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.2.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.8.0 45.2.0 45.3.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.8.0 45.2.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r1 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -16677,7 +16677,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.17 0.18.4 0.19.1 0.20.4 0.20.5 0.21 0.21.1 0.21.2 0.21.3 0.21.4 0.21.5 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.17 0.18.4 0.19.1 0.20.4 0.20.5 0.21 0.21.1 0.21.2 0.21.3 0.21.4 0.21.5 0.21.6 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
