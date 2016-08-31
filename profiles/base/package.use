@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Palimaka <kensington@gentoo.org> (31 Aug 2016)
+dev-python/kdevelop-python:5 python_targets_python3_5
+
 # Justin Lecher <jlec@gentoo.org> (08 Dec 2015)
 # Only py3 and single target supported
 app-backup/backintime python_single_target_python3_4
