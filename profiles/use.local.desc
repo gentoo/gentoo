@@ -5875,6 +5875,7 @@ net-libs/tox:log-warn - Log level: 2
 net-libs/tox:no-log - Log level: 0 (no debug info logged)
 net-libs/tox:ntox - Enable the testing nTox client.
 net-libs/udns:tools - Build and install dnsget, ex-rdns and rblcheck tools
+net-libs/wandio:http - Build support for reading files over HTTP using net-misc/curl
 net-libs/webkit-gtk:coverage - Enable code coverage support
 net-libs/webkit-gtk:egl - Enable EGL support.
 net-libs/webkit-gtk:geoloc - Enable geolocation support through app-misc/geoclue

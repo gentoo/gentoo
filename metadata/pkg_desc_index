@@ -13783,7 +13783,7 @@ net-analyzer/hydra 8.1 8.1-r1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r1: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.4.1-r4 2.4.4-r1 2.4.10-r1 2.5.3 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.4.1-r4 2.4.4-r1 2.4.10-r1 2.5.4 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
@@ -14503,6 +14503,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
+net-libs/wandio 1.0.3: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11 2.4.11-r1 2.4.11-r200 2.10.9 2.12.3: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
