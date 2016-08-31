@@ -114,14 +114,14 @@ python_prepare_all() {
 	# of being bytecode compiled as a proper subdir package.
 	# We trick the buildsystem into accepting it as a bytecode
 	# package by adding a setup.py and an empty __init__.py
-	cp numpy/{compat/setup.py,core/tests} || die
-	touch numpy/core/tests/__init__.py || die
-	sed \
-		-e 's:compat:tests:' \
-		-i numpy/core/tests/setup.py || die
-	sed \
-		-e "s:config\.add_data_dir('tests'):config\.add_subpackage('tests'):" \
-		-i numpy/core/setup.py || die
+	#cp numpy/{compat/setup.py,core/tests} || die
+	#touch numpy/core/tests/__init__.py || die
+	#sed \
+	#	-e 's:compat:tests:' \
+	#	-i numpy/core/tests/setup.py || die
+	#sed \
+	#	-e "s:config\.add_data_dir('tests'):config\.add_subpackage('tests'):" \
+	#	-i numpy/core/setup.py || die
 
 	distutils-r1_python_prepare_all
 }
