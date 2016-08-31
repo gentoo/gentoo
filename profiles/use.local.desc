@@ -4399,7 +4399,6 @@ media-sound/kid3:acoustid - Enable support for acoustic fingerprinting plugin us
 media-sound/kid3:phonon - Enable sound support via media-libs/phonon or dev-qt/qtphonon
 media-sound/klick:rubberband - Enable rubberband support
 media-sound/kwave:opus - Enable Opus audio codec support
-media-sound/kwave:phonon - Enable playback via Phonon
 media-sound/kwave:qtmedia - Enable playback via Qt5Multimedia
 media-sound/lame:frontend - Build and install the 'lame' executable frontend to lame libraries.
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
