@@ -6884,6 +6884,7 @@ dev-python/Kivy 1.9.0-r1 1.9.1: Library for rapid development of hardware-accele
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
+dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.2: Python library to access the Github API v3
@@ -7168,6 +7169,7 @@ dev-python/djangocms-snippet 1.5 1.8.1: Snippet plugin for django CMS
 dev-python/djangocms-teaser 0.1 0.2.0: Teaser plugin for django CMS
 dev-python/djangocms-text-ckeditor 2.6.0 2.8.1 3.0.0: Text Plugin for django CMS with CKEditor support
 dev-python/djangocms-video 0.1 1.0.0: Video plugin for django CMS
+dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 1.2.2 1.8.1 1.9.0_rc2 1.9.0: Python client for Docker
@@ -7572,6 +7574,7 @@ dev-python/nltk 3.0.3 3.0.4 3.2.1: Natural Language Toolkit
 dev-python/nnpy 1.1 1.2: cffi-based Python bindings for nanomsg
 dev-python/nose 1.3.7-r1 9999: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
+dev-python/nose-descriptionfixer 0.0.4: Fix the way tests are described when the verbose flag is used
 dev-python/nose-exclude 0.1.9 0.2.0 0.3.0 0.4.1: Exclude specific directories from nosetests runs
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.9: Test Configuration plugin for nosetests
@@ -7688,6 +7691,7 @@ dev-python/ply 3.4-r1 3.6-r1 3.8: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
 dev-python/plyvel 0.9: Python interface to LevelDB
 dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
+dev-python/pockets 0.3: A collection of helpful Python tools
 dev-python/polib 1.0.4 1.0.7: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 2.0.4 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/positional 1.0.1: A decorator which enforces only some args may be passed positionally.
@@ -8142,6 +8146,7 @@ dev-python/ryu 3.26 4.0: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.0.1 0.1.1 0.1.2: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
+dev-python/scapy-python3 0.18: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schema 0.5.0: Library for validating Python data structures
 dev-python/scientificpython 2.9.1 2.9.3 2.9.4: Scientific Module for Python
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
@@ -8206,6 +8211,7 @@ dev-python/sphinxcontrib-doxylink 1.3: Extension to link to external Doxygen API
 dev-python/sphinxcontrib-googleanalytics 0.1-r1: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.1.8 1.1.9 1.2.0 1.2.1 1.3.0 1.4.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
 dev-python/sphinxcontrib-issuetracker 0.11-r1: Extension to sphinx to create links to issue trackers
+dev-python/sphinxcontrib-napoleon 0.5.2: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-plantuml 0.4: Extension to embed UML diagram by using PlantUML
 dev-python/sphinxcontrib-programoutput 0.8: Extension to sphinx to include program output
@@ -8240,6 +8246,7 @@ dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
 dev-python/superlance 0.11: A set of plugins to monitor and control supervisor
+dev-python/supervisor-quick 0.1.4: Bypass supervisor's nasty callbacks stack and make it quick!
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
 dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
