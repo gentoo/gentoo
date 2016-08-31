@@ -6955,7 +6955,7 @@ dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/attrs 15.2.0: Attributes without boilerplate
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
-dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1 0.16.0: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 1.2.2 1.2.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awscli 1.10.51 1.10.53 1.10.59: Universal Command Line Environment for AWS
@@ -7017,6 +7017,7 @@ dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.2.1 0.4.0: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
+dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/ccdproc 1.0.1: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
@@ -7720,6 +7721,7 @@ dev-python/py-cpuinfo 0.1.8 0.2.3: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.1 1.0.2: Module capable of generating both LANMAN and NT password hashes, for e.g. Samba
+dev-python/py-ubjson 0.8.5: Universal Binary JSON encoder/decoder
 dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.8: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
@@ -7846,6 +7848,7 @@ dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
 dev-python/pymtp 0.0.6: LibMTP bindings for Python
 dev-python/pymysql 0.6.3 0.6.6 0.6.7: Pure-Python MySQL Driver
+dev-python/pynacl 1.0.1: Python binding to the Networking and Cryptography (NaCl) library
 dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (aka search engine) using Metakit as its back-end
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynut 1.2: An abstraction class written in Python to access NUT (Network UPS Tools) server
@@ -7871,6 +7874,7 @@ dev-python/pypeg2 2.15.1 2.15.2: An intrinsic PEG Parser-Interpreter for Python
 dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.8 0.9.1 0.9.4: Python module for hyphenation using hunspell dictionaries
 dev-python/pyplusplus 1.0.0-r1 1.0.0_p20131206 9999: Object-oriented framework for creating a code generator for Boost.Python library
+dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
 dev-python/pyprof2calltree 1.3.1 1.3.2: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 1.9.4: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
@@ -7879,6 +7883,7 @@ dev-python/pypy 4.0.1 5.0.0 5.1.1 5.3.0 5.3.1 9999: A fast, compliant alternativ
 dev-python/pypy-bin 4.0.1-r1 5.0.0 5.1.1 5.3.0 5.3.1-r1: Pre-built version of PyPy
 dev-python/pypy3 2.4.0-r2 5.2.0_alpha1 9999: A fast, compliant alternative implementation of Python 3
 dev-python/pypy3-bin 2.4.0-r4 5.2.0_alpha1-r1: A fast, compliant alternative implementation of Python 3.3 (binary package)
+dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
 dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r2: Python bindings for the Qwt library
@@ -8036,6 +8041,7 @@ dev-python/pythonmagick 0.9.12 0.9.14: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
+dev-python/pytrie 0.2: A pure Python implementation of the trie data structure.
 dev-python/pytz 2015.4 2015.6 2015.7 2016.3 2016.6.1: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
 dev-python/pyusb 1.0.0_beta2: USB support for Python
@@ -8302,12 +8308,13 @@ dev-python/twisted-words 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Tw
 dev-python/twitter 1.17.0 1.17.1: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.0.0 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
-dev-python/txaio 1.0.0 2.2.0 2.2.1 2.3.1: a helper library for writing code unmodified on both Twisted and asyncio
+dev-python/txaio 1.0.0 2.2.0 2.2.1 2.3.1 2.5.1: a helper library for writing code unmodified on both Twisted and asyncio
 dev-python/txgithub 15.0.0: GitHub API client implemented using Twisted
 dev-python/txrequests 0.9.2: Asynchronous Python HTTP for Humans
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
 dev-python/typing 3.5.0.1: Type Hints for Python
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
+dev-python/u-msgpack 2.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.13.0 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
