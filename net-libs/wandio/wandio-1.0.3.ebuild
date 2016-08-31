@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 http lzma lzo static-libs zlib"
 
 RDEPEND="
+	!<net-libs/libtrace-4
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	lzo? ( dev-libs/lzo )
