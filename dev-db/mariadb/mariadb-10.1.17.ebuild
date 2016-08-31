@@ -155,7 +155,7 @@ multilib_src_test() {
 	local retstatus_unit
 	local retstatus_tests
 
-	if use server ; then
+	if ! use server ; then
 		einfo "Skipping server tests due to minimal build."
 		return 0
 	fi
