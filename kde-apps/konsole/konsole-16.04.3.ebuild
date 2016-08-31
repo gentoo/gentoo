@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="KDE's terminal emulator"
 HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X"
 
 DEPEND="
@@ -21,7 +21,7 @@ DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdelibs4support)
+	$(add_frameworks_dep kdelibs4support 'X?')
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep ki18n)

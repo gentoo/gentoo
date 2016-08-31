@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -165,6 +165,7 @@ src_compile() {
 		-e '1iCONFIG_AEABI=y' \
 		-e '/CONFIG_OABI_COMPAT/d' \
 		-e '1iCONFIG_OABI_COMPAT=y' \
+		-e '1iCONFIG_ARM_UNWIND=y' \
 		"${KS}"/.config \
 		"${S}"/defconfig
 	fi

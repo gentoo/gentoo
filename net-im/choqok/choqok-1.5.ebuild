@@ -8,9 +8,10 @@ KDE_LINGUAS="bg bs ca ca@valencia cs da de el en_GB eo es et fa fi fr ga gl
 hr hu is it ja km lt mr ms nb nds nl pa pl pt pt_BR ro ru sk sl sq sv tr ug
 uk zh_CN zh_TW"
 KDE_HANDBOOK="optional"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
-DESCRIPTION="Free/Open Source micro-blogging client for KDE"
+DESCRIPTION="Free/Open Source micro-blogging client by KDE"
 HOMEPAGE="http://choqok.gnufolks.org/"
 
 if [[ ${PV} != *9999* ]]; then

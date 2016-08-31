@@ -16,7 +16,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~alpha ~ia64 ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2+"
@@ -160,15 +160,7 @@ src_install() {
 	DOCS=( AUTHORS ChangeLog NEWS README TODO COPYRIGHT CONVENTIONS )
 	HTML_DOCS=( doc/html/ )
 
-	# workaround for bug #590446
-	my_abi_install() {
-		pushd "${BUILD_DIR}" >/dev/null || die
-		emake DESTDIR="${D}" install
-		popd >/dev/null || die
-	}
-	multibuild_foreach_variant multilib_foreach_abi my_abi_install
-
-	einstalldocs
+	multibuild_foreach_variant multilib-minimal_src_install
 
 	if use doc; then
 		dodoc doc/*.pdf

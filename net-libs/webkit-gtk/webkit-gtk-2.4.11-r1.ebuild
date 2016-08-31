@@ -173,6 +173,9 @@ src_prepare() {
 	# https://bugs.webkit.org/show_bug.cgi?id=156510
 	eapply "${FILESDIR}"/${PN}-2.4.11-video-web-audio.patch
 
+	# https://bugs.webkit.org/show_bug.cgi?id=159124#c1
+	eapply "${FILESDIR}"/${PN}-2.4.9-gcc-6.patch
+
 	AT_M4DIR=Source/autotools eautoreconf
 
 	gnome2_src_prepare

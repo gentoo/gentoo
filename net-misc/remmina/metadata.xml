@@ -21,6 +21,7 @@
 	<use>
 		<flag name="freerdp">Add support for the net-misc/freerdp application</flag>
 		<flag name="libsecret">Enable libsecret support to store login credentials</flag>
+		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
 		<flag name="ssh">Enable support for SSH/SFTP protocol; see also 'vte'</flag>
 		<flag name="telepathy">Enable telepathy support</flag>
 		<flag name="vte">Enable virtual terminal support (for SSH sessions)</flag>

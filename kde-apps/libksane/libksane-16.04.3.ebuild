@@ -8,7 +8,7 @@ KDE_BLOCK_SLOT4="false"
 inherit kde5
 
 DESCRIPTION="SANE Library interface based on KDE Frameworks"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 LICENSE="LGPL-2"
 

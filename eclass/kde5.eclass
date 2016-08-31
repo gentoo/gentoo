@@ -91,8 +91,10 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # For any other value, add test to IUSE and add a dependency on dev-qt/qttest:5.
 # If set to "optional", configure with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
 # when USE=!test.
-# If set to "forceoptional", remove a Qt5Test dependency from the root
-# CMakeLists.txt in addition to the above.
+# If set to "forceoptional", remove a Qt5Test dependency and comment test
+# subdirs from the root CMakeLists.txt in addition to the above.
+# If set to "forceoptional-recursive", remove a Qt5Test dependency and comment
+# test subdirs from *any* CMakeLists.txt in addition to the above.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KDE_TEST:=true}
 else
@@ -109,13 +111,6 @@ if [[ ${KDEBASE} = kdel10n ]]; then
 	fi
 fi
 
-# @ECLASS-VARIABLE: KDE_PUNT_BOGUS_DEPS
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# For any other value, do black magic to make hardcoded-but-optional dependencies
-# optional again. An upstream solution is preferable and this is a last resort.
-: ${KDE_PUNT_BOGUS_DEPS:=false}
-
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @DESCRIPTION:
 # If set to "none", do nothing.
@@ -127,6 +122,8 @@ if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
 elif [[ ${KDEBASE} = kdel10n ]]; then
 	HOMEPAGE="http://l10n.kde.org"
+elif [[ ${KMNAME} = kdepim ]]; then
+	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 else
 	HOMEPAGE="https://www.kde.org/"
 fi
@@ -228,6 +225,19 @@ if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
 fi
 
+# Drop this when kdepim is finally split upstream
+if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KMNAME} = kdepim ]]; then
+	S="${S}/${PN}"
+fi
+
+if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
+	if [[ -n ${KMNAME} ]]; then
+		S=${WORKDIR}/${KMNAME}-${PV%.0}	# kdevelop missing trailing .0 in first release
+	else
+		S=${WORKDIR}/${PN}-${PV%.0}	# kdevelop missing trailing .0 in first release
+	fi
+fi
+
 # Determine fetch location for released tarballs
 _calculate_src_uri() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -281,6 +291,25 @@ _calculate_src_uri() {
 			esac
 			;;
 	esac
+
+	if [[ -z ${SRC_URI} && -n ${KDEBASE} ]] ; then
+		local _kdebase
+		case ${PN} in
+			kdevelop-pg-qt)
+				_kdebase=${PN} ;;
+			*)
+				_kdebase=${KDEBASE} ;;
+		esac
+		case ${PV} in
+			*.*.[6-9]? )
+				SRC_URI="mirror://kde/unstable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz"
+				RESTRICT+=" mirror"
+				;;
+			*)
+				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV%.0}.tar.xz" ;;
+		esac
+		unset _kdebase
+	fi
 
 	if [[ ${KDEBASE} = kdel10n ]] ; then
 		local uri_base="${SRC_URI/${_kmname}-${PV}.tar.xz/}kde-l10n/kde-l10n"
@@ -453,6 +482,7 @@ EOF
 	# when required
 	if [[ -d po && -v LINGUAS ]] ; then
 		pushd po > /dev/null || die
+		local lang
 		for lang in *; do
 			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
 				rm -r ${lang} || die
@@ -460,7 +490,7 @@ EOF
 					cmake_comment_add_subdirectory ${lang}
 				fi
 			elif ! has ${lang/.po/} ${LINGUAS} ; then
-				if [[ ${lang} != CMakeLists.txt ]] ; then
+				if [[ ${lang} != CMakeLists.txt && ${lang} != ${PN}.pot ]] ; then
 					rm ${lang} || die
 				fi
 			fi
@@ -468,9 +498,10 @@ EOF
 		popd > /dev/null || die
 	fi
 
-	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
-		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
+	if [[ ${KDE_BUILD_TYPE} = release && ${CATEGORY} != kde-apps ]] ; then
+		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && -v LINGUAS ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null || die
+			local lang
 			for lang in *; do
 				if ! has ${lang} ${LINGUAS} ; then
 					cmake_comment_add_subdirectory ${lang}
@@ -485,30 +516,23 @@ EOF
 		cmake_comment_add_subdirectory tests
 	fi
 
-	case ${KDE_PUNT_BOGUS_DEPS} in
-		false)	;;
-		*)
-			if ! use_if_iuse test ; then
-				punt_bogus_dep Qt5 Test
-			fi
-			if ! use_if_iuse handbook ; then
-				punt_bogus_dep KF5 DocTools
-			fi
-			;;
-	esac
-
 	# only build unit tests when required
 	if ! use_if_iuse test ; then
 		if [[ ${KDE_TEST} = forceoptional ]] ; then
 			punt_bogus_dep Qt5 Test
 			# if forceoptional, also cover non-kde categories
-			cmake_comment_add_subdirectory autotests
-			cmake_comment_add_subdirectory test
-			cmake_comment_add_subdirectory tests
+			cmake_comment_add_subdirectory autotests test tests
+		elif [[ ${KDE_TEST} = forceoptional-recursive ]] ; then
+			punt_bogus_dep Qt5 Test
+			local d
+			for d in $(find . -type d -name "autotests" -or -name "tests" -or -name "test" -or -name "unittests"); do
+				pushd ${d%/*} > /dev/null || die
+					punt_bogus_dep Qt5 Test
+					cmake_comment_add_subdirectory autotests test tests
+				popd > /dev/null || die
+			done
 		elif [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma || ${CATEGORY} = kde-apps ]] ; then
-			cmake_comment_add_subdirectory autotests
-			cmake_comment_add_subdirectory test
-			cmake_comment_add_subdirectory tests
+			cmake_comment_add_subdirectory autotests test tests
 		fi
 	fi
 }

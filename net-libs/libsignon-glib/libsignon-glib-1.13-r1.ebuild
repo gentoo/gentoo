@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.g
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} python? ( introspection )"

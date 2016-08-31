@@ -8,7 +8,7 @@ KDE_BLOCK_SLOT4="false"
 inherit kde5
 
 DESCRIPTION="Digital camera raw image library wrapper"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="

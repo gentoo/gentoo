@@ -11,6 +11,7 @@
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
   <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
   <flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
+  <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
   <flag name="openssl">Enable SSL connections and crypto functions using <pkg>dev-libs/openssl</pkg></flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
   <flag name="server">Build the server program</flag>

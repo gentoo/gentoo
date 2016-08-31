@@ -16,9 +16,8 @@ SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="mpich"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
-REQUIRED_USE="mpi-threads? ( threads )"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
@@ -54,7 +53,25 @@ src_prepare() {
 multilib_src_configure() {
 	# The configure statements can be somewhat confusing, as they
 	# don't all show up in the top level configure, however, they
-	# are picked up in the children directories.
+	# are picked up in the children directories.  Hence the separate
+	# local vars.
+
+	local c=
+	if use mpi-threads; then
+		# MPI-THREAD requries threading.
+		c="${c} --with-thread-package=pthreads"
+		c="${c} --enable-threads=runtime"
+	else
+		if use threads ; then
+			c="${c} --with-thread-package=pthreads"
+		else
+			c="${c} --with-thread-package=none"
+		fi
+		c="${c} --enable-threads=single"
+	fi
+
+	c="${c} --sysconfdir=${EPREFIX}/etc/${PN}"
+	c="${c} --docdir=${EPREFIX}/usr/share/doc/${PF}"
 
 	export MPICHLIB_CFLAGS="${CFLAGS}"
 	export MPICHLIB_CPPFLAGS="${CPPFLAGS}"
@@ -66,10 +83,8 @@ multilib_src_configure() {
 
 	ECONF_SOURCE=${S} econf \
 		--enable-shared \
-		--sysconfdir="${EPREFIX}/etc/${PN}" \
 		--with-hwloc-prefix="${EPREFIX}/usr" \
-		--enable-threads=$(usex mpi-threads runtime single) \
-		--with-thread-package=$(usex threads pthreads none) \
+		${c} \
 		--with-pm=hydra \
 		--disable-fast \
 		--enable-versioning \

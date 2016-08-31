@@ -12,7 +12,7 @@ HOMEPAGE="http://www.gimp.org/"
 SRC_URI="mirror://gimp/v$(get_version_component_range 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
 IUSE="alsa aalib altivec aqua debug doc openexr gnome postscript jpeg2k cpu_flags_x86_mmx mng pdf python smp cpu_flags_x86_sse svg udev webkit wmf xpm"
@@ -133,7 +133,7 @@ src_configure() {
 
 src_compile() {
 	addwrite /dev/nvidiactl  # bug #569738
-	addwrite /dev/nvidia0  # bug #569738
+	addwrite /dev/nvidia?  # bug #569738
 	addwrite /dev/nvidia-uvm  # bug #591214
 	addwrite /dev/dri/  # bug #574038
 	addwrite /dev/ati/  # bug 589198

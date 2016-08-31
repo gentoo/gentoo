@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,10 +30,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.2-makefile.patch
 )
 
+get_systemd_pv() {
+	use systemd && \
+		$(tc-getPKG_CONFIG) --modversion systemd
+}
+
 src_compile() {
 	# LIBDM_API_FLUSH involves grepping files in /usr/include,
 	# so force the test to go the way we want #411337.
-	emake LIBDM_API_FLUSH=1 CC="$(tc-getCC)" SYSTEMD=$(usex systemd 1 "")
+	emake \
+		LIBDM_API_FLUSH=1 CC="$(tc-getCC)" SYSTEMD="$(get_systemd_pv)"
 }
 
 src_install() {
@@ -42,7 +48,7 @@ src_install() {
 	dodir /sbin /usr/share/man/man{5,8}
 	emake \
 		DESTDIR="${D}" \
-		SYSTEMD=$(usex systemd 1 "") \
+		SYSTEMD=$(get_systemd_pv) \
 		unitdir="$(systemd_get_systemunitdir)" \
 		libudevdir='${prefix}'/"${udevdir}" \
 		install

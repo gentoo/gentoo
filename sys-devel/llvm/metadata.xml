@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mgorny@gentoo.org</email>
-		<name>Michał Górny</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>williamh@gentoo.org</email>
-		<name>William Hubbs</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>wizardedit@gentoo.org</email>
-		<name>Austin English</name>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<longdescription>Low Level Virtual Machine (LLVM) is:
    1. A compilation strategy designed to enable effective program optimization across the entire lifetime of a program. LLVM supports effective optimization at compile time, link-time (particularly interprocedural), run-time and offline (i.e., after software is installed), while remaining transparent to developers and maintaining compatibility with existing build scripts.

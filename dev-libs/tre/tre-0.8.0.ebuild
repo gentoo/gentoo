@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="3.* *-jython"
 inherit distutils eutils
 
 DESCRIPTION="Lightweight, robust, and efficient POSIX compliant regexp matching library"
-HOMEPAGE="http://laurikari.net/tre/"
+HOMEPAGE="http://laurikari.net/tre/ https://github.com/laurikari/tre/"
 SRC_URI="http://laurikari.net/tre/${P}.tar.bz2"
 
 LICENSE="BSD-2"

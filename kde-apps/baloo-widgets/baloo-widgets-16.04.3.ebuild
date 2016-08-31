@@ -8,7 +8,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Widget library for baloo"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

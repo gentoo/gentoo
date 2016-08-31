@@ -45,6 +45,7 @@ RDEPEND="
 	x11-libs/gtk+:2[introspection?]
 	>=dev-libs/glib-2.28:2
 	>=x11-libs/cairo-1.2
+	x11-libs/libX11
 	virtual/jpeg:0=
 	sys-libs/zlib
 	introspection? ( dev-libs/gobject-introspection )
@@ -89,6 +90,7 @@ DEPEND="${RDEPEND}
 addpredict /dev
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-x11-libs.patch
 	epatch_user
 
 	AT_NO_RECURSIVE="yes" eautoreconf

@@ -73,6 +73,8 @@ src_unpack() {
 src_prepare() {
 	eapply_user
 
+	sed -e 's|^RKT_REQ_PROG(\[GIT\],.*|#\0|' -i configure.ac || die
+
 	# disable git fetch of systemd
 	sed -e 's~^include makelib/git.mk$~'\
 'ifneq ($(wildcard $(RKT_STAGE1_SYSTEMD_SRC)),)\n\n'\

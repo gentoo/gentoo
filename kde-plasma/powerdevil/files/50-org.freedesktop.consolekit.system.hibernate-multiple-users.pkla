@@ -1,0 +1,10 @@
+# Enable user hibernate support with Consolekit2.
+#
+# Gentoo bug #580994
+#
+[Allow all users to hibernate with Conesolekit2]
+Identity=unix-group:users
+Action=org.freedesktop.consolekit.system.hibernate-multiple-users;org.freedesktop.consolekit.system.hibernate
+ResultAny=yes
+ResultInactive=no
+ResultActive=yes

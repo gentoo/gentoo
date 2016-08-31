@@ -9,4 +9,4 @@ inherit kde4-meta
 
 DESCRIPTION="A command-line tool for querying the KDE trader system"
 IUSE="debug"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"

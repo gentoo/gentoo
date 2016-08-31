@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="de_DE fr_FR hu it tr zh_CN"
+PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo pax-utils l10n
@@ -333,7 +333,6 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
-	epatch "${FILESDIR}"/${PN}-2.6.0-crypto-static.patch
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY

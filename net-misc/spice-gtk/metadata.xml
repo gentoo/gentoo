@@ -19,5 +19,7 @@
 		<flag name="mjpeg">Enable builtin mjpeg video decoder</flag>
 		<flag name="webdav">Support for folder-sharing between guest and client
 			using <pkg>net-libs/phodav</pkg></flag>
+		<flag name="gstaudio">Using gstreamer backend as audio decodec support</flag>
+		<flag name="gstvideo">Using gstreamer backend as video decodec support</flag>
 	</use>
 </pkgmetadata>

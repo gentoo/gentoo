@@ -6,7 +6,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs
+inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -55,7 +55,9 @@ DEPEND="${CDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
-	)"
+	)
+	test? ( dev-libs/tinyxml2 )
+	"
 RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
@@ -92,6 +94,8 @@ src_unpack() {
 src_prepare() {
 	#notes/todos
 	# -on apple: there is framework support
+
+	xdg_environment_reset #591952
 
 	cmake-utils_src_prepare
 
@@ -159,6 +163,7 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=OFF
 		-DGMX_BUILD_UNITTESTS=OFF
+		-DGMX_EXTERNAL_TINYXML2=ON
 		${extra}
 	)
 

@@ -6,8 +6,8 @@ https://sourceforge.net/projects/pytvshows/forums/forum/726961/topic/3309243?mes
 Yes, this could have been accomplished via the --feed paramater, but this is
 more user friendly.
 
---- pytvshows.orig	2009-09-15 22:36:34.575002779 -0500
-+++ pytvshows	2009-09-15 22:43:18.283754081 -0500
+--- a/pytvshows.orig	2009-09-15 22:36:34.575002779 -0500
++++ b/pytvshows	2009-09-15 22:43:18.283754081 -0500
 @@ -59,7 +59,7 @@
    -cFILE, --config FILE
                    Path to config file. Default: ~/.pytvshows.cfg

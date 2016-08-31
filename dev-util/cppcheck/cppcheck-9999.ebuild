@@ -31,7 +31,7 @@ src_prepare() {
 
 	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals/tinyxml || die
-	epatch "${FILESDIR}"/${PN}-9999-tinyxml2.patch
+	epatch "${FILESDIR}"/${PN}-1.75-tinyxml2.patch
 	tc-export CXX
 	emake dmake
 	./dmake || die

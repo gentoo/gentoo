@@ -9,4 +9,7 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">Yawning/obfs4</remote-id>
+	</upstream>
 </pkgmetadata>

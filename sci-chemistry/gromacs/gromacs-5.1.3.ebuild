@@ -159,8 +159,8 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DGMX_X86_AVX_GCC_MASKLOAD_BUG=OFF
 		-DGMX_USE_GCC44_BUG_WORKAROUND=OFF
-		-DBUILD_TESTING=OFF
-		-DGMX_BUILD_UNITTESTS=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DGMX_BUILD_UNITTESTS=$(usex test)
 		${extra}
 	)
 

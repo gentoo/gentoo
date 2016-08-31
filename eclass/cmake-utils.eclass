@@ -262,15 +262,18 @@ _cmake_generator_to_use() {
 # @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
-# Comment out an add_subdirectory call in CMakeLists.txt in the current directory
+# Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
 cmake_comment_add_subdirectory() {
 	if [[ -z ${1} ]]; then
-		die "comment_add_subdirectory must be passed the directory name to comment"
+		die "comment_add_subdirectory must be passed at least one directory name to comment"
 	fi
 
 	if [[ -e "CMakeLists.txt" ]]; then
-		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${1//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
-			-i CMakeLists.txt || die "failed to comment add_subdirectory(${1})"
+		local d
+		for d in $@; do
+			sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d//\//\\/}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
+				-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
+		done
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,11 +24,15 @@ RDEPEND="media-libs/libsdl[joystick,opengl?,video]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-noopengl.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-echo-e.patch
+)
+
 src_prepare() {
 	strip-flags
-	epatch \
-		"${FILESDIR}"/${P}-noopengl.patch \
-		"${FILESDIR}"/${P}-gcc47.patch
+	epatch "${PATCHES[@]}"
 }
 
 src_compile() {

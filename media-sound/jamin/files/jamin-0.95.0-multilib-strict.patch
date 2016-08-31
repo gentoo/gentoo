@@ -1,8 +1,6 @@
---- controller/Makefile.in.old	2007-02-24 20:08:10.000000000 +0100
-+++ controller/Makefile.in	2007-02-24 20:08:33.000000000 +0100
-@@ -228,7 +228,7 @@
- sysconfdir = @sysconfdir@
- target_alias = @target_alias@
+--- a/controller/Makefile.am
++++ b/controller/Makefile.am
+@@ -1,5 +1,5 @@
  plugin_LTLIBRARIES = jamincont_1912.la
 -plugindir = @prefix@/lib/ladspa
 +plugindir = @libdir@/ladspa

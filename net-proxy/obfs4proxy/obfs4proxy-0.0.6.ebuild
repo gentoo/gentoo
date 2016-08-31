@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]];
 then
 	inherit golang-vcs
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 	EGIT_COMMIT="${P}"
 	SRC_URI="https://github.com/Yawning/obfs4/archive/${P}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot

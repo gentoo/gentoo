@@ -12,7 +12,7 @@ inherit kde4-base flag-o-matic
 DESCRIPTION="Periodic table of the elements"
 HOMEPAGE="https://www.kde.org/applications/education/kalzium
 https://edu.kde.org/kalzium"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug editor +plasma solver"
 
 DEPEND="

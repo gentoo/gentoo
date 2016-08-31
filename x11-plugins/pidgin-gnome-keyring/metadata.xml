@@ -11,4 +11,7 @@
 	keyring, which some would argue is a more secure form of password
 	storage.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">aebrahim/pidgin-gnome-keyring</remote-id>
+	</upstream>
 </pkgmetadata>

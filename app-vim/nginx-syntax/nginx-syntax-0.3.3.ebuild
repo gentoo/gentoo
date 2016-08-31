@@ -9,4 +9,4 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: Nginx configuration files syntax"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1886"
 LICENSE="vim"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-fbsd"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-fbsd ~x86-fbsd"

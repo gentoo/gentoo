@@ -6,6 +6,7 @@ EAPI=5
 
 KDE_LINGUAS_DIR="applet/locale"
 KDE_LINGUAS="de et pl pt pt_BR sv tr uk"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Plasmoid to show date and time in adjustable format using rich text"

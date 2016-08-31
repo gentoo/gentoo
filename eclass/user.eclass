@@ -187,7 +187,6 @@ enewuser() {
 	local egroups=$1; shift
 	local g egroups_arr
 	IFS="," read -r -a egroups_arr <<<"${egroups}"
-	shift
 	if [[ ${#egroups_arr[@]} -gt 0 ]] ; then
 		local defgroup exgroups
 		for g in "${egroups_arr[@]}" ; do

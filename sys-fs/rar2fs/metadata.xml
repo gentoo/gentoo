@@ -6,7 +6,6 @@
 		<name>Tim Harder</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">rar2fs</remote-id>
 		<remote-id type="github">hasse69/rar2fs</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RESTRICT="test"
@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	net-libs/accounts-qt

@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit common-lisp-3
+inherit common-lisp-3 xdg-utils
 
 MY_P="v${PV}"
 
@@ -28,6 +28,10 @@ find-lisp-impl() {
 		[[ "$(best_version dev-lisp/${lisp})" ]] && echo "${lisp}" && return
 	done
 	die "No CommonLisp implementation found"
+}
+
+src_configure() {
+	xdg_environment_reset
 }
 
 src_compile() {

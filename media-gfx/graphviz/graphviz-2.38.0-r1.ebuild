@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -140,7 +140,8 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch \
-		"${FILESDIR}"/${PN}-2.34.0-dot-pangocairo-link.patch
+		"${FILESDIR}"/${PN}-2.34.0-dot-pangocairo-link.patch \
+		"${FILESDIR}"/${PN}-2.38.0-ghostscript-9.18.patch
 
 	# ToDo: Do the same thing for examples and/or
 	#       write a patch for a configuration-option
@@ -155,7 +156,7 @@ src_prepare() {
 	# This is an old version of libtool
 	# use the ./configure option to exclude its use, and
 	# delete the dir since we don't need to eautoreconf it
-	rm -rf libltdl
+	rm -rf libltdl || die
 
 	# no nls, no gettext, no iconv macro, so disable it
 	use nls || { sed -i -e '/^AM_ICONV/d' configure.ac || die; }

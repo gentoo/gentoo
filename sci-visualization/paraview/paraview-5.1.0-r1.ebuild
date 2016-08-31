@@ -70,6 +70,7 @@ RDEPEND="
 		dev-qt/qthelp:5
 		dev-qt/qtopengl:5
 		dev-qt/qtsql:5
+		dev-qt/qttest:5
 		dev-qt/qtwebkit:5
 		dev-qt/qtx11extras:5
 	)

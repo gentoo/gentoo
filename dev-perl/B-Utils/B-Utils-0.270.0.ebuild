@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Helper functions for op tree manipulation"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 # needs Scalar::Util

@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <use>
+    <flag name="gtk3">Use GTK+3 instead of GTK+2</flag>
     <flag name="autoclose">Enable the autoclose plugin.</flag>
     <flag name="automark">Enable the automark plugin</flag>
     <flag name="commander">Enable the commander plugin which provides a command panel for rapid access to any action.</flag>
@@ -11,7 +12,7 @@
     <flag name="devhelp">Enable the devhelp plugin which integrates <pkg>dev-util/devhelp</pkg></flag>
     <flag name="enchant">Enable spell checking using enchant</flag>
     <flag name="gpg">Enable geanypg plugin which integrates GPG using <pkg>app-crypt/gpgme</pkg></flag>
-    <flag name="gtkspell">Use gtkspell for dictionary support</flag>
+    <flag name="gtkspell">Use gtkspell for dictionary support in GeanyVC</flag>
     <flag name="markdown">Enable the markdown plugin which uses <pkg>app-text/discount</pkg> and <pkg>net-libs/webkit-gtk</pkg> to display a realtime preview markdown.</flag>
     <flag name="multiterm">Enable the multiterm plugin</flag>
     <flag name="overview">Enable overview plugin</flag>

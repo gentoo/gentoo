@@ -1,5 +1,5 @@
---- scripts/pkg/private/install.m.orig	2014-04-15 08:45:55.487258887 -0700
-+++ scripts/pkg/private/install.m	2014-04-15 12:12:40.985606248 -0700
+--- a/scripts/pkg/private/install.m
++++ b/scripts/pkg/private/install.m
 @@ -62,7 +62,14 @@
      for i = 1:length (files)
        tgz = files{i};

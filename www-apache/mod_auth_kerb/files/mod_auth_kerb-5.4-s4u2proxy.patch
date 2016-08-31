@@ -1,7 +1,7 @@
 
 Add S4U2Proxy feature:
 
-https://sourceforge.net/mailarchive/forum.php?thread_name=4EE665D1.3000308%40redhat.com&forum_name=modauthkerb-help
+http://sourceforge.net/mailarchive/forum.php?thread_name=4EE665D1.3000308%40redhat.com&forum_name=modauthkerb-help
 
 The attached patches add support for using s4u2proxy 
 (http://k5wiki.kerberos.org/wiki/Projects/Services4User) to allow the 
@@ -19,9 +19,10 @@ These are patches against the current CVS HEAD (mod_auth_krb 5.4).
 I've added a new module option to enable this support, 
 KrbConstrainedDelegation. The default is off.
 
+diff -up --recursive mod_auth_kerb-5.4.orig/README mod_auth_kerb-5.4/README
 --- mod_auth_kerb-5.4.orig/README	2008-11-26 11:51:05.000000000 -0500
-+++ mod_auth_kerb-5.4/README	2012-01-04 11:17:22.000000000 -0500
-@@ -122,4 +122,16 @@ KrbSaveCredentials, the tickets will be 
++++ mod_auth_kerb-5.4/README	2014-01-21 13:46:21.482223432 -0500
+@@ -122,4 +122,16 @@ KrbSaveCredentials, the tickets will be
  credential cache that will be available for the request handler. The ticket
  file will be removed after request is handled.
  
@@ -37,10 +38,10 @@ KrbConstrainedDelegation. The default is off.
 +
 +The module itself will obtain and manage the necessary credentials.
 +
- $Id$
+ $Id: README,v 1.12 2008/09/17 14:01:55 baalberith Exp $
 diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.4/src/mod_auth_kerb.c
---- mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c	2011-12-09 17:55:05.000000000 -0500
-+++ mod_auth_kerb-5.4/src/mod_auth_kerb.c	2012-03-01 14:19:40.000000000 -0500
+--- mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c	2014-01-21 13:45:21.605538007 -0500
++++ mod_auth_kerb-5.4/src/mod_auth_kerb.c	2014-01-21 13:46:46.746668762 -0500
 @@ -42,6 +42,31 @@
   * POSSIBILITY OF SUCH DAMAGE.
   */
@@ -70,7 +71,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
 + * Copyright (C) 2012  Red Hat
 + */
 +
- #ident "$Id$"
+ #ident "$Id: mod_auth_kerb.c,v 1.150 2008/12/04 10:14:03 baalberith Exp $"
  
  #include "config.h"
 @@ -49,6 +74,7 @@
@@ -184,7 +185,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
  				   server_creds, NULL, NULL);
     gss_release_name(&minor_status2, &server_name);
     if (GSS_ERROR(major_status)) {
-@@ -1257,6 +1325,293 @@ cmp_gss_type(gss_buffer_t token, gss_OID
+@@ -1257,6 +1325,302 @@ cmp_gss_type(gss_buffer_t token, gss_OID
  }
  #endif
  
@@ -371,15 +372,24 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
 +    }
 +
 +    if (NULL == princ) {
-+        princ_name = apr_psprintf(r->pool, "%s/%s",
-+            (service_name) ? service_name : SERVICE_NAME,
-+            ap_get_server_name(r));
++        if (strchr(service_name, '/') != NULL)
++           kerr = krb5_parse_name(kcontext, service_name, &princ);
++        else
++           kerr = krb5_sname_to_principal(kcontext, ap_get_server_name(r),
++                                         (service_name) ? service_name : SERVICE_NAME,
++                                         KRB5_NT_SRV_HST, &princ);
 +
-+        if ((kerr = krb5_parse_name(kcontext, princ_name, &princ))) {
++        if (kerr) {
 +            log_rerror(APLOG_MARK, APLOG_ERR, 0, r,
-+                       "Could not parse principal %s: %s (%d) ",
-+                       princ_name, error_message(kerr), kerr);
++                       "Could not parse principal: %s (%d) ",
++                       error_message(kerr), kerr);
 +            goto unlock;
++        }
++
++        if ((kerr = krb5_unparse_name(kcontext, princ, &princ_name))) {
++            log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r,
++                       "Could not unparse principal %s: %s (%d)",
++                       princ_name, error_message(kerr), kerr);
 +        }
 +    } else if (NULL == princ_name) {
 +        if ((kerr = krb5_unparse_name(kcontext, princ, &princ_name))) {
@@ -478,7 +488,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
  static int
  authenticate_user_gss(request_rec *r, kerb_auth_config *conf,
  		      const char *auth_line, char **negotiate_ret_value)
-@@ -1697,10 +2052,60 @@ have_rcache_type(const char *type)
+@@ -1697,10 +2061,60 @@ have_rcache_type(const char *type)
  /*************************************************************************** 
   Module Setup/Configuration
   ***************************************************************************/
@@ -539,7 +549,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
  #ifndef HEIMDAL
     /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
        1.3.x are covered by the hack overiding the replay calls */
-@@ -1741,6 +2146,7 @@ static int
+@@ -1741,6 +2155,7 @@ static int
  kerb_init_handler(apr_pool_t *p, apr_pool_t *plog,
        		  apr_pool_t *ptemp, server_rec *s)
  {
@@ -547,7 +557,7 @@ diff -up --recursive mod_auth_kerb-5.4.orig/src/mod_auth_kerb.c mod_auth_kerb-5.
     ap_add_version_component(p, "mod_auth_kerb/" MODAUTHKERB_VERSION);
  #ifndef HEIMDAL
     /* Suppress the MIT replay cache.  Requires MIT Kerberos 1.4.0 or later.
-@@ -1748,14 +2154,41 @@ kerb_init_handler(apr_pool_t *p, apr_poo
+@@ -1748,14 +2163,41 @@ kerb_init_handler(apr_pool_t *p, apr_poo
     if (getenv("KRB5RCACHETYPE") == NULL && have_rcache_type("none"))
        putenv(strdup("KRB5RCACHETYPE=none"));
  #endif

@@ -6,9 +6,6 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <maintainer type="person">
-	<email>gregkh@gentoo.org</email>
-</maintainer>
-<maintainer type="person">
 	<email>floppym@gentoo.org</email>
 </maintainer>
 <use>

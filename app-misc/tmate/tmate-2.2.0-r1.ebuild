@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/msgpack[static-libs?]
 	>=net-libs/libssh-0.6.0[static-libs?]
 "
-DEPEND="${RPDEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {

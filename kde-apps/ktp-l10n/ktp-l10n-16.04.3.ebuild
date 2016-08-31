@@ -6,8 +6,8 @@ EAPI=6
 
 KDE_HANDBOOK="false"
 KDE_L10N=(
-	ar ast bg bs ca ca-valencia cs da de el en-GB eo es et eu fa fi fr ga gl he
-	hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt-BR ro ru
+	ar ast bg bs ca ca-valencia cs da de el en-GB eo es et fi fr ga gl
+	hu ia it ja kk km ko lt mr nb nds nl pa pl pt pt-BR ro ru
 	sk sl sr sr-ijekavsk sr-Latn sr-Latn-ijekavsk sv tr ug uk wa zh-CN zh-TW
 )
 KMNAME="kde-l10n"
@@ -15,7 +15,7 @@ inherit kde5
 
 DESCRIPTION="KDE Telepathy internationalization package"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -24,7 +24,7 @@ DEPEND="
 	sys-devel/gettext
 "
 RDEPEND="
-	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde-l10n-16.04.3
 	!kde-apps/ktp-accounts-kcm:4
 	!kde-apps/ktp-approver:4
 	!kde-apps/ktp-auth-handler:4

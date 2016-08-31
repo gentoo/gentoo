@@ -15,7 +15,7 @@ inherit kde5
 
 DESCRIPTION="KDE PIM internationalization package"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -24,7 +24,7 @@ DEPEND="
 	sys-devel/gettext
 "
 RDEPEND="
-	!<kde-apps/kde-l10n-15.08.0-r1
+	!<kde-apps/kde-l10n-16.04.3
 	!<kde-apps/kde4-l10n-4.14.3-r1
 "
 

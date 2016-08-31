@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~williamh/dist/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 
 LICENSE="BSD-2"
@@ -327,26 +327,4 @@ pkg_postinst() {
 		ewarn "without networking."
 		ewarn
 	fi
-
-	ewarn "In this version of OpenRC, the loopback interface no longer"
-	ewarn "satisfies the net virtual."
-	ewarn "If you have services now which do not start because of this,"
-	ewarn "They can be fixed by adding rc_need=\"!net\""
-	ewarn "to the ${EROOT}etc/conf.d/<servicename> file."
-	ewarn "You should also file a bug against the service asking that"
-	ewarn "need net be dropped from the dependencies."
-	ewarn "The bug you file should block the following tracker:"
-	ewarn "https://bugs.gentoo.org/show_bug.cgi?id=439092"
-	ewarn
-
-	# Updated for 0.13.2.
-	ewarn "Bug https://bugs.gentoo.org/show_bug.cgi?id=427996 was not"
-	ewarn "fixed correctly in earlier versions of OpenRC."
-	ewarn "The correct fix is implemented in this version, but that"
-	ewarn "means netmount needs to be added to the default runlevel if"
-	ewarn "you are using nfs file systems."
-	ewarn
-
-	elog "You should now update all files in /etc, using etc-update"
-	elog "or equivalent before restarting any services or this host."
 }

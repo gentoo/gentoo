@@ -8,5 +8,5 @@ KMNAME="kde-runtime"
 inherit kde4-meta
 
 DESCRIPTION="KDE application to report the mimetype for a given file"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"

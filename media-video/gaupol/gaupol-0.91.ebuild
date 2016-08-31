@@ -14,10 +14,11 @@ SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="spell test"
 
-RDEPEND="app-text/iso-codes
+RDEPEND="
+	app-text/iso-codes
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
@@ -25,6 +26,7 @@ RDEPEND="app-text/iso-codes
 		>=dev-python/pyenchant-1.4[${PYTHON_USEDEP}]
 		app-text/gtkspell:3
 	)"
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
