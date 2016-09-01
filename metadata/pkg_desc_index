@@ -6726,7 +6726,7 @@ dev-php/PEAR-Net_SmartIRC 1.1.4: Net_SmartIRC is a PHP class for communication w
 dev-php/PEAR-Net_Socket 1.0.14 1.0.14-r3: PHP class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
 dev-php/PEAR-Net_URL 1.0.15: Easy parsing of URLs
-dev-php/PEAR-Net_URL2 2.0.0 2.0.5: Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
+dev-php/PEAR-Net_URL2 2.0.5 2.2.1: Easy parsing of URLs (PHP5 port of PEAR-Net_URL package)
 dev-php/PEAR-Net_UserAgent_Detect 2.5.2: Net_UserAgent_Detect determines Web browser, version, and platform from an HTTP user agent string
 dev-php/PEAR-Numbers_Roman 1.0.2: Provides methods for converting to and from Roman Numerals
 dev-php/PEAR-Numbers_Words 0.16.4 0.18.1: Provides methods for spelling numerals in words
