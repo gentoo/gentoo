@@ -48,6 +48,8 @@ pkg_nofetch() {
 }
 
 src_prepare() {
+	default
+
 	if use bundled-libs ; then
 		mv lib32/_libSDL-1.2.so.0 lib32/libSDL-1.2.so.0 || die
 	fi
