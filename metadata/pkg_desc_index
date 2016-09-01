@@ -194,7 +194,7 @@ app-admin/rsyslog 8.16.0-r1 8.19.0 8.21.0: An enhanced multi-threaded syslogd wi
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.10 2015.8.8 2015.8.10 2015.8.11 2015.8.12 2016.3.1 2016.3.2 9999: Salt is a remote execution and configuration manager
-app-admin/setools 3.3.8-r5 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
+app-admin/setools 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.5-r1 1.6.2 1.6.4 1.7.0: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.2: Manage installation of software in /var/lib/
@@ -8160,7 +8160,7 @@ dev-python/seaborn 0.5.1 0.6.0 0.7.0: Statistical data visualization
 dev-python/selenium 2.46.0 2.47.1 2.49.0: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.4.1 2.4.2: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
-dev-python/sepolgen 1.2.1-r1 1.2.2 1.2.3 9999: SELinux policy generation library
+dev-python/sepolgen 1.2.3 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
@@ -16521,7 +16521,7 @@ sys-apps/busybox 1.24.1 1.24.2 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.03 1.09 1.09-r1 1.10 1.11: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
-sys-apps/checkpolicy 2.2 2.3 2.4 2.5 9999: SELinux policy compiler
+sys-apps/checkpolicy 2.5 9999: SELinux policy compiler
 sys-apps/checkservice 1.2.0: Check the status of services running on local/remote machines
 sys-apps/chname 1.0-r2: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
@@ -16682,7 +16682,7 @@ sys-apps/pcsc-tools 1.4.25 1.4.26 1.4.27: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 0.9.4 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
-sys-apps/policycoreutils 2.2.5-r4 2.3-r3 2.4 2.4-r1 2.4-r2 2.5 9999: SELinux core utilities
+sys-apps/policycoreutils 2.5 9999: SELinux core utilities
 sys-apps/portage 2.2.8-r2 2.2.24 2.2.26 2.2.28 2.3.0_rc1-r1 2.3.0 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.5 1.6: Tool to query and modify process behavior
@@ -17277,7 +17277,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.10.103 3.12.52-r1 3.12.60 3.12.61 3.12.62 3.12.9999 3.14.58-r1 3.14.73 3.14.74 3.14.75 3.14.76 3.14.77 3.18.25-r1 3.18.36 3.18.38 3.18.39 3.18.40 4.1.15-r1 4.1.27 4.1.29 4.1.30 4.1.31 4.4.6 4.4.19 4.7.2: Full sources including the Gentoo patchset for the 4.7 kernel tree
 sys-kernel/git-sources 4.8_rc1 4.8_rc2 4.8_rc3 4.8_rc4: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2: Hardened kernel sources (kernel series 4.7)
+sys-kernel/hardened-sources 4.4.2 4.4.8-r1 4.5.7-r5 4.7.2-r1: Hardened kernel sources (kernel series 4.7)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.3 0.1.4: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
@@ -17336,9 +17336,9 @@ sys-libs/libosinfo 0.3.0 0.3.1: GObject library for managing information about r
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.2.3 2.3.0 2.3.1: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.2.2-r5 2.3-r2 2.4 2.5 9999: SELinux userland library
-sys-libs/libsemanage 2.2-r2 2.3-r4 2.4-r1 2.4-r2 2.5 9999: SELinux kernel and policy management library
-sys-libs/libsepol 2.2 2.3 2.4 2.5 9999: SELinux binary policy representation library
+sys-libs/libselinux 2.5 9999: SELinux userland library
+sys-libs/libsemanage 2.5 9999: SELinux kernel and policy management library
+sys-libs/libsepol 2.5 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.0.1 1.1.11 1.1.15 1.1.16: Provides a library for logging service-related events
 sys-libs/libsmbios 2.2.28 2.3.0-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
