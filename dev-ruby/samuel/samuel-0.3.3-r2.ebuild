@@ -39,6 +39,6 @@ all_ruby_prepare() {
 	# Require an old enough version of mocha.
 	sed -i -e '1igem "mocha", "~> 0.14.0"' test/test_helper.rb || die
 
-	# Use the test-unit gem to make jruby compatible with newer mocha.
-	sed -i -e '1igem "test-unit"' test/test_helper.rb || die
+	# Use the test-unit gem for consistency accross ruby versions
+	sed -i -e '1igem "test-unit"; require "test/unit"' test/test_helper.rb || die
 }
