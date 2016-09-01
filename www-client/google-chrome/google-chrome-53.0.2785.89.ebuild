@@ -63,6 +63,7 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
+QA_DESKTOP_FILE="usr/share/applications/google-chrome.*\\.desktop"
 S=${WORKDIR}
 CHROME_HOME="opt/google/chrome${PN#google-chrome}"
 
