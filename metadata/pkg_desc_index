@@ -99,7 +99,7 @@ app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
 app-admin/filebeat-bin 1.2.2 1.2.3: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
-app-admin/fleet 0.11.0-r1 0.11.1 0.11.5 9999: A Distributed init System
+app-admin/fleet 0.11.0-r1 0.11.1 0.11.5 0.11.8 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
 app-admin/gam-server 0.1.10-r2: Library providing the FAM File Alteration Monitor API
 app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor API & Server
@@ -15157,7 +15157,7 @@ net-print/gmso2 0.1-r1: GMSO 2 queries ink levels of libinklevel supported print
 net-print/gtklp 1.3.0 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.2.9 5.2.10 5.2.11: Ghostscript and cups printer drivers
 net-print/hplip 3.14.10 3.16.3 3.16.7 3.16.8: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.14.10 3.16.3 3.16.7: Proprietary plugins and firmware for HPLIP
+net-print/hplip-plugin 3.14.10 3.16.3 3.16.7 3.16.8: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-mita-ppds 8.4: PPD description files for (some) Kyocera Mita Printers
 net-print/libgnomecups 0.2.3-r3 0.2.3-r5: GNOME cups library
