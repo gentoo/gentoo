@@ -72,10 +72,6 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
-	if [[ ${PV} != 9999 ]] ; then
-		# If wanted for live builds, please use /etc/portage/patches
-		eapply "${FILESDIR}/0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch"
-	fi
 	eapply "${FILESDIR}"/${PN}-2.6-build-paths.patch
 
 	eapply_user
