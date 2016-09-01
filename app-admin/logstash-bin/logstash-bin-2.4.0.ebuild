@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit user
 
@@ -11,12 +11,13 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="!all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz )
+	all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_PN}-all-plugins-${PV}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="all-plugins"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
@@ -28,7 +29,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup ${MY_PN}
-	enewuser ${MY_PN} -1 -1 /var/lib/${MY_PN} ${MY_PN} -m
+	enewuser ${MY_PN} -1 -1 /var/lib/${MY_PN} ${MY_PN}
 }
 
 src_install() {
