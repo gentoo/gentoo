@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,12 +18,12 @@ RDEPEND="
 	dev-ros/audio_common_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/roscpp
 	dev-libs/boost:=[threads]
-	media-libs/gstreamer:0.10
+	media-libs/gstreamer:1.0
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
-	media-plugins/gst-plugins-lame:0.10
-	media-libs/gst-plugins-good:0.10
-	media-libs/gst-plugins-base:0.10
+	media-plugins/gst-plugins-lame:1.0
+	media-libs/gst-plugins-good:1.0
+	media-libs/gst-plugins-base:1.0
 "
