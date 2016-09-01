@@ -1,0 +1,20 @@
+--- a/backend/src/CMakeLists.txt	2015-12-18 07:40:03.000000000 +0100
++++ b/backend/src/CMakeLists.txt	2016-08-01 13:44:31.475875150 +0200
+@@ -153,7 +153,7 @@
+ 
+ add_library(gbeinterp SHARED gbe_bin_interpreter.cpp)
+ 
+-if (LLVM_VERSION_NODOT VERSION_EQUAL 34)
++if (NOT (LLVM_VERSION_NODOT LESS 34))
+   find_library(TERMINFO NAMES tinfo ncurses)
+   if (${TERMINFO} STREQUAL TERMINFO-NOTFOUND)
+     message(FATAL_ERROR "no libtinfo or libncurses is found in system")
+@@ -161,7 +161,7 @@
+     target_link_libraries(gbe ${TERMINFO})
+     message(STATUS "use ${TERMINFO} as terminal control library")
+   endif (${TERMINFO} STREQUAL TERMINFO-NOTFOUND)
+-endif(LLVM_VERSION_NODOT VERSION_EQUAL 34)
++endif(NOT (LLVM_VERSION_NODOT LESS 34))
+ 
+ link_directories (${LLVM_LIBRARY_DIR} ${DRM_LIBDIR})
+ 
