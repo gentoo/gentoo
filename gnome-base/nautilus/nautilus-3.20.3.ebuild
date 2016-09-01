@@ -12,8 +12,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Nautilus"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
-
 IUSE="exif gnome +introspection packagekit +previewer selinux sendto tracker xmp"
+
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
 
 # FIXME: tests fails under Xvfb, but pass when building manually
@@ -26,7 +26,7 @@ RESTRICT="test"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.45.7:2[dbus]
 	>=x11-libs/pango-1.28.3
-	>=x11-libs/gtk+-3.18.5:3[introspection?]
+	>=x11-libs/gtk+-3.19.12:3[introspection?]
 	>=dev-libs/libxml2-2.7.8:2
 	>=gnome-base/gnome-desktop-3:3=
 
