@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3.0.1:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r3.patch"
 	"${FILESDIR}/${PN}-system-jinja-r13.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
+	"${FILESDIR}/chromium-54-ffmpeg2compat.patch"
 )
 
 pkg_pretend() {
