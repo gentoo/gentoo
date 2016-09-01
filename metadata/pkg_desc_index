@@ -2511,7 +2511,7 @@ app-vim/ant_menu 0.5.7.1-r1: vim plugin: Java ant build system integration
 app-vim/autoalign 14: vim plugin: automatically align bib, c, c++, tex and vim code
 app-vim/automatictexplugin 12.5-r1: vim plugin: a comprehensive plugin for editing LaTeX files
 app-vim/bash-support 4.2.1: vim plugin: write and run bash scripts using menus and hotkeys
-app-vim/bnf-syntax 1.2-r1 1.2-r2: vim plugin: BNF file syntax highlighting
+app-vim/bnf-syntax 1.2-r2: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
 app-vim/bufexplorer 7.4.6 7.4.9-r1: vim plugin: easily browse vim buffers
@@ -2544,7 +2544,7 @@ app-vim/easy-align 2.9.4 2.9.6: vim plugin: a simple alignment plugin
 app-vim/easytags 3.10.1 3.11: vim plugin: automated tag file generation and syntax highlighting
 app-vim/ebnf-syntax 1.1-r1: vim plugin: EBNF (ISO/IEC 14997) file syntax highlighting
 app-vim/emmet 0.85: vim plugin: HTML and CSS hi-speed coding
-app-vim/enhancedcommentify 2.3: vim plugin: enhanced comment creation
+app-vim/enhancedcommentify 2.3 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r1: vim plugin: syntax highlighting for eruby
 app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
@@ -2598,7 +2598,7 @@ app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax hi
 app-vim/phpdocs 0.26: vim plugin: PHPDoc Support in VIM
 app-vim/project 1.4.1: vim plugin: Managing multiple projects with multiple sources like an IDE
 app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
-app-vim/pushpop 4.0 4.0-r1: vim plugin: pushd / popd from the vim commandline
+app-vim/pushpop 4.0-r1: vim plugin: pushd / popd from the vim commandline
 app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/pydiction 1.2.3: vim plugin: Tab-complete your Python code
 app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
@@ -14936,7 +14936,7 @@ net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.1.0 1.2.0: A daemon that spawns one command per connection, and dampens connection bursts
 net-misc/sparkleshare 1.1.0: Git-based collaboration and file sharing tool
 net-misc/spice-gtk 0.31 0.32-r1 0.32-r2 9999: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
-net-misc/spiped 1.5.0-r1: secure pipe daemon
+net-misc/spiped 1.5.0-r1 1.5.0-r2: secure pipe daemon
 net-misc/spread 4.1.0-r1 4.3.0-r1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
@@ -18962,7 +18962,7 @@ x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
 x11-wm/compiz-fusion 0.8.8 0.8.8-r1: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2: A clean, light window manager
 x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
-x11-wm/dwm 6.0 6.1: a dynamic window manager for X11
+x11-wm/dwm 6.1: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
 x11-wm/enlightenment 0.16.9999 0.17.9999 0.20.5 0.20.6 1.0.17: Enlightenment Window Manager (e16)
