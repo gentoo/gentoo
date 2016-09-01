@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/roscpp
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/roslib
-	media-libs/gstreamer:0.10
+	media-libs/gstreamer:1.0
 	dev-ros/audio_common_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
@@ -30,6 +30,6 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	dev-python/gst-python[${PYTHON_USEDEP}]
 	app-accessibility/festival
-	media-libs/gst-plugins-good:0.10
-	media-libs/gst-plugins-base:0.10
+	media-libs/gst-plugins-good:1.0
+	media-libs/gst-plugins-base:1.0
 "
