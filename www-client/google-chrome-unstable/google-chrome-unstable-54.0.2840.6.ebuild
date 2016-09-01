@@ -63,6 +63,7 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
+QA_DESKTOP_FILE="usr/share/applications/google-chrome.*\\.desktop"
 S=${WORKDIR}
 CHROME_HOME="opt/google/chrome${PN#google-chrome}"
 
@@ -106,8 +107,16 @@ pkg_setup() {
 	chromium_suid_sandbox_check_kernel_config
 }
 
+src_unpack() {
+	:
+}
+
 src_install() {
-	rm -r usr/share/menu || die
+	dodir /
+	cd "${ED}" || die
+	unpacker
+
+	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
 	pushd "${CHROME_HOME}/locales" > /dev/null || die
@@ -125,14 +134,9 @@ src_install() {
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}.png" ${PN}.png
 	done
 
-	insinto /
-	doins -r opt usr
-	dosym "/${CHROME_HOME}/${PN}" "/usr/bin/${MY_PN}"
+	dosym "/${CHROME_HOME}/${PN}" "usr/bin/${MY_PN}"
 
-	find "${ED}" -type d -empty -delete || die
-	chmod 755 "${ED}${CHROME_HOME}"/{chrome,${PN},nacl_helper{,_bootstrap},xdg-{mime,settings}} || die
-	chmod 4755 "${ED}${CHROME_HOME}/chrome-sandbox" || die
-	pax-mark m "${ED}${CHROME_HOME}/chrome"
+	pax-mark m "${CHROME_HOME}/chrome"
 
 	readme.gentoo_create_doc
 }
