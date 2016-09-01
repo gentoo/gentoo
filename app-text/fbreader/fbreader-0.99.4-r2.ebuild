@@ -74,6 +74,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-mimetypes.patch
 	# bug #437262
 	epatch "${FILESDIR}"/${P}-ld-bfd.patch
+	# bug #592588
+	epatch "${FILESDIR}"/${P}-gcc6.patch
 }
 
 src_compile() {
