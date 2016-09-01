@@ -11,8 +11,8 @@ EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 [[ ${PV} == *9999 ]] && inherit git-r3
 inherit readme.gentoo-r1 user systemd distutils-r1
 
-MY_PV="${PV/_p/p}"
-MY_P="${PN}-${MY_PV}"
+MY_V="0.9.0rc2"
+MY_P="${PN}-${MY_V}"
 
 DESCRIPTION="BuildBot build automation system"
 HOMEPAGE="http://trac.buildbot.net/ https://github.com/buildbot/buildbot http://pypi.python.org/pypi/buildbot"
