@@ -6,8 +6,8 @@ EAPI=6
 
 inherit toolchain-funcs systemd
 
-MY_P=Mail-SpamAssassin-${PV//_/-}
-S=${WORKDIR}/${MY_P}
+MY_P="Mail-SpamAssassin-${PV//_/-}"
+S="${WORKDIR}/${MY_P}"
 DESCRIPTION="An extensible mail filter which can identify and tag spam"
 HOMEPAGE="http://spamassassin.apache.org/"
 SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
@@ -66,7 +66,8 @@ DEPEND="app-crypt/gnupg
 		libressl? ( dev-libs/libressl )
 	)"
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-perl/Net-CIDR-Lite"
 
 # Some spamd tests fail, and it looks like the whole suite eventually
 # hangs.
@@ -139,8 +140,8 @@ src_install () {
 	newinitd "${FILESDIR}"/3.4.1-spamd.init spamd
 	newconfd "${FILESDIR}"/3.4.1-spamd.conf spamd
 
-	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
-	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf
+	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 
 	# The sed statements in the following conditionals alter the init
 	# script to depend (or not) on the database being running before
