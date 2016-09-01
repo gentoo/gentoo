@@ -19,6 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
+
 all_ruby_prepare() {
 	sed -i -e '/codeclimate/I s:^:#:' spec/spec_helper.rb || die
 	sed -i -e '/pry/ s:^:#:' spec/spec_helper.rb spec/lib/hamster/vector/insert_spec.rb || die
