@@ -1762,6 +1762,11 @@
       <role>Lead (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
+      <email>TomWij@gentoo.org</email>
+      <name>Tom Wijsman</name>
+      <role>Member (Kernel, gentoo-sources, genpatches)</role>
+    </member>
+    <member>
       <email>zorry@gentoo.org</email>
       <name>Magnus Granberg</name>
       <role>Member (Kernel, hardened)</role>
