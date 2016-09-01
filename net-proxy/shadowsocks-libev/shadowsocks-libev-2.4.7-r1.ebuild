@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils systemd
 
-DESCRIPTION="A lightweight secured scoks5 proxy for embedded devices and low end boxes"
+DESCRIPTION="A lightweight secured SOCKS5 proxy for embedded devices and low end boxes"
 HOMEPAGE="https://github.com/shadowsocks/shadowsocks-libev"
 
 MY_PV="v${PV}"
