@@ -99,7 +99,9 @@ src_configure() {
 }
 
 src_test() {
-	# TODO: tests are broken by sandbox
+	# sandbox fiddles with memory error reporting and breaks tests
+	local -x SANDBOX_ON=0
+
 	cmake-utils_src_make check-all
 }
 
