@@ -22,11 +22,15 @@
 		(forced-on when supported prior to 38.0)</flag>
 	<flag name="roaming">Build roaming extension support (default on)</flag>
 	<flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg>
-		Use system cairo instead of bundled.</flag>
+		instead of bundled.</flag>
+	<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg>
+		instead of bundled.</flag>
 	<flag name="system-icu">Use the sytem-wide <pkg>dev-libs/icu</pkg>
-		Use system icu indead of bundled.</flag>
+		instead of bundled.</flag>
 	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
-		Use system jpeg instead of bundled.</flag>
+		instead of bundled.</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
 	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
