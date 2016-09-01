@@ -28,3 +28,11 @@ src_install() {
 	doins -r Net/
 	einstalldocs
 }
+
+pkg_postinst() {
+	peardev install -nrO --force "${WORKDIR}/package.xml" 2> /dev/null
+}
+
+pkg_postrm() {
+	peardev uninstall -nrO --force pear.php.net/${MY_PN}
+}
