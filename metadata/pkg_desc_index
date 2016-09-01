@@ -8130,7 +8130,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.4.4 0.4.5 0.4.7 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.0.38 1.0.39 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.0.38 1.0.39 1.0.40 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.7.2 2.7.3 2.7.4 2.7.5 2.7.6 2.7.7 2.7.8: Python interface to the R Programming Language
@@ -8485,9 +8485,9 @@ dev-ros/actionlib_msgs 1.12.3 1.12.4 9999: Common messages to interact with an a
 dev-ros/actionlib_tutorials 0.1.8 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
 dev-ros/angles 1.9.10 9999: Set of simple math utilities to work with angles
-dev-ros/audio_capture 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: Transports audio from a source to a destination
-dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: Messages for transmitting audio via ROS
-dev-ros/audio_play 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: Outputs audio to a speaker from a source node
+dev-ros/audio_capture 0.2.12 0.3.1 9999: Transports audio from a source to a destination
+dev-ros/audio_common_msgs 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Messages for transmitting audio via ROS
+dev-ros/audio_play 0.2.12 0.3.1 9999: Outputs audio to a speaker from a source node
 dev-ros/base_local_planner 1.13.0 1.13.1 1.14.0 9999: Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane
 dev-ros/bond 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 1.7.17 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
@@ -8740,7 +8740,7 @@ dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex r
 dev-ros/smach_msgs 2.0.0 9999: Set of messages that are used by the introspection interfaces for smach
 dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it tightly with ROS
 dev-ros/smclib 1.7.16 1.7.17 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
-dev-ros/sound_play 0.2.12 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
+dev-ros/sound_play 0.2.12 0.3.1 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
@@ -15196,7 +15196,7 @@ net-proxy/polipo 1.1.1 1.1.1-r3 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.24 3.0.24-r1 3.0.24-r2: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 2.4.3-r2 2.4.5 2.4.7-r1: A lightweight secured scoks5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 2.4.3-r2 2.4.5 2.4.7-r1: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/squid 3.5.19 3.5.20: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
@@ -15343,7 +15343,7 @@ perl-core/libnet 1.270.0: A URI Perl Module
 perl-core/parent 0.228-r1: Establish an ISA relationship with base classes at compile time
 perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
-ros-meta/audio_common 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: Common code for working with audio in ROS
+ros-meta/audio_common 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 0.3.1 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
 ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 9999: Messages that are widely used by other ROS packages
