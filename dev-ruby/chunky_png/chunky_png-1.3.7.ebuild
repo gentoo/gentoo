@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR=""
 
-RUBY_FAKEGEM_EXTRADOC="BENCHMARKING.rdoc README.rdoc"
+RUBY_FAKEGEM_EXTRADOC="BENCHMARKING.rdoc CHANGELOG.rdoc README.md"
 
 RUBY_FAKEGEM_GEMSPEC="chunky_png.gemspec"
 
