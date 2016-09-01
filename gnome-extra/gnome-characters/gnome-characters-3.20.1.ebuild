@@ -4,8 +4,9 @@
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
+PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 vala virtualx
+inherit gnome2 python-any-r1 vala virtualx
 
 DESCRIPTION="Unicode character map viewer and library"
 HOMEPAGE="https://wiki.gnome.org/Design/Apps/CharacterMap"
@@ -28,8 +29,18 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.50.1
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( dev-util/dogtail )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
+
+python_check_deps() {
+	has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	gnome2_src_prepare
