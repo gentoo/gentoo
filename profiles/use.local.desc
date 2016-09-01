@@ -7990,8 +7990,6 @@ www-apps/wordpress:themes - Installs themes (including default theme)
 www-client/chromium:gn - Use GN (generate ninja) instead of GYP for building
 www-client/chromium:gtk3 - Use gtk3 instead of gtk2
 www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
-www-client/chromium:hidpi - Enable support for high-resolution screens (high dots per inch)
-www-client/chromium:hotwording - Enable voice-recognition support (Ok Google)
 www-client/chromium:pic - Disable optimized assembly code that is not PIC friendly
 www-client/chromium:proprietary-codecs - Enable proprietary codecs like H.264, MP3
 www-client/chromium:system-ffmpeg - Use system ffmpeg instead of the bundled one
