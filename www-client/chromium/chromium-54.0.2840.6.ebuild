@@ -144,6 +144,7 @@ are not displayed properly:
 - media-fonts/bitstream-cyberbit
 - media-fonts/droid
 - media-fonts/ipamonafont
+- media-fonts/noto
 - media-fonts/ja-ipafonts
 - media-fonts/takao-fonts
 - media-fonts/wqy-microhei
