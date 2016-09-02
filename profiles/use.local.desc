@@ -1423,6 +1423,8 @@ dev-db/recutils:mdb - Build the mdb2rec utility
 dev-db/recutils:uuid - Enable support for uuid types
 dev-db/redis:jemalloc - Use dev-libs/jemalloc for allocations.
 dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
+dev-db/rethinkdb:jemalloc - Use dev-libs/jemalloc for allocations (default).
+dev-db/rethinkdb:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
 dev-db/soci:boost - Enable boost support
 dev-db/soci:empty - Build the sample backend called Empty
 dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
