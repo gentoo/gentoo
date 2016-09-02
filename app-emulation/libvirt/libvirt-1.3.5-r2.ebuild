@@ -126,7 +126,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 qemu kvm
+	enewuser qemu 77 -1 -1 "qemu,kvm"
 
 	# Some people used the masked ebuild which was not adding the qemu
 	# user to the kvm group originally. This results in VMs failing to
