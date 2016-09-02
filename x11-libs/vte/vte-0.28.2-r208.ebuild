@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2 python-r1
+inherit gnome2 python-r1
 
 DESCRIPTION="GNOME terminal widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
@@ -39,23 +38,24 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="x11-libs/gnome-pty-helper"
 
-src_prepare() {
-	DOCS="AUTHORS ChangeLog HACKING NEWS README"
-
+PATCHES=(
 	# https://bugzilla.gnome.org/show_bug.cgi?id=663779
-	epatch "${FILESDIR}/${PN}-0.30.1-alt-meta.patch"
+	"${FILESDIR}"/${PN}-0.30.1-alt-meta.patch
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=652290
-	epatch "${FILESDIR}"/${PN}-0.28.2-interix.patch
+	"${FILESDIR}"/${PN}-0.28.2-interix.patch
 
 	# Fix CVE-2012-2738, upstream bug #676090
-	epatch "${FILESDIR}"/${PN}-0.28.2-limit-arguments.patch
+	"${FILESDIR}"/${PN}-0.28.2-limit-arguments.patch
 
 	# Fix https://bugzilla.gnome.org/show_bug.cgi?id=542087
 	# Patch from https://github.com/pld-linux/vte0/commit/1e8dce16b239e5d378b02e4d04a60e823df36257
-	epatch "${FILESDIR}"/${PN}-0.28.2-repaint-after-change-scroll-region.patch
+	"${FILESDIR}"/${PN}-0.28.2-repaint-after-change-scroll-region.patch
+)
 
-	epatch_user
+DOCS="AUTHORS ChangeLog HACKING NEWS README"
+
+src_prepare() {
 
 	prepare_python() {
 		mkdir -p "${BUILD_DIR}" || die
