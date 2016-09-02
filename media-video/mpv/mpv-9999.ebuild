@@ -29,9 +29,9 @@ DOCS+=( README.md )
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
-	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
+	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv +lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
-	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
+	selinux test +uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
 	+xscreensaver +xv zsh-completion"
 
 REQUIRED_USE="
@@ -116,7 +116,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	>=dev-lang/perl-5.8
+	dev-lang/perl
 	dev-python/docutils
 	virtual/pkgconfig
 	doc? ( dev-python/rst2pdf )
@@ -259,6 +259,11 @@ src_configure() {
 src_install() {
 	waf-utils_src_install
 
+	if use lua; then
+		insinto /usr/share/${PN}
+		doins -r TOOLS/lua
+	fi
+
 	if use cli && use luajit; then
 		pax-mark -m "${ED}"usr/bin/${PN}
 	fi
@@ -272,7 +277,7 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 
-	local softvol_0_18_1=0
+	local rv softvol_0_18_1=0
 	for rv in ${REPLACING_VERSIONS}; do
 		version_compare ${rv} 0.18.1-r1
 		[[ $? -eq 1 ]] && softvol_0_18_1=1
@@ -313,6 +318,7 @@ pkg_postrm() {
 
 src_test() {
 	cd "${S}"/build/test || die
+	local test
 	for test in *; do
 		if [[ -x ${test} ]]; then
 			./"${test}" || die "Test suite failed"

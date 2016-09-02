@@ -19,6 +19,7 @@ DEPEND="
 	gprs? ( net-wireless/openggsn )
 	net-libs/libosmocore
 	net-libs/libosmo-abis
+	net-libs/libosmo-netif
 	dev-db/libdbi"
 RDEPEND="${DEPEND}
 	dev-db/libdbi-drivers[sqlite]
