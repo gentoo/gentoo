@@ -14418,6 +14418,7 @@ net-libs/liboping 1.7.0 1.8.0: C library and ncurses based program to generate I
 net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Protocol
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
+net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.6.6 0.8.0 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.7.4 1.8.0 9999: A system-independent library for user-level network packet capture
@@ -15126,7 +15127,7 @@ net-p2p/retroshare 0.5.5c 0.6.0 0.6.9999: P2P private sharing application
 net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
-net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
+net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
 net-p2p/syncthing 0.13.10 0.14.3 0.14.4-r1 0.14.5: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
