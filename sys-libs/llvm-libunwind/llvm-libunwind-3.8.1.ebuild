@@ -40,3 +40,8 @@ multilib_src_configure() {
 
 	cmake-utils_src_configure
 }
+
+multilib_src_install_all() {
+	insinto /usr/include/libunwind/
+	doins include/*.h
+}
