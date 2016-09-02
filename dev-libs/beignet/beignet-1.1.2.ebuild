@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 CMAKE_BUILD_TYPE="Release"
 
-inherit python-any-r1 cmake-multilib
+inherit python-any-r1 cmake-multilib toolchain-funcs
 
 DESCRIPTION="OpenCL implementation for Intel GPUs"
 HOMEPAGE="https://01.org/beignet"
@@ -21,7 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 	KEYWORDS=""
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://01.org/sites/default/files/${P}-source.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://01.org/sites/default/files/${P}-source.tar.gz"
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
@@ -50,7 +50,7 @@ DOCS=(
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		if [[ $(tc-getCC) == *gcc* ]] ; then
+		if tc-is-gcc; then
 			if [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -lt 6 ]]; then
 				eerror "Compilation with gcc older than 4.6 is not supported"
 				die "Too old gcc found."
@@ -86,7 +86,7 @@ multilib_src_install() {
 	cmake-utils_src_install
 
 	insinto /etc/OpenCL/vendors/
-	echo "${VENDOR_DIR}/lib/${PN}/libcl.so" > "${PN}-${ABI}.icd"
+	echo "${VENDOR_DIR}/lib/${PN}/libcl.so" > "${PN}-${ABI}.icd" || die "Failed to generate ICD file"
 	doins "${PN}-${ABI}.icd"
 
 	dosym "lib/${PN}/libcl.so" "${VENDOR_DIR}"/libOpenCL.so.1
