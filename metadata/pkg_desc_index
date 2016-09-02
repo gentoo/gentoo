@@ -2611,7 +2611,7 @@ app-vim/recover 0.18: vim plugin: show differences for recovered files
 app-vim/reload 0.6.17: vim plugin: automatic reloading of vim scripts
 app-vim/repeat 1.1: vim plugin: use the repeat command "." with plugin maps
 app-vim/ri-browser 1.2: vim plugin: interface for browsing ri/ruby documentation
-app-vim/rust-mode 1_beta20150411: Rust mode for vim
+app-vim/rust-vim 1_beta20150411 1_pre20160829: Vim configuration for Rust
 app-vim/salt-vim 20151119: Vim files for working on Salt files
 app-vim/scala-syntax 1.0: vim plugin: Scala syntax highlighting, filetype and indent settings
 app-vim/screen 1.5: vim plugin: simulate a split shell with screen or tmux
@@ -4303,7 +4303,7 @@ dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swarmcache 1.0_pre20050106-r1: SwarmCache is a simple but effective distributed cache
 dev-java/swidgets 0.1.1-r1: Various reusable SWING components
-dev-java/swing-layout 1.0.4: Professional cross platform layouts with Swing
+dev-java/swing-layout 1.0.4 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swing-worker 1.1: Java 1.6 SwingWorker backport for Java 1.5
 dev-java/swingx 1.6.4: A collection of powerful, useful, and just plain fun Swing components
 dev-java/swingx-beaninfo 1.6.4: SwingX Beaninfo

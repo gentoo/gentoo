@@ -11,4 +11,4 @@ SLOT=stable
 SRC_URI=amd64? ( http://static.rust-lang.org/dist/rust-1.5.0-x86_64-unknown-linux-gnu.tar.gz ) x86? ( http://static.rust-lang.org/dist/rust-1.5.0-i686-unknown-linux-gnu.tar.gz )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=4763e2869fb83ab0da8b54838f7251e7
+_md5_=0d0988fc07ceabe2787d72cc290e9843
