@@ -12,8 +12,8 @@ inherit toolchain-funcs eutils multilib-minimal
 
 DESCRIPTION="e2fsprogs libraries (common error and subsystem)"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.xz
-	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.xz"
+SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.gz
+	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,9 +28,13 @@ DEPEND="nls? ( sys-devel/gettext )
 
 S=${WORKDIR}/${P%_pre*}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
+)
+
 src_prepare() {
 	printf 'all:\n%%:;@:\n' > doc/Makefile.in # don't bother with docs #305613
-	epatch "${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
+	epatch "${PATCHES[@]}"
 }
 
 multilib_src_configure() {

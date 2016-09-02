@@ -13,8 +13,8 @@ inherit eutils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.xz
-	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.xz
+SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.gz
+	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${UP_PV}/${PN}-${UP_PV}.tar.gz
 	elibc_mintlib? ( mirror://gentoo/${PN}-1.42.9-mint-r1.patch.xz )"
 
 LICENSE="GPL-2 BSD"
@@ -33,14 +33,19 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${P%_pre*}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.41.8-makefile.patch
+	"${FILESDIR}"/${PN}-1.40-fbsd.patch
+	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
+	"${FILESDIR}"/${PN}-1.43-sysmacros.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.41.8-makefile.patch
-	epatch "${FILESDIR}"/${PN}-1.40-fbsd.patch
 	if [[ ${CHOST} == *-mint* ]] ; then
-		epatch "${WORKDIR}"/${PN}-1.42.9-mint-r1.patch
+		PATCHES+=( "${WORKDIR}"/${PN}-1.42.9-mint-r1.patch )
 	fi
-	epatch "${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
-	epatch "${FILESDIR}"/${PN}-1.43-sysmacros.patch
+
+	epatch "${PATCHES[@]}"
 
 	# blargh ... trick e2fsprogs into using e2fsprogs-libs
 	rm -rf doc
