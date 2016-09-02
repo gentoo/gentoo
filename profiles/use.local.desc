@@ -7506,6 +7506,8 @@ sys-cluster/hpx:jemalloc - Use dev-libs/jemalloc for memory allocation
 sys-cluster/hpx:papi - Use dev-libs/papi for NaCl
 sys-cluster/hpx:perftools - Use dev-util/google-perftools for memory allocation
 sys-cluster/hpx:tbb - Use dev-cpp/tbb for memory allocation
+sys-cluster/legion:gasnet - Enable GASNet lib support
+sys-cluster/legion:hwloc - Enable HWLoc lib support
 sys-cluster/maui:pbs - Enable pbs integration
 sys-cluster/maui:slurm - Enable slurm integration
 sys-cluster/moosefs:cgi - Install CGI server and scripts.
