@@ -1,0 +1,45 @@
+commit b8869f97ea66ac7ec9912a74c2e8b5e15daf7752
+Author: Rafaël Carré <funman@videolan.org>
+Date:   Fri Feb 26 00:36:26 2016 +0000
+
+    Relax requirements for FFmpeg hwaccel
+    
+    It doesn't error out anymore since 5edd1f62ca1
+
+Index: vlc-2.2.4/configure.ac
+===================================================================
+--- vlc-2.2.4.orig/configure.ac
++++ vlc-2.2.4/configure.ac
+@@ -2383,7 +2383,9 @@ AS_IF([test "${have_vaapi}" = "yes" -a "
+   case "${avfork}" in
+     ffmpeg)
+       PKG_CHECK_EXISTS([libavcodec >= 57.10.100], [
+-        AC_MSG_ERROR([VA API requires FFmpeg libavcodec < 57.10 or libav.])
++        PKG_CHECK_EXISTS([libavcodec <= 57.12.100], [
++          AC_MSG_ERROR([VA API requires FFmpeg libavcodec < 57.10 or > 57.12 or libav.])
++        ])
+       ])
+       ;;
+   esac
+@@ -2417,7 +2419,9 @@ AS_IF([test "${enable_dxva2}" != "no"],
+     case "${avfork}" in
+       ffmpeg)
+         PKG_CHECK_EXISTS([libavcodec >= 57.10.100], [
+-          AC_MSG_ERROR([DXVA2 requires FFmpeg libavcodec < 57.10 or libav.])
++          PKG_CHECK_EXISTS([libavcodec <= 57.12.100], [
++            AC_MSG_ERROR([DXVA2 requires FFmpeg libavcodec < 57.10 or > 57.12 or libav.])
++          ])
+         ])
+         ;;
+     esac
+@@ -3181,7 +3185,9 @@ AS_IF([test "${have_vdpau}" = "yes" -a "
+     libav) av_vdpau_ver="55.26.0" ;;
+     ffmpeg) av_vdpau_ver="55.42.100"
+       PKG_CHECK_EXISTS([libavcodec >= 57.10.100], [
+-        AC_MSG_ERROR([VDPAU requires FFmpeg libavcodec < 57.10 or libav.])
++        PKG_CHECK_EXISTS([libavcodec <= 57.12.100], [
++          AC_MSG_ERROR([VDPAU requires FFmpeg libavcodec < 57.10 or > 57.12 or libav.])
++        ])
+       ])
+       ;;
+   esac
