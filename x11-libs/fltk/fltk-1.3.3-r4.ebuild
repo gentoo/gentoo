@@ -3,17 +3,15 @@
 # $Id$
 
 EAPI=6
-inherit autotools fdo-mime flag-o-matic multilib-minimal subversion
+inherit autotools fdo-mime flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
-ESVN_REPO_URI="http://seriss.com/public/fltk/fltk/branches/branch-1.3/"
-ESVN_USER=""
-ESVN_PASSWORD=""
+SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
@@ -47,7 +45,6 @@ DOCS=(
 	CREDITS
 	README
 )
-
 FLTK_GAMES="
 	blocks
 	checkers
@@ -57,8 +54,13 @@ FLTK_GAMES="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
 	"${FILESDIR}"/${PN}-1.3.2-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.2-desktop.patch
+	"${FILESDIR}"/${PN}-1.3.2-jpeg-9a.patch
+	"${FILESDIR}"/${PN}-1.3.3-fl_open_display.patch
+	"${FILESDIR}"/${PN}-1.3.3-fltk-config.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
+	"${FILESDIR}"/${PN}-1.3.3-xutf8-visibility.patch
 )
 
 pkg_setup() {
@@ -72,12 +74,6 @@ src_prepare() {
 
 	sed -i \
 		-e 's:@HLINKS@::g' FL/Makefile.in || die
-	sed -i \
-		-e '/x-fluid/d' fluid/Makefile || die
-	sed -i \
-		-e '/C\(XX\)\?FLAGS=/s:@C\(XX\)\?FLAGS@::' \
-		-e '/^LDFLAGS=/d' \
-		"${S}/fltk-config.in" || die
 	# docs in proper docdir
 	sed -i \
 		-e "/^docdir/s:fltk:${PF}/html:" \
@@ -145,23 +141,21 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi; then
-		emake -C fluid \
-			  DESTDIR="${D}" install-linux
+		emake -C fluid DESTDIR="${D}" install-linux
 
-		use doc &&
-			emake -C documentation \
-				  DESTDIR="${D}" install
+		use doc && \
+			emake -C documentation DESTDIR="${D}" install
 
-		use games &&
-			emake -C test \
-				  DESTDIR="${D}" install-linux
+		use games && \
+			emake -C test DESTDIR="${D}" install-linux
 	fi
 }
 
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
-		dosym /usr/share/icons/hicolor/32x32/apps/${app}.png \
-			  /usr/share/pixmaps/${app}.png
+		dosym \
+			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			/usr/share/pixmaps/${app}.png
 	done
 
 	if use examples; then
