@@ -30,6 +30,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (2 Sep 2016)
+# All variants of hashcat have now been merged upstream,
+# please switch to app-crypt/hashcat.
+# Removal in 30 days
+app-crypt/hashcat-bin
+app-crypt/oclhashcat-lite-bin
+app-crypt/oclhashcat-plus-bin
+
+# Rick Farina <zerochaos@gentoo.org> (2 Sep 2016)
+# Dead upstream for years, hashcat tools have all been merged
+# upstream which makes this too obsolete to use
+app-crypt/hashcat-gui
+
 # Ian Stakenvicius <axs@gentoo.org> (31 Aug 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
