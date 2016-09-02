@@ -372,23 +372,19 @@ cabal-configure() {
 		cabalconf+=($(cabal-constraint "ghc"))
 	fi
 
+	# parallel on all available cores
+	if ghc-supports-parallel-make; then
+		# It should have been just -j$(makeopts_jobs)
+		# but GHC does not yet have nice defaults:
+		#    https://ghc.haskell.org/trac/ghc/ticket/9221#comment:57
+		cabalconf+=(--ghc-options="-j$(makeopts_jobs) +RTS -A256M -qb0 -RTS")
+	fi
+
 	local option
 	for option in ${HCFLAGS}
 	do
 		cabalconf+=(--ghc-option="$option")
 	done
-
-	# parallel on all available cores
-	if ghc-supports-parallel-make; then
-		local max_jobs=$(makeopts_jobs)
-
-		# limit to very small value, as parallelism
-		# helps slightly, but makes things severely worse
-		# when amount of threads is Very Large.
-		[[ ${max_jobs} -gt 4 ]] && max_jobs=4
-
-		cabalconf+=(--ghc-option=-j"$max_jobs")
-	fi
 
 	# Building GHCi libs on ppc64 causes "TOC overflow".
 	if use ppc64; then
