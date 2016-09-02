@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=x11-libs/libXext >=dev-tcltk/tclx-2.4 >=dev-tcltk/blt-2.4 >=dev-tcltk/itcl-3.3 >=dev-tcltk/iwidgets-4.0.1 >=dev-tcltk/tkimg-1.3 sci-libs/cfitsio sci-astronomy/wcstools !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=ESO astronomical image visualizer with catalog access
-EAPI=4
+EAPI=6
 HOMEPAGE=http://archive.eso.org/skycat
 IUSE=threads
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://archive.eso.org/cms/tools-documentation/skycat-download/skycat-3.1.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=f90e57471d080b8641dbe176387825c9
+_md5_=fa1031cbb3c3c922b92fde5dd561aff3
