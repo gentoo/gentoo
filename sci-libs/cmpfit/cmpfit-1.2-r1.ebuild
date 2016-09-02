@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -14,6 +14,11 @@ LICENSE="public-domain minpack"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
+
+DOCS=(
+	README
+	DISCLAIMER
+)
 
 src_compile() {
 	if use static-libs; then
@@ -32,8 +37,6 @@ src_test() {
 src_install() {
 	dolib.so libmpfit.so
 	use static-libs && dolib.a libmpfit.a
-	insinto /usr/include
-	doins mpfit.h
-
-	dodoc README DISCLAIMER
+	doheader mpfit.h
+	einstalldocs
 }
