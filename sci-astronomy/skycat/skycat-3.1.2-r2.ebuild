@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils autotools flag-o-matic
+EAPI=6
+inherit autotools flag-o-matic
 
 DESCRIPTION="ESO astronomical image visualizer with catalog access"
 HOMEPAGE="http://archive.eso.org/skycat"
@@ -25,22 +25,25 @@ DEPEND="x11-libs/libXext
 	sci-astronomy/wcstools"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-m4.patch # fix buggy tcl.m4 for bash3 and add soname
+	"${FILESDIR}"/${P}-makefile-qa.patch
+	"${FILESDIR}"/${PN}-3.0.2-systemlibs.patch # use system libs
+	"${FILESDIR}"/${PN}-3.0.2-tk8.5.patch # need fix for tk-8.5
+)
+
 src_prepare() {
-	# fix buggy tcl.m4 for bash3 and add soname
-	epatch "${FILESDIR}"/${P}-m4.patch
-	# need fix for tk-8.5
-	if has_version ">=dev-lang/tk-8.5" ; then
-		epatch "${FILESDIR}"/${PN}-3.0.2-tk8.5.patch
-	fi
-	epatch "${FILESDIR}"/${P}-makefile-qa.patch
-	# use system libs
-	epatch "${FILESDIR}"/${PN}-3.0.2-systemlibs.patch
+	default
 	rm -fr astrotcl/{cfitsio,libwcs} \
 		|| die "Failed to remove included libs"
 	# prefix it
 	sed -i \
 		-e "s:/usr:${EPREFIX}/usr:g" \
 		*/configure.in */aclocal.m4 || die
+	local f
+	for f in configure.in */configure.in ; do
+		mv "$f" "${f/.in/.ac}" || die
+	done
 	eautoreconf
 }
 
@@ -51,7 +54,7 @@ src_configure() {
 
 src_install() {
 	default
-	local d
+	local d f
 	for d in tclutil astrotcl rtd cat skycat; do
 		for f in README CHANGES VERSION; do
 			newdoc ${f} ${f}.${d}

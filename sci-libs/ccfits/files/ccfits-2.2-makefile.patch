@@ -1,5 +1,5 @@
---- Makefile.am.orig	2010-01-20 02:52:22.000000000 +0000
-+++ Makefile.am	2010-01-20 02:50:34.000000000 +0000
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -26,12 +26,11 @@
  EXTRA_DIST = config CHANGES README.INSTALL License.txt file1.pha $(MSVC_FILES)
  

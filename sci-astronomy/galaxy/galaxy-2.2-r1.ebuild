@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit fdo-mime toolchain-funcs flag-o-matic
+inherit fdo-mime flag-o-matic toolchain-funcs
 
 # probably change every release
 PID="1/3/0/3/13035936"
@@ -22,17 +22,19 @@ DEPEND="x11-libs/gtk+:3"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 
-pkg_setup() {
+src_prepare() {
+	default
+	sed -e '/DOCDIR/ s/PROGRAM)/&-\$(VERSION)/g' \
+		-e '/xdg-desktop-menu/d' \
+		-i Makefile || die
+}
+
+src_configure() {
 	tc-export CXX
 	append-cxxflags -pthread
 	append-ldflags -pthread
 	export PREFIX="${EPREFIX}/usr"
-}
-
-src_prepare() {
-	sed -e '/DOCDIR/ s/PROGRAM)/&-\$(VERSION)/g' \
-		-e '/xdg-desktop-menu/d' \
-		-i Makefile || die
+	default
 }
 
 pkg_postinst() {

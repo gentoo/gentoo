@@ -1,9 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 MY_PN=XFITSview
 MY_P=${MY_PN}${PV}
@@ -22,12 +21,15 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_PN}
 
+DOCS=( README changes notes.text )
+PATCHES=( "${FILESDIR}"/${P}-build_system.patch )
+
 src_prepare() {
-	find "${S}" -name "*old.c" -delete || die
-	epatch "${FILESDIR}"/${P}-build_system.patch
+	default
+	find "${S}" -name '*old.c' -delete || die
 }
 
 src_install() {
 	dobin XFITSview
-	dodoc README changes notes.text
+	einstalldocs
 }
