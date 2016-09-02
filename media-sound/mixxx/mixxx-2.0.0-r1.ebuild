@@ -64,7 +64,7 @@ RDEPEND="dev-db/sqlite
 	)
 	shout? ( media-libs/libshout )
 	wavpack? ( media-sound/wavpack )
-	ffmpeg? ( media-video/ffmpeg )"
+	ffmpeg? ( media-video/ffmpeg:0= )"
 # media-libs/rubberband RDEPENDs on sci-libs/fftw:3.0
 DEPEND="${RDEPEND}
 	sci-libs/fftw:3.0
