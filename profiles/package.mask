@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick McLean <chutzpah@gentoo.org> (2 Sep 2016)
+# Forward port of HPN patchset masked for testing.
+# See bug #577768 for more info on test failures with HPN
+=net-misc/openssh-7.3_p1-r3
+
 # Rick Farina <zerochaos@gentoo.org> (2 Sep 2016)
 # All variants of hashcat have now been merged upstream,
 # please switch to app-crypt/hashcat.

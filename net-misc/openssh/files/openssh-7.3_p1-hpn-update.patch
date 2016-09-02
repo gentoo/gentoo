@@ -1,0 +1,277 @@
+--- openssh-7_2_P2-hpn-14.10.diff.orig	2016-09-01 10:34:05.905112131 -0700
++++ openssh-7_2_P2-hpn-14.10.diff	2016-09-01 11:33:19.106664802 -0700
+@@ -156,145 +156,6 @@
+  	compat.o crc32.o deattack.o fatal.o hostfile.o \
+  	log.o match.o md-sha256.o moduli.o nchan.o packet.o opacket.o \
+  	readpass.o rsa.o ttymodes.o xmalloc.o addrmatch.o \
+-diff --git a/auth2.c b/auth2.c
+-index 7177962..4af53f0 100644
+---- a/auth2.c
+-+++ b/auth2.c
+-@@ -50,6 +50,7 @@
+- #include "dispatch.h"
+- #include "pathnames.h"
+- #include "buffer.h"
+-+#include "canohost.h"
+- 
+- #ifdef GSSAPI
+- #include "ssh-gss.h"
+-@@ -73,6 +74,8 @@ extern Authmethod method_hostbased;
+- extern Authmethod method_gssapi;
+- #endif
+- 
+-+static int log_flag = 0;
+-+
+- Authmethod *authmethods[] = {
+- 	&method_none,
+- 	&method_pubkey,
+-@@ -224,6 +227,11 @@ input_userauth_request(int type, u_int32_t seq, void *ctxt)
+- 	service = packet_get_cstring(NULL);
+- 	method = packet_get_cstring(NULL);
+- 	debug("userauth-request for user %s service %s method %s", user, service, method);
+-+	if (!log_flag) {
+-+		logit("SSH: Server;Ltype: Authname;Remote: %s-%d;Name: %s",
+-+		      get_remote_ipaddr(), get_remote_port(), user);
+-+		log_flag = 1;
+-+	}
+- 	debug("attempt %d failures %d", authctxt->attempt, authctxt->failures);
+- 
+- 	if ((style = strchr(user, ':')) != NULL)
+-diff --git a/canohost.c b/canohost.c
+-index 223964e..db35f73 100644
+---- a/canohost.c
+-+++ b/canohost.c
+-@@ -338,13 +338,13 @@ clear_cached_addr(void)
+-  */
+- 
+- const char *
+--get_remote_ipaddr(void)
+-+ssh_get_remote_ipaddr(struct ssh *ssh)
+- {
+- 	/* Check whether we have cached the ipaddr. */
+- 	if (canonical_host_ip == NULL) {
+--		if (packet_connection_is_on_socket()) {
+-+		if (ssh_packet_connection_is_on_socket(ssh)) {
+- 			canonical_host_ip =
+--			    get_peer_ipaddr(packet_get_connection_in());
+-+			    get_peer_ipaddr(ssh_packet_get_connection_in(ssh));
+- 			if (canonical_host_ip == NULL)
+- 				cleanup_exit(255);
+- 		} else {
+-@@ -356,6 +356,12 @@ get_remote_ipaddr(void)
+- }
+- 
+- const char *
+-+get_remote_ipaddr(void)
+-+{
+-+  return ssh_get_remote_ipaddr(active_state);
+-+}
+-+
+-+const char *
+- get_remote_name_or_ip(u_int utmp_len, int use_dns)
+- {
+- 	static const char *remote = "";
+-@@ -410,17 +416,17 @@ get_sock_port(int sock, int local)
+- /* Returns remote/local port number for the current connection. */
+- 
+- static int
+--get_port(int local)
+-+get_port(struct ssh *ssh, int local)
+- {
+- 	/*
+- 	 * If the connection is not a socket, return 65535.  This is
+- 	 * intentionally chosen to be an unprivileged port number.
+- 	 */
+--	if (!packet_connection_is_on_socket())
+-+	if (!ssh_packet_connection_is_on_socket(ssh))
+- 		return 65535;
+- 
+- 	/* Get socket and return the port number. */
+--	return get_sock_port(packet_get_connection_in(), local);
+-+	return get_sock_port(ssh_packet_get_connection_in(ssh), local);
+- }
+- 
+- int
+-@@ -430,17 +436,23 @@ get_peer_port(int sock)
+- }
+- 
+- int
+--get_remote_port(void)
+-+ssh_get_remote_port(struct ssh *ssh)
+- {
+- 	/* Cache to avoid getpeername() on a dead connection */
+- 	if (cached_port == -1)
+--		cached_port = get_port(0);
+-+		cached_port = get_port(ssh, 0);
+- 
+- 	return cached_port;
+- }
+- 
+- int
+-+get_remote_port(void)
+-+{
+-+	return ssh_get_remote_port(active_state);
+-+}
+-+
+-+int
+- get_local_port(void)
+- {
+--	return get_port(1);
+-+	return get_port(active_state, 1);
+- }
+-diff --git a/canohost.h b/canohost.h
+-index 4c8636f..4d60b27 100644
+---- a/canohost.h
+-+++ b/canohost.h
+-@@ -12,8 +12,11 @@
+-  * called by a name other than "ssh" or "Secure Shell".
+-  */
+- 
+-+struct ssh;
+-+
+- const char	*get_canonical_hostname(int);
+- const char	*get_remote_ipaddr(void);
+-+const char	*ssh_get_remote_ipaddr(struct ssh *);
+- const char	*get_remote_name_or_ip(u_int, int);
+- 
+- char		*get_peer_ipaddr(int);
+-@@ -22,6 +25,7 @@ char		*get_local_ipaddr(int);
+- char		*get_local_name(int);
+- 
+- int		 get_remote_port(void);
+-+int		 ssh_get_remote_port(struct ssh *);
+- int		 get_local_port(void);
+- int		 get_sock_port(int, int);
+- void		 clear_cached_addr(void);
+ diff --git a/channels.c b/channels.c
+ index c9d2015..13b30a1 100644
+ --- a/channels.c
+@@ -1270,7 +1131,7 @@
+  
+  #include "ssherr.h"
+  #include "sshbuf.h"
+-+#include "canohost.h"
+++#include "packet.h"
+  #include "digest.h"
+  
+  #if OPENSSL_VERSION_NUMBER >= 0x00907000L
+@@ -1312,8 +1173,8 @@
+ +		 */
+ +		if (ctos && !log_flag) {
+ +			logit("SSH: Server;Ltype: Kex;Remote: %s-%d;Enc: %s;MAC: %s;Comp: %s",
+-+			    ssh_get_remote_ipaddr(ssh),
+-+			    ssh_get_remote_port(ssh),
+++			    ssh_remote_ipaddr(ssh),
+++			    ssh_remote_port(ssh),
+ +			    newkeys->enc.name,
+ +			    authlen == 0 ? newkeys->mac.name : "<implicit>",
+ +			    newkeys->comp.name);
+@@ -1430,7 +1291,7 @@
+ +		rekey_requested = 0;
+ +		return 1;
+ +	}
+-+	
+++
+  	/* Time-based rekeying */
+  	if (state->rekey_interval != 0 &&
+  	    state->rekey_time + state->rekey_interval <= monotime())
+@@ -1490,7 +1351,7 @@
+  
+  	transferred = *counter - (cur_pos ? cur_pos : start_pos);
+  	cur_pos = *counter;
+- 	now = monotime();
++ 	now = monotime_double();
+  	bytes_left = end_pos - cur_pos;
+  
+ +	delta_pos = cur_pos - last_pos;
+@@ -1564,8 +1425,8 @@
+  	{ "canonicaldomains", oCanonicalDomains },
+  	{ "canonicalizefallbacklocal", oCanonicalizeFallbackLocal },
+ @@ -282,6 +287,11 @@ static struct {
+- 	{ "pubkeyacceptedkeytypes", oPubkeyAcceptedKeyTypes },
+  	{ "ignoreunknown", oIgnoreUnknown },
++ 	{ "proxyjump", oProxyJump },
+  
+ +	{ "tcprcvbufpoll", oTcpRcvBufPoll },
+ +	{ "tcprcvbuf", oTcpRcvBuf },
+@@ -1736,8 +1597,8 @@
+  	off_t size, statbytes;
+  	unsigned long long ull;
+  	int setimes, targisdir, wrerrno = 0;
+--	char ch, *cp, *np, *targ, *why, *vect[1], buf[2048];
+-+	char ch, *cp, *np, *targ, *why, *vect[1], buf[16384];
++-	char ch, *cp, *np, *targ, *why, *vect[1], buf[2048], visbuf[2048];
+++	char ch, *cp, *np, *targ, *why, *vect[1], buf[16384], visbuf[16384];
+  	struct timeval tv[2];
+  
+  #define	atime	tv[0]
+@@ -1956,32 +1817,6 @@
+  }
+  
+  /*
+-@@ -820,11 +836,13 @@ void
+- server_loop2(Authctxt *authctxt)
+- {
+- 	fd_set *readset = NULL, *writeset = NULL;
+-+	double start_time, total_time;
+- 	int max_fd;
+- 	u_int nalloc = 0;
+- 	u_int64_t rekey_timeout_ms = 0;
+- 
+- 	debug("Entering interactive session for SSH2.");
+-+	start_time = get_current_time();
+- 
+- 	mysignal(SIGCHLD, sigchld_handler);
+- 	child_terminated = 0;
+-@@ -883,6 +901,11 @@ server_loop2(Authctxt *authctxt)
+- 
+- 	/* free remaining sessions, e.g. remove wtmp entries */
+- 	session_destroy_all(NULL);
+-+	total_time = get_current_time() - start_time;
+-+	logit("SSH: Server;LType: Throughput;Remote: %s-%d;IN: %lu;OUT: %lu;Duration: %.1f;tPut_in: %.1f;tPut_out: %.1f",
+-+	      get_remote_ipaddr(), get_remote_port(),
+-+	      stdin_bytes, fdout_bytes, total_time, stdin_bytes / total_time,
+-+	      fdout_bytes / total_time);
+- }
+- 
+- static int
+ @@ -1041,8 +1064,12 @@ server_request_tun(void)
+  	sock = tun_open(tun, mode);
+  	if (sock < 0)
+@@ -2372,10 +2207,10 @@
+  	debug("Client protocol version %d.%d; client software version %.100s",
+  	    remote_major, remote_minor, remote_version);
+ +	logit("SSH: Server;Ltype: Version;Remote: %s-%d;Protocol: %d.%d;Client: %.100s",
+-+	      get_remote_ipaddr(), get_remote_port(),
+++	      ssh_remote_ipaddr(ssh), ssh_remote_port(ssh),
+ +	    remote_major, remote_minor, remote_version);
+  
+- 	active_state->compat = compat_datafellows(remote_version);
++ 	ssh->compat = compat_datafellows(remote_version);
+  
+ @@ -1160,6 +1163,8 @@ server_listen(void)
+  	int ret, listen_sock, on = 1;
+@@ -2413,7 +2248,7 @@
+  	if (options.challenge_response_authentication)
+  		options.kbd_interactive_authentication = 1;
+ @@ -2151,6 +2168,9 @@ main(int ac, char **av)
+- 	    remote_ip, remote_port, laddr,  get_local_port());
++ 	    remote_ip, remote_port, laddr,  ssh_local_port(ssh));
+  	free(laddr);
+  
+ +	/* set the HPN options for the child */
+@@ -2486,11 +2321,10 @@
+ index eb4e948..3692722 100644
+ --- a/version.h
+ +++ b/version.h
+-@@ -3,4 +3,6 @@
+- #define SSH_VERSION	"OpenSSH_7.2"
++@@ -3,4 +3,5 @@
++ #define SSH_VERSION	"OpenSSH_7.3"
+  
+- #define SSH_PORTABLE	"p2"
++ #define SSH_PORTABLE	"p1"
+ -#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
+ +#define SSH_HPN         "-hpn14v11"
+ +#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE SSH_HPN
+-+
