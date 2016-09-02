@@ -39,10 +39,8 @@ DEPEND="
 src_prepare() {
 	rm -rf zlib jpeg png || die
 	epatch \
-		"${FILESDIR}"/${PN}-1.3.2-desktop.patch \
 		"${FILESDIR}"/${PN}-1.3.0-share.patch \
 		"${FILESDIR}"/${PN}-1.3.2-conf-tests.patch \
-		"${FILESDIR}"/${PN}-1.3.2-jpeg-9a.patch \
 		"${FILESDIR}"/${PN}-1.3.3-visibility.patch
 
 	sed -i \
