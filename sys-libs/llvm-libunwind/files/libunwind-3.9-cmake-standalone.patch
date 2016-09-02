@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 806b825..d970a1e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_PATH}")
+     include("${LLVM_CMAKE_PATH}/AddLLVM.cmake")
+     include("${LLVM_CMAKE_PATH}/HandleLLVMOptions.cmake")
+-  else()
++  elseif (NOT LIBUNWIND_STANDALONE_BUILD)
+     message(FATAL_ERROR "Not found: ${LLVM_CMAKE_PATH}")
+   endif()
+ 
+@@ -135,9 +135,9 @@ set(LIBUNWIND_BINARY_DIR  ${CMAKE_CURRENT_BINARY_DIR})
+ set(LIBUNWIND_LIBRARY_DIR ${CMAKE_BINARY_DIR}/lib${LLVM_LIBDIR_SUFFIX})
+ 
+ set(LIBUNWIND_C_FLAGS "")
+-set(LIBUNWIND_CXX_FLAGS "")
++set(LIBUNWIND_CXX_FLAGS "-std=c++11")
+ set(LIBUNWIND_COMPILE_FLAGS "")
+-set(LIBUNWIND_LINK_FLAGS "")
++set(LIBUNWIND_LINK_FLAGS "-Wl,-z,noexecstack")
+ 
+ # Get required flags.
+ macro(append_if list condition var)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b7c2d63..c05799e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -18,7 +18,8 @@ set(LIBUNWIND_ASM_SOURCES
+     UnwindRegistersSave.S)
+ set_source_files_properties(${LIBUNWIND_ASM_SOURCES}
+                             PROPERTIES
+-                              LANGUAGE C)
++                              LANGUAGE C
++                              COMPILE_FLAGS "-Wa,--noexecstack")
+ 
+ set(LIBUNWIND_HEADERS
+     AddressSpace.hpp
