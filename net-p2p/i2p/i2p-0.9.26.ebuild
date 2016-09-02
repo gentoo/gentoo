@@ -64,7 +64,7 @@ pkg_setup() {
 	java-pkg-2_pkg_setup
 
 	enewgroup i2p
-	enewuser i2p -1 -1 "${I2P_CONFIG_HOME}" i2p -m
+	enewuser i2p -1 -1 "${I2P_CONFIG_HOME}" i2p
 }
 
 src_unpack() {
