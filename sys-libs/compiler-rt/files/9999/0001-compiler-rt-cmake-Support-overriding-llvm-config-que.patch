@@ -1,0 +1,46 @@
+From 5c956f1867c268111ec05b443ab8fbe0e3b9d500 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 29 Aug 2016 23:18:25 +0200
+Subject: [PATCH] [compiler-rt cmake] Support overriding llvm-config query
+ results
+
+Support overriding LLVM_* variables obtained from llvm-config when doing
+stand-alone builds. The override of LLVM_MAIN_SRC_DIR is necessary to
+provide LLVM sources when the initial directory used to build LLVM does
+no longer exist when compiler-rt is built stand-alone. This is
+especially the case when building the projects separately in temporary
+directories with unpredictable names.
+
+The code is based on existing CMakeLists.txt from clang. Alike clang, it
+extends the override to all queried variables.
+---
+ cmake/Modules/CompilerRTUtils.cmake | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/Modules/CompilerRTUtils.cmake b/cmake/Modules/CompilerRTUtils.cmake
+index b2f27c0..5523c0a 100644
+--- a/cmake/Modules/CompilerRTUtils.cmake
++++ b/cmake/Modules/CompilerRTUtils.cmake
+@@ -197,10 +197,15 @@ macro(load_llvm_config)
+     message(FATAL_ERROR "llvm-config failed with status ${HAD_ERROR}")
+   endif()
+   string(REGEX REPLACE "[ \t]*[\r\n]+[ \t]*" ";" CONFIG_OUTPUT ${CONFIG_OUTPUT})
+-  list(GET CONFIG_OUTPUT 0 LLVM_BINARY_DIR)
+-  list(GET CONFIG_OUTPUT 1 LLVM_TOOLS_BINARY_DIR)
+-  list(GET CONFIG_OUTPUT 2 LLVM_LIBRARY_DIR)
+-  list(GET CONFIG_OUTPUT 3 LLVM_MAIN_SRC_DIR)
++  list(GET CONFIG_OUTPUT 0 LLVM_OBJ_ROOT)
++  list(GET CONFIG_OUTPUT 1 TOOLS_BINARY_DIR)
++  list(GET CONFIG_OUTPUT 2 LIBRARY_DIR)
++  list(GET CONFIG_OUTPUT 3 MAIN_SRC_DIR)
++
++  set(LLVM_BINARY_DIR ${LLVM_OBJ_ROOT} CACHE PATH "Path to LLVM build tree")
++  set(LLVM_TOOLS_BINARY_DIR ${TOOLS_BINARY_DIR} CACHE PATH "Path to llvm/bin")
++  set(LLVM_LIBRARY_DIR ${LIBRARY_DIR} CACHE PATH "Path to llvm/lib")
++  set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+ 
+   # Make use of LLVM CMake modules.
+   file(TO_CMAKE_PATH ${LLVM_BINARY_DIR} LLVM_BINARY_DIR_CMAKE_STYLE)
+-- 
+2.9.3
+
