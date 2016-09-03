@@ -15570,7 +15570,7 @@ sci-biology/sim4 20030921 20030921-r1: A program to align cDNA and genomic DNA
 sci-biology/snpfile 2.0.1 2.0.1-r1: A library and API for manipulating large SNP datasets
 sci-biology/stride 20011129-r1: Protein secondary structure assignment from atomic coordinates
 sci-biology/t-coffee 9.03.1318-r1 11.00-r1: A multiple sequence alignment package
-sci-biology/tophat 1.0.12 2.1.1: Python-based splice junction mapper for RNA-Seq reads using bowtie2
+sci-biology/tophat 1.0.12 2.1.1-r1: Python-based splice junction mapper for RNA-Seq reads using bowtie2
 sci-biology/transfac 3.2: A database of eucaryotic transcription factors
 sci-biology/tree-puzzle 5.2: Maximum likelihood analysis for nucleotide, amino acid, and two-state data
 sci-biology/treeviewx 0.5.1-r2 0.5.1-r3: A phylogenetic tree viewer
