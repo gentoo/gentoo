@@ -14,11 +14,11 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/${P/_/}.src.tar.xz
-	clang? ( http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/compiler-rt-${PV/_/}.src.tar.xz
-		http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/cfe-${PV/_/}.src.tar.xz
-		http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/clang-tools-extra-${PV/_/}.src.tar.xz )
-	lldb? ( http://llvm.org/pre-releases/${PV%_*}/${PV#*_}/lldb-${PV/_/}.src.tar.xz )
+SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
 	!doc? ( http://dev.gentoo.org/~mgorny/dist/${PN}-3.9.0_rc3-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"

@@ -225,6 +225,20 @@ number_abis() {
 	echo $#
 }
 
+# @FUNCTION: get_exeext
+# @DESCRIPTION:
+# Returns standard executable program suffix (null, .exe, etc.)
+# for the current platform identified by CHOST.
+#
+# Example:
+#     get_exeext
+#     Returns: null string (almost everywhere) || .exe (mingw*) || ...
+get_exeext() {
+	case ${CHOST} in
+		*-cygwin*|mingw*|*-mingw*)  echo ".exe";;
+	esac
+}
+
 # @FUNCTION: get_libname
 # @USAGE: [version]
 # @DESCRIPTION:
