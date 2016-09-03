@@ -4520,7 +4520,7 @@ dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP socket
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1 0.2: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
-dev-libs/capstone 3.0.4-r1: disassembly/disassembler framework + bindings
+dev-libs/capstone 3.0.4-r2: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106 5.0.20150928 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1: header-only C++11 serialization library
 dev-libs/cgicc 3.2.9 3.2.10: A C++ class library for writing CGI applications
@@ -5646,6 +5646,7 @@ dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.0.0-r1: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
+dev-perl/File-LibMagic 1.150.0: Perl wrapper for libmagic
 dev-perl/File-Listing 6.40.0-r1: Parse directory listings
 dev-perl/File-MMagic 1.300.0-r1: The Perl Image-Info Module
 dev-perl/File-Map 0.640.0: Memory mapping made simple and safe

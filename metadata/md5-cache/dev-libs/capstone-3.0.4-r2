@@ -1,4 +1,4 @@
-DEFINED_PHASES=-
+DEFINED_PHASES=configure
 DESCRIPTION=disassembly/disassembler framework + bindings
 EAPI=6
 HOMEPAGE=http://www.capstone-engine.org/
@@ -6,5 +6,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 SLOT=0/3
 SRC_URI=https://github.com/aquynh/capstone/archive/3.0.4.tar.gz -> capstone-3.0.4.tar.gz
-_eclass_exported_funcs=-
-_md5_=3bad9f31b1b00c034932d42639f49a45
+_eclass_exported_funcs=src_configure:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=5b47cb095d9db4083606d9d7c5463972
