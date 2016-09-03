@@ -7659,7 +7659,7 @@ dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
 dev-python/path-py 8.1.2: A module wrapper for os.path
-dev-python/pathlib 1.0.1-r1 1.0.1-r2: Object-oriented filesystem paths
+dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2 0.1.2-r1: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
@@ -8191,7 +8191,7 @@ dev-python/simples3 1.0: A fairly simple, decently quick python interface to Ama
 dev-python/simplesettings 0.5-r1: Simple settings initialization
 dev-python/simpletal 4.2-r1 5.1-r1 5.2: Stand alone Python implementation of the Zope TAL, TALES and METAL specs for HTML/XML templates
 dev-python/simpy 2.3.1-r1 3.0.3 3.0.8: Simulation in Python is an object-oriented, process-based discrete-event simulation language
-dev-python/singledispatch 3.4.0.3 3.4.0.3-r1: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
+dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
 dev-python/sip 4.16.2 4.16.9 4.18 4.18.1 4.9999: Python extension module generator for C and C++ libraries
 dev-python/six 1.9.0-r1 1.10.0: Python 2 and 3 compatibility library
 dev-python/skype4py 1.0.35-r1: Python wrapper for the Skype API
@@ -8390,7 +8390,7 @@ dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementatio
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.3 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 1.2.2 1.2.3 1.2.6: IPython HTML widgets for Jupyter
-dev-python/winpdb 1.4.8 1.4.8-r1: Graphical Python debugger
+dev-python/winpdb 1.4.8-r1: Graphical Python debugger
 dev-python/workerpool 0.9.2-r1 0.9.4: Module for distributing jobs to a pool of worker threads
 dev-python/wrapt 1.10.5 1.10.6-r1 1.10.7 1.10.8: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
@@ -17854,8 +17854,8 @@ www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.18.7 3.20.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 38.8.0 45.2.0 45.3.0 48.0: Firefox Web Browser
-www-client/firefox-bin 45.3.0 48.0: Firefox Web Browser
+www-client/firefox 38.8.0 45.2.0 45.3.0 48.0.1: Firefox Web Browser
+www-client/firefox-bin 45.3.0 48.0.1: Firefox Web Browser
 www-client/google-chrome 53.0.2785.92: The web browser from Google
 www-client/google-chrome-beta 53.0.2785.92: The web browser from Google
 www-client/google-chrome-unstable 54.0.2840.8: The web browser from Google

@@ -4,7 +4,7 @@ DESCRIPTION=Graphical Python debugger
 EAPI=5
 HOMEPAGE=http://winpdb.org/ https://code.google.com/p/winpdb/ https://pypi.python.org/pypi/winpdb
 IUSE=+wxwidgets python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=~amd64 ~ia64 ~x86
+KEYWORDS=amd64 ~ia64 x86
 LICENSE=GPL-2
 RDEPEND=>=dev-python/pycrypto-2.0.1[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] wxwidgets? ( dev-python/wxpython:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
 REQUIRED_USE=wxwidgets? ( python_targets_python2_7 ) || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://winpdb.googlecode.com/files/winpdb-1.4.8.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=bfb7e39285ea4b7be0ed4ad74252ada7
+_md5_=7e6666776cdc4e6e8831b930fd1d7dfe
