@@ -506,7 +506,7 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.15 1.4.18 1.4.24: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
-app-crypt/certbot 0.8.1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.8.1 0.8.1-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -13433,7 +13433,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.36-r1: Spotify is a social music platform
+media-sound/spotify 1.0.37: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365-r1 1.1_p381-r1: A lightweight streaming audio player for Logitech Media Server
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
