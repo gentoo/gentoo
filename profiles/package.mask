@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
+# Python 3.3 will be removed from Gentoo in 30 days.
+# dev-lang/python:3.3 will be available in the python overlay.
+dev-lang/python:3.3
+
+# Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
 # No reverse deps, only supports python3.3.
 # Removal in 30 days.
 dev-python/simpletal
