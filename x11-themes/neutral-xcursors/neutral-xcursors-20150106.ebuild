@@ -55,6 +55,7 @@ src_prepare() {
 }
 
 src_compile() {
+	local cursor_dir
 	for cursor_dir in ${NEUTRAL_P} ${PLUS_P} ${PLUSPLUS_P} ${WHITE_P}; do
 		pushd ${cursor_dir}/source > /dev/null || die
 			sh make.sh || die
