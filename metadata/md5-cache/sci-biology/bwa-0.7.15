@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=configure install
 DESCRIPTION=Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 EAPI=6
 HOMEPAGE=http://bio-bwa.sourceforge.net/
@@ -6,7 +6,7 @@ KEYWORDS=~amd64 ~x86 ~x64-macos
 LICENSE=GPL-3
 RDEPEND=dev-lang/perl
 SLOT=0
-SRC_URI=mirror://sourceforge/bio-bwa/bwa-0.7.13.tar.bz2
-_eclass_exported_funcs=src_prepare:- src_install:-
+SRC_URI=mirror://sourceforge/bio-bwa/bwa-0.7.15.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=be14626749c3fc81b88277aeca8d63e0
+_md5_=4d3c46cb5a76a96e60903b8a63c97133
