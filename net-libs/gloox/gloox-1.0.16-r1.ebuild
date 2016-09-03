@@ -12,7 +12,7 @@ HOMEPAGE="http://camaya.net/gloox"
 SRC_URI="http://camaya.net/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
-SLOT="0/13"
+SLOT="0/14"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~ia64 ~sparc ~x86"
 IUSE="debug gnutls idn libressl ssl static-libs test zlib"
 
