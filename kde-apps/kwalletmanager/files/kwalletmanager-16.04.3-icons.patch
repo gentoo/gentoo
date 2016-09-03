@@ -1,0 +1,30 @@
+From: Martin T. H. Sandsmark <martin.sandsmark@kde.org>
+Date: Sat, 27 Aug 2016 13:23:52 +0000
+Subject: Fix icon installation path
+X-Git-Url: http://quickgit.kde.org/?p=kwalletmanager.git&a=commitdiff&h=7bb9e92f26074ec892df4fe0a790567097221a9f
+---
+Fix icon installation path
+---
+
+merged with
+
+From: Martin T. H. Sandsmark <martin.sandsmark@kde.org>
+Date: Sat, 27 Aug 2016 13:32:04 +0000
+Subject: Fix icon names
+X-Git-Url: http://quickgit.kde.org/?p=kwalletmanager.git&a=commitdiff&h=5d35eb2c3b82979994b75c116d8c57ac8c8e398a
+---
+Fix icon names
+---
+
+
+--- a/icons/CMakeLists.txt
++++ b/icons/CMakeLists.txt
+@@ -1,2 +1,6 @@
+-ecm_install_icons( ICONS 22-actions-folder_closed.png  22-actions-folder_open.png DESTINATION ${DATA_INSTALL_DIR}/kwalletmanager5/icons   )
++ecm_install_icons(
++    ICONS 22-actions-wallet-closed.png 22-actions-wallet-open.png
++    DESTINATION ${ICON_INSTALL_DIR}
++    THEME hicolor
++)
+ 
+
