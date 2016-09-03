@@ -4,22 +4,22 @@
 
 EAPI="6"
 
-inherit git-r3 toolchain-funcs multilib-minimal flag-o-matic
+inherit toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
-EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
+SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~amd64-fbsd ~amd64-linux ~arm ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-linux"
 IUSE="gnutls polarssl ssl libressl"
 
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
 		polarssl? ( !gnutls? ( >=net-libs/polarssl-1.3.4[${MULTILIB_USEDEP}] ) )
-		!gnutls? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) ) )
+		!gnutls? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl:0 ) ) )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
@@ -29,6 +29,12 @@ pkg_setup() {
 		ewarn "USE='gnutls polarssl' are ignored without USE='ssl'."
 		ewarn "Please review the local USE flags for this package."
 	fi
+}
+
+src_unpack() {
+	mkdir -p "${S}" || die "Can't create source directory"
+	cd "${S}" || die
+	unpack ${A}
 }
 
 src_prepare() {
@@ -44,11 +50,9 @@ src_prepare() {
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
 	multilib_copy_sources
-}
 
-multilib_src_compile() {
 	if use ssl ; then
-		if use gnutls ; then
+		if use gnutls ;	then
 			crypto="GNUTLS"
 		elif use polarssl ; then
 			crypto="POLARSSL"
@@ -56,6 +60,9 @@ multilib_src_compile() {
 			crypto="OPENSSL"
 		fi
 	fi
+}
+
+multilib_src_compile() {
 	#fix multilib-script support. Bug #327449
 	sed -i "/^libdir/s:lib$:$(get_libdir):" librtmp/Makefile || die
 	if ! multilib_is_native_abi; then
