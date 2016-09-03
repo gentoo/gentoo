@@ -17907,7 +17907,7 @@ www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to 
 www-misc/reflector 2011.05.13.1: archlinux's take on mirrorselect
 www-misc/shellinabox 2.19: Web server that can export arbitrary command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
-www-misc/urlwatch 1.18 2.2 2.5: A tool for monitoring webpages for updates
+www-misc/urlwatch 2.5: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
