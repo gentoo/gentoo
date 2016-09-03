@@ -14305,7 +14305,7 @@ net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
 net-irc/unrealircd 3.2.10.4 4.0.5: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.5 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
-net-irc/znc 1.2-r1 1.4 1.4-r1 1.6.1-r1 1.6.3 9999: An advanced IRC Bouncer
+net-irc/znc 1.4-r1 1.6.1-r1 1.6.3 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for freenet
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4 1.4-r1: Advanced, easy to use, asynchronous-capable DNS client library and utilities
