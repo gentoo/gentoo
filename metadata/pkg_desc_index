@@ -13877,7 +13877,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 7.01 7.12 7.25_beta1 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 7.01 7.12 7.25_beta1 7.25_beta2 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
@@ -17210,7 +17210,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9 2.4.10.1 2.4.11.1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.11.1 2.4.13.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
