@@ -12,7 +12,7 @@ MY_PN="PyMySQL"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Pure-Python MySQL Driver"
-HOMEPAGE="http://www.pymysql.org/"
+HOMEPAGE="https://github.com/PyMySQL/PyMySQL"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
