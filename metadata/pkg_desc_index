@@ -16072,7 +16072,7 @@ sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.2.4 1.3 1.3.1 9999: Votca tools library
 sci-libs/vtk 6.0.0 6.1.0 6.1.0-r1 6.1.0-r2 6.1.0-r3: The Visualization Toolkit
 sci-libs/vtkdata 6.0.0 6.1.0: Example data file for VTK
-sci-libs/xdmf2 1.0_p141226-r1: eXtensible Data Model and Format
+sci-libs/xdmf2 1.0_p141226-r1 1.0_p141226-r2: eXtensible Data Model and Format
 sci-libs/xdrfile 1.1.1: Library to read gromacs trajectory and topology files
 sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
@@ -17225,7 +17225,7 @@ sys-fs/lsscsi 0.28: SCSI sysfs query tool
 sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
 sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 0.17 2.0.0_beta2 2.0.0 2.0.1 2.0.2: FUSE filesystem for LXC
+sys-fs/lxcfs 0.17 2.0.0_beta2 2.0.0 2.0.1 2.0.2 2.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7 0.1_p16: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 3.2.6-r1 3.3.1-r2 3.3.4 3.4: A useful tool for running RAID systems - it can be used as a replacement for the raidtools
 sys-fs/mhddfs 0.1.39: Fuse multi harddrive filesystem
