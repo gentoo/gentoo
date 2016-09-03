@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile prepare test
 DEPEND=virtual/opencl
-DESCRIPTION=An advanced CPU-based password recovery utility
+DESCRIPTION=World's fastest and most advanced password recovery utility
 EAPI=5
 HOMEPAGE=https://github.com/hashcat/hashcat
 IUSE=video_cards_nvidia video_cards_fglrx
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/hashcat/hashcat/archive/v3.10.tar.gz -> hashcat-3.10.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_test:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=704491c46784c0bf7b0e9b9112125e8f
+_md5_=39f21a857015a739b1294d260a42bbaa

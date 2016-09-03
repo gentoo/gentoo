@@ -539,7 +539,7 @@ app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings mor
 app-crypt/gpgme 1.5.5 1.6.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
-app-crypt/hashcat 3.10-r1: An advanced CPU-based password recovery utility
+app-crypt/hashcat 3.10-r1: World's fastest and most advanced password recovery utility
 app-crypt/hashcat-bin 0.49: An multi-threaded multihash cracker
 app-crypt/hashcat-gui 0.5.1: A gui for the *hashcat* suite of tools
 app-crypt/heimdal 1.5.3-r2: Kerberos 5 implementation from KTH
@@ -17938,7 +17938,7 @@ www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39: Lightwe
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.10.1 1.10.1-r2 1.11.3-r1 1.11.3-r2: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.10.1 1.10.1-r2 1.10.1-r3 1.11.3-r1 1.11.3-r2: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.7-r1: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
