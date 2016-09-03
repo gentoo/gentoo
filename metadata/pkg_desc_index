@@ -10066,7 +10066,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0: a distributed, interactive, smar
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 1.35: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
-dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.4 2.9.2 2.9.3 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.4 2.9.3 2.10.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
