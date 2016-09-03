@@ -5,9 +5,8 @@
 EAPI=6
 
 DESCRIPTION="Epson Inkjet Printer Driver (ESC/P-R)"
-HOMEPAGE="http://www.epson.com/"
+HOMEPAGE="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/04/54/27/b73564748bfde7b7ce625e20d4a3257d447bec79/epson-inkjet-printer-escpr-1.6.5-1lsb3.2.tar.gz"
-# http://download.ebz.epson.net/dsc/search/01/search/
 
 LICENSE="GPL-2"
 SLOT="0"
