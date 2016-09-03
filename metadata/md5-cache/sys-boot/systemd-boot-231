@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=sys-apps/util-linux-2.27.1:0= sys-libs/libcap:= app-text/docbook-xml-dtd:4.2 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 >=sys-boot/gnu-efi-3.0.2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=sys-apps/util-linux-2.27.1:0= sys-libs/libcap:= app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 >=sys-boot/gnu-efi-3.0.2 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=UEFI boot manager from systemd (formerly gummiboot)
 EAPI=6
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd/systemd-boot/
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/systemd/systemd/archive/v231.tar.gz -> systemd-231.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=8a461bbfc127304fdf2732fa37dee10f
+_md5_=83abcd2fd180f6c71308e0349e2984d5
