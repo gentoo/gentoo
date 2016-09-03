@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils pax-utils
 
-DESCRIPTION="An advanced CPU-based password recovery utility"
+DESCRIPTION="World's fastest and most advanced password recovery utility"
 HOMEPAGE="https://github.com/hashcat/hashcat"
 SRC_URI="https://github.com/hashcat/hashcat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
