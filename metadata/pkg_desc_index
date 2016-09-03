@@ -4700,7 +4700,7 @@ dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handlin
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
-dev-libs/libgweather 3.18.1 3.20.1: Library to access weather information from online services
+dev-libs/libgweather 3.18.1 3.18.2 3.20.1 3.20.3: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
 dev-libs/libhtmlparse 0.1.13-r1: HTML parsing library. It takes HTML tags, text, and calls callbacks for each type of token
