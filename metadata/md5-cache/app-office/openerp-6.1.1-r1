@@ -10,5 +10,5 @@ RDEPEND=postgres? ( dev-db/postgresql[server] ) dev-python/lxml dev-python/psyco
 SLOT=0
 SRC_URI=http://nightly.openerp.com/6.1/releases/openerp-6.1-1.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:distutils pkg_postinst:- pkg_setup:- src_prepare:- src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
 _md5_=cb60dae5f65622914b7ef3e9af084ba5

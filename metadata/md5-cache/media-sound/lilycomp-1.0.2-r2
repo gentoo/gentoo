@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_tar
 SLOT=0
 SRC_URI=mirror://sourceforge/lilycomp/lilycomp.1.0.2.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=b7082578d8b61607e5686ca97cdae6cd
