@@ -87,7 +87,7 @@ multilib_layout() {
 				else
 					mkdir -p "${prefix}lib" || die
 				fi
-			elif [ -d "${prefix}lib" ] ; then
+			elif [ -d "${prefix}lib" ] && ! has lib32 ${libdirs} ; then
 				# make sure the old "lib" ABI location does not exist; we
 				# only symlinked the lib dir on systems where we moved it
 				# to "lib32" ...
