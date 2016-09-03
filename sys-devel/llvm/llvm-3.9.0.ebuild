@@ -202,6 +202,15 @@ src_prepare() {
 
 		# Fix git-clang-format shebang, bug #562688
 		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
+
+		pushd projects/compiler-rt >/dev/null || die
+
+		# Fix WX sections, bug #421527
+		find lib/builtins -type f -name '*.S' -exec sed \
+			-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+			-i {} + || die
+
+		popd >/dev/null || die
 	fi
 
 	if use lldb; then
