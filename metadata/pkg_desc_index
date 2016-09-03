@@ -15519,7 +15519,7 @@ sci-biology/iqpnni 3.2 3.3.1 3.3.2: Important Quartet Puzzling and NNI Operation
 sci-biology/kalign 2.03 2.03-r1: Global and progressive multiple sequence alignment
 sci-biology/lagan 2.0-r1 2.0-r2: LAGAN, Multi-LAGAN, Shuffle-LAGAN, Supermap: Whole-genome multiple alignment of genomic DNA
 sci-biology/last 230 299: Genome-scale comparison of biological sequences
-sci-biology/mafft 7.050 7.215: Multiple sequence alignments using a variety of algorithms
+sci-biology/mafft 7.050 7.215 7.305: Multiple sequence alignments using a variety of algorithms
 sci-biology/mammoth 1.0-r1: MAtching Molecular Models Obtained from THeory
 sci-biology/maq 0.7.1 0.7.1-r1: Mapping and Assembly with Qualities - mapping Solexa and SOLiD reads to reference sequences
 sci-biology/maqview 0.2.5-r2: GUI for sci-biology/maq, a short read mapping assembler
@@ -15587,7 +15587,7 @@ sci-biology/velvet 1.0.18-r1 1.2.10: A sequence assembler for very short reads
 sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 5.4 6.1 7.0 7.0-r1: A de novo whole-genome shotgun DNA sequence assembler, also known as the Celera Assembler and CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
-sci-biology/yass 1.14 1.14-r1: Genomic similarity search with multiple transition constrained spaced seeds
+sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
 sci-calculators/calcoo 1.3.18: Scientific calculator designed to provide maximum usability
 sci-calculators/calculator 1.6.43 1.7.49: Scientific calculator based on the FOX Toolkit
 sci-calculators/galculator 2.1.3 2.1.4: GTK+ based algebraic and RPN calculator
