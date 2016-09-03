@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="test"
 
-RDEPEND="dev-python/pathlib[${PYTHON_USEDEP}]
+RDEPEND="virtual/python-pathlib[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
