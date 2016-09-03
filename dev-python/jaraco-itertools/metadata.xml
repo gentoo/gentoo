@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="pypi">jaraco.itertools</remote-id>
 		<remote-id type="github">jaraco/jaraco.itertools</remote-id>
+		<bugs-to>https://github.com/jaraco/jaraco.itertools/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

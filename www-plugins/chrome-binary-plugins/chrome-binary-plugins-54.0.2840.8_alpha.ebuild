@@ -34,7 +34,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 KEYWORDS="-* ~amd64"
 
 LICENSE="google-chrome"
-IUSE="+flash +widevine"
+IUSE="+widevine"
 RESTRICT="bindist mirror strip"
 
 for x in 0 beta stable unstable; do
@@ -51,7 +51,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local version flapper
+	local version
 
 	insinto /usr/$(get_libdir)/chromium-browser/
 
@@ -59,20 +59,5 @@ src_install() {
 		doins libwidevinecdm.so
 		strings ./chrome | grep -C 1 " (version:" | tail -1 > widevine.version
 		doins widevine.version
-	fi
-
-	if use flash; then
-		doins -r PepperFlash
-
-		# Since this is a live ebuild, we're forced to, unfortuantely,
-		# dynamically construct the command line args for Chromium.
-		version=$(sed -n 's/.*"version": "\(.*\)",.*/\1/p' PepperFlash/manifest.json)
-		flapper="${EPREFIX}/usr/$(get_libdir)/chromium-browser/PepperFlash/libpepflashplayer.so"
-		echo -n "CHROMIUM_FLAGS=\"\${CHROMIUM_FLAGS} " > pepper-flash
-		echo -n "--ppapi-flash-path=$flapper " >> pepper-flash
-		echo "--ppapi-flash-version=$version\"" >> pepper-flash
-
-		insinto /etc/chromium/
-		doins pepper-flash
 	fi
 }
