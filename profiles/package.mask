@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
+# No reverse deps, only supports python3.3.
+# Removal in 30 days.
+dev-python/simpletal
+
 # Patrick McLean <chutzpah@gentoo.org> (2 Sep 2016)
 # Forward port of HPN patchset masked for testing.
 # See bug #577768 for more info on test failures with HPN
