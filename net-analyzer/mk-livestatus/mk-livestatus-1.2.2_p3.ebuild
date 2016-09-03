@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ inherit autotools perl-module python-r1 eutils
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="Nagios/Icinga event broker module that allows quick/direct access to your status data"
+DESCRIPTION="Nagios/Icinga event broker that allows quick/direct access to your status data"
 HOMEPAGE="http://mathias-kettner.de/checkmk_livestatus.html"
 SRC_URI="http://mathias-kettner.de/download/${MY_P}.tar.gz"
 
