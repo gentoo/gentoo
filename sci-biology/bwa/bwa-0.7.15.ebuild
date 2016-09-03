@@ -17,13 +17,12 @@ KEYWORDS="~amd64 ~x86 ~x64-macos"
 
 RDEPEND="dev-lang/perl"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-Makefile.patch
-)
+DOCS=( NEWS.md README-alt.md README.md )
+PATCHES=( "${FILESDIR}"/${P}-Makefile.patch )
 
-src_prepare() {
-	default
+src_configure() {
 	tc-export CC AR
+	default
 }
 
 src_install() {
@@ -34,5 +33,5 @@ src_install() {
 	exeinto /usr/libexec/${PN}
 	doexe qualfa2fq.pl xa2multi.pl
 
-	dodoc NEWS.md README-alt.md README.md
+	einstalldocs
 }
