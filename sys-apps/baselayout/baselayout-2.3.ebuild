@@ -106,9 +106,7 @@ multilib_layout() {
 			else
 				# nothing exists, so just set it up sanely
 				ewarn "Initializing ${prefix}lib as a dir"
-				mkdir -p "${prefix}" || die
-				rm -f "${prefix}lib" || die
-				ln -s ${def_libdir} "${prefix}lib" || die
+				mkdir -p "${prefix}lib" || die
 			fi
 		fi
 	done
