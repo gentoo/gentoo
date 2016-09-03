@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils flag-o-matic python-single-r1
+inherit autotools eutils flag-o-matic python-single-r1 toolchain-funcs
 
 DESCRIPTION="Python-based splice junction mapper for RNA-Seq reads using bowtie2"
 HOMEPAGE="https://ccb.jhu.edu/software/tophat/"
@@ -16,11 +16,14 @@ LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-libs/boost
+RDEPEND="${PYTHON_DEPS}
+	dev-libs/boost:=
 	sci-biology/samtools:0.1-legacy
 	sci-biology/bowtie:2"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	sci-biology/seqan:1.4"
 
 PATCHES=(
@@ -46,7 +49,7 @@ src_prepare() {
 
 	# innocuous non-security flags, prevent log pollution
 	append-cflags -Wno-unused-but-set-variable -Wno-unused-variable
-	append-cppflags "$(pkg-config --cflags seqan-1.4)"
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags seqan-1.4)"
 
 	eautoreconf
 }
@@ -59,8 +62,15 @@ src_install() {
 	default
 
 	local i
+	# install scripts properly
 	for i in bed_to_juncs contig_to_chr_coords sra_to_solid tophat tophat-fusion-post; do
-		python_fix_shebang "${ED}"/usr/bin/${i}
+		python_doscript "${ED%/}/usr/bin/${i}"
+	done
+
+	# install python modules properly
+	for i in intervaltree sortedcontainers; do
+		python_domodule "${ED%/}/usr/bin/${i}"
+		rm -rf "${ED%/}/usr/bin/${i}" || die
 	done
 }
 
