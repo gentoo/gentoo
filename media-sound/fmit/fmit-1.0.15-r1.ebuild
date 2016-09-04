@@ -17,18 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa jack oss portaudio"
 
-RDEPEND=">=sci-libs/fftw-3.3.4:=
+RDEPEND=">=sci-libs/fftw-3.3.4:3.0
 	dev-qt/qtmultimedia:5
 	dev-qt/qtopengl:5
 	dev-qt/qtsvg:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/linguist-tools
+	dev-qt/qtgui:5[-gles2]
 	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack-audio-connection-kit )
 	portaudio? ( media-libs/portaudio )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools"
 
 src_prepare() {
 	# Fix the path to readme file to prevent errors on start up
@@ -46,6 +46,7 @@ src_prepare() {
 
 src_configure() {
 	local config
+	local flag
 	for flag in alsa jack portaudio oss; do
 		use ${flag} && config+=" acs_${flag}"
 	done
@@ -56,9 +57,9 @@ src_configure() {
 		PREFIXSHORTCUT="${D}"/usr DISTDIR=/usr
 }
 
-src_install() {
-	emake DESTDIR="${D}" install
-	insinto /usr/share/doc/"${PF}"/
-	doins README.txt
-	docompress -x /usr/share/doc/"${PF}"/
-}
+#src_install() {
+#	emake DESTDIR="${D}" install
+#	insinto /usr/share/doc/"${PF}"/
+#	doins README.txt
+#	docompress -x /usr/share/doc/"${PF}"/
+#}
