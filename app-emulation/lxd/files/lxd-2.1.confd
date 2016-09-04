@@ -1,0 +1,27 @@
+# Group which owns the shared socket
+LXD_OPTIONS+=" --group lxd"
+
+
+
+# Enable cpu profiling into the specified file
+#LXD_OPTIONS+=" --cpuprofile /tmp/lxc_cpu_profile"
+
+# Enable memory profiling into the specified file
+#LXD_OPTIONS+=" --memprofile /tmp/lxc_mem_profile"
+
+
+
+# Enables debug mode
+#LXD_OPTIONS+=" --debug"
+
+# For debugging, print a complete stack trace every n seconds
+#LXD_OPTIONS+=" --print-goroutines-every 5"
+
+# Enables verbose mode
+#LXD_OPTIONS+=" -v"
+
+# Logfile to log to
+#LXD_OPTIONS+=" --logfile /var/log/lxd/lxd.log"
+
+# Enables syslog logging
+#LXD_OPTIONS+=" --syslog"

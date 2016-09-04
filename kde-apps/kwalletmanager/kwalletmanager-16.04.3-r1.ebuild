@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="KDE Wallet management tool"
 HOMEAGE="https://www.kde.org/applications/system/kwalletmanager
 https://utils.kde.org/projects/kwalletmanager"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -42,3 +42,11 @@ RDEPEND="${DEPEND}
 	!<kde-apps/kwalletmanager-15.04.3-r1:4
 	!kde-base/legacy-icons
 "
+
+PATCHES=( "${FILESDIR}/${P}-icons.patch" )
+
+src_prepare() {
+	mv icons/22-actions-folder_open.png icons/22-actions-wallet-open.png || die
+	mv icons/22-actions-folder_closed.png icons/22-actions-wallet-closed.png || die
+	kde5_src_prepare
+}
