@@ -15527,7 +15527,7 @@ sci-biology/maqview 0.2.5-r2: GUI for sci-biology/maq, a short read mapping asse
 sci-biology/mcl 08.312 12.135 14.137: A Markov Cluster Algorithm implementation
 sci-biology/meme 4.8.1-r2: The MEME/MAST system - Motif discovery and search
 sci-biology/mira 4.0.2: Whole Genome Shotgun and EST Sequence Assembler for Sanger, 454 and Illumina
-sci-biology/mosaik 1.0.1367 1.0.1388: A reference-guided aligner for next-generation sequencing technologies
+sci-biology/mosaik 1.0.1367 1.0.1388 2.2.30: A reference-guided aligner for next-generation sequencing technologies
 sci-biology/mothur 1.27.0-r1: A suite of algorithms for ecological bioinformatics
 sci-biology/mrbayes 3.1.2-r1 3.1.2-r2: Bayesian Inference of Phylogeny
 sci-biology/mummer 3.20 3.21 3.22-r1: A rapid whole genome aligner
