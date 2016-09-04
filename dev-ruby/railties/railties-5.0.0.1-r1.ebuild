@@ -12,6 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 RUBY_FAKEGEM_GEMSPEC="railties.gemspec"
 
 RUBY_FAKEGEM_BINWRAP=""
+RUBY_FAKEGEM_EXTRAINSTALL="exe"
 
 inherit ruby-fakegem versionator
 
@@ -54,6 +55,10 @@ all_ruby_prepare() {
 
 	# Also allow rdoc 4.x
 	sed -i -e 's/~> 3.4/>= 3.4/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Also install rails in bin to let our binwrapper work
+	mkdir bin || die
+	cp -f exe/rails bin/ || die
 }
 
 all_ruby_install() {
