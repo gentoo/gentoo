@@ -28,7 +28,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<x11-themes/gnome-themes-standard-3.14
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/intltool-0.40
 	sys-devel/gettext
 	virtual/pkgconfig
 "
