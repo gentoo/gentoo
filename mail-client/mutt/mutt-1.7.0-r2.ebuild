@@ -7,13 +7,13 @@ EAPI="6"
 inherit eutils flag-o-matic autotools
 
 #NEOMUTT="neomutt-20160710"
-NEOMUTT="gentoo-r1"
+NEOMUTT="gentoo-r${PVR}"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.0-patches-r1.tar.xz"
+	https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.0-patches-r2.tar.xz"
 	#https://github.com/neomutt/integration/archive/${NEOMUTT}.tar.gz -> ${P}-patches-${NEOMUTT}.tar.gz"
 IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
 SLOT="0"
