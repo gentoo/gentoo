@@ -9793,7 +9793,7 @@ dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
 dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
 dev-util/devhelp 3.18.1 3.20.0: An API documentation browser for GNOME
-dev-util/dialog 1.2.20150920 1.3.20160209 1.3.20160424: tool to display dialog boxes from a shell
+dev-util/dialog 1.2.20150920 1.3.20160424 1.3.20160828: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
