@@ -1,0 +1,57 @@
+* Fix test failures on py3.5, backported from git, see also
+  https://github.com/PythonCharmers/python-future/issues/183
+* Fix unexpected test successes on py3.5, which are now correct
+
+--- a/tests/test_future/test_bytes.py
++++ b/tests/test_future/test_bytes.py
+@@ -10,6 +10,8 @@
+ from numbers import Integral
+ from future.tests.base import unittest, expectedFailurePY2
+ 
++import sys
++
+ 
+ TEST_UNICODE_STR = u'ℝεα∂@ßʟ℮ ☂ℯṧт υηḯ¢☺ḓ℮'
+ # Tk icon as a .gif:
+@@ -534,6 +536,8 @@
+         self.assertRaises(ValueError, bytes.maketrans, b'abc', b'xyzq')
+         self.assertRaises(TypeError, bytes.maketrans, 'abc', 'def')
+ 
++    @unittest.skipIf(sys.version_info[:2] == (3, 5),
++             'Only works in Py3.5+')
+     @unittest.expectedFailure
+     def test_mod(self):
+         """
+@@ -551,6 +555,8 @@
+         a = b % (b'seventy-nine', 79)
+         self.assertEqual(a, b'seventy-nine / 100 = 79%')
+ 
++    @unittest.skipIf(sys.version_info[:2] == (3, 5),
++             'Only works in Py3.5+')
+     @unittest.expectedFailure
+     def test_imod(self):
+         """
+--- a/tests/test_future/test_builtins.py
++++ b/tests/test_future/test_builtins.py
+@@ -525,11 +525,10 @@
+         self.assertRaises(ValueError, compile, 'print(42)\n', '<string>', 'badmode')
+         self.assertRaises(ValueError, compile, 'print(42)\n', '<string>', 'single', 0xff)
+         # Raises TypeError in Python < v3.5, ValueError in v3.5:
+-        # self.assertRaises(TypeError, compile, chr(0), 'f', 'exec')
++        self.assertRaises((TypeError, ValueError), compile, chr(0), 'f', 'exec')
+         self.assertRaises(TypeError, compile, 'pass', '?', 'exec',
+                           mode='eval', source='0', filename='tmp')
+         compile('print("\xe5")\n', '', 'exec')
+-        self.assertRaises(TypeError, compile, chr(0), 'f', 'exec')
+         self.assertRaises(ValueError, compile, str('a = 1'), 'f', 'bad')
+ 
+         # test the optimize argument
+@@ -1287,7 +1286,7 @@
+         self.assertAlmostEqual(pow(-1, 1/3), 0.5 + 0.8660254037844386j)
+ 
+         # Raises TypeError in Python < v3.5, ValueError in v3.5:
+-        # self.assertRaises(TypeError, pow, -1, -2, 3)
++        self.assertRaises((TypeError, ValueError), pow, -1, -2, 3)
+         self.assertRaises(ValueError, pow, 1, 2, 0)
+ 
+         self.assertRaises(TypeError, pow)
