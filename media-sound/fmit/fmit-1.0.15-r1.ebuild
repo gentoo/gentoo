@@ -56,10 +56,3 @@ src_configure() {
 	eqmake5 CONFIG+="${config}" fmit.pro PREFIX="${D}"/usr \
 		PREFIXSHORTCUT="${D}"/usr DISTDIR=/usr
 }
-
-#src_install() {
-#	emake DESTDIR="${D}" install
-#	insinto /usr/share/doc/"${PF}"/
-#	doins README.txt
-#	docompress -x /usr/share/doc/"${PF}"/
-#}
