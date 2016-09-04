@@ -5439,7 +5439,7 @@ dev-perl/Crypt-OpenSSL-Random 0.40.0-r2 0.110.0: OpenSSL/LibreSSL pseudo-random 
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-Primes 0.500.0-r1: Provable Prime Number Generator suitable for Cryptographic Applications
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
-dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
+dev-perl/Crypt-RIPEMD160 0.50.0-r1 0.60.0: Perl extension for the RIPEMD-160 Hash function
 dev-perl/Crypt-RSA 1.990.0-r1: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.250.0-r1: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.70.0-r1 0.110.0 0.120.0: Get weak or strong random data from pluggable sources
