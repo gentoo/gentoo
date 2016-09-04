@@ -70,5 +70,5 @@ src_install() {
 
 	# need to byte-compile 'XdmfCore.py' and 'Xdmf.py'
 	# as the CMake build system does not compile them itself
-	python_optimize "${D%/}$(python_get_sitedir)"
+	use python && python_optimize "${D%/}$(python_get_sitedir)"
 }
