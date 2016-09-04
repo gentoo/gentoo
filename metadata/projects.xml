@@ -1791,7 +1791,7 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member</role>
+      <role>Member, libc++</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
@@ -1806,7 +1806,7 @@
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
+      <role>Member, core LLVM/clang</role>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
