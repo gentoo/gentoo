@@ -4882,6 +4882,10 @@ media-video/smplayer:mpris - Enable support for MPRIS2 (Media Player Remote Inte
 media-video/smplayer:streaming - Support for streaming video sites through net-misc/youtube-dl (MPV only).
 media-video/smtube:qt5 - Build using Qt 5 instead of Qt 4
 media-video/subtitlecomposer:mpv - Build mpv backend support
+media-video/syncplay:client - Install Syncplay client
+media-video/syncplay:gui - Enable gui support
+media-video/syncplay:server - Install Syncplay server
+media-video/syncplay:vlc - Enable VLC2.x support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:nautilus - Enable the nautilus extension
 media-video/totem:python - Build support for dev-lang/python plugins

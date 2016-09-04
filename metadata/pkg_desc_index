@@ -13678,6 +13678,7 @@ media-video/subtitleeditor 0.41.1-r1 0.52.1: GTK+3 subtitle editing tool
 media-video/subtitler-yuv 0.6.5: for mjpegtools for adding subtitles, pictures, and effects embedded in the picture
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
 media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
+media-video/syncplay 1.4.0_rc2: Client/server to synchronize media playback
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.18.1 3.20.1: Media player for GNOME
