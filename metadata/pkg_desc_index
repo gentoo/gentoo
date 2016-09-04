@@ -5431,7 +5431,7 @@ dev-perl/Crypt-DH-GMP 0.0.120: Crypt::DH Using GMP Directly
 dev-perl/Crypt-DSA 1.170.0: DSA Signatures and Key Generation
 dev-perl/Crypt-Eksblowfish 0.9.0-r2: the Eksblowfish block cipher
 dev-perl/Crypt-IDEA 1.100.0: Parse and save PGP packet streams
-dev-perl/Crypt-OpenPGP 1.70.0: Pure-Perl OpenPGP-compatible PGP implementation
+dev-perl/Crypt-OpenPGP 1.70.0 1.120.0: Pure-Perl OpenPGP-compatible PGP implementation
 dev-perl/Crypt-OpenSSL-Bignum 0.40.0-r2 0.60.0: OpenSSL's multiprecision integer arithmetic
 dev-perl/Crypt-OpenSSL-DSA 0.150.0-r1: Digital Signature Algorithm using OpenSSL
 dev-perl/Crypt-OpenSSL-RSA 0.280.0-r2: Crypt::OpenSSL::RSA module for perl
