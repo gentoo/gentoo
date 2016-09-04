@@ -1067,7 +1067,7 @@ app-editors/pluma 1.10.2 1.12.2-r1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.9.4: Simple Qt-based XML editor
-app-editors/retext 4.1.3 5.3.1 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 4.1.3 5.3.1 6.0.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
@@ -14440,7 +14440,7 @@ net-libs/librsync 0.9.7-r3 2.0.0 2.0.0-r1: Remote delta-compression library
 net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.13-r1: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
-net-libs/libsoup 2.50.0 2.52.2 2.54.1: An HTTP library implementation in C
+net-libs/libsoup 2.50.0 2.52.2 2.54.1 2.54.1-r1: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
@@ -18129,7 +18129,7 @@ x11-drivers/xf86-video-virtualbox 4.3.38 4.3.40 5.0.16 5.0.20-r1: VirtualBox vid
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
-x11-libs/amd-adl-sdk 6.0-r1 7.0 8.0: API to access display driver functionality for ATI graphics cards
+x11-libs/amd-adl-sdk 6.0-r1 8.0 10.1: API to access display driver functionality for ATI graphics cards
 x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.2.10 2.2.12 2.2.13: A library containing a number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.2 1.14.2-r1 1.14.4 1.14.6 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
