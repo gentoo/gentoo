@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/gobject-introspection-1.35.9:=
 	>=dev-libs/libunistring-0.9.5
-	>=x11-libs/gtk+-3:3[introspection]
+	>=x11-libs/gtk+-3.20:3[introspection]
 	>=x11-libs/pango-1.36[introspection]
 "
 DEPEND="${RDEPEND}
@@ -35,11 +35,11 @@ DEPEND="${RDEPEND}
 "
 
 python_check_deps() {
-	has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use test && python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {

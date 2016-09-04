@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="API to access display driver functionality for ATI graphics cards"
 HOMEPAGE="http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/"
-SRC_URI="ADL_SDK_${PV}.zip"
+SRC_URI="ADL_SDK-V${PV}.zip"
 
 LICENSE="AMD-ADL"
 SLOT="0"
@@ -23,12 +23,13 @@ RESTRICT="fetch"
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Please visit the download page [1], rename ADL_SDK.zip to ${A} and save it in ${DISTDIR}"
+	einfo "Please visit the download page [1], download ${A} and save it in ${DISTDIR}"
 	einfo "[1] http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/"
 }
 
 src_prepare() {
-	sed -i -e '/include/a \#include <wchar.h>' include/adl_structures.h || die
+	sed -i -e '/include/a \#include <wchar.h> \
+#include <stdbool.h>' include/adl_structures.h || die
 }
 
 src_compile() {

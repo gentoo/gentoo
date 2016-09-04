@@ -20,9 +20,9 @@ REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="
-	>=dev-libs/glib-2.47:2
+	>=dev-libs/glib-2.48:2
 	>=dev-libs/libxml2-2.6:2
-	>=x11-libs/gtk+-3.19.6:3[introspection?]
+	>=x11-libs/gtk+-3.20:3[introspection?]
 	glade? ( >=dev-util/glade-3.9:3.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "

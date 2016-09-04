@@ -3,7 +3,9 @@
 # $Id$
 
 EAPI=6
-inherit gnome2 virtualx
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+
+inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="A weather application for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Design/Apps/Weather"
@@ -26,8 +28,18 @@ DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.26
 	virtual/pkgconfig
-	test? ( dev-util/dogtail )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
+
+python_check_deps() {
+	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	gnome2_src_configure $(use_enable test dogtail)
