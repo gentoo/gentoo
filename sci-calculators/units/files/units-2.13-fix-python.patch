@@ -1,0 +1,144 @@
+* Unify the two python codebases, making the installation less cumbersome
+* Remove the broken python handling in Autoconf and the Makefile
+
+--- a/units_cur3
++++ b/units_cur3
+@@ -16,6 +16,12 @@
+ # Added test for non-unicode strings to prevent a runtime warning
+ #
+ 
++# py2.7 shims
++from __future__ import unicode_literals
++from builtins import map, str, range
++from future.standard_library import install_aliases
++install_aliases()
++
+ import sys
+ import urllib.request, urllib.parse, urllib.error
+ import os
+--- a/configure.ac
++++ b/configure.ac
+@@ -155,18 +155,6 @@
+     fi
+ fi
+ 
+-
+-AC_PATH_PROG(PYTHON, python, no)
+-
+-if test $PYTHON = no; then 
+-   HAVE_PYTHON=no
+-   echo '    Units will work without python but the currency update'
+-   echo '    script, units_cur,  will not be installed'
+-   PYTHON=''
+-else
+-   HAVE_PYTHON=yes
+-fi
+-
+ dnl Check for path search option
+ AC_ARG_ENABLE([relocation],
+     AC_HELP_STRING([--enable-relocation],
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -79,14 +79,14 @@
+ DISTFILES = README ChangeLog units.info units.txt getopt1.c units.dvi \
+    Makefile.in units.c getopt.c getopt.h definitions.units units.texinfo \
+    configure.ac configure strfunc.c COPYING install-sh \
+-   units.man NEWS texi2man INSTALL units.pdf units_cur2 units_cur3 \
++   units.man NEWS texi2man INSTALL units.pdf \
+    parse.tab.c parse.y units.h locale_map.txt fdl-1.3.texi currency.units \
+    unitsfile.ico unitsprog.ico units.rc icon_ms.png \
+    Makefile.OS2 makeobjs.cmd README.OS2 \
+    UnitsMKS.texinfo UnitsMKS.pdf setvcvars.sh \
+    UnitsWin.texinfo UnitsWin.pdf winmkdirs.bat Makefile.Win
+ 
+-all: units@EXEEXT@ units.1 units.info units_cur_inst
++all: units@EXEEXT@ units.1 units.info
+ 
+ units.@OBJEXT@: units.c units.h
+ 
+@@ -98,47 +98,11 @@
+ units@EXEEXT@: $(OBJECTS) @MKS_RES@
+ 	$(CC) $(CFLAGS) $(LDFLAGS)  -o units@EXEEXT@ $(OBJECTS) @MKS_RES@ $(LIBS)
+ 
+-units_cur: units_cur2 units_cur3
+-	@if test $(HAVE_PYTHON) = no; then \
+-	  $(MAKE) units_cur_dummy; \
+-	else \
+-	  version=`$(PYTHON) --version 2>&1`; \
+-	  if echo $$version | grep 'Python 2' >/dev/null; then \
+-	    cp $(srcdir)/units_cur2 units_cur; \
+-	    echo Creating units_cur for Python 2; \
+-	  elif echo $$version | grep 'Python 3'>/dev/null; then \
+-	    cp $(srcdir)/units_cur3 units_cur; \
+-	    echo Creating units_cur for Python 3; \
+-	  else \
+-	    echo Unrecognized Python version: $$version; \
+-	    echo Unable to create correct units_cur; \
+-	    exit 1; \
+-	  fi; \
+-	fi
+-
+-units_cur_dummy:
+-	echo '\#!/bin/sh' > units_cur
+-	echo 'echo Units_cur requires python, which was not found when units was configured' >> units_cur
+-	chmod +x units_cur
+-
+-units_cur3: units_cur2
+-	-mkdir python3_tempdir
+-	2to3 --no-diffs -n -o python3_tempdir -w units_cur2
+-	mv python3_tempdir/units_cur2 units_cur3
+-	rm -rf python3_tempdir
+-
+-units_cur_inst: units_cur
+-	sed -e "s@outfile = 'currency.units'@outfile='@UDAT@currency.units'@"\
+-            -e "s@/usr/bin/python@$(PYTHON)@" \
+-             units_cur > units_cur_inst
+-
+-install-support: definitions.units currency.units units_cur_inst
++install-support: definitions.units currency.units
+ 	$(MKDIR_P) $(DESTDIR)@UDAT@ $(DESTDIR)$(bindir) 
+ 	$(INSTALL_DATA) $(srcdir)/definitions.units $(DESTDIR)@UDAT@definitions.units
+ 	$(INSTALL_DATA) $(srcdir)/currency.units $(DESTDIR)@UDAT@currency.units
+ 	$(INSTALL_DATA) $(srcdir)/locale_map.txt $(DESTDIR)@UDAT@locale_map.txt
+-	if test $(HAVE_PYTHON) = yes; then \
+-	  $(INSTALL_PROGRAM) units_cur_inst $(DESTDIR)$(bindir)/`echo units_cur|sed '$(transform)'`;fi
+ 	if test $(HAVE_MKS) = yes; then make install-mks; fi
+ 
+ 
+@@ -209,14 +173,13 @@
+ 	       $(DESTDIR)@UDAT@locale_map.txt \
+ 	       $(DESTDIR)@UDAT@unitsfile.ico \
+ 	       $(DESTDIR)@UDAT@unitsprog.ico \
+-	       $(DESTDIR)$(bindir)/`echo units_cur|sed '$(transform)'`
+ 	-rmdir $(DESTDIR)@UDAT@
+ 	@if test -f $(DESTDIR)$(infodir)/dir; then \
+ 	  echo You may need to remove units.info from $(DESTDIR)$(infodir)/dir; \
+ 	else true; fi
+ 
+ clean mostlyclean: texclean
+-	-rm -f *.obj *.res units.exe units.dvi units.1 distname .chk units_cur_inst units_cur
++	-rm -f *.obj *.res units.exe units.dvi units.1 distname .chk
+ 	-rm -rf wwwold wwwnew
+ 
+ distclean: clean
+@@ -232,9 +195,8 @@
+ 	-rm -f units.log UnitsMKS.log UnitsWin.log \
+ 	    *.aux *.cp *.fn *.ky *.op *.pg *.toc *.tp *.vr
+ 
+-currency.units: units_cur
++currency.units:
+ 	@echo "Trying to update currency.units (will use existing file if this fails)"
+-	-./units_cur
+ 
+ sig:
+ 	echo units-`sed -n -e '/\#.*VERSION/s/.*"\(.*\)"/\1/gp' \
+@@ -247,8 +209,7 @@
+ 	-rm -f `cat distname`.directive distname
+ 
+ 
+-dist: $(DISTFILES) units_cur
+-	@./units_cur
++dist: $(DISTFILES)
+ 	@echo Updated currencies, running check:
+ 	./units -f definitions.units -c
+ 	@echo ''
