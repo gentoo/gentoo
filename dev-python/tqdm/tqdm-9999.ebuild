@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Add a progress meter to your loops in a second."
-HOMEPAGE="https://github.com/noamraph/tqdm"
+HOMEPAGE="https://github.com/tqdm/tqdm"
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/noamraph/tqdm"
+EGIT_REPO_URI="https://github.com/tqdm/tqdm"
 
 LICENSE="MIT"
 SLOT="0"
