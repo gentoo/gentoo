@@ -17799,7 +17799,7 @@ www-apps/klaus 0.9.1 1.0.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
-www-apps/mediawiki 1.23.10 1.23.15 1.25.2 1.25.6: The MediaWiki wiki web application (as used on wikipedia.org)
+www-apps/mediawiki 1.23.10 1.23.15 1.25.2 1.25.6 1.27.1: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/metadot 6.1.6-r1 6.4.5.4-r1: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
