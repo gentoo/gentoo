@@ -7,13 +7,13 @@ EAPI="6"
 inherit eutils flag-o-matic autotools
 
 #NEOMUTT="neomutt-20160710"
-NEOMUTT="gentoo r0"
+NEOMUTT="gentoo-r1"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
-	https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.0-patches-r0.tar.xz"
+	https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.0-patches-r1.tar.xz"
 	#https://github.com/neomutt/integration/archive/${NEOMUTT}.tar.gz -> ${P}-patches-${NEOMUTT}.tar.gz"
 IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
 SLOT="0"
@@ -92,6 +92,7 @@ src_prepare() {
 	export EPATCH_SUFFIX="patch"
 	# order of patches from README.md
 	local patches=(
+		patches-mutt
 		#bugs-common
 		bugs-gentoo
 		features-common
@@ -107,7 +108,7 @@ src_prepare() {
 	done
 	# add some explanation as to why not going to upstream
 	sed -i \
-		-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched by NeoMutt patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor directly to the NeoMutt project.\\n\\n"' \
+		-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched by NeoMutt patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor directly to the NeoMutt project.\\n"' \
 		version.c || die "Failed to add bug instructions"
 
 	local upatches=
