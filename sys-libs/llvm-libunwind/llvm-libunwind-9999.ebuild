@@ -6,7 +6,7 @@ EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 CMAKE_MIN_VERSION=3.4.3
-inherit cmake-utils git-r3
+inherit cmake-multilib git-r3
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
@@ -24,7 +24,7 @@ RDEPEND="!sys-libs/libunwind"
 # (3.9.0 needed because cmake file install path changed)
 DEPEND=">=sys-devel/llvm-3.9.0"
 
-src_configure() {
+multilib_src_configure() {
 	local libdir=$(get_libdir)
 
 	local mycmakeargs=(
