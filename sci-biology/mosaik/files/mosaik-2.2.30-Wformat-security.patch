@@ -1,0 +1,84 @@
+- Fix incorrect printf format specifier (-Wformat)
+* fann.c: In function ‘fann_print_connections’:
+* fann.c:889:11: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long int’ [-Wformat=]
+*     printf("L %3d / N %4d %s\n", layer_it - ann->first_layer,
+
+- Fix erroneous memset call
+* md5.c: In function ‘MD5Final’:
+* md5.c:152:26: warning: argument to ‘sizeof’ in ‘memset’ call is the same expression as the destination; did you mean to dereference it? [-Wsizeof-pointer-memaccess]
+*      memset(ctx, 0, sizeof(ctx));        /* In case it's sensitive */
+
+--- a/fann-2.1.0/fann.c
++++ b/fann-2.1.0/fann.c
+@@ -886,7 +886,7 @@
+ 					neurons[ann->connections[i] - ann->first_layer->first_neuron] = (char)('A' + value);
+ 				}
+ 			}
+-			printf("L %3d / N %4d %s\n", layer_it - ann->first_layer,
++			printf("L %3ld / N %4ld %s\n", layer_it - ann->first_layer,
+ 				   neuron_it - ann->first_layer->first_neuron, neurons);
+ 		}
+ 	}
+@@ -987,12 +987,12 @@
+ 	{
+ 		if(ann->network_type == FANN_NETTYPE_SHORTCUT)
+ 		{
+-			printf("  Hidden layer                       :%4d neurons, 0 bias\n",
++			printf("  Hidden layer                       :%4ld neurons, 0 bias\n",
+ 				   layer_it->last_neuron - layer_it->first_neuron);
+ 		}
+ 		else
+ 		{
+-			printf("  Hidden layer                       :%4d neurons, 1 bias\n",
++			printf("  Hidden layer                       :%4ld neurons, 1 bias\n",
+ 				   layer_it->last_neuron - layer_it->first_neuron - 1);
+ 		}
+ 	}
+--- a/fann-2.1.0/fann_io.c
++++ b/fann-2.1.0/fann_io.c
+@@ -174,7 +174,7 @@
+ #endif
+ 
+ 	/* Save network parameters */
+-	fprintf(conf, "num_layers=%u\n", ann->last_layer - ann->first_layer);
++	fprintf(conf, "num_layers=%ld\n", ann->last_layer - ann->first_layer);
+ 	fprintf(conf, "learning_rate=%f\n", ann->learning_rate);
+ 	fprintf(conf, "connection_rate=%f\n", ann->connection_rate);
+ 	fprintf(conf, "network_type=%u\n", ann->network_type);
+@@ -236,7 +236,7 @@
+ 	for(layer_it = ann->first_layer; layer_it != ann->last_layer; layer_it++)
+ 	{
+ 		/* the number of neurons in the layers (in the last layer, there is always one too many neurons, because of an unused bias) */
+-		fprintf(conf, "%u ", layer_it->last_neuron - layer_it->first_neuron);
++		fprintf(conf, "%ld ", layer_it->last_neuron - layer_it->first_neuron);
+ 	}
+ 	fprintf(conf, "\n");
+ 
+@@ -316,14 +316,14 @@
+ 		if(save_as_fixed)
+ 		{
+ 			/* save the connection "(source weight) " */
+-			fprintf(conf, "(%u, %d) ",
++			fprintf(conf, "(%ld, %d) ",
+ 					connected_neurons[i] - first_neuron,
+ 					(int) floor((weights[i] * fixed_multiplier) + 0.5));
+ 		}
+ 		else
+ 		{
+ 			/* save the connection "(source weight) " */
+-			fprintf(conf, "(%u, " FANNPRINTF ") ", connected_neurons[i] - first_neuron, weights[i]);
++			fprintf(conf, "(%ld, " FANNPRINTF ") ", connected_neurons[i] - first_neuron, weights[i]);
+ 		}
+ #else
+ 		/* save the connection "(source weight) " */
+--- a/CommonSource/Utilities/md5.c
++++ b/CommonSource/Utilities/md5.c
+@@ -149,7 +149,7 @@
+     MD5Transform(ctx->buf, (uint32 *) ctx->in);
+     byteReverse((unsigned char *) ctx->buf, 4);
+     memcpy(digest, ctx->buf, 16);
+-    memset(ctx, 0, sizeof(ctx));        /* In case it's sensitive */
++    memset(ctx, 0, sizeof(*ctx));        /* In case it's sensitive */
+ }
+ 
+ 
