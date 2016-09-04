@@ -2176,7 +2176,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.10 3.11: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.11-r1: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 5.1.1 5.2 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.18.0 0.19.0 9999: Additional completion definitions for Zsh
@@ -7661,6 +7661,7 @@ dev-python/pastescript 2.0.2: A pluggable command-line frontend, including comma
 dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
+dev-python/pathlib2 2.1.0: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathtools 0.1.2 0.1.2-r1: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
@@ -8292,7 +8293,7 @@ dev-python/tooz 1.34.0: Library centralizing the most common distributed primiti
 dev-python/torment 3.0.1 3.0.2 3.0.3: A Study in Fixture Based Testing Frameworking
 dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2 2.3.1: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
-dev-python/tqdm 0_pre20140115 9999: Add a progress meter to your loops in a second.
+dev-python/tqdm 4.8.4 9999: Add a progress meter to your loops in a second.
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
 dev-python/traitlets 4.0.0 4.1.0 4.2.1 4.2.2: A configuration system for Python applications
