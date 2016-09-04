@@ -182,6 +182,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
+		eapply "${FILESDIR}"/3.8.1/compiler-rt/darwin-default-sysroot.patch
+
 		pushd "${S}"/tools/clang >/dev/null || die
 		# be able to specify default values for -stdlib and -rtlib at build time
 		eapply "${FILESDIR}"/3.9.0/clang/default-libs.patch

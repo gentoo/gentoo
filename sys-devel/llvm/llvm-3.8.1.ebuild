@@ -186,6 +186,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
+		eapply "${FILESDIR}"/3.8.1/compiler-rt/darwin-default-sysroot.patch
+
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/bin/scan-build || die
 
