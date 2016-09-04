@@ -17366,7 +17366,7 @@ sys-libs/libutempter 1.1.5 1.1.5-r1 1.1.6 1.1.6-r1 1.1.6-r2: Library that allows
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5: Library implementation for listing vpds
 sys-libs/libxcrypt 2.0 2.4: A replacement for libcrypt with DES, MD5 and blowfish support
-sys-libs/llvm-libunwind 3.8.1 9999: C++ runtime stack unwinder from LLVM
+sys-libs/llvm-libunwind 3.8.1 3.9.0 9999: C++ runtime stack unwinder from LLVM
 sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
