@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		ddctool primarily uses DDC/CI (Display Data Channel Command Interface)
+		to communicate with monitors implementing MCCS (Monitor Control Command
+		Set) over I2C. Normally, the video driver for the monitor exposes the
+		I2C channel as devices named /dev/i2c-n. Alternatively, there is initial
+		support for monitors (such as Apple displays) that implement MCCS using
+		a USB connection.
+	</longdescription>
+	<use>
+		<flag name="udev-i2c">
+			Adds a udev rule to allow non-root users in the i2c group to
+			access the /dev/i2c-* devices. Otherwise, only root will be
+			able to use ddctool.
+		</flag>
+		<flag name="udev-usb">
+			Adds a udev rule to allow non-root users in the video group to
+			access USB connected monitors. Otherwise, only root will be
+			able to use ddctool.
+		</flag>
+	</use>
+</pkgmetadata>
