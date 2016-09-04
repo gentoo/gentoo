@@ -1326,7 +1326,7 @@ app-emulation/libvirt 1.3.5-r2 2.0.0-r2 2.1.0-r1 9999: C toolkit to manipulate v
 app-emulation/libvirt-glib 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4: LinuX Containers userspace utilities
-app-emulation/lxd 2.0.3-r1: Fast, dense and secure container management
+app-emulation/lxd 2.0.3-r1 2.1: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743 10.0.7: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
@@ -11454,7 +11454,7 @@ kde-apps/kurifilter-plugins 16.04.3: KDE: Plugins to manage filtering URIs
 kde-apps/kuser 16.04.3: KDE application that helps you manage system users
 kde-apps/kwalletd 16.04.3: KDE Password Server
 kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
-kde-apps/kwalletmanager 15.04.3-r1 16.04.3: KDE Wallet management tool
+kde-apps/kwalletmanager 15.04.3-r1 16.04.3 16.04.3-r1: KDE Wallet management tool
 kde-apps/kwordquiz 16.04.3: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 16.04.3: KDE simple text editor
 kde-apps/libkcddb 16.04.3: KDE library for CDDB
