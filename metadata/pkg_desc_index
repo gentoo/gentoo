@@ -2473,7 +2473,7 @@ app-text/writerperfect 0.9.2 0.9.4 0.9.5: Various formats to Open document forma
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r1: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
-app-text/xapian-omega 1.2.19 1.2.22 1.2.23-r2 1.3.7-r1 1.4.0: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.2.22 1.2.23-r2 1.3.7-r1 1.4.0: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
@@ -4974,8 +4974,8 @@ dev-libs/weston 1.6.1 1.7.0 1.8.0 1.9.0 1.10.0 1.11.0 9999: Wayland reference co
 dev-libs/wlc 0.0.3-r1 0.0.5 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.19 1.2.22 1.2.23 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.19 1.2.22 1.2.23 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
+dev-libs/xapian 1.2.22 1.2.23 1.3.7 1.4.0: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian-bindings 1.2.22 1.2.23 1.3.7-r2 1.4.0-r1: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
@@ -6239,7 +6239,7 @@ dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' command
 dev-perl/Schedule-Cron-Events 1.950.0: Take a line from a crontab and find out when events will occur
 dev-perl/Scope-Guard 0.210.0: Lexically scoped resource management
-dev-perl/Search-Xapian 1.2.19.0 1.2.22.0 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ search library
+dev-perl/Search-Xapian 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ search library
 dev-perl/Server-Starter 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
