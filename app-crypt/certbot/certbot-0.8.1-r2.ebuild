@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	>=dev-python/psutil-2.2.1[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/pythondialog-3.2.2:python-2' python2_7)
@@ -42,13 +43,12 @@ RDEPEND="
 DEPEND="
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/astroid-1.3.5
-		dev-python/coverage
-		dev-python/nose
-		dev-python/pep8
-		>=dev-python/psutil-2.2.1
-		>=dev-python/pylint-1.4.2
-		dev-python/wheel
+		>=dev-python/astroid-1.3.5[${PYTHON_USEDEP}]
+		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pep8[${PYTHON_USEDEP}]
+		>=dev-python/pylint-1.4.2[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	)"
 
 python_test() {
