@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sci-libs/fftw-3.3.4:3.0= dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) portaudio? ( media-libs/portaudio ) dev-qt/linguist-tools
+DESCRIPTION=Free Music Instrument Tuner
+EAPI=6
+HOMEPAGE=https://gillesdegottex.github.io/fmit
+IUSE=alsa jack oss portaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ LGPL-2.1
+RDEPEND=>=sci-libs/fftw-3.3.4:3.0= dev-qt/qtmultimedia:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtcore:5 dev-qt/qtgui:5[-gles2] alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) portaudio? ( media-libs/portaudio )
+SLOT=0
+SRC_URI=https://github.com/gillesdegottex/fmit/archive/v1.0.15.tar.gz -> fmit-1.0.15.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=91d0d624b08a6b4f97bde5832e5018fe

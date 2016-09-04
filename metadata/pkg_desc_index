@@ -4837,7 +4837,7 @@ dev-libs/libxr 1.0 1.0-r1: Cross-platform XML-RPC client/server library written 
 dev-libs/libxslt 1.1.28-r5 1.1.29: XSLT libraries and tools
 dev-libs/libyaml 0.1.6 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
-dev-libs/libzip 1.0.1 1.1.1 1.1.2 1.1.3: Library for manipulating zip archives
+dev-libs/libzip 1.0.1 1.1.3: Library for manipulating zip archives
 dev-libs/link-grammar 4.8.6 5.3.3-r1 5.3.7: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
@@ -13193,7 +13193,7 @@ media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6 1.1.6-r1: Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
-media-sound/fmit 1.0.15: Free Music Instrument Tuner
+media-sound/fmit 1.0.15 1.0.15-r1: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/forked-daapd 23.2-r1: A DAAP (iTunes) media server
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
@@ -15609,7 +15609,7 @@ sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator f
 sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
-sci-calculators/units 2.12 2.13: Unit conversion program
+sci-calculators/units 2.12 2.13 2.13-r1: Unit conversion program
 sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
