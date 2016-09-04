@@ -1,13 +1,12 @@
-DEFINED_PHASES=compile install unpack
+DEFINED_PHASES=-
 DEPEND=sys-libs/libservicelog
 DESCRIPTION=Provides utilities for logging service-related events
-EAPI=0
+EAPI=6
 HOMEPAGE=http://linux-diag.sourceforge.net/servicelog/
 KEYWORDS=~ppc ~ppc64
 LICENSE=IBM
 RDEPEND=sys-libs/libservicelog virtual/logger
 SLOT=0
 SRC_URI=mirror://sourceforge/linux-diag/servicelog-1.1.14.tar.gz
-_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=1d6f0f124595215482c9f561e7efe74c
+_eclass_exported_funcs=-
+_md5_=56f5b3b6fcce22fd9fa35446ba2c7572
