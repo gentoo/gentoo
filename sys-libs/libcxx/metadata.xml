@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- BSD is here because the plan is to have libc++ as the standard C++
-	   library with clang. A llvm herd would make a lot of sense here too -->
-  <maintainer type="person">
-    <email>aballier@gentoo.org</email>
-    <name>Alexis Ballier</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>bsd@gentoo.org</email>
-    <name>BSD Project</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>mgorny@gentoo.org</email>
-    <name>Michał Górny</name>
-  </maintainer>
-  <use>
-	  <flag name="libcxxrt">Build on top of <pkg>sys-libs/libcxxrt</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
-	  <flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
-  </use>
+	<maintainer type="person">
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>bsd@gentoo.org</email>
+		<name>BSD Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+		<name>LLVM Project</name>
+	</maintainer>
+	<use>
+		<flag name="libcxxrt">Build on top of <pkg>sys-libs/libcxxrt</pkg> instead of gcc's libsupc++ (avoids depending on gcc).</flag>
+		<flag name="libunwind">Use libunwind instead of libgcc_s for stack unwinding, thus avoiding dependence on gcc.</flag>
+	</use>
 </pkgmetadata>
