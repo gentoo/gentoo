@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Java Development Kit (JDK)
 EAPI=6
-KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris
+KEYWORDS=amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris
 RDEPEND=|| ( dev-java/icedtea-bin:8 dev-java/icedtea:8 dev-java/oracle-jdk-bin:1.8 )
 SLOT=1.8
 _eclass_exported_funcs=-
-_md5_=81422db7583db74ab070e57c3b417f18
+_md5_=971783a523a1ea8a2982e30423bba2ce

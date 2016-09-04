@@ -4,11 +4,11 @@ DESCRIPTION=Gentoo automatic kernel building scripts
 EAPI=5
 HOMEPAGE=https://www.gentoo.org
 IUSE=cryptsetup ibm selinux
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=sys-fs/e2fsprogs selinux? ( sys-libs/libselinux ) cryptsetup? ( sys-fs/cryptsetup ) app-arch/cpio >=app-misc/pax-utils-0.2.1 !<sys-apps/openrc-0.9.9
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~zerochaos/distfiles/genkernel-3.4.52.4.tar.xz https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-1.0.0.rc16-3.tar.bz2 https://people.redhat.com/~heinzm/sw/dmraid/src/old/dmraid-1.0.0.rc16-3.tar.bz2 mirror://kernel/linux/utils/raid/mdadm/mdadm-3.1.5.tar.bz2 ftp://sourceware.org/pub/lvm2/LVM2.2.02.88.tgz ftp://sourceware.org/pub/lvm2/old/LVM2.2.02.88.tgz https://busybox.net/downloads/busybox-1.20.2.tar.bz2 http://www.open-iscsi.org/bits/open-iscsi-2.0-872.tar.gz mirror://sourceforge/fuse/fuse-2.8.6.tar.gz http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-0.24.tar.bz2 mirror://gnupg/gnupg/gnupg-1.4.11.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=95cbf2f6baff8c45255ce1f69f83c1f8
+_md5_=7fa1ba04e050c11dea822178536c0e08

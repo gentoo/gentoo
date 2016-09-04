@@ -3,11 +3,11 @@ DEPEND=media-libs/libpng:0= virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 ||
 DESCRIPTION=C library for encoding data in a QR Code symbol
 EAPI=6
 HOMEPAGE=http://fukuchi.org/works/qrencode/
-KEYWORDS=~alpha ~amd64 arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=alpha ~amd64 arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=LGPL-2
 RDEPEND=media-libs/libpng:0=
 SLOT=0
 SRC_URI=http://fukuchi.org/works/qrencode/qrencode-3.4.4.tar.bz2
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=8b9a0397cca35b97ec5c3f7679534f3e
+_md5_=384a79c9cf228c1dc11929a876ed5915
