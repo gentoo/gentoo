@@ -3827,6 +3827,7 @@ dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
 dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
+dev-java/boot-bin 2.6.0: Build tooling for Clojure
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
