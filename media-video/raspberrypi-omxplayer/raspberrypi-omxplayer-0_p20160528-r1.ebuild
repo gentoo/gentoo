@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 GIT_COMMIT="791d7df"
 DESCRIPTION="Command line media player for the Raspberry Pi"
@@ -31,15 +31,18 @@ RDEPEND="dev-libs/libpcre
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/Makefile-0_p20160528.patch
+	"${FILESDIR}"/fonts-path.patch
+	"${FILESDIR}"/cross-0_p20160528.patch
+)
+
+DOCS=( README.md )
+
 S="${WORKDIR}/popcornmix-omxplayer-${GIT_COMMIT}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/Makefile-0_p20160528.patch \
-		   "${FILESDIR}"/fonts-path.patch \
-		   "${FILESDIR}"/cross-0_p20160528.patch
-
-	epatch_user
-
+	default
 	cat > Makefile.include << EOF
 LIBS=-lvchostif -lvchiq_arm -lvcos -lbcm_host -lEGL -lGLESv2 -lopenmaxil -lrt -lpthread
 EOF
@@ -53,5 +56,5 @@ src_compile() {
 
 src_install() {
 	dobin omxplayer omxplayer.bin
-	dodoc README.md
+	einstalldocs
 }
