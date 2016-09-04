@@ -506,7 +506,7 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.15 1.4.18 1.4.24: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
-app-crypt/certbot 0.8.1 0.8.1-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.8.1 0.8.1-r2 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
