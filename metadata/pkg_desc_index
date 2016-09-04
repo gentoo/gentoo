@@ -554,6 +554,7 @@ app-crypt/keybase 0.8.25 1.0.15 1.0.16 1.0.17: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
+app-crypt/libmd 0.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.0.0 1.0.0-r1 1.1.0 1.1.1: Yubico Universal 2nd Factor (U2F) Host C Library
@@ -3055,7 +3056,7 @@ dev-embedded/arduino 1.0.5-r1: An open-source AVR electronics prototyping platfo
 dev-embedded/avarice 2.11 2.12 2.13: Interface for GDB to Atmel AVR JTAGICE in circuit emulator
 dev-embedded/avr-libc 1.6.2 1.6.4 1.6.8 1.7.0 1.7.1 1.8.0 1.8.1 2.0.0: C library for Atmel AVR microcontrollers
 dev-embedded/avra 1.3.0: Atmel AVR Assembler
-dev-embedded/avrdude 5.11.1 6.0.1 6.1: AVR Downloader/UploaDEr
+dev-embedded/avrdude 5.11.1 6.0.1 6.1 6.3: AVR Downloader/UploaDEr
 dev-embedded/bitbake 1.17.0 9999: package management tool for OpenEmbedded
 dev-embedded/cpik 0.7.2_p4: C compiler for PIC18 devices
 dev-embedded/dc-tool-ip 1.0.4: ethernet program loader for the Dreamcast
@@ -8351,7 +8352,7 @@ dev-python/utidylib 0.2-r2: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.4.20: Ultra-fast implementation of asyncio event loop on top of libuv.
 dev-python/vatnumber 1.1: Module to validate VAT numbers
-dev-python/vcrpy 1.5.2 1.7.3 1.7.4: Automatically mock your HTTP interactions to simplify and speed up testing
+dev-python/vcrpy 1.5.2 1.7.3 1.7.4 1.10.0: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdirsyncer 0.7.5 0.9.0 0.9.3 0.10.0 0.11.2: Synchronize calendars and contacts

@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Message Digest functions from BSD systems
+EAPI=6
+HOMEPAGE=https://www.hadrons.org/software/libmd/
+KEYWORDS=~amd64
+LICENSE=|| ( BSD BSD-2 ISC BEER-WARE public-domain )
+SLOT=0
+SRC_URI=https://archive.hadrons.org/software/libmd/libmd-0.0.0.tar.xz
+_eclass_exported_funcs=-
+_md5_=7204b0509af003ffba95e51c9643a294
