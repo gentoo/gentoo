@@ -1149,7 +1149,7 @@
     <member>
       <email>antarus@gentoo.org</email>
       <name>Alec Warner</name>
-      <role>Board member</role>
+      <role>Board Member</role>
     </member>
     <member>
       <email>dabbott@gentoo.org</email>
@@ -1162,6 +1162,11 @@
       <role>Board Member: President</role>
     </member>
     <member>
+      <email>prometheanfire@gentoo.org</email>
+      <name>Matthew Thode</name>
+      <role>Board Member</role>
+    </member>
+    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Board member: Infra Liaison, Treasurer</role>
@@ -1169,7 +1174,7 @@
     <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
-      <role>Board member</role>
+      <role>Board Member</role>
     </member>
   </project>
   <project>
