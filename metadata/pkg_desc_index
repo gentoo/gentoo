@@ -5450,7 +5450,7 @@ dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
-dev-perl/Crypt-URandom 0.340.0: Provide non blocking randomness
+dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/CryptX 0.25.0: Self-contained crypto toolkit
 dev-perl/Curses 1.320.0 1.330.0: Curses interface modules for Perl

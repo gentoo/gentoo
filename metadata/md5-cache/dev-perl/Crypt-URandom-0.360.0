@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Provide non blocking randomness
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Crypt-URandom/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DD/DDICK/Crypt-URandom-0.36.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=40fb42a7dd6ae618ee2ef29e0d251b9e
