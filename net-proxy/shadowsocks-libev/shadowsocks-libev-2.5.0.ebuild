@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils systemd
 
@@ -15,20 +15,32 @@ SRC_URI="https://github.com/shadowsocks/${PN}/archive/${MY_PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +openssl polarssl"
+IUSE="debug doc +openssl mbedtls +system-libs"
 
-DEPEND="openssl? ( dev-libs/openssl:= )
-	polarssl? ( net-libs/polarssl )
-	<sys-kernel/linux-headers-4.5
+RDEPEND="openssl? ( dev-libs/openssl:= )
+	mbedtls? ( net-libs/mbedtls )
+	system-libs? (
+		dev-libs/libsodium
+		dev-libs/libev
+		net-libs/udns
+	)
 	"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	sys-kernel/linux-headers
+	doc? (
+		app-text/asciidoc
+		app-text/xmlto
+	)
+	"
 
-REQUIRED_USE=" ^^ ( openssl polarssl )"
+REQUIRED_USE=" ^^ ( openssl mbedtls )"
 
 src_configure() {
 	econf \
 		$(use_enable debug assert) \
-		--with-crypto-library=$(usex openssl openssl polarssl)
+		$(use_enable doc documentation) \
+		$(use_enable system-libs system-shared-lib) \
+		--with-crypto-library=$(usex openssl openssl mbedtls)
 }
 
 src_install() {
