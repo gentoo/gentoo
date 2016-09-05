@@ -5067,7 +5067,7 @@ dev-ml/camlimages 4.0.1 4.1.1 4.1.2 4.2.1 4.2.2: An image manipulation library f
 dev-ml/camlp4 4.02.1_p3 4.03_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.14 6.15 6.16: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
-dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
+dev-ml/camlzip 1.05 1.06: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/capnp-ocaml 2.1.1: OCaml code generator plugin for the Cap'n Proto serialization framework
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
