@@ -18,6 +18,7 @@ IUSE="cxx"
 PATCHES=(
 	"${FILESDIR}/${P}-multilib.patch"
 	"${FILESDIR}/${P}-ppc.patch"
+	"${FILESDIR}/${P}-no-static-aften.patch"
 )
 
 src_configure() {
