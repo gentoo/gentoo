@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 WANT_LIBTOOL="none"
 
 inherit autotools eutils flag-o-matic multilib pax-utils python-utils-r1 toolchain-funcs multiprocessing
@@ -59,11 +59,18 @@ S="${WORKDIR}/${MY_P}"
 
 PYVER=${SLOT%/*}
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
+	"${FILESDIR}/${PN}-3.4.5-cross.patch"
+)
+
+DOCS=( Misc/{ACKS,HISTORY,NEWS} )
+
 src_prepare() {
 	# Ensure that internal copies of expat, libffi and zlib are not used.
-	rm -fr Modules/expat
-	rm -fr Modules/_ctypes/libffi*
-	rm -fr Modules/zlib
+	rm -fr Modules/expat || die
+	rm -fr Modules/_ctypes/libffi* || die
+	rm -fr Modules/zlib || die
 
 	if tc-is-cross-compiler; then
 		# Invokes BUILDPYTHON, which is built for the host arch
@@ -71,10 +78,7 @@ src_prepare() {
 	fi
 
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
-	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch" \
-		   "${FILESDIR}/${PN}-3.4.5-cross.patch"
-
-	epatch_user
+	default
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		configure.ac \
@@ -195,9 +199,10 @@ src_test() {
 
 	# Skip failing tests.
 	local skipped_tests="gdb"
+	local test
 
 	for test in ${skipped_tests}; do
-		mv "${S}"/Lib/test/test_${test}.py "${T}"
+		mv "${S}"/Lib/test/test_${test}.py "${T}" || die
 	done
 
 	local -x PYTHONDONTWRITEBYTECODE=
@@ -205,7 +210,7 @@ src_test() {
 	local result=$?
 
 	for test in ${skipped_tests}; do
-		mv "${T}/test_${test}.py" "${S}"/Lib/test
+		mv "${T}/test_${test}.py" "${S}"/Lib/test || die
 	done
 
 	elog "The following tests have been skipped:"
@@ -217,13 +222,13 @@ src_test() {
 	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
 	elog "and run the tests separately."
 
-	if [[ ${result} -ne 0 ]]; then
-		die "emake test failed"
-	fi
+	[[ ${result} -ne 0 ]] && die "emake test failed"
 }
 
 src_install() {
 	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
+
+	einstalldocs
 
 	cd "${BUILD_DIR}" || die
 
@@ -235,7 +240,7 @@ src_install() {
 		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
-	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
+	rm -f "${ED}usr/$(get_libdir)/libpython3.so" || die
 
 	# Cheap hack to get version with ABIFLAGS
 	local abiver=$(cd "${ED}usr/include"; echo python*)
@@ -256,11 +261,9 @@ src_install() {
 	use threads || rm -fr "${libdir}/multiprocessing"
 	use wininst || rm -f "${libdir}/distutils/command/"wininst-*.exe
 
-	dodoc "${S}"/Misc/{ACKS,HISTORY,NEWS}
-
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		find "${S}"/Tools -name __pycache__ -print0 | xargs -0 rm -fr
+		find "${S}"/Tools -name __pycache__ -print0 | xargs -0 rm -fr || die
 		doins -r "${S}"/Tools
 	fi
 	insinto /usr/share/gdb/auto-load/usr/$(get_libdir) #443510
