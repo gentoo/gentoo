@@ -15609,7 +15609,7 @@ sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator f
 sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
-sci-calculators/units 2.12 2.13 2.13-r1: Unit conversion program
+sci-calculators/units 2.12 2.13: Unit conversion program
 sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2 0.5.1: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit

@@ -11,4 +11,4 @@ SLOT=beta
 SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-beta/google-chrome-beta_53.0.2785.92-1_amd64.deb
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=3f9adad9a03c5e3b2d8060ceecea56e5
+_md5_=7eb61e6adb9c6691099d99dc3dd60152

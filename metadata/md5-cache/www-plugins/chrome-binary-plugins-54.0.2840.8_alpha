@@ -11,4 +11,4 @@ SLOT=unstable
 SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_54.0.2840.8-1_amd64.deb
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=b4f158318876eeef9d7bb57101ec1411
+_md5_=9849401908443c04a5389fb907aa5b26
