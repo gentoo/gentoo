@@ -12279,7 +12279,7 @@ media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating 
 media-gfx/krita 3.0: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.3.0: Program to create cross stitch patterns
-media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9-r1 9999: Generic 2D CAD program
+media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9-r1 2.1.1 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2 0.13.18: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.4.0: LXImage Image Viewer - GPicView replacement
