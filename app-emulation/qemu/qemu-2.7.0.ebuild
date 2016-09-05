@@ -2,27 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,readline"
 
-PLOCALES="de_DE fr_FR hu it tr zh_CN"
+PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo pax-utils l10n
-
-BACKPORTS=
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
 	inherit git-2
 	SRC_URI=""
 else
-	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2
-	${BACKPORTS:+
-		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
+	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -30,7 +26,7 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bluetooth +caps +curl debug +fdt glusterfs \
+IUSE="accessibility +aio alsa bluetooth bzip2 +caps +curl debug +fdt glusterfs \
 gnutls gtk gtk2 infiniband iscsi +jpeg \
 kernel_linux kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs
 +png pulseaudio python \
@@ -70,8 +66,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 #
 # Older versions of gnutls are supported, but it's simpler to just require
 # the latest versions.  This is also why we require nettle.
+#
+# TODO: Split out tools deps into another var.  e.g. bzip2 is only used by
+# system binaries and tools, not user binaries.
 COMMON_LIB_DEPEND=">=dev-libs/glib-2.0[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
+	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	xattr? ( sys-apps/attr[static-libs(+)] )"
 SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	>=x11-libs/pixman-0.28.0[static-libs(+)]
@@ -84,8 +84,8 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
-		dev-libs/nettle[static-libs(+)]
-		>=net-libs/gnutls-3.0[static-libs(+)]
+		dev-libs/nettle:=[static-libs(+)]
+		>=net-libs/gnutls-3.0:=[static-libs(+)]
 	)
 	gtk? (
 		gtk2? (
@@ -214,11 +214,14 @@ QA_WX_LOAD="usr/bin/qemu-i386
 DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure
 you have the kernel module loaded before running kvm. The easiest way to
 ensure that the kernel module is loaded is to load it on boot.\n
-For AMD CPUs the module is called 'kvm-amd'\n
-For Intel CPUs the module is called 'kvm-intel'\n
-Please review /etc/conf.d/modules for how to load these\n\n
+For AMD CPUs the module is called 'kvm-amd'.\n
+For Intel CPUs the module is called 'kvm-intel'.\n
+Please review /etc/conf.d/modules for how to load these.\n\n
 Make sure your user is in the 'kvm' group\n
-Just run 'gpasswd -a <USER> kvm', then have <USER> re-login."
+Just run 'gpasswd -a <USER> kvm', then have <USER> re-login.\n\n
+For brand new installs, the default permissions on /dev/kvm might not let you
+access it.  You can tell udev to reset ownership/perms:\n
+udevadm trigger -c add /dev/kvm"
 
 qemu_support_kvm() {
 	if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 \
@@ -329,29 +332,9 @@ src_prepare() {
 		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
 		Makefile Makefile.target || die
 
-	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
-	[[ -n ${BACKPORTS} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
-			epatch
-
-	epatch "${FILESDIR}"/${P}-CVE-2015-8567.patch #567868
-	epatch "${FILESDIR}"/${P}-CVE-2015-8558.patch #568246
-	epatch "${FILESDIR}"/${P}-CVE-2015-8701.patch #570110
-	epatch "${FILESDIR}"/${P}-CVE-2015-8743.patch #570988
-	epatch "${FILESDIR}"/${P}-CVE-2016-1568.patch #571566
-	epatch "${FILESDIR}"/${P}-CVE-2015-8613.patch #569118
-	epatch "${FILESDIR}"/${P}-CVE-2015-8619.patch #569300
-	epatch "${FILESDIR}"/${P}-CVE-2016-1714.patch #571560
-	epatch "${FILESDIR}"/${P}-CVE-2016-1922.patch #572082
-	epatch "${FILESDIR}"/${P}-CVE-2016-1981.patch #572412
-	epatch "${FILESDIR}"/${P}-usb-ehci-oob.patch #572454
-	epatch "${FILESDIR}"/${P}-CVE-2016-2197.patch #573280
-	epatch "${FILESDIR}"/${P}-CVE-2016-2198.patch #573314
-	epatch "${FILESDIR}"/${P}-CVE-2016-2392.patch #574902
-	epatch "${FILESDIR}"/${P}-usb-ndis-int-overflow.patch #575492
-	epatch "${FILESDIR}"/${P}-rng-stack-corrupt-{0,1,2,3}.patch #576420
-	epatch "${FILESDIR}"/${P}-sysmacros.patch
-
+	epatch "${FILESDIR}"/${PN}-2.5.0-cflags.patch
+	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	epatch "${FILESDIR}"/${P}-CVE-2016-6836.patch
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
 
@@ -414,6 +397,7 @@ qemu_src_configure() {
 	conf_opts+=(
 		$(conf_softmmu accessibility brlapi)
 		$(conf_softmmu aio linux-aio)
+		$(conf_softmmu bzip2)
 		$(conf_softmmu bluetooth bluez)
 		$(conf_softmmu caps cap-ng)
 		$(conf_softmmu curl)
@@ -484,6 +468,7 @@ qemu_src_configure() {
 			--disable-linux-user
 			--disable-system
 			--disable-blobs
+			$(use_enable bzip2)
 		)
 		static_flag="static"
 		;;
