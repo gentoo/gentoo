@@ -7937,7 +7937,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pyswisseph 2.00.00_p2: Python extension to the AstroDienst Swiss Ephemeris
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
 dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2 0.5.2-r1: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 2.7.2 2.8.2 2.8.7 9999: simple powerful testing with Python
+dev-python/pytest 2.7.2 2.8.2 2.8.7 3.0.2 9999: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.1 1.2.0 1.2.1 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
