@@ -605,14 +605,6 @@ media-video/miro
 # or media-video/ffmpegthumbnailer instead.
 media-video/kffmpegthumbnailer
 
-# Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
-# No reverse dependencies, was never clear why it was in tree,
-# upstream stagnant, dev-libs/cdk is mostly unmaintained.
-#
-# Please voice concerns on bug 575036 if you still need this.
-# Removal in 30 days.
-dev-perl/cdk-perl
-
 # Alexis Ballier <aballier@gentoo.org> <2 Aug 2016>
 # Doesn't install .so, causing all its revdeps to fail to build.
 # Doesn't honour USE=static-libs.
