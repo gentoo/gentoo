@@ -1,10 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-
-inherit base
+EAPI=6
 
 DESCRIPTION="A cross-platform C++ thread pool library (built on top of Boost)"
 HOMEPAGE="http://threadpool.sourceforge.net/"
@@ -24,24 +22,19 @@ RDEPEND="dev-libs/boost"
 
 S="${WORKDIR}/${MY_P}-src/${PN}"
 
+DOCS=( README TODO CHANGE_LOG )
 PATCHES=( "${FILESDIR}/${P}-memleak.patch" )
-
-src_prepare() {
-	base_src_prepare
-}
 
 src_compile() {
 	# Do nothing
 	# The makefile just builds the documentation again
 	# Not even any install targets
-	:
+	return
 }
 
 src_install() {
-	insinto /usr/include/
-	doins -r boost
-	dodoc README TODO CHANGE_LOG
-	if use doc; then
-		dohtml -r "${WORKDIR}"/"${MY_P}"-doc/
-	fi
+	doheader -r boost
+
+	use doc && HTML_DOCS+=( "${WORKDIR}"/"${MY_P}"-doc/. )
+	einstalldocs
 }
