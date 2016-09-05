@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install setup
+DEPEND=openssl? ( dev-libs/openssl:= ) mbedtls? ( net-libs/mbedtls ) system-libs? ( dev-libs/libsodium dev-libs/libev net-libs/udns ) sys-kernel/linux-headers doc? ( app-text/asciidoc app-text/xmlto ) virtual/pkgconfig
+DESCRIPTION=A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
+EAPI=6
+HOMEPAGE=https://github.com/shadowsocks/shadowsocks-libev
+IUSE=debug doc +openssl mbedtls +system-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=openssl? ( dev-libs/openssl:= ) mbedtls? ( net-libs/mbedtls ) system-libs? ( dev-libs/libsodium dev-libs/libev net-libs/udns )
+REQUIRED_USE=^^ ( openssl mbedtls )
+SLOT=0
+SRC_URI=https://github.com/shadowsocks/shadowsocks-libev/archive/v2.5.0.tar.gz -> shadowsocks-libev-2.5.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=eab9506eb4fa12e9ae8a601f61c2cc25

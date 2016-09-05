@@ -6586,6 +6586,7 @@ net-proxy/privoxy:stats - Keep statistics
 net-proxy/privoxy:toggle - Support temporary disable toggle via web interface
 net-proxy/privoxy:whitelists - Support trust files (white lists)
 net-proxy/rejik:banlists - Install upstream provided simple banlists
+net-proxy/shadowsocks-libev:mbedtls - Use net-libs/mbedtls as crypto backend
 net-proxy/shadowsocks-libev:openssl - Use dev-libs/openssl as crypto backend
 net-proxy/shadowsocks-libev:polarssl - Use net-libs/polarssl as crypto backend
 net-proxy/shadowsocks-libev:system-libs - Use system libraries instead of the ones included in the upstream distribution
