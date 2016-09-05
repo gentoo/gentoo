@@ -8353,7 +8353,7 @@ dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.4.20: Ultra-fast implementation of asyncio event loop on top of libuv.
 dev-python/vatnumber 1.1: Module to validate VAT numbers
 dev-python/vcrpy 1.5.2 1.7.3 1.7.4 1.10.0: Automatically mock your HTTP interactions to simplify and speed up testing
-dev-python/vcstools 0.1.38 9999: Python library for interacting with various VCS systems
+dev-python/vcstools 0.1.38 0.1.39 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdirsyncer 0.7.5 0.9.0 0.9.3 0.10.0 0.11.2: Synchronize calendars and contacts
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
@@ -8551,8 +8551,8 @@ dev-ros/gazebo_ros 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 2.6.0 9999: ROS plugins that of
 dev-ros/gazebo_ros_control 2.5.7-r1 2.6.0 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 0.5.4 0.5.5 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
-dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
-dev-ros/genmsg 0.5.6 0.5.7 9999: Python library for generating ROS message and service data structures for various languages
+dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
+dev-ros/genmsg 0.5.6 0.5.7 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 1.0.3 9999: Javascript ROS message and service generators
 dev-ros/genpy 0.5.7 0.5.8 0.5.9 0.6.0 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
@@ -8686,7 +8686,7 @@ dev-ros/rosmaster 1.12.1 1.12.2 9999: ROS Master implementation
 dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.2.5 2.2.6 2.3.0 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.3.0 2.3.1 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 1.12.2 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 0.7.0 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
