@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit pax-utils user
 
@@ -28,9 +28,9 @@ pkg_setup() {
 
 src_unpack() {
 	if use amd64; then
-	  S="${WORKDIR}/${MY_P}-linux-x86_64"
+		S="${WORKDIR}/${MY_P}-linux-x86_64"
 	elif use x86; then
-	  S="${WORKDIR}/${MY_P}-linux-x86"
+		S="${WORKDIR}/${MY_P}-linux-x86"
 	fi
 
 	default
@@ -43,7 +43,7 @@ src_install() {
 
 	insinto /etc/${MY_PN}
 	doins config/*
-	rm -rf config
+	rm -rf config || die
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${MY_PN}.logrotate ${MY_PN}
@@ -51,14 +51,14 @@ src_install() {
 	newconfd "${FILESDIR}"/${MY_PN}.confd ${MY_PN}
 	newinitd "${FILESDIR}"/${MY_PN}.initd-r3 ${MY_PN}
 
-	mv * "${D}"/opt/${MY_PN}
+	mv * "${ED%/}"/opt/${MY_PN} || die
 
 	# bug 567934
-	pax-mark m "${ED}/opt/${MY_PN}/node/bin/node"
+	pax-mark m "${ED%/}/opt/${MY_PN}/node/bin/node"
 }
 
 pkg_postinst() {
-	elog "This version of Kibana is compatible with Elasticsearch 2.3+"
+	elog "This version of Kibana is compatible with Elasticsearch 2.4+"
 	elog
 	elog "Be sure to point ES_INSTANCE to your Elasticsearch instance"
 	elog "in /etc/conf.d/${MY_PN}."
