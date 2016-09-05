@@ -10,6 +10,10 @@ DESCRIPTION="A advanced Digital DJ tool based on Qt"
 HOMEPAGE="http://www.mixxx.org/"
 SRC_URI="http://downloads.${PN}.org/${P}/${P}-src.tar.gz"
 
+# Upstream patches
+SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/51d95ba58d99309f439cb7e2d1285cfb33aa0f63.patch -> ${PN}-2.0.0-ffmpeg30.patch"
+SRC_URI+=" https://github.com/mixxxdj/mixxx/commit/869e07067b15e09bf7ef886a8772afdfb79cbc3c.patch -> ${PN}-2.0.0-ffmpeg31.patch"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -76,7 +80,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
-	#"${FILESDIR}"/${PN}-2.0.0-system-libs.patch
+	"${DISTDIR}"/${P}-ffmpeg30.patch
+	"${DISTDIR}"/${P}-ffmpeg31.patch
 )
 
 src_prepare() {
