@@ -18981,7 +18981,7 @@ x11-wm/ctwm 3.7 3.8a-r1 3.8.2: A clean, light window manager
 x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
-x11-wm/emerald 0.8.8: Emerald Window Decorator
+x11-wm/emerald 0.8.8-r1: Emerald Window Decorator
 x11-wm/enlightenment 0.16.9999 0.17.9999 0.20.5 0.20.6 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 1.3.7-r3 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
