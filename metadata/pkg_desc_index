@@ -4826,7 +4826,7 @@ dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.11 0.18 0.19: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.11 0.18 0.19 0.22: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.3.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -16754,7 +16754,7 @@ sys-apps/udevil 0.4.4-r1: mount and unmount removable devices without a password
 sys-apps/uevt 2.3-r1: UPower/UDisks Event, a lightweight desktop-independent power and disk manager
 sys-apps/ultracopier 0.2.0.16: Advanced file copying tool
 sys-apps/unscd 0.52-r2: simple & stable nscd replacement
-sys-apps/usb_modeswitch 2.2.6 2.3.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
 sys-apps/usbmon 6-r1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7 0.7.1 9999: A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
