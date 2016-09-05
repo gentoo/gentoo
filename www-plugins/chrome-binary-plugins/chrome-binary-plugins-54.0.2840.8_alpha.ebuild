@@ -53,10 +53,10 @@ pkg_nofetch() {
 src_install() {
 	local version
 
-	insinto /usr/$(get_libdir)/chromium-browser/
-
+	insinto /usr/$(get_libdir)/chromium
 	if use widevine; then
-		doins libwidevinecdm.so
+		doins libwidevinecdm.so libwidevinecdmadapter.so
+		dosym ../chromium/libwidevinecdm.so /usr/$(get_libdir)/chromium-browser/libwidevinecdm.so
 		strings ./chrome | grep -C 1 " (version:" | tail -1 > widevine.version
 		doins widevine.version
 	fi
