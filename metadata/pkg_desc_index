@@ -1724,7 +1724,7 @@ app-misc/cdctl 0.15 0.16: Utility to control your cd/dvd drive
 app-misc/cdircmp 0.3-r1: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r1: Change the speed of your CD drive
 app-misc/chkcrontab 1.6: A tool to detect crontab errors
-app-misc/ckb 0.2.4 0.2.5 0.2.6: Corsair K65/K70/K95 Driver
+app-misc/ckb 0.2.6: Corsair K65/K70/K95 Driver
 app-misc/ckermit 8.0.211-r4: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r1 1.2a-r2: An ncurses based app to show a scrolling screen from the Matrix
