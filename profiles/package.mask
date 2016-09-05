@@ -620,16 +620,6 @@ sci-calculators/qalculate-bases
 sci-calculators/qalculate-currency
 sci-calculators/qalculate-units
 
-# Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
-# Contents superseded by virtual/perl-Test-Simple >=1.1.10
-# and now only creates depdendency resolution headaches.
-#
-# Please migrate overlay dependencies to an exclusive
-# >=virtual/perl-Test-Simple-1.1.10
-#
-# Removal in 30 days. Bug 584238
-dev-perl/Test-Tester
-
 # Alexis Ballier <aballier@gentoo.org> <2 Aug 2016>
 # Doesn't install .so, causing all its revdeps to fail to build.
 # Doesn't honour USE=static-libs.
