@@ -32,8 +32,8 @@ RDEPEND=">=x11-libs/gtk+-2.24.0:2
 	!!app-arch/mate-file-archiver"
 
 DEPEND="${RDEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.35:*
-	dev-util/itstool:0
 	>=mate-base/mate-common-1.8:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"

@@ -32,8 +32,8 @@ RDEPEND="
 	!!app-arch/mate-file-archiver"
 
 DEPEND="${RDEPEND}
+	app-text/yelp-tools
 	>=dev-util/intltool-0.50.1:*
-	dev-util/itstool:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
