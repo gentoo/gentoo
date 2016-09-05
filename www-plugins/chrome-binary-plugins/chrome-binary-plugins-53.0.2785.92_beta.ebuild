@@ -53,10 +53,11 @@ pkg_nofetch() {
 src_install() {
 	local version flapper
 
-	insinto /usr/$(get_libdir)/chromium-browser/
+	insinto /usr/$(get_libdir)/chromium
 
 	if use widevine; then
-		doins libwidevinecdm.so
+		doins libwidevinecdm.so libwidevinecdmadapter.so
+		dosym ../chromium/libwidevinecdm.so /usr/$(get_libdir)/chromium-browser/libwidevinecdm.so
 		strings ./chrome | grep -C 1 " (version:" | tail -1 > widevine.version
 		doins widevine.version
 	fi
@@ -67,7 +68,7 @@ src_install() {
 		# Since this is a live ebuild, we're forced to, unfortuantely,
 		# dynamically construct the command line args for Chromium.
 		version=$(sed -n 's/.*"version": "\(.*\)",.*/\1/p' PepperFlash/manifest.json)
-		flapper="${EPREFIX}/usr/$(get_libdir)/chromium-browser/PepperFlash/libpepflashplayer.so"
+		flapper="${EPREFIX}/usr/$(get_libdir)/chromium/PepperFlash/libpepflashplayer.so"
 		echo -n "CHROMIUM_FLAGS=\"\${CHROMIUM_FLAGS} " > pepper-flash
 		echo -n "--ppapi-flash-path=$flapper " >> pepper-flash
 		echo "--ppapi-flash-version=$version\"" >> pepper-flash
