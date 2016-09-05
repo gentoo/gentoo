@@ -2526,7 +2526,7 @@ app-vim/cecutil 17: vim plugin: library used by many of Charles Campbell's plugi
 app-vim/cfengine-syntax 20141019: vim plugin: Cfengine 3 configuration files syntax
 app-vim/checkattach 0.17: vim plugin: check for attachments when writing mails with mutt
 app-vim/closetag 0.9.1-r1: vim plugin: close HTML/XML tags quickly
-app-vim/cmdalias 3.0 3.0-r1: vim plugin: library for alias creation
+app-vim/cmdalias 3.0-r1: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
 app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
 app-vim/colorv 3.0.2: vim plugin: a color tool for vim
@@ -7690,7 +7690,7 @@ dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1 3.1.0 3.1.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3 8.1.1: Installs python packages -- replacement for easy_install
+dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3 8.1.1 8.1.2: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -8062,7 +8062,7 @@ dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the 
 dev-python/pytrie 0.2: A pure Python implementation of the trie data structure.
 dev-python/pytz 2015.4 2015.6 2015.7 2016.3 2016.6.1: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
-dev-python/pyusb 1.0.0_beta2: USB support for Python
+dev-python/pyusb 1.0.0_beta2 1.0.0: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems
 dev-python/pyuv 1.2.0: Python interface for libuv
@@ -12695,7 +12695,7 @@ media-libs/mutagen 1.27 1.31 1.34 1.34.1: Audio metadata tag reader and writer i
 media-libs/nas 1.9.4 1.9.4-r1: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/openal 1.15.1-r2 1.17.1 1.17.2: A software implementation of the OpenAL 3D audio API
-media-libs/opencollada 1.2.2_p20150207 1.6.18-r1 1.6.25: Stream based read/write library for COLLADA files
+media-libs/opencollada 1.2.2_p20150207 1.6.18-r1 1.6.25 1.6.31: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
