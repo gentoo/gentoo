@@ -1333,7 +1333,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8 4.2.10: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.2_p2 1.3 1.3.1: Qt GUI configuration tool for Wine
-app-emulation/qemu 2.5.0-r2 2.5.0-r3 2.5.1 2.6.0 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.5.1 2.7.0 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0 2.6.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
