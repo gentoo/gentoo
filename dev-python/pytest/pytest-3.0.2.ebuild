@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
 
