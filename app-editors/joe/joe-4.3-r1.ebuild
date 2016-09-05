@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="A free ASCII-Text Screen Editor for UNIX"
 HOMEPAGE="https://sourceforge.net/projects/joe-editor/"
 SRC_URI="mirror://sourceforge/joe-editor/${P}.tar.gz"
@@ -14,19 +16,24 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-
 IUSE="xterm"
 
 DEPEND=">=sys-libs/ncurses-5.2-r2:0="
-RDEPEND="xterm? ( >=x11-terms/xterm-239 )"
+RDEPEND="${DEPEND}
+	xterm? ( >=x11-terms/xterm-239 )"
 
 DOCS=( README.md NEWS.md docs/hacking.md docs/man.md )
+
+PATCHES=( "${FILESDIR}/${PN}-4.3-tinfo.patch" )
 
 src_prepare() {
 	default
 	# Enable xterm mouse support in the rc files
 	if use xterm; then
 		cd "${S}"/rc || die
+		local i
 		for i in *rc*.in; do
 			sed -e 's/^ -\(mouse\|joexterm\)/-\1/' -i "${i}" || die
 		done
 	fi
+	eautoreconf
 }
 
 pkg_postinst() {
