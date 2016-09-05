@@ -19,15 +19,8 @@ IUSE="test"
 
 # When bumping, please check setup.py for the proper py version
 PY_VER="1.4.29"
-RDEPEND=">=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]"
-
-# dev-python/pluggy
-# https://github.com/hpk42/pluggy
-# See https://github.com/pytest-dev/pytest/issues/944
-# for why not now
-
-#pexpect dep based on https://bitbucket.org/hpk42/pytest/issue/386/tests-fail-with-pexpect-30
-DEPEND="${RDEPEND}
+COMMON_DEPEND=">=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]"
+DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
@@ -35,6 +28,9 @@ DEPEND="${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
+"
+RDEPEND="${COMMON_DEPEND}
+	!dev-python/logilab-common
 "
 
 python_prepare_all() {
