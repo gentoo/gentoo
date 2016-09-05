@@ -599,37 +599,6 @@ media-video/miro
 # Masked for more restrictive testing.
 =xfce-base/exo-0.11.1
 
-# Johannes Huber <johu@gentoo.org> (4 Aug 2016)
-# Masked for removal in 30 days. Dead upstream. Last release
-# 7 years ago. No reverse dependencies. Use kde-apps/ffmpegthumbs
-# or media-video/ffmpegthumbnailer instead.
-media-video/kffmpegthumbnailer
-
-# Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
-# No reverse dependencies, was never clear why it was in tree,
-# upstream stagnant, dev-libs/cdk is mostly unmaintained.
-#
-# Please voice concerns on bug 575036 if you still need this.
-# Removal in 30 days.
-dev-perl/cdk-perl
-
-# Matthias Maier <tamiko@gentoo.org> (3 Aug 2016)
-# Masked for removal in 30 days. Obsolete packages that are now part of
-# sci-libs/libqalculate and/or sci-calculators/qalculate-gtk
-sci-calculators/qalculate-bases
-sci-calculators/qalculate-currency
-sci-calculators/qalculate-units
-
-# Kent Fredric <kentnl@gentoo.org> (3 Aug 2016)
-# Contents superseded by virtual/perl-Test-Simple >=1.1.10
-# and now only creates depdendency resolution headaches.
-#
-# Please migrate overlay dependencies to an exclusive
-# >=virtual/perl-Test-Simple-1.1.10
-#
-# Removal in 30 days. Bug 584238
-dev-perl/Test-Tester
-
 # Alexis Ballier <aballier@gentoo.org> <2 Aug 2016>
 # Doesn't install .so, causing all its revdeps to fail to build.
 # Doesn't honour USE=static-libs.
@@ -640,22 +609,6 @@ dev-perl/Test-Tester
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 >=www-client/chromium-54
-
-# Patrice Clement <monsieurp@gentoo.org> (31 Jul 2016)
-# Upstream is dead and the ebuild is a complete mess. Does not compile with
-# recent JVMs. Masked for removal in 30 days. See bug #584562.
-dev-java/oscache
-
-# Bernard Cafarelli <voyageur@gentoo.org> (26 Jul 2016)
-# Upstream closed service. Switch to another IPv6 tunnel broker
-# Masked for removal in 30 days, bug #589760
-net-misc/gogoc
-
-# Hans de Graaff <graaff@gentoo.org> (22 Jul 2016)
-# ruby20-only packages with no reverse dependencies, bug 576034
-# Masked for removal in 30 days.
-dev-ruby/matchy
-dev-ruby/watch
 
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all

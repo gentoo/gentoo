@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit systemd user
+inherit python-utils-r1 systemd user
 
 DESCRIPTION="The open-source database for the realtime web."
 HOMEPAGE="http://www.rethinkdb.com"
@@ -77,6 +77,7 @@ src_configure() {
 }
 
 src_compile() {
+	python_export python2.7 EPYTHON
 	emake VERBOSE=1
 }
 
