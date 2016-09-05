@@ -646,11 +646,6 @@ dev-perl/Test-Tester
 # recent JVMs. Masked for removal in 30 days. See bug #584562.
 dev-java/oscache
 
-# Bernard Cafarelli <voyageur@gentoo.org> (26 Jul 2016)
-# Upstream closed service. Switch to another IPv6 tunnel broker
-# Masked for removal in 30 days, bug #589760
-net-misc/gogoc
-
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
 # functionality is provided yet. Use --pretend to make sure correct
