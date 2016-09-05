@@ -599,24 +599,6 @@ media-video/miro
 # Masked for more restrictive testing.
 =xfce-base/exo-0.11.1
 
-# NP-Hardass <NP-Hardass@gentoo.org> (6 Aug 2016)
-# Masked for removal in 14 days.
-# Upstream migrated from mate-calc to gnome's 
-# calculator (gnome-extra/gnome-calculator)
-mate-extra/mate-calc
-
-# NP-Hardass <NP-Hardass@gentoo.org> (6 Aug 2016)
-# Masked for removal in 14 days.
-# Upstream migrated from mate-dialogs to gnome's 
-# zenity (gnome-extra/zenity)
-mate-extra/mate-dialogs
-
-# NP-Hardass <NP-Hardass@gentoo.org> (6 Aug 2016)
-# Masked for removal in 14 days.
-# Upstream dropped support for this package, in part due
-# to gnome dropping support for gnome-system-tools.
-app-admin/mate-system-tools
-
 # Johannes Huber <johu@gentoo.org> (4 Aug 2016)
 # Masked for removal in 30 days. Dead upstream. Last release
 # 7 years ago. No reverse dependencies. Use kde-apps/ffmpegthumbs

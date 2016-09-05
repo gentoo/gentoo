@@ -41,7 +41,7 @@ COMMON_DEPEND="
 			!libressl? ( dev-libs/openssl:0= )
 		)
 	)
-	"
+"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	selinux? ( sec-policy/selinux-bitlbee )
