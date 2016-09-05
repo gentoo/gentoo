@@ -283,12 +283,12 @@ src_install() {
 	if ! use bindist; then
 		icon_path="${S}/other-licenses/branding/thunderbird"
 		icon="${PN}-icon"
-		
+
 		domenu "${FILESDIR}"/icon/${PN}.desktop
 	else
 		icon_path="${S}/mail/branding/aurora"
 		icon="${PN}-icon-unbranded"
-		
+
 		newmenu "${FILESDIR}"/icon/${PN}-unbranded.desktop \
 			${PN}.desktop
 
@@ -360,7 +360,7 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
-	
+
 	if use crypt; then
 		local peimpl=$(eselect --brief --colour=no pinentry show)
 		case "${peimpl}" in
