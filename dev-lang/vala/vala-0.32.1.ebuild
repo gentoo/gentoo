@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="test"
 
 RDEPEND="
-	>=dev-libs/glib-2.24:2
+	>=dev-libs/glib-2.32:2
 	>=dev-libs/vala-common-${PV}
 "
 DEPEND="${RDEPEND}
