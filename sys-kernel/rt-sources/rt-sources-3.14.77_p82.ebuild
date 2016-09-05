@@ -32,7 +32,7 @@ S="${WORKDIR}/linux-${KV_FULL}"
 UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"
 
-pkg_postinst(){
+pkg_postinst() {
 
 	ewarn
 	ewarn "${PN} are *not* supported by the Gentoo Kernel Project in any way."
