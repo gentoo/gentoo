@@ -7723,7 +7723,7 @@ dev-python/prompt_toolkit 1.0.0 1.0.3: Building powerful interactive command lin
 dev-python/protobuf-python 3.0.0_beta3_p1: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
-dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0: Retrieve information on running processes and system utilization
+dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0 4.3.0 4.3.1: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1 2.6.2: PostgreSQL database adapter for Python
 dev-python/ptpython 0.20 0.21 0.22 0.24 0.25 0.28 0.29 0.32 0.33: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
@@ -7798,7 +7798,7 @@ dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
 dev-python/pyelemental 1.2.0-r1: Python bindings for libelemental (sci-chemistry/gelemental)
 dev-python/pyelftools 0.22 0.23-r1: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyemf 2.0.0: Pure Python Enhanced Metafile Library
-dev-python/pyenchant 1.6.6: Python bindings for the Enchant spellchecking system
+dev-python/pyenchant 1.6.6 1.6.8: Python bindings for the Enchant spellchecking system
 dev-python/pyev 0.8.1 0.9.0: Python libev interface, an event loop
 dev-python/pyface 4.3.0-r1 4.4.0 4.5.2: Enthought Tool Suite: Traits-capable windowing framework
 dev-python/pyfeyn 1.0.0: Python package for drawing Feynman diagrams
@@ -7879,11 +7879,11 @@ dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2014.1 2015.1 2015.2.4 2016.1 9999: Python wrapper for OpenCL
 dev-python/pyopengl 3.0.2-r1 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
-dev-python/pyopenssl 0.14 0.15.1 0.15.1-r1 16.0.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 0.14 0.15.1 0.15.1-r1 16.0.0 16.1.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 1.5.6-r2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.1.0 2.1.5: Easy-to-use Python module for text parsing
+dev-python/pyparsing 1.5.6-r2 2.0.3 2.0.4 2.0.5 2.0.6 2.0.7 2.1.0 2.1.5 2.1.8: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.3-r1 3.10.4 3.10.5: Python bindings for sys-block/parted
 dev-python/pypax 0.9.2 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.1.3 1.1.4 1.1.5: Simplified object-oriented Python extension module for libpcap
