@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=(python{2_7,3_3})
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit distutils-r1 virtualx
 
