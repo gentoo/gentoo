@@ -7822,7 +7822,7 @@ dev-python/pygooglevoice 0.5-r2: Python Bindings for the Google Voice API
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.2 1.3.1: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 4.1.1 4.1.1-r1 4.1.1-r2 4.2: A Python interface for the PostgreSQL database
-dev-python/pygsl 0.9.5 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
+dev-python/pygsl 0.9.5-r1 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the building of PyGTK applications
@@ -8364,7 +8364,7 @@ dev-python/virtualenv 13.1.2 13.1.2-r1 14.0.1 14.0.3 14.0.5 14.0.6 15.0.1 15.0.3
 dev-python/virtualenv-clone 0.2.4-r2 0.2.5 0.2.6: A script for cloning a non-relocatable virtualenv
 dev-python/virtualenvwrapper 4.3.1 4.3.2 4.5.1 4.6.0 4.7.1: Set of extensions to Ian Bicking's virtualenv tool
 dev-python/visitor 0.1.3: A tiny pythonic visitor implementation
-dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
+dev-python/visual 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.8.1c-r1: A full featured Python package for parsing and generating vCard and vCalendar files
 dev-python/voluptuous 0.8.8: A Python data validation library.
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
@@ -12685,7 +12685,7 @@ media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/mash 0.2.0-r1: A library for rendering 3D models with Clutter
 media-libs/mediastreamer 2.7.3-r3 2.8.2 2.9.0 2.9.0-r1: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.9 11.1.3 11.1.4 11.2.1 11.2.2 12.0.1 12.0.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 7.10.3 10.3.7-r1 11.0.6 11.0.9 11.1.4 11.2.2 12.0.1 12.0.2 9999: OpenGL-like graphic library for Linux
 media-libs/ming 0.4.4-r1 0.4.5 0.4.7: An Open Source library for Flash movie generation
 media-libs/mlt 6.2.0-r2: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 2.1.5 3.0.2 3.0.3 4.0.3 5.0.1: The MusicBrainz Client Library (for accessing the latest XML based web service)
@@ -13271,7 +13271,7 @@ media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop applicati
 media-sound/lastfmplayer 1.5.4.27091-r3: A player for last.fm radio streams
 media-sound/lilycomp 1.0.2-r2: graphical note entry program for use with LilyPond
 media-sound/lilypond 2.18.2 2.18.2-r2 2.19.46 2.19.47 9999: GNU Music Typesetter
-media-sound/lingot 0.9.0 0.9.1: LINGOT Is Not a Guitar-Only Tuner
+media-sound/lingot 0.9.1: LINGOT Is Not a Guitar-Only Tuner
 media-sound/linuxsampler 0.5.1 1.0.0-r1 2.0.0 2.0.0-r2: LinuxSampler is a software audio sampler engine with professional grade features
 media-sound/listen 0.6.5-r1: A music management and playback for GTK+ based desktops
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
