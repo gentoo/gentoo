@@ -15,7 +15,7 @@ if [[ ${PV#${MATE_GTK_V}.} == 9999 ]]; then
 	EGIT_BRANCH="gtk${MATE_GTK_V}"
 else
 	SRC_URI="http://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 HOMEPAGE="http://mate-desktop.org"
