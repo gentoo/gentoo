@@ -10,5 +10,5 @@ SRC_URI="https://archive.hadrons.org/software/libmd/${P}.tar.xz"
 
 LICENSE="|| ( BSD BSD-2 ISC BEER-WARE public-domain )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
