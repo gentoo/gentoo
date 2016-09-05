@@ -11882,7 +11882,7 @@ mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide 
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2: S/MIME signing milter
 mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
-mail-filter/spamassassin 3.4.0-r1 3.4.1-r7: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.0-r1 3.4.1-r8: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 4.3.0-r1 5.0.1: A drop-in connection-time spam filter for qmail
