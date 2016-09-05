@@ -1,0 +1,482 @@
+Index: mediastreamer-2.9.0/src/utils/ffmpeg-priv.h
+===================================================================
+--- mediastreamer-2.9.0.orig/src/utils/ffmpeg-priv.h
++++ mediastreamer-2.9.0/src/utils/ffmpeg-priv.h
+@@ -69,9 +69,6 @@ static inline int avcodec_decode_video2(
+ 	return avcodec_decode_video(avctx,picture, got_picture_ptr,avpkt->data,avpkt->size);
+ }
+ #endif
+-#if (LIBAVCODEC_VERSION_MAJOR >= 56)
+-#include <libavcodec/old_codec_ids.h>
+-#endif
+ #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(54,25,0)
+ #define CodecID AVCodecID
+ #endif
+Index: mediastreamer-2.9.0/src/videofilters/h264dec.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/videofilters/h264dec.c
++++ mediastreamer-2.9.0/src/videofilters/h264dec.c
+@@ -56,7 +56,7 @@ static void ffmpeg_init(){
+ static void dec_open(DecData *d){
+ 	AVCodec *codec;
+ 	int error;
+-	codec=avcodec_find_decoder(CODEC_ID_H264);
++	codec=avcodec_find_decoder(AV_CODEC_ID_H264);
+ 	if (codec==NULL) ms_fatal("Could not find H264 decoder in ffmpeg.");
+ 	avcodec_get_context_defaults3(&d->av_context, NULL);
+ 	error=avcodec_open2(&d->av_context,codec, NULL);
+@@ -119,7 +119,7 @@ static mblk_t *get_as_yuvmsg(MSFilter *f
+ 		s->outbuf.w=ctx->width;
+ 		s->outbuf.h=ctx->height;
+ 		s->sws_ctx=sws_getContext(ctx->width,ctx->height,ctx->pix_fmt,
+-			ctx->width,ctx->height,PIX_FMT_YUV420P,SWS_FAST_BILINEAR,
++			ctx->width,ctx->height,AV_PIX_FMT_YUV420P,SWS_FAST_BILINEAR,
+                 	NULL, NULL, NULL);
+ 	}
+ #if LIBSWSCALE_VERSION_INT >= AV_VERSION_INT(0,9,0)	
+@@ -272,7 +272,7 @@ static void dec_process(MSFilter *f){
+ 				int len;
+ 				int got_picture=0;
+ 				AVPacket pkt;
+-				avcodec_get_frame_defaults(&orig);
++				av_frame_unref(&orig);
+ 				av_init_packet(&pkt);
+ 				pkt.data = p;
+ 				pkt.size = end-p;
+Index: mediastreamer-2.9.0/src/videofilters/jpegwriter.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/videofilters/jpegwriter.c
++++ mediastreamer-2.9.0/src/videofilters/jpegwriter.c
+@@ -36,9 +36,9 @@ typedef struct {
+ 
+ static void jpg_init(MSFilter *f){
+ 	JpegWriter *s=ms_new0(JpegWriter,1);
+-	s->codec=avcodec_find_encoder(CODEC_ID_MJPEG);
++	s->codec=avcodec_find_encoder(AV_CODEC_ID_MJPEG);
+ 	if (s->codec==NULL){
+-		ms_error("Could not find CODEC_ID_MJPEG !");
++		ms_error("Could not find AV_CODEC_ID_MJPEG !");
+ 	}
+ 	f->data=s;
+ }
+@@ -96,7 +96,7 @@ static void jpg_process(MSFilter *f){
+ 			avctx->height=yuvbuf.h;
+ 			avctx->time_base.num = 1;
+ 			avctx->time_base.den =1;
+-			avctx->pix_fmt=PIX_FMT_YUVJ420P;
++			avctx->pix_fmt=AV_PIX_FMT_YUVJ420P;
+ 
+ 			error=avcodec_open2(avctx,s->codec,NULL);
+ 			if (error!=0) {
+@@ -105,7 +105,7 @@ static void jpg_process(MSFilter *f){
+ 				av_free(avctx);
+ 				return;
+ 			}
+-			sws_ctx=sws_getContext(avctx->width,avctx->height,PIX_FMT_YUV420P,
++			sws_ctx=sws_getContext(avctx->width,avctx->height,AV_PIX_FMT_YUV420P,
+ 				avctx->width,avctx->height,avctx->pix_fmt,SWS_FAST_BILINEAR,NULL, NULL, NULL);
+ 			if (sws_ctx==NULL) {
+ 				ms_error(" sws_getContext() failed.");
+@@ -126,13 +126,18 @@ static void jpg_process(MSFilter *f){
+ 			}
+ 			sws_freeContext(sws_ctx);
+ 			
+-			avcodec_get_frame_defaults(&pict);
++			av_frame_unref(&pict);
+ 			avpicture_fill((AVPicture*)&pict,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height);
+-			error=avcodec_encode_video(avctx, (uint8_t*)comp_buf,comp_buf_sz, &pict);
++			AVPacket pkt;
++			av_init_packet(&pkt);
++			pkt.buf = (uint8_t*)comp_buf;
++			pkt.size = comp_buf_sz;
++			int got_packet;
++			error=avcodec_encode_video2(avctx, &pkt, &pict, &got_packet);
+ 			if (error<0){
+ 				ms_error("Could not encode jpeg picture.");
+-			}else{
+-				if (fwrite(comp_buf,error,1,s->file)>0){
++			}else if(got_packet){
++				if (fwrite(comp_buf,pkt.size,1,s->file)>0){
+ 					ms_message("Snapshot done");
+ 				}else{
+ 					ms_error("Error writing snapshot.");
+Index: mediastreamer-2.9.0/src/videofilters/nowebcam.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/videofilters/nowebcam.c
++++ mediastreamer-2.9.0/src/videofilters/nowebcam.c
+@@ -61,7 +61,7 @@ static mblk_t *jpeg2yuv(uint8_t *jpgbuf,
+ 	struct SwsContext *sws_ctx;
+ 	AVPacket pkt;
+ 	MSPicture dest;
+-	AVCodec *codec=avcodec_find_decoder(CODEC_ID_MJPEG);
++	AVCodec *codec=avcodec_find_decoder(AV_CODEC_ID_MJPEG);
+ 
+ 	if (codec==NULL){
+ 		ms_error("Could not find MJPEG decoder in ffmpeg.");
+@@ -84,9 +84,9 @@ static mblk_t *jpeg2yuv(uint8_t *jpgbuf,
+ 	}
+ 	ret=ms_yuv_buf_alloc(&dest, reqsize->width,reqsize->height);
+ 	/* not using SWS_FAST_BILINEAR because it doesn't play well with
+-	 * av_context.pix_fmt set to PIX_FMT_YUVJ420P by jpeg decoder */
++	 * av_context.pix_fmt set to AV_PIX_FMT_YUVJ420P by jpeg decoder */
+ 	sws_ctx=sws_getContext(av_context.width,av_context.height,av_context.pix_fmt,
+-		reqsize->width,reqsize->height,PIX_FMT_YUV420P,SWS_BILINEAR,
++		reqsize->width,reqsize->height,AV_PIX_FMT_YUV420P,SWS_BILINEAR,
+                 NULL, NULL, NULL);
+ 	if (sws_ctx==NULL) {
+ 		ms_error("jpeg2yuv: ms_sws_getContext() failed.");
+Index: mediastreamer-2.9.0/src/videofilters/videodec.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/videofilters/videodec.c
++++ mediastreamer-2.9.0/src/videofilters/videodec.c
+@@ -40,7 +40,7 @@ typedef struct DecState{
+ 	YuvBuf outbuf;
+ 	mblk_t *yuv_msg;
+ 	struct SwsContext *sws_ctx;
+-	enum PixelFormat output_pix_fmt;
++	enum AVPixelFormat output_pix_fmt;
+ 	uint8_t dci[512];
+ 	int dci_size;
+ 	uint64_t last_error_reported_time;
+@@ -58,7 +58,7 @@ static void dec_init(MSFilter *f, enum C
+ 	s->codec=cid;
+ 	s->input=NULL;
+ 	s->yuv_msg=NULL;
+-	s->output_pix_fmt=PIX_FMT_YUV420P;
++	s->output_pix_fmt=AV_PIX_FMT_YUV420P;
+ 	s->snow_initialized=FALSE;
+ 	s->outbuf.w=0;
+ 	s->outbuf.h=0;
+@@ -77,19 +77,19 @@ static void dec_init(MSFilter *f, enum C
+ }
+ 
+ static void dec_h263_init(MSFilter *f){
+-	dec_init(f,CODEC_ID_H263);
++	dec_init(f,AV_CODEC_ID_H263);
+ }
+ 
+ static void dec_mpeg4_init(MSFilter *f){
+-	dec_init(f,CODEC_ID_MPEG4);
++	dec_init(f,AV_CODEC_ID_MPEG4);
+ }
+ 
+ static void dec_mjpeg_init(MSFilter *f){
+-	dec_init(f,CODEC_ID_MJPEG);
++	dec_init(f,AV_CODEC_ID_MJPEG);
+ }
+ 
+ static void dec_snow_init(MSFilter *f){
+-	dec_init(f,CODEC_ID_SNOW);
++	dec_init(f,AV_CODEC_ID_SNOW);
+ }
+ 
+ static void dec_uninit(MSFilter *f){
+@@ -134,10 +134,10 @@ static void dec_preprocess(MSFilter *f){
+ 	s->first_image_decoded = FALSE;
+ 	if (s->av_context.codec==NULL){
+ 		/* we must know picture size before initializing snow decoder*/
+-		if (s->codec!=CODEC_ID_SNOW){
++		if (s->codec!=AV_CODEC_ID_SNOW){
+ 			error=avcodec_open2(&s->av_context, s->av_codec,NULL);
+ 			if (error!=0) ms_error("avcodec_open2() failed: %i",error);
+-			if (s->codec==CODEC_ID_MPEG4 && s->dci_size>0){
++			if (s->codec==AV_CODEC_ID_MPEG4 && s->dci_size>0){
+ 				s->av_context.extradata=s->dci;
+ 				s->av_context.extradata_size=s->dci_size;
+ 			}
+@@ -643,8 +643,8 @@ static void dec_process_frame(MSFilter *
+ 	
+ 	if (f->desc->id==MS_H263_DEC_ID) inm=skip_rfc2429_header(inm);
+ 	else if (f->desc->id==MS_H263_OLD_DEC_ID) inm=skip_rfc2190_header(inm);
+-	else if (s->codec==CODEC_ID_SNOW && s->input==NULL) inm=parse_snow_header(s,inm);
+-	else if (s->codec==CODEC_ID_MJPEG && f->desc->id==MS_JPEG_DEC_ID) inm=read_rfc2435_header(s,inm);
++	else if (s->codec==AV_CODEC_ID_SNOW && s->input==NULL) inm=parse_snow_header(s,inm);
++	else if (s->codec==AV_CODEC_ID_MJPEG && f->desc->id==MS_JPEG_DEC_ID) inm=read_rfc2435_header(s,inm);
+ 
+ 	if (inm){
+ 		/* accumulate the video packet until we have the rtp markbit*/
+Index: mediastreamer-2.9.0/src/videofilters/videoenc.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/videofilters/videoenc.c
++++ mediastreamer-2.9.0/src/videofilters/videoenc.c
+@@ -223,19 +223,19 @@ static void enc_init(MSFilter *f, enum C
+ }
+ 
+ static void enc_h263_init(MSFilter *f){
+-	enc_init(f,CODEC_ID_H263P);
++	enc_init(f,AV_CODEC_ID_H263P);
+ }
+ 
+ static void enc_mpeg4_init(MSFilter *f){
+-	enc_init(f,CODEC_ID_MPEG4);
++	enc_init(f,AV_CODEC_ID_MPEG4);
+ }
+ 
+ static void enc_snow_init(MSFilter *f){
+-	enc_init(f,CODEC_ID_SNOW);
++	enc_init(f,AV_CODEC_ID_SNOW);
+ }
+ 
+ static void enc_mjpeg_init(MSFilter *f){
+-	enc_init(f,CODEC_ID_MJPEG);
++	enc_init(f,AV_CODEC_ID_MJPEG);
+ }
+ 
+ static void prepare(EncState *s){
+@@ -243,7 +243,7 @@ static void prepare(EncState *s){
+ 	const int max_br_vbv=128000;
+ 
+ 	avcodec_get_context_defaults3(c, NULL);
+-	if (s->codec==CODEC_ID_MJPEG)
++	if (s->codec==AV_CODEC_ID_MJPEG)
+ 	{
+ 		ms_message("Codec bitrate set to %i",c->bit_rate);
+ 		c->width = s->vsize.width;  
+@@ -251,7 +251,7 @@ static void prepare(EncState *s){
+ 		c->time_base.num = 1;
+ 		c->time_base.den = (int)s->fps;
+ 		c->gop_size=(int)s->fps*5; /*emit I frame every 5 seconds*/
+-		c->pix_fmt=PIX_FMT_YUVJ420P;
++		c->pix_fmt=AV_PIX_FMT_YUVJ420P;
+ 		s->comp_buf=allocb(c->bit_rate*2,0);
+ 		return;
+ 	}
+@@ -269,7 +269,7 @@ static void prepare(EncState *s){
+ 
+ 	/* ffmpeg vbv rate control consumes too much cpu above a certain target bitrate.
+ 	We don't use it above max_br_vbv */
+-	if (s->codec!=CODEC_ID_SNOW && s->maxbr<max_br_vbv){
++	if (s->codec!=AV_CODEC_ID_SNOW && s->maxbr<max_br_vbv){
+ 		/*snow does not like 1st pass rate control*/
+ 		c->rc_max_rate=c->bit_rate;
+ 		c->rc_min_rate=0;
+@@ -285,9 +285,9 @@ static void prepare(EncState *s){
+ 	c->time_base.num = 1;
+ 	c->time_base.den = (int)s->fps;
+ 	c->gop_size=(int)s->fps*10; /*emit I frame every 10 seconds*/
+-	c->pix_fmt=PIX_FMT_YUV420P;
++	c->pix_fmt=AV_PIX_FMT_YUV420P;
+ 	s->comp_buf=allocb(c->bit_rate*2,0);
+-	if (s->codec==CODEC_ID_SNOW){
++	if (s->codec==AV_CODEC_ID_SNOW){
+ 		c->strict_std_compliance=-2;
+ 	}
+ 	
+@@ -304,7 +304,7 @@ static void prepare_h263(EncState *s){
+ #endif
+ 	c->rtp_payload_size = s->mtu/2;
+ 	if (s->profile==0){
+-		s->codec=CODEC_ID_H263;
++		s->codec=AV_CODEC_ID_H263;
+ 	}else{
+ 		/*
+ 		c->flags|=CODEC_FLAG_H263P_UMV;
+@@ -313,7 +313,7 @@ static void prepare_h263(EncState *s){
+ 		c->flags|=CODEC_FLAG_OBMC;
+ 		c->flags|=CODEC_FLAG_AC_PRED;
+ 		*/
+-		s->codec=CODEC_ID_H263P;
++		s->codec=AV_CODEC_ID_H263P;
+ 	}
+ }
+ 
+@@ -331,13 +331,13 @@ static void enc_preprocess(MSFilter *f){
+ 	EncState *s=(EncState*)f->data;
+ 	int error;
+ 	prepare(s);
+-	if (s->codec==CODEC_ID_H263P || s->codec==CODEC_ID_H263)
++	if (s->codec==AV_CODEC_ID_H263P || s->codec==AV_CODEC_ID_H263)
+ 		prepare_h263(s);
+-	else if (s->codec==CODEC_ID_MPEG4)
++	else if (s->codec==AV_CODEC_ID_MPEG4)
+ 		prepare_mpeg4(s);
+-	else if (s->codec==CODEC_ID_SNOW){
++	else if (s->codec==AV_CODEC_ID_SNOW){
+ 		/**/
+-	}else if (s->codec==CODEC_ID_MJPEG){
++	}else if (s->codec==AV_CODEC_ID_MJPEG){
+ 		/**/
+ 	}else {
+ 		ms_error("Unsupported codec id %i",s->codec);
+@@ -724,12 +724,12 @@ static void split_and_send(MSFilter *f,
+ 	uint8_t *psc;
+ 	uint32_t timestamp=f->ticker->time*90LL;
+ 	
+-	if (s->codec==CODEC_ID_MPEG4 || s->codec==CODEC_ID_SNOW)
++	if (s->codec==AV_CODEC_ID_MPEG4 || s->codec==AV_CODEC_ID_SNOW)
+ 	{
+ 		mpeg4_fragment_and_send(f,s,frame,timestamp);
+ 		return;
+ 	}
+-	else if (s->codec==CODEC_ID_MJPEG)
++	else if (s->codec==AV_CODEC_ID_MJPEG)
+ 	{
+ 		mblk_t *lqt=NULL;
+ 		mblk_t *cqt=NULL;
+@@ -765,7 +765,7 @@ static void split_and_send(MSFilter *f,
+ 
+ static void process_frame(MSFilter *f, mblk_t *inm){
+ 	EncState *s=(EncState*)f->data;
+-	AVFrame pict;
++	AVFrame pict = {};
+ 	AVCodecContext *c=&s->av_context;
+ 	int error;
+ 	mblk_t *comp_buf=s->comp_buf;
+@@ -774,7 +774,7 @@ static void process_frame(MSFilter *f, m
+ 
+ 	ms_yuv_buf_init_from_mblk(&yuv, inm);
+ 	/* convert image if necessary */
+-	avcodec_get_frame_defaults(&pict);
++	av_frame_unref(&pict);
+ 	avpicture_fill((AVPicture*)&pict,yuv.planes[0],c->pix_fmt,c->width,c->height);
+ 	
+ 	/* timestamp used by ffmpeg, unset here */
+@@ -789,7 +789,7 @@ static void process_frame(MSFilter *f, m
+ 		s->req_vfu=FALSE;
+ 	}
+ 	comp_buf->b_rptr=comp_buf->b_wptr=comp_buf->b_datap->db_base;
+-	if (s->codec==CODEC_ID_SNOW){
++	if (s->codec==AV_CODEC_ID_SNOW){
+ 		//prepend picture size
+ 		uint32_t header=((s->vsize.width&0xffff)<<16) | (s->vsize.height&0xffff);
+ 		*(uint32_t*)comp_buf->b_wptr=htonl(header);
+@@ -797,10 +797,15 @@ static void process_frame(MSFilter *f, m
+ 		comp_buf_sz-=4;
+ 	}
+ 
+-	error=avcodec_encode_video(c, (uint8_t*)comp_buf->b_wptr,comp_buf_sz, &pict);
++	AVPacket pkt;
++	av_init_packet(&pkt);
++	pkt.data = (uint8_t*)comp_buf->b_wptr;
++	pkt.size = comp_buf_sz;
++	int got_packet;
++	error=avcodec_encode_video2(c, &pkt, &pict, &got_packet);
+ 
+ 	if (error<=0) ms_warning("ms_AVencoder_process: error %i.",error);
+-	else{
++	else if(got_packet){
+ 		s->framenum++;
+ 		if (s->framenum==1){
+ 			video_starter_first_frame (&s->starter,f->ticker->time);
+@@ -808,7 +813,7 @@ static void process_frame(MSFilter *f, m
+ 		if (c->coded_frame->pict_type==FF_I_TYPE){
+ 			ms_message("Emitting I-frame");
+ 		}
+-		comp_buf->b_wptr+=error;
++		comp_buf->b_wptr+=pkt.size;
+ 		split_and_send(f,s,comp_buf);
+ 	}
+ 	freemsg(inm);
+@@ -837,7 +842,7 @@ static int enc_get_br(MSFilter *f, void
+ 
+ static int enc_set_br(MSFilter *f, void *arg){
+ 	EncState *s=(EncState*)f->data;
+-	bool_t snow=s->codec==CODEC_ID_SNOW;
++	bool_t snow=s->codec==AV_CODEC_ID_SNOW;
+ 	s->maxbr=*(int*)arg;
+ 	if (s->av_context.codec!=NULL){
+ 		/*when we are processing, apply new settings immediately*/
+@@ -847,11 +852,11 @@ static int enc_set_br(MSFilter *f, void
+ 		ms_filter_unlock(f);
+ 		return 0;
+ 	}
+-	if (s->maxbr>=1024000 && s->codec!=CODEC_ID_H263P){
++	if (s->maxbr>=1024000 && s->codec!=AV_CODEC_ID_H263P){
+ 		s->vsize.width = MS_VIDEO_SIZE_SVGA_W;
+ 		s->vsize.height = MS_VIDEO_SIZE_SVGA_H;
+ 		s->fps=25;
+-	}else if (s->maxbr>=800000 && s->codec!=CODEC_ID_H263P){
++	}else if (s->maxbr>=800000 && s->codec!=AV_CODEC_ID_H263P){
+ 		s->vsize.width = MS_VIDEO_SIZE_VGA_W;
+ 		s->vsize.height = MS_VIDEO_SIZE_VGA_H;
+ 		s->fps=25;
+@@ -864,7 +869,7 @@ static int enc_set_br(MSFilter *f, void
+ 		s->vsize.height=MS_VIDEO_SIZE_CIF_H;
+ 		s->fps=17;
+ 		s->qmin=3;
+-	}else if (s->maxbr>=170000 && s->codec!=CODEC_ID_H263P && s->codec!=CODEC_ID_H263){
++	}else if (s->maxbr>=170000 && s->codec!=AV_CODEC_ID_H263P && s->codec!=AV_CODEC_ID_H263){
+ 		s->vsize.width=MS_VIDEO_SIZE_QVGA_W;
+ 		s->vsize.height=MS_VIDEO_SIZE_QVGA_H;
+ 		s->fps=15;
+@@ -1075,15 +1080,15 @@ MSFilterDesc ms_mjpeg_enc_desc={
+ 
+ void __register_ffmpeg_encoders_if_possible(void){
+ 	ms_ffmpeg_check_init();
+-	if (avcodec_find_encoder(CODEC_ID_MPEG4))
++	if (avcodec_find_encoder(AV_CODEC_ID_MPEG4))
+ 		ms_filter_register(&ms_mpeg4_enc_desc);
+-	if (avcodec_find_encoder(CODEC_ID_H263)){
++	if (avcodec_find_encoder(AV_CODEC_ID_H263)){
+ 		ms_filter_register(&ms_h263_enc_desc);
+ 		ms_filter_register(&ms_h263_old_enc_desc);
+ 	}
+-	if (avcodec_find_encoder(CODEC_ID_SNOW))
++	if (avcodec_find_encoder(AV_CODEC_ID_SNOW))
+ 		ms_filter_register(&ms_snow_enc_desc);
+-	if (avcodec_find_encoder(CODEC_ID_MJPEG))
++	if (avcodec_find_encoder(AV_CODEC_ID_MJPEG))
+ 	{
+ 		ms_filter_register(&ms_mjpeg_enc_desc);
+ 	}
+Index: mediastreamer-2.9.0/src/voip/msvideo.c
+===================================================================
+--- mediastreamer-2.9.0.orig/src/voip/msvideo.c
++++ mediastreamer-2.9.0/src/voip/msvideo.c
+@@ -351,21 +351,21 @@ void ms_rgb_to_yuv(const uint8_t rgb[3],
+ int ms_pix_fmt_to_ffmpeg(MSPixFmt fmt){
+ 	switch(fmt){
+ 		case MS_RGBA32:
+-			return PIX_FMT_RGBA;
++			return AV_PIX_FMT_RGBA;
+ 		case MS_RGB24:
+-			return PIX_FMT_RGB24;
++			return AV_PIX_FMT_RGB24;
+ 		case MS_RGB24_REV:
+-			return PIX_FMT_BGR24;
++			return AV_PIX_FMT_BGR24;
+ 		case MS_YUV420P:
+-			return PIX_FMT_YUV420P;
++			return AV_PIX_FMT_YUV420P;
+ 		case MS_YUYV:
+-			return PIX_FMT_YUYV422;
++			return AV_PIX_FMT_YUYV422;
+ 		case MS_UYVY:
+-			return PIX_FMT_UYVY422;
++			return AV_PIX_FMT_UYVY422;
+ 		case MS_YUY2:
+-			return PIX_FMT_YUYV422;   /* <- same as MS_YUYV */
++			return AV_PIX_FMT_YUYV422;   /* <- same as MS_YUYV */
+ 		case MS_RGB565:
+-			return PIX_FMT_RGB565;
++			return AV_PIX_FMT_RGB565;
+ 		default:
+ 			ms_fatal("format not supported.");
+ 			return -1;
+@@ -375,19 +375,19 @@ int ms_pix_fmt_to_ffmpeg(MSPixFmt fmt){
+ 
+ MSPixFmt ffmpeg_pix_fmt_to_ms(int fmt){
+ 	switch(fmt){
+-		case PIX_FMT_RGB24:
++		case AV_PIX_FMT_RGB24:
+ 			return MS_RGB24;
+-		case PIX_FMT_BGR24:
++		case AV_PIX_FMT_BGR24:
+ 			return MS_RGB24_REV;
+-		case PIX_FMT_YUV420P:
++		case AV_PIX_FMT_YUV420P:
+ 			return MS_YUV420P;
+-		case PIX_FMT_YUYV422:
++		case AV_PIX_FMT_YUYV422:
+ 			return MS_YUYV;     /* same as MS_YUY2 */
+-		case PIX_FMT_UYVY422:
++		case AV_PIX_FMT_UYVY422:
+ 			return MS_UYVY;
+-		case PIX_FMT_RGBA:
++		case AV_PIX_FMT_RGBA:
+ 			return MS_RGBA32;
+-		case PIX_FMT_RGB565:
++		case AV_PIX_FMT_RGB565:
+ 			return MS_RGB565;
+ 		default:
+ 			ms_fatal("format not supported.");
