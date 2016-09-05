@@ -1038,7 +1038,7 @@ app-editors/jasspa-microemacs 20091011-r2: Jasspa Microemacs
 app-editors/jed 0.99.19: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
-app-editors/joe 4.2: A free ASCII-Text Screen Editor for UNIX
+app-editors/joe 4.2 4.3: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs - a light emacs-like editor without LISP bindings
 app-editors/juffed 0.10: QScintilla-based tabbed text editor with syntax highlighting
 app-editors/jupp 3.1_p23 3.1_p24 3.1_p26 3.1_p27: portable version of JOE's Own Editor
@@ -1051,7 +1051,7 @@ app-editors/leo 5.1: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
 app-editors/lfhex 0.42: A fast, efficient hex-editor with support for large files and comparing binary files
 app-editors/lpe 1.2.6.13: a lightweight programmers editor
-app-editors/mg 20110905-r1 20150323 20160118 20160421: MicroGnuEmacs, a port from the BSDs
+app-editors/mg 20150323 20160421 20160905: MicroGnuEmacs, a port from the BSDs
 app-editors/mlview 0.9.0-r1: XML editor for the GNOME environment
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.4.0: GTK+-based editor for the Xfce Desktop Environment

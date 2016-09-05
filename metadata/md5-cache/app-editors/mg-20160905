@@ -8,7 +8,7 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=public-domain
 RDEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
 SLOT=0
-SRC_URI=http://homepage.boetes.org/software/mg/mg-20160118.tar.gz
+SRC_URI=http://homepage.boetes.org/software/mg/mg-20160905.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=a2c4056f136791f4abff89d66ef76089
+_md5_=eb0bb44524f845e5629479af161d8b67
