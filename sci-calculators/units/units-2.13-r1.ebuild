@@ -25,14 +25,21 @@ RDEPEND="
 		${PYTHON_DEPS}
 		dev-python/unidecode[${PYTHON_USEDEP}]
 		dev-python/future[${PYTHON_USEDEP}]
-	)"
-DEPEND="${RDEPEND}"
+	)
+"
+DEPEND="
+	${RDEPEND}
+"
 
-PATCHES=( "${FILESDIR}/${P}-fix-python.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-python.patch
+)
 
 src_prepare() {
 	default
-	sed -e "/^outfile/s|'.*'|'${EPREFIX}/usr/share/units/currency.units'|g" \
+
+	sed \
+		-e "/^outfile/s|'.*'|'${EPREFIX}/usr/share/units/currency.units'|g" \
 		-i units_cur3 || die
 
 	eautoreconf
@@ -40,5 +47,6 @@ src_prepare() {
 
 src_install() {
 	default
+
 	use units_cur && python_foreach_impl python_newscript units_cur{3,}
 }
