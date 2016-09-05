@@ -654,7 +654,6 @@ net-misc/gogoc
 # Hans de Graaff <graaff@gentoo.org> (22 Jul 2016)
 # ruby20-only packages with no reverse dependencies, bug 576034
 # Masked for removal in 30 days.
-dev-ruby/matchy
 dev-ruby/watch
 
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
