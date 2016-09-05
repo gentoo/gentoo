@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs systemd
+inherit perl-functions systemd toolchain-funcs
 
 MY_P="Mail-SpamAssassin-${PV//_/-}"
 S="${WORKDIR}/${MY_P}"
@@ -20,31 +20,43 @@ IUSE="+bayes berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test
 # You can do without a database unless you need the Bayes features.
 REQUIRED_USE="bayes? ( || ( berkdb mysql postgres sqlite ) )"
 
+# The Makefile.PL script checks for dependencies, but only fails if a
+# required (i.e. not optional) dependency is missing. We therefore
+# require most of the optional modules only at runtime.
+REQDEPEND="dev-lang/perl
+	dev-perl/HTML-Parser
+	dev-perl/Net-DNS
+	dev-perl/NetAddr-IP
+	virtual/perl-Archive-Tar
+	virtual/perl-Digest-SHA
+	virtual/perl-IO-Zlib
+	virtual/perl-Time-HiRes
+	ssl? (
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
+	)"
+
 # SpamAssassin doesn't use libwww-perl except as a fallback for when
 # curl/wget are missing, so we depend on one of those instead. Some
 # mirrors use https, so we need those utilities to support SSL.
 #
 # re2c is needed to compile the rules (sa-compile).
 #
-DEPEND="app-crypt/gnupg
-	dev-lang/perl
+# We still need the old Digest-SHA1 because razor2 has not been ported
+# to Digest-SHA.
+OPTDEPEND="app-crypt/gnupg
 	dev-perl/Digest-SHA1
 	dev-perl/Encode-Detect
 	dev-perl/Geo-IP
-	dev-perl/HTML-Parser
 	dev-perl/HTTP-Date
 	dev-perl/Mail-DKIM
 	dev-perl/Mail-SPF
-	dev-perl/Net-DNS
 	dev-perl/Net-Patricia
-	dev-perl/NetAddr-IP
+	dev-perl/Net-CIDR-Lite
 	dev-util/re2c
 	|| ( net-misc/wget[ssl] net-misc/curl[ssl] )
-	virtual/perl-Archive-Tar
-	virtual/perl-IO-Zlib
 	virtual/perl-MIME-Base64
 	virtual/perl-Pod-Parser
-	virtual/perl-Time-HiRes
 	berkdb? ( virtual/perl-DB_File )
 	ipv6? ( dev-perl/IO-Socket-INET6 )
 	ldap? ( dev-perl/perl-ldap )
@@ -60,18 +72,14 @@ DEPEND="app-crypt/gnupg
 		dev-perl/DBI
 		dev-perl/DBD-SQLite
 	)
-	ssl? (
-		dev-perl/IO-Socket-SSL
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+	ssl? ( dev-perl/IO-Socket-SSL )"
+
+DEPEND="${REQDEPEND}
+	test? (
+		${OPTDEPEND}
+		virtual/perl-Test-Harness
 	)"
-
-RDEPEND="${DEPEND}
-	dev-perl/Net-CIDR-Lite"
-
-# Some spamd tests fail, and it looks like the whole suite eventually
-# hangs.
-RESTRICT=test
+RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7199.patch"
@@ -80,13 +88,22 @@ PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
 )
 
-src_configure() {
-	# spamc can be built with ssl support.
-	local use_ssl="no"
-	if use ssl; then
-		use_ssl="yes"
-	fi
+src_prepare() {
+	default
 
+	# The sa_compile test does some weird stuff like hopping around in
+	# the directory tree and calling "make" to create a dist tarball
+	# from ${S}. It fails, and is more trouble than it's worth...
+	perl_rm_files t/sa_compile.t || die 'failed to remove sa_compile test'
+
+	# The spamc tests (which need the networked spamd daemon) fail for
+	# irrelevant reasons. It's too hard to disable them (unlike the
+	# spamd tests themselves -- see src_test), so use a crude
+	# workaround.
+	perl_rm_files t/spamc_*.t || die 'failed to remove spamc tests'
+}
+
+src_configure() {
 	# Set SYSCONFDIR explicitly so we can't get bitten by bug 48205 again
 	# (just to be sure, nobody knows how it could happen in the first place).
 	#
@@ -98,9 +115,9 @@ src_configure() {
 		SYSCONFDIR="${EPREFIX}/etc" \
 		DATADIR="${EPREFIX}/usr/share/spamassassin" \
 		PERL_BIN="${EPREFIX}/usr/bin/perl" \
-		ENABLE_SSL="${use_ssl}" \
+		ENABLE_SSL="$(usex ssl)" \
 		DESTDIR="${D}" \
-		|| die "Unable to build!"
+		|| die 'failed to create a Makefile using Makefile.PL'
 
 	# Now configure spamc.
 	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" spamc/Makefile
@@ -133,12 +150,12 @@ src_install () {
 
 	# Disable plugin by default
 	sed -i -e 's/^loadplugin/\#loadplugin/g' \
-		"${ED}"/etc/mail/spamassassin/init.pre \
+		"${ED}/etc/mail/spamassassin/init.pre" \
 		|| die "failed to disable plugins by default"
 
 	# Add the init and config scripts.
-	newinitd "${FILESDIR}"/3.4.1-spamd.init spamd
-	newconfd "${FILESDIR}"/3.4.1-spamd.conf spamd
+	newinitd "${FILESDIR}/3.4.1-spamd.init" spamd
+	newconfd "${FILESDIR}/3.4.1-spamd.conf" spamd
 
 	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
@@ -195,6 +212,14 @@ src_install () {
 		newexe "${FILESDIR}/update-spamassassin-rules.cron" \
 			   update-spamassassin-rules
 	fi
+}
+
+src_test() {
+	# Trick the test suite into skipping the spamd tests. Setting
+	# SPAMD_HOST to a non-localhost value causes SKIP_SPAMD_TESTS to be
+	# set in SATest.pm.
+	export SPAMD_HOST=disabled
+	default
 }
 
 pkg_postinst() {
