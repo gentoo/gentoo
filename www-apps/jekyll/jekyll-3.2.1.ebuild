@@ -7,7 +7,7 @@ USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit ruby-fakegem
 
-RUBY_FAKEGEM_EXTRADOC="CONTRIBUTING.markdown README.markdown History.markdown"
+RUBY_FAKEGEM_EXTRADOC="README.markdown History.markdown"
 RUBY_FAKEGEM_EXTRAINSTALL="features site"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
