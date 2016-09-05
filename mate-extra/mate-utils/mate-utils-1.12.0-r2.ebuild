@@ -50,6 +50,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
+PATCHES=( "${FILESDIR}/${P}-dict-gtk3.patch" )
+
 src_configure() {
 	mate_src_configure \
 		--disable-maintainer-flags \
