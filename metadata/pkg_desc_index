@@ -608,7 +608,7 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
-app-crypt/signing-party 1.1.4 1.1.11-r1 2.2: A collection of several tools related to OpenPGP
+app-crypt/signing-party 1.1.4 1.1.11-r1 2.2 2.4: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -2156,7 +2156,7 @@ app-shells/gentoo-bashcomp 20101217-r1 20121024 20140911: Gentoo-specific bash c
 app-shells/gentoo-zsh-completions 20141115 20150103 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 1.17 1.18 1.19: Shell history suggest box
-app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
+app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625 93.20160110: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
