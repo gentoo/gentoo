@@ -18,11 +18,10 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="cups +gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg tcmalloc widevine"
+IUSE="cups +gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
-# TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
-REQUIRED_USE="gn? ( gnome gnome-keyring !tcmalloc )"
+REQUIRED_USE="gn? ( gnome gnome-keyring )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -52,7 +51,7 @@ COMMON_DEPEND="
 	media-libs/libvpx:=[svc]
 	media-libs/speex:=
 	pulseaudio? ( media-sound/pulseaudio:= )
-	system-ffmpeg? ( >=media-video/ffmpeg-3.0.1:= )
+	system-ffmpeg? ( >=media-video/ffmpeg-2.7.2:= )
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
 	>=sys-libs/libcap-2.22:=
@@ -145,6 +144,7 @@ are not displayed properly:
 - media-fonts/bitstream-cyberbit
 - media-fonts/droid
 - media-fonts/ipamonafont
+- media-fonts/noto
 - media-fonts/ja-ipafonts
 - media-fonts/takao-fonts
 - media-fonts/wqy-microhei
@@ -164,7 +164,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-system-ffmpeg-r3.patch"
 	"${FILESDIR}/${PN}-system-jinja-r13.patch"
 	"${FILESDIR}/${PN}-widevine-r1.patch"
-	"${FILESDIR}/${PN}-gn-r5.patch"
+	"${FILESDIR}/chromium-54-ffmpeg2compat.patch"
 )
 
 pkg_pretend() {
@@ -410,7 +410,6 @@ src_configure() {
 	# TODO: support USE=gnome-keyring for GN
 	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
 	myconf_gn+=" enable_widevine=$(usex widevine true false)"
-	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_gconf=$(usex gnome true false)"
 	myconf_gn+=" use_gtk3=$(usex gtk3 true false)"
@@ -571,7 +570,9 @@ src_configure() {
 
 	einfo "Configuring Chromium..."
 	if use gn; then
-		tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn}" || die
+		# TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
+		tools/gn/bootstrap/bootstrap.py -v --gn-gen-args "${myconf_gn} use_allocator=\"none\"" || die
+		myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
 		out/Release/gn gen --args="${myconf_gn}" out/Release || die
 	else
 		build/linux/unbundle/replace_gyp_files.py ${myconf_gyp} || die

@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils flag-o-matic multilib toolchain-funcs versionator
+inherit flag-o-matic toolchain-funcs
 
 MY_PN=CQRlib
 MY_P="${MY_PN}-${PV}"
@@ -15,21 +15,26 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-libs/cvector"
 DEPEND="${RDEPEND}"
 
+DOCS=( README_CQRlib.txt )
+HTML_DOCS=( README_CQRlib.html )
+PATCHES=( "${FILESDIR}"/1.0.6-gentoo.patch )
+
 S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/1.0.6-gentoo.patch
+	default
+	sed "s:GENTOOLIBDIR:$(get_libdir):g" -i Makefile || die
+	append-cflags -std=c90
+	append-cxxflags -std=c++98
 }
 
 src_compile() {
-	sed "s:GENTOOLIBDIR:$(get_libdir):g" -i Makefile || die
-	append-flags -ansi
 	emake \
 		CC=$(tc-getCC) \
 		CXX=$(tc-getCXX) \
@@ -48,9 +53,7 @@ src_test() {
 
 src_install() {
 	emake -j1 DESTDIR="${ED}" install
+	einstalldocs
 
-	rm -f "${ED}"/usr/$(get_libdir)/*.la || die
-
-	dodoc README_CQRlib.txt
-	dohtml README_CQRlib.html
+	find "${D}" -name '*.la' -delete || die
 }
