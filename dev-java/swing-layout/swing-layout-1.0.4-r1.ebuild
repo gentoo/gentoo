@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Professional cross platform layouts with Swing"
 HOMEPAGE="https://swing-layout.dev.java.net/"
-SRC_URI="mirror//gentoo/${P}-src.zip"
+SRC_URI="mirror://gentoo/${P}-src.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
