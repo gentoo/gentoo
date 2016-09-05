@@ -17186,7 +17186,7 @@ sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.28 4.0-r1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
-sys-fs/e2fsprogs 1.42.13 1.43.1 1.43.2: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.42.13 1.43.1 1.43.2 1.43.3: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.3-r1 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
@@ -17315,7 +17315,7 @@ sys-libs/compiler-rt 9999: Compiler runtime libraries for clang
 sys-libs/cracklib 2.9.1-r1 2.9.4 2.9.5 2.9.6: Password Checking Library
 sys-libs/csu 79 85: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r1 4.8.30-r2 5.1.29-r1 5.3.28-r2 6.0.35 6.1.26 6.2.23: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.42.13 1.43.1 1.43.2: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.42.13 1.43.1 1.43.2 1.43.3: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 0.21 0.23 27: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.2 1.5.3: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
