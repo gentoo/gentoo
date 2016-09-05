@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	MATE_THEMES_V=".9999"
 else
 	MATE_THEMES_V="*"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Meta package to facilitate easy use of x11-themes/mate-themes"
