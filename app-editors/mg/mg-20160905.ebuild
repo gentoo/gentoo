@@ -34,7 +34,7 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		CURSES_LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install()  {
