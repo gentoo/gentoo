@@ -5445,7 +5445,7 @@ dev-perl/Crypt-RSA 1.990.0-r1: RSA public-key cryptosystem
 dev-perl/Crypt-Random 1.250.0-r1: Cryptographically Secure, True Random Number Generator
 dev-perl/Crypt-Random-Source 0.70.0-r1 0.110.0 0.120.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.130.0: Crypt::CBC compliant Rijndael encryption module
-dev-perl/Crypt-SMIME 0.150.0-r1 0.160.0-r1: S/MIME message signing, verification, encryption and decryption
+dev-perl/Crypt-SMIME 0.150.0-r1 0.160.0-r1 0.170.0: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r1 0.720.0-r2: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1: Crypt::Simple - encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r1: LM/NT hashing, for Samba's smbpasswd entries
@@ -6307,6 +6307,7 @@ dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0 3.320.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
+dev-perl/Taint-Util 0.80.0-r1: Test for and flip the taint flag without regex matches or eval
 dev-perl/Task-Weaken 1.40.0-r1: Ensure that a platform has weaken support
 dev-perl/TeX-Encode 1.300.0: Encode/decode Perl utf-8 strings into TeX
 dev-perl/Template-DBI 2.650.0-r1: DBI plugin for the Template Toolkit
@@ -9247,7 +9248,7 @@ dev-ruby/rr 1.1.2-r1 1.2.0: A double framework featuring a selection of double t
 dev-ruby/rrdtool-bindings 1.4.8 1.5.5 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r2 2.14.1-r1 2.99.0 3.3.0 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.3 3.4.4 3.5.0 3.5.1 3.5.2: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.3 3.4.4 3.5.0 3.5.1 3.5.2 3.5.3: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5-r1 2.99.2 3.3.1 3.4.0 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.2.0 1.2.0-r1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1 3.5.0: A Behaviour Driven Development (BDD) framework for Ruby

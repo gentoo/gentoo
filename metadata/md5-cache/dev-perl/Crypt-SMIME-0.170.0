@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) virtual/perl-XSLoader virtual/perl-ExtUtils-MakeMaker dev-perl/extutils-pkgconfig dev-perl/ExtUtils-CChecker >=virtual/perl-ExtUtils-Constant-0.230.0 test? ( dev-perl/Test-Exception virtual/perl-Test-Simple >=dev-perl/Test-Taint-1.60.0 ) dev-lang/perl:=
+DEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) virtual/perl-XSLoader virtual/perl-ExtUtils-MakeMaker dev-perl/extutils-pkgconfig dev-perl/ExtUtils-CChecker >=virtual/perl-ExtUtils-Constant-0.230.0 test? ( dev-perl/Test-Exception virtual/perl-Test-Simple !minimal? ( >=dev-perl/Test-Taint-1.60.0 >=dev-perl/Taint-Util-0.80.0 ) ) dev-lang/perl:=
 DESCRIPTION=S/MIME message signing, verification, encryption and decryption
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Crypt-SMIME/
-IUSE=libressl test
+IUSE=libressl test minimal
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/M/MI/MIKAGE/Crypt-SMIME-0.16.tar.gz
+SRC_URI=mirror://cpan/authors/id/M/MI/MIKAGE/Crypt-SMIME-0.17.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=967434a67dee1b9daa70ff45f05c6f40
+_md5_=810f22d8c2390b0eee11e2f9c9901d26
