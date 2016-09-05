@@ -613,11 +613,6 @@ media-video/kffmpegthumbnailer
 # Removal in 30 days.
 dev-perl/cdk-perl
 
-# Matthias Maier <tamiko@gentoo.org> (3 Aug 2016)
-# Masked for removal in 30 days. Obsolete packages that are now part of
-# sci-libs/libqalculate and/or sci-calculators/qalculate-gtk
-sci-calculators/qalculate-units
-
 # Alexis Ballier <aballier@gentoo.org> <2 Aug 2016>
 # Doesn't install .so, causing all its revdeps to fail to build.
 # Doesn't honour USE=static-libs.
