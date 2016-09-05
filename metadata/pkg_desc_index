@@ -4798,7 +4798,7 @@ dev-libs/libsodium 1.0.2 1.0.8 1.0.10 1.0.11: A portable fork of NaCl, a higher-
 dev-libs/libsolv 0.6.22: Library for solving packages and reading repositories
 dev-libs/libspnav 0.2.2: The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
-dev-libs/libsqlora8 2.3.3: libsqlora8 is a simple C-library to access Oracle databases via the OCI interface
+dev-libs/libsqlora8 2.3.3-r1: Simple C-library to access Oracle databases via the OCI interface
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
