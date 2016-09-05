@@ -1706,6 +1706,7 @@ app-misc/bijiben 3.18.2 3.20.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.0.1 2.1.1: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2 1.6.2-r1: Displays a list of events happening in the near future
+app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r1: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2: Draw any kind of boxes around your text
 app-misc/brewtarget 2.3.1: Application to create and manage beer recipes

@@ -907,6 +907,9 @@ app-misc/anki:recording - Enable support for audio recording
 app-misc/anki:sound - Enable support for adding sound to cards
 app-misc/bijiben:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
 app-misc/binwalk:graph - Enable support for generating entropy graphs
+app-misc/blink1:mini-tool - Build and install command-line mini-tool blink1-mini-tool (normally used for embedded devices)
+app-misc/blink1:server - Build and install REST API server (currently hard-coded to TCP port 8080)
+app-misc/blink1:tool - Build and install command-line tool blink1-tool
 app-misc/byobu:screen - Use app-misc/screen as the default backend
 app-misc/ca-certificates:cacert - Include root certs from CAcert (http://www.cacert.org/) and Software in the Public Interest (http://www.spi-inc.org/)
 app-misc/ddccontrol:pci - enable direct PCI memory access (the setuid ddcpci util)
