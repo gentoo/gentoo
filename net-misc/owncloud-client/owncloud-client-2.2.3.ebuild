@@ -47,7 +47,8 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 	)
 	samba? ( >=net-fs/samba-3.5 )
 	sftp? ( >=net-libs/libssh-0.5 )
-	!net-misc/ocsync"
+	!net-misc/ocsync
+	!net-misc/nextcloud-client"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx
