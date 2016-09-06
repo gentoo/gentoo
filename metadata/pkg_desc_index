@@ -17000,6 +17000,7 @@ sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured f
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 8.1.2 8.2.0 2015.2.9999 2016.1.9999: A virtual network service for Openstack
 sys-cluster/nova 13.1.0 13.1.1 2015.2.9999 2016.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
