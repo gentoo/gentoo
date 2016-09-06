@@ -59,11 +59,23 @@ RDEPEND="${CDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-RESTRICT="test"
-
 src_prepare() {
 	# Fixes QA Notices: https://github.com/gentoo/gentoo/pull/1760 and https://github.com/hughsie/PackageKit/issues/143
 	eapply "${FILESDIR}/${P}-cache-qafix.patch"
+
+	# Disable unittests not working with portage backend
+	# console: requires terminal input
+	sed -e 's:^\(.*/packagekit-glib2/control\)://\1:' \
+		-e 's:^\(.*/packagekit-glib2/transaction-list\)://\1:' \
+		-e 's:^\(.*/packagekit-glib2/client"\)://\1:' \
+		-e 's:^\(.*/packagekit-glib2/package-sack\)://\1:' \
+		-e 's:^\(.*/packagekit-glib2/task\)://\1:' \
+		-e 's:^\(.*/packagekit-glib2/console\)://\1:' \
+		-i lib/packagekit-glib2/pk-test-daemon.c || die
+	sed -e 's:^\(.*/packagekit/spawn\)://\1:' \
+	    -e 's:^\(.*/packagekit/transaction-db\)://\1:' \
+	    -e 's:^\(.*/packagekit/backend\)://\1:' \
+		-i src/pk-self-test.c || die
 
 	eapply_user
 	use vala && vala_src_prepare
@@ -89,9 +101,9 @@ src_configure() {
 		$(use_enable networkmanager) \
 		$(use_enable systemd) \
 		$(use_enable test daemon-tests) \
+		$(use_enable test local) \
 		$(use_enable vala) \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
-		#$(use_enable test local)
 }
 
 src_install() {
