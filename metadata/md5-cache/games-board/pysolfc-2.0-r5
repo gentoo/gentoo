@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/pysolfc/PySolFC-2.0.tar.bz2 extra-cardsets? ( mirror://sourceforge/pysolfc/PySolFC-Cardsets-2.0.tar.bz2 )
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:-
 _eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=e49354e7576f2eb9a192b5390bb4e7a6
+_md5_=12fb752c494a3bd32d3d791b47ced295

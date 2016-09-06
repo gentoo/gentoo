@@ -10403,7 +10403,7 @@ games-board/pokerth 1.1.1 1.1.1-r1 1.1.1-r2: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r2: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
 games-board/pychess 0.10.1-r2 0.12.3 0.12.3-r1: A chess client for Gnome
-games-board/pysolfc 2.0-r3 2.0-r4: An exciting collection of more than 1000 solitaire card games
+games-board/pysolfc 2.0-r3 2.0-r5: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230 20091230-r1: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322 1.5.4_p20100322-r1: An ancient boardgame, very common in Japan, China and Korea
 games-board/scid 4.6.2 4.6.2-r1: a free chess database application
