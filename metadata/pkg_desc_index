@@ -17386,7 +17386,7 @@ sys-libs/slang 2.2.4 2.2.4-r1 2.3.0: A multi-platform programmer's library desig
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.7 2.1.8: Samba talloc library
-sys-libs/tdb 1.3.8 1.3.9 1.3.10: A simple database API
+sys-libs/tdb 1.3.8 1.3.10 1.3.11: A simple database API
 sys-libs/tevent 0.9.26 0.9.28 0.9.29 0.9.30: Samba tevent library
 sys-libs/timezone-data 2016e 2016f: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
@@ -19073,7 +19073,7 @@ xfce-extra/xfce4-mpc-plugin 0.4.5 0.4.99: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.2.4 1.2.99: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitoring panel plug-in, inspired by Gnome's Netspeed applet
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
-xfce-extra/xfce4-notifyd 0.2.4 0.3.0: Notification daemon for the Xfce desktop environment
+xfce-extra/xfce4-notifyd 0.2.4 0.3.0 0.3.1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.5.2 1.6.0: Power manager for the Xfce desktop environment
