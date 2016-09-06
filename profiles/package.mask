@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
+# Dead upstream since 2013. Superseded by eject from
+# sys-apps/util-linux.
+# Slated for removal in 30 days.
+sys-block/eject
+
 # Mike Gilbert <floppym@gentoo.org> (03 Sep 2016)
 # Python 3.3 will be removed from Gentoo in 30 days.
 # dev-lang/python:3.3 will be available in the python overlay.
