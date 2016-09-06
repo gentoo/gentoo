@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install postinst prepare
 DEPEND=virtual/yacc libevent? ( dev-libs/libevent ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) munin? ( net-analyzer/munin ) sys-devel/flex virtual/pkgconfig
 DESCRIPTION=An authoritative only, high performance, open source name server
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.nlnetlabs.nl/projects/nsd
 IUSE=bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl libressl
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=virtual/yacc libevent? ( dev-libs/libevent ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) munin? ( net-analyzer/munin )
 SLOT=0
-SRC_URI=http://www.nlnetlabs.nl/downloads/nsd/nsd-4.1.7.tar.gz
+SRC_URI=http://www.nlnetlabs.nl/downloads/nsd/nsd-4.1.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=92ecd2884678c1a9ea3ef7d0606f8a37
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=f6088265d6e649e542c4522d9816cc86

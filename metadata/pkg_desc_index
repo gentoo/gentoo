@@ -14090,7 +14090,7 @@ net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/Postgr
 net-dns/namecoin-qt 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 3.2.22 4.1.7 4.1.10 4.1.11-r2: An authoritative only, high performance, open source name server
+net-dns/nsd 3.2.22 4.1.10 4.1.11-r2 4.1.12: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.10 2.0.1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
