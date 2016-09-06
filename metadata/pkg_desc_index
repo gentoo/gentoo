@@ -12413,7 +12413,7 @@ media-libs/allegro 4.4.2-r1 5.0.11: A game programming library
 media-libs/alsa-lib 1.0.29 1.1.1 1.1.2: Advanced Linux Sound Architecture Library
 media-libs/alsa-oss 1.0.28: Advanced Linux Sound Architecture OSS compatibility layer
 media-libs/alure 1.2: The OpenAL Utility Toolkit
-media-libs/assimp 3.0.1270 3.1.1 3.2-r2: Importer library to import assets from 3D files
+media-libs/assimp 3.0.1270 3.1.1 3.2-r2 3.2-r3: Importer library to import assets from 3D files
 media-libs/atlas-c++ 0.6.3: Atlas protocol, used in role playing games at worldforge
 media-libs/aubio 0.4.1 0.4.2 0.4.3: Library for audio labelling
 media-libs/audiofile 0.3.5 0.3.6-r1: An elegant API for accessing audio files
