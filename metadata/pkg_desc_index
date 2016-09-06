@@ -14848,6 +14848,7 @@ net-misc/networkmanager-openvpn 1.0.8 1.2.2: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.0.8 1.2.2: NetworkManager PPTP plugin
 net-misc/networkmanager-sstp 0.9.8: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.0.8 1.2.2: NetworkManager VPNC plugin
+net-misc/nextcloud-client 2.2.3: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
@@ -14871,7 +14872,7 @@ net-misc/openvpn 2.3.11 2.3.12 9999: Robust and highly flexible tunneling applic
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0: Production quality, multilayer virtual switch
 net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
-net-misc/owncloud-client 2.2.0-r1 2.2.1 2.2.2 2.2.3: Synchronize files from ownCloud Server with your computer
+net-misc/owncloud-client 2.2.3 2.2.3-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files
