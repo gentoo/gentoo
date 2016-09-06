@@ -23,7 +23,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	sed -i -e '/pytest-runner/d' setup.py || die
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
