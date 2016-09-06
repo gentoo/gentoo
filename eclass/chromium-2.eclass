@@ -50,7 +50,7 @@ _chromium_set_l10n_IUSE() {
 	for lang in ${CHROMIUM_LANGS}; do
 		# Default to enabled since we bundle them anyway.
 		# USE-expansion will take care of disabling the langs the user has not
-		# selected via LINGUAS.
+		# selected via L10N.
 		IUSE+=" +l10n_${lang}"
 	done
 }
@@ -63,7 +63,7 @@ fi
 # @USAGE:
 # @DESCRIPTION:
 # Removes pak files from the current directory for languages that the user has
-# not selected via the LINGUAS variable.
+# not selected via the L10N variable.
 # Also performs QA checks to ensure CHROMIUM_LANGS has been set correctly.
 chromium_remove_language_paks() {
 	local lang pak
@@ -71,7 +71,7 @@ chromium_remove_language_paks() {
 	# Look for missing pak files.
 	for lang in ${CHROMIUM_LANGS}; do
 		if [[ ! -e ${lang}.pak ]]; then
-			eqawarn "LINGUAS warning: no .pak file for ${lang} (${lang}.pak not found)"
+			eqawarn "L10N warning: no .pak file for ${lang} (${lang}.pak not found)"
 		fi
 	done
 
@@ -87,7 +87,7 @@ chromium_remove_language_paks() {
 			continue
 		fi
 		if ! has ${lang} ${CHROMIUM_LANGS}; then
-			eqawarn "LINGUAS warning: no ${lang} in LANGS"
+			eqawarn "L10N warning: no ${lang} in LANGS"
 			continue
 		fi
 		if ! use l10n_${lang}; then
