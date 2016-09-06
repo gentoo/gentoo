@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit user eutils systemd
+inherit user systemd
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
@@ -33,7 +33,8 @@ DEPEND="
 
 src_prepare() {
 	# Fix the paths in the munin plugin to match our install
-	epatch "${FILESDIR}"/nsd_munin_.patch
+	eapply "${FILESDIR}"/nsd_munin_.patch
+	eapply_user
 }
 
 src_configure() {
@@ -66,10 +67,10 @@ src_install() {
 
 	dodoc doc/{ChangeLog,CREDITS,NSD-4-features,NSD-FOR-BIND-USERS,README,RELNOTES,REQUIREMENTS}
 
-	newinitd "${FILESDIR}"/nsd.initd nsd
+	newinitd "${FILESDIR}"/nsd.initd-r1 nsd
 
 	# install munin plugin and config
-	if use munin; then
+	if use munin ; then
 		exeinto /usr/libexec/munin/plugins
 		doexe contrib/nsd_munin_
 		insinto /etc/munin/plugin-conf.d
@@ -80,7 +81,7 @@ src_install() {
 
 	# remove the /run directory that usually resides on tmpfs and is
 	# being taken care of by the nsd init script anyway (checkpath)
-	rm -rf "${ED}"/run || die "Failed to remove /run"
+	rm -r "${ED}"/run || die "Failed to remove /run"
 }
 
 pkg_postinst() {
