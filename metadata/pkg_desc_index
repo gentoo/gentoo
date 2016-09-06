@@ -17243,7 +17243,7 @@ sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of dir
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
 sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
 sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
-sys-fs/rar2fs 1.22.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
+sys-fs/rar2fs 1.22.0 1.23.1: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1: Fuse module to mount uncompressed RAR archives
 sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
