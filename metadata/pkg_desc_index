@@ -5046,6 +5046,7 @@ dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standa
 dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5 0.7: Module which offers basic control of ANSI compliant terminals
+dev-ml/OCaml-ImageMagick 0.34: Provide the ImageMagick methods to OCaml
 dev-ml/async 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library
 dev-ml/async_extra 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (extra)
 dev-ml/async_kernel 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (core)

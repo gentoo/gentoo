@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=media-gfx/imagemagick:= dev-lang/ocaml:=[ocamlopt]
+DESCRIPTION=Provide the ImageMagick methods to OCaml
+EAPI=6
+HOMEPAGE=http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=media-gfx/imagemagick:= dev-lang/ocaml:=[ocamlopt]
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/ImageMagick/OCaml-ImageMagick-0.34.tgz
+_eclass_exported_funcs=src_install:-
+_md5_=27431185c13284d27da7d8ecae5f2ff5
