@@ -34,6 +34,7 @@ RDEPEND="${RDEPEND}
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-PIL-imports.patch" #471514
+		"${FILESDIR}/${PN}-gentoo.patch" #591904
 	)
 
 	distutils-r1_python_prepare_all
@@ -50,6 +51,7 @@ src_prepare() {
 	sed -i \
 		-e "/pysol.desktop/d" \
 		-e "s:share/icons:share/pixmaps:" \
+		-e "s:data_dir =.*:data_dir = \'/usr/share/${PN}\':" \
 		setup.py || die
 
 	mv docs/README{,.txt} || die
