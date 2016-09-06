@@ -20,9 +20,9 @@ SLOT="0"
 RDEPEND="
 	>=dev-python/pyflakes-0.8.1[${PYTHON_USEDEP}]
 	<dev-python/pyflakes-1.3[${PYTHON_USEDEP}]
-	!=dev-python/pyflakes-1.2.0[${PYTHON_USEDEP}]
-	!=dev-python/pyflakes-1.2.1[${PYTHON_USEDEP}]
-	!=dev-python/pyflakes-1.2.2[${PYTHON_USEDEP}]
+	!~dev-python/pyflakes-1.2.0
+	!~dev-python/pyflakes-1.2.1
+	!~dev-python/pyflakes-1.2.2
 	>=dev-python/pycodestyle-2.0.0[${PYTHON_USEDEP}]
 	<=dev-python/pycodestyle-2.1.0[${PYTHON_USEDEP}]
 	"
