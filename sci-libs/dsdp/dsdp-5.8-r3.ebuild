@@ -6,11 +6,11 @@ EAPI=6
 
 inherit multilib toolchain-funcs versionator
 
-MYP=DSDP${PV}
+MY_P="${PN^^}${PV}"
 
 DESCRIPTION="Software for interior-point for semidefinite programming"
 HOMEPAGE="http://www.mcs.anl.gov/hs/software/DSDP/"
-SRC_URI="http://www.mcs.anl.gov/hs/software/DSDP//${MYP}.tar.gz"
+SRC_URI="http://www.mcs.anl.gov/hs/software/DSDP/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND="virtual/lapack"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${MYP}"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-readsdpa.patch
