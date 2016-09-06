@@ -4,11 +4,11 @@ DESCRIPTION=High-performance, distributed memory object caching system
 EAPI=5
 HOMEPAGE=http://memcached.org/
 IUSE=test slabs-reassign debug sasl selinux
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=BSD
 RDEPEND=>=dev-libs/libevent-1.4 dev-lang/perl sasl? ( dev-libs/cyrus-sasl ) selinux? ( sec-policy/selinux-memcached )
 SLOT=0
 SRC_URI=http://www.memcached.org/files/memcached-1.4.31.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=170626950d288375193eac13053e635b
+_md5_=f5448fe5ea7af810c5b343f4b7823d24
