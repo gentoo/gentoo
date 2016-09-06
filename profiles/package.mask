@@ -31,6 +31,10 @@
 #--- END OF EXAMPLES ---
 
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
+# Breaks samba's nmbd process (bug #592502)
+=sys-libs/tevent-0.9.30
+
+# Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Dead upstream since 2013. Superseded by eject from
 # sys-apps/util-linux.
 # Slated for removal in 30 days.
