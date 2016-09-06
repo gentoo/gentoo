@@ -1,0 +1,79 @@
+--- nse_openssl.cc
++++ nse_openssl.cc
+@@ -281,7 +281,7 @@
+   const unsigned char *msg = (unsigned char *) luaL_checklstring( L, 2, &msg_len );
+   unsigned char digest[EVP_MAX_MD_SIZE];
+   const EVP_MD * evp_md;
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   EVP_MD_CTX mdctx;
+ #else
+   EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
+@@ -291,7 +291,7 @@
+ 
+   if (!evp_md) return luaL_error( L, "Unknown digest algorithm: %s", algorithm );
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   EVP_MD_CTX_init(&mdctx);
+   if (!(
+       EVP_DigestInit_ex( &mdctx, evp_md, NULL ) &&
+@@ -394,7 +394,7 @@
+   if (iv[0] == '\0')
+     iv = NULL;
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   EVP_CIPHER_CTX cipher_ctx;
+   EVP_CIPHER_CTX_init( &cipher_ctx );
+ 
+@@ -496,7 +496,7 @@
+   if (iv[0] == '\0')
+     iv = NULL;
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   EVP_CIPHER_CTX cipher_ctx;
+   EVP_CIPHER_CTX_init( &cipher_ctx );
+ 
+@@ -684,7 +684,7 @@
+ LUALIB_API int luaopen_openssl(lua_State *L) {
+ 
+   OpenSSL_add_all_algorithms();
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   ERR_load_crypto_strings();
+ #else
+   /* This is now deprecated in OpenSSL 1.1.0 _ No explicit initialisation 
+--- nse_ssl_cert.cc
++++ nse_ssl_cert.cc
+@@ -528,7 +528,7 @@
+     lua_setfield(L, -2, "subject");
+   }
+
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   const char *sig_algo = OBJ_nid2ln(OBJ_obj2nid(cert->sig_alg->algorithm));
+ #else
+   const char *sig_algo = OBJ_nid2ln(X509_get_signature_nid(cert));
+@@ -555,7 +555,7 @@
+     return 2;
+   }
+   lua_newtable(L);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#ifndef HAVE_OPAQUE_STRUCTS
+   pkey_type = EVP_PKEY_type(pubkey->type);
+ #else
+   pkey_type = EVP_PKEY_base_id(pubkey);
+@@ -572,9 +572,9 @@
+     bignum_data_t * data = (bignum_data_t *) lua_newuserdata( L, sizeof(bignum_data_t));
+     luaL_getmetatable( L, "BIGNUM" );
+     lua_setmetatable( L, -2 );
+-  #if OPENSSL_VERSION_NUMBER < 0x10100000L
++  #if OPENSSL_VERSION_NUMBER < 0x10100000L || !defined(HAVE_OPAQUE_RSA_DSA_DH)
+     data->bn = rsa->e;
+   #elif OPENSSL_VERSION_NUMBER < 0x10100006L
+     BIGNUM *n, *e, *d;
+     RSA_get0_key(rsa, &n, &e, &d);
+     data->bn = e;
+

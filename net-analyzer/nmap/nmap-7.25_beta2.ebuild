@@ -75,7 +75,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
 		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
-		"${FILESDIR}"/${PN}-7.25-libpcre.patch
+		"${FILESDIR}"/${PN}-7.25-libpcre.patch \
+		"${FILESDIR}"/${PN}-7.25-libressl.patch
 
 	if use nls; then
 		local lingua=''
