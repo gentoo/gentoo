@@ -54,7 +54,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
-		$(use_enable ldap) \
+		$(usex ldap '' --disable-ldap) \
 		--disable-rpath \
 		--disable-rpath-install --bundled-libraries=NONE \
 		--with-modulesdir="${EPREFIX}"/usr/$(get_libdir)/samba \
