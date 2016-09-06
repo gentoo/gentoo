@@ -27,3 +27,4 @@ sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
 sys-apps/systemd-sysv-utils
 sys-process/systemd-cron
+www-misc/profile-sync-daemon
