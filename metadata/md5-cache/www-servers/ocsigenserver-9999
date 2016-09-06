@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install setup unpack
+DEPEND=>=dev-ml/lwt-2.5.0:=[react,ssl] >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-4:=[camlp4(+)] >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= dbm? ( dev-ml/camldbm:= ) sqlite? ( dev-ml/ocaml-sqlite3:= ) >=dev-ml/findlib-1.0.4-r1 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Ocaml-powered webserver and framework for dynamic web programming
+EAPI=5
+HOMEPAGE=http://www.ocsigen.org
+IUSE=debug doc dbm +ocamlopt +sqlite zlib
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-ml/lwt-2.5.0:=[react,ssl] >=dev-ml/react-0.9.3:= zlib? ( >=dev-ml/camlzip-1.03-r1:= ) dev-ml/cryptokit:= >=dev-ml/ocamlnet-3.6:=[pcre] >=dev-ml/pcre-ocaml-6.2.5:= >=dev-ml/tyxml-4:=[camlp4(+)] >=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/ocaml-ipaddr:= dbm? ( dev-ml/camldbm:= ) sqlite? ( dev-ml/ocaml-sqlite3:= )
+REQUIRED_USE=|| ( sqlite dbm )
+RESTRICT=strip installsources
+SLOT=0/9999
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-r3 src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=39a5ef5aa1ed044d29161af52499d37e
