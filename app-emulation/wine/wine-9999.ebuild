@@ -315,7 +315,7 @@ src_unpack() {
 
 			if [[ "${CURRENT_WINE_COMMIT}" != "${COMPAT_WINE_COMMIT}" ]]; then
 				einfo "The current Staging patchset is not guaranteed to apply on this WINE commit."
-				einfo "If src_prepare fails, try emerging with the env var EGIT_COMMIT."
+				einfo "If src_prepare fails, try emerging with the env var WINE_COMMIT."
 				einfo "Example: WINE_COMMIT=${COMPAT_WINE_COMMIT} emerge -1 wine"
 			fi
 		fi
@@ -441,7 +441,7 @@ multilib_src_configure() {
 		$(use_with themes gtk3)
 		$(use_with vaapi va)
 	)
-	use d3d9 && myconf+=( $(use_with d3d9 d3dadapter) )
+	use d3d9 && myconf+=( $(use_with d3d9 d3d9-nine) )
 
 	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
