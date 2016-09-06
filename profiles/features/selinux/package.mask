@@ -1,5 +1,12 @@
 # $Id$
 
+# Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
+# On behalf of proxy-maint
+# Mask due to the package requiring systemd
+# and causing unresolvable dep issues
+# See: https://github.com/gentoo/gentoo/pull/2262
+www-misc/profile-sync-daemon
+
 # Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
