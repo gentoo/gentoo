@@ -1,0 +1,18 @@
+--- cmake-modules/Findassimp.cmake.old	2016-09-06 08:26:35.107697600 +0200
++++ cmake-modules/Findassimp.cmake	2016-09-06 08:29:25.337696582 +0200
+@@ -1,13 +1,13 @@
+ FIND_PATH(
+   assimp_INCLUDE_DIRS
+   NAMES postprocess.h scene.h version.h config.h cimport.h
+-  PATHS /usr/local/include/
++  PATHS /usr/include/
+ )
+ 
+ FIND_LIBRARY(
+   assimp_LIBRARIES
+   NAMES assimp
+-  PATHS /usr/local/lib/
++  PATHS /usr/lib/
+ )
+ 
+ IF (assimp_INCLUDE_DIRS AND assimp_LIBRARIES)
