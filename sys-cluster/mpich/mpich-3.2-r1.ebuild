@@ -30,7 +30,8 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	!sys-cluster/mpich2
-	!sys-cluster/openmpi"
+	!sys-cluster/openmpi
+	!sys-cluster/nullmpi"
 
 S="${WORKDIR}"/${PN}-${MY_PV}
 

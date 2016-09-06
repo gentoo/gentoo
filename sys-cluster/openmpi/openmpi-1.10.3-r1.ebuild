@@ -57,6 +57,7 @@ MPI_UNCLASSED_DEP_STR="
 CDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
+	!sys-cluster/nullmpi
 	!sys-cluster/mpiexec
 	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
