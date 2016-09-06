@@ -22,7 +22,7 @@ DEPEND="dev-cpp/gtest
 		>=dev-libs/re2-0.2016.05.01
 		sys-libs/libunwind
 		sys-libs/ncurses:=
-		jemalloc? ( >=dev-libs/jemalloc-3.2 )
+		jemalloc? ( >=dev-libs/jemalloc-4.0 )
 		tcmalloc? ( dev-util/google-perftools )"
 RDEPEND="${DEPEND}"
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
