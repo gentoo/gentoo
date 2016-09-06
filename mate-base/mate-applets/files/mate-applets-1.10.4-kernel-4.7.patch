@@ -1,0 +1,38 @@
+From 1b4478eab642787c43601259611f7b27e0bb473b Mon Sep 17 00:00:00 2001
+From: leigh123linux <leigh123linux@googlemail.com>
+Date: Thu, 9 Jun 2016 10:06:34 +0100
+Subject: [PATCH] fix build with kernel-4.7
+
+---
+ cpufreq/src/cpufreq-monitor-libcpufreq.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/cpufreq/src/cpufreq-monitor-libcpufreq.c b/cpufreq/src/cpufreq-monitor-libcpufreq.c
+index 40c44ba..5fe79fb 100644
+--- a/cpufreq/src/cpufreq-monitor-libcpufreq.c
++++ b/cpufreq/src/cpufreq-monitor-libcpufreq.c
+@@ -23,8 +23,11 @@
+ #include <glib/gi18n.h>
+ 
+ #include <stdlib.h>
++#include <linux/version.h>
+ #include <cpufreq.h>
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 7, 0)
++#include <cpuidle.h>
++#endif
+ #include "cpufreq-monitor-libcpufreq.h"
+ #include "cpufreq-utils.h"
+ 
+@@ -111,7 +114,11 @@ cpufreq_monitor_libcpufreq_run (CPUFreqMonitor *monitor)
+ 		/* Check whether it failed because
+ 		 * cpu is not online.
+ 		 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 7, 0)
+ 		if (!cpufreq_cpu_exists (cpu)) {
++#else
++		if (cpupower_is_cpu_online (cpu)) {
++#endif
+ 			g_object_set (G_OBJECT (monitor), "online", FALSE, NULL);
+ 			return TRUE;
+ 		}
