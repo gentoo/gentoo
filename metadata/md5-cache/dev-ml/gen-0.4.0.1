@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=test? ( dev-ml/ounit dev-ml/qcheck ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=test? ( dev-ml/ounit dev-ml/iTeML ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=Simple, efficient iterators for OCaml
 EAPI=5
 HOMEPAGE=https://github.com/c-cube/gen
@@ -11,4 +11,4 @@ SLOT=0/0.4.0.1
 SRC_URI=https://github.com/c-cube/gen/archive/0.4.0.1.tar.gz -> gen-0.4.0.1.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=8442de87df0619bac8d785caecd429a9
+_md5_=8ca3f57a8a5da1e17bb2a9fdd234e271

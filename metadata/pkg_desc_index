@@ -5059,7 +5059,7 @@ dev-ml/biniou 1.0.9 1.0.12: A binary data serialization format inspired by JSON 
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
 dev-ml/bson 0.89.3: An ocaml implementation for bson
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
-dev-ml/calendar 2.03.2: An Ocaml library to handle dates and time
+dev-ml/calendar 2.03.2 2.04: An Ocaml library to handle dates and time
 dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
@@ -5094,7 +5094,7 @@ dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gen 0.4.0.1: Simple, efficient iterators for OCaml
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
-dev-ml/iTeML 2.0.1: Inline (Unit) Tests for OCaml
+dev-ml/iTeML 2.0.1 2.2: Inline (Unit) Tests for OCaml
 dev-ml/incremental 113.24.00 113.33.00: Library for incremental computations
 dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.5.1 1.6.0: IO memory page library for Mirage backends
@@ -5204,7 +5204,7 @@ dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Cam
 dev-ml/result 1.2: Compat result type
 dev-ml/sequence 0.8: Simple sequence (iterator) datatype and combinators
 dev-ml/sexplib 112.35.00 113.00.00 113.24.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
-dev-ml/stringext 1.4.0-r1 1.4.1 1.4.2: Extra string functions for OCaml
+dev-ml/stringext 1.4.2: Extra string functions for OCaml
 dev-ml/textutils 112.17.00 113.24.00 113.33.00: Text output utilities
 dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typerep 113.24.00 113.33.03: Library for creating runtime representation of OCaml types

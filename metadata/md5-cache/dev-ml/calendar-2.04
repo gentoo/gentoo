@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=An Ocaml library to handle dates and time
+EAPI=5
+HOMEPAGE=http://forge.ocamlcore.org/projects/calendar/
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt]
+SLOT=0/2.04
+SRC_URI=http://forge.ocamlcore.org/frs/download.php/1481/calendar-2.04.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=a0ebe99d45c4a25b01dd0ed6cec7bfef
