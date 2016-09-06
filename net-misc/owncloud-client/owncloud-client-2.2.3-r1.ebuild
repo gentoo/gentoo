@@ -47,7 +47,8 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 	)
 	samba? ( >=net-fs/samba-3.5 )
 	sftp? ( >=net-libs/libssh-0.5 )
-	!net-misc/ocsync"
+	!net-misc/ocsync
+	!net-misc/nextcloud-client"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx
@@ -68,9 +69,11 @@ src_prepare() {
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
 
-	use nautilus || sed -i -e "s/add_subdirectory(nautilus)//" \
-		shell_integration/CMakeLists.txt || die "sed failed"
-
+	if ! use nautilus; then
+		pushd shell_integration > /dev/null || die
+		cmake_comment_add_subdirectory nautilus
+		popd > /dev/null || die
+	fi
 	default
 }
 
@@ -84,17 +87,10 @@ src_configure() {
 		-DBUILD_WITH_QT4=$(usex qt4)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libsmbclient=$(usex !samba)
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibSSH=$(usex !sftp)
-		-DUSE_UNIT_TESTING=$(usex test)
+		-DUNIT_TESTING=$(usex test)
 	)
 
 	cmake-utils_src_configure
-}
-
-src_test() {
-	# 1 test needs an existing ${HOME}/.config directory
-	mkdir "${T}"/.config
-	export HOME="${T}"
-	cmake-utils_src_test
 }
 
 pkg_postinst() {

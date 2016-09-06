@@ -6,9 +6,10 @@ EAPI=6
 
 inherit cmake-utils
 
-DESCRIPTION="Synchronize files from ownCloud Server with your computer"
-HOMEPAGE="http://owncloud.org/"
-SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
+DESCRIPTION="Nextcloud themed desktop client"
+HOMEPAGE="https://github.com/nextcloud/client_theming"
+SRC_URI="http://download.owncloud.com/desktop/stable/owncloudclient-${PV}.tar.xz
+	https://github.com/nextcloud/client_theming/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
@@ -47,7 +48,8 @@ RDEPEND=">=dev-db/sqlite-3.4:3
 	)
 	samba? ( >=net-fs/samba-3.5 )
 	sftp? ( >=net-libs/libssh-0.5 )
-	!net-misc/ocsync"
+	!net-misc/ocsync
+	!net-misc/owncloud-client"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-python/sphinx
@@ -62,14 +64,26 @@ DEPEND="${RDEPEND}
 		qt5? ( dev-qt/qttest:5 )
 	)"
 
-S=${WORKDIR}/${P/-}
+S=${WORKDIR}/client_theming-${PV}
+
+src_unpack() {
+	default
+
+	rmdir "${S}"/client || die
+	mv "${WORKDIR}"/owncloudclient-${PV} "${S}"/client \
+		|| die
+}
 
 src_prepare() {
+	CMAKE_USE_DIR="${S}"/client
 	# Keep tests in ${T}
-	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
+	sed -i -e "s#\"/tmp#\"${T}#g" client/test/test*.cpp || die "sed failed"
 
-	use nautilus || sed -i -e "s/add_subdirectory(nautilus)//" \
-		shell_integration/CMakeLists.txt || die "sed failed"
+	if ! use nautilus; then
+		pushd client/shell_integration > /dev/null || die
+		cmake_comment_add_subdirectory nautilus
+		popd > /dev/null || die
+	fi
 
 	default
 }
@@ -84,17 +98,11 @@ src_configure() {
 		-DBUILD_WITH_QT4=$(usex qt4)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libsmbclient=$(usex !samba)
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibSSH=$(usex !sftp)
-		-DUSE_UNIT_TESTING=$(usex test)
+		-DUNIT_TESTING=$(usex test)
+		-DOEM_THEME_DIR="${S}"/nextcloudtheme
 	)
 
 	cmake-utils_src_configure
-}
-
-src_test() {
-	# 1 test needs an existing ${HOME}/.config directory
-	mkdir "${T}"/.config
-	export HOME="${T}"
-	cmake-utils_src_test
 }
 
 pkg_postinst() {
