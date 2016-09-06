@@ -21,7 +21,6 @@ HOMEPAGE="http://www.ocsigen.org"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
 IUSE="debug doc dbm +ocamlopt +sqlite zlib"
 REQUIRED_USE="|| ( sqlite dbm )"
 RESTRICT="strip installsources"
