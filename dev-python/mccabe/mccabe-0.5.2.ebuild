@@ -21,7 +21,7 @@ RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-src_prepare() {
+python_prepare_all() {
 	sed -i -e '/pytest-runner/d' setup.py || die
 	distutils-r1_src_prepare
 }
