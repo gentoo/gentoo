@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup
-DEPEND=dev-cpp/gtest dev-libs/boost dev-libs/protobuf-c >=dev-libs/re2-0.2016.05.01 sys-libs/libunwind sys-libs/ncurses:= jemalloc? ( >=dev-libs/jemalloc-3.2 ) tcmalloc? ( dev-util/google-perftools ) virtual/pkgconfig
+DEPEND=dev-cpp/gtest dev-libs/boost dev-libs/protobuf-c >=dev-libs/re2-0.2016.05.01 sys-libs/libunwind sys-libs/ncurses:= jemalloc? ( >=dev-libs/jemalloc-4.0 ) tcmalloc? ( dev-util/google-perftools ) virtual/pkgconfig
 DESCRIPTION=The open-source database for the realtime web.
 EAPI=6
 HOMEPAGE=http://www.rethinkdb.com
 IUSE=doc +jemalloc tcmalloc
 KEYWORDS=~amd64 ~x86
 LICENSE=AGPL-3
-RDEPEND=dev-cpp/gtest dev-libs/boost dev-libs/protobuf-c >=dev-libs/re2-0.2016.05.01 sys-libs/libunwind sys-libs/ncurses:= jemalloc? ( >=dev-libs/jemalloc-3.2 ) tcmalloc? ( dev-util/google-perftools )
+RDEPEND=dev-cpp/gtest dev-libs/boost dev-libs/protobuf-c >=dev-libs/re2-0.2016.05.01 sys-libs/libunwind sys-libs/ncurses:= jemalloc? ( >=dev-libs/jemalloc-4.0 ) tcmalloc? ( dev-util/google-perftools )
 REQUIRED_USE=?? ( tcmalloc jemalloc )
 SLOT=0
 SRC_URI=http://download.rethinkdb.com/dist/rethinkdb-2.3.4.tgz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=add66f82c6a5896d19198b1af1602012
+_md5_=5f10980bac7ad8fe9b336682db4db757
