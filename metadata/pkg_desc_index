@@ -7776,6 +7776,7 @@ dev-python/pycipher 0.2-r1: A Python module that implements several well-known c
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r1 1.2.2-r2: Climate Data Analysis Module for Python
 dev-python/pycmd 1.1 1.2: pycmd: tools for managing/searching Python related files
+dev-python/pycodestyle 2.0.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.4 9999: python library for reading and writing collada documents
 dev-python/pyconstruct 2.5.2: A powerful declarative parser for binary data
 dev-python/pycountry 1.18 1.19 1.20: Database of countries, subdivisions, languages, currencies and script
