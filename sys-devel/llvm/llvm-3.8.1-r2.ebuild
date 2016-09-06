@@ -67,10 +67,10 @@ DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
-	default-libcxx? ( sys-libs/libcxx )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
-PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
+PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
+	default-libcxx? ( sys-libs/libcxx )"
 
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
