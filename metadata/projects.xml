@@ -2275,7 +2275,7 @@
     <email>gmn@gentoo.org</email>
     <name>News Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
-    <description>Presenting news as it develops, the News project is intended to provide anyone interested in Gentoo a stream of information for changes in the Gentoo universe.</description>
+    <description>Presenting news as it develops, this project is intends to provide anyone interested in Gentoo a stream of information for changes in the Gentoo universe.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
@@ -2930,7 +2930,7 @@
     <member>
       <email>dastergon@gentoo.org</email>
       <name>Pavlos Ratis</name>
-      <role>GMN, Facebook</role>
+      <role>Facebook</role>
     </member>
     <member>
       <email>dilfridge@gentoo.org</email>
@@ -2940,12 +2940,11 @@
     <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>GMN</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>GMN, Facebook</role>
+      <role>Facebook</role>
     </member>
     <member>
       <email>nightmorph@gentoo.org</email>
