@@ -502,7 +502,7 @@
     <email>k_f@gentoo.org</email>
     <name>Cinnamon</name>
     <url>https://wiki.gentoo.org/wiki/Project:Cinnamon</url>
-    <description>Cinnamon is a desktop environment that is based on the GTK+ 3 toolkit. It was released in 2011. Cinnamon originally started as a fork of GNOME Shell.</description>
+    <description>The goal of the Cinnamon project is to maintain Cinnamon related packages in the main Gentoo repository.</description>
     <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
