@@ -1,27 +1,33 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
-inherit eutils multilib toolchain-funcs versionator
+inherit multilib toolchain-funcs versionator
 
-MYP=DSDP${PV}
+MY_P="${PN^^}${PV}"
 
 DESCRIPTION="Software for interior-point for semidefinite programming"
 HOMEPAGE="http://www.mcs.anl.gov/hs/software/DSDP/"
-SRC_URI="http://www.mcs.anl.gov/hs/software/DSDP//${MYP}.tar.gz"
+SRC_URI="http://www.mcs.anl.gov/hs/software/DSDP/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~ppc-macos ~x86-linux ~x86-macos ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples"
 
 RDEPEND="virtual/lapack"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${MYP}"
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-readsdpa.patch
+	"${FILESDIR}"/${P}-malloc.patch
+	"${FILESDIR}"/${P}-gold.patch
+)
 
 make_shared_lib() {
 	local soname=$(basename "${1%.a}")$(get_libname $(get_major_version))
@@ -32,17 +38,15 @@ make_shared_lib() {
 		-Wl,--whole-archive "${1}" -Wl,--no-whole-archive \
 		-o $(dirname "${1}")/"${soname}" \
 		-lm $($(tc-getPKG_CONFIG) --libs blas lapack) || return 1
-
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-readsdpa.patch \
-		"${FILESDIR}"/${P}-malloc.patch \
-		"${FILESDIR}"/${P}-gold.patch
+	default
 	# to do proper parallel compilation
-	find . -name Makefile -exec \
-		sed -i -e 's:make :$(MAKE) :g' '{}' \;
+	while IFS="" read -d $'\0' -r file; do
+		sed -i -e 's:make :$(MAKE) :g' "${file}" || die
+	done < <(find . -name Makefile -print0)
+	sed -i -e 's:make clean:$(MAKE) clean:g' make.include || die
 	sed -i \
 		-e "s|#\(DSDPROOT[[:space:]]*=\).*|\1${S}|" \
 		-e "s|\(CC[[:space:]]*=\).*|\1$(tc-getCC)|" \
@@ -68,13 +72,9 @@ src_install() {
 	dosym lib${PN}$(get_libname $(get_major_version)) \
 		/usr/$(get_libdir)/lib${PN}$(get_libname)
 
-	insinto /usr/include
-	doins include/*.h src/sdp/*.h
+	doheader include/*.h src/sdp/*.h
 
-	use doc && dodoc docs/*.pdf
-
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
-	fi
+	use doc && DOCS+=( docs/*.pdf )
+	use examples && DOCS+=( examples/. )
+	einstalldocs
 }

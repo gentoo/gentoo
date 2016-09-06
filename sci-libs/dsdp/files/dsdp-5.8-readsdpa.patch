@@ -1,5 +1,5 @@
---- examples/readsdpa.c.orig	2011-03-14 16:49:10.000000000 +0000
-+++ examples/readsdpa.c	2011-03-14 17:05:52.000000000 +0000
+--- a/examples/readsdpa.c
++++ b/examples/readsdpa.c
 @@ -87,7 +87,7 @@
    double   ddobj,ppobj,scl,dpot;
    char     problemname[100],thisline[100], filename[300],savefile[100];
