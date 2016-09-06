@@ -19,6 +19,7 @@ RDEPEND="|| (
 	>=sys-cluster/mpich-3.2-r1[${MULTILIB_USEDEP},cxx?,fortran?,romio?,threads?]
 	sys-cluster/mpich2[cxx?,fortran?,romio?,threads?]
 	sys-cluster/mvapich2[fortran?,romio?,threads?]
+	sys-cluster/nullmpi[${MULTILIB_USEDEP},cxx(-)?,fortran(-)?,romio(-)?,threads(-)?]
 	sys-cluster/native-mpi
 )"
 
