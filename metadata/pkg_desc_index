@@ -90,7 +90,7 @@ app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client inte
 app-admin/eclean-kernel 0.4 0.4.1 0.4.2 1.99.1 9999: Clean up old and stale kernel files
 app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.14 1.15: Rebuild Emacs packages
-app-admin/entr 3.5 3.6: Run arbitrary commands when files change
+app-admin/entr 3.6: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.5 1.4.6 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
@@ -17811,7 +17811,7 @@ www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written i
 www-apps/nanoc 3.8.0 4.1.6 4.2.0 4.2.4 4.3.0 4.3.2: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nextcloud 9.0.53 10.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
-www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
+www-apps/novnc 0.5 0.6.1 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
 www-apps/otrs 4.0.12 4.0.13: OTRS is an Open source Ticket Request System
 www-apps/owncloud 7.0.15 8.0.13 8.0.14 8.1.9 8.2.7 9.0.4 9.1.0: Web-based storage application where all your data is under your own control
