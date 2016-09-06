@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils autotools multilib multilib-minimal portability toolchain-funcs versionator
+inherit eutils autotools multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
@@ -27,9 +27,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
-	local PATCH_PV=$(get_version_component_range 1-2)
-
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r1.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-make-r1.patch
 
 	# use glibtool on Darwin (versus Apple libtool)
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -103,7 +101,7 @@ multilib_src_compile() {
 			RPATH="${EPREFIX}/usr/$(get_libdir)/" \
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
-			V=$(get_version_component_range 1-2) \
+			V=${SLOT} \
 			gentoo_all
 }
 
@@ -112,16 +110,15 @@ multilib_src_install() {
 			V=${SLOT} gentoo_install
 
 	# We want packages to find our things...
-	cp "${FILESDIR}/lua.pc" "${WORKDIR}"
-	sed -i \
+	sed \
 		-e "s:^prefix= :prefix= ${EPREFIX}:" \
-		-e "s:^V=.*:V= ${PATCH_PV}:" \
+		-e "s:^V=.*:V= ${SLOT}:" \
 		-e "s:^R=.*:R= ${PV}:" \
 		-e "s:/,lib,:/$(get_libdir):g" \
-		"${WORKDIR}/lua.pc"
-
+		-e "s:/,include,:/include/lua${SLOT}:g" \
+		"${FILESDIR}/lua.pc" > "${WORKDIR}/lua-$(get_libdir).pc"
 	insinto "/usr/$(get_libdir)/pkgconfig"
-	newins "${WORKDIR}/lua.pc" "lua${SLOT}.pc"
+	newins "${WORKDIR}/lua-$(get_libdir).pc" "lua${SLOT}.pc"
 }
 
 multilib_src_install_all() {

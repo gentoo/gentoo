@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib multilib-minimal portability toolchain-funcs versionator
+inherit eutils multilib multilib-minimal portability toolchain-funcs
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
@@ -22,17 +22,13 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool"
 PDEPEND="emacs? ( app-emacs/lua-mode )"
 
-SAN_SLOT="${SLOT//.}"
-
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/lua${SLOT}/luaconf.h
 )
 
 src_prepare() {
-	local PATCH_PV=$(get_version_component_range 1-2)
-
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r2.patch
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-module_paths.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-make-r2.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-module_paths.patch
 
 	# use glibtool on Darwin (versus Apple libtool)
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -54,7 +50,7 @@ src_prepare() {
 	fi
 
 	if ! use readline ; then
-		epatch "${FILESDIR}"/${PN}-${PATCH_PV}-readline.patch
+		epatch "${FILESDIR}"/${PN}-${SLOT}-readline.patch
 	fi
 
 	# Using dynamic linked lua is not recommended for performance
@@ -64,7 +60,7 @@ src_prepare() {
 	# compiler (built statically) nor the lua libraries (both shared and static
 	# are installed)
 	if use static ; then
-		epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make_static-r1.patch
+		epatch "${FILESDIR}"/${PN}-${SLOT}-make_static-r1.patch
 	fi
 
 	# custom Makefiles
@@ -76,7 +72,7 @@ multilib_src_configure() {
 	sed -i \
 		-e 's:/usr/local:'${EPREFIX}'/usr:' \
 		-e "s:\([/\"]\)\<lib\>:\1$(get_libdir):g" \
-		etc/lua.pc src/luaconf.h || die
+		src/luaconf.h || die
 }
 
 multilib_src_compile() {
@@ -97,7 +93,7 @@ multilib_src_compile() {
 			RPATH="${EPREFIX}/usr/$(get_libdir)/" \
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
-			V=$(get_version_component_range 1-2) \
+			V=${SLOT} \
 			gentoo_all
 
 	mv lua_test ../test/lua.static
@@ -107,8 +103,17 @@ multilib_src_install() {
 	emake INSTALL_TOP="${ED}/usr" INSTALL_LIB="${ED}/usr/$(get_libdir)" \
 			V=${SLOT} gentoo_install
 
-	insinto /usr/$(get_libdir)/pkgconfig
-	newins etc/lua.pc lua${SLOT}.pc
+	# We want packages to find our things...
+	sed \
+		-e "s:^prefix= :prefix= ${EPREFIX}:" \
+		-e "s:^V=.*:V= ${SLOT}:" \
+		-e "s:^R=.*:R= ${PV}:" \
+		-e "s:/,lib,:/$(get_libdir):g" \
+		-e "s:/,include,:/include/lua${SLOT}:g" \
+		"${FILESDIR}/lua.pc" > "${WORKDIR}/lua-$(get_libdir).pc"
+
+	insinto "/usr/$(get_libdir)/pkgconfig"
+	newins "${WORKDIR}/lua-$(get_libdir).pc" "lua${SLOT}.pc"
 }
 
 multilib_src_install_all() {
