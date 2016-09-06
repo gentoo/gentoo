@@ -13670,7 +13670,7 @@ media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subview
 media-video/subcheck 0.78.2: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
 media-video/subdownloader 2.0.18 2.0.18-r1: GUI application for automatic downloading/uploading of subtitles for videofiles
-media-video/subliminal 2.0.3 9999: Python library to search and download subtitles
+media-video/subliminal 2.0.3 2.0.5 9999: Python library to search and download subtitles
 media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
 media-video/subtitlecomposer 0.5.6 0.6.4: Text-based subtitles editor
@@ -15914,7 +15914,7 @@ sci-libs/dcmtk 3.6.0: The DICOM Toolkit
 sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
-sci-libs/dsdp 5.8-r2: Software for interior-point for semidefinite programming
+sci-libs/dsdp 5.8-r3: Software for interior-point for semidefinite programming
 sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
@@ -16003,7 +16003,7 @@ sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPF
 sci-libs/mpir 2.6.0-r2: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/mumps 4.10.0-r1: MUltifrontal Massively Parallel sparse direct matrix Solver
 sci-libs/naga 2.1: Simplified Java NIO asynchronous sockets
-sci-libs/neartree 3.1.1-r3: Function library efficiently solving the Nearest Neighbor Problem(known as the post office problem)
+sci-libs/neartree 3.1.1-r3 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
 sci-libs/nemesis 5.22b 5.24 6.09: Enhancement to the EXODUSII finite element database model
 sci-libs/netcdf 4.3.2-r1 4.4.0 4.4.0-r1: Scientific library and interface for array oriented data access
 sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1: C++ library for netCDF
@@ -16114,7 +16114,7 @@ sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
-sci-mathematics/gsl-shell 2.2.0: Lua interactive shell for sci-libs/gsl
+sci-mathematics/gsl-shell 2.2.0 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
 sci-mathematics/isabelle 2015: Isabelle is a generic proof assistant
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
