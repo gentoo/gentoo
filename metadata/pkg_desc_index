@@ -10364,10 +10364,10 @@ games-board/cgoban2 2.6.12: A Java client for the Kiseido Go Server, and a SGF e
 games-board/chessx 1.3.2 1.4.0: Qt5-based Chess Database Utility
 games-board/cockatrice 20160506: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1: Bob Hyatt's strong chess engine
-games-board/domination 1.1.1.6: The well-known board game, written in java
-games-board/eboard 1.1.1-r1: chess interface for POSIX systems
+games-board/domination 1.1.1.6 1.1.1.6-r1: The well-known board game, written in java
+games-board/eboard 1.1.1-r1 1.1.1-r2: chess interface for POSIX systems
 games-board/four-in-a-row 3.18.2 3.20.1: Make lines of the same color to win
-games-board/freedoko 0.7.13-r1 0.7.14: FreeDoko is a Doppelkopf-game
+games-board/freedoko 0.7.13-r1 0.7.14 0.7.14-r1: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
 games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
