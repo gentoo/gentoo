@@ -16,7 +16,8 @@ SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~djc/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/$(get_version_component_range 1-2 ${PV})"
+# pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
+SLOT="0/41"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
