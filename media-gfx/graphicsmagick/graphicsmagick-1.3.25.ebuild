@@ -70,8 +70,6 @@ src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		--${openmp}-openmp \
 		--enable-largefile \
 		--enable-shared \
@@ -123,9 +121,9 @@ src_install() {
 
 	if use perl; then
 		emake -C PerlMagick DESTDIR="${D}" install
-		find "${ED}" -type f -name perllocal.pod -exec rm -f {} +
-		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} +
+		find "${ED}" -type f -name perllocal.pod -exec rm -f {} + || die
+		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} + || die
 	fi
 
-	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} +
+	find "${ED}" -name '*.la' -exec sed -i -e "/^dependency_libs/s:=.*:='':" {} + || die
 }
