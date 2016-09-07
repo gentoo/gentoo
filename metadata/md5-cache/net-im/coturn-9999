@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst unpack
+DEPEND=dev-libs/libevent[ssl] dev-libs/openssl:* mongodb? ( dev-libs/mongo-c-driver ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) redis? ( dev-libs/hiredis ) sqlite? ( dev-db/sqlite ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=coturn TURN server project
+EAPI=6
+HOMEPAGE=https://github.com/coturn/coturn
+IUSE=mongodb mysql postgres redis sqlite
+LICENSE=BSD
+RDEPEND=dev-libs/libevent[ssl] dev-libs/openssl:* mongodb? ( dev-libs/mongo-c-driver ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:* ) redis? ( dev-libs/hiredis ) sqlite? ( dev-db/sqlite )
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
+_md5_=88f3e1a60f584c3ce1608be6ad25e81f

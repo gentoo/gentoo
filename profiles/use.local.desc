@@ -5471,6 +5471,8 @@ net-im/centerim:otr - Enable encrypted conversations
 net-im/choqok:telepathy - Enable support for the real-time communication framework telepathy
 net-im/climm:otr - Enable encrypted conversations
 net-im/corebird:glade - Install glade catalogs for corebird
+net-im/coturn:mongodb - Enable support for the mongodb database
+net-im/coturn:redis - Enable support for the redis database
 net-im/ejabberd:captcha - Support for CAPTCHA Forms (XEP-158) on registration
 net-im/ejabberd:full-xml - Use XML features in XMPP stream (ex: CDATA), requires XML compliant clients
 net-im/ejabberd:hipe - Compile natively with HiPE, not recommended
