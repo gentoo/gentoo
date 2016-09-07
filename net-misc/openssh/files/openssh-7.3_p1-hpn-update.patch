@@ -1,5 +1,5 @@
 --- openssh-7_2_P2-hpn-14.10.diff.orig	2016-09-01 10:34:05.905112131 -0700
-+++ openssh-7_2_P2-hpn-14.10.diff	2016-09-07 11:37:21.455870893 -0700
++++ openssh-7_2_P2-hpn-14.10.diff	2016-09-07 15:13:59.267910872 -0700
 @@ -156,145 +156,6 @@
   	compat.o crc32.o deattack.o fatal.o hostfile.o \
   	log.o match.o md-sha256.o moduli.o nchan.o packet.o opacket.o \
@@ -221,7 +221,7 @@
  +
  +		c->state = HAVE_NONE;
  +		for (i = 0; i < NUMKQ; i++) {
-@@ -966,7 +836,9 @@
+@@ -966,10 +836,12 @@
  +		/* Start threads */
  +		for (i = 0; i < CIPHER_THREADS; i++) {
  +			debug("spawned a thread");
@@ -230,7 +230,11 @@
 ++			pthread_rwlock_unlock(&c->thread_lock);
  +		}
  +		pthread_mutex_lock(&c->q[0].lock);
- +		while (c->q[0].qstate != KQDRAINING)
+-+		while (c->q[0].qstate != KQDRAINING)
+++		while (c->q[0].qstate == KQINIT)
+ +			pthread_cond_wait(&c->q[0].cond, &c->q[0].lock);
+ +		pthread_mutex_unlock(&c->q[0].lock);
+ +	}
 @@ -1003,7 +875,9 @@
  +	/* reconstruct threads */
  +	for (i = 0; i < CIPHER_THREADS; i++) {
