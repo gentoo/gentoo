@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install prepare setup unpack
-DEPEND=ssl? ( dev-libs/openssl:0= ) hesiod? ( net-dns/hesiod ) kerberos? ( app-crypt/heimdal ) usb? ( !dev-libs/libusb ) zfs? ( =sys-freebsd/freebsd-cddl-10.3* ) >=dev-libs/expat-2.0.1 >=dev-util/dialog-1.2.20150225 =sys-freebsd/freebsd-libexec-10.3* !sys-libs/libutempter !dev-libs/libelf !dev-libs/libexecinfo !dev-libs/libiconv !sys-freebsd/freebsd-headers >=sys-devel/flex-2.5.31-r2 =sys-freebsd/freebsd-sources-10.3* userland_GNU? ( sys-apps/mtree ) =sys-freebsd/freebsd-mk-defs-10.3* virtual/pmake virtual/pmake
+DEPEND=ssl? ( dev-libs/openssl:0= ) hesiod? ( net-dns/hesiod ) kerberos? ( app-crypt/heimdal ) usb? ( !dev-libs/libusb ) zfs? ( =sys-freebsd/freebsd-cddl-10.3* ) >=dev-libs/expat-2.0.1 >=dev-util/dialog-1.2.20150225 =sys-freebsd/freebsd-libexec-10.3* !sys-libs/libutempter !dev-libs/libelf !dev-libs/libexecinfo !dev-libs/libiconv !sys-freebsd/freebsd-headers >=sys-devel/flex-2.5.31-r2 >=sys-freebsd/freebsd-sources-10.3-r5 userland_GNU? ( sys-apps/mtree ) =sys-freebsd/freebsd-mk-defs-10.3* virtual/pmake virtual/pmake
 DESCRIPTION=FreeBSD's base system libraries
 EAPI=5
 HOMEPAGE=http://www.freebsd.org/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://freebsd/releases/i386/10.3-RELEASE/src.txz -> freebsd-src-10.3.tar.xz https://security.freebsd.org/patches/EN-16:06/libc.patch -> freebsd-lib-EN-1606-libc.patch
 _eclass_exported_funcs=pkg_setup:- src_unpack:freebsd src_prepare:- src_compile:- src_install:-
 _eclasses_=bsdmk	fa0d894e12e82545e5c097b728ddf1ee	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	freebsd	e3af17ef2c8e1cab77d7f2c8fb785261	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	portability	bb1a0ed8ea152b957d17339f01d4d7f5	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=45f62411821b9503f64b376d7396a065
+_md5_=4aefa0559be620f10a7fea786069fb32
