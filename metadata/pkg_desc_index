@@ -5099,7 +5099,7 @@ dev-ml/incremental 113.24.00 113.33.00: Library for incremental computations
 dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.5.1 1.6.0: IO memory page library for Mirage backends
 dev-ml/js-build-tools 113.33.03 113.33.04: Collection of tools to help building Jane Street Packages
-dev-ml/js_of_ocaml 2.7 2.8 2.8.1: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.8.1: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
