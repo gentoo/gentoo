@@ -10,7 +10,7 @@ RDEPEND=app-arch/bzip2:= cups? ( >=net-print/cups-1.3.11:= ) >=dev-libs/elfutils
 REQUIRED_USE=gn? ( gnome gnome-keyring )
 RESTRICT=!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
 SLOT=0
-SRC_URI=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-54.0.2840.6.tar.xz
+SRC_URI=https://commondatastorage.googleapis.com/chromium-browser-official/chromium-54.0.2840.14.tar.xz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	chromium-2	c30f482b868782938c772c21d9ede135	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	pax-utils	4c2654a34ebe732e85fda354f6ee642f	portability	bb1a0ed8ea152b957d17339f01d4d7f5	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=8aa1d84c0d1ab4c195f94ec724015018
