@@ -8,8 +8,8 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=app-arch/bzip2:0= dev-libs/expat:0= dev-libs/libffi:0= dev-libs/openssl:0=[-bindist] sys-libs/glibc:2.2= sys-libs/ncurses:0/6 sys-libs/zlib:0= gdbm? ( sys-libs/gdbm:0= ) sqlite? ( dev-db/sqlite:3= ) tk? ( dev-lang/tk:0= dev-tcltk/tix:0= ) !dev-python/pypy:0
 REQUIRED_USE=!jit? ( !shadowstack ) x86? ( !cpu_flags_x86_sse2? ( !jit !shadowstack ) )
-SLOT=0/5.4
+SLOT=0/41
 SRC_URI=https://bitbucket.org/pypy/pypy/downloads/pypy2-v5.4.0-src.tar.bz2 https://dev.gentoo.org/~djc/python-gentoo-patches-2.7.11-0.tar.xz amd64? ( jit? ( shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-amd64+bzip2+jit+ncurses+shadowstack.tar.lz ) ) jit? ( !shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-amd64+bzip2+jit+ncurses.tar.lz ) ) !jit? ( !shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-amd64+bzip2+ncurses.tar.lz ) ) ) x86? ( cpu_flags_x86_sse2? ( jit? ( shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-x86+bzip2+jit+ncurses+shadowstack+sse2.tar.lz ) ) jit? ( !shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-x86+bzip2+jit+ncurses+sse2.tar.lz ) ) !jit? ( !shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-x86+bzip2+ncurses+sse2.tar.lz ) ) ) !cpu_flags_x86_sse2? ( !jit? ( !shadowstack? ( https://dev.gentoo.org/~mgorny/dist/pypy-bin/5.4.0/pypy-bin-5.4.0-x86+bzip2+ncurses.tar.lz ) ) ) )
 _eclass_exported_funcs=pkg_setup:- src_unpack:unpacker src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=06abaa6c343a0b19431793e02b5f3a04
+_md5_=861cd3fe1da52535f1e19d0dad770d34

@@ -3,8 +3,8 @@ DESCRIPTION=A virtual for PyPy Python implementation
 EAPI=5
 IUSE=bzip2 gdbm ncurses sqlite tk
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
-RDEPEND=|| ( >=dev-python/pypy-5.4.0:0/5.4[bzip2?,gdbm(-)?,ncurses?,sqlite?,tk?] >=dev-python/pypy-bin-5.4.0:0/5.4[gdbm(-)?,sqlite?,tk?] )
-SLOT=0/5.4
+RDEPEND=|| ( >=dev-python/pypy-5.4.0:0/41[bzip2?,gdbm(-)?,ncurses?,sqlite?,tk?] >=dev-python/pypy-bin-5.4.0:0/41[gdbm(-)?,sqlite?,tk?] )
+SLOT=0/41
 _eclass_exported_funcs=-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=2c075a285b0d21b022a3eeca806565d6
+_md5_=202f12ad4e718f3ab04b3c6e2da9b6e1
