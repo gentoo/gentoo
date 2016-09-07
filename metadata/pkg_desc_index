@@ -1924,7 +1924,7 @@ app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file 
 app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
-app-misc/tails-installer 4.4.8: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
+app-misc/tails-installer 4.4.8 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.4.4 2.5.0 2.5.1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
 app-misc/tasque 0.1.11 0.1.12: Simple task management app (TODO list) for the Linux Desktop
