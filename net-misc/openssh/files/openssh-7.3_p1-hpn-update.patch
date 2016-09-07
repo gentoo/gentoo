@@ -1,5 +1,5 @@
 --- openssh-7_2_P2-hpn-14.10.diff.orig	2016-09-01 10:34:05.905112131 -0700
-+++ openssh-7_2_P2-hpn-14.10.diff	2016-09-06 21:49:35.583704017 -0700
++++ openssh-7_2_P2-hpn-14.10.diff	2016-09-07 11:37:21.455870893 -0700
 @@ -156,145 +156,6 @@
   	compat.o crc32.o deattack.o fatal.o hostfile.o \
   	log.o match.o md-sha256.o moduli.o nchan.o packet.o opacket.o \
@@ -151,20 +151,44 @@
  --- /dev/null
  +++ b/cipher-ctr-mt.c
 -@@ -0,0 +1,533 @@
-+@@ -0,0 +1,535 @@
++@@ -0,0 +1,546 @@
  +/*
  + * OpenSSH Multi-threaded AES-CTR Cipher
  + *
-@@ -737,7 +598,7 @@
+@@ -663,6 +524,7 @@
+ +	STATS_STRUCT(stats);
+ +	u_char		aes_counter[AES_BLOCK_SIZE];
+ +	pthread_t	tid[CIPHER_THREADS];
+++	pthread_rwlock_t thread_lock;
+ +	int		state;
+ +	int		qidx;
+ +	int		ridx;
+@@ -723,6 +585,7 @@
+ +	struct kq *q;
+ +	int i;
+ +	int qidx;
+++	pthread_t first_tid;
+ +
+ +	/* Threads stats on cancellation */
+ +	STATS_INIT(stats);
+@@ -733,11 +596,15 @@
+ +	/* Thread local copy of AES key */
+ +	memcpy(&key, &c->aes_ctx, sizeof(key));
+ +
+++	pthread_rwlock_rdlock(&c->thread_lock);
+++	first_tid = c->tid[0];
+++	pthread_rwlock_unlock(&c->thread_lock);
+++
+ +	/*
  +	 * Handle the special case of startup, one thread must fill
  +	 * the first KQ then mark it as draining. Lock held throughout.
  +	 */
 -+	if (pthread_equal(pthread_self(), c->tid[0])) {
-++	if (pthread_equal(pthread_self(), c->tid[0]) || c->tid[0] == 0) {
+++	if (pthread_equal(pthread_self(), first_tid)) {
  +		q = &c->q[0];
  +		pthread_mutex_lock(&q->lock);
  +		if (q->qstate == KQINIT) {
-@@ -790,6 +651,7 @@
+@@ -790,6 +657,7 @@
  +		 * can see that it's being filled.
  +		 */
  +		q->qstate = KQFILLING;
@@ -172,7 +196,7 @@
  +		pthread_mutex_unlock(&q->lock);
  +		for (i = 0; i < KQLEN; i++) {
  +			AES_encrypt(q->ctr, q->keys[i], &key);
-@@ -801,7 +663,7 @@
+@@ -801,7 +669,7 @@
  +		ssh_ctr_add(q->ctr, KQLEN * (NUMKQ - 1), AES_BLOCK_SIZE);
  +		q->qstate = KQFULL;
  +		STATS_FILL(stats);
@@ -181,7 +205,7 @@
  +		pthread_mutex_unlock(&q->lock);
  +	}
  +
-@@ -893,6 +755,7 @@
+@@ -893,6 +761,7 @@
  +				pthread_cond_wait(&q->cond, &q->lock);
  +			}
  +			q->qstate = KQDRAINING;
@@ -189,7 +213,35 @@
  +			pthread_mutex_unlock(&q->lock);
  +
  +			/* Mark consumed queue empty and signal producers */
-@@ -1270,7 +1133,7 @@
+@@ -919,6 +788,7 @@
+ +
+ +	if ((c = EVP_CIPHER_CTX_get_app_data(ctx)) == NULL) {
+ +		c = xmalloc(sizeof(*c));
+++		pthread_rwlock_init(&c->thread_lock, NULL);
+ +
+ +		c->state = HAVE_NONE;
+ +		for (i = 0; i < NUMKQ; i++) {
+@@ -966,7 +836,9 @@
+ +		/* Start threads */
+ +		for (i = 0; i < CIPHER_THREADS; i++) {
+ +			debug("spawned a thread");
+++			pthread_rwlock_wrlock(&c->thread_lock);
+ +			pthread_create(&c->tid[i], NULL, thread_loop, c);
+++			pthread_rwlock_unlock(&c->thread_lock);
+ +		}
+ +		pthread_mutex_lock(&c->q[0].lock);
+ +		while (c->q[0].qstate != KQDRAINING)
+@@ -1003,7 +875,9 @@
+ +	/* reconstruct threads */
+ +	for (i = 0; i < CIPHER_THREADS; i++) {
+ +		debug("spawned a thread");
+++		pthread_rwlock_wrlock(&c->thread_lock);
+ +		pthread_create(&c->tid[i], NULL, thread_loop, c);
+++		pthread_rwlock_unlock(&c->thread_lock);
+ +	}
+ +}
+ +
+@@ -1270,7 +1144,7 @@
   
   #include "ssherr.h"
   #include "sshbuf.h"
@@ -198,7 +250,7 @@
   #include "digest.h"
   
   #if OPENSSL_VERSION_NUMBER >= 0x00907000L
-@@ -1312,8 +1175,8 @@
+@@ -1312,8 +1186,8 @@
  +		 */
  +		if (ctos && !log_flag) {
  +			logit("SSH: Server;Ltype: Kex;Remote: %s-%d;Enc: %s;MAC: %s;Comp: %s",
@@ -209,7 +261,7 @@
  +			    newkeys->enc.name,
  +			    authlen == 0 ? newkeys->mac.name : "<implicit>",
  +			    newkeys->comp.name);
-@@ -1430,7 +1293,7 @@
+@@ -1430,7 +1304,7 @@
  +		rekey_requested = 0;
  +		return 1;
  +	}
@@ -218,7 +270,7 @@
   	/* Time-based rekeying */
   	if (state->rekey_interval != 0 &&
   	    state->rekey_time + state->rekey_interval <= monotime())
-@@ -1490,7 +1353,7 @@
+@@ -1490,7 +1364,7 @@
   
   	transferred = *counter - (cur_pos ? cur_pos : start_pos);
   	cur_pos = *counter;
@@ -227,7 +279,7 @@
   	bytes_left = end_pos - cur_pos;
   
  +	delta_pos = cur_pos - last_pos;
-@@ -1564,8 +1427,8 @@
+@@ -1564,8 +1438,8 @@
   	{ "canonicaldomains", oCanonicalDomains },
   	{ "canonicalizefallbacklocal", oCanonicalizeFallbackLocal },
  @@ -282,6 +287,11 @@ static struct {
@@ -237,7 +289,7 @@
   
  +	{ "tcprcvbufpoll", oTcpRcvBufPoll },
  +	{ "tcprcvbuf", oTcpRcvBuf },
-@@ -1736,8 +1599,8 @@
+@@ -1736,8 +1610,8 @@
   	off_t size, statbytes;
   	unsigned long long ull;
   	int setimes, targisdir, wrerrno = 0;
@@ -248,7 +300,7 @@
   	struct timeval tv[2];
   
   #define	atime	tv[0]
-@@ -1956,32 +1819,6 @@
+@@ -1956,32 +1830,6 @@
   }
   
   /*
@@ -281,7 +333,7 @@
  @@ -1041,8 +1064,12 @@ server_request_tun(void)
   	sock = tun_open(tun, mode);
   	if (sock < 0)
-@@ -2372,10 +2209,10 @@
+@@ -2372,10 +2220,10 @@
   	debug("Client protocol version %d.%d; client software version %.100s",
   	    remote_major, remote_minor, remote_version);
  +	logit("SSH: Server;Ltype: Version;Remote: %s-%d;Protocol: %d.%d;Client: %.100s",
@@ -294,7 +346,7 @@
   
  @@ -1160,6 +1163,8 @@ server_listen(void)
   	int ret, listen_sock, on = 1;
-@@ -2413,7 +2250,7 @@
+@@ -2413,7 +2261,7 @@
   	if (options.challenge_response_authentication)
   		options.kbd_interactive_authentication = 1;
  @@ -2151,6 +2168,9 @@ main(int ac, char **av)
@@ -303,7 +355,7 @@
   	free(laddr);
   
  +	/* set the HPN options for the child */
-@@ -2486,11 +2323,10 @@
+@@ -2486,11 +2334,10 @@
  index eb4e948..3692722 100644
  --- a/version.h
  +++ b/version.h
