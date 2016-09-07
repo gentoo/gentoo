@@ -15990,7 +15990,7 @@ sci-libs/libticalcs2 1.1.7 1.1.8: Library for communication with TI calculators
 sci-libs/libticonv 1.1.3 1.1.4: Charset conversion library for TI calculators
 sci-libs/libtifiles2 1.1.5 1.1.6-r1: Library for TI calculator files
 sci-libs/linux-gpib 3.2.21-r1 4.0.2: Kernel module and driver library for GPIB (IEEE 488.2) hardware
-sci-libs/lis 1.4.11 1.4.23: Library of Iterative Solvers for Linear Systems
+sci-libs/lis 1.6.2: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.1.3 2.1.3.1 2.3.3 2.3.3-r1 2.3.4: Math Graphics Library
@@ -16118,7 +16118,7 @@ sci-mathematics/glpk 4.45 4.48 4.54 4.55 4.57: GNU Linear Programming Kit
 sci-mathematics/gmm 4.2 5.0: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
-sci-mathematics/gsl-shell 2.2.0 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
+sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
 sci-mathematics/isabelle 2015: Isabelle is a generic proof assistant
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
