@@ -7033,7 +7033,7 @@ dev-python/ccdproc 1.0.1 1.1.0: Astropy affiliated package for reducing optical/
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
-dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
+dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2015.11.20 2016.8.8 2016.8.31: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
