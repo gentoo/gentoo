@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=gnome? ( =gnome-base/libgnomeui-2* ) nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Reversi game for GNOME, supporting the Go/Game Text Protocol
+EAPI=6
+HOMEPAGE=http://rhino.sourceforge.net/
+IUSE=gnome gtp nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=gnome? ( =gnome-base/libgnomeui-2* ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/rhino/grhino-0.16.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=569cd37c8f4cd274f8b3be92ba3f504a

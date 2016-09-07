@@ -10382,9 +10382,9 @@ games-board/gnubg 1.04.000 1.05.000: GNU BackGammon
 games-board/gnuchess 6.2.2-r1: Console based chess interface
 games-board/gnuchess-book 1.02: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1: A Go-playing program
-games-board/gnushogi 1.4.1: Japanese version of chess (commandline + X-Version)
+games-board/gnushogi 1.4.1 1.4.1-r1: Japanese version of chess (commandline + X-Version)
 games-board/goatee-gtk 0.3.1: A monadic take on a 2,500-year-old board game - GTK+ UI
-games-board/grhino 0.16.1: Reversi game for GNOME, supporting the Go/Game Text Protocol
+games-board/grhino 0.16.1 0.16.1-r1: Reversi game for GNOME, supporting the Go/Game Text Protocol
 games-board/gtkatlantic 0.6.1 0.6.1-r1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0 0.11_pre0-r1: Board games system
 games-board/hexxagon 1.0.2 1.0.2-r1: Clone of the original DOS game
