@@ -5083,7 +5083,7 @@ dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.6.2 0.7 0.7.1: A deriving library for Ocsigen
 dev-ml/dose3 4.2 4.3 5.0.1: Library and a collection of tools to perform la large spectrum of analysis on package repositories
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
-dev-ml/eliom 5.0.0-r1 9999: A web framework to program client/server applications
+dev-ml/eliom 5.0.0-r2 9999: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
 dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
