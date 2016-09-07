@@ -5457,7 +5457,7 @@ dev-perl/Crypt-Twofish 2.170.0-r1: The Twofish Encryption Algorithm
 dev-perl/Crypt-URandom 0.340.0 0.360.0: Provide non blocking randomness
 dev-perl/Crypt-X509 0.510.0: Parse a X.509 certificate
 dev-perl/CryptX 0.25.0 0.39.0: Self-contained crypto toolkit
-dev-perl/Curses 1.320.0 1.330.0: Curses interface modules for Perl
+dev-perl/Curses 1.320.0 1.330.0 1.360.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
@@ -10370,15 +10370,15 @@ games-board/four-in-a-row 3.18.2 3.20.1: Make lines of the same color to win
 games-board/freedoko 0.7.13-r1 0.7.14: FreeDoko is a Doppelkopf-game
 games-board/fruit 2.1: UCI-only chess engine
 games-board/gamazons 0.83: A chess/go hybrid
-games-board/gambit 1.0.1 1.0.3: Qt-based chess application + engine "gupta"
-games-board/gmchess 0.29.6-r1: Chinese chess with gtkmm and c++
+games-board/gambit 1.0.1 1.0.3 1.0.3-r1: Qt-based chess application + engine "gupta"
+games-board/gmchess 0.29.6-r1 0.29.6-r2: Chinese chess with gtkmm and c++
 games-board/gnome-chess 3.18.0 3.20.1: Play the classic two-player boardgame of chess
 games-board/gnome-hearts 0.3.1-r1: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.18.0 3.20.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mastermind 0.3.1-r1: A little Mastermind game for GNOME
 games-board/gnome-mines 3.18.2 3.20.1: Clear hidden mines from a minefield
-games-board/gnono 1.9.1: A rewrite for GNOME of the Windows card game WUNO
-games-board/gnubg 1.04.000 1.05.000: GNU BackGammon
+games-board/gnono 1.9.1 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
+games-board/gnubg 1.04.000 1.05.000 1.05.000-r1: GNU BackGammon
 games-board/gnuchess 6.2.2-r1: Console based chess interface
 games-board/gnuchess-book 1.02: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1: A Go-playing program

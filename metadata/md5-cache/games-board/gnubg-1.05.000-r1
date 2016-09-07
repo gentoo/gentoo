@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmp:0 dev-libs/libxml2 media-fonts/dejavu media-libs/freetype:2 media-libs/libcanberra media-libs/libpng:0 sys-libs/readline:0 x11-libs/cairo x11-libs/pango gtk? ( x11-libs/gtk+:2 ) opengl? ( x11-libs/gtk+:2 x11-libs/gtkglext virtual/glu ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) virtual/libintl sys-devel/gettext virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=GNU BackGammon
+EAPI=6
+HOMEPAGE=http://www.gnubg.org/
+IUSE=cpu_flags_x86_avx gtk opengl python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads python_targets_python2_7
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gmp:0 dev-libs/libxml2 media-fonts/dejavu media-libs/freetype:2 media-libs/libcanberra media-libs/libpng:0 sys-libs/readline:0 x11-libs/cairo x11-libs/pango gtk? ( x11-libs/gtk+:2 ) opengl? ( x11-libs/gtk+:2 x11-libs/gtkglext virtual/glu ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) virtual/libintl
+SLOT=0
+SRC_URI=http://gnubg.org/media/sources/gnubg-release-1.05.000-sources.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=5e9ad4eb58734c42d608a038103371ff
