@@ -27,11 +27,12 @@ src_prepare() {
 	default
 	# Enable xterm mouse support in the rc files
 	if use xterm; then
-		cd "${S}"/rc || die
+		pushd "${S}"/rc &>/dev/null || die
 		local i
 		for i in *rc*.in; do
 			sed -e 's/^ -\(mouse\|joexterm\)/-\1/' -i "${i}" || die
 		done
+		popd &>/dev/null
 	fi
 	eautoreconf
 }
