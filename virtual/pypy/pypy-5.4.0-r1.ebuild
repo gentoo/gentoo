@@ -11,7 +11,8 @@ HOMEPAGE=""
 SRC_URI=""
 
 LICENSE=""
-SLOT="0/$(get_version_component_range 1-2 ${PV})"
+# pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
+SLOT="0/41"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm ncurses sqlite tk"
 
