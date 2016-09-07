@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=dev-lang/python:2.7 >=dev-libs/boost-1.52.0-r6:=[python?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] fftw? ( sci-libs/fftw:3.0 ) hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi?] ) jpeg? ( virtual/jpeg ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tiff? ( media-libs/tiff:0= ) valgrind? ( dev-util/valgrind ) doc? ( app-doc/doxygen python? ( >=dev-python/sphinx-1.1.3-r5[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ) test? ( >=dev-python/nose-1.1.2-r1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=C++ computer vision library with emphasis on customizable algorithms and data structures
+EAPI=6
+HOMEPAGE=http://hci.iwr.uni-heidelberg.de/vigra/
+IUSE=doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind python_targets_python2_7
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=MIT
+RDEPEND=dev-lang/python:2.7 >=dev-libs/boost-1.52.0-r6:=[python?,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] fftw? ( sci-libs/fftw:3.0 ) hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi?] ) jpeg? ( virtual/jpeg ) openexr? ( media-libs/openexr:= ) png? ( media-libs/libpng:0= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) tiff? ( media-libs/tiff:0= ) valgrind? ( dev-util/valgrind )
+REQUIRED_USE=doc? ( hdf5 fftw ) python? ( hdf5 || ( python_targets_python2_7 ) ) test? ( hdf5 python fftw )
+SLOT=0
+SRC_URI=https://github.com/ukoethe/vigra/releases/download/Version-1-11-0/vigra-1.11.0-src.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=fa13235eb88e186c8a5787182189c438

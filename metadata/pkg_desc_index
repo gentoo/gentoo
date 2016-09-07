@@ -2972,7 +2972,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.0.10.17 4.4.15.5 4.4.15.8 4.6.4: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.1.23 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.2.18 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.3.14 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.4.9 9.5.1 9.5.2 9.5.3 9.5.4 9.6_beta3 9.6_beta4 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.1.23 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.2.18 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.3.14 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.4.9 9.5.1 9.5.2 9.5.3 9.5.4 9.6_rc1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
 dev-db/recutils 1.5 1.7: Tools and libraries to access human-editable, plain text databases
@@ -10385,9 +10385,9 @@ games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/gnushogi 1.4.1: Japanese version of chess (commandline + X-Version)
 games-board/goatee-gtk 0.3.1: A monadic take on a 2,500-year-old board game - GTK+ UI
 games-board/grhino 0.16.1: Reversi game for GNOME, supporting the Go/Game Text Protocol
-games-board/gtkatlantic 0.6.1: Monopoly-like game that works with the monopd server
-games-board/gtkboard 0.11_pre0: Board games system
-games-board/hexxagon 1.0.2: Clone of the original DOS game
+games-board/gtkatlantic 0.6.1 0.6.1-r1: Monopoly-like game that works with the monopd server
+games-board/gtkboard 0.11_pre0 0.11_pre0-r1: Board games system
+games-board/hexxagon 1.0.2 1.0.2-r1: Clone of the original DOS game
 games-board/holdingnuts 0.0.5-r1 0.0.5-r2: An open source poker client and server
 games-board/iagno 3.18.2 3.20.2: Dominate the board in a classic version of Reversi
 games-board/kcheckers 0.8.1 0.8.1-r1: Qt version of the classic boardgame checkers
@@ -12786,7 +12786,7 @@ media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.5 2.6 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
-media-libs/vigra 1.9.0 1.10.0: C++ computer vision library with emphasize on customizable algorithms and data structures
+media-libs/vigra 1.9.0 1.10.0 1.11.0: C++ computer vision library with emphasis on customizable algorithms and data structures
 media-libs/vips 7.26.3 7.26.7 7.26.7-r1: VIPS Image Processing Library
 media-libs/virglrenderer 0.2.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.2 0.1.3 9999: VisualOn AAC encoder library
