@@ -20,7 +20,7 @@ IUSE="debug doc +openssl mbedtls +system-libs"
 RDEPEND="openssl? ( dev-libs/openssl:= )
 	mbedtls? ( net-libs/mbedtls )
 	system-libs? (
-		dev-libs/libsodium
+		>=dev-libs/libsodium-1.0.8
 		dev-libs/libev
 		net-libs/udns
 	)
