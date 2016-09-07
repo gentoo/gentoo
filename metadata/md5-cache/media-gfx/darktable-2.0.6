@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend test
+DEPEND=dev-db/sqlite:3 dev-libs/json-glib dev-libs/libxml2:2 dev-libs/pugixml:0= gnome-base/librsvg:2 >=media-gfx/exiv2-0.25-r2:0=[xmp] media-libs/lcms:2 >=media-libs/lensfun-0.2.3:0= media-libs/libpng:0= media-libs/tiff:0 net-misc/curl virtual/jpeg:0 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango colord? ( x11-libs/colord-gtk:0= ) cups? ( net-print/cups ) flickr? ( media-libs/flickcurl ) gphoto2? ( media-libs/libgphoto2:= ) graphicsmagick? ( media-gfx/graphicsmagick ) jpeg2k? ( media-libs/openjpeg:0 ) libsecret? ( >=app-crypt/libsecret-0.18 ) opencl? ( virtual/opencl ) openexr? ( media-libs/openexr:0= ) slideshow? ( media-libs/libsdl virtual/glu virtual/opengl ) webp? ( media-libs/libwebp:0= ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 >=sys-apps/sed-4
+DESCRIPTION=A virtual lighttable and darkroom for photographers
+EAPI=5
+HOMEPAGE=http://www.darktable.org/
+IUSE=colord cups cpu_flags_x86_sse3 doc flickr gphoto2 graphicsmagick jpeg2k kde libsecret nls opencl openmp openexr pax_kernel +slideshow webp l10n_ca l10n_cs l10n_da l10n_de l10n_el l10n_es l10n_fr l10n_he l10n_hu l10n_it l10n_ja l10n_nl l10n_pl l10n_pt-BR l10n_pt-PT l10n_ru l10n_sk l10n_sl l10n_sq l10n_sv l10n_uk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 CC-BY-3.0
+RDEPEND=dev-db/sqlite:3 dev-libs/json-glib dev-libs/libxml2:2 dev-libs/pugixml:0= gnome-base/librsvg:2 >=media-gfx/exiv2-0.25-r2:0=[xmp] media-libs/lcms:2 >=media-libs/lensfun-0.2.3:0= media-libs/libpng:0= media-libs/tiff:0 net-misc/curl virtual/jpeg:0 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango colord? ( x11-libs/colord-gtk:0= ) cups? ( net-print/cups ) flickr? ( media-libs/flickcurl ) gphoto2? ( media-libs/libgphoto2:= ) graphicsmagick? ( media-gfx/graphicsmagick ) jpeg2k? ( media-libs/openjpeg:0 ) libsecret? ( >=app-crypt/libsecret-0.18 ) opencl? ( virtual/opencl ) openexr? ( media-libs/openexr:0= ) slideshow? ( media-libs/libsdl virtual/glu virtual/opengl ) webp? ( media-libs/libwebp:0= ) x11-themes/gtk-engines:2 kde? ( kde-apps/kwalletd:4 )
+REQUIRED_USE=cpu_flags_x86_sse3
+SLOT=0
+SRC_URI=https://github.com/darktable-org/darktable/releases/download/release-2.0.6/darktable-2.0.6.tar.xz doc? ( https://github.com/darktable-org/darktable/releases/download/release-1.6.0/darktable-usermanual.pdf -> darktable-usermanual-1.6.0.pdf )
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	pax-utils	4c2654a34ebe732e85fda354f6ee642f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=ef79aa0a0377de097e1d17b62e17350a
