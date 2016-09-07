@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.32:2 x11-libs/cairo:= >=x11-libs/gdk-pixbuf-2:2 x11-libs/libX11 >=x11-libs/libXcomposite-0.4 x11-libs/libXdamage x11-libs/libXext >=x11-libs/libXfixes-3 >=x11-libs/libXrandr-1.2 virtual/opengl gles2? ( media-libs/mesa[gles2] ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) introspection? ( >=dev-libs/gobject-introspection-1.34.2:= ) kms? ( media-libs/mesa[gbm] x11-libs/libdrm:= ) pango? ( >=x11-libs/pango-1.20.0[introspection?] ) wayland? ( >=dev-libs/wayland-1.1.90 media-libs/mesa[egl,wayland] ) >=dev-util/gtk-doc-am-1.13 >=sys-devel/gettext-0.19 virtual/pkgconfig test? ( app-eselect/eselect-opengl media-libs/mesa[classic] ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A library for using 3D graphics hardware to draw pretty pictures
+EAPI=6
+HOMEPAGE=http://www.cogl3d.org/
+IUSE=debug examples gles2 gstreamer +introspection +kms +opengl +pango test video_cards_fglrx wayland test
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT BSD
+RDEPEND=>=dev-libs/glib-2.32:2 x11-libs/cairo:= >=x11-libs/gdk-pixbuf-2:2 x11-libs/libX11 >=x11-libs/libXcomposite-0.4 x11-libs/libXdamage x11-libs/libXext >=x11-libs/libXfixes-3 >=x11-libs/libXrandr-1.2 virtual/opengl gles2? ( media-libs/mesa[gles2] ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) introspection? ( >=dev-libs/gobject-introspection-1.34.2:= ) kms? ( media-libs/mesa[gbm] x11-libs/libdrm:= ) pango? ( >=x11-libs/pango-1.20.0[introspection?] ) wayland? ( >=dev-libs/wayland-1.1.90 media-libs/mesa[egl,wayland] ) !<media-libs/clutter-1.7
+REQUIRED_USE=wayland? ( gles2 ) || ( gles2 opengl )
+RESTRICT=test
+SLOT=1.0/20
+SRC_URI=mirror://gnome/sources/cogl/1.22/cogl-1.22.2.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_test:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=0bfaf3bfc38d3606ce76455151623f18
