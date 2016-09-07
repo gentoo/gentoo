@@ -44,7 +44,10 @@ PDEPEND="
 
 python_prepare_all() {
 	# Gentoo has flake8 support restored in >=pep8-1.6.2-r1.
-	sed -e 's:, != 1.6.2::' -i setup.py || die
+	sed -i -e 's:, != 1.6.2::' setup.py || die
+	# Flake8 falsely assumes it needs pytest-runner unconditionally and will
+	# try to install it, causing sandbox violations.
+	sed -i -e "/setup_requires=\['pytest-runner'\],/d" setup.py || die
 
 	distutils-r1_python_prepare_all
 }
