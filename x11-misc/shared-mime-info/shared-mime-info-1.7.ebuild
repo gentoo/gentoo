@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,10 +24,6 @@ DEPEND="${RDEPEND}
 DOCS=( ChangeLog HACKING NEWS README )
 
 src_prepare() {
-	# Useful patches from usptream git, will be in next release
-	epatch "${FILESDIR}"/${P}-iso-1.patch
-	epatch "${FILESDIR}"/${P}-iso-2.patch
-
 	epatch_user
 }
 
