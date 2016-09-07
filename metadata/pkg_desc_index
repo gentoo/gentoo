@@ -18450,7 +18450,7 @@ x11-misc/sddm 0.13.0-r3 0.14.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
-x11-misc/shared-mime-info 1.4 1.4-r1 1.5 1.6: The Shared MIME-info Database specification
+x11-misc/shared-mime-info 1.4 1.6 1.7: The Shared MIME-info Database specification
 x11-misc/shutter 0.93.1-r1: Feature-rich screenshot program
 x11-misc/shutterbug 1.6.36 1.7.45 1.7.47 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/simple-ccsm 0.8.4-r2: Simplified Compizconfig Settings Manager
