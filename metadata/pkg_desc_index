@@ -9153,7 +9153,7 @@ dev-ruby/parser 2.3.0.7 2.3.1.0 2.3.1.2: A production-ready Ruby parser written 
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/pathutil 0.14.0: Like Pathname but a little less insane
-dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.5 0.7.1: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.5 0.7.1 0.8.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
@@ -9176,7 +9176,7 @@ dev-ruby/prawn-table 0.2.2: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 2.0.17 2.1.0: A libyaml wrapper for Ruby
+dev-ruby/psych 2.0.17 2.1.0 2.1.1: A libyaml wrapper for Ruby
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
