@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+
+depend() {
+	need net
+	use dns
+	after sshd
+}
+
+
+start() {
+	ebegin "Starting turnserver"
+	checkpath -q -d -m 0755 -o turnserver:turnserver /var/run/turnserver
+	start-stop-daemon --start --user turnserver --exec /usr/bin/turnserver -- -o \
+	--pidfile /var/run/turnserver/turnserver.pid >/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping turnserver"
+	start-stop-daemon --stop --quiet --pidfile /var/run/turnserver/turnserver.pid
+	eend $?
+}
