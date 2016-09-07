@@ -50,7 +50,7 @@ if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
 		!sys-freebsd/freebsd-headers"
 	DEPEND="${RDEPEND}
 		>=sys-devel/flex-2.5.31-r2
-		=sys-freebsd/freebsd-sources-${RV}*"
+		>=sys-freebsd/freebsd-sources-10.3-r5"
 	RDEPEND="${RDEPEND}
 		=sys-freebsd/freebsd-share-${RV}*
 		>=virtual/libiconv-0-r2"
@@ -206,7 +206,6 @@ src_prepare() {
 		cd "${WORKDIR}"
 		# This patch has to be applied on ${WORKDIR}/sys, so we do it here since it
 		# shouldn't be a symlink to /usr/src/sys (which should be already patched)
-		epatch "${FILESDIR}"/${PN}-7.1-types.h-fix.patch
 		epatch "${FILESDIR}"/freebsd-sources-9.0-sysctluint.patch
 		return 0
 	fi
