@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-ml/react:= dev-ml/js_of_ocaml:= dev-ml/lwt:= dev-ml/oasis >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=jQuery Binding for Eliom.
+EAPI=5
+HOMEPAGE=jQuery Binding for Eliom.
+IUSE=+ocamlopt debug
+LICENSE=LGPL-3
+RDEPEND=dev-ml/react:= dev-ml/js_of_ocaml:= dev-ml/lwt:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/9999
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	165fc17c38d1b11dac2008280dab6e80	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=d253d5be0cfbf2c6f5d542bd34e440f9

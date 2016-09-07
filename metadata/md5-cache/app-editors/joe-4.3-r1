@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/joe-editor/joe-4.3.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=3bc65851ee6a840d7142dd886f61cb92
+_md5_=aeb72f552ff4e88cafa56671ce7539b8
