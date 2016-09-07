@@ -1,5 +1,5 @@
 --- openssh-7_2_P2-hpn-14.10.diff.orig	2016-09-01 10:34:05.905112131 -0700
-+++ openssh-7_2_P2-hpn-14.10.diff	2016-09-06 19:35:24.308215237 -0700
++++ openssh-7_2_P2-hpn-14.10.diff	2016-09-06 21:49:35.583704017 -0700
 @@ -156,145 +156,6 @@
   	compat.o crc32.o deattack.o fatal.o hostfile.o \
   	log.o match.o md-sha256.o moduli.o nchan.o packet.o opacket.o \
@@ -155,6 +155,15 @@
  +/*
  + * OpenSSH Multi-threaded AES-CTR Cipher
  + *
+@@ -737,7 +598,7 @@
+ +	 * Handle the special case of startup, one thread must fill
+ +	 * the first KQ then mark it as draining. Lock held throughout.
+ +	 */
+-+	if (pthread_equal(pthread_self(), c->tid[0])) {
+++	if (pthread_equal(pthread_self(), c->tid[0]) || c->tid[0] == 0) {
+ +		q = &c->q[0];
+ +		pthread_mutex_lock(&q->lock);
+ +		if (q->qstate == KQINIT) {
 @@ -790,6 +651,7 @@
  +		 * can see that it's being filled.
  +		 */
