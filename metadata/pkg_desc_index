@@ -584,7 +584,7 @@ app-crypt/ophcrack 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
 app-crypt/p11-kit 0.20.7 0.23.2: Provides a standard configuration setup for installing PKCS#11
-app-crypt/paperkey 1.3: OpenPGP key archiver
+app-crypt/paperkey 1.3 1.4: OpenPGP key archiver
 app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.30 0.31: A PGP packet visualizer
@@ -7875,7 +7875,7 @@ dev-python/pyndex 0.3.2a 0.3.2a-r1: Simple and fast Python full-text indexer (ak
 dev-python/pynotifier 0.7.0-r2: pyNotifier provides an implementation of a notifier/event scheduler
 dev-python/pynut 1.2: An abstraction class written in Python to access NUT (Network UPS Tools) server
 dev-python/pynzb 0.1.0-r1: Unified API for parsing NZB files
-dev-python/pyocr 0.2.4 0.3.0 0.3.1: an optical character recognition (OCR) tool wrapper for python
+dev-python/pyocr 0.2.4 0.3.0 0.3.1 0.4.1: An optical character recognition (OCR) tool wrapper for python
 dev-python/pyodbc 3.0.7-r1: python ODBC module to connect to almost any database
 dev-python/pyode 1.2.0_p20100322-r1: Python bindings to the ODE physics engine
 dev-python/pyoembed 0.1.1 9999: Python library for oEmbed with auto-discovered and manually added providers
@@ -15249,7 +15249,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0 2.0.0: bladeRF FX3 firmware imag
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0 0.6.0: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 2.0.4 9999: Simple and intuitive GTK+ Bluetooth Manager
-net-wireless/bluez 4.101-r9 5.35 5.37 5.39: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.35 5.37 5.39 5.41: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
