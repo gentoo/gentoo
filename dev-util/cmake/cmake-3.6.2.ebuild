@@ -45,8 +45,6 @@ S="${WORKDIR}/${MY_P}"
 
 SITEFILE="50${PN}-gentoo.el"
 
-CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
-
 PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.4.0_rc1-darwin-bundle.patch
@@ -65,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-FindPythonInterp.patch
 
 	# upstream fixes (can usually be removed with a version bump)
+	"${FILESDIR}"/${PN}-3.6.1-find_library-lib32.patch
 )
 
 cmake_src_bootstrap() {
@@ -77,6 +76,11 @@ cmake_src_bootstrap() {
 	else
 		par_arg="--parallel=1"
 	fi
+
+	# disable running of cmake in boostrap command
+	sed -i \
+		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
+		bootstrap || die "sed failed"
 
 	# execinfo.h on Solaris isn't quite what it is on Darwin
 	if [[ ${CHOST} == *-solaris* ]] ; then
@@ -121,18 +125,15 @@ cmake_src_test() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# disable running of cmake in boostrap command
-	sed -i \
-		-e '/"${cmake_bootstrap_dir}\/cmake"/s/^/#DONOTRUN /' \
-		bootstrap || die "sed failed"
-
 	# Add gcc libs to the default link paths
 	sed -i \
 		-e "s|@GENTOO_PORTAGE_GCCLIBDIR@|${EPREFIX}/usr/${CHOST}/lib/|g" \
 		-e "s|@GENTOO_PORTAGE_EPREFIX@|${EPREFIX}/|g" \
 		Modules/Platform/{UnixPaths,Darwin}.cmake || die "sed failed"
-
-	cmake_src_bootstrap
+	if ! has_version ${CATEGORY}/${PN}; then
+		CMAKE_BINARY="${S}/Bootstrap.cmk/cmake"
+		cmake_src_bootstrap
+	fi
 }
 
 src_configure() {
