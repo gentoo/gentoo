@@ -16754,7 +16754,7 @@ sys-apps/the_silver_searcher 0.32.0: A code-searching tool similar to ack, but f
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.7.0 2.7.1: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.7.0 2.7.1 2.7.1-r1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/tuxonice-userui 1.1-r2: User Interface for TuxOnIce
 sys-apps/uam 0.3 0.3.1 0.3.2 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.97 0.98 0.99: proxy program for two connections set up by a UCSPI server and a UCSPI client
