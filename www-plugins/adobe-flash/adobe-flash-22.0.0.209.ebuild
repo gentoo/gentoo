@@ -2,19 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit toolchain-funcs versionator multilib multilib-minimal
+EAPI=6
+inherit multilib multilib-minimal
 
 DESCRIPTION="Adobe Flash Player"
 HOMEPAGE="
 	http://www.adobe.com/products/flashplayer.html
 	http://get.adobe.com/flashplayer/
-	https://helpx.adobe.com/security/products/flash-player.html#version11
+	https://helpx.adobe.com/security/products/flash-player.html
 "
 
 AF_URI="https://fpdownload.adobe.com/pub/flashplayer/pdc"
-PV_M=$(get_major_version)
-# https://fpdownload.adobe.com/pub/flashplayer/pdc/22.0.0.209/flash_player_ppapi_linux.x86_64.tar.gz
 AF_32_URI="${AF_URI}/${PV}/flash_player_ppapi_linux.i386.tar.gz -> ${P}.i386.tar.gz"
 AF_64_URI="${AF_URI}/${PV}/flash_player_ppapi_linux.x86_64.tar.gz -> ${P}.x86_64.tar.gz"
 
@@ -37,18 +35,6 @@ S="${WORKDIR}"
 # Ignore QA warnings in these closed-source binaries, since we can't fix them:
 QA_PREBUILT="usr/*"
 
-any_cpu_missing_flag() {
-	local value=${1}
-	grep '^flags' /proc/cpuinfo | grep -qv "${value}"
-}
-
-pkg_setup() {
-	unset need_lahf_wrapper
-	if use abi_x86_64 && any_cpu_missing_flag 'lahf_lm'; then
-		export need_lahf_wrapper=1
-	fi
-}
-
 src_unpack() {
 	local files=( ${A} )
 
@@ -64,8 +50,6 @@ src_unpack() {
 
 	multilib_parallel_foreach_abi multilib_src_unpack
 }
-
-src_configure() { :; }
 
 multilib_src_install() {
 	exeinto /usr/$(get_libdir)/chromium-browser/PepperFlash
