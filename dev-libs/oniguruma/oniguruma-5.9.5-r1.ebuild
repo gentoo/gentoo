@@ -2,12 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 # Needed for a sane .so versionning on fbsd, please dont drop
-AUTOTOOLS_AUTORECONF=1
-
-inherit eutils autotools-multilib
+inherit autotools multilib-minimal
 
 MY_P=onig-${PV}
 
@@ -25,15 +23,21 @@ DOCS=( AUTHORS HISTORY README{,.ja} doc/{API,FAQ,RE}{,.ja} )
 
 S=${WORKDIR}/${MY_P}
 
-src_configure() {
-	local myeconfargs=(
-		$(use_enable combination-explosion-check)
-		$(use_enable crnl-as-line-terminator)
-	)
-	autotools-multilib_src_configure
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
-src_install() {
-	autotools-multilib_src_install
-	use static-libs || prune_libtool_files
+multilib_src_configure() {
+	ECONF_SOURCE=${S} econf \
+		--enable-shared \
+		$(use_enable static-libs static) \
+		$(use_enable combination-explosion-check) \
+		$(use_enable crnl-as-line-terminator)
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	find "${D}" -name '*.la' -delete || die
 }
