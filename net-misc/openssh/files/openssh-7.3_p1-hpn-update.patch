@@ -1,5 +1,5 @@
 --- openssh-7_2_P2-hpn-14.10.diff.orig	2016-09-01 10:34:05.905112131 -0700
-+++ openssh-7_2_P2-hpn-14.10.diff	2016-09-07 15:13:59.267910872 -0700
++++ openssh-7_2_P2-hpn-14.10.diff	2016-09-07 17:24:04.937948083 -0700
 @@ -156,145 +156,6 @@
   	compat.o crc32.o deattack.o fatal.o hostfile.o \
   	log.o match.o md-sha256.o moduli.o nchan.o packet.o opacket.o \
@@ -151,7 +151,7 @@
  --- /dev/null
  +++ b/cipher-ctr-mt.c
 -@@ -0,0 +1,533 @@
-+@@ -0,0 +1,546 @@
++@@ -0,0 +1,556 @@
  +/*
  + * OpenSSH Multi-threaded AES-CTR Cipher
  + *
@@ -235,7 +235,19 @@
  +			pthread_cond_wait(&c->q[0].cond, &c->q[0].lock);
  +		pthread_mutex_unlock(&c->q[0].lock);
  +	}
-@@ -1003,7 +875,9 @@
+@@ -989,6 +861,11 @@
+ +	for (i = 0; i < CIPHER_THREADS; i++) {
+ +		pthread_cancel(c->tid[i]);
+ +	}
+++	for (i = 0; i < NUMKQ; i++) {
+++		pthread_mutex_lock(&c->q[i].lock);
+++		pthread_cond_broadcast(&c->q[i].cond);
+++		pthread_mutex_unlock(&c->q[i].lock);
+++	}
+ +	for (i = 0; i < CIPHER_THREADS; i++) {
+ +		pthread_join(c->tid[i], NULL);
+ +	}
+@@ -1003,7 +880,9 @@
  +	/* reconstruct threads */
  +	for (i = 0; i < CIPHER_THREADS; i++) {
  +		debug("spawned a thread");
@@ -245,7 +257,19 @@
  +	}
  +}
  +
-@@ -1270,7 +1144,7 @@
+@@ -1021,6 +900,11 @@
+ +		/* Cancel pregen threads */
+ +		for (i = 0; i < CIPHER_THREADS; i++)
+ +			pthread_cancel(c->tid[i]);
+++		for (i = 0; i < NUMKQ; i++) {
+++			pthread_mutex_lock(&c->q[i].lock);
+++			pthread_cond_broadcast(&c->q[i].cond);
+++			pthread_mutex_unlock(&c->q[i].lock);
+++		}
+ +		for (i = 0; i < CIPHER_THREADS; i++)
+ +			pthread_join(c->tid[i], NULL);
+ +
+@@ -1270,7 +1154,7 @@
   
   #include "ssherr.h"
   #include "sshbuf.h"
@@ -254,7 +278,7 @@
   #include "digest.h"
   
   #if OPENSSL_VERSION_NUMBER >= 0x00907000L
-@@ -1312,8 +1186,8 @@
+@@ -1312,8 +1196,8 @@
  +		 */
  +		if (ctos && !log_flag) {
  +			logit("SSH: Server;Ltype: Kex;Remote: %s-%d;Enc: %s;MAC: %s;Comp: %s",
@@ -265,7 +289,7 @@
  +			    newkeys->enc.name,
  +			    authlen == 0 ? newkeys->mac.name : "<implicit>",
  +			    newkeys->comp.name);
-@@ -1430,7 +1304,7 @@
+@@ -1430,7 +1314,7 @@
  +		rekey_requested = 0;
  +		return 1;
  +	}
@@ -274,7 +298,7 @@
   	/* Time-based rekeying */
   	if (state->rekey_interval != 0 &&
   	    state->rekey_time + state->rekey_interval <= monotime())
-@@ -1490,7 +1364,7 @@
+@@ -1490,7 +1374,7 @@
   
   	transferred = *counter - (cur_pos ? cur_pos : start_pos);
   	cur_pos = *counter;
@@ -283,7 +307,7 @@
   	bytes_left = end_pos - cur_pos;
   
  +	delta_pos = cur_pos - last_pos;
-@@ -1564,8 +1438,8 @@
+@@ -1564,8 +1448,8 @@
   	{ "canonicaldomains", oCanonicalDomains },
   	{ "canonicalizefallbacklocal", oCanonicalizeFallbackLocal },
  @@ -282,6 +287,11 @@ static struct {
@@ -293,7 +317,7 @@
   
  +	{ "tcprcvbufpoll", oTcpRcvBufPoll },
  +	{ "tcprcvbuf", oTcpRcvBuf },
-@@ -1736,8 +1610,8 @@
+@@ -1736,8 +1620,8 @@
   	off_t size, statbytes;
   	unsigned long long ull;
   	int setimes, targisdir, wrerrno = 0;
@@ -304,7 +328,7 @@
   	struct timeval tv[2];
   
   #define	atime	tv[0]
-@@ -1956,32 +1830,6 @@
+@@ -1956,32 +1840,6 @@
   }
   
   /*
@@ -337,7 +361,7 @@
  @@ -1041,8 +1064,12 @@ server_request_tun(void)
   	sock = tun_open(tun, mode);
   	if (sock < 0)
-@@ -2372,10 +2220,10 @@
+@@ -2372,10 +2230,10 @@
   	debug("Client protocol version %d.%d; client software version %.100s",
   	    remote_major, remote_minor, remote_version);
  +	logit("SSH: Server;Ltype: Version;Remote: %s-%d;Protocol: %d.%d;Client: %.100s",
@@ -350,7 +374,7 @@
   
  @@ -1160,6 +1163,8 @@ server_listen(void)
   	int ret, listen_sock, on = 1;
-@@ -2413,7 +2261,7 @@
+@@ -2413,7 +2271,7 @@
   	if (options.challenge_response_authentication)
   		options.kbd_interactive_authentication = 1;
  @@ -2151,6 +2168,9 @@ main(int ac, char **av)
@@ -359,7 +383,7 @@
   	free(laddr);
   
  +	/* set the HPN options for the child */
-@@ -2486,11 +2334,10 @@
+@@ -2486,11 +2344,10 @@
  index eb4e948..3692722 100644
  --- a/version.h
  +++ b/version.h
