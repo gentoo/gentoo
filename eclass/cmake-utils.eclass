@@ -425,13 +425,6 @@ _cmake_modify-cmakelists() {
 		Module          \${CMAKE_MODULE_LINKER_FLAGS}
 		Shared          \${CMAKE_SHARED_LINKER_FLAGS}\n")
 	_EOF_
-
-	if ! grep -Fiq FEATURE_SUMMARY "${CMAKE_USE_DIR}"/CMakeLists.txt; then
-		cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_ || die
-			include(FeatureSummary)
-			FEATURE_SUMMARY(INCLUDE_QUIET_PACKAGES WHAT ALL)
-		_EOF_
-	fi
 }
 
 # temporary function for moving cmake cleanups from from src_configure -> src_prepare.
