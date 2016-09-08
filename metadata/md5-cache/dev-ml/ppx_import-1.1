@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/ppx_tools:= dev-ml/cppo:= test? ( dev-ml/ounit dev-ml/ppx_deriving ) dev-ml/opam dev-ml/ocamlbuild dev-ml/findlib
+DESCRIPTION=A syntax extension for importing declarations from interface files
+EAPI=5
+HOMEPAGE=https://github.com/whitequark/ppx_impor://github.com/whitequark/ppx_import
+IUSE=+ocamlopt test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/ppx_tools:= dev-ml/cppo:=
+SLOT=0/1.1
+SRC_URI=https://github.com/whitequark/ppx_import/archive/v1.1.tar.gz -> ppx_import-1.1.tar.gz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_md5_=04a8fd03eceb85470746c5d552dc4f18

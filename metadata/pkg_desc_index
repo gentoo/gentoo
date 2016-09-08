@@ -5119,7 +5119,7 @@ dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-containers 0.18 0.19: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.1.0 2.2.0 2.3.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0 0.9.0: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0 0.9.0 0.9.1: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5178,12 +5178,14 @@ dev-ml/ppx_compare 113.24.00 113.33.00: Generation of comparison functions from 
 dev-ml/ppx_core 113.24.00 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 113.24.00 113.33.00: Printf-style format-strings for user-defined string conversion
 dev-ml/ppx_deriving 3.3 4.0: Type-driven code generation for OCaml
+dev-ml/ppx_deriving_yojson 3.0: A Yojson codec generator for OCaml
 dev-ml/ppx_driver 113.24.00-r1 113.33.00: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 113.24.00 113.33.00: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 113.24.00 113.33.00 113.33.01: Cram like framework for OCaml
 dev-ml/ppx_fail 113.24.00 113.33.00: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_here 113.24.00 113.33.00: Expands [%here] into its location
+dev-ml/ppx_import 1.1: A syntax extension for importing declarations from interface files
 dev-ml/ppx_inline_test 113.24.00 113.33.00: Syntax extension for writing in-line tests in ocaml code
 dev-ml/ppx_jane 113.24.00 113.24.01 113.33.00: Standard Jane Street ppx rewriters
 dev-ml/ppx_let 113.24.00 113.33.00: Monadic let-bindings
@@ -5193,7 +5195,7 @@ dev-ml/ppx_sexp_conv 113.24.00 113.33.00: Support Library for type-driven code g
 dev-ml/ppx_sexp_message 113.24.00 113.33.00: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 113.24.00 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_tools 4.02.3 5.0.4.02.0 5.0.4.03.0: Tools for authors of ppx rewriters
-dev-ml/ppx_type_conv 113.24.00 113.33.00: Support Library for type-driven code generators
+dev-ml/ppx_type_conv 113.24.00 113.33.00 113.33.02: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
