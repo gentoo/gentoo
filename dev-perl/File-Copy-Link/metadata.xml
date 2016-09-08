@@ -21,5 +21,6 @@
   <upstream>
     <remote-id type="cpan">File-Copy-Link</remote-id>
     <remote-id type="cpan-module">File::Copy::Link</remote-id>
+    <remote-id type="cpan-module">File::Spec::Link</remote-id>
   </upstream>
 </pkgmetadata>
