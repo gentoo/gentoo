@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=a regular expression library for different character encodings
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.geocities.jp/kosako3/oniguruma
 IUSE=combination-explosion-check crnl-as-line-terminator static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=BSD-2
 SLOT=0
 SRC_URI=http://www.geocities.jp/kosako3/oniguruma/archive/onig-5.9.5.tar.gz
-_eclass_exported_funcs=src_prepare:autotools-multilib src_configure:- src_compile:autotools-multilib src_test:autotools-multilib src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-multilib	77afca16a6cb82823eed6366a10e7f75	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=a4b71e84d0702c420a862404fcb24f04
+_eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=7fce811486b14deece0653b386f9b0e1
