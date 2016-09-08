@@ -13656,7 +13656,7 @@ media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
 media-video/qgifer 0.2.1-r2 0.2.1-r3: A video-based animated GIF creator
 media-video/qt-recordmydesktop 0.3.8-r2: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.12: X11 desktop video grabber tray
-media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 9999: Command line media player for the Raspberry Pi
+media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder which compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
 media-video/replex 0.1.4 0.1.6.8: REPLEX remuxes MPEG-2 transport streams into program streams
@@ -17920,7 +17920,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.632: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.632 22.0.0.209: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.92_beta 53.0.2785.92 54.0.2840.14_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1 0.3.5: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
