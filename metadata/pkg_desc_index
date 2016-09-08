@@ -10352,10 +10352,10 @@ games-arcade/xscavenger 1.4.4: Lode-Runner-like arcade game
 games-arcade/xsfcave 0.5: A X11 sfcave clone
 games-arcade/xtux 20030306: Multiplayer Gauntlet-style arcade game
 games-arcade/yarsrevenge 0.99: remake of the Atari 2600 classic Yar's Revenge
-games-board/ace 1.4: DJ Delorie's Ace of Penguins solitaire games
-games-board/ascal 0.1.1: A game similar to Draughts but with some really cool enhancements
-games-board/atakks 1.0: A clone of Ataxx
-games-board/awale 1.5: Free Awale - The game of all Africa
+games-board/ace 1.4 1.4-r1: DJ Delorie's Ace of Penguins solitaire games
+games-board/ascal 0.1.1 0.1.1-r1: A game similar to Draughts but with some really cool enhancements
+games-board/atakks 1.0 1.0-r1: A clone of Ataxx
+games-board/awale 1.5 1.5-r1: Free Awale - The game of all Africa
 games-board/biloba 0.9.3 0.9.3-r1: a board game, up to 4 players, with AI and network
 games-board/blokish 0.9.4-r2 0.9.4-r3: Open source clone of the four-player board game Blokus
 games-board/camato 0.7.4: A map editor for the game gnocatan
@@ -15998,7 +15998,7 @@ sci-libs/lis 1.6.2: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.1.3 2.1.3.1 2.3.3 2.3.3-r1 2.3.4: Math Graphics Library
-sci-libs/matio 1.5.1 1.5.2 1.5.7: Library for reading and writing matlab files
+sci-libs/matio 1.5.1 1.5.2 1.5.7 1.5.8: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3 5.1.0-r2: A package for unstructured serial graph partitioning
 sci-libs/minfx 1.0.3-r1 1.0.4_pre98 1.0.4 1.0.5 1.0.6 1.0.10 1.0.11: Numerical optimisation library
