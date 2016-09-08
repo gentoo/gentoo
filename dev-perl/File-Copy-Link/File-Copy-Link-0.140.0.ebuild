@@ -24,3 +24,8 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+
+src_test() {
+	perl_rm_files t/pod-coverage.t t/pod.t
+	perl-module_src_test
+}
