@@ -27,6 +27,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '1igem "minitest", "~>5.0"' test/psych/helper.rb || die
+	sed -i -e '/s.files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
