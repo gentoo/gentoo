@@ -4,24 +4,26 @@
 
 EAPI=6
 
-inherit eutils autotools flag-o-matic
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Practical Music Search: an open source ncurses client for mpd, written in C++"
 HOMEPAGE="https://ambientsound.github.io/pms/"
 SRC_URI="https://github.com/ambientsound/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="regex"
 
 RDEPEND="
-	sys-libs/ncurses:=
+	sys-libs/ncurses:0=
 	dev-libs/glib:2
+	virtual/libintl
 	regex? ( dev-libs/boost:= )
 "
 DEPEND="
 	virtual/pkgconfig
+	sys-devel/gettext
 	${RDEPEND}
 "
 
@@ -44,8 +46,8 @@ src_prepare() {
 
 src_configure() {
 	# fixes build with ncurses[tinfo], bug #526530
-	append-cflags $(pkg-config --cflags ncursesw)
-	append-libs $(pkg-config --libs ncursesw)
+	append-cflags $($(tc-getPKG_CONFIG) --cflags ncursesw)
+	append-libs $($(tc-getPKG_CONFIG) --libs ncursesw)
 
 	econf \
 		$(use_enable regex)
