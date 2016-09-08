@@ -7259,7 +7259,7 @@ dev-python/flask 0.10.1-r1 0.10.1-r2 0.11 0.11.1 9999: A microframework based on
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1 0.11.1-r1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0 0.11.1: i18n and l10n support for Flask based on Babel and pytz
-dev-python/flask-bootstrap 3.3.5.7 3.3.6.0: An extension that includes Bootstrap in your project, without boilerplate code
+dev-python/flask-bootstrap 3.3.6.0 3.3.7.0: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-debug 0.4.3: Configures Flask applications in a canonical way
