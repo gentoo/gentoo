@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup ${MY_PN}
-	enewuser ${MY_PN} -1 -1 /var/lib/${MY_PN} ${MY_PN} -m
+	enewuser ${MY_PN} -1 -1 /var/lib/${MY_PN} ${MY_PN}
 }
 
 src_install() {
