@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare setup
 DEPEND=dev-libs/glib:2 hddtemp? ( app-admin/hddtemp ) gnutls? ( net-libs/gnutls ) !gnutls? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) lm_sensors? ( sys-apps/lm_sensors ) nls? ( virtual/libintl ) ntlm? ( net-libs/libntlm ) X? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango ) virtual/pkgconfig nls? ( sys-devel/gettext ) virtual/pkgconfig
 DESCRIPTION=Single process stack of various system monitors
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.gkrellm.net/
 IUSE=gnutls hddtemp libressl lm_sensors nls ntlm ssl kernel_FreeBSD X
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=dev-libs/glib:2 hddtemp? ( app-admin/hddtemp ) gnutls? ( net-libs/gnutls ) !gnutls? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) lm_sensors? ( sys-apps/lm_sensors ) nls? ( virtual/libintl ) ntlm? ( net-libs/libntlm ) X? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/pango )
 SLOT=2
-SRC_URI=http://gkrellm.srcbox.net/gkrellm-2.3.6-rc1.tar.bz2 https://dev.gentoo.org/~jlec/distfiles/gkrellm-2.3.6_rc1-update_german_translation.patch.xz
+SRC_URI=http://gkrellm.srcbox.net/gkrellm-2.3.8.tar.bz2 -> gkrellm-2.3.8.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=ceb0fa68d47c0d32f468d2168f8aaddb
+_md5_=fb5f72d5941838feb97bdb2144063816
