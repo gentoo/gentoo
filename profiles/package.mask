@@ -77,7 +77,8 @@ app-crypt/hashcat-gui
 ~mail-client/thunderbird-38.8.0
 
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
-# Masked for testing, and updating other LLVM components.
+# Masked for testing, and porting revdeps. Please do not unmask before
+# media-libs/mesa release supports it.
 ~sys-devel/clang-3.9.0
 ~sys-devel/llvm-3.9.0
 ~sys-libs/llvm-libunwind-3.9.0
