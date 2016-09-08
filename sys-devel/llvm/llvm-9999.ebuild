@@ -179,6 +179,9 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		mycmakeargs+=(
 			-DLLVM_BUILD_DOCS=$(usex doc)
+			# note: this is used only when OCaml is enabled, so we can
+			# set it to 'yes' even without OCaml around
+			-DLLVM_ENABLE_OCAMLDOC=$(usex doc)
 			-DLLVM_ENABLE_SPHINX=$(usex doc)
 			-DLLVM_ENABLE_DOXYGEN=OFF
 			-DLLVM_INSTALL_UTILS=ON
