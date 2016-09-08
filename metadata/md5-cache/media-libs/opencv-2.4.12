@@ -11,5 +11,5 @@ REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0/2.4
 SRC_URI=https://github.com/Itseez/opencv/archive/2.4.12.zip -> opencv-2.4.12.zip
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	96310bc20a05e89ab475d018da500250	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=4302c6c9d648387755160f7fa450328d

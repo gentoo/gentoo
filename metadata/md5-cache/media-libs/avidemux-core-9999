@@ -8,5 +8,5 @@ LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
 RDEPEND=!<media-video/avidemux-9999:2.6 dev-db/sqlite:3 sdl? ( media-libs/libsdl:0 ) system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] ) xv? ( x11-libs/libXv:0 ) vaapi? ( x11-libs/libva:0 ) vdpau? ( x11-libs/libvdpau:0 ) video_cards_fglrx? ( || ( >=x11-drivers/ati-drivers-14.12-r3 x11-libs/xvba-video:0 ) ) nls? ( virtual/libintl:0 )
 SLOT=2.6
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	96310bc20a05e89ab475d018da500250	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=6cb5d46dc26ca2262ab6707be23ff258

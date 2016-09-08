@@ -10,5 +10,5 @@ RDEPEND=>=dev-qt/qtcore-4.8.6:4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,ab
 SLOT=0
 SRC_URI=mirror://github/flavio/qjson/qjson-0.8.1.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-multilib src_compile:cmake-multilib src_test:cmake-multilib src_install:cmake-multilib
-_eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	96310bc20a05e89ab475d018da500250	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=dae696784343ee0f3b0b690acf3c5ced
