@@ -15137,7 +15137,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.13.10 0.14.3 0.14.4-r1 0.14.5: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.13.10 0.14.4-r1 0.14.5 0.14.6: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1 2.92: A Fast, Easy and Free BitTorrent client
@@ -17407,7 +17407,7 @@ sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated t
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpudyn 1.0.1 1.0.1-r2: A daemon to control laptop power consumption via cpufreq and disk standby
-sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0 4.7.0: Shows and sets processor power related values
+sys-power/cpupower 3.13 3.14 3.15 3.18 4.2 4.5.0-r1 4.7.0-r1: Shows and sets processor power related values
 sys-power/cpuspeedy 0.4.1: A simple and easy to use program to control the speed and the voltage of CPUs on the fly
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20121018 20140828 20150717 20160729: Intel ACPI Source Language (ASL) compiler
