@@ -39,9 +39,10 @@ pkg_pretend() {
 	fi
 }
 
+PATCHES=( ${FILESDIR}/pms-9999-fix-automagic-dep.patch )
+
 src_prepare() {
-	eapply "${FILESDIR}/pms-9999-fix-automagic-dep.patch"
-	eapply_user
+	default
 
 	eautoreconf
 }
