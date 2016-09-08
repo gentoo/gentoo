@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -27,6 +26,8 @@ LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
 IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode"
 
+# Most lib deps here are related to programs rather than our libs,
+# so we rarely need to specify ${MULTILIB_USEDEP}.
 RDEPEND="caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
@@ -36,11 +37,7 @@ RDEPEND="caps? ( sys-libs/libcap-ng )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )
-	udev? ( virtual/libudev:= )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20150406-r2
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32]
-	)"
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )

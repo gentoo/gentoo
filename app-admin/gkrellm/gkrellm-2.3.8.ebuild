@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils multilib user systemd toolchain-funcs
 
@@ -10,10 +10,8 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
-SRC_URI="
-	http://gkrellm.srcbox.net/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~jlec/distfiles/${P}-update_german_translation.patch.xz
-	"
+# Upstream named their xz compressed tarball tar.bz2 (*sigh*)
+SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2 -> ${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="2"
@@ -50,13 +48,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.5-config.patch
 	"${FILESDIR}"/${PN}-2.3.5-width.patch
 	"${FILESDIR}"/${PN}-2.3.5-sansfont.patch
-	"${FILESDIR}"/${P}-fix_gtk_deprecation_warning.patch
-	"${FILESDIR}"/${P}-fix_copypaste_error.patch
-	"${FILESDIR}"/${P}-avoid_possible_busy_loop.patch
-	"${WORKDIR}"/${P}-update_german_translation.patch
 )
 
 S="${WORKDIR}/${MY_P}"
+
+DOCS=( Changelog CREDITS README )
 
 pkg_setup() {
 	enewgroup gkrellmd
@@ -75,7 +71,7 @@ src_prepare() {
 		-e "s:/usr/local/lib:${EPREFIX}/usr/local/$(get_libdir):" \
 		-i src/${PN}.h || die "sed ${PN}.h failed"
 
-	epatch ${PATCHES[@]}
+	default
 }
 
 src_compile() {
@@ -124,7 +120,8 @@ src_install() {
 			PKGCONFIGDIR="${ED}/usr/$(get_libdir)/pkgconfig" \
 			MANDIR="${ED}/usr/share/man/man1"
 
-		dohtml *.html
+		docinto html
+		dodoc *.html
 
 		newicon src/icon.xpm ${PN}.xpm
 		make_desktop_entry ${PN} GKrellM ${PN}
@@ -144,5 +141,5 @@ src_install() {
 	insinto /etc
 	doins server/gkrellmd.conf
 
-	dodoc Changelog CREDITS README
+	einstalldocs
 }
