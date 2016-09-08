@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/gdk-pixbuf-query-loaders
+	/usr/bin/gdk-pixbuf-query-loaders$(get_exeext)
 )
 
 src_prepare() {
