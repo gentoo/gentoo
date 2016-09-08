@@ -10,6 +10,8 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A libyaml wrapper for Ruby"
