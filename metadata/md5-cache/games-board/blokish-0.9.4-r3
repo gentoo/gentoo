@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/wxGTK:3.0[X,opengl] virtual/glu virtual/opengl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open source clone of the four-player board game Blokus
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/blokish/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/wxGTK:3.0[X,opengl] virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/blokish/blokish_v0.9.4.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=11a0fdbb8aba14998d91bbe8966ebb2c

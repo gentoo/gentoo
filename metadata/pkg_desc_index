@@ -10356,8 +10356,8 @@ games-board/ace 1.4: DJ Delorie's Ace of Penguins solitaire games
 games-board/ascal 0.1.1: A game similar to Draughts but with some really cool enhancements
 games-board/atakks 1.0: A clone of Ataxx
 games-board/awale 1.5: Free Awale - The game of all Africa
-games-board/biloba 0.9.3: a board game, up to 4 players, with AI and network
-games-board/blokish 0.9.4-r2: Open source clone of the four-player board game Blokus
+games-board/biloba 0.9.3 0.9.3-r1: a board game, up to 4 players, with AI and network
+games-board/blokish 0.9.4-r2 0.9.4-r3: Open source clone of the four-player board game Blokus
 games-board/camato 0.7.4: A map editor for the game gnocatan
 games-board/capicity 1.0: A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)
 games-board/ccgo 0.3.6.5: An IGS client written in C++
