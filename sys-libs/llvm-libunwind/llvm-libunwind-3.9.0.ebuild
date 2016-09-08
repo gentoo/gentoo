@@ -21,7 +21,7 @@ IUSE="debug +static-libs"
 RDEPEND="!sys-libs/libunwind"
 # llvm-config and cmake files needed to get proper flags
 # (3.9.0 needed because cmake file install path changed)
-DEPEND=">=sys-devel/llvm-3.9.0"
+DEPEND=">=sys-devel/llvm-3.9.0[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${MY_P}.src"
 
