@@ -1,5 +1,5 @@
---- src/base.h
-+++ src/base.h
+--- a/src/base.h
++++ b/src/base.h
 @@ -25,6 +25,9 @@
  #include <vector>
  #include <fstream>
