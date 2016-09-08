@@ -16514,7 +16514,7 @@ sys-apps/accountsservice 0.6.40 0.6.42: D-Bus interfaces for querying and manipu
 sys-apps/ack 2.14: ack is a tool like grep, aimed at programmers with large trees of heterogeneous source code
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
-sys-apps/agedu 20151213: A utility for tracking down wasted disk space
+sys-apps/agedu 20151213 20160906: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.10.1: Userspace utils and init scripts for the AppArmor application security system
