@@ -11518,7 +11518,7 @@ kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22-r2: Startkde script, which starts a complete KDE session, and associated scripts
-kde-base/kdelibs 4.14.20-r2 4.14.22 4.14.23: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.20-r2 4.14.22 4.14.23 4.14.24: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.22: Allows handling of multihead systems via the XRandR extension
