@@ -3,7 +3,9 @@
 # $Id$
 
 EAPI=6
-inherit eutils toolchain-funcs
+
+# eutils: strip-linguas
+inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="Shows and sets processor power related values"
 HOMEPAGE="https://www.kernel.org/"
@@ -53,4 +55,7 @@ src_install() {
 
 	newconfd "${FILESDIR}"/conf.d-r2 cpupower
 	newinitd "${FILESDIR}"/init.d-r4 cpupower
+
+	systemd_dounit "${FILESDIR}"/cpupower-frequency-set.service
+	systemd_install_serviced "${FILESDIR}"/cpupower-frequency-set.service.conf
 }
