@@ -10,6 +10,8 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A libyaml wrapper for Ruby"
@@ -27,6 +29,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '1igem "minitest", "~>5.0"' test/psych/helper.rb || die
+	sed -i -e '/s.files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
