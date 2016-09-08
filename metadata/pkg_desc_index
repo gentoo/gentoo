@@ -6899,7 +6899,7 @@ dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters a
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
-dev-python/PyGithub 1.25.2: Python library to access the Github API v3
+dev-python/PyGithub 1.25.2 1.27.1: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4-r1 4.12_pre1606101416-r1: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126 5.7: Python bindings for the Qt framework
@@ -8181,7 +8181,7 @@ dev-python/sepolgen 1.2.3 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 20.6.7 24.0.2 9999: Collection of extensions to Distutils
+dev-python/setuptools 18.4 20.6.7 24.0.2 26.1.1 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1 1.11.1: package to manage versions by scm tags via setuptools
@@ -12164,6 +12164,7 @@ media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
 media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
+media-gfx/clockphoto 1.0: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.7 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4 0.6.8: Batch image converter and resizer based on ImageMagick
