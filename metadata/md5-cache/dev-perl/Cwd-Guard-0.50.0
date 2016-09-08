@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec virtual/perl-Exporter virtual/perl-if virtual/perl-parent >=dev-perl/Module-Build-0.380.0 test? ( dev-perl/Test-Requires virtual/perl-Test-Simple !minimal? ( dev-perl/File-Copy-Link ) ) dev-lang/perl:=
+DESCRIPTION=Temporary changing working directory (chdir)
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Cwd-Guard/
+IUSE=test minimal
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec virtual/perl-Exporter virtual/perl-if virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/Cwd-Guard-0.05.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=95ce0c8c8412aee2b255832b96717fc8
