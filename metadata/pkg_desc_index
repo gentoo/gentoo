@@ -9172,13 +9172,13 @@ dev-ruby/poltergeist 1.9.0 1.10.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.11: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 2.4.1: Native PostgreSQL data types and querying extensions for ActiveRecord and Arel
-dev-ruby/power_assert 0.2.6 0.2.7 0.3.0: Shows each value of variables and method calls in the expression
+dev-ruby/power_assert 0.2.6 0.2.7 0.3.0 0.3.1: Shows each value of variables and method calls in the expression
 dev-ruby/prawn 1.3.0 2.0.2 2.1.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.10.3 0.10.4: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 2.0.17 2.1.0 2.1.1: A libyaml wrapper for Ruby
+dev-ruby/psych 2.0.17 2.1.0 2.1.1-r1: A libyaml wrapper for Ruby
 dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
