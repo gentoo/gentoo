@@ -29,6 +29,7 @@ DEPEND="
 	test? (
 		dev-python/flask-appconfig[${PYTHON_USEDEP}]
 		dev-python/flask-debug[${PYTHON_USEDEP}]
+		dev-python/flask-nav[${PYTHON_USEDEP}]
 		dev-python/flask-wtf[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
