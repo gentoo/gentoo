@@ -1,0 +1,9 @@
+[Unit]
+Description=CPU Frequency Scaling
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cpupower frequency-set $OPTS
+
+[Install]
+WantedBy=multiuser.target

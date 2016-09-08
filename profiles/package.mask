@@ -597,7 +597,7 @@ dev-libs/skyutils
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
 # https://bugs.gentoo.org/590780
-=sys-power/cpupower-4.7.0
+~sys-power/cpupower-4.7.0
 
 # Pacho Ramos <pacho@gentoo.org> (7 Aug 2016)
 # Upstream dead, depends on old gstreamer, old webkit, many unresolved bug
