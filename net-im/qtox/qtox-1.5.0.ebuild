@@ -60,7 +60,7 @@ pkg_pretend() {
 src_configure() {
 	use gtk || local NO_GTK_SUPPORT="ENABLE_SYSTRAY_STATUSNOTIFIER_BACKEND=NO ENABLE_SYSTRAY_GTK_BACKEND=NO"
 	use X || local NO_X_SUPPORT="DISABLE_PLATFORM_EXT=YES"
-	
+
 	eqmake5 \
 			PREFIX="${D}/usr" \
 			GIT_DESCRIBE="${PV}" \
