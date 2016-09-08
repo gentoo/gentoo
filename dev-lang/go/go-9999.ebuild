@@ -28,6 +28,7 @@ kernel_linux? (
 		${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz
 		${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap.tbz
 	)
+	s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-bootstrap.tbz )
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
 )
 kernel_SunOS? (
@@ -89,6 +90,7 @@ go_arch()
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
 		ppc64) [[ $(tc-endian $@) = big ]] && echo ppc64 || echo ppc64le ;;
+		s390) echo s390x ;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -217,34 +219,4 @@ src_install()
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
 	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
-}
-
-pkg_preinst()
-{
-	has_version '<dev-lang/go-1.4' &&
-		export had_support_files=true ||
-		export had_support_files=false
-}
-
-pkg_postinst()
-{
-	# If the go tool sees a package file timestamped older than a dependancy it
-	# will rebuild that file.  So, in order to stop go from rebuilding lots of
-	# packages for every build we need to fix the timestamps.  The compiler and
-	# linker are also checked - so we need to fix them too.
-	ebegin "fixing timestamps to avoid unnecessary rebuilds"
-	tref="usr/lib/go/pkg/*/runtime.a"
-	find "${EROOT}"usr/lib/go -type f \
-		-exec touch -r "${EROOT}"${tref} {} \;
-	eend $?
-
-	if $had_support_files; then
-		ewarn
-		ewarn "All editor support, IDE support, shell completion"
-		ewarn "support, etc has been removed from the go package"
-		ewarn "upstream."
-		ewarn "For more information on which support is available, see"
-		ewarn "the following URL:"
-		ewarn "https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins"
-	fi
 }
