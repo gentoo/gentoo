@@ -1,0 +1,11 @@
+--- a/sample/sebek.c
++++ b/sample/sebek.c
+@@ -167,7 +167,7 @@
+ 
+     if (payload_flag)
+     {
+-	memset(cmd, 0, sizeof(cmd));
++	memset(cmd, 0, length);
+ 	memcpy(cmd, payload, (payload_s < 12 ? payload_s : 12));
+ 	length = payload_s;
+     }

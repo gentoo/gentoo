@@ -1,0 +1,19 @@
+--- likwid-likwid-4.1.1/Makefile.org	2016-07-14 12:09:56.612963529 +0800
++++ likwid-likwid-4.1.1/Makefile	2016-07-14 12:11:24.148645584 +0800
+@@ -51,7 +51,6 @@
+ 
+ #CONFIGURE BUILD SYSTEM
+ BUILD_DIR  = ./$(COMPILER)
+-Q         ?= @
+ GENGROUPLOCK = .gengroup
+ 
+ VPATH     = $(SRC_DIR)
+@@ -544,7 +543,7 @@
+ 		sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s+$(PREFIX)/bin/likwid-lua+$(PWD)/ext/lua/lua+" -e "s+$(PREFIX)/share/lua/?.lua+$(PWD)/?.lua+" -e "s+$(PREFIX)/bin/likwid-pin+$(PWD)/likwid-pin+" -e "s+$(PREFIX)/bin/likwid-perfctr+$(PWD)/likwid-perfctr+" $$APP; \
+ 		chmod +x $$APP; \
+ 	done
+-	@sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s+$(PREFIX)/lib+$(PWD)+g" -e "s+$(PREFIX)/share/likwid/perfgroups+$(PWD)/groups+g" likwid.lua;
++	@sed -i -e "s/<VERSION>/$(VERSION)/g" -e "s/<DATE>/$(DATE)/g" -e "s/<RELEASE>/$(RELEASE)/g" -e "s+$(PREFIX)/+$(PWD)+g" -e "s+$(PREFIX)/share/likwid/perfgroups+$(PWD)/groups+g" likwid.lua;
+ 	@sed -i -e "s+$(PREFIX)/share/likwid/mongroups+$(PWD)/monitoring/groups+g" likwid-agent
+ 	@ln -sf liblikwid.so liblikwid.so.$(VERSION)
+ 	@ln -sf ext/hwloc/liblikwid-hwloc.so liblikwid-hwloc.so.$(VERSION)

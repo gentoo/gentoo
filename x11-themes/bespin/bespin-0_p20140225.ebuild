@@ -11,7 +11,7 @@ inherit kde4-base qmake-utils
 if [[ $PV != *9999 ]]; then
 	REV="1712"
 	S="${WORKDIR}/cloudcity-code-${REV}"
-	SRC_URI="http://sourceforge.net/code-snapshots/svn/c/cl/cloudcity/code/cloudcity-code-${REV}.zip"
+	SRC_URI="https://sourceforge.net/code-snapshots/svn/c/cl/cloudcity/code/cloudcity-code-${REV}.zip"
 	KEYWORDS="~amd64 ~x86"
 else
 	ESVN_REPO_URI="http://svn.code.sf.net/p/cloudcity/code/"

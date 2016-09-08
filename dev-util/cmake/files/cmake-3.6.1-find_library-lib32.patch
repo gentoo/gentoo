@@ -1,0 +1,476 @@
+From 896ad251de49f167f4ce3cbbcf9a6cce85a16681 Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Fri, 10 Jun 2016 16:11:18 +0200
+Subject: [PATCH] Teach find_library and find_package to search lib32 paths
+ (#11260)
+
+Add a ``FIND_LIBRARY_USE_LIB32_PATHS`` global property analogous to the
+``FIND_LIBRARY_USE_LIB64_PATHS`` property.  This helps find commands on
+multilib systems that use ``lib32`` directories and either do not have
+``lib`` symlinks or point ``lib`` to ``lib64``.
+---
+ Help/command/find_library.rst                                 |  7 +++++++
+ Help/manual/cmake-properties.7.rst                            |  1 +
+ Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst                | 10 ++++++++++
+ Help/release/dev/find-lib32.rst                               |  7 +++++++
+ Modules/FindPkgConfig.cmake                                   |  8 ++++++--
+ Modules/Platform/Linux.cmake                                  |  3 ++-
+ Modules/Platform/OpenBSD.cmake                                |  1 +
+ Modules/Platform/UnixPaths.cmake                              |  3 ++-
+ Source/cmFindLibraryCommand.cxx                               |  9 ++++-----
+ Source/cmFindPackageCommand.cxx                               | 11 +++++++++++
+ Source/cmFindPackageCommand.h                                 |  1 +
+ Source/cmMakefile.cxx                                         |  8 ++++++++
+ Source/cmMakefile.h                                           |  3 +++
+ Tests/CMakeOnly/find_library/CMakeLists.txt                   |  7 +++++++
+ Tests/CMakeOnly/find_library/lib/32/libtest5.a                |  0
+ Tests/CMakeOnly/find_library/lib/A/lib32/libtest3.a           |  0
+ Tests/CMakeOnly/find_library/lib32/A/lib/libtest2.a           |  0
+ Tests/CMakeOnly/find_library/lib32/A/lib32/libtest4.a         |  0
+ Tests/CMakeOnly/find_library/lib32/A/libtest4.a               |  0
+ Tests/CMakeOnly/find_library/lib32/libtest4.a                 |  0
+ .../FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake    | 11 ++++++++---
+ .../FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake    | 11 ++++++++---
+ .../FindPkgConfig/FindPkgConfig_NO_PKGCONFIG_PATH.cmake       |  3 ---
+ .../RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake | 11 ++++++++---
+ ...ndPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake | 11 ++++++++---
+ .../FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake          | 11 ++++++++---
+ .../FindPkgConfig/pc-bar/lib32/pkgconfig/.placeholder         |  0
+ .../FindPkgConfig/pc-foo/lib32/pkgconfig/.placeholder         |  0
+ 28 files changed, 110 insertions(+), 27 deletions(-)
+ create mode 100644 Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
+ create mode 100644 Help/release/dev/find-lib32.rst
+ create mode 100644 Tests/CMakeOnly/find_library/lib/32/libtest5.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib/A/lib32/libtest3.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib32/A/lib/libtest2.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib32/A/lib32/libtest4.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib32/A/libtest4.a
+ create mode 100644 Tests/CMakeOnly/find_library/lib32/libtest4.a
+ create mode 100644 Tests/RunCMake/FindPkgConfig/pc-bar/lib32/pkgconfig/.placeholder
+ create mode 100644 Tests/RunCMake/FindPkgConfig/pc-foo/lib32/pkgconfig/.placeholder
+
+diff --git a/Help/command/find_library.rst b/Help/command/find_library.rst
+index 31e6ec0..1eb50f7 100644
+--- a/Help/command/find_library.rst
++++ b/Help/command/find_library.rst
+@@ -49,6 +49,13 @@ path to the framework ``<fullPath>/A.framework``.  When a full path to a
+ framework is used as a library, CMake will use a ``-framework A``, and a
+ ``-F<fullPath>`` to link the framework to the target.
+ 
++If the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS` global property is set
++all search paths will be tested as normal, with ``32/`` appended, and
++with all matches of ``lib/`` replaced with ``lib32/``.  This property is
++automatically set for the platforms that are known to need it if at
++least one of the languages supported by the :command:`project` command
++is enabled.
++
+ If the :prop_gbl:`FIND_LIBRARY_USE_LIB64_PATHS` global property is set
+ all search paths will be tested as normal, with ``64/`` appended, and
+ with all matches of ``lib/`` replaced with ``lib64/``.  This property is
+diff --git a/Help/manual/cmake-properties.7.rst b/Help/manual/cmake-properties.7.rst
+index 3403dcd..3574b7f 100644
+--- a/Help/manual/cmake-properties.7.rst
++++ b/Help/manual/cmake-properties.7.rst
+@@ -24,6 +24,7 @@ Properties of Global Scope
+    /prop_gbl/DISABLED_FEATURES
+    /prop_gbl/ENABLED_FEATURES
+    /prop_gbl/ENABLED_LANGUAGES
++   /prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS
+    /prop_gbl/FIND_LIBRARY_USE_LIB64_PATHS
+    /prop_gbl/FIND_LIBRARY_USE_OPENBSD_VERSIONING
+    /prop_gbl/GLOBAL_DEPENDS_DEBUG_MODE
+diff --git a/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst b/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
+new file mode 100644
+index 0000000..ce18b65
+--- /dev/null
++++ b/Help/prop_gbl/FIND_LIBRARY_USE_LIB32_PATHS.rst
+@@ -0,0 +1,10 @@
++FIND_LIBRARY_USE_LIB32_PATHS
++----------------------------
++
++Whether the :command:`find_library` command should automatically search
++``lib32`` directories.
++
++``FIND_LIBRARY_USE_LIB32_PATHS`` is a boolean specifying whether the
++:command:`find_library` command should automatically search the ``lib32``
++variant of directories called ``lib`` in the search path when building 32-bit
++binaries.
+diff --git a/Help/release/dev/find-lib32.rst b/Help/release/dev/find-lib32.rst
+new file mode 100644
+index 0000000..00818dc
+--- /dev/null
++++ b/Help/release/dev/find-lib32.rst
+@@ -0,0 +1,7 @@
++find-lib32
++----------
++
++* The :command:`find_library` and :command:`find_package` commands learned
++  to search in ``lib32/`` directories when the build targets a 32-bit
++  architecture.  See the :prop_gbl:`FIND_LIBRARY_USE_LIB32_PATHS` global
++  property.
+diff --git a/Modules/FindPkgConfig.cmake b/Modules/FindPkgConfig.cmake
+index 644687c..33290c4 100644
+--- a/Modules/FindPkgConfig.cmake
++++ b/Modules/FindPkgConfig.cmake
+@@ -316,9 +316,13 @@ macro(_pkg_check_modules_internal _is_required _is_silent _no_cmake_path _no_cma
+             list(APPEND _lib_dirs "lib/${CMAKE_LIBRARY_ARCHITECTURE}/pkgconfig")
+           endif()
+         else()
+-          # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++          # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++          get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
++          if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++            list(APPEND _lib_dirs "lib32/pkgconfig")
++          endif()
+           get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-          if(uselib64)
++          if(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+             list(APPEND _lib_dirs "lib64/pkgconfig")
+           endif()
+         endif()
+diff --git a/Modules/Platform/Linux.cmake b/Modules/Platform/Linux.cmake
+index e40a74f..1f8c1b4 100644
+--- a/Modules/Platform/Linux.cmake
++++ b/Modules/Platform/Linux.cmake
+@@ -50,8 +50,9 @@ set(CMAKE_LIBRARY_ARCHITECTURE_REGEX "[a-z0-9_]+(-[a-z0-9_]+)?-linux-gnu[a-z0-9_
+ 
+ include(Platform/UnixPaths)
+ 
+-# Debian has lib64 paths only for compatibility so they should not be
++# Debian has lib32 and lib64 paths only for compatibility so they should not be
+ # searched.
+ if(NOT CMAKE_CROSSCOMPILING AND EXISTS "/etc/debian_version")
++  set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS FALSE)
+   set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
+ endif()
+diff --git a/Modules/Platform/OpenBSD.cmake b/Modules/Platform/OpenBSD.cmake
+index 7ac6c7e..6466a0a 100644
+--- a/Modules/Platform/OpenBSD.cmake
++++ b/Modules/Platform/OpenBSD.cmake
+@@ -18,6 +18,7 @@ endif()
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_OPENBSD_VERSIONING 1)
+ 
+ # OpenBSD has no multilib
++set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS FALSE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS FALSE)
+ 
+ # OpenBSD policy requires that shared libraries be installed without
+diff --git a/Modules/Platform/UnixPaths.cmake b/Modules/Platform/UnixPaths.cmake
+index 20ee1d1..d6c3d41 100644
+--- a/Modules/Platform/UnixPaths.cmake
++++ b/Modules/Platform/UnixPaths.cmake
+@@ -93,5 +93,6 @@ list(APPEND CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES
+   /usr/include
+   )
+ 
+-# Enable use of lib64 search path variants by default.
++# Enable use of lib32 and lib64 search path variants by default.
++set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
+diff --git a/Source/cmFindLibraryCommand.cxx b/Source/cmFindLibraryCommand.cxx
+index a4d4dbb..3094fcf 100644
+--- a/Source/cmFindLibraryCommand.cxx
++++ b/Source/cmFindLibraryCommand.cxx
+@@ -40,11 +40,10 @@ bool cmFindLibraryCommand::InitialPass(std::vector<std::string> const& argsIn,
+     return true;
+   }
+ 
+-  if (const char* abi_name =
+-        this->Makefile->GetDefinition("CMAKE_INTERNAL_PLATFORM_ABI")) {
+-    std::string abi = abi_name;
+-    if (abi.find("ELF N32") != abi.npos) {
+-      // Convert lib to lib32.
++  if (this->Makefile->GetState()->GetGlobalPropertyAsBool(
++        "FIND_LIBRARY_USE_LIB32_PATHS")) {
++    // add special 32 bit paths if this is a 32 bit compile.
++    if (this->Makefile->PlatformIs32Bit()) {
+       this->AddArchitecturePaths("32");
+     }
+   }
+diff --git a/Source/cmFindPackageCommand.cxx b/Source/cmFindPackageCommand.cxx
+index 7908afe..1a44d73 100644
+--- a/Source/cmFindPackageCommand.cxx
++++ b/Source/cmFindPackageCommand.cxx
+@@ -43,6 +43,7 @@ cmFindPackageCommand::cmFindPackageCommand()
+   this->UseConfigFiles = true;
+   this->UseFindModules = true;
+   this->DebugMode = false;
++  this->UseLib32Paths = false;
+   this->UseLib64Paths = false;
+   this->PolicyScope = true;
+   this->VersionMajor = 0;
+@@ -110,6 +111,13 @@ bool cmFindPackageCommand::InitialPass(std::vector<std::string> const& args,
+     this->LibraryArchitecture = arch;
+   }
+ 
++  // Lookup whether lib32 paths should be used.
++  if (this->Makefile->PlatformIs32Bit() &&
++      this->Makefile->GetState()->GetGlobalPropertyAsBool(
++        "FIND_LIBRARY_USE_LIB32_PATHS")) {
++    this->UseLib32Paths = true;
++  }
++
+   // Lookup whether lib64 paths should be used.
+   if (this->Makefile->PlatformIs64Bit() &&
+       this->Makefile->GetState()->GetGlobalPropertyAsBool(
+@@ -1907,6 +1915,9 @@ bool cmFindPackageCommand::SearchPrefix(std::string const& prefix_in)
+   if (!this->LibraryArchitecture.empty()) {
+     common.push_back("lib/" + this->LibraryArchitecture);
+   }
++  if (this->UseLib32Paths) {
++    common.push_back("lib32");
++  }
+   if (this->UseLib64Paths) {
+     common.push_back("lib64");
+   }
+diff --git a/Source/cmFindPackageCommand.h b/Source/cmFindPackageCommand.h
+index eff6b80..9019f1b 100644
+--- a/Source/cmFindPackageCommand.h
++++ b/Source/cmFindPackageCommand.h
+@@ -148,6 +148,7 @@ private:
+   bool NoUserRegistry;
+   bool NoSystemRegistry;
+   bool DebugMode;
++  bool UseLib32Paths;
+   bool UseLib64Paths;
+   bool PolicyScope;
+   std::string LibraryArchitecture;
+diff --git a/Source/cmMakefile.cxx b/Source/cmMakefile.cxx
+index ca30b3d..eaf6a7d 100644
+--- a/Source/cmMakefile.cxx
++++ b/Source/cmMakefile.cxx
+@@ -2076,6 +2076,14 @@ bool cmMakefile::IsSet(const std::string& name) const
+   return true;
+ }
+ 
++bool cmMakefile::PlatformIs32Bit() const
++{
++  if (const char* sizeof_dptr = this->GetDefinition("CMAKE_SIZEOF_VOID_P")) {
++    return atoi(sizeof_dptr) == 4;
++  }
++  return false;
++}
++
+ bool cmMakefile::PlatformIs64Bit() const
+ {
+   if (const char* sizeof_dptr = this->GetDefinition("CMAKE_SIZEOF_VOID_P")) {
+diff --git a/Source/cmMakefile.h b/Source/cmMakefile.h
+index c665b1f..1d9ccd0 100644
+--- a/Source/cmMakefile.h
++++ b/Source/cmMakefile.h
+@@ -437,6 +437,9 @@ public:
+   bool IsOn(const std::string& name) const;
+   bool IsSet(const std::string& name) const;
+ 
++  /** Return whether the target platform is 32-bit. */
++  bool PlatformIs32Bit() const;
++
+   /** Return whether the target platform is 64-bit.  */
+   bool PlatformIs64Bit() const;
+ 
+diff --git a/Tests/CMakeOnly/find_library/CMakeLists.txt b/Tests/CMakeOnly/find_library/CMakeLists.txt
+index 2d4ecaf..9958650 100644
+--- a/Tests/CMakeOnly/find_library/CMakeLists.txt
++++ b/Tests/CMakeOnly/find_library/CMakeLists.txt
+@@ -33,16 +33,23 @@ endmacro()
+ 
+ set(CMAKE_FIND_LIBRARY_PREFIXES "lib")
+ set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
++set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS TRUE)
+ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS TRUE)
+ 
+ set(CMAKE_SIZEOF_VOID_P 4)
+ foreach(lib
++    lib/32/libtest5.a
+     lib/A/lib/libtest1.a
++    lib/A/lib32/libtest3.a
+     lib/A/libtest1.a
+     lib/libtest1.a
+     lib/libtest2.a
+     lib/libtest3.a
+     lib/libtest3.a
++    lib32/A/lib/libtest2.a
++    lib32/A/lib32/libtest4.a
++    lib32/A/libtest4.a
++    lib32/libtest4.a
+     )
+   test_find_library_subst(${lib})
+ endforeach()
+diff --git a/Tests/CMakeOnly/find_library/lib/32/libtest5.a b/Tests/CMakeOnly/find_library/lib/32/libtest5.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib/A/lib32/libtest3.a b/Tests/CMakeOnly/find_library/lib/A/lib32/libtest3.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib32/A/lib/libtest2.a b/Tests/CMakeOnly/find_library/lib32/A/lib/libtest2.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib32/A/lib32/libtest4.a b/Tests/CMakeOnly/find_library/lib32/A/lib32/libtest4.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib32/A/libtest4.a b/Tests/CMakeOnly/find_library/lib32/A/libtest4.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/CMakeOnly/find_library/lib32/libtest4.a b/Tests/CMakeOnly/find_library/lib32/libtest4.a
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
+index 9d4826f..4a41533 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_APPBUNDLE_PATH.cmake
+@@ -1,4 +1,4 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
++# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE, FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS
+ enable_language(C)
+ 
+ # Prepare environment and variables
+@@ -29,10 +29,15 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   else()
+-    # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++    # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib64)
++    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    else()
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   endif()
+ else()
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
+index d9943d4..b66d02f 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_CMAKE_FRAMEWORK_PATH.cmake
+@@ -1,4 +1,4 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
++# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE, FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS
+ enable_language(C)
+ 
+ # Prepare environment and variables
+@@ -29,10 +29,15 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   else()
+-    # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++    # not debian, check the FIND_LIBRARY_USE_LIB64_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib64)
++    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    else()
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   endif()
+ else()
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_NO_PKGCONFIG_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_NO_PKGCONFIG_PATH.cmake
+index 89ce4c6..25a775d 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_NO_PKGCONFIG_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_NO_PKGCONFIG_PATH.cmake
+@@ -1,6 +1,3 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
+-enable_language(C)
+-
+ # Prepare environment and variables
+ set(PKG_CONFIG_USE_CMAKE_PREFIX_PATH FALSE)
+ set(CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/pc-foo")
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+index c903279..bdecb8a 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH.cmake
+@@ -1,4 +1,4 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
++# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE, FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS
+ enable_language(C)
+ 
+ # Prepare environment and variables
+@@ -29,10 +29,15 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   else()
+-    # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++    # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS propertie
++    get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib64)
++    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    else()
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   endif()
+ else()
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+index a52bcbf..df67235 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_ENVIRONMENT_PATH.cmake
+@@ -1,4 +1,4 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
++# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE, FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS
+ enable_language(C)
+ 
+ # Prepare environment and variables
+@@ -29,10 +29,15 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
+     endif()
+   else()
+-    # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++    # not debian, check the FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS properties
++    get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib64)
++    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
++    elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
++    else()
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-foo/lib/pkgconfig")
+     endif()
+   endif()
+ else()
+diff --git a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+index 2fabe5b..1351b6f 100644
+--- a/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
++++ b/Tests/RunCMake/FindPkgConfig/FindPkgConfig_PKGCONFIG_PATH_NO_CMAKE_PATH.cmake
+@@ -1,4 +1,4 @@
+-# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE and FIND_LIBRARY_USE_LIB64_PATHS
++# Needed for CMAKE_SYSTEM_NAME, CMAKE_LIBRARY_ARCHITECTURE, FIND_LIBRARY_USE_LIB32_PATHS and FIND_LIBRARY_USE_LIB64_PATHS
+ enable_language(C)
+ 
+ # Prepare environment and variables
+@@ -29,10 +29,15 @@ if(NOT DEFINED CMAKE_SYSTEM_NAME
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   else()
+-    # not debian, chech the FIND_LIBRARY_USE_LIB64_PATHS property
++    # not debian, check the FIND_LIBRARY_USE_LIB64_PATHS and FIND_LIBRARY_USE_LIB32_PATHS properties
++    get_property(uselib32 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB32_PATHS)
+     get_property(uselib64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+-    if(uselib64)
++    if(uselib32 AND CMAKE_SIZEOF_VOID_P EQUAL 4)
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib32/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    elseif(uselib64 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
+       set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib64/pkgconfig:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
++    else()
++      set(expected_path "/baz:${CMAKE_CURRENT_SOURCE_DIR}/pc-bar/lib/pkgconfig")
+     endif()
+   endif()
+ else()
+diff --git a/Tests/RunCMake/FindPkgConfig/pc-bar/lib32/pkgconfig/.placeholder b/Tests/RunCMake/FindPkgConfig/pc-bar/lib32/pkgconfig/.placeholder
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Tests/RunCMake/FindPkgConfig/pc-foo/lib32/pkgconfig/.placeholder b/Tests/RunCMake/FindPkgConfig/pc-foo/lib32/pkgconfig/.placeholder
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.9.3
+

@@ -1,0 +1,42 @@
+Instead of trying to find obscure termcap libraries, use pkg-config
+to detect the proper flags required for curses support.
+See also:
+https://bugs.gentoo.org/show_bug.cgi?id=590676
+
+--- a/m4/acinclude.m4
++++ b/m4/acinclude.m4
+@@ -1085,32 +1085,8 @@
+ dnl Find a suitable termlib to use.
+ dnl
+ AC_DEFUN([OCTAVE_CHECK_LIB_TERMLIB], [
+-  TERM_LIBS=
+-  ac_octave_save_LIBS="$LIBS"
+-  AC_SEARCH_LIBS([tputs],
+-                 [ncurses curses termcap terminfo termlib],
+-                 [], [])
+-  LIBS="$ac_octave_save_LIBS"
+-  case "$ac_cv_search_tputs" in
+-    -l*)
+-      TERM_LIBS="$ac_cv_search_tputs"
+-    ;;
+-    no)
+-      warn_termlibs="I couldn't find -ltermcap, -lterminfo, -lncurses, -lcurses, or -ltermlib!"
+-      AC_MSG_WARN([$warn_termlibs])
+-    ;;
+-  esac
+-
+-dnl  Old code (9/9/2012).  Delete when new code is definitely proven.
+-dnl
+-dnl  for _termlib in ncurses curses termcap terminfo termlib; do
+-dnl    AC_CHECK_LIB([${_termlib}], [tputs], [
+-dnl      TERM_LIBS="-l${termlib}"
+-dnl      octave_cv_lib_found_termlib=yes
+-dnl      break])
+-dnl  done
+-
+-  AC_SUBST(TERM_LIBS)
++  PKG_CHECK_MODULES([TERM], [ncurses])
++  CPPFLAGS="${CPPFLAGS} ${TERM_CFLAGS}"
+ ])
+ dnl
+ dnl Check for the Qhull version.

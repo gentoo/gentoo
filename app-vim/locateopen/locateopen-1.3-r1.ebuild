@@ -10,10 +10,12 @@ DESCRIPTION="vim plugin: open a file without supplying a path"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=858"
 
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 mips ppc sparc x86"
 IUSE=""
 
-RDEPEND="${RDEPEND} sys-apps/mlocate"
+RDEPEND="
+	${RDEPEND}
+	sys-apps/mlocate"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides commands that hook vim into mlocate:

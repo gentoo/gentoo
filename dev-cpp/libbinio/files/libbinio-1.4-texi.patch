@@ -1,6 +1,6 @@
 Patch from http://libbinio.cvs.sourceforge.net/viewvc/libbinio/libbinio/doc/libbinio.texi?r1=1.13&r2=1.14
---- doc/libbinio.texi	2004/08/18 19:55:22	1.13
-+++ doc/libbinio.texi	2006/05/14 21:36:13	1.14
+--- a/doc/libbinio.texi
++++ b/doc/libbinio.texi
 @@ -9,7 +9,7 @@
  This manual documents the binary I/O stream class library, version
  @value{VERSION}. It was last updated on @value{UPDATED}.

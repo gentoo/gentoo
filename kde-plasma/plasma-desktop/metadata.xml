@@ -6,13 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="evdev">Enable configuration module for desktop input devices.</flag>
 		<flag name="gtk2">Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.</flag>
 		<flag name="gtk3">Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.</flag>
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="legacy-systray">Add support for applications using legacy xembed systray icons.</flag>
 		<flag name="packagekit">Add support for packagekit integration</flag>
 		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
-		<flag name="touchpad">Enable configuration module for synaptics-based touchpads.</flag>
 	</use>
 </pkgmetadata>

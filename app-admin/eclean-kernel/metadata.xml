@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/eclean-kernel/issues/</bugs-to>
-    <remote-id type="bitbucket">mgorny/eclean-kernel</remote-id>
+	<bugs-to>https://github.com/mgorny/eclean-kernel2/issues/</bugs-to>
+    <remote-id type="github">mgorny/eclean-kernel2</remote-id>
   </upstream>
 </pkgmetadata>

@@ -17,7 +17,7 @@ HOMEPAGE="http://pablotron.org/software/wirble/"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 pkg_postinst() {

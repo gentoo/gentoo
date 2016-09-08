@@ -1,7 +1,7 @@
 http://pkgs.fedoraproject.org/cgit/xscreensaver.git/tree/xscreensaver-5.17-blurb-hndl-test-passwd.patch
 
---- driver/test-passwd.c
-+++ driver/test-passwd.c
+--- a/driver/test-passwd.c
++++ b/driver/test-passwd.c
 @@ -66,6 +66,7 @@
  Bool update_screen_layout (saver_info *si) { return 0; }
  

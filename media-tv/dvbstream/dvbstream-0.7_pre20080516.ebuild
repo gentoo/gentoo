@@ -7,7 +7,7 @@ inherit eutils
 IUSE=""
 
 DESCRIPTION="simple command line tools for DVB cards. Includes a RTP multicast stream server"
-HOMEPAGE="http://sourceforge.net/projects/dvbtools"
+HOMEPAGE="https://sourceforge.net/projects/dvbtools"
 
 #SRC_URI="mirror://sourceforge/dvbtools/${P}.tar.gz"
 #MY_P=${PN}-snapshot-${PV##*_pre}

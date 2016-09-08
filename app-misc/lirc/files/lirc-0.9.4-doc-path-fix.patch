@@ -1,0 +1,27 @@
+https://sourceforge.net/p/lirc/tickets/214/
+
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 53d0f21..f833b4b 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -33,7 +33,6 @@ nodist_man_MANS         += man/xmode2.1 man/irxevent.1
+ manpage_html            += man-html/irxevent.html man-html/xmode2.html
+ endif
+ 
+-docdir                  = @datadir@/doc/@PACKAGE@
+ dist_doc_DATA           = irxevent.keys
+ 
+ if HAVE_DOXYGEN
+@@ -58,10 +57,10 @@ if HAVE_PYMOD_YAML
+ nodist_website_html_DATA  += table.html
+ endif
+ 
+-vardocsdir              = $(localstatedir)/lib/lirc/plugins
++vardocsdir              = $(docdir)/plugins
+ vardocs_DATA            = index.html html-source/lirc.css
+ 
+-varimagedir             = $(localstatedir)/lib/lirc/images
++varimagedir             = $(docdir)/images
+ varimage_DATA           = $(dist_image_DATA)
+ 
+ website_imagedir        = $(docdir)/lirc.org/images

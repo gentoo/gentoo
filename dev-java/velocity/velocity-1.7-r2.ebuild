@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/${PN}/engine/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="
@@ -58,7 +58,7 @@ S="${WORKDIR}/${P}"
 
 java_prepare() {
 	java-pkg_clean
-	rm -rf test src/test || die
+	rm -rv test src/test || die
 }
 
 src_install() {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>vilnis.termanis@iotic-labs.com</email>
+			<name>Iotic Labs Ltd</name>
+		</maintainer>
+		<remote-id type="pypi">py-ubjson</remote-id>
+	</upstream>
+	<longdescription>
+		This is a Python v3.2+ (and 2.7+) Universal Binary JSON encoder/decoder
+		based on the draft-12 specification
+	</longdescription>
+</pkgmetadata>

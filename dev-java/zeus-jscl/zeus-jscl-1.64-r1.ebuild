@@ -11,7 +11,7 @@ inherit java-pkg-2 java-ant-2
 MY_P="${PN}_v${PV//./_}"
 
 DESCRIPTION="Zeus Java Swing Components Library"
-HOMEPAGE="http://sourceforge.net/projects/zeus-jscl/"
+HOMEPAGE="https://sourceforge.net/projects/zeus-jscl/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"

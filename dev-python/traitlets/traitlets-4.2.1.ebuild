@@ -20,6 +20,7 @@ IUSE="doc test"
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	"
 DEPEND="
 	doc? (

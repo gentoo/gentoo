@@ -21,6 +21,6 @@ DEPEND="${RDEPEND}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
-	elisp-compile *.el || die
-	elisp-make-autoload-file || die
+	elisp-compile *.el
+	elisp-make-autoload-file
 }

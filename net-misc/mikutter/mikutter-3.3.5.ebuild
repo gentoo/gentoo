@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ ruby_add_rdepend "dev-ruby/addressable
 	dev-ruby/delayer
 	dev-ruby/delayer-deferred
 	dev-ruby/httpclient
-	dev-ruby/json
+	dev-ruby/json:0
 	dev-ruby/instance_storage
 	dev-ruby/memoist
 	>=dev-ruby/moneta-0.7

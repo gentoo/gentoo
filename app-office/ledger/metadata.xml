@@ -4,9 +4,6 @@
   <maintainer type="person">
     <email>stasibear@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
-    <email>yac@gentoo.org</email>
-  </maintainer>
   <upstream>
     <remote-id type="github">ledger/ledger</remote-id>
   </upstream>

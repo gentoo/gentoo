@@ -9,8 +9,12 @@
     <email>bsd@gentoo.org</email>
     <name>BSD Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <use>
-    <flag name="libunwind">Use <pkg>sys-libs/libunwind</pkg> instead of libgcc_s for unwinding. This should allow avoiding relying on <pkg>sys-devel/gcc</pkg> but for now clang is setup to use libgcc_s.</flag>
+    <flag name="libunwind">Use libunwind instead of libgcc_s for unwinding. This should allow avoiding relying on <pkg>sys-devel/gcc</pkg> but for now clang is setup to use libgcc_s.</flag>
   </use>
   <upstream>
     <remote-id type="github">pathscale/libcxxrt</remote-id>

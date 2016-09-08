@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,9 +21,12 @@ DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
 	test? (
 		>=virtual/perl-Test-Simple-0.940.0
-		>=dev-perl/Test-Pod-1.40.0
-		dev-perl/Test-Pod-Coverage
 	)
 "
 
 SRC_TEST="do parallel"
+
+src_test() {
+	perl_rm_files t/pod.t t/pod-coverage.t
+	perl-module_src_test
+}

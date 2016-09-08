@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ IUSE="alsa +client cups debug directfb doc ffmpeg gstreamer jpeg
 	pulseaudio server smartcard cpu_flags_x86_sse2 test usb X xinerama xv"
 
 RDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:0
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
@@ -54,7 +54,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:0.10
 		x11-libs/libXrandr
 	)
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	pulseaudio? ( media-sound/pulseaudio )
 	server? (
 		X? (

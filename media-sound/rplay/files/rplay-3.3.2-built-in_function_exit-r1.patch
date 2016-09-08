@@ -1,0 +1,20 @@
+--- a/adpcm/decode.c
++++ b/adpcm/decode.c
+@@ -6,6 +6,7 @@
+  * Usage : decode [-3|4|5] [-a|u|l] < infile > outfile
+  */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "g72x.h"
+ 
+ 
+--- a/adpcm/encode.c
++++ b/adpcm/encode.c
+@@ -6,6 +6,7 @@
+  * Usage : encode [-3|4|5] [-a|u|l] < infile > outfile
+  */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "g72x.h"
+ 
+ 

@@ -8,7 +8,7 @@ CABAL_FEATURES="lib profile haddock hscolour hoogle"
 inherit base haskell-cabal
 
 DESCRIPTION="Replaces/Enhances Text.Regex"
-HOMEPAGE="http://sourceforge.net/projects/lazy-regex"
+HOMEPAGE="https://sourceforge.net/projects/lazy-regex"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

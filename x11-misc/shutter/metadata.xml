@@ -10,7 +10,6 @@
 	<name>Gentoo Graphics Project</name>
 </maintainer>
 <use>
-	<flag name="webphoto">Enables screenshots of websites</flag>
 	<flag name="drawing">Enables drawing tool</flag>
 </use>
 <longdescription lang="en">

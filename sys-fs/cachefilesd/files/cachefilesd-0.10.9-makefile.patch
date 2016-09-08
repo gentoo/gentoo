@@ -1,0 +1,19 @@
+--- cachefilesd-0.10.9/Makefile.old	2016-07-18 11:12:38.467106807 +0800
++++ cachefilesd-0.10.9/Makefile	2016-07-18 11:13:59.937770347 +0800
+@@ -1,4 +1,3 @@
+-CFLAGS		:= -g -O2 -Wall -Wsign-compare
+ INSTALL		:= install
+ DESTDIR		:=
+ ETCDIR		:= /etc
+@@ -40,7 +39,10 @@
+ ###############################################################################
+ all: cachefilesd
+ 
+-cachefilesd: cachefilesd.c Makefile
++cachefilesd.o: cachefilesd.c
++	$(CC) $(CFLAGS) -c $<
++
++cachefilesd: cachefilesd.o
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ ###############################################################################

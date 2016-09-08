@@ -8,7 +8,7 @@ inherit fdo-mime gnome2-utils linux-info
 
 DESCRIPTION="A multi-panel tabbed file manager"
 HOMEPAGE="https://ignorantguru.github.com/spacefm/"
-SRC_URI="https://github.com/ignorantguru/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/ignorantguru/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

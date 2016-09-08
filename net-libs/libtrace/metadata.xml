@@ -5,4 +5,7 @@
 	<email>netmon@gentoo.org</email>
 	<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
+<use>
+<flag name='numa'>Use <pkg>sys-process/numactl</pkg></flag>
+</use>
 </pkgmetadata>

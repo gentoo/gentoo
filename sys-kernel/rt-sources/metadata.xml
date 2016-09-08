@@ -13,10 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>psomas@gentoo.org</email>
-		<name>Stratos Psomadakis</name>
-	</maintainer>
 	<longdescription>
 		Real-time patchset for the Linux Kernel
 	</longdescription>

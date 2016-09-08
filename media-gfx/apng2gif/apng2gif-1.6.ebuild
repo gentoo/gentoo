@@ -7,7 +7,7 @@ EAPI="5"
 inherit toolchain-funcs eutils
 
 DESCRIPTION="create a GIF from an APNG"
-HOMEPAGE="http://sourceforge.net/projects/apng2gif/"
+HOMEPAGE="https://sourceforge.net/projects/apng2gif/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 
 LICENSE="LGPL-2.1"

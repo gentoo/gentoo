@@ -1,0 +1,31 @@
+--- mu-conference-0.8.81/include/lib.h
++++ mu-conference-0.8.81/include/lib.h
+@@ -114,13 +114,6 @@
+ /* SHA calculations                                          */
+ /*                                                           */
+ /* --------------------------------------------------------- */
+-#if (SIZEOF_INT == 4)
+-typedef unsigned int uint32;
+-#elif (SIZEOF_SHORT == 4)
+-typedef unsigned short uint32;
+-#else
+-typedef unsigned int uint32;
+-#endif /* HAVEUINT32 */
+ 
+ char *shahash(char *str);	/* NOT THREAD SAFE */
+ void shahash_r(const char* str, char hashbuf[40]); /* USE ME */
+@@ -301,10 +294,10 @@
+ 
+ 
+ typedef struct {
+-  uint32_t H[5];
+-  uint32_t W[80];
++  guint32 H[5];
++  guint32 W[80];
+   int lenW;
+-  uint32_t sizeHi,sizeLo;
++  guint32 sizeHi,sizeLo;
+ } j_SHA_CTX;
+ 
+ 
+ 

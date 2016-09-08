@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils xdg-utils
 
 DESCRIPTION="Python package for gamma-ray astronomy"
 HOMEPAGE="http://naima.readthedocs.io/"
@@ -33,6 +33,7 @@ DOCS=( README.rst CHANGES.rst )
 
 python_prepare_all() {
 	sed -e '/auto_use/s/True/False/' -i setup.cfg || die
+	xdg_environment_reset
 	distutils-r1_python_prepare_all
 }
 

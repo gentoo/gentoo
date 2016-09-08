@@ -7,7 +7,7 @@ inherit eutils autotools
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="library that provides a pseudo-ansi color terminal that can be used with any SDL application"
-HOMEPAGE="http://sourceforge.net/projects/sdl-terminal/"
+HOMEPAGE="https://sourceforge.net/projects/sdl-terminal/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

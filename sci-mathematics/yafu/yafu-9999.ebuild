@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils subversion versionator
 
 DESCRIPTION="Yet another factoring utility"
-HOMEPAGE="http://sourceforge.net/projects/yafu/"
+HOMEPAGE="https://sourceforge.net/projects/yafu/"
 #SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
 ESVN_REPO_URI="https://svn.code.sf.net/p/yafu/code/"
 

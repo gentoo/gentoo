@@ -5,7 +5,7 @@
          // Internal printing operations
      
 +        // =====================================
-+        // fix for clang for this bug in gcc and others: http://sourceforge.net/p/rapidxml/bugs/16/
++        // fix for clang for this bug in gcc and others: https://sourceforge.net/p/rapidxml/bugs/16/
 +
 +        template<class OutIt, class Ch> inline OutIt print_children(OutIt out, const xml_node<Ch> *node, int flags, int indent);
 +        template<class OutIt, class Ch> inline OutIt print_element_node(OutIt out, const xml_node<Ch> *node, int flags, int indent);

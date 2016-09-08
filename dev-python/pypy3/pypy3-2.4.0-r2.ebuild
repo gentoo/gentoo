@@ -37,7 +37,6 @@ DEPEND="${RDEPEND}
 	low-memory? ( virtual/pypy:0 )
 	!low-memory? ( ${PYTHON_DEPS} )"
 #	doc? ( dev-python/sphinx )
-PDEPEND="app-admin/python-updater"
 
 S="${WORKDIR}/${P}-src"
 

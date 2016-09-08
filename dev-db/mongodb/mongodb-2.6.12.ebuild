@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -156,25 +156,29 @@ src_test() {
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} < 2.6 ]]; then
-		ewarn "!! IMPORTANT !!"
-		ewarn " "
-		ewarn "${PN} configuration files have changed !"
-		ewarn " "
-		ewarn "Make sure you migrate from /etc/conf.d/${PN} to the new YAML standard in /etc/${PN}.conf"
-		ewarn "  http://docs.mongodb.org/manual/reference/configuration-options/"
-		ewarn " "
-		ewarn "Make sure you also follow the upgrading process :"
-		ewarn "  http://docs.mongodb.org/master/release-notes/2.6-upgrade/"
-		ewarn " "
-		if use mms-agent; then
-			ewarn "MMS Agent configuration file has been moved to :"
-			ewarn "  /etc/mms-agent.conf"
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 2.6 ${v}; then
+			ewarn "!! IMPORTANT !!"
+			ewarn " "
+			ewarn "${PN} configuration files have changed !"
+			ewarn " "
+			ewarn "Make sure you migrate from /etc/conf.d/${PN} to the new YAML standard in /etc/${PN}.conf"
+			ewarn "  http://docs.mongodb.org/manual/reference/configuration-options/"
+			ewarn " "
+			ewarn "Make sure you also follow the upgrading process :"
+			ewarn "  http://docs.mongodb.org/master/release-notes/2.6-upgrade/"
+			ewarn " "
+			if use mms-agent; then
+				ewarn "MMS Agent configuration file has been moved to :"
+				ewarn "  /etc/mms-agent.conf"
+			fi
+			break
+		else
+			if use mms-agent; then
+				elog "Edit your MMS Agent configuration file :"
+				elog "  /etc/mms-agent.conf"
+			fi
 		fi
-	else
-		if use mms-agent; then
-			elog "Edit your MMS Agent configuration file :"
-			elog "  /etc/mms-agent.conf"
-		fi
-	fi
+	done
 }

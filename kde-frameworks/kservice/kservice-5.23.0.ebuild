@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Advanced plugin and service introspection"
 LICENSE="LGPL-2 LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+man"
 
 RDEPEND="

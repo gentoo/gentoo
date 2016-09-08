@@ -10,7 +10,7 @@ inherit eutils gnome2-utils multilib python-single-r1 rpm versionator
 MY_P="process_explorer-$(replace_version_separator 2 '-')"
 
 DESCRIPTION="Graphical process explorer"
-HOMEPAGE="http://sourceforge.net/apps/mediawiki/procexp/index.php?title=Main_Page"
+HOMEPAGE="https://sourceforge.net/apps/mediawiki/procexp/index.php?title=Main_Page"
 SRC_URI="mirror://sourceforge/project/procexp/${MY_P}.noarch.rpm"
 
 LICENSE="GPL-2"

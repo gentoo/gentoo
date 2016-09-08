@@ -566,7 +566,7 @@ sub checkstandard {
 
 sub checkunshield {
     if (system("which unshield > /dev/null 2>&1")) {
-	die "This firmware requires the unshield command - see http://sourceforge.net/projects/synce/\n";
+	die "This firmware requires the unshield command - see https://sourceforge.net/projects/synce/\n";
     }
 }
 

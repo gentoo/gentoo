@@ -1,0 +1,14 @@
+--- a/data/jamin.desktop.in
++++ b/data/jamin.desktop.in
+@@ -3,9 +3,9 @@
+ _Name=JAMin
+ _GenericName=
+ _Comment=JACK Audio Mastering interface
+-Categories=Application;AudioVideo;
++Categories=AudioVideo;
+ Exec=jamin
+-Icon=jamin.svg
++Icon=jamin
+ MimeType=application/x-jamin;
+ StartupNotify=true
+ Terminal=false

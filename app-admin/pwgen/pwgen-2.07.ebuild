@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Password Generator"
-HOMEPAGE="http://sourceforge.net/projects/pwgen/"
+HOMEPAGE="https://sourceforge.net/projects/pwgen/"
 SRC_URI="mirror://sourceforge/pwgen/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -144,7 +144,7 @@ src_install() {
 
 		# supported directives: host, port, ssl, ldap_version
 		# uri, binddn, bindpw, sudoers_base, sudoers_debug
-		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key
+		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
 
 		insinto /etc

@@ -87,7 +87,7 @@ RDEPEND="${NLS_RDEPEND}
 		media-libs/libogg
 		media-libs/libvorbis
 		)
-	vpx? ( media-libs/libvpx )
+	vpx? ( media-libs/libvpx:0= )
 	wavpack? ( media-sound/wavpack )
 	X? (
 		x11-libs/libX11

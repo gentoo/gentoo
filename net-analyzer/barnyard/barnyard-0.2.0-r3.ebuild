@@ -7,7 +7,7 @@ EAPI=2
 inherit eutils autotools
 
 DESCRIPTION="Fast output system for Snort"
-HOMEPAGE="http://sourceforge.net/projects/barnyard"
+HOMEPAGE="https://sourceforge.net/projects/barnyard"
 SRC_URI="
 	mirror://sourceforge/barnyard/barnyard-${PV/_/-}.tar.gz
 	mirror://gentoo/${P}-patches.tar.bz2"

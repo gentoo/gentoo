@@ -5,7 +5,7 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Linux Serial Protocol Analyser"
-HOMEPAGE="http://sourceforge.net/projects/serialsniffer/"
+HOMEPAGE="https://sourceforge.net/projects/serialsniffer/"
 SRC_URI="mirror://sourceforge/serialsniffer/LinuxSPA-0.7.1.tgz"
 LICENSE="GPL-2"
 

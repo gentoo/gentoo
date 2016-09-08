@@ -6,14 +6,14 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs
+inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
 		https://gerrit.gromacs.org/gromacs.git
 		git://github.com/gromacs/gromacs.git
 		http://repo.or.cz/r/gromacs.git"
-	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:1}-${PV:2:1}"
+	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 	KEYWORDS=""
 else
@@ -55,7 +55,9 @@ DEPEND="${CDEPEND}
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
-	)"
+	)
+	test? ( dev-libs/tinyxml2 )
+	"
 RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
@@ -92,6 +94,8 @@ src_unpack() {
 src_prepare() {
 	#notes/todos
 	# -on apple: there is framework support
+
+	xdg_environment_reset #591952
 
 	cmake-utils_src_prepare
 
@@ -133,11 +137,17 @@ src_configure() {
 			-DMKL_INCLUDE_DIR="${MKLROOT}/include"
 			-DMKL_LIBRARIES="$(echo /opt/intel/mkl/10.0.5.025/lib/*/libmkl.so);$(echo /opt/intel/mkl/10.0.5.025/lib/*/libiomp*.so)"
 		)
-	elif use mkl; then
+	elif use mkl && has_version "<sci-libs/mkl-11.3"; then
 		local bits=$(get_libdir)
 		fft_opts=( -DGMX_FFT_LIBRARY=mkl
 			-DMKL_INCLUDE_DIR="$(echo /opt/intel/*/mkl/include)"
 			-DMKL_LIBRARIES="$(echo /opt/intel/*/mkl/lib/*${bits/lib}/libmkl_rt.so)"
+		)
+	elif use mkl; then
+		local bits=$(get_libdir)
+		fft_opts=( -DGMX_FFT_LIBRARY=mkl
+			-DMKL_INCLUDE_DIR="$(echo /opt/intel/*/linux/mkl/include)"
+			-DMKL_LIBRARIES="$(echo /opt/intel/*/linux/mkl/lib/*${bits/lib}/libmkl_rt.so)"
 		)
 	else
 		fft_opts=( -DGMX_FFT_LIBRARY=fftpack )
@@ -159,6 +169,7 @@ src_configure() {
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=OFF
 		-DGMX_BUILD_UNITTESTS=OFF
+		-DGMX_EXTERNAL_TINYXML2=ON
 		${extra}
 	)
 

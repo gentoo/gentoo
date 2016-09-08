@@ -81,7 +81,7 @@ src_configure() {
 		$(crt_use_with libraries libraries winpthreads,libmangle) \
 		$(crt_use_with tools) \
 		$(
-			$(tc-getCPP ${CTARGET}) ${CPPFLAGS} -dM /dev/null | grep -q __MINGW64__ \
+			$(tc-getCPP ${CTARGET}) ${CPPFLAGS} -dM - < /dev/null | grep -q __MINGW64__ \
 				&& echo --disable-lib32 --enable-lib64 \
 				|| echo --enable-lib32 --disable-lib64
 		)

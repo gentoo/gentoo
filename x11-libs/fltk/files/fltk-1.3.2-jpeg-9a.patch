@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/479774
 
---- src/Fl_JPEG_Image.cxx
-+++ src/Fl_JPEG_Image.cxx
+--- a/src/Fl_JPEG_Image.cxx
++++ b/src/Fl_JPEG_Image.cxx
 @@ -155,7 +155,7 @@
    
    jpeg_create_decompress(&dinfo);

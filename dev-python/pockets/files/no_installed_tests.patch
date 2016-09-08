@@ -1,0 +1,11 @@
+--- setup.py.orig	2016-08-03 16:30:08.093499589 +0200
++++ setup.py	2016-08-03 16:30:40.861165597 +0200
+@@ -39,7 +39,7 @@
+         'Topic :: Utilities',
+     ],
+     platforms='any',
+-    packages=find_packages(),
++    packages=["pockets"],
+     install_requires=reqs,
+     tests_require=test_reqs
+ )

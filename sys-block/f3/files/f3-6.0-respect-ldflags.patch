@@ -1,0 +1,40 @@
+From 70962dcfaa41ca390f6f077cc64312fb879b7eb4 Mon Sep 17 00:00:00 2001
+From: Grazvydas Ignotas <notasas@gmail.com>
+Date: Sat, 12 Mar 2016 17:39:05 +0200
+Subject: [PATCH] allow users to specify linker flags
+
+Traditionally LDFLAGS is used for this, it's what I've tried first
+but it wasn't accepted.
+---
+ Makefile | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 404bc17..46853f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -23,19 +23,19 @@ install-experimental: experimental
+ 	$(INSTALL) -oroot -groot -m755 $(EXPERIMENTAL_TARGETS) $(PREFIX)/bin
+ 
+ f3write: utils.o f3write.o
+-	$(CC) -o $@ $^ -lm
++	$(CC) -o $@ $^ $(LDFLAGS) -lm
+ 
+ f3read: utils.o f3read.o
+-	$(CC) -o $@ $^
++	$(CC) -o $@ $^ $(LDFLAGS)
+ 
+ f3probe: libutils.o libdevs.o libprobe.o f3probe.o
+-	$(CC) -o $@ $^ -lm -ludev
++	$(CC) -o $@ $^ $(LDFLAGS) -lm -ludev
+ 
+ f3brew: libutils.o libdevs.o f3brew.o
+-	$(CC) -o $@ $^ -lm -ludev
++	$(CC) -o $@ $^ $(LDFLAGS) -lm -ludev
+ 
+ f3fix: libutils.o f3fix.o
+-	$(CC) -o $@ $^ -lparted
++	$(CC) -o $@ $^ $(LDFLAGS) -lparted
+ 
+ -include *.d
+ 

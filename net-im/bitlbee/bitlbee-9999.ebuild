@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=6
 
-inherit eutils multilib user python-single-r1 systemd
+inherit user systemd
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
@@ -20,8 +19,14 @@ HOMEPAGE="http://www.bitlbee.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux
-	skype ssl test twitter +yahoo xinetd libressl"
+IUSE_PROTOCOLS="msn oscar purple twitter +xmpp yahoo"
+IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
+	${IUSE_PROTOCOLS}"
+
+REQUIRED_USE="
+	|| ( purple xmpp msn oscar yahoo )
+	xmpp? ( !nss )
+"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.16
@@ -31,133 +36,97 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		nss? ( dev-libs/nss )
-		!nss? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) )
+		!nss? (
+			libressl? ( dev-libs/libressl:= )
+			!libressl? ( dev-libs/openssl:0= )
+		)
 	)
 	"
 DEPEND="${COMMON_DEPEND}
-	dev-lang/python
 	virtual/pkgconfig
 	selinux? ( sec-policy/selinux-bitlbee )
 	test? ( dev-libs/check )"
 
 RDEPEND="${COMMON_DEPEND}
 	virtual/logger
-	skype? (
-		dev-python/skype4py[${PYTHON_USEDEP}]
-		net-im/skype
-	)
 	xinetd? ( sys-apps/xinetd )"
 
-REQUIRED_USE="|| ( purple xmpp msn oscar yahoo )
-	msn? ( || ( gnutls nss ssl ) )
-	xmpp? ( !nss )"
-
 pkg_setup() {
-	if use xmpp && ! use gnutls && ! use ssl ; then
-		einfo
-		elog "You have enabled support for Jabber but do not have SSL"
-		elog "support enabled.  This *will* prevent bitlbee from being"
-		elog "able to connect to SSL enabled Jabber servers.  If you need to"
-		elog "connect to Jabber over SSL, enable ONE of the following use"
-		elog "flags: gnutls or ssl"
-		einfo
-	fi
-
-	use skype && python-single-r1_pkg_setup
-
 	enewgroup bitlbee
 	enewuser bitlbee -1 -1 /var/lib/bitlbee bitlbee
 }
 
 src_prepare() {
-	sed -i \
-		-e "s@/usr/local/sbin/bitlbee@/usr/sbin/bitlbee@" \
-		-e "s/nobody/bitlbee/" \
-		-e "s/}/	disable         = yes\n}/" \
-		doc/bitlbee.xinetd || die "sed failed in xinetd"
-
-	sed -i \
-		-e "s@mozilla-nss@nss@g" \
-		configure || die "sed failed in configure"
-
-	use skype && python_fix_shebang protocols/skype/skyped.py
-
-	[[ ${PV} != "9999" ]] && epatch "${FILESDIR}"/${PN}-3.2.1-configure.patch
-	epatch_user
+	[[ ${PV} != "9999" ]] && eapply "${FILESDIR}"/${P}-systemd-user.patch
+	eapply_user
 }
 
 src_configure() {
+	local myconf
+
 	# setup plugins, protocol, ipv6 and debug
-	use xmpp && myconf="${myconf} --jabber=1"
-	for flag in debug ipv6 msn oscar plugins purple skype twitter yahoo ; do
-		if use ${flag} ; then
-			myconf="${myconf} --${flag}=1"
-		else
-			myconf="${myconf} --${flag}=0"
-		fi
+	myconf+=( --jabber=$(usex xmpp 1 0) )
+	for flag in debug ipv6 plugins ${IUSE_PROTOCOLS/+xmpp/} ; do
+		myconf+=( --${flag}=$(usex ${flag} 1 0) )
 	done
 
 	# set otr
 	if use otr && use plugins ; then
-		myconf="${myconf} --otr=plugin"
+		myconf+=( --otr=plugin )
 	else
 		if use otr ; then
 			ewarn "OTR support has been disabled automatically because it"
 			ewarn "requires the plugins USE flag."
 		fi
-		myconf="${myconf} --otr=0"
+		myconf+=( --otr=0 )
 	fi
 
 	# setup ssl use flags
 	if use gnutls ; then
-		myconf="${myconf} --ssl=gnutls"
+		myconf+=( --ssl=gnutls )
 		einfo "Using gnutls for SSL support"
-	elif use ssl ; then
-		myconf="${myconf} --ssl=openssl"
-		einfo "Using openssl for SSL support"
-	elif use nss ; then
-		myconf="${myconf} --ssl=nss"
-		einfo "Using nss for SSL support"
 	else
-		myconf="${myconf} --ssl=bogus"
-		einfo "You will not have any encryption support enabled."
+		ewarn "Only gnutls is officially supported by upstream."
+		if use nss ; then
+			myconf+=( --ssl=nss )
+			einfo "Using nss for SSL support"
+		else
+			myconf+=( --ssl=openssl )
+			einfo "Using openssl for SSL support"
+		fi
 	fi
 
 	# set event handler
 	if use libevent ; then
-		myconf="${myconf} --events=libevent"
+		myconf+=( --events=libevent )
 	else
-		myconf="${myconf} --events=glib"
+		myconf+=( --events=glib )
 	fi
 
-	# NOTE: bitlbee's configure script is not an autotool creation,
-	# so that is why we don't use econf.
+	# not autotools-based
 	./configure \
-		--prefix="${EPREFIX}/usr" \
-		--datadir="${EPREFIX}/usr/share/bitlbee" \
-		--etcdir="${EPREFIX}/etc/bitlbee" \
-		--plugindir="${EPREFIX}/usr/$(get_libdir)/bitlbee" \
-		--systemdsystemunitdir=$(systemd_get_unitdir) \
-		--doc=1 --strip=0 ${myconf} || die "econf failed"
+		--prefix=/usr \
+		--datadir=/usr/share/bitlbee \
+		--etcdir=/etc/bitlbee \
+		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
+		--doc=1 \
+		--strip=0 \
+		"${myconf[@]}" || die
 
 	sed -i \
 		-e "/^EFLAGS/s:=:&${LDFLAGS} :" \
-		Makefile.settings || die "sed failed"
+		Makefile.settings || die
 }
 
 src_install() {
-	emake install install-etc install-doc install-dev install-systemd DESTDIR="${D}"
+	emake DESTDIR="${D}" install install-etc install-doc install-dev install-systemd
 
 	keepdir /var/lib/bitlbee
 	fperms 700 /var/lib/bitlbee
 	fowners bitlbee:bitlbee /var/lib/bitlbee
 
 	dodoc doc/{AUTHORS,CHANGES,CREDITS,FAQ,README}
-
-	if use skype ; then
-		newdoc protocols/skype/NEWS NEWS-skype
-		newdoc protocols/skype/README README-skype
-	fi
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d

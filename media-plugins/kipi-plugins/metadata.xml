@@ -15,6 +15,7 @@
 		<flag name="mediawiki">Build the mediawiki export plugin</flag>
 		<flag name="panorama">Pull in dependencies needed by panorama plugin</flag>
 		<flag name="redeyes">Add redeyes removal support</flag>
+		<flag name="remotestorage">Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via <pkg>kde-frameworks/kio</pkg></flag>
 		<flag name="videoslideshow">Build videoslideshow plugin</flag>
 		<flag name="vkontakte">Build plugin for vkontakte.ru</flag>
 	</use>

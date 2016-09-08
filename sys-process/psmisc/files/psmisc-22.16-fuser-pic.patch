@@ -1,5 +1,5 @@
 http://bugs.gentoo.org/401851
-http://sourceforge.net/tracker/?func=detail&aid=3504801&group_id=15273&atid=115273
+https://sourceforge.net/tracker/?func=detail&aid=3504801&group_id=15273&atid=115273
 
 the x86 asm code is not PIC friendly, so disable it and fall back to the
 gcc builtin for doing prefetching

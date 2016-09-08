@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 #
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
+# @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
 
 inherit versionator eutils flag-o-matic bsdmk

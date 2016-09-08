@@ -6,8 +6,12 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <use>
+    <flag name="clipboard">Enable clipboard support through a provider</flag>
     <flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
+    <flag name="tui">Build the neovim unix tui</flag>
+    <flag name="luajit">Use <pkg>dev-lang/luajit</pkg> instead of
+      <pkg>dev-lang/lua</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">neovim/neovim</remote-id>

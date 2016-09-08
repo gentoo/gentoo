@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils user
 
 DESCRIPTION="Abstract Shooting Game"
-HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html http://sourceforge.net/projects/noiz2sa/"
+HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html https://sourceforge.net/projects/noiz2sa/"
 SRC_URI="mirror://sourceforge/noiz2sa/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,0 +1,19 @@
+Remove new/delete declarations, which cause problems with recent GCC versions:
+* /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4/new:135:41: error: declaration of ‘void operator delete [](void*) throw ()’ has a different exception specifier
+
+See also: https://bugs.gentoo.org/show_bug.cgi?id=590002
+
+--- TeXmacs-1.99.5-src/src/System/Misc/fast_alloc.hpp
++++ TeXmacs-1.99.5-src/src/System/Misc/fast_alloc.hpp
+@@ -384,11 +384,6 @@
+ void  operator delete (register void* ptr) throw();
+ void* operator new[] (register size_t s) throw(std::bad_alloc);
+ void  operator delete[] (register void* ptr) throw();
+-#else
+-void* operator new (register size_t s);
+-void  operator delete (register void* ptr);
+-void* operator new[] (register size_t s);
+-void  operator delete[] (register void* ptr);
+ #endif
+ #endif // not defined NO_FAST_ALLOC
+ 

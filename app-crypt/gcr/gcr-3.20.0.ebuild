@@ -4,7 +4,7 @@
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit gnome2 python-any-r1 vala virtualx
 

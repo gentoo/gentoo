@@ -1,0 +1,93 @@
+commit 92433189c29c425a9bfb3eb10a0ffe767f23febd
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Aug 14 23:53:08 2016 +0200
+
+    Fix build with disabled TelepathyQt4
+
+diff --git a/plugins/imstatus/CMakeLists.txt b/plugins/imstatus/CMakeLists.txt
+index 19c3ef0..cb45c14 100644
+--- a/plugins/imstatus/CMakeLists.txt
++++ b/plugins/imstatus/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ find_package(TelepathyQt4)
+ 
+-configure_file(config-imstatus.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-imstatus.h )
++if(TelepathyQt4_FOUND)
++    add_definitions( -DTELEPATHY_FOUND )
++endif()
+ 
+ include_directories(
+ ${TELEPATHY_QT4_INCLUDE_DIR}
+diff --git a/plugins/imstatus/imqdbus.cpp b/plugins/imstatus/imqdbus.cpp
+index 7c78b34..a968269 100644
+--- a/plugins/imstatus/imqdbus.cpp
++++ b/plugins/imstatus/imqdbus.cpp
+@@ -30,7 +30,7 @@
+ 
+ #include <kdebug.h>
+ 
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+     #include <TelepathyQt/AccountManager>
+     #include <TelepathyQt/AccountSet>
+     #include <TelepathyQt/Account>
+@@ -51,7 +51,7 @@ IMQDBus::IMQDBus (QObject *parent) : QObject(parent)
+     - qutIM (>0.3)
+     - gajim ( doesn't want work :( )
+     */
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+     m_accountManager =  Tp::AccountManager::create(Tp::AccountFactory::create(QDBusConnection::sessionBus(), Tp::Account::FeatureCore));
+     connect(m_accountManager->becomeReady(), SIGNAL(finished(Tp::PendingOperation*)), SLOT(slotFinished(Tp::PendingOperation*)));
+ 
+@@ -65,7 +65,7 @@ void IMQDBus::updateStatusMessage(const QString& im, const QString& statusMessag
+     if ( im == IM_PSI ) usePsi(statusMessage);
+     if ( im == IM_SKYPE ) useSkype(statusMessage);
+     if ( im == IM_PIDGIN ) usePidgin(statusMessage);
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+     if ( im == IM_TELEPATHY ) useTelepathy(statusMessage);
+ #endif
+ }
+@@ -182,7 +182,7 @@ void IMQDBus::usePidgin(const QString &statusMessage)
+     }
+ }
+ 
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+ void IMQDBus::useTelepathy(const QString &statusMessage)
+ {
+     if (m_accountManager->isReady()) {
+@@ -224,7 +224,7 @@ QStringList IMQDBus::scanForIMs()
+         ims << IM_KOPETE;
+     if ( QDBusConnection::sessionBus().interface()->isServiceRegistered ( "im.pidgin.purple.PurpleService" ).value() )
+         ims << IM_PIDGIN;
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+     if ( QDBusConnection::sessionBus().interface()->isServiceRegistered( "org.freedesktop.Telepathy.AccountManager" ).value() )
+         ims << IM_TELEPATHY;
+ #endif
+diff --git a/plugins/imstatus/imqdbus.h b/plugins/imstatus/imqdbus.h
+index 890184a..8b2c245 100644
+--- a/plugins/imstatus/imqdbus.h
++++ b/plugins/imstatus/imqdbus.h
+@@ -28,9 +28,7 @@
+ #include <QString>
+ #include <QObject>
+ 
+-#include "config-imstatus.h"
+-
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+ 
+ #include <TelepathyQt/Types>
+ 
+@@ -59,7 +57,7 @@ private:
+     void useSkype(const QString &statusMessage);
+     void usePidgin(const QString &statusMessage);
+ 
+-#if TELEPATHY_FOUND
++#ifdef TELEPATHY_FOUND
+ private slots:
+     void slotFinished(Tp::PendingOperation *po);
+ 

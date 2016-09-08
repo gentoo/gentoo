@@ -18,7 +18,7 @@ RESTRICT="!bindist? ( bindist )"
 REQUIRED_USE="server? ( tokudb? ( jemalloc ) ) static? ( !pam )"
 
 # REMEMBER: also update eclass/mysql*.eclass before committing!
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
 PATCHES=(
@@ -49,7 +49,9 @@ RDEPEND="${RDEPEND} ${COMMON_DEPEND}
 		virtual/perl-Term-ANSIColor
 		virtual/perl-Time-HiRes )
 "
-MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h )
+MULTILIB_WRAPPED_HEADERS+=( /usr/include/mysql/mysql_version.h
+	/usr/include/mysql/private/probes_mysql_nodtrace.h
+	/usr/include/mysql/private/probes_mysql_dtrace.h )
 
 src_configure(){
 	# bug 508724 mariadb cannot use ld.gold

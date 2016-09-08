@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils autotools
 
 DESCRIPTION="Library to read and write vcard files"
-HOMEPAGE="http://sourceforge.net/projects/vformat/"
+HOMEPAGE="https://sourceforge.net/projects/vformat/"
 SRC_URI="
 	mirror://debian/pool/main/libv/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://debian/pool/main/libv/${PN}/${PN}_${PV}-10.debian.tar.gz

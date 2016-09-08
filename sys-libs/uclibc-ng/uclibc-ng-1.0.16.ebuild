@@ -19,7 +19,7 @@ HOMEPAGE="http://www.uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
 	SRC_URI="http://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~arm ~mips ~ppc ~x86"
+	KEYWORDS="-* amd64 arm ~mips ~ppc x86"
 fi
 
 LICENSE="LGPL-2"
@@ -315,12 +315,6 @@ src_configure() {
 	# For arm
 	if [[ ${target} == "arm" ]]; then
 		sed -i -e '/Build for EABI/a \\tdefault y' extra/Configs/Config.arm
-	fi
-
-	# For mips
-	if [[ ${target} == "mips" ]]; then
-		sed -i -e "s|default CONFIG_MIPS_O32_ABI|CONFIG_MIPS_${ABI^[on]}_ABI|" \
-			extra/Configs/Config.mips || die
 	fi
 
 	# We set HOSTCC to the proper tuple rather than just 'gcc'

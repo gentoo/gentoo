@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>josejx@gentoo.org</email>
-<name>Joseph Jezak</name>
-</maintainer>
 <maintainer type="project">
 <email>ppc@gentoo.org</email>
 <name>Gentoo Linux PowerPC Development</name>

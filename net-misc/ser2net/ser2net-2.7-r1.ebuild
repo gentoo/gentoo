@@ -8,7 +8,7 @@ inherit base autotools
 
 DESCRIPTION="Serial To Network Proxy"
 SRC_URI="mirror://sourceforge/ser2net/${P}.tar.gz"
-HOMEPAGE="http://sourceforge.net/projects/ser2net"
+HOMEPAGE="https://sourceforge.net/projects/ser2net"
 
 KEYWORDS="~amd64 ppc x86"
 SLOT="0"

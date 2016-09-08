@@ -10,7 +10,7 @@ do_install() {
 	cp -rsn "$gamesdir"/* "$install"/
 }
 
-if [[ -d "$install" ]]; then
+if [ -d "$install" ]; then
 	# delete dangling symlinks
 	find -L "$install/" -type l -delete
 	# ignore "are the same file" errors

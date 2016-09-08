@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="simple tuning app for DVB cards"
-HOMEPAGE="http://sourceforge.net/projects/dvbtools"
+HOMEPAGE="https://sourceforge.net/projects/dvbtools"
 SRC_URI="mirror://sourceforge/dvbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"

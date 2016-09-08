@@ -1,5 +1,5 @@
 Reason: Fix compile with gcc 4.3 and glibc 2.8.
-Upstream: Sent, http://sourceforge.net/tracker/index.php?func=detail&aid=2116825&group_id=54703&atid=474517
+Upstream: Sent, https://sourceforge.net/tracker/index.php?func=detail&aid=2116825&group_id=54703&atid=474517
 --- bbmail-0.9.3.orig/src/baseresource.cpp	2008-09-17 22:39:58.000000000 +0200
 +++ bbmail-0.9.3/src/baseresource.cpp	2008-09-17 22:44:16.000000000 +0200
 @@ -20,6 +20,7 @@

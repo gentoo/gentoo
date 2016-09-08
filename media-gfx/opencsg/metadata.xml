@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>mattm@gentoo.org</email>
-<name>Matthew Marlowe</name>
-</maintainer>
 <longdescription>
 OpenCSG is a library that does image-based CSG rendering using OpenGL. OpenCSG is written in C++ and supports most modern graphics hardware using Microsoft Windows or the Linux operating system.  What is CSG, anyway? CSG is short for Constructive Solid Geometry and denotes an approach to model complex 3D-shapes using simpler ones. I.e., two shapes can be combined by taking the union of them, by intersecting them, or by subtracting one shape of the other.  SG is often used as fundamental modeling technique in CAD/CAM applications. Here, image-based CSG rendering is the key to interactively manipulate CSG shapes. Since OpenCSG renders even complex CSG shapes fast, it can be advantageously used in such applications.  The OpenCSG library requires graphics hardware that either supports frame buffer objects or PBuffers in OpenGL.  
 </longdescription>

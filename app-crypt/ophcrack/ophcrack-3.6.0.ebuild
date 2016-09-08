@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 inherit eutils
 
 DESCRIPTION="A time-memory-trade-off-cracker"
@@ -23,6 +23,8 @@ DEPEND="app-arch/unzip
 		${CDEPEND}"
 RDEPEND="tables? ( app-crypt/ophcrack-tables )
 		 ${CDEPEND}"
+
+PATCHES="${FILESDIR}/ophcrack-openssl-des.patch"
 
 src_configure() {
 

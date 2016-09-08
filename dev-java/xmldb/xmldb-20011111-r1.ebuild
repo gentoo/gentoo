@@ -10,7 +10,7 @@ MY_PN="${PN}-api"
 MY_PV="11112001"
 MY_P="${MY_PN}-${MY_PV}"
 DESCRIPTION="Java implementation for specifications made by XML:DB"
-HOMEPAGE="http://sourceforge.net/projects/xmldb-org/"
+HOMEPAGE="https://sourceforge.net/projects/xmldb-org/"
 SRC_URI="mirror://sourceforge/xmldb-org/${MY_P}.tar.gz"
 
 LICENSE="Apache-1.1"

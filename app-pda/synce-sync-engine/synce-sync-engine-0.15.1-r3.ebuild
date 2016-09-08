@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit distutils multilib
 
 DESCRIPTION="A synchronization engine for SynCE"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,0 +1,12 @@
+--- a/suite/locales/Makefile.in	2016-06-30 10:08:29.000000000 -0400
++++ b/suite/locales/Makefile.in	2016-07-12 12:00:22.491851899 -0400
+@@ -123,7 +123,9 @@
+ 	@$(MAKE) -C $(DEPTH)/toolkit/locales libs-$*
+ 	@$(MAKE) -C $(DEPTH)/services/sync/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) -C ../../editor/ui/locales AB_CD=$* XPI_NAME=locale-$*
++ifneq ($(MOZ_EXTENSIONS),$(subst irc,,$(MOZ_EXTENSIONS)))
+ 	@$(MAKE) -C $(DEPTH)/extensions/irc/locales libs-$*
++endif
+ 	@$(MAKE) -C $(DEPTH)/extensions/spellcheck/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) -C $(DEPTH)/intl/locales AB_CD=$* XPI_NAME=locale-$*
+ 	@$(MAKE) -C $(DEPTH)/devtools/client/locales AB_CD=$* XPI_NAME=locale-$*

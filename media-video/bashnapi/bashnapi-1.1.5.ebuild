@@ -8,7 +8,7 @@ SUB_VER=0.15
 MY_TAR=napi_v${PV}_subotage_${SUB_VER}
 
 DESCRIPTION="Napiprojekt.pl subtitle downloader in bash"
-HOMEPAGE="http://sourceforge.net/projects/bashnapi/"
+HOMEPAGE="https://sourceforge.net/projects/bashnapi/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_TAR}.tgz"
 
 LICENSE="GPL-3"

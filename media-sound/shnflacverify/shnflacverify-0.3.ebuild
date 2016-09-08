@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="This program helps manage the verification of checksums related to Shorten and FLAC files"
-HOMEPAGE="http://sourceforge.net/projects/shnflacverify/"
+HOMEPAGE="https://sourceforge.net/projects/shnflacverify/"
 SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.zip"
 
 LICENSE="GPL-2"

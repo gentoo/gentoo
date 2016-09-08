@@ -1,0 +1,30 @@
+diff --git a/bgpd/bgp_packet.c b/bgpd/bgp_packet.c
+index 740b0f1..9cbb5b5 100644
+--- a/bgpd/bgp_packet.c
++++ b/bgpd/bgp_packet.c
+@@ -1631,7 +1631,7 @@ bgp_update_receive (struct peer *peer, bgp_size_t size)
+     NLRI_TYPE_MAX,
+   };
+   struct bgp_nlri nlris[NLRI_TYPE_MAX];
+-
++  
+   /* Status must be Established. */
+   if (peer->status != Established) 
+     {
+@@ -1645,6 +1645,7 @@ bgp_update_receive (struct peer *peer, bgp_size_t size)
+   memset (&attr, 0, sizeof (struct attr));
+   memset (&extra, 0, sizeof (struct attr_extra));
+   memset (&nlris, 0, sizeof nlris);
++  
+   attr.extra = &extra;
+ 
+   s = peer->ibuf;
+@@ -1781,6 +1782,8 @@ bgp_update_receive (struct peer *peer, bgp_size_t size)
+   /* Parse any given NLRIs */
+   for (i = NLRI_UPDATE; i < NLRI_TYPE_MAX; i++)
+     {
++      if (!nlris[i].nlri) continue;
++      
+       /* We use afi and safi as indices into tables and what not.  It would
+        * be impossible, at this time, to support unknown afi/safis.  And
+        * anyway, the peer needs to be configured to enable the afi/safi

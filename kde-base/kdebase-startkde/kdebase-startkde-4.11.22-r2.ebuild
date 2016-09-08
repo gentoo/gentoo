@@ -9,8 +9,8 @@ KMNOMODULE="true"
 inherit kde4-meta prefix
 
 DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="crash-reporter +handbook +wallpapers"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+IUSE="crash-reporter +handbook minimal +wallpapers"
 
 # The KDE apps called from the startkde script.
 # These provide the most minimal KDE desktop.
@@ -70,7 +70,30 @@ RDEPEND="
 	x11-apps/xset
 	crash-reporter? ( $(add_kdeapps_dep drkonqi ) )
 	handbook? ( kde-apps/khelpcenter:* )
-	wallpapers? ( kde-apps/kde-wallpapers:* )
+	!minimal? (
+		$(add_kdeapps_dep kdepasswd)
+		$(add_kdebase_dep freespacenotifier)
+		$(add_kdebase_dep kcheckpass)
+		$(add_kdebase_dep kdebase-cursors)
+		$(add_kdebase_dep kephal)
+		$(add_kdebase_dep khotkeys)
+		$(add_kdebase_dep kinfocenter)
+		$(add_kdebase_dep klipper)
+		$(add_kdebase_dep kmenuedit)
+		$(add_kdebase_dep kstyles)
+		$(add_kdebase_dep ksysguard)
+		$(add_kdebase_dep ksystraycmd)
+		$(add_kdebase_dep kwrited)
+		$(add_kdebase_dep libkworkspace)
+		$(add_kdebase_dep liboxygenstyle)
+		$(add_kdebase_dep libplasmaclock)
+		$(add_kdebase_dep libplasmagenericshell)
+		$(add_kdebase_dep libtaskmanager)
+		$(add_kdebase_dep powerdevil)
+		$(add_kdebase_dep qguiplatformplugin_kde)
+		$(add_kdebase_dep solid-actions-kcm)
+	)
+	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
 "
 
 KMEXTRACTONLY="

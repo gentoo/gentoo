@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="sys-devel/flex
+DEPEND="sys-apps/texinfo
+	sys-devel/flex
 	sys-devel/gettext
 	virtual/yacc"
 RDEPEND=""

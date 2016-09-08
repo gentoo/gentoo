@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit cmake-utils
 MY_PN=NearTree
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Function library efficiently solving the Nearest Neighbor Problem(known as the post office problem)"
+DESCRIPTION="Function library efficiently solving the Nearest Neighbor Problem"
 HOMEPAGE="http://neartree.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz -> ${P}.tar.gz"
 

@@ -1,0 +1,108 @@
+From 64d169e2486121eaece555c56040d6aff71e0b51 Mon Sep 17 00:00:00 2001
+From: Michel Machado <michel@digirati.com.br>
+Date: Tue, 29 Mar 2016 12:56:43 -0400
+Subject: [PATCH] Mark experimental applications as stable
+
+The code of the applications f3probe, f3brew, and f3fix is now
+mature, and they have not received any significant bug report for
+about six months.
+
+From now on, one needs to compile these applications with
+```make extra```
+---
+ Makefile  | 10 +++++-----
+ README.md | 29 ++++++++++++-----------------
+ 2 files changed, 17 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 46853f5..ce54842 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,14 +2,14 @@ CC ?= gcc
+ CFLAGS += -std=c99 -Wall -Wextra -pedantic -MMD -ggdb
+ 
+ TARGETS = f3write f3read
+-EXPERIMENTAL_TARGETS = f3probe f3brew f3fix
++EXTRA_TARGETS = f3probe f3brew f3fix
+ 
+ PREFIX = /usr/local
+ INSTALL = install
+ LN = ln
+ 
+ all: $(TARGETS)
+-experimental: $(EXPERIMENTAL_TARGETS)
++extra: $(EXTRA_TARGETS)
+ 
+ install: all
+ 	$(INSTALL) -d $(PREFIX)/bin
+@@ -18,9 +18,9 @@ install: all
+ 	$(INSTALL) -oroot -groot -m644 f3read.1 $(PREFIX)/share/man/man1
+ 	$(LN) -sf f3read.1 $(PREFIX)/share/man/man1/f3write.1
+ 
+-install-experimental: experimental
++install-extra: extra
+ 	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) -oroot -groot -m755 $(EXPERIMENTAL_TARGETS) $(PREFIX)/bin
++	$(INSTALL) -oroot -groot -m755 $(EXTRA_TARGETS) $(PREFIX)/bin
+ 
+ f3write: utils.o f3write.o
+ 	$(CC) -o $@ $^ $(LDFLAGS) -lm
+@@ -45,4 +45,4 @@ cscope:
+ 	cscope -b *.c *.h
+ 
+ clean:
+-	rm -f *.o *.d cscope.out $(TARGETS) $(EXPERIMENTAL_TARGETS)
++	rm -f *.o *.d cscope.out $(TARGETS) $(EXTRA_TARGETS)
+diff --git a/README.md b/README.md
+index f0399b4..e2f7f79 100644
+--- a/README.md
++++ b/README.md
+@@ -5,36 +5,31 @@ make
+ ```
+ 
+ 
+-## Compile experimental applications on Linux
++## Compile the extra applications on Linux
+ 
+ ### Install dependencies
+ 
+-   - f3probe and f3brew require version 1 of the library libudev to compile.
+-     On Ubuntu, you can install this library with the following command:
++f3probe and f3brew require version 1 of the library libudev, and
++f3fix requires version 0 of the library libparted to compile.
++On Ubuntu, you can install these libraries with the following command:
+ ```
+-sudo apt-get install libudev1 libudev-dev
+-```
+-   - f3fix requires version 0 of the library libparted to compile.
+-     On Ubuntu, you can install this library with the following command:
+-```
+-sudo apt-get install libparted0-dev
++sudo apt-get install libudev1 libudev-dev libparted0-dev
+ ```
+ 
+-### Compile experimental applications
++### Compile the extra applications
+ 
+ ```
+-make experimental
++make extra
+ ```
+ 
+ NOTES:
+-   - Experimental software might compile on non-Linux platforms, but
+-     there is no guarantee given that they are only tested on Linux.
+-   - Please do not e-mail me saying that you want an experimental software
++   - The extra applications are only compiled and tested on Linux platform.
++   - Please do not e-mail me saying that you want the extra applications
+      to run on your platform; I already know that.
+-   - If you want experimental software to run on your platform,
++   - If you want the extra applications to run on your platform,
+      help to port them, or find someone that can port them for you.
+-     If you do port the software, please send me a patch to help others.
+-   - Currently, f3probe, f3brew, and f3fix are experimental.
++     If you do port any of them, please send me a patch to help others.
++   - The extra applications are f3probe, f3brew, and f3fix.
+ 
+ 
+ ## Use example of f3write/f3read

@@ -11,7 +11,7 @@ inherit autotools eutils toolchain-funcs multilib python-any-r1 versionator pax-
 MY_PN="mozjs"
 MY_P="${MY_PN}-${PV/_/.}"
 DESCRIPTION="Stand-alone JavaScript C library"
-HOMEPAGE="http://www.mozilla.org/js/spidermonkey/"
+HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.tar.bz2"
 
 LICENSE="NPL-1.1"

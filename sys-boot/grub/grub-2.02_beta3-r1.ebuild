@@ -49,7 +49,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount multislot nls static sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
@@ -108,7 +108,7 @@ RDEPEND+="
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 )
+	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
 	nls? ( sys-devel/gettext )
 "
 

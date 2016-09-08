@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dberkholz@gentoo.org</email>
-		<name>Donnie Berkholz</name>
-	</maintainer>
 	<longdescription>shUnit2 is a xUnit unit test framework for Bourne based shell scripts, and
   	it is designed to work in a similar manner to JUnit, PyUnit, etc. If you
   	have ever had the desire to write a unit test for a shell script, shUnit2

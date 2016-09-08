@@ -1,13 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-
-inherit eutils
+EAPI=6
+inherit readme.gentoo-r1
 
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
-HOMEPAGE="http://alumnit.ca/wiki/?WvDial"
+HOMEPAGE="https://code.google.com/archive/p/wvstreams/"
 SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="LGPL-2"
@@ -17,15 +16,23 @@ IUSE=""
 
 COMMON_DEPEND=">=net-libs/wvstreams-4.4"
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 RDEPEND="${COMMON_DEPEND}
-	net-dialup/ppp"
+	net-dialup/ppp:=
+"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-destdir.patch"
-	epatch "${FILESDIR}/${P}-as-needed.patch"
-	epatch "${FILESDIR}/${P}-parallel-make.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-destdir.patch"
+	"${FILESDIR}/${P}-as-needed.patch"
+	"${FILESDIR}/${P}-parallel-make.patch"
+)
+
+DOC_CONTENTS="
+	Use wvdialconf to automagically generate a configuration file.
+	Users have to be member of the dialout AND the uucp group to use
+	wvdial
+"
 
 src_configure() {
 	# Hand made configure...
@@ -33,15 +40,10 @@ src_configure() {
 }
 
 src_install() {
-	emake "DESTDIR=${ED}" install || die "make install failed"
-	dodoc CHANGES FAQ MENUS README TODO || die
+	default
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	elog
-	elog "Use wvdialconf to automagically generate a configuration file."
-	elog
-	elog "Users have to be member of the dialout AND the uucp group"
-	elog "to use wvdial!"
-	elog
+	readme.gentoo_print_elog
 }

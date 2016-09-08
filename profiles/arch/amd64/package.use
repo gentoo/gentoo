@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# James Le Cuirot <chewi@gentoo.org> (01 Aug 2016)
+# Most users don't need a multilib JVM.
+dev-java/icedtea-bin -multilib
 
 # Ben de Groot <yngwin@gentoo.org> (03 May 2015)
 # Enable luajit (for OSC) by default

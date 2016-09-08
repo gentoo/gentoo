@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,12 @@ IUSE="test"
 
 RDEPEND="dev-perl/Class-Accessor-Chained"
 DEPEND="${RDEPEND}
-	test? (
-		dev-perl/Test-Pod
-	)
+	test? ( virtual/perl-Test-Simple )
 "
 
 SRC_TEST="do"
+
+src_test() {
+	perl_rm_files t/pod.t
+	perl-module_src_test
+}

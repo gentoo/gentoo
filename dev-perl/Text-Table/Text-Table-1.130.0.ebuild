@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,8 +23,6 @@ DEPEND="${RDEPEND}
 	virtual/perl-Scalar-List-Utils
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 
@@ -35,4 +33,10 @@ src_install() {
 	docinto examples
 	docompress -x /usr/share/doc/${PF}/examples
 	dodoc examples/Text-Table-UTF8-example.pl
+}
+
+src_test() {
+	perl_rm_files t/pod-coverage.t t/style-trailing-space.t \
+		t/cpan-changes.t t/pod.t
+	perl-module_src_test
 }

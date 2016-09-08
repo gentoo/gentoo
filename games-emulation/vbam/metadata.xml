@@ -9,6 +9,6 @@
 		<flag name="link">Enable GBA linking functionality</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">vbam</remote-id>
+		<remote-id type="github">visualboyadvance-m/visualboyadvance-m</remote-id>
 	</upstream>
 </pkgmetadata>

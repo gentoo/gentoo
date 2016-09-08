@@ -9,7 +9,7 @@ PYTHON_DEPEND="python? 2:2.7"
 inherit python
 
 DESCRIPTION="Library for handling compressed RTF documents"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

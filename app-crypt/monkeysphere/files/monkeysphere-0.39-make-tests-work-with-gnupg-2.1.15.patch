@@ -1,0 +1,45 @@
+From b1dd8fb1b84c6eea25523c3ea746852b3dce6034 Mon Sep 17 00:00:00 2001
+From: Valo <valo@autoproduzioni.net>
+Date: Wed, 31 Aug 2016 14:00:05 -0400
+Subject: [PATCH] Make tests pass with GnuPG 2.1.15
+
+2.1.15 appears to always emit the fingerprint lines in these cases,
+while 2.1.14 did not.
+---
+ tests/keytrans | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/keytrans b/tests/keytrans
+index 3076e3f..5c7d2c8 100755
+--- a/tests/keytrans
++++ b/tests/keytrans
+@@ -140,7 +140,7 @@ uid:u::::$timestamp::8200BD0425CC70C7D698DF3FE412044EAAB83F94::testtest
+ sig:!::1:$KEYID:$timestamp::::monkeymonkey:13x:::::8
+ EOF
+ 
+-diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -v ^tru | sed 's/:*$//')
++diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -vE '^(tru|fpr):' | sed 's/:*$//')
+ 
+ echo "##################################################"
+ echo "### sleeping to avoid test suite breakage on fast"
+@@ -170,7 +170,7 @@ rev:!::1:$KEYID:$revtime::::monkeymonkey:30x:::::8
+ EOF
+ 
+ 
+-diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -v ^tru | sed 's/:*$//')
++diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -vE '^(tru|fpr):' | sed 's/:*$//')
+ 
+ 
+ echo "##################################################"
+@@ -206,7 +206,7 @@ sig:!::1:$NEWKEYID:$(($timestamp + 1))::::fubar:13x:::::8
+ EOF
+ 
+ echo "test: diff expected gpg list output"
+-diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -v ^tru | sed 's/:*$//')
++diff -u "$TEMPDIR"/expectedout <(gpg --check-sigs --with-colons | grep -vE '^(tru|fpr):' | sed 's/:*$//')
+ 
+ sort >"$TEMPDIR"/expectedout <<EOF
+ $KEYFPR
+-- 
+2.7.3
+

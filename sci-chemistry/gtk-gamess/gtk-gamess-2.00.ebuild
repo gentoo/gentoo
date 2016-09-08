@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="GUI for GAMESS, a General Atomic and Molecular Electronic Structure System"
-HOMEPAGE="http://sourceforge.net/projects/gtk-gamess/"
+HOMEPAGE="https://sourceforge.net/projects/gtk-gamess/"
 
 SRC_URI="mirror://sourceforge/gtk-gamess/${P}.tar.gz"
 LICENSE="GPL-2"

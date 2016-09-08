@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/hardware_interface
+	>=dev-ros/hardware_interface-0.11
 	dev-ros/pluginlib
 	dev-ros/roscpp
 "

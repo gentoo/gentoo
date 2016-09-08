@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,10 @@ KEYWORDS=""
 
 IUSE=""
 DEPEND=">=dev-python/jaxml-3.01[${PYTHON_USEDEP}]
-	>=sys-apps/portage-2.1.9.42[${PYTHON_USEDEP}]"
+	|| (
+		( >=sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}] app-portage/repoman[${PYTHON_USEDEP}] )
+		<sys-apps/portage-2.3.0_rc1[${PYTHON_USEDEP}]
+	)"
 RDEPEND="${DEPEND}"
 
 python_install() {

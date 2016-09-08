@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# DEPRECATED
-# This eclass is deprecated. Superseded by kde5-meta-pkg.eclass.
+# @DEAD
+# This eclass is deprecated and no longer used. Superseded by
+# kde5-meta-pkg.eclass It will be removed in 30 days.
 
 # @ECLASS: kde4-meta-pkg.eclass
 # @MAINTAINER:

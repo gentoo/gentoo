@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/574984
+
+fix from upstream
+
+From 7566d3d4c11c16801e1c98093c4db33589451c17 Mon Sep 17 00:00:00 2001
+From: Erik de Castro Lopo <erikd@mega-nerd.com>
+Date: Wed, 11 Mar 2015 20:51:42 +1100
+Subject: [PATCH] configure.ac : Tweak for x32 architecture.
+
+The x32 architecture uses and ILP32 (32 bit ints, longs and pointers)
+on an x86_64 CPU. Since the CPU is x86_64 we need to set FLAC__CPU_X86_64
+even though the pointer size is 32 bits.
+
+Patch-from: Stuart Shelton
+Closes: https://sourceforge.net/p/flac/bugs/427/
+---
+ configure.ac | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3b1c037e80f5..2dcc6987a03d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -105,19 +105,30 @@ AC_CHECK_SIZEOF(void*,1)
+ asm_optimisation=no
+ case "$host_cpu" in
+ 	x86_64)
+-		if test $ac_cv_sizeof_voidp = 4 ; then
+-			# This must be a 32 bit user space running on 64 bit kernel so treat
+-			# this as ia32.
+-			cpu_ia32=true
+-			AC_DEFINE(FLAC__CPU_IA32)
+-			AH_TEMPLATE(FLAC__CPU_IA32, [define if building for ia32/i386])
+-		else
+-			# x86_64 user space and kernel.
+-			cpu_x86_64=true
+-			AC_DEFINE(FLAC__CPU_X86_64)
+-			AH_TEMPLATE(FLAC__CPU_X86_64, [define if building for x86_64])
+-			fi
+-		asm_optimisation=$asm_opt
++		case "$host" in
++			*gnux32)
++				# x32 user space and 64 bit kernel.
++				cpu_x86_64=true
++				AC_DEFINE(FLAC__CPU_X86_64)
++				AH_TEMPLATE(FLAC__CPU_X86_64, [define if building for x86_64])
++				asm_optimisation=$asm_opt
++				;;
++			*)
++				if test $ac_cv_sizeof_voidp = 4 ; then
++					# This must be a 32 bit user space running on 64 bit kernel so treat
++					# this as ia32.
++					cpu_ia32=true
++					AC_DEFINE(FLAC__CPU_IA32)
++					AH_TEMPLATE(FLAC__CPU_IA32, [define if building for ia32/i386])
++			else
++					# x86_64 user space and kernel.
++					cpu_x86_64=true
++					AC_DEFINE(FLAC__CPU_X86_64)
++					AH_TEMPLATE(FLAC__CPU_X86_64, [define if building for x86_64])
++				fi
++				asm_optimisation=$asm_opt
++				;;
++		esac
+ 		;;
+ 	i*86)
+ 		cpu_ia32=true
+-- 
+2.9.0

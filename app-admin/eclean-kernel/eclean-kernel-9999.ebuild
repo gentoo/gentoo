@@ -1,29 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+EAPI=6
 
-inherit distutils-r1
+EGIT_REPO_URI="https://github.com/mgorny/eclean-kernel2.git"
+inherit autotools git-r3
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-inherit git-r3
-#endif
-
-DESCRIPTION="Remove outdated built kernels"
-HOMEPAGE="https://bitbucket.org/mgorny/eclean-kernel/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+DESCRIPTION="Clean up old and stale kernel files"
+HOMEPAGE="https://github.com/mgorny/eclean-kernel2"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE=""
 
-RDEPEND="kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )"
-#if LIVE
-
-KEYWORDS=
-SRC_URI=
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}

@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic multilib prefix
 
@@ -47,12 +47,15 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 src_prepare() {
-	# fix zshall problem with soelim
-	ln -s Doc man1
-	mv Doc/zshall.1 Doc/zshall.1.soelim
-	soelim Doc/zshall.1.soelim > Doc/zshall.1
+	if [[ ${PV} != 9999* ]]; then
+		# fix zshall problem with soelim
+		ln -s Doc man1 || die
+		mv Doc/zshall.1 Doc/zshall.1.soelim || die
+		soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
 
-	epatch "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+		# add openrc specific options for init.d completion
+		eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+	fi
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die
@@ -61,6 +64,8 @@ src_prepare() {
 	else
 		sed -i -e 's|@ZSH_NOPREFIX@||' -e '/@ZSH_PREFIX@/d' -e 's|""||' "${T}"/zprofile || die
 	fi
+
+	default
 
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die

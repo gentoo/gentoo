@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="A RAPI (SynCE) based FUSE module"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="GPL-2"

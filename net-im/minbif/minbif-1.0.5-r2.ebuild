@@ -37,6 +37,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.0.5-glib-single-includes.patch"
 	epatch "${FILESDIR}/${PN}-1.0.5-gcc47.patch"
+	epatch "${FILESDIR}/${PN}-1.0.5-rename-imlib-load-error.patch"
 
 	sed -i "s/-Werror//g" CMakeLists.txt || die "sed failed"
 

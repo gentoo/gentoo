@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<accessible description="Root of the accessible tree" name="root_object" role="accelerator label">
+	<accessible_hypertext description="first child" name="obj0" role="alert">
+		<hypertext text="This is article about know downhill portals href='dh-zone.com' href='pinkbike.com'" />
+	</accessible_hypertext>
+</accessible>

@@ -12,7 +12,7 @@ COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
 SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
-	http://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip -> ${P}.zip"
+	https://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

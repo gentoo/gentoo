@@ -10,10 +10,6 @@
   <email>dlan@gentoo.org</email>
   <description>Co maintainer, CC bugs</description>
 </maintainer>
-<maintainer type="person">
-  <email>flameeyes@gentoo.org</email>
-  <description>Proxy/Backup, CC bugs</description>
-</maintainer>
 <maintainer type="project">
   <email>proxy-maint@gentoo.org</email>
   <name>Proxy Maintainers</name>

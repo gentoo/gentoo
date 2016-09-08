@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5 multilib qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+geolocation gps prison qalculate"
 
 COMMON_DEPEND="
@@ -90,6 +90,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep ksysguard)
 	$(add_plasma_dep milou)
+	$(add_plasma_dep plasma-integration)
 	$(add_qt_dep qdbus)
 	$(add_qt_dep qtgraphicaleffects)
 	$(add_qt_dep qtpaths)

@@ -15,6 +15,11 @@ KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND=""
-DEPEND="test? ( dev-perl/Test-Pod )"
+DEPEND="test? ( virtual/perl-Test-Simple )"
 
 SRC_TEST=do
+
+src_test() {
+	perl_rm_files t/00_pod.t
+	perl-module_src_test
+}

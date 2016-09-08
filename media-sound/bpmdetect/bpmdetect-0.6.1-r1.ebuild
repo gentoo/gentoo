@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils scons-utils toolchain-funcs
 
 DESCRIPTION="Automatic BPM detection utility"
-HOMEPAGE="http://sourceforge.net/projects/bpmdetect"
+HOMEPAGE="https://sourceforge.net/projects/bpmdetect"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"

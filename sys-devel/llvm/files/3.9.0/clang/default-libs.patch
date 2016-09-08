@@ -1,0 +1,703 @@
+From 2d354bfbb2f5efdf3f6b2405078f9ccb65c21536 Mon Sep 17 00:00:00 2001
+From: Jonas Hahnfeld <Hahnfeld@itc.rwth-aachen.de>
+Date: Wed, 27 Jul 2016 08:15:54 +0000
+Subject: [PATCH] Support setting default value for -rtlib at build time
+
+This patch introduces a new cmake variable: CLANG_DEFAULT_RTLIB, thru
+which we can specify a default value for -rtlib (libgcc or
+compiler-rt) at build time, just like how we set the default C++
+stdlib thru CLANG_DEFAULT_CXX_STDLIB.
+
+With these two options, we can configure clang to build binaries on
+Linux that have no runtime dependence on any gcc libs (libstdc++ or
+libgcc_s).
+
+Patch by Lei Zhang!
+
+Differential Revision: https://reviews.llvm.org/D22663
+
+git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@276848 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ CMakeLists.txt                      | 10 +++++
+ include/clang/Config/config.h.cmake |  3 ++
+ lib/Driver/ToolChain.cpp            | 22 ++++++-----
+ lib/Driver/ToolChains.cpp           | 23 ++++++-----
+ lib/Driver/ToolChains.h             |  2 +
+ test/Driver/linux-ld.c              | 76 ++++++++++++++++++-------------------
+ test/Driver/miamcu-opt.c            | 14 +++----
+ test/Driver/miamcu-opt.cpp          |  2 +-
+ test/Driver/mingw-libgcc.c          | 24 ++++++------
+ test/Driver/mingw.cpp               | 14 +++----
+ test/Driver/mips-mti-linux.c        |  4 +-
+ test/Driver/sanitizer-ld.c          |  2 +-
+ test/Driver/windows-cross.c         |  2 +-
+ test/OpenMP/linking.c               | 18 +++++----
+ 14 files changed, 121 insertions(+), 95 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cfcd221..aec4579 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -201,6 +201,16 @@ if (NOT(CLANG_DEFAULT_CXX_STDLIB STREQUAL "" OR
+   set(CLANG_DEFAULT_CXX_STDLIB "")
+ endif()
+ 
++set(CLANG_DEFAULT_RTLIB "" CACHE STRING
++  "Default runtime library to use (\"libgcc\" or \"compiler-rt\", empty for platform default)")
++if (NOT(CLANG_DEFAULT_RTLIB STREQUAL "" OR
++        CLANG_DEFAULT_RTLIB STREQUAL "libgcc" OR
++        CLANG_DEFAULT_RTLIB STREQUAL "compiler-rt"))
++  message(WARNING "Resetting default rtlib to use platform default")
++  set(CLANG_DEFAULT_RTLIB "" CACHE STRING
++    "Default runtime library to use (\"libgcc\" or \"compiler-rt\", empty for platform default)" FORCE)
++endif()
++
+ set(CLANG_DEFAULT_OPENMP_RUNTIME "libomp" CACHE STRING
+   "Default OpenMP runtime used by -fopenmp.")
+ 
+diff --git a/include/clang/Config/config.h.cmake b/include/clang/Config/config.h.cmake
+index e5a1d0d..9200ed9 100644
+--- a/include/clang/Config/config.h.cmake
++++ b/include/clang/Config/config.h.cmake
+@@ -11,6 +11,9 @@
+ /* Default C++ stdlib to use. */
+ #define CLANG_DEFAULT_CXX_STDLIB "${CLANG_DEFAULT_CXX_STDLIB}"
+ 
++/* Default runtime library to use. */
++#define CLANG_DEFAULT_RTLIB "${CLANG_DEFAULT_RTLIB}"
++
+ /* Default OpenMP runtime used by -fopenmp. */
+ #define CLANG_DEFAULT_OPENMP_RUNTIME "${CLANG_DEFAULT_OPENMP_RUNTIME}"
+ 
+diff --git a/lib/Driver/ToolChain.cpp b/lib/Driver/ToolChain.cpp
+index e96688c..b825d63 100644
+--- a/lib/Driver/ToolChain.cpp
++++ b/lib/Driver/ToolChain.cpp
+@@ -526,15 +526,19 @@ void ToolChain::addProfileRTLibs(const llvm::opt::ArgList &Args,
+ 
+ ToolChain::RuntimeLibType ToolChain::GetRuntimeLibType(
+     const ArgList &Args) const {
+-  if (Arg *A = Args.getLastArg(options::OPT_rtlib_EQ)) {
+-    StringRef Value = A->getValue();
+-    if (Value == "compiler-rt")
+-      return ToolChain::RLT_CompilerRT;
+-    if (Value == "libgcc")
+-      return ToolChain::RLT_Libgcc;
+-    getDriver().Diag(diag::err_drv_invalid_rtlib_name)
+-      << A->getAsString(Args);
+-  }
++  const Arg* A = Args.getLastArg(options::OPT_rtlib_EQ);
++  StringRef LibName = A ? A->getValue() : CLANG_DEFAULT_RTLIB;
++
++  // "platform" is only used in tests to override CLANG_DEFAULT_RTLIB
++  if (LibName == "compiler-rt")
++    return ToolChain::RLT_CompilerRT;
++  else if (LibName == "libgcc")
++    return ToolChain::RLT_Libgcc;
++  else if (LibName == "platform")
++    return GetDefaultRuntimeLibType();
++
++  if (A)
++    getDriver().Diag(diag::err_drv_invalid_rtlib_name) << A->getAsString(Args);
+ 
+   return GetDefaultRuntimeLibType();
+ }
+diff --git a/lib/Driver/ToolChains.cpp b/lib/Driver/ToolChains.cpp
+index 347aa29..6027bbf 100644
+--- a/lib/Driver/ToolChains.cpp
++++ b/lib/Driver/ToolChains.cpp
+@@ -400,17 +400,22 @@ void DarwinClang::AddLinkSanitizerLibArgs(const ArgList &Args,
+       /*AddRPath*/ true);
+ }
+ 
++ToolChain::RuntimeLibType DarwinClang::GetRuntimeLibType(
++    const ArgList &Args) const {
++  if (Arg* A = Args.getLastArg(options::OPT_rtlib_EQ)) {
++    StringRef Value = A->getValue();
++    if (Value != "compiler-rt")
++      getDriver().Diag(diag::err_drv_unsupported_rtlib_for_platform)
++          << Value << "darwin";
++  }
++
++  return ToolChain::RLT_CompilerRT;
++}
++
+ void DarwinClang::AddLinkRuntimeLibArgs(const ArgList &Args,
+                                         ArgStringList &CmdArgs) const {
+-  // Darwin only supports the compiler-rt based runtime libraries.
+-  switch (GetRuntimeLibType(Args)) {
+-  case ToolChain::RLT_CompilerRT:
+-    break;
+-  default:
+-    getDriver().Diag(diag::err_drv_unsupported_rtlib_for_platform)
+-        << Args.getLastArg(options::OPT_rtlib_EQ)->getValue() << "darwin";
+-    return;
+-  }
++  // Call once to ensure diagnostic is printed if wrong value was specified
++  GetRuntimeLibType(Args);
+ 
+   // Darwin doesn't support real static executables, don't link any runtime
+   // libraries with -static.
+diff --git a/lib/Driver/ToolChains.h b/lib/Driver/ToolChains.h
+index 369712f..fe570fd 100644
+--- a/lib/Driver/ToolChains.h
++++ b/lib/Driver/ToolChains.h
+@@ -573,6 +573,8 @@ public:
+   /// @name Apple ToolChain Implementation
+   /// {
+ 
++  RuntimeLibType GetRuntimeLibType(const llvm::opt::ArgList &Args) const override;
++
+   void AddLinkRuntimeLibArgs(const llvm::opt::ArgList &Args,
+                              llvm::opt::ArgStringList &CmdArgs) const override;
+ 
+diff --git a/test/Driver/linux-ld.c b/test/Driver/linux-ld.c
+index f9f4b48..87bd55f 100644
+--- a/test/Driver/linux-ld.c
++++ b/test/Driver/linux-ld.c
+@@ -16,7 +16,7 @@
+ // CHECK-LD-32: "-L[[SYSROOT]]/usr/lib"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux \
++// RUN:     --target=x86_64-unknown-linux -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-64 %s
+@@ -36,7 +36,7 @@
+ // CHECK-LD-64: "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux-gnux32 \
++// RUN:     --target=x86_64-unknown-linux-gnux32 -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-X32 %s
+@@ -86,7 +86,7 @@
+ // CHECK-LD-RT-ANDROID: libclang_rt.builtins-arm-android.a"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux \
++// RUN:     --target=x86_64-unknown-linux -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+ // RUN:     --rtlib=libgcc \
+@@ -107,7 +107,7 @@
+ // CHECK-LD-GCC: "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux \
++// RUN:     --target=x86_64-unknown-linux -rtlib=platform \
+ // RUN:     -static-libgcc \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+@@ -128,7 +128,7 @@
+ // CHECK-LD-64-STATIC-LIBGCC: "-lgcc" "-lgcc_eh"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux \
++// RUN:     --target=x86_64-unknown-linux -rtlib=platform \
+ // RUN:     -static \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+@@ -149,7 +149,7 @@
+ //
+ // Check that flags can be combined. The -static dominates.
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-unknown-linux \
++// RUN:     --target=x86_64-unknown-linux -rtlib=platform \
+ // RUN:     -static-libgcc -static \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+@@ -1004,42 +1004,42 @@
+ //
+ // Test linker invocation on Android.
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-androideabi \
++// RUN:     --target=arm-linux-androideabi -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-android \
++// RUN:     --target=arm-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=aarch64-linux-android \
++// RUN:     --target=aarch64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm64-linux-android \
++// RUN:     --target=arm64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mipsel-linux-android \
++// RUN:     --target=mipsel-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips64el-linux-android \
++// RUN:     --target=mips64el-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=i686-linux-android \
++// RUN:     --target=i686-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-linux-android \
++// RUN:     --target=x86_64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID %s
+@@ -1052,48 +1052,48 @@
+ // CHECK-ANDROID-NOT: "gcc_s"
+ // CHECK-ANDROID: "{{.*}}{{/|\\\\}}crtend_android.o"
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-androideabi \
++// RUN:     --target=arm-linux-androideabi -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-android \
++// RUN:     --target=arm-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=aarch64-linux-android \
++// RUN:     --target=aarch64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm64-linux-android \
++// RUN:     --target=arm64-linux-android -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mipsel-linux-android \
++// RUN:     --target=mipsel-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips64el-linux-android \
++// RUN:     --target=mips64el-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=i686-linux-android \
++// RUN:     --target=i686-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-SO %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-linux-android \
++// RUN:     --target=x86_64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -shared \
+@@ -1108,47 +1108,47 @@
+ // CHECK-ANDROID-SO-NOT: "gcc_s"
+ // CHECK-ANDROID-SO: "{{.*}}{{/|\\\\}}crtend_so.o"
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-androideabi \
++// RUN:     --target=arm-linux-androideabi -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-android \
++// RUN:     --target=arm-linux-android -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=aarch64-linux-android \
++// RUN:     --target=aarch64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm64-linux-android \
++// RUN:     --target=arm64-linux-android -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mipsel-linux-android \
++// RUN:     --target=mipsel-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips64el-linux-android \
++// RUN:     --target=mips64el-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=i686-linux-android \
++// RUN:     --target=i686-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-STATIC %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-linux-android \
++// RUN:     --target=x86_64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -static \
+@@ -1162,49 +1162,49 @@
+ // CHECK-ANDROID-STATIC-NOT: "gcc_s"
+ // CHECK-ANDROID-STATIC: "{{.*}}{{/|\\\\}}crtend_android.o"
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-androideabi \
++// RUN:     --target=arm-linux-androideabi -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot  \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm-linux-android \
++// RUN:     --target=arm-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=aarch64-linux-android \
++// RUN:     --target=aarch64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot  \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=arm64-linux-android \
++// RUN:     --target=arm64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot  \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mipsel-linux-android \
++// RUN:     --target=mipsel-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips64el-linux-android \
++// RUN:     --target=mips64el-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=i686-linux-android \
++// RUN:     --target=i686-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -pie \
+ // RUN:   | FileCheck --check-prefix=CHECK-ANDROID-PIE %s
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=x86_64-linux-android \
++// RUN:     --target=x86_64-linux-android -rtlib=platform \
+ // RUN:     --gcc-toolchain="" \
+ // RUN:     --sysroot=%S/Inputs/basic_android_tree/sysroot \
+ // RUN:     -pie \
+diff --git a/test/Driver/miamcu-opt.c b/test/Driver/miamcu-opt.c
+index 7f96998..577bd37 100644
+--- a/test/Driver/miamcu-opt.c
++++ b/test/Driver/miamcu-opt.c
+@@ -1,13 +1,13 @@
+ // REQUIRES: clang-driver
+ // REQUIRES: x86-registered-target
+ //
+-// RUN: %clang -miamcu -no-canonical-prefixes %s -### -o %t.o 2>&1 | FileCheck %s
+-// RUN: %clang -miamcu -no-canonical-prefixes -m32 %s -### -o %t.o 2>&1 | FileCheck %s
+-// RUN: %clang -miamcu -no-canonical-prefixes -target x86_64-unknown-linux-gnu %s -### -o %t.o 2>&1 | FileCheck %s
+-// RUN: %clang -mno-iamcu -miamcu -no-canonical-prefixes %s -### -o %t.o 2>&1 | FileCheck %s
+-// RUN: %clang -miamcu -no-canonical-prefixes -m64 %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=M64
+-// RUN: %clang -miamcu -no-canonical-prefixes -dynamic %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=DYNAMIC
+-// RUN: %clang -miamcu -no-canonical-prefixes  -target armv8-eabi %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=NOT-X86
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes %s -### -o %t.o 2>&1 | FileCheck %s
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes -m32 %s -### -o %t.o 2>&1 | FileCheck %s
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes -target x86_64-unknown-linux-gnu %s -### -o %t.o 2>&1 | FileCheck %s
++// RUN: %clang -mno-iamcu -miamcu -rtlib=platform -no-canonical-prefixes %s -### -o %t.o 2>&1 | FileCheck %s
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes -m64 %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=M64
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes -dynamic %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=DYNAMIC
++// RUN: %clang -miamcu -rtlib=platform -no-canonical-prefixes  -target armv8-eabi %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=NOT-X86
+ // RUN: %clang -miamcu -mno-iamcu -no-canonical-prefixes -target x86_64-unknown-linux-gnu %s -### -o %t.o 2>&1 | FileCheck %s -check-prefix=MNOIAMCU
+ 
+ // M64: error: invalid argument '-miamcu' not allowed with '-m64'
+diff --git a/test/Driver/miamcu-opt.cpp b/test/Driver/miamcu-opt.cpp
+index 6c8d755..b63c455 100644
+--- a/test/Driver/miamcu-opt.cpp
++++ b/test/Driver/miamcu-opt.cpp
+@@ -1,3 +1,3 @@
+-// RUN: %clang -miamcu %s -### -o %t.o 2>&1 | FileCheck %s
++// RUN: %clang -miamcu -rtlib=platform %s -### -o %t.o 2>&1 | FileCheck %s
+ 
+ // CHECK: error: the clang compiler does not support 'C++ for IAMCU'
+diff --git a/test/Driver/mingw-libgcc.c b/test/Driver/mingw-libgcc.c
+index 75a5696..1d45c91 100644
+--- a/test/Driver/mingw-libgcc.c
++++ b/test/Driver/mingw-libgcc.c
+@@ -2,24 +2,24 @@
+ // Verified with gcc version 5.1.0 (i686-posix-dwarf-rev0, Built by MinGW-W64 project).
+ 
+ // gcc, static
+-// RUN: %clang -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static-libgcc -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static -shared -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static-libgcc -shared -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static-libgcc -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static -shared -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static-libgcc -shared -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+ 
+ // gcc, dynamic
+-// RUN: %clang -shared -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
++// RUN: %clang -shared -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
+ 
+ // g++, static
+-// RUN: %clang -static --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static-libgcc --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+-// RUN: %clang -static-libgcc -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static-libgcc --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
++// RUN: %clang -static-libgcc -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_STATIC %s
+ 
+ // g++, dynamic
+-// RUN: %clang --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
+-// RUN: %clang -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
++// RUN: %clang --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
++// RUN: %clang -shared --driver-mode=g++ -v -target i686-pc-windows-gnu -rtlib=platform -### %s 2>&1 | FileCheck -check-prefix=CHECK_DYNAMIC %s
+ 
+ // CHECK_STATIC: "-lgcc" "-lgcc_eh"
+ // CHECK_DYNAMIC: "-lgcc_s" "-lgcc"
+diff --git a/test/Driver/mingw.cpp b/test/Driver/mingw.cpp
+index 8dc5b96..c939c7a 100644
+--- a/test/Driver/mingw.cpp
++++ b/test/Driver/mingw.cpp
+@@ -1,9 +1,9 @@
+-// RUN: %clang -target i686-windows-gnu -c -### --sysroot=%S/Inputs/mingw_clang_tree/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_CLANG_TREE %s
++// RUN: %clang -target i686-windows-gnu -rtlib=platform -c -### --sysroot=%S/Inputs/mingw_clang_tree/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_CLANG_TREE %s
+ // CHECK_MINGW_CLANG_TREE: "{{.*}}/Inputs/mingw_clang_tree/mingw32{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include"
+ // CHECK_MINGW_CLANG_TREE: "{{.*}}/Inputs/mingw_clang_tree/mingw32{{/|\\\\}}include"
+ 
+ 
+-// RUN: %clang -target i686-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_mingw_org_tree/mingw %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_ORG_TREE %s
++// RUN: %clang -target i686-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_mingw_org_tree/mingw %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_ORG_TREE %s
+ // CHECK_MINGW_ORG_TREE: "{{.*}}/Inputs/mingw_mingw_org_tree/mingw{{/|\\\\}}lib{{/|\\\\}}gcc{{/|\\\\}}mingw32{{/|\\\\}}4.8.1{{/|\\\\}}include{{/|\\\\}}c++"
+ // CHECK_MINGW_ORG_TREE: "{{.*}}/Inputs/mingw_mingw_org_tree/mingw{{/|\\\\}}lib{{/|\\\\}}gcc{{/|\\\\}}mingw32{{/|\\\\}}4.8.1{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}mingw32"
+ // CHECK_MINGW_ORG_TREE: "{{.*}}{{/|\\\\}}Inputs/mingw_mingw_org_tree/mingw{{/|\\\\}}lib{{/|\\\\}}gcc{{/|\\\\}}mingw32{{/|\\\\}}4.8.1{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}backward"
+@@ -13,7 +13,7 @@
+ // CHECK_MINGW_ORG_TREE: {{.*}}/Inputs/mingw_mingw_org_tree/mingw{{/|\\\\}}include
+ 
+ 
+-// RUN: %clang -target i686-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_mingw_builds_tree/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_BUILDS_TREE %s
++// RUN: %clang -target i686-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_mingw_builds_tree/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_BUILDS_TREE %s
+ // CHECK_MINGW_BUILDS_TREE: "{{.*}}/Inputs/mingw_mingw_builds_tree/mingw32{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++"
+ // CHECK_MINGW_BUILDS_TREE: "{{.*}}/Inputs/mingw_mingw_builds_tree/mingw32{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}i686-w64-mingw32"
+ // CHECK_MINGW_BUILDS_TREE: "{{.*}}/Inputs/mingw_mingw_builds_tree/mingw32{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}backward"
+@@ -22,7 +22,7 @@
+ // CHECK_MINGW_BUILDS_TREE: "{{.*}}/Inputs/mingw_mingw_builds_tree/mingw32{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include"
+ 
+ 
+-// RUN: %clang -target i686-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_msys2_tree/msys64/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_MSYS_TREE %s
++// RUN: %clang -target i686-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_msys2_tree/msys64/mingw32 %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_MSYS_TREE %s
+ // CHECK_MINGW_MSYS_TREE: "{{.*}}/Inputs/mingw_msys2_tree/msys64{{/|\\\\}}mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.9.2"
+ // CHECK_MINGW_MSYS_TREE: "{{.*}}/Inputs/mingw_msys2_tree/msys64/mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.9.2{{/|\\\\}}i686-w64-mingw32"
+ // CHECK_MINGW_MSYS_TREE: "{{.*}}/Inputs/mingw_msys2_tree/msys64/mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.9.2{{/|\\\\}}backward"
+@@ -32,7 +32,7 @@
+ // CHECK_MINGW_MSYS_TREE: "{{.*}}/Inputs/mingw_msys2_tree/msys64/mingw32{{/|\\\\}}include"
+ 
+ 
+-// RUN: %clang -target x86_64-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_opensuse_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_OPENSUSE_TREE %s
++// RUN: %clang -target x86_64-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_opensuse_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_OPENSUSE_TREE %s
+ // CHECK_MINGW_OPENSUSE_TREE: "{{.*}}/Inputs/mingw_opensuse_tree/usr{{/|\\\\}}lib64{{/|\\\\}}gcc{{/|\\\\}}x86_64-w64-mingw32{{/|\\\\}}5.1.0{{/|\\\\}}include{{/|\\\\}}c++"
+ // CHECK_MINGW_OPENSUSE_TREE: "{{.*}}/Inputs/mingw_opensuse_tree/usr{{/|\\\\}}lib64{{/|\\\\}}gcc{{/|\\\\}}x86_64-w64-mingw32{{/|\\\\}}5.1.0{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}x86_64-w64-mingw32"
+ // CHECK_MINGW_OPENSUSE_TREE: "{{.*}}/Inputs/mingw_opensuse_tree/usr{{/|\\\\}}lib64{{/|\\\\}}gcc{{/|\\\\}}x86_64-w64-mingw32{{/|\\\\}}5.1.0{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}backward"
+@@ -41,7 +41,7 @@
+ // CHECK_MINGW_OPENSUSE_TREE: "{{.*}}/Inputs/mingw_opensuse_tree/usr{{/|\\\\}}lib64{{/|\\\\}}gcc{{/|\\\\}}x86_64-w64-mingw32{{/|\\\\}}5.1.0{{/|\\\\}}include-fixed"
+ 
+ 
+-// RUN: %clang -target i686-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_arch_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_ARCH_TREE %s
++// RUN: %clang -target i686-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_arch_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_ARCH_TREE %s
+ // CHECK_MINGW_ARCH_TREE: "{{.*}}/Inputs/mingw_arch_tree/usr{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}5.1.0"
+ // CHECK_MINGW_ARCH_TREE: "{{.*}}/Inputs/mingw_arch_tree/usr{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}5.1.0{{/|\\\\}}i686-w64-mingw32"
+ // CHECK_MINGW_ARCH_TREE: "{{.*}}/Inputs/mingw_arch_tree/usr{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}5.1.0{{/|\\\\}}backward"
+@@ -50,7 +50,7 @@
+ // CHECK_MINGW_ARCH_TREE: "{{.*}}/Inputs/mingw_arch_tree/usr{{/|\\\\}}i686-w64-mingw32{{/|\\\\}}include"
+ 
+ 
+-// RUN: %clang -target x86_64-pc-windows-gnu -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_ubuntu_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_UBUNTU_TREE %s
++// RUN: %clang -target x86_64-pc-windows-gnu -rtlib=platform -stdlib=libstdc++ -c -### --sysroot=%S/Inputs/mingw_ubuntu_tree/usr %s 2>&1 | FileCheck -check-prefix=CHECK_MINGW_UBUNTU_TREE %s
+ // CHECK_MINGW_UBUNTU_TREE: "{{.*}}/Inputs/mingw_ubuntu_tree/usr{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.8"
+ // CHECK_MINGW_UBUNTU_TREE: "{{.*}}/Inputs/mingw_ubuntu_tree/usr{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.8{{/|\\\\}}x86_64-w64-mingw32"
+ // CHECK_MINGW_UBUNTU_TREE: "{{.*}}/Inputs/mingw_ubuntu_tree/usr{{/|\\\\}}include{{/|\\\\}}c++{{/|\\\\}}4.8{{/|\\\\}}backward"
+diff --git a/test/Driver/mips-mti-linux.c b/test/Driver/mips-mti-linux.c
+index e3560e2..4835d79 100644
+--- a/test/Driver/mips-mti-linux.c
++++ b/test/Driver/mips-mti-linux.c
+@@ -8,7 +8,7 @@
+ 
+ // = Big-endian, mips32r2, hard float
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips-mti-linux -mips32r2 -mhard-float \
++// RUN:     --target=mips-mti-linux -mips32r2 -mhard-float -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/mips_mti_linux/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-BE-HF-32R2 %s
+ //
+@@ -26,7 +26,7 @@
+ 
+ // = Little-endian, mips32r2, hard float
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     --target=mips-mti-linux -mips32r2 -EL -mhard-float \
++// RUN:     --target=mips-mti-linux -mips32r2 -EL -mhard-float -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/mips_mti_linux/sysroot \
+ // RUN:   | FileCheck --check-prefix=CHECK-LE-HF-32R2 %s
+ //
+diff --git a/test/Driver/sanitizer-ld.c b/test/Driver/sanitizer-ld.c
+index 4d4ea29..9f6fae3 100644
+--- a/test/Driver/sanitizer-ld.c
++++ b/test/Driver/sanitizer-ld.c
+@@ -343,7 +343,7 @@
+ 
+ // CFI by itself does not link runtime libraries.
+ // RUN: %clang -fsanitize=cfi %s -### -o %t.o 2>&1 \
+-// RUN:     -target x86_64-unknown-linux \
++// RUN:     -target x86_64-unknown-linux -rtlib=platform \
+ // RUN:     --sysroot=%S/Inputs/basic_linux_tree \
+ // RUN:   | FileCheck --check-prefix=CHECK-CFI-LINUX %s
+ // CHECK-CFI-LINUX: "{{.*}}ld{{(.exe)?}}"
+diff --git a/test/Driver/windows-cross.c b/test/Driver/windows-cross.c
+index 3812287..84ef2df 100644
+--- a/test/Driver/windows-cross.c
++++ b/test/Driver/windows-cross.c
+@@ -1,4 +1,4 @@
+-// RUN: %clang -### -target armv7-windows-itanium --sysroot %S/Inputs/Windows/ARM/8.1 -B %S/Inputs/Windows/ARM/8.1/usr/bin -stdlib=libstdc++ -o /dev/null %s 2>&1 \
++// RUN: %clang -### -target armv7-windows-itanium --sysroot %S/Inputs/Windows/ARM/8.1 -B %S/Inputs/Windows/ARM/8.1/usr/bin -stdlib=libstdc++ -rtlib=platform -o /dev/null %s 2>&1 \
+ // RUN:   | FileCheck %s --check-prefix CHECK-BASIC
+ 
+ // CHECK-BASIC: armv7-windows-itanium-ld" "--sysroot={{.*}}/Inputs/Windows/ARM/8.1" "-m" "thumb2pe" "-Bdynamic" "--entry" "mainCRTStartup" "--allow-multiple-definition" "-o" "{{[^"]*}}" "{{.*}}/Inputs/Windows/ARM/8.1/usr/lib/crtbegin.obj" "-L{{.*}}/Inputs/Windows/ARM/8.1/usr/lib" "-L{{.*}}/Inputs/Windows/ARM/8.1/usr/lib/gcc" "{{.*}}.o" "-lmsvcrt" "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed"
+diff --git a/test/OpenMP/linking.c b/test/OpenMP/linking.c
+index 81706d4..7b30592 100644
+--- a/test/OpenMP/linking.c
++++ b/test/OpenMP/linking.c
+@@ -4,42 +4,42 @@
+ // FIXME: Replace DEFAULT_OPENMP_LIB below with the value chosen at configure time.
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp -target i386-unknown-linux \
++// RUN:     -fopenmp -target i386-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-32 %s
+ // CHECK-LD-32: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-LD-32: "-l[[DEFAULT_OPENMP_LIB:[^"]*]]" "-lgcc"
+ // CHECK-LD-32: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp -target x86_64-unknown-linux \
++// RUN:     -fopenmp -target x86_64-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-64 %s
+ // CHECK-LD-64: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-LD-64: "-l[[DEFAULT_OPENMP_LIB:[^"]*]]" "-lgcc"
+ // CHECK-LD-64: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp=libgomp -target i386-unknown-linux \
++// RUN:     -fopenmp=libgomp -target i386-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-GOMP-LD-32 %s
+ // CHECK-GOMP-LD-32: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-GOMP-LD-32: "-lgomp" "-lrt" "-lgcc"
+ // CHECK-GOMP-LD-32: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp=libgomp -target x86_64-unknown-linux \
++// RUN:     -fopenmp=libgomp -target x86_64-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-GOMP-LD-64 %s
+ // CHECK-GOMP-LD-64: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-GOMP-LD-64: "-lgomp" "-lrt" "-lgcc"
+ // CHECK-GOMP-LD-64: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp -target i386-unknown-linux \
++// RUN:     -fopenmp -target i386-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-IOMP5-LD-32 %s
+ // CHECK-IOMP5-LD-32: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-IOMP5-LD-32: "-l[[DEFAULT_OPENMP_LIB:[^"]*]]" "-lgcc"
+ // CHECK-IOMP5-LD-32: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp -target x86_64-unknown-linux \
++// RUN:     -fopenmp -target x86_64-unknown-linux -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-IOMP5-LD-64 %s
+ // CHECK-IOMP5-LD-64: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-IOMP5-LD-64: "-l[[DEFAULT_OPENMP_LIB:[^"]*]]" "-lgcc"
+@@ -57,6 +57,7 @@
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+ // RUN:     -fopenmp -fopenmp=libgomp -target i386-unknown-linux \
++// RUN:     -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-OVERRIDE-32 %s
+ // CHECK-LD-OVERRIDE-32: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-LD-OVERRIDE-32: "-lgomp" "-lrt" "-lgcc"
+@@ -64,13 +65,14 @@
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+ // RUN:     -fopenmp -fopenmp=libgomp -target x86_64-unknown-linux \
++// RUN:     -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-LD-OVERRIDE-64 %s
+ // CHECK-LD-OVERRIDE-64: "{{.*}}ld{{(.exe)?}}"
+ // CHECK-LD-OVERRIDE-64: "-lgomp" "-lrt" "-lgcc"
+ // CHECK-LD-OVERRIDE-64: "-lpthread" "-lc"
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp=libomp -target x86_64-msvc-win32 \
++// RUN:     -fopenmp=libomp -target x86_64-msvc-win32 -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-MSVC-LINK-64 %s
+ // CHECK-MSVC-LINK-64: link.exe
+ // CHECK-MSVC-LINK-64-SAME: -nodefaultlib:vcomp.lib
+@@ -79,7 +81,7 @@
+ // CHECK-MSVC-LINK-64-SAME: -defaultlib:libomp.lib
+ //
+ // RUN: %clang -no-canonical-prefixes %s -### -o %t.o 2>&1 \
+-// RUN:     -fopenmp=libiomp5 -target x86_64-msvc-win32 \
++// RUN:     -fopenmp=libiomp5 -target x86_64-msvc-win32 -rtlib=platform \
+ // RUN:   | FileCheck --check-prefix=CHECK-MSVC-ILINK-64 %s
+ // CHECK-MSVC-ILINK-64: link.exe
+ // CHECK-MSVC-ILINK-64-SAME: -nodefaultlib:vcomp.lib
+-- 
+2.9.3
+

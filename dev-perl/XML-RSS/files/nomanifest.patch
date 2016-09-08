@@ -1,0 +1,26 @@
+diff --git a/Build.PL b/Build.PL
+index 010efb6..4559535 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -2,11 +2,10 @@ use strict;
+ use warnings;
+ 
+ use File::Spec;
+-use lib File::Spec->catdir(File::Spec->curdir(), "inc");
+ 
+-use Test::Run::Builder::Manifest;
++use Module::Build;
+ 
+-my $build = Test::Run::Builder::Manifest->new(
++my $build = Module::Build->new(
+     'module_name' => "XML::RSS",
+     'requires' =>
+     {
+@@ -19,7 +18,6 @@ my $build = Test::Run::Builder::Manifest->new(
+     },
+     build_requires =>
+     {
+-        'Test::Manifest' => '0.9',
+         'Test::More' => 0,
+     },
+     configure_requires =>

@@ -22,7 +22,7 @@ for arch in amd64 x86; do
 		)"
 done
 
-LICENSE="GPL-2-with-linking-exception"
+LICENSE="GPL-2-with-classpath-exception"
 SLOT="7"
 KEYWORDS="-* amd64 x86"
 

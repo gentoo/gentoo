@@ -7,7 +7,7 @@ EAPI="5"
 inherit autotools multilib flag-o-matic user
 
 DESCRIPTION="PKCS#11 provider cryptographic hardware"
-HOMEPAGE="http://sourceforge.net/projects/opencryptoki"
+HOMEPAGE="https://sourceforge.net/projects/opencryptoki"
 SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${PN}-v${PV}.tgz"
 
 # Upstream is looking into relicensing it into CPL-1.0 entirely; the CCA

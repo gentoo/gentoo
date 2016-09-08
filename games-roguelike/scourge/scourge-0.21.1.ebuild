@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils wxwidgets games
 
 DESCRIPTION="A graphical rogue-like adventure game"
-HOMEPAGE="http://sourceforge.net/projects/scourge/"
+HOMEPAGE="https://sourceforge.net/projects/scourge/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz
 	mirror://sourceforge/${PN}/${P}.data.tar.gz"
 

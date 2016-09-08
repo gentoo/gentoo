@@ -11,7 +11,7 @@ SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="debug icu libressl tcpd ziffy"
 
 RDEPEND="dev-libs/libxml2

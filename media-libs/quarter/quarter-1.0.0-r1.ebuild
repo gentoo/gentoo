@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit autotools-utils
+inherit autotools-utils flag-o-matic
 
 MY_P="${P/q/Q}"
 
@@ -19,9 +19,11 @@ IUSE="debug doc static-libs"
 
 RDEPEND="
 	>=media-libs/coin-3.0.0[javascript]
+	dev-qt/designer:4
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
+	virtual/opengl
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -37,6 +39,8 @@ PATCHES=(
 DOCS=(AUTHORS NEWS README)
 
 src_configure() {
+	append-libs -lGL #369967, library calls glEnable()
+
 	local myeconfargs=(
 		htmldir="${ROOT}usr/share/doc/${PF}/html"
 		--enable-pkgconfig

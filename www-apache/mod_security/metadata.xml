@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-    <name>Diego E. Pettenò</name>
-  </maintainer>
   <use>
     <flag name="geoip">
       Configure ModSecurity to query the GeoIP database from MaxMind,

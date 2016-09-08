@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 VALA_MIN_API_VERSION="0.28"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 python-any-r1 vala
+inherit gnome2 python-any-r1 vala virtualx
 
 DESCRIPTION="A framework for easy media discovery and browsing"
 HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 		$(python_gen_any_dep '
 			dev-python/pygobject:2[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
-		media-plugins/grilo-plugins:0.2 )
+		media-plugins/grilo-plugins:${SLOT%/*} )
 "
 # eautoreconf requires gnome-common
 
@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -e "s:GETTEXT_PACKAGE=grilo$:GETTEXT_PACKAGE=grilo-${SLOT}:" \
+	sed -e "s:GETTEXT_PACKAGE=grilo$:GETTEXT_PACKAGE=grilo-${SLOT%/*}:" \
 		-i configure.ac configure || die "sed configure.ac configure failed"
 
 	# Don't build examples
@@ -74,6 +74,10 @@ src_configure() {
 		$(use_enable playlist grl-pls) \
 		$(use_enable test tests) \
 		$(use_enable vala)
+}
+
+src_test() {
+	virtx emake check
 }
 
 src_install() {

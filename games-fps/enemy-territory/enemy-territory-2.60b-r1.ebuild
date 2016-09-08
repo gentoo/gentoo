@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,6 +39,7 @@ Ddir=${D}/${dir}
 
 QA_PREBUILT="
 	${dir:1}/et.x86
+	${dir:1}/etded.x86
 	${dir:1}/etmain/cgame.mp.i386.so
 	${dir:1}/etmain/qagame.mp.i386.so
 	${dir:1}/etmain/ui.mp.i386.so
@@ -55,6 +56,13 @@ src_unpack() {
 		unpack ${PN}-all-0.1.tar.bz2
 	fi
 	unpack ET-${PV}.zip
+}
+
+src_prepare() {
+	if use dedicated ; then
+		sed 's@/sbin/runscript@/sbin/openrc-run@' \
+			-i et-ded.rc || die
+	fi
 }
 
 src_install() {

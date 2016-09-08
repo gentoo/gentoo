@@ -11,21 +11,21 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-macos"
 fi
 
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.github.com/"
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/23"
+SLOT="0/24"
 IUSE="examples gssapi libressl ssh test threads trace"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	sys-libs/zlib
-	net-libs/http-parser
+	net-libs/http-parser:=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )
 "

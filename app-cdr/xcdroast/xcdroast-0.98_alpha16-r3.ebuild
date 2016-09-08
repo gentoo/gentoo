@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xcdroast/${P/_/}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="nls suid"
 
 RDEPEND=">=x11-libs/gtk+-2:2

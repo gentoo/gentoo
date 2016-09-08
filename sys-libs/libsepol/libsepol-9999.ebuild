@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit multilib toolchain-funcs eutils multilib-minimal
+inherit multilib toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 MY_RELEASEDATE="20150202"
@@ -29,12 +29,11 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-# tests are not meant to be run outside of the
-# full SELinux userland repo
+# tests are not meant to be run outside of the full SELinux userland repo
 RESTRICT="test"
 
 src_prepare() {
-	epatch_user
+	eapply_user
 	multilib_copy_sources
 }
 

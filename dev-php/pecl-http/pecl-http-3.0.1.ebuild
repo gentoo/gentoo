@@ -35,6 +35,14 @@ RDEPEND="${DEPEND}
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps )
 
+src_prepare() {
+	if use php_targets_php7-0 ; then
+		php-ext-source-r3_src_prepare
+	else
+		default_src_prepare
+	fi
+}
+
 pkg_postinst() {
 	ewarn "This API has drastically changed and is not compatible with the 1.x syntax."
 	ewarn "Please review the documentation and update your code."

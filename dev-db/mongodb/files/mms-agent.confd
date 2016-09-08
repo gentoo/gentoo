@@ -1,9 +1,0 @@
-# Your API key  - See: http://mms.10gen.com/settings
-API_KEY=""
-SECRET_KEY=""
-
-# Seconds between Mongo status checks
-#COLLECTION_INTERVAL=56
-
-# Seconds between cloud configuration checks
-#CONF_INTERVAL=120

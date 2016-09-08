@@ -76,7 +76,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	normalize? (
 		>=dev-libs/libee-0.4.0
-		>=dev-libs/liblognorm-1.1.2:=
+		>=dev-libs/liblognorm-2.0.1:=
 	)
 	omhttpfs? ( >=net-misc/curl-7.35.0 )
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
@@ -339,15 +339,6 @@ pkg_postinst() {
 			elog "once for each logging client. The client certificates will be signed"
 			elog "using the CA certificate generated during the first run."
 		fi
-	fi
-
-	if [[ -z "${REPLACING_VERSIONS}" ]] || [[ ${REPLACING_VERSIONS} < 8.0 ]]; then
-		# Show this message until rsyslog-8.x
-		echo
-		elog "Since ${PN}-7.6.3 we no longer use the catch-all log target"
-		elog "\"/var/log/syslog\" due to its redundancy to the other log targets."
-
-		advertise_readme=1
 	fi
 
 	if [[ ${advertise_readme} -gt 0 ]]; then

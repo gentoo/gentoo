@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gregkh@gentoo.org</email>
-		<name>Greg Kroah-Hartman</name>
-		<description>Maintainer, assign bugs to him.</description>
-	</maintainer>
 	<longdescription lang="en">
 		xxdi.pl is a perl script that implements vim's 'xxd -i' mode
 		so that packages do not have to use all of vim just to get this

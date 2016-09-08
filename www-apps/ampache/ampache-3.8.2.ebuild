@@ -8,7 +8,7 @@ inherit webapp
 
 DESCRIPTION="PHP-based tool for managing,updating and playing audio files via a web interface"
 HOMEPAGE="http://www.ampache.org/"
-SRC_URI="https://github.com/ampache/ampache/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/ampache/ampache/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"

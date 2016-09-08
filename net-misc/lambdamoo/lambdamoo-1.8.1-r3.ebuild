@@ -7,7 +7,7 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="networked mud that can be used for different types of collaborative software"
-HOMEPAGE="http://sourceforge.net/projects/lambdamoo/"
+HOMEPAGE="https://sourceforge.net/projects/lambdamoo/"
 SRC_URI="mirror://sourceforge/lambdamoo/LambdaMOO-${PV}.tar.gz"
 
 LICENSE="LambdaMOO GPL-2"

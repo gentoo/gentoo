@@ -1,0 +1,13 @@
+Index: urdf_parser_plugin/include/urdf_parser_plugin/parser.h
+===================================================================
+--- urdf_parser_plugin.orig/include/urdf_parser_plugin/parser.h
++++ urdf_parser_plugin/include/urdf_parser_plugin/parser.h
+@@ -54,7 +54,7 @@ public:
+   }
+ 
+   /// \brief Load Model from string
+-  virtual boost::shared_ptr<ModelInterface> parse(const std::string &xml_string) = 0;
++  virtual std::shared_ptr<ModelInterface> parse(const std::string &xml_string) = 0;
+ };
+   
+ }

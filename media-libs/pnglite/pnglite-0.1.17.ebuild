@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Small and simple library for loading and writing PNG images"
-HOMEPAGE="http://sourceforge.net/projects/pnglite/"
+HOMEPAGE="https://sourceforge.net/projects/pnglite/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="ZLIB"

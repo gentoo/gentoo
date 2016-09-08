@@ -26,7 +26,7 @@ esac
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.21.0}
+: ${FRAMEWORKS_MINIMAL:=5.23.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
@@ -49,6 +49,8 @@ esac
 # kdevelop ebuild.
 if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
+elif [[ ${KMNAME} = kde-l10n || ${PN} = kde-l10n ]]; then
+	[[ ${PV} != 15.12.3 ]] && KDEBASE=kdel10n
 fi
 
 debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
@@ -278,6 +280,26 @@ get_kde_version() {
 	fi
 }
 
+# @FUNCTION: kde_l10n2lingua
+# @USAGE: <l10n>...
+# @INTERNAL
+# @DESCRIPTION:
+# Output KDE lingua flag name(s) (without prefix(es)) appropriate for
+# given l10n(s).
+kde_l10n2lingua() {
+	local l
+	for l; do
+		case ${l} in
+			ca-valencia) echo ca@valencia;;
+			sr-ijekavsk) echo sr@ijekavian;;
+			sr-Latn-ijekavsk) echo sr@ijekavianlatin;;
+			sr-Latn) echo sr@latin;;
+			uz-Cyrl) echo uz@cyrillic;;
+			*) echo "${l/-/_}";;
+		esac
+	done
+}
+
 # @FUNCTION: punt_bogus_dep
 # @USAGE: <prefix> <dependency>
 # @DESCRIPTION:
@@ -285,6 +307,10 @@ get_kde_version() {
 punt_bogus_dep() {
 	local prefix=${1}
 	local dep=${2}
+
+	if [[ ! -e "CMakeLists.txt" ]]; then
+		return
+	fi
 
 	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
 

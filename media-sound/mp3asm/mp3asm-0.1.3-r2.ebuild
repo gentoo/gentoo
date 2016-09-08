@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 MY_PV="${PV}-1"  # Patchlevel
 
 DESCRIPTION="A command line tool to clean and edit mp3 files"
-HOMEPAGE="http://sourceforge.net/projects/mp3asm/"
+HOMEPAGE="https://sourceforge.net/projects/mp3asm/"
 SRC_URI="mirror://sourceforge/mp3asm/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"

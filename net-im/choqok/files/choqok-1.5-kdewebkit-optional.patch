@@ -1,0 +1,30 @@
+commit 091d6b1f0e0b473424dab7caea2e6d4964e0be46
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Sun Aug 14 23:16:57 2016 +0200
+
+    Expose HAVE_KWEBKITPART to CMake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a37bb74..20be9fa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,8 @@ set(CMAKE_MODULE_PATH ${CHOQOK_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_PATH})
+ 
+ option(QTINDICATE_DISABLE "Disable support for notifications via indicator")
+ 
++option(WITH_KDEWEBKIT "Build with kdewebkit support" "ON")
++
+ find_package(QJson REQUIRED)
+ find_package(QCA2 REQUIRED)
+ find_package(QtOAuth REQUIRED)
+@@ -27,6 +29,10 @@ else(QTINDICATE_BUILD)
+     message(STATUS "Optional dependency libindicate-qt not found: Won't support notifications via indicator")
+ endif(QTINDICATE_BUILD)
+ 
++if(NOT WITH_KDEWEBKIT)
++    set(HAVE_KWEBKITPART 0)
++endif(NOT WITH_KDEWEBKIT)
++
+ set(CHOQOK_INCLUDES
+ ${KDE4_INCLUDES}
+ ${QT_INCLUDES}

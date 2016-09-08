@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)-src
 
 src_prepare() {
-	# http://sourceforge.net/apps/trac/speed-dreams/ticket/111
+	# https://sourceforge.net/apps/trac/speed-dreams/ticket/111
 	MAKEOPTS="${MAKEOPTS} -j1"
 
 	epatch \

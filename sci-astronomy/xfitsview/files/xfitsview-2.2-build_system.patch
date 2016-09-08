@@ -4,8 +4,8 @@
 
 http://bugs.gentoo.org/show_bug.cgi?id=337479
 
---- Makefile.in
-+++ Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -61,26 +61,26 @@
  LIBDIR = lib/$(ARCH)/
  CFLAGS = -Iinclude -Ifitssubs @MOTIF_CPPFLAGS@ @X_CFLAGS@ \
@@ -41,8 +41,8 @@ http://bugs.gentoo.org/show_bug.cgi?id=337479
  
  # make gzipped tar backup of directory
  backup:	
---- fitssubs/Makefile.in
-+++ fitssubs/Makefile.in
+--- a/fitssubs/Makefile.in
++++ b/fitssubs/Makefile.in
 @@ -69,7 +69,7 @@
  
  

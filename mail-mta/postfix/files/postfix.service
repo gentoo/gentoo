@@ -8,6 +8,12 @@ ExecStartPre=-/usr/bin/newaliases
 ExecStart=/usr/sbin/postfix start
 ExecStop=/usr/sbin/postfix stop
 ExecReload=/usr/sbin/postfix reload
+# Hardening
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+CapabilityBoundingSet=~ CAP_NET_ADMIN CAP_SYS_ADMIN CAP_SYS_BOOT CAP_SYS_MODULE
+MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target

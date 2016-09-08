@@ -1,0 +1,86 @@
+From 8864d8f9da1b30c9539e9dc0388c5d0dccca3a34 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 23:31:06 +0200
+Subject: [PATCH 5/7] cmake: Supporting overriding runtime libdir via
+ CLANG_LIBDIR_SUFFIX
+
+Make it possible to override the value of CLANG_LIBDIR_SUFFIX, and use
+it uniformly to control install location of runtimes (i.e. lib/clang),
+therefore supporting sharing a common runtime between multiple multilib
+variants.
+
+Previously, CLANG_LIBDIR_SUFFIX was pinned to LLVM_LIBDIR_SUFFIX
+and used only to define runtime path in driver code. This patch extends
+its use to building and installing the runtime (the former is needed for
+tests to work correctly).
+
+The goal is to support install layout alike "LLVM_LIBDIR_SUFFIX=64
+CLANG_LIBDIR_SUFFIX=''" -- where all shared libraries would be installed
+into ABI-specific /usr/lib64, while runtime (that is common between
+multilib ABIs) would be installed into /usr/lib.
+
+Bug: https://llvm.org/bugs/show_bug.cgi?id=23792
+Patch: https://reviews.llvm.org/D23752
+---
+ CMakeLists.txt             | 5 +++--
+ lib/Headers/CMakeLists.txt | 4 ++--
+ runtime/CMakeLists.txt     | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e95ab52..67b85b5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -235,8 +235,9 @@ endif()
+ set(CLANG_VENDOR_UTI "org.llvm.clang" CACHE STRING
+   "Vendor-specific uti.")
+ 
+-# The libdir suffix must exactly match whatever LLVM's configuration used.
+-set(CLANG_LIBDIR_SUFFIX "${LLVM_LIBDIR_SUFFIX}")
++set(CLANG_LIBDIR_SUFFIX "${LLVM_LIBDIR_SUFFIX}" CACHE
++  STRING "Define suffix of library directory name for clang runtime (32/64)")
++set(CLANG_LIBRARY_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/${CMAKE_CFG_INTDIR}/lib${CLANG_LIBDIR_SUFFIX})
+ 
+ set(CLANG_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ set(CLANG_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
+diff --git a/lib/Headers/CMakeLists.txt b/lib/Headers/CMakeLists.txt
+index 600fece..86a70c5 100644
+--- a/lib/Headers/CMakeLists.txt
++++ b/lib/Headers/CMakeLists.txt
+@@ -88,7 +88,7 @@ set(files
+   xtestintrin.h
+   )
+ 
+-set(output_dir ${LLVM_LIBRARY_OUTPUT_INTDIR}/clang/${CLANG_VERSION}/include)
++set(output_dir ${CLANG_LIBRARY_OUTPUT_INTDIR}/clang/${CLANG_VERSION}/include)
+ 
+ # Generate arm_neon.h
+ clang_tablegen(arm_neon.h -gen-arm-neon
+@@ -118,7 +118,7 @@ install(
+   FILES ${files} ${CMAKE_CURRENT_BINARY_DIR}/arm_neon.h
+   COMPONENT clang-headers
+   PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+-  DESTINATION lib${LLVM_LIBDIR_SUFFIX}/clang/${CLANG_VERSION}/include)
++  DESTINATION lib${CLANG_LIBDIR_SUFFIX}/clang/${CLANG_VERSION}/include)
+ 
+ if (NOT CMAKE_CONFIGURATION_TYPES) # don't add this for IDE's.
+   add_custom_target(install-clang-headers
+diff --git a/runtime/CMakeLists.txt b/runtime/CMakeLists.txt
+index 814857f..9348615 100644
+--- a/runtime/CMakeLists.txt
++++ b/runtime/CMakeLists.txt
+@@ -71,9 +71,9 @@ if(LLVM_BUILD_EXTERNAL_COMPILER_RT AND EXISTS ${COMPILER_RT_SRC_ROOT}/)
+                -DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}
+                -DLLVM_CONFIG_PATH=${LLVM_RUNTIME_OUTPUT_INTDIR}/llvm-config
+                -DLLVM_LIT_ARGS=${LLVM_LIT_ARGS}
+-               -DCOMPILER_RT_OUTPUT_DIR=${LLVM_LIBRARY_OUTPUT_INTDIR}/clang/${CLANG_VERSION}
++               -DCOMPILER_RT_OUTPUT_DIR=${CLANG_LIBRARY_OUTPUT_INTDIR}/clang/${CLANG_VERSION}
+                -DCOMPILER_RT_EXEC_OUTPUT_DIR=${LLVM_RUNTIME_OUTPUT_INTDIR}
+-               -DCOMPILER_RT_INSTALL_PATH:STRING=lib${LLVM_LIBDIR_SUFFIX}/clang/${CLANG_VERSION}
++               -DCOMPILER_RT_INSTALL_PATH:STRING=lib${CLANG_LIBDIR_SUFFIX}/clang/${CLANG_VERSION}
+                -DCOMPILER_RT_INCLUDE_TESTS=${LLVM_INCLUDE_TESTS}
+                -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
+                -DLLVM_LIBDIR_SUFFIX=${LLVM_LIBDIR_SUFFIX}
+-- 
+2.9.3
+

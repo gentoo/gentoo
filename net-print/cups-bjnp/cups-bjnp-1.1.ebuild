@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol"
-HOMEPAGE="http://sourceforge.net/projects/cups-bjnp/"
+HOMEPAGE="https://sourceforge.net/projects/cups-bjnp/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

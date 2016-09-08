@@ -276,7 +276,7 @@ src_install() {
 	if ! use gmp-autoupdate ; then
 		for plugin in gmp-gmpopenh264 ; do
 			echo "pref(\"media.${plugin}.autoupdate\", false);" >> \
-				"${S}/${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
+				"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" \
 				|| die
 		done
 	fi

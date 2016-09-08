@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2014
 !<dev-texlive/texlive-latexextra-2009
 !<dev-texlive/texlive-texinfo-2009
-dev-tex/pgf
+>=dev-tex/pgf-3.0.1
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="

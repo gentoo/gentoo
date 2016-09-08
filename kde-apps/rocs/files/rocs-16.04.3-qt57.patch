@@ -1,0 +1,28 @@
+From a3194c96250e4325c6af9b75a36d09516fe82420 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 21 Jun 2016 11:29:51 +0200
+Subject: [PATCH] Pass -fext-numeric-literals to fix the build with Qt 5.7
+
+Otherwise I get "error: unable to find numeric literal operator
+'operator""Q' BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000..."
+
+REVIEW: 128275
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e2c4e8..5fec78a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,6 +70,7 @@ include_directories(
+     ${Boost_INCLUDE_DIRS}
+ )
+ 
++add_definitions(-fext-numeric-literals)
+ add_definitions(-DQT_NO_CAST_TO_ASCII)
+ add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
+ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+-- 
+2.7.3
+

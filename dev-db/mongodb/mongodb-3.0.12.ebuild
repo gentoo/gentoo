@@ -137,20 +137,24 @@ src_test() {
 }
 
 pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} < 3.0 ]]; then
-		ewarn "!! IMPORTANT !!"
-		ewarn " "
-		ewarn "${PN} configuration files have changed !"
-		ewarn " "
-		ewarn "Make sure you migrate from /etc/conf.d/${PN} to the new YAML standard in /etc/${PN}.conf"
-		ewarn "  http://docs.mongodb.org/manual/reference/configuration-options/"
-		ewarn " "
-		ewarn "Make sure you also follow the upgrading process :"
-		ewarn "  http://docs.mongodb.org/master/release-notes/3.0-upgrade/"
-		ewarn " "
-		ewarn "MongoDB 3.0 introduces the WiredTiger storage engine."
-		ewarn "WiredTiger is incompatible with MMAPv1 and you need to dump/reload your data if you want to use it."
-		ewarn "Once you have your data dumped, you need to set storage.engine: wiredTiger in /etc/${PN}.conf"
-		ewarn "  http://docs.mongodb.org/master/release-notes/3.0-upgrade/#change-storage-engine-to-wiredtiger"
-	fi
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 3.0 ${v}; then
+			ewarn "!! IMPORTANT !!"
+			ewarn " "
+			ewarn "${PN} configuration files have changed !"
+			ewarn " "
+			ewarn "Make sure you migrate from /etc/conf.d/${PN} to the new YAML standard in /etc/${PN}.conf"
+			ewarn "  http://docs.mongodb.org/manual/reference/configuration-options/"
+			ewarn " "
+			ewarn "Make sure you also follow the upgrading process :"
+			ewarn "  http://docs.mongodb.org/master/release-notes/3.0-upgrade/"
+			ewarn " "
+			ewarn "MongoDB 3.0 introduces the WiredTiger storage engine."
+			ewarn "WiredTiger is incompatible with MMAPv1 and you need to dump/reload your data if you want to use it."
+			ewarn "Once you have your data dumped, you need to set storage.engine: wiredTiger in /etc/${PN}.conf"
+			ewarn "  http://docs.mongodb.org/master/release-notes/3.0-upgrade/#change-storage-engine-to-wiredtiger"
+			break
+		fi
+	done
 }

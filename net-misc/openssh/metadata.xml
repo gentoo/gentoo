@@ -29,7 +29,6 @@ ssh-keygen and sftp-server. OpenSSH supports SSH protocol versions 1.3, 1.5, and
     <flag name="ldap">Add support for storing SSH public keys in LDAP</flag>
     <flag name="ldns">Use LDNS for DNSSEC/SSHFP validation.</flag>
     <flag name="livecd">Enable root password logins for live-cd environment.</flag>
-    <flag name="sctp">Support for Stream Control Transmission Protocol</flag>
     <flag name="ssh1">Support the legacy/weak SSH1 protocol</flag>
     <flag name="ssl">Enable additional crypto algorithms via OpenSSL</flag>
     <flag name="X509">Adds support for X.509 certificate authentication</flag>

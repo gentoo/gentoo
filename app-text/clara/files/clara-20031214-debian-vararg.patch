@@ -1,0 +1,90 @@
+--- clara-20031214.orig/clara.c
++++ clara-20031214/clara.c
+@@ -751,11 +751,12 @@
+     s[128] = 0;
+     logmsg(s);
+ 
+-    if (!trace)
+-        return;
+-    va_start(args,m);
+-    vfprintf(stderr,m,args);
+-    fprintf(stderr,"\n");
++    if (trace) {
++        vfprintf(stderr,m,args);
++        fprintf(stderr,"\n");
++    }
++
++    va_end(args);
+ }
+ 
+ /*
+@@ -775,10 +776,12 @@
+     logmsg(s);
+ 
+     /* send to stderr if requested */
+-    if (!debug)
+-        return;
+-    vfprintf(stderr,m,args);
+-    fprintf(stderr,"\n");
++    if (debug) {
++        vfprintf(stderr,m,args);
++        fprintf(stderr,"\n");
++    }
++
++    va_end(args);
+ }
+ 
+ /*
+@@ -797,9 +800,10 @@
+     s[128] = 0;
+     logmsg(s);
+ 
+-    va_start(args,m);
+     vfprintf(stderr,m,args);
+     fprintf(stderr,"\n");
++
++    va_end(args);
+ }
+ 
+ /* (devel)
+--- clara-20031214.orig/event.c
++++ clara-20031214/event.c
+@@ -638,6 +638,8 @@
+         }
+     }
+ 
++    va_end(args);
++
+ /*
+     printf("request (priority %d, mclip=%d, redraw=%d) to draw the message \"%s\"\n",f,mclip,redraw_stline,s);
+ */
+--- clara-20031214.orig/html.c
++++ clara-20031214/html.c
+@@ -1548,11 +1548,12 @@
+     va_list args;
+     int n=0,f;
+ 
+-    va_start(args, fmt);
+     for (f=0; f==0; ) {
+ 
+         /* try to write */
++        va_start(args, fmt);
+         n = vsnprintf(*t+*top+1,*sz-*top-1,fmt,args);
++        va_end(args);
+ 
+         /*
+             Some implementations of vsnprintf return -1 when
+@@ -1589,11 +1590,12 @@
+     va_list args;
+     int n=0,f;
+ 
+-    va_start(args, fmt);
+     for (f=0; f==0; ) {
+ 
+         /* try to write */
++        va_start(args, fmt);
+         n = vsnprintf(text+topt+1,textsz-topt-1,fmt,args);
++        va_end(args);
+ 
+         /*
+             Some implementations of vsnprintf return -1 when

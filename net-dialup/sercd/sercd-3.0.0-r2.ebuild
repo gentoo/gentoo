@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="RFC2217-compliant serial port redirector"
-HOMEPAGE="http://sourceforge.net/projects/sercd"
+HOMEPAGE="https://sourceforge.net/projects/sercd"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

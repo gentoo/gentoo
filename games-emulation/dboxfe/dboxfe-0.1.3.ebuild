@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils qt4-r2 games
 
 DESCRIPTION="Creates and manages configuration files for DOSBox"
-HOMEPAGE="http://sourceforge.net/projects/dboxfe.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/dboxfe.berlios/"
 SRC_URI="mirror://sourceforge/dboxfe.berlios/${P}.tar.bz2"
 
 LICENSE="GPL-2"

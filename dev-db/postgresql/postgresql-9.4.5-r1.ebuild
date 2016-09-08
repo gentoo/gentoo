@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -410,8 +410,6 @@ pkg_config() {
 }
 
 src_test() {
-	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
-
 	if use server && [[ ${UID} -ne 0 ]] ; then
 		emake check
 

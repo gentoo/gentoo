@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple 
 HOMEPAGE="http://synergy-project.org/ https://github.com/synergy/synergy"
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
+	https://dev.gentoo.org/~jer/${PN}.png
 "
 
 LICENSE="GPL-2"

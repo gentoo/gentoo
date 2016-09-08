@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="generate ext2 file systems"
-HOMEPAGE="http://sourceforge.net/projects/genext2fs"
+HOMEPAGE="https://sourceforge.net/projects/genext2fs"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

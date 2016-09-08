@@ -6,7 +6,7 @@ Subject: [PATCH 2/7] Free rawdevices after opening the connected device
 Avoid leaking the raw-device memory.  For a similar example in the
 libmtp source, see LIBMTP_Get_First_Device [1].
 
-[1]: http://sourceforge.net/p/libmtp/code/ci/libmtp-1-1-9/tree/src/libmtp.c#l1690
+[1]: https://sourceforge.net/p/libmtp/code/ci/libmtp-1-1-9/tree/src/libmtp.c#l1690
 ---
  mtpfs.c | 1 +
  1 file changed, 1 insertion(+)

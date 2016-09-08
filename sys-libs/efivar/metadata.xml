@@ -6,6 +6,6 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">vathpela/efivar</remote-id>
+		<remote-id type="github">rhinstaller/efivar</remote-id>
 	</upstream>
 </pkgmetadata>

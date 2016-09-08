@@ -5,7 +5,7 @@
 EAPI=4
 
 DESCRIPTION="Mixed Integer Linear Programming (MILP) solver"
-HOMEPAGE="http://sourceforge.net/projects/lpsolve/"
+HOMEPAGE="https://sourceforge.net/projects/lpsolve/"
 SRC_URI="http://dev.gentooexperimental.org/~scarabeus/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"

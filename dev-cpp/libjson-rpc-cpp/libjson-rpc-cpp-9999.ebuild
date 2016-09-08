@@ -32,8 +32,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DHTTP_CLIENT=$(usex http-client)
 		-DHTTP_SERVER=$(usex http-server)
-		# they are not installed but required for tests to build
-		-DCOMPILE_EXAMPLES=$(usex test)
+		# they are not installed
+		-DCOMPILE_EXAMPLES=OFF
 		-DCOMPILE_STUBGEN=$(usex stubgen)
 		-DCOMPILE_TESTS=$(usex test)
 		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch"

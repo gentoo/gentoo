@@ -7,7 +7,7 @@ EAPI=5
 inherit toolchain-funcs
 
 DESCRIPTION="Transparent Print Utility for terminals"
-HOMEPAGE="http://sourceforge.net/projects/tprint/"
+HOMEPAGE="https://sourceforge.net/projects/tprint/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
-HOMEPAGE="http://sourceforge.net/projects/giflib/"
+HOMEPAGE="https://sourceforge.net/projects/giflib/"
 SRC_URI="mirror://sourceforge/giflib/${P}.tar.bz2"
 
 LICENSE="MIT"

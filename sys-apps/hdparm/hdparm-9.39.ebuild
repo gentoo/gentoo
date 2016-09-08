@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="Utility to change hard drive performance parameters"
-HOMEPAGE="http://sourceforge.net/projects/hdparm/"
+HOMEPAGE="https://sourceforge.net/projects/hdparm/"
 SRC_URI="mirror://sourceforge/hdparm/${P}.tar.gz"
 
 LICENSE="BSD GPL-2" # GPL-2 only

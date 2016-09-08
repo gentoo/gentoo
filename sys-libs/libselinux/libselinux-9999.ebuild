@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+EAPI="6"
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
+USE_RUBY="ruby21 ruby22 ruby23"
 
 # No, I am not calling ruby-ng
-inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
+inherit multilib python-r1 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
@@ -29,13 +29,12 @@ fi
 LICENSE="public-domain"
 SLOT="0"
 
-IUSE="python ruby static-libs ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
+IUSE="python ruby static-libs ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
-	>=dev-libs/libpcre-8.33-r1[static-libs?,${MULTILIB_USEDEP}]
+	>=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
-		ruby_targets_ruby20? ( dev-lang/ruby:2.0 )
 		ruby_targets_ruby21? ( dev-lang/ruby:2.1 )
 		ruby_targets_ruby22? ( dev-lang/ruby:2.2 )
 		ruby_targets_ruby23? ( dev-lang/ruby:2.3 )
@@ -47,11 +46,11 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	if [[ ${PV} != 9999 ]] ; then
 		# If needed for live builds, place them in /etc/portage/patches
-		epatch "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
-		epatch "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
+		eapply "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
+		eapply "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
 	fi
 
-	epatch_user
+	eapply_user
 
 	multilib_copy_sources
 }
@@ -148,7 +147,7 @@ pkg_postinst() {
 		touch /etc/selinux/${POLTYPE}/contexts/files/file_contexts.local || die
 		# Fix bug 516608
 		for EXPRFILE in file_contexts file_contexts.homedirs file_contexts.local ; do
-			if [[ -f ${EXPRFILE} ]]; then
+			if [[ -f "/etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE}" ]]; then
 				sefcontext_compile /etc/selinux/${POLTYPE}/contexts/files/${EXPRFILE} \
 				|| die "Failed to recompile contexts"
 			fi

@@ -14,7 +14,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="minimal"
 
 RDEPEND="!minimal? ( >=x11-themes/mate-icon-theme-1.8:0 )

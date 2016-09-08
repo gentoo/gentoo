@@ -14,7 +14,7 @@ inherit cmake-utils eutils multilib python-single-r1
 MY_P=${P}-src
 
 DESCRIPTION="a C++ computer vision library with emphasis on customizability of algorithms and data structures"
-HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
+HOMEPAGE="https://ukoethe.github.io/vigra/"
 SRC_URI="http://hci.iwr.uni-heidelberg.de/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

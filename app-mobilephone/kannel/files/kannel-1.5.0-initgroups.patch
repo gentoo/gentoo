@@ -1,0 +1,11 @@
+--- a/gwlib/utils.c.old	2016-08-25 18:52:59.944949612 +0200
++++ b/gwlib/utils.c	2016-08-25 18:53:30.352659566 +0200
+@@ -387,7 +387,7 @@
+     }
+ 
+ #ifndef __INTERIX
+-    if (initgroups(user, -1) == -1) {
++    if (initgroups(user, pass->pw_gid) == -1) {
+         error(errno, "Could not set supplementary group ID's.");
+     }
+ #endif

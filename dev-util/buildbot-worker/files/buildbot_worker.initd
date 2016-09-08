@@ -1,0 +1,48 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${BASEDIR}" ]; then
+		eerror "BASEDIR not set"
+		return 1
+	fi
+	if [ -z "${USERNAME}" ]; then
+		eerror "USERNAME not set"
+		return 1
+	fi
+	if [ ! -d "${BASEDIR}" ]; then
+		eerror "${BASEDIR} is not a directory"
+		return 1
+	fi
+	if [ ! -e "${BASEDIR}/buildbot.tac" ]; then
+		eerror "${BASEDIR} does not contain buildbot.tac"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting buildslave in ${BASEDIR}"
+	# We set HOME here to make something valid show up in the env of child
+	# processes spawned by the buildslave.
+	start-stop-daemon --start -u "${USERNAME}" \
+		--pidfile "${BASEDIR}/buildbot_worker.pid" \
+		--env HOME="${BASEDIR}" \
+		--exec /usr/bin/twistd -- \
+		--no_save \
+		--logfile="${BASEDIR}/twistd.log" \
+		--pidfile="${BASEDIR}/buildbot_worker.pid" \
+		--python="${BASEDIR}/buildbot.tac"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping buildslave in ${BASEDIR}"
+	start-stop-daemon --stop --pidfile "${BASEDIR}/buildbot_worker.pid"
+	eend $?
+}

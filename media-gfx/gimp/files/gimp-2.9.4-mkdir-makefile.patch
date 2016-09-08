@@ -1,0 +1,36 @@
+From c081a26345ad1c5bdf6f4ffec27bca517de6d594 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 23 Jul 2016 01:02:10 +0200
+Subject: [PATCH] Fix creation of output directories
+
+https://bugs.gentoo.org/show_bug.cgi?id=589394
+---
+ icons/Symbolic-Inverted/Makefile.am | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/icons/Symbolic-Inverted/Makefile.am b/icons/Symbolic-Inverted/Makefile.am
+index 2981cfc..f3fe6a5 100644
+--- a/icons/Symbolic-Inverted/Makefile.am
++++ b/icons/Symbolic-Inverted/Makefile.am
+@@ -10,14 +10,14 @@ include $(top_srcdir)/icons/icon-list.mk
+ # As exceptions, we do not want to invert some icons.
+ # Just use these as-is: gimp-default-colors, gimp-toilet-paper.png.
+ 12/gimp-default-colors.png: $(top_srcdir)/icons/Symbolic/12/gimp-default-colors.png
+-	mkdir -p `dirname $<` && cp -f $< $@
++	mkdir -p `dirname $@` && cp -f $< $@
+ scalable/gimp-default-colors.svg: ../Symbolic/scalable/gimp-default-colors.svg
+-	mkdir -p `dirname $<` && cp -f $< $@
++	mkdir -p `dirname $@` && cp -f $< $@
+ 
+ %/gimp-toilet-paper.png: $(top_srcdir)/icons/Symbolic/$(@D)/gimp-toilet-paper.png
+-	mkdir -p `dirname $<` && cp -f $< $@
++	mkdir -p `dirname $@` && cp -f $< $@
+ scalable/gimp-toilet-paper.svg: ../Symbolic/scalable/gimp-toilet-paper.svg
+-	mkdir -p `dirname $<` && cp -f $< $@
++	mkdir -p `dirname $@` && cp -f $< $@
+ 
+ # Other exceptions: inverted gimp-color-picker-white|black are generated
+ # from each other.
+-- 
+2.9.2
+

@@ -9,7 +9,6 @@ inherit autotools git-2 eutils
 DESCRIPTION="OpenBSC, OsmoSGSN, OsmoBSC and other programs"
 HOMEPAGE="http://openbsc.osmocom.org/trac/wiki/OpenBSC"
 EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-EGIT_BRANCH="jolly/testing"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +19,7 @@ DEPEND="
 	gprs? ( net-wireless/openggsn )
 	net-libs/libosmocore
 	net-libs/libosmo-abis
+	net-libs/libosmo-netif
 	dev-db/libdbi"
 RDEPEND="${DEPEND}
 	dev-db/libdbi-drivers[sqlite]

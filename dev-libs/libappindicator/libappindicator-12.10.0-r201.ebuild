@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils multilib-minimal python-single-r1 vala
+inherit autotools eutils multilib-minimal python-single-r1 vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -49,6 +49,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	xdg_environment_reset
 
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die

@@ -14,7 +14,7 @@ DESCRIPTION="A simple, flexible, extensible, and liberal RSS and Atom reader for
 HOMEPAGE="http://simple-rss.rubyforge.org/"
 LICENSE="LGPL-2"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 

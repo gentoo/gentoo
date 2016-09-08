@@ -16,7 +16,7 @@ HOMEPAGE="http://mate-desktop.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 # FIXME: wireless-tools >= 28pre9 is automagic
 RDEPEND="dev-libs/glib:2

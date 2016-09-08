@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,8 +20,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.300.0
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "

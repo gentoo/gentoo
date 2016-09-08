@@ -68,7 +68,7 @@ RDEPEND="
 	gstreamer? (
 		>=media-libs/gstreamer-1.2:1.0
 		>=media-libs/gst-plugins-base-1.2:1.0
-		>=media-libs/gst-plugins-bad-1.5.0:1.0[opengl?] )
+		>=media-libs/gst-plugins-bad-1.6.0:1.0[opengl?] )
 	introspection? ( >=dev-libs/gobject-introspection-1.32.0:= )
 	libnotify? ( x11-libs/libnotify )
 	nsplugin? ( >=x11-libs/gtk+-2.24.10:2 )
@@ -226,7 +226,7 @@ src_configure() {
 
 	# support for webgl (aka 2d-canvas accelerating)
 	local canvas_enabled
-	if use webgl ; then
+	if use webgl && ! use gles2 ; then
 		canvas_enabled=ON
 	else
 		canvas_enabled=OFF

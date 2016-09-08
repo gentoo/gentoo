@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils git-r3
+inherit autotools eutils git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="http://www.windowmaker.org/"
@@ -50,6 +50,8 @@ src_prepare() {
 			sed -i -e "s:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
 		fi;
 	done;
+
+	eautoreconf
 }
 
 src_configure() {

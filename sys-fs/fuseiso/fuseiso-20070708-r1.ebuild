@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Fuse module to mount ISO9660"
-HOMEPAGE="http://sourceforge.net/projects/fuseiso"
+HOMEPAGE="https://sourceforge.net/projects/fuseiso"
 SRC_URI="http://superb-dca2.dl.sourceforge.net/project/fuseiso/fuseiso/20070708/fuseiso-20070708.tar.bz2"
 
 LICENSE="GPL-2"

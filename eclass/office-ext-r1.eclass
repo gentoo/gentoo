@@ -72,14 +72,23 @@ RDEPEND=""
 
 for i in ${OFFICE_IMPLEMENTATIONS[@]}; do
 	IUSE+=" office_implementation_${i}"
-	RDEPEND+="
-		office_implementation_${i}? (
-			|| (
-				app-office/${i}${OFFICE_REQ_USE}
-				app-office/${i}-bin${OFFICE_REQ_USE}
+	if [[ ${i} == "openoffice" ]]; then
+		# special only binary
+		RDEPEND+="
+			office_implementation_openoffice? (
+				app-office/openoffice-bin${OFFICE_REQ_USE}
 			)
-		)
-	"
+		"
+	else
+		RDEPEND+="
+			office_implementation_${i}? (
+				|| (
+					app-office/${i}${OFFICE_REQ_USE}
+					app-office/${i}-bin${OFFICE_REQ_USE}
+				)
+			)
+		"
+	fi
 done
 
 REQUIRED_USE="|| ( "

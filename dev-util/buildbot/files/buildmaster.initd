@@ -39,7 +39,7 @@ start() {
 	ebegin "Starting buildmaster in ${BUILDMASTER_PATH}"
 	start-stop-daemon --start -u "${USERNAME}" \
 		--pidfile "${BUILDMASTER_PATH}/buildmaster.pid" \
-		--exec /usr/bin/python -- /usr/bin/twistd \
+		--exec /usr/bin/python2 -- /usr/bin/twistd \
 		--no_save \
 		--logfile="${BUILDMASTER_PATH}/twistd.log" \
 		--pidfile="${BUILDMASTER_PATH}/buildmaster.pid" \

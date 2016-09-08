@@ -1,9 +1,0 @@
-#!/bin/sh
-
-wd=`pwd`
-
-cd ${HOME}
-
-java -jar /usr/share/jif/lib/Jif.jar &
-
-cd ${wd}

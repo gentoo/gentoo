@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="flack - edit FLAC tags from command line"
-HOMEPAGE="http://sourceforge.net/projects/flack/"
+HOMEPAGE="https://sourceforge.net/projects/flack/"
 SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-1"

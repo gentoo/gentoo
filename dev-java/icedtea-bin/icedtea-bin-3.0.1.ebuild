@@ -22,7 +22,7 @@ for arch in amd64 arm ppc64 x86; do
 		)"
 done
 
-LICENSE="GPL-2-with-linking-exception"
+LICENSE="GPL-2-with-classpath-exception"
 SLOT="8"
 KEYWORDS="-* amd64 ~arm ppc64 x86"
 

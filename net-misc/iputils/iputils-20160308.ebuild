@@ -22,7 +22,7 @@ else
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
-HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD-4"
 SLOT="0"

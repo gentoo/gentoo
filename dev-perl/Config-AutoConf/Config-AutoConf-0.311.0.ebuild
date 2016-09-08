@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-DEPEND="test? ( >=dev-perl/Test-Pod-1.14
-	>=dev-perl/Test-Pod-Coverage-1.08 )"
+DEPEND="test? ( virtual/perl-Test-Simple )"
 RDEPEND="dev-perl/Capture-Tiny"
 
 SRC_TEST="do"

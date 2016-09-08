@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.avm.de/develper/d3trace/linux/dtrace.static -> ${P}.static
 
 LICENSE="AVM-dtrace"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="mirror bindist"
 
 RDEPEND="net-dialup/capi4k-utils"

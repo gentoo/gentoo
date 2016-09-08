@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils toolchain-funcs
 
 DESCRIPTION="Completely rewrite of the old system monitoring app procinfo"
-HOMEPAGE="http://sourceforge.net/projects/procinfo-ng/"
+HOMEPAGE="https://sourceforge.net/projects/procinfo-ng/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"

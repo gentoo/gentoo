@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>stasrtf@gmail.com</email>
+		<email>itumaykin+gentoo@gmail.com</email>
 		<description>Proxy maintainer</description>
-		<name>Stas</name>
+		<name>Coacher</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>maksbotan@gentoo.org</email>

@@ -15,9 +15,6 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
 
-# tests fail on multilib setups
-RESTRICT="test"
-
 COMMON_DEPEND="
 	>=app-accessibility/at-spi2-core-2.17.90[${MULTILIB_USEDEP}]
 	>=dev-libs/atk-2.15.4[${MULTILIB_USEDEP}]
@@ -32,13 +29,20 @@ DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-libs/libxml2-2.9.1 )
 "
 
+src_prepare() {
+	# Upstream forgot to put this in tarball, upstream #770615
+	cp -n "${FILESDIR}"/${PN}-2.20.0-tests-data/*.xml "${S}"/tests/data/ || die
+
+	gnome2_src_prepare
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	gnome2_src_configure --enable-p2p $(use_with test tests)
 }
 
 multilib_src_test() {
-	dbus-run-session -- emake -j1 check
+	emake check TESTS_ENVIRONMENT="dbus-run-session"
 }
 
 multilib_src_compile() { gnome2_src_compile; }

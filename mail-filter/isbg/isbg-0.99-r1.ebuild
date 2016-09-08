@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit python
 MY_P="${P/-/_}_20100303"
 DESCRIPTION="IMAP Spam Begone: a script that makes it easy to scan an IMAP inbox for spam using SpamAssassin"
 HOMEPAGE="http://redmine.ookook.fr/projects/isbg"
-SRC_URI="https://github.com/downloads/ook/${PN}/${MY_P}.tgz"
+SRC_URI="mirror://github/ook/${PN}/${MY_P}.tgz"
 
 # upstream says:
 # You may use isbg under any OSI approved open source license

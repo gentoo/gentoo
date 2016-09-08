@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs git-r3
+inherit flag-o-matic toolchain-funcs git-r3 versionator
 
 DESCRIPTION="Selection-oriented code editor inspired by vim"
 HOMEPAGE="https://github.com/mawww/kakoune"
@@ -17,7 +17,7 @@ IUSE="debug"
 
 RDEPEND="
 	sys-libs/ncurses:=[unicode]
-	dev-libs/boost
+	dev-libs/boost:=
 "
 DEPEND="
 	app-text/asciidoc
@@ -27,9 +27,17 @@ DEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		if tc-is-gcc && ! version_is_at_least 5.0 $(gcc-version); then
+			die "Clang or GCC >=5.0 is required to build this version"
+		fi
+	fi
+}
+
 src_configure() {
-	append-cppflags $(pkg-config --cflags ncursesw)
-	append-libs $(pkg-config --libs ncursesw)
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags ncursesw)
+	append-libs $($(tc-getPKG_CONFIG) --libs ncursesw)
 	export CXX=$(tc-getCXX)
 	export debug=$(usex debug)
 	S="${WORKDIR}/${P}/src"

@@ -6,7 +6,8 @@
     <name>GStreamer package maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="ivorbis">Enable integer based vorbis decoder</flag>
+		<flag name="opus">Enable opus codec support</flag>
 		<flag name="pango">Enable pango GStreamer plugin</flag>
-		<flag name="ivorbis">Enable integer based vorbis decoder.</flag>
     </use>
 </pkgmetadata>

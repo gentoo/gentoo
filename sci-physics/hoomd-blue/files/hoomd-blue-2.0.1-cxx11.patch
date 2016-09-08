@@ -1,0 +1,53 @@
+From 7dce8d65ad8069c6a7fdb89ebea13f55d2db8182 Mon Sep 17 00:00:00 2001
+From: "Joshua A. Anderson" <joaander@umich.edu>
+Date: Wed, 20 Jul 2016 14:44:07 -0400
+Subject: [PATCH] Always add -std=c++11 to CXX_FLAGS
+
+refs #173
+---
+ CMake/hoomd/HOOMDCFlagsSetup.cmake | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/CMake/hoomd/HOOMDCFlagsSetup.cmake b/CMake/hoomd/HOOMDCFlagsSetup.cmake
+index 2655913..db503b3 100644
+--- a/CMake/hoomd/HOOMDCFlagsSetup.cmake
++++ b/CMake/hoomd/HOOMDCFlagsSetup.cmake
+@@ -32,10 +32,10 @@ if(NOT PASSED_FIRST_CONFIGURE)
+         set(CMAKE_C_FLAGS_RELEASE "-march=${GCC_ARCH} -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas" CACHE STRING "Flags used by the compiler during release builds." FORCE)
+         set(CMAKE_C_FLAGS_RELWITHDEBINFO "-march=${GCC_ARCH} -g -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
+ 
+-        set(CMAKE_CXX_FLAGS_DEBUG "-march=${GCC_ARCH} -g -Wall -Wno-unknown-pragmas -std=c++11" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_MINSIZEREL "-march=${GCC_ARCH} -Os -Wall -Wno-unknown-pragmas -DNDEBUG -std=c++11" CACHE STRING "Flags used by the compiler during minimum size release builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_RELEASE "-march=${GCC_ARCH} -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas -std=c++11" CACHE STRING "Flags used by the compiler during release builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-march=${GCC_ARCH} -g -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas -std=c++11" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
++        set(CMAKE_CXX_FLAGS_DEBUG "-march=${GCC_ARCH} -g -Wall -Wno-unknown-pragmas" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
++        set(CMAKE_CXX_FLAGS_MINSIZEREL "-march=${GCC_ARCH} -Os -Wall -Wno-unknown-pragmas -DNDEBUG" CACHE STRING "Flags used by the compiler during minimum size release builds." FORCE)
++        set(CMAKE_CXX_FLAGS_RELEASE "-march=${GCC_ARCH} -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas" CACHE STRING "Flags used by the compiler during release builds." FORCE)
++        set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-march=${GCC_ARCH} -g -O3 -funroll-loops -DNDEBUG -Wall -Wno-unknown-pragmas" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
+ 
+     elseif(CMAKE_CXX_COMPILER MATCHES "icpc")
+         # default flags for intel
+@@ -44,10 +44,10 @@ if(NOT PASSED_FIRST_CONFIGURE)
+         set(CMAKE_C_FLAGS_RELEASE "-xHOST -O3 -DNDEBUG" CACHE STRING "Flags used by the compiler during release builds." FORCE)
+         set(CMAKE_C_FLAGS_RELWITHDEBINFO "-xHOST -g -O3 -DNDEBUG" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
+ 
+-        set(CMAKE_CXX_FLAGS_DEBUG "-xHOST -O0 -g -std=c++11" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_MINSIZEREL "-xHOST -Os -DNDEBUG -std=c++11" CACHE STRING "Flags used by the compiler during minimum size release builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_RELEASE "-xHOST -O3 -DNDEBUG -std=c++11" CACHE STRING "Flags used by the compiler during release builds." FORCE)
+-        set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-xHOST -g -O3 -DNDEBUG -std=c++11" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
++        set(CMAKE_CXX_FLAGS_DEBUG "-xHOST -O0 -g" CACHE STRING "Flags used by the compiler during debug builds." FORCE)
++        set(CMAKE_CXX_FLAGS_MINSIZEREL "-xHOST -Os -DNDEBUG" CACHE STRING "Flags used by the compiler during minimum size release builds." FORCE)
++        set(CMAKE_CXX_FLAGS_RELEASE "-xHOST -O3 -DNDEBUG" CACHE STRING "Flags used by the compiler during release builds." FORCE)
++        set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-xHOST -g -O3 -DNDEBUG" CACHE STRING "Flags used by the compiler during release builds with debug info." FORCE)
+ 
+     else(CMAKE_COMPILER_IS_GNUCXX)
+         message(STATUS "No default CXXFLAGS for your compiler, set them manually")
+@@ -64,3 +64,5 @@ if(NOT PASSED_FIRST_CONFIGURE)
+ 
+ SET(PASSED_FIRST_CONFIGURE ON CACHE INTERNAL "First configure has run: CXX_FLAGS have had their defaults changed" FORCE)
+ endif(NOT PASSED_FIRST_CONFIGURE)
++
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+-- 
+2.7.3
+

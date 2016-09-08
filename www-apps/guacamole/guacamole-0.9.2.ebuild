@@ -8,8 +8,8 @@ inherit eutils
 DESCRIPTION="Guacamole is a html5 vnc client as servlet"
 HOMEPAGE="http://guac-dev.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-client-${PV}.tar.gz
-	mysql? ( http://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-mysql-0.9.2.tar.gz )
-	ldap? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-ldap-0.9.2.tar.gz )"
+	mysql? ( https://sourceforge.net/projects/${PN}/files/current/extensions/${PN}-auth-mysql-0.9.2.tar.gz )
+	ldap? ( https://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-ldap-0.9.2.tar.gz )"
 S="${WORKDIR}/${PN}-client-${PV}"
 
 LICENSE="AGPL-3"

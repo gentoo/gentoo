@@ -1,0 +1,17 @@
+diff --git a/gen_bootloader.sh b/gen_bootloader.sh
+index 4bbd303..fdca749 100755
+--- a/gen_bootloader.sh
++++ b/gen_bootloader.sh
+@@ -49,8 +49,10 @@ set_bootloader_grub2() {
+ 	fi
+ 
+ 	print_info 1 "You can customize Grub2 parameters in /etc/default/grub."
+-	print_info 1 "Running grub2-mkconfig to create ${GRUB_CONF}..."
+-	grub2-mkconfig -o "${GRUB_CONF}" 2> /dev/null || gen_die "grub2-mkconfig failed"
++	print_info 1 "Running grub-mkconfig to create ${GRUB_CONF}..."
++	grub-mkconfig -o "${GRUB_CONF}" 2> /dev/null ||
++		grub2-mkconfig -o "${GRUB_CONF}" 2> /dev/null ||
++		gen_die "grub-mkconfig failed"
+ 	[ "${BUILD_RAMDISK}" -ne 0 ] && sed -i 's/ro single/ro debug/' "${GRUB_CONF}"
+ }
+ 

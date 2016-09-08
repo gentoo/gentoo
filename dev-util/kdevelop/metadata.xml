@@ -8,7 +8,9 @@
 	<use>
 		<flag name="cmake">Enable support for CMake build system</flag>
 		<flag name="gdbui">Enable GUI for attaching GDB to a running process</flag>
+		<flag name="ninja">Enable support for Ninja build system</flag>
 		<flag name="okteta">Enable hex editor plugin</flag>
+		<flag name="qmake">Enable support for QMake build system</flag>
 		<flag name="qthelp">Enable support for QtHelp documentation browsing</flag>
 	</use>
 </pkgmetadata>

@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils eutils toolchain-funcs
 
 DESCRIPTION="RadiusClient NextGeneration - library for RADIUS clients accompanied with several client utilities"
-HOMEPAGE="http://sourceforge.net/projects/radiusclient-ng.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/radiusclient-ng.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 
 LICENSE="BSD"

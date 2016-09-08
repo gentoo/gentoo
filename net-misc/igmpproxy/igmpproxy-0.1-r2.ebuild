@@ -6,7 +6,7 @@ EAPI=6
 inherit linux-info systemd
 
 DESCRIPTION="Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)"
-HOMEPAGE="http://sourceforge.net/projects/igmpproxy"
+HOMEPAGE="https://sourceforge.net/projects/igmpproxy"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 Stanford"

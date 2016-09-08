@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>vostorga@gentoo.org</email>
-		<name>Victor Ostorga</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>iskren.s@gmail.com</email>
 		<name>Iskren Slavov</name>
 	</maintainer>

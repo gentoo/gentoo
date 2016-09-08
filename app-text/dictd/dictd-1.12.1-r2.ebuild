@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils readme.gentoo systemd user
 
 DESCRIPTION="Dictionary Client/Server for the DICT protocol"
-HOMEPAGE="http://www.dict.org/ http://sourceforge.net/projects/dict/"
+HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
 SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 
 SLOT="0"

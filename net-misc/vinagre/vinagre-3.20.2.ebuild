@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-themes/hicolor-icon-theme
 
-	rdp? ( net-misc/freerdp )
+	rdp? ( <net-misc/freerdp-2 )
 	ssh? ( >=x11-libs/vte-0.20:2.91 )
 	spice? (
 		app-emulation/spice-protocol

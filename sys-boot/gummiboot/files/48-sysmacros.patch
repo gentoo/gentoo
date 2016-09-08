@@ -1,0 +1,52 @@
+From d7904d41506163d07d27dbfab1e514b75d172cee Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 24 Aug 2016 12:17:19 -0400
+Subject: [PATCH] setup: conditionally include sysmacros.h for major()
+
+---
+ configure.ac      | 2 ++
+ src/setup/setup.c | 8 ++++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 27bbe1d..27552c2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -72,6 +72,8 @@ AS_IF([test x"$cross_compiling" = "xyes"], [], [
+         AC_SUBST([QEMU_BIOS])
+ ])
+ 
++AC_HEADER_MAJOR
++
+ # ------------------------------------------------------------------------------
+ dnl GNU EFI doesn't use relative paths: efi.h includes efibind.h which is in
+ dnl ${ARCH} relative to efi.h. I can't find a way to get AC_CHECK_HEADERS to
+diff --git a/src/setup/setup.c b/src/setup/setup.c
+index 6a4275a..6bf8d86 100644
+--- a/src/setup/setup.c
++++ b/src/setup/setup.c
+@@ -27,6 +27,7 @@
+ #include <assert.h>
+ #include <sys/statfs.h>
+ #include <sys/stat.h>
++#include <sys/types.h>
+ #include <errno.h>
+ #include <string.h>
+ #include <unistd.h>
+@@ -38,6 +39,13 @@
+ #include <stdbool.h>
+ #include <blkid.h>
+ 
++#ifdef MAJOR_IN_MKDEV
++#include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++#include <sys/sysmacros.h>
++#endif
++
+ #include "efivars.h"
+ 
+ #define ELEMENTSOF(x) (sizeof(x)/sizeof((x)[0]))
+-- 
+2.9.3
+

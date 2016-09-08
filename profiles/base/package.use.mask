@@ -5,6 +5,66 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
+# lldb fails to build in the current RC, and needs a lot of minor fixes.
+# It's no longer available in -9999 line, and it won't be in 3.9.0
+# either unless somebody steps up to fix it.
+>=sys-devel/llvm-3.9.0_rc lldb
+
+# Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
+# It's only supported on amd64, ia64, powerpc and x86
+dev-db/percona-server numa
+
+# Brian Evans <grknight@gentoo.org> (23 Aug 2016)
+# It's only supported on amd64
+dev-db/percona-server tokudb tokudb-backup-plugin
+
+# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
+# Depends on masked, end-of-life php versions
+=dev-libs/ossp-uuid-1.6.2-r4 php
+=dev-libs/xapian-bindings-1.2.22 php
+=www-servers/uwsgi-2.0.9 php
+
+# Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
+# Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
+media-plugins/grilo-plugins chromaprint
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# media-libs/libdlna is being removed, bug #540214
+media-video/ushare dlna
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# x11-libs/libsvg-cairo is being removed, bug #537918
+dev-ml/cairo-ocaml svg
+
+# Pacho Ramos <pacho@gentoo.org> (21 Aug 2016)
+# net-libs/libzrtpcpp will be removed, bug #528514
+net-libs/ortp zrtp
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# xanim is going to be removed, bug #181959
+media-video/mplayer xanim
+
+# Pacho Ramos <pacho@gentoo.org> (20 Aug 2016)
+# mpb is going to be removed, bug #449964
+sci-physics/meep mpb
+
+# Lars Wendler <polynomial-c@gentoo.org> (19 Aug 2016)
+# gnutls is broken for years
+>=net-libs/gsoap-2.8.0 gnutls
+
+# Brian Evans <grknight@gentoo.org> (18 Aug 2016)
+# Mask jdbc as most arches don't support java
+dev-db/mariadb jdbc
+
+# Brian Dolbec <dolsen@gentoo.org> (9 Aug 2016)
+# Mask doc use flag due to needed sphinx pkg update
+>=dev-util/buildbot-0.9.0_rc1 doc
+
+# James Le Cuirot <chewi@gentoo.org> (26 Jul 2016)
+# Only available on amd64.
+dev-java/icedtea shenandoah
+
 # Johannes Huber <johu@gentoo.org> (10 Jul 2016)
 # Unreleased dependencies.
 >=media-gfx/digikam-5.0.0 addressbook
@@ -66,10 +126,6 @@ kde-apps/ktp-text-ui speech
 # Michael Palimaka <kensington@gentoo.org> (17 Apr 2016)
 # Fails to build with recent doxygen. Bug #569776.
 dev-cpp/eigen:2 doc
-
-# Michael Palimaka <kensington@gentoo.org> (14 Apr 2016)
-# Requires unreleased version of net-libs/telepathy-qt
-kde-misc/kdeconnect telepathy
 
 # James Le Cuirot <chewi@gentoo.org> (10 Apr 2016)
 # Slower and less reliable than HotSpot and we don't support Java on
@@ -444,7 +500,6 @@ sys-fabric/ofed ofed_drivers_ehca
 # Bugs: 483104, 483102
 =dev-ruby/rubygems-1.8* server
 <media-libs/libcaca-0.99_beta19 ruby
-=dev-vcs/subversion-1.7* ruby
 media-sound/podcatcher bittorrent
 
 # Mike Frysinger <vapier@gentoo.org> (03 Feb 2014)
@@ -542,13 +597,6 @@ media-sound/clementine ios
 x11-libs/cairo gles2
 dev-libs/weston rpi
 <dev-libs/weston-1.9.0 gles2
-
-# Alexis Ballier <aballier@gentoo.org> (03 Jul 2013)
-# The idea behind using libunwind there is to avoid needing to link to libgcc_s
-# and have a C++ stack without gcc with libcxx.
-# However, in any case, clang links its binaries to libgcc_s, hence at the
-# moment there is not much point in enabling this.
-sys-libs/libcxxrt libunwind
 
 # Sergey Popov <pinkbyte@gentoo.org> (08 Jun 2013)
 # mask because requires unstable depends not ready for the stabilization
@@ -859,11 +907,6 @@ media-gfx/k3d cuda
 # Broken on so many setups it is just insane.
 # Unmask if you really know what you are doing.
 <sys-apps/groff-1.20.1-r2 linguas_ja
-
-# Samuli Suominen <ssuominen@gentoo.org> (09 Oct 2009)
-# log4cxx has known memory leaking issues wrt bug #287697,
-# unmask when log4cxx is fixed and stable.
-app-misc/strigi log
 
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
 # X use flag only for amd64/x86, bug 285951.

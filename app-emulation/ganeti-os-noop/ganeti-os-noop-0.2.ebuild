@@ -20,7 +20,7 @@ src_install() {
 	dodoc CONTRIBUTORS
 	cd ganeti/os/noop
 	insinto /usr/share/ganeti/os/noop/
-	doins ganeti_api_version	
+	doins ganeti_api_version
 	exeinto /usr/share/ganeti/os/noop/
 	doexe create export import rename
 }

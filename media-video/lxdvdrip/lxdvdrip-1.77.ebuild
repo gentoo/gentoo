@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Command line tool to automate the process of ripping and burning DVDs"
 SRC_URI="mirror://sourceforge/lxdvdrip/${P}.tgz"
-HOMEPAGE="http://sourceforge.net/projects/lxdvdrip/"
+HOMEPAGE="https://sourceforge.net/projects/lxdvdrip/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

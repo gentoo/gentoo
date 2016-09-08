@@ -8,7 +8,7 @@
 # http://svn.ghostscript.com/ghostscript/trunk/urw-fonts/
 
 # Also, some time ago, sources where published on sf.net:
-# http://sourceforge.net/projects/gs-fonts/files/
+# https://sourceforge.net/projects/gs-fonts/files/
 # At this point this package was published on a nuber of other sites
 # (gimp.org/cups.org) and media-fonts/gnu-gs-fonts-std was added to the tree.
 # But nobody use that old releases any mover and everybody syncs with

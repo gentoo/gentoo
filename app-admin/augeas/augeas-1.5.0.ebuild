@@ -12,7 +12,7 @@ SRC_URI="http://download.augeas.net/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs test"
 
 RDEPEND="

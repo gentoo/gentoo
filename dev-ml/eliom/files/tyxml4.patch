@@ -1,0 +1,1642 @@
+Index: eliom-5.0.0/src/lib/eliom_content.client.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content.client.mli
++++ eliom-5.0.0/src/lib/eliom_content.client.mli
+@@ -292,7 +292,7 @@ module Html5 : sig
+         See {% <<a_api project="tyxml" | module Html5_sigs.T >> %} *)
+ 
+     (** Cf. {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+-    module Raw : Html5_sigs.Make(Xml)(Svg.F.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.F.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -313,7 +313,7 @@ module Html5 : sig
+         See {% <<a_api project="tyxml" | module Html5_sigs.T >> %} *)
+ 
+     (** Cf. {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+-    module Raw : Html5_sigs.Make(Xml)(Svg.D.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.D.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -352,7 +352,7 @@ module Html5 : sig
+     val filter_attrib : 'a attrib -> bool React.signal -> 'a attrib
+ 
+     (** Cf. {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+-    module Raw : Html5_sigs.Make(Eliom_content_core.Xml_wed)(Svg.R.Raw).T
++    module Raw : Html_sigs.Make(Eliom_content_core.Xml_wed)(Svg.R.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+Index: eliom-5.0.0/src/lib/eliom_content.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content.server.mli
++++ eliom-5.0.0/src/lib/eliom_content.server.mli
+@@ -309,7 +309,7 @@ module Html5 : sig
+         {{:http://ocsigen.org/howto/forms/}"how to make forms"} *)
+ 
+     (** See {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+-    module Raw : Html5_sigs.Make(Xml)(Svg.F.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.F.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -337,7 +337,7 @@ module Html5 : sig
+         {{:http://ocsigen.org/howto/forms/}"how to make forms"} *)
+ 
+     (** See {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+-    module Raw : Html5_sigs.Make(Xml)(Svg.D.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.D.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -406,7 +406,7 @@ module Html5 : sig
+       {% <<a_api project="tyxml" | module Html5_sigs.T >> %}. *)
+   module R : sig
+ 
+-    include Html5_sigs.Make(Xml_shared)(Svg.R.Raw).T
++    include Html_sigs.Make(Xml_shared)(Svg.R.Raw).T
+       with type 'a elt = 'a elt
+        and type 'a attrib = 'a attrib
+ 
+@@ -414,7 +414,7 @@ module Html5 : sig
+         [\[> Html5_types.span\] elt]
+         out of the string signal [s]. *)
+     val pcdata :
+-      string Eliom_shared.React.S.t -> [> Html5_types.span] elt
++      string Eliom_shared.React.S.t -> [> Html_types.span] elt
+ 
+     (** [node s] produces an ['a elt] out of the shared reactive
+         signal [s]. *)
+Index: eliom-5.0.0/src/lib/eliom_content_core.client.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.client.ml
++++ eliom-5.0.0/src/lib/eliom_content_core.client.ml
+@@ -175,7 +175,7 @@ end
+ 
+ module Xml_wed =
+ struct
+-  module W = Tyxml_js.Xml_wrap
++  module W = Tyxml_js.Wrap
+   type 'a wrap = 'a W.t
+   type 'a list_wrap = 'a W.tlist
+   type uri = Xml.uri
+@@ -188,7 +188,7 @@ struct
+   type attrib = Xml.attrib
+ 
+   let float_attrib name s : attrib =
+-    name, Xml.RAReact (Tyxml_js.Xml_wrap.fmap (fun f -> Some (Xml.AFloat f)) s)
++    name, Xml.RAReact (Tyxml_js.Wrap.fmap (fun f -> Some (Xml.AFloat f)) s)
+   let int_attrib name s =
+     name, Xml.RAReact (React.S.map (fun f -> Some (Xml.AInt f)) s)
+   let string_attrib name s =
+@@ -320,7 +320,7 @@ module Html5 = struct
+       let lazy_node ?(a = []) name children =
+         make (Node (name, a, Eliom_lazy.force children))
+     end
+-    module Raw = Html5_f.Make(Xml')(Svg.D.Raw)
++    module Raw = Html_f.Make(Xml')(Svg.D.Raw)
+ 
+     include Raw
+ 
+@@ -340,7 +340,7 @@ module Html5 = struct
+ 
+     let node s = Xml.make_react s
+ 
+-    module Raw = Html5_f.Make(Xml_wed)(Svg.R)
++    module Raw = Html_f.Make(Xml_wed)(Svg.R)
+     let filter_attrib (name,a) on =
+       let v = match a with
+         | Xml.RA a -> Xml.RAReact (React.S.map (function
+@@ -365,7 +365,7 @@ module Html5 = struct
+   module F = struct
+ 
+     module Xml' = Xml
+-    module Raw = Html5_f.Make(Xml')(Svg.F.Raw)
++    module Raw = Html_f.Make(Xml')(Svg.F.Raw)
+     include Raw
+ 
+     type ('a, 'b, 'c) lazy_star =
+Index: eliom-5.0.0/src/lib/eliom_content_core.client.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.client.mli
++++ eliom-5.0.0/src/lib/eliom_content_core.client.mli
+@@ -22,7 +22,10 @@
+ 
+ module Xml : sig
+ 
+-  module W : Xml_wrap.T with type 'a t = 'a and type 'a tlist = 'a list
++  module W : Xml_wrap.T
++  	with type 'a t = 'a 
++	 and type 'a tlist = 'a list
++	 and type (-'a, 'b) ft = 'a -> 'b
+ 
+   type uri = string
+   val uri_of_string : uri -> string
+@@ -153,7 +156,7 @@ end
+ 
+ module Xml_wed : sig
+ 
+-  include Xml_sigs.T with module W = Tyxml_js.Xml_wrap
++  include Xml_sigs.T with module W = Tyxml_js.Wrap
+                       and type elt = Xml.elt
+                       and type aname = Xml.aname
+                       and type attrib = Xml.attrib
+@@ -281,7 +284,7 @@ module Html5 : sig
+       See {% <<a_api project="tyxml" | module type Html5_sigs.T >> %}. *)
+   module F : sig
+ 
+-    module Raw : Html5_sigs.Make(Xml)(Svg.F.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.F.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -293,7 +296,7 @@ module Html5 : sig
+       ?a: (('a attrib) list) -> ('b elt) list Eliom_lazy.request -> 'c elt
+ 
+     val lazy_form:
+-      ([< Html5_types.form_attrib ], [< Html5_types.form_content_fun ], [> Html5_types.form ]) lazy_star
++      ([< Html_types.form_attrib ], [< Html_types.form_content_fun ], [> Html_types.form ]) lazy_star
+ 
+   end
+ 
+@@ -302,7 +305,7 @@ module Html5 : sig
+       {% <<a_api project="tyxml" | module type Html5_sigs.T >> %}. *)
+   module D: sig
+ 
+-    module Raw : Html5_sigs.Make(Xml)(Svg.D.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.D.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -313,7 +316,7 @@ module Html5 : sig
+       ?a: (('a attrib) list) -> ('b elt) list Eliom_lazy.request -> 'c elt
+ 
+     val lazy_form:
+-      ([< Html5_types.form_attrib ], [< Html5_types.form_content_fun ], [> Html5_types.form ]) lazy_star
++      ([< Html_types.form_attrib ], [< Html_types.form_content_fun ], [> Html_types.form ]) lazy_star
+ 
+   end
+ 
+@@ -332,7 +335,7 @@ module Html5 : sig
+ 
+     val filter_attrib : 'a attrib -> bool React.signal -> 'a attrib
+ 
+-    module Raw : Html5_sigs.Make(Xml_wed)(Svg.R.Raw).T
++    module Raw : Html_sigs.Make(Xml_wed)(Svg.R.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+Index: eliom-5.0.0/src/lib/eliom_content_core.server.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.server.ml
++++ eliom-5.0.0/src/lib/eliom_content_core.server.ml
+@@ -289,8 +289,7 @@ module Svg = struct
+   module Make
+       (Xml : Xml_sigs.T with type elt = Xml.elt
+                          and type attrib = Xml.attrib)
+-      (C : Svg_sigs.Wrapped_functions
+-       with type ('a, 'b) ft = ('a, 'b) Xml.W.ft) =
++      (C : Svg_sigs.Wrapped_functions with module Xml = Xml) =
+     Svg_f.Make_with_wrapped_functions(Xml)(C)
+ 
+   type +'a elt = 'a F.elt
+@@ -341,7 +340,7 @@ module Html5 = struct
+ 
+     end
+ 
+-    module Raw = Html5_f.Make(Xml')(Svg.D.Raw)
++    module Raw = Html_f.Make(Xml')(Svg.D.Raw)
+     let client_attrib ?init (x : 'a Raw.attrib Eliom_lib.client_value) =
+       Xml.client_attrib ?init x
+ 
+@@ -359,7 +358,7 @@ module Html5 = struct
+   module F = struct
+ 
+     module Xml' = Xml
+-    module Raw = Html5_f.Make(Xml')(Svg.F.Raw)
++    module Raw = Html_f.Make(Xml')(Svg.F.Raw)
+     include Raw
+ 
+     type ('a, 'b, 'c) lazy_star =
+@@ -376,10 +375,9 @@ module Html5 = struct
+       (Xml : Xml_sigs.T
+        with type elt = Xml.elt
+         and type attrib = Xml.attrib)
+-      (C : Html5_sigs.Wrapped_functions
+-       with type ('a, 'b) ft = ('a, 'b) Xml.W.ft)
++      (C : Html_sigs.Wrapped_functions with module Xml = Xml)
+       (Svg : Svg_sigs.T with module Xml := Xml) =
+-    Html5_f.Make_with_wrapped_functions(Xml)(C)(Svg)
++    Html_f.Make_with_wrapped_functions(Xml)(C)(Svg)
+ 
+   type +'a elt = 'a F.elt
+   type 'a wrap = 'a
+Index: eliom-5.0.0/src/lib/eliom_content_core.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_core.server.mli
++++ eliom-5.0.0/src/lib/eliom_content_core.server.mli
+@@ -116,8 +116,7 @@ module Svg : sig
+       (Xml : Xml_sigs.T
+        with type elt = Xml.elt
+         and type attrib = Xml.attrib)
+-      (C : Svg_sigs.Wrapped_functions
+-       with type ('a, 'b) ft = ('a, 'b) Xml.W.ft) :
++      (C : Svg_sigs.Wrapped_functions with module Xml = Xml) :
+     Svg_sigs.Make(Xml).T
+     with type +'a elt = 'a elt
+      and type +'a attrib = 'a attrib
+@@ -156,7 +155,7 @@ module Html5 : sig
+ 
+   module F : sig
+ 
+-    module Raw : Html5_sigs.Make(Xml)(Svg.F.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.F.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -167,12 +166,12 @@ module Html5 : sig
+       ?a: (('a attrib) list) -> ('b elt) list Eliom_lazy.request -> 'c elt
+ 
+     val lazy_form:
+-      ([< Html5_types.form_attrib ], [< Html5_types.form_content_fun ], [> Html5_types.form ]) lazy_star
++      ([< Html_types.form_attrib ], [< Html_types.form_content_fun ], [> Html_types.form ]) lazy_star
+   end
+ 
+   module D : sig
+ 
+-    module Raw : Html5_sigs.Make(Xml)(Svg.D.Raw).T
++    module Raw : Html_sigs.Make(Xml)(Svg.D.Raw).T
+       with type +'a elt = 'a elt
+        and type +'a attrib = 'a attrib
+ 
+@@ -185,7 +184,7 @@ module Html5 : sig
+       ?a: (('a attrib) list) -> ('b elt) list Eliom_lazy.request -> 'c elt
+ 
+     val lazy_form:
+-      ([< Html5_types.form_attrib ], [< Html5_types.form_content_fun ], [> Html5_types.form ]) lazy_star
++      ([< Html_types.form_attrib ], [< Html_types.form_content_fun ], [> Html_types.form ]) lazy_star
+ 
+   end
+ 
+@@ -193,10 +192,9 @@ module Html5 : sig
+       (Xml : Xml_sigs.T
+        with type elt = Xml.elt
+         and type attrib = Xml.attrib)
+-      (C : Html5_sigs.Wrapped_functions
+-       with type ('a, 'b) ft = ('a, 'b) Xml.W.ft)
++      (C : Html_sigs.Wrapped_functions with module Xml = Xml)
+       (Svg : Svg_sigs.T with module Xml := Xml) :
+-    Html5_sigs.Make(Xml)(Svg).T
++    Html_sigs.Make(Xml)(Svg).T
+     with type +'a elt = 'a elt
+      and type +'a attrib = 'a attrib
+ 
+Index: eliom-5.0.0/src/lib/eliom_content_sigs.shared.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_content_sigs.shared.mli
++++ eliom-5.0.0/src/lib/eliom_content_sigs.shared.mli
+@@ -31,9 +31,9 @@ module type LINKS_AND_FORMS = sig
+     'c elt
+ 
+   val lazy_form:
+-    ([< Html5_types.form_attrib ],
+-     [< Html5_types.form_content_fun ],
+-     [> Html5_types.form ]) lazy_star
++    ([< Html_types.form_attrib ],
++     [< Html_types.form_content_fun ],
++     [> Html_types.form ]) lazy_star
+ 
+   include Eliom_form_sigs.LINKS
+     with type +'a elt := 'a elt
+Index: eliom-5.0.0/src/lib/eliom_form.eliom
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_form.eliom
++++ eliom-5.0.0/src/lib/eliom_form.eliom
+@@ -21,7 +21,7 @@
+ {shared{
+ module type Html5 = sig
+ 
+-  include Html5_sigs.T
++  include Html_sigs.T
+     with type 'a Xml.W.t = 'a
+      and type 'a Xml.W.tlist = 'a list
+      and type Xml.mouse_event_handler =
+@@ -33,9 +33,9 @@ module type Html5 = sig
+     'c elt
+ 
+   val lazy_form:
+-    ([< Html5_types.form_attrib ],
+-     [< Html5_types.form_content_fun ],
+-     [> Html5_types.form ]) lazy_star
++    ([< Html_types.form_attrib ],
++     [< Html_types.form_content_fun ],
++     [> Html_types.form ]) lazy_star
+ 
+   val uri_of_fun : (unit -> string) -> Xml.uri
+ 
+@@ -44,7 +44,7 @@ module type Html5 = sig
+     ([ `A | `Form_get | `Form_post] *
+      (bool * string list) option *
+      string option) option Eliom_lazy.request ->
+-    Html5_types.form_attrib attrib
++    Html_types.form_attrib attrib
+ 
+ end
+ 
+@@ -174,7 +174,7 @@ module Make (Html5 : Html5) = struct
+       | None -> a
+       | Some src -> a_src src :: a
+     in
+-    let a = if checked then a_checked `Checked :: a else a in
++    let a = if checked then a_checked () :: a else a in
+     let a = a_input_type typ :: a in
+     input ~a ()
+ 
+@@ -194,7 +194,7 @@ module Make (Html5 : Html5) = struct
+     textarea ~a (pcdata value)
+ 
+   let make_select ?(a = []) ~multiple ~name elt elts =
+-    let a = if multiple then a_multiple `Multiple :: a else a in
++    let a = if multiple then a_multiple () :: a else a in
+     let a = a_name name :: a in
+     select ~a (elt :: elts)
+ 
+@@ -203,7 +203,7 @@ module Make (Html5 : Html5) = struct
+       | None -> a
+       | Some v -> a_text_value v :: a
+     in
+-    let a = if selected then a_selected `Selected :: a else a in
++    let a = if selected then a_selected () :: a else a in
+     option ~a c
+ 
+   let make_optgroup ?(a = []) ~label elt elts =
+@@ -364,7 +364,7 @@ module Make (Html5 : Html5) = struct
+ 
+   let string_radio_required ?a ?checked ~name ~value () =
+     let a =
+-      let required = Html5.a_required `Required in
++      let required = Html5.a_required () in
+       match a with
+       | None -> [required]
+       | Some a -> required :: a
+@@ -385,14 +385,14 @@ module Make (Html5 : Html5) = struct
+     make_textarea ?a ~name:(Eliom_parameter.string_of_param_name name)
+ 
+   type 'a soption =
+-    Html5_types.option_attrib attrib list
++    Html_types.option_attrib attrib list
+     * 'a (* Content (or value if the following is present) *)
+-    * Html5_types.pcdata elt option (* if content different from value *)
++    * Html_types.pcdata elt option (* if content different from value *)
+     * bool (* selected *)
+ 
+   type 'a select_opt =
+     | Optgroup of
+-        [ Html5_types.common | `Disabled ] attrib list
++        [ Html_types.common | `Disabled ] attrib list
+         * string (* label *)
+         * 'a soption
+         * 'a soption list
+@@ -404,7 +404,7 @@ module Make (Html5 : Html5) = struct
+     let a = match required with
+       | None -> a
+       | Some _ ->
+-        let required = Html5.a_required `Required in
++        let required = Html5.a_required () in
+         match a with
+         | Some a -> Some (required :: a)
+         | None -> Some [required]
+Index: eliom-5.0.0/src/lib/eliom_form.eliomi
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_form.eliomi
++++ eliom-5.0.0/src/lib/eliom_form.eliomi
+@@ -22,7 +22,7 @@
+ 
+ module type Html5 = sig
+ 
+-  include Html5_sigs.T
++  include Html_sigs.T
+     with type 'a Xml.W.t = 'a
+      and type 'a Xml.W.tlist = 'a list
+      and type Xml.mouse_event_handler =
+@@ -34,9 +34,9 @@ module type Html5 = sig
+     'c elt
+ 
+   val lazy_form :
+-    ([< Html5_types.form_attrib ],
+-     [< Html5_types.form_content_fun ],
+-     [> Html5_types.form ]) lazy_star
++    ([< Html_types.form_attrib ],
++     [< Html_types.form_content_fun ],
++     [> Html_types.form ]) lazy_star
+ 
+   val uri_of_fun : (unit -> string) -> Xml.uri
+ 
+@@ -45,7 +45,7 @@ module type Html5 = sig
+     ([ `A | `Form_get | `Form_post] *
+      (bool * string list) option *
+      string option) option Eliom_lazy.request ->
+-    Html5_types.form_attrib attrib
++    Html_types.form_attrib attrib
+ 
+ end
+ 
+Index: eliom-5.0.0/src/lib/eliom_form_sigs.shared.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_form_sigs.shared.mli
++++ eliom-5.0.0/src/lib/eliom_form_sigs.shared.mli
+@@ -136,8 +136,8 @@ module type LINKS = sig
+       The optional parameter [~a] allows one to add extra HTML
+       attributes to the generated node.  *)
+   val css_link :
+-    ?a:Html5_types.link_attrib attrib list ->
+-    uri:uri -> unit -> [> Html5_types.link] elt
++    ?a:Html_types.link_attrib attrib list ->
++    uri:uri -> unit -> [> Html_types.link] elt
+ 
+   (** The function [js_script ~uri ()] creates a [<script>] node that
+       reference a javascript file.
+@@ -151,8 +151,8 @@ module type LINKS = sig
+       The optional parameter [~a] allows one to add extra HTML
+       attributes to the generated node.  *)
+   val js_script :
+-    ?a:Html5_types.script_attrib attrib list -> uri:uri -> unit ->
+-    [> Html5_types.script] elt
++    ?a:Html_types.script_attrib attrib list -> uri:uri -> unit ->
++    [> Html_types.script] elt
+ 
+   (** The function [a service a_content get_params] creates a [<a>]
+       node that link to [service] applied to GET parameters
+@@ -186,7 +186,7 @@ module type LINKS = sig
+     ?absolute:bool ->
+     ?absolute_path:bool ->
+     ?https:bool ->
+-    ?a:Html5_types.a_attrib attrib list ->
++    ?a:Html_types.a_attrib attrib list ->
+     service:('get, unit, [< Eliom_service.get_service_kind ], _, _,
+              [< Eliom_service.suff ], 'd, unit,
+              [< Eliom_service.registrable ],
+@@ -200,7 +200,7 @@ module type LINKS = sig
+     ?xhr:bool ->
+     'a elt list ->
+     'get ->
+-    [> 'a Html5_types.a] elt
++    [> 'a Html_types.a] elt
+ 
+ end
+ 
+@@ -278,7 +278,7 @@ module type S = sig
+     ?absolute:bool ->
+     ?absolute_path:bool ->
+     ?https:bool ->
+-    ?a:Html5_types.form_attrib attrib list ->
++    ?a:Html_types.form_attrib attrib list ->
+     service:('get, unit, [< get_service_kind ], _, _,
+              [<suff ], 'gn, 'pn,
+              [< registrable ], [< non_ocaml_service]) service ->
+@@ -288,8 +288,8 @@ module type S = sig
+     ?keep_nl_params:[ `All | `Persistent | `None ] ->
+     ?nl_params: Eliom_parameter.nl_params_set ->
+     ?xhr:bool ->
+-    ('gn -> Html5_types.form_content elt list) ->
+-    [> Html5_types.form ] elt
++    ('gn -> Html_types.form_content elt list) ->
++    [> Html_types.form ] elt
+ 
+   (** Same as {!get_form} but taking a cooperative function for
+       [<form>] content generation. *)
+@@ -297,7 +297,7 @@ module type S = sig
+     ?absolute:bool ->
+     ?absolute_path:bool ->
+     ?https:bool ->
+-    ?a:Html5_types.form_attrib attrib list ->
++    ?a:Html_types.form_attrib attrib list ->
+     service:('get, unit, [< get_service_kind ], _, _,
+              [<suff ], 'gn, 'pn,
+              [< registrable ], [< non_ocaml_service]) service ->
+@@ -307,8 +307,8 @@ module type S = sig
+     ?keep_nl_params:[ `All | `Persistent | `None ] ->
+     ?nl_params: Eliom_parameter.nl_params_set ->
+     ?xhr:bool ->
+-    ('gn -> Html5_types.form_content elt list Lwt.t) ->
+-    [> Html5_types.form ] elt Lwt.t
++    ('gn -> Html_types.form_content elt list Lwt.t) ->
++    [> Html_types.form ] elt Lwt.t
+ 
+   (** The function [post_form service formgen get_params] creates a
+       POST [<form>] to [service] preapplied to the GET parameters
+@@ -328,7 +328,7 @@ module type S = sig
+     ?absolute:bool ->
+     ?absolute_path:bool ->
+     ?https:bool ->
+-    ?a:Html5_types.form_attrib attrib list ->
++    ?a:Html_types.form_attrib attrib list ->
+     service:('get, 'post, [< post_service_kind ], _, _,
+              [< suff ], 'gn, 'pn,
+              [< registrable ], [< non_ocaml_service]) service ->
+@@ -339,9 +339,9 @@ module type S = sig
+     ?keep_get_na_params:bool ->
+     ?nl_params: Eliom_parameter.nl_params_set ->
+     ?xhr:bool ->
+-    ('pn -> Html5_types.form_content elt list) ->
++    ('pn -> Html_types.form_content elt list) ->
+     'get ->
+-    [> Html5_types.form ] elt
++    [> Html_types.form ] elt
+ 
+   (** Same as {!post_form} but taking a cooperative function for
+       [<form>] content generation. *)
+@@ -349,7 +349,7 @@ module type S = sig
+     ?absolute:bool ->
+     ?absolute_path:bool ->
+     ?https:bool ->
+-    ?a:Html5_types.form_attrib attrib list ->
++    ?a:Html_types.form_attrib attrib list ->
+     service:('get, 'post, [< post_service_kind ], _, _,
+              [< suff ], 'gn, 'pn,
+              [< registrable ], [< non_ocaml_service]) service ->
+@@ -360,93 +360,93 @@ module type S = sig
+     ?keep_get_na_params:bool ->
+     ?nl_params: Eliom_parameter.nl_params_set ->
+     ?xhr:bool ->
+-    ('pn -> Html5_types.form_content elt list Lwt.t) ->
++    ('pn -> Html_types.form_content elt list Lwt.t) ->
+     'get ->
+-    [> Html5_types.form ] elt Lwt.t
++    [> Html_types.form ] elt Lwt.t
+ 
+   (** Creates an [<input>] tag. *)
+   val input :
+-    ?a:Html5_types.input_attrib attrib list ->
+-    input_type:[< Html5_types.input_type] ->
++    ?a:Html_types.input_attrib attrib list ->
++    input_type:[< Html_types.input_type] ->
+     ?name:[< 'a setoneradio] param_name ->
+     ?value:'a ->
+     'a param ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates an [<input>] tag for sending a file *)
+   val file_input :
+-    ?a:Html5_types.input_attrib attrib list ->
++    ?a:Html_types.input_attrib attrib list ->
+     name:[< file_info setoneradio ] param_name ->
+     unit ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates an [<input type="image" name="...">] tag. The server
+       receives the coordinates that the user clicked on. *)
+   val image_input :
+-    ?a:Html5_types.input_attrib attrib list ->
++    ?a:Html_types.input_attrib attrib list ->
+     name:[< coordinates oneradio ] param_name ->
+     ?src:uri ->
+     unit ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates a checkbox [<input>] tag. You can produce several
+       checkboxes with the same name (and different values). The
+       service must declare a parameter of type [set]. *)
+   val checkbox :
+-    ?a:Html5_types.input_attrib attrib list -> ?checked:bool ->
++    ?a:Html_types.input_attrib attrib list -> ?checked:bool ->
+     name:[ `Set of 'a ] Eliom_parameter.param_name -> value:'a ->
+     'a param ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates a checkbox [<input>] tag of type bool. Only one checkbox
+       with the same [name] is allowed. *)
+   val bool_checkbox_one :
+-    ?a:Html5_types.input_attrib attrib list -> ?checked:bool ->
++    ?a:Html_types.input_attrib attrib list -> ?checked:bool ->
+     name:[ `One of bool ] Eliom_parameter.param_name ->
+     unit ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates a radio [<input>] tag. *)
+   val radio :
+-    ?a:Html5_types.input_attrib attrib list -> ?checked:bool ->
++    ?a:Html_types.input_attrib attrib list -> ?checked:bool ->
+     name:[ `Radio of 'a ] param_name ->
+     value:'a ->
+     'a param ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   val string_radio_required :
+-    ?a:Html5_types.input_attrib attrib list -> ?checked:bool ->
++    ?a:Html_types.input_attrib attrib list -> ?checked:bool ->
+     name:[ `One of string ] param_name ->
+     value:string -> unit ->
+-    [> Html5_types.input] elt
++    [> Html_types.input] elt
+ 
+   (** Creates a [<button>] tag. *)
+   val button :
+-    ?a:Html5_types.button_attrib attrib list ->
++    ?a:Html_types.button_attrib attrib list ->
+     button_type:[< button_type] ->
+     name:[< 'a setone ] param_name ->
+     value:'a ->
+     'a param ->
+-    Html5_types.button_content elt list ->
+-    [> Html5_types.button] elt
++    Html_types.button_content elt list ->
++    [> Html_types.button] elt
+ 
+   (** Creates a [<button>] tag with no value. No value is sent. *)
+   val button_no_value :
+-    ?a:Html5_types.button_attrib attrib list ->
++    ?a:Html_types.button_attrib attrib list ->
+     button_type:[< button_type] ->
+-    Html5_types.button_content elt list ->
+-    [> Html5_types.button] elt
++    Html_types.button_content elt list ->
++    [> Html_types.button] elt
+ 
+   (** Creates a [<textarea>] tag *)
+   val textarea :
+-    ?a:Html5_types.textarea_attrib attrib list ->
++    ?a:Html_types.textarea_attrib attrib list ->
+     name:[< string setoneradio ] param_name -> ?value:string ->
+-    unit -> [> Html5_types.textarea] elt
++    unit -> [> Html_types.textarea] elt
+ 
+   type 'a soption =
+-    Html5_types.option_attrib attrib list
++    Html_types.option_attrib attrib list
+     * 'a (* Content (or value if the following is present) *)
+-    * Html5_types.pcdata elt option (* if content different from value *)
++    * Html_types.pcdata elt option (* if content different from value *)
+     * bool (* selected *)
+ 
+   (** The type for [<select>] options and groups of options.
+@@ -458,7 +458,7 @@ module type S = sig
+       - The string in [select_opt] is the label *)
+   type 'a select_opt =
+     | Optgroup of
+-        [ Html5_types.common | `Disabled ] attrib list
++        [ Html_types.common | `Disabled ] attrib list
+         * string (* label *)
+         * 'a soption
+         * 'a soption list
+@@ -466,22 +466,22 @@ module type S = sig
+ 
+   (** Creates a [<select>] tag. *)
+   val select :
+-    ?a:Html5_types.select_attrib attrib list ->
+-    ?required:Html5_types.pcdata elt ->
++    ?a:Html_types.select_attrib attrib list ->
++    ?required:Html_types.pcdata elt ->
+     name:[ `One of 'a ] param_name ->
+     'a param ->
+     'a select_opt ->
+     'a select_opt list ->
+-    [> Html5_types.select] elt
++    [> Html_types.select] elt
+ 
+   (** Creates a multiple-selection [<select>] tag. *)
+   val multiple_select :
+-    ?a:Html5_types.select_attrib attrib list ->
+-    ?required:Html5_types.pcdata elt ->
++    ?a:Html_types.select_attrib attrib list ->
++    ?required:Html_types.pcdata elt ->
+     name:[ `Set of 'a ] param_name ->
+     'a param ->
+     'a select_opt ->
+     'a select_opt list ->
+-    [> Html5_types.select] elt
++    [> Html_types.select] elt
+ 
+ end
+Index: eliom-5.0.0/src/lib/eliom_registration.server.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_registration.server.ml
++++ eliom-5.0.0/src/lib/eliom_registration.server.ml
+@@ -75,12 +75,12 @@ let cast_http_result = Result_types.cast
+ 
+ module Html5_make_reg_base
+   (Html5_content : Ocsigen_http_frame.HTTP_CONTENT
+-                   with type t = Html5_types.html Eliom_content.Html5.elt
++                   with type t = Html_types.html Eliom_content.Html5.elt
+                    and type options = Http_headers.accept Lazy.t)
+   = struct
+ 
+   open Eliom_content.Html5.F
+-  open Html5_types
++  open Html_types
+ 
+   type page = html elt
+ 
+@@ -203,7 +203,7 @@ module Make_typed_xml_registration
+   end
+ 
+ module Flow5 = Make_typed_xml_registration(Xml)(Eliom_content.Html5.D)(struct
+-  type content = Html5_types.flow5
++  type content = Html_types.flow5
+ end)
+ 
+ 
+@@ -1861,7 +1861,7 @@ module Eliom_appl_reg_make_param
+   (Appl_params : APPL_PARAMS) = struct
+ 
+   open Eliom_content.Html5.D
+-  open Html5_types
++  open Html_types
+ 
+   type appl
+ 
+@@ -1880,9 +1880,9 @@ module Eliom_appl_reg_make_param
+     Eliom_content.Html5.Id.new_elt_id ~global:true ()
+   let application_script ?(defer = false) ?(async = false) () =
+     let a =
+-      (if defer then [Eliom_content.Html5.D.a_defer `Defer] else [])
++      (if defer then [Eliom_content.Html5.D.a_defer ()] else [])
+         @
+-      (if async then [Eliom_content.Html5.D.a_async `Async] else [])
++      (if async then [Eliom_content.Html5.D.a_async ()] else [])
+     in
+     Eliom_content.Html5.Id.create_named_elt
+       ~id:eliom_appl_script_id
+@@ -1992,11 +1992,11 @@ module Eliom_appl_reg_make_param
+     Lwt.return (Eliom_content.Html5.F.script (cdata_script script))
+ 
+   let split_page page :
+-      (Html5_types.html_attrib Eliom_content.Html5.attrib list
+-        * (Html5_types.head_attrib Eliom_content.Html5.attrib list
+-            * [ Html5_types.title ] Eliom_content.Html5.elt
+-            * Html5_types.head_content_fun Eliom_content.Html5.elt list)
+-        * Html5_types.body Eliom_content.Html5.elt ) =
++      (Html_types.html_attrib Eliom_content.Html5.attrib list
++        * (Html_types.head_attrib Eliom_content.Html5.attrib list
++            * [ Html_types.title ] Eliom_content.Html5.elt
++            * Html_types.head_content_fun Eliom_content.Html5.elt list)
++        * Html_types.body Eliom_content.Html5.elt ) =
+     match Eliom_content.Xml.content page with
+       | Eliom_content.Xml.Node (_, html_attribs, [head; body]) ->
+ 	begin match Eliom_content.Xml.content head with
+@@ -2132,7 +2132,7 @@ module type ELIOM_APPL = sig
+   val is_initial_request : unit -> bool
+   type appl
+   include "sigs/eliom_reg.mli"
+-    subst type page    := Html5_types.html Eliom_content.Html5.elt
++    subst type page    := Html_types.html Eliom_content.Html5.elt
+       and type options := appl_service_options
+       and type return  := appl_service
+       and type returnB := [> appl_service ]
+@@ -2172,7 +2172,7 @@ end
+ module type TMPL_PARAMS = sig
+   type t
+   val name: string
+-  val make_page: t -> Html5_types.html Eliom_content.Html5.elt Lwt.t
++  val make_page: t -> Html_types.html Eliom_content.Html5.elt Lwt.t
+   val update: t -> unit client_value
+ end
+ 
+Index: eliom-5.0.0/src/lib/eliom_registration.server.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_registration.server.mli
++++ eliom-5.0.0/src/lib/eliom_registration.server.mli
+@@ -212,7 +212,7 @@ module type ELIOM_APPL = sig
+   type appl
+ 
+   include "sigs/eliom_reg.mli"
+-    subst type page    := Html5_types.html Eliom_content.Html5.elt
++    subst type page    := Html_types.html Eliom_content.Html5.elt
+       and type options := appl_service_options
+       and type return  := appl_service
+       and type returnB := [> appl_service ]
+@@ -231,7 +231,7 @@ module App (Appl_params : APPL_PARAMS) :
+ module type TMPL_PARAMS = sig
+   type t
+   val name: string
+-  val make_page: t -> Html5_types.html Eliom_content.Html5.elt Lwt.t
++  val make_page: t -> Html_types.html Eliom_content.Html5.elt Lwt.t
+   val update: t -> unit client_value
+ end
+ 
+@@ -257,7 +257,7 @@ end
+     fragments.
+ *)
+ module Flow5 : "sigs/eliom_reg.mli"
+-  subst type page    := Html5_types.flow5 Eliom_content.Html5.elt list
++  subst type page    := Html_types.flow5 Eliom_content.Html5.elt list
+   and type options := unit
+   and type return  := http_service
+   and type returnB := [> http_service ]
+Index: eliom-5.0.0/src/lib/eliom_shared_content.eliom
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_shared_content.eliom
++++ eliom-5.0.0/src/lib/eliom_shared_content.eliom
+@@ -56,9 +56,11 @@ module Xml = struct
+ 
+   type uri = Eliom_content_core.Xml.uri
+ 
+-  let string_of_uri = Eliom_content_core.Xml.string_of_uri
++  let string_of_uri () = 
++    {shared#{ Eliom_content_core.Xml.string_of_uri }}
+ 
+-  let uri_of_string = Eliom_content_core.Xml.uri_of_string
++  let uri_of_string () = 
++    {shared#{ Eliom_content_core.Xml.uri_of_string }}
+ 
+   type aname = Eliom_content_core.Xml.aname
+ 
+@@ -197,77 +199,84 @@ module Xml = struct
+ 
+ end
+ 
++{shared{
++module Raw_wrapped_functions_svg =
++  Svg_f.Wrapped_functions(Eliom_content_core.Xml)
++}}
++
++
+ module Svg = struct
+ 
+   module Wrapped_functions :
+ 
+-    Svg_sigs.Wrapped_functions
+-    with type (-'a, 'b) ft = ('a, 'b) Xml.W.ft =
++    Svg_sigs.Wrapped_functions with module Xml = Xml =
+ 
+   struct
+ 
++    module Xml = Xml
++
+     type (-'a, 'b) ft = ('a, 'b) Xml.W.ft
+ 
+     let string_of_alignment_baseline () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_alignment_baseline }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_alignment_baseline }}
+ 
+     let string_of_big_variant () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_big_variant }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_big_variant }}
+ 
+     let string_of_bool () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_bool }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_bool }}
+ 
+     let string_of_coords () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_coords }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_coords }}
+ 
+     let string_of_dominant_baseline () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_dominant_baseline }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_dominant_baseline }}
+ 
+     let string_of_fourfloats () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_fourfloats }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_fourfloats }}
+ 
+     let string_of_in_value () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_in_value }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_in_value }}
+ 
+     let string_of_int () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_int }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_int }}
+ 
+     let string_of_length () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_length }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_length }}
+ 
+     let string_of_lengths () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_lengths }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_lengths }}
+ 
+     let string_of_number () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_number }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_number }}
+ 
+     let string_of_number_optional_number () =
+       {shared#{
+-         Svg_f.Wrapped_functions.string_of_number_optional_number }}
++         Raw_wrapped_functions_svg.string_of_number_optional_number }}
+ 
+     let string_of_numbers () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_numbers }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_numbers }}
+ 
+     let string_of_numbers_semicolon () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_numbers_semicolon }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_numbers_semicolon }}
+ 
+     let string_of_offset () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_offset }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_offset }}
+ 
+     let string_of_orient () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_orient }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_orient }}
+ 
+     let string_of_paint () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_paint }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_paint }}
+ 
+     let string_of_strokedasharray () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_strokedasharray }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_strokedasharray }}
+ 
+     let string_of_transform () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_transform }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_transform }}
+ 
+     let string_of_transforms () =
+-      {shared#{ Svg_f.Wrapped_functions.string_of_transforms }}
++      {shared#{ Raw_wrapped_functions_svg.string_of_transforms }}
+ 
+   end
+ 
+@@ -313,57 +322,72 @@ module Svg = struct
+ 
+   end
+ 
+-end
++end;;
++
++{shared{
++module Raw_wrapped_functions =
++  Html_f.Wrapped_functions(Eliom_content_core.Xml)
++}}
++
+ 
+ module Html5 = struct
+ 
+   module Wrapped_functions :
+ 
+-    Html5_sigs.Wrapped_functions
+-    with type (-'a, 'b) ft = ('a, 'b) Xml.W.ft =
++    Html_sigs.Wrapped_functions with module Xml = Xml =
+ 
+   struct
+ 
++    module Xml = Xml
++
+     type (-'a, 'b) ft = ('a, 'b) Xml.W.ft
+ 
++    type image_candidate =
++      [ `Url of Xml.uri
++      | `Url_width of Xml.uri * Html_types.number
++      | `Url_pixel of Xml.uri * Html_types.float_number ]
++
++    let onoff_of_bool () =
++      {shared#{ Raw_wrapped_functions.onoff_of_bool }}
++
+     let string_of_big_variant () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_big_variant }}
++      {shared#{ Raw_wrapped_functions.string_of_big_variant }}
+ 
+     let string_of_bool () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_bool }}
++      {shared#{ Raw_wrapped_functions.string_of_bool }}
+ 
+     let string_of_character () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_character }}
++      {shared#{ Raw_wrapped_functions.string_of_character }}
+ 
+     let string_of_input_type () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_input_type }}
++      {shared#{ Raw_wrapped_functions.string_of_input_type }}
+ 
+     let string_of_linktypes () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_linktypes }}
++      {shared#{ Raw_wrapped_functions.string_of_linktypes }}
+ 
+     let string_of_mediadesc () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_mediadesc }}
+-
+-    let string_of_multilength () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_multilength }}
++      {shared#{ Raw_wrapped_functions.string_of_mediadesc }}
+ 
+-    let string_of_multilengths () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_multilengths }}
++    let string_of_number_or_datetime () =
++      {shared#{ Raw_wrapped_functions.string_of_number_or_datetime }}
+ 
+     let string_of_numbers () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_numbers }}
++      {shared#{ Raw_wrapped_functions.string_of_numbers }}
+ 
+     let string_of_sandbox () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_sandbox }}
++      {shared#{ Raw_wrapped_functions.string_of_sandbox }}
+ 
+     let string_of_sizes () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_sizes }}
++      {shared#{ Raw_wrapped_functions.string_of_sizes }}
+ 
++    let string_of_srcset () =
++      {shared#{ Raw_wrapped_functions.string_of_srcset }}
++ 
+     let string_of_step () =
+-      {shared#{ Html5_f.Wrapped_functions.string_of_step }}
++      {shared#{ Raw_wrapped_functions.string_of_step }}
+ 
+     let unoption_string () =
+-      {shared#{ Html5_f.Wrapped_functions.unoption_string }}
++      {shared#{ Raw_wrapped_functions.unoption_string }}
+ 
+   end
+ 
+Index: eliom-5.0.0/src/lib/eliom_shared_content.eliomi
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_shared_content.eliomi
++++ eliom-5.0.0/src/lib/eliom_shared_content.eliomi
+@@ -46,13 +46,13 @@ module Html5 : sig
+ 
+   module R : sig
+ 
+-    include Html5_sigs.Make(Xml)(Svg.R).T
++    include Html_sigs.Make(Xml)(Svg.R).T
+       with type 'a elt = 'a Eliom_content_core.Html5.elt
+        and type 'a attrib = 'a Eliom_content_core.Html5.attrib
+ 
+     val pcdata :
+       string Eliom_shared.React.S.t ->
+-      [> | Html5_types.span] elt
++      [> | Html_types.span] elt
+ 
+     val node : 'a elt Eliom_shared.React.S.t -> 'a elt
+ 
+Index: eliom-5.0.0/src/lib/eliom_tools.eliom
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_tools.eliom
++++ eliom-5.0.0/src/lib/eliom_tools.eliom
+@@ -46,12 +46,12 @@ module type HTML5_TOOLS = sig
+       corresponding attributes in the generated [<ul>] node. The
+       default class for the [<ul>] node is [eliomtools_menu]. *)
+   val menu :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     (([< get_service_kind ] as 'a,
+       [< registrable ] as 'b,
+       [< Eliom_registration.non_ocaml_service ] as 'c) one_page *
+-        Html5_types.flow5_without_interactive Html5.elt list)
++        Html_types.flow5_without_interactive Html5.elt list)
+       list ->
+     ?service:('a, 'b, 'c) one_page ->
+     unit ->
+@@ -74,12 +74,12 @@ module type HTML5_TOOLS = sig
+       See {!menu} for a description of the optional parameters [id]
+       and [classe]. *)
+   val hierarchical_menu_depth_first :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     ?whole_tree:bool ->
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+       hierarchical_site ->
+     ?service:('a, 'b, 'c) one_page ->
+     unit ->
+@@ -101,11 +101,11 @@ module type HTML5_TOOLS = sig
+       and [classe].
+   *)
+   val hierarchical_menu_breadth_first :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+       hierarchical_site ->
+     ?service:('a, 'b, [< Eliom_registration.non_ocaml_service]) one_page ->
+     unit ->
+@@ -121,7 +121,7 @@ module type HTML5_TOOLS = sig
+   val structure_links :
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+     hierarchical_site ->
+     ?service:('a, 'b, [< Eliom_registration.non_ocaml_service ]) one_page ->
+     unit ->
+@@ -133,18 +133,18 @@ module type HTML5_TOOLS = sig
+     title:string ->
+     ?css:string list list ->
+     ?js:string list list ->
+-    ?other:Html5_types.head_content_fun Html5.elt list ->
++    ?other:Html_types.head_content_fun Html5.elt list ->
+     unit ->
+-    Html5_types.head Html5.elt
++    Html_types.head Html5.elt
+ 
+   val html :
+     title:string ->
+-    ?a:Html5_types.html_attrib Html5.attrib list ->
++    ?a:Html_types.html_attrib Html5.attrib list ->
+     ?css:string list list ->
+     ?js:string list list ->
+-    ?other_head:Html5_types.head_content_fun Html5.elt list ->
+-    Html5_types.body Html5.elt ->
+-    Html5_types.html Html5.elt
++    ?other_head:Html_types.head_content_fun Html5.elt list ->
++    Html_types.body Html5.elt ->
++    Html_types.html Html5.elt
+ end
+ }}
+ {server{
+@@ -167,7 +167,7 @@ let get_js_files () = let f = !js_files
+ }}
+ {shared{
+ module Make(DorF : module type of Eliom_content.Html5.F) : HTML5_TOOLS = struct
+-  open Html5_types
++  open Html_types
+   open Html5.F
+ 
+   let make_string_uri = Eliom_uri.make_string_uri
+@@ -450,7 +450,7 @@ module Make(DorF : module type of Eliom_
+       css_link ~uri () in
+     let mk_js_script path =
+       let uri = make_uri  (Eliom_service.static_dir ()) path in
+-      js_script ~a:[a_defer `Defer] ~uri () in
++      js_script ~a:[a_defer ()] ~uri () in
+     DorF.head
+       (title (pcdata ttl))
+       List.(map mk_css_link css @ map mk_js_script js @ other)
+@@ -484,7 +484,7 @@ let add_js_file path =
+       path
+   in
+   let script =
+-    Html5.F.js_script ~a:[Html5.F.a_defer `Defer] ~uri ()
++    Html5.F.js_script ~a:[Html5.F.a_defer ()] ~uri ()
+   in
+   ignore
+     Dom_html.document##head##appendChild (Html5.To_dom.of_node script)
+Index: eliom-5.0.0/src/lib/eliom_tools.eliomi
+===================================================================
+--- eliom-5.0.0.orig/src/lib/eliom_tools.eliomi
++++ eliom-5.0.0/src/lib/eliom_tools.eliomi
+@@ -105,12 +105,12 @@ module type HTML5_TOOLS = sig
+       corresponding attributes in the generated [<ul>] node. The
+       default class for the [<ul>] node is [eliomtools_menu]. *)
+   val menu :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     (([< get_service_kind ] as 'a,
+       [< registrable ] as 'b,
+       [< Eliom_registration.non_ocaml_service ] as 'c) one_page *
+-        Html5_types.flow5_without_interactive Html5.elt list)
++        Html_types.flow5_without_interactive Html5.elt list)
+       list ->
+     ?service:('a, 'b, 'c) one_page ->
+     unit ->
+@@ -133,12 +133,12 @@ module type HTML5_TOOLS = sig
+       See {!menu} for a description of the optional parameters [id]
+       and [classe]. *)
+   val hierarchical_menu_depth_first :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     ?whole_tree:bool ->
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+       hierarchical_site ->
+     ?service:('a, 'b, 'c) one_page ->
+     unit ->
+@@ -160,11 +160,11 @@ module type HTML5_TOOLS = sig
+       and [classe].
+   *)
+   val hierarchical_menu_breadth_first :
+-    ?classe:Html5_types.nmtoken list ->
++    ?classe:Html_types.nmtoken list ->
+     ?id:string ->
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+       hierarchical_site ->
+     ?service:('a, 'b, [< Eliom_registration.non_ocaml_service]) one_page ->
+     unit ->
+@@ -180,7 +180,7 @@ module type HTML5_TOOLS = sig
+   val structure_links :
+     ([< Eliom_service.get_service_kind ] as 'a,
+      [< Eliom_service.registrable ] as 'b,
+-     Html5_types.a_content Html5.elt list)
++     Html_types.a_content Html5.elt list)
+     hierarchical_site ->
+     ?service:('a, 'b, [< Eliom_registration.non_ocaml_service ]) one_page ->
+     unit ->
+@@ -192,18 +192,18 @@ module type HTML5_TOOLS = sig
+     title:string ->
+     ?css:string list list ->
+     ?js:string list list ->
+-    ?other:Html5_types.head_content_fun Html5.elt list ->
++    ?other:Html_types.head_content_fun Html5.elt list ->
+     unit ->
+-    Html5_types.head Html5.elt
++    Html_types.head Html5.elt
+ 
+   val html :
+     title:string ->
+-    ?a:Html5_types.html_attrib Html5.attrib list ->
++    ?a:Html_types.html_attrib Html5.attrib list ->
+     ?css:string list list ->
+     ?js:string list list ->
+-    ?other_head:Html5_types.head_content_fun Html5.elt list ->
+-    Html5_types.body Html5.elt ->
+-    Html5_types.html Html5.elt
++    ?other_head:Html_types.head_content_fun Html5.elt list ->
++    Html_types.body Html5.elt ->
++    Html_types.html Html5.elt
+ 
+ end
+ 
+Index: eliom-5.0.0/src/lib/server/extensions/atom_feed.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/server/extensions/atom_feed.ml
++++ eliom-5.0.0/src/lib/server/extensions/atom_feed.ml
+@@ -23,7 +23,7 @@ open Eliom_lib
+ (*
+  * types {{{
+  *)
+-type uri = Xml.uri
++type uri = Tyxml_xml.uri
+ type lang = string
+ type base = uri
+ type ncname = string
+@@ -31,7 +31,7 @@ type dateConstruct = string
+ type emailAddress = string
+ type mediaType = string
+ type length = int
+-type href = Xml.uri
++type href = Tyxml_xml.uri
+ type hrefLang = string
+ type rel = string
+ type ltitle = string
+@@ -40,21 +40,21 @@ type label = string
+ type term = string
+ type metaAttr = [ `Base of base | `Lang of lang ]
+ type personConstruct = [ `Uri of uri | `Email of emailAddress ]
+-type author = Xml.elt
+-type contributor = Xml.elt
+-type generator = Xml.elt
+-type id = Xml.elt
+-type icon = Xml.elt
+-type category = Xml.elt
+-type link = Xml.elt
+-type logo = Xml.elt
+-type published = Xml.elt
+-type updated = Xml.elt
+-type source = Xml.elt
+-type entry = Xml.elt
+-type feed = Xml.elt
+-type content = Xml.elt
+-type textConstruct = Xml.attrib list * Xml.elt list
++type author = Tyxml_xml.elt
++type contributor = Tyxml_xml.elt
++type generator = Tyxml_xml.elt
++type id = Tyxml_xml.elt
++type icon = Tyxml_xml.elt
++type category = Tyxml_xml.elt
++type link = Tyxml_xml.elt
++type logo = Tyxml_xml.elt
++type published = Tyxml_xml.elt
++type updated = Tyxml_xml.elt
++type source = Tyxml_xml.elt
++type entry = Tyxml_xml.elt
++type feed = Tyxml_xml.elt
++type content = Tyxml_xml.elt
++type textConstruct = Tyxml_xml.attrib list * Tyxml_xml.elt list
+ type linkOAttr = [ metaAttr
+    | `Type of string
+    | `Rel of rel
+@@ -106,18 +106,18 @@ let xml_of_feed f = f
+ (*
+  * attr converters {{{
+  *)
+-let a_base = Xml.uri_attrib "base"
+-let a_lang = Xml.string_attrib "lang"
+-let a_scheme = Xml.string_attrib "scheme"
+-let a_label = Xml.string_attrib "label"
+-let a_href = Xml.uri_attrib "href"
+-let a_rel = Xml.string_attrib "rel"
+-let a_hreflang = Xml.string_attrib "hreflang"
+-let a_medtype = Xml.string_attrib "mediatype"
+-let a_title = Xml.string_attrib "title"
+-let a_length = Xml.int_attrib "length"
+-let a_term = Xml.string_attrib "term"
+-let a_type = Xml.string_attrib "type"
++let a_base = Tyxml_xml.uri_attrib "base"
++let a_lang = Tyxml_xml.string_attrib "lang"
++let a_scheme = Tyxml_xml.string_attrib "scheme"
++let a_label = Tyxml_xml.string_attrib "label"
++let a_href = Tyxml_xml.uri_attrib "href"
++let a_rel = Tyxml_xml.string_attrib "rel"
++let a_hreflang = Tyxml_xml.string_attrib "hreflang"
++let a_medtype = Tyxml_xml.string_attrib "mediatype"
++let a_title = Tyxml_xml.string_attrib "title"
++let a_length = Tyxml_xml.int_attrib "length"
++let a_term = Tyxml_xml.string_attrib "term"
++let a_type = Tyxml_xml.string_attrib "type"
+ (*
+  * }}}
+  *)
+@@ -128,7 +128,7 @@ let rec metaAttr_extract l = match l wit
+    | `Lang a :: r    -> a_lang a :: metaAttr_extract r | _ :: r          ->
+    metaAttr_extract r
+ 
+-let rec c_pcdata l = match l with | [] -> [] | a::r -> Xml.pcdata a :: c_pcdata
++let rec c_pcdata l = match l with | [] -> [] | a::r -> Tyxml_xml.pcdata a :: c_pcdata
+ r
+ 
+ let print_html5 l =
+@@ -138,33 +138,33 @@ let print_html5 l =
+   Eliom_content.Html5.Printer.print_list ~encode ~output l;
+   Buffer.contents buffer
+ 
+-let inlineC ?(meta = []) ?(html = false) c = `Content (Xml.node ~a:(a_type (if
++let inlineC ?(meta = []) ?(html = false) c = `Content (Tyxml_xml.node ~a:(a_type (if
+             html then "html" else "text") :: metaAttr_extract meta) "content"
+       (c_pcdata c))
+ 
+ let html5C ?meta c =
+   inlineC ?meta ~html:true [print_html5 [Eliom_content.Html5.F.div c]]
+ 
+-let inlineOtherC ?(meta = []) (a,b) = `Content (Xml.node ~a:(a_medtype a ::
++let inlineOtherC ?(meta = []) (a,b) = `Content (Tyxml_xml.node ~a:(a_medtype a ::
+          metaAttr_extract meta) "content" b)
+ 
+-let outOfLineC ?(meta = []) (a,b) = `Content (Xml.node ~a:(a_medtype a ::
+-         Xml.uri_attrib "src" b :: metaAttr_extract meta) "content" [])
++let outOfLineC ?(meta = []) (a,b) = `Content (Tyxml_xml.node ~a:(a_medtype a ::
++         Tyxml_xml.uri_attrib "src" b :: metaAttr_extract meta) "content" [])
+ 
+ (*
+  * Extraction functions {{{
+  *)
+ let rec personConstruct_extract l = match l with
+    | []              -> []
+-   |`Email a :: r   -> Xml.node ~a:[] "email" [(Xml.pcdata a)] ::
++   |`Email a :: r   -> Tyxml_xml.node ~a:[] "email" [(Tyxml_xml.pcdata a)] ::
+       personConstruct_extract r
+-   | `Uri a :: r     -> Xml.node ~a:[] "uri" [(Xml.pcdata (Xml.string_of_uri a))] ::
++   | `Uri a :: r     -> Tyxml_xml.node ~a:[] "uri" [(Tyxml_xml.pcdata (Tyxml_xml.string_of_uri a))] ::
+       personConstruct_extract r
+    | _ :: r          -> personConstruct_extract r
+ 
+ let rec linkOAttr_extract l = match l with
+    | []              -> []
+-   | `Type a :: r    -> Xml.string_attrib "type" a :: linkOAttr_extract r
++   | `Type a :: r    -> Tyxml_xml.string_attrib "type" a :: linkOAttr_extract r
+    | `Rel a :: r     -> a_rel a :: linkOAttr_extract r
+    | `Medtype a :: r -> a_medtype a :: linkOAttr_extract r
+    | `Hrefl a :: r   -> a_hreflang a :: linkOAttr_extract r
+@@ -181,8 +181,8 @@ let rec sourceOAttr_extract l = match l
+    | `Gen a :: r
+    | `Icon a :: r
+    | `Logo a :: r       -> a :: sourceOAttr_extract r
+-   | `Rights (a,b) :: r -> Xml.node ~a "rights" b :: sourceOAttr_extract r
+-   | `Sub (a,b) :: r    -> Xml.node ~a "subtitle" b :: sourceOAttr_extract r
++   | `Rights (a,b) :: r -> Tyxml_xml.node ~a "rights" b :: sourceOAttr_extract r
++   | `Sub (a,b) :: r    -> Tyxml_xml.node ~a "subtitle" b :: sourceOAttr_extract r
+    | _ :: r             -> sourceOAttr_extract r
+ 
+ let rec entryOAttr_extract l = match l with
+@@ -194,8 +194,8 @@ let rec entryOAttr_extract l = match l w
+    | `Content a :: r
+    | `Pub a :: r
+    | `Source a :: r     -> a :: entryOAttr_extract r
+-   | `Rights (a,b) :: r -> Xml.node ~a "rights" b :: entryOAttr_extract r
+-   | `Sum (a,b) :: r    -> Xml.node ~a "summary" b :: entryOAttr_extract r
++   | `Rights (a,b) :: r -> Tyxml_xml.node ~a "rights" b :: entryOAttr_extract r
++   | `Sum (a,b) :: r    -> Tyxml_xml.node ~a "summary" b :: entryOAttr_extract r
+    | _ :: r             -> entryOAttr_extract r
+ 
+ let rec feedOAttr_extract l = match l with
+@@ -207,8 +207,8 @@ let rec feedOAttr_extract l = match l wi
+    | `Gen a :: r
+    | `Icon a :: r
+    | `Logo a :: r       -> a :: feedOAttr_extract r
+-   | `Rights (a,b) :: r -> Xml.node ~a "rights" b :: feedOAttr_extract r
+-   | `Sub (a,b) :: r    -> Xml.node ~a "subtitle" b :: feedOAttr_extract r
++   | `Rights (a,b) :: r -> Tyxml_xml.node ~a "rights" b :: feedOAttr_extract r
++   | `Sub (a,b) :: r    -> Tyxml_xml.node ~a "subtitle" b :: feedOAttr_extract r
+    | _ :: r          -> feedOAttr_extract r
+  (*
+  * }}}
+@@ -217,8 +217,8 @@ let rec feedOAttr_extract l = match l wi
+ (*
+  * Textconstructs [Rights, Subtitle, Summary, Title] {{{
+  *)
+-let plain ?(meta = []) ?(html = false) content = (Xml.string_attrib "type"
+-    (if html then "html" else "text"):: metaAttr_extract meta, [Xml.pcdata
++let plain ?(meta = []) ?(html = false) content = (Tyxml_xml.string_attrib "type"
++    (if html then "html" else "text"):: metaAttr_extract meta, [Tyxml_xml.pcdata
+     content])
+ 
+ let html5 ?meta content =
+@@ -234,30 +234,30 @@ let summary t = `Sum t
+  *)
+ 
+ let feed ~updated ~id ~title:(a,b) ?(fields = []) entries =
+-   Xml.node ~a:(Xml.string_attrib "xmlns" "http://www.w3.org/2005/Atom" ::
++   Tyxml_xml.node ~a:(Tyxml_xml.string_attrib "xmlns" "http://www.w3.org/2005/Atom" ::
+          metaAttr_extract fields)
+          "feed"
+-         (Xml.node ~a:[] "updated" [ Xml.pcdata (date updated) ] ::
+-            Xml.node ~a:[] "id" [ Xml.pcdata (Xml.string_of_uri id) ] :: Xml.node ~a "title" b ::
++         (Tyxml_xml.node ~a:[] "updated" [ Tyxml_xml.pcdata (date updated) ] ::
++            Tyxml_xml.node ~a:[] "id" [ Tyxml_xml.pcdata (Tyxml_xml.string_of_uri id) ] :: Tyxml_xml.node ~a "title" b ::
+             feedOAttr_extract fields @ entries)
+ 
+ let entry ~updated ~id ~title:(a,b) elt =
+-   Xml.node ~a:(metaAttr_extract elt)
++   Tyxml_xml.node ~a:(metaAttr_extract elt)
+          "entry"
+-         (Xml.node ~a:[] "updated" [ Xml.pcdata (date updated) ] ::
+-            Xml.node ~a:[] "id" [ Xml.pcdata (Xml.string_of_uri id) ] ::
+-            Xml.node ~a "title" b ::
++         (Tyxml_xml.node ~a:[] "updated" [ Tyxml_xml.pcdata (date updated) ] ::
++            Tyxml_xml.node ~a:[] "id" [ Tyxml_xml.pcdata (Tyxml_xml.string_of_uri id) ] ::
++            Tyxml_xml.node ~a "title" b ::
+             entryOAttr_extract elt)
+ 
+ let source ~updated ~id ~title:(a,b) elt = `Source (
+-   Xml.node ~a:(metaAttr_extract elt)
++   Tyxml_xml.node ~a:(metaAttr_extract elt)
+          "source"
+-         (Xml.node ~a:[] "updated" [ Xml.pcdata (date updated) ] ::
+-            Xml.node ~a:[] "id" [ Xml.pcdata (Xml.string_of_uri id) ] ::
+-	       Xml.node ~a "title" b :: sourceOAttr_extract elt)
++         (Tyxml_xml.node ~a:[] "updated" [ Tyxml_xml.pcdata (date updated) ] ::
++            Tyxml_xml.node ~a:[] "id" [ Tyxml_xml.pcdata (Tyxml_xml.string_of_uri id) ] ::
++	       Tyxml_xml.node ~a "title" b :: sourceOAttr_extract elt)
+ 	 )
+ 
+-let link ?(elt = []) href = Xml.leaf ~a:(a_href href :: (linkOAttr_extract elt)
++let link ?(elt = []) href = Tyxml_xml.leaf ~a:(a_href href :: (linkOAttr_extract elt)
+       @ (metaAttr_extract elt)) "link"
+ 
+ let links l = `Links l
+@@ -266,34 +266,34 @@ let email s = `Email s
+ 
+ let uri s = `Uri s
+ 
+-let author ?(elt = []) name = Xml.node ~a:[] "author" (Xml.node ~a:[] "name"
+-      [Xml.pcdata name] :: personConstruct_extract elt)
++let author ?(elt = []) name = Tyxml_xml.node ~a:[] "author" (Tyxml_xml.node ~a:[] "name"
++      [Tyxml_xml.pcdata name] :: personConstruct_extract elt)
+ 
+ let authors l = `Authors l
+ 
+-let contributor ?(elt = []) name = Xml.node ~a:[] "contributor" (Xml.node ~a:[]
+-      "name" [Xml.pcdata name] :: personConstruct_extract elt)
++let contributor ?(elt = []) name = Tyxml_xml.node ~a:[] "contributor" (Tyxml_xml.node ~a:[]
++      "name" [Tyxml_xml.pcdata name] :: personConstruct_extract elt)
+ 
+ let contributors l = `Contribs l
+ 
+-let icon address = `Icon (Xml.node ~a:[] "icon" [ Xml.pcdata (Xml.string_of_uri address) ])
++let icon address = `Icon (Tyxml_xml.node ~a:[] "icon" [ Tyxml_xml.pcdata (Tyxml_xml.string_of_uri address) ])
+ 
+-let logo address = `Logo (Xml.node ~a:[] "icon" [ Xml.pcdata (Xml.string_of_uri address) ])
++let logo address = `Logo (Tyxml_xml.node ~a:[] "icon" [ Tyxml_xml.pcdata (Tyxml_xml.string_of_uri address) ])
+ 
+ let category ?(meta = []) ?(scheme = "") ?(label = "") term content =
+-   Xml.node ~a:(a_scheme scheme :: a_label label ::
++   Tyxml_xml.node ~a:(a_scheme scheme :: a_label label ::
+                a_term term :: metaAttr_extract meta)
+          "category"
+          content
+ 
+ let categories l = `Cats l
+ 
+-let published d = `Pub (Xml.node ~a:[] "published" [ Xml.pcdata (date d) ])
++let published d = `Pub (Tyxml_xml.node ~a:[] "published" [ Tyxml_xml.pcdata (date d) ])
+ 
+ (*
+  * }}}
+  *)
+ 
+-let insert_hub_links hubs feed = match Xml.content feed with
+-   | Xml.Node (b, a, c)  -> Xml.node ~a b (List.map
++let insert_hub_links hubs feed = match Tyxml_xml.content feed with
++   | Tyxml_xml.Node (b, a, c)  -> Tyxml_xml.node ~a b (List.map
+          (fun uri -> link ~elt:[`Rel ("hub")] uri) hubs @ c) | _ -> assert false
+Index: eliom-5.0.0/src/lib/server/extensions/atom_feed.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/server/extensions/atom_feed.mli
++++ eliom-5.0.0/src/lib/server/extensions/atom_feed.mli
+@@ -23,7 +23,7 @@
+ (*
+  * types {{{
+  *)
+-type uri = Xml.uri
++type uri = Tyxml_xml.uri
+ type lang = string
+ type base = uri
+ type ncname = string
+@@ -31,7 +31,7 @@ type dateConstruct = string
+ type emailAddress = string
+ type mediaType = string
+ type length = int
+-type href = Xml.uri
++type href = Tyxml_xml.uri
+ type hrefLang = string
+ type rel = string
+ type ltitle = string
+@@ -113,7 +113,7 @@ type feedOAttr = [ metaAttr
+  * Constructors {{{
+  *)
+ 
+-val xml_of_feed : feed -> Xml.elt
++val xml_of_feed : feed -> Tyxml_xml.elt
+ 
+ (*
+  * attr converters {{{
+@@ -140,12 +140,12 @@ val inlineC : ?meta:[> metaAttr ] list
+ 
+ (** An html5 content, embedded in a div *)
+ val html5C : ?meta:[> metaAttr ] list
+-   -> ([ `PCDATA | Html5_types.flow5 ] Eliom_content.Html5.elt list)
++   -> ([ `PCDATA | Html_types.flow5 ] Eliom_content.Html5.elt list)
+    -> [> `Content of content ]
+ 
+ (** Inline content from another kind *)
+ val inlineOtherC : ?meta:[> metaAttr ] list
+-   -> string * Xml.elt list
++   -> string * Tyxml_xml.elt list
+    -> [> `Content of content ]
+ 
+ (** Every other content *)
+@@ -161,7 +161,7 @@ val plain : ?meta:[> metaAttr ] list
+ 
+ (** HTML5 text construct *)
+ val html5 : ?meta:[> metaAttr ] list
+-   -> [ `PCDATA | Html5_types.flow5 ] Eliom_content.Html5.elt list
++   -> [ `PCDATA | Html_types.flow5 ] Eliom_content.Html5.elt list
+    -> textConstruct
+ 
+ (** Rights tag *)
+@@ -240,7 +240,7 @@ val logo : uri -> [> `Logo of logo ]
+ val category :
+   ?meta:[> metaAttr ] list ->
+   ?scheme:scheme -> ?label:label ->
+-  term -> Xml.elt list -> category
++  term -> Tyxml_xml.elt list -> category
+ 
+ (** We need a list of categories, this is only a converter from category list
+  to `Categories *)
+Index: eliom-5.0.0/src/lib/server/extensions/eliom_atom.ml
+===================================================================
+--- eliom-5.0.0.orig/src/lib/server/extensions/eliom_atom.ml
++++ eliom-5.0.0/src/lib/server/extensions/eliom_atom.ml
+@@ -33,7 +33,7 @@ module Atom_info = struct
+   let emptytags = []
+ end
+ 
+-module Format = Xml_print.Make_simple(Xml)(Atom_info)
++module Format = Xml_print.Make_simple(Tyxml_xml)(Atom_info)
+ 
+ let result_of_content feed headers =
+   let b = Buffer.create 10 in
+@@ -118,7 +118,7 @@ let rec ping_hub u address t =
+ 
+ let rec nfu_s hubs address = match hubs with
+    | []     -> ()
+-   | s :: r -> let u = Neturl.parse_url (Xml.string_of_uri s) in ignore (ping_hub u address 1.) ;
++   | s :: r -> let u = Neturl.parse_url (Tyxml_xml.string_of_uri s) in ignore (ping_hub u address 1.) ;
+       nfu_s r address
+ 
+ let notify_feed_updates address hubs s =
+Index: eliom-5.0.0/src/lib/sigs/eliom_html5_reg.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/sigs/eliom_html5_reg.mli
++++ eliom-5.0.0/src/lib/sigs/eliom_html5_reg.mli
+@@ -1,5 +1,5 @@
+ include "sigs/eliom_reg.mli"
+-  subst type page    := Html5_types.html Eliom_content.Html5.elt
++  subst type page    := Html_types.html Eliom_content.Html5.elt
+     and type options := unit
+     and type return  := http_service
+     and type returnB := [> http_service ]
+Index: eliom-5.0.0/src/lib/server/monitor/eliom_monitor.mli
+===================================================================
+--- eliom-5.0.0.orig/src/lib/server/monitor/eliom_monitor.mli
++++ eliom-5.0.0/src/lib/server/monitor/eliom_monitor.mli
+@@ -23,5 +23,5 @@ val pid : unit -> int
+ 
+ val fd : pid:int -> [`Ok of int | `Error of string]
+ 
+-val content_div : unit -> [> Html5_types.div ] Eliom_content.Html5.elt Lwt.t
+-val content_html : unit -> [> Html5_types.html ] Eliom_content.Html5.elt Lwt.t
++val content_div : unit -> [> Html_types.div ] Eliom_content.Html5.elt Lwt.t
++val content_html : unit -> [> Html_types.html ] Eliom_content.Html5.elt Lwt.t

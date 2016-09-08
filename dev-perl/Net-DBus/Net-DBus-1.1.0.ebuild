@@ -23,7 +23,10 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
+
+src_test() {
+	perl_rm_files t/10-pod-coverage.t t/05-pod.t t/12-changes.t
+	perl-module_src_test
+}

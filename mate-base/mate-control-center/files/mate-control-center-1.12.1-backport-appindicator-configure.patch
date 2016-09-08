@@ -1,0 +1,67 @@
+From 90195c0c2e3f45a355286f1640c2f0020a5556b8 Mon Sep 17 00:00:00 2001
+From: raveit65 <chat-to-me@raveit.de>
+Date: Fri, 17 Jun 2016 20:34:06 +0200
+Subject: [PATCH] configure: fix build with libappindicator3
+
+---
+ configure.ac | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9b27671..a11bfdc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,6 +63,8 @@ dnl ==============================================
+ dnl Check GTK+ API version
+ dnl ==============================================
+ 
++APPINDICATOR_REQUIRED=0.0.13
++
+ AC_MSG_CHECKING([which gtk+ version to compile against])
+ AC_ARG_WITH([gtk],
+   [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 2.0)])],
+@@ -80,6 +82,7 @@ case "$with_gtk" in
+        LIBCANBERRA_API_VERSION=
+        LIBUNIQUE_API_VERSION=1.0
+        ENGINES_FOLDER="engines"
++       APPINDICATOR_API_VERSION=
+        ;;
+   3.0) GTK_API_VERSION=3.0
+        GTK_REQUIRED=3.0.0
+@@ -87,6 +90,7 @@ case "$with_gtk" in
+        LIBCANBERRA_API_VERSION=3
+        LIBUNIQUE_API_VERSION=3.0
+        ENGINES_FOLDER="theming-engines"
++       APPINDICATOR_API_VERSION=3
+        ;;
+ esac
+ AC_SUBST(GTK_API_VERSION)
+@@ -101,7 +105,7 @@ AM_CONDITIONAL(HAVE_LIBCANBERRA_GTK, test "x$CANBERRA_GTK" = "x1")
+ AM_CONDITIONAL(HAVE_TYPING_BREAK, test "x$TYPING_BREAK" = xtyping-break)
+ 
+ dnl app indicator
+-APPINDICATOR_REQUIRED=0.0.7
++APPINDICATOR_PKG=appindicator$APPINDICATOR_API_VERSION-0.1
+ 
+ AC_ARG_ENABLE(appindicator,
+                         AS_HELP_STRING([--enable-appindicator[=@<:@no/auto/yes@:>@]],[Build support for application indicators ]),
+@@ -109,16 +113,16 @@ AC_ARG_ENABLE(appindicator,
+                         [enable_appindicator="auto"])
+ 
+ if test x$enable_appindicator = xauto ; then
+-        PKG_CHECK_EXISTS([appindicator-0.1 >= $APPINDICATOR_REQUIRED],
++        PKG_CHECK_EXISTS([$APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],
+                          enable_appindicator="yes",
+                          enable_appindicator="no")
+ fi
+ 
+ if test x$enable_appindicator = xyes ; then
+-        PKG_CHECK_EXISTS([appindicator-0.1 >= $APPINDICATOR_REQUIRED],,
++        PKG_CHECK_EXISTS([$APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED],,
+                          AC_MSG_ERROR([appindicator-0.1 is not installed]))
+         PKG_CHECK_MODULES(APP_INDICATOR,
+-                        appindicator-0.1 >= $APPINDICATOR_REQUIRED)
++                        $APPINDICATOR_PKG >= $APPINDICATOR_REQUIRED)
+         AC_SUBST(APP_INDICATOR_CFLAGS)
+         AC_SUBST(APP_INDICATOR_LIBS)
+         AC_DEFINE(HAVE_APP_INDICATOR, 1, [Have AppIndicator])

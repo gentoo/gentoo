@@ -13,7 +13,7 @@ SRC_URI="https://github.com/FortAwesome/${REPO_PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="CC-BY-3.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm arm64 x86"
 IUSE="+otf +ttf"
 
 REQUIRED_USE="|| ( otf ttf )"

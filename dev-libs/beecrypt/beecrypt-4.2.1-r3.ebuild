@@ -9,12 +9,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib autotools java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="general-purpose cryptography library"
-HOMEPAGE="http://sourceforge.net/projects/beecrypt/"
+HOMEPAGE="https://sourceforge.net/projects/beecrypt/"
 SRC_URI="mirror://sourceforge/beecrypt/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos"
 IUSE="+threads java cxx python static-libs doc"
 
 COMMONDEPEND="!<app-arch/rpm-4.2.1

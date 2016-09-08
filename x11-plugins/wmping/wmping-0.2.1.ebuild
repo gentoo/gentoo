@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="a simple host status monitoring dockapp"
-HOMEPAGE="http://sourceforge.net/projects/wmping"
+HOMEPAGE="https://sourceforge.net/projects/wmping"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

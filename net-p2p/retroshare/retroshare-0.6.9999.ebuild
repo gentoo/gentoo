@@ -5,7 +5,7 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
-inherit eutils git-r3 gnome2-utils qmake-utils
+inherit eutils git-r3 gnome2-utils qmake-utils versionator
 
 DESCRIPTION="P2P private sharing application"
 HOMEPAGE="http://retroshare.sourceforge.net"
@@ -144,13 +144,16 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ "${REPLACING_VERSIONS}" = "0.5*"  ]]; then
-		elog "You are upgrading from Retroshare 0.5.* to ${PV}"
-		elog "Version 0.6.* is backward-incompatible with 0.5 branch"
-		elog "and clients with 0.6.* can not connect to clients that have 0.5.*"
-		elog "It's recommended to drop all your configuration and either"
-		elog "generate a new certificate or import existing from a backup"
-	fi
+	for ver in ${REPLACING_VERSIONS}; do
+		if ! version_is_at_least 0.5.9999 ${ver}; then
+			elog "You are upgrading from Retroshare 0.5.* to ${PV}"
+			elog "Version 0.6.* is backward-incompatible with 0.5 branch"
+			elog "and clients with 0.6.* can not connect to clients that have 0.5.*"
+			elog "It's recommended to drop all your configuration and either"
+			elog "generate a new certificate or import existing from a backup"
+			break
+		fi
+	done
 	gnome2_icon_savelist
 }
 

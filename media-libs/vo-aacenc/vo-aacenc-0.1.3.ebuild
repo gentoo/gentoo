@@ -14,7 +14,7 @@ fi
 inherit autotools-multilib ${SCM}
 
 DESCRIPTION="VisualOn AAC encoder library"
-HOMEPAGE="http://sourceforge.net/projects/opencore-amr/"
+HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
 
 if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""

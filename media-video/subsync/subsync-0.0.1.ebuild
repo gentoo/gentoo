@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils
 
 DESCRIPTION="subsync is an program that synchronizes srt subtitle files"
-HOMEPAGE="http://sourceforge.net/projects/subsync/"
+HOMEPAGE="https://sourceforge.net/projects/subsync/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

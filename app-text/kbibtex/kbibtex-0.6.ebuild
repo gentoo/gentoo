@@ -4,6 +4,7 @@
 
 EAPI=5
 
+WEBKIT_REQUIRED="always"
 inherit kde4-base versionator
 
 DESCRIPTION="BibTeX editor for KDE to edit bibliographies used with LaTeX"

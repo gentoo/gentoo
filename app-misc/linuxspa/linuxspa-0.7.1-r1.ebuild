@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs
 
 MY_PN="LinuxSPA"
 DESCRIPTION="Linux Serial Protocol Analyser"
-HOMEPAGE="http://sourceforge.net/projects/serialsniffer/"
+HOMEPAGE="https://sourceforge.net/projects/serialsniffer/"
 SRC_URI="mirror://sourceforge/serialsniffer/${MY_PN}-${PV}.tgz"
 LICENSE="GPL-2"
 

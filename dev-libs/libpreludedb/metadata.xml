@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thomas.andrejak@gmail.com</email>
+		<name>Thomas Andrejak</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		The PreludeDB Library provides an abstraction layer upon the type and the
+		format of the database used to store IDMEF alerts. It allows developers
+		to use the Prelude IDMEF database easily and efficiently without
+		worrying about SQL, and to access the database independently of the
+		type/format of the database.
+	</longdescription>
+</pkgmetadata>

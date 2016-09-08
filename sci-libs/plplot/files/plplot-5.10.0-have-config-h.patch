@@ -1,4 +1,4 @@
-Apply upstream patch http://sourceforge.net/p/plplot/bugs/146/
+Apply upstream patch https://sourceforge.net/p/plplot/bugs/146/
 to fix conflicting macros in installed header files.
 
 diff -Nur plplot-5.10.0.orig/CMakeLists.txt plplot-5.10.0/CMakeLists.txt

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/pepijnve/asciimath"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 each_ruby_test() {

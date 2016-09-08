@@ -1,0 +1,10 @@
+diff -r -U2 fbreader-0.99.4.orig/fbreader/Makefile fbreader-0.99.4/fbreader/Makefile
+--- fbreader-0.99.4.orig/fbreader/Makefile	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/fbreader/Makefile	2016-08-31 19:06:35.011708982 +0700
+@@ -23,5 +23,5 @@
+ 	done;
+ 	@echo -n 'Linking $(TARGET) ...'
+-	@$(LD) $(LDFLAGS) -o $(TARGET) `find src -name *.o` $(TEXT_LIBS) $(CORE_LIBS) $(ZLUI_LIB) -lsqlite3
++	@$(LD) -fuse-ld=bfd $(LDFLAGS) -o $(TARGET) `find src -name *.o` $(TEXT_LIBS) $(CORE_LIBS) $(ZLUI_LIB) -lsqlite3
+ 	@echo ' OK'
+ 

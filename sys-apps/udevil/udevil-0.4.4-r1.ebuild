@@ -59,7 +59,7 @@ pkg_postinst() {
 	elog "  net-fs/cifs-utils  (mounting samba shares)"
 	elog "  net-fs/curlftpfs   (mounting ftp shares)"
 	elog "  net-fs/nfs-utils   (mounting nfs shares)"
-	elog "  sys-fs/sshfs-fuse  (mounting sftp shares)"
+	elog "  net-fs/sshfs       (mounting sftp shares)"
 	elog "  virtual/eject      (eject via devmon)"
 	if ! has_version 'sys-fs/udisks' ; then
 		elog

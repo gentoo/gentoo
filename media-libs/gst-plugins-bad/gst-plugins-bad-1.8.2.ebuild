@@ -24,7 +24,7 @@ REQUIRED_USE="
 # dtmf plugin moved from bad to good in 1.2
 # X11 is automagic for now, upstream #709530
 RDEPEND="
-	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )

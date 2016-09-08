@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,6 +50,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-norpath.patch
 
 	"${FILESDIR}"/${P}-desktop.patch
+
+	# remove new/delete declarations, bug 590002
+	"${FILESDIR}"/${PN}-1.99-remove-new-declaration.patch
 )
 
 src_prepare() {

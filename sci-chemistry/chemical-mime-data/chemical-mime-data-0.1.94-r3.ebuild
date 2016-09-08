@@ -22,11 +22,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/desktop-file-utils
 	dev-libs/libxslt
-	|| (
-		media-gfx/imagemagick[xml,png,svg]
-		gnome-base/librsvg
-	)
-	media-gfx/inkscape
+	media-gfx/imagemagick[xml,png,svg]
 	virtual/pkgconfig"
 
 PATCHES=(

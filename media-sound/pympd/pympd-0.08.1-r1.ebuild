@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils gnome2-utils multilib python-single-r1 toolchain-funcs
 
 DESCRIPTION="a Rhythmbox-like PyGTK+ client for Music Player Daemon"
-HOMEPAGE="http://sourceforge.net/projects/pympd"
+HOMEPAGE="https://sourceforge.net/projects/pympd"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

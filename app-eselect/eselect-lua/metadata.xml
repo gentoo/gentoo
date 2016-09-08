@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mabi@gentoo.org</email>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">Lua eselect module</longdescription>
+	<longdescription lang="en">
+		Lua eselect module
+	</longdescription>
 </pkgmetadata>

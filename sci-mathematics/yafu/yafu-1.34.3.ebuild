@@ -9,7 +9,7 @@ inherit eutils versionator
 MY_PV="$(get_version_component_range 1-2)"
 
 DESCRIPTION="Yet another factoring utility"
-HOMEPAGE="http://sourceforge.net/projects/yafu/"
+HOMEPAGE="https://sourceforge.net/projects/yafu/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PV}/${PN}-${MY_PV}-src.zip"
 
 SLOT="0"

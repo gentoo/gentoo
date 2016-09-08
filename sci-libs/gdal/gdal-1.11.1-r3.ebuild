@@ -59,7 +59,7 @@ RDEPEND="
 	xls? ( dev-libs/freexl )
 "
 
-SWIG_DEP=">=dev-lang/swig-2.0.2 <=dev-lang/swig-3.0.4"
+SWIG_DEP=">=dev-lang/swig-2.0.2"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	java? ( >=virtual/jdk-1.6 )
@@ -121,6 +121,9 @@ src_prepare() {
 
 	# Fix swig-3.0.3 problem (bug #534168)
 	epatch "${FILESDIR}"/${PN}-1.11.1-swig-3.0.3.patch
+
+	# Fix swig-3.0.6 problem, https://trac.osgeo.org/gdal/ticket/6045
+	epatch "${FILESDIR}"/${PN}-1.11-swig-3.0.6.patch
 
 	# bug 540132
 	epatch "${FILESDIR}"/${PN}-1.11.1-poppler-0.31.0-support.patch

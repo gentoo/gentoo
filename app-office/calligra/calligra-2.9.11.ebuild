@@ -12,6 +12,7 @@ CHECKREQS_DISK_BUILD="4G"
 KDE_HANDBOOK="optional"
 KDE_LINGUAS_LIVE_OVERRIDE="true"
 OPENGL_REQUIRED="optional"
+WEBKIT_REQUIRED="optional"
 inherit check-reqs kde4-base versionator
 
 DESCRIPTION="KDE Office Suite"
@@ -57,6 +58,7 @@ REQUIRED_USE="
 	calligra_features_krita? ( eigen exif lcms opengl )
 	calligra_features_plan? ( kdepim )
 	calligra_features_sheets? ( eigen )
+	calligra_features_stage? ( webkit )
 	vc? ( calligra_features_krita )
 	test? ( calligra_features_karbon )
 "
@@ -148,6 +150,13 @@ pkg_pretend() {
 pkg_setup() {
 	kde4-base_pkg_setup
 	check-reqs_pkg_setup
+}
+
+src_prepare() {
+	if ! use webkit; then
+		sed -i CMakeLists.txt -e "/^find_package/ s/QtWebKit //" || die
+	fi
+	kde4-base_src_prepare
 }
 
 src_configure() {

@@ -15,4 +15,8 @@ caches server performance and timeouts, making it both network and user friendly
 It also has built-in hooks for making graphs with rrdtool, providing insight into
 nameserver performance.
 </longdescription>
+<use>
+	<flag name="luajit">Enable support for <pkg>dev-lang/luajit</pkg>.</flag>
+	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
+</use>
 </pkgmetadata>

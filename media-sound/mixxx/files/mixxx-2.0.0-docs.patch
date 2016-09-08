@@ -1,0 +1,10 @@
+--- mixxx-9999/src/SConscript
++++ mixxx-9999/src/SConscript
+@@ -290,7 +290,6 @@
+                 env.Alias('install', controllermappings)
+                 env.Alias('install', translations)
+                 env.Alias('install', keyboardmappings)
+-                env.Alias('install', docs)
+                 env.Alias('install', dotdesktop)
+                 env.Alias('install', icon)
+                 env.Alias('install', promotracks)

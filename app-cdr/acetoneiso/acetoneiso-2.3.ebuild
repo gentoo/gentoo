@@ -8,7 +8,7 @@ MY_P=${PN}_${PV}
 inherit flag-o-matic qt4-r2
 
 DESCRIPTION="a feature-rich and complete software application to manage CD/DVD images"
-HOMEPAGE="http://sourceforge.net/projects/${PN}/"
+HOMEPAGE="https://sourceforge.net/projects/${PN}/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"

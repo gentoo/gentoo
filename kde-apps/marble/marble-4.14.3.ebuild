@@ -8,6 +8,7 @@ KDE_HANDBOOK="optional"
 KDE_REQUIRED="optional"
 CPPUNIT_REQUIRED="optional"
 PYTHON_COMPAT=( python2_7 )
+WEBKIT_REQUIRED="always"
 inherit kde4-base python-single-r1
 
 DESCRIPTION="Generic geographical map widget"

@@ -7,7 +7,7 @@ inherit autotools autotools-utils
 
 MY_P=${PN}-v${PV/./-}
 DESCRIPTION="Object-oriented Input System - A cross-platform C++ input handling library"
-HOMEPAGE="http://sourceforge.net/projects/wgois/"
+HOMEPAGE="https://sourceforge.net/projects/wgois/"
 SRC_URI="mirror://sourceforge/wgois/${MY_P/-/_}.tar.gz"
 
 LICENSE="ZLIB"

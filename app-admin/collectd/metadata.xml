@@ -2,18 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Primary proxied maintainer; set to assignee in all bugs</description>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+		<description>Primary maintainer</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>whissi@whissi.de</email>
-		<name>Thomas D.</name>
-		<description>Proxied co-maintainer</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
+		<email>bugs@bergstroem.nu</email>
+		<name>Johan Bergström</name>
+		<description>Proxy maintainer; CC him on bugs</description>
 	</maintainer>
 	<longdescription lang="en">
 		Collectd gathers statistics about the system it is running on and stores this
@@ -155,5 +151,6 @@
 		<flag name="filecaps">When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user</flag>
 		<flag name="java">Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin</flag>
 		<flag name="udev">Enable optional udev usage in disk plugin; Required for smart plugin</flag>
+		<flag name="xfs">Enable optional capability to filter on XFS file system in df plugin; Requires XFS headers from <pkg>sys-fs/xfsprogs</pkg></flag>
 	</use>
 </pkgmetadata>

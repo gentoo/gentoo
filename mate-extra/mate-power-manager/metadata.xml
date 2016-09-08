@@ -7,7 +7,11 @@
     </maintainer>
 	<use>
 		<flag name="applet">Enable building of the MATE applet.</flag>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="man">Build power manager's man page.</flag>
+		<flag name="pm-utils">Adds support for suspend/resume using
+			<pkg>sys-power/upower-pm-utils</pkg> instead of
+			<pkg>sys-power/upower</pkg></flag>
 		<flag name="unique">Enable single instance support using 
 		<pkg>dev-libs/libunique</pkg>.</flag>
 	</use>

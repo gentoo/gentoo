@@ -1,0 +1,26 @@
+commit 5971737bac9a6f0d74f9292342a0e15530960e23
+Author: Michael Orlitzky <michael@orlitzky.com>
+Date:   Sun Aug 14 16:37:07 2016 -0400
+
+    Don't kill optimization in makefile.in.
+
+diff --git a/makefile.in b/makefile.in
+index 2eadd50..e56164d 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -1,5 +1,5 @@
+ CC	= @CC@
+-CFLAGS	= @CFLAGS@ @CPPFLAGS@ @X_CFLAGS@ -O0 -DUSE_OLD_TTY
++CFLAGS	= @CFLAGS@ @CPPFLAGS@ @X_CFLAGS@ -DUSE_OLD_TTY
+ CXX     = g++
+ CXXFLAGS = @CXXFLAGS@
+ LDFLAGS	= @LDFLAGS@
+@@ -28,7 +28,7 @@ everything:	logo logolib/Messages helpfiles helpfiles/HELPCONTENTS
+ #logo-mode
+ 
+ mem.o:	mem.c
+-	$(CC) $(CFLAGS) -O0 -c mem.c
++	$(CC) $(CFLAGS) -c mem.c
+ 
+ svn.c:	$(SRCS)
+ 	echo 'char* SVN = "('`svnversion|tr -d '\r'`')";' > svn.c

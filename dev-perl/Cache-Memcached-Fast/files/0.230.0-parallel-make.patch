@@ -1,0 +1,15 @@
+diff --git a/src/Makefile.PL b/src/Makefile.PL
+index 3a945d4..2c1e03a 100644
+--- a/src/Makefile.PL
++++ b/src/Makefile.PL
+@@ -55,6 +55,10 @@ libclient$(LIB_EXT): $(OBJECT)
+ 	$(AR) cr libclient$(LIB_EXT) $(OBJECT)
+ 	$(RANLIB) libclient$(LIB_EXT)
+ 
++dispatch_key.o : compute_crc32.h
++
++client.o : parse_keyword.h
++
+ parse_keyword.c parse_keyword.h :: genparser.pl reply.kw
+ 	$(PERL) genparser.pl reply.kw parse_keyword.c parse_keyword.h
+ 

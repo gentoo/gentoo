@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 MY_PN="${PN/asfr/ASFR}"
 DESCRIPTION="ASFRecorder - Download Windows Media Streaming files"
-HOMEPAGE="http://sourceforge.net/projects/asfrecorder/"
+HOMEPAGE="https://sourceforge.net/projects/asfrecorder/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip"
 
 LICENSE="public-domain"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="optimize APNG images"
-HOMEPAGE="http://sourceforge.net/projects/apng/"
+HOMEPAGE="https://sourceforge.net/projects/apng/"
 SRC_URI="mirror://sourceforge/apng/APNG_Optimizer/${PV}/${P}-src.zip"
 
 LICENSE="LGPL-2.1"

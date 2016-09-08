@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Override subroutines in a module for unit testing"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

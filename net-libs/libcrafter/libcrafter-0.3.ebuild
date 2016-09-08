@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit autotools eutils
 
 DESCRIPTION="A high level C++ network packet sniffing and crafting library"
 HOMEPAGE="https://github.com/pellegre/libcrafter"
-SRC_URI="https://github.com/pellegre/${PN}/archive/version-${PV}.tar.gz -> ${PV}.tar.gz"
+SRC_URI="https://github.com/pellegre/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

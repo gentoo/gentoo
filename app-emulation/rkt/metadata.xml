@@ -6,10 +6,13 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<longdescription lang="en">
-		rkt is a new container runtime, designed for composability, security,
-		and speed. Today we are releasing a prototype version on GitHub to begin
-		gathering feedback from our community and explain why we are building
-		rkt. 
+		rkt is the next-generation container manager for Linux clusters.
+		Designed for security, simplicity, and composability within modern
+		cluster architectures, rkt discovers, verifies, fetches, and executes
+		application containers with pluggable isolation. rkt can run the same
+		container with varying degrees of protection, from lightweight,
+		OS-level namespace and capabilities isolation to heavier, VM-level
+		hardware virtualization.
 	</longdescription>
 	<use>
 		<flag name="actool">Install the actool for ACI manipulation</flag>

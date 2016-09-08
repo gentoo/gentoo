@@ -9,7 +9,6 @@
  <flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
  <flag name="bindist">Disable EC algorithms (as they seem to be patented) -- note: changes the ABI</flag>
  <flag name="rfc3779">Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)</flag>
- <flag name="sctp">Support for Stream Control Transmission Protocol</flag>
  <flag name="sslv2">Support for the old/insecure SSLv2 protocol -- note: not required for TLS/https</flag>
  <flag name="sslv3">Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https</flag>
  <flag name="tls-heartbeat">Enable the Heartbeat Extension in TLS and DTLS</flag>

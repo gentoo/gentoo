@@ -19,14 +19,12 @@
  #include <libavformat/avio.h>
  #include <libavutil/avutil.h>
  #include <libavutil/imgutils.h>
-diff --git a/media/filters/ffmpeg_demuxer.cc b/media/filters/ffmpeg_demuxer.cc
-index 155e980..7ba327a 100644
---- a/media/filters/ffmpeg_demuxer.cc
-+++ b/media/filters/ffmpeg_demuxer.cc
-@@ -1034,24 +1034,6 @@
-   // If no estimate is found, the stream entry will be kInfiniteDuration().
+--- a/media/filters/ffmpeg_demuxer.cc.orig	2016-08-01 10:52:01.528177808 +0000
++++ b/media/filters/ffmpeg_demuxer.cc	2016-08-01 10:52:27.160707694 +0000
+@@ -1150,24 +1150,6 @@
+   // If no estimate is found, the stream entry will be kInfiniteDuration.
    std::vector<base::TimeDelta> start_time_estimates(format_context->nb_streams,
-                                                     kInfiniteDuration());
+                                                     kInfiniteDuration);
 -  const AVFormatInternal* internal = format_context->internal;
 -  if (internal && internal->packet_buffer &&
 -      format_context->start_time != static_cast<int64_t>(AV_NOPTS_VALUE)) {
@@ -46,28 +44,5 @@ index 155e980..7ba327a 100644
 -    }
 -  }
  
+   std::unique_ptr<MediaTracks> media_tracks(new MediaTracks());
    AVStream* audio_stream = NULL;
-   AudioDecoderConfig audio_config;
-Index: build/linux/unbundle/ffmpeg.gyp
-diff --git a/build/linux/unbundle/ffmpeg.gyp b/build/linux/unbundle/ffmpeg.gyp
-index e3c3723894ceae651920154dbb65cf83aa4d3d40..b86a1c4dc71c55d86a0bb66664f27cfe4f243fbc 100644
---- a/build/linux/unbundle/ffmpeg.gyp
-+++ b/build/linux/unbundle/ffmpeg.gyp
-@@ -41,6 +41,17 @@
-           'USE_SYSTEM_FFMPEG',
-         ],
-       },
-+      'variables': {
-+        'headers_root_path': '.',
-+        'header_filenames': [
-+          'libavcodec/avcodec.h',
-+          'libavformat/avformat.h',
-+          'libavutil/imgutils.h',
-+        ],
-+      },
-+      'includes': [
-+        '../../build/shim_headers.gypi',
-+      ],
-       'link_settings': {
-         'ldflags': [
-           '<!@(pkg-config --libs-only-L --libs-only-other libavcodec libavformat libavutil)',

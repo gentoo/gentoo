@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mattm@gentoo.org</email>
-		<name>Matthew Marlowe</name>
-	</maintainer>
 	<use>
 		<flag name="extjs">Build Wt Ext library with JavaScript-only widgets (http://extjs.com/)</flag>
 		<flag name="fcgi">Compile in FCGI connector</flag>

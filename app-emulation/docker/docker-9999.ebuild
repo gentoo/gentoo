@@ -70,17 +70,18 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
 	~NAMESPACES ~NET_NS ~PID_NS ~IPC_NS ~UTS_NS
-	~DEVPTS_MULTIPLE_INSTANCES
 	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS ~MEMCG
 	~KEYS ~MACVLAN ~VETH ~BRIDGE ~BRIDGE_NETFILTER
-	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
-	~IP_VS
+	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_MANGLE ~IP_NF_TARGET_MASQUERADE
+	~IP_VS ~IP_VS_RR
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK
+	~NETFILTER_XT_MATCH_IPVS
+	~NETFILTER_XT_MARK ~NETFILTER_XT_TARGET_REDIRECT
 	~NF_NAT ~NF_NAT_NEEDED
 
 	~POSIX_MQUEUE
 
-	~MEMCG_KMEM ~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
+	~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
 
 	~BLK_CGROUP ~IOSCHED_CFQ
 	~CGROUP_PERF
@@ -91,7 +92,6 @@ CONFIG_CHECK="
 "
 
 ERROR_KEYS="CONFIG_KEYS: is mandatory"
-ERROR_MEMCG_KMEM="CONFIG_MEMCG_KMEM: is optional"
 ERROR_MEMCG_SWAP="CONFIG_MEMCG_SWAP: is required if you wish to limit swap usage of containers"
 ERROR_RESOURCE_COUNTERS="CONFIG_RESOURCE_COUNTERS: is optional for container statistics gathering"
 
@@ -137,6 +137,19 @@ pkg_setup() {
 	else
 		CONFIG_CHECK+="
 			~CGROUP_NET_PRIO
+		"
+	fi
+
+	if kernel_is lt 4 5; then
+		CONFIG_CHECK+="
+			~MEMCG_KMEM
+		"
+		ERROR_MEMCG_KMEM="CONFIG_MEMCG_KMEM: is optional"
+	fi
+
+	if kernel_is lt 4 7; then
+		CONFIG_CHECK+="
+			~DEVPTS_MULTIPLE_INSTANCES
 		"
 	fi
 
@@ -188,8 +201,11 @@ src_compile() {
 		grep -q -- '-fno-PIC' hack/make.sh || die 'hardened sed failed'
 
 		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
-			-i hack/make/dynbinary || die
-		grep -q -- '-fno-PIC' hack/make/dynbinary || die 'hardened sed failed'
+			-i hack/make/dynbinary-client || die
+		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
+			-i hack/make/dynbinary-daemon || die
+		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
+		grep -q -- '-fno-PIC' hack/make/dynbinary-client || die 'hardened sed failed'
 	fi
 
 	# let's set up some optional features :)
@@ -224,6 +240,7 @@ src_install() {
 	VERSION="$(cat VERSION)"
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd
+	newbin "bundles/$VERSION/dynbinary-daemon/docker-proxy-$VERSION" docker-proxy
 	dosym containerd /usr/bin/docker-containerd
 	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc

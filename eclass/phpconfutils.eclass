@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+# This eclass is deprecated and no longer used. It will be removed
+# in 30 days, #587826.
+
 # @ECLASS: phpconfutils.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>

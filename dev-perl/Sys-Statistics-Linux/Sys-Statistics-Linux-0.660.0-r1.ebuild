@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,7 @@ RDEPEND="dev-perl/YAML-Syck"
 DEPEND="
 	dev-perl/Module-Build
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
+		virtual/perl-Test-Simple
 	)"
 
 SRC_TEST="do"
@@ -30,4 +29,9 @@ src_install() {
 	docompress -x /usr/share/doc/$PF/examples
 	insinto /usr/share/doc/$PF/examples
 	doins examples/*
+}
+
+src_test() {
+	perl_rm_files t/001-pod.t t/002-pod-coverage.t
+	perl-module_src_test
 }

@@ -45,3 +45,6 @@ introspection
 
 # libcap doesn't work on OSX (fcaps.eclass), bug #534264
 filecaps
+
+# linux-exclusive feature
+inotify

@@ -5,10 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>gregkh@gentoo.org</email>
-		<name>Greg Kroah-Hartman</name>
-	</maintainer>
 	<use>
 		<flag name="http2">Enabled HTTP/2.0 support</flag>
 		<flag name="ssh">Enabled SSH urls in curl using libssh2</flag>

@@ -1,0 +1,26 @@
+Index: src/connection.c
+===================================================================
+--- src/connection.c	(revision 827)
++++ src/connection.c	(revision 828)
+@@ -230,20 +230,12 @@
+ #ifdef ENABLE_GNUTLS
+   if (strcmp (proto, UC_PROTOCOL_HTTPS) == 0)
+   {
+-    const gint cert_type_priority[3] =
+-    {
+-      GNUTLS_CRT_X509,
+-      GNUTLS_CRT_OPENPGP,
+-      0
+-    };
+-
+     conn->use_gnutls = TRUE;
+     conn->port = atoi (UC_URL_DEFAULT_SSL_PORT);
+ 
+     gnutls_init (&conn->session_gnutls, GNUTLS_CLIENT);
+     gnutls_set_default_priority (conn->session_gnutls);
+-    gnutls_certificate_type_set_priority (conn->session_gnutls,
+-                                          cert_type_priority);
++    gnutls_set_default_priority (conn->session_gnutls);
+     gnutls_credentials_set (conn->session_gnutls, GNUTLS_CRD_CERTIFICATE,
+                             xcred_gnutls);
+   }

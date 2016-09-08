@@ -11,7 +11,7 @@ inherit cmake-utils eutils wxwidgets
 DESCRIPTION="Music management program designed for all music enthusiasts"
 HOMEPAGE="http://guayadeque.org/"
 #SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-SRC_URI="http://sourceforge.net/code-snapshots/svn/g/gu/guayadeque/code/guayadeque-code-1887.zip -> ${P}.zip"
+SRC_URI="https://sourceforge.net/code-snapshots/svn/g/gu/guayadeque/code/guayadeque-code-1887.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

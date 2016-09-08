@@ -8,7 +8,7 @@ GENTOO_VDR_CONDITIONAL=yes
 inherit vdr-plugin-2 cvs toolchain-funcs
 
 DESCRIPTION="Video Disk Recorder Xinelib PlugIn"
-HOMEPAGE="http://sourceforge.net/projects/xineliboutput/"
+HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 
 ECVS_SERVER="xineliboutput.cvs.sourceforge.net:/cvsroot/xineliboutput"
 ECVS_MODULE="${PN}"

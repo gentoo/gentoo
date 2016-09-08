@@ -40,7 +40,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-        --disable-profile \
+		--disable-profile \
 		--enable-release \
 		--disable-autocflags \
 		--enable-undenormal \

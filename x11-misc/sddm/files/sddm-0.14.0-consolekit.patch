@@ -1,0 +1,9 @@
+--- a/data/scripts/Xsession	2016-08-28 14:52:04.910181422 +0200
++++ b/data/scripts/Xsession	2016-08-28 14:53:07.157184480 +0200
+@@ -91,5 +91,5 @@
+ if [ -z "$@" ]; then
+     exec xmessage -center -buttons OK:0 -default OK "Sorry, $DESKTOP_SESSION is no valid session."
+ else
+-    exec $@
++    exec ck-launch-session $@
+ fi

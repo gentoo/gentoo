@@ -32,7 +32,7 @@ media-libs/elementary javascript
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
 net-analyzer/rrdtool rados
 
-# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on Alpha.
 app-text/tesseract scrollview
 
@@ -76,10 +76,6 @@ dev-python/restkit cli
 # app-portage/g-sorcery pulls in pymongo and a whole host of deps that don't
 # work on alpha. Mask USE flag for layman accordingly
 app-portage/layman -g-sorcery
-
-# Brian Evans <grknight@gentoo.org> (17 Sep 2015)
-# Mask new USE flags for percona-server which are not available on alpha
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Tobias Klausmann <klausman@gentoo.org> (16 Sep 2015)
 # Mask USE=sssd for sudo because sys-auth/sssd is relatively big and doesn't

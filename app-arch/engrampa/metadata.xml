@@ -9,8 +9,11 @@
 		<flag name="caja">Enable engrampa to integrate with
 			<pkg>mate-base/caja</pkg> by providing entries in its context 
 			menu</flag>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="magic">Enable filetype auto-detection via
 			<pkg>sys-apps/file</pkg></flag>
+		<flag name="packagekit">Enable support for installing via <pkg>app-admin/packagekit</pkg>
+			based on archive type</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/engrampa</remote-id>

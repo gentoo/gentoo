@@ -9,7 +9,7 @@ inherit vdr-plugin-2
 GENTOO_VDR_CONDITIONAL=yes
 
 DESCRIPTION="Video Disk Recorder Xinelib PlugIn"
-HOMEPAGE="http://sourceforge.net/projects/xineliboutput/"
+HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 SRC_URI="mirror://sourceforge/${PN#vdr-}/${P}.tgz"
 
 SLOT="0"

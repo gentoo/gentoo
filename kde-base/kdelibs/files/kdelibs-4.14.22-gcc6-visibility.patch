@@ -1,0 +1,26 @@
+From: David Faure <faure@kde.org>
+Date: Tue, 16 Aug 2016 13:50:57 +0000
+Subject: Fix wrong value of __KDE_HAVE_GCC_VISIBILITY on systems with gcc 6.
+X-Git-Url: http://quickgit.kde.org/?p=kdelibs.git&a=commitdiff&h=e9b25c7c040d8526fe8675b97d1067c8ffa7249f
+---
+Fix wrong value of __KDE_HAVE_GCC_VISIBILITY on systems with gcc 6.
+
+Clearly the author of this regexp, in 2006, thought gcc would never
+hit version 6 :-)
+
+REVIEW: 128697
+---
+
+
+--- a/cmake/modules/FindKDE4Internal.cmake
++++ b/cmake/modules/FindKDE4Internal.cmake
+@@ -1221,7 +1221,7 @@
+    # get the gcc version
+    exec_program(${CMAKE_C_COMPILER} ARGS ${CMAKE_C_COMPILER_ARG1} --version OUTPUT_VARIABLE _gcc_version_info)
+ 
+-   string (REGEX MATCH "[345]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
++   string (REGEX MATCH "[3-9]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
+    # gcc on mac just reports: "gcc (GCC) 3.3 20030304 ..." without the patch level, handle this here:
+    if (NOT _gcc_version)
+       string (REGEX MATCH ".*\\(GCC\\).* ([34]\\.[0-9]) .*" "\\1.0" _gcc_version "${gcc_on_macos}")
+

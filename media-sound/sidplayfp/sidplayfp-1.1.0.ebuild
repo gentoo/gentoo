@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A sidplay2 fork with resid-fp"
-HOMEPAGE="http://sourceforge.net/projects/sidplay-residfp/"
+HOMEPAGE="https://sourceforge.net/projects/sidplay-residfp/"
 SRC_URI="mirror://sourceforge/sidplay-residfp/${P}.tar.gz"
 
 LICENSE="GPL-2"

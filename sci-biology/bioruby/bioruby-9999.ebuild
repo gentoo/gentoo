@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20"
+USE_RUBY="ruby20 ruby21"
 EGIT_REPO_URI="git://github.com/bioruby/bioruby.git
 	https://github.com/bioruby/bioruby.git"
 

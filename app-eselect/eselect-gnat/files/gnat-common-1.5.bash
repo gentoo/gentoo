@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -213,7 +213,6 @@ generate_envFile() {
 	echo "INFOPATH=$(get_var_from_spec ${SPECSDIR}/${toset} infopath):$(get_lib_var_settings INFOPATH ${toset} ${libs[@]})" >> "${envfile}"
 	# the next three use the common base
 	local libBase=$(get_var_from_spec ${SPECSDIR}/${toset} ldpath)
-	echo "COMPILER_PATH=${libexecpath}:${libBase}:" >> "${envfile}"
 	echo "LDPATH=${libBase}:${libBase}/adalib:$(get_lib_var_settings LDPATH ${toset} ${libs[@]})" >> "${envfile}"
 	echo "ADA_INCLUDE_PATH=${libBase}/adainclude:$(get_lib_var_settings ADA_INCLUDE_PATH ${toset} ${libs[@]})" >> "${envfile}"
 	echo "ADA_OBJECTS_PATH=${libBase}/adalib:$(get_lib_var_settings ADA_OBJECTS_PATH ${toset} ${libs[@]})" >> "${envfile}"

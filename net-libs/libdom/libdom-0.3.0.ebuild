@@ -12,7 +12,7 @@ HOMEPAGE="http://www.netsurf-browser.org/projects/libdom/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
 IUSE="expat test xml"
 
 RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]

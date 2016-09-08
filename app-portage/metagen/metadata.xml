@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>neurogeek@gentoo.org</email>
-</maintainer>
-<maintainer type="person">
 	<email>sping@gentoo.org</email>
 </maintainer>
 <longdescription>metagen creates metadata.xml files for ebuilds</longdescription>

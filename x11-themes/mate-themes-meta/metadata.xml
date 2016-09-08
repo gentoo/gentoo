@@ -5,4 +5,7 @@
 		<email>mate@gentoo.org</email>
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
+	<use>
+		<flag name="gtk2-only">Allow dependency-resolution for a system without GTK+3</flag>
+	</use>
 </pkgmetadata>

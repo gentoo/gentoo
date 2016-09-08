@@ -1,0 +1,4 @@
+# Configuration to create /run/prelude-correlator directory
+# Used as part of systemd's tmpfiles
+
+d /run/prelude-correlator 0755 root root

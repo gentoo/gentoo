@@ -11,7 +11,7 @@ RESTRICT_PYTHON_ABIS="3.*"
 inherit python
 
 DESCRIPTION="Fuse module to mount uncompressed RAR archives"
-HOMEPAGE="http://sourceforge.net/projects/rarfs/"
+HOMEPAGE="https://sourceforge.net/projects/rarfs/"
 SRC_URI="mirror://sourceforge/rarfs/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dastergon@gentoo.org</email>
-		<name>Pavlos Ratis</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>christian.tietz@mailbox.org</email>
 		<name>Christian Tietz</name>
 		<description>Proxy Maintainer</description>

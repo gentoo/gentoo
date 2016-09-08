@@ -2,10 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>binki@gentoo.org</email>
-		<name>Nathan Phillip Brink</name>
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">squirrel</remote-id>
+		<remote-id type="github">albertodemichelis/squirrel</remote-id>
 	</upstream>
 </pkgmetadata>

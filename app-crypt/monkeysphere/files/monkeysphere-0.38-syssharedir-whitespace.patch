@@ -1,0 +1,53 @@
+From 0e339de4772b6de1849dc55790821c3dd5943be3 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Tue, 9 Aug 2016 09:39:45 -0400
+Subject: [PATCH 2/2] ensure that this works even if SYSSHAREDIR has whitespace
+
+---
+ src/share/ma/add_certifier | 2 +-
+ src/share/ma/update_users  | 2 +-
+ src/share/mh/add_revoker   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/share/ma/add_certifier b/src/share/ma/add_certifier
+index 5416aa9..9488806 100644
+--- a/src/share/ma/add_certifier
++++ b/src/share/ma/add_certifier
+@@ -101,7 +101,7 @@ if [ -f "$keyID" -o "$keyID" = '-' ] ; then
+     # check the key is ok as monkeysphere user before loading
+     log debug "checking keys in file..."
+     fingerprint=$(su_monkeysphere_user \
+-	bash -c ". ${SYSSHAREDIR}/common && list_primary_fingerprints" < "$keyID")
++	bash -c "$(printf ". %q && list_primary_fingerprints" "${SYSSHAREDIR}/common")" < "$keyID")
+ 
+     if [ $(printf "%s" "$fingerprint" | egrep -c '^[A-F0-9]{40}$') -ne 1 ] ; then
+ 	failure "There was not exactly one gpg key in the file."
+diff --git a/src/share/ma/update_users b/src/share/ma/update_users
+index 4f83e0c..a0ec21b 100644
+--- a/src/share/ma/update_users
++++ b/src/share/ma/update_users
+@@ -79,7 +79,7 @@ for uname in $unames ; do
+ 
+ 	    # process authorized_user_ids file, as monkeysphere user
+ 	    su_monkeysphere_user \
+-		/usr/bin/env "STRICT_MODES=$STRICT_MODES" bash -c ". ${SYSSHAREDIR}/common && process_authorized_user_ids -" \
++		/usr/bin/env "STRICT_MODES=$STRICT_MODES" bash -c "$(printf ". %q && process_authorized_user_ids -" "${SYSSHAREDIR}/common")"\
+ 		< "$authorizedUserIDs" \
+ 		> "$tmpAuthorizedKeys"
+ 
+diff --git a/src/share/mh/add_revoker b/src/share/mh/add_revoker
+index e00ac4e..de08961 100644
+--- a/src/share/mh/add_revoker
++++ b/src/share/mh/add_revoker
+@@ -52,7 +52,7 @@ if [ -f "$revokerKeyID" -o "$revokerKeyID" = '-' ] ; then
+     # check the key is ok as monkeysphere user before loading
+     log debug "checking keys in file..."
+     fingerprint=$(su_monkeysphere_user \
+-	bash -c ". ${SYSSHAREDIR}/common && list_primary_fingerprints" < "$revokerKeyID")
++	bash -c "$(printf ". %q && list_primary_fingerprints" "${SYSSHAREDIR}/common")" < "$revokerKeyID")
+ 
+     if [ $(printf "%s" "$fingerprint" | egrep -c '^[A-F0-9]{40}$') -ne 1 ] ; then
+ 	failure "There was not exactly one gpg key in the file."
+-- 
+2.7.3
+

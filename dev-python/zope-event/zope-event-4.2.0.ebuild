@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=(python{2_7,3_4,3_5})
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 
 inherit distutils-r1
 MY_PN=zope.event
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )

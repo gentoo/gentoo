@@ -52,6 +52,7 @@ dz - Dzongkha
 el - Modern Greek
 en - English
 en-GB - English (United Kingdom)
+en-US - English (United States)
 en-ZA - English (South Africa)
 eo - Esperanto
 es - Spanish
@@ -67,6 +68,7 @@ fi - Finnish
 fil - Filipino
 fo - Faroese
 fr - French
+fr-CA - French (Canada)
 fy - Western Frisian
 ga - Irish
 gd - Scottish Gaelic
@@ -94,6 +96,7 @@ ko - Korean
 kok - Konkani (macrolanguage)
 ks - Kashmiri
 ku - Kurdish
+ky - Kirghiz
 la - Latin
 lb - Luxembourgish
 lo - Lao
@@ -143,6 +146,7 @@ sr - Serbian
 sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
 sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
+sr-ME - Serbian (Montenegro)
 ss - Swati
 st - Southern Sotho
 sv - Swedish

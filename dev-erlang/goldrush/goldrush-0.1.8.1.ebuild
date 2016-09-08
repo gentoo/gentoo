@@ -16,7 +16,7 @@ SRC_URI="https://github.com/DeadZen/${PN}/archive/${MY_PV}.tar.gz
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 
 DEPEND=">=dev-lang/erlang-17.1"
 RDEPEND="${DEPEND}"

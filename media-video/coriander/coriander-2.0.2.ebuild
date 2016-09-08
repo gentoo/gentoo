@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A Gnome2 GUI for firewire camera control and capture"
-HOMEPAGE="http://sourceforge.net/projects/coriander/"
+HOMEPAGE="https://sourceforge.net/projects/coriander/"
 
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

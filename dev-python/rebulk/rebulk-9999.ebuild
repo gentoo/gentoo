@@ -12,7 +12,7 @@ DESCRIPTION="Python library that performs advanced searches in strings"
 HOMEPAGE="https://github.com/Toilal/rebulk https://pypi.python.org/pypi/rebulk"
 EGIT_REPO_URI="git://github.com/Toilal/${PN}.git"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"

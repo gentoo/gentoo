@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=media-libs/opencv-3.0.0:=[contrib]"
+DEPEND="media-libs/opencv:=[contrib(+)]"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -23,7 +23,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_OPENCV3=ON
+		-DENABLE_OPENCV3=$(has_version ">=media-libs/opencv-3" && echo yes || echo no)
 	)
 
 	kde4-base_src_configure

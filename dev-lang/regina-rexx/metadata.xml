@@ -10,6 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">regina-rexx</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=28102</bugs-to>
+		<bugs-to>https://sourceforge.net/tracker/?group_id=28102</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -6,6 +6,7 @@
         <name>Gentoo MATE Desktop</name>
     </maintainer>
 	<use>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="user-guide">Install MATE user guide</flag>
 	</use>
     <upstream>

@@ -10,6 +10,7 @@ KDE_LINGUAS="bs ca ca@valencia da de el en_GB es et fi fr gl it kk nb nl pl pt
 pt_BR ru sk sl sv th tr uk zh_CN zh_TW"
 VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="KDE development support libraries and apps"
@@ -35,11 +36,8 @@ DEPEND="${COMMON_DEPEND}
 	classbrowser? ( dev-libs/boost )
 "
 RDEPEND="${COMMON_DEPEND}
-	konsole? ( || (
-		$(add_kdeapps_dep konsolepart)
-		$(add_kdeapps_dep konsole)
-	) )
 	cvs? ( dev-vcs/cvs )
+	konsole? ( $(add_kdeapps_dep konsolepart) )
 	!<dev-util/kdevelop-${KDEVELOP_VERSION}:4
 "
 

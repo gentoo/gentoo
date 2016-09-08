@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# @DEAD
+# This eclass is deprecated and no longer used. It will be removed
+# in 30 days, #551916.
+
+
 inherit nsplugins multilib
 
 if [[ ${PN: -4} != "-bin" ]] ; then

@@ -9,7 +9,7 @@ JAVA_PKG_IUSE="doc examples source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java Spell Check API"
-HOMEPAGE="http://sourceforge.net/projects/jazzy"
+HOMEPAGE="https://sourceforge.net/projects/jazzy"
 SRC_URI="mirror://sourceforge/${PN}/${P}.src.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"

@@ -25,7 +25,7 @@ wget http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db -O hddtemp.
 
 # Try to get the Gentoo HDD DB from WebCVS.  If that fails, just use the Gentoo HDD database
 # that was installed by the ebuild.
-if wget http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-admin/hddtemp/files/hddgentoo.db -O hddtmp.db -q; then
+if wget https://gitweb.gentoo.org/repo/gentoo.git/plain/app-admin/hddtemp/files/hddgentoo.db -O hddtmp.db -q; then
 	mv -f hddtmp.db hddgentoo.db
 fi
 

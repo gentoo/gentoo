@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND="
 	gcrypt? ( dev-libs/libgcrypt:= )
 	gpg? ( app-crypt/gnupg )
 	nss? ( dev-libs/nss )
-	openssl? ( >=dev-libs/openssl-1.0.1:0 )
+	openssl? ( >=dev-libs/openssl-1.0.1:0= )
 	pkcs11? (
 		dev-libs/openssl:0
 		dev-libs/pkcs11-helper

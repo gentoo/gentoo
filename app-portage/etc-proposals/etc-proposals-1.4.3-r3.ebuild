@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python2_7)
 inherit distutils-r1
 
 DESCRIPTION="a set of tools for updating gentoo config files"
-HOMEPAGE="http://sourceforge.net/projects/etc-proposals.berlios/"
+HOMEPAGE="https://sourceforge.net/projects/etc-proposals.berlios/"
 SRC_URI="mirror://sourceforge/${PN}.berlios/${P}.tar.gz"
 
 IUSE="gtk qt4"

@@ -10,7 +10,7 @@ MY_PN="exodus"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enhancement to the EXODUSII finite element database model"
-HOMEPAGE="http://sourceforge.net/projects/exodusii/"
+HOMEPAGE="https://sourceforge.net/projects/exodusii/"
 SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.gz"
 
 LICENSE="BSD"

@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="mkDoxy generates Doxygen-compatible HTML documentation for makefiles"
-HOMEPAGE="http://sourceforge.net/projects/mkdoxy/"
+HOMEPAGE="https://sourceforge.net/projects/mkdoxy/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

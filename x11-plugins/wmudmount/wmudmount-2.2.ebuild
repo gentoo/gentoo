@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils gnome2-utils
 
 DESCRIPTION="A filesystem mounter that uses udisks to handle notification and mounting"
-HOMEPAGE="http://sourceforge.net/projects/wmudmount/"
+HOMEPAGE="https://sourceforge.net/projects/wmudmount/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

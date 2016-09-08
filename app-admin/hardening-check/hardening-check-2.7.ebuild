@@ -10,7 +10,7 @@ DESCRIPTION="Report the hardening characterists of a set of binaries"
 HOMEPAGE="https://wiki.debian.org/Hardening https://packages.debian.org/source/jessie/hardening-wrapper"
 SRC_URI="mirror://debian/pool/main/h/${MY_PN}/${MY_PN}_${PV}.tar.xz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 LICENSE="GPL-2+"
 SLOT="0"

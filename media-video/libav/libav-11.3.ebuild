@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -152,6 +152,7 @@ src_prepare() {
 	epatch_user
 
 	epatch "${WORKDIR}/0001-x86-Put-COPY3_IF_LT-under-HAVE_6REGS.patch"
+	epatch "${FILESDIR}"/${P}-libvpx-1.5.0.patch #565696
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then

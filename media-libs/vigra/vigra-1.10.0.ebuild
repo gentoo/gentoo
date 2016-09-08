@@ -10,7 +10,7 @@ PYTHON_REQ_USE="threads,xml"
 inherit cmake-utils python-r1
 
 DESCRIPTION="C++ computer vision library with emphasize on customizable algorithms and data structures"
-HOMEPAGE="http://hci.iwr.uni-heidelberg.de/vigra/"
+HOMEPAGE="https://ukoethe.github.io/vigra/"
 SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

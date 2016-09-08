@@ -7,8 +7,9 @@ EAPI=6
 CMAKE_MIN_VERSION="3.3.1-r1"
 CPPUNIT_REQUIRED="optional"
 DECLARATIVE_REQUIRED="always"
-OPENGL_REQUIRED="optional"
 KDE_HANDBOOK="optional"
+OPENGL_REQUIRED="optional"
+WEBKIT_REQUIRED="always"
 inherit kde4-base fdo-mime multilib toolchain-funcs flag-o-matic
 
 EGIT_BRANCH="KDE/4.14"

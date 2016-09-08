@@ -20,11 +20,12 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	dev-db/sqlite:3
-	dev-libs/glib:2
+	>=dev-libs/glib-2.16:2
 	>=media-libs/clutter-1.12:1.0[introspection?]
 	media-libs/cogl:=
 	>=net-libs/libsoup-2.34:2.4
-	x11-libs/cairo
+	>=x11-libs/cairo-1.4
+	x11-libs/gtk+:3
 	gtk? (
 		x11-libs/gtk+:3[introspection?]
 		media-libs/clutter-gtk:1.0 )

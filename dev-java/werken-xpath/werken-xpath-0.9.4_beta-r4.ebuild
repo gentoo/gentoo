@@ -13,7 +13,7 @@ MY_PV=$(replace_version_separator 3 '-')
 MY_P=${MY_PN}-${MY_PV}
 
 DESCRIPTION="W3C XPath-Rec implementation for DOM4J"
-HOMEPAGE="http://sourceforge.net/projects/werken-xpath/"
+HOMEPAGE="https://sourceforge.net/projects/werken-xpath/"
 SRC_URI="mirror://gentoo/${MY_P}-src.tar.gz"
 # This tarball was acquired from jpackage's src rpm of the package by the same name
 

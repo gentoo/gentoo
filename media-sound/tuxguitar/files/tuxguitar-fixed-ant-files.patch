@@ -1,0 +1,237 @@
+diff -purN a/TuxGuitar/build.properties b/TuxGuitar/build.properties
+--- a/TuxGuitar/build.properties	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar/build.properties	2016-08-23 10:55:06.271917712 +0100
+@@ -5,4 +5,5 @@ ant.build.javac.source=1.5
+ ant.build.javac.target=1.5
+ 
+ path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
++path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar
+ path.swt=../TuxGuitar/lib/swt.jar
+diff -purN a/TuxGuitar/build.xml b/TuxGuitar/build.xml
+--- a/TuxGuitar/build.xml	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar/build.xml	2016-08-23 08:59:03.987797193 +0100
+@@ -12,6 +12,7 @@
+ 	
+ 	<path id="class.path">
+ 		<pathelement location="${path.tuxguitar-lib}"/>
++		<pathelement location="${path.tuxguitar-editor-utils}"/>
+ 		<pathelement location="${path.swt}"/>
+ 	</path >
+ 	
+diff -purN a/TuxGuitar-awt-graphics/build.properties b/TuxGuitar-awt-graphics/build.properties
+--- a/TuxGuitar-awt-graphics/build.properties	1970-01-01 01:00:00.000000000 +0100
++++ b/TuxGuitar-awt-graphics/build.properties	2016-08-23 09:11:06.737851049 +0100
+@@ -0,0 +1,7 @@
++### ANT Flags
++#
++# build.compiler=gcj
++ant.build.javac.source=1.5
++ant.build.javac.target=1.5
++
++path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
+diff -purN a/TuxGuitar-awt-graphics/build.xml b/TuxGuitar-awt-graphics/build.xml
+--- a/TuxGuitar-awt-graphics/build.xml	1970-01-01 01:00:00.000000000 +0100
++++ b/TuxGuitar-awt-graphics/build.xml	2016-08-23 12:40:24.005858183 +0100
+@@ -0,0 +1,45 @@
++<?xml version="1.0" encoding="iso-8859-1"?>
++
++<project name="TuxGuitar-awt-graphics" basedir="." default="all">
++	<description>
++		TuxGuitar AWT Graphics
++	</description>
++	
++	<property file="build.properties" />
++	<property name="build.src.path" value="src" />
++	<property name="build.path" value="build" />
++	<property name="build.jar" value="tuxguitar-awt-graphics.jar" />
++	
++	<path id="class.path">
++		<pathelement location="${path.tuxguitar-lib}"/>
++	</path >
++	
++	<target name="init" depends="clean">
++		<mkdir dir="${build.path}" />
++	</target>
++	
++	<target name="build" depends="init">
++		<echo>+-------------------------------------------------+</echo>
++		<echo>|          B U I L D I N G   P L U G I N          |</echo>
++		<echo>+-------------------------------------------------+</echo>
++		
++		<javac srcdir="${build.src.path}" destdir="${build.path}" debug="false" >
++			<classpath refid="class.path"/>
++			<include name="**/*.java"/>
++		</javac>
++		
++		<echo>+-----------------------------------------------+</echo>
++		<echo>|        P A C K A G I N G   P L U G I N        |</echo>
++		<echo>+-----------------------------------------------+</echo>
++		
++		<jar destfile="${build.jar}" basedir="${build.path}" />
++		<delete quiet="true" dir="${build.path}" />
++	</target>
++	
++	<target name="clean">
++		<delete quiet="true" dir="${build.path}" />
++		<delete quiet="true" file="${build.jar}" />
++	</target>
++	
++	<target name="all" depends="build" />
++</project>
+diff -purN a/TuxGuitar-editor-utils/build.properties b/TuxGuitar-editor-utils/build.properties
+--- a/TuxGuitar-editor-utils/build.properties	1970-01-01 01:00:00.000000000 +0100
++++ b/TuxGuitar-editor-utils/build.properties	2016-08-23 08:46:42.164749665 +0100
+@@ -0,0 +1,7 @@
++### ANT Flags
++#
++# build.compiler=gcj
++ant.build.javac.source=1.5
++ant.build.javac.target=1.5
++
++path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
+diff -purN a/TuxGuitar-editor-utils/build.xml b/TuxGuitar-editor-utils/build.xml
+--- a/TuxGuitar-editor-utils/build.xml	1970-01-01 01:00:00.000000000 +0100
++++ b/TuxGuitar-editor-utils/build.xml	2016-08-23 10:51:44.533478977 +0100
+@@ -0,0 +1,45 @@
++<?xml version="1.0" encoding="iso-8859-1"?>
++
++<project name="TuxGuitar-editor-utils" basedir="." default="all">
++	<description>
++		TuxGuitar Editor Utils
++	</description>
++	
++	<property file="build.properties" />
++	<property name="build.src.path" value="src" />
++	<property name="build.path" value="build" />
++	<property name="build.jar" value="tuxguitar-editor-utils.jar" />
++
++	<path id="class.path">
++		<pathelement location="${path.tuxguitar-lib}"/>
++	</path >
++
++	<target name="init" depends="clean">
++		<mkdir dir="${build.path}" />
++	</target>
++	
++	<target name="build" depends="init">
++		<echo>+-------------------------------------------------+</echo>
++		<echo>|         B U I L D I N G   L I B R A R Y         |</echo>
++		<echo>+-------------------------------------------------+</echo>
++		
++		<javac srcdir="${build.src.path}" destdir="${build.path}" debug="false" >
++			<classpath refid="class.path"/>
++			<include name="**/*.java"/>
++		</javac>
++		
++		<echo>+-----------------------------------------------+</echo>
++		<echo>|       P A C K A G I N G   L I B R A R Y       |</echo>
++		<echo>+-----------------------------------------------+</echo>
++		
++		<jar destfile="${build.jar}" basedir="${build.path}" />
++		<delete quiet="true" dir="${build.path}" />
++	</target>
++	
++	<target name="clean">
++		<delete quiet="true" dir="${build.path}" />
++		<delete quiet="true" file="${build.jar}" />
++	</target>
++	
++	<target name="all" depends="build" />
++</project>
+diff -purN a/TuxGuitar-gtp-ui/build.xml b/TuxGuitar-gtp-ui/build.xml
+--- a/TuxGuitar-gtp-ui/build.xml	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-gtp-ui/build.xml	2016-08-23 15:21:38.068032721 +0100
+@@ -9,7 +9,7 @@
+ 	<property name="build.src.path" value="src${file.separator}" />
+ 	<property name="build.share.path" value="share${file.separator}" />
+ 	<property name="build.path" value="build${file.separator}" />
+-	<property name="build.jar" value="tuxguitar-gtp.jar" />
++	<property name="build.jar" value="tuxguitar-gtp-ui.jar" />
+ 	
+ 	<path id="class.path">
+ 		<pathelement location="${path.tuxguitar-lib}"/>
+diff -purN a/TuxGuitar-jsa/build.properties b/TuxGuitar-jsa/build.properties
+--- a/TuxGuitar-jsa/build.properties	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-jsa/build.properties	2016-08-23 12:45:00.324325595 +0100
+@@ -7,4 +7,5 @@ ant.build.javac.target=1.5
+ path.tuxguitar=../TuxGuitar/tuxguitar.jar
+ path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
+ path.tuxguitar-gm-utils=../TuxGuitar-gm-utils/tuxguitar-gm-utils.jar
++path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar
+ path.swt=../TuxGuitar/lib/swt.jar
+diff -purN a/TuxGuitar-jsa/build.xml b/TuxGuitar-jsa/build.xml
+--- a/TuxGuitar-jsa/build.xml	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-jsa/build.xml	2016-08-23 12:46:07.932440095 +0100
+@@ -14,6 +14,7 @@
+ 	<path id="class.path">
+ 		<pathelement location="${path.tuxguitar-lib}"/>
+ 		<pathelement location="${path.tuxguitar-gm-utils}"/>
++		<pathelement location="${path.tuxguitar-editor-utils}"/>
+ 		<pathelement location="${path.tuxguitar}"/>
+ 		<pathelement location="${path.swt}"/>
+ 	</path >
+diff -purN a/TuxGuitar-pdf/build.properties b/TuxGuitar-pdf/build.properties
+--- a/TuxGuitar-pdf/build.properties	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-pdf/build.properties	2016-08-23 13:37:17.230856507 +0100
+@@ -7,5 +7,7 @@ ant.build.javac.target=1.5
+ path.tuxguitar=../TuxGuitar/tuxguitar.jar
+ path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
+ path.tuxguitar-gm-utils=../TuxGuitar-gm-utils/tuxguitar-gm-utils.jar
++path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar
++path.tuxguitar-awt-graphics=../TuxGuitar-awt-graphics/tuxguitar-awt-graphics.jar
+ path.itext=../TuxGuitar/lib/itext.jar
+ path.swt=../TuxGuitar/lib/swt.jar
+diff -purN a/TuxGuitar-pdf/build.xml b/TuxGuitar-pdf/build.xml
+--- a/TuxGuitar-pdf/build.xml	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-pdf/build.xml	2016-08-23 13:37:40.843895665 +0100
+@@ -17,6 +17,8 @@
+ 		<pathelement location="${path.tuxguitar}"/>
+ 		<pathelement location="${path.tuxguitar-lib}"/>
+ 		<pathelement location="${path.tuxguitar-gm-utils}"/>
++		<pathelement location="${path.tuxguitar-editor-utils}"/>
++		<pathelement location="${path.tuxguitar-awt-graphics}"/>
+ 	</path >
+ 	
+ 	<target name="init" depends="clean">
+diff -purN a/TuxGuitar-tray/build.properties b/TuxGuitar-tray/build.properties
+--- a/TuxGuitar-tray/build.properties	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-tray/build.properties	2016-08-23 13:41:10.241259782 +0100
+@@ -6,4 +6,6 @@ ant.build.javac.target=1.5
+ 
+ path.tuxguitar=../TuxGuitar/tuxguitar.jar
+ path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
++path.tuxguitar-gm-utils=../TuxGuitar-gm-utils/tuxguitar-gm-utils.jar
++path.tuxguitar-editor-utils=../TuxGuitar-editor-utils/tuxguitar-editor-utils.jar
+ path.swt=../TuxGuitar/lib/swt.jar
+diff -purN a/TuxGuitar-tray/build.xml b/TuxGuitar-tray/build.xml
+--- a/TuxGuitar-tray/build.xml	2016-03-16 21:26:23.000000000 +0000
++++ b/TuxGuitar-tray/build.xml	2016-08-23 13:41:41.262315895 +0100
+@@ -15,6 +15,8 @@
+ 	<property name="service.provider" value="org.herac.tuxguitar.tray.TGTrayPlugin" />
+ 	
+ 	<path id="class.path">
++		<pathelement location="${path.tuxguitar-editor-utils}"/>
++		<pathelement location="${path.tuxguitar-gm-utils}"/>
+ 		<pathelement location="${path.tuxguitar-lib}"/>
+ 		<pathelement location="${path.tuxguitar}"/>
+ 		<pathelement location="${path.swt}"/>
+diff -purN a/TuxGuitar-tuner/build.properties b/TuxGuitar-tuner/build.properties
+--- a/TuxGuitar-tuner/build.properties	2016-03-16 21:26:14.000000000 +0000
++++ b/TuxGuitar-tuner/build.properties	2016-08-23 13:42:25.501396719 +0100
+@@ -6,4 +6,5 @@ ant.build.javac.target=1.5
+ 
+ path.tuxguitar=../TuxGuitar/tuxguitar.jar
+ path.tuxguitar-lib=../TuxGuitar-lib/tuxguitar-lib.jar
++path.tuxguitar-gm-utils=../TuxGuitar-gm-utils/tuxguitar-gm-utils.jar
+ path.swt=../TuxGuitar/lib/swt.jar
+diff -purN a/TuxGuitar-tuner/build.xml b/TuxGuitar-tuner/build.xml
+--- a/TuxGuitar-tuner/build.xml	2016-03-16 21:26:14.000000000 +0000
++++ b/TuxGuitar-tuner/build.xml	2016-08-23 13:42:50.180442190 +0100
+@@ -12,6 +12,7 @@
+ 	<property name="build.jar" value="tuxguitar-tuner.jar" />
+ 	
+ 	<path id="class.path">
++		<pathelement location="${path.tuxguitar-gm-utils}"/>
+ 		<pathelement location="${path.tuxguitar-lib}"/>
+ 		<pathelement location="${path.tuxguitar}"/>
+ 		<pathelement location="${path.swt}"/>

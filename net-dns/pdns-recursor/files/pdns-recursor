@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+extra_started_commands="ping"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting PowerDNS Recursor"
+	/usr/sbin/pdns_recursor --daemon=yes &>/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping PowerDNS Recursor"
+	/usr/bin/rec_control quit &>/dev/null
+	eend $?
+}
+
+ping() {
+	ebegin "Pinging PowerDNS Recursor"
+	/usr/bin/rec_control ping &>/dev/null
+	eend $?
+}

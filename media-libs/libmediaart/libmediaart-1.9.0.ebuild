@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,6 +29,7 @@ RDEPEND="
 	qt5? ( dev-qt/qtgui:5 )
 "
 DEPEND="${RDEPEND}
+	dev-libs/gobject-introspection-common
 	>=dev-util/gtk-doc-am-1.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )

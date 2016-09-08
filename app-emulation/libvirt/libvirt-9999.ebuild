@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils user autotools-utils linux-info systemd readme.gentoo
+inherit eutils user autotools-utils linux-info systemd readme.gentoo-r1
 
 BACKPORTS=""
 
@@ -31,10 +31,12 @@ fi
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
-IUSE="apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm \
-	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd sasl \
-	selinux systemd +udev uml +vepa virtualbox virt-network wireshark-plugins \
-	xen"
+IUSE="
+	apparmor audit avahi +caps firewalld fuse glusterfs iscsi +libvirtd lvm
+	lxc +macvtap nfs nls numa openvz parted pcap phyp policykit +qemu rbd
+	sasl selinux +udev uml +vepa virtualbox virt-network wireshark-plugins
+	xen elibc_glibc
+"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
@@ -71,12 +73,12 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	avahi? ( >=net-dns/avahi-0.6[dbus] )
 	caps? ( sys-libs/libcap-ng )
+	elibc_glibc? ( sys-libs/glibc[rpc(+)] )
 	firewalld? ( net-firewall/firewalld )
 	fuse? ( >=sys-fs/fuse-2.8.6 )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
-	lvm? ( >=sys-fs/lvm2-2.02.48-r2 )
-	lxc? ( !systemd? ( sys-power/pm-utils ) )
+	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
@@ -85,19 +87,17 @@ RDEPEND="
 	openvz? ( sys-kernel/openvz-sources:* )
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
-		sys-fs/lvm2
+		sys-fs/lvm2[-device-mapper-only(-)]
 	)
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
 		>=app-emulation/qemu-0.13.0
 		dev-libs/yajl
-		!systemd? ( sys-power/pm-utils )
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl )
 	selinux? ( >=sys-libs/libselinux-2.0.85 )
-	systemd? ( sys-apps/systemd )
 	virt-network? (
 		net-dns/dnsmasq[script]
 		net-firewall/ebtables
@@ -125,7 +125,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	enewgroup qemu 77
-	enewuser qemu 77 -1 -1 qemu kvm
+	enewuser qemu 77 -1 -1 "qemu,kvm"
 
 	# Some people used the masked ebuild which was not adding the qemu
 	# user to the kvm group originally. This results in VMs failing to
@@ -173,7 +173,6 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
-	krnel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	if $(kernel_is ge 3 6); then
 		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
@@ -238,9 +237,9 @@ src_prepare() {
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex avahi avahi-daemon '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi iscsid '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd  ceph '')/" \
+		-e "s/USE_FLAG_AVAHI/$(usex avahi 'use avahi-daemon' '')/" \
+		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
+		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	AUTOTOOLS_AUTORECONF=true
@@ -277,8 +276,6 @@ src_configure() {
 		$(use_with rbd storage-rbd)
 		$(use_with sasl)
 		$(use_with selinux)
-		$(use_with systemd systemd-daemon)
-		$(usex systemd --with-init-script=systemd '')
 		$(use_with udev)
 		$(use_with uml)
 		$(use_with vepa virtualport)
@@ -292,7 +289,9 @@ src_configure() {
 		--without-netcf
 		--without-sanlock
 		--without-xenapi
+
 		--with-esx
+		--with-init-script=systemd
 		--with-qemu-group=$(usex caps qemu root)
 		--with-qemu-user=$(usex caps qemu root)
 		--with-remote
@@ -322,7 +321,8 @@ src_configure() {
 }
 
 src_test() {
-	# Explicitly allow parallel build of tests
+	cd "${BUILD_DIR}"
+
 	export VIR_TEST_DEBUG=1
 	HOME="${T}" emake check || die "tests failed"
 }
@@ -344,7 +344,7 @@ src_install() {
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
-	use systemd && systemd_install_serviced \
+	systemd_install_serviced \
 		"${FILESDIR}"/libvirtd.service.conf libvirtd.service
 
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
@@ -376,10 +376,6 @@ pkg_postinst() {
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
-
-	if [[ -n ${REPLACING_VERSIONS} ]] && ! version_is_at_least 1.2.18-r2 ${REPLACING_VERSIONS} ]]; then
-		FORCE_PRINT_ELOG=true
-	fi
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r1")
 	DISABLE_AUTOFORMATTING=true

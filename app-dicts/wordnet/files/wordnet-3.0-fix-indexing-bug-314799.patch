@@ -1,0 +1,20 @@
+diff -p -u -r WordNet-3.0/lib/morph.c WordNet-3.0-mine/lib/morph.c
+--- a/lib/morph.c	2010-04-12 13:53:04.000000000 +0200
++++ b/lib/morph.c	2010-04-12 13:54:53.000000000 +0200
+@@ -375,14 +375,14 @@ static char *exc_lookup(char *word, int 
+     static char line[WORDBUF], *beglp, *endlp;
+     char *excline;
+ 
+-    if (exc_fps[pos] == NULL)
++    if (exc_fps[pos-1] == NULL)
+ 	return(NULL);
+ 
+     /* first time through load line from exception file */
+     if(word != NULL){
+         if (strlen(word) > WORDBUF - 1)
+            return(NULL);
+-	if ((excline = bin_search(word, exc_fps[pos])) != NULL) {
++	if ((excline = bin_search(word, exc_fps[pos-1])) != NULL) {
+ 	    strcpy(line, excline);
+ 	    endlp = strchr(line,' ');
+ 	} else

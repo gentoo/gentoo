@@ -8,7 +8,7 @@ inherit cmake-utils eutils gnome2-utils games
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
 
-SRC_URI="https://github.com/Cockatrice/${PN}/archive/2016-05-06-Release.tar.gz"
+SRC_URI="https://github.com/Cockatrice/${PN}/archive/2016-05-06-Release.tar.gz -> ${P}.tar.gz"
 
 S=${WORKDIR}/"Cockatrice-2016-05-06-Release"
 

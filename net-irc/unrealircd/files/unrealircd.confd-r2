@@ -1,0 +1,36 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# user to run unrealircd as
+UNREALIRCD_USER="unrealircd"
+
+# Which configuration file to load instead of unrealircd.conf. If you
+# want to run multiple instances of unrealircd, you must edit
+# files::pidfile to match UNREALIRCD_PIDFILE. You should also ensure
+# that files::tunefile is different for each unrealircd instance. See
+# https://www.unrealircd.org/docs/Configuration#Files_block
+#
+# To support multiple instances of unrealircd, you may create symlinks
+# in /etc/init.d pointing to /etc/init.d/unrealircd. It is recommended
+# that the scheme unrealircd.${instance_name} be used. For each
+# instance, you may make a copy of this file with the appropriate name
+# to override default options specific to that instance.
+UNREALIRCD_CONF="/etc/unrealircd/${SVCNAME}.conf"
+
+# The path where unrealircd is configured to create its pidfile.
+UNREALIRCD_PIDFILE="/var/run/unrealircd/${SVCNAME#unreal}.pid"
+
+# extra options to pass to unrealircd ...
+# You should not specify the -f option here; use
+# UNREALIRCD_CONF instead.
+#
+# [-h servername]
+# [-p portnumber]
+# [-x loglevel]
+# [-t] (to enable debug output)
+UNREALIRCD_OPTS=""
+
+# Extra flags to pass to start-stop-daemon. When initially
+# debugging, removing --quiet may help.
+UNREALIRCD_SSD_OPTS="--quiet"

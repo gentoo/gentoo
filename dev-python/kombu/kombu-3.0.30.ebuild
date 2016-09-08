@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -94,7 +94,7 @@ python_test() {
 		nosetests "${S}"/kombu/tests || die "Tests failed under ${EPYTHON}"
 		# funtests appears to be coded only for py2, a kind of 2nd tier. pypy fails 6.
 		# https://github.com/celery/kombu/issues/411
-		# Fix to https://github.com/celery/kombu/issues/474 breaks the 
+		# Fix to https://github.com/celery/kombu/issues/474 breaks the
 		# funtests under >=dev-python/pymongo-3.0.2
 #		if [[ "${EPYTHON}" == python2.7 ]]; then
 #			pushd funtests > /dev/null

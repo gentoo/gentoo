@@ -7,7 +7,7 @@ EAPI="2"
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="A de novo whole-genome shotgun DNA sequence assembler, also known as the Celera Assembler and CABOG"
-HOMEPAGE="http://sourceforge.net/projects/wgs-assembler/"
+HOMEPAGE="https://sourceforge.net/projects/wgs-assembler/"
 SRC_URI="mirror://sourceforge/${PN}/wgs-${PV}.tar.bz2"
 
 LICENSE="GPL-2"

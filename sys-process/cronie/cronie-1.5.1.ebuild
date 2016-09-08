@@ -49,8 +49,7 @@ src_install() {
 	fowners root:crontab /usr/bin/crontab
 	fperms 2751 /usr/bin/crontab
 
-	insinto /etc/conf.d
-	newins "${S}"/crond.sysconfig ${PN}
+	newconfd "${S}"/crond.sysconfig ${PN}
 
 	insinto /etc
 	newins "${FILESDIR}/${PN}-1.3-crontab" crontab
@@ -69,7 +68,6 @@ src_install() {
 		fperms 0750 ${anacrondir}
 
 		insinto /etc
-
 		doins contrib/anacrontab
 
 		insinto /etc/cron.hourly

@@ -6,7 +6,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="A tool (and library) for decompressing data compressed with PKWARE Data Compression Library"
-HOMEPAGE="https://github.com/twogood/dynamite http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://github.com/twogood/dynamite https://sourceforge.net/projects/synce/"
 SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="MIT"

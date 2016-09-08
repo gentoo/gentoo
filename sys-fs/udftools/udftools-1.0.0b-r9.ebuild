@@ -9,7 +9,7 @@ inherit eutils flag-o-matic
 MY_P=${P}3
 
 DESCRIPTION="Ben Fennema's tools for packet writing and the UDF filesystem"
-HOMEPAGE="http://sourceforge.net/projects/linux-udf/"
+HOMEPAGE="https://sourceforge.net/projects/linux-udf/"
 SRC_URI="mirror://sourceforge/linux-udf/${MY_P}.tar.gz
 	http://w1.894.telia.com/~u89404340/patches/packet/${MY_P}.patch.bz2"
 

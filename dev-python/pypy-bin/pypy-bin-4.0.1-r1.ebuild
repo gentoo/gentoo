@@ -74,7 +74,6 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	doc? ( ${PYTHON_DEPS}
 		dev-python/sphinx )"
-PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy-${PV}-src
 

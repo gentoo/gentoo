@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A utility to run commands with fake root privileges"
-HOMEPAGE="http://sourceforge.net/projects/fakerootng/"
+HOMEPAGE="https://sourceforge.net/projects/fakerootng/"
 SRC_URI="mirror://sourceforge/${PN//-/}/${PF}.tar.gz"
 
 LICENSE="GPL-2"

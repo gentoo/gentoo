@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils readme.gentoo
 
 DESCRIPTION="FUSE filesystem for SMB shares"
-HOMEPAGE="http://sourceforge.net/projects/smbnetfs"
+HOMEPAGE="https://sourceforge.net/projects/smbnetfs"
 SRC_URI="mirror://sourceforge/smbnetfs/${P}.tar.bz2"
 
 LICENSE="GPL-2"

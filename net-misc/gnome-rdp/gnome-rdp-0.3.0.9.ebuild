@@ -7,7 +7,7 @@ EAPI=4
 inherit eutils mono
 
 DESCRIPTION="Remote Desktop Client for the GNOME desktop"
-HOMEPAGE="http://sourceforge.net/projects/gnome-rdp"
+HOMEPAGE="https://sourceforge.net/projects/gnome-rdp"
 SRC_URI="mirror://sourceforge/gnome-rdp/${P}.tar.gz"
 
 LICENSE="GPL-2"

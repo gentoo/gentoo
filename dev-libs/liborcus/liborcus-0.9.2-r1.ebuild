@@ -18,7 +18,7 @@ LICENSE="MIT"
 SLOT="0/0.10" # based on SONAME of liborcus.so
 
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 
 IUSE="+spreadsheet-model static-libs tools"
 

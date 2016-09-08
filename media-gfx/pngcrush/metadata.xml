@@ -10,7 +10,7 @@
       <email>glennrp@gmail.com</email>
       <name>Glenn Randers-Pehrson</name>
     </maintainer>
-    <bugs-to>http://sourceforge.net/tracker/?group_id=1689</bugs-to>
+    <bugs-to>https://sourceforge.net/tracker/?group_id=1689</bugs-to>
     <remote-id type="sourceforge">pmt</remote-id>
   </upstream>
   <use>

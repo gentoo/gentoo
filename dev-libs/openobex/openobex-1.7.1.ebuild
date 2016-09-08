@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-utils udev
 
 DESCRIPTION="An implementation of the OBEX protocol used for transferring data to mobile devices"
-HOMEPAGE="http://sourceforge.net/projects/openobex/"
+HOMEPAGE="https://sourceforge.net/projects/openobex/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-Source.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"

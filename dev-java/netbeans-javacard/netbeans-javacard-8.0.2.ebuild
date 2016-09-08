@@ -14,7 +14,7 @@ SRC_URI="${SOURCE_URL}
 	http://hg.netbeans.org/binaries/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar
 	http://hg.netbeans.org/binaries/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar
 	http://hg.netbeans.org/binaries/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip"
-LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
+LICENSE="|| ( CDDL GPL-2-with-classpath-exception )"
 KEYWORDS="amd64 x86"
 IUSE=""
 S="${WORKDIR}"

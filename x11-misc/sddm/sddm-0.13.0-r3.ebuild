@@ -62,7 +62,7 @@ src_configure() {
 
 pkg_postinst() {
 	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN} video
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN},video
 
 	if use consolekit && use pam && [[ -e "${ROOT}"/etc/pam.d/system-login ]]; then
 		local line=$(grep "pam_ck_connector.*nox11" "${ROOT}"/etc/pam.d/system-login)

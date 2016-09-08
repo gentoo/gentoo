@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>josejx@gentoo.org</email>
-  <name>Joseph Jezak</name>
-</maintainer>
-<maintainer type="person">
   <email>zerochaos@gentoo.org</email>
   <name>Rick Farina</name>
 </maintainer>

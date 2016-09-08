@@ -80,7 +80,7 @@ src_prepare() {
 
 src_configure() {
 	# for the CPPFLAGS see
-	# http://sourceforge.net/forum/forum.php?thread_id=1683277&forum_id=409349
+	# https://sourceforge.net/forum/forum.php?thread_id=1683277&forum_id=409349
 	econf \
 		CPPFLAGS=-DHAVE_SYS_TYPES_H \
 		CFLAGS="${CXXFLAGS}" \

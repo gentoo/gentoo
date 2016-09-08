@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dol-sen@gentoo.org</email>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>vsergeev@gmail.com</email>
+			<name>Vanya Sergeev</name>
+		</maintainer>
+		<remote-id type="pypi">u-msgpack-python</remote-id>
+	</upstream>
+	<longdescription>
+		u-msgpack-python is a lightweight MessagePack serializer and
+		deserializer module written in pure Python, compatible with both Python
+		2 and Python 3, as well as CPython and PyPy implementations of Python.
+		u-msgpack-python is fully compliant with the latest MessagePack
+		specification. In particular, it supports the new binary, UTF-8 string,
+		and application-defined ext types
+	</longdescription>
+</pkgmetadata>

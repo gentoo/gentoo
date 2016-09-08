@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion!"
-HOMEPAGE="http://sourceforge.net/projects/gmrun/"
+HOMEPAGE="https://sourceforge.net/projects/gmrun/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-1"

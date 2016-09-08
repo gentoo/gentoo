@@ -1,0 +1,61 @@
+From 82d4389c20f2b83dae49e15513834128f08d0264 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 13 Aug 2016 15:35:38 +0100
+Subject: [PATCH] Make build work outside of source tree
+
+---
+ test/Makefile.am | 4 ++--
+ test/Makefile.in | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index 83623d9..261197e 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = @DBUS_CFLAGS@
+-AM_CFLAGS = -std=gnu99 -I../src
++AM_CFLAGS = -std=gnu99 -I$(top_srcdir)/src
+ AM_LDFLAGS = @DBUS_LIBS@
+ LTVALGRIND = $(top_srcdir)/libtool --execute $(VALGRIND)
+ 
+@@ -8,7 +8,7 @@ TESTS_ENVIRONMENT = FLASH="$(LTVALGRIND) flash"
+ 
+ noinst_PROGRAMS = flash
+ flash_SOURCES = flash.c
+-flash_LDADD = ../src/libhal.la
++flash_LDADD = $(top_builddir)/src/libhal.la
+ flash_LDFLAGS = -static
+ 
+ clean-local :
+diff --git a/test/Makefile.in b/test/Makefile.in
+index cfd6c17..1417a9c 100644
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -97,7 +97,7 @@ CONFIG_CLEAN_VPATH_FILES =
+ PROGRAMS = $(noinst_PROGRAMS)
+ am_flash_OBJECTS = flash.$(OBJEXT)
+ flash_OBJECTS = $(am_flash_OBJECTS)
+-flash_DEPENDENCIES = ../src/libhal.la
++flash_DEPENDENCIES = $(top_builddir)/src/libhal.la
+ AM_V_lt = $(am__v_lt_@AM_V@)
+ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+ am__v_lt_0 = --silent
+@@ -495,12 +495,12 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = @DBUS_CFLAGS@
+-AM_CFLAGS = -std=gnu99 -I../src
++AM_CFLAGS = -std=gnu99 -I$(top_srcdir)/src
+ AM_LDFLAGS = @DBUS_LIBS@
+ LTVALGRIND = $(top_srcdir)/libtool --execute $(VALGRIND)
+ TESTS_ENVIRONMENT = FLASH="$(LTVALGRIND) flash"
+ flash_SOURCES = flash.c
+-flash_LDADD = ../src/libhal.la
++flash_LDADD = $(top_builddir)/src/libhal.la
+ flash_LDFLAGS = -static
+ all: all-am
+ 
+-- 
+2.8.2
+

@@ -19,8 +19,6 @@ DEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 

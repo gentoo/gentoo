@@ -5,7 +5,7 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Command Line and GUI based MIDI Player"
-HOMEPAGE="http://sourceforge.net/projects/playmidi/"
+HOMEPAGE="https://sourceforge.net/projects/playmidi/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -4,7 +4,7 @@
 
 # @ECLASS: fox.eclass
 # @MAINTAINER:
-# mabi@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: Functionality required the FOX Toolkit and it's applications
 # @DESCRIPTION:
 # This eclass allows building SLOT-able FOX Toolkit installations

@@ -1,10 +1,10 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="2"
 
-inherit depend.php eutils webapp
+inherit eutils webapp
 
 MY_P="${P//_/}"
 
@@ -17,13 +17,13 @@ LICENSE="GPL-2"
 IUSE="enscript"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
-DEPEND=""
+DEPEND="virtual/httpd-php"
 RDEPEND="dev-vcs/subversion
-	enscript? ( app-text/enscript )"
+	enscript? ( app-text/enscript )
+	virtual/httpd-php"
 RESTRICT="mirror"
 
 need_httpd_cgi
-need_php_httpd
 
 S="${WORKDIR}/${MY_P}"
 

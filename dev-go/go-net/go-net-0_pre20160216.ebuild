@@ -9,7 +9,7 @@ EGO_SRC=golang.org/x/net
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 	EGIT_COMMIT="b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed"
 	SRC_URI="https://github.com/golang/net/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot

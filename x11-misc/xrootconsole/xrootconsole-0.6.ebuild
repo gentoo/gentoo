@@ -5,7 +5,7 @@
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A utility that displays its input in a text box on your root window"
-HOMEPAGE="http://sourceforge.net/projects/xrootconsole/"
+HOMEPAGE="https://sourceforge.net/projects/xrootconsole/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

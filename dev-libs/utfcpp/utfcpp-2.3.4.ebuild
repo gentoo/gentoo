@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="A simple, portable and lightweight generic library for handling UTF-8 encoded strings."
-HOMEPAGE="http://sourceforge.net/projects/utfcpp/"
+HOMEPAGE="https://sourceforge.net/projects/utfcpp/"
 SRC_URI="mirror://sourceforge/utfcpp/utf8_v${PV//./_}.zip"
 
 LICENSE="Boost-1.0"

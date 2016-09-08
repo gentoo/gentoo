@@ -1,0 +1,18 @@
+Index: ocaml-containers-0.18/Makefile
+===================================================================
+--- ocaml-containers-0.18.orig/Makefile
++++ ocaml-containers-0.18/Makefile
+@@ -90,12 +90,7 @@ QTEST_PREAMBLE='open CCFun;; '
+ 
+ qtest-gen:
+ 	@mkdir -p qtest
+-	@if which qtest > /dev/null ; then \
+-		qtest extract --preamble $(QTEST_PREAMBLE) \
+-			-o qtest/run_qtest.ml \
+-			$(QTESTABLE) 2> /dev/null ; \
+-	else touch qtest/run_qtest.ml ; \
+-	fi
++	touch qtest/run_qtest.ml
+ 
+ push-stable:
+ 	git checkout stable

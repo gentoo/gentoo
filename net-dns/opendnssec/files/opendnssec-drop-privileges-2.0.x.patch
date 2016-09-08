@@ -1,0 +1,29 @@
+diff -ur opendnssec-2.0.1.orig/conf/conf.xml.in opendnssec-2.0.1/conf/conf.xml.in
+--- opendnssec-2.0.1.orig/conf/conf.xml.in	2016-07-21 16:15:27.000000000 +0200
++++ opendnssec-2.0.1/conf/conf.xml.in	2016-08-23 15:21:09.633384446 +0200
+@@ -36,12 +36,10 @@
+ 	</Common>
+ 
+ 	<Enforcer>
+-<!--
+ 		<Privileges>
+ 			<User>opendnssec</User>
+ 			<Group>opendnssec</Group>
+ 		</Privileges>
+--->
+ 
+ 		<Datastore><SQLite>@OPENDNSSEC_STATE_DIR@/kasp.db</SQLite></Datastore>
+ 		<!--The enforcer interval parameter is no long used in 2.0 and will be deprecated in 2.1 -->
+@@ -60,12 +58,10 @@
+ 	</Enforcer>
+ 
+ 	<Signer>
+-<!--
+ 		<Privileges>
+ 			<User>opendnssec</User>
+ 			<Group>opendnssec</Group>
+ 		</Privileges>
+--->
+ 
+ 		<WorkingDirectory>@OPENDNSSEC_STATE_DIR@/signer</WorkingDirectory>
+ 		<WorkerThreads>4</WorkerThreads>

@@ -6,7 +6,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Takes the hassle out of creating executable JAR files for your Java programs"
 SRC_URI="mirror://sourceforge/jarwizard/${PN}_${PV/./}_src.zip"
-HOMEPAGE="http://sourceforge.net/projects/jarwizard/"
+HOMEPAGE="https://sourceforge.net/projects/jarwizard/"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 x86"

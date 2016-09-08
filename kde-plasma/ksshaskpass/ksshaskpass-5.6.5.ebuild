@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE implementation of ssh-askpass with Kwallet integration"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/ksshaskpass"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="
@@ -20,7 +20,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!net-misc/ksshaskpass
+	!kde-plasma/ksshaskpass:4
 "
 
 src_install() {

@@ -15,7 +15,8 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE+=" minimal"
 LICENSE+=" Apache-2.0 GPL-3+ CC-BY-3.0"
 
-RDEPEND+=" !sys-devel/cons"
+RDEPEND+="!games-action/xbomber
+		!sys-devel/cons"
 PDEPEND+="
 	!minimal? (
 		sci-biology/aaindex

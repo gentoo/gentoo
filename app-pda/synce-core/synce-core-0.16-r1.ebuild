@@ -9,7 +9,7 @@ PYTHON_DEPEND="python? 2:2.7"
 inherit flag-o-matic python
 
 DESCRIPTION="Base libraries, including RAPI protocol, tools and dccm daemon"
-HOMEPAGE="http://sourceforge.net/projects/synce/"
+HOMEPAGE="https://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="MIT"

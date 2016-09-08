@@ -1,0 +1,12 @@
+--- rtaudio-4.1.2/configure.ac
++++ rtaudio-4.1.2/configure.ac
+@@ -62,8 +62,7 @@
+ AC_MSG_CHECKING(whether to compile debug version)
+ AC_ARG_ENABLE(debug,
+   [AS_HELP_STRING([--enable-debug],[enable various debug output])],
+-  [: ${CXXFLAGS="-g -O0"};] [AC_DEFINE([__RTAUDIO_DEBUG__])],
+-  [: ${CXXFLAGS="-O3"}])
++  [AC_DEFINE([__RTAUDIO_DEBUG__])], )
+ 
+ # Checks for programs.
+ AC_PROG_CXX(g++ CC c++ cxx)

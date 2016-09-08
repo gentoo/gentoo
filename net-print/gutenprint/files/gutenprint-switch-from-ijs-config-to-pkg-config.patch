@@ -1,0 +1,60 @@
+From 233a909a77dd4c18d359bf32cd8ef99ed1b7b459 Mon Sep 17 00:00:00 2001
+From: speachy <>
+Date: Fri, 29 Jan 2016 12:41:21 +0000
+Subject: [PATCH] Apply patch from Brian Norris to switch from 'ijs-config' to
+ 'pkg-config' for IJS support, as the former does not work for
+ cross-compilation.
+
+---
+ configure.ac              | 10 ++++------
+ src/ghost/ijsgutenprint.c |  4 ++--
+ 2 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 800794b..fac8361 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -371,9 +371,9 @@ if test "$BUILD_FOOMATIC_3" = "yes" ; then
+    BUILD_FOOMATIC=yes
+ fi
+ 
+-AC_PATH_PROG(IJS_CONFIG, ijs-config)
++PKG_CHECK_MODULES(IJS, ijs, [HAVE_IJS=yes], [HAVE_IJS=no])
+ 
+-if test -z "${IJS_CONFIG}"  ; then
++if test "x${HAVE_IJS}" = "xno" ; then
+   BUILD_GHOSTSCRIPT="no"
+ else
+   BUILD_GHOSTSCRIPT="yes"
+@@ -620,11 +620,9 @@ fi
+ 
+ dnl ijs checks
+ if test x${BUILD_GHOSTSCRIPT} = xyes ; then
+-  if test -z "$IJS_CONFIG" ; then
+-    AC_MSG_ERROR(Cannot find ijs-config; please ensure Ghostscript 6.53 or above is installed);
++  if test -z "$HAVE_IJS" ; then
++    AC_MSG_ERROR(Cannot find ijs; please ensure Ghostscript 6.53 or above is installed);
+   fi
+-  IJS_CFLAGS=`$IJS_CONFIG --cflags`
+-  IJS_LIBS=`$IJS_CONFIG --libs`
+ fi
+ 
+ GUTENPRINT_RELEASE_VERSION=${GUTENPRINT_MAJOR_VERSION}.${GUTENPRINT_MINOR_VERSION}
+diff --git a/src/ghost/ijsgutenprint.c b/src/ghost/ijsgutenprint.c
+index a3621a2..69aadf1 100644
+--- a/src/ghost/ijsgutenprint.c
++++ b/src/ghost/ijsgutenprint.c
+@@ -35,8 +35,8 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <locale.h>
+-#include <ijs.h>
+-#include <ijs_server.h>
++#include <ijs/ijs.h>
++#include <ijs/ijs_server.h>
+ #include <errno.h>
+ #include <gutenprint/gutenprint-intl-internal.h>
+ 
+-- 
+2.7.3
+

@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 # The slirpvde-buffer-overflow patch was made by Ludwig Nussel and submitted upstream at
-# http://sourceforge.net/tracker/?func=detail&aid=2138410&group_id=95403&atid=611248
+# https://sourceforge.net/tracker/?func=detail&aid=2138410&group_id=95403&atid=611248
 PATCHES=(
 	"${FILESDIR}/${P}-gcc43.patch"
 	"${FILESDIR}/${P}-slirpvde-buffer-overflow.patch"

@@ -7,7 +7,7 @@ EAPI="4"
 inherit toolchain-funcs flag-o-matic systemd
 
 DESCRIPTION="A software watchdog and /dev/watchdog daemon"
-HOMEPAGE="http://sourceforge.net/projects/watchdog/"
+HOMEPAGE="https://sourceforge.net/projects/watchdog/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

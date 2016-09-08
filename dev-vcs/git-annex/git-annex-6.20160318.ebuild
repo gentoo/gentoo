@@ -61,7 +61,8 @@ RDEPEND="dev-haskell/aeson:=
 	>=dev-lang/ghc-7.6.1:=
 	assistant? ( dev-haskell/dns:=
 			dev-haskell/hinotify:=
-			dev-haskell/mountpoints:= )
+			dev-haskell/mountpoints:=
+			sys-process/lsof )
 	benchmark? ( dev-haskell/criterion:= )
 	concurrentoutput? ( >=dev-haskell/concurrent-output-1.6:= )
 	cryptonite? ( dev-haskell/cryptonite:= )

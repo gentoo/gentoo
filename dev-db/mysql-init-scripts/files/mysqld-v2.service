@@ -18,10 +18,28 @@ ExecStartPost=/usr/libexec/mysqld-wait-ready $MAINPID
 TimeoutSec=300
 
 # We rely on systemd, not mysqld_safe, to restart mysqld if it dies
-Restart=always
+# Restart crashed server only, on-failure would also restart, for example, when
+# my.cnf contains unknown option
+Restart=on-abort
+RestartSec=5s
 
 # Place temp files in a secure directory, not /tmp
 PrivateTmp=true
+
+# To allow memlock to be used as non-root user if set in configuration
+CapabilityBoundingSet=CAP_IPC_LOCK
+
+# Prevent writes to /usr, /boot, and /etc
+ProtectSystem=full
+
+NoNewPrivileges=true
+
+PrivateDevices=true
+
+# Prevent accessing /home, /root and /run/user
+ProtectHome=true
+
+UMask=007
 
 [Install]
 WantedBy=multi-user.target

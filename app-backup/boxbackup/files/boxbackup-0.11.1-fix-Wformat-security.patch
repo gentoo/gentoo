@@ -1,0 +1,27 @@
+From 53e968624b5540bf0c97bb69636f1bc908f9b00a Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 3 Aug 2016 16:38:23 -0400
+Subject: [PATCH 1/1] bin/bbackupquery/BackupQueries.cpp: fix trivial
+ -Wformat-security warning.
+
+Gentoo-Bug: 520978
+---
+ bin/bbackupquery/BackupQueries.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/bbackupquery/BackupQueries.cpp b/bin/bbackupquery/BackupQueries.cpp
+index 0418ec9..b377218 100644
+--- a/bin/bbackupquery/BackupQueries.cpp
++++ b/bin/bbackupquery/BackupQueries.cpp
+@@ -613,7 +613,7 @@ void BackupQueries::List(int64_t DirID, const std::string &rListRoot, const bool
+ 			// terminate
+ 			*(f++) = ' ';
+ 			*(f++) = '\0';
+-			printf(displayflags);
++			printf("%s", displayflags);
+ 			
+ 			if(en_flags != 0)
+ 			{
+-- 
+2.7.3
+

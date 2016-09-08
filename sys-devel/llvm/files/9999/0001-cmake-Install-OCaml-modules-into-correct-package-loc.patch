@@ -1,0 +1,71 @@
+From 2907883b3c504a08b98cf735ceaa8e438d20f37e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Aug 2016 22:46:48 +0200
+Subject: [PATCH 01/10] cmake: Install OCaml modules into correct package
+ location
+
+Ensure that correct libdir is used for OCaml modules, and install them
+into dedicated llvm subdirectory rather than the top directory which is
+supposedly reserved for the standard library.
+
+Author: Mark Wright <gienah@gentoo.org>
+Bug: https://bugs.gentoo.org/559134
+Bug: https://bugs.gentoo.org/559624
+---
+ bindings/ocaml/backends/CMakeLists.txt | 2 +-
+ bindings/ocaml/llvm/CMakeLists.txt     | 2 +-
+ cmake/modules/AddOCaml.cmake           | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/bindings/ocaml/backends/CMakeLists.txt b/bindings/ocaml/backends/CMakeLists.txt
+index a980638..9e5dc50 100644
+--- a/bindings/ocaml/backends/CMakeLists.txt
++++ b/bindings/ocaml/backends/CMakeLists.txt
+@@ -23,5 +23,5 @@ foreach(TARGET ${LLVM_TARGETS_TO_BUILD})
+     "${LLVM_LIBRARY_DIR}/ocaml/META.llvm_${TARGET}")
+ 
+   install(FILES "${LLVM_LIBRARY_DIR}/ocaml/META.llvm_${TARGET}"
+-          DESTINATION lib/ocaml)
++          DESTINATION ${CMAKE_INSTALL_LIBDIR}/ocaml/llvm)
+ endforeach()
+diff --git a/bindings/ocaml/llvm/CMakeLists.txt b/bindings/ocaml/llvm/CMakeLists.txt
+index 4956fa4..c612f73 100644
+--- a/bindings/ocaml/llvm/CMakeLists.txt
++++ b/bindings/ocaml/llvm/CMakeLists.txt
+@@ -8,4 +8,4 @@ configure_file(
+   "${LLVM_LIBRARY_DIR}/ocaml/META.llvm")
+ 
+ install(FILES "${LLVM_LIBRARY_DIR}/ocaml/META.llvm"
+-        DESTINATION lib/ocaml)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/ocaml/llvm)
+diff --git a/cmake/modules/AddOCaml.cmake b/cmake/modules/AddOCaml.cmake
+index e3dd1d8..a16238e 100644
+--- a/cmake/modules/AddOCaml.cmake
++++ b/cmake/modules/AddOCaml.cmake
+@@ -137,7 +137,7 @@ function(add_ocaml_library name)
+   if( APPLE )
+     set(ocaml_rpath "@executable_path/../../lib")
+   elseif( UNIX )
+-    set(ocaml_rpath "\\$ORIGIN/../../lib")
++    set(ocaml_rpath "\\$ORIGIN/../../${CMAKE_INSTALL_LIBDIR}")
+   endif()
+   list(APPEND ocaml_flags "-ldopt" "-Wl,-rpath,${ocaml_rpath}")
+ 
+@@ -189,12 +189,12 @@ function(add_ocaml_library name)
+   endforeach()
+ 
+   install(FILES ${install_files}
+-          DESTINATION lib/ocaml)
++          DESTINATION ${CMAKE_INSTALL_LIBDIR}/ocaml/llvm)
+   install(FILES ${install_shlibs}
+           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+                       GROUP_READ GROUP_EXECUTE
+                       WORLD_READ WORLD_EXECUTE
+-          DESTINATION lib/ocaml)
++          DESTINATION ${CMAKE_INSTALL_LIBDIR}/ocaml/llvm)
+ 
+   foreach( install_file ${install_files} ${install_shlibs} )
+     get_filename_component(filename "${install_file}" NAME)
+-- 
+2.9.3
+

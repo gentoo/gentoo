@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -58,7 +58,7 @@ RDEPEND="
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	# built in... 
+	# built in...
 	sed -i '/^argparse/d' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all

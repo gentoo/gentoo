@@ -34,7 +34,7 @@ src_unpack() {
 	cd "${S}/src" || die
 	unpack ${JMI_ZIP}
 
-	# adding mof.xml required by Netbeans 
+	# adding mof.xml required by Netbeans
 	# #98603 and #162328
 	cd "${S}/src/javax/jmi/model" || die
 	unpack ${MOF_XML}

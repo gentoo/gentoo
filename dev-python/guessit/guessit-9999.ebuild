@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1 git-r3
 
@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	<dev-python/python-dateutil-2.5.2[${PYTHON_USEDEP}]
-	>=dev-python/rebulk-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/rebulk-0.7.3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "

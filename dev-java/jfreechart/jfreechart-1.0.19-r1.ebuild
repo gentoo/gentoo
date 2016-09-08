@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 CDEPEND="

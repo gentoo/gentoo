@@ -4,8 +4,7 @@
 
 EAPI=5
 
-# ruby22 -> uses obsolete Config module
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_TASK_DOC=""
@@ -24,6 +23,7 @@ IUSE=""
 
 all_ruby_prepare() {
 	rm Makefile *.o *.so || die
+	sed -i -e "s/::Config/RbConfig/" setup.rb || die
 }
 
 each_ruby_configure() {

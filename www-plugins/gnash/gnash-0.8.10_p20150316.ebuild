@@ -82,7 +82,10 @@ RDEPEND=">=dev-libs/boost-1.41.0:0=
 		python? ( dev-python/pygtk:2 )
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	kde? ( $(add_kdebase_dep kdebase-startkde) )
+	kde? (
+		$(add_kdebase_dep kdebase-startkde)
+		dev-qt/qtwebkit:4
+	)
 	opengl? (
 		virtual/glu
 		virtual/opengl

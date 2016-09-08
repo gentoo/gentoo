@@ -6,6 +6,7 @@
     <name>Dirkjan Ochtman</name>
   </maintainer>
   <use>
+    <flag name="dkim">Enable support for DomainKeys Identified Mail</flag>
     <flag name="memcached">Enable support for memcached</flag>
   </use>
   <upstream>

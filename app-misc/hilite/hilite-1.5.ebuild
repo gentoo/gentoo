@@ -5,7 +5,7 @@
 inherit toolchain-funcs
 
 DESCRIPTION="A utility which highlights stderr text in red"
-HOMEPAGE="http://sourceforge.net/projects/hilite"
+HOMEPAGE="https://sourceforge.net/projects/hilite"
 SRC_URI="mirror://gentoo/${P}.c"
 
 LICENSE="GPL-2"

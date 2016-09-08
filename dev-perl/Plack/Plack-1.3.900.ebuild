@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test minimal examples"
 PATCHES=(
 	"${FILESDIR}/${P}-issue-545.patch"
+	"${FILESDIR}/${P}-network-testing.patch"
 )
 RDEPEND="
 	!minimal? (

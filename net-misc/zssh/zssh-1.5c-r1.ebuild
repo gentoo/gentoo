@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,8 +35,8 @@ src_prepare() {
 src_configure() {
 	tc-export AR CC RANLIB
 	econf \
-                $(use_enable nls) \
-	        $(use_enable readline)
+		$(use_enable nls) \
+		$(use_enable readline)
 }
 
 src_install() {

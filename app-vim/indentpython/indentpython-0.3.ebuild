@@ -10,7 +10,7 @@ DESCRIPTION="vim plugin: Indent Python code according to PEP8"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=974"
 SRC_URI="https://github.com/vim-scripts/${PN}.vim/archive/${PV}.zip -> ${P}.zip"
 LICENSE="vim.org"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="app-arch/unzip"
 

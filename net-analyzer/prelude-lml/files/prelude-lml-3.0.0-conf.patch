@@ -1,0 +1,22 @@
+--- a/prelude-lml.conf
++++ b/prelude-lml.conf
+@@ -92,7 +92,7 @@
+ time-format = "%b %d %H:%M:%S"
+ prefix-regex = "^(?P<timestamp>.{15}) (?P<hostname>\S+) (?:(?P<process>\S+?)(?:\[(?P<pid>[0-9]+)\])?: )?"
+ file = /var/log/messages
+-file = /var/log/secure
++file = /var/log/auth.log
+ # udp-server = 0.0.0.0
+ # tcp-server = 0.0.0.0
+ # tcp-tls-server = 0.0.0.0
+--- a/prelude-lml.conf.in
++++ b/prelude-lml.conf.in
+@@ -92,7 +92,7 @@
+ time-format = "%b %d %H:%M:%S"
+ prefix-regex = "^(?P<timestamp>.{15}) (?P<hostname>\S+) (?:(?P<process>\S+?)(?:\[(?P<pid>[0-9]+)\])?: )?"
+ file = /var/log/messages
+-file = /var/log/secure
++file = /var/log/auth.log
+ # udp-server = 0.0.0.0
+ # tcp-server = 0.0.0.0
+ # tcp-tls-server = 0.0.0.0

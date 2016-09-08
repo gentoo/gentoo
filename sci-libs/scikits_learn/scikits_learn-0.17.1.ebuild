@@ -61,7 +61,8 @@ python_prepare_all() {
 	rm -r sklearn/externals/joblib/* || die
 	echo "from joblib import *" > sklearn/externals/joblib/__init__.py
 	sed -i -e '/joblib\/test/d' sklearn/externals/setup.py || die
-	sed -i -e 's/..externals.joblib/joblib/g' \
+	sed -i -e 's/..externals.joblib/ joblib/g' \
+		sklearn/cross_validation.py \
 		sklearn/decomposition/tests/test_sparse_pca.py \
 		sklearn/metrics/pairwise.py || die
 

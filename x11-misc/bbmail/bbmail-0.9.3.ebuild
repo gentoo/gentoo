@@ -6,7 +6,7 @@ EAPI=2
 inherit autotools eutils
 
 DESCRIPTION="blackbox mail notification"
-HOMEPAGE="http://sourceforge.net/projects/bbtools"
+HOMEPAGE="https://sourceforge.net/projects/bbtools"
 SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 SLOT="0"

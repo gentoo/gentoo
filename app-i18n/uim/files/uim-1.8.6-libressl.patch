@@ -1,0 +1,79 @@
+From 7a281b1131399f04627986e6f9a54499b08e239d Mon Sep 17 00:00:00 2001
+From: Felix Janda <felix.janda@posteo.de>
+Date: Thu, 21 Apr 2016 23:12:10 +0200
+Subject: [PATCH] Make openssl SSLv2 and SSLv3 support optional
+
+Fixes compilation with libressl
+---
+ uim/openssl.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/uim/openssl.c b/uim/openssl.c
+index ba1b238..35ca1ca 100644
+--- a/uim/openssl.c
++++ b/uim/openssl.c
+@@ -208,34 +208,64 @@ c_SSL_write(uim_lisp s_, uim_lisp buf_)
+ static uim_lisp
+ c_SSLv2_method(void)
+ {
++#ifndef OPENSSL_NO_SSL2
+   return MAKE_PTR(SSLv2_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv2_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ static uim_lisp
+ c_SSLv2_server_method(void)
+ {
++#ifndef OPENSSL_NO_SSL2
+   return MAKE_PTR(SSLv2_server_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv2_server_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ static uim_lisp
+ c_SSLv2_client_method(void)
+ {
++#ifndef OPENSSL_NO_SSL2
+   return MAKE_PTR(SSLv2_client_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv2_client_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ 
+ /* SSLv3 */
+ static uim_lisp
+ c_SSLv3_method(void)
+ {
++#ifndef OPENSSL_NO_SSL3
+   return MAKE_PTR(SSLv3_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv3_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ static uim_lisp
+ c_SSLv3_server_method(void)
+ {
++#ifndef OPENSSL_NO_SSL3
+   return MAKE_PTR(SSLv3_server_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv3_server_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ static uim_lisp
+ c_SSLv3_client_method(void)
+ {
++#ifndef OPENSSL_NO_SSL3
+   return MAKE_PTR(SSLv3_client_method());
++#else
++  uim_notify_fatal(N_("uim-openssl: SSLv3_client_method() is not supported on this system"));
++  return uim_scm_f();
++#endif
+ }
+ 
+ /* SSLv3 but can rollback to v2 */

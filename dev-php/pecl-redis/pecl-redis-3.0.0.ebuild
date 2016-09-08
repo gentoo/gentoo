@@ -39,3 +39,12 @@ src_install() {
 		php-ext-pecl-r2_src_install
 	fi
 }
+
+src_test(){
+	local slot
+	for slot in `php_get_slots`; do
+		php_init_slot_env ${slot}
+		# Run tests for Redis class
+		${PHPCLI} -d extension=modules/redis.so tests/TestRedis.php --class Redis --host ${PECL_REDIS_HOST} || die
+	done
+}

@@ -7,8 +7,8 @@ EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Sound Description Interchange Format Library for audio and wave processing"
-HOMEPAGE="http://sourceforge.net/projects/sdif/"
-SRC_URI="http://sourceforge.net/projects/sdif/files/sdif/SDIF-${PV}/SDIF-${PV}-src.zip"
+HOMEPAGE="https://sourceforge.net/projects/sdif/"
+SRC_URI="https://sourceforge.net/projects/sdif/files/sdif/SDIF-${PV}/SDIF-${PV}-src.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hilobakho@gmail.com</email>
+		<name>Mykyta Holubakha</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Syncplay/syncplay</remote-id>
+	</upstream>
+	<use>
+		<flag name="client">Install Syncplay client</flag>
+		<flag name="server">Install Syncplay server</flag>
+		<flag name="gui">Enable gui support</flag>
+		<flag name="vlc">Enable VLC2.x support</flag>
+	</use>
+</pkgmetadata>

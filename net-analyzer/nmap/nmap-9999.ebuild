@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit eutils flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+inherit autotools eutils flag-o-matic git-r3 python-single-r1 toolchain-funcs user
 
 MY_P=${P/_beta/BETA}
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
-	net-libs/libpcap[ipv6?]
+	|| ( >=net-libs/libpcap-1.8.0 <net-libs/libpcap-1.8.0[ipv6?] )
 	zenmap? (
 		dev-python/pygtk:2[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
@@ -61,13 +61,14 @@ pkg_setup() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-4.75-nolua.patch \
 		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
 		"${FILESDIR}"/${PN}-5.21-python.patch \
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch
+		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
+		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
+		"${FILESDIR}"/${PN}-7.25-libpcre.patch
 
 	if use nls; then
 		local lingua=''
@@ -97,6 +98,8 @@ src_prepare() {
 		zenmap/install_scripts/unix/zenmap.desktop || die
 
 	epatch_user
+
+	eautoreconf
 }
 
 src_configure() {

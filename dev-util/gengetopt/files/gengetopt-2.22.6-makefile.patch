@@ -1,5 +1,5 @@
---- gengetopt-2.22.6/src/Makefile.am
-+++ gengetopt-2.22.6/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -51,7 +51,7 @@
  	@LTLIBOBJS@ \
  	skels/libgen.la

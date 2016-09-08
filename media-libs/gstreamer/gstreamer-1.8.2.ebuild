@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit bash-completion-r1 multilib multilib-minimal pax-utils
+inherit bash-completion-r1 eutils multilib multilib-minimal pax-utils
 
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"

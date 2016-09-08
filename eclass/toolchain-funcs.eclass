@@ -488,7 +488,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		mips*)		echo mips;;
 		nios2*)		echo nios2;;
 		nios*)		echo nios;;
-		or32*)		echo openrisc;;
+		or1k|or32*)	echo openrisc;;
 		powerpc*)
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,

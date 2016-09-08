@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+WEBKIT_REQUIRED="always"
 inherit kde4-base
 
 DESCRIPTION="Library for accessing Google calendar and contact resources"

@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="OpenGL-based 3D File Manager"
-HOMEPAGE="http://sourceforge.net/projects/innolab/"
+HOMEPAGE="https://sourceforge.net/projects/innolab/"
 SRC_URI="mirror://sourceforge/innolab/${P}.tar.gz"
 
 LICENSE="GPL-2"

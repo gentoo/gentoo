@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 hppa ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-mac
 IUSE=""
 
 RDEPEND=">=dev-perl/Math-Pari-2.010603
-	dev-perl/class-loader"
+	dev-perl/Class-Loader"
 DEPEND="${RDEPEND}"
 
 SRC_TEST="do"

@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 "
 #	>=dev-python/pyparsing-2.0.6[${PYTHON_USEDEP}]
 PDEPEND="
-	>=dev-python/certifi-2016.2.28[${PYTHON_USEDEP}]"
+	>=dev-python/certifi-2016.8.8[${PYTHON_USEDEP}]"
 
 # Force in-source build because build system modifies sources.
 DISTUTILS_IN_SOURCE_BUILD=1

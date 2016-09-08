@@ -1,0 +1,14 @@
+--- a/configure.in
++++ b/configure.in
+@@ -525,9 +525,9 @@
+ dnl * Ruby support                                   *
+ dnl **************************************************
+ 
+-
+-AM_PATH_RUBY(,with_ruby=yes, with_ruby=no)
++AC_ARG_WITH(ruby, AC_HELP_STRING(--with-ruby@<:@=PATH@:>@, Enable support for ruby binding @<:@default=auto@:>@),,with_ruby=no)
+ if test x$with_ruby != xno; then
++    AM_PATH_RUBY(,with_ruby=yes, with_ruby=no)
+     RUBY_ARCHDIR=`$RUBY -e 'require "rbconfig.rb"; puts RbConfig::expand("\$(archdir)")'`
+     RUBY_LIBRUBYARG=`$RUBY -e 'require "rbconfig.rb"; puts RbConfig::expand("\$(LIBRUBYARG)")'`
+ 

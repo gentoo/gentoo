@@ -5,6 +5,10 @@
     <email>zlg@gentoo.org</email>
     <name>Daniel Campbell</name>
   </maintainer>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">i-rinat/apulse</remote-id>
   </upstream>

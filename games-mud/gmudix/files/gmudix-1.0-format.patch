@@ -1,5 +1,5 @@
---- src/gui_user.c.old	2016-02-04 21:21:15.141455597 +0100
-+++ src/gui_user.c	2016-02-04 21:21:31.016156493 +0100
+--- a/src/gui_user.c	2016-02-04 21:21:15.141455597 +0100
++++ b/src/gui_user.c	2016-02-04 21:21:31.016156493 +0100
 @@ -820,7 +820,7 @@
  
      dialog = gtk_message_dialog_new(GTK_WINDOW(user->gui_user.g_window), 

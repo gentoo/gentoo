@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,6 +9,9 @@ MODULE_VERSION=2.04
 inherit perl-module
 
 DESCRIPTION="the Cache interface"
+SLOT="0"
+KEYWORDS="amd64 x86"
+IUSE=""
 
 RDEPEND=">=virtual/perl-DB_File-1.72
 	>=virtual/perl-File-Spec-0.8
@@ -19,9 +22,5 @@ RDEPEND=">=virtual/perl-DB_File-1.72
 	dev-perl/TimeDate
 	dev-perl/File-NFSLock"
 DEPEND="${RDEPEND}"
-
-SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
 
 SRC_TEST="do"

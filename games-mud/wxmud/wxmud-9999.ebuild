@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 WX_GTK_VER=2.8
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic subversion wxwidgets autotools python-single-r1 games
+inherit flag-o-matic subversion wxwidgets autotools python-single-r1
 
 DESCRIPTION="Cross-platform MUD client"
 HOMEPAGE="http://wxmud.sourceforge.net/"
@@ -18,13 +18,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE="python"
 
-RDEPEND="x11-libs/wxGTK:${WX_GTK_VER}
+RDEPEND="
 	>=x11-libs/gtk+-2.4:2
+	x11-libs/wxGTK:${WX_GTK_VER}
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	games_pkg_setup
 	use python && python-single-r1_pkg_setup
 }
 
@@ -34,18 +34,20 @@ src_unpack() {
 	AT_M4DIR="m4" eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	append-flags -fno-strict-aliasing
 	# No audiere in portage yet, so useful MSP support is disabled for now
-	egamesconf \
+	econf \
 		--with-wx-config="${WX_CONFIG}" \
 		$(use_enable python) \
 		--disable-audiere
+}
+
+src_compile() {
 	emake
 }
 
 src_install() {
 	default
 	dodoc docs/input.txt docs/scripting.txt
-	prepgamesdirs
 }

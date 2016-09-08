@@ -34,11 +34,10 @@ if [[ ${PV} = 9999 ]]; then
 	S=${WORKDIR}/${PN}
 fi
 
+PATCHES=( "${FILESDIR}/${PN}-0.74-gcc46.patch" )
+
 src_prepare() {
 	default
-	if [[ ${PV} = 9999 ]]; then
-		subversion_src_prepare
-	fi
 	eautoreconf
 }
 

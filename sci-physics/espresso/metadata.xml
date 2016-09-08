@@ -12,6 +12,6 @@
   <use>
     <flag name="cuda">Enable cuda support</flag>
     <flag name="examples">Installs the examples</flag>
-    <flag name="packages">Installs extra subpackages</flag>
+    <flag name="packages">Installs extra TCL subpackages</flag>
   </use>
 </pkgmetadata>

@@ -38,7 +38,6 @@ DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	${PYTHON_DEPS}
 	test? ( dev-python/pytest )"
-PDEPEND="app-admin/python-updater"
 
 S="${WORKDIR}/${P}-src"
 

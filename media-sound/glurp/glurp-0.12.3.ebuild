@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="Glurp is a GTK2 based graphical client for the Music Player Daemon"
-HOMEPAGE="http://sourceforge.net/projects/glurp/"
+HOMEPAGE="https://sourceforge.net/projects/glurp/"
 SRC_URI="mirror://sourceforge/glurp/${P}.tar.gz"
 
 LICENSE="GPL-2"

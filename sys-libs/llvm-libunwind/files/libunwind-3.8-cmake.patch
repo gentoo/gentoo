@@ -1,0 +1,82 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d9b2367..b6bb5fd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     set(LLVM_MAIN_SRC_DIR ${MAIN_SRC_DIR} CACHE PATH "Path to LLVM source tree")
+     set(LLVM_CMAKE_PATH "${LLVM_BINARY_DIR}/share/llvm/cmake")
+     set(LLVM_LIT_PATH "${LLVM_PATH}/utils/lit/lit.py")
+-  else ()
++  elseif (NOT LIBUNWIND_BUILT_STANDALONE)
+     message(FATAL_ERROR "llvm-config not found and LLVM_MAIN_SRC_DIR not defined. "
+                         "Reconfigure with -DLLVM_CONFIG=path/to/llvm-config "
+                         "or -DLLVM_PATH=path/to/llvm-source-root.")
+@@ -53,7 +53,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_PATH}")
+     include("${LLVM_CMAKE_PATH}/AddLLVM.cmake")
+     include("${LLVM_CMAKE_PATH}/HandleLLVMOptions.cmake")
+-  else ()
++  elseif (NOT LIBUNWIND_BUILT_STANDALONE)
+     message(FATAL_ERROR "Not found: ${LLVM_CMAKE_PATH}")
+   endif ()
+ 
+@@ -103,6 +103,7 @@ option(LIBUNWIND_ENABLE_ASSERTIONS "Enable assertions independent of build mode.
+ option(LIBUNWIND_ENABLE_PEDANTIC "Compile with pedantic enabled." ON)
+ option(LIBUNWIND_ENABLE_WERROR "Fail and stop if a warning is triggered." OFF)
+ option(LIBUNWIND_ENABLE_SHARED "Build libunwind as a shared library." ON)
++option(LIBUNWIND_ENABLE_STATIC "Build libunwind as a static library." OFF)
+ 
+ set(LIBUNWIND_GCC_TOOLCHAIN "" CACHE STRING "GCC toolchain for cross compiling.")
+ set(LIBUNWIND_SYSROOT "" CACHE STRING "Sysroot for cross compiling.")
+@@ -136,9 +137,9 @@ macro(append_if list condition var)
+ endmacro()
+ 
+ set(LIBUNWIND_C_FLAGS "")
+-set(LIBUNWIND_CXX_FLAGS "")
++set(LIBUNWIND_CXX_FLAGS "-std=c++11")
+ set(LIBUNWIND_COMPILE_FLAGS "")
+-set(LIBUNWIND_LINK_FLAGS "")
++set(LIBUNWIND_LINK_FLAGS "-Wl,-z,noexecstack")
+ 
+ append_if(LIBUNWIND_COMPILE_FLAGS LIBUNWIND_HAS_WERROR_FLAG -Werror=return-type)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ee01e9a..c66673e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -18,7 +18,8 @@ set(LIBUNWIND_ASM_SOURCES
+     UnwindRegistersSave.S)
+ set_source_files_properties(${LIBUNWIND_ASM_SOURCES}
+                             PROPERTIES
+-                              LANGUAGE C)
++                              LANGUAGE C
++                              COMPILE_FLAGS "-Wa,--noexecstack")
+ 
+ set(LIBUNWIND_HEADERS
+     AddressSpace.hpp
+@@ -51,8 +52,10 @@ set(LIBUNWIND_SOURCES
+ 
+ if (LIBUNWIND_ENABLE_SHARED)
+   add_library(unwind SHARED ${LIBUNWIND_SOURCES} ${LIBUNWIND_HEADERS})
+-else()
+-  add_library(unwind STATIC ${LIBUNWIND_SOURCES} ${LIBUNWIND_HEADERS})
++endif ()
++if (LIBUNWIND_ENABLE_STATIC)
++  add_library(unwind_static STATIC ${LIBUNWIND_SOURCES} ${LIBUNWIND_HEADERS})
++  set_target_properties(unwind_static PROPERTIES OUTPUT_NAME unwind)
+ endif ()
+ 
+ # Generate library list.
+@@ -106,7 +109,10 @@ set_target_properties(unwind
+ set_property(SOURCE ${LIBUNWIND_CXX_SOURCES}
+              APPEND_STRING PROPERTY COMPILE_FLAGS "${LIBUNWIND_CXX_FLAGS}")
+ 
+-install(TARGETS unwind
+-        LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
+-        ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++if (LIBUNWIND_ENABLE_SHARED)
++  install(TARGETS unwind LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++endif ()
++if (LIBUNWIND_ENABLE_STATIC)
++  install(TARGETS unwind_static ARCHIVE DESTINATION lib${LLVM_LIBDIR_SUFFIX})
++endif ()

@@ -16,9 +16,10 @@ SRC_URI="https://github.com/processone/${MY_PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 
-DEPEND=">=dev-lang/erlang-17.1"
+DEPEND=">=dev-lang/erlang-17.1
+	sys-libs/pam"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md )

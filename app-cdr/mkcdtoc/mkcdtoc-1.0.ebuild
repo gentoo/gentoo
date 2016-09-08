@@ -3,7 +3,7 @@
 # $Id$
 
 DESCRIPTION="command-line utility to create toc-files for cdrdao"
-HOMEPAGE="http://sourceforge.net/projects/mkcdtoc/"
+HOMEPAGE="https://sourceforge.net/projects/mkcdtoc/"
 SRC_URI="mirror://sourceforge/mkcdtoc/${P}.tar.bz2"
 
 LICENSE="GPL-2"

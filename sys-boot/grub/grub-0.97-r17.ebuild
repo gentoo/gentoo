@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,6 +38,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//[static-libs(+),/=[} )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
+RDEPEND+=" !sys-boot/grub:2[-multislot]"
 
 pkg_setup() {
 	case $(tc-arch) in

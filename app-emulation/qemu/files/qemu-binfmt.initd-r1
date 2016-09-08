@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -75,7 +75,7 @@ start() {
       echo   ':sparc:M::\x7fELF\x01\x02\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x02:\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff:/usr/bin/qemu-sparc:'"${QEMU_BINFMT_FLAGS}" > /proc/sys/fs/binfmt_misc/register
    fi
    if [ $cpu != "ppc" -a -x "/usr/bin/qemu-ppc" ] ; then
-      echo   ':ppc:M::\x7fELF\x01\x02\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x14:\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff:/usr/bin/qemu-ppc:'"${QEMU_BINFMT_FLAGS}" > /proc/sys/fs/binfmt_misc/register
+      echo   ':ppc:M::\x7fELF\x01\x02\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x14:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff:/usr/bin/qemu-ppc:'"${QEMU_BINFMT_FLAGS}" > /proc/sys/fs/binfmt_misc/register
    fi
    if [ $cpu != "m68k" -a -x "/usr/bin/qemu-m68k" ] ; then
       #echo   'Please check cpu value and header information for m68k!'

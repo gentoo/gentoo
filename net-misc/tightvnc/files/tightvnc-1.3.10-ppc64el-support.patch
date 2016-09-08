@@ -1,0 +1,99 @@
+From 25adb1614419b72a986c229cb01870c1b3e38c0b Mon Sep 17 00:00:00 2001
+From: Lauri Kasanen <cand@gmx.com>
+Date: Fri, 5 Jun 2015 07:45:09 -0300
+Subject: [PATCH 2/2] Add ppc64el support
+
+Signed-off-by: Lauri Kasanen <cand@gmx.com>
+---
+ Xvnc/config/cf/Imake.cf                  |  4 ++++
+ Xvnc/config/cf/linux.cf                  |  8 +++++++-
+ Xvnc/include/Xmd.h                       |  2 +-
+ Xvnc/programs/Xserver/include/servermd.h | 23 +++++++++++++++++++++++
+ 4 files changed, 35 insertions(+), 2 deletions(-)
+
+diff --git a/Xvnc/config/cf/Imake.cf b/Xvnc/config/cf/Imake.cf
+index f1f6724..cbe9ef3 100644
+--- a/Xvnc/config/cf/Imake.cf
++++ b/Xvnc/config/cf/Imake.cf
+@@ -720,6 +720,10 @@ XCOMM Keep cpp from replacing path elements containing i486/i586/i686
+ #  define Mc68020Architecture
+ #  undef mc68000
+ # endif /* mc68000 */
++# ifdef __powerpc64__
++#  define Ppc64Architecture
++#  undef __powerpc64__
++# endif
+ # ifdef powerpc
+ #  define PpcArchitecture
+ #  undef powerpc
+diff --git a/Xvnc/config/cf/linux.cf b/Xvnc/config/cf/linux.cf
+index c0e2586..e5f1f2f 100644
+--- a/Xvnc/config/cf/linux.cf
++++ b/Xvnc/config/cf/linux.cf
+@@ -289,7 +289,13 @@ XCOMM binutils:	(LinuxBinUtilsMajorVersion)
+ #define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines
+ #endif /* s390xArchitecture */
+ 
+-#ifdef PowerPCArchitecture
++#ifdef Ppc64Architecture
++#define DefaultCCOptions        -fsigned-char
++#define OptimizedCDebugFlags	-O2
++#define LinuxMachineDefines 	-D__powerpc64__
++#define ServerOSDefines		XFree86ServerOSDefines -DDDXTIME -DPART_NET
++#define ServerExtraDefines	-DGCCUSESGAS XFree86ServerDefines -D_XSERVER64
++#elif defined(PowerPCArchitecture)
+ #define DefaultCCOptions        -fsigned-char
+ #define OptimizedCDebugFlags	-O2
+ #define LinuxMachineDefines 	-D__powerpc__
+diff --git a/Xvnc/include/Xmd.h b/Xvnc/include/Xmd.h
+index 3cf9db1..704d252 100644
+--- a/Xvnc/include/Xmd.h
++++ b/Xvnc/include/Xmd.h
+@@ -59,7 +59,7 @@ SOFTWARE.
+ #ifdef CRAY
+ #define WORD64				/* 64-bit architecture */
+ #endif
+-#if defined(__alpha) || defined(__alpha__) || defined(__x86_64__)
++#if defined(__alpha) || defined(__alpha__) || defined(__x86_64__) || defined(__powerpc64__)
+ #define LONG64				/* 32/64-bit architecture */
+ #endif
+ #ifdef __sgi
+diff --git a/Xvnc/programs/Xserver/include/servermd.h b/Xvnc/programs/Xserver/include/servermd.h
+index 5066c1d..cc9f485 100644
+--- a/Xvnc/programs/Xserver/include/servermd.h
++++ b/Xvnc/programs/Xserver/include/servermd.h
+@@ -407,8 +407,31 @@ SOFTWARE.
+ 
+ #if defined (linux) && defined(__powerpc__)
+ 
++#ifdef __powerpc64__
++#  define BITMAP_SCANLINE_UNIT			64
++# define BITMAP_SCANLINE_PAD 			64
++# define LOG2_BITMAP_PAD			6
++# define LOG2_BYTES_PER_SCANLINE_PAD		3
++
++/* Add for handling protocol XPutImage and XGetImage; see comment in
++ * Alpha section.
++ */
++#define INTERNAL_VS_EXTERNAL_PADDING
++#define BITMAP_SCANLINE_UNIT_PROTO		32
++
++#define BITMAP_SCANLINE_PAD_PROTO 	 	32
++#define LOG2_BITMAP_PAD_PROTO			5
++#define LOG2_BYTES_PER_SCANLINE_PAD_PROTO	2
++#endif /* linux/ppc64 */
++
++#if defined(__LITTLE_ENDIAN__)
++#define IMAGE_BYTE_ORDER       LSBFirst
++#define BITMAP_BIT_ORDER       LSBFirst
++#else
+ #define IMAGE_BYTE_ORDER       MSBFirst
+ #define BITMAP_BIT_ORDER       MSBFirst
++#endif
++
+ #define GLYPHPADBYTES          4
+ #define GETLEFTBITS_ALIGNMENT  1
+ 
+-- 
+2.1.4
+

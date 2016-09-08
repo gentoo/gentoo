@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}"
 # note about blocking nuget:
 # there are at least two versions of it - on from mono, one from mrward
 # see https://bugzilla.xamarin.com/show_bug.cgi?id=27693
-# i think version from mrward is enough for now, 
+# i think version from mrward is enough for now,
 # that is why there is no slotted install or two different names/locations
 
 pkg_setup() {

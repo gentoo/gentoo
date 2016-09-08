@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">puppetlabs/cpp-hocon</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		A C++ port of the Typesafe Config library.
+	</longdescription>
+</pkgmetadata>

@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools-utils
 
 DESCRIPTION="library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set"
-HOMEPAGE="http://sourceforge.net/projects/libavc1394/"
+HOMEPAGE="https://sourceforge.net/projects/libavc1394/"
 SRC_URI="mirror://sourceforge/libavc1394/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

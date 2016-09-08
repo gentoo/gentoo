@@ -7,14 +7,14 @@ EAPI=6
 inherit autotools eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
 DESCRIPTION="The Motif user interface component toolkit"
-HOMEPAGE="http://sourceforge.net/projects/motif/
+HOMEPAGE="https://sourceforge.net/projects/motif/
 	http://motif.ics.com/"
 SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
 	http://dev.gentoo.org/~ulm/distfiles/${PN}-2.3.5-patches-1.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples jpeg +motif22-compatibility png static-libs unicode xft"
 
 RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-motif[-abi_x86_32(-)] )

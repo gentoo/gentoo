@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils versionator
@@ -15,16 +14,22 @@ DESCRIPTION="Simple personal tasks and todo lists manager"
 HOMEPAGE="http://www.taskcoach.org https://pypi.python.org/pypi/TaskCoach"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
+
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libnotify"
-DEPEND="|| (
+
+DEPEND="
+	|| (
 		>=dev-python/wxpython-2.8.9.2:2.8[${PYTHON_USEDEP}]
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	)
-	>=dev-python/twisted-core-10.0"
+	>=dev-python/twisted-core-10.0
+"
 RDEPEND="${DEPEND}
-	libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )"
+	x11-libs/libXScrnSaver
+	libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )
+"
 
 S="${WORKDIR}/${MY_P}"
 

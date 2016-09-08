@@ -1,0 +1,25 @@
+diff --git a/setup.py b/setup.py
+index 467bb42..24644a3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@ if platform.system() not in ['Windows', 'Darwin']:
+     NAME = NAME.lower()
+ VERSION = AppInfo.VERSION
+
+-NAGSTAMON_SCRIPT = 'nagstamon.py'
++NAGSTAMON_SCRIPT = 'nagstamon'
+
+ # workaround to get directory of Qt5 plugins to add missing 'mediaservice' folder needed for audio on OSX and Windows
+ import os.path
+@@ -134,10 +134,7 @@ setup(name=NAME,
+                   'Nagstamon.thirdparty.Xlib.ext',
+                   'Nagstamon.thirdparty.Xlib.protocol',
+                   'Nagstamon.thirdparty.Xlib.support',
+-                  'Nagstamon.thirdparty.Xlib.xobject',
+-                  'Nagstamon.thirdparty.keyring',
+-                  'Nagstamon.thirdparty.keyring.backends',
+-                  'Nagstamon.thirdparty.keyring.util'],
++                  'Nagstamon.thirdparty.Xlib.xobject',],
+       package_dir={'Nagstamon':'Nagstamon'},
+       package_data={'Nagstamon':['resources/*']},
+       data_files=[('%s/share/man/man1' % sys.prefix, ['Nagstamon/resources/nagstamon.1.gz']),

@@ -21,6 +21,9 @@
 		<remote-id type="github">libressl-portable/portable</remote-id>
 	</upstream>
 	<slots>
+		<slot name="0">
+			Pin source packages to SLOT 0, as binary compatibility slots are expected to come and go.
+		</slot>
 		<subslots>
 			Reflect ABI of libcrypto.so and libssl.so only, NOT libtls.so.
 		</subslots>

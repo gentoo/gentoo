@@ -19,6 +19,7 @@ IUSE="htmlreport pcre qt4"
 
 RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
 	>=dev-libs/tinyxml2-2
+	<dev-libs/tinyxml2-4
 	qt4? ( dev-qt/qtgui:4 )
 	pcre? ( dev-libs/libpcre )"
 DEPEND="${RDEPEND}

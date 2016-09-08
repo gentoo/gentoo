@@ -1,0 +1,39 @@
+Index: robot_state_publisher-1.13.2/include/robot_state_publisher/joint_state_listener.h
+===================================================================
+--- robot_state_publisher-1.13.2.orig/include/robot_state_publisher/joint_state_listener.h
++++ robot_state_publisher-1.13.2/include/robot_state_publisher/joint_state_listener.h
+@@ -48,7 +48,7 @@ using namespace ros;
+ using namespace KDL;
+ 
+ typedef boost::shared_ptr<sensor_msgs::JointState const> JointStateConstPtr;
+-typedef std::map<std::string, boost::shared_ptr<urdf::JointMimic> > MimicMap;
++typedef std::map<std::string, std::shared_ptr<urdf::JointMimic> > MimicMap;
+ 
+ namespace robot_state_publisher{
+ 
+Index: robot_state_publisher-1.13.2/src/joint_state_listener.cpp
+===================================================================
+--- robot_state_publisher-1.13.2.orig/src/joint_state_listener.cpp
++++ robot_state_publisher-1.13.2/src/joint_state_listener.cpp
+@@ -161,7 +161,7 @@ int main(int argc, char** argv)
+ 
+   MimicMap mimic;
+ 
+-  for(std::map< std::string, boost::shared_ptr< urdf::Joint > >::iterator i = model.joints_.begin(); i != model.joints_.end(); i++){
++  for(std::map< std::string, std::shared_ptr< urdf::Joint > >::iterator i = model.joints_.begin(); i != model.joints_.end(); i++){
+     if(i->second->mimic){
+       mimic.insert(make_pair(i->first, i->second->mimic));
+     }
+Index: robot_state_publisher-1.13.2/test/test_subclass.cpp
+===================================================================
+--- robot_state_publisher-1.13.2.orig/test/test_subclass.cpp
++++ robot_state_publisher-1.13.2/test/test_subclass.cpp
+@@ -82,7 +82,7 @@ TEST(TestRobotStatePubSubclass, robot_st
+ 
+   MimicMap mimic;
+ 
+-  for(std::map< std::string, boost::shared_ptr< urdf::Joint > >::iterator i = model.joints_.begin(); i != model.joints_.end(); i++){
++  for(std::map< std::string, std::shared_ptr< urdf::Joint > >::iterator i = model.joints_.begin(); i != model.joints_.end(); i++){
+     if(i->second->mimic){
+       mimic.insert(make_pair(i->first, i->second->mimic));
+     }

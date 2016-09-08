@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KDE Plasma screen management"
 HOMEPAGE="https://projects.kde.org/projects/extragear/base/kscreen"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

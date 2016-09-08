@@ -8,6 +8,9 @@
 	<use>
 		<flag name="appindicator">Pull in <pkg>mate-extra/mate-indicator-applet</pkg>
 			for AppIndicator applet</flag>
+		<flag name="gtk3">Make sure applets are built with GTK+3 instead of GTK+2</flag>
+		<flag name="netspeed">Pull in <pkg>net-analyzer/mate-netspeed</pkg>
+			for net speed monitoring applet</flag>
 		<flag name="sensors">Pull in <pkg>mate-extra/mate-sensors-applet</pkg>
 			for hw sensors applet</flag>
 	</use>

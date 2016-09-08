@@ -5,10 +5,6 @@
     <email>floppym@gentoo.org</email>
     <name>Mike Gilbert</name>
   </maintainer>
-  <maintainer type="person">
-    <email>ssuominen@gentoo.org</email>
-    <name>Samuli Suominen</name>
-  </maintainer>
   <use>
     <flag name="lightweight">Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)</flag>
     <flag name="xfs">Enable XFS filesystem capabilities by using <pkg>sys-fs/xfsprogs</pkg> headers (in building of fdlimit(.c))</flag>

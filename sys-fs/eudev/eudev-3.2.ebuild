@@ -108,19 +108,19 @@ multilib_src_configure() {
 		DBUS_LIBS=' '
 		--with-rootprefix=
 		--with-rootrundir=/run
-		--libdir=/usr/$(get_libdir)
-		--with-rootlibexecdir=/lib/udev
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--with-rootlibexecdir="${EPREFIX}"/lib/udev
 		--enable-split-usr
 		--enable-manpages
 		--disable-hwdb
-		--exec-prefix=/
+		--exec-prefix="${EPREFIX}"
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
 	# that means all options only apply to native_abi
 	if multilib_is_native_abi; then
 		econf_args+=(
-			--with-rootlibdir=/$(get_libdir)
+			--with-rootlibdir="${EPREFIX}"/$(get_libdir)
 			$(use_enable introspection)
 			$(use_enable kmod)
 			$(use_enable static-libs static)
@@ -190,22 +190,41 @@ pkg_postinst() {
 		ewarn "else losetup may be confused when looking for unused devices."
 	fi
 
+	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
+	# https://bugs.gentoo.org/246847
+	# https://bugs.gentoo.org/514174
+	enewgroup input
+
+	# REPLACING_VERSIONS should only ever have zero or 1 values but in case it doesn't,
+	# process it as a list.  We only care about the zero case (new install) or the case where
+	# the same version is being re-emerged.  If there is a second version, allow it to abort.
+	local rv rvres=doitnew
+	for rv in ${REPLACING_VERSIONS} ; do
+		if [[ ${rvres} == doit* ]]; then
+			if [[ ${rv%-r*} == ${PV} ]]; then
+				rvres=doit
+			else
+				rvres=${rv}
+			fi
+		fi
+	done
+
 	if use hwdb && has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		# reload database after it has be rebuilt, but only if we are not upgrading
 		# also pass if we are -9999 since who knows what hwdb related changes there might be
-		if [[ ${REPLACING_VERSIONS%-r*} == ${PV} || -z ${REPLACING_VERSIONS} ]] && \
-		[[ ${ROOT%/} == "" ]] && [[ ${PV} != "9999" ]]; then
+		if [[ ${rvres} == doit* ]] && [[ ${ROOT%/} == "" ]] && [[ ${PV} != "9999" ]]; then
 			udevadm control --reload
 		fi
 	fi
-
-	ewarn
-	ewarn "You need to restart eudev as soon as possible to make the"
-	ewarn "upgrade go into effect:"
-	ewarn "\t/etc/init.d/udev --nodeps restart"
+	if [[ ${rvres} != doitnew ]]; then
+		ewarn
+		ewarn "You need to restart eudev as soon as possible to make the"
+		ewarn "upgrade go into effect:"
+		ewarn "\t/etc/init.d/udev --nodeps restart"
+	fi
 
 	if use rule-generator && \
 	[[ -x $(type -P rc-update) ]] && rc-update show | grep udev-postmount | grep -qsv 'boot\|default\|sysinit'; then
@@ -221,22 +240,4 @@ pkg_postinst() {
 	elog "fixing known issues visit:"
 	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
 	elog
-
-	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
-	# https://bugs.gentoo.org/246847
-	# https://bugs.gentoo.org/514174
-	enewgroup input
-
-	# Update hwdb database in case the format is changed by udev version.
-	if has_version 'sys-apps/hwids[udev]'; then
-		udevadm hwdb --update --root="${ROOT%/}"
-		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
-		if [[ -z ${REPLACING_VERSIONS} ]]; then
-			# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
-			if [[ ${ROOT} != "" ]] && [[ ${ROOT} != "/" ]]; then
-				return 0
-			fi
-			udevadm control --reload
-		fi
-	fi
 }

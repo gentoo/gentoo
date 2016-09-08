@@ -9,6 +9,7 @@
 		<flag name="cdr">Add an extension to burn files to cds using <pkg>app-cdr/brasero</pkg>.</flag>
 		<flag name="gajim">Add an extension to support <pkg>net-im/gajim</pkg>.</flag>
 		<flag name="gksu">Add an extension to support opening files as root with <pkg>x11-libs/gksu</pkg>.</flag>
+		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 		<flag name="image-converter">Add image conversion support.</flag>
 		<flag name="mail">Add an extension to support e-mail functionality.</flag>
 		<flag name="open-terminal">Add an extension to support an open terminal.</flag>

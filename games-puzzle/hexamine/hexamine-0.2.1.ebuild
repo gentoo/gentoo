@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 games
 
 DESCRIPTION="Hexagonal Minesweeper"
-HOMEPAGE="http://sourceforge.net/projects/hexamine"
+HOMEPAGE="https://sourceforge.net/projects/hexamine"
 SRC_URI="mirror://sourceforge/hexamine/${P}.tar.gz"
 
 LICENSE="GPL-2"

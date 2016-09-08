@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils toolchain-funcs games
 
 DESCRIPTION="variant of the snake game"
-HOMEPAGE="http://sourceforge.net/projects/worms3d/"
+HOMEPAGE="https://sourceforge.net/projects/worms3d/"
 SRC_URI="mirror://sourceforge/worms3d/${P}.tar.gz"
 
 LICENSE="GPL-2"

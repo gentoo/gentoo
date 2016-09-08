@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 MY_P="SNNSv${PV}"
 DESCRIPTION="Stuttgart Neural Network Simulator"
-HOMEPAGE="http://sourceforge.net/projects/snns/"
+HOMEPAGE="https://sourceforge.net/projects/snns/"
 SRC_URI="http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/${MY_P}.tar.gz
 	doc? ( http://www.ra.cs.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf )"
 

@@ -1,0 +1,64 @@
+Fix compilation issue with nginx-1.11.2
+
+https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/issues/26/not-compile-nginx-1112
+
+diff --git a/ngx_http_sticky_misc.c b/ngx_http_sticky_misc.c
+index 4aadd4b..0a3548c 100644
+--- a/ngx_http_sticky_misc.c
++++ b/ngx_http_sticky_misc.c
+@@ -16,10 +16,15 @@
+   #define ngx_str_set(str, text) (str)->len = sizeof(text) - 1; (str)->data = (u_char *) text
+ #endif
+ 
++/* - fix for 1.11.2 removes include <openssl/md5.h> in ngx_md5.h */
++#define MD5_CBLOCK  64
++#define MD5_LBLOCK  (MD5_CBLOCK/4)
++#define MD5_DIGEST_LENGTH 16
++
+ // /* - bugfix for compiling on sles11 - needs gcc4.6 or later*/
+-// #pragma GCC diagnostic ignored "-Wuninitialized" 
++// #pragma GCC diagnostic ignored "-Wuninitialized"
+ 
+-static ngx_int_t cookie_expires(char *str, size_t size, time_t t) 
++static ngx_int_t cookie_expires(char *str, size_t size, time_t t)
+ {
+   char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+   char *wdays[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+@@ -75,7 +80,7 @@ ngx_int_t ngx_http_sticky_misc_set_cookie(ngx_http_request_t *r, ngx_str_t *name
+     len += sizeof("; HttpOnly") - 1;
+   }
+ 
+-  cookie = ngx_pnalloc(r->pool, len); 
++  cookie = ngx_pnalloc(r->pool, len);
+   if (cookie == NULL) {
+     return NGX_ERROR;
+   }
+@@ -85,7 +90,7 @@ ngx_int_t ngx_http_sticky_misc_set_cookie(ngx_http_request_t *r, ngx_str_t *name
+   p = ngx_copy(p, value->data, value->len);
+ 
+   if (domain->len > 0) {
+-    p = ngx_copy(p, "; Domain=", sizeof("; Domain=") - 1);  
++    p = ngx_copy(p, "; Domain=", sizeof("; Domain=") - 1);
+     p = ngx_copy(p, domain->data, domain->len);
+   }
+ 
+@@ -95,16 +100,16 @@ ngx_int_t ngx_http_sticky_misc_set_cookie(ngx_http_request_t *r, ngx_str_t *name
+   }
+ 
+   if (path->len > 0) {
+-    p = ngx_copy(p, "; Path=", sizeof("; Path=") - 1);  
++    p = ngx_copy(p, "; Path=", sizeof("; Path=") - 1);
+     p = ngx_copy(p, path->data, path->len);
+   }
+ 
+   if (secure) {
+-    p = ngx_copy(p, "; Secure", sizeof("; Secure") - 1);  
++    p = ngx_copy(p, "; Secure", sizeof("; Secure") - 1);
+   }
+ 
+   if (httponly) {
+-    p = ngx_copy(p, "; HttpOnly", sizeof("; HttpOnly") - 1);  
++    p = ngx_copy(p, "; HttpOnly", sizeof("; HttpOnly") - 1);
+   }
+ 
+   part = &r->headers_out.headers.part;

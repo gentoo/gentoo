@@ -7,7 +7,7 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="Translate PostScript and PDF graphics into other vector formats"
-HOMEPAGE="http://sourceforge.net/projects/pstoedit/"
+HOMEPAGE="https://sourceforge.net/projects/pstoedit/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

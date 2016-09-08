@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+		<name>Michael Orlitzky</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		/Usage/:
+		
+		@
+		mailbox-count [OPTIONS]
+		@
+		
+		Mailbox-count produces a simple count of mailboxes that exist
+		per-domain in some SQL database. The default queries are compatible
+		with the schema used by PostfixAdmin &lt;http://postfixadmin.sourceforge.net/&gt;,
+		but it is possible to supply your own queries via the @--summary-query@
+		and @--detail-query@ options.
+		
+		The summary report lists each domain, along with the number of
+		mailboxes owned by that domain. The order is determined by the summary
+		query, which lists the domains alphabetically by default.
+		
+		The default detail report shows the same, but also contains a list of
+		each individual mailbox (again in alphabetical order) belonging to the
+		domains.
+		
+		/Input/:
+		
+		None.
+		
+		/Output/:
+		
+		Either a summary, or detailed report (with @--detail@) of the
+		number of mailboxes per-domain contained in the database.
+		
+		/Options/:
+		
+		@
+		\--database
+		@
+		
+		The name of the database (or file, if SQLite) to which we should
+		connect.
+		
+		Default: The name of the current user (Postgres only).
+		
+		@
+		\--detail
+		@
+		
+		Produce a detailed report listing all mailboxes by domain.
+		
+		@
+		\--detail-query
+		@
+		
+		SQL query used to produce the detail report. This should return the
+		set of all (domain, username) pairs. See the default value for an
+		example.
+		
+		Default: \"SELECT domain,username FROM mailbox ORDER BY domain;\"
+		
+		@
+		\--host
+		@
+		
+		Hostname where the database is located (Postgres-only).
+		
+		Default: None, a UNIX domain socket connection is attempted (Postgres only)
+		
+		@
+		\--password
+		@
+		
+		Password used to connect to the database (Postgres-only).
+		
+		Default: None (assumes passwordless authentication)
+		
+		@
+		\--port
+		@
+		Port number used to connect to the database (Postgres-only).
+		
+		Default: None, a UNIX domain socket connection is attempted (Postgres only)
+		
+		@
+		\--summary-query
+		@
+		
+		SQL query used to produce the summary report. This should return
+		(domain, user count) pairs. See the default value for an
+		example.
+		
+		Default: \"SELECT domain,COUNT(username) FROM mailbox GROUP BY domain
+		ORDER BY domain;\"
+		
+		@
+		\--username
+		@
+		
+		Username used to connect to the database (Postgres-only).
+		
+		Default: The current user
+		
+		/Examples/:
+		
+		The default summary report:
+		
+		@
+		$ mailbox-count --database=postfixadmin.sqlite3
+		Summary (number of mailboxes per domain)
+		\----------------------------------------
+		example.com:     3
+		example.invalid: 1
+		example.net:     2
+		example.org:     1
+		@
+		
+		The more detailed report:
+		
+		@
+		$ mailbox-count --detail --database=postfixadmin.sqlite3
+		Detail (list of all mailboxes by domain)
+		\----------------------------------------
+		example.com (3):
+		&amp;#x20; user1
+		&amp;#x20; user3
+		&amp;#x20; user5
+		example.invalid (1):
+		&amp;#x20; user7
+		example.net (2):
+		&amp;#x20; user2
+		&amp;#x20; user4
+		example.org (1):
+		&amp;#x20; user6
+		@
+	</longdescription>
+</pkgmetadata>
