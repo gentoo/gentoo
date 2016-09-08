@@ -34,8 +34,8 @@ DOCS=(CHANGES CREDITS README.md)
 python_compile_all() {
 	if use doc; then
 		einfo "Making documentation from ${EPYTHON} build"
-		cd "${BEST_BUILD_DIR}" || die
-		epydoc --html --verbose \
+		mkdir -p doc/html || die
+		epydoc --html --verbose -o doc/html \
 			--url="${HOMEPAGE}" --name="${MY_P}" \
 			icu.py || die "Making the docs failed!"
 	fi
@@ -46,8 +46,8 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
 	if use doc; then
-		dohtml -r ../*/html/*
+		local HTML_DOCS=( doc/html/. )
 	fi
+	distutils-r1_python_install_all
 }
