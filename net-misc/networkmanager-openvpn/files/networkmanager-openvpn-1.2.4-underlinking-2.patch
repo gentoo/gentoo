@@ -1,0 +1,58 @@
+From 8d76aebe99b1b9c67adab4922c0c33edb1f89b7f Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Mon, 15 Aug 2016 16:55:01 +0200
+Subject: build: use $(DL_LIBS) name for -ldl
+
+Usually, our variables for libraries are call *_LIBS. Adjust the name.
+---
+ configure.ac                 | 6 +++---
+ properties/Makefile.am       | 3 ++-
+ properties/tests/Makefile.am | 1 -
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3988bad..142fa67 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,9 +38,9 @@ dnl
+ AC_PROG_GCC_TRADITIONAL
+ AC_FUNC_MEMCMP
+ AC_CHECK_FUNCS(select socket uname)
+-AC_SEARCH_LIBS([dlopen], [dl dld], [], [
+-  AC_MSG_ERROR([unable to find the dlopen() function])
+-])
++
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [ac_cv_search_dlopen=])
++AC_SUBST([DL_LIBS], "$ac_cv_search_dlopen")
+ 
+ dnl ensure that when the Automake generated makefile calls aclocal,
+ dnl it honours the $ACLOCAL_FLAGS environment variable
+diff --git a/properties/Makefile.am b/properties/Makefile.am
+index 04ed5cd..12ee00c 100644
+--- a/properties/Makefile.am
++++ b/properties/Makefile.am
+@@ -58,7 +58,8 @@ libnm_vpn_plugin_openvpn_la_CFLAGS =                    \
+ 
+ libnm_vpn_plugin_openvpn_la_LIBADD = \
+         $(LIBNM_LIBS) \
+-        $(DLOPEN)
++        $(DL_LIBS) \
++        $(NULL)
+ 
+ libnm_vpn_plugin_openvpn_la_LDFLAGS = \
+         -avoid-version \
+diff --git a/properties/tests/Makefile.am b/properties/tests/Makefile.am
+index c4639ee..c3eef5b 100644
+--- a/properties/tests/Makefile.am
++++ b/properties/tests/Makefile.am
+@@ -27,7 +27,6 @@ test_import_export_LDADD = \
+ 	$(GTK_LIBS) \
+ 	$(LIBNM_LIBS) \
+ 	$(LIBNMA_LIBS) \
+-	-ldl \
+ 	$(top_builddir)/properties/libnm-vpn-plugin-openvpn-test.la
+ 
+ 
+-- 
+cgit v0.12
+
