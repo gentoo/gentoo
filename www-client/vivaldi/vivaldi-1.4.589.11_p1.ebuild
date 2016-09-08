@@ -10,11 +10,14 @@ CHROMIUM_LANGS="
 "
 inherit chromium-2 eutils multilib unpacker toolchain-funcs
 
-VIVALDI_PN="${PN}-snapshot"
-VIVALDI_HOME="opt/${VIVALDI_PN}"
+#VIVALDI_BRANCH="snapshot"
+
+VIVALDI_PN="${PN}-${VIVALDI_BRANCH:-stable}"
+VIVALDI_BIN="${PN}${VIVALDI_BRANCH/snapshot/-snapshot}"
+VIVALDI_HOME="opt/${VIVALDI_BIN}"
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
-VIVALDI_BASE_URI="https://downloads.vivaldi.com/snapshot/${VIVALDI_PN}_${PV/_p/-}_"
+VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_BRANCH:-stable}/${VIVALDI_PN}_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
@@ -68,16 +71,16 @@ src_unpack() {
 
 src_prepare() {
 	sed -i \
-		-e "s|${VIVALDI_PN}|${PN}|g" \
+		-e "s|${VIVALDI_BIN}|${PN}|g" \
 		usr/share/applications/${VIVALDI_PN}.desktop \
-		usr/share/xfce4/helpers/${VIVALDI_PN}.desktop || die
+		usr/share/xfce4/helpers/${VIVALDI_BIN}.desktop || die
 
 	mv usr/share/doc/${VIVALDI_PN} usr/share/doc/${PF} || die
 	chmod 0755 usr/share/doc/${PF} || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${VIVALDI_PN} \
+		etc/cron.daily/${VIVALDI_BIN} \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
