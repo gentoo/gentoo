@@ -1,6 +1,6 @@
 DEFINED_PHASES=install postinst setup
 DESCRIPTION=Tool for managing events and logs
-EAPI=5
+EAPI=6
 HOMEPAGE=https://www.elastic.co/products/logstash
 IUSE=all-plugins
 KEYWORDS=~amd64
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=!all-plugins? ( https://download.elastic.co/logstash/logstash/logstash-2.4.0.tar.gz ) all-plugins? ( https://download.elastic.co/logstash/logstash/logstash-all-plugins-2.4.0.tar.gz )
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
 _eclasses_=user	80aaa71614ced86f02ee1a513821dc87
-_md5_=66cf3abc1a6702bf24e9f098b5b3c150
+_md5_=99038d20cbd75401bfad25a261cd0f4c
