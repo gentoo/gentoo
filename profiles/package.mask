@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Alon Bar-Lev <alonbl@gentoo.org (09 Sep 2016)
+# No upstream, no maintainer (bug #592164)
+# Package will be removed from Gentoo in 30 days.
+app-crypt/scl011-bin
+
+# Alon Bar-Lev <alonbl@gentoo.org (09 Sep 2016)
+# Weak cryptography (bug #592114)
+# Package will be removed from Gentoo in 30 days.
+app-crypt/bcrypt
+
 # Lars Wendler <polynomial-c@gentoo.org> (06 Sep 2016)
 # Breaks samba's nmbd process (bug #592502)
 =sys-libs/tevent-0.9.30
