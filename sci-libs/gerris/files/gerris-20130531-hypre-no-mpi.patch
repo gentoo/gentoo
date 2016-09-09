@@ -1,7 +1,7 @@
 patch to allow gerris to use hypre without mpi
 
---- configure.ac	2013-05-30 23:57:18.000000000 -0700
-+++ configure.ac.new	2013-07-22 13:52:36.083974663 -0700
+--- a/configure.ac
++++ b/configure.ac
 @@ -336,7 +336,7 @@
  
  # Build hypre module if HYPRE is installed
