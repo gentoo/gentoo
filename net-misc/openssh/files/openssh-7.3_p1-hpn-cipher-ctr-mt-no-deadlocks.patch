@@ -1,5 +1,5 @@
 diff --git a/cipher-ctr-mt.c b/cipher-ctr-mt.c
-index fdc9b2f..3ffe6d1 100644
+index fdc9b2f..300cd90 100644
 --- a/cipher-ctr-mt.c
 +++ b/cipher-ctr-mt.c
 @@ -127,7 +127,7 @@ struct kq {
@@ -160,7 +160,7 @@ index fdc9b2f..3ffe6d1 100644
  
  		c->state = HAVE_NONE;
  		for (i = 0; i < NUMKQ; i++) {
-@@ -409,11 +481,9 @@ ssh_aes_ctr_init(EVP_CIPHER_CTX *ctx, const u_char *key, const u_char *iv,
+@@ -409,11 +481,14 @@ ssh_aes_ctr_init(EVP_CIPHER_CTX *ctx, const u_char *key, const u_char *iv,
  	}
  
  	if (c->state == (HAVE_KEY | HAVE_IV)) {
@@ -172,10 +172,15 @@ index fdc9b2f..3ffe6d1 100644
 +		/* tell the pregen threads to exit */
 +		stop_and_join_pregen_threads(c);
 +
++#ifdef __APPLE__
++		/* reset the exit flag */
++		c->exit_flag = FALSE;
++#endif /* __APPLE__ */
++
  		/* Start over getting key & iv */
  		c->state = HAVE_NONE;
  	}
-@@ -444,10 +514,12 @@ ssh_aes_ctr_init(EVP_CIPHER_CTX *ctx, const u_char *key, const u_char *iv,
+@@ -444,10 +519,12 @@ ssh_aes_ctr_init(EVP_CIPHER_CTX *ctx, const u_char *key, const u_char *iv,
  		/* Start threads */
  		for (i = 0; i < CIPHER_THREADS; i++) {
  			debug("spawned a thread");
@@ -189,7 +194,7 @@ index fdc9b2f..3ffe6d1 100644
  			pthread_cond_wait(&c->q[0].cond, &c->q[0].lock);
  		pthread_mutex_unlock(&c->q[0].lock);
  	}
-@@ -461,15 +533,10 @@ void
+@@ -461,15 +538,10 @@ void
  ssh_aes_ctr_thread_destroy(EVP_CIPHER_CTX *ctx)
  {
  	struct ssh_aes_ctr_ctx *c;
@@ -208,7 +213,7 @@ index fdc9b2f..3ffe6d1 100644
  }
  
  void
-@@ -481,7 +548,9 @@ ssh_aes_ctr_thread_reconstruction(EVP_CIPHER_CTX *ctx)
+@@ -481,7 +553,9 @@ ssh_aes_ctr_thread_reconstruction(EVP_CIPHER_CTX *ctx)
  	/* reconstruct threads */
  	for (i = 0; i < CIPHER_THREADS; i++) {
  		debug("spawned a thread");
@@ -218,7 +223,7 @@ index fdc9b2f..3ffe6d1 100644
  	}
  }
  
-@@ -489,18 +558,13 @@ static int
+@@ -489,18 +563,13 @@ static int
  ssh_aes_ctr_cleanup(EVP_CIPHER_CTX *ctx)
  {
  	struct ssh_aes_ctr_ctx *c;
