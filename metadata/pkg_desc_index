@@ -17855,7 +17855,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6 4.6.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 53.0.2785.89 53.0.2785.92 54.0.2840.8 54.0.2840.14: Open-source version of Google Chrome web browser
+www-client/chromium 53.0.2785.89 53.0.2785.92 53.0.2785.101 54.0.2840.8 54.0.2840.14: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
@@ -17867,8 +17867,8 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.8.0 45.2.0 45.3.0 48.0.1: Firefox Web Browser
 www-client/firefox-bin 45.3.0 48.0.1: Firefox Web Browser
 www-client/google-chrome 53.0.2785.101: The web browser from Google
-www-client/google-chrome-beta 53.0.2785.92: The web browser from Google
-www-client/google-chrome-unstable 54.0.2840.14: The web browser from Google
+www-client/google-chrome-beta 54.0.2840.16: The web browser from Google
+www-client/google-chrome-unstable 55.0.2853.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.48.22: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17923,7 +17923,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.632 22.0.0.209: Adobe Flash Player
-www-plugins/chrome-binary-plugins 53.0.2785.92_beta 53.0.2785.101 54.0.2840.14_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 53.0.2785.101 54.0.2840.16_beta 55.0.2853.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1 0.3.5: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
