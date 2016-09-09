@@ -1,17 +1,16 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2 prefix user
+inherit eutils java-pkg-2 prefix user
 
 MY_PV="${PV/_alpha/.M}"
 MY_P="apache-${PN}-${MY_PV}-src"
 
-DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
+DESCRIPTION="Tomcat Servlet-4.0/JSP-2.3 Container"
 HOMEPAGE="http://tomcat.apache.org/"
 SRC_URI="mirror://apache/${PN}/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
 
@@ -22,14 +21,9 @@ IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.5"
-SAPI_SLOT="4.0"
+COMMON_DEP="~dev-java/tomcat-server-${PV}:${SLOT}
+	~dev-java/tomcat-servlet-api-${PV}:4.0"
 
-COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	=dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
-RDEPEND="${COMMON_DEP}
-	!<dev-java/tomcat-native-1.1.24
-	>=virtual/jre-1.8"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
 	>=virtual/jdk-1.8
@@ -38,7 +32,11 @@ DEPEND="${COMMON_DEP}
 		dev-java/easymock:3.2
 	)"
 
-S=${WORKDIR}/${MY_P}
+RDEPEND="${COMMON_DEP}
+	!<dev-java/tomcat-native-1.1.24
+	>=virtual/jre-1.8"
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -47,12 +45,9 @@ pkg_setup() {
 }
 
 java_prepare() {
-	find -name '*.jar' -type f -delete -print || die
-
+	eapply_user
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
-
-	epatch "${FILESDIR}/${P}-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
@@ -60,22 +55,18 @@ java_prepare() {
 		bin/catalina.sh || die
 }
 
-JAVA_ANT_REWRITE_CLASSPATH="true"
+# Needed to create classpath in package.env
+EANT_GENTOO_CLASSPATH="tomcat-server-${SLOT}"
 
-EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT}"
+# Not sure if tests can be run
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
-EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
-EANT_NEEDS_TOOLS="true"
-EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false"
 
 # revisions of the scripts
 IM_REV="-r2"
-INIT_REV="-r1"
+INIT_REV=""
 
 src_compile() {
-	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
-	java-pkg-2_src_compile
+	local donothing;
 }
 
 src_test() {
@@ -85,16 +76,29 @@ src_test() {
 src_install() {
 	local dest="/usr/share/${PN}-${SLOT}"
 
-	java-pkg_jarinto "${dest}"/bin
-	java-pkg_dojar output/build/bin/*.jar
+	dodir "${dest}"/bin
+	# link to jars installed by tomcat-server
+	local bin_jars="bootstrap tomcat-juli"
+	for jar in ${bin_jars}; do
+		dosym /usr/share/${PN}-server-${SLOT}/lib/${jar}.jar \
+			"${dest}"/bin/${jar}.jar
+	done
 	exeinto "${dest}"/bin
-	doexe output/build/bin/*.sh
+	doexe bin/*.sh
 
-	java-pkg_jarinto "${dest}"/lib
-	java-pkg_dojar output/build/lib/*.jar
+	local lib_jars="annotations-api catalina-ant catalina-ha
+			catalina-storeconfig catalina-tribes catalina
+			jasper-el jasper jaspic-api tomcat-api tomcat-coyote
+			tomcat-dbcp tomcat-i18n-es tomcat-i18n-fr
+			tomcat-i18n-ja tomcat-jni tomcat-util-scan tomcat-util
+			tomcat-websocket websocket-api"
+	for jar in ${lib_jars}; do
+		dosym /usr/share/${PN}-server-${SLOT}/lib/${jar}.jar \
+			"${dest}"/lib/${jar}.jar
+	done
 
 	dodoc RELEASE-NOTES RUNNING.txt
-	use doc && java-pkg_dojavadoc output/dist/webapps/docs/api
+	use doc && java-pkg_dojavadoc webapps/docs/api
 	use source && java-pkg_dosrc java/*
 
 	### Webapps ###
@@ -103,12 +107,12 @@ src_install() {
 	local apps="host-manager manager"
 	for app in ${apps}; do
 		sed -i -e "s|=\"true\" >|=\"true\" docBase=\"\$\{catalina.home\}/webapps/${app}\" >|" \
-			output/build/webapps/${app}/META-INF/context.xml || die
+			webapps/${app}/META-INF/context.xml || die
 	done
 
 	insinto "${dest}"/webapps
-	doins -r output/build/webapps/{host-manager,manager,ROOT}
-	use extra-webapps && doins -r output/build/webapps/{docs,examples}
+	doins -r webapps/{host-manager,manager,ROOT}
+	use extra-webapps && doins -r webapps/{docs,examples}
 
 	### Config ###
 
@@ -119,13 +123,13 @@ src_install() {
 
 	# replace the default pw with a random one, see #92281
 	local randpw="$(pwgen -s -B 15 1)"
-	sed -i -e "s|SHUTDOWN|${randpw}|" output/build/conf/server.xml || die
+	sed -i -e "s|SHUTDOWN|${randpw}|" conf/server.xml || die
 
 	# prepend gentoo.classpath to common.loader, see #453212
-	sed -i -e 's/^common\.loader=/\0${gentoo.classpath},/' output/build/conf/catalina.properties || die
+	sed -i -e 's/^common\.loader=/\0${gentoo.classpath},/' conf/catalina.properties || die
 
 	insinto "${dest}"
-	doins -r output/build/conf
+	doins -r conf
 
 	### rc ###
 
@@ -147,9 +151,4 @@ pkg_postinst() {
 
 	elog "To manage Tomcat instances, run:"
 	elog "  ${EPREFIX}/usr/share/${PN}-${SLOT}/gentoo/tomcat-instance-manager.bash --help"
-
-	ewarn "tomcat-dbcp.jar is not built at this time. Please fetch jar"
-	ewarn "from upstream binary if you need it. Gentoo Bug # 144276"
-
-#	einfo "Please read https://www.gentoo.org/proj/en/java/tomcat6-guide.xml for more information."
 }
