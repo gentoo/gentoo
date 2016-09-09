@@ -7657,7 +7657,7 @@ dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data a
 dev-python/paramiko 1.15.1-r1 1.16.0 9999: SSH2 protocol library
 dev-python/paramunittest 0.2: Simple extension to have parametrized unit tests.
 dev-python/parse 1.6.4 1.6.6: parse() is the opposite of format()
-dev-python/parse-type 0.3.4: Simplifies to build parse types based on the parse module
+dev-python/parse-type 0.3.4 0.3.4-r1: Simplifies to build parse types based on the parse module
 dev-python/parsedatetime 1.5 2.1: Parse human-readable date/time strings
 dev-python/parsley 1.2 1.3: A Pattern-Matching Language Based on OMeta and Python
 dev-python/partd 0.3.2: Appendable key-value storage
