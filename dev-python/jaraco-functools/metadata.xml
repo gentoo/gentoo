@@ -14,5 +14,6 @@
 		<remote-id type="pypi">jaraco.functools</remote-id>
 		<remote-id type="github">jaraco/jaraco.functools</remote-id>
 		<bugs-to>https://github.com/jaraco/jaraco.functools/issues</bugs-to>
+		<changelog>https://github.com/jaraco/jaraco.functools/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>
