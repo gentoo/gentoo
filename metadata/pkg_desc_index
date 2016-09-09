@@ -13999,7 +13999,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.4 2.0.5 2.2.0 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.4 2.0.5 2.0.6 2.2.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -17922,7 +17922,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.632 22.0.0.209: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.632 22.0.0.209-r1: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.101 54.0.2840.16_beta 55.0.2853.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1 0.3.5: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
