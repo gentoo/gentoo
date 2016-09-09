@@ -1125,6 +1125,7 @@ app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
 app-emacs/dash 2.12.0 2.12.1 2.13.0: A modern list library for Emacs
 app-emacs/ddskk 14.3 14.4 15.1: One Japanese input methods on Emacs
+app-emacs/desktop+ 0.2: desktop+ extends standard desktop module
 app-emacs/develock 0.45: An Emacs minor mode for highlighting broken formatting rules
 app-emacs/df-mode 20050509: Minor mode to show space left on devices in the mode line
 app-emacs/dictionary 1.10: Emacs package for talking to a dictionary server
@@ -1154,6 +1155,7 @@ app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.4 9999: Emacs major mode for editing eselect files
 app-emacs/ess 14.09 15.03.1 15.09.2 16.04: Emacs Speaks Statistics
 app-emacs/evil 1.0.8: Extensible vi layer for Emacs
+app-emacs/f 0.18.2: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
 app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill functions
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
@@ -1239,6 +1241,7 @@ app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 1.9.3_p429 2.0.0_p247 2.1.5 2.2.0 2.2.2 2.3.0: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721 0.3_pre20110721-r1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 1_beta20150411: A major emacs mode for editing Rust source code
+app-emacs/s 1.11.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
@@ -3161,7 +3164,7 @@ dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901: game installer for playstation 2 HD Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
 dev-games/hlsdk 2.3 2.3-r1: Half-Life Software Development Kit for mod authors
-dev-games/irrlicht 1.8.1-r1: open source high performance realtime 3D engine written in C++
+dev-games/irrlicht 1.8.1-r1 1.8.4: open source high performance realtime 3D engine written in C++
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
 dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
