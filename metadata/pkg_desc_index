@@ -6992,7 +6992,7 @@ dev-python/bcrypt 1.1.1 2.0.0 2.0.0-r1 3.1.0: Modern password hashing for softwa
 dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WSGI Middleware
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1 4.5.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
-dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
+dev-python/behave 1.2.4 1.2.5 1.2.5-r1: behaviour-driven development, Python style
 dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
 dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21 3.3.0.22 3.5.0.0: Python multiprocessing fork
@@ -7838,7 +7838,7 @@ dev-python/pygtkhelpers 0.4.3 0.4.3-r1: PyGTKHelpers is a library to assist the 
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pygui 2.5.3-r1: A cross-platform pythonic GUI API
 dev-python/pyh2o 9999: Library of routines for IF97 water & steam properties
-dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5: Hamcrest framework for matcher objects
+dev-python/pyhamcrest 1.8.2 1.8.3 1.8.5 1.9.0: Hamcrest framework for matcher objects
 dev-python/pyicu 1.9.3: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r1 0.5.1-r2: Module for manipulating ID3 tags in Python
 dev-python/pyifp 0.2.2-r1: Python bindings for libifp library for accessing iRiver iFP devices
@@ -8227,7 +8227,7 @@ dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sph
 dev-python/sphinx-bootstrap-theme 0.4.5 0.4.6 0.4.7 0.4.9: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-asyncio 0.2.0: sphinx extension to support coroutines in markup
-dev-python/sphinxcontrib-cheeseshop 0.2: Sphinx extension cheeseshop
+dev-python/sphinxcontrib-cheeseshop 0.2 0.2-r1: Sphinx extension cheeseshop
 dev-python/sphinxcontrib-doxylink 1.3: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-googleanalytics 0.1-r1: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.1.8 1.1.9 1.2.0 1.2.1 1.3.0 1.4.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
@@ -14246,7 +14246,7 @@ net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what 
 net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
-net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
+net-im/skype 1.7.0.1 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/telegram-desktop-bin 0.9.56 0.10.0 0.10.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers

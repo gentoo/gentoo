@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=P2P Internet Telephony (VoiceIP) client
+EAPI=5
+HOMEPAGE=http://www.skype.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=Skype-TOS no-source-code
+RDEPEND=!net-im/skype:0 virtual/ttf-fonts gnome-base/libgnome-keyring gnome-base/gnome-keyring gnome-base/gconf
+RESTRICT=mirror bindist strip
+SLOT=1
+SRC_URI=https://repo.skype.com/rpm/stable/skypeforlinux_1.7.0.1-1.x86_64.rpm
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=ea7e878c5057934b5b52cf6a55ed8647
