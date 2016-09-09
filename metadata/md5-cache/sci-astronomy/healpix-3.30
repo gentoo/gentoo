@@ -10,5 +10,5 @@ RDEPEND=>=sci-libs/cfitsio-3 idl? ( dev-lang/gdl sci-astronomy/idlastro ) java? 
 SLOT=0
 SRC_URI=mirror://sourceforge/healpix/Healpix_3.30/Healpix_3.30_2015Oct08.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	java-ant-2	d1abcccd8e9c606be17deacfe5c7368a	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=63b019e5ba7f7be039c5011717293b95
