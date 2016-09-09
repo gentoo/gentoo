@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
-NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru zh )
+NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
 IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
 
 REQUIRED_USE="
@@ -66,9 +66,9 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
 		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
 		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch \
 		"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch \
-		"${FILESDIR}"/${PN}-7.25-libpcre.patch
+		"${FILESDIR}"/${PN}-7.25-libpcre.patch \
+		"${FILESDIR}"/${PN}-7.25-no-FORTIFY_SOURCE.patch
 
 	if use nls; then
 		local lingua=''
@@ -122,11 +122,13 @@ src_configure() {
 }
 
 src_compile() {
-	local dep deps="build-dnet build-nbase build-nsock build-netutil"
-	use system-lua || deps="build-lua ${deps}"
-
-	for dep in ${deps}; do
-		emake makefile.dep ${dep}
+	local directory
+	for directory in . libnetutil nsock/src \
+		$(usex ncat ncat '') \
+		$(usex nmap-update nmap-update '') \
+		$(usex nping nping '')
+	do
+		emake -C "${directory}" makefile.dep
 	done
 
 	emake \
