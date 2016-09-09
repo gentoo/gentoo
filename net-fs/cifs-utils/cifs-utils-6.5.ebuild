@@ -81,6 +81,8 @@ src_install() {
 		dodir /etc/request-key.d
 		echo 'create dns_resolver * * /usr/sbin/cifs.upcall %k' \
 			> "${ED}/etc/request-key.d/cifs.upcall.conf"
+		echo 'create cifs.spnego * * /usr/sbin/cifs.upcall %k' \
+			> "${ED}/etc/request-key.d/cifs.spnego.conf"
 	fi
 }
 
