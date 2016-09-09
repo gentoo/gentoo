@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>sir.suriv@gmail.com</email>
+	<name>Diogo Pereira</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	xss-lock hooks up your favorite locker to the MIT screen saver extension
+	for X and also to systemd's login manager.
+</longdescription>
+<use>
+	<flag name="man">Build and install man pages</flag>
+</use>
+<upstream>
+	<maintainer status="inactive">
+		<email>raymondwagenmaker@gmail.com</email>
+		<name>Raymond Wagenmaker</name>
+	</maintainer>
+	<remote-id type="bitbucket">raymonad/xss-lock</remote-id>
+	<bugs-to>https://bitbucket.org/raymonad/xss-lock/issues</bugs-to>
+</upstream>
+</pkgmetadata>
