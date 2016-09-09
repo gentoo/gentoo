@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/show_bug.cgi?id=520746
+
+http://code.metager.de/source/diff/irrlicht/source/Irrlicht/CImageLoaderJPG.cpp?r2=%2Firrlicht%2Fsource%2FIrrlicht%2FCImageLoaderJPG.cpp%404823&r1=%2Firrlicht%2Fsource%2FIrrlicht%2FCImageLoaderJPG.cpp%404320
+
+--- irrlicht-1.8.4/source/Irrlicht/CImageLoaderJPG.cpp
++++ irrlicht-1.8.4/source/Irrlicht/CImageLoaderJPG.cpp
+@@ -66,7 +66,7 @@
+ boolean CImageLoaderJPG::fill_input_buffer (j_decompress_ptr cinfo)
+ {
+ 	// DO NOTHING
+-	return 1;
++	return TRUE;
+ }
+ 
+ 
