@@ -26,12 +26,7 @@ PATCHES=(
 )
 
 src_compile() {
-	export GOPATH="${WORKDIR}/${P}"
-	if [[ ${PV} == 9999 ]]; then
-		emake build
-	else
-		emake build version=${PV}
-	fi
+	GOPATH="${WORKDIR}/${P}" emake build
 }
 
 src_test() {
