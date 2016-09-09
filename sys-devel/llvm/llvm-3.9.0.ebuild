@@ -45,8 +45,7 @@ COMMON_DEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	ocaml? (
 		>=dev-lang/ocaml-4.00.0:0=
-		dev-ml/findlib
-		dev-ml/ocaml-ctypes
+		dev-ml/ocaml-ctypes:=
 		!!<=sys-devel/llvm-3.7.0-r1[ocaml] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${COMMON_DEPEND}
@@ -65,7 +64,8 @@ DEPEND="${COMMON_DEPEND}
 	libffi? ( virtual/pkgconfig )
 	lldb? ( dev-lang/swig )
 	!!<dev-python/configparser-3.3.0.2
-	ocaml? ( test? ( dev-ml/ounit ) )
+	ocaml? ( dev-ml/findlib
+		test? ( dev-ml/ounit ) )
 	${PYTHON_DEPS}"
 RDEPEND="${COMMON_DEPEND}
 	clang? ( !<=sys-devel/clang-${PV}-r99 )
