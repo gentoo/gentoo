@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=gasnet? ( sys-cluster/gasnet ) hwloc? ( sys-apps/hwloc ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 ) hwloc? ( sys-apps/hwloc ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=A data-centric parallel programming system
 EAPI=6
 HOMEPAGE=http://legion.stanford.edu/
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/StanfordLegion/legion/archive/legion-16.08.0.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=5e7af11d4def2ceb5a60d606a18d1d1d
+_md5_=98b30461f2a3aa5482aa8d764846c733
