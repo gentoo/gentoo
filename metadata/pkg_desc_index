@@ -2312,7 +2312,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3 1.3.4 1.4.1-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.63 3.65 3.68: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.63 3.68 3.70: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.3 1.5.4: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4 2.11 2.11.1 3.1 3.2 3.3 3.4: Java GUI for managing BibTeX and other bibliographies
@@ -4503,7 +4503,7 @@ dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.31.1: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15 0.5.16: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15 0.5.16 0.6.3: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -4701,7 +4701,7 @@ dev-libs/libgcrypt 1.5.6-r101 1.6.5 1.7.1 1.7.2 1.7.3: General purpose crypto li
 dev-libs/libgdata 0.17.4-r1 0.17.5: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 0.24.1 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3: Git library for GLib
+dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0 0.24.3 0.24.4: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22 1.24: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
@@ -11127,7 +11127,7 @@ gnome-extra/gnome-builder 3.18.1: Builder attempts to be an IDE for writing soft
 gnome-extra/gnome-calculator 3.18.3 3.20.1 3.20.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.18.3 3.20.2 3.20.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.18.1 3.20.1: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.18.0 3.20.1: Clocks application for GNOME
+gnome-extra/gnome-clocks 3.18.0 3.20.1 3.20.2: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.18.0 3.20.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
@@ -11150,7 +11150,7 @@ gnome-extra/gnome-software 3.18.3 3.20.4: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.18.2 3.20.1: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.18.1 3.20.2: GNOME end user documentation
-gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1: Personal file sharing for the GNOME desktop
+gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1 3.18.2: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.18.1 3.20.1 3.20.2: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
@@ -14348,7 +14348,7 @@ net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP proto
 net-libs/glib-networking 2.44.0 2.46.1 2.48.2: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.16-r1 1.0.17: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.18.4 3.20.2 3.20.3: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.18.4 3.18.6 3.20.2 3.20.3: GNOME framework for accessing online accounts
 net-libs/gnutls 3.3.17.1 3.3.23 3.3.24 3.4.14-r1 3.4.15 3.5.3 3.5.4: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.33 2.8.34: A cross-platform open source C and C++ SDK for SOAP/XML Web services
@@ -14729,7 +14729,7 @@ net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed caption
 net-misc/geoipupdate 2.2.1 2.2.2: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.26.2 0.26.3: A daemon to serve the gopher protocol
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.14.3-r2 3.20.0: Crawls through your online content
+net-misc/gnome-online-miners 3.14.3-r2 3.20.0 3.20.1: Crawls through your online content
 net-misc/gnome-rdp 0.3.0.9: Remote Desktop Client for the GNOME desktop
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
 net-misc/gns3-gui 1.4.6 1.5.1 1.5.1-r1: Graphical Network Simulator
@@ -17858,7 +17858,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5.3 4.6 4.6.1: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 53.0.2785.89 53.0.2785.92 53.0.2785.101 54.0.2840.14 54.0.2840.16: Open-source version of Google Chrome web browser
+www-client/chromium 53.0.2785.89 53.0.2785.92 53.0.2785.101 54.0.2840.14 54.0.2840.16 55.0.2853.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20150519 1.0.3: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
@@ -18252,7 +18252,7 @@ x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.4-r3 2.3.5 2.3.6: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
-x11-libs/pango 1.36.8-r1 1.38.1 1.40.1: Internationalized text layout and rendering library
+x11-libs/pango 1.36.8-r1 1.38.1 1.40.1 1.40.2: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9.2 2.9.3: A Qt port of Neil Hodgson's Scintilla C++ editor class

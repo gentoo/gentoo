@@ -1936,6 +1936,7 @@ dev-libs/actor-framework:riac - Runtime inspection and configuration
 dev-libs/actor-framework:static - Provides a static build
 dev-libs/actor-framework:test - Builds the provided unit tests
 dev-libs/antlr-c:debugger - Compiles debug info into the library
+dev-libs/appstream-glib:stemmer - Add word stemming via dev-libs/snowball-stemmer.
 dev-libs/apr:older-kernels-compatibility - Enable binary compatibility with older kernels
 dev-libs/apr:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/apr-util:libressl - Use dev-libs/libressl instead of dev-libs/openssl for 'openssl' USE flag
