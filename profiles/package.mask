@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Martin Gysel <me@bearsh.org> via g-p-m (09 Sep 2016)
+# Versions currently in Portage are old and block removal of other
+# packages. Current versions require building against modified versions
+# of dev-libs/libdivecomputer and kde-apps/marble which must be fetched
+# from Git, and which are not versioned (upstream uses branch tags).
+# Finally, upstream considers distribution-maintained packages deprecated.
+# Removal in 30 days.
+app-misc/subsurface
+
 # Alon Bar-Lev <alonbl@gentoo.org (09 Sep 2016)
 # No upstream, no maintainer (bug #592164)
 # Package will be removed from Gentoo in 30 days.
