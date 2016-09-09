@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="gasnet +hwloc"
 
 DEPEND="
-	gasnet? ( sys-cluster/gasnet )
+	gasnet? ( >=sys-cluster/gasnet-1.26.4-r1 )
 	hwloc? ( sys-apps/hwloc )
 	"
 
@@ -30,6 +30,7 @@ src_configure() {
 	mycmakeargs=(
 		-DLegion_USE_HWLOC=$(usex hwloc)
 		-DLegion_USE_GASNet=$(usex gasnet)
+		-DBUILD_SHARED_LIBS=ON
 		-DLIB=$(get_libdir)
 	)
 	cmake-utils_src_configure
