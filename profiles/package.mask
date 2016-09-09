@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-55
+
 # Martin Gysel <me@bearsh.org> via g-p-m (09 Sep 2016)
 # Versions currently in Portage are old and block removal of other
 # packages. Current versions require building against modified versions
@@ -633,11 +638,6 @@ media-video/miro
 # Doesn't honour USE=static-libs.
 # Bugs #590272, #590270, #590268, #590266 etc.
 =sci-libs/fftw-3.3.5
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (01 Aug 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-54
 
 # Michał Górny <mgorny@gentoo.org> (18 Jul 2016)
 # Pre-release of a complete rewrite, provided for early testing. Not all
