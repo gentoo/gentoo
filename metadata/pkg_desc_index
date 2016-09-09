@@ -1863,7 +1863,7 @@ app-misc/misterhouse 2.103-r1 2.105-r1: Mister House, an open source home automa
 app-misc/mmv 1.01b_p18: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.4.8 1.4.9 1.4.10: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2: X10 MouseRemote
-app-misc/mtail 1.1.1-r2 1.1.1-r3: Tail workalike, that performs output colourising
+app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r3: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/note 1.3.3-r1: A note taking perl program
@@ -2421,7 +2421,7 @@ app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.36: Automating Software Documentation
 app-text/ronn 0.7.3-r2 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
-app-text/rpl 1.5.5 1.5.5-r1: Intelligent recursive search/replace utility
+app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
