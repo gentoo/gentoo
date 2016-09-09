@@ -4417,7 +4417,7 @@ dev-lang/io 2011.09.12-r2 2011.09.12-r3: Io is a small, prototype-based programm
 dev-lang/ispc 1.9.1 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
-dev-lang/julia 0.4.3: High-performance programming language for technical computing
+dev-lang/julia 0.4.3 0.4.6: High-performance programming language for technical computing
 dev-lang/jwasm 2.10-r1 2.11 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.2.2 1.2.4 1.2.6 1.6.0-r1: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
