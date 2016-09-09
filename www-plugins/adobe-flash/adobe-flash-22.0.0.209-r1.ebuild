@@ -54,6 +54,7 @@ src_unpack() {
 multilib_src_install() {
 	exeinto /usr/$(get_libdir)/chromium-browser/PepperFlash
 	doexe libpepflashplayer.so
+	insinto /usr/$(get_libdir)/chromium-browser/PepperFlash
 	doins manifest.json
 
 	if multilib_is_native_abi; then
