@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,4 +18,8 @@ RDEPEND=">=dev-libs/expat-1.95.1-r1"
 DEPEND="${RDEPEND}"
 
 SRC_TEST=do
-myconf="EXPATLIBPATH=${EPREFIX}/usr/$(get_libdir) EXPATINCPATH=${EPREFIX}/usr/include"
+
+src_configure() {
+	myconf="EXPATLIBPATH=${EPREFIX}/usr/$(get_libdir) EXPATINCPATH=${EPREFIX}/usr/include"
+	perl-module_src_configure
+}
