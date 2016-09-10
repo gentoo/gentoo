@@ -22,6 +22,7 @@ RDEPEND="
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.45.8:2
 	>=dev-libs/json-glib-1.1.1
+	dev-libs/libyaml
 	>=media-libs/fontconfig-2.11:1.0
 	>=media-libs/freetype-2.4:2
 	>=net-libs/libsoup-2.51.92:2.4
