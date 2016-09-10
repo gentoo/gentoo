@@ -8,6 +8,6 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-libs/expat-1.95.1-r1 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TO/TODDR/XML-Parser-2.44.tar.gz
-_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:- src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=80219e840dff7be0dd2d12a51dc7348b
+_md5_=977914cad003c3d06d6a7c61a5d73014
