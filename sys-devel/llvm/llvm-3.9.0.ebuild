@@ -72,7 +72,8 @@ RDEPEND="${COMMON_DEPEND}
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r2
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
 PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )
-	default-libcxx? ( sys-libs/libcxx )"
+	default-libcxx? ( sys-libs/libcxx )
+	kernel_Darwin? ( =sys-libs/libcxx-${PV%.*}* )"
 
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
