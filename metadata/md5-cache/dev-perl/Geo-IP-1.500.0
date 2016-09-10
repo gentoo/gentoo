@@ -8,6 +8,6 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-libs/geoip dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MAXMIND/Geo-IP-1.45.tar.gz
-_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:- src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=4aa5c25a55c748ac81071c28feae7686
+_md5_=e1ccfff1e2e2223f6dbb1ffc3106d689

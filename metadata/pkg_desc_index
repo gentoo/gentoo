@@ -12184,7 +12184,7 @@ media-gfx/darktable 1.6.9 2.0.3 2.0.4 2.0.5 2.0.6 9999: A virtual lighttable and
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0 9.27.0: command-line decoder for raw digital photos
 media-gfx/digikam 4.4.0-r1 4.14.0-r1 5.1.0-r1: Digital photo management application
-media-gfx/displaycal 3.1.2.0 3.1.3.1: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.1.2.0 3.1.3.1 3.1.6.0: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310 20160712 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/drqueue 0.64.4-r1 9999: Render farm managing software
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
