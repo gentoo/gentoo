@@ -58,12 +58,7 @@ REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
 
 [ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
-PATCHES=(
-	"${FILESDIR}/021109-uclibc-no-ether_ntohost.patch"
-)
-
 src_prepare() {
-	epatch ${PATCHES[@]}
 	use SECURITY_HAZARD && epatch "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch
 }
 
