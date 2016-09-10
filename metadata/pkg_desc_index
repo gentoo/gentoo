@@ -11888,7 +11888,7 @@ mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
 mail-filter/razor 2.85-r2: Vipul's Razor is a distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r1 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.8.5 1.8.6 1.9.0 1.9.1 1.9.2: Another sendmail milter for different mail checks
-mail-filter/rspamd 1.2.8 1.3.2 1.3.3 1.3.4: Rapid spam filtering system
+mail-filter/rspamd 1.2.8 1.3.2 1.3.3 1.3.4 1.3.5: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide Sender-ID verification service
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
