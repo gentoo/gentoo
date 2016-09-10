@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (10 Sep 2016)
+# Upstream dead. This package tries very hard to outsmart autotools and
+# reinvent the wheel by coming up with its own configure script. A complete
+# disaster resulting in a gigantic wave of QA errors.
+# Masked for removal in 30 days.
+dev-libs/vrb
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (10 Sep 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
