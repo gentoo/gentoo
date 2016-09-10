@@ -56,7 +56,7 @@ fi
 
 REQUIRED_USE="ipv6? ( ssl? ( ^^ ( gcrypt nettle openssl ) ) )"
 
-S=${WORKDIR}/${PN}-s${PV}
+[ "${PV}" = "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
 PATCHES=(
 	"${FILESDIR}/021109-uclibc-no-ether_ntohost.patch"
@@ -153,7 +153,7 @@ src_install() {
 		newconfd "${FILESDIR}"/rarpd.conf.d rarpd
 	fi
 
-	dodoc INSTALL RELNOTES
+	dodoc INSTALL.md RELNOTES
 
 	use doc && dohtml doc/*.html
 }
