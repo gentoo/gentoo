@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/basho/lager/archive/3.2.0.tar.gz -> lager-3.2.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=bc82aa4bb747f6ce7149e2d6d27d1df1
+_md5_=911e6275abd6f5030f7367b31d339173

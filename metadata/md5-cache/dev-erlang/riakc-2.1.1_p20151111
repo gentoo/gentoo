@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/riakc/riakc-2.1.1_p20151111.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:rebar src_install:rebar
 _eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=f5929d7fa4da23988b7ec19a87fa9528
+_md5_=e1f3970e7120e1df8a18a807175b79bd

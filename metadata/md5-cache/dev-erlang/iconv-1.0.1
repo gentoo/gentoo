@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/erlang-17.1 virtual/libiconv dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=Fast encoding conversion library for Erlang and Elixir
+EAPI=6
+HOMEPAGE=https://github.com/processone/iconv
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lang/erlang-17.1 virtual/libiconv dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/processone/iconv/archive/1.0.1.tar.gz -> iconv-1.0.1.tar.gz
+_eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
+_md5_=8778d8d7d1b6cf1aed03e1155d1d4de1

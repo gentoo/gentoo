@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=QuickCheck-inspired property-based testing tool for Erlang
+EAPI=6
+HOMEPAGE=https://github.com/manopapad/proper
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/manopapad/proper/archive/v1.2.tar.gz -> proper-1.2.tar.gz
+_eclass_exported_funcs=src_prepare:rebar src_configure:- src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
+_md5_=9df871bf9d82624143b3bb5055ea296e

@@ -3122,33 +3122,33 @@ dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10 0.10-r1 9999: tool for communicating over JTAG with flash chips, CPUs, and many more (fork of openwince jtag)
 dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/zmac 1.3: Z80 macro cross-assembler
-dev-erlang/cache_tab 1.0.2: In-memory cache Erlang and Elixir library
+dev-erlang/cache_tab 1.0.2 1.0.3: In-memory cache Erlang and Elixir library
 dev-erlang/eredis 1.0.8: Erlang Redis client
-dev-erlang/esip 1.0.4: ProcessOne SIP server component
+dev-erlang/esip 1.0.4 1.0.7: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.1: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.3: TLS/SSL native driver for Erlang and Elixir
-dev-erlang/fast_xml 1.1.3: Fast Expat based Erlang XML parsing library
-dev-erlang/fast_yaml 1.0.3: Fast Yaml native library for Erlang and Elixir
+dev-erlang/fast_tls 1.0.3 1.0.6: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_xml 1.1.3 1.1.14: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_yaml 1.0.3 1.0.5: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.8.1: Small Erlang app that provides fast event stream processing
-dev-erlang/hamcrest 0.1.0_p20150103: Erlang port of Hamcrest
-dev-erlang/iconv 1.0.0: Fast encoding conversion library for Erlang and Elixir
+dev-erlang/hamcrest 0.1.0_p20150103 0.1.0_p20160709: Erlang port of Hamcrest
+dev-erlang/iconv 1.0.0 1.0.1: Fast encoding conversion library for Erlang and Elixir
 dev-erlang/jiffy 0.14.7: JSON NIFs for Erlang
-dev-erlang/lager 3.2.0: Logging framework for Erlang/OTP
+dev-erlang/lager 3.2.0 3.2.1: Logging framework for Erlang/OTP
 dev-erlang/luerl 0.2: Lua in Erlang
 dev-erlang/meck 0.8.3: Mocking library for Erlang
 dev-erlang/p1_mysql 1.0.1: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pam 1.0.0: epam for ejabberd to help with PAM authentication support
 dev-erlang/p1_pgsql 1.1.0: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.4: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.4 1.0.5: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
-dev-erlang/proper 1.1_p20160426: QuickCheck-inspired property-based testing tool for Erlang
-dev-erlang/protobuffs 0.8.2: Google's Protocol Buffers for Erlang
-dev-erlang/riak_pb 2.1.0.7: Riak Protocol Buffers messages
-dev-erlang/riakc 2.1.1_p20151111: Erlang clients for Riak
+dev-erlang/proper 1.1_p20160426 1.2: QuickCheck-inspired property-based testing tool for Erlang
+dev-erlang/protobuffs 0.8.2 0.9.0: Google's Protocol Buffers for Erlang
+dev-erlang/riak_pb 2.1.0.7 2.1.4.2: Riak Protocol Buffers messages
+dev-erlang/riakc 2.1.1_p20151111 2.4.1: Erlang clients for Riak
 dev-erlang/sqlite3 1.1.5: SQLite gen_server port for Erlang
-dev-erlang/stringprep 1.0.3: Fast Stringprep implementation for Erlang and Elixir
-dev-erlang/stun 1.0.3: STUN and TURN library for Erlang and Elixir
+dev-erlang/stringprep 1.0.3 1.0.5: Fast Stringprep implementation for Erlang and Elixir
+dev-erlang/stun 1.0.3 1.0.6: STUN and TURN library for Erlang and Elixir
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 0.9.5-r1 1.1.4.1 1.1.6: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
@@ -14217,7 +14217,7 @@ net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
 net-im/coturn 4.5.0.4 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
-net-im/ejabberd 16.04 16.04-r1: Robust, scalable and extensible XMPP server
+net-im/ejabberd 16.04 16.04-r1 16.08: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
@@ -14583,7 +14583,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22 0.22-r2 0.22.1 0.22.2: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6 6.7.0.3 7.0.6: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs

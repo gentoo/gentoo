@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-erlang/cache_tab-1.0.3 >=dev-erlang/esip-1.0.7 >=dev-erlang/fast_tls-1.0.6 >=dev-erlang/fast_xml-1.1.14 >=dev-erlang/fast_yaml-1.0.5 >=dev-erlang/jiffy-0.14.7 >=dev-erlang/lager-3.2.1 >=dev-erlang/luerl-0.2 >=dev-erlang/p1_oauth2-0.6.1 >=dev-erlang/p1_utils-1.0.5 >=dev-erlang/p1_xmlrpc-1.15.1 >=dev-erlang/stringprep-1.0.5 >=dev-erlang/stun-1.0.6 >=dev-lang/erlang-17.1[hipe?,odbc?,ssl] >=net-im/jabber-base-0.01 ldap? ( =net-nds/openldap-2* ) mysql? ( >=dev-erlang/p1_mysql-1.0.1 ) nls? ( >=dev-erlang/iconv-1.0.1 ) odbc? ( dev-db/unixODBC ) pam? ( >=dev-erlang/p1_pam-1.0.0 ) postgres? ( >=dev-erlang/p1_pgsql-1.1.0 ) redis? ( >=dev-erlang/eredis-1.0.8 ) riak? ( >=dev-erlang/hamcrest-0.1.0_p20150103 >=dev-erlang/riakc-2.1.1_p20151111 ) sqlite? ( >=dev-erlang/sqlite3-1.1.5 ) zlib? ( >=dev-erlang/ezlib-1.0.1 ) >=sys-apps/gawk-4.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1 || ( dev-libs/openssl:0 dev-libs/libressl:0 ) virtual/pkgconfig
+DESCRIPTION=Robust, scalable and extensible XMPP server
+EAPI=6
+HOMEPAGE=http://www.ejabberd.im/ https://github.com/processone/ejabberd/
+IUSE=captcha debug full-xml hipe ldap mssql mysql nls odbc pam postgres redis riak roster-gw sqlite zlib
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-erlang/cache_tab-1.0.3 >=dev-erlang/esip-1.0.7 >=dev-erlang/fast_tls-1.0.6 >=dev-erlang/fast_xml-1.1.14 >=dev-erlang/fast_yaml-1.0.5 >=dev-erlang/jiffy-0.14.7 >=dev-erlang/lager-3.2.1 >=dev-erlang/luerl-0.2 >=dev-erlang/p1_oauth2-0.6.1 >=dev-erlang/p1_utils-1.0.5 >=dev-erlang/p1_xmlrpc-1.15.1 >=dev-erlang/stringprep-1.0.5 >=dev-erlang/stun-1.0.6 >=dev-lang/erlang-17.1[hipe?,odbc?,ssl] >=net-im/jabber-base-0.01 ldap? ( =net-nds/openldap-2* ) mysql? ( >=dev-erlang/p1_mysql-1.0.1 ) nls? ( >=dev-erlang/iconv-1.0.1 ) odbc? ( dev-db/unixODBC ) pam? ( >=dev-erlang/p1_pam-1.0.0 ) postgres? ( >=dev-erlang/p1_pgsql-1.1.0 ) redis? ( >=dev-erlang/eredis-1.0.8 ) riak? ( >=dev-erlang/hamcrest-0.1.0_p20150103 >=dev-erlang/riakc-2.1.1_p20151111 ) sqlite? ( >=dev-erlang/sqlite3-1.1.5 ) zlib? ( >=dev-erlang/ezlib-1.0.1 ) captcha? ( media-gfx/imagemagick[truetype,png] ) dev-lang/erlang
+REQUIRED_USE=mssql? ( odbc )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.process-one.net/downloads/ejabberd/16.08/ejabberd-16.08.tgz -> ejabberd-16.08.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:rebar src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	rebar	98c3519ff55e51c3d222cde7f9f5d2e9	ssl-cert	b031e94f4c7c34e1d677376b8929821a	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=ab89a4a31a4cea4ce2f5132b921b50f4
