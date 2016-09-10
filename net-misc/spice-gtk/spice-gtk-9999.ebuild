@@ -78,10 +78,6 @@ DEPEND="${RDEPEND}
 # dev-lang/vala:0.14
 # dev-lang/perl
 
-# Prevent sandbox violations, bug #581836
-# https://bugzilla.gnome.org/show_bug.cgi?id=581836
-addpredict /dev
-
 src_prepare() {
 	epatch_user
 
@@ -91,6 +87,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Prevent sandbox violations, bug #581836
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
+	addpredict /dev
+
 	local myconf
 
 	if use vala ; then
@@ -121,6 +122,15 @@ src_configure() {
 		--enable-pie"
 
 	econf ${myconf}
+}
+
+src_compile() {
+	# Prevent sandbox violations, bug #581836
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
+	addpredict /dev
+
+	default
 }
 
 src_install() {

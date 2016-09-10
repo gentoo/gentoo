@@ -85,10 +85,6 @@ DEPEND="${RDEPEND}
 # dev-lang/vala:0.14
 # dev-lang/perl
 
-# Prevent sandbox violations, bug #581836
-# https://bugzilla.gnome.org/show_bug.cgi?id=581836
-addpredict /dev
-
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-x11-libs.patch
 	epatch_user
@@ -99,6 +95,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Prevent sandbox violations, bug #581836
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
+	addpredict /dev
+
 	local myconf
 	local audio="no"
 
@@ -148,10 +149,20 @@ src_configure() {
 }
 
 src_compile() {
+	# Prevent sandbox violations, bug #581836
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
+	addpredict /dev
+
 	multibuild_foreach_variant run_in_build_dir default
 }
 
 src_test() {
+	# Prevent sandbox violations, bug #581836
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744134
+	# https://bugzilla.gnome.org/show_bug.cgi?id=744135
+	addpredict /dev
+
 	multibuild_foreach_variant run_in_build_dir default
 }
 
