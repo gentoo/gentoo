@@ -4569,7 +4569,7 @@ dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer i
 dev-libs/elfutils 0.163 0.164 0.165 0.166: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.1.1-r1 2.1.1-r2 2.1.1-r3 2.2.0-r1: Stream-oriented XML parser library
+dev-libs/expat 2.1.1-r2 2.1.1-r3 2.2.0-r1: Stream-oriented XML parser library
 dev-libs/fampp2 6.0.1 7.0.1 7.0.1-r1: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
@@ -11918,7 +11918,7 @@ mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.10.4 1.12.7-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.10.1 1.12.1-r2: MATE keyboard configuration library
-mate-base/mate 1.10.0-r2 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
+mate-base/mate 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
 mate-base/mate-applets 1.10.4-r1 1.12.1-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10 1.12: Meta package for MATE panel applets
 mate-base/mate-common 1.10.0 1.12.0: Common files for development of MATE packages
@@ -18920,8 +18920,8 @@ x11-themes/lush 0.1.0-r2: Lush KDE icon theme
 x11-themes/mate-backgrounds 1.10.0 1.12.0: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.10.1 1.12.0: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.10.1 1.12.0-r1: Faenza icon theme, that was adapted for MATE desktop
-x11-themes/mate-themes 1.10.5-r161 1.10.5-r181 3.16.3 3.18.3 3.20.10: A set of MATE themes, with sets for users with limited or low vision
-x11-themes/mate-themes-meta 1.10 3: Meta package to facilitate easy use of x11-themes/mate-themes
+x11-themes/mate-themes 3.16.3 3.18.3 3.20.10: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes-meta 3-r1: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 1.20 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
