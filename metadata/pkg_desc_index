@@ -1118,7 +1118,7 @@ app-emacs/color-theme 6.6.0-r1: Install color themes (includes many themes and a
 app-emacs/company-mode 0.6.14 0.7: In-buffer completion front-end
 app-emacs/crontab-mode 1.20: Mode for editing crontab files
 app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encrypted files
-app-emacs/csharp-mode 0.7.0-r1: A derived Emacs mode implementing most of the C# rules
+app-emacs/csharp-mode 0.7.0-r1 0.9.0: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
 app-emacs/cycle-buffer 2.16: Select buffer by cycling through
