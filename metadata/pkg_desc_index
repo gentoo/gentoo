@@ -352,7 +352,7 @@ app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude list
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.9 2.4.20 2.4.22 2.5.5-r2: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+app-backup/dar 2.4.9 2.4.20 2.4.22 2.5.5-r2 2.5.6: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
 app-backup/deja-dup 34.0 34.1 34.2: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.26 0.7.07.1 0.7.10: Secure backup system using gnupg to encrypt data
