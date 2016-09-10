@@ -1,5 +1,5 @@
---- a/nvidia-application-profiles-370.23-rc
-+++ b/nvidia-application-profiles-370.23-rc
+--- a/nvidia-application-profiles-370.28-rc
++++ b/nvidia-application-profiles-370.28-rc
 @@ -44,7 +44,7 @@
          {
            "name" : "NamedVertexAttributesApplyDivisor",

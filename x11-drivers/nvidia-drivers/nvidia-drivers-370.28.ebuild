@@ -170,7 +170,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-370.23-profiles-rc.patch
+	epatch "${FILESDIR}"/${P}-profiles-rc.patch
 
 	if use pax_kernel; then
 		ewarn "Using PAX patches is not supported. You will be asked to"
