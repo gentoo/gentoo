@@ -13,11 +13,11 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
-DEPEND=">=dev-erlang/fast_tls-1.0.0
-	>=dev-erlang/stun-1.0.0
-	>=dev-erlang/p1_utils-1.0.2
+DEPEND=">=dev-erlang/fast_tls-1.0.6
+	>=dev-erlang/stun-1.0.6
+	>=dev-erlang/p1_utils-1.0.4
 	>=dev-lang/erlang-17.1"
 RDEPEND="${DEPEND}"
 
