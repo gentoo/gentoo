@@ -47,11 +47,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-if is_cross ; then
-	SLOT="${CTARGET}-7"
-else
-	SLOT="7"
-fi
+SLOT="7"
 
 LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 INCPATH=${LIBPATH}/include
