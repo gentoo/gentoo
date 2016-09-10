@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="A derived Emacs mode implementing most of the C# rules"
 HOMEPAGE="https://github.com/josteink/csharp-mode"
-SRC_URI="https://github.com/josteink/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/josteink/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
