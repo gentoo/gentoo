@@ -1,0 +1,22 @@
+Index: qtcurve-1.8.18/lib/utils/color.h
+===================================================================
+--- qtcurve-1.8.18.orig/lib/utils/color.h
++++ qtcurve-1.8.18/lib/utils/color.h
+@@ -250,7 +250,7 @@ qtcColorTint(const QColor *base, const Q
+         return *base;
+     } else if (amount >= 1.0) {
+         return *col;
+-    } else if (isnan(amount)) {
++    } else if (std::isnan(amount)) {
+         return *base;
+     }
+     const QtcColor qtc_base = {base->redF(), base->greenF(), base->blueF()};
+@@ -267,7 +267,7 @@ qtcColorMix(const QColor *c1, const QCol
+         return *c1;
+     } else if (bias >= 1.0) {
+         return *c2;
+-    } else if (isnan(bias)) {
++    } else if (std::isnan(bias)) {
+         return *c1;
+     }
+     const QtcColor qtc_c1 = {c1->redF(), c1->greenF(), c1->blueF()};
