@@ -1453,6 +1453,7 @@ app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/openscap 1.0.8-r1 1.1.1 1.2.0 1.2.1 1.2.5 9999: Framework which enables integration with the Security Content Automation Protocol (SCAP)
 app-forensics/ovaldi 5.10.1.4: Free implementation of OVAL
 app-forensics/pasco 20040505_p1 20040505_p1-r1: IE Activity Parser
+app-forensics/radamsa 0.5: A general purpose fuzzer
 app-forensics/rdd 3.0.4-r1: Rdd is a forensic copy program
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
