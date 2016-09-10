@@ -12,7 +12,7 @@ SRC_URI=""
 
 LICENSE="UoI-NCSA"
 SLOT="0/3.4"
-KEYWORDS="~ppc-macos ~x86-macos ~x64-macos"
+KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 RDEPEND="~sys-devel/llvm-${PV}[clang(-),${MULTILIB_USEDEP}]"
