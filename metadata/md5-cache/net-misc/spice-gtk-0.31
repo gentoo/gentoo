@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://spice-space.org/download/gtk/spice-gtk-0.31.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vala	764817a25b405b65269d8619e203a52f
-_md5_=f67d137d2cdc9a96126afb350a1054be
+_md5_=8e53e188a1e6bb65aae654ac8cad9dd0

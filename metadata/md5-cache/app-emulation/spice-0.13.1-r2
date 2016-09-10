@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare setup
+DEFINED_PHASES=compile configure install prepare setup
 DEPEND=~app-emulation/spice-protocol-0.12.11 virtual/pkgconfig || ( ( dev-lang/python:3.4 >=dev-python/pyparsing-1.5.6-r2[python_targets_python3_4(-),python_single_target_python3_4(+)] dev-python/six[python_targets_python3_4(-),python_single_target_python3_4(+)] ) ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-python/pyparsing-1.5.6-r2[python_targets_python2_7(-),python_single_target_python2_7(+)] dev-python/six[python_targets_python2_7(-),python_single_target_python2_7(+)] ) ) smartcard? ( app-emulation/qemu[smartcard] ) >=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) lz4? ( app-arch/lz4 ) smartcard? ( >=app-emulation/libcacard-0.1.2 ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
 DESCRIPTION=SPICE server
 EAPI=5
@@ -9,6 +9,6 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) lz4? ( app-arch/lz4 ) smartcard? ( >=app-emulation/libcacard-0.1.2 ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
 SLOT=0
 SRC_URI=http://spice-space.org/download/releases/spice-0.13.1.tar.bz2
-_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=db30efff8158744f6eb8f2ff007325e7
+_md5_=4b11eae85784eb4f3cd8924105079af6
