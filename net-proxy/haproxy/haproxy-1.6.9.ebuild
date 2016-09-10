@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit user versionator toolchain-funcs flag-o-matic systemd linux-info
 
@@ -32,6 +32,8 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS )
+
 pkg_setup() {
 	enewgroup haproxy
 	enewuser haproxy -1 -1 -1 haproxy
@@ -43,6 +45,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	sed -e 's:@SBINDIR@:'/usr/bin':' contrib/systemd/haproxy.service.in \
 		> contrib/systemd/haproxy.service || die
 
@@ -119,11 +123,12 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" $PN
 	newinitd "${FILESDIR}/${PN}.initd-r3" $PN
 
-	dodoc CHANGELOG CONTRIBUTING MAINTAINERS
 	doman doc/haproxy.1
 
 	dobin haproxy-systemd-wrapper
 	systemd_dounit contrib/systemd/haproxy.service
+
+	einstalldocs
 
 	if use doc; then
 		dodoc ROADMAP doc/{close-options,configuration,cookie-options,intro,linux-syn-cookies,management,proxy-protocol}.txt
@@ -151,15 +156,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -f "${ROOT}/etc/haproxy/haproxy.cfg" ]] ; then
+	if [[ ! -f "${EROOT}/etc/haproxy/haproxy.cfg" ]] ; then
 		ewarn "You need to create /etc/haproxy/haproxy.cfg before you start the haproxy service."
 		ewarn "It's best practice to not run haproxy as root, user and group haproxy was therefore created."
 		ewarn "Make use of them with the \"user\" and \"group\" directives."
 
-		if [[ -d "${ROOT}/usr/share/doc/${PF}" ]]; then
+		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${ROOT}usr/share/doc/${PF}"
+			einfo "   ${EROOT}usr/share/doc/${PF}"
 		fi
 	fi
 }
