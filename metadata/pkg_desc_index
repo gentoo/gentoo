@@ -8829,7 +8829,7 @@ dev-ruby/actioncable 5.0.0.1: Structure many real-time application concerns into
 dev-ruby/actionmailer 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Framework for designing email-service layers
 dev-ruby/actionpack 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.1.1: Action caching for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionpack-xml_parser 1.0.2: XML parameters parser for Action Pack (removed from core in Rails 4.0)
+dev-ruby/actionpack-xml_parser 1.0.2 2.0.0: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionview 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
@@ -8838,7 +8838,7 @@ dev-ruby/activerecord 4.0.13 4.1.15 4.1.16 4.2.6 4.2.7 4.2.7.1 5.0.0.1: Implemen
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
 dev-ruby/activeresource 4.0.0 4.1.0: Think Active Record for web resources
 dev-ruby/activesupport 4.0.13-r1 4.1.15 4.1.16 4.2.6 4.2.6-r1 4.2.7 4.2.7.1 5.0.0.1: Utility Classes and Extension to the Standard Library
-dev-ruby/acts_as_list 0.7.6 0.7.7 0.8.0: Capabilities for sorting and reordering a number of objects in a list
+dev-ruby/acts_as_list 0.7.6 0.7.7 0.8.0 0.8.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.3.6 2.3.8 2.4.0 2.4.0-r1: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
