@@ -17,7 +17,7 @@ IUSE=""
 
 RESTRICT=test # needs an owl-lisp
 
-DOCS=( LICENSE NEWS README.md )
+DOCS=( LICENCE NEWS README.md )
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
@@ -25,4 +25,6 @@ src_compile() {
 
 src_install() {
 	emake install DESTDIR="${D}" PREFIX="${EPREFIX}/usr"
+
+	einstalldocs
 }
