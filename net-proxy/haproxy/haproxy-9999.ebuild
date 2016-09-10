@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit user versionator toolchain-funcs flag-o-matic git-2 systemd
+inherit user versionator toolchain-funcs flag-o-matic systemd linux-info git-r3
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
@@ -15,7 +15,7 @@ EGIT_REPO_URI="http://master.formilux.org/git/people/willy/haproxy.git"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="+crypt examples libressl +pcre pcre-jit ssl tools vim-syntax +zlib"
+IUSE="+crypt doc examples libressl net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
 
 DEPEND="
 	pcre? (
@@ -27,16 +27,26 @@ DEPEND="
 		libressl? ( dev-libs/libressl:0= )
 	)
 	zlib? ( sys-libs/zlib )"
+# lua? ( dev-lang/lua:5.3 )
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS )
+
 pkg_setup() {
 	enewgroup haproxy
 	enewuser haproxy -1 -1 -1 haproxy
+
+	if use net_ns; then
+		CONFIG_CHECK="~NET_NS"
+		linux-info_pkg_setup
+	fi
 }
 
 src_prepare() {
+	default
+
 	sed -e 's:@SBINDIR@:'/usr/bin':' contrib/systemd/haproxy.service.in \
 		> contrib/systemd/haproxy.service || die
 
@@ -45,6 +55,25 @@ src_prepare() {
 
 src_compile() {
 	local args="TARGET=linux2628 USE_GETADDRINFO=1"
+
+	if use crypt ; then
+		args="${args} USE_LIBCRYPT=1"
+	else
+		args="${args} USE_LIBCRYPT="
+	fi
+
+# bug 541042
+#	if use lua; then
+#		args="${args} USE_LUA=1"
+#	else
+		args="${args} USE_LUA="
+#	fi
+
+	if use net_ns; then
+		args="${args} USE_NS=1"
+	else
+		args="${args} USE_NS="
+	fi
 
 	if use pcre ; then
 		args="${args} USE_PCRE=1"
@@ -62,12 +91,6 @@ src_compile() {
 #	else
 #		args="${args} USE_LINUX_SPLICE= USE_LINUX_TPROXY="
 #	fi
-
-	if use crypt ; then
-		args="${args} USE_LIBCRYPT=1"
-	else
-		args="${args} USE_LIBCRYPT="
-	fi
 
 	if use ssl ; then
 		args="${args} USE_OPENSSL=1"
@@ -97,26 +120,33 @@ src_compile() {
 src_install() {
 	dobin haproxy
 
-	newinitd "${FILESDIR}/haproxy.initd-r2" haproxy
+	newconfd "${FILESDIR}/${PN}.confd" $PN
+	newinitd "${FILESDIR}/${PN}.initd-r3" $PN
 
-	# Don't install useless files
-#	rm examples/build.cfg doc/*gpl.txt
-
-	dodoc CHANGELOG ROADMAP doc/{configuration,haproxy-en}.txt
 	doman doc/haproxy.1
 
 	dobin haproxy-systemd-wrapper
 	systemd_dounit contrib/systemd/haproxy.service
 
+	einstalldocs
+
+	if use doc; then
+		dodoc ROADMAP doc/{close-options,configuration,cookie-options,intro,linux-syn-cookies,management,proxy-protocol}.txt
+	fi
+
 	if use tools ; then
-		for contrib in halog iprange ; do
-			dobin contrib/${contrib}/${contrib}
-		done
+		dobin contrib/halog/halog
+		newbin contrib/iprange/iprange haproxy_iprange
+	fi
+
+	if use net_ns && use doc; then
+		dodoc doc/network-namespaces.txt
 	fi
 
 	if use examples ; then
 		docinto examples
 		dodoc examples/*.cfg
+		dodoc examples/seamless_reload.txt
 	fi
 
 	if use vim-syntax ; then
@@ -126,15 +156,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -f "${ROOT}/etc/haproxy.cfg" ]] ; then
-		ewarn "You need to create /etc/haproxy.cfg before you start the haproxy service."
+	if [[ ! -f "${EROOT}/etc/haproxy/haproxy.cfg" ]] ; then
+		ewarn "You need to create /etc/haproxy/haproxy.cfg before you start the haproxy service."
 		ewarn "It's best practice to not run haproxy as root, user and group haproxy was therefore created."
 		ewarn "Make use of them with the \"user\" and \"group\" directives."
 
-		if [[ -d "${ROOT}/usr/share/doc/${PF}" ]]; then
+		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${ROOT}usr/share/doc/${PF}"
+			einfo "   ${EROOT}usr/share/doc/${PF}"
 		fi
 	fi
 }
