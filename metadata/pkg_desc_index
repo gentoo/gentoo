@@ -7017,7 +7017,7 @@ dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and 
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0 2.41.0: Amazon Web Services API
 dev-python/boto3 1.3.0 1.3.1 1.4.0: The AWS SDK for Python
-dev-python/botocore 1.4.46 1.4.48 1.4.49: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.4.48 1.4.49 1.4.51: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.14 0.14.2 0.15 0.15-r1: Syntax highlighting and autocompletion for the Python interpreter
@@ -8169,7 +8169,7 @@ dev-python/rtslib-fb 2.1.47 2.1.57: A Python object API for managing the Linux L
 dev-python/ruledispatch 0.5_pre2306-r2: Rule-based Dispatching and Generic Functions
 dev-python/runsnakerun 2.0.4: GUI Viewer for Python profiling runs
 dev-python/ryu 3.26 4.0: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.0.1 0.1.1 0.1.2: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.1.1 0.1.2 0.1.3: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4 2.4-r1: Sancho is a unit testing framework
 dev-python/scapy-python3 0.18-r1: Packet crafting/sending/... PCAP processing tool with python3 compatibility
