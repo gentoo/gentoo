@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Solves automatic numerical differentiation problems in one or more variables"
 HOMEPAGE="https://pypi.python.org/pypi/Numdifftools https://github.com/pbrod/numdifftools"
-SRC_URI="https://github.com/pbrod/${PN,,}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.zip"
 
 SLOT="0"
 LICENSE="BSD"
@@ -44,12 +44,6 @@ python_prepare_all() {
 	sed \
 		-e '/tests_require/d' \
 		-i setup.py || die
-	# Upstream does not create proper tarballs anymore,
-	# and setuptools reacts allergically to Github tarballs
-	cat >> PKG-INFO <<-EOF || die
-		Name: ${PN,,}
-		Version: ${PV}
-	EOF
 
 	distutils-r1_python_prepare_all
 }
