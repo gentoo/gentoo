@@ -84,16 +84,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.2-nodoctargz.patch
-	epatch "${FILESDIR}"/${PN}-3.4-gentoo-install.patch
+	epatch "${FILESDIR}"/3.6.2/nodoctargz.patch
+	epatch "${FILESDIR}"/3.4.2/gentoo-install.patch
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/clang-3.1-gentoo-runtime-gcc-detection-v3.patch
+		epatch "${FILESDIR}"/3.4.2/clang/gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.4-gentoo-install.patch
-		epatch "${FILESDIR}"/clang-3.4-darwin_build_fix.patch
-		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		epatch "${FILESDIR}"/3.4.2/clang/gentoo-install.patch
+		epatch "${FILESDIR}"/3.4.2/clang/darwin_build_fix.patch
+		epatch "${FILESDIR}"/3.9.0/clang/darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 	fi
 
