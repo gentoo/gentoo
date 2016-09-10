@@ -18438,7 +18438,7 @@ x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/p
 x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.16: Visual process manager - Qt version of ps/top
 x11-misc/qsynergy 0.9.1-r1: A comprehensive and easy to use graphical front end for Synergy
-x11-misc/qt5ct 0.25: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.25 0.26: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.5.12-r1: A BBS client for Linux
 x11-misc/qtfm 5.5: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/qtnotifydaemon 1.0.14: A flexible and configurable notification daemon
