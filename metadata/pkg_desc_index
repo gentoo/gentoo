@@ -1444,6 +1444,7 @@ app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to acce
 app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
+app-forensics/honggfuzz 0.7: A general purpose fuzzer with feedback support
 app-forensics/libbfio 0.0.20120425_alpha 0.0.20130609_alpha 0.0.20130721: Library for providing a basic file input/output abstraction layer
 app-forensics/libewf 20130128 20130416 20130416-r1 20131210 20140227 20140406 20140427 20140608: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 1.6.4 2.1.0 2.1.1: Security and system auditing tool
@@ -1453,7 +1454,7 @@ app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
 app-forensics/openscap 1.0.8-r1 1.1.1 1.2.0 1.2.1 1.2.5 9999: Framework which enables integration with the Security Content Automation Protocol (SCAP)
 app-forensics/ovaldi 5.10.1.4: Free implementation of OVAL
 app-forensics/pasco 20040505_p1 20040505_p1-r1: IE Activity Parser
-app-forensics/radamsa 0.5: A general purpose fuzzer
+app-forensics/radamsa 0.5-r1: A general purpose fuzzer
 app-forensics/rdd 3.0.4-r1: Rdd is a forensic copy program
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.2: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
@@ -9836,7 +9837,7 @@ dev-util/flawfinder 1.27-r2 1.31: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 100% compatible enhanced Jam implementation
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
-dev-util/gcovr 3.2: A Python script for summarizing gcov data
+dev-util/gcovr 3.2 3.3: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0 2.48.1 2.48.2: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.26 1.27 1.28: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26 1.28: A collection of different plugins for Geany
