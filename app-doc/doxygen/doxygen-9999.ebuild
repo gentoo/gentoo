@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -45,32 +45,34 @@ RDEPEND="app-text/ghostscript-gpl
 
 REQUIRED_USE="doc? ( latex )"
 
-DEPEND="sys-apps/sed
-	sys-devel/flex
+DEPEND="sys-devel/flex
 	sys-devel/bison
 	doc? ( ${PYTHON_DEPS} )
 	${RDEPEND}"
 
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
 RESTRICT="test"
-EPATCH_SUFFIX="patch"
+
+PATCHES=( "${FILESDIR}/${PN}-1.8.11-link_with_pthread.patch" )
+DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
 
 src_prepare() {
+	default
+
 	# Ensure we link to -liconv
 	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
+		local pro
 		for pro in */*.pro.in */*/*.pro.in; do
-		echo "unix:LIBS += -liconv" >> "${pro}"
+			echo "unix:LIBS += -liconv" >> "${pro}" || die
 		done
 	fi
 
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die
-
-	epatch "${FILESDIR}"/${PN}-1.8.11-link_with_pthread.patch
 
 	# fix pdf doc
 	sed -i.orig -e "s:g_kowal:g kowal:" \
@@ -90,11 +92,11 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DDOC_INSTALL_DIR="share/doc/${P}"
-		$(cmake-utils_use clang use_libclang)
-		$(cmake-utils_use doc build_doc)
-		$(cmake-utils_use doxysearch build_search)
-		$(cmake-utils_use qt5 build_wizard)
-		$(cmake-utils_use sqlite use_sqlite3)
+		-Duse_libclang=$(usex clang)
+		-Dbuild_doc=$(usex doc)
+		-Dbuild_search=$(usex doxysearch)
+		-Dbuild_wizard=$(usex qt5)
+		-Duse_sqlite3=$(usex sqlite)
 		)
 
 	cmake-utils_src_configure
@@ -103,32 +105,27 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 
-	# generate html and pdf documents. errors here are not considered
-	# fatal, hence the ewarn message.
-
 	if use doc; then
 		export VARTEXFONTS="${T}/fonts" # bug #564944
 
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
 				{Doxyfile,doc/Doxyfile} \
-				|| ewarn "disabling dot failed"
+				|| die "disabling dot failed"
 		fi
-		cd "${BUILD_DIR}" && emake docs
+		emake -C "${BUILD_DIR}" docs
 	fi
 }
 
 src_install() {
+	cmake-utils_src_install
+
 	if use qt5; then
 		doicon "${DISTDIR}/doxywizard.png"
 		make_desktop_entry doxywizard "DoxyWizard ${PV}" \
 			"/usr/share/pixmaps/doxywizard.png" \
 			"Development"
 	fi
-
-	dodoc LANGUAGE.HOWTO README.md
-
-	cmake-utils_src_install
 }
 
 pkg_postinst() {
