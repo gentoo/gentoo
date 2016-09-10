@@ -18065,7 +18065,7 @@ x11-base/xorg-server 1.12.4-r5 1.12.4-r7 1.15.2-r2 1.15.2-r4 1.16.4 1.16.4-r5 1.
 x11-base/xorg-x11 7.4-r2: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/afb-ucode 1.3.11: Binary blob microcode for Elite3D framebuffers to use X, required by xf86-video-sunffb
 x11-drivers/ati-drivers 15.9-r1 15.12 15.12-r1: Ati precompiled drivers for Radeon Evergreen (HD5000 Series) and newer chipsets
-x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 340.93-r1 340.96 340.96-r5 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.00.27 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 367.18 367.27 367.35-r1 367.44 370.23: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r4 340.93-r1 340.96 340.96-r5 346.96-r1 346.96-r6 352.63 352.79 352.79-r4 355.00.27 355.11-r2 355.11-r4 358.16-r1 358.16-r5 361.28 361.28-r2 361.42 361.45.11 361.45.18 364.12-r1 364.15 364.19 367.18 367.27 367.35-r1 367.44 370.28: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1 1.4.1-r1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
