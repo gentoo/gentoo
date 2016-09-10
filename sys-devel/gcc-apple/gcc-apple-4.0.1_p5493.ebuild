@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
+EAPI="5"
 
 inherit eutils toolchain prefix
 
@@ -29,14 +29,6 @@ S=${WORKDIR}/gcc-${APPLE_VERS}
 
 # TPREFIX is the prefix of the CTARGET installation
 export TPREFIX=${TPREFIX:-${EPREFIX}}
-
-LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
-if is_crosscompile ; then
-	BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
-else
-	BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
-fi
-STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
 
 src_unpack() {
 	# override toolchain.eclass func
@@ -67,6 +59,14 @@ src_configure() {
 	use cxx && langs="${langs},c++"
 	use objc && langs="${langs},objc"
 	use objc++ && langs="${langs/,objc/},objc,obj-c++" # need objc with objc++
+
+	LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
+	if is_crosscompile ; then
+		BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
+	else
+		BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
+	fi
+	STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
 
 	local myconf="${myconf} \
 		--prefix=${EPREFIX}/usr \
