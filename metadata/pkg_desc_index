@@ -17293,7 +17293,7 @@ sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: Linux ZFS kernel module for sys-fs/zfs
-sys-kernel/aufs-sources 3.18.36 3.18.38 3.18.39 4.4.6 4.4.12 4.4.13 4.4.14 4.4.15 4.4.16 4.4.17 4.6.3 4.6.4 4.6.5 4.6.6-r1 4.7.0: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.36 3.18.38 3.18.39 3.18.40 4.4.6 4.4.20 4.7.3: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6 4.3.6-r1: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
