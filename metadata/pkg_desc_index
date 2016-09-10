@@ -254,7 +254,7 @@ app-arch/deltarpm 3.6: tools to create and apply deltarpms
 app-arch/dpkg 1.17.26 1.17.27 1.18.9 1.18.10: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
-app-arch/engrampa 1.10.2 1.12.0: Engrampa archive manager for MATE
+app-arch/engrampa 1.10.2 1.10.2-r1 1.12.0-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.16.5 3.20.2 3.20.3: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
@@ -11919,7 +11919,7 @@ mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system 
 mate-base/caja 1.10.4 1.12.7-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.10.1 1.12.1-r2: MATE keyboard configuration library
 mate-base/mate 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.10.4-r1 1.12.1-r1: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.10.4-r1 1.10.4-r2 1.12.1-r2: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10 1.12: Meta package for MATE panel applets
 mate-base/mate-common 1.10.0 1.12.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.10.2 1.12.1-r1: The MATE Desktop configuration tool
@@ -11940,7 +11940,7 @@ mate-extra/mate-sensors-applet 1.10.4-r1 1.12.1: MATE panel applet to display re
 mate-extra/mate-system-monitor 1.10.1 1.12.2: The MATE System Monitor
 mate-extra/mate-user-guide 1.12.0: User documentation for MATE Desktop
 mate-extra/mate-user-share 1.10.1-r1 1.12.0: Personal file sharing for the MATE desktop
-mate-extra/mate-utils 1.10.4 1.12.0-r1: Utilities for the MATE desktop
+mate-extra/mate-utils 1.10.4 1.10.4-r1 1.12.0-r2: Utilities for the MATE desktop
 media-fonts/Humor-Sans 1.0: A sanserif typeface in the style of xkcd
 media-fonts/acroread-asianfonts 9.1: Asian and Extended Language Font Packs used by Adobe Reader
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
@@ -12194,7 +12194,7 @@ media-gfx/engauge 5.2: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
 media-gfx/eog 3.18.2 3.18.3 3.20.3 3.20.4: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.3 3.16.4: Eye of GNOME plugins
-media-gfx/eom 1.10.5-r3 1.12.2-r2: The MATE image viewer
+media-gfx/eom 1.10.5-r3 1.12.2-r3: The MATE image viewer
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r1: A fast, modern and generic image processing library

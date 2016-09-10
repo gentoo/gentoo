@@ -9,6 +9,6 @@ LICENSE=GPL-2
 RDEPEND=app-text/rarian:0 dev-libs/atk:0 >=dev-libs/glib-2.36:2 >=gnome-base/libgtop-2.12:2= sys-libs/zlib:0 x11-libs/cairo:0 x11-libs/gdk-pixbuf:2 x11-libs/libICE:0 x11-libs/libSM:0 x11-libs/libX11:0 x11-libs/libXext:0 x11-libs/pango:0 applet? ( >=mate-base/mate-panel-1.6[gtk3(-)=] ) !gtk3? ( >=x11-libs/gtk+-2.24:2 >=media-libs/libcanberra-0.4:0[gtk] ) gtk3? ( >=x11-libs/gtk+-3.0:3 >=media-libs/libcanberra-0.4:0[gtk3] )
 SLOT=0
 SRC_URI=http://pub.mate-desktop.org/releases/1.12/mate-utils-1.12.0.tar.xz
-_eclass_exported_funcs=pkg_preinst:mate pkg_postrm:mate pkg_postinst:mate src_prepare:mate src_configure:- src_compile:gnome2 src_install:mate
+_eclass_exported_funcs=pkg_preinst:mate pkg_postrm:mate pkg_postinst:mate src_prepare:- src_configure:- src_compile:gnome2 src_install:mate
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	mate	deba441b42c68cba7b817dd8b441788e	mate-desktop.org	69a0f50dcb300b04a513d60bc326029c	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=f280b35da5fbb706749e98cc8d6e627e
+_md5_=06874c34c9e5521f56ac8c770652d254
