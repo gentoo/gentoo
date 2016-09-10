@@ -50,6 +50,16 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
+PATCHES=( "${FILESDIR}/${P}-dict-gtk3.patch" )
+
+src_prepare() {
+	# Make apps visible in all DEs.
+	LC_ALL=C find . -iname '*.desktop.in*' -exec \
+		sed -e '/OnlyShowIn/d' -i {} + || die
+
+	mate_src_prepare
+}
+
 src_configure() {
 	mate_src_configure \
 		--disable-maintainer-flags \

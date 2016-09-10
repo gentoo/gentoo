@@ -62,6 +62,8 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
+PATCHES=( "${FILESDIR}/${P}-gtk3-svg.patch" )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
