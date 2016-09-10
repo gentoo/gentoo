@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,14 +13,8 @@ HOMEPAGE="https://gcc.gnu.org"
 SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE_VERS}.tar.gz"
 LICENSE="APSL-2 GPL-2"
 
-if is_crosscompile; then
-	SLOT="${CTARGET}-40"
-else
-	SLOT="40"
-fi
-
+SLOT="40"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-
 IUSE="nls objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4

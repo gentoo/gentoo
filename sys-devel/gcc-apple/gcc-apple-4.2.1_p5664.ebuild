@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,14 +27,8 @@ case ${CHOST} in
 	;;
 esac
 
-if is_crosscompile; then
-	SLOT="${CTARGET}-42"
-else
-	SLOT="42"
-fi
-
+SLOT="42"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-
 IUSE="fortran nls +openmp objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
