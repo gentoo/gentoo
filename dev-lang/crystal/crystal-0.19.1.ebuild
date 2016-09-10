@@ -4,8 +4,6 @@
 
 EAPI=6
 
-inherit multilib
-
 BV=0.18.7-1
 BV_AMD64=${BV}-linux-x86_64
 BV_X86=${BV}-linux-i686
