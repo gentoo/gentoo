@@ -22,7 +22,7 @@ IUSE="gtk2-only"
 DEPEND=""
 RDEPEND="|| (
 		gtk2-only? (
-			!!11-libs/gtk+:3
+			!!x11-libs/gtk+:3
 			x11-themes/mate-themes:0
 		)
 		(
