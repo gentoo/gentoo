@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm
+DESCRIPTION=C language family frontend for LLVM (meta-ebuild)
+EAPI=5
+HOMEPAGE=http://clang.llvm.org/
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=UoI-NCSA
+RDEPEND=~sys-devel/llvm-3.4.2[clang(-),abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+SLOT=0/3.4
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=b2a80660261dc93b80e494a824b5f929

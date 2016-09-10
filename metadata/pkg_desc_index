@@ -17056,7 +17056,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (y
 sys-devel/bmake 20160315 20160606 20160818: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 3.9.0-r100 9999: C language family frontend for LLVM
+sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 3.8.1-r100 3.9.0-r100 9999: C language family frontend for LLVM
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17075,7 +17075,7 @@ sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
-sys-devel/llvm 3.5.0 3.5.2 3.6.2 3.7.1-r3 3.8.0-r3 3.8.1 3.8.1-r2 3.9.0 9999: Low Level Virtual Machine
+sys-devel/llvm 3.4.2-r100 3.5.0 3.5.2 3.6.2 3.7.1-r3 3.8.0-r3 3.8.1 3.8.1-r2 3.9.0 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2-r2 4.2.1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
