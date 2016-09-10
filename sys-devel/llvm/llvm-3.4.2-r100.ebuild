@@ -190,6 +190,10 @@ src_install() {
 
 	if ! use clang; then
 		rm "${WORKDIR}"/${PN}-3.4-manpages/clang.1 || die
+	else
+		for tool in clang{,++}{,-${PV}} ; do
+			dosym /usr/bin/${tool} /usr/bin/${CHOST}-${tool}
+		done
 	fi
 	doman "${WORKDIR}"/${PN}-3.4-manpages/*.1
 
@@ -200,7 +204,7 @@ src_install() {
 		eval $(grep PACKAGE_VERSION= configure)
 		[[ -n ${PACKAGE_VERSION} ]] && libpv=${PACKAGE_VERSION}
 		libpvminor=${libpv%.[0-9]*}
-		for lib in lib{EnhancedDisassembly,LLVM-${libpv},LTO,profile_rt,clang}.dylib LLVMHello.dylib clang/${libpv}/lib/darwin/libclang_rt.asan_{osx,iossim}_dynamic.dylib; do
+		for lib in lib{EnhancedDisassembly,LLVM-${libpv},LTO,profile_rt,clang}.dylib LLVMHello.dylib BugpointPasses.dylib clang/${libpv}/lib/darwin/libclang_rt.asan_{osx,iossim}_dynamic.dylib; do
 			# libEnhancedDisassembly is Darwin10 only, so non-fatal
 			# + omit clang libs if not enabled
 			[[ -f ${ED}/usr/lib/${lib} ]] || continue
