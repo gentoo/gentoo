@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+	  <flag name="debug">Add source locations in generated .ph files to assist with debugging when errors occur</flag>
+	  <flag name="sizeof-warning">Include logic to warn when a .ph file tries to use a sizeof() that is unknown</flag>
+  </use>
+</pkgmetadata>
