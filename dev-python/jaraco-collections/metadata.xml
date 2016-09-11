@@ -13,5 +13,6 @@
 		<remote-id type="pypi">jaraco.collections</remote-id>
 		<remote-id type="github">jaraco/jaraco.collections</remote-id>
 		<bugs-to>https://github.com/jaraco/jaraco.collections/issues</bugs-to>
+		<changelog>https://github.com/jaraco/jaraco.collections/blob/master/CHANGES.rst</changelog>
 	</upstream>
 </pkgmetadata>
