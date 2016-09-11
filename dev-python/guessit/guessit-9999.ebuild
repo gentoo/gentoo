@@ -19,7 +19,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]
-	>=dev-python/rebulk-0.7.3[${PYTHON_USEDEP}]
+	>=dev-python/rebulk-0.7.4[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
