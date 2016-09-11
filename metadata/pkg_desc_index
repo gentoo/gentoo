@@ -4794,7 +4794,7 @@ dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usab
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.0 1.5.1 1.5.1-r1 1.7.0-r1 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.27 3.2.28 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.27 3.2.28 3.2.9999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1 0.4.1-r1: C Implementation of NTRUEncrypt
@@ -12528,7 +12528,7 @@ media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/grilo 0.2.15 0.3.0 0.3.1: A framework for easy media discovery and browsing
+media-libs/grilo 0.2.15 0.3.0 0.3.1 0.3.2: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3 1.8.2: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.3 1.8.2: Basepack of plugins for gstreamer
@@ -12885,7 +12885,7 @@ media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the cu
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
 media-plugins/gmpc-wikipedia 11.8.16: This plugin shows the Wikipedia article about the currently playing artist
-media-plugins/grilo-plugins 0.2.12 0.2.17 0.3.2: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.2.12 0.2.17 0.3.2 0.3.3: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.6.3 1.8.2: GStreamer plugin for AMRNB/AMRWB codec
@@ -14391,7 +14391,7 @@ net-libs/gnutls 3.3.17.1 3.3.23 3.3.24 3.4.14-r1 3.4.15 3.5.3 3.5.4: A TLS 1.2 a
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.33 2.8.34: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.14 0.14.15 0.14.16: A GObject-based API for handling resource discovery and announcement over SSDP
-net-libs/gtk-vnc 0.5.3 0.5.4: VNC viewer widget for GTK
+net-libs/gtk-vnc 0.5.4 0.6.0: VNC viewer widget for GTK
 net-libs/gupnp 0.20.16 0.20.17 0.20.18: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.7 0.12.8: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
