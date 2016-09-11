@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Opt-out of ofono support until there is a user request,
+# see also pulseaudio/connman
+net-misc/networkmanager ofono
+ 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
 dev-db/percona-server -numa

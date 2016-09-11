@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Opt-out of ofono support until there is a user request,
+# see also pulseaudio/connman
+net-misc/networkmanager ofono
+
 # Tobias Klausmann <klausman@gentoo.org> (04 Jul 2016)
 # Mask USE=test since it implies USE=valgrind
 net-mail/notmuch test
