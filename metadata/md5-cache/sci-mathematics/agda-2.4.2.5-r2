@@ -12,4 +12,4 @@ SLOT=0/2.4.2.5
 SRC_URI=mirror://hackage/packages/archive/Agda/2.4.2.5/Agda-2.4.2.5.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=da9a7aedaa7d6f483adc2513e161b3d9
+_md5_=a72ef395f83124c5803651f1a9cf0452
