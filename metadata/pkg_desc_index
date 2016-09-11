@@ -7207,7 +7207,7 @@ dev-python/doublex-expects 0.4.0 0.7.0_rc1 0.7.0_rc2: Expects matchers for Doubl
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
-dev-python/dugong 3.4 3.5 3.7: Python library for communicating with HTTP 1.1 servers
+dev-python/dugong 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0 0.14.1: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2: Easy thumbnails for Django
@@ -14318,7 +14318,7 @@ net-irc/sic 1.1 1.2: An extremly simple IRC client
 net-irc/smuxi 0.8.10.1 0.8.11 0.11.1: A flexible, irssi-like and user-friendly IRC client for the Gnome Desktop
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/ultimate 3.0.2-r2: An IRCd server based on DALnet's DreamForge IRCd
-net-irc/unrealircd 3.2.10.4 4.0.5: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 3.2.10.4 4.0.6: An advanced Internet Relay Chat daemon
 net-irc/weechat 1.4-r1 1.5 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.4-r1 1.6.1-r1 1.6.3 9999: An advanced IRC Bouncer
