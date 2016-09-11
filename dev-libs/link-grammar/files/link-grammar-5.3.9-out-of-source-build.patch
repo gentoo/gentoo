@@ -1,0 +1,61 @@
+--- a/bindings/python/Makefile.am	2016-08-26 04:28:48.000000000 +0200
++++ b/bindings/python/Makefile.am	2016-09-10 16:13:33.554781694 +0200
+@@ -4,9 +4,8 @@
+ # Created by Linas Vepstas February 2014
+ #
+ 
+-SWIG_SOURCES = ../swig/link_grammar.i
+-# BUILT_C_SOURCES = $(top_builddir)/bindings/python/lg_python_wrap.cc
+-BUILT_C_SOURCES = ../../bindings/python/lg_python_wrap.cc
++SWIG_SOURCES = $(top_srcdir)/bindings/swig/link_grammar.i
++BUILT_C_SOURCES = $(top_builddir)/bindings/python/lg_python_wrap.cc
+ BUILT_PY_SOURCES = $(top_builddir)/bindings/python/clinkgrammar.py
+ 
+ # Over-ride the install location, so as to remove the dash in the
+@@ -20,7 +19,7 @@
+ pkgpython_PYTHON =                                 \
+-   linkgrammar.py                                  \
++   $(srcdir)/linkgrammar.py                                  \
+    $(top_builddir)/bindings/python/__init__.py     \
+-   $(top_builddir)/bindings/python/clinkgrammar.py
++   $(BUILT_PY_SOURCES)
+ 
+ 
+ # These are packaged in the tarball; make clean should not remove them.
+--- a/bindings/python3/Makefile.am	2016-08-26 04:28:48.000000000 +0200
++++ b/bindings/python3/Makefile.am	2016-09-11 01:30:35.700926275 +0200
+@@ -4,9 +4,8 @@
+ # Created by Linas Vepstas February 2014
+ #
+ 
+-SWIG_SOURCES = ../swig/link_grammar.i
+-# BUILT_C_SOURCES = $(top_builddir)/bindings/python3/lg_python_wrap.cc
+-BUILT_C_SOURCES = ../../bindings/python3/lg_python_wrap.cc
++SWIG_SOURCES = $(top_srcdir)/bindings/swig/link_grammar.i
++BUILT_C_SOURCES = $(top_builddir)/bindings/python3/lg_python_wrap.cc
+ BUILT_PY_SOURCES = $(top_builddir)/bindings/python3/clinkgrammar.py
+ 
+ # Over-ride the install location, so as to remove the dash in the
+@@ -18,9 +17,9 @@
+ 
+ # Files that get installed in $pkgpythondir
+ pkgpython3_PYTHON =                                 \
+-   ../../bindings/python/linkgrammar.py             \
++   $(top_srcdir)/bindings/python/linkgrammar.py     \
+    $(top_builddir)/bindings/python3/__init__.py     \
+-   $(top_builddir)/bindings/python3/clinkgrammar.py
++   $(BUILT_PY_SOURCES)
+ 
+ 
+ # Apparently, anaconda does not work without this!?
+--- a/bindings/python3/Makefile.am	2016-09-11 12:44:01.466971878 +0200
++++ b/bindings/python3/Makefile.am	2016-09-11 12:44:22.385788941 +0200
+@@ -26,7 +26,7 @@
+ # This seems wrong and lme to me, but see issue #298
+ pkgpypathdir=$(pythondir)
+ pkgpypath_PYTHON =                                 \
+-   linkgrammar.pth
++   $(srcdir)/linkgrammar.pth
+ 
+ # These are packaged in the tarball; make clean should not remove them.
+ maintainer-clean-local:

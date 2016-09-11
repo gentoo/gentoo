@@ -96,6 +96,7 @@ RDEPEND="${COMMON_DEPEND}
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
 	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
 "
+# dev-vcs/git - https://bugs.gentoo.org/593476
 DEPEND="${COMMON_DEPEND}
 	>=app-arch/gzip-1.7
 	!arm? (
@@ -109,6 +110,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
 	virtual/pkgconfig
+	dev-vcs/git
 	$(python_gen_any_dep '
 		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
 		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]

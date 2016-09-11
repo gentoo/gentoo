@@ -30,6 +30,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. Uses deprecated conduit-1.0*
+# Upstream suggests using dev-haskell/conduit-combinators
+# instead.
+dev-haskell/base64-conduit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. >=sci-mathematics/agda-2.4
+# now provides 'agda' binary.
+sci-mathematics/agda-executable
+
 # Patrice Clement <monsieurp@gentoo.org> (10 Sep 2016)
 # Upstream dead. This package tries very hard to outsmart autotools and
 # reinvent the wheel by coming up with its own configure script. A complete
@@ -594,6 +605,7 @@ dev-ruby/metasploit-model:1.0
 ~dev-qt/qtx11extras-5.7.0
 ~dev-qt/qtxml-5.7.0
 ~dev-qt/qtxmlpatterns-5.7.0
+=dev-qt/qt-docs-5.7*
 
 # Michael Palimaka <kensington@gentoo.org> (11 Aug 2016)
 # No longer works. Masked for removal in 30 days.
