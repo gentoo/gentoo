@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/ansi-terminal-0.6.2:=[profile?] >=dev-haskell/cmdargs-0.10:=[profile?] >=dev-haskell/cpphs-1.20.1:=[profile?] >=dev-haskell/extra-1.4.9:2=[profile?] >=dev-haskell/haskell-src-exts-1.17:=[profile?] <dev-haskell/haskell-src-exts-1.18:=[profile?] >=dev-haskell/refact-0.3:=[profile?] dev-haskell/transformers:=[profile?] >=dev-haskell/uniplate-1.5:=[profile?] >=dev-lang/ghc-7.4.1:= gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] ) >=dev-haskell/cabal-1.8 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Source code suggestions
+EAPI=5
+HOMEPAGE=https://github.com/ndmitchell/hlint#readme
+IUSE=emacs +gpl doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/ansi-terminal-0.6.2:=[profile?] >=dev-haskell/cmdargs-0.10:=[profile?] >=dev-haskell/cpphs-1.20.1:=[profile?] >=dev-haskell/extra-1.4.9:2=[profile?] >=dev-haskell/haskell-src-exts-1.17:=[profile?] <dev-haskell/haskell-src-exts-1.18:=[profile?] >=dev-haskell/refact-0.3:=[profile?] dev-haskell/transformers:=[profile?] >=dev-haskell/uniplate-1.5:=[profile?] >=dev-lang/ghc-7.4.1:= gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] )
+SLOT=0/1.9.35
+SRC_URI=mirror://hackage/packages/archive/hlint/1.9.35/hlint-1.9.35.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:haskell-cabal src_configure:- src_compile:- src_test:haskell-cabal src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=fe62ad3fa5d7bbc37f4c1ee2384d5561
