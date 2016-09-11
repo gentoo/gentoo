@@ -116,8 +116,8 @@ src_prepare() {
 		# The binaries are built on a non-prefixed system so the
 		# fontconfig needs to have prefixes inserted.
 		rm ${lib}/fontconfig.Gentoo.bfc || die
-		mv ${lib}/fontconfig.Gentoo.properties{.src,} || die
 		hprefixify ${lib}/fontconfig.Gentoo.properties.src
+		mv ${lib}/fontconfig.Gentoo.properties{.src,} || die
 	fi
 
 	# Fix the RPATHs, except on arm.
