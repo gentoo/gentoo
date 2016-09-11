@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. >=sci-mathematics/agda-2.4
+# now provides 'agda' binary.
+sci-mathematics/agda-executable
+
 # Patrice Clement <monsieurp@gentoo.org> (10 Sep 2016)
 # Upstream dead. This package tries very hard to outsmart autotools and
 # reinvent the wheel by coming up with its own configure script. A complete
