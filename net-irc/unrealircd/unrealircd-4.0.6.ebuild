@@ -4,6 +4,7 @@
 
 EAPI=6
 
+SSL_CERT_MANDATORY=1
 inherit eutils ssl-cert versionator multilib user
 
 DESCRIPTION="An advanced Internet Relay Chat daemon"
@@ -14,9 +15,9 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux"
 IUSE="class-nofakelag curl +extban-stacking +operoverride operoverride-verify +prefixaq
-	showlistmodes shunnotices ssl topicisnuhost +usermod"
+	showlistmodes shunnotices topicisnuhost +usermod"
 
-RDEPEND="ssl? ( dev-libs/openssl:= )
+RDEPEND="dev-libs/openssl:=
 	curl? ( net-misc/curl[adns] )
 	dev-libs/libpcre2
 	dev-libs/tre
@@ -69,9 +70,9 @@ src_configure() {
 		--with-system-pcre2 \
 		--with-system-tre \
 		--enable-dynamic-linking \
+		--enable-ssl="${EPREFIX}"/usr \
 		$(use_enable curl libcurl "${EPREFIX}"/usr) \
 		$(use_enable prefixaq) \
-		$(use_enable ssl ssl "${EPREFIX}"/usr) \
 		$(use_with showlistmodes) \
 		$(use_with topicisnuhost) \
 		$(use_with shunnotices) \
@@ -104,7 +105,7 @@ src_install() {
 	doins -r doc/conf/{aliases,help}
 	doins doc/conf/*.conf
 	newins doc/conf/examples/example.conf ${PN}.conf
-	use ssl && keepdir /etc/${PN}/ssl
+	keepdir /etc/${PN}/ssl
 
 	dodoc \
 		doc/{Changes.old,Changes.older,RELEASE-NOTES} \
@@ -116,7 +117,7 @@ src_install() {
 	# config should be read-only
 	fperms -R 0640 /etc/${PN}
 	fperms 0750 /etc/${PN}{,/aliases,/help}
-	use ssl && fperms 0750 /etc/${PN}/ssl
+	fperms 0750 /etc/${PN}/ssl
 	# state is editable but not owned by unrealircd directly
 	fperms 0770 /var/log/${PN}
 	fperms 0770 /var/lib/${PN}{,/tmp}
@@ -172,20 +173,18 @@ pkg_preinst() {
 pkg_postinst() {
 	# Move docert call from src_install() to install_cert in pkg_postinst for
 	# bug #201682
-	if use ssl ; then
-		if [[ ! -f "${EROOT}"etc/${PN}/ssl/server.cert.key ]]; then
-			if [[ -f "${EROOT}"etc/${PN}/server.cert.key ]]; then
-				ewarn "The location ${PN} looks for SSL certificates has changed"
-				ewarn "from ${EROOT}etc/${PN} to ${EROOT}etc/${PN}/ssl."
-				ewarn "Please move your existing certificates."
-			else
-				(
-					umask 0037
-					install_cert /etc/${PN}/ssl/server.cert
-					chown unrealircd "${EROOT}"etc/${PN}/ssl/server.cert.*
-					ln -snf server.cert.key "${EROOT}"etc/${PN}/ssl/server.key.pem
-				)
-			fi
+	if [[ ! -f "${EROOT}"etc/${PN}/ssl/server.cert.key ]]; then
+		if [[ -f "${EROOT}"etc/${PN}/server.cert.key ]]; then
+			ewarn "The location ${PN} looks for SSL certificates has changed"
+			ewarn "from ${EROOT}etc/${PN} to ${EROOT}etc/${PN}/ssl."
+			ewarn "Please move your existing certificates."
+		else
+			(
+				umask 0037
+				install_cert /etc/${PN}/ssl/server.cert
+				chown unrealircd "${EROOT}"etc/${PN}/ssl/server.cert.*
+				ln -snf server.cert.key "${EROOT}"etc/${PN}/ssl/server.key.pem
+			)
 		fi
 	fi
 
