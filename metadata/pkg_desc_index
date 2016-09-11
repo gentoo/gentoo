@@ -1463,7 +1463,7 @@ app-forensics/sleuthkit 4.0.2 4.1.0 4.1.2 4.1.3: A collection of file system and
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs or other technique
 app-forensics/volatility 2.4.1: Framework for analyzing volatile memory
 app-forensics/yasat 526 700 755 839: Security and system auditing tool
-app-forensics/zzuf 0.13-r1: Transparent application input fuzzer
+app-forensics/zzuf 0.13-r1 0.15: Transparent application input fuzzer
 app-i18n/anthy 9100h-r1: Anthy -- free and secure Japanese input system
 app-i18n/anthy-ss 9026: Anthy -- free and secure Japanese input system
 app-i18n/atokx3 3.0.0-r11: ATOK X3 for Linux - The most famous Japanese Input Method Engine
@@ -6901,7 +6901,7 @@ dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support 
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.9.0-r1 1.9.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
-dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.16: Solves automatic numerical differentiation problems in one or more variables
+dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
@@ -7349,7 +7349,7 @@ dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.2 0.4.3 0.4.4 0.4.5 0.4.6 0.4.7 0.4.9 0.4.10: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.2.1 1.4.0 1.6.2 1.8.2: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
-dev-python/guessit 1.0.3-r1 2.0.5-r1 9999: Python library for guessing information from video filenames
+dev-python/guessit 1.0.3-r1 2.0.5-r1 2.1.0 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle.
 dev-python/h5py 2.3.1 2.4.0 2.5.0 2.6.0: Simple Python interface to HDF5 files
@@ -7520,7 +7520,7 @@ dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5: Python implementation of the markdo
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
 dev-python/markups 0.2.4-r1 1.0.1 2.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
-dev-python/matplotlib 1.4.3 1.5.0 1.5.1 9999: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 1.4.3 1.5.0 1.5.1 1.5.3 9999: Pure python plotting library with matlab like syntax
 dev-python/maybe 0.3.0 0.4.0: See what a program does before deciding whether you really want it to happen
 dev-python/mccabe 0.2.1 0.3 0.3.1 0.4.0 0.5.2: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
