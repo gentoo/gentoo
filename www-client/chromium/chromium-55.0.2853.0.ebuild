@@ -558,7 +558,7 @@ src_configure() {
 		chromium/scripts/build_ffmpeg.py linux ${ffmpeg_target_arch} \
 			--branding ${ffmpeg_branding} -- ${build_ffmpeg_args} || die
 		chromium/scripts/copy_config.sh || die
-		chromium/scripts/generate_gyp.py || die
+		chromium/scripts/generate_gn.py || die
 		popd > /dev/null || die
 	fi
 
