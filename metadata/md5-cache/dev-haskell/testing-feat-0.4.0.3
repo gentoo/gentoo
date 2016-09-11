@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/mtl-1:=[profile?] <dev-haskell/mtl-3:=[profile?] >dev-haskell/quickcheck-2:2=[profile?] <dev-haskell/quickcheck-3:2=[profile?] <dev-haskell/tagshare-0.1:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.6 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Functional Enumeration of Algebraic Types
+EAPI=6
+HOMEPAGE=http://hackage.haskell.org/package/testing-feat
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/mtl-1:=[profile?] <dev-haskell/mtl-3:=[profile?] >dev-haskell/quickcheck-2:2=[profile?] <dev-haskell/quickcheck-3:2=[profile?] <dev-haskell/tagshare-0.1:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.4.0.3
+SRC_URI=mirror://hackage/packages/archive/testing-feat/0.4.0.3/testing-feat-0.4.0.3.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=d91586c6c3e4f71e85708a73d004d8fa

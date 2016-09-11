@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-haskell/aeson-0.6:=[profile?] dev-haskell/base64-bytestring:=[profile?] >=dev-haskell/cpphs-1.19:=[profile?] >=dev-haskell/diff-0.3:=[profile?] dev-haskell/haskell-src:=[profile?] >=dev-haskell/hunit-1.2.5:=[profile?] >=dev-haskell/lifted-base-0.1:=[profile?] >=dev-haskell/monad-control-0.3:=[profile?] >=dev-haskell/mtl-1.1:=[profile?] >=dev-haskell/old-time-1.0:=[profile?] >=dev-haskell/quickcheck-2.3:2=[profile?] >=dev-haskell/random-1.0:=[profile?] >=dev-haskell/regex-compat-0.92:=[profile?] >=dev-haskell/text-0.11:=[profile?] dev-haskell/vector:=[profile?] >=dev-haskell/xmlgen-0.6:=[profile?] >=dev-lang/ghc-7.6.1:= >=dev-haskell/cabal-1.16.0 test? ( dev-haskell/aeson-pretty >=dev-haskell/temporary-1.1 >=dev-haskell/unordered-containers-0.2 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=The Haskell Test Framework
+EAPI=5
+HOMEPAGE=https://github.com/skogsbaer/HTF/
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-haskell/aeson-0.6:=[profile?] dev-haskell/base64-bytestring:=[profile?] >=dev-haskell/cpphs-1.19:=[profile?] >=dev-haskell/diff-0.3:=[profile?] dev-haskell/haskell-src:=[profile?] >=dev-haskell/hunit-1.2.5:=[profile?] >=dev-haskell/lifted-base-0.1:=[profile?] >=dev-haskell/monad-control-0.3:=[profile?] >=dev-haskell/mtl-1.1:=[profile?] >=dev-haskell/old-time-1.0:=[profile?] >=dev-haskell/quickcheck-2.3:2=[profile?] >=dev-haskell/random-1.0:=[profile?] >=dev-haskell/regex-compat-0.92:=[profile?] >=dev-haskell/text-0.11:=[profile?] dev-haskell/vector:=[profile?] >=dev-haskell/xmlgen-0.6:=[profile?] >=dev-lang/ghc-7.6.1:=
+SLOT=0/0.13.1.0
+SRC_URI=mirror://hackage/packages/archive/HTF/0.13.1.0/HTF-0.13.1.0.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=6214f8e3c29050cd9cc0bd6280a6238d

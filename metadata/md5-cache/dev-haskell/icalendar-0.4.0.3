@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.1:=[profile?] >=dev-haskell/case-insensitive-0.4:=[profile?] >=dev-haskell/data-default-0.3:=[profile?] >=dev-haskell/mime-0.4.0.2:=[profile?] >=dev-haskell/mtl-2.1.0:=[profile?] dev-haskell/old-locale:=[profile?] >=dev-haskell/parsec-3.1.0:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-7.10.1:= network-uri? ( >=dev-haskell/network-2.6:=[profile?] <dev-haskell/network-2.7:=[profile?] >=dev-haskell/network-uri-2.6:=[profile?] ) !network-uri? ( >=dev-haskell/network-2.4:=[profile?] <dev-haskell/network-2.6:=[profile?] ) >=dev-haskell/cabal-1.22.2.0 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=iCalendar data types, parser, and printer
+EAPI=6
+HOMEPAGE=https://github.com/chrra/iCalendar
+IUSE=+network-uri doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.1:=[profile?] >=dev-haskell/case-insensitive-0.4:=[profile?] >=dev-haskell/data-default-0.3:=[profile?] >=dev-haskell/mime-0.4.0.2:=[profile?] >=dev-haskell/mtl-2.1.0:=[profile?] dev-haskell/old-locale:=[profile?] >=dev-haskell/parsec-3.1.0:=[profile?] dev-haskell/text:=[profile?] >=dev-lang/ghc-7.10.1:= network-uri? ( >=dev-haskell/network-2.6:=[profile?] <dev-haskell/network-2.7:=[profile?] >=dev-haskell/network-uri-2.6:=[profile?] ) !network-uri? ( >=dev-haskell/network-2.4:=[profile?] <dev-haskell/network-2.6:=[profile?] )
+SLOT=0/0.4.0.3
+SRC_URI=mirror://hackage/packages/archive/iCalendar/0.4.0.3/iCalendar-0.4.0.3.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=219e6c8669d53960901df34c55b6ecde
