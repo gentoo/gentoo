@@ -8,7 +8,7 @@ PDEPEND=virtual/commonlisp
 RDEPEND=!dev-lisp/cl-flexi-streams >=dev-lisp/trivial-gray-streams-20060925
 RESTRICT=mirror
 SLOT=0
-SRC_URI=https://github.com/edicl/flexi-streams/archive/v1.0.15.tar.gz
+SRC_URI=https://github.com/edicl/flexi-streams/archive/v1.0.15.tar.gz -> flexi-streams-1.0.15.tar.gz
 _eclass_exported_funcs=src_compile:common-lisp-3 src_install:-
 _eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=3af0175d52e63aafb6f84726cfd6e42f
+_md5_=f85d2fb38fa555da814eb7d443213b06
