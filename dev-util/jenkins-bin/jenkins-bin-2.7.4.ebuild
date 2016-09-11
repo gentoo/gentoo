@@ -9,15 +9,15 @@ inherit user systemd java-pkg-2
 DESCRIPTION="Extensible continuous integration server"
 HOMEPAGE="http://jenkins-ci.org/"
 LICENSE="MIT"
-SRC_URI="http://mirrors.jenkins-ci.org/war/${PV}/${PN/-bin/}.war -> ${P}.war"
+SRC_URI="http://mirrors.jenkins-ci.org/war-stable/${PV}/${PN/-bin/}.war -> ${P}.war"
 RESTRICT="mirror"
-SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+SLOT="lts"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="media-fonts/dejavu
 	media-libs/freetype
-	!dev-util/jenkins-bin:lts
+	!dev-util/jenkins-bin:0
 	>=virtual/jre-1.7.0"
 
 S=${WORKDIR}
