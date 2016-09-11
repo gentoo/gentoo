@@ -38,7 +38,7 @@ RDEPEND="dev-haskell/abstract-par:=
 	dev-haskell/wl-pprint:=
 	>=dev-lang/ghc-7.8.2:=
 	archs? ( dev-haskell/base16-bytestring:=
-			dev-haskell/tar:=
+			>=dev-haskell/tar-0.5:=
 			dev-haskell/zip-archive:= )
 	!archs? ( net? ( dev-haskell/base16-bytestring:= ) )
 	codes? ( dev-haskell/haxml:=
