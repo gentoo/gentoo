@@ -33,11 +33,17 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-perl/XML-Parser
 	dev-util/intltool
+	dev-util/xfce4-dev-tools
 	sys-devel/gettext"
 RDEPEND="${RDEPEND}
 	x11-misc/lightdm"
 
 DOCS=( AUTHORS HACKING NEWS README )
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-systemd.patch
+	NOCONFIGURE=1 xdt-autogen || die
+}
 
 src_configure() {
 	local myeconfargs=(
