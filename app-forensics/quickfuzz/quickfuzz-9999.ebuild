@@ -37,7 +37,7 @@ RDEPEND="dev-haskell/abstract-par:=
 	dev-haskell/wl-pprint:=
 	>=dev-lang/ghc-7.8.2:=
 	archs? ( dev-haskell/base16-bytestring:=
-			dev-haskell/tar:=
+			>=dev-haskell/tar-0.5:=
 			dev-haskell/zip-archive:= )
 	!archs? ( net? ( dev-haskell/base16-bytestring:= ) )
 	codes? ( dev-haskell/haxml:=
@@ -64,8 +64,8 @@ RDEPEND="dev-haskell/abstract-par:=
 		dev-haskell/scientific:=
 		dev-haskell/thyme:=
 		dev-haskell/xml:=
-		dev-haskell/zlib:= )
-	!imgs? ( archs? ( dev-haskell/zlib:= ) )
+		>=dev-haskell/zlib-0.6:= )
+	!imgs? ( archs? ( >=dev-haskell/zlib-0.6:= ) )
 	media? ( dev-haskell/hcodecs:=
 			dev-haskell/hunit:=
 			dev-haskell/mtl:=

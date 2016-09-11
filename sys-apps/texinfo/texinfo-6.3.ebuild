@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND="
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )"
+	nls? ( >=sys-devel/gettext-0.19.6 )"
 
 src_configure() {
 	use static && append-ldflags -static
@@ -38,9 +38,4 @@ src_configure() {
 		--with-external-Unicode-EastAsianWidth \
 		--with-external-Text-Unidecode \
 		$(use_enable nls)
-}
-
-src_install() {
-	default
-	newdoc info/README README.info
 }
