@@ -6940,7 +6940,7 @@ dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14 0.9.17: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
-dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/PyECLib 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.2 1.27.1: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
@@ -7399,7 +7399,7 @@ dev-python/hcs-utils 1.4 1.5: A library containing some useful snippets
 dev-python/healpy 1.9.1: Python wrapper for healpix
 dev-python/hgdistver 0.22 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Python
-dev-python/hgtools 6.0 6.3 6.5.1: Classes and setuptools plugin for Mercurial repositories
+dev-python/hgtools 6.0 6.5.1: Classes and setuptools plugin for Mercurial repositories
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/html2text 2014.4.5-r1 2016.5.29: Turn HTML into equivalent Markdown-structured text
@@ -7497,10 +7497,10 @@ dev-python/kafka-python 1.1.1 1.2.0 1.2.1: Kafka protocol support in Python
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 3.7 8.6 9.2.1 9.3.1: Provides access to the system keyring service
+dev-python/keyring 8.6 9.3.1: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1 1.1.1: Alternate keyring implementations
-dev-python/keystoneauth 2.4.0 2.4.1: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 2.3.1-r1 2.3.2-r1 2.3.3 4.4.0 4.4.1: A middleware for the OpenStack Keystone API
+dev-python/keystoneauth 2.4.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystonemiddleware 4.4.1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1 0.1.4: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -7805,7 +7805,7 @@ dev-python/pyaudio 0.2.8 0.2.9: Python bindings for PortAudio
 dev-python/pyavm 0.9.2: Python module for Astronomy Visualization Metadata i/o
 dev-python/pybloomfiltermmap 0.3.11-r1 0.3.14: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
-dev-python/pycadf 0.6.0 0.8.0 1.0.0 1.1.0 2.2.0: python implementation of DMTF Cloud Audit (CADF) data model
+dev-python/pycadf 2.2.0: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.10.0-r4 1.10.0-r5: Python bindings for the cairo library
 dev-python/pycallgraph 1.0.1: library and command line tool to visualise the flow of Python applications
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
