@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		Thyme is a rewrite of the fine @time@ library, with a particular focus
+		on performance for applications that make heavy use of timestamps.
+		
+		See "Data.Thyme" for a full description.
+	</longdescription>
+	<use>
+		<flag name="bug-for-bug">bug-for-bug compatibility with time</flag>
+		<flag name="lens">use the full lens package</flag>
+		<flag name="show-internal">instance Show of internal representation</flag>
+	</use>
+</pkgmetadata>
