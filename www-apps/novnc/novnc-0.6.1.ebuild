@@ -15,7 +15,7 @@ S="${WORKDIR}/noVNC-${PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 DEPEND=""
