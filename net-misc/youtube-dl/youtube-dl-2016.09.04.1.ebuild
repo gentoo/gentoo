@@ -16,8 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="offensive test"
 
-DEPEND="
+RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${RDEPEND}
 	test? ( dev-python/nose[coverage(+)] )
 "
 
