@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 eutils git-r3 libtool multilib multilib-minimal
 
-DESCRIPTION="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
+DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 EGIT_REPO_URI="
 	https://github.com/thom311/libnl.git

@@ -11,7 +11,7 @@ LIBNL_P=${P/_/-}
 LIBNL_DIR=${PV/_/}
 LIBNL_DIR=${LIBNL_DIR//./_}
 
-DESCRIPTION="A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces"
+DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="
 	https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz
