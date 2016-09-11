@@ -28,7 +28,7 @@ REQUIRED_USE="
 	^^ ( nss gnutls )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # gobject-introspection-0.10.3 is needed due to gnome bug 642300
 # wpa_supplicant-0.7.3-r3 is needed due to bug 359271
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	connection-sharing? (
 		net-dns/dnsmasq[dhcp]
 		net-firewall/iptables )
-	consolekit? ( sys-auth/consolekit )
+	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dhclient? ( >=net-misc/dhcp-4[client] )
 	gnutls? (
 		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
