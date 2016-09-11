@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec virtual/perl-IO virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Config file parser module
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Config-General/
+IUSE=examples
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec virtual/perl-IO dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TL/TLINDEN/Config-General-2.63.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=cd0d2ffdd69014d70d5255dbfe71bea3
