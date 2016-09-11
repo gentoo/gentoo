@@ -142,7 +142,7 @@ src_configure() {
 
 src_compile() {
 	emake
-	if use java || use jit ; then
+	if use java; then
 		pax-mark m "${S}/src/.libs/octave-cli"
 	fi
 }
