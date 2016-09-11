@@ -6,10 +6,10 @@ HOMEPAGE=https://rg3.github.com/youtube-dl/
 IUSE=offensive test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
 KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=public-domain
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+RDEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
 SLOT=0
-SRC_URI=http://youtube-dl.org/downloads/2016.09.03/youtube-dl-2016.09.03.tar.gz
+SRC_URI=http://youtube-dl.org/downloads/2016.09.08/youtube-dl-2016.09.08.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	b83a2420b796f7c6eff682679d08fe25	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=3880f3c8d8bee92d445f6edd22b391a5
+_md5_=bb2037b22aa1c8b19c923b4c020324b0

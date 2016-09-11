@@ -126,7 +126,7 @@ app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass-binary-component 4.1.2: Binary component required by the LastPass Password Manager browser extension
 app-admin/lastpass-cli 0.8.1 0.9.0 1.0.0: Interfaces with LastPass.com from the command line.
-app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
+app-admin/lib_users 0.9 0.9-r1: Checks /proc for libraries being mapped but marked as deleted
 app-admin/lnav 0.7.1 0.8.1: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace on unneeded locale files & localized man pages
 app-admin/logcheck 1.3.15-r1 1.3.15-r2 1.3.16 1.3.17: Mails anomalies in the system logfiles to the administrator
@@ -9801,7 +9801,7 @@ dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160709 9.20160814: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.80 1.0.81: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.81 1.0.82: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.23: Command line utilities to work with desktop menu entries
@@ -14521,7 +14521,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/wandio 1.0.3: Library for transparent file I/O with compression
+net-libs/wandio 1.0.3 1.0.4: Library for transparent file I/O with compression
 net-libs/webkit-gtk 2.4.11 2.4.11-r1 2.4.11-r200 2.10.9 2.12.3: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
@@ -15036,7 +15036,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.03 2016.09.04.1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.04.1 2016.09.08 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18468,7 +18468,7 @@ x11-misc/simpleswitcher 9999: lightweight EWMH window switcher with features and
 x11-misc/sisctrl 0.0.20051202: tool that allows you to tune SiS drivers from X
 x11-misc/skippy 0.5.0: A full-screen task-switcher providing Apple Expose-like functionality with various WMs
 x11-misc/slim 1.3.6-r3 1.3.6-r5 9999: Simple Login Manager
-x11-misc/slock 1.2 1.3-r2 1.3-r3: simple X screen locker
+x11-misc/slock 1.3-r3: simple X screen locker
 x11-misc/spacefm 1.0.4 1.0.5 1.0.5-r1 9999: A multi-panel tabbed file manager
 x11-misc/spnavcfg 0.2.1: GTK-based GUI to configure a space navigator device
 x11-misc/sprop 0.1: a simple X property utility
