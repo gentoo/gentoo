@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
+# Mask for removal in 30 days. Uses deprecated conduit-1.0*
+# Upstream suggests using dev-haskell/conduit-combinators
+# instead.
+dev-haskell/base64-conduit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
 # Mask for removal in 30 days. >=sci-mathematics/agda-2.4
 # now provides 'agda' binary.
 sci-mathematics/agda-executable
