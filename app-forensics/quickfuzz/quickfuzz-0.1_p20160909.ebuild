@@ -65,8 +65,8 @@ RDEPEND="dev-haskell/abstract-par:=
 		dev-haskell/scientific:=
 		dev-haskell/thyme:=
 		dev-haskell/xml:=
-		dev-haskell/zlib:= )
-	!imgs? ( archs? ( dev-haskell/zlib:= ) )
+		>=dev-haskell/zlib-0.6:= )
+	!imgs? ( archs? ( >=dev-haskell/zlib-0.6:= ) )
 	media? ( dev-haskell/hcodecs:=
 			dev-haskell/hunit:=
 			dev-haskell/mtl:=
