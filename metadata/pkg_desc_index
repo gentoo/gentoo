@@ -520,7 +520,7 @@ app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of R
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.7.0: Tools for manipulating UEFI secure boot platforms
-app-crypt/eid-mw 4.1.4 4.1.9 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
+app-crypt/eid-mw 4.1.4 4.1.9 4.1.18 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
@@ -3274,6 +3274,7 @@ dev-haskell/byteable 0.1.1: Type class for sequence of bytes
 dev-haskell/byteorder 1.0.4: Exposes the native endianness or byte ordering of the system
 dev-haskell/bytes 0.15.2: Sharing code for serialization between binary and cereal
 dev-haskell/bytestring-builder 0.10.6.0.0: The new bytestring builder, packaged outside of GHC
+dev-haskell/bytestring-handle 0.1.0.4: ByteString-backed Handles
 dev-haskell/bytestring-mmap 0.2.2-r1: mmap support for strict ByteStrings
 dev-haskell/bytestring-show 0.3.5.6: Efficient conversion of values into readable byte strings
 dev-haskell/bzlib 0.5.0.5: Compression and decompression in the bzip2 format
@@ -3701,7 +3702,7 @@ dev-haskell/tagged 0.6.1 0.7.3 0.8.2 0.8.4: Haskell 98 phantom types to avoid un
 dev-haskell/tagshare 0.0: TagShare - explicit sharing with tags
 dev-haskell/tagsoup 0.13.3-r1 0.13.8 0.13.10: Parsing and extracting information from (possibly malformed) HTML/XML documents
 dev-haskell/tagstream-conduit 0.5.5.3: streamlined html tag parser
-dev-haskell/tar 0.3.2.0 0.4.0.1 0.4.2.1: Reading, writing and manipulating ".tar" archive files
+dev-haskell/tar 0.3.2.0 0.4.0.1 0.4.2.1 0.5.0.3: Reading, writing and manipulating ".tar" archive files
 dev-haskell/tasty 0.2 0.3.1 0.5.2 0.7 0.8 0.8.1.2 0.10.1.2 0.11.0.2 0.11.0.3: Modern and extensible testing framework
 dev-haskell/tasty-ant-xml 1.0.1 1.0.2: Render tasty output to XML for Jenkins
 dev-haskell/tasty-golden 2.2.2.4 2.3.1: Golden tests support for tasty
@@ -3811,7 +3812,7 @@ dev-haskell/yesod-routes 1.1.2 1.2.0.7-r2: Efficient routing for Yesod
 dev-haskell/yesod-static 1.2.4 1.4.0.4 1.5.0.3: Static file serving subsite for Yesod Web Framework
 dev-haskell/yesod-test 1.2.3.1 1.4.3.1 1.5.0.1 1.5.1.1: integration testing for WAI/Yesod Applications
 dev-haskell/zip-archive 0.1.3.4 0.2.3.7: Library for creating and modifying zip archives
-dev-haskell/zlib 0.5.4.1 0.5.4.2: Compression and decompression in the gzip and zlib formats
+dev-haskell/zlib 0.5.4.1 0.5.4.2 0.6.1.1: Compression and decompression in the gzip and zlib formats
 dev-haskell/zlib-bindings 0.1.1.5: Low-level bindings to the zlib package. (deprecated)
 dev-haskell/zlib-conduit 1.0.0 1.1.0: Streaming compression/decompression via conduits. (deprecated)
 dev-haskell/zlib-enum 0.2.3.1: Enumerator interface for zlib compression
@@ -16790,7 +16791,7 @@ sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r7 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
-sys-apps/texinfo 4.13-r2 5.2 6.0 6.1: The GNU info program and utilities
+sys-apps/texinfo 5.2 6.1 6.3: The GNU info program and utilities
 sys-apps/the_silver_searcher 0.32.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
