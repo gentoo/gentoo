@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+EAPI=6
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1 eutils git-r3 libtool multilib multilib-minimal
 
@@ -17,20 +17,30 @@ SLOT="3"
 KEYWORDS=""
 IUSE="static-libs python utils"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="
+	python? ( ${PYTHON_DEPS} )
 	abi_x86_32? (
 		!<=app-emulation/emul-linux-x86-baselibs-20140508-r5
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
-DEPEND="${RDEPEND}
+	)
+"
+DEPEND="
+	${RDEPEND}
 	python? ( dev-lang/swig )
-	sys-devel/flex
 	sys-devel/bison
+	sys-devel/flex
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DOCS=( ChangeLog )
+DOCS=(
+	ChangeLog
+)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-vlan-header.patch
+	"${FILESDIR}"/${PN}-3.2.20-rtnl_tc_get_ops.patch
+	"${FILESDIR}"/${PN}-3.2.20-cache-api.patch
+)
 
 MULTILIB_WRAPPED_HEADERS=(
 	# we do not install CLI stuff for non-native
@@ -49,9 +59,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.1-vlan-header.patch
-	epatch "${FILESDIR}"/${PN}-3.2.20-rtnl_tc_get_ops.patch
-	epatch "${FILESDIR}"/${PN}-3.2.20-cache-api.patch
+	default
 
 	eautoreconf
 
