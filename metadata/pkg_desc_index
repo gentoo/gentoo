@@ -2939,7 +2939,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
-dev-db/mysql 5.5.50 5.5.51 5.6.30 5.6.31 5.6.32 5.6.33: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.52 5.6.30 5.6.31 5.6.32 5.6.33: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
@@ -11958,7 +11958,7 @@ mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system 
 mate-base/caja 1.10.4 1.12.7-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.10.1 1.12.1-r2: MATE keyboard configuration library
 mate-base/mate 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.10.4-r2 1.12.1-r1: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.10.4-r1 1.10.4-r2 1.12.1-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10 1.12: Meta package for MATE panel applets
 mate-base/mate-common 1.10.0 1.12.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.10.2 1.12.1-r1: The MATE Desktop configuration tool
