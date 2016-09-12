@@ -1381,7 +1381,7 @@ app-emulation/wine 1.8-r3 1.8.1-r3 1.8.2-r2 1.8.3 1.8.3-r1 1.8.4 1.9.4-r3 1.9.5-
 app-emulation/winetricks 20160724 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.6.3-r1 4.6.3-r2 4.7.0-r1 4.7.0-r2: The Xen virtual machine monitor
+app-emulation/xen 4.6.3-r2 4.7.0-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.6.3 4.7.0: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 app-emulation/xen-tools 4.6.3-r1 4.7.0-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3: Radio Shack TRS-80 emulator
