@@ -15188,7 +15188,7 @@ net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1 2.92: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.7.0 1.7.1: Ncurses interface for the Transmission BitTorrent client
-net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
+net-p2p/transmission-remote-gtk 1.0 1.1.1 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
 net-p2p/valknut 0.4.9: A open source cross platform client for the Direct Connect network
@@ -17285,7 +17285,7 @@ sys-fs/mp3fs 0.32 0.91: a read-only FUSE filesystem which transcodes FLAC audio 
 sys-fs/mtd-utils 1.5.0 1.5.1 1.5.2 99999999: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.15 4.0.17 4.0.18: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to MTP devices
-sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1: Device mapper target autoconfig
+sys-fs/multipath-tools 0.5.0-r1 0.6.2 0.6.2-r1 0.6.2-r2: Device mapper target autoconfig
 sys-fs/ncdu 1.11 1.12: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
