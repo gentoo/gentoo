@@ -28,6 +28,7 @@ S="${WORKDIR}/${PN}-${COMMIT_ID:0:7}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.2-makefile.patch
+	"${FILESDIR}"/${PN}-0.6.2-ignore-modprobe-failures.patch
 )
 
 get_systemd_pv() {
@@ -55,8 +56,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/rc-multipathd multipathd
 	newinitd "${FILESDIR}"/multipath.rc multipath
-
-	sed -i 's|ExecStartPre=/|ExecStartPre=-/|g' "${D}"/usr/lib/systemd/system/multipathd.service || die
 
 	dodoc README ChangeLog
 }
