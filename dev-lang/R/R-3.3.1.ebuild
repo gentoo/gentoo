@@ -50,8 +50,6 @@ RDEPEND="${CDEPEND}
 
 RESTRICT="minimal? ( test )"
 
-R_DIR="${EROOT%/}/usr/$(get_libdir)/${PN}"
-
 pkg_setup() {
 	if use openmp; then
 		if [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
@@ -83,7 +81,7 @@ src_prepare() {
 
 	# fix Rscript path when installed (gentoo bug #221061)
 	sed -i \
-		-e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${R_DIR}\"':" \
+		-e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${EROOT%/}/usr/$(get_libdir)/${PN}\"':" \
 		src/unix/Makefile.in || die "sed unix Makefile failed"
 
 	# fix HTML links to manual (gentoo bug #273957)
@@ -173,8 +171,8 @@ src_install() {
 	fi
 
 	cat > 99R <<-EOF
-		LDPATH=${R_DIR}/lib
-		R_HOME=${R_DIR}
+		LDPATH=${EROOT%/}/usr/$(get_libdir)/${PN}/lib
+		R_HOME=${EROOT%/}/usr/$(get_libdir)/${PN}
 	EOF
 	doenvd 99R
 	newbashcomp "${WORKDIR}"/${BCP} ${PN}
