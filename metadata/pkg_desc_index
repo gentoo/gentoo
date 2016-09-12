@@ -4411,7 +4411,7 @@ dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
-dev-lang/R 3.2.2 3.2.5 3.3.0 3.3.1: Language and environment for statistical computing and graphics
+dev-lang/R 3.2.2 3.3.1: Language and environment for statistical computing and graphics
 dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
