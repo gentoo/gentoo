@@ -33,6 +33,7 @@ SITEFILE=50gnu-smalltalk-gentoo.el
 src_prepare() {
 	# fix misuse of the Tcl API, bug 492710
 	epatch "${FILESDIR}"/${PN}-3.2_use-result.patch
+	default
 }
 
 src_configure() {
