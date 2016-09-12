@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -154,7 +154,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
 	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
-	tc_version_is_at_least 6.0 && IUSE+=" pie +ssp"
+	tc_version_is_at_least 6.0 && IUSE+=" pie +ssp +pch"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
@@ -897,6 +897,11 @@ toolchain_src_configure() {
 	# going to link in -lrt to all C++ apps.  #411681
 	if tc_version_is_at_least 4.4 && is_cxx ; then
 		confgcc+=( --enable-libstdcxx-time )
+	fi
+
+	# Support to disable pch when building libstdcxx
+	if tc_version_is_at_least 6.0 && ! use pch ; then
+		confgcc+=( --disable-libstdcxx-pch )
 	fi
 
 	# The jit language requires this.
