@@ -5611,6 +5611,7 @@ dev-perl/Devel-StackTrace 2.0.0: An object representing a stack trace
 dev-perl/Devel-StackTrace-AsHTML 0.140.0-r1: Displays stack trace in HTML
 dev-perl/Devel-Symdump 2.150.0: Dump symbol names or the symbol table
 dev-perl/Device-SerialPort 1.40.0-r1: A Serial port Perl Module
+dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0: Generic CRC function
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.70.0-r1: Perl extension for 32 bit Jenkins Hashing Algorithm
@@ -6640,7 +6641,6 @@ dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
