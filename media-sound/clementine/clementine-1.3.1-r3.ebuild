@@ -94,6 +94,7 @@ S="${WORKDIR}/${MY_P^}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
+	"${FILESDIR}"/${P}-fix-desktop-file.patch
 )
 
 src_prepare() {
