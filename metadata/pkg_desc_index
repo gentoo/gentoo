@@ -17189,7 +17189,7 @@ sys-freebsd/boot0 8.2 9.1 10.3: FreeBSD's bootloader
 sys-freebsd/freebsd-bin 8.2 9.1 10.3: FreeBSD /bin tools
 sys-freebsd/freebsd-cddl 8.2 9.1 10.3: FreeBSD CDDL (opensolaris/zfs) extra software
 sys-freebsd/freebsd-contrib 8.2 9.1: Contributed sources for FreeBSD
-sys-freebsd/freebsd-lib 8.2-r1 9.1-r10 9.1-r11 10.3-r2: FreeBSD's base system libraries
+sys-freebsd/freebsd-lib 8.2-r1 9.1-r11 10.3-r2: FreeBSD's base system libraries
 sys-freebsd/freebsd-libexec 8.2 8.2-r1 9.1-r2 10.3: FreeBSD libexec things
 sys-freebsd/freebsd-mk-defs 8.2 9.1 10.3: Makefiles definitions used for building and installing libraries and system files
 sys-freebsd/freebsd-pam-modules 8.2 9.1-r1 10.3: FreeBSD's PAM authentication modules
