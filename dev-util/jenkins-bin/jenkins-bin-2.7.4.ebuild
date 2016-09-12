@@ -24,6 +24,10 @@ S=${WORKDIR}
 
 JENKINS_DIR=/var/lib/jenkins
 
+src_prepare() {  
+	eapply_user
+}
+
 pkg_setup() {
 	enewgroup jenkins
 	enewuser jenkins -1 -1 ${JENKINS_DIR} jenkins
