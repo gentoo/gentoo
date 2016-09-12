@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
-PERL_EXPORT_PHASE_FUNCTIONS=no
 PYTHON_COMPAT=( python2_7 )
-
-inherit autotools perl-module python-r1 eutils
+inherit autotools perl-module python-r1
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
@@ -20,9 +18,10 @@ SRC_URI="http://mathias-kettner.de/download/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="examples perl python test"
+IUSE="examples nagios4 perl python test"
 
-RDEPEND="perl? (
+RDEPEND="!sys-apps/ucspi-unix:0
+	perl? (
 		dev-lang/perl:0
 		virtual/perl-Digest-MD5:0
 		virtual/perl-Scalar-List-Utils:0
@@ -54,29 +53,33 @@ SRC_TEST="parallel"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PV}-MEDIUM-Drop-default-strip.patch"
+	"${FILESDIR}/${PV}-MINOR-test-Remove-the-usage-of-Perl-Critic-Policy-Mo.patch"
+)
+
 src_prepare() {
+	default
+
 	# Use system Module::Install instead, it will be copied to $S by
 	# Module::install itself.
-	rm -rf api/perl/inc
+	rm -rf api/perl/inc || die
 
 	if use perl; then
+		# Ensure patches are not applied twice
+		unset PATCHES
 		perl-module_src_prepare
 	fi
-
-	epatch "${FILESDIR}/${P}-no-strip.diff"
-	epatch "${FILESDIR}/${P}-test-RequireRcsKeywords.diff"
-
-	# Script too old
-	rm -f missing
 
 	eautoreconf
 }
 
 src_configure() {
-	econf
+	econf \
+		$(use_with nagios4)
 
 	if use perl; then
-		cd api/perl/
+		cd api/perl || die
 		perl-module_src_configure
 	fi
 }
@@ -85,14 +88,14 @@ src_compile() {
 	emake
 
 	if use perl; then
-		cd api/perl
+		cd api/perl || die
 		perl-module_src_compile
 	fi
 }
 
 src_test() {
 	if use perl; then
-		cd api/perl
+		cd api/perl || die
 
 		export TEST_AUTHOR="Test Author"
 		perl-module_src_test
@@ -100,15 +103,18 @@ src_test() {
 }
 
 src_install() {
-	emake -C src/ DESTDIR="${ED}" install-binPROGRAMS install-data-local
+	emake install DESTDIR="${ED}"
 
 	if use perl; then
-		cd api/perl
+		cd api/perl || die
 		perl-module_src_install
 		cd "${S}"
 
 		if use examples; then
-			docinto examples/
+			docinto /
+			newdoc api/perl/README README.perl
+
+			docinto examples
 			dodoc api/perl/examples/dump.pl
 		fi
 	fi
@@ -117,9 +123,10 @@ src_install() {
 		python_foreach_impl python_domodule api/python/livestatus.py
 
 		if use examples; then
+			docinto /
 			newdoc api/python/README README.python
 
-			docinto examples/
+			docinto examples
 			dodoc api/python/{example,example_multisite,make_nagvis_map}.py
 		fi
 	fi
