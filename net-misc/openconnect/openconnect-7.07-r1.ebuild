@@ -16,7 +16,7 @@ else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20140806
+VPNC_VER=20160829
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
