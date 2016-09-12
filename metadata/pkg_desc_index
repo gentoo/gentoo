@@ -17223,7 +17223,7 @@ sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.1 1.7.2: Tool to setup encrypted devices with dm-crypt
-sys-fs/ctmg 1.1 1.2: Simple wrapper around cryptsetup for encrypted containers
+sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.20 1.21: Copy data from one file or block device to another with read-error recovery
