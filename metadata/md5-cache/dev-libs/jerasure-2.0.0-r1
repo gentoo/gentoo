@@ -3,11 +3,11 @@ DEPEND=dev-libs/gf-complete !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/aut
 DESCRIPTION=A Library in C Facilitating Erasure Coding for Storage Applications
 EAPI=5
 HOMEPAGE=http://jerasure.org/
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=BSD
 RDEPEND=dev-libs/gf-complete
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/jerasure-2.0.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=408a2c5676232306fe32b6b05081bf30
+_md5_=b5310bd1d24fd2d9e216ebb35cd49a56
