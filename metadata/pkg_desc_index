@@ -4442,7 +4442,7 @@ dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the AN
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnat-gpl 3.4.5.2005 3.4.6.2006-r1 4.1.3.2007 4.1.3.2008-r2: GNAT Ada Compiler - AdaCore GPL version
-dev-lang/gnu-smalltalk 3.2.4: GNU Smalltalk
+dev-lang/gnu-smalltalk 3.2.4 3.2.4-r1 3.2.5: GNU Smalltalk
 dev-lang/go 1.6.3 1.7 1.7.1 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
