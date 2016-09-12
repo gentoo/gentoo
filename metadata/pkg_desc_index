@@ -5615,6 +5615,7 @@ dev-perl/Digest-BubbleBabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/Digest-CRC 0.210.0: Generic CRC function
 dev-perl/Digest-HMAC 1.30.0-r1: Keyed Hashing for Message Authentication
 dev-perl/Digest-JHash 0.70.0-r1: Perl extension for 32 bit Jenkins Hashing Algorithm
+dev-perl/Digest-MD2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/Digest-MD4 1.900.0-r1: MD4 message digest algorithm
 dev-perl/Digest-MD5-File 0.80.0-r1: Perl extension for getting MD5 sums for files and urls
 dev-perl/Digest-Nilsimsa 0.60.0-r1: Digest::Nilsimsa - Perl version of Nilsimsa code
@@ -6641,7 +6642,6 @@ dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
 dev-perl/enum 1.16.0-r1: C style enumerated types and bitmask flags in Perl
 dev-perl/extutils-pkgconfig 1.150.0: Simplistic perl interface to pkg-config
@@ -11958,7 +11958,7 @@ mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system 
 mate-base/caja 1.10.4 1.12.7-r2: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.10.1 1.12.1-r2: MATE keyboard configuration library
 mate-base/mate 1.10.0-r3 1.12-r1: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.10.4-r1 1.12.1-r1: Applets for the MATE Desktop and Panel
+mate-base/mate-applets 1.10.4-r2 1.12.1-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10 1.12: Meta package for MATE panel applets
 mate-base/mate-common 1.10.0 1.12.0: Common files for development of MATE packages
 mate-base/mate-control-center 1.10.2 1.12.1-r1: The MATE Desktop configuration tool
@@ -15312,6 +15312,7 @@ net-wireless/gnome-bluetooth 3.18.3 3.20.0: Bluetooth graphical utilities integr
 net-wireless/gnuradio 3.6.5.1-r2 3.7.6.1-r2 3.7.7.1 3.7.8.1 3.7.9.3 3.7.10 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.3.1 2.3.2 2.4 2.5 2.5.3 9999: Software defined radio receiver powered by GNU Radio and Qt
+net-wireless/gr-air-modes 9999: This module implements a complete Mode S and ADS-B receiver for Gnuradio
 net-wireless/gr-baz 9999: Gnuradio baz
 net-wireless/gr-iqbal 0.37.2 9999: gnuradio I/Q balancing
 net-wireless/gr-osmosdr 0.1.4 0.1.4_p20150730 9999: GNU Radio source block for OsmoSDR and rtlsdr and hackrf

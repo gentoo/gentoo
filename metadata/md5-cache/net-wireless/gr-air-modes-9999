@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=>=net-wireless/gnuradio-3.7.0:= net-wireless/gr-osmosdr dev-python/pyzmq fgfs? ( sci-libs/scipy games-simulation/flightgear ) rtlsdr? ( net-wireless/rtl-sdr ) uhd? ( >=net-wireless/uhd-3.4.0 ) gui? ( dev-python/pyqwt ) sys-devel/make >=dev-util/cmake-2.8.12 dev-vcs/git
+DESCRIPTION=This module implements a complete Mode S and ADS-B receiver for Gnuradio
+EAPI=5
+HOMEPAGE=https://www.cgran.org/wiki/gr-air-modes
+IUSE=rtlsdr fgfs +gui uhd
+LICENSE=GPL-3
+RDEPEND=>=net-wireless/gnuradio-3.7.0:= net-wireless/gr-osmosdr dev-python/pyzmq fgfs? ( sci-libs/scipy games-simulation/flightgear ) rtlsdr? ( net-wireless/rtl-sdr ) uhd? ( >=net-wireless/uhd-3.4.0 ) gui? ( dev-python/pyqwt )
+SLOT=0
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_prepare:cmake-utils src_configure:cmake-utils src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-2	7af5d170bfc02983b4bcd3167dc5edd4	multilib	165fc17c38d1b11dac2008280dab6e80	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=572cef823133d0e8486f380b72c42a7d
