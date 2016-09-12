@@ -29,6 +29,7 @@
       Collector</flag>
     <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
     <flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
+    <flag name="ssp">Enable to build Packages with SSP as default on</flag>
     <flag name="vtv">Build support for virtual table verification (a C++ hardening feature)</flag>
   </use>
   <upstream>
