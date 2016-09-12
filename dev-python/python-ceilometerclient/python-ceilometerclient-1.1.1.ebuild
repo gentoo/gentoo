@@ -25,7 +25,6 @@ DEPEND="
 	test? (
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-0.3.14[${PYTHON_USEDEP}]
-		<dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0[${PYTHON_USEDEP}]
 		<dev-python/mock-1.1.0[${PYTHON_USEDEP}]
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
