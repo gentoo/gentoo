@@ -952,3 +952,8 @@ media-video/vlc media-library
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # Mask raspberry-pi except on arm.
 dev-libs/libcec raspberry-pi
+
+# Magnus Granberg <zorry@gentoo.org> (13 Sep 2016)
+# ssp and pie is not ready.
+>=sys-devel/gcc-6.2.0 ssp pie
+
