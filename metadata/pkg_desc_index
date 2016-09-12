@@ -14912,7 +14912,7 @@ net-misc/ofono 1.16 1.17 1.18: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.6.4-r1 0.9.0.2: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2 4.2.1_p2: A robust, high-performance CORBA 2 ORB
-net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07 9999: Free client for Cisco AnyConnect SSL VPN software
+net-misc/openconnect 7.06-r1 7.06-r4 7.06_p20160614 7.07-r1 9999: Free client for Cisco AnyConnect SSL VPN software
 net-misc/openntpd 6.0_p1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
