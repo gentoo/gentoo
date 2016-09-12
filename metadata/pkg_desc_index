@@ -17843,7 +17843,7 @@ www-apps/jekyll-sass-converter 1.4.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.11.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
-www-apps/kibana-bin 4.1.11 4.5.4 4.6.0: Explore and visualize data
+www-apps/kibana-bin 4.1.11 4.5.4 4.6.1: Explore and visualize data
 www-apps/klaus 0.9.1 1.0.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -17906,7 +17906,7 @@ www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.18.7 3.20.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 38.8.0 45.2.0 45.3.0 48.0.1: Firefox Web Browser
+www-client/firefox 38.8.0 45.3.0 48.0.1: Firefox Web Browser
 www-client/firefox-bin 45.3.0 48.0.1: Firefox Web Browser
 www-client/google-chrome 53.0.2785.101: The web browser from Google
 www-client/google-chrome-beta 54.0.2840.16: The web browser from Google

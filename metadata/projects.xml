@@ -399,7 +399,7 @@
       <name>Sergey Popov</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Developer</role>
@@ -1318,6 +1318,11 @@
     <name>Gentoo Games Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Games</url>
     <description>The Gentoo Games Project manages the game categories (dev-games, games-*) in Portage</description>
+    <member>
+      <email>chewi@gentoo.org</email>
+      <name>James Le Cuirot</name>
+      <role>Member ( Steam, HB, GOG, Minecraft )</role>
+    </member>
     <member>
       <email>tupone@gentoo.org</email>
       <name>Alfredo Tupone</name>
