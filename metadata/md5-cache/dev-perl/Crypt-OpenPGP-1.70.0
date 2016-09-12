@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-perl/data-buffer-0.04 virtual/perl-MIME-Base64 virtual/perl-Math-BigInt virtual/perl-IO-Compress dev-perl/libwww-perl dev-perl/URI dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/File-HomeDir dev-perl/Crypt-IDEA virtual/perl-Digest-MD5 dev-perl/Crypt-DES_EDE3 dev-perl/Digest-SHA1 dev-perl/Crypt-Rijndael dev-perl/Crypt-CAST5_PP dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Blowfish >=dev-perl/Crypt-Twofish-2.00 test? ( dev-perl/Test-Exception ) dev-lang/perl:=[-build(-)]
+DEPEND=>=dev-perl/Data-Buffer-0.04 virtual/perl-MIME-Base64 virtual/perl-Math-BigInt virtual/perl-IO-Compress dev-perl/libwww-perl dev-perl/URI dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/File-HomeDir dev-perl/Crypt-IDEA virtual/perl-Digest-MD5 dev-perl/Crypt-DES_EDE3 dev-perl/Digest-SHA1 dev-perl/Crypt-Rijndael dev-perl/Crypt-CAST5_PP dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Blowfish >=dev-perl/Crypt-Twofish-2.00 test? ( dev-perl/Test-Exception ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Pure-Perl OpenPGP-compatible PGP implementation
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Crypt-OpenPGP/
 IUSE=test
 KEYWORDS=amd64 x86 ~x86-solaris
 LICENSE=Artistic
-RDEPEND=>=dev-perl/data-buffer-0.04 virtual/perl-MIME-Base64 virtual/perl-Math-BigInt virtual/perl-IO-Compress dev-perl/libwww-perl dev-perl/URI dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/File-HomeDir dev-perl/Crypt-IDEA virtual/perl-Digest-MD5 dev-perl/Crypt-DES_EDE3 dev-perl/Digest-SHA1 dev-perl/Crypt-Rijndael dev-perl/Crypt-CAST5_PP dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Blowfish >=dev-perl/Crypt-Twofish-2.00 dev-lang/perl:=[-build(-)]
+RDEPEND=>=dev-perl/Data-Buffer-0.04 virtual/perl-MIME-Base64 virtual/perl-Math-BigInt virtual/perl-IO-Compress dev-perl/libwww-perl dev-perl/URI dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/File-HomeDir dev-perl/Crypt-IDEA virtual/perl-Digest-MD5 dev-perl/Crypt-DES_EDE3 dev-perl/Digest-SHA1 dev-perl/Crypt-Rijndael dev-perl/Crypt-CAST5_PP dev-perl/Crypt-RIPEMD160 dev-perl/Crypt-Blowfish >=dev-perl/Crypt-Twofish-2.00 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SR/SROMANOV/Crypt-OpenPGP-1.07.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=324ffa553ae80498010eddc19974767d
+_md5_=b24bcc6f9bb73891c5f368bb51840bd6

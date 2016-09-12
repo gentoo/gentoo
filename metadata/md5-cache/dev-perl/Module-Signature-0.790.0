@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/Class-Loader dev-perl/Tie-EncryptedHash dev-perl/Convert-ASCII-Armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/Math-Pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/Convert-PEM dev-perl/Crypt-OpenPGP app-crypt/gnupg virtual/perl-File-Temp virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/IPC-Run ) dev-lang/perl:=[-build(-)]
+DEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/Class-Loader dev-perl/Tie-EncryptedHash dev-perl/Convert-ASCII-Armour dev-perl/Data-Buffer dev-perl/digest-md2 >=dev-perl/Math-Pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/Convert-PEM dev-perl/Crypt-OpenPGP app-crypt/gnupg virtual/perl-File-Temp virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/IPC-Run ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Module signature file manipulation
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Module-Signature/
 IUSE=test
 KEYWORDS=amd64 x86 ~x86-solaris
 LICENSE=CC0-1.0
-RDEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/Class-Loader dev-perl/Tie-EncryptedHash dev-perl/Convert-ASCII-Armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/Math-Pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/Convert-PEM dev-perl/Crypt-OpenPGP app-crypt/gnupg virtual/perl-File-Temp dev-lang/perl:=[-build(-)]
+RDEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/Class-Loader dev-perl/Tie-EncryptedHash dev-perl/Convert-ASCII-Armour dev-perl/Data-Buffer dev-perl/digest-md2 >=dev-perl/Math-Pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/Convert-PEM dev-perl/Crypt-OpenPGP app-crypt/gnupg virtual/perl-File-Temp dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AU/AUDREYT/Module-Signature-0.79.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=fb5442d5d4d04351709af123596d7e57
+_md5_=5abbafc92f9169a55d48be9d3b03fa14

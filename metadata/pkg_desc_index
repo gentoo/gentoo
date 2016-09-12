@@ -2167,7 +2167,7 @@ app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625 93.20160110: The 
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 53a 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
-app-shells/mpv-bash-completion 0.17 3.3.4: Bash completion for the mpv video player
+app-shells/mpv-bash-completion 0.17 3.3.5: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
@@ -5525,6 +5525,7 @@ dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
 dev-perl/Data-AMF 0.90.0-r1: (de)serializer perl module for Adobe's AMF (Action Message Format)
+dev-perl/Data-Buffer 0.40.0-r1: Read/write buffer class
 dev-perl/Data-Compare 1.250.0: Compare perl data structures
 dev-perl/Data-Diver 1.010.1: Simple, ad-hoc access to elements of deeply nested structures
 dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
@@ -6638,7 +6639,6 @@ dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/data-buffer 0.40.0-r1: Read/write buffer class
 dev-perl/dbix-searchbuilder 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm

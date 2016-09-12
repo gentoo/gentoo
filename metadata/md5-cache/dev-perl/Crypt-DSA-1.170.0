@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=test? ( dev-perl/data-buffer dev-perl/Digest-SHA1 virtual/perl-File-Spec dev-perl/File-Which virtual/perl-MIME-Base64 >=virtual/perl-Math-BigInt-1.78 dev-perl/Math-BigInt-GMP ) dev-lang/perl:=[-build(-)]
+DEPEND=test? ( dev-perl/Data-Buffer dev-perl/Digest-SHA1 virtual/perl-File-Spec dev-perl/File-Which virtual/perl-MIME-Base64 >=virtual/perl-Math-BigInt-1.78 dev-perl/Math-BigInt-GMP ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=DSA Signatures and Key Generation
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Crypt-DSA/
 IUSE=test
 KEYWORDS=alpha amd64 hppa ppc sparc x86 ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/data-buffer dev-perl/Digest-SHA1 virtual/perl-File-Spec dev-perl/File-Which virtual/perl-MIME-Base64 >=virtual/perl-Math-BigInt-1.78 dev-lang/perl:=[-build(-)]
+RDEPEND=dev-perl/Data-Buffer dev-perl/Digest-SHA1 virtual/perl-File-Spec dev-perl/File-Which virtual/perl-MIME-Base64 >=virtual/perl-Math-BigInt-1.78 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Crypt-DSA-1.17.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=844ca1b058accafaf5d321bf6f9045a7
+_md5_=ded59ab048af9c608fb4db76dd30ba32
