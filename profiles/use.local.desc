@@ -243,7 +243,7 @@ app-admin/rsyslog:kafka - Build the Apache Kafka output module (requires dev-lib
 app-admin/rsyslog:kerberos - Build the GSSAPI input and output module (requires virtual/krb5)
 app-admin/rsyslog:libressl - Use dev-libs/libressl for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)
 app-admin/rsyslog:mongodb - Build the MongoDB output module (requires dev-libs/libmongo-client)
-app-admin/rsyslog:mysql - Build the MySQL databse output module (requires virtual/mysql)
+app-admin/rsyslog:mysql - Build the MySQL database output module (requires virtual/mysql)
 app-admin/rsyslog:normalize - Build the normalize modify module (requires dev-libs/libee and dev-libs/liblognorm)
 app-admin/rsyslog:omhttpfs - Build the httpfs output module (requires net-misc/curl)
 app-admin/rsyslog:omudpspoof - Build the udpspoof output module (requires net-libs/libnet)

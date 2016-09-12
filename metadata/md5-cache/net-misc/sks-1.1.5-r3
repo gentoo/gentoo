@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.5.tgz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=61609ddffc68b517707888ed266131d4
+_md5_=a23276d1227bc41c888f6c934ded6986

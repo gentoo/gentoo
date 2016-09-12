@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://code.x2go.org/releases/source/x2goserver/x2goserver-4.0.1.19.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87
-_md5_=e8783d3e1cb108a6f10cc9faa2042b33
+_md5_=8549bca972bb88fda82bf78a698ab26b
