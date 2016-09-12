@@ -118,6 +118,7 @@ media-libs/openimageio python
 # (see bug #556378 and others)
 www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
+>=www-client/seamonkey-2.41 system-cairo
 
 # Johannes Huber <johu@gentoo.org> (21 Apr 2016)
 # Unreleased dependency.
