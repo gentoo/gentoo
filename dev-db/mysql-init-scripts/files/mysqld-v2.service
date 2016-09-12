@@ -32,7 +32,9 @@ CapabilityBoundingSet=CAP_IPC_LOCK
 # Prevent writes to /usr, /boot, and /etc
 ProtectSystem=full
 
-NoNewPrivileges=true
+# Currently has issues with SELinux https://jira.mariadb.org/browse/MDEV-10404
+# This is safe to uncomment when not using SELinux
+#NoNewPrivileges=true
 
 PrivateDevices=true
 
