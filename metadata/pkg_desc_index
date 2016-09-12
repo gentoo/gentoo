@@ -5520,6 +5520,7 @@ dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.440.0 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5: Safer access to your database through a DBI database handle
+dev-perl/DBIx-SearchBuilder 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
 dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
@@ -6639,7 +6640,6 @@ dev-perl/capitalization 0.30.0-r1: no capitalization on method names
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
 dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
-dev-perl/dbix-searchbuilder 1.660.0: Encapsulate SQL queries and rows in simple Perl objects
 dev-perl/digest-bubblebabble 0.20.0-r1: Create bubble-babble fingerprints
 dev-perl/digest-md2 2.30.0-r1: Perl interface to the MD2 Algorithm
 dev-perl/encoding-warnings 0.110.0-r1: Warn on implicit encoding conversions
