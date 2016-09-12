@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-MY_PN=Digest-MD2
 MODULE_AUTHOR=GAAS
 MODULE_VERSION=2.03
 inherit perl-module

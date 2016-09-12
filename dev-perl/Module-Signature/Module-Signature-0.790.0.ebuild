@@ -28,7 +28,7 @@ RDEPEND="
 	dev-perl/Tie-EncryptedHash
 	dev-perl/Convert-ASCII-Armour
 	dev-perl/Data-Buffer
-	dev-perl/digest-md2
+	dev-perl/Digest-MD2
 	>=dev-perl/Math-Pari-2.010603
 	dev-perl/Crypt-Random
 	dev-perl/Crypt-Primes
