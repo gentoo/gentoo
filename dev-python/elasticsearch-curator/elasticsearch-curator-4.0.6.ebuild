@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_PN="curator"
-ES_VERSION="2.2.1"
+ES_VERSION="2.4.0"
 
 inherit distutils-r1
 
@@ -23,15 +23,16 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/elasticsearch-py-2.3.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-3.0.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/click-3.3[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.8.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		|| ( virtual/jre:1.8 virtual/jre:1.7 )
-		~dev-python/mock-1.0.1[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
@@ -48,17 +49,18 @@ python_test() {
 	# run Elasticsearch instance on custom port
 	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
 		s/# cluster.name: my-application/cluster.name: gentoo-es-curator-test/g" \
-		${ES}/config/elasticsearch.yml
+		${ES}/config/elasticsearch.yml || die
 
 	# Elasticsearch 1.6+ needs to set path.repo
 	grep -q "^path.repo" "${ES}/config/elasticsearch.yml"
 	if [ $? -ne 0 ]; then
-		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml"
+		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml" || die
 	fi
 
 	# start local instance of elasticsearch
-	${ES}/bin/elasticsearch -d -p ${PID}
+	${ES}/bin/elasticsearch -d -p ${PID} || die
 
+	local i
 	for i in {1..10}; do
 		grep -q "started" ${ES_LOG} 2> /dev/null
 		if [ $? -eq 0 ]; then
@@ -81,6 +83,12 @@ python_test() {
 	esetup.py test
 
 	pkill -F ${PID}
+}
+
+python_prepare_all() {
+	# avoid downloading from net
+	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
+	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
