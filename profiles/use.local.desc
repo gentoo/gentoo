@@ -920,8 +920,8 @@ app-misc/blink1:tool - Build and install command-line tool blink1-tool
 app-misc/byobu:screen - Use app-misc/screen as the default backend
 app-misc/ca-certificates:cacert - Include root certs from CAcert (http://www.cacert.org/) and Software in the Public Interest (http://www.spi-inc.org/)
 app-misc/ddccontrol:pci - enable direct PCI memory access (the setuid ddcpci util)
-app-misc/ddctool:udev-i2c - Adds a udev rule to allow non-root users in the i2c group to access the /dev/i2c-* devices. Otherwise, only root will be able to use ddctool.
-app-misc/ddctool:udev-usb - Adds a udev rule to allow non-root users in the video group to access USB connected monitors. Otherwise, only root will be able to use ddctool.
+app-misc/ddctool:usb-monitor - Adds support for monitors attached via USB.
+app-misc/ddctool:user-permissions - Adds a udev rules to allow non-root users in the i2c group to access the /dev/i2c-* devices. If usb-monitor is selected, users will need to be added to the video group to access the USB monitor. Otherwise, only root will be able to use ddctool.
 app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
