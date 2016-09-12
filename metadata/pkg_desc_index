@@ -14685,7 +14685,7 @@ net-misc/aria2 1.15.2 1.23.0 1.24.0 1.25.0 1.26.0 1.26.1: A download utility wit
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
-net-misc/asterisk 11.21.1 11.21.2 11.22.0 11.23.0 13.9.1 13.10.0: Asterisk: A Modular Open Source PBX System
+net-misc/asterisk 11.21.1 11.21.2 11.22.0 11.23.0 11.23.1 13.9.1 13.10.0 13.11.2: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.5 11.0.3.1.6: G.729 codec and supporting files for asterisk
