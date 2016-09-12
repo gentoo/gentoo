@@ -26,13 +26,12 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
+IUSE="doc +gnutls gssapi java libproxy nls smartcard static-libs stoken"
 
 DEPEND="dev-libs/libxml2
 	sys-libs/zlib
 	!gnutls? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h:0[static-libs?] )
-		libressl? ( dev-libs/libressl[static-libs?] )
+		>=dev-libs/openssl-1.0.1h:0[static-libs?]
 	)
 	gnutls? (
 		>=net-libs/gnutls-3:0=[static-libs?] dev-libs/nettle
