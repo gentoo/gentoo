@@ -35,7 +35,7 @@ RDEPEND="
 	virtual/perl-Math-BigInt
 	dev-perl/TermReadKey
 	dev-perl/URI
-	>=dev-perl/data-buffer-0.04
+	>=dev-perl/Data-Buffer-0.04
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
