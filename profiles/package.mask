@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (12 Sep 2016)
+# Now only available on Steam. Binaries were removed by the publisher
+# and Humble Bundle over 2 years ago. Removal in 60 days. Bug #588110.
+games-action/awesomenauts
+
 # Sergei Trofimovich <slyfox@gentoo.org> (11 Sep 2016)
 # Mask for removal in 30 days. Uses deprecated conduit-1.0*
 # Upstream suggests using dev-haskell/conduit-combinators
