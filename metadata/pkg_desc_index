@@ -11819,7 +11819,7 @@ lxde-base/lxappearance 0.5.2 0.5.3 0.5.4 0.5.5: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r2 0.5.5-r3: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r4: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxde-meta 0.5.5-r4 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.4.1-r9 0.5.3: LXDE Display Manager
 lxde-base/lxinput 0.3.2: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
@@ -12754,6 +12754,7 @@ media-libs/opencv 2.4.12 2.4.12-r1 3.0.0 3.1.0-r4: A collection of algorithms an
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
+media-libs/openglide 0.09_rc9_p20160913: A Glide to OpenGL wrapper
 media-libs/openh264 1.4.0-r1 1.5.0: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.3.5 1.6.13: A library for reading and writing images
 media-libs/openjpeg 1.5.2 1.5.2-r1 2.0.0 2.0.0-r1 2.1.0 2.1.0-r1: An open-source JPEG 2000 library
