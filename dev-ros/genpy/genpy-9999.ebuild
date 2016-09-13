@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,3 +23,12 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
+
+python_test() {
+	cd "${BUILD_DIR}"
+	PYTHONPATH="${S}/src" nosetests --verbose -w "${S}/test" || die
+}
+
+src_test() {
+	python_foreach_impl python_test
+}
