@@ -9073,7 +9073,7 @@ dev-ruby/http-form_data 1.0.1 1.0.1-r1: Utility-belt to build form data request 
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.7 0.14.0: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
-dev-ruby/httpclient 2.6.0.1 2.7.1 2.7.2 2.8.0 2.8.1 2.8.2.2: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
+dev-ruby/httpclient 2.6.0.1 2.7.1 2.8.1 2.8.2.2 2.8.2.4: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.6.11-r1 0.7.0 0.7.0-r1 0.7.0-r2: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/inifile 3.0.0: Native Ruby package for reading and writing INI files
