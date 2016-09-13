@@ -5140,7 +5140,7 @@ dev-ml/incremental 113.24.00 113.33.00: Library for incremental computations
 dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.5.1 1.6.0: IO memory page library for Mirage backends
 dev-ml/js-build-tools 113.33.03 113.33.04: Collection of tools to help building Jane Street Packages
-dev-ml/js_of_ocaml 2.8.1 9999: A compiler from OCaml bytecode to javascript
+dev-ml/js_of_ocaml 2.8.1 2.8.2 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
@@ -5160,7 +5160,7 @@ dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-containers 0.18 0.19: A modular standard library focused on data structures
 dev-ml/ocaml-cstruct 2.1.0 2.2.0 2.3.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0 0.9.0 0.9.1: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.6.2 0.7.0 0.8.0 0.9.0 0.9.1 0.9.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11-r1: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -8604,7 +8604,7 @@ dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 0.4.16 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 0.5.8 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 1.0.3 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.5.7 0.5.8 0.5.9 0.6.0 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.0 0.6.2 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.4.3 0.4.4 0.5.0 0.5.1 9999: Generic definitions of geometric shapes and bodies
