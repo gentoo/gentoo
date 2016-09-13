@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=dev-haskell/monadcatchio-mtl:=[profile?] >=dev-haskell/mtl-1.0:=[profile?] >=dev-haskell/network-2.0:=[profile?] >=dev-haskell/parsec-2.0:=[profile?] >=dev-haskell/xhtml-3000.0.0:=[profile?] >=dev-lang/ghc-6.10.4:= !extensible-exceptions-in-base? ( dev-haskell/extensible-exceptions:=[profile?] ) >=dev-haskell/cabal-1.2 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=dev-haskell/monadcatchio-mtl:=[profile?] >=dev-haskell/mtl-1.0:=[profile?] >=dev-haskell/network-2.0:=[profile?] >=dev-haskell/parsec-2.0:=[profile?] >=dev-haskell/xhtml-3000.0.0:=[profile?] >=dev-lang/ghc-6.10.4:= !extensible-exceptions-in-base? ( dev-haskell/extensible-exceptions:=[profile?] ) >=dev-haskell/cabal-1.2 doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=A library for writing CGI programs
 EAPI=5
 HOMEPAGE=http://andersk.mit.edu/haskell/cgi/
@@ -10,5 +10,5 @@ RDEPEND=dev-haskell/monadcatchio-mtl:=[profile?] >=dev-haskell/mtl-1.0:=[profile
 SLOT=0/3001.1.8.4
 SRC_URI=mirror://hackage/packages/archive/cgi/3001.1.8.4/cgi-3001.1.8.4.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_unpack:base src_prepare:base src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=23e77a1b3c6e9af2a9b773d40c5a38d9

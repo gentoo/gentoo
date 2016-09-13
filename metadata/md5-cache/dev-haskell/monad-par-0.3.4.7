@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-haskell/abstract-deque-0.1.4:=[profile?] dev-haskell/abstract-par:=[profile?] >=dev-haskell/monad-par-extras-0.3:=[profile?] >=dev-haskell/mtl-2.0.1.0:=[profile?] >=dev-haskell/mwc-random-0.11:=[profile?] >=dev-haskell/parallel-3.1:=[profile?] >=dev-lang/ghc-7.4.1:= chaselev? ( dev-haskell/chaselev-deque:=[profile?] ) >=dev-haskell/cabal-1.8 test? ( dev-haskell/hunit dev-haskell/quickcheck dev-haskell/test-framework dev-haskell/test-framework-hunit >=dev-haskell/test-framework-quickcheck2-0.3 dev-haskell/test-framework-th ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=>=dev-haskell/abstract-deque-0.1.4:=[profile?] dev-haskell/abstract-par:=[profile?] >=dev-haskell/monad-par-extras-0.3:=[profile?] >=dev-haskell/mtl-2.0.1.0:=[profile?] >=dev-haskell/mwc-random-0.11:=[profile?] >=dev-haskell/parallel-3.1:=[profile?] >=dev-lang/ghc-7.4.1:= chaselev? ( dev-haskell/chaselev-deque:=[profile?] ) >=dev-haskell/cabal-1.8 test? ( dev-haskell/hunit dev-haskell/quickcheck dev-haskell/test-framework dev-haskell/test-framework-hunit >=dev-haskell/test-framework-quickcheck2-0.3 dev-haskell/test-framework-th ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=A library for parallel programming based on a monad
 EAPI=5
 HOMEPAGE=https://github.com/simonmar/monad-par
@@ -10,5 +10,5 @@ RDEPEND=>=dev-haskell/abstract-deque-0.1.4:=[profile?] dev-haskell/abstract-par:
 SLOT=0/0.3.4.7
 SRC_URI=mirror://hackage/packages/archive/monad-par/0.3.4.7/monad-par-0.3.4.7.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9cde462e8d970ff48cef97e021908b72

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
-DEPEND=dev-libs/glib:2 net-libs/libpcap sys-apps/dbus x11-libs/cairo x11-libs/pango gnome-base/libglade:2.0 test? ( dev-haskell/hunit dev-haskell/quickcheck dev-haskell/test-framework dev-haskell/test-framework-hunit ) >=dev-haskell/cabal-1.8 dev-haskell/cairo:0 >=dev-haskell/dbus-0.10 dev-haskell/glib:0 >=dev-haskell/gtk-0.12.3:2 dev-haskell/mtl dev-haskell/pango:0 dev-haskell/parsec dev-haskell/pcap dev-haskell/text >=dev-lang/ghc-6.10.4 >=dev-haskell/cabal-1.1.4
+DEPEND=dev-libs/glib:2 net-libs/libpcap sys-apps/dbus x11-libs/cairo x11-libs/pango gnome-base/libglade:2.0 test? ( dev-haskell/hunit dev-haskell/quickcheck dev-haskell/test-framework dev-haskell/test-framework-hunit ) >=dev-haskell/cabal-1.8 dev-haskell/cairo:0 >=dev-haskell/dbus-0.10 dev-haskell/glib:0 >=dev-haskell/gtk-0.12.3:2 dev-haskell/mtl dev-haskell/pango:0 dev-haskell/parsec dev-haskell/pcap dev-haskell/text >=dev-lang/ghc-6.10.4
 DESCRIPTION=Draw pretty sequence diagrams of D-Bus traffic
 EAPI=5
 HOMEPAGE=http://willthompson.co.uk/bustle/
@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 net-libs/libpcap sys-apps/dbus x11-libs/cairo x11-libs/p
 SLOT=0
 SRC_URI=http://willthompson.co.uk/bustle/releases/0.4.2/bustle-0.4.2.tar.gz https://dev.gentoo.org/~slyfox/bustle-0.4.0-tests.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_unpack:base src_prepare:base src_configure:haskell-cabal src_compile:- src_test:haskell-cabal src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=54a68adfdfca862b89a1a95d1a1fa15e

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=>=dev-lang/ghc-7.8.2:= with-conduit? ( >=dev-haskell/conduit-1.2:=[profile?] <dev-haskell/conduit-1.3:=[profile?] >=dev-haskell/exceptions-0.6:=[profile?] <dev-haskell/exceptions-0.9:=[profile?] ) >=dev-haskell/cabal-1.18.1.3 test? ( dev-haskell/hunit dev-haskell/tasty dev-haskell/tasty-hunit dev-haskell/tasty-quickcheck dev-haskell/tasty-th ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DEPEND=>=dev-lang/ghc-7.8.2:= with-conduit? ( >=dev-haskell/conduit-1.2:=[profile?] <dev-haskell/conduit-1.3:=[profile?] >=dev-haskell/exceptions-0.6:=[profile?] <dev-haskell/exceptions-0.9:=[profile?] ) >=dev-haskell/cabal-1.18.1.3 test? ( dev-haskell/hunit dev-haskell/tasty dev-haskell/tasty-hunit dev-haskell/tasty-quickcheck dev-haskell/tasty-th ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Data encoding library
 EAPI=5
 HOMEPAGE=http://hackage.haskell.org/package/sandi
@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ghc-7.8.2:= with-conduit? ( >=dev-haskell/conduit-1.2:=[profi
 SLOT=0/0.3.6
 SRC_URI=mirror://hackage/packages/archive/sandi/0.3.6/sandi-0.3.6.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
-_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	d7daf420e069f26db73b306e83883cc2	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	ghc-package	e62b77bfa6dbc88a6576bb54b386edd7	haskell-cabal	97b63ddb1a3a1bd20b3ba37bd5055a39	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=36aca6a85321bc1f4688f9427c9894ee
