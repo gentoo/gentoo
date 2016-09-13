@@ -20,13 +20,8 @@
 #   haddock    --  for documentation generation
 #   hscolour   --  generation of colourised sources
 #   hoogle     --  generation of documentation search index
-#   alex       --  lexer/scanner generator
-#   happy      --  parser generator
-#   c2hs       --  C interface generator
-#   cpphs      --  C preprocessor clone written in Haskell
 #   profile    --  if package supports to build profiling-enabled libraries
 #   bootstrap  --  only used for the cabal package itself
-#   bin        --  the package installs binaries
 #   lib        --  the package installs libraries
 #   nocabaldep --  don't add dependency on cabal.
 #                  only used for packages that _must_ not pull the dependency
@@ -36,7 +31,7 @@
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
 
-inherit eutils ghc-package multilib multiprocessing
+inherit eutils ghc-package multilib
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @DESCRIPTION:
@@ -91,17 +86,16 @@ for feature in ${CABAL_FEATURES}; do
 		haddock)    CABAL_USE_HADDOCK=yes;;
 		hscolour)   CABAL_USE_HSCOLOUR=yes;;
 		hoogle)     CABAL_USE_HOOGLE=yes;;
-		alex)       CABAL_USE_ALEX=yes;;
-		happy)      CABAL_USE_HAPPY=yes;;
-		c2hs)       CABAL_USE_C2HS=yes;;
-		cpphs)      CABAL_USE_CPPHS=yes;;
 		profile)    CABAL_USE_PROFILE=yes;;
 		bootstrap)  CABAL_BOOTSTRAP=yes;;
-		bin)        CABAL_HAS_BINARIES=yes;;
 		lib)        CABAL_HAS_LIBRARIES=yes;;
 		nocabaldep) CABAL_FROM_GHC=yes;;
 		ghcdeps)    CABAL_GHC_CONSTRAINT=yes;;
 		test-suite) CABAL_TEST_SUITE=yes;;
+
+		# does nothing, removed 2016-09-04
+		bin)        ;;
+
 		*) CABAL_UNKNOWN="${CABAL_UNKNOWN} ${feature}";;
 	esac
 done
@@ -130,37 +124,12 @@ if [[ -n "${CABAL_USE_HOOGLE}" ]]; then
 	CABAL_USE_HOOGLE=
 fi
 
-if [[ -n "${CABAL_USE_ALEX}" ]]; then
-	DEPEND="${DEPEND} dev-haskell/alex"
-fi
-
-if [[ -n "${CABAL_USE_HAPPY}" ]]; then
-	DEPEND="${DEPEND} dev-haskell/happy"
-fi
-
-if [[ -n "${CABAL_USE_C2HS}" ]]; then
-	DEPEND="${DEPEND} dev-haskell/c2hs"
-fi
-
-if [[ -n "${CABAL_USE_CPPHS}" ]]; then
-	DEPEND="${DEPEND} dev-haskell/cpphs"
-fi
-
 if [[ -n "${CABAL_USE_PROFILE}" ]]; then
 	IUSE="${IUSE} profile"
 fi
 
 if [[ -n "${CABAL_TEST_SUITE}" ]]; then
 	IUSE="${IUSE} test"
-fi
-
-# We always use a standalone version of Cabal, rather than the one that comes
-# with GHC. But of course we can't depend on cabal when building cabal itself.
-if [[ -z ${CABAL_MIN_VERSION} ]]; then
-	CABAL_MIN_VERSION=1.1.4
-fi
-if [[ -z "${CABAL_BOOTSTRAP}" && -z "${CABAL_FROM_GHC}" ]]; then
-	DEPEND="${DEPEND} >=dev-haskell/cabal-${CABAL_MIN_VERSION}"
 fi
 
 # returns the version of cabal currently in use.
@@ -198,13 +167,6 @@ cabal-bootstrap() {
 		setupmodule="${S}/Setup.hs"
 	fi
 
-	if [[ -z "${CABAL_BOOTSTRAP}" && -z "${CABAL_FROM_GHC}" ]] && ! ghc-sanecabal "${CABAL_MIN_VERSION}"; then
-		eerror "The package dev-haskell/cabal is not correctly installed for"
-		eerror "the currently active version of ghc ($(ghc-version)). Please"
-		eerror "run haskell-updater or re-build dev-haskell/cabal."
-		die "cabal is not correctly installed"
-	fi
-
 	# We build the setup program using the latest version of
 	# cabal that we have installed
 	cabalpackage=Cabal-$(cabal-version)
@@ -219,6 +181,7 @@ cabal-bootstrap() {
 
 	make_setup() {
 		set -- -package "${cabalpackage}" --make "${setupmodule}" \
+			$(ghc-make-args) \
 			"${setup_bootstrap_args[@]}" \
 			${HCFLAGS} \
 			${GHC_BOOTSTRAP_FLAGS} \
@@ -350,20 +313,7 @@ cabal-configure() {
 	if [[ -n "${CABAL_USE_PROFILE}" ]] && use profile; then
 		cabalconf+=(--enable-library-profiling)
 	fi
-	if [[ -n "${CABAL_USE_ALEX}" ]]; then
-		cabalconf+=(--with-alex=${EPREFIX}/usr/bin/alex)
-	fi
 
-	if [[ -n "${CABAL_USE_HAPPY}" ]]; then
-		cabalconf+=(--with-happy=${EPREFIX}/usr/bin/happy)
-	fi
-
-	if [[ -n "${CABAL_USE_C2HS}" ]]; then
-		cabalconf+=(--with-c2hs=${EPREFIX}/usr/bin/c2hs)
-	fi
-	if [[ -n "${CABAL_USE_CPPHS}" ]]; then
-		cabalconf+=(--with-cpphs=${EPREFIX}/usr/bin/cpphs)
-	fi
 	if [[ -n "${CABAL_TEST_SUITE}" ]]; then
 		cabalconf+=($(use_enable test tests))
 	fi
@@ -372,13 +322,7 @@ cabal-configure() {
 		cabalconf+=($(cabal-constraint "ghc"))
 	fi
 
-	# parallel on all available cores
-	if ghc-supports-parallel-make; then
-		# It should have been just -j$(makeopts_jobs)
-		# but GHC does not yet have nice defaults:
-		#    https://ghc.haskell.org/trac/ghc/ticket/9221#comment:57
-		cabalconf+=(--ghc-options="-j$(makeopts_jobs) +RTS -A256M -qb0 -RTS")
-	fi
+	cabalconf+=(--ghc-options="$(ghc-make-args)")
 
 	local option
 	for option in ${HCFLAGS}
@@ -514,9 +458,6 @@ cabal-is-dummy-lib() {
 haskell-cabal_pkg_setup() {
 	if [[ -n ${CABAL_HAS_LIBRARIES} ]]; then
 		[[ ${RDEPEND} == *dev-lang/ghc* ]] || eqawarn "QA Notice: A library does not have runtime dependency on dev-lang/ghc."
-	fi
-	if [[ -z "${CABAL_HAS_BINARIES}" ]] && [[ -z "${CABAL_HAS_LIBRARIES}" ]]; then
-		eqawarn "QA Notice: Neither bin nor lib are in CABAL_FEATURES."
 	fi
 	if [[ -n "${CABAL_UNKNOWN}" ]]; then
 		eqawarn "QA Notice: Unknown entry in CABAL_FEATURES: ${CABAL_UNKNOWN}"
