@@ -26,7 +26,7 @@ src_compile() {
 }
 
 src_test() {
-	go test -v || die
+	GOPATH="${WORKDIR}/${P}" go test -v || die
 }
 
 src_install() {
