@@ -56,5 +56,9 @@ python_install_all() {
 }
 
 python_test() {
+	# https://www.logilab.org/ticket/149345
+	# Prevent timezone related failure.
+	export TZ=UTC
+
 	"${PYTHON}" bin/pytest-local || die "Tests fail with ${EPYTHON}"
 }
