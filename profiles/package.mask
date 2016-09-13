@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (13 Sep 2016)
+# Known to be unusable.
+# https://bugs.gentoo.org/591938
+~www-client/chromium-54.0.2840.14
+~www-client/chromium-54.0.2840.16
+
 # Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
 # Masked for testing, see bug #588894.
 =x11-misc/light-locker-1.7.0-r1
