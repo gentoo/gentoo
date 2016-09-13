@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_with doc doxygen)
+		--with-cursorpath='~/.cursors:~/.icons:/usr/local/share/cursors/xorg-x11:/usr/local/share/cursors:/usr/local/share/icons:/usr/local/share/pixmaps:/usr/share/cursors/xorg-x11:/usr/share/cursors:/usr/share/pixmaps/xorg-x11:/usr/share/icons:/usr/share/pixmaps'
 	)
 
 	xorg-2_src_configure
