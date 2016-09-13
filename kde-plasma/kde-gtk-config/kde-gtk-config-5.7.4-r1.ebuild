@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 	!kde-misc/kde-gtk-config
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.4.2-gtk3-optional.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.4.2-gtk3-optional.patch" "${FILESDIR}/${P}-look-for-cursors-in-right-place.patch" )
 
 src_configure() {
 	local mycmakeargs=(
