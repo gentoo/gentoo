@@ -4,11 +4,11 @@ DESCRIPTION=Web-based administration for MySQL database in PHP
 EAPI=5
 HOMEPAGE=http://www.phpmyadmin.net/
 IUSE=setup vhosts
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2
 RDEPEND=dev-lang/php[crypt,ctype,filter,json,session,unicode] || ( dev-lang/php[mysqli] dev-lang/php[mysql] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
 SLOT=4.0.10.17
 SRC_URI=https://files.phpmyadmin.net/phpMyAdmin/4.0.10.17/phpMyAdmin-4.0.10.17-all-languages.tar.xz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=671f0a7e38073f4ec510b6d490536948
+_md5_=60ee2f390e4e43e65da2adea36fb73e5

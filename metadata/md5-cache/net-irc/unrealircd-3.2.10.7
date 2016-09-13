@@ -4,11 +4,11 @@ DESCRIPTION=An advanced Internet Relay Chat daemon
 EAPI=4
 HOMEPAGE=http://www.unrealircd.com/
 IUSE=class-nofakelag curl ipv6 +extban-stacking +operoverride operoverride-verify +prefixaq showlistmodes shunnotices ssl topicisnuhost +usermod zlib ssl
-KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux
+KEYWORDS=amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux
 LICENSE=GPL-2
 RDEPEND=ssl? ( dev-libs/openssl ) zlib? ( sys-libs/zlib ) curl? ( net-misc/curl[adns] ) dev-libs/tre >=net-dns/c-ares-1.7
 SLOT=0
 SRC_URI=http://www.unrealircd.com/downloads/Unreal3.2.10.7.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	80aaa71614ced86f02ee1a513821dc87	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=327a9ea769fd2ed55752d42d1fb51989
+_md5_=6f073b4fc5e6413e4efa99952916d286
