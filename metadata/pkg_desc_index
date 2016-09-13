@@ -19144,7 +19144,7 @@ xfce-extra/xfce4-timer-plugin 1.6.0: A simple timer plug-in for the Xfce desktop
 xfce-extra/xfce4-vala 4.10.3-r2: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 1.0.1 1.1.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
-xfce-extra/xfce4-volumed-pulse 0.2.0: Daemon to control volume up/down and mute keys for pulseaudio
+xfce-extra/xfce4-volumed-pulse 0.2.0 0.2.1: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.12 0.5.99: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.7 0.8.8: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.5.3 1.6.0 2.0.1: Alternate application launcher for Xfce
