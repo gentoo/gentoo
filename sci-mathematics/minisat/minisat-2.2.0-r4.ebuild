@@ -27,8 +27,8 @@ S=${WORKDIR}/${PN}
 
 src_prepare() {
 	default
-	sed -e "s/\$(CXX) \$^/\$(CXX) \$(LDFLAGS) \$^/" \
-		-i -e "s|-O3|${CFLAGS}|" mtl/template.mk || die
+	# Remove makefile silencing
+	sed -i -e 's:@\(\$\|ln\|rm\|for\):\1:g'	mtl/template.mk || die
 }
 
 src_configure() {
@@ -40,9 +40,9 @@ src_configure() {
 }
 
 src_compile() {
-	export MROOT="${S}"
-	emake -C ${mydir} ${myconf}
-	LIB="${PN}" emake -C ${mydir} lib${myconf}
+	export MROOT="$S"
+	emake -C $mydir $myconf
+	LIB="${PN}" emake -C $mydir lib$myconf
 }
 
 src_install() {
