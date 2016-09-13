@@ -4761,7 +4761,7 @@ dev-libs/libisofs 1.3.8 1.4.2 1.4.4: Open-source library for reading, mastering 
 dev-libs/libixion 0.9.0 0.9.1-r1 0.11.1 9999: General purpose formula parser & interpreter
 dev-libs/libjit 0.1.2: Libjit is a generic Just-In-Time compilation library
 dev-libs/libkpass 6 6-r1: Libkpass is a from-scratch C implementation for accessing KeePass 1.x databases
-dev-libs/libksba 1.3.3 1.3.4: X.509 and CMS (PKCS#7) library
+dev-libs/libksba 1.3.3 1.3.4 1.3.5: X.509 and CMS (PKCS#7) library
 dev-libs/liblazy 0.2: lib for D-Bus daemon messages, querying HAL or PolicyKit privileges
 dev-libs/liblinear 210-r1: A Library for Large Linear Classification
 dev-libs/liblinebreak 2.1: Line breaking library
