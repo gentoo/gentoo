@@ -1,12 +1,12 @@
-DEFINED_PHASES=configure prepare unpack
-DEPEND=virtual/pkgconfig sys-libs/ncurses:=[unicode] dev-libs/glib:2 media-libs/libmpdclient !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=configure prepare pretend unpack
+DEPEND=virtual/pkgconfig dev-util/intltool sys-devel/gettext doc? ( app-text/pandoc ) sys-libs/ncurses:0=[unicode] dev-libs/glib:2 media-libs/libmpdclient virtual/libintl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Practical Music Search: an open source ncurses client for mpd, written in C++
 EAPI=6
 HOMEPAGE=https://ambientsound.github.io/pms
-IUSE=regex
-LICENSE=GPL-3
-RDEPEND=sys-libs/ncurses:=[unicode] dev-libs/glib:2 media-libs/libmpdclient
+IUSE=regex doc
+LICENSE=GPL-3+
+RDEPEND=sys-libs/ncurses:0=[unicode] dev-libs/glib:2 media-libs/libmpdclient virtual/libintl
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=9655679997ceb7357a1de64ca93ef699
+_eclass_exported_funcs=pkg_pretend:- src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=90cf6a941689798f93e8ebc95706ad61
