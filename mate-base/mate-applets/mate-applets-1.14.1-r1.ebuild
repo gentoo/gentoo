@@ -19,6 +19,7 @@ SLOT="0"
 IUSE="X gtk3 ipv6 policykit +upower"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+#cpupower #593470
 COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/atk:0
 	>=dev-libs/dbus-glib-0.74:0
@@ -31,7 +32,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=mate-base/mate-panel-1.7[gtk3(-)=]
 	>=net-wireless/wireless-tools-28_pre9:0
 	>=sys-apps/dbus-1.1.2:0
-	sys-power/cpupower
+	<sys-power/cpupower-4.7
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libnotify-0.7:0
 	x11-libs/libX11:0
@@ -70,6 +71,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt:0
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
+
+PATCHES=( "${FILESDIR}/${PN}-1.14.1-revert-upstream-cpupower-4.7-fix.patch" )
 
 src_configure() {
 	mate_src_configure \
