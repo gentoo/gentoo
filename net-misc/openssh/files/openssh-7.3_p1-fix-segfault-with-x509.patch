@@ -1,0 +1,12 @@
+diff --git a/sshkey.c b/sshkey.c
+index c9f04cd..4f00e9a 100644
+--- a/sshkey.c
++++ b/sshkey.c
+@@ -1237,6 +1237,7 @@ sshkey_read(struct sshkey *ret, char **cpp)
+ #endif /* WITH_SSH1 */
+ 
+ 	cp = *cpp;
++	ep = cp;
+ 
+ 	switch (ret->type) {
+ 	case KEY_RSA1:
