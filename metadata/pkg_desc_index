@@ -11864,7 +11864,7 @@ mail-client/hap 3.7-r1: A terminal mail notification program (replacement for bi
 mail-client/mail-notification 5.4-r8 5.4-r9: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.5.23-r7 1.5.24-r2 1.6.1-r1 1.6.2 1.7.0-r3: A small but very powerful text-based mail client
+mail-client/mutt 1.5.23-r7 1.5.24-r2 1.6.1-r1 1.6.2 1.7.0-r4: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
@@ -13203,7 +13203,7 @@ media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdr
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
 media-sound/chuck 1.3.5.1 1.3.5.2: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.2.3 1.2.3-r2 1.3.1-r2 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
+media-sound/clementine 1.2.3 1.2.3-r2 1.3.1-r3 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.7.1: A ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5 0.3.1: Last.fm scrobbler for cmus music player
@@ -16177,7 +16177,7 @@ sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
 sci-mathematics/mathmod 4.1-r1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.34.1 5.37.3-r4 5.38.1: Free computer algebra environment based on Macsyma
-sci-mathematics/minisat 2.2.0-r4: Small yet efficient SAT solver with reference paper
+sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925: Small yet efficient SAT solver with reference paper
 sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive modeling
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
