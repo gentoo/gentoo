@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Command line tool for Amazon Route 53
+EAPI=6
+HOMEPAGE=https://github.com/barnybug/cli53
+LICENSE=MIT
+SLOT=0
+_eclass_exported_funcs=src_unpack:golang-vcs src_compile:- src_test:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs	c46e447dc94466eabb5ce867f21b85bf	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=637a8e93e1b72ba20c0d7469402110bd
