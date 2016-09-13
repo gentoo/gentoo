@@ -19,6 +19,7 @@ DEPEND="dev-ml/ppx_tools:=
 	>=dev-lang/ocaml-4.02.3:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
 DEPEND="${RDEPEND}
+	dev-ml/cppo
 	dev-ml/opam
 	test? ( dev-ml/ounit )"
 
