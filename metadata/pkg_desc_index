@@ -11781,7 +11781,7 @@ kde-plasma/breeze-gtk 5.6.5 5.7.4: Official GTK+ port of KDE's Breeze widget sty
 kde-plasma/breeze-plymouth 5.6.5 5.7.4: Breeze theme for Plymouth
 kde-plasma/kactivitymanagerd 5.6.5 5.7.4: System service to manage user's activities, track the usage patterns etc.
 kde-plasma/kde-cli-tools 5.6.5 5.7.4: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.6.5 5.7.4: KDE Plasma systemsettings kcm to set GTK application look&feel
+kde-plasma/kde-gtk-config 5.6.5 5.7.4-r1: KDE Plasma systemsettings kcm to set GTK application look&feel
 kde-plasma/kdecoration 5.6.5 5.7.4: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 5.6.5 5.7.4: Extra Plasma applets and engines
 kde-plasma/kgamma 5.6.5 5.7.4: Screen gamma values kcontrol module
