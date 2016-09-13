@@ -7306,14 +7306,14 @@ dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Reso
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-debug 0.4.3: Configures Flask applications in a canonical way
 dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
-dev-python/flask-login 0.2.11 0.3.2: Login session support for Flask
-dev-python/flask-mail 0.9.0 0.9.1: Flask extension for sending email
+dev-python/flask-login 0.2.11 0.3.2 0.3.2-r1: Login session support for Flask
+dev-python/flask-mail 0.9.0 0.9.1 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 1.2.0 1.3.0 1.3.1 1.4.0 1.7.0 1.8.0: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.7.0 0.7.1: Flask support for MongoDB and with WTF model forms
 dev-python/flask-nav 0.5: Easily create navigation for Flask applications.
 dev-python/flask-openid 1.2.3 1.2.4 1.2.5: OpenID support for Flask
 dev-python/flask-peewee 0.6.5 0.6.6 0.6.7: Flask integration layer for the Peewee ORM
-dev-python/flask-principal 0.4.0: Identity management for flask
+dev-python/flask-principal 0.4.0 0.4.0-r1: Identity management for flask
 dev-python/flask-pymongo 0.3.0 0.3.1: PyMongo support for Flask
 dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.5-r1: Simple framework for creating REST APIs
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
@@ -7321,7 +7321,7 @@ dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4 1.7.5: Simple security for Flask apps
 dev-python/flask-socketio 2.0 2.1 2.2: Socket.IO integration for Flask applications.
 dev-python/flask-sqlalchemy 1.0 1.0-r1 2.0 2.1: SQLAlchemy support for Flask applications
-dev-python/flask-testing 0.4.1 0.4.2: Unit testing for Flask
+dev-python/flask-testing 0.4.1 0.4.2 0.6.1: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.1.3 0.2.0 0.2.0-r1: Flexible and efficient upload handling for Flask
 dev-python/flask-whooshalchemy 0.55a 0.56: Whoosh extension to Flask/SQLAlchemy
@@ -17923,7 +17923,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 39.0.2256.48 39.0.2256.71: A fast and secure web browser
 www-client/opera-beta 40.0.2308.26 40.0.2308.44: A fast and secure web browser
-www-client/opera-developer 41.0.2329.0 41.0.2340.0: A fast and secure web browser
+www-client/opera-developer 41.0.2340.0 41.0.2349.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
