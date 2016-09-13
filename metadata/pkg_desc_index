@@ -11829,7 +11829,7 @@ lxde-base/lxrandr 0.1.2 0.3.1: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
-lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
+lxde-base/lxtask 0.1.6 0.1.7: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.10.0: Common base library for the LXQt desktop environment
