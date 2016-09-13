@@ -14,7 +14,7 @@ SRC_URI="http://www.unrealircd.com/downloads/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux"
 IUSE="class-nofakelag curl ipv6 +extban-stacking +operoverride operoverride-verify +prefixaq
 	showlistmodes shunnotices ssl topicisnuhost +usermod zlib"
 
