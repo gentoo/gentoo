@@ -1,0 +1,152 @@
+From 43323a188f17822cc7b26055b70e1e79cd50fc23 Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Tue, 13 Sep 2016 04:13:47 +0200
+Subject: [PATCH] cursor model: look for cursors in correct place
+
+plasma-desktop's cursor theme kcm does the right thing, by consulting
+the libXcursor library for the right search paths. Unfortunately, the
+kcm here does a pretty butchered job of it. So, we copy, more or less,
+the same algorithm used by plasma-desktop. Now there's parity in cursor
+selection.
+---
+ CMakeLists.txt            |  2 +-
+ src/cursorthemesmodel.cpp | 47 ++++++++++++++++++++++++++++++++++++++++-------
+ src/cursorthemesmodel.h   |  3 +--
+ src/gtkconfigkcmodule.cpp |  2 +-
+ 4 files changed, 43 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07d313c..ee2eed9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,7 +54,7 @@ ki18n_wrap_ui(kcm_SRCS
+ )
+ add_library(kcm_kdegtkconfig MODULE ${kcm_SRCS})
+ target_compile_definitions(kcm_kdegtkconfig PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
+-target_link_libraries(kcm_kdegtkconfig KF5::I18n KF5::KIOWidgets KF5::NewStuff KF5::Archive KF5::NewStuff KF5::ConfigWidgets KF5::IconThemes)
++target_link_libraries(kcm_kdegtkconfig ${X11_Xcursor_LIB} KF5::I18n KF5::KIOWidgets KF5::NewStuff KF5::Archive KF5::NewStuff KF5::ConfigWidgets KF5::IconThemes)
+ 
+ kcoreaddons_desktop_to_json(kcm_kdegtkconfig kde-gtk-config.desktop)
+ 
+diff --git a/src/cursorthemesmodel.cpp b/src/cursorthemesmodel.cpp
+index 5238714..2955bd9 100644
+--- a/src/cursorthemesmodel.cpp
++++ b/src/cursorthemesmodel.cpp
+@@ -27,9 +27,17 @@
+ #include <KIconTheme>
+ #include <QStandardPaths>
+ 
+-CursorThemesModel::CursorThemesModel(bool onlyHome, QObject* parent)
++#include <X11/Xlib.h>
++#include <X11/Xcursor/Xcursor.h>
++
++// Check for older version
++#if !defined(XCURSOR_LIB_MAJOR) && defined(XCURSOR_MAJOR)
++#  define XCURSOR_LIB_MAJOR XCURSOR_MAJOR
++#  define XCURSOR_LIB_MINOR XCURSOR_MINOR
++#endif
++
++CursorThemesModel::CursorThemesModel(QObject* parent)
+     : IconThemesModel(parent)
+-    , m_onlyHome(onlyHome)
+ {
+     reload();
+ }
+@@ -37,13 +45,38 @@ CursorThemesModel::CursorThemesModel(bool onlyHome, QObject* parent)
+ QList<QDir> CursorThemesModel::installedThemesPaths()
+ {
+     QList<QDir> availableIcons;
++    QStringList dirs;
++
++#if XCURSOR_LIB_MAJOR == 1 && XCURSOR_LIB_MINOR < 1
++    // These are the default paths Xcursor will scan for cursor themes
++    QString path("~/.icons:/usr/share/icons:/usr/share/pixmaps:/usr/X11R6/lib/X11/icons");
++
++    // If XCURSOR_PATH is set, use that instead of the default path
++    char *xcursorPath = std::getenv("XCURSOR_PATH");
++    if (xcursorPath)
++        path = xcursorPath;
++#else
++    // Get the search path from Xcursor
++    QString path = XcursorLibraryPath();
++#endif
+ 
+-    QSet<QString> dirs;
+-    dirs += QDir::home().filePath(".icons");
+-    if(!m_onlyHome) {
+-        dirs += QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "icons", QStandardPaths::LocateDirectory).toSet();
++    // Separate the paths
++    dirs = path.split(':', QString::SkipEmptyParts);
++
++    // Remove duplicates
++    QMutableStringListIterator i(dirs);
++    while (i.hasNext())
++    {
++        const QString path = i.next();
++        QMutableStringListIterator j(i);
++        while (j.hasNext())
++            if (j.next() == path)
++                j.remove();
+     }
+-    
++
++    // Expand all occurrences of ~/ to the home dir
++    dirs.replaceInStrings(QRegExp(QStringLiteral("^~\\/")), QDir::home().path() + '/');
++ 
+     foreach(const QString& dir, dirs) {
+         QDir userIconsDir(dir);
+         QDirIterator it(userIconsDir.path(), QDir::NoDotAndDotDot|QDir::AllDirs|QDir::NoSymLinks);
+diff --git a/src/cursorthemesmodel.h b/src/cursorthemesmodel.h
+index 7658bd5..4acfa4b 100644
+--- a/src/cursorthemesmodel.h
++++ b/src/cursorthemesmodel.h
+@@ -29,14 +29,13 @@ class QDir;
+ class CursorThemesModel : public IconThemesModel
+ {
+     public:
+-        explicit CursorThemesModel(bool onlyHome=false, QObject* parent = 0);
++        explicit CursorThemesModel(QObject* parent = 0);
+ 
+         void reload();
+         
+     private:
+         static void fillItem(const QDir& dir, QStandardItem* item);
+         QList<QDir> installedThemesPaths();
+-        bool m_onlyHome;
+ };
+ 
+ #endif // CURSORTHEMESMODEL_H
+diff --git a/src/gtkconfigkcmodule.cpp b/src/gtkconfigkcmodule.cpp
+index 7afe698..d36c6a3 100644
+--- a/src/gtkconfigkcmodule.cpp
++++ b/src/gtkconfigkcmodule.cpp
+@@ -71,7 +71,7 @@ GTKConfigKCModule::GTKConfigKCModule(QWidget* parent, const QVariantList& args )
+     setButtons(KCModule::Default | KCModule::Apply);
+     ui->setupUi(this);
+     appareance = new AppearenceGTK;
+-    m_cursorsModel = new CursorThemesModel(false, this);
++    m_cursorsModel = new CursorThemesModel(this);
+     ui->cb_cursor->setModel(m_cursorsModel);
+     m_iconsModel = new IconThemesModel(false, this);
+     ui->cb_icon->setModel(m_iconsModel);
+-- 
+2.10.0
+
+commit ab7c3c13721466cdf0236732bdb9f4a1f50db89c
+Author: Jason A. Donenfeld <Jason@zx2c4.com>
+Date:   Tue Sep 13 04:23:46 2016 +0200
+
+    cmake: find x11 libs
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ee2eed9..14ce086 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_P
+ 
+ find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Widgets Test)
+ find_package(KF5 REQUIRED COMPONENTS I18n KIO ConfigWidgets NewStuff Archive KCMUtils IconThemes)
++find_package(X11)
+ 
+ include_directories(
+     ${CMAKE_SOURCE_DIR} 
