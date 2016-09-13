@@ -6,6 +6,6 @@
 		<name>Ryan Hill</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">nicotine-plus</remote-id>
+		<remote-id type="github">eLvErDe/nicotine-plus</remote-id>
 	</upstream>
 </pkgmetadata>
