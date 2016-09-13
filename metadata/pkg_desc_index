@@ -11821,9 +11821,9 @@ lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files 
 lxde-base/lxde-icon-theme 0.5.0 0.5.0-r1 0.5.1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r4 0.5.5-r5: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.4.1-r9 0.5.3: LXDE Display Manager
-lxde-base/lxinput 0.3.2: LXDE keyboard and mouse configuration tool
+lxde-base/lxinput 0.3.2 0.3.5: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
-lxde-base/lxmenu-data 0.1.2 0.1.4: Provides files needed for LXDE application menus
+lxde-base/lxmenu-data 0.1.2 0.1.4 0.1.5: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.7.0-r1 0.8.1: Lightweight X11 desktop panel for LXDE
 lxde-base/lxrandr 0.1.2: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.2: LXDE session manager
