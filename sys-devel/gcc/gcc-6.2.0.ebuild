@@ -21,6 +21,5 @@ if [[ ${CATEGORY} != cross-* ]] ; then
 fi
 
 src_prepare() {
-
 	toolchain_src_prepare
 }
