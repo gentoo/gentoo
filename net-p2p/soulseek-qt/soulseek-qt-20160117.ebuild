@@ -8,8 +8,8 @@ DESCRIPTION="Official binary Qt SoulSeek client"
 HOMEPAGE="http://www.soulseekqt.net/"
 BINARY_NAME="SoulseekQt-${PV:0:4}-$((${PV:4:2}))-$((${PV:6:2}))"
 SRC_URI="
-	x86? ( https://www.dropbox.com/s/7majmb4o5f2pg17/${BINARY_NAME}-32bit.tgz )
-	amd64? ( https://www.dropbox.com/s/h26bzezec5vjcu3/${BINARY_NAME}-64bit.tgz )
+	x86? ( https://www.dropbox.com/s/kebk1b5ib1m3xxw/${BINARY_NAME}-32bit.tgz )
+	amd64? ( https://www.dropbox.com/s/7qh902qv2sxyp6p/${BINARY_NAME}-64bit.tgz )
 "
 
 LICENSE="free-noncomm"
