@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
+# Masked for testing, see bug #588894.
+=x11-misc/light-locker-1.7.0-r1
+
 # James Le Cuirot <chewi@gentoo.org> (12 Sep 2016)
 # Now only available on Steam. Binaries were removed by the publisher
 # and Humble Bundle over 2 years ago. Removal in 60 days. Bug #588110.
