@@ -7639,7 +7639,7 @@ sys-devel/gcc:objc++ - Build support for the Objective C++ language
 sys-devel/gcc:objc-gc - Build support for the Objective C code language Garbage Collector
 sys-devel/gcc:regression-test - Run the testsuite and install the results (requires FEATURES=test)
 sys-devel/gcc:sanitize - Build support for various sanitizer functions (ASAN/TSAN/etc...)
-sys-devel/gcc:ssp - Enable to build Packages with SSP as default on
+sys-devel/gcc:ssp - Build packages with stack smashing protector on by default
 sys-devel/gcc:vtv - Build support for virtual table verification (a C++ hardening feature)
 sys-devel/gcc-apple:objc - Build support for the Objective C code language
 sys-devel/gcc-apple:objc++ - Build support for the Objective C++ language
