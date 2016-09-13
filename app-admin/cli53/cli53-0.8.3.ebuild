@@ -21,10 +21,6 @@ SLOT="0"
 EGO_PN="github.com/barnybug/cli53"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
-PATCHES=(
-	"${FILESDIR}"/cli53-ldflags.patch
-)
-
 src_compile() {
 	GOPATH="${WORKDIR}/${P}" emake build
 }
