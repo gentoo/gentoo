@@ -22,10 +22,10 @@ KEYWORDS=""
 IUSE="+sanitize test"
 
 RDEPEND="
-	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-${PV}
 	sanitize? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
+	~sys-devel/llvm-${PV}
 	test? ( ~sys-devel/clang-${PV} )
 	${PYTHON_DEPS}"
 
