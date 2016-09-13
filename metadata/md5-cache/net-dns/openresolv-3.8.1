@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=!net-dns/resolvconf-gentoo !<net-dns/dnsmasq-2.40-r1
+DESCRIPTION=A framework for managing DNS information
+EAPI=6
+HOMEPAGE=http://roy.marples.name/projects/openresolv
+IUSE=selinux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD-2
+RDEPEND=selinux? ( sec-policy/selinux-resolvconf )
+SLOT=0
+SRC_URI=http://roy.marples.name/downloads/openresolv/openresolv-3.8.1.tar.xz
+_eclass_exported_funcs=src_configure:-
+_md5_=754444117dd73dac270089d7350a38cd
