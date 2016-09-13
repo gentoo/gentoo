@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst postrm preinst prepare
+DEPEND=dev-libs/dbus-glib >=dev-libs/glib-2.25.6:2 >=sys-apps/dbus-0.30 x11-libs/cairo x11-libs/libX11 x11-libs/pango x11-libs/libXxf86vm consolekit? ( sys-auth/consolekit ) dpms? ( x11-libs/libXext ) !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( x11-libs/gtk+:3 ) screensaver? ( x11-libs/libXScrnSaver ) systemd? ( sys-apps/systemd ) upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) ) dev-lang/perl dev-perl/XML-Parser dev-util/intltool sys-devel/gettext >=sys-apps/sed-4
+DESCRIPTION=A simple locker using lightdm
+EAPI=6
+HOMEPAGE=https://github.com/the-cavalry/light-locker
+IUSE=+consolekit +dpms gtk3 +screensaver -systemd +upower
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=dev-libs/dbus-glib >=dev-libs/glib-2.25.6:2 >=sys-apps/dbus-0.30 x11-libs/cairo x11-libs/libX11 x11-libs/pango x11-libs/libXxf86vm consolekit? ( sys-auth/consolekit ) dpms? ( x11-libs/libXext ) !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( x11-libs/gtk+:3 ) screensaver? ( x11-libs/libXScrnSaver ) systemd? ( sys-apps/systemd ) upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) ) x11-misc/lightdm
+SLOT=0
+SRC_URI=https://github.com/the-cavalry/light-locker/releases/download/v1.7.0/light-locker-1.7.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=cedbdb87ac1dc1db23e03027df4109ce
