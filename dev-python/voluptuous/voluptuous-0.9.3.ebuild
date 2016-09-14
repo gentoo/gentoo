@@ -18,3 +18,8 @@ IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
+
+python_test() {
+	unset PYTHONPATH
+	nosetests -v || die "Tests failed"
+}
