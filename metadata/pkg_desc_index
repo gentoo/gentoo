@@ -1326,7 +1326,7 @@ app-emulation/libcacard 0.1.2 2.5.1: virtual Common Access Card (CAC) library em
 app-emulation/libguestfs 1.26.1 1.28.3 1.28.5 1.28.5-r1: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
-app-emulation/libvirt 1.3.5-r2 2.0.0-r2 2.1.0-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 1.3.5-r2 2.0.0-r2 2.1.0-r1 2.2.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.7 1.0.8 2.0.3-r1 2.0.4: LinuX Containers userspace utilities
@@ -7521,7 +7521,7 @@ dev-python/libnacl 1.4.0 1.4.3 1.4.4: Python ctypes wrapper for libsodium
 dev-python/libnatpmp 20130911 20140401-r1 20150609: Python module for libnatpmp, an alternative protocol to UPnP IGD
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 1.3.5 2.0.0 2.1.0 9999: libvirt Python bindings
+dev-python/libvirt-python 1.3.5 2.0.0 2.1.0 2.2.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.3: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 1.0 1.0-r1 9999: Line-by-line profiler
