@@ -2944,7 +2944,7 @@ dev-db/mysql++ 2.3.2 3.1.0 3.2.1 3.2.2: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.22 7.3.11: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql-connector-c 6.1.5 6.1.6-r1 6.1.6-r2: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.3 1.1.6: MySQL database connector for C++ (mimics JDBC 4.0 API)
-dev-db/mysql-init-scripts 2.0-r1 2.1_alpha4 2.1-r1: Gentoo MySQL init scripts.
+dev-db/mysql-init-scripts 2.1-r1: Gentoo MySQL init scripts.
 dev-db/mysql-proxy 0.8.2-r1: A Proxy for the MySQL Client/Server protocol
 dev-db/mysql-super-smack 1.3-r3: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-udf-base64 20010618: MySQL UDFs that provide base64 encode/decode
@@ -8065,7 +8065,7 @@ dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML 
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 4.1.1: A client for the OpenStack Quantum API
-dev-python/python-novaclient 3.3.0: A client for the OpenStack Nova API
+dev-python/python-novaclient 3.3.0 3.3.2: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
@@ -13831,7 +13831,7 @@ net-analyzer/greenbone-security-assistant 6.0.9: Greenbone Security Assistant fo
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r3 3_pre20051105-r5: A ping-like TCP/IP packet assembler/analyzer
-net-analyzer/httping 2.4 2.4-r1: http protocol ping-like program
+net-analyzer/httping 2.4 2.4-r1 2.5: http protocol ping-like program
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
 net-analyzer/hydra 8.1 8.1-r1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
@@ -16844,7 +16844,7 @@ sys-auth/libyubikey 1.12 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r1 0.5.11: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.10-r3: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
-sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.6 0.9.7: NSS module for name lookups using LDAP
+sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.7: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 258 259 261 262 264 264-r1 265 265-r1 265-r2 265-r4 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.4.1 2.6.1: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/openpam 20140912: Open source PAM library
