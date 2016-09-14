@@ -53,6 +53,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS README.kstScript )
+PATCHES=( "${FILESDIR}/${P}-includes.patch" )
 
 src_configure() {
 	local mycmakeargs=(
