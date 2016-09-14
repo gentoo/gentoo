@@ -11589,79 +11589,79 @@ kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
 kde-base/systemsettings 4.11.22-r2: System settings utility
-kde-frameworks/attica 5.23.0 5.25.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.23.0 5.25.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.23.0 5.25.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.23.0 5.25.0: Breeze SVG icon theme
-kde-frameworks/extra-cmake-modules 5.23.0 5.25.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.23.0 5.25.0: Framework for integrating Qt applications with KDE workspaces
-kde-frameworks/kactivities 5.23.0 5.25.0: Framework for working with KDE activities
-kde-frameworks/kactivities-stats 5.23.0 5.25.0: Framework for getting the usage statistics collected by the activities service
-kde-frameworks/kapidox 5.23.0 5.25.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.23.0-r1 5.25.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.23.0-r1 5.25.0: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.23.0 5.25.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcmutils 5.23.0 5.25.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.23.0 5.25.0: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.23.0 5.25.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.23.0 5.25.0: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.23.0 5.25.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.23.0 5.25.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.23.0 5.25.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdbusaddons 5.23.0 5.25.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.23.0 5.25.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.23.0 5.25.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.23.0-r1 5.25.0: Framework easing the development transition from KDE 4 to KF 5
-kde-frameworks/kdesignerplugin 5.23.0 5.25.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
-kde-frameworks/kdesu 5.23.0 5.25.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.23.0 5.25.0: Framework providing KDE integration of QtWebKit
-kde-frameworks/kdnssd 5.23.0 5.25.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.23.0 5.25.0: Tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.23.0 5.25.0: Framework for converting text emoticons to graphical representations
+kde-frameworks/attica 5.23.0 5.25.0 5.26.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.23.0 5.25.0 5.26.0-r1: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.23.0 5.25.0 5.26.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.23.0 5.25.0 5.26.0: Breeze SVG icon theme
+kde-frameworks/extra-cmake-modules 5.23.0 5.25.0 5.26.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.23.0 5.25.0 5.26.0: Framework for integrating Qt applications with KDE workspaces
+kde-frameworks/kactivities 5.23.0 5.25.0 5.26.0: Framework for working with KDE activities
+kde-frameworks/kactivities-stats 5.23.0 5.25.0 5.26.0: Framework for getting the usage statistics collected by the activities service
+kde-frameworks/kapidox 5.23.0 5.25.0 5.26.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.23.0-r1 5.25.0 5.26.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.23.0-r1 5.25.0 5.26.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.23.0 5.25.0 5.26.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcmutils 5.23.0 5.25.0 5.26.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.23.0 5.25.0 5.26.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.23.0 5.25.0 5.26.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.23.0 5.25.0 5.26.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.23.0 5.25.0 5.26.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcoreaddons 5.23.0 5.25.0 5.26.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.23.0 5.25.0 5.26.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdbusaddons 5.23.0 5.25.0 5.26.0: Framework for registering services and applications per freedesktop standards
+kde-frameworks/kdeclarative 5.23.0 5.25.0 5.26.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.23.0 5.25.0 5.26.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.23.0-r1 5.25.0 5.26.0: Framework easing the development transition from KDE 4 to KF 5
+kde-frameworks/kdesignerplugin 5.23.0 5.25.0 5.26.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
+kde-frameworks/kdesu 5.23.0 5.25.0 5.26.0: Framework to handle super user actions
+kde-frameworks/kdewebkit 5.23.0 5.25.0 5.26.0: Framework providing KDE integration of QtWebKit
+kde-frameworks/kdnssd 5.23.0 5.25.0 5.26.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.23.0 5.25.0 5.26.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.23.0 5.25.0 5.26.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 3 4: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.23.0 5.25.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.23.0-r1 5.25.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.23.0 5.25.0: Framework providing assorted high-level user interface components
-kde-frameworks/khtml 5.23.0 5.25.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.23.0 5.25.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.23.0 5.25.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.23.0 5.25.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.23.0 5.25.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.23.0 5.25.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.23.0 5.25.0: Framework providing transparent file and data management
-kde-frameworks/kitemmodels 5.23.0 5.25.0: Framework providing data models to help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.23.0 5.25.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.23.0 5.25.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.23.0 5.25.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.23.0 5.25.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.23.0 5.25.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.23.0 5.25.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.23.0 5.25.0: Framework for notifying the user of an event
-kde-frameworks/knotifyconfig 5.23.0 5.25.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.23.0 5.25.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.23.0 5.25.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.23.0 5.25.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.23.0 5.25.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.23.0 5.25.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kross 5.23.0 5.25.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.23.0 5.25.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.23.0 5.25.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.23.0 5.25.0: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.23.0 5.25.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.23.0 5.25.0: Framework for converting units
-kde-frameworks/kwallet 5.23.0 5.25.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.23.0 5.25.0: Qt-style client and server library wrapper for Wayland libraries
-kde-frameworks/kwidgetsaddons 5.23.0 5.25.0: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.23.0 5.25.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.23.0-r1 5.25.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.23.0 5.25.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.23.0 5.25.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.23.0 5.25.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 4.14.3 5.23.0 5.25.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.23.0 5.25.0: Plasma framework
-kde-frameworks/solid 5.23.0 5.25.0: Provider for platform independent hardware discovery, abstraction and management
-kde-frameworks/sonnet 5.23.0 5.25.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/threadweaver 5.23.0 5.25.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.23.0 5.25.0 5.26.0-r1: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.23.0-r1 5.25.0 5.26.0: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.23.0 5.25.0 5.26.0: Framework providing assorted high-level user interface components
+kde-frameworks/khtml 5.23.0 5.25.0 5.26.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.23.0 5.25.0 5.26.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.23.0 5.25.0 5.26.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.23.0 5.25.0 5.26.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.23.0 5.25.0 5.26.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.23.0 5.25.0 5.26.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.23.0 5.25.0 5.26.0-r1: Framework providing transparent file and data management
+kde-frameworks/kitemmodels 5.23.0 5.25.0 5.26.0: Framework providing data models to help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.23.0 5.25.0 5.26.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.23.0 5.25.0 5.26.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.23.0 5.25.0 5.26.0: ECMAScipt compatible parser and engine
+kde-frameworks/kjsembed 5.23.0 5.25.0 5.26.0: Framework binding JavaScript objects to QObjects
+kde-frameworks/kmediaplayer 5.23.0 5.25.0 5.26.0: Framework providing a common interface for KParts that can play media files
+kde-frameworks/knewstuff 5.23.0 5.25.0 5.26.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.23.0 5.25.0 5.26.0: Framework for notifying the user of an event
+kde-frameworks/knotifyconfig 5.23.0 5.25.0 5.26.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.23.0 5.25.0 5.26.0: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.23.0 5.25.0 5.26.0-r1: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.23.0 5.25.0 5.26.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.23.0 5.25.0 5.26.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.23.0 5.25.0 5.26.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kross 5.23.0 5.25.0 5.26.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.23.0 5.25.0 5.26.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.23.0 5.25.0 5.26.0: Advanced plugin and service introspection
+kde-frameworks/ktexteditor 5.23.0 5.25.0 5.26.0-r1: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.23.0 5.25.0 5.26.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.23.0 5.25.0 5.26.0: Framework for converting units
+kde-frameworks/kwallet 5.23.0 5.25.0 5.26.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwayland 5.23.0 5.25.0 5.26.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwidgetsaddons 5.23.0 5.25.0 5.26.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.23.0 5.25.0 5.26.0: Framework providing access to properties and features of the window manager
+kde-frameworks/kxmlgui 5.23.0-r1 5.25.0 5.26.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlrpcclient 5.23.0 5.25.0 5.26.0: Framework providing client-side support for the XML-RPC protocol
+kde-frameworks/modemmanager-qt 5.23.0 5.25.0 5.26.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.23.0 5.25.0 5.26.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 4.14.3 5.23.0 5.25.0 5.26.0: Oxygen SVG icon theme
+kde-frameworks/plasma 5.23.0 5.25.0 5.26.0: Plasma framework
+kde-frameworks/solid 5.23.0 5.25.0 5.26.0: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/sonnet 5.23.0 5.25.0 5.26.0: Framework for providing spell-checking through abstraction of popular backends
+kde-frameworks/threadweaver 5.23.0 5.25.0 5.26.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/about-distro 1.1.0: KCM displaying distribution and system information
 kde-misc/adjustableclock 4.1.4: Plasmoid to show date and time in adjustable format using rich text
 kde-misc/akonadi-git-resource 0_p20131023: Git commit integration in Akonadi
@@ -11770,47 +11770,47 @@ kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Plat
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
-kde-plasma/bluedevil 5.6.5 5.7.4: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.6.5-r1 5.7.4: Breeze visual style for the Plasma desktop
-kde-plasma/breeze-grub 5.6.5 5.7.4: Breeze theme for GRUB
-kde-plasma/breeze-gtk 5.6.5 5.7.4: Official GTK+ port of KDE's Breeze widget style
-kde-plasma/breeze-plymouth 5.6.5 5.7.4: Breeze theme for Plymouth
-kde-plasma/kactivitymanagerd 5.6.5 5.7.4: System service to manage user's activities, track the usage patterns etc.
-kde-plasma/kde-cli-tools 5.6.5 5.7.4: Tools based on KDE Frameworks 5 to better interact with the system
-kde-plasma/kde-gtk-config 5.6.5 5.7.4-r1: KDE Plasma systemsettings kcm to set GTK application look&feel
-kde-plasma/kdecoration 5.6.5 5.7.4: Plugin based library to create window decorations
-kde-plasma/kdeplasma-addons 5.6.5 5.7.4: Extra Plasma applets and engines
-kde-plasma/kgamma 5.6.5 5.7.4: Screen gamma values kcontrol module
-kde-plasma/khotkeys 5.6.5 5.7.4: KDE Plasma workspace hotkey module
-kde-plasma/kinfocenter 5.6.5 5.7.4: A utility that provides information about a computer system
-kde-plasma/kmenuedit 5.6.5 5.7.4: KDE Plasma menu editor
-kde-plasma/kscreen 5.6.5-r1 5.7.4: KDE Plasma screen management
-kde-plasma/kscreenlocker 5.6.5 5.7.4: Library and components for secure lock screen architecture
-kde-plasma/ksshaskpass 0.5.3-r1 5.6.5 5.7.4: KDE implementation of ssh-askpass with Kwallet integration
-kde-plasma/ksysguard 5.6.5 5.7.4: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.6.5-r1 5.7.4: KWallet PAM module to not enter password again
-kde-plasma/kwayland-integration 5.6.5 5.7.4: Provides integration plugins for various KDE frameworks for Wayland
-kde-plasma/kwin 5.6.5-r1 5.7.4: KDE window manager
-kde-plasma/kwrited 5.6.5 5.7.4: KDE daemon listening for wall and write messages
-kde-plasma/libkscreen 5.6.5 5.6.5-r1 5.7.4: Plasma screen management library
-kde-plasma/libksysguard 5.6.5 5.7.4: Task management and system monitoring library
-kde-plasma/milou 5.6.5 5.7.4: Dedicated search application built on top of Baloo
-kde-plasma/oxygen 5.6.5 5.7.4: Oxygen visual style for the Plasma desktop
+kde-plasma/bluedevil 5.6.5 5.7.4 5.7.5: Bluetooth stack for KDE Plasma
+kde-plasma/breeze 5.6.5-r1 5.7.4 5.7.5: Breeze visual style for the Plasma desktop
+kde-plasma/breeze-grub 5.6.5 5.7.4 5.7.5: Breeze theme for GRUB
+kde-plasma/breeze-gtk 5.6.5 5.7.4 5.7.5: Official GTK+ port of KDE's Breeze widget style
+kde-plasma/breeze-plymouth 5.6.5 5.7.4 5.7.5: Breeze theme for Plymouth
+kde-plasma/kactivitymanagerd 5.6.5 5.7.4 5.7.5: System service to manage user's activities, track the usage patterns etc.
+kde-plasma/kde-cli-tools 5.6.5 5.7.4 5.7.5: Tools based on KDE Frameworks 5 to better interact with the system
+kde-plasma/kde-gtk-config 5.6.5 5.7.4-r1 5.7.5: KDE Plasma systemsettings kcm to set GTK application look&feel
+kde-plasma/kdecoration 5.6.5 5.7.4 5.7.5: Plugin based library to create window decorations
+kde-plasma/kdeplasma-addons 5.6.5 5.7.4 5.7.5: Extra Plasma applets and engines
+kde-plasma/kgamma 5.6.5 5.7.4 5.7.5: Screen gamma values kcontrol module
+kde-plasma/khotkeys 5.6.5 5.7.4 5.7.5: KDE Plasma workspace hotkey module
+kde-plasma/kinfocenter 5.6.5 5.7.4 5.7.5: A utility that provides information about a computer system
+kde-plasma/kmenuedit 5.6.5 5.7.4 5.7.5: KDE Plasma menu editor
+kde-plasma/kscreen 5.6.5-r1 5.7.4 5.7.5: KDE Plasma screen management
+kde-plasma/kscreenlocker 5.6.5 5.7.4 5.7.5: Library and components for secure lock screen architecture
+kde-plasma/ksshaskpass 0.5.3-r1 5.6.5 5.7.4 5.7.5: KDE implementation of ssh-askpass with Kwallet integration
+kde-plasma/ksysguard 5.6.5 5.7.4 5.7.5: Network-enabled task manager and system monitor
+kde-plasma/kwallet-pam 5.6.5-r1 5.7.4 5.7.5: KWallet PAM module to not enter password again
+kde-plasma/kwayland-integration 5.6.5 5.7.4 5.7.5: Provides integration plugins for various KDE frameworks for Wayland
+kde-plasma/kwin 5.6.5-r1 5.7.4 5.7.5: KDE window manager
+kde-plasma/kwrited 5.6.5 5.7.4 5.7.5: KDE daemon listening for wall and write messages
+kde-plasma/libkscreen 5.6.5 5.6.5-r1 5.7.4 5.7.5: Plasma screen management library
+kde-plasma/libksysguard 5.6.5 5.7.4 5.7.5: Task management and system monitoring library
+kde-plasma/milou 5.6.5 5.7.4 5.7.5: Dedicated search application built on top of Baloo
+kde-plasma/oxygen 5.6.5 5.7.4 5.7.5: Oxygen visual style for the Plasma desktop
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
-kde-plasma/plasma-desktop 5.6.5 5.7.4: KDE Plasma desktop
-kde-plasma/plasma-integration 5.6.5 5.7.4: Qt Platform Theme integration plugins for the Plasma workspaces
-kde-plasma/plasma-mediacenter 5.6.5 5.7.3: Unified media experience for any device capable of running KDE Plasma
-kde-plasma/plasma-meta 5.6.5 5.7.4: Merge this to pull in all Plasma 5 packages
-kde-plasma/plasma-nm 5.6.5 5.7.4: KDE Plasma applet for NetworkManager
-kde-plasma/plasma-pa 5.6.5 5.7.4: Plasma applet for audio volume management using PulseAudio
-kde-plasma/plasma-sdk 5.6.5 5.7.4: Useful applications for Plasma development
-kde-plasma/plasma-workspace 5.6.5.1-r2 5.7.4: KDE Plasma workspace
-kde-plasma/plasma-workspace-wallpapers 5.6.5 5.7.4: Additional wallpapers for the Plasma workspace
-kde-plasma/polkit-kde-agent 5.6.5 5.7.4: PolKit agent module for KDE Plasma
-kde-plasma/powerdevil 5.6.5 5.7.4 5.7.4-r1: Power management for KDE Plasma Shell
-kde-plasma/sddm-kcm 5.6.5 5.7.4: KDE Plasma control module for SDDM
-kde-plasma/systemsettings 5.6.5 5.7.4: System settings utility
-kde-plasma/user-manager 5.6.5 5.7.4: Simple system settings module to manage the users of your system
+kde-plasma/plasma-desktop 5.6.5 5.7.4 5.7.5: KDE Plasma desktop
+kde-plasma/plasma-integration 5.6.5 5.7.4 5.7.5: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-mediacenter 5.6.5 5.7.3 5.7.5: Unified media experience for any device capable of running KDE Plasma
+kde-plasma/plasma-meta 5.6.5 5.7.4 5.7.5: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-nm 5.6.5 5.7.4 5.7.5: KDE Plasma applet for NetworkManager
+kde-plasma/plasma-pa 5.6.5 5.7.4 5.7.5: Plasma applet for audio volume management using PulseAudio
+kde-plasma/plasma-sdk 5.6.5 5.7.4 5.7.5: Useful applications for Plasma development
+kde-plasma/plasma-workspace 5.6.5.1-r2 5.7.4 5.7.5: KDE Plasma workspace
+kde-plasma/plasma-workspace-wallpapers 5.6.5 5.7.4 5.7.5: Additional wallpapers for the Plasma workspace
+kde-plasma/polkit-kde-agent 5.6.5 5.7.4 5.7.5: PolKit agent module for KDE Plasma
+kde-plasma/powerdevil 5.6.5 5.7.4 5.7.4-r1 5.7.5: Power management for KDE Plasma Shell
+kde-plasma/sddm-kcm 5.6.5 5.7.4 5.7.5: KDE Plasma control module for SDDM
+kde-plasma/systemsettings 5.6.5 5.7.4 5.7.5: System settings utility
+kde-plasma/user-manager 5.6.5 5.7.4 5.7.5: Simple system settings module to manage the users of your system
 lxde-base/lxappearance 0.5.5 0.6.2: LXDE GTK+ theme switcher
 lxde-base/lxappearance-obconf 0.2.1 0.2.3: LXAppearance plugin for configuring OpenBox
 lxde-base/lxde-common 0.5.5-r3 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
