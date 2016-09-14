@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DESCRIPTION=Fraunhofer AAC codec library
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/opencore-amr/
+IUSE=static-libs examples abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos
+LICENSE=FraunhoferFDK
+SLOT=0/1
+SRC_URI=mirror://sourceforge/opencore-amr/fdk-aac-0.1.4.tar.gz https://dev.gentoo.org/~soap/distfiles/fdk-aac-0.1.4_p20160914-fix-c++14.patch.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=5b956d92734de4ecba639e3701d7a786

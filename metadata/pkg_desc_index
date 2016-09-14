@@ -10895,13 +10895,13 @@ games-roguelike/crossfire-client 1.71.0-r1 1.71.0-r2: Client for the nethack-sty
 games-roguelike/dwarf-fortress 0.40.24 0.42.06 0.43.05: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
 games-roguelike/mangband 1.1.3: Online multiplayer real-time roguelike game, derived from Angband.
-games-roguelike/mazesofmonad 1.0.9-r2: Console-based roguelike Role Playing Game similar to nethack
+games-roguelike/mazesofmonad 1.0.9-r2 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.5.2: Rogue-like D&D curses game similar to nethack (BUT BETTER)
 games-roguelike/nethack 3.6.0-r3: The ultimate old-school single player dungeon exploration game
-games-roguelike/powder 117: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
+games-roguelike/powder 117 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
-games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
-games-roguelike/stone-soup 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
+games-roguelike/scourge 0.21.1 0.21.1-r1: A graphical rogue-like adventure game
+games-roguelike/stone-soup 0.16.2 0.16.2-r1: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b 0.8.0b-r1: Gothic science fantasy roguelike game
@@ -12493,7 +12493,7 @@ media-libs/exempi 2.2.0 2.2.1: Exempi is a port of the Adobe XMP SDK to work on 
 media-libs/exiftool 10.20 10.23 10.24 10.25: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
-media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4: Fraunhofer AAC codec library
+media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4-r1: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.22 9999: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10 0.9.10-r1: Run-time filter design and execution library
 media-libs/flac 1.3.1-r1: free lossless audio encoder and decoder
