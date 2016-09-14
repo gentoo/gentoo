@@ -11,7 +11,7 @@ inherit python-r1 vcs-snapshot
 COMMIT="v${PV#20}"
 DESCRIPTION="mercurial to git converter using git-fast-import"
 HOMEPAGE="https://github.com/frej/fast-export"
-SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
