@@ -33,6 +33,8 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}-indicator-ng-configure-fix.patch" )
+
 src_configure() {
 	mate_src_configure \
 		--with-gtk=$(usex gtk3 3.0 2.0)
