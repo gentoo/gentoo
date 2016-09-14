@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit multilib toolchain-funcs multilib-minimal
+inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"

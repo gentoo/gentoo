@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
+EAPI="4"
 
-inherit git-r3 multilib toolchain-funcs multilib-minimal
+inherit git-2 multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
@@ -24,9 +24,6 @@ DEPEND="ssl? (
 	)"
 RDEPEND="${DEPEND}"
 
-DOCS=( README ChangeLog )
-HTML_DOCS=( rtmpdump.1.html rtmpgw.8.html )
-
 pkg_setup() {
 	if ! use ssl && { use gnutls || use polarssl; }; then
 		ewarn "USE='gnutls polarssl' are ignored without USE='ssl'."
@@ -35,8 +32,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
 	# fix #571106 by restoring pre-GCC5 inline semantics
 	append-cflags -std=gnu89
 	# fix Makefile ( bug #298535 , bug #318353 and bug #324513 )
@@ -70,7 +65,9 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	mkdir -p "${ED}"/usr/$(get_libdir) || die
-	if ! multilib_is_native_abi; then
+	if multilib_is_native_abi; then
+		dodoc README ChangeLog rtmpdump.1.html rtmpgw.8.html
+	else
 		cd librtmp || die
 	fi
 	emake DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man" \
