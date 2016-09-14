@@ -8,7 +8,7 @@ KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.10:= >=app-arch/dpkg-1.17 dev-perl/TimeDate virtual/perl-Getopt-Long
 SLOT=0
-SRC_URI=mirror://debian/pool/main/d/debhelper/debhelper_9.20160709.tar.xz
+SRC_URI=mirror://debian/pool/main/d/debhelper/debhelper_10.tar.xz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
 _md5_=2aeb0aec6049bc12f9a3d9b7c5aef3cc

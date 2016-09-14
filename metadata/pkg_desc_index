@@ -2000,7 +2000,6 @@ app-mobilephone/ringtonetools 2.26: program for creating ringtones and logos for
 app-mobilephone/scmxx 0.9.0: Exchange data with Siemens phones
 app-mobilephone/sms 2.0.3 2.1.0: Command line program for sending SMS to Polish GSM mobile phone users
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
-app-mobilephone/smssend 3.4 3.4-r2: Universal SMS sender
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
 app-mobilephone/sobexsrv 1.0.1 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
@@ -2017,7 +2016,7 @@ app-office/calligra-l10n 2.9.11: Calligra localization package
 app-office/dia 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7 0.8.8: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
-app-office/geierlein 0.8.0 0.9.1 0.9.4: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
+app-office/geierlein 0.8.0 0.9.1 0.9.4 0.9.5: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
 app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
 app-office/gnucash 2.6.12 2.6.13: A personal finance manager
 app-office/gnumeric 1.12.29 1.12.31 1.12.32: The GNOME Spreadsheet
@@ -4969,7 +4968,6 @@ dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports readin
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
 dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0: skarnet.org general-purpose libraries
-dev-libs/skyutils 2.8-r2 2.8-r5: Library of assorted C utility functions
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
@@ -7841,7 +7839,6 @@ dev-python/pydns 2.3.6-r1 3.1.0: Python DNS (Domain Name System) library
 dev-python/pyds 0.7.3-r1: Python Desktop Server
 dev-python/pyds9 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
-dev-python/pyechonest 7.2.1 9.0.0: Python interface to The Echo Nest APIs
 dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
 dev-python/pyelemental 1.2.0-r1: Python bindings for libelemental (sci-chemistry/gelemental)
 dev-python/pyelftools 0.22 0.23-r1: pure-Python library for analyzing ELF files and DWARF debugging information
@@ -9836,7 +9833,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160709 9.20160814: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160814 10: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.81 1.0.82: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -12886,7 +12883,6 @@ media-plugins/gmpc-mserver 0.20.0: This plugin allows you to play local files on
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/gmpc-wikipedia 11.8.16: This plugin shows the Wikipedia article about the currently playing artist
 media-plugins/grilo-plugins 0.2.12 0.2.17 0.3.2 0.3.3: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.4.5 1.6.3 1.8.2: plugin for gstreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
@@ -13910,7 +13906,7 @@ net-analyzer/nessus-client 1.0.2-r1 1.0.2-r2: A client for the Nessus vulnerabil
 net-analyzer/nessus-core 2.2.9-r1: A remote security scanner for Linux (nessus-core)
 net-analyzer/nessus-libraries 2.2.9-r1: A remote security scanner for Linux (nessus-libraries)
 net-analyzer/nessus-plugins 2.2.9-r1: A remote security scanner for Linux (nessus-plugins)
-net-analyzer/net-snmp 5.7.3-r3 5.7.3-r4 5.7.3-r5: Software for generating and retrieving SNMP data
+net-analyzer/net-snmp 5.7.3-r3 5.7.3-r5 5.7.3-r6: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/netcat6 1.0-r2: netcat clone with better IPv6 support, improved code, etc...
 net-analyzer/netdata 1.2.0-r1 1.3.0 9999: Linux real time system monitoring, done right!
