@@ -1362,12 +1362,12 @@ app-emulation/virt-manager 1.3.2 1.4.0-r1 9999: A graphical tool for administeri
 app-emulation/virt-viewer 3.1: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.96 0.1.117 0.1.118: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 4.3.38 4.3.40 5.0.16-r1 5.0.26 5.1.2 5.1.4: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 4.3.38 4.3.40 5.0.16 5.0.26 5.1.2 5.1.4: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 4.3.38.106717 4.3.40.110317 5.0.16.105871-r1 5.0.26.108824 5.1.2.108956 5.1.4.110228: Family of powerful x86 virtualization products for enterprise as well as home use
-app-emulation/virtualbox-extpack-oracle 4.3.38.106717 4.3.40.110317 5.0.16.105871 5.0.26.108824 5.1.2.108956 5.1.4.110228: PUEL extensions for VirtualBox
+app-emulation/virtualbox 4.3.38 4.3.40 5.0.16-r1 5.0.26 5.1.4 5.1.6: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 4.3.38 4.3.40 5.0.16 5.0.26 5.1.4 5.1.6: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 4.3.38.106717 4.3.40.110317 5.0.16.105871-r1 5.0.26.108824 5.1.4.110228 5.1.6.110634: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox-extpack-oracle 4.3.38.106717 4.3.40.110317 5.0.16.105871 5.0.26.108824 5.1.4.110228 5.1.6.110634: PUEL extensions for VirtualBox
 app-emulation/virtualbox-guest-additions 4.3.38 4.3.40 5.0.16 5.0.20: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 4.3.38 4.3.40 5.0.16 5.0.26 5.1.2 5.1.4: Kernel Modules for Virtualbox
+app-emulation/virtualbox-modules 4.3.38 4.3.40 5.0.16 5.0.26 5.1.4 5.1.6: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/vmware-modules 271.3-r1 279.6 304.2 304.3-r1 308.1.0: VMware kernel modules
