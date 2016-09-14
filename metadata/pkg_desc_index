@@ -14262,7 +14262,7 @@ net-im/ejabberd 16.04 16.04-r1 16.08: Robust, scalable and extensible XMPP serve
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
-net-im/gajim 0.16.5: Jabber client written in PyGTK
+net-im/gajim 0.16.5 0.16.5-r1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
