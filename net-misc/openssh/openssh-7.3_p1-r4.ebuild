@@ -129,7 +129,7 @@ src_prepare() {
 		popd >/dev/null
 		epatch "${WORKDIR}"/${X509_PATCH%.*}
 		epatch "${FILESDIR}"/${P}-fix-segfault-with-x509.patch
-		save_version X509
+		#save_version X509
 	fi
 	if use ldap ; then
 		epatch "${WORKDIR}"/${LDAP_PATCH%.*}
