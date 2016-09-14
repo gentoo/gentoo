@@ -47,13 +47,6 @@ src_unpack() {
 	git-r3_checkout
 }
 
-src_prepare() {
-	# Support setting LLVM_MAIN_SRC_DIR and other llvm-config overrides
-	eapply "${FILESDIR}"/9999/0001-compiler-rt-cmake-Support-overriding-llvm-config-que.patch
-
-	default
-}
-
 src_configure() {
 	# pre-set since we need to pass it to cmake
 	BUILD_DIR=${WORKDIR}/${P}_build
