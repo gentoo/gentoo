@@ -5693,13 +5693,16 @@ net-irc/ngircd:ident - Enables support for net-libs/libident
 net-irc/psybnc:multinetwork - Adds support for multiple networks
 net-irc/psybnc:oidentd - Adds support for oidentd
 net-irc/psybnc:scripting - Adds scripting support
-net-irc/quassel:X - Build the Qt 4 GUI client for quassel. If this USE flag is disabled, the GUI is not built, and cannot be used. You might want to disable this on the server, but you need it enabled on the client.
+net-irc/quassel:X - Build the Qt5 GUI client for quassel. If this USE flag is disabled, the GUI is not built, and cannot be used. You might want to disable this on the server, but you need it enabled on the client.
+net-irc/quassel:breeze - Support the Breeze and Breeze-Dark icon sets (default for Plasma 5).
 net-irc/quassel:crypt - Support core->network per-channel and per-query blowfish encryption via app-crypt/qca SLOT 2.
-net-irc/quassel:monolithic - Build Standalone client with integrated core, no external quasselcore needed. Only useful if you don't want to use quassels client/server model. The server and X flags are not needed in this case but it is possible to enable them too.
+net-irc/quassel:dbus - Support desktop notifications via the StatusNotifier D-Bus service (used by most modern desktop environments).
+net-irc/quassel:monolithic - Build standalone client with integrated core, no external quasselcore needed. Only useful if you don't want to use Quassel's client/server model. The server and X flags are not needed in this case but it is possible to enable them too.
+net-irc/quassel:oxygen - Support the Oxygen icon set that was the default for KDE4.
 net-irc/quassel:phonon - Build client with phonon backend support. This enables sound playback in client.
 net-irc/quassel:server - Build the server binary. If this USE flag is disabled, the 'core' server binary for quassel is not built, and cannot be used. You need this enabled on the server, but you might want to disable it on the client.
-net-irc/quassel:snorenotify - Support for snore notification framework.
-net-irc/quassel:webkit - Use qt-webkit rendering engine for showing URL thumbnails and for other things that need web browser integration.
+net-irc/quassel:snorenotify - Support for Snore notification framework.
+net-irc/quassel:urlpreview - Use QtWebEngine rendering engine for showing URL thumbnails.
 net-irc/rbot:aspell - Use aspell instead of ispell in the "spell" plugin for rbot. The vanilla plugin uses ispell, but enabling this flag makes it use the ispell interface from aspell instead.
 net-irc/rbot:cal - Add dependency over a package providing the /usr/bin/cal command, which is needed to enable the "cal" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
 net-irc/rbot:dict - Add dependency over dev-ruby/ruby-dict, which is needed to enable the "dict" plugin for rbot. If the USE flag is disabled the plugin is also disabled by default.
