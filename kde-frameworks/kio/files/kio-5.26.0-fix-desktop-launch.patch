@@ -1,0 +1,26 @@
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 10 Sep 2016 22:14:56 +0000
+Subject: Fix launching terminal .desktop files with konsole
+X-Git-Url: http://quickgit.kde.org/?p=kio.git&a=commitdiff&h=c784a879eaba0babc6274bc32e761772add3d4f8
+---
+Fix launching terminal .desktop files with konsole
+
+Launching .desktop files which have Terminal=true currently fails, because kio adds to the konsole command the obsolete KDE4 command line options,
+which are not recognized by the KF5 konsole.
+
+REVIEW: 128882
+---
+
+
+--- a/src/core/desktopexecparser.cpp
++++ b/src/core/desktopexecparser.cpp
+@@ -363,7 +363,7 @@
+             if (!d->service.path().isEmpty()) {
+                 terminal += " --workdir " + KShell::quoteArg(d->service.path());
+             }
+-            terminal += QLatin1String(" -caption=%c %i %m");
++            terminal += QLatin1String(" -qwindowtitle '%c' %i");
+         }
+         terminal += ' ';
+         terminal += d->service.terminalOptions();
+
