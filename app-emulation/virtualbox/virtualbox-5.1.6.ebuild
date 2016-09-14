@@ -11,7 +11,7 @@ MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.1.4-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
@@ -177,8 +177,9 @@ src_prepare() {
 		java-pkg-opt-2_src_prepare
 	fi
 
+	# Only add nopie patch when we're on hardened
 	if ! gcc-specs-pie ; then
-		rm "${WORKDIR}/patches/050_${PN}-5.0.2-nopie.patch" || die
+		rm "${WORKDIR}"/patches/050_${PN}-*-nopie.patch || die
 	fi
 
 	eapply "${WORKDIR}/patches"
@@ -220,9 +221,6 @@ src_compile() {
 	source ./env.sh || die
 
 	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
-	# and strip all flags
-	# strip-flags
-
 	MAKEJOBS=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+')
 	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+') #'
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
@@ -262,10 +260,10 @@ src_install() {
 	insinto /etc/vbox
 	newins "${FILESDIR}/${PN}-4-config" vbox.cfg
 
-	# Set the right libdir
-	sed -i \
+	# Set the correct libdir
+	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		"${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
@@ -286,7 +284,7 @@ src_install() {
 		vbox_inst ${each}
 	done
 
-	# These binaries need to be suid root in any case.
+	# These binaries need to be suid root.
 	for each in VBox{Headless,Net{AdpCtl,DHCP,NAT}} ; do
 		vbox_inst ${each} 4750
 	done
