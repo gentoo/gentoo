@@ -619,11 +619,6 @@ dev-ruby/metasploit-model:1.0
 
 # Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
 # Fails to build. Dead upstream.
-# Masked for removal in 30 days. Bug 443812.
-net-misc/quickshare
-
-# Michael Palimaka <kensington@gentoo.org> (10 Aug 2016)
-# Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug 543154.
 net-im/indicator-messages
 
