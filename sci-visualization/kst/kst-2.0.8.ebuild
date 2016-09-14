@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils multilib
+inherit cmake-utils multilib qmake-utils
 
 MY_P=Kst-${PV}
 
@@ -64,5 +64,8 @@ src_configure() {
 		$(cmake-utils_use test kst_test)
 		$(cmake-utils_use qt5 kst_qt5)
 	)
+
+	use !qt5 && mycmakeargs+=( -DQT_LCONVERT_EXECUTABLE="$(qt4_get_bindir)/lconvert" )
+
 	cmake-utils_src_configure
 }
