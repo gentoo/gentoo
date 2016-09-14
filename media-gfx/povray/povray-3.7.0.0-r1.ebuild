@@ -17,7 +17,8 @@ fi
 
 DESCRIPTION="The Persistence of Vision Raytracer"
 HOMEPAGE="http://www.povray.org/"
-SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
@@ -43,6 +44,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 PATCHES=(
 	"${FILESDIR}"/${P}-user-conf.patch
 	"${FILESDIR}"/${P}-automagic.patch
+	"${WORKDIR}"/${P}_p20160914-fix-c++14.patch
 )
 
 src_prepare() {
