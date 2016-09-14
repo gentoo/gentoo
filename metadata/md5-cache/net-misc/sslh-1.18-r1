@@ -4,7 +4,7 @@ DESCRIPTION=Port multiplexer - accept both HTTPS and SSH connections on the same
 EAPI=6
 HOMEPAGE=http://www.rutschle.net/tech/sslh.shtml
 IUSE=caps systemd tcpd
-KEYWORDS=~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86
+KEYWORDS=amd64 ~arm ~m68k ~mips ~s390 ~sh x86
 LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap ) systemd? ( sys-apps/systemd:= ) tcpd? ( sys-apps/tcp-wrappers ) dev-libs/libconfig
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://www.rutschle.net/tech/sslh/sslh-v1.18.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=52bd1f0035a56a9161416e462f91b10e
+_md5_=1bf3d2daa9798337462d4e91cad65f4c
