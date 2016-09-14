@@ -17,6 +17,8 @@ HOMEPAGE="http://net-snmp.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-${PATCHSET}.tar.xz
+	https://dev.gentoo.org/~dilfridge/distfiles/${P}-perl524.patch.gz
+	https://dev.gentoo.org/~dilfridge/distfiles/${P}-perl524-2.patch.gz
 "
 
 S=${WORKDIR}/${P/_/.}
@@ -48,7 +50,7 @@ COMMON_DEPEND="
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
 	mysql? ( virtual/mysql )
-	perl? ( <dev-lang/perl-5.24.0:= )
+	perl? ( dev-lang/perl:= )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -77,6 +79,9 @@ pkg_setup() {
 src_prepare() {
 	# snmpconf generates config files with proper selinux context
 	use selinux && epatch "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
+
+	epatch "${WORKDIR}"/${P}-perl524.patch
+	epatch "${WORKDIR}"/${P}-perl524-2.patch
 
 	epatch "${WORKDIR}"/patches/*.patch
 
@@ -123,9 +128,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake \
-		OTHERLDFLAGS="${LDFLAGS}" \
-		sedscript all
+	for target in snmplib agent sedscript all; do
+		emake OTHERLDFLAGS="${LDFLAGS}" ${target}
+	done
 
 	use doc && emake docsdox
 }
@@ -184,4 +189,6 @@ src_install () {
 			"${D}"/usr/share/snmp/snmpconf-data \
 			|| die
 	fi
+
+	prune_libtool_files
 }
