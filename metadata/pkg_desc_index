@@ -2327,7 +2327,6 @@ app-text/kbibtex 0.6: BibTeX editor for KDE to edit bibliographies used with LaT
 app-text/kchmviewer 7.5-r1: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
-app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
 app-text/krop 0.4.7 0.4.8 0.4.9 0.4.11: A tool to crop PDF files
 app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
 app-text/lcdf-typetools 2.97 2.104 2.105 2.106: Font utilities for eg manipulating OTF
@@ -14264,7 +14263,6 @@ net-im/empathy 3.12.12: Telepathy instant messaging and video/audio call client 
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
 net-im/gajim 0.16.5 0.16.5-r1: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
-net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.1-r2 2.3.2-r2 2.3.3-r2 2.3.4-r1: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1-r1 3.0: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
@@ -14955,7 +14953,6 @@ net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.17: Qt4 blogging client
 net-misc/quagga 1.0.20160315-r2 1.0.20160315-r3: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
-net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy sharing of files
 net-misc/r8168 8.040.00 8.042.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.5: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
@@ -17923,7 +17920,7 @@ www-client/midori 0.5.11-r2: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 39.0.2256.48 39.0.2256.71: A fast and secure web browser
-www-client/opera-beta 40.0.2308.26 40.0.2308.44: A fast and secure web browser
+www-client/opera-beta 40.0.2308.44 40.0.2308.52: A fast and secure web browser
 www-client/opera-developer 41.0.2340.0 41.0.2349.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
