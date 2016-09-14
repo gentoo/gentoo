@@ -9561,7 +9561,7 @@ dev-tex/bibtex2html 1.97 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
-dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5: Checks latex source for common mistakes
+dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5 1.7.6: Checks latex source for common mistakes
 dev-tex/circuit_macros 8.3.2 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cjk-latex 4.8.3-r1 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
 dev-tex/cpp2latex 2.3-r1 2.3-r2: A program to convert C++ code to LaTeX source
@@ -12972,7 +12972,7 @@ media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV 
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.05.20 2016.06.26 2016.07.19 2016.08.27 2016.09.05: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.05.20 2016.06.26 2016.07.19 2016.08.27 2016.09.05 2016.09.12: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -13666,7 +13666,7 @@ media-video/mjpegtools 2.1.0-r2: Tools for MJPEG video
 media-video/mjpg-streamer 0_pre20120421 0_pre20120621 0_pre20120621-r1: MJPG-streamer takes JPGs from Linux-UVC compatible webcams
 media-video/mkclean 0.8.6-r1 0.8.7: mkclean is a command line tool to clean and optimize Matroska files
 media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a command line tool to verify Matroska files for spec conformance
-media-video/mkvtoolnix 8.5.2 9.2.0 9.3.1 9.4.0: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 8.5.2 9.2.0 9.3.1 9.4.0 9.4.2: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
 media-video/movit 1.2.0 1.3.0 1.3.1-r1 1.3.2: Modern Video Toolkit

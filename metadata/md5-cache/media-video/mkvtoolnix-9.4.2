@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=>=dev-libs/boost-1.46.0:= >=dev-libs/libebml-1.3.3:= dev-libs/pugixml media-libs/flac >=media-libs/libmatroska-1.4.4:= media-libs/libogg media-libs/libvorbis sys-apps/file sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 ) || ( ( dev-lang/ruby:2.3 virtual/rubygems[ruby_targets_ruby23] ) ( dev-lang/ruby:2.2 virtual/rubygems[ruby_targets_ruby22] ) ( dev-lang/ruby:2.1 virtual/rubygems[ruby_targets_ruby21] ) ( dev-lang/ruby:2.0 virtual/rubygems[ruby_targets_ruby20] ) ) sys-devel/gettext virtual/pkgconfig test? ( dev-cpp/gtest ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Tools to create, alter, and inspect Matroska files
+EAPI=5
+HOMEPAGE=http://www.bunkus.org/videotools/mkvtoolnix
+IUSE=curl debug pch test qt5
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/boost-1.46.0:= >=dev-libs/libebml-1.3.3:= dev-libs/pugixml media-libs/flac >=media-libs/libmatroska-1.4.4:= media-libs/libogg media-libs/libvorbis sys-apps/file sys-libs/zlib qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 )
+SLOT=0
+SRC_URI=http://www.bunkus.org/videotools/mkvtoolnix/sources/mkvtoolnix-9.4.2.tar.xz
+_eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2e1d290f8b1dc3f4117d7f5003e08826
