@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/frej/fast-export/archive/v160914.tar.gz -> hg-fast-export-160914.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
 _eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	165fc17c38d1b11dac2008280dab6e80	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	vcs-snapshot	2b65ecb2d0f91e4322c2ac8d673993bd
-_md5_=ff5c368e198bd3dcdd56e083258e43c0
+_md5_=930e018bcbe0dfd2d29e60838e41341d

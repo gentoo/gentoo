@@ -18419,7 +18419,7 @@ x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.0.1 2.1.0 2.1.1: Stopwatch application
+x11-misc/kronometer 2.1.1: Stopwatch application
 x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut both directly or as part of a combination
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
