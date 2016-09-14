@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-    This library contains many useful functions such as chained lists,
-    string manipulation, socket, and the HTTP protocol.
-  </longdescription>
-</pkgmetadata>
