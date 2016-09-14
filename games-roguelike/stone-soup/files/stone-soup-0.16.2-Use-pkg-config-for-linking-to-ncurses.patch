@@ -8,10 +8,10 @@ Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=527034
  source/Makefile | 14 ++++++--------
  1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/source/Makefile b/source/Makefile
+diff --git a/Makefile b/Makefile
 index df51e70..2db2781 100644
---- a/source/Makefile
-+++ b/source/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -956,17 +956,15 @@ endif
  # Your ncurses library may include Unicode support, and you may not have a
  # separate libncursesw; this is the case on Mac OS/Darwin.
