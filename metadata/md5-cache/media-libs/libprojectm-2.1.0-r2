@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-fonts/dejavu >=media-libs/ftgl-2.1.3_rc5 media-libs/freetype:2 media-libs/mesa media-libs/glew:= sys-libs/zlib video_cards_nvidia? ( media-gfx/nvidia-cg-toolkit ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A graphical music visualization plugin similar to milkdrop
+EAPI=6
+HOMEPAGE=http://projectm.sourceforge.net
+IUSE=debug openmp video_cards_nvidia
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=media-fonts/dejavu >=media-libs/ftgl-2.1.3_rc5 media-libs/freetype:2 media-libs/mesa media-libs/glew:= sys-libs/zlib video_cards_nvidia? ( media-gfx/nvidia-cg-toolkit )
+SLOT=0
+SRC_URI=mirror://sourceforge/projectm/projectM-complete-2.1.0-Source.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=6d03d908200ea1cb9ac8ca9aeccdff32
