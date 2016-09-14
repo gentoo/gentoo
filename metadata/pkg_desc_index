@@ -10141,7 +10141,7 @@ dev-vcs/gitsh 0.10: An interactive shell for git
 dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.32 0.34: A series of bash scripts which add a quilt-like interface to git
-dev-vcs/hg-fast-export 20140328 20140706 20150816: mercurial to git converter using git-fast-import
+dev-vcs/hg-fast-export 160914: mercurial to git converter using git-fast-import
 dev-vcs/hg-git 0.8.5: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.4 1.8.5 1.8.6 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
