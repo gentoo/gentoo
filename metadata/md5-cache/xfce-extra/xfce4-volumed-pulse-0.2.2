@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare setup
+DEPEND=>=dev-libs/glib-2.16:2= dev-libs/keybinder:0= >=media-sound/pulseaudio-0.9.19:=[glib] >=x11-libs/gtk+-2.20:2= >=xfce-base/xfconf-4.8:= libnotify? ( x11-libs/libnotify:= ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Daemon to control volume up/down and mute keys for pulseaudio
+EAPI=5
+HOMEPAGE=https://git.xfce.org/apps/xfce4-volumed-pulse/
+IUSE=debug libnotify
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.16:2= dev-libs/keybinder:0= >=media-sound/pulseaudio-0.9.19:=[glib] >=x11-libs/gtk+-2.20:2= >=xfce-base/xfconf-4.8:= libnotify? ( x11-libs/libnotify:= )
+SLOT=0
+SRC_URI=mirror://xfce/src/apps/xfce4-volumed-pulse/0.2/xfce4-volumed-pulse-0.2.2.tar.bz2
+_eclass_exported_funcs=pkg_preinst:xfconf pkg_postrm:xfconf pkg_postinst:xfconf pkg_setup:- src_prepare:xfconf src_configure:xfconf src_install:xfconf
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48	xfconf	d842ab8b2140980394561496bf157447
+_md5_=1e0a3a00ccb61ce8ab606fb6e5e44704
