@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare prerm unpack
 DEPEND=dev-lang/perl app-text/sgml-common >=app-text/opensp-1.5.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-text/sgml-common-0.6.3-r2
-DESCRIPTION=Jade is an implementation of DSSSL - an ISO standard for formatting SGML and XML documents
+DESCRIPTION=Jade is an implementation of DSSSL for formatting SGML and XML documents
 EAPI=5
 HOMEPAGE=http://openjade.sourceforge.net
 IUSE=static-libs
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/openjade/openjade-1.3.2.tar.gz
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:sgml-catalog pkg_postinst:sgml-catalog src_unpack:base src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=3afe33603e9315a615d79cd39a24a2c1
+_md5_=8c0d260065996a853448b50b21f7ccc9
