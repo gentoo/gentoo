@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for HTTP-Tiny
 EAPI=5
-KEYWORDS=alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/HTTP-Tiny-0.54.0 ) !<perl-core/HTTP-Tiny-0.54.0 !>perl-core/HTTP-Tiny-0.54.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=214fd643564b99f98682b506fbd8c037
+_md5_=46507839eb6de9f0002f059380c86bd8

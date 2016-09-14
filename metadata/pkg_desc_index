@@ -12679,8 +12679,8 @@ media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for readi
 media-libs/libomxil-bellagio 0.9.3: An Open Source implementation of the OpenMAX Integration Layer
 media-libs/libopendaap 0.4.0: A library which enables applications to discover and connect to iTunes(R) music shares
 media-libs/libopenraw 0.0.9: A decoding library for RAW image formats
-media-libs/libopenshot 0.1.0 0.1.1: Video editing library used by OpenShot
-media-libs/libopenshot-audio 0.0.6: Audio library used by OpenShot
+media-libs/libopenshot 0.1.0 0.1.1 0.1.2: Video editing library used by OpenShot
+media-libs/libopenshot-audio 0.0.6 0.1.2: Audio library used by OpenShot
 media-libs/libpagemaker 0.0.2 0.0.3 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
@@ -13689,7 +13689,7 @@ media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Set
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.14.2 0.15.1 0.15.3 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1 2.1.0: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor

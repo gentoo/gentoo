@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Pod-Simple
 EAPI=5
-KEYWORDS=alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.22* ~perl-core/Pod-Simple-3.290.0 ) !<perl-core/Pod-Simple-3.290.0 !>perl-core/Pod-Simple-3.290.0-r999
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=3ef09130b1e8e6c9b3b8c9b851b0de6a
+_md5_=39c5aeb9a0e5eb2862cd92816a6c60a3

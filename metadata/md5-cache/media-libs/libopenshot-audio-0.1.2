@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=x11-libs/libXinerama x11-libs/libXrandr media-libs/alsa-lib media-libs/freetype x11-libs/libX11 x11-libs/libXext sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Audio library used by OpenShot
+EAPI=6
+HOMEPAGE=http://www.openshot.org/ https://launchpad.net/libopenshot
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/alsa-lib media-libs/freetype x11-libs/libX11 x11-libs/libXext
+SLOT=0
+SRC_URI=https://github.com/OpenShot/libopenshot-audio/archive/v0.1.2.tar.gz -> libopenshot-audio-0.1.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=07c5824b2ca8bbc155361a087dabc2ba
