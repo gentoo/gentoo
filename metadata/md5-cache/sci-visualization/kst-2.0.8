@@ -1,16 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=qt4? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3 test? ( dev-qt/qttest:4 ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=!qt5? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3 test? ( !qt5? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Fast real-time large-dataset viewing and plotting tool
 EAPI=5
 HOMEPAGE=https://kst.kde.org/
-IUSE=debug +qt4 qt5 test
+IUSE=debug qt5 test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2 FDL-1.2
-RDEPEND=qt4? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3
-REQUIRED_USE=^^ ( qt4 qt5 )
+RDEPEND=!qt5? ( dev-qt/designer:4 dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 ) qt5? ( dev-qt/designer:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 ) sci-libs/cfitsio sci-libs/getdata sci-libs/gsl sci-libs/netcdf-cxx:3
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/kst/Kst-2.0.8.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d6c7ffa5020b25870a51d5ca5e5aab5a
+_eclasses_=cmake-utils	f3d38665b0a86e08ba3a5473cdbfafd3	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ea61a5f13534b3c54ce2659c8e47b822
