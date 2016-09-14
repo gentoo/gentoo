@@ -1,0 +1,12 @@
+diff -Naur a/src/gajim.py b/src/gajim.py
+--- a/src/gajim.py	2015-12-28 13:38:51.000000000 +0100
++++ b/src/gajim.py	2016-08-29 10:17:27.585715629 +0200
+@@ -96,7 +96,7 @@
+     'logging.NullHandler', 'dbus.service', 'OpenSSL.SSL', 'OpenSSL.crypto',
+     'common.sleepy', 'DLFCN', 'dl', 'xml.sax', 'xml.sax.handler', 'ic',
+     'Crypto.PublicKey', 'IPython', 'contextlib', 'imp', 'gst.interfaces',
+-    'libxml2', 'libxml2mod', 'monotonic', 'gtkexcepthook']
++    'libxml2', 'libxml2mod', 'monotonic', 'gtkexcepthook', 'google.protobuf']
+ 
+ if os.name == 'nt':
+     import locale
