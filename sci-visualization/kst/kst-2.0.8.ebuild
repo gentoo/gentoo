@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,14 +15,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2 LGPL-2 FDL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +qt4 qt5 test"
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
+IUSE="debug qt5 test"
 
 RESTRICT="test"
 
 RDEPEND="
-	qt4? (
+	!qt5? (
 		dev-qt/designer:4
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -46,7 +44,10 @@ RDEPEND="
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qttest:4 )
+	test? (
+		!qt5? ( dev-qt/qttest:4 )
+		qt5? ( dev-qt/qttest:5 )
+	)
 "
 
 S=${WORKDIR}/${MY_P}
