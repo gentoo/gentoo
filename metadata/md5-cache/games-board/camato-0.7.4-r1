@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-ruby/ruby-gtk2
+DESCRIPTION=A map editor for the game gnocatan
+EAPI=6
+HOMEPAGE=http://yusei.ragondux.com/loisirs_jdp_catane_camato-en.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-ruby/ruby-gtk2
+SLOT=0
+SRC_URI=http://yusei.ragondux.com/files/gnocatan/camato-0_7_4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=57cfc6a0336d2c06cd99b367d1350817
