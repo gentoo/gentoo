@@ -3153,7 +3153,7 @@ dev-erlang/sqlite3 1.1.5: SQLite gen_server port for Erlang
 dev-erlang/stringprep 1.0.3 1.0.5: Fast Stringprep implementation for Erlang and Elixir
 dev-erlang/stun 1.0.3 1.0.6: STUN and TURN library for Erlang and Elixir
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
-dev-games/aseprite 0.9.5-r1 1.1.4.1 1.1.6 1.1.7: Animated sprite editor & pixel art tool
+dev-games/aseprite 0.9.5-r1 1.1.6 1.1.7: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.6.2b 0.8.4 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
