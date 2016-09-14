@@ -2197,7 +2197,7 @@ app-text/adiff 1.4: wordwise diff
 app-text/agrep 2.04 2.04-r1: agrep is a tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 1.11 1.15 2.0: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.0 2.1: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatting, or extracts the data into CSV format
 app-text/apvlv 0.1.5-r1: Alf's PDF Viewer Like Vim
@@ -5192,7 +5192,7 @@ dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 0.8-r1 1.0: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
-dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6 0.7.7: OCaml interface to the libcurl library
+dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6 0.7.7 0.7.8: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/ojquery 0.1 9999: jQuery Binding for Eliom.
 dev-ml/onanomsg 1.0: nanomsg bindings for OCaml
@@ -12119,7 +12119,7 @@ media-fonts/mplus-outline-fonts 0_pre059 0_pre060 0_pre061: M+ Japanese outline 
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
-media-fonts/noto 2014.11 2015.04 20160305 20160305-r1 20160531: Google's font family that aims to support all the world's languages
+media-fonts/noto 20160305-r1 20160531: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script

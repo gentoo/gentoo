@@ -1828,10 +1828,10 @@
       <name>Luca Barbato</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member, core LLVM/clang</role>
+      <role>Lead, core LLVM/clang</role>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
