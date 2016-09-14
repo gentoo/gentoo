@@ -13702,7 +13702,7 @@ media-video/recmpeg 1.0.5: Simple libfame-based video encoder which compresses r
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
 media-video/replex 0.1.4 0.1.6.8: REPLEX remuxes MPEG-2 transport streams into program streams
 media-video/rovclock 0.6e: Overclocking utility for ATI Radeon cards
-media-video/rtmpdump 2.4_p20131018 2.4_p20131018-r1 9999: RTMP client intended to stream audio or video flash content
+media-video/rtmpdump 2.4_p20131018 9999: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shrip 0.6.0: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/smplayer 14.9.0-r1 16.1.0 16.4.0-r2 16.7.0 16.8.0: Great Qt GUI front-end for mplayer/mpv
