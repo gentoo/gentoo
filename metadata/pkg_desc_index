@@ -4586,7 +4586,7 @@ dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p09: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
-dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication and Security Layer)
+dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.26-r11: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-c++ 0.9.0-r2: Provides a C++ API for D-BUS
@@ -12340,7 +12340,7 @@ media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a director
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.0.0-r1 1.1.0 1.1.0-r1 1.1.0-r2 1.2.0: fast and easy graphics application for digital painters
-media-gfx/nip2 7.26.4: VIPS Image Processing Graphical User Interface
+media-gfx/nip2 7.26.4 7.38.1: VIPS Image Processing Graphical User Interface
 media-gfx/nomacs 2.4.6 3.0.0 3.2.0 3.4: Qt-based image viewer
 media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compiler toolkit
 media-gfx/nvidia-texture-tools 2.0.8-r2: A set of cuda-enabled texture tools and compressors
@@ -12834,7 +12834,7 @@ media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with ra
 media-libs/vamp-plugin-sdk 2.5 2.6 2.6-r1: Audio processing plugin system for plugins that extract descriptive information from audio data
 media-libs/varconf 0.6.6 0.6.7 0.6.7-r1: A configuration system designed for the STAGE server
 media-libs/vigra 1.9.0 1.10.0 1.11.0: C++ computer vision library with emphasis on customizable algorithms and data structures
-media-libs/vips 7.26.3 7.26.7 7.26.7-r1: VIPS Image Processing Library
+media-libs/vips 7.26.3 7.26.7 7.26.7-r1 7.38.5: VIPS Image Processing Library
 media-libs/virglrenderer 0.2.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.2 0.1.3 9999: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3 9999: VisualOn AMR-WB encoder library
@@ -13331,7 +13331,7 @@ media-sound/listen 0.6.5-r1: A music management and playback for GTK+ based desk
 media-sound/litestream 1.3_rc3: Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server
 media-sound/lltag 0.14.4-r1 0.14.5: Automatic command-line mp3/ogg/flac file tagger and renamer
 media-sound/lmms 1.0.2 1.0.3 1.1.3: Free alternative to popular programs such as Fruityloops, Cubase and Logic
-media-sound/lxmusic 0.4.5: A simple GUI XMMS2 client with minimal functionality
+media-sound/lxmusic 0.4.5 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 3.99.4.5.7-r1: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
