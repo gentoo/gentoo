@@ -38,6 +38,8 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-kioslaves
 "
 
+RESTRICT+=" test"
+
 src_prepare() {
 	kde5_src_prepare
 
