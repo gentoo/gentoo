@@ -6,7 +6,7 @@ EAPI=6
 VIM_VERSION="8.0"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE=threads
-inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 prefix python-r1
+inherit eutils vim-doc flag-o-matic fdo-mime gnome2-utils versionator bash-completion-r1 prefix python-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -359,6 +359,8 @@ src_install() {
 	dosym gvim /usr/bin/rgvim
 	dosym gvim /usr/bin/rgview
 
+	emake -C src DESTDIR="${D}" DATADIR="${EPREFIX}"/usr/share install-icons
+
 	dodir /usr/share/man/man1
 	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gvim.1
 	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gview.1
@@ -368,16 +370,13 @@ src_install() {
 	newins "${FILESDIR}"/gvimrc-r1 gvimrc
 	eprefixify "${ED}"/etc/vim/gvimrc
 
-	newmenu "${FILESDIR}"/gvim.desktop-r2 gvim.desktop
-	doicon "${FILESDIR}"/gvim.xpm
 	doicon -s scalable "${FILESDIR}"/gvim.svg
 
 	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
 
-	# We shouldn't be installing the ex or view man page symlinks, as they
-	# are managed by eselect-vi
-	rm -f "${ED}"/usr/share/man/man1/{ex,view}.1
+	# don't install vim desktop file
+	rm "${ED}"/usr/share/applications/vim.desktop || die "failed to remove vim.desktop"
 }
 
 pkg_postinst() {
@@ -385,7 +384,10 @@ pkg_postinst() {
 	update_vim_helptags
 
 	# Update fdo mime stuff, bug #78394
-	fdo-mime_mime_database_update
+	fdo-mime_desktop_database_update
+
+	# Update icon cache
+	gnome2_icon_cache_update
 
 	# Make convenience symlinks
 	update_vim_symlinks
@@ -396,7 +398,10 @@ pkg_postrm() {
 	update_vim_helptags
 
 	# Update fdo mime stuff, bug #78394
-	fdo-mime_mime_database_update
+	fdo-mime_desktop_database_update
+
+	# Update icon cache
+	gnome2_icon_cache_update
 
 	# Make convenience symlinks
 	update_vim_symlinks

@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-VIM_VERSION="7.4"
+EAPI=6
+VIM_VERSION="8.0"
 inherit eutils vim-doc flag-o-matic versionator bash-completion-r1 prefix
 
 if [[ ${PV} == 9999* ]] ; then
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~radhermit/vim/vim-7.4.827-gentoo-patches.tar.bz2"
+		https://dev.gentoo.org/~radhermit/vim/vim-7.4.2102-gentoo-patches.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -40,11 +40,8 @@ pkg_setup() {
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]] ; then
-		if [[ -d "${WORKDIR}"/patches/ ]]; then
-			# Gentoo patches to fix runtime issues, cross-compile errors, etc
-			EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" \
-				epatch "${WORKDIR}"/patches/
-		fi
+		# Gentoo patches to fix runtime issues, cross-compile errors, etc
+		eapply "${WORKDIR}"/patches
 	fi
 
 	# Fixup a script to use awk instead of nawk
@@ -93,7 +90,7 @@ src_prepare() {
 			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 	fi
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -157,8 +154,7 @@ src_install() {
 	local vimfiles=/usr/share/vim/vim${VIM_VERSION/.}
 
 	dodir /usr/{bin,share/{man/man1,vim}}
-	cd src || die "cd src failed"
-	emake \
+	emake -C src \
 		installruntime \
 		installmanlinks \
 		installmacros \
@@ -166,7 +162,6 @@ src_install() {
 		installtutorbin \
 		installtools \
 		install-languages \
-		install-icons \
 		DESTDIR="${D}" \
 		BINDIR="${EPREFIX}"/usr/bin \
 		MANDIR="${EPREFIX}"/usr/share/man \

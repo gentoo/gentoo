@@ -73,7 +73,7 @@ PDEPEND="!<gnome-base/gvfs-1.6.4-r990
 # Earlier versions of gvfs do not work with glib
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/gio-querymodules
+	/usr/bin/gio-querymodules$(get_exeext)
 )
 
 pkg_setup() {

@@ -154,8 +154,7 @@ src_install() {
 	local vimfiles=/usr/share/vim/vim${VIM_VERSION/.}
 
 	dodir /usr/{bin,share/{man/man1,vim}}
-	cd src || die "cd src failed"
-	emake \
+	emake -C src \
 		installruntime \
 		installmanlinks \
 		installmacros \
@@ -163,7 +162,6 @@ src_install() {
 		installtutorbin \
 		installtools \
 		install-languages \
-		install-icons \
 		DESTDIR="${D}" \
 		BINDIR="${EPREFIX}"/usr/bin \
 		MANDIR="${EPREFIX}"/usr/share/man \
