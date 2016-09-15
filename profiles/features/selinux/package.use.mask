@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Saleem Abdulrasool <compnerd@gentoo.org> (23 Nov 2007)
-# Unmask when we get HAL 0.5.10 straightened out
-media-sound/pulseaudio policykit
-
 # Brian Dolbec <dolsen@gentoo.org> (17 Sep 2014)
 # mask pypy for several utilities due to incompatibility with libselinux
 sys-apps/portage python_targets_pypy python_targets_pypy3
