@@ -84,6 +84,7 @@ src_prepare() {
 		-i CMakeLists.txt
 
 	cmake-utils_src_prepare
+	xdg_environment_reset
 }
 
 src_configure() {
