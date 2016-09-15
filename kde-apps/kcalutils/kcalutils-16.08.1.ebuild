@@ -28,3 +28,5 @@ DEPEND="
 	dev-libs/grantlee:5
 "
 RDEPEND="${DEPEND}"
+
+RESTRICT="test"
