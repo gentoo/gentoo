@@ -1030,7 +1030,7 @@ app-editors/ghex 3.18.1 3.18.2: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5: A cross-platform, aesthetic, distraction-free Markdown editor
 app-editors/gobby 0.4.13 0.4.13-r1 0.4.94: GTK-based collaborative editor
 app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
-app-editors/gvim 7.4.769 7.4.1583 7.4.1821 7.4.2102 8.0.0004 9999: GUI version of the Vim text editor
+app-editors/gvim 7.4.769 7.4.2102 8.0.0005 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.0.22 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1076,8 +1076,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20141208: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8k 9.8n 9.8o 9.8p 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 7.4.769 7.4.1583 7.4.1821 7.4.2102 8.0.0004 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 7.4.769 7.4.1583 7.4.1821 7.4.2102 8.0.0004 9999: vim and gvim shared files
+app-editors/vim 7.4.769 7.4.2102 8.0.0005 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 7.4.769 7.4.2102 8.0.0005 9999: vim and gvim shared files
 app-editors/vim-qt 20150102-r1: Qt GUI version of the Vim text editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers
 app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
