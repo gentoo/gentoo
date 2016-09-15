@@ -30,6 +30,60 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
+# KDE PIM 5 masked for wider testing.
+~kde-apps/akonadi-16.08.1
+~kde-apps/akonadi-calendar-16.08.1
+~kde-apps/akonadi-contacts-16.08.1
+~kde-apps/akonadi-import-wizard-16.08.1
+~kde-apps/akonadi-mime-16.08.1
+~kde-apps/akonadi-notes-16.08.1
+~kde-apps/akonadi-search-16.08.1
+~kde-apps/akonadiconsole-16.08.1
+~kde-apps/akregator-16.08.1
+~kde-apps/blogilo-16.08.1
+~kde-apps/calendarjanitor-16.08.1
+~kde-apps/calendarsupport-16.08.1
+~kde-apps/eventviews-16.08.1
+~kde-apps/grantlee-editor-16.08.1
+~kde-apps/grantleetheme-16.08.1
+~kde-apps/incidenceeditor-16.08.1
+~kde-apps/kaddressbook-16.08.1
+~kde-apps/kalarm-16.08.1
+~kde-apps/kalarmcal-16.08.1
+~kde-apps/kblog-16.08.1
+~kde-apps/kcalutils-16.08.1
+~kde-apps/kdepim-addons-16.08.1
+~kde-apps/kdepim-apps-libs-16.08.1
+~kde-apps/kdepim-meta-16.08.1
+~kde-apps/kdepim-runtime-16.08.1
+~kde-apps/kidentitymanagement-16.08.1
+~kde-apps/kimap-16.08.1
+~kde-apps/kldap-16.08.1
+~kde-apps/kmail-16.08.1
+~kde-apps/kmail-account-wizard-16.08.1
+~kde-apps/kmailtransport-16.08.1
+~kde-apps/kmbox-16.08.1
+~kde-apps/knotes-16.08.1
+~kde-apps/konsolekalendar-16.08.1
+~kde-apps/kontact-16.08.1
+~kde-apps/kontactinterface-16.08.1
+~kde-apps/korganizer-16.08.1
+~kde-apps/ktnef-16.08.1
+~kde-apps/libgravatar-16.08.1
+~kde-apps/libkdepim-16.08.1
+~kde-apps/libksieve-16.08.1
+~kde-apps/libktnef-16.08.1
+~kde-apps/mailcommon-16.08.1
+~kde-apps/mailimporter-16.08.1
+~kde-apps/mbox-importer-16.08.1
+~kde-apps/messagelib-16.08.1
+~kde-apps/pim-data-exporter-16.08.1
+~kde-apps/pim-sieve-editor-16.08.1
+~kde-apps/pim-storage-service-manager-16.08.1
+~kde-apps/pimcommon-16.08.1
+~kde-apps/syndication-16.08.1
+
 # Mike Gilbert <floppym@gentoo.org> (13 Sep 2016)
 # Known to be unusable.
 # https://bugs.gentoo.org/591938
@@ -616,6 +670,7 @@ dev-ruby/metasploit-model:1.0
 ~dev-qt/qtxml-5.7.0
 ~dev-qt/qtxmlpatterns-5.7.0
 =dev-qt/qt-docs-5.7*
+>=kde-apps/minuet-16.08.0
 
 # Mike Gilbert <floppym@gentoo.org> (07 Aug 2016)
 # Fails to switch cpufreq governor.
