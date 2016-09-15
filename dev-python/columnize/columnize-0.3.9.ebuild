@@ -19,3 +19,5 @@ IUSE=""
 
 RDEPEND="dev-python/backports-shutil_get_terminal_size[$(python_gen_usedep 'python2*')]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.3.8-nose.patch )
