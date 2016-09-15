@@ -32,6 +32,8 @@ src_configure() {
 		$(use_enable libgig) \
 		--disable-qt4 \
 		--enable-qt5
+	cd "${S}/src"
+	eqmake5 src.pro -o Makefile
 }
 
 src_install() {
