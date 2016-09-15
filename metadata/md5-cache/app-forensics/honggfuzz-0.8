@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/binutils-libs:= sys-libs/libunwind
+DESCRIPTION=A general purpose fuzzer with feedback support
+EAPI=6
+HOMEPAGE=http://google.github.io/honggfuzz/
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=sys-libs/binutils-libs:= sys-libs/libunwind
+SLOT=0
+SRC_URI=https://github.com/google/honggfuzz/archive/0.8.tar.gz -> honggfuzz-0.8.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=1b186d64ed03c30b60479cec835da69d

@@ -1444,7 +1444,7 @@ app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to acce
 app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 0.7: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 0.7 0.8: A general purpose fuzzer with feedback support
 app-forensics/libbfio 0.0.20120425_alpha 0.0.20130609_alpha 0.0.20130721: Library for providing a basic file input/output abstraction layer
 app-forensics/libewf 20130128 20130416 20130416-r1 20131210 20140227 20140406 20140427 20140608: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 1.6.4 2.1.0 2.1.1: Security and system auditing tool
