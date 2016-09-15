@@ -16028,7 +16028,7 @@ sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 1.0.0 2.2.2 2.3.0 2.4.0 2.5.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.1.0 1.2.0: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.2.0: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
@@ -16766,7 +16766,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0.6 0.8: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.17 0.18.4 0.19.1 0.20.4 0.20.5 0.21.3 0.21.7 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.17 0.18.4 0.19.1 0.21.3 0.21.7 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
