@@ -3,11 +3,11 @@ DEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5:0= >=media-libs
 DESCRIPTION=A software version control visualization tool
 EAPI=6
 HOMEPAGE=http://gource.io/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-3
 RDEPEND=>=dev-libs/boost-1.46:=[threads(+)] >=media-libs/glew-1.5:0= >=media-libs/libpng-1.2:0= media-libs/libsdl2[video,opengl,X] media-libs/sdl2-image[jpeg,png] dev-libs/libpcre:3 dev-libs/tinyxml media-libs/freetype:2 media-libs/mesa virtual/glu:0 media-fonts/freefont
 SLOT=0
 SRC_URI=https://github.com/acaudwell/Gource/releases/download/gource-0.44/gource-0.44.tar.gz
 _eclass_exported_funcs=src_configure:-
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
-_md5_=2fc645093218ee5ae3383b3bebb3ad18
+_md5_=e4044cfda5706eab1ea91beff7b03079

@@ -9881,7 +9881,7 @@ dev-util/global 6.3.1: GNU Global is a tag system to find the locations of a spe
 dev-util/gnome-devel-docs 3.18.1 3.20.2: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/google-perftools 1.8.3 2.0-r2 2.5: Fast, multi-threaded malloc() and nifty performance analysis tools
-dev-util/gource 0.43 0.44: A software version control visualization tool
+dev-util/gource 0.44: A software version control visualization tool
 dev-util/gperf 3.0.4: A perfect hash function generator
 dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
