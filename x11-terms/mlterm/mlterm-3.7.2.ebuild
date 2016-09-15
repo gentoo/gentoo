@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim static-libs uim utempter xft"
+IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -35,6 +35,12 @@ RDEPEND="x11-libs/libICE
 		)
 	)
 	scim? ( app-i18n/scim )
+	skk? (
+		|| (
+			virtual/skkserv
+			app-i18n/skk-jisyo
+		)
+	)
 	uim? ( app-i18n/uim )
 	utempter? ( sys-libs/libutempter )
 	xft? ( x11-libs/libXft )"
@@ -50,10 +56,6 @@ src_prepare() {
 		-e "/ icon_path =/aicon_path = ${EPREFIX}/usr/share/pixmaps/mlterm-icon.svg" \
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
-
-	sed -i \
-		-e "/^LIBS/s/$/ -lm/" \
-		tool/registobmp/Makefile.in
 
 	default
 }
@@ -74,6 +76,7 @@ src_configure() {
 		$(use_enable m17n-lib m17nlib)
 		$(use_enable nls)
 		$(use_enable scim)
+		$(use_enable skk)
 		$(use_enable uim)
 		$(use_enable utempter utmp)
 	)
