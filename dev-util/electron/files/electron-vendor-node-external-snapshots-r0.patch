@@ -1,4 +1,4 @@
-From 2493dac20f0b4134bbf02ac48dffde6c2643608b Mon Sep 17 00:00:00 2001
+From 820cb5ce8e1aa08e68fe0f2e3cbbe74972e7af84 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Sat, 11 Jun 2016 18:27:19 -0400
 Subject: [PATCH] Add support for external V8 snapshots
@@ -8,10 +8,10 @@ Subject: [PATCH] Add support for external V8 snapshots
  1 file changed, 86 insertions(+)
 
 diff --git a/src/node.cc b/src/node.cc
-index cbe1538..521708a 100644
+index 961abc2..4dac94b 100644
 --- a/src/node.cc
 +++ b/src/node.cc
-@@ -4037,6 +4037,90 @@ Environment* CreateEnvironment(Isolate* isolate,
+@@ -4188,6 +4188,90 @@ Environment* CreateEnvironment(Isolate* isolate,
    return env;
  }
  
@@ -102,15 +102,15 @@ index cbe1538..521708a 100644
  
  // Entry point for new node instances, also called directly for the main
  // node instance.
-@@ -4142,6 +4226,8 @@ int Start(int argc, char** argv) {
+@@ -4301,6 +4385,8 @@ int Start(int argc, char** argv) {
    const char** exec_argv;
    Init(&argc, const_cast<const char**>(argv), &exec_argc, &exec_argv);
  
 +  LoadV8Snapshots();
 +
  #if HAVE_OPENSSL
-   // V8 on Windows doesn't have a good source of entropy. Seed it from
-   // OpenSSL's pool.
+ #ifdef NODE_FIPS_MODE
+   // In the case of FIPS builds we should make sure
 -- 
 2.7.3
 

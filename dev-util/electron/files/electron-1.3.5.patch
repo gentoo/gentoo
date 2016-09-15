@@ -1,0 +1,422 @@
+From d6b2c31fe1b21d171ecedcd2a198bd5b8347bd98 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 8 Feb 2016 15:16:40 -0500
+Subject: [PATCH] electron build fixes
+
+---
+ common.gypi               | 52 ++++++++++++++++++++++++++++++++------
+ electron.gyp              | 63 ++++++++++++++++++++++++++++++++++++-----------
+ filenames.gypi            |  1 -
+ toolchain.gypi            | 47 +----------------------------------
+ tools/atom_source_root.py |  5 ++++
+ tools/get-endianness.py   |  4 +++
+ tools/js2asar.py          | 13 +++++-----
+ 7 files changed, 110 insertions(+), 75 deletions(-)
+ create mode 100644 tools/atom_source_root.py
+ create mode 100644 tools/get-endianness.py
+
+diff --git a/common.gypi b/common.gypi
+index 52eba31..55f061a 100644
+--- a/common.gypi
++++ b/common.gypi
+@@ -17,24 +17,20 @@
+     'use_openssl_def': 0,
+     'OPENSSL_PRODUCT': 'libopenssl.a',
+     'node_release_urlbase': 'https://atom.io/download/atom-shell',
+-    'node_byteorder': '<!(node <(DEPTH)/tools/get-endianness.js)',
++    'node_byteorder': '<!(python <(DEPTH)/tools/get-endianness.py)',
+     'node_target_type': 'shared_library',
+     'node_install_npm': 'false',
+     'node_prefix': '',
+     'node_shared': 'true',
+-    'node_shared_cares': 'false',
+-    'node_shared_http_parser': 'false',
+-    'node_shared_libuv': 'false',
+-    'node_shared_openssl': 'false',
+     'node_shared_v8': 'true',
+-    'node_shared_zlib': 'false',
+     'node_tag': '',
++    'node_module_version': '',
+     'node_use_dtrace': 'false',
+     'node_use_etw': 'false',
+     'node_use_mdb': 'false',
+     'node_use_openssl': 'true',
+     'node_use_perfctr': 'false',
+-    'node_use_v8_platform': 'false',
++    'node_use_v8_platform': 'true',
+     'node_use_bundled_v8': 'false',
+     'uv_library': 'static_library',
+     'uv_parent_path': 'vendor/node/deps/uv',
+@@ -43,10 +39,37 @@
+     'v8_postmortem_support': 'false',
+     'v8_enable_i18n_support': 'false',
+     'v8_inspector': 'false',
++    'v8_gyp_path': '<(DEPTH)/v8/src/v8.gyp',
++    'v8_libraries': '["v8", "v8_snapshot", "v8_nosnapshot", "v8_external_snapshot", "v8_base", "v8_libbase", "v8_libplatform"]',
++    'v8_target_type': 'shared_library',
++    'v8_use_snapshot': 'true',
++    'v8_use_external_startup_data': 1,
+   },
+   # Settings to compile node under Windows.
+   'target_defaults': {
+     'target_conditions': [
++      ['_target_name in <(v8_libraries) + ["node"]', {
++        'cflags!': [
++          '-fvisibility=hidden',
++          '-fdata-sections',
++          '-ffunction-sections',
++        ],
++        'cflags_cc!': [
++          '-fvisibility-inlines-hidden'
++        ],
++      }],
++
++      ['_target_name in <(v8_libraries) + ["mksnapshot"]', {
++        'defines': [
++          'V8_SHARED',
++          'BUILDING_V8_SHARED',
++        ],
++      }],
++
++      ['_target_name in ["icuuc", "icui18n"]', {
++        'cflags_cc!': ['-fno-rtti']
++      }],
++
+       ['_target_name in ["libuv", "http_parser", "openssl", "openssl-cli", "cares", "node", "zlib"]', {
+         'msvs_disabled_warnings': [
+           4003,  # not enough actual parameters for macro 'V'
+@@ -253,6 +276,21 @@
+           }],  # OS=="win"
+         ],
+       }],
++      ['_target_name=="shell_runner_host_lib"', {
++        'conditions': [
++          ['icu_use_data_file_flag==1', {
++            'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_FILE'],
++          }, { # else icu_use_data_file_flag !=1
++            'conditions': [
++              ['OS=="win"', {
++                'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_SHARED'],
++              }, {
++                'defines': ['ICU_UTIL_DATA_IMPL=ICU_UTIL_DATA_STATIC'],
++              }],
++            ],
++          }],
++        ],
++      }],
+     ],
+     'msvs_cygwin_shell': 0, # Strangely setting it to 1 would make building under cygwin fail.
+     'msvs_disabled_warnings': [
+diff --git a/electron.gyp b/electron.gyp
+index eb671fd..7253b37 100644
+--- a/electron.gyp
++++ b/electron.gyp
+@@ -30,6 +30,7 @@
+       'dependencies': [
+         'js2asar',
+         'app2asar',
++        'nodebin',
+         '<(project_name)_lib',
+       ],
+       'sources': [
+@@ -164,7 +165,7 @@
+           ],
+         }, {
+           'dependencies': [
+-            'vendor/breakpad/breakpad.gyp:dump_syms#host',
++            'breakpad/breakpad.gyp:dump_syms#host',
+           ],
+         }],  # OS=="win"
+         ['OS=="linux"', {
+@@ -181,7 +182,7 @@
+                   }, {
+                     'copied_libraries': [
+                       '<(PRODUCT_DIR)/lib/libnode.so',
+-                      '<(libchromiumcontent_dir)/libffmpeg.so',
++                      '<(PRODUCT_DIR)/lib/libv8.so',
+                     ],
+                   }],
+                 ],
+@@ -189,13 +190,8 @@
+               'destination': '<(PRODUCT_DIR)',
+               'files': [
+                 '<@(copied_libraries)',
+-                '<(libchromiumcontent_dir)/locales',
+-                '<(libchromiumcontent_dir)/icudtl.dat',
+-                '<(libchromiumcontent_dir)/blink_image_resources_200_percent.pak',
+-                '<(libchromiumcontent_dir)/content_resources_200_percent.pak',
++                '<(libchromiumcontent_dir)/repack/chrome_200_percent.pak',
+                 '<(libchromiumcontent_dir)/content_shell.pak',
+-                '<(libchromiumcontent_dir)/ui_resources_200_percent.pak',
+-                '<(libchromiumcontent_dir)/views_resources_200_percent.pak',
+                 '<(libchromiumcontent_dir)/natives_blob.bin',
+                 '<(libchromiumcontent_dir)/snapshot_blob.bin',
+               ],
+@@ -230,15 +226,14 @@
+         '<@(lib_sources)',
+       ],
+       'include_dirs': [
+-        '.',
+         'chromium_src',
++        '.',
+         'vendor/brightray',
+         'vendor/native_mate',
+         # Include atom_natives.h.
+         '<(SHARED_INTERMEDIATE_DIR)',
+         # Include directories for uv and node.
+         'vendor/node/src',
+-        'vendor/node/deps/http_parser',
+         'vendor/node/deps/uv/include',
+         # The `node.h` is using `#include"v8.h"`.
+         '<(libchromiumcontent_src_dir)/v8/include',
+@@ -289,8 +284,8 @@
+             'vendor/node/deps/uv/uv.gyp:libuv',
+             'vendor/node/deps/zlib/zlib.gyp:zlib',
+             # Build with breakpad support.
+-            'vendor/breakpad/breakpad.gyp:breakpad_handler',
+-            'vendor/breakpad/breakpad.gyp:breakpad_sender',
++            'breakpad/breakpad.gyp:breakpad_handler',
++            'breakpad/breakpad.gyp:breakpad_sender',
+           ],
+         }],  # OS=="win"
+         ['OS=="mac" and mas_build==0', {
+@@ -328,7 +323,7 @@
+               # Make binary search for libraries under current directory, so we
+               # don't have to manually set $LD_LIBRARY_PATH:
+               # http://serverfault.com/questions/279068/cant-find-so-in-the-same-directory-as-the-executable
+-              '-rpath \$$ORIGIN',
++              '-Wl,-rpath=\$$ORIGIN/',
+               # Make native module dynamic loading work.
+               '-rdynamic',
+             ],
+@@ -339,10 +334,10 @@
+             '-Wno-reserved-user-defined-literal',
+           ],
+           'include_dirs': [
+-            'vendor/breakpad/src',
++            'breakpad/src',
+           ],
+           'dependencies': [
+-            'vendor/breakpad/breakpad.gyp:breakpad_client',
++            'breakpad/breakpad.gyp:breakpad_client',
+           ],
+         }],  # OS=="linux"
+       ],
+@@ -350,6 +345,9 @@
+     {
+       'target_name': 'js2asar',
+       'type': 'none',
++      'dependencies': [
++        'nodebin'
++      ],
+       'actions': [
+         {
+           'action_name': 'js2asar',
+@@ -371,6 +369,7 @@
+           'action': [
+             'python',
+             'tools/js2asar.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(_outputs)',
+             'lib',
+             '<@(_inputs)',
+@@ -381,6 +380,9 @@
+     {
+       'target_name': 'app2asar',
+       'type': 'none',
++      'dependencies': [
++        'nodebin'
++      ],
+       'actions': [
+         {
+           'action_name': 'app2asar',
+@@ -402,6 +404,7 @@
+           'action': [
+             'python',
+             'tools/js2asar.py',
++            '<(PRODUCT_DIR)/nodebin',
+             '<@(_outputs)',
+             'default_app',
+             '<@(_inputs)',
+@@ -430,6 +433,36 @@
+         }
+       ],
+     },  # target atom_js2c
++    {
++      'target_name': 'nodebin',
++      'type': 'executable',
++      'sources': [
++        'vendor/node/src/node_main.cc',
++      ],
++      'dependencies': [
++        'vendor/node/node.gyp:node',
++      ],
++      'include_dirs': [
++        '.',
++        'vendor/native_mate',
++        # Include atom_natives.h.
++        '<(SHARED_INTERMEDIATE_DIR)',
++        # Include directories for uv and node.
++        'vendor/node/src',
++        'vendor/node/deps/uv/include',
++        # The `node.h` is using `#include"v8.h"`.
++        '<(libchromiumcontent_src_dir)/v8/include',
++        # The `node.h` is using `#include"ares.h"`.
++        'vendor/node/deps/cares/include',
++      ],
++      'link_settings': {
++        'ldflags': [
++          '-Wl,-rpath=\$$ORIGIN/',
++          # Make native module dynamic loading work.
++          '-rdynamic',
++        ],
++      },
++    },  # target nodebin
+   ],
+   'conditions': [
+     ['OS=="mac"', {
+diff --git a/filenames.gypi b/filenames.gypi
+index 9e20582..c7960a9 100644
+--- a/filenames.gypi
++++ b/filenames.gypi
+@@ -558,7 +558,6 @@
+       'chromium_src/extensions/browser/app_window/size_constraints.h',
+       'chromium_src/extensions/common/url_pattern.cc',
+       'chromium_src/extensions/common/url_pattern.h',
+-      'chromium_src/library_loaders/libspeechd_loader.cc',
+       'chromium_src/library_loaders/libspeechd.h',
+       'chromium_src/net/test/embedded_test_server/stream_listen_socket.cc',
+       'chromium_src/net/test/embedded_test_server/stream_listen_socket.h',
+diff --git a/toolchain.gypi b/toolchain.gypi
+index 1c5f8a7..2af11f5 100644
+--- a/toolchain.gypi
++++ b/toolchain.gypi
+@@ -16,7 +16,7 @@
+       'arm_neon%': 1,
+ 
+       # Abosulte path to source root.
+-      'source_root%': '<!(node <(DEPTH)/tools/atom_source_root.js)',
++      'source_root%': '<!(python <(DEPTH)/tools/atom_source_root.py)',
+     },
+ 
+     # Copy conditionally-set variables out one scope.
+@@ -40,34 +40,6 @@
+         'mac_sdk%': '<!(python <(DEPTH)/tools/mac/find_sdk.py <(mac_sdk_min))',
+       }],
+ 
+-      ['OS=="linux"', {
+-        'variables': {
+-          # The system libdir used for this ABI.
+-          'system_libdir%': 'lib',
+-
+-          # Setting the path to sysroot.
+-          'conditions': [
+-            ['target_arch=="arm"', {
+-              # sysroot needs to be an absolute path otherwise it generates
+-              # incorrect results when passed to pkg-config
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_arm-sysroot',
+-            }],
+-            ['target_arch=="ia32"', {
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_i386-sysroot',
+-            }],
+-            ['target_arch=="x64"', {
+-              'sysroot%': '<(source_root)/vendor/debian_wheezy_amd64-sysroot',
+-            }],
+-          ],
+-        },
+-        # Copy conditionally-set variables out one scope.
+-        'sysroot%': '<(sysroot)',
+-        'system_libdir%': '<(system_libdir)',
+-
+-        # Redirect pkg-config to search from sysroot.
+-        'pkg-config%': '<(source_root)/tools/linux/pkg-config-wrapper "<(sysroot)" "<(target_arch)" "<(system_libdir)"',
+-      }],
+-
+       # Set default compiler flags depending on ARM version.
+       ['arm_version==6', {
+         'arm_arch%': 'armv6',
+@@ -136,23 +108,6 @@
+       },
+     }],
+ 
+-    # Setup sysroot environment.
+-    ['OS=="linux" and target_arch in ["arm", "ia32", "x64"]', {
+-      'target_defaults': {
+-        'target_conditions': [
+-          ['_toolset=="target"', {
+-            'cflags': [
+-              '--sysroot=<(sysroot)',
+-            ],
+-            'ldflags': [
+-              '--sysroot=<(sysroot)',
+-              '<!(<(source_root)/tools/linux/sysroot_ld_path.sh <(sysroot))',
+-            ],
+-          }]
+-        ],
+-      },
+-    }],  # sysroot
+-
+     # Setup cross-compilation on Linux.
+     ['OS=="linux"', {
+       'target_defaults': {
+diff --git a/tools/atom_source_root.py b/tools/atom_source_root.py
+new file mode 100644
+index 0000000..316e997
+--- /dev/null
++++ b/tools/atom_source_root.py
+@@ -0,0 +1,5 @@
++#!/usr/bin/env python
++
++import os.path
++
++print(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+diff --git a/tools/get-endianness.py b/tools/get-endianness.py
+new file mode 100644
+index 0000000..3150793
+--- /dev/null
++++ b/tools/get-endianness.py
+@@ -0,0 +1,4 @@
++#!/usr/bin/env python
++
++import sys
++print(sys.byteorder)
+diff --git a/tools/js2asar.py b/tools/js2asar.py
+index adad175..ca76868 100755
+--- a/tools/js2asar.py
++++ b/tools/js2asar.py
+@@ -11,13 +11,14 @@ SOURCE_ROOT = os.path.dirname(os.path.dirname(__file__))
+ 
+ 
+ def main():
+-  archive = sys.argv[1]
+-  folder_name = sys.argv[2]
+-  source_files = sys.argv[3:]
++  node = sys.argv[1]
++  archive = sys.argv[2]
++  folder_name = sys.argv[3]
++  source_files = sys.argv[4:]
+ 
+   output_dir = tempfile.mkdtemp()
+   copy_files(source_files, output_dir)
+-  call_asar(archive, os.path.join(output_dir, folder_name))
++  call_asar(node, archive, os.path.join(output_dir, folder_name))
+   shutil.rmtree(output_dir)
+ 
+ 
+@@ -28,11 +29,11 @@ def copy_files(source_files, output_dir):
+     shutil.copy2(source_file, output_path)
+ 
+ 
+-def call_asar(archive, output_dir):
++def call_asar(node, archive, output_dir):
+   asar = os.path.join(SOURCE_ROOT, 'node_modules', '.bin', 'asar')
+   if sys.platform in ['win32', 'cygwin']:
+     asar += '.cmd'
+-  subprocess.check_call([asar, 'pack', output_dir, archive])
++  subprocess.check_call([node, asar, 'pack', output_dir, archive])
+ 
+ 
+ def safe_mkdir(path):
+-- 
+2.7.3
+

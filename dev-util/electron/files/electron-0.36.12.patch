@@ -1,17 +1,17 @@
-From 122f619bb04fa61f9d5757881a3031b00dee5339 Mon Sep 17 00:00:00 2001
+From 293b40208c981a3a18a1ccd5c5ea0a50611e2356 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Mon, 8 Feb 2016 15:16:40 -0500
 Subject: [PATCH] electron build fixes
 
 ---
- atom.gyp         | 55 ++++++++++++++++++++++++++++++++++++++++++++-----------
- common.gypi      | 32 +++++++++++++++++++++++---------
+ atom.gyp         | 55 +++++++++++++++++++++++++++++++++++++++++++------------
+ common.gypi      | 29 +++++++++++++++++++++++------
  filenames.gypi   |  1 -
  tools/js2asar.py | 11 ++++++-----
- 4 files changed, 73 insertions(+), 26 deletions(-)
+ 4 files changed, 72 insertions(+), 24 deletions(-)
 
 diff --git a/atom.gyp b/atom.gyp
-index 5554adb..30ae39b 100644
+index 5554adb..61ec47c 100644
 --- a/atom.gyp
 +++ b/atom.gyp
 @@ -29,6 +29,7 @@
@@ -50,7 +50,7 @@ index 5554adb..30ae39b 100644
                  '<(libchromiumcontent_dir)/natives_blob.bin',
                  '<(libchromiumcontent_dir)/snapshot_blob.bin',
                ],
-@@ -242,8 +240,8 @@
+@@ -242,15 +240,14 @@
          '<@(lib_sources)',
        ],
        'include_dirs': [
@@ -60,7 +60,14 @@ index 5554adb..30ae39b 100644
          'vendor/brightray',
          'vendor/native_mate',
          # Include atom_natives.h.
-@@ -301,8 +299,8 @@
+         '<(SHARED_INTERMEDIATE_DIR)',
+         # Include directories for uv and node.
+         'vendor/node/src',
+-        'vendor/node/deps/http_parser',
+         'vendor/node/deps/uv/include',
+         # The `node.h` is using `#include"v8.h"`.
+         '<(libchromiumcontent_src_dir)/v8/include',
+@@ -301,8 +298,8 @@
              'vendor/node/deps/uv/uv.gyp:libuv',
              'vendor/node/deps/zlib/zlib.gyp:zlib',
              # Build with breakpad support.
@@ -71,7 +78,7 @@ index 5554adb..30ae39b 100644
            ],
          }],  # OS=="win"
          ['OS=="mac" and mas_build==0', {
-@@ -333,7 +331,7 @@
+@@ -333,7 +330,7 @@
                # Make binary search for libraries under current directory, so we
                # don't have to manually set $LD_LIBRARY_PATH:
                # http://serverfault.com/questions/279068/cant-find-so-in-the-same-directory-as-the-executable
@@ -80,7 +87,7 @@ index 5554adb..30ae39b 100644
                # Make native module dynamic loading work.
                '-rdynamic',
              ],
-@@ -344,10 +342,10 @@
+@@ -344,10 +341,10 @@
              '-Wno-reserved-user-defined-literal',
            ],
            'include_dirs': [
@@ -93,7 +100,7 @@ index 5554adb..30ae39b 100644
            ],
          }],  # OS=="linux"
        ],
-@@ -355,6 +353,9 @@
+@@ -355,6 +352,9 @@
      {
        'target_name': 'js2asar',
        'type': 'none',
@@ -103,7 +110,7 @@ index 5554adb..30ae39b 100644
        'actions': [
          {
            'action_name': 'js2asar',
-@@ -376,6 +377,7 @@
+@@ -376,6 +376,7 @@
            'action': [
              'python',
              'tools/js2asar.py',
@@ -111,7 +118,7 @@ index 5554adb..30ae39b 100644
              '<@(_outputs)',
              '<@(_inputs)',
            ],
-@@ -403,6 +405,37 @@
+@@ -403,6 +404,36 @@
          }
        ],
      },  # target atom_js2c
@@ -131,7 +138,6 @@ index 5554adb..30ae39b 100644
 +        '<(SHARED_INTERMEDIATE_DIR)',
 +        # Include directories for uv and node.
 +        'vendor/node/src',
-+        'vendor/node/deps/http_parser',
 +        'vendor/node/deps/uv/include',
 +        # The `node.h` is using `#include"v8.h"`.
 +        '<(libchromiumcontent_src_dir)/v8/include',
@@ -150,10 +156,10 @@ index 5554adb..30ae39b 100644
    'conditions': [
      ['OS=="mac"', {
 diff --git a/common.gypi b/common.gypi
-index 7c41c36..97a3d3a 100644
+index 7c41c36..2da2fea 100644
 --- a/common.gypi
 +++ b/common.gypi
-@@ -17,28 +17,42 @@
+@@ -17,12 +17,6 @@
      'node_target_type': 'shared_library',
      'node_install_npm': 'false',
      'node_prefix': '',
@@ -166,12 +172,7 @@ index 7c41c36..97a3d3a 100644
      'node_tag': '',
      'node_use_dtrace': 'false',
      'node_use_etw': 'false',
-     'node_use_mdb': 'false',
-     'node_use_openssl': 'true',
-     'node_use_perfctr': 'false',
--    'uv_library': 'static_library',
--    'uv_parent_path': 'vendor/node/deps/uv',
--    'uv_use_dtrace': 'false',
+@@ -35,10 +29,33 @@
      'V8_BASE': '',
      'v8_postmortem_support': 'false',
      'v8_enable_i18n_support': 'false',
