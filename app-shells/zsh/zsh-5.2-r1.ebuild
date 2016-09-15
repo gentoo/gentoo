@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib prefix
+inherit flag-o-matic prefix
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3 autotools
