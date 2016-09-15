@@ -20,6 +20,7 @@ DEPEND="media-libs/alsa-lib
 	libgig? ( >=media-libs/libgig-3.3.0:= )
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtx11extras:5
 	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}
 	>=media-sound/linuxsampler-0.5"
