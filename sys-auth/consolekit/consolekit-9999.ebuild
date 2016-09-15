@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils git-r3 linux-info pam
+inherit autotools libtool git-r3 linux-info pam
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
@@ -62,6 +62,7 @@ src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
 	default
+	elibtoolize # bug 593314
 	eautoreconf
 }
 
