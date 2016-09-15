@@ -1,18 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
-RUBY_FAKEGEM_RECIPE_TEST=""
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
-RUBY_FAKEGEM_EXTRADOC="../CHANGELOG.md ../MIGRATING.md ../README.md ../UPGRADING.md"
+
+RUBY_FAKEGEM_EXTRAINSTALL="resources.schema.json"
 
 GITHUB_USER="aws"
-GITHUB_PROJECT="${PN}-ruby"
+GITHUB_PROJECT="aws-sdk-ruby"
 RUBY_S="${GITHUB_PROJECT}-${PV}/${PN}"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -28,5 +29,4 @@ SLOT="2"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "virtual/ruby-ssl
-	~dev-ruby/aws-sdk-resources-${PV}"
+ruby_add_rdepend "~dev-ruby/aws-sdk-core-${PV}"
