@@ -2149,7 +2149,7 @@ app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-shells/autojump 22.2.4-r4: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.3_p46 4.4_beta2 4.4_rc2: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.3_p46 4.4_rc2 4.4: The standard GNU Bourne again shell
 app-shells/bash-completion 2.1_p20141224-r1 2.3-r2 2.4: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -17468,7 +17468,7 @@ sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availab
 sys-libs/openipmi 2.0.18-r1 2.0.21 2.0.22: Library interface to IPMI
 sys-libs/pam 1.2.1 1.2.1-r1 1.3.0: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
-sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r2 7.0_beta2 7.0_rc2: Another cute console display library
+sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r2 7.0_rc2 7.0: Another cute console display library
 sys-libs/rvm 1.12 1.17-r1: Recoverable Virtual Memory (used by Coda)
 sys-libs/slang 2.2.4 2.2.4-r1 2.3.0: A multi-platform programmer's library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
