@@ -14892,7 +14892,7 @@ net-misc/networkmanager-openconnect 1.0.8-r1 1.2.2: NetworkManager OpenConnect p
 net-misc/networkmanager-openswan 1.0.6 1.0.8: NetworkManager Openswan plugin
 net-misc/networkmanager-openvpn 1.0.8 1.2.2 1.2.4: NetworkManager OpenVPN plugin
 net-misc/networkmanager-pptp 1.0.8 1.2.2: NetworkManager PPTP plugin
-net-misc/networkmanager-sstp 0.9.8: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
+net-misc/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-misc/networkmanager-vpnc 1.0.8 1.2.2: NetworkManager VPNC plugin
 net-misc/nextcloud-client 2.2.3: Nextcloud themed desktop client
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
