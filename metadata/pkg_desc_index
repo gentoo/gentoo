@@ -14365,7 +14365,7 @@ net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
-net-irc/konversation 1.6 1.6.1 1.6.2: A user friendly IRC Client
+net-irc/konversation 1.6.2: A user friendly IRC Client
 net-irc/kvirc 4.4_pre6250 4.4_pre20151218202654 5.0_pre20160201053254 5.0_pre20160401144043 5.0_pre20160801092805 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
