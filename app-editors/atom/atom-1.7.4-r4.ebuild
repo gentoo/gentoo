@@ -11,6 +11,8 @@ DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
 MY_PV="${PV//_/-}"
 
+ELECTRON_SLOT=0.36
+
 # All binary packages depend on this
 NAN_V=2.0.9
 
@@ -54,7 +56,7 @@ NODEGIT_PROMISE_V=4.0.0
 ASAP_V=2.0.3
 OBJECT_ASSIGN_V=4.0.1
 
-ASAR_V=0.10.0
+ASAR_V=0.12.1
 
 # The x86_64 arch below is irrelevant, as we will rebuild all binary packages.
 SRC_URI="
@@ -119,7 +121,7 @@ DEPEND="
 	>=gnome-base/libgnome-keyring-3.12:=
 	>=dev-libs/oniguruma-5.9.5:=
 	>=dev-util/ctags-5.8
-	>=dev-util/electron-0.36.12-r3:0/36
+	>=dev-util/electron-0.36.12-r4:${ELECTRON_SLOT}
 "
 RDEPEND="${DEPEND}"
 
@@ -148,7 +150,11 @@ get_install_dir() {
 }
 
 get_electron_dir() {
-	echo -n "/usr/$(get_libdir)/electron"
+	echo -n "/usr/$(get_libdir)/electron-${ELECTRON_SLOT}"
+}
+
+get_electron_nodedir() {
+	echo -n "/usr/include/electron-${ELECTRON_SLOT}/node/"
 }
 
 enode_electron() {
@@ -161,7 +167,7 @@ enodegyp_atom() {
 
 	PATH="$(get_electron_dir):${PATH}" \
 		enode_electron "${nodegyp}" \
-			--nodedir=/usr/include/electron/node/ $@ || die
+			--nodedir="$(get_electron_nodedir)" $@ || die
 }
 
 easar() {
@@ -219,6 +225,10 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-python.patch"
 	epatch "${FILESDIR}/${PN}-unbundle-electron.patch"
 
+	sed -i -e "s|{{NPM_CONFIG_NODEDIR}}|$(get_electron_nodedir)|g" \
+		./atom.sh \
+		|| die
+
 	sed -i -e "s|{{ATOM_PATH}}|$(get_electron_dir)/electron|g" \
 		./atom.sh \
 		|| die
@@ -227,10 +237,14 @@ src_prepare() {
 		./atom.sh \
 		|| die
 
-	local env="export NPM_CONFIG_NODEDIR=/usr/include/electron/node/"
+	local env="export NPM_CONFIG_NODEDIR=$(get_electron_node_dir)"
 	sed -i -e \
 		"s|\"\$binDir/\$nodeBin\" --harmony_collections|${env}\nexec $(get_electron_dir)/node|g" \
 			apm/bin/apm || die
+
+	sed -i -e \
+		"s|^\([[:space:]]*\)node[[:space:]]\+|\1\"$(get_electron_dir)/node\" |g" \
+			apm/node_modules/npm/bin/node-gyp-bin/node-gyp || die
 
 	rm apm/bin/node || die
 
@@ -362,11 +376,6 @@ src_compile() {
 	x="--unpack={*.node,ctags-config,ctags-linux,**/node_modules/spellchecker/**,**/resources/atom.png}"
 	easar pack "${x}" "app" "app.asar"
 	cd "${S}" || die
-
-	# Replace vendored ctags with a symlink to system ctags
-	rm "${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
-	ln -s "/usr/bin/ctags" \
-		"${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
 }
 
 _fix_binmods() {
@@ -392,11 +401,35 @@ _fix_binmods() {
 	done
 }
 
+_fix_executables() {
+	local _dir="${1}" _node_sb="#!$(get_electron_dir)"/node
+
+	(find -L "${ED}/${_dir}" -maxdepth 1 -mindepth 1 -type f -print || die) \
+	| while IFS= read -r f; do
+		IFS= read -r shebang < "${f}"
+
+		if [[ ${shebang} == '#!'* ]]; then
+			fperms +x "${f#${ED}}"
+			if [[ "${shebang}" == "#!/usr/bin/env node" || "${shebang}" == "#!/usr/bin/node" ]]; then
+				einfo "Fixing node shebang in ${f#${ED}}"
+				sed --follow-symlinks -i \
+					-e "1s:${shebang}$:${_node_sb}:" "${f}" || die
+			fi
+		fi
+	done || die
+}
+
 src_install() {
 	local install_dir="$(get_install_dir)"
 	local suffix="$(get_install_suffix)"
+	local ctags_d="node_modules/symbols-view/vendor"
 
 	cd "${S}" || die
+
+	# Replace vendored ctags with a symlink to system ctags
+	rm "${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
+	ln -s "/usr/bin/ctags" \
+		"${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
 
 	insinto "${install_dir}"
 
@@ -415,6 +448,11 @@ src_install() {
 	insinto /usr/share/licenses/"${PN}${suffix}"
 	doins usr/share/atom/resources/LICENSE.md
 	dosym "${install_dir}/atom" "/usr/bin/atom${suffix}"
-	fperms +x "${install_dir}/app/apm/bin/apm"
 	dosym "${install_dir}/app/apm/bin/apm" "/usr/bin/apm${suffix}"
+
+	_fix_executables "${install_dir}/app/apm/bin"
+	_fix_executables "${install_dir}/app/apm/node_modules/.bin"
+	_fix_executables "${install_dir}/app/apm/node_modules/npm/bin"
+	_fix_executables "${install_dir}/app/apm/node_modules/npm/bin/node-gyp-bin"
+	_fix_executables "${install_dir}/app/apm/node_modules/node-gyp/bin"
 }
