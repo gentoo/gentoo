@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit eutils flag-o-matic autotools
 
@@ -12,14 +12,18 @@ SRC_URI="mirror://sourceforge/pupnp/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux"
 IUSE="debug doc ipv6 static-libs"
 
 DOCS="NEWS README ChangeLog"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.19-docs-install.patch
+	"${FILESDIR}"/CVE-2016-6255.patch
+)
+
 src_prepare() {
-	sed -e '/AX_CFLAGS_GCC_OPTION/s:-Os::g' \
-		-i "${S}/configure.ac" || die
+	default
 
 	# fix tests
 	chmod +x ixml/test/test_document.sh || die
@@ -40,14 +44,5 @@ src_configure() {
 src_install () {
 	default
 	dobin upnp/sample/.libs/tv_{combo,ctrlpt,device}
-	use static-libs || find "${ED}" -type f -name '*.la' -delete
-}
-
-pkg_postinst() {
-	ewarn "Please remember to run revdep-rebuild when upgrading"
-	ewarn "from libupnp 1.4.x to libupnp 1.6.x , so packages"
-	ewarn "gets linked with the new library."
-	ewarn ""
-	ewarn "The revdep-rebuild script is part of the"
-	ewarn "app-portage/gentoolkit package."
+	use static-libs || prune_libtool_files
 }
