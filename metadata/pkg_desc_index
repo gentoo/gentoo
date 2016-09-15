@@ -7626,7 +7626,7 @@ dev-python/neutron-lib 0.0.2: Neutron shared routines and utilities.
 dev-python/nevow 0.11.1 0.11.1-r1 0.12.0 0.13.0 0.14.0: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
 dev-python/nltk 3.0.3 3.0.4 3.2.1: Natural Language Toolkit
-dev-python/nnpy 1.1 1.2: cffi-based Python bindings for nanomsg
+dev-python/nnpy 1.2-r1: cffi-based Python bindings for nanomsg
 dev-python/nose 1.3.7-r1 9999: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-descriptionfixer 0.0.4: Fix the way tests are described when the verbose flag is used
