@@ -3300,8 +3300,12 @@ gnustep-base/gnustep-gui:speech - Audio support using app-accessibility/flite
 gnustep-base/gnustep-make:libobjc2 - Enables use of the GNUstep Objective-C runtime (gnustep-base/libobjc2) with non-fragile ABI and sys-devel/clang compiler
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it
 gnustep-base/libobjc2:boehm-gc - Enable Hans Boehm's garbage collector (dev-libs/boehm-gc). Not recommended by upstream
+kde-apps/akonadi:designer - Install plugin for dev-qt/designer
+kde-apps/akonadi:tools - Install tools for developers and testing
+kde-apps/akonadi-contacts:prison - Enable support for QRcodes in contacts
 kde-apps/analitza:eigen - Enable dev-cpp/eigen mathematical templates support
 kde-apps/artikulate:qtmedia - Enable playback via Qt5Multimedia
+kde-apps/blogilo:google - Google service integration via net-libs/libkgapi
 kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
@@ -3312,6 +3316,7 @@ kde-apps/dolphin-plugins:git - Enable support for the git VCS
 kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
 kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface
 kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
+kde-apps/kaddressbook:prison - Enable support for QRcodes in contacts
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kate:addons - Build and install additional plugins
@@ -3324,6 +3329,8 @@ kde-apps/kdecore-meta:minimal - Disable install of various KDE SC 4 based packag
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenetwork-meta:telepathy - Enable build of kde-apps/plasma-telepathy-meta, otherwise kde-apps/kopete.
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
+kde-apps/kdepim-addons:google - Google service integration via net-libs/libkgapi
+kde-apps/kdepim-apps-libs:prison - Enable support for QRcodes in contacts
 kde-apps/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
 kde-apps/kdepim-runtime:google - Google service integration via net-libs/libkgapi
 kde-apps/kdepimlibs:prison - Enable support for QRcodes in contacts
@@ -3361,6 +3368,8 @@ kde-apps/kopete:webpresence - Show your status and some more information on web.
 kde-apps/kopete:winpopup - Enable pop-up messages sending on windows. (same as good old "net send" messages ;])
 kde-apps/kopete:yahoo - Enable yahoo protocol support.
 kde-apps/kopete:zeroconf - Enable Link-Local Messaging via the bonjour protocol.
+kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
+kde-apps/kpimtextedit:speech - Enable text-to-speech support
 kde-apps/krdc:rdesktop - Enable runtime dependency for net-misc/rdesktop
 kde-apps/krfb:ktp - Enable displaying of KDE Telepathy contacts
 kde-apps/krfb:telepathy - Enable desktop sharing through a telepathy client
@@ -3373,9 +3382,13 @@ kde-apps/ktp-common-internals:otr - Enable support for encrypted conversations u
 kde-apps/ktp-common-internals:sso - Enable support for Single sign-on through KAccounts
 kde-apps/ktp-text-ui:speech - Enable incoming messages to be read out using text-to-speech
 kde-apps/kwalletd:gpg - Support wallets with GnuPG encryption additionally to default blowfish-encrypted file
+kde-apps/libkdepim:designer - Build plugins for dev-qt/designer
+kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
+kde-apps/marble:designer - Install plugin for dev-qt/designer
 kde-apps/marble:designer-plugin - Enable designer plugin
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
+kde-apps/marble:positioning - Enable position information via dev-qt/qtpositioning and dev-qt/qtlocation
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
 kde-apps/marble:zip - Enable support for reading and displaying .kmz files
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
@@ -3383,6 +3396,7 @@ kde-apps/okular:dpi - DPI detection support for PDF rendering via x11-libs/libks
 kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:kde - Enable kactivities support
 kde-apps/okular:mobi - Add mobipocket support
+kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
