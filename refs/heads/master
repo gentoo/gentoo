@@ -1,16 +1,12 @@
 certificate version 0.1
-pusher 0x4AB3E85B4F064CA3 1473916085 -0400
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1473916087-c05a982422fb6be928a2
+pusher 0BBEEA1FEA4843A4 1473917925 -0400
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1473917925-9f882da6377f315adfac
 
-6f4b37f25304dad59516b6b65ba6d0f0b2301167 bcdfc1441ed7ac6c5bc3e7b7e1b36b62ba878fd5 refs/heads/master
+bcdfc1441ed7ac6c5bc3e7b7e1b36b62ba878fd5 e9a06f22b63bf528e2d5905d652f95200a5be16b refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAABCgAGBQJX2iy1AAoJEEqz6FtPBkyjFMIIAKyStAoSIWFRNNYdtUeTTOa6
-Cz+rN6xryRiLzHi6vI+RslY5KoN1SZqbA9rTBc5mTUnmRc/BRkgTZxykiW0T1keW
-84YAan8CF4DWXO9uZl+b6uJTyCZy/AGWfmPhofqeQOglgHeIDe/7wqQ+d3+w2zze
-rE8sCMfwXDuSbmAfLcryQGf6FU6Etxh1fMVqd3TQvtgMX1Gob1ID02ssvPTmN48p
-Qljn6pKYoNxE9PrcFI8fOtoJ1KD3Lm9/p9XvyjxHSYorqSW85rOmPdLREp/TCJSC
-aaTjrQZ6YCO+NnOYRJqonDJxabGHuT4t9cRDRfQzXRCgUJ04ncjIdoAE2L9bkmA=
-=oYvt
+iF4EABEIAAYFAlfaM+UACgkQRxvnM+8pGj86uwEArZdEa0uD+LilotnZXl+mVZiE
+U615VRQRVDIC5r7MDBgA/2ryZE/EMg8Xqk12t013yUP22aAtDzb2X2X2j4IEKgUy
+=dgsD
 -----END PGP SIGNATURE-----
