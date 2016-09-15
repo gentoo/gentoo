@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X] ) canna? ( app-i18n/canna ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( >=x11-libs/gtk+-2:= ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A multi-lingual terminal emulator
+EAPI=6
+HOMEPAGE=http://mlterm.sourceforge.net/
+IUSE=bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 bidi? ( dev-libs/fribidi ) cairo? ( x11-libs/cairo[X] ) canna? ( app-i18n/canna ) fcitx? ( app-i18n/fcitx ) freewnn? ( app-i18n/freewnn ) gtk? ( >=x11-libs/gtk+-2:= ) ibus? ( app-i18n/ibus ) libssh2? ( net-libs/libssh2 ) m17n-lib? ( dev-libs/m17n-lib ) nls? ( virtual/libintl ) regis? ( || ( media-libs/sdl-ttf media-libs/sdl2-ttf ) ) scim? ( app-i18n/scim ) skk? ( || ( virtual/skkserv app-i18n/skk-jisyo ) ) uim? ( app-i18n/uim ) utempter? ( sys-libs/libutempter ) xft? ( x11-libs/libXft )
+SLOT=0
+SRC_URI=mirror://sourceforge/mlterm/mlterm-3.7.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=48a04c5f0b80999d7cd37e628433c1bb

@@ -18896,7 +18896,7 @@ x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.10.2 1.12.1: The MATE Terminal
-x11-terms/mlterm 3.4.5 3.7.0 3.7.1: A multi-lingual terminal emulator
+x11-terms/mlterm 3.4.5 3.7.1 3.7.2: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
@@ -19110,7 +19110,7 @@ x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12: Third party extensions for xmonad
 x11-wm/xpra 0.14.27 0.14.34 0.15.10-r1 0.16.3 0.17.4 0.17.5: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.10.6 0.10.7 0.11.1: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.5.0-r1 0.5.0-r2: Xfce's freedesktop.org specification compatible menu implementation library
-xfce-base/libxfce4ui 4.12.1-r2 4.13.0: Unified widget and session management libraries for Xfce
+xfce-base/libxfce4ui 4.12.1-r2 4.13.0 4.13.1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.12.1 4.12.1-r1: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r1: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
 xfce-base/thunar 1.6.10 1.6.10-r1: File manager for the Xfce desktop environment
@@ -19118,7 +19118,7 @@ xfce-base/xfce4-appfinder 4.12.0-r1: A tool to find and launch installed applica
 xfce-base/xfce4-meta 4.12: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.0 4.12.0-r1: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1 4.12.1-r1: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.12.0 4.12.0-r1 4.12.0-r2 4.12.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.0-r1: A simple client-server configuration storage and query system for the Xfce desktop environment
 xfce-base/xfdesktop 4.12.2 4.12.3: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.3 4.12.3-r1: Window manager for the Xfce desktop environment
@@ -19135,7 +19135,7 @@ xfce-extra/xfce-theme-manager 0.3.5 0.3.6: An alternative theme manager for The 
 xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.0.5 1.0.99: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
-xfce-extra/xfce4-clipman-plugin 1.2.6: A clipboard manager plug-in for the Xfce panel
+xfce-extra/xfce4-clipman-plugin 1.2.6 1.4.0: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0: An graphical interface to modify composite settings
 xfce-extra/xfce4-cpufreq-plugin 1.1.3: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.0.5: A system load plug-in for the Xfce panel
