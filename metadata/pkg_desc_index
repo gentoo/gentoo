@@ -14533,7 +14533,7 @@ net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
 net-libs/libtrace 3.0.22 4.0.0_beta: A library and tools for trace processing
-net-libs/libupnp 1.6.18-r1 1.6.19 1.6.20: An Portable Open Source UPnP Development Kit
+net-libs/libupnp 1.6.18-r1 1.6.18-r2 1.6.19-r1 1.6.20: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
 net-libs/libwebsockets 1.7.8 2.0.2: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing

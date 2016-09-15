@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An Portable Open Source UPnP Development Kit
+EAPI=5
+HOMEPAGE=http://pupnp.sourceforge.net/
+IUSE=debug doc ipv6 static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/pupnp/libupnp-1.6.19.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	b83a2420b796f7c6eff682679d08fe25	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	libtool	4890219c51da247200223277f993e054	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=0c67a84b30cc2ea4a74ce7cfa5809552
