@@ -600,11 +600,6 @@ sci-physics/mpb
 # Mask new MariaDB alphas for testing
 >=dev-db/mariadb-10.2.0
 
-# Michael Palimaka <kensington@gentoo.org> (14 Aug 2016)
-# Requires API that is no longer functional.
-# Masked for removal in 30 days.
-net-libs/libkfbapi
-
 # Hans de Graaff <graaff@gentoo.org> (13 Aug 2016)
 
 # Unfixed security problems, bug 576068. No longer supported by
