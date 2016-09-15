@@ -34,7 +34,7 @@ REQUIRED_USE="
 "
 SLOT="0"
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="AdobeFlash-11.x"
 RESTRICT="strip mirror"
 
