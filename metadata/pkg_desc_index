@@ -5028,7 +5028,7 @@ dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and 
 dev-libs/yajl 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.50 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zlog 1.2.12: A reliable, thread safe, clear-model, pure C logging library.
-dev-libs/zookeeper-c 3.4.8: C client interface to Zookeeper server
+dev-libs/zookeeper-c 3.4.8 3.4.9: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
@@ -18462,7 +18462,7 @@ x11-misc/oroborus-keylaunch 1.3.9: utility for binding keys in Oroborus
 x11-misc/outwiker 1.8.0 1.9.0.790 2.0.0.794: The tree notes organizer
 x11-misc/parcellite 1.1.9: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.6.36 1.7.45 1.7.47 1.7.49: File manager based on the FOX Toolkit
-x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 9999: Fast lightweight tabbed filemanager
+x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 1.2.4 9999: Fast lightweight tabbed filemanager
 x11-misc/pcmanfm-qt 0.10.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu

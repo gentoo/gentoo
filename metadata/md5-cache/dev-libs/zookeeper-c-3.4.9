@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=C client interface to Zookeeper server
+EAPI=5
+HOMEPAGE=https://zookeeper.apache.org/
+IUSE=doc static-libs test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=mirror://apache/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=47690e659bce057eb3a2ce42c179a8f6
