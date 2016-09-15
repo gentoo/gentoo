@@ -56,7 +56,7 @@ RDEPEND="
 		$(add_plasma_dep kde-gtk-config)
 	)
 	handbook? ( $(add_kdeapps_dep khelpcenter) )
-	mediacenter? ( $(add_plasma_dep plasma-mediacenter '' 5.7.3) )
+	mediacenter? ( $(add_plasma_dep plasma-mediacenter) )
 	networkmanager? ( $(add_plasma_dep plasma-nm) )
 	pam? ( $(add_plasma_dep kwallet-pam) )
 	plymouth? ( $(add_plasma_dep breeze-plymouth) )
