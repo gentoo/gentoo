@@ -7078,7 +7078,7 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2 2.10.0: CLI Application Framework for Python
 dev-python/certifi 2015.11.20 2016.8.8 2016.8.31: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.2.1 1.5.2 1.6.0 1.7.0 1.8.2: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0: Python library for creating 3D images
@@ -7109,7 +7109,7 @@ dev-python/colorama 0.3.3 0.3.7: ANSI escape character sequences for colored ter
 dev-python/coloredlogs 3.1.4 5.0: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0 2.6.1 2.7.0: Log formatting with colors
 dev-python/colout 0.1: Adds color to arbitrary command output
-dev-python/columnize 0.3.5-r1 0.3.8: Format a simple (i.e. not nested) list into aligned columns
+dev-python/columnize 0.3.5-r1 0.3.8 0.3.9: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.1 0.1.2: Common tools and data structures implemented in pure python
 dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
 dev-python/configargparse 0.9.3 0.10.0: A drop-in replacement for argparse that adds support for config files and/or environment variables
