@@ -29,7 +29,7 @@ patches() {
 }
 
 # The version of readline this bash normally ships with.
-READLINE_VER="7.0_beta"
+READLINE_VER="7.0_rc2"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="http://tiswww.case.edu/php/chet/bash/bashtop.html"
@@ -73,8 +73,6 @@ src_unpack() {
 src_prepare() {
 	# Include official patches
 	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
-
-	epatch "${FILESDIR}"/${PN}-4.4-assign-crash.patch
 
 	# Clean out local libs so we know we use system ones w/releases.
 	if [[ ${PV} != *_rc* ]] ; then

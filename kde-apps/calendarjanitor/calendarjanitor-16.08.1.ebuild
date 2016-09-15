@@ -37,5 +37,6 @@ fi
 
 src_prepare() {
 	cmake_comment_add_subdirectory konsolekalendar
+	sed -i -e "/console\.categories/ s/^/#DONT/" CMakeLists.txt || die
 	kde5_src_prepare
 }

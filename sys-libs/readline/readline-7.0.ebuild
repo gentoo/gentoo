@@ -6,7 +6,7 @@ EAPI="5"
 inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal
 
 # Official patches
-# See ftp://ftp.cwru.edu/pub/bash/readline-6.3-patches/
+# See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
 PLEVEL=${PV##*_p}
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
@@ -150,12 +150,4 @@ multilib_src_install_all() {
 	dohtml -r doc/.
 	docinto ps
 	dodoc doc/*.ps
-}
-
-pkg_preinst() {
-	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5} #29865
-}
-
-pkg_postinst() {
-	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5}
 }
