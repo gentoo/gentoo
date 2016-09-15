@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib prefix
+inherit flag-o-matic prefix
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3 autotools
@@ -47,13 +47,15 @@ if [[ ${PV} == 9999* ]] ; then
 fi
 
 src_prepare() {
-	# fix zshall problem with soelim
-	ln -s Doc man1
-	mv Doc/zshall.1 Doc/zshall.1.soelim
-	soelim Doc/zshall.1.soelim > Doc/zshall.1
+	if [[ ${PV} != 9999* ]]; then
+		# fix zshall problem with soelim
+		ln -s Doc man1 || die
+		mv Doc/zshall.1 Doc/zshall.1.soelim || die
+		soelim Doc/zshall.1.soelim > Doc/zshall.1 || die
 
-	epatch "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
-	epatch "${FILESDIR}"/${PN}-5.1.0-gcc-5.patch #547950
+		# add openrc specific options for init.d completion
+		eapply "${FILESDIR}"/${PN}-init.d-gentoo-r1.diff
+	fi
 
 	cp "${FILESDIR}"/zprofile-1 "${T}"/zprofile || die
 	eprefixify "${T}"/zprofile || die
@@ -62,6 +64,8 @@ src_prepare() {
 	else
 		sed -i -e 's|@ZSH_NOPREFIX@||' -e '/@ZSH_PREFIX@/d' -e 's|""||' "${T}"/zprofile || die
 	fi
+
+	eapply_user
 
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
@@ -139,7 +143,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.info
+	emake DESTDIR="${D}" install $(usex doc "install.info" "")
 
 	insinto /etc/zsh
 	doins "${T}"/zprofile
@@ -173,7 +177,8 @@ src_install() {
 
 	if use doc ; then
 		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
-		dohtml -r Doc/*
+		docinto html
+		dodoc Doc/*.html
 		insinto /usr/share/doc/${PF}
 		doins Doc/zsh.{dvi,pdf}
 		popd >/dev/null

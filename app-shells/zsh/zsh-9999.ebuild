@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib prefix
+inherit flag-o-matic prefix
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3 autotools
@@ -65,7 +65,7 @@ src_prepare() {
 		sed -i -e 's|@ZSH_NOPREFIX@||' -e '/@ZSH_PREFIX@/d' -e 's|""||' "${T}"/zprofile || die
 	fi
 
-	default
+	eapply_user
 
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
@@ -143,7 +143,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install install.info
+	emake DESTDIR="${D}" install $(usex doc "install.info" "")
 
 	insinto /etc/zsh
 	doins "${T}"/zprofile
@@ -177,7 +177,8 @@ src_install() {
 
 	if use doc ; then
 		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
-		dohtml -r Doc/*
+		docinto html
+		dodoc Doc/*.html
 		insinto /usr/share/doc/${PF}
 		doins Doc/zsh.{dvi,pdf}
 		popd >/dev/null
