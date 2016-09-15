@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 DEPEND="
-	dev-python/cffi[${PYTHON_USEDEP}]
-	dev-libs/nanomsg
+	dev-python/cffi:=[${PYTHON_USEDEP}]
+	dev-libs/nanomsg:=
 "
 RDEPEND="${DEPEND}"
 
