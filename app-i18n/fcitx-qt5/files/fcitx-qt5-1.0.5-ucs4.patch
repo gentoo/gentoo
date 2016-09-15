@@ -1,8 +1,8 @@
 https://github.com/fcitx/fcitx-qt5/commit/31ecc9f2f9c8eb77082044944bbb6740d35ae7c3
 https://github.com/fcitx/fcitx-qt5/commit/8fc110e6125d85d3c50112bc20a6ed36395b2b21
 
---- platforminputcontext/qfcitxplatforminputcontext.cpp
-+++ platforminputcontext/qfcitxplatforminputcontext.cpp
+--- /platforminputcontext/qfcitxplatforminputcontext.cpp
++++ /platforminputcontext/qfcitxplatforminputcontext.cpp
 @@ -254,6 +254,12 @@
                      anchor = var2.toInt();
                  else

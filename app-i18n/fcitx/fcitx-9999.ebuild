@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils gnome2-utils multilib xdg
 
@@ -84,6 +84,7 @@ src_prepare() {
 		-i CMakeLists.txt
 
 	cmake-utils_src_prepare
+	xdg_environment_reset
 }
 
 src_configure() {
