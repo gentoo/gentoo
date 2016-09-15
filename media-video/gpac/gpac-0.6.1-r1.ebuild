@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -84,7 +84,7 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable ipv6) \
 		$(use_enable jack jack yes) \
-		$(use_enable opengl) \
+		$(use_enable opengl 3d) \
 		$(use_enable oss oss-audio) \
 		$(use_enable pulseaudio pulseaudio yes) \
 		$(use_enable sdl) \
