@@ -92,8 +92,9 @@ src_configure() {
 }
 
 src_test() {
-	# sandbox fiddles with memory error reporting and breaks tests
-	local -x SANDBOX_ON=0
+	# sandbox breaks libasan tests... and is hard to kill
+	# so abuse the fail in its algorithms
+	local -x LD_PRELOAD=${LD_PRELOAD/libsandbox/nolibsandbox}
 
 	cmake-utils_src_make check-all
 }
