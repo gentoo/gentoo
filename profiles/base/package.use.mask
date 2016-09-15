@@ -5,6 +5,13 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (15 Sep 2016)
+# Requires unreleased dependency dev-qt/qtspeech.
+kde-apps/kpimtextedit speech
+kde-apps/ktp-text-ui speech
+kde-frameworks/knotifications speech
+kde-frameworks/ktextwidgets speech
+
 # Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
 # lldb fails to build in the current RC, and needs a lot of minor fixes.
 # It's no longer available in -9999 line, and it won't be in 3.9.0
@@ -120,10 +127,6 @@ www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
 >=www-client/seamonkey-2.41 system-cairo
 
-# Johannes Huber <johu@gentoo.org> (21 Apr 2016)
-# Unreleased dependency.
-kde-apps/ktp-text-ui speech
-
 # Michael Palimaka <kensington@gentoo.org> (17 Apr 2016)
 # Fails to build with recent doxygen. Bug #569776.
 dev-cpp/eigen:2 doc
@@ -186,11 +189,6 @@ app-arch/cfv bittorrent
 # MMAL is only available on the Raspberry Pi:
 # Mask it globally, unmask it on arm.
 media-video/ffmpeg mmal
-
-# Michael Palimaka <kensington@gentoo.org> (13 Nov 2015)
-# Requires unreleased dependencies
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
 
 # Rick Farina <zerochaos@gentoo.org> (06 Oct 2015)
 # forward porting this patch is non-trivial, mask for now
