@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/593836
+
+--- a/third_party/ffmpeg/chromium/scripts/generate_gn.py
++++ b/third_party/ffmpeg/chromium/scripts/generate_gn.py
+@@ -662,8 +662,8 @@ RENAME_REGEX = re.compile('.*' + RENAME_PREFIX + '_.+');
+ 
+ # Content for the rename file. #includes the original file to ensure the two
+ # files stay in sync.
+-RENAME_CONTENT = """// File automatically generated. See crbug.com/495833.
+-{0}include "{1}"
++RENAME_CONTENT = """{0} File automatically generated. See crbug.com/495833.
++{1}include "{2}"
+ """
+ 
+ def GetIncludedSources(file_path, source_dir, include_set):
+@@ -827,9 +827,10 @@ def FixObjectBasenameCollisions(disjoint_sets, all_sources, do_rename_cb,
+       _, old_filename = os.path.split(rename.old_path)
+       _, file_extension = os.path.splitext(old_filename)
+       include_prefix = '%' if (file_extension == '.asm') else '#'
++      comment_prefix = ';' if (file_extension == '.asm') else '//'
+ 
+       do_rename_cb(rename.old_path, rename.new_path,
+-                   RENAME_CONTENT.format(include_prefix, old_filename))
++                   RENAME_CONTENT.format(comment_prefix, include_prefix, old_filename))
+ 
+       source_set.sources.remove(rename.old_path)
+       source_set.sources.add(rename.new_path)
