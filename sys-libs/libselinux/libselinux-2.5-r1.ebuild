@@ -48,6 +48,10 @@ src_prepare() {
 		# If needed for live builds, place them in /etc/portage/patches
 		eapply "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
 		eapply "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
+
+		eapply "${FILESDIR}/libselinux-2.5-0001-only-mount-proc-if-necessary.patch"
+		eapply "${FILESDIR}/libselinux-2.5-0002-Avoid-mounting-proc-outside-of-selinux_init_load_pol.patch"
+		eapply "${FILESDIR}/libselinux-2.5-0003-Change-the-location-of-_selinux.so.patch"
 	fi
 
 	eapply_user
