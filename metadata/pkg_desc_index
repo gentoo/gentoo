@@ -2833,7 +2833,7 @@ dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text sear
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/cpp-hocon 0.1.2: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
-dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6 3.2.7 3.2.8-r2: C++ template library for linear algebra
+dev-cpp/eigen 2.0.17 3.2.8-r2: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
@@ -2990,7 +2990,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nuts
 dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1: A SQL Database Engine in a C Library
+dev-db/sqlite 3.12.0 3.12.1 3.12.2 3.13.0 3.14.1 3.14.2: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -16234,7 +16234,7 @@ sci-mathematics/pymc 2.2 9999: Markov chain Monte Carlo for Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 2.4: Educational tool for relational algebra
-sci-mathematics/rkward 0.6.1: IDE for the R-project
+sci-mathematics/rkward 0.6.1 0.6.5: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902 0.99.903: IDE for the R language
 sci-mathematics/rw 0.7-r1: Compute rank-width decompositions of graphs
