@@ -4665,7 +4665,7 @@ dev-libs/keybinder 0.3.0-r200 0.3.0-r201 0.3.0-r300 0.3.1-r200 0.3.1-r300: A lib
 dev-libs/klibc 1.5.25 2.0.4: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521-r1: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
-dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.2 0.7.3 0.7.4 0.7.5-r2 0.8.1 0.9.0: A C++ toolkit
+dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.2 0.7.3 0.7.4 0.7.5-r2 0.8.1 0.9.0 0.9.1: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14 0.8.14-r2: CORBA tree builder
@@ -14472,7 +14472,6 @@ net-libs/libinfinity 0.6.7: An implementation of the Infinote protocol written i
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.9.0-r1 1.15.0 9999: iscsi client library and utilities
 net-libs/libisds 0.7 0.10 9999: Client library for accessing ISDS Soap services
-net-libs/libkfbapi 1.0: Library for accessing Facebook services based on KDE technology
 net-libs/libkgapi 2.2.0: Library for accessing Google calendar and contact resources
 net-libs/libkolab 0.5.2 0.5.3: Advanced Kolab Object Handling Library
 net-libs/libkolabxml 1.0.1 1.0.3 1.1.0 1.1.2: Kolab XML format schema definitions library
@@ -17974,7 +17973,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.2.490.35_p1 1.3.551.30_p1 1.3.582.3_p1 1.4.589.11_p1: A new browser for our friends
+www-client/vivaldi 1.2.490.35_p1 1.3.551.30_p1 1.4.589.11_p1 1.5.604.4_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
@@ -18001,7 +18000,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.632 11.2.202.635 23.0.0.162: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.635 23.0.0.162: Adobe Flash Player
 www-plugins/chrome-binary-plugins 53.0.2785.116 54.0.2840.27_beta 55.0.2859.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1 0.3.5: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
