@@ -30,10 +30,10 @@ RESTRICT="test"
 
 HTML_DOCS=( site/. )
 PATCHES=(
-	"${FILESDIR}/${PV}-missing_includes.patch"
-	"${FILESDIR}/${P}-gcc44.patch"
-	"${FILESDIR}/${P}-unixODBC.patch"
-	"${FILESDIR}/${P}-fix-c++14.patch"
+	"${FILESDIR}/${PN}-0.10.0-missing_includes.patch"
+	"${FILESDIR}/${PN}-0.10.0-gcc44.patch"
+	"${FILESDIR}/${PN}-0.10.0-unixODBC.patch"
+	"${FILESDIR}/${PN}-0.10.0-fix-c++14.patch"
 )
 
 pkg_setup() {
