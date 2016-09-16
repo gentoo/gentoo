@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-libs/libsdl-1.2.4 media-libs/sdl-image x11-libs/gtk+:2 nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=city simulation game
+EAPI=6
+HOMEPAGE=https://savannah.nongnu.org/projects/senken/
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libsdl-1.2.4 media-libs/sdl-image x11-libs/gtk+:2 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gentoo/senken-0.3.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=c2665f5100defc9ac509667b9c515dfc
