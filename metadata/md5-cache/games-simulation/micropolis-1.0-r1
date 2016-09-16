@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=media-libs/libsdl media-libs/sdl-mixer x11-libs/libX11 x11-libs/libXpm sys-devel/bison
+DESCRIPTION=Free version of the well-known city building simulation
+EAPI=6
+HOMEPAGE=http://www.donhopkins.com/home/micropolis/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/libsdl media-libs/sdl-mixer x11-libs/libX11 x11-libs/libXpm
+SLOT=0
+SRC_URI=http://www.donhopkins.com/home/micropolis/micropolis-activity-source.tgz http://rmdir.de/~michael/micropolis_git.patch
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	toolchain-funcs	6198c04daba0e1307bd844df7d37f423
+_md5_=b1e437eecc87ab9f2ae789a0a7c0f446

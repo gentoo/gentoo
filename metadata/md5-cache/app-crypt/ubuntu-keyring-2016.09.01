@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=GnuPG archive keys of the Ubuntu archive
+EAPI=5
+HOMEPAGE=http://packages.ubuntu.com/yakkety/ubuntu-keyring
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2016.09.01.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=c37d28ced8b82c475d595fb4933830c6

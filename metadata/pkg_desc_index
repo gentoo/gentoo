@@ -620,7 +620,7 @@ app-crypt/tinyca 2.0.7.5-r2 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small cer
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8 1.3.8-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/ubuntu-keyring 2012.05.19: GnuPG archive keys of the Ubuntu archive
+app-crypt/ubuntu-keyring 2012.05.19 2016.09.01: GnuPG archive keys of the Ubuntu archive
 app-crypt/xca 1.3.2 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
@@ -2883,7 +2883,7 @@ dev-cpp/xsd 3.3.0-r3: An open-source, cross-platform W3C XML Schema to C++ data 
 dev-cpp/yaml-cpp 0.3.0 0.5.1 0.5.2 0.5.3: A YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2: MySQL Schema Versioning and Migration Utility
-dev-db/aerospike-server-community 3.8.2.4 3.8.3 3.8.4 3.9.0.2 3.9.0.3 3.9.1 9999: Flash-optimized, in-memory, nosql database
+dev-db/aerospike-server-community 3.8.2.4 3.8.3 3.8.4 3.9.0.2 3.9.0.3 3.9.1 3.9.1.1 9999: Flash-optimized, in-memory, nosql database
 dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: Another PostgreSQL Diff Tool is a simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
@@ -9743,7 +9743,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0 4.8.1 4.8.2 4.9.0 4.9.1 4.10.0 4.11.0 4.11.1 4.11.2 4.12.0.1 4.12.1 4.12.2: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.6.2-r1 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
 dev-util/atomic-install 0.1.1 9999: A library and tool to atomically install sets of files
@@ -9910,7 +9910,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.2 2.5 2.7.2 2.11 2.17 2.22: Extensible continuous integration server
 dev-util/kbuild 0.1.9998_pre20131130 0.1.9998_pre20131130-r1 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
 dev-util/kdevelop 4.7.2 4.7.3 5.0.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
@@ -10982,9 +10982,9 @@ games-simulation/dangerdeep 0.3.0: a World War II German submarine simulation
 games-simulation/flightgear 3.4.0 2016.1.1 2016.2.1 9999: Open Source Flight Simulator
 games-simulation/flightgear-data 3.4.0 2016.1.1 2016.2.1 9999: FlightGear data files
 games-simulation/gl117 1.3.2: An action flight simulator
-games-simulation/lincity 1.13.1: city/country simulation game for X and Linux SVGALib
+games-simulation/lincity 1.13.1 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
-games-simulation/micropolis 1.0: Free version of the well-known city building simulation
+games-simulation/micropolis 1.0 1.0-r1: Free version of the well-known city building simulation
 games-simulation/openttd 1.5.3 1.6.0: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0 1.5.0-r1: Helicopter based air rescue flight simulator
@@ -12332,7 +12332,7 @@ media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cur
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.4.6 6.9.4.7 6.9.5.5 6.9.5.9 7.0.3.0: A collection of tools and libraries for many image formats
-media-gfx/imageworsener 0.9.2 1.0.0 1.2.0: Utility for image scaling and processing
+media-gfx/imageworsener 0.9.2 1.0.0 1.2.0 1.3.0: Utility for image scaling and processing
 media-gfx/imv 2.1.2 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1 0.91-r2 0.91-r3: A SVG based generic vector-drawing program
 media-gfx/ipe 7.1.2 7.1.3: Drawing editor for creating figures in PDF or PS formats
@@ -14552,7 +14552,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.7.1 1.10.0 1.14.0 1.14.1 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 4.4.6 4.4.7 4.5.0 5.9.1 5.10.1 5.11.0 6.2.2 6.3.0 6.3.1 6.4.0 6.5.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 4.4.6 4.4.7 4.5.0 5.9.1 5.10.1 5.11.0 6.5.0 6.6.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
@@ -18128,7 +18128,7 @@ x11-apps/xsetroot 1.1.1: X.Org xsetroot application
 x11-apps/xsm 1.0.3: X Session Manager
 x11-apps/xstdcmap 1.0.3: X standard colormap utility
 x11-apps/xtrap 1.0.2-r1: X.Org xtrap application
-x11-apps/xvfb-run 1.17.2_p2: Run a command in a virtual X server environment
+x11-apps/xvfb-run 1.17.2_p2 1.18.4_p2: Run a command in a virtual X server environment
 x11-apps/xvidtune 1.0.2-r1 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.2 1.1.3: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
@@ -18527,7 +18527,7 @@ x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.1.0 1.2.0: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
+x11-misc/screen-message 0.23 0.24: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sddm 0.13.0-r3 0.14.0-r1: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
