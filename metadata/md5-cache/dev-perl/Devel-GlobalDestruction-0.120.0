@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=>=virtual/perl-ExtUtils-CBuilder-0.27.0 >=dev-perl/Sub-Exporter-Progressive-0.1.11 dev-lang/perl:=[-build(-)]
-DESCRIPTION=Expose PL_dirty, the flag which marks global destruction
+DESCRIPTION=Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Devel-GlobalDestruction/
 KEYWORDS=amd64 ~arm ~hppa ppc ~ppc64 x86 ~ppc-aix ~x86-fbsd ~x86-solaris
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/H/HA/HAARG/Devel-GlobalDestruction-0.12.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	b83a2420b796f7c6eff682679d08fe25	multilib	165fc17c38d1b11dac2008280dab6e80	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=5981da6f5f3a89fc3b521913fb814de0
+_md5_=fadc906b91d3251aa3fe4090332d9838
