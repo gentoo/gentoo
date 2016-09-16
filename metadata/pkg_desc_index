@@ -14230,7 +14230,7 @@ net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firew
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10 2.11: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.1-r1 5.1.2: Kernel based automounter
-net-fs/btfs 2.11: a bittorrent filesystem based on FUSE
+net-fs/btfs 2.11 2.12: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.4 6.5 6.6: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributing software
@@ -15108,7 +15108,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.09.08 2016.09.11.1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.09.11.1 2016.09.15 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
