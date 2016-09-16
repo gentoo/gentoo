@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">rhash</remote-id>
 		<remote-id type="github">rhash/RHash</remote-id>
