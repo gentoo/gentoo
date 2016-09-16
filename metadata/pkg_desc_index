@@ -17921,7 +17921,7 @@ www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent c
 www-apps/scgi 1.14: A Python package for implementing SCGI servers
 www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Use
 www-apps/sugarcrm 6.5.9 6.5.10: A complete CRM and groupware system for businesses of all sizes
-www-apps/trac 1.0.9 1.0.10 1.0.11 1.0.12: Enhanced wiki and issue tracking system for software development projects
+www-apps/trac 1.0.9 1.0.10 1.0.11 1.0.12 1.0.13: Enhanced wiki and issue tracking system for software development projects
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
 www-apps/trac-mercurial 0.12.0.29_pre10899 1.0.0.3_pre20130206: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6: Tags plugin for Trac
