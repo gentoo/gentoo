@@ -8214,6 +8214,7 @@ dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
 dev-python/scrapy 1.0.1 1.0.3: A high-level Python Screen Scraping framework
 dev-python/scripttest 1.2-r1 1.3: A very small text templating language
 dev-python/seaborn 0.5.1 0.6.0 0.7.0: Statistical data visualization
+dev-python/selectors34 1.1: Backport of the selectors module from Python 3.4
 dev-python/selenium 2.46.0 2.47.1 2.49.0: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.4.2: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
@@ -16610,7 +16611,7 @@ sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2 2.2-r1 2.3: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4 2.2-r5: Minimal baselayout for Gentoo Prefix installs
-sys-apps/biosdevname 0.6.1 0.6.2 0.7.1 0.7.2: Sets BIOS-given device names instead of kernel eth* names
+sys-apps/biosdevname 0.6.1 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20100611-r1: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 1.2 1.11.2 1.12: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.24.1 1.24.2 9999: Utilities for rescue and embedded systems
