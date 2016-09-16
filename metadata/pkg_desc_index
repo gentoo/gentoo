@@ -4503,7 +4503,7 @@ dev-lang/rubinius 3.43: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p648 2.1.9 2.1.10 2.2.5 2.3.0 2.3.1: An object-oriented scripting language
 dev-lang/rust 1.9.0 1.10.0 1.11.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
+dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1 2.11.8: The Scala Programming Language
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -13206,7 +13206,7 @@ media-sound/amsynth 1.3.2 1.5.1 1.6.4: Virtual analogue synthesizer
 media-sound/apetag 1.12: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.6-r1 0.1.7: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0_rc1 1.0: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 2.8.14-r1 2.8.16 4.0-r2 4.1 4.2-r1 4.4 4.6 4.7 5.0 9999: Digital Audio Workstation
+media-sound/ardour 2.8.14-r1 2.8.16 4.0-r2 4.1 4.2-r1 4.4 4.6 4.7 5.0 5.3 9999: Digital Audio Workstation
 media-sound/ario 1.5.1 1.5.1-r1: a GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.2 2.7 2.8: A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis, FLAC and Opus
